@@ -315,6 +315,23 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   (reverse_engineer) and tool 5 never arrived. run_foundry_cycle has no Foundry to
   call; flight_recorder_replay has one mission only. check_capability can be real
   from barrot_capability_audit.json.
+- FIELD TRACK (queued 2026-11-17, NOT started - needs GO FIELDS): 8 topics in
+  order - cymatics, resonance/sympathetic, frequencies/harmonics/Fourier, acoustic
+  field, EM field, toroidal (engineering vs model), quantum field (real QFT vs pop),
+  noetic (speculative). 3 layers, tag every claim, never mix: L1 Established
+  (measured, citation + units + conditions), L2 Applied (engineering practice,
+  names a build/test/vendor doc), L3 Speculative (hypothesis or metaphor, carries
+  its own falsifier, never supports an L1/L2 claim). Each topic: definition, math/
+  mechanism, real experiment, production example, what it is NOT, falsifier. One
+  reverse-engineered example per topic. No skill promotion until a prediction on a
+  NEW case is made and tested. Caps $2 / 15 min per topic, 2 rounds max, Flight
+  Recorder per topic. Gate: Ch 8 pushed (done: ceda46a37) AND Sean says GO FIELDS.
+- Trap for the field track: "free energy" and "Planck-scale" are in
+  scripts/pillars_check.py FICTION_TERMS. That check only scans hf_space/app.py,
+  so Layer 3 wording is safe in docs but must never enter the deployed surface.
+- Foundry does not exist yet (0 hits for "foundry" in *.py). "Learn via Foundry" is
+  aspirational until it is built; until then the track runs on RE_METHOD +
+  Flight Recorder.
 - Ping-pong routing protocol (2026-11-17): caps 2 rounds default / $2 per task /
   15 min; advice only, no external AI can authorize commits. External ChatGPT and
   Meta AI are NOT wired in this runtime - only free-model subagents are available,

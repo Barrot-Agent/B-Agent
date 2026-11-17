@@ -865,3 +865,16 @@
   and flight_recorder_replay (recorder holds one mission, 3 records, so there is no
   second run of the same task to replay). check_capability does have real data
   (barrot_capability_audit.json: 122 capabilities, evidence, gaps).
+
+## 2026-11-17 — Field track accepted, parked behind GO FIELDS
+- Ch 8 confirmed pushed: ceda46a37. HEAD 443deb3a9, main in sync with origin,
+  working tree clean except one untracked test artifact.
+- Field track contract recorded in MEMORY.md: 8 topics in order, 3-layer tagging
+  (L1 Established / L2 Applied / L3 Speculative), six required fields per topic,
+  one reverse-engineered example each, prediction-before-promotion gate, $2/15min,
+  2 rounds, Flight Recorder per topic. Not started: waiting for GO FIELDS.
+- Pre-registered conflict: pillars_check.py bans "free energy" and "Planck-scale",
+  but scans only hf_space/app.py. Layer 3 prose is safe in docs, never in the
+  deployed surface.
+- Dependency that does not exist: Foundry (0 hits in *.py). Track will run on
+  RE_METHOD + Flight Recorder until Foundry is real.
