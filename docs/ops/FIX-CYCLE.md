@@ -32,10 +32,12 @@ numerical, so in an environment without scipy it must skip, not error. Local run
 still execute it.
 
 Pages:
+{% raw %}
 ```
 Liquid Exception: Liquid syntax error (line 6450): Variable '{{ ...
 in GLOBAL_STATE_MANIFEST.md
 ```
+{% endraw %}
 
 Root cause: GLOBAL_STATE_MANIFEST.md includes a JSON schema example containing `{{`.
 Jekyll treats it as Liquid. Falsifiable sentence: "Jekyll parses every markdown file
@@ -44,9 +46,15 @@ at the repository root, and this one contains an unterminated Liquid variable."
 Fix: `_config.yml` with `exclude: [GLOBAL_STATE_MANIFEST.md]`. The file is a
 generated state dump, not a web page.
 
-Status: fixes pushed in the same commit as this document. A green re-run is the
-verification, not this paragraph. If either re-run is red, the workflow is X and the
-log stays as a control.
+Round 1 result: CI green, run 44157035107, conclusion success. Pages red again, with a
+new and self-inflicted error: this document quoted the unterminated Liquid variable,
+and Jekyll parses docs/ as well. The failing file moved from
+GLOBAL_STATE_MANIFEST.md to docs/ops/FIX-CYCLE.md, which proves the exclude worked
+and that the quote itself was hostile. Fix: the literal is now wrapped in raw tags,
+so Liquid emits it verbatim.
+
+Structural gap, recorded rather than fixed: nothing in CI scans tracked markdown for
+Liquid-hostile sequences, so this can recur. That check is the next repair.
 
 ## Part 2: go audit
 
