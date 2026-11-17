@@ -611,3 +611,22 @@
   barrot_agent/barrot_brain.py:121 (so item 33 says it never reaches signals),
   and patch_add_btc_tool.py reads signals rather than writing them (item 31).
 - Next step: results/gap_fill_log.json + scripts/verify_artifacts.py (fill item 30).
+
+## 2026-11-17 — PHASE 4 SECTION 3: gap fill applied + logged
+- APPLIED: scripts/verify_artifacts.py (read-only cross-artifact checker, exit 1
+  on error, --json for CI) + tests/test_verify_artifacts.py (21 tests). Live run
+  on this repo reports 4 errors in 4 lines:
+    paper state: position_size 0.0124 with position_product null
+    signal: confidence 0.0 while signal_summary.py:135 requires 0 < c <= 1
+    signal: age 18.6 days > 3600s
+    accuracy: 45.5% over 1697 < 52% floor
+- APPLIED earlier this phase: witness loop V3 (10 tests).
+- results/gap_fill_log.json: 19 gaps — 4 applied, 4 detected (test fires, behaviour
+  not fixed), 11 logged with a transmutation plan. 9 critical.
+- Deliberately NOT applied: fee/slippage model, drawdown/daily-loss/stop sizing,
+  and the zero-confidence write gate. All three change money or the live publish
+  path and need their own transmute cycle + regression proof.
+- Corrected my own draft: prompt_hash DOES exist (barrot_brain.py:121), it just
+  never reaches signals; patch_add_btc_tool.py reads signals, does not write them.
+- Next step: SECTION 4 — write the permanent query-transmutation rule into
+  .opencode/agent/barrot.md, run scripts/pillars_check.py, SHOW THE DIFF, commit.

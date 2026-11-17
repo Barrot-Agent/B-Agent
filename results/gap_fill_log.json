@@ -1,0 +1,213 @@
+{
+  "generated": "2026-11-17",
+  "scope": "Phase 4 gap filling \u2014 loop, market, risk, paradigm sync, knowledge",
+  "constraint": "paper only, no live keys, no capital",
+  "counts": {
+    "total": 19,
+    "applied": 4,
+    "detected": 4,
+    "logged": 11,
+    "by_severity": {
+      "critical": 9,
+      "high": 8,
+      "medium": 2
+    }
+  },
+  "status_legend": {
+    "applied": "code + tests landed in this session",
+    "detected": "a test or checker now fails/raises on it, but the behaviour is not fixed",
+    "logged": "written down with a transmutation plan; not touched in this session"
+  },
+  "gaps": [
+    {
+      "gap": "Anti-cheat stage asked the model whether it cheated; answer was introspection, not evidence.",
+      "area": "loop_integrity",
+      "impact": "Every transfer claim in the 10-stage loop was unfalsifiable.",
+      "severity": "critical",
+      "fill": "Replaced with an executed ablation: run(True) vs run(False) on the same task, recorded in a hash-chained ledger with SUPPORTED/REFUTED/CONTRADICTED states.",
+      "status": "applied",
+      "test": "tests/test_witness_loop.py \u2014 10 passed",
+      "evidence": "scripts/witness_loop.py (V3); results/meta_re_loop.md"
+    },
+    {
+      "gap": "The loop was prose: TRANSFER_SUCCESS / anti_cheat_passed / AXIOM_FORGE / NOVELTY_SCORE had 0 hits in .py.",
+      "area": "loop_integrity",
+      "impact": "Nothing executed the loop, so no result could be reproduced or refuted.",
+      "severity": "critical",
+      "fill": "Implemented the only stage that produces evidence (anti-cheat) and documented the remaining stages with input/output/failure-mode per stage.",
+      "status": "applied",
+      "test": "results/meta_re_loop.md stage table (10 rows)",
+      "evidence": "BARROT-12AM-MASTER.md (95 lines) vs 0 .py hits, verified 2026-11-17"
+    },
+    {
+      "gap": "Stages 8-10 (Plugin, Skill, Phoenix) are named at line 25 and never specified.",
+      "area": "loop_integrity",
+      "impact": "Three of ten stages cannot be built or tested.",
+      "severity": "high",
+      "fill": "Logged as unspecified; no code invented for behaviour that has no definition.",
+      "status": "logged",
+      "test": "none (nothing to test yet)",
+      "evidence": "BARROT-12AM-MASTER.md ends at line 95"
+    },
+    {
+      "gap": "transmute.py scores on pytest wall time; baseline jitter was 21.7s and hid a real 31% append win.",
+      "area": "measurement",
+      "impact": "Near-ties are decided by noise, and real speed wins can be scored as losses.",
+      "severity": "high",
+      "fill": "Speed claim settled by a dedicated 1000-record benchmark, and the rule (bench when jitter > effect) recorded as wishlist item 42.",
+      "status": "logged",
+      "test": "/tmp/opencode/bench_witness.py \u2014 append 7350.7 -> 5103.4ms, verify 59.7 -> 48.5ms",
+      "evidence": "results/transmute_log.json phase4_meta_re_loop.proof.benchmark_1000_records"
+    },
+    {
+      "gap": "No checker for contradictions between published artifacts.",
+      "area": "paradigm_sync",
+      "impact": "A corrupt paper book and an unpublishable signal shipped with no alarm.",
+      "severity": "critical",
+      "fill": "Added scripts/verify_artifacts.py: read-only, exits 1 on error, 21 tests, JSON mode for CI.",
+      "status": "applied",
+      "test": "tests/test_verify_artifacts.py \u2014 21 passed; live run exit=1 with 4 findings",
+      "evidence": "scripts/verify_artifacts.py"
+    },
+    {
+      "gap": "latest_signal.json publishes confidence 0.0 with score 44, while signal_summary.py:135 requires 0 < confidence.",
+      "area": "signal_integrity",
+      "impact": "Downstream consumers are told 'no information' by a file that looks like a signal.",
+      "severity": "critical",
+      "fill": "Detectable now (confidence_not_publishable) and logged as wishlist item 1. Write-path gate not yet applied \u2014 emit_signal.py is on the live publish path and would need its own regression run.",
+      "status": "detected",
+      "test": "tests/test_verify_artifacts.py::test_zero_confidence_publish_is_rejected",
+      "evidence": "web/latest_signal.json; scripts/signal_summary.py:135"
+    },
+    {
+      "gap": "A signal 18.6 days old is read as current; no TTL anywhere.",
+      "area": "signal_integrity",
+      "impact": "Stale information is acted on as if fresh.",
+      "severity": "critical",
+      "fill": "Detected (signal_stale > 3600s) and logged as wishlist item 2.",
+      "status": "detected",
+      "test": "tests/test_verify_artifacts.py::test_stale_signal_is_rejected",
+      "evidence": "generated_at_unix 1793280213 vs 2026-11-17"
+    },
+    {
+      "gap": "web/paper_trading_state.json holds position_size 0.0124 with position_product null and avg_entry_price 80436.84.",
+      "area": "execution",
+      "impact": "The book cannot be sold or marked; every PnL number from it is unreliable.",
+      "severity": "critical",
+      "fill": "Detected with three invariants (position<->product<->entry) and logged as wishlist item 6; state file left untouched because repairing it would rewrite trading history.",
+      "status": "detected",
+      "test": "tests/test_verify_artifacts.py::test_corrupt_paper_state_is_rejected",
+      "evidence": "web/paper_trading_state.json"
+    },
+    {
+      "gap": "Directional signal accuracy is 45.5% over 1697 samples and nothing enforces a floor.",
+      "area": "strategy",
+      "impact": "Any sizing downstream of this channel is negative EV before costs.",
+      "severity": "critical",
+      "fill": "Measured, asserted in the checker (below_chance_floor at <52% / >=200 samples), logged as wishlist items 3 and 43. Channel not disabled automatically \u2014 that is a product decision, not a repair.",
+      "status": "detected",
+      "test": "tests/test_verify_artifacts.py::test_below_chance_accuracy_is_flagged",
+      "evidence": "web/signal_accuracy.json 772/1697"
+    },
+    {
+      "gap": "No fee, spread or slippage model anywhere in the trading package.",
+      "area": "execution",
+      "impact": "Paper results are structurally optimistic; every strategy looks viable.",
+      "severity": "critical",
+      "fill": "Logged as wishlist item 4 with the decisive test (buy then sell must lose 2*fee + spread). Not applied: the fix belongs in coinbase_paper_trader.execute_paper_trade, which needs its own transmute cycle.",
+      "status": "logged",
+      "test": "none yet",
+      "evidence": "barrot_agent/trading/ grep: slippage 1 file (unrelated), fee only in monetization"
+    },
+    {
+      "gap": "RiskManager enforces exactly one rule: quote_size <= $25. No daily loss, drawdown, stops, concentration or cooldown.",
+      "area": "risk_control",
+      "impact": "A losing day cannot be stopped, only capped per trade.",
+      "severity": "critical",
+      "fill": "Logged as wishlist items 14-19 and 45, ordered by damage. Not applied: all of them change money behaviour and need their own tests first.",
+      "status": "logged",
+      "test": "none yet",
+      "evidence": "barrot_agent/trading/risk_manager.py 48 lines"
+    },
+    {
+      "gap": "client_order_id is a fresh uuid per call, so a retry after a timeout can double the order.",
+      "area": "execution",
+      "impact": "Duplicate fills on network retries.",
+      "severity": "high",
+      "fill": "Logged as wishlist item 22 (derive the id from intent hash).",
+      "status": "logged",
+      "test": "none yet",
+      "evidence": "barrot_agent/trading/coinbase_trader.py:33,63"
+    },
+    {
+      "gap": "Two signal ledgers disagree: data/signal_ledger.jsonl (45 lines) vs web/signal_history.jsonl (1697 records).",
+      "area": "paradigm_sync",
+      "impact": "Two truths means no auditable history.",
+      "severity": "high",
+      "fill": "Logged as wishlist item 10 (single hash-chained ledger + reconciliation).",
+      "status": "logged",
+      "test": "none yet",
+      "evidence": "wc -l on both files, 2026-11-17"
+    },
+    {
+      "gap": "prompt_hash exists in barrot_agent/barrot_brain.py:121 but never reaches signal artifacts.",
+      "area": "paradigm_sync",
+      "impact": "Accuracy cannot be split by prompt version, so a regression is invisible.",
+      "severity": "medium",
+      "fill": "Logged as wishlist item 33 after correcting my own first draft (which wrongly said no prompt hash existed).",
+      "status": "logged",
+      "test": "none yet",
+      "evidence": "barrot_agent/barrot_brain.py:121"
+    },
+    {
+      "gap": "94 of 121 scripts have no test reference; trading scripts among them.",
+      "area": "test_coverage",
+      "impact": "Regressions in untested scripts are invisible until production.",
+      "severity": "high",
+      "fill": "Counted and listed in results/re_wishlist.md (Phase 3 appendix), logged as wishlist item 46.",
+      "status": "logged",
+      "test": "results/re_wishlist.md inventory",
+      "evidence": "94/121 measured 2026-11-17"
+    },
+    {
+      "gap": "31 tracked files still do sys.path.insert; 8 swallow every exception with bare except.",
+      "area": "code_health",
+      "impact": "Import ambiguity is exactly how the wrong duplicate module gets loaded; a swallowed order error is a missing trade.",
+      "severity": "high",
+      "fill": "Listed, not fixed (Phase 3 scope), logged as wishlist items 47-48.",
+      "status": "logged",
+      "test": "results/re_wishlist.md inventory",
+      "evidence": "31 / 8 verified against git ls-files"
+    },
+    {
+      "gap": "Paper-only mode is an env default, not a lock.",
+      "area": "risk_control",
+      "impact": "One environment change flips the live path.",
+      "severity": "high",
+      "fill": "Logged as wishlist item 44 (live mode requires explicit flag + key, tested with no keys present).",
+      "status": "logged",
+      "test": "tests/test_coinbase_trader.py exists but asserts dry-run default only \u2014 see wishlist item 44",
+      "evidence": "coinbase_trader.py:37 env default"
+    },
+    {
+      "gap": "Paper and live trading paths share no decision code.",
+      "area": "paradigm_sync",
+      "impact": "'It worked in paper' proves nothing about the live path.",
+      "severity": "medium",
+      "fill": "Logged as wishlist item 7 (one decide(), two executors).",
+      "status": "logged",
+      "test": "none yet",
+      "evidence": "barrot_agent/trading/ vs scripts/coinbase_paper_trader.py"
+    },
+    {
+      "gap": "I did not know the measured signal accuracy, the corrupt paper book, or the confidence-0 publish before this session.",
+      "area": "knowledge",
+      "impact": "I was reasoning about the market layer from code shape, not from measurements.",
+      "severity": "high",
+      "fill": "Filled by measurement: all three are now cited in results/mmi_mastery_wishlist.md with file evidence and locked by tests in test_verify_artifacts.py.",
+      "status": "applied",
+      "test": "tests/test_verify_artifacts.py (fixtures are copies of the real shapes)",
+      "evidence": "results/mmi_mastery_wishlist.md baseline table"
+    }
+  ]
+}
