@@ -6398,3 +6398,108 @@ Only the ChatGPT-to-GitHub connector path was authenticated and exercised. Claud
 4. Continue source research and immutable raw capture; keep forecasts disabled until the full OOS/shadow and provenance criteria are actually met.
 
 No merge, source-PR closure, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+# Run 216 — 2026-11-17 — automation-containment regression and exact-head revalidation
+
+## 1. Current repository and branch state
+
+- Main remains `d9270465829ff166b29f40587e126583cebea9cb`; no main write occurred.
+- Consolidated integration PR: #1663, branch `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Verified integration code head before this handoff append: `f1f52e3fa8f5d38b5dac7fa98fa095c96fb69ebd`.
+- Compare against current main: 190 commits ahead, 0 behind; current main is an ancestor of the integration branch.
+- Complete recursive trees: main 1,582 entries / 1,437 blobs; integration 2,786 entries / 2,627 blobs. Every main blob is present in integration; 1,190 integration-only blobs are preserved.
+- PR #1663: open, draft, GitHub reports mergeable, 1,379 changed files, +502,025 / -6,476. No force-push, reset, clean, stash, history rewrite or main mutation.
+- Nine PRs remain open. No PR was created or closed.
+
+## 2. Containment regression repair
+
+Run215 identified that `tests/test_automation_containment.py` did not explicitly assert the integration-branch quarantine of Barrot Sync and Self-Upgrade, and did not directly test the read-only Barrot Auto PR notice.
+
+Executed on the existing integration branch:
+
+- Commit `392b27b4dac2e7ba62e766435d3f53e954b92231` added `.github/workflows/barrot-sync.yml` and `.github/workflows/barrot-self-upgrade.yml` to the quarantined-workflow regression tuple and added `test_barrot_auto_pr_is_a_read_only_notice`.
+- Its first exact-head push suite caught one assertion defect: a double-escaped newline was compared with the workflow's actual YAML newline. The run failed with 1 failed, 4,094 passed, 1 skipped. The failure was not waived.
+- Commit `f1f52e3fa8f5d38b5dac7fa98fa095c96fb69ebd` corrected the Python string escape. The new assertion now verifies read-only `contents: read`, `persist-credentials: false`, and absence of write permissions, secrets, PR creation/merge, commits and pushes.
+- The failed `392b27b` head is superseded. Its PR-triggered tests were skipped and its push full suite failed; neither result is transferred to the corrected head.
+
+## 3. Exact-head verification on f1f52e3
+
+Push CI [44091446180](https://github.com/Barrot-Agent/B-Agent/actions/runs/44091446180), exact head `f1f52e3fa8f5d38b5dac7fa98fa095c96fb69ebd`:
+
+- Core test job: 750 passed, 8 subtests passed.
+- Full repository suite: **4,095 passed, 1 skipped, 11 warnings, 19 subtests passed in 170.13 seconds**.
+- Inclusive package coverage: **68.09%**, above the 62% floor.
+- Legacy core coverage: **77%**, above the 70% floor.
+- GitHub Pages validation passed in the same push run.
+- Push dependency audit [44091446337](https://github.com/Barrot-Agent/B-Agent/actions/runs/44091446337) passed across six dependency manifests; each reported no known vulnerabilities.
+- PR dependency audit [44091455944](https://github.com/Barrot-Agent/B-Agent/actions/runs/44091455944) passed across the same six manifests.
+- Push fail-closed gate [44091446206](https://github.com/Barrot-Agent/B-Agent/actions/runs/44091446206) and PR fail-closed gate [44091456055](https://github.com/Barrot-Agent/B-Agent/actions/runs/44091456055) passed; both logs explicitly state automatic merge is intentionally disabled.
+- PR CI [44091455939](https://github.com/Barrot-Agent/B-Agent/actions/runs/44091455939) passed its workflow, but its core and full-suite test jobs were skipped by the integration-branch condition. The exact-head push run above is the authoritative full-suite evidence.
+- Non-failing warnings remain: legacy test functions returning booleans, deprecated setuptools license-table metadata/package-discovery warnings, and read-only GitHub Actions cache because the cache budget is exhausted.
+
+The full-suite selection was audited against the recursive tree: it runs all active tests under `tests/`, the two runnable legacy test modules and `.barrot/autonomous_tasks/test_math_task.py`. Disabled fixtures, quarantined historical tests, analyzer modules without pytest test functions, demo scripts and the defensive self-test that can dispatch workflows are intentionally excluded. No additional active pytest test module was found outside that selection.
+
+This handoff append creates a new commit and therefore a new PR head. No result from `f1f52e3` transfers to the handoff successor; exact-head CI must run again.
+
+## 4. Workflow and security assessment
+
+- The integration contains 80 workflow YAML files; 62 workflow definitions were changed in the consolidated diff and reviewed for triggers, permissions, secrets, writes, deployments and external side effects.
+- Integration quarantines the high-write Barrot Agent, Ask, Sync, Self-Upgrade, Hugging Face sync and Databricks bundle workflows. The new regression assertions cover Sync and Self-Upgrade; Barrot Auto PR is tested as a read-only notice.
+- Manual external-action workflows remain gated by explicit YES inputs and exact approved-main/source SHA checks. This includes Databricks import/deploy, Hugging Face upload/sync/restart, Kaggle submission, worker deployment/secret rotation and the artifact-only Coinbase paper-trading simulation. None was dispatched.
+- Main still contains the older high-write automation paths; integration containment is not active on main until a reviewed merge.
+- Main CI [44082753771](https://github.com/Barrot-Agent/B-Agent/actions/runs/44082753771) remains the smaller main suite: 1,091 passed, 1 skipped, 8 subtests, 78.13% coverage.
+- Main Pages run [44082753727](https://github.com/Barrot-Agent/B-Agent/actions/runs/44082753727) failed on the Liquid expression at `GLOBAL_STATE_MANIFEST.md:6450`; deployment was skipped. Integration Pages validation passes with the raw/endraw repair.
+- Main Barrot Sync [44082754152](https://github.com/Barrot-Agent/B-Agent/actions/runs/44082754152) was a false-green workflow: the inner sync failed because `rich` was missing, the fallback masked it, and no commit was pushed. Integration quarantine prevents that push-triggered path.
+- Main Pillars check [44088686769](https://github.com/Barrot-Agent/B-Agent/actions/runs/44088686769) failed read-only capability checks: missing GitHub App credentials, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR. No secrets were read, changed or rotated. The Pillars script logs service status only; its Databricks query is `SELECT 1`, not a private-row export.
+- Main branch metadata reports `protected=true`, but the visible required-status-check arrays are empty. The detailed branch-protection endpoint returns 403. The visible ruleset “Fall Back” (ID 10863829) is disabled. `.github/CODEOWNERS` assigns ownership only to `@Barrot-Agent`. PR #1663 remains draft with zero formal reviews, zero review comments and no requested reviewers. Effective protection, independent approval and bypass settings are not verified.
+- Decision: **DO NOT MERGE #1663**. Passing CI and GitHub's “mergeable” flag do not satisfy independent review or governance requirements.
+
+## 5. Open PR backlog
+
+Nine PRs remain open:
+
+| PR | Classification | Relationship |
+|---|---|---|
+| #1663 | Active consolidated integration; blocked | Sole XRP/V3 mainline integration |
+| #1541 | Potentially superseded; preserve | 5/5 paths overlap; two files are exact matches, three differ. Not an exact duplicate |
+| #1265 | Unique/unreviewed | 1/144 paths overlap; ledger/index work not proven duplicated |
+| #1460 | Unique/unreviewed | 8 paths; zero overlap |
+| #1450 | Unique/unreviewed | 116 paths; zero overlap |
+| #1440 | Unique/unreviewed | 64 paths; zero overlap |
+| #1437 | Unique/unreviewed | 5 paths; zero overlap |
+| #1436 | Unique/unreviewed | 24 paths; zero overlap |
+| #1353 | Unique/unreviewed | 1,084 paths; zero overlap |
+
+The eight source branches have no common ancestor with current main. Do not merge them directly. Close only exact duplicate/superseded source PRs after a successor is merged and its contents verified on main.
+
+## 6. XRP research and prediction status
+
+- Current curated event registry: 125 events; 48 exact publisher timestamps; 77 missing exact publisher timestamps; 0 raw-source SHA-256 receipts; 0 model-eligible events; forecast status `NOT_ISSUED`. Registry capture time is 2026-11-16T16:11:30Z.
+- Run213 market/entity reconciliation was captured from public search results and rendered pages, not raw HTTP bytes. It is descriptive and model-ineligible.
+- The November 17 rendered market observations cluster around $0.9566–$0.9579 for aggregator spot references; Basis Charts shows a Binance XRPUSDT perpetual book around $0.9599; Swiftedge reports a separate perpetual snapshot around $0.9607. These are not synchronized spot observations.
+- Open-interest sources disagree: Liqwall $965M, TradRadar $1.31B and an earlier OptimistFi $1.9B snapshot, with different venue universes and cutoffs. Do not average them.
+- ETF observations are not comparable: CryptoKeyhole's November 16 value was partial (2 of 4 daily funds); XRP Insights, Alpha Finance and Maketo use different fund cohorts and cutoffs. Do not fill missing issuers with zero.
+- Counter-hypotheses remain explicit: OI contraction can be position closure/liquidation rather than new short initiation; a bid-heavy single-venue perpetual book can be pulled; partial ETF outflows can coexist with positive flows in a broader fund cohort; RLUSD/USDC adoption does not mechanically imply XRP purchases.
+- SBIC East (Tokyo), Central (Nagoya) and West (Osaka) are separate statutory investment-development companies under Act No. 101 of 1963, not SBI Holdings. No XRP relationship was identified for the three SBIC companies.
+- “ASK Coin” resolves to Permission.io's consent-based advertising/data-reward token; no XRP/XRPL link was verified. “Actual capital” is not a defined XRP asset category: Evernorth SEC filings distinguish advance cash, cash-funded XRP purchases, in-kind XRP contributions, closing proceeds, note proceeds, warrant proceeds and optional ELOC capacity. Optional capacity is not cash received. “SBIC, ChatGPT SBIC” yielded no verified partnership.
+- Kamilah/Camilla/Kamilla Stevenson identity is supported by the June 2026 iHeart interview and her official site. No official YouTube channel was cross-linked, so no channel/video inventory is attributed.
+- Institutional graph includes SBI/Circle USDC distribution and equity investment; SBI's Arc validator and disclosed ARC-token presale participation (amount undisclosed); SBI Shinsei Trust JPYSC; Ripple/SBI RLUSD Japan distribution; Ripple/Coinbase RLUSD distribution; Circle/Coinbase USDC issuer/equity/revenue-sharing relationships; and Circle's native USDC deployment on XRPL. Coinbase collateral support for RLUSD was described as future rollout, not verified live. The BNY custody claim remains secondary-source evidence and needs primary confirmation.
+- Bybit ticker and 100-level order-book adapters remain mocked-response tested, not live-API validated. USDT remains distinct from USD; standard REST book excludes RPI orders and does not provide WebSocket sequence continuity.
+
+## 7. Prediction engine and nine-platform status
+
+- Implemented/tested on integration: public-source ingestion adapter, point-in-time feature-store contracts, source quality controls, event timeline, four naive/momentum/mean-reversion/volatility baselines, chronological walk-forward with purge/embargo, Brier/log-loss calibration, drift monitoring and fail-closed forecast ledger.
+- Not verified: scheduled production ingestion on main, synchronized historical spot/depth/derivatives/collateral data, independent WORM receipt storage, adequate shadow outcomes, predictive superiority and independent Ed25519 evaluator attestation.
+- GitHub Actions artifacts (90-day raw-artifact retention; 7-day feature-store checkpoint) are not WORM. The canonical current nine-platform map is 2,748,047 bytes and is too large for one connector file retrieval; the smaller Run212 summary is readable.
+- Only the ChatGPT-to-GitHub connector path was authenticated; branch write to the integration branch was executed. Effective token scopes are not independently exposed and least-privilege is not verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested for authenticated data flow. No nine-platform quorum or external-provider dispatch is claimed.
+- No directional XRP forecast, paper trade or real-money action is authorized or issued.
+
+## 8. Execution labels and next concrete actions
+
+- **DESIGNED:** integrated XRP/V3 mission, public ingestion, point-in-time feature store, source/event controls, baseline evaluation, calibration, drift and forecast ledger.
+- **EXECUTED:** current main/tree/PR/ancestry/workflow/security inspection; 62-workflow audit; automation-containment regression additions; exact-head full-suite, Pages, dependency and fail-closed verification.
+- **VERIFIED:** exact push head `f1f52e3` passed 4,095 tests with the coverage thresholds met; six-manifest audits reported no known vulnerabilities; all main blobs are present in integration; no main write occurred.
+- **NOT VERIFIED:** independent review, enforceable required checks/branch protection, WORM retention, production ingestion, synchronized historical market dataset, nine-platform authentication and predictive out-of-sample superiority.
+- Next: obtain an independent security/code reviewer; inspect/repair branch protection through an authorized admin path; review the remaining large-diff semantics; verify WORM receipt storage; then run scheduled public ingestion only after a compliant merge and evaluate all four baselines chronologically. Keep forecast issuance disabled until every ledger gate passes.
+
+No merge, source-PR closure, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper-trader dispatch, funds transfer, real-money action, force-push, reset, clean, stash or discard occurred.
