@@ -60,7 +60,7 @@ jobs:
           previous_run_id="$(jq -r --arg repository "$GITHUB_REPOSITORY" --arg branch "$GITHUB_REF_NAME" '.workflow_runs | map(select(.conclusion == "success" and .head_branch == $branch and .head_repository.full_name == $repository and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push"))) | sort_by(.created_at) | last | .id // empty' <<< "$runs_json")"
           if [[ -z "$previous_run_id" ]]; then
             echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=BOOTSTRAP" >> "$GITHUB_ENV"
-            echo "No prior successful main ingestion run; starting the cross-run receipt chain."
+            echo "No prior successful same-branch ingestion run; starting the cross-run receipt chain."
           elif gh run download "$previous_run_id" --name "xrp-public-receipt-index-${previous_run_id}" --dir "$restore_dir" >/dev/null 2>&1 && [[ -s "$restore_dir/cross_run_receipt_chain.json" ]]; then
             if ! artifacts_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${previous_run_id}/artifacts?per_page=100" 2>/dev/null)"; then
               echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=MISSING_PREDECESSOR_ARTIFACT" >> "$GITHUB_ENV"

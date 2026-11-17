@@ -255,6 +255,62 @@ _CAPTURE_WINDOW_CORRECTION_TYPE = "append_only_capture_timestamp_correction"
 _MISSING = object()
 
 
+
+def _validate_legacy_untyped_timestamp_correction(
+    document: Mapping[str, Any],
+    relative_path: str,
+    repository_root: Path,
+    archive_resolved: Path,
+) -> str:
+    """Validate a pre-artifact_type append-only correction without applying it."""
+    if document.get("schema_version") != "1.0":
+        raise ResearchEligibilityError(f"unsupported legacy correction schema in {relative_path}")
+    correction_id = document.get("correction_id")
+    if not isinstance(correction_id, str) or not correction_id.strip():
+        raise ResearchEligibilityError(f"legacy correction {relative_path} needs a stable correction_id")
+    if document.get("append_only") is not True:
+        raise ResearchEligibilityError(f"legacy correction {relative_path} must be append-only")
+    if document.get("model_admission") is not False or document.get("forecast_status") != "NOT_ISSUED":
+        raise ResearchEligibilityError(f"legacy correction {relative_path} must remain ineligible with no forecast")
+    if any(key in document for key in ("target_artifact", "target_artifact_blob_sha", "field_corrections")):
+        raise ResearchEligibilityError(f"legacy correction {relative_path} may not patch source fields")
+
+    supersedes = _repo_path(document.get("supersedes_artifact_path"), f"{relative_path}.supersedes_artifact_path")
+    if not supersedes.startswith("research/xrp_intelligence/"):
+        raise ResearchEligibilityError("legacy correction target must remain inside research/xrp_intelligence")
+    declared_sha = document.get("supersedes_artifact_git_blob_sha1")
+    if not isinstance(declared_sha, str) or not _SHA1.fullmatch(declared_sha):
+        raise ResearchEligibilityError("legacy correction needs a Git blob SHA-1 for its superseded artifact")
+    source_path = repository_root.joinpath(*supersedes.split("/"))
+    if source_path.is_symlink():
+        raise ResearchEligibilityError(f"legacy correction source {supersedes} must not be a symlink")
+    try:
+        resolved_source = source_path.resolve(strict=True)
+        resolved_source.relative_to(archive_resolved)
+    except (OSError, ValueError) as exc:
+        raise ResearchEligibilityError(f"legacy correction source {supersedes} is missing or escapes the archive") from exc
+    if not resolved_source.is_file():
+        raise ResearchEligibilityError(f"legacy correction source {supersedes} is not a regular file")
+    try:
+        source_bytes = resolved_source.read_bytes()
+    except OSError as exc:
+        raise ResearchEligibilityError(f"cannot read legacy correction source {supersedes}") from exc
+    if git_blob_sha1(source_bytes) != declared_sha:
+        raise ResearchEligibilityError("legacy correction SHA-1 does not match exact superseded artifact bytes")
+
+    _utc_timestamp(document.get("corrected_at_utc"), "corrected_at_utc")
+    for field in ("superseded_field", "reason"):
+        value = document.get(field)
+        if not isinstance(value, str) or not value.strip():
+            raise ResearchEligibilityError(f"legacy correction {relative_path} needs {field}")
+    if document.get("incorrect_prior_value") == document.get("corrected_value"):
+        raise ResearchEligibilityError(f"legacy correction {relative_path} does not change its declared field")
+    preserved = document.get("preserved_values")
+    if not isinstance(preserved, Mapping) or not preserved:
+        raise ResearchEligibilityError(f"legacy correction {relative_path} needs preserved_values")
+    return correction_id.strip()
+
+
 def _validate_capture_window_correction_addendum(
     document: Mapping[str, Any],
     relative_path: str,
@@ -420,10 +476,15 @@ def apply_capture_time_interval_correction_overlay(
         raise ResearchEligibilityError("capture-time correction cannot claim a directional forecast")
 
     application = overlay.get("correction_application")
+    reconciliation_flags = (
+        "must_be_reconciled_with_timestamp_consumer_before_any_model_admission",
+        "must_be_reconciled_with_timestamp_correction_consumer_before_any_model_admission",
+    )
     if not isinstance(application, Mapping) or (
         application.get("original_artifact_modified") is not False
         or application.get("append_only_overlay_created") is not True
-        or application.get("must_be_reconciled_with_timestamp_consumer_before_any_model_admission") is not True
+        or not any(application.get(key) is True for key in reconciliation_flags)
+        or any(application.get(key) is not True for key in reconciliation_flags if key in application)
     ):
         raise ResearchEligibilityError("capture-time correction must preserve the original artifact and require reconciliation")
 
@@ -643,6 +704,7 @@ def apply_research_timestamp_correction_overlays(repository_root: str | Path) ->
     overlays: list[tuple[str, bytes, dict[str, Any]]] = []
     narrative_only: list[str] = []
     capture_window_corrections: list[str] = []
+    legacy_untyped_corrections: list[str] = []
     unbound_timestamp_corrections: list[str] = []
     artifact_ids: set[str] = set()
     for path in sorted(archive.rglob("*.json")):
@@ -687,6 +749,19 @@ def apply_research_timestamp_correction_overlays(repository_root: str | Path) ->
                 raise ResearchEligibilityError("research archive contains duplicate timestamp correction IDs")
             artifact_ids.add(artifact_id)
             capture_window_corrections.append(relative_path)
+        elif (
+            artifact_type is None
+            and document.get("schema_version") == "1.0"
+            and "correction_id" in document
+            and "supersedes_artifact_path" in document
+        ):
+            correction_id = _validate_legacy_untyped_timestamp_correction(
+                document, relative_path, root, archive_resolved
+            )
+            if correction_id in artifact_ids:
+                raise ResearchEligibilityError("research archive contains duplicate timestamp correction IDs")
+            artifact_ids.add(correction_id)
+            legacy_untyped_corrections.append(relative_path)
         elif isinstance(artifact_type, str) and "timestamp" in artifact_type.lower() and "correction" in artifact_type.lower():
             raise ResearchEligibilityError(f"unsupported timestamp correction schema in {relative_path}")
         elif isinstance(artifact_type, str) and "correction" in artifact_type.lower():
@@ -747,6 +822,7 @@ def apply_research_timestamp_correction_overlays(repository_root: str | Path) ->
         "application_manifests": application_manifests,
         "narrative_only_correction_artifacts": sorted(narrative_only),
         "capture_window_correction_artifacts": sorted(capture_window_corrections),
+        "legacy_untyped_correction_artifacts": sorted(legacy_untyped_corrections),
         "unbound_timestamp_correction_artifacts": sorted(unbound_timestamp_corrections),
         "source_artifacts_modified": False,
         "model_eligible": False,

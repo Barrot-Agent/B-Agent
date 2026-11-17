@@ -5,7 +5,10 @@ import json
 import pytest
 
 from barrot_agent.evolution.research_eligibility import ResearchEligibilityError, git_blob_sha1
-from barrot_agent.evolution.research_timestamp_corrections import apply_source_timestamp_correction_overlay
+from barrot_agent.evolution.research_timestamp_corrections import (
+    apply_research_timestamp_correction_overlays,
+    apply_source_timestamp_correction_overlay,
+)
 
 
 def _bytes(value):
@@ -295,3 +298,25 @@ def test_capture_window_correction_rejects_invented_exact_time_and_invalid_inter
     correction_path.write_bytes(_bytes(correction))
     with pytest.raises(ResearchEligibilityError, match="strictly ordered"):
         apply(tmp_path)
+
+
+def test_current_research_archive_timestamp_corrections_reconcile_in_memory_without_source_writes():
+    root = Path(__file__).resolve().parents[1]
+    capture_source = root / "research/xrp_intelligence/20261105T220437Z-xrp-spot-perps-etf-cutoff-snapshot.json"
+    legacy_source = root / "research/xrp_intelligence/20261107T175608Z-xrpc-future-dated-holdings-leakage-reconciliation.json"
+    capture_before = capture_source.read_bytes()
+    legacy_before = legacy_source.read_bytes()
+
+    result = apply_research_timestamp_correction_overlays(root)
+
+    assert result["source_artifacts_modified"] is False
+    assert result["model_eligible"] is False
+    assert result["forecast_issued"] is False
+    assert "research/xrp_intelligence/20261107T204153Z-kamilah-stevenson-video-capture-window-correction.json" in result["capture_window_correction_artifacts"]
+    assert "research/xrp_intelligence/20261107T181119Z-xrpc-retrieval-window-timestamp-correction.json" in result["legacy_untyped_correction_artifacts"]
+    assert any(
+        item.get("correction_id") == "XRP_CAPTURE_TIME_INTERVAL_20261105T220437Z"
+        for item in result["application_manifests"]
+    )
+    assert capture_source.read_bytes() == capture_before
+    assert legacy_source.read_bytes() == legacy_before
