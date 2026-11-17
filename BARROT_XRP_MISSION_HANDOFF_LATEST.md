@@ -5413,11 +5413,12 @@ Capture: 2026-11-17T06:01:54Z. The structured observation record is `research/xr
 
 - Main: `1f30e5c18f151f75ad5d157ddde175723584ec69`.
 - Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
-- Head at capture: `7716b33539c45d6ec17834ad37e6669ed3bbc38a`, 162 commits ahead and zero behind main.
-- PR #1663: open, draft, mergeable; 1,365 changed files; +497,891 / -6,809; 62 changed workflow paths; 396 changed test paths.
-- Main tree: 1,393 entries. Integration tree: 2,579 entries. Every main path exists on integration; 1,186 paths are integration-only. No main path is missing.
-- The two commits after the Run207 code-verification head changed only the handoff; Run208 added one research JSON. No production Python or workflow code changed after the Run207 62-workflow patch review.
-- Full semantic/security review of all 1,365 changed paths remains incomplete.
+- Head at the 06:01:54Z research capture: `f6e7f570ea98d52b2c2ed22f058a6de642e474c3`, 161 commits ahead and zero behind main.
+- PR #1663 at that capture: open, draft, mergeable; 1,364 changed files; +497,340 / -6,809; 62 changed workflow paths; 396 changed test paths.
+- Main tree at capture: 1,393 entries. Integration tree: 2,579 entries. Every main path exists on integration; 1,186 paths are integration-only. No main path is missing.
+- The Run208 research artifact was then committed as `7716b33539c45d6ec17834ad37e6669ed3bbc38a` at 06:14:36Z. That added one JSON path: 162 commits ahead, 1,365 changed files, +497,891 / -6,809, 2,580 tree entries and 1,187 integration-only paths.
+- The handoff update was committed as `e246d2ca3f7ab8e238f52e394171d5548717ec8e` at 06:17:05Z: 163 commits ahead, 1,365 changed files, +497,989 / -6,809. It changed documentation only.
+- No production Python or workflow code changed after the Run207 62-workflow patch review. Full semantic/security review of all 1,365 changed paths remains incomplete.
 
 ### Exact-head CI
 
