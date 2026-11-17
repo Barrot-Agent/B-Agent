@@ -1,0 +1,56 @@
+name: Money MCP listing preflight
+
+# Money workflow 3, distribution stage. It does not publish anything: publishing
+# needs a packaged artifact and registry OIDC, both of which are absent. It checks
+# that what we would publish is coherent, and it prints the exact prerequisites.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip pyyaml
+      - name: Server answers the protocol
+        run: |
+          printf '%s\n' \
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' \
+            '{"jsonrpc":"2.0","id":2,"method":"tools/list"}' \
+            | python3 scripts/barrot_mcp_server.py > /tmp/mcp.jsonl
+          python3 - <<'PY'
+          import json
+          lines = [json.loads(l) for l in open("/tmp/mcp.jsonl") if l.strip()]
+          tools = lines[1]["result"]["tools"]
+          print("tools:", len(tools), [t["name"] for t in tools])
+          assert len(tools) == 7
+          PY
+      - name: Registry metadata is coherent
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          path = pathlib.Path("server/server.json")
+          if not path.exists():
+              raise SystemExit("server.json missing")
+          meta = json.loads(path.read_text())
+          missing = [key for key in ("name", "description", "version", "repository") if key not in meta]
+          if missing:
+              raise SystemExit(f"server.json missing keys: {missing}")
+          print("server.json ok:", meta["name"], meta["version"])
+          PY
+      - name: Publish prerequisites, stated not attempted
+        run: |
+          echo "To publish to the MCP registry you need:"
+          echo "  1. a packaged artifact (npm package or mcpb archive) with a sha256"
+          echo "  2. a registry account and OIDC permission id-token: write"
+          echo "  3. a server.json packages entry for that artifact"
+          echo "Pattern source: vendor/workflow-patterns/mcp-registry-publish.yml (MIT, upstash/context7)"
+          echo "::warning::preflight only; no registry publish is attempted by this workflow"
