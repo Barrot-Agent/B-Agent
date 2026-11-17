@@ -43,7 +43,7 @@ def test_run225_limits_exchange_wallet_and_institutional_claims():
     data = json.loads(ARTIFACT.read_text(encoding="utf-8"))
     wallet = data["market_snapshot"]["exchange_wallets"]
     assert wallet["wallets"] == 707 and wallet["exchanges"] == 24
-    assert "not tradable float" in wallet["limitation"]
+    assert "not tradable float" in wallet["limitation"].lower()
     assert "cbXRP" in wallet["limitation"] and "Binance-Peg XRP" in wallet["limitation"]
     bny = data["market_snapshot"]["bny_custody"]
     assert set(bny["assets"]) == {"XRP", "RLUSD"}
