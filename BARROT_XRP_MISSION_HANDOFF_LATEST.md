@@ -5087,3 +5087,21 @@ Artifact commit: `9c211ed6de234158e083a394abf7f573e35be557`.
 The exact full-suite result recorded above belongs to parent evidence head `170a9904fd2f6e842d0ae31895d6963813be68c7`. The Run205 audit artifact and this final handoff-pointer update are evidence-only changes; their resulting head must receive its own exact-head CI. Do not transfer the parent test result to the new head. The latest PR head and Actions runs are the authority for the next continuation.
 
 The x402 correction is already represented by the existing Run97 regression test and structured artifact: SourceTag is merchant-endpoint attribution, not payer-agent identity; new rendered web observations remain unreceipted and are not admitted to the point-in-time feature store.
+
+
+## Run205 primary SEC supplement — Evernorth, Coinbase principal market and custody
+
+A separate source-anchored supplement was added at `research/xrp_intelligence/20261117T031200Z-run205-evernorth-coinbase-principal-market-custody-and-capital-supplement.json` (artifact commit `c7b63bf2ad83a551ae615f45ed193bdc1c1ac0f5`). It is based on Evernorth's November 13, 2026 Form 424B3 supplement attaching its September 30 Form 10-Q: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm
+
+New primary-source findings:
+
+- **Coinbase is Evernorth's selected principal market for XRP for financial-reporting purposes.** Evernorth says it compares market volume/activity, quote consistency/stability, and market compliance/accessibility. It also says it does not actively trade XRP on digital-asset markets. This is a valuation/impairment reference relationship, not proof Evernorth executes XRP purchases on Coinbase or that Coinbase has bought XRP for Evernorth.
+- **Evernorth initially holds its XRP with BitGo Trust.** BNY's separate Ripple custody and RLUSD reserve-custody roles must not be attributed to Evernorth.
+- The Cantor ELOC covers up to 5,218,935 shares at 97% of applicable VWAP, subject to volume and ownership caps. The registration became effective October 30. Evernorth agreed to a non-refundable $0.5M cash commitment fee within five business days; the filing does not explicitly confirm the cash payment. It allows a fee true-up, with total fee capped at $1M, and expense reimbursement up to $0.5M. **No actual ELOC share purchase/proceeds are disclosed in this reviewed filing.**
+- From October 12 through November 9, 3,073,366 public warrants were cash-exercised for $35.3M gross; 8,666,279 remained at $11.50 strike. On November 12, XRPN closed at $8.97 and XRPNW at $1.53. The common share price was below the exercise strike at that date; remaining exercise proceeds are contingent, not current cash.
+- At October 9 closing, Evernorth disclosed $272.6M gross cash ($224.6M private-placement cash plus $48.0M trust cash after redemptions) and approximately 388.91M XRP contributed in kind. The October 13 $30M note generated $29M net cash after a $1M advisor fee.
+- Pubco states its principal asset is its approximately 71.5% interest in Pathfinder. Do not attribute all Pathfinder assets to public Pubco shareholders.
+
+This improves the Coinbase/Ripple/SBI/Evernorth relationship graph and the “actual capital” model. Keep cash proceeds, in-kind XRP, debt, warrant proceeds, facility capacity, financing fees and custody counterparties as separate typed facts. Do not infer XRP market buys from the principal-market accounting selection.
+
+Source evidence is from the SEC filing, especially lines 875-880 (closing cash/in-kind XRP and note proceeds), 765-768 and 894-901 (ELOC/fee), 781-783 (warrant exercises), 938-941 (Coinbase principal market), 989-991 (BitGo custody), and 1017-1022 (71.5% Pathfinder ownership). Raw filing bytes were not archived in this run; the filing URL and page/line evidence are preserved, but no SHA-256 receipt is claimed.
