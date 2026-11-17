@@ -4956,3 +4956,119 @@ XRP Insights separately reports 18,465 settlements over the last 14 days and cum
 The full repository suite passed on integration head 3e54d1ef1b8d0c02103f514948f0a40008c7e565: 3,846 passed, zero failed, one skipped, 11 warnings and 19 subtests in 135.16 seconds; 66.90% inclusive coverage and 77% legacy-core coverage. Wheel build and installed Barrot V3/XRP mission smoke test passed. Push and PR dependency audits passed on six manifests; push and PR fail-closed gates passed. The cache budget is exhausted and cache is read-only, but this did not affect test results.
 
 The current integration PR remains draft with zero formal reviews. No merge or external action occurred.
+
+
+
+---
+
+# Run205 — exact-head CI closure, x402 attribution correction and integration-first audit
+
+**Run start:** 2026-11-17T03:03:57Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration head audited:** `170a9904fd2f6e842d0ae31895d6963813be68c7`  
+**Branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open/draft.
+
+## Repository state — VERIFIED
+
+- Main recursive tree: 1,393 entries, not truncated.
+- Main is an ancestor of the integration head; integration is 149 commits ahead and zero behind.
+- PR #1663 reports 1,345 changed files, 49 workflow paths and 395 test paths; 495,405 additions and 6,779 deletions.
+- Main paths are retained in the integration tree; the full main tree was fetched.
+- PR #1663 remains draft with zero formal reviews, zero review threads and no requested reviewers.
+- Repository connector permissions: admin, maintain, push, pull and triage. This is broader than least privilege.
+
+## Exact-head verification — VERIFIED
+
+The current PR head `170a9904` completed its push-triggered CI:
+
+- Full repository suite: **3,846 passed, zero failed, one skipped, 11 warnings, 19 subtests passed** in 118.35 seconds.
+- Inclusive coverage: **66.90%**; legacy-core coverage: **77%**.
+- Wheel build passed; installed wheel loaded Barrot V3, the priority-one XRP mission and canonical data assets.
+- GitHub Pages validation passed.
+- Six-manifest dependency audit passed with no known vulnerabilities reported.
+- Push and PR fail-closed gates passed.
+- PR CI and PR dependency audit passed; the push-triggered full-suite job is the authoritative complete test result.
+
+Evidence:
+- [Push CI/full suite 44005319409](https://github.com/Barrot-Agent/B-Agent/actions/runs/44005319409)
+- [Push dependency audit 44005319387](https://github.com/Barrot-Agent/B-Agent/actions/runs/44005319387)
+- [Push fail-closed gate 44005319435](https://github.com/Barrot-Agent/B-Agent/actions/runs/44005319435)
+- [PR CI 44005327159](https://github.com/Barrot-Agent/B-Agent/actions/runs/44005327159)
+- [PR dependency audit 44005327134](https://github.com/Barrot-Agent/B-Agent/actions/runs/44005327134)
+- [PR fail-closed gate 44005327071](https://github.com/Barrot-Agent/B-Agent/actions/runs/44005327071)
+
+The earlier PR description's “in progress” wording was stale when this run inspected the Actions API; all six current-head runs above were completed successfully. The full-suite log's exact pytest summary and inclusive coverage were checked directly.
+
+## Integration and security findings — EXECUTED / VERIFIED
+
+- `.github/workflows/xrp-public-ingestion.yml` is present only on the integration branch. It schedules hourly at minute 3 and daily at 00:15 UTC, but its job is guarded to run only when `github.ref == refs/heads/main`. It has read-only Actions/Contents permissions and no provider secrets. Its raw receipts and feature-store checkpoints are uploaded as GitHub Actions artifacts with 90-day/7-day retention, not independent WORM storage. No production XRP ingestion run has been verified on main.
+- Main's `.github/workflows/cross-analysis.yml` remains read-only and artifact-only. Its scheduled run can succeed without proving that recent XRP sentiment windows contain fresh data.
+- Integration quarantines the Databricks bundle deployment, private table-freshness diagnostic and Hugging Face Space sync with empty permissions and disabled jobs. The previous table-freshness workflow on main could expose private brain rows in public logs; the integration quarantine is not effective on main until a compliant merge.
+- Coinbase simulation is manual, exact-main-SHA, position-identity checked and artifact-only; its current workflow defaults to BTC-USD and was not dispatched.
+- A2A deployment is manual, main-only, exact-SHA gated and requires a separate explicit secret-rotation approval. It was not dispatched.
+- Branch-protection details return HTTP 403. The only visible ruleset, ID 10863829 (“Fall Back”), is disabled. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`, so independent ownership is not configured.
+- Code-scanning and secret-scanning alert endpoints were not available through this connector; their state is unknown, not “no alerts.”
+
+## XRPL x402 attribution correction — PRIMARY DOCUMENTATION
+
+The official XRPL x402 guide now makes the attribution distinction explicit:
+
+1. In x402, the merchant declares the `SourceTag` in the HTTP 402 payment requirements. The payer agent signs a payment carrying the merchant's value.
+2. That tag identifies the **paid endpoint/revenue attribution**, not the payer agent. The XRPL guide says complete agent-spend auditing should use the agent account, not the x402 SourceTag.
+3. The separate XRPL Agent Wallet signing ceremony uses its own default `SourceTag 20260530` for agent-attributed transactions. The official guide expressly excludes x402 payments from that default.
+4. T54's x402 scheme uses `804681468` as its enforced protocol value (third-party SDK/package documentation and xrpl.fi's description). That does not turn the value into a unique agent identifier.
+5. xrpl.fi's on-chain cohort fingerprint combines the tag, the `t54-xrpl-x402` memo and an InvoiceID hash. This is stronger than a tag alone for identifying a T54-facilitated x402 payment cohort, but the dashboard itself says tags/memos are conventions, not cryptographic signatures. It does not establish the payer's AI identity.
+
+Primary/technical sources:
+- XRPL official x402 guide: https://xrpl.org/docs/agents/agentic-payments-x402
+- XRPL official agent-behavior attribution guide: https://xrpl.org/docs/agents/track-agent-behavior
+- T54 facilitator documentation: https://xrpl-x402.t54.ai/docs
+- xrpl.fi's on-chain methodology and limitations: https://xrpl.fi/x402
+- T54 scheme interoperability notes: https://www.nuget.org/packages/Xrpl.X402
+
+xrpl.fi's live dashboard displayed roughly 3,154–3,647 matching payments/hour in two separate crawled observations. It reports micropayment-scale amounts and says most overall x402 volume remains on Base and Solana in USDC. It also says the facilitator operator's nearly-one-million cumulative XRPL agent-transaction claim cannot be independently audited by xrpl.fi. These are time-varying third-party observations, not a raw-source receipt or a complete all-facilitator census.
+
+**Metric reconciliation:** the prior T54 Hub 15.9M “volume/transaction” counters, CoinDesk's earlier 14.3M report, the operator's nearly-one-million cumulative x402/agent claim and xrpl.fi's recent ledger-scan rate have not been shown to share a denominator, time window or transaction definition. Do not treat them as a direct contradiction, combine them, or infer XRP demand until their schemas and ledger transactions are reconciled.
+
+The existing Run97 structured artifact and regression test already encode `SourceTag` as merchant-endpoint attribution, set agent attribution to false, and keep x402 outside XRP price/capital-flow features. This run verified those controls in the integration tree; no code change was needed. Raw source bytes and independently anchored receipts for the new web observations were not captured.
+
+## Market and exact-phrase refresh — DESCRIPTIVE ONLY
+
+- Investing.com displayed XRP at approximately **$0.9561**, down 0.70% on its displayed day, 12.98% over seven days and 27.07% over one month. The page's displayed clock was 06:39:09 with no timezone. This is a secondary provider snapshot, not synchronized exchange data and not model-admitted.
+- A KuCoin news flash repeated approximately **$19.13M** XRP spot ETF outflows for the week through November 13. This is a secondary report, not an issuer-file reconciliation or a new independent flow series.
+- Exact “ASK Coin” search continues to produce Permission Coin (ASK) as a lexical candidate; no XRP/Ripple connection was established.
+- “Actual capital” search produced secondary commentary, not a new primary filing. Evernorth's SEC/issuer capital reconciliation remains controlling; commitments, facility capacity, in-kind XRP, debt and realized cash proceeds remain separate.
+- No new primary evidence connected “SBIC, ChatGPT SBIC” to an OpenAI partnership. SBIC East/Central/West remain separate regional investment companies; the previously verified SBIC East ChatGPT training event is educational activity.
+- Kamilah Stevenson person identity remains supported, but the canonical YouTube channel ID/handle relation remains unverified. Candidate videos remain excluded from a verified creator inventory.
+
+## Prediction gate — NOT SATISFIED
+
+The integration's current public status remains `NOT_ISSUED`; fixed-horizon accuracy remains `NOT_EVALUATED`. The last verified curated registry remains at 125 events, zero byte-exact raw-source receipts, 77 missing exact publisher timestamps and zero model-eligible events. No new observations from this run were admitted to the point-in-time feature store. No directional forecast was issued.
+
+## Nine-platform coordination — VERIFIED STATUS UNCHANGED
+
+ChatGPT's GitHub connector is the only current tested data flow. Claude, Grok, Gemini, Codex, Hugging Face and Databricks remain unverified; Copilot is historical one-off activity; Kaggle remains untested. No external model task or data transfer was dispatched. Groq is not Grok.
+
+## Open PR backlog — VERIFIED
+
+Nine PRs remain open:
+- #1663 — blocked consolidated integration; draft, zero reviews.
+- #1541 — unique MMI security work with partial code overlap; three paths remain unique (fingerprint evidence plus two MMI tests). Preserve and reconcile; do not close.
+- #1460 — unique/unreviewed, 8 paths.
+- #1450 — stacked research branch, 116 paths.
+- #1440 — stacked repair, 64 paths.
+- #1437 — parallel validator repair, 5 paths.
+- #1436 — stacked Binance/XRP incident research, 24 paths.
+- #1353 — parent ledger-sharding research, 1,084 paths.
+- #1265 — predecessor ledger-index research, 144 paths.
+
+The research stack and all source histories remain preserved. No source PR was closed.
+
+## Merge decision and next action
+
+**NO MERGE.** Exact-head CI, full suite, dependency audits and fail-closed gates now pass on `170a990`, but PR #1663 remains draft with zero independent reviews. Semantic/security review of all 1,345 changed paths is incomplete; branch-protection details are inaccessible; the visible ruleset is disabled; CODEOWNERS is self-only; connector permissions are overbroad.
+
+Next: complete the remaining semantic/security review, obtain independent review and authorized branch-protection evidence, reconcile the MMI/research stack without discarding unique artifacts, and preserve forecast issuance as fail-closed. After a future compliant merge only, refetch main, verify the merge commit, run main CI and verify scheduled XRP ingestion on main.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force-push or history rewrite occurred.
