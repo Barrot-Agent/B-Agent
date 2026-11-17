@@ -5158,3 +5158,18 @@ DESIGNED/IMPLEMENTED on integration: public XRP ingestion, content-addressed rec
 Next actions: finish semantic/security review of all 49 workflow paths and invoked scripts; reconcile the nine-PR backlog without closing unique work; obtain independent review ownership and authorized branch-protection evidence; complete mutable action-reference/dependency provenance audit; after compliant merge verify merge commit, refetch main, run main CI and confirm scheduled ingestion; add external signed/WORM anchoring; keep forecast issuance disabled until out-of-sample superiority, calibration, drift, shadow evaluation and independent attestation pass.
 
 No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force-push or history rewrite occurred.
+
+
+## Run206 capital correction — Evernorth warrant capacity versus actual proceeds
+
+A further primary-source reconciliation resolves a common “actual capital” overstatement.
+
+- Evernorth's November 13 Form 10-Q says it assumed 11,739,645 total warrants at the October 9 closing, each with an $11.50 strike. From October 12 through November 9, 3,073,366 were exercised for cash, generating $35.3M gross; 8,666,279 remained outstanding. At $11.50, the remaining total represents at most $99.662M theoretical gross proceeds if all are exercised for cash. That is contingent, not cash raised.
+- The same November 13 public-warrant prospectus registers up to 11,499,992 public-warrant shares, an original public-warrant ceiling of $132.250M at $11.50. It is not the current remaining total after the reported exercises.
+- The October 30 sponsor-warrant prospectus separately identifies 239,653 sponsor warrants, with up to $2.756M exercise proceeds if exercised for cash. 11,499,992 public warrants plus 239,653 sponsor warrants equals the 11,739,645 total assumed at closing.
+- The 10-Q does not split the 3,073,366 exercises or 8,666,279 remaining warrants between public and sponsor classes. No post-November-9 exercise count was verified.
+- Cantor's 5,218,935-share ELOC at 97% of VWAP and its $500K commitment fee remain separate from cash proceeds. No actual ELOC draw was verified.
+
+Primary SEC sources: [November 13 10-Q / public-warrant prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm) and [October 30 sponsor-warrant prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm). The detailed reconciliation is stored in research/xrp_intelligence/20261117T042400Z-run206-evernorth-warrant-actual-capital-reconciliation.json.
+
+Classification: $35.3M = actual gross warrant exercise proceeds through November 9; $99.662M = theoretical gross on all remaining warrants; $132.250M = original public-warrant registration ceiling; $5.219M shares = ELOC capacity. Never combine these as cash raised.
