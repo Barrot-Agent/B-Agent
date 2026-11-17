@@ -548,3 +548,18 @@
 - Phase 1 is DONE (5792fa8). Phases 2, 3 and META/MMI are queued, not started.
 - Deferred deliberately: prompts/meta_re_and_mmi.md section 4 rewrites
   .opencode/agent/barrot.md (my own system prompt). Not applied yet.
+
+## 2026-11-17 — PHASE 2 COMPLETE: dedupe (shims, no deletes)
+- 8 content groups from 10 byte-identical pairs. 5 shimmed, 2 hash-locked, 1 structural.
+- Shims: scripts+toolsmem_palace -> barrot_agent/mem_palace.py;
+  scripts/granite_model_config -> barrot_agent/tools/;
+  utils/score_to_signal -> barrot_agent/analysis/;
+  scripts/deploy_huggingface -> barrot_agent/orchestration/ (+ CLI delegate);
+  barrot_agent/tools/trial_tracker -> barrot_agent/monetization/.
+- NOT shimmed (evidence): core/hrm_ternary vs hf_space/hrm_ternary — hf_space is a
+  standalone Space, app.py imports bare 'hrm_ternary'; grant_generator x2 — 5-line
+  print script, top-level side effects, shim would print on import. Both hash-locked.
+- Proof: tests/test_duplicate_shims.py 20/20. Full suite 1047 passed, 1 skipped
+  (was 1027 + 20 new). CLI checks preserved for all 3 script shims.
+- Cost: +5 sys.path.insert guards (31 -> 36). Die when `pip install -e .` lands.
+- Next step: PHASE 3 cleanup (move 16 zero-byte root files to archive/, no deletes).

@@ -1,12 +1,20 @@
-"""
-Converts emit_signal.py's continuous 0-100 score into the -1..+1 range
-hrm_resolve() expects for a single signal channel. Only the sentiment
-channel has real data right now — orderbook/onchain are explicitly
-unavailable and must be passed as 0.0 (neutral), never guessed.
-"""
+"""Deprecated duplicate — import shim only.
 
+Canonical: barrot_agent/analysis/score_to_signal.py
+This file was byte-identical to that module (sha256 c152c941…61466a6ea41).
 
-def score_to_unit(score: float) -> float:
-    """Map 0-100 -> -1.0..+1.0. 50 = neutral, 100 = max bullish, 0 = max bearish."""
-    score = max(0.0, min(100.0, float(score)))
-    return (score - 50.0) / 50.0
+Kept because scripts/emit_signal_with_hrm.py imports the bare name
+``score_to_signal`` after putting utils/ on sys.path. It also puts the repo
+root on sys.path, so this shim resolves. Do not add logic here.
+"""
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from barrot_agent.analysis.score_to_signal import *  # noqa: F401,F403
+from barrot_agent.analysis.score_to_signal import score_to_unit  # noqa: F401

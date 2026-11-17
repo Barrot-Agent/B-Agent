@@ -592,5 +592,199 @@
     "corrected_earlier_claim": "The wishlist said the gate makes a passing variant score worse than a failing baseline. Measured: false. rate parses 72/72 = 1.0 even when the gate exits 1, so score was never zeroed. The real damage is (a) rc=1 on green tests, (b) 4.6x wall inflation (32.7s vs 7.1s), (c) 7.2s jitter against a 100ms tie band, which makes winner selection noise-dominated.",
     "gate_preserved": "70% on full suite only; measured 77.57% so the gate is satisfiable",
     "artifact": "/tmp/opencode/phase1_bench.json"
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "__init__.py x3",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "no_action",
+    "applied": false,
+    "losers_deleted": [],
+    "canonical": null,
+    "copies": [
+      "barrot_agent/repair/__init__.py",
+      "barrot_agent/repository/__init__.py",
+      "barrot_agent/tools/__init__.py"
+    ],
+    "detail": "All three are 0-byte package markers. Identical content is structural, not duplication.",
+    "proof": {
+      "sha256_prefix": "e3b0c44298fc1c14",
+      "action": "kept all three"
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "hrm_ternary.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "hash_lock",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "core/hrm_ternary.py",
+    "copies": [
+      "core/hrm_ternary.py",
+      "hf_space/hrm_ternary.py"
+    ],
+    "detail": "NOT shimmed: hf_space is a standalone HuggingFace Space. app.py:38 imports bare 'hrm_ternary' and the source comment says it 'ships alongside app.py on the Space'. A shim to core/ would break the deploy.",
+    "proof": {
+      "sha256_prefix": "e9b04588afd69eab",
+      "guard": "tests/test_duplicate_shims.py::test_hrm_ternary_copies_are_byte_identical"
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "mem_palace.py x3",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "shim",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/mem_palace.py",
+    "copies": [
+      "barrot_agent/mem_palace.py",
+      "scripts/mem_palace.py",
+      "tools/mem_palace.py"
+    ],
+    "detail": "Two duplicates replaced with import shims + __main__ delegation to initialize_palace(). No importer existed (grep: 0), so risk was limited to the CLI.",
+    "proof": {
+      "sha256_prefix": "024c90334047e50e",
+      "cli_check": "python scripts/mem_palace.py -> 'MemPalace Structure Initialized.'"
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "granite_model_config.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "shim",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/tools/granite_model_config.py",
+    "copies": [
+      "barrot_agent/tools/granite_model_config.py",
+      "scripts/granite_model_config.py"
+    ],
+    "detail": "Canonical chosen because vision_pipeline.py:10 and inference_provider.py:12 import the package path. scripts/ copy became a shim.",
+    "proof": {
+      "sha256_prefix": "c2fb77f9459ba912",
+      "importers": 2
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "score_to_signal.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "shim",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/analysis/score_to_signal.py",
+    "copies": [
+      "barrot_agent/analysis/score_to_signal.py",
+      "utils/score_to_signal.py"
+    ],
+    "detail": "utils/ copy became a shim. scripts/emit_signal_with_hrm.py:26 imports the bare name after putting utils/ AND the repo root on sys.path, so the shim resolves.",
+    "proof": {
+      "sha256_prefix": "c152c941cdf74b9b",
+      "cli_check": "python scripts/emit_signal_with_hrm.py --help -> usage printed"
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "deploy_huggingface.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "shim",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/orchestration/deploy_huggingface.py",
+    "copies": [
+      "barrot_agent/orchestration/deploy_huggingface.py",
+      "scripts/deploy_huggingface.py"
+    ],
+    "detail": "CLI duplicate replaced with a delegate shim: __main__ raises SystemExit(main()). No CI workflow references the script path (grep: 0).",
+    "proof": {
+      "sha256_prefix": "ab5df664d132a543",
+      "cli_check": "python scripts/deploy_huggingface.py -> same HF_TOKEN error as before the change"
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "trial_tracker.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "shim",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/monetization/trial_tracker.py",
+    "copies": [
+      "barrot_agent/monetization/trial_tracker.py",
+      "barrot_agent/tools/trial_tracker.py"
+    ],
+    "detail": "Canonical = monetization because the only live importer (.barrot/disabled_tests/test_longevity_modules.py:15) uses that path. tools/ copy became an in-package shim.",
+    "proof": {
+      "sha256_prefix": "9f4bb6b085b908c2",
+      "importers": 1
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "grant_generator.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "hash_lock",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/monetization/grant_generator.py",
+    "copies": [
+      "barrot_agent/monetization/grant_generator.py",
+      "barrot_agent/tools/grant_generator.py"
+    ],
+    "detail": "5-line print-only script with top-level side effects. A 'from X import *' shim would print on import, which is worse than the duplicate. Copies kept and hash-locked.",
+    "proof": {
+      "sha256_prefix": "46a5a71d3266a013",
+      "guard": "tests/test_duplicate_shims.py::test_grant_generator_copies_are_byte_identical"
+    }
   }
 ]
