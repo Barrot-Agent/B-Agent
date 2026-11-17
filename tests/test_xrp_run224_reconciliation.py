@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ARTIFACT = ROOT / "research" / "xrp_intelligence" / "20261117T201700Z-run224-market-capital-identity-reconciliation.json"
+ARTIFACT = ROOT / "research" / "xrp_intelligence" / "20261117T202045Z-run224-market-capital-identity-reconciliation.json"
 
 
 def _utc(value: str) -> datetime:
