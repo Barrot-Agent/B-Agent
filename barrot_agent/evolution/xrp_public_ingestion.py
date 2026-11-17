@@ -5353,7 +5353,7 @@ def run_ingestion(
         receipt = archive.store(
             source_id=source_id,
             source_uri=url,
-            captured_at_utc=captured_s,
+            captured_at_utc=source_captured_s,
             raw_bytes=raw_bytes,
             source_data_as_of_utc=source_as_of,
             model_eligible=source_eligible,
