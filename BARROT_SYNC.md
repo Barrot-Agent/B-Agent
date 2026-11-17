@@ -563,3 +563,16 @@
   (was 1027 + 20 new). CLI checks preserved for all 3 script shims.
 - Cost: +5 sys.path.insert guards (31 -> 36). Die when `pip install -e .` lands.
 - Next step: PHASE 3 cleanup (move 16 zero-byte root files to archive/, no deletes).
+
+## 2026-11-17 — PHASE 3 COMPLETE: debris archived, inventories listed
+- Moved 16 zero-byte root files to archive/debris-20261116/ (1 git mv tracked
+  .termux_dna_harvest.log + 15 plain mv). Nothing deleted. Root now has 0.
+- Verified: package imports OK, mem_palace CLI OK, 1048 tests collect with 0
+  import errors, no code referenced .termux_dna_harvest.log.
+- Listed (NOT fixed) in results/re_wishlist.md: 31 tracked sys.path.insert
+  (26 pre-existing + 5 Phase 2 shims), 8 bare except, 94/121 scripts with no
+  test reference.
+- Scope correction: the wishlist's original "31 sys.path" was an untracked-inclusive
+  scan; tracked-only was 26 then. Both read 31 now — verified, not assumed.
+- Next step: PHASE 4 (META + MMI + market mastery). Section 4 rewrites
+  .opencode/agent/barrot.md — show the diff before committing.

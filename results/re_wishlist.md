@@ -296,3 +296,169 @@ Analysis only. No production file modified. No fix applied.
 rubric, the variant scores, and the ranked list ids.
 Full suite re-run as a clean baseline: **1027 passed, 1 skipped, 4m59.69s**.
 tau = 0.707 remains quarantined and unused.
+
+---
+
+# PHASE 3 INVENTORY (listed, NOT fixed)
+
+Generated 2026-11-17 from `git ls-files '*.py'` (tracked only, 534 files).
+Nothing in this section was changed. These are the work queues for later phases.
+
+## 1. `sys.path.insert` — 31 tracked files
+
+Was 26 before Phase 2; +5 are the new import shims (26 + 5 = 31, unavoidable until
+`pip install -e .`, rank 9). Note on scope: the original wishlist figure of 31 came
+from an untracked-inclusive scan; tracked-only was 26 at the time. Both now read 31
+for different reasons — verified, not assumed.
+
+```
+barrot_agent/ingestion/dependency_micro_ingestion.py
+barrot_agent/orchestration/mcp_orchestrator.py
+barrot_agent/orchestration/orchestrator_bridge.py
+data/health_check.py
+examples/example_recursive_feedback.py
+hover_bike_revolution/tools/bom_generator.py
+hover_bike_revolution/tools/cost_calculator.py
+hover_bike_revolution/tools/print_estimator.py
+scripts/apex_audit_summary.py
+scripts/barrot_agent.py
+scripts/barrot_capability_audit.py
+scripts/barrot_defensive_self_test.py
+scripts/barrot_self_upgrade.py
+scripts/barrot_task_allocator.py
+scripts/bench_reference.py
+scripts/deploy_huggingface.py
+scripts/emit_signal_with_hrm.py
+scripts/granite_model_config.py
+scripts/live_refine_verify.py
+scripts/mcp_sync.py
+scripts/mem_palace.py
+scripts/pingpong_refine.py
+scripts/run_formal_verification_benchmark.py
+tests/test_hrm_ternary_v2.py
+tests/test_mmi_compiler.py
+tests/test_pingpong_refinement.py
+tests/test_refinement_upgrade.py
+tests/test_transmute.py
+tests/test_work_queue_process_recovery.py
+tools/mem_palace.py
+utils/score_to_signal.py
+```
+
+## 2. bare `except:` — 8 tracked files
+
+Swallows every exception in a repo whose thesis is evidence integrity.
+
+```
+barrot_agent/barrot_brain.py
+barrot_agent/ingestion/academic_harvest.py
+barrot_agent/tools/upgrade_bundle.py
+hf_space/app.py
+scripts/autonomous_design_engine.py
+scripts/data_contradiction_resolver.py
+scripts/sindy_series_generator.py
+scripts/video_analysis_autofix.py
+```
+
+## 3. scripts with no test reference — 94 of 121
+
+Match rule: the script's stem does not appear anywhere under `tests/`.
+
+```
+scripts/analyze_reference.py
+scripts/apex_audit_summary.py
+scripts/ask_barrot.py
+scripts/audio_ingest.py
+scripts/auto_backend_bootstrap.py
+scripts/autonomous_design_engine.py
+scripts/barrot_architecture_context.py
+scripts/barrot_build_knowledge.py
+scripts/barrot_code_evolution.py
+scripts/barrot_connectome_memory.py
+scripts/barrot_controlled_repair.py
+scripts/barrot_evolution_bridge.py
+scripts/barrot_learning_daemon.py
+scripts/barrot_live_code_cycle.py
+scripts/barrot_memory_query.py
+scripts/barrot_memory_recall.py
+scripts/barrot_night_cycle.py
+scripts/barrot_publish_validated.py
+scripts/barrot_recursive_coding.py
+scripts/barrot_repo_recall.py
+scripts/barrot_repo_state_manifest.py
+scripts/barrot_repository_guard.py
+scripts/barrot_repository_identity.py
+scripts/barrot_target_registry.py
+scripts/barrot_target_select.py
+scripts/barrot_task_allocator.py
+scripts/barrot_termux_practice.py
+scripts/barrot_termux_self_repair.py
+scripts/barrot_validate_target.py
+scripts/bench_reference.py
+scripts/benchmark_summary.py
+scripts/bundle_next_phases.py
+scripts/capability_discovery.py
+scripts/check_signal_accuracy.py
+scripts/check_table_freshness.py
+scripts/coinbase_paper_trader.py
+scripts/content_pipeline.py
+scripts/daily_digest.py
+scripts/data_contradiction_resolver.py
+scripts/data_value_triage.py
+scripts/emit_signal.py
+scripts/emit_signal_btc.py
+scripts/emit_signal_with_hrm.py
+scripts/entity_cooccurrence.py
+scripts/entity_coverage.py
+scripts/entity_relation_classifier.py
+scripts/entity_sentiment_profile.py
+scripts/financial_data_refresh.py
+scripts/free_image_gen.py
+scripts/frontier_distill.py
+scripts/frontier_gap_analysis.py
+scripts/frontier_ingest.py
+scripts/groq_chain.py
+scripts/gumroad_metrics.py
+scripts/knowledge_distill.py
+scripts/knowledge_distill_btc.py
+scripts/knowledge_ingest.py
+scripts/knowledge_ingest_btc.py
+scripts/live_refine_verify.py
+scripts/make_beats.py
+scripts/make_track.py
+scripts/market_analysis_engine.py
+scripts/market_analysis_trading_recommendations.py
+scripts/nih_grants_research.py
+scripts/patch_a2a_security.py
+scripts/patch_add_analysis_tools.py
+scripts/patch_add_btc_tool.py
+scripts/patch_add_monetization_tool.py
+scripts/patch_add_transparency_tools.py
+scripts/patch_add_trend_digest_tool.py
+scripts/patch_landing_monetization.py
+scripts/patch_preservation.py
+scripts/patch_report_mode.py
+scripts/pingpong_refine.py
+scripts/research_synthesis.py
+scripts/research_topics.py
+scripts/resolve_issue.py
+scripts/run_gpt_api.py
+scripts/run_mcp_server.py
+scripts/self_benchmark.py
+scripts/self_schedule.py
+scripts/semantic_memory.py
+scripts/sentiment_shift.py
+scripts/sindy_series_generator.py
+scripts/subagent_spawner.py
+scripts/termux_learning_loop.py
+scripts/termux_runner.py
+scripts/vader_check.py
+scripts/video_analysis_autofix.py
+scripts/webmcp_trend_distill.py
+scripts/webmcp_trend_ingest.py
+scripts/webmcp_trend_summary.py
+scripts/wire_in_hrm.py
+scripts/write_lyrics.py
+```
+
+Summary: 94/121 scripts untested (77%). Phase 1's scoring fix makes each of these measurable once a smoke test exists.

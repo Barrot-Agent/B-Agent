@@ -786,5 +786,38 @@
       "sha256_prefix": "46a5a71d3266a013",
       "guard": "tests/test_duplicate_shims.py::test_grant_generator_copies_are_byte_identical"
     }
+  },
+  {
+    "timestamp": "20261117_023315",
+    "kind": "phase3_cleanup",
+    "target": "repo root zero-byte debris",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "move_to_archive",
+    "applied": true,
+    "losers_deleted": [],
+    "detail": "16 zero-byte root files moved to archive/debris-20261116/ (1 git mv for the tracked .termux_dna_harvest.log, 15 plain mv). No file deleted.",
+    "proof": {
+      "root_zero_byte_before": 16,
+      "root_zero_byte_after": 0,
+      "archive_count": 16,
+      "import_smoke": "barrot_agent + geometry + orchestration import OK",
+      "cli_smoke": "scripts/mem_palace.py exit 0",
+      "collection": "1048 tests collected, 0 import errors",
+      "reference_check": "no code references .termux_dna_harvest.log (grep py/yml/sh)"
+    },
+    "inventory_logged_not_fixed": {
+      "sys_path_insert_tracked": 31,
+      "of_which_phase2_shims": 5,
+      "preexisting": 26,
+      "bare_except_tracked": 8,
+      "scripts_without_test_reference": 94,
+      "scripts_total": 121
+    },
+    "artifact": "results/re_wishlist.md#phase-3-inventory-listed-not-fixed"
   }
 ]
