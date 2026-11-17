@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 
@@ -30,7 +31,7 @@ def test_ci_validates_pages_build_on_pull_requests_without_deployment():
     text = workflow.read_text(encoding="utf-8")
     assert "  pages-build:" in text
     assert "if: github.event_name == 'pull_request'" in text
-    assert "actions/jekyll-build-pages@v1" in text
+    assert re.search(r"(?m)^\s+uses: actions/jekyll-build-pages@[0-9a-f]{40} # v1\s*$", text)
     assert "test -s ./_site/GLOBAL_STATE_MANIFEST.html" in text
     assert "actions/deploy-pages" not in text
     assert "upload-pages-artifact" not in text

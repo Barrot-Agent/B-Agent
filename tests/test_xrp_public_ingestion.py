@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
 from pathlib import Path
@@ -1199,8 +1200,8 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "actions: read" in workflow
     assert "contents: read" in workflow
     assert "persist-credentials: false" in workflow
-    assert "actions/cache/restore@v4" in workflow
-    assert "actions/cache/save@v4" in workflow
+    assert re.search(r"(?m)^\s+uses: actions/cache/restore@[0-9a-f]{40} # v4\s*$", workflow)
+    assert re.search(r"(?m)^\s+uses: actions/cache/save@[0-9a-f]{40} # v4\s*$", workflow)
     assert "if: steps.feature_cache.outputs.cache-hit == 'true'" in workflow
     assert "if: steps.feature_cache.outputs.cache-hit != 'true'" in workflow
     assert "cache-matched-key" not in workflow
@@ -1210,7 +1211,7 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert fallback.index(cleanup) < fallback.index('while [[ "$page"')
     assert workflow.index("Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)") < workflow.index("Upload per-run point-in-time feature-store checkpoint") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
     assert workflow.index("Upload daily point-in-time feature-store backup and walk-forward report") < workflow.index("Save cumulative feature-store cache after successful artifact publication")
-    assert workflow.count("actions/cache/save@v4") == 1
+    assert workflow.count("uses: actions/cache/save@") == 1
     cache_save_step = workflow.split(
         "      - name: Save cumulative feature-store cache after successful artifact publication", 1
     )[1].split("\n      - name:", 1)[0]

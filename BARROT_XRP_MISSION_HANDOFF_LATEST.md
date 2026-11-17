@@ -4682,3 +4682,60 @@ The first Run202 test update used over-escaped Python raw-regex sequences in the
 ### Run202 action-ref test helper — deterministic parser correction
 
 The prior regex-based helper still over-escaped whitespace tokens and returned no action references for list-item YAML lines. Replaced it with a line-based parser that handles both `- uses:` and nested `uses:` entries without regex escape ambiguity. It validates the approved immutable SHAs for the priority workflows and supported major versions for unchanged workflows. The prior run's 1 failure was limited to this test helper; 748 other core tests passed. This corrected commit requires new exact-head CI and full-suite verification.
+
+
+---
+
+# Run203 — exact-head full-suite regression diagnosis and correction
+
+**Observed:** 2026-11-17T01:02:51Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Pre-fix integration head:** `83772d0cf9f6d697c13d6038dc479de29d3c6812`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), draft/open.
+
+## Integration-first inspection executed
+
+- Retrieved repository metadata and authenticated permissions; default branch is `main`.
+- Retrieved complete recursive main and integration trees: 1,393 and 2,569 entries respectively; neither tree was truncated; zero main paths are missing from integration.
+- Compared main to integration: 139 commits ahead, zero behind; 300 changed paths in the Git compare response, while the PR changed-file endpoint reports 1,341 paths. The discrepancy is retained rather than normalized away.
+- Retrieved all nine open PRs, including exact head/base refs and SHAs; inspected PR #1663 metadata, changed-file list, review submissions and review threads.
+- Retrieved recent integration-branch workflow runs, exact-head combined status, main `pyproject.toml`, CODEOWNERS, visible rulesets and latest durable handoff.
+- Main reports protected=true, but branch-protection detail is HTTP 403. Visible repository ruleset 10863829 is disabled. CODEOWNERS remains `* @Barrot-Agent`. GitHub connector permissions are admin/maintain/push/pull/triage. Independent review and least-privilege remain unresolved.
+
+## Exact-head failure diagnosis
+
+Push CI run [43986347956](https://github.com/Barrot-Agent/B-Agent/actions/runs/43986347956) on `83772d0cf9f6d697c13d6038dc479de29d3c6812` completed with:
+
+- Core suite: 749 passed.
+- Full repository suite: 3,842 passed, 3 failed, 1 skipped, 11 warnings, 19 subtests passed.
+- Inclusive coverage: 66.90%, above the 62% full-suite threshold.
+- Dependency audit: passed.
+- Fail-closed gate: passed.
+- Pages validation: passed.
+
+All three full-suite failures were stale test expectations after the deliberate action-SHA pinning:
+
+1. `tests/test_global_state_manifest_jekyll.py::test_ci_validates_pages_build_on_pull_requests_without_deployment` expected the mutable `actions/jekyll-build-pages@v1` tag; the workflow correctly uses a full 40-character commit SHA with `# v1` annotation.
+2. `tests/test_run176_integration_gates.py::test_pages_build_is_build_only_on_integration_push` had the same obsolete tag assertion.
+3. `tests/test_xrp_public_ingestion.py::test_scheduled_ingestion_workflow_persists_history_without_repository_writes` expected mutable `actions/cache/restore@v4` and `actions/cache/save@v4`; the workflow correctly uses full commit SHAs with `# v4` annotations.
+
+The action download and execution steps themselves succeeded. No product-code failure was identified in this run. The correction updates the tests to require full 40-character hexadecimal action SHAs and the expected major-version comments. It does not revert pinning or weaken the tests.
+
+## Correction executed
+
+Three test files were updated atomically on the existing integration branch using a new commit parented directly to `83772d0cf9f6d697c13d6038dc479de29d3c6812`; no new branch or PR was created. The canonical handoff was appended with this diagnosis and verification boundary. The branch ref update uses the observed prior SHA as an expected-head guard; no force push or history rewrite is permitted.
+
+## Prediction and research status
+
+- Priority-one mission configuration remains on integration; Barrot V3 remains the execution/orchestration/safety/verification foundation.
+- Public XRP ingestion workflow remains guarded to `main`; it is not active on main and has not been dispatched from this run.
+- Forecast status remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
+- Prior curated registry count is 125; byte-exact raw-source receipts 0; missing exact publisher timestamps 77; model-eligible events 0.
+- No fresh web excerpts were admitted as model features. No directional forecast was issued.
+- Nine open PRs remain: #1663 blocked integration; #1541 superseded candidate/reconciliation required; #1460, #1450, #1440, #1437, #1436, #1353 and #1265 unique or stacked research work requiring bottom-up review. No source PR was closed.
+
+## Verification boundary and next action
+
+The corrected test commit requires new exact-head push CI. No prior test result is transferred to it. The next action is to inspect its full repository test result, dependency audit and fail-closed gate; if tests pass, continue the semantic/security review of the 1,341-path integration. PR #1663 remains draft with zero formal reviews and no independent code owner. **No merge.**
+
+No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch or private-data access occurred.

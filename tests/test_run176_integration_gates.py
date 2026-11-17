@@ -26,7 +26,7 @@ def test_pages_build_is_build_only_on_integration_push() -> None:
     job = rest[: next_job.start() + 1] if next_job else rest
     assert "github.event_name == 'pull_request'" in job
     assert "startsWith(github.ref, 'refs/heads/integration/')" in job
-    assert "actions/jekyll-build-pages@v1" in job
+    assert re.search(r"(?m)^\s+uses: actions/jekyll-build-pages@[0-9a-f]{40} # v1\s*$", job)
     assert "actions/deploy-pages" not in job
     assert "contents: read" in job
 
