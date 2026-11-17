@@ -94,3 +94,62 @@ def test_stored_fixture_set_is_consistent_and_passes_check():
         else:
             assert entry["notices"] == [], entry["doi"]
     assert check() == 0
+
+
+def test_validation_flags_a_claims_record_that_cites_a_retracted_doi(tmp_path):
+    """Iteration 4: the probe is called by validation, not by memory."""
+    import scripts.re_v2 as re_v2
+
+    claims = {
+        "records": [
+            {
+                "id": "cites-retracted",
+                "status": "Q",
+                "affirmed": True,
+                "excluded_from_evidence": False,
+                "exclusion_reason": "",
+                "quotes": ["a quote"],
+                "evidence": {
+                    "identifier": "10.1177/1758835919874651",
+                    "abstract": "a quote inside this abstract",
+                    "http_status": 200,
+                },
+            }
+        ]
+    }
+    path = tmp_path / "claims.json"
+    path.write_text(json.dumps(claims), encoding="utf-8")
+    problems = re_v2.validate(path)
+    assert any("retracted source" in problem for problem in problems), problems
+
+
+def test_validation_does_not_flag_a_control_doi(tmp_path):
+    import scripts.re_v2 as re_v2
+
+    claims = {
+        "records": [
+            {
+                "id": "cites-control",
+                "status": "Q",
+                "affirmed": True,
+                "excluded_from_evidence": False,
+                "exclusion_reason": "",
+                "quotes": ["a quote"],
+                "evidence": {
+                    "identifier": "10.1137/0204037",
+                    "abstract": "a quote inside this abstract",
+                    "http_status": 200,
+                },
+            }
+        ]
+    }
+    path = tmp_path / "claims.json"
+    path.write_text(json.dumps(claims), encoding="utf-8")
+    assert re_v2.validate(path) == []
+
+
+def test_stored_claims_files_are_clean_against_the_denylist():
+    from scripts.re_v2 import validate
+
+    for path in sorted((ROOT / "data").rglob("claims/*.json")):
+        assert validate(path) == [], path

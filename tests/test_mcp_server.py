@@ -25,6 +25,22 @@ def test_initialize_declares_tools_capability():
     assert response["result"]["serverInfo"]["name"] == "barrot"
 
 
+def test_ping_returns_an_empty_result():
+    # Registration in opencode.json means healthy liveness matters.
+    response = handle({"jsonrpc": "2.0", "id": 9, "method": "ping"})
+    assert response["result"] == {}
+
+
+def test_registered_in_opencode_config():
+    import json
+
+    config = json.loads((ROOT / "opencode.json").read_text(encoding="utf-8"))
+    server = config["mcp"]["servers"]["barrot"]
+    assert server["type"] == "local"
+    assert server["command"] == ["python3", "scripts/barrot_mcp_server.py"]
+    assert (ROOT / server["command"][1]).exists()
+
+
 def test_tools_list_has_five_named_tools():
     response = handle({"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
     names = {tool["name"] for tool in response["result"]["tools"]}

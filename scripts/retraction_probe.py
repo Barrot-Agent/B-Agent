@@ -29,6 +29,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "research" / "retraction_fixtures.json"
+DENYLIST = ROOT / "data" / "research" / "retracted_dois.json"
 CROSSREF = "https://api.crossref.org/works"
 UA = {"User-Agent": "Barrot-agent/1.0 (retraction probe)"}
 
@@ -92,6 +93,19 @@ def probe(doi: str, notice_lookup=notices_for) -> dict:
     }
 
 
+def write_denylist(entries: list[dict]) -> None:
+    """Offline derivation from stored fixtures, so the list cannot drift."""
+    DENYLIST.parent.mkdir(parents=True, exist_ok=True)
+    DENYLIST.write_text(json.dumps({
+        "built_at": "2026-11-17",
+        "source": "scripts/retraction_probe.py (from verified fixtures)",
+        "retracted": [
+            {"doi": entry["doi"], "notices": [n["notice_doi"] for n in entry["notices"]]}
+            for entry in entries if entry["retracted"]
+        ],
+    }, indent=2), encoding="utf-8")
+
+
 def build() -> int:
     entries = []
     for doi in RETRACTED_CANDIDATES:
@@ -104,6 +118,7 @@ def build() -> int:
         record["expected"] = "not_retracted"
         entries.append(record)
         time.sleep(1)
+    write_denylist(entries)
     payload = {
         "method": "Crossref deposit lookup; expectation is the deposit, not a memory",
         "built_at": "2026-11-17",
@@ -131,6 +146,8 @@ def check() -> int:
             problems.append(f"{entry['doi']} marked retracted with an empty notice list")
         if entry["expected"] == "not_retracted" and entry["retracted"]:
             problems.append(f"{entry['doi']} control is marked retracted")
+    if not problems:
+        write_denylist(payload["entries"])
     print(json.dumps({"fixtures": len(payload["entries"]), "problems": problems}, indent=2))
     return 1 if problems else 0
 

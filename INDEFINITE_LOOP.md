@@ -11,13 +11,13 @@ cannot, and the flaw found inside the last output becomes the next Y-query.
 
 | Field | Value |
 |---|---|
-| Iteration | 3 |
-| Last Y-query transmuted | "A retraction probe only helps if it is built and checked against known cases" |
-| Transmuted target | A fixture set of Crossref-deposited retractions and controls that the probe must classify correctly |
-| Method | Crossref `updates:<doi>` direction, notice update-to must name the DOI |
-| Grade | Q: 4 of 4 retracted detected, 2 of 2 controls clear |
-| Artifact | scripts/retraction_probe.py, data/research/retraction_fixtures.json |
-| Next Y-query queued | "Who calls the probe? A check that only runs when invoked never notices a retraction." |
+| Iteration | 4 |
+| Last Y-query transmuted | "Who calls the probe? A check that only runs when invoked never notices a retraction." |
+| Transmuted target | Every TRACE-5 validation flags a record whose DOI is on the retraction denylist |
+| Method | offline denylist derived from verified fixtures, read inside re_v2.validate() |
+| Grade | Q: a record citing 10.1177/1758835919874651 fails validation, a control passes, stored claims stay clean |
+| Artifact | data/research/retracted_dois.json, enforcement in scripts/re_v2.py |
+| Next Y-query queued | "A denylist only knows the DOIs someone probed. Who probes the four thousand citations nobody has checked?" |
 
 ## Why each iteration followed the last
 
@@ -38,12 +38,12 @@ detection mechanism with a false-positive guard.
 | Foundry absent | BLOCKED | no foundry module exists; run_foundry_cycle refuses with NOT_AVAILABLE |
 | Flight recorder replay | BLOCKED | 17 records, no two runs of the same mission and skill version |
 | Fields track 2 (resonance) | BLOCKED | repository rule: each new track needs an explicit GO FIELDS |
-| Learning-loop KPI | PARTLY UNBLOCKED | fixture set exists (4 retracted + 2 controls, all classified); still needs the probe wired into the claims path so it runs unprompted |
+| Learning-loop KPI | UNBLOCKED | fixtures 6/6, denylist enforced inside validate(), 3 enforcement tests |
 | Thermal KPI | BLOCKED | /sys/class/thermal exposes no zones; no power sensor on this device |
 | Parallel-agent convergence KPI | BLOCKED | subagent runs cost minutes each; not allocatable inside the cap |
 | Governance coverage link | BLOCKED | a threshold would be born red at 36 percent coverage; needs an explicit decision |
 | GO GITHUB / GO KAGGLE | BLOCKED | never scoped; Kaggle credentials unverified |
-| MCP server registration in opencode.json | NOT DONE, needs approval | changes the runtime of every session |
+| MCP server registration in opencode.json | DONE, approved | server answered trace5_validate live in-session: valid true, no issues; 12 MCP tests |
 
 A blocked item stays blocked until the missing input exists. None of them is a stop
 reason for the loop: the loop continues on the next transmutation that can be
@@ -56,5 +56,6 @@ verified.
 | 1 | consciousness as GR/QM bridge | TRACE-5, 9 specs | Q 8 / E 1 / X 0 | 4a4bfcbcc baseline | docs/research/CONSCIOUSNESS-BRIDGE.md |
 | 2 | does a verdict mean anything if nothing enforces it | structural gate, 8 tests | Q (real doc passes, 3 fixtures fail) | see git log | scripts/verdict_gate.py |
 | 3 | already-retracted source detection | Crossref fixtures + probe, 6 tests | Q, 6/6 correct | see git log | scripts/retraction_probe.py |
+| 4 | who calls the probe | denylist enforcement in validate() | Q, 3 enforcement tests | see git log | data/research/retracted_dois.json |
 
 Every future STATUS PUSHED appends a row here and states the next queued Y-query.

@@ -187,6 +187,9 @@ def handle(request: dict) -> dict | None:
                 "serverInfo": {"name": "barrot", "version": "1"},
             },
         }
+    if method == "ping":
+        # Clients probe liveness; an error here can mark the server unhealthy.
+        return {"jsonrpc": "2.0", "id": request_id, "result": {}}
     if method == "tools/list":
         return {"jsonrpc": "2.0", "id": request_id, "result": {"tools": TOOLS}}
     if method == "tools/call":
