@@ -7395,3 +7395,64 @@ The canonical capability/authentication/data-flow map remains at `research/xrp_i
 ### Next concrete action
 
 Keep PR #1663 open and do not merge. Obtain an independent review and authoritative branch-protection/check evidence; resolve the Pages publication side effect before any merge that could deploy. Then verify the exact successor head’s full suite again. Continue building byte-exact source receipts and point-in-time history before issuing any forecast.
+
+# Run223 — 2026-11-17 — Coinbase, BNY and SBI/Ripple legal-entity reconciliation
+
+## 1. Exact-head verification after Run221/222
+
+The documentation-only head `eadf7e78c32536a7443e2b69c01813adc8fd0cb7` completed exact-head push CI successfully:
+
+- Full repository suite: 4,127 passed; 1 skipped; 11 warnings; 19 subtests passed in 117.62 seconds.
+- Inclusive coverage: 68.10%.
+- Legacy core-package coverage: 77%.
+- Wheel built, installed and verified. The installed wheel loaded Barrot V3, the XRP mission registry and canonical data assets.
+- Pages validation, core tests, dependency audit and fail-closed gate passed.
+- Run: https://github.com/Barrot-Agent/B-Agent/actions/runs/44150913552
+
+The subsequent handoff-only commit is documentation-only. It will receive its own exact-head CI; the code/test evidence above is for `eadf7e7`.
+
+## 2. Coinbase, Ripple and BNY now have a clearer institutional map
+
+### National trust banks
+
+- OCC CAS records Coinbase National Trust Company, charter 25390, as a national trust bank under a holding company. The record shows approval on Apr 2, 2026 and “Consummated/Effective” on Nov 6, 2026. Coinbase’s Nov 9 announcement says the charter expands its institutional custody business under a federal framework; Coinbase explicitly distinguishes this trust-custody business from a commercial bank or retail deposit-taking bank. Sources: https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2 and https://www.coinbase.com/blog/coinbase-launches-national-trust-company-with-federally-regulated-institutional-grade-custody-offering
+- OCC CAS records Ripple National Trust Bank, charter 25364, as a national trust bank under a holding company. It shows approval on Dec 12, 2025 and “Consummated/Effective” on Oct 26, 2026. Source: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+- These are two separate trust-bank charters with effective dates eleven days apart. This is evidence of expanding federally supervised custody/trust infrastructure, not evidence of new XRP purchases, XRP collateral demand or commercial deposit-taking.
+
+### BNY is a common infrastructure hub for USDC, RLUSD and XRP custody
+
+- BNY’s June 29, 2026 Circle announcement says USDC is the first stablecoin on BNY’s Digital Asset Custody platform; eligible BNY clients can store, transfer, mint and burn USDC through BNY/Circle workflows. BNY says this expands its role as primary custodian of USDC reserves. Source: https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/bny-expands-relationship-circle-adds-institutional-grade-stablecoin-enablement-services.html
+- BNY’s Oct 27, 2026 Ripple announcement says BNY is primary reserve custodian for RLUSD and now supports XRP and RLUSD on its Digital Asset Custody platform. The same announcement describes tokenized trade-finance use cases as exploratory; it does not disclose client-level XRP balances or net XRP purchases. Source: https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+- Therefore BNY has documented roles across Circle USDC reserves, Ripple RLUSD reserves, and XRP/RLUSD custody. This is a shared institutional infrastructure connection. It does not prove USDC and RLUSD are cross-collateralized, that XRP is collateral for either stablecoin, or that reserve custody produces XRP market demand.
+
+### Coinbase and PNC: a live USDC-to-bank pilot
+
+- Coinbase and PNC announced on Nov 9, 2026 that eligible PNC Corporate and Institutional Banking clients can receive USDC through Coinbase Payment APIs. Incoming USDC is automatically converted 1:1 into U.S. dollars and deposited into a designated PNC deposit account. The announcement describes a pilot; it does not specify XRPL or XRP as a required settlement asset. Source: https://www.coinbase.com/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance
+- This is a concrete USDC payment rail: Circle-issued USDC, Coinbase payment infrastructure, PNC bank deposits. It can support corporate stablecoin settlement without XRP. Do not attribute its payment volume to XRPL or XRP.
+
+## 3. SBI/Ripple entity distinctions — corrected and strengthened
+
+- SBI Group holds 60% of SBI Ripple Asia’s voting rights and Ripple holds 40%, according to SBI’s group-company profile as of March 31, 2026. This is the joint venture, not SBI Holdings’ current direct equity percentage in Ripple. Historical SBI investor presentations showed an 11.3% Ripple shareholding in 2017; that historical percentage is not treated as current. Source: https://www.sbigroup.co.jp/company/group/sbirippleasia.html
+- Ripple’s current SBI Ripple Asia page says the JV sells RippleNet software services to financial institutions and remittance companies and explicitly says SBI Ripple Asia itself does not handle XRP. The same page says Ripple’s ODL service uses XRP as the bridge currency and is commercialized in Japan, with SBI Remit, Coins.ph and SBI VC Trade in the Philippines remittance corridor. Source: https://ripple.com/company/sbi-ripple-asia/
+- SBI’s July 28, 2021 release describes the actual ODL flow: SBI Remit sends the customer request; SBI VC Trade provides the real-time XRP transfer infrastructure; Coins.ph receives XRP over XRPL and converts it to Philippine pesos. Source: https://www.sbigroup.co.jp/news/2021/0728_12577.html
+- SBI’s Sep 6, 2023 release says SBI Remit, SBI VC Trade, Ripple and SBI Ripple Asia expanded XRP-based remittances to bank accounts in the Philippines, Vietnam and Indonesia. This establishes announced corridors and counterparties, not current throughput or net XRP inventory. Source: https://www.sbigroup.co.jp/news/2023/0906_14052.html
+- SBI VC Trade’s June 24, 2026 RLUSD launch is a separate stablecoin distribution relationship. SBI’s Nov 13, 2026 JPYSC Cambodia MOU, USDC joint venture with Circle, OUSD interoperability exploration and Strium work show a multi-rail strategy.
+- The distinction is material: SBI Ripple Asia’s software-sales activity, SBI Remit’s XRP ODL corridor, SBI VC Trade’s exchange/liquidity role, RLUSD distribution, USDC distribution and JPYSC settlement must be separate entities/features in Barrot. Do not count RippleNet software customers as XRP users or stablecoin transactions as XRP flows.
+
+## 4. Updated competing hypotheses
+
+- H1 — Direct XRP bridge demand: documented ODL corridors can require XRP as an intermediate asset. Measure actual executed XRP conversion, holding time, venue depth, corridor throughput and inventory turnover before assigning market impact.
+- H2 — Stablecoin-first institutional adoption: USDC, RLUSD and JPYSC can settle payments or provide collateral without XRP. Coinbase–PNC is a concrete example; SBI’s Cambodia JPYSC PoC is another.
+- H3 — Shared custody without token demand: BNY can custody XRP while its USDC/RLUSD reserve and mint/burn services expand independently. Custody availability is not equivalent to market buying.
+- H4 — Multi-rail SBI strategy: SBI’s direct Ripple partnership is material, but its Circle/USDC, JPYSC, OUSD, Strium, Solana and R3 activity means it is not an XRP-only institutional proxy.
+- H5 — Trust-bank competition: Coinbase and Ripple trust-bank charters may broaden institutional custody and trust services. Any effect on XRP depends on actual client adoption, custody balances and collateral/settlement use, not charter announcements alone.
+
+## 5. Evidence quality and forecast gate
+
+These institutional announcements and regulatory records were inspected as public web-rendered sources. Original HTTP response bytes were not archived in this run; they have no byte-exact SHA-256 receipt and are not promoted to model features. Company press releases are issuer statements; OCC CAS records are regulator records. BNY/Ripple is a joint announcement, not independent confirmation of client balances. Coinbase/PNC is a company-announced pilot without published throughput. SBI corridor announcements do not disclose current XRP throughput.
+
+No directional forecast, paper trade, real-money action or external provider dispatch was made. The event registry remains 140 events, 54 exact publisher timestamps, 86 missing exact timestamps, zero byte-exact receipts, zero model-eligible events and zero forecasts.
+
+## 6. Next action
+
+Continue source-receipt capture and point-in-time feature history for actual ODL corridor flows, stablecoin supply by chain, BNY custody scope, Coinbase/PNC pilot throughput and SBI JPYSC/USDC/RLUSD usage. Keep these as separate rails. Do not issue a directional forecast until chronological out-of-sample tests beat baselines and calibration is measured. Keep PR #1663 unmerged pending independent review, enforceable required checks and explicit resolution of automatic Pages publication.
