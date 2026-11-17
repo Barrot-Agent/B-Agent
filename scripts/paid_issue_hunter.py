@@ -207,7 +207,7 @@ def render(rows: list[dict]) -> str:
     lines = [
         "# Paid issues: READY, never claimed",
         "",
-        f"Last run: {now}. Schedule: every 6 hours, indefinitely, plus manual dispatch.",
+        f"Last run: {now}. Run mode: manual dispatch only; no automatic schedule or repository writes.",
         "",
         "Rules enforced by `scripts/paid_issue_hunter.py`:",
         "",

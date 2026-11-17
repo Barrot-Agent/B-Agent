@@ -1,4 +1,4 @@
-"""The hunter must parse amounts strictly, stay read-only, and run every 6 hours."""
+"""The hunter must parse amounts strictly and run manually with no repository writes."""
 
 from __future__ import annotations
 
@@ -52,14 +52,20 @@ def test_render_marks_unpriced_rows_unknown_and_never_claimed():
     assert "UNKNOWN" in text
     assert "never claimed" in text
     assert "READY" in text
+    assert "manual dispatch only" in text
 
 
-def test_workflow_runs_every_six_hours_and_forever():
+def test_workflow_is_manual_only_read_only_and_artifact_only():
     payload = yaml.load(WORKFLOW.read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
-    assert payload["on"]["schedule"][0]["cron"] == "17 */6 * * *"
+    assert "schedule" not in payload["on"]
     assert "workflow_dispatch" in payload["on"]
-    assert payload["permissions"]["contents"] == "write"
+    assert payload["permissions"]["contents"] == "read"
     assert payload["permissions"]["issues"] == "read"
+    text = WORKFLOW.read_text(encoding="utf-8")
+    assert "persist-credentials: false" in text
+    assert "git push" not in text.lower()
+    assert "git commit" not in text.lower()
+    assert "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v4" in text
 
 
 def test_workflow_never_comments_or_claims():
