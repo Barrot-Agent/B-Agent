@@ -166,7 +166,7 @@ def test_scheduled_research_jobs_write_artifacts_not_main() -> None:
         assert "contents: read" in content, name
         assert "persist-credentials: false" in content, name
         if name == "barrot-transparency-audit.yml":
-            assert re.search(r"^\s*-\s*uses:\s*actions/upload-artifact@[0-9a-f]{40}\b", content, re.MULTILINE), name
+            assert re.search(r"^\s*(?:-\s*)?uses:\s*actions/upload-artifact@[0-9a-f]{40}\b", content, re.MULTILINE), name
         else:
             assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in content, name
         assert "git push" not in content, name
@@ -224,7 +224,7 @@ def test_content_and_entity_workflows_require_confirmation_and_preserve_artifact
         assert "contents: read" in content, name
         assert "contents: write" not in content, name
         assert "persist-credentials: false" in content, name
-        assert re.search(r"^\s*-\s*uses:\s*actions/upload-artifact@[0-9a-f]{40}\b", content, re.MULTILINE), name
+        assert re.search(r"^\s*(?:-\s*)?uses:\s*actions/upload-artifact@[0-9a-f]{40}\b", content, re.MULTILINE), name
         assert "git push" not in content, name
 
 
