@@ -357,11 +357,18 @@ def test_shared_workflows_use_supported_action_versions_or_reviewed_sha_pins() -
     }
 
     def refs(content: str, action: str) -> list[str]:
-        return re.findall(
-            rf"^[ \\t]*(?:-[ \\t]*)?uses:\\s*{re.escape(action)}@([^\\s#]+)",
-            content,
-            flags=re.MULTILINE,
-        )
+        found: list[str] = []
+        prefix = f"{action}@"
+        for line in content.splitlines():
+            line = line.strip()
+            if line.startswith("- "):
+                line = line[2:].strip()
+            if not line.startswith("uses:"):
+                continue
+            target = line.partition(":")[2].strip().split()[0]
+            if target.startswith(prefix):
+                found.append(target[len(prefix):])
+        return found
 
     def supported(values: list[str], action: str, minimum_major: int) -> bool:
         if not values:
@@ -370,8 +377,7 @@ def test_shared_workflows_use_supported_action_versions_or_reviewed_sha_pins() -
         for value in values:
             if value == approved_sha:
                 continue
-            match = re.fullmatch(r"v(\\d+)", value)
-            if not match or int(match.group(1)) < minimum_major:
+            if not (value.startswith("v") and value[1:].isdigit() and int(value[1:]) >= minimum_major):
                 return False
         return True
 
@@ -408,7 +414,7 @@ def test_shared_workflows_use_supported_action_versions_or_reviewed_sha_pins() -
     download_refs = refs(webmcp, "actions/download-artifact")
     assert download_refs
     assert all(
-        (match := re.fullmatch(r"v(\\d+)", value)) and int(match.group(1)) >= 8
+        value.startswith("v") and value[1:].isdigit() and int(value[1:]) >= 8
         for value in download_refs
     )
 

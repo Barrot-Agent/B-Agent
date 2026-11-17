@@ -4677,3 +4677,8 @@ The first action-pinning commit `14cdf58d` triggered CI. The pinned actions exec
 ### Run202 test-helper correction
 
 The first Run202 test update used over-escaped Python raw-regex sequences in the new action-ref helper. The helper was corrected in the follow-up commit so it matches YAML action lines and major-version references correctly. The test contract now accepts only the approved full SHA for mission-critical CI/ingestion checkout and upload actions, while retaining minimum-major checks for unchanged shared workflows. This follow-up commit requires fresh exact-head CI; no prior test result is inherited.
+
+
+### Run202 action-ref test helper — deterministic parser correction
+
+The prior regex-based helper still over-escaped whitespace tokens and returned no action references for list-item YAML lines. Replaced it with a line-based parser that handles both `- uses:` and nested `uses:` entries without regex escape ambiguity. It validates the approved immutable SHAs for the priority workflows and supported major versions for unchanged workflows. The prior run's 1 failure was limited to this test helper; 748 other core tests passed. This corrected commit requires new exact-head CI and full-suite verification.
