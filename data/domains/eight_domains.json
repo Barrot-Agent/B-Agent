@@ -1,0 +1,383 @@
+{
+  "method": "reverse-engineering v2 (TRACE-5)",
+  "built_at": "2026-11-17",
+  "note": "what_it_is, limit and transmute are analysis. mechanism points at the quoted records. Only Q may support a claim.",
+  "domains": [
+    {
+      "domain": "Ternary logic",
+      "what_it_is": "ANALYSIS: a digit set with three states; balanced ternary uses -1, 0, +1 and needs no separate sign bit.",
+      "mechanism": "QUOTED BELOW: balanced ternary real arithmetic exists and is claimed to be energy-relevant.",
+      "limit": "No mainstream logic family or toolchain; every practical stack is binary, so the efficiency argument cannot be cashed in.",
+      "transmute": "Treat the third state as a way to encode sign or unknown. Carry it as a data representation, not as a hardware bet.",
+      "grades": {
+        "Q": 1,
+        "E": 1
+      },
+      "record_ids": [
+        "ternary-arithmetic-neglect",
+        "setun-existence"
+      ]
+    },
+    {
+      "domain": "Quantum mechanics",
+      "what_it_is": "ANALYSIS: a probability calculus over complex amplitudes; superposition is linear combination, measurement is the non-linear step that yields one outcome.",
+      "mechanism": "QUOTED BELOW: entanglement behaves as a resource, comparable to energy, and is fragile to the environment.",
+      "limit": "Fragility: environmental coupling destroys the correlations that make the resource useful; copying is not free, which is why error correction is expensive.",
+      "transmute": "Uncopyable shared state: if a state cannot be duplicated, coordination must move or entangle it, never clone it. Applies to agent memory handoff.",
+      "grades": {
+        "Q": 1
+      },
+      "record_ids": [
+        "entanglement-as-resource"
+      ]
+    },
+    {
+      "domain": "Algorithms",
+      "what_it_is": "ANALYSIS: procedures with a cost model; the claim is about how cost grows, not about any single run.",
+      "mechanism": "QUOTED BELOW: sorting by pairwise comparisons costs Theta(n log n) in the noiseless model.",
+      "limit": "The bound is model-relative. Change the model (noise, external memory, word RAM) and the bound moves, so a lower bound is only as strong as its model.",
+      "transmute": "Carry the habit of naming the model before the bound. A cost claim without its model is not a claim.",
+      "grades": {
+        "Q": 1
+      },
+      "record_ids": [
+        "comparison-sorting-bound"
+      ]
+    },
+    {
+      "domain": "Logarithms",
+      "what_it_is": "ANALYSIS: the inverse of exponentiation; turns multiplication into addition, which is why cost and information are measured in log units.",
+      "mechanism": "QUOTED BELOW: entropy reduces to the logarithm of cardinality under a uniform distribution.",
+      "limit": "Base is a unit choice, not a fact. Comparing logs across bases without converting is a category error.",
+      "transmute": "Measure in log units so independent contributions add. Applies to cost accounting and to information budgets.",
+      "grades": {
+        "Q": 1
+      },
+      "record_ids": [
+        "entropy-as-log-cardinality"
+      ]
+    },
+    {
+      "domain": "Transformers",
+      "what_it_is": "ANALYSIS: a sequence model that routes information by learned pairwise attention weights instead of recurrence.",
+      "mechanism": "QUOTED BELOW: attention only, no recurrence and no convolution, and more parallelizable in training.",
+      "limit": "Attention compares every position with every other, so cost grows with sequence length; long context is a memory problem before it is a quality problem.",
+      "transmute": "Parallel routing beats sequential depth when the dependency graph is dense. Carry attention as a routing primitive, with its quadratic bill attached.",
+      "grades": {
+        "Q": 1
+      },
+      "record_ids": [
+        "attention-only-architecture"
+      ]
+    },
+    {
+      "domain": "Transistors",
+      "what_it_is": "ANALYSIS: a voltage-controlled switch; the MOSFET's gate field modulates a channel, and the fin or gate-all-around shape is how the channel is wrapped to keep control as it shrinks.",
+      "mechanism": "QUOTED BELOW: TCAD modelling projects negative-capacitance FinFETs beyond the last FinFET node.",
+      "limit": "Short-channel effects: as the gate length shrinks, the gate loses control of the channel, leakage rises, and the subthreshold slope stops improving.",
+      "transmute": "Carry scaling as a control problem, not a size problem. Every gain in density must be paid for with better electrostatic control.",
+      "grades": {
+        "Q": 1,
+        "E": 1
+      },
+      "record_ids": [
+        "finfet-scaling-projection",
+        "moore-paper-existence"
+      ]
+    },
+    {
+      "domain": "Photolithography",
+      "what_it_is": "ANALYSIS: an optical transfer process; a mask pattern is imaged onto resist, and resolution is set by wavelength and numerical aperture, not by intent.",
+      "mechanism": "QUOTED BELOW: EUV leads on resolution and throughput, while the resist limits further progress.",
+      "limit": "The resist, not the optics, is now the stated bottleneck; roughness and resolution trade against each other.",
+      "transmute": "Carry the rule that the tool sets the floor. If the process window is set by materials, buying better optics does not help.",
+      "grades": {
+        "Q": 1
+      },
+      "record_ids": [
+        "euv-resist-bottleneck"
+      ]
+    },
+    {
+      "domain": "3D printing",
+      "what_it_is": "ANALYSIS: additive manufacturing builds a part by depositing material, so cost scales with volume rather than with the subtraction of a block.",
+      "mechanism": "QUOTED BELOW: FFF quality degrades at speed because motion and extrusion desynchronise.",
+      "limit": "Process dynamics: the printed result depends on a coupled thermal and mechanical history, so speed, strength and surface finish trade against each other.",
+      "transmute": "Carry the control-loop view: calibrate the machine against its own dynamics with cheap sensing, instead of buying precision.",
+      "grades": {
+        "Q": 1
+      },
+      "record_ids": [
+        "fff-speed-quality"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": "ternary-arithmetic-neglect",
+      "problem": "Ternary logic",
+      "claim": "Balanced ternary real arithmetic has received almost no attention in the literature despite claimed energy-efficiency benefits.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "2512.10964",
+        "title": "Tekum: Balanced Ternary Tapered Precision Real Arithmetic",
+        "year": "2025",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "In light of recent hardware advances, it is striking that real arithmetic in balanced ternary logic has received almost no attention in the literature. This is particularly surprising given ternary logic's promising properties, which could open new avenues for energy-efficient computing and offer novel strategies for overcoming the memory wall. This paper revisits the concept of tapered precision arithmetic, as used in posit and takum formats, and introduces a new scheme for balanced ternary logic: tekum arithmetic. Several fundamental design challenges are addressed along the way. The proposed format is evaluated and shown to exhibit highly promising characteristics. In many respects, it outperforms both posits and takums. As ternary hardware matures, this work represents a crucial step toward unlocking the full potential of real-number computation in ternary systems, laying the groundwork for a new class of number formats designed from the ground up for a new category of next-generation hardware."
+      },
+      "quotes": [
+        "real arithmetic in balanced ternary logic has received almost no attention in the literature",
+        "could open new avenues for energy-efficient computing"
+      ],
+      "falsifier": "a substantial body of balanced-ternary arithmetic work that this 2025 paper overlooked",
+      "does_not_show": "that ternary hardware is cheaper or faster than binary; it reports a format design, not a device measurement",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "setun-existence",
+      "problem": "Ternary logic",
+      "claim": "The Setun and Setun 70 were ternary computers, described in a 2011 IFIP chapter.",
+      "status": "E",
+      "grade_reason": "no abstract retrievable; existence verified, content not verified",
+      "evidence": {
+        "kind": "doi",
+        "identifier": "10.1007/978-3-642-22816-2_10",
+        "title": "Ternary Computers: The Setun and the Setun 70",
+        "year": 2011,
+        "venue": "IFIP Advances in Information and Communication Technology",
+        "authors": [
+          "Brusentsov",
+          "Ramil Alvarez"
+        ],
+        "http_status": 200,
+        "abstract": ""
+      },
+      "quotes": [],
+      "falsifier": "a primary document showing the machines were binary, which would contradict the title",
+      "does_not_show": "content is unverified: the chapter exposes no abstract, so the existence record stands and nothing about their performance is affirmed",
+      "affirmed": false,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "entanglement-as-resource",
+      "problem": "Quantum mechanics",
+      "claim": "Entanglement is treated as a physical resource comparable to energy, and it is fragile to the environment.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "quant-ph/0702225",
+        "title": "Quantum entanglement",
+        "year": "2007",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "All our former experience with application of quantum theory seems to say: {\\it what is predicted by quantum formalism must occur in laboratory}. But the essence of quantum formalism - entanglement, recognized by Einstein, Podolsky, Rosen and Schr\u00f6dinger - waited over 70 years to enter to laboratories as a new resource as real as energy. This holistic property of compound quantum systems, which involves nonclassical correlations between subsystems, is a potential for many quantum processes, including ``canonical'' ones: quantum cryptography, quantum teleportation and dense coding. However, it appeared that this new resource is very complex and difficult to detect. Being usually fragile to environment, it is robust against conceptual and mathematical tools, the task of which is to decipher its rich structure. This article reviews basic aspects of entanglement including its characterization, detection, distillation and quantifying. In particular, the authors discuss various manifestations of entanglement via Bell inequalities, entropic inequalities, entanglement witnesses, quantum cryptography and point out some interrelations. They also discuss a basic role of entanglement in quantum communication within distant labs paradigm and stress some peculiarities such as irreversibility of entanglement manipulations including its extremal form - bound entanglement phenomenon. A basic role of entanglement witnesses in detection of entanglement is emphasized."
+      },
+      "quotes": [
+        "as a new resource as real as energy",
+        "Being usually fragile to environment"
+      ],
+      "falsifier": "a demonstration that entanglement survives arbitrary environmental coupling unchanged",
+      "does_not_show": "the no-cloning theorem, decoherence rates or any hardware number; those were not fetched in this cycle",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "comparison-sorting-bound",
+      "problem": "Algorithms",
+      "claim": "In the noiseless pairwise-comparison model, Theta(n log n) comparisons are necessary and sufficient for sorting.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "2202.01446",
+        "title": "Noisy Sorting Capacity",
+        "year": "2022",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "Sorting is the task of ordering $n$ elements using pairwise comparisons. It is well known that $m=\u0398(n\\log n)$ comparisons are both necessary and sufficient when the outcomes of the comparisons are observed with no noise. In this paper, we study the sorting problem when each comparison is incorrect with some fixed yet unknown probability $p$. Unlike the common approach in the literature which aims to minimize the number of pairwise comparisons $m$ to achieve a given desired error probability, we consider randomized algorithms with expected number of queries $\\textsf{E}[M]$ and aim at characterizing the maximal sorting rate $\\frac{n\\log n}{\\textsf{E}[M]}$ such that the ordering of the elements can be estimated with a vanishing error probability asymptotically. The maximal rate is referred to as the noisy sorting capacity. In this work, we derive upper and lower bounds on the noisy sorting capacity. The two lower bounds -- one for fixed-length algorithms and one for variable-length algorithms -- are established by combining the insertion sort algorithm with the well-known Burnashev--Zigangirov algorithm for channel coding with feedback. Compared with existing methods, the proposed algorithms are universal in the sense that they do not require the knowledge of $p$, while maintaining a strictly positive sorting rate. Moreover, we derive a general upper bound on the noisy sorting capacity, along with an upper bound on the maximal rate that can be achieved by sorting algorithms that are based on insertion sort."
+      },
+      "quotes": [
+        "comparisons are both necessary and sufficient when the outcomes of the comparisons are observed with no noise"
+      ],
+      "falsifier": "a comparison-based sort that is correct on all inputs with asymptotically fewer than n log n comparisons",
+      "does_not_show": "anything about noisy or external-memory models, where this paper's capacity result takes over",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "entropy-as-log-cardinality",
+      "problem": "Logarithms",
+      "claim": "Shannon entropy reduces to the logarithm of the cardinality of the set when the distribution is uniform.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "2303.00879",
+        "title": "Categorical magnitude and entropy",
+        "year": "2023",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "Given any finite set equipped with a probability measure, one may compute its Shannon entropy or information content. The entropy becomes the logarithm of the cardinality of the set when the uniform probability is used. Leinster introduced a notion of Euler characteristic for certain finite categories, also known as magnitude, that can be seen as a categorical generalization of cardinality. This paper aims to connect the two ideas by considering the extension of Shannon entropy to finite categories endowed with probability, in such a way that the magnitude is recovered when a certain choice of \"uniform\" probability is made."
+      },
+      "quotes": [
+        "The entropy becomes the logarithm of the cardinality of the set when the uniform probability is used."
+      ],
+      "falsifier": "a uniform distribution whose entropy is not the log of its support size",
+      "does_not_show": "the base convention in use, nor any complexity-theoretic application; it is a statement about a categorical generalization",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "attention-only-architecture",
+      "problem": "Transformers",
+      "claim": "The Transformer is built solely on attention, dispensing with recurrence and convolutions, and is more parallelizable.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "1706.03762",
+        "title": "Attention Is All You Need",
+        "year": "2017",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data."
+      },
+      "quotes": [
+        "based solely on attention mechanisms, dispensing with recurrence and convolutions entirely",
+        "more parallelizable"
+      ],
+      "falsifier": "a task on which the attention-only architecture is provably less parallelizable than a recurrent one",
+      "does_not_show": "scaling behaviour, positional-encoding necessity, or cost per token; the paper predates all of that",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "finfet-scaling-projection",
+      "problem": "Transistors",
+      "claim": "TCAD simulation projects negative-capacitance FinFET scaling to about the 1.5nm node, beyond the last FinFET node in IRDS.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "2007.14448",
+        "title": "Negative Capacitance Enables FinFET Scaling Beyond 3nm Node",
+        "year": "2020",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "A comprehensive study of the scaling of negative capacitance FinFET (NC-FinFET) is conducted with TCAD. We show that the NC-FinFET can be scaled to \"2.1nm node\" and almost \"1.5nm node\" that comes two nodes after the industry \"3nm node,\" which has 16nm Lg and is the last FinFET node according to the International Roadmap for Devices and Systems (IRDS). In addition, for the intervening nodes, NC-FinFET can meet IRDS Ion and Ioff target at target-beating VDD. The benefits of negative capacitance (NC) include improved subthreshold slope (SS), drain-induced barrier lowering (DIBL), Vt roll-off, transconductance over Id (Gm/Id), output conductance over Id (Gd/Id), and lower VDD. Further scaling may be achieved by improving capacitance matching between ferroelectric (FE) and dielectric (DE)."
+      },
+      "quotes": [
+        "almost \"1.5nm node\"",
+        "the last FinFET node according to the International Roadmap for Devices and Systems"
+      ],
+      "falsifier": "fabricated devices showing that NC-FinFET scaling stops at the 3nm node",
+      "does_not_show": "any measured silicon; this is a simulation projection, not a fabricated result",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "moore-paper-existence",
+      "problem": "Transistors",
+      "claim": "Moore's 1965 article on component density exists in the Proceedings of the IEEE reprint.",
+      "status": "E",
+      "grade_reason": "no abstract retrievable; existence verified, content not verified",
+      "evidence": {
+        "kind": "doi",
+        "identifier": "10.1109/jproc.1998.658762",
+        "title": "Cramming More Components Onto Integrated Circuits",
+        "year": 1998,
+        "venue": "Proceedings of the IEEE",
+        "authors": [
+          "Moore"
+        ],
+        "http_status": 200,
+        "abstract": ""
+      },
+      "quotes": [],
+      "falsifier": "a bibliographic record showing the reprint is a different article",
+      "does_not_show": "content is unverified: no abstract is exposed, and the 'law' as popularly stated is not in the record",
+      "affirmed": false,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "euv-resist-bottleneck",
+      "problem": "Photolithography",
+      "claim": "EUV is the leading lithography technique, but resist limitations can hamper further resolution progress.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "2310.01268",
+        "title": "Resistless EUV lithography: photon-induced oxide patterning on silicon",
+        "year": "2023",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "In this work, we show the feasibility of extreme ultraviolet (EUV) patterning on an HF-treated Si(100) surface in the absence of a photoresist. EUV lithography is the leading lithography technique in semiconductor manufacturing due to its high resolution and throughput, but future progress in resolution can be hampered because of the inherent limitations of the resists. We show that EUV photons can induce surface reactions on a partially H-terminated Si surface and assist the growth of an oxide layer, which serves as an etch mask. This mechanism is different from the H-desorption in scanning tunneling microscopy-based lithography. We achieve SiO2/Si gratings with 75 nm half-pitch and 31 nm height, demonstrating the efficacy of the method and the feasibility of patterning with EUV lithography without the use of a photoresist. Further development of the resistless EUV lithography method can be a viable approach to nm-scale lithography by overcoming the inherent resolution and roughness limitations of photoresist materials."
+      },
+      "quotes": [
+        "EUV lithography is the leading lithography technique in semiconductor manufacturing due to its high resolution and throughput, but future progress in resolution can be hampered because of the inherent limitations of the resists."
+      ],
+      "falsifier": "a resist-free or resist-improved process that removes the resolution ceiling, which this paper itself argues is possible",
+      "does_not_show": "the 13.5 nm wavelength, mask architecture or scanner throughput numbers; those were not fetched",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    },
+    {
+      "id": "fff-speed-quality",
+      "problem": "3D printing",
+      "claim": "FFF quality degrades at high speed from motion-extrusion mis-synchronisation, and camera-based calibration can double throughput at equal quality.",
+      "status": "Q",
+      "grade_reason": "quote matched the retrieved primary text",
+      "evidence": {
+        "kind": "arxiv",
+        "identifier": "2512.24905",
+        "title": "One-Shot Camera-Based Extrusion Optimization for High Speed Fused Filament Fabrication",
+        "year": "2025",
+        "venue": "arXiv",
+        "authors": [],
+        "http_status": 200,
+        "abstract": "Off-the-shelf fused filament fabrication 3D printers are widely accessible and convenient, yet they exhibit quality loss at high speeds due to dynamic mis-synchronization between printhead motion and material extrusion systems, notably corner over-extrusion. Existing methods require specialized hardware, extensive calibration, or firmware modifications that are inaccessible to most users. This work presents a practical, end-to-end optimization framework that enhances high-speed printing using only standard 3D printers and a phone camera, without requiring additional complex setup. The method employs a one-shot calibration approach in which two simple printed patterns, captured by a phone camera, enable identification of extrusion dynamics and cornering behavior. The identified systems enable a model-based constrained optimal control strategy that generates optimized G-code, synchronizing motion and extrusion. Experiments show reduced width tracking error, mitigated corner defects, and lower surface roughness, achieving surface quality at 3600 mm/min comparable to conventional printing at 1600 mm/min, effectively doubling production speed while maintaining print quality. This accessible, hardware-minimal approach enables a wide range of fused filament fabrication users to achieve high-quality, high-speed additive manufacturing."
+      },
+      "quotes": [
+        "they exhibit quality loss at high speeds due to dynamic mis-synchronization between printhead motion and material extrusion systems",
+        "effectively doubling production speed while maintaining print quality"
+      ],
+      "falsifier": "a printer that holds quality at 3600 mm/min without any calibration or control change",
+      "does_not_show": "SLA or SLS behaviour, material strength, or dimensional accuracy in absolute terms; one FFF process was measured",
+      "affirmed": true,
+      "single_source": true,
+      "excluded_from_evidence": false,
+      "exclusion_reason": ""
+    }
+  ]
+}

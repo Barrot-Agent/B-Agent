@@ -4,6 +4,8 @@ Generated. Every file under docs/, grouped by folder.
 Regenerate after adding a doc: python3 scripts/build_docs_index.py
 
 ## docs
+
+- docs/domains/EIGHT-DOMAINS.md - Eight domains under TRACE-5
 - docs/ADVANCED_ENERGY_INGESTION.md - 🔬 Advanced Energy Systems Data Ingestion Manifest
 - docs/ADVANCED_MONETIZATION_PROTOCOLS.md - 💰 Barrot Advanced Monetization Protocols
 - docs/ADVANCED_PROPULSION_RESEARCH.md - 🚀 Barrot Advanced Propulsion & Transportation Research
