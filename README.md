@@ -54,7 +54,7 @@ service environment, because MCP connections are opened at startup:
 opencode service restart
 ```
 
-The `github` server reads a personal access token from `GITHUB_MCP_TOKEN`. Authentication is not yet verified by this repository configuration; the variable's presence, validity, and end-to-end data flow must be tested before treating this connection as live:
+The `github` server reads a personal access token from `GITHUB_MCP_TOKEN`. The GitHub MCP authentication is not yet verified by this repository configuration; the variable's presence, validity, and end-to-end data flow must be tested before treating this connection as live:
 
 ```bash
 opencode service set env GITHUB_MCP_TOKEN "$(gh auth token)"
