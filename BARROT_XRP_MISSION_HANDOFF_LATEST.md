@@ -6760,3 +6760,135 @@ The identity question is now resolved by the statute itself, not name similarity
 - RLUSD's XRPL/Ethereum supply split is a secondary on-chain aggregation. Preserve chain, contract, timestamp, source methodology and mint/burn uncertainty. SBI's initial Ethereum-only listing is a disconfirming fact against attributing XRPL supply growth to SBI.
 - JPYSC, USDC and RLUSD are separate stablecoin rails. Their use can expand digital settlement without requiring XRP as a bridge. Treat that as a competing hypothesis when estimating XRP demand.
 - No source in this supplement included byte-exact raw HTTP receipts or a point-in-time feature-store admission record. **All findings remain research-only and model-ineligible; no directional forecast is issued.**
+
+
+---
+
+# Run219 — 2026-11-17 — exact-head CI, automation containment, market snapshot and stablecoin-regulation update
+
+## 1. Repository refs and integrated inventory
+
+- Main at start of run: `d9270465829ff166b29f40587e126583cebea9cb`.
+- Integration verification head at start of run: `b3f0c450f7a214b7eac2d161ee118eedec703223`.
+- Mainline ancestry: **196 commits ahead, 0 behind**; merge base is current main.
+- Recursive trees: main **1,582 entries / 1,437 blobs**; integration **2,787 entries / 2,628 blobs**; neither tree response was truncated.
+- PR #1663: open, draft, GitHub mergeable=true, **1,380 changed files**, no formal reviews, no inline review comments, no reviewers requested.
+- This remains the sole consolidated XRP/V3 integration PR. No new branch or PR was created.
+
+## 2. Exact-head verification — b3f0c45
+
+Push CI [44098112450](https://github.com/Barrot-Agent/B-Agent/actions/runs/44098112450), head `b3f0c450f7a214b7eac2d161ee118eedec703223`:
+
+- Full repository suite, job 134090551869: **4,095 passed, 1 skipped, 11 warnings, 19 subtests passed in 114.70 seconds**.
+- Inclusive coverage: **68.09%**, above the 62% gate.
+- Legacy-core coverage: **77%**, above the 70% floor.
+- Test scope included all active `tests/` modules, the runnable legacy email and transformative-insights suites, and `.barrot/autonomous_tasks/test_math_task.py`. Disabled fixtures and operational/demo scripts were not executed as tests.
+- Wheel build and installed-wheel verification passed. The installed package loaded Barrot V3, the primary XRP mission and canonical data assets.
+- GitHub Pages validation-only job passed. This was not a Pages deployment.
+- Dependency audit push run [44098112207](https://github.com/Barrot-Agent/B-Agent/actions/runs/44098112207), job 134090555709, passed all six declared dependency sets: root runtime requirements, development requirements, supplemental integrations, Hugging Face Space, legacy requirements and PEP 621 project dependencies. The audit log reported no known vulnerabilities for the pip-audit manifests.
+- Fail-closed push gate [44098112814](https://github.com/Barrot-Agent/B-Agent/actions/runs/44098112814) passed. Its log explicitly states automatic merge is disabled and that it neither approves nor merges PRs.
+- PR checks [44098122158](https://github.com/Barrot-Agent/B-Agent/actions/runs/44098122158), [44098122133](https://github.com/Barrot-Agent/B-Agent/actions/runs/44098122133) and [44098122157](https://github.com/Barrot-Agent/B-Agent/actions/runs/44098122157) passed. The PR-triggered full-suite and core-test jobs were skipped by the integration-branch condition; the push run above is the authoritative exact-head test evidence.
+- Cache write was denied because the repository Actions cache budget is exhausted. This did not fail tests or wheel verification; cache is effectively read-only.
+
+**Scope:** these results verify b3f0c45. The documentation-only handoff commit created by this run is a new head and must receive its own exact-head checks. Do not transfer b3f0c45 test results to a later SHA.
+
+## 3. Main-branch workflow failures and containment
+
+Fresh main workflow inventory: **87 active workflow files**; integration: **88**, with `.github/workflows/xrp-public-ingestion.yml` the only additional workflow.
+
+- Main Barrot Sync run [44082754152](https://github.com/Barrot-Agent/B-Agent/actions/runs/44082754152) reported success, but its job log contains `ModuleNotFoundError: No module named 'rich'`. Main's workflow converts the failed sync command into a successful fallback message and also suppresses push errors. This is a false-green operational result; no successful sync is established.
+- Main Pillars Consistency Check [44088686769](https://github.com/Barrot-Agent/B-Agent/actions/runs/44088686769) failed: Databricks returned HTTP 403 and the Hugging Face Space returned `BUILD_ERROR`.
+- Main's GitHub Pages build-and-deployment run [44082753727](https://github.com/Barrot-Agent/B-Agent/actions/runs/44082753727) failed during Jekyll build; its deploy job was skipped. The integration Pages validation now passes. A merge could therefore cause the repository's automatic Pages pipeline to publish the integrated site. **That publication is an external deployment and has not been authorized.**
+
+Integration branch workflow inspection confirms:
+- `barrot-agent.yml`, `barrot-sync.yml`, `barrot-self-upgrade.yml`, `table-freshness-check.yml`, `sync-huggingface.yml` and `databricks-bundle.yml` are quarantined with empty workflow permissions and a false job condition.
+- `sync-self-hosted-brain.yml` has a false job condition.
+- `autonomous_self_deployment.yml`, `force-deploy-space.yml`, `rotate-databricks-token.yml` and `subscriber_sync.yml` are disabled.
+- Remaining external-write workflows are manual/main-ref gated: A2A Worker deployment (with separate secret-rotation confirmation), Databricks deployment, Space restart, Coinbase paper simulation, allowlisted Kaggle submission and Barrot Ops. None was dispatched. No secrets were read or rotated; no deployment, restart, Kaggle submission, paper trade or external write occurred.
+
+## 4. Governance and security state
+
+- Main branch metadata reports `protected=true`; the detailed branch-protection endpoint returns HTTP 403 to this connector, so required checks and bypass actors remain **unverified**.
+- Repository ruleset “Fall Back” ID 10863829 is **disabled** and contains only deletion/non-fast-forward rules.
+- Main `.github/CODEOWNERS` assigns all paths only to `@Barrot-Agent`; no independent code owner is configured.
+- Code-scanning, secret-scanning and Dependabot alert inventories could not be retrieved through this connector. Their alert state is **unknown**, not clean.
+- The six-manifest dependency audit is useful but does not replace source-code scanning, secret scanning or independent review.
+
+**Merge decision: DO NOT MERGE #1663.** Keep it draft. The exact-head tests pass, but independent security/code review is absent, effective required-check/bypass policy is not verified, and the merge could trigger an unapproved public Pages deployment.
+
+## 5. Fresh XRP market observations — descriptive only
+
+Capture time approximately **2026-11-17 14:37 UTC**. Public API responses were rendered by the retrieval tool; no byte-exact HTTP body or SHA-256 receipt was captured.
+
+**Kraken XRP/USD** — [public ticker endpoint](https://api.kraken.com/0/public/Ticker?pair=XRPUSD):
+- Last: **$0.97458**.
+- Best bid: **$0.97457 × 1,864 XRP**.
+- Best ask: **$0.97458 × 5,376 XRP**.
+- 24-hour volume: **43,373,718.54 XRP**.
+- 24-hour low/high: **$0.94178 / $0.97830**.
+- 24-hour open: **$0.95476**; reported 24-hour VWAP: **$0.95882515**.
+- Kraken response did not expose a provider event timestamp; retrieval time is approximate.
+
+**Bybit XRP/USDT spot** — [public ticker endpoint](https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT):
+- Provider timestamp: **2026-11-17 14:35:14.699 UTC**.
+- Last: **0.9729 USDT**; provider USD index price: **0.971745**.
+- Best bid: **0.9732 × 2,973.9 XRP**; best ask: **0.9733 × 2,199.72 XRP**.
+- 24-hour change: **+0.61%**; high/low: **0.9793 / 0.9424**.
+- 24-hour volume: **34,078,770.74 XRP**; turnover: **32,722,857.07 USDT**.
+
+These are different quote currencies and not perfectly synchronized. Do not compute an arbitrage spread or infer net flow from them. They are top-of-book ticker fields, not consolidated L2 depth. Kraken, OKX, Coinbase and Bybit depth endpoints were inaccessible in this retrieval; that is a collection limitation, not evidence of absent liquidity. No current derivatives open-interest/funding observation was admitted in this run.
+
+**Eligibility:** descriptive research only. No raw-byte receipt, no point-in-time feature admission, no model feature, no directional forecast.
+
+## 6. New institutional and regulatory evidence
+
+### PNC–Coinbase–Circle USDC pilot
+
+Reuters, November 9, 2026: [PNC to offer stablecoin payments to clients in Coinbase partnership](https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/).
+
+- Eligible PNC corporate and institutional clients can receive Circle USDC; the service automatically converts received USDC to U.S. dollars.
+- The service is a limited pilot for testing and learning, not a broad production-volume disclosure.
+- PNC had previously selected Coinbase's institutional crypto-as-a-service platform for customer crypto trading and said it would provide banking services to Coinbase.
+- This is direct evidence of a Coinbase–Circle USDC payment rail and a competing/complementary settlement route. It is **not** evidence of XRP settlement, XRP collateral demand or an XRP purchase.
+
+### OCC GENIUS Act final rule
+
+OCC News Release 2026-92, October 21, 2026: [official release](https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html).
+
+- The final rule addresses permitted payment-stablecoin issuers and foreign payment-stablecoin issuers under OCC jurisdiction, plus certain custody activities by OCC-supervised entities.
+- BSA/AML and OFAC requirements are reserved for separate rulemaking with Treasury.
+- The OCC says it will separately announce when it begins accepting applications and waiver requests.
+- The final rule and GENIUS Act take effect **January 18, 2027**; they are not yet effective on this research date.
+- This is a regulatory framework for payment stablecoins and custody, not a classification of XRP and not proof of a Ripple-specific approval.
+
+### Ripple/Coinbase RLUSD and BNY — preserve source distinctions
+
+- Ripple's October 28 release says RLUSD was live on Coinbase Prime, Coinbase Exchange and retail, with XRPL, Base and Ethereum support; Coinbase Global Exchange collateral availability was still described as “will follow.” [Ripple primary source](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+- Ripple's release reports RLUSD market capitalization above **$2.4B**; Reuters' October 28 report says above **$2.5B**. Preserve the difference; do not average or treat the numbers as a synchronized supply snapshot.
+- BNY's October 27 release identifies BNY as RLUSD's primary reserve custodian and says its Digital Asset Custody platform supports XRP and RLUSD. Direct RLUSD mint/redeem through BNY and tokenized trade-finance initiatives are described as future/intended work subject to client and regulatory approvals. [Ripple/BNY primary release](https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/).
+- Custody, exchange distribution, stablecoin settlement, collateral activation, XRP bridge use and open-market XRP demand remain separate graph edges. No net XRP demand is inferred from these announcements.
+
+## 7. Prediction engine and nine-platform status
+
+- The integration branch contains the hourly/daily XRP public-ingestion workflow, but it is absent from main. Its job is explicitly main-only; no scheduled production ingestion has run on main.
+- Workflow artifacts currently have 90-day retention and the feature store uses GitHub Actions cache/artifact restoration. These are not an independent WORM archive. Cross-run receipt continuity and artifact availability must be verified on actual successful main runs.
+- Existing curated event registry remains **125 events / 48 exact publisher timestamps / 77 missing exact timestamps / 0 byte-complete raw-source receipts / 0 model-eligible events**.
+- The public signal ledger remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`. No directional forecast is justified or issued.
+- Nine-platform map remains: ChatGPT/GitHub connector access tested; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks authentication/data flow not tested. No nine-platform quorum is claimed.
+
+## 8. Open PR backlog — preserved
+
+Nine open PRs were rechecked:
+- **#1663** — active consolidated XRP/V3 integration; **blocked** by independent review, effective protection verification and Pages publication authorization.
+- **#1541** — potentially superseded MMI fingerprint follow-up; **preserve**, not an exact duplicate; three of five overlapping paths differ.
+- **#1450, #1460, #1440, #1436, #1437, #1353 and #1265** — unique/unreviewed research, repair or archive work; preserve. Do not close or bulk-classify as duplicates.
+- No source PR was closed. No source branch was rewritten. No force-push or main update occurred.
+
+## 9. Execution labels and next concrete action
+
+- **DESIGNED:** main-only scheduled XRP ingestion, content-addressed receipt manifests, cross-run receipt-chain index, point-in-time feature store, event timeline, walk-forward baselines, calibration/drift gates and forecast ledger.
+- **EXECUTED:** fetched current main and integration trees, current PR inventory and ancestry; inspected current workflow/security metadata and latest handoff; verified exact-head b3f0 push CI, six-set dependency audit and fail-closed gate; audited main operational failures and integration workflow containment; captured public Kraken/Bybit ticker observations; verified OCC, Reuters, Ripple and BNY institutional/regulatory sources; appended this handoff.
+- **VERIFIED:** exact-head b3f0 full suite, wheel, Pages validation-only, dependency audit and fail-closed gate passed; main SHA and complete tree counts confirmed; PR remains draft and unreviewed.
+- **NOT VERIFIED:** this new handoff-only commit's exact-head CI; independent review; effective required-check/bypass configuration; safe handling of GitHub Pages publication; successful scheduled ingestion on main; byte-complete WORM retention; mature synchronized XRP dataset; out-of-sample model superiority; independent evaluator attestation; nine-platform authentication.
+
+Next action: verify exact-head CI for the handoff-only commit, then continue independent security review and resolve the Pages publication side effect and branch-protection uncertainty. Do not merge #1663 or close source PRs until those conditions are satisfied. No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push or history rewrite occurred.
