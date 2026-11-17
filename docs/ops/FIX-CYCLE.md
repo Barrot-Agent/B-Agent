@@ -39,8 +39,8 @@ in GLOBAL_STATE_MANIFEST.md
 ```
 {% endraw %}
 
-Root cause: GLOBAL_STATE_MANIFEST.md includes a JSON schema example containing `{{`.
-Jekyll treats it as Liquid. Falsifiable sentence: "Jekyll parses every markdown file
+Root cause: GLOBAL_STATE_MANIFEST.md includes a JSON schema example containing a
+doubled curly-brace opener. Jekyll treats it as Liquid. Falsifiable sentence: "Jekyll parses every markdown file
 at the repository root, and this one contains an unterminated Liquid variable."
 
 Fix: `_config.yml` with `exclude: [GLOBAL_STATE_MANIFEST.md]`. The file is a
