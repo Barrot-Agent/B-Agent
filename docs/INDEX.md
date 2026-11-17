@@ -13,6 +13,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/API.md - API Reference
 - docs/ARCHITECTURE.md - Architecture
 - docs/AUTONOMOUS_DEPLOYMENT_REPORT.md - BARROT AUTONOMOUS DEPLOYMENT
+- docs/BARROT_V3_STRUCTURAL_CORE_AND_FOUNDATION_SOURCES.md - Barrot V3 Structural Analysis Core v1.1
 - docs/BARROT_BUILD_REPORT.md - Barrot Build Report
 - docs/CHAMELEON_README.md - Chameleon Chain - Presale & Blockchain Infrastructure
 - docs/CHARACTER_CAPABILITIES_GUIDE.md - Character Capability Explorer - Quick Start Guide
@@ -52,6 +53,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/PR_TRIAGE_REPORT.md - PR Triage Report
 - docs/QUANTUM_AGI_INTEGRATION.md - Quantum Entanglement, AGI, and Advanced Algorithmic Logic Integration
 - docs/QUICKSTART_MMI_MONETIZATION.md - 🚀 Quick Start: MMI & Monetization Implementation
+- docs/RSI_HARNESS_WEIGHT_SPACE_FOUNDATION.md - RSI, Harness Engineering, and Weight-Space Foundation
 - docs/STEP5_BARROT_INITIATIVE.md - STEP 5 — Barrot Initiative: Data Layer Health-Check & Topology Introspection
 - docs/SYSTEM_SEPARATION.md - 🔄 System Separation Architecture
 - docs/TASK_COMPLETION_SUMMARY.md - Task Completion Summary: PR #113 Resolution & Default Branch Transition
