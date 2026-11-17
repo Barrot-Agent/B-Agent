@@ -43,7 +43,7 @@ jobs:
     if: ${{ inputs.confirm_external_change == 'YES' && github.ref == 'refs/heads/main' && (inputs.confirm_databricks_workspace_import == 'YES' || inputs.confirm_kaggle_dataset_download == 'YES') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: main
           fetch-depth: 1

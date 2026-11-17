@@ -34,7 +34,7 @@ def test_paper_trader_is_artifact_only_and_never_writes_to_main():
     assert "gh auth setup-git" not in content
     assert "GITHUB_TOKEN" not in content
     assert "actions/download-artifact" not in content
-    assert "actions/upload-artifact@v7" in content
+    assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in content
     assert "web/paper_trading_state.json" in content
     assert "web/paper_trading_log.jsonl" in content
     assert "retention-days: 7" in content
