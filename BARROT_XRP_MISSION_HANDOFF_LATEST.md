@@ -6973,7 +6973,7 @@ Thus the $504.688M cumulative impairment is an accounting write-down, not eviden
 
 ## 5. Ownership and relationship graph
 
-- SBI Holdings-affiliated investors were subject to a **39.9% ownership threshold**. Shares otherwise above the threshold were issued as Class C; Class C remains convertible under the governing documents. The October 12 8-K/A lists **9,431,914 Class A** and **2,359,038 Class C** shares for SBI Holdings, Inc. This is a direct SBI Holdings/Evernorth equity relationship; it is not a relationship with SBIC East, SBIC Central or SBIC West.
+- SBI Holdings-affiliated investors were subject to a **39.9% ownership threshold**. Shares otherwise above the threshold were issued as Class C; Class C remains convertible under the governing documents. The October 12 **Form 8-K** (SEC accession 000119312526419605) lists **9,431,914 Class A** and **2,359,038 Class C** shares for SBI Holdings, Inc.; the November 16 Form 8-K/A is the separate financial-statement amendment. This is a direct SBI Holdings/Evernorth equity relationship; it is not a relationship with SBIC East, SBIC Central or SBIC West.
 - Arrington XRP Capital Fund's Series C investment included RippleWorks-originated XRP; the Sponsor's voting ownership was limited to 19.9%, with additional Class C shares.
 - Ripple's direct contribution and the separate Ripple-affiliated contributor entity are subject to a combined 9.9% ownership threshold in Pubco, with excess interests represented through Pathfinder units.
 - Ripple's 126.791458M XRP contribution to Pathfinder was accounted for at Ripple's historical carrying value of zero under common-control accounting. It is not a $X market purchase or cash contribution.
@@ -6993,3 +6993,29 @@ Thus the $504.688M cumulative impairment is an accounting write-down, not eviden
 This filing materially improves the capital/ownership event timeline and counter-hypothesis set. It does not create a directional trading feature by itself. SEC issuer filings are not independent confirmations of one another; the figures must be point-in-time aligned with market price, actual ELOC draws, warrant exercises, XRP custody/transfer receipts and subsequent cash balances before model admission. No forecast is issued.
 
 **Source-independence note:** the 10-Q, XBRL schedule, 8-K/A, Pathfinder statements and pro forma balance sheet are all issuer/SEC filings from the same reporting chain. Treat them as one primary-source family, not five independent confirmations.
+
+
+---
+
+# Run219B — exact-head verification and source-label correction
+
+## Verified integration head before this documentation correction
+
+Head: `13586cab39b911caa2422f88ccea7970027dcda8`; main remained `d9270465829ff166b29f40587e126583cebea9cb`; PR #1663 remained draft, open, mergeable=true, 198 commits ahead, 0 behind, 1,380 changed files.
+
+Exact-head push CI [44107279245](https://github.com/Barrot-Agent/B-Agent/actions/runs/44107279245) passed:
+- Core tests: **750 passed, 8 subtests passed**.
+- Full repository suite: **4,095 passed, 1 skipped, 11 warnings, 19 subtests passed in 140.15 seconds**.
+- Inclusive coverage: **68.09%**; legacy-core coverage: **77%**.
+- Installed wheel verified Barrot V3, the XRP mission and canonical data assets.
+- GitHub Pages validation-only job passed; no deployment occurred.
+- Six-set dependency audit [44107279235](https://github.com/Barrot-Agent/B-Agent/actions/runs/44107279235) passed.
+- Fail-closed gate [44107279239](https://github.com/Barrot-Agent/B-Agent/actions/runs/44107279239) passed.
+- PR CI [44107289745](https://github.com/Barrot-Agent/B-Agent/actions/runs/44107289745), PR dependency audit [44107289933](https://github.com/Barrot-Agent/B-Agent/actions/runs/44107289933), and PR fail-closed gate [44107289770](https://github.com/Barrot-Agent/B-Agent/actions/runs/44107289770) passed. The PR-triggered full-suite job was skipped by its integration-branch condition; the push run above is authoritative.
+- GitHub Actions cache save emitted a budget-exhausted/read-only warning after tests and wheel verification; it did not fail the jobs.
+
+## Source-label erratum
+
+The SBI Holdings share-count disclosure (9,431,914 Class A and 2,359,038 Class C) is from the **October 12, 2026 Form 8-K**, accession 000119312526419605: https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/d118629d8k.htm. It is not from the November 16 Form 8-K/A. The November 16 8-K/A is the separate filing that attaches Pathfinder financial statements and updated pro forma information. The Run219A wording has been corrected above.
+
+The correction-only commit created by this append is a new head. Its exact-head CI must be checked separately; do not transfer the 13586 test results to it.
