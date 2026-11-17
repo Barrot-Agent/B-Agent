@@ -878,3 +878,21 @@
   deployed surface.
 - Dependency that does not exist: Foundry (0 hits in *.py). Track will run on
   RE_METHOD + Flight Recorder until Foundry is real.
+
+## 2026-11-17 — Track 1 Cymatics shipped (prediction gate passed on frequency)
+- docs/fields/track-01-cymatics.md: 3-layer tagged page, six required fields, one
+  reverse-engineered example, L3 section with its own falsifier.
+- New: scripts/cymatics_mode_check.py. Predictions written BEFORE the run, then
+  measured on a 60x60 FD Laplacian (lowest 10 eigenpairs, 2.87 s). Predicted ratios
+  1.5811/1.5811/2.0000/2.2361 vs measured 1.5807/1.5807/1.9993/2.2343, worst error
+  0.16 percent. Tests: tests/test_cymatics_modes.py, 4 passed.
+- Partial failure kept in the page: per-axis nodal-count predictions held only for
+  (2,2), the one non-degenerate mode. Degenerate pairs mix, so the same frequency
+  yields two patterns. That is a result (it is why pattern is not a function of
+  frequency alone), not a bug to delete.
+- Corrected category error before it shipped: ultrasonic cleaning is cavitation,
+  not cymatics.
+- Prediction gate result: PASS on frequency ordering, PARTIAL on nodal counts.
+  Skill promotion still blocked until one physical plate test is run.
+- Caps: $0.00, 12 min of 15. Flight Recorder:
+  results/flight_recorder/2026-11-17-track01-cymatics.jsonl

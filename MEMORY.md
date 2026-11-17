@@ -332,6 +332,13 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Foundry does not exist yet (0 hits for "foundry" in *.py). "Learn via Foundry" is
   aspirational until it is built; until then the track runs on RE_METHOD +
   Flight Recorder.
+- Track 1 cymatics done 2026-11-17: docs/fields/track-01-cymatics.md. Gate result -
+  frequency ordering predicted then confirmed (sqrt(m2+n2), worst error 0.16%);
+  per-axis nodal counts only predictable for non-degenerate modes. Membrane test,
+  not a plate. Skill promotion blocked until one physical plate experiment.
+- Query transmutation is the standing format for every Sean query: ORIGINAL / GAP /
+  TRANSMUTED / EXECUTE / SHOW BOTH, and gaps get filled with [FILLED GAP] instead
+  of questions.
 - Ping-pong routing protocol (2026-11-17): caps 2 rounds default / $2 per task /
   15 min; advice only, no external AI can authorize commits. External ChatGPT and
   Meta AI are NOT wired in this runtime - only free-model subagents are available,
