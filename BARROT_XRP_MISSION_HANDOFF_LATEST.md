@@ -6085,3 +6085,226 @@ Both failures were in the new SBIC/entity research-contract test, not the applic
 The correction adds those explicit per-observation missing-receipt fields and makes the relationship assertion case-insensitive. It does not weaken any data-quality or forecast gate. The same correction fixes the SBIC Central capital transcription: the official profile states **43億80万円**, equal to **¥4,300,800,000**, not ¥4,380,800,000. The official SBIC law text and SEC primary filing for Evernorth advance funding are now linked directly in the structured research record.
 
 The next exact-head full suite, inclusive coverage, wheel verification, Pages build, dependency audit and fail-closed gate must pass before any merge consideration.
+
+
+# Run 214 — 2026-11-17
+
+## 1. Repository state and integration
+
+- Current main before this handoff update: d9270465829ff166b29f40587e126583cebea9cb
+- Integration branch before this handoff update: 9f4f6087a202c0297528e05d99d9568dd060371e
+- PR: #1663, still draft, mergeable, 1,379 changed files, +501,684 / -6,476.
+- The integration branch is 186 commits ahead of current main and 0 behind.
+- Main advanced from 9753132 to d927046 after Run 213. The new main commit changed BARROT_SYNC.md and book/grok-100k-business/manuscript/part-2/ch-07.md.
+- Reconciled that main commit into the existing integration branch using a normal two-parent merge commit: 9f4f6087a202c0297528e05d99d9568dd060371e. Parent 1 is the prior integration head 4090bccefa17aeaf7be1af72d6887b813bb82a6a; parent 2 is main d9270465829ff166b29f40587e126583cebea9cb.
+- The book chapter was taken from current main because the integration version matched the merge-base version. BARROT_SYNC.md retained the integration-side inserted sync record and the new main-side appended record. Both paths were verified after the merge.
+- No force-push, reset, clean, stash, or history rewrite. Main was not changed by this run.
+
+## 2. Exact-head test and CI evidence
+
+### Integration head 9f4f608
+
+- Push CI run: https://github.com/Barrot-Agent/B-Agent/actions/runs/44084251131
+- Full repository suite job: 134042413697.
+- Result: 4,094 passed, 1 skipped, 11 warnings, 19 subtests.
+- Inclusive package coverage: 68.09%; legacy-core coverage: 77%; configured inclusive coverage floor: 62%.
+- Wheel build and primary mission checks passed.
+- Pages validation: https://github.com/Barrot-Agent/B-Agent/actions/runs/44084251132 — passed.
+- Dependency audit, push: https://github.com/Barrot-Agent/B-Agent/actions/runs/44084251134 — passed.
+- Fail-closed gate, push: https://github.com/Barrot-Agent/B-Agent/actions/runs/44084251148 — passed.
+- PR CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/44084259285 — passed.
+- Dependency audit, PR: https://github.com/Barrot-Agent/B-Agent/actions/runs/44084259234 — passed.
+- Fail-closed gate, PR: https://github.com/Barrot-Agent/B-Agent/actions/runs/44084259254 — passed.
+- The PR-triggered CI run skips its full-suite job; the exact-head push run above executed the full repository suite. Do not substitute the PR core subset for the push full-suite result.
+
+### Failure diagnosis and recovery
+
+- The earlier integration head 9f383fa failed 66 tests after a canonical nine-platform map was overwritten. The failure was detected, not waived.
+- The recovery branch restored the canonical map and corrected the SBIC/source evidence contract. Head 4090bcce then passed the full suite: 4,094 passed, 1 skipped, 11 warnings, 19 subtests.
+- The subsequent mainline reconciliation produced 9f4f6087. Its exact-head full suite passed again with the same counts.
+- The 9f383fa failure is not treated as a passing result and no old-head CI is transferred to a new head.
+
+### Main-side automatic workflow findings
+
+Current main d927046 triggered several workflows:
+
+- Main CI run https://github.com/Barrot-Agent/B-Agent/actions/runs/44082753771 passed its current suite: 1,091 passed, 1 skipped, 8 subtests, 78.13% coverage. This is smaller than the 4,094-test integration suite and does not validate the additional packages now included by the integration branch.
+- GitHub Pages build/deployment run https://github.com/Barrot-Agent/B-Agent/actions/runs/44082753727 failed. The Jekyll/Liquid parser treated literal double-brace templates in GLOBAL_STATE_MANIFEST.md around line 6450 as Liquid expressions.
+- The integration branch wraps the affected template/code sections in Jekyll raw/endraw blocks. The integration Pages validation run above passed, so the branch contains a concrete repair; main remains unmodified and its Pages failure remains visible until a future authorized merge.
+- Main Barrot Sync run https://github.com/Barrot-Agent/B-Agent/actions/runs/44082754152 reported success overall, but the inner Barrot script failed with ModuleNotFoundError for rich, fell back to manual sync, and the final push found no changes. No commit was pushed. The integration branch quarantines this push-triggered high-write workflow.
+- Main Auto PR run https://github.com/Barrot-Agent/B-Agent/actions/runs/44082753778 completed without creating a PR.
+
+## 3. Merge decision and security gates
+
+- PR #1663 remains draft. It has zero formal reviews, zero review threads, and no requested reviewers.
+- .github/CODEOWNERS assigns the repository to @Barrot-Agent itself; this is not independent approval.
+- The visible repository ruleset is disabled. The main branch-protection endpoint returned 403, so required branch-protection checks and approval settings could not be independently verified.
+- Mergeable status is not equivalent to merge authorization. No merge was performed.
+- The full PR diff was scanned for destructive shell operations, deployment commands, Kaggle submission commands, wallet/order/transfer operations, hard-coded secrets, privileged workflow permissions, and dynamic execution. Most matches were safety tests, fixtures, or historical evidence strings. The executor implementation uses an explicit command allowlist and shell=False. No un-gated real-money action was found.
+- High-write Barrot automation workflows (agent, ask, sync, self-upgrade, Hugging Face sync, Databricks bundle) are quarantined on the integration branch. The XRP public-ingestion workflow uses read-only GitHub permissions and public GET sources.
+- Separate manual workflows remain gated by explicit YES inputs and expected-main-SHA checks: Hugging Face upload, Databricks import/deploy, Kaggle submission, worker deployment/secret rotation, and Coinbase paper-trading simulation. None was dispatched. No deployment, secret rotation, Spaces restart, Kaggle submission, paper trade, transfer, or real-money action occurred.
+- The XRP ingestion workflow is scheduled only after it is present on main. It has not run on main in this state. Its artifacts have 90-day retention and cache windows; this is not a WORM store. Hash receipts and a predecessor chain are designed, but GitHub Actions artifacts can be deleted or expire. Immutable external retention is not verified.
+
+## 4. Open PR inventory and backlog classification
+
+Nine PRs remain open. No source PR was closed.
+
+| PR | Classification | Current relationship to #1663 |
+|---|---|---|
+| #1663 | Active consolidated integration; draft; all observed exact-head checks pass | Main XRP/V3 integration workstream |
+| #1541 | Potentially superseded, not proven | 5/5 changed paths overlap #1663; patches differ; preserve until the successor is merged and content is verified |
+| #1265 | Unique/unreviewed | 1/144 changed paths overlap; its ledger-index work is not established as duplicated |
+| #1450 | Unique/unreviewed | No changed-path overlap |
+| #1460 | Unique/unreviewed | No changed-path overlap |
+| #1440 | Unique/unreviewed | No changed-path overlap |
+| #1436 | Unique/unreviewed | No changed-path overlap |
+| #1437 | Unique/unreviewed | No changed-path overlap |
+| #1353 | Unique/unreviewed | No changed-path overlap |
+
+The eight source branches are based on stale/diverged feature ancestry and have no common ancestor with current main in the inspected comparisons. Do not merge them directly. Do not close #1541 or #1265 before a verified successor merge. No new branch or PR was created.
+
+## 5. XRP market snapshot — 2026-11-17
+
+All observations below are descriptive snapshots. Web retrieval did not create raw-byte receipts, so these observations are not model-eligible features.
+
+### Spot and top-of-book
+
+- Kraken XRP/USD ticker retrieved during the 12:30–12:33 UTC window: last 0.96833 USD; best bid 0.96833 (429 XRP displayed); best ask 0.96834 (5,164 XRP displayed); spread 0.00001 USD, approximately 0.103 basis points; 24-hour volume 41.77 million XRP; 24-hour high 0.97648 and low 0.94178.
+- This is one venue and one price level. Displayed quote size can be cancelled and is not executable depth. No consolidated XRP order-book depth or multi-venue slippage curve was verified.
+- Liqwall's public heatmap page covers BTC, ETH, SOL and HYPE, not XRP; it cannot be used as XRP depth evidence.
+
+### Derivatives and options disagreement
+
+- Liqwall: approximately 962 million USD XRP open interest at 12:22 UTC, down 4.0% over 24 hours; reported 30-day high 1.49 billion USD on November 4 and low 968 million USD on November 16.
+- OptimistFi: approximately 1.7 billion USD at 09:06 UTC across 38 venues; its displayed funding was about -1.7% annualized and 24-hour taker flow about -4.3 million USD.
+- TradRadar's prior November 16 15:30 UTC snapshot was approximately 1.31 billion USD across seven venues, with a reported 24-hour OI decrease of 5.04% and funding of -0.0063% per eight hours.
+- These estimates are not averaged. Venue coverage, contract inclusion, timestamp, and methodology differ materially. Negative funding does not by itself establish direction.
+- OptimistFi also displayed 30-day implied volatility near 66.7%, 25-delta skew near -1.7 points, put/call OI near 0.53, and approximately 45.5 million XRP of December 25 options OI. These are vendor observations, not a forecast.
+
+### ETF flow coverage
+
+- CryptoKeyhole's November 16 figure was partial: approximately -5.197 million XRP (about -5 million USD) with only two of its four daily-tracked funds reported.
+- Its November 13 complete figure was approximately -9,967 XRP for its four-fund tracked cohort. This is not a complete universe of every U.S. spot XRP product.
+- Do not fill missing issuers with zero, and do not treat partial daily files as final flows. Different aggregators use different fund cohorts and reporting timestamps.
+
+### Market interpretation
+
+The price remained inside the observed 24-hour range while open-interest estimates were falling and funding observations were negative. This is insufficient to distinguish position reduction, hedging, basis dislocation, or a directional short build. No directional forecast is issued.
+
+## 6. Institutional and capital-flow research
+
+### Ripple and Coinbase
+
+- Ripple's October 28, 2026 announcement says RLUSD became available through Coinbase Prime, Coinbase Exchange and Coinbase Retail, with deposits/withdrawals on XRPL, Base and Ethereum.
+- Coinbase Global Exchange collateral use was explicitly described as a future phase (“will follow”), not a live capability on the announcement date.
+- Ripple's announcement: https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/
+
+### Standard Chartered and LMAX
+
+- Standard Chartered's XRPL-issued RLUSD custody support through its DIFC branch was announced live on October 12, 2026.
+- RLUSD collateral eligibility and collateral mirroring to LMAX are planned future capabilities, subject to final documentation, successful testing, law/regulation, internal approvals and jurisdictional readiness.
+- Source: https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/
+
+### SBI, Ripple, Circle, JPYSC and alternative rails
+
+- SBI VC Trade announced RLUSD handling on June 24, 2026 and classifies it as a Japanese Type 4 electronic payment instrument. The announcement does not specify a supported blockchain network; do not infer that SBI customer deposits/withdrawals are on XRPL.
+- SBI and Ripple describe their collaboration as dating to 2016. SBI VC Trade is a subsidiary of SBI Holdings; SBIC East/Central/West are separate companies.
+- SBI and Startale joined Open Standard on October 16, 2026 and are exploring a proof of concept for interoperability between JPYSC and OUSD. SBI explicitly says this is a study of a PoC, not a live production payment service.
+- JPYSC launched on June 24, 2026 inside SBI VC Trade accounts only. The announcement says public-chain circulation is a later step once legal and tax practices are resolved.
+- Circle launched Arc mainnet on September 16, 2026. SBI Group is in the founding validator cohort; Circle says Arc uses USDC for gas and is designed for stablecoin payments, FX, lending and institutional markets. Coinbase is listed among exchanges providing access to Arc, not as a founding validator.
+- These are credible alternative or adjacent stablecoin rails. They may compete with XRP bridge-liquidity use cases, but they may also be complementary. Actual payment volume, XRP routing share, inventory, settlement and market-maker balances are not yet established.
+- Sources:
+  - https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
+  - https://www.sbigroup.co.jp/news/2026/0624_16425.html
+  - https://www.sbigroup.co.jp/news/2026/1016_16665.html
+  - https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access
+  - https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx
+
+### Circle and Coinbase economics
+
+Circle's Q3 2026 Form 10-Q reports:
+- USDC in circulation at September 30, 2026: 73.879 billion USD.
+- Nine-month average USDC in circulation: 74.983 billion USD.
+- Coinbase distribution costs: 331.3 million USD for Q3 2026 and 986.6 million USD for the first nine months of 2026.
+- The nine-month Coinbase distribution cost was 10.2 million USD lower year over year, because a lower Coinbase share of average USDC on-platform balances more than offset higher reserve income; other strategic distribution partnerships increased distribution costs by 34.2 million USD.
+- This is direct economic distribution dependence, not evidence that USDC adoption automatically creates XRP demand.
+- SEC source: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+
+### Coinbase collateral disclosure
+
+Coinbase's Q3 2026 Form 10-Q reports, at September 30:
+- 1.009 billion USD of recognized lending collateral.
+- 3.285 billion USD of customer collateral not recognized as collateral or an obligation to return it on Coinbase's balance sheet.
+- 325.766 million USD of recognized derivatives collateral.
+- Derivative collateral requirements of at least 100% of derivative notional.
+- “Other crypto assets” are aggregated and each is below 5% of the relevant collateral total. The filing does not name XRP or disclose an XRP-specific collateral amount. Do not infer that XRP is included.
+- SEC source: https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+
+### Evernorth — actual cash versus XRP contributed in kind
+
+The November 13, 2026 SEC 424B3 supplement attaches Evernorth's September 30 Form 10-Q. It materially clarifies the distinction between cash deployed and XRP contributed:
+
+- Pubco raised 214.1 million USD in cash under the private-placement subscription agreements and used that cash to purchase 84,365,876 XRP.
+- The same agreements also involved 261,919,096 XRP contributed in kind. These tokens are not a cash purchase.
+- Ripple separately contributed 126,791,458 XRP to Pathfinder. This is an in-kind XRP contribution, not cash and not an open-market purchase.
+- In connection with the October 9 closing, investors contributed approximately 388,910,554 XRP in kind. The company later transferred 346,484,972 XRP to Pathfinder. Adding that transfer to Ripple's 126,791,458 XRP contribution gives a calculated 473,276,430 XRP in Pathfinder; the filing's summary rounds the combined holding to approximately 473 million XRP. This calculation should remain explicitly identified as derived, not quoted as a single reported line item.
+- The 214.1 million USD cash purchase is not additive to the later 272.6 million USD gross closing cash figure. The latter consists of 224.6 million USD from private-placement investments plus 48.0 million USD released from the SPAC trust account, before transaction expenses.
+- The company issued a 30.0 million USD convertible note on October 13 and received 29.0 million USD net after a 1.0 million USD advisor fee. The proceeds were intended for general corporate purposes, including potential XRP/ecosystem acquisitions; no specific use of those proceeds to purchase XRP is established here.
+- From October 12 through November 9, warrant exercises generated 35.3 million USD gross cash proceeds. No evidence in this filing establishes that those proceeds purchased XRP.
+- The Ripple 1.0 million USD revolving facility was undrawn as of September 30. Pathfinder had paid certain operating costs on Evernorth's behalf, leaving a 3.6 million USD related-party payable.
+- September 30 unrestricted cash was only 91,397 USD, with a 10.0 million USD working-capital deficit and 185.6 million USD accumulated deficit. This is a pre-closing snapshot; it must not be presented as post-closing cash after the October transactions.
+- Evernorth accounts for XRP as an indefinite-lived intangible asset at cost less impairment, using the lowest observable intraday price since acquisition, rather than fair-value mark-to-market accounting.
+- SEC source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm
+
+## 7. Japan SBIC identity and exact-phrase research
+
+The Japanese “SBIC” references resolve to three separate statutory investment-development companies, not SBI Holdings:
+
+- Tokyo Small and Medium Business Investment & Consultation Co., Ltd. — SBIC East Japan; corporate number 9011001030621; established November 15, 1963; capital 6.6734 billion JPY; shareholders include local governments, chambers of commerce, financial institutions and operating companies.
+- Nagoya Small and Medium Business Investment & Consultation Co., Ltd. — SBIC Central Japan; established November 18, 1963; capital 4.3008 billion JPY; five prefectures in the central region.
+- Osaka Small and Medium Business Investment & Consultation Co., Ltd. — SBIC West Japan; established November 20, 1963; capital 6.822 billion JPY; 24 prefectures in the west.
+- Their official pages describe them as sister companies established under the Small and Medium Business Investment & Consultation Company Act (Act No. 101 of June 10, 1963). Tokyo SBIC says it is now a privatized, independent company. No SBI Holdings parent/subsidiary relationship was found.
+- Official sources:
+  - https://www.sbic.co.jp/company/profile/
+  - https://www.sbic-cj.co.jp/company/about/
+  - https://www.sbic-wj.co.jp/profiles/profile/
+  - https://www.sbic.co.jp/company/history/
+
+“SBIC + ChatGPT” is not evidence of a joint venture or OpenAI partnership. Tokyo SBIC did host public seminars on generative AI/ChatGPT, including February 26, 2025 and March 5, 2026, with external speakers. Those are educational events, not a corporate partnership.
+- https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf
+- https://www.sbic.co.jp/seminar/20260305js/
+
+ASK appears in Permission.io support material as a platform balance/withdrawal token, but no direct XRP, XRPL, Ripple, SBI or SBIC relationship was verified. Searches for the exact phrases “ASK Coin,” “actual capital,” and “SBIC, ChatGPT SBIC” did not establish a single XRP-linked entity or transaction. The Evernorth filing above is the strongest current primary evidence for actual XRP-related cash and in-kind capital flows.
+
+## 8. Camilla/Kamilah Stevenson identity and YouTube inventory
+
+- The iHeart episode “Crypto Panics! with Dr. Kamilah Stevenson” is dated June 11, 2026 and is 42 minutes long.
+- In the interview transcript, the guest self-identifies her YouTube presence as “doctor Camilla Stevenson,” her X identity as “cam i am cam Stevenson,” and her Instagram name as “Kamilla Stevenson”; she also warns that fake pages exist.
+- Her official site identifies Dr. Kamilah Stevenson / The Wealth Doctor.
+- This is sufficient to connect the interview guest with the Kamilah/Camilla/Kamilla spelling variants. It is not sufficient to authenticate a specific YouTube channel URL because the exact channel was not cross-linked from the official site and the guest explicitly warned about impersonators.
+- No YouTube video inventory was attributed to her in this run. The iHeart podcast is an identity reference, not a verified YouTube upload.
+- Sources:
+  - https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/
+  - https://learn.kamilahstevenson.com/
+
+## 9. Prediction engine and evidence eligibility
+
+- Implemented on the integration branch: public-source ingestion adapter, point-in-time feature-store contracts, source/quality validation, event timeline, naive/momentum/mean-reversion/volatility baselines, chronological walk-forward evaluation with purge/embargo, Brier/log-loss calibration, drift monitoring, and a fail-closed forecast ledger.
+- Forecast ledger requires at least 100 out-of-sample observations and 100 shadow observations, five independent source groups, calibration error no greater than 0.05, stable drift, and a candidate that beats all four baselines on both Brier score and log loss. The ledger also requires horizon embargo and an independent Ed25519 evaluator attestation.
+- Current curated event registry remains 125 events, 48 with exact publisher timestamps, 77 without exact timestamps. Raw byte receipts: 0. Model-eligible events: 0. Forecasts issued: 0.
+- The public-ingestion workflow is designed and unit-tested but has not run on main. Scheduled execution, real-source raw receipts, point-in-time feature snapshots, model calibration, drift evaluation and shadow validation are not yet verified in production.
+- GitHub Actions artifact retention (90 days) is not immutable storage. A durable append-only/WORM receipt store and independently verifiable receipt chain remain required.
+- No directional XRP forecast is justified. No paper trading or real-money action was performed.
+
+## 10. Nine-platform coordination
+
+The current map remains in the repository. Only the ChatGPT/GitHub path was authenticated and exercised in this run. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks were not independently authenticated or tested for data flow. No live nine-platform coordination quorum is claimed. Least-privilege fallbacks remain in force.
+
+## 11. Final decision and next concrete action
+
+- DESIGNED: the integrated XRP ingestion, feature, event, baseline, calibration, drift and forecast-gating architecture.
+- EXECUTED: mainline reconciliation into the existing integration branch; full repository test suite and required visible CI/security checks passed on exact head 9f4f6087; research updates and source reconciliation completed.
+- VERIFIED: branch is 186 ahead / 0 behind current main; exact-head push full suite passed; Pages validation passed; dependency audit and fail-closed gates passed; the latest main-side Pages failure and Barrot Sync failure mode were diagnosed.
+- NOT VERIFIED: independent reviewer approval, branch-protection/required-check configuration, WORM raw-source retention, scheduled production ingestion, live XRP order-book depth, and model out-of-sample superiority.
+- Decision: DO NOT MERGE #1663 while it remains draft, has zero independent reviews, CODEOWNERS is self-only, and branch protection cannot be inspected. Do not close source PRs.
+- Next action: obtain independent security/code review and verify repository branch-protection settings; then run the full suite and all security gates on the resulting exact PR head. Continue public-source research and preserve dissenting market-data observations. No new PR, deployment, secret rotation, Kaggle submission, paper trade, transfer or real-money action is authorized by this run.
