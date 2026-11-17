@@ -220,5 +220,722 @@
     ],
     "winner": "threads",
     "note": "Live 8-server benchmark; only 1 remote reachable, so deltas are within the ~100ms noise band. tests/test_mcp_sync.py proves 4-server concurrency (async < 0.75x sequential). CLI lines: 113."
+  },
+  {
+    "timestamp": "20261117_001207",
+    "kind": "meta_analysis",
+    "target": "RE_WISHLIST",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "none",
+    "tests": [],
+    "candidates": [
+      {
+        "name": "loop_original",
+        "stages": 10,
+        "defined_stages": 7,
+        "checkable_artifacts": 1,
+        "self_reported_numbers": 2,
+        "score": 37.0
+      },
+      {
+        "name": "loop_v1_ablation",
+        "stages": 5,
+        "defined_stages": 5,
+        "checkable_artifacts": 3,
+        "self_reported_numbers": 0,
+        "score": 69.0
+      },
+      {
+        "name": "loop_v2_witness",
+        "stages": 3,
+        "defined_stages": 3,
+        "checkable_artifacts": 3,
+        "self_reported_numbers": 0,
+        "score": 82.0
+      },
+      {
+        "name": "loop_v3_ledger",
+        "stages": 7,
+        "defined_stages": 7,
+        "checkable_artifacts": 7,
+        "self_reported_numbers": 0,
+        "score": 95.0
+      }
+    ],
+    "winner": "loop_v3_ledger",
+    "applied": false,
+    "losers_deleted": [],
+    "rubric": {
+      "checkable_artifacts": 40,
+      "information_preservation": 30,
+      "failure_containment": 30,
+      "note": "judgment rubric, NOT measured"
+    },
+    "evidence": {
+      "loop_implementations_in_py": 0,
+      "tracked_files": 1324,
+      "tracked_py": 532,
+      "collected_tests": 1028,
+      "test_functions": 632,
+      "identical_duplicate_pairs": 10,
+      "near_clone_pairs": 3,
+      "scripts_total": 120,
+      "scripts_without_test_reference": 95,
+      "untested_top_level_modules": 21,
+      "sys_path_hacks": 31,
+      "bare_except_files": 8,
+      "zero_byte_root_files": 16,
+      "coverage_gate": 70,
+      "subset_coverage_measured": 14.15,
+      "full_suite": {
+        "command": "python -m pytest -o addopts= -q -p no:cacheprovider",
+        "passed": 1027,
+        "skipped": 1,
+        "subtests_passed": 8,
+        "wall_s": 299.69,
+        "status": "green",
+        "note": "green with coverage gate disabled; with pytest.ini addopts the same run exits non-zero at 70% gate"
+      },
+      "known_non_test_failures": 0
+    },
+    "recommend_first": [
+      "loop",
+      "pytest_ini+transmute_scoring",
+      "memory_cluster"
+    ],
+    "artifact": "results/re_wishlist.md"
+  },
+  {
+    "timestamp": "20261117_021450",
+    "target": "/root/barrot/Barrot-Agent/barrot_agent/geometry/signature.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "auto",
+    "tests": [
+      "tests/test_geometry_object.py",
+      "tests/test_geometry_relations.py",
+      "tests/test_geometry_signature.py",
+      "tests/test_geometry_states.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 609,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 8192,
+        "test_jitter_ms": 2061,
+        "score": 991598.0,
+        "tail": "........................................................................ [100%]\n72 passed in 1.80s\n"
+      },
+      {
+        "name": "v_noop.py",
+        "compile_ok": true,
+        "compile_ms": 494,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 6227,
+        "test_jitter_ms": 1317,
+        "score": 993563.0,
+        "tail": "........................................................................ [100%]\n72 passed in 1.69s\n"
+      },
+      {
+        "name": "v_break.py",
+        "compile_ok": true,
+        "compile_ms": 541,
+        "lines": 210,
+        "test_ok": false,
+        "test_rate": 0.9861111111111112,
+        "test_passed": 71,
+        "test_total": 72,
+        "test_wall_ms": 9093,
+        "test_jitter_ms": 2295,
+        "score": 976808.11,
+        "tail": ":128: in canonical_form\n    tuple(_quantize(coordinate, tolerance) for coordinate in vertex)\nbarrot_agent/geometry/signature.py:128: in <genexpr>\n    tuple(_quantize(coordinate, tolerance) for coordinate in vertex)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nvalue = 0.0, tolerance = 0.0\n\n    def _quantize(value: float, tolerance: float) -> int:\n>       scaled = value / tolerance\n                 ^^^^^^^^^^^^^^^^^\nE       ZeroDivisionError: float division by zero\n\nbarrot_agent/geometry/signature.py:71: ZeroDivisionError\n=========================== short test summary info ============================\nFAILED tests/test_geometry_signature.py::test_tolerance_must_be_positive_and_finite\n1 failed, 71 passed in 4.30s\n"
+      }
+    ],
+    "winner": "v_noop.py",
+    "applied": true,
+    "losers_deleted": [
+      "v_break.py"
+    ]
+  },
+  {
+    "timestamp": "20261117_021713",
+    "target": "/root/barrot/Barrot-Agent/barrot_agent/geometry/signature.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "auto",
+    "tests": [
+      "tests/test_geometry_object.py",
+      "tests/test_geometry_relations.py",
+      "tests/test_geometry_signature.py",
+      "test_geometry_states.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 389,
+        "lines": 210,
+        "test_ok": false,
+        "test_rate": 0.0,
+        "test_passed": 0,
+        "test_total": 0,
+        "test_wall_ms": 3596,
+        "test_jitter_ms": 0,
+        "score": -3806.0,
+        "tail": "\nno tests ran in 0.00s\nERROR: file or directory not found: test_geometry_states.py\n\n"
+      },
+      {
+        "name": "v_noop2.py",
+        "compile_ok": true,
+        "compile_ms": 495,
+        "lines": 210,
+        "test_ok": false,
+        "test_rate": 0.0,
+        "test_passed": 0,
+        "test_total": 0,
+        "test_wall_ms": 3347,
+        "test_jitter_ms": 0,
+        "score": -3557.0,
+        "tail": "\nno tests ran in 0.00s\nERROR: file or directory not found: test_geometry_states.py\n\n"
+      }
+    ],
+    "winner": "v_noop2.py",
+    "applied": true,
+    "losers_deleted": []
+  },
+  {
+    "timestamp": "20261117_021724",
+    "target": "/root/barrot/Barrot-Agent/barrot_agent/geometry/signature.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "auto",
+    "tests": [
+      "tests/test_geometry_object.py",
+      "tests/test_geometry_relations.py",
+      "tests/test_geometry_signature.py",
+      "tests/test_geometry_states.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 388,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 3979,
+        "test_jitter_ms": 0,
+        "score": 995811.0,
+        "tail": "........................................................................ [100%]\n72 passed in 0.98s\n"
+      },
+      {
+        "name": "v_noop2.py",
+        "compile_ok": true,
+        "compile_ms": 467,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 4315,
+        "test_jitter_ms": 0,
+        "score": 995475.0,
+        "tail": "........................................................................ [100%]\n72 passed in 1.27s\n"
+      }
+    ],
+    "winner": "baseline",
+    "applied": false,
+    "losers_deleted": []
+  },
+  {
+    "timestamp": "20261117_021819",
+    "target": "/root/barrot/Barrot-Agent/barrot_agent/geometry/signature.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "auto",
+    "tests": [
+      "tests/test_geometry_object.py",
+      "tests/test_geometry_relations.py",
+      "tests/test_geometry_signature.py",
+      "tests/test_geometry_states.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 387,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 3948,
+        "test_jitter_ms": 3242,
+        "score": 995842.0,
+        "tail": "........................................................................ [100%]\n72 passed in 0.95s\n"
+      },
+      {
+        "name": "v_noop2.py",
+        "compile_ok": true,
+        "compile_ms": 463,
+        "lines": 210,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 72,
+        "test_total": 72,
+        "test_wall_ms": 4137,
+        "test_jitter_ms": 2218,
+        "score": 995653.0,
+        "tail": "........................................................................ [100%]\n72 passed in 1.04s\n"
+      }
+    ],
+    "winner": "v_noop2.py",
+    "applied": true,
+    "losers_deleted": []
+  },
+  {
+    "timestamp": "20261117_021847",
+    "kind": "phase1_scoring_fix",
+    "target": "pytest.ini + pyproject.toml + scripts/transmute.py + .github/workflows/ci.yml",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_geometry_object.py",
+      "tests/test_geometry_relations.py",
+      "tests/test_geometry_signature.py",
+      "tests/test_geometry_states.py"
+    ],
+    "candidates": [
+      {
+        "name": "v0_current",
+        "desc": "pytest.ini addopts active: --cov + --cov-fail-under=70 + -v",
+        "rc": 1,
+        "passed": 72,
+        "total": 72,
+        "rate": 1.0,
+        "wall_ms": 32724,
+        "jitter_ms": 578,
+        "coverage_xml": true,
+        "score": 967076.0
+      },
+      {
+        "name": "v1_no_cov",
+        "desc": "scoped run with --no-cov (and -o addopts= in transmute)",
+        "rc": 0,
+        "passed": 72,
+        "total": 72,
+        "rate": 1.0,
+        "wall_ms": 7108,
+        "jitter_ms": 517,
+        "coverage_xml": false,
+        "score": 992692.0
+      },
+      {
+        "name": "v2_split_gate",
+        "desc": "keep --cov, drop --cov-fail-under via -o addopts",
+        "rc": 1,
+        "passed": 72,
+        "total": 72,
+        "rate": 1.0,
+        "wall_ms": 21750,
+        "jitter_ms": 2173,
+        "coverage_xml": true,
+        "score": 978050.0
+      },
+      {
+        "name": "v3_scorer_ignores_gate",
+        "desc": "keep addopts, make scorer ignore exit code",
+        "rc": 1,
+        "passed": 72,
+        "total": 72,
+        "rate": 1.0,
+        "wall_ms": 35252,
+        "jitter_ms": 7167,
+        "coverage_xml": true,
+        "score": 964548.0
+      }
+    ],
+    "winner": "v1_no_cov",
+    "applied": true,
+    "losers_deleted": [],
+    "root_cause": "coverage gate was declared TWICE for every invocation: pytest.ini --cov-fail-under=70 AND pyproject.toml [tool.coverage.report] fail_under=70. A scoped run therefore exits 1 with 72/72 passing.",
+    "changes": [
+      "pytest.ini: removed --cov-fail-under=70 from addopts (kept --cov and reports)",
+      "pyproject.toml: [tool.coverage.report] fail_under 70 -> 0 with explicit warning comment",
+      ".github/workflows/ci.yml: full-suite step now enforces --cov-fail-under=70 (the only gate)",
+      "scripts/transmute.py: pytest cmd gains --no-cov; tie band is now max(TIE_EPS, measured jitter); missing --tests path aborts instead of scoring 0%"
+    ],
+    "proof": {
+      "scoped_rc_before": 1,
+      "scoped_rc_after": 0,
+      "scoped_wall_ms_before": 32724,
+      "scoped_wall_ms_after": 17720,
+      "transmute_candidate_wall_ms_before": 32724,
+      "transmute_candidate_wall_ms_after": 3948,
+      "score_spread_before_ms": 7167,
+      "tie_band_before": 100,
+      "full_suite_passed": 1027,
+      "full_suite_skipped": 1,
+      "full_suite_coverage_pct": 77.57,
+      "full_suite_wall_s": 418.17,
+      "gate_satisfiable_on_full_suite": true,
+      "negative_control": "v_break.py (one geometry test failing) parsed 71/72 = 99%, score 976808 vs 993563 -> rejected"
+    },
+    "corrected_earlier_claim": "The wishlist said the gate makes a passing variant score worse than a failing baseline. Measured: false. rate parses 72/72 = 1.0 even when the gate exits 1, so score was never zeroed. The real damage is (a) rc=1 on green tests, (b) 4.6x wall inflation (32.7s vs 7.1s), (c) 7.2s jitter against a 100ms tie band, which makes winner selection noise-dominated.",
+    "gate_preserved": "70% on full suite only; measured 77.57% so the gate is satisfiable",
+    "artifact": "/tmp/opencode/phase1_bench.json"
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "__init__.py x3",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "no_action",
+    "applied": false,
+    "losers_deleted": [],
+    "canonical": null,
+    "copies": [
+      "barrot_agent/repair/__init__.py",
+      "barrot_agent/repository/__init__.py",
+      "barrot_agent/tools/__init__.py"
+    ],
+    "detail": "All three are 0-byte package markers. Identical content is structural, not duplication.",
+    "proof": {
+      "sha256_prefix": "e3b0c44298fc1c14",
+      "action": "kept all three"
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "hrm_ternary.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "hash_lock",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "core/hrm_ternary.py",
+    "copies": [
+      "core/hrm_ternary.py",
+      "hf_space/hrm_ternary.py"
+    ],
+    "detail": "NOT shimmed: hf_space is a standalone HuggingFace Space. app.py:38 imports bare 'hrm_ternary' and the source comment says it 'ships alongside app.py on the Space'. A shim to core/ would break the deploy.",
+    "proof": {
+      "sha256_prefix": "e9b04588afd69eab",
+      "guard": "tests/test_duplicate_shims.py::test_hrm_ternary_copies_are_byte_identical"
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "mem_palace.py x3",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "shim",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/mem_palace.py",
+    "copies": [
+      "barrot_agent/mem_palace.py",
+      "scripts/mem_palace.py",
+      "tools/mem_palace.py"
+    ],
+    "detail": "Two duplicates replaced with import shims + __main__ delegation to initialize_palace(). No importer existed (grep: 0), so risk was limited to the CLI.",
+    "proof": {
+      "sha256_prefix": "024c90334047e50e",
+      "cli_check": "python scripts/mem_palace.py -> 'MemPalace Structure Initialized.'"
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "granite_model_config.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "shim",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/tools/granite_model_config.py",
+    "copies": [
+      "barrot_agent/tools/granite_model_config.py",
+      "scripts/granite_model_config.py"
+    ],
+    "detail": "Canonical chosen because vision_pipeline.py:10 and inference_provider.py:12 import the package path. scripts/ copy became a shim.",
+    "proof": {
+      "sha256_prefix": "c2fb77f9459ba912",
+      "importers": 2
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "score_to_signal.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "shim",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/analysis/score_to_signal.py",
+    "copies": [
+      "barrot_agent/analysis/score_to_signal.py",
+      "utils/score_to_signal.py"
+    ],
+    "detail": "utils/ copy became a shim. scripts/emit_signal_with_hrm.py:26 imports the bare name after putting utils/ AND the repo root on sys.path, so the shim resolves.",
+    "proof": {
+      "sha256_prefix": "c152c941cdf74b9b",
+      "cli_check": "python scripts/emit_signal_with_hrm.py --help -> usage printed"
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "deploy_huggingface.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "shim",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/orchestration/deploy_huggingface.py",
+    "copies": [
+      "barrot_agent/orchestration/deploy_huggingface.py",
+      "scripts/deploy_huggingface.py"
+    ],
+    "detail": "CLI duplicate replaced with a delegate shim: __main__ raises SystemExit(main()). No CI workflow references the script path (grep: 0).",
+    "proof": {
+      "sha256_prefix": "ab5df664d132a543",
+      "cli_check": "python scripts/deploy_huggingface.py -> same HF_TOKEN error as before the change"
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "trial_tracker.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "shim",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/monetization/trial_tracker.py",
+    "copies": [
+      "barrot_agent/monetization/trial_tracker.py",
+      "barrot_agent/tools/trial_tracker.py"
+    ],
+    "detail": "Canonical = monetization because the only live importer (.barrot/disabled_tests/test_longevity_modules.py:15) uses that path. tools/ copy became an in-package shim.",
+    "proof": {
+      "sha256_prefix": "9f4bb6b085b908c2",
+      "importers": 1
+    }
+  },
+  {
+    "timestamp": "20261117_022526",
+    "kind": "phase2_dedupe",
+    "target": "grant_generator.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "hash_lock",
+    "applied": true,
+    "losers_deleted": [],
+    "canonical": "barrot_agent/monetization/grant_generator.py",
+    "copies": [
+      "barrot_agent/monetization/grant_generator.py",
+      "barrot_agent/tools/grant_generator.py"
+    ],
+    "detail": "5-line print-only script with top-level side effects. A 'from X import *' shim would print on import, which is worse than the duplicate. Copies kept and hash-locked.",
+    "proof": {
+      "sha256_prefix": "46a5a71d3266a013",
+      "guard": "tests/test_duplicate_shims.py::test_grant_generator_copies_are_byte_identical"
+    }
+  },
+  {
+    "timestamp": "20261117_023315",
+    "kind": "phase3_cleanup",
+    "target": "repo root zero-byte debris",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_duplicate_shims.py"
+    ],
+    "candidates": [],
+    "winner": "move_to_archive",
+    "applied": true,
+    "losers_deleted": [],
+    "detail": "16 zero-byte root files moved to archive/debris-20261116/ (1 git mv for the tracked .termux_dna_harvest.log, 15 plain mv). No file deleted.",
+    "proof": {
+      "root_zero_byte_before": 16,
+      "root_zero_byte_after": 0,
+      "archive_count": 16,
+      "import_smoke": "barrot_agent + geometry + orchestration import OK",
+      "cli_smoke": "scripts/mem_palace.py exit 0",
+      "collection": "1048 tests collected, 0 import errors",
+      "reference_check": "no code references .termux_dna_harvest.log (grep py/yml/sh)"
+    },
+    "inventory_logged_not_fixed": {
+      "sys_path_insert_tracked": 31,
+      "of_which_phase2_shims": 5,
+      "preexisting": 26,
+      "bare_except_tracked": 8,
+      "scripts_without_test_reference": 94,
+      "scripts_total": 121
+    },
+    "artifact": "results/re_wishlist.md#phase-3-inventory-listed-not-fixed"
+  },
+  {
+    "timestamp": "20261117_024944",
+    "target": "/root/barrot/Barrot-Agent/scripts/witness_loop.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "auto",
+    "tests": [
+      "tests/test_witness_loop.py"
+    ],
+    "candidates": [
+      {
+        "name": "baseline",
+        "compile_ok": true,
+        "compile_ms": 585,
+        "lines": 182,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 10,
+        "test_total": 10,
+        "test_wall_ms": 3429,
+        "test_jitter_ms": 21726,
+        "score": 996389.0,
+        "tail": "..........                                                               [100%]\n10 passed in 0.45s\n"
+      },
+      {
+        "name": "witness_v1_ablation_only.py",
+        "compile_ok": true,
+        "compile_ms": 556,
+        "lines": 71,
+        "test_ok": false,
+        "test_rate": 0.1,
+        "test_passed": 1,
+        "test_total": 10,
+        "test_wall_ms": 6048,
+        "test_jitter_ms": 4711,
+        "score": 93881.0,
+        "tail": "hort test summary info ============================\nFAILED tests/test_witness_loop.py::test_claim_requires_witness - AttributeErr...\nFAILED tests/test_witness_loop.py::test_flipped_witness_is_supported - Attrib...\nFAILED tests/test_witness_loop.py::test_unflipped_witness_is_refuted_but_recorded\nFAILED tests/test_witness_loop.py::test_rule_that_hurts_is_contradicted - Att...\nFAILED tests/test_witness_loop.py::test_witness_for_another_rule_is_refused\nFAILED tests/test_witness_loop.py::test_witness_for_another_task_is_refused\nFAILED tests/test_witness_loop.py::test_chain_links_records - AttributeError:...\nFAILED tests/test_witness_loop.py::test_tampered_record_is_detected - Attribu...\nFAILED tests/test_witness_loop.py::test_assert_supported_fails_closed - Attri...\n9 failed, 1 passed in 2.79s\n"
+      },
+      {
+        "name": "witness_v3_durable_ledger.py",
+        "compile_ok": true,
+        "compile_ms": 604,
+        "lines": 195,
+        "test_ok": true,
+        "test_rate": 1.0,
+        "test_passed": 10,
+        "test_total": 10,
+        "test_wall_ms": 5412,
+        "test_jitter_ms": 850,
+        "score": 994393.0,
+        "tail": "..........                                                               [100%]\n10 passed in 0.98s\n"
+      }
+    ],
+    "winner": "witness_v3_durable_ledger.py",
+    "applied": true,
+    "losers_deleted": [
+      "witness_v1_ablation_only.py"
+    ]
+  },
+  {
+    "timestamp": "20261117_025247",
+    "kind": "phase4_meta_re_loop",
+    "target": "scripts/witness_loop.py",
+    "cwd": "/root/barrot/Barrot-Agent",
+    "runner": "pytest",
+    "tests": [
+      "tests/test_witness_loop.py"
+    ],
+    "candidates": [
+      {
+        "name": "V1_ablation_only",
+        "tests_passed": "1/10",
+        "lines": 71,
+        "score": 93881.0,
+        "outcome": "deleted"
+      },
+      {
+        "name": "V2_witness_plus_chain",
+        "tests_passed": "10/10",
+        "lines": 182,
+        "score": 996389.0,
+        "outcome": "superseded"
+      },
+      {
+        "name": "V3_durable_ledger",
+        "tests_passed": "10/10",
+        "lines": 195,
+        "score": 994393.0,
+        "outcome": "applied"
+      }
+    ],
+    "winner": "V3_durable_ledger",
+    "applied": true,
+    "losers_deleted": [
+      "witness_v1_ablation_only.py"
+    ],
+    "detail": "Anti-cheat stage replaced: introspection ('if I delete this rule, does it work?') -> executed ablation run(True) vs run(False), recorded in a hash-chained ledger with states SUPPORTED/REFUTED/CONTRADICTED. Winner chosen inside a 21726ms jitter tie band, so speed was settled by a dedicated 1000-record benchmark, not by pytest wall time.",
+    "proof": {
+      "tests": "10 passed (before and after)",
+      "benchmark_1000_records": {
+        "append_ms": {
+          "V2": 7350.7,
+          "V3": 5103.4
+        },
+        "verify_ms": {
+          "V2": 59.7,
+          "V3": 48.5
+        },
+        "assert_supported_ms": {
+          "V2": 24.59,
+          "V3": 13.63
+        },
+        "ledger_bytes_identical": 550670,
+        "tamper_detected": true
+      },
+      "artifact": "results/meta_re_loop.md",
+      "loop_was_prose": "BARROT-12AM-MASTER.md 95 lines; 0 .py hits for TRANSFER_SUCCESS/anti_cheat_passed/AXIOM_FORGE/NOVELTY_SCORE; stages 8-10 (Plugin/Skill/Phoenix) named at line 25, never specified."
+    }
   }
 ]

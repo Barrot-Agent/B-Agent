@@ -1,32 +1,26 @@
 #!/usr/bin/env python3
-import os
-import datetime
+"""Deprecated duplicate — import shim only.
 
-# MemPalace Constants
-PALACE_ROOT = os.path.expanduser("~/B-Agent/MemPalace")
-HALLS = ["facts", "events", "discoveries", "preferences", "advice"]
+Canonical: barrot_agent/mem_palace.py
+This file was byte-identical to that module (sha256 d342878c…b0e96d6).
+Do not add logic here. Edit the canonical module and this shim follows.
+"""
+from __future__ import annotations
 
+import sys
+from pathlib import Path
 
-def initialize_palace():
-    for hall in HALLS:
-        os.makedirs(f"{PALACE_ROOT}/hall_{hall}", exist_ok=True)
-    print("MemPalace Structure Initialized.")
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
 
-
-def store_memory(wing, room, hall, content):
-    """
-    wing: Project name (e.g., 'XRP_Accumulation')
-    room: Sub-topic (e.g., 'syndrome_extraction')
-    hall: One of the 5 Halls
-    """
-    path = f"{PALACE_ROOT}/hall_{hall}/{wing}_{room}.md"
-    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    with open(path, "a") as f:
-        f.write(f"\n--- ENTRY: {timestamp} ---\n{content}\n")
-    print(f"Memory anchored in {hall}: {wing}_{room}")
-
+from barrot_agent.mem_palace import *  # noqa: F401,F403
+from barrot_agent.mem_palace import (  # noqa: F401
+    HALLS,
+    PALACE_ROOT,
+    initialize_palace,
+    store_memory,
+)
 
 if __name__ == "__main__":
     initialize_palace()
-    # Usage: python mem_palace.py [Wing] [Room] [Hall] [Content]

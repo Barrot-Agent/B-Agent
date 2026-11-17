@@ -1,0 +1,1 @@
+PHASE 2 - DEDUPE: 10 byte-identical pairs (mem_palace x3, source_registry x2, source_acquisition x2, sandbox x2, hrm_ternary x2, granite_model_config x2 + 4 others). For each: diff, confirm identical, keep canonical, replace duplicate with import shim. Test module, keep if pass, rollback if fail. Log to results/transmute_log.json. Commit after phase.

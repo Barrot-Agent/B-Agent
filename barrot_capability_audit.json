@@ -10,6 +10,7 @@
   },
   "current": [
     "a2a_server.py",
+    "analyze_reference.py",
     "apex_audit_summary.py",
     "ask_barrot.py",
     "audio_ingest.py",
@@ -41,7 +42,9 @@
     "barrot_termux_practice.py",
     "barrot_termux_self_repair.py",
     "barrot_validate_target.py",
+    "bench_reference.py",
     "benchmark_summary.py",
+    "bundle_next_phases.py",
     "capability_discovery.py",
     "check_signal_accuracy.py",
     "check_table_freshness.py",
@@ -74,6 +77,8 @@
     "knowledge_distill_btc.py",
     "knowledge_ingest.py",
     "knowledge_ingest_btc.py",
+    "live_refine_verify.py",
+    "make_beats.py",
     "make_track.py",
     "market_analysis_engine.py",
     "market_analysis_trading_recommendations.py",
@@ -93,6 +98,7 @@
     "patch_report_mode.py",
     "pillars_check.py",
     "pingpong.py",
+    "pingpong_refine.py",
     "research_synthesis.py",
     "research_topics.py",
     "resolve_issue.py",
@@ -115,6 +121,7 @@
     "termux_runner.py",
     "transmute.py",
     "vader_check.py",
+    "verify_artifacts.py",
     "video_analysis_autofix.py",
     "webmcp_live_sandbox.py",
     "webmcp_monetization_enrich.py",
@@ -122,15 +129,22 @@
     "webmcp_trend_ingest.py",
     "webmcp_trend_summary.py",
     "wire_in_hrm.py",
+    "witness_loop.py",
     "write_lyrics.py"
   ],
-  "current_capabilities": 114,
+  "current_capabilities": 122,
   "evidence": {
     "a2a_server.py": {
       "fingerprint": "67c784e1362b543ddb43c6f6a45ce53e8a3494174d6d3cc036b16c750c5d571b",
       "has_workflow": false,
       "path": "/root/barrot/Barrot-Agent/scripts/a2a_server.py",
       "size": 6766
+    },
+    "analyze_reference.py": {
+      "fingerprint": "c1a80fb14824239af8d59bb97face5eea4dd6aecc1d3355b1a72e9c48ba80e65",
+      "has_workflow": false,
+      "path": "/root/barrot/Barrot-Agent/scripts/analyze_reference.py",
+      "size": 33239
     },
     "apex_audit_summary.py": {
       "fingerprint": "81b66ec0afcd0ffa6c35406840941c635d6fc28c5dead1399d569f1b49f0d1e5",
@@ -318,11 +332,23 @@
       "path": "/root/barrot/Barrot-Agent/scripts/barrot_validate_target.py",
       "size": 1727
     },
+    "bench_reference.py": {
+      "fingerprint": "ddc1787de3aeb72de3b972b606fac6ab9bc57a927e5138a610d77f9272b7345f",
+      "has_workflow": false,
+      "path": "/root/barrot/Barrot-Agent/scripts/bench_reference.py",
+      "size": 10538
+    },
     "benchmark_summary.py": {
       "fingerprint": "89117b4f8e1e47ee6aed386d07689decf745f05db1f4b343d3bdcc871ada9d80",
       "has_workflow": false,
       "path": "/root/barrot/Barrot-Agent/scripts/benchmark_summary.py",
       "size": 2627
+    },
+    "bundle_next_phases.py": {
+      "fingerprint": "8882d03c8d761951a226f857ab2035549298d1acb0b4f563daf0537065331911",
+      "has_workflow": false,
+      "path": "/root/barrot/Barrot-Agent/scripts/bundle_next_phases.py",
+      "size": 182
     },
     "capability_discovery.py": {
       "fingerprint": "08c8e3b173b1fcd8340c13255731f72fd61b6f7c51826f632782108141e5d257",
@@ -385,10 +411,10 @@
       "size": 9045
     },
     "deploy_huggingface.py": {
-      "fingerprint": "fa6afa658e2ee8c225a2e9c1f6314e1ea114facce586e352061314655f30f4eb",
+      "fingerprint": "9309d7b2fbfa68d9a52906aa78fffed6638f656f670b073b2a9a7ceefe4c99d6",
       "has_workflow": false,
       "path": "/root/barrot/Barrot-Agent/scripts/deploy_huggingface.py",
-      "size": 5246
+      "size": 738
     },
     "dump_brain_corpus.py": {
       "fingerprint": "d39b61c201ba8f3f4d0674724292e2614a4bca00fde89909ad474816c2a7b51b",
@@ -469,10 +495,10 @@
       "size": 3370
     },
     "granite_model_config.py": {
-      "fingerprint": "33324aa446f7eff412883b2c25ab681ab1832e299da9b27e2a953bdc0d9a9d19",
+      "fingerprint": "42ec4805419a9b1becd7fe9ed81401966f9a32a32a5a125a77d46cd5fe54c924",
       "has_workflow": false,
       "path": "/root/barrot/Barrot-Agent/scripts/granite_model_config.py",
-      "size": 1337
+      "size": 635
     },
     "groq_chain.py": {
       "fingerprint": "67817ba0e1e342287712e14a6cd2c689b7c225a8f80e60bed3456c0633d76ff5",
@@ -516,6 +542,18 @@
       "path": "/root/barrot/Barrot-Agent/scripts/knowledge_ingest_btc.py",
       "size": 3670
     },
+    "live_refine_verify.py": {
+      "fingerprint": "11d441b94561a1816b96aca287dc7c74b7725b33c7bb2c8f73cdf0aaa75f12a4",
+      "has_workflow": false,
+      "path": "/root/barrot/Barrot-Agent/scripts/live_refine_verify.py",
+      "size": 3791
+    },
+    "make_beats.py": {
+      "fingerprint": "cfe5b3c5330a639f5e345dfc6c5e155e6b71d3715d9f683ec4e7f5e72ff4d356",
+      "has_workflow": false,
+      "path": "/root/barrot/Barrot-Agent/scripts/make_beats.py",
+      "size": 41363
+    },
     "make_track.py": {
       "fingerprint": "792ec41e6496dece3c1f3585f403648a20f0b7b602c00b0a94b50d034621465f",
       "has_workflow": false,
@@ -541,10 +579,10 @@
       "size": 4240
     },
     "mem_palace.py": {
-      "fingerprint": "9c1289ad73182693bb4b6208fb5b674091894320e2d4335e6e31e70bf8c49ffb",
+      "fingerprint": "e8bdc97d9d61b5376a2cb81c3bd955f93eedf499c7a83aa1def59ed749980ba2",
       "has_workflow": false,
       "path": "/root/barrot/Barrot-Agent/scripts/mem_palace.py",
-      "size": 943
+      "size": 688
     },
     "mmi_compiler.py": {
       "fingerprint": "9afae8435dc7368fd57b8561aae6890bfeacee05e062ed0b56ec2e29d964841a",
@@ -629,6 +667,12 @@
       "has_workflow": true,
       "path": "/root/barrot/Barrot-Agent/scripts/pingpong.py",
       "size": 8444
+    },
+    "pingpong_refine.py": {
+      "fingerprint": "d857e4c1103969b0352a1daaa5f9ece55daa4b09d6f3140645606ce757c83353",
+      "has_workflow": false,
+      "path": "/root/barrot/Barrot-Agent/scripts/pingpong_refine.py",
+      "size": 6724
     },
     "research_synthesis.py": {
       "fingerprint": "8a50d604d6641fddf446a89521ad2f709dcd79e380b30d09888f9d7f4e6acc43",
@@ -751,16 +795,22 @@
       "size": 4639
     },
     "transmute.py": {
-      "fingerprint": "a824d542aa24e03e6506dbb143e176e7f9e9137f1caa4132c5e7d0c58512caec",
+      "fingerprint": "ddaf960819b7c089e3d2f46857a8b70a9e78da92ac3177553542a8469c178b19",
       "has_workflow": false,
       "path": "/root/barrot/Barrot-Agent/scripts/transmute.py",
-      "size": 14108
+      "size": 15144
     },
     "vader_check.py": {
       "fingerprint": "3fe245639123940fd500972fade310cfb2f6b2fd7518364021f8b3996475ccbf",
       "has_workflow": false,
       "path": "/root/barrot/Barrot-Agent/scripts/vader_check.py",
       "size": 2782
+    },
+    "verify_artifacts.py": {
+      "fingerprint": "7eabe12f591d439f24650fbd4c5f2d19d72af23b09ae12fb403cefe05e0a6b15",
+      "has_workflow": false,
+      "path": "/root/barrot/Barrot-Agent/scripts/verify_artifacts.py",
+      "size": 9552
     },
     "video_analysis_autofix.py": {
       "fingerprint": "0ddd534733206b3553ccd6e796f3b68bd5fac95d89b0179c4cad4875308fa977",
@@ -804,6 +854,12 @@
       "path": "/root/barrot/Barrot-Agent/scripts/wire_in_hrm.py",
       "size": 5395
     },
+    "witness_loop.py": {
+      "fingerprint": "4106381bdce8037d65523da97fca4649dabe8b2c3a336f2e2bd0b390a1d6561d",
+      "has_workflow": false,
+      "path": "/root/barrot/Barrot-Agent/scripts/witness_loop.py",
+      "size": 6065
+    },
     "write_lyrics.py": {
       "fingerprint": "a4a6e1911a9b15c3676752ad6754c0a00a14a1a990a5d3773c6dff0c196acc05",
       "has_workflow": false,
@@ -816,9 +872,9 @@
     "failure": null,
     "input_fingerprint": "263dc756f2c3a9f4b77c4d65d13529fed0e9f265caa1ca2bcbaae56b2a6d40a1",
     "operation": "capability_audit",
-    "output_fingerprint": "75a834ea0ec23c47805e57fb4f8d587691542634f5c67d80f12aa93bf91fec6a",
+    "output_fingerprint": "c5872e4a662f9147454c5a16565ef6bb9630ed92eb184189c326ce2c650e01bc",
     "provider": "",
-    "record_id": "de1e247cca3d39df5e7825799e21dad97c43b21fc0a278ee8c9a0497acba38e7",
+    "record_id": "2db0f40baee23629b2d293f86fd58fb6e64757d08ba7eabfffe9438d625d55c5",
     "request": {},
     "response": {
       "gap_count": 13
@@ -895,5 +951,5 @@
   ],
   "status": "VERIFIED",
   "target_capabilities": 15,
-  "timestamp": "2026-11-14T14:29:56Z"
+  "timestamp": "2026-11-17T08:54:27Z"
 }

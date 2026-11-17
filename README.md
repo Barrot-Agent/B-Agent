@@ -30,29 +30,37 @@ Project-wide instructions live in [`AGENTS.md`](AGENTS.md). Barrot records durab
 
 | Server | Transport | What it adds | Prerequisite |
 |---|---|---|---|
-| `github` | remote — `https://api.githubcopilot.com/mcp/` | Official GitHub MCP: repos, issues, pull requests, code search, Actions | `GITHUB_MCP_TOKEN` set to a least-privilege GitHub personal access token in the OpenCode service environment; authentication is not yet verified |
+| `github` | remote — `https://api.githubcopilot.com/mcp/` | Official GitHub MCP: repos, issues, pull requests, code search, Actions | `GITHUB_MCP_TOKEN` set to a GitHub personal access token (stored in the OpenCode service environment) |
 | `docling` | local — `uvx --from "docling-mcp[local]" docling-mcp-server --transport stdio` | PDF/DOCX/HTML conversion with OCR through [Docling](https://github.com/docling-project/docling) | [`uv`](https://docs.astral.sh/uv/) installed; first run downloads the Docling stack and models |
 | `searxng` | local — `npx -y mcp-searxng` | Web search and URL reading through [SearXNG](https://github.com/searxng/searxng) | Node.js 22+ and a local SearXNG instance with the JSON API enabled |
 
-Start SearXNG first — it listens on `127.0.0.1:8888` and enables `format=json`:
+Start SearXNG first — it listens on `127.0.0.1:8888` and enables `format=json`.
+`--daemon` starts it in the background and is idempotent (safe to re-run):
 
 ```bash
-bash scripts/start_searxng.sh
+bash scripts/start_searxng.sh --daemon
 ```
 
-Then check connections inside OpenCode with `/mcps`:
+Then check connections inside OpenCode with `/mcps`, or from a shell:
 
-```text
-/mcps
+```bash
+opencode mcp list
 ```
 
-The `github` server reads a personal access token from `GITHUB_MCP_TOKEN`. Configure it in the OpenCode service environment before use. This connection is not verified until `/mcps` reports healthy and a test request succeeds:
+A restart of the OpenCode service is required after changing `opencode.json` or the
+service environment, because MCP connections are opened at startup:
+
+```bash
+opencode service restart
+```
+
+The `github` server authenticates with a personal access token read from `GITHUB_MCP_TOKEN`. It is already stored in the OpenCode service environment on this machine:
 
 ```bash
 opencode service set env GITHUB_MCP_TOKEN "$(gh auth token)"
 ```
 
-OAuth is disabled for this server because GitHub's MCP authorization server does not support dynamic client registration, which OpenCode requires for its browser flow. `docling` and `searxng` require local dependencies/services and have not been launched or tested in this run. Use a least-privilege token; do not assume any MCP connection is active.
+OAuth is disabled for this server because GitHub's MCP authorization server does not support dynamic client registration, which OpenCode requires for its browser flow. `docling` and `searxng` connect without credentials.
 
 ## 🔄 Two Distinct Systems
 
@@ -699,3 +707,10 @@ that is currently the best way to support development.
 ---
 
 **Barrot-Agent** - Intelligent automation and data processing at your fingertips 🦜✨
+
+
+## Historical GitHub MCP setup note
+The prior integration README documented the GitHub remote at `https://api.githubcopilot.com/mcp/`, requiring a least-privilege `GITHUB_MCP_TOKEN` in the OpenCode service environment. It stated that authentication was not verified until a health check and test request succeeded, and that the OAuth flow was unavailable because dynamic client registration was unsupported. Treat this as historical setup guidance, not current connectivity proof.
+
+## MCP connection evidence
+Files under `results/mcp_sync/` are timestamped snapshots, not live connection guarantees. The main-branch Nov 15 snapshot showed the GitHub remote connected and local stdio servers unreachable in that capture. The Nov 13 LunaRoute snapshot is archived as historical evidence only. Re-test authentication, endpoint scope, and data flow before claiming any provider is connected.

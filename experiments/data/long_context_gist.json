@@ -1,0 +1,64 @@
+{
+  "hypothesis": "At a fixed 96-word gist budget, 8 slots x 12 words preserves every long-context test fact that the 16 x 10 default keeps, while the 16 x 6 budget loses a measurement.",
+  "documents": [
+    "Memorilla reads all of the conversations and hands them to a frozen Qwen3-8B as just 16 memory tokens, about 2,000 times fewer.",
+    "So the way it works is that first an embedding model turns every document into a single vector and then a small trained memory module looks at all of those vectors together with your question and compresses them into 16 memory tokens and then a normal unmodified language model which in this case is quen 3 reads those 16 tokens instead of the actual text.",
+    "So, those 16 memory tokens are actually 16 vectors, and they get plugged directly into Quinn 3's input in the same spot where the embeddings of normal words would usually go.",
+    "They also reported that on one H00 GPU, the answering speed stayed at about 0.74 seconds.",
+    "There was just one chat where they asked whether diabetes on your mother's side raises your risk.",
+    "Even though it could only see the second half of the book, while Rag got four and Memorilla got just one.",
+    "A frozen LLM can only use what fits in its context window, so Memorilla reads an entire document collection, such as a user's past chats or a long book, and hands the LLM just 16 memory tokens that carry what each question needs.",
+    "With this small budget, it achieves the best average performance against methods such as Mem0 and MemoRAG, and on FactKG it is even more accurate than giving the LLM every document (84.33% vs.",
+    "model = MemoryVLLM.from_pretrained(\"memorilla/Memorilla-Qwen3-8B\", \"pmv2\") # Qwen3-8B, the memory module and the encoder answer = model.answer(row[\"question\"], row[\"documents\"], system_prompt=PERSONA_PROMPT) print(f\"Question: {row['question']}\\nMemorilla: {answer}\") ```",
+    "> Memorilla connects that clue to a breakfast question that has nothing to do with it, while Qwen3-8B without the > memory answers with a generic list of breakfasts.",
+    "Because the LLM always receives the same **16 memory tokens**, no matter how many documents are stored, the approach can potentially scale to millions of tokens.",
+    "On one H100, growing a collection from 1 to **512 documents (about 128K tokens)** leaves Memorilla's response time at **0.74 seconds**, while putting all the documents in the prompt slows the model down from 0.75 to **19.9 seconds, 27x slower**.",
+    "The decoder always reads the same 16 memory tokens, so its cost does not depend on the number of documents.",
+    "```python model = MemoryVLLM.from_pretrained(\"memorilla/Memorilla-Qwen3-8B\", \"pmv2\", memory_cache=True, compile_memory=True) collection = model.write(row[\"documents\"]) # encodes the documents and caches the memory module's keys and values answer = model.answer(row[\"question\"], collection, system_prompt=PERSONA_PROMPT) ```",
+    "```bash Train the three stages with the Qwen3-8B decoder on 4 GPUs.",
+    "The trained memory modules are on Hugging Face at [`memorilla/Memorilla-Qwen3-8B`](https://huggingface.co/memorilla/Memorilla-Qwen3-8B).",
+    "All were trained with the Qwen3-8B decoder and the Qwen3-Embedding-4B encoder, the defaults of `train.py` and `evaluate.py`."
+  ],
+  "questions": [
+    {
+      "id": "tokens",
+      "question": "How many memory tokens does Memorilla give the decoder?",
+      "expect": [
+        "16 memory tokens"
+      ],
+      "forbid": []
+    },
+    {
+      "id": "latency",
+      "question": "What is Memorilla's response time at 512 documents?",
+      "expect": [
+        "0.74 seconds"
+      ],
+      "forbid": []
+    },
+    {
+      "id": "factkg",
+      "question": "How accurate is Memorilla on FactKG compared with full context?",
+      "expect": [
+        "84.33%"
+      ],
+      "forbid": []
+    },
+    {
+      "id": "decoder",
+      "question": "Which decoder model does Memorilla use?",
+      "expect": [
+        "Qwen3-8B"
+      ],
+      "forbid": []
+    },
+    {
+      "id": "hound",
+      "question": "RAG got four plot questions; how many did Memorilla get?",
+      "expect": [
+        "just one"
+      ],
+      "forbid": []
+    }
+  ]
+}

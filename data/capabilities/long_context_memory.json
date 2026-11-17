@@ -1,0 +1,93 @@
+{
+  "name": "long_context_memory",
+  "description": "Fixed-budget offline memory: squeeze a document collection into 16 query-conditioned gist slots, on CPU, with verbatim provenance.",
+  "harness": "deterministic extractive recall over the gist prompt; not an LLM answer-accuracy benchmark",
+  "memory_ids": [
+    "0b8088a78b6e3eae",
+    "d9e6ad86807ae1fc",
+    "654dcaeda408b030",
+    "cd2f5f934d7a020e",
+    "13164fd9dc22d710",
+    "b080897017167888",
+    "1029d044578acb88",
+    "72e0d809db1005ec",
+    "8b61d0c2e6e5376e",
+    "c564bc95b3c560af",
+    "d98d960ba47226f7",
+    "5cd61825290d7335",
+    "8cdad6157e8dab15",
+    "96251129a11e6c7f",
+    "b1ce679d0349b06a",
+    "e092c5cd1c1d2bd3",
+    "2220d8cedbbbba7f"
+  ],
+  "max_memory_records": 128,
+  "questions": [
+    {
+      "id": "tokens",
+      "question": "How many memory tokens does Memorilla give the decoder?",
+      "expect": [
+        "16 memory tokens"
+      ],
+      "forbid": []
+    },
+    {
+      "id": "latency",
+      "question": "What is Memorilla's response time at 512 documents?",
+      "expect": [
+        "0.74 seconds"
+      ],
+      "forbid": []
+    },
+    {
+      "id": "factkg",
+      "question": "How accurate is Memorilla on FactKG compared with full context?",
+      "expect": [
+        "84.33%"
+      ],
+      "forbid": []
+    },
+    {
+      "id": "decoder",
+      "question": "Which decoder model does Memorilla use?",
+      "expect": [
+        "Qwen3-8B"
+      ],
+      "forbid": []
+    },
+    {
+      "id": "hound",
+      "question": "RAG got four plot questions; how many did Memorilla get?",
+      "expect": [
+        "just one"
+      ],
+      "forbid": []
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=lNpDxKfBlf8",
+      "kind": "video",
+      "title": "Did Stanford Just Solve AI Memory? (Memorilla)",
+      "path": "/tmp/yt_lNpDxKfBlf8.txt"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/snap-stanford/memorilla/main/README.md",
+      "kind": "paper",
+      "title": "Memorilla README",
+      "path": "/tmp/memorilla_readme.md"
+    }
+  ],
+  "notes": "Source 1 is a local replay of the transcript fetched 2026-11-15 with youtube-transcript-api (video lNpDxKfBlf8). Source 2 is the README of snap-stanford/memorilla. Raw copies are kept under data/raw/.",
+  "history": [
+    {
+      "run_id": "run-2026-11-15-long-context-memory",
+      "at": "2026-11-15T23:22:24Z",
+      "before": 0.0,
+      "after": 1.0,
+      "added_records": 96,
+      "bound_records": 17,
+      "reverted": false
+    }
+  ]
+}

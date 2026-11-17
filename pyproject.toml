@@ -84,5 +84,6 @@ branch = true
 omit = ["*/__pycache__/*", "tests/*"]
 
 [tool.coverage.report]
-fail_under = 62
+# Full-suite thresholds are enforced in .github/workflows/ci.yml; local subset runs stay ungated.
+fail_under = 0
 show_missing = true
