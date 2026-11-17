@@ -80,6 +80,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 ## docs/phoenix
 
 - docs/phoenix/PROGRAM.md - Phoenix program: fiction mapped to utility
+- docs/phoenix/cycle-02.md - Phoenix cycle 02: KPI proof, gap, upgrade
 
 ## docs/synthesis
 
