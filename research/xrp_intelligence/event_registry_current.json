@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run192-followup",
-  "captured_at_utc": "2026-11-16T16:11:30Z",
-  "source_receipt_status": "125 of 125 curated events have null raw_source_sha256; exact external publisher response bytes were not captured for this registry. 48 events have exact publisher timestamps; 77 lack an exact publisher timestamp. All remain research-only and model-ineligible. A generated workflow ZIP or repository commit hash is not an external publisher-byte receipt.",
+  "registry_version": "run220",
+  "captured_at_utc": "2026-11-17T16:29:24Z",
+  "source_receipt_status": "140 of 140 curated events have null raw_source_sha256; exact external publisher response bytes were not captured for this registry. 54 events have exact publisher timestamps; 86 lack an exact publisher timestamp. All remain research-only and model-ineligible. A rendered page, search snippet, GitHub artifact ZIP digest or repository commit hash is not an external publisher-byte receipt.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -5622,6 +5622,748 @@
       ],
       "publisher_timestamp_precision": "GitHub Actions run creation time is exact; no external publisher timestamp.",
       "raw_http_bytes_captured": false
+    },
+    {
+      "event_id": "kraken-xrpusd-ticker-20261117T162924Z",
+      "event_type": "market",
+      "event_name": "Kraken XRP/USD single-venue ticker snapshot",
+      "hypothesis_id": "xrp-kraken-single-venue-snapshot-context",
+      "domain": "spot_market_microstructure",
+      "hypothesis": "The Kraken XRP/USD ticker is one venue's timestamp-unspecified spot snapshot and should be treated as context, not a consolidated market signal.",
+      "counter_hypothesis": "A synchronized multi-venue snapshot with aligned exchange timestamps could establish whether Kraken is representative.",
+      "claim": "Kraken public ticker returned last trade $0.95562, best bid $0.95569, best ask $0.95587, 24-hour volume 36.7288M XRP, 24-hour VWAP $0.960651, low $0.9450 and high $0.9783. The payload contains no exchange-server timestamp and no full-depth book.",
+      "source_id": "kraken_public_ticker_xrpusd_20261117",
+      "source_name": "Kraken public XRP/USD ticker",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "independence_group": "kraken-public-api",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-17T16:29:24Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The web-rendered JSON is the source observation; capture time is the run cutoff, not an exchange-provided timestamp."
+      ],
+      "falsification_conditions": [
+        "A byte-exact API response with a server timestamp and synchronized independent venue quotes could validate or supersede this observation."
+      ],
+      "related_entities": [
+        "XRP",
+        "Kraken"
+      ],
+      "tags": [
+        "spot",
+        "ticker",
+        "single-venue",
+        "no-full-depth"
+      ],
+      "publisher_timestamp_precision": "date_or_unknown",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "retrieval_time_only"
+    },
+    {
+      "event_id": "fuelmaps-xrp-orderbook-20261117T150000Z",
+      "event_type": "liquidity",
+      "event_name": "Fuelmaps six-venue XRP order-book depth snapshot",
+      "hypothesis_id": "xrp-resting-book-bid-skew-vs-cancel-risk",
+      "domain": "market_microstructure",
+      "hypothesis": "Fuelmaps' 15:00 UTC sample showed more resting bid than ask depth within the sampled near-price bands, but the snapshot is stale and incomplete.",
+      "counter_hypothesis": "The bid skew may reflect transient or cancellable orders, venue exclusions, and sampling weights rather than durable executable support.",
+      "claim": "Fuelmaps reported a $0.9712 mid and 1% depth of $11.6M bids versus $8.4M asks (58.2% bid share). At 0.5% the split was $8.3M/$5.3M (61.1%); at 2% $13.9M/$11.3M (55.2%); at 5% $15.8M/$14.6M (51.9%); at 10% $23.3M/$16.0M (59.2%). Six venues were represented, but only four supplied full depth; Binance and Bitget were absent.",
+      "source_id": "fuelmaps_orderbook_xrp_20261117",
+      "source_name": "Fuelmaps order-book map",
+      "source_url": "https://fuelmaps.io/order-book/",
+      "independence_group": "fuelmaps-orderbook-aggregator",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-17T15:00:00Z",
+      "source_published_at_utc": "2026-11-17T15:00:00Z",
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The page states that its hourly map averages one-minute book snapshots and is published five minutes after the hour.",
+        "At the 16:29:24Z run cutoff, the 15:00Z snapshot was 89 minutes old."
+      ],
+      "falsification_conditions": [
+        "A synchronized raw L2 capture with venue-level depth, trade executions, cancellations and refreshes could confirm whether the skew persists."
+      ],
+      "related_entities": [
+        "XRP",
+        "Coinbase",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini",
+        "OKX",
+        "Kraken"
+      ],
+      "tags": [
+        "order-book",
+        "depth",
+        "bid-skew",
+        "stale-snapshot",
+        "venue-coverage"
+      ],
+      "publisher_timestamp_precision": "minute",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "hourly_snapshot"
+    },
+    {
+      "event_id": "liqwall-xrp-open-interest-20261117T152200Z",
+      "event_type": "derivatives",
+      "event_name": "Liqwall XRP open-interest observation",
+      "hypothesis_id": "xrp-oi-deleveraging-vs-provider-scope",
+      "domain": "derivatives_market_structure",
+      "hypothesis": "Open interest has contracted from the early-November high in Liqwall's own daily series, but cross-provider totals are not comparable without aligned venue and contract scope.",
+      "counter_hypothesis": "The apparent contraction may be partly affected by provider coverage, contract-side conventions, missing contracts, or stale snapshots; account counts and funding rates measure different populations.",
+      "claim": "Liqwall reported XRP open interest of $954M at 15:22Z on Nov 17, down 3.6% over 24 hours and 0.8% in the last hour. Its own daily series shows $1.49B on Nov 4 and $968M at the Nov 16 close; the daily OI decline is about 35.0%, while its same-series price moved from $1.31 to $0.9553 (about -27.1%).",
+      "source_id": "liqwall_open_interest_xrp_20261117",
+      "source_name": "Liqwall XRP open interest",
+      "source_url": "https://liqwall.com/open-interest/xrp",
+      "independence_group": "liqwall-derivatives-aggregator",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-17T15:22:00Z",
+      "source_published_at_utc": "2026-11-17T15:22:00Z",
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The daily table is end-of-day 00:00 UTC and reports OI change in coins; the current $954M value is intraday."
+      ],
+      "falsification_conditions": [
+        "A venue-level contract inventory and independent raw exchange snapshots showing stable OI after scope normalization would weaken the deleveraging interpretation."
+      ],
+      "related_entities": [
+        "XRP",
+        "Liqwall"
+      ],
+      "tags": [
+        "open-interest",
+        "deleveraging",
+        "derivatives",
+        "provider-specific"
+      ],
+      "publisher_timestamp_precision": "minute",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "minute"
+    },
+    {
+      "event_id": "optimistfi-xrp-perps-page-stale-20261106T172300Z",
+      "event_type": "derivatives",
+      "event_name": "OptimistFi XRP OI search-result/page freshness conflict",
+      "hypothesis_id": "xrp-oi-deleveraging-vs-provider-scope",
+      "domain": "derivatives_market_structure",
+      "hypothesis": "Open interest has contracted from the early-November high in Liqwall's own daily series, but cross-provider totals are not comparable without aligned venue and contract scope.",
+      "counter_hypothesis": "The apparent contraction may be partly affected by provider coverage, contract-side conventions, missing contracts, or stale snapshots; account counts and funding rates measure different populations.",
+      "claim": "A search-result snippet appeared to report $1.4B XRP OI at 01:00Z on Nov 17, but opening the linked OptimistFi page showed a Nov 6 17:23Z snapshot at $1.6B. The date/value conflict is unresolved and this source is quarantined from the current OI synthesis.",
+      "source_id": "optimistfi_xrp_perps_page_20261117",
+      "source_name": "OptimistFi XRP perpetuals page",
+      "source_url": "https://optimistfi.com/perps/markets/xrp?tab=news",
+      "independence_group": "optimistfi-derivatives-aggregator",
+      "source_status": "disputed",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-06T17:23:00Z",
+      "source_published_at_utc": "2026-11-06T17:23:00Z",
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The opened page's own timestamp controls; the search snippet is not accepted as a fresh measurement."
+      ],
+      "falsification_conditions": [
+        "A publisher response with a consistent Nov 17 timestamp and venue-level values could resolve the mismatch."
+      ],
+      "related_entities": [
+        "XRP",
+        "OptimistFi"
+      ],
+      "tags": [
+        "open-interest",
+        "stale-source",
+        "quarantined",
+        "timestamp-conflict"
+      ],
+      "publisher_timestamp_precision": "minute",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "minute"
+    },
+    {
+      "event_id": "bitcoinleverage-coinalyze-xrp-oi-20261117T130000Z",
+      "event_type": "derivatives",
+      "event_name": "Binance and Bybit XRPUSDT positioning subset",
+      "hypothesis_id": "xrp-oi-deleveraging-vs-provider-scope",
+      "domain": "derivatives_market_structure",
+      "hypothesis": "Open interest has contracted from the early-November high in Liqwall's own daily series, but cross-provider totals are not comparable without aligned venue and contract scope.",
+      "counter_hypothesis": "The apparent contraction may be partly affected by provider coverage, contract-side conventions, missing contracts, or stale snapshots; account counts and funding rates measure different populations.",
+      "claim": "BitcoinLeverage/Coinalyze reported $452.37M OI at 13:00Z across Binance and Bybit XRPUSDT only, covering 2 of 22 available contracts. Binance account positioning was 72.93% long with -0.00274% funding; Bybit was 79.01% long with -0.006121% funding. Taker-buy shares were 51.03% and 48.97%, respectively. The account ratios are not notional exposure.",
+      "source_id": "bitcoinleverage_coinalyze_xrp_20261117",
+      "source_name": "BitcoinLeverage / Coinalyze XRP market data",
+      "source_url": "https://bitcoinleverage.com/xrp",
+      "independence_group": "bitcoinleverage-coinalyze-view",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-17T13:00:00Z",
+      "source_published_at_utc": "2026-11-17T13:00:00Z",
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Page states Binance and Bybit USDT perpetuals only; data checked 14:31Z; 2 of 22 contracts available.",
+        "Funding interval is not normalized in the page excerpt."
+      ],
+      "falsification_conditions": [
+        "A complete venue/contract set with standardized one-side OI, funding intervals and independent exchange responses could alter the comparison."
+      ],
+      "related_entities": [
+        "XRP",
+        "Binance",
+        "Bybit",
+        "Coinalyze"
+      ],
+      "tags": [
+        "open-interest",
+        "funding",
+        "long-short-accounts",
+        "partial-contract-coverage"
+      ],
+      "publisher_timestamp_precision": "minute",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "hour"
+    },
+    {
+      "event_id": "tradradar-xrp-perps-20261116T153000Z",
+      "event_type": "derivatives",
+      "event_name": "TradRadar prior-day seven-exchange XRP derivatives snapshot",
+      "hypothesis_id": "xrp-oi-deleveraging-vs-provider-scope",
+      "domain": "derivatives_market_structure",
+      "hypothesis": "Open interest has contracted from the early-November high in Liqwall's own daily series, but cross-provider totals are not comparable without aligned venue and contract scope.",
+      "counter_hypothesis": "The apparent contraction may be partly affected by provider coverage, contract-side conventions, missing contracts, or stale snapshots; account counts and funding rates measure different populations.",
+      "claim": "TradRadar reported $1.31B XRP OI across seven exchanges at 15:30Z Nov 16, down 5.04% over 24 hours, OI-weighted funding -0.0063% per 8h, a 3.37 long/short account ratio (77.1% long), and at least $3.50M in 24-hour liquidations. The page states a 15-minute display delay.",
+      "source_id": "tradradar_xrp_perps_20261116",
+      "source_name": "TradRadar XRP futures market data",
+      "source_url": "https://tradradar.io/markets/xrp",
+      "independence_group": "tradradar-derivatives-aggregator",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T15:30:00Z",
+      "source_published_at_utc": "2026-11-16T15:30:00Z",
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "This snapshot is one day older than the current run cutoff and uses a seven-exchange universe."
+      ],
+      "falsification_conditions": [
+        "A same-time venue-level reconciliation with Liqwall and exchange raw data could determine whether the totals differ only by coverage or by methodology."
+      ],
+      "related_entities": [
+        "XRP",
+        "Binance",
+        "Bybit",
+        "Gate",
+        "MEXC",
+        "Bitget",
+        "OKX",
+        "Hyperliquid"
+      ],
+      "tags": [
+        "open-interest",
+        "funding",
+        "liquidations",
+        "long-short-accounts",
+        "prior-day-snapshot"
+      ],
+      "publisher_timestamp_precision": "minute",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "minute"
+    },
+    {
+      "event_id": "cryptokeyhole-xrp-etf-partial-20261116",
+      "event_type": "exchange_flow",
+      "event_name": "CryptoKeyhole partial November 16 XRP ETF flow",
+      "hypothesis_id": "xrp-etf-flow-unresolved-vs-fund-universe",
+      "domain": "exchange_flows",
+      "hypothesis": "November 16 XRP ETF flow remains unresolved because one tracker is partial and the broader tracker uses a different fund universe with an aggregate AUM inconsistency.",
+      "counter_hypothesis": "The broader tracker may include flows from funds missing in the partial four-fund tracker; a positive total can coexist with a negative partial subset if the unreported funds offset it.",
+      "claim": "CryptoKeyhole's Nov 17 15:56Z page update showed a partial Nov 16 net outflow of 5,196,983 XRP from 2 of 4 daily-reporting funds; Bitwise and Franklin Templeton remained pending. Its last complete four-fund day was Nov 13 at -9,967 XRP.",
+      "source_id": "cryptokeyhole_xrp_etf_20261117",
+      "source_name": "CryptoKeyhole XRP ETF flows",
+      "source_url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "independence_group": "cryptokeyhole-etf-tracker",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T00:00:00Z",
+      "source_published_at_utc": "2026-11-17T15:56:00Z",
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The 2/4 partial total is not a complete US XRP ETF flow total.",
+        "The publisher excludes Grayscale from daily automated flow totals and excludes REX-Osprey from the four-fund daily series."
+      ],
+      "falsification_conditions": [
+        "The remaining two daily issuer files and a complete issuer-by-issuer reconciliation could replace this partial observation."
+      ],
+      "related_entities": [
+        "XRP",
+        "Bitwise",
+        "Franklin Templeton",
+        "Canary Capital",
+        "21Shares"
+      ],
+      "tags": [
+        "etf",
+        "flows",
+        "partial",
+        "issuer-holdings"
+      ],
+      "publisher_timestamp_precision": "minute",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "trading_date_only"
+    },
+    {
+      "event_id": "xrp-insights-xrp-etf-flow-aum-quality-20261116",
+      "event_type": "exchange_flow",
+      "event_name": "XRP Insights broader ETF flow and AUM quality check",
+      "hypothesis_id": "xrp-etf-flow-unresolved-vs-fund-universe",
+      "domain": "exchange_flows",
+      "hypothesis": "November 16 XRP ETF flow remains unresolved because one tracker is partial and the broader tracker uses a different fund universe with an aggregate AUM inconsistency.",
+      "counter_hypothesis": "The broader tracker may include flows from funds missing in the partial four-fund tracker; a positive total can coexist with a negative partial subset if the unreported funds offset it.",
+      "claim": "XRP Insights reported +158,148 XRP net flow on Nov 16 across a stated six-spot-ETF-plus-BITW universe, but says GXRP is excluded from flow totals while its holdings count. Its top-line AUM of $777.73M and six-spot AUM of $756.2M conflict with per-fund AUM rows summing about $1.173B for six spot funds and about $1.195B including BITW; 1.18926B XRP at its displayed $0.96 implies about $1.142B. Aggregate AUM is quarantined; the flow remains provisional.",
+      "source_id": "xrp_insights_etf_tracker_20261117",
+      "source_name": "XRP Insights ETF tracker",
+      "source_url": "https://xrp-insights.com/",
+      "independence_group": "xrp-insights-etf-tracker",
+      "source_status": "disputed",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-16T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Flow is based on changes in issuer-reported XRP holdings, but GXRP is excluded from flow totals while holdings still count.",
+        "The AUM mismatch may reflect a stale or mixed-scope dashboard field; no issuer-level raw files were captured."
+      ],
+      "falsification_conditions": [
+        "Issuer NAV, shares, XRP holdings and net-asset files for each fund, reconciled to one valuation date, could resolve the AUM discrepancy and flow universe."
+      ],
+      "related_entities": [
+        "XRP",
+        "Bitwise",
+        "Franklin Templeton",
+        "Canary Capital",
+        "21Shares",
+        "Grayscale",
+        "REX-Osprey"
+      ],
+      "tags": [
+        "etf",
+        "flows",
+        "aum-quality",
+        "fund-universe",
+        "quarantined-aggregate-aum"
+      ],
+      "publisher_timestamp_precision": "date_or_unknown",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true
+    },
+    {
+      "event_id": "coinbase-rlusd-coinbase-distribution-20261028",
+      "event_type": "stablecoin",
+      "event_name": "Coinbase RLUSD listing across three networks",
+      "hypothesis_id": "coinbase-rlusd-distribution-vs-xrp-demand",
+      "domain": "stablecoin_distribution_and_joint_ventures",
+      "hypothesis": "Coinbase's RLUSD listing expands distribution across Coinbase Prime, Exchange and app, with XRPL, Base and Ethereum deposits/withdrawals, but does not prove XRP demand or live RLUSD collateral at Coinbase Global Exchange.",
+      "counter_hypothesis": "Multi-chain RLUSD distribution and Ripple liquidity on Base may increase institutional access and later create more XRPL activity; XRP-specific bridge and collateral evidence is still required.",
+      "claim": "Coinbase announced RLUSD availability on Prime, Exchange and the retail app, with deposits and withdrawals on XRPL, Base and Ethereum and 1:1 USD conversion. Coinbase said Global Exchange collateral support would follow, and Ripple would provide Base liquidity.",
+      "source_id": "coinbase_rlusd_listing_20261028",
+      "source_name": "Coinbase RLUSD launch announcement",
+      "source_url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "independence_group": "coinbase-primary",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-10-28T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The phrase 'will follow' means collateral availability was not live at launch."
+      ],
+      "falsification_conditions": [
+        "A later official Coinbase notice confirming Global Exchange collateral activation, supported jurisdictions and actual balances would update the collateral status."
+      ],
+      "related_entities": [
+        "Coinbase",
+        "Ripple",
+        "RLUSD",
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "tags": [
+        "rlusd",
+        "coinbase",
+        "collateral",
+        "multi-chain",
+        "institutional-distribution"
+      ],
+      "publisher_timestamp_precision": "date_or_unknown",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "date_only"
+    },
+    {
+      "event_id": "coinbase-q3-usdc-economics-20261029",
+      "event_type": "corporate",
+      "event_name": "Coinbase Q3 2026 USDC distribution economics",
+      "hypothesis_id": "coinbase-circle-usdc-distribution-economics",
+      "domain": "corporate_financials_and_distribution",
+      "hypothesis": "Coinbase, Circle and PNC report substantial USDC distribution and payments activity, but those rails do not establish XRP purchases, XRP bridge use or XRPL settlement.",
+      "counter_hypothesis": "Stablecoin distribution and multi-chain infrastructure could indirectly increase institutional access to XRPL or cross-chain settlement; XRP-specific transaction and flow evidence is required.",
+      "claim": "Coinbase reported $22B average USDC held in its products in Q3 2026, up 49% year over year and roughly 30% of average USDC market cap. Coinbase also reported capturing approximately 50% of all USDC economics over the prior year; this is the company's own disclosure.",
+      "source_id": "coinbase_q3_2026_earnings_20261029",
+      "source_name": "Coinbase Q3 2026 earnings release",
+      "source_url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/",
+      "independence_group": "coinbase-primary",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-10-29T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The 50% economics figure is Coinbase's own reported aggregate; the release does not provide a full contractual waterfall."
+      ],
+      "falsification_conditions": [
+        "A detailed audited breakdown of Circle/Coinbase revenue sharing and platform balances would refine the economics."
+      ],
+      "related_entities": [
+        "Coinbase",
+        "Circle",
+        "USDC"
+      ],
+      "tags": [
+        "coinbase",
+        "circle",
+        "usdc",
+        "distribution-economics",
+        "q3-2026"
+      ],
+      "publisher_timestamp_precision": "date_or_unknown",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "date_only"
+    },
+    {
+      "event_id": "pnc-coinbase-usdc-ethereum-pilot-20261109",
+      "event_type": "payments",
+      "event_name": "PNC incoming USDC payments pilot via Coinbase on Ethereum",
+      "hypothesis_id": "pnc-usdc-ethereum-pilot-vs-xrp-bridge-demand",
+      "domain": "institutional_payment_rails",
+      "hypothesis": "PNC's announced pilot receives USDC on Ethereum through Coinbase Payment APIs and automatically converts it 1:1 into USD for a PNC deposit account; the announced rail is not XRP or XRPL.",
+      "counter_hypothesis": "The pilot could expand to other assets or networks later; only a future official XRP/XRPL announcement or measured flow would change this classification.",
+      "claim": "PNC and Coinbase announced a limited pilot for eligible corporate and institutional clients to receive USDC on Ethereum, automatically convert it 1:1 to USD and deposit it into a designated PNC account.",
+      "source_id": "pnc_usdc_payment_pilot_20261109",
+      "source_name": "PNC stablecoin payment pilot release",
+      "source_url": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+      "independence_group": "pnc-primary",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-09T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The source calls the offering a limited pilot for eligible clients."
+      ],
+      "falsification_conditions": [
+        "A production launch, additional supported networks or explicit XRP/XRPL support would change the scope."
+      ],
+      "related_entities": [
+        "PNC",
+        "Coinbase",
+        "USDC",
+        "Ethereum"
+      ],
+      "tags": [
+        "pnc",
+        "coinbase",
+        "usdc",
+        "ethereum",
+        "pilot",
+        "bank-payments"
+      ],
+      "publisher_timestamp_precision": "date_or_unknown",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "date_only"
+    },
+    {
+      "event_id": "circle-q3-usdc-supply-economics-20261104",
+      "event_type": "corporate",
+      "event_name": "Circle Q3 2026 USDC supply, economics and payment-rail expansion",
+      "hypothesis_id": "coinbase-circle-usdc-distribution-economics",
+      "domain": "corporate_financials_and_distribution",
+      "hypothesis": "Coinbase, Circle and PNC report substantial USDC distribution and payments activity, but those rails do not establish XRP purchases, XRP bridge use or XRPL settlement.",
+      "counter_hypothesis": "Stablecoin distribution and multi-chain infrastructure could indirectly increase institutional access to XRPL or cross-chain settlement; XRP-specific transaction and flow evidence is required.",
+      "claim": "Circle reported average USDC circulation of $73.3B (+8% YoY), end-period circulation of $73.9B (0% YoY), $13.9T Q3 on-chain transaction volume (+49%), $104B minted and $104B redeemed gross, and 27% stablecoin market share (-183bps YoY). Reserve income was $658M (-8%); other revenue was $207M including a $182M ARC token presale; total distribution, transaction and other costs were $412M (-8%); net income was $226M and adjusted EBITDA $317M, with Circle attributing part of EBITDA growth to the ARC presale and lower distribution costs.",
+      "source_id": "circle_q3_2026_earnings_20261104",
+      "source_name": "Circle Q3 2026 earnings release",
+      "source_url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/earnings-result/3Q26-Earnings-Release.pdf",
+      "independence_group": "circle-primary",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-04T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Minted and redeemed are gross flows and must not be treated as net capital inflow.",
+        "Circle's market-share definition uses US dollar fiat-backed stablecoins above $100M with periodic public attestations.",
+        "The ARC presale is non-recurring token revenue, not recurring reserve income."
+      ],
+      "falsification_conditions": [
+        "A subsequent quarter with stablecoin market share, end-period circulation and reserve income rising together would change the competitive interpretation."
+      ],
+      "related_entities": [
+        "Circle",
+        "USDC",
+        "Arc",
+        "Tazapay",
+        "Binance",
+        "Visa",
+        "Samsung"
+      ],
+      "tags": [
+        "circle",
+        "usdc",
+        "supply",
+        "gross-mint-redeem",
+        "reserve-income",
+        "arc-presale",
+        "payment-rails"
+      ],
+      "publisher_timestamp_precision": "date_or_unknown",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "date_only"
+    },
+    {
+      "event_id": "sbi-vc-trade-rlusd-japan-type4-20260624",
+      "event_type": "institutional",
+      "event_name": "SBI VC Trade begins RLUSD distribution under Japan Type 4 classification",
+      "hypothesis_id": "sbi-rlusd-and-xrpl-poc-vs-production-xrp-use",
+      "domain": "japan_stablecoin_rails",
+      "hypothesis": "SBI's RLUSD distribution and XRPL tokenized-deposit proof of concept expand institutional rail options but do not establish production XRP use, XRP collateral or bridge demand.",
+      "counter_hypothesis": "If the proof of concept progresses to production and explicitly uses XRP for bridge liquidity or collateral, the XRP-demand classification would change.",
+      "claim": "SBI Holdings' official release says SBI VC Trade began handling RLUSD as Japan's first Type 4 electronic payment instrument stablecoin. This is RLUSD distribution, not proof of XRP demand.",
+      "source_id": "sbi_vc_trade_rlusd_20260624",
+      "source_name": "SBI Holdings / SBI VC Trade RLUSD release",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "independence_group": "sbi-group-primary",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-06-24T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The Japanese regulatory classification applies to the local distribution context and must not be generalized to US legal classification."
+      ],
+      "falsification_conditions": [
+        "A production XRP settlement or collateral product explicitly using XRP would change the XRP-use assessment."
+      ],
+      "related_entities": [
+        "SBI Holdings",
+        "SBI VC Trade",
+        "Ripple",
+        "RLUSD",
+        "Japan"
+      ],
+      "tags": [
+        "sbi",
+        "rlusd",
+        "japan",
+        "type4-electronic-payment-instrument",
+        "stablecoin-distribution"
+      ],
+      "publisher_timestamp_precision": "date_or_unknown",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "date_only"
+    },
+    {
+      "event_id": "sbi-ripple-asia-tokenized-deposit-xrpl-poc-20260226",
+      "event_type": "payments",
+      "event_name": "SBI Ripple Asia tokenized-deposit and deposit-money proof of concept",
+      "hypothesis_id": "sbi-rlusd-and-xrpl-poc-vs-production-xrp-use",
+      "domain": "japan_stablecoin_rails",
+      "hypothesis": "SBI's RLUSD distribution and XRPL tokenized-deposit proof of concept expand institutional rail options but do not establish production XRP use, XRP collateral or bridge demand.",
+      "counter_hypothesis": "If the proof of concept progresses to production and explicitly uses XRP for bridge liquidity or collateral, the XRP-demand classification would change.",
+      "claim": "SBI Ripple Asia announced a concept proof for low-cost tokenized deposits and deposit-based digital money using existing financial infrastructure, including MoneyTap and XRPL. The release describes a proof of concept, not a production payment rail or explicit XRP bridge use.",
+      "source_id": "sbi_ripple_asia_tokenized_deposit_poc_20260226",
+      "source_name": "SBI Holdings / SBI Ripple Asia proof-of-concept release",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "independence_group": "sbi-group-primary",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-02-26T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The source is a concept-proof announcement and does not disclose production throughput or an XRP bridge/collateral role."
+      ],
+      "falsification_conditions": [
+        "A production deployment with published settlement volumes and explicit XRP bridge use would change the classification."
+      ],
+      "related_entities": [
+        "SBI Holdings",
+        "SBI Ripple Asia",
+        "MoneyTap",
+        "XRPL"
+      ],
+      "tags": [
+        "sbi",
+        "xrpl",
+        "tokenized-deposits",
+        "moneytap",
+        "proof-of-concept"
+      ],
+      "publisher_timestamp_precision": "date_or_unknown",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "date_only"
+    },
+    {
+      "event_id": "kamilah-stevenson-youtube-identity-unresolved-20260611",
+      "event_type": "identity",
+      "event_name": "Dr Kamilah Stevenson / Camilla Stevenson YouTube identity remains unresolved",
+      "hypothesis_id": "kamilah-stevenson-youtube-identity-unresolved",
+      "domain": "public_identity_and_source_attribution",
+      "hypothesis": "The iHeart guest and the YouTube channel/video candidates may be related, but the handles do not match and no official cross-link verifies the channel identity.",
+      "counter_hypothesis": "An official website or verified social account linking the channel would resolve the alias; search results and an automatically generated transcript are insufficient.",
+      "claim": "The June 11 iHeart episode title identifies Dr Kamilah Stevenson; its auto-generated transcript has the guest self-reporting a YouTube handle @doctorCamillaStevenson. A separate YouTube search result exposes a channel @KamilahStevensonXrpStocks and a candidate April 19, 2026 video, but no official site or verified social cross-link connects those handles. The channel and video are not attributed or inventoried.",
+      "source_id": "iheart_kamilah_stevenson_interview_20260611",
+      "source_name": "iHeart interview transcript",
+      "source_url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "independence_group": "iheart-interview",
+      "source_status": "provisional",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-06-11T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-17T16:29:24Z",
+      "captured_at_utc": "2026-11-17T16:29:24Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The transcript is automatically generated and is not an official channel identity record.",
+        "The YouTube channel and video are candidate sources only; direct channel fetch was throttled."
+      ],
+      "falsification_conditions": [
+        "An official personal website or verified social account linking the channel and candidate video would resolve the identity."
+      ],
+      "related_entities": [
+        "Dr Kamilah Stevenson",
+        "Camilla Stevenson",
+        "YouTube"
+      ],
+      "tags": [
+        "identity",
+        "youtube",
+        "candidate-channel",
+        "no-attribution",
+        "impersonation-risk"
+      ],
+      "publisher_timestamp_precision": "date_or_unknown",
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered public page/API; original publisher response bytes were not archived",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "event_time_precision": "date_only",
+      "related_source_ids": [
+        "youtube_candidate_channel_kamilah_xrp_stocks",
+        "youtube_candidate_video_yjdkl1vmjso"
+      ],
+      "candidate_youtube_handle_in_transcript": "@doctorCamillaStevenson",
+      "candidate_channel_handle": "@KamilahStevensonXrpStocks",
+      "candidate_video_id": "YJdK1LvmJSo",
+      "identity_verified": false,
+      "video_inventory_status": "NOT_INVENTORIED"
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -5941,10 +6683,10 @@
     "source_receipt_policy": "No rendered HTML or web excerpt was hashed as publisher raw bytes. The GitHub artifact ZIP digest is retained separately; log files are identified by Git SHA-1 blob IDs and exact sizes. All five events remain model-ineligible.",
     "note": "Canonical publisher/lineage groups recomputed with the repository's domain-alias and declared-lineage union rules; SBIC regional aliases remain grouped separately from SBI Holdings."
   },
-  "event_count": 125,
+  "event_count": 140,
   "publisher_timestamp_coverage": {
-    "exact_publisher_timestamps": 48,
-    "missing_exact_publisher_timestamps": 77
+    "exact_publisher_timestamps": 54,
+    "missing_exact_publisher_timestamps": 86
   },
   "run192_update": {
     "captured_at_utc": "2026-11-16T16:11:30Z",
@@ -5976,5 +6718,34 @@
     "exact_publisher_timestamps": 48,
     "missing_publisher_timestamps": 77,
     "publisher_timestamp_count": 48
+  },
+  "run220_update": {
+    "captured_at_utc": "2026-11-17T16:29:24Z",
+    "prior_event_count": 125,
+    "appended_event_count": 15,
+    "resulting_event_count": 140,
+    "added_event_ids": [
+      "kraken-xrpusd-ticker-20261117T162924Z",
+      "fuelmaps-xrp-orderbook-20261117T150000Z",
+      "liqwall-xrp-open-interest-20261117T152200Z",
+      "optimistfi-xrp-perps-page-stale-20261106T172300Z",
+      "bitcoinleverage-coinalyze-xrp-oi-20261117T130000Z",
+      "tradradar-xrp-perps-20261116T153000Z",
+      "cryptokeyhole-xrp-etf-partial-20261116",
+      "xrp-insights-xrp-etf-flow-aum-quality-20261116",
+      "coinbase-rlusd-coinbase-distribution-20261028",
+      "coinbase-q3-usdc-economics-20261029",
+      "pnc-coinbase-usdc-ethereum-pilot-20261109",
+      "circle-q3-usdc-supply-economics-20261104",
+      "sbi-vc-trade-rlusd-japan-type4-20260624",
+      "sbi-ripple-asia-tokenized-deposit-xrpl-poc-20260226",
+      "kamilah-stevenson-youtube-identity-unresolved-20260611"
+    ],
+    "raw_source_sha256_receipts_added": 0,
+    "exact_publisher_timestamp_count": 54,
+    "missing_exact_publisher_timestamp_count": 86,
+    "declared_independence_group_count": 109,
+    "canonical_publisher_lineage_group_count": null,
+    "note": "Run220 adds current Kraken spot, Fuelmaps order-book, Liqwall/BitcoinLeverage/TradRadar derivatives, quarantined OptimistFi freshness conflict, two differently scoped XRP ETF trackers, Coinbase/Circle/PNC/SBI institutional stablecoin relationships, and unresolved Kamilah/Camilla YouTube identity candidates. No raw publisher bytes were archived. All 140 events remain model-ineligible; no directional forecast is issued."
   }
 }

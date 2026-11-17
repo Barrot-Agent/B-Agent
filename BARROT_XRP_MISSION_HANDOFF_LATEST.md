@@ -1,3 +1,19 @@
+# Canonical Barrot XRP Mission Handoff — Run220
+
+**This is the sole current handoff.** The older `BARROT_XRP_MISSION_HANDOFF_CURRENT.md` and root `BARROT_XRP_MISSION_HANDOFF.md` are preserved historical copies and are not updated in parallel.
+
+**Latest capture:** 2026-11-17T16:29:24Z
+
+- Main SHA: `482f611e8500d1ce88d5e2bdee969eac7e3133dd`
+- Existing integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`
+- Integration parent before Run220: `b749b9928003b9005fd84688dc04af873b82206f`
+- Existing integration PR: [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663) — still draft; no merge in this run.
+- Mission: XRP intelligence/prediction-engine mastery is priority 1; Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- Run220 adds 15 timestamped research events, a market/institutional/identity reconciliation artifact and a deterministic regression test. All new observations remain research-only; no byte-exact raw publisher receipts were captured and no forecast was issued.
+- The resulting integration head is the commit containing this Run220 handoff; its exact SHA is the current PR #1663 head and is verified in the PR conversation after the branch update.
+
+---
+
 # Run186 public forecast-contract follow-up
 
 **Observed:** 2026-11-16T06:23:06Z  
@@ -7019,3 +7035,109 @@ Exact-head push CI [44107279245](https://github.com/Barrot-Agent/B-Agent/actions
 The SBI Holdings share-count disclosure (9,431,914 Class A and 2,359,038 Class C) is from the **October 12, 2026 Form 8-K**, accession 000119312526419605: https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/d118629d8k.htm. It is not from the November 16 Form 8-K/A. The November 16 8-K/A is the separate filing that attaches Pathfinder financial statements and updated pro forma information. The Run219A wording has been corrected above.
 
 The correction-only commit created by this append is a new head. Its exact-head CI must be checked separately; do not transfer the 13586 test results to it.
+
+
+## Run220 — 2026-11-17T16:29:24Z
+
+### Repository state and integration
+
+- **Main SHA:** `482f611e8500d1ce88d5e2bdee969eac7e3133dd`
+- **Integration branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`
+- **Integration head before Run220:** `b749b9928003b9005fd84688dc04af873b82206f`
+- **PR #1663:** draft, open, GitHub reports mergeable/clean, 201 commits ahead and 0 behind before this update.
+- Main tree: 1,592 entries / 1,445 blobs. Integration tree before this update: 2,797 entries / 2,636 blobs. Every current main blob path is present in the integration tree.
+- One existing integration branch was reused. No new branch or PR was created. Main was not changed.
+
+### Exact CI evidence before the Run220 commit
+
+- Integration head `b749b9928003b9005fd84688dc04af873b82206f`: full repository suite passed **4,099**, skipped **1**, **11 warnings**, **19 subtests**, 68.09% inclusive coverage, 77% legacy-core coverage; duration 116.42 seconds. Wheel build and installed-wheel import checks passed. [Run 44122209781](https://github.com/Barrot-Agent/B-Agent/actions/runs/44122209781).
+- Dependency audit passed for six manifests: runtime, development, integrations, Hugging Face Space, legacy and PEP 621 project dependencies. Each reported no known vulnerabilities. [Run 44122209802](https://github.com/Barrot-Agent/B-Agent/actions/runs/44122209802).
+- Fail-closed gate passed. [Run 44122209789](https://github.com/Barrot-Agent/B-Agent/actions/runs/44122209789).
+- These results are for `b749b9928003b9005fd84688dc04af873b82206f`, not the Run220 commit. Exact-head CI for the resulting Run220 commit is pending and must be checked before any readiness decision.
+
+### Main-branch failures and workflow risks
+
+- Main SHA `482f611e8500d1ce88d5e2bdee969eac7e3133dd` full-suite CI failed during test collection because `scipy` was missing. The integration branch adds the SciPy test dependency and passed its full suite on `b749b9928003b9005fd84688dc04af873b82206f`.
+- Main Pages build failed on Liquid parsing in `GLOBAL_STATE_MANIFEST.md` near line 6450. Integration Pages validation passed on `b749b9928003b9005fd84688dc04af873b82206f`.
+- Main Barrot Sync reported success while logs showed `ModuleNotFoundError: rich`; `python b_agent.py --sync || echo ...` and `git push || true` masked failure. This is a false-green workflow.
+- The integration branch quarantines Barrot Sync, table-freshness, Hugging Face sync, Databricks bundle deployment and self-upgrade writes; Coinbase paper simulation is artifact-only and guarded. This is safer than current main.
+- Main's Pages workflow can deploy automatically on a main push. That is an external deployment side effect and is not authorized by this run.
+
+### Repository governance
+
+- Main branch reports `protected: true`, but its required status-check contexts are empty in the visible branch response.
+- Direct branch-protection inspection returned 403. The visible repository ruleset named "Fall Back" is disabled. CODEOWNERS remains self-only.
+- PR #1663 remains draft with no formal review, no requested reviewers and no review threads. GitHub's mergeable/clean state is not equivalent to approval or branch-protection verification.
+- **Decision: NO MERGE.** No deployment, secret rotation, paper trade, Kaggle submission, Databricks deployment or external model-provider write occurred.
+
+### Open PR inventory and classifications
+
+| PR | Changed paths | Overlap with integration | Classification |
+|---|---:|---:|---|
+| #1663 | 1,380 before Run220 | Active integration | **blocked** — draft, no independent review, governance and deployment-side-effect gates unresolved |
+| #1541 | 5 | 5 overlap; 2 identical blobs, 3 differ | **blocked / possible supersession** — preserve until semantic diff is reviewed |
+| #1450 | 116 | 1 identical; 115 unique | **unique/unreviewed** |
+| #1460 | 8 | 0 | **unique/unreviewed** |
+| #1440 | 64 | 0 | **unique/unreviewed** |
+| #1436 | 24 | 0 | **unique/unreviewed** |
+| #1437 | 5 | 0 | **unique/unreviewed** |
+| #1353 | 1,084 | 0 | **unique/unreviewed** — large archival shard |
+| #1265 | 144 | 4 overlap; 1 identical, 3 differ; 140 unique | **unique/unreviewed** |
+
+No source PR was closed. No duplicate or superseded status is finalized before a verified successor merge.
+
+### XRP market microstructure — 2026-11-17
+
+- Kraken XRP/USD ticker at the run capture: last $0.95562; bid $0.95569; ask $0.95587; 24-hour volume 36.73M XRP; VWAP $0.960651; range $0.9450–$0.9783. This is one venue and has no exchange-server timestamp.
+- Fuelmaps' 15:00 UTC six-venue book showed 1% depth of $11.6M bid versus $8.4M ask (58.2% bid share). Only Coinbase, Bitstamp, Bitfinex and Gemini provided full depth; OKX and Kraken were near-price only; Binance and Bitget were absent. The hourly snapshot was 89m24s old at capture and resting orders can cancel. It is not an executable support level.
+- Liqwall reported $954M XRP OI at 15:22 UTC, -3.6% over 24h and -0.8% in the last hour. Its own daily series shows OI falling about 35.0% from $1.49B on Nov 4 to $968M on Nov 16, while price fell about 27.1% from $1.31 to $0.9553.
+- BitcoinLeverage/Coinalyze reported $452.37M across Binance and Bybit XRPUSDT only, covering 2 of 22 available contracts. Account counts were long-heavy (72.93% Binance, 79.01% Bybit), while funding was negative on both. Account counts are not notional exposure.
+- TradRadar's $1.31B seven-exchange snapshot was from Nov 16 15:30 UTC, one day older. It reported -5.04% 24-hour OI change and -0.0063% per 8h OI-weighted funding.
+- OptimistFi is quarantined: its search snippet's Nov 17/$1.4B claim conflicts with the opened page's Nov 6/$1.6B timestamp/value.
+
+Provider totals are not averaged. The evidence supports a possible leverage contraction in Liqwall's own series, not a market-wide directional forecast.
+
+### ETF flows — fund universe and quality disagreement
+
+- CryptoKeyhole's Nov 16 reading was partial: -5.197M XRP from 2 of 4 daily-reporting funds; Bitwise and Franklin were pending. Its last complete day was Nov 13 at -9,967 XRP.
+- XRP Insights reported +158,148 XRP for Nov 16 across a stated six spot funds plus BITW, but says GXRP is excluded from flow totals while its holdings count. Its top-line AUM ($777.73M) and six-spot AUM ($756.2M) conflict with per-fund AUM rows summing approximately $1.173B for six spot funds and $1.195B including BITW. The flow remains provisional; aggregate AUM is quarantined.
+- These figures are not directly contradictory because the fund universes and completeness differ. No average or complete net-flow conclusion is admitted.
+
+### Coinbase, Circle, PNC, Ripple and SBI
+
+- Coinbase added RLUSD to Prime, Exchange and its app on Oct 28, with XRPL, Base and Ethereum deposits/withdrawals and 1:1 USD conversion. Coinbase Global Exchange collateral support was stated as future availability, not live at launch; Ripple supplies Base liquidity. [Coinbase RLUSD announcement](https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase).
+- Coinbase Q3 reported $22B average USDC held in Coinbase products (+49% YoY), roughly 30% of average USDC market cap, and said it captured about 50% of USDC economics over the prior year. This is Coinbase's own disclosure. [Coinbase Q3 release](https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/).
+- Circle Q3 reported average USDC circulation $73.3B (+8% YoY), end-period $73.9B (0% YoY), $13.9T on-chain volume (+49%), $104B gross minted and $104B gross redeemed, and 27% stablecoin market share (-183bps YoY). Reserve income was $658M (-8%); other revenue $207M included a $182M ARC presale; total distribution/transaction/other costs were $412M (-8%); net income $226M; adjusted EBITDA $317M. Gross mint/redeem is not net capital flow; ARC presale is not recurring reserve income. Circle also reported a pending Tazapay acquisition, Arc mainnet, a $100M Binance investment/USDC partnership and USDC integrations with Visa Direct and Samsung Wallet. [Circle Q3 release](https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/earnings-result/3Q26-Earnings-Release.pdf).
+- PNC's Nov 9 pilot receives USDC on Ethereum through Coinbase Payment APIs and automatically converts it 1:1 to USD in PNC deposit accounts. It is limited to eligible clients and is not an XRP/XRPL corridor. [PNC release](https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients).
+- SBI VC Trade's June 24 announcement classifies RLUSD as a Type 4 electronic payment instrument in Japan. SBI Ripple Asia's Feb 26 concept proof uses MoneyTap and XRPL for tokenized deposits/deposit-based digital money; it is not a production XRP bridge or collateral deployment. [SBI VC Trade](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html) · [SBI Ripple Asia](https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html).
+
+### Exact phrases and Kamilah/Camilla identity
+
+- No new exact-phrase result for ASK Coin, "actual capital" or "SBIC, ChatGPT SBIC". Prior distinctions remain: Permission.io ASK is not a verified XRP issuer; capital categories remain separated; SBIC East/Central/West are not SBI Holdings.
+- The June 11 iHeart interview identifies Dr Kamilah Stevenson in its title; its auto-generated transcript has the guest self-reporting YouTube handle `@doctorCamillaStevenson`. Search also surfaced `@KamilahStevensonXrpStocks` and candidate video `YJdK1LvmJSo`, but no official cross-link connects them. **No video is attributed or inventoried.** [iHeart interview](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/).
+
+### Prediction-engine readiness
+
+- Event registry now has 140 curated events, 54 exact publisher timestamps and 86 without exact publisher timestamps.
+- Byte-exact external publisher SHA-256 receipts: **0**. Model-eligible events: **0**. Forecasts issued: **0**.
+- Public ingestion workflow is designed on the integration branch with 51 endpoints (46 hourly, 3 weekly, 2 excluded), read-only permissions and retention/checkpoint controls. It is main-only and no scheduled main run is verified because the workflow is not merged.
+- Point-in-time feature store, event timeline, scenario/counter-hypothesis assembly, four deterministic baselines, chronological walk-forward evaluation, calibration and drift modules exist. Their predictive performance is not established on a mature receipt-complete dataset.
+- No directional forecast, shadow evaluation or paper trade was performed.
+
+### Nine-platform authentication map
+
+- ChatGPT: GitHub connector repository/tree/PR/workflow reads verified in this run.
+- Claude, Grok, Gemini and Codex: authentication not tested.
+- Copilot, Hugging Face, Kaggle and Databricks: repository/workflow references only; no live authentication or data flow verified. No Kaggle submission, Space restart or Databricks deployment occurred.
+- No cross-platform evidence exchange or live nine-platform quorum is claimed.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** mission priority, ingestion schedule, immutable receipt policy, point-in-time feature store, leakage-safe walk-forward, baselines, calibration, drift, forecast ledger and nine-platform evidence contract.
+- **EXECUTED:** repository/main/tree/PR/CI inspection; source-PR overlap inventory; Run220 market/institutional/identity research; 15 new research events; Run220 reconciliation artifact; regression test; canonical handoff update on the existing integration branch.
+- **VERIFIED before Run220 commit:** exact full suite, six-manifest dependency audit and fail-closed gate on `b749b9928003b9005fd84688dc04af873b82206f`. Resulting Run220 head CI is pending and must be verified separately.
+- **NOT VERIFIED:** production scheduled ingestion, byte-exact source receipts, model eligibility, predictive superiority, calibration, drift, shadow evaluation, independent review, branch-protection requirements or merge readiness.
+
+### Next concrete action
+
+Verify the resulting Run220 commit SHA and exact-head full repository suite, dependency audit, fail-closed gate and Pages validation. Then obtain independent review and authoritative branch-protection evidence. Do not merge while the PR is draft, approvals are absent, ruleset/protection requirements are unresolved, or a merge would trigger an unapproved Pages deployment.
