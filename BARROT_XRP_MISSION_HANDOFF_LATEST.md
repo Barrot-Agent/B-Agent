@@ -4802,3 +4802,112 @@ Nine PRs remain open: #1663 blocked integration; #1541 superseded candidate/reco
 Continue the semantic and security review of the consolidated integration, resolve overlapping MMI/research branch differences, obtain independent review and authorized branch-protection evidence, and reduce GitHub connector permissions. Do not mark PR #1663 ready or merge until those conditions and every required check/approval are satisfied. After any future compliant merge, refetch main, verify the merge SHA, run main CI and verify the first scheduled ingestion run.
 
 No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force push or history rewrite occurred.
+
+
+---
+
+# Run204 — current-head repository verification, macro/market refresh and institutional reconciliation
+
+**Captured:** 2026-11-17T02:33:04Z  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration head before Run204 evidence commits:** `479ca7e0892c7b20378fb3a9e2ea38925f81cc34`  
+**Branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), open/draft.
+
+## Repository state — VERIFIED
+
+- Main recursive tree: 1,393 entries; integration recursive tree: 2,571 entries. Both tree responses were complete (not truncated).
+- Main paths missing from integration: 0.
+- Integration is 145 commits ahead of main and zero behind.
+- PR #1663 has 1,343 changed files, including 49 workflow paths and 395 test paths.
+- Nine PRs remain open: #1663, #1541, #1450, #1460, #1440, #1437, #1436, #1353 and #1265.
+- #1663 remains draft, has zero formal reviews, zero review threads and no requested reviewers. GitHub's mergeable metadata is not an approval or merge authorization.
+
+## Exact-head verification — VERIFIED
+
+Current integration head `479ca7e0892c7b20378fb3a9e2ea38925f81cc34` completed push CI successfully:
+
+- Full repository suite: **3,846 passed, zero failed, one skipped, 11 warnings, 19 subtests**, 140.71 seconds.
+- Inclusive package coverage: **66.90%**; the preserved legacy-core coverage-floor step passed.
+- Wheel build and installed-wheel smoke test passed; installed package loaded Barrot V3, the priority-one XRP mission and canonical data assets.
+- Six-manifest strict dependency audit passed; no known vulnerabilities were reported.
+- Push fail-closed gate passed.
+- PR CI and PR fail-closed gate passed. PR-event test jobs were skipped by the integration-branch condition; the push-triggered full-suite run is the authoritative exact-head full-suite evidence.
+- GitHub Actions cache budget is exhausted and cache is read-only. This did not prevent test execution or artifact publication.
+
+Evidence:
+- [Push CI/full suite 44002297187](https://github.com/Barrot-Agent/B-Agent/actions/runs/44002297187)
+- [Push dependency audit 44002297161](https://github.com/Barrot-Agent/B-Agent/actions/runs/44002297161)
+- [Push fail-closed gate 44002297317](https://github.com/Barrot-Agent/B-Agent/actions/runs/44002297317)
+- [PR CI 44002304585](https://github.com/Barrot-Agent/B-Agent/actions/runs/44002304585)
+- [PR dependency audit 44002304634](https://github.com/Barrot-Agent/B-Agent/actions/runs/44002304634)
+- [PR fail-closed gate 44002304594](https://github.com/Barrot-Agent/B-Agent/actions/runs/44002304594)
+
+## Security work — EXECUTED, partial scope
+
+The last four commits after Run203 include immutable SHA pinning for reviewed checkout, setup-python and upload-artifact actions across several workflows, plus regression-test corrections for list-form action references and unchanged legacy artifacts. The exact-head full suite passed after these changes.
+
+A complete current inventory of all remaining mutable action references was not established in Run204. Full semantic review of all 49 changed workflows and 395 changed test paths remains incomplete.
+
+## Main-branch scheduled analysis — EXECUTED, data-quality warning
+
+Main Cross Analysis run [43998737554](https://github.com/Barrot-Agent/B-Agent/actions/runs/43998737554) completed successfully and uploaded artifact [cross-analysis-43998737554-1](https://github.com/Barrot-Agent/B-Agent/actions/runs/43998737554/artifacts/14291461335), SHA-256 `b2098e12a40b3a39989c044fdc3890412d44b90bccfa5becc40ac48b6d4353e8`.
+
+It found 3,217 entity pairs and profiled 990 entities. XRP appeared 286 times in the historical corpus; its displayed +0.46 sentiment is not current market sentiment. The recent/prior sentiment windows had **zero XRP records and zero BTC records**. The workflow succeeds, but its current sentiment detector has no eligible recent/prior data.
+
+The priority-one mission configuration and `.github/workflows/xrp-public-ingestion.yml` are still absent from main. The scheduled XRP ingestion workflow exists on integration only and is guarded to execute on main. No scheduled XRP ingestion run was verified. It cannot become active until a compliant merge places it on main.
+
+## XRP market and macro observations — DESCRIPTIVE ONLY
+
+- Swiftedge's November 16 21:34 UTC XRP perpetual snapshot reported $0.9568, a $0.9418–$0.9763 session range, negative funding of 0.0023% per eight hours, 76.13M XRP/$72.8M open interest on its on-chain perpetual universe, a reported bid wall of 5.86M XRP at $0.9520 and ask wall of 5.60M XRP at $0.9610. This is a vendor aggregate, not exchange-native full-depth spot data; resting walls can be cancelled.
+- A Bitcoin.com/SoSoValue five-fund series reported $19.13M ETF net outflows for November 9–13, led by Grayscale ($12.71M out) and Bitwise ($9.40M out), partly offset by Franklin ($4.45M in). XRP Insights separately reported 6.1M XRP (about $6.5M) net outflows for November 6–13 across six spot ETFs plus BITW. The universes and windows differ; these figures are not averaged or treated as independent confirmations.
+- Reuters' November 16 macro reporting put the dollar index at 103.50, the market-implied probability of a 25bp December Fed hike near 95%, USD/JPY around 159.38 and Japan Q3 GDP at -0.1% annualized. Reuters also reported BOJ board member Hajime Takata advocating nimble rate increases from a 1.25% policy rate. These are macro context, not an XRP-specific causal explanation or forecast.
+- Federal Reserve Governor Michael Barr warned about AI-related financial-stability risks, leverage and potential algorithmic herding. This is general risk context, not an XRP catalyst.
+
+## Institutional and payment-rail reconciliation
+
+- **Coinbase/Ripple:** Coinbase's October 28 announcement confirms RLUSD on Coinbase Prime, Coinbase Exchange and retail, with XRPL, Base and Ethereum deposits/withdrawals at launch. Coinbase Global Exchange collateral use was future availability, not live.
+- **BNY/Ripple:** BNY's October 27 announcement confirms XRP and RLUSD custody support and BNY's primary RLUSD reserve-custody role. Direct RLUSD mint/redeem and tokenized trade-finance initiatives remain future/approval-dependent.
+- **Standard Chartered/Ripple/LMAX:** Standard Chartered custody of XRPL-issued RLUSD is live through its DIFC branch. RLUSD collateral mirroring for LMAX remains conditional on final documentation, testing, laws, approvals and jurisdiction readiness. This is not XRP collateral.
+- **SBI/JPYSC:** SBI's November 2 release reports JPYSC lending balances above JPY 10B and handled balances above JPY 30B. Handled balance includes on-chain balances plus lending balances. JPYSC is a separate yen stablecoin issued by SBI Shinsei Trust Bank, distributed by SBI VC Trade and co-developed with Startale; it is not XRP or RLUSD.
+- SBI/Startale's Open Standard JPYSC/OUSD interoperability exploration and the SBI/Startale/BlackRock tokenized-MMF/JPYSC MOU are exploratory, not production settlement.
+- SBI VC Trade's current RLUSD service page lists Ethereum support; XRPL support is planned. SBI's RLUSD listing therefore does not establish current SBI-side XRPL settlement.
+
+## Exact phrases and identity
+
+- **ASK Coin:** unresolved. Permission Coin (ASK) remains a lexical candidate only; no XRP/Ripple relationship is established.
+- **Actual capital:** retain the SEC/issuer reconciliation separating cash, in-kind XRP, debt, warrant proceeds and equity-line capacity. SBI's stated $200M cash investment is part of the aggregate PIPE pool; do not add it a second time to the SEC aggregate cash figure.
+- **SBIC, ChatGPT SBIC:** SBIC East's official 2025 training page confirms ChatGPT training for investee companies. It is an educational event, not an OpenAI partnership. SBIC East/Central/West remain distinct regional investment companies, not SBI Holdings.
+- **Camilla/Kamilah Stevenson:** a candidate YouTube channel ID `UCXm6KAr1WHF6UN7g5b2W7wg` and title “Kamilah Stevenson | XRP & Stocks” were located. The channel-to-person link is not independently verified by first-party reciprocal evidence. Verified official-video inventory remains zero; candidates are not promoted as a confirmed channel inventory.
+
+## Prediction gate — NOT SATISFIED
+
+The current curated event registry remains Run192 follow-up: 125 events, zero byte-exact raw-source SHA-256 receipts, 48 exact publisher timestamps, 77 missing exact publisher timestamps and zero model-eligible events. The registry capture time is November 16 16:11:30 UTC and no newer receipt-backed registry was verified in Run204.
+
+- Forecast status: `NOT_ISSUED`.
+- Fixed-horizon accuracy: `NOT_EVALUATED`.
+- No directional forecast issued.
+- No new web observation was admitted to the point-in-time feature store. New market/research observations have null raw-source hashes.
+
+The readiness gate remains tied to point-in-time receipts, chronological walk-forward superiority against all four baselines, calibration, stable drift, shadow evaluation, overlap-adjusted effective sample sizes, source-clustered uncertainty and independent Ed25519 evaluator attestation.
+
+## Nine-platform coordination — VERIFIED STATUS
+
+The Run204 map records ChatGPT's current GitHub connector as the only verified live data flow. Its permission set is admin/maintain/push/pull/triage and fails least-privilege review. Claude, Grok, Gemini, Codex, Hugging Face and Databricks remain unverified; Copilot is historical one-off activity only; Kaggle is untested. Groq is separate from Grok. No external model tasks or data transfers were dispatched.
+
+## Governance and merge decision
+
+**NO MERGE.** PR #1663 remains draft with zero formal reviews. Branch-protection details return HTTP 403; visible ruleset 10863829 is disabled; CODEOWNERS assigns all paths to `@Barrot-Agent`; the GitHub connector has admin-level permissions. The 1,343-path integration still needs complete semantic/security review. No branch-protection bypass is permitted.
+
+Nine PRs remain open. #1663 is the sole main-targeting integration draft; #1541 is a superseded/reconciliation candidate; #1450/#1440/#1436/#1353/#1265 form a research stack; #1437 is a parallel repair branch; #1460 is a diverged research handoff. No source PR was closed.
+
+## Next concrete actions
+
+1. Complete semantic/security review of all changed workflows and tests, including remaining mutable action references and side effects.
+2. Reconcile the MMI/research PR stack bottom-up without discarding unique evidence.
+3. Obtain independent review and authorized branch-protection/ruleset evidence; do not bypass protection.
+4. After a compliant merge only, refetch main, verify the merge commit, run main CI and verify the first scheduled XRP ingestion run.
+5. Capture byte-exact source payloads and exact publisher timestamps; admit no new model features without independently verifiable receipts.
+6. Keep forecasts disabled until the full XRP-specific walk-forward, baseline, calibration, drift, shadow and independent-attestation gates pass.
+
+**No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force-push or history rewrite occurred.**
