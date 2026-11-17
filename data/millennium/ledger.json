@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-11-17",
+  "database": {
+    "problem_files": 7,
+    "overview_rows": 7,
+    "seed_records": 6,
+    "seed_error": null,
+    "bundles": {
+      "anthropic_fermats_last_theorem_bundle.json": {
+        "records": 20,
+        "top_keys": [
+          "adversarial_reviews",
+          "claims",
+          "evidence",
+          "formal_verification",
+          "problem",
+          "question_map",
+          "sources",
+          "tracks"
+        ]
+      },
+      "navier_stokes_research_bundle.json": {
+        "records": 67,
+        "top_keys": [
+          "adversarial_reviews",
+          "claims",
+          "evidence",
+          "formal_verification",
+          "problem",
+          "question_map",
+          "sources",
+          "tracks"
+        ]
+      },
+      "riemann_hypothesis_harvest.json": {
+        "records": 30,
+        "top_keys": [
+          "corroboration_policy",
+          "cross_source_validation",
+          "domain",
+          "evidence_policy",
+          "last_harvested_at",
+          "last_source_status",
+          "quality_gate_policy",
+          "records",
+          "schema_version",
+          "statistics",
+          "validated_at",
+          "validation_policy"
+        ]
+      }
+    }
+  },
+  "problems": [
+    {
+      "number": 7,
+      "name": "Poincare Conjecture",
+      "status": "resolved",
+      "blocking_gap": "Resolved.",
+      "transmuted_approach": "Reference only; no new approach proposed.",
+      "kpi_gate": "A resolved problem is recorded only with a published proof and an independent verification event; here Poincare has both."
+    },
+    {
+      "number": 1,
+      "name": "P vs NP",
+      "status": "open",
+      "blocking_gap": "Three barrier theorems (relativization, natural proofs, algebrization) rule out every known technique; current circuit lower bounds do not reach NP.",
+      "transmuted_approach": "Borrow the Poincare pattern - a deformation with a monotone quantity and controlled singularities - as an analogy only, then pursue geometric complexity theory (representation-theoretic obstructions), which is deliberately non-relativizing and non-naturalizing. Dead end to check first: occurrence obstructions already block the simplest GCT programme.",
+      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full."
+    },
+    {
+      "number": 2,
+      "name": "Hodge Conjecture",
+      "status": "open",
+      "blocking_gap": "The integral form is false (Atiyah-Hirzebruch torsion, Kollar); the rational form has no general construction of algebraic cycles in codimension two and higher.",
+      "transmuted_approach": "Use Poincare-style reduction to a normal form: replace cycle construction with a deformation of the Hodge structure (variation of Hodge structure) and ask which classes are invariant under monodromy. Test on the known counterexamples before general claims.",
+      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full."
+    },
+    {
+      "number": 3,
+      "name": "Riemann Hypothesis",
+      "status": "open",
+      "blocking_gap": "No archimedean positivity and no exact trace formula for the integers; the function field analogue is settled, the number field case is not.",
+      "transmuted_approach": "De Bruijn-Newman flow: zeros evolve under a heat-type equation; RH is equivalent to Lambda = 0, and Lambda >= 0 is a theorem (Rodgers-Tao). The missing piece is a monotone quantity at t = 0, which is the same shape of gap that Ricci flow had.",
+      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full."
+    },
+    {
+      "number": 4,
+      "name": "Yang-Mills Existence and Mass Gap",
+      "status": "open",
+      "blocking_gap": "No nonperturbative construction of a four-dimensional gauge theory, and no control of the renormalization group flow sufficient to prove a gap.",
+      "transmuted_approach": "Constructor path: Osterwalder-Schrader reconstruction plus a rigorous Wilsonian renormalization group flow; the monotone quantity is the effective action under scale. Test the flow on the lattice first, where the gap is already seen numerically.",
+      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full."
+    },
+    {
+      "number": 5,
+      "name": "Navier-Stokes Existence and Smoothness",
+      "status": "open",
+      "blocking_gap": "The equation is supercritical: the energy is invariant at the critical scaling and no monotone quantity rules out blow-up in three dimensions.",
+      "transmuted_approach": "Critical-space scaling: work in the scaling-invariant norm and look for a monotone (or at least non-increasing) functional along the flow, as with Ricci flow entropy. Dead end to record: mere energy methods cannot work, they are supercritical.",
+      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full."
+    },
+    {
+      "number": 6,
+      "name": "Birch and Swinnerton-Dyer Conjecture",
+      "status": "open",
+      "blocking_gap": "Rank zero and one are known through Gross-Zagier and Kolyvagin; rank two and above need Euler systems or p-adic constructions that do not exist in general.",
+      "transmuted_approach": "Euler systems are the working analogue of a monotone quantity: each level yields a divisibility that improves with rank. Dead end: rank two Euler systems are not available; p-adic Iwasawa theory covers only parts of the picture.",
+      "kpi_gate": "No progress claim is recorded without one of: a machine-checked lemma, a verified computation with a reproducible script, or a fetched peer-reviewed citation quoted in full."
+    }
+  ],
+  "conflicts": [],
+  "database_thinness": "Per-problem files contain narrative keys only (why_matters, next_steps). No proof, lemma, citation or machine-checked artifact exists in the acquired database."
+}

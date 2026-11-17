@@ -1,0 +1,58 @@
+{
+  "verified_at": "2026-11-17",
+  "method": "arXiv Atom API: id_list and title search, HTTP 200, title and first-submission date read from the response body. No title or date below was written from memory.",
+  "preprints": [
+    {
+      "id": "math/0211159",
+      "title": "The entropy formula for the Ricci flow and its geometric applications",
+      "submitted": "2002-11-11",
+      "contributes": "entropy monotonicity, no local collapsing, canonical neighbourhoods",
+      "fetched_status": 200
+    },
+    {
+      "id": "math/0303109",
+      "title": "Ricci flow with surgery on three-manifolds",
+      "submitted": "2003-03-10",
+      "contributes": "surgery procedure and extinction argument",
+      "fetched_status": 200
+    },
+    {
+      "id": "math/0307245",
+      "title": "Finite extinction time for the solutions to the Ricci flow on certain three-manifolds",
+      "submitted": "2003-07-17",
+      "contributes": "finite extinction time, closing the remaining case",
+      "fetched_status": 200
+    }
+  ],
+  "verification_event": {
+    "year": 2006,
+    "independent_check": "Kleiner-Lott and Morgan-Tian, 2006",
+    "kleiner_lott": {
+      "id": "math/0605667",
+      "title": "Notes on Perelman's papers",
+      "submitted": "2006-05-25",
+      "fetched_status": 200
+    },
+    "morgan_tian": {
+      "id": "math/0607607",
+      "title": "Ricci Flow and the Poincare Conjecture",
+      "submitted": "2006-07-25",
+      "fetched_status": 200
+    },
+    "corrections": [
+      {
+        "id": "1512.00699",
+        "title": "Correction to Section 19.2 of Ricci Flow and the Poincare Conjecture",
+        "fetched_status": 200
+      },
+      {
+        "id": "1512.02046",
+        "title": "A counterexample to the second inequality of Corollary (19.10) in the monograph Ricci Flow and the Poincare Conjecture by J.Morgan and G.Tian",
+        "fetched_status": 200
+      }
+    ],
+    "consequence": "The verification is a maintained body of work with published errata, not an infallible document. That is what a usable verification record looks like."
+  },
+  "technique_that_made_it_solvable": "Hamilton's Ricci flow, made controllable by Perelman's monotone functionals: entropy and reduced volume rule out collapse and localise singularities, so surgery stays under control. Transferable shape: a deformation plus a monotone quantity plus controlled singularities.",
+  "not_recorded": "Prize and award status was not fetched in this cycle, so it is not stated here."
+}

@@ -77,6 +77,10 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 
 - docs/fields/track-01-cymatics.md - Track 1 - Cymatics
 
+## docs/millennium
+
+- docs/millennium/CYCLE-01.md - Millennium cycle 01: database audit, Poincare verified, six gaps
+
 ## docs/phoenix
 
 - docs/phoenix/PROGRAM.md - Phoenix program: fiction mapped to utility
