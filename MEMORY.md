@@ -287,3 +287,7 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Barrot V3 remains the execution, orchestration, authorization, safety, and verification foundation.
 - Forecasts remain disabled until byte-exact source receipts, point-in-time eligibility, leakage-safe walk-forward evaluation, baseline comparisons, calibration, drift checks, and independent shadow outcomes qualify a candidate.
 - Current canonical status and evidence: `BARROT_XRP_MISSION_HANDOFF_LATEST.md` and `research/xrp_intelligence/`.
+
+
+## Current provider-authentication status — 2026-11-17
+- Current authentication and end-to-end data flow for the nine-platform coordination matrix are not yet verified in this run. Historical OpenCode/GitHub MCP notes above are historical evidence only; they are not proof of current live authentication or current permissions.

@@ -5800,3 +5800,31 @@ These remain **candidate attributions, not a verified official-channel inventory
 - No PR is classified ready, superseded or duplicate on current evidence. No source PR was closed.
 
 **Next concrete action:** obtain the completed full-suite result for the exact final integration head, then finish review of all changed workflows and high-risk scripts, establish independent review and inspect enforceable main protection/required checks. Only then reconsider merge. The main branch remains unchanged.
+
+
+---
+
+# Run211b — main advanced during integration; false-green Barrot Sync and reconciliation block
+
+## Main-side effect observed after the Run211 handoff update
+
+- Main advanced from `2c454f245296a23d3b4f180ca15ce63f3735319a` to `002486e09cb0ad6702e1858e2428c4dcb10fe2a8` through a separate `Barrot-Agent` push. This was not performed by this integration run; main was not edited by the GitHub operations in this run.
+- Commit `002486e` has parent `2c454f2`, 54 changed files, 2,932 additions and zero deletions. It adds the `book/grok-100k-business/` manuscript/build project (52 new file/tree entries) and appends to `BARROT_SYNC.md` and `MEMORY.md`.
+- The commit message records an incident in which a bulk `git ls-files --others --exclude-standard | xargs -r rm -f` deleted 47 untracked book-project files and sync/memory appends, followed by reconstruction from `dist/book.md`. The commit records a backup location, but this run did not independently inspect that backup or prove that no other untracked user files were lost. Preserve the new main project and do not run cleanup/reset/stash/restore operations.
+- The integration branch does not contain the new book project. Current recursive-tree comparison: main 1,582 entries, integration 2,718; 63 main entries are absent from integration (the book directory/files), 1,199 integration-only, 1,519 shared, 228 shared entries with differing blob/mode. `BARROT_SYNC.md` and `MEMORY.md` are changed on both sides and require explicit reconciliation. PR #1663 is now 177 commits ahead and 1 behind, `mergeable=false`, `mergeable_state=dirty`. Its branch remains unprotected and draft/open.
+
+## Automatic workflow side effect: Barrot Sync false-green
+
+- Main push triggered [Barrot Sync run 44061318838](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061318838). The job reported success, but its log shows `python b_agent.py --sync` failed immediately with `ModuleNotFoundError: No module named 'rich'`. The shell fallback printed “sync skipped - manual sync”; the subsequent `git push || true` masked the non-operation. The workflow is therefore a **confirmed false-green**, not a successful sync. No sync commit was made by this run.
+- [Barrot Auto PR run 44061318913](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061318913) only validated workflow setup; it did not create a PR.
+- Main CI run [44061318896](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061318896) was in progress after checkout at `002486e`; core tests had passed, full repository suite was still running. Dependency audit run [44061330752](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061330752) was in progress; main fail-closed gate [44061330609](https://github.com/Barrot-Agent/B-Agent/actions/runs/44061330609) passed.
+
+## Integration full-suite failure and documentation correction
+
+- Exact-head push suite [44060485880](https://github.com/Barrot-Agent/B-Agent/actions/runs/44060485880) on `8255660` completed with 4,077 passed, 1 failed, 1 skipped, 11 warnings and 19 subtests in 182.05 seconds. The README assertion passed; the remaining failure was the test's third assertion, which required the literal phrase `not yet verified` in `MEMORY.md`.
+- The integration branch's `MEMORY.md` contained historical OpenCode/GitHub MCP configuration notes but lacked a current-status disclaimer. This run adds a truthful statement that current authentication and end-to-end data flow for the nine-platform matrix are not yet verified in this run; it explicitly distinguishes historical notes from current proof. The test is unchanged.
+- The memory disclaimer and this addendum are committed together as one fast-forward on the existing integration branch. No new PR, branch rewrite, force-push, main write, or source-PR closure is performed. The new commit requires its own exact-head full suite; no result from `8255660` transfers.
+
+## Current decision
+
+**NO MERGE.** Main advanced independently, the integration PR is one commit behind and dirty, two shared documentation files require reconciliation, and the new book project must be preserved. The Barrot Sync false-green must be fixed or quarantined before the integration can be considered safe. Continue using the existing #1663 workstream; do not create a duplicate PR merely to bypass the conflict. After exact-head tests, reconcile the two documentation overlaps and all 54 main-side project paths without deleting or rewriting either history. Independent review and enforceable branch-protection evidence remain mandatory.
