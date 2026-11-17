@@ -1,0 +1,1232 @@
+{
+  "built_at": "2026-11-17",
+  "queries": [
+    "topic:mcp-server stars:>800",
+    "topic:ai-agent stars:>2000",
+    "topic:automation stars:>3000",
+    "github actions auto fix in:readme stars:>500",
+    "topic:scraper stars:>2000",
+    "topic:trading-bot stars:>1500"
+  ],
+  "allowed_licenses": [
+    "0BSD",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "CC0-1.0",
+    "MIT",
+    "Unlicense"
+  ],
+  "repos_scanned": 33,
+  "workflows": 58,
+  "grades": {
+    "Q": 58,
+    "E": 0,
+    "X": 0
+  },
+  "blocked_license": 10,
+  "records": [
+    {
+      "repo": "n8n-io/n8n",
+      "url": "https://github.com/n8n-io/n8n",
+      "stars": 210927,
+      "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+      "license": "NOASSERTION",
+      "queries": [
+        "topic:mcp-server stars:>800",
+        "topic:automation stars:>3000"
+      ],
+      "workflows": [],
+      "license_status": "BLOCKED-LICENSE"
+    },
+    {
+      "repo": "google-gemini/gemini-cli",
+      "url": "https://github.com/google-gemini/gemini-cli",
+      "stars": 108901,
+      "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
+      "license": "Apache-2.0",
+      "queries": [
+        "topic:mcp-server stars:>800"
+      ],
+      "workflows": [
+        {
+          "file": "agent-session-drift-check.yml",
+          "path": ".github/workflows/agent-session-drift-check.yml",
+          "html_url": "https://github.com/google-gemini/gemini-cli/blob/main/.github/workflows/agent-session-drift-check.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'pull_request': {'branches': ['main', 'release/**'], 'paths': ['packages/cli/src/nonInteractiveCli.ts', 'packages/cli/s",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 4893
+        },
+        {
+          "file": "build-unsigned-mac-binaries.yml",
+          "path": ".github/workflows/build-unsigned-mac-binaries.yml",
+          "html_url": "https://github.com/google-gemini/gemini-cli/blob/main/.github/workflows/build-unsigned-mac-binaries.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': '', 'workflow_call': {'inputs': {'ref': {'description': 'The branch, tag, or SHA to build from.', ",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 1779
+        },
+        {
+          "file": "chained_e2e.yml",
+          "path": ".github/workflows/chained_e2e.yml",
+          "html_url": "https://github.com/google-gemini/gemini-cli/blob/main/.github/workflows/chained_e2e.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main']}, 'merge_group': '', 'workflow_run': {'workflows': ['Trigger E2E'], 'types': ['completed'",
+          "job_count": 10,
+          "tags": [
+            "release",
+            "docker"
+          ],
+          "bytes": 15358
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "D4Vinci/Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "stars": 103923,
+      "description": "\ud83d\udd77\ufe0f The BEST Web Scraping framework that handles everything from a single request to a full-scale crawl! Don't be shy, join here: https://discord.gg/EMgGbDceNQ and follow here for daily tips and tricks: https://x.com/Scrapling_dev",
+      "license": "BSD-3-Clause",
+      "queries": [
+        "topic:mcp-server stars:>800",
+        "topic:automation stars:>3000"
+      ],
+      "workflows": [
+        {
+          "file": "code-quality.yml",
+          "path": ".github/workflows/code-quality.yml",
+          "html_url": "https://github.com/D4Vinci/Scrapling/blob/main/.github/workflows/code-quality.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main', 'dev'], 'paths-ignore': ['*.md', '**/*.md', 'docs/**', 'images/**', '.github/**', 'agent-",
+          "job_count": 1,
+          "tags": [
+            "lint",
+            "release",
+            "security",
+            "summarize"
+          ],
+          "bytes": 5917
+        },
+        {
+          "file": "docker-build.yml",
+          "path": ".github/workflows/docker-build.yml",
+          "html_url": "https://github.com/D4Vinci/Scrapling/blob/main/.github/workflows/docker-build.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'pull_request': {'types': ['closed'], 'branches': ['main']}, 'workflow_dispatch': {'inputs': {'version': {'description'",
+          "job_count": 1,
+          "tags": [
+            "release",
+            "docker"
+          ],
+          "bytes": 3715
+        },
+        {
+          "file": "release-and-publish.yml",
+          "path": ".github/workflows/release-and-publish.yml",
+          "html_url": "https://github.com/D4Vinci/Scrapling/blob/main/.github/workflows/release-and-publish.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'pull_request': {'types': ['closed'], 'branches': ['main']}}",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 2328
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "koala73/worldmonitor",
+      "url": "https://github.com/koala73/worldmonitor",
+      "stars": 90841,
+      "description": "Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface",
+      "license": "AGPL-3.0",
+      "queries": [
+        "topic:mcp-server stars:>800"
+      ],
+      "workflows": [],
+      "license_status": "BLOCKED-LICENSE"
+    },
+    {
+      "repo": "ruvnet/ruflo",
+      "url": "https://github.com/ruvnet/ruflo",
+      "stars": 81954,
+      "description": "\ud83c\udf0a The original agent harness. Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems. Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated",
+      "license": "MIT",
+      "queries": [
+        "topic:mcp-server stars:>800"
+      ],
+      "workflows": [
+        {
+          "file": "adr-166-mcp-bridge-security.yml",
+          "path": ".github/workflows/adr-166-mcp-bridge-security.yml",
+          "html_url": "https://github.com/ruvnet/ruflo/blob/main/.github/workflows/adr-166-mcp-bridge-security.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main'], 'paths': ['ruflo/src/mcp-bridge/**', 'ruflo/src/ruvocal/mcp-bridge/**', 'ruflo/docker-co",
+          "job_count": 4,
+          "tags": [],
+          "bytes": 4119
+        },
+        {
+          "file": "aidefence-tests.yml",
+          "path": ".github/workflows/aidefence-tests.yml",
+          "html_url": "https://github.com/ruvnet/ruflo/blob/main/.github/workflows/aidefence-tests.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main'], 'paths': ['v3/@claude-flow/aidefence/**', '.github/workflows/aidefence-tests.yml']}, 'pu",
+          "job_count": 1,
+          "tags": [],
+          "bytes": 2024
+        },
+        {
+          "file": "all-plugins-smoke.yml",
+          "path": ".github/workflows/all-plugins-smoke.yml",
+          "html_url": "https://github.com/ruvnet/ruflo/blob/main/.github/workflows/all-plugins-smoke.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main'], 'paths': ['plugins/**', '.claude-plugin/marketplace.json', 'scripts/smoke-all-plugins.mj",
+          "job_count": 1,
+          "tags": [
+            "lint",
+            "release"
+          ],
+          "bytes": 8851
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "upstash/context7",
+      "url": "https://github.com/upstash/context7",
+      "stars": 65013,
+      "description": "Context7 Platform -- Up-to-date docs for AI agents",
+      "license": "MIT",
+      "queries": [
+        "topic:mcp-server stars:>800"
+      ],
+      "workflows": [
+        {
+          "file": "canary-release.yml",
+          "path": ".github/workflows/canary-release.yml",
+          "html_url": "https://github.com/upstash/context7/blob/master/.github/workflows/canary-release.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': {'inputs': {'branch': {'description': 'Branch to release from (defaults to current branch)', 'requ",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 1056
+        },
+        {
+          "file": "ecr-deploy.yml",
+          "path": ".github/workflows/ecr-deploy.yml",
+          "html_url": "https://github.com/upstash/context7/blob/master/.github/workflows/ecr-deploy.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': {'inputs': {'version': {'description': 'Docker image version tag (e.g., v0.0.22)', 'required': 'tr",
+          "job_count": 1,
+          "tags": [
+            "docker",
+            "deploy",
+            "summarize"
+          ],
+          "bytes": 1977
+        },
+        {
+          "file": "mcp-registry.yml",
+          "path": ".github/workflows/mcp-registry.yml",
+          "html_url": "https://github.com/upstash/context7/blob/master/.github/workflows/mcp-registry.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': {'inputs': {'version': {'description': 'Version to publish (defaults to packages/mcp/package.json ",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 3589
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "NousResearch/hermes-agent",
+      "url": "https://github.com/NousResearch/hermes-agent",
+      "stars": 264181,
+      "description": "The agent that grows with you",
+      "license": "MIT",
+      "queries": [
+        "topic:ai-agent stars:>2000"
+      ],
+      "workflows": [
+        {
+          "file": "archive-inputs.yml",
+          "path": ".github/workflows/archive-inputs.yml",
+          "html_url": "https://github.com/NousResearch/hermes-agent/blob/main/.github/workflows/archive-inputs.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main'], 'paths': ['pm/lock.json', 'pm/artifact-mirror.json', 'scripts/termux/runtime_libs.json',",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 1845
+        },
+        {
+          "file": "bootstrap-installer-build.yml",
+          "path": ".github/workflows/bootstrap-installer-build.yml",
+          "html_url": "https://github.com/NousResearch/hermes-agent/blob/main/.github/workflows/bootstrap-installer-build.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': {'inputs': {'ref': {'description': 'Commit, branch or tag to build', 'required': 'true', 'default'",
+          "job_count": 2,
+          "tags": [
+            "release"
+          ],
+          "bytes": 12701
+        },
+        {
+          "file": "bootstrap-installer.yml",
+          "path": ".github/workflows/bootstrap-installer.yml",
+          "html_url": "https://github.com/NousResearch/hermes-agent/blob/main/.github/workflows/bootstrap-installer.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_call': {'inputs': {'commit': {'description': 'Commit to test and build. Empty keeps the triggering commit.', ",
+          "job_count": 2,
+          "tags": [
+            "test",
+            "release"
+          ],
+          "bytes": 7494
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "stars": 112731,
+      "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu \u2014 one CLI, zero API fees.",
+      "license": "MIT",
+      "queries": [
+        "topic:ai-agent stars:>2000",
+        "topic:automation stars:>3000"
+      ],
+      "workflows": [
+        {
+          "file": "pytest.yml",
+          "path": ".github/workflows/pytest.yml",
+          "html_url": "https://github.com/Panniantong/Agent-Reach/blob/main/.github/workflows/pytest.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': '', 'pull_request': ''}",
+          "job_count": 4,
+          "tags": [
+            "test"
+          ],
+          "bytes": 6539
+        },
+        {
+          "file": "release.yml",
+          "path": ".github/workflows/release.yml",
+          "html_url": "https://github.com/Panniantong/Agent-Reach/blob/main/.github/workflows/release.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'tags': ['v*']}}",
+          "job_count": 1,
+          "tags": [
+            "test",
+            "release"
+          ],
+          "bytes": 2626
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "career-ops-hq/career-ops",
+      "url": "https://github.com/career-ops-hq/career-ops",
+      "stars": 83323,
+      "description": "Open-source AI job search agent and job finder: scan job boards, score each job 1-5 against your CV before you apply, tailor an ATS-friendly resume and cover letter, get interview prep and an application tracker. It helps you fill in each application; you press Submit. Runs locally in Codex, OpenCode and other AI CLIs, or as a Claude Code plugin.",
+      "license": "MIT",
+      "queries": [
+        "topic:ai-agent stars:>2000"
+      ],
+      "workflows": [
+        {
+          "file": "auto-triage-scan-output.yml",
+          "path": ".github/workflows/auto-triage-scan-output.yml",
+          "html_url": "https://github.com/career-ops-hq/career-ops/blob/main/.github/workflows/auto-triage-scan-output.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'issues': {'types': ['opened', 'reopened']}}",
+          "job_count": 1,
+          "tags": [
+            "schedule"
+          ],
+          "bytes": 5370
+        },
+        {
+          "file": "ci-approve.yml",
+          "path": ".github/workflows/ci-approve.yml",
+          "html_url": "https://github.com/career-ops-hq/career-ops/blob/main/.github/workflows/ci-approve.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'schedule': [{'cron': '*/30 * * * *'}], 'workflow_dispatch': ''}",
+          "job_count": 1,
+          "tags": [
+            "schedule",
+            "summarize"
+          ],
+          "bytes": 1854
+        },
+        {
+          "file": "codeql.yml",
+          "path": ".github/workflows/codeql.yml",
+          "html_url": "https://github.com/career-ops-hq/career-ops/blob/main/.github/workflows/codeql.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main']}, 'pull_request': {'branches': ['main']}, 'schedule': [{'cron': '0 4 * * 1'}]}",
+          "job_count": 1,
+          "tags": [
+            "test",
+            "security",
+            "schedule"
+          ],
+          "bytes": 1810
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "shareAI-lab/learn-claude-code",
+      "url": "https://github.com/shareAI-lab/learn-claude-code",
+      "stars": 80548,
+      "description": "Bash is all you need -  A nano claude code\u2013like \u300cagent harness\u300d, built from 0 to 1",
+      "license": "MIT",
+      "queries": [
+        "topic:ai-agent stars:>2000"
+      ],
+      "workflows": [
+        {
+          "file": "ci.yml",
+          "path": ".github/workflows/ci.yml",
+          "html_url": "https://github.com/shareAI-lab/learn-claude-code/blob/main/.github/workflows/ci.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main']}, 'pull_request': {'branches': ['main']}}",
+          "job_count": 1,
+          "tags": [],
+          "bytes": 673
+        },
+        {
+          "file": "test.yml",
+          "path": ".github/workflows/test.yml",
+          "html_url": "https://github.com/shareAI-lab/learn-claude-code/blob/main/.github/workflows/test.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main']}, 'pull_request': {'branches': ['main']}}",
+          "job_count": 2,
+          "tags": [
+            "test"
+          ],
+          "bytes": 1163
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "hugohe3/ppt-master",
+      "url": "https://github.com/hugohe3/ppt-master",
+      "stars": 77919,
+      "description": "AI turns documents or topics into real, native PowerPoint decks\u2014with native shapes, transitions and animations, data-backed charts and tables on demand, audio narration from speaker notes, and support for your own .pptx templates. \u00b7 by Hugo He",
+      "license": "MIT",
+      "queries": [
+        "topic:ai-agent stars:>2000"
+      ],
+      "workflows": [],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "thedaviddias/Front-End-Checklist",
+      "url": "https://github.com/thedaviddias/Front-End-Checklist",
+      "stars": 74762,
+      "description": "\ud83d\uddc2 The essential checklist for modern web development, for humans and AI agents",
+      "license": "MIT",
+      "queries": [
+        "topic:ai-agent stars:>2000"
+      ],
+      "workflows": [
+        {
+          "file": "ci.yml",
+          "path": ".github/workflows/ci.yml",
+          "html_url": "https://github.com/thedaviddias/Front-End-Checklist/blob/main/.github/workflows/ci.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main', 'develop']}, 'workflow_dispatch': ''}",
+          "job_count": 9,
+          "tags": [
+            "test",
+            "lint",
+            "release",
+            "security",
+            "summarize",
+            "scrape"
+          ],
+          "bytes": 8024
+        },
+        {
+          "file": "deploy.yml",
+          "path": ".github/workflows/deploy.yml",
+          "html_url": "https://github.com/thedaviddias/Front-End-Checklist/blob/main/.github/workflows/deploy.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main']}, 'workflow_dispatch': ''}",
+          "job_count": 1,
+          "tags": [
+            "release",
+            "deploy"
+          ],
+          "bytes": 1119
+        },
+        {
+          "file": "e2e.yml",
+          "path": ".github/workflows/e2e.yml",
+          "html_url": "https://github.com/thedaviddias/Front-End-Checklist/blob/main/.github/workflows/e2e.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': ''}",
+          "job_count": 2,
+          "tags": [
+            "release",
+            "summarize",
+            "scrape"
+          ],
+          "bytes": 3631
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "langgenius/dify",
+      "url": "https://github.com/langgenius/dify",
+      "stars": 161370,
+      "description": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
+      "license": "NOASSERTION",
+      "queries": [
+        "topic:automation stars:>3000"
+      ],
+      "workflows": [],
+      "license_status": "BLOCKED-LICENSE"
+    },
+    {
+      "repo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "stars": 127723,
+      "description": "Orca lets you run a fleet of coding agents (e.g. Claude Code, Codex) with your own subscription. Available on desktop, mobile and remote runtime.",
+      "license": "MIT",
+      "queries": [
+        "topic:automation stars:>3000"
+      ],
+      "workflows": [
+        {
+          "file": "adhoc-mac-build.yml",
+          "path": ".github/workflows/adhoc-mac-build.yml",
+          "html_url": "https://github.com/stablyai/orca/blob/main/.github/workflows/adhoc-mac-build.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': {'inputs': {'ref': {'description': 'Branch, tag, or SHA to build \u2014 must live in stablyai/orca; PR ",
+          "job_count": 9,
+          "tags": [
+            "release",
+            "deploy"
+          ],
+          "bytes": 31772
+        },
+        {
+          "file": "agent-state-rules-publish.yml",
+          "path": ".github/workflows/agent-state-rules-publish.yml",
+          "html_url": "https://github.com/stablyai/orca/blob/main/.github/workflows/agent-state-rules-publish.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': {'inputs': {'action': {'description': 'publish-next builds from main and publishes to next; promot",
+          "job_count": 3,
+          "tags": [
+            "release"
+          ],
+          "bytes": 3063
+        },
+        {
+          "file": "ci-branch-cache-sweep.yml",
+          "path": ".github/workflows/ci-branch-cache-sweep.yml",
+          "html_url": "https://github.com/stablyai/orca/blob/main/.github/workflows/ci-branch-cache-sweep.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'schedule': [{'cron': '23 */3 * * *'}], 'workflow_dispatch': {'inputs': {'dry_run': {'description': 'List what would be",
+          "job_count": 1,
+          "tags": [
+            "release",
+            "schedule"
+          ],
+          "bytes": 2342
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "microsoft/playwright",
+      "url": "https://github.com/microsoft/playwright",
+      "stars": 100432,
+      "description": "Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. ",
+      "license": "Apache-2.0",
+      "queries": [
+        "topic:automation stars:>3000"
+      ],
+      "workflows": [
+        {
+          "file": "agent-review.yml",
+          "path": ".github/workflows/agent-review.yml",
+          "html_url": "https://github.com/microsoft/playwright/blob/main/.github/workflows/agent-review.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'pull_request_target': {'types': ['labeled']}}",
+          "job_count": 1,
+          "tags": [
+            "scrape"
+          ],
+          "bytes": 1190
+        },
+        {
+          "file": "agent-task.yml",
+          "path": ".github/workflows/agent-task.yml",
+          "html_url": "https://github.com/microsoft/playwright/blob/main/.github/workflows/agent-task.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': {'inputs': {'task': {'description': 'What the bot should do', 'type': 'string', 'required': 'true'",
+          "job_count": 1,
+          "tags": [
+            "scrape"
+          ],
+          "bytes": 1133
+        },
+        {
+          "file": "agent-triage.yml",
+          "path": ".github/workflows/agent-triage.yml",
+          "html_url": "https://github.com/microsoft/playwright/blob/main/.github/workflows/agent-triage.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'issues': {'types': ['labeled']}}",
+          "job_count": 1,
+          "tags": [
+            "scrape"
+          ],
+          "bytes": 1248
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "public-apis/public-apis",
+      "url": "https://github.com/public-apis/public-apis",
+      "stars": 499838,
+      "description": "A collective list of free APIs",
+      "license": "MIT",
+      "queries": [
+        "github actions auto fix in:readme stars:>500"
+      ],
+      "workflows": [
+        {
+          "file": "test_of_push_and_pull.yml",
+          "path": ".github/workflows/test_of_push_and_pull.yml",
+          "html_url": "https://github.com/public-apis/public-apis/blob/master/.github/workflows/test_of_push_and_pull.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['master']}, 'pull_request': {'branches': ['master']}}",
+          "job_count": 1,
+          "tags": [],
+          "bytes": 1006
+        },
+        {
+          "file": "test_of_validate_package.yml",
+          "path": ".github/workflows/test_of_validate_package.yml",
+          "html_url": "https://github.com/public-apis/public-apis/blob/master/.github/workflows/test_of_validate_package.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['master']}, 'pull_request': {'branches': ['master']}}",
+          "job_count": 1,
+          "tags": [
+            "test"
+          ],
+          "bytes": 592
+        },
+        {
+          "file": "validate_links.yml",
+          "path": ".github/workflows/validate_links.yml",
+          "html_url": "https://github.com/public-apis/public-apis/blob/master/.github/workflows/validate_links.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': '', 'schedule': [{'cron': '0 0 * * *'}]}",
+          "job_count": 1,
+          "tags": [
+            "schedule"
+          ],
+          "bytes": 604
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "donnemartin/system-design-primer",
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "stars": 378263,
+      "description": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.",
+      "license": "NOASSERTION",
+      "queries": [
+        "github actions auto fix in:readme stars:>500"
+      ],
+      "workflows": [],
+      "license_status": "BLOCKED-LICENSE"
+    },
+    {
+      "repo": "awesome-selfhosted/awesome-selfhosted",
+      "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+      "stars": 338043,
+      "description": "A list of Free Software network services and web applications which can be hosted on your own servers",
+      "license": "NOASSERTION",
+      "queries": [
+        "github actions auto fix in:readme stars:>500"
+      ],
+      "workflows": [],
+      "license_status": "BLOCKED-LICENSE"
+    },
+    {
+      "repo": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "stars": 305359,
+      "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "license": "MIT",
+      "queries": [
+        "github actions auto fix in:readme stars:>500"
+      ],
+      "workflows": [
+        {
+          "file": "ci.yml",
+          "path": ".github/workflows/ci.yml",
+          "html_url": "https://github.com/affaan-m/ECC/blob/main/.github/workflows/ci.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main', 'release/**'], 'tags': ['v*']}, 'pull_request': {'branches': ['main']}}",
+          "job_count": 10,
+          "tags": [
+            "test",
+            "lint",
+            "release",
+            "security",
+            "summarize"
+          ],
+          "bytes": 23287
+        },
+        {
+          "file": "discussion-announce.yml",
+          "path": ".github/workflows/discussion-announce.yml",
+          "html_url": "https://github.com/affaan-m/ECC/blob/main/.github/workflows/discussion-announce.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'discussion': {'types': ['created']}, 'workflow_dispatch': {'inputs': {'discussion_number': {'description': 'Existing A",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 1583
+        },
+        {
+          "file": "generator-generic-ossf-slsa3-publish.yml",
+          "path": ".github/workflows/generator-generic-ossf-slsa3-publish.yml",
+          "html_url": "https://github.com/affaan-m/ECC/blob/main/.github/workflows/generator-generic-ossf-slsa3-publish.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': '', 'release': {'types': ['published']}}",
+          "job_count": 2,
+          "tags": [
+            "release"
+          ],
+          "bytes": 2900
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "yt-dlp/yt-dlp",
+      "url": "https://github.com/yt-dlp/yt-dlp",
+      "stars": 208657,
+      "description": "A feature-rich command-line audio/video downloader",
+      "license": "Unlicense",
+      "queries": [
+        "github actions auto fix in:readme stars:>500"
+      ],
+      "workflows": [
+        {
+          "file": "build.yml",
+          "path": ".github/workflows/build.yml",
+          "html_url": "https://github.com/yt-dlp/yt-dlp/blob/master/.github/workflows/build.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_call': {'inputs': {'version': {'required': 'true', 'type': 'string'}, 'channel': {'required': 'false', 'defau",
+          "job_count": 7,
+          "tags": [
+            "release",
+            "summarize"
+          ],
+          "bytes": 22832
+        },
+        {
+          "file": "challenge-tests.yml",
+          "path": ".github/workflows/challenge-tests.yml",
+          "html_url": "https://github.com/yt-dlp/yt-dlp/blob/master/.github/workflows/challenge-tests.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['master'], 'paths': ['.github/workflows/challenge-tests.yml', 'test/test_jsc/*.py', 'yt_dlp/extra",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 3877
+        },
+        {
+          "file": "codeql.yml",
+          "path": ".github/workflows/codeql.yml",
+          "html_url": "https://github.com/yt-dlp/yt-dlp/blob/master/.github/workflows/codeql.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['master']}, 'pull_request': {'branches': ['master']}, 'schedule': [{'cron': '59 11 * * 5'}]}",
+          "job_count": 1,
+          "tags": [
+            "security",
+            "schedule"
+          ],
+          "bytes": 1351
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "avelino/awesome-go",
+      "url": "https://github.com/avelino/awesome-go",
+      "stars": 194472,
+      "description": "A curated list of awesome Go frameworks, libraries and software",
+      "license": "MIT",
+      "queries": [
+        "github actions auto fix in:readme stars:>500"
+      ],
+      "workflows": [
+        {
+          "file": "auto-merge-readme.yaml",
+          "path": ".github/workflows/auto-merge-readme.yaml",
+          "html_url": "https://github.com/avelino/awesome-go/blob/main/.github/workflows/auto-merge-readme.yaml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'schedule': [{'cron': '17,47 * * * *'}], 'workflow_run': {'workflows': ['tests', 'PR Quality Checks'], 'types': ['compl",
+          "job_count": 1,
+          "tags": [
+            "deploy",
+            "schedule"
+          ],
+          "bytes": 2737
+        },
+        {
+          "file": "pr-quality-check.yaml",
+          "path": ".github/workflows/pr-quality-check.yaml",
+          "html_url": "https://github.com/avelino/awesome-go/blob/main/.github/workflows/pr-quality-check.yaml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'pull_request_target': {'types': ['opened', 'edited', 'synchronize', 'reopened']}}",
+          "job_count": 4,
+          "tags": [],
+          "bytes": 4789
+        },
+        {
+          "file": "recheck-open-prs.yaml",
+          "path": ".github/workflows/recheck-open-prs.yaml",
+          "html_url": "https://github.com/avelino/awesome-go/blob/main/.github/workflows/recheck-open-prs.yaml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'workflow_dispatch': ''}",
+          "job_count": 1,
+          "tags": [],
+          "bytes": 1847
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "firecrawl/firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "stars": 202607,
+      "description": "Knowledge infrastructure to make your agents smarter. Search, scrape and 550+ data providers through one API.",
+      "license": "AGPL-3.0",
+      "queries": [
+        "topic:scraper stars:>2000"
+      ],
+      "workflows": [],
+      "license_status": "BLOCKED-LICENSE"
+    },
+    {
+      "repo": "unclecode/crawl4ai",
+      "url": "https://github.com/unclecode/crawl4ai",
+      "stars": 87481,
+      "description": "Official Crawl4AI Cloud: a hosted web scraping, extraction, and search API for AI agents. Free API key, 1,000 credits a month, no card. Fully open source: this repo is the Apache-2.0 crawler that powers it, and you can self-host it.",
+      "license": "Apache-2.0",
+      "queries": [
+        "topic:scraper stars:>2000"
+      ],
+      "workflows": [
+        {
+          "file": "docker-release.yml",
+          "path": ".github/workflows/docker-release.yml",
+          "html_url": "https://github.com/unclecode/crawl4ai/blob/main/.github/workflows/docker-release.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'release': {'types': ['published']}, 'push': {'tags': ['docker-rebuild-v*']}}",
+          "job_count": 1,
+          "tags": [
+            "release",
+            "docker",
+            "security",
+            "summarize",
+            "scrape"
+          ],
+          "bytes": 3684
+        },
+        {
+          "file": "dockerhub-description.yml",
+          "path": ".github/workflows/dockerhub-description.yml",
+          "html_url": "https://github.com/unclecode/crawl4ai/blob/main/.github/workflows/dockerhub-description.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main'], 'paths': ['deploy/docker/DOCKERHUB.md', '.github/workflows/dockerhub-description.yml']},",
+          "job_count": 1,
+          "tags": [
+            "deploy",
+            "summarize",
+            "scrape"
+          ],
+          "bytes": 924
+        },
+        {
+          "file": "main.yml",
+          "path": ".github/workflows/main.yml",
+          "html_url": "https://github.com/unclecode/crawl4ai/blob/main/.github/workflows/main.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'issues': {'types': ['opened']}, 'issue_comment': {'types': ['created']}, 'pull_request': {'types': ['opened']}, 'discu",
+          "job_count": 1,
+          "tags": [
+            "scrape"
+          ],
+          "bytes": 1893
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "huginn/huginn",
+      "url": "https://github.com/huginn/huginn",
+      "stars": 50563,
+      "description": "Create agents that monitor and act on your behalf.  Your agents are standing by!",
+      "license": "MIT",
+      "queries": [
+        "topic:scraper stars:>2000"
+      ],
+      "workflows": [
+        {
+          "file": "actions-lock.yml",
+          "path": ".github/workflows/actions-lock.yml",
+          "html_url": "https://github.com/huginn/huginn/blob/master/.github/workflows/actions-lock.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'pull_request': 'null', 'push': {'branches': ['master']}}",
+          "job_count": 1,
+          "tags": [],
+          "bytes": 750
+        },
+        {
+          "file": "ci.yml",
+          "path": ".github/workflows/ci.yml",
+          "html_url": "https://github.com/huginn/huginn/blob/master/.github/workflows/ci.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['master']}, 'pull_request': '', 'workflow_dispatch': ''}",
+          "job_count": 8,
+          "tags": [
+            "release",
+            "docker"
+          ],
+          "bytes": 13115
+        },
+        {
+          "file": "container-downloads.yml",
+          "path": ".github/workflows/container-downloads.yml",
+          "html_url": "https://github.com/huginn/huginn/blob/master/.github/workflows/container-downloads.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'schedule': [{'cron': '50 17 * * *'}], 'workflow_dispatch': '', 'pull_request': {'paths': ['.github/workflows/container",
+          "job_count": 2,
+          "tags": [
+            "release",
+            "schedule",
+            "summarize"
+          ],
+          "bytes": 3457
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "NaiboWang/EasySpider",
+      "url": "https://github.com/NaiboWang/EasySpider",
+      "stars": 44796,
+      "description": "A visual no-code/code-free web crawler/spider\u6613\u91c7\u96c6\uff1a\u4e00\u4e2a\u53ef\u89c6\u5316\u6d4f\u89c8\u5668\u81ea\u52a8\u5316\u6d4b\u8bd5/\u6570\u636e\u91c7\u96c6/\u7f51\u9875\u722c\u866b\u8f6f\u4ef6\uff0c\u53ef\u4ee5\u65e0\u4ee3\u7801\u56fe\u5f62\u5316\u7684\u8bbe\u8ba1\u548c\u6267\u884c\u722c\u866b\u4efb\u52a1\u3002\u522b\u540d\uff1aServiceWrapper\u9762\u5411Web\u5e94\u7528\u7684\u667a\u80fd\u5316\u670d\u52a1\u5c01\u88c5\u7cfb\u7edf\u3002",
+      "license": "AGPL-3.0",
+      "queries": [
+        "topic:scraper stars:>2000"
+      ],
+      "workflows": [],
+      "license_status": "BLOCKED-LICENSE"
+    },
+    {
+      "repo": "iawia002/lux",
+      "url": "https://github.com/iawia002/lux",
+      "stars": 31847,
+      "description": "\ud83d\udc7e Fast and simple video download library and CLI tool written in Go",
+      "license": "MIT",
+      "queries": [
+        "topic:scraper stars:>2000"
+      ],
+      "workflows": [
+        {
+          "file": "builder.yml",
+          "path": ".github/workflows/builder.yml",
+          "html_url": "https://github.com/iawia002/lux/blob/master/.github/workflows/builder.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': '*', 'paths': ['**/*.go', 'go.mod', 'go.sum', '.github/workflows/builder.yml']}, 'pull_request': {",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 3392
+        },
+        {
+          "file": "ci.yml",
+          "path": ".github/workflows/ci.yml",
+          "html_url": "https://github.com/iawia002/lux/blob/master/.github/workflows/ci.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': '', 'pull_request': '', 'schedule': [{'cron': '0 0 * * 0'}]}",
+          "job_count": 1,
+          "tags": [
+            "test",
+            "lint",
+            "schedule"
+          ],
+          "bytes": 867
+        },
+        {
+          "file": "goreleaser.yml",
+          "path": ".github/workflows/goreleaser.yml",
+          "html_url": "https://github.com/iawia002/lux/blob/master/.github/workflows/goreleaser.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'tags': ['*']}}",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 551
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "cheeriojs/cheerio",
+      "url": "https://github.com/cheeriojs/cheerio",
+      "stars": 30544,
+      "description": "The fast, flexible, and elegant library for parsing and manipulating HTML and XML.",
+      "license": "MIT",
+      "queries": [
+        "topic:scraper stars:>2000"
+      ],
+      "workflows": [
+        {
+          "file": "benchmark.yml",
+          "path": ".github/workflows/benchmark.yml",
+          "html_url": "https://github.com/cheeriojs/cheerio/blob/main/.github/workflows/benchmark.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches-ignore': ['dependabot/**']}, 'pull_request': ''}",
+          "job_count": 1,
+          "tags": [
+            "security"
+          ],
+          "bytes": 849
+        },
+        {
+          "file": "ci.yml",
+          "path": ".github/workflows/ci.yml",
+          "html_url": "https://github.com/cheeriojs/cheerio/blob/main/.github/workflows/ci.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches-ignore': ['dependabot/**']}, 'pull_request': ''}",
+          "job_count": 1,
+          "tags": [
+            "security"
+          ],
+          "bytes": 1441
+        },
+        {
+          "file": "codeql.yml",
+          "path": ".github/workflows/codeql.yml",
+          "html_url": "https://github.com/cheeriojs/cheerio/blob/main/.github/workflows/codeql.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['main', '!dependabot/**']}, 'pull_request': {'branches': ['main', '!dependabot/**']}, 'schedule':",
+          "job_count": 1,
+          "tags": [
+            "security",
+            "schedule"
+          ],
+          "bytes": 902
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "freqtrade/freqtrade",
+      "url": "https://github.com/freqtrade/freqtrade",
+      "stars": 56988,
+      "description": "Free, open source crypto trading bot",
+      "license": "GPL-3.0",
+      "queries": [
+        "topic:trading-bot stars:>1500"
+      ],
+      "workflows": [],
+      "license_status": "BLOCKED-LICENSE"
+    },
+    {
+      "repo": "wilsonfreitas/awesome-quant",
+      "url": "https://github.com/wilsonfreitas/awesome-quant",
+      "stars": 30690,
+      "description": "A curated list of insanely awesome libraries, packages and resources for Quants (Quantitative Finance)",
+      "license": "NONE",
+      "queries": [
+        "topic:trading-bot stars:>1500"
+      ],
+      "workflows": [],
+      "license_status": "BLOCKED-LICENSE"
+    },
+    {
+      "repo": "QuantConnect/Lean",
+      "url": "https://github.com/QuantConnect/Lean",
+      "stars": 22569,
+      "description": "Lean Algorithmic Trading Engine by QuantConnect (Python, C#)",
+      "license": "Apache-2.0",
+      "queries": [
+        "topic:trading-bot stars:>1500"
+      ],
+      "workflows": [
+        {
+          "file": "api-tests.yml",
+          "path": ".github/workflows/api-tests.yml",
+          "html_url": "https://github.com/QuantConnect/Lean/blob/master/.github/workflows/api-tests.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['*'], 'tags': ['*']}, 'pull_request': {'branches': ['master']}}",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 1314
+        },
+        {
+          "file": "benchmarks.yml",
+          "path": ".github/workflows/benchmarks.yml",
+          "html_url": "https://github.com/QuantConnect/Lean/blob/master/.github/workflows/benchmarks.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['master']}, 'pull_request': {'branches': ['master']}}",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 3743
+        },
+        {
+          "file": "gh-actions.yml",
+          "path": ".github/workflows/gh-actions.yml",
+          "html_url": "https://github.com/QuantConnect/Lean/blob/master/.github/workflows/gh-actions.yml",
+          "status": "Q",
+          "reason": "name, on and jobs present",
+          "trigger": "{'push': {'branches': ['*'], 'tags': ['*']}, 'pull_request': {'branches': ['master']}}",
+          "job_count": 1,
+          "tags": [
+            "release"
+          ],
+          "bytes": 2057
+        }
+      ],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "paperswithbacktest/awesome-systematic-trading",
+      "url": "https://github.com/paperswithbacktest/awesome-systematic-trading",
+      "stars": 15425,
+      "description": "A curated list of awesome libraries, packages, strategies, books, blogs, tutorials for systematic trading.",
+      "license": "NONE",
+      "queries": [
+        "topic:trading-bot stars:>1500"
+      ],
+      "workflows": [],
+      "license_status": "BLOCKED-LICENSE"
+    },
+    {
+      "repo": "je-suis-tm/quant-trading",
+      "url": "https://github.com/je-suis-tm/quant-trading",
+      "stars": 11297,
+      "description": "Python quantitative trading strategies including VIX Calculator, Pattern Recognition, Commodity Trading Advisor, Monte Carlo, Options Straddle, Shooting Star, London Breakout, Heikin-Ashi, Pair Trading, RSI, Bollinger Bands, Parabolic SAR, Dual Thrust, Awesome, MACD",
+      "license": "Apache-2.0",
+      "queries": [
+        "topic:trading-bot stars:>1500"
+      ],
+      "workflows": [],
+      "license_status": "ALLOWED"
+    },
+    {
+      "repo": "askmike/gekko",
+      "url": "https://github.com/askmike/gekko",
+      "stars": 10176,
+      "description": "A bitcoin trading bot written in node - https://gekko.wizb.it/",
+      "license": "MIT",
+      "queries": [
+        "topic:trading-bot stars:>1500"
+      ],
+      "workflows": [],
+      "license_status": "ALLOWED"
+    }
+  ],
+  "disclosure": "A workflow is quoted from its own YAML. Suitability for money is a separate judgment made in docs/money/TRANSMUTE.md, not a property of the file."
+}

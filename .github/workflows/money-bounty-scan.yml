@@ -1,0 +1,43 @@
+name: Money bounty scan
+
+# Money workflow 1, input stage: find paid issues that state an amount, grade them,
+# and keep the refusal visible. Nothing here claims a payout.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip
+      - name: Scan open paid issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/bounty_scan.py
+      - name: Summarise grades
+        run: |
+          python3 - <<'PY'
+          import json
+          data = json.load(open("data/money/bounties.json"))
+          print("records", data["records"], "grades", data["grades"])
+          if data["grades"]["Q"] == 0:
+              print("::warning::no verified bounty this run; see docs/money/PRODUCTS.md for the Q bar")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bounty-scan
+          path: |
+            data/money/bounties.json
+          if-no-files-found: error

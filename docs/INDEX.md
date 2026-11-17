@@ -96,6 +96,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 ## docs/money
 
 - docs/money/PRODUCTS.md - Money cycle: products, bounties, listing
+- docs/money/TRANSMUTE.md - Transmuting harvested workflows into money
 
 ## docs/ops
 

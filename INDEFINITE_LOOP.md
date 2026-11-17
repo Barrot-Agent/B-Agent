@@ -11,13 +11,13 @@ cannot, and the flaw found inside the last output becomes the next Y-query.
 
 | Field | Value |
 |---|---|
-| Iteration | 5 |
-| Last Y-query transmuted | "Design digital products in unsaturated domains that make money as quickly as possible" |
-| Transmuted target | Five buildable products ranked by fetched demand and competition, with a falsifier each |
-| Method | GitHub repository counts + npm weekly downloads, log-normalised score; bounty scan; WebMCP quote check |
-| Grade | Q on the counts (5 products, 137 bounty issues, 4 WebMCP quotes); E on willingness to pay and on all 137 bounties |
-| Artifact | docs/money/PRODUCTS.md, docs/mcp/LISTING.md, docs/ops/BLOCKERS.md |
-| Next Y-query queued | "A ranking is not a sale. What does the first paying customer actually receive, and who sees it?" |
+| Iteration | 6 |
+| Last Y-query transmuted | "Transmute all workflows on GitHub, pull useful components, build a money stack" |
+| Transmuted target | 58 licence-checked workflows mapped to money versions, 3 components pulled, 3 workflows shipped |
+| Method | search by query, licence gate via GitHub API, pinned fetch, YAML parse grading |
+| Grade | Q 58 workflows, 10 BLOCKED-LICENSE, 3 components Q, 8 tests |
+| Artifact | docs/money/TRANSMUTE.md, ATTRIBUTIONS.md, vendor/workflow-patterns/ |
+| Next Y-query queued | "Run money workflow 1 for real: a paid issue needs a Q-grade, and Q is still zero." |
 
 ## Why each iteration followed the last
 
@@ -58,5 +58,6 @@ verified.
 | 3 | already-retracted source detection | Crossref fixtures + probe, 6 tests | Q, 6/6 correct | see git log | scripts/retraction_probe.py |
 | 4 | who calls the probe | denylist enforcement in validate() | Q, 3 enforcement tests | see git log | data/research/retracted_dois.json |
 | 5 | money cycle: products and paid issues | market scan, bounty scan, WebMCP check | Q counts / E payment signal / 0 verified bounties | see git log | docs/money/PRODUCTS.md |
+| 6 | transmute workflows, pull components | licence gate, pinned fetch, 3 money workflows | Q 58 / 10 refused / 3 pulled / 8 tests | see git log | docs/money/TRANSMUTE.md |
 
 Every future STATUS PUSHED appends a row here and states the next queued Y-query.

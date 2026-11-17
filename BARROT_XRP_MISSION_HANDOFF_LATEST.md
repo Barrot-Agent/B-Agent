@@ -308,7 +308,7 @@ Three test-fixture defects were found through full-suite runs and corrected with
 2. The current missing-publisher-timestamp count is 61; the test now references Run185 follow-up metadata rather than stale Run184 metadata (59).
 3. The private-data workflow quarantine test now checks executable capabilities rather than matching historical-risk wording in a comment.
 
-**Security correction:** `.github/workflows/table-freshness-check.yml` on main could use a Databricks token to query `workspace.barrot.brain` and print sampled private brain-memory rows into public GitHub Actions logs. It is now quarantined on integration with `permissions: {}` and `if: ${{ false }}`. The prior diagnostic script remains preserved. A regression test prevents reactivation without a scoped read-only identity, aggregate-only output, explicit per-run authorization, exact-main-SHA validation and private artifact handling.
+**Security correction:** `.github/workflows/table-freshness-check.yml` on main could use a Databricks token to query `workspace.barrot.brain` and print sampled private brain-memory rows into public GitHub Actions logs. It is now quarantined on integration with `permissions: {}` and `if: {% raw %}${{ false }}{% endraw %}`. The prior diagnostic script remains preserved. A regression test prevents reactivation without a scoped read-only identity, aggregate-only output, explicit per-run authorization, exact-main-SHA validation and private artifact handling.
 
 Main still contains the unsafe legacy workflow. The quarantine is not effective on main until safely merged. No Databricks request was made; no token was read or rotated; no private workspace data was accessed.
 
@@ -460,7 +460,7 @@ The earlier assertion correction remains: the XRPL 04:52 event serializes as `20
 
 The integration audit found `.github/workflows/table-freshness-check.yml` was manually dispatchable without an explicit approval or exact-main-SHA gate. It loaded a Databricks token, queried `workspace.barrot.brain`, selected random insight/session rows and printed them into GitHub Actions logs. The repository is public; this creates a private-memory disclosure path.
 
-**Executed on integration only:** the workflow is now quarantined with `workflow_dispatch`, `permissions: {}` and `if: ${{ false }}`. It reads no credentials, runs no SQL and emits no private rows. The previous diagnostic script is preserved; no file or data was deleted.
+**Executed on integration only:** the workflow is now quarantined with `workflow_dispatch`, `permissions: {}` and `if: {% raw %}${{ false }}{% endraw %}`. It reads no credentials, runs no SQL and emits no private rows. The previous diagnostic script is preserved; no file or data was deleted.
 
 A regression test adds the workflow to the high-risk quarantine list and rejects secret access, Databricks queries, random sampling, row fields, external actions or any active job. The main branch remains unchanged and still contains the old workflow; this protection is not effective on main until the reviewed integration is safely merged.
 

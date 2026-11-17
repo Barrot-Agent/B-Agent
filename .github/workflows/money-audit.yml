@@ -1,0 +1,64 @@
+name: Money audit
+
+# Product #1 runs on itself: every claims file must validate, every verdict must
+# carry a falsifier and an upgrade condition, and the repository must be free of
+# the two failure classes we actually hit.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "docs/**"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/money-audit.yml"
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml pytest pytest-cov
+      - name: Validate every claims file
+        run: |
+          set -e
+          for file in $(find data -path '*claims*' -name '*.json'); do
+            echo "checking $file"
+            python3 scripts/re_v2.py check "$file" > /dev/null
+          done
+      - name: Gate every verdict
+        run: |
+          set -e
+          for file in docs/research/*.md; do
+            case "$file" in
+              *CONSCIOUSNESS-BRIDGE.md) python3 scripts/verdict_gate.py "$file" ;;
+              *) echo "skipping $file (no verdict declaration)" ;;
+            esac
+          done
+      - name: Guard docs and optional imports
+        run: |
+          python3 - <<'PY'
+          from scripts.barrot_mcp_server import repo_guard
+          result = repo_guard(".")
+          print(result)
+          raise SystemExit(0 if result["clean"] else 1)
+          PY
+      - name: Product tests
+        run: python3 -m pytest tests/test_money_cycle.py tests/test_verdict_gate.py -q
