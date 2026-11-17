@@ -28,6 +28,8 @@ QUARANTINED_WORKFLOWS = (
     ".github/workflows/ask-barrot.yml",
     ".github/workflows/write-lyrics.yml",
     ".github/workflows/barrot-agent.yml",
+    ".github/workflows/barrot-sync.yml",
+    ".github/workflows/barrot-self-upgrade.yml",
     ".github/workflows/signal_ledger.yml",
     ".github/workflows/knowledge-signal-cycle.yml",
     ".github/workflows/test-groq-chain.yml",
@@ -69,6 +71,32 @@ def test_high_risk_automation_workflows_are_quarantined() -> None:
         ), relative
         for token in forbidden:
             assert token not in lowered, f"{relative} still contains {token!r}"
+
+
+def test_barrot_auto_pr_is_a_read_only_notice() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "barrot-auto-pr.yml"
+    ).read_text(encoding="utf-8")
+    lowered = workflow.lower()
+
+    assert "push:" in lowered
+    assert "branches: [main]" in lowered
+    assert "workflow_dispatch:" in lowered
+    assert "permissions:\\n  contents: read" in lowered
+    assert "persist-credentials: false" in lowered
+    assert "barrot-auto-pr workflow is configured correctly" in lowered
+
+    for forbidden in (
+        "contents: write",
+        "pull-requests: write",
+        "issues: write",
+        "secrets.",
+        "gh pr create",
+        "gh pr merge",
+        "git commit",
+        "git push",
+    ):
+        assert forbidden not in lowered, forbidden
 
 
 def test_cross_analysis_remains_available_but_is_read_only() -> None:
