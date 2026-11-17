@@ -82,7 +82,7 @@ def test_barrot_auto_pr_is_a_read_only_notice() -> None:
     assert "push:" in lowered
     assert "branches: [main]" in lowered
     assert "workflow_dispatch:" in lowered
-    assert "permissions:\\n  contents: read" in lowered
+    assert "permissions:\n  contents: read" in lowered
     assert "persist-credentials: false" in lowered
     assert "barrot-auto-pr workflow is configured correctly" in lowered
 
