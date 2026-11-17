@@ -896,3 +896,15 @@
   Skill promotion still blocked until one physical plate test is run.
 - Caps: $0.00, 12 min of 15. Flight Recorder:
   results/flight_recorder/2026-11-17-track01-cymatics.jsonl
+
+## 2026-11-17 — Cross-domain synthesis before GO SERVER
+- docs/synthesis/cross-domain-convergence.md: ablated four existing artifacts
+  (cymatus page, RE method, Flight Recorder, fields contract) for shared rules.
+- Three converging rules: the artifact outranks the narrator; conditions travel
+  with the claim; ambiguity is preserved instead of collapsed to a verdict.
+- Method named: THREE-GATE (PIN pointer/atoms, COMPARE only at equal conditions,
+  PRESERVE supported / refuted / unverified).
+- Three gaps that block GO SERVER honestly: no comparable recorder pair and no
+  accuracy/error fields; no scoring rule for transmute_query; no capability-to-test
+  binding for reverse_engineer.
+- Flight Recorder: results/flight_recorder/2026-11-17-synthesis.jsonl
