@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "purpose": "Sources Barrot may ingest to build real-world Phoenix capability. Every entry was probed on 2026-11-17 and the HTTP status is recorded, not assumed.",
+  "policy": {
+    "default": "read_only",
+    "no_crawl_without_approval": true,
+    "respect_rate_limits": true,
+    "record_provenance": "results/flight_recorder/",
+    "redistribute_only_if_license_allows": true
+  },
+  "sources": [
+    {
+      "id": "arxiv",
+      "url": "https://export.arxiv.org/api/query",
+      "transport": "atom",
+      "auth": "none",
+      "license": "arXiv API terms; metadata reuse allowed, check per-paper",
+      "teaches": "L1 physics and engineering of plasma, thermal systems, resilience",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    },
+    {
+      "id": "openalex",
+      "url": "https://api.openalex.org/works",
+      "transport": "json",
+      "auth": "none",
+      "license": "CC0",
+      "teaches": "citation graph, field mapping, what is established vs marginal",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    },
+    {
+      "id": "wikipedia",
+      "url": "https://en.wikipedia.org/api/rest_v1/page/summary",
+      "transport": "json",
+      "auth": "none",
+      "license": "CC BY-SA 4.0; attribution required",
+      "teaches": "orientation only, never a primary citation",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    },
+    {
+      "id": "github",
+      "url": "https://api.github.com",
+      "transport": "json",
+      "auth": "optional token raises rate limit",
+      "license": "API terms; per-repository code licenses",
+      "teaches": "L2 reference implementations, failure and recovery patterns",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    },
+    {
+      "id": "huggingface",
+      "url": "https://huggingface.co/api/models",
+      "transport": "json",
+      "auth": "none for public metadata",
+      "license": "per-model; metadata public",
+      "teaches": "model landscape, capability gaps, benchmark claims",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    },
+    {
+      "id": "crossref",
+      "url": "https://api.crossref.org/works",
+      "transport": "json",
+      "auth": "none",
+      "license": "metadata open; article text per publisher",
+      "teaches": "DOI verification, publication status, retractions",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    },
+    {
+      "id": "pubmed",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi",
+      "transport": "json",
+      "auth": "none; usage policy applies",
+      "license": "NLM terms",
+      "teaches": "biomedical evidence, radiation and thermal injury literature",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    },
+    {
+      "id": "worldbank",
+      "url": "https://api.worldbank.org/v2",
+      "transport": "json",
+      "auth": "none",
+      "license": "CC BY 4.0",
+      "teaches": "energy access, grid capacity, infrastructure economics",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    },
+    {
+      "id": "nvd",
+      "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+      "transport": "json",
+      "auth": "none; key raises limits",
+      "license": "US government public data",
+      "teaches": "vulnerability classes that destroy systems, and their fixes",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    },
+    {
+      "id": "cisa_kev",
+      "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+      "transport": "json",
+      "auth": "none",
+      "license": "US government public data",
+      "teaches": "what actually gets exploited, i.e. what recovery must survive",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    },
+    {
+      "id": "nasa",
+      "url": "https://api.nasa.gov",
+      "transport": "json",
+      "auth": "DEMO_KEY works with low limits",
+      "license": "NASA media usage guidelines",
+      "teaches": "thermal, radiation and mission-resilience engineering",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    },
+    {
+      "id": "docs_xai",
+      "url": "https://docs.x.ai/llms.txt",
+      "transport": "text",
+      "auth": "none",
+      "license": "proprietary docs; quote with attribution",
+      "teaches": "agent runtime capabilities, flags, limits",
+      "probe_status": 200,
+      "probed_at": "2026-11-17"
+    }
+  ]
+}

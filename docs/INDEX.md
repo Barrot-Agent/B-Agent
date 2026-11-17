@@ -77,6 +77,10 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 
 - docs/fields/track-01-cymatics.md - Track 1 - Cymatics
 
+## docs/phoenix
+
+- docs/phoenix/PROGRAM.md - Phoenix program: fiction mapped to utility
+
 ## docs/synthesis
 
 - docs/synthesis/cross-domain-audit.md - Cross-domain audit
