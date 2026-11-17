@@ -4,6 +4,13 @@ on:
   schedule:
     - cron: '3 * * * *'
     - cron: '15 0 * * *'
+  # This scoped push trigger performs one read-only integration capture when this workflow changes.
+  # Production schedules remain main-only; integration does not receive an hourly schedule.
+  push:
+    branches:
+      - 'integration/**'
+    paths:
+      - .github/workflows/xrp-public-ingestion.yml
   workflow_dispatch:
     inputs:
       coinbase_backfill_days:
@@ -17,22 +24,22 @@ permissions:
   contents: read
 
 concurrency:
-  group: xrp-public-market-ingestion
+  group: xrp-public-market-ingestion-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   capture:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/'))
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
       actions: read
       contents: read
     steps:
-      - name: Checkout current main
+      - name: Checkout exact triggering commit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          ref: main
+          ref: ${{ github.sha }}
           persist-credentials: false
       - name: Set up Python
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
@@ -48,8 +55,8 @@ jobs:
           set -euo pipefail
           restore_dir="$RUNNER_TEMP/xrp-receipt-chain-restore"
           mkdir -p "$restore_dir"
-          runs_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100&page=1")"
-          previous_run_id="$(jq -r --arg repository "$GITHUB_REPOSITORY" '.workflow_runs | map(select(.conclusion == "success" and .head_branch == "main" and .head_repository.full_name == $repository and (.event == "schedule" or .event == "workflow_dispatch"))) | sort_by(.created_at) | last | .id // empty' <<< "$runs_json")"
+          runs_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&status=completed&per_page=100&page=1")"
+          previous_run_id="$(jq -r --arg repository "$GITHUB_REPOSITORY" --arg branch "$GITHUB_REF_NAME" '.workflow_runs | map(select(.conclusion == "success" and .head_branch == $branch and .head_repository.full_name == $repository and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push"))) | sort_by(.created_at) | last | .id // empty' <<< "$runs_json")"
           if [[ -z "$previous_run_id" ]]; then
             echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=BOOTSTRAP" >> "$GITHUB_ENV"
             echo "No prior successful main ingestion run; starting the cross-run receipt chain."
@@ -108,10 +115,10 @@ jobs:
           page=1
           restored=0
           while [[ "$page" -le 30 && "$restored" != "1" ]]; do
-            run_page="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100&page=${page}")"
+            run_page="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&status=completed&per_page=100&page=${page}")"
             page_run_count="$(jq '.workflow_runs | length' <<< "$run_page")"
             [[ "$page_run_count" -gt 0 ]] || break
-            run_ids="$(jq -r '.workflow_runs[] | select(.conclusion == "success" and .head_branch == "main" and .head_repository.full_name == env.GITHUB_REPOSITORY and (.event == "schedule" or .event == "workflow_dispatch")) | [.created_at, (.id | tostring)] | @tsv' <<< "$run_page" | sort -r | cut -f2)"
+            run_ids="$(jq -r --arg branch "$GITHUB_REF_NAME" --arg repository "$GITHUB_REPOSITORY" '.workflow_runs[] | select(.conclusion == "success" and .head_branch == $branch and .head_repository.full_name == $repository and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push")) | [.created_at, (.id | tostring)] | @tsv' <<< "$run_page" | sort -r | cut -f2)"
             if [[ -n "$run_ids" ]]; then
               while IFS= read -r previous_run_id; do
                 [[ -n "$previous_run_id" ]] || continue

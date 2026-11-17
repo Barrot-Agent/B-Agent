@@ -5806,7 +5806,7 @@ def main() -> None:
     parser.add_argument(
         "--previous-receipt-chain-manifest",
         default=None,
-        help="Restored cross-run receipt-chain index from the latest successful main ingestion run.",
+        help="Restored cross-run receipt-chain index from the latest successful same-branch ingestion run.",
     )
     parser.add_argument(
         "--receipt-chain-continuity-status",
