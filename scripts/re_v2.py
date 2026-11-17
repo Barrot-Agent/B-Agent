@@ -302,9 +302,29 @@ def build(name: str) -> int:
     return 0
 
 
+DENYLIST = ROOT / "data" / "research" / "retracted_dois.json"
+
+
+def _retracted_dois() -> set[str]:
+    """DOIs with a stored retraction notice, built by scripts/retraction_probe.py.
+
+    This is the scheduler problem solved offline: validation does not ask the
+    network, it checks the list that the probe already refreshed. A missing list is
+    not an error, it is reported as no check performed.
+    """
+    if not DENYLIST.exists():
+        return set()
+    try:
+        payload = json.loads(DENYLIST.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return set()
+    return {str(entry["doi"]).lower() for entry in payload.get("retracted", [])}
+
+
 def validate(path: Path) -> list[str]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     problems: list[str] = []
+    retracted = _retracted_dois()
     for record in payload["records"]:
         abstract = record["evidence"]["abstract"]
         if record["evidence"]["http_status"] != 200:
@@ -323,6 +343,9 @@ def validate(path: Path) -> list[str]:
             problems.append(f"{record['id']}: unknown status")
         if record["excluded_from_evidence"] and not record["exclusion_reason"]:
             problems.append(f"{record['id']}: excluded without a reason")
+        identifier = str(record["evidence"].get("identifier", "")).lower()
+        if identifier in retracted:
+            problems.append(f"{record['id']}: cites a retracted source ({identifier})")
     return problems
 
 

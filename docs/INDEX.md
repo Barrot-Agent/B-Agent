@@ -5,7 +5,6 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 
 ## docs
 
-- docs/domains/EIGHT-DOMAINS.md - Eight domains under TRACE-5
 - docs/ADVANCED_ENERGY_INGESTION.md - 🔬 Advanced Energy Systems Data Ingestion Manifest
 - docs/ADVANCED_MONETIZATION_PROTOCOLS.md - 💰 Barrot Advanced Monetization Protocols
 - docs/ADVANCED_PROPULSION_RESEARCH.md - 🚀 Barrot Advanced Propulsion & Transportation Research
@@ -33,6 +32,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/DEPENDENCY_MICRO_INGESTION_README.md - 🐍 Dependency Micro-Ingestion System
 - docs/DEVELOPMENT.md - Development Guide
 - docs/DOCS_INGESTION_README.md - 📚 Documentation Ingestion System
+- docs/domains/EIGHT-DOMAINS.md - Eight domains under TRACE-5
 - docs/DYNAMIC_CHARACTER_SEARCH_IMPLEMENTATION.md - Dynamic Character Figure Search Implementation Guide
 - docs/EMAIL_FEATURE_SUMMARY.md - Email Intelligence Feature - Implementation Summary
 - docs/EMAIL_PROCESSING_GUIDE.md - 📧 Email Intelligence Processing Guide
@@ -76,19 +76,36 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/VIDEO_EXTRACTION_2026-11-15.md - Video Extraction — 2026-11-15
 - docs/WEBSITE_FEATURES_TODO.md - Website Terminal and Query Box Features
 
+## docs/domains
+
+- docs/domains/EIGHT-DOMAINS.md - Eight domains under TRACE-5
+
 ## docs/fields
+
 - docs/fields/track-01-cymatics.md - Track 1 - Cymatics
 
 ## docs/millennium
+
 - docs/millennium/CYCLE-01.md - Millennium cycle 01: database audit, Poincare verified, six gaps
-- docs/millennium/hodge-cycle.md - Hodge cycle: four quoted claims, one existence-only record, one excluded assertion
+- docs/millennium/hodge-cycle.md - Hodge under TRACE-5: four quoted claims, one excluded assertion
 - docs/millennium/RE-V2.md - Reverse-engineering v2: what v1 actually did, and what replaced it
 
+## docs/ops
+
+- docs/ops/FIX-CYCLE.md - Fix cycle: workflows, server, go audit
+- docs/ops/MCP-SERVER.md - MCP server: spec fetched, five tools, three real
+
 ## docs/phoenix
+
 - docs/phoenix/cycle-02.md - Phoenix cycle 02: KPI proof, gap, upgrade
 - docs/phoenix/PROGRAM.md - Phoenix program: fiction mapped to utility
 
+## docs/research
+
+- docs/research/CONSCIOUSNESS-BRIDGE.md - Consciousness as a bridge between GR and QM: TRACE-5 verdict
+
 ## docs/synthesis
+
 - docs/synthesis/cross-domain-audit.md - Cross-domain audit
 - docs/synthesis/cross-domain-convergence.md - Cross-domain synthesis and convergence
 - docs/synthesis/paradigm-cycle-01.md - Paradigm cycle 01: cross-analysis, bounded

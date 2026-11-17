@@ -48,6 +48,16 @@
           "startup": 90000
         }
       },
+      "barrot": {
+        "type": "local",
+        "command": [
+          "python3",
+          "scripts/barrot_mcp_server.py"
+        ],
+        "timeout": {
+          "startup": 30000
+        }
+      },
       "lunaroute": {
         "type": "remote",
         "url": "https://mcp.lunaroute.com/mcp",

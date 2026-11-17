@@ -1,0 +1,122 @@
+"""The MCP server must answer the protocol and refuse what it cannot do."""
+
+from __future__ import annotations
+
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from scripts.barrot_mcp_server import TOOLS, handle
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def call(name: str, arguments: dict) -> dict:
+    return handle({"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": name, "arguments": arguments}})
+
+
+def test_initialize_declares_tools_capability():
+    response = handle({"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {}})
+    assert response["result"]["protocolVersion"] == "2025-06-18"
+    assert "tools" in response["result"]["capabilities"]
+    assert response["result"]["serverInfo"]["name"] == "barrot"
+
+
+def test_ping_returns_an_empty_result():
+    # Registration in opencode.json means healthy liveness matters.
+    response = handle({"jsonrpc": "2.0", "id": 9, "method": "ping"})
+    assert response["result"] == {}
+
+
+def test_registered_in_opencode_config():
+    import json
+
+    config = json.loads((ROOT / "opencode.json").read_text(encoding="utf-8"))
+    server = config["mcp"]["servers"]["barrot"]
+    assert server["type"] == "local"
+    assert server["command"] == ["python3", "scripts/barrot_mcp_server.py"]
+    assert (ROOT / server["command"][1]).exists()
+
+
+def test_tools_list_has_five_named_tools():
+    response = handle({"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
+    names = {tool["name"] for tool in response["result"]["tools"]}
+    assert names == {
+        "check_capability",
+        "run_foundry_cycle",
+        "flight_recorder_replay",
+        "reverse_engineer",
+        "trace5_validate",
+    }
+    assert len(TOOLS) == 5
+    for tool in TOOLS:
+        assert tool["inputSchema"]["type"] == "object"
+
+
+def test_check_capability_returns_real_evidence():
+    result = call("check_capability", {"name": "a2a_server.py"})["result"]
+    assert result["isError"] is False
+    assert result["structuredContent"]["found"] is True
+    assert result["structuredContent"]["evidence"]["size"] > 0
+
+
+def test_check_capability_reports_misses_with_closest_matches():
+    result = call("check_capability", {"name": "no_such_capability_xyz"})["result"]
+    assert result["structuredContent"]["found"] is False
+    assert isinstance(result["structuredContent"]["closest"], list)
+
+
+def test_foundry_cycle_refuses_instead_of_faking():
+    result = call("run_foundry_cycle", {"goal": "build something"})["result"]
+    assert result["isError"] is True
+    assert "NOT_AVAILABLE" in result["content"][0]["text"]
+
+
+def test_flight_recorder_refuses_without_two_runs():
+    result = call("flight_recorder_replay", {"mission_id": "no such mission", "skill_version": "1"})["result"]
+    assert result["isError"] is True
+    assert "INSUFFICIENT_DATA" in result["content"][0]["text"]
+
+
+def test_reverse_engineer_summarises_a_claims_file():
+    result = call("reverse_engineer", {"claims_file": "data/millennium/claims/hodge_conjecture.json"})["result"]
+    body = result["structuredContent"]
+    assert result["isError"] is False
+    assert body["records"] == 5
+    assert body["usable_claims"] == 3
+    assert body["steps_used"] == ["target", "retrieve", "assert-quote", "cross-check-or-single", "exit-with-falsifier"]
+
+
+def test_trace5_validate_accepts_a_good_file_and_rejects_an_escape():
+    good = call("trace5_validate", {"claims_file": "data/millennium/claims/hodge_conjecture.json"})["result"]
+    assert good["structuredContent"]["valid"] is True
+    bad = call("trace5_validate", {"claims_file": "../../etc/passwd"})["result"]
+    assert bad["isError"] is True
+
+
+def test_unknown_tool_is_a_protocol_error():
+    response = call("nope", {})
+    assert response["error"]["code"] == -32602
+
+
+def test_stdio_transport_answers_two_requests():
+    payload = "\n".join(
+        [
+            json.dumps({"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {}}),
+            json.dumps({"jsonrpc": "2.0", "id": 2, "method": "tools/list"}),
+        ]
+    ) + "\n"
+    completed = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "barrot_mcp_server.py")],
+        input=payload,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    lines = [json.loads(line) for line in completed.stdout.splitlines() if line.strip()]
+    assert completed.returncode == 0
+    assert lines[0]["result"]["protocolVersion"] == "2025-06-18"
+    assert len(lines[1]["result"]["tools"]) == 5
