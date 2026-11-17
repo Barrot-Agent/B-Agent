@@ -1266,7 +1266,7 @@ def _parse_binance_klines(payload: Any, *, source_id: str, url: str, digest: str
                     unit=unit,
                     event_time_utc=open_s,
                     source_data_as_of_utc=close_s,
-                    captured_at_utc=source_captured_s,
+                    captured_at_utc=captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -1418,7 +1418,7 @@ def _parse_binance_funding_history(payload: Any, *, source_id: str, url: str, di
                     unit="USDT/XRP",
                     event_time_utc=event_s,
                     source_data_as_of_utc=event_s,
-                    captured_at_utc=source_captured_s,
+                    captured_at_utc=captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -1478,7 +1478,7 @@ def _parse_binance_open_interest_history(payload: Any, *, source_id: str, url: s
                     unit=unit,
                     event_time_utc=event_s,
                     source_data_as_of_utc=event_s,
-                    captured_at_utc=source_captured_s,
+                    captured_at_utc=captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -1556,7 +1556,7 @@ def _parse_binance_global_long_short_ratio(payload: Any, *, source_id: str, url:
                     unit=unit,
                     event_time_utc=event_s,
                     source_data_as_of_utc=event_s,
-                    captured_at_utc=source_captured_s,
+                    captured_at_utc=captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -1925,7 +1925,7 @@ def _parse_coinbase_candles(
                     unit=unit,
                     event_time_utc=open_s,
                     source_data_as_of_utc=close_s,
-                    captured_at_utc=source_captured_s,
+                    captured_at_utc=captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -3804,7 +3804,7 @@ def _parse_bybit_linear_open_interest_history(
                     unit="XRP (venue-reported single-side open-interest size)",
                     event_time_utc=event_s,
                     source_data_as_of_utc=event_s,
-                    captured_at_utc=source_captured_s,
+                    captured_at_utc=captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -3976,7 +3976,7 @@ def _parse_cftc_tff(
                     unit=unit,
                     event_time_utc=event_s,
                     source_data_as_of_utc=event_s,
-                    captured_at_utc=source_captured_s,
+                    captured_at_utc=captured_s,
                     source_id=source_id,
                     source_uri=url,
                     raw_sha256=digest,
@@ -5016,6 +5016,7 @@ def _run_coinbase_candle_backfill(
         "page_delay_seconds": COINBASE_BACKFILL_PAGE_DELAY_SECONDS,
     }
     observed_candles = set()
+    latest_source_capture = captured
     parser = PARSERS["coinbase_spot_candles"]
     for page_index, (page_start, page_end) in enumerate(ranges, start=1):
         page_source_id = f"coinbase_spot_candles_backfill_page_{page_index:03d}"
@@ -5026,10 +5027,15 @@ def _run_coinbase_candle_backfill(
         source_as_of = None
         source_eligible = False
         reason = ""
+        source_captured = captured
+        source_captured_s = captured_s
         try:
             response = fetcher("coinbase_spot_candles", page_url)
             if not isinstance(response, Mapping):
                 raise XRPIngestionError("Coinbase backfill fetcher response must be a mapping")
+            source_captured = _response_received_at(response, captured)
+            source_captured_s = _iso(source_captured)
+            latest_source_capture = max(latest_source_capture, source_captured)
             raw_bytes = response.get("raw_bytes")
             payload = response.get("payload")
             if not isinstance(raw_bytes, bytes) or not raw_bytes:
@@ -5040,12 +5046,12 @@ def _run_coinbase_candle_backfill(
                 source_id=page_source_id,
                 url=page_url,
                 digest=digest,
-                captured=captured,
+                captured=source_captured,
                 page_start_utc=_iso(page_start),
                 page_end_utc=_iso(page_end),
             )
         except Exception as exc:
-            failure = _source_failure_record(page_source_id, page_url, captured_s, exc)
+            failure = _source_failure_record(page_source_id, page_url, source_captured_s, exc)
             failure.update({
                 "source_family_id": "coinbase_spot_candles",
                 "page_index": page_index,
@@ -5080,7 +5086,7 @@ def _run_coinbase_candle_backfill(
             receipt = archive.store(
                 source_id=page_source_id,
                 source_uri=page_url,
-                captured_at_utc=captured_s,
+                captured_at_utc=source_captured_s,
                 raw_bytes=raw_bytes,
                 source_data_as_of_utc=source_as_of,
                 model_eligible=source_eligible,
@@ -5107,6 +5113,7 @@ def _run_coinbase_candle_backfill(
             time.sleep(COINBASE_BACKFILL_PAGE_DELAY_SECONDS)
 
     state["candles_ingested"] = len(observed_candles)
+    state["latest_source_capture_at_utc"] = _iso(latest_source_capture)
     if state["pages_failed"]:
         state["status"] = "PARTIAL" if state["pages_completed"] else "FAILED"
     else:
@@ -5557,6 +5564,13 @@ def run_ingestion(
                 failures=failures,
                 raw_only=raw_only,
             )
+            if coinbase_backfill.get("latest_source_capture_at_utc"):
+                backfill_capture = _from_iso8601(
+                    coinbase_backfill["latest_source_capture_at_utc"],
+                    "Coinbase backfill capture time",
+                )
+                captured = max(captured, backfill_capture)
+                captured_s = _iso(captured)
 
     receipt_chain_verification = archive.write_manifest(
         output / "receipt_chain_manifest.json",

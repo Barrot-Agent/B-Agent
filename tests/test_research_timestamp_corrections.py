@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 
 import pytest
 
@@ -228,7 +229,7 @@ def _capture_window_fixture(tmp_path):
     from barrot_agent.evolution.research_timestamp_corrections import apply_research_timestamp_correction_overlays
 
     archive = tmp_path / "research" / "xrp_intelligence"
-    archive.mkdir(parents=True)
+    archive.mkdir(parents=True, exist_ok=True)
     source_path = archive / "kamilah-identity.json"
     source_bytes = _bytes({
         "artifact_id": "kamilah-identity-source",

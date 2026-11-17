@@ -15,6 +15,7 @@ import barrot_agent.evolution.xrp_public_ingestion as xrp_ingestion
 from barrot_agent.evolution.feature_store import HistoricalFeatureStore
 from barrot_agent.evolution.xrp_public_ingestion import (
     RawReceiptArchive,
+    _iso,
     _normalize_walk_forward_horizons,
     _walk_forward_report,
     _coinbase_candle_backfill_ranges,
@@ -43,6 +44,14 @@ from barrot_agent.evolution.xrp_public_ingestion import (
 
 def _iso_ms(value: datetime) -> int:
     return int(value.timestamp() * 1000)
+
+
+def _assert_fetcher_kind(response, expected_kind: str) -> None:
+    assert response["kind"] == expected_kind
+    received_at = response.get("received_at_utc")
+    assert isinstance(received_at, str)
+    parsed = datetime.fromisoformat(received_at.replace("Z", "+00:00"))
+    assert parsed.tzinfo is not None and parsed.utcoffset() == timedelta(0)
 
 
 def _fake_fetcher(captured: datetime):
@@ -1216,7 +1225,7 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
         "      - name: Save cumulative feature-store cache after successful artifact publication", 1
     )[1].split("\n      - name:", 1)[0]
     assert "continue-on-error: true" in cache_save_step
-    assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=main&status=completed&per_page=100" in workflow
+    assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&status=completed&per_page=100&page=1" in workflow
     assert "per_page=100&page=${page}" in workflow
     assert 'while [[ "$page" -le 30 && "$restored" != "1" ]]' in workflow
     assert "page_run_count=\"$(jq '.workflow_runs | length' <<< \"$run_page\")\"" in workflow
@@ -1224,9 +1233,10 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert 'if [[ -n "$run_ids" ]]; then' in workflow
     assert "page=$((page+1))" in workflow
     assert "select(.conclusion == \"success\"" in workflow
-    assert '.head_branch == "main"' in workflow
-    assert ".head_repository.full_name == env.GITHUB_REPOSITORY" in workflow
-    assert '(.event == "schedule" or .event == "workflow_dispatch")' in workflow
+    assert '.head_branch == $branch' in workflow
+    assert ".head_repository.full_name == $repository" in workflow
+    assert '(.event == "schedule" or .event == "workflow_dispatch" or .event == "push")' in workflow
+    assert 'head_branch == "main"' not in workflow
     assert 'gh run download "$previous_run_id" --name "xrp-public-feature-store-${previous_run_id}"' in workflow
     assert 'gh run download "$previous_run_id" --name "xrp-public-feature-${previous_run_id}"' in workflow
     assert 'trusted_ingestion_workflow_run:${previous_run_id}:per_run_checkpoint' in workflow
@@ -1613,7 +1623,7 @@ def test_default_public_fetcher_routes_stablecoin_transparency_pages_to_html(mon
         lambda sid, url: calls.append(("json", sid, url)) or {"kind": "json"},
     )
     url = dict(ENDPOINTS)[source_id]
-    assert _default_public_fetcher(source_id, url) == {"kind": "html"}
+    _assert_fetcher_kind(_default_public_fetcher(source_id, url), "html")
     assert calls == [("html", source_id, url)]
 
 
@@ -1632,7 +1642,7 @@ def test_default_public_fetcher_routes_primary_issuer_pages_to_html(monkeypatch,
         lambda sid, url: calls.append(("json", sid, url)) or {"kind": "json"},
     )
     url = dict(ENDPOINTS)[source_id]
-    assert _default_public_fetcher(source_id, url) == {"kind": "html"}
+    _assert_fetcher_kind(_default_public_fetcher(source_id, url), "html")
     assert calls == [("html", source_id, url)]
 
 
@@ -1649,7 +1659,7 @@ def test_default_public_fetcher_routes_cftc_legacy_report_to_html(monkeypatch):
     )
     source_id = "cftc_legacy_futures_only"
     url = dict(ENDPOINTS)[source_id]
-    assert _default_public_fetcher(source_id, url) == {"kind": "html"}
+    _assert_fetcher_kind(_default_public_fetcher(source_id, url), "html")
     assert calls == [("html", source_id, url)]
 
 
@@ -3233,7 +3243,7 @@ def test_default_public_fetcher_routes_sbi_vc_trade_lending_page_to_html(monkeyp
     )
     source_id = "sbi_vc_trade_lending_page"
     url = dict(ENDPOINTS)[source_id]
-    assert _default_public_fetcher(source_id, url) == {"kind": "html"}
+    _assert_fetcher_kind(_default_public_fetcher(source_id, url), "html")
     assert calls == [("html", source_id, url)]
 
 
