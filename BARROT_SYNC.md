@@ -647,3 +647,20 @@
   my earlier judgment-rubric scores (37/69/82/95) to the measured transmute
   scores (93881 / 996389 / 994393).
 - Phase 4 done: meta loop, Top-50 wishlist, gap fill log, permanent rule.
+
+## 2026-11-17 — CORRECTION to Phase 4.2/4.3: signal asset != traded asset
+- Found while cross-checking the wishlist: scripts/check_signal_accuracy.py:13
+  prices 'ripple' (XRP) and web/latest_signal.json is XRP headlines, while
+  scripts/coinbase_paper_trader.py:14 defaults to PRODUCT_ID=BTC-USD and builds
+  its own Groq prompt from that product's ticker+trades. grep 'latest_signal'
+  in coinbase_paper_trader.py = 0 hits. The 45.5% accuracy has never governed a
+  BTC trade. Three parallel market models, no wire between them.
+- Also: neither latest_signal.json nor latest_signal_btc.json has a product /
+  product_id field at all. Asset identity exists only in prose.
+- Added wishlist item 0 ("one market model per product"), now ranked above the
+  other 50, and rewrote item 3 to require accuracy evidence per product.
+- Added product_missing to scripts/verify_artifacts.py + a test. 22 tests pass.
+  Live run now reports 5 errors (was 4).
+- gap_fill_log.json: 20 gaps — 4 applied, 5 detected, 11 logged, 10 critical.
+- Not fixed: adding product identity touches the emitter, both signal files, the
+  accuracy scorer and the trader in one cycle. Own transmute run required.

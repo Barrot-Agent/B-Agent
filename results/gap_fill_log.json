@@ -3,12 +3,12 @@
   "scope": "Phase 4 gap filling \u2014 loop, market, risk, paradigm sync, knowledge",
   "constraint": "paper only, no live keys, no capital",
   "counts": {
-    "total": 19,
+    "total": 20,
     "applied": 4,
-    "detected": 4,
+    "detected": 5,
     "logged": 11,
     "by_severity": {
-      "critical": 9,
+      "critical": 10,
       "high": 8,
       "medium": 2
     }
@@ -66,7 +66,7 @@
       "severity": "critical",
       "fill": "Added scripts/verify_artifacts.py: read-only, exits 1 on error, 21 tests, JSON mode for CI.",
       "status": "applied",
-      "test": "tests/test_verify_artifacts.py \u2014 21 passed; live run exit=1 with 4 findings",
+      "test": "tests/test_verify_artifacts.py \u2014 22 passed; live run exit=1 with 5 findings",
       "evidence": "scripts/verify_artifacts.py"
     },
     {
@@ -208,6 +208,16 @@
       "status": "applied",
       "test": "tests/test_verify_artifacts.py (fixtures are copies of the real shapes)",
       "evidence": "results/mmi_mastery_wishlist.md baseline table"
+    },
+    {
+      "gap": "Signal artifacts carry no product field, and the paper trader trades a different asset than the signal measures (XRP accuracy vs BTC-USD trading).",
+      "area": "paradigm_sync",
+      "impact": "The 45.5% accuracy figure has never governed a BTC trade; three parallel market models exist with no wire between them.",
+      "severity": "critical",
+      "fill": "Detected by a new product_missing check in scripts/verify_artifacts.py and documented as wishlist item 0, which now outranks the other 50. Not fixed: adding a product field means changing the emitter, both signal files, the accuracy scorer and the trader, in one cycle with its own regression run.",
+      "status": "detected",
+      "test": "tests/test_verify_artifacts.py::test_signal_without_product_is_rejected",
+      "evidence": "scripts/check_signal_accuracy.py:13 prices 'ripple'; scripts/coinbase_paper_trader.py:14 defaults to BTC-USD; grep latest_signal in coinbase_paper_trader.py = 0 hits; both signal files lack product/product_id"
     }
   ]
 }

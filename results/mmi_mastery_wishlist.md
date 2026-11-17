@@ -14,6 +14,8 @@ Baseline facts this list is built on:
 | Paper state holds a position with `position_product: null` and `avg_entry_price: 80436.84` | `web/paper_trading_state.json` |
 | Trading surface: market orders only, dry-run default, `BARROT_MAX_TRADE_USD=25`, zero fee/slippage/drawdown code | `barrot_agent/trading/{coinbase_trader,risk_manager}.py` |
 | Two disagreeing signal ledgers: 45 lines vs 1697 records | `data/signal_ledger.jsonl` vs `web/signal_history.jsonl` |
+| **The accuracy figure is XRP sentiment and the paper trader trades BTC** — `check_signal_accuracy.py:13` prices `ripple`; `coinbase_paper_trader.py:14` defaults to `BTC-USD` and builds its own prompt from a ticker + recent trades, never reading `latest_signal.json` | both files, grep of readers |
+| Two separate BTC/XRP signals both publish `confidence: 0.0` | `latest_signal.json`, `latest_signal_btc.json` |
 
 Format per item: **Why** (the defect) — **Data needed** — **Transmutation**
 (what gets rewritten) — **Proof of mastery** (the test that must fail today and
@@ -22,6 +24,22 @@ pass after).
 ---
 
 ## A. Market data & signal integrity
+
+**0. One market model per product (precondition for the other 50)**
+Why: the accuracy evidence and the trading decision are about different assets.
+`scripts/check_signal_accuracy.py:13` scores XRP sentiment against `ripple` USD;
+`scripts/coinbase_paper_trader.py:14` defaults to `BTC-USD` and makes its own
+Groq call from that product's ticker and last 20 trades. The trader never reads
+`latest_signal.json`, so the 45.5% figure has never governed a single BTC trade.
+There are three parallel market models — XRP sentiment, BTC tape, and a state
+file holding a BTC position — and no wire between them.
+Data: product id on the signal, product id on the trade, both required.
+Transmutation: one `MarketContext` type carrying `product_id`; the trader refuses
+an intent whose `product_id` does not match the signal that produced it. Delete
+the second decision path or declare it the only one.
+Proof: a trade record without a `signal_id`, or with a product mismatch, cannot
+be constructed; the accuracy report is split per product and the BTC path shows
+`no accuracy evidence` until it has its own history.
 
 **1. Zero-confidence publish gate**
 Why: a signal with `confidence: 0.0` is live, and the repo's own summary
@@ -42,13 +60,16 @@ every reader refuses `stale` by default.
 Proof: test with a 19-day fixture asserts `stale is True` and consumer raises.
 
 **3. Hit-rate floor before any capital**
-Why: measured 45.5% directional accuracy is negative EV before fees. Any sizing
-logic downstream is currently multiplying noise.
-Data: `checked_count`, `accuracy_pct` per signal family.
+Why: measured 45.5% directional accuracy is negative EV before fees — and it is
+XRP accuracy, which item 0 shows is not even the asset being traded. Any sizing
+logic downstream is currently multiplying noise with no floor and no matching.
+Data: `checked_count`, `accuracy_pct` per signal family **per product**.
 Transmutation: `scripts/coinbase_paper_trader.py` — refuse to trade when
-`accuracy_pct < 52` or `checked_count < 200`, log the refusal.
-Proof: with the current `signal_accuracy.json` the trader makes zero trades and
-says why; flip the fixture to 55% and it trades.
+`accuracy_pct < 52` or `checked_count < 200` for the product being traded, log
+the refusal.
+Proof: with the current `signal_accuracy.json` the BTC trader makes zero trades
+and says "no XRP evidence for BTC"; flip the fixture to a 55% BTC series and it
+trades.
 
 **4. Cost model in the paper ledger**
 Why: no fee, no spread, no slippage anywhere in `trading/`. A round trip is
@@ -415,6 +436,9 @@ Proof: a rule that reappears after being refuted is flagged by id collision.
 
 ## Order of attack (highest damage first)
 
+0. **0** (one market model per product). Until signal and trade name the same
+   asset, every accuracy number below is measuring a different market than the
+   one being traded.
 1. **4 → 26** (cost model, then costed backtest). Until costs are real, every
    other number in this list is fiction.
 2. **1 → 2 → 3** (stop publishing zero-confidence, stale signals; stop trading

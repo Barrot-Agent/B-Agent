@@ -96,8 +96,14 @@ def test_stale_signal_is_rejected():
 
 
 def test_fresh_confident_signal_passes():
-    healthy = dict(CORRUPT_SIGNAL, confidence=0.62, generated_at_unix=NOW - 60)
+    healthy = dict(CORRUPT_SIGNAL, confidence=0.62, generated_at_unix=NOW - 60,
+                   product="XRP-USD")
     assert va.check_signal(healthy, now=NOW) == []
+
+
+def test_signal_without_product_is_rejected():
+    """Neither live signal file names its asset; the market is only in the prose."""
+    assert "product_missing" in codes(va.check_signal(CORRUPT_SIGNAL, now=NOW))
 
 
 def test_future_signal_is_rejected():
@@ -157,7 +163,7 @@ def test_verify_reads_real_file_shapes_from_a_tmp_root(tmp_path):
 
     findings = va.verify(tmp_path, now=NOW)
     assert {"position_without_product", "confidence_not_publishable",
-            "signal_stale", "below_chance_floor"} <= codes(findings)
+            "signal_stale", "below_chance_floor", "product_missing"} <= codes(findings)
 
 
 def test_main_exits_nonzero_on_errors(tmp_path, capsys):

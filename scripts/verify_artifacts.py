@@ -146,6 +146,17 @@ def check_signal(
     if not isinstance(source, str) or not source.strip():
         out.append(_violation(artifact, "source_missing", f"source={source!r}"))
 
+    # Neither web/latest_signal.json nor web/latest_signal_btc.json carries a
+    # product field: the asset is only identifiable from prose in signal_text.
+    # A signal that cannot name its market cannot be matched to a trade.
+    product = signal.get("product") or signal.get("product_id")
+    if not isinstance(product, str) or not product.strip():
+        out.append(_violation(
+            artifact, "product_missing",
+            "no product/product_id field — asset identity is only in prose, "
+            "so nothing can verify which market this signal is about",
+        ))
+
     return out
 
 
