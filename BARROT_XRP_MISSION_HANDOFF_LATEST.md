@@ -5689,3 +5689,114 @@ Before this market artifact/handoff-only follow-up, integration head `75591b6c3f
 - PR #1663 remains draft/open, mergeable but without formal reviews or review threads. Main remains unchanged.
 
 This addendum adds only evidence and handoff documentation. Its resulting commit requires its own exact-head CI; no parent result is transferred.
+
+
+---
+
+# Run211 — 2026-11-17: exact-head CI repair, SBIC identity, capital evidence, and market structure
+
+## Repository state and integration evidence
+
+- Current main SHA: `2c454f245296a23d3b4f180ca15ce63f3735319a`.
+- Current integration code head before this handoff-only commit: `825566089bd527247f4a44317b083ef832d72e9a`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- PR #1663 remains the single consolidated integration PR: 176 commits ahead, zero behind; 1,374 changed files; 500,117 additions and 6,476 deletions; draft/open.
+- Recursive trees: main 1,519 entries; integration 2,718 entries. Every main path is present in integration; 1,199 integration-only entries; 228 shared paths differ in blob or mode. This establishes path preservation, not semantic equivalence or merge safety.
+- Current main commit `2c454f2` is a 36-addition documentation-only commit touching `BARROT_SYNC.md` and `MEMORY.md`, parent `5de0c6d`.
+- No main changes, merges, branch rewrites, deployments, secret rotations, Space restarts, Databricks writes, Kaggle submissions, trades, or fund transfers were performed.
+
+## CI repair and exact-head status
+
+The preceding integration head `3507fb5` failed the full suite on one documentation assertion: `tests/test_run176_integration_gates.py::test_docs_do_not_claim_github_mcp_is_already_authenticated`. The assertion searched case-sensitively for the lowercase phrase `authentication is not yet verified`; README used the same wording with an initial capital. The run reported 4,077 passed, one failed, one skipped, 11 warnings, and 19 subtests.
+
+A minimal README-only wording correction was committed as `8255660`; it preserves the meaning and makes the tested phrase literal. No runtime code changed in that repair.
+
+For exact head `8255660`:
+- Push core tests: passed.
+- GitHub Pages validation: passed.
+- Dependency audit: passed.
+- Push fail-closed gate: passed; automatic merge remains disabled.
+- PR CI: passed, but integration-branch core/full-suite jobs were skipped by the PR-event guard. PR dependency audit and PR fail-closed gate passed.
+- Push full repository test job `133960794168` in run [44060485880](https://github.com/Barrot-Agent/B-Agent/actions/runs/44060485880) was still running at handoff capture, in the “Run every repository test with inclusive package coverage” step. **No full-suite pass is claimed for this head.**
+- The full-suite result from an earlier code head is not transferable.
+
+## Security and merge blockers
+
+Main currently contains the following workflows; their state was checked directly at main SHA `2c454f2`:
+
+- `.github/workflows/barrot-agent.yml`: issue-label and manual triggers; explicit `contents: write`, `pull-requests: write`, `issues: write`; injects `GROQ_API_KEY`; creates task branches and can create draft PRs through `scripts/barrot_agent.py`. Its job condition contains a schedule branch, but the visible trigger block has no schedule event, so no scheduled trigger is inferred.
+- `.github/workflows/ask-barrot.yml`: manual trigger; explicit contents/issues write; injects Groq key; creates an issue and commits/pushes Barrot memory to main.
+- `.github/workflows/barrot-sync.yml`: push-to-main and manual triggers; injects `GH_TOKEN`; runs `b_agent.py --sync`; commits and attempts to push `BARROT_SYNC.md`; no explicit permissions block is declared.
+- `.github/workflows/table-freshness-check.yml`: manual trigger with Databricks token and warehouse credentials.
+- `.github/workflows/pillars-check.yml`: scheduled/manual read-only workflow with GitHub App and Databricks credentials.
+- `content-pipeline.yml` and `entity-relations.yml` require an explicit YES input and declare contents read, but still inject Groq credentials.
+
+The integration branch contains quarantine/containment changes for high-write workflows. Those changes are not on main. The main branch endpoint reports `protected: true`, but required-status-check and required-review detail endpoints return 403. The only repository ruleset visible to this integration is “Fall Back,” and it is disabled. Main `.github/CODEOWNERS` assigns all paths only to `@Barrot-Agent`. PR #1663 has no formal reviews and no review comments. The integration branch itself is unprotected.
+
+**Merge remains blocked.** The 1,374-file semantic/security review is incomplete; independent review and enforceable required-check evidence are absent. Do not merge on the strength of a passing dependency audit or a skipped PR test job.
+
+## XRP market structure snapshot — 2026-11-17
+
+Provider timestamps and coverage are preserved; these values are not synchronized into one synthetic snapshot.
+
+- Kraken XRP perpetual page, updated 07:30 UTC: mark/index approximately $0.96; 24-hour volume about $21M; venue-specific open interest about $10.7M; funding approximately -0.0000041241% per hour. This is Kraken-only, not consolidated futures positioning. Source: https://www.kraken.com/features/futures/xrp
+- Liqwall cross-exchange XRP futures OI, 09:22 UTC: approximately $951M, down 4.0% over 24 hours; its 30-day range showed $1.49B on November 4 and $968M on November 16. Source: https://liqwall.com/open-interest/xrp
+- A separate OptimistFi snapshot reported approximately $1.8B OI across 39 venues at 06:35 UTC. The large difference from Liqwall reflects unresolved venue/contract coverage or aggregation methodology. Do not average these figures or treat either as a verified consolidated total. Source: https://optimistfi.com/perps/markets/xrp
+- CryptoKeyhole's November 16 US spot ETF flow was partial at 09:50 UTC November 17: 2 of 4 tracked issuers reported, net -5,196,983 XRP (about -$5.0M); Bitwise and Franklin Templeton were still outstanding. Its latest complete November 13 day was -9,967 XRP across 4/4. Its November 9–13 five-day total was -4,923,033 XRP. Source: https://cryptokeyhole.com/etf-flows/xrp/
+- XRP Insights' separate November 6–13 weekly total was -6.1M XRP because it includes the BITW index fund and excludes GXRP from flow calculations while correcting a historical scrape gap. This is a different fund universe, not a direct contradiction of the 4-fund series. Source: https://xrp-insights.com/news/xrp-supply-report-2026-11-14
+- XRP Insights' November 17 08:00 UTC ledger read counted 22.20B XRP in 707 publicly attributed wallets across 24 exchanges; the same-wallet set was down 139.2M XRP over seven days. Upbit: 6.47B; Coinbase: 5.83B; Binance: 2.59B. The Coinbase total includes 150.9M non-customer cbXRP on Base reserve; Binance includes 327.4M Binance-Peg XRP on BNB Chain reserve. The totals include cold storage and non-customer reserves, so they are not tradable float or proof of exchange selling. Source: https://xrp-insights.com/exchange-balances
+- XRP Radar's November 17 supply snapshot reported 31.10B XRP in on-ledger escrow and approximately 1.19B XRP across tracked US funds/index exposure, but its aggregate fund scope differs from the 4-issuer partial daily series. Source: https://xrp-insights.com/xrp-radar
+
+No directional forecast was issued. The market evidence is insufficiently synchronized and the point-in-time receipt/eligibility gates remain unmet.
+
+## Primary-source identity resolution: Japan's SBIC
+
+The SBIC East/Central/West names refer to three Japanese Small and Medium Business Investment & Consultation companies, not SBI Holdings:
+
+1. **SBIC East Japan** — Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (`東京中小企業投資育成株式会社`); corporate number 9011001030621; established November 15, 1963; capital ¥6.6734B; East Japan regional coverage. Its official profile lists local governments, chambers of commerce, financial institutions and companies among shareholders and identifies Nagoya and Osaka as sister companies. https://www.sbic.co.jp/company/profile/
+2. **SBIC Central Japan** — Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (`名古屋中小企業投資育成株式会社`); established November 18, 1963; capital ¥4.3808B; Aichi, Gifu, Mie, Toyama and Ishikawa coverage. Its profile identifies Tokyo and Osaka as sister companies. https://www.sbic-cj.co.jp/company/about/
+3. **SBIC West Japan** — Osaka Small and Medium Business Investment & Consultation Co., Ltd. (`大阪中小企業投資育成株式会社`); established November 20, 1963; capital ¥6.822B; 24-prefecture western coverage. Its profile also identifies Tokyo and Nagoya as sister companies and cites the Small and Medium Business Investment & Consultation Company Act. https://www.sbic-wj.co.jp/profiles/profile/
+
+The three official profiles establish separate legal names, dates, capital amounts, regional footprints and sister-company relationships. None of the reviewed official profiles identifies SBI Holdings as their parent. Do not conflate these entities with SBI Holdings, SBI Group, SBI VC Trade, SBI Ripple Asia or SBI Remit.
+
+The exact phrase “SBIC, ChatGPT SBIC” did not resolve to a corporate partnership. A primary SBIC East Japan page documents a June 12–13, 2025 “Introduction to Generative AI and Machine Learning” course for investee companies, explicitly including ChatGPT usage and Microsoft Copilot. That is a training course, not evidence of an OpenAI partnership. https://www.sbic.co.jp/training/20250612co/
+
+## Exact-phrase research: ASK Coin and “actual capital”
+
+- Permission.io's own 2021 announcement describes ASK Coin as the token used in its permission-based advertising/data-monetization model. The official Permission.io Telegram profile also says it created ASK Coin. No evidence in this search connected ASK to XRP, XRPL, Ripple, SBI or RLUSD. Treat ASK as a separate project unless primary evidence establishes a bridge or commercial relationship. https://www.globenewswire.com/news-release/2021/04/08/2206666/0/en/permission-io-launches-browser-extension-on-google-chrome-store.html
+- “Actual capital” surfaced in secondary reporting about Evernorth's financing channels. Primary SEC filings provide the controlling distinctions:
+  - Evernorth's November 13 Form 10-Q says 3,073,366 public warrants were exercised for cash from October 12 through November 9, generating $35.3M gross proceeds; 8,666,279 public warrants remained.
+  - The same filing says Evernorth received $29.0M net cash from a convertible note issued October 13 after a $1.0M advisor fee.
+  - The October 23 Cantor ELOC is an optional facility for up to 5,218,935 newly issued shares. Evernorth decides whether and when to sell; purchases are priced at 97% of VWAP, generally capped at 20% of trading volume, and subject to a 4.99% Cantor beneficial-ownership limit and a threshold-price condition. Maximum proceeds shown in a prospectus are illustrative capacity, not cash already received.
+  - The registration statement became effective October 30. Evernorth agreed to a non-refundable $0.5M commitment fee within five business days, but that statement is not itself proof that the fee was paid.
+  - The November 13 filing does not disclose an ELOC draw or XRP purchase funded by that ELOC. Do not convert facility capacity into actual cash raised or XRP demand.
+  - Primary source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm
+  - Facility prospectus: https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm
+
+## Camilla/Kamilah Stevenson identity and YouTube inventory
+
+The June 11, 2026 iHeart episode “Crypto Panics! with Dr. Kamilah Stevenson” identifies the interview guest. In the transcript she gives her X identity as “i am cam stevenson,” Instagram as “Kamilla Stevenson,” and YouTube as “doctor Camilla Stevenson,” and explicitly warns that fake pages exist. This verifies the person and her warning, but the interview page does not provide a canonical YouTube channel URL/handle.
+
+Secondary indexes attribute the following candidate public videos to “Kamilah Stevenson”; their transcripts have the speaker introducing herself as “Camila Stevenson”:
+- “Ripple Just Became a BANK — And XRP Holders Need to Understand This,” December 14, 2025, YouTube ID `QslbjGQD0MU`: https://glasp.co/youtube/QslbjGQD0MU
+- “XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing,” January 13, 2026, YouTube ID `ci0FH73lbCs`: https://glasp.co/youtube/ci0FH73lbCs
+- “Why Most People Will Lose Their Crypto Wealth (Even If They're Right),” January 15, 2026, YouTube ID `cxeX_eu_2H0`: https://glasp.co/youtube/cxeX_eu_2H0
+
+These remain **candidate attributions, not a verified official-channel inventory**. Do not merge them into a confirmed channel catalogue until a first-party source cross-links the exact YouTube channel or handle. Interview source: https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/
+
+## Prediction engine and nine-platform coordination
+
+- The branch contains receipt hashing, point-in-time feature storage, deterministic baselines, chronological walk-forward evaluation, calibration, univariate PSI drift monitoring and forecast-ledger gates. These are implemented components, not proof of predictive performance.
+- Latest durable dataset counts carried forward from Run210: 125 curated events; 48 with exact publisher timestamps; 77 without; zero byte-exact raw-source SHA-256 receipts; zero model-eligible events; zero forecasts; accuracy NOT_EVALUATED.
+- `.github/workflows/xrp-public-ingestion.yml` exists only on the integration branch; fetching that path from main returns 404. The scheduled ingestion workflow is therefore not verified active on main. The branch's workflow is guarded for main and cannot be represented as a live scheduled pipeline before merge.
+- Local SQLite integrity and finite-retention GitHub artifacts are not independent WORM storage. PSI alone is not concept drift. The current gates correctly prevent a directional forecast.
+- GitHub repository access and the GitHub connector path were tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks still have no verified live authentication/data-flow evidence in this run. No external model dispatch or permission expansion occurred.
+
+## Open PR backlog and next action
+
+- **#1663 — blocked consolidated integration:** retain the existing branch; finish exact-head full suite and complete semantic/security review before merge.
+- **#1541 — unique/unreviewed with partial overlap:** preserve its distinct remainder; reconcile only after a file/commit-level comparison. Do not close.
+- **#1460, #1450, #1440, #1437, #1436, #1353, #1265 — unique/unreviewed:** preserve; no bulk closure.
+- No PR is classified ready, superseded or duplicate on current evidence. No source PR was closed.
+
+**Next concrete action:** obtain the completed full-suite result for the exact final integration head, then finish review of all changed workflows and high-risk scripts, establish independent review and inspect enforceable main protection/required checks. Only then reconsider merge. The main branch remains unchanged.
