@@ -5662,3 +5662,30 @@ No independent nine-platform task exchange or red-team quorum was established.
 Next: finish the remaining workflow-to-script review, prioritize the two Groq workflows lacking exact-SHA gates and the scheduled credentialed pillars probe, reconcile #1541's three divergent files without rewriting history, and obtain independent review plus verifiable branch protection. Only then reconsider merge. Keep forecasts disabled until receipt-backed point-in-time data and leakage-safe out-of-sample plus independent shadow evidence qualify a candidate.
 
 No merge, source-PR closure, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force-push or history rewrite occurred.
+
+
+## Run210 market microstructure follow-up — descriptive only
+
+**Retrieved:** 2026-11-17T07:56:00Z  
+**Evidence:** [Cross-provider market snapshot](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-v3-mainline-successor-20261115T2101Z/research/xrp_intelligence/20261117T075600Z-run210-market-microstructure-followup.json)
+
+- CoinGlass's rendered spot page displayed XRP at **$0.9632**, +1.14% over 24 hours, with a $0.9415–$0.9767 range; spot volume **$510.95M** (-4.49%), futures volume **$2.28B**, OI **$1.99B** (+1.47%), $3.16M liquidations (59% long) and funding of -0.0042% per eight hours. Its own venue table totaled only $476.17M spot volume, and its prose mislabeled the table's 12-hour flow figures as 24-hour values. Both inconsistencies are preserved rather than silently corrected. [CoinGlass spot](https://www.coinglass.com/currencies/XRP/spot)
+- The CoinGlass 24-hour table row showed approximately **-$13.5M spot** and **-$54.9M futures** taker flow; its 12-hour row showed **+$5.1M spot** against **-$10.7M futures**. The seven-day row showed -$184.4M spot and -$753.7M futures. These are taker-volume differences, not exchange-wallet netflows. [CoinGlass spot](https://www.coinglass.com/currencies/XRP/spot)
+- OI disagreement remains material: CoinGlass about **$1.99B**, Liqwall **$965M** at 05:52 UTC (-3.3%/24h), and TradRadar **$1.31B** at 15:30 UTC November 16 (-5.04%). Contract universes and timestamps are not reconciled; do not average. [Liqwall](https://liqwall.com/open-interest/xrp) · [TradRadar](https://tradradar.io/markets/xrp)
+- CoinGlass's venue table showed ±1% spot depth of roughly $5.90M Coinbase, $7.63M Kraken, $3.86M Binance, $2.71M Upbit, $3.09M OKX and $0.47M Gate. The same page's volume and depth aggregates are rendered snapshots, not retained raw exchange payloads.
+- ETF sources still do not establish a settled November 16 total. XRP Insights' latest settled session is November 13 and its November 16 row is provisional; its November 9–13 issuer-holdings series is -6.08M XRP. Alpha Finance reports a November 14 -$1.1M flow across five funds; ByKaranteli's November 13 page reports a -$19.1M five-session flow. Different fund coverage and methodologies are preserved separately. [XRP Insights](https://xrp-insights.com/data) · [Alpha Finance](https://alphafinance.io/etf/xrp/) · [ByKaranteli](https://bykaranteli.com/etf/xrp)
+- Basis's Binance XRPUSDT perpetual book snapshot was timestamped 02:27 UTC: 1.05 bps spread, $12.2M bids and $10.5M asks within 1%. It is a single, stale perpetual snapshot, not consolidated spot depth. [Basis](https://www.basischarts.com/liquidity-heatmap/xrp-usdt)
+
+The snapshot supports competing explanations: leverage unwind, short-covering/spot absorption, or provider-scope/rendering mismatch. It does not support a directional forecast. These rendered observations have no byte-exact source receipts and were **not admitted** to the point-in-time feature store.
+
+### Run210 final code-head verification
+
+Before this market artifact/handoff-only follow-up, integration head `75591b6c3fe0a8bc98a89a21fbc70b97f8e18228` was **167 commits ahead, zero behind** main. The two preceding commits only added Run210 evidence and handoff documentation; no runtime code changed.
+
+- [Exact-head push CI 44041875571](https://github.com/Barrot-Agent/B-Agent/actions/runs/44041875571): **3,847 passed, zero failed, one skipped, 11 warnings, 19 subtests**, 112.72 seconds; 66.90% inclusive coverage and 77% legacy-core coverage. Wheel build, installed V3/XRP mission smoke and Pages validation passed.
+- [Exact-head dependency audit 44041875540](https://github.com/Barrot-Agent/B-Agent/actions/runs/44041875540): all six manifests passed; no known vulnerabilities reported.
+- [Exact-head push fail-closed gate 44041875656](https://github.com/Barrot-Agent/B-Agent/actions/runs/44041875656): passed; automatic merge remains disabled.
+- [PR CI 44041880926](https://github.com/Barrot-Agent/B-Agent/actions/runs/44041880926): Pages passed; PR-event core/full-suite jobs skipped by the integration-branch guard. [PR dependency audit 44041880946](https://github.com/Barrot-Agent/B-Agent/actions/runs/44041880946) and [PR fail-closed gate 44041880902](https://github.com/Barrot-Agent/B-Agent/actions/runs/44041880902) passed.
+- PR #1663 remains draft/open, mergeable but without formal reviews or review threads. Main remains unchanged.
+
+This addendum adds only evidence and handoff documentation. Its resulting commit requires its own exact-head CI; no parent result is transferred.
