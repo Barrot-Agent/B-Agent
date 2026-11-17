@@ -798,3 +798,43 @@
 - ch-07: 7.1 -> 7.4 of 8 pages (93%). Build exit 0, no PROBLEMS. Book tests 12
   pass, full suite 1091 passed / 1 skipped. Churn reverted scoped (36 files + 1
   named feedback_loop json). No other chapter touched.
+
+## 2026-11-17 — Ch 8 evidence audit + repair (Phase A polish)
+- Re-verified every claim in ch-08 against docs.x.ai (build/overview, cli/headless-
+  scripting, cli/reference, features/sandbox, features/permissions, grok-bot/
+  computers, bots, security, skills-routines-and-automations). 2 rounds, 1
+  independent challenger, $0.00 (free models only).
+- Confirmed correct: install.sh / install.ps1, XAI_API_KEY fallback, TUI/headless/
+  ACP surfaces, `grok -p`, `--output-format plain|json|streaming-json`, one hosted
+  computer per member shared by all their Bots, routines with Run history and
+  Pause/Resume, cross-refs ch-03 (receipt chain) / ch-07 (token maths) / ch-09.
+- Fixed 5 material defects:
+  1. "token ceiling ... exits non-zero when hit" — not documented. Replaced with
+     `--max-turns <N>` (real flag) + the wrapper's wall-clock timeout, and stated
+     plainly that the CLI documents no token budget;
+  2. wrapper checked `artifact.exists()` against the wrapper CWD, not job_dir —
+     relative artifact path could mark a good run failed (and hash a stray file).
+     Now resolved against job_dir;
+  3. `subprocess.run(timeout=...)` raised TimeoutExpired uncaught, so the timeout
+     run left no receipt, contradicting "receipts are append-only, especially when
+     the run fails". Caught, verdict="timeout", receipt always written;
+  4. "Network scope. An allowlist where the platform supports it." — no allowlist
+     feature exists. Replaced with read-only/strict child-network blocking,
+     Linux-only enforcement, model API + web tools outside it;
+  5. "documentation says plainly that separate Bots are not a security boundary" —
+     not in the docs. Replaced with the actual sentence: "Files and sign-ins on
+     the shared computer aren't isolated per Bot and can remain there."
+- Also: sandbox profiles section (workspace/devbox/read-only/strict, Landlock/
+  Seatbelt, GROK_SANDBOX) and the permission layer (`--always-approve` means deny
+  rules first, `--tools`/`--disallowed-tools`) added, because the chapter argued
+  for fences and never named the documented flags. run_id now includes
+  microseconds (same-second retries overwrote receipts). Sample command dropped
+  "Stop after 40 tool calls" (prompt text) in favour of `--max-turns 40`.
+- ch-08: 7.4 of 8 pages (93%). Build exit 0, no PROBLEMS, no missing files.
+  Book tests 12 pass. Full suite 1091 passed / 1 skipped. Whole book 76.9/89
+  drafted pages (86%).
+- Flight Recorder: results/flight_recorder/2026-11-17-ch08.jsonl (3 rounds,
+  ask/said/kept/rejected/cost/time). No other chapter touched.
+- TIME: ~22 min wall clock vs 15-min cap — OVER. R1 6m, R2 2m, R3 5m; the rest is
+  full-suite proof (3m55s) plus reverting 36 files of pytest timestamp churn. Cost
+  $0.00 (free models only; no external AI is wired in this runtime).
