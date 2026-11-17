@@ -4551,3 +4551,73 @@ The last durable registry remains at 125 curated events, zero byte-exact raw-sou
 No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external-model dispatch, force-push, history rewrite or source-PR closure occurred.
 
 **Next actions:** exact-head CI for this supplemental handoff commit; synchronize PR #1663's stale description; complete workflow/security and code semantic review; obtain independent review and authorized branch-protection evidence; reduce GitHub permissions through the authorized owner; pin remaining mutable action references; then merge only after every gate passes and verify main plus the first scheduled ingestion run.
+
+
+---
+
+## Run202 — exact-head verification and mission-critical action pinning
+
+**Captured:** 2026-11-17T00:07:00Z  
+**Main:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**Integration parent:** `58d1f751d8460918ada0179ee46830237d699716`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663)
+
+### Repository and PR state — VERIFIED
+
+- Current main ref and integration ref were fetched directly. Main remains `1f30e5c18f151f75ad5d157ddde175723584ec69`; the integration parent was `58d1f751d8460918ada0179ee46830237d699716`.
+- Main tree: 1,393 entries. Integration tree: 2,568 entries. No main paths are missing from the integration tree.
+- PR #1663: open, draft, mergeable metadata true, base main, head integration; 1,340 changed files and 135 commits.
+- Formal reviews: zero. Review threads: zero. No requested reviewers.
+- Nine PRs remain open: #1663, #1541, #1450, #1460, #1440, #1436, #1437, #1353 and #1265. The research PR dependency stack and overlap classifications in the preceding Run201 section remain current; no source PR was closed.
+
+### Exact-head CI — VERIFIED on parent `58d1f751`
+
+Push-triggered full-suite run [43977195474](https://github.com/Barrot-Agent/B-Agent/actions/runs/43977195474) completed successfully on the exact parent SHA:
+
+- 3,845 passed; zero failed; one skipped; 11 warnings; 19 subtests passed.
+- Runtime: 148.92 seconds.
+- Inclusive coverage: 66.90%; legacy-core coverage: 77%.
+- Full repository test job, Pages validation and core Tests job all concluded success.
+- Six-manifest dependency audit [43977195565](https://github.com/Barrot-Agent/B-Agent/actions/runs/43977195565) passed with no known vulnerabilities.
+- Push fail-closed gate [43977195376](https://github.com/Barrot-Agent/B-Agent/actions/runs/43977195376) and PR fail-closed gate [43977205566](https://github.com/Barrot-Agent/B-Agent/actions/runs/43977205566) passed. The gate continues to disable automatic merge.
+
+This evidence applies to parent `58d1f751`, not to the new action-pinning commit appended by this Run202 addendum. The new head requires its own exact-head CI, dependency and fail-closed verification.
+
+### Mission-critical workflow supply-chain correction — EXECUTED
+
+The official GitHub tag refs were resolved directly to commit objects:
+
+| Action tag | Resolved full commit SHA |
+|---|---|
+| actions/checkout v7 | `3d3c42e5aac5ba805825da76410c181273ba90b1` |
+| actions/setup-python v7 | `6d4fd22b20465ccc0f7354476588e8df7c9ca0e0` |
+| actions/upload-artifact v7 | `cf430e030ddbb5b0abf93d22962f4752f3646cd9` |
+| actions/cache v4 | `0057852bfaa89a56745cba8c7296529d2fc39830` |
+| actions/jekyll-build-pages v1 | `44a6e6beabd48582f863aeeb6cb2151cc1716697` |
+
+The existing integration branch's two highest-priority workflows were updated without creating another branch or PR:
+
+- `.github/workflows/xrp-public-ingestion.yml`: checkout, Python setup, six artifact uploads, cache restore and cache save now use full commit SHAs.
+- `.github/workflows/ci.yml`: all checkout and Python setup references plus the Pages build action now use full commit SHAs.
+
+The XRP ingestion workflow remains scheduled but guarded to execute only on main. It is public-data/read-only, has read-only Actions/Contents permissions and publishes GitHub artifacts; it was not executed or activated on main by this change.
+
+This is a targeted correction, not completion of the repository-wide action audit. Other changed workflows still contain mutable major-version action tags, including paper-trader and research workflows. The remaining action inventory, pin verification and workflow semantic review are still required before merge.
+
+### Prediction and activation boundary — VERIFIED
+
+- Main still lacks `barrot_agent/data/missions/primary_mission.json` and `.github/workflows/xrp-public-ingestion.yml`.
+- The integration branch contains the priority-one XRP mission and scheduled ingestion design, but the scheduled job is guarded to main and has not run in production.
+- The durable curated registry remains at 125 events, zero byte-exact raw-source SHA-256 receipts, 48 exact publisher timestamps, 77 missing exact publisher timestamps and zero model-eligible events.
+- Forecast status remains `NOT_ISSUED`; accuracy remains `NOT_EVALUATED`.
+- No directional XRP forecast was issued. The new action pins do not change the prediction model or evidence-admission state.
+
+### Governance and merge decision
+
+**NO MERGE.** PR #1663 remains draft with no independent formal review. Main's branch-protection detail remains inaccessible through the current integration connection (HTTP 403). Visible ruleset 10863829 remains disabled. CODEOWNERS remains self-only, and the GitHub connection reports admin/maintain/push/pull/triage permissions, which is broader than least privilege. Full semantic review of 1,340 changed paths remains incomplete.
+
+No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, force-push, history rewrite or source-PR closure occurred.
+
+### Next action
+
+Verify exact-head full-suite CI, dependency audit and fail-closed gate on the new action-pinning commit. Then complete the remaining action-pin inventory and workflow semantic review, reconcile the stacked research PRs, obtain independent review and authorized branch-protection evidence. Keep scheduled ingestion and all forecasts inactive on main until a compliant merge is possible.

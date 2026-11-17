@@ -30,12 +30,12 @@ jobs:
       contents: read
     steps:
       - name: Checkout current main
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: main
           persist-credentials: false
       - name: Set up Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: '3.11'
       - name: Prepare feature-store workspace
@@ -79,7 +79,7 @@ jobs:
           --repository-root .
           --output "$RUNNER_TEMP/xrp-research-correction-audit.json"
       - name: Upload XRP research correction audit
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: xrp-research-correction-audit-${{ github.run_id }}
           path: ${{ runner.temp }}/xrp-research-correction-audit.json
@@ -87,7 +87,7 @@ jobs:
           retention-days: 90
       - name: Restore cumulative feature-store cache
         id: feature_cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: artifacts/xrp_ingestion/feature_store.sqlite3
           key: xrp-feature-store-v1-${{ github.run_id }}
@@ -156,7 +156,7 @@ jobs:
           fi
           python -m barrot_agent.evolution.xrp_public_ingestion "${args[@]}"
       - name: Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: xrp-public-raw-${{ github.run_id }}
           path: |
@@ -171,7 +171,7 @@ jobs:
           if-no-files-found: error
           retention-days: 90
       - name: Upload append-only cross-run receipt-chain index (90-day GitHub artifact; not WORM)
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: xrp-public-receipt-index-${{ github.run_id }}
           path: artifacts/xrp_ingestion/cross_run_receipt_chain.json
@@ -179,7 +179,7 @@ jobs:
           retention-days: 90
       - name: Upload point-in-time event timeline and counter-hypotheses
         if: success()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: xrp-public-events-${{ github.run_id }}
           path: artifacts/xrp_ingestion/event_timeline.json
@@ -187,7 +187,7 @@ jobs:
           retention-days: 90
       - name: Upload per-run point-in-time feature-store checkpoint
         if: success()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: xrp-public-feature-store-${{ github.run_id }}
           path: |
@@ -197,7 +197,7 @@ jobs:
           retention-days: 7
       - name: Upload daily point-in-time feature-store backup and walk-forward report
         if: success() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *')
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: xrp-public-feature-${{ github.run_id }}
           path: |
@@ -214,7 +214,7 @@ jobs:
       - name: Save cumulative feature-store cache after successful artifact publication
         if: success() && steps.feature_cache.outputs.cache-hit != 'true'
         continue-on-error: true
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: artifacts/xrp_ingestion/feature_store.sqlite3
           key: xrp-feature-store-v1-${{ github.run_id }}
