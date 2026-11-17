@@ -690,3 +690,27 @@
 - Still open: barrot_agent/geometry, phoenix.py, sandbox/, experiments/ are
   untracked-but-live. Commit only restores them to disk+git; they are unverified
   against the deployed path.
+
+## 2026-11-17 — safeguards 1-3 verified + NEW FINDING: the suite is not hermetic
+- Safeguard 0 (retroactive): commit 5de0c6db6 staged 78 files, zero matches for
+  .env / secret / .pem / id_rsa / __pycache__ / .pyc / token / credential.
+- Safeguard 1: stash 472391f48 = 43 tracked + 31 untracked = 74 files. The "62"
+  figure was `git status --porcelain` lines, where untracked directories collapse.
+  Markers all present: collaboration_records 31 (matrix + case-01..30),
+  infinite_ingest 7, geometry 9, sandbox 10, phoenix 2, experiments 2,
+  feedback_loops 6. Popped with 0 conflicts. stash list now empty.
+- Safeguard 2: full suite 1079 passed, 1 skipped, 500.24s, cov 78%.
+  Safety subset 68 passed (bundle_lifecycle_safety_regressions, pillars_check_readonly,
+  sandbox, verify_artifacts, witness_loop). Restored-WIP subset 150 passed
+  (infinite_ingest, duplicate_shims, geometry x4, phoenix, transmute).
+- Safeguard 3: local HEAD == remote main == 5de0c6db6, tree clean.
+- NEW FINDING (gap): running pytest MUTATES TRACKED FILES every run — 36 paths:
+  .barrot/collaboration_records/*.json (timestamps), barrot_capability_audit.json,
+  data/evolution/confidence_calibration.json (+60 lines), data/research/
+  riemann_hypothesis_harvest.json (156 lines), ping-pongings/knowledge-base/
+  refinement_log.jsonl (+5 lines), plus one new feedback_loops/feedback_loop_*.json.
+  Verified timestamp/counter churn only, 0 non-time semantic lines in the sampled
+  files. Backed up to ~/barrot/backup-20261117/test-run-churn-0909.patch (1653
+  lines) and reverted, so HEAD stays clean.
+  Consequence: "clean tree after pytest" is false unless the churn is reverted.
+  Not fixed — tests should write to tmp_path. Logged as a wishlist item.

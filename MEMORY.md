@@ -263,3 +263,15 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   placeholder until Sean says delete. Full evidence: results/port_log.md.
 - Backup of main-wip kept outside git: ~/barrot/backup-20261117/
   (untracked.tar.gz 31 entries, tracked.patch 2854 lines).
+
+### pytest is not hermetic (measured 2026-11-17)
+- Every `pytest -q` run rewrites 36 TRACKED paths: .barrot/collaboration_records/*
+  (generated_at + EXECUTION_TIMESTAMP), barrot_capability_audit.json,
+  data/evolution/confidence_calibration.json, data/research/
+  riemann_hypothesis_harvest.json, ping-pongings/knowledge-base/refinement_log.jsonl,
+  and drops a new feedback_loops/feedback_loop_*.json.
+- Verified: 0 non-time semantic lines changed. It is harness churn, not test logic.
+- Therefore a clean working tree requires reverting the churn after each pytest run
+  (`git checkout -- .` + rm the new feedback_loop file). Backup of one such churn:
+  ~/barrot/backup-20261117/test-run-churn-0909.patch.
+- Open fix (not done): point those writers at tmp_path. Own transmute run.
