@@ -81,3 +81,4 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 
 - docs/synthesis/cross-domain-audit.md - Cross-domain audit
 - docs/synthesis/cross-domain-convergence.md - Cross-domain synthesis and convergence
+- docs/synthesis/paradigm-cycle-01.md - Paradigm cycle 01: cross-analysis, bounded

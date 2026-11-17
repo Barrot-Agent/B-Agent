@@ -505,6 +505,14 @@ def create_repository_repair_commit(repo, audit_text):
 
 
 def main():
+    try:
+        from barrot_agent.environment import startup_banner
+
+        print(startup_banner())
+        print()
+    except Exception as exc:  # never block startup on detection
+        print(f"ENVIRONMENT detection failed: {exc}")
+
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
