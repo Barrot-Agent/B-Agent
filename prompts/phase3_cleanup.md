@@ -1,0 +1,1 @@
+PHASE 3 - CLEANUP: Move 16 zero-byte root files to archive/debris-20261116/ (do NOT delete). List 31x sys.path.insert, 8x bare except:, 95/120 scripts with no test in results/re_wishlist.md. Do NOT fix all yet. Verify imports still pass. Commit after phase.

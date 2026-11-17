@@ -317,3 +317,234 @@
 - Deps added: pretty_midi, mido, music21, librosa (user site).
 - Next step (music): pick a favorite, humanize further, add ghost notes +
   fills, try stems/render per-section, or ship pack to Gumroad pipeline.
+
+## Session 2026-11-16 - MCP recheck + V3 Geometry inventory (analysis only)
+- What I did: re-verified live MCP (github connected, get_me -> Barrot-Agent;
+  docling 21 tools, searxng 4 tools); audited repo for the 12 V3 Geometry
+  capabilities against code + executed tests.
+- What works now: `barrot_agent/rendering/mesh_topology.py` (edge incidence,
+  open boundaries, non-manifold, watertight) with 5 passing tests;
+  `polygon_triangulation.py` with area-preservation test (5 passing);
+  `obj_mesh_loader.py` (9 passing); provenance via `evolution/evidence_store.py`
+  and `ingestion/mmi_contract.py` hash chain.
+- What is broken/missing: no Geometry package. Stratification, typed
+  equivalence, certificates, geometric transforms, geometry signatures, and
+  exact arithmetic are absent. `EvidenceState` is 7 labels, not the required 8;
+  no 4-state VALID/INVALID/UNRESOLVED/NOT_APPLICABLE enum.
+- Next step: Sean authorizes orchestration layer; reuse rendering.mesh_topology
+  and mmi_contract instead of duplicating. PA1 Target 1 doc not found - needs
+  path or text.
+
+## Session 2026-11-16 (cont.) - V3 Geometry doc received
+- Doc arrived (not a file; pasted in session). Inventory re-run against its exact
+  layers: 12-capability table + extra layers (config space, relational, closure,
+  symmetry, robustness, minimal explanation, independence).
+- Finding: doc's own §25 guess holds - smallest viable new capability is
+  Structural Signature + Relational Discovery; representation/constraints/
+  invariants/classification/incidence exist only in rendering mesh scope.
+- PA1_FINAL_v1.2.txt still absent. No code changed.
+
+## Session 2026-11-16 (cont.) - geometry slice implemented (authorized)
+- Did: built `barrot_agent/geometry/` (states, object, signature, relations) + 4
+  test files. Additive only; no existing file touched.
+- Works now: 72 geometry tests pass, flake8 clean, existing rendering tests
+  19/19 pass. Canonicalization is order-independent even when coordinates
+  collide; the permutation search is bounded and refuses rather than guessing.
+- Broken: `tests/test_phoenix.py::test_passing_experiment_unlocks_level_two`
+  fails on sandbox run `gist-budget`. Pre-existing - it still fails with the
+  geometry package deleted. Not caused by this work.
+- Not built: stratification, certificates, exact arithmetic, equivalence
+  registry, config space, robustness, minimal explanation. Designs only,
+  labeled CONJECTURED.
+- PA1: still UNRESOLVED - file not located on this filesystem.
+- Next step: wire signature + relations into one geometry claim path; signature
+  match stays "candidate", never equivalence.
+
+## Session 2026-11-16 (cont.) - PA1 v1.2 text received
+- `PA1_FINAL_v1.2.txt` still absent on this container; Sean's shell wrote it to a
+  mount I cannot see. Verified with wc, cat, `find / -maxdepth 5`.
+- Read from pasted text: §5 construct (primary = R_L not M), §6 Target 1
+  safeguards (ITPRA labels, +0.05 min effect, equivalence test, 4-way ablation,
+  Contradiction Register, PASS/FAIL/INCONCLUSIVE), §7 execution order and STOP.
+- §1-4 not provided -> UNRESOLVED, not claimed.
+- Effect on code: none. PA1 is construct validation; it defines no geometry
+  contract. Geometry slice unchanged and still green (72 tests).
+- Next step: Sean supplies §1-4 or the real file path, if that matters; otherwise
+  Target 1 execution stays unstarted per §7 STOP.
+
+## Session 2026-11-16 (cont.) - PA1 execution contract received
+- Received as text: 8-target sequence, mandatory rules, report schema A-H,
+  Target 1 objective + kill criterion (redundancy -> demotion, not deletion).
+- Contradiction found: §7 order is 1-2-4-5-3-6-7-8; the bundle diagram omits
+  Target 4. Flagged, not resolved by guessing.
+- Target 1 cannot execute yet: missing ITPRA baseline operational definition,
+  dataset/outcome/path, PA1-ToM predictor spec, preregistered N/power and
+  equivalence procedure, M3/M5 partition definitions.
+- No code touched. Geometry slice unchanged (72 tests green).
+
+## Session 2026-11-16 (cont.) - STEP 1 LOCATE against frozen PA1 §5-§7
+- Sean retracted the "Complete Bundle" paste: it was a recap, not the frozen file.
+  Its 8 target names, schema A-H, kill-test wording and diagram are VOID.
+  Marked RETRACTED in MEMORY.md so no later session reuses them.
+- Frozen PA1 = §5, §6, §7 text only. Targets 2-8 have no defined identity there.
+- STEP 1 result: 0 of 20 constructs exist in code.
+  - §5 (9 items): S_L, E_C, R_L, M_signed, R_signed_error, probe split, reactivity
+    flag, manipulation check, M3/M5 -> all absent. No rating/trial dataset either
+    (trial/participant hits are clinical longevity code; rating hit is a power rating).
+  - §6 (11 items): ITPRA components, Huron/Barrett labels, MISSING marker,
+    held-out log-likelihood, +0.05, preregistration, equivalence test, 4-way
+    ablation, recursion ablation, Contradiction Register, PASS/FAIL/INCONCLUSIVE
+    -> all absent.
+  - §7 is a process rule; no code artifact exists or should exist for it.
+- Adjacent reusable infra that DOES exist: scientific_discovery.ClaimStatus,
+  VerificationIndependence + IndependenceEvaluator.assess, ContradictionAnalysis;
+  mmi_contract.EvidenceState (7 labels); geometry.states.TruthState (4 states).
+- Spec gap (not a repo gap): §5 names M3 and M5 but never defines them. §7 names
+  targets 1-8 but only target 1 is described. Those stay UNRESOLVED until Sean
+  supplies the definitions.
+## Session 2026-11-16 (cont.) - STEP 1b semantic alias re-check (§5)
+- Searched aliases: signed_error, composer_estimate, probe_flag, is_probe, nonprobe,
+  non_probe, reactivity, "estimate vs actual", "expected vs actual", latent, probe,
+  expectation, surprise, prediction_error, manipulation check, attention/catch trial,
+  overestimate/underestimate, bias, metacognition, model_3/model_5, discrepancy.
+- Result: 0 alias matches. All 9 §5 constructs stay MISSING. Near misses examined
+  and rejected: analyze_reference.py:105 signed timing bias (audio), gist_memory.py
+  latent vectors (embeddings), mcp_sync.py probe_* (network), polymath_ingestion.py:378
+  chemical reactivity.
+- No code modified. Awaiting Sean.
+
+## Session 2026-11-16 (cont.) - STEP 2 gap-fill design (Target 1 only)
+- §6 alias re-check done: 0/11. Only near-alias is Contradiction Register, where
+  2 of 5 required fields exist (`supporting_evidence`, `contradicting_evidence`
+  in research/scientific_discovery.py:209,368,410). `alternatives` as a register
+  field, `missing`, `falsifier` absent. Still MISSING, not PARTIAL.
+- Delivered CONJECTURED design for all 20 missing constructs (§5 x9, §6 x11) in
+  `barrot_agent/pa1/` (constructs, partitions, itpra, evaluation, contradiction,
+  verdict). No files created. No production code.
+- Design rules held: every function returns UNRESOLVED/MISSING on absent input,
+  never 0; no numeric constant outside §5/§6; Tau absent; Targets 2-8 unnamed.
+- M3/M5 identities and the 5 ITPRA component names are NOT in frozen text, so the
+  design treats both as registries that refuse to produce a baseline until Sean
+  supplies definitions. Not invented.
+- Awaiting approval to code.
+
+## Session 2026-11-16 (cont.) - Phoenix push attempt (BLOCKED, no push exists)
+- Sean asked to "push to Phoenix" and confirm a push hash / log line before build.
+- Finding: `barrot_agent/phoenix.py` is a LOCAL level/evidence protocol. Commands:
+  status | experiment | combine | unlock. There is no push, no remote, no push hash,
+  and no confirmation token. Do not invent one.
+- Phoenix state: level 0 "unawakened". `data/phoenix_state.json` and
+  `data/phoenix_experiments.jsonl` do not exist. `run_experiment` calls require(1)
+  -> PermissionError at level 0, so Phoenix cannot emit an experiment log line.
+- What does work: `log_power()` is not level-gated. It appended a real entry to
+  MEMORY.md (line 112): "### Power 2026-11-16 - pa1_frozen_state_v1_2",
+  Result: RECORDED, Artifact: sha256:69d629f7...090ee6 (PA1 block, 17 lines).
+  This is a record, NOT a pass, NOT a remote confirmation.
+- MEMORY.md now also carries the STEP 1 tables (0/9, 0/11) and the near-miss list
+  (gist_memory, mcp_sync probe_*, polymath reactivity, analyze_reference offset).
+- git: origin github.com/Barrot-Agent/B-Agent, branch main, HEAD eb6dc34.
+  MEMORY.md + BARROT_SYNC.md are modified and uncommitted. No commit/push made.
+## Session 2026-11-16 (cont.) - Phoenix sandbox repair (runner.py)
+- Failing test: tests/test_phoenix.py::PhoenixTests::test_passing_experiment_unlocks_level_two,
+  call at tests/test_phoenix.py:210, raised at barrot_agent/phoenix.py:357.
+  Expected: result.passed True -> unlock level 2. Got: passed=False, exit_code=-9,
+  timed_out=True, 60.3s, stderr "bionic/linker/linker_cfi.cpp:158 MapShadow CHECK".
+- NOT combine(): all 4 combine tests pass; combine is at phoenix.py:402. The range
+  217-300 is unlock(), not combine.
+- Root cause: RLIMIT_AS. On Android bionic the interpreter dies inside the loader
+  before user code when RLIMIT_AS < ~3 GiB. Measured: 512 fail, 1024 fail, 1536 fail,
+  2048 fail, 3072 pass, 0/disabled pass. Tests hardcode memory_mb=512 at
+  tests/test_phoenix.py:40 and tests/test_sandbox.py:34,74, so changing the default
+  alone would not have fixed it.
+- Fix (barrot_agent/sandbox/runner.py only, no test files touched): added
+  MIN_MEMORY_MB = 3072 if sys.platform == "android" else 0 (line 44) and clamp
+  requested>0 limits up to the floor in __init__ (lines 164-166). A limit below the
+  floor would measure the loader, not the experiment.
+- Proof: tests/test_phoenix.py 16/16 pass (was 15/16); tests/test_sandbox.py 7/7 pass;
+  flake8 runner.py exit 0.
+- NOTE: barrot_agent/sandbox/ is UNTRACKED in git (28 untracked entries total), so
+  there is no checkpoint commit and no git-revert for this file.
+- Still true: the repo-level Phoenix state is level 0 and there is no push command,
+  so the "Phoenix confirms frozen PA1" gate remains unsatisfiable as written.
+- The exact run dir/log for `20261116T214232Z-gist-budget` is UNRECOVERABLE: the test
+  root is a TemporaryDirectory (tests/test_phoenix.py:31-38) removed in tearDown, and
+  keep_on_fail=False deletes the run dir. Surviving equivalent: data/sandbox/runs.jsonl
+  line `20261116T214330Z-probe-gist`, same script sha256
+  ecd103a893b1b780efbce11eef51fcde9c9a1d03d4b12eb557451dc370c9f0a8 as the test's
+  PASS_SCRIPT, same stderr, exit -9. Caveat: that repro ran with timeout=60, the test
+  uses timeout=10; the failure mechanism is identical.
+
+## 2026-11-16 — B-ACES Transmuted v1.1 (minimal slice)
+- What I did: created runs/B-ACES_v1.0_SPEC.md (transmission record),
+  runs/B-ACES_TRANSMUTED_v1.1.md, runs/B-ACES_v1.0_IMPLEMENTATION-LOG.md,
+  barrot_agent/skills/{debian-verify,_template,SKILL-INDEX.md}.
+- What works now: debian-verify executes ls -lh + sha256sum and returns
+  MISSING / EXISTS / EXISTS_UNHASHED. Template + index exist on disk.
+- What is broken: B-ACES v1.0 spec body was NEVER supplied - no file in
+  /root/barrot contains "B-ACES" (grep verified). test_01 premise is false:
+  barrot_agent/phoenix.py EXISTS (22K, sha256 fd83ebfa...893bc0), so the test
+  is recorded FAIL and the skill stays `draft`, not `verified`.
+- Prompt claims contradicted by disk: PA1_Complete_Bundle.txt MISSING,
+  PA1_FINAL_v1.2.txt MISSING, runs/2026-11-16-12AM/ MISSING.
+- Next step: replace test_01 with a truly-absent path so debian-verify can
+  reach `verified`. tau=0.707 still quarantined, unused.
+
+## 2026-11-16 — V3 snapshot cross-corroboration + Geometry Capability Map
+- What I did: verified every snapshot claim against disk, scanned
+  barrot_agent/geometry/ (677 lines, 5 modules), ran 4 full test modules
+  (72 passed) + 2 MMI modules (32 passed), ran an 11-check read-only sandbox
+  probe from /tmp/opencode/geom_probe.py (11/11 pass), wrote
+  runs/GEOMETRY_CAPABILITY_MAP.md.
+- What works now: geometry package is a REAL partial Structural Discovery Core —
+  representation, constraints, invariants, signature, relations, incidence,
+  8 evidence states, 4 truth states, exact-vs-numerical guard.
+- What is broken: snapshot does not match this tree. All 3 checkpoint commits
+  ABSENT; .barrot/sources/ and .barrot/mmi_learning/ MISSING (83 files, neither
+  dir); scripts/barrot_governed_bundle_executor.py + its test MISSING; no gitlab
+  remote; branch is main not barrot/task. Nothing reset.
+- Missing layers: classification, stratification, representation correspondence,
+  certificates, domain/config space. compare_invariants does not exist anywhere.
+- Next step: gate 2 — corroborate the map, then propose ONE addition
+  (invariant-set registry w/ 2nd set) with tests. No geometry implementation
+  until that gate passes.
+
+## 2026-11-17 — RE meta-analysis + repo-wide scan (analysis only)
+- What I did: ran 3 analyses (loop reverse-engineering, full repo scan, top-20
+  wishlist). Wrote results/re_wishlist.md, appended a meta_analysis record to
+  results/transmute_log.json, updated MEMORY.md. No production code touched.
+- Measured baseline: full suite `pytest -o addopts= -q` = 1027 passed, 1 skipped,
+  8 subtests passed, 4m59.69s, GREEN. The repo is not test-broken; the instrument is.
+- Key finding 1: the 10-stage convergence loop is prose only (BARROT-12AM-MASTER.md),
+  0 code hits for TRANSFER_SUCCESS / anti_cheat_passed / AXIOM_FORGE. Anti-Cheat is
+  self-interrogation, not an executed ablation. Variant scores 37 / 69 / 82 / 95.
+- Key finding 2: pytest.ini --cov-fail-under=70 + -v makes every scoped run exit
+  non-zero (4 files = 14.15% coverage, 72/72 pass) and corrupts transmute.py scoring.
+- Key finding 3: 10 byte-identical dup pairs, 3 near-clones (_btc 70-88%), 21 untested
+  top-level modules (11 mcp_*), 95/120 scripts untested, 16 zero-byte root files.
+- No `work` branch exists — only main.
+- Next step: fix pytest.ini/transmute scoring (minutes), then build loop V2 Witness
+  (CLAIM -> WITNESS -> LOG), then resolve memory precedence.
+
+## 2026-11-17 — PHASE 1 COMPLETE: scoring fixed
+- What I did: found the gate declared twice (pytest.ini --cov-fail-under=70 AND
+  pyproject [tool.coverage.report] fail_under=70). Benchmarked 4 scoring strategies
+  on the same 4 files (2 repeats each), applied the winner.
+- Winner: v1_no_cov (rc=0, 7.1s) over v0_current (rc=1, 32.7s), v2_split_gate
+  (rc=1, 21.8s), v3_ignore_exit (rc=1, 35.3s).
+- Changes: pytest.ini gate removed; pyproject fail_under 70 -> 0; ci.yml full-suite
+  step now owns the 70% gate (measured 77.57% on the full suite, so satisfiable);
+  transmute.py gets --no-cov, adaptive tie band max(100ms, measured jitter), and
+  aborts on a missing --tests path instead of silently scoring 0%.
+- Proof: scoped run rc 1 -> 0 (72 passed, 17.7s); transmute candidate wall
+  32.7s -> 3.9s; negative control v_break.py parsed 71/72 and was rejected.
+- Correction to my earlier claim: the gate did NOT zero the score (rate parsed
+  72/72 = 1.0 regardless). Real damage was rc=1 + 4.6x wall inflation + 7.2s
+  jitter against a 100ms tie band.
+- Next step: PHASE 2 dedupe (10 byte-identical pairs, import shims first).
+
+## 2026-11-17 — prompt bundle staged (not executed)
+- Created scripts/bundle_next_phases.py (STUB: only mkdir + print, creates nothing),
+  prompts/phase2_dedupe.md, prompts/phase3_cleanup.md, prompts/meta_re_and_mmi.md.
+- Phase 1 is DONE (5792fa8). Phases 2, 3 and META/MMI are queued, not started.
+- Deferred deliberately: prompts/meta_re_and_mmi.md section 4 rewrites
+  .opencode/agent/barrot.md (my own system prompt). Not applied yet.
