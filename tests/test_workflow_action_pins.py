@@ -38,7 +38,7 @@ APPROVED_ACTION_SHAS = {
     "cloudflare/wrangler-action": "953926a2e2182532811c01a25e53647d93bf07c0",
     "databricks/setup-cli": "9625fdde9ba2607df0087e0d3ec7449198bf2180",
 }
-ACTION_LINE = re.compile(r"^\s*uses:\s*(?P<reference>\S+)(?:\s+#\s*(?P<annotation>.*))?$")
+ACTION_LINE = re.compile(r"^\s*(?:-\s*)?uses:\s*(?P<reference>\S+)(?:\s+#\s*(?P<annotation>.*))?$")
 
 
 def test_reviewed_workflows_use_only_approved_immutable_action_commits():
