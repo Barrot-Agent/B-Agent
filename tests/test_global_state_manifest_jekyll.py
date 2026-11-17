@@ -32,6 +32,11 @@ def test_ci_validates_pages_build_on_pull_requests_without_deployment():
     assert "  pages-build:" in text
     assert "if: github.event_name == 'pull_request'" in text
     assert re.search(r"(?m)^\s+uses: actions/jekyll-build-pages@[0-9a-f]{40} # v1\s*$", text)
-    assert "test -s ./_site/GLOBAL_STATE_MANIFEST.html" in text
+    config = Path(__file__).resolve().parents[1] / "_config.yml"
+    config_text = config.read_text(encoding="utf-8")
+    assert re.search(r"(?m)^\\s*-\\s*GLOBAL_STATE_MANIFEST\\.md\\s*$", config_text)
+    assert "test -s ./GLOBAL_STATE_MANIFEST.md" in text
+    assert "test ! -e ./_site/GLOBAL_STATE_MANIFEST.html" in text
+    assert "test ! -e ./_site/GLOBAL_STATE_MANIFEST.md" in text
     assert "actions/deploy-pages" not in text
     assert "upload-pages-artifact" not in text

@@ -83,6 +83,7 @@ jobs:
             tests/test_pillars_check_readonly.py \
             tests/test_xrp_research_artifact.py \
             tests/test_xrp_run224_reconciliation.py \
+            tests/test_global_state_manifest_jekyll.py \
             tests/test_xrp_receipt_chain.py \
             tests/test_forecast_ledger.py \
             tests/test_point_in_time_features.py \
