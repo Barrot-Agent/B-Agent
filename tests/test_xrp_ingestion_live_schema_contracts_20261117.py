@@ -50,12 +50,13 @@ def test_xrp_insights_json_accepts_publisher_nested_fund_and_column_registries()
     assert "raw_only" in reason
 
 
-def test_xrp_insights_csv_accepts_nested_metadata_and_blank_initial_price_volume_fields():
+def test_xrp_insights_csv_accepts_nested_metadata_and_blank_unavailable_price_volume_fields():
     source_id = "xrp_etf_flows_csv"
-    metadata_payload = {"metadata": _xrp_insights_metadata(2)}
+    metadata_payload = {"metadata": _xrp_insights_metadata(3)}
     csv_text = (
         ",".join(CSV_COLUMNS) + "\n"
         "2025-12-01,XRP,Bitwise,1000,,,initial,1000,,,,settled\n"
+        "2025-12-02,XRP,Bitwise,1000,0,0,computed,1000,,,,settled\n"
         "2026-11-16,XRP,Bitwise,1000,0,0,computed,1000,1.00,10,10,settled\n"
     )
     records, source_as_of, eligible, reason = ingestion.PARSERS[source_id](
@@ -73,7 +74,7 @@ def test_xrp_insights_csv_accepts_nested_metadata_and_blank_initial_price_volume
     assert source_as_of is None
     assert eligible is False
     assert "hash_only_receipt" in records[0]["license_compliance"]
-    assert "raw_only" in reason
+    assert "research_only_aggregate" in reason
 
 
 def test_xrpr_issuer_parser_accepts_current_coinshares_physical_xrp_holding_label():
@@ -176,3 +177,22 @@ def test_provider_http_failure_uses_provider_reason_not_parser_detail():
     assert failure["http_status_code"] == 403
     assert failure["provider_reason"] == "Forbidden"
     assert "failure_detail" not in failure
+
+
+
+def test_xrp_insights_csv_rejects_partial_price_volume_fields():
+    source_id = "xrp_etf_flows_csv"
+    metadata_payload = {"metadata": _xrp_insights_metadata(1)}
+    csv_text = (
+        ",".join(CSV_COLUMNS) + "\n"
+        "2026-11-16,XRP,Bitwise,1000,0,0,computed,1000,1.00,,10,settled\n"
+    )
+    with pytest.raises(ingestion.XRPIngestionError, match="all present or all blank"):
+        ingestion.PARSERS[source_id](
+            {"csv_text": csv_text},
+            source_id=source_id,
+            url=dict(ingestion.ENDPOINTS)[source_id],
+            digest="f" * 64,
+            captured=CAPTURED,
+            metadata_payload=metadata_payload,
+        )

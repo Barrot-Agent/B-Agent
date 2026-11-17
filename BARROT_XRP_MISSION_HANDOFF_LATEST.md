@@ -7816,7 +7816,7 @@ The read-only ingestion run [44194148689](https://github.com/Barrot-Agent/B-Agen
 The Run227 integration commit updates the existing ingestion module and regression tests:
 
 1. XRP Insights publishes `funds` and `columns` inside its `metadata` object. The JSON/CSV parsers now read that documented nested registry while retaining legacy top-level compatibility.
-2. The CSV's initial settled fund row legitimately has blank close-price and volume fields. The parser now accepts all three blank together only for a settled initial row; partial blanks or blanks on other row types remain rejected.
+2. The publisher leaves all three ETF share-price/volume fields blank on some settled rows, including computed-flow rows. The parser now preserves all-three-blank as missing on any row; partial blanks remain rejected.
 3. The current REX-Osprey page labels its indirect holding `CoinShares Physical XRP`, not the old exact phrase `CoinShares XRP ETP`. The identity gate now accepts the current official holding label while preserving raw-only status.
 4. The old Bitwise vanity URL redirects to the official canonical page. Ingestion now uses `https://www.bitwiseetfs.com/single-asset/xrp` directly and allowlists the canonical host; redirects remain blocked globally.
 5. Morpho's documented public liquidity response contains four string fields and does not echo chain or market IDs. The adapter now validates the exact Base cbXRP/USDC market selector in the request path, validates any echoed identity, and does not require undocumented response fields.
@@ -7868,3 +7868,62 @@ No main write, merge, source-PR closure, deployment, secret rotation, Space rest
 4. Complete the 67-workflow/transitive-script semantic review and obtain independent review.
 5. Resolve Pages deployment and branch-protection evidence before considering merge.
 6. Build multi-venue point-in-time history, source independence and outcome labels; then evaluate leakage-safe walk-forward baselines, calibration and shadow readiness. Directional forecasts remain disabled.
+
+
+## Run 228 supplement — 2026-11-17 23:36 UTC: ingestion outcome and CSV missingness correction
+
+### Run227 code-head verification
+
+- Code/test commit `7612783d2d8763e65338c93e1ef43c7fff4ffd51` completed its targeted test job: 758 passed, 8 subtests passed.
+- Full-suite run [44200190875](https://github.com/Barrot-Agent/B-Agent/actions/runs/44200190875) failed on one new test assertion: **4,255 passed, 1 failed, 1 skipped, 11 warnings, 19 subtests passed**, 124.88 seconds, 68.12% coverage. The test incorrectly expected a `raw_only` reason; the parser correctly returned a `research_only_aggregate` status because the publisher terms prohibit retaining the full CSV/row-level dataset. This was a test expectation defect, not a parser exception.
+- Dependency audit [44200190772](https://github.com/Barrot-Agent/B-Agent/actions/runs/44200190772) passed. Fail-closed gate [44200190862](https://github.com/Barrot-Agent/B-Agent/actions/runs/44200190862) passed. Pages validation passed. These do not override the full-suite failure.
+
+### Run227 ingestion result
+
+The push-triggered public ingestion [44200190839](https://github.com/Barrot-Agent/B-Agent/actions/runs/44200190839) completed successfully on `7612783`:
+
+- 32 receipts: 20 raw payloads retained, 12 digest-only.
+- Cross-run receipt chain sequence 5; continuity verified; external anchor NOT_ANCHORED.
+- 16 source failures: eight Binance HTTP 451, five Bybit HTTP 403, two processing errors, one Grayscale HTTP 429.
+- The XRP Insights JSON, REX-Osprey XRPR, Bitwise canonical issuer page and Morpho liquidity adapters now pass their processing gates. The remaining processing failures are XRP Insights CSV and Franklin XRPZ.
+- The CSV failure detail showed that the publisher also leaves all three ETF share-price/volume fields blank on some settled rows with computed flows, not only on a fund's initial row. The JSON publisher feed confirms this. The CSV itself remains hash-only under the publisher's terms; no full CSV was retained.
+- Franklin's failure detail remains `Franklin XRPZ issuer-page identity or holdings markers are missing`. Its raw page is hash-only; do not weaken the identity gate without a verified raw/public contract.
+
+### Executed CSV correction — exact-head CI pending
+
+The next integration commit broadens the CSV rule narrowly:
+
+- All three share-price/volume fields blank together are preserved as missing on any row.
+- Partial blanks remain rejected.
+- Missing values are never converted to zero.
+- The test now includes a computed-flow row with missing price/volume and a separate negative test for partial blanks.
+- The aggregate remains research-only; no row-level CSV data is persisted or admitted to the feature store.
+
+### Latest synchronized spot and book snapshot
+
+The latest feature-store snapshot `96794cf77890b0e64df0ede20a02b691d75207c533d75ada2a6312654105eb63` has event times 23:32:26–30 UTC and was known by 23:32:37 UTC. Three USD/USDT-normalized venues converged within approximately 0.029%:
+
+| Venue | Mid | 24h XRP volume | Spread | Depth within ±100 bps |
+|---|---:|---:|---:|---:|
+| Coinbase | $0.985300 | 85.981M | 2.030 bps | $4.028M bids / $2.193M asks |
+| Kraken | $0.985015 | 40.925M | 0.102 bps | $2.052M bids / $2.076M asks |
+| OKX | $0.985069 USD-normalized | 35.095M | 1.114 bps | 1.399M USDT bids / 1.585M USDT asks |
+| Bitbank | ¥157.1695 | 4.919M | 0.064 bps | ¥53.213M bids / ¥24.230M asks |
+
+The OKX USD normalization uses same-venue USDT/USD top-of-book and remains one publisher-independence group. Do not sum the venues' depth or mix USD, USDT and JPY. Coinbase is bid-heavy, Kraken is near-balanced, OKX is modestly ask-heavy and Bitbank is bid-heavy; this is not a consolidated directional signal.
+
+- The latest feature snapshot has 104 eligible records, 361 excluded, 10 source IDs and four publisher groups. Five snapshots contain 2,114 feature records.
+- The event timeline remains 140 events / 107 scenarios, receipt_complete=false, model_eligible=false, probabilities=null and forecast_status=NOT_ISSUED.
+- No directional forecast was issued.
+
+### Current governance
+
+PR #1663 remains the only active integration PR. It remains draft, with zero formal reviews and zero review threads. Main SHA remains `c54447c320ba2efd783659c7685e969de45e90b0`; main was not modified. The Pages deployment side effect, branch-protection evidence gap, self-only CODEOWNERS and incomplete 67-workflow review remain merge blockers. No PR was merged or closed.
+
+### Next action
+
+1. Verify the corrected CSV parser and test on the new exact head with the entire repository suite.
+2. Re-run public ingestion and confirm only the Franklin parser remains as a source-processing error, if its page contract is still unchanged.
+3. Inspect the Franklin page via lawful public/issuer evidence without retaining restricted raw content.
+4. Keep all Binance/Bybit restrictions fail-closed.
+5. Preserve the forecast gate until receipt completeness, point-in-time labels, independent source groups, leakage-safe walk-forward results and calibration are sufficient.

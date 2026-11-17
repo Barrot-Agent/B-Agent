@@ -3297,10 +3297,9 @@ def _raw_only_xrp_insights_etf_csv(
         volume_usd_text = row.get("volume_usd", "").strip()
         market_fields = (close_price_text, shares_text, volume_usd_text)
         if not any(market_fields):
-            if flow_status != "initial" or row_status != "settled":
-                raise XRPIngestionError(
-                    "XRP Insights price and volume fields may be blank only on a settled initial row"
-                )
+            # XRP Insights leaves ETF share-price/volume fields blank for some
+            # settled history rows when those market observations are unavailable.
+            # Preserve that missingness; do not convert it to zero.
             close_price_usd = volume_shares = volume_usd = None
         elif any(not value for value in market_fields):
             raise XRPIngestionError("XRP Insights price and volume fields must be all present or all blank")
