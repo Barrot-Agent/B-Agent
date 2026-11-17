@@ -1,0 +1,93 @@
+{
+  "built_at": "2026-11-17",
+  "formula": "log10(demand+1) * speed_factor(hours) / log10(competition+10)",
+  "disclosure": "Competition and demand are fetched counts, not market size. npm downloads measure the adjacent ecosystem, not willingness to pay. Hours are estimates.",
+  "unreachable_sources": [
+    "Product Hunt: needs an API token",
+    "Etsy: needs an API key",
+    "Gumroad search: client-rendered, no public count",
+    "Kaggle: needs credentials"
+  ],
+  "products": [
+    {
+      "id": "evidence-audit-mcp",
+      "name": "Evidence Audit MCP",
+      "format": "MCP server, source licence plus hosted tier",
+      "problem": "agents cite sources without checking that quotes exist or that a DOI is retracted",
+      "buyer": "AI engineering teams shipping research features",
+      "demand_package": "@modelcontextprotocol/sdk",
+      "hours": 6,
+      "competition_repos": 7016,
+      "competition_source": "github repository count: claims verification",
+      "demand": 90522817,
+      "demand_source": "npm last-week downloads: @modelcontextprotocol/sdk",
+      "score": 1.4479,
+      "status": "Q",
+      "rank": 1
+    },
+    {
+      "id": "retraction-watchlist",
+      "name": "Retracted DOI Watchlist",
+      "format": "dataset plus refresh script",
+      "problem": "pipelines cite retracted papers with no detection",
+      "buyer": "research tooling and literature-review products",
+      "demand_package": null,
+      "hours": 2,
+      "competition_repos": 649,
+      "competition_source": "github repository count: retraction",
+      "demand": 7016,
+      "demand_source": "github repository count proxy: claims verification",
+      "score": 1.3644,
+      "status": "Q",
+      "rank": 2
+    },
+    {
+      "id": "trace5-template-pack",
+      "name": "TRACE-5 Research Kit",
+      "format": "markdown templates, CLI, worked examples",
+      "problem": "research notes that cannot be audited or reproduced",
+      "buyer": "analysts and technical writers who must show sources",
+      "demand_package": null,
+      "hours": 3,
+      "competition_repos": 7016,
+      "competition_source": "github repository count: claims verification",
+      "demand": 20253,
+      "demand_source": "github repository count proxy: llm eval",
+      "score": 1.1195,
+      "status": "Q",
+      "rank": 3
+    },
+    {
+      "id": "mcp-starter-audit",
+      "name": "MCP Server Audit Template",
+      "format": "template repo, tests, checklist",
+      "problem": "MCP servers shipped without startup, refusal or path-escape tests",
+      "buyer": "developers publishing MCP servers",
+      "demand_package": "@modelcontextprotocol/sdk",
+      "hours": 5,
+      "competition_repos": 192462,
+      "competition_source": "github repository count: mcp server",
+      "demand": 90522817,
+      "demand_source": "npm last-week downloads: @modelcontextprotocol/sdk",
+      "score": 1.054,
+      "status": "Q",
+      "rank": 4
+    },
+    {
+      "id": "workflow-doctor",
+      "name": "Workflow Doctor",
+      "format": "CLI plus GitHub Action",
+      "problem": "CI failures caused by optional imports and Jekyll-hostile markdown",
+      "buyer": "maintainers of Python repos with docs builds",
+      "demand_package": "action-validator",
+      "hours": 4,
+      "competition_repos": 1896,
+      "competition_source": "github repository count: github actions lint",
+      "demand": 402,
+      "demand_source": "npm last-week downloads: action-validator",
+      "score": 0.7943,
+      "status": "Q",
+      "rank": 5
+    }
+  ]
+}

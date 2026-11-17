@@ -32,7 +32,6 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/DEPENDENCY_MICRO_INGESTION_README.md - 🐍 Dependency Micro-Ingestion System
 - docs/DEVELOPMENT.md - Development Guide
 - docs/DOCS_INGESTION_README.md - 📚 Documentation Ingestion System
-- docs/domains/EIGHT-DOMAINS.md - Eight domains under TRACE-5
 - docs/DYNAMIC_CHARACTER_SEARCH_IMPLEMENTATION.md - Dynamic Character Figure Search Implementation Guide
 - docs/EMAIL_FEATURE_SUMMARY.md - Email Intelligence Feature - Implementation Summary
 - docs/EMAIL_PROCESSING_GUIDE.md - 📧 Email Intelligence Processing Guide
@@ -84,14 +83,23 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 
 - docs/fields/track-01-cymatics.md - Track 1 - Cymatics
 
+## docs/mcp
+
+- docs/mcp/LISTING.md - Listing Barrot as a server: what WebMCP is, and what to actually publish
+
 ## docs/millennium
 
 - docs/millennium/CYCLE-01.md - Millennium cycle 01: database audit, Poincare verified, six gaps
 - docs/millennium/hodge-cycle.md - Hodge under TRACE-5: four quoted claims, one excluded assertion
 - docs/millennium/RE-V2.md - Reverse-engineering v2: what v1 actually did, and what replaced it
 
+## docs/money
+
+- docs/money/PRODUCTS.md - Money cycle: products, bounties, listing
+
 ## docs/ops
 
+- docs/ops/BLOCKERS.md - Blocker re-audit
 - docs/ops/FIX-CYCLE.md - Fix cycle: workflows, server, go audit
 - docs/ops/MCP-SERVER.md - MCP server: spec fetched, five tools, three real
 
@@ -109,3 +117,4 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/synthesis/cross-domain-audit.md - Cross-domain audit
 - docs/synthesis/cross-domain-convergence.md - Cross-domain synthesis and convergence
 - docs/synthesis/paradigm-cycle-01.md - Paradigm cycle 01: cross-analysis, bounded
+

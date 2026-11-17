@@ -1,0 +1,222 @@
+{
+  "built_at": "2026-11-17",
+  "method": "Crossref updates:<doi> lookup for every DOI string in data/**/*.json",
+  "cited_dois": 15,
+  "retracted": [
+    {
+      "doi": "10.1007/s11277-021-09072-0",
+      "retracted": true,
+      "notices": [
+        {
+          "notice_doi": "10.1007/s11277-021-09072-0",
+          "notice_title": "RETRACTED ARTICLE: Deep Reinforcement Learning-Based Smart Manufacturing Plants with a Novel Digital Twin Training Model",
+          "update_type": "retraction"
+        },
+        {
+          "notice_doi": "10.1007/s11277-021-09072-0",
+          "notice_title": "RETRACTED ARTICLE: Deep Reinforcement Learning-Based Smart Manufacturing Plants with a Novel Digital Twin Training Model",
+          "update_type": "retraction"
+        }
+      ],
+      "cited_in": [
+        "data/research/retracted_dois.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    },
+    {
+      "doi": "10.1177/1758835919874651",
+      "retracted": true,
+      "notices": [
+        {
+          "notice_doi": "10.1177/17588359211061903",
+          "notice_title": "Retraction notice: Downregulation of long noncoding RNA LINC01419 inhibits cell migration, invasion, and tumor growth and promotes autophagy via inactivation of the PI3K/Akt1/mTOR pathway in gastric cancer.",
+          "update_type": "retraction"
+        },
+        {
+          "notice_doi": "10.1177/17588359211061903",
+          "notice_title": "Retraction notice: Downregulation of long noncoding RNA LINC01419 inhibits cell migration, invasion, and tumor growth and promotes autophagy via inactivation of the PI3K/Akt1/mTOR pathway in gastric cancer.",
+          "update_type": "retraction"
+        }
+      ],
+      "cited_in": [
+        "data/research/retracted_dois.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    },
+    {
+      "doi": "10.1538/expanim.54.1",
+      "retracted": true,
+      "notices": [
+        {
+          "notice_doi": "10.1538/expanim.54.1.r1",
+          "notice_title": "Retraction: Effect of Treadmill Exercise on Bone Mass in Female Rats",
+          "update_type": "retraction"
+        }
+      ],
+      "cited_in": [
+        "data/research/retracted_dois.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    }
+  ],
+  "errors": [],
+  "entries": [
+    {
+      "doi": "10.1109/jproc.1998.658762",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/domains/eight_domains.json"
+      ]
+    },
+    {
+      "doi": "10.1007/978-3-642-22816-2_10",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/domains/eight_domains.json"
+      ]
+    },
+    {
+      "doi": "10.1016/0040-9383(62",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/millennium/claims/hodge_conjecture.json"
+      ]
+    },
+    {
+      "doi": "10.1137/0204037",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/millennium/claims/p_vs_np.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    },
+    {
+      "doi": "10.1145/1462153.1462156",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/millennium/claims/p_vs_np.json"
+      ]
+    },
+    {
+      "doi": "10.1145/1490270.1490272",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/millennium/claims/p_vs_np.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    },
+    {
+      "doi": "10.1006/jcss.1997.1494",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/millennium/claims/p_vs_np.json"
+      ]
+    },
+    {
+      "doi": "10.1515/9781400868056-003",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/research/consciousness_gr_qm.json"
+      ]
+    },
+    {
+      "doi": "10.1538/expanim.54.1.r1",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/research/retracted_dois.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    },
+    {
+      "doi": "10.1007/s11277-021-09072-0",
+      "retracted": true,
+      "notices": [
+        {
+          "notice_doi": "10.1007/s11277-021-09072-0",
+          "notice_title": "RETRACTED ARTICLE: Deep Reinforcement Learning-Based Smart Manufacturing Plants with a Novel Digital Twin Training Model",
+          "update_type": "retraction"
+        },
+        {
+          "notice_doi": "10.1007/s11277-021-09072-0",
+          "notice_title": "RETRACTED ARTICLE: Deep Reinforcement Learning-Based Smart Manufacturing Plants with a Novel Digital Twin Training Model",
+          "update_type": "retraction"
+        }
+      ],
+      "cited_in": [
+        "data/research/retracted_dois.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    },
+    {
+      "doi": "10.1177/1758835919874651",
+      "retracted": true,
+      "notices": [
+        {
+          "notice_doi": "10.1177/17588359211061903",
+          "notice_title": "Retraction notice: Downregulation of long noncoding RNA LINC01419 inhibits cell migration, invasion, and tumor growth and promotes autophagy via inactivation of the PI3K/Akt1/mTOR pathway in gastric cancer.",
+          "update_type": "retraction"
+        },
+        {
+          "notice_doi": "10.1177/17588359211061903",
+          "notice_title": "Retraction notice: Downregulation of long noncoding RNA LINC01419 inhibits cell migration, invasion, and tumor growth and promotes autophagy via inactivation of the PI3K/Akt1/mTOR pathway in gastric cancer.",
+          "update_type": "retraction"
+        }
+      ],
+      "cited_in": [
+        "data/research/retracted_dois.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    },
+    {
+      "doi": "10.1016/s0140-6736(10",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/research/retracted_dois.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    },
+    {
+      "doi": "10.1538/expanim.54.1",
+      "retracted": true,
+      "notices": [
+        {
+          "notice_doi": "10.1538/expanim.54.1.r1",
+          "notice_title": "Retraction: Effect of Treadmill Exercise on Bone Mass in Female Rats",
+          "update_type": "retraction"
+        }
+      ],
+      "cited_in": [
+        "data/research/retracted_dois.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    },
+    {
+      "doi": "10.1016/S0140-6736(97",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/research/retracted_dois.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    },
+    {
+      "doi": "10.1177/17588359211061903",
+      "retracted": false,
+      "notices": [],
+      "cited_in": [
+        "data/research/retracted_dois.json",
+        "data/research/retraction_fixtures.json"
+      ]
+    }
+  ]
+}

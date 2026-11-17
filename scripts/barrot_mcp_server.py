@@ -4,12 +4,14 @@
 Protocol source: modelcontextprotocol.io, specification 2025-06-18, server/tools.
 Quoted in data/mcp/spec_check.json by scripts/mcp_spec_check.py.
 
-Five tools:
+Seven tools:
   1. check_capability      real data: barrot_capability_audit.json
   2. run_foundry_cycle     refuses: no Foundry exists in this repo
   3. flight_recorder_replay honest refusal when fewer than two comparable runs exist
   4. reverse_engineer      claims-file summary over the TRACE-5 record
   5. trace5_validate       offline validation of a claims file
+  6. verdict_check         verdict structure gate
+  7. repo_guard            Liquid-hostile markdown and unguarded optional imports
 
 The original task spec was truncated at tool 4 and never contained tool 5. The
 contracts for 4 and 5 are reconstructions, documented as such; 1-3 follow the
@@ -86,6 +88,25 @@ TOOLS = [
             "required": ["claims_file"],
         },
     },
+    {
+        "name": "verdict_check",
+        "title": "Check a verdict document",
+        "description": "Require a verdict letter, a falsifier, an upgrade condition and a stated limit before a verdict is publishable.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"verdict_file": {"type": "string", "description": "Path relative to the repository root"}},
+            "required": ["verdict_file"],
+        },
+    },
+    {
+        "name": "repo_guard",
+        "title": "Guard docs and optional imports",
+        "description": "Find Liquid-hostile markdown that Jekyll would parse and test modules that import optional dependencies without a guard.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"root": {"type": "string", "description": "Directory relative to the repository root"}},
+        },
+    },
 ]
 
 
@@ -153,6 +174,68 @@ def reverse_engineer(claims_file: str) -> dict:
     }
 
 
+def verdict_check(verdict_file: str) -> dict:
+    import importlib.util
+
+    path = _resolve(verdict_file)
+    spec = importlib.util.spec_from_file_location("verdict_gate", ROOT / "scripts" / "verdict_gate.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    problems = module.check_text(path.read_text(encoding="utf-8"))
+    return {"verdict_file": verdict_file, "passes": not problems, "problems": problems}
+
+
+def repo_guard(root: str = ".") -> dict:
+    import re
+
+    base = _resolve(root)
+    excludes: list[str] = []
+    config = ROOT / "_config.yml"
+    if config.exists():
+        for line in config.read_text(encoding="utf-8").splitlines():
+            stripped = line.strip()
+            if stripped.startswith("- "):
+                excludes.append(stripped[2:].strip())
+
+    liquid: list[dict] = []
+    raw = re.compile(r"\{%\s*raw\s*%\}.*?\{%\s*endraw\s*%\}", re.DOTALL)
+    # Scope comes from the two observed Jekyll failures: a file at the repository
+    # root and a file under docs/. Other directories are copied untouched, so a
+    # brace there is not a build risk. This keeps the guard from crying wolf.
+    candidates = list(base.glob("*.md")) + list((base / "docs").rglob("*.md"))
+    for path in sorted(candidates):
+        relative = path.relative_to(ROOT).as_posix()
+        if relative in excludes or ".git" in path.parts:
+            continue
+        text = raw.sub("", path.read_text(encoding="utf-8", errors="ignore"))
+        if "{{" in text:
+            line = next(i for i, row in enumerate(text.splitlines(), 1) if "{{" in row)
+            liquid.append({"file": relative, "line": line})
+
+    unguarded: list[dict] = []
+    optional = ("scipy", "numpy", "torch", "pandas")
+    guard = re.compile(r"importorskip|try:\s*\n\s*import|#\s*noqa", re.IGNORECASE)
+    tests_dir = base / "tests"
+    for path in sorted(tests_dir.rglob("test_*.py")):
+        relative_parts = path.relative_to(tests_dir).parts
+        if "fixtures" in relative_parts:
+            continue  # fixtures exist to be flagged by the fixture test, not by this scan
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        if guard.search(text):
+            continue
+        for name in optional:
+            if re.search(rf"^\s*(?:from\s+{name}|import\s+{name})", text, re.MULTILINE):
+                unguarded.append({"file": path.relative_to(ROOT).as_posix(), "module": name})
+
+    return {
+        "root": root,
+        "liquid_hostile": liquid,
+        "unguarded_optional_imports": unguarded,
+        "clean": not liquid and not unguarded,
+        "excluded_from_liquid_scan": excludes,
+    }
+
+
 def trace5_validate(claims_file: str) -> dict:
     import importlib.util
 
@@ -169,6 +252,8 @@ HANDLERS = {
     "flight_recorder_replay": lambda args: flight_recorder_replay(args["mission_id"], args["skill_version"]),
     "reverse_engineer": lambda args: reverse_engineer(args["claims_file"]),
     "trace5_validate": lambda args: trace5_validate(args["claims_file"]),
+    "verdict_check": lambda args: verdict_check(args["verdict_file"]),
+    "repo_guard": lambda args: repo_guard(args.get("root", ".")),
 }
 
 

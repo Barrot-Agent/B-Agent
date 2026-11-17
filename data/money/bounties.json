@@ -1,0 +1,3214 @@
+{
+  "built_at": "2026-11-17",
+  "queries": [
+    "is:issue is:open label:bounty",
+    "is:issue is:open bounty in:body",
+    "is:issue is:open bounty language:Go",
+    "is:issue is:open bounty language:Python",
+    "is:issue is:open \"USDC\" bounty"
+  ],
+  "records": 137,
+  "grades": {
+    "Q": 0,
+    "E": 59,
+    "X": 78
+  },
+  "records_list": [
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4369,
+      "title": "[Bounty] [Escrowed $600 USDC] Align WGSL constant-eval Horner polynomial rounding with ru",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4369",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-17T19:54:33Z",
+      "amount_usd": 600,
+      "amount_literal": "$600",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "python",
+        "ci"
+      ],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4370,
+      "title": "[Bounty] [Escrowed $450 USDC] Correct packet frame boundary clamp and 0.5-ULP FMA range-r",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4370",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-17T19:54:34Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "python",
+        "ci"
+      ],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "Clawland-AI/picclaw",
+      "number": 36,
+      "title": "Chinese documentation bounty: remaining scope, AI assistance and CNY payout",
+      "url": "https://github.com/Clawland-AI/picclaw/issues/36",
+      "labels": [],
+      "created": "2026-10-31T18:38:44Z",
+      "amount_usd": 150,
+      "amount_literal": "USD 150",
+      "amount_source": "body",
+      "repo_stars": 7,
+      "repo_age_days": 276,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 7 stars / 276 days old",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4358,
+      "title": "[Bounty] Bounty $150: capture adapter for Front",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4358",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-16T02:03:38Z",
+      "amount_usd": 150,
+      "amount_literal": "$150",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "cli"
+      ],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4301,
+      "title": "[Bounty] \ud83e\ude99 Bounty: Improve project documentation",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4301",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-10T21:34:21Z",
+      "amount_usd": 100,
+      "amount_literal": "$100",
+      "amount_source": "body",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4300,
+      "title": "[Bounty] \ud83e\ude99 Bounty: Improve project documentation",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4300",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-10T21:34:21Z",
+      "amount_usd": 100,
+      "amount_literal": "$100",
+      "amount_source": "body",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4303,
+      "title": "[Bounty] \ud83e\ude99 Bounty: Improve project documentation",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4303",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-10T21:34:22Z",
+      "amount_usd": 100,
+      "amount_literal": "$100",
+      "amount_source": "body",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4304,
+      "title": "[Bounty] \ud83e\ude99 Bounty: Improve project documentation",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4304",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-10T21:34:23Z",
+      "amount_usd": 100,
+      "amount_literal": "$100",
+      "amount_source": "body",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4299,
+      "title": "[Bounty] \ud83e\ude99 Bounty: Improve project documentation",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4299",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-10T21:34:20Z",
+      "amount_usd": 100,
+      "amount_literal": "$100",
+      "amount_source": "body",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4356,
+      "title": "[Bounty] Bounty $100: capture adapter for Gorgias",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4356",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-16T02:03:37Z",
+      "amount_usd": 100,
+      "amount_literal": "$100",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4357,
+      "title": "[Bounty] Bounty $100: capture adapter for Intercom",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4357",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-16T02:03:38Z",
+      "amount_usd": 100,
+      "amount_literal": "$100",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4344,
+      "title": "[Bounty] \ud83e\ude99 [Web3] [$25 USDC Bounty] Chain-Feed Control-Plane Mismatc",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4344",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-15T11:06:49Z",
+      "amount_usd": 25,
+      "amount_literal": "$25",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4343,
+      "title": "[Bounty] \ud83e\ude99 [Web3] [$25 USDC Bounty] Chain-Feed Control-Plane Mismatc",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4343",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-15T11:06:49Z",
+      "amount_usd": 25,
+      "amount_literal": "$25",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4345,
+      "title": "[Bounty] \ud83e\ude99 [Web3] [$25 USDC Bounty] Chain-Feed Control-Plane Mismatc",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4345",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-15T11:06:50Z",
+      "amount_usd": 25,
+      "amount_literal": "$25",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4350,
+      "title": "[Bounty] [$25 USDC Bounty] Chain-Feed Control-Plane Mismatch #2 \u2014 Ethereum Mainnet (>=$25",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4350",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-15T11:06:53Z",
+      "amount_usd": 25,
+      "amount_literal": "$25",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4351,
+      "title": "[Bounty] [$25 USDC Bounty] Chain-Feed Control-Plane Mismatch #1 \u2014 Ethereum Mainnet (>=$25",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4351",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-15T11:06:54Z",
+      "amount_usd": 25,
+      "amount_literal": "$25",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4346,
+      "title": "[Bounty] \ud83e\ude99 [Web3] [$25 USDC Bounty] Live Chain-Feed Drift Catch (53 ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4346",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-15T11:06:51Z",
+      "amount_usd": 25,
+      "amount_literal": "$25",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4349,
+      "title": "[Bounty] [$25 USDC Bounty] Chain-Feed Control-Plane Mismatch #3 \u2014 Base (8453) or Arbitrum",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4349",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-15T11:06:53Z",
+      "amount_usd": 25,
+      "amount_literal": "$25",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4348,
+      "title": "[Bounty] [$25 USDC Bounty] Live Chain-Feed Drift Catch (53 Indexed Protocols) or 4th Unin",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4348",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-15T11:06:52Z",
+      "amount_usd": 25,
+      "amount_literal": "$25",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "amount literal, but repo only 13 stars / 132 days old",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "FreezingMoon/AncientBeast",
+      "number": 3252,
+      "title": "OpenCollective banners eagerly loads redundant avatars on match start for hidden views [bounty: 40 XTR]",
+      "url": "https://github.com/FreezingMoon/AncientBeast/issues/3252",
+      "labels": [
+        "coding",
+        "bounty"
+      ],
+      "created": "2026-11-17T12:35:20Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 1893,
+      "repo_age_days": 5597,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "OphirPay/OphirPay",
+      "number": 1997,
+      "title": "docs(setup): add step-by-step instructions for running a local Stellar Standalone container",
+      "url": "https://github.com/OphirPay/OphirPay/issues/1997",
+      "labels": [
+        "documentation",
+        "good first issue",
+        "bounty",
+        "\ud83d\udcdd docs",
+        "difficulty: easy"
+      ],
+      "created": "2026-11-17T11:35:52Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 108,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "OphirPay/OphirPay",
+      "number": 1979,
+      "title": "ci(typescript): add GitHub Actions step to verify TypeScript types without emitting JS",
+      "url": "https://github.com/OphirPay/OphirPay/issues/1979",
+      "labels": [
+        "good first issue",
+        "ci",
+        "bounty",
+        "difficulty: easy",
+        "github_actions"
+      ],
+      "created": "2026-11-17T11:08:38Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 108,
+      "archived": false,
+      "skill_match": [
+        "workflow",
+        "ci",
+        "github action"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "OphirPay/OphirPay",
+      "number": 1964,
+      "title": "test(contracts): add Rust unit test verifying spending limit enforcement across multiple payments",
+      "url": "https://github.com/OphirPay/OphirPay/issues/1964",
+      "labels": [
+        "good first issue",
+        "contracts",
+        "tests",
+        "bounty",
+        "difficulty: easy",
+        "rust"
+      ],
+      "created": "2026-11-17T10:49:05Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 108,
+      "archived": false,
+      "skill_match": [
+        "go",
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "OphirPay/OphirPay",
+      "number": 1946,
+      "title": "feat(api): add Zod schema validation capping batch payment recipients to 100 per request",
+      "url": "https://github.com/OphirPay/OphirPay/issues/1946",
+      "labels": [
+        "good first issue",
+        "backend",
+        "bounty",
+        "difficulty: easy"
+      ],
+      "created": "2026-11-17T10:21:29Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 108,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "OphirPay/OphirPay",
+      "number": 1919,
+      "title": "test(format): add unit tests for `formatStellarAmount` boundary values",
+      "url": "https://github.com/OphirPay/OphirPay/issues/1919",
+      "labels": [
+        "good first issue",
+        "tests",
+        "bounty",
+        "difficulty: easy"
+      ],
+      "created": "2026-11-17T09:49:39Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 108,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "OphirPay/OphirPay",
+      "number": 1895,
+      "title": "feat(ui): add search and memo filter in ScheduledPaymentsList",
+      "url": "https://github.com/OphirPay/OphirPay/issues/1895",
+      "labels": [
+        "good first issue",
+        "frontend",
+        "bounty",
+        "difficulty: easy"
+      ],
+      "created": "2026-11-17T08:27:22Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 108,
+      "archived": false,
+      "skill_match": [
+        "cli"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "OphirPay/OphirPay",
+      "number": 1894,
+      "title": "feat(ui): add copy-to-clipboard feedback tooltip on recipient addresses in BatchConfirmDialog",
+      "url": "https://github.com/OphirPay/OphirPay/issues/1894",
+      "labels": [
+        "good first issue",
+        "frontend",
+        "bounty",
+        "difficulty: easy"
+      ],
+      "created": "2026-11-17T08:26:24Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 108,
+      "archived": false,
+      "skill_match": [
+        "cli"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "OphirPay/OphirPay",
+      "number": 1893,
+      "title": "feat(a11y): add keyboard navigation and ARIA attributes to AssetSelector modal",
+      "url": "https://github.com/OphirPay/OphirPay/issues/1893",
+      "labels": [
+        "good first issue",
+        "frontend",
+        "accessibility",
+        "bounty",
+        "difficulty: easy"
+      ],
+      "created": "2026-11-17T08:25:36Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 108,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "janzeerOrg/janzeer-sdk-kotlin",
+      "number": 8,
+      "title": "[20 JNZ] Java example: watch new blocks",
+      "url": "https://github.com/janzeerOrg/janzeer-sdk-kotlin/issues/8",
+      "labels": [
+        "documentation",
+        "help wanted",
+        "good first issue",
+        "bounty"
+      ],
+      "created": "2026-11-17T05:29:47Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 4,
+      "repo_age_days": 51,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "hanzoai/extension",
+      "number": 10,
+      "title": "Simplify the Chrome extension to a chatbot with in-browser capabilities",
+      "url": "https://github.com/hanzoai/extension/issues/10",
+      "labels": [
+        "bounty",
+        "bugfix"
+      ],
+      "created": "2026-11-17T02:36:12Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 4,
+      "repo_age_days": 591,
+      "archived": false,
+      "skill_match": [
+        "cli"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "hanzoai/hips",
+      "number": 18,
+      "title": "[HIP-1348] Umbrella Research Bounties: Reliable, Economical and Verifiable AI Infrastructure",
+      "url": "https://github.com/hanzoai/hips/issues/18",
+      "labels": [
+        "bounty",
+        "research"
+      ],
+      "created": "2026-11-16T23:45:25Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 4,
+      "repo_age_days": 84,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "paritytech/polkadot-sdk",
+      "number": 13772,
+      "title": "RFC: Multiple assets per bounty in `pallet-multi-asset-bounties`",
+      "url": "https://github.com/paritytech/polkadot-sdk/issues/13772",
+      "labels": [
+        "I5-enhancement",
+        "T2-pallets"
+      ],
+      "created": "2026-11-09T13:52:00Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 2810,
+      "repo_age_days": 1201,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "stellar-crucible/soroban-testkit",
+      "number": 175,
+      "title": "Implement Decentralized Bounty and Task Escrow worked example with multi-signature release",
+      "url": "https://github.com/stellar-crucible/soroban-testkit/issues/175",
+      "labels": [
+        "documentation",
+        "complexity:high"
+      ],
+      "created": "2026-11-12T19:44:10Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 13,
+      "repo_age_days": 40,
+      "archived": false,
+      "skill_match": [
+        "go",
+        "workflow",
+        "test",
+        "cli"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "paritytech/polkadot-sdk",
+      "number": 13787,
+      "title": "pallet-multi-asset-bounties: `fund_bounty` reverts at enactment when the treasury can't pay, losing the approved referendum",
+      "url": "https://github.com/paritytech/polkadot-sdk/issues/13787",
+      "labels": [
+        "I2-bug",
+        "T2-pallets"
+      ],
+      "created": "2026-11-10T12:15:11Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 2810,
+      "repo_age_days": 1201,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "ZecHub/zec-bounties",
+      "number": 609,
+      "title": "bug(nav): \"My Bounties\" menu link goes to /teams/bounties and shows \"Team not found\"",
+      "url": "https://github.com/ZecHub/zec-bounties/issues/609",
+      "labels": [],
+      "created": "2026-11-11T05:40:26Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 7,
+      "repo_age_days": 274,
+      "archived": false,
+      "skill_match": [
+        "cli"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "beclab/Olares",
+      "number": 4375,
+      "title": "bug Bounty",
+      "url": "https://github.com/beclab/Olares/issues/4375",
+      "labels": [],
+      "created": "2026-11-01T19:34:36Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 5363,
+      "repo_age_days": 932,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/s3",
+      "number": 32,
+      "title": "[Bounty #43] Adaptive object compression \u00b7 s3 (PolarStore)",
+      "url": "https://github.com/hanzoai/s3/issues/32",
+      "labels": [
+        "help wanted",
+        "perf",
+        "research",
+        "bounty"
+      ],
+      "created": "2026-11-16T23:44:47Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 4,
+      "repo_age_days": 301,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/s3",
+      "number": 33,
+      "title": "[Bounty #44] Predictive SSD failure detection \u00b7 s3 (FailureMiner)",
+      "url": "https://github.com/hanzoai/s3/issues/33",
+      "labels": [
+        "help wanted",
+        "research",
+        "bounty"
+      ],
+      "created": "2026-11-16T23:44:50Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 4,
+      "repo_age_days": 301,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/s3",
+      "number": 31,
+      "title": "[Bounty #42] Discard-versus-compaction economics \u00b7 s3 (DisCoGC)",
+      "url": "https://github.com/hanzoai/s3/issues/31",
+      "labels": [
+        "help wanted",
+        "perf",
+        "research",
+        "bounty"
+      ],
+      "created": "2026-11-16T23:44:44Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 4,
+      "repo_age_days": 301,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "ethereum-optimism/optimism",
+      "number": 23807,
+      "title": "Set bug bounty scope for interop",
+      "url": "https://github.com/ethereum-optimism/optimism/issues/23807",
+      "labels": [
+        "M-needs-triage"
+      ],
+      "created": "2026-10-30T17:16:28Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6495,
+      "repo_age_days": 2475,
+      "archived": false,
+      "skill_match": [],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "xeprotocol/xe",
+      "number": 359,
+      "title": "[Bug Bounty] PoW Infinite Loop DoS Vulnerability",
+      "url": "https://github.com/xeprotocol/xe/issues/359",
+      "labels": [],
+      "created": "2026-11-11T07:45:42Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 16,
+      "repo_age_days": 103,
+      "archived": false,
+      "skill_match": [
+        "python",
+        "test",
+        "cli"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "dymensionxyz/dymension",
+      "number": 2252,
+      "title": "x/agent: escrowed validation bounties \u2014 pay the validator for attested Validation-Registry work (x402 agents-paying-agents rail)",
+      "url": "https://github.com/dymensionxyz/dymension/issues/2252",
+      "labels": [
+        "ready",
+        "v5",
+        "c:agent"
+      ],
+      "created": "2026-11-07T12:14:03Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 393,
+      "repo_age_days": 1591,
+      "archived": false,
+      "skill_match": [
+        "go",
+        "golang",
+        "test",
+        "cli",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/cloud",
+      "number": 38,
+      "title": "[Bounty #48] Adaptive concurrency admission control \u00b7 cloud / s3",
+      "url": "https://github.com/hanzoai/cloud/issues/38",
+      "labels": [
+        "help wanted",
+        "bounty",
+        "research",
+        "perf",
+        "wave-1"
+      ],
+      "created": "2026-11-16T23:45:04Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 17,
+      "repo_age_days": 99,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/s3",
+      "number": 30,
+      "title": "[Bounty #41] Geo-aware object recovery and placement \u00b7 s3 (Apple ACOS)",
+      "url": "https://github.com/hanzoai/s3/issues/30",
+      "labels": [
+        "help wanted",
+        "perf",
+        "research",
+        "bounty"
+      ],
+      "created": "2026-11-16T23:44:41Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 4,
+      "repo_age_days": 301,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "xeprotocol/xe",
+      "number": 603,
+      "title": "Testnet XCU top-up request for bounty PoC (lease testing)",
+      "url": "https://github.com/xeprotocol/xe/issues/603",
+      "labels": [],
+      "created": "2026-11-16T10:34:41Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 16,
+      "repo_age_days": 103,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/vfs",
+      "number": 64,
+      "title": "[Bounty #7] Parallel delta restore \u00b7 vfs (ParaSync)",
+      "url": "https://github.com/hanzoai/vfs/issues/64",
+      "labels": [
+        "help wanted",
+        "perf",
+        "research",
+        "bounty"
+      ],
+      "created": "2026-11-16T23:42:59Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 193,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/vfs",
+      "number": 58,
+      "title": "[Bounty #1] Partial-write absorption \u00b7 vfs (WSBuffer)",
+      "url": "https://github.com/hanzoai/vfs/issues/58",
+      "labels": [
+        "help wanted",
+        "perf",
+        "research",
+        "bounty",
+        "wave-1"
+      ],
+      "created": "2026-11-16T23:42:41Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 193,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/cloud",
+      "number": 35,
+      "title": "[Bounty #18] Distributed prompt-locality scheduling \u00b7 cloud / Enso (Preble)",
+      "url": "https://github.com/hanzoai/cloud/issues/35",
+      "labels": [
+        "help wanted",
+        "bounty",
+        "research",
+        "perf"
+      ],
+      "created": "2026-11-16T23:43:34Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 17,
+      "repo_age_days": 99,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/cloud",
+      "number": 36,
+      "title": "[Bounty #34] Unified agent execution tracing \u00b7 cloud (OpenTelemetry GenAI)",
+      "url": "https://github.com/hanzoai/cloud/issues/36",
+      "labels": [
+        "help wanted",
+        "bounty",
+        "research",
+        "wave-1"
+      ],
+      "created": "2026-11-16T23:44:21Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 17,
+      "repo_age_days": 99,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/cloud",
+      "number": 40,
+      "title": "[Bounty #50] eBPF sandbox runtime enforcement \u00b7 visor / cloud (Tetragon)",
+      "url": "https://github.com/hanzoai/cloud/issues/40",
+      "labels": [
+        "help wanted",
+        "bounty",
+        "research",
+        "visor",
+        "security"
+      ],
+      "created": "2026-11-16T23:45:10Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 17,
+      "repo_age_days": 99,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/cloud",
+      "number": 34,
+      "title": "[Bounty #17] Quality-constrained model routing \u00b7 cloud / Enso (RouteLLM)",
+      "url": "https://github.com/hanzoai/cloud/issues/34",
+      "labels": [
+        "help wanted",
+        "bounty",
+        "research",
+        "perf",
+        "wave-1"
+      ],
+      "created": "2026-11-16T23:43:31Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 17,
+      "repo_age_days": 99,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "Clawland-AI/picclaw",
+      "number": 24,
+      "title": "bounty: edge reporter module",
+      "url": "https://github.com/Clawland-AI/picclaw/issues/24",
+      "labels": [],
+      "created": "2026-05-31T15:42:40Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 7,
+      "repo_age_days": 276,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/cloud",
+      "number": 39,
+      "title": "[Bounty #49] Verifiable agent-produced artifacts \u00b7 cloud / Forge (SLSA v1.2 + Cosign)",
+      "url": "https://github.com/hanzoai/cloud/issues/39",
+      "labels": [
+        "help wanted",
+        "bounty",
+        "research",
+        "security"
+      ],
+      "created": "2026-11-16T23:45:06Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 17,
+      "repo_age_days": 99,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/vfs",
+      "number": 68,
+      "title": "[Bounty #47] Machine-checkable storage specifications \u00b7 vfs (SYSSPEC)",
+      "url": "https://github.com/hanzoai/vfs/issues/68",
+      "labels": [
+        "help wanted",
+        "research",
+        "test",
+        "bounty",
+        "wave-1"
+      ],
+      "created": "2026-11-16T23:45:00Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 193,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/vfs",
+      "number": 66,
+      "title": "[Bounty #9] Virtualization-boundary fast IO \u00b7 visor (RosenBridge)",
+      "url": "https://github.com/hanzoai/vfs/issues/66",
+      "labels": [
+        "help wanted",
+        "perf",
+        "research",
+        "visor",
+        "bounty"
+      ],
+      "created": "2026-11-16T23:43:05Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 193,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/vfs",
+      "number": 65,
+      "title": "[Bounty #8] Transparent FUSE daemon recovery \u00b7 visor (Ananke)",
+      "url": "https://github.com/hanzoai/vfs/issues/65",
+      "labels": [
+        "help wanted",
+        "research",
+        "visor",
+        "bounty"
+      ],
+      "created": "2026-11-16T23:43:02Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 193,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/vfs",
+      "number": 63,
+      "title": "[Bounty #6] Lifetime-aware object packing \u00b7 vfs (DOGI)",
+      "url": "https://github.com/hanzoai/vfs/issues/63",
+      "labels": [
+        "help wanted",
+        "perf",
+        "research",
+        "bounty"
+      ],
+      "created": "2026-11-16T23:42:56Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 193,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/vfs",
+      "number": 62,
+      "title": "[Bounty #5] Selective hot-data mirroring \u00b7 vfs (MOST)",
+      "url": "https://github.com/hanzoai/vfs/issues/62",
+      "labels": [
+        "help wanted",
+        "perf",
+        "research",
+        "bounty"
+      ],
+      "created": "2026-11-16T23:42:53Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 193,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hanzoai/vfs",
+      "number": 60,
+      "title": "[Bounty #3] Grouped checkpoint IO \u00b7 vfs / s3 (AITURBO)",
+      "url": "https://github.com/hanzoai/vfs/issues/60",
+      "labels": [
+        "help wanted",
+        "perf",
+        "research",
+        "bounty"
+      ],
+      "created": "2026-11-16T23:42:47Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 6,
+      "repo_age_days": 193,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "E",
+      "grade_reason": "no literal amount in the fetched body",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "Trauma-Station/Trauma-Station",
+      "number": 5225,
+      "title": "[BOUNTY] huge important bounty bounty bounty",
+      "url": "https://github.com/Trauma-Station/Trauma-Station/issues/5225",
+      "labels": [
+        "S: Untriaged"
+      ],
+      "created": "2026-11-01T13:33:46Z",
+      "amount_usd": 10000,
+      "amount_literal": "$10000",
+      "amount_source": "body",
+      "repo_stars": 56,
+      "repo_age_days": 407,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "off-topic body: 333 CJK characters, not a task description",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "dev-kp-eloper/BountyScout",
+      "number": 1758,
+      "title": "\ud83c\udfaf Bounty Alert: 17 New Opportunityies found",
+      "url": "https://github.com/dev-kp-eloper/BountyScout/issues/1758",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-13T05:44:37Z",
+      "amount_usd": 2000,
+      "amount_literal": "$2,000",
+      "amount_source": "body",
+      "repo_stars": 28,
+      "repo_age_days": 177,
+      "archived": false,
+      "skill_match": [
+        "python",
+        "audit"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "freedom-winds/BountyScout",
+      "number": 1402,
+      "title": "\ud83c\udfaf Bounty Alert: 19 New Opportunityies found",
+      "url": "https://github.com/freedom-winds/BountyScout/issues/1402",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-10T20:12:24Z",
+      "amount_usd": 1400,
+      "amount_literal": "$1,400",
+      "amount_source": "body",
+      "repo_stars": 5,
+      "repo_age_days": 135,
+      "archived": false,
+      "skill_match": [
+        "python",
+        "github action",
+        "test",
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 69,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] [Bounty",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/69",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-10-31T04:58:34Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 75,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bount",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/75",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-11-01T19:26:55Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 77,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/77",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-11-02T10:48:25Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 76,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/76",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-11-02T00:28:26Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 73,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/73",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-11-01T05:28:50Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 74,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/74",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-11-01T12:59:41Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 72,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bount",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/72",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-10-31T21:16:45Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 71,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/71",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-10-31T17:13:25Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 70,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/70",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-10-31T11:59:16Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4201,
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4201",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-02T19:27:42Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4199,
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4199",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-02T01:54:36Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4198,
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4198",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-01T14:24:16Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4197,
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4197",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-11-01T07:21:49Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4191,
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4191",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-10-31T18:45:12Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4190,
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$750): \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4190",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-10-31T14:36:54Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4188,
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$750): [Bounty] [Bounty $750] Improve Qwen3-TTS Code Pred",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4188",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-10-30T22:49:56Z",
+      "amount_usd": 750,
+      "amount_literal": "$750",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "IES-BoilerRoom/tokio-ringbuffer-seqcst-matrix",
+      "number": 2,
+      "title": "[Escrowed $600 USDC] Eliminate ABA generation counter skew across heterogeneous ring capacities (`tokio-ringbuffer-seqcst-matrix`)",
+      "url": "https://github.com/IES-BoilerRoom/tokio-ringbuffer-seqcst-matrix/issues/2",
+      "labels": [
+        "help wanted",
+        "bounty"
+      ],
+      "created": "2026-11-17T17:06:10Z",
+      "amount_usd": 600,
+      "amount_literal": "$600",
+      "amount_source": "title",
+      "repo_stars": 0,
+      "repo_age_days": 0,
+      "archived": false,
+      "skill_match": [
+        "python",
+        "ci"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 0 days ago",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "IES-BoilerRoom/wgsl-transcendental-math-core",
+      "number": 2,
+      "title": "[Escrowed $600 USDC] Align WGSL constant-eval Horner polynomial rounding with runtime pipeline (`wgsl-transcendental-math-core`)",
+      "url": "https://github.com/IES-BoilerRoom/wgsl-transcendental-math-core/issues/2",
+      "labels": [
+        "help wanted",
+        "bounty"
+      ],
+      "created": "2026-11-17T17:06:08Z",
+      "amount_usd": 600,
+      "amount_literal": "$600",
+      "amount_source": "title",
+      "repo_stars": 0,
+      "repo_age_days": 0,
+      "archived": false,
+      "skill_match": [
+        "python",
+        "ci"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 0 days ago",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "freedom-winds/BountyScout",
+      "number": 1428,
+      "title": "\ud83c\udfaf Bounty Alert: 11 New Opportunityies found",
+      "url": "https://github.com/freedom-winds/BountyScout/issues/1428",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-17T20:28:08Z",
+      "amount_usd": 600,
+      "amount_literal": "$600",
+      "amount_source": "body",
+      "repo_stars": 5,
+      "repo_age_days": 135,
+      "archived": false,
+      "skill_match": [
+        "python",
+        "test",
+        "audit"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "freedom-winds/BountyScout",
+      "number": 1410,
+      "title": "\ud83c\udfaf Bounty Alert: 14 New Opportunityies found",
+      "url": "https://github.com/freedom-winds/BountyScout/issues/1410",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-13T01:40:19Z",
+      "amount_usd": 600,
+      "amount_literal": "$600",
+      "amount_source": "body",
+      "repo_stars": 5,
+      "repo_age_days": 135,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "Rohank143/BountyScout",
+      "number": 70,
+      "title": "\ud83c\udfaf Bounty Alert: 16 New Opportunityies found",
+      "url": "https://github.com/Rohank143/BountyScout/issues/70",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-06T06:23:05Z",
+      "amount_usd": 600,
+      "amount_literal": "$600",
+      "amount_source": "body",
+      "repo_stars": 0,
+      "repo_age_days": 25,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "IES-BoilerRoom/tokio-ringbuffer-seqcst-matrix",
+      "number": 1,
+      "title": "[Escrowed $450 USDC] Fix slot batch ceiling check and align multi-stride ring wrap-around residue (`drain_mpsc_epoch_frames`)",
+      "url": "https://github.com/IES-BoilerRoom/tokio-ringbuffer-seqcst-matrix/issues/1",
+      "labels": [
+        "help wanted",
+        "bounty"
+      ],
+      "created": "2026-11-17T17:06:09Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "title",
+      "repo_stars": 0,
+      "repo_age_days": 0,
+      "archived": false,
+      "skill_match": [
+        "python",
+        "ci"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 0 days ago",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "IES-BoilerRoom/wgsl-transcendental-math-core",
+      "number": 1,
+      "title": "[Escrowed $450 USDC] Correct packet frame boundary clamp and 0.5-ULP FMA range-reduction tie-break (`fold_wgsl_radiance_frames`)",
+      "url": "https://github.com/IES-BoilerRoom/wgsl-transcendental-math-core/issues/1",
+      "labels": [
+        "help wanted",
+        "bounty"
+      ],
+      "created": "2026-11-17T17:06:07Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "title",
+      "repo_stars": 0,
+      "repo_age_days": 0,
+      "archived": false,
+      "skill_match": [
+        "python",
+        "ci"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 0 days ago",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "relayhop/ClaudeEarnSelf-runtime",
+      "number": 1232,
+      "title": "[demand] high-priority 2026-11-14T16:01",
+      "url": "https://github.com/relayhop/ClaudeEarnSelf-runtime/issues/1232",
+      "labels": [
+        "radar",
+        "demand"
+      ],
+      "created": "2026-11-14T16:01:23Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "body",
+      "repo_stars": 1,
+      "repo_age_days": 205,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "repo unproven: 1 stars, created 205 days ago",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "freedom-winds/BountyScout",
+      "number": 1416,
+      "title": "\ud83c\udfaf Bounty Alert: 21 New Opportunityies found",
+      "url": "https://github.com/freedom-winds/BountyScout/issues/1416",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-14T17:54:40Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "body",
+      "repo_stars": 5,
+      "repo_age_days": 135,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "cli",
+        "audit"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "relayhop/ClaudeEarnSelf-runtime",
+      "number": 1206,
+      "title": "[demand] high-priority 2026-11-08T00:24",
+      "url": "https://github.com/relayhop/ClaudeEarnSelf-runtime/issues/1206",
+      "labels": [
+        "radar",
+        "demand"
+      ],
+      "created": "2026-11-08T00:24:35Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "body",
+      "repo_stars": 1,
+      "repo_age_days": 205,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 1 stars, created 205 days ago",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "relayhop/ClaudeEarnSelf-runtime",
+      "number": 1205,
+      "title": "[demand] high-priority 2026-11-07T20:48",
+      "url": "https://github.com/relayhop/ClaudeEarnSelf-runtime/issues/1205",
+      "labels": [
+        "radar",
+        "demand"
+      ],
+      "created": "2026-11-07T20:48:04Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "body",
+      "repo_stars": 1,
+      "repo_age_days": 205,
+      "archived": false,
+      "skill_match": [
+        "workflow",
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 1 stars, created 205 days ago",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "dev-kp-eloper/BountyScout",
+      "number": 1764,
+      "title": "\ud83c\udfaf Bounty Alert: 21 New Opportunityies found",
+      "url": "https://github.com/dev-kp-eloper/BountyScout/issues/1764",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-14T16:26:18Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "body",
+      "repo_stars": 28,
+      "repo_age_days": 177,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "dev-kp-eloper/BountyScout",
+      "number": 1750,
+      "title": "\ud83c\udfaf Bounty Alert: 18 New Opportunityies found",
+      "url": "https://github.com/dev-kp-eloper/BountyScout/issues/1750",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-10T22:11:50Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "body",
+      "repo_stars": 28,
+      "repo_age_days": 177,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "Rohank143/BountyScout",
+      "number": 103,
+      "title": "\ud83c\udfaf Bounty Alert: 7 New Opportunityies found",
+      "url": "https://github.com/Rohank143/BountyScout/issues/103",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-14T02:04:24Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "body",
+      "repo_stars": 0,
+      "repo_age_days": 25,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "Rohank143/BountyScout",
+      "number": 68,
+      "title": "\ud83c\udfaf Bounty Alert: 17 New Opportunityies found",
+      "url": "https://github.com/Rohank143/BountyScout/issues/68",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-05T18:35:55Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "body",
+      "repo_stars": 0,
+      "repo_age_days": 25,
+      "archived": false,
+      "skill_match": [
+        "audit"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "Rohank143/BountyScout",
+      "number": 105,
+      "title": "\ud83c\udfaf Bounty Alert: 21 New Opportunityies found",
+      "url": "https://github.com/Rohank143/BountyScout/issues/105",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-14T16:30:31Z",
+      "amount_usd": 450,
+      "amount_literal": "$450",
+      "amount_source": "body",
+      "repo_stars": 0,
+      "repo_age_days": 25,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open \"USDC\" bounty"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 54,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$250): [Bounty] \ud83d\udcb0 Bounty Seguro ($$250): [Bounty] Preserv",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/54",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-10-28T12:31:14Z",
+      "amount_usd": 250,
+      "amount_literal": "$250",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 56,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$250): \ud83d\udcb0 Bounty Seguro ($$250): [Bounty] \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/56",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-10-28T20:10:07Z",
+      "amount_usd": 250,
+      "amount_literal": "$250",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 60,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$250): [Bounty] \ud83d\udcb0 Bounty Seguro ($$250): [Bounty] \ud83d\udcb0 Bount",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/60",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-10-29T09:42:07Z",
+      "amount_usd": 250,
+      "amount_literal": "$250",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 58,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$250): [Bounty] \ud83d\udcb0 Bounty Seguro ($$250): \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/58",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-10-29T00:42:09Z",
+      "amount_usd": 250,
+      "amount_literal": "$250",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4171,
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$250): [Bounty] \ud83d\udcb0 Bounty Seguro ($$250): \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4171",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-10-29T02:48:01Z",
+      "amount_usd": 250,
+      "amount_literal": "$250",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4168,
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$250): \ud83d\udcb0 Bounty Seguro ($$250): [Bounty] \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4168",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-10-28T23:31:12Z",
+      "amount_usd": 250,
+      "amount_literal": "$250",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "relayhop/ClaudeEarnSelf-runtime",
+      "number": 1218,
+      "title": "[demand] high-priority 2026-11-10T19:37",
+      "url": "https://github.com/relayhop/ClaudeEarnSelf-runtime/issues/1218",
+      "labels": [
+        "radar",
+        "demand"
+      ],
+      "created": "2026-11-10T19:37:44Z",
+      "amount_usd": 100,
+      "amount_literal": "$100",
+      "amount_source": "body",
+      "repo_stars": 1,
+      "repo_age_days": 205,
+      "archived": false,
+      "skill_match": [
+        "audit"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 1 stars, created 205 days ago",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "number": 4110,
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$100): \ud83d\udcb0 Bounty Seguro ($$100): [Bounty] \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4110",
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "created": "2026-10-24T14:52:08Z",
+      "amount_usd": 100,
+      "amount_literal": "$100",
+      "amount_source": "title",
+      "repo_stars": 13,
+      "repo_age_days": 132,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 28,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$100): \ud83d\udcb0 Bounty Seguro ($$100): [Bounty] \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/28",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-10-24T13:12:36Z",
+      "amount_usd": 100,
+      "amount_literal": "$100",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 27,
+      "title": "\ud83d\udcb0 Bounty Seguro ($$100): [Bounty] \ud83d\udcb0 Bounty Seguro ($$100): [Bounty] USDC-qu",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/27",
+      "labels": [
+        "bounty",
+        "escrow"
+      ],
+      "created": "2026-10-24T07:59:32Z",
+      "amount_usd": 100,
+      "amount_literal": "$100",
+      "amount_source": "title",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty language:Python"
+    },
+    {
+      "repo": "dev-kp-eloper/BountyScout",
+      "number": 1767,
+      "title": "\ud83c\udfaf Bounty Alert: 16 New Opportunityies found",
+      "url": "https://github.com/dev-kp-eloper/BountyScout/issues/1767",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-15T08:56:43Z",
+      "amount_usd": 50,
+      "amount_literal": "$50",
+      "amount_source": "body",
+      "repo_stars": 28,
+      "repo_age_days": 177,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "josedab/chronicle",
+      "number": 111,
+      "title": "Qualification: Windows testing bounty in BOUNTY_PROGRAM table row 9",
+      "url": "https://github.com/josedab/chronicle/issues/111",
+      "labels": [],
+      "created": "2026-10-02T11:13:18Z",
+      "amount_usd": 50,
+      "amount_literal": "$50",
+      "amount_source": "body",
+      "repo_stars": 0,
+      "repo_age_days": 290,
+      "archived": false,
+      "skill_match": [
+        "golang",
+        "workflow",
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 290 days ago",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "ariahendrawan-sudo/project-a",
+      "number": 28,
+      "title": "Bounty Scout \u2014 2026-11-16",
+      "url": "https://github.com/ariahendrawan-sudo/project-a/issues/28",
+      "labels": [
+        "bounty-scout"
+      ],
+      "created": "2026-11-16T07:19:46Z",
+      "amount_usd": 10,
+      "amount_literal": "$10",
+      "amount_source": "body",
+      "repo_stars": 0,
+      "repo_age_days": 51,
+      "archived": false,
+      "skill_match": [
+        "go"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 51 days ago",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "relayhop/sn-monetization-runtime",
+      "number": 1404,
+      "title": "[radar] SN open bounty 2026-11-17T17:47",
+      "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1404",
+      "labels": [
+        "radar",
+        "sn",
+        "bounty"
+      ],
+      "created": "2026-11-17T17:47:34Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 5,
+      "repo_age_days": 199,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "Ikalus1988/MisakaNet",
+      "number": 5192,
+      "title": "[Bounty] Answer the 2 linked question(s)",
+      "url": "https://github.com/Ikalus1988/MisakaNet/issues/5192",
+      "labels": [
+        "ready",
+        "bounty"
+      ],
+      "created": "2026-11-17T16:30:10Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 564,
+      "repo_age_days": 202,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "Ikalus1988/MisakaNet",
+      "number": 5191,
+      "title": "[Bounty] Answer the 2 linked question(s)",
+      "url": "https://github.com/Ikalus1988/MisakaNet/issues/5191",
+      "labels": [
+        "ready",
+        "bounty"
+      ],
+      "created": "2026-11-17T16:30:00Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 564,
+      "repo_age_days": 202,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "Ikalus1988/MisakaNet",
+      "number": 5190,
+      "title": "[Bounty] Answer the 3 linked question(s)",
+      "url": "https://github.com/Ikalus1988/MisakaNet/issues/5190",
+      "labels": [
+        "ready",
+        "bounty"
+      ],
+      "created": "2026-11-17T16:29:45Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 564,
+      "repo_age_days": 202,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "relayhop/sn-monetization-runtime",
+      "number": 1402,
+      "title": "[radar] SN open bounty 2026-11-17T15:53",
+      "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1402",
+      "labels": [
+        "radar",
+        "sn",
+        "bounty"
+      ],
+      "created": "2026-11-17T15:53:08Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 5,
+      "repo_age_days": 199,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "relayhop/sn-monetization-runtime",
+      "number": 1400,
+      "title": "[radar] SN open bounty 2026-11-17T13:08",
+      "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1400",
+      "labels": [
+        "radar",
+        "sn",
+        "bounty"
+      ],
+      "created": "2026-11-17T13:08:33Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 5,
+      "repo_age_days": 199,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "alfrexo95/bounty-bot",
+      "number": 93,
+      "title": "\ud83e\ude99 [Web3] [50 JNZ] Arabic translation of the \"Wallet and key",
+      "url": "https://github.com/alfrexo95/bounty-bot/issues/93",
+      "labels": [
+        "bounty",
+        "web3"
+      ],
+      "created": "2026-11-17T06:10:53Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 1,
+      "repo_age_days": 29,
+      "archived": false,
+      "skill_match": [
+        "python"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 1 stars, created 29 days ago",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "janzeerOrg/janzeer-sdk-go",
+      "number": 6,
+      "title": "[20 JNZ] Example: sign a transfer offline, broadcast it later",
+      "url": "https://github.com/janzeerOrg/janzeer-sdk-go/issues/6",
+      "labels": [
+        "documentation",
+        "help wanted",
+        "good first issue",
+        "bounty"
+      ],
+      "created": "2026-11-17T05:29:35Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 2,
+      "repo_age_days": 47,
+      "archived": false,
+      "skill_match": [
+        "go",
+        "test",
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 2 stars, created 47 days ago",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "janzeerOrg/janzeer-sdk-python",
+      "number": 5,
+      "title": "[20 JNZ] Example: accept a payment (watch an address, match the memo, confirm it is final)",
+      "url": "https://github.com/janzeerOrg/janzeer-sdk-python/issues/5",
+      "labels": [
+        "documentation",
+        "help wanted",
+        "good first issue",
+        "bounty"
+      ],
+      "created": "2026-11-17T05:29:30Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 0,
+      "repo_age_days": 47,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 47 days ago",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "janzeerOrg/janzeer-cli",
+      "number": 8,
+      "title": "[50 JNZ] Nix package (flake) for jz",
+      "url": "https://github.com/janzeerOrg/janzeer-cli/issues/8",
+      "labels": [
+        "enhancement",
+        "help wanted",
+        "good first issue",
+        "bounty"
+      ],
+      "created": "2026-11-17T05:29:14Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 5,
+      "repo_age_days": 17,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 5 stars, created 17 days ago",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "janzeerOrg/janzeer-cli",
+      "number": 7,
+      "title": "[50 JNZ] Debian/Ubuntu package (.deb) for jz",
+      "url": "https://github.com/janzeerOrg/janzeer-cli/issues/7",
+      "labels": [
+        "enhancement",
+        "help wanted",
+        "good first issue",
+        "bounty"
+      ],
+      "created": "2026-11-17T05:29:09Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 5,
+      "repo_age_days": 17,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 5 stars, created 17 days ago",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "relayhop/sn-monetization-runtime",
+      "number": 1398,
+      "title": "[radar] SN open bounty 2026-11-17T03:42",
+      "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1398",
+      "labels": [
+        "radar",
+        "sn",
+        "bounty"
+      ],
+      "created": "2026-11-17T03:43:00Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 5,
+      "repo_age_days": 199,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open label:bounty"
+    },
+    {
+      "repo": "code-with-abhi-i5/CodePulse",
+      "number": 350,
+      "title": "[FEAT]: Build Developer Bounty Board & Feature Sponsorship Market UI",
+      "url": "https://github.com/code-with-abhi-i5/CodePulse/issues/350",
+      "labels": [
+        "nsoc26",
+        "level2",
+        "feature",
+        "frontend",
+        "assigned",
+        "ui/ux",
+        "bounties"
+      ],
+      "created": "2026-11-16T17:26:50Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 2,
+      "repo_age_days": 134,
+      "archived": false,
+      "skill_match": [
+        "test",
+        "audit"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 2 stars, created 134 days ago",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "code-with-abhi-i5/CodePulse",
+      "number": 260,
+      "title": "[FEAT]: Build Open-Source Issue Bounty Escrow & Automated Reward Settlement Engine",
+      "url": "https://github.com/code-with-abhi-i5/CodePulse/issues/260",
+      "labels": [
+        "nsoc26",
+        "level3",
+        "feature",
+        "assigned",
+        "fullstack",
+        "database"
+      ],
+      "created": "2026-11-15T10:39:46Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 2,
+      "repo_age_days": 134,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "repo unproven: 2 stars, created 134 days ago",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "willi-d7/williams-contracts",
+      "number": 197,
+      "title": "Include the paying token in keeper bounty events",
+      "url": "https://github.com/willi-d7/williams-contracts/issues/197",
+      "labels": [
+        "enhancement"
+      ],
+      "created": "2026-11-16T08:16:15Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 0,
+      "repo_age_days": 40,
+      "archived": false,
+      "skill_match": [
+        "go",
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 40 days ago",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "freedom-winds/BountyScout",
+      "number": 1427,
+      "title": "\ud83c\udfaf Bounty Alert: 12 New Opportunityies found",
+      "url": "https://github.com/freedom-winds/BountyScout/issues/1427",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-17T11:28:47Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 5,
+      "repo_age_days": 135,
+      "archived": false,
+      "skill_match": [
+        "github action"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "code-with-abhi-i5/CodePulse",
+      "number": 329,
+      "title": "[SOCIAL]: Implement Developer Bounties & Community Feature Request Voting with XP Escrow",
+      "url": "https://github.com/code-with-abhi-i5/CodePulse/issues/329",
+      "labels": [
+        "nsoc26",
+        "level3",
+        "backend",
+        "assigned",
+        "database",
+        "economy"
+      ],
+      "created": "2026-11-16T17:25:40Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 2,
+      "repo_age_days": 134,
+      "archived": false,
+      "skill_match": [
+        "workflow",
+        "test",
+        "audit"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 2 stars, created 134 days ago",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "rroland10/dex223-bug-bounty",
+      "number": 132,
+      "title": "Documentation \u2014 README header badges/links point to the wrong bug bounty repository (dex223/bug-bounty instead of rroland10/dex223-bug-bounty)",
+      "url": "https://github.com/rroland10/dex223-bug-bounty/issues/132",
+      "labels": [
+        "bug"
+      ],
+      "created": "2026-11-17T03:59:55Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 8,
+      "repo_age_days": 484,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "keyword-stuffed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "dev-kp-eloper/BountyScout",
+      "number": 1775,
+      "title": "\ud83c\udfaf Bounty Alert: 9 New Opportunityies found",
+      "url": "https://github.com/dev-kp-eloper/BountyScout/issues/1775",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-17T03:29:54Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 28,
+      "repo_age_days": 177,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "Rohank143/BountyScout",
+      "number": 108,
+      "title": "\ud83c\udfaf Bounty Alert: 15 New Opportunityies found",
+      "url": "https://github.com/Rohank143/BountyScout/issues/108",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-15T08:59:07Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 0,
+      "repo_age_days": 25,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "freedom-winds/BountyScout",
+      "number": 1418,
+      "title": "\ud83c\udfaf Bounty Alert: 9 New Opportunityies found",
+      "url": "https://github.com/freedom-winds/BountyScout/issues/1418",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-15T01:41:15Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 5,
+      "repo_age_days": 135,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "freedom-winds/BountyScout",
+      "number": 1419,
+      "title": "\ud83c\udfaf Bounty Alert: 15 New Opportunityies found",
+      "url": "https://github.com/freedom-winds/BountyScout/issues/1419",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-15T08:50:12Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 5,
+      "repo_age_days": 135,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "Rohank143/BountyScout",
+      "number": 117,
+      "title": "\ud83c\udfaf Bounty Alert: 11 New Opportunityies found",
+      "url": "https://github.com/Rohank143/BountyScout/issues/117",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-17T03:32:07Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 0,
+      "repo_age_days": 25,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "dev-kp-eloper/BountyScout",
+      "number": 1769,
+      "title": "\ud83c\udfaf Bounty Alert: 8 New Opportunityies found",
+      "url": "https://github.com/dev-kp-eloper/BountyScout/issues/1769",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-15T21:30:25Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 28,
+      "repo_age_days": 177,
+      "archived": false,
+      "skill_match": [
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "dev-kp-eloper/BountyScout",
+      "number": 1766,
+      "title": "\ud83c\udfaf Bounty Alert: 10 New Opportunityies found",
+      "url": "https://github.com/dev-kp-eloper/BountyScout/issues/1766",
+      "labels": [
+        "bounty-alert"
+      ],
+      "created": "2026-11-15T01:33:50Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 28,
+      "repo_age_days": 177,
+      "archived": false,
+      "skill_match": [
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "auto-generated bounty feed title",
+      "query": "is:issue is:open bounty in:body"
+    },
+    {
+      "repo": "hellonearportal-dotcom/nearportal-demo-tasks",
+      "number": 3,
+      "title": "[NP-28D5750673] Min/max \u2014 bank bounty",
+      "url": "https://github.com/hellonearportal-dotcom/nearportal-demo-tasks/issues/3",
+      "labels": [],
+      "created": "2026-11-05T15:37:19Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 0,
+      "repo_age_days": 12,
+      "archived": false,
+      "skill_match": [
+        "workflow",
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 12 days ago",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "mdpsec/huntdeck",
+      "number": 1,
+      "title": "Feature suggestion: Dashboard for recent bounty payouts",
+      "url": "https://github.com/mdpsec/huntdeck/issues/1",
+      "labels": [],
+      "created": "2026-11-17T08:26:21Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 44,
+      "repo_age_days": 4,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "repo unproven: 44 stars, created 4 days ago",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "josedab/chronicle",
+      "number": 115,
+      "title": "Question: current code-bounty availability",
+      "url": "https://github.com/josedab/chronicle/issues/115",
+      "labels": [],
+      "created": "2026-10-28T18:10:21Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 0,
+      "repo_age_days": 290,
+      "archived": false,
+      "skill_match": [],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 290 days ago",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "hellonearportal-dotcom/nearportal-demo-tasks",
+      "number": 6,
+      "title": "[NP-D221C1281B] Add MinMax edge-case tests",
+      "url": "https://github.com/hellonearportal-dotcom/nearportal-demo-tasks/issues/6",
+      "labels": [],
+      "created": "2026-11-05T23:29:01Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 0,
+      "repo_age_days": 12,
+      "archived": false,
+      "skill_match": [
+        "workflow",
+        "test"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 12 days ago",
+      "query": "is:issue is:open bounty language:Go"
+    },
+    {
+      "repo": "Logiquo/PyHealth",
+      "number": 19,
+      "title": "Bounty board",
+      "url": "https://github.com/Logiquo/PyHealth/issues/19",
+      "labels": [],
+      "created": "2026-11-15T16:13:52Z",
+      "amount_usd": null,
+      "amount_literal": "",
+      "amount_source": "",
+      "repo_stars": 0,
+      "repo_age_days": 402,
+      "archived": false,
+      "skill_match": [
+        "ci",
+        "test",
+        "cli"
+      ],
+      "status": "X",
+      "grade_reason": "repo unproven: 0 stars, created 402 days ago",
+      "query": "is:issue is:open bounty language:Python"
+    }
+  ],
+  "disclosure": "A stated amount is not escrow. None of these payouts is verified; only the literal amount string and the repository age/size are verified."
+}
