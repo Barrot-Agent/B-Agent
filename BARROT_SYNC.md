@@ -908,3 +908,20 @@
   accuracy/error fields; no scoring rule for transmute_query; no capability-to-test
   binding for reverse_engineer.
 - Flight Recorder: results/flight_recorder/2026-11-17-synthesis.jsonl
+
+## 2026-11-17 — Cross-domain audit: 4 links repaired, 3 open
+- Broken and fixed: Flight Recorder was write-only (0 consumers in .py) -> new
+  barrot_agent/flight_recorder.py reader + schema, 7 records validate; no docs
+  index for 69 files -> scripts/build_docs_index.py + docs/INDEX.md; runtime 3 vs
+  sync config 8 servers with nobody recording which is authoritative -> audit
+  known-break entry; pipeline discovered 7 accepted 3 promoted 0 -> named, not
+  bypassed.
+- New: scripts/cross_domain_audit.py - 5 links, JSON report, exit 1 on any
+  undocumented break. Current run: breaking [], exit 0.
+- New: tests/test_cross_domain_audit.py, 3 passed.
+- Correction to my earlier report: barrot_agent/mcp_registry.json is a runtime
+  artifact created on first save, not a dangling pointer. MCPRegistry._load
+  returns early when absent.
+- Still open: config drift (needs approval to generate one file), sandbox_passed=0
+  (needs MCP_APPROVAL_TOKEN decision), GITHUB_MCP_TOKEN unset in shell.
+- Report: docs/synthesis/cross-domain-audit.md
