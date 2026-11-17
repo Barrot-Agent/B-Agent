@@ -1,0 +1,79 @@
+{
+  "built_at": "2026-11-17T22:35:30+00:00",
+  "probes": [
+    {
+      "name": "issuehunt issue page",
+      "url": "https://issuehunt.io/r/k3d-io/k3d",
+      "status": 502,
+      "content_type": "text/html",
+      "body_head": "<html> <head><title>502 Bad Gateway</title></head> <body> <center><h1>502 Bad Gateway</h1></center> <hr><center>nginx</center> </body> </html>",
+      "verdict": "no_amount"
+    },
+    {
+      "name": "issuehunt api guess",
+      "url": "https://issuehunt.io/api/v1/repos/k3d-io/k3d",
+      "status": 200,
+      "content_type": "text/html",
+      "body_head": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" /> <meta name=\"theme-color\"",
+      "verdict": "no_amount"
+    },
+    {
+      "name": "issuehunt api host",
+      "url": "https://api.issuehunt.io/v1/repos/k3d-io/k3d",
+      "status": 404,
+      "content_type": "",
+      "body_head": "Something went wrong with the request.",
+      "verdict": "no_amount"
+    },
+    {
+      "name": "opire health",
+      "url": "https://api.opire.dev/health",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "body_head": "{\"message\":\"I am healthy!\"}",
+      "verdict": "no_amount"
+    },
+    {
+      "name": "opire bounties guess",
+      "url": "https://api.opire.dev/bounties",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "body_head": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\"> <title>Error</title> </head> <body> <pre>Cannot GET /bounties</pre> <script type=\"module\" src=\"ht",
+      "verdict": "no_amount"
+    },
+    {
+      "name": "algora api guess",
+      "url": "https://api.algora.io/v1/bounties",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "body_head": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>404 - Page Not Foun",
+      "verdict": "no_amount"
+    },
+    {
+      "name": "algora web guess",
+      "url": "https://algora.io/v1/bounties",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "body_head": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>404 - Page Not Foun",
+      "verdict": "no_amount"
+    },
+    {
+      "name": "polar products",
+      "url": "https://api.polar.sh/v1/products?limit=1",
+      "status": 401,
+      "content_type": "application/json",
+      "body_head": "{\"error\":\"Unauthorized\",\"detail\":\"Unauthorized\"}",
+      "verdict": "no_amount"
+    },
+    {
+      "name": "polar issue search",
+      "url": "https://api.polar.sh/v1/issues/search",
+      "status": 404,
+      "content_type": "application/json",
+      "body_head": "{\"detail\":\"Not Found\"}",
+      "verdict": "no_amount"
+    }
+  ],
+  "amount_sources": [],
+  "disclosure": "A 404 or a 401 is evidence that an endpoint does not answer anonymously. It is not evidence that the platform has no bounties."
+}

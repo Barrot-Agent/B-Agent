@@ -11,13 +11,13 @@ cannot, and the flaw found inside the last output becomes the next Y-query.
 
 | Field | Value |
 |---|---|
-| Iteration | 7c |
-| Last Y-query transmuted | "Build an auto workflow that targets accessible paying issues, forever" |
-| Transmuted target | A 6-hour hunter that cannot write, plus a workflow_run publisher that can |
-| Method | 7 GitHub searches, line-scoped amount parsing, label difficulty, activity filter, markdown output |
-| Grade | Q on the schedule and read-only proof; 0 priced issues, and the 8 platform rows were false positives |
-| Artifact | .github/workflows/paid-issue-hunter.yml, .github/workflows/paid-issue-publish.yml, PAID-ISSUES.md |
-| Next Y-query queued | "No issue-level bounty exists yet. Which platform can be queried for a real amount, and does its API answer?" |
+| Iteration | 8 |
+| Last Y-query transmuted | "Which bounty platform answers an anonymous GET with a real amount?" |
+| Transmuted target | Nine endpoint probes, recorded, with zero amount sources found |
+| Method | GET each endpoint, record status, content type and body head, mark amount_source only on JSON amounts |
+| Grade | Q on nine measured statuses; 0 amount sources; 5 tests |
+| Artifact | docs/money/BOUNTY-APIS.md, data/money/bounty_apis.json |
+| Next Y-query queued | "The hunter only reads body and title. Do bounty bots state amounts in issue comments?" |
 
 ## Why each iteration followed the last
 
@@ -62,5 +62,6 @@ verified.
 | 7 | paid issue hunter, every 6h forever | 7 searches, strict amount parsing, 8 tests | Q on schedule; 0 priced | see git log | PAID-ISSUES.md |
 | 7b | are the 8 platform rows real bounties | fetched each issue body, checked the platform URLs | X: all 8 were repo-level sponsor links or docs links; 0 rows | see git log | PAID-ISSUES.md |
 | 7c | can a scheduled workflow commit its own output | read the governance gate, split hunt from publish | Q: CI 485 core tests local, hunter and publish both green, bot commit 7c25a1e1e | see git log | paid-issue-publish.yml |
+| 8 | which bounty API answers anonymously | 9 endpoint probes, status and body recorded | Q: 0 amount sources; polar 401, issuehunt 502, opire/algorithm 404 | see git log | docs/money/BOUNTY-APIS.md |
 
 Every future STATUS PUSHED appends a row here and states the next queued Y-query.
