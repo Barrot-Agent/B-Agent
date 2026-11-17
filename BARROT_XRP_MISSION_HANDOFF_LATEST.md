@@ -4672,3 +4672,8 @@ No source bytes or independent durable receipts were retained for these web obse
 ### Run202 workflow-test regression
 
 The first action-pinning commit `14cdf58d` triggered CI. The pinned actions executed successfully: checkout, setup-python and GitHub Pages build all completed. The core Tests job then failed two repository assertions (747 passed, 2 failed, 8 subtests passed) because tests hard-coded mutable major tags such as `actions/setup-python@v7` and `actions/checkout@v7`. This is a stale test-contract failure caused by the intended pinning, not an action download or runtime failure. The full-suite job and dependency audit were still running at capture time. The next commit updates the tests to assert the approved immutable SHAs and pins the dependency-audit workflow as well. Exact-head CI must pass on that corrected commit before any merge consideration.
+
+
+### Run202 test-helper correction
+
+The first Run202 test update used over-escaped Python raw-regex sequences in the new action-ref helper. The helper was corrected in the follow-up commit so it matches YAML action lines and major-version references correctly. The test contract now accepts only the approved full SHA for mission-critical CI/ingestion checkout and upload actions, while retaining minimum-major checks for unchanged shared workflows. This follow-up commit requires fresh exact-head CI; no prior test result is inherited.
