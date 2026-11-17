@@ -1,9 +1,17 @@
 name: Paid issue hunter
 
-# Manual dispatch only. Public issue search is read-only.
-# Outputs are uploaded as run artifacts; no repository or issue writes occur.
+# Runs every 6 hours, indefinitely, until the user says stop.
+#
+# Read-only by governance: this repository forbids a scheduled workflow from
+# holding a write permission or pushing commits (test_external_action_gates).
+# So the hunt writes nothing back. It produces an artifact, and
+# paid-issue-publish.yml commits that artifact on workflow_run.
+#
+# Disabling the schedule below is the only way to stop it.
 
 on:
+  schedule:
+    - cron: "17 */6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -44,10 +52,10 @@ jobs:
           assert data["mutations_performed"] == 0, "the hunter must stay read-only"
           PY
 
-      - name: Preserve the result as a run artifact
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v4
+      - name: Upload the evidence
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
-          name: paid-issue-hunter-results
+          name: paid-issues
           path: |
             PAID-ISSUES.md
             data/money/paid_issues.json

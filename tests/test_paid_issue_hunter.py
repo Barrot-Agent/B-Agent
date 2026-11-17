@@ -14,6 +14,7 @@ from scripts.paid_issue_hunter import MAX_PLAUSIBLE, amount_of, difficulty_of, p
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "paid-issue-hunter.yml"
+PUBLISH = ROOT / ".github" / "workflows" / "paid-issue-publish.yml"
 
 
 def test_amount_requires_a_bounty_word_in_the_same_line():
@@ -52,20 +53,20 @@ def test_render_marks_unpriced_rows_unknown_and_never_claimed():
     assert "UNKNOWN" in text
     assert "never claimed" in text
     assert "READY" in text
-    assert "manual dispatch only" in text
 
 
-def test_workflow_is_manual_only_read_only_and_artifact_only():
+def test_workflow_runs_every_six_hours_and_forever():
     payload = yaml.load(WORKFLOW.read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
-    assert "schedule" not in payload["on"]
+    assert payload["on"]["schedule"][0]["cron"] == "17 */6 * * *"
     assert "workflow_dispatch" in payload["on"]
+    # Governance: a scheduled workflow may not hold a write permission.
     assert payload["permissions"]["contents"] == "read"
     assert payload["permissions"]["issues"] == "read"
     text = WORKFLOW.read_text(encoding="utf-8")
     assert "persist-credentials: false" in text
-    assert "git push" not in text.lower()
-    assert "git commit" not in text.lower()
-    assert "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v4" in text
+    assert "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7" in text
+    assert "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7" in text
+    assert "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in text
 
 
 def test_workflow_never_comments_or_claims():
@@ -73,6 +74,37 @@ def test_workflow_never_comments_or_claims():
     for forbidden in ("gh issue comment", "gh issue edit", "gh issue close", "gh pr create"):
         assert forbidden not in text
     assert "mutations_performed" in text
+
+
+def test_scheduled_hunter_cannot_push():
+    text = WORKFLOW.read_text(encoding="utf-8")
+    assert "git push" not in text
+    assert "contents: write" not in text
+
+
+def test_scheduled_hunter_cannot_push():
+    text = WORKFLOW.read_text(encoding="utf-8").lower()
+    assert "git push" not in text
+    assert "git commit" not in text
+    assert "contents: write" not in text
+
+
+def test_publish_workflow_is_triggered_by_the_hunter_and_only_on_main():
+    payload = yaml.load(PUBLISH.read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
+    trigger = payload["on"]["workflow_run"]
+    assert trigger["workflows"] == ["Paid issue hunter"]
+    assert trigger["types"] == ["completed"]
+    assert trigger["branches"] == ["main"]
+    assert payload["permissions"]["contents"] == "write"
+    text = PUBLISH.read_text(encoding="utf-8")
+    assert "github.event.workflow_run.conclusion == 'success'" in text
+    assert "github.event.workflow_run.head_branch == 'main'" in text
+    assert "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7" in text
+    assert "actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7" in text
+    assert "persist-credentials: true" in text
+    assert "git push origin main" in text
+    assert "gh pr merge" not in text
+    assert "gh issue" not in text
 
 
 def test_record_file_claims_zero_mutations():
