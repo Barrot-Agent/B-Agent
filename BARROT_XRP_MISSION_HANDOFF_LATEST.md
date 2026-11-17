@@ -4739,3 +4739,66 @@ Three test files were updated atomically on the existing integration branch usin
 The corrected test commit requires new exact-head push CI. No prior test result is transferred to it. The next action is to inspect its full repository test result, dependency audit and fail-closed gate; if tests pass, continue the semantic/security review of the 1,341-path integration. PR #1663 remains draft with zero formal reviews and no independent code owner. **No merge.**
 
 No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch or private-data access occurred.
+
+
+---
+
+# Run203 final verification — corrected action-pin assertions
+
+**Verified integration head:** `5ebb6b786a7cb7239a0c98a4d07ba2c65a6eae90`  
+**Main SHA:** `1f30e5c18f151f75ad5d157ddde175723584ec69`  
+**PR:** [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), still draft/open.
+
+## Exact-head CI — VERIFIED
+
+Push CI [43992834936](https://github.com/Barrot-Agent/B-Agent/actions/runs/43992834936) completed successfully on `5ebb6b786a7cb7239a0c98a4d07ba2c65a6eae90`:
+
+- Full repository suite: **3,845 passed, 0 failed, 1 skipped, 11 warnings, 19 subtests passed** in 178.30 seconds.
+- Inclusive package coverage: **66.90%**, above the 62% threshold.
+- Legacy core-package coverage: **77%**, above the preserved floor.
+- Wheel build succeeded; the installed wheel loaded Barrot V3, the priority-one XRP mission and canonical data assets.
+- Core Tests job passed; Pages validation passed.
+- Push dependency audit [43992834806](https://github.com/Barrot-Agent/B-Agent/actions/runs/43992834806) passed all six audited manifests.
+- PR dependency audit [43992843989](https://github.com/Barrot-Agent/B-Agent/actions/runs/43992843989) passed.
+- Push and PR fail-closed gates [43992834911](https://github.com/Barrot-Agent/B-Agent/actions/runs/43992834911) and [43992844045](https://github.com/Barrot-Agent/B-Agent/actions/runs/43992844045) passed.
+- PR CI [43992843948](https://github.com/Barrot-Agent/B-Agent/actions/runs/43992843948) passed its applicable jobs; its full-suite job was skipped by the workflow condition. The push-triggered full-suite result above is the authoritative exact-head result.
+
+The three failures on parent `83772d0` were obsolete mutable-tag assertions caused by intentional SHA pinning. The test-only correction on `5ebb6b786a7cb7239a0c98a4d07ba2c65a6eae90` now requires 40-character immutable action SHAs plus their version annotations. No workflow pins were reverted and no tests were weakened.
+
+## Fresh descriptive research — not model admitted
+
+- Kraken's public XRP/USD ticker returned last `$0.95096`, best bid `$0.95133`, ask `$0.95139`, approximately `0.63 bp` spread, 44.34M XRP 24-hour volume, $0.95451 24-hour VWAP and a $0.94005–$0.97648 range. The response has no provider timestamp and its byte-exact HTTP body was not retained; it remains descriptive-only.
+- Ripple's November 16 Swell recap reports more than 1,700 institutions/corporates/enterprises using Ripple, an expected exit-2026 annualized product-revenue run rate approaching $900M, and 3x growth in multi-product customers. These are Ripple-reported company metrics, not audited XRP demand or token-volume measures.
+- Aviva/Ripple report more than £86M invested across two XRPL tokenized share classes and £50M Aviva investment in the new GBP class. The underlying Irish UCITS fund and assets remain off-chain; BNY is fund custodian, with Komainu and Licuido supporting digital infrastructure. This is tokenized fund distribution, not XRP purchases.
+- C2FO Instant Pay is described as RLUSD settlement on XRPL, but the announcement directs interested businesses to a waitlist and discloses no realized settlement volume. Do not treat it as proven production throughput or XRP bridge demand.
+- Ripple's transparency page reports $2.6899B circulating RLUSD and $2.8265B reserve funds as of November 12. It identifies the issuer as Ripple Custody & Trust Co., with Standard Custody & Trust Company LLC doing business as that name. The page describes monthly independent CPA attestations; the displayed report links run through September 2026, so the November balance display is not itself a November CPA attestation.
+- The November 16 XRPL Dashboard signed snapshot records LendingProtocol 22/35, LendingProtocolV1_1 22/35 and SingleAssetVault 23/35; 29 votes are required. No majority was gained, lost or enabled that day. The dashboard reports no activation countdown. The record's Ed25519 signature verifies, but it is a third-party own-node snapshot and does not expose individual validator identities.
+- Main Cross Analysis run [43991411201](https://github.com/Barrot-Agent/B-Agent/actions/runs/43991411201) succeeded, but both recent and prior sentiment windows had zero records for XRP and BTC. Its 3,217 entity-pair counts and cumulative sentiment profile are historical corpus statistics, not current market sentiment.
+
+All rendered web observations above lack byte-exact raw-source receipts and remain outside the point-in-time feature store. The structured Run203 addendum records source URLs, publisher dates, limitations and admission status.
+
+## Current prediction and mainline boundary
+
+- Curated event registry: 125.
+- Byte-exact raw-source SHA-256 receipts: 0.
+- Missing exact publisher timestamps: 77.
+- Model-eligible events: 0.
+- Forecast: `NOT_ISSUED`.
+- Fixed-horizon accuracy: `NOT_EVALUATED`.
+- No directional forecast issued.
+- Main's legacy `web/latest_signal.json` is dated October 29, 2026, has confidence 0 and sentiment-unavailable status. Main's `web/signal_accuracy.json` reports 45.5% over a legacy variable-horizon scorer; it is not valid fixed-horizon out-of-sample accuracy. Integration quarantines that artifact as `NOT_ISSUED` / `NOT_EVALUATED`.
+- Main remains `1f30e5c18f151f75ad5d157ddde175723584ec69`; the integration branch remains separate. Mission configuration and scheduled XRP ingestion are not active on main.
+
+## Integration governance — still blocked
+
+PR #1663 remains draft with zero formal reviews. It has 1,341 changed paths and 140 commits; main is an ancestor and the branch is 140 commits ahead, zero behind. The Git compare endpoint returns only 300 changed-file records, so that response is not a complete semantic diff. The PR's full changed-file count is retained separately.
+
+Main is marked protected, but detailed branch-protection settings remain inaccessible (HTTP 403). Visible ruleset 10863829 is disabled; CODEOWNERS remains self-only; the GitHub connection still has admin/maintain/push/pull/triage permissions. The full semantic review of workflows, tests and all integration paths is incomplete. **NO MERGE.**
+
+Nine PRs remain open: #1663 blocked integration; #1541 superseded candidate/reconciliation required; #1460, #1450, #1440, #1437, #1436, #1353 and #1265 remain unique or stacked research work requiring bottom-up review. No source PR was closed.
+
+## Next concrete action
+
+Continue the semantic and security review of the consolidated integration, resolve overlapping MMI/research branch differences, obtain independent review and authorized branch-protection evidence, and reduce GitHub connector permissions. Do not mark PR #1663 ready or merge until those conditions and every required check/approval are satisfied. After any future compliant merge, refetch main, verify the merge SHA, run main CI and verify the first scheduled ingestion run.
+
+No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, real-money action, external model dispatch, force push or history rewrite occurred.
