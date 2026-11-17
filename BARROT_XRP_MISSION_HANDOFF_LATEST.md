@@ -6069,3 +6069,19 @@ The important distinction is that SBI Holdings has parallel relationships with C
 - **Camilla/Kamilah Stevenson:** Dr. Kamilah Stevenson’s identity is supported by her official web presence, but no official YouTube channel link was verified. No videos are attributed without that identity link.
 
 The complete structured observation and source register is committed as `research/xrp_intelligence/20261117T120307Z-run213-xrp-market-and-entity-reconciliation.json`. All market observations remain model-ineligible and forecast status remains **NOT_ISSUED**.
+
+
+---
+
+## Run213 exact-head research-test correction
+
+The exact full-suite run on `a44d08978950221a7e5ed1bbd9f592bae3957fd2` completed with **4,092 passed, 2 failed, 1 skipped, 11 warnings and 19 subtests passed** in 120.64 seconds; inclusive coverage was 68.09%. Core tests, Pages validation, dependency audit and fail-closed gate passed. The wheel-build step was skipped because the full-suite step failed.
+
+Both failures were in the new SBIC/entity research-contract test, not the application:
+
+1. The test used a case-sensitive lower-case phrase while the evidence sentence began with capitalized “No”.
+2. The rendered market observations had top-level raw-source status but omitted explicit per-observation `raw_source_sha256: null` and receipt-status fields.
+
+The correction adds those explicit per-observation missing-receipt fields and makes the relationship assertion case-insensitive. It does not weaken any data-quality or forecast gate. The same correction fixes the SBIC Central capital transcription: the official profile states **43億80万円**, equal to **¥4,300,800,000**, not ¥4,380,800,000. The official SBIC law text and SEC primary filing for Evernorth advance funding are now linked directly in the structured research record.
+
+The next exact-head full suite, inclusive coverage, wheel verification, Pages build, dependency audit and fail-closed gate must pass before any merge consideration.

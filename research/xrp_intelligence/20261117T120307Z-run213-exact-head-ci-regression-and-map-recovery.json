@@ -133,7 +133,28 @@
       "pages": "success"
     },
     "operational_warning": "GitHub Actions cache reservation failed because the configured cache budget was exhausted; cache is read-only. This did not fail tests, coverage or wheel verification.",
-    "test_regression_test": "test_run212_map_summary_is_preserved_as_a_timestamped_artifact passed in the 4,091-test suite."
+    "test_regression_test": "test_run212_map_summary_is_preserved_as_a_timestamped_artifact passed in the 4,091-test suite.",
+    "latest_full_repository_suite": {
+      "run_id": 44082517703,
+      "job_id": 134036439699,
+      "conclusion": "failure",
+      "passed": 4092,
+      "failed": 2,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 120.64,
+      "inclusive_coverage_percent": 68.09,
+      "failure_groups": {
+        "tests/test_xrp_sbic_entity_resolution_run213.py::test_sbic_east_central_west_are_distinct_statutory_companies_not_sbi_holdings": "case-sensitive assertion expected lower-case phrase; evidence text begins with capitalized No",
+        "tests/test_xrp_sbic_entity_resolution_run213.py::test_market_observations_preserve_vendor_cutoffs_and_do_not_create_forecasts": "per-observation raw_source_sha256 and receipt_status fields were omitted from the JSON schema"
+      },
+      "core_tests": "success",
+      "pages_validation": "success",
+      "dependency_audit": "success",
+      "fail_closed_gate": "success",
+      "wheel_build": "skipped_due_to_full_suite_failure"
+    }
   },
   "failure_diagnosis": {
     "classification": "CANONICAL_RESEARCH_MAP_SCHEMA_REGRESSION",
@@ -142,14 +163,16 @@
     "replacement_summary_blob_sha": "e40bd3221f4191ba2ebf955b587a1338475bba6f",
     "affected_test_files": 4,
     "application_runtime_failure": false,
-    "test_expectations_weakened": false
+    "test_expectations_weakened": false,
+    "latest_head_failure": "Two newly added research-contract tests failed; all other 4,092 tests passed. No application/runtime failure identified."
   },
   "recovery": {
     "canonical_map_restored_from_existing_git_blob": true,
     "run212_summary_preserved_as_timestamped_artifact": "research/xrp_intelligence/20261117T105932Z-run212-nine-platform-map-summary.json",
     "new_regression_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_run212_map_summary_is_preserved_as_a_timestamped_artifact",
     "recovery_commit_parent": "9f383fae418ea2cf1fbf97e872ee8f966da0fac6",
-    "recovery_commit_sha": "b8d02d73e40864a206949c03665ebff09413414f"
+    "recovery_commit_sha": "b8d02d73e40864a206949c03665ebff09413414f",
+    "next_action": "Add explicit null raw-source receipt fields to every rendered market observation, make the relationship assertion case-insensitive, correct SBIC Central capital to JPY 4,300,800,000, then rerun the full suite on the new exact head."
   },
   "prediction_engine_status": {
     "endpoint_definitions": 51,
@@ -209,5 +232,14 @@
     "real_money_action": false,
     "external_model_data_transfer": false
   },
-  "next_action": "Run the full repository suite, Pages validation, dependency audit and fail-closed gate on the recovery commit; then continue independent semantic/security review and branch-protection verification."
+  "next_action": "Run the full repository suite, Pages validation, dependency audit and fail-closed gate on the recovery commit; then continue independent semantic/security review and branch-protection verification.",
+  "research_update": {
+    "sbic_central_capital_correction": {
+      "previous_value_jpy": 4380800000,
+      "correct_value_jpy": 4300800000,
+      "source": "https://www.sbic-cj.co.jp/company/about/"
+    },
+    "legal_text_source": "https://www.sbic-wj.co.jp/disclose/law/",
+    "actual_capital_primary_source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm"
+  }
 }

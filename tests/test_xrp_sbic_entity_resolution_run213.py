@@ -17,7 +17,7 @@ def test_sbic_east_central_west_are_distinct_statutory_companies_not_sbi_holding
     assert entities["sbic_west"]["designation"] == "SBIC West Japan"
     assert len({entities[key]["legal_name_ja"] for key in ("sbic_east", "sbic_central", "sbic_west")}) == 3
     assert entities["sbi_holdings"]["legal_name"] == "SBI Holdings, Inc."
-    assert "no SBI Holdings ownership or group affiliation" in data["law_and_entities"]["relationship_conclusion"]
+    assert "no sbi holdings ownership or group affiliation" in data["law_and_entities"]["relationship_conclusion"].lower()
 
 
 def test_institutional_relationship_edges_are_dated_and_nonexclusive():
@@ -36,6 +36,7 @@ def test_market_observations_preserve_vendor_cutoffs_and_do_not_create_forecasts
     assert len(observations) >= 8
     assert all(item["model_eligible"] is False for item in observations)
     assert all(item["raw_source_sha256"] is None for item in observations)
+    assert all(item["receipt_status"] == "not_captured_from_raw_http" for item in observations)
     assert data["forecast_status"] == "NOT_ISSUED"
     assert data["model_admission"]["eligible_observations"] == 0
     assert "Do not average" in data["market_interpretation"]["leverage"]
