@@ -90,6 +90,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 ## docs/ops
 
 - docs/ops/FIX-CYCLE.md - Fix cycle: workflows, server, go audit
+- docs/ops/MCP-SERVER.md - MCP server: spec fetched, five tools, three real
 
 ## docs/phoenix
 
