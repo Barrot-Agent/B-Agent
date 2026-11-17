@@ -3,6 +3,10 @@ name: CI
 on:
   push:
     branches: [main, "integration/**"]
+    # The paid-issue hunter commits evidence only; it is not a code change.
+    paths-ignore:
+      - "PAID-ISSUES.md"
+      - "data/money/paid_issues.json"
   pull_request:
     branches: [main]
   workflow_dispatch:

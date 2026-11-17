@@ -1,0 +1,61 @@
+name: Paid issue hunter
+
+# Runs every 6 hours, indefinitely, until the user says stop. Read-only against
+# GitHub issues: it writes PAID-ISSUES.md and data/money/paid_issues.json, and it
+# never comments, claims, labels or assigns anything.
+#
+# Disabling this schedule is the only way to stop it. That is deliberate.
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: read
+
+concurrency:
+  group: paid-issue-hunter
+  cancel-in-progress: false
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run the hunter
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/paid_issue_hunter.py
+
+      - name: Show the result
+        run: |
+          head -40 PAID-ISSUES.md
+          python3 - <<'PY'
+          import json
+          data = json.load(open("data/money/paid_issues.json"))
+          priced = [r for r in data["rows"] if r["amount_usd"]]
+          print("rows:", len(data["rows"]), "priced:", len(priced), "statuses:", data["status_values"])
+          print("mutations performed:", data["mutations_performed"])
+          assert data["mutations_performed"] == 0, "the hunter must stay read-only"
+          PY
+
+      - name: Commit the evidence when it changed
+        run: |
+          git config user.name "barrot-hunter"
+          git config user.email "barrot-hunter@users.noreply.github.com"
+          git add PAID-ISSUES.md data/money/paid_issues.json
+          if git diff --cached --quiet; then
+            echo "no change this run"
+            exit 0
+          fi
+          git commit -m "hunter: paid issue scan $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
