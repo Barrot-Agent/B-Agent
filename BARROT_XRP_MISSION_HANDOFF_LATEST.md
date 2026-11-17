@@ -7786,3 +7786,85 @@ No deployment, secret rotation, Space restart, Hugging Face upload, Kaggle submi
 4. Diagnose the six ETF/Morpho adapter processing failures and validate official issuer feeds; keep Binance/Bybit access restrictions fail-closed.
 5. Add an independent external timestamp/WORM anchor and longer-lived feature-store retention.
 6. Extend multi-venue history and labels, then run leakage-safe walk-forward baselines and calibration. Keep all directional forecasts disabled until evaluation supports them.
+
+ 
+## Run 227 — 2026-11-17: exact-head CI audit, XRP issuer-schema reconciliation, and prediction-gate review
+
+### Repository and CI state
+
+- Main SHA: `c54447c320ba2efd783659c7685e969de45e90b0`; complete main tree: 1,737 entries.
+- Existing integration PR: [#1663 — Barrot V3 + XRP Intelligence](https://github.com/Barrot-Agent/B-Agent/pull/1663), branch `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Integration head at start: `6f5b180f86f63c6e1b5d10f1e59b2191a962f426`; 249 commits ahead, zero behind; complete integration tree: 2,954 entries; no main paths missing.
+- PR #1663: 1,404 changed paths, 511,066 additions, 6,522 deletions, 67 workflow files, 404 test paths before Run227. It remains draft and mergeable, with zero formal reviews and zero review threads.
+- Current main CI passed on `c54447c`: 1,207 passed, 2 skipped, 8 subtests, 78.10% coverage ([run 44192086690](https://github.com/Barrot-Agent/B-Agent/actions/runs/44192086690)).
+- Exact integration-head full suite passed on `6f5b180f86f63c6e1b5d10f1e59b2191a962f426`: 4,248 passed, 1 skipped, 11 warnings, 19 subtests, 191.47 seconds; 68.10% inclusive coverage and 77% legacy-core coverage. Wheel build and installed-wheel verification passed ([run 44195861042](https://github.com/Barrot-Agent/B-Agent/actions/runs/44195861042)).
+- PR CI [44195868586](https://github.com/Barrot-Agent/B-Agent/actions/runs/44195868586) passed its applicable checks, but its integration-branch test jobs were skipped; the push-triggered full-suite run above is authoritative.
+- Main Pages build/deployment [44192085158](https://github.com/Barrot-Agent/B-Agent/actions/runs/44192085158) completed successfully on main. A merge to main would trigger another automatic Pages deployment; no deployment was authorized.
+
+### Run226 ingestion artifact reinspection
+
+The read-only ingestion run [44194148689](https://github.com/Barrot-Agent/B-Agent/actions/runs/44194148689) completed on code head `678b12bb09f0add7a9bedfa65de00d7040b660af` with data cutoff 2026-11-17 22:52:25.991475 UTC.
+
+- 31 raw-source receipt records: 19 retained payloads and 12 digest-only receipts. The cross-run hash chain continued, but there is no external WORM/timestamp anchor.
+- Four feature-store snapshots contain 2,010 feature records across 104 distinct feature IDs and 10 sources. The latest snapshot has 82 eligible records, 378 excluded records, eight source IDs and four publisher groups (Bitbank, Coinbase, Kraken and OKX).
+- The synchronized OKX quote-basis artifact has four normalized features, mid $0.9708830095, spread 1.1291 bps, 1.101-second snapshot skew and 9.02-second maximum component age. It is one publisher-independence group, not independent cross-source confirmation.
+- The event timeline contains 140 curated events and 107 scenarios. Receipt completeness is false; the timeline is model-ineligible; probabilities are null; forecast status is NOT_ISSUED.
+- Twenty source failures were recorded: eight Binance HTTP 451, five Bybit HTTP 403, six processing failures, and one Grayscale HTTP 429. No proxy, regional bypass or access-control workaround was attempted. The six processing failures were the XRP Insights ETF JSON/CSV, REX-Osprey XRPR, Bitwise, Franklin XRPZ and Morpho cbXRP liquidity adapters.
+
+### Executed adapter corrections — exact-head CI pending
+
+The Run227 integration commit updates the existing ingestion module and regression tests:
+
+1. XRP Insights publishes `funds` and `columns` inside its `metadata` object. The JSON/CSV parsers now read that documented nested registry while retaining legacy top-level compatibility.
+2. The CSV's initial settled fund row legitimately has blank close-price and volume fields. The parser now accepts all three blank together only for a settled initial row; partial blanks or blanks on other row types remain rejected.
+3. The current REX-Osprey page labels its indirect holding `CoinShares Physical XRP`, not the old exact phrase `CoinShares XRP ETP`. The identity gate now accepts the current official holding label while preserving raw-only status.
+4. The old Bitwise vanity URL redirects to the official canonical page. Ingestion now uses `https://www.bitwiseetfs.com/single-asset/xrp` directly and allowlists the canonical host; redirects remain blocked globally.
+5. Morpho's documented public liquidity response contains four string fields and does not echo chain or market IDs. The adapter now validates the exact Base cbXRP/USDC market selector in the request path, validates any echoed identity, and does not require undocumented response fields.
+6. Source-processing failures now include a sanitized, truncated parser detail. Provider HTTP failures retain their separate status/reason classification.
+
+Eight regression tests were added, and the existing Bitwise URL expectation was updated. These changes are EXECUTED but remain UNVERIFIED until the new head's full suite, dependency audit and fail-closed gate complete. Do not transfer Run226's test result to the Run227 head.
+
+### Fresh spot and derivatives observations
+
+- Kraken's public XRP/USD ticker retrieved at 23:13:33 UTC showed bid $0.97331, ask $0.97332 and last $0.97348; 24-hour open $0.95476, high $0.97830, low $0.94500 and VWAP $0.963176. The endpoint did not provide a publisher event timestamp; retrieval time is not represented as event time.
+- Investing.com separately displayed a November 17 daily value of $0.9642, open $0.9552, high $0.9788, low $0.9469 and $335.45M volume. This asynchronous page snapshot is not averaged with Kraken.
+- Fuelmaps' 18:00 UTC six-venue spot-book snapshot showed mid $0.9572; ±0.5% depth $8.3M bids/$5.3M asks; ±1% $11.9M/$8.2M; ±5% $16.1M/$11.7M; ±10% $22.4M/$13.0M across five reporting venues. It was about five hours old at Run227 retrieval; resting orders can be cancelled and the map does not include Binance.
+- Derivatives open-interest observations remained inconsistent: Kodexius $508.66M (7 contracts, 20:09 UTC), Liqwall $965M (05:52 UTC), TradRadar $1.31B (7 venues, 15:35 UTC), and OptimistFi $1.8B (38 venues, 12:45 UTC). Funding signs also disagreed. These are not a confidence interval and must not be averaged.
+
+### ETF flows and primary issuer evidence
+
+- CryptoKeyhole reported a partial November 16 outflow of 5.197M XRP with two of four daily reporters. CryptoETF.today reported zero among two of five reported funds. InflowScan had no settled aggregate; Maketo displayed zero with incomplete-report caveats. No consolidated November 16 flow sign is admitted.
+- REX-Osprey's official XRPR page, as of November 16, showed 19,385,382 XRP held directly (59.77%) and 353,850 shares of CoinShares Physical XRP ETP (40.19%), with $30.9255M fund assets. This is mixed direct and indirect XRP exposure, not all direct XRP custody.
+- Bitwise's official XRP ETF page, as of November 16, showed 406,770,577.61 XRP in trust and $389.14M AUM. It identifies Coinbase Custody Trust Co. as digital-asset custodian and BNY Mellon as administrator/trust custodian.
+- Franklin Templeton's XRPZ page showed 310,430,333.34 XRP in fund as of November 4 and Coinbase Custody Trust Company as custodian. The displayed date is stale relative to the page's daily-update label; it is not treated as a November 17 balance.
+- Morpho's official REST documentation defines the liquidity response as `market_liquidity`, `reallocatable_liquidity`, `borrow_amount_to_target_utilization` and `last_indexed_block`, all native-unit strings. Market liquidity and reallocatable liquidity are distinct; do not add them without respecting availability semantics. Morpho says its GraphQL API shuts down January 29, 2027. The Run226 cbXRP liquidity response remains hash-only and was not promoted to a live value.
+
+### Nine-platform coordination
+
+A Run227 capability/authentication/permission/data-flow map was added. ChatGPT's current session and GitHub connector are verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested. No nine-platform quorum, external model dispatch or independent red-team review is claimed. Groq is not Grok.
+
+### Governance and merge decision
+
+**NO MERGE.** The PR remains draft with zero formal reviews and zero review threads. Main's branch-protection detail endpoint returns HTTP 403; the visible fallback ruleset is disabled; CODEOWNERS is self-only. Code/secret-scanning alert state is unavailable through the current connector. The 67-workflow security review is incomplete.
+
+Main still has active write-capable `barrot-agent.yml` and `ask-barrot.yml`; the integration branch quarantines them. Main's Barrot Sync masks failures and suppresses push errors; the integration branch quarantines it. The integration branch also quarantines the self-hosted-brain sync, Databricks bundle deployment, autonomous self-deployment, self-upgrade and Hugging Face sync. Manual Hugging Face and Kaggle uploads require explicit approval and exact main SHA. The Databricks bundle workflow is disabled. The Paid Issue Publish workflow retains `contents: write` and can commit only `PAID-ISSUES.md` and `data/money/paid_issues.json` after a successful main-branch hunter run; this is an automatic main-write side effect to monitor. GitHub Pages is another automatic deployment side effect and remains a hard merge blocker absent deployment authorization.
+
+No main write, merge, source-PR closure, deployment, secret rotation, Space restart, Hugging Face upload, Kaggle submission, Databricks write, funds transfer, paper trade, real-money action, external model dispatch, force-push or history rewrite occurred.
+
+### Open PR classification
+
+- #1663 — blocked consolidated integration; continue existing branch.
+- #1541 — partial overlap; do not close until #1663 is merged and every divergent path is verified on main.
+- #1450, #1460, #1440, #1437, #1353 — unique/dependent research, repair or archive work; preserve.
+- #1436 — unique Binance theft/freeze research; preserve.
+- #1265 — unique compact ledger index; its test remains absent from #1663, so do not mark superseded.
+- Nine open PRs total. No source PR was closed.
+
+### Next concrete action
+
+1. Verify exact-head full repository suite, dependency audit, fail-closed gate and workflow security checks on the Run227 commit.
+2. Re-run the read-only ingestion workflow after the parser fixes; verify the five corrected adapters independently and inspect the remaining Franklin failure.
+3. Keep Binance/Bybit restrictions fail-closed and do not proxy or bypass.
+4. Complete the 67-workflow/transitive-script semantic review and obtain independent review.
+5. Resolve Pages deployment and branch-protection evidence before considering merge.
+6. Build multi-venue point-in-time history, source independence and outcome labels; then evaluate leakage-safe walk-forward baselines, calibration and shadow readiness. Directional forecasts remain disabled.

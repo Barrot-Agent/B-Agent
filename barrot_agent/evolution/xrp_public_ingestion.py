@@ -31,7 +31,7 @@ from .cftc_legacy import parse_cftc_legacy_futures_only_report
 from .event_timeline import EventTimelineError, build_event_timeline
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "bitxrpetf.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
 ADAPTER_VERSION = "xrp-public-market-v3.28"
 PARSER_VERSION = "xrp-public-market-v3.27"
 MAX_LIVE_AGE_SECONDS = 300
@@ -125,7 +125,7 @@ ENDPOINTS = (
     ("xrp_exchange_balances_json", "https://xrp-insights.com/exchange-balances/data.json"),
     ("xrp_etf_flows_csv", "https://xrp-insights.com/data/xrp-etf-flows.csv"),
     ("xrp_etf_xrpr_issuer_page", "https://www.rexshares.com/xrpr/"),
-    ("xrp_etf_bitwise_issuer_page", "https://bitxrpetf.com/"),
+    ("xrp_etf_bitwise_issuer_page", "https://www.bitwiseetfs.com/single-asset/xrp"),
     ("xrp_etf_grayscale_gxrp_issuer_page", "https://etfs.grayscale.com/gxrp"),
     ("xrp_etf_franklin_xrpz_issuer_page", "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ"),
     ("xrp_etf_canary_xrpc_issuer_page", "https://canaryetfs.com/xrpc/"),
@@ -336,6 +336,10 @@ def _source_failure_record(
             )
     else:
         record["retryable"] = not isinstance(exc, XRPIngestionError)
+        if isinstance(exc, XRPIngestionError):
+            detail = " ".join(str(exc).split())
+            if detail:
+                record["failure_detail"] = detail[:240]
     return record
 
 
@@ -3156,7 +3160,8 @@ def _raw_only_xrp_insights_etf_flows(payload: Any, *, captured: datetime, **_kwa
     row_count = coverage.get("rows")
     if isinstance(row_count, bool) or not isinstance(row_count, int) or row_count <= 0:
         raise XRPIngestionError("XRP Insights row count must be a positive integer")
-    funds, columns = payload.get("funds"), payload.get("columns")
+    funds = metadata.get("funds", payload.get("funds"))
+    columns = metadata.get("columns", payload.get("columns"))
     if not isinstance(funds, list) or not funds or not isinstance(columns, list) or not columns:
         raise XRPIngestionError("XRP Insights fund and column registries are required")
     if not any(isinstance(item, Mapping) and item.get("ticker") == "XRP" for item in funds):
@@ -3220,7 +3225,7 @@ def _raw_only_xrp_insights_etf_csv(
     _raw_only_xrp_insights_etf_flows(metadata_payload, captured=captured)
     metadata = metadata_payload["metadata"]
     expected_columns = [
-        item.get("name") for item in metadata_payload.get("columns", [])
+        item.get("name") for item in metadata.get("columns", metadata_payload.get("columns", []))
         if isinstance(item, Mapping)
     ]
     if "flow_usd" not in expected_columns:
@@ -3240,7 +3245,7 @@ def _raw_only_xrp_insights_etf_csv(
 
     fund_registry = {
         item["ticker"]: item["issuer"]
-        for item in metadata_payload.get("funds", [])
+        for item in metadata.get("funds", metadata_payload.get("funds", []))
         if isinstance(item, Mapping)
         and isinstance(item.get("ticker"), str)
         and isinstance(item.get("issuer"), str)
@@ -3287,18 +3292,32 @@ def _raw_only_xrp_insights_etf_csv(
 
         holdings = _number(row.get("xrp_holdings"), "XRP Insights xrp_holdings")
         aum_usd = _number(row.get("aum_usd"), "XRP Insights aum_usd")
-        close_price_usd = _number(row.get("close_price_usd"), "XRP Insights close_price_usd", allow_zero=False)
-        volume_usd = _number(row.get("volume_usd"), "XRP Insights volume_usd")
+        close_price_text = row.get("close_price_usd", "").strip()
         shares_text = row.get("volume_shares", "").strip()
-        try:
-            volume_shares = int(shares_text)
-        except (TypeError, ValueError, OverflowError):
-            raise XRPIngestionError("XRP Insights volume_shares must be a non-negative integer") from None
-        if volume_shares < 0 or str(volume_shares) != shares_text:
-            raise XRPIngestionError("XRP Insights volume_shares must be a non-negative integer")
-        expected_volume_usd = volume_shares * close_price_usd
-        if abs(volume_usd - expected_volume_usd) > max(0.02, expected_volume_usd * 1e-6):
-            raise XRPIngestionError("XRP Insights volume_usd does not reconcile to shares times close")
+        volume_usd_text = row.get("volume_usd", "").strip()
+        market_fields = (close_price_text, shares_text, volume_usd_text)
+        if not any(market_fields):
+            if flow_status != "initial" or row_status != "settled":
+                raise XRPIngestionError(
+                    "XRP Insights price and volume fields may be blank only on a settled initial row"
+                )
+            close_price_usd = volume_shares = volume_usd = None
+        elif any(not value for value in market_fields):
+            raise XRPIngestionError("XRP Insights price and volume fields must be all present or all blank")
+        else:
+            close_price_usd = _number(
+                close_price_text, "XRP Insights close_price_usd", allow_zero=False
+            )
+            volume_usd = _number(volume_usd_text, "XRP Insights volume_usd")
+            try:
+                volume_shares = int(shares_text)
+            except (TypeError, ValueError, OverflowError):
+                raise XRPIngestionError("XRP Insights volume_shares must be a non-negative integer") from None
+            if volume_shares < 0 or str(volume_shares) != shares_text:
+                raise XRPIngestionError("XRP Insights volume_shares must be a non-negative integer")
+            expected_volume_usd = volume_shares * close_price_usd
+            if abs(volume_usd - expected_volume_usd) > max(0.02, expected_volume_usd * 1e-6):
+                raise XRPIngestionError("XRP Insights volume_usd does not reconcile to shares times close")
 
         flow_text = row.get("xrp_flow", "").strip()
         flow_usd_text = row.get("flow_usd", "").strip()
@@ -3366,7 +3385,7 @@ def _raw_only_xrp_insights_etf_csv(
     def _sum(rows_to_sum, field):
         return round(sum(row[field] or 0.0 for row in rows_to_sum), 8)
 
-    license_info = metadata_payload.get("license", {})
+    license_info = metadata.get("license", metadata_payload.get("license", {}))
     summary = {
         "data_as_of": latest_date,
         "latest_row_date": metadata.get("latest_row_date"),
@@ -3391,7 +3410,7 @@ def _raw_only_xrp_insights_etf_csv(
         "row_status_counts": row_status_counts,
         "reconstructed_row_count": row_status_counts["reconstructed"],
         "flow_method": "holdings_delta_not_issuer_ap_cash_flow",
-        "source_attribution": metadata_payload.get("citation", "XRP Insights (xrp-insights.com)"),
+        "source_attribution": metadata.get("citation", metadata_payload.get("citation", "XRP Insights (xrp-insights.com)")),
         "license_name": license_info.get("name"),
         "license_url": license_info.get("url"),
         "license_compliance": "hash_only_receipt; no full CSV payload or row-level dataset is persisted to public artifacts",
@@ -3411,8 +3430,12 @@ def _raw_only_xrpr_issuer_page(payload: Any, *, captured: datetime, **_kwargs):
     if not isinstance(payload, Mapping) or not isinstance(payload.get("html_text"), str):
         raise XRPIngestionError("XRPR issuer page response must contain HTML text")
     html_text = payload["html_text"]
-    required_markers = ("XRPR", "REX-Osprey", "CoinShares XRP ETP", "As of")
-    if any(marker not in html_text for marker in required_markers):
+    required_markers = ("XRPR", "REX-Osprey", "As of")
+    has_coinshares_exposure = any(
+        marker in html_text
+        for marker in ("CoinShares Physical XRP", "CoinShares XRP ETP")
+    )
+    if any(marker not in html_text for marker in required_markers) or not has_coinshares_exposure:
         raise XRPIngestionError("XRPR issuer page identity or holdings-table markers are missing")
     return (
         [],
@@ -4206,11 +4229,24 @@ def _raw_only_morpho_cbxrp_market_state(
 
 
 def _raw_only_morpho_cbxrp_market_liquidity(
-    payload: Any, *, source_id: str, captured: datetime, **_kwargs
+    payload: Any, *, source_id: str, url: str, captured: datetime, **_kwargs
 ):
     """Validate current market and allocator liquidity without promoting raw token units to USD."""
+    parsed_url = urlsplit(url)
+    expected_path = f"/v0/blue/markets/{MORPHO_CBXRP_MARKET_SELECTOR}/liquidity"
+    if (
+        parsed_url.scheme != "https"
+        or parsed_url.hostname != "api.morpho.org"
+        or parsed_url.path != expected_path
+        or parsed_url.query
+        or parsed_url.fragment
+    ):
+        raise XRPIngestionError("Morpho liquidity endpoint URL does not match the configured Base cbXRP/USDC market")
     data = _morpho_data(payload, source_id)
-    _morpho_market_identity(data, source_id)
+    # The documented liquidity response omits chain_id and market_id; the exact
+    # allowlisted endpoint path supplies identity. Validate any echoed identity,
+    # but do not require fields the public API does not return.
+    _morpho_market_identity(data, source_id, require=False)
     for field in (
         "market_liquidity",
         "reallocatable_liquidity",

@@ -1519,7 +1519,7 @@ def test_xrpr_primary_issuer_page_is_registered_and_retained_raw_only():
 @pytest.mark.parametrize(
     ("source_id", "host", "url"),
     [
-        ("xrp_etf_bitwise_issuer_page", "bitxrpetf.com", "https://bitxrpetf.com/"),
+        ("xrp_etf_bitwise_issuer_page", "www.bitwiseetfs.com", "https://www.bitwiseetfs.com/single-asset/xrp"),
         ("xrp_etf_grayscale_gxrp_issuer_page", "etfs.grayscale.com", "https://etfs.grayscale.com/gxrp"),
         ("xrp_etf_franklin_xrpz_issuer_page", "www.franklintempleton.com", "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ"),
         ("xrp_etf_canary_xrpc_issuer_page", "canaryetfs.com", "https://canaryetfs.com/xrpc/"),
