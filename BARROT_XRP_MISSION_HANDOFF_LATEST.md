@@ -315,3 +315,87 @@ Forecast status remains **NOT_ISSUED**. This research is not model-eligible unti
 - Parent head b910eb94ce606e1c12a7f1aa135d832c5ca06128 passed [full repository CI 44286284457](https://github.com/Barrot-Agent/B-Agent/actions/runs/44286284457): 4,273 passed, 1 skipped, 0 failed; 68.14% inclusive coverage; 77% legacy-core coverage; wheel build and installed Barrot V3/XRP mission verification passed.
 - This supplemental research artifact and handoff update create a new commit and require their own exact-head full-suite and security verification.
 - Main remains e204c21100f3d059e2ba633d041fe8927b61ccaf; no merge. PR #1663 remains the sole consolidated integration PR and draft. No source PRs were closed.
+
+
+## Run 12 — 2026-11-18 10:49 UTC: market-liquidity and XRPL-lending governance reconciliation
+
+### Repository state and exact-head verification
+
+- Main SHA: `e204c21100f3d059e2ba633d041fe8927b61ccaf`; main remained unchanged throughout this run.
+- Consolidated integration PR: [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663), branch `integration/xrp-v3-mainline-successor-20261115T2101Z`, still draft.
+- Integration head at audit start: `11bdb4847b6bf775e24c726f7a27b6c5712fd221`, 284 commits ahead and zero behind main. The Run 12 research artifact was then committed as `bf0a67c9e9a84e01aaaed8d3ff87139df9a8e6a4`; this handoff update is a subsequent documentation commit and requires its own exact-head CI.
+- Main tree: 1,737 entries, 1,565 files, 172 directories and 92 workflow files. Integration tree: 2,971 entries, 2,786 files, 185 directories, 93 workflow files and 513 test files.
+- PR #1663 changes 1,420 files: 67 workflow files, 410 test files and 809 research/XRP-data files. The change set remains unusually broad and requires complete transitive workflow/script review.
+
+The exact audit-start integration head passed [push CI run 44287410095](https://github.com/Barrot-Agent/B-Agent/actions/runs/44287410095): 4,273 passed, 1 skipped, zero failed, 11 warnings and 19 subtests passed in 107.17 seconds; inclusive coverage 68.14%, legacy-core coverage 77%; wheel build and installed Barrot V3/XRP mission verification passed. GitHub Pages validation passed. The draft pull_request run's core/full-suite jobs were skipped by the integration-branch condition; the push run executed the full suite on the exact audit-start head.
+
+Dependency audit passed on push and PR events. All six audited manifests (core, development, integrations, Hugging Face Space, legacy and PEP 621 project dependencies) reported no known vulnerabilities. Money audit and fail-closed checks passed. These results apply to the audit-start head; the Run 12 artifact and this handoff update need their own exact-head verification.
+
+### Open PR inventory and overlap reconciliation
+
+All ten open PRs were drafts at inspection. No review submissions or review threads were present on #1663.
+
+- **#1663 — consolidated Barrot V3 + XRP Intelligence:** 1,420 changed files; primary integration workstream; blocked by draft status, governance and security review.
+- **#1664 — paid-issue product pack:** 71 files; two overlapping paths with #1663 (`BARROT_SYNC.md`, `MEMORY.md`); both blob contents differ. Keep separate and reconcile before any merge.
+- **#1541 — MMI claim fingerprint security:** five changed paths, all overlap #1663; `barrot_agent/mmi_adapter.py` and `tests/test_mmi_integration.py` are identical; `barrot_agent/mmi_v1.py`, the research JSON and `tests/test_mmi_v1.py` diverge. Preserve the source branch until the integrated successor is verified and the divergent changes are explicitly reconciled.
+- **#1460:** eight unique institutional-multirail/Kamilah research files; no overlap with #1663.
+- **#1450:** 116 unique Binance/escrow research and ledger-validation paths; no overlap with #1663.
+- **#1440:** 64 unique stacked ledger-validation/trigger repair paths; no overlap with #1663.
+- **#1437:** five unique XRP escrow/source-revision paths; no overlap with #1663.
+- **#1436:** 24 unique Binance theft, freeze and attacker-wallet research paths; no overlap with #1663.
+- **#1353:** 1,084 unique lossless XRP-ledger sharding/archive paths; no overlap with #1663.
+- **#1265:** 144 changed paths; one divergent overlap with #1663 at `.github/workflows/ci.yml`; preserve pending deliberate workflow reconciliation.
+
+The older ledger PRs form a stacked research/repair chain and are not duplicates merely because they share ancestry. No PR was closed, merged or bulk-classified as superseded.
+
+### Fresh market evidence — observations, not a directional forecast
+
+The structured artifact is [Run 12 market/lending/governance reconciliation](research/xrp_intelligence/20261118T104916Z-xrp-market-lending-governance-reconciliation.json).
+
+- Kraken's public XRP/USD ticker, retrieved at approximately 10:49 UTC, returned last $0.99406, bid $0.99406 (170 XRP), ask $0.99407 (5,030 XRP), approximately 0.10 basis-point top spread, 42.55M XRP 24-hour volume, $0.97524 VWAP and a $0.945–$1.00677 24-hour range. The response has no exchange event timestamp; top-of-book size is not full-depth liquidity.
+- CoinGlass displayed $0.9936, +3.69% over 24 hours, $561.77M spot volume (+20.84%), $2.49B futures volume, $2.05B headline open interest, -0.0045% per-eight-hour funding, $5.98M liquidations (63% shorts), and a $6.1M Nov 17 ETF outflow. Its headline OI change (+3.50%) conflicts with its own summary panel (-0.18%); OI direction is quarantined until underlying data are reconciled.
+- Liqwall's 10:32 UTC snapshot separately reported approximately $993M OI (-0.4%), -0.0065% average funding per eight hours, $5.6M liquidations ($2.0M longs/$3.6M shorts) and 74.2% of Binance accounts with XRP positions long. Its OI universe is not reconciled with CoinGlass; do not average the two totals.
+- CryptoQuant's Nov 18 quicktakes reported a Binance 30-day XRP liquidity index of 0.041 (three-month low), $2.71B 30-day turnover, and a seven-day spot-to-futures volume ratio falling from 27.2% early in November to 17.9% (34.2% lower); it described futures volume as about 5.6 times spot. This is a source-reported indicator, not an order-book depth measure; the raw series and full index construction were not captured.
+- Nov 17 ETF-flow reports remain non-comparable: CoinGlass showed about -$6.1M; a CryptoBriefing syndicated report attributed -$6.14M to Grayscale GXRP and Canary XRPC in a five-fund universe; CryptoKeyhole showed only -3,251 XRP (about -$3K) from two of its four daily-reader funds, while Bitwise and Franklin files were still missing. These are different fund universes and completeness states, not a single reconciled total.
+
+The short-covering/position-reset explanation is plausible because the rebound occurred alongside negative funding and a majority of reported liquidations on the short side. A spot-led recovery remains possible because spot volume increased. It is not confirmed: futures turnover dominates Binance activity, the liquidity index is weak, the broader 7-day/30-day/YTD returns remain negative, ETF flow coverage is incomplete, and no synchronized raw multi-venue trade/L2 set was captured. These are competing hypotheses, not a forecast.
+
+### Critical distinction: XRPL native lending versus XRP-backed payment credit
+
+Primary Ripple and XRPL documentation clarifies a distinction that must be represented explicitly in Barrot's relationship and feature model:
+
+1. Ripple's Nov 16 Swell recap says Soil and Ripple are **exploring** potential XRP collateral and credit use within Ripple Payments. This is exploratory; no production deployment, utilization, collateral balance or XRP purchase amount was disclosed.
+2. The native XRPL Lending Protocol is documented as fixed-term **uncollateralized** loans funded from Single Asset Vaults. Underwriting and risk management are off-chain; the current implementation has no automated on-chain collateral or liquidation management. Optional first-loss capital is a loss buffer, not collateralization and not a guarantee against loss.
+3. Single Asset Vaults can hold XRP, trust-line tokens or MPTs. XRP can therefore be deposited as lendable pool inventory. That does not mean borrowers post XRP as collateral in the native Lending Protocol.
+4. The two ideas must be separate data entities: `ripple_payments_xrp_credit_collateral_exploration` versus `xrpl_lending_vault_asset_and_uncollateralized_credit`.
+
+The third-party XRPL Dashboard's Nov 18 signed amendment leaf reported LendingProtocol 23/35, LendingProtocolV1_1 23/35 and SingleAssetVault 24/35, with 29 needed. Its latest own-node rollcall showed 24, 24 and 25 yes votes respectively, still short by five, five and four. The page marked its signature verified, but this run did not independently download and recompute the raw leaf/signature. These amendments were not active on the record reviewed.
+
+### Prediction-engine and ingestion disposition
+
+- **DESIGNED:** The integration branch contains the XRP public-ingestion workflow, SEC EDGAR adapter, point-in-time feature store and forecast/outcome ledger. The feature-store module explicitly warns that local SQLite hashes/triggers are not adversarially tamper-proof and require an external signed/checkpointed receipt or independently controlled immutable log for production.
+- **EXECUTED:** Exact-head full-suite and dependency/security checks passed on the audit-start head. The new Run 12 research artifact records source URLs, retrieval/event-time distinctions, provider disagreements, hypotheses and disconfirming evidence.
+- **NOT VERIFIED:** The rendered web observations in Run 12 are not raw HTTP byte captures; no new immutable SHA-256 source receipts or external timestamp anchor were created. They are excluded from model training. No new ingestion workflow run occurred because this commit changed research/handoff paths, not the ingestion workflow or adapter paths.
+- The hourly/daily scheduled XRP ingestion workflow exists only on the integration branch. GitHub scheduled workflows run from the default branch, so the scheduled production cadence is not active until the workflow is on main. Its integration push capture is limited to changes in the workflow or specified ingestion/SEC adapter files.
+- SEC live ingestion remains blocked by the missing approved `BARROT_SEC_USER_AGENT` monitored-contact variable. Do not invent or silently configure a contact.
+- No directional forecast, paper trade or real-money action occurred. Forecast issuance remains **NOT_ISSUED**.
+
+### Governance and merge disposition
+
+- Detailed main branch-protection access returned HTTP 403 (integration cannot inspect the protected-branch configuration).
+- The repository fallback ruleset is disabled.
+- `.github/CODEOWNERS` assigns `* @Barrot-Agent`, which is not independent review.
+- #1663 has zero submitted reviews and zero review threads.
+- Sixty-seven changed workflows and their transitive scripts still require full security/side-effect review. The integration branch's paid-issue publisher still has a workflow-run path that can write to main; that side effect must be explicitly accounted for before merge.
+- **NO MERGE.** #1663 remains draft and governance/security requirements are not satisfied. Main remains unchanged. No deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, funds transfer or paper trade occurred.
+
+### Next concrete actions
+
+1. Verify exact-head full-suite, dependency audit and fail-closed checks on the Run 12 artifact/handoff commits.
+2. Capture raw bytes and SHA-256 receipts for Kraken, CoinGlass, Liqwall, CryptoQuant and ETF issuer files; preserve provider event time separately from retrieval time.
+3. Reconcile CoinGlass OI's internal contradiction and the Nov 17 ETF fund-universe differences.
+4. Independently retrieve and verify the XRPL signed amendment leaf; ingest governance votes as events, not price signals.
+5. Keep native XRPL uncollateralized lending and Ripple's exploratory XRP-backed payment-credit work as separate features.
+6. Resolve the approved SEC contact variable, then verify accession-bound EDGAR captures.
+7. Complete the 67-workflow/transitive-script security review, obtain independent review and actual branch-protection evidence.
+8. Keep #1663 as the single integration workstream; do not create a successor, merge, or close unique source PRs until all admission requirements pass.
