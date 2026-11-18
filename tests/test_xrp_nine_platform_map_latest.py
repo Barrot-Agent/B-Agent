@@ -189,3 +189,78 @@ def test_latest_map_preserves_unresolved_phrase_and_creator_identity_controls():
     assert "unresolved" in phrases["SBIC, ChatGPT SBIC"].lower()
     assert "channel" in phrases["Camilla/Kamilah Stevenson"].lower()
     assert "ownership" in phrases["Camilla/Kamilah Stevenson"].lower()
+
+
+
+def test_run29_preserves_evernorth_capital_and_sbi_entity_boundaries():
+    root = Path(__file__).resolve().parents[1]
+    evidence_path = (
+        root
+        / "research"
+        / "xrp_intelligence"
+        / "20261118T230834Z-run29-market-institutional-reconciliation.json"
+    )
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+
+    evernorth = evidence["institutional"]["evernorth"]
+    cash = evernorth["cash_flow_reconciliation"]
+    assert evernorth["reported_total_xrp_at_close"] == 473276430
+    assert cash["xrp_in_kind_contributions_at_close"] == 388910554
+    assert cash["xrp_purchased_with_cash"] == 84365876
+    assert (
+        cash["xrp_in_kind_contributions_at_close"]
+        + cash["xrp_purchased_with_cash"]
+        == evernorth["reported_total_xrp_at_close"]
+    )
+    assert evernorth["sbi_group_cash_investment_usd"] == 200000000
+    assert evernorth["sbi_group_voting_rights_percent"] == 36.1
+    assert evernorth["sbi_group_economic_interest_percent"] == 20.5
+    assert evernorth["model_eligible"] is False
+
+    sbi = evidence["institutional"]["sbi_relationship_graph"]
+    assert sbi["ripple_equity"]["stake_percent"] == 9
+    assert sbi["ripple_equity"]["as_of_date"] == "2025-06-09"
+    assert sbi["sbi_ripple_asia"]["sbi_group_voting_rights_percent"] == 60
+    assert "does not handle XRP" in sbi["sbi_ripple_asia"]["caveat"]
+    circle_jv = sbi["circle_sbi_japan"]
+    assert circle_jv["ownership"] == {"circle_percent": 50, "sbi_percent": 50}
+    assert "no significant operating results" in circle_jv["operating_status"]
+    assert "not SBI Holdings corporate XRP ownership" in sbi["sbi_vc_trade"]["xrp_wallet_balance_note"]
+
+    regulatory = evidence["regulatory"]
+    assert regulatory["occ_trust_charters"]["ripple"]["effective_date"] == "2026-10-26"
+    assert regulatory["occ_trust_charters"]["coinbase"]["effective_date"] == "2026-11-06"
+    assert regulatory["ripple_sec_case"]["final_judgment_penalty_usd"] == 125035150
+    assert regulatory["ripple_sec_case"]["injunction"] == "remains in effect"
+    assert evidence["prediction_readiness"]["forecast_status"] == "NOT_ISSUED"
+
+
+def test_run29_preserves_market_disagreement_and_wallet_coverage_effects():
+    root = Path(__file__).resolve().parents[1]
+    evidence_path = (
+        root
+        / "research"
+        / "xrp_intelligence"
+        / "20261118T230834Z-run29-market-institutional-reconciliation.json"
+    )
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+
+    derivatives = evidence["derivatives"]
+    assert derivatives["liqwall"]["open_interest_usd"] != derivatives["tradradar"]["open_interest_usd"]
+    assert derivatives["xrpsonar"]["open_interest_usd"] != derivatives["tradradar"]["open_interest_usd"]
+    assert "do not average" in derivatives["reconciliation"].lower()
+    assert "Do not average" in evidence["etf_flows"]["reconciliation"]
+
+    balances = evidence["exchange_wallet_balances"]
+    assert balances["same_wallet_change_30d_xrp"] == -390100000
+    assert balances["naive_total_change_30d_xrp"] == 132200000
+    assert balances["new_wallet_balances_30d_xrp"] == 522200000
+    xrpsonar = balances["xrpsonar_crosscheck"]
+    assert xrpsonar["tracked_exchange_wallets_xrp"] == 24670000000
+    assert xrpsonar["tracked_exchange_wallets_xrp"] != balances["gross_attributed_balance_xrp"]
+
+    kraken = evidence["market_snapshot"]["kraken_xrp_usd"]
+    assert kraken["model_eligible"] is False
+    assert kraken["raw_wire_bytes_captured"] is False
+    assert "not independently captured HTTP wire bytes" in kraken["raw_sha256_scope"]
+    assert evidence["prediction_readiness"]["forecast_status"] == "NOT_ISSUED"
