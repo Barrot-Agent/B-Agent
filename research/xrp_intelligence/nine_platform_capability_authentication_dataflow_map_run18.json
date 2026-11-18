@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.3.0",
+  "snapshot_id": "run18",
+  "captured_at_utc": "2026-11-18T09:34:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "e204c21100f3d059e2ba633d041fe8927b61ccaf",
+  "integration_head_at_capture": "5f7bf5df614f70de771bfd3c3a81d5f93c2cd28a",
+  "integration_pr": 1663,
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "verified_for_this_session",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "data_flow": "ChatGPT GitHub connector -> GitHub API -> B-Agent repository/integration branch",
+      "least_privilege": false,
+      "notes": "Read, tree, PR, CI and branch-scoped write operations succeeded. This verifies this connector path, not every ChatGPT product capability."
+    },
+    {
+      "name": "Claude",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified"
+    },
+    {
+      "name": "Grok",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified",
+      "notes": "Groq is not Grok."
+    },
+    {
+      "name": "Gemini",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified"
+    },
+    {
+      "name": "Copilot",
+      "authentication": "historical_one_off_activity_only",
+      "permissions": [],
+      "data_flow": "no current authenticated data flow verified"
+    },
+    {
+      "name": "Codex",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified",
+      "notes": "No current Space deployment or write verified."
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified",
+      "notes": "No submission or authenticated API operation."
+    },
+    {
+      "name": "Databricks",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified",
+      "notes": "No current authenticated read/write verified."
+    }
+  ],
+  "coordination": {
+    "independent_tasks_dispatched": false,
+    "structured_evidence_exchange": false,
+    "disagreement_resolution": false,
+    "minority_objections_preserved": true,
+    "independent_red_team_quorum": false,
+    "external_dispatches": 0,
+    "external_data_transfers": 0,
+    "fallback": "deterministic repository work and lawful public read-only sources"
+  },
+  "governance": {
+    "repository_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "least_privilege_satisfied": false,
+    "main_protected_flag": true,
+    "detailed_branch_protection": "HTTP 403",
+    "fallback_ruleset_id": 10863829,
+    "fallback_ruleset_enforcement": "disabled",
+    "codeowners": "* @Barrot-Agent",
+    "pr1663_draft": true,
+    "pr1663_formal_reviews": 0,
+    "pr1663_review_threads": 0
+  },
+  "next_permission_action": "Use a read-only credential for routine research/inspection where possible and a narrowly scoped branch-write credential only for explicitly authorized integration updates. No permission change was made in this run."
+}
