@@ -8529,3 +8529,57 @@ The `xrp-public-ingestion.yml` workflow exists on the integration branch, with r
 **NO MERGE.** The PR is draft, independent approval is absent, branch-protection enforcement is not verifiable, the Pages deployment side effect is not authorized, and the full transitive workflow/script review is incomplete. No source PR was closed. No forecast, paper trade, real-money action, deployment or external model dispatch occurred.
 
 **Next concrete action:** continue finishing the existing #1663 integration branch; verify the exact-head CI triggered by this handoff append; complete the transitive workflow/script audit and independent review; obtain authoritative required-check/branch-protection evidence and explicit authorization for the main Pages deployment side effect. Keep the forecast ledger closed until the dataset and independent out-of-sample readiness gates pass.
+
+
+---
+
+## Run 13 continuation — Kamilah Stevenson identity, public-video inventory and claim verification
+
+This continuation supersedes the earlier Run 13 statement that no identity-verified YouTube channel had been located. Person-level identity is now corroborated; exact channel ownership remains high-confidence but not fully cross-linked because the channel's About page did not expose its links during retrieval and the subject explicitly warned about impersonators.
+
+### Identity chain and channel confidence
+
+1. The first-party [Wealth Doctor site](https://learn.kamilahstevenson.com/) identifies Dr. Kamilah Stevenson, also known as The Wealth Doctor, and describes her investing, crypto and wealth-education business.
+2. The June 11, 2026 [XRP Podcast interview](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/) identifies its guest as Dr. Kamilah Stevenson. In the automatically generated transcript, she says her YouTube presence is “doctor Camilla Stevenson” and explicitly warns that fake pages exist. Transcript spelling may be inaccurate.
+3. YouTube's own search results attribute the following videos to **Kamilah Stevenson**, with 139,000–140,000 followers. The corresponding channel page resolves as [@drkamilahstevenson](https://www.youtube.com/@drkamilahstevenson). A third-party directory reports about 138,000 subscribers for that handle, consistent with YouTube's result metadata, but is used only as corroboration.
+4. Multiple near-identical low-subscriber handles appeared in third-party indexes. They are excluded. Do not attribute lookalike channels or comments to the subject.
+
+**Identity assessment:** high confidence that the YouTube results below are from the Dr. Kamilah Stevenson who appeared on the XRP Podcast and operates the Wealth Doctor site; direct first-party cross-link from her site/interview to the exact handle remains unverified. Preserve this qualification and do not use the channel as an authenticated research source.
+
+### Public YouTube videos found
+
+| Published | Video | YouTube metadata at capture | Main claims in description |
+|---|---|---|---|
+| 2026-04-07 | [XRP Ledger RWA growth from $24M to $1.8B](https://www.youtube.com/watch?v=Y5rESnxoSIA) | 31,438 views; 2,100 likes; creator result showed 139K followers | RWA tokenization growth, institutional use and XRP's role in network fees |
+| 2026-05-05 | [Motley Fool below-$1 thesis rebuttal](https://www.youtube.com/watch?v=SId2NMmBi3s) | 13,052 views; 1,100 likes; creator result showed 140K followers | Claims Evernorth committed 400M XRP to native lending; Ripple Prime operates inside DTCC; Japanese banks demonstrated 60% savings versus SWIFT |
+| 2026-05-12 | [“$3.5B” XRPL RWA settlement claim](https://www.youtube.com/watch?v=pFru4idBTMA) | 28,264 views; 2,000 likes; creator result showed 139K followers | Claims $3.5B of tokenized RWAs settled over 30 days, $900M on Apr. 24, RLUSD above $1B, daily payments above $1.7M and an Archax $1B commitment |
+
+Descriptions also disclose affiliate links/promotions for iTrust Capital, Caleb & Brown, Tangem and the creator's paid wealth-education community. Record these as commercial context, not evidence of misconduct. All market and institutional statements in the videos remain creator claims until independently verified.
+
+### Primary-source claim checks and counterevidence
+
+**RWA value is not settlement volume.** RWA.xyz's live [XRP Ledger dashboard](https://app.rwa.xyz/networks/xrp-ledger), captured 2026-11-18, reported:
+
+- Distributed asset value: **$642.89M**, +29.42% over 30 days.
+- Represented asset value: **$5.34B**, +2.08% over 30 days.
+- 30-day RWA transfer volume: **$20.04M**, −99.73% versus the preceding 30-day window.
+- 456 tracked RWAs; 2,504 holders.
+- XRPL stablecoin market capitalization: **$761.00M**; stablecoin 30-day transfer volume: **$9.98B**.
+- Current platform table: Ripple $716.7M; Franklin Templeton $192.7M; Ondo $185.8M; VERT $116.1M; Archax $55.4M; other named platforms follow.
+
+The May 12 video's “$3.5B settled in 30 days” wording is not supported by the current RWA.xyz 30-day transfer-volume metric. The $5.34B represented-asset figure is a different stock measure and includes platform-locked/represented assets; it is not $5.34B of freely transferable investor float or 30-day settlement. The current dashboard's distributed value ($642.89M) and transfer volume ($20.04M) must remain separate. The video may be using a different historical date or definition; absent its original dataset and methodology, classify the $3.5B claim as **unreconciled, likely metric conflation**, not a verified flow.
+
+The same dashboard currently lists Archax at $55.4M. That does not disprove a historical $1B commitment, but it does mean the $1B should not be recorded as realized/distributed XRPL assets without a primary deployment receipt.
+
+**Evernorth native lending.** Evernorth's Oct. 14, 2026 [Nasdaq-published company release](https://www.nasdaq.com/press-release/evernorth-begin-deploying-473-million-xrp-treasury-with-ripple-kraken-coinbase-and-bitgo) says it holds a 473M-XRP treasury and selected Ripple, Kraken, Coinbase and BitGo as execution partners. Institutional strategies were to begin in Q4 2026. It says native lending/on-chain credit strategies are a later phase, after validators activate those capabilities and they are proven in production. It does **not** disclose 400M XRP deployed or committed specifically to native lending. The May 5 video claim is therefore **not verified as an executed deployment**.
+
+**Ripple Prime and DTCC.** DTCC's May 4, 2026 [primary announcement](https://www.dtcc.com/press-releases/2026/dtcc-advances-development-of-new-tokenization-service) names Ripple Prime among 50+ firms in the DTCC Industry Working Group. This establishes working-group participation, not by itself a live Ripple Prime service or clearing membership. Separate DTCC membership notices identify the legal entity **Hidden Road Partners CIV US LLC** (Ripple's acquired predecessor business) in FICC/NSCC participant records, including [FICC membership](https://www.dtcc.com/-/media/Files/pdf/2025/3/11/GOV1924-25.pdf) and [NSCC MPID update](https://www.dtcc.com/-/media/Files/pdf/2026/6/18/a9782.pdf). The accurate description is that Ripple Prime participated in DTCC's industry group and the predecessor legal entity appears in clearing-participant records; the video compresses these distinct facts into “operating inside DTCC alongside Goldman Sachs and JPMorgan.” Do not treat that phrase as proof of a new Ripple Prime-branded clearing membership.
+
+**The 60% SWIFT comparison.** SBI Holdings' official [2017 investor presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/170629presentations.pdf) contains a **historical estimate**, not a 2026 live-pilot audit: it compares 20.9 basis points for the existing remittance system with 8.3 bps for Ripple's system using XRP, describing a 60% estimated reduction. The presentation attributes the estimate to a 2016 Ripple Insight source. Recent 2026 media reports repeat a claim that Japanese institutions presented live 60%-cheaper corridors at XRP Tokyo, but no named-bank primary report, transaction sample, cost methodology or independently auditable pilot result was located. Record the historical estimate as verified; classify the claimed 2026 live result as **unverified**.
+
+### Research disposition
+
+- The channel is now a high-confidence identity match, with the exact handle still awaiting a direct first-party cross-link.
+- Three public videos have been inventoried; none is treated as a primary source for XRP market, RWA settlement, Evernorth deployment, DTCC membership or Japanese bank cost data.
+- The strongest correction is the distinction between RWA represented value, distributed value and actual transfer volume. Current RWA.xyz data shows $5.34B represented, $642.89M distributed and $20.04M 30-day RWA transfer volume; these must never be merged into one “settled capital” feature.
+- No forecast is issued from creator commentary. Creator videos remain secondary opinion/claim sources, not model inputs.
