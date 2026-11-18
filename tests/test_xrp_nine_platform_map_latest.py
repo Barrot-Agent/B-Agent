@@ -47,9 +47,9 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     integration = repo["integration"]
     assert integration["pr_number"] == 1663
     assert integration["draft"] is True
-    assert integration["snapshot_head_sha"] == "b1f90a4d92bf3c0e773de452efc9a47127063e05"
-    assert integration["ahead_by"] == 301
-    assert integration["changed_files"] == 1425
+    assert integration["snapshot_head_sha"] == "a87173273fdbab3c480b4d95bfec3a74db6f6621"
+    assert integration["ahead_by"] == 304
+    assert integration["changed_files"] == 1427
     assert integration["changed_workflow_files"] == 67
     assert integration["behind_by"] == 0
     registry = data["prediction_engine"]["source_registry"]
@@ -70,10 +70,14 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert ingestion["external_anchor"] == "NOT_ANCHORED"
     current_ci = data["ci_evidence"]["current_head_full_suite"]
     assert current_ci["head_sha"] == integration["snapshot_head_sha"]
-    assert current_ci["status"] == "in_progress"
+    assert current_ci["status"] == "completed"
+    assert current_ci["conclusion"] == "failure"
+    assert current_ci["passed"] == 4272
+    assert current_ci["tests_failed"] == 2
+    assert current_ci["skipped"] == 1
     previous_ci = data["ci_evidence"]["previous_verified_full_suite"]
-    assert previous_ci["head_sha"] == "7b3896ac54de2ff74534cbb8409b3d84fce26b17"
-    assert previous_ci["passed"] == 4273
+    assert previous_ci["head_sha"] == "78ed0c1a2e6cec991f6069f4c624e5e40bc96fe0"
+    assert previous_ci["passed"] == 4274
     assert previous_ci["failed"] == 0
 
 
@@ -116,6 +120,8 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert sbic["entities"]["west"]["alias"] == "SBIC West Japan"
     assert sbic["xrp_or_ripple_relationship"] == "No verified relationship found."
     market = data["prediction_engine"]["latest_market_snapshot"]
-    assert market["price_usd"] == 0.9854
+    assert market["price_usd"] == 0.9753
+    assert market["source"] == "Kraken public ticker API — XRP/USD"
+    assert market["model_eligible"] is False
     assert market["model_eligible"] is False
     assert data["prediction_engine"]["latest_ingestion"]["walk_forward_forecasts"] == 0

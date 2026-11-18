@@ -1222,3 +1222,93 @@ Twelve PRs remain open. #1663 is the sole consolidated V3/XRP integration and re
 4. Capture fresh byte-exact exchange/ETF/derivatives/SEC sources, reconcile venue and fund universes, and add an external WORM/timestamp anchor plus deterministic raw-to-feature-store rebuild.
 5. Activate scheduled ingestion only after safe merge to main and exact-main CI verification.
 6. Keep forecast issuance disabled until leakage-safe walk-forward baselines, calibration, drift checks and independent shadow evaluation pass.
+
+
+## Run 20 — exact-head CI regression diagnosis, full workflow-definition scan, and fresh market snapshot
+
+**Evidence cutoff:** 2026-11-18T16:06:25Z. Main SHA remains `13c60af7079700a38b4226b9110d9c9377af7695`. Integration snapshot head: `a87173273fdbab3c480b4d95bfec3a74db6f6621` on `integration/xrp-v3-mainline-successor-20261115T2101Z`. PR #1663 remains draft/open; 304 commits ahead, 0 behind; 1,427 changed files; 67 changed workflow definitions. Main tree: 1,737 entries; integration tree: 2,978 entries.
+
+### Exact-head CI failure and root cause
+
+The full-suite push run [44337506785](https://github.com/Barrot-Agent/B-Agent/actions/runs/44337506785) completed on exact head `a87173273fdbab3c480b4d95bfec3a74db6f6621` with **4,272 passed, 2 failed, 1 skipped, 11 warnings, 19 subtests passed** in 189.57 seconds. Inclusive coverage was 68.14%; the 62% floor passed.
+
+Failures:
+- `tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state` — `KeyError: snapshot_head_sha`.
+- `tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_security_gates_and_open_pr_classifications` — `KeyError: pre_fix_pr_head_ci`.
+
+Run 19's update to `nine_platform_capability_authentication_dataflow_map_latest.json` removed 22 historical evidence fields present in the preceding verified map at `78ed0c1`. The tests correctly rejected the lossy rewrite. This is a research-evidence schema regression, not a forecast-engine or market-data failure.
+
+The preceding exact code head [`78ed0c1` full-suite run 44322684443](https://github.com/Barrot-Agent/B-Agent/actions/runs/44322684443) passed **4,274, 1 skipped, 0 failed, 11 warnings, 19 subtests**, with 68.14% inclusive and 77% legacy-core coverage. That result is historical, not a substitute for the failed `a871732` result.
+
+Other checks on `a871732`:
+- Push dependency audit [44337506881](https://github.com/Barrot-Agent/B-Agent/actions/runs/44337506881): passed.
+- Push fail-closed gate [44337506832](https://github.com/Barrot-Agent/B-Agent/actions/runs/44337506832): passed; merge remained disabled.
+- PR CI [44337522662](https://github.com/Barrot-Agent/B-Agent/actions/runs/44337522662): standard tests passed; full suite skipped because #1663 remains draft.
+- PR dependency audit [44337522581](https://github.com/Barrot-Agent/B-Agent/actions/runs/44337522581): passed.
+- PR money audit [44337522580](https://github.com/Barrot-Agent/B-Agent/actions/runs/44337522580): passed.
+- PR fail-closed gate [44337522571](https://github.com/Barrot-Agent/B-Agent/actions/runs/44337522571): passed.
+- PR Pages validation passed; no deployment occurred.
+
+### Repair committed to the existing integration branch
+
+The latest nine-platform map is reconstructed by deep-merging the preceding verified map with Run 19's research update, preserving historical CI evidence and schema fields. Repository snapshot metadata is refreshed to 304 ahead / 1,427 files / 67 workflow files / 2,978 tree entries. The test contract now asserts the actual `a871732` failed run and the preceding verified `78ed0c1` run. The repair is committed only to the existing #1663 branch; no new branch or PR is created. Exact-head CI for the repair commit is pending at capture time.
+
+### Full changed-workflow definition scan
+
+All **67/67** changed workflow YAML definitions were fetched and statically scanned. No unpinned `uses:` action references were found. This is a definition-level scan, not a complete transitive review of every invoked script, artifact producer, downloaded artifact or third-party action.
+
+Material controls and blockers:
+- `.github/workflows/paid-issue-publish.yml` remains an active `workflow_run` publisher with `contents: write`, persisted checkout credentials and `git push origin main`. It can automatically write paid-issue artifacts to main after a successful main-branch hunter run. Treat this as a merge blocker until artifact trust and publisher behavior are independently reviewed and contained or explicitly approved.
+- `.github/workflows/release.yml` has `contents: write` on version-tag pushes. No tag/release was created.
+- `.github/workflows/xrp-public-ingestion.yml` is read-only for repository contents/actions; hourly and daily schedules apply to main, while integration push capture is read-only. Scheduled main ingestion is not active until the workflow is merged.
+- `barrot-ops.yml`, `kaggle-competitions.yml`, `deploy-a2a-worker.yml`, `deploy-databricks.yml` and `barrot-restart-space.yml` are manual and require explicit per-run confirmations and/or exact-main-SHA checks. None was run.
+- `sync-huggingface.yml` and `sync-self-hosted-brain.yml` are quarantined with job conditions set to false.
+- `coinbase-paper-trader.yml` is manual and artifact-only; it was not run.
+- Main reports protected, but detailed branch-protection retrieval returns HTTP 403. Visible repository ruleset `10863829` is disabled. `.github/CODEOWNERS` remains `* @Barrot-Agent`. Independent review is absent.
+- Transitive workflow/script/artifact review remains incomplete.
+
+### Open PR inventory and path-overlap reconciliation
+
+Twelve PRs remain open:
+
+| PR | Classification | Shared paths with #1663 |
+|---|---|---|
+| #1663 | blocked — sole consolidated V3/XRP integration | — |
+| #1664 | unique/unreviewed | 3: `BARROT_SYNC.md`, `MEMORY.md`, `README.md` |
+| #1665 | blocked — dependency overlap | 1: `requirements-dev.txt` |
+| #1666 | blocked — dependency overlap | 1: `pyproject.toml` |
+| #1541 | blocked — stacked MMI security work | 5 |
+| #1460 | unique/unreviewed | 0 |
+| #1450 | unique/unreviewed | 0 |
+| #1440 | unique/unreviewed | 0 |
+| #1437 | unique/unreviewed | 0 |
+| #1436 | unique/unreviewed | 0 |
+| #1353 | unique/unreviewed | 0 |
+| #1265 | unique/unreviewed | 1: `.github/workflows/ci.yml` |
+
+No source PR was closed. No new PR was created.
+
+### Fresh spot, derivatives and ETF observations — research-only
+
+Kraken's public XRP/USD ticker response was retrieved at 2026-11-18T16:06:25Z; it contains no provider event timestamp. It reported last **$0.97530**, bid **$0.97505**, ask **$0.97514**, spread **0.923 bps**, 24-hour volume **50.38M XRP**, VWAP **$0.980324**, high **$1.00677**, low **$0.94804**, and 24-hour open **$0.98253**. Last was 0.736% below the reported open. The exact response body and SHA-256 `c8b58a616f2864bbe7438acdf938833c3d9a0561fe3909358ee77a4d8379b432` are stored in the Run 20 JSON artifact.
+
+Investing.com's Nov 18 daily row showed **$0.9897**, high **$1.0066**, low **$0.9703**, volume **$350.74M** and +0.62%, approximately 1.48% above Kraken's retrieval-time last. These are different publishers and vintages; they are not averaged or treated as synchronized quotes.
+
+Derivatives provider disagreement persists:
+- AlertaChart, updated 11:16 UTC, reported OI-weighted funding **−0.0119% per 8 hours** and **$642.06M** OI across Binance, Bybit, OKX, Coinbase and Hyperliquid.
+- Liqwall's 05:22 UTC snapshot reported **$958M** OI, down 2.1% over 24 hours.
+- Coinranking's Nov 17 daily row reported **$1.55B** OI and **−0.0083%** funding.
+
+These use different venues, contracts, timestamps and aggregation methods. Do not average them or infer direction from negative funding.
+
+CryptoKeyhole's Nov 17 ETF flow remained partial: **−3,251 XRP across 2 of 4 funds**, with the latest issuer file read at 05:25 UTC. Its latest complete day was Nov 13 at −9,967 XRP. Preserve the partial state; do not promote it to a complete fund-complex flow.
+
+### Prediction and coordination disposition
+
+Forecast status remains **NOT_ISSUED**; zero walk-forward forecasts; drift remains insufficient; external WORM/timestamp anchoring and deterministic raw-to-feature-store rebuild remain absent. SEC EDGAR capture remains blocked until an approved monitored contact is configured in `BARROT_SEC_USER_AGENT`. No directional forecast, paper trade or real-money action occurred.
+
+Only ChatGPT-to-GitHub is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified; no external dispatch or data transfer occurred.
+
+**Disposition: NO MERGE.** Keep #1663 draft until the repair head passes the complete suite and exact-head security checks, independent review and effective branch-protection requirements are resolved, and the automatic main writer and transitive workflow/script review are addressed. Main remains unchanged. No deployment, secret rotation, Space restart, Kaggle submission, Databricks write, Hugging Face upload, paper trade, funds transfer or real-money action occurred.
+
+**Next concrete action:** Verify the repair commit's exact-head full repository suite; then continue independent workflow/script review and governance remediation without creating another integration PR.
