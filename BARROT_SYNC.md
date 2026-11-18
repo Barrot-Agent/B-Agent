@@ -981,3 +981,34 @@
 - Legal name/address, governing law, checkout/refund test, support email: not
   filled, not guessed. Remain with Sean.
 - Next: Sean supplies the 8 publish inputs, or rejects. No further building.
+
+## 2026-11-18 — Publish inputs, partial: staged only (no publish)
+- Authorization received, scope exact: stage only, not publish, until Sean
+  approves final checkout. Recorded verbatim. Publication authorization: ABSENT.
+- Written into the product files:
+  * LICENSE_AND_TERMS.md — PUBLICATION_STATUS: STAGING_ONLY; seller = Sean Drew,
+    1545 Minford Place, Bronx, NY 10460, USA; governing law New York, USA; venue
+    Bronx County (derived from the address, flagged for lawyer confirmation);
+    §13 carries the placeholder support address with a NOT FOR PUBLICATION marker.
+  * PRICING.md — prices confirmed for staging on 2026-11-18; no live price; no
+    listing; no transaction; revenue $0.00.
+  * DELIVERY_REQUIREMENTS.md — §3 email exclusion now has the one licence
+    exception; §6 support state corrected; §10 checkboxes reflect reality.
+- Input states as of now:
+  1 authorization — staging only, publication NOT granted
+  2 support email — PENDING, placeholder in licence only
+  3 legal name/address — SUPPLIED
+  4 governing law — SUPPLIED (New York), lawyer to confirm venue
+  5 lawyer review — PENDING
+  6 checkout/refund test — NOT TESTED
+  7 zip + checksums — NOT BUILT (would ship the placeholder; waits on 2 and 5)
+  8 price — CONFIRMED for staging ($9/$19/$39)
+- New fail-closed guard: verify_release.py --publication. Staging gate still 9/9
+  PASS, rc 0. Publication gate rc 1 by design:
+  [FAIL] publication readiness: status=STAGING_ONLY,
+  placeholders=['PLACEHOLDER', 'NOT FOR PUBLICATION'].
+- Customer-facing banned-term scan after edits: 0 across all 9 files.
+- Placeholder email appears in exactly one file (LICENSE_AND_TERMS.md §13).
+- STATUS: STAGING ONLY. Not published, not priced live, no transaction, no zip.
+- Next: Sean supplies the real support address + lawyer sign-off + checkout test;
+  then the publication gate can be flipped, zips built, and checksums verified.

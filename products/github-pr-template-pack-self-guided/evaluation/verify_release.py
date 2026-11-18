@@ -5,6 +5,11 @@ Checks the things that are cheap to check and expensive to get wrong:
 required files, the capability ledger, the test suite, lint, banned marketing
 phrases, secrets, version consistency, and the published fee arithmetic.
 
+Default mode is the staging gate. `--publication` adds the publication gate,
+which refuses while the licence still carries a placeholder or while
+PUBLICATION_STATUS is not READY. Staging stays green; publication stays blocked
+until a human clears every input.
+
 Exit 0 = every check passed. Exit 1 = at least one check failed.
 """
 from __future__ import annotations
@@ -87,6 +92,9 @@ SECRET_PATTERNS = (
 )
 
 SKIP_DIRS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache"}
+
+PUBLICATION_STATUS = re.compile(r"^PUBLICATION_STATUS:\s*(\S+)", re.MULTILINE)
+PUBLICATION_PLACEHOLDERS = ("PLACEHOLDER", "BLANK —", "NOT FOR PUBLICATION")
 
 results: list[tuple[bool, str]] = []
 
@@ -206,8 +214,20 @@ def check_stale_counts() -> None:
           "no stale '73 tests'" + (f"; found {findings}" if findings else ""))
 
 
-def main() -> int:
-    print(f"release gate: {PRODUCT}")
+def check_publication() -> None:
+    text = (ROOT / "LICENSE_AND_TERMS.md").read_text(encoding="utf-8")
+    match = PUBLICATION_STATUS.search(text)
+    status = match.group(1) if match else "MISSING"
+    placeholders = [token for token in PUBLICATION_PLACEHOLDERS if token in text]
+    ok = status == "READY" and not placeholders
+    check("publication readiness", ok,
+          f"status={status}, placeholders={placeholders or 'none'}")
+
+
+def main(argv: list[str] | None = None) -> int:
+    argv = sys.argv[1:] if argv is None else argv
+    publication = "--publication" in argv
+    print(f"release gate: {PRODUCT}" + (" (publication mode)" if publication else ""))
     check_files()
     check_capabilities()
     check_tests()
@@ -217,6 +237,8 @@ def main() -> int:
     check_version()
     check_pricing()
     check_stale_counts()
+    if publication:
+        check_publication()
 
     failed = 0
     for ok, line in results:

@@ -1,7 +1,18 @@
 # Pricing
 
-Status: proposal. No price has been charged, changed, or published. Any change
-to a live price requires explicit human sign-off.
+PUBLICATION_STATUS: STAGING_ONLY
+
+Status: prices **confirmed for staging** by Sean on 2026-11-18. No price has been
+charged, changed, or published. A confirmed staging price is not a live price; any
+live price or later change requires separate explicit human sign-off.
+
+| Input | State on 2026-11-18 |
+|---|---|
+| $9 / $19 / $39 | CONFIRMED for staging |
+| Live listing price | none — not published |
+| Published listing | none |
+| Transactions | none |
+| Revenue | $0.00 |
 
 ## Tiers
 

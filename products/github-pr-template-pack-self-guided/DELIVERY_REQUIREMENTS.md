@@ -80,7 +80,11 @@ Never in a buyer package:
 - `PRODUCT_SPECIFICATION.md`, `PRODUCTION_WORKFLOW.md`, `QUALITY_CHECKLIST.md`,
   `PRICING.md`, `CAPABILITY_LEDGER.md`
 - `.git/`, `__pycache__/`, `.pytest_cache/`, any `*.pyc`
-- any file containing a token, email address, or local path
+- any file containing a token, a personal email address, or a local path
+
+One exception: the buyer-facing support address in `LICENSE_AND_TERMS.md` §13 is
+allowed inside a buyer package once it is a real address. While it carries the
+`PLACEHOLDER` marker, no package may be built or shipped.
 
 `SALES_COPY.md` is internal. The store page is built from it; the file is not
 shipped.
@@ -132,8 +136,8 @@ directory change.
 
 **Team Kit only.** 30 days from purchase.
 
-- Channel: a support email that must be created before publication. It is not
-  set in this repo and is a release blocker.
+- Channel: a support email. `LICENSE_AND_TERMS.md` §13 currently holds a
+  placeholder; the real address is still pending and is a release blocker.
 - Response: two business days.
 - In scope: installation, running the tests, a failing test traceback, unclear
   documentation, a reproducible bug in the kit.
@@ -171,15 +175,16 @@ Operator and Field buyers get documentation only. That is stated on the page.
 
 All must be cleared by a human before publication:
 
-- [ ] Support email created and tested
-- [ ] Seller legal name and address set in `LICENSE_AND_TERMS.md`
-- [ ] Governing law and venue set in `LICENSE_AND_TERMS.md`
+- [ ] Support email created and tested (placeholder in `LICENSE_AND_TERMS.md` §13, marked not for publication)
+- [x] Seller legal name and address set in `LICENSE_AND_TERMS.md` (Sean Drew, 1545 Minford Place, Bronx, NY 10460, USA — 2026-11-18)
+- [x] Governing law and venue set in `LICENSE_AND_TERMS.md` (New York, USA; Bronx County venue to be confirmed by a lawyer — 2026-11-18)
 - [ ] Licence reviewed by a lawyer
 - [ ] Test purchase on the live store, including refund path
-- [ ] Zip contents verified against section 2, not against a glob
-- [ ] `verify_release.py` exits 0
+- [ ] Zip contents verified against section 2, not against a glob (no zip built)
+- [x] `verify_release.py` exits 0 (staging gate, 9/9)
+- [ ] `verify_release.py --publication` exits 0 (publication gate — currently blocked by design)
 - [x] Independent verification report signed (PASS WITH CAVEATS; `evaluation/INDEPENDENT_VERIFICATION.md`)
-- [ ] Explicit written authorization from Sean
+- [ ] Explicit written authorization from Sean to publish. The 2026-11-18 message authorizes staging only, not publication.
 
 ## 11. Privacy
 

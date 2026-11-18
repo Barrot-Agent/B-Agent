@@ -1,9 +1,22 @@
 # Licence and terms
 
-Status: **DRAFT, NOT LEGAL ADVICE, NOT REVIEWED BY A LAWYER.** Two fields are
-intentionally blank because the seller must set them before publication:
-governing law/venue and a support contact. This file must not be shipped to a
-buyer until those fields are filled and a human has approved it.
+PUBLICATION_STATUS: STAGING_ONLY
+
+Status: **DRAFT, NOT LEGAL ADVICE, NOT REVIEWED BY A LAWYER.**
+
+Staging inputs recorded 2026-11-18:
+
+- Seller legal name and address: supplied by Sean.
+- Governing law: New York, USA. The venue sentence is a drafting choice that a
+  lawyer must confirm.
+- Support contact: **PLACEHOLDER ONLY.** The real address is still pending.
+- Lawyer review: pending.
+- Live checkout and refund test: not tested.
+
+This file must not be shipped to a buyer while any placeholder remains, while
+`PUBLICATION_STATUS` is not `READY`, or before Sean approves publication in
+writing. The release gate enforces the first two (`verify_release.py
+--publication`).
 
 ## 1. Summary
 
@@ -24,8 +37,8 @@ The summary is a convenience. Sections 3-5 control.
 
 - **Files**: the documents, templates, CSV, Python source, tests, and examples
   delivered under this product.
-- **Seller**: the Barrot-Agent GitHub account, acting through the store listing.
-  The legal entity and address must be completed before publication.
+- **Seller**: Sean Drew, 1545 Minford Place, Bronx, NY 10460, USA, acting through
+  the store listing.
 - **Buyer**: the person or organization that paid for the Files.
 - **Seat**: one individual permitted to use the Files under a Team licence.
 
@@ -125,15 +138,24 @@ termination the Buyer must delete all copies. Sections 6-8 survive termination.
 
 ## 12. Governing law and venue
 
-**BLANK — must be completed by the Seller before publication.** The contract is
-intended to be governed by the law of the Seller's jurisdiction, with venue in
-the Seller's courts. A lawyer must confirm this is enforceable where the Buyer
-lives; consumer protection rules may override it.
+These terms are governed by the law of the State of New York, USA. The parties
+submit to the exclusive jurisdiction of the state and federal courts located in
+Bronx County, New York.
+
+**Drafting note.** The county is derived from the Seller's address, not chosen
+independently. A lawyer must confirm this is enforceable where the Buyer lives;
+consumer protection rules may override this section.
 
 ## 13. Contact
 
-**BLANK — a support email must be created before publication.** Do not ship this
-file with an empty contact field.
+Support: `cryptesseract@gmail.com` — **PLACEHOLDER, NOT FOR PUBLICATION.** The
+real support address is pending. Do not publish or ship this file while the
+placeholder marker is present.
+
+Team Kit buyers get 30 days of email answers from the date of purchase, with a
+response target of two business days. Field and Operator buyers get documentation
+only. Scope is limited to installing the Files, running the tests, reading a test
+traceback, unclear documentation, and reproducible defects in the Files.
 
 ## 14. Entire agreement
 
