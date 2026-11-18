@@ -594,18 +594,18 @@
     }
   },
   "ci_evidence": {
-    "exact_code_head": "da5eef1bca0fee4f527c22fd99c8d4427cc39d7b",
-    "push_ci_run": 44411853369,
+    "exact_code_head": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
+    "push_ci_run": 44419516835,
     "full_suite": {
       "passed": 4277,
       "skipped": 1,
       "failed": 0,
       "warnings": 11,
       "subtests": 19,
-      "duration_seconds": 143.5,
+      "duration_seconds": 118.59,
       "inclusive_coverage_percent": 68.13,
       "legacy_core_coverage_percent": 77,
-      "result": "PASS on code/test predecessor da5eef1"
+      "result": "PASS on exact head 17c5afe"
     },
     "wheel_and_installed_v3": "passed",
     "dependency_audit_runs": [
@@ -640,8 +640,8 @@
       "root_cause": "The test contract expected receipt_count and transitive_script_security_review; the map only exposed receipts and transitive_script_review. This is an evidence-schema mismatch, not a forecast/model failure."
     },
     "current_pr_event": {
-      "run_id": 44414201505,
-      "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
+      "run_id": 44419528958,
+      "head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
       "status": "completed",
       "conclusion": "success",
       "core_tests": "skipped",
@@ -650,28 +650,28 @@
     },
     "current_head_dependency_audits": [
       {
-        "run_id": 44414191536,
-        "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
+        "run_id": 44419516809,
+        "head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
         "conclusion": "success"
       }
     ],
     "current_head_fail_closed_runs": [
       {
-        "run_id": 44414191549,
-        "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
+        "run_id": 44419516825,
+        "head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
         "conclusion": "success"
       }
     ],
     "current_head_money_audit": {
-      "run_id": 44414201090,
-      "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
+      "run_id": 44419528897,
+      "head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
       "event": "pull_request",
       "conclusion": "success"
     },
     "current_head_pages_validation": {
-      "run_id": 44414191550,
-      "job_id": 135190013828,
-      "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
+      "run_id": 44419516835,
+      "job_id": 135208526359,
+      "head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
       "conclusion": "success",
       "validation_only": true
     },
@@ -683,24 +683,21 @@
       "pages_deployment_result": "success"
     },
     "current_head_full_suite": {
-      "run_id": 44414191550,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44414191550",
-      "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
+      "run_id": 44419516835,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44419516835",
+      "head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
       "status": "completed",
-      "conclusion": "failure",
-      "passed": 4276,
-      "tests_failed": 1,
-      "failed": 1,
+      "conclusion": "success",
+      "passed": 4277,
+      "tests_failed": 0,
+      "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests_passed": 19,
-      "duration_seconds": 155.73,
+      "duration_seconds": 118.59,
       "inclusive_coverage_percent": 68.13,
       "legacy_core_coverage_percent": 77,
-      "failing_tests": [
-        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state"
-      ],
-      "result": "FAIL — single stale changed-file-count assertion expected 1436 while GitHub reports 1437; the adjacent workflow count is 68, not 67. No application/XRP runtime failure."
+      "result": "PASS — expanded full repository suite on exact code/test head 17c5afe."
     },
     "previous_verified_full_suite": {
       "run_id": 44322684443,
@@ -803,37 +800,36 @@
       "note": "The exact-head push full suite remains the controlling test evidence; no merge until it and all required checks finish."
     },
     "current_pr_head_ci": {
-      "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
-      "push_ci_run_id": 44414191550,
-      "push_ci_conclusion": "failure",
-      "standard_tests_job_id": 135190014281,
-      "standard_tests_status": "success",
-      "full_suite_job_id": 135190014260,
-      "full_suite_passed": 4276,
-      "full_suite_failed": 1,
+      "head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
+      "push_ci_run_id": 44419516835,
+      "push_ci_conclusion": "success",
+      "standard_tests_job_status": "success",
+      "full_suite_job_id": 135208481610,
+      "full_suite_passed": 4277,
+      "full_suite_failed": 0,
       "full_suite_skipped": 1,
       "full_suite_coverage_percent": 68.13,
-      "pr_event_run_id": 44414201505,
+      "pr_event_run_id": 44419528958,
       "pr_event_conclusion": "success",
       "pr_event_full_suite_status": "skipped",
       "pr_event_core_tests_status": "skipped",
-      "dependency_audit_run_id": 44414191536,
+      "dependency_audit_run_id": 44419516809,
       "dependency_audit_conclusion": "success",
-      "money_audit_run_id": 44414201090,
+      "money_audit_run_id": 44419528897,
       "money_audit_conclusion": "success",
-      "fail_closed_run_id": 44414191549,
+      "fail_closed_run_id": 44419516825,
       "fail_closed_conclusion": "success",
-      "pr_fail_closed_run_id": 44414201359,
+      "pr_fail_closed_run_id": 44419529212,
       "pr_fail_closed_conclusion": "success",
-      "pr_dependency_audit_run_id": 44414201173,
+      "pr_dependency_audit_run_id": 44419529095,
       "pr_dependency_audit_conclusion": "success",
       "pages_validation_status": "success_validation_only",
-      "exact_head_verification": "failed_one_stale_metadata_assertion"
+      "exact_head_verification": "PASS on 17c5afe; current branch head 4cf9b has evidence-only update and new exact-head CI pending"
     },
-    "last_verified_code_head_sha": "da5eef1bca0fee4f527c22fd99c8d4427cc39d7b",
+    "last_verified_code_head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
     "last_verified_full_suite": {
-      "head_sha": "da5eef1bca0fee4f527c22fd99c8d4427cc39d7b",
-      "run_id": 44411853369,
+      "head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
+      "run_id": 44419516835,
       "status": "completed",
       "conclusion": "success",
       "passed": 4277,
@@ -841,12 +837,17 @@
       "skipped": 1,
       "warnings": 11,
       "subtests_passed": 19,
-      "duration_seconds": 143.5,
+      "duration_seconds": 118.59,
       "inclusive_coverage_percent": 68.13,
       "legacy_core_coverage_percent": 77
     },
-    "latest_full_suite_tested_head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
-    "remediation_commit_test": "80507968e59d9a2e3f99801734d258e8f2dc1819"
+    "latest_full_suite_tested_head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
+    "remediation_commit_test": "80507968e59d9a2e3f99801734d258e8f2dc1819",
+    "current_branch_head_ci_pending": {
+      "head_sha": "4cf9b185e95b3b2231713d4dba0246eb394d768c",
+      "reason": "research-evidence-only artifact update after last verified full-suite head; exact-head push CI required before merge"
+    },
+    "cache_warning": "GitHub Actions cache budget exhausted; cache step warning only, not a test or security-gate failure."
   },
   "security_and_governance": {
     "main_branch_protected": true,
@@ -1619,7 +1620,7 @@
       "pr_money_audit_run": 44419528897,
       "pr_dependency_audit_run": 44419529095,
       "pr_fail_closed_run": 44419529212,
-      "cache_warning": "GitHub Actions cache budget exhausted; cache step warning only, not a test or security-gate failure.",
+      "cache_warning": "cache budget exhausted; warning only",
       "current_branch_head": "4cf9b185e95b3b2231713d4dba0246eb394d768c",
       "current_branch_head_ci": "pending after evidence-only artifact update"
     },
