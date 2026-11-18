@@ -29,7 +29,7 @@ def git(cwd: Path, *args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(["git", *args], cwd=cwd, capture_output=True, text=True, check=False)
 
 
-def init_repo(tmp_path: Path, *, origin: bool = False, gitlab: bool = False) -> tuple[Path, str]:
+def init_repo(tmp_path: Path, *, origin: bool = False) -> tuple[Path, str]:
     workspace = tmp_path / "repo"
     workspace.mkdir(parents=True)
     (workspace / "barrot_agent").mkdir()
@@ -51,11 +51,6 @@ def init_repo(tmp_path: Path, *, origin: bool = False, gitlab: bool = False) -> 
         remote = tmp_path / "origin.git"
         assert git(tmp_path, "init", "--bare", str(remote)).returncode == 0
         assert git(workspace, "remote", "add", "origin", str(remote)).returncode == 0
-    if gitlab:
-        remote = tmp_path / "gitlab.git"
-        assert git(tmp_path, "init", "--bare", str(remote)).returncode == 0
-        assert git(workspace, "remote", "add", "gitlab", str(remote)).returncode == 0
-
     return workspace, "barrot_agent/target.py"
 
 
