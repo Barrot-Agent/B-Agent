@@ -2121,3 +2121,41 @@ The Run 26 market artifact and map were corrected and extended with a second dir
 - Current depth evidence remains Basis's single-venue Binance XRPUSDT perpetual book; a synchronized cross-venue spot L2 snapshot is still missing.
 
 The updated source receipts hash the exact web-rendered JSON/excerpt text. They are not independently captured wire bytes and are not externally WORM-anchored. All current observations remain model-ineligible; forecast issuance remains disabled. This supplemental commit supersedes the earlier Run 26 field label but does not change the NO MERGE disposition.
+
+
+## Run 26 workflow and script transitive-review spot-check — 2026-11-18T21:09:15Z
+
+This is a bounded review, not completion of the full 67-workflow transitive audit.
+
+### Scripts inspected
+
+- `scripts/coinbase_paper_trader.py`: reads Coinbase public ticker and recent-trade endpoints, calls Groq for a simulated decision, and writes local `web/paper_trading_state.json` / `web/paper_trading_log.jsonl`. No Coinbase order endpoint or Coinbase trading key was found in the inspected script. The workflow is manual, requires `YES` and an exact main SHA, and uploads artifacts only. Its configured product is BTC-USD, not XRP. It was not run.
+- `scripts/deploy_databricks.py`: performs real external workspace mutations: `workspace.mkdirs`, `workspace.import_(overwrite=True)`, job reset/create and `run_now`. Its workflow is manual and checks an explicit external-change confirmation plus exact main SHA. It was not run.
+- `scripts/kaggle_competitions_automation.py`: writes Kaggle credentials to the runner filesystem, downloads competition data and calls `competition_submit`. Its workflow requires explicit YES, a non-empty competition allowlist and exact main SHA. It was not run.
+- `scripts/paid_issue_hunter.py`: GitHub search and repository-metadata reads plus local `PAID-ISSUES.md` and JSON writes; no issue comments, claims or labels. The separate publisher remains active on main and can push those generated files; the integration branch disables that publisher.
+
+### Workflow paths inspected
+
+- `barrot-ops.yml`: manual exact-main-SHA gate; separate confirmations for Databricks workspace import with `--overwrite` and Kaggle dataset download.
+- `deploy-a2a-worker.yml`: manual exact-main-SHA Cloudflare Worker deployment; separate confirmation for secret rotation/upload.
+- `deploy-databricks.yml`: manual exact-main-SHA external workspace deployment.
+- `kaggle-competitions.yml`: manual exact-main-SHA submission with explicit competition allowlist.
+- `barrot-restart-space.yml`: manual exact-main-SHA factory restart using the Hugging Face token.
+- `coinbase-paper-trader.yml`: manual artifact-only simulation with exact main SHA and YES confirmation.
+- `sync-huggingface.yml` and `databricks-bundle.yml`: quarantined with empty permissions and false job conditions.
+- `sync-self-hosted-brain.yml`: job condition is false.
+
+No workflow was dispatched. No deployment, workspace write, secret rotation, Space restart, Kaggle download/submission, Groq paper simulation, funds transfer or real-money action occurred.
+
+### Exact-head CI at this capture
+
+Current head: `c9fbb2075e78772d2d3c91e0d36f98af6b2e7fa0`.
+
+- Push CI run [44398295346](https://github.com/Barrot-Agent/B-Agent/actions/runs/44398295346): standard tests and Pages validation passed; full repository test suite still in progress.
+- Push dependency audit [44398295297](https://github.com/Barrot-Agent/B-Agent/actions/runs/44398295297): passed.
+- Push fail-closed gate [44398295405](https://github.com/Barrot-Agent/B-Agent/actions/runs/44398295405): passed.
+- PR CI [44398308604](https://github.com/Barrot-Agent/B-Agent/actions/runs/44398308604): passed, but the standard tests and full suite were skipped because PR #1663 remains draft.
+- PR money audit [44398308501](https://github.com/Barrot-Agent/B-Agent/actions/runs/44398308501): passed.
+- PR dependency audit [44398308612](https://github.com/Barrot-Agent/B-Agent/actions/runs/44398308612): still in progress.
+
+The integration PR remains blocked. This spot-check does not close the transitive review requirement and does not authorize external actions.

@@ -1,32 +1,32 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-18T21:02:30Z",
+  "captured_at_utc": "2026-11-18T21:09:15Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
     "main_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
     "integration": {
       "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
-      "code_head_sha": "132d33d3a181a405238e6acb9200de00986b79c9",
+      "code_head_sha": "c9fbb2075e78772d2d3c91e0d36f98af6b2e7fa0",
       "pr_number": 1663,
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 329,
+      "ahead_by": 330,
       "behind_by": 0,
       "changed_files": 1430,
       "changed_workflow_files": 67,
       "formal_reviews": 0,
-      "snapshot_head_sha": "132d33d3a181a405238e6acb9200de00986b79c9",
-      "commits": 329,
+      "snapshot_head_sha": "c9fbb2075e78772d2d3c91e0d36f98af6b2e7fa0",
+      "commits": 330,
       "additions": 515778,
       "deletions": 6596,
       "mergeable_state": "draft; exact-head push CI still running",
       "review_comments": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
-      "current_pr_head_sha": "132d33d3a181a405238e6acb9200de00986b79c9",
+      "current_pr_head_sha": "c9fbb2075e78772d2d3c91e0d36f98af6b2e7fa0",
       "snapshot_ahead_by": 321,
       "snapshot_changed_files": 1428,
       "handoff_update_commit_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
@@ -614,21 +614,23 @@
       "installed_wheel_v3_xrp_mission": "verified"
     },
     "run26_current_integration_head": {
-      "head_sha": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
-      "push_ci_run": 44397557544,
+      "head_sha": "c9fbb2075e78772d2d3c91e0d36f98af6b2e7fa0",
+      "push_ci_run": 44398295346,
       "push_ci_status": "in_progress",
       "full_suite_status": "in_progress",
-      "dependency_audit_run": 44397557605,
-      "dependency_audit_status": "in_progress",
-      "fail_closed_run": 44397557794,
+      "standard_tests": "success",
+      "pages_validation": "success",
+      "dependency_audit_run": 44398295297,
+      "dependency_audit_status": "success",
+      "fail_closed_run": 44398295405,
       "fail_closed_result": "success",
-      "pr_ci_run": 44397569502,
-      "pr_ci_status": "in_progress",
-      "pr_dependency_audit_run": 44397569235,
+      "pr_ci_run": 44398308604,
+      "pr_ci_status": "success; standard tests and full suite skipped because PR is draft",
+      "pr_dependency_audit_run": 44398308612,
       "pr_dependency_audit_status": "in_progress",
-      "pr_money_audit_run": 44397569295,
-      "pr_money_audit_status": "in_progress",
-      "note": "This is the pre-handoff evidence head. The map and handoff update itself will create a new commit requiring exact-head CI."
+      "pr_money_audit_run": 44398308501,
+      "pr_money_audit_status": "success",
+      "note": "The exact-head push full suite remains the controlling test evidence; no merge until it and all required checks finish."
     }
   },
   "security_and_governance": {
@@ -664,7 +666,7 @@
     },
     "changed_workflow_files": 67,
     "workflow_diff_scan": "67 changed workflow YAML definitions were statically scanned; the integration release workflow pins its actions. Main still has three tag-based action references in release.yml. Transitive script, artifact and third-party action behavior review remains incomplete.",
-    "transitive_script_review": "incomplete",
+    "transitive_script_review": "PARTIAL — four invoked scripts and six external-action workflow paths were inspected in Run 26; full transitive review of all 67 changed workflow definitions and invoked scripts remains incomplete.",
     "automatic_pages_deployment_run": 44369186191,
     "paid_issue_hunter_run": 44251899369,
     "paid_issue_publish_run": 44369074831,
@@ -685,7 +687,7 @@
       "absent_from_changed_file_diffs": true,
       "content_read": false
     },
-    "transitive_script_security_review": "incomplete",
+    "transitive_script_security_review": "INCOMPLETE — Run 26 spot-check findings are recorded; no claim of full transitive review.",
     "protection_details_verified": false,
     "required_status_checks_verified": false,
     "connector_token_scopes_introspected": false,
@@ -765,7 +767,67 @@
       "actions/setup-python@v7",
       "softprops/action-gh-release@v3"
     ],
-    "integration_release_workflow": "The integration version pins checkout, setup-python and softprops action references to full commit SHAs."
+    "integration_release_workflow": "The integration version pins checkout, setup-python and softprops action references to full commit SHAs.",
+    "run26_reviewed_scripts": [
+      "scripts/coinbase_paper_trader.py",
+      "scripts/deploy_databricks.py",
+      "scripts/kaggle_competitions_automation.py",
+      "scripts/paid_issue_hunter.py"
+    ],
+    "run26_reviewed_workflows": [
+      ".github/workflows/barrot-ops.yml",
+      ".github/workflows/deploy-a2a-worker.yml",
+      ".github/workflows/deploy-databricks.yml",
+      ".github/workflows/kaggle-competitions.yml",
+      ".github/workflows/barrot-restart-space.yml",
+      ".github/workflows/coinbase-paper-trader.yml",
+      ".github/workflows/sync-huggingface.yml",
+      ".github/workflows/sync-self-hosted-brain.yml",
+      ".github/workflows/databricks-bundle.yml"
+    ],
+    "run26_transitive_findings": {
+      "coinbase_paper_trader": {
+        "behavior": "Reads public Coinbase ticker/recent trades, sends a bounded prompt to Groq, updates local simulated state and log files.",
+        "real_coinbase_order_endpoint_found": false,
+        "coinbase_api_key_required": false,
+        "workflow_controls": "Manual workflow_dispatch; explicit YES; exact main SHA; read-only GitHub permissions; artifact-only output.",
+        "default_product": "BTC-USD",
+        "execution_this_run": false
+      },
+      "deploy_databricks": {
+        "behavior": "External workspace writes: mkdirs, import with overwrite=true, reset/create job and run_now.",
+        "workflow_controls": "Manual dispatch; explicit external-change YES; exact main SHA; read-only repository permission.",
+        "execution_this_run": false
+      },
+      "kaggle_competitions_automation": {
+        "behavior": "Writes Kaggle credentials to the runner filesystem, downloads datasets and calls competition_submit.",
+        "workflow_controls": "Manual dispatch; explicit YES; exact main SHA; non-empty competition allowlist.",
+        "execution_this_run": false
+      },
+      "paid_issue_hunter": {
+        "behavior": "GitHub search/repository metadata reads and local PAID-ISSUES.md/JSON writes; no issue comments, claims or labels.",
+        "paired_publisher": "Main publisher remains active and can push the generated files to main; integration disables that publisher.",
+        "execution_this_run": false
+      },
+      "barrot_ops": {
+        "behavior": "Manual exact-SHA operation; separate confirmations authorize Databricks workspace import with overwrite and Kaggle dataset download.",
+        "execution_this_run": false
+      },
+      "deploy_a2a_worker": {
+        "behavior": "Manual exact-main-SHA Cloudflare Worker deployment; separate confirmation authorizes secret rotation/upload.",
+        "execution_this_run": false
+      },
+      "restart_space": {
+        "behavior": "Manual exact-main-SHA factory restart using HF_TOKEN.",
+        "execution_this_run": false
+      },
+      "quarantined_workflows": {
+        "sync_huggingface": "permissions empty; job if false",
+        "sync_self_hosted_brain": "job condition false",
+        "databricks_bundle": "permissions empty; job if false"
+      },
+      "limitations": "This is a bounded spot-check, not a full audit of all 67 changed workflows, all invoked scripts, action transitive dependencies, artifacts or target-side effects."
+    }
   },
   "open_pr_backlog": [
     {
@@ -1002,7 +1064,8 @@
     "duplicate": 0,
     "superseded": 0
   },
-  "snapshot_id": "nine-platform-map-run26-20261118T210230Z-supplement1",
+  "snapshot_id": "nine-platform-map-run26-20261118T210915Z-transitive-spotcheck",
   "run25_evidence_record": "research/xrp_intelligence/20261118T202745Z-run25-market-ingestion-ci-security-reconciliation.json",
-  "run26_evidence_record": "research/xrp_intelligence/20261118T210230Z-run26-market-spot-derivatives-etf-macro-reconciliation.json"
+  "run26_evidence_record": "research/xrp_intelligence/20261118T210230Z-run26-market-spot-derivatives-etf-macro-reconciliation.json",
+  "run26_transitive_review_record": "Run 26 handoff section: workflow and script transitive review spot-check."
 }
