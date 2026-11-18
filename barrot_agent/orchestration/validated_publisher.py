@@ -21,10 +21,7 @@ class ValidatedPublisher:
     def __init__(
         self,
         workspace: str = ".",
-        remotes: tuple[str, ...] = (
-            "origin",
-            "gitlab",
-        ),
+        remotes: tuple[str, ...] = ("origin",),
     ):
         self.workspace = Path(workspace)
         self.remotes = remotes
