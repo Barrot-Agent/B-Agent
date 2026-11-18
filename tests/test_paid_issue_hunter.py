@@ -89,27 +89,27 @@ def test_scheduled_hunter_cannot_push():
     assert "contents: write" not in text
 
 
-def test_publish_workflow_is_triggered_by_the_hunter_and_only_on_main():
+def test_publish_workflow_is_disabled_until_authorized():
     payload = yaml.load(PUBLISH.read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
     trigger = payload["on"]["workflow_run"]
     assert trigger["workflows"] == ["Paid issue hunter"]
     assert trigger["types"] == ["completed"]
     assert trigger["branches"] == ["main"]
-    assert payload["permissions"]["contents"] == "write"
+    assert payload["permissions"] == {}
+    assert str(payload["jobs"]["disabled"]["if"]).lower() == "false"
+    assert len(payload["jobs"]["disabled"]["steps"]) == 1
     text = PUBLISH.read_text(encoding="utf-8")
-    assert "github.event.workflow_run.conclusion == 'success'" in text
-    assert "github.event.workflow_run.head_branch == 'main'" in text
-    assert "github.event.workflow_run.head_repository.full_name == github.repository" in text
-    assert "github.event.workflow_run.event == 'schedule'" in text
-    assert "github.event.workflow_run.event == 'workflow_dispatch'" in text
-    assert "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7" in text
-    assert "actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7" in text
-    assert "persist-credentials: true" in text
-    assert "git push origin main" in text
-    assert "gh pr merge" not in text
-    assert "gh issue" not in text
-
-
+    assert "Repository publication is disabled pending explicit authorization" in text
+    for forbidden in (
+        "contents: write",
+        "persist-credentials: true",
+        "git push",
+        "actions/checkout",
+        "actions/download-artifact",
+        "gh pr merge",
+        "gh issue",
+    ):
+        assert forbidden not in text
 def test_record_file_claims_zero_mutations():
     data = json.loads((ROOT / "data" / "money" / "paid_issues.json").read_text(encoding="utf-8"))
     assert data["mutations_performed"] == 0
