@@ -23,7 +23,7 @@ Notably, the listing contains **almost no application source code** (no `src/`, 
 | GitHub Actions workflows | ~86 files, of which 8 carry a `.disabled` suffix |
 | Top-level Markdown docs | ~45, predominantly status/summary-style (`*_SUMMARY.md`, `*_COMPLETE.md`, `*_RESPONSE_*.md`) |
 | `.barrot/` state directory | Acceptance-matrix records (cases 26–30 only), 4 disabled test files, execution ledger (`.jsonl`), identity/manifest/registry JSONs, 2 Python scripts |
-| CI systems | Both `.gitlab-ci.yml` and GitHub workflows present |
+| CI systems | GitHub Actions only; GitLab CI integration retired |
 | Committed personal environment files | `.bashrc`, `.gitconfig`, `.config/gh/config.yml`, `.termux/termux.properties`, `.termux_dna_harvest.log` |
 | Governance artifacts present | `SECURITY.md`, `CODEOWNERS`, `dependabot.yml`, `.pre-commit-config.yaml`, `dependency-audit.yml`, `barrot-transparency-audit.yml`, `LICENSE` |
 
