@@ -29,8 +29,8 @@ def test_production_schedule_is_separate_from_integration_smoke():
     assert "startsWith(github.ref, 'refs/heads/integration/')" in capture_step["env"]["INCLUDE_SEC_COMPANYFACTS"]
     assert payload["jobs"]["capture"]["if"] == (
         "github.ref == 'refs/heads/main' || "
-        "(github.event_name == 'push' && "
-        "startsWith(github.ref, 'refs/heads/integration/'))"
+        "(startsWith(github.ref, 'refs/heads/integration/') && "
+        "(github.event_name == 'push' || github.event_name == 'workflow_dispatch'))"
     )
 
 
