@@ -410,8 +410,8 @@
       44389162453
     ],
     "money_audit_run": 44389162562,
-    "pr_ci_run": 44389162423,
-    "pr_full_suite": "skipped because PR #1663 remains draft; exact-head push CI is the full-suite evidence",
+    "pr_ci_run": 44393090765,
+    "pr_full_suite": "PR event CI passed on 9c71; full repository suite passed in push run 44393080713.",
     "pre_fix_pr_head_ci": {
       "run_id": 44269593667,
       "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44269593667",
@@ -443,33 +443,45 @@
       {
         "run_id": 44389147714,
         "result": "success",
-        "scope": "push; exact code head"
+        "scope": "push; code head 0f981"
       },
       {
         "run_id": 44389162468,
         "result": "success",
-        "scope": "pull_request; draft PR"
+        "scope": "pull_request; code head 0f981"
+      },
+      {
+        "run_id": 44393080908,
+        "result": "success",
+        "scope": "push; documentation successor 9c71"
       }
     ],
     "current_head_fail_closed_runs": [
       {
         "run_id": 44389147601,
         "result": "success",
-        "scope": "push; merge intentionally disabled"
+        "scope": "push; code head 0f981; merge disabled"
       },
       {
         "run_id": 44389162453,
         "result": "success",
-        "scope": "pull_request; merge intentionally disabled"
+        "scope": "pull_request; code head 0f981; merge disabled"
+      },
+      {
+        "run_id": 44393080563,
+        "result": "success",
+        "scope": "push; documentation successor 9c71"
       }
     ],
     "current_head_money_audit": {
-      "run_id": 44389162562,
-      "result": "success"
+      "run_id": 44393090841,
+      "result": "success",
+      "head_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011"
     },
     "current_head_pages_validation": {
-      "run_id": 44389162423,
+      "run_id": 44393080713,
       "result": "success",
+      "head_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
       "deployment": false
     },
     "main_after_paid_issue_publish": {
@@ -524,11 +536,27 @@
     "post_handoff_head_ci": {
       "head_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
       "push_ci_run": 44393080713,
-      "push_ci_status": "in_progress_at_snapshot",
+      "push_ci_status": "completed",
+      "push_ci_conclusion": "success",
+      "full_suite": {
+        "passed": 4275,
+        "skipped": 1,
+        "failed": 0,
+        "warnings": 11,
+        "subtests_passed": 19,
+        "duration_seconds": 191.44,
+        "inclusive_coverage_percent": 68.14,
+        "legacy_core_coverage_percent": 77
+      },
       "dependency_audit_run": 44393080908,
-      "dependency_audit_status": "in_progress_at_snapshot",
+      "dependency_audit_status": "completed",
+      "dependency_audit_conclusion": "success",
       "fail_closed_run": 44393080563,
       "fail_closed_result": "success",
+      "money_audit_run": 44393090841,
+      "money_audit_result": "success",
+      "pr_event_ci_run": 44393090765,
+      "pr_event_ci_result": "success",
       "pages_validation": "success; validation only; no deployment"
     }
   },
@@ -661,7 +689,7 @@
     {
       "number": 1663,
       "classification": "blocked",
-      "note": "sole consolidated V3/XRP integration; draft; current PR head 9c71af0, 323 ahead/0 behind, 1,429 files and 67 changed workflows; full suite passed on code head 0f981f5; post-handoff CI was still running at snapshot; no independent reviews; Pages deployment side effect and incomplete transitive workflow review block merge"
+      "note": "sole consolidated V3/XRP integration; draft; current PR head 9c71af0, 323 ahead/0 behind, 1,429 files and 67 changed workflows; full suite passed on code head 0f981f5 and documentation successor 9c71af0; no independent reviews; Pages deployment side effect and incomplete transitive workflow review block merge"
     },
     {
       "number": 1666,
