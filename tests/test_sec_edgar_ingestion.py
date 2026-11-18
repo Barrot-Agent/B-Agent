@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 
 import pytest
 
+from barrot_agent.evolution import sec_edgar
 from barrot_agent.evolution.sec_edgar import (
     SEC_ISSUERS, SECEdgarError, capture_sec_edgar, fetch_sec_json,
     parse_companyfacts, parse_submissions,
@@ -104,6 +105,15 @@ def test_fetch_sec_json_rejects_non_sec_hosts_without_network():
         fetch_sec_json("sec_edgar_test", "https://example.com/data.json")
 
 
+def test_fetch_sec_json_requires_a_monitored_project_contact(monkeypatch):
+    monkeypatch.setattr(sec_edgar, "SEC_USER_AGENT", "")
+    with pytest.raises(SECEdgarError, match="BARROT_SEC_USER_AGENT"):
+        fetch_sec_json(
+            "sec_edgar_test",
+            "https://data.sec.gov/submissions/CIK0002092592.json",
+        )
+
+
 def test_capture_sec_edgar_stores_raw_receipts_and_filing_events(tmp_path):
     captured = datetime(2026, 11, 18, 5, 0, tzinfo=timezone.utc)
     accessions = {
@@ -127,6 +137,7 @@ def test_capture_sec_edgar_stores_raw_receipts_and_filing_events(tmp_path):
             "http_date": "Wed, 18 Nov 2026 05:00:00 GMT",
             "http_headers": {"content-type": "application/json"},
         }
+    monkeypatch.setattr(sec_edgar, "SEC_USER_AGENT", "Barrot-Agent Test contact@example.invalid")
     archive = RawReceiptArchive(tmp_path / "raw")
     result = capture_sec_edgar(
         fetcher=fetcher, archive=archive, captured_at=captured, include_companyfacts=True

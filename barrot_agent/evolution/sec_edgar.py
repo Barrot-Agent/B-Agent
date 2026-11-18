@@ -425,13 +425,23 @@ def capture_sec_edgar(*, fetcher: Callable[[str, str], Mapping[str, Any]], archi
                 if truncated:
                     truncated_issuers.append(issuer["entity_id"])
 
-    status = "COMPLETED" if not failures else ("PARTIAL" if receipts else "FAILED")
+    blocked_for_contact = bool(failures) and not receipts and all(
+        "BARROT_SEC_USER_AGENT" in failure.get("failure_detail", "")
+        for failure in failures
+    )
+    status = (
+        "BLOCKED_CONFIGURATION" if blocked_for_contact
+        else "COMPLETED" if not failures
+        else "PARTIAL" if receipts
+        else "FAILED"
+    )
     summary = {
         "status": status, "issuer_count": len(SEC_ISSUERS),
         "issuer_ids": [issuer["entity_id"] for issuer in SEC_ISSUERS],
         "submissions_source_count": submissions_count,
         "companyfacts_source_count": companyfacts_count,
         "companyfacts_requested": include_companyfacts,
+        "contact_identity_configured": bool(SEC_USER_AGENT),
         "filing_event_count": len(filing_events), "capital_fact_count": len(capital_facts),
         "capital_fact_truncated_issuers": truncated_issuers,
         "source_failure_count": len(failures), "raw_receipt_count": len(receipts),
