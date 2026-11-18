@@ -8689,3 +8689,75 @@ These SBI releases come from one publisher family and are not independent corrob
 The preceding handoff/artifact commit `f61feae366898714aff3a31e84c40d2d86f4f320` passed exact-head push CI: 4,257 passed, 1 skipped, 11 warnings, 19 subtests; 68.13% inclusive coverage and 77% legacy-core coverage. Push and PR dependency audits passed after the PR audit's first attempt hit a transient PyPI read timeout; retry attempt 2 audited all six manifests and reported no known vulnerabilities. Push and PR fail-closed gates, PR money audit and PR CI validation passed. The PR CI's full-suite job remains skipped because #1663 is draft; the exact-head push CI ran the full suite.
 
 The following SBI continuation is an evidence/handoff-only update. It does not alter model code, forecast eligibility or production workflows. Its new commit will require its own exact-head CI before any future merge decision.
+
+
+---
+
+## Run 15 — 2026-11-18 04:00 UTC — SBIC/ChatGPT, ASK Coin and Evernorth actual-capital reconciliation
+
+### Repository state and exact-head verification
+
+- Main remains `b5b22ea58fa069792b0728d47cb2414855234a4a`.
+- Existing integration branch remains `integration/xrp-v3-mainline-successor-20261115T2101Z`; pre-append head `b390a3ffa3483181293bc38b5a7924d468100e96`, 263 commits ahead, zero behind, 1,409 changed files.
+- Main tree contains 1,737 entries; integration tree contains 2,960. The complete PR file list was retrieved across 14 paginated API pages (1,409 unique paths), including all 67 changed workflow definitions.
+- Nine PRs remain open. #1663 is still the sole consolidated integration PR and remains draft. No new PR was created.
+- Exact-head push CI [44232499974](https://github.com/Barrot-Agent/B-Agent/actions/runs/44232499974) passed on `b390a3ffa3483181293bc38b5a7924d468100e96`: **4,257 passed, 1 skipped, 11 warnings, 19 subtests**, 145.40 seconds; 68.13% inclusive coverage and 77% legacy-core coverage. Wheel build and installed Barrot V3/XRP mission verification passed.
+- Dependency audits [44232499860](https://github.com/Barrot-Agent/B-Agent/actions/runs/44232499860) and [44232506313](https://github.com/Barrot-Agent/B-Agent/actions/runs/44232506313) passed across six manifests. Fail-closed gates [44232499861](https://github.com/Barrot-Agent/B-Agent/actions/runs/44232499861) and [44232506317](https://github.com/Barrot-Agent/B-Agent/actions/runs/44232506317) passed. Money audit [44232506347](https://github.com/Barrot-Agent/B-Agent/actions/runs/44232506347) passed. PR CI [44232506310](https://github.com/Barrot-Agent/B-Agent/actions/runs/44232506310) passed validation; its full-suite job was skipped because the PR is draft. The exact-head push run above is the full-suite evidence.
+- Current main Cross Analysis [44233314005](https://github.com/Barrot-Agent/B-Agent/actions/runs/44233314005) succeeded. A full repository suite on current main SHA was not observed; the last full main suite was on predecessor `c54447c`.
+- Branch-protection details remain inaccessible (403); visible fallback ruleset 10863829 is disabled; CODEOWNERS is self-only; formal reviews remain zero. Main Pages deployment is an existing automatic side effect.
+
+### SBIC / ChatGPT exact-phrase resolution
+
+The official [Tokyo SBIC training page](https://www.sbic.co.jp/training/20250612co/) documents a two-day introductory generative-AI and machine-learning course for manufacturing companies on June 12–13, 2025. Its curriculum explicitly includes ChatGPT usage on day one and Copilot on day two. The instructor was from VOST, and eligibility was restricted to SBIC investee companies; general companies were not eligible.
+
+This is a credible primary-source explanation for an “SBIC, ChatGPT SBIC” search hit. It establishes a Tokyo SBIC training course, not an OpenAI partnership, private OpenAI deployment, SBI Holdings project or XRP relationship. The legal entity is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; it must remain distinct from SBI Holdings and from the other regional SBIC companies.
+
+### ASK Coin identity
+
+Permission's [first-party ASK token documentation](https://docs.permission.ai/ask-token) identifies ASK as the native token of the Permission ecosystem, with a stated 100-billion-token supply and LayerZero OFT deployment on Base and Polygon. The official site now presents Permission as a family-friendly AI/rewards product. No XRP Ledger deployment, Ripple relationship or XRP-market linkage was established.
+
+Treat this as the identified ASK candidate, not proof that it is the same ASK mentioned in any unidentified video or prior context.
+
+### “Actual capital” — Evernorth primary SEC reconciliation
+
+The exact-phrase search surfaced secondary commentary distinguishing actual capital from financing capacity. The important correction now comes from Evernorth's own SEC filings:
+
+1. **October 9 closing:** Evernorth reported approximately **$272.6 million gross cash proceeds**—about $224.6 million from private-placement investments and $48.0 million released from the SPAC trust after redemptions—before transaction expenses. It also reported approximately 388.91 million XRP contributed in kind. These are different asset classes; gross closing cash is not net unrestricted cash.
+2. **October 13 convertible note:** Evernorth issued $30.0 million principal amount of 4.00% Convertible Senior PIK Notes due 2031 and reported **$29.0 million net cash proceeds** after a $1.0 million capital-markets-advisor fee. This is debt financing, not equity and not evidence of an XRP purchase.
+3. **October 12–November 9 warrant exercises:** Holders exercised 3,073,366 public warrants at $11.50 per share. Evernorth issued the same number of shares and reported **$35.3 million gross cash proceeds**; 8,666,279 warrants remained outstanding.
+4. **October 23 Cantor equity line:** The ELOC facility permits Evernorth, at its option, to direct CF Principal Investments LLC to purchase up to 5,218,935 newly issued shares, subject to 97%-of-VWAP pricing, volume/ownership caps and other conditions. The registration became effective October 30. The November 17 supplement continues to describe potential sales and says proceeds depend on whether and at what prices shares are sold. **No ELOC drawdown was disclosed in the reviewed November 17 supplement.** The facility is capacity, not confirmed cash raised.
+
+Primary filings: [Evernorth 10-Q / November 13 supplement](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm), [November 17 ELOC supplement and 8-K/A](https://www.sec.gov/Archives/edgar/data/2092592/000162828026074355/evernorth-424stickerelocsxa.htm), and [October 23 8-K](https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm).
+
+**Do not combine these amounts into one current cash balance.** The $272.6 million is gross closing cash before expenses; $29.0 million is net note proceeds; $35.3 million is gross warrant cash; and the ELOC is optional capacity. The cited filings do not prove that the note or warrant proceeds were used to buy XRP. The filings also do not itemize SBI Holdings' share of the private-placement cash. Do not infer XRP spot demand from financing capacity, debt issuance, warrant exercise or corporate cash without asset-specific execution evidence.
+
+### Kamilah Stevenson channel gate
+
+The first-party [Wealth Doctor site](https://learn.kamilahstevenson.com/) identifies Dr. Kamilah Stevenson but does not link a YouTube channel in the retrieved page. YouTube search surfaced another candidate, “Kamilah Stevenson | XRP & Stocks” (channel ID `UCXm6KAr1WHF6UN7g5b2W7wg`), but no first-party cross-link was found. It remains unverified and was not added to the person-level video inventory. The prior three-video list for `@drkamilahstevenson` remains provisional/high-confidence, not a fully authenticated channel inventory.
+
+### Prediction and market-data status
+
+No new live market ingestion was completed in this pass. The latest available single-venue Kraken observation remains the Run 14 capture: last $0.97880, bid/ask $0.97863/$0.97864, top sizes 340 XRP bid and 59 XRP ask, 24-hour volume 39.58M XRP. This is not consolidated depth or directional evidence.
+
+The last ingestion remains run 44200190839 on older collector code: 32 receipts (20 raw retained, 12 digest-only), chain sequence 5 without an external anchor, 16 source failures, 104 eligible / 361 excluded features, four independence groups, 140 events / 107 scenarios and zero model-eligible events. The event registry has zero raw-source hashes, 54 exact publisher timestamps and 86 missing timestamps. The latest CSV parser fix still lacks a subsequent live-ingestion validation. Forecast status remains **NOT_ISSUED**.
+
+Rendered web evidence in this supplement has no raw HTTP payload hash and is model-ineligible. The Git commit provides repository version history, not an independent WORM or timestamp anchor.
+
+### PR classifications and decision
+
+- **#1663:** sole consolidated integration PR; draft; no formal reviews.
+- **#1541:** partial overlap with #1663 on five paths; two blobs identical and three divergent. Preserve until successor merge and content verification.
+- **#1265:** unique ledger-index work; only `.github/workflows/ci.yml` overlaps and the blobs differ.
+- **#1353, #1436, #1437, #1440, #1450 and #1460:** unique/dependent stacked research or repair work; preserve.
+- No source PR was closed.
+
+**Decision: NO MERGE.** Exact-head tests and gates pass, but draft status, zero independent reviews, inaccessible branch-protection evidence, self-only CODEOWNERS, disabled fallback ruleset, incomplete transitive workflow/script audit and the automatic Pages side effect remain blockers.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** SEC EDGAR capital-event schema separating gross/net cash, debt, equity, in-kind XRP and optional financing capacity; source identity gates for SBIC, ASK and YouTube.
+- **EXECUTED:** refreshed current refs, complete tree counts, all PR file pages, nine-PR inventory, branch ancestry, exact-head CI/security results and primary SBIC/Permission/SEC research; updated this handoff and a structured evidence artifact.
+- **VERIFIED:** exact-head full suite and gates on `b390a3ffa3483181293bc38b5a7924d468100e96`; current main SHA; official Tokyo SBIC course details; Permission ASK token documentation; SEC-reported $29.0M net note proceeds and $35.3M gross warrant proceeds; absence of evidence tying those proceeds to XRP purchases.
+- **NOT VERIFIED:** exact-head CI for this new evidence commit until its triggered runs complete; current-main exact-head full suite; ELOC drawdown; XRP purchases funded by the new proceeds; raw-source hashes for rendered web pages; external WORM anchor; direct YouTube channel cross-link; nine-platform live connections; predictive edge or shadow performance.
+
+**Next concrete action:** add a read-only SEC EDGAR filing adapter to the existing public ingestion pipeline. Capture accession number, filing/acceptance dates, event dates, shares exercised, gross/net proceeds, instrument type and use-of-proceeds caveats as point-in-time capital events. Keep company financing separate from XRP spot demand. Add fixtures and tests, then validate a live public filing capture on the integration head.
