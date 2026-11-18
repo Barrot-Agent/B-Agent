@@ -947,3 +947,22 @@
   lawyer review, live checkout/refund test, zip+checksums, Sean's written
   authorization.
 - Next: Sean authorizes or rejects. No further building until then.
+
+## 2026-11-18 — v2.2 compliance pass: renames, template prune, README rewrite
+- Renames (git mv, history kept): `products/ship-paid-issue-pr-in-2-hours` ->
+  `products/github-pr-template-pack-self-guided` (46 paths);
+  `products/drafts/citation-audit-service` -> `citation-audit-checklist`.
+- Deleted: `products/templates/service-template.md`, `saas-mcp-template.md`.
+  Templates now 6, one per surviving category. PRODUCTS_MATRIX rows for offers of
+  labour and SaaS removed; rows renumbered 1-6.
+- README.md rewritten to the Foundry structure: what it is, Phase 1 status,
+  current product + $9/$19/$39, 10 PROPOSED components, 8 roles, run rules,
+  compliance, blockers, last-updated HEAD.
+- Banned scan scope = compliance surface (README, PRODUCTS_MATRIX, products/,
+  docs/money). Result 0. Whole-repo = 894, all in code filenames and historical
+  corpora; not a compliance surface and not claimed as zero.
+- Product proof after rename: 76/76 tests, release gate 9/9 (39/39 files,
+  flake8 clean, 55 files secret-scanned, 0 findings).
+- Not done, needs approval: rename internal package `paid_issue_kit`; none of the
+  ten components promoted; nothing published, priced live, or merged.
+- Next: Sean's Stage 10 decision + the 8 blocked inputs.

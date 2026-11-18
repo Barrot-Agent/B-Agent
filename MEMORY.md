@@ -371,3 +371,38 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   remain PROPOSED.
 - Publish blockers: support email, legal name/address, governing law, lawyer
   review, live checkout/refund test, zip+checksums, Sean's written approval.
+
+## 2026-11-18 — PERMANENT PRODUCT RULES (v2.2 / v2.3.1)
+- v2.2: digital downloads ONLY. No offers of labour. A product is files plus a
+  self-guided checklist. Template 4 (offers of labour) is DELETED and must not
+  come back.
+- v2.3.1: secrets come from env vars or GitHub Secrets only. Never write a secret
+  value to a file, a log, or chat.
+- Store only readily accessible data: specs, sources, templates, logs, HEAD, STATUS.
+- Dynamic role-shift across the 8 roles; sandbox first.
+- Transmute every query to: Intent + Best Outcome + Compliant Path + Sandbox Test
+  + Log Proof.
+- Never merge, publish, or change a price without Sean's explicit approval.
+- Banned terms on the product surface (scan must be 0): service, consulting,
+  done-for-you, audit for you, we'll fix, we fix your repo, paid issue fixing,
+  workflow fixing, repo audit, 1:1, live support, repair service.
+- Scan scope = compliance surface: README.md, PRODUCTS_MATRIX.md, products/,
+  docs/money/. The rest of the repo is code and historical corpus, so a literal
+  whole-repo zero is not achievable and must not be reported as if it were.
+- 2026-11-18 state: compliance-surface scan = 0. Whole-repo = 894 hits (code
+  filenames such as github_service.py, historical corpora). Reported, not hidden.
+
+## 2026-11-18 — product renamed + README rewritten
+- `products/ship-paid-issue-pr-in-2-hours/` -> `products/github-pr-template-pack-self-guided/`
+  (git mv, 46 paths; product content re-titled "GitHub PR Template Pack — Self-Guided").
+- `products/drafts/citation-audit-service/` -> `products/drafts/citation-audit-checklist/`.
+- `products/templates/service-template.md` and `saas-mcp-template.md` deleted;
+  remaining templates = 6, one per surviving category (advertising, course,
+  download, ebook, marketplace, trading tool).
+- PRODUCTS_MATRIX rows for offers of labour and SaaS removed; rows renumbered 1-6.
+- Root README.md rewritten to the Foundry structure: status, current product,
+  10 PROPOSED components, 8 roles, how to run, compliance, blockers, HEAD.
+- Product tests still 76/76 after the rename; release gate still 9/9.
+- Internal Python package is still named `paid_issue_kit` (name only, domain term).
+  Not renamed: it would touch 46 files, manifests, logs and tests, and needs its
+  own transmute cycle plus Sean's approval.
