@@ -1,9 +1,11 @@
 # Barrot XRP Intelligence — Latest Durable Handoff
 
-**Evidence cutoff:** 2026-11-18T12:18:00Z  
+**Evidence cutoff:** 2026-11-18T13:45:13Z  
 **Mission priority:** XRP intelligence and measured prediction-engine mastery.  
 **Foundation:** Preserve Barrot V3 for execution, orchestration, safety and verification.  
-**Latest addendum:** Run 14 (2026-11-18T12:18Z) supersedes older current-state statements below; earlier sections remain historical evidence.  
+**Current main SHA:** `13c60af7079700a38b4226b9110d9c9377af7695`  
+**Integration head audited:** `b1f90a4d92bf3c0e773de452efc9a47127063e05` on `integration/xrp-v3-mainline-successor-20261115T2101Z`.  
+**Latest addendum:** Run 17B (2026-11-18T13:45Z) supersedes older current-state statements below; earlier sections remain historical evidence.  
 **Disposition:** NO MERGE. No deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action.
 
 ## 1. Repository state and integration-first audit
@@ -925,3 +927,45 @@ The $214.05M / 84.365876M XRP acquisition is a real historical corporate XRP acq
 - This Run16A handoff correction is documentation-only. Its new commit must receive its own push-triggered exact-head CI before that new SHA is considered verified.
 - #1663 remains draft and blocked by independent review, effective branch-protection evidence, the automatic main-writer/release workflow side effects, Pages deployment authorization and incomplete transitive workflow review. No merge or deployment is authorized by this research correction.
 - Forecast remains `NOT_ISSUED`; no paper trade or real-money action occurred.
+
+
+## Run 17B — Coinbase/Circle/Ripple/SBI graph and current XRP market snapshot
+
+**Repository and exact-head verification**
+- Main remains `13c60af7079700a38b4226b9110d9c9377af7695`.
+- PR #1663 is the sole consolidated V3/XRP integration. Current head at snapshot: `b1f90a4d92bf3c0e773de452efc9a47127063e05`; 301 commits ahead, 0 behind; 1,425 changed files; 67 changed workflows; draft; zero formal reviews and zero review threads.
+- Exact-head push full suite [44316922787](https://github.com/Barrot-Agent/B-Agent/actions/runs/44316922787) was in progress. The prior exact head `7b3896ac54de2ff74534cbb8409b3d84fce26b17` passed 4,273 tests, 1 skipped, 0 failed, 11 warnings, 19 subtests; inclusive coverage 68.14%, legacy core 77%.
+- Current PR checks: CI [44316932966](https://github.com/Barrot-Agent/B-Agent/actions/runs/44316932966) passed standard tests (full-suite job skipped because draft); dependency audit [44316932883](https://github.com/Barrot-Agent/B-Agent/actions/runs/44316932883), money audit [44316933075](https://github.com/Barrot-Agent/B-Agent/actions/runs/44316933075), and fail-closed gate [44316932863](https://github.com/Barrot-Agent/B-Agent/actions/runs/44316932863) passed. Merge remains disabled.
+- No main write, merge, deployment, secret rotation, external model dispatch, Kaggle submission, Databricks write, Hugging Face upload, paper trade or funds transfer occurred.
+
+**Current market snapshot**
+- CoinGecko's dynamic XRP page showed $0.9854, 24-hour range $0.9468–$1.01, 24-hour volume about $1.798B, +1.1% over 24 hours and -7.1% over seven days.
+- Aggregate perpetual open interest was about $1.856B, funding -0.0040% per eight hours and perps/spot volume 19.5x. Binance, Bybit and OKX rows also displayed negative funding. Their timestamps are asynchronous (“Recently”); this is not a synchronized book or a directional signal.
+- The page's Evernorth treasury count was 473,276,430 XRP, valued around $466.36M. It matches the SEC-derived post-close token total but is secondary aggregation, not independent custody proof.
+
+**Direct and indirect institutional relationships**
+- **Coinbase ↔ Circle:** Coinbase and Circle ended the Centre joint venture in 2023. Coinbase exchanged its 50% Centre interest for 3.5% fully diluted equity in Circle. The USDC reserve-interest revenue-sharing arrangement continued, with allocation based on USDC held on each platform and broader distribution. This is a direct equity and economic relationship, not merely a listing.
+- **Ripple ↔ Coinbase:** On October 28, 2026, Ripple announced RLUSD on Coinbase Prime, Coinbase Exchange and Coinbase Retail. The release said support for Coinbase Global Exchange customers, including RLUSD collateral use, would follow. Do not mark RLUSD collateral support as live from that announcement, and do not infer XRP collateral support.
+- **Coinbase ↔ Evernorth:** Evernorth uses Coinbase as its selected principal market for XRP impairment accounting. That is a financial-reporting reference, not proof that the historical XRP purchase was executed on Coinbase.
+- **SBI Holdings ↔ Evernorth:** The October 19, 2026 prospectus identifies four SBI-controlled/managed stockholder entities: SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. The prospectus reports 9,431,914 Class A shares (39.9% of voting shares) and 2,359,038 Class C shares (7.5% of the Class C class), with 21.4% combined common ownership. Class C is non-voting except limited statutory matters but carries economic rights. This is a direct Evernorth equity/subscriber relationship; it does not disclose SBI's exact dollar or XRP allocation within the pooled advance-funding subscription.
+- **SBI Holdings / SBI VC Trade ↔ Circle:** Circle's Japan expansion uses SBI Group, a joint venture and SBI VC Trade distribution for USDC.
+- **SBI Holdings / SBI VC Trade ↔ Ripple:** RLUSD launched in Japan through SBI VC Trade on June 24, 2026 after JFSA approval. This is a separate stablecoin relationship from the Circle/USDC arrangement.
+- **Ripple ↔ Pathfinder/Evernorth:** Ripple's 126,791,458 XRP in-kind contribution and Evernorth's post-close subsidiary structure are recorded in the SEC capital bridge. Do not treat the contribution or subsequent intra-group transfer as new spot demand.
+- **Circle ↔ Ripple:** no direct corporate partnership or ownership relationship was established in this source set. They are separate stablecoin issuers. RLUSD and USDC activity must not be combined into one issuer relationship or assumed XRP demand.
+
+**Japan SBIC identity**
+- SBIC East: Tokyo Small and Medium Business Investment & Consultation Co., Ltd.
+- SBIC Central: Nagoya Small and Medium Business Investment & Consultation Co., Ltd.
+- SBIC West: Osaka Small and Medium Business Investment & Consultation Co., Ltd.
+- These are three separate regional statutory companies, not SBI Holdings. Their official company pages establish the identities; no XRP/Ripple relationship was found. The SBIC ChatGPT course was a VOST-delivered investee-company course, not an OpenAI partnership.
+
+**Phrase and person research**
+- ASK: Permission Coin (ASK) and a separate inactive/untracked “Ask Coin” exchange listing remain distinct candidates; no established relationship and no verified XRP/Ripple link.
+- “Actual capital”: no single SEC instrument. Maintain separate ledgers for cash received, cash used to buy XRP, in-kind XRP, debt, warrants, trust cash, optional equity-line capacity and non-cash impairment.
+- Kamilah Stevenson: use the Run194 partial inventory and identity caveats above; no additional verified videos were added in this run. Do not conflate Camilla and Kamilah or treat creator commentary as primary market data.
+
+**Prediction disposition: NOT_ISSUED.** The dynamic market page and institutional relationships are research leads, not eligible point-in-time features. Walk-forward forecasts remain zero; no directional forecast or paper trade occurred.
+
+**Open PR inventory remains 12.** #1663 remains the sole integration PR. #1665 and #1666 remain blocked despite green tests because they overlap integration dependency files; #1666's allowed Kaggle version range conflicts with a requirements comment warning about Rust `rpds-py`. #1664 remains unique/unreviewed and diverged; #1541 is blocked stacked security work; #1460, #1450, #1440, #1437, #1436, #1353 and #1265 remain unique/unreviewed stacked research/ledger work. No source PR was closed.
+
+**Disposition: NO MERGE.** Current full-suite run must finish on the exact head; independent review, effective branch-protection evidence, automatic main-writer containment and transitive workflow/script review remain blockers.

@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-18T09:06:29Z",
+  "captured_at_utc": "2026-11-18T13:45:13Z",
   "mission": {
     "priority": 1,
     "title": "XRP intelligence and prediction-engine mastery",
@@ -10,36 +10,38 @@
   },
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
-    "main_sha": "e204c21100f3d059e2ba633d041fe8927b61ccaf",
+    "main_sha": "13c60af7079700a38b4226b9110d9c9377af7695",
     "integration": {
       "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
-      "code_head_sha": "226fb9e6911f82de93c2d853cc8a66c20dd8f67e",
+      "code_head_sha": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
       "pr_number": 1663,
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 276,
+      "ahead_by": 301,
       "behind_by": 0,
-      "changed_files": 1415,
+      "changed_files": 1425,
       "changed_workflow_files": 67,
       "formal_reviews": 0,
-      "snapshot_head_sha": "bdc77944fb6de3b2ce036a5cc26d0af2538ddb92",
-      "commits": 276,
-      "additions": 516417,
-      "deletions": 6522
+      "snapshot_head_sha": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
+      "commits": 301,
+      "additions": 511673,
+      "deletions": 6522,
+      "mergeable_state": "unstable",
+      "review_comments": 0
     },
     "tree_counts": {
       "main": {
         "entries": 1737,
         "workflow_files": 84,
-        "test_named_files": 139,
-        "xrp_research_files": 35
+        "test_named_files": 126,
+        "xrp_research_files": 39
       },
       "integration": {
-        "entries": 2966,
+        "entries": 2976,
         "workflow_files": 85,
-        "test_named_files": 517,
-        "xrp_research_files": 832
+        "test_named_files": 503,
+        "xrp_research_files": 847
       }
     }
   },
@@ -58,7 +60,8 @@
         "pull",
         "triage"
       ],
-      "least_privilege": "broad repository administration scope"
+      "least_privilege": "not verified; repository metadata reports admin/maintain/push/pull/triage, but exact connector token scopes were not introspected and the detailed main-protection endpoint returned HTTP 403",
+      "permissions_basis": "GitHub repository metadata, not token-scope introspection"
     },
     "Claude": {
       "authentication_status": "unverified",
@@ -103,8 +106,8 @@
   },
   "coordination": {
     "independent_dispatch": "not executed",
-    "structured_evidence_exchange": "not executed",
-    "red_team_review": "pending",
+    "structured_evidence_exchange": "not executed across external platforms",
+    "red_team_review": "pending; no external reviewer authentication verified",
     "minority_objections": "retained in research artifacts",
     "external_dispatch_performed": false,
     "external_data_transfer_performed": false
@@ -118,31 +121,29 @@
       "scheduled_sources": 51
     },
     "latest_ingestion": {
-      "run_id": 44267762749,
-      "captured_at_utc": "2026-11-18T08:32:07.159134Z",
+      "run_id": 44301868145,
+      "captured_at_utc": "2026-11-18T12:13:54.617611Z",
       "receipts": 34,
+      "receipt_count": 34,
       "raw_retained": 22,
       "digest_only": 12,
       "source_failures": 21,
-      "eligible_features": 129,
+      "eligible_features": 124,
       "excluded_features": 361,
-      "feature_history_records": 2967,
-      "snapshots": 13,
-      "input_records": 2230,
-      "delta_records": 490,
+      "feature_history_records": 3235,
+      "snapshots": 15,
       "events": 140,
       "scenarios": 107,
-      "cross_run_sequence": 13,
+      "cross_run_sequence": 15,
       "continuity": "CONTINUED_AND_VERIFIED",
       "receipt_chain": "PASS",
       "external_anchor": "NOT_ANCHORED",
       "raw_receipt_rebuild_of_feature_store": false,
       "cache_storage": "read_only_budget_exhausted",
       "walk_forward_forecasts": 0,
-      "drift_status": "insufficient",
+      "drift_status": "INSUFFICIENT_DATA",
       "forecast_issuance": "disabled",
-      "receipt_count": 34,
-      "code_head_sha": "226fb9e6911f82de93c2d853cc8a66c20dd8f67e"
+      "code_head_sha": "38b910e7f91e22096a224474be4445ef7f9a7a0d"
     },
     "quote_basis": {
       "venue": "OKX",
@@ -177,11 +178,57 @@
       "failures": 6,
       "required_variable": "BARROT_SEC_USER_AGENT",
       "requirement": "approved monitored project contact; no placeholder or noreply address"
+    },
+    "latest_market_snapshot": {
+      "source": "CoinGecko XRP asset page",
+      "retrieved_during_run_started_at_utc": "2026-11-18T13:32:40Z",
+      "source_event_time_utc": null,
+      "source_freshness_label": "dynamic page; market rows labeled Recently",
+      "model_eligible": false,
+      "price_usd": 0.9854,
+      "change_24h_percent": 1.1,
+      "change_7d_percent": -7.1,
+      "low_24h_usd": 0.9468,
+      "high_24h_usd": 1.01,
+      "market_cap_usd": 62589838272,
+      "fully_diluted_valuation_usd": 98532359490,
+      "volume_24h_usd": 1798214424.41,
+      "circulating_supply_xrp": 63517000000,
+      "total_supply_xrp": 99986000000,
+      "perpetual_open_interest_usd": 1856000000,
+      "open_interest_to_market_cap_percent": 2.96,
+      "perpetual_funding_rate_8h_percent": -0.004,
+      "perpetual_to_spot_volume_ratio": 19.5,
+      "venue_observations": [
+        {
+          "venue": "Binance Futures",
+          "open_interest_usd": 265164403,
+          "funding_rate_8h_percent": -0.009,
+          "volume_24h_usd": 688358146
+        },
+        {
+          "venue": "Bybit Futures",
+          "open_interest_usd": 103284705,
+          "funding_rate_8h_percent": -0.01,
+          "volume_24h_usd": 294889643
+        },
+        {
+          "venue": "OKX Futures",
+          "open_interest_usd": 76399066,
+          "funding_rate_8h_percent": -0.002,
+          "volume_24h_usd": 279178794
+        }
+      ],
+      "limitations": [
+        "Dynamic aggregate page; values are asynchronous and not a synchronized order-book snapshot.",
+        "A separate 11:08 UTC page snapshot reported $0.9923; retain as a different vintage.",
+        "Negative funding and elevated perps/spot turnover are descriptive, not directional."
+      ]
     }
   },
   "ci_evidence": {
-    "exact_code_head": "226fb9e6911f82de93c2d853cc8a66c20dd8f67e",
-    "push_ci_run": 44267762760,
+    "exact_code_head": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
+    "push_ci_run": 44316922787,
     "full_suite": {
       "passed": 4270,
       "skipped": 1,
@@ -225,40 +272,43 @@
       "root_cause": "The test contract expected receipt_count and transitive_script_security_review; the map only exposed receipts and transitive_script_review. This is an evidence-schema mismatch, not a forecast/model failure."
     },
     "current_pr_event": {
-      "run_id": 44269605232,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44269605232",
+      "run_id": 44316932966,
+      "head_sha": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
       "result": "success",
-      "tests": "skipped because PR #1663 remains draft and integration pull_request test jobs are intentionally skipped",
-      "pages_validation": "success"
+      "standard_tests": "passed",
+      "full_suite": "skipped because PR #1663 remains draft",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44316932966"
     },
     "current_head_dependency_audits": [
       {
-        "run_id": 44269593689,
-        "result": "success",
-        "scope": "push; six manifests"
-      },
-      {
-        "run_id": 44269605239,
+        "run_id": 44316932883,
         "result": "success",
         "scope": "pull_request; six manifests"
+      },
+      {
+        "run_id": 44316923350,
+        "result": "success",
+        "scope": "push; six manifests"
       }
     ],
     "current_head_fail_closed_runs": [
       {
-        "run_id": 44269593661,
-        "result": "success"
+        "run_id": 44316932863,
+        "result": "success",
+        "merge_enabled": false
       },
       {
-        "run_id": 44269605246,
-        "result": "success"
+        "run_id": 44316922763,
+        "result": "success",
+        "merge_enabled": false
       }
     ],
     "current_head_money_audit": {
-      "run_id": 44269605468,
+      "run_id": 44316933075,
       "result": "success"
     },
     "current_head_pages_validation": {
-      "run_id": 44269593667,
+      "run_id": 44316932966,
       "result": "success",
       "deployment": false
     },
@@ -273,6 +323,32 @@
       "ci_paths_ignored": true,
       "pages_deployment_run": 44252022665,
       "pages_deployment_result": "success"
+    },
+    "current_head_full_suite": {
+      "run_id": 44316922787,
+      "head_sha": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44316922787"
+    },
+    "previous_verified_full_suite": {
+      "run_id": 44315533722,
+      "head_sha": "7b3896ac54de2ff74534cbb8409b3d84fce26b17",
+      "passed": 4273,
+      "skipped": 1,
+      "failed": 0,
+      "warnings": 11,
+      "subtests": 19,
+      "inclusive_coverage_percent": 68.14,
+      "legacy_core_coverage_percent": 77,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44315533722"
+    },
+    "main_ci": {
+      "main_sha": "13c60af7079700a38b4226b9110d9c9377af7695",
+      "full_repository_suite": "not observed",
+      "combined_status": "pending; no commit status contexts",
+      "pillars_consistency_run": 44309596554,
+      "pillars_consistency_result": "failure"
     }
   },
   "security_and_governance": {
@@ -295,11 +371,16 @@
     "pr_1663": {
       "draft": true,
       "formal_reviews": 0,
+      "review_threads": 0,
       "mergeable": true,
-      "head_sha": "bdc77944fb6de3b2ce036a5cc26d0af2538ddb92"
+      "mergeable_state": "unstable",
+      "head_sha": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
+      "base_sha": "13c60af7079700a38b4226b9110d9c9377af7695",
+      "ahead_by": 301,
+      "behind_by": 0
     },
     "changed_workflow_files": 67,
-    "workflow_diff_scan": "all 67 changed workflow diffs scanned; high-risk workflows inspected; transitive script review incomplete",
+    "workflow_diff_scan": "all 67 changed workflow definitions statically scanned; no unpinned uses references found; high-risk workflows inspected",
     "transitive_script_review": "incomplete",
     "automatic_pages_deployment_run": 44252022665,
     "paid_issue_hunter_run": 44251899369,
@@ -321,60 +402,225 @@
       "absent_from_changed_file_diffs": true,
       "content_read": false
     },
-    "transitive_script_security_review": "incomplete"
+    "transitive_script_security_review": "incomplete",
+    "protection_details_verified": false,
+    "required_status_checks_verified": false,
+    "connector_token_scopes_introspected": false,
+    "unpinned_uses_references_found": 0,
+    "automatic_main_writer": {
+      "active": true,
+      "workflow": ".github/workflows/paid-issue-publish.yml",
+      "trigger": "workflow_run after successful Paid issue hunter run on main",
+      "permission": "contents: write",
+      "action": "git push origin main",
+      "observed_main_commit": "13c60af7079700a38b4226b9110d9c9377af7695",
+      "triggering_hunter_run": 44304037203,
+      "changed_paths": [
+        "PAID-ISSUES.md",
+        "data/money/paid_issues.json"
+      ],
+      "status": "material merge blocker pending containment and independent review"
+    },
+    "tag_release_workflow": {
+      "workflow": ".github/workflows/release.yml",
+      "permission": "contents: write",
+      "trigger": "tag push / release",
+      "release_tag_pushed_this_run": false
+    }
   },
   "open_pr_backlog": [
     {
       "number": 1663,
       "classification": "blocked",
-      "note": "sole consolidated V3/XRP integration; draft, zero reviews, governance and automatic Pages deployment blocker"
+      "note": "sole consolidated V3/XRP integration; draft, 301 ahead, 0 behind, 1,425 files, 67 workflows, zero reviews; exact-head full suite pending"
+    },
+    {
+      "number": 1666,
+      "classification": "blocked",
+      "note": "Kaggle range widens to <1.8; exact full suite/audits pass, but requirements-integrations comment still warns >=1.6 pulls Rust rpds-py; reconcile before merge"
+    },
+    {
+      "number": 1665,
+      "classification": "blocked",
+      "note": "Pylint 4.1.4 dependency update has exact full suite/audits pass, but overlaps requirements-dev.txt in #1663 and branch-protection approval requirements are unverified"
     },
     {
       "number": 1664,
       "classification": "unique/unreviewed",
-      "note": "71 files; 3 commits ahead/2 behind main; two divergent root-document overlaps with #1663 (BARROT_SYNC.md and MEMORY.md); unique paid-issue product work, unreviewed"
+      "note": "paid-issue template pack; draft, 3 ahead/3 behind current main; two divergent root-document overlaps"
     },
     {
       "number": 1541,
-      "classification": "unique/unreviewed",
-      "note": "five overlapping paths with #1663; mmi_adapter.py and test_mmi_integration.py identical; mmi_v1.py, fingerprint JSON and test_mmi_v1.py divergent; inherited .config/gh/hosts.yml blob not in PR diff; preserve"
+      "classification": "blocked",
+      "note": "unique MMI security work stacked on #1540; five overlapping paths with #1663, three divergent; no direct main ancestry"
     },
     {
       "number": 1460,
       "classification": "unique/unreviewed",
-      "note": "8 files; stacked on #1450"
+      "note": "institutional multirail research; 8 files, stacked on #1450; no direct main ancestry"
     },
     {
       "number": 1450,
       "classification": "unique/unreviewed",
-      "note": "116 files; stacked on #1436"
+      "note": "Binance/escrow research successor; 116 files, stacked on #1436; no direct main ancestry"
     },
     {
       "number": 1440,
       "classification": "unique/unreviewed",
-      "note": "64 files; stacked on #1436"
+      "note": "archive-validator repair; 64 files, stacked on #1436; no direct main ancestry"
     },
     {
       "number": 1437,
       "classification": "unique/unreviewed",
-      "note": "5 files; stacked on #1353"
+      "note": "archive/addenda repair; 5 files, stacked on #1353; no direct main ancestry"
     },
     {
       "number": 1436,
       "classification": "unique/unreviewed",
-      "note": "24 files; stacked on #1353"
+      "note": "Binance incident/wallet graph; 24 files, stacked on #1353; no direct main ancestry"
     },
     {
       "number": 1353,
       "classification": "unique/unreviewed",
-      "note": "1,084 files; stacked on #1265"
+      "note": "lossless XRP ledger archive/migration; 1,084 files, stacked on #1265; no direct main ancestry"
     },
     {
       "number": 1265,
       "classification": "unique/unreviewed",
-      "note": "144 files; divergent .github/workflows/ci.yml overlap with #1663"
+      "note": "compact ledger-index migration; 144 files, one divergent ci.yml overlap with #1663; no direct main ancestry"
     }
   ],
   "merge_decision": "NO_MERGE",
-  "external_actions_this_run": 0
+  "external_actions_this_run": {
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "huggingface_upload": false,
+    "external_model_dispatch": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false
+  },
+  "institutional_capital_reconciliation": {
+    "entity": "Evernorth Holdings Inc. / Pathfinder Digital Assets LLC",
+    "primary_filing_cutoff": "2026-09-30",
+    "sec_10q_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+    "sec_8k_a_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/xrpn-20261009.htm",
+    "sec_424b3_url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+    "pre_close_evernorth_xrp": {
+      "units": 346284972,
+      "original_cost_usd": 846575043,
+      "carrying_value_usd": 341887231,
+      "cumulative_impairment_usd": 504687812,
+      "impairment_2025_usd": 233650642,
+      "impairment_2026_nine_months_usd": 271037170,
+      "impairment_2026_q3_usd": 6891073
+    },
+    "cash_and_in_kind": {
+      "cash_subscription_usd": 214049995,
+      "xrp_purchased_with_cash": 84365876,
+      "private_placement_xrp_in_kind": 261919096,
+      "delayed_closing_cash_usd": 10500000,
+      "delayed_closing_xrp_in_kind": 200000,
+      "ripple_direct_contribution_xrp": 126791458,
+      "ripple_direct_contribution_historical_carrying_value_usd": 0,
+      "total_in_kind_xrp_reported_at_close": 388910554,
+      "gross_cash_proceeds_at_business_combination_usd": 272600000,
+      "gross_cash_proceeds_components_usd": {
+        "private_placement": 224600000,
+        "trust_account_release": 48000000
+      },
+      "convertible_note_principal_usd": 30000000,
+      "convertible_note_net_proceeds_usd": 29000000,
+      "gross_warrant_exercise_proceeds_through_2026_11_09_usd": 35300000,
+      "equity_line_maximum_shares": 5218935,
+      "equity_line_drawdown_disclosed": false
+    },
+    "post_close_pathfinder": {
+      "evernorth_transfer_xrp": 346484972,
+      "ripple_contribution_xrp": 126791458,
+      "combined_xrp": 473276430,
+      "interpretation": "Intra-group transfer plus in-kind contribution; not new market purchases."
+    },
+    "sbi_holdings_ownership": {
+      "entities": [
+        "SBI Venture Fund 2023A Investment LPS",
+        "SBI Venture Fund 2023B Investment LPS",
+        "SBI PE Holdings Co., Ltd.",
+        "SBI Holdings USA, Inc."
+      ],
+      "class_a_shares": 9431914,
+      "class_a_voting_share_percent": 39.9,
+      "class_c_shares": 2359038,
+      "class_c_share_class_percent": 7.5,
+      "combined_common_ownership_percent": 21.4,
+      "attribution": "SBI Holdings may be deemed to have voting/investment power through controlled/managed entities; exact dollar or XRP contribution allocation is not disclosed."
+    },
+    "coinbase_relationship": "Evernorth selected Coinbase as principal market for impairment measurement; accounting reference only, not evidence of executed purchase venue.",
+    "model_eligibility": "research_only; point-in-time event ingestion and raw-byte receipts still required"
+  },
+  "institutional_relationship_graph": {
+    "coinbase_circle": {
+      "relationship": "Coinbase exchanged its 50% Centre JV interest for 3.5% fully diluted equity in Circle in 2023; USDC reserve-interest revenue sharing continues.",
+      "source": "https://www.coinbase.com/en-gb/blog/ushering-in-the-next-chapter-for-usdc"
+    },
+    "coinbase_ripple": {
+      "relationship": "RLUSD launched on Coinbase Prime, Coinbase Exchange and Retail on 2026-10-28; Coinbase Global Exchange collateral support was announced as forthcoming, not yet live in that release.",
+      "source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+    },
+    "coinbase_evernorth": {
+      "relationship": "Coinbase is Evernorth's selected principal market for XRP impairment accounting; no purchase venue is established by this fact.",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm"
+    },
+    "sbi_circle": {
+      "relationship": "Circle/SBI Group USDC Japan joint venture and SBI VC Trade distribution.",
+      "source": "https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access"
+    },
+    "sbi_ripple": {
+      "relationship": "Ripple/SBI Group RLUSD Japan launch through SBI VC Trade after JFSA approval on 2026-06-24.",
+      "source": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/"
+    },
+    "ripple_evernorth": {
+      "relationship": "Ripple contributed 126,791,458 XRP in kind to Pathfinder; Evernorth became parent after the 2026-10-09 business combination.",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/pf20260930-8xka.htm"
+    },
+    "circle_ripple": {
+      "relationship": "No direct corporate partnership or ownership relationship established in this source set."
+    }
+  },
+  "sbic_identity_reconciliation": {
+    "conclusion": "SBIC East, Central and West are separate Japanese regional Small and Medium Business Investment & Consultation companies, not SBI Holdings.",
+    "entities": {
+      "east": {
+        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "alias": "SBIC East Japan",
+        "corporate_number": "9011001030621",
+        "established": "1963-11-15",
+        "official_url": "https://www.sbic.co.jp/company/profile/"
+      },
+      "central": {
+        "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "alias": "SBIC Central Japan",
+        "established": "1963-11-18",
+        "official_url": "https://www.sbic-cj.co.jp/company/about/"
+      },
+      "west": {
+        "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "alias": "SBIC West Japan",
+        "established": "1963-11-20",
+        "official_url": "https://www.sbic-wj.co.jp/profiles/profile/"
+      }
+    },
+    "xrp_or_ripple_relationship": "No verified relationship found.",
+    "chatgpt_course": "VOST-delivered course for SBIC investee companies; not an OpenAI partnership."
+  },
+  "research_phrase_status": {
+    "ASK Coin": "Permission Coin (ASK) and a separate inactive/untracked Ask Coin exchange listing remain distinct candidates; relationship unestablished; neither has a verified XRP/Ripple link.",
+    "actual capital": "Not a defined SEC instrument. Keep cash received, cash deployed to buy XRP, in-kind XRP, debt, warrants, optional ELOC capacity, trust cash and non-cash impairment separate.",
+    "SBIC, ChatGPT SBIC": "SBIC East/Central/West are distinct regional companies, not SBI Holdings; the ChatGPT course was delivered by VOST for investee companies; no XRP relationship.",
+    "Camilla/Kamilah Stevenson": "Kamilah identity high-confidence but not absolute; creator-channel association corroborated but canonical channel ID/reciprocal first-party cross-link not complete. Run194 inventory is partial: three creator-channel upload candidates, one verified Paul Barron guest appearance (not own-channel upload), two Glasp transcript candidates pending direct metadata, one third-party clip excluded. Do not conflate Camilla and Kamilah or attribute lookalike XRP-stocks channel."
+  }
 }
