@@ -80,33 +80,69 @@
     },
     "tradradar": {
       "source_url": "https://tradradar.io/markets/xrp",
-      "as_of_utc": "2026-11-18T16:05:00Z",
-      "mark_price_usd": 0.9751,
-      "open_interest_usd": 1320000000,
+      "as_of_utc": "2026-11-18T20:30:00Z",
+      "mark_price_usd": 0.9631,
+      "open_interest_usd": 1290000000,
       "venues": 7,
-      "open_interest_change_24h_percent": 1.94,
-      "open_interest_weighted_funding_percent_per_8h": -0.0039,
-      "liquidations_minimum_24h_usd": 4660000,
-      "longs_liquidated_usd": 1580000,
-      "shorts_liquidated_usd": 3070000,
-      "long_short_account_ratio": 3.3,
-      "long_accounts_percent": 76.8,
+      "open_interest_change_24h_percent": -2.12,
+      "open_interest_weighted_funding_percent_per_8h": -0.001,
+      "venue_funding_percent_per_8h": {
+        "binance": -0.0021,
+        "bybit": 0.002,
+        "gate": 0.0019,
+        "mexc": -0.002,
+        "bitget": -0.0042,
+        "okx": 0.0014,
+        "hyperliquid": -0.0061
+      },
+      "liquidations_minimum_24h_usd": 5640000,
+      "longs_liquidated_usd": 2450000,
+      "shorts_liquidated_usd": 3190000,
+      "long_short_account_ratio": 3.33,
+      "long_accounts_percent": 76.9,
       "source_independence_group": "tradradar_seven_venue_aggregate",
       "model_eligible": false
     },
-    "reconciliation": "Liqwall reports $949M OI and -2.2% 24h; TradRadar reports $1.32B and +1.94%. Capture times and venue universes differ. Funding also differs. Preserve separately; do not average."
+    "reconciliation": "Three providers report materially different OI totals: XRPSONAR $861.3M, Liqwall $949M and TradRadar $1.29B. All show negative 24h OI change in their latest snapshots, but venue universes and timestamps differ. Funding aggregates have opposite signs; venue-level funding is mixed. Liquidations are broadly similar in magnitude but not identical. Preserve each source; do not average.",
+    "liqwall_latest_summary": {
+      "source_url": "https://liqwall.com/coins/xrp",
+      "as_of_utc": "2026-11-18T19:12:00Z",
+      "price_usd": 0.9798,
+      "open_interest_usd": 949000000,
+      "open_interest_change_24h_percent": -2.1,
+      "average_funding_percent_per_8h": 0.0012,
+      "liquidations_24h_usd": 5500000,
+      "note": "Separate later summary-page observation from the 19:02 XRP detail-page snapshot; keep both, do not average."
+    },
+    "xrpsonar": {
+      "source_url": "https://xrpsonar.com/xrp-today",
+      "observed_during_run": true,
+      "source_event_time_utc": null,
+      "open_interest_usd": 861300000,
+      "liquidations_24h_usd": 5300000,
+      "longs_liquidated_usd": 2300000,
+      "shorts_liquidated_usd": 3000000,
+      "funding": "not provided in this snapshot",
+      "source_independence_group": "xrpsonar_public_ledger_and_market_aggregator",
+      "model_eligible": false
+    }
   },
   "etf_flows": {
     "cryptokeyhole": {
       "source_url": "https://cryptokeyhole.com/etf-flows/xrp/",
-      "updated_at_utc": "2026-11-18T07:55:00Z",
+      "updated_at_utc": "2026-11-18T22:55:00Z",
       "nov17_flow_xrp": -3251,
       "funds_reported": 2,
       "funds_expected": 4,
       "latest_complete_day": "2026-11-13",
       "latest_complete_day_flow_xrp": -9967,
       "five_complete_sessions_nov9_13_flow_xrp": -4923033,
-      "source_independence_group": "cryptokeyhole_issuer_file_reader"
+      "source_independence_group": "cryptokeyhole_issuer_file_reader",
+      "nov18_files_available": false,
+      "holdings_xrp": 1071130804,
+      "funds_in_holdings": 4,
+      "cumulative_net_flow_through_nov13_xrp": -2300574,
+      "note": "No November 18 issuer files were available at the 22:55 UTC page update; November 17 remains partial at 2/4 daily-readable funds."
     },
     "xrp_insights": {
       "source_url": "https://xrp-insights.com/",
@@ -116,16 +152,26 @@
       "fund_universe": "six spot XRP ETFs plus BITW; GXRP excluded from flow totals while its data gap is corrected",
       "total_holdings_xrp": 1190000000,
       "net_assets_usd": 778200000,
-      "source_independence_group": "xrp_insights_fund_holdings_aggregator"
+      "source_independence_group": "xrp_insights",
+      "provisional": true,
+      "nov17_flow_status": "provisional until issuer/download reconciliation",
+      "previous_week_nov9_13_flow_xrp": -6080000,
+      "six_spot_fund_holdings_xrp": 1170000000,
+      "all_seven_holdings_xrp": 1190000000,
+      "aum_change_note": "Reported AUM fell from roughly $1.3B to $778.2M while XRP holdings remained about 1.19B; price/valuation change is not a redemption flow."
     },
     "alpha_finance": {
       "source_url": "https://alphafinance.io/etf/xrp/",
       "as_of_date": "2026-11-17",
       "nov17_flow_usd": -6100000,
       "funds": 5,
-      "source_independence_group": "alpha_finance_five_fund_aggregator"
+      "source_independence_group": "alpha_finance_five_fund_aggregator",
+      "last_7_sessions_nov10_17_flow_usd": -15900000,
+      "last_30_sessions_flow_usd": -10900000,
+      "cumulative_net_flow_since_launch_usd": 1700000000,
+      "cumulative_net_flow_since_launch_xrp": 964300000
     },
-    "reconciliation": "The observations conflict and use different fund universes, units and reporting completeness. Alpha Finance's five-fund USD aggregate is not independent issuer confirmation. No averaging or directional conclusion."
+    "reconciliation": "CryptoKeyhole, XRP Insights and Alpha Finance disagree in coverage, units and completeness. XRP Insights is the same publisher as the exchange-wallet dashboard and is not an independent publisher cross-check. Alpha Finance USD flows are not directly comparable to XRP-denominated flows. Do not average."
   },
   "exchange_wallet_balances": {
     "source_url": "https://xrp-insights.com/exchange-balances",
@@ -151,8 +197,98 @@
       "Same-wallet changes reduce, but do not eliminate, label and wallet-coverage effects.",
       "Not an independent exchange-reserve series."
     ],
-    "source_independence_group": "xrp_insights_xrpscan_labelled_wallet_snapshot",
-    "model_eligible": false
+    "source_independence_group": "xrp_insights",
+    "model_eligible": false,
+    "naive_total_change_7d_xrp": -141700000,
+    "new_wallets_7d": 6,
+    "new_wallet_balances_7d_xrp": 10200000,
+    "naive_total_change_30d_xrp": 132200000,
+    "new_wallets_30d": 8,
+    "new_wallet_balances_30d_xrp": 522200000,
+    "hot_cold_classification_percent": {
+      "cold": 49,
+      "hot": 12,
+      "unclassified": 39
+    },
+    "per_exchange": {
+      "upbit": {
+        "balance_xrp": 6470000000,
+        "share_percent": 29.1,
+        "wallets": 13,
+        "change_7d_xrp": -3700000,
+        "change_30d_xrp": 22900000
+      },
+      "coinbase": {
+        "balance_xrp": 5830000000,
+        "share_percent": 26.3,
+        "change_7d_xrp": 28800000,
+        "change_30d_xrp": -7000000,
+        "includes_non_customer_cbXRP_base_reserve_xrp": 152100000
+      },
+      "binance": {
+        "balance_xrp": 2590000000,
+        "share_percent": 11.7,
+        "change_7d_xrp": -109400000,
+        "change_30d_xrp": -176600000,
+        "includes_binance_peg_and_charity_reserves_xrp": 327400000
+      },
+      "bithumb": {
+        "balance_xrp": 1780000000,
+        "share_percent": 8,
+        "change_7d_xrp": -29200000,
+        "change_30d_xrp": -77200000
+      },
+      "uphold": {
+        "balance_xrp": 1700000000,
+        "change_7d_xrp": 3300000,
+        "change_30d_xrp": -55600000
+      },
+      "kraken": {
+        "balance_xrp": 958500000,
+        "change_7d_xrp": -8200000,
+        "change_30d_xrp": -40000000
+      },
+      "sbi_vc_trade": {
+        "balance_xrp": 56200000,
+        "wallets": 2,
+        "cold_share_percent": 99,
+        "change_7d_xrp": -726000,
+        "change_30d_xrp": -3200000,
+        "classification_note": "public exchange-wallet attribution; not SBI Holdings corporate XRP ownership"
+      }
+    },
+    "naive_vs_same_wallet_reconciliation": "Same-wallet changes show -151.9M XRP over 7d and -390.1M over 30d. Naive total balances show -141.7M over 7d and +132.2M over 30d because six new wallets add 10.2M over 7d and eight new wallets add 522.2M over 30d. The naive 30d increase is a coverage/label artifact, not verified exchange inflow.",
+    "xrpsonar_crosscheck": {
+      "source_url": "https://xrpsonar.com/xrp-today",
+      "observed_during_run": true,
+      "tracked_exchange_wallets_xrp": 24670000000,
+      "inflow_24h_xrp": 111300000,
+      "outflow_24h_xrp": 136300000,
+      "net_outflow_24h_xrp": -24900000,
+      "largest_reported_net_inflow_exchange": "Robinhood",
+      "largest_reported_net_inflow_xrp": 3600000,
+      "largest_reported_net_outflow_exchange": "Binance",
+      "largest_reported_net_outflow_xrp": 14700000,
+      "open_interest_usd": 861300000,
+      "liquidation_24h_usd": 5300000,
+      "whale_movements_over_1m_count": 63,
+      "whale_movements_over_1m_total_xrp": 408000000,
+      "same_owner_transfers_excluded_count": 15,
+      "same_owner_transfers_excluded_xrp": 70300000,
+      "etf_trading_volume_24h_usd": 16100000,
+      "ledger_transactions_nov17": 3300000,
+      "new_wallets_nov17": 5101,
+      "xrp_burned_nov17": 2146,
+      "next_escrow_unlock": "2026-12-01",
+      "next_escrow_unlock_xrp": 1000000000,
+      "source_independence_group": "xrpsonar_public_ledger_and_market_aggregator",
+      "limitations": [
+        "Uses public XRPL ledger data and XRPSCAN labels; wallet universe differs from XRP Insights.",
+        "24.67B tracked wallets is not directly comparable to XRP Insights' 22.19B; do not average.",
+        "ETF trading volume is not ETF net flow.",
+        "Whale transfer volume is not net exchange flow or directional demand."
+      ]
+    }
   },
   "large_wallet_movements": {
     "source_url": "https://www.coindesk.com/markets/2026/11/18/xrp-whales-moved-usd270-million-during-the-selloff-the-coins-didn-t-go-to-exchanges",
@@ -180,7 +316,9 @@
       "future exchange routing not yet observed"
     ],
     "source_independence_group": "coindesk_secondary_analysis_of_xrpscan_records",
-    "model_eligible": false
+    "model_eligible": false,
+    "coin_desk_update_time": "2026-11-18T08:57:00Z",
+    "caveat": "CoinDesk's article was updated November 18; the two equal 140,351,238 XRP transfers are a specific subset of broader whale-transfer dashboards. Do not add to XRPSONAR's aggregate without transaction-level deduplication."
   },
   "institutional": {
     "dbs_circle_usdc": {
@@ -220,6 +358,172 @@
       "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
       "publication_date": "2026-06-24",
       "status": "SBI VC Trade RLUSD distribution in Japan; not evidence of XRP purchases or XRP collateral utilization."
+    },
+    "coinbase_circle": {
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "filing_period": "Q3 2026",
+      "relationship": "Circle's Coinbase Collaboration Agreement and minority equity relationship; Coinbase is a major USDC distribution channel.",
+      "circle_distribution_costs_to_coinbase_usd": {
+        "q3_2026": 331300000,
+        "nine_months_2026": 986600000
+      },
+      "coinbase_average_usdc_held_q3_usd": 22000000000,
+      "coinbase_reported_share_of_usdc_economics_percent": 50,
+      "allocation_caveat": "Circle's 10-Q describes platform allocations and a share of the remaining ecosystem payment base after issuer retention and approved third-party participants. Coinbase's '50% of USDC economics' should not be interpreted as 50% of gross Circle reserve income.",
+      "circle_q3_usdc_circulation_usd": 73879000000,
+      "circle_q3_reserve_income_usd": 657624000,
+      "circle_q3_minted_usd": 104304000000,
+      "circle_q3_redeemed_usd": 103694000000,
+      "coinbase_equity_stake": "minority equity stake disclosed; exact current percentage not established in the reviewed filing",
+      "source_independence_group": "circle_sec_filing_and_coinbase_investor_release"
+    },
+    "circle_binance": {
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "transaction_date": "2026-09-17",
+      "private_placement_usd": 100000000,
+      "shares": 1200000,
+      "price_per_share_usd": 80.84,
+      "relationship": "Binance acquired a strategic equity stake in Circle; this is capital to Circle, not XRP investment."
+    },
+    "standard_chartered_circle": {
+      "source_url": "https://www.sc.com/en/press-release/standard-chartered-and-circle-launch-first-g-sib-led-integrated-access-to-usdc-minting-and-redemption/",
+      "publication_date": "2026-07-02",
+      "status": "eligible institutional clients can access USDC minting and redemption through Standard Chartered's DIFC branch without direct Circle accounts",
+      "note": "Live bank distribution channel; Standard Chartered also supports RLUSD custody, so this is multi-issuer infrastructure rather than exclusive Ripple alignment."
+    },
+    "standard_chartered_ripple_lmax": {
+      "source_url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "publication_date": "2026-10-12",
+      "custody": "RLUSD custody support on XRPL via Standard Chartered's DIFC branch announced as live",
+      "collateral": "Ripple and LMAX Group plan to enable RLUSD as eligible collateral and extend collateral mirroring for agreed products",
+      "conditions": [
+        "final legal documentation",
+        "successful testing",
+        "applicable laws and regulations",
+        "internal approvals",
+        "jurisdictional readiness"
+      ],
+      "status": "custody announced live; collateral mirroring planned, not verified live",
+      "xrp_collateral_established": false
+    },
+    "ripple_robinhood": {
+      "source_url": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/",
+      "publication_date": "2026-10-27",
+      "status": "RLUSD live on Robinhood Chain and Bitstamp by Robinhood; Robinhood will use RLUSD on XRPL for institutional settlement; Ripple Treasury and Ripple Prime integrations announced",
+      "limitation": "XRPL settlement infrastructure does not establish XRP as the settlement asset or prove XRP purchase/flow volumes."
+    },
+    "evernorth": {
+      "sec_10q_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "sbi_presentation_url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "sbi_investment_release_url": "https://www.sbigroup.co.jp/news/2025/1021_15831.html",
+      "nasdaq_ticker": "XRPN",
+      "listing_date": "2026-10-12",
+      "sbi_group_cash_investment_usd": 200000000,
+      "sbi_group_voting_rights_percent": 36.1,
+      "sbi_group_economic_interest_percent": 20.5,
+      "sbi_group_position": "largest shareholder by voting rights, according to SBI's November 2 presentation",
+      "reported_total_xrp_at_close": 473276430,
+      "xrp_as_of_2026_09_30": 346284972,
+      "historical_cost_of_sep30_xrp_usd": 846575000,
+      "impairment_of_sep30_xrp_usd": 271037000,
+      "carrying_value_of_sep30_xrp_usd": 341887000,
+      "cash_flow_reconciliation": {
+        "private_placement_cash_proceeds_usd": 214100000,
+        "cash_used_to_purchase_xrp_usd": 214100000,
+        "xrp_purchased_with_cash": 84365876,
+        "xrp_in_kind_contributions_at_close": 388910554,
+        "ripple_contribution_to_pathfinder_xrp": 126791458,
+        "gross_cash_proceeds_at_close_usd": 272600000,
+        "total_xrp_reconciliation": "388,910,554 in-kind XRP plus 84,365,876 XRP purchased with pooled cash proceeds equals 473,276,430 XRP at close. The $200M SBI cash investment was part of a larger private placement; do not attribute all pooled XRP purchases solely to SBI.",
+        "interpretation": "Most of the closing XRP treasury was contributed in-kind; it is not equivalent to 473M XRP of fresh open-market buying."
+      },
+      "ownership": {
+        "sbi_group_voting_percent": 36.1,
+        "sbi_group_economic_percent": 20.5,
+        "ripple_aggregate_ownership_cap_percent": 9.9,
+        "arrington_sponsor_voting_percent": 19.9,
+        "note": "Class C non-voting shares and ownership caps create differences between voting and economic percentages."
+      },
+      "financing_and_dilution": {
+        "convertible_notes_usd": 30000000,
+        "convertible_note_interest": "4% payment-in-kind",
+        "convertible_note_maturity": "2031",
+        "warrant_exercises_through_2026_11_09_shares": 3073000,
+        "warrant_exercise_proceeds_usd": 35300000,
+        "remaining_warrants_shares": 8666000,
+        "equity_line_max_shares": 5218935,
+        "equity_line_price": "97% of VWAP, subject to a 20% trading-volume cap",
+        "risk": "Potential future share dilution and capital-structure complexity; current fully diluted share count and XRPN NAV require reconciliation."
+      },
+      "operating_and_custody": {
+        "revenue_to_date": "none reported in the Q3 2026 filing",
+        "nine_month_net_loss_usd": 32900000,
+        "q3_net_income_usd": 155300000,
+        "q3_income_caveat": "largely affected by fair-value changes in refundable investor advances; not operating revenue",
+        "nine_month_digital_asset_impairment_usd": 271037000,
+        "accumulated_deficit_usd": 185600000,
+        "initial_custodian": "BitGo Trust",
+        "strategy": "active XRP treasury with potential lending, collateral and DeFi/yield strategies; deployed amounts and counterparties not fully disclosed",
+        "risk": "counterparty, rehypothecation, custody, liquidity and share-dilution risks differ from a passive spot ETF"
+      },
+      "source_independence_group": "evernorth_sec_filing_and_sbi_investor_presentation",
+      "model_eligible": false
+    },
+    "sbi_relationship_graph": {
+      "ripple_equity": {
+        "source_url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+        "as_of_date": "2025-06-09",
+        "stake_percent": 9,
+        "description": "SBI stated it was Ripple's largest external shareholder at approximately 9% at that date; no current 2026 beneficial-ownership percentage was verified in this run."
+      },
+      "sbi_ripple_asia": {
+        "source_url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+        "sbi_group_voting_rights_percent": 60,
+        "as_of_date": "2026-09-30",
+        "role": "joint venture providing RippleNet software/services to financial institutions and remittance providers",
+        "xrp_use": "ODL using XRP is commercially available in Japan through SBI Remit, Coins.ph and SBI VC Trade; SBI disclosures describe corridors to the Philippines, Vietnam and Indonesia",
+        "caveat": "SBI Ripple Asia itself states that it does not handle XRP; operational XRP use is through SBI Remit/partner exchanges. No public corridor volume was verified."
+      },
+      "circle_sbi_japan": {
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+        "english_legal_name": "Circle SBI Japan K.K.",
+        "japanese_name": "SBI Circle Holdings株式会社",
+        "ownership": {
+          "circle_percent": 50,
+          "sbi_percent": 50
+        },
+        "established": "2025-11",
+        "capital_contribution_each_usd_equivalent": 1500000,
+        "operating_status": "Circle's Q3 2026 filing says the JV had no significant operating results to date",
+        "distinction": "This is a separate entity from SBI Ripple Asia."
+      },
+      "circle_equity": {
+        "source_url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+        "total_investment_usd": 50000000,
+        "contributors": {
+          "sbi_holdings_usd": 25000000,
+          "sbi_shinsei_bank_usd": 25000000
+        },
+        "note": "Separate from the 50/50 Circle SBI Japan JV capitalization."
+      },
+      "sbi_vc_trade": {
+        "rlusd_distribution_source_url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+        "usdc_distribution": "SBI VC Trade distributes USDC in Japan",
+        "xrp_wallet_balance_attributed_xrp": 56200000,
+        "xrp_wallet_balance_note": "XRPSCAN-labelled exchange wallet balance, not SBI Holdings corporate XRP ownership."
+      },
+      "evernorth": {
+        "source_url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+        "voting_rights_percent": 36.1,
+        "economic_interest_percent": 20.5,
+        "xrp_treasury_reported": 473276430,
+        "sbi_cash_investment_usd": 200000000
+      },
+      "ai_platform_context": {
+        "source_url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+        "observation": "SBI's November 2026 presentation reports group-wide use/deployment of Claude Mythos and Claude Security.",
+        "interpretation": "Corporate use evidence only; it does not establish a Claude API connection, account authentication or data flow to Barrot."
+      }
     }
   },
   "macro": {
@@ -248,7 +552,9 @@
     "wire_level_raw_capture": false,
     "external_timestamp_anchor": "NOT_ANCHORED",
     "model_eligibility": false,
-    "reason": "Market/API and rendered-page observations were captured for research context but not ingested through the repository's receipt/feature pipeline. No leakage-safe out-of-sample or independent shadow gate has passed."
+    "reason": "Market/API and rendered-page observations were captured for research context but not ingested through the repository's receipt/feature pipeline. No leakage-safe out-of-sample or independent shadow gate has passed.",
+    "latest_run_29_web_research_ingested_into_feature_store": false,
+    "model_eligible": false
   },
   "source_provenance": {
     "source_independence_groups": [
@@ -256,17 +562,30 @@
       "okx_public_ticker",
       "liqwall_aggregated_exchange_feed",
       "tradradar_seven_venue_aggregate",
+      "xrpsonar_public_ledger_and_market_aggregator",
       "cryptokeyhole_issuer_file_reader",
-      "xrp_insights_fund_holdings_aggregator",
+      "xrp_insights",
       "alpha_finance_five_fund_aggregator",
       "dbs_primary_newsroom",
+      "standard_chartered_primary_newsroom",
+      "circle_sec_filing_and_coinbase_investor_release",
+      "evernorth_sec_filing_and_sbi_investor_presentation",
+      "sbi_primary_corporate_disclosures",
+      "occ_caas_records",
+      "sec_court_and_enforcement_records",
       "coindesk_secondary_analysis_of_xrpscan_records",
       "reuters_macro",
       "wsj_macro"
     ],
     "disagreements_preserved": true,
     "minority_objections_preserved": true,
-    "no_vote_based_consensus": true
+    "no_vote_based_consensus": true,
+    "publisher_relationships": {
+      "xrp_insights": "Same publisher supplies ETF and exchange-wallet dashboards; do not treat these as independent publisher corroboration.",
+      "xrpsonar": "Independent aggregator of public XRPL ledger data, XRPSCAN labels and third-party market feeds; wallet coverage differs from XRP Insights.",
+      "coindesk": "Secondary analysis using XRPScan; CoinDesk is part of Bullish, so retain source-interest context and do not treat it as independent ledger evidence.",
+      "institutional": "SEC, OCC, SBI, DBS, Circle, Coinbase and Ripple materials are primary corporate/regulatory sources; company claims remain self-reported where applicable."
+    }
   },
   "limitations": [
     "Kraken response has no exchange event timestamp; exact network retrieval time is not recorded.",
@@ -276,6 +595,85 @@
     "ETF flow providers disagree on November 17; fund universes and completeness differ.",
     "Derivatives providers disagree on open interest direction and totals; venue sets and timestamps differ.",
     "Exchange-wallet totals include cold storage and wrapped-token reserves and are not tradable float.",
-    "Large-wallet custody interpretation is not confirmed by beneficial-owner evidence."
-  ]
+    "Large-wallet custody interpretation is not confirmed by beneficial-owner evidence.",
+    "Evernorth's 473.276M XRP closing treasury is a mix of 388.911M in-kind contributions and 84.366M purchased with pooled cash proceeds; it is not 473M of fresh open-market buying.",
+    "Evernorth's Sep30 filing reports 346.285M XRP at historical cost $846.575M, impairment $271.037M and carrying value $341.887M; post-close holdings, liabilities, notes, warrants, ELOC and diluted shares must be reconciled before NAV analysis.",
+    "SBI's 9% Ripple equity statement is dated June 2025; no updated 2026 beneficial-ownership percentage was verified.",
+    "SBI Group's 36.1% voting rights and 20.5% economic interest in Evernorth are different measures because of share-class structure.",
+    "Circle SBI Japan K.K. / SBI Circle Holdings K.K. is a 50/50 JV separate from SBI Ripple Asia; Circle's Q3 2026 filing reports no significant operating results to date.",
+    "Standard Chartered's RLUSD collateral-mirroring relationship with LMAX is planned and conditional, not verified live.",
+    "OCC trust-bank effective dates do not establish full-service commercial deposit banking or actual XRP client balances.",
+    "The SEC's Rule 506 waiver does not vacate the Ripple injunction or erase the final judgment.",
+    "XRPSONAR's 24.67B tracked-wallet estimate and XRP Insights' 22.19B estimate use different wallet universes; no averaging.",
+    "ETF flow reports are provisional and incomplete; AUM/holdings changes must be separated from net flows."
+  ],
+  "supplemental_research_captured_at_utc": "2026-11-18T23:28:48.670Z",
+  "regulatory": {
+    "occ_trust_charters": {
+      "ripple": {
+        "charter_number": 25364,
+        "entity": "Ripple National Trust Bank",
+        "effective_date": "2026-10-26",
+        "source_url": "https://apps.occ.gov/CAAS/",
+        "classification": "national trust bank; not evidence of a full-service deposit-taking commercial bank"
+      },
+      "coinbase": {
+        "charter_number": 25390,
+        "entity": "Coinbase National Trust Company",
+        "effective_date": "2026-11-06",
+        "source_url": "https://apps.occ.gov/CAAS/",
+        "classification": "national trust company/trust bank; not evidence of a full-service deposit-taking commercial bank"
+      }
+    },
+    "ripple_sec_case": {
+      "source_url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369",
+      "appeals_dismissed_date": "2025-08-07",
+      "final_judgment_penalty_usd": 125035150,
+      "injunction": "remains in effect",
+      "district_court_holding": "2023 summary judgment distinguished direct institutional sales, which were unregistered securities offers, from programmatic secondary exchange sales, which were not securities transactions under the facts and manner of those sales.",
+      "rule506_waiver_date": "2025-08-08",
+      "rule506_waiver_effect": "SEC waiver removed Rule 506 disqualification; it did not vacate the injunction or erase the final judgment.",
+      "caution": "No categorical statement that XRP is or is not a security in every transaction; the holding is transaction- and context-specific."
+    },
+    "japan_rlusd": {
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "status": "SBI VC Trade announced RLUSD distribution under Japan's Payment Services Act framework for foreign-issued electronic payment instruments.",
+      "xrp_demand_established": false
+    }
+  },
+  "capital_flows": {
+    "circle_coinbase_distribution_costs_usd": {
+      "q3_2026": 331300000,
+      "nine_months_2026": 986600000
+    },
+    "circle_binance_equity_investment_usd": 100000000,
+    "sbi_circle_equity_investment_usd": 50000000,
+    "sbi_evernorth_cash_investment_usd": 200000000,
+    "evernorth_cash_used_for_xrp_purchase_usd": 214100000,
+    "evernorth_xrp_purchased_with_cash": 84365876,
+    "evernorth_xrp_contributed_in_kind_at_close": 388910554,
+    "evernorth_total_xrp_at_close": 473276430,
+    "xrp_etf_flows": "provider-specific and incomplete; see etf_flows",
+    "interpretation": "Corporate investments, stablecoin distribution costs, in-kind token contributions and open-market purchases are different capital-flow categories. Do not combine them into XRP spot demand."
+  },
+  "xrp_supply_and_activity": {
+    "source_url": "https://xrpsonar.com/xrp-today",
+    "captured_during_run": true,
+    "ripple_escrow_xrp": 31100000000,
+    "next_escrow_unlock_date": "2026-12-01",
+    "next_escrow_unlock_xrp": 1000000000,
+    "escrow_caveat": "Historical unlocks have largely been re-escrowed; gross unlock is not equivalent to circulating supply or market selling.",
+    "rlusd_supply_on_xrpl_usd": 729000000,
+    "rlusd_supply_across_xrpl_and_ethereum_usd": 2780000000,
+    "rlusd_caveat": "Stablecoin supply is not XRP demand or XRP collateral.",
+    "xrpl_rwa_programs": 18,
+    "rwa_represented_value_usd": 4330000000,
+    "rwa_distributed_tokens_value_usd": 276000000,
+    "rwa_issuer_reported_registry_value_usd": 4054000000,
+    "rwa_caveat": "Most reported value is issuer-reported registry/notional representation, not freely transferable distributed tokens or XRP liquidity.",
+    "nov17_ledger_transactions": 3300000,
+    "nov17_new_wallets": 5101,
+    "nov17_xrp_burned": 2146,
+    "activity_caveat": "Ledger activity and wallet creation do not establish economic settlement, XRP purchases or price direction."
+  }
 }
