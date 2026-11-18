@@ -1,0 +1,304 @@
+{
+  "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-18T08:35:44Z",
+  "mission": {
+    "priority": 1,
+    "title": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 remains the execution, orchestration, safety and verification foundation",
+    "forecast_issuance": "disabled until all provenance, walk-forward, baseline, calibration, drift, shadow and independent-attestation gates pass"
+  },
+  "repository_state": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "e204c21100f3d059e2ba633d041fe8927b61ccaf",
+    "integration": {
+      "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+      "code_head_sha": "226fb9e6911f82de93c2d853cc8a66c20dd8f67e",
+      "pr_number": 1663,
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "ahead_by": 274,
+      "behind_by": 0,
+      "changed_files": 1412,
+      "changed_workflow_files": 67,
+      "formal_reviews": 0
+    },
+    "tree_counts": {
+      "main": {
+        "entries": 1737,
+        "workflow_files": 84,
+        "test_named_files": 137,
+        "xrp_research_files": 30
+      },
+      "integration": {
+        "entries": 2963,
+        "workflow_files": 85,
+        "test_named_files": 514,
+        "xrp_research_files": 825
+      }
+    }
+  },
+  "platforms": {
+    "ChatGPT": {
+      "authentication_status": "verified",
+      "authenticated_system": "GitHub connector",
+      "data_flow": {
+        "status": "verified",
+        "path": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent"
+      },
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": "broad repository administration scope"
+    },
+    "Claude": {
+      "authentication_status": "unverified",
+      "data_flow": "not_verified",
+      "permissions": []
+    },
+    "Grok": {
+      "authentication_status": "unverified",
+      "data_flow": "not_verified",
+      "permissions": []
+    },
+    "Gemini": {
+      "authentication_status": "unverified",
+      "data_flow": "not_verified",
+      "permissions": []
+    },
+    "Copilot": {
+      "authentication_status": "unverified",
+      "data_flow": "not_verified",
+      "permissions": []
+    },
+    "Codex": {
+      "authentication_status": "unverified",
+      "data_flow": "not_verified",
+      "permissions": []
+    },
+    "Hugging Face": {
+      "authentication_status": "unverified",
+      "data_flow": "not_verified",
+      "permissions": []
+    },
+    "Kaggle": {
+      "authentication_status": "unverified",
+      "data_flow": "not_verified",
+      "permissions": []
+    },
+    "Databricks": {
+      "authentication_status": "unverified",
+      "data_flow": "not_verified",
+      "permissions": []
+    }
+  },
+  "coordination": {
+    "independent_dispatch": "not executed",
+    "structured_evidence_exchange": "not executed",
+    "red_team_review": "pending",
+    "minority_objections": "retained in research artifacts",
+    "external_dispatch_performed": false,
+    "external_data_transfer_performed": false
+  },
+  "prediction_engine": {
+    "source_registry": {
+      "public_endpoint_records": 53,
+      "hourly_sources": 48,
+      "weekly_sources": 3,
+      "noncommercial_nodes_excluded": 2,
+      "scheduled_sources": 51
+    },
+    "latest_ingestion": {
+      "run_id": 44267762749,
+      "captured_at_utc": "2026-11-18T08:32:07.159134Z",
+      "receipts": 34,
+      "raw_retained": 22,
+      "digest_only": 12,
+      "source_failures": 21,
+      "eligible_features": 129,
+      "excluded_features": 361,
+      "feature_history_records": 2967,
+      "snapshots": 13,
+      "input_records": 2230,
+      "delta_records": 490,
+      "events": 140,
+      "scenarios": 107,
+      "cross_run_sequence": 13,
+      "continuity": "CONTINUED_AND_VERIFIED",
+      "receipt_chain": "PASS",
+      "external_anchor": "NOT_ANCHORED",
+      "raw_receipt_rebuild_of_feature_store": false,
+      "cache_storage": "read_only_budget_exhausted",
+      "walk_forward_forecasts": 0,
+      "drift_status": "insufficient",
+      "forecast_issuance": "disabled"
+    },
+    "quote_basis": {
+      "venue": "OKX",
+      "timestamp_utc": "2026-11-18T08:31:57.572Z",
+      "mid_usd": 1.00146186,
+      "bid_usd": 1.001406906,
+      "ask_usd": 1.001516814,
+      "spread_bps": 1.097475644254609,
+      "snapshot_skew_seconds": 0.497,
+      "max_component_age_seconds": 10.084134,
+      "publisher_groups": 1,
+      "raw_sha256": {
+        "okx_spot_ticker": "0abb48bdd0e1e6c55b54cc576aa4ba3b431f39b5a423c711f102701c3b8e9d07",
+        "okx_usdt_usd_ticker": "bcbcab8574e818bcffa729a52f7f36a4c486ea1767aa1b745a96ba23e78b45eb"
+      },
+      "limitation": "one venue and one publisher group; not consolidated depth or independent corroboration"
+    },
+    "sec_edgar": {
+      "status": "BLOCKED_CONFIGURATION",
+      "contact_identity_configured": false,
+      "issuers": [
+        "evernorth",
+        "coinbase",
+        "circle"
+      ],
+      "submissions": 0,
+      "companyfacts": 0,
+      "filings": 0,
+      "capital_facts": 0,
+      "primary_documents": 0,
+      "raw_receipts": 0,
+      "failures": 6,
+      "required_variable": "BARROT_SEC_USER_AGENT",
+      "requirement": "approved monitored project contact; no placeholder or noreply address"
+    }
+  },
+  "ci_evidence": {
+    "exact_code_head": "226fb9e6911f82de93c2d853cc8a66c20dd8f67e",
+    "push_ci_run": 44267762760,
+    "full_suite": {
+      "passed": 4270,
+      "skipped": 1,
+      "failed": 0,
+      "warnings": 11,
+      "subtests": 19,
+      "duration_seconds": 117.96,
+      "inclusive_coverage_percent": 68.14,
+      "legacy_core_coverage_percent": 77
+    },
+    "wheel_and_installed_v3": "passed",
+    "dependency_audit_runs": [
+      44267762758,
+      44267771011
+    ],
+    "dependency_manifests": 6,
+    "known_vulnerabilities_reported": 0,
+    "fail_closed_runs": [
+      44267762780,
+      44267771147
+    ],
+    "money_audit_run": 44267771089,
+    "pr_ci_run": 44267771171,
+    "pr_full_suite": "skipped because PR is draft"
+  },
+  "security_and_governance": {
+    "main_branch_protected": true,
+    "required_status_check_contexts": [],
+    "protection_details_api": "403",
+    "fallback_ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    },
+    "codeowners": "* @Barrot-Agent",
+    "connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "pr_1663": {
+      "draft": true,
+      "formal_reviews": 0,
+      "mergeable": true
+    },
+    "changed_workflow_files": 67,
+    "workflow_diff_scan": "all 67 diffs scanned; high-risk workflows inspected",
+    "transitive_script_review": "incomplete",
+    "automatic_pages_deployment_run": 44252022665,
+    "paid_issue_hunter_run": 44251899369,
+    "paid_issue_publish_run": 44251955852,
+    "sensitive_branch_path": {
+      "path": ".config/gh/hosts.yml",
+      "present_in_open_prs": [
+        1541,
+        1460,
+        1450,
+        1440,
+        1437,
+        1436,
+        1353,
+        1265
+      ],
+      "same_blob_sha": "f58b27f14436088db99662d3a45c59b8437ec3a1",
+      "absent_from_main_and_pr1663": true,
+      "absent_from_those_pr_diffs": true,
+      "content_read": false
+    }
+  },
+  "open_pr_backlog": [
+    {
+      "number": 1663,
+      "classification": "blocked",
+      "note": "sole consolidated V3/XRP integration; draft, zero reviews, governance and automatic Pages deployment blocker"
+    },
+    {
+      "number": 1664,
+      "classification": "unique/unreviewed",
+      "note": "71 files; 3 ahead/2 behind main; two divergent root-document overlaps with #1663"
+    },
+    {
+      "number": 1541,
+      "classification": "unique/unreviewed",
+      "note": "five overlaps with #1663; two identical, three divergent"
+    },
+    {
+      "number": 1460,
+      "classification": "unique/unreviewed",
+      "note": "8 files; stacked on #1450"
+    },
+    {
+      "number": 1450,
+      "classification": "unique/unreviewed",
+      "note": "116 files; stacked on #1436"
+    },
+    {
+      "number": 1440,
+      "classification": "unique/unreviewed",
+      "note": "64 files; stacked on #1436"
+    },
+    {
+      "number": 1437,
+      "classification": "unique/unreviewed",
+      "note": "5 files; stacked on #1353"
+    },
+    {
+      "number": 1436,
+      "classification": "unique/unreviewed",
+      "note": "24 files; stacked on #1353"
+    },
+    {
+      "number": 1353,
+      "classification": "unique/unreviewed",
+      "note": "1,084 files; stacked on #1265"
+    },
+    {
+      "number": 1265,
+      "classification": "unique/unreviewed",
+      "note": "144 files; divergent .github/workflows/ci.yml overlap with #1663"
+    }
+  ],
+  "merge_decision": "NO_MERGE",
+  "external_actions_this_run": 0
+}
