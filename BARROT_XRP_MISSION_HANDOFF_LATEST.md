@@ -2471,3 +2471,126 @@ All observations are research-only and model-ineligible. The new evidence record
 4. Improve raw-source wire capture/retention, external timestamp anchoring, SEC/CFTC ingestion and deterministic raw-to-feature reconstruction; then continue leakage-safe walk-forward, baseline, calibration, drift and shadow evaluation.
 
 **Disposition: NO MERGE.** The prior tested code head passed; the later head failed one stale metadata assertion; remediation is committed on the existing integration branch and exact-head verification is running. No main change, merge, deployment, release, secret rotation, Space restart, Kaggle submission, Databricks write, external-model dispatch, paper trade, funds transfer or real-money action occurred in Run 29.
+
+
+## Run 29 supplemental reconciliation — institutional capital, regulation and source disagreements
+
+### Repository and exact-head verification
+
+- Main remains d5d22ac252f88637a490ed4c1598f8608b6cb786. No main commit was made by this run.
+- The existing PR #1663 remains the sole consolidated V3/XRP integration PR. Before this supplement, its head was 29bd4ad0ba02ba990efdfafba212fcce0b6f92fd, 363 commits ahead, zero behind, 1,438 changed files and 68 changed workflow files. It remains draft, mergeable and has zero formal reviews.
+- The complete recursive tree comparison still shows 1,739 main entries and 2,985 integration entries, with zero main paths missing from integration. The integration branch itself is not protected. Main reports protected=true, but detailed protection remains inaccessible (403); the visible fallback ruleset remains disabled.
+- Exact full-suite verification passed on code/test head 17c5afe6f5d76db21ff1c47745d99da5044c70ac, run 44419516835: 4,277 passed, 1 skipped, zero failed, 11 warnings, 19 subtests passed, 118.59 seconds, 68.13% inclusive coverage and 77% legacy-core coverage.
+- On that same head, dependency audit run 44419516809 and fail-closed push gate 44419516825 passed. PR-event run 44419528958 passed, but its core/full-suite jobs were skipped because #1663 is draft. Pages validation, money audit 44419528897, PR dependency audit 44419529095 and PR fail-closed gate 44419529212 passed.
+- GitHub Actions cache budget was exhausted; the cache step emitted a warning only. It did not fail tests or security gates.
+- After that verified head, the Run 29 evidence artifact, nine-platform map and two additional evidence-integrity tests were updated on the same branch. The current head 29bd4ad is therefore awaiting its own exact-head full-suite, dependency and fail-closed verification. The 4,277-test result is not being represented as a pass on 29bd4ad.
+- The two new tests validate (1) Evernorth cash-versus-in-kind XRP contributions, SBI entity boundaries and regulatory distinctions, and (2) derivatives/ETF/wallet disagreement preservation, raw-wire limitations and forecast admission controls.
+- No PR was merged or closed.
+
+### Evernorth and SBI capital-flow reconciliation
+
+Primary sources:
+- Evernorth Q3 2026 10-Q: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm
+- SBI November 2, 2026 investor presentation: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf
+- SBI's $200M Evernorth investment announcement: https://www.sbigroup.co.jp/news/2025/1021_15831.html
+
+Evernorth is a public XRP treasury company, not a spot ETF.
+
+The SEC filing and SBI presentation reconcile the 473,276,430 XRP closing treasury as follows:
+- 388,910,554 XRP contributed in-kind.
+- 84,365,876 XRP purchased with pooled private-placement cash proceeds.
+- Total: 473,276,430 XRP.
+
+The $200M SBI Group cash investment was one component of the broader private placement. The filing reports approximately $214.1M of pooled private-placement cash used to purchase 84.366M XRP. Do not attribute the entire pooled purchase solely to SBI. Most of the closing XRP treasury was contributed in-kind, not bought on the open market.
+
+At September 30, 2026, the filing reports 346,284,972 XRP at historical cost of approximately $846.575M, carrying value approximately $341.887M, cumulative impairment approximately $504.688M, including $271.037M of impairment in the first nine months of 2026. The closing total then incorporates the additional Ripple contribution and delayed in-kind funding. The 473M treasury is a company-reported combined closing figure, not a fresh November spot purchase.
+
+SBI's November 2 presentation reports 36.1% voting rights and 20.5% economic interest in Evernorth, making SBI its largest shareholder by voting rights. The SEC beneficial-ownership table separately reports 39.9% of Class A voting shares, 7.5% of the Class C class and 21.4% combined common ownership through controlled/managed entities. The different dates, share classes and denominators are not reconciled; preserve both sets rather than forcing one percentage.
+
+Additional capital-structure risks:
+- $30M convertible notes, 4% payment-in-kind interest, 2031 maturity.
+- Up to 5,218,935 shares under an equity line priced at 97% of VWAP and capped at 20% of trading volume.
+- 3.073M warrants exercised through November 9 for approximately $35.3M; 8.666M warrants remained.
+- No revenue was reported to date in the Q3 filing; nine-month net loss was approximately $32.9M, accumulated deficit approximately $185.6M, and nine-month digital-asset impairment approximately $271.0M.
+- Q3 net income of approximately $155.3M was materially affected by fair-value changes in refundable investor advances; it is not operating revenue.
+- BitGo Trust was named as initial custodian. Active lending, collateral and DeFi/yield strategies create counterparty, custody, liquidity and potential rehypothecation risks beyond a passive ETF.
+
+Evernorth's XRP per share and NAV cannot be assessed without current fully diluted shares, note conversion, warrant exercise, ELOC usage, liabilities, cash and any XRP deployed or encumbered. Do not treat treasury size as equivalent to net new XRP demand.
+
+### SBI's separate relationships — do not collapse the entities
+
+1. **SBI Holdings and Ripple equity:** SBI stated on June 9, 2025 that it held approximately 9% of Ripple and was Ripple's largest external shareholder at that time. No updated 2026 beneficial-ownership percentage was verified. This is an equity stake in Ripple, not the Evernorth stake.
+2. **SBI Ripple Asia:** SBI Group reports 60% voting rights as of September 30, 2026. It provides RippleNet software/services to financial institutions and remittance providers. ODL using XRP is commercially available in Japan through SBI Remit, Coins.ph and SBI VC Trade, with SBI disclosures describing corridors to the Philippines, Vietnam and Indonesia. SBI Ripple Asia itself states that it does not handle XRP; operational XRP use is through SBI Remit/partner exchanges. Public corridor volumes were not found.
+3. **Circle SBI Japan K.K. / SBI Circle Holdings K.K.:** Circle's Q3 2026 SEC filing identifies the English legal name as Circle SBI Japan K.K.; the Japanese name is SBI Circle Holdings K.K. It is 50/50 owned by Circle and SBI, established in November 2025, with approximately $1.5M equivalent contributed by each side. Circle reported no significant operating results to date. This is separate from SBI Ripple Asia.
+4. **SBI's Circle equity investment:** SBI Holdings and SBI Shinsei Bank invested $50M in Circle, split $25M each. This equity investment is separate from the 50/50 Japanese JV's initial capitalization.
+5. **SBI VC Trade:** distributes USDC and RLUSD in Japan. XRPScan-labelled exchange wallets attributed to SBI VC Trade hold approximately 56.2M XRP, more than 99% classified cold in the cited dashboard. That is an exchange-wallet attribution, not SBI Holdings corporate XRP ownership.
+6. **Evernorth:** SBI Group invested $200M cash and reports 36.1% voting rights/20.5% economic interest. This is separate from its approximately 9% Ripple equity stake.
+7. **SBIC East/Central/West:** remain three separate regional Japanese SME investment/consultation companies, not SBI Holdings and not SBI Ripple Asia.
+
+SBI's November 2026 presentation also reports group-wide Claude Mythos/Claude Security use. This is public corporate AI adoption evidence only; it does not establish a Claude account, API authentication, permissions or data flow to Barrot.
+
+### Coinbase, Circle, Ripple and bank infrastructure
+
+- **Coinbase–Circle:** Circle's Q3 2026 10-Q reports distribution costs under Coinbase agreements of approximately $331.3M for Q3 and $986.6M for the first nine months of 2026. Coinbase reported average USDC held in its products of approximately $22B in Q3 and described capturing roughly 50% of USDC economics. Circle's filing details platform allocations and ecosystem payment-base sharing after issuer retention and approved third-party participants; this is not 50% of gross reserve income. The current exact percentage of Coinbase's minority Circle equity stake was not established in the reviewed Q3 filing. Circle reported Q3 USDC circulation of approximately $73.879B and reserve income of approximately $657.6M.
+- **Circle–Binance:** Circle's Q3 filing records a $100M private placement to Binance for 1.2M shares at $80.84. This is capital into Circle, not XRP investment.
+- **DBS–Circle:** on November 18, DBS announced direct USDC minting/redemption access for eligible institutional clients with near-instant 24/7 USD-USDC settlement. Production volumes were not verified. This is a bank-led USDC rail in Asia and a competing/complementary institutional payment route, not a Ripple/XRP relationship.
+- **Standard Chartered–Circle:** Standard Chartered launched integrated USDC minting/redemption for eligible institutional clients through its DIFC branch on July 2, 2026, without requiring direct Circle accounts.
+- **Standard Chartered–Ripple–LMAX:** Standard Chartered announced live institutional RLUSD custody on XRPL through its DIFC branch on October 12. RLUSD collateral mirroring with LMAX is planned and remains conditional on final documents, testing, applicable laws, regulatory/internal approvals and jurisdictional readiness. Do not count this as live XRP collateral.
+- **Coinbase–Ripple:** RLUSD is available on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral availability was described as forthcoming, not live in the announcement.
+- **Ripple–Robinhood:** RLUSD is live on Robinhood Chain and Bitstamp by Robinhood; Robinhood plans to use RLUSD on XRPL for institutional settlement and integrate Ripple Treasury and Ripple Prime. XRPL settlement does not establish XRP as the settlement asset or prove XRP purchases.
+- **BNY–Ripple:** BNY supports XRP and RLUSD custody for eligible clients and is RLUSD's primary reserve custodian. Client balances and XRP purchases remain undisclosed.
+
+The bank network is multi-issuer: Standard Chartered supports USDC and RLUSD infrastructure; DBS supports USDC; BNY supports XRP/RLUSD custody. Do not interpret shared bank infrastructure as exclusive Ripple alignment or as measured XRP demand.
+
+### Regulation
+
+- OCC records show Ripple National Trust Bank, charter 25364, effective October 26, 2026, and Coinbase National Trust Company, charter 25390, effective November 6, 2026. These are national trust-bank/company charters, not proof of full-service deposit-taking commercial banking.
+- Ripple's SEC appeals were dismissed August 7, 2025, leaving the $125,035,150 final judgment and injunction in effect. The 2023 district-court ruling distinguished direct institutional sales, which were unregistered securities offers, from programmatic secondary exchange sales, which were not securities transactions under the facts and manner of those sales. The SEC's August 8, 2025 Rule 506 waiver did not vacate the injunction or erase the final judgment. Do not claim a categorical ruling that XRP is or is not a security in every transaction.
+- SBI VC Trade's RLUSD distribution is under Japan's Payment Services Act framework for foreign-issued electronic payment instruments; this is not evidence of XRP purchases.
+
+### Spot, derivatives, exchange wallets, ETF flows and supply
+
+**Spot**
+- Kraken XRP/USD retrieval: $0.95815 last; bid $0.95835 for 5,218 XRP; ask $0.95840 for 961 XRP; spread about 0.522 bps; 24-hour volume 48.167M XRP; VWAP $0.98257443; high $1.00677; low $0.95485. The endpoint exposes no exchange event timestamp. Top-of-book only.
+- OKX XRP-USDT event timestamp 22:41:45.765 UTC: last 0.9637 USDT; bid 0.9636; ask 0.9637; 24-hour volume 30.731M XRP. No contemporaneous USDT/USD leg was captured, so USD normalization was rejected.
+- Rendered-response hashes are not independently captured HTTP wire hashes; no external WORM/timestamp anchor exists.
+
+**Derivatives**
+- XRPSONAR: OI approximately $861.3M; liquidations approximately $5.3M.
+- Liqwall: OI approximately $949M, down 2.1%; average funding +0.0012% per 8h; liquidations approximately $5.5M.
+- TradRadar at 20:30 UTC: OI approximately $1.29B across seven venues, down 2.12%; OI-weighted funding -0.0010% per 8h; at least $5.64M liquidations; 76.9% of accounts long.
+- OI totals differ by roughly $429M across providers. Funding aggregates have opposite signs and venue-level funding is mixed. Preserve provider universes/timestamps; do not average.
+
+**ETF flows**
+- CryptoKeyhole updated at 22:55 UTC: no November 18 issuer files available; November 17 partial outflow of 3,251 XRP from two of four daily-readable funds; latest complete day November 13 was -9,967 XRP; November 9–13 complete sessions totalled -4.923M XRP; four-fund holdings approximately 1.071B XRP.
+- XRP Insights: November 17 +986 XRP, provisional; November 16 +158,134 XRP; approximately 1.19B XRP holdings across its reported universe; net assets approximately $778.2M. The same publisher's exchange-wallet dashboard is not independent corroboration.
+- Alpha Finance: November 17 -$6.1M across five funds; last seven sessions -$15.9M; 30 sessions -$10.9M; cumulative since launch approximately +$1.70B and +964.3M XRP. Different universe and units; do not average.
+
+**Exchange-wallet balances**
+- XRP Insights: 22.19B XRP across 707 wallets/24 exchanges at 08:00 UTC. Same-wallet balances fell 151.9M XRP over seven days and 390.1M over 30 days. Naive total balances rose 132.2M over 30 days because eight newly tracked wallets added 522.2M XRP; this is a coverage/label effect, not verified exchange inflow. The 30-day same-wallet decline and naive increase must both be preserved.
+- XRP Insights' exchange labels include Upbit 6.47B, Coinbase 5.83B (including 152.1M non-customer cbXRP Base reserve), Binance 2.59B (including 327.4M Binance-Peg/charity reserves), Bithumb 1.78B, Uphold 1.70B, Kraken 958.5M and SBI VC Trade 56.2M. Cold/hot/unclassified split is approximately 49%/12%/39%; not tradable float.
+- XRPSONAR reports 24.67B tracked exchange wallets and 24-hour net outflow of 24.9M XRP. The 2.48B difference from XRP Insights reflects different wallet universes; do not average. XRPSONAR's ETF trading volume is not net flow.
+- XRPSONAR reports 63 whale movements over 1M XRP totalling approximately 408M XRP, excluding 15 same-owner transfers of 70.3M. CoinDesk's two 140,351,238 XRP transfers to non-exchange-identified wallets are a specific subset; do not add them without transaction-level deduplication. Beneficial ownership is unverified; planned custody and internal wallet reorganization remain competing hypotheses.
+
+**Supply and ledger activity**
+- XRPSONAR reports approximately 31.10B XRP in Ripple escrow and a 1B XRP unlock scheduled for December 1. Historically most gross unlocks have been re-escrowed; gross unlock is not net market supply.
+- XRPSONAR reports RLUSD supply around $729M on XRPL and $2.78B across XRPL/Ethereum. This is stablecoin supply, not XRP demand or collateral.
+- Its RWA dashboard reports 18 programs and $4.33B represented value, but only about $276M in distributed tokens; most remaining value is issuer-reported registry/notional representation, not freely transferable on-chain liquidity.
+- November 17 ledger activity: approximately 3.3M transactions, 5,101 new wallets and 2,146 XRP burned. Activity does not establish economic settlement or XRP demand.
+
+### Prediction and nine-platform status
+
+- The last repository ingestion remains run 44301868145 at 12:13:54 UTC: 34 receipts (22 raw, 12 digest-only), 21 source failures, 124 eligible/361 excluded features, 3,235 feature-history records, 15 snapshots, 140 events, 107 scenarios and zero walk-forward forecasts.
+- SEC EDGAR submissions/companyfacts remain zero with six failures because the monitored contact identity is not configured. CFTC weekly source families remain 0/2. Raw-to-feature reconstruction remains unverified; external anchoring remains absent.
+- Run 29's public web/API research has not been ingested into the point-in-time feature store. Forecast status remains NOT_ISSUED. No directional forecast, shadow/paper trade or real-money action.
+- ChatGPT-to-GitHub access is verified, but repository permissions include admin/maintain/push/pull/triage and token scopes are not introspected. SBI's public Claude adoption evidence does not verify a Claude connection to Barrot. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified for Barrot. No external dispatch or evidence transfer occurred.
+- PR #1668 remains blocked: it overlaps all three paths with #1663 and forwards original messages/tool definitions to Cloudflare Workers AI/OpenRouter, with Gemini opt-in. No redaction/data-classification gate, user data-egress approval or live provider authentication was evidenced. Its 1,209-test main-branch run is not the expanded integration suite. Do not merge it independently.
+
+### Next concrete action
+
+1. Finish the expanded full repository suite, dependency audit and fail-closed gate on the current head after the Run 29 evidence/test/handoff commits; diagnose any failure on this same branch.
+2. Complete the 68-workflow transitive audit, including invoked scripts, artifacts, third-party actions and release/publication side effects.
+3. Establish independent review, effective branch protection and non-self-only CODEOWNERS; resolve automatic Pages publication before any merge.
+4. Continue raw-wire receipt capture, immutable external anchoring, SEC/CFTC ingestion, deterministic raw-to-feature reconstruction, synchronized multi-venue depth and leakage-safe walk-forward/calibration/drift/shadow evaluation.
+
+**Disposition: NO MERGE.** The exact full suite passed on 17c5afe, but the current evidence/test successor must pass its own exact-head suite. Governance, independent-review, branch-protection, publication and transitive-security blockers remain. No deployment, release, secret rotation, Space restart, Kaggle submission, Databricks write, external-model dispatch, paper trade, funds transfer or real-money action occurred.
