@@ -9247,3 +9247,88 @@ The exact-head full suite and security audits pass, but the PR remains draft, ha
 7. Keep directional forecast issuance disabled until all admission gates pass.
 
 No merge, main-branch write, source-PR closure, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action was performed by this run.
+
+
+## Run 18B — 2026-11-18 10:05 UTC — XRP collateral, Coinbase/Circle capital flows, SBI network and identity verification
+
+### Current integration head and exact-head CI
+
+- Main remains `e204c21100f3d059e2ba633d041fe8927b61ccaf`.
+- Integration branch `integration/xrp-v3-mainline-successor-20261115T2101Z` was at `1e7b663173c7c659c1642c00d048f27f458ab0d6`: 279 commits ahead, zero behind.
+- PR #1663 remained open, draft and reported mergeable: 1,417 changed files, 517,371 additions, 6,522 deletions.
+- **Correction to Run 18:** ten PRs are open, not nine. The inventory already listed ten; the sentence count was wrong.
+- Exact-head push CI [44278389201](https://github.com/Barrot-Agent/B-Agent/actions/runs/44278389201): **4,273 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests passed** in 147.38 seconds; inclusive coverage 68.14%, legacy-core coverage 77%. Full repository suite, wheel build and installed Barrot V3 verification passed.
+- Dependency audits [44278389251](https://github.com/Barrot-Agent/B-Agent/actions/runs/44278389251) and [44278396670](https://github.com/Barrot-Agent/B-Agent/actions/runs/44278396670) passed.
+- Fail-closed gates [44278389139](https://github.com/Barrot-Agent/B-Agent/actions/runs/44278389139) and [44278396683](https://github.com/Barrot-Agent/B-Agent/actions/runs/44278396683) passed with merge disabled.
+- Money audit [44278396664](https://github.com/Barrot-Agent/B-Agent/actions/runs/44278396664) passed.
+- PR CI [44278396685](https://github.com/Barrot-Agent/B-Agent/actions/runs/44278396685) passed its Pages validation, but both PR test jobs were skipped because the PR remains draft; the push run above is the exact-head full-suite evidence.
+- Cache storage remains read-only after the configured budget was reached; this did not fail tests or audits.
+
+### Confirmed XRP collateral on a CFTC-regulated clearinghouse
+
+- Bitnomial Clearinghouse, a CFTC-registered derivatives clearing organization, filed a self-certification on **February 20, 2026** under CFTC Regulation 40.6(a), stating its procedure changes would allow it to accept XRP as initial margin effective **March 6, 2026**. The supporting procedures were submitted under confidential treatment; do not invent undisclosed risk parameters.
+- Bitnomial's public clearinghouse schedule, updated October 30, 2026, lists **XRP with a 40% haircut and a $15M notional limit**. Its listed XRP product maintenance-margin rates are 17%. The haircut and maintenance-margin rate are different risk controls.
+- Bitnomial's November 3, 2025 announcement states XRP and RLUSD margin deposits are available to institutional clients across its leveraged derivatives products; retail access was planned through Botanical, subject to approvals.
+- Ripple SVP Stablecoins Jack McDonald publicly commented on the XRP/RLUSD collateral addition. This supports a direct product integration/public endorsement, not an equity partnership.
+- Payward, Kraken's parent, completed its acquisition of 100% of Bitnomial on **May 1, 2026** for up to **$550M in cash and stock**. The maximum transaction value is not disclosed as the final consideration. Bitnomial retained its licenses, regulatory structure and third-party clearing operations inside Payward.
+- This gives Kraken's parent ownership of the regulated infrastructure that accepts XRP as collateral. It does **not** prove that every Kraken customer or product can currently post XRP collateral.
+- Bitnomial's September 2, 2026 CFTC filing describes a separate cash-settled, margined XRP/USD perpetual contract based on 10,000 XRP. Cash settlement is not physical delivery. Its physically settled XRP futures are a separate product family.
+- Crypto.com Prime separately lists XRP collateral with a 20% haircut and $1M maximum collateral limit. That Prime product must not be conflated with the separate U.S. CFTC-licensed Crypto.com Derivatives North America entity.
+- CME's 25% XRP/BTC/ETH margin offsets are spread credits, not proof that XRP itself is accepted as collateral.
+
+**Conclusion:** the claim that XRP is accepted as collateral in U.S. CFTC-regulated derivatives infrastructure is independently supported by Bitnomial's CFTC filing and public clearinghouse schedule. The current public parameters are a 40% haircut and $15M notional limit. Actual posted XRP balances, utilization, collateral velocity and open-interest contribution remain undisclosed.
+
+### SEC/CFTC regulatory classification
+
+The March 17, 2026 SEC interpretation/CFTC guidance explicitly lists XRP among digital commodities, effective March 23. The release also states that a non-security crypto asset can still be offered or sold subject to an investment contract; Howey remains binding. Do not convert the digital-commodity classification into a claim that every XRP-related transaction is outside securities law.
+
+### Coinbase, Circle, SBI and DBS — actual disclosed economics
+
+- Circle's Q3 2026 SEC 10-Q reports **$331.3M** in distribution costs incurred in connection with Coinbase in Q3 and **$986.6M** for the first nine months of 2026. Coinbase receives allocations based on USDC held on its platform after issuer retention and half of the remaining ecosystem-growth amount after approved third-party participants. These are recognized USDC distribution costs, not XRP purchases or evidence of a specific cash settlement date.
+- Coinbase's Q3 2026 10-Q says it renewed its Circle arrangement on the same terms. It attributes a **$84.6M** Q3 increase and **$201.6M** nine-month increase in stablecoin revenue to higher average USDC balances, partly offset by lower interest rates of **$52.8M** and **$166.2M**, respectively.
+- Coinbase's Q3 earnings materials report average USDC held in Coinbase products of **$22B**, up 49% year over year, roughly 30% of average USDC market capitalization; Coinbase says it captured about half of USDC economics over the prior year. These are company-reported figures.
+- Circle's Q3 2026 SEC 10-Q reports average USDC circulation of **$73.264B**, quarter-end circulation of **$73.879B**, a 3.5% reserve return rate, $13.868B on Circle's own platform and 18.1% daily weighted-average on-platform share. Q3 gross minting was $104.304B and redemptions $103.694B; these are gross USDC flows, not XRP payment volume.
+- Circle's 10-Q also discloses a pending **$400M share-based Tazapay acquisition**, expected to close in 2027 subject to conditions and MAS approval. It is not a completed cash acquisition.
+- Circle National Trust received OCC final approval in July 2026 and opened July 24, offering fiduciary custody to Circle and affiliates; Circle also received a New York limited-purpose trust charter. This does not establish public XRP custody availability.
+- On November 18, DBS and Circle announced direct institutional USDC mint/redemption through DBS and 24/7 USD-USDC settlement connected to Singapore's Project BLOOM. The announcement does not identify XRPL or XRP as part of this rail.
+- SBI Holdings and SBI Shinsei Bank acquired a combined **$50M** of Circle equity at IPO, split $25M each. SBI Holdings and Circle established the SBI Circle Holdings joint venture; SBI VC Trade began USDC distribution in Japan in March 2025.
+- Ripple and SBI Group launched RLUSD in Japan through SBI VC Trade on June 24, 2026. SBI VC Trade is therefore a multi-stablecoin distribution venue, not an exclusive XRP/USDC/RLUSD channel.
+- These are overlapping corporate rails, not proof of a unified XRP alliance. Stablecoin rails can substitute for XRP bridge liquidity in some corridors; XRPL tokenization and XRP collateral are separate utility channels. Measure actual corridor volume, XRP inventory use, settlement conversion and fees before inferring token demand.
+
+### Kamilah Stevenson — identity gate advanced
+
+- A first-person appearance on the Paul Barron Podcast on June 11, 2026 identifies the guest as Dr. Kamilah Stevenson. In the interview she states her official YouTube name as “doctor Camilla Stevenson” and warns viewers about fake pages.
+- The channel handle `@drkamilahstevenson` (channel ID `UCqUPJMQdkCN6lsLVDnichPA`) matches that self-identification. Identity confidence is high enough to admit the channel as the official candidate.
+- One verified appearance is admitted: **“Crypto Panics! W/ @drkamilahstevenson”**, Paul Barron Podcast, June 11, 2026. This is a guest appearance on another channel, not an upload on her own channel.
+- `@KamilahStevensonXrpStocks` and `@drkamilahstevenson-j9r` were not cross-linked by the verified person and remain excluded.
+- Her own-channel upload inventory was not retrieved: YouTube fetch was throttled and the connected vidIQ channel-video lookup returned insufficient credits without charging any. Do not fill the inventory with same-name channels.
+- A secondary article's claim about Japanese bank remittance pilots being 60% cheaper and under four seconds remains unverified: no banks, primary documents or transaction data were identified.
+
+### Exact-phrase research
+
+- `ASK Coin`: Permission ASK remains a possible token-name match; no XRP Ledger or Ripple relationship established.
+- `actual capital`: no unique XRP-specific project resolved. The new SEC disclosures identify USDC distribution expenses, Circle equity and pending share-based acquisitions, not XRP purchases.
+- `SBIC, ChatGPT SBIC`: no exact phrase match. Tokyo SBIC's 2025 ChatGPT/Copilot course remains the strongest explanation. SBIC East/Central/West remain distinct from SBI Holdings.
+
+### Prediction and integration disposition
+
+- No directional forecast issued; walk-forward forecasts remain zero; baseline comparison, calibration, drift sufficiency and shadow evaluation remain unadmitted.
+- The market and corporate research in Runs 18/18B has not been captured by the repository raw-byte receipt chain; it is not model-eligible.
+- PR #1663 remains the single XRP/V3 integration PR and remains **draft / blocked**. Ten open PRs are retained. No source PR was closed.
+- No merge, main write, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+### Next concrete actions
+
+1. Add Bitnomial's XRP collateral schedule, CFTC filings, Payward acquisition and actual posted-collateral observations to the raw-source pipeline with immutable receipts and point-in-time fields.
+2. Track collateral posted, haircut, notional cap, margin rate, utilization, concentration and actual XRP settlement separately; do not infer posted balances from eligibility.
+3. Add Circle/Coinbase/SBI/DBS relationships and SEC 10-Q financials to the capital-event graph; distinguish distribution expenses, equity investments, pending share deals and XRP purchases.
+4. Resolve corridor-level USDC/RLUSD/XRP flows and quantify whether stablecoin bank rails substitute for XRP bridge liquidity.
+5. Continue the full 67-workflow/transitive-script security review, independent review and authoritative branch-protection verification before considering merge.
+6. Keep forecast issuance disabled until raw receipts, walk-forward baselines, calibration, drift and shadow evaluation pass.
+
+### Evidence classification
+
+- **DESIGNED:** XRP collateral and institutional-network evidence schemas and capital-event distinctions.
+- **EXECUTED:** reviewed primary Bitnomial/CFTC, Payward, Circle/Coinbase SEC, SBI, DBS, SEC/CFTC and first-person YouTube identity sources; appended structured evidence to the existing integration branch.
+- **VERIFIED:** exact-head CI at `1e7b663173c7c659c1642c00d048f27f458ab0d6`; Bitnomial public XRP collateral parameters; CFTC filing effective date; Payward acquisition completion; Circle/Coinbase Q3 disclosures; SBI USDC/RLUSD distribution; one identity-verified Kamilah guest appearance.
+- **NOT VERIFIED:** actual XRP collateral balances/utilization, actual XRP purchases from corporate flows, stablecoin-vs-XRP corridor substitution, complete official-channel video inventory, model-eligible raw receipts, predictive edge, shadow evaluation and eight external platform connections.
