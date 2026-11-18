@@ -29,11 +29,12 @@ from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT
 from .cftc_tff import parse_cftc_contract_status, parse_cftc_tff_report
 from .cftc_legacy import parse_cftc_legacy_futures_only_report
 from .event_timeline import EventTimelineError, build_event_timeline
+from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_json
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.28"
-PARSER_VERSION = "xrp-public-market-v3.27"
+ADAPTER_VERSION = "xrp-public-market-v3.29"
+PARSER_VERSION = "xrp-public-market-v3.28"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 OKX_QUOTE_BASIS_MAX_SKEW_SECONDS = 60
@@ -5009,7 +5010,9 @@ def _response_received_at(response: Mapping[str, Any], fallback: datetime) -> da
 
 
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
-    if source_id in XRPL_NODE_SOURCES:
+    if source_id.startswith("sec_edgar_"):
+        response = fetch_sec_json(source_id, url)
+    elif source_id in XRPL_NODE_SOURCES:
         response = fetch_public_rpc(source_id, url)
     elif source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "sbi_vc_trade_lending_page", "coinbase_cbxrp_proof_of_reserves", "cftc_contract_status_index", "cftc_tff_financial_futures", "cftc_legacy_futures_only"}:
         response = fetch_public_html(source_id, url)
@@ -5254,6 +5257,8 @@ def run_ingestion(
     fetcher: Callable[[str, str], Mapping[str, Any]] = _default_public_fetcher,
     now: datetime | None = None,
     include_noncommercial_xrpl_nodes: bool = False,
+    include_sec_filings: bool = False,
+    include_sec_companyfacts: bool = False,
     coinbase_backfill_days: int = 0,
     walk_forward_horizons: tuple[str, ...] | list[str] | str = DEFAULT_WALK_FORWARD_HORIZONS,
     event_registry_path: str | Path | None = None,
@@ -5263,6 +5268,10 @@ def run_ingestion(
     """Capture public XRP data; scheduled hourly runs use 1h and daily runs may evaluate the full horizon matrix."""
     if not isinstance(include_noncommercial_xrpl_nodes, bool):
         raise XRPIngestionError("include_noncommercial_xrpl_nodes must be a boolean")
+    if not isinstance(include_sec_filings, bool) or not isinstance(include_sec_companyfacts, bool):
+        raise XRPIngestionError("SEC ingestion flags must be booleans")
+    if include_sec_companyfacts:
+        include_sec_filings = True
     if isinstance(coinbase_backfill_days, bool) or not isinstance(coinbase_backfill_days, int) or not 0 <= coinbase_backfill_days <= MAX_COINBASE_BACKFILL_DAYS:
         raise XRPIngestionError(f"coinbase_backfill_days must be an integer from 0 to {MAX_COINBASE_BACKFILL_DAYS}")
     normalized_walk_forward_horizons = _normalize_walk_forward_horizons(walk_forward_horizons)
@@ -5293,6 +5302,15 @@ def run_ingestion(
     bitbank_circuit_break_payload: Mapping[str, Any] | None = None
     cftc_contract_status_payload: Mapping[str, Any] | None = None
     xrpl_node_payloads: dict[str, Mapping[str, Any]] = {}
+    sec_capture: dict[str, Any] = {
+        "summary": {"status": "NOT_REQUESTED", "issuer_count": len(SEC_ISSUERS),
+                    "submissions_source_count": 0, "companyfacts_source_count": 0,
+                    "companyfacts_requested": False, "filing_event_count": 0,
+                    "capital_fact_count": 0, "source_failure_count": 0, "raw_receipt_count": 0},
+        "receipts": [], "failures": [], "raw_only": [],
+        "filing_events": [], "capital_facts": [],
+        "latest_source_capture_at_utc": captured_s,
+    }
 
     for source_id, url in selected_endpoints:
         response: Mapping[str, Any] | None = None
@@ -5555,6 +5573,21 @@ def run_ingestion(
         elif reason and source_id in {"binance_spot_klines", "coinbase_spot_candles"}:
             raw_only.append({"source_id": source_id, "reason": reason})
 
+    if include_sec_filings:
+        sec_capture = capture_sec_edgar(
+            fetcher=fetcher,
+            archive=archive,
+            captured_at=captured,
+            include_companyfacts=include_sec_companyfacts,
+        )
+        receipts.extend(sec_capture["receipts"])
+        failures.extend(sec_capture["failures"])
+        raw_only.extend(sec_capture["raw_only"])
+        latest_source_capture = max(
+            latest_source_capture,
+            _from_iso8601(sec_capture["latest_source_capture_at_utc"], "SEC latest capture"),
+        )
+
     captured = latest_source_capture
     captured_s = _iso(captured)
     quote_basis_records, quote_basis_diagnostics = _derive_okx_usd_normalized_features(records, captured)
@@ -5705,6 +5738,27 @@ def run_ingestion(
     checkpoint = store.checkpoint()
     _write_json(output / "walk_forward.json", walk_forward)
 
+    sec_capital_events_payload = {
+        "schema_version": 1,
+        "artifact_type": "barrot.xrp.sec_edgar_capital_event_capture",
+        "captured_at_utc": captured_s,
+        "data_cutoff_utc": captured_s,
+        "status": sec_capture["summary"]["status"],
+        "issuer_registry": list(SEC_ISSUERS),
+        "filing_events": sec_capture["filing_events"],
+        "capital_facts": sec_capture["capital_facts"],
+        "summary": sec_capture["summary"],
+        "model_eligible": False,
+        "forecast_status": "NOT_ISSUED",
+        "limitations": [
+            "Submissions and companyfacts are primary regulatory records; individual filing documents are not fetched.",
+            "Custom inline-XBRL and narrative-only warrant, in-kind XRP, financing-facility and use-of-proceeds terms require filing-text review.",
+            "Gross/net basis is populated only when explicitly stated in an XBRL fact label.",
+            "No XRP purchase, sale, collateral deployment or use of proceeds is inferred from financing facts.",
+            "SEC observations remain research-only and model-ineligible; issuer financing is not XRP spot demand.",
+        ],
+    }
+    _write_json(output / "sec_capital_events.json", sec_capital_events_payload)
     _write_json(output / "receipt_manifest.json", receipts)
     _write_json(output / "source_failures.json", failures)
     _write_json(output / "raw_only_sources.json", raw_only)
@@ -5744,6 +5798,8 @@ def run_ingestion(
         "external_receipt_anchor_status": cross_run_receipt_chain.get("external_anchor_status", "NOT_ANCHORED"),
         "source_failure_count": len(failures),
         "raw_only_source_count": len(raw_only),
+        "sec_edgar": sec_capture["summary"],
+        "sec_capital_events_path": "sec_capital_events.json",
         "research_only_observation_count": len(research_only_observations),
         "research_only_observations_path": "research_only_observations.json",
         "collection_policy": {
@@ -5886,6 +5942,16 @@ def main() -> None:
         help="Explicit predecessor state; a missing predecessor keeps continuity unverified.",
     )
     parser.add_argument(
+        "--include-sec-filings",
+        action="store_true",
+        help="Capture read-only SEC EDGAR submissions for Evernorth, Coinbase and Circle.",
+    )
+    parser.add_argument(
+        "--include-sec-companyfacts",
+        action="store_true",
+        help="Also capture SEC companyfacts on daily/manual runs; facts remain research-only.",
+    )
+    parser.add_argument(
         "--coinbase-backfill-days",
         type=int,
         default=0,
@@ -5900,6 +5966,8 @@ def main() -> None:
     horizons = _normalize_walk_forward_horizons(args.walk_forward_horizons)
     summary = run_ingestion(
         args.output_dir,
+        include_sec_filings=args.include_sec_filings or args.include_sec_companyfacts,
+        include_sec_companyfacts=args.include_sec_companyfacts,
         coinbase_backfill_days=args.coinbase_backfill_days,
         walk_forward_horizons=horizons,
         event_registry_path=args.event_registry,

@@ -13,6 +13,7 @@ on:
       - .github/workflows/xrp-public-ingestion.yml
       - barrot_agent/evolution/research_timestamp_corrections.py
       - barrot_agent/evolution/xrp_public_ingestion.py
+      - barrot_agent/evolution/sec_edgar.py
   workflow_dispatch:
     inputs:
       coinbase_backfill_days:
@@ -151,6 +152,7 @@ jobs:
       - name: Capture public XRP market sources and evaluate historical baselines
         env:
           WALK_FORWARD_HORIZONS: ${{ (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *') && '1h,4h,24h,7d,30d' || '1h' }}
+          INCLUDE_SEC_COMPANYFACTS: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -158,10 +160,14 @@ jobs:
             --output-dir artifacts/xrp_ingestion
             --walk-forward-horizons "$WALK_FORWARD_HORIZONS"
             --coinbase-backfill-days "${{ github.event_name == 'workflow_dispatch' && inputs.coinbase_backfill_days || 0 }}"
+            --include-sec-filings
             --receipt-chain-continuity-status "${BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS:-BOOTSTRAP}"
           )
           if [[ -n "${BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST:-}" ]]; then
             args+=(--previous-receipt-chain-manifest "$BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST")
+          fi
+          if [[ "$INCLUDE_SEC_COMPANYFACTS" == "true" ]]; then
+            args+=(--include-sec-companyfacts)
           fi
           python -m barrot_agent.evolution.xrp_public_ingestion "${args[@]}"
       - name: Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)
@@ -191,7 +197,10 @@ jobs:
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: xrp-public-events-${{ github.run_id }}
-          path: artifacts/xrp_ingestion/event_timeline.json
+          path: |
+            artifacts/xrp_ingestion/event_timeline.json
+            artifacts/xrp_ingestion/sec_capital_events.json
+            artifacts/xrp_ingestion/research_only_observations.json
           if-no-files-found: error
           retention-days: 90
       - name: Upload per-run point-in-time feature-store checkpoint
