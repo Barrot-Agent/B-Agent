@@ -1127,3 +1127,98 @@ The following web observations were captured during this run. They have URL and 
 7. Keep forecast issuance disabled until leakage-safe walk-forward evaluation, calibrated baselines, drift monitoring and independent shadow outcomes meet the admission gate.
 
 No source PRs were closed. No branch history was rewritten. No user work was discarded.
+
+
+## Run 19 — current spot/derivatives/ETF reconciliation, primary relationship checks, and exact-head CI
+
+**Evidence cutoff:** 2026-11-18T15:27:00Z  
+**Mission:** XRP intelligence and measured prediction-engine mastery remain the highest priority. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+### Repository and exact-head verification
+
+- Current main SHA: `13c60af7079700a38b4226b9110d9c9377af7695`.
+- Existing consolidated integration PR: [#1663](https://github.com/Barrot-Agent/B-Agent/pull/1663).
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`; current head: `78ed0c1a2e6cec991f6069f4c624e5e40bc96fe0`.
+- PR #1663 is draft/open, 303 commits ahead, zero behind, 1,426 changed files, 67 changed workflow files, 512,242 additions and 6,522 deletions. It reports mergeable but `mergeable_state=unstable`; there are zero requested reviewers, formal reviews or review threads.
+- Main tree: 1,737 paths. Integration tree: 2,977 paths. The prior complete tree comparison found no main paths missing from the integration tree.
+- The exact-head push full repository suite [44322684443](https://github.com/Barrot-Agent/B-Agent/actions/runs/44322684443) passed on `78ed0c1a2e6cec991f6069f4c624e5e40bc96fe0`: **4,274 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests passed** in 121.44 seconds. Inclusive coverage was 68.14%; legacy core coverage 77%. Wheel build and installed Barrot V3/XRP mission verification passed.
+- Exact-head dependency audit [44322684282](https://github.com/Barrot-Agent/B-Agent/actions/runs/44322684282), fail-closed gate [44322684556](https://github.com/Barrot-Agent/B-Agent/actions/runs/44322684556), PR dependency audit [44322695733](https://github.com/Barrot-Agent/B-Agent/actions/runs/44322695733), PR money audit [44322695840](https://github.com/Barrot-Agent/B-Agent/actions/runs/44322695840), and PR fail-closed gate [44322695794](https://github.com/Barrot-Agent/B-Agent/actions/runs/44322695794) passed. The PR CI run [44322695849](https://github.com/Barrot-Agent/B-Agent/actions/runs/44322695849) skipped its test jobs because #1663 remains draft; the exact-head push run is the full-suite evidence.
+- GitHub Actions cache storage is read-only because the configured cache budget is exhausted. This produced a cache-save warning, not a test failure.
+- Main's latest scheduled Cross Analysis [44328988897](https://github.com/Barrot-Agent/B-Agent/actions/runs/44328988897) passed at 14:51:57Z on the current main SHA. The main Pillars Consistency Check [44309596554](https://github.com/Barrot-Agent/B-Agent/actions/runs/44309596554) failed; this is not a full repository CI run. **No full repository suite has been observed on current main.**
+- No new branch or PR was created. Main was not modified.
+
+### Current spot and microstructure — research-only
+
+Direct Kraken XRP/USD ticker retrieval at 15:27Z showed last $0.97920, bid $0.97939, ask $0.97946, midpoint $0.979425 and spread approximately 0.715 bps. Its reported 24-hour volume was 47.28M XRP, VWAP $0.979739, low $0.945 and high $1.00677.
+
+Other source vintages were not identical:
+- CoinGecko showed $0.9805, a $0.9468–$0.9893 24-hour range, approximately $1.617B volume and $62.43B market cap.
+- Investing.com showed a $0.9848 live header at its displayed 10:07:34 clock and a separate partial Nov 18 daily row at $0.9897. Its clock timezone was not disclosed.
+- OKX XRP/USDT showed last 0.9834, bid 0.9835 and ask 0.9836 at 15:06:50.141Z. Its USDT/USD quote was timestamped 14:59:39.039Z, a 431.102-second skew. The USDT conversion was rejected as stale; no normalized OKX USD quote was produced.
+- No synchronized fresh cross-venue L2 capture was obtained. The latest five-venue ingestion book snapshot remains the 12:13Z capture, not a current continuous order-flow record.
+
+Do not average these values into a synthetic executable price. Kraken is a direct venue quote; CoinGecko and Investing.com are separate dynamic aggregators; OKX is quoted in USDT with an inadmissibly stale conversion leg.
+
+### Derivatives and ETF disagreement
+
+Open-interest sources currently span materially different scopes and vintages:
+- Liqwall: $958M at 05:22Z, down 2.1% over 24 hours.
+- OptimistFi: $1.8B headline across 37 venues at 09:05 ET; its all-contract subpanel showed $1.4B at 08:00Z.
+- CoinGlass: $2.05B at 10:49Z, but its headline OI change (+3.5%) contradicted its own summary panel (-0.18%).
+- TradRadar: $1.31B across seven exchanges at 17 Nov 15:35Z, with +0.0011%/8h weighted funding and 76% long-account share.
+
+These are not a common venue/contract universe. Funding units and signs also differ across provider views. Preserve the disagreements; do not average OI or use the apparent positioning as a directional signal.
+
+Nov 17 ETF flow reports also disagree:
+- CryptoKeyhole, updated 14:55Z, still had only two of four issuer files and showed -3,251 XRP; the latest issuer file it had read was 05:25Z.
+- XRP Insights showed +159,134 XRP across Nov 16–17, two settled sessions, using six spot funds plus BITW and excluding GXRP from flow totals.
+- Alpha Finance showed -$6.1M on Nov 17 across a five-fund view and -$10.9M over 30 sessions.
+
+These results have different fund universes, units, completeness and vintages. None is promoted to a settled common-universe feature.
+
+### Macro, institutional adoption and capital
+
+Reuters' Nov 18 report recorded a 19-month dollar-index high at 103.82, markets fully pricing a 25 bp December Fed hike with a small chance of 50 bp, USD/JPY near 159.41, and renewed BOJ tightening signals. It also described a US-China-Russia leaders' meeting agenda covering Ukraine, Iran, trade, AI and nuclear weapons. This is macro/geopolitical context, not an XRP causal coefficient.
+
+Primary-source relationship updates:
+- Ripple/Coinbase: RLUSD launched on Coinbase Prime, Exchange and Retail on Oct 28 across XRPL, Base and Ethereum. Coinbase Global Exchange collateral support was announced as forthcoming; current activation was not verified.
+- Ripple/BNY: BNY's Oct 27 announcement says it supports XRP and RLUSD custody for eligible institutions, is RLUSD's primary reserve custodian and has a Ripple Prime custody relationship. No incremental XRP purchase, custody balance or XRP settlement volume was disclosed.
+- SBI/Circle: SBI Holdings and SBI Shinsei Bank each disclosed a $25M Circle investment at the June 2025 IPO. The 2023 MOU and March 2025 USDC Japan launch establish the SBI/Circle Japan relationship and SBI VC Trade distribution.
+- SBI/Ripple: SBI VC Trade, an SBI Holdings subsidiary, launched RLUSD in Japan on June 24, 2026 following JFSA approval. RLUSD is not XRP.
+- Coinbase/Circle: Coinbase's 2023 SEC-filed 10-K records the exchange of its 50% Centre JV interest for 3.5% of Circle's fully diluted equity.
+- Circle/Ripple: no direct corporate partnership was established in the reviewed primary sources. Shared exposure through Coinbase, BNY and payment infrastructure is indirect.
+
+The Nov 13 SEC filing confirms $214,049,995 of advance cash was used by Evernorth to purchase 84,365,876 XRP, received between Oct 31 and Nov 6, 2025. Separately, it reports $272.6M gross closing cash before transaction expenses and 388,910,554 XRP contributed in kind. The $30M convertible note produced $29M net cash for general corporate purposes including possible XRP acquisition; the filing does not prove those note proceeds bought XRP. The ELOC is optional share-sale capacity, not confirmed cash. Coinbase is Evernorth's principal market for accounting fair-value/impairment measurement; Evernorth says it does not actively trade XRP on digital-asset markets. Do not infer Coinbase execution or attribute pooled cash/XRP to SBI without disclosed allocation.
+
+### SBIC, exact phrases and creator identity
+
+- Primary corporate profiles resolve SBIC East as Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; SBIC Central as Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; and SBIC West as Osaka Small and Medium Business Investment & Consultation Co., Ltd. These are separate regional companies, not SBI Holdings. No XRP/Ripple relationship was found.
+- Tokyo SBIC's official June 2025 course listing includes ChatGPT on day one and Copilot on day two, is limited to investee companies, and names VOST as instructor. This explains the public SBIC/ChatGPT phrase without establishing an OpenAI partnership or XRP project.
+- Permission's first-party documentation identifies ASK as its ecosystem token. No XRP/Ripple link was established; do not conflate it with an unidentified ASK reference.
+- “Actual capital” is not a defined SEC instrument. Preserve cash deployed to buy XRP, gross closing cash, in-kind XRP, debt and optional equity facilities as separate categories.
+- Dr. Kamilah Stevenson remains a high-confidence but not absolute identity match. The partial creator-channel inventory contains three uploads: “The New XRP Ledger Demand Curve: $24M to $1.8B” (Apr 7), “Motley Fool just predicted XRP goes below a dollar” (May 5), and “XRPL RWA Settlement Volume Explodes: $3.5B in 30 Days, $900M in One Day” (May 12). The June 11 Paul Barron interview is a guest appearance, not her own-channel upload. The inventory is partial; lookalike channels remain excluded. The reviewed ~400M XRP native-lending commitment and $3.5B/$900M settlement-volume claims remain unverified by primary evidence.
+
+### Prediction, coordination and governance
+
+- Forecast status remains **NOT_ISSUED**. No walk-forward forecast, calibrated directional probability, paper trade or real-money action was produced.
+- Latest ingestion remains run [44301868145](https://github.com/Barrot-Agent/B-Agent/actions/runs/44301868145), cutoff 12:13:54Z: 34 receipts, 22 raw payloads, 12 digest-only, 124 eligible features, 361 excluded records, 3,235 feature-history records, 15 snapshots, 140 events, 107 scenarios, 21 source failures and 23 raw-only sources. Six SEC requests failed because `BARROT_SEC_USER_AGENT` lacks an approved monitored contact.
+- Receipt-chain sequence 15 is internally verified, but has no external WORM/timestamp anchor; deterministic reconstruction of the feature store from retained raw receipts is not implemented. The ingestion workflow remains integration-only; scheduled production ingestion is not active on main.
+- ChatGPT-to-GitHub is the only tested platform data flow. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified. Connector permissions reported by repository metadata are broad; exact token scopes and least privilege are not verified.
+- Main branch protection reports protected, but detailed protection returns 403 and visible required check contexts are empty. The only visible fallback ruleset is disabled. CODEOWNERS remains self-only (`* @Barrot-Agent`).
+- The paid-issue publisher remains an automatic `workflow_run` main writer with `contents: write`, persisted checkout credentials and `git push origin main`. The integration branch still contains that writer. The tag-triggered release workflow also has `contents: write`; it was not triggered. Full transitive review of all 67 changed workflows and invoked scripts remains incomplete.
+
+### Open PR backlog
+
+Twelve PRs remain open. #1663 is the sole consolidated V3/XRP integration and remains blocked/draft. #1665 and #1666 remain blocked dependency overlaps; #1541 remains blocked stacked MMI security work. #1664, #1460, #1450, #1440, #1437, #1436, #1353 and #1265 remain unique/unreviewed or stacked work; do not bulk-close them. No source PR was closed.
+
+### Run 19 disposition
+
+**NO MERGE.** The exact integration head passes the full suite and audited gates, but the PR is draft, has no independent review, effective branch protection is unverifiable, the automatic main writer remains, and the full workflow/script security review is incomplete. Main was not changed. No deployment, secret rotation, Space restart, external platform dispatch, Kaggle submission, Databricks write, Hugging Face upload, paper trade or funds transfer occurred.
+
+**Next concrete actions:**
+1. Obtain an independent reviewer and verifiable required-check/branch-protection configuration.
+2. Complete transitive security review of all 67 changed workflows and invoked scripts; contain or explicitly approve the paid-issue main writer before merge.
+3. Configure `BARROT_SEC_USER_AGENT` only with an approved monitored project contact.
+4. Capture fresh byte-exact exchange/ETF/derivatives/SEC sources, reconcile venue and fund universes, and add an external WORM/timestamp anchor plus deterministic raw-to-feature-store rebuild.
+5. Activate scheduled ingestion only after safe merge to main and exact-main CI verification.
+6. Keep forecast issuance disabled until leakage-safe walk-forward baselines, calibration, drift checks and independent shadow evaluation pass.

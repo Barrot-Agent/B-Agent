@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-18T13:45:13Z",
+  "captured_at_utc": "2026-11-18T15:27:00Z",
   "mission": {
     "priority": 1,
     "title": "XRP intelligence and prediction-engine mastery",
@@ -13,35 +13,28 @@
     "main_sha": "13c60af7079700a38b4226b9110d9c9377af7695",
     "integration": {
       "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
-      "code_head_sha": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
+      "code_head_sha": "78ed0c1a2e6cec991f6069f4c624e5e40bc96fe0",
       "pr_number": 1663,
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 301,
+      "ahead_by": 303,
       "behind_by": 0,
-      "changed_files": 1425,
+      "changed_files": 1426,
       "changed_workflow_files": 67,
       "formal_reviews": 0,
-      "snapshot_head_sha": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
-      "commits": 301,
-      "additions": 511673,
+      "review_threads": 0,
+      "requested_reviewers": 0,
+      "additions": 512242,
       "deletions": 6522,
-      "mergeable_state": "unstable",
-      "review_comments": 0
+      "mergeable_state": "unstable"
     },
     "tree_counts": {
       "main": {
-        "entries": 1737,
-        "workflow_files": 84,
-        "test_named_files": 126,
-        "xrp_research_files": 39
+        "entries": 1737
       },
       "integration": {
-        "entries": 2976,
-        "workflow_files": 85,
-        "test_named_files": 503,
-        "xrp_research_files": 847
+        "entries": 2977
       }
     }
   },
@@ -224,129 +217,54 @@
         "A separate 11:08 UTC page snapshot reported $0.9923; retain as a different vintage.",
         "Negative funding and elevated perps/spot turnover are descriptive, not directional."
       ]
-    }
+    },
+    "latest_market_research": {
+      "artifact_path": "research/xrp_intelligence/20261118T152700Z-run19-current-market-spot-derivatives-etf-macro-and-repository-audit.json",
+      "captured_at_utc": "2026-11-18T15:27:00Z",
+      "model_eligible": false,
+      "kraken_xrpusd_last": 0.9792,
+      "kraken_mid": 0.979425,
+      "coingecko_price": 0.9805,
+      "okx_usd_conversion": "rejected_stale_component",
+      "derivatives_oi_universe": "unreconciled_0.958B_to_2.05B",
+      "etf_flow_universe": "unreconciled_partial_and_settled_vintages"
+    },
+    "forecast_issuance": "disabled",
+    "walk_forward_forecasts": 0,
+    "drift_status": "INSUFFICIENT_DATA"
   },
   "ci_evidence": {
-    "exact_code_head": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
-    "push_ci_run": 44316922787,
+    "exact_code_head": "78ed0c1a2e6cec991f6069f4c624e5e40bc96fe0",
+    "push_ci_run": 44322684443,
     "full_suite": {
-      "passed": 4270,
+      "passed": 4274,
       "skipped": 1,
       "failed": 0,
       "warnings": 11,
       "subtests": 19,
-      "duration_seconds": 117.96,
+      "duration_seconds": 121.44,
       "inclusive_coverage_percent": 68.14,
       "legacy_core_coverage_percent": 77
     },
     "wheel_and_installed_v3": "passed",
     "dependency_audit_runs": [
-      44267762758,
-      44267771011
+      44322684282,
+      44322695733
     ],
     "dependency_manifests": 6,
     "known_vulnerabilities_reported": 0,
     "fail_closed_runs": [
-      44267762780,
-      44267771147
+      44322684556,
+      44322695794
     ],
-    "money_audit_run": 44267771089,
-    "pr_ci_run": 44267771171,
-    "pr_full_suite": "skipped because PR is draft",
-    "pre_fix_pr_head_ci": {
-      "run_id": 44269593667,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44269593667",
-      "head_sha": "bdc77944fb6de3b2ce036a5cc26d0af2538ddb92",
-      "result": "failure",
-      "tests_passed": 4271,
-      "tests_failed": 2,
-      "tests_skipped": 1,
-      "warnings": 11,
-      "subtests_passed": 19,
-      "duration_seconds": 148.96,
-      "inclusive_coverage_percent": 68.14,
-      "failing_tests": [
-        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state",
-        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_security_gates_and_open_pr_classifications"
-      ],
-      "root_cause": "The test contract expected receipt_count and transitive_script_security_review; the map only exposed receipts and transitive_script_review. This is an evidence-schema mismatch, not a forecast/model failure."
-    },
-    "current_pr_event": {
-      "run_id": 44316932966,
-      "head_sha": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
-      "result": "success",
-      "standard_tests": "passed",
-      "full_suite": "skipped because PR #1663 remains draft",
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44316932966"
-    },
-    "current_head_dependency_audits": [
-      {
-        "run_id": 44316932883,
-        "result": "success",
-        "scope": "pull_request; six manifests"
-      },
-      {
-        "run_id": 44316923350,
-        "result": "success",
-        "scope": "push; six manifests"
-      }
-    ],
-    "current_head_fail_closed_runs": [
-      {
-        "run_id": 44316932863,
-        "result": "success",
-        "merge_enabled": false
-      },
-      {
-        "run_id": 44316922763,
-        "result": "success",
-        "merge_enabled": false
-      }
-    ],
-    "current_head_money_audit": {
-      "run_id": 44316933075,
-      "result": "success"
-    },
-    "current_head_pages_validation": {
-      "run_id": 44316932966,
-      "result": "success",
-      "deployment": false
-    },
-    "main_after_paid_issue_publish": {
-      "main_sha": "e204c21100f3d059e2ba633d041fe8927b61ccaf",
-      "publisher_run": 44251955852,
-      "publisher_result": "success",
-      "changed_paths": [
-        "PAID-ISSUES.md",
-        "data/money/paid_issues.json"
-      ],
-      "ci_paths_ignored": true,
-      "pages_deployment_run": 44252022665,
-      "pages_deployment_result": "success"
-    },
-    "current_head_full_suite": {
-      "run_id": 44316922787,
-      "head_sha": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
-      "status": "in_progress",
-      "conclusion": null,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44316922787"
-    },
-    "previous_verified_full_suite": {
-      "run_id": 44315533722,
-      "head_sha": "7b3896ac54de2ff74534cbb8409b3d84fce26b17",
-      "passed": 4273,
-      "skipped": 1,
-      "failed": 0,
-      "warnings": 11,
-      "subtests": 19,
-      "inclusive_coverage_percent": 68.14,
-      "legacy_core_coverage_percent": 77,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44315533722"
-    },
+    "money_audit_run": 44322695840,
+    "pr_ci_run": 44322695849,
+    "pr_test_jobs": "skipped because PR is draft; exact-head push CI is full-suite evidence",
     "main_ci": {
       "main_sha": "13c60af7079700a38b4226b9110d9c9377af7695",
       "full_repository_suite": "not observed",
-      "combined_status": "pending; no commit status contexts",
+      "latest_cross_analysis_run": 44328988897,
+      "latest_cross_analysis_result": "success",
       "pillars_consistency_run": 44309596554,
       "pillars_consistency_result": "failure"
     }
@@ -372,11 +290,12 @@
       "draft": true,
       "formal_reviews": 0,
       "review_threads": 0,
+      "requested_reviewers": 0,
       "mergeable": true,
       "mergeable_state": "unstable",
-      "head_sha": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
+      "head_sha": "78ed0c1a2e6cec991f6069f4c624e5e40bc96fe0",
       "base_sha": "13c60af7079700a38b4226b9110d9c9377af7695",
-      "ahead_by": 301,
+      "ahead_by": 303,
       "behind_by": 0
     },
     "changed_workflow_files": 67,
@@ -412,13 +331,8 @@
       "workflow": ".github/workflows/paid-issue-publish.yml",
       "trigger": "workflow_run after successful Paid issue hunter run on main",
       "permission": "contents: write",
+      "persist_credentials": true,
       "action": "git push origin main",
-      "observed_main_commit": "13c60af7079700a38b4226b9110d9c9377af7695",
-      "triggering_hunter_run": 44304037203,
-      "changed_paths": [
-        "PAID-ISSUES.md",
-        "data/money/paid_issues.json"
-      ],
       "status": "material merge blocker pending containment and independent review"
     },
     "tag_release_workflow": {
@@ -426,68 +340,69 @@
       "permission": "contents: write",
       "trigger": "tag push / release",
       "release_tag_pushed_this_run": false
-    }
+    },
+    "transitive_workflow_script_security_review": "incomplete"
   },
   "open_pr_backlog": [
     {
       "number": 1663,
       "classification": "blocked",
-      "note": "sole consolidated V3/XRP integration; draft, 301 ahead, 0 behind, 1,425 files, 67 workflows, zero reviews; exact-head full suite pending"
+      "note": "sole consolidated V3/XRP integration; draft, 303 commits ahead, 0 behind, 1,426 files, 67 workflow files, zero formal reviews or review threads; exact-head push suite passes but governance/security gates remain unresolved"
     },
     {
       "number": 1666,
       "classification": "blocked",
-      "note": "Kaggle range widens to <1.8; exact full suite/audits pass, but requirements-integrations comment still warns >=1.6 pulls Rust rpds-py; reconcile before merge"
+      "note": "Kaggle dependency update; overlaps pyproject.toml and requirements-integrations.txt with #1663; reconcile rpds-py/Rust dependency implications before merge"
     },
     {
       "number": 1665,
       "classification": "blocked",
-      "note": "Pylint 4.1.4 dependency update has exact full suite/audits pass, but overlaps requirements-dev.txt in #1663 and branch-protection approval requirements are unverified"
+      "note": "Pylint dependency update; overlaps requirements-dev.txt with #1663; exact integration-head verification does not independently authorize this stacked update"
     },
     {
       "number": 1664,
       "classification": "unique/unreviewed",
-      "note": "paid-issue template pack; draft, 3 ahead/3 behind current main; two divergent root-document overlaps"
+      "note": "paid-issue template pack; 70 files, two divergent root-document overlaps with #1663; preserve pending separate review"
     },
     {
       "number": 1541,
       "classification": "blocked",
-      "note": "unique MMI security work stacked on #1540; five overlapping paths with #1663, three divergent; no direct main ancestry"
+      "note": "MMI security work; five overlapping paths with #1663, three divergent; stacked branch ancestry"
     },
     {
       "number": 1460,
       "classification": "unique/unreviewed",
-      "note": "institutional multirail research; 8 files, stacked on #1450; no direct main ancestry"
+      "note": "institutional multirail research; eight files, stacked on #1450"
     },
     {
       "number": 1450,
       "classification": "unique/unreviewed",
-      "note": "Binance/escrow research successor; 116 files, stacked on #1436; no direct main ancestry"
+      "note": "Binance/escrow research successor; 116 files, stacked on #1436"
     },
     {
       "number": 1440,
       "classification": "unique/unreviewed",
-      "note": "archive-validator repair; 64 files, stacked on #1436; no direct main ancestry"
+      "note": "archive-validator repair; 64 files, stacked on #1436"
     },
     {
       "number": 1437,
       "classification": "unique/unreviewed",
-      "note": "archive/addenda repair; 5 files, stacked on #1353; no direct main ancestry"
+      "note": "archive/addenda repair; five files, stacked on #1353"
     },
     {
       "number": 1436,
       "classification": "unique/unreviewed",
-      "note": "Binance incident/wallet graph; 24 files, stacked on #1353; no direct main ancestry"
+      "note": "Binance incident/wallet graph; 24 files, stacked on #1353"
     },
     {
       "number": 1353,
       "classification": "unique/unreviewed",
-      "note": "lossless XRP ledger archive/migration; 1,084 files, stacked on #1265; no direct main ancestry"
+      "note": "lossless XRP ledger archive/migration; 1,084 files, stacked on #1265"
     },
     {
       "number": 1265,
       "classification": "unique/unreviewed",
-      "note": "compact ledger-index migration; 144 files, one divergent ci.yml overlap with #1663; no direct main ancestry"
+      "note": "compact ledger-index migration; 144 files, one divergent ci.yml overlap with #1663"
     }
   ],
   "merge_decision": "NO_MERGE",
@@ -502,7 +417,10 @@
     "external_model_dispatch": false,
     "paper_trade": false,
     "funds_transfer": false,
-    "real_money": false
+    "real_money": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "directional_forecast": false
   },
   "institutional_capital_reconciliation": {
     "entity": "Evernorth Holdings Inc. / Pathfinder Digital Assets LLC",
