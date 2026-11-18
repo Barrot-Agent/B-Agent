@@ -225,3 +225,54 @@ This immutable historical reference is retained because the Run174 recovery audi
 - **Disposition: NO MERGE.** Main was not modified. No source PR was closed. No deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
 
 Next action: verify the new handoff commit's exact-head full repository suite and security gates, then continue with the SEC contact blocker and raw-receipt/feature-store reconstruction work.
+
+
+
+## Run 11 remediation and current XRP evidence — 2026-11-18 10:27:48 UTC
+
+### Exact-head repository verification
+
+- Main SHA: e204c21100f3d059e2ba633d041fe8927b61ccaf.
+- Verified parent integration head: af2177ea64bf5a6fb6e7952e1c9e97ec834d8b53; PR #1663 was 282 commits ahead, zero behind, with 1,418 changed files. The artifact and handoff update in this commit require a new exact-head CI run; the parent-head results below must not be attributed to the new commit until that run completes.
+- The earlier Run 11 full-suite failure in [44283939979](https://github.com/Barrot-Agent/B-Agent/actions/runs/44283939979) was one preservation-regression assertion: the canonical handoff omitted the historical Run174 marker and SHA although the structured audit artifact remained present. The handoff was corrected without changing the test or rewriting history.
+- Corrected parent-head [full-suite run 44284952830](https://github.com/Barrot-Agent/B-Agent/actions/runs/44284952830): **4,273 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests passed** in 116.49 seconds; inclusive coverage 68.14%, legacy-core coverage 77%; wheel build and installed-wheel verification passed; Pages validation passed.
+- Exact-parent PR checks: [CI 44284962127](https://github.com/Barrot-Agent/B-Agent/actions/runs/44284962127), [dependency audit 44284962272](https://github.com/Barrot-Agent/B-Agent/actions/runs/44284962272), [money audit 44284962393](https://github.com/Barrot-Agent/B-Agent/actions/runs/44284962393), and [fail-closed gate 44284962299](https://github.com/Barrot-Agent/B-Agent/actions/runs/44284962299) passed. Push dependency audit [44284952990](https://github.com/Barrot-Agent/B-Agent/actions/runs/44284952990) and fail-closed gate [44284952867](https://github.com/Barrot-Agent/B-Agent/actions/runs/44284952867) passed. GitHub Actions cache budget is exhausted and cache storage is read-only; test execution succeeded.
+
+### Current market structure — research only
+
+Structured artifact: [20261118T102748Z market, ETF, Binance incident and macro audit](research/xrp_intelligence/20261118T102748Z-market-structure-etf-binance-macro-audit.json).
+
+- Kraken XRP/USD ticker retrieval: last $0.99919; bid $0.99886 (330 XRP); ask $0.99895 (3,538 XRP); spread about 0.90 bps; 24-hour volume 41.97M XRP; VWAP $0.97469; high/low $1.00677/$0.94500. Kraken's payload has no exchange event timestamp, so it is retrieval-time context only.
+- CoinGlass live aggregate: approximately $0.9998, +4.20% over 24 hours; spot volume $553.84M (+17.77%); futures volume $2.47B (+12.22%); open interest $2.06B (+3.82% in USD but −0.36% in XRP units); OI-weighted funding −0.0029% per eight hours (−3.22% annualized); $5.86M liquidations, 64% shorts; futures volume about 4.5 times spot; Fear & Greed 10 (Extreme Fear). The 7-day, 30-day, 90-day and YTD returns remain −5.12%, −23.32%, −21.25% and −45.71%. This is an aggregator snapshot, not a synchronized exchange-level dataset.
+- Fuelmaps' 06:00 UTC six-venue spot book showed bid share of 59.0% within ±1% and 64.2% within ±5%; its mid was $0.9835. Basis' 07:42 UTC Binance XRPUSDT perpetual book was nearly balanced within ±1% ($12.7M bids / $12.9M offers). Different venues, products and timestamps; do not combine these into one depth measure.
+
+### ETF-flow disagreement — unresolved
+
+- CoinGlass showed approximately −$6.1M for Nov 17; Pluang's TokenPost-syndicated report showed −$6.14M.
+- CryptoKeyhole's issuer-file reader at 07:55 UTC had only 2 of 4 tracked funds published for Nov 17: −3,251 XRP (about −$3K), with Bitwise and Franklin missing.
+- XRP Insights had not yet posted Nov 17; its last complete day was Nov 16 (+158,148 XRP across its stated universe).
+- For Nov 9–13, KuCoin citing SoSoValue reported −$19.13M, while CryptoKeyhole showed −4.923M XRP and XRP Insights −6.08M XRP. These fund universes and methods differ. No daily or weekly aggregate is admitted as a model feature until issuer holdings/share-count reconciliation is complete.
+
+### Binance exchange-flow correction and macro context
+
+- Binance's first-party incident report says five hot wallets sent **233.46M XRP** to an attacker-controlled address between 20:05 and 20:09 UTC on Oct 29. Classify this as a security-incident hot-wallet outflow, not customer withdrawals, market selling or ordinary exchange flow.
+- Binance reported $6.34B in total impacted digital assets and about $2.85B frozen/intercepted. Its Oct 31 recovery update described 90% replenished and XRP among tokens then 100% backed; its Nov 3 initial report said 98% of impacted token assets were replenished as of Oct 31. Reuters on Nov 18 reported approximately 95% of lost tokens covered and about $3B frozen. Preserve these as attributed snapshots with potentially different scopes; frozen/intercepted is not recovered, and 1:1 customer backing does not prove the original XRP was recovered or quantify XRP-specific replacement purchases.
+- Reuters on Nov 18 reported the dollar index near 103.67 and a 19-month high, 95.7% market-implied odds of a 25-bp December Fed hike, USD/JPY around 159.25, and further tightening signals from BOJ Governor Kazuo Ueda. This is timestamped macro context, not a causal XRP explanation.
+
+### Interpretation and forecast gate
+
+A short-covering/position-reset explanation is plausible because price rebounded while funding remained negative, shorts made up most reported liquidations, and XRP-denominated OI declined despite USD OI rising. Fresh spot accumulation remains possible because spot volume rose and an earlier six-venue book showed bid skew, but futures turnover remained about 4.5 times spot, ETF reporting conflicts, and current synchronized multi-venue L2 was not captured. A broader relief move inside a larger drawdown is also plausible given negative multi-week returns, extreme fear and a strong dollar. These are competing hypotheses, not directional forecasts.
+
+**Forecast status: NOT_ISSUED.** The rendered observations have no retained raw HTTP bytes, immutable SHA-256 receipts or trusted timestamp anchor and are not model-eligible. No paper trade or real-money action occurred.
+
+### Integration, backlog and blockers rechecked
+
+- PR #1663 remains the single consolidated integration PR, draft, 282 commits ahead at the verified parent head, 1,418 files; no new PR was created.
+- Current overlap comparison: #1541 shares five paths (two identical blobs, three divergent); #1265 shares one divergent .github/workflows/ci.yml; #1664 shares two divergent paths (BARROT_SYNC.md, MEMORY.md) but is a separate paid-issue workstream. Preserve all three; no source PR closed.
+- Ten open PRs remain drafts: #1663 blocked; #1541 blocked/partial overlap; #1664 unique/unreviewed; #1460, #1450, #1440, #1437, #1436, #1353 and #1265 unique/unreviewed with the noted overlap. The #1265→#1353→#1436→#1450→#1460 ledger/research chain and #1440/#1437 stacked repairs remain intact.
+- Six dependency manifests were audited; push and PR dependency checks passed. Twelve high-risk workflow files were spot-checked. Several deployment/Space/Kaggle/Databricks/paper-trader workflows are manual and explicitly gated or quarantined, but paid-issue-publish.yml retains contents: write on a main-branch workflow-run path. Full transitive review of all 67 changed workflows and called scripts remains incomplete.
+- Main branch-protection details still return HTTP 403; the visible fallback ruleset is disabled; CODEOWNERS remains self-only; independent formal reviews remain zero. No merge.
+- SEC EDGAR remains blocked by missing approved BARROT_SEC_USER_AGENT; do not invent a contact. The ingestion workflow is present only on the integration branch, so its main-only schedule is not active in production. Latest actual ingestion remains the earlier 08:31 UTC run; no new live ingestion was triggered here.
+- Only ChatGPT-to-GitHub has verified authentication/data flow among the nine platforms. Other eight remain unverified.
+
+**Disposition: NO MERGE.** The corrected parent head passed its full suite; the new research/handoff commit still requires its own exact-head CI. Main remains unchanged; no deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer, real-money action, force-push or history rewrite occurred.
