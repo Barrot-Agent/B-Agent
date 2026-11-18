@@ -32,7 +32,7 @@ concurrency:
 
 jobs:
   capture:
-    if: github.ref == 'refs/heads/main' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/'))
+    if: github.ref == 'refs/heads/main' || (startsWith(github.ref, 'refs/heads/integration/') && (github.event_name == 'push' || github.event_name == 'workflow_dispatch'))
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
