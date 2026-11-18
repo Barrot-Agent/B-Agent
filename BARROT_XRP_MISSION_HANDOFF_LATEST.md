@@ -2594,3 +2594,205 @@ The bank network is multi-issuer: Standard Chartered supports USDC and RLUSD inf
 4. Continue raw-wire receipt capture, immutable external anchoring, SEC/CFTC ingestion, deterministic raw-to-feature reconstruction, synchronized multi-venue depth and leakage-safe walk-forward/calibration/drift/shadow evaluation.
 
 **Disposition: NO MERGE.** The exact full suite passed on 17c5afe, but the current evidence/test successor must pass its own exact-head suite. Governance, independent-review, branch-protection, publication and transitive-security blockers remain. No deployment, release, secret rotation, Space restart, Kaggle submission, Databricks write, external-model dispatch, paper trade, funds transfer or real-money action occurred.
+
+
+## Run 30 — 2026-11-18T23:36:21Z — exact-head full-suite closure, current microstructure, Q3 13F disclosures and provider-fallback conflict
+
+### Repository and integration state
+
+- Repository: https://github.com/Barrot-Agent/B-Agent
+- Current main remains `d5d22ac252f88637a490ed4c1598f8608b6cb786`. No main commit was made by this run.
+- Existing consolidated PR #1663: https://github.com/Barrot-Agent/B-Agent/pull/1663
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`
+- Exact tested integration head before this Run 30 documentation update: `223d5bd687166da0080835636190896344f5c7f1`.
+- At that head PR #1663 was 364 commits ahead, zero behind, 1,438 changed files, 68 changed workflow files, 518,399 additions and 6,754 deletions. It remains draft and mergeable, with zero formal reviews.
+- Recursive trees: main 1,739 entries; integration 2,985 entries; zero main paths missing from integration. The integration branch itself is unprotected.
+- Main's detailed branch-protection endpoint still returns HTTP 403. The visible `Fall Back` ruleset remains disabled. CODEOWNERS remains `* @Barrot-Agent`. Repository metadata grants this connector admin/maintain/push/pull/triage; token scopes were not introspected, so least privilege is not verified.
+- The nine-platform map was updated on this branch in commit `871d0feb1150a6efcd65858d6761ca70ae0817df`. This handoff update creates a later documentation-only commit; exact-head CI must be rerun on the resulting head.
+
+### Exact-head test and gate evidence
+
+**Verified on exact code/test head `223d5bd`:**
+
+- Full repository CI run 44421533967: 4,279 passed, 1 skipped, zero failed, 11 warnings, 19 subtests passed, 112.62 seconds.
+- Inclusive package coverage: 68.13%.
+- Legacy-core coverage: 77%.
+- Dependency audit run 44421535384: success.
+- Fail-closed push gate run 44421533908: success.
+- PR-event CI run 44421543005: success; its standard/full-suite test jobs were skipped because #1663 remains draft. Pages job was validation-only.
+- PR dependency audit 44421543207: success.
+- PR money audit 44421542947: success.
+- PR fail-closed gate 44421542962: success.
+- GitHub Actions cache reservation emitted a warning because the configured cache budget is exhausted. The warning did not fail the suite or gates.
+
+The 4,279-test result is an exact-head pass for `223d5bd`, not for the subsequent Run 30 map/handoff documentation commits. Those commits require their own exact-head CI. Main remains at `d5d22ac`; its last inspected CI run 44396364281 passed 1,207 tests, with two skipped and 78.10% coverage.
+
+### Open PR inventory and classification
+
+Thirteen PRs remain open. No PR was merged or closed.
+
+| PR | Classification | Current disposition |
+|---|---|---|
+| #1663 | blocked | Sole consolidated V3/XRP integration; draft, no independent review; exact-head suite passed on 223d5bd; branch-protection, publisher, Pages and transitive-security blockers remain |
+| #1668 | blocked | Provider-fallback candidate; all three changed paths overlap #1663; unsafe worker reactivation and unapproved external data egress |
+| #1664 | unique/unreviewed | Paid-issue/product template pack; three documentation paths overlap #1663, but it is not an exact duplicate |
+| #1665 | duplicate | Pylint `>=4.1.4` in `requirements-dev.txt` is already present identically in #1663; source PR remains open until the successor is merged and verified on main |
+| #1666 | blocked | Kaggle dependency change widens `<1.6` to `<1.8` while the adjacent comment still says `>=1.6` pulls `jsonschema->rpds-py` (Rust); compatibility rationale unresolved |
+| #1541 | blocked | MMI claim-fingerprint work; all five changed paths overlap #1663 and need reconciliation |
+| #1265 | blocked | XRP ledger index-pointer migration; stacked branch; `.github/workflows/ci.yml` overlaps #1663 and prior workflow runs failed |
+| #1450 | unique/unreviewed | Binance phase-one/escrow research; no path overlap |
+| #1460 | unique/unreviewed | Institutional multirail, Binance and Kamilah research; no path overlap |
+| #1440 | unique/unreviewed | XRP archive-validation trigger repair; no path overlap |
+| #1437 | unique/unreviewed | XRP ledger source-addenda and snapshot-pointer repair; no path overlap |
+| #1436 | unique/unreviewed | Binance XRP theft, issuer freezes and attacker-wallet graph; no path overlap |
+| #1353 | unique/unreviewed | Lossless hash-verified XRP ledger archive/migration; no path overlap |
+
+Backlog counts: ready 0; blocked 5; unique/unreviewed 7; duplicate 1; superseded 0. The duplicate #1665 is not closed before #1663 is merged and its content verified on main.
+
+### PR #1668 — free inference fallback review
+
+PR #1668 branch `integration/provider-failover-runner-20261118`, head `577656042804e40c87ca8cf736faa98be3b6f163`, changes exactly three paths that all overlap #1663:
+
+- `.github/workflows/barrot-agent.yml`
+- `scripts/barrot_agent.py`
+- `tests/test_barrot_agent_script.py`
+
+The workflow's actual triggers are `issues: labeled` and `workflow_dispatch`; it does not declare a schedule trigger, although its job condition contains a schedule branch. Manual dispatch requires `confirm=true`; issue-label execution restricts the sender to Barrot-Agent or the repository owner. The workflow nevertheless grants `contents: write`, `pull-requests: write` and `issues: write`, and loads Groq, Cloudflare, OpenRouter and Gemini secrets. It sets `BARROT_ENABLE_FREE_FALLBACKS=true`.
+
+The fallback forwards the original messages, tool definitions and `tool_choice` to third-party model endpoints. No prompt redaction, data classification, secret filtering, user data-egress approval or live provider authentication/data-flow evidence was found. The integration branch intentionally quarantines this worker. Its current `scripts/barrot_agent.py` is a newer, more hardened version with token-budget preflight, explicit loopback-only local-provider validation and distinct TPM 413/429 handling; the #1668 script is an older version and must not replace it wholesale.
+
+PR #1668's CI run 44416137636 passed its main-branch suite: 1,209 passed, two skipped, eight subtests, 78.10% coverage. That is not the expanded integration-branch full-suite matrix. The provider tests use mocked credentials and do not establish live provider authentication or availability.
+
+Current public provider documentation establishes these limits:
+
+- OpenRouter's `openrouter/free` router lists 24 free variants at $0 model-token pricing. Accounts without at least $10 in lifetime credit purchases are limited to 20 requests/minute and 50/day. It is not a guaranteed-capacity fallback; model/provider selection can change.
+- Cloudflare Workers AI provides 10,000 Neurons/day on the Workers Free plan. GLM-4.7-Flash is a valid hosted model, but its published unit rates are $0.0605 per million input tokens and $0.40 per million output tokens; usage beyond the free allocation requires a paid plan or fails.
+- Gemini 3.1 Flash-Lite has a free API tier, but Google's terms state that free-tier content may be used to improve its products. Paid-tier content is not used for that purpose. No Barrot Gemini key or consented data flow is verified.
+
+Primary documentation:
+- OpenRouter free models: https://openrouter.ai/collections/free-models
+- OpenRouter free router: https://openrouter.ai/openrouter/free
+- OpenRouter rate limits: https://openrouter.ai/docs/api-reference/limits
+- Cloudflare Workers AI pricing: https://developers.cloudflare.com/workers-ai/platform/pricing/
+- Cloudflare GLM-4.7-Flash: https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/
+- Gemini API pricing and data-use terms: https://ai.google.dev/gemini-api/docs/pricing
+
+The local loopback provider already present in the integration branch is the only zero-cost/no-third-party-egress option in this candidate set, but it requires a local inference runtime and is not active on the GitHub runner. No external model dispatch occurred. **PR #1668 remains blocked and must not be merged as-is.**
+
+### Fresh XRP spot snapshot
+
+Public API response views captured during this run:
+
+**Kraken XRP/USD** — retrieval-time observation; Kraken's ticker response does not expose an exchange event timestamp.
+
+- Last: $0.96578.
+- Bid: $0.96567, 350 XRP.
+- Ask: $0.96576, 5,178 XRP.
+- Spread: approximately 0.932 basis points.
+- 24-hour volume: 44,416,857.706 XRP.
+- 24-hour VWAP: $0.98210349.
+- 24-hour high/low: $1.00677 / $0.95485.
+- Last price is approximately 1.662% below the reported VWAP.
+- Ask quantity at the best level is approximately 14.79 times bid quantity.
+
+Source: https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+
+SHA-256 of the exact rendered JSON response text: `633040c7e6887ed693d9bfc74ba17a5db67ee59fbc62ca105e5e2f007b0e13ec`.
+
+**OKX XRP-USDT** — exchange event timestamp 2026-11-18T23:12:26.368Z.
+
+- Last: 0.9661 USDT.
+- Bid: 0.9661, 1,330.904766 XRP.
+- Ask: 0.9662, 1,011.322665 XRP.
+- Spread: approximately 1.035 basis points.
+- 24-hour volume: 30,522,562.869 XRP.
+- Bid quantity is approximately 1.316 times ask quantity.
+
+Source: https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT
+
+SHA-256 of the exact rendered JSON response text: `c4c97fb0bdc29870cb88ef436f771d935f4ecb7740da8a8ec28f25370aa5bbeb`.
+
+These hashes cover the rendered JSON response text, not independently captured HTTP wire bytes; no external WORM anchor or trusted timestamp is established. The top-of-book imbalances point in opposite directions across the two venues. Full synchronized Level 2 depth and sequence reconstruction were not captured. The OKX quote is USDT-denominated and was not normalized to USD because no synchronized USDT/USD conversion leg was obtained. No directional interpretation or forecast is justified.
+
+### ETF-flow update and disagreement
+
+- CryptoTuts tracker, as of the November 17 close: five reported ETFs, approximately $1.08B AUM, November 17 flow of -$6.14M and seven-day net flow of -$7.23M.
+- XRP Insights: November 17 +986 XRP and November 16 +158.1K XRP, across six spot funds plus BITW; it excludes GXRP from flow totals while correcting a data gap.
+- Prior trackers report different fund universes, units and completeness. These observations are not averaged. The CryptoTuts and XRP Insights figures are not issuer-level confirmations and should not be treated as independent source families without lineage checks.
+
+Sources:
+- https://cryptotuts.co/xrp/etf
+- https://xrp-insights.com/
+
+### Q3 2026 Form 13F disclosures — institutional exposure, not direct XRP flows
+
+New reporting covers holdings as of September 30, 2026, filed mainly November 9–16. These are stale quarter-end snapshots, not November purchases.
+
+**Goldman Sachs**
+
+- SEC primary 13F cover page: CIK 0000886982, accession 0000886982-26-000647, report period September 30, signed November 16, 2026.
+- The cover page reports 14,139 information-table entries, total table value approximately $1.167T and eight other included managers.
+- Secondary reporting attributes more than $144M across five spot XRP ETFs at quarter-end, versus approximately $86.5M in Q2. The row-level information table has not yet been independently parsed in this run; retain the $144M as secondary-reported, not primary-row-verified.
+
+Sources:
+- SEC primary cover: https://www.sec.gov/Archives/edgar/data/886982/000088698226000647/xslForm13F_X02/primary_doc.xml
+- Secondary position analysis: https://news.bitcoin.com/finance/goldman-sachs-xrp-etf-stake-144m-q3-xrp-crash/
+
+**Intesa Sanpaolo**
+
+- SEC primary 13F cover page: CIK 0001374384, accession 0001374384-26-000009, report period September 30, signed November 16, 2026.
+- The cover page reports 243 information-table entries and total table value approximately $2.979B.
+- Secondary row-level reporting attributes approximately $27.21M to XRP ETFs: 712,319 Grayscale XRP Trust ETF shares, reportedly unchanged from Q2, and 402,750 new reported Bitwise XRP ETF shares.
+- The reported GXRP value increase from approximately $14.42M to $20.52M is a valuation change if the share count remained unchanged; it is not new share demand. The Bitwise share count is a new reported position, but the filing alone does not prove when or how the shares were acquired.
+
+Sources:
+- SEC primary cover: https://www.sec.gov/Archives/edgar/data/1374384/000137438426000009/primary_doc.xml
+- Secondary row analysis: https://en.coinotag.com/intesa-sanpaolo-lifted-xrp-etf-holdings-27-21-million-q3
+
+**Bank of America**
+
+- SEC filing index: accession 0000070858-26-000589, filed November 16, 2026, period September 30, 2026.
+- Secondary reporting identifies 13,260 shares of the futures-based Volatility Shares XRP ETF (XRPI), valued around $106,600. This is futures-product exposure, not a spot XRP ETF or direct XRP holding.
+
+Sources:
+- SEC filing index: https://www.sec.gov/Archives/edgar/data/70858/000007085826000589/0000070858-26-000589-index.html
+- Secondary report: https://u.today/bank-of-america-joins-xrp-etf-holders-in-new-q3-sec-filing
+
+A secondary compilation attributes approximately $29.4M of XRP-linked ETF holdings to seven banks, with Intesa contributing approximately $27.21M, more than 92% of that aggregate. Do not add that group total to Goldman's $144M without checking manager/account overlap. Form 13F reports investment-manager holdings of reportable securities; it does not prove proprietary bank balance-sheet capital, direct XRP wallet ownership, open-market spot purchases or unhedged directional exposure. It omits short positions and does not provide a complete hedge picture. The SEC cover pages verify manager and report period; exact information-table rows still require extraction and reconciliation.
+
+Secondary group compilation: https://news.bitcoin.com/featured/7-major-banks-reveal-xrp-etf-holdings-latest-sec-filings/
+
+### Prediction-engine and ingestion status
+
+No new scheduled ingestion run was observed in Run 30. The latest recorded repository ingestion remains run 44301868145 at 2026-11-18T12:13:54.617611Z:
+
+- 34 receipts: 22 raw-retained, 12 digest-only.
+- 21 source failures.
+- 124 eligible and 361 excluded features.
+- 3,235 feature-history records, 15 snapshots, 140 events and 107 scenarios.
+- Zero walk-forward forecasts.
+- SEC EDGAR submissions/companyfacts: zero, with six configuration failures.
+- CFTC weekly source families: zero of two.
+- Raw-to-feature reconstruction from artifacts: not verified.
+- External immutable anchoring: not established.
+- Forecast issuance remains disabled.
+
+The hourly/daily ingestion workflow is present on the integration branch but is not active on main. No directional forecast, shadow/paper trade, Kaggle submission, funds transfer or real-money action occurred.
+
+### Nine-platform coordination
+
+ChatGPT-to-GitHub access remains verified for repository/tree/PR/workflow reads and integration-branch writes. Repository metadata reports admin/maintain/push/pull/triage, but token scopes were not introspected and least privilege is not established.
+
+Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified for Barrot authentication, permissions and data flows. Public provider documentation and SBI's reported corporate Claude use do not establish a live Barrot connection. No external model dispatch or evidence transfer occurred.
+
+### Next concrete actions
+
+1. Run exact-head full-suite CI, dependency audit, fail-closed gate and money audit after the Run 30 map/handoff commits; do not rely on the 223d5bd result for later commits.
+2. Complete transitive security review of all 68 changed workflow definitions, invoked scripts, artifacts and action dependencies.
+3. Obtain independent review and verify effective main branch protection, required checks and bypass settings; resolve automatic Pages publication before any merge.
+4. Keep #1668 blocked until provider data-egress policy, redaction, least-privilege workflow permissions, live authentication and full-suite tests are independently verified. Do not merge its worker activation.
+5. Reconcile #1665 as an exact duplicate only after #1663 is merged and its Pylint line is verified on main; keep #1666 blocked until its Kaggle constraint/comment conflict is resolved.
+6. Restore SEC/CFTC ingestion with a valid monitored SEC User-Agent configuration; capture raw bytes and externally anchor receipts; prove deterministic raw-to-feature reconstruction.
+7. Continue synchronized multi-venue L2 capture, ETF issuer-row reconciliation, derivatives venue-universe normalization and leakage-safe walk-forward/baseline/calibration/drift/shadow evaluation.
+
+**Disposition: NO MERGE.** Exact-head full-suite, dependency and fail-closed checks passed on `223d5bd`, but the Run 30 documentation successor still needs exact-head CI. Independent review, branch-protection verification, automatic-publication controls and the full transitive workflow audit remain blockers. No deployment, release, secret rotation, Space restart, Kaggle submission, Databricks write, external-model dispatch, paper trade, funds transfer or real-money action occurred.
