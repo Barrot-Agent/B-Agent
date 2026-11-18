@@ -41,8 +41,9 @@ jobs:
             exit 1
           fi
           actual="$(git rev-parse HEAD)"
-          if [[ "$actual" != "$EXPECTED_SOURCE_SHA" ]]; then
-            echo "Checked-out main commit does not match the approved source SHA." >&2
+          current="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          if [[ "$actual" != "$EXPECTED_SOURCE_SHA" || "$current" != "$EXPECTED_SOURCE_SHA" ]]; then
+            echo "Checked-out commit or current main ref does not match the approved source SHA." >&2
             exit 1
           fi
 
