@@ -8049,3 +8049,100 @@ PR #1541's five paths are fully represented in #1663, but it is not to be closed
 6. Expand multi-venue point-in-time history, source-cluster independence, labels and outcome evaluation. Run chronological walk-forward baselines and calibration before shadow readiness. Keep directional forecasts disabled.
 
 No PR was merged or closed. No main files were modified. No deployment, secret rotation, Space restart, Hugging Face upload, Kaggle submission, Databricks write, external model dispatch, funds transfer, paper trade, real-money action, force-push or history rewrite occurred.
+
+
+# Run 11 — 2026-11-18 01:05 UTC — mainline reconciliation, exact-head CI audit, and XRP evidence refresh
+
+**Priority:** XRP intelligence and prediction-engine mastery. **Foundation:** preserve Barrot V3 as execution, orchestration, safety, and verification foundation.
+
+## Repository state — EXECUTED / VERIFIED
+
+- Repository: `Barrot-Agent/B-Agent`; default branch: `main`.
+- Current main at inspection: `b5b22ea58fa069792b0728d47cb2414855234a4a`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Integration head before this run's reconciliation: `43ef41632e2599c6e0112ff4386aa756c0695ddf`.
+- Main advanced one commit after the PR's former base `c54447c320ba2efd783659c7685e969de45e90b0`. The sole main commit was the scheduled Paid Issue Hunter evidence refresh `b5b22ea`; its only changed paths were `PAID-ISSUES.md` and `data/money/paid_issues.json`. The JSON states `mutations_performed: 0` and contains zero rows.
+- Reconciled that commit into the integration branch with a normal two-parent merge commit `c7a178064e576ed8ce8fef33747f052194c189b4`, parents `43ef416` and `b5b22ea`. The two main-generated evidence files were copied by their exact main blob SHAs into the integration tree. No application code or workflow was changed by this reconciliation.
+- The PR now reports 253 commits ahead, zero behind, 1,407 changed files, and remains open/draft. Main was not modified by this run.
+- Main recursive tree: 1,737 entries. Integration recursive tree: 2,958 entries, not truncated. Integration contains 93 workflow files; the PR changes 67 workflow paths. The PR file-list endpoint returned 1,407 paths after the two main-generated evidence files ceased to be branch differences.
+- The connector has read/write repository permissions. Main branch metadata says `protected: true`; the detailed branch-protection endpoint returns HTTP 403. The only visible repository ruleset is disabled. `.github/CODEOWNERS` is identical on main and integration and contains only `* @Barrot-Agent`; this is not independent review.
+- The canonical handoff is append-only. This Run 11 section is committed as a documentation-only child of `c7a1780`; its Git commit is the current handoff revision. The integration ref must be re-read before subsequent work.
+
+## CI and dependencies — VERIFIED / NOT YET VERIFIED
+
+- Exact PR-head `43ef416` PR-event CI run [44205627874](https://github.com/Barrot-Agent/B-Agent/actions/runs/44205627874): Pages validation passed, but both the core Tests job and Full repository test suite job were **skipped** because this is a draft integration PR. This is not full-suite evidence for `43ef416`.
+- On the same head, dependency audit [44205627827](https://github.com/Barrot-Agent/B-Agent/actions/runs/44205627827), money audit [44205627845](https://github.com/Barrot-Agent/B-Agent/actions/runs/44205627845), and fail-closed gate [44205627861](https://github.com/Barrot-Agent/B-Agent/actions/runs/44205627861) passed.
+- Prior code head `25106736de364fc56eb4fe13a6a96cc9daf84765` passed push-triggered full-suite run [44201106951](https://github.com/Barrot-Agent/B-Agent/actions/runs/44201106951): 4,257 passed, 1 skipped, 11 warnings, 19 subtests passed, 119.63 seconds; inclusive coverage 68.13%, legacy-core coverage 77%; wheel build and installed-wheel verification passed. This result is for `2510673`, not for `43ef416` or the later merge commit.
+- Merge commit `c7a1780` changed only the two files excluded by the integration CI workflow's `paths-ignore`; its push triggered the fail-closed gate [44213298899](https://github.com/Barrot-Agent/B-Agent/actions/runs/44213298899), but did not trigger the full CI suite. The current Run 11 handoff-file change is intentionally not ignored and should trigger the push CI/full-suite job. Its exact-head run must be checked after this commit; do not claim a result before completion.
+- Integration `requirements-dev.txt` adds SciPy and build tooling. Integration CI installs the complete development requirements, runs every active test under `tests`, the runnable legacy tests and `.barrot/autonomous_tasks/test_math_task.py`, applies inclusive coverage and legacy-core floors, builds a wheel and verifies the packaged XRP mission. The main CI workflow is narrower and has a different coverage scope. Main `requirements-dev.txt` does not include SciPy; integration's `pyproject.toml` exposes it as the optional `science` extra and the development requirements install it.
+- Integration CI intentionally skips PR-event tests for `integration/**` branches; the full suite is intended to run on branch pushes. The current PR-event success cannot replace that push result.
+
+## Workflow and security audit — EXECUTED
+
+- Main `barrot-sync.yml` triggers on main pushes, reads `GH_TOKEN`, masks sync failures with `|| true`, and suppresses git-push failures. Integration version is quarantined with no permissions and a disabled job.
+- Main `barrot-agent.yml` has issue-label/scheduled task dispatch with contents, pull-request and issue write permissions and a Groq secret. Integration version is quarantined with `permissions: {}` and a disabled job.
+- Main `paid-issue-publish.yml` retains `contents: write` on a successful Paid Issue Hunter workflow run on main. It verifies `mutations_performed == 0` and commits only `PAID-ISSUES.md` and `data/money/paid_issues.json`. The latest main-generated commit `b5b22ea` confirms those exact two paths. This is an automatic write side effect, although its output is constrained.
+- Integration's Paid Issue Publish guard additionally requires `workflow_run.head_branch == 'main'`; its third-party actions are SHA-pinned. The main version still uses version tags for checkout/download actions.
+- Main has no `.github/workflows/xrp-public-ingestion.yml` (404 on main). The integration branch contains the public ingestion workflow with hourly and daily cron declarations, but its job runs only for main refs or integration push events. Therefore **scheduled XRP ingestion is not live on main**; the integration schedule is not itself an active scheduled production run. Its latest successful capture remains an integration push smoke capture.
+- Main's Pages deployment is an automatic repository side effect. The integration CI Pages job is validation only. A merge can trigger main Pages publication; no deployment was authorized.
+- Branch protection says protected, but detailed required checks cannot be read through the connector (403). The fallback ruleset is disabled; CODEOWNERS is self-only; code-scanning and secret-scanning alert states remain unverified. No independent review is recorded.
+- Selected high-risk workflow diffs were reviewed. The complete semantic/security review of all 67 changed workflows and their transitive scripts, then the remaining 1,407-file diff, is still outstanding.
+
+## Latest XRP ingestion and prediction readiness
+
+- Latest successful integration ingestion: [run 44194148689](https://github.com/Barrot-Agent/B-Agent/actions/runs/44194148689), data cutoff 2026-11-17 22:52:25.991475 UTC. This was an integration push capture, not scheduled main ingestion.
+- 31 receipts: 19 raw payloads and 12 digest-only. Receipt chain sequence 4; continuity/per-run verification passed. No independent external timestamp anchor or WORM archive exists.
+- Latest feature snapshot: 82 eligible records, 378 excluded, 8 sources, four publisher groups (Bitbank, Coinbase, Kraken, OKX). Four snapshots contain 2,010 feature records; 1,747 are Coinbase-only and are not independent training samples.
+- Coinbase mid $0.97070, Kraken $0.970715 and OKX USD-normalized mid $0.970883 at the recorded cutoff; cross-venue dispersion about 0.019%. Depth imbalance differed by venue: Coinbase -4.07%, Kraken +11.78%, OKX -7.95%. Do not combine venue depth or mix USD/USDT/JPY.
+- 20 source failures remain: Binance 451 (8 endpoints), Bybit 403 (5), six ETF/Morpho processing errors, and Grayscale 429. Deribit remains raw-only pending contract/quantity semantics. No access-control bypass was attempted.
+- The latest OKX top-of-book observation is one same-venue snapshot: bid 0.9839151 USDT, ask 0.98402485 USDT, USD-normalized mid 0.983969975 and spread 1.1154 bps. Its two component snapshots were 0.203 seconds apart; maximum component age about 9.07 seconds. This is not consolidated cross-venue depth or independent source corroboration.
+- Event registry: 140 curated events and 107 scenarios. Receipt completeness remains false; drift is INSUFFICIENT_DATA; no XRP candidate has passed the full historical/out-of-sample readiness gate. No directional forecast or probability was issued.
+- Storage remains incomplete: checkpoints seven days, raw artifacts 90 days, no independent timestamp/WORM anchor, and no automatic rebuild of the feature store from raw artifacts. The cache is not the immutable source of truth.
+
+## Fresh institutional and ETF evidence — public research, model-ineligible
+
+- CryptoKeyhole's latest page extract says November 16 flow remained partial: 2 of 4 daily-reporting funds, net outflow 5,196,983 XRP (about $5.0M); it identifies November 13 as the latest complete day with a four-fund net outflow of 9,967 XRP. It explicitly waits for Bitwise XRP and Franklin XRPZ. [CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/). The page's publisher update stamp is 2026-11-17 07:25 UTC.
+- Corpstacking reports 10 tracked XRP spot funds/ETPs holding 1,392,779,280 XRP as of November 17. [Corpstacking](https://www.corpstacking.com/treasuries/by-token/ripple). XRP Insights reports a different six-spot-fund universe and a November 16 close figure of 1.17B XRP, with the Nov 16 row provisional. [XRP Insights](https://xrp-insights.com/xrp-etf). The universes, dates and product inclusion differ; these totals are not averaged or reconciled.
+- Ripple's October 28 announcement confirms RLUSD distribution on Coinbase Prime, Coinbase Exchange and Coinbase Retail across XRPL, Base and Ethereum, with 1:1 conversion from USD and supported USD stablecoins. Coinbase Global Exchange collateral support was described as following later, not as already live. [Ripple/Coinbase announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+- Ripple's October 26 release says OCC granted final approval for Ripple National Trust Bank to manage segregated RLUSD reserves, act as reserve collateral trustee and provide fiduciary digital-asset custody. This is issuer-published evidence; regulator-side approval documentation should remain the preferred independent primary check. [Ripple announcement](https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/).
+- BNY's October 27 release says its Digital Asset Custody platform supports XRP and RLUSD and that BNY is primary RLUSD reserve custodian. This verifies custody support, not client balances, XRP buying, collateral deployment or throughput. [BNY announcement](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+- Institutional relationships remain separate: Coinbase-Circle USDC distribution economics; Coinbase-Ripple RLUSD distribution; SBI-Circle USDC/JPYSC ecosystem; SBI-Ripple XRP/remittance and RLUSD distribution; Ripple-BNY custody. These do not prove that stablecoin payment volume automatically creates XRP demand. Evernorth's actual cash purchases, in-kind XRP, related-party contributions and optional financing capacity must remain separate accounting categories.
+- Exact-phrase research remains unchanged: ASK Coin is associated with Permission.io's consent-based advertising token; no XRP relationship is established. The exact phrase "actual capital" continues to require transaction-level distinction between cash received, completed purchases, in-kind transfers and undrawn financing. Japan's SBIC East/Central/West are distinct regional SME investment companies, not SBI Holdings subsidiaries; the ChatGPT reference is educational training, not a verified OpenAI partnership. Dr. Kamilah/Camilla Stevenson has not been cross-linked to an official YouTube channel, so unverified candidate videos remain unattributed.
+
+## Nine-platform coordination
+
+- ChatGPT's current session to the GitHub connector is verified for repository read and controlled integration-branch writes.
+- Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks have not been authenticated and data-flow tested in this run. No live connection, external model dispatch, cross-platform quorum or red-team quorum is claimed.
+- Least privilege, manual approval and fallback boundaries remain in force.
+
+## Open PR inventory and classification
+
+Nine open PRs were rechecked; no source PR was closed.
+
+| PR | Classification | Treatment |
+|---|---|---|
+| #1663 | Blocked; sole integration workstream | Keep draft; no merge |
+| #1541 | Superseded by overlap, pending successor merge | Preserve until #1663 is merged and verified on main |
+| #1450 | Unique research successor | Preserve |
+| #1460 | Unique institutional research | Preserve |
+| #1440 | Unique validator/trigger repair | Preserve |
+| #1436 | Unique Binance theft/freeze research | Preserve |
+| #1437 | Unique source-addenda repair; latest recheck transiently failed | Preserve |
+| #1353 | Unique lossless archive | Preserve |
+| #1265 | Unique compact ledger-index work; one CI overlap | Preserve its unique ledger-index test |
+
+No PR has been merged by this run. No duplicate/source PR is to be closed before a successor is actually merged and its content verified on main.
+
+## Merge decision and next action
+
+**NO MERGE.** The integration remains draft; exact-head full-suite verification is pending after the Run 11 handoff push; independent review is absent; required-check enforcement cannot be independently inspected; CODEOWNERS is self-only; the 67-workflow/transitive-script and 1,407-file semantic/security review is incomplete; and a merge would trigger automatic Pages publication.
+
+1. Verify the push-triggered full-suite, fail-closed gate, dependency audit, Pages validation and money audit on the new Run 11 handoff commit.
+2. Reconcile any subsequent main commit using a normal two-parent merge and expected-SHA ref update; never force-push.
+3. Complete workflow/transitive-script security review and obtain independent review/approval.
+4. Resolve the Pages publication side effect without initiating an unapproved deployment.
+5. Repair the six ETF/Morpho adapter failures and Franklin XRPZ identity/holdings markers; keep Binance/Bybit restrictions fail-closed.
+6. Add independent external timestamp/WORM anchoring, durable raw storage and feature-store reconstruction from raw artifacts.
+7. Expand independent multi-venue history and labels; complete leakage-safe walk-forward baselines, calibration and independent shadow evaluation before any directional forecast.
+
+No main files were modified by this run. No deployment, secret rotation, Space restart, Hugging Face upload, Kaggle submission, Databricks write, external model dispatch, funds transfer, paper trade, real-money action, force-push or history rewrite was performed.
