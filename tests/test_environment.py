@@ -29,7 +29,9 @@ def test_detect_returns_every_field():
         "tools",
     ):
         assert name in data
-    assert env.platform in {"linux", "darwin", "windows", "unknown"}
+    # "android" is real: Termux reports it via platform.system(), and this repo
+    # runs on Termux. The enum was missing the platform the repo actually uses.
+    assert env.platform in {"linux", "darwin", "windows", "android", "unknown"}
     assert env.surface in {
         "opencode-tui",
         "opencode-run",

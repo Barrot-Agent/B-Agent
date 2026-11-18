@@ -235,6 +235,12 @@ class Candidate:
     news: str = "CLEAR"
     bars_held: int = 0
     note: str = ""
+    # Diagnostic overrides. A ladder that forces one signal at a time shows which
+    # missing input is the binding constraint, instead of rejecting five times
+    # for the same reason.
+    trend_override: str | None = None
+    ratio_override: str | None = None
+    volume_override: str | None = None
 
 
 def build_plan(
@@ -262,9 +268,9 @@ def build_plan(
         xrp_per_asset=snapshot.ratio(asset),
         expected_move_pct=candidate.expected_move_pct,
         stop_pct=candidate.stop_pct,
-        trend=trend or default_trend,
-        ratio_signal=ratio_signal or default_ratio,
-        volume_signal=volume_signal or default_volume,
+        trend=trend or candidate.trend_override or default_trend,
+        ratio_signal=ratio_signal or candidate.ratio_override or default_ratio,
+        volume_signal=volume_signal or candidate.volume_override or default_volume,
         news=candidate.news,
         xrp_dominance=snapshot.xrp_dominance_pct(),
         bars_held=candidate.bars_held,

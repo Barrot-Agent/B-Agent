@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "record_type": "market_snapshot",
+  "snapshot_id": "live-20261118T193754",
+  "captured_at_utc": "2026-11-18T19:37:54Z",
+  "source": "COINGECKO_PUBLIC_API",
+  "provenance": "RECORDED_FEED",
+  "verification": {
+    "exchange_api_queried": true,
+    "provider": "api.coingecko.com",
+    "authenticated": false,
+    "note": "Public unauthenticated endpoint, read-only, fetched through network_guard."
+  },
+  "regime": {
+    "label": "BEARISH_WITH_XRP_RELATIVE_STRENGTH",
+    "market_trend": "DOWN",
+    "btc_dominance_pct": 58.0551,
+    "xrp_24h_pct": 1.0306,
+    "btc_24h_pct": -1.5866,
+    "xrp_outperforming_24h": true
+  },
+  "prices_usd": {
+    "BTC": 62706.0,
+    "ETH": 1754.1,
+    "USDT": 0.999223,
+    "XRP": 0.970877,
+    "SOL": 73.15,
+    "XLM": 0.138161
+  },
+  "change_pct": {
+    "BTC": {
+      "24h": -1.5866,
+      "7d": -15.2249,
+      "30d": -22.9171
+    },
+    "ETH": {
+      "24h": -1.9377,
+      "7d": -15.3455,
+      "30d": -26.2105
+    },
+    "USDT": {
+      "24h": 0.0035,
+      "7d": 0.0075,
+      "30d": -0.0033
+    },
+    "XRP": {
+      "24h": 1.0306,
+      "7d": -8.3215,
+      "30d": -24.6668
+    },
+    "SOL": {
+      "24h": 0.8294,
+      "7d": -13.4549,
+      "30d": -29.0509
+    },
+    "XLM": {
+      "24h": 0.2554,
+      "7d": -7.8736,
+      "30d": -21.1395
+    }
+  },
+  "market_cap_usd": {
+    "BTC": 1261539870888.0,
+    "ETH": 214503512035.0,
+    "USDT": 175300107393.0,
+    "XRP": 61718072446.0,
+    "SOL": 43312215008.0,
+    "XLM": 4895909656.0
+  },
+  "volume_24h_usd": {
+    "BTC": 29622318309.0,
+    "ETH": 10455745922.0,
+    "USDT": 45971980892.0,
+    "XRP": 1708162951.0,
+    "SOL": 2401290056.0,
+    "XLM": 140094152.0
+  },
+  "balances_start": {
+    "xrp": 102.27,
+    "usd_value": 99.29,
+    "btc_equiv": 0.00158345
+  },
+  "disabled_assets": []
+}

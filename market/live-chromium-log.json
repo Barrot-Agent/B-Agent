@@ -1,0 +1,95 @@
+{
+  "log": [
+    {
+      "commit": "b5dbfccf772f0547d53ba1ca0affd75c398957f4",
+      "tree": "3e0c4da9fd3c2a52c28ef1d7b5deddf60fa24417",
+      "parents": [
+        "49434e04f51b096781b8979a61d6c7005822a641"
+      ],
+      "author": {
+        "name": "\u0141ukasz Barczy\u0144ski",
+        "email": "lbarczynski@google.com",
+        "time": "Wed Nov 18 19:28:27 2026"
+      },
+      "committer": {
+        "name": "Chromium LUCI CQ",
+        "email": "chromium-scoped@luci-project-accounts.iam.gserviceaccount.com",
+        "time": "Wed Nov 18 19:28:27 2026"
+      },
+      "message": "[Android][Signin] Change source of accounts in SigninBridge\n\nChanges the source of accounts in SigninBridge from AccountManagerFacade\nto IdentityManager when MAKE_IDENTITY_MANAGER_SOURCE_OF_ACCOUNTS_PART2\nis enabled.\n\nFixed: 583746218\nChange-Id: Ie9684a32da202853e1756f9c74033abc330ef980\nReviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/8774989\nReviewed-by: Boris Sazonov <bsazonov@chromium.org>\nCommit-Queue: \u0141ukasz Barczy\u0144ski <lbarczynski@google.com>\nCr-Commit-Position: refs/heads/main@{#1748337}\n"
+    },
+    {
+      "commit": "49434e04f51b096781b8979a61d6c7005822a641",
+      "tree": "50b0971ef2883e22ad6973e879899094243fee14",
+      "parents": [
+        "4e15872abfc5d128158b38546ba991d01f5f7a55"
+      ],
+      "author": {
+        "name": "Brandon Fong",
+        "email": "bjfong@google.com",
+        "time": "Wed Nov 18 19:27:53 2026"
+      },
+      "committer": {
+        "name": "Chromium LUCI CQ",
+        "email": "chromium-scoped@luci-project-accounts.iam.gserviceaccount.com",
+        "time": "Wed Nov 18 19:27:53 2026"
+      },
+      "message": "[tips] Remove NotificationsTestUtils and use typed Public Transit calls\n\nNotificationsTestUtils.clickPositiveButton() switched on the feature\ntype and returned Object, so callers depended on unchecked casts and\nuntyped varargs. Inline the typed transition in each test instead.\n\nAlso let LensIntentFulfilledCondition tolerate repeated startLens()\ncalls and report what it saw, with the Lens tests verifying\nstartLens() runs once. Previously a duplicate call made the Condition\ntime out (verify() defaults to times(1) and AssertionError was caught\nas notFulfilled), so this gives a clearer failure message instead.\ninterceptMoveTaskToBackForTesting() is dropped since startLens() is\nmocked and never backgrounds the task.\n\nBug: 586626323\nChange-Id: I6ffe5f16fb035549bb9ced185f77d1bd43e90e8a\nReviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/8832102\nReviewed-by: Henrique Nakashima <hnakashima@chromium.org>\nCommit-Queue: Brandon Fong <bjfong@google.com>\nCr-Commit-Position: refs/heads/main@{#1748336}\n"
+    },
+    {
+      "commit": "4e15872abfc5d128158b38546ba991d01f5f7a55",
+      "tree": "12cdbfcfec441a9670f382ae7358b00e5410921a",
+      "parents": [
+        "5f9b4388b1a7e97e2aa8f49185b6c60557bc4334"
+      ],
+      "author": {
+        "name": "Juliet Knighton",
+        "email": "julietlevesque@google.com",
+        "time": "Wed Nov 18 19:27:11 2026"
+      },
+      "committer": {
+        "name": "Chromium LUCI CQ",
+        "email": "chromium-scoped@luci-project-accounts.iam.gserviceaccount.com",
+        "time": "Wed Nov 18 19:27:11 2026"
+      },
+      "message": "[loomnibox] Update the Loomnibox 1-line pill and expand/collapse animations\n\nSee\nhttps://screencast.googleplex.com/cast/NjE1MjkyMDcwNDc0NTQ3Mnw4OWQxYzMxNC03Zg\n\nFixed: b:584877246\nChange-Id: Ie82bc08529e3896cbeb9b5ede688aa7482579073\nReviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/8828075\nReviewed-by: Samira Arabgol <samiraarabgol@google.com>\nCommit-Queue: Juliet Knighton <julietlevesque@google.com>\nCr-Commit-Position: refs/heads/main@{#1748335}\n"
+    },
+    {
+      "commit": "5f9b4388b1a7e97e2aa8f49185b6c60557bc4334",
+      "tree": "beb7154d8b7b6359e60dd9e7163687c8cceddc69",
+      "parents": [
+        "87cfc7dce8b426d95dfcf92f8a47b16d991b2546"
+      ],
+      "author": {
+        "name": "James Leung",
+        "email": "jamesleung@google.com",
+        "time": "Wed Nov 18 19:26:37 2026"
+      },
+      "committer": {
+        "name": "Chromium LUCI CQ",
+        "email": "chromium-scoped@luci-project-accounts.iam.gserviceaccount.com",
+        "time": "Wed Nov 18 19:26:37 2026"
+      },
+      "message": "[contextual_tasks] Guard chip anchor fallback, surface & indicator a11y\n\n* Add LocationBar::ShouldFallbackToWindowContentsAnchor() (returning\n  false on ContextualTasksLocationBar, true by default) and guard null\n  anchors in PermissionDashboardController and ChipController. This way,\n  late GetAnchor (which calls GetAnchorOrNull) returns null instead of\n  the main browser window, and when no prompt bubble opens,\n  ChipController resets the custom-cursor block and resumes the chip\n  collapse/dismiss timer.\n* Add LocationBar::ConfigurePageInfoBubbleSpecification() so Page Info\n  bubbles opened from side panel permission chips record\n  PageInfo::Surface::kContextualTasks instead of kDefault for UMA.\n* Update the indicator chip's accessible name on every\n  PermissionDashboardController::Update() regardless of\n  ShouldNotifyAccessibility()'s lazy-update AccessibilityWasNotified\n  (and clear it on HideIndicators(), with\n  PermissionChipView::SetAccessibilityName(\"\") calling RemoveName()), so\n  switching tasks or moving a task to a tab after\n  AccessibilityWasNotified is set never leaks another page's aria-label\n  or degrades to a generic short title.\n* Add LocationBar::CanAnnounceAlert() (overridden in LocationBarView,\n  WebUILocationBar, and ContextualTasksLocationBar) to indicate when the\n  side panel is open/alert can be shown. This way, alerts are only\n  marked as notified when CanAnnounceAlert is true (the toolbar actually\n  showed alert to the user), instead of silently dropping them while the\n  panel is closed.\n* Track the Permissions.ActivityIndicator.LHS.*.Show metric separately\n  via IconShownRecorded so retrying a pending alert across Update()\n  calls does not double-count UMA.\n* NOTE: Companion CLs call Update() when reopening a task to show any\n  pending accessibility alerts and set shown states added in this CL\n  (https://crrev.com/c/8815086). Also, future CLs wire AnnounceAlert()\n  to the panel's toolbar WebView (https://crrev.com/c/8811121).\n\nBug: b:585609013\nTest: WebUIPermissionChipTest.GetAnchorReturnsNullWhenWindowFallback*\nTest: ContextualTasksPermissionControllerTest.*\nTest: ContextualTasksSidePanelPermissionDashboardInteractiveUiTest.*\nChange-Id: I412a1c0e42b64baf8d3734fd053ccf56077a0461\nReviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/8817195\nCommit-Queue: James Leung <jamesleung@google.com>\nReviewed-by: Elias Klim <elklm@chromium.org>\nReviewed-by: Duncan Mercer <mercerd@google.com>\nCr-Commit-Position: refs/heads/main@{#1748334}\n"
+    },
+    {
+      "commit": "87cfc7dce8b426d95dfcf92f8a47b16d991b2546",
+      "tree": "21a76d2273071aa52d048cb96e9da2c67457b3ab",
+      "parents": [
+        "afffda76550dda7ff6d1e871c6008153225dd3c6"
+      ],
+      "author": {
+        "name": "hbecky",
+        "email": "hbecky@google.com",
+        "time": "Wed Nov 18 19:25:43 2026"
+      },
+      "committer": {
+        "name": "Chromium LUCI CQ",
+        "email": "chromium-scoped@luci-project-accounts.iam.gserviceaccount.com",
+        "time": "Wed Nov 18 19:25:43 2026"
+      },
+      "message": "[ChroMenu Search] Widen the icon-to-label gap on search result rows\n\nAll menu items used the menu's 12dp gap between the icon and the title.\nPer the ChroMenu spec, search result rows use a 20dp gap while the\nnormal menu and the pinned notification row keep the 12dp gap.\n\nUse `MenuItemView::SetIconLabelSpacing()` with\n`DISTANCE_ACTION_APP_MENU_SEARCH_ICON_LABEL_SPACING` (20dp) on search\nresult rows.\n\nScreenshot: https://screenshot.corp.google.com/4i2dl7dhaiof0\n\nBug: 565464199\nChange-Id: I2f936a6ce8b2359605f321a5fc2d84113d987b00\nReviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/8834958\nCommit-Queue: Becky Hu <hbecky@google.com>\nReviewed-by: Darryl James <dljames@chromium.org>\nCr-Commit-Position: refs/heads/main@{#1748333}\n"
+    }
+  ],
+  "next": "afffda76550dda7ff6d1e871c6008153225dd3c6"
+}

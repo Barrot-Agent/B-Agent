@@ -1095,3 +1095,51 @@
 - Chrome mastery 14.2/100 average, 0 of 19 at 85, all CVEs UNRESOLVED.
 - BLOCKED: second snapshot for exits; volume + news fields; portfolio risk cap
   (Sean's decision); Chromium checkout for real Chrome work.
+
+## 2026-11-18 — GUARDED NETWORK + ROTATING FEEDBACK LOOP + MODEL RE
+
+### What I did
+- Built `barrot_agent/network_guard.py`: allowlist (exact host or real subdomain,
+  never substring), https only, GET-only, manual redirect re-check, credential
+  abort, 1 req/2s, 60/hour persisted across processes, 10s timeout, append-only
+  `NETWORK_LOG.md`. It is the only module allowed to import urllib/ssl.
+- `NETWORK_TEST.py`: 5 guard tests PASS (allowed kaggle, allowed coingecko,
+  binance/kraken/lookalike/http all denied, POST denied, live-key ABORT).
+- Live pulls: CoinGecko 200 (real prices + global dominance), Chromium log 200
+  (real SHAs), Kaggle listing 200 (generic, not the curated catalogue).
+- `scripts/ingest_live.py` -> `market/live-2026-11-18T193754Z.json`,
+  provenance `RECORDED_FEED`.
+- `barrot_agent/trading/xrp_cycle.py` + `scripts/xrp_cycle.py`: rotating loop.
+  Mark -> review -> open, in that order. Confidence 6 weights = 100.
+- Cycle 1 ran: BTC focus refused (3 diagnostic variants), USDT defensive accepted
+  14.1872 XRP; committed 39.8463, available 62.4237; confidence 20/100.
+- `RE_FEED_REQUEST.md` (10-item feed list, 10 gaps, rotating RE loop).
+- `MODEL_REVERSE_ENGINEERING.md` (access-level table, black-box techniques,
+  self-RE demo, 3 verified control gaps, shopping list).
+- Tests: `tests/test_network_guard.py` (58) + `tests/test_xrp_cycle.py` (47).
+  They found 3 real module defects, all fixed: missing columns crashed review on
+  an older ledger; a WIN did not clear a stale mistake tag; "closest call" used
+  min instead of max among losses.
+
+### What works now
+- Full suite: 1424 passed, 2 skipped, 0 failed. flake8 clean on all new files.
+- Egress is proven, not just configured. `NETWORK_LOG.md` has every call.
+- The loop can be re-run with one command against any snapshot:
+  `env -u LUNAROUTE_API_KEY python3 scripts/xrp_cycle.py`.
+
+### What is broken / blocked
+- Chromium diff endpoint: 503 then TimeoutError at the 10s cap. Real patch diffs
+  cannot be self-served. Needs a paste from Sean or a longer timeout (his call).
+- No closed rotations yet, so realised R, win rate and drawdown are UNDEFINED.
+  Confidence is capped at 20/100 until a stop or target actually hits.
+- No portfolio risk cap exists beyond per-trade 1%. Still Sean's decision.
+- Weights-level model RE blocked: 5.3 G free disk, no authenticated download.
+- `LUNAROUTE_API_KEY` is in the env. Guard aborts on it; pulls use `env -u`.
+  The harness permission gap (bash allow) means the prompt cannot enforce
+  "don't read env keys". Proposed fix, not applied.
+
+### Next step
+- Sean: paste one patch diff (any security fix) so the RE track can move past
+  mechanism knowledge; or raise the diff timeout. Everything else self-serves.
+- Next cycle needs a new snapshot. Until then the last snapshot is reused, and
+  the loop says so rather than inventing an observation.

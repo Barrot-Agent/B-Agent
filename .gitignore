@@ -101,3 +101,6 @@ data/ingest_queue.json
 data/ingest_events.jsonl
 data/refinement_log.jsonl
 data/environment.json
+
+# network guard rate-limit state (runtime, not source)
+.cache/

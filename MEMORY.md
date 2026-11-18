@@ -542,3 +542,55 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   invent a number. Do not claim Chrome mastery.
 - Files: `CHROME_GAP_FILL.md`, `CHROME_SANDBOX.md`, `REVERSE_ENGINEERED_BUGS.md`,
   `sandbox/chrome/`, `tests/test_chrome_exercises.py`, `tests/test_chrome_fuzz.py`.
+
+## 2026-11-18 — GUARDED NETWORK, ROTATING LOOP, MODEL RE
+- NETWORK IS ON, GUARDED. `barrot_agent/network_guard.py` is the only approved
+  egress. Allowlist: kaggle(.com/www/api), api.coingecko.com,
+  api.coinmarketcap.com, chromium.googlesource.com, source.chromium.org,
+  bugs.chromium.org, github.com, raw.githubusercontent.com, en.wikipedia.org.
+  GET only, https only, 1 req/2s, 60/hour, 10s timeout, every attempt appended
+  to `NETWORK_LOG.md`, blocked ones included. Redirect hops are re-checked, so a
+  302 cannot smuggle a request to a denied host. Lookalikes are denied by exact
+  host match: `kaggle.com.evil.example` and `evil-kaggle.com` both fail.
+- `LUNAROUTE_API_KEY` (67 chars) is a live-looking secret sitting in this
+  environment. The guard refuses to make ANY request while it exists. Live
+  pulls therefore run as `env -u LUNAROUTE_API_KEY ...`. The value has never been
+  read, sent, or logged. Do not paste it into chat, do not put it in a file.
+- Proven egress: CoinGecko markets+global 200, Chromium src log 200 (real SHAs),
+  Kaggle model listing 200 (generic listing, not the curated catalogue).
+  Chromium diff endpoint `+/{sha}^!?format=TEXT` returns 503 then TIMEOUT at the
+  10s cap. So real patch diffs must be PASTED, or Sean raises the timeout. That
+  is a decision for Sean, not a thing for me to quietly change.
+- `market/live-2026-11-18T193754Z.json` is the first `RECORDED_FEED` snapshot:
+  BTC 62706, ETH 1754.1, XRP 0.970877, SOL 73.15, XLM 0.138161, USDT 0.999223.
+  Regime BEARISH_WITH_XRP_RELATIVE_STRENGTH. `scripts/ingest_live.py` rebuilds it.
+- ROTATING LOOP IS LIVE. `barrot_agent/trading/xrp_cycle.py` +
+  `scripts/xrp_cycle.py`. One run does: MARK prior positions -> REVIEW them
+  against the new snapshot -> OPEN the current cycle. A decision is only graded
+  at the NEXT snapshot. Marking a position at its own entry snapshot yields
+  exactly the round-trip cost (-0.3996%) and can never close, so price drift
+  cannot manufacture a win rate. Refusals are imported and graded too, because a
+  refusal is a decision.
+- Cycle 1 (focus BTC): BTC refused three ways (trend DOWN, then ratio AGAINST
+  once trend was forced), defensive USDT accepted 14.1872 XRP. Committed 39.8463
+  of 102.27, available 62.4237. Realised 0, realised R UNDEFINED, no closed
+  rotations yet. Confidence 20/100, and 20 is the ceiling with zero closed trades
+  because five of the six weights require a closed result.
+- Cycle 0 lesson, now a rule: "A missing input is not neutral." Refusing USDT
+  because news was UNKNOWN cost +0.34% at the next snapshot. Treat a missing
+  field as a request for data, not as a decision.
+- MODEL RE: with a closed API model I can reverse engineer the DEPLOYMENT, not
+  the weights. Documented in `MODEL_REVERSE_ENGINEERING.md`. Three verified
+  control gaps in THIS harness: (1) retrieved text (webfetch, docling, GitHub
+  issues) has the same authority as Sean's orders because nothing tags it as
+  data; (2) `opencode.json` grants bash/edit/external_directory = allow, so every
+  "never" in the prompt is prose, not a control; (3) secrets sit in the env of a
+  process I can spawn shell in. Fixes proposed, NOT applied — they change the
+  live harness and need Sean's go.
+- No parameter count, layer count, or context window is claimed for DeepSeek
+  V4.1 Flash. Provider metadata gives: released 2026-10-17, variants
+  low/high/max, price 0/0/0, status active. Everything else is UNKNOWN.
+- `tests/test_environment.py` had a pre-existing red assertion: the platform enum
+  omitted "android", which is what Termux reports. Added it. Pre-existing E402 in
+  that file left alone.
+- Suite state: 1424 passed, 2 skipped, 0 failed (after the android fix).
