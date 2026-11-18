@@ -103,7 +103,7 @@
         "pull",
         "triage"
       ],
-      "least_privilege": "not verified; repository metadata reports admin/maintain/push/pull/triage. Exact token scopes are not introspected; this is broader than read-only research.",
+      "least_privilege": "not verified; token scopes were not introspected; repository metadata reports admin/maintain/push/pull/triage, broader than read-only research.",
       "permissions_basis": "GitHub repository metadata, not token-scope introspection",
       "capability_class": "General-purpose AI assistant; GitHub connector access verified in this session",
       "capability_evidence_status": "verified_current_session",
@@ -385,7 +385,7 @@
       "requirement": "Approved monitored project contact; no placeholder, guessed or noreply address."
     },
     "latest_market_snapshot": {
-      "source": "Kraken public REST ticker — XRP/USD",
+      "source": "Kraken public ticker API — XRP/USD",
       "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
       "retrieved_at_utc": null,
       "capture_window_start_utc": "2026-11-18T23:08:34Z",
@@ -554,18 +554,18 @@
     "production_schedule_status": "NOT_ACTIVE_ON_MAIN — xrp-public-ingestion.yml and barrot_agent/data/missions/primary_mission.json are absent from current main; hourly/daily cron exists only on the integration branch."
   },
   "ci_evidence": {
-    "exact_code_head": "0f981f5c1499cfe3c2f1c1d2d855bb82a7cb865f",
-    "push_ci_run": 44389147449,
+    "exact_code_head": "da5eef1bca0fee4f527c22fd99c8d4427cc39d7b",
+    "push_ci_run": 44411853369,
     "full_suite": {
-      "passed": 4275,
+      "passed": 4277,
       "skipped": 1,
       "failed": 0,
       "warnings": 11,
       "subtests": 19,
-      "duration_seconds": 108.43,
-      "inclusive_coverage_percent": 68.14,
+      "duration_seconds": 143.5,
+      "inclusive_coverage_percent": 68.13,
       "legacy_core_coverage_percent": 77,
-      "result": "PASS"
+      "result": "PASS on code/test predecessor da5eef1"
     },
     "wheel_and_installed_v3": "passed",
     "dependency_audit_runs": [
@@ -600,41 +600,38 @@
       "root_cause": "The test contract expected receipt_count and transitive_script_security_review; the map only exposed receipts and transitive_script_review. This is an evidence-schema mismatch, not a forecast/model failure."
     },
     "current_pr_event": {
-      "run_id": 44410307649,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44410307649",
-      "head_sha": "e100ae1fea6a36f5755a98219abba450c885b78f",
+      "run_id": 44414201505,
+      "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
       "status": "completed",
       "conclusion": "success",
       "core_tests": "skipped",
       "full_suite": "skipped",
-      "pages_validation": "success_validation_only",
-      "note": "Draft integration PR event condition skips core and full-suite jobs; push CI is the full-suite control."
+      "pages_validation": "success_validation_only"
     },
     "current_head_dependency_audits": [
       {
-        "run_id": 44410307568,
-        "head_sha": "e100ae1fea6a36f5755a98219abba450c885b78f",
-        "conclusion": "success",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44410307568"
+        "run_id": 44414191536,
+        "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
+        "conclusion": "success"
       }
     ],
     "current_head_fail_closed_runs": [
       {
-        "run_id": 44410307643,
-        "head_sha": "e100ae1fea6a36f5755a98219abba450c885b78f",
-        "conclusion": "success",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44410307643"
+        "run_id": 44414191549,
+        "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
+        "conclusion": "success"
       }
     ],
     "current_head_money_audit": {
-      "run_id": 44410307489,
-      "head_sha": "e100ae1fea6a36f5755a98219abba450c885b78f",
-      "conclusion": "success",
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44410307489"
+      "run_id": 44414201090,
+      "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
+      "event": "pull_request",
+      "conclusion": "success"
     },
     "current_head_pages_validation": {
-      "run_id": 44410299678,
-      "head_sha": "e100ae1fea6a36f5755a98219abba450c885b78f",
+      "run_id": 44414191550,
+      "job_id": 135190013828,
+      "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
       "conclusion": "success",
       "validation_only": true
     },
@@ -646,29 +643,24 @@
       "pages_deployment_result": "success"
     },
     "current_head_full_suite": {
-      "run_id": 44410299678,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44410299678",
-      "head_sha": "e100ae1fea6a36f5755a98219abba450c885b78f",
+      "run_id": 44414191550,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44414191550",
+      "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
       "status": "completed",
       "conclusion": "failure",
-      "passed": 4271,
-      "tests_failed": 6,
-      "failed": 6,
+      "passed": 4276,
+      "tests_failed": 1,
+      "failed": 1,
       "skipped": 1,
       "warnings": 11,
       "subtests_passed": 19,
-      "duration_seconds": 107.31,
+      "duration_seconds": 155.73,
       "inclusive_coverage_percent": 68.13,
       "legacy_core_coverage_percent": 77,
       "failing_tests": [
-        "tests/test_external_action_gates.py::test_model_upload_requires_approval_and_validated_destination",
-        "tests/test_external_action_gates.py::test_external_side_effects_are_bound_to_exact_approved_main_commit",
-        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state",
-        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_security_gates_and_open_pr_classifications",
-        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity",
-        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_unresolved_phrase_and_creator_identity_controls"
+        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state"
       ],
-      "result": "FAIL — six stale test/evidence assertions; 4,271 other tests passed. No application XRP model or Barrot V3 runtime failure was reported."
+      "result": "FAIL — single stale changed-file-count assertion expected 1436 while GitHub reports 1437; the adjacent workflow count is 68, not 67. No application/XRP runtime failure."
     },
     "previous_verified_full_suite": {
       "run_id": 44322684443,
@@ -771,31 +763,50 @@
       "note": "The exact-head push full suite remains the controlling test evidence; no merge until it and all required checks finish."
     },
     "current_pr_head_ci": {
-      "head_sha": "e100ae1fea6a36f5755a98219abba450c885b78f",
-      "push_ci_run_id": 44410299678,
+      "head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
+      "push_ci_run_id": 44414191550,
       "push_ci_conclusion": "failure",
-      "standard_tests_job_id": 135176321665,
-      "standard_tests_passed": 757,
-      "standard_tests_failed": 2,
-      "standard_tests_subtests_passed": 8,
-      "full_suite_job_id": 135176320974,
-      "full_suite_passed": 4271,
-      "full_suite_failed": 6,
+      "standard_tests_job_id": 135190014281,
+      "standard_tests_status": "success",
+      "full_suite_job_id": 135190014260,
+      "full_suite_passed": 4276,
+      "full_suite_failed": 1,
       "full_suite_skipped": 1,
       "full_suite_coverage_percent": 68.13,
-      "pr_event_run_id": 44410307649,
+      "pr_event_run_id": 44414201505,
       "pr_event_conclusion": "success",
       "pr_event_full_suite_status": "skipped",
       "pr_event_core_tests_status": "skipped",
-      "dependency_audit_run_id": 44410307568,
+      "dependency_audit_run_id": 44414191536,
       "dependency_audit_conclusion": "success",
-      "money_audit_run_id": 44410307489,
+      "money_audit_run_id": 44414201090,
       "money_audit_conclusion": "success",
-      "fail_closed_run_id": 44410307643,
+      "fail_closed_run_id": 44414191549,
       "fail_closed_conclusion": "success",
+      "pr_fail_closed_run_id": 44414201359,
+      "pr_fail_closed_conclusion": "success",
+      "pr_dependency_audit_run_id": 44414201173,
+      "pr_dependency_audit_conclusion": "success",
       "pages_validation_status": "success_validation_only",
-      "exact_head_verification": "failed_six_stale_assertions"
-    }
+      "exact_head_verification": "failed_one_stale_metadata_assertion"
+    },
+    "last_verified_code_head_sha": "da5eef1bca0fee4f527c22fd99c8d4427cc39d7b",
+    "last_verified_full_suite": {
+      "head_sha": "da5eef1bca0fee4f527c22fd99c8d4427cc39d7b",
+      "run_id": 44411853369,
+      "status": "completed",
+      "conclusion": "success",
+      "passed": 4277,
+      "tests_failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 143.5,
+      "inclusive_coverage_percent": 68.13,
+      "legacy_core_coverage_percent": 77
+    },
+    "latest_full_suite_tested_head_sha": "5ef5482b819df3a362d572bb9850684ffbea967f",
+    "remediation_commit_test": "80507968e59d9a2e3f99801734d258e8f2dc1819"
   },
   "security_and_governance": {
     "main_branch_protected": true,
@@ -1020,7 +1031,7 @@
     {
       "number": 1663,
       "classification": "blocked",
-      "note": "sole consolidated V3/XRP integration; draft; 351 ahead/0 behind; 1,436 changed files and 67 changed workflows; exact-head push full suite failed six stale test assertions; remediation included in same-branch successor; no independent review; branch-protection detail inaccessible, fallback ruleset disabled, CODEOWNERS self-owned, automatic Pages publication and incomplete transitive workflow review block merge"
+      "note": "sole consolidated V3/XRP integration; draft; 355 ahead/0 behind; 1,438 changed files and 68 changed workflows; prior exact-head suite on 5ef5482 failed one stale changed-file-count assertion (1,436 expected vs 1,437 actual); assertion remediation committed on the same branch; no independent review; branch-protection detail inaccessible (403), fallback ruleset disabled, CODEOWNERS self-owned, automatic Pages publication and incomplete transitive workflow review block merge"
     },
     {
       "number": 1664,
