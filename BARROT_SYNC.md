@@ -1012,3 +1012,23 @@
 - STATUS: STAGING ONLY. Not published, not priced live, no transaction, no zip.
 - Next: Sean supplies the real support address + lawyer sign-off + checkout test;
   then the publication gate can be flipped, zips built, and checksums verified.
+
+## 2026-11-18 — Support email confirmed (not a placeholder)
+- Sean confirmed cryptesseract@gmail.com is the real support address. The
+  "do not publish with placeholder" restriction is lifted for the email only.
+- LICENSE_AND_TERMS.md: header bullet now reads confirmed 2026-11-18; §13 has the
+  address with the placeholder / NOT FOR PUBLICATION markers removed. 0 marker
+  hits remain in the file.
+- PRICING.md: support address marked CONFIRMED; lawyer review and checkout test
+  recorded as the only two publish blockers left on that page.
+- DELIVERY_REQUIREMENTS.md: §3 email exception is now unconditional for the real
+  address; §6 records the address and that inbound delivery is untested; §10
+  checkbox 1 is ticked with that same caveat.
+- MEMORY.md corrected: the older "pending / placeholder" record is replaced, so no
+  later session acts on stale information.
+- Gate proof: staging rc=0, PASS (9 checks, 0 failed). Publication rc=1,
+  FAIL (10 checks, 1 failed) with `status=STAGING_ONLY, placeholders=none` —
+  the email is no longer a blocker; the status line is.
+- STATUS: STAGING ONLY. Blockers left: lawyer review, checkout/refund test,
+  zip + checksums, explicit publication authorization.
+- Next: lawyer review and the live checkout/refund test. No zip, no publish.

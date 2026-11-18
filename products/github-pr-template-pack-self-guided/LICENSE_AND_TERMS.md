@@ -9,14 +9,13 @@ Staging inputs recorded 2026-11-18:
 - Seller legal name and address: supplied by Sean.
 - Governing law: New York, USA. The venue sentence is a drafting choice that a
   lawyer must confirm.
-- Support contact: **PLACEHOLDER ONLY.** The real address is still pending.
+- Support contact: confirmed by Sean on 2026-11-18 (`cryptesseract@gmail.com`).
 - Lawyer review: pending.
 - Live checkout and refund test: not tested.
 
-This file must not be shipped to a buyer while any placeholder remains, while
-`PUBLICATION_STATUS` is not `READY`, or before Sean approves publication in
-writing. The release gate enforces the first two (`verify_release.py
---publication`).
+This file must not be shipped to a buyer while `PUBLICATION_STATUS` is not
+`READY`, or before Sean approves publication in writing. The release gate reads
+that status line (`verify_release.py --publication`).
 
 ## 1. Summary
 
@@ -148,9 +147,8 @@ consumer protection rules may override this section.
 
 ## 13. Contact
 
-Support: `cryptesseract@gmail.com` — **PLACEHOLDER, NOT FOR PUBLICATION.** The
-real support address is pending. Do not publish or ship this file while the
-placeholder marker is present.
+Support: `cryptesseract@gmail.com`. This address was confirmed by the Seller on
+2026-11-18 and is the only support route until a change is published here.
 
 Team Kit buyers get 30 days of email answers from the date of purchase, with a
 response target of two business days. Field and Operator buyers get documentation

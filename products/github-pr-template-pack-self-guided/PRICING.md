@@ -9,10 +9,16 @@ live price or later change requires separate explicit human sign-off.
 | Input | State on 2026-11-18 |
 |---|---|
 | $9 / $19 / $39 | CONFIRMED for staging |
+| Support address | CONFIRMED (`cryptesseract@gmail.com`); Team Kit only |
+| Lawyer review | PENDING |
+| Live checkout / refund test | NOT TESTED |
 | Live listing price | none — not published |
 | Published listing | none |
 | Transactions | none |
 | Revenue | $0.00 |
+
+Publication stays blocked on lawyer review and the checkout test. The price and
+the support address are not blockers any more.
 
 ## Tiers
 

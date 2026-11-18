@@ -83,8 +83,8 @@ Never in a buyer package:
 - any file containing a token, a personal email address, or a local path
 
 One exception: the buyer-facing support address in `LICENSE_AND_TERMS.md` §13 is
-allowed inside a buyer package once it is a real address. While it carries the
-`PLACEHOLDER` marker, no package may be built or shipped.
+allowed inside a buyer package. It is a real address, confirmed by Sean on
+2026-11-18.
 
 `SALES_COPY.md` is internal. The store page is built from it; the file is not
 shipped.
@@ -136,8 +136,8 @@ directory change.
 
 **Team Kit only.** 30 days from purchase.
 
-- Channel: a support email. `LICENSE_AND_TERMS.md` §13 currently holds a
-  placeholder; the real address is still pending and is a release blocker.
+- Channel: `cryptesseract@gmail.com`, confirmed by Sean on 2026-11-18. Inbound
+  delivery has not been tested by the builder.
 - Response: two business days.
 - In scope: installation, running the tests, a failing test traceback, unclear
   documentation, a reproducible bug in the kit.
@@ -175,7 +175,7 @@ Operator and Field buyers get documentation only. That is stated on the page.
 
 All must be cleared by a human before publication:
 
-- [ ] Support email created and tested (placeholder in `LICENSE_AND_TERMS.md` §13, marked not for publication)
+- [x] Support email set and confirmed by Sean (`cryptesseract@gmail.com`, 2026-11-18); inbound delivery not tested by the builder
 - [x] Seller legal name and address set in `LICENSE_AND_TERMS.md` (Sean Drew, 1545 Minford Place, Bronx, NY 10460, USA — 2026-11-18)
 - [x] Governing law and venue set in `LICENSE_AND_TERMS.md` (New York, USA; Bronx County venue to be confirmed by a lawyer — 2026-11-18)
 - [ ] Licence reviewed by a lawyer

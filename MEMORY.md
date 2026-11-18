@@ -429,12 +429,17 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Seller legal address: 1545 Minford Place, Bronx, NY 10460, USA.
 - Governing law: New York, USA. Venue drafted as Bronx County (derived from the
   address, not independently chosen) and flagged for lawyer confirmation.
-- Support email: PENDING. Placeholder cryptesseract@gmail.com is written into
-  LICENSE_AND_TERMS.md §13 with an explicit PLACEHOLDER / NOT FOR PUBLICATION
-  marker. It appears in that file only. Do not publish while it is there.
+- Support email: CONFIRMED REAL by Sean 2026-11-18 — cryptesseract@gmail.com.
+  Not a placeholder. Written into LICENSE_AND_TERMS.md §13 and DELIVERY_
+  REQUIREMENTS §6. Placeholder markers removed from every file 2026-11-18.
+  Inbound mail delivery has NOT been tested by Barrot; Sean's confirmation is the
+  only evidence the address works.
 - Lawyer review: PENDING. Live checkout/refund test: NOT TESTED.
-- Zip + checksums: NOT BUILT, deliberately. A zip built now would ship the
-  placeholder licence. Build it after the real support email and lawyer sign-off.
+- Zip + checksums: NOT BUILT, deliberately. A zip built now would ship a licence
+  that no lawyer has reviewed. Build it after lawyer sign-off and Sean's zip
+  verification request.
+- Remaining publish blockers after 2026-11-18: lawyer review, checkout/refund
+  test, zip + checksums, explicit publication authorization.
 - Price: $9 / $19 / $39 CONFIRMED for staging only. No live price exists.
 - New guard: `evaluation/verify_release.py --publication` reads
   `PUBLICATION_STATUS:` from LICENSE_AND_TERMS.md and refuses while it is not
