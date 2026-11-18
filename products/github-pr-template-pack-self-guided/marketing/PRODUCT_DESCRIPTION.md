@@ -22,7 +22,7 @@ promise that a maintainer merges your work.
 
 ## Long (300 words)
 
-**Ship a Paid-Issue PR in 2 Hours — GitHub Template Pack**
+**GitHub PR Template Pack — Self-Guided**
 
 Paid open source work has a filtering problem. In a sample of 100 open GitHub
 issues carrying the `bounty` label, only 6 stated a dollar amount. The label is

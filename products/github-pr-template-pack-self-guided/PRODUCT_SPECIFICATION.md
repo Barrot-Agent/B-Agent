@@ -1,7 +1,7 @@
 # Product specification
 
-**Name:** Ship a Paid-Issue PR in 2 Hours — GitHub Template Pack
-**Slug:** `ship-paid-issue-pr-in-2-hours`
+**Name:** GitHub PR Template Pack — Self-Guided
+**Slug:** `github-pr-template-pack-self-guided`
 **Template:** 1 — Digital Downloads
 **Status:** STAGED on a branch. Not published. Demand not proven.
 **Version:** 1.0.0 (2026-11-18)
@@ -152,10 +152,10 @@ are in `DELIVERY_REQUIREMENTS.md`.
 
 ## 9. Out of scope
 
-- Templates 2-7. Locked. Not built.
+- Templates 2-6. Locked. Not built.
 - Automatic bounty discovery, claiming, commenting, or PR opening.
 - Escrow verification or payment handling.
-- A hosted service, account system, or dashboard.
+- A hosted product, account system, or dashboard.
 - Financial, legal, or tax advice.
 - Any claim of income, guarantee, or "production-ready" outcome.
 

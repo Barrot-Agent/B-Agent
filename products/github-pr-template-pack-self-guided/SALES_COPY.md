@@ -7,7 +7,7 @@ directory. Do not add a claim that is not in `research/EVIDENCE_LOG.md`.
 
 ## Headline
 
-**Ship a Paid-Issue PR in 2 Hours — GitHub Template Pack**
+**GitHub PR Template Pack — Self-Guided**
 
 ## Subhead
 

@@ -349,7 +349,7 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   project. Recovered from dist/book.md. Never bulk-delete untracked files here.
 
 ## 2026-11-18 — Phase 1 product staged: paid-issue PR pack
-- `products/ship-paid-issue-pr-in-2-hours/`, branch
+- `products/github-pr-template-pack-self-guided/`, branch
   `phase1/digital-downloads-paid-issue-pr`. Template 1 only; Templates 2-7
   locked. Status STAGED, independently verified PASS WITH CAVEATS, not published.
 - Product: "Ship a Paid-Issue PR in 2 Hours — GitHub Template Pack". $9 Field

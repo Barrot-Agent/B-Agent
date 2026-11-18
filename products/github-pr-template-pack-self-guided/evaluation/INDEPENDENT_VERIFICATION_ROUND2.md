@@ -8,7 +8,7 @@ round 1. It is kept only for the audit trail. The current report is
 
 - **Verifier identity:** OpenCode general subagent, independent of builder
 - **Date:** 2026-11-18
-- **Product:** `products/ship-paid-issue-pr-in-2-hours`
+- **Product:** `products/github-pr-template-pack-self-guided`
 - **Branch under test:** `phase1/digital-downloads-paid-issue-pr`
 - **Method:** Ran the release gate, unit suite, negative control, measurement
   cross-check, capability-ledger scan, delivery-manifest existence check, and
@@ -18,8 +18,8 @@ round 1. It is kept only for the audit trail. The current report is
 ## 1. Release gate
 
 ```
-$ cd products/ship-paid-issue-pr-in-2-hours && python3 evaluation/verify_release.py
-release gate: ship-paid-issue-pr-in-2-hours
+$ cd products/github-pr-template-pack-self-guided && python3 evaluation/verify_release.py
+release gate: github-pr-template-pack-self-guided
 [PASS] required files: 38/38 present
 [PASS] capability ledger: 10 PROPOSED, 0 PROVEN/ACTIVE
 [PASS] test suite: Ran 74 tests, exit 0
@@ -36,7 +36,7 @@ exit:0
 ## 2. Unit test suite
 
 ```
-$ cd products/ship-paid-issue-pr-in-2-hours/deliverables && python3 -m unittest discover -s tests 2>&1 | tail -5
+$ cd products/github-pr-template-pack-self-guided/deliverables && python3 -m unittest discover -s tests 2>&1 | tail -5
 ..........................................................................
 ----------------------------------------------------------------------
 Ran 74 tests in 0.242s
@@ -48,7 +48,7 @@ exit:0
 ## 3. Negative control
 
 ```
-$ cd products/ship-paid-issue-pr-in-2-hours/deliverables && python3 -m paid_issue_kit pr --plan ../evaluation/fixtures/bad_plan.json; echo "exit:$?"
+$ cd products/github-pr-template-pack-self-guided/deliverables && python3 -m paid_issue_kit pr --plan ../evaluation/fixtures/bad_plan.json; echo "exit:$?"
 BLOCKED: unverifiable claim present: guarantee language
 exit:1
 ```
@@ -58,7 +58,7 @@ The gate rejects the bad plan and returns nonzero, as required.
 ## 4. Measurement cross-check
 
 ```
-$ cd products/ship-paid-issue-pr-in-2-hours && python3 -c "import json; d=json.load(open('research/market_measurement.json')); print(d['bounties']['issues_fetched'], d['bounties']['issues_with_stated_amount'], d['bounties']['amount_usd']['median'], d['merge_latency']['pooled']['merged_sampled'], d['merge_latency']['pooled']['median_hours'], d['merge_latency']['pooled']['pct_merged_within_2h'])"
+$ cd products/github-pr-template-pack-self-guided && python3 -c "import json; d=json.load(open('research/market_measurement.json')); print(d['bounties']['issues_fetched'], d['bounties']['issues_with_stated_amount'], d['bounties']['amount_usd']['median'], d['merge_latency']['pooled']['merged_sampled'], d['merge_latency']['pooled']['median_hours'], d['merge_latency']['pooled']['pct_merged_within_2h'])"
 100 6 525.0 112 1.11 52.7
 ```
 
@@ -78,9 +78,9 @@ contradiction.
 ## 5. Capability ledger
 
 ```
-$ grep -c '| PROPOSED |' products/ship-paid-issue-pr-in-2-hours/CAPABILITY_LEDGER.md
+$ grep -c '| PROPOSED |' products/github-pr-template-pack-self-guided/CAPABILITY_LEDGER.md
 10
-$ grep -nE '\| (ACTIVE|PROVEN) \|' products/ship-paid-issue-pr-in-2-hours/CAPABILITY_LEDGER.md || echo "none active/proven"
+$ grep -nE '\| (ACTIVE|PROVEN) \|' products/github-pr-template-pack-self-guided/CAPABILITY_LEDGER.md || echo "none active/proven"
 none active/proven
 ```
 
@@ -123,11 +123,11 @@ product root. Packaging output was not produced or verified here.
 $ git -C /root/barrot/Barrot-Agent log --oneline main..HEAD
 (no output)
 $ git -C /root/barrot/Barrot-Agent status --short | head -5
-AM products/ship-paid-issue-pr-in-2-hours/evaluation/logs/negative-control.log
-A  products/ship-paid-issue-pr-in-2-hours/evaluation/logs/phases.log
-A  products/ship-paid-issue-pr-in-2-hours/evaluation/logs/release-gate.log
-A  products/ship-paid-issue-pr-in-2-hours/evaluation/logs/score-smoke.log
-AM products/ship-paid-issue-pr-in-2-hours/evaluation/logs/tests-verbose.log
+AM products/github-pr-template-pack-self-guided/evaluation/logs/negative-control.log
+A  products/github-pr-template-pack-self-guided/evaluation/logs/phases.log
+A  products/github-pr-template-pack-self-guided/evaluation/logs/release-gate.log
+A  products/github-pr-template-pack-self-guided/evaluation/logs/score-smoke.log
+AM products/github-pr-template-pack-self-guided/evaluation/logs/tests-verbose.log
 ```
 
 Additional diagnostic (same step, to explain the empty log):

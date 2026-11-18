@@ -1,4 +1,4 @@
-# Independent verification (round 2) — ship-paid-issue-pr-in-2-hours
+# Independent verification (round 2) — github-pr-template-pack-self-guided
 
 **Verifier:** Independent OpenCode subagent (DeepSeek V4.1 Flash Free). Not the builder.
 **Date:** 2026-11-18 UTC.
@@ -11,7 +11,7 @@
 ### 1. Release gate (`python3 evaluation/verify_release.py`, exit 0)
 
 ```
-release gate: ship-paid-issue-pr-in-2-hours
+release gate: github-pr-template-pack-self-guided
 [PASS] required files: 39/39 present
 [PASS] capability ledger: 10 PROPOSED, 0 PROVEN/ACTIVE
 [PASS] test suite: Ran 76 tests, exit 0

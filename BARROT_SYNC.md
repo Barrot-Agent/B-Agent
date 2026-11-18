@@ -927,7 +927,7 @@
 - Report: docs/synthesis/cross-domain-audit.md
 
 ## 2026-11-18 — Phase 1 staged: paid-issue PR pack (verified, not published)
-- Built `products/ship-paid-issue-pr-in-2-hours/` on
+- Built `products/github-pr-template-pack-self-guided/` on
   `phase1/digital-downloads-paid-issue-pr`, Template 1 only. Templates 2-7 not
   started. No merge, publish, price change, or transaction.
 - 6 templates, stdlib kit, 76 tests, generated examples. Release gate 9/9:

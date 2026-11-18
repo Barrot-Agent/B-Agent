@@ -102,7 +102,7 @@ From `research/MARKET_RESEARCH.md` section 8:
 - Limit: this tests one page and one audience, not the market.
 
 No price change before the window ends. If the falsifier triggers, stop and do
-not build Templates 2-7 from this evidence. If the upgrade condition triggers,
+not build Templates 2-6 from this evidence. If the upgrade condition triggers,
 the next test is a $49 bundle with the ebook, not a price increase on this pack.
 
 ## Discounts

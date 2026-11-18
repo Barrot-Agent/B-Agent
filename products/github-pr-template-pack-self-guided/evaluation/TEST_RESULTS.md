@@ -135,7 +135,7 @@ python3 evaluation/verify_release.py
 ```
 
 ```
-release gate: ship-paid-issue-pr-in-2-hours
+release gate: github-pr-template-pack-self-guided
 [PASS] required files: 39/39 present
 [PASS] capability ledger: 10 PROPOSED, 0 PROVEN/ACTIVE
 [PASS] test suite: Ran 76 tests, exit 0

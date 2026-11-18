@@ -6,9 +6,9 @@ and the runbook for the day a human authorizes publication.
 ## 1. Package names
 
 ```
-ship-paid-issue-pr-in-2-hours-v1.0.0-field.zip
-ship-paid-issue-pr-in-2-hours-v1.0.0-operator.zip
-ship-paid-issue-pr-in-2-hours-v1.0.0-team.zip
+github-pr-template-pack-self-guided-v1.0.0-field.zip
+github-pr-template-pack-self-guided-v1.0.0-operator.zip
+github-pr-template-pack-self-guided-v1.0.0-team.zip
 ```
 
 Version comes from `deliverables/paid_issue_kit/__init__.py` (`__version__`).
@@ -21,7 +21,7 @@ path in this repository. The product root is not the package root.
 
 ### Field Kit — $9
 
-Flat package inside `ship-paid-issue-pr-in-2-hours/`:
+Flat package inside `github-pr-template-pack-self-guided/`:
 
 ```
 README.md              <- deliverables/README_FIELD.md
@@ -40,7 +40,7 @@ internal product README is not shipped; it links to internal files.
 
 ### Operator Kit — $19
 
-Flat package inside `ship-paid-issue-pr-in-2-hours/`:
+Flat package inside `github-pr-template-pack-self-guided/`:
 
 ```
 README.md              <- deliverables/README.md
@@ -88,7 +88,7 @@ shipped.
 ## 4. Build steps
 
 ```bash
-cd products/ship-paid-issue-pr-in-2-hours
+cd products/github-pr-template-pack-self-guided
 python3 evaluation/verify_release.py
 cd deliverables && ./run_selftest.sh
 python3 -m paid_issue_kit score --input examples/candidates.json \

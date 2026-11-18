@@ -1,4 +1,4 @@
-# Citation Audit Service - DRAFT
+# Citation Audit Checklist - DRAFT
 
 Status: DRAFT. Not published. Not accepting clients without approval.
 
@@ -44,4 +44,4 @@ sample is the only claim that can be made until one is.
 ## Approval gate
 
 Do not accept payment or publish a price until the refund policy and the sample audit
-are written. A service that cannot fail a test cannot be priced.
+are written. An offer that cannot fail a test cannot be priced.

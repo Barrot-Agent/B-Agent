@@ -7,7 +7,7 @@ when its artifact exists and its gate has evidence.
 
 | # | Stage | Owner | Output | Gate |
 |---|---|---|---|---|
-| 1 | Opportunity | Market Intelligence + Product Strategy | Product row in `PRODUCTS_MATRIX.md` | Template 1 only; Templates 2-7 locked |
+| 1 | Opportunity | Market Intelligence + Product Strategy | Product row in `PRODUCTS_MATRIX.md` | Template 1 only; Templates 2-6 locked |
 | 2 | Research | Research | `research/SOURCES.md`, `MARKET_RESEARCH.md`, `EVIDENCE_LOG.md` | Every claim has a source or is marked UNKNOWN |
 | 3 | Feasibility | Product Strategy + Technical Development | Scope, effort gate, cost model | Buildable with existing tools in one iteration |
 | 4 | Capability Check | Technical Development + Independent Verification | `CAPABILITY_LEDGER.md` | All ten components PROPOSED, none Active |
@@ -64,7 +64,7 @@ These are hard. A violation stops the run; it does not get a workaround.
 7. Never promise a merge, a payment, or income.
 8. Never delete a failing test to make the suite green.
 9. Never include a secret, token, or buyer datum in the package.
-10. Never build Templates 2-7 in Phase 1.
+10. Never build Templates 2-6 in Phase 1.
 
 ## 5. Independent verification
 
@@ -90,13 +90,13 @@ identity. An unsigned or self-signed report is not verification.
 |---|---|---|
 | No evidence of demand | Research finds no live paid-issue inventory or no plausible buyer | Kill before production |
 | Cost > 3x price | Fee + infrastructure + support exceeds 3x price | Kill or reprice |
-| Capability not buildable in one iteration | Requires a service, credential, or dependency not already present | Kill or defer to a later phase |
+| Capability not buildable in one iteration | Requires an external dependency, credential, or platform not already present | Kill or defer to a later phase |
 | Governance violation | Publish, merge, price change, transaction, secret, or unproven Active claim | Stop, revert, log |
 
 ## 7. Rollback
 
 - Code: `git revert <commit>` on the branch. The product is additive; nothing
-  outside `products/ship-paid-issue-pr-in-2-hours/` imports it.
+  outside `products/github-pr-template-pack-self-guided/` imports it.
 - Docs: delete the directory. No other product references it.
 - Publish (if ever approved): unpublish the listing, keep buyer access, issue
   refunds under the 14-day policy, and log the reason.

@@ -129,7 +129,7 @@ sales tax since 2025-01-01, per the same page.
 |---|---|---|
 | No evidence of demand | **PARTIAL** | There is live paid-issue inventory (5,319 labelled issues; Opire live; 559 Algora mentions in older issues). There is **no** measured demand for this exact paid pack. Proceed only as a low-cost staged test. |
 | Cost > 3x price | **PASS** | Marginal cost is $0 plus payment fees of 11.3%-15.6% on direct sales (30% via marketplace discovery); production used existing tooling and no paid APIs. |
-| Requires a capability that cannot be built in one iteration | **PASS** | The kit is Python standard library plus markdown. No external service is required to deliver it. |
+| Requires a capability that cannot be built in one iteration | **PASS** | The kit is Python standard library plus markdown. No external dependency is required to deliver it. |
 | Violates governance | **PASS** | No publish, no merge, no pricing change, no transaction. Staged on a branch only. |
 
 ## 8. Pre-registered test (not yet run)
@@ -140,7 +140,7 @@ If a human approves a paid test, the first test is:
 - Window: 30 days from publication.
 - Falsifier: fewer than 3 paid sales at any tier in 30 days with at least 300
   page views means the demand hypothesis is not supported; stop and do not build
-  Templates 2-7 from this evidence.
+  Templates 2-6 from this evidence.
 - Upgrade condition: 3 or more sales and at least one refund-free delivery, with
   a verified buyer-reported time-to-PR inside 120 minutes, upgrades the product
   from PROPOSED to TESTED.

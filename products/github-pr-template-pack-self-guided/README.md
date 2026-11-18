@@ -1,4 +1,4 @@
-# Ship a Paid-Issue PR in 2 Hours — GitHub Template Pack
+# GitHub PR Template Pack — Self-Guided
 
 **Status: STAGED. Not published. Not for sale. Demand not proven.**
 Branch `phase1/digital-downloads-paid-issue-pr`. Independently verified
@@ -102,7 +102,7 @@ evaluation/                  test results, improvement log, verifier
 
 ## Phase 1 status
 
-Only Template 1 (Digital Downloads) is built. Templates 2-7 are locked and were
+Only Template 1 (Digital Downloads) is built. Templates 2-6 are locked and were
 not started. The ten named components (PydanticAI, LiteLLM, Phoenix, Promptfoo,
 Guardrails AI, Mem0/Qdrant, OpenPipe, Argilla, KitOps, Composio) are all
 PROPOSED, none Active; see `CAPABILITY_LEDGER.md`.

@@ -7,7 +7,7 @@ Legend: `[x]` verified, `[ ]` not verified, **PENDING** means not done.
 
 ## A. Scope and governance
 
-- [x] Only Template 1 (Digital Downloads) built — no files for Templates 2-7
+- [x] Only Template 1 (Digital Downloads) built — no files for Templates 2-6
 - [x] Product stays on branch `phase1/digital-downloads-paid-issue-pr`
 - [x] No merge to `main`
 - [x] No store listing, publish, price change, or transaction
@@ -95,7 +95,7 @@ Legend: `[x]` verified, `[ ]` not verified, **PENDING** means not done.
 
 ## J. Deliberately not done
 
-- [x] Templates 2-7 not started
+- [x] Templates 2-6 not started
 - [x] No live bounty claimed, commented on, or submitted
 - [x] No PR opened by the product
 - [x] No subscription or upsell built
