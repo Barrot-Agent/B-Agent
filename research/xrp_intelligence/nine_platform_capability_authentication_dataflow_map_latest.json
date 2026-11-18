@@ -8,25 +8,25 @@
     "main_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
     "integration": {
       "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
-      "code_head_sha": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
+      "code_head_sha": "132d33d3a181a405238e6acb9200de00986b79c9",
       "pr_number": 1663,
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 328,
+      "ahead_by": 329,
       "behind_by": 0,
       "changed_files": 1430,
       "changed_workflow_files": 67,
       "formal_reviews": 0,
-      "snapshot_head_sha": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
-      "commits": 328,
+      "snapshot_head_sha": "132d33d3a181a405238e6acb9200de00986b79c9",
+      "commits": 329,
       "additions": 515778,
       "deletions": 6596,
       "mergeable_state": "draft; exact-head push CI still running",
       "review_comments": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
-      "current_pr_head_sha": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
+      "current_pr_head_sha": "132d33d3a181a405238e6acb9200de00986b79c9",
       "snapshot_ahead_by": 321,
       "snapshot_changed_files": 1428,
       "handoff_update_commit_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
@@ -341,12 +341,10 @@
       "best_ask_size_xrp": 5171,
       "spread_bps": 0.723847,
       "top_level_ask_to_bid_size_ratio": 3.349093,
-      "open_24h_usd": 0.98253,
       "low_24h_usd": 0.96218,
       "high_24h_usd": 1.00677,
       "volume_24h_xrp": 50828445.84585009,
       "vwap_24h_usd": 0.98237191,
-      "change_from_24h_open_percent": -1.589773,
       "last_vs_vwap_percent": -1.573936,
       "position_in_24h_range_percent": 10.60776,
       "raw_sha256": "3faab661464e183261b7a7a093048193ada7d764ba4cec946d932ebb8f9ba2bc",
@@ -354,7 +352,28 @@
         "No exchange event timestamp; capture time is bracketed.",
         "Single venue and top-of-book only; no consolidated spot L2 or sequence reconstruction.",
         "Hash covers the exact rendered JSON response text, not independently captured wire bytes."
-      ]
+      ],
+      "open_utc_day_usd": 0.98253,
+      "change_from_utc_day_open_percent": -1.589773,
+      "okx_xrp_usdt": {
+        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "source_event_time_utc": "2026-11-18T21:01:24.260Z",
+        "last_usdt": 0.9684,
+        "bid_usdt": 0.9684,
+        "ask_usdt": 0.9685,
+        "spread_bps": 1.032578,
+        "bid_size_xrp": 1894.064761,
+        "ask_size_xrp": 1077.8,
+        "volume_24h_xrp": 31965691.272986,
+        "raw_sha256": "030f1c8fd7257bb8c92165f836ccdc5ac90b6b73e3131af694ad6d425c965106",
+        "model_eligible": false
+      },
+      "okx_usdt_usd_leg": {
+        "source_event_time_utc": "2026-11-18T20:39:18.066Z",
+        "last_usd": 0.99889,
+        "age_seconds": 1326.194,
+        "usd_normalization": "rejected_stale_quote_leg"
+      }
     },
     "latest_market_research": {
       "artifact_path": "research/xrp_intelligence/20261118T210230Z-run26-market-spot-derivatives-etf-macro-reconciliation.json",
@@ -377,7 +396,13 @@
       "cryptokeyhole_coverage": "2 of 4; partial",
       "bykaranteli_nov17_flow_usd": -6100000,
       "bykaranteli_coverage": "five funds; provisional",
-      "forecast_issuance": "disabled"
+      "forecast_issuance": "disabled",
+      "okx_xrp_usdt_last": 0.9684,
+      "okx_xrp_usdt_timestamp_utc": "2026-11-18T21:01:24.260Z",
+      "okx_usdt_usd_leg_age_seconds": 1326.194,
+      "okx_usd_normalization": "rejected",
+      "kraken_open_field_semantics": "Kraken ticker field o is UTC-day open, not rolling 24-hour open; relabelled accordingly.",
+      "spot_l2_status": "not captured; Coinbase, Bitstamp, Kraken Depth and OKX books endpoints inaccessible via current retrieval path; no bypass attempted."
     },
     "forecast_issuance": "disabled",
     "walk_forward_forecasts": 0,
@@ -977,7 +1002,7 @@
     "duplicate": 0,
     "superseded": 0
   },
-  "snapshot_id": "nine-platform-map-run26-20261118T210230Z",
+  "snapshot_id": "nine-platform-map-run26-20261118T210230Z-supplement1",
   "run25_evidence_record": "research/xrp_intelligence/20261118T202745Z-run25-market-ingestion-ci-security-reconciliation.json",
   "run26_evidence_record": "research/xrp_intelligence/20261118T210230Z-run26-market-spot-derivatives-etf-macro-reconciliation.json"
 }

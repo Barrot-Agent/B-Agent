@@ -45,13 +45,11 @@
       "best_ask_size_xrp": 5171,
       "top_level_ask_to_bid_size_ratio": 3.349093,
       "spread_bps": 0.723847,
-      "open_24h_usd": 0.98253,
       "low_24h_usd": 0.96218,
       "high_24h_usd": 1.00677,
       "volume_24h_xrp": 50828445.84585009,
       "vwap_24h_usd": 0.98237191,
       "trades_24h": 37565,
-      "change_from_24h_open_percent": -1.589773,
       "last_vs_vwap_percent": -1.573936,
       "position_in_24h_range_percent": 10.60776,
       "raw_response_sha256": "3faab661464e183261b7a7a093048193ada7d764ba4cec946d932ebb8f9ba2bc",
@@ -60,7 +58,9 @@
         "Kraken ticker response supplies no exchange event timestamp; capture time is bracketed by the two clock observations.",
         "Single venue and top-of-book only; displayed size is transient and not consolidated executable liquidity.",
         "Hash is over the exact web-rendered JSON response text stored in this artifact, not independently captured wire bytes."
-      ]
+      ],
+      "open_utc_day_usd": 0.98253,
+      "change_from_utc_day_open_percent": -1.589773
     },
     "binance_xrpusdt_perpetual_orderbook": {
       "source": "Basis liquidity heatmap",
@@ -141,6 +141,51 @@
         "Resting liquidity can be cancelled, replenished or spoofed; displayed walls are not commitments.",
         "Snapshot is 36 minutes older than the Kraken ticker capture."
       ]
+    },
+    "okx_xrp_usdt": {
+      "source": "OKX public spot ticker",
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_event_time_utc": "2026-11-18T21:01:24.260Z",
+      "last_usdt": 0.9684,
+      "bid_usdt": 0.9684,
+      "ask_usdt": 0.9685,
+      "best_bid_size_xrp": 1894.064761,
+      "best_ask_size_xrp": 1077.8,
+      "spread_bps": 1.032578,
+      "top_level_bid_to_ask_size_ratio": 1.757343,
+      "open_24h_usdt": 0.9701,
+      "high_24h_usdt": 1.0079,
+      "low_24h_usdt": 0.9633,
+      "volume_24h_xrp": 31965691.272986,
+      "quote_volume_24h_usdt": 31459106.53933362,
+      "change_from_24h_open_percent": -0.17524,
+      "raw_response_sha256": "030f1c8fd7257bb8c92165f836ccdc5ac90b6b73e3131af694ad6d425c965106",
+      "model_eligible": false,
+      "limitation": "Quote is XRP-USDT, not XRP-USD. Timestamped ticker only; no synchronized spot L2 snapshot."
+    },
+    "okx_usdt_usd_conversion_leg": {
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD",
+      "source_event_time_utc": "2026-11-18T20:39:18.066Z",
+      "last_usd": 0.99889,
+      "bid_usd": 0.99888,
+      "ask_usd": 0.99889,
+      "age_seconds_at_xrp_ticker": 1326.194,
+      "raw_response_sha256": "c7a3424a73931ad5370df5a9e5bf2a62d6ff1b9d3435d937a6812e0324bf6304",
+      "usd_normalization": "REJECTED — quote-currency leg is 22m06s older than the XRP-USDT ticker; do not convert or compare as a synchronized USD price."
+    },
+    "cross_venue_comparison": {
+      "kraken_xrp_usd_last": 0.96691,
+      "okx_xrp_usdt_last": 0.9684,
+      "raw_quote_gap_percent": 0.154,
+      "normalized_usd_comparison": "NOT_PERFORMED — OKX USDT-USD conversion leg is stale.",
+      "spot_l2_coverage": "No synchronized Coinbase, Bitstamp, Kraken or OKX spot L2 snapshot captured in this run.",
+      "inaccessible_endpoints": [
+        "Coinbase Exchange XRP-USD ticker and level-2 book API via the web retrieval path",
+        "Bitstamp XRP/USD ticker and order-book API via the web retrieval path",
+        "OKX market/books endpoint via the web retrieval path",
+        "Kraken public Depth endpoint via the web retrieval path"
+      ],
+      "policy": "No proxy, scraping workaround or access-control bypass attempted."
     }
   },
   "derivatives": {
@@ -288,7 +333,7 @@
     "status": "NOT_ISSUED",
     "directional_probability": null,
     "forecast_count": 0,
-    "reason": "The current market observations are asynchronous, provider universes differ, the spot ticker has no event timestamp, current order-book data are not a continuous sequence, ETF flow vintages conflict, and the point-in-time/raw-to-feature admission requirements remain unsatisfied.",
+    "reason": "The current observations remain asynchronous; Kraken has no event timestamp; OKX is quoted in USDT and its USD conversion leg is 22m06s stale; full spot L2 is missing; derivatives and ETF providers use different universes and vintages; raw-to-feature and walk-forward admission requirements remain unsatisfied.",
     "next_required_evidence": [
       "Timestamped multi-venue spot trades and sequenced L2 snapshots with raw-byte receipts.",
       "Derivatives venue-by-venue OI in native contract units, USD conversion basis, funding methodology and synchronized event times.",
@@ -441,6 +486,32 @@
       "captured_text": "Oil prices fell on expectations that supply will outpace demand, with rising OPEC+ production, resilient Russian exports and growing U.S. inventories outweighing risks from continued Middle East tensions and tanker attacks. ING analysts said the oil balance is likely to loosen as supply recovers, limiting the potential for a sustained price rebound. The American Petroleum Institute reported that U.S. crude inventories increased by 5.3 million barrels last week. Brent dropped 1.9% to $91.38 a barrel, while WTI fell 2.6% to $83.80 in early European trading. Reports that Saudi Arabia raised output to 10.5 million barrels per day, alongside increased production in Iraq and Kuwait, added to concerns about a surplus. Geopolitical risks remained: Iran said its drones struck a U.S. radar base in Bahrain, though U.S. Central Command said they were intercepted without damage or injuries.",
       "model_eligible": false,
       "limitation": "Search excerpt, not complete article bytes; geopolitical context is not an XRP causal estimate."
+    },
+    {
+      "source_id": "okx_xrp_usdt_ticker",
+      "publisher": "OKX",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_event_time_utc": "2026-11-18T21:01:24.260Z",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "independence_group": "okx_exchange_direct",
+      "capture_type": "complete_web_rendered_json_response_text",
+      "capture_sha256": "030f1c8fd7257bb8c92165f836ccdc5ac90b6b73e3131af694ad6d425c965106",
+      "captured_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"0.9684\",\"lastSz\":\"51.435239\",\"askPx\":\"0.9685\",\"askSz\":\"1077.8\",\"bidPx\":\"0.9684\",\"bidSz\":\"1894.064761\",\"open24h\":\"0.9701\",\"high24h\":\"1.0079\",\"low24h\":\"0.9633\",\"volCcy24h\":\"31459106.5393336208\",\"vol24h\":\"31965691.272986\",\"ts\":\"1795035684260\",\"sodUtc0\":\"0.9837\",\"sodUtc8\":\"0.9765\"}],\"msg\":\"\"}",
+      "model_eligible": false,
+      "limitation": "Rendered JSON text, not independently captured wire bytes; USDT quote not normalized to USD."
+    },
+    {
+      "source_id": "okx_usdt_usd_ticker",
+      "publisher": "OKX",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD",
+      "source_event_time_utc": "2026-11-18T20:39:18.066Z",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "independence_group": "okx_exchange_direct",
+      "capture_type": "complete_web_rendered_json_response_text",
+      "capture_sha256": "c7a3424a73931ad5370df5a9e5bf2a62d6ff1b9d3435d937a6812e0324bf6304",
+      "captured_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"USDT-USD\",\"last\":\"0.99889\",\"lastSz\":\"344.9836\",\"askPx\":\"0.99889\",\"askSz\":\"4629.5592\",\"bidPx\":\"0.99888\",\"bidSz\":\"8330.0887\",\"open24h\":\"0.999\",\"high24h\":\"0.99901\",\"low24h\":\"0.99866\",\"volCcy24h\":\"9426015.774801468\",\"vol24h\":\"9437530.0226\",\"ts\":\"1795034358066\",\"sodUtc0\":\"0.99901\",\"sodUtc8\":\"0.99888\"}],\"msg\":\"\"}",
+      "model_eligible": false,
+      "limitation": "Rendered JSON text, not independently captured wire bytes; timestamp is 1,326.194 seconds older than the XRP-USDT quote and is rejected for normalization."
     }
   ],
   "integrity": {
@@ -449,6 +520,7 @@
     "capture_type_limitation": "Web-rendered JSON and page/search excerpts are not independently captured HTTP wire bytes. They are preserved as rendered evidence and explicitly remain model-ineligible.",
     "external_worm_anchor": "NOT_ANCHORED",
     "git_immutability": "Artifact will be committed to the integration branch; Git object history is tamper-evident but not an external WORM or independent trusted timestamp.",
-    "source_independence": "Independent publisher labels do not imply independent underlying data. Exchange aggregators may share public exchange feeds; ETF trackers derive from overlapping issuer files."
+    "source_independence": "Independent publisher labels do not imply independent underlying data. Exchange aggregators may share public exchange feeds; ETF trackers derive from overlapping issuer files.",
+    "additional_note": "Kraken ticker field o is the UTC-day open, not a rolling 24-hour open. The artifact now labels 0.98253 as open_utc_day_usd and reports change_from_utc_day_open_percent; rolling 24-hour VWAP, volume, high and low use their respective 24-hour fields."
   }
 }

@@ -2093,3 +2093,31 @@ No PR was merged or closed. No duplicate/superseded source PR was bulk-closed.
 5. Improve timestamped spot L2/trade capture, derivatives unit/venue normalization, issuer-level ETF flow reconciliation and raw-to-feature rebuild before forecast admission.
 
 **Merge decision: NO MERGE.** The objective remains a working integrated Barrot build and measured XRP predictive performance, not a larger queue of PRs.
+
+
+## Run 26 supplemental cross-venue check — 2026-11-18T21:02:30Z
+
+The Run 26 market artifact and map were corrected and extended with a second direct exchange observation.
+
+**OKX XRP-USDT spot ticker**
+- Exchange event timestamp: 2026-11-18T21:01:24.260Z.
+- Last 0.9684 USDT; bid 0.9684; ask 0.9685; spread 1.033 bps.
+- Best bid 1,894.064761 XRP; best ask 1,077.8 XRP.
+- 24-hour volume 31.966M XRP; 24-hour open 0.9701 USDT; high 1.0079; low 0.9633.
+- This is a timestamped direct spot quote, but it is XRP-USDT, not XRP-USD.
+
+**USDT conversion quality control**
+- OKX USDT-USD ticker timestamp: 2026-11-18T20:39:18.066Z.
+- Last 0.99889 USD.
+- The conversion leg is 1,326.194 seconds older than the XRP-USDT quote. USD normalization is rejected. The raw 0.9684 USDT quote is not compared as a USD price against Kraken's $0.96691.
+
+**Kraken field-semantics correction**
+- Kraken's `o` field is the UTC-day open, not a rolling 24-hour open. The $0.98253 value is now labelled `open_utc_day_usd`; the −1.59% calculation is labelled change from UTC-day open. The 24-hour VWAP, volume, high and low use their separate 24-hour fields.
+- This correction changes no forecast or model eligibility.
+
+**Depth and access limitations**
+- Coinbase Exchange XRP-USD ticker/level-2, Bitstamp XRP/USD ticker/order-book, Kraken Depth and OKX market/books endpoints were inaccessible through the current retrieval path.
+- No proxy, scraping workaround or access-control bypass was attempted.
+- Current depth evidence remains Basis's single-venue Binance XRPUSDT perpetual book; a synchronized cross-venue spot L2 snapshot is still missing.
+
+The updated source receipts hash the exact web-rendered JSON/excerpt text. They are not independently captured wire bytes and are not externally WORM-anchored. All current observations remain model-ineligible; forecast issuance remains disabled. This supplemental commit supersedes the earlier Run 26 field label but does not change the NO MERGE disposition.
