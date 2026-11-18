@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.3.0",
-  "snapshot_id": "run18",
-  "captured_at_utc": "2026-11-18T09:34:00Z",
+  "schema_version": "1.4.0",
+  "snapshot_id": "run12",
+  "captured_at_utc": "2026-11-18T10:49:16Z",
   "repository": "Barrot-Agent/B-Agent",
   "main_sha": "e204c21100f3d059e2ba633d041fe8927b61ccaf",
-  "integration_head_at_capture": "5f7bf5df614f70de771bfd3c3a81d5f93c2cd28a",
+  "integration_head_at_capture": "11bdb4847b6bf775e24c726f7a27b6c5712fd221",
   "integration_pr": 1663,
   "platforms": [
     {
@@ -17,9 +17,9 @@
         "pull",
         "triage"
       ],
-      "data_flow": "ChatGPT GitHub connector -> GitHub API -> B-Agent repository/integration branch",
+      "data_flow": "ChatGPT GitHub connector -> GitHub API -> Barrot-Agent/B-Agent; this run read repository metadata, recursive trees, main SHA, open PR inventory, PR changed paths, file contents, CI/workflow runs and performed branch-scoped research/handoff file updates.",
       "least_privilege": false,
-      "notes": "Read, tree, PR, CI and branch-scoped write operations succeeded. This verifies this connector path, not every ChatGPT product capability."
+      "notes": "Observed GitHub operations succeeded on the integration branch. Detailed main branch-protection read returned HTTP 403. Exact OAuth/token scopes were not introspected in this run; the previously reported admin/maintain/push/pull/triage permission set remains a least-privilege concern."
     },
     {
       "name": "Claude",
@@ -32,7 +32,7 @@
       "authentication": "unverified",
       "permissions": [],
       "data_flow": "none verified",
-      "notes": "Groq is not Grok."
+      "notes": "No current authenticated data flow verified. Groq is not Grok."
     },
     {
       "name": "Gemini",
@@ -93,7 +93,6 @@
       "triage"
     ],
     "least_privilege_satisfied": false,
-    "main_protected_flag": true,
     "detailed_branch_protection": "HTTP 403",
     "fallback_ruleset_id": 10863829,
     "fallback_ruleset_enforcement": "disabled",
