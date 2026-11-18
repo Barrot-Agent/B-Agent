@@ -468,3 +468,30 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   those are a different, disconnected system with a corrupt book (recorded earlier).
 - Fact correction for future sessions: Solana is an L1, not an Ethereum L2.
 - 22 tests pass, flake8 clean.
+
+## 2026-11-18 — XRP-CENTRIC PAPER ROTATION SYSTEM (permanent)
+- Sean's goal: Barrot learns in paper until IT tells Sean it is confident enough
+  for $100 of real XRP. Not before. Never ask; the system reports readiness.
+- Base capital = XRP. Two metrics, both logged every rotation: XRP stack delta
+  and USD value delta. They can disagree; one number would hide the real case.
+- Rotation universe: BTC, ETH, SOL, USDT (defensive), XLM. XRP itself is base.
+- Files: `XRP_ROTATION.md`, `XRP_ROTATIONS.csv`, `XRP_LESSONS.jsonl`,
+  `barrot_agent/trading/xrp_rotation.py`, `scripts/xrp_loop.py`,
+  `tests/test_xrp_rotation.py` (32 tests).
+- Cost model, first class: 0.10% fee + 0.10% slippage per side = 0.40% round trip
+  (ASSUMPTIONS). Gate requires expected move >= 1.5x cost (0.60%).
+- Risk: worst case = stop + round-trip cost, capped at 1.0% of stack. Allocation
+  is derived from that, so advertised risk equals realised risk.
+- Learning loop: every 10 closed rotations, one proposed change. Applies only if
+  the worst asset has >= 4 trades and negative XRP delta. Otherwise
+  INSUFFICIENT_EVIDENCE, no change. Batch 1 disabled XLM (-201.19 XRP, 4 trades);
+  batch 2 correctly refused to change anything.
+- Dead-pair prevention: 5% stop, 10-bar time stop, lesson disables repeat losers.
+  Proven: post-lesson XLM attempt rejected.
+- CONFIDENCE GATE (6 criteria, all must pass): recorded-market provenance,
+  >= 100 closed rotations, XRP stack up after costs, XRP drawdown <= 10%, recent
+  expectancy > 0, zero rule violations. Simulated provenance ALWAYS fails, so a
+  rehearsal can never justify real money.
+- Current verdict: NOT READY (2 of 6 fail). Do not tell Sean otherwise.
+- The 2026-11-18 prompt was truncated at "What rotation". Implemented what worked
+  / what failed / per-asset stats / one change; did not invent the missing tail.

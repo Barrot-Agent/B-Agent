@@ -1052,3 +1052,27 @@
 - Not wired: any live feed, any contract audit run, 20-trade report on real data.
 - Next: Sean supplies chart data or approves a dated feed; then the loop runs on
   provenance-tagged prices. No real-money path will be added.
+
+## 2026-11-18 — XRP rotation paper system (self-improving, gated)
+- New: `barrot_agent/trading/xrp_rotation.py` — XRP-denominated rotation engine.
+  No network, no keys, no orders; AST test forbids network imports.
+- New: `scripts/xrp_loop.py` — demo | lesson | confidence | scan. `scan` refuses
+  any provenance other than SEAN_SUPPLIED or RECORDED_FEED.
+- New: `tests/test_xrp_rotation.py` — 32 tests. New: `XRP_ROTATION.md`,
+  `XRP_ROTATIONS.csv`, `XRP_LESSONS.jsonl`.
+- Accounting: XRP delta AND USD delta per rotation, because they disagree.
+  Cost 0.40% round trip is inside the risk denominator: 1% risk means worst case,
+  not best case.
+- Learning loop proof: 20 simulated rotations in 2 batches. Batch 1 disabled XLM
+  (4 trades, -201.19 XRP). Batch 2 returned INSUFFICIENT_EVIDENCE (worst bucket 3
+  trades, need 4) and changed nothing. Post-lesson XLM attempt rejected — the
+  loop changed behaviour, it did not just describe it.
+- Confidence: NOT READY. 2 of 6 criteria fail (provenance SIMULATED_SCENARIO,
+  20 closed rotations < 100). The four passes are arithmetic on a self-written
+  path, so they are not evidence of skill.
+- Status: PAPER ONLY, 0 real XRP, no wallet, no keys. Rehearsal stack +183.35 XRP
+  is a designed scenario, not performance.
+- Prompt tail missing: "What rotation ..." — implemented what worked / what
+  failed / per-asset stats / one change. Not invented.
+- Next: dated market data from Sean or an approved read-only feed; then the same
+  loop runs on recorded provenance and the confidence gate becomes meaningful.
