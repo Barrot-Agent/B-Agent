@@ -495,3 +495,50 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Current verdict: NOT READY (2 of 6 fail). Do not tell Sean otherwise.
 - The 2026-11-18 prompt was truncated at "What rotation". Implemented what worked
   / what failed / per-asset stats / one change; did not invent the missing tail.
+
+## 2026-11-18 — MARKET DATA INGESTED (SEAN_FEED), BATCH 1, CHROME SANDBOX
+- Sean supplied a market snapshot for 2026-11-18. Provenance `SEAN_SUPPLIED`.
+  Recorded at `market/2026-11-18-sean-feed.json`. NOT verified against any
+  exchange: 0 network calls. Treat as recorded testimony.
+- "No market data" is no longer an excuse for entries. It is still an excuse for
+  exits: one snapshot cannot produce realised R, win rate, or drawdown.
+- Baseline: 102.27 XRP = $100.00 = 0.001584 BTC. Regime DOWN; XRP dominance
+  2.885% (derived from BTC mcap 1.27T at 59% dominance, XRP mcap 62.1B).
+- Correction to Sean's ratios: XRP/USDT is 0.97888, not 0.9778, because USDT is
+  $0.9989 not $1.00. The 0.11% gap is a quarter of the 0.40% round-trip cost.
+- Derived, and it confirms Sean's read: rotating XRP into BTC or ETH 7d ago and
+  back would have returned 91.4 XRP per 100 (8.60% loss). SOL 5.38% loss. XLM is
+  the only major that gained on XRP: +1.08% gross, +0.68% net.
+- Batch 1 = 10 candidates -> 2 ACCEPTED (USDT defensive, 18.9389 + 6.7203 XRP),
+  7 REJECTED, 1 NO_TRADE (hold XRP). 25.6591 XRP allocated, 1.8560 XRP at risk
+  (1.815% of stack). Realised PnL 0. Exits PENDING. This is ONE decision in two
+  tranches, not ten trades. Do not inflate the count.
+- Confidence after Batch 1: 1 of 6 checks pass, score 0/100, NOT READY.
+  Provenance passing is not evidence of skill.
+- Engine fixes forced by the snapshot: (a) `available_xrp` capacity guard so N
+  candidates cannot each size against the whole stack, (b) UNKNOWN news now
+  blocks the defensive leg too, (c) holding XRP is NO_TRADE not REJECTED,
+  (d) lessons are provenance-scoped: a SIMULATED_SCENARIO lesson must never
+  disable an asset on recorded data. That last one nearly deleted XLM, the only
+  favourable candidate.
+- OPEN DECISION FOR SEAN: no portfolio risk cap exists. Per-trade is 1%, but
+  three tranches at 1% is 3%. Batch 1 came to 1.815% because sizing uses
+  available capital. I did not invent a portfolio cap.
+- Files: `XRP_BATCH1.md`, `XRP_BATCH1.csv`, `barrot_agent/trading/xrp_batch.py`,
+  `scripts/xrp_batch1.py`, `tests/test_xrp_batch.py`. 93 trading tests green.
+- CHROME: mode = sandbox only, practice only, no live sites, no Bug Hunters
+  submission until Sean says GO LIVE.
+- Measured toolchain reality: gcc 14.2.0 WORKS; clang 21.1.8 exists but CANNOT
+  COMPILE (`proot error: unknown option '-cc1'`); ASAN broken (allocator CHECK);
+  UBSan works; gdb MISSING; valgrind MISSING; docker/podman MISSING; no chromium
+  binary; no gn/ninja; 3GB RAM; 5.3G free disk. So libFuzzer is impossible, and so
+  is any real Chromium build.
+- Built instead, and it runs: 3 exercises (UAF with quarantine allocator,
+  V8 type-confusion model, Mojo confused-deputy model) + a handwritten mutational
+  fuzzer. Fuzzer found 2 unique crashes in 2000 runs on the planted length-overflow
+  target; the repair passes both crash inputs and 2000 fresh runs found 0.
+- Chrome mastery: average 14.2/100, highest 40 (integer/length overflow), 0 of 19
+  at 85. ALL CVE IDs marked UNRESOLVED. I have no verified source and will not
+  invent a number. Do not claim Chrome mastery.
+- Files: `CHROME_GAP_FILL.md`, `CHROME_SANDBOX.md`, `REVERSE_ENGINEERED_BUGS.md`,
+  `sandbox/chrome/`, `tests/test_chrome_exercises.py`, `tests/test_chrome_fuzz.py`.

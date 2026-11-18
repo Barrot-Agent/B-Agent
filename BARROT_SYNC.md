@@ -1076,3 +1076,22 @@
   failed / per-asset stats / one change. Not invented.
 - Next: dated market data from Sean or an approved read-only feed; then the same
   loop runs on recorded provenance and the confidence gate becomes meaningful.
+
+## 2026-11-18 — Sean feed ingested; Batch 1; Chrome sandbox built
+- Ingested `market/2026-11-18-sean-feed.json` (provenance SEAN_SUPPLIED, 0
+  network calls, not exchange-verified). 102.27 XRP = $100 = 0.001584 BTC.
+- Derived signals, 7d round trip: BTC -8.60%, ETH -8.60%, SOL -5.38%, XLM +1.08%.
+  XRP->BTC being a bad rotation is now measured, not asserted.
+- Batch 1: 10 candidates -> 2 accepted (USDT 18.9389 + 6.7203 XRP), 7 rejected,
+  1 NO_TRADE. 1.8560 XRP at risk (1.815%). Exits PENDING, realised PnL 0.
+- Confidence: 1 of 6, score 0/100, NOT READY.
+- Fixed in the engine: available_xrp capacity guard; UNKNOWN news blocks the
+  defensive leg; hold = NO_TRADE; lessons are provenance-scoped (a simulated
+  lesson must not disable XLM on real data).
+- Tests: 93 trading (batch + rotation + sandbox), all green.
+- Chrome: clang cannot compile here (proot -cc1), ASAN cannot start, so libFuzzer
+  and any real build are impossible. Wrote 3 runnable exercises + a mutational
+  fuzzer instead. Fuzzer: 2 unique crashes in 2000 runs; repair survives both.
+- Chrome mastery 14.2/100 average, 0 of 19 at 85, all CVEs UNRESOLVED.
+- BLOCKED: second snapshot for exits; volume + news fields; portfolio risk cap
+  (Sean's decision); Chromium checkout for real Chrome work.

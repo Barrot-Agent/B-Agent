@@ -160,3 +160,52 @@ or a specific lesson format — say the word and it goes in. I did not invent it
 | Closed rotations | 20, all simulated |
 | Confidence | **NO** — 2 of 6 criteria fail |
 | Next | dated market data from Sean or an approved read-only feed |
+
+## 9. Signal semantics — what the gate actually means (added 2026-11-18)
+
+This was underspecified and the first real snapshot exposed it:
+
+| Field | Means | Derived from |
+|---|---|---|
+| `trend` | the asset's own USD trend | 24h and 7d % change |
+| `ratio_signal` | `FAVOURS` when the asset has been **losing** value against XRP over 7d | `(1+XRP%)/(1+asset%) − 1` |
+| `volume_signal` | `CONFIRMS` only when volume for that asset was supplied | snapshot volume field |
+
+`FAVOURS` is the regime `settle()` profits from: the asset is sold high in XRP
+terms and bought back cheaper. Requiring `trend == UP` at the same time asks for
+an asset that is rising in USD while falling against XRP — a narrow condition,
+and on 2026-11-18 no offensive candidate met it.
+
+**Known open tension, stated rather than hidden:** momentum and mean-reversion
+pull in opposite directions here. The gate is deliberately conservative, so it
+refuses rather than picking a side. If Sean wants a momentum rule (rotate into
+strength instead of into relative weakness), that is a **second strategy**, not a
+tweak — it inverts what `settle()` counts as a win. Not implemented.
+
+## 10. Capital allocation guard (added 2026-11-18)
+
+Before this, ten candidates in one batch each sized against the full stack: a
+tight stop would have allocated the same XRP several times. `evaluate()` now
+takes `available_xrp` and caps the allocation at uncommitted capital, and an
+approval that would allocate zero is rejected.
+
+Risk is then a share of *available* capital, not of the raw stack, so a later
+tranche risks less than an earlier one. That is conservative by accident rather
+than by design. Per-trade risk is capped at 1%; **nothing caps the sum across
+tranches.** That is a rule for Sean to set, not one to invent.
+
+## 11. Lessons do not cross provenance (added 2026-11-18)
+
+`load_config(path, provenance)` applies only lessons whose `provenance` matches.
+Why it matters concretely: the demo disabled XLM at −201.19 XRP, and XLM was the
+only asset with a favourable 7d ratio on Sean's snapshot. Carrying that lesson
+across would have silently deleted the one live candidate on the strength of a
+fixture I wrote myself. No `SEAN_SUPPLIED` lessons exist yet, so 0 were applied
+to Batch 1.
+
+## 12. One snapshot produces entries, not outcomes
+
+Batch 1 is in `XRP_BATCH1.md` and `XRP_BATCH1.csv`. It records decisions and
+marks every exit `PENDING`. Realised R, win rate, and drawdown are `UNDEFINED`,
+not `0`, and `scripts/xrp_batch1.py --check` fails the ledger if a realised field
+is ever populated while an exit is pending.

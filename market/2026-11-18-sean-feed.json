@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "record_type": "market_snapshot",
+  "snapshot_id": "2026-11-18-sean-feed",
+  "captured_at_utc": "2026-11-18T00:00:00Z",
+  "source": "SEAN_FEED",
+  "provenance": "SEAN_SUPPLIED",
+  "verification": {
+    "exchange_api_queried": false,
+    "network_calls_made": 0,
+    "note": "Figures are recorded verbatim from Sean. They were not cross-checked against any exchange. Treat as recorded testimony, not verified market data."
+  },
+  "regime": {
+    "label": "BEARISH_WITH_XRP_RELATIVE_STRENGTH",
+    "market_trend": "DOWN",
+    "btc_dominance_pct": 59.0,
+    "xrp_24h_pct": 1.7,
+    "btc_24h_pct": -1.24,
+    "xrp_outperforming_24h": true,
+    "note": "Broad market down 7d and 30d on every asset. XRP is the only one green on 24h."
+  },
+  "prices_usd": {
+    "BTC": 63112.67,
+    "ETH": 1767.27,
+    "XRP": 0.9778,
+    "SOL": 73.65,
+    "XLM": 0.1385,
+    "USDT": 0.9989
+  },
+  "change_pct": {
+    "BTC": {"24h": -1.24, "7d": -15.0, "30d": -23.0},
+    "ETH": {"24h": -1.74, "7d": -15.0, "30d": -27.0},
+    "XRP": {"24h": 1.7, "7d": -7.0, "30d": -25.0},
+    "SOL": {"24h": 1.17, "7d": -12.0, "30d": -30.0},
+    "XLM": {"24h": 0.57, "7d": -6.0, "30d": -22.0},
+    "USDT": {"24h": -0.01, "7d": null, "30d": null}
+  },
+  "market_cap_usd": {
+    "BTC": 1270000000000.0,
+    "ETH": 216000000000.0,
+    "XRP": 62100000000.0,
+    "SOL": 43590000000.0,
+    "XLM": 4910000000.0,
+    "USDT": 175000000000.0
+  },
+  "volume_24h_usd": {
+    "XRP": 1990000000.0
+  },
+  "balances_start": {
+    "xrp": 102.27,
+    "usd_value": 100.0,
+    "btc_equiv": 0.001584
+  },
+  "ratios_xrp_per_asset": {
+    "BTC": 0.00001549,
+    "ETH": 0.0005533,
+    "SOL": 0.01327,
+    "XLM": 7.06,
+    "USDT": 0.9778
+  },
+  "ratio_discrepancy": {
+    "USDT": {
+      "sean_supplied": 0.9778,
+      "computed_from_prices": 0.97888,
+      "delta_pct": 0.11,
+      "note": "Sean's figure assumes USDT = $1.00 exactly. The supplied price is $0.9989. The batch uses the computed value because a 0.11% error is a quarter of the 0.40% round-trip cost."
+    }
+  },
+  "disabled_assets": [],
+  "disabled_assets_note": "Empty on purpose. XLM was disabled by a SIMULATED_SCENARIO lesson. Simulated lessons must never block an asset on recorded market data."
+}

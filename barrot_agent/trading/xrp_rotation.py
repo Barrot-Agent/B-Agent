@@ -19,6 +19,7 @@ ratio is caller-supplied and carries a provenance tag.
 from __future__ import annotations
 
 import csv
+import json
 import math
 from dataclasses import dataclass, field, replace
 from pathlib import Path
@@ -131,11 +132,21 @@ def evaluate(
     stack_xrp: float = STARTING_XRP,
     config: StrategyConfig | None = None,
     trades_today: int = 0,
+    available_xrp: float | None = None,
 ) -> RotationVerdict:
-    """Size the rotation and return a fail-closed verdict."""
+    """Size the rotation and return a fail-closed verdict.
+
+    `available_xrp` is capital not already committed to another open rotation.
+    When supplied, the allocation is capped by it, so N rotations evaluated
+    against one batch cannot each size against the whole stack and over-commit.
+    """
     config = config or StrategyConfig()
     reasons: list[str] = []
     asset = plan.asset.upper()
+    capacity = stack_xrp if available_xrp is None else min(stack_xrp, available_xrp)
+
+    if available_xrp is not None and (not _finite(available_xrp) or available_xrp < 0):
+        reasons.append(f"available capital {available_xrp!r} is not a usable amount")
 
     if asset == "XRP":
         reasons.append("XRP is the base asset; it is not a rotation target")
@@ -163,6 +174,12 @@ def evaluate(
     elif not _finite(plan.xrp_dominance) or not 0 <= plan.xrp_dominance <= 100:
         reasons.append("XRP dominance outside 0..100")
 
+    # A missing news state means the scan did not complete. That blocks every
+    # rotation, including the defensive leg: the defensive trigger cannot be
+    # trusted if the news state is unknown.
+    if plan.news == "UNKNOWN":
+        reasons.append("news state unknown: scan incomplete")
+
     # Alignment. USDT is the defensive leg: it is allowed when the offensive
     # signals fail or when news is high impact. Offensive legs need all three.
     if asset == DEFENSIVE_ASSET:
@@ -179,8 +196,6 @@ def evaluate(
     else:
         if plan.news == "HIGH_IMPACT":
             reasons.append("high-impact news: no offensive rotation")
-        if plan.news == "UNKNOWN":
-            reasons.append("news state unknown: scan incomplete")
         if plan.trend != "UP":
             reasons.append(f"trend {plan.trend!r} is not UP")
         if plan.ratio_signal != "FAVOURS":
@@ -207,9 +222,11 @@ def evaluate(
         # case includes both legs of cost, so advertised risk equals realised
         # risk instead of understating it.
         worst_case_pct = plan.stop_pct + cost
-        max_by_risk = stack_xrp * (MAX_RISK_PCT / 100.0) / (worst_case_pct / 100.0)
-        xrp_allocated = round(min(stack_xrp, max_by_risk), 8)
+        max_by_risk = capacity * (MAX_RISK_PCT / 100.0) / (worst_case_pct / 100.0)
+        xrp_allocated = round(min(capacity, max_by_risk), 8)
         xrp_at_risk = round(xrp_allocated * worst_case_pct / 100.0, 8)
+        if xrp_allocated <= 0:
+            reasons.append("no capital available: allocation would be zero")
         risk_pct = round(xrp_at_risk / stack_xrp * 100.0, 6)
         if risk_pct > MAX_RISK_PCT:
             reasons.append(f"risk {risk_pct}% exceeds {MAX_RISK_PCT}%")
@@ -338,6 +355,34 @@ def apply_lesson(config: StrategyConfig, lesson: dict) -> tuple[StrategyConfig, 
     return updated, True
 
 
+def load_config(
+    lessons_path: Path | str,
+    provenance: str,
+    base: StrategyConfig | None = None,
+) -> tuple[StrategyConfig, list[dict]]:
+    """Apply only the lessons recorded against the same provenance.
+
+    A lesson learned from a simulated scenario is a statement about the fixture,
+    not about the market. Letting it disable an asset on recorded data would let
+    a rehearsal permanently cripple a real candidate, so provenance must match.
+    """
+    config = base or StrategyConfig()
+    path = Path(lessons_path)
+    if not path.exists():
+        return config, []
+    applied: list[dict] = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        record = json.loads(line)
+        if record.get("provenance") != provenance:
+            continue
+        config, changed = apply_lesson(config, record)
+        if changed:
+            applied.append(record["proposal"])
+    return config, applied
+
+
 def max_drawdown_pct(equity: list[float]) -> float:
     peak = 0.0
     worst = 0.0
@@ -377,7 +422,7 @@ def confidence(outcomes: list[RotationOutcome], provenance: str) -> dict:
         (
             f"XRP drawdown <= {CONFIDENCE_MAX_DRAWDOWN_PCT}%",
             bool(closed) and drawdown <= CONFIDENCE_MAX_DRAWDOWN_PCT,
-            f"{drawdown}%",
+            f"{drawdown}%" if closed else "no closed rotations",
         ),
         ("recent expectancy > 0", recent_avg_r > 0, f"{recent_avg_r:.4f}R over last {len(recent)}"),
         ("zero rule violations", bool(closed) and violations == 0, f"{violations}"),
