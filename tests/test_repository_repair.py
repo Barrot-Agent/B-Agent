@@ -84,7 +84,7 @@ def git(cwd: Path, *args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
-def init_repo(tmp_path: Path, *, origin: bool = False) -> tuple[Path, str):
+def init_repo(tmp_path: Path, *, origin: bool = False) -> tuple[Path, str]:
     workspace = tmp_path / "repo"
     workspace.mkdir()
     (workspace / "barrot_agent").mkdir()
