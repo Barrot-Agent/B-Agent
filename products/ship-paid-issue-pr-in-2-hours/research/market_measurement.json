@@ -1,0 +1,62 @@
+{
+  "bounties": {
+    "age_days_median": 1.3,
+    "amount_usd": {
+      "count": 6,
+      "max": 600.0,
+      "median": 525.0,
+      "min": 450.0,
+      "p25": 450.0,
+      "p75": 600.0
+    },
+    "amounts_are_self_declared": true,
+    "comments_median": 1.0,
+    "escrow_verified": false,
+    "issues_fetched": 100,
+    "issues_with_amount_pct": 6.0,
+    "issues_with_platform_link": 9,
+    "issues_with_stated_amount": 6,
+    "platform_hits": {
+      "algora.io": 6,
+      "issuehunt.io": 0,
+      "opire.dev": 9
+    },
+    "query": "label:bounty is:issue is:open",
+    "spam_marker_hits": 3
+  },
+  "merge_latency": {
+    "note": "Open-to-merge latency of the 100 most recently updated merged PRs per repository. It measures review latency, not contributor effort, and does not predict any single pull request.",
+    "pooled": {
+      "median_hours": 1.11,
+      "merged_sampled": 112,
+      "pct_merged_within_2h": 52.7
+    },
+    "repos": {
+      "encode/httpx": {
+        "median_hours": 4.27,
+        "merged_sampled": 33,
+        "p75_hours": 373.83,
+        "pct_merged_within_2h": 42.4
+      },
+      "fastapi/fastapi": {
+        "median_hours": 0.57,
+        "merged_sampled": 74,
+        "p75_hours": 28.12,
+        "pct_merged_within_2h": 56.8
+      },
+      "pallets/flask": {
+        "median_hours": 0.13,
+        "merged_sampled": 5,
+        "p75_hours": 533.51,
+        "pct_merged_within_2h": 60.0
+      }
+    }
+  },
+  "query_counts": {
+    "\"paid\" \"pull request\" in:body is:issue is:open": 7570,
+    "algora in:body is:issue is:open": 559,
+    "label:bounty is:issue is:open": 5319
+  },
+  "retrieved_at": "2026-11-18T06:09:03.713202Z",
+  "tool": "measure_market.py"
+}

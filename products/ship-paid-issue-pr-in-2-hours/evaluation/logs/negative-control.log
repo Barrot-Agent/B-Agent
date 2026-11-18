@@ -1,0 +1,4 @@
+$ cd deliverables
+$ python3 -m paid_issue_kit pr --plan ../evaluation/fixtures/bad_plan.json
+BLOCKED: unverifiable claim present: guarantee language
+exit: 1
