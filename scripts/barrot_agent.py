@@ -479,6 +479,11 @@ def _send_groq_request(
             raise RuntimeError(
                 f"Groq daily token quota exhausted for {primary_model}; all configured fallback models failed. {details}"
             ) from exc
+        if exc.code == 429 and request_sender is None and os.environ.get("BARROT_ENABLE_FREE_FALLBACKS", "true").strip().lower() in {"1", "true", "yes"}:
+            try:
+                return _send_zero_cost_fallback(payload)
+            except Exception as fallback_exc:
+                detail += "; zero-cost provider chain: " + str(fallback_exc)[:1800]
         raise RuntimeError(f"Groq HTTP {exc.code}: {detail}") from exc
     except urllib.error.URLError as exc:
         raise RuntimeError(f"LLM network error: {exc}") from exc
