@@ -1,8 +1,6 @@
 # Paid issues: READY, never claimed
 
-Last run: 2026-11-17 21:28 UTC. Schedule: every 6 hours, indefinitely, plus manual dispatch.
-
-The scheduled hunter is read-only. A separate workflow_run publisher may commit only these generated output files after a successful hunter run on main. It never claims, comments on, labels, assigns, or closes issues.
+Last run: 2026-11-18 00:41 UTC. Schedule: every 6 hours, indefinitely, plus manual dispatch.
 
 Rules enforced by `scripts/paid_issue_hunter.py`:
 
