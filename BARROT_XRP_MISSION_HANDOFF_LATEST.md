@@ -838,3 +838,90 @@ PR #1665 and #1666 are non-draft and GitHub reports them mergeable, but no merge
 8. Keep forecasts disabled until the full leakage-safe baseline, calibration, drift, independent shadow and evaluator-attestation policy passes.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, Hugging Face upload, external-model dispatch, paper trade, funds transfer or real-money action occurred in this run.
+
+
+---
+
+## Run 16A — 2026-11-18T13:45:11Z — primary SEC correction: Evernorth XRP acquisition, SBI ownership and identity gates
+
+This addendum corrects and supersedes any earlier shorthand that treated Evernorth's funding only as company-level cash, or implied that the exact ASK/Kamilah identities were uniquely resolved.
+
+### Primary-source capital and XRP-flow reconciliation
+
+**Primary source:** Evernorth Holdings Inc. Form 10-Q filed November 13, 2026, included in SEC Form 424B3, accession `0001628280-26-073933`:
+https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm
+
+The filing states that advance-funding investors contributed **$214,049,995 cash by October 23, 2025** and **600,000 XRP by October 24, 2025**. Evernorth used the cash to purchase **84,365,876.3625 XRP**; the XRP was received partly on October 31, 2025 and the remainder by November 6, 2025. The purchased XRP and other contributed XRP were held in an unencumbered custody wallet in PubCo's name for the investors' benefit pending the October 9, 2026 closing, then released at closing. The SEC filing is explicit that the $214.05M was used to buy XRP; this is a historical acquisition, not merely unused financing capacity.
+
+The earlier cash-bridge correction records $214,000,000 as the purchase cost, $49,995 as the remaining restricted cash from the exact $214,049,995 receipt, and a derived average acquisition cost of approximately **$2.53657058/XRP**. Keep the exact receipt, cash deployed, restricted remainder and derived average in separate fields. Do not replace the exact $214,049,995 cash receipt with the rounded $214,000,000 purchase-cost field.
+
+The capital/XRP bridge is:
+
+| Component | Amount | Classification |
+|---|---:|---|
+| Advance-funding cash received | $214,049,995 | Cash subscription |
+| Cash deployed to acquire XRP | $214,000,000 | Historical XRP acquisition; $49,995 remained restricted |
+| XRP acquired with advance cash | 84,365,876.3625 XRP | Cash-funded XRP, received Oct 31–Nov 6, 2025 |
+| Advance-funding XRP contribution | 600,000 XRP | In-kind contribution; not cash |
+| Delayed funding at closing | $10,500,000 + 200,000 XRP | Separate closing subscription; not part of the $214M purchase |
+| RippleWorks/Sponsor Series C | 211,319,096.061435 XRP | In-kind contribution routed through Arrington Sponsor; RippleWorks is a nonprofit foundation and Sponsor limited partner |
+| Contributor Related Party Entity | 50,000,000 XRP | In-kind contribution by the Larsen Lam Children's Remainder Trust; not cash |
+| Ripple contribution | 126,791,458 XRP | Direct in-kind contribution to Pathfinder |
+| Total in-kind XRP | 388,910,554.061435 XRP | Sum of the 600k, 200k, 211.319096M, 50M and 126.791458M components |
+| Pathfinder gross XRP at closing | approximately 473,276,430 XRP | 84.365876M cash-acquired plus 388.910554M in-kind; not all directly attributable to PubCo |
+
+The post-close SEC disclosures report **346,484,972 XRP transferred by Evernorth to Pathfinder**, plus Ripple's separate **126,791,458 XRP** contribution, for approximately **473,276,430 XRP at Pathfinder**. PubCo's principal asset is its **71.5% ownership interest in Pathfinder**; do not report the entire Pathfinder gross balance as 100% directly owned by PubCo.
+
+The November 17, 2026 8-K/A pro forma cash bridge reports approximately **$48.0M** released from the SPAC Trust Account after redemptions; the pro forma table shows $48,003,633. Combined with $214,049,995 advance cash and $10.5M delayed cash, this produces approximately $272.55M gross closing cash, reported in rounded form as **$272.6M**. The trust release is SPAC trust cash after redemptions, not new subscription capital. Do not treat all $272.6M as new outside investor cash or as XRP purchase capital.
+
+**Point-in-time treatment:** the XRP acquisition event time is October 31–November 6, 2025; its public filing/known-at date is November 13, 2026. Do not backdate public knowledge to the 2025 acquisition date. The purchase method/venue is not identified by the cited passage. Coinbase is Evernorth's selected principal accounting market for fair-value/impairment purposes, not proof that the 84.365876M XRP was executed on Coinbase. The filing identifies BitGo Trust as the initial post-transaction custodian; do not assume that this is the current custodian without a later filing.
+
+The 10-Q/424B3 and the November 17 8-K/A are issuer-authored SEC disclosures in the same issuer source-independence group. The rendered SEC pages were reviewed, but complete raw HTTP bytes, response headers and independent timestamp anchoring were not retained. This evidence is **model-ineligible** until byte-complete captures and SHA-256 receipts are stored. It is suitable as a dated corporate/event research lead, not a current spot-flow feature or a directional price signal.
+
+### SBI Holdings ownership and the separate SBIC entities
+
+The October 19, 2026 Evernorth prospectus defines “SBI” as **SBI Holdings, Inc.**, a Japanese corporation listed on the Tokyo Stock Exchange Prime Market. Its “SBI Stockholders” are four controlled/managed entities:
+
+- SBI Venture Fund 2023A Investment LPS
+- SBI Venture Fund 2023B Investment LPS
+- SBI PE Holdings Co., Ltd.
+- SBI Holdings USA, Inc.
+
+The prospectus reports **9,431,914 Pubco Class A shares**, representing **39.9% of Class A voting shares**, and **2,359,038 Class C shares**, representing **7.5% of the Class C class**. Class C shares are non-voting (except limited statutory matters) but carry economic/distribution rights. The reported combined common ownership is **21.4%**; do not confuse this with the 39.9% voting/Class A threshold.
+
+The SEC 10-Q also says certain investors affiliated with SBI Holdings amended their advance-funding subscription agreements so Class A issuance was capped at 39.9%; the excess subscribed shares were issued as Class C. This is a direct SBI Holdings equity/subscriber relationship with Evernorth. **The reviewed filings do not isolate SBI's exact dollar or XRP share of the aggregate $214.05M advance-funding pool. Do not attribute the full $214.05M or all 84.365876M purchased XRP to SBI.**
+
+Keep SBI Holdings separate from SBIC East Japan, SBIC Central Japan and SBIC West Japan. The SBIC East 2025 ChatGPT course was an investee-company training course delivered by VOST; it is not an OpenAI partnership and is not the SBI Holdings investment described in the Evernorth prospectus.
+
+Primary references:
+- October 19, 2026 Evernorth prospectus: https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm (Advance Funding definition and purchase/escrow mechanics; Principal Securityholders table and SBI Stockholder footnote).
+- November 13, 2026 Evernorth 10-Q/424B3: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm (advance cash/XRP dates, SBI-affiliated subscription amendment, XRP accounting principal market and BitGo initial custody).
+- November 17, 2026 8-K/A pro forma: https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/evernorth-proforma20260930.htm (post-redemption trust release and closing cash adjustments).
+- Existing structured reconciliation: `research/xrp_intelligence/20261116T154625Z-run191-evernorth-ask-coin-kamilah-rwa-verification.json`.
+- Existing capital/ownership ledger: `research/xrp_intelligence/20261107T222415Z-evernorth-actual-capital-vs-capacity-sec-reconciliation.json`. Its older $47.6M trust figure is superseded for the closing trust cash bridge by the later 8-K/A pro forma's approximately $48.0M / $48,003,633 figure. Preserve the old artifact; do not overwrite it.
+
+### Debt and contingent capacity remain separate
+
+- The $30M 4.00% Convertible Senior PIK Note issued October 13, 2026 produced $29M net cash after the $1M advisory fee. It is debt, not equity or proof of XRP acquisition. The 8% yield-to-put and up-to-4x conversion cash-settlement terms are separate contingent liabilities.
+- Pathfinder's $9.7M Ripple facility draw as of October 7, 2026 is debt; repayment/extension after the October 9 closing remains unresolved in the reviewed public evidence. Keep it separate from Evernorth's separate $1M Ripple revolving facility, for which no draw was reported as of September 30.
+- Public warrant exercises from October 12 through November 9 produced $35.3M gross cash; the filing does not earmark those proceeds for XRP.
+- The Cantor ELOC covers up to 5,218,935 shares at 97% of applicable VWAP. Registration effectiveness is not proof that every commencement condition was met or that any draw occurred. Potential proceeds are financing capacity, not actual cash received.
+- The exact phrase “actual capital” is not a defined SEC instrument or issuer term in the reviewed filings. Use a ledger separating cash received, cash deployed to buy XRP, in-kind XRP, debt, warrants, optional ELOC capacity, trust cash and non-cash impairment.
+
+### Exact-phrase and person/video identity corrections
+
+**ASK Coin:** do not collapse the candidates. Permission Coin (ticker ASK) is supported by Permission's first-party token documentation, while a separate inactive/untracked “Ask Coin” exchange listing appears in secondary CoinMarketCap metadata. Their relationship is not established, neither has a verified XRP/Ripple relationship, and the listing pages share one publisher independence group. Exact phrase remains ambiguous; both stay model-ineligible pending primary entity/contract evidence.
+
+**Dr. Kamilah Stevenson:** person identity is high-confidence but not absolute, supported by her first-person interview and first-party Wealth Doctor site. The `@drkamilahstevenson` channel association is strongly corroborated, but the canonical channel ID/reciprocal first-party cross-link is not fully verified. The Run194 inventory contains three creator-channel upload candidates, one verified Paul Barron guest appearance (not her own-channel upload), two Glasp transcript candidates pending direct metadata and one third-party clip excluded. The inventory is partial, not exhaustive. Do not attribute the lookalike `@KamilahStevensonXrpStocks` channel or treat creator commentary as primary XRP market evidence.
+
+### Prediction-engine impact
+
+The $214.05M / 84.365876M XRP acquisition is a real historical corporate XRP acquisition, but it is not a current market-flow observation. The event should enter an event timeline with separate `event_time` (2025-10-31 through 2025-11-06), `known_at` (2026-11-13 filing date), entity, amount, funding source, escrow/beneficial-interest status and source-independence group. It remains excluded from the point-in-time feature store until raw source bytes, exact hashes, independent capture time and the relevant ownership/beneficial-interest fields are verified. It must not be conflated with an exchange withdrawal, an order-book trade, a post-listing purchase or a current XRP demand signal.
+
+### Run 16A verification state
+
+- The preceding documentation head `7b3896ac54de2ff74534cbb8409b3d84fce26b17` passed exact-head push CI [44315533722](https://github.com/Barrot-Agent/B-Agent/actions/runs/44315533722): 4,273 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; inclusive coverage 68.14%, legacy core 77%; wheel and primary mission verification passed.
+- Dependency audit [44315533614](https://github.com/Barrot-Agent/B-Agent/actions/runs/44315533614), fail-closed gate [44315533636](https://github.com/Barrot-Agent/B-Agent/actions/runs/44315533636), PR dependency audit [44315545764](https://github.com/Barrot-Agent/B-Agent/actions/runs/44315545764), PR money audit [44315545119](https://github.com/Barrot-Agent/B-Agent/actions/runs/44315545119), PR fail-closed gate [44315545134](https://github.com/Barrot-Agent/B-Agent/actions/runs/44315545134) and PR CI [44315549850](https://github.com/Barrot-Agent/B-Agent/actions/runs/44315549850) all passed. PR CI's full-suite job is skipped while #1663 remains draft; the push run is the full-suite evidence.
+- This Run16A handoff correction is documentation-only. Its new commit must receive its own push-triggered exact-head CI before that new SHA is considered verified.
+- #1663 remains draft and blocked by independent review, effective branch-protection evidence, the automatic main-writer/release workflow side effects, Pages deployment authorization and incomplete transitive workflow review. No merge or deployment is authorized by this research correction.
+- Forecast remains `NOT_ISSUED`; no paper trade or real-money action occurred.
