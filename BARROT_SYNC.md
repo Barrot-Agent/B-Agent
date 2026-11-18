@@ -500,7 +500,7 @@
   8 evidence states, 4 truth states, exact-vs-numerical guard.
 - What is broken: snapshot does not match this tree. All 3 checkpoint commits
   ABSENT; .barrot/sources/ and .barrot/mmi_learning/ MISSING (83 files, neither
-  dir); scripts/barrot_governed_bundle_executor.py + its test MISSING; no gitlab
+  dir); scripts/barrot_governed_bundle_executor.py + its test MISSING; no secondary
   remote; branch is main not barrot/task. Nothing reset.
 - Missing layers: classification, stratification, representation correspondence,
   certificates, domain/config space. compare_invariants does not exist anywhere.
