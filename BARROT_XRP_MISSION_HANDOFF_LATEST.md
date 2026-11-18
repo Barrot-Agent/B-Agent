@@ -276,3 +276,42 @@ A short-covering/position-reset explanation is plausible because price rebounded
 - Only ChatGPT-to-GitHub has verified authentication/data flow among the nine platforms. Other eight remain unverified.
 
 **Disposition: NO MERGE.** The corrected parent head passed its full suite; the new research/handoff commit still requires its own exact-head CI. Main remains unchanged; no deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer, real-money action, force-push or history rewrite occurred.
+
+
+
+## Run 11B — Binance XRP downstream tracing and Evernorth actual-capital reconciliation — 2026-11-18 10:37:34 UTC
+
+Structured evidence: research/xrp_intelligence/20261118T103734Z-binance-xrp-tracing-and-evernorth-capital-audit.json.
+
+### Binance XRP flow: a material downstream update
+
+- XRPL-Utilities' case file, published Nov 13 and timestamped as of Nov 12 23:30 UTC, estimates that up to **216.4M XRP (about 93% of the 233.462M XRP initial theft)** reached deposit accounts at roughly ten exchanges and swap services through six pre-existing hub wallets and 58 payout wallets.
+- Its venue breakdown attributes 75.43M XRP to OKX (explicitly an analyst attribution, not a public label), 65.36M to Binance, 31.50M to Coinbase, 23.49M to Kraken, 13.92M to Bybit, 2.79M to Bitget, 1.54M to ChangeNOW and 2.37M to others/unlabelled.
+- **216.4M is an upper bound, not a confirmed stolen-XRP deposit total.** XRPL-Utilities says only about 85% of hub inflows from Nov 5 could be traced to the original breach wallet; the hubs also carried unrelated funds. It does not know what happened after the deposits because exchange internal books are private.
+- Santala Research's Nov 17 on-chain update independently confirms the initial six-way split and the collection wallet's approximately 1,300 payments to about 100 accounts by Nov 12, but says those payments had no destination tags and that its sample of the five largest recipients did not reveal where XRP left that wallet network. Its stated sampling scope may stop before XRPL-Utilities' later hub/payout-wallet layer. The two analyses are therefore different tracing scopes, not a resolved contradiction.
+- XRPSONAR independently shows the collection wallet's Nov 12 transfer of 2.408405M XRP to another account and a reported residual balance of 5 XRP on Nov 17. This corroborates the collection wallet's near-empty state but not the downstream exchange labels.
+- XRPL-Utilities describes a daily SHA3-512/Merkle fingerprint written to the XRP Ledger. The method was inspected, but this run did not independently recompute the Nov 12 fingerprint. Exchange deposit does not prove a sale; do not turn this upper bound into confirmed net selling or price impact.
+
+### Evernorth: distinguish actual cash from XRP contributed in kind and accounting impairments
+
+Primary SEC records now resolve the main capital categories. The Nov 13 10-Q and Nov 17 8-K/A (accepted Nov 16 at 19:54:22 UTC) show:
+
+- 346,284,972 XRP held at Sept 30 at historical cost of $846.575M; impairment charges of $233.651M in 2025 and $271.037M in 2026 YTD reduced carrying value to $341.887M. The combined ~$504.688M is **non-cash accounting impairment**, not $505M cash spent, XRP sold or realized loss.
+- The 8-K/A says Evernorth remained a Ripple related party after the Oct 9 transaction and its XRP did not qualify for ASU 2023-08 fair-value accounting; it remains at historical cost less accumulated impairment under ASC 350-30.
+- At closing, 346,484,972 XRP was transferred to Pathfinder and Ripple separately contributed 126,791,458 XRP in kind. Together they account for approximately 473.276M XRP at Nasdaq debut. The Ripple contribution is not cash and is not a spot-market purchase. The 50M XRP investor-affiliate lot is already in the 346.285M cost-basis table; do not add it twice.
+- Actual financing disclosed: $48.0M trust-account cash released after 18.464M public-share redemptions; $29M net proceeds from a $30M convertible note after a $1M fee; and $35.3M gross cash proceeds from 3.073M warrant exercises through Nov 9.
+- The Cantor ELOC allows up to 5,218,935 shares at 97% of VWAP, but the filing does not disclose an actual drawdown. It is optional capacity, not capital already raised.
+- The pro forma combined balance sheet as if the merger had occurred on Sept 30 shows $76.027M cash, $342.223M net digital assets, $418.593M total assets and $46.276M liabilities. This is an unaudited pro forma presentation, not a current actual balance sheet. The pre-merger standalone 10-Q cash of $91,397 is also not the current post-merger cash balance.
+- Ripple, Kraken, Coinbase and BitGo are named as institutional execution partners, but no post-listing XRP purchase amount or order-level execution was disclosed. Evernorth says it may pursue XRP yield strategies; direct XRPL lending is deferred until native credit features are active and proven in production.
+
+### Implications for the XRP model
+
+The Binance flow is a candidate potential-supply event with a bounded upper estimate and uncertain exchange attribution, not confirmed selling. Evernorth's reported 473.276M XRP is a treasury holding, but it combines previously held XRP and an in-kind Ripple contribution; only the separately disclosed financing proceeds are cash capital, and no corresponding XRP spot purchases are verified. The model must keep these categories separate.
+
+Forecast status remains **NOT_ISSUED**. This research is not model-eligible until raw ledger transaction receipts, source hashes, external timestamp anchoring and exact exchange-label validation are captured. No paper trade or real-money action occurred.
+
+### Exact-head and integration status
+
+- Parent head b910eb94ce606e1c12a7f1aa135d832c5ca06128 passed [full repository CI 44286284457](https://github.com/Barrot-Agent/B-Agent/actions/runs/44286284457): 4,273 passed, 1 skipped, 0 failed; 68.14% inclusive coverage; 77% legacy-core coverage; wheel build and installed Barrot V3/XRP mission verification passed.
+- This supplemental research artifact and handoff update create a new commit and require their own exact-head full-suite and security verification.
+- Main remains e204c21100f3d059e2ba633d041fe8927b61ccaf; no merge. PR #1663 remains the sole consolidated integration PR and draft. No source PRs were closed.
