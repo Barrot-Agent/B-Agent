@@ -7,7 +7,7 @@ import pytest
 
 from barrot_agent.evolution import sec_edgar
 from barrot_agent.evolution.sec_edgar import (
-    SEC_ISSUERS, SECEdgarError, capture_sec_edgar, fetch_sec_json,
+    SEC_ISSUERS, SECEdgarError, capture_sec_edgar, fetch_sec_document, fetch_sec_json,
     parse_companyfacts, parse_submissions,
 )
 from barrot_agent.evolution.xrp_public_ingestion import RawReceiptArchive
@@ -124,6 +124,22 @@ def test_capture_sec_edgar_stores_raw_receipts_and_filing_events(tmp_path, monke
     calls = []
     def fetcher(source_id, url):
         calls.append(source_id)
+        if source_id.startswith("sec_edgar_document_"):
+            issuer = next(
+                item for item in SEC_ISSUERS
+                if source_id.startswith(f"sec_edgar_document_{item['entity_id']}_")
+            )
+            raw = b"<html><body>Public SEC filing fixture</body></html>"
+            payload = {
+                "document_name": "primary.htm",
+                "content_type": "text/html",
+                "byte_length": len(raw),
+            }
+            return {
+                "raw_bytes": raw, "payload": payload, "received_at_utc": CAPTURED,
+                "http_date": "Wed, 18 Nov 2026 05:00:00 GMT",
+                "http_headers": {"content-type": "text/html"},
+            }
         issuer_id = source_id.rsplit("_", 1)[-1]
         issuer = next(item for item in SEC_ISSUERS if item["entity_id"] == issuer_id)
         payload = (
@@ -146,8 +162,52 @@ def test_capture_sec_edgar_stores_raw_receipts_and_filing_events(tmp_path, monke
     assert result["summary"]["submissions_source_count"] == 3
     assert result["summary"]["companyfacts_source_count"] == 3
     assert result["summary"]["filing_event_count"] == 3
-    assert result["summary"]["raw_receipt_count"] == 6
-    assert len(result["receipts"]) == 6 and len(calls) == 6
+    assert result["summary"]["primary_document_candidate_count"] == 3
+    assert result["summary"]["primary_document_capture_count"] == 3
+    assert result["summary"]["raw_receipt_count"] == 9
+    assert len(result["receipts"]) == 9 and len(calls) == 9
+    assert len(result["primary_document_events"]) == 3
     assert all(event["raw_content_sha256"] and event["receipt_id"] for event in result["filing_events"])
-    assert all(event["model_eligible"] is False for event in result["filing_events"])
+    assert all(event["primary_document_capture_status"] == "CAPTURED" for event in result["filing_events"])
+    assert all(event["raw_content_sha256"] and event["receipt_id"] for event in result["primary_document_events"])
+    assert all(event["model_eligible"] is False for event in result["filing_events"] + result["primary_document_events"])
     assert archive.verify()["verified"] is True
+
+
+def test_fetch_sec_document_rejects_unapproved_hosts_and_mismatched_accessions(monkeypatch):
+    monkeypatch.setattr(sec_edgar, "SEC_USER_AGENT", "Barrot-Agent Test contact@example.invalid")
+    source_id = "sec_edgar_document_evernorth_0001628280-26-074355"
+    with pytest.raises(SECEdgarError):
+        fetch_sec_document(source_id, "https://example.com/primary.htm")
+    with pytest.raises(SECEdgarError):
+        fetch_sec_document(
+            source_id,
+            "https://www.sec.gov/Archives/edgar/data/2092592/000162828026000001/primary.htm",
+        )
+    with pytest.raises(SECEdgarError):
+        fetch_sec_document(
+            "sec_edgar_document_unknown_0001628280-26-074355",
+            "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074355/primary.htm",
+        )
+
+
+def test_fetch_sec_document_preserves_raw_bytes_with_exact_issuer_accession_binding(monkeypatch):
+    monkeypatch.setattr(sec_edgar, "SEC_USER_AGENT", "Barrot-Agent Test contact@example.invalid")
+    url = "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074355/primary.htm"
+    class FakeResponse:
+        headers = {"Content-Type": "text/html; charset=utf-8", "Date": "Wed, 18 Nov 2026 05:00:00 GMT", "ETag": '"fixture"'}
+        def __enter__(self):
+            return self
+        def __exit__(self, exc_type, exc, tb):
+            return False
+        def geturl(self):
+            return url
+        def read(self, limit):
+            return b"<html>raw SEC fixture</html>"
+    monkeypatch.setattr(sec_edgar, "_open_sec_request", lambda request, timeout=20: FakeResponse())
+    result = fetch_sec_document("sec_edgar_document_evernorth_0001628280-26-074355", url)
+    assert result["raw_bytes"] == b"<html>raw SEC fixture</html>"
+    assert result["payload"]["document_name"] == "primary.htm"
+    assert result["payload"]["content_type"] == "text/html"
+    assert result["payload"]["byte_length"] == len(result["raw_bytes"])
+    assert result["http_headers"]["etag"] == '"fixture"'

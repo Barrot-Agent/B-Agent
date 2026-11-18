@@ -29,12 +29,12 @@ from .feature_drift import DRIFT_REPORT_RETENTION_DAYS, MONITOR_VERSION as DRIFT
 from .cftc_tff import parse_cftc_contract_status, parse_cftc_tff_report
 from .cftc_legacy import parse_cftc_legacy_futures_only_report
 from .event_timeline import EventTimelineError, build_event_timeline
-from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_json
+from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_document, fetch_sec_json
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.29"
-PARSER_VERSION = "xrp-public-market-v3.28"
+ADAPTER_VERSION = "xrp-public-market-v3.30"
+PARSER_VERSION = "xrp-public-market-v3.29"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 OKX_QUOTE_BASIS_MAX_SKEW_SECONDS = 60
@@ -5010,7 +5010,9 @@ def _response_received_at(response: Mapping[str, Any], fallback: datetime) -> da
 
 
 def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
-    if source_id.startswith("sec_edgar_"):
+    if source_id.startswith("sec_edgar_document_"):
+        response = fetch_sec_document(source_id, url)
+    elif source_id.startswith("sec_edgar_"):
         response = fetch_sec_json(source_id, url)
     elif source_id in XRPL_NODE_SOURCES:
         response = fetch_public_rpc(source_id, url)
@@ -5305,10 +5307,12 @@ def run_ingestion(
     sec_capture: dict[str, Any] = {
         "summary": {"status": "NOT_REQUESTED", "issuer_count": len(SEC_ISSUERS),
                     "submissions_source_count": 0, "companyfacts_source_count": 0,
-                    "companyfacts_requested": False, "filing_event_count": 0,
-                    "capital_fact_count": 0, "source_failure_count": 0, "raw_receipt_count": 0},
+                    "companyfacts_requested": False, "primary_document_capture_requested": False,
+                    "primary_document_candidate_count": 0, "primary_document_capture_count": 0,
+                    "filing_event_count": 0, "capital_fact_count": 0,
+                    "source_failure_count": 0, "raw_receipt_count": 0},
         "receipts": [], "failures": [], "raw_only": [],
-        "filing_events": [], "capital_facts": [],
+        "filing_events": [], "primary_document_events": [], "capital_facts": [],
         "latest_source_capture_at_utc": captured_s,
     }
 
@@ -5739,20 +5743,21 @@ def run_ingestion(
     _write_json(output / "walk_forward.json", walk_forward)
 
     sec_capital_events_payload = {
-        "schema_version": 1,
+        "schema_version": 2,
         "artifact_type": "barrot.xrp.sec_edgar_capital_event_capture",
         "captured_at_utc": captured_s,
         "data_cutoff_utc": captured_s,
         "status": sec_capture["summary"]["status"],
         "issuer_registry": list(SEC_ISSUERS),
         "filing_events": sec_capture["filing_events"],
+        "primary_document_events": sec_capture["primary_document_events"],
         "capital_facts": sec_capture["capital_facts"],
         "summary": sec_capture["summary"],
         "model_eligible": False,
         "forecast_status": "NOT_ISSUED",
         "limitations": [
-            "Submissions and companyfacts are primary regulatory records; individual filing documents are not fetched.",
-            "Custom inline-XBRL and narrative-only warrant, in-kind XRP, financing-facility and use-of-proceeds terms require filing-text review.",
+            "Submissions and companyfacts are captured as primary regulatory records; up to four latest primary documents across 8-K, 10-Q, 10-K, registration and foreign-issuer form families are raw-retained during daily/manual companyfacts captures.",
+            "Primary filing documents are preserved as research-only bytes; narrative extraction, custom inline-XBRL extensions and exhibit indexing are not automated and still require filing-text review.",
             "Gross/net basis is populated only when explicitly stated in an XBRL fact label.",
             "No XRP purchase, sale, collateral deployment or use of proceeds is inferred from financing facts.",
             "SEC observations remain research-only and model-ineligible; issuer financing is not XRP spot demand.",

@@ -12,6 +12,8 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 SEC_ALLOWED_HOSTS = frozenset({"data.sec.gov"})
+SEC_DOCUMENT_ALLOWED_HOSTS = frozenset({"www.sec.gov"})
+MAX_DOCUMENT_RESPONSE_BYTES = 10 * 1024 * 1024
 SEC_USER_AGENT = os.getenv("BARROT_SEC_USER_AGENT", "").strip()
 MAX_RECENT_FILINGS = 2000
 MAX_CAPITAL_FACTS_PER_ISSUER = 1000
@@ -121,15 +123,7 @@ def _capture_http_headers(headers: Any) -> dict[str, str]:
     return dict(sorted(captured.items()))
 
 
-def _open_sec_request(request: Request, *, timeout: int = 20):
-    return build_opener(_RejectRedirectHandler()).open(request, timeout=timeout)
-
-
-def fetch_sec_json(source_id: str, url: str) -> dict[str, Any]:
-    """Fetch only allowlisted SEC JSON endpoints with an identifying contact User-Agent."""
-    parsed = urlsplit(url)
-    if parsed.scheme != "https" or parsed.hostname not in SEC_ALLOWED_HOSTS or parsed.username is not None or parsed.password is not None or parsed.port is not None:
-        raise SECEdgarError("SEC URL is not an allowlisted public HTTPS endpoint")
+def _require_sec_user_agent() -> str:
     if (
         not SEC_USER_AGENT
         or len(SEC_USER_AGENT) > 256
@@ -140,7 +134,20 @@ def fetch_sec_json(source_id: str, url: str) -> dict[str, Any]:
         raise SECEdgarError(
             "Set the BARROT_SEC_USER_AGENT repository variable to Barrot-Agent plus a monitored project contact email; GitHub noreply addresses are not accepted."
         )
-    request = Request(url, headers={"Accept": "application/json", "User-Agent": SEC_USER_AGENT, "Cache-Control": "no-cache"})
+    return SEC_USER_AGENT
+
+
+def _open_sec_request(request: Request, *, timeout: int = 20):
+    return build_opener(_RejectRedirectHandler()).open(request, timeout=timeout)
+
+
+def fetch_sec_json(source_id: str, url: str) -> dict[str, Any]:
+    """Fetch only allowlisted SEC JSON endpoints with an identifying contact User-Agent."""
+    parsed = urlsplit(url)
+    if parsed.scheme != "https" or parsed.hostname not in SEC_ALLOWED_HOSTS or parsed.username is not None or parsed.password is not None or parsed.port is not None:
+        raise SECEdgarError("SEC URL is not an allowlisted public HTTPS endpoint")
+    user_agent = _require_sec_user_agent()
+    request = Request(url, headers={"Accept": "application/json", "User-Agent": user_agent, "Cache-Control": "no-cache"})
     try:
         with _open_sec_request(request, timeout=20) as response:
             final_url = urlsplit(response.geturl())
@@ -167,6 +174,95 @@ def fetch_sec_json(source_id: str, url: str) -> dict[str, Any]:
     if not isinstance(payload, Mapping):
         raise SECEdgarError("SEC JSON root must be an object")
     return {"raw_bytes": raw, "payload": payload, "http_date": http_date, "http_headers": headers}
+
+
+def fetch_sec_document(source_id: str, url: str) -> dict[str, Any]:
+    """Capture one issuer-matched SEC primary filing document as raw, research-only bytes."""
+    match = re.fullmatch(
+        r"sec_edgar_document_([a-z0-9]+)_([0-9]{10}-[0-9]{2}-[0-9]{6})",
+        source_id,
+    )
+    if match is None:
+        raise SECEdgarError("SEC document source identity is malformed")
+    entity_id, accession_value = match.groups()
+    issuer = next((item for item in SEC_ISSUERS if item["entity_id"] == entity_id), None)
+    if issuer is None:
+        raise SECEdgarError("SEC document source issuer is not registered")
+    accession = _accession(accession_value)
+    parsed = urlsplit(url)
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname not in SEC_DOCUMENT_ALLOWED_HOSTS
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.port is not None
+        or parsed.query
+        or parsed.fragment
+        or "%" in parsed.path
+    ):
+        raise SECEdgarError("SEC filing document URL is not an allowlisted public HTTPS endpoint")
+    expected_prefix = (
+        f"/Archives/edgar/data/{int(issuer['cik'])}/{accession.replace('-', '')}/"
+    )
+    if not parsed.path.startswith(expected_prefix):
+        raise SECEdgarError("SEC filing document path does not match the registered issuer and accession")
+    document_name = _primary_document(parsed.path[len(expected_prefix):])
+    if document_name is None:
+        raise SECEdgarError("SEC filing document name is missing")
+    user_agent = _require_sec_user_agent()
+    request = Request(
+        url,
+        headers={
+            "Accept": "text/html,application/xhtml+xml,text/plain,application/xml,text/xml",
+            "User-Agent": user_agent,
+            "Cache-Control": "no-cache",
+        },
+    )
+    try:
+        with _open_sec_request(request, timeout=20) as response:
+            final_url = urlsplit(response.geturl())
+            if (
+                final_url.scheme != "https"
+                or final_url.hostname not in SEC_DOCUMENT_ALLOWED_HOSTS
+                or final_url.username is not None
+                or final_url.password is not None
+                or final_url.port is not None
+                or final_url.path != parsed.path
+                or final_url.query
+                or final_url.fragment
+            ):
+                raise SECEdgarError("SEC filing document response escaped its exact allowlisted URL")
+            content_type = response.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
+            if content_type not in {
+                "text/html",
+                "application/xhtml+xml",
+                "text/plain",
+                "application/xml",
+                "text/xml",
+            }:
+                raise SECEdgarError("SEC filing document content type is not an allowed text document")
+            raw = response.read(MAX_DOCUMENT_RESPONSE_BYTES + 1)
+            http_date = response.headers.get("Date")
+            headers = _capture_http_headers(response.headers)
+    except SECEdgarError:
+        raise
+    except Exception as exc:
+        status = getattr(exc, "code", None)
+        if status is not None:
+            raise SECEdgarError(f"SEC filing document request failed with HTTP {status}") from None
+        raise SECEdgarError(f"SEC filing document request failed: {type(exc).__name__}") from None
+    if not raw or len(raw) > MAX_DOCUMENT_RESPONSE_BYTES:
+        raise SECEdgarError("SEC filing document is empty or exceeds the 10 MiB limit")
+    return {
+        "raw_bytes": raw,
+        "payload": {
+            "document_name": document_name,
+            "content_type": content_type,
+            "byte_length": len(raw),
+        },
+        "http_date": http_date,
+        "http_headers": headers,
+    }
 
 
 def parse_submissions(payload: Mapping[str, Any], issuer: Mapping[str, str], *, captured_at_utc: str):
@@ -338,7 +434,8 @@ def capture_sec_edgar(*, fetcher: Callable[[str, str], Mapping[str, Any]], archi
         raise SECEdgarError("captured_at must be timezone-aware")
     if not isinstance(include_companyfacts, bool):
         raise SECEdgarError("include_companyfacts must be a boolean")
-    receipts, failures, raw_only, filing_events, capital_facts = [], [], [], [], []
+    receipts, failures, raw_only, filing_events, capital_facts, primary_document_events = [], [], [], [], [], []
+    primary_document_candidate_count = 0
     latest_capture = captured_at
     submissions_count = companyfacts_count = 0
     truncated_issuers = []
@@ -411,6 +508,80 @@ def capture_sec_edgar(*, fetcher: Callable[[str, str], Mapping[str, Any]], archi
             events, filings_by_accession = parsed_submissions
             filing_events.extend(events)
             submissions_count += 1
+        if include_companyfacts and parsed_submissions is not None:
+            selected_documents = []
+            for family in ("8-K", "10-Q", "10-K", "S-1", "F-1", "424B5", "424B4", "424B3", "6-K", "20-F"):
+                candidate = next(
+                    (
+                        event for event in events
+                        if event.get("form", "").split("/", 1)[0] == family
+                        and event.get("primary_document")
+                        and event.get("primary_document_url")
+                    ),
+                    None,
+                )
+                if candidate is not None:
+                    selected_documents.append(candidate)
+                if len(selected_documents) >= 4:
+                    break
+            primary_document_candidate_count += len(selected_documents)
+            for filing in selected_documents:
+                document_source_id = (
+                    f"sec_edgar_document_{issuer['entity_id']}_{filing['accession_number']}"
+                )
+
+                def document_parser(payload, received, issuer=issuer, filing=filing):
+                    document_name = payload.get("document_name")
+                    content_type = payload.get("content_type")
+                    byte_length = payload.get("byte_length")
+                    if document_name != filing["primary_document"]:
+                        raise SECEdgarError("SEC document name does not match its submission record")
+                    if content_type not in {
+                        "text/html", "application/xhtml+xml", "text/plain",
+                        "application/xml", "text/xml",
+                    }:
+                        raise SECEdgarError("SEC document content type is not an allowed text document")
+                    if isinstance(byte_length, bool) or not isinstance(byte_length, int) or byte_length <= 0:
+                        raise SECEdgarError("SEC document byte length is invalid")
+                    event = {
+                        "event_type": "sec_primary_filing_document_captured",
+                        "entity_id": issuer["entity_id"],
+                        "entity_name": issuer["legal_name"],
+                        "cik": issuer["cik"],
+                        "form": filing["form"],
+                        "accession_number": filing["accession_number"],
+                        "filing_date": filing["filing_date"],
+                        "report_date": filing.get("report_date"),
+                        "event_date": filing.get("event_date"),
+                        "event_date_precision": filing.get("event_date_precision", "date_only"),
+                        "known_at_utc": filing["known_at_utc"],
+                        "known_at_basis": filing["known_at_basis"],
+                        "document_name": document_name,
+                        "document_url": filing["primary_document_url"],
+                        "document_content_type": content_type,
+                        "document_byte_length": byte_length,
+                        "model_eligible": False,
+                        "interpretation_limit": (
+                            "Raw SEC primary filing document only; narrative capital, warrant, in-kind XRP, "
+                            "facility and use-of-proceeds terms require separate evidence review."
+                        ),
+                    }
+                    source_as_of = filing.get("acceptance_datetime_utc")
+                    return [event], source_as_of
+
+                captured_documents = capture_endpoint(
+                    document_source_id,
+                    filing["primary_document_url"],
+                    document_parser,
+                )
+                if captured_documents:
+                    document_event = captured_documents[0]
+                    primary_document_events.append(document_event)
+                    filing["primary_document_capture_status"] = "CAPTURED"
+                    filing["primary_document_receipt_id"] = document_event["receipt_id"]
+                    filing["primary_document_sha256"] = document_event["raw_content_sha256"]
+                else:
+                    filing["primary_document_capture_status"] = "FAILED"
         if include_companyfacts:
             companyfacts_id = f"sec_edgar_companyfacts_{issuer['entity_id']}"
             companyfacts_url = f"https://data.sec.gov/api/xbrl/companyfacts/CIK{issuer['cik']}.json"
@@ -441,6 +612,9 @@ def capture_sec_edgar(*, fetcher: Callable[[str, str], Mapping[str, Any]], archi
         "submissions_source_count": submissions_count,
         "companyfacts_source_count": companyfacts_count,
         "companyfacts_requested": include_companyfacts,
+        "primary_document_capture_requested": include_companyfacts,
+        "primary_document_candidate_count": primary_document_candidate_count,
+        "primary_document_capture_count": len(primary_document_events),
         "contact_identity_configured": bool(SEC_USER_AGENT),
         "filing_event_count": len(filing_events), "capital_fact_count": len(capital_facts),
         "capital_fact_truncated_issuers": truncated_issuers,
@@ -455,5 +629,6 @@ def capture_sec_edgar(*, fetcher: Callable[[str, str], Mapping[str, Any]], archi
         ],
     }
     return {"summary": summary, "receipts": receipts, "failures": failures, "raw_only": raw_only,
-            "filing_events": filing_events, "capital_facts": capital_facts,
+            "filing_events": filing_events, "primary_document_events": primary_document_events,
+            "capital_facts": capital_facts,
             "latest_source_capture_at_utc": _iso(latest_capture)}
