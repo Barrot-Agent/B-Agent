@@ -8259,3 +8259,54 @@ Ripple's Oct 28 corporate release claims a path to a $900M annualized product-re
 ### Updated interpretation
 
 The institutional network is expanding across custody, stablecoin distribution, treasury, trade finance, cross-border payments and tokenized assets. The strongest disconfirming point remains asset/rail substitution: RLUSD and JPYSC can settle on multiple chains or inside custodial account systems; collateral integration announcements can remain conditional; custody does not imply holdings or flow; and SBI's parallel stablecoin initiatives are not XRP-specific. Keep relationship edges typed as LIVE, PILOT, ANNOUNCED, MOU, PLANNED/CONDITIONAL or UNVERIFIED. No new directional forecast is warranted.
+
+
+---
+
+## Run 12 — exact-head verification and fresh XRP evidence (2026-11-18)
+
+### Repository state and exact-head CI
+
+- Main remains `b5b22ea58fa069792b0728d47cb2414855234a4a`.
+- PR #1663 head remains `3d55d68b523d11e2fa7a13f6057f717a77304d06`; base is main; compare reports 256 commits ahead, zero behind.
+- PR #1663 remains open and draft, with 1,408 changed files, including 67 changed workflow files. No branch was created and no new PR was opened.
+- **Exact-head push CI passed:** [run 44215373345](https://github.com/Barrot-Agent/B-Agent/actions/runs/44215373345). The separate **Full repository test suite** job (ID 134503768172) completed successfully after installing complete development dependencies and running every repository test with inclusive package coverage.
+- Full suite: **4,257 passed, 1 skipped, 11 warnings, 19 subtests passed in 156.12 seconds**. Inclusive coverage **68.13%** against a 62% gate; legacy-core coverage **77%** against a 70% floor.
+- Wheel build and installed-wheel verification passed; the installed wheel loaded Barrot V3, the primary XRP mission and canonical data assets. Pages build was validation only.
+- Dependency audits: push [44215373363](https://github.com/Barrot-Agent/B-Agent/actions/runs/44215373363) and PR [44215381473](https://github.com/Barrot-Agent/B-Agent/actions/runs/44215381473) passed across all six manifests, with no known vulnerabilities reported.
+- Money audit [44215381957](https://github.com/Barrot-Agent/B-Agent/actions/runs/44215381957): 14 passed.
+- Fail-closed gates: push [44215373317](https://github.com/Barrot-Agent/B-Agent/actions/runs/44215373317) and PR [44215381567](https://github.com/Barrot-Agent/B-Agent/actions/runs/44215381567) passed.
+- PR CI [44215381687](https://github.com/Barrot-Agent/B-Agent/actions/runs/44215381687) succeeded; because the PR is draft, its Tests and Full repository test suite conditions were skipped. The exact-head push run above is the evidence used for the full-suite claim.
+- Main's scheduled Cross Analysis [44219004222](https://github.com/Barrot-Agent/B-Agent/actions/runs/44219004222) completed successfully on main SHA `b5b22ea`; it is not a main-branch full-suite run and does not indicate that the XRP ingestion workflow is active on main.
+
+### Fresh public-market observations — timestamps and disagreement retained
+
+- **Perpetual open interest:** Liqwall reports **$977M** at 23:42 UTC on Nov 17, down 2.4% over 24 hours, with a 30-day range of $968M–$1.49B ([Liqwall](https://liqwall.com/open-interest/xrp)). TradRadar reports **$1.31B** across seven exchanges at 15:35 UTC on Nov 17, down 0.98% over 24 hours; its OI-weighted funding is +0.0011% per eight hours, 24-hour liquidations are at least $1.91M (about $933K longs / $982K shorts), and 76% of its reported accounts are long ([TradRadar](https://tradradar.io/markets/xrp)). The $333M difference is material. Coverage, exchange universe, capture time and aggregation differ; do not average these values or treat account ratios as notional exposure.
+- **Spot quote context:** TradRadar's 15:35 UTC quote was $0.9659; CryptoTuts reported $0.9755 using a SoSoValue quote retrieved at 14:40 UTC ([CryptoTuts](https://cryptotuts.co/xrp/etf)). Treat these as timestamped snapshots, not a synchronized consolidated price.
+- **Exchange-wallet attribution:** XRP Insights reports 22.20B XRP in 707 publicly labeled wallets across 24 exchanges at 08:00 UTC Nov 17. On the same-wallet universe, balances declined 139.2M XRP over seven days (−0.62%) and 374.7M over 30 days (−1.70%) ([method and snapshot](https://xrp-insights.com/exchange-balances)). This is not tradable float: the total includes cold wallets and 481.8M XRP of wrapped-asset reserves (Binance-Peg XRP and cbXRP backing), and wallet balance changes cannot distinguish customer withdrawals from exchange wallet reorganization or untracked transfers.
+- **ETF flow disagreement for Nov 16:** CryptoKeyhole reports a partial **−5.197M XRP** from only two of four daily-reporting funds and says Bitwise and Franklin files were still pending ([CryptoKeyhole](https://cryptokeyhole.com/etf-flows/xrp/)). XRP Insights reports **+158,148 XRP** for six spot funds plus BITW, with GXRP flow excluded from the flow calculation ([XRP Insights data](https://xrp-insights.com/data)). ByKaranteli reports $0 for Nov 16 as provisional, while its five-day flow is −$8.7M ([ByKaranteli](https://bykaranteli.com/etf/xrp)). These are different fund universes, publication cutoffs and settlement states. No aggregate is admitted until issuer-level files are aligned by fund, date, unit and vintage.
+- **Order-book depth:** Fuelmaps exposed a six-venue spot heatmap refreshed at 18:00 UTC Nov 17, but the retrieved public excerpt did not expose XRP-specific bid/ask depth values ([Fuelmaps](https://fuelmaps.io/order-book/)). No numerical XRP depth feature is admitted from that excerpt.
+- **Macro context:** Federal Reserve H.15 dated Nov 17 reports an effective federal funds rate of **3.88%** for Nov 16 ([Federal Reserve H.15](https://www.federalreserve.gov/releases//h15/)). This is a macro context variable, not a causal XRP signal by itself.
+
+### Identity and exact-phrase follow-up
+
+- Exact searches for `"SBIC, ChatGPT SBIC"` returned official Japanese SBIC training pages advertising ChatGPT/AI education: Tokyo SME Investment & Development's June 2025 generative-AI/ChatGPT course and an SBIC West Japan October 2024 generative-AI seminar. These verify training activity, not an OpenAI partnership, ownership link or XRP relationship ([Tokyo SBIC](https://www.sbic.co.jp/training/20250612co/); [SBIC West Japan seminar PDF](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf)).
+- Exact `"ASK Coin"` and `"actual capital"` searches did not produce a new independently verified XRP/SBIC connection. Generic bank regulatory-capital tables and general crypto explanations are false positives; do not attach them to the XRP research graph.
+- Exact YouTube searches for Camilla/Kamilah Stevenson did not surface a candidate channel with identity linkage to the researched person. The unrelated SBiC Connect channel is not a match. No videos are attributed without identity verification.
+
+### Readiness and governance
+
+- Prediction readiness remains unchanged from the last durable dataset snapshot: 140 curated events, 107 scenarios, 31 source receipts (19 payload-backed and 12 digest-only), 82 eligible feature records, 378 excluded feature records, 20 source failures, **zero model-eligible events**, and **zero directional forecasts**. The scheduled XRP ingestion workflow is not on main; no scheduled production ingestion is claimed.
+- Nine-platform map remains: current ChatGPT-to-GitHub connector path verified; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested for current authentication and data flow. No external dispatch or quorum is claimed.
+- Current open PR inventory remains nine: #1663 (sole consolidated integration); #1541 (five overlapping MMI paths; superseded in content by the more extensive integration version but not an exact duplicate); #1450/#1440 (stacked archive-repair chain); #1460 (unique institutional/multirail research); #1436 (unique Binance theft/freeze research); #1437 (unique ledger repair); #1353 (unique ledger sharding); #1265 (unique ledger index). Preserve all source PRs; do not bulk-close.
+- Main branch metadata marks main protected, but returns an empty required-status-check context list. The detailed branch-protection endpoint remains inaccessible (403); the only repository ruleset, “Fall Back,” is disabled. PR #1663 remains draft with zero formal reviews and zero review threads; CODEOWNERS remains self-only. Required-check enforcement and independent approval are not established.
+- The full review of all 67 changed workflow files and their transitive scripts remains incomplete. Existing targeted review is not a substitute. Automatic Pages publication remains an unresolved merge side effect.
+
+**Decision: NO MERGE.** Exact-head full-suite, dependency, money and fail-closed verification now pass. The remaining blockers are independent review, verifiable required-check/branch-protection enforcement, full workflow/transitive-script security review, and Pages side-effect resolution. No main write, merge, source-PR closure, deployment, external model dispatch, paper trade, funds transfer or real-money action was performed.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** Scheduled public ingestion, receipt-backed point-in-time features, event/scenario engine, leakage-safe walk-forward evaluation, calibration and drift monitoring remain the intended architecture.
+- **EXECUTED:** Main and integration state inspected; all nine open PRs re-inventoried; current PR ancestry/diff size rechecked; exact-head CI, full-suite, dependency, money and fail-closed runs inspected; fresh public XRP market and identity searches completed.
+- **VERIFIED:** Exact-head full-suite and security workflow outcomes above; current PR head/base SHAs; current open-PR count; source-specific market observations and disagreements.
+- **NOT VERIFIED:** Scheduled main ingestion, immutable external timestamp anchoring/WORM receipts, reconstructed point-in-time feature store, model eligibility, out-of-sample predictive edge, nine-platform coordination, independent review and production deployment.
