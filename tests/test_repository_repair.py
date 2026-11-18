@@ -84,7 +84,7 @@ def git(cwd: Path, *args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
-def init_repo(tmp_path: Path, *, origin: bool = False, gitlab: bool = False) -> tuple[Path, str]:
+def init_repo(tmp_path: Path, *, origin: bool = False) -> tuple[Path, str):
     workspace = tmp_path / "repo"
     workspace.mkdir()
     (workspace / "barrot_agent").mkdir()
@@ -106,11 +106,6 @@ def init_repo(tmp_path: Path, *, origin: bool = False, gitlab: bool = False) -> 
         remote = tmp_path / "origin.git"
         assert git(tmp_path, "init", "--bare", str(remote)).returncode == 0
         assert git(workspace, "remote", "add", "origin", str(remote)).returncode == 0
-    if gitlab:
-        remote = tmp_path / "gitlab.git"
-        assert git(tmp_path, "init", "--bare", str(remote)).returncode == 0
-        assert git(workspace, "remote", "add", "gitlab", str(remote)).returncode == 0
-
     return workspace, "barrot_agent/target.py"
 
 
@@ -518,26 +513,13 @@ def test_remote_sha_mismatch_blocks_complete(tmp_path: Path, monkeypatch: pytest
     assert cycle.commit.remote_verified is False
 
 
-def test_remote_verification_failure_is_recorded(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    workspace, path = init_repo(tmp_path, origin=True, gitlab=True)
+def test_repository_repair_synchronizes_only_to_origin(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path, origin=True)
+    backup = tmp_path / "backup.git"
+    assert git(tmp_path, "init", "--bare", str(backup)).returncode == 0
+    assert git(workspace, "remote", "add", "backup", str(backup)).returncode == 0
+
     controller = make_controller(workspace, FakeBrain(repair_payload(path)))
-    original = controller.remote_verifier.push_and_verify
-
-    def mixed(remote: str, branch: str, sha: str) -> RemoteSyncEvidence:
-        if remote == "gitlab":
-            return RemoteSyncEvidence(
-                remote=remote,
-                applicable=True,
-                attempted=True,
-                pushed=True,
-                verified=False,
-                branch=branch,
-                sha=sha,
-                reason="gitlab mismatch",
-            )
-        return original(remote, branch, sha)
-
-    monkeypatch.setattr(controller.remote_verifier, "push_and_verify", mixed)
     cycle = controller.run(
         task_title="Repair target",
         task_body="Fix the reproduced defect in barrot_agent/target.py",
@@ -547,10 +529,9 @@ def test_remote_verification_failure_is_recorded(tmp_path: Path, monkeypatch: py
         audit_context={"inventory": "barrot_agent/target.py"},
     )
 
-    gitlab_sync = next(item for item in cycle.sync if item.remote == "gitlab")
-    assert cycle.status == "failed"
-    assert gitlab_sync.applicable is True
-    assert gitlab_sync.verified is False
+    assert cycle.status == "complete"
+    assert [item.remote for item in cycle.sync] == ["origin"]
+    assert cycle.remote_sync_verified is True
 
 
 def test_original_defect_remaining_blocks_complete(tmp_path: Path) -> None:
