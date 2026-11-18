@@ -653,3 +653,42 @@ Remaining blockers:
 ### Next concrete action
 
 Verify the push-triggered full repository suite and dependency audit on the new handoff commit. Then continue the workflow/transitive-script security audit and resolve effective branch protection/independent review. Keep PR #1663 as the only consolidated V3/XRP integration path; preserve every unique research and repair PR. Do not merge, deploy, dispatch external actions, paper-trade or issue a directional forecast until its specific gates pass.
+
+
+---
+
+## Run 15 verification closure — exact code/test head 1c3e76d5
+
+**VERIFIED — full repository CI on exact code/test head 1c3e76d5c212f633c9d87bec9ceeb76bdc0b8510.**
+
+- [CI push run 44312893239](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312893239): all three jobs passed — core Tests, Full repository test suite, and GitHub Pages validation-only.
+- The full suite collected 4,274 items: 4,273 passed, 1 skipped, 0 failed, 19 subtests passed, 11 warnings, in 148.77 seconds.
+- Inclusive package coverage: 68.14%, above the required 62% floor.
+- Legacy core-package coverage: 77%.
+- Wheel build and installed-wheel verification passed; the packaged Barrot V3 and XRP primary mission loaded.
+- [Dependency Audit, push 44312893325](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312893325): passed.
+- [Dependency Audit, PR 44312903012](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312903012): passed.
+- [Money audit 44312903034](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312903034): passed.
+- [Fail-closed gate, PR 44312903004](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312903004): passed.
+- [Fail-closed gate, push 44312892989](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312892989): passed.
+- PR-event CI [44312903323](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312903323) also completed successfully; its integration-PR test jobs were skipped by the workflow condition. The push run above is the full-suite evidence.
+
+The preceding handoff synchronization commit 469068e25b4ce004b6298a2a7a14223f7ca5d8db was followed by this exact code/test head. The current handoff-only update is documentation-only; it does not change code, tests, workflows or data. Its resulting commit must still be checked for the expected push CI run before any merge-readiness claim.
+
+### Workflow security review progress
+
+All 67 workflow files changed by PR #1663 were inspected for trigger type, permissions, write scopes, external calls, artifact publication and execution gates. This is a workflow-level review, not a complete transitive review of every invoked script or third-party action.
+
+Findings:
+- The previous high-risk autonomous/credentialed workflows are quarantined with permissions: {} and jobs conditioned false: Barrot Agent, Ask Barrot, audio ingest, speech generation, sync, free image generation, Cloudflare diagnostics, self-deployment, force Space deploy, Databricks token rotation, scheduler tick, merge queue, Databricks bundle, self-benchmark, signal ledger, subagent matrix/spawn, task allocator, Groq-chain and semantic-memory tests, WebMCP live sandbox, and lyric generation.
+- The XRP ingestion workflow is read-only, path-scoped on integration branches, scheduled only on main, uses credential-free checkout and SHA-pinned actions, and stores only Actions artifacts/cache. No manual backfill was executed.
+- Databricks import, Space restart, Hugging Face model upload, Cloudflare A2A deployment, and self-hosted brain deployment are manual or quarantined. The active manual paths require explicit confirmation and exact main SHA; secret rotation has a separate confirmation. None was dispatched.
+- Coinbase paper-trader is manual and artifact-only, configured for BTC-USD rather than XRP. It was not dispatched.
+- Groq-backed research/content workflows are manual, require public/authorized data confirmation and exact main SHA, and preserve outputs as artifacts rather than committing to main.
+- The WebMCP monetization workflow is workflow_run-triggered but read-only; it downloads and uploads artifacts without repository writes.
+- Hover Bike and Riemann scheduled workflows are read-only artifact producers.
+- Release workflow is tag-triggered on v*.*.* and has contents:write to create a GitHub Release. No release tag was pushed and no release was created.
+- Paid issue publish remains the one observed automatic main writer: successful hunter workflow_run → contents:write → two-file main commit. The 13c60af main commit and its Pages side effect prove this path executes. It remains explicitly documented as a workflow side effect requiring review.
+- Full transitive inspection of scripts called by the 67 workflows, action supply-chain review and effective repository branch-protection/approval verification remain incomplete.
+
+**Merge status remains NO MERGE.** PR #1663 is still draft with zero independent formal reviews. Branch protection details remain inaccessible (403); the only visible fallback ruleset is disabled; CODEOWNERS remains self-only. Main CI has not been observed on current main SHA 13c60af. Forecast status remains NOT_ISSUED.
