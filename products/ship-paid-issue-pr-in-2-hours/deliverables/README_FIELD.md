@@ -38,6 +38,8 @@ templates/timebox_card.md      the six phases and the stop rules, printable
 - The effort estimate is yours. A gate cannot detect optimism.
 - No tool can see a CLA, a hidden reviewer, or a maintainer on leave.
 - The pack does not find bounties, open PRs, or promise payment.
+- No validator ships in this tier. You check that the issue URL exists and that
+  the issue is real; the forms cannot do it for you.
 
 ## License
 

@@ -46,7 +46,7 @@ section 5.
 | 4 Capability Check | DONE | `CAPABILITY_LEDGER.md`: 10 PROPOSED, 0 PROVEN |
 | 5 Spec | DONE | `PRODUCT_SPECIFICATION.md` FR-1 to FR-14 |
 | 6 Production | DONE | 6 templates, 4 modules, CLI, examples, 76 tests |
-| 7 Independent Verification | PENDING | Separate verifier required; report path `evaluation/INDEPENDENT_VERIFICATION.md` |
+| 7 Independent Verification | DONE (PASS WITH CAVEATS) | Separate agent verifier; `evaluation/INDEPENDENT_VERIFICATION.md`; stale-log caveat fixed after the report |
 | 8 Packaging | DONE (manifest) | `DELIVERY_REQUIREMENTS.md`; no archive built because nothing is for sale |
 | 9 Commercial Prep | DONE (staged) | Sales copy, pricing, marketing; no publish |
 | 10 Human Authorization | BLOCKED | Waiting for Sean |

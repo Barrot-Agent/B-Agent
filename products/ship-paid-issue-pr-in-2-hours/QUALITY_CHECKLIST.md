@@ -12,7 +12,7 @@ Legend: `[x]` verified, `[ ]` not verified, **PENDING** means not done.
 - [x] No merge to `main`
 - [x] No store listing, publish, price change, or transaction
 - [x] No financial, legal, or tax advice in the product
-- [x] No secrets or buyer data in the product tree — `verify_release.py` secret scan, 54 files, 0 findings
+- [x] No secrets or buyer data in the product tree — `verify_release.py` secret scan, 55 files, 0 findings
 
 ## B. Content
 
@@ -89,8 +89,8 @@ Legend: `[x]` verified, `[ ]` not verified, **PENDING** means not done.
 ## I. Verification and authorization
 
 - [x] Builder-run automated verification complete
-- [ ] Independent verification by a separate agent or human — **PENDING**
-- [ ] Verification report signed with the verifier's identity — **PENDING**
+- [x] Independent verification by a separate agent — **PASS WITH CAVEATS**
+- [x] Verification report signed with the verifier's identity — `evaluation/INDEPENDENT_VERIFICATION.md`
 - [ ] Explicit written authorization from Sean to publish — **PENDING**
 
 ## J. Deliberately not done
@@ -117,8 +117,8 @@ The gate must exit 0 before a human is asked to authorize publication.
 |---|---|---|---|
 | Technical Development (builder) | Barrot | automated checks pass | 2026-11-18 |
 | QA | Barrot | 76 tests, negative controls pass | 2026-11-18 |
-| Independent Verification | — | **PENDING** | — |
+| Independent Verification | OpenCode subagent | **PASS WITH CAVEATS** | 2026-11-18 |
 | Human authorization | Sean | **PENDING** | — |
 
-Two signatures are missing. The product is not ready to publish until they are
-present, regardless of how many boxes above are checked.
+One signature is missing. The product is not ready to publish until Sean signs,
+regardless of how many boxes above are checked.

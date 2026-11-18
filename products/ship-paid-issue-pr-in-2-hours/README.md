@@ -1,7 +1,8 @@
 # Ship a Paid-Issue PR in 2 Hours — GitHub Template Pack
 
 **Status: STAGED. Not published. Not for sale. Demand not proven.**
-Branch `phase1/digital-downloads-paid-issue-pr`. Awaiting human authorization.
+Branch `phase1/digital-downloads-paid-issue-pr`. Independently verified
+**PASS WITH CAVEATS**; awaiting human authorization.
 
 A decision layer for paid open source work: which issues are worth attempting,
 what done means, how to prove it, and how to stop at 120 minutes.
@@ -106,5 +107,8 @@ not started. The ten named components (PydanticAI, LiteLLM, Phoenix, Promptfoo,
 Guardrails AI, Mem0/Qdrant, OpenPipe, Argilla, KitOps, Composio) are all
 PROPOSED, none Active; see `CAPABILITY_LEDGER.md`.
 
-No merge to `main`, no publish, no price change, no transaction. The next action
-is independent verification, then human authorization.
+No merge to `main`, no publish, no price change, no transaction. Independent
+verification is complete: **PASS WITH CAVEATS**
+(`evaluation/INDEPENDENT_VERIFICATION.md`). Its one blocking caveat, a stale
+gate log, was regenerated after the report. The next action is human
+authorization.

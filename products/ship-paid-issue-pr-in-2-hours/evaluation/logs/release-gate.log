@@ -1,10 +1,10 @@
 release gate: ship-paid-issue-pr-in-2-hours
-[PASS] required files: 38/38 present
+[PASS] required files: 39/39 present
 [PASS] capability ledger: 10 PROPOSED, 0 PROVEN/ACTIVE
-[PASS] test suite: Ran 74 tests, exit 0
+[PASS] test suite: Ran 76 tests, exit 0
 [PASS] flake8: clean
 [PASS] marketing claims: 4 files, 0 banned phrases
-[PASS] secret scan: 50 files, 0 findings
+[PASS] secret scan: 55 files, 0 findings
 [PASS] version: 1.0.0 in package, changelog match=True
 [PASS] pricing arithmetic: net direct {9: 7.6, 19: 16.6, 39: 34.6}
 [PASS] test count consistency: no stale '73 tests'

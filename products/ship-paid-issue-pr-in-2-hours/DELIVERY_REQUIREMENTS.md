@@ -178,7 +178,7 @@ All must be cleared by a human before publication:
 - [ ] Test purchase on the live store, including refund path
 - [ ] Zip contents verified against section 2, not against a glob
 - [ ] `verify_release.py` exits 0
-- [ ] Independent verification report signed
+- [x] Independent verification report signed (PASS WITH CAVEATS; `evaluation/INDEPENDENT_VERIFICATION.md`)
 - [ ] Explicit written authorization from Sean
 
 ## 11. Privacy

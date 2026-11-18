@@ -2,7 +2,9 @@
 
 Run date: 2026-11-18. Machine: Linux, Python 3.13.5, standard library only.
 Status: **PASS** for the automated suite and the release gate. Independent
-verification is **PENDING** and is not claimed.
+verification by a separate agent is **PASS WITH CAVEATS**; its one blocking
+caveat, a stale gate log, was regenerated after the report. See
+`evaluation/INDEPENDENT_VERIFICATION.md`.
 
 The raw verbose log is included at `evaluation/logs/tests-verbose.log`.
 
@@ -139,7 +141,7 @@ release gate: ship-paid-issue-pr-in-2-hours
 [PASS] test suite: Ran 76 tests, exit 0
 [PASS] flake8: clean
 [PASS] marketing claims: 4 files, 0 banned phrases
-[PASS] secret scan: 54 files, 0 findings
+[PASS] secret scan: 55 files, 0 findings
 [PASS] version: 1.0.0 in package, changelog match=True
 [PASS] pricing arithmetic: net direct {9: 7.6, 19: 16.6, 39: 34.6}
 [PASS] test count consistency: no stale '73 tests'
@@ -160,8 +162,10 @@ RESULT: PASS (9 checks, 0 failed)
   `PRODUCT_SPECIFICATION.md` section 5. A coverage percentage is not claimed.
 - **No load or performance test.** The suite finishes in under a second on this
   machine; that is an observation, not a benchmark.
-- **No independent verification yet.** The builder ran these tests. Stage 7
-  requires a separate verifier; see `PRODUCTION_WORKFLOW.md` section 5.
+- **Independent verification is by an agent, not a human.** A separate
+  OpenCode subagent re-ran the tests and audited the claims; it is not a legal,
+  security, or buyer acceptance review. See
+  `PRODUCTION_WORKFLOW.md` section 5 and the report.
 
 ## 7. Verdict
 
@@ -169,4 +173,6 @@ Automated verification: PASS. The product is functional, the gates reject the
 cases they claim to reject, and the documented numbers match the
 artifacts.
 
-Independent verification: PENDING. This is the honest state, not a formality.
+Independent verification: **PASS WITH CAVEATS** by a separate agent. The caveat
+was a stale captured gate log, regenerated after the report; no product claim
+was left unverified.

@@ -135,6 +135,22 @@ secret scan 54 files, 0 findings. The two new tests are
 
 ---
 
+## 2026-11-18 — independent verification round 1 re-check
+
+**What changed.** The round-1 verifier re-checked all ten findings at
+`b4515d42e`. Nine were fixed; URL existence was documented as an offline limit.
+The one remaining caveat was the captured `release-gate.log`, which still showed
+the old counts.
+
+**Why it is better.** The gate log now matches the live gate: 39/39 files,
+76 tests, 55 scanned files.
+
+**Proof.** `RESULT: PASS (9 checks, 0 failed)` in
+`evaluation/logs/release-gate.log`; report at
+`evaluation/INDEPENDENT_VERIFICATION.md` (PASS WITH CAVEATS).
+
+---
+
 ## Remaining known issues
 
 1. **The effort estimate is the operator's.** The tool cannot detect optimism.
@@ -147,7 +163,9 @@ secret scan 54 files, 0 findings. The two new tests are
    candidate for 1.1, not a Phase 1 requirement.
 5. **Examples are snapshots.** The timing inside `examples/PR_BODY.md` is from one
    run. The test count is the check; the time is not.
-6. **No independent verification.** Builder-run tests only. Stage 7 is pending.
+6. **Independent verification is agent-run, not human.** One separate OpenCode
+   subagent verified the product (PASS WITH CAVEATS). It is not a legal, security,
+   or buyer acceptance review, and it must be repeated after any material change.
 7. **Windows and macOS untested.** Path handling is `os.path`, but that is not
    evidence; it is an untested assumption.
 8. **The licence has two intentional blanks.** Governing law and support email.
