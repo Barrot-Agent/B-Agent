@@ -447,3 +447,24 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   (9/9 PASS); publication gate exits 1 by design (status=STAGING_ONLY).
 - Mechanical rule: a staging authorization never upgrades to publication
   authorization. Only a separate written message from Sean does that.
+
+## 2026-11-18 — PAPER TRADING SANDBOX (permanent mode)
+- Sean assigned role "Barrot Trading Sandbox". PAPER ONLY, no real money, ever.
+  No wallet, no seed phrase, no exchange login, no real key. Never ask for one.
+- Files: `SANDBOX_TRADING.md`, `PAPER_TRADES.csv`,
+  `barrot_agent/trading/paper_sandbox.py`, `scripts/paper_trade.py`,
+  `tests/test_paper_sandbox.py`.
+- Balance 10,000 USDT fake. Rules enforced in code: risk <= 1% per trade, >= 2R,
+  stop always and on the correct side, max 3 trades/day, notional <= balance
+  (no leverage; BARROT-ADDED), HIGH_IMPACT news blocks, contract verdict must be
+  PASS or N/A_NATIVE, unknown input = reject.
+- Abort path: exchange credentials in env -> rc=2 before any evaluation.
+  Proven: CSV hash unchanged under a fake BINANCE_API_KEY.
+- No-network proof: AST test fails if the engine imports socket/ssl/http/urllib/
+  requests/aiohttp/httpx/websocket/ccxt/web3. grep = 0.
+- First run: 3 fixtures, 2 accepted (BTC, SOL), 1 rejected (ETH 1.5R). 0 closed
+  trades, so no win rate or edge exists. Every price is SIMULATED_NO_FEED.
+- Do not mix this with `web/paper_trading_state.json` / `scripts/coinbase_paper_trader.py`:
+  those are a different, disconnected system with a corrupt book (recorded earlier).
+- Fact correction for future sessions: Solana is an L1, not an Ethereum L2.
+- 22 tests pass, flake8 clean.

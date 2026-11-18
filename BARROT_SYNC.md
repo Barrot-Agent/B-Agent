@@ -1032,3 +1032,23 @@
 - STATUS: STAGING ONLY. Blockers left: lawyer review, checkout/refund test,
   zip + checksums, explicit publication authorization.
 - Next: lawyer review and the live checkout/refund test. No zip, no publish.
+
+## 2026-11-18 — Paper trading sandbox (no real money, no network)
+- New: `SANDBOX_TRADING.md` — PAPER ONLY contract, transmuted 4-domain learning
+  plan, contract red-flag checklist, sizing rules, 3 setups, loop, 20-trade report.
+- New: `barrot_agent/trading/paper_sandbox.py` — risk gate and sizing only. No
+  network import, no client, no order path, no key handling.
+- New: `scripts/paper_trade.py` — `demo` writes PAPER_TRADES.csv, `report`
+  summarises. Aborts with rc=2 if an exchange credential is present.
+- New: `tests/test_paper_sandbox.py` — 22 tests: 1% cap, 2R floor, stop required,
+  3/day cap, no leverage, news block, contract-verdict block, NaN reject,
+  live-key detection, no-network-import AST check, CSV round trip, report maths.
+- New: `PAPER_TRADES.csv` — 3 simulated evaluations, 2 accepted, 1 rejected
+  (ETH 1.5R negative control). Balance 10,000 USDT fake; 0 closed trades.
+- Proof: 22/22 pass; flake8 clean; abort path rc=2 and CSV hash unchanged;
+  network-symbol grep 0. Staging/paper only: no order, no wallet, no exchange.
+- Correction to the brief recorded in the doc: Solana is an L1, not an Ethereum L2.
+- Prices are SIMULATED_NO_FEED. No market data was ingested and no edge is claimed.
+- Not wired: any live feed, any contract audit run, 20-trade report on real data.
+- Next: Sean supplies chart data or approves a dated feed; then the loop runs on
+  provenance-tagged prices. No real-money path will be added.
