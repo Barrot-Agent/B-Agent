@@ -1312,3 +1312,52 @@ Only ChatGPT-to-GitHub is verified. Claude, Grok, Gemini, Copilot, Codex, Huggin
 **Disposition: NO MERGE.** Keep #1663 draft until the repair head passes the complete suite and exact-head security checks, independent review and effective branch-protection requirements are resolved, and the automatic main writer and transitive workflow/script review are addressed. Main remains unchanged. No deployment, secret rotation, Space restart, Kaggle submission, Databricks write, Hugging Face upload, paper trade, funds transfer or real-money action occurred.
 
 **Next concrete action:** Verify the repair commit's exact-head full repository suite; then continue independent workflow/script review and governance remediation without creating another integration PR.
+
+
+## Run 21 — exact-head full-suite completion, stale snapshot correction and workflow-run provenance hardening
+
+**Evidence capture:** 2026-11-18T17:07:29.601Z. **Repository:** `Barrot-Agent/B-Agent`. **Main SHA:** `13c60af7079700a38b4226b9110d9c9377af7695` (unchanged at inspection). **Inspected integration code head:** `1ebfdfbe26d6c6d6b11c14d605548a5f79389184` on `integration/xrp-v3-mainline-successor-20261115T2101Z`; PR #1663 remains open/draft. Compare against main: 305 commits ahead, 0 behind. PR: 1,428 changed files, 513,823 additions, 6,522 deletions, 67 changed workflow files. Complete tree: main 1,737 entries; integration 2,979 entries (85 workflow files, 503 test-named files, 1,137 XRP-named paths).
+
+### Exact-head CI — inspected head `1ebfdfb`
+
+- Push full-suite run [44345171052](https://github.com/Barrot-Agent/B-Agent/actions/runs/44345171052): **4,274 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests passed** in 185.39 seconds; inclusive coverage **68.14%**; the 70% legacy-core coverage floor passed; wheel build and installed-package verification loaded Barrot V3, the XRP mission and canonical assets.
+- Push dependency audit [44345171864](https://github.com/Barrot-Agent/B-Agent/actions/runs/44345171864): passed across six manifests; no known vulnerabilities reported.
+- Push fail-closed gate [44345171064](https://github.com/Barrot-Agent/B-Agent/actions/runs/44345171064): passed; automatic merge remains disabled.
+- PR dependency audit [44345184655](https://github.com/Barrot-Agent/B-Agent/actions/runs/44345184655), money audit [44345184845](https://github.com/Barrot-Agent/B-Agent/actions/runs/44345184845) and fail-closed gate [44345184591](https://github.com/Barrot-Agent/B-Agent/actions/runs/44345184591): passed.
+- PR CI [44345184631](https://github.com/Barrot-Agent/B-Agent/actions/runs/44345184631): Pages validation passed, but the core and full-suite jobs were skipped by the `integration/**` PR condition in `ci.yml`. The full-suite evidence is the exact-SHA push run above, not the PR event.
+- GitHub Actions cache budget remains exhausted/read-only. This produced a cache-save warning after successful tests and wheel verification; it did not fail the job.
+
+### Snapshot consistency defect found and corrected on the existing integration branch
+
+The latest nine-platform map still described the prior failed head `a871732` (304 ahead, 1,427 files, 2,978 tree entries, 4,272 passed / 2 failed), even though the current inspected branch head was `1ebfdfb` and its exact full suite had passed. The test had been asserting the stale snapshot. Run 21 updates the map and its regression test to the inspected head and exact CI run, preserving the historical failed-run record as prior evidence. No history was rewritten.
+
+### Nine-platform coordination map expanded — assignments are proposals, not dispatches
+
+The map now distinguishes product capability class from verified authentication/data flow. ChatGPT-to-GitHub remains the only tested connection. Eight external platforms remain unverified. Independent proposed tasks now cover: Claude (primary-source entity/ownership verification); Grok (event discovery and counter-hypotheses); Gemini (filing-table extraction and capital reconciliation); Copilot (workflow permissions and supply-chain review); Codex (integration diff and full-suite audit); Hugging Face (artifact provenance/reproducibility); Kaggle (public-data baseline benchmarking); Databricks (append-only raw archive and point-in-time feature-store design). Each assignment is marked `PROPOSED_NOT_DISPATCHED`; no external dispatch or data transfer occurred. A structured evidence-packet schema and disagreement/red-team protocol are recorded.
+
+### Targeted workflow security review and bounded hardening
+
+Reviewed `.github/workflows/paid-issue-hunter.yml`, `.github/workflows/paid-issue-publish.yml`, `.github/workflows/release.yml`, `.github/workflows/xrp-public-ingestion.yml`, `.github/workflows/ci.yml`, `.github/workflows/dependency-audit.yml`, `.github/workflows/barrot-gated-merge.yml`, `.github/workflows/coinbase-paper-trader.yml`, and `scripts/paid_issue_hunter.py`.
+
+- The hunter uses GitHub search/repository metadata reads and writes two local artifact files; it contains no issue comments, claims, labels, assignments or closures. Its workflow uses read-only `contents`/`issues` permissions and checkout credentials are not persisted.
+- The publisher is an automatic `workflow_run` writer with `contents: write`, artifact download, credential persistence and `git push origin main`; it writes only `PAID-ISSUES.md` and `data/money/paid_issues.json`. The main-branch version already has this publisher behavior. The integration version adds a source-branch success guard and pinned actions.
+- Run 21 further hardens the publisher condition to require a successful run whose branch is `main`, whose `head_repository.full_name` equals `github.repository`, and whose upstream event is only `schedule` or `workflow_dispatch`. Regression assertions were added. This remains an automatic main writer and must be included in independent governance review; no publisher run or main write was initiated in this run.
+- `release.yml` retains tag-triggered `contents: write` to create a GitHub Release; no tag or release was created.
+- XRP public ingestion is read-only for repository contents/actions and uploads bounded GitHub artifacts; its scheduled main workflow is not active until merged. GitHub artifacts are not WORM. SEC EDGAR remains blocked pending an approved monitored `BARROT_SEC_USER_AGENT`.
+- The full 67-workflow transitive script/artifact/supply-chain review remains incomplete. The targeted review above does not clear that blocker.
+
+### Governance and backlog
+
+- PR #1663 remains draft, mergeable, with zero formal reviews and zero requested reviewers. CODEOWNERS remains self-only (`* @Barrot-Agent`). Branch-protection detail retrieval still returns HTTP 403; the visible fallback ruleset 10863829 remains disabled. Effective required checks and bypass permissions are not verified.
+- Twelve PRs remain open. #1663 is the sole consolidated integration (blocked); #1665/#1666 are dependency-overlap blockers; #1541 is stacked MMI security work; #1664 and #1460/#1450/#1440/#1437/#1436/#1353/#1265 remain unique/unreviewed or stacked. No source PR was closed.
+- Main was unchanged at inspection. No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, Hugging Face upload, external-model dispatch, paper trade, funds transfer, force-push or history rewrite occurred.
+
+### Prediction status
+
+Forecast issuance remains **NOT_ISSUED**; zero authorized walk-forward forecasts; drift remains insufficient; external WORM/timestamp anchoring and deterministic raw-to-feature-store reconstruction remain absent. Latest successful main ingestion remains the earlier recorded run (34 receipts: 22 raw, 12 digest-only; 21 source failures; 124 eligible and 361 excluded features; no external anchor). SEC EDGAR is still blocked by the contact configuration. No directional forecast is supported.
+
+### Run 21 successor-commit verification status
+
+The Run 21 snapshot and bounded hardening are being committed only to the existing integration branch. The exact-head full-suite and audit results above apply to inspected parent `1ebfdfbe26d6c6d6b11c14d605548a5f79389184`; the new successor commit must receive its own exact-head CI before any readiness claim. PR #1663 remains draft and **NO MERGE**.
+
+**Next concrete action:** verify the successor commit's full repository suite and exact-head audits; continue transitive review of the remaining changed workflows and invoked scripts; obtain independent review and verifiable branch-protection/required-check evidence; retain forecast issuance disabled until receipt anchoring, deterministic reconstruction, leakage-safe walk-forward and independent shadow admission all pass.

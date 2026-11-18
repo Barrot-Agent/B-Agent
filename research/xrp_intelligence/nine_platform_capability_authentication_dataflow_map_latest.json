@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-18T16:06:25Z",
+  "captured_at_utc": "2026-11-18T17:07:29.601Z",
   "mission": {
     "priority": 1,
     "title": "XRP intelligence and prediction-engine mastery",
@@ -13,19 +13,19 @@
     "main_sha": "13c60af7079700a38b4226b9110d9c9377af7695",
     "integration": {
       "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
-      "code_head_sha": "a87173273fdbab3c480b4d95bfec3a74db6f6621",
+      "code_head_sha": "1ebfdfbe26d6c6d6b11c14d605548a5f79389184",
       "pr_number": 1663,
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 304,
+      "ahead_by": 305,
       "behind_by": 0,
-      "changed_files": 1427,
+      "changed_files": 1428,
       "changed_workflow_files": 67,
       "formal_reviews": 0,
-      "snapshot_head_sha": "a87173273fdbab3c480b4d95bfec3a74db6f6621",
-      "commits": 304,
-      "additions": 513255,
+      "snapshot_head_sha": "1ebfdfbe26d6c6d6b11c14d605548a5f79389184",
+      "commits": 305,
+      "additions": 513823,
       "deletions": 6522,
       "mergeable_state": "unstable",
       "review_comments": 0,
@@ -37,13 +37,13 @@
         "entries": 1737,
         "workflow_files": 84,
         "test_named_files": 126,
-        "xrp_research_files": 39
+        "xrp_research_files": 44
       },
       "integration": {
-        "entries": 2978,
+        "entries": 2979,
         "workflow_files": 85,
         "test_named_files": 503,
-        "xrp_research_files": 847
+        "xrp_research_files": 1137
       }
     }
   },
@@ -63,47 +63,125 @@
         "triage"
       ],
       "least_privilege": "not verified; repository metadata reports admin/maintain/push/pull/triage, but exact connector token scopes were not introspected and the detailed main-protection endpoint returned HTTP 403",
-      "permissions_basis": "GitHub repository metadata, not token-scope introspection"
+      "permissions_basis": "GitHub repository metadata, not token-scope introspection",
+      "capability_class": "General-purpose AI assistant; GitHub connector access verified in this session",
+      "capability_evidence_status": "verified_current_session",
+      "verified_capabilities": [
+        "repository metadata and tree reads",
+        "open PR and diff metadata reads",
+        "workflow/check-run reads",
+        "repository file reads",
+        "integration-branch commit through GitHub connector"
+      ],
+      "task_assignment": {
+        "status": "EXECUTED_IN_CURRENT_SESSION",
+        "task": "Inspect current main, complete tree, open PRs, ancestry, integration diffs, CI, security configuration and durable handoff; make bounded integration-branch-only evidence and safety updates.",
+        "expected_output": "Exact-head evidence, source-linked repository state, tested integration changes and durable handoff"
+      }
     },
     "Claude": {
       "authentication_status": "unverified",
       "data_flow": "not_verified",
-      "permissions": []
+      "permissions": [],
+      "capability_class": "General-purpose AI assistant; product category only, account and data access untested",
+      "capability_evidence_status": "public_product_category_only_unverified",
+      "verified_capabilities": [],
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED",
+        "task": "Independently verify Ripple, Coinbase, Circle, SBI Holdings, SBI Ripple Asia and SBIC East/Central/West legal-entity relationships from primary filings and official disclosures; identify disconfirming evidence.",
+        "expected_output": "Claim-by-claim evidence packets with primary-source citations, dates, ownership/control distinctions and minority objections"
+      }
     },
     "Grok": {
       "authentication_status": "unverified",
       "data_flow": "not_verified",
-      "permissions": []
+      "permissions": [],
+      "capability_class": "General-purpose AI assistant; product category only, account and data access untested",
+      "capability_evidence_status": "public_product_category_only_unverified",
+      "verified_capabilities": [],
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED",
+        "task": "Find independent public event signals and counter-hypotheses for XRP spot, derivatives, exchange flows, institutional announcements and macro; separate social claims from verified disclosures.",
+        "expected_output": "Timestamped event candidates, source lineage, independent corroboration and disconfirming evidence"
+      }
     },
     "Gemini": {
       "authentication_status": "unverified",
       "data_flow": "not_verified",
-      "permissions": []
+      "permissions": [],
+      "capability_class": "Multimodal general-purpose AI assistant; product category only, account and data access untested",
+      "capability_evidence_status": "public_product_category_only_unverified",
+      "verified_capabilities": [],
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED",
+        "task": "Extract and independently reconcile tables from SEC filings and issuer documents covering Evernorth capital, XRP holdings, SBI voting/common ownership, Coinbase accounting-market use and custody.",
+        "expected_output": "Structured table extracts with page/section, units, event time, publication time and arithmetic reconciliation"
+      }
     },
     "Copilot": {
       "authentication_status": "unverified",
       "data_flow": "not_verified",
-      "permissions": []
+      "permissions": [],
+      "capability_class": "Developer coding assistant; product category only, repository authentication untested",
+      "capability_evidence_status": "public_product_category_only_unverified",
+      "verified_capabilities": [],
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED",
+        "task": "Review changed GitHub Actions workflows for permissions, untrusted event paths, artifact provenance, credential persistence, tag publication and branch-protection interactions.",
+        "expected_output": "Workflow-by-workflow threat model, exact file/line findings, severity and minimal fixes"
+      }
     },
     "Codex": {
       "authentication_status": "unverified",
       "data_flow": "not_verified",
-      "permissions": []
+      "permissions": [],
+      "capability_class": "Coding agent; product category only, repository authentication untested",
+      "capability_evidence_status": "public_product_category_only_unverified",
+      "verified_capabilities": [],
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED",
+        "task": "Independently review the 1,428-file integration diff for overlapping/superseded changes, test exclusions, data leakage and reproducible build failures.",
+        "expected_output": "Diff inventory, ancestry map, test matrix, reproducible findings and merge-blocker list"
+      }
     },
     "Hugging Face": {
       "authentication_status": "unverified",
       "data_flow": "not_verified",
-      "permissions": []
+      "permissions": [],
+      "capability_class": "Model, dataset and hosted-space platform; account and token access untested",
+      "capability_evidence_status": "public_product_category_only_unverified",
+      "verified_capabilities": [],
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED",
+        "task": "Assess reproducible dataset/model artifact formats, provenance manifests and offline evaluation packaging; do not upload or restart any Space.",
+        "expected_output": "Artifact reproducibility checklist and least-privilege access/data-flow proposal"
+      }
     },
     "Kaggle": {
       "authentication_status": "unverified",
       "data_flow": "not_verified",
-      "permissions": []
+      "permissions": [],
+      "capability_class": "Dataset, notebook and competition platform; account and token access untested",
+      "capability_evidence_status": "public_product_category_only_unverified",
+      "verified_capabilities": [],
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED",
+        "task": "Independently assess public XRP historical datasets and baseline benchmark methodology, including licensing, timestamp quality and leakage risks; do not submit entries.",
+        "expected_output": "Dataset provenance matrix and reproducible baseline protocol"
+      }
     },
     "Databricks": {
       "authentication_status": "unverified",
       "data_flow": "not_verified",
-      "permissions": []
+      "permissions": [],
+      "capability_class": "Data engineering and machine-learning platform; workspace and token access untested",
+      "capability_evidence_status": "public_product_category_only_unverified",
+      "verified_capabilities": [],
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED",
+        "task": "Review the design for append-only raw-source retention, point-in-time feature storage, event-time/known-at-time semantics and drift monitoring; no workspace writes.",
+        "expected_output": "Architecture review, data contract, lineage requirements and read-only integration plan"
+      }
     }
   },
   "coordination": {
@@ -112,7 +190,39 @@
     "red_team_review": "pending; no external reviewer authentication verified",
     "minority_objections": "retained in research artifacts",
     "external_dispatch_performed": false,
-    "external_data_transfer_performed": false
+    "external_data_transfer_performed": false,
+    "task_assignments_status": "PROPOSED_NOT_DISPATCHED_FOR_EIGHT_EXTERNAL_PLATFORMS",
+    "chatgpt_task_status": "EXECUTED_IN_CURRENT_SESSION",
+    "evidence_packet_schema": [
+      "claim_id",
+      "claim",
+      "source_url",
+      "source_publisher",
+      "source_type",
+      "published_at_utc",
+      "event_time_utc",
+      "known_at_utc",
+      "captured_at_utc",
+      "raw_sha256",
+      "source_independence_group",
+      "entity_ids",
+      "evidence_grade",
+      "confidence",
+      "supporting_evidence",
+      "counterevidence",
+      "minority_objection",
+      "reproduction_steps"
+    ],
+    "disagreement_resolution_protocol": "No vote-based consensus. Compare primary-source authority, legal entity, event/publication/capture times, units, scope, definitions, source independence and missingness. Preserve competing claims and minority objections; promote only after primary evidence and independent corroboration.",
+    "red_team_review_scope": [
+      "source independence",
+      "timestamp and look-ahead leakage",
+      "raw-to-feature reproducibility",
+      "workflow permissions and artifact provenance",
+      "branch protection and approval enforcement",
+      "forecast admission and calibration"
+    ],
+    "red_team_status": "NOT_EXECUTED — no independent external reviewer authentication verified"
   },
   "prediction_engine": {
     "source_registry": {
@@ -230,7 +340,7 @@
     "drift_status": "INSUFFICIENT_DATA"
   },
   "ci_evidence": {
-    "exact_code_head": "a87173273fdbab3c480b4d95bfec3a74db6f6621",
+    "exact_code_head": "1ebfdfbe26d6c6d6b11c14d605548a5f79389184",
     "push_ci_run": 44337506785,
     "full_suite": {
       "passed": 4272,
@@ -275,44 +385,45 @@
       "root_cause": "The test contract expected receipt_count and transitive_script_security_review; the map only exposed receipts and transitive_script_review. This is an evidence-schema mismatch, not a forecast/model failure."
     },
     "current_pr_event": {
-      "run_id": 44337522662,
-      "head_sha": "a87173273fdbab3c480b4d95bfec3a74db6f6621",
+      "run_id": 44345184631,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44345184631",
+      "head_sha": "1ebfdfbe26d6c6d6b11c14d605548a5f79389184",
       "result": "success",
-      "standard_tests": "passed",
-      "full_suite": "skipped because PR remains draft",
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44337522662"
+      "standard_tests": "skipped for integration/** pull-request head by ci.yml condition",
+      "full_suite": "skipped for integration/** pull-request head by ci.yml condition",
+      "pages_validation": "passed; validation only; no deployment"
     },
     "current_head_dependency_audits": [
       {
-        "run_id": 44337506881,
+        "run_id": 44345171864,
         "result": "success",
-        "scope": "push; exact integration head; six dependency manifests"
+        "scope": "push; exact inspected head; six dependency manifests"
       },
       {
-        "run_id": 44337522581,
+        "run_id": 44345184655,
         "result": "success",
-        "scope": "pull_request; exact integration head"
+        "scope": "pull_request; exact inspected head"
       }
     ],
     "current_head_fail_closed_runs": [
       {
-        "run_id": 44337506832,
+        "run_id": 44345171064,
         "result": "success",
-        "scope": "push; merge disabled"
+        "scope": "push; exact inspected head; merge intentionally disabled"
       },
       {
-        "run_id": 44337522571,
+        "run_id": 44345184591,
         "result": "success",
-        "scope": "pull_request; merge disabled"
+        "scope": "pull_request; exact inspected head; merge intentionally disabled"
       }
     ],
     "current_head_money_audit": {
-      "run_id": 44337522580,
+      "run_id": 44345184845,
       "result": "success",
-      "scope": "pull_request"
+      "scope": "pull_request; exact inspected head"
     },
     "current_head_pages_validation": {
-      "run_id": 44337522662,
+      "run_id": 44345184631,
       "result": "success",
       "deployment": false
     },
@@ -329,24 +440,20 @@
       "pages_deployment_result": "success"
     },
     "current_head_full_suite": {
-      "run_id": 44337506785,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44337506785",
-      "head_sha": "a87173273fdbab3c480b4d95bfec3a74db6f6621",
+      "run_id": 44345171052,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44345171052",
+      "head_sha": "1ebfdfbe26d6c6d6b11c14d605548a5f79389184",
       "status": "completed",
-      "conclusion": "failure",
-      "passed": 4272,
-      "tests_failed": 2,
+      "conclusion": "success",
+      "passed": 4274,
+      "tests_failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests_passed": 19,
-      "duration_seconds": 189.57,
+      "duration_seconds": 185.39,
       "inclusive_coverage_percent": 68.14,
-      "failing_tests": [
-        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state",
-        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_security_gates_and_open_pr_classifications"
-      ],
-      "root_cause": "Run 19 rewrote the latest nine-platform JSON map without preserving 22 fields required by the existing test contract, including repository_state.integration.snapshot_head_sha and ci_evidence.pre_fix_pr_head_ci. The map at prior verified head 78ed0c1 retained those fields. This is a research-evidence schema regression, not a forecast/model failure.",
-      "repair": "Deep-merge prior verified map with Run 19 updates, restore historical evidence fields, refresh snapshot metadata and assert the actual failed CI state."
+      "legacy_core_coverage_floor_percent": 70,
+      "result": "PASS — exact inspected head; full repository tests, inclusive coverage floor, legacy-core coverage floor, wheel build and installed-package mission verification all succeeded."
     },
     "previous_verified_full_suite": {
       "run_id": 44322684443,
@@ -398,11 +505,13 @@
       "requested_reviewers": 0,
       "mergeable": true,
       "mergeable_state": "unstable",
-      "head_sha": "a87173273fdbab3c480b4d95bfec3a74db6f6621",
+      "head_sha": "1ebfdfbe26d6c6d6b11c14d605548a5f79389184",
       "base_sha": "13c60af7079700a38b4226b9110d9c9377af7695",
-      "ahead_by": 304,
+      "ahead_by": 305,
       "behind_by": 0,
-      "changed_files": 1427
+      "changed_files": 1428,
+      "snapshot_head_sha": "1ebfdfbe26d6c6d6b11c14d605548a5f79389184",
+      "changed_workflow_files": 67
     },
     "changed_workflow_files": 67,
     "workflow_diff_scan": "All 67 changed workflow definitions were fetched and statically scanned in Run 20; zero unpinned uses references found. High-risk workflow behaviors are enumerated in the handoff. Transitive script and downloaded-artifact review remains incomplete.",
@@ -439,7 +548,10 @@
       "permission": "contents: write",
       "persist_credentials": true,
       "action": "git push origin main",
-      "status": "material merge blocker; exact artifact/script provenance and independent review remain outstanding"
+      "status": "material merge blocker; exact artifact/script provenance and independent review remain outstanding",
+      "source_guard_status": "ADDED_ON_RUN21_SUCCESSOR_COMMIT_CI_PENDING",
+      "source_guard": "Require conclusion success, head_branch main, head_repository.full_name == github.repository, and upstream event schedule or workflow_dispatch.",
+      "remaining_control": "Still an automatic contents:write publisher that commits two generated files to main; branch-protection/bypass behavior and independent review remain unresolved."
     },
     "tag_release_workflow": {
       "workflow": ".github/workflows/release.yml",
@@ -468,13 +580,30 @@
       "sync_huggingface": "quarantined with job condition false and no token read",
       "sync_self_hosted_brain": "quarantined with job condition false",
       "no_external_actions_executed": true
+    },
+    "workflow_review_run21": {
+      "reviewed_workflows": [
+        ".github/workflows/paid-issue-hunter.yml",
+        ".github/workflows/paid-issue-publish.yml",
+        ".github/workflows/release.yml",
+        ".github/workflows/xrp-public-ingestion.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/dependency-audit.yml",
+        ".github/workflows/barrot-gated-merge.yml",
+        ".github/workflows/coinbase-paper-trader.yml"
+      ],
+      "reviewed_scripts": [
+        "scripts/paid_issue_hunter.py"
+      ],
+      "finding": "The hunter performs GitHub search/repository metadata reads and local artifact generation only; no issue mutations. The publisher is a workflow_run main writer limited to PAID-ISSUES.md and data/money/paid_issues.json. The integration guard is being tightened to require a successful same-repository main run from schedule or workflow_dispatch.",
+      "limitation": "This is a targeted review, not transitive review of all 67 changed workflows and all invoked scripts."
     }
   },
   "open_pr_backlog": [
     {
       "number": 1663,
       "classification": "blocked",
-      "note": "sole consolidated V3/XRP integration; draft; 304 commits ahead, 0 behind, 1,427 files, 67 workflow files; exact-head full suite failed two evidence-map tests; governance and security blockers remain"
+      "note": "sole consolidated V3/XRP integration; draft; inspected head 1ebfdfbe26d6c6d6b11c14d605548a5f79389184 was 305 commits ahead, 0 behind, 1,428 files and 67 changed workflows; exact-head push full suite passed 4,274/1 skipped/0 failed; PR-event test jobs are skipped for integration/**; remains blocked by no independent reviews, branch-protection details 403, disabled fallback ruleset and incomplete transitive workflow/script review"
     },
     {
       "number": 1666,
@@ -547,7 +676,10 @@
     "real_money": false,
     "force_push": false,
     "history_rewrite": false,
-    "directional_forecast": false
+    "directional_forecast": false,
+    "integration_branch_commit": true,
+    "main_branch_changed": false,
+    "new_pr_created": false
   },
   "institutional_capital_reconciliation": {
     "entity": "Evernorth Holdings Inc. / Pathfinder Digital Assets LLC",

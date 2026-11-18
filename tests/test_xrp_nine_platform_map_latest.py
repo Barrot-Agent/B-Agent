@@ -38,6 +38,16 @@ def test_latest_map_covers_nine_platforms_without_fabricated_connections():
         assert platform["permissions"] == []
     assert data["coordination"]["external_dispatch_performed"] is False
     assert data["coordination"]["external_data_transfer_performed"] is False
+    assert data["coordination"]["task_assignments_status"] == "PROPOSED_NOT_DISPATCHED_FOR_EIGHT_EXTERNAL_PLATFORMS"
+    assert "raw_sha256" in data["coordination"]["evidence_packet_schema"]
+    assert data["coordination"]["red_team_status"].startswith("NOT_EXECUTED")
+    for name in expected:
+        platform = data["platforms"][name]
+        assert platform["capability_class"]
+        assert platform["task_assignment"]["task"]
+        if name != "ChatGPT":
+            assert platform["task_assignment"]["status"] == "PROPOSED_NOT_DISPATCHED"
+            assert platform["capability_evidence_status"] == "public_product_category_only_unverified"
 
 
 def test_latest_map_matches_repository_and_forecast_admission_state():
@@ -47,11 +57,14 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     integration = repo["integration"]
     assert integration["pr_number"] == 1663
     assert integration["draft"] is True
-    assert integration["snapshot_head_sha"] == "a87173273fdbab3c480b4d95bfec3a74db6f6621"
-    assert integration["ahead_by"] == 304
-    assert integration["changed_files"] == 1427
+    assert integration["snapshot_head_sha"] == "1ebfdfbe26d6c6d6b11c14d605548a5f79389184"
+    assert integration["code_head_sha"] == integration["snapshot_head_sha"]
+    assert integration["ahead_by"] == 305
+    assert integration["commits"] == 305
+    assert integration["changed_files"] == 1428
     assert integration["changed_workflow_files"] == 67
     assert integration["behind_by"] == 0
+    assert repo["tree_counts"]["integration"]["entries"] == 2979
     registry = data["prediction_engine"]["source_registry"]
     assert registry == {
         "public_endpoint_records": 53,
@@ -70,11 +83,13 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert ingestion["external_anchor"] == "NOT_ANCHORED"
     current_ci = data["ci_evidence"]["current_head_full_suite"]
     assert current_ci["head_sha"] == integration["snapshot_head_sha"]
+    assert current_ci["run_id"] == 44345171052
     assert current_ci["status"] == "completed"
-    assert current_ci["conclusion"] == "failure"
-    assert current_ci["passed"] == 4272
-    assert current_ci["tests_failed"] == 2
+    assert current_ci["conclusion"] == "success"
+    assert current_ci["passed"] == 4274
+    assert current_ci["tests_failed"] == 0
     assert current_ci["skipped"] == 1
+    assert current_ci["inclusive_coverage_percent"] == 68.14
     previous_ci = data["ci_evidence"]["previous_verified_full_suite"]
     assert previous_ci["head_sha"] == "78ed0c1a2e6cec991f6069f4c624e5e40bc96fe0"
     assert previous_ci["passed"] == 4274
@@ -93,6 +108,8 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert security["transitive_script_review"] == security["transitive_script_security_review"]
     assert security["sensitive_branch_path"]["content_read"] is False
     assert security["automatic_main_writer"]["active"] is True
+    assert security["automatic_main_writer"]["source_guard_status"] == "ADDED_ON_RUN21_SUCCESSOR_COMMIT_CI_PENDING"
+    assert "head_repository.full_name == github.repository" in security["automatic_main_writer"]["source_guard"]
     assert len(data["open_pr_backlog"]) == 12
     assert next(item for item in data["open_pr_backlog"] if item["number"] == 1663)["classification"] == "blocked"
     assert next(item for item in data["open_pr_backlog"] if item["number"] == 1665)["classification"] == "blocked"

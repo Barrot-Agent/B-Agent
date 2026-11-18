@@ -99,6 +99,9 @@ def test_publish_workflow_is_triggered_by_the_hunter_and_only_on_main():
     text = PUBLISH.read_text(encoding="utf-8")
     assert "github.event.workflow_run.conclusion == 'success'" in text
     assert "github.event.workflow_run.head_branch == 'main'" in text
+    assert "github.event.workflow_run.head_repository.full_name == github.repository" in text
+    assert "github.event.workflow_run.event == 'schedule'" in text
+    assert "github.event.workflow_run.event == 'workflow_dispatch'" in text
     assert "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7" in text
     assert "actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7" in text
     assert "persist-credentials: true" in text
