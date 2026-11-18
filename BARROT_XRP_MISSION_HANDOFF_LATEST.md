@@ -8146,3 +8146,87 @@ No PR has been merged by this run. No duplicate/source PR is to be closed before
 7. Expand independent multi-venue history and labels; complete leakage-safe walk-forward baselines, calibration and independent shadow evaluation before any directional forecast.
 
 No main files were modified by this run. No deployment, secret rotation, Space restart, Hugging Face upload, Kaggle submission, Databricks write, external model dispatch, funds transfer, paper trade, real-money action, force-push or history rewrite was performed.
+
+
+## Run 11 supplement — exact-head verification, workflow risk, PR ancestry and primary-source corrections
+
+### Exact-head CI — VERIFIED on 95dda6b3ee85384c450d1a9d3673a5f3fba3c889
+
+The push-triggered CI run [44213481439](https://github.com/Barrot-Agent/B-Agent/actions/runs/44213481439) completed successfully on the exact integration head:
+
+- Core Tests: passed.
+- Full repository suite: **4,257 passed, 1 skipped, 11 warnings, 19 subtests passed in 187.23 seconds**.
+- Inclusive package coverage: **68.13%** against a 62% gate.
+- Legacy-core coverage: **77%** against a 70% gate.
+- Wheel build and installed-wheel verification: passed; the packaged primary mission was found.
+- Pages build validation: passed; no Pages deployment occurred.
+- Exact-head fail-closed push gate [44213481585](https://github.com/Barrot-Agent/B-Agent/actions/runs/44213481585): passed.
+- Exact-head dependency audit push [44213481502](https://github.com/Barrot-Agent/B-Agent/actions/runs/44213481502) and PR [44213486372](https://github.com/Barrot-Agent/B-Agent/actions/runs/44213486372): both passed. Six manifests (root runtime, development, integrations, Hugging Face Space, legacy and PEP 621 project dependencies) each reported no known vulnerabilities.
+- Exact-head Money audit [44213486536](https://github.com/Barrot-Agent/B-Agent/actions/runs/44213486536): 14 passed.
+- PR-event CI [44213486443](https://github.com/Barrot-Agent/B-Agent/actions/runs/44213486443), PR fail-closed gate [44213486375](https://github.com/Barrot-Agent/B-Agent/actions/runs/44213486375), dependency audit and money audit all passed.
+- The CI cache reservation warning is non-fatal; the configured cache budget is exhausted/read-only. The wheel build also emitted non-fatal warnings: the TOML license table is deprecated and package discovery reports barrot_agent.data.missions and data.research absent from the explicit package list. Installed-wheel primary-mission verification nevertheless passed. These packaging warnings remain a follow-up; do not silently discard them.
+
+This verifies the exact code/data head 95dda6. It does not establish merge readiness because draft/review/governance and security-review blockers remain.
+
+### High-risk workflow comparison — targeted review, not complete
+
+Ten high-impact workflow files were compared between main and integration:
+
+- Main Barrot Sync has main-push automation, reads GH_TOKEN, masks sync errors and suppresses push failures. Integration is quarantined with no permissions and a disabled job.
+- Main Barrot Agent accepts issue-label/dispatch tasks with contents, PR and issue write permissions and a Groq secret. Integration is quarantined with no permissions.
+- Main Barrot Self-Upgrade has contents and PR write permissions; integration is disabled.
+- Main Hugging Face sync can deploy with HF_TOKEN; integration is quarantined.
+- Main self-hosted-brain sync triggers on push and manual dispatch and deploys a Space. Integration requires explicit deployment and secret-rotation inputs plus exact main SHA, but the job is currently hard-disabled.
+- Main Coinbase paper trader can commit simulation state to main. Integration is artifact-only, requires explicit YES and exact main SHA, and uses read-only contents permission.
+- Main Barrot Ops uses one broad confirmation and an unpinned databricks/setup-cli@main action while suppressing workspace-import failure. Integration separates Databricks and Kaggle approvals, verifies exact main SHA, pins the CLI action to a commit, and does not persist checkout credentials.
+- Deploy Databricks is manual on both branches and requires explicit YES plus exact main SHA.
+- Main Paid Issue Publish has contents:write but only publishes PAID-ISSUES.md and data/money/paid_issues.json after a successful main hunter run and checks mutations_performed == 0. Integration additionally requires workflow_run.head_branch == main and pins checkout/download actions.
+- Barrot Gated Merge is fail-closed on both branches; it does not merge.
+
+This is a targeted 10-workflow review, not the required full review of all 67 changed workflow files and their transitive scripts. Main Pages publication remains an automatic side effect of a main update. No deployment or external write was performed.
+
+### Open PR ancestry and overlapping-diff reconciliation
+
+The nine open PRs were re-enumerated and their changed paths and head/base ancestry were compared. They are not nine independent workstreams.
+
+- #1265 is the parent ledger-index pointer migration.
+- #1353 is stacked on #1265; its head is 1,119 commits and it changes 1,084 paths, including three changed paths inherited from #1265.
+- #1436 and #1437 are separate children of #1353. #1436 adds 24 Binance theft/freeze research paths. #1437 changes five validator/source-ledger paths relative to its parent; preserve both branches.
+- #1440 is stacked on #1436. #1450 is a 32-commit descendant of #1440 (compare: 32 ahead, zero behind). #1450 changes 116 paths versus #1440's 64, includes all 64 path names and changes three shared blobs. Treat #1450 as the newer archive-repair successor and #1440 as superseded pending #1450 merge and verification; do not close #1440 now.
+- #1460 is stacked on #1450 and adds institutional multi-rail research; it changes eight paths, seven unique plus the shared research ledger. Preserve it as dependent/unique work.
+- #1541 is a separate MMI chain. Its parent #1540 is closed unmerged; #1542 is also closed unmerged. #1541 remains open/draft and is based on #1540's head. All five #1541 changed paths overlap with #1663, but only two file blobs are identical. The other three differ: integration mmi_v1.py is larger and contains additional structural-analysis/file-locking work; integration tests/test_mmi_v1.py is larger and contains additional regression tests; the research artifact has the same core claim-fingerprint finding. The integration branch includes canonical_claim_id with versioned SHA-256 over NFKC-normalized, case-folded, whitespace-collapsed claim text. Classify #1541 as superseded in content pending integration merge, not an exact duplicate. Preserve until #1663 is merged and its MMI implementation verified on main; then close with cross-reference only if no unique content remains.
+- #1663 remains the sole active integration PR. No source PR was closed.
+
+All source PRs remain draft. The older ledger/archive branches are stacked and stale; do not merge them independently or bulk-close them.
+
+### Fresh XRP market observations — rendered sources, model-ineligible
+
+- Liqwall at 00:32 UTC Nov 18: XRP $0.9808; OI $968M (-2.8%/24h); average funding +0.0059% per 8h; $4.2M liquidations, $2.1M long and $2.1M short; 73.8% of Binance accounts with XRP positions were long. This is one provider's aggregation, not a directional signal. https://liqwall.com/coins/xrp
+- CoinGlass live page: OI $2.03B (+2.79%), futures volume $2.28B (-6.26%), funding +0.0019% per 8h, futures/spot volume ratio 4.8x; it states 30+ exchanges. https://www.coinglass.com/currencies/XRP/futures
+- Coinranking's previous-day table: OI $1.55B, funding -0.0083%, futures volume $2.21B. https://coinranking.com/coin/-l8Mn2pVlRs-p%2Bxrp-xrp/futures
+- These OI/funding figures disagree materially due venue scope, timestamps and aggregation. Preserve each source; do not average. The latest exact venue quote/depth receipt remains the earlier same-venue OKX snapshot, not a consolidated current book.
+- CryptoKeyhole reports Nov 16 as partial (2 of 4 daily-reporting funds), net outflow 5,196,983 XRP; latest complete day Nov 13 was -9,967 XRP. https://cryptokeyhole.com/etf-flows/xrp/
+- XRP Insights' six-fund dataset is issuer-holdings-derived and has a provisional Nov 16 row; Corpstacking's ten-fund aggregate reports 1,392,779,280 XRP as of Nov 17. These are different universes/dates, not directly comparable or averageable. https://xrp-insights.com/data ; https://www.corpstacking.com/treasuries/by-token/ripple
+
+### Evernorth capital and liquidity correction — primary SEC evidence
+
+The September 30, 2026 Evernorth 10-Q is explicitly pre-business-combination. It reports standalone unrestricted cash of **$91,397**, restricted cash of $49,995, accumulated deficit of $185.587M, net working-capital deficit of $10M and no revenue. Q3 net income of $155.265M was not operating revenue: the statement shows a $162.834M fair-value gain on refundable investor advances offset by $6.891M digital-asset impairment and G&A. The nine-month result was a $32.870M net loss, including $271.037M impairment offset by a $240.311M fair-value gain. Operating cash used was $1.722M. The filing says primary liquidity came from Ripple loans and XRP contributed to Pathfinder; the $1M Ripple revolving facility was undrawn at September 30. Ripple had contributed 126,791,458 XRP to Pathfinder, available for operating costs. https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm
+
+Do not confuse that standalone cash figure with the $76.027M unaudited pro-forma combined cash figure. The latter combines Pathfinder, Evernorth and SPAC, including approximately $48.004M released from the SPAC trust and note proceeds. It is illustrative combined cash, not Evernorth standalone cash or current unrestricted cash. https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/evernorth-proforma20260930.htm
+
+The 10-Q records $214.05M cash from advance-funding subscriptions used to purchase 84,365,876 XRP; 600,000 XRP was contributed in-kind. Those are actual historical transaction categories. The Nov 13 424B3 describes a committed equity facility covering up to 5,218,935 shares to CF Principal Investments. Evernorth receives proceeds only from sales of shares to the holder under the agreement; it does not receive proceeds from the holder's resale. This is potential financing capacity, not cash already received or XRP already purchased. https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm
+
+### OCC and SBI multi-rail distinctions
+
+- OCC Corporate Applications Search for Ripple National Trust Bank records receipt July 2, 2025, approval December 12, 2025 and “Consummated/Effective” October 26, 2026. The OCC Interpretations & Decisions index still lists Conditional Approval 1359, and no separate final approval letter was located. Ripple's October 26 release says final approval. Record the OCC CAS effective status and the missing separate final letter as distinct evidence; do not call the index updated. https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2 ; https://occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html ; https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/
+- SBI's $50M Circle equity investment is split $25M from SBI Holdings and $25M from SBI Shinsei Bank; the Circle JV and SBI VC Trade USDC distribution are separate relationships. SBI VC Trade/Aplus USDC retail payment trials show parallel USDC rails. SBI's October 30, 2026 capital/business alliance with SMBC explores stablecoin and tokenized-asset services; it does not establish XRP use. https://www.sbigroup.co.jp/news/2025/0609_15491.html ; https://www.sbigroup.co.jp/news/2025/0822_15679.html ; https://www.sbigroup.co.jp/news/2025/0304_15290.html ; https://www.sbigroup.co.jp/news/2026/1030_16698.html
+- BNY's October 27 release says its Digital Asset Custody platform supports XRP and RLUSD and that BNY is primary RLUSD reserve custodian. This does not disclose client balances, XRP buying or throughput. https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+- Exact-phrase searches: DeFiLlama identifies Permission Coin (ASK); no XRP link is established. The official Tokyo SBIC course listing includes ChatGPT and Copilot training, not an OpenAI partnership. No verified YouTube channel cross-link for Camilla/Kamilah Stevenson was found; no candidate video was attributed. https://defillama.com/token/ASK ; https://www.sbic.co.jp/training/20250612co/
+
+### Prediction gate and execution decision
+
+The event registry remains 140 events / 107 scenarios. Latest ingestion remains 31 receipts (19 raw, 12 digest-only), 82 eligible features and 378 excluded features, with 20 source failures. Receipt completeness is false; model eligibility is false; drift is INSUFFICIENT_DATA; no forecast was issued.
+
+The ingestion workflow is absent from main. Its integration branch schedule is designed for main execution and the job guard only runs on main schedules or integration pushes; therefore no scheduled production ingestion is live yet.
+
+**NO MERGE.** Despite exact-head full-suite, dependency, money, fail-closed and Pages-validation success, PR #1663 remains draft, has zero formal reviews and zero review threads, CODEOWNERS is self-only, detailed branch-protection checks remain inaccessible (403), the fallback ruleset is disabled, the full 67-workflow/transitive-script review is incomplete, and a merge would trigger automatic Pages publication. Preserve all source PRs and history.
