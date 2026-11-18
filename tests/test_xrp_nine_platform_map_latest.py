@@ -62,7 +62,7 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert ingestion["source_failures"] == 21
     assert ingestion["walk_forward_forecasts"] == 0
     assert ingestion["forecast_issuance"] == "disabled"
-    assert ingestion["external_receipt_anchor_status"] == "NOT_ANCHORED"
+    assert ingestion["external_anchor"] == "NOT_ANCHORED"
 
 
 def test_latest_map_preserves_security_gates_and_open_pr_classifications():
