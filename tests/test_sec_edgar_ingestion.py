@@ -114,7 +114,7 @@ def test_fetch_sec_json_requires_a_monitored_project_contact(monkeypatch):
         )
 
 
-def test_capture_sec_edgar_stores_raw_receipts_and_filing_events(tmp_path):
+def test_capture_sec_edgar_stores_raw_receipts_and_filing_events(tmp_path, monkeypatch):
     captured = datetime(2026, 11, 18, 5, 0, tzinfo=timezone.utc)
     accessions = {
         "evernorth": "0001628280-26-074355",
