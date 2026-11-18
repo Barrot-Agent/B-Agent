@@ -33,12 +33,12 @@ def test_parse_submissions_preserves_accession_and_acceptance_time():
     )
     event = events[0]
     assert event["accession_number"] == "0001628280-26-074355"
-    assert event["known_at_utc"] == "2026-11-17T07:44:14Z"
+    assert event["known_at_utc"] == "2026-11-17T07:44:14.000000Z"
     assert event["known_at_basis"] == "sec_acceptance_datetime"
     assert event["primary_document_url"].endswith("/primary.htm")
     assert event["filing_index_url"].endswith("/0001628280-26-074355-index.htm")
     assert by_accession[event["accession_number"]] is event
-    assert latest == "2026-11-17T07:44:14Z"
+    assert latest == "2026-11-17T07:44:14.000000Z"
     assert event["model_eligible"] is False
 
 
@@ -48,7 +48,7 @@ def test_parse_submissions_falls_back_to_capture_time_and_rejects_bad_identity()
         _submission_payload(issuer, "0001628280-26-074355", acceptance=""),
         issuer, captured_at_utc=CAPTURED,
     )
-    assert events[0]["known_at_utc"] == CAPTURED
+    assert events[0]["known_at_utc"] == "2026-11-18T05:00:00.000000Z"
     assert events[0]["known_at_basis"] == "capture_time_only"
     assert latest is None
     payload = _submission_payload(issuer, "0001628280-26-074355")
@@ -90,7 +90,7 @@ def test_companyfacts_are_accession_linked_and_do_not_infer_xrp_use():
     debt = next(item for item in facts if item["instrument_type"] == "debt")
     assert debt["reported_value"] == 29000000
     assert debt["gross_net_basis"] == "net"
-    assert debt["known_at_utc"] == "2026-11-17T07:44:14Z"
+    assert debt["known_at_utc"] == "2026-11-17T07:44:14.000000Z"
     assert debt["event_date"] == "2026-10-13"
     assert debt["use_of_proceeds"] is None
     assert debt["xrp_purchase_or_collateral_linkage"] == "not_established"

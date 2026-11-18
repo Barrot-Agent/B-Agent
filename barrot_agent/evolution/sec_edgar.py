@@ -378,7 +378,12 @@ def capture_sec_edgar(*, fetcher: Callable[[str, str], Mapping[str, Any]], archi
         )
         receipts.append(receipt)
         raw_only.append({"source_id": source_id, "reason": "sec_edgar_primary_regulatory_data_research_only_not_market_feature", "receipt_id": receipt["receipt_id"]})
-        for item in parsed:
+        items = parsed[0] if isinstance(parsed, tuple) else parsed
+        if not isinstance(items, list):
+            raise SECEdgarError("SEC parser must return a list of records")
+        for item in items:
+            if not isinstance(item, dict):
+                raise SECEdgarError("SEC parser record must be an object")
             item.update({
                 "source_id": source_id, "source_uri": url,
                 "raw_content_sha256": receipt["raw_content_sha256"],
