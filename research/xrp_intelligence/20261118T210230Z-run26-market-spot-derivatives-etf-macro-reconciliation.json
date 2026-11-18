@@ -1,0 +1,454 @@
+{
+  "artifact_type": "barrot.xrp.run26_market_spot_derivatives_etf_macro_reconciliation",
+  "schema_version": "1.0.0",
+  "run_number": 26,
+  "captured_at_utc": "2026-11-18T21:02:30Z",
+  "mission_priority": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission.",
+  "foundation": "Preserve Barrot V3 as the execution, orchestration, safety, authorization and verification foundation.",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_head_at_capture": "dbc6b327a56dc66493fb06cc32164a2043509280",
+    "integration_merge_commit": "dbc6b327a56dc66493fb06cc32164a2043509280",
+    "merge_commit_parents": [
+      "edc3300717b9c77479e2acd9de30b0a9bac2f24c",
+      "d5d22ac252f88637a490ed4c1598f8608b6cb786"
+    ],
+    "main_paths_missing_from_integration": 0,
+    "main_tree_entries": 1739,
+    "integration_tree_entries": 2982,
+    "integration_pr": 1663,
+    "pr_state": "open_draft",
+    "pr_head_sha": "dbc6b327a56dc66493fb06cc32164a2043509280",
+    "pr_base_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
+    "ahead_by": 327,
+    "behind_by": 0,
+    "changed_files": 1429,
+    "open_pr_count": 12,
+    "main_modified_by_this_run": false,
+    "branch_sync": "A non-force two-parent merge commit incorporated the latest main commit and preserved guard.py plus 2026-11-18.md byte-for-byte; update_ref used force=false and the expected prior branch SHA."
+  },
+  "market_snapshot": {
+    "kraken_xrp_usd": {
+      "source": "Kraken public REST ticker",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "captured_between_utc": [
+        "2026-11-18T21:02:25Z",
+        "2026-11-18T21:02:30Z"
+      ],
+      "source_event_time_utc": null,
+      "last_usd": 0.96691,
+      "bid_usd": 0.96702,
+      "ask_usd": 0.96709,
+      "best_bid_size_xrp": 1544,
+      "best_ask_size_xrp": 5171,
+      "top_level_ask_to_bid_size_ratio": 3.349093,
+      "spread_bps": 0.723847,
+      "open_24h_usd": 0.98253,
+      "low_24h_usd": 0.96218,
+      "high_24h_usd": 1.00677,
+      "volume_24h_xrp": 50828445.84585009,
+      "vwap_24h_usd": 0.98237191,
+      "trades_24h": 37565,
+      "change_from_24h_open_percent": -1.589773,
+      "last_vs_vwap_percent": -1.573936,
+      "position_in_24h_range_percent": 10.60776,
+      "raw_response_sha256": "3faab661464e183261b7a7a093048193ada7d764ba4cec946d932ebb8f9ba2bc",
+      "model_eligible": false,
+      "limitations": [
+        "Kraken ticker response supplies no exchange event timestamp; capture time is bracketed by the two clock observations.",
+        "Single venue and top-of-book only; displayed size is transient and not consolidated executable liquidity.",
+        "Hash is over the exact web-rendered JSON response text stored in this artifact, not independently captured wire bytes."
+      ]
+    },
+    "binance_xrpusdt_perpetual_orderbook": {
+      "source": "Basis liquidity heatmap",
+      "source_url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "source_snapshot_utc": "2026-11-18T20:26:00Z",
+      "market_type": "perpetual",
+      "venue": "Binance",
+      "scope": "nearest 1,000 levels on each side",
+      "mid_usd": 0.9652,
+      "spread_bps": 1.04,
+      "total_bids_usd": 30700000,
+      "total_offers_usd": 27600000,
+      "bid_share_within_1_percent": 51,
+      "depth_usd": {
+        "within_0_1_percent": {
+          "bids": 1100000,
+          "asks": 1200000
+        },
+        "within_0_25_percent": {
+          "bids": 3000000,
+          "asks": 3400000
+        },
+        "within_0_5_percent": {
+          "bids": 6700000,
+          "asks": 7500000
+        },
+        "within_1_percent": {
+          "bids": 10900000,
+          "asks": 10700000
+        },
+        "within_2_percent": {
+          "bids": 18000000,
+          "asks": 16600000
+        }
+      },
+      "largest_resting_levels": [
+        {
+          "side": "offer",
+          "price": 0.968,
+          "size_usd": 410000,
+          "distance_percent": 0.3
+        },
+        {
+          "side": "offer",
+          "price": 0.9679,
+          "size_usd": 392000,
+          "distance_percent": 0.28
+        },
+        {
+          "side": "offer",
+          "price": 0.9674,
+          "size_usd": 373000,
+          "distance_percent": 0.23
+        },
+        {
+          "side": "bid",
+          "price": 0.9635,
+          "size_usd": 342000,
+          "distance_percent": -0.17
+        },
+        {
+          "side": "bid",
+          "price": 0.9608,
+          "size_usd": 302000,
+          "distance_percent": -0.45
+        },
+        {
+          "side": "bid",
+          "price": 0.9598,
+          "size_usd": 299000,
+          "distance_percent": -0.55
+        }
+      ],
+      "interpretation": "Near-mid asks exceed bids inside ±0.5%, while the ±1% and ±2% bands are close to balanced with a slight bid skew. This is a single-venue perpetual resting-book snapshot, not spot depth or executed flow.",
+      "model_eligible": false,
+      "limitations": [
+        "Not a spot order book.",
+        "Resting liquidity can be cancelled, replenished or spoofed; displayed walls are not commitments.",
+        "Snapshot is 36 minutes older than the Kraken ticker capture."
+      ]
+    }
+  },
+  "derivatives": {
+    "liqwall": {
+      "source_url": "https://liqwall.com/coins/xrp",
+      "snapshot_utc": "2026-11-18T20:32:00Z",
+      "price_usd": 0.9661,
+      "open_interest_usd": 935000000,
+      "open_interest_change_24h_percent": -2.3,
+      "funding_average_percent_per_8h": -0.0002,
+      "binance_funding_percent_per_8h": -0.0021,
+      "liquidations_24h_usd": 5600000,
+      "long_liquidations_usd": 2300000,
+      "short_liquidations_usd": 3300000,
+      "short_liquidation_share_percent": 59,
+      "binance_accounts_long_percent": 75,
+      "hyperliquid_liquidation_map": {
+        "longs_within_10_percent_below_usd": 3100000,
+        "largest_long_level": {
+          "price": 0.888,
+          "size_usd": 530000
+        },
+        "shorts_within_10_percent_above_usd": 1400000,
+        "largest_short_level": {
+          "price": 1.047,
+          "size_usd": 354000
+        }
+      },
+      "model_eligible": false
+    },
+    "tradradar": {
+      "source_url": "https://tradradar.io/markets/xrp",
+      "snapshot_utc": "2026-11-18T16:05:00Z",
+      "price_usd": 0.9751,
+      "open_interest_usd": 1320000000,
+      "open_interest_change_24h_percent": 1.94,
+      "venue_count": 7,
+      "venues": [
+        "Binance",
+        "Bybit",
+        "Gate",
+        "MEXC",
+        "Bitget",
+        "OKX",
+        "Hyperliquid"
+      ],
+      "oi_weighted_funding_percent_per_8h": -0.0039,
+      "liquidations_24h_lower_bound_usd": 4660000,
+      "long_liquidations_usd": 1580000,
+      "short_liquidations_usd": 3070000,
+      "long_short_ratio": 3.3,
+      "long_accounts_percent": 76.8,
+      "model_eligible": false
+    },
+    "reconciliation": {
+      "open_interest_difference_usd": 385000000,
+      "higher_snapshot_relative_to_lower_percent": 41.1765,
+      "funding_magnitude_ratio_approx": 19.5,
+      "conclusion": "Both providers report negative funding and more short than long liquidations, but OI differs by $385M and reported funding magnitudes differ by about 19.5x. Snapshot times, venue coverage, contract universe, weighting and USD conversion are not harmonized. Preserve each series; do not average or infer a directional signal.",
+      "counterevidence": "Liqwall reports 75% of Binance accounts long despite negative average funding and short-dominant liquidations. Account counts, notional-weighted funding and realized liquidations measure different things."
+    }
+  },
+  "etf_flow_reconciliation": {
+    "xrp_insights": {
+      "source_url": "https://xrp-insights.com/data",
+      "generated_at_utc": "2026-11-18T17:25:02.976Z",
+      "data_as_of": "2026-11-17",
+      "provisional_row_date": null,
+      "nov16_to_nov17_net_flow_xrp": 159134,
+      "total_xrp_holdings_nov17": 1189261215,
+      "universe": "six US spot XRP ETFs plus BITW XRP sleeve",
+      "methodology": "Issuer-reported holdings deltas; GXRP flow excluded; XRPR exposure partly held through another XRP ETP; BITW is a multi-asset index fund; holdings changes can include fees and index rebalancing, not only creations/redemptions.",
+      "model_eligible": false
+    },
+    "cryptokeyhole": {
+      "source_url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "updated_at_utc": "2026-11-18T20:51:00Z",
+      "nov17_partial_flow_xrp": -3251,
+      "nov17_coverage": "2 of 4 daily-readable funds, out of 6 listed",
+      "missing_funds": [
+        "Bitwise XRP",
+        "Franklin Templeton XRPZ"
+      ],
+      "latest_complete_day": "2026-11-13",
+      "last_complete_five_day_flow_xrp": -4923033,
+      "methodology": "Reads issuer daily holdings files for its four-fund universe; does not work around GXRP bot challenge; excludes XRPR because direct holdings are not its full holdings and part of exposure is held through other ETPs.",
+      "model_eligible": false
+    },
+    "bykaranteli": {
+      "source_url": "https://bykaranteli.com/etf/xrp",
+      "updated_at_utc": "2026-11-18T09:09:00Z",
+      "nov17_net_flow_usd": -6100000,
+      "nov17_coverage": "five funds",
+      "five_day_net_flow_usd": -7200000,
+      "total_net_assets_usd": 1080000000,
+      "cumulative_net_inflow_usd": 1780000000,
+      "nov17_row_status": "provisional until settled",
+      "fund_rows": {
+        "XRP_Bitwise_usd": 0,
+        "XRPZ_Franklin_usd": 0,
+        "XRPC_Canary_usd": -5000000,
+        "TOXR_21Shares_usd": 0,
+        "GXRP_Grayscale_usd": -1100000
+      },
+      "model_eligible": false
+    },
+    "reconciliation": "These figures are not comparable: XRP Insights reports +159,134 XRP over two settled days across six spot funds plus BITW with GXRP flow excluded; CryptoKeyhole reports a partial −3,251 XRP for Nov17 from two of four readable funds; ByKaranteli reports a provisional −$6.1M for Nov17 across five funds. Do not average. The earlier XRP Insights +986 XRP Nov17 page observation was superseded by its later generated dataset showing +159,134 XRP for Nov16–17; retain the older observation as a stale vintage, not a final daily flow."
+  },
+  "macro_context": {
+    "reuters": {
+      "source_url": "https://www.reuters.com/world/middle-east/dollar-holds-near-19-month-high-data-supports-case-us-rate-hikes-2026-11-18/",
+      "publication_date": "2026-11-18",
+      "dollar_index": 103.78,
+      "dollar_context": "near a 19-month high",
+      "fed_context": "Governor Christopher Waller called for more aggressive inflation action; markets fully priced a 25bp December increase with a small chance of a larger move.",
+      "yen_context": "little changed near levels associated with past Japanese intervention"
+    },
+    "ap_fed_minutes": {
+      "source_url": "https://apnews.com/article/9e72f3b6e3484173471cc382d6918de0",
+      "publication_date": "2026-11-18",
+      "context": "Nearly all officials expected a 25bp December increase; some discussed 50bp; markets priced a December hike near 95%."
+    },
+    "wsj_geopolitics_energy": {
+      "source_url": "https://www.wsj.com/finance/commodities-futures/oil-edges-lower-as-supply-surplus-prospects-offset-mideast-tensions-cc9879f2",
+      "publication_date": "2026-11-18",
+      "context": "Oil supply-surplus expectations, rising inventories and OPEC+ output competed with Middle East security risks and tanker attacks."
+    },
+    "interpretation": "A strong dollar and hawkish Fed repricing are potential broad risk/liquidity headwinds; energy and geopolitical reports add uncertainty. No XRP causal estimate was performed."
+  },
+  "phrase_and_entity_audit": {
+    "ASK_Coin": "No new exact-match primary evidence establishing an XRP, Ripple or SBI relationship. Existing candidate identities remain separate.",
+    "actual_capital": "No new primary filing proves a new Evernorth equity-line drawdown or XRP purchase. Secondary references to financing capacity are not cash received or deployed.",
+    "SBIC_ChatGPT_SBIC": "No new exact-phrase result that changes the primary-source resolution: SBIC East/Central/West remain separate Japanese SME investment/consultation companies, not SBI Holdings.",
+    "Camilla_Kamilah_Stevenson": "No new identity-verified public YouTube videos found. SBiC Connect is an unrelated channel and is not attributed to Kamilah Stevenson.",
+    "SBI_Coinbase_Circle_Ripple": "No new primary announcement in this capture changes the existing relationship graph. Existing verified edges remain distribution, equity, reserve/custody and platform-access relationships; none alone proves incremental XRP purchases, collateral utilization or XRP-denominated settlement."
+  },
+  "hypotheses": {
+    "near_term_deleveraging": "Plausible: Liqwall reports OI down 2.3%, negative funding and short liquidations exceeding long liquidations. Counterevidence: account-level long skew is high; provider coverage is not harmonized.",
+    "spot_supply_pressure": "Plausible but unproven: Kraken last is 1.57% below 24h VWAP and 10.6% above the 24h low; top ask size is 3.35x top bid at one level. Counterevidence: only one venue and one level; Binance perpetual depth is nearly balanced at ±1%; no synchronized spot trade-flow evidence.",
+    "resting_bid_support": "Possible but unproven: Binance perpetual book shows 51% bid share within ±1% and slightly more bids within ±2%. Counterevidence: asks are larger inside ±0.5%; displayed liquidity can disappear; this is not spot.",
+    "institutional_etf_demand": "Unresolved: tracker flows disagree because fund universes, row vintages and definitions differ; the latest XRP Insights aggregate is positive over two days while other sources show partial or provisional outflows.",
+    "macro_beta_headwind": "Plausible broad context: strong USD and hawkish Fed pricing. Counterevidence: no estimated XRP-specific beta or causal impact."
+  },
+  "prediction": {
+    "status": "NOT_ISSUED",
+    "directional_probability": null,
+    "forecast_count": 0,
+    "reason": "The current market observations are asynchronous, provider universes differ, the spot ticker has no event timestamp, current order-book data are not a continuous sequence, ETF flow vintages conflict, and the point-in-time/raw-to-feature admission requirements remain unsatisfied.",
+    "next_required_evidence": [
+      "Timestamped multi-venue spot trades and sequenced L2 snapshots with raw-byte receipts.",
+      "Derivatives venue-by-venue OI in native contract units, USD conversion basis, funding methodology and synchronized event times.",
+      "Issuer-level ETF holdings files with settled/provisional status, complete fund coverage and custody/creation-redemption reconciliation.",
+      "Restore feature history from retained raw artifacts and demonstrate deterministic raw-to-feature reconstruction.",
+      "Complete chronological walk-forward evaluation against naive, momentum, mean-reversion and volatility baselines, calibration and drift gates."
+    ]
+  },
+  "platform_coordination": {
+    "ChatGPT_GitHub": "Verified current-session GitHub connector authentication and repository data flow.",
+    "Claude": "Unverified; no authenticated dispatch or data flow.",
+    "Grok": "Unverified; no authenticated dispatch or data flow.",
+    "Gemini": "Unverified; no authenticated dispatch or data flow.",
+    "Copilot": "Unverified; no authenticated repository dispatch or data flow.",
+    "Codex": "Unverified; no authenticated repository dispatch or data flow.",
+    "Hugging_Face": "Unverified; no authenticated upload or data flow; no upload performed.",
+    "Kaggle": "Unverified; no authenticated dataset/competition data flow; no submission performed.",
+    "Databricks": "Unverified; no authenticated workspace data flow; no writes performed.",
+    "external_dispatch_performed": false,
+    "external_data_transfer_performed": false
+  },
+  "source_receipts": [
+    {
+      "source_id": "kraken_xrpusd_ticker",
+      "publisher": "Kraken",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "capture_time_upper_bound_utc": "2026-11-18T21:02:30Z",
+      "source_event_time_utc": null,
+      "independence_group": "kraken_exchange_direct",
+      "capture_type": "complete_web_rendered_json_response_text",
+      "capture_sha256": "3faab661464e183261b7a7a093048193ada7d764ba4cec946d932ebb8f9ba2bc",
+      "captured_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"0.96709000\",\"5171\",\"5171.000\"],\"b\":[\"0.96702000\",\"1544\",\"1544.000\"],\"c\":[\"0.96691000\",\"18.75507488\"],\"v\":[\"40243089.64532275\",\"50828445.84585009\"],\"p\":[\"0.98374605\",\"0.98237191\"],\"t\":[30517,37565],\"l\":[\"0.96218000\",\"0.96218000\"],\"h\":[\"1.00677000\",\"1.00677000\"],\"o\":\"0.98253000\"}}}",
+      "model_eligible": false,
+      "limitation": "Hash covers the exact rendered response text, not independently captured HTTP wire bytes."
+    },
+    {
+      "source_id": "basis_binance_xrp_perpetual_book",
+      "publisher": "Basis",
+      "url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "source_as_of_utc": "2026-11-18T20:26:00Z",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "independence_group": "binance_perpetual_book_aggregator",
+      "capture_type": "web_rendered_excerpt",
+      "capture_sha256": "48ffb91dc7f76ab326fdc7c5524780d77c36007d325a099131b2e612e9b53594",
+      "captured_text": "Binance XRPUSDT perpetual; nearest 1,000 levels each side; read 2026-11-18 20:26 UTC; refreshed every 15 minutes.\nMid 0.9652; spread 1.04 bps; bids $30.7M; offers $27.6M; bid share within ±1% 51%; depth within ±0.5% $14.2M; 24h volume $686M.\nWithin ±0.1%: $1.1M bids / $1.2M asks; ±0.25%: $3.0M / $3.4M; ±0.5%: $6.7M / $7.5M; ±1%: $10.9M / $10.7M; ±2%: $18.0M / $16.6M.\nLargest displayed walls: offers 0.9680 $410K, 0.9679 $392K, 0.9674 $373K; bids 0.9635 $342K, 0.9608 $302K, 0.9598 $299K.",
+      "model_eligible": false,
+      "limitation": "Rendered excerpt; not complete raw book bytes or continuous sequence."
+    },
+    {
+      "source_id": "liqwall_derivatives",
+      "publisher": "Liqwall",
+      "url": "https://liqwall.com/coins/xrp",
+      "source_as_of_utc": "2026-11-18T20:32:00Z",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "independence_group": "multi_exchange_derivatives_aggregator_liqwall",
+      "capture_type": "web_rendered_excerpt",
+      "capture_sha256": "4a67c7ee0b9164a9ac6329648c5e5cfa988606635c63a0ad013dca204da5bf5d",
+      "captured_text": "As of 20:32, November 18, 2026 UTC: XRP $0.9661; 24h liquidations $5.6M ($2.3M longs, $3.3M shorts); funding −0.0021% per 8h on Binance and −0.0002% average across exchanges; open interest $935M, −2.3% in 24h; 75.0% of Binance accounts with XRP positions long.\nHyperliquid liquidation map: $3.1M long liquidations within 10% below, largest $530K at 0.888; $1.4M short liquidations within 10% above, largest $354K at 1.047.\nExchange liquidation totals: Binance $2.9M; OKX $1.1M; Bybit $771K; Hyperliquid $712K; Gate $124K.",
+      "model_eligible": false,
+      "limitation": "Provider aggregate; venue coverage and contract universe require independent validation."
+    },
+    {
+      "source_id": "tradradar_derivatives",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_as_of_utc": "2026-11-18T16:05:00Z",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "independence_group": "multi_exchange_derivatives_aggregator_tradradar",
+      "capture_type": "web_rendered_excerpt",
+      "capture_sha256": "afd62368cac53bfa06c2543cbd27a8f3385aa1179f3a462fd3314fe6425b5aef",
+      "captured_text": "Updated Nov 18, 2026 16:05 UTC, 15-minute delay. XRP mark $0.9751 (+1.47% 24h); OI $1.32B across 7 exchanges (+1.94%); OI-weighted funding −0.0039% per 8h; liquidations at least $4.66M across 5 exchanges ($1.58M longs, $3.07M shorts); long/short ratio 3.30 (76.8% long).\nExchange OI: Binance $332.60M; Bybit $235.94M; Gate $206.49M; MEXC $202.15M; Bitget $184.24M; OKX $88.84M; Hyperliquid $73.47M.",
+      "model_eligible": false,
+      "limitation": "Different timestamp and exchange coverage from Liqwall; no cross-provider normalization."
+    },
+    {
+      "source_id": "xrp_insights_etf_totals",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/data",
+      "source_as_of_utc": "2026-11-17",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "independence_group": "issuer_holdings_derived_etf_tracker_xrp_insights",
+      "capture_type": "web_rendered_excerpt",
+      "capture_sha256": "0972e8d70d83cfacf5ee2de0d8428343aa7a76808ed57605958f086e2ab51076",
+      "captured_text": "Generated 2026-11-18T17:25:02.976Z; data_as_of 2026-11-17; latest_row_date 2026-11-17; provisional_row_date null; 238 trading days; 1,646 per-fund rows.\nNov 16–17 net flow +159,134 XRP (~$154K); total held Nov 17 1,189,261,215 XRP.\nMethod: holdings delta from issuer pages; includes 6 spot XRP ETFs plus BITW XRP sleeve; GXRP flow excluded; XRPR has part of exposure through another XRP ETP; BITW changes can reflect index rebalancing; holdings changes can include fee accruals; rows may be re-settled next morning; data_as_of is latest settled row.",
+      "model_eligible": false,
+      "limitation": "Issuer-derived holdings deltas are not identical to primary cash creation/redemption flows; exclusions and nested ETP exposure remain."
+    },
+    {
+      "source_id": "cryptokeyhole_etf",
+      "publisher": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_as_of_utc": "2026-11-17",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "independence_group": "issuer_holdings_derived_etf_tracker_cryptokeyhole",
+      "capture_type": "web_rendered_excerpt",
+      "capture_sha256": "92de9009203b14ec8118b812b0a76852dc834c10a2c0c2bac20d15b94513152b",
+      "captured_text": "Updated 2026-11-18 20:51 UTC. On 17 Nov 2026, 2 of 4 US spot XRP ETFs it reads daily (of 6 listed) had reported a flow: −3,251 XRP (about −$3K), still waiting for Bitwise XRP and Franklin Templeton XRPZ. Latest complete day 13 Nov: −9,967 XRP. Last five complete trading days 9–13 Nov: −4,923,033 XRP.\nCryptoKeyhole excludes daily GXRP because the issuer page blocks automated reads and it does not work around the restriction; it also excludes XRPR because its reported direct holdings are not its full holdings and it owns part of exposure through other ETPs.",
+      "model_eligible": false,
+      "limitation": "Partial fund coverage; not a complete daily flow."
+    },
+    {
+      "source_id": "bykaranteli_etf",
+      "publisher": "ByKaranteli",
+      "url": "https://bykaranteli.com/etf/xrp",
+      "source_as_of_utc": "2026-11-17",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "independence_group": "multi_fund_etf_aggregator_bykaranteli",
+      "capture_type": "web_rendered_excerpt",
+      "capture_sha256": "151a561bc8389881ce0581695cc01e1538f5339fb9dc718c9afaae75fc3f19a1",
+      "captured_text": "Refreshed 2026-11-18 09:09 UTC. US spot XRP ETFs reported −$6.1M net flow on 2026-11-17; 5-day net −$7.2M; total net assets $1.08B; cumulative inflow +$1.78B. Five funds in table: XRP Bitwise $0; XRPZ Franklin $0; XRPC Canary −$5.0M; TOXR 21Shares $0; GXRP Grayscale −$1.1M. The row was described as provisional until settled.",
+      "model_eligible": false,
+      "limitation": "Different fund universe and provisional status; not reconciled to the other trackers."
+    },
+    {
+      "source_id": "reuters_macro",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/dollar-holds-near-19-month-high-data-supports-case-us-rate-hikes-2026-11-18/",
+      "source_as_of_utc": "2026-11-18",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "independence_group": "macro_reporting_reuters",
+      "capture_type": "web_search_excerpt",
+      "capture_sha256": "b50703d4e8ae24f09b9f0d67963eff7f582e6016353dbe8ce24b4bf1b643a6d5",
+      "captured_text": "Reuters, 2026-11-18: US dollar index rose 0.2% to 103.78, its highest since April 2025; Fed Governor Christopher Waller called for more aggressive action to curb inflation, including a possible half-point rate increase or guidance signaling further hikes; markets fully pricing a quarter-point December increase with a small chance of a larger move; yen little changed near levels associated with past Japanese intervention; bitcoin fell 1%.",
+      "model_eligible": false,
+      "limitation": "Search excerpt, not complete article bytes; macro context is not an XRP causal estimate."
+    },
+    {
+      "source_id": "ap_fed_minutes",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/9e72f3b6e3484173471cc382d6918de0",
+      "source_as_of_utc": "2026-11-18",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "independence_group": "macro_reporting_ap",
+      "capture_type": "web_search_excerpt",
+      "capture_sha256": "a0858994ee86556296b1bed151d0a57460fdcb0e27590eb0ccfc824054c0d951",
+      "captured_text": "AP, 2026-11-18: Minutes from the Fed's Oct 27–28 meeting said nearly all officials expected a quarter-point December increase; some favored a 50bp increase; markets priced a December hike near 95%; officials differed on how aggressive further increases should be.",
+      "model_eligible": false,
+      "limitation": "Search excerpt, not complete article bytes; market-implied probability is time-sensitive."
+    },
+    {
+      "source_id": "wsj_oil_geopolitics",
+      "publisher": "The Wall Street Journal",
+      "url": "https://www.wsj.com/finance/commodities-futures/oil-edges-lower-as-supply-surplus-prospects-offset-mideast-tensions-cc9879f2",
+      "source_as_of_utc": "2026-11-18",
+      "captured_at_utc": "2026-11-18T21:02:25Z",
+      "independence_group": "macro_reporting_wsj",
+      "capture_type": "web_search_excerpt",
+      "capture_sha256": "53897755b0bec24bae30ca2a4c53a2de52815474c818d7fdf56be42119419a74",
+      "captured_text": "Oil prices fell on expectations that supply will outpace demand, with rising OPEC+ production, resilient Russian exports and growing U.S. inventories outweighing risks from continued Middle East tensions and tanker attacks. ING analysts said the oil balance is likely to loosen as supply recovers, limiting the potential for a sustained price rebound. The American Petroleum Institute reported that U.S. crude inventories increased by 5.3 million barrels last week. Brent dropped 1.9% to $91.38 a barrel, while WTI fell 2.6% to $83.80 in early European trading. Reports that Saudi Arabia raised output to 10.5 million barrels per day, alongside increased production in Iraq and Kuwait, added to concerns about a surplus. Geopolitical risks remained: Iran said its drones struck a U.S. radar base in Bahrain, though U.S. Central Command said they were intercepted without damage or injuries.",
+      "model_eligible": false,
+      "limitation": "Search excerpt, not complete article bytes; geopolitical context is not an XRP causal estimate."
+    }
+  ],
+  "integrity": {
+    "hash_algorithm": "SHA-256",
+    "hash_scope": "Exact captured text included for each receipt.",
+    "capture_type_limitation": "Web-rendered JSON and page/search excerpts are not independently captured HTTP wire bytes. They are preserved as rendered evidence and explicitly remain model-ineligible.",
+    "external_worm_anchor": "NOT_ANCHORED",
+    "git_immutability": "Artifact will be committed to the integration branch; Git object history is tamper-evident but not an external WORM or independent trusted timestamp.",
+    "source_independence": "Independent publisher labels do not imply independent underlying data. Exchange aggregators may share public exchange feeds; ETF trackers derive from overlapping issuer files."
+  }
+}
