@@ -2567,33 +2567,6 @@ Inspect the repository for this task and return only the evidence report.
 
         cycle.transition(RepairState.SYNCING)
         self._persist(cycle)
-        for remote in remotes:
-            if remote == "origin":
-                continue
-            if remote != "gitlab":
-                cycle.sync.append(
-                    RemoteSyncEvidence(
-                        remote=remote,
-                        applicable=False,
-                        branch=branch_name,
-                        sha=cycle.commit.sha,
-                        reason="Remote sync not applicable.",
-                    )
-                )
-                continue
-            cycle.sync.append(self.remote_verifier.push_and_verify(remote, branch_name, cycle.commit.sha))
-
-        if not any(item.remote == "gitlab" for item in cycle.sync):
-            cycle.sync.append(
-                RemoteSyncEvidence(
-                    remote="gitlab",
-                    applicable=False,
-                    branch=branch_name,
-                    sha=cycle.commit.sha,
-                    reason="GitLab remote not configured.",
-                )
-            )
-
         cycle.synchronization_recorded = True
         applicable_sync = [item for item in cycle.sync if item.applicable]
         cycle.remote_sync_verified = all(item.verified for item in applicable_sync)
