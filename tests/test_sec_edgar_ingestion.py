@@ -150,4 +150,4 @@ def test_capture_sec_edgar_stores_raw_receipts_and_filing_events(tmp_path, monke
     assert len(result["receipts"]) == 6 and len(calls) == 6
     assert all(event["raw_content_sha256"] and event["receipt_id"] for event in result["filing_events"])
     assert all(event["model_eligible"] is False for event in result["filing_events"])
-    assert archive.verify()["valid"] is True
+    assert archive.verify()["verified"] is True

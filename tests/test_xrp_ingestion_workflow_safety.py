@@ -19,6 +19,7 @@ def test_production_schedule_is_separate_from_integration_smoke():
         ".github/workflows/xrp-public-ingestion.yml",
         "barrot_agent/evolution/research_timestamp_corrections.py",
         "barrot_agent/evolution/xrp_public_ingestion.py",
+        "barrot_agent/evolution/sec_edgar.py",
     ]
     assert "workflow_dispatch" in payload["on"]
     assert payload["jobs"]["capture"]["if"] == (
