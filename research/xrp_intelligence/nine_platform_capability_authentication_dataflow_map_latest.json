@@ -1,32 +1,32 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-18T23:08:34Z",
+  "captured_at_utc": "2026-11-18T23:30:10.969Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
     "main_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
     "integration": {
       "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
-      "code_head_sha": "da5eef1bca0fee4f527c22fd99c8d4427cc39d7b",
+      "code_head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
       "pr_number": 1663,
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 355,
+      "ahead_by": 360,
       "behind_by": 0,
       "changed_files": 1438,
       "changed_workflow_files": 68,
       "formal_reviews": 0,
-      "snapshot_head_sha": "066d8c9910e66fcaa58a26053f78dd00f9d65963",
-      "commits": 355,
-      "additions": 517373,
+      "snapshot_head_sha": "4cf9b185e95b3b2231713d4dba0246eb394d768c",
+      "commits": 360,
+      "additions": 518065,
       "deletions": 6754,
-      "mergeable_state": "draft; latest tested PR head 5ef5482 failed one brittle metadata assertion (expected 1,436 changed files while GitHub reports 1,437); assertion remediation and Run 29 evidence are being committed on this existing branch; zero independent reviews; branch-protection details inaccessible (403); fallback ruleset disabled; CODEOWNERS self-only; main paid-issue publisher remains active; Pages publication is automatic; transitive workflow audit incomplete",
+      "mergeable_state": "draft; expanded full repository suite passed on exact code/test head 17c5afe (4,277 passed, 1 skipped, zero failed); current branch advanced to 4cf9b with a research-evidence-only artifact update, so exact-head CI is pending on 4cf9b; zero independent reviews; main branch-protection details inaccessible (403), fallback ruleset disabled, CODEOWNERS self-only, main paid-issue publisher and automatic Pages side effects remain blockers; transitive workflow audit incomplete",
       "review_comments": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
-      "current_pr_head_sha": "066d8c9910e66fcaa58a26053f78dd00f9d65963",
+      "current_pr_head_sha": "4cf9b185e95b3b2231713d4dba0246eb394d768c",
       "snapshot_ahead_by": 355,
       "snapshot_changed_files": 1438,
       "handoff_update_commit_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
@@ -41,7 +41,10 @@
       "latest_exact_head_pr_money_audit_run": 44414201090,
       "latest_exact_head_pr_dependency_audit_run": 44414201173,
       "latest_exact_head_pr_fail_closed_run": 44414201359,
-      "last_audited_at_utc": "2026-11-18T23:08:34Z"
+      "last_audited_at_utc": "2026-11-18T23:30:10.969Z",
+      "latest_verified_full_suite_head_sha": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
+      "latest_verified_full_suite_run": 44419516835,
+      "current_branch_head_full_suite_status": "pending on 4cf9b185e95b3b2231713d4dba0246eb394d768c"
     },
     "tree_counts": {
       "main": {
@@ -131,6 +134,12 @@
         "status": "PROPOSED_NOT_DISPATCHED",
         "task": "Independently verify Ripple, Coinbase, Circle, SBI Holdings, SBI Ripple Asia and SBIC East/Central/West legal-entity relationships from primary filings and official disclosures; identify disconfirming evidence.",
         "expected_output": "Claim-by-claim evidence packets with primary-source citations, dates, ownership/control distinctions and minority objections"
+      },
+      "corporate_context": {
+        "evidence_status": "public_corporate_use_only",
+        "source_url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+        "observation": "SBI's November 2026 presentation reports group-wide use/deployment of Claude Mythos and Claude Security.",
+        "limitation": "This is not evidence of a Claude account, API authentication, permission grant or data flow to Barrot."
       }
     },
     "Grok": {
@@ -282,8 +291,9 @@
       "credentials_tested_live": false,
       "prompt_redaction_or_data_classification_gate": "not evidenced",
       "user_data_egress_approval": "not evidenced",
-      "disposition": "Do not merge or dispatch until the provider data-flow and authorization policy is approved and tested."
-    }
+      "disposition": "Do not merge or dispatch until provider data-flow policy, authorization and live authentication are independently tested."
+    },
+    "sbi_claude_context": "SBI's public November 2026 presentation reports Claude Mythos/Claude Security use within SBI Group. This is corporate adoption evidence only; it does not verify a Barrot connection or authorize external dispatch."
   },
   "prediction_engine": {
     "source_registry": {
@@ -463,71 +473,69 @@
     "walk_forward_forecasts": 0,
     "drift_status": "INSUFFICIENT_DATA",
     "latest_derivatives_snapshot": {
-      "captured_at_utc": "2026-11-18T19:02:00Z",
+      "captured_at_utc": "2026-11-18T20:30:00Z",
       "forecast_eligible": false,
+      "xrpsonar": {
+        "open_interest_usd": 861300000,
+        "liquidations_24h_usd": 5300000,
+        "longs_usd": 2300000,
+        "shorts_usd": 3000000,
+        "source_url": "https://xrpsonar.com/xrp-today"
+      },
       "liqwall": {
         "open_interest_usd": 949000000,
-        "open_interest_change_24h_percent": -2.2,
-        "funding_average_percent_per_8h": 0.0021,
-        "binance_funding_percent_per_8h": -0.0021,
-        "binance_accounts_long_percent": 74.8,
-        "liquidations_24h_usd": 5400000,
-        "longs_usd": 2100000,
-        "shorts_usd": 3300000,
+        "open_interest_change_24h_percent": -2.1,
+        "funding_average_percent_per_8h": 0.0012,
+        "liquidations_24h_usd": 5500000,
         "source_url": "https://liqwall.com/coins/xrp"
       },
       "tradradar": {
-        "captured_at_utc": "2026-11-18T16:05:00Z",
-        "open_interest_usd": 1320000000,
+        "open_interest_usd": 1290000000,
         "venues": 7,
-        "open_interest_change_24h_percent": 1.94,
-        "funding_percent_per_8h": -0.0039,
-        "liquidations_minimum_usd": 4660000,
-        "longs_usd": 1580000,
-        "shorts_usd": 3070000,
-        "long_short_account_ratio": 3.3,
+        "open_interest_change_24h_percent": -2.12,
+        "funding_percent_per_8h": -0.001,
+        "liquidations_minimum_usd": 5640000,
+        "longs_usd": 2450000,
+        "shorts_usd": 3190000,
+        "long_short_account_ratio": 3.33,
+        "long_accounts_percent": 76.9,
         "source_url": "https://tradradar.io/markets/xrp"
       },
-      "reconciliation": "Provider OI totals and 24h direction differ; venue universes and capture times differ. Do not average."
+      "reconciliation": "OI ranges from $861.3M to $1.29B across three provider universes. Latest 24h changes are negative in all three; funding aggregate signs differ and venue-level funding is mixed. Do not average."
     },
     "etf_flow_reconciliation": {
-      "as_of": "2026-11-17 US trading day; sources retrieved 2026-11-18",
+      "as_of": "2026-11-17 US trading day; sources retrieved 2026-11-18 22:55 UTC",
       "observations": [
         {
           "source": "CryptoKeyhole",
-          "net_flow_xrp": -3251,
-          "reported_funds": 2,
-          "expected_daily_read_funds": 4,
-          "coverage": "partial; waiting for Bitwise XRP and Franklin Templeton XRPZ",
-          "latest_issuer_file_read_utc": "2026-11-18T05:25:00Z",
+          "nov17_flow_xrp": -3251,
+          "funds_reported": 2,
+          "funds_expected": 4,
+          "nov18_files_available": false,
+          "latest_complete_day": "2026-11-13",
+          "latest_complete_day_flow_xrp": -9967,
+          "five_complete_sessions_flow_xrp": -4923033,
           "source_url": "https://cryptokeyhole.com/etf-flows/xrp/"
         },
         {
           "source": "XRP Insights",
-          "net_flow_xrp": 986,
-          "week_47_two_day_flow_xrp": 159100,
-          "fund_universe": "six spot XRP ETFs plus BITW; GXRP excluded from flow totals while a data gap is corrected",
-          "total_holdings_xrp": 1190000000,
-          "net_assets_usd": 778240000,
+          "nov17_flow_xrp": 986,
+          "provisional": true,
+          "nov16_flow_xrp": 158134,
+          "holdings_xrp": 1190000000,
+          "net_assets_usd": 778200000,
           "source_url": "https://xrp-insights.com/"
         },
         {
-          "source": "ByKaranteli",
-          "net_flow_usd": -6100000,
-          "fund_count": 5,
-          "status": "provisional until issuer settlement",
-          "source_url": "https://bykaranteli.com/etf/xrp"
-        },
-        {
           "source": "Alpha Finance",
-          "net_flow_usd": -6100000,
-          "fund_count": 5,
-          "coverage": "five-fund series through 2026-11-17",
+          "nov17_flow_usd": -6100000,
+          "funds": 5,
+          "last_7_sessions_usd": -15900000,
+          "last_30_sessions_usd": -10900000,
           "source_url": "https://alphafinance.io/etf/xrp/"
         }
       ],
-      "reconciliation": "Do not average. CryptoKeyhole's 2/4 daily-readable observation is partial; XRP Insights uses six spot funds plus BITW but excludes GXRP from flow totals; ByKaranteli and Alpha Finance both report five-fund USD outflows, likely overlapping universes and not independent issuer confirmations.",
-      "model_eligible": false
+      "reconciliation": "Different fund universes, units and reporting completeness. XRP Insights is the same publisher as the exchange-wallet dashboard; Alpha Finance and CryptoKeyhole are separate aggregators but not independent issuer confirmations. Do not average."
     },
     "last_repository_verification": {
       "head_sha": "da5eef1bca0fee4f527c22fd99c8d4427cc39d7b",
@@ -551,7 +559,39 @@
       "pr_fail_closed_gate_run": 44411860777,
       "wheel_build_and_installed_mission_verification": "PASS"
     },
-    "production_schedule_status": "NOT_ACTIVE_ON_MAIN — xrp-public-ingestion.yml and barrot_agent/data/missions/primary_mission.json are absent from current main; hourly/daily cron exists only on the integration branch."
+    "production_schedule_status": "NOT_ACTIVE_ON_MAIN — xrp-public-ingestion.yml and barrot_agent/data/missions/primary_mission.json are absent from current main; hourly/daily cron exists only on the integration branch.",
+    "exchange_wallet_balances": {
+      "xrp_insights": {
+        "as_of_utc": "2026-11-18T08:00:00Z",
+        "tracked_balance_xrp": 22190000000,
+        "tracked_wallets": 707,
+        "tracked_exchanges": 24,
+        "same_wallet_change_7d_xrp": -151900000,
+        "same_wallet_change_30d_xrp": -390100000,
+        "naive_total_change_7d_xrp": -141700000,
+        "naive_total_change_30d_xrp": 132200000,
+        "new_wallets_30d": 8,
+        "new_wallet_balances_30d_xrp": 522200000,
+        "source_url": "https://xrp-insights.com/exchange-balances"
+      },
+      "xrpsonar": {
+        "tracked_balance_xrp": 24670000000,
+        "net_outflow_24h_xrp": -24900000,
+        "source_url": "https://xrpsonar.com/xrp-today"
+      },
+      "reconciliation": "Wallet universes differ by approximately 2.48B XRP; XRP Insights' same-wallet 30d decrease conflicts with its naive total increase because new wallets add 522.2M. Not tradable float; do not average."
+    },
+    "xrp_supply_and_activity": {
+      "source_url": "https://xrpsonar.com/xrp-today",
+      "ripple_escrow_xrp": 31100000000,
+      "next_escrow_unlock_date": "2026-12-01",
+      "next_escrow_unlock_xrp": 1000000000,
+      "rlusd_supply_on_xrpl_usd": 729000000,
+      "rlusd_supply_total_xrpl_ethereum_usd": 2780000000,
+      "rwa_represented_value_usd": 4330000000,
+      "rwa_distributed_tokens_value_usd": 276000000,
+      "caveat": "Issuer-reported RWA notionals and stablecoin supply are not XRP demand or XRP collateral; gross escrow unlock is not net market supply."
+    }
   },
   "ci_evidence": {
     "exact_code_head": "da5eef1bca0fee4f527c22fd99c8d4427cc39d7b",
@@ -831,10 +871,10 @@
       "review_threads": 0,
       "requested_reviewers": 0,
       "mergeable": true,
-      "mergeable_state": "draft; previous tested head 5ef5482 failed one stale changed-file-count assertion; test and evidence-map correction in progress on the same branch",
-      "head_sha": "066d8c9910e66fcaa58a26053f78dd00f9d65963",
+      "mergeable_state": "draft; exact full suite passed on 17c5afe; current evidence-only successor 4cf9b is awaiting exact-head CI; no independent review and governance blockers remain",
+      "head_sha": "4cf9b185e95b3b2231713d4dba0246eb394d768c",
       "base_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
-      "ahead_by": 355,
+      "ahead_by": 360,
       "behind_by": 0,
       "changed_files": 1438,
       "changed_workflow_files": 68,
@@ -1008,7 +1048,7 @@
     "transitive_script_review_detail": "Run 26 inspected four invoked scripts and nine workflow paths. Full transitive review of all 67 changed workflow definitions, invoked scripts, downloaded artifacts and third-party action supply chains remains incomplete.",
     "required_status_check_contexts_status": "not verified; detailed branch-protection endpoint returned HTTP 403",
     "integration_branch_protected": false,
-    "least_privilege_status": "NOT_VERIFIED — connector repository permission includes admin, maintain and push; token scopes were not introspected; read-only research would require narrower permissions",
+    "least_privilege_status": "NOT_VERIFIED — token scopes were not introspected; repository permission includes admin/maintain/push/pull/triage, broader than read-only research.",
     "open_pr_backlog_count": 13,
     "provider_failover_pr_1668": {
       "state": "open",
@@ -1031,7 +1071,7 @@
     {
       "number": 1663,
       "classification": "blocked",
-      "note": "sole consolidated V3/XRP integration; draft; 355 ahead/0 behind; 1,438 changed files and 68 changed workflows; prior exact-head suite on 5ef5482 failed one stale changed-file-count assertion (1,436 expected vs 1,437 actual); assertion remediation committed on the same branch; no independent review; branch-protection detail inaccessible (403), fallback ruleset disabled, CODEOWNERS self-owned, automatic Pages publication and incomplete transitive workflow review block merge"
+      "note": "sole consolidated V3/XRP integration; draft; 360 ahead/0 behind; 1,438 changed files and 68 changed workflows; expanded full suite passed on exact head 17c5afe (4,277 passed, 1 skipped, zero failed); current evidence-only head 4cf9b is awaiting exact-head CI; zero independent review; branch-protection detail inaccessible (403), fallback ruleset disabled, CODEOWNERS self-owned, automatic Pages publication and incomplete transitive workflow review block merge"
     },
     {
       "number": 1664,
@@ -1162,15 +1202,30 @@
       "class_c_shares": 2359038,
       "class_c_share_class_percent": 7.5,
       "combined_common_ownership_percent": 21.4,
-      "attribution": "SBI Holdings may be deemed to have voting/investment power through controlled/managed entities; exact dollar or XRP contribution allocation is not disclosed."
+      "attribution": "SBI Holdings may be deemed to have voting/investment power through controlled/managed entities; exact dollar or XRP contribution allocation is not disclosed.",
+      "sbi_presentation_nov2_2026": {
+        "voting_rights_percent": 36.1,
+        "economic_interest_percent": 20.5,
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+        "note": "SBI presentation reports 36.1% voting rights and 20.5% economic interest. SEC 10-Q beneficial ownership table separately reports 39.9% of Class A voting shares and 21.4% combined common ownership through controlled/managed entities. Different denominators/timing; retain both until reconciled."
+      },
+      "reconciliation": "SEC 10-Q beneficial-ownership table: 39.9% of Class A voting shares, 7.5% of Class C class shares, 21.4% combined common ownership. SBI November 2 presentation: 36.1% voting rights and 20.5% economic interest. Different denominators/timing; do not collapse into one percentage."
     },
     "coinbase_relationship": "Evernorth selected Coinbase as principal market for impairment measurement; accounting reference only, not evidence of executed purchase venue.",
-    "model_eligibility": "research_only; point-in-time event ingestion and raw-byte receipts still required"
+    "model_eligibility": "research_only; point-in-time event ingestion and raw-byte receipts still required",
+    "evernorth_treasury_reconciliation": {
+      "close_xrp": 473276430,
+      "in_kind_xrp": 388910554,
+      "cash_purchased_xrp": 84365876,
+      "note": "Most treasury XRP was contributed in-kind; the cash-purchased portion is only 84.366M XRP from pooled private-placement cash. SBI's $200M is one investor contribution, not the exclusive source of the pooled purchase."
+    }
   },
   "institutional_relationship_graph": {
     "coinbase_circle": {
-      "relationship": "Coinbase exchanged its 50% Centre JV interest for 3.5% fully diluted equity in Circle in 2023; USDC reserve-interest revenue sharing continues.",
-      "source": "https://www.coinbase.com/en-gb/blog/ushering-in-the-next-chapter-for-usdc"
+      "relationship": "Coinbase exchanged its 50% Centre JV interest for a 3.5% fully diluted equity stake in Circle in 2023; its current exact percentage is not established in the reviewed Q3 2026 filing. Revenue sharing continues. Circle reported $331.3M Q3 and $986.6M nine-month distribution costs under its Coinbase agreements; Coinbase reported $22B average USDC balances in Q3 and approximately 50% of USDC economics. Circle's 10-Q shows this is not 50% of gross reserve income.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "secondary_source": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "as_of": "Q3 2026"
     },
     "coinbase_ripple": {
       "relationship": "RLUSD launched on Coinbase Prime, Coinbase Exchange and Retail on 2026-10-28; Coinbase Global Exchange collateral support was announced as forthcoming, not yet live in that release.",
@@ -1181,12 +1236,16 @@
       "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm"
     },
     "sbi_circle": {
-      "relationship": "Circle/SBI Group USDC Japan joint venture and SBI VC Trade distribution.",
-      "source": "https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access"
+      "relationship": "SBI Holdings and SBI Shinsei Bank invested $50M in Circle ($25M each). The Japan JV is Circle SBI Japan K.K. in English and SBI Circle Holdings K.K. in Japanese, 50/50 owned; Circle's Q3 2026 filing reports no significant operating results to date. SBI VC Trade separately distributes USDC.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "secondary_source": "https://www.sbigroup.co.jp/news/2025/0609_15491.html"
     },
     "sbi_ripple": {
-      "relationship": "Ripple/SBI Group RLUSD Japan launch through SBI VC Trade after JFSA approval on 2026-06-24.",
-      "source": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/"
+      "relationship": "SBI stated in June 2025 that it held approximately 9% of Ripple and was its largest external shareholder. SBI Group holds 60% voting rights in SBI Ripple Asia as of September 30, 2026. ODL using XRP is commercially available in Japan through SBI Remit/Coins.ph/SBI VC Trade; SBI Ripple Asia itself states that it does not handle XRP. SBI VC Trade separately distributes RLUSD.",
+      "source": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "secondary_source": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "as_of": "Ripple equity stake: 2025-06-09; SBI Ripple Asia voting rights: 2026-09-30",
+      "limitation": "No updated 2026 Ripple beneficial-ownership percentage or public corridor volume was verified."
     },
     "ripple_evernorth": {
       "relationship": "Ripple contributed 126,791,458 XRP in kind to Pathfinder; Evernorth became parent after the 2026-10-09 business combination.",
@@ -1231,6 +1290,55 @@
         "XRP demand or purchases",
         "production transaction volumes"
       ]
+    },
+    "circle_binance": {
+      "relationship": "Circle's Q3 2026 SEC filing records a $100M private placement to Binance for 1.2M shares at $80.84. This is strategic capital into Circle, not XRP investment.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "transaction_date": "2026-09-17"
+    },
+    "sbi_evernorth": {
+      "relationship": "SBI Group invested $200M cash in Evernorth's private placement. SBI's November 2, 2026 presentation reports 36.1% voting rights and 20.5% economic interest, making SBI the largest shareholder by voting rights. Evernorth reported 473,276,430 XRP at close; most was contributed in-kind rather than purchased in the market.",
+      "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "sec_source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm"
+    },
+    "dbs_circle_usdc": {
+      "relationship": "DBS and Circle announced direct USDC mint/redeem access for eligible institutional clients with near-instant 24/7 USD-USDC settlement. This is a bank-led USDC rail in Asia, not evidence of Ripple/XRP involvement.",
+      "source": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
+      "publication_date": "2026-11-18",
+      "status": "announced; production volumes not verified"
+    },
+    "standard_chartered_circle_usdc": {
+      "relationship": "Standard Chartered offers eligible institutional clients integrated USDC minting/redemption through its DIFC branch without requiring direct Circle accounts.",
+      "source": "https://www.sc.com/en/press-release/standard-chartered-and-circle-launch-first-g-sib-led-integrated-access-to-usdc-minting-and-redemption/",
+      "publication_date": "2026-07-02",
+      "status": "launched"
+    },
+    "standard_chartered_ripple_lmax": {
+      "relationship": "Standard Chartered announced live institutional RLUSD custody on XRPL through its DIFC branch; RLUSD collateral mirroring with LMAX is planned and conditional on documentation, testing, law, regulatory/internal approvals and jurisdictional readiness.",
+      "source": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "publication_date": "2026-10-12",
+      "status": "custody live; collateral planned, not verified live"
+    },
+    "ripple_robinhood": {
+      "relationship": "RLUSD is live on Robinhood Chain and Bitstamp by Robinhood; Robinhood plans to use RLUSD on XRPL for institutional settlement and integrate Ripple Treasury and Ripple Prime. XRPL settlement does not establish XRP as the settlement asset.",
+      "source": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/",
+      "publication_date": "2026-10-27"
+    },
+    "ripple_occ_trust_bank": {
+      "relationship": "OCC records show Ripple National Trust Bank charter 25364 effective 2026-10-26. This is a national trust bank charter, not evidence of a full-service deposit-taking commercial bank.",
+      "source": "https://apps.occ.gov/CAAS/"
+    },
+    "coinbase_occ_trust_company": {
+      "relationship": "OCC records show Coinbase National Trust Company charter 25390 effective 2026-11-06. This is a national trust company/trust bank charter, not evidence of a full-service deposit-taking commercial bank.",
+      "source": "https://apps.occ.gov/CAAS/"
+    },
+    "ripple_sec_case": {
+      "relationship": "Second Circuit appeals were dismissed 2025-08-07, leaving the $125,035,150 final judgment and injunction in effect. The 2023 district court ruling distinguished institutional sales from programmatic secondary sales; the SEC Rule 506 waiver did not vacate the injunction.",
+      "source": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369"
+    },
+    "sbi_claude_context": {
+      "relationship": "SBI's November 2026 presentation reports Claude Mythos and Claude Security use within SBI Group. This is public corporate AI adoption, not a Barrot connector or authenticated data flow.",
+      "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf"
     }
   },
   "sbic_identity_reconciliation": {
@@ -1273,7 +1381,7 @@
     "duplicate": 0,
     "superseded": 0
   },
-  "snapshot_id": "run29-20261118T230834Z",
+  "snapshot_id": "run29-supplement-20261118T233010969Z",
   "run25_evidence_record": "research/xrp_intelligence/20261118T202745Z-run25-market-ingestion-ci-security-reconciliation.json",
   "run26_evidence_record": "research/xrp_intelligence/20261118T210230Z-run26-market-spot-derivatives-etf-macro-reconciliation.json",
   "run26_transitive_review_record": "Run 26 handoff section: workflow and script transitive review spot-check.",
@@ -1471,9 +1579,9 @@
     "evidence_record": "research/xrp_intelligence/20261118T230834Z-run29-market-institutional-reconciliation.json",
     "repository": {
       "main_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
-      "integration_head_at_capture": "066d8c9910e66fcaa58a26053f78dd00f9d65963",
+      "integration_head_at_capture": "4cf9b185e95b3b2231713d4dba0246eb394d768c",
       "pr_number": 1663,
-      "ahead_by": 355,
+      "ahead_by": 360,
       "behind_by": 0,
       "changed_files": 1438,
       "changed_workflow_files": 68,
@@ -1490,40 +1598,30 @@
       "main_branch_protected": true
     },
     "ci": {
-      "previous_verified_code_head": "da5eef1bca0fee4f527c22fd99c8d4427cc39d7b",
-      "previous_verified_full_suite_run": 44411853369,
+      "previous_verified_code_head": "17c5afe6f5d76db21ff1c47745d99da5044c70ac",
+      "previous_verified_full_suite_run": 44419516835,
       "previous_verified_full_suite": {
         "passed": 4277,
         "failed": 0,
         "skipped": 1,
         "warnings": 11,
         "subtests_passed": 19,
+        "duration_seconds": 118.59,
         "inclusive_coverage_percent": 68.13,
         "legacy_core_coverage_percent": 77
       },
-      "tested_head_with_metadata_failure": "5ef5482b819df3a362d572bb9850684ffbea967f",
-      "full_suite_run": 44414191550,
-      "full_suite": {
-        "passed": 4276,
-        "failed": 1,
-        "skipped": 1,
-        "warnings": 11,
-        "subtests_passed": 19,
-        "inclusive_coverage_percent": 68.13,
-        "legacy_core_coverage_percent": 77,
-        "failed_test": "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state",
-        "root_cause": "test hard-coded changed_files=1436 while GitHub reports 1437; changed workflow count similarly stale at 67 versus 68"
-      },
-      "dependency_audit_run": 44414191536,
+      "dependency_audit_run": 44419516809,
       "dependency_audit": "success",
-      "fail_closed_run": 44414191549,
+      "fail_closed_run": 44419516825,
       "fail_closed": "success",
-      "pr_ci_run": 44414201505,
-      "pr_ci": "success; standard and full-suite test jobs skipped because PR is draft; Pages validation only",
-      "pr_dependency_audit_run": 44414201173,
-      "pr_money_audit_run": 44414201090,
-      "pr_fail_closed_run": 44414201359,
-      "remediation": "Brittle repository-state assertions are being replaced with schema/invariant checks; rerun expanded full suite on resulting exact head."
+      "pr_ci_run": 44419528958,
+      "pr_ci": "success; test jobs skipped because PR remains draft; Pages validation passed",
+      "pr_money_audit_run": 44419528897,
+      "pr_dependency_audit_run": 44419529095,
+      "pr_fail_closed_run": 44419529212,
+      "cache_warning": "GitHub Actions cache budget exhausted; cache step warning only, not a test or security-gate failure.",
+      "current_branch_head": "4cf9b185e95b3b2231713d4dba0246eb394d768c",
+      "current_branch_head_ci": "pending after evidence-only artifact update"
     },
     "pr_1668": {
       "head_sha": "577656042804e40c87ca8cf736faa98be3b6f163",
@@ -1557,32 +1655,38 @@
       "usd_normalization": "rejected"
     },
     "derivatives": {
+      "xrpsonar_oi_usd": 861300000,
       "liqwall_oi_usd": 949000000,
-      "liqwall_oi_change_24h_percent": -2.2,
-      "tradradar_oi_usd": 1320000000,
-      "tradradar_oi_change_24h_percent": 1.94,
-      "reconciliation": "not averaged"
+      "liqwall_change_24h_percent": -2.1,
+      "tradradar_oi_usd": 1290000000,
+      "tradradar_change_24h_percent": -2.12,
+      "tradradar_funding_percent_per_8h": -0.001,
+      "liqwall_funding_percent_per_8h": 0.0012,
+      "reconciliation": "provider totals and funding disagree; no averaging"
     },
     "etf": {
       "cryptokeyhole_nov17_flow_xrp": -3251,
       "cryptokeyhole_funds_reported": 2,
-      "expected": 4,
+      "cryptokeyhole_funds_expected": 4,
+      "cryptokeyhole_updated_at_utc": "2026-11-18T22:55:00Z",
       "xrp_insights_nov17_flow_xrp": 986,
+      "xrp_insights_provisional": true,
       "xrp_insights_nov16_flow_xrp": 158134,
       "alpha_finance_nov17_flow_usd": -6100000,
-      "funds": 5,
+      "alpha_finance_last_7_sessions_usd": -15900000,
+      "alpha_finance_last_30_sessions_usd": -10900000,
       "reconciliation": "different universes/units/completeness; not averaged"
     },
     "exchange_balances": {
-      "source_url": "https://xrp-insights.com/exchange-balances",
-      "as_of_utc": "2026-11-18T08:00:00Z",
-      "tracked_balance_xrp": 22190000000,
-      "tracked_wallets": 707,
-      "tracked_exchanges": 24,
-      "same_wallet_change_7d_xrp": -151900000,
-      "same_wallet_change_30d_xrp": -390100000,
-      "wrapped_reserves_included_xrp": 483100000,
-      "tradable_float": false
+      "xrp_insights_balance_xrp": 22190000000,
+      "xrp_insights_same_wallet_change_7d_xrp": -151900000,
+      "xrp_insights_same_wallet_change_30d_xrp": -390100000,
+      "xrp_insights_naive_total_change_30d_xrp": 132200000,
+      "xrp_insights_new_wallets_30d": 8,
+      "xrp_insights_new_wallet_balances_30d_xrp": 522200000,
+      "xrpsonar_balance_xrp": 24670000000,
+      "xrpsonar_net_outflow_24h_xrp": -24900000,
+      "reconciliation": "different wallet universes; do not average"
     },
     "whale_movements": {
       "source_url": "https://www.coindesk.com/markets/2026/11/18/xrp-whales-moved-usd270-million-during-the-selloff-the-coins-didn-t-go-to-exchanges",
@@ -1591,13 +1695,14 @@
       "custody_hypothesis": "plausible but unconfirmed"
     },
     "institutional": {
-      "dbs_circle_usdc": {
-        "source_url": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
-        "announcement_date": "2026-11-18",
-        "capability": "eligible institutional clients direct USDC mint/redeem; near-instant 24/7 USD-USDC settlement",
-        "production_volumes_verified": false,
-        "xrp_demand_established": false
-      }
+      "dbs_circle_usdc_announcement": "2026-11-18; direct eligible institutional USDC mint/redeem and 24/7 USD-USDC settlement; production volume not verified",
+      "standard_chartered_circle_usdc": "live integrated institutional mint/redeem in DIFC since 2026-07-02",
+      "standard_chartered_ripple_lmax": "RLUSD custody live; collateral mirroring planned and conditional, not verified live",
+      "ripple_robinhood": "RLUSD live on Robinhood Chain and Bitstamp by Robinhood; XRPL institutional settlement, Treasury and Prime integrations announced",
+      "sbi_circle_jv": "Circle SBI Japan K.K. / SBI Circle Holdings K.K.; 50/50; no significant operating results reported in Circle Q3 2026 filing",
+      "sbi_ripple": "SBI stated ~9% Ripple stake in 2025; SBI Ripple Asia 60% voting rights; ODL uses XRP via SBI Remit/partners, but SBI Ripple Asia itself does not handle XRP",
+      "sbi_evernorth": "SBI invested $200M cash; presentation reports 36.1% voting rights and 20.5% economic interest; SEC 10-Q shows different share-class denominators",
+      "coinbase_circle": "Circle paid $331.3M Q3 and $986.6M nine-month distribution costs under Coinbase agreements; Coinbase held $22B average USDC in Q3"
     },
     "macro": {
       "reuters": "2026-11-18: hawkish Fed signals, dollar 19-month high, gold 14-month low; 50bp December hike pricing 7.3% versus 5.3%.",
@@ -1605,9 +1710,10 @@
       "xrp_causality_established": false
     },
     "research": {
-      "exact_phrase_research": "No new primary-source link for ASK Coin, actual capital, or SBIC/ChatGPT SBIC.",
-      "sbic": "SBIC East/Central/West are separate regional Japanese SME investment/consultation companies, not SBI Holdings.",
-      "creator": "Kamilah/Camilla Stevenson candidate channel ID remains unauthenticated; no channel-wide inventory."
+      "exact_phrase_research": "No new primary-source link for ASK Coin, actual capital or SBIC/ChatGPT SBIC.",
+      "sbic": "SBIC East/Central/West remain separate regional Japanese SME investment/consultation companies, not SBI Holdings.",
+      "creator": "Kamilah/Camilla Stevenson candidate YouTube channel ID remains unauthenticated.",
+      "claude_sbi": "SBI presentation reports Claude Mythos/Claude Security use within SBI Group; not a Barrot connection."
     },
     "prediction": {
       "forecast_status": "NOT_ISSUED",
@@ -1617,6 +1723,35 @@
       "raw_wire_capture": false,
       "external_anchor": "NOT_ANCHORED"
     },
-    "next_action": "Fix the stale map/test count assertions on the existing integration branch; run the expanded full suite on the resulting exact head; continue workflow transitive audit and resolve independent review, branch protection and publication side effects."
+    "next_action": "Add Run 29 capital-flow and regulatory assertions to the evidence test; verify exact-head full suite on the current evidence successor; continue workflow transitive audit and resolve independent review, branch protection and automatic publication side effects.",
+    "supplemental_research_captured_at_utc": "2026-11-18T23:30:10.969Z",
+    "capital_flows": {
+      "evernorth_xrp_at_close": 473276430,
+      "evernorth_in_kind_xrp": 388910554,
+      "evernorth_cash_purchased_xrp": 84365876,
+      "sbi_cash_investment_usd": 200000000,
+      "sbi_voting_rights_percent": 36.1,
+      "sbi_economic_interest_percent": 20.5,
+      "sbi_ripple_equity_percent_as_of_2025_06": 9,
+      "circle_coinbase_distribution_costs_q3_usd": 331300000,
+      "circle_coinbase_distribution_costs_9m_usd": 986600000,
+      "circle_binance_investment_usd": 100000000
+    },
+    "regulatory": {
+      "ripple_occ_trust_bank_effective": "2026-10-26",
+      "coinbase_occ_trust_company_effective": "2026-11-06",
+      "ripple_sec_appeals_dismissed": "2025-08-07",
+      "ripple_final_judgment_penalty_usd": 125035150,
+      "ripple_injunction": "remains in effect"
+    },
+    "xrp_supply": {
+      "ripple_escrow_xrp": 31100000000,
+      "next_unlock_date": "2026-12-01",
+      "next_unlock_xrp": 1000000000,
+      "rlusd_on_xrpl_usd": 729000000,
+      "rlusd_total_xrpl_ethereum_usd": 2780000000,
+      "rwa_represented_usd": 4330000000,
+      "rwa_distributed_usd": 276000000
+    }
   }
 }
