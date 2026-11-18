@@ -12,8 +12,7 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 SEC_ALLOWED_HOSTS = frozenset({"data.sec.gov"})
-SEC_DEFAULT_USER_AGENT = "Barrot-Agent XRP research contact: barrot-hunter@users.noreply.github.com"
-SEC_USER_AGENT = os.getenv("BARROT_SEC_USER_AGENT", SEC_DEFAULT_USER_AGENT).strip()
+SEC_USER_AGENT = os.getenv("BARROT_SEC_USER_AGENT", "").strip()
 MAX_RECENT_FILINGS = 2000
 MAX_CAPITAL_FACTS_PER_ISSUER = 1000
 
@@ -131,8 +130,16 @@ def fetch_sec_json(source_id: str, url: str) -> dict[str, Any]:
     parsed = urlsplit(url)
     if parsed.scheme != "https" or parsed.hostname not in SEC_ALLOWED_HOSTS or parsed.username is not None or parsed.password is not None or parsed.port is not None:
         raise SECEdgarError("SEC URL is not an allowlisted public HTTPS endpoint")
-    if not SEC_USER_AGENT or len(SEC_USER_AGENT) > 256 or not _EMAIL_RE.search(SEC_USER_AGENT):
-        raise SECEdgarError("BARROT_SEC_USER_AGENT must identify Barrot and include a contact email")
+    if (
+        not SEC_USER_AGENT
+        or len(SEC_USER_AGENT) > 256
+        or "barrot" not in SEC_USER_AGENT.lower()
+        or not _EMAIL_RE.search(SEC_USER_AGENT)
+        or "users.noreply.github.com" in SEC_USER_AGENT.lower()
+    ):
+        raise SECEdgarError(
+            "Set the BARROT_SEC_USER_AGENT repository variable to Barrot-Agent plus a monitored project contact email; GitHub noreply addresses are not accepted."
+        )
     request = Request(url, headers={"Accept": "application/json", "User-Agent": SEC_USER_AGENT, "Cache-Control": "no-cache"})
     try:
         with _open_sec_request(request, timeout=20) as response:
