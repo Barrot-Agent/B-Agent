@@ -67,7 +67,7 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert is_sha(integration["current_pr_head_sha"])
     assert integration["ahead_by"] == integration["commits"] > 0
     assert integration["behind_by"] == 0
-    assert integration["changed_files"] == 1429
+    assert integration["changed_files"] == 1436
     assert integration["changed_workflow_files"] == 67
     assert repo["main_paths_missing_from_integration"] == 0
     assert repo["tree_counts"]["integration"]["entries"] >= repo["tree_counts"]["main"]["entries"]
@@ -92,13 +92,20 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
 
     current_ci = data["ci_evidence"]["current_head_full_suite"]
     assert current_ci["head_sha"] == integration["snapshot_head_sha"]
-    assert current_ci["run_id"] == 44389147449
+    assert current_ci["run_id"] == 44410299678
     assert current_ci["status"] == "completed"
-    assert current_ci["conclusion"] == "success"
-    assert current_ci["passed"] == 4275
-    assert current_ci["tests_failed"] == 0
+    assert current_ci["conclusion"] == "failure"
+    assert current_ci["passed"] == 4271
+    assert current_ci["tests_failed"] == 6
     assert current_ci["skipped"] == 1
-    assert current_ci["inclusive_coverage_percent"] == 68.14
+    assert current_ci["inclusive_coverage_percent"] == 68.13
+    current_pr_ci = data["ci_evidence"]["current_pr_head_ci"]
+    assert current_pr_ci["head_sha"] == integration["current_pr_head_sha"]
+    assert current_pr_ci["push_ci_run_id"] == 44410299678
+    assert current_pr_ci["push_ci_conclusion"] == "failure"
+    assert current_pr_ci["pr_event_run_id"] == 44410307649
+    assert current_pr_ci["pr_event_conclusion"] == "success"
+    assert current_pr_ci["pr_event_full_suite_status"] == "skipped"
     assert data["prediction_engine"]["walk_forward_forecasts"] == 0
     assert data["prediction_engine"]["forecast_issuance"] == "disabled"
 
@@ -118,13 +125,13 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert security["automatic_main_writer"]["active"] is True
     assert security["automatic_main_writer"]["integration_workflow_disabled"] is True
     assert security["automatic_main_writer"]["main_run_id"] == 44369074831
-    assert security["automatic_main_writer"]["pages_deployment_run_id"] == 44369186191
+    assert security["automatic_main_writer"]["pages_deployment_run_id"] == 44396362354
     assert len(data["open_pr_backlog"]) == 12
     assert next(item for item in data["open_pr_backlog"] if item["number"] == 1663)["classification"] == "blocked"
     assert next(item for item in data["open_pr_backlog"] if item["number"] == 1665)["classification"] == "blocked"
     assert next(item for item in data["open_pr_backlog"] if item["number"] == 1666)["classification"] == "blocked"
-    assert data["open_pr_backlog_summary"]["blocked"] == 4
-    assert data["open_pr_backlog_summary"]["unique_unreviewed"] == 8
+    assert data["open_pr_backlog_summary"]["blocked"] == 5
+    assert data["open_pr_backlog_summary"]["unique_unreviewed"] == 7
     assert data["merge_decision"] == "NO_MERGE"
     prior_ci = data["ci_evidence"]["pre_fix_pr_head_ci"]
     assert prior_ci["head_sha"] == "bdc77944fb6de3b2ce036a5cc26d0af2538ddb92"
@@ -148,10 +155,13 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert sbic["entities"]["west"]["alias"] == "SBIC West Japan"
     assert sbic["xrp_or_ripple_relationship"] == "No verified relationship found."
     market = data["prediction_engine"]["latest_market_snapshot"]
-    assert market["price_usd"] == 0.96805
+    evidence_path = Path(__file__).resolve().parents[1] / market["artifact_path"]
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+    kraken_receipt = evidence["market_snapshot"]["kraken_xrp_usd"]
+    assert market["price_usd"] == kraken_receipt["last_usd"]
     assert market["source"] == "Kraken public ticker API — XRP/USD"
     assert market["model_eligible"] is False
-    assert market["raw_sha256"] == "79183bfe9dcc8cd704be70f56c128b1fc471e90ad7af3d866a3c29a22c108953"
+    assert market["raw_sha256"] == kraken_receipt["raw_response_sha256"]
 
 
 def test_latest_map_preserves_bny_custody_without_overclaiming_xrp_demand():

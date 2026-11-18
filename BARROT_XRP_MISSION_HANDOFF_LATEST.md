@@ -2159,3 +2159,77 @@ Current head: `c9fbb2075e78772d2d3c91e0d36f98af6b2e7fa0`.
 - PR dependency audit [44398308612](https://github.com/Barrot-Agent/B-Agent/actions/runs/44398308612): still in progress.
 
 The integration PR remains blocked. This spot-check does not close the transitive review requirement and does not authorize external actions.
+
+ 
+---
+ 
+# Run 27 addendum — 2026-11-18T22:22:14Z
+
+## Current repository snapshot
+
+- Main remains d5d22ac252f88637a490ed4c1598f8608b6cb786.
+- Existing integration PR #1663 remains the only V3/XRP integration branch; no new branch or PR was created.
+- Snapshot head: e100ae1fea6a36f5755a98219abba450c885b78f; 351 commits ahead, zero behind; 1,436 changed files; 67 changed workflow files. Main's 1,739 tree entries remain present in the integration tree. Current integration tree: 2983 entries, 93 workflows, 515 test-named Python files, 841 XRP research files.
+- PR #1663 remains draft and mergeable, with zero independent reviews, zero review threads and zero requested reviewers.
+- Concurrent integration maintenance advanced the same branch during this run. The branch was re-fetched before this remediation; no reset, force-push or branch rewrite occurred.
+- The Pylint 4.1.4 development dependency update from #1665 is incorporated into #1663 by commit 8fc3dd3234e519e4537496ee46bed005b0c9a1dd (requirements-dev.txt). Keep #1665 open until #1663 merges and the exact change is verified on main; do not close it early.
+
+## Exact CI failure and remediation
+
+Latest completed exact-head full-suite run 44410299678 on e100ae1fea6a36f5755a98219abba450c885b78f failed: **4,271 passed, 6 failed, 1 skipped, 11 warnings, 19 subtests passed**, 107.31 seconds, 68.13% inclusive coverage.
+
+All six failures are stale test/evidence contracts, not application prediction or Barrot V3 runtime failures:
+
+1. Two external-action tests expected the Hugging Face model-merge workflow to be active and approval-gated. The workflow is intentionally quarantined because its reviewed merge configuration is absent; it has empty permissions, a false job condition, no checkout, no credential access and no upload. The tests now verify quarantine rather than demanding reactivation.
+2. Four XRP-map assertions were stale: changed-file count, machine-readable transitive-review status, hard-coded market price/hash and exact-phrase status. The tests now compare market values to the captured evidence artifact and keep narrative detail separate from the machine status.
+
+The standard core job on the same head had 757 passed, 2 failed and 8 subtests passed. The PR-event CI 44410307649 reported success but skipped core/full-suite jobs because PR #1663 remains draft. On exact head, dependency audit 44410307568, money audit 44410307489, fail-closed gate 44410307643 and Pages validation-only job passed. This does not make the full suite pass.
+
+The test/evidence remediation is included in the same-branch successor commit. Its new exact-head full suite, dependency audit and fail-closed checks must complete before any merge decision.
+
+Current main CI 44396364281 passed on exact main d5d22ac: 1,207 passed, 2 skipped, zero failures, 78.10% coverage. This does not substitute for integration-head verification.
+
+## XRP spot, derivatives and liquidity — capture 22:07:54Z
+
+- Kraken XRP/USD: last **$0.96513**, bid $0.96512 (182 XRP), ask $0.96513 (111 XRP), spread 0.104 bps, 24-hour volume 48.659M XRP, 24-hour VWAP $0.98281596, high $1.00677, low $0.96218. Last is 1.80% below VWAP and 6.62% of the way up from the 24-hour low. Kraken's o field is the UTC-day open ($0.98253), not a rolling 24-hour open.
+- Kraken's top-level bid size exceeded ask size (ask/bid 0.61); the asynchronous OKX XRP-USDT snapshot showed the opposite (ask/bid 1.98). This is venue-specific top-of-book evidence, not consolidated depth.
+- OKX XRP-USDT quote: 0.9715 USDT, timestamp 21:35:45.971Z. The USDT/USD conversion quote was 0.99888 at 21:54:55.172Z; timestamp skew 19m09s. USD normalization was rejected. OKX quote age at capture was 32m08s.
+- Binance XRPUSDT perpetual: mark 0.96860, index 0.96913248, funding -0.000867% per 8h at 21:50:24Z; one-venue snapshot, 17m30s old at capture.
+- CryptoQuant's Nov 18 Binance analysis reports seven-day spot share at 17.9%, down 34.2% from 27.2% in early November, with futures volume about 5.6 times spot. Its separate 30-day liquidity index is 0.041, a three-month low, with $2.71B 30-day turnover. A Nov 16 CryptoQuant analysis reports Binance XRP OI near $325M versus about $1.5B earlier in 2026 and estimated leverage 0.13, the lowest since November 2024. CryptoPotato repeats CryptoQuant metrics and is not independent confirmation.
+- Counter-hypothesis: lower OI/leverage can reduce forced-liquidation cascade risk even while lower spot participation and liquidity can amplify price impact. Negative funding alone does not establish a directional edge.
+
+## ETF flow disagreement — 2026-11-17
+
+- CryptoKeyhole: -3,251 XRP, but only 2 of 4 daily-readable funds had reported; latest issuer file read 05:25 UTC Nov 18. Partial.
+- XRP Insights: +986 XRP across six spot funds plus BITW; GXRP is excluded from flow totals during a data-gap correction. The site reports +159.1K XRP across Nov 16–17.
+- ByKaranteli: -$6.1M across five funds, provisional until issuer settlement.
+- Alpha Finance: -$6.1M across five funds.
+
+Do not average these series. The fund universes and treatment of BITW, XRPR and GXRP differ; ByKaranteli and Alpha Finance may share overlapping five-fund coverage and are not independent issuer confirmations.
+
+## New institutional rail evidence
+
+The World Bank Group's Nov 17 primary announcement says it will explore regulated USDC payment infrastructure with Citi and Circle. Citi contributes existing banking rails; Circle contributes USDC mint/settlement infrastructure. The initial model is exploratory and intermediated/interoperable. No Ripple, XRP, XRPL, RLUSD or production volume is established. This is a Circle/Citi/World Bank rail-development signal, not XRP demand.
+
+## Kamilah/Camilla Stevenson identity and video inventory
+
+The June 11, 2026 iHeart interview identifies Dr. Kamilah Stevenson as the guest. At 40:07 she self-reports X as “cam i am cam Stevenson”, Instagram as “Kamilla Stevenson” and YouTube as “doctor Camilla Stevenson”; she explicitly warns that fake pages exist. iHeart warns its transcript is automatically generated and may not be fully accurate.
+
+Two provisional video-level matches were found through Glasp transcripts; both open with a self-identification as Camila Stevenson:
+
+- Ripple Just Became a BANK — And XRP Holders Need to Understand This, Dec 14, 2025; YouTube video ID QslbjGQD0MU; Glasp transcript https://glasp.co/youtube/QslbjGQD0MU.
+- XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing., Jan 13, 2026; YouTube video ID ci0FH73lbCs; Glasp transcript https://glasp.co/youtube/ci0FH73lbCs.
+
+These are provisional content-level matches, not proof that candidate channel ID UCqUPJMQdkCN6lsLVDnichPA is hers. The interview warns of fake pages; no channel-wide inventory or lookalike-channel attribution is admitted until a first-party link authenticates the exact channel ID.
+
+## Phrase research and forecast admission
+
+Exact searches for “ASK Coin”, “actual capital” and “SBIC, ChatGPT SBIC” produced no new primary-source relationship. SBIC East/Central/West remain three separate Japanese regional SME investment/consultation companies, not SBI Holdings. The VOST-delivered ChatGPT/Copilot course is not evidence of an OpenAI partnership.
+
+**Forecast status: NOT_ISSUED.** No directional forecast, probability claim, paper trade or real-money action. Latest ingestion remains 34 receipts with 21 source failures; external receipt anchoring, deterministic raw-to-feature rebuild, sufficient independent source clusters, leakage-safe walk-forward sample size, calibration and independent shadow outcomes remain incomplete.
+
+## Backlog and disposition
+
+12 PRs remain open: **5 blocked, 7 unique/unreviewed, 0 ready, 0 confirmed duplicates, 0 superseded**. #1663 is the sole consolidated integration. #1664 remains unique/unreviewed despite three shared paths; #1665's Pylint patch is incorporated but the source PR stays open pending merge/verification; #1666, #1541 and #1265 remain blocked pending dependency/path reconciliation. The remaining research and ledger PRs remain unique/unreviewed.
+
+**Disposition: NO MERGE.** The current exact-head full suite failed six stale assertions; the remediation commit's exact-head full suite is pending. Independent review, branch-protection details (403), disabled fallback ruleset, self-owned CODEOWNERS, automatic main publication/Pages side effects and full transitive workflow security review remain blockers. No deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer or real-money action occurred.

@@ -15,6 +15,7 @@ def test_destructive_or_secret_input_workflows_are_disabled() -> None:
         "barrot-hf-admin.yml",
         "rotate-databricks-token.yml",
         "gumroad-metrics.yml",
+        "barrot-merge.yml",
         "barrot-merge-manual.yml",
         "task-allocator.yml",
         "ask-barrot.yml",
@@ -47,6 +48,14 @@ def test_databricks_pat_is_not_a_workflow_dispatch_input() -> None:
 
 def test_model_upload_requires_approval_and_validated_destination() -> None:
     content = _read("barrot-merge.yml")
+    if "if: ${{ false }}" in content:
+        assert "permissions: {}" in content
+        assert "secrets." not in content
+        assert "contents: write" not in content
+        assert "actions/checkout" not in content
+        assert "HF_TOKEN" not in content
+        assert "upload_folder" not in content
+        return
     assert "confirm_external_change" in content
     assert "default: NO" in content
     assert "inputs.confirm_external_change == 'YES'" in content
@@ -301,7 +310,6 @@ def test_webmcp_monetization_enrichment_consumes_upstream_artifact_read_only() -
 
 def test_external_side_effects_are_bound_to_exact_approved_main_commit() -> None:
     names = (
-        "barrot-merge.yml",
         "deploy-databricks.yml",
         "kaggle-competitions.yml",
         "barrot-restart-space.yml",
