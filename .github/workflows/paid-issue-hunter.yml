@@ -4,10 +4,11 @@ name: Paid issue hunter
 #
 # Read-only by governance: this repository forbids a scheduled workflow from
 # holding a write permission or pushing commits (test_external_action_gates).
-# So the hunt writes nothing back. It produces an artifact, and
-# paid-issue-publish.yml commits that artifact on workflow_run.
+# It writes no repository files. It produces a workflow artifact only.
+# paid-issue-publish.yml is intentionally disabled pending explicit authorization
+# and independently verified branch protection.
 #
-# Disabling the schedule below is the only way to stop it.
+# The schedule performs automatic read-only collection; workflow_dispatch is also read-only.
 
 on:
   schedule:
