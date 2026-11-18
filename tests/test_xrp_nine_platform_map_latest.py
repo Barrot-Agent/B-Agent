@@ -82,6 +82,7 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     pr = next(item for item in data["open_pr_backlog"] if item["number"] == 1663)
     assert pr["classification"] == "blocked"
     assert data["merge_decision"] == "NO_MERGE"
+    integration = data["repository_state"]["integration"]
     prior_ci = data["ci_evidence"]["pre_fix_pr_head_ci"]
     assert prior_ci["head_sha"] == integration["snapshot_head_sha"]
     assert prior_ci["result"] == "failure"
