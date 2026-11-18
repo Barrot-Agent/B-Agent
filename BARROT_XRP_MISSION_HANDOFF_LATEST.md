@@ -199,3 +199,29 @@ No directional XRP forecast was issued. No forecast is model-eligible, no indepe
 8. Keep forecast issuance disabled until the out-of-sample, calibration, source-cluster and later-shadow admission policy is met.
 
 **Run result:** research and repository inspection executed; integration source head and its full suite verified; durable handoff repaired; main unchanged; no merge and no external action.
+
+
+## Historical Run174 preservation record — 2026-11-15 21:01:47 UTC
+
+This immutable historical reference is retained because the Run174 recovery audit is part of the mainline-preservation evidence. It is not the current repository head and must not be substituted for the current main SHA.
+
+- Audit artifact: [Run174 mainline successor recovery audit](research/xrp_intelligence/20261115T210147Z-run174-mainline-successor-recovery-audit.json).
+- Historical `run_id`: **Run174**.
+- Historical `current_main_sha`: `5b2a9c46eb878250dfec99190e294909cd5835bf`.
+- Historical successor branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Historical forecast status: `NOT_ISSUED`.
+- Historical accuracy status: `NOT_EVALUATED`.
+- The audit records that the earlier source branch remained unchanged, no history rewrite or force-push occurred, and the successor was created from the then-current mainline. Those statements describe Run174 only; the current main SHA for this handoff is recorded in the current-run section above.
+
+## Run 11 exact-head CI correction — 2026-11-18 10:22 UTC
+
+- Main at this audit: `e204c21100f3d059e2ba633d041fe8927b61ccaf`.
+- Integration head tested: `cf7f5e29cfa41875c3fbec96baed664be5d58d2f`.
+- [Push CI run 44283939979](https://github.com/Barrot-Agent/B-Agent/actions/runs/44283939979) completed with core tests and Pages validation passing, but the full repository suite failed one preservation-regression assertion: `tests/test_run174_mainline_successor_preservation.py::test_run174_mainline_successor_preserves_mainline_and_xrp_mission`.
+- Result: **4,272 passed, 1 failed, 1 skipped, 11 warnings, 19 subtests passed**. The failure was caused by this canonical handoff omitting the historical Run174 identifier and main SHA even though the structured Run174 audit artifact remained present and correct. No application-code failure was reported in that run.
+- This handoff update restores the missing historical provenance without changing the test or rewriting history. The resulting new head must receive its own full-suite run; the failed run is retained as evidence and is not relabeled successful.
+- Exact-head dependency audits passed on push and PR; the fail-closed gates passed on push and PR; the money audit passed. PR #1663 remains draft, with zero formal reviews and zero review threads.
+- Detailed main branch-protection access still returns HTTP 403; the only visible fallback ruleset is disabled. The integration PR remains 281 commits ahead and zero behind at the tested head; re-fetch comparison after this handoff commit before further work.
+- **Disposition: NO MERGE.** Main was not modified. No source PR was closed. No deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+Next action: verify the new handoff commit's exact-head full repository suite and security gates, then continue with the SEC contact blocker and raw-receipt/feature-store reconstruction work.
