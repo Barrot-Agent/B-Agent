@@ -347,3 +347,27 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Foreword attribution pending; test enforces the ATTRIBUTION PENDING block.
 - INCIDENT 2026-11-17: `git ls-files --others | xargs rm` deleted the untracked
   project. Recovered from dist/book.md. Never bulk-delete untracked files here.
+
+## 2026-11-18 — Phase 1 product staged: paid-issue PR pack
+- `products/ship-paid-issue-pr-in-2-hours/`, branch
+  `phase1/digital-downloads-paid-issue-pr`. Template 1 only; Templates 2-7
+  locked. Status STAGED, independently verified PASS WITH CAVEATS, not published.
+- Product: "Ship a Paid-Issue PR in 2 Hours — GitHub Template Pack". $9 Field
+  (templates), $19 Operator (kit), $39 Team (10 seats + support). Direct net
+  $7.60/$16.60/$34.60 after 10% + $0.50; marketplace 30%.
+- 6 templates (5 Markdown + 1 CSV), 4 functional Python modules, 76 tests,
+  stdlib only, no network. 9 hard gates, 7 intake stop rules, 3-hour effort cap,
+  $30/hour floor, 120-minute timebox with CLAIM HOLDS/BROKEN.
+- Market snapshot 2026-11-18: 5,319 open `label:bounty` issues; 6/100 state an
+  amount (median $525, range $450-$600); 112 merged PRs, pooled median 1.11h,
+  52.7% <=2h (review latency, not effort). Demand for this pack is unmeasured:
+  pre-registered 30-day test kills at <3 sales with >=300 views.
+- Verification: separate agent. Round 1 FAIL found 10 claim defects; fixed all
+  (E-13 $6.30, 30% fee range, unsupported 94% sentence, committed wording,
+  support 41.5 min, bracket/non-URL validators, Field README gate, doc wording).
+  Link existence is not checked (offline by design) and is documented.
+- Never: merge to main, publish a listing, change a live price, transact, or
+  mark any of the 10 named components Active without HEAD + test log. All 10
+  remain PROPOSED.
+- Publish blockers: support email, legal name/address, governing law, lawyer
+  review, live checkout/refund test, zip+checksums, Sean's written approval.

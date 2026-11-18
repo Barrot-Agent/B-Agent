@@ -925,3 +925,25 @@
 - Still open: config drift (needs approval to generate one file), sandbox_passed=0
   (needs MCP_APPROVAL_TOKEN decision), GITHUB_MCP_TOKEN unset in shell.
 - Report: docs/synthesis/cross-domain-audit.md
+
+## 2026-11-18 — Phase 1 staged: paid-issue PR pack (verified, not published)
+- Built `products/ship-paid-issue-pr-in-2-hours/` on
+  `phase1/digital-downloads-paid-issue-pr`, Template 1 only. Templates 2-7 not
+  started. No merge, publish, price change, or transaction.
+- 6 templates, stdlib kit, 76 tests, generated examples. Release gate 9/9:
+  39/39 files, 76 tests, flake8 clean, 55 files secret-scanned, 0 findings.
+- Independent verifier (separate agent) returned PASS WITH CAVEATS. Round 1
+  returned FAIL on 10 claim-integrity defects; all were fixed or documented:
+  E-13 marketplace net $5.80 -> $6.30; fee range now includes 30% marketplace;
+  unsupported "rest were noise, stale, or unpaid" removed; "committed" wording
+  corrected; support break-even 41.5 min; bracket and non-URL validators added;
+  Field README added to the gate; platform overlap explained. Stale gate log
+  regenerated after the report.
+- Pricing $9/$19/$39; direct net $7.60/$16.60/$34.60. Demand is unmeasured;
+  pre-registered 30-day kill test is <3 sales at >=300 views.
+- All 10 named components PROPOSED, none PROVEN/ACTIVE. Link existence is not
+  checked (offline by design) and is documented as a limit.
+- Still blocked: support email, seller legal name/address, governing law,
+  lawyer review, live checkout/refund test, zip+checksums, Sean's written
+  authorization.
+- Next: Sean authorizes or rejects. No further building until then.
