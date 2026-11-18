@@ -524,3 +524,132 @@ Next concrete actions:
 6. Complete the 67-workflow/transitive-script security review and resolve the paid-issue publisher's automatic main-write side effect.
 7. Establish independent review, actual branch-protection evidence and least-privilege permissions.
 8. Continue leakage-safe chronological baseline evaluation; keep forecast issuance disabled until all sample, calibration, drift and shadow gates pass.
+
+
+---
+
+## Run 15 — 2026-11-18 — mainline synchronization, full-suite result and workflow side effects
+
+### DESIGNED / EXECUTED / VERIFIED
+
+**EXECUTED — integration branch synchronized with current main without rewriting history.**
+
+- Current main at synchronization: 13c60af7079700a38b4226b9110d9c9377af7695.
+- Prior integration head: 1d0ade36779b3759df8577c8d55d25d9895f9c62.
+- New branch merge commit: 469068e25b4ce004b6298a2a7a14223f7ca5d8db.
+- Parents: prior integration head first, current main second.
+- The main commit contained only PAID-ISSUES.md and data/money/paid_issues.json. Neither path was changed by PR #1663, so there was no path overlap.
+- Both files were read back from the updated branch and their Git blob SHAs exactly match main.
+- Compare result after synchronization: 297 commits ahead, zero behind; merge base is current main.
+- This was a branch-only merge commit. It did not merge PR #1663 into main, did not force-push, and did not rewrite existing commits.
+
+**VERIFIED — full repository suite on code/test head 1d0ade36779b3759df8577c8d55d25d9895f9c62.**
+
+- Run [44302845889](https://github.com/Barrot-Agent/B-Agent/actions/runs/44302845889), exact triggering SHA 1d0ade.
+- 4,274 tests collected; 4,273 passed, 1 skipped, 0 failed; 19 subtests passed; 11 warnings.
+- Inclusive package coverage: 68.14%, above the 62% required floor.
+- Legacy core-package coverage: 77%.
+- Wheel build and installed-wheel verification passed; the packaged Barrot V3 and XRP primary mission loaded.
+- Core test job and GitHub Pages validation also passed.
+- Non-failing warnings: setuptools license-table deprecation; package-discovery warnings for barrot_agent.data.missions and data.research; GitHub Actions cache budget exhausted, leaving cache storage read-only.
+
+**VERIFIED — checks on synchronized branch head 469068e25b4ce004b6298a2a7a14223f7ca5d8db.**
+
+- [Dependency Audit 44312132545](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312132545): passed.
+- [Money audit 44312132602](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312132602): passed.
+- [Fail-closed gate, PR event 44312132488](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312132488): passed.
+- [Fail-closed gate, push event 44312122397](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312122397): passed.
+- [CI 44312132625](https://github.com/Barrot-Agent/B-Agent/actions/runs/44312132625): Pages validation passed. The core and full-suite jobs were skipped because the PR event intentionally excludes integration-branch test jobs.
+- The push CI workflow ignores PAID-ISSUES.md and data/money/paid_issues.json, so no full-suite push run was created for the branch-only mainline synchronization commit. Do not claim the full suite was run on 469068. The latest full-suite evidence remains the exact code/test head 1d0ade; the synchronized changes were data-only and non-overlapping.
+- This handoff update is a documentation-only change and requires its own push-triggered CI evidence before any merge-readiness claim.
+
+### Current main and automatic workflow side effects
+
+Main advanced from e204c21100f3d059e2ba633d041fe8927b61ccaf to 13c60af7079700a38b4226b9110d9c9377af7695 through the existing Paid issue publish workflow, not through a PR merge.
+
+- Hunter run [44304037203](https://github.com/Barrot-Agent/B-Agent/actions/runs/44304037203): successful.
+- Publisher run [44304112701](https://github.com/Barrot-Agent/B-Agent/actions/runs/44304112701): successful; committed PAID-ISSUES.md and data/money/paid_issues.json directly to main.
+- Pages validation/deployment run [44304220732](https://github.com/Barrot-Agent/B-Agent/actions/runs/44304220732): successful.
+- Cross Analysis run [44307953150](https://github.com/Barrot-Agent/B-Agent/actions/runs/44307953150): successful.
+- Pillars Consistency Check [44309596554](https://github.com/Barrot-Agent/B-Agent/actions/runs/44309596554): failed. The job reported missing GITHUB_APP_ID, GITHUB_APP_PRIVATE_KEY and GITHUB_INSTALLATION_ID; Databricks HTTP 403; Hugging Face Space stage BUILD_ERROR. The read-only deploy-sync and system-prompt checks passed. No deployment or credential mutation was attempted.
+- The current-main CI workflow query returned no CI runs for SHA 13c60af. Do not claim main CI passed after the automatic publisher commit.
+
+The paid-issue publisher remains a main-branch writer: it is triggered by successful workflow_run completion, has contents:write, downloads the hunter artifact, copies two data files, and pushes directly to main. This behavior is now evidenced by the actual 13c60af commit. It is not a PR merge. Its workflow and downstream Pages side effects remain part of the security review.
+
+### Repository and security snapshot
+
+- Main tree: 1,737 entries.
+- Integration tree: 2,976 entries, including 85 workflow files.
+- No dependency lockfiles were present in the integration tree. requirements.txt and pyproject.toml retain broad lower-bound constraints; requirements-integrations.txt has selected upper bounds. The exact-head dependency audit passed, but fully locked/reproducible dependency resolution is not established.
+- Main branch is reported protected, but the detailed branch-protection endpoint returns HTTP 403. The branch object exposes no required status-check contexts. The only visible repository ruleset, “Fall Back,” is disabled. Effective required reviews/checks are therefore not verified.
+- .github/CODEOWNERS assigns all paths to @Barrot-Agent only; no independent ownership/review is established.
+- PR #1663 remains open and draft, with 1,425 changed files, 511,359 additions and 6,522 deletions. No formal reviews or inline review threads exist. GitHub currently reports the PR mergeable, but draft state and the governance/security blockers remain.
+- Targeted workflow review confirmed:
+  - xrp-public-ingestion.yml uses actions:read and contents:read, disables checkout credential persistence, pins actions by SHA, and writes only Actions artifacts/cache. Scheduled triggers are main-only; integration push capture is path-scoped. Its manual Coinbase backfill input is bounded to 365 days. No manual dispatch/backfill was executed.
+  - barrot-agent.yml and ask-barrot.yml are disabled with permissions: {}.
+  - barrot-self-upgrade.yml and sync-huggingface.yml are disabled with permissions: {}.
+  - barrot-gated-merge.yml is read-only and fail-closed; it does not approve or merge.
+  - barrot-ops.yml, deploy-databricks.yml, barrot-restart-space.yml and barrot-merge.yml are manual external-action workflows with explicit YES confirmation and/or exact-main-SHA checks. None was dispatched.
+  - coinbase-paper-trader.yml is manual, artifact-only and configured for BTC-USD, not XRP. It was not dispatched.
+  - barrot-approve-pr.yml can add an “approved” label with pull-requests:write, but its own log says it does not merge. Such a label is not an independent formal review.
+  - paid-issue-publish.yml remains the automatic main writer described above.
+- The complete transitive review of all 67 changed workflow files and every invoked script remains incomplete. The targeted review is not a substitute for that audit.
+
+### XRP ingestion and prediction state
+
+Latest successful public ingestion remains [run 44301868145](https://github.com/Barrot-Agent/B-Agent/actions/runs/44301868145), cutoff 2026-11-18T12:13:54.617611Z.
+
+- 3,235 historical feature records across 15 snapshots.
+- 124 eligible current records; 361 excluded.
+- Five exchange groups: Coinbase, Kraken, Bitstamp, OKX and Bitbank; 11 source snapshots.
+- 140 events, 107 scenarios, 23 raw-only sources and 21 source failures.
+- 34 receipts: 22 raw payloads retained and 12 digest-only; receipt chain sequence 15 verified and continuous from run 44300915250.
+- Raw artifact SHA-256: c9ec648228d5c76136fd68f8d7b0f2b71ea2eb97eebf8b2f8617b9678098b2be.
+- Feature-store artifact SHA-256: d13e0c1257e9318fa8160bae711b2cfaf79996f2a3aea886a8600048af7caf5d.
+- No independent WORM store or trusted external timestamp anchor exists. Automatic feature-store reconstruction from retained raw receipts is not implemented.
+- Eight Binance endpoints returned HTTP 451; five Bybit endpoints returned HTTP 403. No proxy or restriction bypass was attempted. Grayscale returned HTTP 429. Six SEC EDGAR requests remain blocked by the missing approved BARROT_SEC_USER_AGENT contact.
+- ETF observations remain non-comparable by fund universe and data vintage; primary AP cash creation/redemption reconciliation is pending. The three CFTC weekly source IDs remain skipped by current source policy.
+- Coinbase, Kraken and Bitstamp spot quotes clustered around $0.9842–$0.9847 at the capture. OKX and Bitbank observations require separate USDT/USD and JPY normalization. Deribit XRP-USDC perpetual remains raw-only because contract/OI/book-sequence semantics are not validated. Venue depth imbalances were mixed and are not a directional signal.
+- Drift remains INSUFFICIENT_DATA with zero evaluated features. Walk-forward forecast count remains zero. Forecast status remains NOT_ISSUED. No directional forecast, paper trade or real-money action occurred.
+
+### Nine-platform coordination
+
+The Run 14 capability/authentication map remains current. Only the ChatGPT-session-to-GitHub connector path is tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are not verified as live collaborators or data flows. No external-model dispatch, Kaggle submission, Databricks write or Hugging Face upload occurred.
+
+### Open PR inventory and classifications
+
+All ten PRs remain open/draft. No PR was merged or closed in this run.
+
+| PR | Classification | Disposition |
+|---|---|---|
+| #1663 | blocked — consolidated V3/XRP integration | sole active integration workstream; synchronized with current main |
+| #1664 | unique/unreviewed | 71-file paid-issue template pack; two divergent overlaps with #1663 in BARROT_SYNC.md and MEMORY.md |
+| #1541 | blocked — partial overlap | five shared paths with #1663; two identical, three divergent |
+| #1450 | unique/unreviewed | research/ledger work; substantial overlap with #1440 and three divergent shared blobs |
+| #1460 | unique/unreviewed | eight unique institutional multirail, Binance and Kamilah research files |
+| #1440 | unique/unreviewed | stacked archive-validator repair; reconcile with #1450 |
+| #1436 | unique/unreviewed | Binance incident and wallet-graph research |
+| #1437 | unique/unreviewed | source/addenda repair |
+| #1353 | unique/unreviewed | large lossless XRP ledger archive/migration; preserve |
+| #1265 | unique/unreviewed | compact ledger-index migration; one divergent CI workflow overlap with #1663 |
+
+No duplicate or superseded source PR was closed. No new PR was created.
+
+### Merge disposition
+
+**NO MERGE.**
+
+The full suite passed on code/test head 1d0ade, but the synchronized head 469068 has not had its full suite rerun because the data-only mainline changes are explicitly ignored by the push CI path filter and the integration PR event skips test jobs. This handoff update should trigger the push CI path because this file is not ignored; verify the resulting exact-head run before any readiness claim.
+
+Remaining blockers:
+1. PR remains draft with zero independent formal reviews.
+2. Effective branch-protection settings and required approvals/checks are not verified.
+3. The 67-workflow/transitive-script security review is incomplete.
+4. The paid-issue publisher's automatic main write and Pages side effect require explicit review.
+5. Main CI has not been observed on current main SHA 13c60af.
+6. SEC contact configuration, independent WORM/timestamp anchoring, raw-to-feature-store rebuild, synchronized historical derivatives/depth, ETF primary-flow reconciliation and model-ready walk-forward sample remain incomplete.
+7. No directional prediction is supported by current out-of-sample evidence.
+
+### Next concrete action
+
+Verify the push-triggered full repository suite and dependency audit on the new handoff commit. Then continue the workflow/transitive-script security audit and resolve effective branch protection/independent review. Keep PR #1663 as the only consolidated V3/XRP integration path; preserve every unique research and repair PR. Do not merge, deploy, dispatch external actions, paper-trade or issue a directional forecast until its specific gates pass.
