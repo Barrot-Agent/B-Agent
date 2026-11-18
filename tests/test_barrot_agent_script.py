@@ -418,6 +418,8 @@ def test_barrot_agent_manual_dispatch_requires_explicit_confirmation() -> None:
 
 
 def test_free_provider_specs_are_zero_cost_and_gemini_requires_explicit_opt_in(monkeypatch):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
     monkeypatch.setenv("CLOUDFLARE_API_TOKEN", "cf-test")
     monkeypatch.setenv("CLOUDFLARE_ACCOUNT_ID", "account-test")
     monkeypatch.setenv("OPENROUTER_API_KEY", "or-test")
@@ -440,6 +442,8 @@ def test_free_provider_specs_are_zero_cost_and_gemini_requires_explicit_opt_in(m
 
 
 def test_zero_cost_fallback_uses_v3_provider_client_and_preserves_payload(monkeypatch):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
     monkeypatch.setenv("CLOUDFLARE_API_TOKEN", "cf-test")
     monkeypatch.setenv("CLOUDFLARE_ACCOUNT_ID", "account-test")
     monkeypatch.setenv("OPENROUTER_API_KEY", "or-test")
