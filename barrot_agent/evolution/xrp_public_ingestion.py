@@ -2644,7 +2644,7 @@ def _parse_bitstamp_depth(
     if coarse_seconds <= 0 or microseconds <= 0:
         raise XRPIngestionError("Bitstamp order-book timestamps must be positive")
     if microseconds // 1_000_000 != coarse_seconds:
-        raise XRPIngestionError("Bitstamp order-book timestamp and microtimestamp disagree")
+        raise XRPIngestionError("Bitstamp order-book timestamps disagree: timestamp and microtimestamp differ")
     try:
         source_time = datetime.fromtimestamp(
             microseconds // 1_000_000, tz=timezone.utc

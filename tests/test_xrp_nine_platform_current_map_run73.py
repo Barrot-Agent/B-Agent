@@ -214,16 +214,24 @@ def test_lunaroute_only_architecture_quarantines_secondary_brain_deployment():
     assert audit["self_hosted_brain_workflow_status"] == "DISABLED_LUNAROUTE_ONLY"
 
 
-def test_prediction_engine_source_registry_counts_are_consistent():
-    engine = load_current()["prediction_engine_status"]
-    assert engine["source_definitions_total"] == len(ENDPOINTS)
-    assert engine["hourly_sources"] == len(SCHEDULED_ENDPOINTS)
-    assert engine["weekly_cftc_sources"] == len(WEEKLY_ENDPOINTS)
-    assert engine["scheduled_sources"] == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS)
+def test_current_collector_expands_preserved_run175_registry_snapshot():
+    snapshot = load_current()
+    engine = snapshot["prediction_engine_status"]
+    # The map was captured on Nov 15; its 51/46/49 counts remain historical, not current.
+    assert snapshot["captured_at_utc"] == "2026-11-15T21:29:23Z"
+    assert engine["source_definitions_total"] == 51
+    assert engine["hourly_sources"] == 46
+    assert engine["weekly_cftc_sources"] == 3
+    assert engine["scheduled_sources"] == 49
+    # Current registry: 48 hourly + 3 weekly + 2 non-commercial public-node endpoints.
+    assert len(ENDPOINTS) == 53
+    assert len(SCHEDULED_ENDPOINTS) == 48
+    assert len(WEEKLY_ENDPOINTS) == 3
     assert len(ENDPOINTS) == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS) + 2
+    scheduled_ids = {source_id for source_id, _url in SCHEDULED_ENDPOINTS}
+    assert {"bitstamp_spot_ticker", "bitstamp_spot_depth"} <= scheduled_ids
     assert engine["excluded_noncommercial_xrpl_node_sources"] == 2
     assert engine["raw_only_derivatives_sources"] == 2
-    assert engine["scheduled_sources"] == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS)
     assert len(engine["implemented"]) >= 8
 
 

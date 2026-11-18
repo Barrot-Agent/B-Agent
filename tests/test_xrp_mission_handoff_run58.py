@@ -42,11 +42,11 @@ def test_legacy_handoff_history_and_run112_current_handoff_bind_exact_heads_and_
     assert "42743666268" in current_handoff
 
 
-def test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run58_archive():
-    assert len(ENDPOINTS) == 51
-    assert len(SCHEDULED_ENDPOINTS) == 46
+def test_current_endpoint_registry_expands_v1_1_snapshot_and_preserves_historical_run58_archive():
+    assert len(ENDPOINTS) == 53
+    assert len(SCHEDULED_ENDPOINTS) == 48
     assert len(WEEKLY_ENDPOINTS) == 3
-    assert len({source_id for source_id, _ in ENDPOINTS}) == 51
+    assert len({source_id for source_id, _ in ENDPOINTS}) == 53
     raw_only_deribit = {"deribit_xrp_usdc_perpetual_ticker", "deribit_xrp_usdc_perpetual_order_book"}
     scheduled_source_ids = {source_id for source_id, _ in SCHEDULED_ENDPOINTS}
     assert raw_only_deribit <= scheduled_source_ids
@@ -69,11 +69,17 @@ def test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run
     assert current_data["integration_pr"]["draft"] is True
     assert current_data["integration_pr"]["behind_by"] == 0
 
+    # This v1.1 map is a dated Run175 snapshot; preserve its historical counts.
+    assert current_data["captured_at_utc"] == "2026-11-15T21:29:23Z"
     engine = current_data["prediction_engine_status"]
-    assert engine["source_definitions_total"] == len(ENDPOINTS)
-    assert engine["hourly_sources"] == len(SCHEDULED_ENDPOINTS)
-    assert engine["weekly_cftc_sources"] == len(WEEKLY_ENDPOINTS)
-    assert engine["scheduled_sources"] == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS)
+    assert engine["source_definitions_total"] == 51
+    assert engine["hourly_sources"] == 46
+    assert engine["weekly_cftc_sources"] == 3
+    assert engine["scheduled_sources"] == 49
+    # The live collector has since added Bitstamp XRP/USD ticker and order-book endpoints.
+    assert len(ENDPOINTS) == 53
+    assert len(SCHEDULED_ENDPOINTS) == 48
+    assert len(WEEKLY_ENDPOINTS) == 3
     assert engine["excluded_noncommercial_xrpl_node_sources"] == 2
     assert engine["out_of_sample_lift"] is False
     assert engine["forecast_status"] == "NOT_ISSUED"
