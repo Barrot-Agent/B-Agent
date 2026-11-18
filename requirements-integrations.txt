@@ -22,7 +22,7 @@
 databricks-sdk>=0.40.0
 flask>=3.1.0
 huggingface_hub>=0.23.0,<0.31  # >=0.31 hard-requires hf-xet (Rust)
-kaggle>=1.5.12,<1.6            # >=1.6 pulls jsonschema->rpds-py (Rust)
+kaggle>=1.5.12,<1.8            # >=1.6 pulls jsonschema->rpds-py (Rust)
 pandas>=2.2.0
 scikit-learn>=1.5.0
 cdp-sdk>=1.0.0                 # Coinbase; imports as `coinbase`
