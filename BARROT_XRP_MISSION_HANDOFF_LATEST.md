@@ -1777,3 +1777,48 @@ Keep PR #1663 draft. Resolve the automatic Pages publication path and obtain ind
 - No independent primary Binance wallet-flow ledger was found in this addendum. The $127M Binance-related net-outflow figure remains a secondary report and must not be interpreted as investor accumulation, cold storage or net exchange supply without address attribution and reserve-transfer controls.
 
 All new ETF and DBS observations remain research-only until raw source capture, exact issuer-vintage reconciliation, hash receipts and point-in-time known-at timestamps are independently verified.
+
+
+### Run 24 research addendum — definitive Japan SBIC resolution; Kamilah identity controls
+
+#### Japan's SBIC is three regional investment companies, not SBI Holdings
+
+The official Japanese `中小企業投資育成株式会社法` page reproduces **Act No. 101 of 1963**, enacted 10 June 1963. Article 1 defines the purpose as strengthening SME equity and supporting healthy business growth. Article 2 names exactly three companies and their respective headquarters: Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; and Osaka Small and Medium Business Investment & Consultation Co., Ltd. Article 10 places them under the law's ministerial supervisory framework. [Act text and Articles 1–2, 10](https://www.sbic-wj.co.jp/disclose/law/).
+
+Their own official profiles confirm the regional names and identities:
+
+- **SBIC East Japan** — Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; corporate number 9011001030621; established 15 Nov 1963; capital ¥6.6734B; shareholder categories include 18 prefectural/local governments, chambers of commerce, financial institutions and operating companies; coverage extends east from Shizuoka, Nagano and Niigata. [Tokyo official profile](https://www.sbic.co.jp/company/profile/).
+- **SBIC Central Japan** — Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established 18 Nov 1963; capital ¥4.3008B; coverage Aichi, Gifu, Mie, Toyama and Ishikawa. [Nagoya official profile](https://www.sbic-cj.co.jp/company/about/).
+- **SBIC West Japan** — Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established 20 Nov 1963; capital ¥6.822B; 84 employees; coverage 24 prefectures west of Fukui, Shiga, Nara and Wakayama. [Osaka official profile](https://www.sbic-wj.co.jp/profiles/profile/).
+
+Each official profile identifies the other two as sister companies. Thus **East/Central/West are three separate Japanese SME investment-and-consultation corporations**, not divisions of one SBI Holdings subsidiary and not a crypto exchange, XRP fund or Ripple entity.
+
+**Do not conflate these with SBI Holdings, Inc.** SBI Holdings' official profile says it was established 8 July 1999 and its principal business is control/management of the SBI Group through share ownership. Its official group-company list (as of 7 Oct 2026) names entities such as SBI Shinsei Corporate Investment, SBI Regional Business Investment, SBI VC Trade and SBI Ripple Asia; it does not list the three Tokyo/Nagoya/Osaka SBIC corporations. [SBI Holdings corporate profile](https://www.sbigroup.co.jp/english/company/information/profile.html) · [SBI Group companies](https://www.sbigroup.co.jp/english/company/group/overview.html). No ownership or operating link between the three regional SBICs and SBI Holdings was established by the reviewed primary records. Keep the legal entities separate in the relationship graph. The U.S. SBA Small Business Investment Company program is another acronym collision, not the Japanese three-company system.
+
+The regional SBICs' stated mandate is SME equity investment and growth support. No direct XRP, Ripple, RLUSD, Coinbase or Circle investment/use relationship was established in this research.
+
+#### Exact-phrase research and false-positive controls
+
+- Exact search for **"SBIC, ChatGPT SBIC"** produced no verifiable primary-source entity, product or transaction. Status: unresolved; do not create an entity node from the phrase alone.
+- Exact search for **"actual capital"** in the XRP/SBI context produced no verified primary-source transaction or named program. Do not treat generic "actual capital deployment" wording or the podcast phrase "real assets actually moving" as the same evidence.
+- Exact search for **"ASK Coin"** produced no verified XRP/Ripple/SBI connection. Keep the string unresolved rather than assigning a ticker or project based on acronym collision.
+
+#### Kamilah/Camilla Stevenson — one verified public appearance; channel ownership quarantined
+
+The iHeart episode is titled **“Crypto Panics! with Dr. Kamilah Stevenson”** and the guest's closing remarks self-report X as `cam i am cam Stevenson`, Instagram as `Kamilla Stevenson`, and YouTube as `doctor Camilla Stevenson`; she explicitly warns that fake pages exist. The transcript is automatically rendered and contains spelling/transcription variants, so preserve the alias spellings rather than silently normalizing them. [iHeart episode and transcript, especially 40:07–40:26](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/).
+
+One public YouTube **guest appearance** is verified: **“Crypto Panics! W/ @drkamilahstevenson”**, published 11 June 2026 by the Paul Barron Podcast. This is a host-channel interview featuring the guest, not proof that the host channel is owned by her. [YouTube appearance](https://www.youtube.com/watch?v=Sulo54IlQ60).
+
+Do not inventory videos from `@drkamilahstevenson`, `@KamilahStevensonXrpStocks`, `@drkamilahstevenson-j9r` or other lookalike channels as hers until a first-party cross-link from the self-reported X/Instagram identities or another authoritative source establishes ownership. A similarly named 2015 health video also lacks an identity bridge and remains excluded.
+
+The interview discusses a claimed 10 June 2026 SBI Shinsei pilot converting part of deposit interest into BTC/ETH/XRP. That specific pilot was **not confirmed by the first-party SBI material retrieved**. The official SBI Shinsei/SBI VC Trade material verified here is a separate retail campaign: deposits of at least ¥300,000 in a six-month yen term deposit, campaign entry 2 Feb–31 Mar 2026, with ¥500–¥20,000 XRP exchange vouchers redeemable through SBI VC Trade; the bank's page now marks it ended. [SBI Shinsei primary campaign page](https://www.sbishinseibank.co.jp/campaign/cam_2602_xrp_trade/) · [SBI Holdings primary announcement](https://www.sbigroup.co.jp/news/pr/2026/0202_16075.html). The separate official 10 June “Triple Yen Deposit” campaign was a cash-interest promotion, not an XRP conversion program. [SBI Holdings/SBI Shinsei announcement](https://www.sbigroup.co.jp/news/pr/2026/0611_16393.html). Keep the podcast's 10 June pilot statement as an unverified claim until an actual first-party pilot notice or terms are located.
+
+#### Exact-head verification closeout for the preceding handoff head
+
+- Integration head `4ac706da9aa272d6c2a29a5e900d89e083bcd755` completed exact-head push CI successfully: [44387968038](https://github.com/Barrot-Agent/B-Agent/actions/runs/44387968038).
+- Full repository suite: **4,275 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests passed**, 191.73 seconds; inclusive coverage **68.14%** and legacy core coverage **77%**.
+- Wheel build and installed-wheel verification passed; installed wheel loaded Barrot V3, the XRP mission and canonical assets.
+- [Dependency audit 44387968010](https://github.com/Barrot-Agent/B-Agent/actions/runs/44387968010), [fail-closed push gate 44387967950](https://github.com/Barrot-Agent/B-Agent/actions/runs/44387967950), [PR dependency audit 44387977832](https://github.com/Barrot-Agent/B-Agent/actions/runs/44387977832), [PR money audit 44387977751](https://github.com/Barrot-Agent/B-Agent/actions/runs/44387977751), and [PR fail-closed gate 44387979830](https://github.com/Barrot-Agent/B-Agent/actions/runs/44387979830) passed.
+- PR event CI [44387977757](https://github.com/Barrot-Agent/B-Agent/actions/runs/44387977757) passed its Pages validation, but the core-test and full-suite jobs were skipped because the PR remains draft. The exact-head push run above is the full-suite evidence.
+- The only warnings are the 11 legacy tests returning booleans rather than `None`, setuptools' `project.license` deprecation, two package-discovery warnings, and the Actions cache-budget/read-only warning. No test failed.
+
