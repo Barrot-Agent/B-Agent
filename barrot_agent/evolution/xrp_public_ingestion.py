@@ -32,9 +32,9 @@ from .event_timeline import EventTimelineError, build_event_timeline
 from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_document, fetch_sec_json
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
-ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.30"
-PARSER_VERSION = "xrp-public-market-v3.29"
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
+ADAPTER_VERSION = "xrp-public-market-v3.31"
+PARSER_VERSION = "xrp-public-market-v3.30"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 OKX_QUOTE_BASIS_MAX_SKEW_SECONDS = 60
@@ -46,6 +46,7 @@ LIVE_HTTP_CACHE_AGE_LIMITS = {
     "binance_spot_ticker": MAX_LIVE_AGE_SECONDS,
     "coinbase_spot_ticker": MAX_LIVE_AGE_SECONDS,
     "kraken_spot_ticker": MAX_LIVE_AGE_SECONDS,
+    "bitstamp_spot_ticker": MAX_LIVE_AGE_SECONDS,
     "bitbank_spot_ticker": MAX_LIVE_AGE_SECONDS,
     "okx_spot_ticker": MAX_LIVE_AGE_SECONDS,
     "okx_usdt_usd_ticker": MAX_LIVE_AGE_SECONDS,
@@ -58,6 +59,7 @@ LIVE_HTTP_CACHE_AGE_LIMITS = {
     "coinbase_spot_book": MAX_ORDERBOOK_AGE_SECONDS,
     "binance_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "kraken_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
+    "bitstamp_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "bitbank_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "okx_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
     "bybit_spot_depth": MAX_ORDERBOOK_AGE_SECONDS,
@@ -104,6 +106,8 @@ ENDPOINTS = (
     ("binance_perp_global_long_short_ratio", "https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=XRPUSDT&period=1h&limit=500"),
     ("coinbase_spot_ticker", "https://api.exchange.coinbase.com/products/XRP-USD/ticker"),
     ("kraken_spot_ticker", "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"),
+    ("bitstamp_spot_ticker", "https://www.bitstamp.net/api/v2/ticker/xrpusd/"),
+    ("bitstamp_spot_depth", "https://www.bitstamp.net/api/v2/order_book/xrpusd/?group=1"),
     ("bitbank_spot_circuit_break", "https://public.bitbank.cc/xrp_jpy/circuit_break_info"),
     ("bitbank_spot_transactions", "https://public.bitbank.cc/xrp_jpy/transactions"),
     ("bitbank_spot_ticker", "https://public.bitbank.cc/xrp_jpy/ticker"),
@@ -207,6 +211,7 @@ BITBANK_SOURCE_IDS = frozenset({
     "bitbank_spot_depth",
 })
 BITBANK_CIRCUIT_MODES = frozenset({"NONE", "CIRCUIT_BREAK", "FULL_RANGE_CIRCUIT_BREAK", "RESUMPTION", "LISTING"})
+BITSTAMP_SOURCE_IDS = frozenset({"bitstamp_spot_ticker", "bitstamp_spot_depth"})
 
 XRPL_NODE_SOURCES = {
     "xrpl_inftf_server_info": {
@@ -2530,6 +2535,213 @@ def _bitbank_transactions_research_summary(payload: Any) -> dict[str, Any] | Non
 
 
 
+def _parse_bitstamp_ticker(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    http_date: str | None = None,
+):
+    """Parse the public Bitstamp XRP/USD ticker using its provider timestamp."""
+    if url != "https://www.bitstamp.net/api/v2/ticker/xrpusd/":
+        raise XRPIngestionError("Bitstamp ticker endpoint URL mismatch")
+    if not isinstance(payload, Mapping):
+        raise XRPIngestionError("Bitstamp ticker response must be an object")
+    market_type = payload.get("market_type")
+    if market_type is not None and str(market_type).upper() != "SPOT":
+        raise XRPIngestionError("Bitstamp ticker market type is not spot")
+    for field in ("pair", "market"):
+        identity = payload.get(field)
+        if identity is not None and str(identity).replace(" ", "").upper() not in {"XRP/USD", "XRPUSD"}:
+            raise XRPIngestionError(f"Bitstamp ticker {field} identity mismatch")
+
+    source_time = _from_seconds(payload.get("timestamp"), "Bitstamp ticker timestamp")
+    if source_time > captured:
+        raise XRPIngestionError("Bitstamp ticker timestamp is later than capture time")
+    eligible, reason, quality = _live_eligibility(source_time, captured, MAX_LIVE_AGE_SECONDS)
+
+    last = _number(payload.get("last"), "Bitstamp ticker last", allow_zero=False)
+    bid = _number(payload.get("bid"), "Bitstamp ticker bid", allow_zero=False)
+    ask = _number(payload.get("ask"), "Bitstamp ticker ask", allow_zero=False)
+    high = _number(payload.get("high"), "Bitstamp ticker high", allow_zero=False)
+    low = _number(payload.get("low"), "Bitstamp ticker low", allow_zero=False)
+    if ask <= bid:
+        raise XRPIngestionError("Bitstamp ticker bid/ask is crossed or locked")
+    if high < low or not low <= last <= high:
+        raise XRPIngestionError("Bitstamp ticker last/high/low relationship is invalid")
+
+    mid = (bid + ask) / 2.0
+    spread_bps = (ask - bid) / mid * 10000.0
+    captured_s, event_s = _iso(captured), _iso(source_time)
+    fields = [
+        ("last_price", last, "USD/XRP"),
+        ("best_bid", bid, "USD/XRP"),
+        ("best_ask", ask, "USD/XRP"),
+        ("mid_price", mid, "USD/XRP"),
+        ("spread_bps", spread_bps, "bps"),
+        ("high_24h", high, "USD/XRP"),
+        ("low_24h", low, "USD/XRP"),
+        ("open_price", _number(payload.get("open"), "Bitstamp ticker open", allow_zero=False), "USD/XRP"),
+        ("open_24h", _number(payload.get("open_24"), "Bitstamp ticker open_24", allow_zero=False), "USD/XRP"),
+        ("vwap_24h", _number(payload.get("vwap"), "Bitstamp ticker vwap", allow_zero=False), "USD/XRP"),
+        ("base_volume_24h", _number(payload.get("volume"), "Bitstamp ticker volume", allow_zero=True), "XRP/24h"),
+        ("percent_change_24h", _signed_number(payload.get("percent_change_24"), "Bitstamp ticker percent_change_24"), "percent"),
+    ]
+    limitations = [
+        "Single Bitstamp XRP/USD spot ticker; not consolidated or global spot liquidity.",
+        "The provider timestamp is treated as a ticker snapshot time, not an independently verified last-trade execution timestamp.",
+        "The reported 24-hour base volume and VWAP are venue-specific and are not cross-venue totals.",
+    ]
+    records = [
+        _feature_record(
+            feature_id=f"xrp.spot.bitstamp.{name}",
+            value=value,
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="bitstamp",
+            venue="Bitstamp",
+            instrument="XRP/USD spot",
+            currency_pair="XRP/USD",
+            market_type="spot",
+            model_eligible=eligible,
+            eligibility_reason=reason,
+            quality_status=quality,
+            limitations=limitations,
+        )
+        for name, value, unit in fields
+    ]
+    return records, event_s, eligible, reason
+
+
+def _parse_bitstamp_depth(
+    payload: Any,
+    *,
+    source_id: str,
+    url: str,
+    digest: str,
+    captured: datetime,
+    http_date: str | None = None,
+):
+    """Parse a timestamped, price-grouped Bitstamp XRP/USD order-book snapshot."""
+    if url != "https://www.bitstamp.net/api/v2/order_book/xrpusd/?group=1":
+        raise XRPIngestionError("Bitstamp order-book endpoint URL mismatch")
+    if not isinstance(payload, Mapping):
+        raise XRPIngestionError("Bitstamp order book response must be an object")
+    try:
+        coarse_seconds = int(payload.get("timestamp"))
+        microseconds = int(payload.get("microtimestamp"))
+    except (TypeError, ValueError, OverflowError):
+        raise XRPIngestionError("Bitstamp order-book timestamps must be integer epoch values") from None
+    if isinstance(payload.get("timestamp"), bool) or isinstance(payload.get("microtimestamp"), bool):
+        raise XRPIngestionError("Bitstamp order-book timestamps must be integer epoch values")
+    if coarse_seconds <= 0 or microseconds <= 0:
+        raise XRPIngestionError("Bitstamp order-book timestamps must be positive")
+    if microseconds // 1_000_000 != coarse_seconds:
+        raise XRPIngestionError("Bitstamp order-book timestamp and microtimestamp disagree")
+    try:
+        source_time = datetime.fromtimestamp(
+            microseconds // 1_000_000, tz=timezone.utc
+        ).replace(microsecond=microseconds % 1_000_000)
+    except (OverflowError, OSError, ValueError):
+        raise XRPIngestionError("Bitstamp order-book microtimestamp is outside the supported range") from None
+    if source_time > captured:
+        raise XRPIngestionError("Bitstamp order-book timestamp is later than capture time")
+    eligible, reason, quality = _live_eligibility(
+        source_time, captured, MAX_ORDERBOOK_AGE_SECONDS
+    )
+
+    bids_raw, asks_raw = payload.get("bids"), payload.get("asks")
+    if (
+        not isinstance(bids_raw, list) or not bids_raw or len(bids_raw) > 5000
+        or not isinstance(asks_raw, list) or not asks_raw or len(asks_raw) > 5000
+    ):
+        raise XRPIngestionError("Bitstamp order book must contain 1–5000 bids and asks")
+
+    def parse_levels(rows: list[Any], side: str) -> list[tuple[float, float]]:
+        levels = []
+        seen_prices = set()
+        for row in rows:
+            if not isinstance(row, list) or len(row) < 2:
+                raise XRPIngestionError(f"Bitstamp {side} level schema mismatch")
+            price = _number(row[0], f"Bitstamp {side} price", allow_zero=False)
+            quantity = _number(row[1], f"Bitstamp {side} quantity", allow_zero=False)
+            if price in seen_prices:
+                raise XRPIngestionError(f"Bitstamp {side} order book contains duplicate grouped prices")
+            seen_prices.add(price)
+            levels.append((price, quantity))
+        return levels
+
+    bids, asks = parse_levels(bids_raw, "bid"), parse_levels(asks_raw, "ask")
+    best_bid = max(price for price, _quantity in bids)
+    best_ask = min(price for price, _quantity in asks)
+    if best_ask <= best_bid:
+        raise XRPIngestionError("Bitstamp order book is crossed or locked")
+
+    mid = (best_bid + best_ask) / 2.0
+    spread_bps = (best_ask - best_bid) / mid * 10000.0
+    features = [
+        ("best_bid", best_bid, "USD/XRP"),
+        ("best_ask", best_ask, "USD/XRP"),
+        ("mid_price", mid, "USD/XRP"),
+        ("spread_bps", spread_bps, "bps"),
+    ]
+    for band in (10, 50, 100):
+        bid_depth = sum(
+            price * quantity for price, quantity in bids
+            if price >= mid * (1 - band / 10000.0)
+        )
+        ask_depth = sum(
+            price * quantity for price, quantity in asks
+            if price <= mid * (1 + band / 10000.0)
+        )
+        total = bid_depth + ask_depth
+        imbalance = (bid_depth - ask_depth) / total if total > 0 else 0.0
+        features.extend([
+            (f"bid_depth_{band}bps", bid_depth, "USD"),
+            (f"ask_depth_{band}bps", ask_depth, "USD"),
+            (f"depth_imbalance_{band}bps", imbalance, "ratio"),
+        ])
+
+    event_s, captured_s = _iso(source_time), _iso(captured)
+    limitations = [
+        "Single Bitstamp XRP/USD spot order-book snapshot; not consolidated or global liquidity.",
+        "The endpoint returns a price-grouped snapshot; no incremental sequence bridge or continuity claim is maintained.",
+        "The exchange microtimestamp is used as the snapshot as-of time; the coarse timestamp must agree to its whole second.",
+        "Depth values are quote notional in USD at the displayed levels and are not executable-liquidity guarantees.",
+    ]
+    records = [
+        _feature_record(
+            feature_id=f"xrp.spot.bitstamp.orderbook.{name}",
+            value=value,
+            unit=unit,
+            event_time_utc=event_s,
+            source_data_as_of_utc=event_s,
+            captured_at_utc=captured_s,
+            source_id=source_id,
+            source_uri=url,
+            raw_sha256=digest,
+            independence_group="bitstamp",
+            venue="Bitstamp",
+            instrument="XRP/USD spot",
+            currency_pair="XRP/USD",
+            market_type="spot",
+            model_eligible=eligible,
+            eligibility_reason=reason,
+            quality_status=quality,
+            limitations=limitations,
+        )
+        for name, value, unit in features
+    ]
+    return records, event_s, eligible, reason
+
+
 def _parse_kraken_ticker(
     payload: Any,
     *,
@@ -4729,6 +4941,8 @@ PARSERS = {
     "bitbank_spot_ticker": _parse_bitbank_ticker,
     "bitbank_spot_depth": _parse_bitbank_depth,
     "kraken_spot_ticker": _parse_kraken_ticker,
+    "bitstamp_spot_ticker": _parse_bitstamp_ticker,
+    "bitstamp_spot_depth": _parse_bitstamp_depth,
     "kraken_spot_depth": _parse_kraken_depth,
     "okx_spot_ticker": _parse_okx_ticker,
     "okx_usdt_usd_ticker": _parse_okx_usdt_usd_ticker,
@@ -5338,7 +5552,7 @@ def run_ingestion(
                 "digest": digest,
                 "captured": source_captured,
             }
-            if source_id in {"coinbase_spot_ticker", "coinbase_spot_book", "binance_spot_depth", "kraken_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES or source_id in BITBANK_SOURCE_IDS:
+            if source_id in {"coinbase_spot_ticker", "coinbase_spot_book", "binance_spot_depth", "kraken_spot_ticker", "kraken_spot_depth"} or source_id in XRPL_NODE_SOURCES or source_id in BITBANK_SOURCE_IDS or source_id in BITSTAMP_SOURCE_IDS:
                 parser_kwargs["http_date"] = response.get("http_date")
             if source_id in {"bitbank_spot_ticker", "bitbank_spot_depth"}:
                 parser_kwargs["circuit_break_info"] = bitbank_circuit_break_payload
@@ -5894,7 +6108,7 @@ def run_ingestion(
         "feature_store_restore_search_max_pages": 30,
         "feature_store_rebuild_from_raw_artifacts_implemented": False,
         "limitations": [
-            "Spot coverage includes Binance XRP/USDT, Coinbase and Kraken XRP/USD, and OKX XRP/USDT; same-venue OKX USDT/USD can produce top-of-book USD-normalized features only when timestamp-skew and freshness gates pass. Deribit XRP-USDC perpetual ticker and L2 snapshots remain raw-only, while derivatives history/features remain Binance USD-M XRPUSDT only.",
+            "Spot coverage includes Binance XRP/USDT, Bitstamp, Coinbase and Kraken XRP/USD, Bitbank XRP/JPY, and OKX XRP/USDT; same-venue OKX USDT/USD can produce top-of-book USD-normalized features only when timestamp-skew and freshness gates pass. Deribit XRP-USDC perpetual ticker and L2 snapshots remain raw-only, while derivatives history/features remain Binance USD-M XRPUSDT only.",
             "Only OKX top-of-book XRP-USDT quotes are converted to USD, and only with a same-venue USDT-USD snapshot no more than 60 seconds apart and both snapshots no more than 300 seconds old; Binance and Bybit XRP-USDT quotes and Binance-reported open-interest value remain unconverted, while open-interest contracts, quote value, funding fractions and account ratios remain separate units.",
             "The normalized OKX USD features are top-of-book only, share one OKX publisher-independence group, and do not establish independent corroboration, full-depth USD liquidity, or a synchronized cross-venue market.",
             "Historical Binance funding settlements are timestamped per event; the actual funding interval is not assumed fixed. Binance open-interest and global long/short history are one-hour observations limited to the latest 30 days, with no-trade gaps preserved as missing.",

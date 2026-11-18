@@ -31,6 +31,7 @@ from barrot_agent.evolution.xrp_public_ingestion import (
     run_ingestion,
     ALLOWED_HOSTS,
     BITBANK_SOURCE_IDS,
+    BITSTAMP_SOURCE_IDS,
     ENDPOINTS,
     SCHEDULED_ENDPOINTS,
     WEEKLY_ENDPOINTS,
@@ -297,6 +298,24 @@ def _fake_fetcher(captured: datetime):
                     ],
                 },
                 "time": captured_ms - 1000,
+            }
+        elif source_id == "bitstamp_spot_ticker":
+            captured_seconds = int(captured.timestamp())
+            payload = {
+                "last": "1.2900", "high": "1.3100", "low": "1.2700",
+                "vwap": "1.2850", "volume": "1000000", "bid": "1.2899",
+                "ask": "1.2901", "timestamp": str(captured_seconds - 1),
+                "open": "1.2800", "open_24": "1.2700",
+                "percent_change_24": "1.57", "side": "0",
+                "market_type": "SPOT", "pair": "XRP/USD", "market": "XRP/USD",
+            }
+        elif source_id == "bitstamp_spot_depth":
+            captured_seconds = int(captured.timestamp())
+            payload = {
+                "timestamp": str(captured_seconds - 2),
+                "microtimestamp": str((captured_seconds - 2) * 1_000_000 + 123456),
+                "bids": [["1.289", "1000"], ["1.288", "2000"]],
+                "asks": [["1.291", "1200"], ["1.292", "1800"]],
             }
         elif source_id == "bitbank_spot_circuit_break":
             payload = {
@@ -732,8 +751,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.30"
-    assert summary["parser_version"] == "xrp-public-market-v3.29"
+    assert summary["adapter_version"] == "xrp-public-market-v3.31"
+    assert summary["parser_version"] == "xrp-public-market-v3.30"
     assert summary["quote_basis"]["status"] == "VERIFIED"
     assert summary["quote_basis_feature_count"] == 4
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
@@ -744,6 +763,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert len(coinbase_closes) == 2
     assert all(item["event_time_utc"] < item["known_at_utc"] for item in coinbase_closes)
     assert any(item["feature_id"] == "xrp.spot.kraken.orderbook.mid_price" for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.spot.bitstamp.best_bid" and item["unit"] == "USD/XRP" for item in snapshot["records"])
+    assert any(item["feature_id"] == "xrp.spot.bitstamp.orderbook.mid_price" and item["unit"] == "USD/XRP" for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.okx.last_price" and item["unit"] == "USDT/XRP" for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.okx.usd_normalized.mid_price" and item["unit"] == "USD/XRP" and item["model_eligible"] is True for item in snapshot["records"])
     assert any(item["feature_id"] == "xrp.spot.okx.orderbook.mid_price" and item["model_eligible"] is True for item in snapshot["records"])
@@ -1576,8 +1597,8 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 51
-    assert len(SCHEDULED_ENDPOINTS) == 46
+    assert len(ENDPOINTS) == 53
+    assert len(SCHEDULED_ENDPOINTS) == 48
     assert records == []
     assert source_as_of is None
     assert eligible is False
@@ -2413,6 +2434,91 @@ def test_coinbase_historical_backfill_is_manual_only_and_does_not_expand_permiss
     assert "cron: '15 0 * * *'" in workflow
 
 
+def test_bitstamp_xrp_usd_public_sources_are_allowlisted_and_scheduled():
+    endpoint_map = dict(ENDPOINTS)
+    assert endpoint_map["bitstamp_spot_ticker"] == "https://www.bitstamp.net/api/v2/ticker/xrpusd/"
+    assert endpoint_map["bitstamp_spot_depth"] == "https://www.bitstamp.net/api/v2/order_book/xrpusd/?group=1"
+    assert "www.bitstamp.net" in ALLOWED_HOSTS
+    assert BITSTAMP_SOURCE_IDS == {"bitstamp_spot_ticker", "bitstamp_spot_depth"}
+    assert BITSTAMP_SOURCE_IDS.issubset({source_id for source_id, _url in SCHEDULED_ENDPOINTS})
+    assert BITSTAMP_SOURCE_IDS.issubset(PARSERS)
+    assert xrp_ingestion.LIVE_HTTP_CACHE_AGE_LIMITS["bitstamp_spot_ticker"] == xrp_ingestion.MAX_LIVE_AGE_SECONDS
+    assert xrp_ingestion.LIVE_HTTP_CACHE_AGE_LIMITS["bitstamp_spot_depth"] == xrp_ingestion.MAX_ORDERBOOK_AGE_SECONDS
+
+
+def test_bitstamp_ticker_parses_usd_quote_and_rejects_wrong_identity_or_crossed_quotes():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    url = dict(ENDPOINTS)["bitstamp_spot_ticker"]
+    response = _fake_fetcher(captured)("bitstamp_spot_ticker", url)
+    records, source_as_of, eligible, reason = PARSERS["bitstamp_spot_ticker"](
+        response["payload"], source_id="bitstamp_spot_ticker", url=url,
+        digest=hashlib.sha256(response["raw_bytes"]).hexdigest(), captured=captured,
+        http_date=response.get("http_date"),
+    )
+    by_id = {item["feature_id"]: item for item in records}
+    assert eligible is True and reason == ""
+    assert source_as_of == "2026-11-07T11:59:59.000000Z"
+    assert by_id["xrp.spot.bitstamp.best_bid"]["value"] == 1.2899
+    assert by_id["xrp.spot.bitstamp.best_ask"]["value"] == 1.2901
+    assert by_id["xrp.spot.bitstamp.base_volume_24h"]["unit"] == "XRP/24h"
+    assert by_id["xrp.spot.bitstamp.best_bid"]["sources"][0]["independence_group"] == "bitstamp"
+    wrong = dict(response["payload"], pair="BTC/USD")
+    with pytest.raises(XRPIngestionError, match="identity mismatch"):
+        PARSERS["bitstamp_spot_ticker"](
+            wrong, source_id="bitstamp_spot_ticker", url=url, digest="a" * 64, captured=captured
+        )
+    crossed = dict(response["payload"], bid="1.291", ask="1.290")
+    with pytest.raises(XRPIngestionError, match="crossed or locked"):
+        PARSERS["bitstamp_spot_ticker"](
+            crossed, source_id="bitstamp_spot_ticker", url=url, digest="b" * 64, captured=captured
+        )
+
+
+def test_bitstamp_orderbook_uses_microtimestamp_and_usd_depth_bands():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    url = dict(ENDPOINTS)["bitstamp_spot_depth"]
+    response = _fake_fetcher(captured)("bitstamp_spot_depth", url)
+    records, source_as_of, eligible, reason = PARSERS["bitstamp_spot_depth"](
+        response["payload"], source_id="bitstamp_spot_depth", url=url,
+        digest=hashlib.sha256(response["raw_bytes"]).hexdigest(), captured=captured,
+        http_date=response.get("http_date"),
+    )
+    by_id = {item["feature_id"]: item for item in records}
+    assert eligible is True and reason == ""
+    assert source_as_of == "2026-11-07T11:59:58.123456Z"
+    assert by_id["xrp.spot.bitstamp.orderbook.mid_price"]["unit"] == "USD/XRP"
+    assert by_id["xrp.spot.bitstamp.orderbook.bid_depth_10bps"]["value"] > 0
+    assert by_id["xrp.spot.bitstamp.orderbook.ask_depth_100bps"]["value"] > 0
+    assert all(item["model_eligible"] is True for item in records)
+    mismatched = dict(response["payload"], microtimestamp=str(int(response["payload"]["microtimestamp"]) + 1_000_000))
+    with pytest.raises(XRPIngestionError, match="timestamps disagree"):
+        PARSERS["bitstamp_spot_depth"](
+            mismatched, source_id="bitstamp_spot_depth", url=url, digest="c" * 64, captured=captured
+        )
+    crossed = dict(response["payload"], bids=[["1.292", "100"]])
+    with pytest.raises(XRPIngestionError, match="crossed or locked"):
+        PARSERS["bitstamp_spot_depth"](
+            crossed, source_id="bitstamp_spot_depth", url=url, digest="d" * 64, captured=captured
+        )
+
+
+def test_bitstamp_sources_reject_wrong_endpoint_and_stale_snapshots():
+    captured = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+    ticker = _fake_fetcher(captured)("bitstamp_spot_ticker", dict(ENDPOINTS)["bitstamp_spot_ticker"])["payload"]
+    with pytest.raises(XRPIngestionError, match="endpoint URL mismatch"):
+        PARSERS["bitstamp_spot_ticker"](
+            ticker, source_id="bitstamp_spot_ticker", url="https://evil.example/api/v2/ticker/xrpusd/",
+            digest="e" * 64, captured=captured,
+        )
+    stale_ticker = dict(ticker, timestamp=str(int(captured.timestamp()) - 301))
+    records, _as_of, eligible, reason = PARSERS["bitstamp_spot_ticker"](
+        stale_ticker, source_id="bitstamp_spot_ticker", url=dict(ENDPOINTS)["bitstamp_spot_ticker"],
+        digest="f" * 64, captured=captured,
+    )
+    assert eligible is False and "older_than_300" in reason
+    assert all(item["model_eligible"] is False for item in records)
+
+
 def test_bitbank_xrp_jpy_public_sources_are_allowlisted_and_scheduled():
     endpoint_map = dict(ENDPOINTS)
     assert endpoint_map["bitbank_spot_circuit_break"] == "https://public.bitbank.cc/xrp_jpy/circuit_break_info"
@@ -3106,8 +3212,8 @@ def test_cbxrp_collateral_sources_are_scheduled_digest_only_and_never_model_admi
     assert records == []
     assert eligible is False
     assert "raw_only" in reason
-    assert len(ENDPOINTS) == 51
-    assert len(SCHEDULED_ENDPOINTS) == 46
+    assert len(ENDPOINTS) == 53
+    assert len(SCHEDULED_ENDPOINTS) == 48
 
 
 def test_morpho_market_history_preserves_provider_event_time_and_collateral_total_without_feature_admission():
@@ -3199,8 +3305,8 @@ def test_sbi_vc_trade_lending_page_is_scheduled_digest_only_and_not_a_feature_so
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
     assert source_id in xrp_ingestion.DIGEST_ONLY_RAW_SOURCE_REASONS
-    assert len(ENDPOINTS) == 51
-    assert len(SCHEDULED_ENDPOINTS) == 46
+    assert len(ENDPOINTS) == 53
+    assert len(SCHEDULED_ENDPOINTS) == 48
 
 
 def test_sbi_vc_trade_lending_page_parser_is_raw_only_and_rejects_wrong_publisher():

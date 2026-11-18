@@ -2,6 +2,7 @@ from barrot_agent.evolution.source_independence import (
     SourceIndependenceEngine,
     canonical_independence_groups,
     canonical_publisher_group,
+    canonical_publisher_group,
 )
 
 
@@ -123,3 +124,11 @@ def test_ip_literal_hosts_do_not_create_publisher_groups():
     assert canonical_publisher_group("https://10.0.0.5/report") == ""
     assert canonical_publisher_group("https://1.2.3.4/report") == ""
     assert canonical_publisher_group("https://[2001:db8::1]/report") == ""
+
+
+def test_bitstamp_exchange_publisher_is_distinct_from_other_venue_domains():
+    bitstamp = canonical_publisher_group("https://www.bitstamp.net/api/v2/ticker/xrpusd/")
+    kraken = canonical_publisher_group("https://api.kraken.com/0/public/Ticker?pair=XRPUSD")
+    assert bitstamp == "bitstamp.net"
+    assert kraken == "kraken.com"
+    assert bitstamp != kraken
