@@ -1,49 +1,51 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-18T20:44:51.344Z",
+  "captured_at_utc": "2026-11-18T21:02:30Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
-    "main_sha": "8e9b2516b5a103e9593124c05edf623e6c7817ff",
+    "main_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
     "integration": {
       "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
-      "code_head_sha": "0f981f5c1499cfe3c2f1c1d2d855bb82a7cb865f",
+      "code_head_sha": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
       "pr_number": 1663,
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 323,
+      "ahead_by": 328,
       "behind_by": 0,
-      "changed_files": 1429,
+      "changed_files": 1430,
       "changed_workflow_files": 67,
       "formal_reviews": 0,
-      "snapshot_head_sha": "0f981f5c1499cfe3c2f1c1d2d855bb82a7cb865f",
-      "commits": 323,
-      "additions": 515183,
+      "snapshot_head_sha": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
+      "commits": 328,
+      "additions": 515778,
       "deletions": 6596,
-      "mergeable_state": "unstable",
+      "mergeable_state": "draft; exact-head push CI still running",
       "review_comments": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
-      "current_pr_head_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
+      "current_pr_head_sha": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
       "snapshot_ahead_by": 321,
       "snapshot_changed_files": 1428,
       "handoff_update_commit_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
-      "research_record_commit_sha": "a4186aa70fa0b3685c74a9018c3152d7a4be835d"
+      "research_record_commit_sha": "a4186aa70fa0b3685c74a9018c3152d7a4be835d",
+      "branch_sync_commit": "dbc6b327a56dc66493fb06cc32164a2043509280",
+      "latest_research_artifact_commit": "6b9c73ca3589f55afe70abfc2d3c687da16ac863"
     },
     "tree_counts": {
       "main": {
-        "entries": 1737,
-        "workflow_files": 84,
-        "test_named_files": 126,
-        "xrp_research_files": 44
+        "entries": 1739,
+        "workflow_files": 92,
+        "test_named_files": 137,
+        "xrp_research_files": 30
       },
       "integration": {
-        "entries": 2980,
-        "workflow_files": 85,
-        "test_named_files": 503,
-        "xrp_research_files": 1138
+        "entries": 2983,
+        "workflow_files": 93,
+        "test_named_files": 515,
+        "xrp_research_files": 842
       }
     },
     "main_paths_missing_from_integration": 0
@@ -76,7 +78,7 @@
       ],
       "task_assignment": {
         "status": "EXECUTED_IN_CURRENT_SESSION",
-        "task": "Inspect current main, complete tree, open PRs, ancestry, integration diffs, CI, security configuration and durable handoff; make bounded integration-branch-only evidence and safety updates.",
+        "task": "Inspected current main, full tree, all open PRs, branch ancestry and overlaps, workflow/security settings, exact-head CI and durable handoff; synchronized the existing integration branch to current main with a non-force two-parent merge commit; captured and reconciled current XRP market evidence; updated the evidence map and handoff.",
         "expected_output": "Exact-head evidence, source-linked repository state, tested integration changes and durable handoff"
       }
     },
@@ -284,7 +286,10 @@
       "rlusd_usdc": "raw-only pending supply and reserve-attestation normalization",
       "sbi_lending": "digest-only; actual lending balances not disclosed",
       "morpho_cbxrp": "raw-only pending token-unit, decimal, market-lineage and block-time reconciliation",
-      "xrpl_nodes": "excluded from scheduled collection under provider terms"
+      "xrpl_nodes": "excluded from scheduled collection under provider terms",
+      "production_schedule_status": "NOT_ACTIVE_ON_MAIN — XRP public-ingestion workflow remains on integration; cron is not active until the workflow is on the default branch.",
+      "latest_observed_run_still": "44301868145 at 2026-11-18T12:13:54.617611Z",
+      "raw_to_feature_rebuild_from_artifacts": false
     },
     "quote_basis": {
       "venue": "OKX",
@@ -324,60 +329,54 @@
     "latest_market_snapshot": {
       "source": "Kraken public ticker API — XRP/USD",
       "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
-      "retrieved_at_utc": "2026-11-18T20:26:42Z",
+      "retrieved_at_utc": "2026-11-18T21:02:25Z",
+      "capture_time_upper_bound_utc": "2026-11-18T21:02:30Z",
       "source_event_time_utc": null,
-      "source_freshness_label": "retrieval-time observation; Kraken response contains no exchange event timestamp",
+      "source_freshness_label": "retrieval-time observation; exchange event timestamp absent",
       "model_eligible": false,
-      "price_usd": 0.96805,
-      "bid_usd": 0.96752,
-      "ask_usd": 0.96758,
-      "best_bid_size_xrp": 350,
-      "best_ask_size_xrp": 347,
-      "spread_bps": 0.620123,
+      "price_usd": 0.96691,
+      "bid_usd": 0.96702,
+      "ask_usd": 0.96709,
+      "best_bid_size_xrp": 1544,
+      "best_ask_size_xrp": 5171,
+      "spread_bps": 0.723847,
+      "top_level_ask_to_bid_size_ratio": 3.349093,
       "open_24h_usd": 0.98253,
-      "low_24h_usd": 0.96061,
+      "low_24h_usd": 0.96218,
       "high_24h_usd": 1.00677,
-      "volume_24h_xrp": 50604527.42424884,
-      "vwap_24h_usd": 0.98242713,
-      "change_from_24h_open_percent": -1.473746,
-      "last_vs_vwap_percent": -1.46343,
-      "raw_sha256": "79183bfe9dcc8cd704be70f56c128b1fc471e90ad7af3d866a3c29a22c108953",
+      "volume_24h_xrp": 50828445.84585009,
+      "vwap_24h_usd": 0.98237191,
+      "change_from_24h_open_percent": -1.589773,
+      "last_vs_vwap_percent": -1.573936,
+      "position_in_24h_range_percent": 10.60776,
+      "raw_sha256": "3faab661464e183261b7a7a093048193ada7d764ba4cec946d932ebb8f9ba2bc",
       "limitations": [
-        "No exchange event timestamp; retrieval-time context only.",
-        "Single venue and top-of-book only; not consolidated executable price or full L2 depth."
+        "No exchange event timestamp; capture time is bracketed.",
+        "Single venue and top-of-book only; no consolidated spot L2 or sequence reconstruction.",
+        "Hash covers the exact rendered JSON response text, not independently captured wire bytes."
       ]
     },
     "latest_market_research": {
-      "artifact_path": "research/xrp_intelligence/20261118T202745Z-run25-market-ingestion-ci-security-reconciliation.json",
-      "captured_at_utc": "2026-11-18T20:44:51.344Z",
+      "artifact_path": "research/xrp_intelligence/20261118T210230Z-run26-market-spot-derivatives-etf-macro-reconciliation.json",
+      "captured_at_utc": "2026-11-18T21:02:30Z",
       "model_eligible": false,
-      "kraken_xrpusd_last": 0.96805,
-      "kraken_bid": 0.96752,
-      "kraken_ask": 0.96758,
-      "kraken_spread_bps": 0.620123,
-      "kraken_24h_volume_xrp": 50604527.42424884,
-      "kraken_vwap_24h_usd": 0.98242713,
-      "okx_xrp_usdt_last": 0.9665,
-      "okx_xrp_usdt_bid": 0.9665,
-      "okx_xrp_usdt_ask": 0.9666,
-      "okx_top_bid_size_xrp": 2483.743003,
-      "okx_top_ask_size_xrp": 984.543545,
-      "okx_usdt_usd_last": 0.99889,
-      "okx_usdt_usd_leg_time_utc": "2026-11-18T20:08:14.661Z",
-      "okx_usd_normalization": "rejected; USDT-USD leg was 1,171.31 seconds older than XRP-USDT snapshot",
-      "liqwall_open_interest_usd": 958000000,
-      "liqwall_time_utc": "2026-11-18T05:22:00Z",
+      "kraken_xrpusd_last": 0.96691,
+      "kraken_spread_bps": 0.723847,
+      "kraken_24h_volume_xrp": 50828445.84585009,
+      "kraken_vwap_24h_usd": 0.98237191,
+      "binance_xrp_perpetual_book_snapshot_utc": "2026-11-18T20:26:00Z",
+      "binance_xrp_perpetual_bid_depth_within_1pct_usd": 10900000,
+      "binance_xrp_perpetual_ask_depth_within_1pct_usd": 10700000,
+      "liqwall_open_interest_usd": 935000000,
+      "liqwall_time_utc": "2026-11-18T20:32:00Z",
       "tradradar_open_interest_usd": 1320000000,
-      "tradradar_funding_percent_per_8h": -0.0039,
       "tradradar_time_utc": "2026-11-18T16:05:00Z",
+      "xrp_insights_nov16_to_nov17_flow_xrp": 159134,
+      "xrp_insights_data_as_of": "2026-11-17",
       "cryptokeyhole_nov17_flow_xrp": -3251,
-      "cryptokeyhole_fund_coverage": "2 of 4; partial",
-      "xrp_insights_nov17_flow_xrp": 986,
-      "xrp_insights_universe": "six spot funds plus BITW; GXRP excluded from flow totals while its data gap is corrected",
-      "sosovalue_7d_flow_usd": -7230000,
-      "sosovalue_fund_count": 5,
-      "derivatives_universe": "unreconciled; preserve each publisher, timestamp, venue universe and unit separately",
-      "etf_flow_universe": "unreconciled; preserve each publisher, fund set and reporting vintage separately",
+      "cryptokeyhole_coverage": "2 of 4; partial",
+      "bykaranteli_nov17_flow_usd": -6100000,
+      "bykaranteli_coverage": "five funds; provisional",
       "forecast_issuance": "disabled"
     },
     "forecast_issuance": "disabled",
@@ -558,12 +557,59 @@
       "pr_event_ci_run": 44393090765,
       "pr_event_ci_result": "success",
       "pages_validation": "success; validation only; no deployment"
+    },
+    "run26_main_exact_head": {
+      "main_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
+      "ci_run": 44396364281,
+      "ci_result": "success",
+      "full_suite": {
+        "passed": 1207,
+        "skipped": 2,
+        "failed": 0,
+        "subtests_passed": 8,
+        "duration_seconds": 22.73,
+        "coverage_percent": 78.1
+      }
+    },
+    "run26_previous_integration_exact_head": {
+      "head_sha": "edc3300717b9c77479e2acd9de30b0a9bac2f24c",
+      "push_ci_run": 44394535095,
+      "result": "success",
+      "full_suite": {
+        "passed": 4277,
+        "skipped": 1,
+        "failed": 0,
+        "warnings": 11,
+        "subtests_passed": 19,
+        "duration_seconds": 157.85,
+        "inclusive_coverage_percent": 68.14,
+        "legacy_core_coverage_percent": 77
+      },
+      "wheel_build": "passed",
+      "installed_wheel_v3_xrp_mission": "verified"
+    },
+    "run26_current_integration_head": {
+      "head_sha": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
+      "push_ci_run": 44397557544,
+      "push_ci_status": "in_progress",
+      "full_suite_status": "in_progress",
+      "dependency_audit_run": 44397557605,
+      "dependency_audit_status": "in_progress",
+      "fail_closed_run": 44397557794,
+      "fail_closed_result": "success",
+      "pr_ci_run": 44397569502,
+      "pr_ci_status": "in_progress",
+      "pr_dependency_audit_run": 44397569235,
+      "pr_dependency_audit_status": "in_progress",
+      "pr_money_audit_run": 44397569295,
+      "pr_money_audit_status": "in_progress",
+      "note": "This is the pre-handoff evidence head. The map and handoff update itself will create a new commit requiring exact-head CI."
     }
   },
   "security_and_governance": {
     "main_branch_protected": true,
     "required_status_check_contexts": [],
-    "protection_details_api": "403 — branch protection detail endpoint not accessible to the connector",
+    "protection_details_api": "403 — detailed branch-protection endpoint remains inaccessible to the connector.",
     "fallback_ruleset": {
       "id": 10863829,
       "name": "Fall Back",
@@ -583,17 +629,16 @@
       "review_threads": 0,
       "requested_reviewers": 0,
       "mergeable": true,
-      "mergeable_state": "unstable",
-      "head_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
-      "base_sha": "8e9b2516b5a103e9593124c05edf623e6c7817ff",
-      "snapshot_head_sha": "0f981f5c1499cfe3c2f1c1d2d855bb82a7cb865f",
-      "ahead_by": 323,
+      "mergeable_state": "draft; exact-head push CI still running",
+      "head_sha": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
+      "base_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
+      "ahead_by": 328,
       "behind_by": 0,
-      "changed_files": 1429,
+      "changed_files": 1430,
       "changed_workflow_files": 67
     },
     "changed_workflow_files": 67,
-    "workflow_diff_scan": "All 67 changed workflow YAML definitions were fetched and statically scanned in Run 25. Every observed uses reference is pinned to a full commit SHA. This is static YAML review only; transitive script, artifact and third-party action behavior review remains incomplete.",
+    "workflow_diff_scan": "67 changed workflow YAML definitions were statically scanned; the integration release workflow pins its actions. Main still has three tag-based action references in release.yml. Transitive script, artifact and third-party action behavior review remains incomplete.",
     "transitive_script_review": "incomplete",
     "automatic_pages_deployment_run": 44369186191,
     "paid_issue_hunter_run": 44251899369,
@@ -636,7 +681,11 @@
       "integration_job_condition": "if: false",
       "source_guard_status": "ACTIVE_ON_MAIN; DISABLED_ON_INTEGRATION",
       "source_guard": "The integration branch disables the publisher entirely. Main still has the active contents:write workflow_run publisher.",
-      "remaining_control": "Main branch protection details and independent review are unavailable; main pushes have a demonstrated Pages deployment side effect."
+      "remaining_control": "Main branch protection details and independent review are unavailable; main pushes have a demonstrated Pages deployment side effect.",
+      "latest_pages_deployment_run_id": 44396362354,
+      "latest_pages_deployment_result": "success",
+      "latest_pages_deployment_head_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
+      "pages_deployment_trigger": "The prior main checkpoint commit d5d22ac triggered GitHub Pages build and deploy automatically; this run did not initiate that deployment."
     },
     "tag_release_workflow": {
       "workflow": ".github/workflows/release.yml",
@@ -683,68 +732,76 @@
       ],
       "finding": "The hunter performs GitHub search/repository metadata reads and local artifact generation only; no issue mutations. The publisher is a workflow_run main writer limited to PAID-ISSUES.md and data/money/paid_issues.json. The integration guard is being tightened to require a successful same-repository main run from schedule or workflow_dispatch.",
       "limitation": "This is a targeted review, not transitive review of all 67 changed workflows and all invoked scripts."
-    }
+    },
+    "independent_reviews": 0,
+    "pages_deployment_authorization": "No deployment authorization was issued by this run; automatic Pages deployment was observed following a prior main commit.",
+    "main_release_workflow_unpinned_action_refs": [
+      "actions/checkout@v7",
+      "actions/setup-python@v7",
+      "softprops/action-gh-release@v3"
+    ],
+    "integration_release_workflow": "The integration version pins checkout, setup-python and softprops action references to full commit SHAs."
   },
   "open_pr_backlog": [
     {
       "number": 1663,
       "classification": "blocked",
-      "note": "sole consolidated V3/XRP integration; draft; current PR head 9c71af0, 323 ahead/0 behind, 1,429 files and 67 changed workflows; full suite passed on code head 0f981f5 and documentation successor 9c71af0; no independent reviews; Pages deployment side effect and incomplete transitive workflow review block merge"
-    },
-    {
-      "number": 1666,
-      "classification": "blocked",
-      "note": "Kaggle dependency update based on stale main SHA 13c60; reconcile with integrated dependency set and retest"
-    },
-    {
-      "number": 1665,
-      "classification": "blocked",
-      "note": "Pylint dependency update based on stale main SHA 13c60; reconcile with integrated dependency set and retest"
+      "note": "sole consolidated V3/XRP integration; draft; 328 ahead/0 behind; 1,430 files and 67 changed workflows; exact-head full suite still running; no independent review; branch-protection detail inaccessible, fallback ruleset disabled, CODEOWNERS self-owned, Pages deployment side effect and transitive workflow review block merge"
     },
     {
       "number": 1664,
       "classification": "unique/unreviewed",
-      "note": "paid-issue template pack; 121 files, 118 unique and three overlapping paths with #1663; draft; contains paper-trading/XRP batch scripts; no execution or independent review"
+      "note": "paid-issue template pack; 121 files; includes paper-trading/XRP batch sandbox scripts and logs; no paper trade or external action executed; independent review not recorded"
+    },
+    {
+      "number": 1665,
+      "classification": "blocked",
+      "note": "Pylint dependency update based on stale main; requirements-dev.txt differs from integrated branch; reconcile dependency set and retest"
+    },
+    {
+      "number": 1666,
+      "classification": "blocked",
+      "note": "Kaggle dependency update based on stale main; pyproject.toml and requirements-integrations.txt differ from integrated branch; reconcile dependency set and retest"
     },
     {
       "number": 1541,
       "classification": "blocked",
-      "note": "MMI claim-fingerprint security work; all five paths overlap #1663; two blobs identical and three divergent; stacked base; reconcile before any merge"
-    },
-    {
-      "number": 1460,
-      "classification": "unique/unreviewed",
-      "note": "institutional multirail, Binance and Kamilah research; unique files; stacked on older XRP archive work"
+      "note": "MMI claim-fingerprint security work; stacked on closed, unmerged #1540; two compared files are identical to #1663 and remaining files diverge; reconcile before any merge"
     },
     {
       "number": 1450,
       "classification": "unique/unreviewed",
-      "note": "Binance phase-one and escrow research; unique files; older stacked base"
+      "note": "Binance phase-one status and escrow research; unique research branch on older stacked base"
+    },
+    {
+      "number": 1460,
+      "classification": "unique/unreviewed",
+      "note": "institutional multirail, Binance and Kamilah research; unique research branch on older stacked base"
     },
     {
       "number": 1440,
       "classification": "unique/unreviewed",
-      "note": "XRP archive-validation trigger repair; unique files; older stacked base"
-    },
-    {
-      "number": 1437,
-      "classification": "unique/unreviewed",
-      "note": "XRP source-addenda and snapshot-pointer repair; unique files; older stacked base"
+      "note": "XRP archive-validation trigger repair; unique files on older stacked base"
     },
     {
       "number": 1436,
       "classification": "unique/unreviewed",
-      "note": "Binance XRP incident and attacker-wallet graph; unique research; older stacked base"
+      "note": "Binance XRP theft, issuer freezes and attacker-wallet graph; unique research on older stacked base"
+    },
+    {
+      "number": 1437,
+      "classification": "unique/unreviewed",
+      "note": "XRP ledger source-addenda and snapshot-pointer repair; unique repair branch on older stacked base"
     },
     {
       "number": 1353,
       "classification": "unique/unreviewed",
-      "note": "lossless hash-verified XRP ledger archive/migration; unique work; stacked base"
+      "note": "lossless hash-verified XRP ledger archive/migration; unique work on older stacked base"
     },
     {
       "number": 1265,
-      "classification": "unique/unreviewed",
-      "note": "compact XRP ledger index-pointer migration; unique work; shares ci.yml path with #1663 and requires reconciliation"
+      "classification": "blocked",
+      "note": "XRP ledger index-pointer migration; unique research files but .github/workflows/ci.yml overlaps and diverges from #1663; reconcile before integration"
     }
   ],
   "merge_decision": "NO_MERGE",
@@ -764,6 +821,7 @@
     "history_rewrite": false,
     "directional_forecast": false,
     "integration_branch_commit": true,
+    "branch_sync_merge_commit": true,
     "main_branch_changed": false,
     "new_pr_created": false,
     "pr_closed": false,
@@ -906,19 +964,20 @@
     "chatgpt_course": "VOST-delivered course for SBIC investee companies; not an OpenAI partnership."
   },
   "research_phrase_status": {
-    "ASK Coin": "Unresolved. Permission Coin (ASK) and an inactive/untracked Ask Coin exchange listing remain separate candidates; no verified XRP, Ripple or SBI connection.",
-    "actual capital": "Unresolved as an exact phrase and not a defined SEC instrument. Keep cash received, cash actually deployed to buy XRP, in-kind XRP, debt, warrants, optional ELOC capacity, trust cash and non-cash impairment separate.",
-    "SBIC, ChatGPT SBIC": "Unresolved exact phrase. Japanese SBIC East/Central/West are three separate regional SME investment-and-consultation companies, not SBI Holdings; no verified XRP relationship.",
-    "Camilla/Kamilah Stevenson": "One public guest appearance is verified. No first-party bridge establishes ownership of the lookalike YouTube channels; do not attribute their uploads to her."
+    "ASK Coin": "No new exact-match primary evidence establishing an XRP, Ripple or SBI relationship; existing candidates remain separate.",
+    "actual capital": "No new primary filing proves an Evernorth equity-line drawdown or XRP purchase. Financing capacity is not cash received or deployed.",
+    "SBIC, ChatGPT SBIC": "No new exact-phrase result changes the primary-source resolution: SBIC East/Central/West are separate Japanese SME investment and consultation companies, not SBI Holdings.",
+    "Camilla/Kamilah Stevenson": "No new identity-verified public YouTube videos found. SBiC Connect is unrelated; no uploads are attributed to Kamilah Stevenson."
   },
   "open_pr_backlog_summary": {
     "total_open": 12,
     "ready": 0,
-    "blocked": 4,
-    "unique_unreviewed": 8,
+    "blocked": 5,
+    "unique_unreviewed": 7,
     "duplicate": 0,
     "superseded": 0
   },
-  "snapshot_id": "nine-platform-map-run25-20261118T204451344Z",
-  "run25_evidence_record": "research/xrp_intelligence/20261118T202745Z-run25-market-ingestion-ci-security-reconciliation.json"
+  "snapshot_id": "nine-platform-map-run26-20261118T210230Z",
+  "run25_evidence_record": "research/xrp_intelligence/20261118T202745Z-run25-market-ingestion-ci-security-reconciliation.json",
+  "run26_evidence_record": "research/xrp_intelligence/20261118T210230Z-run26-market-spot-derivatives-etf-macro-reconciliation.json"
 }
