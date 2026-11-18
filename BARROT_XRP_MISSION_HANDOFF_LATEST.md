@@ -9021,3 +9021,121 @@ No main changes, PR merges, PR closures, deployments, secret rotations, Space re
 3. Reconcile ETF and derivatives data by exact issuer/venue universe, instrument, units, settlement date and retrieval timestamp; retain competing observations.
 4. Finish transitive security review of all changed workflows and scripts; obtain independent PR review and authoritative branch-protection evidence.
 5. Keep directional forecast issuance disabled until chronological walk-forward, baseline, calibration, drift, shadow and independent-attestation gates pass.
+
+
+## Run 17 — 2026-11-18 09:06 UTC — repository refresh, full-suite failure diagnosis and repair
+
+### Current repository refs
+
+- Main: `e204c21100f3d059e2ba633d041fe8927b61ccaf`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Pre-repair integration head: `bdc77944fb6de3b2ce036a5cc26d0af2538ddb92`, 276 commits ahead, zero behind; 1,415 changed files, 67 workflow files, 516,417 additions and 6,522 deletions.
+- Recursive tree inventory: main 1,737 entries (84 workflow files, 139 test-named Python files, 35 XRP research files); integration 2,966 entries (85 workflow files, 517 test-named Python files, 832 XRP research files).
+- PR #1663 remains open, draft, reported mergeable, with zero formal reviews. The existing branch was retained; no new branch or PR was created.
+
+### Main-branch automatic workflow side effects
+
+Main advanced from `b5b22ea58fa069792b0728d47cb2414855234a4a` to `e204c21100f3d059e2ba633d041fe8927b61ccaf` through the existing Paid issue publisher workflow:
+
+- Hunter run [44251899369](https://github.com/Barrot-Agent/B-Agent/actions/runs/44251899369) completed successfully.
+- Publisher run [44251955852](https://github.com/Barrot-Agent/B-Agent/actions/runs/44251955852) completed successfully and changed only `PAID-ISSUES.md` and `data/money/paid_issues.json`.
+- Main CI explicitly ignores those two evidence-only paths; no full main CI run is claimed for `e204c21`.
+- Existing Pages deployment [44252022665](https://github.com/Barrot-Agent/B-Agent/actions/runs/44252022665) completed successfully after the main update. This was an automatic repository workflow side effect, not a deployment initiated by this run.
+
+### Exact-head CI diagnosis
+
+The previous integration head `bdc77944fb6de3b2ce036a5cc26d0af2538ddb92` was tested by push CI [44269593667](https://github.com/Barrot-Agent/B-Agent/actions/runs/44269593667):
+
+- Core test job passed.
+- Full repository suite: **4,271 passed, 2 failed, 1 skipped, 11 warnings, 19 subtests passed** in 148.96 seconds.
+- Inclusive coverage: 68.14%; the configured 62% floor passed.
+- The only two failures were in `tests/test_xrp_nine_platform_map_latest.py`:
+  - `test_latest_map_matches_repository_and_forecast_admission_state`: `KeyError: 'receipt_count'`.
+  - `test_latest_map_preserves_security_gates_and_open_pr_classifications`: `KeyError: 'transitive_script_security_review'`.
+- Root cause: the evidence map used `receipts` and `transitive_script_review`, while the regression test required the canonical field names `receipt_count` and `transitive_script_security_review`. This is a map/test contract mismatch; it is not evidence of an XRP model failure.
+- Push and PR dependency audits [44269593689](https://github.com/Barrot-Agent/B-Agent/actions/runs/44269593689) and [44269605239](https://github.com/Barrot-Agent/B-Agent/actions/runs/44269605239) passed all six manifests.
+- Push and PR fail-closed gates [44269593661](https://github.com/Barrot-Agent/B-Agent/actions/runs/44269593661) and [44269605246](https://github.com/Barrot-Agent/B-Agent/actions/runs/44269605246) passed.
+- Money audit [44269605468](https://github.com/Barrot-Agent/B-Agent/actions/runs/44269605468) passed.
+- PR CI [44269605232](https://github.com/Barrot-Agent/B-Agent/actions/runs/44269605232) passed validation, but its core and full-suite jobs were skipped because #1663 is draft and integration PR test jobs are push-gated. The failed push full-suite result above is authoritative for `bdc7794`.
+- The preceding code head `226fb9e6911f82de93c2d853cc8a66c20dd8f67e` passed 4,270 tests, one skipped, 11 warnings and 19 subtests in 117.96 seconds. That predecessor result is not substituted for the failed `bdc7794` result.
+
+### Repair executed on the existing integration branch
+
+- Added the canonical `receipt_count` alias while preserving the original `receipts` field.
+- Added `transitive_script_security_review` while preserving `transitive_script_review`.
+- Refreshed the evidence snapshot to record the actual pre-repair head, current 276-ahead/zero-behind comparison, 1,415 changed paths and complete recursive tree counts.
+- Added the failed exact-head CI run and its two precise test failures to the machine-readable map rather than hiding or reclassifying the failure.
+- Updated the regression test to verify both canonical fields and their retained aliases, and to preserve the pre-repair CI failure as historical evidence.
+- Updated this handoff by appending this section; prior run records remain intact. The fix is committed only after a compare-and-swap update of the existing branch ref. The new head's own push-triggered full suite must pass before this repair is called verified.
+
+### Latest executed XRP ingestion — run 44267762749
+
+[Ingestion run 44267762749](https://github.com/Barrot-Agent/B-Agent/actions/runs/44267762749) succeeded on code head `226fb9e` at 08:32 UTC:
+
+- 34 receipts: 22 raw-retained and 12 digest-only.
+- 21 source failures.
+- 129 eligible and 361 excluded features; 2,967 feature-history records; 13 snapshots; 2,230 input records; 490 delta records.
+- 140 events and 107 scenarios.
+- Cross-run receipt sequence 13; continuity and receipt-chain verification passed.
+- External timestamp/WORM anchor: absent.
+- Raw-receipt reconstruction of the feature store: not implemented.
+- Cache storage: read-only because the configured budget is exhausted.
+- Walk-forward forecasts: zero; drift: insufficient data; forecast issuance remains disabled.
+- SEC EDGAR remains configuration-blocked: `BARROT_SEC_USER_AGENT` is unset; zero submissions, Companyfacts, filings, capital facts, primary documents and raw receipts; six failures. Do not invent a monitored contact or bypass this gate.
+
+### Current spot quote basis
+
+The latest admitted quote-basis observation from the ingestion artifact is OKX at 08:31:57.572 UTC:
+
+- Mid: $1.00146186.
+- Bid: $1.001406906; ask: $1.001516814.
+- Spread: 1.0975 bps.
+- Snapshot skew: 0.497 seconds; maximum component age 10.084 seconds.
+- One publisher group and one venue only. This is not consolidated depth or independent cross-venue corroboration and remains insufficient for a directional forecast.
+
+### Integration overlap and backlog
+
+Ten PRs remain open; no source PR was closed:
+
+- #1663: blocked consolidated V3/XRP integration.
+- #1664: unique/unreviewed paid-issue product pack; 71 files, three commits ahead/two behind main. Its two shared root documents (`BARROT_SYNC.md`, `MEMORY.md`) have divergent blob SHAs from #1663; reconcile before any future integration.
+- #1541: unique/unreviewed MMI claim-fingerprint work. Five overlapping paths with #1663: `mmi_adapter.py` and `test_mmi_integration.py` are identical; `mmi_v1.py`, the fingerprint JSON and `test_mmi_v1.py` diverge.
+- #1460: unique/unreviewed institutional multirail and Kamilah research, stacked on #1450.
+- #1450: unique/unreviewed Binance/archive research, stacked on #1436.
+- #1440: unique/unreviewed archive-validation repair, stacked on #1436.
+- #1437: unique/unreviewed source-addendum repair, stacked on #1353.
+- #1436: unique/unreviewed Binance theft/freeze evidence, stacked on #1353.
+- #1353: unique/unreviewed lossless ledger archive/sharding work, stacked on #1265.
+- #1265: unique/unreviewed compact ledger-index work; its CI overlap with #1663 diverges.
+
+A read-only recursive-tree comparison reconfirmed that eight stacked branches (#1541, #1460, #1450, #1440, #1437, #1436, #1353, #1265) inherit the same `.config/gh/hosts.yml` blob SHA `f58b27f14436088db99662d3a45c59b8437ec3a1`. The path is absent from main, #1663 and #1664 and absent from those PRs' changed-file diffs. Its contents were not read. Do not merge inherited branch snapshots without a separate security review.
+
+### Governance and disposition
+
+- Main branch metadata reports `protected=true`, but detailed branch-protection access returns HTTP 403.
+- Required status-check contexts reported by the map are empty; the visible fallback ruleset (10863829) is disabled.
+- `.github/CODEOWNERS` assigns all paths only to `@Barrot-Agent`; PR #1663 has zero independent formal reviews.
+- All 67 changed workflow diff entries were scanned and high-risk workflows inspected, but complete transitive-script security review remains incomplete.
+- The integration PR's Pages job is validation-only; merging to main has an observed automatic public Pages deployment side effect. No deployment was authorized.
+- Main has the SQLite feature-store prototype, point-in-time validator and fixed-horizon forecast ledger. Their code explicitly acknowledges that local SQLite triggers and unkeyed hashes are not an adversarial immutable boundary. The integration branch adds the scheduled public XRP ingestion workflow, but that workflow is not active on main.
+- Only the ChatGPT-to-GitHub connector is verified among the nine platforms. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified. No external dispatch or data transfer occurred.
+- **Decision: NO MERGE.** PR #1663 remains draft, independent review and enforceable required-check evidence are absent, the workflow/transitive-script security review is incomplete, and the Pages side effect remains unresolved.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** XRP public ingestion, raw-source receipt chain, point-in-time feature store, event/scenario timeline, baseline/walk-forward and forecast admission controls.
+- **EXECUTED:** current main and integration tree inspection; open PR and ancestry inventory; path/blob overlap checks; workflow/security reads; exact-head CI log diagnosis; evidence-map and regression-test repair on the existing branch; fresh ingestion artifact review.
+- **VERIFIED:** main SHA `e204c21`; pre-repair PR head `bdc7794`; 276-ahead/zero-behind ancestry; 1,415 changed paths; two schema-key test failures and their exact root cause; six-manifest audits; fail-closed gates; money audit; ingestion receipt-chain continuity; absence of external anchoring and model-ready forecasts.
+- **NOT VERIFIED:** exact-head CI for the repair commit until its own full-suite run completes; external immutable anchoring; raw-receipt feature-store reconstruction; SEC EDGAR ingestion; five independent publisher groups; leakage-safe walk-forward predictive edge; calibration/drift/shadow performance; eight external platform connections; authoritative required-check enforcement; full transitive workflow/script review.
+
+### Next concrete actions
+
+1. Verify the repair commit's exact-head push CI and full repository suite; fix any remaining failures on the same branch.
+2. Finish semantic/security review of all changed workflows and transitive scripts; retain the PR as draft until independent review and enforceable required-check evidence exist.
+3. Obtain an approved monitored SEC contact and configure `BARROT_SEC_USER_AGENT`; then validate accession-bound filings and actual capital events.
+4. Add independent external receipt anchoring and deterministic feature-store reconstruction from raw receipts.
+5. Increase independent publisher groups and historical point-in-time labels; reconcile venue/ETF universes and units.
+6. Run chronological walk-forward evaluation against naive, momentum, mean-reversion and volatility-aware baselines, then probability calibration and shadow evaluation.
+7. Keep directional forecast issuance disabled until every admission gate is met.
+
+No merge, main-branch write, source-PR closure, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action was performed by this run.

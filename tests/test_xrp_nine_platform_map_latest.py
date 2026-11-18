@@ -46,7 +46,9 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     integration = repo["integration"]
     assert integration["pr_number"] == 1663
     assert integration["draft"] is True
-    assert integration["ahead_by"] == 274
+    assert integration["snapshot_head_sha"] == "bdc77944fb6de3b2ce036a5cc26d0af2538ddb92"
+    assert integration["ahead_by"] == 276
+    assert integration["changed_files"] == 1415
     assert integration["behind_by"] == 0
     registry = data["prediction_engine"]["source_registry"]
     assert registry == {
@@ -59,6 +61,7 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     ingestion = data["prediction_engine"]["latest_ingestion"]
     assert ingestion["run_id"] == 44267762749
     assert ingestion["receipt_count"] == 34
+    assert ingestion["receipts"] == ingestion["receipt_count"]
     assert ingestion["source_failures"] == 21
     assert ingestion["walk_forward_forecasts"] == 0
     assert ingestion["forecast_issuance"] == "disabled"
@@ -73,8 +76,13 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert security["pr_1663"]["draft"] is True
     assert security["pr_1663"]["formal_reviews"] == 0
     assert security["transitive_script_security_review"] == "incomplete"
+    assert security["transitive_script_review"] == security["transitive_script_security_review"]
     assert security["sensitive_branch_path"]["content_read"] is False
     assert len(data["open_pr_backlog"]) == 10
     pr = next(item for item in data["open_pr_backlog"] if item["number"] == 1663)
     assert pr["classification"] == "blocked"
     assert data["merge_decision"] == "NO_MERGE"
+    prior_ci = data["ci_evidence"]["pre_fix_pr_head_ci"]
+    assert prior_ci["head_sha"] == integration["snapshot_head_sha"]
+    assert prior_ci["result"] == "failure"
+    assert prior_ci["tests_failed"] == 2

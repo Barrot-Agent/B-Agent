@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-18T08:35:44Z",
+  "captured_at_utc": "2026-11-18T09:06:29Z",
   "mission": {
     "priority": 1,
     "title": "XRP intelligence and prediction-engine mastery",
@@ -18,24 +18,28 @@
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 274,
+      "ahead_by": 276,
       "behind_by": 0,
-      "changed_files": 1412,
+      "changed_files": 1415,
       "changed_workflow_files": 67,
-      "formal_reviews": 0
+      "formal_reviews": 0,
+      "snapshot_head_sha": "bdc77944fb6de3b2ce036a5cc26d0af2538ddb92",
+      "commits": 276,
+      "additions": 516417,
+      "deletions": 6522
     },
     "tree_counts": {
       "main": {
         "entries": 1737,
         "workflow_files": 84,
-        "test_named_files": 137,
-        "xrp_research_files": 30
+        "test_named_files": 139,
+        "xrp_research_files": 35
       },
       "integration": {
-        "entries": 2963,
+        "entries": 2966,
         "workflow_files": 85,
-        "test_named_files": 514,
-        "xrp_research_files": 825
+        "test_named_files": 517,
+        "xrp_research_files": 832
       }
     }
   },
@@ -136,7 +140,9 @@
       "cache_storage": "read_only_budget_exhausted",
       "walk_forward_forecasts": 0,
       "drift_status": "insufficient",
-      "forecast_issuance": "disabled"
+      "forecast_issuance": "disabled",
+      "receipt_count": 34,
+      "code_head_sha": "226fb9e6911f82de93c2d853cc8a66c20dd8f67e"
     },
     "quote_basis": {
       "venue": "OKX",
@@ -199,7 +205,75 @@
     ],
     "money_audit_run": 44267771089,
     "pr_ci_run": 44267771171,
-    "pr_full_suite": "skipped because PR is draft"
+    "pr_full_suite": "skipped because PR is draft",
+    "pre_fix_pr_head_ci": {
+      "run_id": 44269593667,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44269593667",
+      "head_sha": "bdc77944fb6de3b2ce036a5cc26d0af2538ddb92",
+      "result": "failure",
+      "tests_passed": 4271,
+      "tests_failed": 2,
+      "tests_skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 148.96,
+      "inclusive_coverage_percent": 68.14,
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state",
+        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_security_gates_and_open_pr_classifications"
+      ],
+      "root_cause": "The test contract expected receipt_count and transitive_script_security_review; the map only exposed receipts and transitive_script_review. This is an evidence-schema mismatch, not a forecast/model failure."
+    },
+    "current_pr_event": {
+      "run_id": 44269605232,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44269605232",
+      "result": "success",
+      "tests": "skipped because PR #1663 remains draft and integration pull_request test jobs are intentionally skipped",
+      "pages_validation": "success"
+    },
+    "current_head_dependency_audits": [
+      {
+        "run_id": 44269593689,
+        "result": "success",
+        "scope": "push; six manifests"
+      },
+      {
+        "run_id": 44269605239,
+        "result": "success",
+        "scope": "pull_request; six manifests"
+      }
+    ],
+    "current_head_fail_closed_runs": [
+      {
+        "run_id": 44269593661,
+        "result": "success"
+      },
+      {
+        "run_id": 44269605246,
+        "result": "success"
+      }
+    ],
+    "current_head_money_audit": {
+      "run_id": 44269605468,
+      "result": "success"
+    },
+    "current_head_pages_validation": {
+      "run_id": 44269593667,
+      "result": "success",
+      "deployment": false
+    },
+    "main_after_paid_issue_publish": {
+      "main_sha": "e204c21100f3d059e2ba633d041fe8927b61ccaf",
+      "publisher_run": 44251955852,
+      "publisher_result": "success",
+      "changed_paths": [
+        "PAID-ISSUES.md",
+        "data/money/paid_issues.json"
+      ],
+      "ci_paths_ignored": true,
+      "pages_deployment_run": 44252022665,
+      "pages_deployment_result": "success"
+    }
   },
   "security_and_governance": {
     "main_branch_protected": true,
@@ -221,10 +295,11 @@
     "pr_1663": {
       "draft": true,
       "formal_reviews": 0,
-      "mergeable": true
+      "mergeable": true,
+      "head_sha": "bdc77944fb6de3b2ce036a5cc26d0af2538ddb92"
     },
     "changed_workflow_files": 67,
-    "workflow_diff_scan": "all 67 diffs scanned; high-risk workflows inspected",
+    "workflow_diff_scan": "all 67 changed workflow diffs scanned; high-risk workflows inspected; transitive script review incomplete",
     "transitive_script_review": "incomplete",
     "automatic_pages_deployment_run": 44252022665,
     "paid_issue_hunter_run": 44251899369,
@@ -242,10 +317,11 @@
         1265
       ],
       "same_blob_sha": "f58b27f14436088db99662d3a45c59b8437ec3a1",
-      "absent_from_main_and_pr1663": true,
-      "absent_from_those_pr_diffs": true,
+      "absent_from_main_and_pr1663_and_pr1664": true,
+      "absent_from_changed_file_diffs": true,
       "content_read": false
-    }
+    },
+    "transitive_script_security_review": "incomplete"
   },
   "open_pr_backlog": [
     {
@@ -256,12 +332,12 @@
     {
       "number": 1664,
       "classification": "unique/unreviewed",
-      "note": "71 files; 3 ahead/2 behind main; two divergent root-document overlaps with #1663"
+      "note": "71 files; 3 commits ahead/2 behind main; two divergent root-document overlaps with #1663 (BARROT_SYNC.md and MEMORY.md); unique paid-issue product work, unreviewed"
     },
     {
       "number": 1541,
       "classification": "unique/unreviewed",
-      "note": "five overlaps with #1663; two identical, three divergent"
+      "note": "five overlapping paths with #1663; mmi_adapter.py and test_mmi_integration.py identical; mmi_v1.py, fingerprint JSON and test_mmi_v1.py divergent; inherited .config/gh/hosts.yml blob not in PR diff; preserve"
     },
     {
       "number": 1460,
