@@ -76,13 +76,14 @@ def test_workflow_never_comments_or_claims():
     assert "mutations_performed" in text
 
 
-def test_scheduled_hunter_cannot_push():
-    text = WORKFLOW.read_text(encoding="utf-8")
-    assert "git push" not in text
-    assert "contents: write" not in text
+def test_scheduled_hunter_has_read_only_permissions():
+    payload = yaml.load(WORKFLOW.read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
+    assert payload["permissions"]["contents"] == "read"
+    assert payload["permissions"]["issues"] == "read"
+    assert "persist-credentials: false" in WORKFLOW.read_text(encoding="utf-8")
 
 
-def test_scheduled_hunter_cannot_push():
+def test_scheduled_hunter_cannot_commit_or_push():
     text = WORKFLOW.read_text(encoding="utf-8").lower()
     assert "git push" not in text
     assert "git commit" not in text
