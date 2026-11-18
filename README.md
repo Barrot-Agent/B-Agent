@@ -32,6 +32,11 @@ retrieval date. Where evidence is missing, the artefact says so.
 
 Location: `products/github-pr-template-pack-self-guided/`
 
+Note: the internal Python package is named `paid_issue_kit`. That name is legacy,
+not customer-facing. The customer product is **GitHub PR Template Pack —
+Self-Guided**. ("Paid issue" here is the market term for a labelled, funded
+GitHub issue, not an offer of work.)
+
 Measured build facts:
 
 - 6 templates (5 Markdown, 1 CSV)

@@ -966,3 +966,18 @@
 - Not done, needs approval: rename internal package `paid_issue_kit`; none of the
   ten components promoted; nothing published, priced live, or merged.
 - Next: Sean's Stage 10 decision + the 8 blocked inputs.
+
+## 2026-11-18 — Sean approved safe path (no history rewrite, no code purge)
+- Decision recorded: no `filter-repo`/rewrite; `paid_issue_kit` stays; banned-term
+  bar applies to customer-facing files only.
+- README: added the legacy-name note. Customer product remains GitHub PR Template
+  Pack — Self-Guided; "paid issue" is the market term, not an offer of work.
+- Customer-facing scan, per file, all 0: root README.md, product README.md,
+  deliverables/README_FIELD.md, deliverables/README.md, SALES_COPY.md,
+  marketing/PRODUCT_DESCRIPTION.md, marketing/PROMOTIONAL_COPY.md,
+  marketing/FAQ.md, PRICING.md.
+- No rewrite was needed: the six files Sean named were already compliant; the only
+  earlier hit was my own compliance line in README, fixed before the prior commit.
+- Legal name/address, governing law, checkout/refund test, support email: not
+  filled, not guessed. Remain with Sean.
+- Next: Sean supplies the 8 publish inputs, or rejects. No further building.

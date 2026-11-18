@@ -406,3 +406,17 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Internal Python package is still named `paid_issue_kit` (name only, domain term).
   Not renamed: it would touch 46 files, manifests, logs and tests, and needs its
   own transmute cycle plus Sean's approval.
+
+## 2026-11-18 — Sean APPROVED safe path (terminal decision, do not reopen)
+- No git history rewrite. No code deletion for term purging. Explicit.
+- `paid_issue_kit` stays. Documented in README as legacy internal name, not
+  customer-facing. Customer product = GitHub PR Template Pack — Self-Guided.
+- Banned-term bar applies to CUSTOMER-FACING files only. Internal code, logs and
+  historical corpora may keep legacy wording. Do not purge code or records.
+- Customer-facing set = 9 files, all scanned 0: root README.md; product README.md;
+  deliverables/README_FIELD.md; deliverables/README.md; SALES_COPY.md;
+  marketing/PRODUCT_DESCRIPTION.md; marketing/PROMOTIONAL_COPY.md;
+  marketing/FAQ.md; PRICING.md.
+- Never fill legal name/address, governing law, checkout/refund or support email
+  on Sean's behalf. Those stay blocked until Sean supplies them.
+- Commit target is the branch only. No merge to main.
