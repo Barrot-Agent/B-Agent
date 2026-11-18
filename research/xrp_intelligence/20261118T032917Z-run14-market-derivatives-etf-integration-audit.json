@@ -488,5 +488,104 @@
     "history_rewrite": false,
     "directional_forecast": false
   },
-  "next_concrete_action": "Continue the existing #1663 integration branch. Reconcile OI/ETF provider universes from timestamp-aligned raw issuer/venue sources; complete the transitive workflow/script audit; obtain independent review and authoritative required-check/branch-protection evidence; keep forecast issuance disabled."
+  "next_concrete_action": "Continue the existing #1663 integration branch. Reconcile OI/ETF provider universes from timestamp-aligned raw issuer/venue sources; complete the transitive workflow/script audit; obtain independent review and authoritative required-check/branch-protection evidence; keep forecast issuance disabled.",
+  "sbi_stablecoin_network_update": {
+    "captured_at_utc": "2026-11-18T03:43:00Z",
+    "source_family": "SBI Group official releases; treat these as one publisher family, not independent corroboration",
+    "relationships": [
+      {
+        "date": "2026-10-16",
+        "parties": [
+          "SBI Holdings",
+          "Startale Group",
+          "Open Standard",
+          "Coinbase",
+          "BlackRock",
+          "Visa",
+          "Stripe",
+          "Mastercard"
+        ],
+        "relationship": "SBI Holdings and Startale joined Open Standard, a consortium described by SBI as having more than 140 participating companies, including Coinbase and BlackRock. SBI and Startale said they would consider a proof of concept for interoperability between JPYSC and Open USD (OUSD).",
+        "status": "consortium participation and PoC consideration; not a live JPYSC/OUSD production rail",
+        "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+        "receipt_status": "official SBI search excerpt; raw publisher bytes not preserved"
+      },
+      {
+        "date": "2026-10-27",
+        "parties": [
+          "SBI Holdings",
+          "Startale Group",
+          "BlackRock Financial Management",
+          "BlackRock Japan"
+        ],
+        "relationship": "Basic agreement to explore a digital-asset ecosystem connecting tokenized money-market funds and JPYSC.",
+        "status": "MoU/basic agreement; no disclosed committed capital, deployed MMF balance, launch date or completed settlement volume",
+        "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+        "receipt_status": "official SBI search excerpt; raw publisher bytes not preserved"
+      },
+      {
+        "date": "2026-10-30",
+        "parties": [
+          "SBI Holdings",
+          "SMBC Group"
+        ],
+        "relationship": "Capital and business alliance to jointly study new financial services using stablecoins and related digital-asset infrastructure.",
+        "status": "joint study/strategic alliance; no XRP-specific commitment or transaction volume disclosed",
+        "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+        "receipt_status": "official SBI search excerpt; raw publisher bytes not preserved"
+      },
+      {
+        "date": "2026-11-02",
+        "parties": [
+          "SBI VC Trade",
+          "SBI Holdings",
+          "JPYSC users"
+        ],
+        "relationship": "SBI VC Trade reported JPYSC lending balances above JPY 10 billion and JPYSC handled balances above JPY 30 billion.",
+        "status": "company-reported product balances as of Nov 2; handled balance is not automatically circulating supply, new net capital, XRP collateral or XRP demand",
+        "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+        "receipt_status": "official SBI VC Trade release excerpt; raw publisher bytes not preserved"
+      },
+      {
+        "date": "2026-06-24",
+        "parties": [
+          "SBI Shinsei Trust Bank",
+          "SBI VC Trade",
+          "Startale Group"
+        ],
+        "relationship": "JPYSC structure: SBI Shinsei Trust Bank is issuer; SBI VC Trade handles distribution; Startale co-developed the stablecoin. Initial service was limited to SBI VC Trade accounts, with public-chain migration contemplated after legal and tax practice is clarified.",
+        "status": "issuer/distributor roles and initial account-limited launch company-reported; public-chain expansion is conditional, not proof of current public-chain liquidity",
+        "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+        "receipt_status": "official SBI release excerpt; raw publisher bytes not preserved"
+      },
+      {
+        "date": "2026-09-07",
+        "parties": [
+          "SBI Shinsei Trust Bank",
+          "SBI VC Trade",
+          "JPYSC"
+        ],
+        "relationship": "SBI reported JPY 10 billion of JPYSC trust assets allocated to short-term Japanese government bonds; issuance balance about JPY 20.1 billion and JPYSC lending applications about JPY 6.9 billion at that date.",
+        "status": "issuer-reported reserve management and product balances; these September figures must not be mixed with Nov 2 balances",
+        "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+        "receipt_status": "official SBI release excerpt; raw publisher bytes not preserved"
+      }
+    ],
+    "relationship_map_corrections": [
+      "SBI and Coinbase have shared Open Standard consortium participation, but no direct bilateral SBI-Coinbase agreement was established by these sources.",
+      "SBI's 50/50 Japan stablecoin venture with Circle and SBI VC Trade's USDC distribution are separate from the SBI/Startale/Open Standard JPYSC workstream.",
+      "SBI's Ripple remittance/XRPL relationship and its Evernorth PIPE investment are separate from JPYSC issuance, lending and Open Standard participation.",
+      "Coinbase's RLUSD listing is a direct Ripple-Coinbase relationship; it does not prove XRP purchases or XRP bridge-currency usage."
+    ],
+    "xrp_competing_hypotheses": [
+      {
+        "id": "H4",
+        "hypothesis": "JPYSC/OUSD interoperability and SBI/BlackRock tokenized-MMF rails could reduce the need for XRP as a bridge asset in some JPY/USD settlement corridors if direct stablecoin conversion becomes sufficiently liquid and operationally available.",
+        "counter_hypothesis": "JPYSC is initially account-limited, public-chain migration is conditional, and the OUSD interoperability work is only a contemplated PoC; XRP could remain useful where direct stablecoin pairs lack depth or where non-stablecoin assets need a neutral bridge.",
+        "falsification": "Measure actual JPYSC/OUSD public-chain deployment, issuer-reported circulation, corridor conversion legs, FX/order-book depth, settlement volumes and asset-specific XRP bridge usage."
+      }
+    ],
+    "model_admission": "research-only; official search excerpts are not raw HTTP receipts and no live JPYSC/OUSD or XRP corridor flow was measured",
+    "forecast_status": "NOT_ISSUED"
+  }
 }

@@ -8654,3 +8654,38 @@ Nine PRs remain open; all are drafts. #1663 is the sole consolidated integration
 ### Next concrete action
 
 Continue the existing #1663 branch. Reconcile all ETF flows from issuer primary files and derivatives OI from timestamp-aligned venue-native sources; obtain current multi-venue spot L2 with raw payload receipts; finish the transitive workflow/script audit; obtain independent review and authoritative required-check evidence; keep scheduled ingestion off main and forecast issuance closed until all data and OOS gates pass.
+
+
+## Run 14 institutional continuation — SBI/JPYSC, Open Standard, BlackRock and SMBC (2026-11-18 03:43 UTC)
+
+### New primary-source SBI network evidence
+
+This pass adds a separate stablecoin/tokenized-asset network around SBI Holdings. It must not be collapsed into the XRP/Evernorth investment or Ripple remittance relationship.
+
+- **Oct. 16 — Open Standard:** SBI Holdings and Startale joined Open Standard. SBI's release describes more than 140 participating companies, including Coinbase, BlackRock, Visa, Stripe and Mastercard. SBI and Startale said they would consider a proof of concept for interoperability between JPYSC and Open USD (OUSD). This is consortium participation and a contemplated PoC, not a live production rail or a direct SBI-Coinbase contract. [SBI primary release](https://www.sbigroup.co.jp/news/2026/1016_16665.html).
+- **Oct. 27 — BlackRock:** SBI Holdings, Startale, BlackRock Financial Management and BlackRock Japan signed a basic agreement to explore an ecosystem connecting tokenized money-market funds and JPYSC. The public release does not disclose committed capital, a deployed MMF balance, launch date or completed settlement volume. [SBI primary release](https://www.sbigroup.co.jp/news/2026/1027_16682.html).
+- **Oct. 30 — SMBC:** SBI Holdings and SMBC Group announced a capital/business alliance to jointly study financial services using stablecoins and related digital-asset infrastructure. No XRP-specific commitment or transaction volume is disclosed. [SBI primary release](https://www.sbigroup.co.jp/news/2026/1030_16698.html).
+- **Nov. 2 — JPYSC operating balances:** SBI VC Trade reported JPYSC lending balances above ¥10B and JPYSC handled balances above ¥30B. These are company-reported product balances, not proof of XRP collateral, XRP purchases or net new XRP-market capital. [SBI VC Trade release](https://www.sbigroup.co.jp/news/2026/1102_16704.html).
+- **JPYSC structure:** SBI Shinsei Trust Bank is the issuer; SBI VC Trade distributes it; Startale co-developed it. The initial June launch was account-limited within SBI VC Trade, with public-chain migration conditional on legal/tax practice being resolved. [SBI primary release](https://www.sbigroup.co.jp/news/2026/0624_16425.html).
+- **Reserve-management context:** SBI reported ¥10B of JPYSC trust assets invested in short-term Japanese government bonds as of Sept. 7, with approximately ¥20.1B issued and ¥6.9B in lending applications at that date. These September balances are a different vintage from the Nov. 2 figures and must not be added together. [SBI primary release](https://www.sbigroup.co.jp/news/2026/0907_16567.html).
+
+### Relationship interpretation and competing hypotheses
+
+The network now includes several distinct edges:
+
+1. SBI–Circle: the previously documented 50/50 Japan stablecoin venture and SBI VC Trade USDC distribution.
+2. SBI–Startale–Open Standard: JPYSC/OUSD interoperability is under consideration; Coinbase and BlackRock are also named consortium participants, not counterparties to a proven bilateral SBI agreement.
+3. SBI–Startale–BlackRock: a basic agreement around tokenized MMFs and JPYSC, with no public capital commitment or deployed volume.
+4. SBI–SMBC: a capital/business alliance for stablecoin-related financial-service study, with no XRP-specific leg disclosed.
+5. SBI–Ripple/Evernorth: a separate XRP remittance/technology relationship and separate Evernorth PIPE exposure.
+6. Ripple–Coinbase: a direct RLUSD distribution partnership; Coinbase Global Exchange collateral support was described as a future step and remains unverified as live.
+
+**Competing XRP hypotheses:** JPYSC/OUSD interoperability could substitute for XRP in some JPY/USD corridors if direct stablecoin liquidity becomes deep and operational. Conversely, JPYSC remains account-limited in its initial structure, public-chain migration is conditional and the OUSD interoperability work is only a contemplated PoC; XRP could still serve as a bridge where direct stablecoin pairs are illiquid or where non-stablecoin assets require a neutral asset. No public corridor volume or asset-specific XRP bridge flow was established.
+
+These SBI releases come from one publisher family and are not independent corroboration. Their search-rendered text was not preserved as raw HTTP bytes; they remain research-only and model-ineligible. The three Japanese regional SBIC companies remain distinct from SBI Holdings. ASK Coin, “actual capital,” and the Kamilah Stevenson identity/video qualification from Run 13 are unchanged.
+
+### Post-commit verification before this continuation
+
+The preceding handoff/artifact commit `f61feae366898714aff3a31e84c40d2d86f4f320` passed exact-head push CI: 4,257 passed, 1 skipped, 11 warnings, 19 subtests; 68.13% inclusive coverage and 77% legacy-core coverage. Push and PR dependency audits passed after the PR audit's first attempt hit a transient PyPI read timeout; retry attempt 2 audited all six manifests and reported no known vulnerabilities. Push and PR fail-closed gates, PR money audit and PR CI validation passed. The PR CI's full-suite job remains skipped because #1663 is draft; the exact-head push CI ran the full suite.
+
+The following SBI continuation is an evidence/handoff-only update. It does not alter model code, forecast eligibility or production workflows. Its new commit will require its own exact-head CI before any future merge decision.
