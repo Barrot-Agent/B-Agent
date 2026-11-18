@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-18T06:31:15+00:00",
+  "built_at": "2026-11-18T12:27:29+00:00",
   "queries": [
     "label:bounty",
     "bounty in:body",
@@ -10,7 +10,28 @@
     "opire in:body"
   ],
   "limit": 10,
-  "rows": [],
-  "status_values": [],
+  "rows": [
+    {
+      "url": "https://github.com/cashubtc/cashu.me/issues/629",
+      "title": "Wallet accepts tokens with NUT-13 residue collision and incomplete DLEQ",
+      "repo": "cashubtc/cashu.me",
+      "number": 629,
+      "amount_usd": 500,
+      "platform_link": "",
+      "labels": [],
+      "skills": [
+        "test"
+      ],
+      "difficulty": 2.5,
+      "score": 200.0,
+      "stars": 222,
+      "last_push": "2026-11-15",
+      "quote": "A malicious mint can craft a token whose keyset collides with a target mint's keyset, then recover signatures via the target's NUT-09 `/v1/restore` (see NUT-13 ",
+      "status": "READY"
+    }
+  ],
+  "status_values": [
+    "READY"
+  ],
   "mutations_performed": 0
 }
