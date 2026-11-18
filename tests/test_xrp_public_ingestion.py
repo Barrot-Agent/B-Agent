@@ -755,6 +755,9 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert summary["parser_version"] == "xrp-public-market-v3.30"
     assert summary["quote_basis"]["status"] == "VERIFIED"
     assert summary["quote_basis_feature_count"] == 4
+    limitations_text = " ".join(summary["limitations"])
+    assert "Binance, Coinbase and Bybit order-book features are point-in-time snapshots" in limitations_text
+    assert "Binance and Coinbase order-book snapshots remain raw-only" not in limitations_text
     assert any(item["feature_id"] == "xrp.spot.coinbase.last_price" for item in snapshot["records"])
     coinbase_closes = [
         item for item in snapshot["records"]
