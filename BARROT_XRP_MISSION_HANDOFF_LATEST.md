@@ -1636,3 +1636,12 @@ Sources: https://www.sec.gov/rules-regulations/2026/08/s7-2026-27 ; https://www.
 7. Keep directional forecasting disabled until the chronological walk-forward, baseline comparison, calibration, drift, and independent shadow gates all pass.
 
 **Disposition: NO MERGE.** The integration branch is progressing on its existing PR, but governance and final exact-head verification remain blockers.
+
+
+### Post-handoff exact-head verification for Run 23
+
+- The full-suite job for code/test head `89ff4b02317cbbed55c9da4143ce74100faa77a5` subsequently completed successfully in [push CI 44380133146](https://github.com/Barrot-Agent/B-Agent/actions/runs/44380133146): **4,275 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests**, 148.32 seconds; inclusive coverage **68.14%**; legacy core-package coverage **77%**; installed wheel and packaged XRP mission verification passed.
+- Its PR-event CI, dependency audit, money audit, and fail-closed gate also passed. The duplicate hunter test is now collected separately from the no-commit/no-push test.
+- Current branch head at this addendum is `24a0beb98472462503f504b53ce9332bc92f48f6`; PR #1663 reports 317 commits ahead of current main and remains draft.
+- The handoff-only head `24a0beb` has its own exact-head push CI [44380912807](https://github.com/Barrot-Agent/B-Agent/actions/runs/44380912807) still running the full-suite pipeline; dependency audit [44380912872](https://github.com/Barrot-Agent/B-Agent/actions/runs/44380912872) and PR dependency audit [44380925718](https://github.com/Barrot-Agent/B-Agent/actions/runs/44380925718) are pending at this addendum. Its PR CI [44380925720](https://github.com/Barrot-Agent/B-Agent/actions/runs/44380925720), money audit [44380925669](https://github.com/Barrot-Agent/B-Agent/actions/runs/44380925669), fail-closed PR gate [44380925721](https://github.com/Barrot-Agent/B-Agent/actions/runs/44380925721), push fail-closed gate [44380913257](https://github.com/Barrot-Agent/B-Agent/actions/runs/44380913257), and Pages validation job passed.
+- No code changes were made after the `89ff4b0` full-suite pass; the remaining `24a0beb` verification is a documentation-only successor. Do not describe it as verified until its own full-suite and dependency-audit jobs complete.
