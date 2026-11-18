@@ -55,7 +55,6 @@ class Analyzer(BaseAnalyzer):
     def _check_ci_config(self) -> list[dict[str, Any]]:
         ci_indicators = [
             ".github/workflows",
-            ".gitlab-ci.yml",
             ".circleci",
             "Jenkinsfile",
             ".travis.yml",
