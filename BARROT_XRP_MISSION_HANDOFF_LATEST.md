@@ -8394,27 +8394,27 @@ This is implemented evaluation infrastructure, not evidence of predictive edge. 
 
 ### Repository state at capture
 
-- Main: \`b5b22ea58fa069792b0728d47cb2414855234a4a\`.
-- Integration branch: \`integration/xrp-v3-mainline-successor-20261115T2101Z\`.
-- Integration head before this handoff append: \`16e07df0ac3d8fddba2b1ad62be0bc448f342375\`.
+- Main: `b5b22ea58fa069792b0728d47cb2414855234a4a`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Integration head before this handoff append: `16e07df0ac3d8fddba2b1ad62be0bc448f342375`.
 - PR #1663 targets the exact current main SHA, is **draft**, clean/mergeable, 258 commits ahead, zero behind, and changes 1,408 files including 67 workflow definitions.
 - Main tree: 1,737 blob files; integration tree: 2,774 blob files; neither recursive tree response was truncated.
 - No new branch or PR was created. PR #1663 remains the single consolidated integration workstream.
-- Main's latest commit is a report-only paid-issue publisher commit, \`b5b22ea\`, parent \`c54447c320ba2efd783659c7685e969de45e90b0\`; it was created by workflow run 44209866613 at 2026-11-18 00:42:23 UTC.
+- Main's latest commit is a report-only paid-issue publisher commit, `b5b22ea`, parent `c54447c320ba2efd783659c7685e969de45e90b0`; it was created by workflow run 44209866613 at 2026-11-18 00:42:23 UTC.
 
 ### Exact-head CI and security checks
 
-**VERIFIED on integration head \`16e07df0ac3d8fddba2b1ad62be0bc448f342375\`:**
+**VERIFIED on integration head `16e07df0ac3d8fddba2b1ad62be0bc448f342375`:**
 
 - Push CI [44221302179](https://github.com/Barrot-Agent/B-Agent/actions/runs/44221302179): Tests, Pages validation and Full repository test suite all passed.
 - Full-suite job: **4,257 passed, 1 skipped, 11 warnings, 19 subtests passed in 113.17 seconds**. Inclusive coverage was **68.13%** against the 62% floor; legacy-core coverage was **77%** against the 70% floor. The full job ran the repository test tree, not only the selected core subset.
 - Wheel build and installed-package verification passed in that exact-head run.
-- Dependency audit [44221302219](https://github.com/Barrot-Agent/B-Agent/actions/runs/44221302219), attempt 2: **passed**. Six declared manifests/sets were audited: \`requirements.txt\`, \`requirements-dev.txt\`, \`requirements-integrations.txt\`, \`hf_space/requirements.txt\`, \`legacy/requirements_legacy.txt\`, and PEP 621 dependencies from \`pyproject.toml\`. No known vulnerabilities were reported. Attempt 1 timed out during package-index access; the successful retry is the controlling result.
+- Dependency audit [44221302219](https://github.com/Barrot-Agent/B-Agent/actions/runs/44221302219), attempt 2: **passed**. Six declared manifests/sets were audited: `requirements.txt`, `requirements-dev.txt`, `requirements-integrations.txt`, `hf_space/requirements.txt`, `legacy/requirements_legacy.txt`, and PEP 621 dependencies from `pyproject.toml`. No known vulnerabilities were reported. Attempt 1 timed out during package-index access; the successful retry is the controlling result.
 - Money audit [44221311631](https://github.com/Barrot-Agent/B-Agent/actions/runs/44221311631): passed.
 - Fail-closed gate [44221312027](https://github.com/Barrot-Agent/B-Agent/actions/runs/44221312027): passed.
 - PR CI [44221311899](https://github.com/Barrot-Agent/B-Agent/actions/runs/44221311899): Pages validation passed; Tests and Full repository test suite were skipped because PR #1663 is draft. The full-suite evidence above is the exact-head push run, not the PR-event job.
 
-**Main comparison:** the latest main CI [44192086690](https://github.com/Barrot-Agent/B-Agent/actions/runs/44192086690) is on parent \`c54447c\`, not current main \`b5b22ea\`: 1,207 passed, 2 skipped, 8 subtests, 78.10% coverage. Current main \`b5b22ea\` has subsequent scheduled Cross Analysis and Pages deployment runs, but no exact-current-head full-suite CI run. Main's \`ci.yml\` contains a full-suite job; the current main SHA simply has not been tested by that job in the inspected run inventory.
+**Main comparison:** the latest main CI [44192086690](https://github.com/Barrot-Agent/B-Agent/actions/runs/44192086690) is on parent `c54447c`, not current main `b5b22ea`: 1,207 passed, 2 skipped, 8 subtests, 78.10% coverage. Current main `b5b22ea` has subsequent scheduled Cross Analysis and Pages deployment runs, but no exact-current-head full-suite CI run. Main's `ci.yml` contains a full-suite job; the current main SHA simply has not been tested by that job in the inspected run inventory.
 
 ### Current PR inventory and overlap classification
 
@@ -8430,7 +8430,7 @@ Nine PRs are open. Do not bulk-close any of them.
 | #1437 | **unique/unreviewed** | Five changed paths; no path overlap with #1663 |
 | #1436 | **unique/unreviewed** | 24 changed paths; no path overlap with #1663 |
 | #1353 | **unique/unreviewed** | 1,084 changed paths; no path overlap with #1663 |
-| #1265 | **unique/unreviewed** | 144 changed paths; one shared path, \`.github/workflows/ci.yml\`, has a different blob; 143 paths are unique. Preserve the unique research/index work. |
+| #1265 | **unique/unreviewed** | 144 changed paths; one shared path, `.github/workflows/ci.yml`, has a different blob; 143 paths are unique. Preserve the unique research/index work. |
 
 PR #1541's source branch is stacked on closed/unmerged #1540; PR #1542 was the fresh-main consolidation candidate and is also closed/unmerged. Neither closure establishes that the change is on main. No source PR was closed in this run.
 
@@ -8438,11 +8438,11 @@ PR #1541's source branch is stacked on closed/unmerged #1540; PR #1542 was the f
 
 **NO MERGE.**
 
-- PR #1663 remains draft with zero formal reviews and zero review threads. \`.github/CODEOWNERS\` assigns \`*\` only to \`@Barrot-Agent\`; this is not independent approval.
+- PR #1663 remains draft with zero formal reviews and zero review threads. `.github/CODEOWNERS` assigns `*` only to `@Barrot-Agent`; this is not independent approval.
 - Repository metadata marks main protected, but the branch-protection endpoint returned HTTP 403. The rulesets endpoint returned no active rulesets. Required status-check contexts and enforcement therefore remain **unverified**; do not infer that protection is satisfied.
-- Main's Pages deployment workflow ran successfully on \`b5b22ea\` in [44210006402](https://github.com/Barrot-Agent/B-Agent/actions/runs/44210006402). A merge to main would trigger the main Pages deployment path. That is an external deployment side effect and is not authorized by the integration/merge authorization alone.
-- \`paid-issue-publish.yml\` is a main-only \`workflow_run\` writer with \`contents: write\`; it downloads the exact successful Paid Issue Hunter artifact, verifies the two expected report files and \`mutations_performed == 0\`, then may commit only \`PAID-ISSUES.md\` and \`data/money/paid_issues.json\`. The observed current main commit \`b5b22ea\` is one such report-only write.
-- Main's \`barrot-sync.yml\` remains a push-triggered writer using \`GH_TOKEN\` and \`git push || true\`. The integration version quarantines this workflow with empty permissions and an unconditional false job. This difference must be reviewed as an intentional safety change, not ignored as a routine merge side effect.
+- Main's Pages deployment workflow ran successfully on `b5b22ea` in [44210006402](https://github.com/Barrot-Agent/B-Agent/actions/runs/44210006402). A merge to main would trigger the main Pages deployment path. That is an external deployment side effect and is not authorized by the integration/merge authorization alone.
+- `paid-issue-publish.yml` is a main-only `workflow_run` writer with `contents: write`; it downloads the exact successful Paid Issue Hunter artifact, verifies the two expected report files and `mutations_performed == 0`, then may commit only `PAID-ISSUES.md` and `data/money/paid_issues.json`. The observed current main commit `b5b22ea` is one such report-only write.
+- Main's `barrot-sync.yml` remains a push-triggered writer using `GH_TOKEN` and `git push || true`. The integration version quarantines this workflow with empty permissions and an unconditional false job. This difference must be reviewed as an intentional safety change, not ignored as a routine merge side effect.
 - The 67 changed workflow definitions were inspected in Run 12. This run rechecked the current CI, XRP ingestion, paid-issue publisher, Barrot Sync and CODEOWNERS definitions. The transitive scripts of every workflow have **not** all received line-by-line review; this remains a merge blocker.
 - No main write, merge, deployment, secret rotation, Space restart, Databricks mutation, Kaggle submission, paper trade, funds transfer or external-model dispatch was performed.
 
@@ -8483,7 +8483,7 @@ The current $4.53M liquidation total is much smaller and more balanced than the 
 **ETF flows, exchange flows and stablecoin liquidity**
 
 - SoSoValue's reported U.S. spot XRP ETF net flow for Nov. 9–13 was **−$19.13M**. A separate XRP Insights estimate was about **−$6.5M** because it excluded Grayscale; Grayscale's reported outflow was $12.71M, explaining most of the difference. Treat the full SoSoValue series and the holdings-derived partial estimate as different scopes, not contradictory measurements of the same included-fund universe. [Methodology reconciliation](https://allaboutxrp.com/news/xrp-etf-weekly-outflows-grayscale-tracker-gap)
-- CoinGlass displayed \`$0.0\` for Nov. 16 ETF flow while its same page showed no data for total net assets, holdings and net inflow. Classify Nov. 16 as **unavailable/ambiguous**, not a verified zero-flow day. [CoinGlass ETF page](https://www.coinglass.com/currencies/XRP/etf)
+- CoinGlass displayed `$0.0` for Nov. 16 ETF flow while its same page showed no data for total net assets, holdings and net inflow. Classify Nov. 16 as **unavailable/ambiguous**, not a verified zero-flow day. [CoinGlass ETF page](https://www.coinglass.com/currencies/XRP/etf)
 - CryptoQuant analyst Darkfost was cited as reporting more than **$127M net XRP withdrawals from Binance since Nov. 10**, with daily net outflows of $12M–$33M and about $21.4M on Nov. 16. U.Today, FXStreet and TradingView republications point to the same analyst/source lineage; they are not three independent confirmations. Internal Binance wallet movements after the October exchange incident remain a competing explanation. Do not label these transfers as verified accumulation without address-level and exchange-reserve reconciliation. [TradingView/U.Today report](https://www.tradingview.com/news/u_today:2852211c4094b:0-xrp-whales-snatch-127-million-off-binance-below-1-main-crypto-news-this-morning/) · [FXStreet report](https://www.fxstreet.com/cryptocurrencies/news/ripple-price-forecast-xrp-bulls-struggle-as-binance-whale-withdrawals-surge-202611171200)
 - On Nov. 15, two 120M-XRP transfers (240M combined) moved through three unlabeled wallets near the reported $0.89 low. The cited explorers did not associate those wallets with an exchange or Ripple escrow, and the coins did not reach an exchange in the described path. Owner and purpose remain unknown; do not infer a sale or institutional accumulation. [Transfer report](https://www.tradingview.com/news/u_today:1b5590628094b:0-someone-moves-240-million-xrp-the-exact-moment-price-hits-its-0-89-floor/)
 - CoinDesk, citing Glassnode, reported the combined USDT/USDC market capitalization had contracted by roughly **$17B over one month to $244B** by Nov. 14, from about $270B in early May. This is broad stablecoin-liquidity context, not XRP-specific flow or proof of XRP selling. [CoinDesk market report](https://www.coindesk.com/markets/2026/11/15/xrp-crashes-to-its-lowest-since-november-2024-as-money-leaves-crypto)
@@ -8511,19 +8511,19 @@ Exact-phrase continuation: ASK resolves to Permission Coin's ASK token, not XRP;
 
 - Only the current ChatGPT session ↔ GitHub connector data flow is verified. The connector exercised repository read and controlled integration-branch writes; effective token scopes are not independently exposed and appear broader than least privilege.
 - Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain **NOT TESTED / NOT VERIFIED** for current authentication, permission scope or data flow. No external model was dispatched, and no cross-platform structured evidence exchange or independent red-team quorum occurred.
-- The latest platform observation artifact remains \`research/xrp_intelligence/20261118T011500Z-run11-nine-platform-authentication-dataflow-observation.json\`. This run did not establish a new external connection.
+- The latest platform observation artifact remains `research/xrp_intelligence/20261118T011500Z-run11-nine-platform-authentication-dataflow-observation.json`. This run did not establish a new external connection.
 
-**Forecast status: \`NOT_ISSUED\`.** The forecast ledger still fails closed without independently managed trusted Ed25519 evaluator keys. Readiness requires at least 100 training and 100 out-of-sample observations, 100 shadow outcomes, five independently receipted source groups, at least ten forecast-horizon spans for effective evaluation, and weighted calibration error no greater than 0.05. No verified model-eligible XRP event set or measured out-of-sample edge was established by this run. The latest recorded dataset snapshot still reports zero model-eligible events and zero directional forecasts.
+**Forecast status: `NOT_ISSUED`.** The forecast ledger still fails closed without independently managed trusted Ed25519 evaluator keys. Readiness requires at least 100 training and 100 out-of-sample observations, 100 shadow outcomes, five independently receipted source groups, at least ten forecast-horizon spans for effective evaluation, and weighted calibration error no greater than 0.05. No verified model-eligible XRP event set or measured out-of-sample edge was established by this run. The latest recorded dataset snapshot still reports zero model-eligible events and zero directional forecasts.
 
 The ingestion implementation has allowlisted public HTTPS sources, redirect rejection, response-size checks, freshness controls, content-addressed raw payloads, canonical SHA-256 receipts and a per-run receipt chain. The local SQLite feature store reconstructs point-in-time snapshots and lineage. Neither local SQLite nor 90-day GitHub Actions artifact retention is an adversarial WORM store; independent signed/time-anchored storage remains missing.
 
-The \`xrp-public-ingestion.yml\` workflow exists on the integration branch, with read-only \`actions: read\` / \`contents: read\` permissions and artifact uploads. Its production schedules are main-only; the workflow is absent from current main. Its integration push trigger is path-limited to the workflow and ingestion/timestamp-audit code, so this handoff-only append did not trigger ingestion. **Scheduled production ingestion is not active on main.** This run's web observations were not converted into raw-byte receipts or model-eligible features.
+The `xrp-public-ingestion.yml` workflow exists on the integration branch, with read-only `actions: read` / `contents: read` permissions and artifact uploads. Its production schedules are main-only; the workflow is absent from current main. Its integration push trigger is path-limited to the workflow and ingestion/timestamp-audit code, so this handoff-only append did not trigger ingestion. **Scheduled production ingestion is not active on main.** This run's web observations were not converted into raw-byte receipts or model-eligible features.
 
 ### Run 13 disposition
 
 - **DESIGNED:** Integrated XRP intelligence and prediction architecture, evidence provenance, scenario/counter-hypothesis generation, chronological walk-forward baselines, calibration, drift and fail-closed issuance.
 - **EXECUTED:** Current main/integration trees, PR inventory, branch ancestry, changed paths, workflow runs/logs, dependency manifests, core prediction-engine modules and workflow side effects inspected; transient dependency audit retried successfully; current public XRP spot/depth/derivatives/ETF/flow and primary SBIC/XRPL sources reconciled.
-- **VERIFIED:** Exact-head full suite and push security gates on \`16e07df\`; PR #1663 base/head and draft/review state; current main SHA; source-PR path overlaps; official SBIC East/Central/West identities; Nov. 25 Testnet/Devnet-only reset.
+- **VERIFIED:** Exact-head full suite and push security gates on `16e07df`; PR #1663 base/head and draft/review state; current main SHA; source-PR path overlaps; official SBIC East/Central/West identities; Nov. 25 Testnet/Devnet-only reset.
 - **NOT VERIFIED:** Exact-head CI for the documentation-only commit created by this append until its triggered run completes; current-main full-suite CI; main required-check enforcement; independent approval; complete transitive-script audit; production ingestion; external WORM/timestamp anchoring; nine-platform connections; model eligibility, calibrated predictive edge or shadow performance.
 
 **NO MERGE.** The PR is draft, independent approval is absent, branch-protection enforcement is not verifiable, the Pages deployment side effect is not authorized, and the full transitive workflow/script review is incomplete. No source PR was closed. No forecast, paper trade, real-money action, deployment or external model dispatch occurred.
