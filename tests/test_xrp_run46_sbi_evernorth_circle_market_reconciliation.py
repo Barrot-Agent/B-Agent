@@ -78,8 +78,8 @@ def test_exchange_wallet_and_etf_definitions_are_preserved():
     etfs = market["etfs"]
     assert exchange["total_xrp"] == 22_180_000_000
     assert exchange["tradable_float"] is False
-    assert exchange["sbi_vc_trade_xrp"] == 56_300_000
-    assert exchange["sbi_vc_trade_cold_share_pct"] == 99
+    assert exchange["examples"]["sbi_vc_trade_xrp"] == 56_300_000
+    assert exchange["examples"]["sbi_vc_trade_cold_share_pct"] == 99
     assert etfs["reported_total_xrp_six_spot_plus_BITW"] == 1_184_150_000
     assert etfs["reported_net_holdings_change_xrp"] == -5_310_000
     assert etfs["gxrp_excluded_from_flow_total_due_data_gap"] is True
