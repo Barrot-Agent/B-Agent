@@ -267,3 +267,78 @@ class RecursiveCreativeMemory:
             return Transmutation()
         best = max(lessons, key=lambda item: item["evaluation"]["score"])
         return Transmutation(**best["settings"])
+
+    def record_composition_attempt(
+        self,
+        *,
+        source_fingerprint: str,
+        output_fingerprint: str,
+        settings: dict[str, Any],
+        evaluation: Evaluation,
+    ) -> dict[str, Any]:
+        """Append every generated composition before human feedback arrives."""
+        attempt_id = hashlib.sha256(
+            f"composition:{source_fingerprint}:{output_fingerprint}:{len(self.read_all())}".encode()
+        ).hexdigest()
+        record = {
+            "record_type": "composition_attempt",
+            "attempt_id": attempt_id,
+            "recorded_at": datetime.now(timezone.utc).isoformat(),
+            "source_fingerprint": source_fingerprint,
+            "output_fingerprint": output_fingerprint,
+            "settings": settings,
+            "evaluation": asdict(evaluation),
+            "user_feedback": "pending",
+            "lesson_promoted": False,
+            "status": "awaiting_user_feedback" if evaluation.passed else "failed_evaluation",
+        }
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        with self.path.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(record, sort_keys=True) + "\\n")
+        return record
+
+    def record_composition_feedback(
+        self, attempt_id: str, *, feedback: str, lesson: str = ""
+    ) -> dict[str, Any]:
+        """Append feedback; promote only approved lessons from passing attempts."""
+        attempts = [
+            item for item in self.read_all()
+            if item.get("record_type") == "composition_attempt"
+            and item.get("attempt_id") == attempt_id
+        ]
+        if not attempts:
+            raise KeyError(f"unknown composition attempt: {attempt_id}")
+        attempt = attempts[-1]
+        positive = feedback.strip().lower() in {"positive", "approved", "good", "better", "keep", "yes"}
+        promoted = bool(attempt["evaluation"]["passed"] and positive and lesson.strip())
+        record = {
+            "record_type": "composition_feedback",
+            "attempt_id": attempt_id,
+            "recorded_at": datetime.now(timezone.utc).isoformat(),
+            "user_feedback": feedback,
+            "lesson": lesson.strip() if promoted else "",
+            "lesson_promoted": promoted,
+            "status": "verified_lesson" if promoted else "retained_unpromoted_feedback",
+        }
+        with self.path.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(record, sort_keys=True) + "\\n")
+        return record
+
+    def recommend_composition_settings(self) -> dict[str, Any] | None:
+        """Return settings from the highest-scoring user-approved composition."""
+        records = self.read_all()
+        feedback_by_id = {
+            item.get("attempt_id"): item
+            for item in records
+            if item.get("record_type") == "composition_feedback"
+            and item.get("lesson_promoted")
+        }
+        attempts = [
+            item for item in records
+            if item.get("record_type") == "composition_attempt"
+            and item.get("attempt_id") in feedback_by_id
+        ]
+        if not attempts:
+            return None
+        best = max(attempts, key=lambda item: item["evaluation"]["score"])
+        return dict(best["settings"])
