@@ -20,15 +20,16 @@ from urllib.parse import parse_qs, urlparse
 
 from barrot_agent.config import AppConfig
 from barrot_agent.github_service import make_service
+from barrot_agent.inbound.gate import Command, Source, gate as inbound_gate
 
 
-def _build_app(config: AppConfig) -> type[BaseHTTPRequestHandler]:
-    """Return a request handler class bound to the given configuration."""
+def _build_app(config: AppConfig, service: Any | None = None) -> type[BaseHTTPRequestHandler]:
+    """Return a handler bound to configuration and an optional test service."""
 
     default_owner = config.github_default_owner or ""
     default_repo = config.github_default_repo or ""
-    # Build the service once; reuse it for every request in this process.
-    svc = make_service(config.github_token or "")
+    # Build once; tests may inject a fake service to prove rejected writes never reach GitHub.
+    svc = service if service is not None else make_service(config.github_token or "")
 
     class _Handler(BaseHTTPRequestHandler):
         def log_message(self, fmt: str, *args: Any) -> None:  # noqa: D102
@@ -55,6 +56,34 @@ def _build_app(config: AppConfig) -> type[BaseHTTPRequestHandler]:
 
         def _path_prefix(self) -> str:
             return urlparse(self.path).path
+
+        def _authorize_write(self, action: str, details: dict[str, Any]) -> bool:
+            """Gate externally-originated writes before calling the GitHub adapter.
+
+            GPT Actions requests are frontier-model proposals, never operator
+            authority. Client-supplied headers cannot promote their source.
+            """
+            verdict = inbound_gate(
+                Command(
+                    text=f"{action}\\n{json.dumps(details, sort_keys=True, default=str)}",
+                    source=Source.FRONTIER_MODEL,
+                    received_from="GPT_ACTIONS_HTTP",
+                )
+            )
+            if verdict.allowed and verdict.converged and not verdict.capped:
+                return True
+            self._send_json(
+                403,
+                {
+                    "error": "write rejected by inbound authority gate",
+                    "source": verdict.source.value,
+                    "severity": verdict.severity.value,
+                    "reasons": verdict.reasons,
+                    "approval_needed": verdict.approval_needed,
+                    "executed": False,
+                },
+            )
+            return False
 
         # ------------------------------------------------------------------
         # Routes
@@ -125,6 +154,11 @@ def _build_app(config: AppConfig) -> type[BaseHTTPRequestHandler]:
                 if not owner or not repo or not title:
                     self._send_json(400, {"error": "owner, repo and title are required"})
                     return
+                if not self._authorize_write(
+                    "create GitHub issue",
+                    {"owner": owner, "repo": repo, "title": title, "body": issue_body, "labels": labels},
+                ):
+                    return
                 try:
                     result = svc.create_issue(owner, repo, title, issue_body, labels)
                     self._send_json(201, result)
@@ -141,6 +175,11 @@ def _build_app(config: AppConfig) -> type[BaseHTTPRequestHandler]:
                     comment_body = body.get("body", "")
                     if not owner or not repo or not comment_body:
                         self._send_json(400, {"error": "owner, repo and body are required"})
+                        return
+                    if not self._authorize_write(
+                        "add GitHub issue comment",
+                        {"owner": owner, "repo": repo, "issue_number": int(parts[2]), "body": comment_body},
+                    ):
                         return
                     try:
                         result = svc.add_comment(owner, repo, int(parts[2]), comment_body)
