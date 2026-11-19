@@ -111,3 +111,52 @@ class RecursiveCompositionEngineTests(unittest.TestCase):
             engine.record_feedback(run, feedback="worse", lesson="Do not repeat this")
             self.assertIsNone(memory.recommend_composition_settings())
             self.assertEqual(len(memory.read_all()), 2)
+
+class AudioRenderTests(unittest.TestCase):
+    def test_audio_render_rejects_missing_soundfont(self):
+        from barrot_agent.creative.audio_render import render_audio
+
+        with tempfile.TemporaryDirectory() as directory:
+            target = Path(directory) / "render.wav"
+            with self.assertRaises(FileNotFoundError):
+                render_audio(template(), target, soundfont_path=Path(directory) / "missing.sf2")
+            self.assertFalse(target.exists())
+
+    def test_audio_render_requires_optional_dependencies(self):
+        from barrot_agent.creative.audio_render import render_audio
+
+        with tempfile.TemporaryDirectory() as directory:
+            soundfont = Path(directory) / "test.sf2"
+            soundfont.write_bytes(b"placeholder")
+            target = Path(directory) / "render.wav"
+            with patch.dict("sys.modules", {"pretty_midi": None}):
+                with self.assertRaises(RuntimeError):
+                    render_audio(template(), target, soundfont_path=soundfont)
+            self.assertFalse(target.exists())
+
+    def test_audio_render_never_overwrites(self):
+        from barrot_agent.creative.audio_render import render_audio
+
+        with tempfile.TemporaryDirectory() as directory:
+            soundfont = Path(directory) / "test.sf2"
+            soundfont.write_bytes(b"placeholder")
+            target = Path(directory) / "existing.wav"
+            target.write_bytes(b"existing")
+            with self.assertRaises(FileExistsError):
+                render_audio(template(), target, soundfont_path=soundfont)
+            self.assertEqual(target.read_bytes(), b"existing")
+
+    def test_audio_render_validates_sample_rate(self):
+        from barrot_agent.creative.audio_render import render_audio
+
+        with tempfile.TemporaryDirectory() as directory:
+            soundfont = Path(directory) / "test.sf2"
+            soundfont.write_bytes(b"placeholder")
+            with self.assertRaises(ValueError):
+                render_audio(
+                    template(),
+                    Path(directory) / "render.wav",
+                    soundfont_path=soundfont,
+                    sample_rate=100,
+                )
+
