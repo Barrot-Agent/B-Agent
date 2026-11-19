@@ -1,3 +1,117 @@
+# Run 223 — 2026-11-19 current checkpoint
+
+**Mission:** XRP intelligence and measured prediction-engine mastery remain Priority 1. Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+
+## Repository and integration state
+
+- Current main at inspection: e1c3634df28f488819185b7d5697d474bc0bcb9e.
+- Integration branch: integration/xrp-v3-mainline-successor-20261115T2101Z.
+- Code head before this handoff update: 2aed2611c9e6673b9b6c55148cee4e6755714e4b.
+- Forward merge commit 2aed261 has parents 27a3d8d894fd12e75b5225b4b4f45724ca3c90a7 and current main e1c3634df28f488819185b7d5697d474bc0bcb9e. This is a merge into the integration branch only; main was not changed.
+- Compare against current main: 465 commits ahead, zero behind. Complete trees: main 1,739 entries; integration 3,004 entries. All 1,567 main blob paths are present in integration. The two main-generated paid-issue snapshot files now match their main blob SHAs exactly.
+- PR #1663 remains open, draft and mergeable, based on current main e1c3634, with head 2aed261, 465 commits, 1,462 changed files, 531,740 additions and 6,965 deletions. It has zero reviews, zero requested reviewers and zero inline review threads.
+- No new branch or PR was created. No source PR was closed.
+
+## Exact-head CI and merge gate
+
+- Exact predecessor head 27a3d8d894fd12e75b5225b4b4f45724ca3c90a7 passed the full repository suite: 4,357 passed, 1 skipped, 11 warnings, 19 subtests, 71.34% inclusive coverage, 81% legacy-core coverage; 199.45 seconds. PR CI 44588423546. Core tests, Pages validation-only, dependency audit 44588423427 and money audit 44588423318 passed.
+- The predecessor's fail-closed gate 44588423755 blocked on draft status, stale PR base, no independent approval and inaccessible branch-protection details.
+- The stale-base issue is resolved by merge commit 2aed261. Exact-head verification for 2aed261 is in progress: CI 44594297574, dependency audit 44594298031, money audit 44594297598 and fail-closed gate 44594297720. At this handoff capture, the core tests, Pages validation, dependency audit and money audit passed; the full-suite job and fail-closed gate had not completed. Do not transfer the predecessor's suite result to 2aed261 or to this documentation update.
+- Main's e1c3634 commit changed only PAID-ISSUES.md and data/money/paid_issues.json. Main CI ignores those generated-data paths, so no exact e1c3634 code-CI run was observed. This integration branch now includes e1c3634 as a parent.
+- Branch-protection endpoint still returns HTTP 403 to this integration. The only visible repository fallback ruleset is disabled. Effective required checks, approval count, administrator enforcement and bypass settings remain unverified. No independent reviewer has approved #1663.
+- Main's automatic GitHub Pages deployment completed successfully on e1c3634 in run 44587757885 at 18:26:08Z. The integration PR changes public site files; merging it to main would trigger a public Pages deployment. No deployment approval was given. Keep #1663 draft and do not merge.
+
+## Workflow and external-action security review
+
+Current integration versions inspected:
+- paid-issue-publish.yml: disabled, empty permissions.
+- deploy-databricks.yml and databricks-bundle.yml: disabled, empty permissions.
+- sync-huggingface.yml: disabled, empty permissions.
+- sync-self-hosted-brain.yml: deploy job condition is false; its credential-bearing body is not executed.
+- coinbase-paper-trader.yml: disabled, empty permissions.
+- deploy-a2a-worker.yml: manual dispatch on main only; requires separate YES confirmations for deployment and secret rotation.
+- barrot-restart-space.yml: manual dispatch on main only with explicit external-change confirmation. It does not bind that confirmation to an expected main SHA; retain this as a residual control gap.
+- kaggle-competitions.yml: manual dispatch, explicit YES, non-empty competition allowlist and main-only condition.
+- release.yml: tag-triggered and contents-write; no tag or release was created.
+- barrot-ops.yml and both Databricks deploy scripts use absent-target/create-only behavior and overwrite=false. No Databricks request or write was performed.
+- Coinbase paper-trader script requires BARROT_PAPER_TRADER_APPROVED=YES before mutable paper state; its workflow remains disabled.
+- The transitive workflow-to-script/action audit is still incomplete. Static workflow inspection is not a completed security audit.
+
+No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+## XRP market and microstructure observations
+
+All observations below are research-only. Browser-rendered API output and aggregator pages were not captured as raw transport bytes in this run, so no Barrot raw-source SHA-256 receipt exists. Do not admit these values to the feature store or model training.
+
+### Direct exchange ticker observations
+
+- Kraken public XRP/USD ticker: last 0.97621 USD; bid 0.97597; ask 0.97614; recomputed top spread about 1.742 bps; top bid/ask sizes 225/18 XRP; rolling 24-hour volume 43.212M XRP; VWAP 0.97451592; open 0.96637; high 0.99680; low 0.95363. The response has no exchange event timestamp. Retrieval completion time is not exposed.
+- OKX public XRP-USDT ticker: provider timestamp 2026-11-19T18:41:54.363Z; last 0.9791 USDT; bid 0.9786; ask 0.9787; recomputed spread about 1.022 bps; rolling 24-hour volume 33.229M XRP; open 0.9814; high 0.9979; low 0.9546.
+- The approximately 0.296% last-price difference is not an arbitrage signal: Kraken is USD-quoted and has no provider timestamp; OKX is USDT-quoted and its event time is not synchronized with Kraken. No contemporaneous USD/USDT conversion or executable depth was captured.
+
+### Order-book depth — keep instruments separate
+
+- Fuelmaps six-venue spot snapshot at 12:00 UTC on November 19: mid 0.9860; within ±1%, bids 12.3M USD and asks 9.5M; within ±5%, bids 21.8M and asks 14.4M; within ±10%, bids 26.9M and asks 16.1M. It is an hourly aggregate, not a single synchronized exchange snapshot. Resting orders can be cancelled; Binance and Bitget are absent; no raw receipt exists.
+- Basis Binance XRP-USDT perpetual snapshot at 16:00 UTC: mid 0.9704; spread 1.03 bps; nearest 1,000 levels per side, total bids 32.1M USD and offers 27.0M; ±1% bid share 51%; 24-hour volume 621M USD. This is a perpetual book, not spot depth. Do not merge it with Fuelmaps spot data.
+
+### Derivatives and ETF disagreement
+
+- TradRadar at 12:35 UTC: seven-exchange open interest 1.25B USD, down 2.92% over 24 hours; weighted funding +0.0090% per 8 hours; long accounts 76.9%; liquidations at least 4.01M USD, including 3.21M longs and 0.80M shorts. Page reports a 15-minute delay.
+- CoinGlass latest retrieved page: XRP around 0.9720; OI 1.89B USD, down 5.36%; futures volume 2.32B USD, spot volume 518.64M USD; funding +0.0039% per 8 hours; futures/spot volume 4.5x; 24-hour liquidations 4.02M USD, 79% longs; reported ETF net inflow 0 for November 18. Exact provider event time was not exposed in the retrieved page.
+- Swiftedge's separate November 19 market brief reports OI +9.6%, positive taker flow +7% and net large-order flow +1.4M USD. This conflicts with the OI declines from CoinGlass and TradRadar; its venue coverage and precise observation cutoff are not reconciled. Retain as counterevidence, not a feature.
+- Existing run44 ETF reconciliation records CryptoKeyhole's November 18 partial -3,251 XRP from 2/4 funds; XRP Insights' November 16–18 holdings delta of -5.152M XRP across six ETF tickers plus BITW; Alpha Finance's zero-dollar November 18 flow with no holdings/AUM cross-check; and InflowScan withholding a settled total. These are different universes and methods. Holdings deltas are not issuer cash redemptions. CoinGlass's zero-flow field is another aggregator output, not a settled issuer-level reconciliation.
+- TokenPost's November 18 article reports Binance-related outflows above 127M USD since November 10 and lower futures OI, but explicitly notes possible Binance internal wallet movements after the exchange incident. Do not treat those transfers as confirmed investor withdrawals.
+
+No cross-source average, directional signal or forecast was produced.
+
+## Institutional network update
+
+- BNY's October 27 primary announcement confirms its Digital Asset Custody platform supports XRP and RLUSD for eligible institutional clients. BNY is already primary reserve custodian for RLUSD and has a custody relationship with Ripple Prime. BNY's proposed direct RLUSD mint/redeem service is subject to final BNY and regulatory approvals. Tokenized trade finance with C2FO is exploratory; the release does not disclose a pilot, XRP purchase, custody balance or realized throughput.
+- Circle's June 29 primary announcement confirms BNY custody of USDC and client-directed mint/burn workflows, with BNY as primary custodian of USDC reserves. BNY is a shared custody/services node across Circle/USDC and Ripple/RLUSD. This is not evidence of a direct Circle-Ripple partnership or fungibility between the issuers.
+- DBS and Circle's November 18 primary announcement confirms eligible institutions can directly mint and redeem USDC through DBS with 24/7 USD-USDC settlement. The announcement does not identify XRPL or XRP as the settlement network. Treat this as a competing or complementary institutional stablecoin rail, not XRP demand.
+- DBS and Kinexys by J.P. Morgan announced an operational 24/7 cross-border tokenized-deposit transfer capability on November 16, with Ant International as the first client. It connects permissioned bank ecosystems and is not an XRP/XRPL integration.
+- Circle's USDC page reports 68.0B USDC in circulation as of November 16 and native issuance on 38 blockchains. That does not establish which chain DBS uses for its new service.
+
+## Creator identity and exact phrases
+
+- The iHeart June 11 interview transcript has the guest self-identify her YouTube handle as @drkamilahstevenson and warn that fake pages exist. The host-published YouTube video Crypto Panics! W/ @drkamilahstevenson, published by Paul Barron Podcast on June 11, 2026, is admitted as one verified host-published interview appearance. It is not a channel-owned upload. The channel-owned video inventory remains empty. The similarly named @KamilahStevensonXrpStocks channel remains quarantined because no first-party cross-link was established.
+- ASK Coin: Permission Coin (ASK) and @AskCoin_bot remain separate unverified candidates; no XRP/XRPL relationship established.
+- actual capital: no separate exact-phrase entity resolved. Preserve cash purchase, in-kind XRP, financing capacity, equity, warrant proceeds and undrawn facilities as distinct capital classes. Actual XRP is not the phrase actual capital.
+- SBIC, ChatGPT SBIC: no OpenAI commercial partnership established. SBIC East/Central/West remain regional Small and Medium Business Investment & Consultation companies, distinct from SBI Holdings and SBI Group.
+
+## Prediction and provenance gate
+
+- Current event registry version run222 contains 150 curated events. All 150 have null raw_source_sha256; 59 have exact publisher timestamps and 91 lack exact publisher timestamps. All remain research-only and model-ineligible.
+- The latest run44 market/ETF artifact explicitly marks its web observations raw_capture_status NOT_CAPTURED and model_eligible false. Rendered API text or a page excerpt is not a byte-exact raw receipt.
+- The scheduled public ingestion workflow exists only on the integration branch, not main. Its schedule is therefore not active in production. Artifacts have 7–90 day retention and are not WORM storage or an independent timestamp anchor.
+- The nine-platform map exists, but only ChatGPT/GitHub connector access is tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks do not have verified live authentication and data-flow evidence. No external-model dispatch occurred.
+- Forecast gate remains NOT_SATISFIED. No directional forecast, calibrated probability claim, paper trade or real-money action is authorized.
+
+## Open PR backlog — 14 open
+
+- #1663: sole consolidated XRP/V3 integration; blocked by draft status, no independent review, branch-protection 403 and automatic public Pages deployment side effect.
+- #1668: blocked; all three changed paths overlap #1663. Its patch adds Cloudflare, OpenRouter and Gemini credentials plus free-provider fallback routing. No provider authentication/data-flow validation or dispatch authorization exists.
+- #1541: blocked/overlapping MMI hardening; all five paths overlap #1663. Canonical claim fingerprint code is present on the integration branch, but the stacked source branch and exact patch ancestry still require reconciliation. Keep open until a successor is merged and verified on main.
+- #1665: duplicate candidate; integration requirements-dev.txt already contains pylint>=4.1.4. Do not close before a successor is merged and verified on main.
+- #1666: blocked; its Kaggle dependency range <1.8 conflicts with integration's deliberate <1.6 constraint.
+- #1664: unique/unreviewed; 126 changed files and three shared paths, including a major README rewrite. Preserve.
+- #1670: unique/unreviewed; 12 changed files and two shared paths for optional music dependencies/docs indexing. Preserve.
+- #1460, #1450, #1440, #1437, #1436 and #1353: unique/unreviewed XRP research or ledger work; no changed-path overlap with #1663 in this audit. Preserve.
+- #1265: unique/unreviewed; one CI workflow overlap. Preserve and reconcile its ancestry.
+- Ready: 0. Merged: 0. Superseded: 0. No source PR closed.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- DESIGNED: XRP source provenance, point-in-time features, event/scenario generation, chronological walk-forward baselines, calibration, drift and forecast ledger; nine-platform least-privilege coordination.
+- EXECUTED: fetched current main and full trees; reconciled main into the existing integration branch with a two-parent merge commit; verified all main paths and exact equality of the two changed paid-issue files; inspected PR inventory, overlaps, CI, dependency audits, workflow controls and current public market/institutional sources.
+- VERIFIED: predecessor 27a3d8 full suite and checks passed. Current 2aed261 dependency and money audits passed; core tests and Pages validation passed; exact-head full suite and gate were still running at this checkpoint. Branch-protection requirements remain unverifiable. No main merge or external deployment occurred.
+
+## Next concrete action
+
+Finish exact-head full-suite CI on the post-reconciliation head, then rerun/verify exact-head CI after this handoff update. Continue the transitive workflow/script/action audit, resolve the branch-protection permission gap through an authorized review path, and obtain an independent reviewer. Keep PR #1663 draft. Do not merge while public Pages deployment remains unapproved. Keep forecast issuance disabled until raw-source receipts, historical depth/derivatives vintages, leakage-safe walk-forward evaluation, calibration and shadow performance pass their gates.
+
+---
+
 ## Run222 timestamp-schema follow-up
 
 The first Run222 content commit (`3b7caaf`) left publisher timestamps null for Kraken and Coinbase's displayed proof-of-reserves page. The event-timeline contract requires non-empty event, availability and capture timestamps. This follow-up uses the registry assembly cutoff for those two observation times, marks their precision as capture-time-only, leaves publisher timestamps null, and records the policy in the registry. It does not fabricate a source timestamp.
