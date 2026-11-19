@@ -85,9 +85,11 @@ class RecursiveCompositionEngineTests(unittest.TestCase):
                 first, feedback="approved",
                 lesson="Keep this seed and phrase density for the next draft",
             )
-            second = engine.create(template(), CompositionSettings(bars=8, seed=999))
-            self.assertEqual(second.settings.seed, 73)
+            second = engine.create(template())
+            self.assertEqual(second.settings.seed, 74)
+            self.assertEqual(second.settings.bars, 8)
             self.assertEqual(len(memory.read_all()), 3)
+            self.assertTrue(second.learned_lessons)
 
     def test_negative_feedback_is_retained_but_not_promoted(self):
         from barrot_agent.creative.composer import RecursiveCompositionEngine
