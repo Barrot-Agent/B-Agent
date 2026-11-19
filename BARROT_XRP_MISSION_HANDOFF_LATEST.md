@@ -5303,3 +5303,23 @@ The #1665 duplicate remains open until its replacement is on main and verified. 
 - No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, external-model dispatch, force-push, reset, clean, stash, restore-over or discard occurred.
 
 This handoff update is documentation-only. The CI evidence above is tied to code/test head ea0350bf505f4786932f3ffb978d2652db3f0ff1; the documentation commit created by this update must receive its own exact-head CI before any merge consideration.
+
+
+---
+
+## Run 227 security-audit addendum — workflow-to-script review
+
+The transitive review advanced beyond YAML-only scanning. The following invoked scripts and inline commands were inspected on the integration branch. No workflow was dispatched.
+
+- Kaggle submission: scripts/kaggle_competitions_automation.py refuses to submit without a non-empty KAGGLE_SUBMISSION_ALLOWLIST; the workflow separately requires a manual YES, main-only dispatch, exact current main SHA and explicit competition slugs. The script can download and submit once those gates are met. It was not run.
+- Paid-issue hunter and bounty scan: scripts/paid_issue_hunter.py and scripts/bounty_scan.py use the GitHub CLI to read issues and write local runner files. Their workflows upload artifacts only; they do not grant contents:write or push. The separate paid-issue publisher is disabled.
+- Pillars check: scripts/pillars_check.py uses read-only GET requests for GitHub App installation metadata, Hugging Face Space runtime and repository files. Its optional Databricks path sends SQL SELECT 1 only when DATABRICKS_PROBE_ENABLED=true. The workflow exposes this only as a manual YES input; scheduled runs do not enable it. No probe was run.
+- Riemann harvest, transparency audit and benchmark summaries write local output for artifact upload; no repository push or external mutation was found in the inspected workflow paths.
+- XRP public ingestion performs public-source collection and local feature-store/artifact writes. The workflow has actions:read and contents:read, not contents:write; no market orders, exchange-authenticated endpoints or trading action are present. Its current schedule is hourly plus a daily archive, but production scheduling remains inactive until the workflow is on main.
+- Apex audit explicitly passes github_token=None to its audit helper, preventing implicit use of the workflow token for GitHub writes.
+- Barrot Operations is manual and main-only. Its Databricks job creates a notebook only after an explicit YES and a 404 absence check; it refuses overwrite on 200 or uncertain status. It does not yet bind the action to an exact approved main SHA. The Kaggle dataset-download job is also manual and explicit-YES, and only downloads to the ephemeral runner. Neither job was dispatched.
+- Deploy A2A Worker is manual, main-only, exact-main-SHA-bound and uses persist-credentials:false. Important correction: its job-level condition currently requires BOTH deployment confirmation YES and secret-rotation confirmation YES, so deployment cannot occur without the secret-upload step. This is fail-closed but couples deployment to secret rotation; future repair should make deployment independently approvable and keep secret rotation as a separate optional step. Neither action was run.
+- sync-self-hosted-brain is hard-disabled with if:false despite retaining confirmation checks in its body. sync-huggingface is hard-disabled. Legacy Databricks bundle/deploy workflows are hard-disabled. Paid-issue-publish is hard-disabled. Barrot self-upgrade and legacy Barrot sync are hard-disabled.
+- The inspected high-risk external actions use SHA-pinned third-party action references. The complete transitive audit of every one of the 68 changed workflow files and every action dependency remains incomplete; no blanket supply-chain clearance is claimed.
+
+No Kaggle submission, Databricks workspace mutation, Cloudflare deployment, Hugging Face upload, secret rotation, Space restart, release, repository write, paper trade or external-model dispatch occurred.
