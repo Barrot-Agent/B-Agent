@@ -152,7 +152,14 @@ jobs:
             ".barrot/autonomous_tasks/test_math_task.py"
           )
           for required_path in "${required_test_paths[@]}"; do
-            if ! printf '%s\n' "${test_files[@]}" | grep -Fxq "$required_path"; then
+            found=false
+            for discovered_path in "${test_files[@]}"; do
+              if [[ "$discovered_path" == "$required_path" ]]; then
+                found=true
+                break
+              fi
+            done
+            if [[ "$found" != "true" ]]; then
               echo "::error::Required active test module was not discovered: $required_path"
               exit 1
             fi
