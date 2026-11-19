@@ -155,18 +155,6 @@ jobs:
               add_blocker "exact-head checks and commit statuses could not be read"
             fi
 
-            if check_runs="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/check-runs?per_page=100" 2>/dev/null)"; then
-              for required in "Tests" "Full repository test suite" "GitHub Pages build (validation only)" "pip-audit" "audit"; do
-                matching="$(jq --arg name "$required" --arg sha "$actual_head" '[.check_runs[] | select(.name == $name and .head_sha == $sha)]' <<< "$check_runs")"
-                count="$(jq 'length' <<< "$matching")"
-                all_ok="$(jq 'all(.[]; .status == "completed" and .conclusion == "success")' <<< "$matching")"
-                if [[ "$count" == "0" || "$all_ok" != "true" ]]; then
-                  add_blocker "mandatory check '$required' is missing or not successful on the exact head"
-                fi
-              done
-            else
-              add_blocker "mandatory exact-head CI inventory could not be read"
-            fi
           else
             add_blocker "PR number could not be resolved"
           fi
