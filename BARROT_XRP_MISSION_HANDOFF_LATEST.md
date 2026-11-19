@@ -4255,3 +4255,55 @@ Dependency manifests audited: runtime, development, integrations, Hugging Face S
 **NO MERGE.** Exact-head PR CI, full repository tests, dependency audit and money audit passed on `8e18dd6`, but the PR is draft, independent approval is absent, branch protection cannot be verified, the scheduled Databricks token scope remains unknown, and the transitive workflow audit is incomplete.
 
 Next concrete actions: finish the push CI for `8e18dd6`; quarantine or verify the scheduled Databricks credential path; complete the transitive workflow audit; capture SEC and issuer source bytes with SHA-256 receipts; reconcile synchronized venue-level order books and derivatives; obtain independent review and verifiable branch protection. Keep forecast issuance disabled until chronological out-of-sample evaluation, calibration and shadow evidence meet the ledger's readiness policy.
+
+
+## Run 43 addendum — OCC trust-bank network and SBI ownership links
+
+**Research captured:** 2026-11-19. These are primary-source identity and regulatory findings; they do not authorize a price forecast.
+
+### Three OCC national trust-bank charters — keep issuer and custodian roles separate
+
+1. **Circle National Trust / First National Digital Currency Bank, N.A.** — OCC CAS records charter #25361 as consummated/effective **2026-07-24**. Circle says the bank is a qualified custodian, does not take deposits or lend, and is expected over time to manage USDC reserves. The OCC approval states the bank does not issue stablecoins. Circle's current USDC terms still identify Circle Internet Financial, LLC (and Circle SAS for the EEA) as USDC issuers; no completed transfer of issuance to Circle New York Trust was verified.
+2. **Ripple National Trust Bank** — OCC CAS records the charter as consummated/effective **2026-10-26**. OCC's conditional approval says the bank does not issue RLUSD; RLUSD is issued by Ripple subsidiary Standard Custody & Trust Company, LLC. The bank's proposed functions include custody, reserve-management support and collateral-trustee services. Its charter does not establish a Federal Reserve master account.
+3. **Coinbase National Trust Company** — OCC CAS records charter #25390 as consummated/effective **2026-11-06**; the final OCC letter is dated November 6 and authorizes opening November 9. The bank is a wholly owned Coinbase Global subsidiary. Its approved scope is fiduciary digital-asset custody; it does not issue stablecoins and is not an insured depository institution. It is to migrate Coinbase Custody Trust Company custody accounts/assets over a three-year period. It may facilitate access to affiliate staking, Prime Trading and Prime Financing as a finder; the bank itself does not provide those underlying services. Fiat is held in FBO accounts at third-party banks.
+
+All three are national trust-bank structures, not evidence of ordinary insured deposit-taking banks or Federal Reserve master-account access. The stated minimum Tier 1 capital and liquidity conditions in OCC approval documents are regulatory requirements, **not proof of actual paid-in capital**. Do not label them “actual capital”.
+
+Primary records:
+- Circle OCC CAS: https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2
+- Circle National Trust: https://www.circle.com/circle-national-trust
+- Circle USDC terms: https://www.circle.com/legal/usdc-terms
+- Ripple OCC CAS: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+- Ripple OCC Conditional Approval #1359: https://occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf
+- Coinbase OCC CAS: https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2
+- Coinbase OCC Corporate Decision #1370: https://occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf
+
+### SBI Holdings is directly invested in both Circle and Ripple
+
+- **Circle equity:** SBI Holdings and SBI Shinsei Bank disclosed a combined **$50M** strategic investment in Circle at its June 5, 2025 IPO allocation: $25M from each. This is direct disclosed equity capital into Circle, not XRP-token capital.
+- **SBI Circle Holdings:** SBI's May 12, 2026 release says establishment of the joint venture was completed. SBI investor materials describe the venture as 50% SBI / 50% Circle. It is a distinct corporate JV, not one of the regional SBIC East/Central/West companies.
+- **Circle strategic expansion:** SBI disclosed participation by a consolidated subsidiary in Circle's ARC token presale on May 12, 2026. The SBI notice does not disclose SBI's subscription amount; do not estimate it.
+- **USDC distribution:** SBI VC Trade began general USDC service in Japan in March 2025. SBI VC Trade's current service materials list USDC, RLUSD and JPYSC. Its USDC lending service is a customer-lending product, not a bank deposit; the current rate/terms and counterparty reuse must be reviewed before any capital-flow inference.
+- **RLUSD distribution:** SBI VC Trade began RLUSD service on June 24, 2026 in VCTRADE. Its notice explicitly excludes BITPOINT service and classifies RLUSD as a type-4 electronic payment instrument under its Japanese-law analysis. The product page describes a 1,000,000 JPY-equivalent holding/transaction limit. Do not generalize the listing to every SBI platform.
+- **Ripple equity:** SBI's June 9, 2025 corporate notice says SBI Group invested in Ripple in 2016 and then held approximately 9% of Ripple as its largest external shareholder. Treat 9% as the last explicitly disclosed percentage, not a verified November 2026 current holding.
+- **SBI Ripple Asia:** SBI's same notice identifies a Ripple/SBI joint venture providing blockchain payment infrastructure in Japan and Asia.
+- **SBI Circle Holdings and SBI Ripple Asia are separate ventures.** Neither is a regional SBIC company. SB OAI Japan is also a separate SoftBank/OpenAI joint venture and must not be conflated with SBI Holdings or SBIC.
+
+Primary SBI/Circle sources:
+- SBI's June 9, 2025 Circle investment and Ripple-shareholding disclosure: https://www.sbigroup.co.jp/news/2025/0609_15491.html
+- SBI's May 12, 2026 Circle/ARC/JV update: https://www.sbigroup.co.jp/news/2026/0512_16310.html
+- SBI VC Trade RLUSD launch, June 24, 2026: https://www.sbivc.co.jp/newsview/bsqs09vn_yzv
+- SBI VC Trade USDC service: https://www.sbivc.co.jp/services/crypto/usdc
+- SBI VC Trade current stablecoin service FAQ: https://www.sbivc.co.jp/faqs/content/cne-i4cyr
+- SBI VC Trade RLUSD reserve/holding page: https://www.sbivc.co.jp/rlusd
+- Circle/SBI 2023 MOU: https://www.circle.com/pressroom/sbi-holdings-partners-with-circle-to-pioneer-digital-currency-innovation-in-japan-with-usdc-banking-and-web3-services
+
+### Combined relationship map and counter-hypotheses
+
+- SBI Holdings has disclosed equity/strategic links to both Circle and Ripple; it distributes both USDC and RLUSD through SBI VC Trade and participates in Circle's ARC ecosystem. This is a common investor/distribution network, not evidence that Circle and Ripple have a direct partnership with each other.
+- Coinbase distributes USDC and RLUSD, has its own OCC custody trust bank, and currently appears as custodian for the Bitwise XRP ETF through Coinbase Custody Trust Company. The new Coinbase National Trust migration is planned over three years; do not assume ETF custody has already moved.
+- BNY is identified as primary reserve custodian for RLUSD and as custodian for Circle's USDC reserve fund; BlackRock manages the Circle reserve fund. BNY also supports XRP and RLUSD custody. BNY is therefore a key custody node across both stablecoin ecosystems, but this does not prove the same assets or mandates are pooled.
+- Circle's USDC is supported on XRPL; RLUSD is supported on XRPL, Ethereum and Base. Stablecoin activity on XRPL is not automatically equivalent to demand for XRP as an investment asset; quantify actual XRP bridge, fee and liquidity usage separately.
+- Coinbase's, Circle's and Ripple's national trust banks do not issue their respective stablecoins. Issuer, reserve manager, primary custodian, exchange distributor and collateral agent must remain separate roles.
+- The $50M SBI equity investment in Circle and the last-disclosed ~9% Ripple shareholding are direct corporate-capital evidence. They are not evidence of new XRP spot purchases. The ARC presale amount is undisclosed.
+- The exact phrase “SBIC, ChatGPT SBIC” remains unresolved. SBI Circle Holdings is a verified separate JV and may explain acronym confusion, but no ChatGPT partnership or SBIC/OpenAI relationship is established.
