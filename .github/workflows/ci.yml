@@ -170,3 +170,37 @@ jobs:
           python -m coverage report --include='barrot_agent/evolution/forecast_ledger.py' --fail-under=90
           python -m coverage report --include='barrot_agent/evolution/point_in_time_features.py' --fail-under=85
           python -m coverage report --include='barrot_agent/sources/source_registry.py' --fail-under=90
+ | grep -vE '^[.]barrot/disabled_tests/|^archive/quarantined/|^tests/fixtures/'
+          )
+          if [ "${#test_files[@]}" -eq 0 ]; then
+            echo "No tracked active test modules discovered"
+            exit 1
+          fi
+          printf 'Discovered %s tracked active test modules\n' "${#test_files[@]}"
+          printf '%s\n' "${test_files[@]}"
+          python -m pytest "${test_files[@]}" -v \
+            --cov=barrot_agent \
+            --cov=directive_platform \
+            --cov=data \
+            --cov-config=pyproject.toml \
+            --cov-report=term-missing:skip-covered \
+            --cov-report=xml:coverage.xml \
+            --cov-fail-under=62
+
+      - name: Preserve legacy core-package coverage floor
+        run: |
+          python -m coverage report \
+            --include="barrot_agent/*" \
+            --omit="barrot_agent/agi/*,barrot_agent/ingestion/*,barrot_agent/analysis/*,barrot_agent/monetization/*,barrot_agent/orchestration/*,barrot_agent/rendering/*,barrot_agent/smart_agent.py,barrot_agent/mem_palace.py" \
+            --fail-under=70
+
+      - name: Enforce mission-critical package coverage floors
+        run: |
+          python -m coverage report --include='barrot_agent/agi/agi_orchestrator.py' --fail-under=50
+          python -m coverage report --include='barrot_agent/analysis/xrp_telemetry_matrix.py' --fail-under=85
+          python -m coverage report --include='barrot_agent/ingestion/mmi_contract.py,barrot_agent/ingestion/mmi_execution.py,barrot_agent/ingestion/mmi_ledger.py' --fail-under=85
+          python -m coverage report --include='barrot_agent/orchestration/barrot_integration.py' --fail-under=60
+          python -m coverage report --include='barrot_agent/evolution/feature_store.py' --fail-under=80
+          python -m coverage report --include='barrot_agent/evolution/forecast_ledger.py' --fail-under=90
+          python -m coverage report --include='barrot_agent/evolution/point_in_time_features.py' --fail-under=85
+          python -m coverage report --include='barrot_agent/sources/source_registry.py' --fail-under=90
