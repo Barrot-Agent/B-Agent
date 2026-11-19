@@ -10,7 +10,7 @@ Use the public API from `barrot_agent.creative`:
 3. Use `transmute` and `evaluate_transmutation` to explore timing/duration/swing changes while respecting locked constraints.
 4. Use `RecursiveCompositionEngine(RecursiveCreativeMemory(...))` to generate, evaluate, and journal each original composition. Every run is retained automatically, including failed evaluations.
 5. After the user listens, call `record_feedback(run, feedback=..., lesson=...)`. Only a passing composition with explicit positive user feedback and a concrete lesson is promoted.
-6. The next call to `create` starts from the highest-scoring approved composition settings. Treat this as a starting point, not a rule; keep exploring and compare versions.
+6. The next call to `create` starts from the highest-scoring approved composition settings, advances the seed to explore a new variation, and exposes prior approved notes in `run.learned_lessons`. Treat these as evidence-backed guidance, not unquestionable rules.
 7. Use `export_midi(manifest, new_path)` for MIDI output. Never overwrite a take or publish/release without user approval.
 
 The journal stores abstract features, fingerprints, settings, evaluations, and feedback—not source recordings, lyrics, hooks, or source melodies. This is verified external memory and preference learning, not model-weight fine-tuning. Do not claim that the underlying model retrained itself.
