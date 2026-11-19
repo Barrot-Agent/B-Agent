@@ -5704,3 +5704,45 @@ The feature store, source-receipt chain and event/scenario artifacts are impleme
 - EXECUTED: integration push ingestion run 44540041137; artifact downloads and SHA-256 checks; SQLite and event artifact inspection; exact-head full-suite, dependency and money audits on 6dce5f0; primary SBIC and SEC identity research.
 - VERIFIED: 4,357-test full suite and 730-test core subset on 6dce5f0; 34 receipts and 22 retained raw-object hashes; sequence-16 receipt-chain continuity; 254 verified spot/quote-basis features; exact SBIC East/Central/West corporate identities.
 - NOT VERIFIED: WORM/external timestamp anchoring; active scheduled ingestion on main; automated SEC capital ingestion; full normalized derivatives/collateral/ETF features; out-of-sample predictive edge; branch-protection requirements; independent PR approval; safe Pages merge authorization.
+
+
+## Run 229 addendum — PR ancestry/overlap matrix and institutional stablecoin rails
+
+### Open PR inventory — EXECUTED
+
+Fourteen open PRs were inspected. Changed-path intersections and source-branch content were compared against PR #1663's integration head. This is a classification, not authorization to close any PR.
+
+| PR | Classification | Evidence / disposition |
+|---|---|---|
+| #1663 | Active integration; blocked | Sole XRP/V3 mainline successor. Draft. Keep as the one active integration PR. |
+| #1668 | Blocked overlap | All 3 changed paths overlap #1663, but all 3 blob contents differ. Its branch adds Cloudflare, OpenRouter and Gemini credentials and automatically routes prompts to zero-cost providers after Groq quota failures. The current integration deliberately quarantines the agent workflow and contains no such fallback. Require data-flow, provider-authentication, permission, retention and prompt-disclosure review. Do not merge or close yet. |
+| #1541 | Functionally superseded candidate | All 5 paths overlap #1663. Two blobs are identical; the other three differ. The current integration already contains the same versioned SHA-256 canonical claim fingerprint, adapter enforcement and the associated adversarial tests. No common branch ancestry. Close only after #1663 is merged and the merged implementation is verified on main. |
+| #1665 | Duplicate dependency content | Its sole changed path overlaps #1663; current requirements-dev.txt already specifies pylint >=4.1.4. Close only after #1663 is merged and the version is verified on main. |
+| #1666 | Blocked dependency conflict | Proposes kaggle <1.8, while #1663 deliberately retains <1.6 because the documented >=1.6 dependency chain pulls jsonschema/rpds-py and introduces a Rust build constraint. Do not merge without dependency-resolution and supported-platform tests. |
+| #1670 | Unique feature work | Musical DNA recursive learning; 12 files, only docs/INDEX.md and pyproject.toml overlap. Keep separate and open. |
+| #1664 | Unique staged product work | Paid-issue template pack; draft and explicitly not published. 126 files, only 3 paths overlap. Keep separate and open. |
+| #1450 | Unique/unreviewed research successor | 116 changed paths; zero overlap with #1663. Separate XRP/Binance archive branch. Keep open. |
+| #1460 | Unique/unreviewed research | 8 changed paths; zero overlap with #1663. Separate Coinbase/Circle/SBI/Kamilah research bundle. Keep open. |
+| #1440 | Unique/unreviewed repair | 64 changed paths; zero overlap with #1663. Separate XRP ledger validator trigger repair. Keep open. |
+| #1436 | Unique/unreviewed research | 24 changed paths; zero overlap with #1663. Separate Binance XRP theft/issuer-freeze graph. Keep open. |
+| #1437 | Unique/unreviewed repair | 5 changed paths; zero overlap with #1663. Separate ledger source addenda repair. Keep open. |
+| #1353 | Unique/unreviewed archive work | 1,084 changed paths; zero overlap with #1663. Separate lossless XRP ledger sharding work. Keep open. |
+| #1265 | Unique/unreviewed archive work | 144 changed paths; only .github/workflows/ci.yml overlaps. Separate compact XRP ledger index migration. Keep open. |
+
+The older research/repair branches are not presumed superseded merely because they concern XRP. Several have no common ancestor with the current integration head and their changed paths are absent from #1663. Do not bulk-close them. After a verified successor merge, close only #1541 and #1665 if the exact content is present on main; reassess #1668 and #1666 independently.
+
+### Coinbase / Circle / Ripple / SBI / JCB relationship update — PRIMARY SOURCES
+
+1. Coinbase announced on 2026-10-28 that RLUSD became available on Coinbase Prime, Coinbase Exchange and the Coinbase app. At launch, supported users could deposit and withdraw RLUSD on XRPL, Base and Ethereum and convert USD to RLUSD at 1:1. Coinbase Global Exchange collateral use was described as a future step, not a launch capability. Ripple said it would provide liquidity on Base. This is a direct distribution and liquidity relationship for RLUSD; it does not establish XRP settlement or XRP demand. Source: https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+2. Circle and SBI Holdings' 2023 partnership established a Japanese stablecoin distribution/banking/Web3 relationship. SBI VC Trade, a consolidated SBI Holdings subsidiary, launched USDC in Japan on 2025-03-26; Circle Japan KK provides local presence and SBI Shinsei Bank was identified for banking services. Source: https://www.circle.com/pressroom/sbi-holdings-partners-with-circle-to-pioneer-digital-currency-innovation-in-japan-with-usdc-banking-and-web3-services and https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access
+3. SBI Holdings, SBI VC Trade, Ripple and Ripple subsidiary Standard Custody signed an RLUSD Japan MOU on 2025-08-22. SBI VC Trade began handling RLUSD on 2026-06-24, describing it as Japan's first category-four electronic payment instrument. This is a separate Ripple/SBI relationship from Circle/SBI's USDC distribution. Sources: https://www.sbigroup.co.jp/news/2025/0822_15680.html and https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
+4. JCB and a Circle affiliate signed a 2026-07-14 MOU to explore USDC-enabled cross-border treasury/payments and stablecoin merchant-payment use cases in Japan. The initial PoC was focused on JCB internal fund transfers; merchant use and multi-chain interoperability were exploration topics, not a completed nationwide deployment. Source: https://www.global.jcb/en/press/2026/202607141000_products.html
+5. Coinbase's institutional ETF roles remain distinct by contract: custody, prime brokerage/execution and credit are not interchangeable. RLUSD/USDC are dollar-denominated stablecoins; XRP is a separate asset. A stablecoin listing, distribution MOU, banking relationship or payment PoC is not evidence that XRP was used as a bridge asset, bought on spot markets, or posted as collateral.
+
+### Authentication / nine-platform coordination
+
+No new external authentication was tested for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks. Coinbase, Circle, Ripple and SBI public pages were researched as public sources, not as connected accounts. The only live repository access demonstrated in this run was the GitHub integration. Keep every other platform marked unverified until authentication and actual data flow are tested. Do not enable #1668's provider fallback credentials or route prompts externally without explicit data-flow review.
+
+### Merge disposition
+
+No merge, deployment, provider dispatch, secret change, Space restart, Kaggle submission, Databricks write, paper trade or real-money action occurred. PR #1663 remains draft and fail-closed. The exact-head checks on 6dce5f0 passed, but the new handoff-only commit must receive its own exact-head checks before it can be considered verified.
