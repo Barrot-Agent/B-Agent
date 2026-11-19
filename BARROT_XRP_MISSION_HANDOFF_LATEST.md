@@ -3604,3 +3604,8 @@ Two rendered exchange ticker responses were captured/rechecked, but neither is m
 ### CI follow-up — 2026-11-19 05:26 UTC
 
 The first Run 37 commit removed the core-test skip condition but a second identical condition remained on the full-suite job because the initial string replacement affected only the first occurrence. This follow-up removes the remaining condition. Both the core test job and full repository suite now run on integration pull-request heads as well as push events. Fresh exact-head push and PR CI are pending for the new commit; no test result is carried forward from either prior SHA.
+
+
+### Research regression-test correction — 2026-11-19 05:27 UTC
+
+The new SEC 13F regression test initially addressed the top-level `model_eligibility` field under `institutional_13f`. The artifact stores it at the root. The test path is corrected before treating the new test as verified. Fresh CI remains pending.

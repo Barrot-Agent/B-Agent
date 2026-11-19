@@ -29,7 +29,7 @@ def test_susquehanna_13f_positions_are_etf_shares_not_xrp_tokens() -> None:
     assert total["shares"] == 1_813_253
     assert total["reported_value_usd"] == 32_105_403
     assert "xrp_token_quantity" not in total
-    assert payload["institutional_13f"]["model_eligibility"]["eligible"] is False
+    assert payload["model_eligibility"]["eligible"] is False
 
 
 def test_options_are_separate_from_common_etf_share_positions() -> None:
