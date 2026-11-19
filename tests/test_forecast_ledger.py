@@ -1848,7 +1848,14 @@ def test_forecast_ledger_rejects_a_forecast_id_collision(monkeypatch, tmp_path):
     from barrot_agent.evolution import forecast_ledger as ledger_module
 
     ledger = make_ledger(tmp_path / "forecast-collision.sqlite3")
-    monkeypatch.setattr(ledger_module, "_hash", lambda value: "f" * 64)
+    original_hash = ledger_module._hash
+
+    def collide_forecast_ids(value):
+        if isinstance(value, dict) and "raw_source_receipts" in value and "source_ids" in value:
+            return original_hash(value)
+        return "f" * 64
+
+    monkeypatch.setattr(ledger_module, "_hash", collide_forecast_ids)
     ledger.record_forecast(forecast())
     with pytest.raises(ForecastLedgerError, match="forecast ID collision"):
         ledger.record_forecast(forecast(assumptions=["A materially different assumption"]))
