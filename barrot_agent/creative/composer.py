@@ -9,7 +9,7 @@ import random
 import re
 from dataclasses import dataclass
 
-from .musical_dna import MusicalEvent, MusicalManifest, MusicalSection
+from .musical_dna import Evaluation, MusicalEvent, MusicalManifest, MusicalSection, RecursiveCreativeMemory
 
 _NOTE_NAMES = ("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B")
 _NOTE_TO_PC = {name: index for index, name in enumerate(_NOTE_NAMES)}
@@ -56,7 +56,6 @@ def compose_original(
     instruments = ("kick", "snare", "hihat", "bass", "keys", "lead")
     events: list[MusicalEvent] = []
     beats_per_bar = template.beats_per_bar
-    total_beats = settings.bars * beats_per_bar
 
     # Four-bar harmonic cycle: a new, seed-selected diatonic progression.
     minor_progressions = ((0, 5, 2, 6), (0, 3, 6, 4), (0, 6, 3, 5))
@@ -120,15 +119,13 @@ def compose_original(
 @dataclass(frozen=True)
 class CompositionRun:
     manifest: MusicalManifest
-    evaluation: object
+    evaluation: Evaluation
     settings: CompositionSettings
     attempt_id: str
 
 
-def evaluate_composition(manifest: MusicalManifest):
+def evaluate_composition(manifest: MusicalManifest) -> Evaluation:
     """Score required arrangement roles and diatonic pitch consistency."""
-    from .musical_dna import Evaluation
-
     required_roles = {"harmony", "melody", "low_end", "pulse", "backbeat"}
     present_roles = {event.role for event in manifest.events}
     role_coverage = len(required_roles & present_roles) / len(required_roles)
@@ -153,7 +150,7 @@ def evaluate_composition(manifest: MusicalManifest):
 class RecursiveCompositionEngine:
     """Generate, evaluate, journal, and improve original compositions across runs."""
 
-    def __init__(self, memory):
+    def __init__(self, memory: RecursiveCreativeMemory):
         self.memory = memory
 
     def create(
@@ -162,8 +159,6 @@ class RecursiveCompositionEngine:
         settings: CompositionSettings | None = None,
     ) -> CompositionRun:
         from dataclasses import asdict
-        from .musical_dna import RecursiveCreativeMemory
-
         if not isinstance(self.memory, RecursiveCreativeMemory):
             raise TypeError("memory must be a RecursiveCreativeMemory")
         recommended = self.memory.recommend_composition_settings()
