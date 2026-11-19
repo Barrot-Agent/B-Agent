@@ -1,5 +1,5 @@
 from .audio_adapter import analyze_audio
-from .composer import CompositionSettings, compose_original
+from .composer import (CompositionRun, CompositionSettings, RecursiveCompositionEngine, compose_original, evaluate_composition)
 from .midi_export import export_midi
 from .musical_dna import (
     Evaluation,
