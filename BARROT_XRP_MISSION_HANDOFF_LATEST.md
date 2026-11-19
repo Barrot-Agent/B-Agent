@@ -3759,3 +3759,130 @@ Fresh exact-head checks for merge commit `22b7d94654d9e1def31db20dd8818e46f5f37e
 - Fail-closed runs [44473593593](https://github.com/Barrot-Agent/B-Agent/actions/runs/44473593593) and [44473587261](https://github.com/Barrot-Agent/B-Agent/actions/runs/44473587261): passed, but remain echo-only rather than substantive readiness gates.
 
 This is a branch-history reconciliation, not a PR merge. No external action was performed. **NO MERGE** remains in force. The new documentation update below creates another head and therefore requires its own exact-head CI; no test result is transferred.
+
+
+---
+
+## Run 40 — 2026-11-19T07:57Z — exact-head CI, Databricks containment, current XRP evidence
+
+### Mission and repository state
+
+XRP intelligence and prediction-engine mastery remain priority 1. Barrot V3 remains the execution, orchestration, safety and verification foundation. No mission-priority change.
+
+- Main: `a5e9606a71975b08cb681eee373a2d6dc1c36b55`.
+- Existing integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Integration head before this handoff append: `eebd973aa603f4801757fb990daecdfcb339cc60`.
+- PR #1663: [Barrot V3 + XRP Intelligence — consolidated mainline successor](https://github.com/Barrot-Agent/B-Agent/pull/1663), still draft.
+- PR base SHA matches current main; head matches current branch.
+- Compare: 410 commits ahead, 0 behind; 1,453 changed files, 525,786 additions, 6,774 deletions. 68 changed workflow files.
+- Complete trees: main 1,739 entries; integration 2,997 entries; neither truncated; every main path is present in integration.
+- PR #1663 currently reports mergeable=true but mergeable_state=unstable. It has zero submitted reviews, zero review threads and no requested reviewers.
+- Main branch API reports protected=true. The detailed classic branch-protection endpoint returns HTTP 403 to the available GitHub connection. The only repository ruleset returned is “Fall Back”, enforcement disabled. Required approvals/checks, strict-up-to-date behavior, administrator enforcement and bypass settings therefore remain unverified. Do not infer them.
+
+### Exact-head CI — VERIFIED on eebd973aa603f4801757fb990daecdfcb339cc60
+
+Push and pull-request CI both completed successfully on the exact current head:
+
+- [Push CI 44482774870](https://github.com/Barrot-Agent/B-Agent/actions/runs/44482774870): success.
+- [PR CI 44482783884](https://github.com/Barrot-Agent/B-Agent/actions/runs/44482783884): success.
+- Full repository test job: 4,301 passed, 1 skipped, 11 warnings, 19 subtests; 105.21 seconds.
+- Inclusive coverage: 68.07%, above the 62% floor.
+- Legacy-core coverage: 77%, above the 70% floor.
+- Core tests, full repository suite, GitHub Pages validation-only build, wheel build, packaged primary-mission verification and installed-wheel smoke verification passed.
+- [PR dependency audit 44482784210](https://github.com/Barrot-Agent/B-Agent/actions/runs/44482784210): success.
+- [Push dependency audit 44482774909](https://github.com/Barrot-Agent/B-Agent/actions/runs/44482774909): success.
+- [PR money audit 44482783955](https://github.com/Barrot-Agent/B-Agent/actions/runs/44482783955): success.
+
+Full-suite job IDs: PR `135418803762`; push `135418775553`. The full-suite log reports 4,301 passing tests and the coverage values above. The Python cache write was skipped after the repository cache budget became read-only; this was a non-blocking cache warning, not a test or dependency failure.
+
+### Fail-closed merge gate — BLOCKED, correctly no merge
+
+- [PR gate 44482783886](https://github.com/Barrot-Agent/B-Agent/actions/runs/44482783886): failure.
+- [Push gate 44482774943](https://github.com/Barrot-Agent/B-Agent/actions/runs/44482774943): failure.
+- The gate is read-only; it does not approve, label, bypass or merge.
+- PR-gate evaluation at 07:51:13Z occurred while CI was still running; full-suite CI completed at 07:54:51Z. At evaluation, the gate reported the PR draft state, mergeable_state not clean, no independent approval, branch-protection API inaccessible, and required check contexts absent/pending at that instant.
+- The gate's branch-protection failure is substantive: it refuses to infer required approvals or bypass settings from an inaccessible endpoint. The exact-head CI subsequently passed, but that does not clear draft state, review, branch-protection or merge-readiness blockers.
+- The gate's early check inventory can report pending/missing checks because it runs concurrently with CI. Re-evaluate after all exact-head workflows have completed and the PR is non-draft/reviewed; consider a post-CI workflow-run trigger to eliminate this race. Do not weaken fail-closed behavior.
+
+### Databricks overwrite containment — EXECUTED and test-verified; no external write
+
+Two recent commits on the existing branch:
+- `2b7f9ae614b62bfcbe6bc6cf12c497ef4c40aa44` — require approval and refuse workspace overwrites.
+- `b51da0386f02d415144505f36d9519982c47f846` — make deployment non-overwriting and readiness gate substantive.
+- `eebd973aa603f4801757fb990daecdfcb339cc60` — correct the Databricks preflight test contract and strengthen merge-gate tests.
+
+Verified source changes:
+- `.github/workflows/barrot-ops.yml` no longer passes `--overwrite`; its input explicitly says it only creates `/Shared/barrot_databricks_job` if absent.
+- `scripts/deploy_databricks.py` and `barrot_agent/orchestration/deploy_databricks.py` preflight the target, refuse existing or unverifiable targets, and use `overwrite=False`.
+- `tests/test_deploy_databricks.py` checks approval before client creation, target preflight before writes, no overwrite=true, and aborting job creation after partial upload failures.
+- `.github/workflows/databricks-bundle.yml` remains disabled/quarantined.
+- No Databricks workflow, workspace import, job reset, deployment or credential use was executed. Existing-job reset in the Python deploy path remains an external operation requiring its specific approval.
+
+### Current main workflow state
+
+Main still does not contain `.github/workflows/xrp-public-ingestion.yml`; the XRP ingestion workflow exists only on the integration branch. Main's latest scheduled Cross Analysis runs [44482810996](https://github.com/Barrot-Agent/B-Agent/actions/runs/44482810996) and [44475267037](https://github.com/Barrot-Agent/B-Agent/actions/runs/44475267037) succeeded, but these are not XRP public-ingestion runs. Production scheduled XRP ingestion remains inactive.
+
+### Fresh public XRP observations — research only, not model-eligible
+
+Retrieval window approximately 2026-11-19T07:57Z. These are secondary aggregators or search-indexed market tables, not byte-exact exchange receipts.
+
+1. Fuelmaps' hourly snapshot for 01:00Z on November 19 reports XRP mid $0.9680 across 6/6 venues. Resting bids/asks: within ±0.5%, $7.6M/$5.8M (56.7% bid share); ±1%, $12.0M/$8.7M (57.8%); ±2%, $17.2M/$10.3M (62.5%); ±5%, $20.4M/$13.4M (60.4%); ±10%, $26.8M/$15.0M (64.0%, but only 5/6 venues). Source: https://fuelmaps.io/order-book/ . This is aggregated visible resting depth, not guaranteed executable liquidity, not a synchronized raw venue capture, and not a validated predictive feature.
+2. Investing.com search-indexed daily table for November 19 showed a partial $0.9744 price, open $0.9677, high $0.9779, low $0.9570, reported volume 340.27M and +0.69%; November 18 showed $0.9677 and -1.61%. Source: https://ph.investing.com/crypto/xrp/historical-data . The table's aggregation/cutoff is not sufficiently explicit for feature admission.
+3. SwiftEdge's page returned a 03:56Z November 19 update with a $0.9680 perpetual price and -0.0130%/8h funding. This was already stale by the 07:57Z retrieval and is excluded from current-market claims.
+4. The differing timestamps, spot/perpetual basis and aggregation methods are preserved. No order-book, funding, or price feature was promoted.
+
+### Evernorth actual-capital and accounting correction — SEC primary filing
+
+The current SEC 10-Q and related resale filing provide a stronger primary-source basis for separating cash purchases, in-kind XRP, impairment and operating liquidity:
+
+- SEC 10-Q: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm
+- SEC digital-asset table: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm
+- SEC related resale filing: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm
+
+The 346,284,972 XRP cost-basis schedule totals $846,575,043. It includes $214,050,000 cash used to purchase 84,365,876 XRP; the remaining lots were XRP contributions/in-kind consideration. The filing reports no additions to the digital-asset carrying schedule during the three or nine months ended September 30, 2026. It reports cumulative impairment of $504,687,812 through September 30 ($233,650,642 in 2025 plus $271,037,170 in 2026), with an ending carrying amount of $341,887,231. Impairment is an accounting write-down, not evidence that $504.7M of cash was sold or lost.
+
+As of September 30, 2026, Evernorth reported unrestricted cash of $91,397, a $10.0M net working-capital deficit and a $185.6M accumulated deficit. It had not yet generated revenue. The three-month $155.3M net income is not operating revenue; the filing attributes a major positive result to a $162.834M fair-value gain on refundable investor advances. Nine-month net loss was $32.9M and operating loss was $273.2M. The company described Ripple loans and XRP contributed to Pathfinder as its primary liquidity sources. Treat all these figures as September 30 historical balances, not current post-closing cash or current treasury holdings.
+
+### Regulatory classification nuance
+
+- SEC Interpretive Release S7-2026-09 / Release 33-11412, dated March 17, 2026 and effective March 23, 2026, includes XRP among examples of digital commodities: https://www.sec.gov/rules-regulations/2026/03/s7-2026-09 .
+- A later Bitwise XRP ETF filing states that XRP's status as a security under U.S. federal securities laws has not been definitively resolved, while describing the SEC's March 2026 interpretation as its position that XRP is a digital commodity: https://xrpbreadcrumbs.com/regulation/xrp-regulatory-risk-after-lawsuit/ (secondary summary of the filing; use the underlying issuer filing for future admission).
+- The distinction remains token classification versus the legal character of particular offers, sales or investment contracts. The March interpretation is agency guidance, not a statute. Do not simplify this to “all XRP transactions are conclusively non-securities.”
+
+### Exact-phrase and YouTube identity research
+
+- Exact searches for “actual capital”, “ASK Coin” and “SBIC, ChatGPT SBIC” produced no new primary-source identity match in this run. The Evernorth SEC filing above adds actual cash-versus-in-kind evidence but is not an exact-phrase match.
+- YouTube results surface several different Kamilah/Camila Stevenson attributions: channel candidate `UCXm6KAr1WHF6UN7g5b2W7wg` / `@KamilahStevensonXrpStocks`; a separate `@drkamilahstevenson` attribution; and video IDs `QslbjGQD0MU`, `ci0FH73lbCs`, `YJdK1LvmJSo`. Third-party summaries and a Telegram description link to the latter handle, but no first-party cross-link conclusively establishes that all candidates are the same person. A transcript's self-introduction as “Camila” is not sufficient identity proof. Do not merge these channels or admit a verified-person video inventory until a primary first-party cross-link is established.
+- No new SBIC/OpenAI partnership evidence was found. The established distinction between the Tokyo/Nagoya/Osaka SBIC companies and SBI Holdings remains unchanged.
+
+### Nine-platform coordination
+
+The current map remains at `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_latest.json`. GitHub repository access was tested. No authenticated data-flow test or independent task dispatch was performed for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks. No live nine-platform quorum is claimed. No external model dispatch occurred.
+
+### Open PR inventory — 14, refreshed from the REST pulls collection
+
+- **Blocked — integration/safety/dependency stack:** #1663 (single consolidated V3/XRP PR; draft, no reviews, gate blocked), #1668 (worker failover overlaps the quarantined worker paths), #1541 (MMI security PR is based on a parent branch whose PR #1540 is closed), and #1265, #1353, #1436, #1437, #1440, #1450, #1460 (unique XRP research/ledger work on stacked non-main bases; preserve content and reconcile ancestry before mainline integration).
+- **Duplicate:** #1665 (Dependabot Pylint update to >=4.1.4 is already present in integration's `requirements-dev.txt`; it is not yet on main. Do not close until the successor containing it is merged and verified on main).
+- **Unique/unreviewed:** #1666 (Kaggle dependency bound change to <1.8 is not in integration, which remains <1.6; compatibility review needed), #1664 (staged paid-issue product, not published), #1670 (separate creative musical-DNA feature).
+- Ready: 0. Merged: 0. Superseded: 0. No PR was closed.
+
+### Decision and next actions
+
+**NO MERGE.** The complete repository suite and dependency/money audits pass on the exact current integration head, but PR #1663 remains draft, has no independent approval, is not in clean mergeable state, and detailed branch-protection requirements cannot be verified. The fail-closed gate correctly refuses readiness. Do not merge, bypass protection or close source PRs.
+
+1. Obtain independent review and verify exact branch-protection requirements and bypass settings through an authorized read path.
+2. Re-evaluate the gate after all exact-head checks finish; eliminate its concurrent-check race without weakening fail-closed behavior.
+3. Complete the transitive workflow/action/script/data-flow audit and review all external side effects before readiness.
+4. Keep the Databricks overwrite fix; do not dispatch or write to any workspace.
+5. Keep XRP scheduled ingestion inactive on main until a verified merge. Then establish durable raw-byte/WORM/timestamp anchoring, repair source failures, and build synchronized full-depth/flow/derivatives histories.
+6. Reconcile ETF issuer holdings and institutional capital against filings, wallet custody and source vintages. Keep secondary aggregator snapshots research-only.
+7. Run leakage-safe walk-forward evaluation against all baselines, calibration and shadow gates. Forecast issuance remains disabled.
+
+### Execution labels
+
+- **DESIGNED:** XRP-first mission, V3 foundation, source-provenance and forecast-readiness contracts.
+- **EXECUTED:** fetched current main and integration trees; verified all main paths are present; refreshed all 14 open PRs; inspected current code/dependencies, current handoff, branch ancestry and CI; read exact-head full-suite logs and fail-closed gate logs; inspected Databricks workflows, deploy scripts and tests; performed targeted public market, SEC filing, regulatory and identity research; appended this durable handoff.
+- **VERIFIED:** exact-head push and PR full repository suites, coverage floors, package build, Pages validation, dependency audit and money audit passed; Databricks non-overwrite safeguards are present and tested; current main SHA and complete trees verified.
+- **NOT VERIFIED:** branch-protection details/required approvals; independent PR review; full transitive workflow audit; production scheduled XRP ingestion; independent WORM retention; synchronized raw order-book/exchange-flow histories; nine-platform live coordination; predictive edge; merge readiness.
+
+No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, external-model dispatch, funds transfer or real-money action occurred.
