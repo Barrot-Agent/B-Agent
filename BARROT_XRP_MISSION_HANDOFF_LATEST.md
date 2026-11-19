@@ -5138,3 +5138,6 @@ Existing feature-store snapshots created by earlier parser versions are not rewr
 - Main remains c8e15c90b1e07980d7b5a01c86c1667166a353f6 at the pre-commit checkpoint. No merge or main change occurred.
 - #1663 remains draft. Pages publication authorization, branch-protection visibility and independent review remain unresolved.
 - No deployment, external model dispatch, paper trade, real-money action, secret rotation, Space restart, Kaggle submission, Databricks write, force-push or branch rewrite occurred.
+
+
+Run 226 test-follow-up: the REST depth parser test now inspects the parser's complete feature-record output for deliberately ineligible depth bands. The point-in-time snapshot intentionally excludes model-ineligible rows from its candidate record set, so the prior test retrieval path was not appropriate for this assertion. The first CI run on fc4ec180 is not accepted as final; exact-head CI must complete on the follow-up commit.

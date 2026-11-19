@@ -1004,15 +1004,6 @@ def test_rest_depth_uses_http_date_for_point_in_time_features(tmp_path, source_i
     summary = run_ingestion(tmp_path / feature_prefix, fetcher=_fake_fetcher(captured), now=captured)
     snapshot = json.loads((tmp_path / feature_prefix / "snapshot.json").read_text(encoding="utf-8"))
     mid = next(item for item in snapshot["records"] if item["feature_id"] == f"xrp.spot.{feature_prefix}.orderbook.mid_price")
-    bid = next(item for item in snapshot["records"] if item["feature_id"] == f"xrp.spot.{feature_prefix}.orderbook.bid_depth_10bps")
-    ask = next(item for item in snapshot["records"] if item["feature_id"] == f"xrp.spot.{feature_prefix}.orderbook.ask_depth_10bps")
-    assert summary["snapshot_status"] == "verified"
-    assert mid["value"] == pytest.approx(1.290)
-    assert mid["event_time_utc"] == "2026-11-04T12:29:55.000000Z"
-    assert mid["source_data_as_of_utc"] == mid["event_time_utc"]
-    assert mid["model_eligible"] is True
-    assert bid["value"] == pytest.approx(1289.0)
-    assert ask["value"] == pytest.approx(1549.2)
     response = _fake_fetcher(captured)(source_id, dict(ENDPOINTS)[source_id])
     parsed, _source_time, source_eligible, source_reason = PARSERS[source_id](
         response["payload"],
@@ -1024,6 +1015,15 @@ def test_rest_depth_uses_http_date_for_point_in_time_features(tmp_path, source_i
     )
     assert source_eligible is True and source_reason == ""
     parsed_by_id = {item["feature_id"]: item for item in parsed}
+    bid = parsed_by_id[f"xrp.spot.{feature_prefix}.orderbook.bid_depth_10bps"]
+    ask = parsed_by_id[f"xrp.spot.{feature_prefix}.orderbook.ask_depth_10bps"]
+    assert summary["snapshot_status"] == "verified"
+    assert mid["value"] == pytest.approx(1.290)
+    assert mid["event_time_utc"] == "2026-11-04T12:29:55.000000Z"
+    assert mid["source_data_as_of_utc"] == mid["event_time_utc"]
+    assert mid["model_eligible"] is True
+    assert bid["value"] == pytest.approx(1289.0)
+    assert ask["value"] == pytest.approx(1549.2)
     for side in ("bid_depth", "ask_depth", "depth_imbalance"):
         for band in (10, 50, 100):
             assert parsed_by_id[f"xrp.spot.{feature_prefix}.orderbook.{side}_{band}bps"]["model_eligible"] is False
