@@ -3,13 +3,23 @@
 ## Purpose
 Turn abstract musical structure into a repeatable analysis → transmutation → original composition → evaluation → recursive learning workflow.
 
-## Pipeline
+## Implemented pipeline
 1. **Manifest** — tempo, meter, scale, instrument roles, beat-relative events, durations, velocities, and section energy.
-2. **Transmutation** — controlled changes to phase, duration, swing, and dynamics while locked constraints remain fixed.
-3. **Original composition** — use the transformed manifest as a design constraint, then create independent harmony, melody, bass, drums, and arrangement. The manifest is not a license to reproduce a source composition.
-4. **Evaluation** — verify inventory preservation and measure whether the transformation is meaningfully different.
-5. **Recursive memory** — append every attempt, including failures. Promote a reusable lesson only after the evaluator passes and the user gives explicit positive feedback.
-6. **Next iteration** — use the best verified settings as a starting point, then evaluate the next result against the same criteria.
+2. **Audio analysis** — optional `librosa` adapter extracts tempo, onset timing, RMS dynamics, and an estimated scale profile. It does not separate instruments from a mixed recording. Install with `pip install -e ".[music]"`.
+3. **Transmutation** — controlled changes to phase, duration, swing, and dynamics while locked constraints remain fixed.
+4. **Original composition** — seeded, repeatable composition of new diatonic harmony, melody, bass, and percussion patterns. This creates new material; it does not reproduce source pitches, lyrics, hooks, or distinctive arrangements.
+5. **MIDI export** — optional `pretty_midi` adapter exports generated pitched notes and mapped percussion events. Existing files are never overwritten.
+6. **Evaluation** — verify inventory preservation and measure whether a transformation is meaningfully different.
+7. **Recursive memory** — append every attempt, including failures. Promote a reusable lesson only after the evaluator passes and the user gives explicit positive feedback.
+8. **Next iteration** — use the best verified settings as a starting point, then evaluate the next result against the same criteria.
+
+## Python entry points
+- `barrot_agent.creative.analyze_audio(path)`
+- `barrot_agent.creative.compose_original(manifest, CompositionSettings(...))`
+- `barrot_agent.creative.export_midi(manifest, destination)`
+- `barrot_agent.creative.transmute(manifest, Transmutation(...))`
+- `barrot_agent.creative.evaluate_transmutation(source, candidate)`
+- `barrot_agent.creative.RecursiveCreativeMemory(path)`
 
 ## Learning discipline
 - Attempts are append-only and fingerprinted.
@@ -19,6 +29,12 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 - A better score is not proof of artistic quality; human judgment remains decisive.
 - This implementation stores external memory and preferences. It does not fine-tune model weights or claim autonomous changes to the underlying model.
 - Do not store source audio, lyrics, melodies, or hooks in the learning journal. Store abstract features and fingerprints only.
+- Audio analysis currently treats a mixed recording as a generic source track. True stem separation and instrument identification require a separately validated model/backend.
+- The generated MIDI is a structured composition sketch, not a finished mastered production.
 
-## Current implementation boundary
-The initial module provides typed manifests, deterministic rhythmic transmutation, structural evaluation, and evidence-gated recursive memory. DAW rendering, audio feature extraction, MIDI export, and learned harmony/melody generation are subsequent integration stages.
+## Next integration stages
+- Stem separation and instrument-role detection with an optional, explicitly configured backend.
+- Richer harmonic and melodic evaluation, including voice-leading and phrase-level development.
+- DAW/FluidSynth rendering and listening-based evaluation.
+- A/B comparison against prior versions and regression detection across a user's approved creative preferences.
+- A full recursive production run that persists manifests, generated MIDI, evaluation reports, and user feedback as versioned artifacts.
