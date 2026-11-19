@@ -4880,3 +4880,88 @@ Fourteen PRs remain open: #1663 (blocked draft integration); #1665 (duplicate Py
 Next concrete action: obtain independent review and authorized branch-protection/Pages-deployment verification; complete the transitive audit of all 68 changed workflows and their scripts/actions/data flows; resolve the Databricks overwrite/credential-scope risk; then continue primary SEC/issuer byte capture and synchronized venue ingestion. Keep #1663 as the sole active XRP/V3 integration PR. Do not merge until all required gates, approvals and external-action checks are verified. After this handoff commit, rerun exact-head CI; do not transfer the `cf9d903` result to a new head.
 
 No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, external-model dispatch, force-push, reset, clean, stash or discard occurred.
+
+
+---
+
+## Run 224 — 2026-11-19 15:49 UTC — workflow side-effect audit and SEC custody/credit map
+
+This entry supersedes earlier readiness statements for the exact head recorded below. Historical entries remain preserved.
+
+### Exact-head verification on `bfda75e531f12729c1edb0c8ed0b73a8f3052d22`
+
+- [PR CI 44556882885](https://github.com/Barrot-Agent/B-Agent/actions/runs/44556882885): passed on exact head. Full suite: 4,352 passed, 1 skipped, 11 warnings, 19 subtests; 160.02 seconds. Inclusive coverage 71.31%; legacy/core coverage 81%.
+- Mission-specific coverage gates passed: AGI orchestrator 52%, XRP telemetry 92%, MMI 92%, Barrot integration 62%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%.
+- PR Pages validation built the site without deployment and passed.
+- [Dependency audit 44556882860](https://github.com/Barrot-Agent/B-Agent/actions/runs/44556882860) passed.
+- [Money audit 44556882895](https://github.com/Barrot-Agent/B-Agent/actions/runs/44556882895) passed.
+- [Fail-closed readiness gate 44556882902](https://github.com/Barrot-Agent/B-Agent/actions/runs/44556882902) returned BLOCKED: draft PR, no independent approving review, and branch-protection settings unavailable to the workflow. No merge or bypass was attempted.
+
+The full-suite run confirms tests on `bfda75e`, not on any later handoff commit.
+
+### Workflow side-effect audit
+
+The 68 changed workflow YAML files were triaged for triggers, permissions, third-party actions, secret use and external-write commands. The transitive audit of every called script and every external action is still in progress; this is not a completed security certification.
+
+Findings:
+
+- The only changed workflow found with `contents: write` is `.github/workflows/release.yml`, restricted to a version-tag push. No tag was created and no release ran.
+- The integration version of `.github/workflows/sync-self-hosted-brain.yml` is quarantined (`if: false`, manual-only), removing main-push deployment and automatic `BRAIN_SHARED_SECRET` propagation. This matters because the PR changes `self_hosted_brain/start.sh`; the old main workflow would otherwise have deployed that path on merge.
+- `.github/workflows/deploy-databricks.yml`, `databricks-bundle.yml`, `sync-huggingface.yml`, `coinbase-paper-trader.yml`, `paid-issue-publish.yml`, `barrot-agent.yml`, `barrot-self-upgrade.yml`, `barrot-sync.yml`, `barrot-merge.yml`, `barrot-merge-manual.yml` and `write-lyrics.yml` are disabled/quarantined in the integration tree.
+- `kaggle-competitions.yml` is manual-only and requires an exact main SHA, an explicit competition allowlist and `confirm_external_submission=YES`. Its called script can submit a competition entry, so it was not run.
+- `deploy-a2a-worker.yml` requires explicit deployment and secret-rotation confirmations plus an expected main SHA. It was not run.
+- `barrot-restart-space.yml` requires explicit restart confirmation and an expected main SHA. It was not run.
+- `barrot-ops.yml` requires explicit confirmation; its Databricks workspace import is create-only, checks target absence and does not pass `--overwrite`. The separate Databricks deployment script sets `overwrite=False` and a paused job state. No Databricks write was executed.
+- `pillars-check.yml` has a read-only `SELECT 1` Databricks probe behind an explicit opt-in. It was not run.
+- The manual Groq/external-research workflows require their confirmation inputs; no external model was dispatched.
+- The main-branch `barrot-approve-pr.yml` is a manual label/comment action, not a GitHub formal review and not a merge. No label action was run.
+
+**Remaining automatic deployment blocker:** the repository has a successful GitHub Pages build/deploy run [44524140421](https://github.com/Barrot-Agent/B-Agent/actions/runs/44524140421), including its separate `deploy` job. The integration PR changes public web/site files. A merge would cause the configured main-branch Pages publication to run. The user has not authorized this deployment. The PR must remain draft/unmerged until the Pages deployment is explicitly authorized or repository administrators change the publishing configuration through an approved process. The PR's own Pages check is validation-only and is not a deployment.
+
+### Coinbase institutional XRP network — new SEC primary evidence
+
+The three September 30, 2026 Form 10-Qs materially clarify Coinbase's role. The holdings are quarter-end amounts, not current November balances.
+
+**Bitwise XRP ETF**
+- Held 413,140,980.4731 XRP at September 30.
+- Coinbase Custody is the XRP custodian; the Q3 filing identifies Coinbase as the principal market used for the fund's principal-market valuation ($1.4886 on September 30).
+- The prospectus describes Coinbase Inc. as a Prime Execution Agent through Coinbase Prime and Coinbase Credit Inc. as the short-term trade-credit lender. This is a fallback Agent Execution Model: the Trust says it intends to use approved Trust-Directed counterparties for nearly all purchases and sales and to use the Coinbase Agent model only when no approved counterparty is willing or able.
+- Coinbase Credit's Trade Credit is not an ETF inflow and no actual Q3 draw amount is disclosed. The prospectus says the authorized amount is variable and set by the lender; credits are short-term, generally due by 6:00 p.m. ET the next business day, bear variable interest and are secured by a first-priority lien over the Trading Balance and Trust XRP Accounts. On default, the lender can take control of and liquidate collateral. This is a contingent financing/collateral relationship, not proof that the facility was drawn.
+- Trust-Directed trades are generally OTC with approved counterparties; Coinbase Prime is the rare fallback execution model.
+- [Bitwise Q3 2026 10-Q](https://www.sec.gov/Archives/edgar/data/2039525/000119312526451776/xrp-20260930.htm)
+- [Bitwise prospectus financing/execution terms](https://www.sec.gov/Archives/edgar/data/2039525/000121390025079990/ea0254213-s1a2_bitwise.htm)
+
+**Franklin XRP ETF (XRPZ)**
+- Held 293,112,265.4002 XRP at September 30.
+- Coinbase Custody is the XRP custodian; Coinbase Inc. is the Prime Broker; Coinbase Credit is the lender under a Coinbase Post-Trade Financing Agreement. BNY Mellon is administrator, transfer agent and cash custodian.
+- Its Q3 filing reports 26.598M XRP purchased for creation at $35.793M and 41.254M XRP contributed in-kind at $54.858M, with no Q3 redemptions.
+- [Franklin Q3 2026 10-Q](https://www.sec.gov/Archives/edgar/data/2059438/000114036126043720/ef20083832_10q.htm)
+- [Executed Coinbase Prime/Trade Financing amendment and PTFA](https://www.sec.gov/Archives/edgar/data/2059438/000207184425000415/ex102.htm)
+
+**Canary XRP ETF (XRPC)**
+- Held 247,755,213 XRP at September 30.
+- Coinbase Custody and BitGo Bank & Trust are the two XRP custodians; the filing does not disclose the allocation between them. U.S. Bank Global Fund Services is administrator/transfer agent and U.S. Bank is cash custodian.
+- Nine-month activity: 47.078M XRP purchased for $70.584M; 9.555M XRP sold for redemptions for $13.577M; 35.377M XRP contributed in-kind at $49.327M; 770,060 XRP transferred for sponsor fees.
+- The filing says XRP purchases/sales may be made through third-party brokers/dealers and are typically OTC rather than through an order-matching venue. These flows therefore must not be assumed to appear as exchange spot volume.
+- [Canary Q3 2026 10-Q](https://www.sec.gov/Archives/edgar/data/2039505/000199937126025352/xrpc-10q_093026.htm)
+
+**Cross-fund reconciliation**
+- Bitwise plus Franklin disclosed 706,253,245.8733 XRP held with Coinbase Custody at September 30. Canary adds an undisclosed Coinbase-custodied portion of its 247,755,213 XRP, with the balance held at BitGo.
+- These are trust-owned ETF assets in custody, not Coinbase proprietary XRP holdings. Custody, principal-market valuation, prime execution and credit lending are distinct services and must remain separate entities/roles in the graph.
+- This creates a material institutional Coinbase node across custody, valuation, prime brokerage and contingent secured trade credit. It does not establish a Coinbase-Ripple equity relationship or a Coinbase/Ripple partnership.
+- ETF flow and spot-demand features must separate cash purchases, cash redemptions, in-kind transfers, OTC executions, exchange executions and collateralized trade credit. Do not translate creations or custody growth directly into exchange buy pressure.
+
+### Forecast and source-admission disposition
+
+- No directional forecast issued.
+- No ETF, derivatives or order-book aggregator disagreement was averaged.
+- SEC filing excerpts were inspected, but the original SEC bytes have not yet been captured into Barrot's immutable raw archive with SHA-256 receipts. They remain research evidence, not admitted point-in-time model features.
+- No actual Coinbase Credit draw, current ETF custodian balance, venue execution route for each creation, or trade-credit utilization was established.
+- No external provider authentication/data flow was tested beyond ChatGPT/GitHub.
+- No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, external-model dispatch, merge, force-push or branch rewrite occurred.
+
+### Backlog and next concrete action
+
+The 14-PR inventory remains unchanged. #1663 is the sole XRP/V3 integration PR; #1665 remains the exact Pylint dependency duplicate; #1666 is blocked on dependency constraints; #1668 and #1541 require overlap/ancestry reconciliation; all unique research/repair work remains open. No PR was closed.
+
+Next action: finish the transitive script/action audit, resolve the GitHub Pages publication authorization, obtain an independent review and administrator-confirmed branch-protection requirements, then rerun the fail-closed gate on the latest exact head. Keep #1663 draft and do not merge while the public deployment remains unauthorized.
