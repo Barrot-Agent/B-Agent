@@ -9,7 +9,6 @@ REVIEWED_WORKFLOWS = (
     ".github/workflows/barrot-ops.yml",
     ".github/workflows/capability-10-design.yml",
     ".github/workflows/capability-discovery.yml",
-    ".github/workflows/coinbase-paper-trader.yml",
     ".github/workflows/cross-analysis.yml",
     ".github/workflows/data-value-triage.yml",
     ".github/workflows/deploy-a2a-worker.yml",

@@ -2,23 +2,23 @@
 """Legacy XRP report entry point, deliberately non-predictive.
 
 This module has no authenticated market-data adapter. It must not manufacture
-prices, sentiment, liquidity, or accumulation recommendations. The report is
-a status notice until verified point-in-time telemetry is supplied by the
-separate XRP ingestion and evidence pipeline.
+prices, sentiment, liquidity, or accumulation recommendations. It returns a
+status-only result until verified point-in-time telemetry is supplied by the
+separate XRP ingestion and evidence pipeline. It never writes a report.
 """
 from __future__ import annotations
 
 import asyncio
+import json
 import math
 from pathlib import Path
 
 
 class CouncilReportNode:
-    """Return an explicit no-data/no-forecast status without writing files.
+    """Return an explicit no-data/no-forecast status without filesystem writes.
 
-    stability_anchor remains accepted for source compatibility with older
-    callers. It is configuration metadata only and is never treated as a
-    measured market feature.
+    stability_anchor and report_path remain accepted for source compatibility.
+    Neither is treated as a market feature or used to write a report.
     """
 
     def __init__(
@@ -35,25 +35,26 @@ class CouncilReportNode:
         self.report_path = Path(report_path)
 
     async def generate_report(self) -> dict[str, object]:
-        """Return status only; the retired telemetry path writes no report."""
+        """Return a deterministic status record; no network or filesystem I/O occurs."""
         return {
             "status": "NOT_ISSUED",
             "forecast_issued": False,
-            "reason_code": "LEGACY_COUNCIL_TELEMETRY_QUARANTINED",
-            "asset": self.asset,
+            "forecast_eligible": False,
             "data_status": "NO_VERIFIED_TELEMETRY",
             "report_written": False,
             "external_action_performed": False,
+            "reason_code": "LEGACY_TELEMETRY_STATUS_ONLY",
+            "asset": self.asset,
         }
 
     async def process_telemetry(self) -> dict[str, object]:
-        """Compatibility entry point; return status only and write nothing."""
+        """Compatibility entry point; returns status only and writes nothing."""
         return await self.generate_report()
 
 
 if __name__ == "__main__":
     node = CouncilReportNode()
     try:
-        asyncio.run(node.process_telemetry())
+        print(json.dumps(asyncio.run(node.process_telemetry()), sort_keys=True))
     except KeyboardInterrupt:
         raise SystemExit(0)
