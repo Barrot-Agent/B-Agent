@@ -3658,3 +3658,18 @@ Ten high-risk workflows were inspected. `barrot-ops.yml` still imports to Databr
 - **EXECUTED:** complete main/integration tree comparison; current PR and open-PR inventory; exact-head CI log diagnosis; correction of both Jane Street normalized-row digests; primary OCC CAS, DBS/Circle, BNY/Ripple and BNY/Circle source review; direct Kraken and OKX ticker retrieval; ten-workflow high-risk audit.
 - **VERIFIED:** core test job and Pages validation passed on `0de99c1`; dependency audit passed on that head. The full suite did not pass because of the Q2 Jane Street digest. The digest correction and new research artifact require fresh exact-head CI.
 - **NOT VERIFIED:** production scheduled ingestion, raw-byte/WORM retention, synchronized full-depth market data, nine-platform live coordination, forecast readiness, substantive merge gate, branch-protection requirements, and merge readiness.
+
+
+### Exact-head CI verification and macro-event update — 2026-11-19 06:24 UTC
+
+**Verified on integration head `2736bf9659a5da2def494bd23d83770f8367a56c`:**
+
+- Pull-request CI [44471249102](https://github.com/Barrot-Agent/B-Agent/actions/runs/44471249102) passed all three jobs: core Tests, Pages validation, and Full repository test suite.
+- Full-suite result: **4,293 passed, 1 skipped, 11 warnings, 19 subtests passed** in 182.81 seconds. Inclusive coverage was **68.13%** against the 62% floor; legacy core coverage was **77%** against the 70% floor.
+- Push CI [44471239498](https://github.com/Barrot-Agent/B-Agent/actions/runs/44471239498) also passed on the same SHA; its full suite reported 4,293 passed, 1 skipped, 11 warnings, 19 subtests in 103.09 seconds.
+- Dependency audits [PR run 44471249097](https://github.com/Barrot-Agent/B-Agent/actions/runs/44471249097) and [push run 44471239532](https://github.com/Barrot-Agent/B-Agent/actions/runs/44471239532) passed. Money audit [44471249107](https://github.com/Barrot-Agent/B-Agent/actions/runs/44471249107), Pages validation, and the current fail-closed workflow run passed. The latter remains only an echo-only disabled-merge notice, not a real readiness gate.
+- This proves the Jane Street Q2 digest correction and current full-suite build on SHA `2736bf9`. The handoff/artifact update in this commit advances the branch again; fresh exact-head CI is required for the resulting head.
+
+**Macro event added to the point-in-time timeline:** The Federal Reserve published the October 27–28 FOMC minutes on November 18 at 2:00 p.m. EST (19:00 UTC). The target range remained 3.75%–4.00% by a 10–2 vote; Lisa D. Cook and Beth M. Hammack preferred a 25 bp increase. Staff discussed forced sales under deleveraging/redemption stress, hedge-fund leverage, limited dealer intermediation, AI-buildout debt and circular financing. The minutes' market review also cited the Iran conflict, French sovereign-debt repricing, and a stronger dollar amid wider rate differentials. This is a dated macro-risk event, not an XRP directional signal. The event's point-in-time availability is the November 18 publication timestamp, not the October meeting dates. [Federal Reserve minutes](https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm)
+
+**Current merge decision remains NO MERGE.** PR #1663 is still draft with no independent review; branch-protection details remain inaccessible through the available GitHub connection; the substantive merge gate is absent; and `barrot-ops.yml` still contains a Databricks `--overwrite` operation without a target backup/hash guard. No external action was run.

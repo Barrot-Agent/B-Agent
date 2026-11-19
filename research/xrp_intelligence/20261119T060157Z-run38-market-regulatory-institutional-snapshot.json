@@ -191,5 +191,52 @@
     "Replace the echo-only merge workflow with a substantive read-only fail-closed readiness gate.",
     "Remove Databricks --overwrite or add a verified target backup/hash guard before any external import.",
     "Keep directional forecast issuance disabled until all point-in-time, walk-forward, calibration, drift, shadow, source-diversity, and independent-attestation thresholds pass."
-  ]
+  ],
+  "updated_at_utc": "2026-11-19T06:24:30Z",
+  "macro_context": {
+    "event_id": "FOMC_2026-10-27_28_minutes_release_2026-11-18",
+    "reviewed_at_utc": "2026-11-19T06:24:30Z",
+    "meeting_period": "2026-10-27/2026-10-28",
+    "released_at_utc": "2026-11-18T19:00:00Z",
+    "release_source_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261118a.htm",
+    "primary_minutes_url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm",
+    "policy_decision": {
+      "target_range_pct": [
+        3.75,
+        4
+      ],
+      "vote": "10-2",
+      "dissenters": [
+        {
+          "name": "Lisa D. Cook",
+          "preferred_action": "raise target range by 25 basis points"
+        },
+        {
+          "name": "Beth M. Hammack",
+          "preferred_action": "raise target range by 25 basis points"
+        }
+      ]
+    },
+    "financial_stability_observations": [
+      "Federal Reserve staff described tail scenarios in which falling asset prices force investors to deleverage and funds to meet redemptions, potentially causing substantial asset sales.",
+      "Staff highlighted rapid AI-buildout debt growth, off-balance-sheet leasing commitments, and circular financing arrangements as possible loss amplifiers.",
+      "Hedge-fund leverage and limited dealer intermediation capacity were identified as salient amplification channels."
+    ],
+    "macro_geopolitical_observations": [
+      "The meeting's market review noted that evolving developments in the ongoing conflict with Iran and a sharp repricing of French sovereign debt contributed to market swings.",
+      "The review described a stronger broad U.S. dollar, partly associated with widening U.S.-foreign interest-rate differentials.",
+      "The review reported that market-implied policy paths at the time assigned high probability to a 25-basis-point hike by year-end and two further hikes by summer 2027; this is a meeting-period observation, not a current quote."
+    ],
+    "point_in_time_policy": {
+      "event_time": "2026-10-27/2026-10-28",
+      "available_at_utc": "2026-11-18T19:00:00Z",
+      "rule": "Do not backdate the minutes to the meeting dates. The information becomes public and eligible for point-in-time features only after the release timestamp."
+    },
+    "model_eligible": false,
+    "exclusion_reasons": [
+      "One macro event does not establish an XRP-specific predictive relationship.",
+      "No synchronized XRP event study or leakage-safe out-of-sample incremental-value test has been run.",
+      "Use as a dated macro-risk context event only; do not convert narrative into a directional forecast."
+    ]
+  }
 }
