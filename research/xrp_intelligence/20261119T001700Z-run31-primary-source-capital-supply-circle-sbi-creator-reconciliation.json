@@ -33,7 +33,7 @@
         "ripple_holdings_not_in_circulation_xrp_approx": 5230000000,
         "ripple_holdings_not_in_circulation_market_value_jpy_approx": 7600000000000,
         "xrp_under_escrow_approx": 31400000000,
-        "category_sum_xrp_approx": 100000000000,
+        "category_sum_xrp_approx": 99990000000,
         "evernorth_listed_date": "2026-10-12",
         "evernorth_ticker": "XRPN",
         "evernorth_xrp_holdings_approx": 473000000,
@@ -45,13 +45,16 @@
           "claude_mythos_and_claude_security": "reported as introduced across the group for cybersecurity",
           "api_integration": "SBI says API integration with group companies' own systems is being opened in stages",
           "barrot_connection": "not established; SBI corporate deployment does not establish Barrot authentication, permission or data flow"
-        }
+        },
+        "unreconciled_rounding_residual_xrp_approx": 10000000,
+        "category_sum_note": "The displayed rounded categories total 99.99B XRP, 0.01B below the 100B maximum. Preserve the rounding/unclassified residual; do not force-balance the categories."
       },
       "limitations": [
         "XRP supply figures are rounded and explicitly dated October 28, 2026, not current November 19 balances.",
         "The 5.23bn category is SBI's presentation label for Ripple holdings currently not in circulation; it should not be relabeled as exchange float or verified wallet balance.",
         "The 31.4bn escrow quantity is a dated aggregate and does not by itself specify the timing or size of every future unlock.",
-        "Evernorth's 473m is rounded presentation data; exact closing reconciliation is in the SEC filing."
+        "Evernorth's 473m is rounded presentation data; exact closing reconciliation is in the SEC filing.",
+        "The displayed rounded categories total approximately 99.99B XRP, leaving an approximately 0.01B residual to the 100B maximum; do not force-balance or treat the residual as a verified burn or float category."
       ],
       "source_independence_group": "sbi_group_primary_disclosure"
     },
