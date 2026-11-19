@@ -5598,3 +5598,109 @@ Quarantined / not counted as verified channel inventory:
 - **EXECUTED:** fresh six-venue order-book research; exchange-wallet attribution and cbXRP/credit-market research; primary SEC Evernorth capital-stack and SBI ownership reconciliation; identity-qualified Kamilah Stevenson channel inventory.
 - **VERIFIED:** SEC filings directly establish the stated Evernorth cash/in-kind/ownership figures; the official channel is cross-matched to a first-person interview and matching handle; exact-head suite/audits on pre-supplement head `dbcd43c` passed.
 - **NOT VERIFIED:** raw-byte/hash receipts for the new live market/DeFi observations; full on-chain confirmation of FXRP supply claim; exact upload identity for `TfFx0g2IgGg`; any directional predictive edge.
+
+
+## Run 229 — 2026-11-19 — exact-head CI, ingestion-artifact audit, SBIC identity resolution, and current market evidence
+
+### Repository checkpoint — EXECUTED
+
+- Main remains `c8e15c90b1e07980d7b5a01c86c1667166a353f6`.
+- Integration branch before this handoff update: `6dce5f04ae887a69929252a64e1660355a454a72`; 458 commits ahead, 0 behind.
+- Main tree: 1,739 entries. Integration tree: 3,004 entries. No main-only paths were found in the prior tree comparison.
+- PR #1663 remains the single active XRP/V3 integration workstream: draft, 1,462 changed files, 531,481 additions, 6,965 deletions. No branch or PR was created in this run.
+- Open PR inventory: 14. No unique research/feature PR was closed. PR #1663 remains the integration candidate; older research, repair, dependency, and feature work remains individually open pending overlap classification.
+- The latest integration commit before this note changed the durable handoff only; the current code tree and V3 implementation were not rewritten by that documentation commit.
+
+### Exact-head verification — VERIFIED on 6dce5f0 before this handoff-only update
+
+- CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/44575202586 — success on exact head 6dce5f04ae887a69929252a64e1660355a454a72.
+- Full repository suite: 4,357 passed, 1 skipped, 11 warnings, 19 subtests passed; total coverage 71.34%. The run included the expanded repository suite, not only the core subset.
+- Core subset: 730 passed, 8 subtests passed.
+- Dependency Audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/44575202567 — success on exact head.
+- Money audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/44575202511 — success on exact head.
+- Pages validation-only passed within CI. The separate main-branch Pages publishing workflow remains an automatic merge side effect that has not been authorized for this integration.
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/44575202424 — failed closed. PR is draft, no independent approval exists, and branch-protection details return HTTP 403 to the GitHub integration. The repository ruleset named “Fall Back” is disabled. Do not merge.
+- Cache budget is read-only; feature-store cache saves can fail without invalidating already uploaded per-run artifacts.
+
+### Public XRP ingestion — EXECUTED on integration commit 5b8e391
+
+Latest successful public ingestion run found in the workflow history:
+https://github.com/Barrot-Agent/B-Agent/actions/runs/44540041137
+Run commit: `5b8e39116ddf4cb5367560b947bc10f2c4d10f7d`, captured 2026-11-19 14:05–14:06 UTC. The later 6dce5f0 commit changed only this handoff file, not ingestion code.
+
+Artifacts were downloaded and inspected in the execution environment:
+
+- Raw artifact 14537732038: 34 source receipts; 22 raw payload objects retained, 12 digest-only receipts. All 22 hash-addressed JSON payload files matched their filename SHA-256.
+- Receipt-chain artifact 14536619419: sequence 16; per-run chain verification PASS; cross-run continuity CONTINUED from run 44301868145. Chain head SHA-256: 798aac5fa54650cbd72a8bc66d693ec082db13f564f61b4cab037181ec716197. Cross-run chain SHA-256: 59343c6acdf4225300fa375eb1ce8fe7265683cdf09cfa8eafa71b037b13abf7.
+- Feature-store artifact 14539330538: latest snapshot 0ce8077c869f400e9e3bbfe946e8b1f4b75d62de1cf5ddbabd144ce90c66ee76; data cutoff 2026-11-19 14:06:12 UTC; 254 verified/model-eligible feature rows from 12 source IDs (250 spot features and 4 OKX quote-basis features). The SQLite history contains 16 snapshots, 3,489 feature records and 149 source-snapshot records.
+- Event artifact 14537398707: 140 curated events and 107 scenarios/counter-hypotheses. It is explicitly model-ineligible; receipt_complete=false; no directional forecast, probabilities, or walk-forward forecast rows were produced.
+- Correction audit artifact 14537671921: correction overlays were applied only to in-memory research views; source artifacts were not modified; no forecast was issued.
+
+Important ingestion limitations:
+
+1. The receipt chain is tamper-evident only relative to its current head. It is not WORM, not externally anchored, and GitHub Actions artifacts are retention-limited. GitHub run identity does not independently timestamp every provider observation.
+2. SEC capture is BLOCKED_CONFIGURATION: contact identity is not configured; six SEC source failures; zero submissions/companyfacts sources, zero filing events and zero capital facts in the automated SEC artifact. No SEC observation was admitted to market features.
+3. The run recorded 21 source failures overall. CFTC data was not collected under the current provider-terms policy.
+4. Bitbank's latest-60-trade sample covered a variable 454.793-second window and showed -87,555 XRP net taker flow; this is not a fixed-duration or 24-hour flow and remains research-only.
+5. The XRP Insights ETF aggregate for 2026-11-18 reported holdings-derived -5,200,233.76 XRP / -$5,139,464 across seven funds. It is not an issuer AP cash-creation/redemption ledger, the fund universe is incomplete, and the observation is model-ineligible.
+6. ETF issuer HTML, RLUSD/USDC transparency pages, Deribit XRP perpetual data, SBI VC Trade lending, Morpho cbXRP market state/liquidity, and Coinbase cbXRP proof-of-reserves remain raw-only or digest-only pending timestamp, unit, contract, licensing, or lineage normalization.
+7. The latest feature store is useful for spot ticker, top-of-book and depth research, but it does not establish sufficient independent historical observations or a validated forecast edge.
+
+### Scheduled ingestion boundary — VERIFIED
+
+The workflow file `.github/workflows/xrp-public-ingestion.yml` exists on the integration branch and defines hourly and daily schedules, a scoped integration push trigger, and manual dispatch. A lookup on main returns 404: the workflow is not present on main. GitHub scheduled workflows execute from the default branch, so the production schedule is not active on main. The successful 5b8e391 capture was an integration push run, not a production main schedule. No manual dispatch was available through the current GitHub tool surface in this run. Do not describe scheduled production ingestion as live until the workflow is safely merged and a main-branch scheduled run is observed.
+
+### Japan SBIC identity — PRIMARY EVIDENCE VERIFIED
+
+The three Japanese SBIC entities are separate sister companies created under the Small and Medium Business Investment & Consultation Companies Act of 1963. They are not SBI Holdings, Inc. and are not SBI Group subsidiaries merely because the initials overlap.
+
+- East: Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), corporate number 9011001030621; established 1963-11-15; coverage includes 18 prefectures east of Shizuoka, Nagano and Niigata. Official profile: https://www.sbic.co.jp/company/profile/
+- Central: Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan); established 1963-11-18; coverage Aichi, Gifu, Mie, Toyama and Ishikawa. Official profile: https://www.sbic-cj.co.jp/company/about/
+- West: Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan); established 1963-11-20; coverage 24 prefectures west of Fukui, Shiga, Nara and Wakayama. Official profile: https://www.sbic-wj.co.jp/profiles/profile/
+- Tokyo SBIC describes itself as a policy implementation institution established under the 1963 Act, with local-government, chamber-of-commerce, financial-institution and corporate shareholders. The three entities list one another as sister companies.
+- “ChatGPT SBIC” search results include ordinary AI/ChatGPT training: Tokyo SBIC's June 2025 manufacturing course and an SBIC West introductory seminar for accounting firms. No OpenAI partnership, SBI Holdings relationship, or XRP relationship is established by those training pages.
+
+### ASK Coin exact-phrase continuation — RESEARCH ONLY
+
+One exact-symbol candidate surfaced: AI-Socket ($ASK), described by its own documentation as a Solana community memecoin, mint 7AVB9viRcpmr8gRMTCAYSmhP7gbuBMpBR51DMjwcpump. Documentation: https://www.crypticpump.com/ASKcoin/docs/index.html. Solflare labels this token unverified and shows concentration/liquidity risk indicators: https://www.solflare.com/pt-pt/precos/ai-socket/7AVB9viRcpmr8gRMTCAYSmhP7gbuBMpBR51DMjwcpump/. This is one candidate among possible same-symbol tokens, not proof that it is the intended “ASK Coin”; no XRP connection was verified. Do not treat it as a Barrot/XRP partner or a model feature.
+
+### “Actual capital” and Evernorth — PRIMARY SEC EVIDENCE RECONCILED
+
+- Evernorth's September 30, 2026 unaudited balance sheet reports $91,397 cash, $49,995 restricted cash, $341,887,231 digital assets, and $524,259,563 refundable investor advances. This is a pre-business-combination quarter-end snapshot and must not be represented as post-close cash or current liquidity. SEC filing: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm
+- The SEC ownership filing reports SBI Holdings USA, Inc. directly held 6,529,787 Evernorth Class A shares and 1,633,180 Class C shares as of the October 9, 2026 closing. Each Class C share has a one-for-one conversion feature subject to charter limits, including the 39.9% SBI Group Ownership Percentage restriction. This U.S. subsidiary is distinct from the three regional Japanese SBIC companies.
+- Evernorth's prospectus separately lists aggregate SBI beneficial holdings of 9,431,914 Class A and 2,359,038 Class C shares under its disclosed ownership methodology. Do not add the Form 3 direct holding to that aggregate or double-count Class C underlying shares.
+- A committed equity facility or resale registration is not cash received. Capital facts must distinguish authorization/capacity, shares issued, gross proceeds, net proceeds, cash on hand, refundable advances, XRP contributed in kind, and actual XRP purchases. SEC filing: https://www.sec.gov/Archives/edgar/data/2092592/000119312526420749/d162844dposam.htm
+- No Evernorth financing fact is promoted to XRP spot demand without a separately evidenced XRP acquisition, sale, or collateral movement.
+
+### Current market snapshot — RESEARCH ONLY, NOT MODEL ELIGIBLE
+
+Retrieved 2026-11-19; provider timestamps and coverage differ:
+
+- CoinGecko displayed XRP at $0.9836, a $0.9545–$1.00 24-hour range, approximately $61.41B market cap and $1.635B 24-hour volume: https://www.coingecko.com/en/coins/xrp/historical_data
+- Investing.com displayed a November 19 daily observation of $0.9740, open $0.9677, high $0.9964, low $0.9570 and $315.29M volume: https://www.investing.com/crypto/xrp/historical-data
+- BasisCharts' Binance XRPUSDT perpetual book snapshot at 12:04 UTC showed mid $0.9863, 1.01 bps spread, $32.6M bid / $28.8M ask across 1,000 levels per side; within ±0.5% depth was $8.4M bid / $7.1M ask and within ±1% was $12.7M / $12.3M. This is a perpetual book, not spot depth: https://www.basischarts.com/liquidity-heatmap/xrp-usdt
+- Liqwall's 13:32 UTC snapshot showed $940M open interest across nine exchanges, -3.0% 24h OI, +0.0069%/8h weighted funding, and at least $3.9M liquidations ($3.1M long / $0.807M short): https://liqwall.com/coins/xrp
+- TradRadar's 12:05 UTC snapshot showed $1.25B OI across seven exchanges, -2.92% 24h OI and +0.0090%/8h weighted funding: https://tradradar.io/markets/xrp
+- OptimistFi's 07:31 UTC snapshot reported $1.7B OI across 38 venues, with CME 21% of the reported total: https://optimistfi.com/perps/markets/xrp
+- These OI figures are not contradictory evidence until venue coverage, contract units, timestamps and inclusion of CME/other venues are reconciled. Do not average them. Positive funding with long-heavy liquidations is descriptive, not a directional forecast.
+
+### Prediction disposition — NO FORECAST
+
+The feature store, source-receipt chain and event/scenario artifacts are implemented and exercised on the integration branch. Historical baselines are evaluated by the ingestion workflow, but the current run produced zero walk-forward forecasts and no calibrated probability output. No directional forecast is justified. No paper trade or real-money action occurred.
+
+### Next concrete actions
+
+1. Resolve the legitimate SEC contact/User-Agent configuration without inventing an identity; restore primary submissions/companyfacts capture and filing-document parsing.
+2. Promote issuer-level ETF holdings and share/basket changes only after primary issuer receipts, timestamps and cash/in-kind/OTC distinctions are reconciled.
+3. Normalize Deribit contract quantities, funding and OI; normalize cbXRP/Morpho token decimals, market lineage, oracle updates and block timestamps; keep exchange wallet balances as attribution rather than tradable float.
+4. Establish an independent immutable external anchor for receipt-chain heads; GitHub artifact hashes alone are not WORM.
+5. Expand chronological snapshots and verify baseline comparisons, leakage controls, probability calibration and drift before any directional forecast.
+6. Keep the integration PR draft until exact-head CI, security, full-suite checks, independent approval and branch-protection requirements are verified. Resolve the public Pages deployment side effect before merge.
+7. Once the PR is safely merged, verify the merge commit, refetch main, verify merged files and run main CI; then close only exact duplicates/superseded PRs with cross-references.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- DESIGNED: hourly/daily public ingestion, receipt chain, point-in-time store, event/scenario timeline, SEC issuer registry, baseline evaluation and drift report.
+- EXECUTED: integration push ingestion run 44540041137; artifact downloads and SHA-256 checks; SQLite and event artifact inspection; exact-head full-suite, dependency and money audits on 6dce5f0; primary SBIC and SEC identity research.
+- VERIFIED: 4,357-test full suite and 730-test core subset on 6dce5f0; 34 receipts and 22 retained raw-object hashes; sequence-16 receipt-chain continuity; 254 verified spot/quote-basis features; exact SBIC East/Central/West corporate identities.
+- NOT VERIFIED: WORM/external timestamp anchoring; active scheduled ingestion on main; automated SEC capital ingestion; full normalized derivatives/collateral/ETF features; out-of-sample predictive edge; branch-protection requirements; independent PR approval; safe Pages merge authorization.
