@@ -138,7 +138,7 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert counts.get("duplicate", 0) == summary["duplicate"]
     assert counts.get("superseded", 0) == summary["superseded"]
     assert next(item for item in backlog if item["number"] == 1663)["classification"] == "blocked"
-    assert next(item for item in backlog if item["number"] == 1665)["classification"] == "blocked"
+    assert next(item for item in backlog if item["number"] == 1665)["classification"] == "duplicate"
     assert next(item for item in backlog if item["number"] == 1666)["classification"] == "blocked"
     assert next(item for item in backlog if item["number"] == 1668)["classification"] == "blocked"
     assert data["merge_decision"] == "NO_MERGE"
@@ -165,7 +165,13 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert sbic["xrp_or_ripple_relationship"] == "No verified relationship found."
     market = data["prediction_engine"]["latest_market_snapshot"]
     evidence_path = Path(__file__).resolve().parents[1] / market["artifact_path"]
+    assert market["artifact_path"] == (
+        "research/xrp_intelligence/20261119T000522Z-run31-exact-head-ci-and-market-evidence.json"
+    )
     evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+    provenance = evidence["market_snapshot"]["provenance"]
+    assert provenance["raw_wire_bytes_captured"] is False
+    assert provenance["external_worm_anchor"] == "NOT_ANCHORED"
     kraken_receipt = evidence["market_snapshot"]["kraken_xrp_usd"]
     assert market["price_usd"] == kraken_receipt["last_usd"]
     assert market["source"] == "Kraken public ticker API — XRP/USD"
