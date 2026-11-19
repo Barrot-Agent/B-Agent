@@ -3886,3 +3886,78 @@ The current map remains at `research/xrp_intelligence/nine_platform_capability_a
 - **NOT VERIFIED:** branch-protection details/required approvals; independent PR review; full transitive workflow audit; production scheduled XRP ingestion; independent WORM retention; synchronized raw order-book/exchange-flow histories; nine-platform live coordination; predictive edge; merge readiness.
 
 No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, external-model dispatch, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 40 follow-up — 2026-11-19T08:18Z — post-handoff exact-head CI and Franklin XRP ETF SEC reconciliation
+
+### Exact-head verification after the Run 40 handoff commit
+
+The handoff append at `23b1c6321f3be64ee3509fcebbd4edf5bba770d2` received its own complete CI. No result was transferred from the predecessor head.
+
+- [PR CI 44485713412](https://github.com/Barrot-Agent/B-Agent/actions/runs/44485713412): completed successfully on exact SHA `23b1c6321f3be64ee3509fcebbd4edf5bba770d2`.
+- [Push CI 44485704390](https://github.com/Barrot-Agent/B-Agent/actions/runs/44485704390): completed successfully on the same exact SHA.
+- Both full repository suites: 4,301 passed, 1 skipped, 11 warnings, 19 subtests passed.
+- PR suite duration 195.53 seconds; push suite duration 188.40 seconds.
+- Inclusive coverage 68.07%; legacy-core coverage 77%.
+- Core tests, full suite, Pages validation-only build and wheel/packaged-primary-mission verification passed.
+- [PR Dependency Audit 44485713386](https://github.com/Barrot-Agent/B-Agent/actions/runs/44485713386): success.
+- [Push Dependency Audit 44485704447](https://github.com/Barrot-Agent/B-Agent/actions/runs/44485704447): success.
+- [PR Money Audit 44485713487](https://github.com/Barrot-Agent/B-Agent/actions/runs/44485713487): success.
+- Python cache save again warned that the repository cache budget is read-only; no test, wheel or audit failure resulted.
+
+The fail-closed gate [44485713381](https://github.com/Barrot-Agent/B-Agent/actions/runs/44485713381) and push gate [44485704424](https://github.com/Barrot-Agent/B-Agent/actions/runs/44485704424) failed on this exact head. The PR remains draft, has zero reviews, the detailed branch-protection endpoint remains inaccessible (403), and the gate ran before the concurrent CI and dependency audit completed. The gate is read-only and did not merge. PR mergeable_state remains `unstable`. **NO MERGE.**
+
+### Franklin XRP ETF — direct SEC primary evidence of cash and in-kind acquisition channels
+
+New primary source: Franklin XRP ETF Form 10-Q for the quarter ended September 30, 2026, filed November 13, 2026:
+https://www.sec.gov/Archives/edgar/data/2059438/000114036126043720/ef20083832_10q.htm
+
+The filing identifies Franklin XRP ETF (`XRPZ`) as a series of Franklin XRP Trust, sponsored by Franklin Holdings LLC. At September 30, 2026:
+
+- Underlying XRP: 293,112,265.4002.
+- Historical cost: $501,430,187.
+- Fair value: $439,668,398.
+- Net assets: $439,606,153.
+- Shares outstanding: 27,000,000; NAV per share $16.28.
+- March 31 comparison: 159,659,740.0158 XRP, cost $322,149,692, fair value $215,061,670.
+
+For the six months ended September 30, 2026, the filing reports:
+- Cash purchases of XRP: $83,835,501.
+- Cash proceeds from XRP sales: $125,113.
+- Cash proceeds from share issuance: $83,835,512.
+- Share redemptions: none.
+- In-kind XRP contributions: $95,638,129.
+- In-kind shares issued in exchange for XRP: $95,638,129.
+- In-kind XRP distributions/redemptions: none.
+
+The six-month capital-share transactions total $179,473,641: approximately $83.836M cash-funded and $95.638M in-kind. These are not interchangeable. The $83.8355M purchase line is direct evidence of fund cash used to acquire XRP; the $95.6381M in-kind contribution is XRP delivered for shares and must not be counted as an equivalent open-market cash purchase. The six-month underlying XRP quantity increased by approximately 133.453M XRP, from March 31 to September 30. Unit changes, dollar contributions and price appreciation must remain separate.
+
+Institutional custody/prime-broker chain disclosed by the same filing:
+- Coinbase Custody Trust Company, LLC is the XRP custodian.
+- Coinbase Inc., an affiliate of the XRP custodian, is the fund's Prime Broker.
+- BNY Mellon Asset Servicing is administrator and transfer agent, and BNYM is the cash custodian.
+- Franklin Holdings LLC is sponsor; Franklin Distributors LLC is marketing agent.
+
+This is a direct, primary-source Coinbase institutional custody and prime-broker relationship. It does not mean Coinbase owns the fund's XRP. BNYM's role in this specific fund is administration/transfer agency and cash custody, not XRP custody.
+
+The fund is passive, does not use leverage or derivatives, and issues/redeems 50,000-share Creation Units only to eligible Authorized Participants in XRP and/or cash. Therefore ETF share creations, cash-funded XRP purchases, in-kind XRP contributions, and underlying token holdings must be separately measured. A 13F report of ETF shares is not a report of the underlying XRP tokens. The fund's September 30 balances are historical quarter-end values, not current November 19 holdings.
+
+Primary line references in the SEC filing: fund identity/ticker at lines 28–39 and 59–63; holdings/cost/fair value at lines 228–278; cash and in-kind activity at lines 343–375; custody/prime-broker roles and creation/redemption mechanics at lines 439–452.
+
+### Feature admission
+
+This filing is a high-value institutional event and capital-flow source, but the current disclosure is a quarter-end filing published after the measurement period. Store it with:
+- event/measurement cutoff: 2026-09-30;
+- filing/publication date: 2026-11-13;
+- source: SEC Form 10-Q;
+- entity: Franklin XRP ETF / Franklin XRP Trust;
+- units: XRP units, USD cost, USD fair value, cash purchase USD, in-kind contribution USD;
+- custody roles: Coinbase Custody (XRP), Coinbase Inc. affiliate (prime broker), BNYM (cash and administration).
+
+Do not backfill these values into features before the filing became public. Do not treat in-kind contributions as new market purchases or 13F ETF-share counts as XRP units. Admit to the event timeline and point-in-time feature store only after the ingestion pipeline records the filing bytes, hash, retrieval receipt, and publication-time availability. No directional forecast is supported by this filing alone.
+
+### Updated disposition
+
+The Run 40 handoff append is verified on its own exact head. The Franklin filing is researched from the primary SEC 10-Q but is not yet a raw-byte receipt in Barrot's ingestion archive. No model feature was promoted. No forecast was issued. PR #1663 remains draft, unreviewed and blocked by unverifiable branch-protection details; no merge or external operation occurred.
