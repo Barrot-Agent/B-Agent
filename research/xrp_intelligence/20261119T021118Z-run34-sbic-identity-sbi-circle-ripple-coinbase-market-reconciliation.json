@@ -354,7 +354,12 @@
       "caveat": "This is a stablecoin, treasury and prime-brokerage integration; it is not proof of XRP bridge usage or XRP demand.",
       "source": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/"
     },
-    "direct_circle_ripple_relationship": "No direct bilateral Circle-Ripple partnership was established from the primary sources reviewed. Circle's USDC and Ripple's RLUSD are separate issuer products; both are available on XRPL. Their coexistence on XRPL is not proof of XRP bridge usage or demand."
+    "direct_circle_ripple_relationship": "No direct bilateral Circle-Ripple partnership was established from the primary sources reviewed. Circle's USDC and Ripple's RLUSD are separate issuer products; both are available on XRPL. Their coexistence on XRPL is not proof of XRP bridge usage or demand.",
+    "ripple_corporate_scale": {
+      "company_statement": "Ripple's 2026-10-28 company release said it expected to exit 2026 at a $900M annualized product-revenue run rate, had enabled more than $16T of transactions across its products in 2025, held 85+ licenses, and served 1,700+ institutions/corporates/enterprises.",
+      "model_caveat": "These are Ripple corporate product metrics. They are not XRP Ledger transaction volume, XRP notional settlement, XRP sales, XRP holdings, or independent audit figures.",
+      "source": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/"
+    }
   },
   "market_snapshot": {
     "capture_observed_at_utc": "2026-11-19T02:11:18Z",
@@ -454,27 +459,6 @@
         "window": "2026-11-12 to 2026-11-18",
         "reported_flow_usd": -7230000,
         "universe": "five reported ETFs; source SoSoValue; 1.12B XRP is an AUM/price conversion, not custody inventory",
-        "source": "https://cryptotuts.co/xrp/etf"
-      },
-      {
-        "provider": "CryptoKeyhole",
-        "window": "2026-11-16 partial",
-        "reported_flow_xrp": -5196983,
-        "universe": "3 of 4 daily-readable funds reported; waiting for Bitwise",
-        "source": "https://cryptokeyhole.com/etf-flows/xrp/"
-      },
-      {
-        "provider": "CryptoKeyhole",
-        "window": "2026-11-09 to 2026-11-13 complete",
-        "reported_flow_xrp": -4923033,
-        "universe": "four daily-readable funds; latest complete five-day window",
-        "source": "https://cryptokeyhole.com/etf-flows/xrp/"
-      },
-      {
-        "provider": "CryptoTuts",
-        "window": "2026-11-12 to 2026-11-18",
-        "reported_flow_usd": -7230000,
-        "universe": "five reported ETFs; SoSoValue-sourced; 1.12B XRP is AUM/price conversion, not custody inventory",
         "source": "https://cryptotuts.co/xrp/etf"
       }
     ],
@@ -671,52 +655,22 @@
       "published": "2025-12-12"
     },
     {
-      "type": "secondary_aggregator",
-      "url": "https://cryptotuts.co/xrp/etf",
-      "publisher": "CryptoTuts",
-      "published": "as of 2026-11-18; seven-day window 2026-11-12 to 2026-11-18"
-    },
-    {
-      "type": "secondary_aggregator",
-      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
-      "publisher": "CryptoKeyhole",
-      "published": "updated 2026-11-19T01:55:00Z"
-    },
-    {
-      "type": "primary_press_release",
-      "url": "https://ripple.com/ripple-press/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
-      "publisher": "Ripple and BNY",
-      "published": "2026-10-27"
-    },
-    {
-      "type": "primary_press_release",
-      "url": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/",
-      "publisher": "Ripple and Robinhood",
-      "published": "2026-10-27"
-    },
-    {
-      "type": "primary_press_release",
-      "url": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
-      "publisher": "Ripple",
-      "published": "2026-10-15"
-    },
-    {
-      "type": "primary_press_release",
-      "url": "https://ripple.com/insights/ripple-closes-hidden-road-acquisition/",
-      "publisher": "Ripple",
-      "published": "2025-10-24"
-    },
-    {
       "type": "primary_regulator_record",
       "url": "https://www.occ.treas.gov/news-issuances/news-releases/2025/nr-occ-2025-125.html",
       "publisher": "OCC",
       "published": "2025-12-12"
     },
     {
-      "type": "primary_regulator_record",
-      "url": "https://www.occ.treas.gov/news-issuances/news-releases/2025/nr-occ-2025-125b.pdf",
-      "publisher": "OCC",
-      "published": "2025-12-12"
+      "type": "primary_regulator_release",
+      "url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+      "publisher": "Office of the Comptroller of the Currency",
+      "published": "2026-10-21"
+    },
+    {
+      "type": "primary_corporate_statement",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "publisher": "Ripple",
+      "published": "2026-10-28"
     }
   ],
   "regulatory_disagreement": {
@@ -730,5 +684,13 @@
       "https://www.occ.treas.gov/news-issuances/news-releases/2025/nr-occ-2025-125b.pdf",
       "https://www.occ.treas.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html"
     ]
+  },
+  "regulatory_context": {
+    "us_genius_rule": {
+      "source": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+      "published": "2026-10-21",
+      "finding": "OCC published its final rule implementing the GENIUS Act for payment stablecoin issuers and certain custody activities under OCC jurisdiction. The rule and GENIUS Act take effect 2027-01-18. OCC states that BSA/AML and OFAC-related requirements are to be addressed in separate rulemaking.",
+      "implication": "Stablecoin issuer/custody compliance requirements are becoming more defined, but this does not establish XRP as a required settlement asset or determine the final status of Ripple National Trust Bank."
+    }
   }
 }
