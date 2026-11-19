@@ -340,5 +340,31 @@ class RecursiveCreativeMemory:
         ]
         if not attempts:
             return None
-        best = max(attempts, key=lambda item: item["evaluation"]["score"])
+        best = max(attempts, key=lambda item: (item["evaluation"]["score"], item["recorded_at"]))
         return dict(best["settings"])
+
+    def verified_composition_lessons(self) -> list[dict[str, Any]]:
+        """Return approved composition lessons with the evidence that supports them."""
+        records = self.read_all()
+        feedback_by_id = {
+            item.get("attempt_id"): item
+            for item in records
+            if item.get("record_type") == "composition_feedback"
+            and item.get("lesson_promoted")
+        }
+        attempts = [
+            item for item in records
+            if item.get("record_type") == "composition_attempt"
+            and item.get("attempt_id") in feedback_by_id
+        ]
+        return [
+            {
+                "attempt_id": item["attempt_id"],
+                "lesson": feedback_by_id[item["attempt_id"]].get("lesson", ""),
+                "settings": dict(item["settings"]),
+                "score": item["evaluation"]["score"],
+                "recorded_at": item["recorded_at"],
+            }
+            for item in attempts
+        ]
+
