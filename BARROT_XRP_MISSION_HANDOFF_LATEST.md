@@ -6577,3 +6577,56 @@ These filings were reviewed from public SEC HTML during this run; raw HTTP bytes
 Main remains `e1c3634df28f488819185b7d5697d474bc0bcb9e`. PR #1663 remains the sole consolidated XRP/V3 integration; 14 PRs remain open. The safety and handoff changes in this checkpoint are a single fast-forward commit on the existing integration branch; the GitHub PR head is authoritative for its new SHA. Exact-head CI for that new head must complete before any merge assessment.
 
 Forecast status remains **NOT_ISSUED**. No directional model has demonstrated leakage-safe out-of-sample superiority, no shadow evaluation has been completed, and independent evaluator attestation is absent. No external platform dispatch, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 11 final checkpoint — 2026-11-19T23:18Z
+
+### Exact-head verification — a41ad79 VERIFIED
+
+- Current main: `e1c3634df28f488819185b7d5697d474bc0bcb9e`.
+- Exact code head: `a41ad79c81ab64fdaa6b5fabf4bdbf4a647098fc`.
+- Existing PR #1663 is still draft/open, based on current main; 479 commits ahead, zero behind; 1,469 changed paths.
+- [Push CI 44635610020](https://github.com/Barrot-Agent/B-Agent/actions/runs/44635610020) completed successfully on exact head a41ad79.
+- [PR CI 44635619377](https://github.com/Barrot-Agent/B-Agent/actions/runs/44635619377) completed successfully on the same exact head.
+- Full repository suite: **4,375 passed, 1 skipped, 11 warnings, 19 subtests passed** in 127.52 seconds; inclusive coverage **71.34%**; legacy/core coverage **81%**.
+- Core test suite: **730 passed, 8 subtests passed**.
+- Mission floors passed: AGI orchestrator 52%, XRP telemetry 92%, MMI 92%, Barrot integration 62%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%.
+- Pages build validation-only passed. No Pages publication or deployment.
+- PR dependency audit [44635619270](https://github.com/Barrot-Agent/B-Agent/actions/runs/44635619270) and push dependency audit [44635610075](https://github.com/Barrot-Agent/B-Agent/actions/runs/44635610075) passed all six manifests. PR money audit [44635619274](https://github.com/Barrot-Agent/B-Agent/actions/runs/44635619274) passed.
+- Fail-closed gate [44635619464](https://github.com/Barrot-Agent/B-Agent/actions/runs/44635619464) completed BLOCKED for draft PR, no independent approval, and unverifiable branch protection. No merge.
+
+### Open-PR ancestry and overlap reconciliation — EXECUTED
+
+All 14 open PRs were re-enumerated. Changed-file inventories were fetched for all 14 and pairwise intersections calculated. No PR was closed.
+
+- **#1663 — sole consolidated XRP/V3 integration:** current branch, 1,469 paths, 479 commits, base current main. Draft and blocked by governance/publication gates.
+- **#1665 — duplicate candidate:** its `pylint>=4.1.4` update is already present in the integration branch's expanded `requirements-dev.txt`. The file differs because integration has additional dependencies; the exact requested version change is included. Close only after #1663 is merged and the file is verified on main.
+- **#1666 — blocked, not integrated:** the Dependabot proposal widens Kaggle from `<1.6` to `<1.8` in `pyproject.toml` and `requirements-integrations.txt`. The current branch retains `<1.6`; its own dependency comment warns that Kaggle >=1.6 pulls `jsonschema -> rpds-py` (Rust). Do not merge until Python/Hugging Face Space compatibility and the full dependency graph are tested.
+- **#1668 — unique but blocked:** three overlapping paths, but its worker/failover implementation is not present in the integration versions. Its broad write permissions, provider-secret exposure and unpinned action references remain blockers. Preserve it; do not label it a duplicate.
+- **#1664 — unique/unreviewed:** 127-file paid-issue template pack; three shared documentation paths differ from integration. Preserve; do not close.
+- **#1670 — unique/unreviewed:** Musical DNA recursive-learning work; two shared paths differ from integration. Preserve; do not close.
+- **#1541 — superseded-content candidate:** its canonical MMI claim-fingerprint implementation is present in integration. `mmi_adapter.py` and `test_mmi_integration.py` match exactly; integration's `mmi_v1.py` and `test_mmi_v1.py` contain the same fingerprint enforcement plus additional malformed-input hardening. The artifact records the same finding with later formatting. Close only after #1663 is merged and all corresponding files are verified on main.
+- **#1265, #1353, #1436, #1437, #1440, #1450, #1460 — stacked XRP ledger/research lineage, not safe duplicates:** these branches form a nested ancestry chain and have no common ancestor with the current integration head according to GitHub's compare endpoint. Their large `data/xrp_intelligence/research_ledger.json` files (roughly 0.73–1.00 MB across branch heads) are absent from both current main and integration. The current branch has newer timestamped research artifacts and ledger contracts, but this does not prove every older ledger claim has been migrated. Preserve all branches and research. Do not merge them individually or close them until a lossless content/provenance reconciliation identifies what is unique, superseded or already represented.
+
+The remaining unique/unreviewed backlog includes PRs #1664, #1670 and the stacked research lineage above. The #1668 provider failover and #1666 dependency update remain blocked. No source PR is closed merely because of path overlap.
+
+### Workflow audit status — corrected
+
+- All **68/68 changed workflow YAML files** received a trigger, permission, secret, action-pin and command-surface scan.
+- Nine selected workflow bodies and eight invoked scripts received deeper source review. Full transitive review of every invoked script and every external data flow remains incomplete.
+- Current `content-pipeline.yml`, `entity-relations.yml`, `financial-data-refresh.yml`, `capability-10-design.yml` and `capability-discovery.yml` all enforce exact-main-SHA checks before confirmed Groq calls. Earlier Run210 warnings that content-pipeline/entity-relations lacked this gate are stale.
+- Current `pillars-check.yml` scopes GitHub App and Databricks secrets to manually dispatched, explicitly confirmed read-only steps; its scheduled public-check step receives no such secrets. Earlier Run210 warning about scheduled secret injection is stale.
+- The current integration commit a41ad79 adds exact-main-SHA checkout/remote-main verification and a Databricks host allowlist to `barrot-ops.yml`; `tests/test_external_action_gates.py` asserts these controls. Exact-head full suite passed after this change. The Databricks and Kaggle jobs remain manual, confirmation-gated, and were not dispatched.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** XRP public ingestion, raw-source hashing/receipts, point-in-time feature store, baselines, leakage-safe walk-forward evaluation, calibration, drift, event timelines and fail-closed forecast ledger.
+- **EXECUTED:** Full repository/PR/tree/ancestry inspection; all 14 open PR changed-file inventories; pairwise overlap analysis; all 68 changed workflow YAML surface scans; selected workflow/script semantic review; exact-head CI, dependency and money audits; public SEC ETF filing reconciliation.
+- **VERIFIED:** Code head a41ad79 passed full repository CI, core CI, Pages validation-only, six-manifest dependency audit and money audit. Main remains unchanged. The fail-closed gate correctly blocks merge.
+- **NOT VERIFIED:** This subsequent handoff-only commit's exact-head CI; effective branch-protection requirements; independent review; Pages publication authorization; independent WORM/timestamp anchoring; production scheduled ingestion on main; complete transitive workflow review; learned XRP model superiority; calibrated live-data probabilities; shadow evaluation; independent evaluator attestation; eight external platform connections.
+
+Forecast status remains **NOT_ISSUED**. No directional forecast, paper trade, external platform dispatch, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, funds transfer or real-money action occurred.
+
+**Next concrete action:** verify exact-head CI on the new handoff commit, then resolve branch-protection visibility and independent review/publication authorization. Preserve the stacked ledger branches until their historical XRP evidence has been losslessly reconciled into the current timestamped research architecture.
