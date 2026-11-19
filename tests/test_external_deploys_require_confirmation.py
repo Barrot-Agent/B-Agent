@@ -4,7 +4,6 @@ import re
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEPLOY_WORKFLOWS = (
     ".github/workflows/barrot-ops.yml",
-    ".github/workflows/deploy-databricks.yml",
     ".github/workflows/sync-huggingface.yml",
     ".github/workflows/databricks-bundle.yml",
 )
@@ -35,3 +34,13 @@ def test_external_deploy_workflows_are_manual_and_fail_closed() -> None:
             assert "github.ref == 'refs/heads/main'" in workflow, relative_path
         if relative_path.endswith("sync-huggingface.yml"):
             assert "permissions:\n  contents: read" in workflow, relative_path
+
+
+def test_legacy_databricks_overwrite_workflow_is_quarantined() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "deploy-databricks.yml"
+    ).read_text(encoding="utf-8")
+    assert "permissions: {}" in workflow
+    assert "if: ${{ false }}" in workflow
+    assert "secrets." not in workflow
+    assert "scripts/deploy_databricks.py" not in workflow

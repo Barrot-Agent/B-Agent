@@ -15,6 +15,9 @@ def test_destructive_or_secret_input_workflows_are_disabled() -> None:
         "rotate-databricks-token.yml",
         "gumroad-metrics.yml",
         "barrot-merge-manual.yml",
+        "barrot-sync.yml",
+        "coinbase-paper-trader.yml",
+        "deploy-databricks.yml",
     )
     for name in disabled:
         content = _read(name)
@@ -66,7 +69,7 @@ def test_factory_restart_requires_explicit_approval() -> None:
 
 
 def test_existing_safe_external_deploys_keep_per_run_confirmation() -> None:
-    for name in ("deploy-databricks.yml", "sync-huggingface.yml"):
+    for name in ("sync-huggingface.yml",):
         content = _read(name)
         assert "confirm_external_change" in content
         assert "default: NO" in content
@@ -241,7 +244,6 @@ def test_external_side_effects_are_bound_to_exact_approved_main_commit() -> None
     names = (
         "barrot-merge.yml",
         "sync-huggingface.yml",
-        "deploy-databricks.yml",
         "kaggle-competitions.yml",
         "barrot-restart-space.yml",
         "webmcp-live-sandbox.yml",
