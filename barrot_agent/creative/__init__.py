@@ -1,5 +1,11 @@
 from .audio_adapter import analyze_audio
-from .composer import (CompositionRun, CompositionSettings, RecursiveCompositionEngine, compose_original, evaluate_composition)
+from .composer import (
+    CompositionRun,
+    CompositionSettings,
+    RecursiveCompositionEngine,
+    compose_original,
+    evaluate_composition,
+)
 from .midi_export import export_midi
 from .musical_dna import (
     Evaluation,
@@ -39,6 +45,9 @@ __all__ = [
     "transmute",
     "analyze_audio",
     "CompositionSettings",
+    "CompositionRun",
+    "RecursiveCompositionEngine",
     "compose_original",
+    "evaluate_composition",
     "export_midi",
 ]
