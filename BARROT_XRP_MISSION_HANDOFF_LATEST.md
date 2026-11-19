@@ -5754,9 +5754,9 @@ No merge, deployment, provider dispatch, secret change, Space restart, Kaggle su
 
 ### Repository state — VERIFIED
 - Repository: Barrot-Agent/B-Agent
-- Main SHA: \`c8e15c90b1e07980d7b5a01c86c1667166a353f6\`.
-- Integration branch: \`integration/xrp-v3-mainline-successor-20261115T2101Z\`.
-- Integration head before this handoff update: \`99d0a54a1ce8e5c182d9b33ae77abcdfc90a0647\`.
+- Main SHA: `c8e15c90b1e07980d7b5a01c86c1667166a353f6`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Integration head before this handoff update: `99d0a54a1ce8e5c182d9b33ae77abcdfc90a0647`.
 - Branch ancestry: 460 commits ahead of main, zero behind; GitHub reports mergeable=true (conflict status only, not merge authorization).
 - Recursive trees: main 1,739 entries; integration 3,004 entries. Every path in current main is present in the integration tree; integration contains 1,265 additional paths.
 - PR #1663: 1,462 changed files, 531,629 additions, 6,965 deletions; still draft.
