@@ -69,3 +69,34 @@ class AdapterTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class RecursiveCompositionEngineTests(unittest.TestCase):
+    def test_every_run_is_recorded_and_approved_settings_seed_next_run(self):
+        from barrot_agent.creative.composer import RecursiveCompositionEngine
+        from barrot_agent.creative.musical_dna import RecursiveCreativeMemory
+
+        with tempfile.TemporaryDirectory() as directory:
+            memory = RecursiveCreativeMemory(Path(directory) / "journal.jsonl")
+            engine = RecursiveCompositionEngine(memory)
+            first = engine.create(template(), CompositionSettings(bars=8, seed=73))
+            self.assertTrue(first.evaluation.passed)
+            self.assertEqual(len(memory.read_all()), 1)
+            engine.record_feedback(
+                first, feedback="approved",
+                lesson="Keep this seed and phrase density for the next draft",
+            )
+            second = engine.create(template(), CompositionSettings(bars=8, seed=999))
+            self.assertEqual(second.settings.seed, 73)
+            self.assertEqual(len(memory.read_all()), 4)
+
+    def test_negative_feedback_is_retained_but_not_promoted(self):
+        from barrot_agent.creative.composer import RecursiveCompositionEngine
+        from barrot_agent.creative.musical_dna import RecursiveCreativeMemory
+
+        with tempfile.TemporaryDirectory() as directory:
+            memory = RecursiveCreativeMemory(Path(directory) / "journal.jsonl")
+            engine = RecursiveCompositionEngine(memory)
+            run = engine.create(template(), CompositionSettings(bars=8, seed=19))
+            engine.record_feedback(run, feedback="worse", lesson="Do not repeat this")
+            self.assertIsNone(memory.recommend_composition_settings())
+            self.assertEqual(len(memory.read_all()), 2)
