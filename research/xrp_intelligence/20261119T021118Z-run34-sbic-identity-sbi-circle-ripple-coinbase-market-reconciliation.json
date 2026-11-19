@@ -1,0 +1,561 @@
+{
+  "artifact_type": "barrot_xrp_intelligence_research_update",
+  "schema_version": "barrot.xrp.research.v1",
+  "run_id": 34,
+  "observed_at_utc": "2026-11-19T02:11:18Z",
+  "mission": {
+    "mission_id": "xrp_intelligence_prediction_engine",
+    "priority": 1,
+    "status": "active",
+    "foundation": "Barrot V3 remains execution, orchestration, safety and verification foundation",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "82c23e219553164c24073784c529aad75acacd66",
+    "main_tree_entries": 1739,
+    "main_tree_truncated": false,
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_head_before_run34": "1e57a9e5bfc3b7721ec061e47c83bbaac1a5b58e",
+    "integration_tree_entries": 2991,
+    "integration_tree_truncated": false,
+    "commits_ahead": 385,
+    "commits_behind": 0,
+    "changed_files": 1444,
+    "changed_workflow_files": 68,
+    "main_paths_missing_from_integration": 0,
+    "active_integration_pr": 1663,
+    "no_new_branch_or_pr_created": true
+  },
+  "ci": {
+    "exact_head_full_suite": {
+      "run_id": 44435940366,
+      "head_sha": "1e57a9e5bfc3b7721ec061e47c83bbaac1a5b58e",
+      "status": "success",
+      "job_id": 135264703930,
+      "tests_passed": 4288,
+      "tests_skipped": 1,
+      "tests_failed": 0,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 118.55,
+      "inclusive_coverage_percent": 68.13,
+      "legacy_core_coverage_percent": 77,
+      "log_verified": true,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44435940366"
+    },
+    "push_dependency_audit": {
+      "run_id": 44435940362,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44435940362"
+    },
+    "push_fail_closed_gate": {
+      "run_id": 44435940433,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44435940433"
+    },
+    "pr_dependency_audit": {
+      "run_id": 44435947549,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44435947549"
+    },
+    "pr_money_audit": {
+      "run_id": 44435947560,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44435947560"
+    },
+    "pr_fail_closed_gate": {
+      "run_id": 44435947486,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44435947486"
+    },
+    "pr_event_tests": {
+      "run_id": 44435947535,
+      "core_tests": "skipped_because_pr_is_draft",
+      "full_suite": "skipped_because_pr_is_draft",
+      "pages_validation": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44435947535"
+    },
+    "current_main": {
+      "sha": "82c23e219553164c24073784c529aad75acacd66",
+      "previous_code_ci_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
+      "previous_code_ci_run_id": 44396364281,
+      "previous_code_ci_status": "success",
+      "current_main_diff_from_code_ci_sha": [
+        "PAID-ISSUES.md",
+        "data/money/paid_issues.json"
+      ],
+      "code_equivalent_to_tested_sha": true,
+      "explanation": "The two intervening changes are generated paid-issue data files. Main ci.yml ignores both paths. No application/workflow source code changed in that commit.",
+      "exact_current_main_sha_ci_run": "not_observed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44396364281"
+    }
+  },
+  "governance": {
+    "pr_1663": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "mergeable_state": "clean",
+      "head_sha": "1e57a9e5bfc3b7721ec061e47c83bbaac1a5b58e",
+      "base_sha": "82c23e219553164c24073784c529aad75acacd66",
+      "reviews": 0,
+      "requested_reviewers": 0,
+      "review_threads": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1663"
+    },
+    "main_branch_protected": true,
+    "required_status_check_contexts": [],
+    "required_status_check_checks": [],
+    "enforcement_level": "non_admins",
+    "codeowners": "* @Barrot-Agent",
+    "fallback_ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    },
+    "independent_approval_satisfied": false,
+    "merge_decision": "NO_MERGE"
+  },
+  "workflow_security_review": {
+    "scope": "All 68 changed workflow patches were enumerated and scanned for triggers, permissions, secrets, external actions, deployments, writes, and manual confirmations. Full-file review was performed on 18 higher-risk workflows. This is a bounded static review, not a completed transitive audit of every invoked script, artifact, action, and data flow.",
+    "positive_controls": [
+      "Legacy autonomous worker/merge/agent workflows are quarantined with permissions {} and if false.",
+      "Core actions including checkout, setup-python, upload-artifact, download-artifact, Jekyll, Cloudflare Wrangler, and Databricks CLI are pinned to full commit SHAs in the reviewed changes.",
+      "External operations generally require workflow_dispatch, explicit YES inputs, main-branch execution, and exact approved-main-SHA checks.",
+      "The XRP ingestion workflow has contents:read and actions:read, persist-credentials:false, and no repository write permission."
+    ],
+    "blockers_and_warnings": [
+      {
+        "workflow": ".github/workflows/barrot-ops.yml",
+        "status": "gated_not_executed",
+        "finding": "Databricks workspace import uses --overwrite on /Shared/barrot_databricks_job. It requires confirm_external_change=YES, confirm_databricks_workspace_import=YES, and an exact source SHA matching current main, but has no target backup or target-state hash/CAS guard.",
+        "disposition": "Do not dispatch. Add a target backup and non-destructive create-or-compare policy before treating this path as merge-safe."
+      },
+      {
+        "workflow": ".github/workflows/coinbase-paper-trader.yml",
+        "status": "gated_not_executed",
+        "finding": "Manual artifact-only paper simulation for BTC-USD; requires confirm=YES and exact main SHA. No paper trade was run.",
+        "disposition": "Do not dispatch without specific approval for the exact simulation, product, SHA, scope, and run."
+      },
+      {
+        "workflow": ".github/workflows/deploy-a2a-worker.yml",
+        "status": "gated_not_executed",
+        "finding": "Cloudflare Worker deployment and secret upload require confirm=YES, confirm_secret_rotation=YES, and exact main SHA.",
+        "disposition": "No deployment or secret rotation was performed."
+      },
+      {
+        "workflow": ".github/workflows/capability-10-design.yml",
+        "status": "gated_not_executed",
+        "finding": "User-supplied requirements and constraints are sent to Groq after YES confirmation and exact-main-SHA validation. The workflow relies on operator-provided public/authorized-data classification and does not perform automated redaction.",
+        "disposition": "No external-model dispatch. Require explicit data classification and redaction before use."
+      },
+      {
+        "workflow": ".github/workflows/paid-issue-publish.yml",
+        "status": "active_on_main_quarantined_on_integration",
+        "finding": "Main still has a workflow_run publisher with contents:write that commits only PAID-ISSUES.md and data/money/paid_issues.json after checking mutations_performed==0. Integration disables this publisher.",
+        "disposition": "No write or deployment was initiated by this run; automatic main data commits remain an external workflow side effect."
+      },
+      {
+        "workflow": ".github/workflows/xrp-public-ingestion.yml",
+        "status": "designed_on_integration_not_active_on_main",
+        "finding": "The workflow is absent from main (main contents API returns 404). Its hourly and daily schedules therefore are not active on main. The integration push/manual paths are read-only.",
+        "disposition": "Scheduled ingestion is not yet active in production."
+      }
+    ],
+    "no_external_model_dispatch": true,
+    "no_databricks_write": true,
+    "no_kaggle_submission": true,
+    "no_worker_deployment": true,
+    "no_secret_rotation": true,
+    "no_paper_trade": true,
+    "no_funds_transfer": true,
+    "no_real_money_action": true
+  },
+  "implementation_status": {
+    "primary_mission_manifest": {
+      "path": "barrot_agent/data/missions/primary_mission.json",
+      "status": "active",
+      "priority": 1,
+      "foundation": "barrot_v3",
+      "forecast_issuance_enabled": false,
+      "readiness_policy": "xrp_forecast_readiness_v6"
+    },
+    "executed_components": [
+      "Read-only public XRP ingestion adapters for spot tickers, order-book depth, derivatives, XRPL node information, ETF issuer pages, exchange-wallet observations, RLUSD/Circle transparency, SBI VC Trade, Morpho cbXRP markets, Coinbase cbXRP proof-of-reserves, SEC filings and CFTC reports.",
+      "Content-addressed RawReceiptArchive with SHA-256 receipts and local receipt-chain verification.",
+      "SQLite point-in-time feature store with receipt-time availability, source lineage and ordinary application-level mutation deterrence.",
+      "Chronological walk-forward evaluator with naive class-prior, momentum-sign, mean-reversion-sign and volatility-normal baselines.",
+      "Forecast ledger with fixed horizons, outcome resolution, calibration, source independence and independent Ed25519 readiness-attestation checks.",
+      "Event timeline and counter-hypothesis support with explicit known-at, capture-at and event-time separation.",
+      "Feature drift diagnostic; diagnostic status cannot authorize forecasts."
+    ],
+    "limitations": [
+      "The local receipt chain is not an independently controlled WORM or trusted timestamp anchor.",
+      "GitHub Actions raw artifacts have 90-day retention; the per-run feature-store checkpoint has 7-day retention and the daily archive 90 days.",
+      "SQLite triggers and unkeyed local hashes are not adversarially tamper-proof.",
+      "The scheduled workflow is not present on main, so scheduled production ingestion is not active.",
+      "The last ingestion counts recorded in the previous handoff remain 34 receipts (22 raw, 12 digest-only), 21 source failures, 3,235 feature-history records, 140 events, 107 scenarios, and zero walk-forward forecasts; no newer successful ingestion artifact was verified in this run."
+    ],
+    "readiness_policy": {
+      "minimum_training_samples": 100,
+      "minimum_out_of_sample_samples": 100,
+      "minimum_shadow_samples": 100,
+      "minimum_oos_effective_sample_size": 10,
+      "minimum_shadow_effective_sample_size": 10,
+      "minimum_oos_span_horizons": 10,
+      "minimum_shadow_span_horizons": 10,
+      "minimum_independent_source_clusters": 5,
+      "minimum_origins_per_source_cluster": 5,
+      "maximum_weighted_calibration_error": 0.05,
+      "required_baselines": [
+        "naive_class_prior",
+        "momentum_sign",
+        "mean_reversion_sign",
+        "volatility_normal"
+      ],
+      "candidate_must_beat_each_baseline_on": [
+        "mean_brier_score",
+        "mean_log_loss"
+      ],
+      "bootstrap_replicates": 10000,
+      "individual_confidence": 0.99375,
+      "familywise_confidence": 0.95,
+      "leakage_checks": "PASS",
+      "drift": "STABLE",
+      "shadow_evaluation": "PASS",
+      "independent_evaluator_attestation": "VALID_ED25519",
+      "forecast_issuance_enabled": false,
+      "current_status": "NOT_SATISFIED"
+    }
+  },
+  "sbic_identity": {
+    "resolution": "SBIC East Japan, SBIC Central Japan and SBIC West Japan are three distinct Japanese Small and Medium Business Investment & Consultation companies. Their official profiles call the other two sister companies. They are not SBI Holdings, Inc.; no primary source reviewed identifies them as SBI Holdings subsidiaries or operating units.",
+    "entities": [
+      {
+        "legal_name_ja": "東京中小企業投資育成株式会社",
+        "legal_name_en": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "public_label": "SBIC East Japan",
+        "corporate_number": "9011001030621",
+        "established": "1963-11-15",
+        "region": "Shizuoka, Nagano, Niigata and eastward; 18 prefectures",
+        "shareholders": "Local governments (18 prefectures), chambers of commerce, financial institutions and operating companies",
+        "source": "https://www.sbic.co.jp/company/profile/"
+      },
+      {
+        "legal_name_ja": "名古屋中小企業投資育成株式会社",
+        "legal_name_en": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "public_label": "SBIC Central Japan",
+        "established": "1963-11-18",
+        "region": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+        "source": "https://www.sbic-cj.co.jp/company/about/"
+      },
+      {
+        "legal_name_ja": "大阪中小企業投資育成株式会社",
+        "legal_name_en": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "public_label": "SBIC West Japan",
+        "established": "1963-11-20",
+        "region": "Fukui, Shiga, Nara, Wakayama and westward; 24 prefectures",
+        "source": "https://www.sbic-wj.co.jp/profiles/profile/"
+      }
+    ],
+    "distinct_comparator": {
+      "legal_name": "SBI Holdings, Inc.",
+      "established": "1999-07-08",
+      "listed_market": "Tokyo Stock Exchange Prime Market",
+      "stock_code": "8473",
+      "meaning": "Strategic Business Innovator",
+      "source": "https://www.sbigroup.co.jp/english/company/information/profile.html"
+    },
+    "chatgpt_evidence": {
+      "finding": "Tokyo SBIC hosted a public free seminar on 2025-02-26 titled 'The Present and Future of Generative AI (ChatGPT)'. The announced speaker was a Microsoft Japan executive/evangelist, and the program included ChatGPT demonstration. Tokyo SBIC also ran an investee-company manufacturing AI/ML training on 2025-06-12 to 2025-06-13 with ChatGPT use and Copilot curriculum. Osaka SBIC ran a generative-AI workshop for investee executives on 2025-12-15 and an AI-agent seminar on 2026-01-29.",
+      "interpretation": "Evidence of SBIC educational programming and training, not an OpenAI partnership, corporate affiliation, product integration, or ChatGPT-SBIC data-sharing agreement.",
+      "sources": [
+        "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf",
+        "https://www.sbic.co.jp/training/20250612co/",
+        "https://www.sbic-wj.co.jp/seminar/16939/",
+        "https://www.sbic-wj.co.jp/seminar/18038/"
+      ]
+    }
+  },
+  "institutional_relationships": {
+    "sbi_ripple": {
+      "ownership": "SBI Group 60%; Ripple 40% of SBI Ripple Asia, per SBI's FY2024 results presentation dated 2025-05-09.",
+      "ripple_equity": "SBI Holdings' official 2025-06-09 release says SBI Group held approximately 9% of Ripple as its largest external shareholder at that time. This is a dated company disclosure, not a verified November 2026 cap-table snapshot.",
+      "operating_rail": "SBI Remit began an international remittance service using XRP as a bridge currency in 2021; later SBI disclosures list expansion to Philippines, Vietnam and Indonesia.",
+      "rlusd_japan": "SBI VC Trade, a consolidated subsidiary of SBI Holdings, agreed with Ripple subsidiary Standard Custody & Trust Company in 2025 to support Japanese RLUSD issuance/distribution; SBI VC Trade began RLUSD handling on 2026-06-24.",
+      "xrpl_projects": "SBI Ripple Asia's 2026-02-26 tokenized-deposit/deposit-money POC and 2026-02-24 Japan-Korea remittance study contemplate XRPL use; neither is proof of a live production bank deployment.",
+      "sources": [
+        "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf",
+        "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+        "https://www.sbigroup.co.jp/news/2025/0822_15680.html",
+        "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+        "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+        "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html"
+      ]
+    },
+    "sbi_circle": {
+      "ownership": "SBI Holdings and Circle agreed a 50/50 Japan stablecoin JV; the SBI Circle Holdings company was established in 2025.",
+      "equity": "SBI Holdings and SBI Shinsei Bank acquired $50 million of Circle shares at Circle's 2025 IPO, $25 million each.",
+      "usdc_distribution": "SBI VC Trade launched public USDC trading in Japan in March 2025; SBI's 2026-05-12 release confirms the JV was established and describes the ongoing relationship.",
+      "arc_investment": "SBI Holdings participated in Circle's ARC Token presale in 2026-05. Arc is Circle's separate L1 initiative, not XRPL.",
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+        "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+        "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf"
+      ]
+    },
+    "coinbase_circle": {
+      "relationship": "Circle remains USDC issuer. Coinbase and Circle's 2023 agreement includes Coinbase equity participation and revenue sharing based on USDC balances on Coinbase and third-party distribution/usage. Coinbase's 2024 Form 10-K describes an initial three-year term.",
+      "xrpl": "Circle's current USDC page lists XRPL among native USDC networks. USDC on XRPL is not XRP; stablecoin transfer growth must not be treated as XRP asset demand.",
+      "sources": [
+        "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+        "https://www.coinbase.com/en-gb/blog/ushering-in-the-next-chapter-for-usdc",
+        "https://investor.coinbase.com/files/doc_financials/2024/q4/Coinbase-Global-Inc-2024-10K-for-IR.pdf",
+        "https://www.circle.com/usdc"
+      ]
+    },
+    "coinbase_ripple": {
+      "relationship": "Coinbase and Ripple announced an RLUSD distribution partnership on 2026-10-28. At launch RLUSD was available through Coinbase Prime, Exchange and retail app, with deposits/withdrawals across XRPL, Base and Ethereum and 1:1 USD conversion. Ripple said it would provide liquidity on Base.",
+      "collateral_status": "RLUSD collateral support for Coinbase Global Exchange customers was described as a future follow-on, not a live launch feature in the announcement.",
+      "xrp_caveat": "This establishes RLUSD distribution, not XRP purchases, XRP collateral, or proof of XRP bridge-asset usage.",
+      "sources": [
+        "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+        "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase"
+      ]
+    },
+    "counter_hypothesis": "SBI, Coinbase and Circle can expand stablecoin distribution and tokenized-deposit rails using USDC, RLUSD, bank deposits and Circle Arc without creating proportional demand for XRP. XRP demand must be measured through bridge-asset usage, XRP liquidity, XRP-denominated collateral, exchange flows and verified settlement volumes, not inferred from stablecoin announcements."
+  },
+  "market_snapshot": {
+    "capture_observed_at_utc": "2026-11-19T02:11:18Z",
+    "raw_http_bytes_retained": false,
+    "sha256_receipt": null,
+    "status": "research_only_unreceipted_web_api_observation",
+    "kraken_xrp_usd": {
+      "last": 0.96111,
+      "bid": 0.96133,
+      "bid_size_xrp": 5202,
+      "ask": 0.96134,
+      "ask_size_xrp": 218,
+      "spread_bps": 0.104,
+      "top_bid_to_ask_size_ratio": 23.86,
+      "vwap_24h": 0.98116228,
+      "last_vs_vwap_percent": -2.044,
+      "open_24h": 0.96637,
+      "last_vs_open_percent": -0.544,
+      "high_24h": 1.00677,
+      "low_24h": 0.95363,
+      "volume_24h_xrp": 44481339.449,
+      "provider_timestamp": "not supplied in response; capture time recorded by research run",
+      "source": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "okx_xrp_usdt": {
+      "last": 0.9618,
+      "bid": 0.9617,
+      "bid_size_xrp": 4270.855674,
+      "ask": 0.9618,
+      "ask_size_xrp": 146.22198,
+      "spread_bps": 1.04,
+      "top_bid_to_ask_size_ratio": 29.21,
+      "open_24h": 0.9754,
+      "last_vs_open_percent": -1.394,
+      "high_24h": 1.0079,
+      "low_24h": 0.9546,
+      "volume_24h_xrp": 31607761.853,
+      "provider_timestamp_utc": "2026-11-19T01:53:55.770Z",
+      "source": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    "limitations": [
+      "Kraken and OKX snapshots are not synchronized; OKX is quoted in USDT and was not normalized to USD.",
+      "Only top-of-book quantities were captured, not full depth or executable slippage curves.",
+      "Large displayed top-of-book size ratios are one-snapshot observations and can be transient or spoofed.",
+      "These observations do not support a directional forecast."
+    ]
+  },
+  "flow_reconciliation": {
+    "exchange_wallets": {
+      "attributed_xrp": 22190000000,
+      "wallets": 707,
+      "exchanges": 24,
+      "as_of_utc": "2026-11-18T08:00:00Z",
+      "same_wallet_7d_change_xrp": -151900000,
+      "same_wallet_30d_change_xrp": -390100000,
+      "caveats": "Includes cold storage and wrapped-asset reserves; attributed wallet balance is not tradable float. New wallet labels can create false apparent flows if coverage is not held constant.",
+      "source": "https://xrp-insights.com/exchange-balances"
+    },
+    "etf_flow_conflicts": [
+      {
+        "provider": "XRP Insights",
+        "window": "2026-11-16 to 2026-11-17",
+        "reported_flow_xrp": 159134,
+        "universe": "six spot funds plus BITW; GXRP flow excluded while a gap is corrected",
+        "source": "https://xrp-insights.com/data"
+      },
+      {
+        "provider": "CryptoKeyhole",
+        "window": "2026-11-17 partial",
+        "reported_flow_xrp": -3251,
+        "universe": "2 of 4 daily-readable funds had reported; 2 issuers pending",
+        "source": "https://cryptokeyhole.com/etf-flows/xrp/"
+      },
+      {
+        "provider": "Alpha Finance",
+        "window": "2026-11-17",
+        "reported_flow_usd": -6100000,
+        "universe": "five funds",
+        "source": "https://alphafinance.io/etf/xrp/"
+      },
+      {
+        "provider": "CryptoTuts",
+        "window": "2026-11-11 to 2026-11-17",
+        "reported_flow_usd": -7230000,
+        "universe": "five funds",
+        "source": "https://cryptotuts.co/xrp/etf"
+      }
+    ],
+    "interpretation": "Do not average these values. Their coverage, units, completeness and methodology differ. Issuer-level source files and per-fund holdings must be reconciled before model admission."
+  },
+  "exact_phrase_research": {
+    "ask_coin": "Permission Coin (ASK) remains a plausible exact-name match; no primary-source XRP, XRPL or Ripple relationship was established.",
+    "actual_capital": "No new primary evidence establishes proprietary XRP purchases or verified net capital entering XRP. Commentary and securities disclosures must not be relabeled as XRP spot inflows.",
+    "sbic_chatgpt": "Official SBIC East/Central/West materials establish ChatGPT/AI seminars and training only; no OpenAI partnership, integration or affiliation was found.",
+    "camilla_kamilah_stevenson": "No additional video was promoted to verified inventory. The previously verified Paul Barron guest appearance is supported by publisher and iHeart episode records, but a self-authenticated channel ownership link remains unavailable. The separate 'I Moved My XRP Off The Exchanges' candidate channel remains unverified and excluded."
+  },
+  "prediction": {
+    "directional_forecast": "not issued",
+    "paper_trade": "not executed",
+    "live_candidate": "none admitted",
+    "readiness_status": "NOT_SATISFIED",
+    "reason": "No trained XRP-specific candidate has demonstrated leakage-safe out-of-sample superiority over all required baselines with calibrated probabilities, stable drift, independent shadow outcomes, source-clustered uncertainty intervals and independent Ed25519 attestation."
+  },
+  "source_independence": {
+    "primary_corporate_sources": "SBI, Ripple, Coinbase, Circle and SBIC pages are primary for their own corporate disclosures but are not independent corroboration of each other's claims.",
+    "market_sources": "Kraken and OKX are separate venue observations. ETF aggregators may derive from overlapping issuer files and must not be counted as independent capital-flow sources.",
+    "data_retention": "Web-rendered API responses in this research artifact are not raw HTTP byte captures and have no raw-source SHA-256 receipt."
+  },
+  "next_actions": [
+    "Complete the remaining transitive security audit of all 68 changed workflow files and invoked scripts.",
+    "Add a non-destructive backup/target-state guard for the Databricks workspace import or remove that overwrite path.",
+    "Obtain independent review and verify required checks and bypass permissions before any merge.",
+    "Resolve main Pages publication side effects and the active paid-issue publisher before merge.",
+    "Merge only after exact-head CI, full suite, security gates, approvals and governance requirements are satisfied.",
+    "After merge, verify merge commit, fetch main, verify files and run main CI; close only exact duplicates after verified integration.",
+    "Activate scheduled XRP ingestion only after the workflow is present on main and the required merge gates pass.",
+    "Repair SEC/CFTC source failures, verify raw-byte retention and independent timestamp anchoring, and reconstruct a durable point-in-time feature history.",
+    "Build synchronized multi-venue spot/depth/derivatives/flow/collateral histories and complete leakage-safe walk-forward and shadow evaluation before enabling any forecast."
+  ],
+  "sources": [
+    {
+      "type": "primary_corporate_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "publisher": "SBIC East Japan"
+    },
+    {
+      "type": "primary_corporate_profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "publisher": "SBIC Central Japan"
+    },
+    {
+      "type": "primary_corporate_profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "publisher": "SBIC West Japan"
+    },
+    {
+      "type": "primary_corporate_profile",
+      "url": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+      "publisher": "SBI Holdings"
+    },
+    {
+      "type": "primary_seminar_document",
+      "url": "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf",
+      "publisher": "SBIC East Japan",
+      "published": "2025-02-26"
+    },
+    {
+      "type": "primary_training_page",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "publisher": "SBIC East Japan",
+      "published": "2025-06-12"
+    },
+    {
+      "type": "primary_investor_presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf",
+      "publisher": "SBI Holdings",
+      "published": "2025-05-09"
+    },
+    {
+      "type": "primary_press_release",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "publisher": "SBI Holdings and SBI Shinsei Bank",
+      "published": "2025-06-09"
+    },
+    {
+      "type": "primary_press_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+      "publisher": "SBI Holdings",
+      "published": "2026-05-12"
+    },
+    {
+      "type": "primary_press_release",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "publisher": "SBI VC Trade and Ripple",
+      "published": "2026-06-24"
+    },
+    {
+      "type": "primary_press_release",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "publisher": "Ripple",
+      "published": "2026-10-28"
+    },
+    {
+      "type": "primary_press_release",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "publisher": "Coinbase",
+      "published": "2026-10-28"
+    },
+    {
+      "type": "primary_corporate_statement",
+      "url": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "publisher": "Circle",
+      "published": "2023"
+    },
+    {
+      "type": "primary_corporate_statement",
+      "url": "https://www.circle.com/usdc",
+      "publisher": "Circle",
+      "published": "accessed 2026-11-19"
+    },
+    {
+      "type": "exchange_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "publisher": "Kraken",
+      "published": "provider timestamp not supplied"
+    },
+    {
+      "type": "exchange_api",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "publisher": "OKX",
+      "published": "2026-11-19T01:53:55.770Z"
+    },
+    {
+      "type": "secondary_aggregator",
+      "url": "https://xrp-insights.com/data",
+      "publisher": "XRP Insights"
+    },
+    {
+      "type": "secondary_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "publisher": "CryptoKeyhole"
+    },
+    {
+      "type": "secondary_aggregator",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "publisher": "Alpha Finance"
+    },
+    {
+      "type": "secondary_aggregator",
+      "url": "https://cryptotuts.co/xrp/etf",
+      "publisher": "CryptoTuts"
+    }
+  ]
+}
