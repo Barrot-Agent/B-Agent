@@ -1,6 +1,8 @@
 """Regression tests for the legacy XRP telemetry report's safety boundary."""
 
 import asyncio
+import runpy
+from pathlib import Path
 
 import pytest
 
@@ -39,3 +41,20 @@ def test_legacy_anchor_is_metadata_not_a_market_feature(tmp_path):
 def test_legacy_anchor_rejects_invalid_configuration(value):
     with pytest.raises(ValueError, match="finite number"):
         CouncilReportNode(stability_anchor=value)
+
+
+def test_cli_entrypoint_writes_only_the_no_data_status_report(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    script_path = (
+        Path(__file__).parents[1]
+        / "barrot_agent"
+        / "analysis"
+        / "xrp_telemetry_matrix.py"
+    )
+
+    runpy.run_path(str(script_path), run_name="__main__")
+
+    report = (tmp_path / "COUNCIL_REVIEW.md").read_text(encoding="utf-8")
+    assert "NO_VERIFIED_TELEMETRY" in report
+    assert "NOT_ISSUED" in report
+    assert "No accumulation recommendation" in report
