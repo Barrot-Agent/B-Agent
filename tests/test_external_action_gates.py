@@ -45,14 +45,17 @@ def test_model_upload_requires_approval_and_validated_destination() -> None:
     assert "--trust-remote-code" not in content
 
 
-def test_self_upgrade_requires_explicit_approval_and_main_base() -> None:
+def test_self_upgrade_requires_explicit_approval_and_preserves_main() -> None:
     content = _read("barrot-self-upgrade.yml")
     assert "confirm_external_change" in content
     assert "default: NO" in content
     assert "inputs.confirm_external_change == 'YES'" in content
-    assert "github.ref == 'refs/heads/main'" in content
+    assert "github.ref == 'refs/heads/main'" not in content
     assert "ref: ${{ github.ref_name }}" in content
     assert "python3 scripts/barrot_self_upgrade.py" in content
+    assert "Record origin/main before the run" in content
+    assert "git ls-remote origin refs/heads/main" in content
+    assert 'test "${main_after}" = "${MAIN_BEFORE}"' in content
     assert "--persist-audit-report" not in content
     assert "gh pr merge" not in content
 
