@@ -12,7 +12,7 @@ on:
           - YES
         default: NO
       confirm_databricks_workspace_import:
-        description: "Set to YES only to authorize overwriting /Shared/barrot_databricks_job in Databricks for this run."
+        description: "Set to YES only to create /Shared/barrot_databricks_job if absent. Existing targets are never overwritten."
         required: true
         type: choice
         options:
@@ -70,7 +70,7 @@ jobs:
         if: ${{ inputs.confirm_databricks_workspace_import == 'YES' }}
         uses: databricks/setup-cli@9625fdde9ba2607df0087e0d3ec7449198bf2180 # v1.23.0; signed upstream commit
 
-      - name: Run Databricks Job
+      - name: Create Databricks workspace object (no overwrite)
         if: ${{ inputs.confirm_databricks_workspace_import == 'YES' }}
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
@@ -80,7 +80,7 @@ jobs:
             echo "::error::DATABRICKS_HOST and DATABRICKS_TOKEN are required after explicit Databricks import approval"
             exit 1
           fi
-          databricks workspace import src/barrot_databricks_job.py /Shared/barrot_databricks_job --language PYTHON --overwrite
+          databricks workspace import src/barrot_databricks_job.py /Shared/barrot_databricks_job --language PYTHON
 
       - name: Kaggle Data Refresh
         if: ${{ inputs.confirm_kaggle_dataset_download == 'YES' }}

@@ -61,4 +61,5 @@ jobs:
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          BARROT_CONFIRM_EXTERNAL_CHANGE: ${{ inputs.confirm_external_change }}
         run: python scripts/deploy_databricks.py

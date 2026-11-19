@@ -27,6 +27,7 @@ import sys
 from pathlib import Path
 
 from databricks.sdk import WorkspaceClient
+from databricks.sdk.errors import ResourceDoesNotExist
 from databricks.sdk.service import jobs as sdk_jobs
 from databricks.sdk.service.workspace import ImportFormat, Language
 from databricks.sdk.service.compute import Environment
@@ -93,6 +94,27 @@ def _validate_connection(client: WorkspaceClient) -> None:
     log.info("Databricks authentication preflight succeeded.")
 
 
+def _require_external_approval() -> None:
+    if os.environ.get("BARROT_CONFIRM_EXTERNAL_CHANGE") != "YES":
+        log.error("External Databricks changes require BARROT_CONFIRM_EXTERNAL_CHANGE=YES for this specific run.")
+        sys.exit(2)
+
+
+def _preflight_workspace_target_absent(client: WorkspaceClient, path: str) -> None:
+    """Refuse an existing or unverifiable workspace target before any writes."""
+    try:
+        client.workspace.get_status(path=path)
+    except ResourceDoesNotExist:
+        return
+    except Exception:
+        raise RuntimeError(
+            "Databricks workspace target preflight failed; refusing all workspace changes."
+        ) from None
+    raise RuntimeError(
+        f"Databricks workspace target already exists at {path}; refusing overwrite."
+    )
+
+
 def _ensure_folder(client: WorkspaceClient, path: str) -> None:
     """Create a destination folder or fail instead of hiding permission errors."""
     client.workspace.mkdirs(path=path)
@@ -101,9 +123,11 @@ def _ensure_folder(client: WorkspaceClient, path: str) -> None:
 
 def _upload_files(client: WorkspaceClient) -> int:
     """Upload Python (and other text) files preserving directory structure."""
+    _preflight_workspace_target_absent(client, WS_PATH)
+    _ensure_folder(client, WS_PATH)
     uploaded = 0
     failed_paths: list[str] = []
-    for local_file in LOCAL_DIR.rglob("*"):
+    for local_file in sorted(LOCAL_DIR.rglob("*")):
         if local_file.is_dir():
             continue
         rel = local_file.relative_to(LOCAL_DIR)
@@ -125,7 +149,7 @@ def _upload_files(client: WorkspaceClient) -> int:
         try:
             client.workspace.import_(
                 path=dest,
-                overwrite=True,
+                overwrite=False,
                 format=ImportFormat.AUTO,
                 content=b64,
             )
@@ -224,6 +248,7 @@ def _run_job(client: WorkspaceClient, job_id: int) -> None:
 
 
 def main() -> None:
+    _require_external_approval()
     has_host = bool(DATABRICKS_HOST)
     has_token = bool(DATABRICKS_TOKEN)
     if has_host != has_token:
@@ -249,7 +274,6 @@ def main() -> None:
         sys.exit(2)
 
     log.info("Connected to Databricks workspace: %s", client.config.host)
-    _ensure_folder(client, WS_PATH)
     n = _upload_files(client)
     log.info("Uploaded %d file(s) to %s", n, WS_PATH)
 
