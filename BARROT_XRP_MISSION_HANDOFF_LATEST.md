@@ -3741,3 +3741,21 @@ GitHub repository access was tested and worked. No authenticated data-flow test 
 - **EXECUTED:** complete main/integration tree comparison; open-PR inventory; branch ancestry and changed-file inventory; exact-head PR and push CI review; full-suite log inspection; dependency/fail-closed/money-audit review; targeted high-risk workflow review; canonical handoff update.
 - **VERIFIED:** all 4,293 full-suite tests and required coverage/package checks passed on exact pre-update head `4416d531`; dependency audit, Pages validation, core tests and packaged mission verification passed on that head.
 - **NOT VERIFIED:** post-handoff-update head CI until it completes; full transitive workflow audit; branch-protection approval/check requirements; production scheduled ingestion; independent WORM retention; synchronized full-depth market data; nine-platform live coordination; predictive performance; merge readiness.
+
+
+### Run 39 follow-up — current-main reconciliation — 2026-11-19 06:38 UTC
+
+Main advanced during this run from `82c23e219553164c24073784c529aad75acacd66` to `a5e9606a71975b08cb681eee373a2d6dc1c36b55`. The new main commit, [a5e9606](https://github.com/Barrot-Agent/B-Agent/commit/a5e9606a71975b08cb681eee373a2d6dc1c36b55), is an automated paid-issue snapshot refresh changing only `PAID-ISSUES.md` and `data/money/paid_issues.json`; no application or workflow source changed.
+
+The existing integration branch contained older versions of those two generated files. Their content was compared directly; the current-main versions were applied to the integration tree, then recorded in a two-parent merge commit `22b7d94654d9e1def31db20dd8818e46f5f37e03` with parents `037c5faf19d100505cbeee6f59e8a9752aac584a` (integration) and `a5e9606a71975b08cb681eee373a2d6dc1c36b55` (main). The branch ref advanced with a non-forced update and an expected-old-SHA lease; no history was rewritten.
+
+After reconciliation, GitHub compare reports **406 commits ahead, zero behind**. Main has 1,739 complete tree entries; integration has 2,996 complete entries; every main path is present. PR #1663 remains the same single integration PR, now based on the current main SHA and still draft. The 68-workflow and 1,449-file change inventory is unchanged.
+
+Fresh exact-head checks for merge commit `22b7d94654d9e1def31db20dd8818e46f5f37e03` started immediately:
+- PR CI [44473593659](https://github.com/Barrot-Agent/B-Agent/actions/runs/44473593659): in progress at handoff.
+- PR dependency audit [44473593600](https://github.com/Barrot-Agent/B-Agent/actions/runs/44473593600): in progress.
+- PR money audit [44473593617](https://github.com/Barrot-Agent/B-Agent/actions/runs/44473593617): in progress.
+- Push dependency audit [44473587192](https://github.com/Barrot-Agent/B-Agent/actions/runs/44473587192): in progress.
+- Fail-closed runs [44473593593](https://github.com/Barrot-Agent/B-Agent/actions/runs/44473593593) and [44473587261](https://github.com/Barrot-Agent/B-Agent/actions/runs/44473587261): passed, but remain echo-only rather than substantive readiness gates.
+
+This is a branch-history reconciliation, not a PR merge. No external action was performed. **NO MERGE** remains in force. The new documentation update below creates another head and therefore requires its own exact-head CI; no test result is transferred.
