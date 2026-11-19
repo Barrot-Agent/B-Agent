@@ -7,7 +7,7 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 1. **Manifest** — tempo, meter, scale, instrument roles, beat-relative events, durations, velocities, and section energy.
 2. **Audio analysis** — optional `librosa` adapter extracts tempo, onset timing, RMS dynamics, and an estimated scale profile. It does not separate instruments from a mixed recording. Install with `pip install -e ".[music]"`.
 3. **Transmutation** — controlled changes to phase, duration, swing, and dynamics while locked constraints remain fixed.
-4. **Original composition** — seeded, repeatable composition of new diatonic harmony, melody, bass, and percussion patterns. This creates new material; it does not reproduce source pitches, lyrics, hooks, or distinctive arrangements.
+4. **Original composition** — seeded, repeatable composition of new diatonic harmony, melody, bass, and percussion patterns. By default, it preserves the supplied instrument palette; an explicit setting can expand it. This creates new material; it does not reproduce source pitches, lyrics, hooks, or distinctive arrangements.
 5. **MIDI export** — optional `pretty_midi` adapter exports generated pitched notes and mapped percussion events. Existing files are never overwritten.
 6. **Evaluation** — verify inventory preservation and measure whether a transformation is meaningfully different.
 7. **Recursive memory** — append every attempt, including failures. Promote a reusable lesson only after the evaluator passes and the user gives explicit positive feedback.
