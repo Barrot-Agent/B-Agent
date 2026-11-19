@@ -254,6 +254,14 @@ def test_external_side_effects_are_bound_to_exact_approved_main_commit() -> None
         assert "ref: main" in content, name
         assert "persist-credentials: false" in content, name
 
+    ops = _read("barrot-ops.yml")
+    assert "expected_main_sha" in ops
+    assert "EXPECTED_MAIN_SHA" in ops
+    assert "ref: ${{ inputs.expected_main_sha }}" in ops
+    assert "git rev-parse HEAD" in ops
+    assert "git ls-remote origin refs/heads/main" in ops
+    assert "dbc-82d64fee-1c2e.cloud.databricks.com" in ops
+
     approval = _read("barrot-approve-pr.yml")
     assert "github.ref == 'refs/heads/main'" in approval
 

@@ -19,6 +19,10 @@ on:
           - NO
           - YES
         default: NO
+      expected_main_sha:
+        description: "Exact 40-character current main commit approved for this single run."
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -29,12 +33,34 @@ concurrency:
 
 jobs:
   databricks-create:
-    if: ${{ github.ref == 'refs/heads/main' && inputs.confirm_databricks_workspace_create == 'YES' }}
+    if: ${{ github.ref == 'refs/heads/main' && inputs.expected_main_sha != '' && inputs.confirm_databricks_workspace_create == 'YES' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          ref: ${{ inputs.expected_main_sha }}
+          fetch-depth: 1
           persist-credentials: false
+
+      - name: Verify exact approved main revision
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -euo pipefail
+          if [[ ! "${EXPECTED_MAIN_SHA}" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::expected_main_sha must be a full 40-character lowercase commit SHA."
+            exit 1
+          fi
+          actual_sha="$(git rev-parse HEAD)"
+          current_main_sha="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          if [[ "${actual_sha}" != "${EXPECTED_MAIN_SHA}" ]]; then
+            echo "::error::Checked-out commit does not match expected_main_sha."
+            exit 1
+          fi
+          if [[ "${current_main_sha}" != "${EXPECTED_MAIN_SHA}" ]]; then
+            echo "::error::main moved after approval; refusing external operation."
+            exit 1
+          fi
 
       - name: Setup Databricks CLI v1.25.0
         uses: databricks/setup-cli@4f41a4c5291b531c1bb1e5760d677999cd484f89 # v1.25.0
@@ -50,11 +76,14 @@ jobs:
             exit 1
           fi
 
-          host="${DATABRICKS_HOST%/}"
-          case "${host}" in
-            https://*|http://*) ;;
-            *) host="https://${host}" ;;
-          esac
+          host="${DATABRICKS_HOST#https://}"
+          host="${host#http://}"
+          host="${host%/}"
+          if [[ "${host}" != "dbc-82d64fee-1c2e.cloud.databricks.com" ]]; then
+            echo "::error::DATABRICKS_HOST is not the approved workspace host; refusing to send the token."
+            exit 1
+          fi
+          host="https://${host}"
 
           target="/Shared/barrot_databricks_job"
           status_file="$(mktemp)"
@@ -83,12 +112,34 @@ jobs:
           databricks workspace import src/barrot_databricks_job.py "${target}" --language PYTHON
 
   kaggle-download:
-    if: ${{ github.ref == 'refs/heads/main' && inputs.confirm_kaggle_dataset_download == 'YES' }}
+    if: ${{ github.ref == 'refs/heads/main' && inputs.expected_main_sha != '' && inputs.confirm_kaggle_dataset_download == 'YES' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          ref: ${{ inputs.expected_main_sha }}
+          fetch-depth: 1
           persist-credentials: false
+
+      - name: Verify exact approved main revision
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -euo pipefail
+          if [[ ! "${EXPECTED_MAIN_SHA}" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::expected_main_sha must be a full 40-character lowercase commit SHA."
+            exit 1
+          fi
+          actual_sha="$(git rev-parse HEAD)"
+          current_main_sha="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          if [[ "${actual_sha}" != "${EXPECTED_MAIN_SHA}" ]]; then
+            echo "::error::Checked-out commit does not match expected_main_sha."
+            exit 1
+          fi
+          if [[ "${current_main_sha}" != "${EXPECTED_MAIN_SHA}" ]]; then
+            echo "::error::main moved after approval; refusing external operation."
+            exit 1
+          fi
 
       - name: Download public Kaggle dataset to ephemeral runner
         env:

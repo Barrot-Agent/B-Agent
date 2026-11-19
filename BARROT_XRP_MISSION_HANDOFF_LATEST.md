@@ -6526,3 +6526,54 @@ The conservative workflow audit remains **33 of 68 changed workflow definitions 
 - **NOT VERIFIED:** Independent WORM/timestamp anchoring; scheduled XRP capture on main; complete 68-workflow transitive semantic audit; effective branch-protection requirements; independent PR approval; publication authorization; learned XRP-specific out-of-sample superiority; calibrated real-data performance; shadow evaluation; independent forecast attestation; eight external platform connections.
 
 **Next concrete action:** continue the remaining 35-workflow and invoked-script audit, preserving exact evidence and side-effect boundaries. Then resolve independent review, branch-protection visibility and Pages publication authorization. Improve external immutable raw-source retention and build a synchronized receipt-backed XRP history before training a learned candidate. Forecast issuance remains disabled. No workflow dispatch, provider-secret use, deployment, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 11 continuation — exact-head verification and workflow security pass — 2026-11-19T23:12Z
+
+### Exact-head CI on predecessor f3d3224 — VERIFIED
+
+The exact-head PR CI [44634490766](https://github.com/Barrot-Agent/B-Agent/actions/runs/44634490766) completed successfully on `f3d32243d26e131e74fb3d4a01aab2508bd48029`:
+
+- Full repository suite: **4,375 passed, 1 skipped, 11 warnings, 19 subtests passed** in 156.52 seconds.
+- Inclusive coverage: **71.34%**; legacy/core coverage: **81%**.
+- Mission floors: AGI orchestrator 52%, XRP telemetry 92%, MMI 92%, Barrot integration 62%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%.
+- Core suite: **730 passed, 8 subtests passed**.
+- Pages build was validation-only and passed; it emitted Liquid-template warnings for literal brace placeholders in `reporting/report_template.md`. No publication occurred.
+- PR dependency audit [44634490784](https://github.com/Barrot-Agent/B-Agent/actions/runs/44634490784), push dependency audit [44634482141](https://github.com/Barrot-Agent/B-Agent/actions/runs/44634482141), and money audit [44634490835](https://github.com/Barrot-Agent/B-Agent/actions/runs/44634490835) passed.
+- Exact-head gate [44634491622](https://github.com/Barrot-Agent/B-Agent/actions/runs/44634491622) failed closed: PR remains draft, no independent approval, branch-protection endpoint returns HTTP 403 and required/bypass policy cannot be verified. No merge.
+
+### Workflow security review — EXECUTED
+
+All **68 of 68 changed workflow YAML files** received a trigger, permissions, secrets, action-pinning and command-surface scan during this run. Nine selected workflow bodies and eight directly invoked scripts were inspected in greater depth. This supersedes the older 33/68 surface-review count. Full semantic review of every transitive script and data flow remains incomplete; do not describe it as complete.
+
+Corrections to earlier workflow-audit notes:
+
+- Current integration versions of `content-pipeline.yml`, `entity-relations.yml`, `financial-data-refresh.yml`, `capability-10-design.yml` and `capability-discovery.yml` require a full `expected_main_sha`, check the checked-out commit against the remote main SHA, and only then make their explicitly confirmed Groq research call. The older Run210 note that content-pipeline and entity-relations lacked this gate is stale.
+- Current `pillars-check.yml` scopes GitHub App and Databricks secrets to their individual manually dispatched, explicitly confirmed read-only probe steps. The scheduled public-check step does not receive those secrets. The older note that scheduled runs inject those secrets is stale.
+- `xrp-public-ingestion.yml` is scheduled on the default branch and uses public/read-only endpoints. It writes run artifacts, not main. Raw receipts have a 90-day artifact retention; the feature-store artifact is shorter-lived. This is not independent WORM retention or an external trusted timestamp anchor.
+- `deploy-a2a-worker.yml` still requires an explicit deployment confirmation and a separate secret-rotation confirmation; neither was supplied or executed. `barrot-restart-space.yml` requires explicit confirmation and exact source SHA. `kaggle-competitions.yml` requires exact source SHA, an explicit per-run YES and an allowlisted competition. No deployment, rotation, restart or submission occurred.
+- `sync-huggingface.yml`, `sync-self-hosted-brain.yml`, `barrot-self-upgrade.yml`, `barrot-merge.yml`, `coinbase-paper-trader.yml` and `webmcp-live-sandbox.yml` remain disabled or quarantined.
+
+A remaining gap was found in `barrot-ops.yml`: its Databricks create and Kaggle download jobs had separate YES gates and create-only behavior, but did not bind the run to an exact current main SHA. The Databricks host also came directly from a secret without an allowlist. This consolidated integration commit adds a required 40-character `expected_main_sha`, checks both checkout SHA and remote main SHA before either operation, and restricts the Databricks token destination to the repository's already documented workspace host. The test suite now asserts these controls. These workflows were not dispatched.
+
+### SEC primary-source ETF flow reconciliation — RESEARCH ONLY
+
+The September 30, 2026 SEC Form 10-Q filings sharpen the cash-versus-in-kind distinction:
+
+- Bitwise's July–September quarter, derived by subtracting its June 30 six-month cash-flow totals from the September 30 nine-month totals, shows approximately **$127.973M cash creations**, **$38.581M cash redemptions**, and **$89.392M net cash creations**. In-kind XRP creations were approximately **$82.738M**, with no additional Q3 in-kind redemptions.
+- Bitwise's reported Q3 increase in net assets from capital-share transactions was **$177.948M**. Net cash creations plus net in-kind creations sum to **$172.130M**, leaving a **$5.818M settlement reconciliation**. The June 30 balance sheet carried a $5.818M receivable for XRP sold and matching payable for redemptions; both were cleared by September 30. Do not mislabel that settlement item as new Q3 capital or immediate spot demand.
+- Franklin's July–September filing reports approximately **$35.793M cash XRP purchases** and **$54.858M in-kind XRP contributions**, with no XRP sold for share redemptions during the reported period.
+- These issuer filings are not a complete market-wide ETF-flow series. Cash subscriptions, XRP purchases, in-kind contributions, NAV changes and secondary-market share trading are distinct quantities. The trust does not itself execute on digital-asset markets; authorized participants/liquidity providers may use brokered, dealer, principal-to-principal or exchange venues.
+- Bitwise's filing identifies Coinbase Custody Trust Company as XRP custodian and Coinbase as its principal market reference at September 30, 2026 (Lukka Prime Rate $1.4886). This is a documented Coinbase custody/market-reference role for the fund, not evidence of a Ripple-Coinbase corporate partnership.
+
+Primary sources: [Bitwise XRP ETF September 30, 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/2039525/000119312526451776/xrp-20260930.htm), [Bitwise June 30, 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/2039525/000119312526346245/xrp-20260630.htm), [Franklin XRP ETF September 30, 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/2059438/000114036126043720/ef20083832_10q.htm).
+
+These filings were reviewed from public SEC HTML during this run; raw HTTP bytes were not retained in the current run's receipt archive. The figures remain research evidence, not model-eligible feature rows, until the scheduled collector captures the primary filing bytes and timestamps.
+
+### Current status and next action
+
+Main remains `e1c3634df28f488819185b7d5697d474bc0bcb9e`. PR #1663 remains the sole consolidated XRP/V3 integration; 14 PRs remain open. The safety and handoff changes in this checkpoint are a single fast-forward commit on the existing integration branch; the GitHub PR head is authoritative for its new SHA. Exact-head CI for that new head must complete before any merge assessment.
+
+Forecast status remains **NOT_ISSUED**. No directional model has demonstrated leakage-safe out-of-sample superiority, no shadow evaluation has been completed, and independent evaluator attestation is absent. No external platform dispatch, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
