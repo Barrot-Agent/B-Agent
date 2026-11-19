@@ -81,7 +81,7 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
         "scheduled_sources": 51,
     }
     ingestion = data["prediction_engine"]["latest_ingestion"]
-    assert ingestion["run_id"] == 44301868145
+    assert ingestion["run_id"] == 44565285365
     assert ingestion["receipt_count"] == 34
     assert ingestion["receipts"] == ingestion["receipt_count"]
     assert ingestion["source_failures"] == 21
@@ -124,8 +124,8 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert security["sensitive_branch_path"]["content_read"] is False
     assert security["automatic_main_writer"]["active"] is True
     assert security["automatic_main_writer"]["integration_workflow_disabled"] is True
-    assert security["automatic_main_writer"]["main_run_id"] == 44431013238
-    assert security["automatic_main_writer"]["pages_deployment_run_id"] == 44431136074
+    assert security["automatic_main_writer"]["main_run_id"] == 44523988640
+    assert security["automatic_main_writer"]["pages_deployment_run_id"] == 44524140421
     backlog = data["open_pr_backlog"]
     summary = data["open_pr_backlog_summary"]
     assert len(backlog) == summary["total_open"]
@@ -324,3 +324,58 @@ def test_run31_primary_source_reconciliation_separates_supply_capital_and_distri
     assert videos[2]["attribution_status"] == "UNVERIFIED_THIRD_PARTY_ATTRIBUTION"
     assert evidence["prediction_admission"]["model_eligible"] is False
     assert evidence["prediction_admission"]["directional_forecast_issued"] is False
+
+
+def test_run227_ingestion_receipts_and_market_snapshot_are_not_forecast_signals():
+    data = load_map()
+    run = data["run227_snapshot"]
+    assert run["run_id"] == 44565285365
+    assert run["receipt_integrity"]["receipt_count"] == 34
+    assert run["receipt_integrity"]["raw_retained"] == 22
+    assert run["receipt_integrity"]["digest_only"] == 12
+    assert run["receipt_integrity"]["raw_hashes_verified"] == 22
+    assert run["receipt_integrity"]["raw_hash_mismatches"] == 0
+    assert run["receipt_integrity"]["external_anchor"] == "NOT_ANCHORED"
+    assert run["feature_store"]["latest_eligible"] == 128
+    assert run["feature_store"]["latest_excluded"] == 367
+    assert run["feature_store"]["point_in_time_violations"] == 0
+    assert run["market"]["spot_orderbook_midpoints_usd"]["coinbase"]["mid"] == 0.97215
+    assert run["market"]["spot_orderbook_midpoints_usd"]["bitstamp"]["mid"] == 0.97230
+    assert run["market"]["spot_orderbook_midpoints_usd"]["kraken"]["mid"] == 0.972125
+    assert run["market"]["spot_orderbook_midpoints_usd"]["okx"]["mid"] == 0.9720039715
+    assert run["forecast"]["status"] == "NOT_ISSUED"
+    assert run["forecast"]["walk_forward_forecasts"] == 0
+
+
+def test_run227_main_workflow_differential_and_publication_gate_are_preserved():
+    data = load_map()
+    diff = data["run227_workflow_differential"]
+    assert diff["main_paid_issue_hunter_run"] == 44523988640
+    assert diff["main_paid_issue_publisher_run"] == 44524050218
+    assert diff["publisher_commit_main_sha"] == data["repository_state"]["main_sha"]
+    assert diff["main_paid_issue_publisher"]["active"] is True
+    assert diff["main_paid_issue_publisher"]["integration_disabled"] is True
+    assert diff["pages"]["run_id"] == 44524140421
+    assert diff["pages"]["authorized"] is False
+    assert diff["main_sync_self_hosted_brain"]["pr_changes_self_hosted_brain_paths"] is True
+    assert diff["main_deploy_a2a_worker"]["pr_changes_a2a_paths"] is False
+    assert diff["main_coinbase_paper_trader"]["run_performed"] is False
+    assert diff["main_barrot_sync"]["push_result"] == "Everything up-to-date"
+    assert diff["pillars_check"]["conclusion"] == "failure"
+    assert data["merge_decision"] == "NO_MERGE"
+    assert data["run227_no_external_actions"] is True
+
+
+def test_run227_nine_platform_map_does_not_invent_external_connections():
+    data = load_map()
+    state = data["run227_platform_status"]
+    assert state["verified_live_platforms"] == [
+        "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent"
+    ]
+    assert state["unverified_platforms"] == [
+        "Claude", "Grok", "Gemini", "Copilot", "Codex",
+        "Hugging Face", "Kaggle", "Databricks"
+    ]
+    assert state["external_dispatches"] == 0
+    assert state["external_data_transfers"] == 0
+    assert state["independent_red_team_quorum"] is False

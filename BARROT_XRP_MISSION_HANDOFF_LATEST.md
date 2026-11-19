@@ -5323,3 +5323,32 @@ The transitive review advanced beyond YAML-only scanning. The following invoked 
 - The inspected high-risk external actions use SHA-pinned third-party action references. The complete transitive audit of every one of the 68 changed workflow files and every action dependency remains incomplete; no blanket supply-chain clearance is claimed.
 
 No Kaggle submission, Databricks workspace mutation, Cloudflare deployment, Hugging Face upload, secret rotation, Space restart, release, repository write, paper trade or external-model dispatch occurred.
+
+
+---
+
+## Run 227 main-branch workflow differential — verified against main c8e15c9
+
+The current main branch was inspected separately from the integration branch. This matters because several automatic writers/deployers remain active on main until the successor is merged.
+
+- Main SHA c8e15c90b1e07980d7b5a01c86c1667166a353f6 was created by the paid-issue publisher after hunter run 44523988640. Paid issue publisher run 44524050218 completed successfully and committed generated paid-issue timestamp data directly to main. The subsequent GitHub Pages deployment run 44524140421 completed build, deploy and status-report jobs successfully.
+- Main .github/workflows/paid-issue-publish.yml remains an active workflow_run writer with contents:write, persistent checkout credentials and git push origin main. The integration version has permissions: {} and if:false. This is a demonstrated main writer, not a hypothetical permission.
+- Main .github/workflows/barrot-sync.yml triggers on every main push and can run b_agent.py --sync, commit BARROT_SYNC.md and push. Run 44396364172 completed at the workflow-wrapper level, but b_agent.py --sync failed with ModuleNotFoundError: No module named 'rich'; the wrapper skipped the sync and git reported Everything up-to-date. The integration version is hard-disabled because the legacy --sync path is unsupported and can push directly to main.
+- Main .github/workflows/barrot-auto-pr.yml is also push-triggered, but run 44396364322 only validated workflow setup. It has contents:read, created no branch and created no PR.
+- Main .github/workflows/sync-self-hosted-brain.yml deploys to a Hugging Face Space on push to self_hosted_brain/** and can create a Space/upload code/propagate a secret. This PR changes self_hosted_brain/start.sh. The integration version is hard-disabled, so the successor replaces the automatic deployment path. No Space restart or deployment occurred.
+- Main .github/workflows/deploy-a2a-worker.yml can deploy a Cloudflare Worker and upload secrets on push to a2a/** or manual dispatch. This PR changes no a2a/** paths. The integration version removes the push trigger and is manual/exact-main-SHA gated; its current job condition requires both deployment YES and secret-rotation YES, coupling those actions. No deployment or secret operation occurred.
+- Main .github/workflows/coinbase-paper-trader.yml is manual but can write simulated state and push it to main without a typed confirmation or expected-SHA gate. The integration version requires typed YES and exact main SHA, has read-only repository permissions and uploads artifacts only. No paper trade was run.
+- Main Hugging Face sync can upload code and delete/replace Space variables or propagate secrets; the integration workflow is hard-disabled. Main Databricks deploy/bundle and Barrot self-upgrade paths are manual; the integration versions are hard-disabled. Main Barrot Operations is manual with one broad external-change confirmation; the integration version separates confirmations and checks for an absent Databricks target before create. No workflow was dispatched.
+- Main release is tag-triggered; no tag or release was created. Integration action references are SHA-pinned.
+- The PR changes web/** and other Pages content. The existing automatic main Pages deployment means a merge would publish the site. The validation-only Pages CI job is not a substitute for the actual Pages deployment. No publication authorization exists.
+- Main Pillars Consistency Check run 44529399478 failed read-only checks: missing GitHub App ID/private key/installation ID, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR. No successful connection to those services is established. Main Cross Analysis run 44559484591 succeeded with read-only analysis/artifact output.
+- The paid-issue publisher commit changed generated paid-issue files excluded by main CI path filters; no full main suite ran after current main SHA c8e15. The last code CI on main was successful on the preceding code SHA d5d22ac (run 44396364281). Do not mislabel that as CI on c8e15.
+- The successor disables the main paid-issue publisher, legacy Barrot Sync, self-hosted brain auto-deploy and other unsafe automatic/manual paths. It does not disable the existing GitHub Pages branch deployment. That publication remains a hard merge blocker without explicit authorization.
+
+### Current PR and exact-head documentation snapshot
+
+- Code/test head ea0350bf passed 4,354 tests, 1 skipped, 11 warnings and 19 subtests, with 71.34% inclusive coverage and 81% legacy-core coverage.
+- Documentation/evidence head 2c3c7e115ab8301753182f708a62cbf03e20018b also passed the full suite on both push and pull-request CI. Push run 44569129873; pull-request run 44569140064. Dependency audits 44569129814 and 44569140730 passed; money audit 44569140433 passed; Pages validation-only passed.
+- Fail-closed readiness runs 44569129923 and 44569140061 failed closed on the draft state, zero independent approvals and HTTP 403 branch-protection visibility. No check was bypassed.
+- The current platform-authentication state remains unchanged: only ChatGPT's GitHub connector was verified in this session; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks have no current authenticated end-to-end data flow. The latest map snapshot and this handoff both preserve that distinction.
+- No merge, Pages deployment, Hugging Face deployment, Cloudflare deployment, secret rotation, Databricks write, Kaggle submission, paper trade, funds transfer, main-branch write or source-PR closure was performed by this run.
