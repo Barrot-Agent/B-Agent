@@ -6,14 +6,14 @@ Validates core functionality and integration
 
 import sys
 from datetime import datetime
-from transformative_insights import (
+from barrot_agent.agi.transformative_insights import (
     transformative_engine,
     acquire_transformative_data,
     discover_transformative_insights,
     InsightType,
     TransformationStage,
 )
-from barrot_integration import barrot_system, transform_data_to_insights
+from barrot_agent.orchestration.barrot_integration import barrot_system, transform_data_to_insights
 
 
 def test_data_acquisition():

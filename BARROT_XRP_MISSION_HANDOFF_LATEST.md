@@ -4498,3 +4498,82 @@ The integration CI and coverage configuration have now been updated:
 - No test files were removed, renamed, disabled or overwritten.
 
 This change is committed after `8615d1d`; its exact branch-head CI and expanded coverage result are pending. The earlier 1,217-test result is retained as a narrow pre-change baseline, not represented as full-suite verification.
+
+
+---
+
+## Run 45 — expanded-suite diagnosis, Databricks write guard, and XRP evidence supplement
+
+### Exact-head test correction
+
+The corrected dynamic discovery workflow ran on branch head 4e69a3d758651bc54054fac7875fa0d172babf71:
+
+- Exact branch-head push CI [44533345845](https://github.com/Barrot-Agent/B-Agent/actions/runs/44533345845): failed during test collection.
+- PR merge-ref CI [44533358351](https://github.com/Barrot-Agent/B-Agent/actions/runs/44533358351): failed at the same collection stage.
+- Discovery found 1,219 test items, but three legacy modules failed import because their tests still referenced root-level names that had migrated into the barrot_agent package:
+  - barrot_integration → barrot_agent.orchestration.barrot_integration
+  - merge_conflict_micro_ingestion → barrot_agent.ingestion.merge_conflict_micro_ingestion
+  - transformative_insights → barrot_agent.agi.transformative_insights
+- This is an integration failure, not a reason to exclude legacy tests. The three legacy test imports are being updated to the current package paths. The next exact-head run must execute them and surface any behavioral regressions.
+- Dependency audit [44533358400](https://github.com/Barrot-Agent/B-Agent/actions/runs/44533358400): passed all four manifest audits.
+- Money audit [44533358825](https://github.com/Barrot-Agent/B-Agent/actions/runs/44533358825): passed.
+- Fail-closed workflow [44533358431](https://github.com/Barrot-Agent/B-Agent/actions/runs/44533358431): successful echo-only job; it says automatic merge is disabled and performs no approval or merge.
+- The earlier c278c38 CI discovery command contained over-escaped shell patterns/continuations. It is superseded by the corrected shell in 4e69a3d; neither failed attempt is treated as verification.
+
+### Databricks/Kaggle operations workflow hardening
+
+Inspection found the integration copy of .github/workflows/barrot-ops.yml still had one generic confirmation input, a mutable databricks/setup-cli@main action, a workspace import with --overwrite, and an error-swallowing warning. This was not safe enough for the authorization boundary.
+
+The integration copy is now being replaced with:
+
+- Separate default-NO inputs for Databricks workspace creation and Kaggle dataset download.
+- Separate jobs, each requiring its own explicit YES and restricted to manual dispatch on main.
+- Databricks CLI setup pinned to immutable commit 4f41a4c5291b531c1bb1e5760d677999cd484f89 (release v1.25.0); checkout is also SHA-pinned.
+- A read-only workspace/get-status preflight. HTTP 404 permits create-only import; HTTP 200 refuses because the target already exists; every other status fails closed.
+- The workspace import no longer uses --overwrite; the source file SHA-256 is logged before the create-only operation. Failures are no longer swallowed.
+- Kaggle access is a separate explicit download-only job. It writes only to the ephemeral runner, pins the Kaggle CLI version, and contains no submission command.
+- Regression assertions require separate per-action inputs, the main-only guard, immutable Databricks action SHA, target-existence preflight and absence of --overwrite.
+
+No workflow was dispatched. No Databricks token or Kaggle credential was read or used. No workspace write, dataset download, Kaggle submission or deployment occurred.
+
+### XRP research supplement — 2026-11-19
+
+#### Primary corporate/regulatory evidence
+
+1. Ripple National Trust Bank — OCC Corporate Applications Search. The OCC record for control number 2025-Charter-342347 lists Ripple National Trust Bank, charter 25364, approved December 12, 2025 and consummated/effective October 26, 2026. This is a completed trust-bank charter record, not an FDIC-insured retail deposit bank. Primary record: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+2. SBI's XRP supply classification — FY2025 results presentation, May 1, 2026, slide 58. SBI labels approximately 61.68bn XRP as circulated in the market, 0.01bn as burned, 5.10bn as “Actual XRP,” and 33.20bn as under escrow. The 5.10bn “Actual XRP” and 33.20bn escrow are nested inside Ripple's non-circulating holdings, valued at approximately JPY 8.8tn in aggregate. SBI dates the quantities/valuation to April 27, 2026. “Actual XRP” is SBI's label for the non-escrow portion of Ripple's non-circulating XRP holdings; it is not proof of the separate exact phrase “actual capital,” not an audited wallet-by-wallet balance, and not a live November 19 reserve measurement. Primary PDF: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf
+3. SBI/Ripple corporate equity. The same SBI slide reports Ripple's November 2025 $500m financing at a $40bn valuation and March 2026 $750m share buyback at a $50bn corporate valuation; SBI still describes its Ripple equity holding as approximately 9%. A share buyback is corporate equity activity, not an XRP purchase or burn.
+4. SBI/Circle. SBI's June 9, 2025 release says SBI Holdings and SBI Shinsei Bank acquired $50m of Circle shares at IPO, split $25m each; SBI reiterates its approximately 9% Ripple shareholding and the SBI Ripple Asia JV. https://www.sbigroup.co.jp/news/2025/0609_15491.html
+5. SBI Circle Holdings. SBI's August 22, 2025 release confirms formation of the SBI Circle Holdings joint venture with Circle Internet Holdings. https://www.sbigroup.co.jp/news/2025/0822_15679.html
+6. SBI/Arc. SBI's May 12, 2026 announcement confirms participation through a consolidated subsidiary in Circle's ARC token presale, described as a $222m consortium raise. This is a Circle/Arc investment relationship, not XRP issuance or XRPL adoption. https://www.sbigroup.co.jp/news/2026/0512_16310.html
+7. Ripple/Coinbase RLUSD distribution. Ripple's October 28, 2026 announcement says RLUSD became available through Coinbase Prime, Coinbase Exchange and Coinbase Retail, with XRPL, Base and Ethereum deposits/withdrawals and 1:1 conversion from USD and supported USD stablecoins. RLUSD collateral support on Coinbase Global Exchange was described as a future phase (“will follow”), not as live at announcement. This is a direct Ripple-Coinbase stablecoin distribution relationship; it is not proof of XRP collateral demand. https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/
+8. Ripple/BNY custody and trade finance. BNY's October 27, 2026 release says it now supports XRP and RLUSD custody, is RLUSD's primary reserve custodian, and has a custody relationship with Ripple Prime. Direct mint/redeem and tokenized trade-finance work are stated as intended/exploratory and subject to final approvals. https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+9. Standard Chartered/LMAX/Ripple. Standard Chartered says RLUSD custody on XRPL is live through its DIFC branch; the LMAX collateral-mirroring arrangement remains planned and conditional on documentation, testing, legal/regulatory requirements and approvals. https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/
+10. Ripple company-level metrics. Ripple's October 28, 2026 announcement claims a $900m annualized product-revenue run rate, over $16tn of transactions enabled across Ripple products in 2025, 1,700+ institutions/corporates/enterprises and 85+ licenses. These are company-reported, cross-product metrics; they are not XRP-specific volume, XRP fee revenue, or evidence that all payment value settles through XRP. https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/
+
+#### Market microstructure snapshots
+
+- Kraken public ticker API, retrieved during this run (response itself had no exchange timestamp): XRP/USD bid 0.98965, ask 0.98974, top spread 0.00009 USD (about 0.91 bps), 24-hour volume 46.158m XRP, 24-hour VWAP 0.9743717, high 0.99364, low 0.95363, open 0.96637. Full depth endpoint could not be retrieved through the web reader; no depth metric is asserted. Raw API response was not stored as an immutable repository receipt and is not admitted to the point-in-time feature store.
+- Binance.US price page, November 19: approximately $0.98, -0.35% over 24 hours, range $0.95–$0.99, seven-day return -5.08%, 30-day -24.51%, one-year -53.81%. https://www.binance.us/price/xrp
+- CoinGlass spot page, 11:14 UTC November 19: 24-hour spot volume $493.03m, -10.80%; reported taker-buy minus taker-sell flow +$6.41m over 24 hours and -$81.07m over seven days; futures volume $2.32bn, about 4.7x spot. This is taker order flow, not exchange-wallet netflow. https://www.coinglass.com/currencies/XRP/spot
+- Liqwall OI page, 00:12 UTC November 19: aggregate XRP futures OI $930m, -2.8% over 24 hours; 30-day range $928m–$1.49bn. Another vendor reported materially higher OI, so venue coverage/time methodology remains unresolved. https://liqwall.com/open-interest/xrp
+
+#### ETF-flow disagreement — not feature-admitted
+
+- CryptoKeyhole's November 19 07:42 UTC capture reports only 2 of 4 tracked funds for November 18 and a partial -3,251 XRP; it says Bitwise and Franklin files were still pending.
+- XRP Insights reports -5.31m XRP for November 18 across six spot funds plus BITW, but marks the row provisional pending re-settlement.
+- Alpha Finance reports $0 for November 18 across its five-fund universe and -$6.1m for November 17.
+- CryptoETF.today reports $0 for November 18 across five funds and -$6.0m for November 17.
+- The universes, issuer publication times and provisional/settled rules differ. These are not independent confirmations of one flow number. No aggregate ETF-flow feature is admitted until issuer-level daily holdings are reconciled for the same fund universe and settlement cutoff.
+
+Source pages: https://cryptokeyhole.com/etf-flows/xrp/ ; https://xrp-insights.com/ ; https://alphafinance.io/etf/xrp/ ; https://cryptoetf.today/en/xrp-etf-flows
+
+#### Exact-phrase status
+
+- “Actual XRP” is verified as a term in SBI's slide 58 and has the narrow supply classification above.
+- Exact “actual capital” remains unresolved; do not substitute “Actual XRP” for it.
+- ASK Coin candidates remain Permission Coin (ASK) and the Telegram bot; no direct XRPL relationship is established.
+- Exact “SBIC, ChatGPT SBIC” remains unresolved. SBIC East/Central/West, SBI Holdings and SB OAI Japan remain separate legal/entity concepts.
+- Camilla/Kamilah Stevenson identity is still unverified; no video inventory is admitted.
+
+Forecast status: NOT_ISSUED. These market snapshots are descriptive and heterogeneous, not leakage-safe features. No out-of-sample performance or calibration evidence supports a directional XRP forecast.
