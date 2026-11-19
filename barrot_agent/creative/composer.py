@@ -116,3 +116,69 @@ def compose_original(
         sections=sections,
         provenance=f"original_composition_seed_{settings.seed}",
     )
+
+@dataclass(frozen=True)
+class CompositionRun:
+    manifest: MusicalManifest
+    evaluation: object
+    settings: CompositionSettings
+    attempt_id: str
+
+
+def evaluate_composition(manifest: MusicalManifest):
+    """Score required arrangement roles and diatonic pitch consistency."""
+    from .musical_dna import Evaluation
+
+    required_roles = {"harmony", "melody", "low_end", "pulse", "backbeat"}
+    present_roles = {event.role for event in manifest.events}
+    role_coverage = len(required_roles & present_roles) / len(required_roles)
+    root, intervals, _ = _scale_info(manifest.scale)
+    allowed = {(root + interval) % 12 for interval in intervals}
+    pitched = [event.pitch for event in manifest.events if event.pitch is not None]
+    scale_adherence = (
+        sum(1 for pitch in pitched if pitch % 12 in allowed) / len(pitched)
+        if pitched else 0.0
+    )
+    reasons = []
+    if role_coverage < 1.0:
+        reasons.append("Required musical roles are missing")
+    if scale_adherence < 0.98:
+        reasons.append("Pitched events do not consistently follow the selected scale")
+    score = round((0.7 * role_coverage) + (0.3 * scale_adherence), 4)
+    passed = role_coverage == 1.0 and scale_adherence >= 0.98
+    novelty = min(1.0, len(set(pitched)) / 12.0) if pitched else 0.0
+    return Evaluation(passed, score, round(novelty, 4), round(scale_adherence, 4), tuple(reasons))
+
+
+class RecursiveCompositionEngine:
+    """Generate, evaluate, journal, and improve original compositions across runs."""
+
+    def __init__(self, memory):
+        self.memory = memory
+
+    def create(
+        self,
+        template: MusicalManifest,
+        settings: CompositionSettings | None = None,
+    ) -> CompositionRun:
+        from dataclasses import asdict
+        from .musical_dna import RecursiveCreativeMemory
+
+        if not isinstance(self.memory, RecursiveCreativeMemory):
+            raise TypeError("memory must be a RecursiveCreativeMemory")
+        recommended = self.memory.recommend_composition_settings()
+        chosen = CompositionSettings(**recommended) if recommended else (settings or CompositionSettings())
+        output = compose_original(template, chosen)
+        evaluation = evaluate_composition(output)
+        attempt = self.memory.record_composition_attempt(
+            source_fingerprint=template.fingerprint,
+            output_fingerprint=output.fingerprint,
+            settings=asdict(chosen),
+            evaluation=evaluation,
+        )
+        return CompositionRun(output, evaluation, chosen, attempt["attempt_id"])
+
+    def record_feedback(self, run: CompositionRun, *, feedback: str, lesson: str = ""):
+        return self.memory.record_composition_feedback(
+            run.attempt_id, feedback=feedback, lesson=lesson
+        )
