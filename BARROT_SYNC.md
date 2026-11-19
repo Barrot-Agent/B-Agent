@@ -1143,3 +1143,45 @@
   mechanism knowledge; or raise the diff timeout. Everything else self-serves.
 - Next cycle needs a new snapshot. Until then the last snapshot is reused, and
   the loop says so rather than inventing an observation.
+
+## 2026-11-19 — CHROME MASTERY DECOMPOSED + 3 VERIFIED CVEs + DEFECT PROOF
+
+### What I did
+- Replaced the single "Chrome mastery" number with 7 sub-scores in
+  `CHROME_MASTERY_85.md`. Each score cites a proof file; no proof means 0.
+  The 19-class tracker is now explicitly the detail under the average.
+- Wrote Sean's definition of 85 into the doc as the gate: average >= 85 AND >= 3
+  full REs with PoC + patch diff + variant. Recommended a 60 floor per
+  sub-skill but did not impose it.
+- Verified 3 real CVEs from CVEProject/cvelistV5 through the guard, hashed and
+  stored in `sandbox/chrome/cves/`. New `tests/test_chrome_cves.py` (23 tests).
+- Probed source access: v8/v8 at tags works; chromium/chromium main works for
+  `third_party/blink` including a real `.mojom`; gitiles search ignores `?q=`;
+  V8 tags 8.0.426.15/.16 do not bracket the CVE-2020-6418 fix (0-line diff).
+- Started the RE loop on CVE-2024-2887: steps 1 and 3 done, 2 partial, 4-8
+  UNRESOLVED. No score change, deliberately.
+- Documented the 4 engine defects with before/after from the 35862c8a1 diff and
+  proved the XLM one end to end.
+
+### What works now
+- Scores: Static 20, Dynamic 15, V8/JIT 15, Blink 0, Mojo 15, Fuzzer 38,
+  Report 10. Sum 113/700, average 16.1. 0 of 3 full REs.
+- Every CVE number in this repo is now backed by a hashed record; a test fails
+  if prose cites an ID without one.
+- Real engine source is self-serve for V8, Blink and Mojo IDL.
+- 82 Chrome/trading tests green; flake8 clean on the new files.
+
+### What is broken / blocked
+- Patch diffs: no commit search (gitiles ignores the query), no bracketing tag
+  pair. A fix SHA is the missing key. Still the top feed request.
+- Execution: no d8, no ASAN, no gdb, broken clang, 3 GB RAM.
+- Blink is 0 and stays 0 until a verified Blink CVE exists.
+- Guard deviation, stated: the 10s timeout is per socket op, not wall clock
+  (11.98s observed once). Allowlist and read-only held.
+
+### Next step
+- Paste one security patch diff, or one fix commit SHA. That single artefact
+  moves static analysis, V8/JIT and report writing at once.
+- Without it: continue the CVE-2024-2887 loop at step 2 by narrowing the WASM
+  type-check location from real source, and stop there rather than inventing a
+  diff.

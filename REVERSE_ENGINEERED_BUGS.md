@@ -359,6 +359,23 @@ wrong order) is describable and untestable here.
 
 ## Mastery tracker
 
+**Scoring authority is now `CHROME_MASTERY_85.md`.** Chrome mastery is scored as
+seven sub-skills averaged, not as one number, because one number let a working
+fuzzer hide an empty Blink column. The per-bug-type scores below are the detail
+underneath that average.
+
+Verified citations, each backed by a hashed record in `sandbox/chrome/cves/`:
+
+| CVE | Class | Fixed in |
+|---|---|---|
+| CVE-2020-6418 | Type confusion in V8 | 80.0.3987.122 |
+| CVE-2024-2887 | Type confusion in WebAssembly | 123.0.6312.86 |
+| CVE-2023-7024 | Heap buffer overflow in WebRTC | 120.0.6099.129 |
+
+A verified ID is a citation, not an analysis. None of the three has a patch diff,
+a PoC, or a variant yet, and `tests/test_chrome_cves.py` fails if the records
+ever imply otherwise.
+
 | # | Bug type | Score | What is proven | What is missing |
 |---|---|---|---|---|
 | 1 | Use-after-free | 30 | detector + repair | real target, CVE, ASAN |

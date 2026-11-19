@@ -594,3 +594,58 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   omitted "android", which is what Termux reports. Added it. Pre-existing E402 in
   that file left alone.
 - Suite state: 1424 passed, 2 skipped, 0 failed (after the android fix).
+
+## 2026-11-19 — CHROME MASTERY DECOMPOSED (no fake 85)
+- Chrome mastery is NO LONGER one number. Authority file:
+  `CHROME_MASTERY_85.md`. Seven sub-skills, each 0-100, each needs a proof file
+  or it is 0. The 19-class tracker in `REVERSE_ENGINEERED_BUGS.md` is the detail
+  underneath the average.
+- DEFINITION OF 85 (Sean's, do not move it): average of the 7 >= 85 AND at least
+  3 full reverse-engineered CVEs, each with PoC + patch diff + variant. I
+  recommended a floor of 60 on every sub-skill but did NOT impose it, because
+  moving the definition of done after Sean set it is the behaviour this track
+  exists to stop.
+- CURRENT: 113/700, average 16.1/100, 0 of 7 sub-skills at 85, 0 of 3 full REs.
+  Static 20, Dynamic 15, V8/JIT 15, Blink 0, Mojo 15, Fuzzer 38, Report 10.
+  Derivation is in the doc; where the regrouping lowered a number I took the
+  lower number (Mojo 25 -> 15).
+- 3 CVEs VERIFIED TODAY against CVEProject/cvelistV5, hashed, stored in
+  `sandbox/chrome/cves/`: CVE-2020-6418 (V8 type confusion, 80.0.3987.122),
+  CVE-2024-2887 (WASM type confusion, 123.0.6312.86), CVE-2023-7024 (WebRTC
+  heap overflow, 120.0.6099.129). `tests/test_chrome_cves.py` (23 tests) fails
+  if a record implies an artifact it does not have, or if any CVE ID in
+  REVERSE_ENGINEERED_BUGS.md lacks a hashed record.
+- CVE-2020-6418 has `fixed_version: "unspecified"` in the authoritative record.
+  The version is only in the prose. Do not trust the structured field blindly.
+- SOURCE ACCESS IS SOLVED: `raw.githubusercontent.com/v8/v8/<tag>/...` works
+  (v8 is NOT vendored in chromium/chromium, so the v8/ path 404s there), and
+  `chromium/chromium/main/third_party/blink/...` works, including
+  `public/mojom/frame/frame.mojom` (71 KB) and `renderer/core/dom/node.cc`.
+- DIFFS ARE STILL BLOCKED BY LOOKUP, NOT POLICY. Gitiles ignores `?q=` (returns
+  the same bytes for different queries). The two nearest V8 tags 8.0.426.15 and
+  .16 diff to 0 lines on both operation-typer.cc and typer.cc, so they do not
+  bracket the CVE-2020-6418 fix. A fix commit SHA is still the missing key.
+- EXECUTION IS STILL BLOCKED: no d8, no ASAN (allocator CHECK), clang can't
+  compile under proot, no gdb, 3 GB RAM, 5.3 GB disk.
+- KNOWN GUARD DEVIATION, stated rather than hidden: the 10s timeout is per
+  socket operation, not wall clock. One gitiles log took 11.98s. Allowlist and
+  read-only still held; the "10s per request" wording is stronger than the code.
+- RE LOOP STARTED on CVE-2024-2887 (easiest verified, and WASM type confusion
+  transfers from the existing JIT model). Steps 1 and 3 done, step 2 partial,
+  steps 4-8 UNRESOLVED. Deliberately no score change: reading an advisory is
+  not an artifact.
+- Blink stays 0 even though Blink source is now reachable, because I have no
+  verified Blink CVE and choosing one by guessing an ID is how a fake citation
+  is born.
+- THE FOUR ENGINE DEFECTS, all introduced and fixed in commit 35862c8a1:
+  (1) sizing used `stack_xrp` not available capital -> `capacity = min(stack,
+  available)` + zero-allocation refusal; (2) `news == UNKNOWN` sat inside the
+  offensive `else:` branch so the defensive leg skipped it -> hoisted above the
+  branch; (3) a hold was REJECTED -> now NO_TRADE; (4) `load_config` applied
+  every lesson regardless of provenance -> now `if record["provenance"] !=
+  provenance: continue`.
+- XLM PROOF, measured end to end on Sean's snapshot: a SIMULATED_SCENARIO lesson
+  disables XLM (the only FAVOURS candidate) when applied blindly; with
+  provenance scoping, disabled = () and 0 lessons applied. XLM is preserved but
+  still not approved (trend MIXED), so the claim is "preserved and evaluated",
+  not "would have traded".
