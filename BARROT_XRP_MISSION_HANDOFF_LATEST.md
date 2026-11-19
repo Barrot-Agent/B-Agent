@@ -1,3 +1,62 @@
+# Run 47 finalization — 2026-11-19 — exact-head verification and prediction-engine audit
+
+## Current repository and PR state at the verified pre-finalization head
+
+- Main remains e1c3634df28f488819185b7d5697d474bc0bcb9e.
+- Existing integration branch head: 57f3699e29b173c9883083eda4873c2a6a29a6bb; 473 commits ahead, zero behind main.
+- PR #1663: 1,469 changed files, 534,971 additions, 6,965 deletions; draft; mergeable flag true but merge state unstable. It remains the sole XRP/V3 integration PR.
+- This documentation commit updates the same artifact and handoff on the existing branch. It will create a new head; exact-head CI must run again on that resulting commit. No results from 57f3699 transfer to a later SHA.
+
+## Exact-head CI verified on 57f3699
+
+- Full repository suite [run 44626859011](https://github.com/Barrot-Agent/B-Agent/actions/runs/44626859011): 4,375 passed, 1 skipped, 11 warnings, 19 subtests, 172.42 seconds; 71.34% inclusive coverage and 81% legacy/core coverage.
+- Mission coverage: XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%.
+- Tests and GitHub Pages validation passed. Dependency audit [44626858962](https://github.com/Barrot-Agent/B-Agent/actions/runs/44626858962) and money audit [44626867184](https://github.com/Barrot-Agent/B-Agent/actions/runs/44626867184) passed.
+- Gated merge [run 44626867250](https://github.com/Barrot-Agent/B-Agent/actions/runs/44626867250) failed closed after exact-head checks: PR is draft, no independent approving review exists, and branch protection could not be verified (403). The gate is read-only and did not merge.
+
+## Prediction-engine code audit: implemented versus missing
+
+The existing branch contains a substantial ingestion and evaluation framework, but not a validated learned XRP predictor:
+
+- xrp_public_ingestion.py is 6,254 lines; feature_store.py 899; forecast_ledger.py 1,450; walk_forward.py 822.
+- RawReceiptArchive stores raw responses locally and links them with SHA-256/hash-chain receipts. This is not an independently controlled external WORM anchor.
+- HistoricalFeatureStore uses SQLite append-only records with point-in-time as-of lineage and receipt linkage. External immutable anchoring remains absent.
+- walk_forward.py performs chronological purged/embargoed evaluation of deterministic baselines: naive class prior, momentum sign, mean-reversion sign and volatility-normal. The hourly default is 1h; the daily workflow requests the configured horizon matrix. No dedicated learned XRP candidate model has been evaluated.
+- ForecastLedger is fail-closed: at least 100 OOS and 100 shadow samples; at least 10 forecast-horizon multiples; five independently receipted source groups; weighted calibration error no greater than 0.05; all four baselines; candidate must beat each baseline on both Brier score and log loss; at least 10,000 temporal/source-clustered moving-block bootstrap replicates; familywise adjustment across eight baseline/metric comparisons; and an Ed25519 evaluator attestation. The evaluated model must be distinct from its baseline.
+- feature_drift.py currently implements univariate PSI/source-mix checks, not label/concept or interaction drift.
+- scenario_hypotheses.py requires authored scenario and counter-hypothesis inputs with falsification criteria; it is not automated causal discovery. event_timeline.py is a curated registry, not autonomous event discovery.
+- source_independence.py groups by publisher/domain; this does not prove independence of underlying data lineage.
+- The scheduled ingestion workflow is on integration, not main. Its hourly and daily schedules are therefore not active in production; GitHub scheduled workflows run from the default branch. The integration workflow uses read-only repository/action permissions. GitHub artifacts (90 days) and feature checkpoints (7/90 days) are not WORM.
+
+Conclusion: the code now provides a serious ingestion, provenance, point-in-time feature, baseline evaluation and forecast-admission safety framework. It does not yet provide measured XRP-specific predictive superiority. Forecast issuance remains disabled.
+
+## New primary-source entity and corporate-strategy evidence
+
+- SBIC identity is resolved directly from company profiles: Tokyo identifies itself as SBIC East Japan and lists Nagoya and Osaka as sister companies; Nagoya identifies itself as SBIC Central Japan and lists Tokyo/Osaka as sister companies; Osaka identifies itself as SBIC West Japan and cites the statutory investment-company law. Tokyo's profile lists local public bodies, chambers of commerce, financial institutions and operating companies among its shareholders. These are separate regional companies, not SBI Holdings. [Tokyo profile](https://www.sbic.co.jp/company/profile/) · [Nagoya profile](https://www.sbic-cj.co.jp/company/about/) · [Osaka profile](https://www.sbic-wj.co.jp/profiles/profile/).
+- SBI's November 2 presentation shows SBI Coinhako at 51.69% group ownership, JPYSC issuance beginning June 2026, public distribution still subject to tax measures, and a yen-dollar settlement strategy using JPYSC, USDC and RLUSD. SBI Startale Marketing is presented as 55% SBI / 40% Startale / 5% SMFG, with a basic agreement involving BlackRock tokenized money-market funds and JPYSC. SBI also documents Canton, XDC and Solana initiatives. This is multi-rail strategy, not XRP exclusivity. [SBI presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf).
+- SBI's presentation also documents group use of Claude Security and Claude Mythos for cybersecurity. This is external adoption evidence only; it does not authenticate Claude access for Barrot or create a ChatGPT-Claude data path.
+- Circle's issuer page reports USDC across 38 networks, including XRPL and Circle's Arc. Native USDC on XRPL is a product deployment, not proof that XRP is the bridge asset or that Circle and Ripple have a direct corporate partnership. [Circle USDC](https://www.circle.com/usdc).
+- Coinbase's October 28 RLUSD announcement lists XRPL, Base and Ethereum support; Global Exchange collateral support was described as a future follow-on, not live at launch. Its separate XRP-collateral USDC loan product is live for eligible customers through Morpho on Base. [RLUSD](https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase) · [XRP collateral loans](https://www.coinbase.com/en-pt/blog/now-get-a-usdc-loan-without-selling-your-crypto).
+
+## Follow-up market, flow and macro observations
+
+- A later Kraken response showed XRP/USD at USD 0.95569, bid 0.95575 / ask 0.95581 (about 0.63 bp), 24-hour volume about 45.44m XRP, VWAP 0.97346, high 0.9968 and low 0.9520. Kraken exposes no server event timestamp. OKX at 21:58:00.521 UTC showed XRP/USDT 0.9540, bid 0.9541 / ask 0.9542 (about 1.05 bp), volume 38.31m XRP. Quotes are not synchronized and USDT/USD basis is not normalized.
+- XRP Insights reports 22.18bn XRP attributed to 707 wallets across 24 exchanges, but includes cold storage and identifies 153.1m cbXRP on Base as a non-customer reserve. The dashboard's 68.89bn circulating supply differs from SBI's 63.35bn market-circulated plus 5.23bn Ripple Actual XRP outside escrow (68.58bn total) by 310m XRP. This is unresolved methodology/as-of difference, not a supply event.
+- XRP Insights reports November 18 outflows of 5.31m XRP across six spot ETFs plus BITW, with 1.184bn XRP held and approximately USD 760m AUM; GXRP is excluded from flow totals while its holdings remain included because of a data gap. CryptoKeyhole reports only 2/4 funds for November 18 and a partial -3,251 XRP. The universes and clocks differ; do not average.
+- Liqwall's later 22:02 UTC read showed OI USD 913m (-1.4%), Binance funding +0.0013% per eight hours, cross-exchange average funding -0.0004%, USD 4.6m liquidations (USD 3.8m long / USD 822k short), and 75.1% Binance accounts long. CoinPerps' 09:02 UTC read showed USD 1.95bn OI, +0.0063% funding and USD 4.25m liquidations with an 84% long share. Contract coverage and timestamps differ.
+- The October 27–28 FOMC meeting held the target range at 3.75%–4.00% by 10–2, with two members preferring a 25bp hike. Minutes released November 19 discuss elevated inflation, AI-buildout demand and financing risk, the ongoing Iran conflict and French sovereign-debt repricing. Treasury's November 18 curve showed 2-year 4.80%, 10-year 5.07%, +27bp 2s10s; effective fed funds was 3.88% on November 17. These are macro covariates, not an XRP forecast. [FOMC minutes](https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm) · [Treasury curve mirror](https://squawkflow.com/yield-curve).
+
+## Final controls
+
+- Fourteen PRs remain open; preserve unique research and stacked branches. #1663 is the only XRP/V3 integration. #1665 is a duplicate candidate and #1541 a superseded candidate, but neither is closed until the successor is merged and its content verified on main.
+- The transitive audit of 68 changed workflows remains incomplete: 33 manually inspected, 35 remaining. Branch protection remains unreadable (403), and the disabled fallback ruleset is not evidence of required approvals/checks. Public Pages deployment is automatic and PR #1663 changes public files.
+- No merge, branch rewrite, force push, PR closure, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+- No directional forecast was issued. All new rendered market/issuer observations have no byte-exact raw receipts and remain excluded from features/training.
+
+Next action: complete the exact-head CI triggered by this final handoff commit, finish the remaining workflow/transitive audit, establish independent immutable receipt anchoring, then build and evaluate a learned XRP candidate against the four baselines. Keep PR #1663 as the sole integration workstream and preserve Barrot V3.
+
+---
+
 # Run 47 — 2026-11-19 22:03:58 UTC — SBI, Circle, Evernorth and fresh market reconciliation
 
 ## Repository checkpoint
