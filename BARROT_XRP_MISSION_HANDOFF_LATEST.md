@@ -3398,3 +3398,47 @@ Capture time: 2026-11-19T03:05:23Z. Exchange snapshots are not synchronized; Kra
 7. Keep scheduled ingestion inactive on main until a fully reviewed, exact-head, fail-closed merge is authorized and verified.
 
 NO MERGE. No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, external-model dispatch, paper trade, funds transfer or real-money action occurred.
+
+## Run 36 — exact-head verification, market/ETF disagreement and competing institutional rails — 2026-11-19T04:06:22Z
+
+### Repository and CI — VERIFIED
+- Main remains `82c23e219553164c24073784c529aad75acacd66`; the existing integration branch head before this run was `aa6f7b9c0ea208cf835c24722a9457807163eb6e`.
+- Main tree: 1,739 entries; integration tree: 2,992 entries; both recursive tree responses were complete and untruncated. Every main path is present in the integration tree. The branch is 392 commits ahead and zero behind; PR #1663 changes 1,445 files, including 68 workflow files. Integration has 93 workflow files; main has 92.
+- Exact-head full-suite run [44451210791](https://github.com/Barrot-Agent/B-Agent/actions/runs/44451210791), job 135315335489, passed on `aa6f7b9c0ea208cf835c24722a9457807163eb6e`: **4,288 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests**, 189.15 seconds; 68.13% inclusive coverage and 77% legacy-core coverage. The job installed complete development dependencies, ran every repository test including legacy/hidden package tests, built the wheel and verified the installed Barrot V3/XRP mission resource. The cache-save step warned that the GitHub cache budget is exhausted/read-only; this did not fail the job.
+- Exact-head dependency audit [44451210645](https://github.com/Barrot-Agent/B-Agent/actions/runs/44451210645) passed. Exact-head fail-closed gate [44451210738](https://github.com/Barrot-Agent/B-Agent/actions/runs/44451210738) passed. Core tests and Pages validation passed.
+- This supersedes the prior Run 35 statement that the full suite was still installing. It does not remove the governance blockers below.
+
+### Market snapshot — RESEARCH ONLY, MODEL-INELIGIBLE
+- Kraken XRP/USD ticker: last $0.97316; bid $0.97321 (150 XRP); ask $0.97322 (154 XRP); top spread 0.10275 bps; 24h volume 50.366M XRP; 24h VWAP $0.97933135; high $1.00677; low $0.95363; UTC-day open $0.96637. Last is 0.63% below 24h VWAP and 0.70% above the UTC-day open. Kraken did not expose an exchange event timestamp.
+- OKX XRP-USDT ticker event time 03:59:42.383Z: last 0.9693 USDT; bid 0.9692 (2,577.24 XRP); ask 0.9693 (4,645.79 XRP); spread 1.03173 bps; 24h volume 32.510M XRP. At the run observation time the event was approximately 400 seconds old, beyond the 300-second live-data limit.
+- Cross-venue price/basis comparison is rejected: timestamps are not synchronized, one venue is USD and the other USDT, and no synchronized USDT/USD conversion leg was captured. Kraken Depth and OKX books endpoints were inaccessible through the current retrieval path; no bypass was attempted. Top-of-book quantities are not full depth or executable liquidity.
+- Exact rendered-response excerpt hashes and payloads are retained in the Run 36 research JSON. They are explicitly not raw HTTP-wire receipts.
+
+### ETF flow disagreement — DO NOT AVERAGE
+- XRP Insights reports +159,134 XRP across Nov 16–17 and 1,189,261,215 XRP held on Nov 17, using six spot funds plus BITW. Its metadata says the Nov 18 row is provisional and data is settled only through Nov 17. Its holdings-delta method can count BITW rebalancing/fees as flow, includes XRPR's indirect ETP exposure, excludes GXRP flow during a scrape gap, and reconstructs certain historical rows.
+- Alpha Finance reports five-fund flow of -$6.1M on Nov 17, zero on Nov 18, -$8.3M over seven sessions and -$19.1M over 30 sessions.
+- CryptoETF.today reports five-fund flow of -$4.9M on Nov 17 (last move attributed to XRPC), zero on Nov 18 and -$10.8M over 30 sessions.
+- CryptoKeyhole reports only -3,251 XRP for Nov 17 from 2 of 4 daily-reporting funds; it is partial.
+- The fund universes, currencies, completeness and calculation methods differ. Alpha Finance and CryptoETF also disagree on the same date's five-fund USD result. Preserve all vintages; no consensus flow or model feature is admitted.
+
+### Institutional counter-hypothesis — primary announcements
+- DBS and Circle announced on Nov 18 that eligible institutions can directly mint/redeem USDC through DBS with near-instant 24/7 USD-USDC settlement. [DBS primary announcement](https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia).
+- DBS and Kinexys by J.P. Morgan announced on Nov 16 a live 24/7 US/Singapore tokenized-deposit interoperability solution; Ant International is the first client. [DBS primary announcement](https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers).
+- These are real competing or complementary institutional rails that do not state an XRP/XRPL dependency. They weaken any assumption that all institutional cross-border settlement requires XRP, but do not prove XRP displacement: transaction volumes, corridor shares and client adoption were not disclosed.
+- Ripple/Coinbase RLUSD distribution and BNY's XRP/RLUSD custody remain separate evidence. Coinbase Global Exchange collateral use was described as future at the RLUSD launch; custody availability does not establish client balances or collateral utilization.
+
+### Prediction engine and ingestion — DESIGNED / EXECUTED / VERIFIED
+- **DESIGNED:** Integration contains read-only scheduled public ingestion, content-addressed receipts, point-in-time feature store, chronological walk-forward evaluation, four required baselines, calibration, forecast ledger, event timelines, counter-hypotheses and drift diagnostics.
+- **EXECUTED:** Exact-head full repository suite, dependency audit and fail-closed gate passed on the same head. Public market/ETF/institutional evidence was retrieved and quarantined as research-only where timestamps, source scope or raw receipts were insufficient.
+- **VERIFIED:** The integration tree contains the modules and tests; CI built and installed the package and verified the primary mission resource. The production cron is **not active** because `.github/workflows/xrp-public-ingestion.yml` is absent from main. The workflow's schedules would run on the default branch; integration pushes/manual dispatch are separately scoped. It uses read-only GitHub permissions and artifact/cache storage, not an independent WORM anchor. No ingestion dispatch occurred in this run.
+- The last prior ingestion remains 34 receipts (22 raw-retained, 12 digest-only), 21 source failures, no independent WORM/timestamp anchor, and zero eligible forecasts. SEC collection still needs the approved monitored `BARROT_SEC_USER_AGENT`. Forecast issuance remains disabled; no directional forecast was issued.
+
+### Governance and open PRs — NO MERGE
+- PR #1663 remains draft and has zero reviews, zero requested reviewers and zero review threads. Main branch-protection read returned 403 in this run; effective required-check settings therefore remain unverified. The only listed fallback ruleset is disabled. Main and integration `CODEOWNERS` both contain only `* @Barrot-Agent`; independent approval is not satisfied.
+- The full transitive audit of all 68 changed workflows and their invoked scripts/actions/artifacts/data flows remains incomplete. `barrot-ops.yml` still has a Databricks `--overwrite` path without target backup/hash/CAS protection; do not dispatch.
+- Open PR inventory remains 14. Blocked: #1663, #1668, #1541, #1265. Duplicate: #1665 (its exact Pylint 4.1.4 change is in this integration branch, but not yet verified on main). Unique/unreviewed: #1664, #1666, #1450, #1460, #1440, #1436, #1437, #1353, #1670. Path-overlap review: #1668 overlaps three worker files and would reintroduce a worker quarantined by #1663; #1541 overlaps five MMI files and is stacked on an unmerged parent; #1265 overlaps the CI workflow in its older ledger chain; #1666 overlaps `pyproject.toml` but is a distinct Kaggle dependency update; #1664 overlaps three general documentation files but is a separate staged-product objective. No source PR was closed.
+- **Decision: NO MERGE.** Passing exact-head CI removes one blocker only. Draft status, absent independent review, unverified effective branch protection and incomplete workflow/data-flow audit still prohibit merge.
+
+No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, external-model dispatch, paper trade, funds transfer or real-money action occurred.
+
+**Next concrete actions:** complete the transitive workflow/script/action/data-flow audit; add non-destructive backup/hash/CAS protection to Databricks overwrite or remove that path; obtain independent review through an authorized reviewer; reverify branch-protection/required checks; repair SEC contact configuration through an approved monitored project identity; improve raw-receipt retention/independent anchoring; reconcile ETF fund rows against issuer files and obtain synchronized Level-2 snapshots. Keep forecast issuance disabled until all out-of-sample and readiness gates pass.
