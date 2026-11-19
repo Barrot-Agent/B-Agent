@@ -163,7 +163,6 @@ class AudioRenderTests(unittest.TestCase):
     def test_audio_render_writes_new_wav_and_reports_technical_metrics(self):
         import sys
 
-        import numpy as np
         from barrot_agent.creative.audio_render import render_audio
 
         class FakeMidi:
@@ -171,7 +170,7 @@ class AudioRenderTests(unittest.TestCase):
                 self.path = path
 
             def fluidsynth(self, *, fs, sf2_path):
-                return np.asarray([0.0, 0.5, -0.5], dtype=np.float32)
+                return [0.0, 0.5, -0.5]
 
         pretty_midi = ModuleType("pretty_midi")
         pretty_midi.PrettyMIDI = FakeMidi
