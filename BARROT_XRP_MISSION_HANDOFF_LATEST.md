@@ -6076,3 +6076,11 @@ The SEC-filed Evernorth Q3 2026 disclosure, filed 2026-11-13, separates cash pur
 #### Next concrete action
 
 Continue on the existing integration branch. Complete the transitive workflow/script/action and secret/data-flow audit; reconcile Evernorth's 200,138 XRP tracker discrepancy against ledger transactions and custodian addresses; capture raw issuer/SEC/exchange bytes with immutable receipts; finish independent review and effective branch-protection verification; and resolve public Pages publication authorization. Re-run the entire repository suite and security gates on the final exact head. Do not create another XRP/V3 PR, activate paper trading, submit Kaggle entries, deploy, restart Spaces, write to Databricks, transfer funds or issue a directional forecast.
+
+
+### Machine-readable Run 46 evidence record
+
+- Research artifact: [`research/xrp_intelligence/20261119T2049Z-run46-sbi-evernorth-circle-market-reconciliation.json`](../research/xrp_intelligence/20261119T2049Z-run46-sbi-evernorth-circle-market-reconciliation.json).
+- Regression/evidence test: [`tests/test_xrp_run46_sbi_evernorth_circle_market_reconciliation.py`](../tests/test_xrp_run46_sbi_evernorth_circle_market_reconciliation.py).
+- The artifact preserves the SBI/Ripple/Evernorth cash-versus-in-kind reconciliation, Circle/SBI stablecoin relationships, exchange-wallet and ETF definitions, source disagreements and the Evernorth on-chain counter-evidence.
+- The record deliberately sets `model_eligible=false`, raw-source hashes/receipts to null, point-in-time feature writes to zero and forecast status to `NOT_ISSUED`. This is an evidence ledger entry, not a market signal or forecast.
