@@ -1,3 +1,6 @@
+from .audio_adapter import analyze_audio
+from .composer import CompositionSettings, compose_original
+from .midi_export import export_midi
 from .musical_dna import (
     Evaluation,
     MusicalEvent,
@@ -34,4 +37,8 @@ __all__ = [
     "Transmutation",
     "evaluate_transmutation",
     "transmute",
+    "analyze_audio",
+    "CompositionSettings",
+    "compose_original",
+    "export_midi",
 ]
