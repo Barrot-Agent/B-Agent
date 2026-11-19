@@ -189,5 +189,14 @@
     "model_eligible": false,
     "directional_forecast_issued": false,
     "reason": "Corporate disclosures and public market observations are context features only. They require point-in-time event coding, independent source groups, and chronological out-of-sample validation before forecast admission."
-  }
+  },
+  "source_capture_status": {
+    "raw_wire_bytes_captured": false,
+    "full_source_documents_retained": false,
+    "source_method": "Primary corporate investor presentation, SEC filing pages and official release were reviewed through public web-rendered/indexed content. Exact public URLs, reporting dates and document/page references are preserved; raw HTTP bytes and complete source files were not retained.",
+    "raw_source_sha256_receipts": "NOT_CAPTURED",
+    "external_worm_anchor": "NOT_ANCHORED",
+    "limitation": "This is a source-attributed reconciliation artifact, not an immutable raw-source archive. It must not be used to claim raw-byte verification."
+  },
+  "source_receipt_policy": "Source-level claims are not model-admitted until exact raw bytes or stable source extracts are captured, hashed, time-stamped and anchored under the ingestion receipt policy."
 }
