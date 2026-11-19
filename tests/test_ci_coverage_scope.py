@@ -10,19 +10,21 @@ def test_full_repository_suite_measures_all_distributable_packages():
     content = WORKFLOW.read_text(encoding="utf-8")
     assert "  full-suite:" in content
     full_suite = content.split("  full-suite:", 1)[1]
-    assert "source = barrot_agent,directive_platform,data" in full_suite
     for package in ("barrot_agent", "directive_platform", "data"):
         assert f"--cov={package}" in full_suite
-    assert "--cov-config=" in full_suite
+    assert "--cov-config=pyproject.toml" in full_suite
     assert "--cov-report=term-missing:skip-covered" in full_suite
-    assert "fail_under = 62" in full_suite
     assert "--cov-fail-under=62" in full_suite
     for active_test_path in (
         "legacy/tests/test_email_integration.py",
         "legacy/tests/test_transformative_insights.py",
         ".barrot/autonomous_tasks/test_math_task.py",
     ):
-        assert active_test_path in full_suite
+        assert (ROOT / active_test_path).is_file()
+    assert "git ls-files" in full_suite
+    assert "^[.]barrot/disabled_tests/" in full_suite
+    assert "^archive/quarantined/" in full_suite
+    assert "^tests/fixtures/" in full_suite
     assert "--no-cov" not in full_suite
     core_gate_marker = "      - name: Preserve legacy core-package coverage floor"
     assert core_gate_marker in full_suite

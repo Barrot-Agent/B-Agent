@@ -10,12 +10,11 @@ from __future__ import annotations
 
 import asyncio
 import math
-from datetime import datetime, timezone
 from pathlib import Path
 
 
 class CouncilReportNode:
-    """Write an explicit no-data/no-forecast status report.
+    """Return an explicit no-data/no-forecast status without writing files.
 
     stability_anchor remains accepted for source compatibility with older
     callers. It is configuration metadata only and is never treated as a
@@ -35,41 +34,21 @@ class CouncilReportNode:
         self.stability_anchor = float(stability_anchor)
         self.report_path = Path(report_path)
 
-    async def generate_report(self) -> None:
-        """Write a deterministic safety report; no network or market calls occur."""
-        generated_at = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
-        report_content = f"""# XRP Telemetry Status
+    async def generate_report(self) -> dict[str, object]:
+        """Return status only; the retired telemetry path writes no report."""
+        return {
+            "status": "NOT_ISSUED",
+            "forecast_issued": False,
+            "reason_code": "LEGACY_COUNCIL_TELEMETRY_QUARANTINED",
+            "asset": self.asset,
+            "data_status": "NO_VERIFIED_TELEMETRY",
+            "report_written": False,
+            "external_action_performed": False,
+        }
 
-**Generated at:** {generated_at}
-**Asset scope:** {self.asset}
-**Data status:** NO_VERIFIED_TELEMETRY
-**Legacy stability-anchor configuration:** {self.stability_anchor} (not a market observation)
-
-## Market measurements
-
-No price, order-book depth, exchange flow, derivatives, sentiment, or liquidity
-measurement is admitted by this legacy report generator. It has no live data
-adapter, source timestamp, raw-source receipt, or provenance record.
-
-## Forecast status
-
-**NOT_ISSUED**
-
-No directional forecast or probability is produced. A forecast requires a
-point-in-time dataset, validated source provenance, leakage-safe out-of-sample
-evaluation, baseline comparison, and probability calibration.
-
-## Decision boundary
-
-No accumulation recommendation, trade instruction, automated commit trigger,
-deployment, or external action is authorized by this report. Use the verified
-XRP evidence pipeline and forecast ledger for any future research output.
-"""
-        self.report_path.write_text(report_content, encoding="utf-8")
-
-    async def process_telemetry(self) -> None:
-        """Compatibility entry point; this only writes the no-data status report."""
-        await self.generate_report()
+    async def process_telemetry(self) -> dict[str, object]:
+        """Compatibility entry point; return status only and write nothing."""
+        return await self.generate_report()
 
 
 if __name__ == "__main__":

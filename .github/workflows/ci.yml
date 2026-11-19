@@ -19,9 +19,9 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: "3.11"
 
@@ -93,13 +93,38 @@ jobs:
             # measure repo coverage; measured 14% on 4 files). The 70% gate
             # runs on the full suite only, in the full-suite job below.
 
+  pages-build:
+    name: GitHub Pages build (validation only)
+    if: github.event_name == 'pull_request' || startsWith(github.ref, 'refs/heads/integration/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Build Pages site without deployment
+        uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1
+        with:
+          source: ./
+          destination: ./_site
+          future: false
+          verbose: true
+      - name: Verify global state manifest remains source-only
+        run: |
+          set -euo pipefail
+          test -s ./GLOBAL_STATE_MANIFEST.md
+          test ! -e ./_site/GLOBAL_STATE_MANIFEST.html
+          test ! -e ./_site/GLOBAL_STATE_MANIFEST.md
+
   full-suite:
     name: Full repository test suite
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: "3.11"
           cache: "pip"
@@ -111,7 +136,7 @@ jobs:
       - name: Run every tracked active repository test
         run: |
           mapfile -t test_files < <(
-            git ls-files | grep -E '(^|/)test_[^/]+[.]py$' | grep -vE '^[.]barrot/disabled_tests/|^tests/fixtures/'
+            git ls-files | grep -E '(^|/)test_[^/]+[.]py
           )
           if [ "${#test_files[@]}" -eq 0 ]; then
             echo "No tracked active test modules discovered"
@@ -119,13 +144,24 @@ jobs:
           fi
           printf 'Discovered %s tracked active test modules\n' "${#test_files[@]}"
           printf '%s\n' "${test_files[@]}"
-          python -m pytest "${test_files[@]}" -v --cov=barrot_agent --cov-report=term-missing --cov-report=xml:coverage.xml --cov-fail-under=62
-          # Keep a separate 70% floor on the non-migrated core subset while
-          # the inclusive report measures every barrot_agent subpackage.
-          python -m coverage report --include='barrot_agent/*' --omit='barrot_agent/agi/*,barrot_agent/ingestion/*,barrot_agent/analysis/*,barrot_agent/monetization/*,barrot_agent/orchestration/*,barrot_agent/rendering/*,barrot_agent/smart_agent.py,barrot_agent/mem_palace.py' --fail-under=70
-          # Mission-critical modules in packages excluded from the legacy-core
-          # floor receive their own coverage floors. These are incremental
-          # floors, not claims that every legacy module is fully covered.
+          python -m pytest "${test_files[@]}" -v \
+            --cov=barrot_agent \
+            --cov=directive_platform \
+            --cov=data \
+            --cov-config=pyproject.toml \
+            --cov-report=term-missing:skip-covered \
+            --cov-report=xml:coverage.xml \
+            --cov-fail-under=62
+
+      - name: Preserve legacy core-package coverage floor
+        run: |
+          python -m coverage report \
+            --include="barrot_agent/*" \
+            --omit="barrot_agent/agi/*,barrot_agent/ingestion/*,barrot_agent/analysis/*,barrot_agent/monetization/*,barrot_agent/orchestration/*,barrot_agent/rendering/*,barrot_agent/smart_agent.py,barrot_agent/mem_palace.py" \
+            --fail-under=70
+
+      - name: Enforce mission-critical package coverage floors
+        run: |
           python -m coverage report --include='barrot_agent/agi/agi_orchestrator.py' --fail-under=50
           python -m coverage report --include='barrot_agent/analysis/xrp_telemetry_matrix.py' --fail-under=85
           python -m coverage report --include='barrot_agent/ingestion/mmi_contract.py,barrot_agent/ingestion/mmi_execution.py,barrot_agent/ingestion/mmi_ledger.py' --fail-under=85

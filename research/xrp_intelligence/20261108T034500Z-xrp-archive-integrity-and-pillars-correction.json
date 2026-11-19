@@ -57,16 +57,18 @@
     {
       "path": "scripts/pillars_check.py",
       "previous_git_blob_sha": "fa18c7cfeee71fe50a85a8f37e38ebceb2f61877",
-      "corrected_git_blob_sha": "992bf35b6327356d602152cdfeccefbad4ce4221",
+      "corrected_git_blob_sha": "f135c699cb636de4fca6e7876ac3a635ca8edc8c",
       "role": "Code fix for non-200 response handling in the source-fiction scan.",
-      "previous_corrected_git_blob_sha": "a6f0260ae4a0c0de93ae5a4e283c877d092751b5"
+      "previous_corrected_git_blob_sha": "a6f0260ae4a0c0de93ae5a4e283c877d092751b5",
+      "superseded_corrected_git_blob_sha": "992bf35b6327356d602152cdfeccefbad4ce4221"
     },
     {
       "path": "tests/test_pillars_check_readonly.py",
       "previous_git_blob_sha": "0be1ab27f643e8cebae2d382501330e8c6796fc8",
-      "corrected_git_blob_sha": "83e608dc379f4c92920368a82c7197b5141ac459",
+      "corrected_git_blob_sha": "a11012a0bd3e4222762b10dc7ee3444b4af8e20e",
       "role": "Regression tests for 404, 500 and successful HTTP 200 source-fiction scans.",
-      "previous_corrected_git_blob_sha": "b46da11bb08f3c831323cc22ce818db8cbd89f03"
+      "previous_corrected_git_blob_sha": "b46da11bb08f3c831323cc22ce818db8cbd89f03",
+      "superseded_corrected_git_blob_sha": "83e608dc379f4c92920368a82c7197b5141ac459"
     }
   ],
   "source_registry": [
@@ -196,19 +198,21 @@
       "correction_id": "C11_PILLARS_CHECK_BLOB_BINDING_SUPERSESSION",
       "target_artifact": "scripts/pillars_check.py",
       "supersedes_corrected_git_blob_sha": "a6f0260ae4a0c0de93ae5a4e283c877d092751b5",
-      "corrected_git_blob_sha": "992bf35b6327356d602152cdfeccefbad4ce4221",
+      "corrected_git_blob_sha": "f135c699cb636de4fca6e7876ac3a635ca8edc8c",
       "reason": "The consolidated successor contains a later source revision. The current exact Git blob retains explicit non-200 response handling and read-only GitHub installation lookup; the correction overlay now binds the exact successor file.",
       "model_eligible": false,
-      "status": "APPENDED_CORRECTION"
+      "status": "APPENDED_CORRECTION",
+      "superseded_successor_blob_sha": "992bf35b6327356d602152cdfeccefbad4ce4221"
     },
     {
       "correction_id": "C12_PILLARS_TEST_BLOB_BINDING_SUPERSESSION",
       "target_artifact": "tests/test_pillars_check_readonly.py",
       "supersedes_corrected_git_blob_sha": "b46da11bb08f3c831323cc22ce818db8cbd89f03",
-      "corrected_git_blob_sha": "83e608dc379f4c92920368a82c7197b5141ac459",
+      "corrected_git_blob_sha": "a11012a0bd3e4222762b10dc7ee3444b4af8e20e",
       "reason": "The consolidated successor includes additional read-only HTTP-status regression cases; the archive binding now records the exact current test blob.",
       "model_eligible": false,
-      "status": "APPENDED_CORRECTION"
+      "status": "APPENDED_CORRECTION",
+      "superseded_successor_blob_sha": "83e608dc379f4c92920368a82c7197b5141ac459"
     }
   ],
   "source_preimage_resolution": {

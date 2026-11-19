@@ -24,7 +24,7 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm_external_change == 'YES' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: ${{ inputs.expected_main_sha }}
           persist-credentials: false
@@ -41,7 +41,7 @@ jobs:
           current="$(git rev-parse FETCH_HEAD)"
           [[ "$actual" == "$EXPECTED_MAIN_SHA" && "$current" == "$EXPECTED_MAIN_SHA" ]] || { echo "::error::Main differs from the approved SHA"; exit 1; }
 
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: "3.11"
       - name: Classify entity relations
@@ -50,7 +50,7 @@ jobs:
           BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
         run: python3 scripts/entity_relation_classifier.py
       - name: Preserve classification as an artifact
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: barrot-entity-relations-${{ github.run_number }}
           path: ping-pongings/knowledge-base/entity_relations.json

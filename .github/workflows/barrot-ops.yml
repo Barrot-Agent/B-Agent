@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       confirm_databricks_workspace_create:
-        description: "Set YES only to create the notebook when the target path is confirmed absent. Existing paths are never overwritten."
+        description: "Set YES only to create the notebook when the target path is confirmed absent. Existing targets are never overwritten."
         required: true
         type: choice
         options:
@@ -32,12 +32,12 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' && inputs.confirm_databricks_workspace_create == 'YES' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
 
       - name: Setup Databricks CLI v1.25.0
-        uses: databricks/setup-cli@4f41a4c5291b531c1bb1e5760d677999cd484f89
+        uses: databricks/setup-cli@4f41a4c5291b531c1bb1e5760d677999cd484f89 # v1.25.0
 
       - name: Verify target absence and create without overwrite
         env:
@@ -86,7 +86,7 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' && inputs.confirm_kaggle_dataset_download == 'YES' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
 
