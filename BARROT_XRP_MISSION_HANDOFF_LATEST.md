@@ -6630,3 +6630,95 @@ The remaining unique/unreviewed backlog includes PRs #1664, #1670 and the stacke
 Forecast status remains **NOT_ISSUED**. No directional forecast, paper trade, external platform dispatch, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, funds transfer or real-money action occurred.
 
 **Next concrete action:** verify exact-head CI on the new handoff commit, then resolve branch-protection visibility and independent review/publication authorization. Preserve the stacked ledger branches until their historical XRP evidence has been losslessly reconciled into the current timestamped research architecture.
+
+
+---
+
+## Run 12 checkpoint — 2026-11-19 23:29 UTC
+
+### Repository state and integration-first inspection
+
+- Main: **e1c3634df28f488819185b7d5697d474bc0bcb9e**.
+- Integration branch before this handoff append: **14c3f0a3cd4cdb04056e3ad3efc5769a9408c22c**.
+- PR #1663 remains the single consolidated XRP/V3 integration branch, based on main, 480 commits ahead and 0 behind, open, draft, and GitHub currently reports it mergeable.
+- PR #1663 changes 1,469 paths, including 68 workflow YAML files.
+- Recursive tree inspection was complete and not truncated: main 1,739 entries; integration 3,011 entries; no main path is missing from integration; 1,272 integration-only entries and 210 changed shared blobs.
+- The main branch's latest successful code CI remains run 44396364281 on d5d22ac252f88637a490ed4c1598f8608b6cb786. Current main is four commits ahead of that code-tested SHA, but the only changed paths are generated PAID-ISSUES.md and data/money/paid_issues.json. Those paths are ignored by CI, so no new code CI was triggered on e1c3634. The main CI workflow still runs only its selected core test subset; the integration CI adds the full tracked-active repository suite.
+- No new branch or PR was created. Main was not changed.
+
+### Exact-head verification before this handoff append
+
+On integration head 14c3f0a3cd4cdb04056e3ad3efc5769a9408c22c:
+
+- CI run 44636444567 passed. Full repository suite: **4,375 passed, 1 skipped, 11 warnings, 19 subtests, 199.28 seconds**. Inclusive coverage 71.34%; legacy/core coverage 81%.
+- The full-suite workflow also passed the configured floors: AGI orchestrator 52%, XRP telemetry 92%, MMI 92%, Barrot integration 62%, feature store 80%, forecast ledger 97%, point-in-time features 89%, and source registry 95%.
+- The core CI subset passed. GitHub Pages build was validation-only and passed.
+- Dependency audit run 44636444620 passed all six manifests: root runtime, development, supplemental integrations, Hugging Face Space, legacy, and PEP 621 project dependencies.
+- Money audit run 44636444615 passed.
+- The exact-head fail-closed gate run 44637406274 correctly returned BLOCKED. Its blockers include the draft state, absence of an independent approving review, and inability to verify main branch protection through the GitHub API (HTTP 403).
+- The new handoff append below creates a subsequent documentation-only commit. CI for that new commit is pending and must be checked independently; the 14c3f0a test results do not transfer to the new head.
+
+### Governance, publication and security findings
+
+- PR #1663 has no submitted reviews and no requested independent reviewers. The .github/CODEOWNERS file assigns all paths to @Barrot-Agent; it does not provide an independent reviewer.
+- Branch-protection details remain unverified because the GitHub integration receives HTTP 403 from the branch-protection endpoint. The accessible ruleset response does not establish an active, enforceable protection policy. Do not infer required checks, approval counts, administrator enforcement, or bypass restrictions.
+- Main has an automatic GitHub Pages build/deployment path; deployment run 44587757885 succeeded on main. Merging this PR would publish the changed site content. No explicit publication authorization is recorded. The integration CI Pages job is validation-only.
+- The 68/68 changed workflow YAML surface scan remains complete. This run extended targeted workflow-body review to the paid-issue publisher, Coinbase paper trader, Hugging Face sync, Databricks deployment, Space restart, A2A worker deployment, and release workflow. Full transitive review of every invoked script and external data flow is still incomplete.
+- Main's paid-issue publisher has contents:write and pushes generated files directly to main after the scheduled hunter. The integration branch disables that publisher; the hunter remains artifact-only.
+- Main's Coinbase paper-trader workflow invokes Groq and commits simulated BTC trade state/logs without a per-run confirmation gate. It is not the XRP shadow-evaluation engine. The integration branch disables it; no paper trading was run.
+- Main's Hugging Face sync uploads the Space folder and propagates GitHub secrets into Space secrets/variables. Its confirmation is not a separate secret-rotation authorization and does not verify the destination's privacy state. The integration branch quarantines it; no upload or secret change occurred.
+- Main's Databricks deploy script uploads files with overwrite enabled, resets an existing job to an unpaused schedule, and triggers a run. The integration version requires BARROT_CONFIRM_EXTERNAL_CHANGE=YES, verifies the target path is absent, uploads without overwrite, refuses an existing same-name job, and creates a paused job without starting it. The integration legacy deploy workflow is disabled. No Databricks write occurred.
+- The integration Barrot Operations workflow is manual-only, requires explicit YES inputs and an exact current main SHA, restricts the Databricks host, and checks target absence. Its Kaggle path downloads a public dataset only; it does not submit entries. It was not dispatched.
+- The integration Space restart workflow requires explicit YES and exact main SHA. The A2A worker workflow separately requires deployment confirmation and secret-rotation confirmation. Neither was dispatched.
+- The integration release workflow is tag-triggered and pins the release action to a commit SHA. No release tag was created.
+- The XRP ingestion workflow exists only on the integration branch. Its hourly and daily schedules become active only after the workflow is on the default branch. It uses actions:read and contents:read, stores content-addressed receipts and event artifacts in GitHub Actions artifacts for up to 90 days, and stores the per-run feature-store checkpoint for 7 days. GitHub artifact retention is not WORM storage or an independently controlled immutable archive.
+
+### New primary-source XRP capital and institutional evidence
+
+A new SEC filing review adds material detail to the Evernorth capital stack. These observations are research-only until the ingestion pipeline captures the raw filing bytes and creates source receipts.
+
+1. **November 17, 2026 — Evernorth 424B3 prospectus supplement:** the supplement covers up to 5,218,935 Class A shares that Evernorth may issue to CF Principal Investments LLC under the October 23 common-stock purchase agreement. The filing distinguishes issuer proceeds from the holder's later resale proceeds: Evernorth may receive money when it issues/sells shares to the holder, but does not receive the holder's resale proceeds. This is a committed equity facility, not a lump-sum cash raise already received. SEC source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026074355/evernorth-424stickerelocsxa.htm
+2. **November 13, 2026 — Evernorth Form 10-Q included in the 424B3 supplement:** the ELOC is discretionary at Evernorth's option, up to 5,218,935 shares, generally priced at 97% of the applicable VWAP, subject to purchase-period volume limits and a 4.99% beneficial-ownership cap. The resale registration statement became effective October 30. The filing describes an approximately $0.5 million non-refundable commitment fee, a possible true-up/additional fee subject to a $1.0 million total fee cap, and up to $0.5 million of reimbursable expenses. Proceeds depend on whether and how often Evernorth directs purchases and the prices at which shares are sold. SEC source: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm
+3. **Actual warrant proceeds:** between October 12 and November 9, 2026, 3,073,366 warrants were exercised for cash at $11.50 per share, generating $35.3 million gross proceeds; 8,666,279 warrants remained. This is disclosed cash proceeds, distinct from the unutilized portion of the ELOC and distinct from XRP already held. The filing does not establish that all warrant proceeds were used to purchase XRP.
+4. **Convertible note:** Evernorth reports a $30 million note issued October 13, with approximately $29 million net proceeds after a $1 million advisor fee. The stated intended use includes general corporate purposes, XRP acquisition and other XRP ecosystem activities; the filing does not establish that the entire amount was spent on XRP.
+5. **Capital and liquidity date discipline:** the 10-Q reports September 30 pre-business-combination unrestricted cash of $91,397, a $10.0 million working-capital deficit and $185.6 million accumulated deficit. These are pre-close figures and must not be represented as Evernorth's current post-close liquidity.
+6. **Collateral is strategy, not proof of execution:** the filing says Evernorth may consider secured financing using XRP holdings as collateral, where permissible, and may pursue yield-generating strategies. It does not establish an executed XRP-backed lending or institutional payment-financing facility.
+7. **Coinbase principal-market designation:** Evernorth says it selected Coinbase as its principal market for XRP financial-reporting purposes after comparing trading volume/activity, quoted-price consistency and regulatory/KYC considerations. This is Evernorth's accounting principal-market determination; it does not prove Coinbase is the sole or universal global price-discovery venue.
+
+Relevant SEC sections: ELOC and warrant exercises, pp. 16–17; plan of operations and potential XRP collateral, pp. 19–20; pre-close liquidity, pp. 20–22; Coinbase principal-market determination, p. 23. The filing's accounting cutoffs and post-close transactions must remain separate in capital-flow features.
+
+### Fresh spot quote-quality check
+
+Browser-rendered exchange endpoints were checked around this run. These are not raw-byte receipts and are excluded from the point-in-time feature store and forecast evaluation.
+
+- Kraken XRP/USD returned last 0.96066, bid 0.96071, ask 0.96084, 24-hour volume 44.9476 million XRP, 24-hour VWAP 0.973568, high 0.9968 and low 0.9520. The response did not include an exchange event timestamp. Source: https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+- OKX XRP-USDT returned last 0.9633, bid 0.9632, ask 0.9633, 24-hour volume 38.0523 million XRP and exchange timestamp 2026-11-19 23:02:07.036 UTC. Source: https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT
+- Indicative top-of-book spreads were approximately 1.35 bps on Kraken and 1.04 bps on OKX. These are Level-1 spreads, not order-book depth or executable liquidity.
+- OKX USDT-USD returned 0.99889, but its exchange timestamp was 2026-11-19 23:31:04.068 UTC—later than the run's 23:29 UTC reference and 28m57s later than the XRP-USDT observation. The USDT normalization is therefore rejected. No cross-venue arbitrage or USD-basis conclusion is drawn.
+- No synchronized multi-venue Level-2 snapshot was admitted. The browser-rendered observations lack raw-byte hashes, retrieval receipts and a fully synchronized clock basis.
+
+### Research and prediction status
+
+- No new verified exact-phrase identity evidence surfaced for ASK Coin, “actual capital,” or “SBIC, ChatGPT SBIC.” Existing SBIC East/Central/West versus SBI Holdings disambiguation remains unchanged.
+- No canonical Camilla/Kamilah Stevenson YouTube channel was newly verified. Existing candidate videos remain quarantined from creator attribution except for the previously verified host-published guest appearance.
+- The nine-platform capability/authentication/data-flow map remains evidence-based: GitHub is the only live repository connection tested in this run. No live Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks model/data connection was tested or claimed.
+- Implemented architecture remains public ingestion, content-addressed raw receipts, local receipt-chain verification, point-in-time SQLite feature storage, four deterministic baselines, chronological purged/embargoed walk-forward evaluation, temporal calibration, feature drift, event timelines, scenario/counter-hypothesis records and a fail-closed forecast ledger.
+- Outstanding prediction blockers remain external WORM/timestamp anchoring, broader synchronized receipt-backed history, independent evaluator attestation, learned-candidate out-of-sample superiority, stable live-data calibration, concept-drift validation and shadow evaluation.
+- Forecast status: **NOT_ISSUED**. No directional forecast, paper trade or real-money action was authorized or executed.
+
+### Open PR classification — all 14 preserved
+
+- **Blocked:** #1663 (draft/integration governance and publication gates), #1666 (Kaggle dependency-range change not integrated; Rust/Space compatibility unresolved), #1668 (unique provider failover work with broad permissions, provider-secret exposure and unpinned actions).
+- **Duplicate candidate:** #1665 (the Pylint dependency update is already present in the integration branch; close only after merged-main verification).
+- **Superseded-content candidate:** #1541 (MMI claim-fingerprint implementation is present in integration with additional hardening; close only after merged-main verification).
+- **Unique/unreviewed:** #1664 and #1670.
+- **Preserved research lineage:** #1450, #1460, #1440, #1436, #1437, #1353 and #1265. These branches contain substantial historical research-ledger content absent from main and integration. They are not safe duplicates. Their pairwise ancestry/path overlaps remain to be reconciled losslessly; #1265 shares only the CI workflow path with #1663. No lineage PR was merged or closed.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** XRP research and prediction architecture; point-in-time ingestion and feature contracts; source-independence controls; calibrated forecast readiness gate; nine-platform least-privilege coordination.
+- **EXECUTED:** current main and integration refs, complete recursive trees, current code/workflows/dependency manifests, all 14 open PR inventories, changed-file/ancestry/overlap review, exact-head workflow and job logs, targeted high-impact workflow-body review, fresh exchange quote-quality check, and new SEC Evernorth capital-stack reconciliation.
+- **VERIFIED:** pre-append head 14c3f0a passed the exact-head full suite, core CI, Pages validation, six-manifest dependency audit and money audit. Main remains unchanged. The fail-closed gate blocks merge for governance and branch-protection visibility reasons.
+- **NOT VERIFIED:** exact-head CI for the documentation commit created by this append; effective main branch protection and required-check policy; independent approval; Pages publication authorization; full transitive workflow/script audit; production scheduled ingestion on main; WORM retention; learned XRP model superiority; independent evaluator attestation; live nine-platform connectivity; and shadow evaluation.
+
+**Next concrete action:** verify exact-head CI on the new handoff commit. Then finish the remaining transitive workflow/script audit, obtain independently attributable review, establish effective branch-protection visibility, and resolve the Pages publication boundary. Keep PR #1663 open and draft until every required gate is verified. Preserve all unique research branches. Do not merge, deploy, rotate secrets, restart Spaces, write to Databricks, submit Kaggle entries, transfer funds, paper-trade or use real money without the specific required authorization.
