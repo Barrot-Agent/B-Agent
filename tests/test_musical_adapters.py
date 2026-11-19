@@ -1,6 +1,7 @@
 """Tests for original composition and optional audio/MIDI adapters."""
 import tempfile
 import unittest
+from types import ModuleType
 from pathlib import Path
 from unittest.mock import patch
 
@@ -159,4 +160,53 @@ class AudioRenderTests(unittest.TestCase):
                     soundfont_path=soundfont,
                     sample_rate=100,
                 )
+    def test_audio_render_writes_new_wav_and_reports_technical_metrics(self):
+        import sys
+
+        import numpy as np
+        from barrot_agent.creative.audio_render import render_audio
+
+        class FakeMidi:
+            def __init__(self, path):
+                self.path = path
+
+            def fluidsynth(self, *, fs, sf2_path):
+                return np.asarray([0.0, 0.5, -0.5], dtype=np.float32)
+
+        pretty_midi = ModuleType("pretty_midi")
+        pretty_midi.PrettyMIDI = FakeMidi
+        scipy = ModuleType("scipy")
+        scipy.__path__ = []
+        scipy_io = ModuleType("scipy.io")
+        scipy_io.__path__ = []
+        wavfile = ModuleType("scipy.io.wavfile")
+
+        def write(handle, sample_rate, samples):
+            handle.write(b"RIFF-test-wav")
+
+        wavfile.write = write
+        scipy_io.wavfile = wavfile
+        scipy.io = scipy_io
+
+        with tempfile.TemporaryDirectory() as directory:
+            soundfont = Path(directory) / "test.sf2"
+            soundfont.write_bytes(b"placeholder")
+            target = Path(directory) / "render.wav"
+            modules = {
+                "pretty_midi": pretty_midi,
+                "scipy": scipy,
+                "scipy.io": scipy_io,
+                "scipy.io.wavfile": wavfile,
+            }
+            with patch.dict(sys.modules, modules), patch(
+                "barrot_agent.creative.audio_render.export_midi",
+                side_effect=lambda manifest, path: path.write_bytes(b"midi"),
+            ):
+                result = render_audio(template(), target, soundfont_path=soundfont)
+
+            self.assertEqual(target.read_bytes(), b"RIFF-test-wav")
+            self.assertEqual(result.sample_rate, 44100)
+            self.assertAlmostEqual(result.duration_seconds, 3 / 44100)
+            self.assertAlmostEqual(result.peak_level, 0.5)
+            self.assertEqual(result.channels, 1)
 
