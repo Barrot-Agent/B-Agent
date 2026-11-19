@@ -6084,3 +6084,15 @@ Continue on the existing integration branch. Complete the transitive workflow/sc
 - Regression/evidence test: [`tests/test_xrp_run46_sbi_evernorth_circle_market_reconciliation.py`](../tests/test_xrp_run46_sbi_evernorth_circle_market_reconciliation.py).
 - The artifact preserves the SBI/Ripple/Evernorth cash-versus-in-kind reconciliation, Circle/SBI stablecoin relationships, exchange-wallet and ETF definitions, source disagreements and the Evernorth on-chain counter-evidence.
 - The record deliberately sets `model_eligible=false`, raw-source hashes/receipts to null, point-in-time feature writes to zero and forecast status to `NOT_ISSUED`. This is an evidence ledger entry, not a market signal or forecast.
+
+
+### Accounting correction — Evernorth impairment roll-forward
+
+The Run 46 artifact initially mislabeled USD 271,037,170 as cumulative impairment since inception. The SEC filing's roll-forward shows:
+- 2025 impairment: USD 233,650,642.
+- Nine-month 2026 impairment: USD 271,037,170.
+- Q3 2026 impairment alone: USD 6,891,073.
+- Cumulative impairment since inception: USD 504,687,812.
+- Reconciliation: USD 846,575,043 historical cost minus USD 504,687,812 cumulative impairment equals USD 341,887,231 September 30 carrying value.
+
+The artifact and regression test have been corrected. USD 271,037,170 is retained as the 2026 year-to-date charge, not the cumulative figure. Primary evidence: [Evernorth SEC filing, impairment roll-forward and XRP cost-basis table](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm).

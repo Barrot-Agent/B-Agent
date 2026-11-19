@@ -42,7 +42,15 @@ def test_evernorth_accounting_value_is_not_market_value():
     data = load_artifact()["capital_and_ownership"]["evernorth_sec_reconciliation"]
     assert data["pre_close_historical_cost_usd"] == 846_575_043
     assert data["pre_close_carrying_value_after_impairment_usd"] == 341_887_231
-    assert data["cumulative_impairment_usd"] == 271_037_170
+    assert data["cumulative_impairment_usd"] == 504_687_812
+    assert data["impairment_2025_usd"] == 233_650_642
+    assert data["impairment_2026_ytd_usd"] == 271_037_170
+    assert data["impairment_q3_2026_usd"] == 6_891_073
+    assert (
+        data["pre_close_historical_cost_usd"]
+        - data["cumulative_impairment_usd"]
+        == data["pre_close_carrying_value_after_impairment_usd"]
+    )
     assert data["pre_close_carrying_value_after_impairment_usd"] < data["pre_close_historical_cost_usd"]
 
 

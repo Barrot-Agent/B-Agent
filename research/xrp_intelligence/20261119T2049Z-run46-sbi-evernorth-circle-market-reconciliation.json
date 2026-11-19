@@ -176,7 +176,7 @@
       "pre_close_custody_xrp": 346284972,
       "pre_close_historical_cost_usd": 846575043,
       "pre_close_carrying_value_after_impairment_usd": 341887231,
-      "cumulative_impairment_usd": 271037170,
+      "cumulative_impairment_usd": 504687812,
       "cash_advance_funding_total_usd": 214049995,
       "cash_purchase_recorded_cost_usd": 214000000,
       "cash_purchased_xrp": 84365876,
@@ -223,7 +223,11 @@
         "bitgo": "Identified initial digital-asset custodian in the filing's custody history.",
         "ripple": "Related party, direct XRP contributor, credit counterparty and announced deployment partner.",
         "rippleworks": "Separate entity from Ripple Labs; source of XRP contributed through the sponsor."
-      }
+      },
+      "impairment_2025_usd": 233650642,
+      "impairment_2026_ytd_usd": 271037170,
+      "impairment_q3_2026_usd": 6891073,
+      "impairment_reconciliation_note": "Historical cost 846,575,043 less cumulative impairment since inception 504,687,812 equals September 30 carrying value 341,887,231. The 271,037,170 figure is the nine-month 2026 impairment, not cumulative since inception; Q3 2026 alone was 6,891,073."
     },
     "evernorth_onchain_counter_evidence": {
       "source_id": "XRP_INSIGHTS_EVERNORTH",
