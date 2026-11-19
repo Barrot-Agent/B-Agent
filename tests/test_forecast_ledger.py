@@ -1368,3 +1368,487 @@ def test_readiness_rejects_unspecified_or_circular_bootstrap_sampling_policy():
     report["paired_uncertainty"]["sampling_policy"] = "circular_moving_blocks_v1"
     with pytest.raises(ForecastLedgerError, match="sampling_policy"):
         _validate_readiness_report(report)
+
+
+def test_forecast_ledger_scalar_validation_helpers_cover_strict_rejections():
+    from barrot_agent.evolution.forecast_ledger import _number, _probs, _utc
+
+    with pytest.raises(ForecastLedgerError, match="not valid ISO-8601"):
+        _utc("not-a-time", "timestamp")
+    with pytest.raises(ForecastLedgerError, match="must include UTC timezone"):
+        _utc("2026-11-03T12:00:00-05:00", "timestamp")
+    with pytest.raises(ForecastLedgerError, match="must be numeric"):
+        _number("not-a-number", "price")
+    with pytest.raises(ForecastLedgerError, match="must be finite"):
+        _number(float("nan"), "price")
+    with pytest.raises(ForecastLedgerError, match="must contain down, flat and up"):
+        _probs({"up": 1.0}, "probabilities")
+
+
+def test_trusted_evaluator_key_loader_rejects_malformed_environment(monkeypatch):
+    from barrot_agent.evolution.forecast_ledger import _load_trusted_evaluator_keys
+
+    monkeypatch.setenv("BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON", "{")
+    with pytest.raises(ForecastLedgerError, match="must contain a JSON object"):
+        _load_trusted_evaluator_keys(None)
+    monkeypatch.setenv("BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON", "[]")
+    with pytest.raises(ForecastLedgerError, match="must be a mapping"):
+        _load_trusted_evaluator_keys(None)
+
+
+@pytest.mark.parametrize(
+    ("configured", "message"),
+    [
+        ({" ": _TEST_EVALUATOR_PUBLIC_KEY}, "non-empty strings"),
+        ({"external": "not-base64!"}, "not valid base64"),
+        ({"external": object()}, "raw bytes or base64"),
+        ({"external": b"short"}, "32 Ed25519 public-key bytes"),
+        (
+            {"external": _TEST_EVALUATOR_PUBLIC_KEY, " external ": _TEST_EVALUATOR_PUBLIC_KEY},
+            "must be unique",
+        ),
+    ],
+)
+def test_trusted_evaluator_key_loader_rejects_invalid_key_entries(configured, message):
+    from barrot_agent.evolution.forecast_ledger import _load_trusted_evaluator_keys
+
+    with pytest.raises(ForecastLedgerError, match=message):
+        _load_trusted_evaluator_keys(configured)
+
+
+def test_trusted_evaluator_key_loader_accepts_raw_and_base64_public_keys(monkeypatch):
+    from barrot_agent.evolution.forecast_ledger import _load_trusted_evaluator_keys
+
+    encoded = base64.b64encode(_TEST_EVALUATOR_PUBLIC_KEY).decode("ascii")
+    keys = _load_trusted_evaluator_keys(
+        {"raw-key": _TEST_EVALUATOR_PUBLIC_KEY, "encoded-key": encoded}
+    )
+    assert set(keys) == {"raw-key", "encoded-key"}
+    monkeypatch.setenv(
+        "BARROT_XRP_EVALUATOR_PUBLIC_KEYS_JSON",
+        json.dumps({"external-evaluator": encoded}),
+    )
+    assert set(_load_trusted_evaluator_keys(None)) == {"external-evaluator"}
+
+
+@pytest.mark.parametrize(
+    ("mutation", "message"),
+    [
+        ("missing_field", "complete evaluator_attestation"),
+        ("wrong_scheme", "scheme must be Ed25519"),
+        ("blank_key", "key_id is required"),
+        ("evaluator_mismatch", "must match the trusted attestation key_id"),
+        ("unknown_key", "is not trusted"),
+        ("bad_digest", "must be a SHA-256 digest"),
+        ("digest_mismatch", "payload hash does not match"),
+        ("missing_signature", "signature_base64 is required"),
+        ("bad_signature_base64", "not valid base64"),
+        ("short_signature", "must contain 64 bytes"),
+        ("invalid_signature", "signature verification failed"),
+    ],
+)
+def test_evaluator_attestation_rejects_invalid_signature_contracts(mutation, message):
+    from barrot_agent.evolution.forecast_ledger import _verify_evaluator_attestation
+
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    attestation = report["evaluator_attestation"]
+    if mutation == "missing_field":
+        attestation.pop("scheme")
+    elif mutation == "wrong_scheme":
+        attestation["scheme"] = "RSA"
+    elif mutation == "blank_key":
+        attestation["key_id"] = " "
+    elif mutation == "evaluator_mismatch":
+        report["evaluator_id"] = "different-evaluator"
+    elif mutation == "unknown_key":
+        attestation["key_id"] = "unknown-evaluator"
+        report["evaluator_id"] = "unknown-evaluator"
+    elif mutation == "bad_digest":
+        attestation["signed_payload_sha256"] = "not-a-digest"
+    elif mutation == "digest_mismatch":
+        attestation["signed_payload_sha256"] = "a" * 64
+    elif mutation == "missing_signature":
+        attestation["signature_base64"] = ""
+    elif mutation == "bad_signature_base64":
+        attestation["signature_base64"] = "!"
+    elif mutation == "short_signature":
+        attestation["signature_base64"] = base64.b64encode(b"short").decode("ascii")
+    elif mutation == "invalid_signature":
+        attestation["signature_base64"] = base64.b64encode(b"x" * 64).decode("ascii")
+
+    trusted = {"test-independent-evaluator": _TEST_EVALUATOR_PRIVATE_KEY.public_key()}
+    with pytest.raises(ForecastLedgerError, match=message):
+        _verify_evaluator_attestation(report, trusted, "2026-11-03T16:00:45Z")
+
+
+def test_evaluator_attestation_requires_a_nonempty_external_trust_root():
+    from barrot_agent.evolution.forecast_ledger import _verify_evaluator_attestation
+
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    with pytest.raises(ForecastLedgerError, match="no trusted independent evaluator public keys"):
+        _verify_evaluator_attestation(report, {}, "2026-11-03T16:00:45Z")
+
+
+def _raw_receipt_edge_fixture(tmp_path):
+    raw_bytes = b'{"symbol":"XRPUSDT","price":"1.31"}'
+    archive = RawReceiptArchive(tmp_path / "raw-edge")
+    canonical = archive.store(
+        source_id="binance_spot_ticker",
+        source_uri="https://api.binance.com/api/v3/ticker/24hr?symbol=XRPUSDT",
+        captured_at_utc="2026-11-05T13:00:00.000000Z",
+        source_data_as_of_utc="2026-11-05T12:59:59.000000Z",
+        raw_bytes=raw_bytes,
+        model_eligible=True,
+    )
+    outer = {
+        "source_id": canonical["source_id"],
+        "source_uri": canonical["source_uri"],
+        "captured_at_utc": canonical["captured_at_utc"],
+        "source_data_as_of_utc": canonical["source_data_as_of_utc"],
+        "raw_content_sha256": canonical["raw_content_sha256"],
+        "receipt_id": canonical["receipt_id"],
+        "raw_receipt": canonical,
+    }
+    return outer, raw_bytes
+
+
+def _rebind_raw_receipt(outer, **updates):
+    canonical = dict(outer["raw_receipt"])
+    canonical.pop("receipt_id", None)
+    canonical.update(updates)
+    encoded = json.dumps(
+        canonical,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    ).encode("utf-8")
+    receipt_id = hashlib.sha256(encoded).hexdigest()
+    outer["raw_receipt"] = {**canonical, "receipt_id": receipt_id}
+    outer["receipt_id"] = receipt_id
+    return outer
+
+
+def test_canonical_raw_receipt_requires_a_complete_document_and_exact_fields(tmp_path):
+    outer, raw_bytes = _raw_receipt_edge_fixture(tmp_path)
+    missing = dict(outer)
+    missing.pop("raw_receipt")
+    with pytest.raises(ForecastLedgerError, match="complete canonical raw_receipt"):
+        _validate_canonical_raw_receipt(missing, 0, raw_bytes)
+
+    unexpected = dict(outer)
+    unexpected["raw_receipt"] = {**outer["raw_receipt"], "unreviewed_field": "value"}
+    with pytest.raises(ForecastLedgerError, match="exact RawReceiptArchive fields"):
+        _validate_canonical_raw_receipt(unexpected, 0, raw_bytes)
+
+
+@pytest.mark.parametrize(
+    ("headers", "message"),
+    [
+        ("not-an-object", "source_http_headers must be an object"),
+        ({"authorization": "Bearer private"}, "invalid HTTP provenance headers"),
+        ({"etag": ""}, "invalid HTTP provenance headers"),
+        ({"etag": "x" * 513}, "invalid HTTP provenance headers"),
+        ({"etag": "bad\nvalue"}, "invalid HTTP provenance headers"),
+    ],
+)
+def test_canonical_raw_receipt_rejects_unapproved_http_provenance_headers(tmp_path, headers, message):
+    outer, raw_bytes = _raw_receipt_edge_fixture(tmp_path)
+    _rebind_raw_receipt(outer, source_http_headers=headers)
+    with pytest.raises(ForecastLedgerError, match=message):
+        _validate_canonical_raw_receipt(outer, 0, raw_bytes)
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "message"),
+    [
+        ("source_id", "different-source", "source identity"),
+        ("captured_at_utc", "2026-11-05T13:00:01.000000Z", "capture time"),
+        ("source_data_as_of_utc", "2026-11-05T12:59:58.000000Z", "source data as-of"),
+        ("raw_content_sha256", "f" * 64, "raw hash"),
+    ],
+)
+def test_canonical_raw_receipt_binds_outer_identity_and_timestamps(tmp_path, field, value, message):
+    outer, raw_bytes = _raw_receipt_edge_fixture(tmp_path)
+    outer[field] = value
+    with pytest.raises(ForecastLedgerError, match=message):
+        _validate_canonical_raw_receipt(outer, 0, raw_bytes)
+
+
+@pytest.mark.parametrize(
+    ("updates", "message"),
+    [
+        ({"payload_size_bytes": 0}, "payload_size_bytes must be a positive integer"),
+        ({"raw_bytes_retained": False, "raw_retention_reason": "retention restriction"}, "requires retained raw bytes"),
+        ({"raw_payload_path": "bad\\path"}, "raw payload path is invalid"),
+        ({"model_eligible_source": False}, "does not attest an eligible source capture"),
+        ({"source_http_date": "bad\nvalue"}, "source HTTP Date is invalid"),
+    ],
+)
+def test_canonical_raw_receipt_rejects_invalid_retention_and_payload_metadata(tmp_path, updates, message):
+    outer, raw_bytes = _raw_receipt_edge_fixture(tmp_path)
+    _rebind_raw_receipt(outer, **updates)
+    with pytest.raises(ForecastLedgerError, match=message):
+        _validate_canonical_raw_receipt(outer, 0, raw_bytes)
+
+
+@pytest.mark.parametrize(
+    ("provided_bytes", "message"),
+    [
+        ("not-bytes", "exact raw payload bytes are required"),
+        (b"", "exact raw payload bytes are required"),
+        (b"x", "payload size does not match"),
+        (b"z" * len(b'{"symbol":"XRPUSDT","price":"1.31"}'), "do not match canonical receipt SHA-256"),
+    ],
+)
+def test_canonical_raw_receipt_verifies_exact_raw_payload_bytes(tmp_path, provided_bytes, message):
+    outer, _ = _raw_receipt_edge_fixture(tmp_path)
+    with pytest.raises(ForecastLedgerError, match=message):
+        _validate_canonical_raw_receipt(outer, 0, provided_bytes)
+
+
+def test_readiness_report_rejects_non_object_and_invalid_top_level_contract():
+    with pytest.raises(ForecastLedgerError, match="must be a JSON object"):
+        _validate_readiness_report(None)
+
+    cases = [
+        (lambda r: r.update(schema_version="barrot.xrp.model-readiness.v5"), "schema is unsupported"),
+        (lambda r: r.update(evaluation_type="baseline_only"), "non-chronological evaluation"),
+        (lambda r: r.update(status="BLOCKED"), "has not passed the active forecast policy"),
+        (lambda r: r.update(evaluation_id=" "), "evaluation_id must be a non-empty string"),
+        (lambda r: r.update(model_version=r["baseline_model_version"]), "distinct from its baseline model"),
+        (lambda r: r.update(evaluation_code_sha256="bad"), "evaluation_code_sha256 must be a SHA-256 digest"),
+        (lambda r: r.update(horizon_seconds=7200), "horizon_seconds is unsupported"),
+        (lambda r: r.update(dataset_manifest=None), "immutable dataset_manifest"),
+        (lambda r: r["dataset_manifest"].update(model_eligible=False), "not verified and model eligible"),
+        (lambda r: r["dataset_manifest"].update(asset="BTC"), "asset/venue does not match"),
+        (lambda r: r["dataset_manifest"].update(feature_ids=["x", "x"]), "feature_ids contains duplicates"),
+        (lambda r: r["dataset_manifest"].update(feature_snapshot_ids=["not-a-sha"]), "feature_snapshot_ids must be SHA-256"),
+        (lambda r: r["dataset_manifest"].update(data_cutoff_utc=None), "data_cutoff_utc is required"),
+        (lambda r: r["dataset_manifest"].update(raw_source_receipts=[]), "needs byte-addressed raw_source_receipts"),
+        (lambda r: r["dataset_manifest"]["raw_source_receipts"].__setitem__(0, None), "must be an object"),
+        (lambda r: r["dataset_manifest"]["raw_source_receipts"][0].update(source_id=" "), "needs source_id"),
+        (lambda r: r["dataset_manifest"]["raw_source_receipts"][0].update(receipt_id=" "), "needs receipt_id"),
+        (lambda r: r["dataset_manifest"]["raw_source_receipts"][0].update(raw_content_sha256="bad"), "needs a SHA-256 digest"),
+        (lambda r: r["dataset_manifest"]["raw_source_receipts"][0].update(raw_capture_status="digest_only"), "must be byte_complete"),
+        (lambda r: r["dataset_manifest"]["raw_source_receipts"][0].update(raw_receipt_sha256_verified=False), "has not verified its raw bytes"),
+        (lambda r: r["dataset_manifest"]["raw_source_receipts"][0].update(independence_group=" "), "needs independence_group"),
+        (lambda r: r["dataset_manifest"]["raw_source_receipts"][0].update(source_uri="ftp://example.com/data"), "source_uri must be HTTP"),
+        (lambda r: r["dataset_manifest"]["raw_source_receipts"][0].update(captured_at_utc="2026-11-03T15:59:20Z"), "capture precedes source data as-of"),
+        (lambda r: r["dataset_manifest"].update(source_ids=["kraken-001"]), "source_ids do not exactly match raw receipt sources"),
+        (lambda r: r["dataset_manifest"].update(source_independence_groups=["wrong-group"]), "needs at least"),
+        (lambda r: r.update(source_independence_group_count=99), "source_independence_group_count does not match"),
+        (lambda r: r.update(training_sample_count=99), "training_sample_count must be at least"),
+        (lambda r: r.update(shadow_evaluation_effective_sample_size=201), "shadow effective sample size cannot exceed raw sample count"),
+        (lambda r: r.update(out_of_sample_end_utc="2026-10-01T01:00:00Z"), "span must cover at least"),
+        (lambda r: r.update(
+            shadow_evaluation_start_utc="2026-11-03T00:00:00Z",
+            shadow_evaluation_end_utc="2026-11-03T10:00:00Z",
+            shadow_evaluation_effective_sample_size=11,
+        ), "shadow effective sample size exceeds horizon-span capacity"),
+        (lambda r: r.update(
+            shadow_evaluation_start_utc="2026-10-19T00:00:00Z",
+            shadow_evaluation_end_utc="2026-10-20T10:00:00Z",
+            shadow_evaluation_effective_sample_size=10,
+        ), "shadow evaluation must follow"),
+        (lambda r: r.update(leakage_check_status="FAIL"), "leakage check did not pass"),
+        (lambda r: r.update(calibration_status="FAIL"), "calibration did not pass"),
+        (lambda r: r.update(drift_status="DRIFT"), "drift status is not stable"),
+        (lambda r: r.update(shadow_evaluation_status="FAIL"), "shadow evaluation did not pass"),
+        (lambda r: r.update(weighted_calibration_error=0.10), "weighted calibration error exceeds"),
+        (lambda r: r.update(model_metrics=None), "must include model and baseline metrics"),
+        (lambda r: r["baseline_metrics"].pop("volatility_normal"), "missing one or more required baselines"),
+        (lambda r: r["baseline_metrics"].update(momentum_sign=None), "baseline metrics for momentum_sign must be an object"),
+        (lambda r: r.update(paired_uncertainty=None), "needs paired_uncertainty"),
+        (lambda r: r["paired_uncertainty"].update(method="unsupported"), "method is unsupported"),
+        (lambda r: r["paired_uncertainty"].update(sampling_policy="circular"), "sampling_policy must use non-circular"),
+        (lambda r: r["paired_uncertainty"].update(candidate_model_id="other"), "candidate_model_id must match"),
+        (lambda r: r["paired_uncertainty"].update(multiplicity_method="none"), "must use Bonferroni"),
+        (lambda r: r["paired_uncertainty"].update(familywise_confidence_level=0.90), "familywise_confidence_level must be in"),
+        (lambda r: r["paired_uncertainty"].update(familywise_comparison_count=7), "comparison_count must cover"),
+        (lambda r: r["paired_uncertainty"].update(individual_confidence_level=0.90), "confidence intervals do not meet"),
+        (lambda r: r["paired_uncertainty"].update(bootstrap_replicates=9999), "bootstrap_replicates must be at least"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["temporal_moving_block_bootstrap"].update(confidence_level=True), "confidence_level must be a finite number"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["temporal_moving_block_bootstrap"].update(sampling_diagnostics=None), "missing cadence diagnostics"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["temporal_moving_block_bootstrap"]["sampling_diagnostics"].update(cadence_source="inferred"), "must use a declared expected cadence"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["temporal_moving_block_bootstrap"]["sampling_diagnostics"].update(cadence_seconds=0), "cadence_seconds must be positive"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["source_clustered_moving_block_bootstrap"].update(brier_sampling_diagnostics=None), "missing source-cluster cadence diagnostics"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["source_clustered_moving_block_bootstrap"]["brier_sampling_diagnostics"].update(per_cluster={}), "per_cluster must cover exactly"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["temporal_moving_block_bootstrap"].update(brier_difference_ci=[0.1, -0.1]), "lower bound exceeds upper bound"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"].update(status="FAIL"), "out_of_sample window did not pass"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"].pop("volatility_normal"), "missing a required baseline comparison"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"].update(naive_class_prior=None), "comparison for naive_class_prior must be an object"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"].update(mean_brier_difference_vs_benchmark=0.0), "mean brier difference must favor"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["temporal_moving_block_bootstrap"].update(status="MISSING"), "temporal interval is not estimated"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["source_clustered_moving_block_bootstrap"].update(status="MISSING"), "source-clustered interval is not estimated"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["source_clustered_moving_block_bootstrap"].update(confidence_level=0.5), "source-clustered interval is not familywise-adjusted"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["source_clustered_moving_block_bootstrap"].update(source_group_ids=["same"] * 5), "source_group_ids must be unique non-empty strings"),
+        (lambda r: r["paired_uncertainty"]["out_of_sample"]["comparisons"]["naive_class_prior"]["source_clustered_moving_block_bootstrap"].update(equal_cluster_weighted_mean_brier_difference=0.0), "source-clustered mean brier difference must favor"),
+        (lambda r: r.update(evaluation_completed_at_utc="2026-10-21T00:00:00Z"), "evaluation completion precedes"),
+    ]
+
+    for mutate, message in cases:
+        report = _mutated_readiness_report(mutate)
+        with pytest.raises(ForecastLedgerError, match=message):
+            _validate_readiness_report(report)
+
+
+def test_readiness_report_rejects_a_dataset_hash_that_does_not_match_its_manifest():
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    report["dataset_sha256"] = "f" * 64
+    with pytest.raises(ForecastLedgerError, match="dataset manifest SHA-256"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_report_rejects_invalid_raw_receipt_capture_after_evaluation_cutoff():
+    report = _mutated_readiness_report(
+        lambda value: value["dataset_manifest"]["raw_source_receipts"][0].update(
+            captured_at_utc="2026-11-03T16:00:00Z"
+        )
+    )
+    with pytest.raises(ForecastLedgerError, match="capture exceeds evaluation data cutoff"):
+        _validate_readiness_report(report)
+
+
+def test_readiness_certificate_rejects_invalid_and_unregistered_certificates(tmp_path):
+    ledger = make_ledger(tmp_path / "certificate-validation.sqlite3")
+    valid = forecast()
+    assert ledger._verify_readiness_certificate(valid)["status"] == "PASS"
+
+    cases = [
+        (lambda p: p.pop("readiness_certificate"), "certificate is required"),
+        (lambda p: p["readiness_certificate"].update(report_sha256="bad"), "report_sha256 must be a SHA-256"),
+        (lambda p: p["readiness_certificate"].update(receipt_id=" "), "receipt_id is required"),
+        (lambda p: p["readiness_certificate"].update(policy_id="other"), "does not match the active forecast policy"),
+        (lambda p: p["readiness_certificate"].update(status="BLOCKED"), "does not match the active forecast policy"),
+        (lambda p: p["readiness_certificate"].update(report_sha256="f" * 64), "not registered"),
+        (lambda p: p["readiness_certificate"].update(receipt_id="different"), "does not match the registered report"),
+        (lambda p: p.update(model_version="different"), "model_version does not match"),
+        (lambda p: p.update(asset="BTC"), "asset does not match"),
+        (lambda p: p.update(venue="different-venue"), "venue does not match"),
+        (lambda p: p.update(horizon_seconds=14400), "horizon does not match"),
+        (lambda p: p.update(data_cutoff_utc="2026-11-03T15:59:00Z"), "cutoff exceeds forecast cutoff"),
+        (lambda p: p.update(issued_at_utc="2026-11-03T16:00:20Z"), "completed after forecast issue time"),
+        (lambda p: p.update(issued_at_utc="2026-11-03T16:00:40Z"), "registered after forecast issue time"),
+        (lambda p: p.update(source_ids=["kraken-001"]), "source_ids do not match forecast"),
+    ]
+    for mutate, message in cases:
+        payload = json.loads(json.dumps(valid))
+        mutate(payload)
+        with pytest.raises(ForecastLedgerError, match=message):
+            ledger._verify_readiness_certificate(payload)
+
+
+def test_forecast_normalizer_rejects_remaining_required_and_policy_fields(tmp_path):
+    ledger = make_ledger(tmp_path / "normalize-validation.sqlite3")
+    with pytest.raises(ForecastLedgerError, match="forecast must be a mapping"):
+        ledger._normalize(None)
+
+    cases = [
+        (lambda p: p.pop("fee_bps"), "missing fields"),
+        (lambda p: p.update(reference_price_max_age_seconds=True), "reference_price_max_age_seconds must be 0..3600"),
+        (lambda p: p.update(issued_at_utc="2026-11-03T15:59:00Z"), "issued_at_utc must be >= cutoff"),
+        (lambda p: p.update(outcome_tolerance_seconds=True), "outcome_tolerance_seconds must be 0..3600"),
+        (lambda p: p.update(asset=" "), "must be non-empty strings"),
+        (lambda p: p.update(reference_price_source_id=" "), "reference_price_source_id must be a non-empty string"),
+        (lambda p: p.update(readiness_certificate="not-an-object"), "readiness_certificate must be an object"),
+        (lambda p: p["readiness_certificate"].update(report_sha256="bad"), "report_sha256 must be a SHA-256"),
+        (lambda p: p["readiness_certificate"].update(receipt_id=" "), "receipt_id is required"),
+        (lambda p: p["readiness_certificate"].update(policy_id="other"), "does not match the active policy"),
+        (lambda p: p.update(source_ids=["macro-001"]), "must be included in source_ids"),
+    ]
+    for mutate, message in cases:
+        payload = json.loads(json.dumps(forecast()))
+        mutate(payload)
+        with pytest.raises(ForecastLedgerError, match=message):
+            ledger._normalize(payload)
+
+
+def test_feature_snapshot_verifier_rejects_malformed_verified_snapshot_payloads(tmp_path):
+    ledger = make_ledger(tmp_path / "snapshot-validation.sqlite3")
+    payload = ledger._normalize(forecast())
+    report = json.loads(READINESS_FIXTURES[("XRP", 3600)]["report_bytes"])
+    snapshot_id = payload["feature_snapshot_ids"][0]
+    base = ledger._test_feature_store.verified_snapshot(snapshot_id)
+
+    class SnapshotStub:
+        def __init__(self, value):
+            self.value = value
+
+        def verified_snapshot(self, requested_id):
+            return self.value
+
+    payload_with_duplicate = json.loads(json.dumps(payload))
+    payload_with_duplicate["feature_snapshot_ids"] = [snapshot_id, snapshot_id]
+    with pytest.raises(ForecastLedgerError, match="feature_snapshot_ids must be unique"):
+        ledger._verify_feature_snapshots(payload_with_duplicate, report)
+
+    cases = [
+        (lambda s: s.update(snapshot_id="f" * 64), "different snapshot ID"),
+        (lambda s: s["verification"].update(valid=False), "integrity is not verified"),
+        (lambda s: s.update(manifest={}), "malformed manifest"),
+        (lambda s: s["manifest"].update(records=[]), "contains no model-facing records"),
+        (lambda s: s["manifest"]["records"][0].update(feature_id=" "), "invalid feature_id"),
+        (lambda s: s["manifest"]["records"][0].update(sources="not-a-list"), "source lineage is malformed"),
+        (lambda s: s["manifest"]["records"][0]["sources"][0].update(source_id=" "), "invalid source ID"),
+        (lambda s: s["manifest"]["records"][0].update(known_at_utc="2026-11-03T16:00:01Z"), "exceeds forecast cutoff"),
+        (lambda s: s["manifest"]["records"][0].update(feature_id="xrp.unseen_feature"), "feature IDs absent"),
+    ]
+    for mutate, message in cases:
+        snapshot = json.loads(json.dumps(base))
+        mutate(snapshot)
+        ledger.feature_store = SnapshotStub(snapshot)
+        with pytest.raises(ForecastLedgerError, match=message):
+            ledger._verify_feature_snapshots(payload, report)
+
+
+def test_forecast_ledger_resolve_edges_and_unfiltered_event_query(tmp_path):
+    ledger = make_ledger(tmp_path / "resolve-edges.sqlite3")
+    with pytest.raises(ForecastLedgerError, match="unknown forecast_id"):
+        ledger.resolve_forecast(
+            "missing-forecast",
+            resolved_at_utc=ISSUED,
+            outcome_price_usd=None,
+        )
+
+    forecast_id = ledger.record_forecast(forecast())
+    assert ledger.get_forecast("missing-forecast") is None
+    assert len(ledger.events()) == 1
+
+    set_ledger_time(ledger, "2026-11-03T17:01:00Z")
+    with pytest.raises(ForecastLedgerError, match="resolved_at_utc precedes outcome timestamp"):
+        ledger.resolve_forecast(
+            forecast_id,
+            resolved_at_utc="2026-11-03T17:00:45Z",
+            outcome_price_usd=1.28,
+            outcome_price_timestamp_utc="2026-11-03T17:00:50Z",
+            outcome_venue="kraken:XRP/USD",
+            outcome_source_ids=["kraken-001"],
+        )
+    with pytest.raises(ForecastLedgerError, match="outcome_venue required"):
+        ledger.resolve_forecast(
+            forecast_id,
+            resolved_at_utc="2026-11-03T17:00:55Z",
+            outcome_price_usd=1.28,
+            outcome_price_timestamp_utc="2026-11-03T17:00:50Z",
+            outcome_venue=None,
+            outcome_source_ids=["kraken-001"],
+        )
+
+    set_ledger_time(ledger, "2026-11-03T17:02:00Z")
+    with pytest.raises(ForecastLedgerError, match="unscorable_reason required"):
+        ledger.resolve_forecast(
+            forecast_id,
+            resolved_at_utc="2026-11-03T17:02:00Z",
+            outcome_price_usd=None,
+        )
+
+
+def test_forecast_ledger_rejects_a_forecast_id_collision(monkeypatch, tmp_path):
+    from barrot_agent.evolution import forecast_ledger as ledger_module
+
+    ledger = make_ledger(tmp_path / "forecast-collision.sqlite3")
+    monkeypatch.setattr(ledger_module, "_hash", lambda value: "f" * 64)
+    ledger.record_forecast(forecast())
+    with pytest.raises(ForecastLedgerError, match="forecast ID collision"):
+        ledger.record_forecast(forecast(assumptions=["A materially different assumption"]))
