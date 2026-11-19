@@ -4481,3 +4481,20 @@ Fourteen PRs remain open. #1663 is the sole consolidated V3/XRP integration and 
 ### Next concrete action
 
 Verify the new integration commit and exact-head CI. Keep scheduled probes credential-free. Resolve the Databricks 403 only through authorized administrator-side scope/warehouse diagnosis; do not alter secrets or permissions in this run. Do not restart the Hugging Face Space. Continue the complete workflow/action/script/dependency audit and package-specific V3 coverage work before any merge.
+
+
+### Full-suite scope correction — executed after Run 45 checkpoint
+
+The exact-head PR CI result for `8615d1d` was **1,217 passed, 2 skipped, 8 subtests, 78.10% coverage**. Inspection of its workflow and `pytest.ini` showed that this job invoked `pytest tests` only and measured `--cov=barrot_agent` while `pyproject.toml` explicitly omitted the migrated `agi`, `ingestion`, `analysis`, `monetization`, `orchestration`, `rendering`, `smart_agent.py`, and `mem_palace.py` paths. Therefore that green job was not a full repository test/coverage result.
+
+Recursive tracked-file inventory on the integration tree found 137 `test_*.py` modules: 127 under `tests/`, 3 under `legacy/tests/`, 1 under `apex_lattice/`, 1 under `.barrot/autonomous_tasks/`, and 4 intentionally disabled under `.barrot/disabled_tests/`. The disabled tests and `tests/fixtures` remain excluded; the active legacy, analyzer and autonomous-task modules are now included.
+
+The integration CI and coverage configuration have now been updated:
+
+- Push CI now includes `integration/**` as well as main, so the next push runs directly on the branch head. The existing pull-request run continues to test the synthetic merge ref against current main.
+- Full-suite discovery now enumerates every tracked active `test_*.py` module rather than only `tests/`.
+- Coverage now measures all `barrot_agent` subpackages; the previous migrated-package omissions were removed.
+- Inclusive coverage floor is 62%, matching the earlier documented inclusive baseline. A separate 70% floor remains for the non-migrated core subset. This avoids using the narrower 78.10% figure as if it measured the entire package.
+- No test files were removed, renamed, disabled or overwritten.
+
+This change is committed after `8615d1d`; its exact branch-head CI and expanded coverage result are pending. The earlier 1,217-test result is retained as a narrow pre-change baseline, not represented as full-suite verification.
