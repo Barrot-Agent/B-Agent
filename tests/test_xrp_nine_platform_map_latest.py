@@ -270,3 +270,55 @@ def test_run29_preserves_market_disagreement_and_wallet_coverage_effects():
     assert kraken["raw_wire_bytes_captured"] is False
     assert "not independently captured HTTP wire bytes" in kraken["raw_sha256_scope"]
     assert evidence["prediction_readiness"]["forecast_status"] == "NOT_ISSUED"
+
+def test_run31_primary_source_reconciliation_separates_supply_capital_and_distribution():
+    root = Path(__file__).resolve().parents[1]
+    evidence_path = (
+        root
+        / "research"
+        / "xrp_intelligence"
+        / "20261119T001700Z-run31-primary-source-capital-supply-circle-sbi-creator-reconciliation.json"
+    )
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+    capture = evidence["source_capture_status"]
+    assert capture["raw_wire_bytes_captured"] is False
+    assert capture["raw_source_sha256_receipts"] == "NOT_CAPTURED"
+    assert capture["external_worm_anchor"] == "NOT_ANCHORED"
+
+    sbi = evidence["sources"][0]["observations"]
+    supply = sbi["xrp_supply_distribution_as_of"]
+    assert supply == "2026-10-28"
+    assert (
+        sbi["market_circulation_xrp_approx"]
+        + sbi["ripple_holdings_not_in_circulation_xrp_approx"]
+        + sbi["xrp_under_escrow_approx"]
+        + sbi["burned_xrp_approx"]
+        == sbi["maximum_supply_xrp"]
+    )
+    assert sbi["evernorth_xrp_holdings_approx"] == 473000000
+    assert sbi["sbi_group_voting_rights_percent"] == 36.1
+    assert sbi["sbi_group_economic_interest_percent"] == 20.5
+    assert "not establish Barrot" in sbi["sbi_claude_deployment"]["barrot_connection"].lower()
+
+    evernorth = evidence["sources"][1]["observations"]
+    assert (
+        evernorth["xrp_contributed_in_kind_at_close"]
+        + evernorth["cash_used_to_purchase_xrp"]
+        == evernorth["total_xrp_at_close_reconciled"]
+    )
+    assert evernorth["sbi_cash_attributed_to_total_purchase"].find("not attribute all") >= 0
+    assert evernorth["operating_results"]["revenue_generated_to_date"] == "none reported"
+    assert evernorth["dilution"]["remaining_warrants_shares"] == 8666279
+
+    circle = evidence["sources"][3]["observations"]
+    assert circle["coinbase_distribution_cost_q3_2026_usd"] == 331300000
+    assert circle["coinbase_distribution_cost_nine_months_2026_usd"] == 986600000
+    assert "not 50% of gross" in circle["economics_caveat"].lower()
+    assert circle["circle_sbi_japan"]["ownership_percent"] if "ownership_percent" in circle["circle_sbi_japan"] else circle["circle_sbi_japan"]["circle_ownership_percent"] == 50
+
+    videos = evidence["sources"][4:]
+    assert videos[0]["attribution_status"] == "VIDEO_LEVEL_GUEST_MATCH_SUPPORTED"
+    assert videos[1]["attribution_status"] == "UNVERIFIED"
+    assert videos[2]["attribution_status"] == "UNVERIFIED_THIRD_PARTY_ATTRIBUTION"
+    assert evidence["prediction_admission"]["model_eligible"] is False
+    assert evidence["prediction_admission"]["directional_forecast_issued"] is False
