@@ -1,0 +1,238 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_spot_derivatives_etf_secondary_context_reconciliation",
+  "artifact_id": "20261107T151019Z-xrp-spot-derivatives-etf-secondary-context-reconciliation",
+  "captured_at_utc": "2026-11-07T15:10:19Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_commit": "42f5c98c6ebe19c066d938909cecc72aadefa258",
+  "source_capture_contract": {
+    "retrieval_interface": "Public HTTPS exchange endpoints and a public publisher page opened through the web retrieval interface.",
+    "exchange_payload_scope": "SHA-256 covers the exact JSON text exposed by the retrieval interface, not original HTTP wire bytes or response headers.",
+    "article_excerpt_scope": "The article excerpt is a normalized text excerpt from the rendered page; its hash is not represented as a raw-page or wire-byte hash.",
+    "original_http_wire_bytes_retained": false,
+    "response_headers_retained": false,
+    "provider_timestamp_rule": "A missing provider event timestamp is UNKNOWN, not replaced by retrieval time. A provider timestamp is compared with a later explicit clock reference.",
+    "clock_reference_semantics": "The endpoint pages were opened before the 15:10:19Z time-service sample. That later clock sample is a conservative reference; the OKX event-time age is an upper bound, not an exact HTTP retrieval latency."
+  },
+  "sources": [
+    {
+      "source_id": "kraken_xrpusd_ticker_20261107_151019",
+      "publisher": "Kraken",
+      "independence_group": "kraken_exchange",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "instrument": "XRP/USD",
+      "provider_event_timestamp_utc": null,
+      "freshness": "UNKNOWN_PROVIDER_EVENT_TIME",
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.16571000\",\"2784\",\"2784.000\"],\"b\":[\"1.16564000\",\"961\",\"961.000\"],\"c\":[\"1.16524000\",\"476.17542070\"],\"v\":[\"13100259.85034520\",\"24057179.94250204\"],\"p\":[\"1.16493159\",\"1.17257736\"],\"t\":[13976,26759],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.19791000\"],\"o\":\"1.17749000\"}}}",
+      "raw_response_sha256": "b7b20e3836fc6ac9780253859f8cc4c4210ac59cf390ceb10b578ede336ecc1b",
+      "hash_scope": "SHA-256 of exact JSON text returned by the retrieval interface; not original HTTP wire bytes or headers.",
+      "normalized": {
+        "last_usd": 1.16524,
+        "best_bid_usd": 1.16564,
+        "best_ask_usd": 1.16571,
+        "midpoint_usd": 1.165675,
+        "level1_spread_bps": 0.6005104339,
+        "last_minus_best_bid_usd": -0.0004,
+        "rolling_24h_volume_xrp": 24057179.94250204,
+        "rolling_24h_vwap_usd": 1.17257736,
+        "utc_day_open_usd": 1.17749,
+        "high_24h_usd": 1.19791,
+        "low_24h_usd": 1.15046,
+        "trades_24h": 26759
+      },
+      "limitations": [
+        "No provider event timestamp; retrieval time is not substituted.",
+        "Level-1 ticker only; no multi-level depth or executable-size slippage.",
+        "Last trade is below the contemporaneous best bid; midpoint is derived from bid/ask and last is not substituted for midpoint."
+      ],
+      "model_eligible": false
+    },
+    {
+      "source_id": "okx_xrpusdt_ticker_20261107_151019",
+      "publisher": "OKX",
+      "independence_group": "okx_exchange",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "instrument": "XRP/USDT",
+      "provider_event_timestamp_utc": "2026-11-07T15:10:10.565Z",
+      "provider_timestamp_epoch_ms": 1794064210565,
+      "freshness": "FRESH_WITHIN_300_SECONDS",
+      "age_reference_utc": "2026-11-07T15:10:19Z",
+      "age_at_reference_seconds": 8.435,
+      "age_is_upper_bound": true,
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1623\",\"lastSz\":\"323.1752\",\"askPx\":\"1.1624\",\"askSz\":\"11769.379718\",\"bidPx\":\"1.1623\",\"bidSz\":\"1398.418282\",\"open24h\":\"1.1833\",\"high24h\":\"1.1996\",\"low24h\":\"1.1518\",\"volCcy24h\":\"45769112.865549905\",\"vol24h\":\"39000382.602174\",\"ts\":\"1794064210565\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
+      "raw_response_sha256": "94bb40900b6346790964640fadf2feb41f3f881e5ef3fad6d768a4834e5be8e0",
+      "hash_scope": "SHA-256 of exact JSON text returned by the retrieval interface; not original HTTP wire bytes or headers.",
+      "normalized": {
+        "last_usdt": 1.1623,
+        "best_bid_usdt": 1.1623,
+        "best_ask_usdt": 1.1624,
+        "midpoint_usdt": 1.16235,
+        "level1_spread_bps": 0.8603260636,
+        "rolling_24h_volume_xrp": 39000382.602174,
+        "rolling_24h_volume_usdt": 45769112.86554991,
+        "open_24h_usdt": 1.1833,
+        "utc_day_open_usdt": 1.1791,
+        "high_24h_usdt": 1.1996,
+        "low_24h_usdt": 1.1518,
+        "utc_8h_open_usdt": 1.1877
+      },
+      "limitations": [
+        "Level-1 ticker only; no multi-level depth or executable-size slippage.",
+        "USDT is not normalized to USD.",
+        "Freshness is based on a conservative later clock reference; original response headers and request timing were unavailable."
+      ],
+      "model_eligible": false,
+      "exclusion_reason": "This composite cross-venue artifact is not admitted as a synchronized feature. The OKX venue-specific quote may be evaluated separately by the ingestion adapter, but this research artifact does not write to the feature store."
+    },
+    {
+      "source_id": "cryptoticker_xrp_long_squeeze_article_20261107",
+      "publisher": "CryptoTicker",
+      "independence_group": "cryptoticker_editorial",
+      "url": "https://cryptoticker.io/en/xrp-price-prediction-long-squeeze-1-15-november-7-2026/",
+      "published_at_utc": "2026-11-07",
+      "retrieved_at_utc": "2026-11-07T15:10:19Z",
+      "source_type": "SECONDARY_EDITORIAL_REPORT",
+      "ai_assistance_disclosed": true,
+      "normalized_excerpt": "XRP left the zone around $1.19 overnight into Saturday. OKX recorded a low of $1.1518 early Saturday and a reported 24-hour range of $1.1518-$1.2031. CryptoTicker reports that Friday XRP positions worth $16.75 million were liquidated according to CoinGlass data compiled by U.Today; $16.01 million were longs and approximately $746,000 shorts. The article reports the OKX XRP long/short account ratio at 2.71 on November 3, 3.77 on November 4, 4.07 on November 5, 4.2 on November 6 and 4.3 for the hour starting 07:00 CET on November 7. It reports OKX XRP open interest at $132.1 million on November 4, $122.4 million on November 5 and $117.1 million on November 6, and positive funding of approximately 0.008% per eight hours on Saturday morning. It says US spot XRP ETFs had received no new money since October 29 according to SoSoValue data cited by CoinGape, with net assets around $1.41 billion and Q3 inflows around $300 million. The article presents $1.15, $1.09, $0.99, $1.20 and $1.27 as editorial scenario/technical levels, not issuer or exchange commitments. The publisher discloses AI assistance and editorial review.",
+      "normalized_excerpt_sha256": "6d77661111de9a309b7daa7926ad11cddbb2a641157a4fce7ea4175ebfedb3ea",
+      "observations": {
+        "okx_reported_daily_low_usdt": 1.1518,
+        "okx_reported_24h_low_usdt": 1.1518,
+        "okx_reported_24h_high_usdt": 1.2031,
+        "okx_reported_price_at_0740_cet_usdt": 1.169,
+        "liquidation_total_usd": 16750000,
+        "liquidation_long_usd": 16010000,
+        "liquidation_short_usd": 746000,
+        "okx_long_short_account_ratio": {
+          "2026-11-03": 2.71,
+          "2026-11-04": 3.77,
+          "2026-11-05": 4.07,
+          "2026-11-06": 4.2,
+          "2026-11-07T06:00:00Z": 4.3
+        },
+        "okx_open_interest_usd": {
+          "2026-11-04": 132100000,
+          "2026-11-05": 122400000,
+          "2026-11-06": 117100000
+        },
+        "okx_funding_pct_per_8h": 0.008,
+        "us_spot_xrp_etf_reported_no_new_inflows_since": "2026-10-29",
+        "us_spot_xrp_etf_reported_net_assets_usd": 1410000000,
+        "q3_reported_etf_inflows_usd": 300000000
+      },
+      "source_lineage": {
+        "liquidation_data": "CoinGlass -> U.Today compilation -> CryptoTicker. This is one upstream lineage, not three independent confirmations.",
+        "okx_derivatives": "CryptoTicker attributes account ratio, open interest, funding and daily price observations to OKX exchange data; raw endpoint payloads were not retained in this article capture.",
+        "etf_data": "SoSoValue -> CoinGape citation -> CryptoTicker. This is one relayed lineage, not an issuer-primary creation/redemption record.",
+        "spot_price": "OKX exchange observations relayed by CryptoTicker; direct current OKX ticker is separately captured above."
+      },
+      "limitations": [
+        "Secondary editorial report; no original exchange or issuer payloads retained for the article metrics.",
+        "Long/short ratio counts accounts, not notional exposure or net delta.",
+        "Open interest is USD-valued and can decline mechanically as token prices fall; contract universe and raw positions are not exposed.",
+        "Liquidation totals inherit CoinGlass/U.Today source lineage; do not count publisher repetition as independent corroboration.",
+        "ETF flow and net-assets figures inherit SoSoValue/CoinGape lineage and are not issuer-primary records.",
+        "The article's AI-assistance disclosure is retained.",
+        "The article's macro explanation is editorial attribution, not proof of causal impact."
+      ],
+      "model_eligible": false,
+      "eligible_for_event_timeline": true
+    }
+  ],
+  "reconciliation": {
+    "raw_last_price_difference_pct": 0.2526272373,
+    "currency_basis": "XRP/USD versus XRP/USDT; currencies are not normalized because no timestamped USD/USDT conversion was captured.",
+    "event_time_synchronization": "NOT_ESTABLISHED_FOR_CROSS_VENUE_COMPARISON",
+    "depth": "NOT_CAPTURED",
+    "fees_slippage_latency": "NOT_MEASURED",
+    "current_context": {
+      "kraken_last_vs_utc_day_open_pct": -1.040348538,
+      "kraken_last_vs_24h_vwap_pct": -0.6257463473,
+      "okx_last_vs_24h_open_pct": -1.7746978788,
+      "okx_last_vs_utc_day_open_pct": -1.4248155373,
+      "okx_last_above_reported_24h_low_pct": 0.9116166001
+    },
+    "interpretation": "The current OKX quote is timestamped and fresh at the provider, while Kraken has no provider event time. The raw last-price difference is descriptive arithmetic only; USD/USDT is unnormalized, cross-venue event-time synchronization is absent, and no executable multi-level depth or transaction costs were measured. The article's earlier low and derivative/ETF claims are secondary context, not a synchronized feature set or causal explanation."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_LEVERAGED_LONG_OVERHANG",
+      "claim": "The high OKX long-account ratio and reported long liquidations may leave downside vulnerability if price revisits the low.",
+      "supporting_evidence": [
+        "CryptoTicker's OKX account ratio rose from 2.71 to 4.3.",
+        "CryptoTicker relays $16.01M of long liquidations from CoinGlass via U.Today."
+      ],
+      "disconfirming_evidence": [
+        "Account counts are not notional exposure.",
+        "Reported open interest fell materially from Nov 4 to Nov 6.",
+        "Funding was only modestly positive at 0.008% per eight hours.",
+        "The reported low at 1.1518 was tested twice and price rebounded."
+      ],
+      "status": "UNRESOLVED_SECONDARY_HYPOTHESIS"
+    },
+    {
+      "id": "H2_POSITION_RESET_AND_MEAN_REVERSION",
+      "claim": "A decline in open interest and repeated defense of 1.1518 may indicate partial deleveraging and a possible short-term stabilization.",
+      "supporting_evidence": [
+        "Reported OKX OI fell from $132.1M to $117.1M.",
+        "The article says price turned higher twice at 1.1518.",
+        "Funding remained only slightly positive."
+      ],
+      "disconfirming_evidence": [
+        "Long-account ratio rose to 4.3.",
+        "Price remained below 1.20 and the 200-day average cited by the publisher.",
+        "ETF flow claims show no new money since Oct 29, but are secondary and fund-universe dependent."
+      ],
+      "status": "UNRESOLVED_SECONDARY_HYPOTHESIS"
+    },
+    {
+      "id": "H3_BROADER_RISK_OFF",
+      "claim": "The move may reflect broader risk-off conditions rather than a new XRP-specific fundamental shock.",
+      "supporting_evidence": [
+        "CryptoTicker attributes the move to a Nasdaq sell-off and the U.S. jobs report.",
+        "No Ripple- or XRPL-specific event is identified in the article."
+      ],
+      "disconfirming_evidence": [
+        "The article's causal attribution is not independently established.",
+        "XRP's relative weakness versus Bitcoin and derivatives positioning may add asset-specific amplification."
+      ],
+      "status": "UNRESOLVED_EDITORIAL_HYPOTHESIS"
+    }
+  ],
+  "scenario_levels": {
+    "source": "CryptoTicker editorial scenarios, not a model forecast.",
+    "bearish_condition": "Daily close below 1.15 USDT",
+    "downside_reference_levels_usdt": [
+      1.09,
+      0.99
+    ],
+    "neutral_range_usdt": [
+      1.15,
+      1.2
+    ],
+    "bullish_reclaim_condition": "Daily close above 1.20 USDT",
+    "higher_recovery_reference_usdt": 1.27,
+    "use": "Contextual hypotheses only; no probability assigned and no forecast issued."
+  },
+  "model_admission": {
+    "admitted_to_live_price_features": false,
+    "admitted_to_historical_price_features": false,
+    "admitted_to_derivatives_features": false,
+    "admitted_to_etf_flow_features": false,
+    "eligible_for_event_timeline": true,
+    "reasons": [
+      "Kraken provider event time is unknown.",
+      "Cross-venue currency normalization and synchronized depth are absent.",
+      "The CryptoTicker derivatives/liquidation/ETF observations are secondary and source-lineage dependent.",
+      "No issuer-primary ETF creation/redemption or custody receipt was captured in this run."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": null,
+    "probabilities": null,
+    "shadow_or_paper_trade": false,
+    "real_money_action": false
+  }
+}

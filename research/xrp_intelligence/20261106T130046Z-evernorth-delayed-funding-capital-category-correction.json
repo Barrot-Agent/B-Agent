@@ -1,0 +1,126 @@
+{
+  "correction_id": "evernorth_delayed_subscriber_capital_categories_20261106",
+  "schema_version": "1.0",
+  "created_at_utc": "2026-11-06T13:00:46Z",
+  "status": "append_only_source_bound_correction_overlay",
+  "purpose": "Produce a source-bound corrected view of the delayed-funding capital taxonomy without rewriting the original research artifact. Separate subscription cash received from XRP purchase cost and remove a duplicate contextual row from the canonical category view.",
+  "source_authority": {
+    "issuer": "Evernorth Holdings Inc.",
+    "filing_type": "SEC Form S-1",
+    "filing_accession": "0001628280-26-068609",
+    "filing_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+    "source_independence_group": "evernorth_sec_issuer_filing",
+    "source_line_ranges": {
+      "cash_receipt_and_restricted_cash": "L6012-L6024",
+      "advance_funding_receipt_and_quantity": "L6056-L6056",
+      "xrp_cost_basis_table": "L6230-L6238",
+      "issuer_average_price": "L4941-L4944"
+    },
+    "hash_scope_note": "The source_artifact_git_blob_sha is a Git blob SHA-1 binding to the exact derived research artifact preimage. It is not a SHA-256 hash of raw SEC filing bytes."
+  },
+  "source_artifacts": [
+    {
+      "path": "research/xrp_intelligence/20261106-evernorth-delayed-funding-and-sbi-group-capital-reconciliation.json",
+      "git_blob_sha": "8c53e71f4456c394897b3a069d6dddbadea4ffb1",
+      "git_blob_hash_algorithm": "sha1",
+      "role": "Immutable research-artifact preimage containing the duplicated delayed-subscriber XRP category and a rounded $214.1M value in the purchase-cost row."
+    }
+  ],
+  "primary_source_evidence": {
+    "advance_funding_cash_received_exact_usd": 214049995,
+    "advance_funding_cash_received_summary_rounded_usd": 214050000,
+    "cash_used_to_purchase_digital_assets_usd": 214000000,
+    "restricted_cash_at_2025_12_31_usd": 49995,
+    "xrp_purchase_quantity_exact": 84365876.3625,
+    "issuer_reported_average_purchase_price_usd_per_xrp": 2.53657058,
+    "arithmetic_check": "$214,049,995 cash received - $214,000,000 purchase cost = $49,995 restricted cash at 2025-12-31."
+  },
+  "field_corrections": [
+    {
+      "artifact_path": "research/xrp_intelligence/20261106-evernorth-delayed-funding-and-sbi-group-capital-reconciliation.json",
+      "json_pointer": "/separate_capital_categories/2/amount_usd",
+      "original_value": 214100000,
+      "corrected_value": 214000000,
+      "reason": "This category is the historical cash-funded XRP purchase cost, not the rounded subscription-cash receipt."
+    },
+    {
+      "artifact_path": "research/xrp_intelligence/20261106-evernorth-delayed-funding-and-sbi-group-capital-reconciliation.json",
+      "json_pointer": "/separate_capital_categories/2/status",
+      "original_value": "Aggregate Pubco private-placement cash reported by issuer and used to buy 84,365,876 XRP; may already include the $10.5M delayed-subscriber cash component.",
+      "corrected_value": "Aggregate Pubco private-placement cash used to purchase 84,365,876.3625 XRP. The SEC filing records $214,000,000 of purchase cost. Exact advance-funding cash received was $214,049,995; $49,995 remained restricted at 2025-12-31. The $10.5M delayed-subscriber cash may already be included in the broader private-placement aggregate; do not add it separately without subscriber-level reconciliation.",
+      "reason": "The previous status conflated cash received with cash deployed."
+    }
+  ],
+  "field_additions": [
+    {
+      "array_pointer": "/separate_capital_categories",
+      "match_key": "category",
+      "match_value": "prior_cash_xrp_purchase",
+      "field": "cash_received_exact_usd",
+      "value": 214049995,
+      "reason": "Exact cash receipt disclosed in the SEC filing."
+    },
+    {
+      "array_pointer": "/separate_capital_categories",
+      "match_key": "category",
+      "match_value": "prior_cash_xrp_purchase",
+      "field": "cash_received_summary_rounded_usd",
+      "value": 214050000,
+      "reason": "Rounded subscription cash in the issuer summary."
+    },
+    {
+      "array_pointer": "/separate_capital_categories",
+      "match_key": "category",
+      "match_value": "prior_cash_xrp_purchase",
+      "field": "restricted_cash_usd",
+      "value": 49995,
+      "reason": "Cash-flow statement reconciliation at 2025-12-31."
+    },
+    {
+      "array_pointer": "/separate_capital_categories",
+      "match_key": "category",
+      "match_value": "prior_cash_xrp_purchase",
+      "field": "amount_xrp_exact",
+      "value": 84365876.3625,
+      "reason": "Exact quantity from the SEC cost-basis table; retain amount_xrp as the rounded display value."
+    },
+    {
+      "array_pointer": "/separate_capital_categories",
+      "match_key": "category",
+      "match_value": "prior_cash_xrp_purchase",
+      "field": "possible_overlap_with_delayed_subscriber_cash",
+      "value": true,
+      "reason": "The subscriber-level composition is not reconciled against the broader private-placement cash aggregate."
+    },
+    {
+      "array_pointer": "/separate_capital_categories",
+      "match_key": "category",
+      "match_value": "prior_cash_xrp_purchase",
+      "field": "do_not_add_delayed_subscriber_cash_separately",
+      "value": true,
+      "reason": "Prevents double-counting the $10.5M delayed-subscriber cash component."
+    }
+  ],
+  "array_deduplications": [
+    {
+      "array_pointer": "/separate_capital_categories",
+      "match_key": "category",
+      "match_value": "delayed_subscriber_in_kind_xrp",
+      "expected_match_count": 2,
+      "keep_first_match": true,
+      "merge_duplicate_status_into_kept_row": true,
+      "remove_later_duplicate_matches": true,
+      "canonical_note": "Canonical-view correction: the repeated row in the immutable source artifact is a duplicate contextual representation of the same 200,000 XRP consideration, not a separate contribution or capital category."
+    }
+  ],
+  "corrected_interpretation": "Cash received exact: $214,049,995. Summary-rounded subscription cash: $214,050,000. XRP purchase cost: $214,000,000. Restricted cash at 2025-12-31: $49,995. Exact XRP purchase quantity: 84,365,876.3625. Issuer-reported average price: $2.53657058. The $10.5M delayed-subscriber cash and 200,000 XRP in-kind consideration may overlap the broader Pubco private-placement aggregates; neither is additive without subscriber-level reconciliation.",
+  "application_contract": {
+    "original_artifact_mutated": false,
+    "correction_mode": "Verify the exact Git blob SHA-1 of the original artifact, deep-copy it, apply the listed field corrections/additions, merge the duplicate-row status into the first matching category, and remove later duplicate category rows only in the derived in-memory view.",
+    "fail_closed": "If the source blob SHA differs, do not apply the correction; archive and verify the exact preimage before any migration.",
+    "canonical_category_key": "category",
+    "category_keys_unique_after_correction": true,
+    "model_eligible": false,
+    "reason": "This is a historical capital-accounting correction, not a current XRP flow or point-in-time predictive feature."
+  }
+}

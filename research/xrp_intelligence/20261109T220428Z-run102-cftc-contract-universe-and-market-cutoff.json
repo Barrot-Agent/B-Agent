@@ -1,0 +1,261 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_cftc_contract_universe_and_point_in_time_market_quality",
+  "run": 102,
+  "captured_at_utc": "2026-11-09T22:04:28.000Z",
+  "capture_cutoff_utc": "2026-11-09T22:04:28.000Z",
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "integration_head_before_artifact_commit": "72f4eb4ce9a32cf9e146491f31e7ecf084ad8200",
+    "active_integration_pr": 1640
+  },
+  "mission": {
+    "priority": 1,
+    "name": "xrp_intelligence_prediction_engine",
+    "foundation": "Barrot V3 execution, orchestration, safety, verification",
+    "forecast_status": "NOT_ISSUED",
+    "no_real_money": true,
+    "no_paper_trade": true
+  },
+  "cftc_tff": {
+    "report": {
+      "type": "Traders in Financial Futures, Futures Only",
+      "positions_as_of": "2026-11-03",
+      "updated": "2026-11-06",
+      "current_xrp_sections": [
+        {
+          "cftc_code": "176740",
+          "name": "XRP - Chicago Mercantile Exchange",
+          "open_interest_contracts": 7216,
+          "contract_multiplier_xrp": 50000,
+          "total_traders": 29
+        },
+        {
+          "cftc_code": "176LM1",
+          "name": "Nano XRP - Coinbase Derivatives, LLC",
+          "open_interest_contracts": 32505,
+          "contract_multiplier_xrp": 500,
+          "total_traders": 37
+        },
+        {
+          "cftc_code": "176LM3",
+          "name": "Nano XRP Perp Style - Coinbase Derivatives, LLC",
+          "open_interest_contracts": 38392,
+          "contract_multiplier_xrp": 500,
+          "total_traders": 284
+        }
+      ],
+      "current_report_xrp_equivalent_open_interest": 396248500,
+      "interpretation": "One-sided open-interest contract equivalents converted to XRP units. Not USD notional, spot holdings, collateral, or cash deployed."
+    },
+    "dropped_contract": {
+      "cftc_code": "176LM2",
+      "product": "XRP Futures (XRL)",
+      "exchange": "Coinbase Derivatives, LLC",
+      "status": "DROPPED_FROM_REPORTING_FOR_2026-11-03_REPORT",
+      "evidence": "CFTC current COT index lists 176LM2 XRP - Coinbase Derivatives in both futures-only and futures-and-options-combined dropped-from-reporting lists.",
+      "last_report_date": "2026-10-27",
+      "last_open_interest_contracts": 28246,
+      "contract_multiplier_xrp": 10000,
+      "last_open_interest_xrp_equivalent": 282460000,
+      "last_total_traders": 20,
+      "weekly_change_fields": "CFTC archive prints a dot (.) for Total Change and all 14 position-change cells. These are unavailable values, not zeros.",
+      "reason_for_drop": {
+        "status": "UNCONFIRMED",
+        "hypothesis": "The prior report showed exactly 20 total traders; CFTC staff FAQ says a contract may disappear when reportable large traders fall below 20.",
+        "alternative": "Other reporting-universe or classification changes cannot be excluded from the published evidence."
+      }
+    },
+    "contract_listing": {
+      "filing_date": "2025-04-03",
+      "listing_on_or_after": "2025-04-21",
+      "contract_code": "XRL",
+      "size_xrp": 10000,
+      "settlement": "Monthly, cash-settled and margined",
+      "reportable_level_contracts": 25,
+      "clearing": "Nodal Clear",
+      "benchmark": "MarketVector Coinbase XRP Benchmark Rate",
+      "benchmark_tracks": "XRP spot traded on Coinbase",
+      "data_sharing": "Coinbase Derivatives filing describes an information-sharing agreement with Coinbase, Inc. for spot-market data in regulatory inquiries.",
+      "caveat": "A cash-settled futures reference to Coinbase spot does not establish Coinbase customer flows, XRP custody, physical delivery, or actual capital deployed."
+    },
+    "xrp_equivalent_reconciliation": {
+      "oct27_continuing_three_contracts": {
+        "cme": 403050000,
+        "nano": 32684500,
+        "nano_perp_style": 19428500,
+        "total": 455163000
+      },
+      "oct27_four_contracts_including_176LM2": {
+        "cme": 403050000,
+        "nano": 32684500,
+        "standard_coinbase_xrl": 282460000,
+        "nano_perp_style": 19428500,
+        "total": 737623000
+      },
+      "nov03_three_reported_contracts": {
+        "cme": 360800000,
+        "nano": 16252500,
+        "nano_perp": 19196000
+      },
+      "nov03_total": 396248500,
+      "continuing_three_contract_decline_xrp_equivalent": 58914500,
+      "continuing_three_contract_decline_percent": 12.94,
+      "missing_176LM2_last_reported_xrp_equivalent": 282460000,
+      "missing_contract_share_of_oct27_four_contract_total_percent": 38.29,
+      "apparent_four_to_three_reported_total_decline_xrp_equivalent": 341374500,
+      "apparent_four_to_three_reported_total_decline_percent": 46.28,
+      "warning": "The 46.28% four-contract-to-three-contract comparison is a reporting-universe discontinuity. The 282.46M XRP-equivalent last report for 176LM2 is missing from the current report, not evidence that those positions were closed. The comparable continuing-three subset fell 12.94%."
+    },
+    "active_contract_category_net_xrp_equivalent": {
+      "dealer_intermediary": -10150000,
+      "asset_manager_institutional": 3300000,
+      "leveraged_funds": -1041000,
+      "other_reportables": 14048500,
+      "nonreportable": -6157500
+    },
+    "category_net_sum_xrp_equivalent": 0,
+    "category_interpretation": "The category net values sum to zero as matched futures positions. TFF categories are based on predominant business purpose self-reported on Form 40; CFTC says it does not know the specific reasons for traders' positions. Do not equate categories with hedging/speculation or a market-wide directional signal.",
+    "parser_gap": {
+      "current_parser": "barrot_agent/evolution/cftc_tff.py",
+      "current_scope": "Three currently reported XRP TFF sections",
+      "missing": "176LM2 contract catalog/history, CFTC added/dropped contract status, total-trader count, and nullable handling for '.' change fields.",
+      "required_behavior": "Never convert an absent/dropped contract or '.' change field to zero.",
+      "next_implementation": [
+        "Add 176LM2/XRL as an optional historical contract with 10,000 XRP multiplier.",
+        "Parse missing total/position changes as null and skip delta features rather than zero-fill.",
+        "Parse Total Traders and preserve reporting-threshold context.",
+        "Add a weekly CFTC COT index added/dropped contract status source.",
+        "Backfill TFF history through CFTC Public Reporting Environment/annual archives, then validate contract-code continuity and point-in-time release dates.",
+        "Normalize each contract to XRP-equivalent units while keeping separate instrument series; keep raw-only until independent validation."
+      ]
+    },
+    "release_schedule": {
+      "usual_release": "Friday 15:30 America/New_York using the immediately preceding Tuesday's positions",
+      "next_scheduled_release": "2026-11-16",
+      "delayed_release": true
+    },
+    "source_urls": [
+      "https://www.cftc.gov/dea/futures/financial_lf.htm",
+      "https://www.cftc.gov/sites/default/files/files/dea/cotarchives/2026/futures/financial_lf102726.htm",
+      "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "https://www.cftc.gov/sites/default/files/filings/ptc/25/04/ptc04032518916.pdf",
+      "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm"
+    ],
+    "historical_access": "CFTC says TFF history is available back to June 13, 2006 through the Public Reporting Environment. Its FAQ says API access generally does not require a token, subject to non-abusive use."
+  },
+  "market_data_quality": {
+    "spot_cutoff": "2026-11-09T22:04:28.000Z",
+    "okx": {
+      "pair": "XRP-USDT",
+      "last": 1.0941,
+      "quote_currency": "USDT",
+      "provider_event_time": "2026-11-09T22:10:36.962Z",
+      "future_vs_cutoff_seconds": 368.962,
+      "decision": "REJECT_FUTURE_EVENT_TIME",
+      "reason": "Provider event timestamp is 6 minutes 8.962 seconds after the capture cutoff."
+    },
+    "kraken": {
+      "pair": "XRP/USD",
+      "last": 1.09355,
+      "provider_event_time": null,
+      "decision": "DISPLAY_ONLY_NOT_MODEL_ADMITTED",
+      "reason": "Ticker response has no provider event timestamp."
+    },
+    "derivatives": [
+      {
+        "provider": "TradRadar",
+        "updated_at_utc": "2026-11-09T21:15:00Z",
+        "display_delay_minutes": 15,
+        "mark_price_usd": 1.0923,
+        "open_interest_usd": 1660000000,
+        "open_interest_24h_change_percent": -11.45,
+        "oi_weighted_funding_percent_per_8h": 0.0026,
+        "liquidations_24h_usd_minimum": 38290000,
+        "long_liquidations_usd": 36820000,
+        "short_liquidations_usd": 1470000,
+        "long_short_accounts_ratio": 3.98,
+        "long_accounts_percent": 79.9,
+        "tracked_venues": [
+          "Binance",
+          "Bybit",
+          "Gate",
+          "Bitget",
+          "MEXC",
+          "Hyperliquid",
+          "OKX"
+        ],
+        "model_eligible": false
+      },
+      {
+        "provider": "Liqwall",
+        "updated_at_utc": "2026-11-09T20:32:00Z",
+        "open_interest_usd": 1230000000,
+        "open_interest_24h_change_percent": -5.9,
+        "average_funding_percent_per_8h": 0.0045,
+        "liquidations_24h_usd": 37100000,
+        "long_liquidations_usd": 35700000,
+        "short_liquidations_usd": 1300000,
+        "binance_long_accounts_percent": 74.8,
+        "model_eligible": false
+      }
+    ],
+    "aggregator_open_interest_gap_percent": 34.96,
+    "aggregator_interpretation": "The two current secondary aggregators differ by about 35% and have overlapping but non-identical venue coverage. Do not average or count them as independent confirmation. Both show long-heavy liquidations and positive aggregate funding.",
+    "rejected_secondary_source": {
+      "provider": "The Kingfisher",
+      "page_url": "https://about.thekingfisher.io/crypto/ripple",
+      "displayed_xrp_price_usd": 2.15,
+      "displayed_open_interest_usd": 2890000000,
+      "reason": "No explicit event timestamp; displayed XRP price is materially inconsistent with contemporaneous exchange/API observations around $1.09. Exclude from current feature set pending source refresh."
+    },
+    "macro_event": {
+      "event": "U.S. CPI for October 2026",
+      "scheduled_release": "2026-11-10T08:30:00-05:00",
+      "status_at_cutoff": "FUTURE_EVENT_NOT_RELEASED",
+      "source_url": "https://www.bls.gov/schedule/news_release/cpi.htm"
+    }
+  },
+  "institutional_context": {
+    "coinbase_derivatives_spot_link": "The XRL listing filing links the cash-settled futures benchmark to Coinbase spot and documents data-sharing between Coinbase Derivatives and Coinbase, Inc. for regulatory inquiries.",
+    "pnc_coinbase_circle": "The PNC/Coinbase/Circle USDC pilot is a separate institutional dollar rail, not evidence of XRP usage.",
+    "sbi_ripple": "SBI VC Trade RLUSD distribution in Japan remains distinct from SBI Remit XRP/ODL corridors.",
+    "no_inference": "Stablecoin distribution, exchange custody, derivative reference prices, and XRP spot purchases are separate facts; do not infer one from another."
+  },
+  "unresolved_research": {
+    "japan_sbic": "SBIC East/Central/West remain distinct from SBI Holdings; no new identity evidence in this run.",
+    "ask_coin": "Permission Coin ASK remains a candidate, not a confirmed intended ASK Coin identity; no XRP integration established.",
+    "actual_capital": "No standardized XRP 'actual capital' metric; keep cash purchases, in-kind contributions, financing, collateral, and contingent capacity separate.",
+    "kamilah_stevenson": "Identity candidate remains corroborated; no new exhaustive, ownership-verified personal-channel inventory in this run."
+  },
+  "model_admission": {
+    "admitted_to_feature_store": false,
+    "directional_forecast_issued": false,
+    "forecast_status": "NOT_ISSUED",
+    "raw_http_bytes_retained": false,
+    "sha256_raw_source_receipts_created": false,
+    "reason": "Web-rendered source data and public API observations were used for research cross-checks; exact raw HTTP bytes/headers were not preserved as immutable receipts in this run."
+  },
+  "source_independence": {
+    "cftc": "Primary regulator source; report, archive, contract listing filing, and FAQ are separate CFTC publications.",
+    "market_apis": "Direct public exchange APIs; Kraken response lacks event timestamp and OKX timestamp is future relative to cutoff.",
+    "derivatives": "Secondary aggregators with overlapping exchange coverage and non-identical methodology.",
+    "macro": "Primary BLS release calendar."
+  },
+  "no_external_actions": {
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "external_model_data_transfer": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false,
+    "force_push": false,
+    "destructive_worktree_operation": false
+  }
+}

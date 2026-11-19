@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot_xrp_run142_repository_ci_and_refinement_gate_reconciliation",
+  "run_id": "run142",
+  "captured_at_utc": "2026-11-14T22:50:55Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, authorization, safety and verification"
+  },
+  "repository_state": {
+    "main_sha": "0d05b59a037f4ad4b0c345ee6e8c1c442d25fa2e",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_parent_sha": "272ca9ff8e1e3894684edbea0044fe4abcdc688d",
+    "pr_number": 1662,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_mergeable_indicator": true,
+    "pr_base_sha": "0d05b59a037f4ad4b0c345ee6e8c1c442d25fa2e",
+    "pr_head_sha": "272ca9ff8e1e3894684edbea0044fe4abcdc688d",
+    "pr_changed_files": 1223,
+    "pr_additions": 366215,
+    "pr_deletions": 6295,
+    "commits_ahead": 2423,
+    "commits_behind": 0,
+    "main_tree_entries": 1391,
+    "integration_tree_entries": 2463,
+    "open_prs": 373,
+    "open_pr_drafts": 361,
+    "open_pr_non_drafts": 12
+  },
+  "ci": {
+    "failed_push_run": 43649256808,
+    "failed_push_head": "272ca9ff8e1e3894684edbea0044fe4abcdc688d",
+    "result": {
+      "passed": 3758,
+      "failed": 4,
+      "skipped": 1,
+      "subtests_passed": 19,
+      "inclusive_coverage_percent": 63.79
+    },
+    "failures": [
+      {
+        "test": "tests/test_pingpong_refinement.py::TestLunaRouteAdapterShape::test_request_shape_and_parsing",
+        "cause": "Mocked adapter test set BARROT_ALLOW_EXTERNAL_REFINEMENT but not BARROT_LIVE_REFINEMENT_APPROVED; production default-deny gate correctly returned FAILED."
+      },
+      {
+        "test": "tests/test_pingpong_refinement.py::TestLunaRouteAdapterShape::test_transient_errors_retried_with_backoff",
+        "cause": "Same missing explicit approval variable in mocked adapter test setup."
+      },
+      {
+        "test": "tests/test_pingpong_refinement.py::TestLunaRouteAdapterShape::test_truncated_response_retried_with_doubled_budget",
+        "cause": "Same missing explicit approval variable in mocked adapter test setup."
+      },
+      {
+        "test": "tests/test_refinement_upgrade.py::TestPipeline::test_resume_skips_refined_sections",
+        "cause": "Manually constructed RunState fixture omitted data_classification, so the production resume guard correctly rejected unknown versus derived_summary."
+      }
+    ],
+    "pr_run": 43649261424,
+    "pr_run_note": "Pages validation passed; core tests and full suite were skipped by the integration-branch pull_request condition.",
+    "dependency_audit_push": 43649256823,
+    "dependency_audit_pr": 43649261402,
+    "fail_closed_gate_push": 43649256844,
+    "fail_closed_gate_pr": 43649261442,
+    "status": "test-fixture mismatches corrected on existing branch; exact-head verification pending"
+  },
+  "changes_executed": [
+    {
+      "path": "tests/test_pingpong_refinement.py",
+      "change": "Mocked LunaRoute adapter tests explicitly set BARROT_LIVE_REFINEMENT_APPROVED=1 alongside BARROT_ALLOW_EXTERNAL_REFINEMENT=1. All HTTP calls in this test class are mocked; no live provider call is enabled."
+    },
+    {
+      "path": "tests/test_refinement_upgrade.py",
+      "change": "Manual resume fixture now persists pipe.data_classification, matching the run's declared classification."
+    },
+    {
+      "path": "barrot_agent/refinement/refiners.py",
+      "change": "Permission error now names both required environment approval gates; enforcement unchanged."
+    }
+  ],
+  "security": {
+    "main_barrot_sync": "False-green: main workflow masks missing-rich synchronization failure and git push failure. Integration workflow remains quarantined.",
+    "main_pages": "Latest main Pages build 43649006105 failed Liquid parsing; no deployment succeeded.",
+    "integration_pingpong": "Default offline; explicit caller opt-in, public-derived classification, BARROT_ALLOW_EXTERNAL_REFINEMENT=1 and BARROT_LIVE_REFINEMENT_APPROVED=1 required; immutable/secret/private classes rejected.",
+    "github_permissions": "admin, maintain, push, pull, triage; overprivileged for research-only use",
+    "branch_protection": "403 from endpoint",
+    "visible_ruleset": "10863829 disabled",
+    "pr_reviews": 0,
+    "pr_approvals": 0,
+    "pr_review_threads": 0
+  },
+  "backlog": {
+    "classifications": {
+      "1269": "unique topology/triangulation work; preserve",
+      "1317": "unique structural analysis/MMI work; preserve",
+      "1318": "unique schema-safety work; preserve",
+      "1320": "unique paper-trader identity/safety work; preserve",
+      "1640": "overlap/reconcile; preserve unique hunks",
+      "1642": "unique prediction feature-snapshot work; preserve",
+      "1643": "overlap/reconcile; preserve research history and compare semantic patches",
+      "1653": "unique knowledge-graph/safe-sync work; blocked pending review",
+      "1655": "unique structural/catalog work; preserve",
+      "1659": "unique local inference/Termux work; preserve",
+      "1660": "supersession candidate; preserve source-only content until successor merged and verified on main",
+      "1661": "supersession candidate; preserve source-only content until successor merged and verified on main",
+      "1662": "active consolidated integration; blocked pending exact-head CI, complete semantic review, independent approval, least privilege and governance",
+      "1644-1650": "dependency/workflow candidates; reconcile each exact manifest and side effect",
+      "1254-1255": "older dependency candidates; compare exact manifests before disposition",
+      "remaining_open_prs": "unique/unreviewed or individually blocked; do not bulk-close"
+    },
+    "closed_source_prs": []
+  },
+  "prediction": {
+    "implemented_on_integration": [
+      "scheduled public-source ingestion definitions",
+      "SHA-256 receipts and local receipt-chain prototype",
+      "SQLite point-in-time feature store",
+      "event timeline and source-independence registry",
+      "four deterministic baselines",
+      "chronological walk-forward evaluation",
+      "probability calibration and PSI drift diagnostics",
+      "fail-closed forecast ledger",
+      "Ed25519 evaluator attestation"
+    ],
+    "not_verified": [
+      "scheduled ingestion on main",
+      "independent WORM archive and trusted timestamp anchoring",
+      "trained XRP-specific candidate",
+      "out-of-sample superiority versus all four baselines",
+      "independent shadow-outcome cohort",
+      "synchronized historical multi-venue L2/derivatives/exchange-flow/collateral dataset"
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "market_research": {
+    "status": "no fresh market snapshot admitted in Run142",
+    "last_snapshot_reference": "Run141 OKX event 2026-11-14T22:29:57.463Z was stale at its cutoff; no synchronized multi-venue L2"
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub authenticated; overprivileged",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "no formal approval",
+    "Codex": "unverified",
+    "HuggingFace": "no verified deployment",
+    "Kaggle": "untested",
+    "Databricks": "previous HTTP 403; no write"
+  },
+  "authorizations": {
+    "merge": "blocked by current gates; PR remains draft",
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "external_model_transfer": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "real_money": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "destructive_worktree_operations": false
+  }
+}

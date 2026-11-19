@@ -1,0 +1,258 @@
+{
+  "artifact_type": "xrp_research_reconciliation",
+  "schema_version": 1,
+  "artifact_id": "xrp-etf-flow-lineage-and-cftc-anprm-reconciliation-20261108",
+  "captured_at_utc": "2026-11-08T14:35:50Z",
+  "capture_time_semantics": "Run reference clock only; exact per-source HTTP retrieval timestamps were not exposed by the retrieval interface.",
+  "raw_http_bytes_retained": false,
+  "hash_scope": "SHA-256 hashes cover the normalized extracted text shown in source_excerpt_receipts, not raw HTTP wire bytes, headers, or publisher-origin files.",
+  "research_domains": [
+    "XRP ETF holdings and flow measurement",
+    "source lineage and independence",
+    "historical price-vintage quality",
+    "CFTC retail crypto transaction rulemaking"
+  ],
+  "sources": [
+    {
+      "source_id": "xrp_insights_week45_report",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-11-07",
+      "publication_date": "2026-11-07",
+      "data_as_of": "2026-11-06 settled close",
+      "claimed_method": "Issuer-reported XRP holdings changes, comparing settled fund holdings across sessions; XRP Insights states it reads issuer websites directly and re-settles after issuer NAV files arrive.",
+      "independence_group": "issuer_page_aggregation",
+      "source_excerpt_receipt_id": "xrp_insights_week45"
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf_dashboard",
+      "publisher": "Alpha Finance / Block Media Pty Ltd",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "data_as_of": "2026-11-06 session",
+      "claimed_method": "Five-ticker USD flow series; no XRP fund list, net assets, holdings, or fees are published on the dashboard.",
+      "independence_group": "coinglass_feed",
+      "source_excerpt_receipt_id": "alpha_dashboard"
+    },
+    {
+      "source_id": "alpha_finance_methodology",
+      "publisher": "Alpha Finance / Block Media Pty Ltd",
+      "url": "https://alphafinance.io/methodology/",
+      "page_reviewed_date": "2026-10-08",
+      "claimed_method": "Alpha states its ETF dashboard feed is Coinglass via a licensed commercial API; most responses pass through an Alpha proxy that caches for a few minutes.",
+      "independence_group": "coinglass_feed",
+      "source_excerpt_receipt_id": "alpha_methodology"
+    },
+    {
+      "source_id": "cftc_anprm_federal_register",
+      "publisher": "Commodity Futures Trading Commission via U.S. Government Publishing Office",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-13/html/2026-20888.htm",
+      "publication_date": "2026-10-13",
+      "data_as_of": "Published Federal Register notice",
+      "independence_group": "primary_regulatory_record",
+      "source_excerpt_receipt_id": "cftc_anprm"
+    },
+    {
+      "source_id": "sec_joint_crypto_interpretation",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "url": "https://www.sec.gov/rules-regulations/2026/03/s7-2026-09",
+      "issue_date": "2026-03-17",
+      "effective_date": "2026-03-23",
+      "independence_group": "primary_regulatory_record",
+      "role": "Separate earlier interpretive release; not the CFTC ANPRM."
+    },
+    {
+      "source_id": "awebanalysis_historical_price",
+      "publisher": "aWebAnalysis",
+      "url": "https://awebanalysis.com/en/coin-details/ripple/historical-price/",
+      "retrieval_observation": "The search-index excerpt surfaced a November 6 close of $1.1810, but the live page body retrieved in this run displayed rows only through November 4. The indexed November 6 value is quarantined pending reproducible live-page or raw-data retrieval.",
+      "independence_group": "secondary_aggregator"
+    }
+  ],
+  "xrp_insights_measurement": {
+    "published_date": "2026-11-07",
+    "settled_data_cutoff": "2026-11-06",
+    "declared_universe": "Six U.S. spot XRP ETFs plus Bitwise BITW index fund; GXRP is excluded from flow calculations because its holdings capture was frozen for 2026-09-02 through 2026-09-28, but GXRP remains in holdings totals.",
+    "flow_method": "sum of daily changes in issuer-reported XRP holdings versus prior trading day; USD equivalent uses each day's XRP price",
+    "nov6_holdings_delta_xrp": -663000,
+    "week_2026_10_30_to_2026_11_06_holdings_delta_xrp": -813000,
+    "week_approx_usd": -978000,
+    "reported_holdings_xrp_rounded": 1200000000,
+    "reported_combined_assets_usd": 1430000000,
+    "weekly_close_usd_rounded": 1.17,
+    "weekly_return_percent": -6.4,
+    "daily_deltas_xrp_rounded": {
+      "2026-11-02": -33000,
+      "2026-11-03": -162000,
+      "2026-11-04": -65000,
+      "2026-11-05": 110000,
+      "2026-11-06": -663000
+    },
+    "limitations": [
+      "Holdings deltas are not verified net creations/redemptions or direct capital subscriptions.",
+      "BITW is an index fund, not a spot ETF.",
+      "GXRP is excluded from flow calculations but included in holdings totals.",
+      "Issuer holdings can change through fees, rebalances, timing, or other mechanics; the publisher's method is a holdings-change proxy."
+    ]
+  },
+  "alpha_finance_measurement": {
+    "data_cutoff": "2026-11-06 session",
+    "reported_funds": 5,
+    "tickers": [
+      "XRP",
+      "XRPZ",
+      "XRPC",
+      "GXRP",
+      "TOXR"
+    ],
+    "nov6_flow_usd": 0,
+    "seven_session_flow_usd": 8400000,
+    "thirty_session_flow_usd": 45900000,
+    "headline_cumulative_net_inflow_usd": 1730000000,
+    "cumulative_fund_flows_usd_m": {
+      "XRP": 679.5,
+      "XRPZ": 529.2,
+      "XRPC": 478.6,
+      "GXRP": 61.5,
+      "TOXR": -18.4
+    },
+    "displayed_share_denominator_usd_m": 1750,
+    "displayed_share_percent": {
+      "XRP": 38.9,
+      "XRPZ": 30.3,
+      "XRPC": 27.4,
+      "GXRP": 3.5,
+      "TOXR": null
+    },
+    "provider_lineage": "Alpha methodology identifies Coinglass as the ETF dashboard data provider, accessed through a licensed commercial API and an Alpha proxy with a cache of a few minutes.",
+    "limitations": [
+      "The dashboard says no XRP fund list, net assets, holdings, or fees are published.",
+      "The five-ticker universe differs from XRP Insights' six spot funds plus BITW universe.",
+      "Alpha reports a flow series, not issuer-reported XRP holdings deltas.",
+      "The page says missing is shown as missing, but the extracted latest-session table displays zero for all five tickers; the underlying Coinglass records were not independently retrieved.",
+      "The exact Coinglass upstream construction and its independence from issuer-file scrapers are not established."
+    ]
+  },
+  "reconciliation": {
+    "nov6_daily_disagreement": {
+      "xrp_insights_holdings_delta_xrp": -663000,
+      "alpha_finance_flow_usd": 0,
+      "status": "unresolved_non_comparable",
+      "reason": "Different units, different declared instrument universes, different measurement methods, and no common raw issuer-file or Coinglass API snapshot."
+    },
+    "universe_difference": {
+      "xrp_insights": "Six spot ETFs plus BITW; GXRP excluded from the flow calculation because of a capture gap.",
+      "alpha_finance": "Five tickers: XRP, XRPZ, XRPC, GXRP, TOXR; no BITW is listed and XRPR is not listed.",
+      "overlap_in_effective_flow_sets": "XRP, XRPZ, XRPC, TOXR appear in both displayed sets; XRP Insights excludes GXRP from flow calculations, while Alpha includes it; XRP Insights additionally includes XRPR and BITW.",
+      "status": "not_same_fund_universe"
+    },
+    "alpha_cumulative_arithmetic": {
+      "positive_fund_subtotal_usd_m": 1748.8,
+      "negative_toxr_usd_m": -18.4,
+      "net_of_displayed_fund_rows_usd_m": 1730.4,
+      "headline_rounded_usd_m": 1730,
+      "share_heading_rounded_usd_m": 1750,
+      "displayed_positive_fund_shares_percent": {
+        "XRP": 38.9,
+        "XRPZ": 30.3,
+        "XRPC": 27.4,
+        "GXRP": 3.5
+      },
+      "inference": "The displayed share percentages reconcile to the positive-flow subtotal before subtracting TOXR's negative $18.4M. The $1.73B headline reconciles to net displayed rows. Alpha does not explicitly explain the share denominator; treat this as an arithmetic inference, not an asserted publisher formula."
+    },
+    "source_independence": {
+      "publisher_level": "XRP Insights and Alpha Finance are distinct publishers.",
+      "upstream_level": "Not established as independent. XRP Insights claims direct issuer-page extraction; Alpha identifies Coinglass as its licensed ETF data provider. Underlying issuer-file overlap and Coinglass collection lineage were not independently inspected.",
+      "rule": "Do not count the two dashboards as two independent confirmations of the same flow."
+    },
+    "price_close_disagreement": {
+      "xrp_insights_weekly_close_usd_rounded": 1.17,
+      "alpha_finance_nov6_close_usd": 1.2067,
+      "awebanalysis_search_index_nov6_close_usd": 1.181,
+      "awebanalysis_live_page_latest_displayed_row": "2026-11-04",
+      "status": "unresolved_vintage_or_definition_mismatch",
+      "rule": "Do not harmonize or use as a common daily close until timezone, venue/index construction, and source-vintage differences are resolved."
+    },
+    "adjacent_supply_context": {
+      "xrp_insights_reported_exchange_wallets_xrp_2026_11_07": 22330000000,
+      "seven_day_same_wallet_set_balance_change_xrp": -150700000,
+      "rlusd_total_usd": 2670000000,
+      "rlusd_xrpl_usd": 884000000,
+      "rlusd_ethereum_usd": 1790000000,
+      "xrpl_distributed_rwa_usd": 276000000,
+      "xrpl_platform_locked_registry_notionals_usd": 4060000000,
+      "limitations": [
+        "Attributed exchange-wallet balances are not total exchange reserves or tradable float; a same-wallet-set balance decline is not automatically proof of net external withdrawals or purchases.",
+        "RLUSD supply is not XRP demand; the reported supply is chain-distributed across XRPL and Ethereum.",
+        "Distributed RWA value and platform-locked registry notionals are different measures; the latter is self-reported by platforms."
+      ]
+    }
+  },
+  "regulatory_event": {
+    "docket": "FR Doc 2026-20888",
+    "citation": "91 FR 64811-64840",
+    "rin": "3038-AF80",
+    "published_date": "2026-10-13",
+    "comment_deadline": "2026-12-14",
+    "agency": "Commodity Futures Trading Commission",
+    "title": "Regulation Crypto Asset Transactions and Regulation Crypto Asset Markets",
+    "action": "Advanced notice of proposed rulemaking",
+    "statutory_scope": "Commodity Exchange Act section 2(c)(2)(D), including retail commodity transactions offered or entered into on a leveraged or margined basis or financed by the offeror, counterparty, or a person acting in concert.",
+    "proposed_labels": [
+      "Regulation CTX",
+      "Regulation CAM"
+    ],
+    "status": "ANPRM_NOT_FINAL_RULE",
+    "xrp_relevance": "Potential future market-structure and customer-protection framework for covered leveraged, margined, or financed retail crypto transactions and venues. It is not a new XRP-specific classification and does not itself impose final obligations.",
+    "cross_reference": "Keep separate from SEC File S7-2026-09, the SEC interpretive release with CFTC guidance effective 2026-03-23."
+  },
+  "source_excerpt_receipts": [
+    {
+      "receipt_id": "xrp_insights_week45",
+      "source_id": "xrp_insights_week45_report",
+      "normalized_excerpt": "Supply Report November 7, 2026 · Week 45, 2026\nXRP ETF Weekly Flows: −813K XRP (≈−$978K) — Supply Report, Week 45 2026\nIn the week ending Friday, November 6, 2026, US XRP ETFs (spot funds plus Bitwise's BITW index fund) recorded net outflows of −813K XRP (≈−$978K) at each day's XRP price, leaving them holding 1.20B XRP as of the settled November 6, 2026 close. XRP closed the week at $1.17 (−6.4% week over week). GXRP is excluded from flow figures: Grayscale's holdings were frozen Sep 2–28, 2026 by a scrape block, and its catch-up is being spread across that window separately.\nMon, Nov 2 −33K XRP; Tue, Nov 3 −162K XRP; Wed, Nov 4 −65K XRP; Thu, Nov 5 +110K XRP; Fri, Nov 6 −663K XRP.\nDaily flow = change in each fund's issuer-reported XRP holdings versus the prior trading day, summed across funds; USD at that day's XRP price. GXRP excluded from flows.\nETF holdings come from each issuer's own website; the weekly figure compares the prior Friday's settled close with this Friday's, after the Saturday-morning re-settle picks up issuer NAV files.",
+      "sha256": "4aba5e89de8d980126dcaa9cdbb43f2f6e886e4a44d3d645542c1f541c1839f9",
+      "hash_scope": "normalized extracted page text"
+    },
+    {
+      "receipt_id": "alpha_dashboard",
+      "source_id": "alpha_finance_xrp_etf_dashboard",
+      "normalized_excerpt": "XRP ETF dashboard\nLive covering 5 funds; through 2026-11-06.\n6 Nov 2026 net flow: +$0; 30-session flow: +$45.9M; cumulative net inflow: $1.73B.\nDaily flow: 06 Nov +$0; XRP close $1.2067; 05 Nov +$0; XRP close $1.3054; 04 Nov +$0; XRP close $1.2771; 03 Nov +$0; XRP close $1.2500; 29 Oct +$8.4M.\nFund cumulative flow: XRP Bitwise +$679.5M; XRPZ Franklin +$529.2M; XRPC Canary +$478.6M; GXRP Grayscale +$61.5M; TOXR 21Shares −$18.4M.\nThe page labels the fund-share denominator as $1.75B cumulative net inflow and shows shares 38.9%, 30.3%, 27.4%, 3.5%, with no share for TOXR.\nNo fund list, AUM, holdings or fees are published for the XRP funds; this table is built from tickers in its flow series, cumulative from 14 Nov 2025.",
+      "sha256": "5c17f6f5820d2aa73ca083190c8b122b97f93ee84c42abda34b981402e8dae4f",
+      "hash_scope": "normalized extracted page text"
+    },
+    {
+      "receipt_id": "alpha_methodology",
+      "source_id": "alpha_finance_methodology",
+      "normalized_excerpt": "Every live figure comes from the exchange or data provider that publishes it: Coinglass, CoinGecko, Polymarket, DefiLlama, Coin Metrics, alternative.me and the exchanges' own public feeds. Coinglass data is read through its commercial API under licence. Most requests pass through our own proxy, which holds each answer for a few minutes so that every visitor sees the same figure.\nETF Dashboards: BTC, ETH, SOL, XRP and HYPE flows — Coinglass.\nMissing is shown as missing: When a source does not answer, the panel says so. We never substitute a stale or invented number for one the feed did not provide.",
+      "sha256": "8322be937530a79814c125ee43d2d3462d10d6dbc7314b41ae0a6ffd78b19e4d",
+      "hash_scope": "normalized extracted page text"
+    },
+    {
+      "receipt_id": "cftc_anprm",
+      "source_id": "cftc_anprm_federal_register",
+      "normalized_excerpt": "Federal Register Volume 91, Number 196 (Tuesday, October 13, 2026), Proposed Rules, pages 64811-64840, FR Doc No. 2026-20888. Commodity Futures Trading Commission, 17 CFR Parts 1, 38, and 39, RIN 3038-AF80. Title: Regulation Crypto Asset Transactions and Regulation Crypto Asset Markets. Action: Advanced notice of proposed rulemaking. Comments must be received on or before December 14, 2026. The notice concerns section 2(c)(2)(D) of the Commodity Exchange Act and crypto asset transactions and markets.",
+      "sha256": "bd1d71e8dc2c75e7cfb997a92cb8cb48e050e5df4e36b9f8940dd86b45b002e4",
+      "hash_scope": "normalized extracted government notice text"
+    }
+  ],
+  "retrieval_observations": {
+    "awebanalysis_search_index": {
+      "reported_nov6_close_usd": 1.181,
+      "reported_update_label": "2026-11-07 00:00 UTC; indexed excerpt described as updated 13 hours before search capture",
+      "status": "SEARCH_INDEX_ONLY_QUARANTINED"
+    },
+    "awebanalysis_live_page": {
+      "retrieved_observation_time_utc": "2026-11-08T14:35:50Z",
+      "latest_visible_row": "2026-11-04",
+      "status": "NOV6_SEARCH_RESULT_NOT_REPRODUCED"
+    }
+  },
+  "model_admission": {
+    "eligible": false,
+    "reason": "Provider universes, units, definitions, data vintages and source lineage do not align. Search-index-only price data is quarantined. These are research-context observations, not synchronized point-in-time market features."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false,
+    "reason": "No new observation in this reconciliation satisfies synchronized feature admission or out-of-sample readiness."
+  }
+}

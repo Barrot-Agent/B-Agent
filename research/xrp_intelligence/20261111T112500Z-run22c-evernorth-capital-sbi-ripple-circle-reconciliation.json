@@ -1,0 +1,234 @@
+{
+  "schema_version": "1.0",
+  "record_type": "capital_and_entity_reconciliation",
+  "run_id": "RUN22C_20261111T1125Z",
+  "sources": {
+    "sec_424b3": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+    "sbi_evernorth": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+    "sbi_circle_ripple": "https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf",
+    "sbi_fy2025": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+    "sbi_startale": "https://www.sbigroup.co.jp/news/2026/0326_16202.html",
+    "sbi_rlusd": "https://www.sbigroup.co.jp/news/2025/0822_15680.html",
+    "sbi_remit": "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+  },
+  "evernorth": {
+    "sbi_announced_cash_usd": 200000000,
+    "announcement_date": "2025-10-21",
+    "advance_funding": {
+      "aggregate_cash_usd": 214050000,
+      "xrp_in_kind": 600000,
+      "includes_sbi_subscribers": true,
+      "exact_sbi_allocation_disclosed": false,
+      "cash_used_to_buy_xrp_usd": 214050000,
+      "xrp_purchased": 84365876.3625,
+      "average_price_usd": 2.53716
+    },
+    "delayed_funding": {
+      "cash_usd": 10500000,
+      "xrp_in_kind": 200000
+    },
+    "spac_trust_after_redemptions_usd": 48000000,
+    "gross_cash_at_closing_before_expenses_usd": 272600000,
+    "private_placements_cash_rounded_usd": 224600000,
+    "in_kind_xrp": [
+      {
+        "source": "RippleWorks via Arrington XRP Capital Fund Series C",
+        "xrp": 211319096.061435
+      },
+      {
+        "source": "Ripple Contribution Agreement",
+        "xrp": 126791458
+      },
+      {
+        "source": "Larsen Lam Children's Remainder Trust",
+        "xrp": 50000000
+      },
+      {
+        "source": "Advance Funding",
+        "xrp": 600000
+      },
+      {
+        "source": "Delayed Funding",
+        "xrp": 200000
+      }
+    ],
+    "total_in_kind_xrp": 388910554.061435,
+    "cash_purchased_xrp": 84365876.3625,
+    "reconciled_total_xrp": 473276430.423935,
+    "reported_holdings_approx_xrp": 473000000,
+    "holdings_as_of": "2026-10-09",
+    "composition_percent": {
+      "in_kind": 82.17,
+      "cash_purchased": 17.83
+    },
+    "mark_comparison": {
+      "spot_usd": 1.0625,
+      "source_timestamp": "2026-11-11T10:21:28.166Z",
+      "hypothetical_value_usd": 89638743.64,
+      "historical_cost_usd": 214050000,
+      "difference_usd": -124411256.36,
+      "difference_percent": -58.12,
+      "caveat": "Mechanical mark only; not realized loss or accounting treatment."
+    },
+    "separate_financing": {
+      "notes": {
+        "principal_usd": 30000000,
+        "coupon_percent": 4,
+        "maturity_year": 2031,
+        "issued": "2026-10-12",
+        "SEC_net_proceeds_wording": "approximately $30M before transaction expenses",
+        "secondary_disagreement": "some coverage said $29M after $1M fee",
+        "classification": "debt"
+      },
+      "ripple_company_facility": {
+        "limit_usd": 10000000,
+        "drawn_usd": 9700000,
+        "drawn_as_of": "2026-10-07",
+        "interest_percent": 3.81,
+        "post_close_repayment_status": "not established"
+      },
+      "evernorth_facility": {
+        "limit_usd": 1000000,
+        "drawn_usd": 0,
+        "as_of": "2026-06-30"
+      }
+    },
+    "contingent_not_cash": {
+      "ELOC": {
+        "max_new_shares": 5218935,
+        "price": "97% VWAP",
+        "proceeds_as_of_2026_11_09": 0,
+        "fee_usd": 521893.5,
+        "fee": "fully earned/non-refundable regardless of purchases; cap $1M"
+      },
+      "resale_shares": 73688162,
+      "company_proceeds_from_resales": 0,
+      "sponsor_warrants": {
+        "count": 239653,
+        "exercise_price_usd": 11.5,
+        "potential_cash_if_all_exercised_usd": 2800000,
+        "not_assured": true
+      }
+    },
+    "ownership": {
+      "sbi_entities": [
+        "SBI Venture Fund 2023A Investment LPS",
+        "SBI Venture Fund 2023B Investment LPS",
+        "SBI PE Holdings Co Ltd",
+        "SBI Holdings USA Inc"
+      ],
+      "sbi_class_a": {
+        "shares": 9431914,
+        "percent": 36.1
+      },
+      "sbi_class_c": {
+        "shares": 2359038,
+        "percent": 7.5
+      },
+      "sbi_group_voting_cap_percent": 39.9,
+      "as_of": "2026-10-09",
+      "caveat": "39.9% is voting ownership limitation, not total economic ownership; Class C ordinarily non-voting but convertible to Class A.",
+      "ripple_class_a": {
+        "shares": 1678382,
+        "percent": 6.4
+      },
+      "chris_larsen_class_a": {
+        "shares": 2340249,
+        "percent": 9
+      },
+      "contributor_group_voting_cap_percent": 9.9,
+      "arrington_class_a": {
+        "shares": 4704137,
+        "percent": 18
+      },
+      "arrington_class_c": {
+        "shares": 29033708,
+        "percent": 92.5
+      },
+      "rippleworks_side_pocket_class_a": 4215479
+    },
+    "preclose_financial_risk": {
+      "as_of": "2026-06-30",
+      "no_revenue": true,
+      "loss_usd": 265600000,
+      "unrestricted_cash_usd": 100000,
+      "working_capital_deficit_usd": 696100000,
+      "accumulated_deficit_usd": 340900000,
+      "caveat": "Pre-close, not current post-close liquidity."
+    },
+    "disconfirming_adoption": "SEC prospectus states retail/commercial/payment use of XRP is limited and speculators are a significant portion of users; adoption need not translate into XRP price appreciation."
+  },
+  "sbi_network": {
+    "ripple_equity_stake_percent": 9,
+    "source": "SBI June 2025 notice and May 2026 presentation; largest external shareholder",
+    "sbi_ripple_asia": {
+      "sbi_percent": 60,
+      "ripple_percent": 40
+    },
+    "circle_investment": {
+      "total_usd": 50000000,
+      "sbi_holdings_usd": 25000000,
+      "sbi_shinsei_bank_usd": 25000000,
+      "date": "2025-06-05",
+      "alliance_since": "2023-11",
+      "usdc_distribution": "SBI VC Trade; Circle SBI Japan KK planned"
+    },
+    "evernorth_cash_commitment_usd": 200000000,
+    "startale": {
+      "investment_usd": 50000000,
+      "development_jv": {
+        "sbi": 40,
+        "startale": 60
+      },
+      "marketing_jv": {
+        "sbi": 60,
+        "startale": 40
+      },
+      "jpy_sc": {
+        "technology": "Startale",
+        "issuer": "SBI Shinsei Trust Bank",
+        "distribution": "SBI VC Trade"
+      }
+    },
+    "stablecoins": {
+      "usdc": "Circle",
+      "rlusd": "Ripple",
+      "jpy_sc": "SBI/Startale"
+    },
+    "ripple_balances_reported_by_sbi": {
+      "as_of": "2026-04-27",
+      "actual_xrp_b": 5.1,
+      "escrow_xrp_b": 33.2,
+      "circulating_xrp_b": 61.68,
+      "caveat": "Ripple balances, not SBI holdings; SBI presentation, not independent on-chain audit."
+    },
+    "ripple_acquisitions": [
+      {
+        "name": "Metaco",
+        "usd_m": 250
+      },
+      {
+        "name": "Standard Custody",
+        "value": "undisclosed"
+      },
+      {
+        "name": "Rail",
+        "usd_m": 200
+      },
+      {
+        "name": "Hidden Road",
+        "usd_b": 1.25
+      },
+      {
+        "name": "GTreasury",
+        "usd_b": 1
+      }
+    ]
+  },
+  "actual_capital_resolution": "No single defined 'actual capital' number. Separate gross cash proceeds, cash used to buy XRP, in-kind XRP, debt, related-party facilities, ELOC, resale registration and contingent warrants. SBI's $200M is within, not additive to, the $214.05M aggregate Advance Funding pool; individual allocation not disclosed. SBI's over-$1B presentation describes combined spot XRP and cash, not $1B cash.",
+  "model_eligibility": {
+    "eligible": false,
+    "reason": "Primary filings/presentations not yet ingested into immutable Barrot receipts and point-in-time feature store.",
+    "forecast_status": "NOT_ISSUED"
+  }
+}

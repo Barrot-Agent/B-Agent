@@ -14,6 +14,8 @@ from datetime import datetime, timezone
 from typing import Any, Iterable, Mapping
 from urllib.parse import urlsplit
 
+from .source_independence import canonical_independence_groups
+
 
 class FeatureSnapshotError(ValueError):
     """A feature record or snapshot violates the point-in-time contract."""
@@ -140,7 +142,7 @@ def validate_feature_record(
     source_ids = [item["source_id"] for item in sources]
     if len(source_ids) != len(set(source_ids)):
         raise FeatureSnapshotError("sources contains duplicate source_id values")
-    groups = sorted({item["independence_group"] for item in sources})
+    groups = canonical_independence_groups(sources)
 
     quality = _text(record["quality_status"], "quality_status").lower()
     if quality not in QUALITY_STATES:
@@ -233,12 +235,10 @@ def independent_source_groups(record: Mapping[str, Any]) -> list[str]:
     sources = record.get("sources")
     if not isinstance(sources, list) or not sources:
         raise FeatureSnapshotError("record.sources must be a non-empty list")
-    groups = set()
-    for index, source in enumerate(sources):
-        if not isinstance(source, Mapping):
-            raise FeatureSnapshotError(f"record.sources[{index}] must be a mapping")
-        groups.add(_text(source.get("independence_group"), "independence_group"))
-    return sorted(groups)
+    try:
+        return canonical_independence_groups(sources)
+    except ValueError as exc:
+        raise FeatureSnapshotError(str(exc)) from exc
 
 
 def build_feature_snapshot(
@@ -277,8 +277,26 @@ def build_feature_snapshot(
         if predecessor is None:
             continue
         previous = predecessor["record"]
-        if previous["feature_id"] != current["feature_id"] or previous["asset"] != current["asset"]:
-            raise FeatureSnapshotError("a revision must supersede the same feature and asset")
+        identity_fields = (
+            "feature_id",
+            "asset",
+            "feature_name",
+            "unit",
+            "event_time_utc",
+            "venue",
+            "instrument",
+            "currency_pair",
+            "market_type",
+            "aggregation_window",
+        )
+        mismatched_identity = [
+            field for field in identity_fields if previous.get(field) != current.get(field)
+        ]
+        if mismatched_identity:
+            raise FeatureSnapshotError(
+                "a revision must supersede the same feature and asset at the same event time "
+                "and market dimensions: " + ", ".join(mismatched_identity)
+            )
         if current["feature_version"] <= previous["feature_version"]:
             raise FeatureSnapshotError("a revision feature_version must exceed its predecessor")
         if predecessor_id in superseded_by:

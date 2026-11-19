@@ -1,0 +1,436 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "xrp-market-structure-etf-binance-macro-20261118T102748Z",
+  "captured_at_utc": "2026-11-18T10:27:48Z",
+  "mission": {
+    "priority": 1,
+    "objective": "XRP intelligence and measured prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, safety, authorization and verification foundation"
+  },
+  "repository_context": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "e204c21100f3d059e2ba633d041fe8927b61ccaf",
+    "verified_parent_integration_sha": "af2177ea64bf5a6fb6e7952e1c9e97ec834d8b53",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "pr_number": 1663,
+    "pr_state": "open_draft",
+    "main_modified": false,
+    "exact_head_verification": {
+      "run_id": 44284952830,
+      "conclusion": "success",
+      "tests_passed": 4273,
+      "tests_failed": 0,
+      "tests_skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "test_execution_seconds": 116.49,
+      "inclusive_coverage_percent": 68.14,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build": "passed",
+      "installed_wheel": "verified Barrot V3, XRP mission and canonical data assets",
+      "pages_validation": "passed",
+      "note": "Verification is for parent head af2177ea64bf5a6fb6e7952e1c9e97ec834d8b53. This artifact and handoff update create a new commit requiring its own exact-head CI."
+    }
+  },
+  "market_snapshot": {
+    "spot": {
+      "kraken_xrp_usd": {
+        "retrieved_at_utc": "2026-11-18T10:27:48Z",
+        "source_timestamp": null,
+        "last_usd": 0.99919,
+        "bid_usd": 0.99886,
+        "bid_size_xrp": 330,
+        "ask_usd": 0.99895,
+        "ask_size_xrp": 3538,
+        "spread_basis_points": 0.9009,
+        "volume_24h_xrp": 41966816.33846428,
+        "vwap_24h_usd": 0.97469397,
+        "low_24h_usd": 0.945,
+        "high_24h_usd": 1.00677,
+        "limitation": "Public ticker has no exchange event timestamp in the returned payload; retrieval-time context only."
+      },
+      "coinglass_aggregate": {
+        "retrieved_at_utc": "2026-11-18T10:27:48Z",
+        "price_usd": 0.9998,
+        "change_24h_percent": 4.2,
+        "low_24h_usd": 0.9451,
+        "high_24h_usd": 1.007,
+        "spot_volume_24h_usd": 553840000,
+        "spot_volume_change_24h_percent": 17.77,
+        "performance_percent": {
+          "change_7d": -5.12,
+          "change_30d": -23.32,
+          "change_90d": -21.25,
+          "ytd": -45.71,
+          "change_1y": -54.93
+        },
+        "fear_greed_index": 10,
+        "fear_greed_label": "Extreme Fear",
+        "limitation": "Dynamic third-party aggregate page; exact constituent exchange universe and event-time cutoffs are not fully exposed."
+      }
+    },
+    "spot_order_books": {
+      "fuelmaps_six_venue_spot": {
+        "source_snapshot_utc": "2026-11-18T06:00:00Z",
+        "venues": "Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini",
+        "mid_usd": 0.9835,
+        "depth_usd": {
+          "0.5_percent": {
+            "bids": 6200000,
+            "asks": 4500000,
+            "bid_share_percent": 58
+          },
+          "1_percent": {
+            "bids": 10900000,
+            "asks": 7600000,
+            "bid_share_percent": 59
+          },
+          "2_percent": {
+            "bids": 16400000,
+            "asks": 10400000,
+            "bid_share_percent": 61.1
+          },
+          "5_percent": {
+            "bids": 21000000,
+            "asks": 11700000,
+            "bid_share_percent": 64.2
+          },
+          "10_percent": {
+            "bids": 26400000,
+            "asks": 14900000,
+            "bid_share_percent": 63.9
+          }
+        },
+        "limitation": "Hourly aggregated spot snapshot; resting orders can cancel and the mid is materially older than the later ticker retrieval."
+      },
+      "basis_binance_xrpusdt_perpetual": {
+        "source_snapshot_utc": "2026-11-18T07:42:00Z",
+        "mid_usd": 0.9933,
+        "spread_basis_points": 1.01,
+        "depth_scope": "Nearest 1,000 levels on each side of Binance XRPUSDT perpetual book",
+        "total_bids_usd": 31800000,
+        "total_offers_usd": 28000000,
+        "depth_usd": {
+          "0.1_percent": {
+            "bids": 1400000,
+            "asks": 1500000
+          },
+          "0.25_percent": {
+            "bids": 3700000,
+            "asks": 3600000
+          },
+          "0.5_percent": {
+            "bids": 7300000,
+            "asks": 8000000
+          },
+          "1_percent": {
+            "bids": 12700000,
+            "asks": 12900000
+          },
+          "2_percent": {
+            "bids": 18500000,
+            "asks": 19100000
+          }
+        },
+        "volume_24h_usd": 624000000,
+        "limitation": "Single-venue perpetual order book, not spot depth; walls can be cancelled or replenished."
+      }
+    },
+    "derivatives": {
+      "coinglass_aggregate": {
+        "open_interest_usd": 2060000000,
+        "open_interest_change_24h_usd_percent": 3.82,
+        "open_interest_change_24h_xrp_percent": -0.36,
+        "futures_volume_24h_usd": 2470000000,
+        "futures_volume_change_24h_percent": 12.22,
+        "futures_to_spot_volume_ratio": 4.5,
+        "oi_weighted_funding_rate_per_8h_percent": -0.0029,
+        "funding_annualized_percent": -3.22,
+        "liquidations_24h_usd": 5860000,
+        "short_liquidations_share_percent": 64,
+        "short_liquidations_24h_usd": 3750000,
+        "limitation": "Aggregate across 30+ exchanges; exchange-level constituents and synchronized venue timestamps are not fully exposed. USD OI and coin-denominated OI moved differently."
+      }
+    }
+  },
+  "etf_flow_reconciliation": {
+    "nov17_daily": {
+      "coinglass": {
+        "net_flow_usd": -6100000,
+        "coverage": "aggregate dashboard",
+        "status": "reported"
+      },
+      "tokenpost_via_pluang": {
+        "net_flow_usd": -6140000,
+        "published_at": "2026-11-18 05:41 WIB",
+        "status": "reported syndicated figure"
+      },
+      "cryptokeyhole_issuer_file_reader": {
+        "net_flow_xrp": -3251,
+        "estimated_usd": -3000,
+        "funds_reported": 2,
+        "funds_expected": 4,
+        "reported_funds": [
+          "Canary XRPC",
+          "21Shares TOXR"
+        ],
+        "missing_funds": [
+          "Bitwise XRP",
+          "Franklin XRPZ"
+        ],
+        "updated_at_utc": "2026-11-18T07:55:00Z",
+        "status": "partial issuer-file observation"
+      },
+      "xrp_insights": {
+        "nov17_status": "not yet published/settled at retrieval",
+        "last_complete_day": "2026-11-16",
+        "nov16_net_flow_xrp": 158148,
+        "fund_universe": "six spot funds plus BITW; GXRP excluded from flow total while a data gap is corrected",
+        "status": "different settlement vintage and fund universe"
+      },
+      "reconciliation": "Do not average or treat these values as the same universe. The approximately $6.1M aggregate outflow is not reconciled with the partial issuer-file observation of -3,251 XRP or the tracker that had not yet published Nov17."
+    },
+    "nov9_to_nov13_week": {
+      "kucoin_sosovalue_reported_net_flow_usd": -19130000,
+      "cryptokeyhole_issuer_file_reader_net_flow_xrp": -4923033,
+      "xrp_insights_net_flow_xrp": -6080000,
+      "note": "Different fund universes, holdings/flow definitions and reporting vintages; not interchangeable."
+    },
+    "cumulative_context": {
+      "kucoin_reported_cumulative_net_inflows_usd": 1790000000,
+      "kucoin_reported_net_assets_usd": 1150000000,
+      "note": "Net assets also change with XRP price; cumulative net flows and AUM must remain separate."
+    }
+  },
+  "exchange_security_event": {
+    "venue": "Binance",
+    "incident_date": "2026-10-29",
+    "primary_source_report_date": "2026-11-03",
+    "unauthorized_xrp_outflow": {
+      "amount_xrp": 233460000,
+      "source_wallets": 5,
+      "destination": "attacker-controlled address",
+      "transfer_window_utc": "20:05–20:09",
+      "classification": "hot-wallet security-incident outflow, not evidence of ordinary customer withdrawals, exchange selling or market execution"
+    },
+    "total_digital_assets_impacted_usd": 6340000000,
+    "assets_frozen_or_intercepted_usd": 2850000000,
+    "mechanism_as_reported_by_binance": "Unauthorized access to an internal wallet-signing service and EIP-7702 delegated authorization; Binance described a multi-stage compromise involving social engineering, malicious software, compromised endpoints and internal AI tooling. Binance stated it had no evidence wallet private keys were leaked.",
+    "recovery_and_coverage": {
+      "binance_oct31_recovery_update_3": "90% replenished at that update; BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC described as 100% backed.",
+      "binance_nov3_initial_report": "98% of impacted token assets replenished as of Oct 31; approximately $2.85B frozen or intercepted.",
+      "reuters_nov18": "Reported approximately 95% of lost tokens covered and approximately $3B frozen; Binance said no new fundraising was needed and declined to publish P&L, balance sheet or cash-flow statements.",
+      "reconciliation": "The 90%, 98% and 95% statements have different publication times and potentially different denominators/scopes. Frozen/intercepted is not the same as recovered. Customer XRP 1:1 backing does not prove the original stolen XRP was recovered or quantify XRP-specific replacement purchases.",
+      "xrp_specific_replacement_purchase_amount": "not disclosed in sources reviewed"
+    }
+  },
+  "macro_context": {
+    "reuters_2026_11_18": {
+      "dollar_index": 103.67,
+      "dollar_context": "near a 19-month high",
+      "probability_of_25bp_december_fed_hike_percent": 95.7,
+      "usd_jpy": 159.25,
+      "boj_governor": "Kazuo Ueda",
+      "boj_policy_signal": "reiterated the need for further rate increases",
+      "us_retail_sales_monthly_percent": 0.2,
+      "us_import_prices_monthly_percent": 1.1,
+      "timestamp_utc": "2026-11-18T01:34:00Z",
+      "limitation": "Macro context is not evidence of a causal XRP price effect."
+    }
+  },
+  "hypotheses": {
+    "short_covering_or_position_reset": {
+      "status": "plausible_not_proven",
+      "supporting_observations": [
+        "24h price rebound while funding remained negative",
+        "64% of reported 24h liquidations were shorts",
+        "CoinGlass showed USD OI higher but XRP-denominated OI lower"
+      ],
+      "counterevidence_or_limits": [
+        "CoinGlass aggregate constituents and event cutoffs are not fully exposed",
+        "one 24h snapshot cannot establish position-level causality"
+      ]
+    },
+    "spot_led_accumulation": {
+      "status": "possible_not_confirmed",
+      "supporting_observations": [
+        "CoinGlass reported spot volume up 17.77% over 24h",
+        "Fuelmaps earlier six-venue spot snapshot showed more resting bids than asks in measured bands"
+      ],
+      "counterevidence_or_limits": [
+        "spot-book snapshot predates current ticker retrieval",
+        "futures volume was about 4.5 times spot volume",
+        "Nov17 ETF flow reports conflict",
+        "no synchronized current multi-venue L2 receipt was captured"
+      ]
+    },
+    "macro_beta_relief_within_larger_drawdown": {
+      "status": "plausible_not_proven",
+      "supporting_observations": [
+        "7d, 30d, 90d and YTD returns remained negative",
+        "Fear & Greed was 10, labeled Extreme Fear",
+        "Reuters reported a strong dollar and high December Fed-hike pricing"
+      ],
+      "counterevidence_or_limits": [
+        "single-day rebound and spot-volume increase may reflect new demand; no causal estimate performed"
+      ]
+    }
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_probability": null,
+    "reason": "Observations are asynchronous, partly aggregated and not retained as raw bytes with immutable hashes. Prediction-engine source-cluster, point-in-time and out-of-sample admission requirements remain unmet.",
+    "no_paper_trade": true,
+    "no_real_money_action": true
+  },
+  "data_quality": {
+    "capture_type": "web-rendered public observations and one public exchange ticker response",
+    "raw_http_bytes_retained": false,
+    "immutable_sha256_receipts_created": false,
+    "trusted_timestamp_anchor": false,
+    "point_in_time_model_eligible": false,
+    "independent_source_groups": [
+      "kraken_api",
+      "coinglass_aggregator",
+      "fuelmaps_aggregator",
+      "basischarts_aggregator",
+      "issuer_files_via_cryptokeyhole",
+      "xrp_insights_aggregator",
+      "binance_official",
+      "reuters"
+    ],
+    "source_independence_caveats": [
+      "CoinGlass and TokenPost/Pluang report similar Nov17 ETF flow values; underlying data independence is unverified.",
+      "CryptoKeyhole and XRP Insights both use issuer holdings files but apply different fund universes and settlement timing.",
+      "Reuters' Binance recovery reporting partly attributes figures to Binance; it is not an independent audit of Binance's balance sheet.",
+      "Fuelmaps and BasisCharts are separate aggregators but cover different venues and products."
+    ]
+  },
+  "sources": [
+    {
+      "id": "kraken_ticker",
+      "publisher": "Kraken",
+      "type": "public exchange API",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_time": "no event timestamp returned",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "kraken_api"
+    },
+    {
+      "id": "coinglass_xrp",
+      "publisher": "CoinGlass",
+      "type": "aggregated market dashboard",
+      "url": "https://www.coinglass.com/currencies/XRP",
+      "source_time": "dynamic live page; no precise event timestamp exposed",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "coinglass_aggregator"
+    },
+    {
+      "id": "coinglass_futures",
+      "publisher": "CoinGlass",
+      "type": "aggregated derivatives dashboard",
+      "url": "https://www.coinglass.com/currencies/XRP/futures",
+      "source_time": "dynamic live page; 30+ exchange aggregation stated",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "coinglass_aggregator"
+    },
+    {
+      "id": "fuelmaps_orderbook",
+      "publisher": "Fuelmaps",
+      "type": "six-venue aggregated spot order book",
+      "url": "https://fuelmaps.io/order-book/",
+      "source_time": "2026-11-18T06:00:00Z",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "fuelmaps_aggregator"
+    },
+    {
+      "id": "basis_orderbook",
+      "publisher": "Basis Charts",
+      "type": "Binance XRPUSDT perpetual order-book heatmap",
+      "url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "source_time": "2026-11-18T07:42:00Z",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "basischarts_aggregator"
+    },
+    {
+      "id": "cryptokeyhole_etf",
+      "publisher": "CryptoKeyhole",
+      "type": "issuer-file-derived ETF holdings/flow tracker",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_time": "updated 2026-11-18T07:55:00Z; issuer files read through 07:55 UTC",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "issuer_files_via_cryptokeyhole"
+    },
+    {
+      "id": "xrp_insights_etf",
+      "publisher": "XRP Insights",
+      "type": "ETF holdings/flow tracker",
+      "url": "https://xrp-insights.com/",
+      "source_time": "latest displayed complete session 2026-11-16; Nov17 not yet displayed",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "xrp_insights_aggregator"
+    },
+    {
+      "id": "tokenpost_pluang_etf",
+      "publisher": "TokenPost via Pluang",
+      "type": "syndicated ETF-flow report",
+      "url": "https://pluang.com/en/news-feed/etf-spot-altcoin-xrp-link-hype-aliran-keluar-pasar-stabil",
+      "source_time": "2026-11-18 05:41 WIB",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "tokenpost_syndicated"
+    },
+    {
+      "id": "kucoin_sosovalue_etf",
+      "publisher": "KuCoin Blog citing SoSoValue",
+      "type": "weekly ETF-flow report",
+      "url": "https://www.kucoin.com/blog/xrp-etf-outflows-8-month-high-2026",
+      "source_time": "2026-11-17 15:44 (page local time not specified)",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "sosovalue_republished"
+    },
+    {
+      "id": "binance_incident",
+      "publisher": "Binance Blog / verified Binance account",
+      "type": "first-party security incident report",
+      "url": "https://www.binance.com/en-AE/square/post/384312159834579",
+      "source_time": "report published 2026-11-03; incident 2026-10-29",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "binance_official"
+    },
+    {
+      "id": "binance_recovery_update3",
+      "publisher": "Binance Announcement",
+      "type": "first-party recovery and proof-of-reserves update",
+      "url": "https://www.binance.com/en-AE/square/hashtag/binancerecovery90%25%20of%20stolen%20assets",
+      "source_time": "2026-10-31",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "binance_official"
+    },
+    {
+      "id": "reuters_binance",
+      "publisher": "Reuters",
+      "type": "news report quoting Binance executives",
+      "url": "https://www.reuters.com/business/finance/after-63-billion-crypto-heist-binance-plans-foray-into-5-asian-markets-2026-11-18/",
+      "source_time": "2026-11-18T07:40:00Z",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "reuters"
+    },
+    {
+      "id": "reuters_macro",
+      "publisher": "Reuters",
+      "type": "macro/FX market report",
+      "url": "https://www.reuters.com/world/middle-east/dollar-holds-near-19-month-high-data-supports-case-us-rate-hikes-2026-11-18/",
+      "source_time": "2026-11-18T01:34:00Z",
+      "retrieved_at_utc": "2026-11-18T10:27:48Z",
+      "independence_group": "reuters"
+    }
+  ],
+  "next_actions": [
+    "Capture raw HTTP response bytes and SHA-256 receipts for Kraken, Binance and each other public source; do not train on this rendered snapshot.",
+    "Reconcile Nov17 ETF flows from each issuer's published holdings/share-count files and record missing-file state explicitly.",
+    "Classify the 233.46M XRP Binance hot-wallet exploit transfer separately from exchange customer flows and market sales.",
+    "Obtain an approved monitored project contact for BARROT_SEC_USER_AGENT; do not invent one.",
+    "Implement deterministic feature-store reconstruction and an independent immutable timestamp/hash anchor.",
+    "Keep forecast issuance disabled until source independence, chronological out-of-sample, calibration and later-shadow requirements pass."
+  ]
+}

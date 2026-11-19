@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-17T10:59:32Z",
+  "mission": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution/orchestration/safety/verification foundation",
+  "coordination_status": "NO_NINE_PLATFORM_LIVE_QUORUM",
+  "rule": "A product is not marked connected unless authentication, permission scope and end-to-end data flow are tested in the current period.",
+  "platforms": [
+    {
+      "platform": "ChatGPT",
+      "capabilities": [
+        "current model session",
+        "public web research",
+        "GitHub connector"
+      ],
+      "authentication_status": "CURRENT_SESSION_ACTIVE; GITHUB_CONNECTOR_READ_VERIFIED; branch-write planned in this run",
+      "permission_status": "repository access is available; effective token scopes not independently exposed; main protection unknown",
+      "data_flow_status": "repository metadata/tree/PR/CI and public web evidence read into this session; no data sent to another model",
+      "external_provider_dispatch": false
+    },
+    {
+      "platform": "Claude",
+      "capabilities": [
+        "independent model review if separately invoked"
+      ],
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow_status": "NO_LIVE_DATA_FLOW_VERIFIED",
+      "external_provider_dispatch": false
+    },
+    {
+      "platform": "Grok",
+      "capabilities": [
+        "independent model/research review if separately invoked"
+      ],
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow_status": "public product documentation only; no authenticated task or repository transfer",
+      "external_provider_dispatch": false
+    },
+    {
+      "platform": "Gemini",
+      "capabilities": [
+        "independent model/research review if separately invoked"
+      ],
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow_status": "NO_LIVE_DATA_FLOW_VERIFIED",
+      "external_provider_dispatch": false
+    },
+    {
+      "platform": "Copilot",
+      "capabilities": [
+        "repository code assistance if separately authorized"
+      ],
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow_status": "no Copilot session or repository action verified",
+      "external_provider_dispatch": false
+    },
+    {
+      "platform": "Codex",
+      "capabilities": [
+        "coding agent/repository execution if separately authorized"
+      ],
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow_status": "no separate Codex runtime or data transfer verified in this run",
+      "external_provider_dispatch": false
+    },
+    {
+      "platform": "Hugging Face",
+      "capabilities": [
+        "model/Space hosting and artifact sync"
+      ],
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "HF_TOKEN presence/scope NOT_VERIFIED; integration sync workflow quarantined",
+      "data_flow_status": "NO_LIVE_SYNC_VERIFIED",
+      "external_provider_dispatch": false
+    },
+    {
+      "platform": "Kaggle",
+      "capabilities": [
+        "dataset and competition workflows"
+      ],
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "Kaggle credentials NOT_VERIFIED; manual exact-slug allowlist gate present",
+      "data_flow_status": "NO_DATASET_WRITE_OR_SUBMISSION",
+      "external_provider_dispatch": false
+    },
+    {
+      "platform": "Databricks",
+      "capabilities": [
+        "workspace and data engineering workflows"
+      ],
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "DATABRICKS credentials/scopes NOT_VERIFIED; token rotation disabled",
+      "data_flow_status": "NO_WORKSPACE_READ_OR_WRITE_VERIFIED",
+      "external_provider_dispatch": false
+    }
+  ],
+  "current_verified_edges": [
+    {
+      "from": "ChatGPT session",
+      "to": "GitHub connector",
+      "purpose": "repository inspection and controlled integration-branch update",
+      "status": "read verified; write pending until expected-SHA branch update succeeds"
+    },
+    {
+      "from": "public sources",
+      "to": "ChatGPT session",
+      "purpose": "market, macro, SEC and identity research",
+      "status": "public retrieval observed; raw byte receipts not captured"
+    }
+  ],
+  "least_privilege": "NOT_VERIFIED across all nine platforms; no provider tokens or credentials exposed or rotated",
+  "red_team": "No independent platform reviewer or nine-platform quorum verified",
+  "fallback": "public sources plus deterministic repository tests; do not send private or immutable XRP evidence to unverified providers"
+}

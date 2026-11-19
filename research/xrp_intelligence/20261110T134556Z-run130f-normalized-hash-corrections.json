@@ -1,0 +1,32 @@
+{
+  "schema_version": "barrot.xrp.evidence-hash-correction.v1",
+  "correction_id": "20261110T134556Z-run130f-normalized-hash-corrections",
+  "captured_at_utc": "2026-11-10T13:45:56Z",
+  "normalization_method": "Parse committed UTF-8 JSON, remove normalized_evidence_sha256, serialize with sorted keys, compact separators, ensure_ascii=false and allow_nan=false, then SHA-256 the UTF-8 bytes.",
+  "corrections": [
+    {
+      "artifact_path": "research/xrp_intelligence/20261110T133404Z-run130c-real-earnings-release.json",
+      "original_git_blob_sha": "300aee86e7996d52a6d7d3ed58e4392672648b18",
+      "original_recorded_normalized_sha256": "b7e43b7571476ac659a4266aff7f225ed089a4990d17dd92ce119481ebc9eaf2",
+      "recomputed_normalized_sha256": "cba8af99983166b3df4816d38965e1da9b1ecf0660a13f3bd2ab3558c9ca1bb6",
+      "root_cause": "The original digest was calculated from the pre-serialization Python object. Integral-valued float fields were serialized into the committed JSON as integer tokens, so the stored digest did not match the committed representation."
+    },
+    {
+      "artifact_path": "research/xrp_intelligence/20261110T132100Z-run130e-cbxrp-morpho-market-and-oracle-reconciliation.json",
+      "original_git_blob_sha": "ec5c476225112e9fb02a58d14b3e3e997b8e5741",
+      "original_recorded_normalized_sha256": "fa396c143ff900a732278fa44ff99efeb21f379a73b671dce028f53fa9a081b7",
+      "recomputed_normalized_sha256": "35289f68f656fce28d40538d5ef88f328aca00f90670bbcf0a35cd1a0674bfa4",
+      "root_cause": "The original digest was calculated from the pre-serialization Python object. Numeric fields were normalized by the committed JSON serialization, so the stored digest did not match the committed representation."
+    }
+  ],
+  "preservation": {
+    "original_artifacts_mutated": false,
+    "corrections_append_only": true,
+    "original_git_blobs_retained": true
+  },
+  "status": "CORRECTED_BY_APPEND_ONLY_RECEIPT",
+  "raw_http_wire_bytes_captured": false,
+  "raw_source_sha256_captured": false,
+  "model_admission": "NOT_ADMITTED",
+  "forecast_status": "NOT_ISSUED"
+}

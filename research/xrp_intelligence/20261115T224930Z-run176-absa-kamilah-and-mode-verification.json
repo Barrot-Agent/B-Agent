@@ -1,0 +1,185 @@
+{
+  "schema_version": "barrot.xrp.run-followup.v1",
+  "run_id": "Run176-followup",
+  "captured_at_utc": "2026-11-15T22:49:30Z",
+  "verified_code_head": "4fdeb540ae048e390a24d0265411fe5f7b7401e1",
+  "verification": {
+    "full_suite_run": 43770605208,
+    "full_suite": "3820 passed, 0 failed, 1 skipped, 19 subtests",
+    "duration_seconds": 174.96,
+    "inclusive_coverage_pct": 64.02,
+    "legacy_core_coverage_pct": 77,
+    "core_tests": "743 passed, 0 failed, 8 subtests",
+    "dependency_audit_run": 43770605285,
+    "dependency_manifests": 6,
+    "known_vulnerabilities": 0,
+    "pages_validation_run": 43770611091,
+    "pr_dependency_audit_run": 43770611121,
+    "fail_closed_gate": "last passed on predecessor 9c69f1; not rerun on 4fdeb"
+  },
+  "repository": {
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_head_before_followup": "4fdeb540ae048e390a24d0265411fe5f7b7401e1",
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2511,
+    "main_paths_missing": 0,
+    "executable_mode_differences": 0,
+    "restored_executable_paths": [
+      "barrot_agent/analysis/xrp_telemetry_matrix.py",
+      "barrot_agent/ingestion/council_ingest_node.py",
+      "barrot_agent/orchestration/orchestrator_bridge.py"
+    ]
+  },
+  "absa": {
+    "entity": "Absa Group / Absa Bank",
+    "assets_2024_zar": 2068695000000,
+    "assets_2025_zar": 2239479000000,
+    "regulatory_custody_approval_date": "2026-09-29",
+    "service_scope": "institutional digital-asset custody for South African clients; not retail crypto",
+    "ripple_technology_partnership_date": "2025-10-15",
+    "xrp_specific_license": false,
+    "xrp_settlement_requirement_disclosed": false,
+    "xrp_position_disclosed": false,
+    "sources": [
+      "https://www.absa.africa/our-stories/our-voices/2026/absa-becomes-first-bank-in-africa-to-secure-regulatory-approval-for-digital-asset-custody/",
+      "https://ripple.com/ripple-press/ripple-expands-global-custody-footprint-into-africa-with-absa-bank/",
+      "https://cib.absa.africa/home/insights-and-events/the-gold-standard-in-digital-asset-custody/",
+      "https://www.absa.africa/wp-content/uploads/2026/03/Absa-Group-Annual-Consolidated-and-Separate-Financial-Statements-single-page.pdf"
+    ]
+  },
+  "sbi_blackrock": {
+    "date": "2026-10-27",
+    "parties": [
+      "SBI Holdings",
+      "Startale Group",
+      "BlackRock Financial Management",
+      "BlackRock Japan"
+    ],
+    "status": "MOU to explore tokenized MMF and JPYSC ecosystem",
+    "ripple_party": false,
+    "xrp_required": false,
+    "blackrock_xrp_capital_commitment_disclosed": false,
+    "source": "https://www.sbigroup.co.jp/news/2026/1027_16682.html"
+  },
+  "evernorth_creator_claim": {
+    "claim": "approximately 400M XRP committed to native lending",
+    "verified": false,
+    "treasury_reported_total_xrp": 473000000,
+    "evernorth_xrp_at_2026_09_30": 346284972,
+    "pathfinder_xrp_at_2026_09_30": 126791458,
+    "doppler_relationship": "exploratory design/pilot of institutional liquidity frameworks",
+    "xrp_deployed_through_doppler_reported": false,
+    "yield_reported": false,
+    "revenue_reported_q3_2026": false,
+    "sources": [
+      "https://www.sec.gov/Archives/edgar/data/2092592/000095010326000288/dp239779_425.htm",
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm"
+    ]
+  },
+  "kamilah_stevenson": {
+    "person_identity": "high_confidence",
+    "first_party_interview": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+    "first_party_self_identification_transcript_time": "40:07",
+    "first_party_spoken_youtube_name": "Doctor Camilla Stevenson",
+    "first_party_warning": "fake pages exist",
+    "youtube_channel_name": "Kamilah Stevenson | XRP & Stocks",
+    "youtube_channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+    "youtube_handle": "@KamilahStevensonXrpStocks",
+    "youtube_channel_url": "https://www.youtube.com/@KamilahStevensonXrpStocks",
+    "channel_identity_confidence": "high but not fully cross-linked to first-party X/Instagram",
+    "videos": [
+      {
+        "date": "2026-05-05",
+        "id": "SId2NMmBi3s",
+        "url": "https://www.youtube.com/watch?v=SId2NMmBi3s",
+        "views": 13052,
+        "likes_approx": 1100,
+        "claims": [
+          "Evernorth native lending",
+          "Ripple Prime and DTCC",
+          "Japanese bank payment costs"
+        ],
+        "claims_verified": false
+      },
+      {
+        "date": "2026-05-12",
+        "id": "pFru4idBTMA",
+        "url": "https://www.youtube.com/watch?v=pFru4idBTMA",
+        "views": 28264,
+        "likes_approx": 2000,
+        "claims": [
+          "XRPL RWA $3.5B",
+          "$900M one-day increase",
+          "RLUSD $1B",
+          "Archax $1B"
+        ],
+        "claims_verified": false
+      },
+      {
+        "date": "2026-07-25",
+        "id": "Z1ai8L497aM",
+        "url": "https://www.youtube.com/watch?v=Z1ai8L497aM",
+        "views": 14581,
+        "claims": [
+          "Japan XRP regulatory/tax reclassification",
+          "ETF implications"
+        ],
+        "claims_verified": false
+      },
+      {
+        "date": "2026-09-13",
+        "id": "Wa0Teymjaks",
+        "url": "https://www.youtube.com/watch?v=Wa0Teymjaks",
+        "views": 19984,
+        "likes": 1131,
+        "claims": [
+          "CLARITY Act timing",
+          "Fed/macro catalyst"
+        ],
+        "claims_verified": false
+      },
+      {
+        "date": "2026-11-10",
+        "id": "anzmlZ-a7K4",
+        "url": "https://www.youtube.com/watch?v=anzmlZ-a7K4",
+        "views": 44800,
+        "claims": [
+          "BlackRock/SBI/Startale Japan MOU"
+        ],
+        "claims_verified": false
+      }
+    ],
+    "additional_indexed_candidates": [
+      {
+        "title": "Ripple Just Got FINAL Bank Approval. What Changes for XRP?",
+        "youtube_id": null
+      },
+      {
+        "title": "A $119 Billion African Bank Just Put Its License Behind XRP",
+        "youtube_id": null
+      },
+      {
+        "title": "Japan's Next Move Could Change Everything for XRP",
+        "youtube_id": null
+      }
+    ],
+    "inventory_exhaustive": false,
+    "youtube_retrieval_throttled": true
+  },
+  "prediction": {
+    "forecast": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED",
+    "new_web_research_raw_hashes": 0,
+    "model_eligible": false
+  },
+  "decisions": {
+    "merge": "NO_MERGE",
+    "paper_trade": false,
+    "external_model_dispatch": false,
+    "deploy": false,
+    "secret_rotation": false,
+    "databricks_write": false,
+    "kaggle_action": false,
+    "real_money": false
+  }
+}

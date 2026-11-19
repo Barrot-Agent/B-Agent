@@ -5,7 +5,12 @@ import sqlite3
 
 import pytest
 
-from barrot_agent.evolution.feature_store import FeatureStoreError, HistoricalFeatureStore
+from barrot_agent.evolution.feature_store import (
+    FeatureStoreError,
+    HistoricalFeatureStore,
+    _canonical,
+    _sha256,
+)
 from barrot_agent.evolution.point_in_time_features import (
     FeatureSnapshotError,
     build_feature_snapshot,
@@ -27,7 +32,7 @@ def source(source_id="provider-a", group="exchange-a", digest=HASH_A):
     return {
         "source_id": source_id,
         "independence_group": group,
-        "source_uri": "https://example.com/public-data",
+        "source_uri": f"https://{source_id}.example/public-data",
         "raw_content_sha256": digest,
     }
 
@@ -145,6 +150,27 @@ def test_independence_groups_deduplicate_syndicated_sources():
     )
     assert independent_source_groups(result["record"]) == ["exchange-c", "same-wire"]
     assert result["record"]["independent_source_group_count"] == 2
+
+
+def test_same_publisher_different_labels_count_as_one_source_group():
+    result = validate_feature_record(
+        feature(
+            sources=[
+                {
+                    **source("api-feed", "api-label", HASH_A),
+                    "source_uri": "https://api.example.com/market",
+                },
+                {
+                    **source("www-feed", "www-label", HASH_B),
+                    "source_uri": "https://www.example.com/market",
+                },
+            ]
+        ),
+        CUTOFF,
+        captured_at_utc=CAPTURED,
+    )
+    assert result["record"]["source_independence_groups"] == ["publisher:example.com"]
+    assert result["record"]["independent_source_group_count"] == 1
 
 
 def test_snapshot_id_is_deterministic_and_order_independent():
@@ -322,6 +348,12 @@ def test_historical_feature_store_is_idempotent_and_preserves_lineage(tmp_path):
     assert verified["valid"] is True
     assert verified["snapshot_columns_ok"] is True
     assert verified["sqlite_integrity"] == "ok"
+
+    exact = store.verified_snapshot(snapshot["snapshot_id"])
+    assert exact["snapshot_id"] == snapshot["snapshot_id"]
+    assert exact["asset_scope"] == ["XRP"]
+    assert exact["manifest"]["snapshot_id"] == snapshot["snapshot_id"]
+    assert exact["verification"]["valid"] is True
 
 
 def test_historical_feature_store_hides_backfilled_snapshot_before_store_receipt(tmp_path):
@@ -524,3 +556,132 @@ def test_historical_feature_store_as_of_refuses_unverified_manifest_tampering(tm
         store.features_as_of("XRP", "2030-01-01T00:00:00Z")
     with pytest.raises(FeatureStoreError, match="snapshot integrity verification failed"):
         store.source_lineage(snapshot["snapshot_id"])
+
+
+def test_historical_feature_store_rejects_noncanonical_manifest_record_before_normalizing(tmp_path):
+    snapshot = build_feature_snapshot(
+        [feature()], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED
+    )
+    tampered = json.loads(json.dumps(snapshot))
+    tampered["records"][0]["asset"] = "xrp"
+    manifest_without_id = dict(tampered)
+    manifest_without_id.pop("snapshot_id")
+    tampered["snapshot_id"] = _sha256(_canonical(manifest_without_id))
+
+    store = HistoricalFeatureStore(tmp_path / "noncanonical-record.sqlite3")
+    with pytest.raises(FeatureStoreError, match="canonical normalized form"):
+        store.append_snapshot(tampered)
+
+
+@pytest.mark.parametrize(
+    "identity_change",
+    [
+        {"event_time_utc": "2026-11-03T15:58:00Z"},
+        {"feature_name": "perpetual_open_interest"},
+        {"unit": "USD/BTC"},
+        {"venue": "binance"},
+        {"instrument": "XRP-USDT-SWAP"},
+        {"currency_pair": "XRP/USDT"},
+        {"market_type": "perpetual"},
+        {"aggregation_window": "5m"},
+    ],
+)
+def test_revision_cannot_supersede_a_different_event_or_market_identity(identity_change):
+    dimensions = {
+        "venue": "kraken",
+        "instrument": "XRP/USD",
+        "currency_pair": "XRP/USD",
+        "market_type": "spot",
+        "aggregation_window": "1m",
+    }
+    original = feature(record_id="v1", feature_version=1, **dimensions)
+    revised_dimensions = {**dimensions, **identity_change}
+    revised = feature(
+        record_id="v2",
+        feature_version=2,
+        revision_status="revised",
+        supersedes_record_id="v1",
+        **revised_dimensions,
+    )
+    with pytest.raises(FeatureSnapshotError, match="same feature and asset at the same event time"):
+        build_feature_snapshot([original, revised], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED)
+
+
+def test_historical_feature_store_reconstructs_revisions_at_actual_store_receipt_time(tmp_path):
+    from datetime import datetime, timezone
+
+    clock = [datetime.fromisoformat("2026-11-03T16:06:00+00:00")]
+    store = HistoricalFeatureStore(
+        tmp_path / "cross-run-history.sqlite3",
+        clock=lambda: clock[0],
+    )
+    first = build_feature_snapshot(
+        [feature()],
+        cutoff_utc=CUTOFF,
+        captured_at_utc=CAPTURED,
+    )
+    store.append_snapshot(first)
+
+    second_record = feature(
+        value=1.28,
+        source_data_as_of_utc="2026-11-03T16:10:00Z",
+        known_at_utc="2026-11-03T16:10:00Z",
+        ingested_at_utc="2026-11-03T16:10:02Z",
+        revision_available_at_utc="2026-11-03T16:10:02Z",
+        sources=[source(digest=HASH_B)],
+    )
+    second = build_feature_snapshot(
+        [second_record],
+        cutoff_utc="2026-11-03T16:15:00Z",
+        captured_at_utc="2026-11-03T16:15:00Z",
+    )
+    clock[0] = datetime.fromisoformat("2026-11-03T16:16:00+00:00")
+    store.append_snapshot(second)
+
+    before_store_receipt = store.records_through("XRP", "2026-11-03T16:15:59Z")
+    assert len(before_store_receipt) == 1
+    assert before_store_receipt[0]["value"] == 1.27
+    assert store.features_as_of("XRP", "2026-11-03T16:15:59Z")[0]["value"] == 1.27
+
+    complete_history = store.records_through("XRP", "2026-11-03T16:20:00Z")
+    assert len(complete_history) == 2
+    original = next(item for item in complete_history if item["revision_status"] == "original")
+    revised = next(item for item in complete_history if item["revision_status"] == "revised")
+    assert original["record_id"] == "xrp:spot:mid:2026-11-03T15:59:00Z:v1"
+    assert revised["record_id"] == "xrp:spot:mid:2026-11-03T15:59:00Z:v2"
+    assert revised["feature_version"] == 2
+    assert revised["supersedes_record_id"] == original["record_id"]
+    assert revised["value"] == 1.28
+    assert revised["ingested_at_utc"] == "2026-11-03T16:16:00.000000Z"
+
+    as_of_features = store.features_as_of("XRP", "2026-11-03T16:20:00Z")
+    assert len(as_of_features) == 1
+    assert as_of_features[0]["record_id"] == revised["record_id"]
+    assert as_of_features[0]["value"] == 1.28
+
+    assert store.verify_all_snapshots()["valid"] is True
+    assert store.snapshot_count() == 2
+    assert store.checkpoint()["valid"] is True
+
+
+def test_future_issuer_row_cannot_be_backdated_to_aggregator_observation_date():
+    with pytest.raises(
+        FeatureSnapshotError,
+        match="source_data_as_of_utc cannot follow revision_available_at_utc",
+    ):
+        validate_feature_record(
+            feature(
+                record_id="xrpc:nov6:future-issuer-row",
+                feature_id="xrp.etf.xrpc.holdings_delta",
+                feature_name="xrpc_holdings_delta",
+                value=-752_048,
+                unit="XRP",
+                event_time_utc="2026-11-06T00:00:00Z",
+                known_at_utc="2026-11-07T16:16:09Z",
+                source_data_as_of_utc="2026-11-09T00:00:00Z",
+                ingested_at_utc="2026-11-07T16:16:10Z",
+                revision_available_at_utc="2026-11-07T16:16:09Z",
+            ),
+            "2026-11-07T17:00:00Z",
+            captured_at_utc="2026-11-07T17:05:00Z",
+        )

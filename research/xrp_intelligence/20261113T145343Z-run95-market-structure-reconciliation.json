@@ -1,0 +1,424 @@
+{
+  "schema_version": "barrot.xrp.market-reconciliation.v1",
+  "artifact_id": "run95-xrp-live-market-structure-reconciliation-20261113",
+  "captured_at_utc": "2026-11-13T14:53:43.720Z",
+  "latest_explicit_market_source_as_of_utc": "2026-11-13T09:21:00Z",
+  "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "integration_head_sha": "501832afe8c5a4c5fc5f5c80d28d14733dc7838f",
+  "model_eligible": false,
+  "quality_status": "research_only",
+  "raw_capture_status": "web_rendered_extract_only",
+  "raw_source_receipts": [],
+  "forecast_status": "NOT_ISSUED",
+  "source_observations": [
+    {
+      "source_id": "kraken_xrp_usd_ticker",
+      "source_uri": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "independence_group": "kraken_exchange_native_public_api",
+      "data_type": "spot_ticker",
+      "retrieved_at_utc": "2026-11-13T14:53:43.720Z",
+      "source_data_as_of_utc": null,
+      "server_timestamp_present": false,
+      "status": "research_only_no_server_timestamp",
+      "extracted_values": {
+        "best_bid_usd": 1.03271,
+        "best_ask_usd": 1.03279,
+        "indicative_spread_bps": 0.775,
+        "last_usd": 1.03262,
+        "volume_24h_xrp": 36105835.91848143,
+        "vwap_24h_usd": 1.02045855,
+        "high_24h_usd": 1.04269,
+        "low_24h_usd": 0.99672,
+        "open_24h_usd": 1.04003,
+        "trades_24h": 36814
+      },
+      "limitations": [
+        "Response exposes no exchange event timestamp or capture sequence.",
+        "Single venue; not a cross-venue executable price.",
+        "Web-rendered response is not byte-complete raw publisher evidence."
+      ]
+    },
+    {
+      "source_id": "basis_binance_xrpusdt_perpetual_orderbook",
+      "source_uri": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "independence_group": "binance_xrpusdt_perpetual_orderbook_via_basis",
+      "data_type": "perpetual_orderbook",
+      "source_data_as_of_utc": "2026-11-13T07:23:00Z",
+      "status": "research_only_perpetual_not_spot",
+      "extracted_values": {
+        "mid_usd": 1.0321,
+        "spread_bps": 0.97,
+        "levels_each_side": 1000,
+        "bid_depth_all_levels_usd": 34100000,
+        "ask_depth_all_levels_usd": 27700000,
+        "bid_share_within_1pct": 0.52,
+        "total_depth_within_0_5pct_usd": 13600000,
+        "bid_depth_within_0_5pct_usd": 6400000,
+        "ask_depth_within_0_5pct_usd": 7200000,
+        "bid_depth_within_1pct_usd": 11300000,
+        "ask_depth_within_1pct_usd": 10400000
+      },
+      "limitations": [
+        "This is Binance XRPUSDT perpetual depth, not spot depth.",
+        "Aggregator capture, not raw exchange receipt.",
+        "Resting liquidity can be cancelled or replenished; walls are not intent."
+      ]
+    },
+    {
+      "source_id": "freeorderbook_xrp_spot_dashboard",
+      "source_uri": "https://freeorderbook.com/xrp-order-book/",
+      "independence_group": "binance_coinbase_okx_spot_dashboard_unknown_capture",
+      "data_type": "spot_orderbook_dashboard",
+      "source_data_as_of_utc": null,
+      "status": "quarantined_inconsistent",
+      "extracted_values": {
+        "displayed_binance_best_bid_usd": 1.364,
+        "displayed_binance_best_ask_usd": 1.3641,
+        "displayed_coinbase_best_bid_usd": 1.0804,
+        "displayed_coinbase_best_ask_usd": 1.0806,
+        "displayed_okx_best_bid_usd": 1.0821,
+        "displayed_okx_best_ask_usd": 1.0822,
+        "kraken_status": "unavailable_in_browser",
+        "displayed_top20_ask_total_usd": 0
+      },
+      "limitations": [
+        "Prices materially conflict with the Kraken XRP/USD API snapshot around $1.0326.",
+        "The page lists ask levels while displaying zero total ask size for the top 20.",
+        "No reliable capture timestamp; not eligible for features."
+      ]
+    },
+    {
+      "source_id": "coinfuty_xrp_aggregated_perpetual_book",
+      "source_uri": "https://www.coinfuty.com/orderbook/xrp",
+      "independence_group": "five_exchange_perpetual_aggregator_coinfuty",
+      "data_type": "aggregated_perpetual_orderbook",
+      "source_data_as_of_utc": null,
+      "status": "research_only_scope_and_timestamp_incomplete",
+      "extracted_values": {
+        "venues": [
+          "Binance",
+          "Bybit",
+          "OKX",
+          "Bitget",
+          "Gate"
+        ],
+        "bid_depth_within_0_5pct_usd": 22580000,
+        "ask_depth_within_0_5pct_usd": 22820000,
+        "bid_depth_within_1pct_usd": 44060000,
+        "ask_depth_within_1pct_usd": 40130000,
+        "bid_share_reported": 0.56,
+        "displayed_mid_usd": 1.03,
+        "displayed_spread_bps": 9.7
+      },
+      "limitations": [
+        "Perpetual books, not spot.",
+        "No exact snapshot timestamp in retrieved excerpt.",
+        "Provider's displayed bid share and depth ratios are not directly interchangeable with Basis bands."
+      ]
+    },
+    {
+      "source_id": "coinglass_xrp_futures",
+      "source_uri": "https://www.coinglass.com/currencies/XRP/futures",
+      "independence_group": "coinglass_multi_exchange_derivatives_aggregator",
+      "data_type": "perpetual_and_futures_open_interest",
+      "source_data_as_of_utc": "2026-11-13T08:35:00Z",
+      "status": "research_only_provider_specific_universe",
+      "extracted_values": {
+        "open_interest_usd": 2260000000,
+        "open_interest_24h_change_usd_pct": -0.33,
+        "open_interest_24h_change_coin_pct": 0.88,
+        "xrp_price_24h_change_pct": -1.2,
+        "oi_share_binance_pct": 17.1,
+        "oi_share_cme_pct": 15.6,
+        "oi_share_bybit_pct": 12.7,
+        "oi_weighted_funding_8h_pct": 0.0011
+      },
+      "limitations": [
+        "Aggregated universe includes CME and exchange contracts; not directly comparable with other dashboards.",
+        "USD OI and coin-denominated OI move differently when price changes."
+      ]
+    },
+    {
+      "source_id": "kodexius_xrp_perpetuals",
+      "source_uri": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "independence_group": "kodexius_seven_contract_derivatives_aggregator",
+      "data_type": "perpetual_open_interest_and_funding",
+      "source_data_as_of_utc": "2026-11-13T07:04:00Z",
+      "status": "research_only_provider_specific_universe",
+      "extracted_values": {
+        "open_interest_usd": 613070000,
+        "contract_count": 7,
+        "weighted_funding_8h_pct": -0.0005,
+        "volume_24h_usd": 1720000000,
+        "oi_to_volume_ratio": 0.36,
+        "exchange_oi_usd": {
+          "Binance": 331690000,
+          "Bybit": 127900000,
+          "OKX": 87220000,
+          "Hyperliquid": 45500000,
+          "HTX": 20760000
+        }
+      },
+      "limitations": [
+        "Contract universe differs from CoinGlass and TradRadar.",
+        "Negative weighted funding conflicts with other current aggregators; do not average."
+      ]
+    },
+    {
+      "source_id": "tradradar_xrp_perpetuals",
+      "source_uri": "https://tradradar.io/markets/xrp",
+      "independence_group": "tradradar_seven_exchange_derivatives_aggregator",
+      "data_type": "perpetual_open_interest_funding_liquidations",
+      "source_data_as_of_utc": "2026-11-12T23:55:00Z",
+      "status": "research_only_provider_specific_universe",
+      "extracted_values": {
+        "open_interest_usd": 1550000000,
+        "open_interest_24h_change_pct": 0.57,
+        "weighted_funding_8h_pct": 0.0098,
+        "liquidations_24h_min_usd": 9010000,
+        "long_liquidations_usd": 8470000,
+        "short_liquidations_usd": 544650,
+        "long_short_accounts_ratio": 3.91,
+        "long_account_share_pct": 79.6
+      },
+      "limitations": [
+        "Liquidation feed is explicitly a lower bound.",
+        "Funding and OI scope differ from other aggregators.",
+        "Snapshot is older than the current Kraken ticker capture."
+      ]
+    },
+    {
+      "source_id": "swiftedge_xrp_perpetual_market",
+      "source_uri": "https://swiftedge.uk/xrp/today",
+      "independence_group": "swiftedge_perpetual_orderflow_aggregator",
+      "data_type": "perpetual_price_orderbook_positioning",
+      "source_data_as_of_utc": "2026-11-13T09:21:00Z",
+      "status": "research_only_estimated_positioning",
+      "extracted_values": {
+        "price_usd": 1.0277,
+        "change_since_00_00_utc_pct": -1.3,
+        "low_usd": 0.997,
+        "high_usd": 1.0438,
+        "funding_8h_pct": -0.0028,
+        "open_interest_xrp": 90495480,
+        "open_interest_usd": 93000000,
+        "open_interest_24h_change_pct": -0.4,
+        "bid_wall_usd": 1.013,
+        "ask_wall_usd": 1.037
+      },
+      "limitations": [
+        "Perpetual market, not spot.",
+        "Positioning walls are estimates based on partial public positions.",
+        "Provider-specific snapshot; not synchronized with Kraken."
+      ]
+    },
+    {
+      "source_id": "swiftedge_xrp_orderflow",
+      "source_uri": "https://swiftedge.uk/xrp",
+      "independence_group": "swiftedge_perpetual_orderflow_aggregator",
+      "data_type": "perpetual_funding_and_orderflow",
+      "source_data_as_of_utc": "2026-11-13T08:50:00Z",
+      "status": "research_only_estimated_orderflow",
+      "extracted_values": {
+        "price_usd": 1.0302,
+        "funding_8h_pct": -0.006,
+        "open_interest_24h_change_pct": -0.2,
+        "accounts_long_pct": 60.2,
+        "whale_net_flow_24h_usd": -149000,
+        "whale_buys_24h_usd": 11000000,
+        "whale_sells_24h_usd": 11000000
+      },
+      "limitations": [
+        "Same provider as the Swiftedge daily report; not an independent confirmation.",
+        "Perpetual data; whale classification is provider-defined."
+      ]
+    },
+    {
+      "source_id": "xrp_insights_etf_holdings",
+      "source_uri": "https://xrp-insights.com/data",
+      "independence_group": "issuer_fund_holdings_files_xrp_insights",
+      "data_type": "spot_etf_holdings_and_implied_flows",
+      "source_data_as_of_utc": "2026-11-11",
+      "status": "research_only_latest_day_provisional",
+      "extracted_values": {
+        "net_xrp_flow_2026_11_09_to_2026_11_11": -9213260,
+        "total_xrp_held_2026_11_11": 1185967427,
+        "2026_11_12_row_status": "provisional"
+      },
+      "limitations": [
+        "Holdings changes are not verified end-user cash flows.",
+        "Nov 12 row is provisional and must not be treated as settled."
+      ]
+    },
+    {
+      "source_id": "cryptokeyhole_xrp_etf_flows",
+      "source_uri": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "independence_group": "issuer_daily_holdings_files_cryptokeyhole_four_fund_subset",
+      "data_type": "spot_etf_holdings_and_implied_flows",
+      "source_data_as_of_utc": "2026-11-11",
+      "status": "research_only_four_of_six_funds_complete",
+      "extracted_values": {
+        "net_xrp_flow_2026_11_11": -3322,
+        "net_xrp_flow_2026_11_05_to_2026_11_11": -10005584,
+        "xrp_held_by_four_funds_2026_11_11": 1066803639,
+        "latest_issuer_file_read_at_utc": "2026-11-12T23:52:00Z",
+        "2026_11_12_status": "waiting_for_issuer_files"
+      },
+      "limitations": [
+        "Four of six listed spot funds are included in the daily calculation.",
+        "Nov 12 was explicitly incomplete at capture."
+      ]
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf",
+      "source_uri": "https://alphafinance.io/etf/xrp/",
+      "independence_group": "five_fund_spot_etf_dashboard_alpha",
+      "data_type": "spot_etf_flows",
+      "source_data_as_of_utc": "2026-11-12",
+      "status": "research_only_zero_vs_missing_ambiguity",
+      "extracted_values": {
+        "net_flow_2026_11_12_usd": 0,
+        "cumulative_net_flow_usd": 1710000000,
+        "net_flow_30_sessions_usd": -2800000,
+        "fund_count": 5
+      },
+      "limitations": [
+        "Zero may mean no activity or unavailable issuer file; dashboard method must be reconciled before use."
+      ]
+    },
+    {
+      "source_id": "the_block_xrp_etf_dashboard",
+      "source_uri": "https://www.theblock.co/data/etfs",
+      "independence_group": "the_block_etf_dashboard_unknown_underlying_universe",
+      "data_type": "spot_etf_flows_and_aum",
+      "source_data_as_of_utc": "2026-11-13T06:16:00Z",
+      "status": "research_only_universe_unspecified_in_excerpt",
+      "extracted_values": {
+        "net_flow_24h_usd": 0,
+        "total_aum_usd": 1100000000
+      },
+      "limitations": [
+        "Dashboard universe and zero-versus-missing treatment differ from issuer-file trackers."
+      ]
+    },
+    {
+      "source_id": "thexrpinvestor_xrp_etf_dashboard",
+      "source_uri": "https://thexrpinvestor.com/xrp-etf-flows",
+      "independence_group": "thexrpinvestor_mixed_product_etf_dashboard",
+      "data_type": "mixed_spot_derivative_index_income_etf_dashboard",
+      "source_data_as_of_utc": "2026-11-13",
+      "status": "research_only_not_spot_only",
+      "extracted_values": {
+        "active_products": 12,
+        "spot_products": 6,
+        "derivative_products": 4,
+        "index_products": 1,
+        "income_products": 1,
+        "total_aum_usd": 1190000000,
+        "total_xrp_in_trust": 1180000000
+      },
+      "limitations": [
+        "The dashboard mixes spot, derivative, index and income products; total AUM is not spot XRP ETF AUM."
+      ]
+    },
+    {
+      "source_id": "cryptoetf_today_xrp_and_market_context",
+      "source_uri": "https://cryptoetf.today/en/xrp-etf-flows",
+      "independence_group": "cryptoetf_today_etf_dashboard",
+      "data_type": "multi_asset_etf_flow_context",
+      "source_data_as_of_utc": "2026-11-12",
+      "status": "research_only_xrp_specific_row_not_in_retrieved_excerpt",
+      "extracted_values": {
+        "publication_time_utc": "2026-11-13T05:49:00Z",
+        "all_asset_spot_etf_net_flow_usd": -63700000
+      },
+      "limitations": [
+        "The retrieved excerpt gives all-asset flow, not XRP-specific flow."
+      ]
+    }
+  ],
+  "reconciliations": [
+    {
+      "topic": "spot_price_and_spot_depth",
+      "finding": "Kraken's public XRP/USD ticker is around $1.0326, but no synchronized, byte-complete multi-venue spot book was retrieved. The most detailed near-time order-book snapshots are perpetual books, not spot. FreeOrderBook's displayed cross-exchange prices conflict materially with Kraken and its own top-20 ask summary is internally inconsistent.",
+      "conclusion": "Spot ticker is a single-venue research observation. Spot depth remains unverified. Do not substitute perpetual depth or stale dashboard levels."
+    },
+    {
+      "topic": "perpetual_liquidity_and_positioning",
+      "finding": "Binance perpetual book aggregators show a slight bid-side skew in one snapshot, while a five-exchange perpetual dashboard shows near-balanced depth. Resting walls are transient and not evidence of intent.",
+      "conclusion": "Preserve venue scope and capture time; no executable cross-venue depth consensus."
+    },
+    {
+      "topic": "derivatives_open_interest_and_funding",
+      "finding": "Current provider OI spans roughly $613M to $2.26B. Funding ranges from slightly negative to materially positive across provider universes and capture times. CoinGlass reports USD OI down while coin-denominated OI is up; TradRadar reports long liquidations far above shorts and crowded long accounts.",
+      "conclusion": "No aggregate OI or funding average. The disagreement is likely driven by venue/contract scope, unit denomination and capture timing; all alternatives remain open."
+    },
+    {
+      "topic": "spot_etf_flows",
+      "finding": "Issuer-file trackers show net XRP reductions over Nov 9-11, while Nov 12 dashboards variously report zero or incomplete files. Product universes differ, including mixed spot, derivative, index and income products.",
+      "conclusion": "Do not average dashboards or convert holdings changes directly into end-user capital flows. Nov 12 remains unresolved."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H95-1",
+      "hypothesis": "The recent decline reflects leveraged long de-risking and liquidation pressure.",
+      "supporting_evidence": [
+        "TradRadar's reported long liquidations exceed short liquidations by a wide margin.",
+        "CoinGlass reports price and USD OI down while coin-denominated OI is up.",
+        "Kraken's last price is below its reported 24-hour open."
+      ],
+      "disconfirming_evidence": [
+        "Funding is negative at Kodexius and Swiftedge but positive at CoinGlass and TradRadar.",
+        "OI universes are not synchronized or comparable."
+      ],
+      "status": "plausible_not_established"
+    },
+    {
+      "id": "H95-2",
+      "hypothesis": "The large OI disagreement is primarily a measurement-universe and denomination effect rather than a sudden market-structure discontinuity.",
+      "supporting_evidence": [
+        "Providers include different contracts and venues; CoinGlass explicitly includes CME.",
+        "Reported totals differ substantially while the component universes differ."
+      ],
+      "disconfirming_evidence": [
+        "No common contract-by-contract raw snapshot was captured in this run."
+      ],
+      "status": "strong_measurement_alternative"
+    },
+    {
+      "id": "H95-3",
+      "hypothesis": "Spot ETF redemptions contributed to recent price weakness.",
+      "supporting_evidence": [
+        "Two issuer-file-based trackers show material net XRP reductions over overlapping Nov 5-11 windows."
+      ],
+      "disconfirming_evidence": [
+        "The data are holdings-derived, not end-user cash flows; Nov 12 is incomplete and source coverage differs.",
+        "Causality from ETF flows to spot price is not established."
+      ],
+      "status": "plausible_not_causal"
+    },
+    {
+      "id": "H95-4",
+      "hypothesis": "Perpetual bid-side depth represents durable spot demand.",
+      "supporting_evidence": [
+        "One Binance perpetual book snapshot shows 52% bid share within 1%."
+      ],
+      "disconfirming_evidence": [
+        "The data are perpetual, not spot; other aggregated perpetual depth is near balanced; resting orders can be cancelled."
+      ],
+      "status": "not_supported_as_spot_claim"
+    }
+  ],
+  "model_admission": {
+    "eligible_observations": 0,
+    "reasons": [
+      "No byte-complete raw publisher receipts were captured by this web research pass.",
+      "Kraken ticker has no source server timestamp in the retrieved response.",
+      "Spot order-book sources are unavailable, stale, or internally inconsistent.",
+      "Perpetual books cannot be relabeled as spot.",
+      "Derivatives provider universes and capture times are not synchronized.",
+      "ETF zero-versus-missing and fund-universe differences remain unresolved."
+    ]
+  }
+}

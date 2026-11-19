@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "artifact_type": "legacy_council_heuristic_quarantine",
+  "captured_on_utc_date": "2026-11-05",
+  "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+  "finding": {
+    "telemetry_module": {
+      "path": "barrot_agent/analysis/xrp_telemetry_matrix.py",
+      "git_blob_sha": "6bcf98e7b8816a8875c3b262b08d84d253e239f7",
+      "hardcoded_values": {
+        "sentiment_score": 0.94,
+        "market_price_usd": 1.185,
+        "shear_variance": 0.233
+      },
+      "reported_recommendation": "optimal accumulation alignment",
+      "writes": "COUNCIL_REVIEW.md",
+      "evidence_quality": "synthetic values; no source provenance"
+    },
+    "ingestion_module": {
+      "path": "barrot_agent/ingestion/council_ingest_node.py",
+      "git_blob_sha": "c40d4cfe7656720afa8122ec9f2246a54245bf5f",
+      "rule": "XRP sentiment >= 0.85 => MAX_ACCUMULATION_TRIGGERED",
+      "weight_multiplier": 1.15,
+      "output_path": "council_weights.json",
+      "evidence_quality": "parses synthetic markdown; no market source or forecast validation"
+    },
+    "orchestrator_bridge": {
+      "path": "barrot_agent/orchestration/orchestrator_bridge.py",
+      "git_blob_sha": "3ec603a6e2853e3ebdce16f0f317d6ab0e6c1a5e",
+      "behavior": "reads council_weights.json and logs simulated or dynamic parameter application; actual agi_orchestrator.update_weights call is commented out",
+      "risk": "misrepresents a synthetic multiplier as an applied orchestration action"
+    },
+    "upgrade_bundle": {
+      "path": "barrot_agent/tools/upgrade_bundle.py",
+      "git_blob_sha": "bf845288b57c4f43d2b085ec1cb9f9219976a1f5",
+      "behavior": "writes multiple files directly under ~/barrot, including a live-endpoint BUY/SELL telemetry module",
+      "risk": "uncontrolled overwrite of user files and unvalidated directional heuristic"
+    },
+    "root_state": {
+      "path": "council_weights.json",
+      "git_blob_sha": "4a1c33aac505f4e0004ec60c30701d1f6aa4ed66",
+      "legacy_values": {
+        "timestamp": "2026-06-15T06:52:12.933851+00:00",
+        "target_asset": "XRP",
+        "council_action": "MAX_ACCUMULATION_TRIGGERED",
+        "orchestrator_weight_multiplier": 1.15,
+        "active_stability_anchor": 0.707
+      }
+    },
+    "data_state": {
+      "path": "data/council_weights.json",
+      "git_blob_sha": "4a1c33aac505f4e0004ec60c30701d1f6aa4ed66",
+      "legacy_values": {
+        "timestamp": "2026-06-15T06:52:12.933851+00:00",
+        "target_asset": "XRP",
+        "council_action": "MAX_ACCUMULATION_TRIGGERED",
+        "orchestrator_weight_multiplier": 1.15,
+        "active_stability_anchor": 0.707
+      }
+    },
+    "unified_state": {
+      "path": "data/mmi_monetization_unified.json",
+      "git_blob_sha": "499b0d7910d7e9cd60703bd42bdda3dd9b0e33d3",
+      "legacy_values": {
+        "timestamp": "2026-06-15T06:52:12.933851+00:00",
+        "target_asset": "XRP",
+        "council_action": "MAX_ACCUMULATION_TRIGGERED",
+        "orchestrator_weight_multiplier": 1.15,
+        "active_stability_anchor": 0.707
+      }
+    }
+  },
+  "references": {
+    "code_search_default_branch_only": true,
+    "search_terms": [
+      "CouncilIngestionEngine",
+      "CouncilReportNode",
+      "apply_council_weights",
+      "xrp_telemetry_matrix import",
+      "upgrade_bundle.py",
+      "council_weights.json"
+    ],
+    "other_runtime_imports_found": false,
+    "active_workflow_reference_found": false,
+    "note": "Repository code search found module definitions and package docstrings, but no other runtime imports or active workflow references for these legacy classes/functions."
+  },
+  "corrections": [
+    "Replace hardcoded telemetry output with explicit NOT_ISSUED status and no network or file writes.",
+    "Disable synthetic MAX_ACCUMULATION_TRIGGERED and 1.15 multiplier generation.",
+    "Disable the legacy orchestrator bridge and stop reporting simulated injection as applied.",
+    "Retire the legacy Termux installer before any file writes.",
+    "Replace root, data and unified council state with LEGACY_QUARANTINED and null multiplier."
+  ],
+  "admission": {
+    "model_eligible": false,
+    "directional_forecast_issued": false,
+    "action_execution_enabled": false
+  },
+  "preservation": {
+    "original_blob_hashes_recorded": true,
+    "git_history_preserved": true,
+    "files_in_user_home_modified": false,
+    "real_money_actions": false
+  }
+}

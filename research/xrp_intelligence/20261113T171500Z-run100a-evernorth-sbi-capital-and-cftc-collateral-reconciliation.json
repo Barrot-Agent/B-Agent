@@ -1,0 +1,99 @@
+{
+  "schema_version": "barrot.xrp.capital-reconciliation.v1",
+  "captured_at_utc": "2026-11-13T17:15:00Z",
+  "source": {
+    "type": "SEC Form 424B3",
+    "date": "2026-11-09",
+    "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+  },
+  "evernorth": {
+    "closing_date": "2026-10-09",
+    "private_placement_cash": {
+      "advance_funding_usd": 214050000,
+      "advance_funding_cash_use": "Used to acquire 84,365,876 XRP; this purchase is a use of proceeds, not a second capital raise.",
+      "delayed_funding_usd": 10500000,
+      "total_private_placement_cash_usd": 224550000,
+      "rounded_reported_total_usd": 224600000
+    },
+    "in_kind_xrp": {
+      "advance_funding_xrp": 600000,
+      "delayed_funding_xrp": 200000,
+      "series_c_sponsor_arrington_xrp": 211319096.061435,
+      "contributor_related_party_larsen_lam_childrens_remainder_trust_xrp": 50000000,
+      "ripple_contribution_to_pathfinder_xrp": 126791458,
+      "total_reported_in_kind_xrp": 388910554,
+      "reconciliation_note": "The five disclosed components sum to 388,910,554 XRP."
+    },
+    "cash_and_assets_at_close": {
+      "gross_cash_proceeds_usd": 272600000,
+      "gross_cash_components": "Approximately $224.6M private-placement cash plus approximately $48.0M SPAC trust-account release, before transaction expenses.",
+      "fees_reduce_available_cash": true,
+      "cash_funded_xrp_purchased": 84365876,
+      "in_kind_xrp": 388910554,
+      "approximate_xrp_held_as_of_2026_10_09": 473000000,
+      "reconciliation_note": "84,365,876 cash-purchased XRP plus 388,910,554 in-kind XRP equals approximately 473.276M XRP, consistent with the filing's approximately 473M holding statement."
+    },
+    "debt": {
+      "convertible_senior_pik_notes_principal_usd": 30000000,
+      "coupon_pik_percent": 4,
+      "maturity_year": 2031,
+      "net_cash_proceeds_after_1m_advisor_fee_usd": 29000000,
+      "classification": "Debt, not equity. Holder conversion/settlement rights create future cash-liquidity and dilution considerations.",
+      "company_facility": "Separate related-party facility; the filing reports $9.7M borrowed under the $10M Company Facility as of 2026-10-07. Do not combine with equity proceeds."
+    },
+    "eloc": {
+      "counterparty": "CF Principal Investments LLC (Cantor affiliate)",
+      "maximum_new_shares": 5218935,
+      "purchase_price": "97% of applicable VWAP, subject to terms",
+      "volume_cap_percent": 20,
+      "beneficial_ownership_cap_percent": 4.99,
+      "issuer_obligation": "Evernorth controls timing and amount and is under no obligation to sell shares.",
+      "upfront_commitment_fee_usd": 521893.5,
+      "proceeds_received_as_of_2026_11_09_usd": 0,
+      "classification": "Conditional equity capacity, not capital received."
+    },
+    "secondary_resales": {
+      "registered_class_a_shares": 73688162,
+      "issuer_proceeds_from_securityholder_resales_usd": 0,
+      "sponsor_warrants": 239653,
+      "warrant_exercise_price_usd": 11.5,
+      "potential_issuer_proceeds_if_all_sponsor_warrants_exercised_usd": 2756009.5
+    },
+    "ownership_and_relationships": {
+      "sbi_controlled_entities": [
+        "SBI Venture Fund 2023A Investment LPS",
+        "SBI Venture Fund 2023B Investment LPS",
+        "SBI PE Holdings Co., Ltd.",
+        "SBI Holdings USA, Inc."
+      ],
+      "sbi_group_voting_power_after_close_percent": 39.9,
+      "sbi_exact_cash_or_xrp_subscription_allocation": "Not disclosed in the cited prospectus; do not infer 39.9% of cash raised or XRP contributed.",
+      "sponsor_arrington_voting_cap_percent": 19.9,
+      "ripple_contributor_group_ownership_cap_percent": 9.9,
+      "coinbase_principal_market_designation": "Evernorth selected Coinbase as the principal market for XRP for financial-reporting purposes. This does not establish exclusivity as execution venue, custodian or trading counterparty."
+    }
+  },
+  "cftc_letter_26_05": {
+    "source": "CFTC Staff Letter 26-05, February 6, 2026",
+    "url": "https://www.cftc.gov/csl/26-05/download",
+    "type": "conditional staff no-action position, not a generally applicable rule or automatic asset approval",
+    "relevant_conditions": {
+      "dco_acceptance": "For futures customer and cleared-swaps customer collateral, the digital asset must be accepted by a registered DCO and valuation/haircuts follow that DCO.",
+      "thirty_seven_customer_path": "For 30.7 customer accounts, the letter includes a non-security digital asset that is the underlying commodity of a futures contract listed on a CFTC-registered DCM, subject to the letter's conditions.",
+      "no_dco_or_qualifying_foreign_clearing_acceptance": "At least a 20% haircut applies to non-security digital assets other than payment stablecoins, subject to the narrow same-asset contract exception.",
+      "non_btc_eth_stablecoin_policy": "Before accepting other non-security digital assets, the FCM must file revised risk-management policies with MPD.",
+      "notice": "FCM must file notice of intent and intended commencement date before relying on the no-action position.",
+      "narrow_same_asset_exception": "The exception applies only to a customer position in a contract both based on and denominated in that digital asset, and only to the extent collateral offsets a deficit in that same cleared contract."
+    },
+    "xrp_status": "No XRP-specific FCM notice, actual XRP customer-margin posting or CME DCO acceptance was verified. CME XRP futures are USD cash-settled, so do not assume the same-asset-denominated exception applies."
+  },
+  "corrections": [
+    "The $214.05M cash-funded XRP purchase is not an additional capital raise.",
+    "The $10.5M delayed cash subscription is distinct from the advance funding.",
+    "The $388.910554M XRP in-kind total includes the disclosed advance, delayed, Series C, contributor-related-party and Ripple contribution components.",
+    "The $30M PIK note is debt; the filing's later financial-statement note reports approximately $29M net cash after a $1M advisor fee.",
+    "The $80M-style ELOC headline is conditional capacity; the filing says zero proceeds had been received as of November 9.",
+    "SBI's 39.9% post-close voting power is not evidence that SBI supplied 39.9% of the cash or XRP."
+  ],
+  "model_eligibility": "Research-only. This filing is not a market feature and must be admitted through a separately timestamped raw-source receipt before use in the point-in-time feature store."
+}

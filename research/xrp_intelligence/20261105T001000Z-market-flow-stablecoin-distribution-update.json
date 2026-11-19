@@ -1,0 +1,674 @@
+{
+  "schema_version": 1,
+  "artifact_id": "xrp_market_flow_and_stablecoin_distribution_update_20261105T001000Z",
+  "artifact_type": "xrp_market_structure_etf_flow_and_stablecoin_distribution_update",
+  "captured_at_utc": "2026-11-05T00:10:00Z",
+  "data_cutoff_utc": "2026-11-05T00:10:00Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "branch": "research/xrp-evidence-archive-20261104",
+    "review_pr": 1643,
+    "reviewed_head_sha": "1f4a47692352b12dfd982d241e0606814c7f350f",
+    "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
+  },
+  "preservation": {
+    "append_only": true,
+    "prior_artifacts_modified": false,
+    "raw_source_bytes_archived": false,
+    "immutable_raw_receipts_created": false,
+    "raw_content_sha256_values_available": false,
+    "forecast_issued": false,
+    "real_money_actions": false
+  },
+  "prior_relationship_map": [
+    "research/xrp_intelligence/20261104T231520Z-sbi-jpysc-erebor-institutional-rail-update.json",
+    "research/xrp_intelligence/20261104T230818Z-binance-circle-private-placement-close-verification.json",
+    "research/xrp_intelligence/20261104T230254Z-circle-sec-ripple-occ-primary-source-correction.json"
+  ],
+  "source_registry": [
+    {
+      "id": "kraken_xrpusd_ticker_20261105",
+      "publisher": "Kraken",
+      "authority": "exchange public market-data API",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "event_date": "2026-11-05",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "kraken_exchange",
+      "raw_capture_status": "web_open_JSON_rendered; original response bytes not retained",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Single-venue XRP/USD last trade, top bid/ask, 24-hour volume, VWAP, high, low and open."
+      ],
+      "limitations": [
+        "Ticker response does not expose a capture timestamp in the returned payload.",
+        "Top-of-book values are not full order-book depth or executable liquidity at size.",
+        "No byte-complete source receipt or SHA-256 hash was captured."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "beincrypto_xrp_wallet_etf_premium_20261104",
+      "publisher": "BeInCrypto",
+      "authority": "secondary reporting citing Santiment, CryptoQuant and SoSoValue",
+      "url": "https://beincrypto.com/xrp-millionaire-wallets-2026-high-price-rally/",
+      "event_date": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "beincrypto_editorial_relay",
+      "raw_capture_status": "web_rendered_HTML_extract_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Santiment-reported count of 2,147 addresses holding at least 1 million XRP, up 28 over 10 days and 18 over three days.",
+        "Reported 7,934 new XRPL wallets on November 1, described as the sixth-highest daily total of 2026.",
+        "Reported October XRP ETF net inflows of USD 18.83 million versus USD 121.40 million in September; November 2 outflow USD 529,510; November 3 zero net flow.",
+        "Reported cumulative XRP ETF net inflows USD 1.81 billion and net assets USD 1.46 billion.",
+        "Reported XRP Coinbase Premium Index near -0.16 percent."
+      ],
+      "limitations": [
+        "ETF flow values are relayed from SoSoValue and are not an independent second dataset.",
+        "Wallet counts are address counts, not verified unique beneficial owners or net purchases.",
+        "Coinbase premium is a relative venue-price measure, not a direct capital-flow measurement.",
+        "No raw bytes or SHA-256 receipt were captured."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "santiment_xrp_1m_wallet_chart",
+      "publisher": "Santiment / Sanbase",
+      "authority": "on-chain analytics chart provider",
+      "url": "https://app.santiment.net/charts/xrp-number-of-1m-wallets-32004",
+      "event_date": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "santiment_onchain_metric",
+      "raw_capture_status": "public_chart_page_rendered; numeric point not independently exported",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Identifies the XRP 1M-plus wallet metric and its balance-category definition."
+      ],
+      "limitations": [
+        "The page did not expose a byte-complete downloadable data series in this capture.",
+        "The 2,147 value is attributed to Santiment by BeInCrypto, not independently re-read from a timestamped API response."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "cryptoquant_xrp_coinbase_premium_20261102",
+      "publisher": "CryptoQuant",
+      "authority": "on-chain and exchange-market analytics provider",
+      "url": "https://cryptoquant.com/insights/quicktake/6ae818e44d08081b8394c119-XRP-Coinbase-Premium-Index-Hits-an-8-Month-Low",
+      "event_date": "2026-11-02",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "cryptoquant_market_metrics",
+      "raw_capture_status": "web_rendered_HTML_extract_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Coinbase Premium Index moved to approximately -0.16 percent, with Coinbase XRP prices below Binance XRP prices."
+      ],
+      "limitations": [
+        "A relative Coinbase/Binance price premium is not a direct measure of net U.S. capital flows.",
+        "The source itself cautions that the index alone is not definitive evidence of continued downside.",
+        "No raw bytes or SHA-256 receipt were captured."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "sosovalue_xrp_spot_etf_dashboard",
+      "publisher": "SoSoValue",
+      "authority": "ETF flow and asset dashboard",
+      "url": "https://sosovalue.com/assets/etf/us-xrp-spot",
+      "event_date": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "sosovalue_underlying_etf_data",
+      "raw_capture_status": "HTTP 403 Forbidden during direct retrieval; figures available only through secondary reports",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Underlying dashboard cited by BeInCrypto, AMBCrypto and 24/7 Wall St for XRP ETF net-flow and net-asset figures."
+      ],
+      "limitations": [
+        "Direct dashboard values could not be independently retrieved in this run.",
+        "Secondary articles citing the same SoSoValue dataset are not independent confirmations."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "wallstreet_xrp_etf_first_year_20261102",
+      "publisher": "24/7 Wall St",
+      "authority": "secondary financial reporting citing SoSoValue",
+      "url": "https://247wallst.com/investing/cryptocurrency/2026/11/02/xrp-etfs-mark-their-first-year-this-month-have-they-delivered-what-xrp-holders-expected/",
+      "event_date": "2026-11-02",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "sosovalue_underlying_etf_data",
+      "raw_capture_status": "web_rendered_HTML_extract_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "As of October 30, reported cumulative XRP ETF net inflows USD 1.81 billion and net assets USD 1.42 billion.",
+        "Reported net assets peaked near USD 1.70 billion on October 6.",
+        "Reported weekly inflows USD 4.3 million through October 30, October 29 inflow USD 8.4 million and October 26 outflow USD 3.6 million."
+      ],
+      "limitations": [
+        "Underlying flow dataset is SoSoValue, also cited by other publishers.",
+        "Net assets are mark-to-market AUM and are not cumulative net capital inflows.",
+        "The USD 1.42 billion net-asset figure is dated October 30, earlier than BeInCrypto's November 4 USD 1.46 billion figure."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "ambcrypto_macro_etf_update_20261104",
+      "publisher": "AMBCrypto",
+      "authority": "secondary reporting citing Farside Investors, SoSoValue and macro sources",
+      "url": "https://ambcrypto.com/bitcoin-and-ethereum-etfs-shed-1-8b-why-investors-are-pulling-back/",
+      "event_date": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "ambcrypto_editorial_relay",
+      "raw_capture_status": "web_rendered_HTML_extract_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Reported XRP ETF net outflow USD 529,510 on November 2.",
+        "Reported Bitcoin ETF net outflows USD 1.16 billion from October 30 to November 3 and Ethereum ETF net outflows USD 656.4 million from October 26 to November 3.",
+        "Reported the Federal Reserve held its target range at 3.75 to 4.00 percent and noted the November 3 U.S. midterm election and Binance security incident as macro context."
+      ],
+      "limitations": [
+        "XRP ETF flow is relayed from SoSoValue and duplicates the underlying dataset in other reports.",
+        "Macro context is not evidence of a causal XRP price effect.",
+        "No raw bytes or SHA-256 receipt were captured."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "coinbase_rlusd_listing_20261028",
+      "publisher": "Coinbase",
+      "authority": "official exchange/product announcement",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "event_date": "2026-10-28",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "coinbase_primary",
+      "raw_capture_status": "web_rendered_HTML_extract_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "RLUSD added to Coinbase Prime, Coinbase Exchange and the Coinbase app in supported regions.",
+        "At launch, RLUSD deposits and withdrawals are supported across XRPL, Base and Ethereum.",
+        "Customers can convert USD into RLUSD at 1:1.",
+        "Coinbase stated Global Exchange availability and use of RLUSD as collateral would follow; this was not stated as live at launch.",
+        "Ripple said it would provide liquidity on Base."
+      ],
+      "limitations": [
+        "This is a product availability announcement, not evidence of XRP purchases or XRP bridge volume.",
+        "Collateral availability was described as a future step, not a live feature at launch.",
+        "No raw bytes or SHA-256 receipt were captured."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "coinbase_q3_2026_highlights",
+      "publisher": "Coinbase",
+      "authority": "official company Q3 2026 highlights graphic in Coinbase company blog",
+      "url": "https://www.coinbase.com/blog/landing/company",
+      "event_date": "2026-10-29",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "coinbase_primary",
+      "raw_capture_status": "official blog listing and Q3 highlights image rendered",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Average USDC held in Coinbase products increased 49 percent year over year.",
+        "Coinbase Crypto Trading Volume Market Share was reported at 10.7 percent versus 5.6 percent in Q3 2025.",
+        "The graphic also reported assets on platform at 12.5 percent of total crypto market capitalization, average daily loan book balance up 74 percent year over year and paid Coinbase One subscribers up 24 percent."
+      ],
+      "limitations": [
+        "Company-reported metrics; the USDC holdings figure does not by itself establish Circle revenue or the exact revenue-sharing amount.",
+        "No raw image bytes or SHA-256 receipt were captured."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "ripple_sbi_rlusd_japan_launch_20260624",
+      "publisher": "Ripple",
+      "authority": "official issuer and partner announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "event_date": "2026-06-24",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "ripple_primary",
+      "raw_capture_status": "web_rendered_HTML_extract_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Ripple and SBI Holdings announced RLUSD availability in Japan through SBI VC Trade after JFSA approval under Japan's Payment Services Act.",
+        "Ripple's announcement described RLUSD market capitalization as USD 1.7 billion at that date."
+      ],
+      "limitations": [
+        "The issuer announcement is not a measure of XRP bridge usage, XRP collateral or XRP purchases.",
+        "The USD 1.7 billion capitalization is a dated issuer statement from June 24, not a current figure."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "reuters_coinbase_rlusd_listing_20261028",
+      "publisher": "Reuters",
+      "authority": "independent news reporting",
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "event_date": "2026-10-28",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "reuters_secondary",
+      "raw_capture_status": "web_rendered_HTML_extract_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Reported Coinbase's RLUSD listing across retail and institutional platforms.",
+        "Reported RLUSD market capitalization above USD 2.5 billion, attributing the figure to CoinGecko.",
+        "Described Coinbase's historical USDC flagship relationship and its broader stablecoin listings."
+      ],
+      "limitations": [
+        "The RLUSD capitalization figure is attributed to CoinGecko, not independently measured by Reuters.",
+        "The listing report does not establish an equity relationship between Coinbase and Ripple.",
+        "No raw bytes or SHA-256 receipt were captured."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "cryptoquant_binance_hack_flows_20261104",
+      "publisher": "CryptoQuant",
+      "authority": "on-chain and exchange-flow analytics research",
+      "url": "https://cryptoquant.com/insights/research",
+      "event_date": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "cryptoquant_market_metrics",
+      "raw_capture_status": "web search result containing dated weekly-report extract; full report bytes not archived",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "CryptoQuant reported approximately USD 6.3 billion of transfers out of Binance hot wallets in 19 minutes during the October 29 incident, with roughly USD 3 billion frozen within hours.",
+        "It reported later November 1-2 net outflows of 25,793 BTC, 273,094 ETH, USD 3.75 billion USDT on Ethereum and USD 1.33 billion USDC.",
+        "It reported ETH, USDT and USDC flows returning to net inflows by November 3 while BTC still had modest net outflows."
+      ],
+      "limitations": [
+        "These are CryptoQuant measurements and definitions; they are not directly comparable to Binance's separately reported net customer withdrawal figure.",
+        "The reported outflows are not XRP-specific.",
+        "No raw bytes or SHA-256 receipt were captured."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "crypto_news_xrp_rebound_20261104",
+      "publisher": "crypto.news",
+      "authority": "secondary market reporting and aggregated price widget",
+      "url": "https://crypto.news/xrp-price-is-recovering-towards-1-30-what-would-make-the-rebound-last/",
+      "event_date": "2026-11-04",
+      "retrieved_at_utc": "2026-11-05T00:10:00Z",
+      "source_independence_group": "crypto_news_secondary",
+      "raw_capture_status": "web_rendered_HTML_extract_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "Displayed XRP near USD 1.31 and a 24-hour change near +2.15 percent at the article capture context."
+      ],
+      "limitations": [
+        "The price widget differs from the Kraken ticker's last-versus-open comparison; venue, provider and capture times are not synchronized.",
+        "No raw bytes or SHA-256 receipt were captured."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "source_independence_groups": [
+    {
+      "id": "kraken_exchange",
+      "members": [
+        "kraken_xrpusd_ticker_20261105"
+      ],
+      "treatment": "Single venue. Not a consolidated market or full-depth liquidity measure."
+    },
+    {
+      "id": "santiment_onchain_metric",
+      "members": [
+        "santiment_xrp_1m_wallet_chart",
+        "beincrypto_xrp_wallet_etf_premium_20261104"
+      ],
+      "treatment": "BeInCrypto relays Santiment's address count; the two references are not independent confirmations of the 2,147 value."
+    },
+    {
+      "id": "cryptoquant_market_metrics",
+      "members": [
+        "cryptoquant_xrp_coinbase_premium_20261102",
+        "cryptoquant_binance_hack_flows_20261104"
+      ],
+      "treatment": "Same analytics provider. Different metrics, not independent provider confirmation."
+    },
+    {
+      "id": "sosovalue_underlying_etf_data",
+      "members": [
+        "sosovalue_xrp_spot_etf_dashboard",
+        "beincrypto_xrp_wallet_etf_premium_20261104",
+        "wallstreet_xrp_etf_first_year_20261102",
+        "ambcrypto_macro_etf_update_20261104"
+      ],
+      "treatment": "Multiple publishers relay the same SoSoValue ETF dataset. Treat as one underlying data source; direct SoSoValue access returned HTTP 403."
+    },
+    {
+      "id": "coinbase_primary",
+      "members": [
+        "coinbase_rlusd_listing_20261028",
+        "coinbase_q3_2026_highlights"
+      ],
+      "treatment": "Official Coinbase disclosures; issuer-side evidence, not independent confirmation of their own metrics."
+    },
+    {
+      "id": "ripple_primary",
+      "members": [
+        "ripple_sbi_rlusd_japan_launch_20260624"
+      ],
+      "treatment": "Official Ripple issuer/partner announcement."
+    },
+    {
+      "id": "reuters_secondary",
+      "members": [
+        "reuters_coinbase_rlusd_listing_20261028"
+      ],
+      "treatment": "Independent newsroom report; its RLUSD capitalization figure is attributed to CoinGecko."
+    },
+    {
+      "id": "crypto_news_secondary",
+      "members": [
+        "crypto_news_xrp_rebound_20261104"
+      ],
+      "treatment": "Aggregated market widget; not synchronized with Kraken's direct ticker."
+    }
+  ],
+  "dated_metrics": {
+    "kraken_xrpusd": {
+      "observed_at_utc": "2026-11-05T00:10:00Z",
+      "last_usd": 1.30325,
+      "bid_usd": 1.30323,
+      "ask_usd": 1.30324,
+      "spread_usd": 0.00001,
+      "spread_bps": 0.076732,
+      "volume_24h_xrp": 41021971.39546031,
+      "vwap_24h_usd": 1.29378421,
+      "high_24h_usd": 1.34,
+      "low_24h_usd": 1.24016,
+      "open_24h_usd": 1.3041,
+      "last_vs_open_pct": -0.065179,
+      "last_vs_vwap_pct": 0.731636,
+      "measurement_type": "Kraken XRP/USD ticker snapshot; top-of-book only; retrieval time is not an exchange-provided event timestamp"
+    },
+    "crypto_news_price_widget": {
+      "article_date": "2026-11-04",
+      "displayed_price_usd": 1.31,
+      "displayed_24h_change_pct": 2.15,
+      "treatment": "Separate provider/time observation; do not average with Kraken ticker."
+    },
+    "xrp_large_wallets": {
+      "as_of": "2026-11-04T22:42:00Z",
+      "addresses_holding_at_least_1m_xrp": 2147,
+      "change_10d_addresses": 28,
+      "change_3d_addresses": 18,
+      "source": "Santiment metric relayed by BeInCrypto",
+      "measurement_type": "address count, not beneficial-owner count or verified net accumulation"
+    },
+    "xrp_new_wallets": {
+      "event_date": "2026-11-01",
+      "new_wallets": 7934,
+      "reported_rank_in_2026": 6,
+      "source": "BeInCrypto citing XRPL network activity",
+      "measurement_type": "new ledger addresses; not verified unique people or economic users"
+    },
+    "xrp_coinbase_premium": {
+      "as_of": "2026-11-02",
+      "index_pct": -0.16,
+      "source": "CryptoQuant",
+      "measurement_type": "relative Coinbase/Binance price premium; not direct net capital flow"
+    },
+    "xrp_spot_etf_flows_beincrypto": {
+      "october_2026_net_inflows_usd": 18830000,
+      "september_2026_net_inflows_usd": 121400000,
+      "november_2_2026_net_flow_usd": -529510,
+      "november_3_2026_net_flow_usd": 0,
+      "cumulative_net_inflows_usd": 1810000000,
+      "net_assets_usd": 1460000000,
+      "as_of": "2026-11-04",
+      "underlying_provider": "SoSoValue",
+      "measurement_type": "secondary report of ETF net flows and mark-to-market net assets"
+    },
+    "xrp_spot_etf_assets_247wallst": {
+      "cumulative_net_inflows_usd": 1810000000,
+      "net_assets_usd": 1420000000,
+      "net_assets_as_of": "2026-10-30",
+      "peak_net_assets_usd": 1700000000,
+      "peak_net_assets_date": "2026-10-06",
+      "week_net_inflows_to_2026_10_30_usd": 4300000,
+      "measurement_type": "dated secondary report citing SoSoValue; net assets are not cumulative net flows"
+    },
+    "coinbase_q3_2026": {
+      "average_usdc_held_in_coinbase_products_yoy_pct": 49,
+      "coinbase_crypto_trading_volume_market_share_pct": 10.7,
+      "comparator_q3_2025_market_share_pct": 5.6,
+      "assets_on_platform_share_of_total_crypto_market_cap_pct": 12.5,
+      "average_daily_loan_book_balance_yoy_pct": 74,
+      "paid_coinbase_one_subscribers_yoy_pct": 24,
+      "source": "Coinbase Q3 2026 highlights graphic dated 2026-10-29",
+      "measurement_type": "company-reported operating metrics"
+    },
+    "coinbase_rlusd_listing": {
+      "announcement_date": "2026-10-28",
+      "products": [
+        "Coinbase Prime",
+        "Coinbase Exchange",
+        "Coinbase app"
+      ],
+      "supported_networks_at_launch": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "usd_conversion_ratio": "1:1",
+      "global_exchange_collateral_status": "ANNOUNCED_FUTURE_AVAILABILITY_NOT_LIVE_AT_LAUNCH",
+      "source": "Coinbase official announcement"
+    },
+    "ripple_sbi_rlusd_japan": {
+      "launch_date": "2026-06-24",
+      "distributor": "SBI VC Trade",
+      "regulatory_basis": "JFSA approval under Japan's Payment Services Act",
+      "market_cap_usd_as_reported_by_ripple_on_launch": 1700000000,
+      "source": "Ripple official announcement",
+      "measurement_type": "dated issuer statement"
+    },
+    "reuters_rlusd_market_cap": {
+      "article_date": "2026-10-28",
+      "market_cap_usd_gt": 2500000000,
+      "underlying_provider": "CoinGecko",
+      "source": "Reuters",
+      "measurement_type": "third-party market capitalization estimate reported by Reuters"
+    },
+    "binance_security_incident_cryptoquant": {
+      "incident_date": "2026-10-29",
+      "gross_hot_wallet_transfers_out_usd_approx": 6300000000,
+      "period_minutes": 19,
+      "value_frozen_usd_approx": 3000000000,
+      "nov1_2_net_outflows_btc": 25793,
+      "nov1_2_net_outflows_eth": 273094,
+      "nov1_2_net_outflows_usdt_ethereum_usd": 3750000000,
+      "nov1_2_net_outflows_usdc_usd": 1330000000,
+      "nov3_flow_direction": "ETH_USDT_USDC_NET_INFLOW; BTC_MODEST_NET_OUTFLOW",
+      "xrp_specific_flow_established": false,
+      "source": "CryptoQuant weekly report dated 2026-11-04",
+      "measurement_type": "provider-reported on-chain exchange flows; gross incident transfers and later customer net flows are separate series"
+    },
+    "macro_context": {
+      "fed_target_range_pct": [
+        3.75,
+        4
+      ],
+      "reported_fed_decision_date": "2026-10-28",
+      "reported_us_midterm_election_date": "2026-11-03",
+      "reported_usd_context": "modest recovery",
+      "source": "AMBCrypto secondary report",
+      "causal_xrp_effect_established": false
+    }
+  },
+  "relationship_graph": [
+    {
+      "from": "Coinbase",
+      "to": "Ripple / RLUSD",
+      "relationship": "Listed RLUSD on Coinbase Prime, Coinbase Exchange and Coinbase app in supported regions beginning 2026-10-28; supports deposits and withdrawals on XRPL, Base and Ethereum.",
+      "status": "OFFICIAL_PRODUCT_DISTRIBUTION_ANNOUNCEMENT",
+      "evidence": [
+        "coinbase_rlusd_listing_20261028",
+        "reuters_coinbase_rlusd_listing_20261028"
+      ],
+      "xrp_implication": "Distribution of RLUSD is not evidence of XRP purchases, XRP bridge volume or XRP collateral. RLUSD is multi-chain."
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD collateral",
+      "relationship": "Coinbase stated that Global Exchange availability, including RLUSD collateral use, would follow after the initial launch.",
+      "status": "FUTURE_AVAILABILITY_ANNOUNCED_NOT_LIVE_AT_LAUNCH",
+      "evidence": [
+        "coinbase_rlusd_listing_20261028"
+      ],
+      "xrp_implication": "Do not count RLUSD collateral as live XRP collateral or current XRP demand."
+    },
+    {
+      "from": "Coinbase",
+      "to": "USDC / Circle",
+      "relationship": "Coinbase's Q3 2026 highlights reported average USDC held in Coinbase products up 49 percent year over year.",
+      "status": "COINBASE_REPORTED_USDC_DISTRIBUTION_METRIC",
+      "evidence": [
+        "coinbase_q3_2026_highlights"
+      ],
+      "xrp_implication": "USDC remained economically significant on Coinbase while RLUSD was added; this is coexistence, not evidence that RLUSD displaced USDC."
+    },
+    {
+      "from": "Ripple",
+      "to": "SBI Holdings / SBI VC Trade",
+      "relationship": "Ripple and SBI Group announced RLUSD availability in Japan through SBI VC Trade after JFSA approval.",
+      "status": "OFFICIAL_ISSUER_AND_DISTRIBUTOR_ANNOUNCEMENT",
+      "evidence": [
+        "ripple_sbi_rlusd_japan_launch_20260624"
+      ],
+      "xrp_implication": "Stablecoin distribution is established; XRP bridge usage, collateral and purchase volumes remain unmeasured."
+    },
+    {
+      "from": "RLUSD",
+      "to": "XRPL / Base / Ethereum",
+      "relationship": "Coinbase supports RLUSD deposits and withdrawals across all three networks at launch; Ripple said it would provide liquidity on Base.",
+      "status": "MULTI_CHAIN_PRODUCT_SUPPORT",
+      "evidence": [
+        "coinbase_rlusd_listing_20261028"
+      ],
+      "xrp_implication": "RLUSD can be transferred on Base or Ethereum without establishing XRP use. XRPL activity must be measured separately from native XRP demand."
+    },
+    {
+      "from": "Binance",
+      "to": "XRP market liquidity",
+      "relationship": "CryptoQuant reported a large October 29 exchange security incident and subsequent multi-asset flows.",
+      "status": "EXCHANGE_SPECIFIC_INCIDENT; NO_XRP_SPECIFIC_FLOW_ESTABLISHED",
+      "evidence": [
+        "cryptoquant_binance_hack_flows_20261104"
+      ],
+      "xrp_implication": "Potential cross-market confidence and liquidity shock; no XRP-specific withdrawal or forced-sale quantity is established."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1_LARGE_HOLDER_ACCUMULATION_AND_POSITIVE_CUMULATIVE_ETF_DEMAND",
+      "statement": "Large-wallet address growth, new XRPL addresses and positive cumulative ETF net inflows may indicate persistent longer-horizon demand.",
+      "evidence_for": [
+        "Santiment metric relayed by BeInCrypto reached 2,147 addresses holding at least 1 million XRP.",
+        "Reported cumulative XRP ETF net inflows remained near USD 1.81 billion.",
+        "Kraken last price was above its reported 24-hour VWAP at capture."
+      ],
+      "evidence_against": [
+        "October ETF net inflows slowed materially versus September.",
+        "November 2 showed an outflow and November 3 zero net flow.",
+        "Wallet counts do not prove beneficial-owner accumulation or net capital purchases."
+      ],
+      "status": "PLAUSIBLE_BUT_UNCONFIRMED"
+    },
+    {
+      "id": "H2_WEAK_US_RELATIVE_DEMAND_AND_FLOW_DECELERATION",
+      "statement": "Negative Coinbase premium and slower ETF inflows may indicate weaker marginal U.S. demand even while cumulative ETF inflows remain positive.",
+      "evidence_for": [
+        "CryptoQuant reported Coinbase Premium near -0.16 percent.",
+        "BeInCrypto reported October ETF net inflows USD 18.83 million versus September USD 121.40 million.",
+        "BeInCrypto reported a November 2 outflow and zero net flow November 3.",
+        "24/7 Wall St reported XRP below its 50-day and 200-day averages as of November 2."
+      ],
+      "evidence_against": [
+        "Cumulative ETF net inflows remain positive.",
+        "The November 4 price snapshot was near USD 1.30 and large-wallet address counts increased."
+      ],
+      "status": "PLAUSIBLE_COUNTERHYPOTHESIS"
+    },
+    {
+      "id": "H3_RLUSD_DISTRIBUTION_EXPANDS_RAILS_WITHOUT_AUTOMATIC_XRP_DEMAND",
+      "statement": "Coinbase and SBI distribution can expand RLUSD access, but RLUSD's multi-chain support and stablecoin settlement may not create proportional XRP demand.",
+      "evidence_for": [
+        "Coinbase supports RLUSD on XRPL, Base and Ethereum.",
+        "Coinbase said Global Exchange collateral availability would follow, not that it was live at launch.",
+        "SBI VC Trade offers RLUSD in Japan; no XRP bridge volumes are disclosed."
+      ],
+      "evidence_against": [
+        "RLUSD activity on XRPL may create some native XRP fee, liquidity or bridge demand where XRP is actually used."
+      ],
+      "status": "DISTRIBUTION_CONFIRMED; XRP_DEMAND_MAGNITUDE_UNMEASURED"
+    },
+    {
+      "id": "H4_BINANCE_INCIDENT_IS_IDIOSYNCRATIC_RATHER_THAN_SYSTEMIC",
+      "statement": "The Binance incident may be largely exchange-specific if withdrawals normalize and other assets return to net inflows, limiting broader XRP spillover.",
+      "evidence_for": [
+        "CryptoQuant reported ETH, USDT and USDC flows returned to net inflows by November 3.",
+        "No XRP-specific Binance withdrawal amount was established."
+      ],
+      "evidence_against": [
+        "The incident produced large gross transfers, freezes and subsequent customer outflows across major assets.",
+        "Exchange confidence shocks can affect cross-venue liquidity and risk appetite."
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "H5_MARKET_SNAPSHOT_DISAGREEMENT_IS_PROVIDER_AND_TIME_EFFECT",
+      "statement": "The apparent difference between Kraken's nearly flat last-versus-open snapshot and crypto.news' +2.15 percent widget may be explained by different venues, baselines or capture times rather than a true contradiction.",
+      "evidence_for": [
+        "Kraken API returned last USD 1.30325 and 24-hour open USD 1.30410.",
+        "crypto.news displayed USD 1.31 and +2.15 percent in its article widget."
+      ],
+      "evidence_against": [
+        "No synchronized timestamped multi-venue capture was obtained to resolve the difference."
+      ],
+      "status": "UNRESOLVED_PROVIDER_TIME_DISAGREEMENT"
+    }
+  ],
+  "disconfirming_evidence": [
+    "An address holding at least 1 million XRP is not a verified unique investor; exchange, custodian and omnibus wallets can distort address counts.",
+    "New XRPL addresses do not necessarily represent new people, active users, economic transfers or XRP demand.",
+    "Coinbase Premium is a relative Coinbase/Binance price measure, not a direct U.S. net capital-flow series.",
+    "ETF cumulative net inflows, daily net flows and mark-to-market net assets are different measurements. The USD 1.42B October 30 and USD 1.46B November 4 net-asset values are dated observations, not a contradiction to be averaged.",
+    "Coinbase's RLUSD launch supports XRPL, Base and Ethereum. Multi-chain RLUSD distribution does not automatically require XRP as a bridge asset.",
+    "Coinbase stated RLUSD collateral availability on Global Exchange would follow; it was not described as live at initial launch.",
+    "SBI VC Trade's RLUSD distribution does not establish XRP collateral, XRP purchases or XRP settlement volumes.",
+    "Kraken's narrow top-of-book spread does not establish executable depth at institutional order sizes or consolidated liquidity.",
+    "CryptoQuant's Binance incident transfers and later asset-specific net outflows are not XRP-specific. They must not be converted into an XRP flow feature.",
+    "The Kraken ticker and crypto.news price widget were not synchronized; do not average their price or 24-hour change.",
+    "No raw response bytes, SHA-256 receipts or independent timestamp anchors were captured for this web research."
+  ],
+  "data_quality": {
+    "raw_source_bytes_captured": false,
+    "raw_source_hashes_available": false,
+    "source_independence": "SoSoValue is the common underlying ETF dataset in multiple secondary reports; Santiment is the underlying wallet metric; CryptoQuant supplies the Coinbase premium and Binance incident analysis; Coinbase, Ripple and Kraken are primary issuer/exchange sources for their own statements and ticker.",
+    "timestamp_quality": "Publication dates and displayed article times are preserved. Kraken retrieval time is recorded, but its returned ticker payload has no exchange event timestamp. No independent timestamp anchor was used.",
+    "direct_etf_source_access": "SoSoValue returned HTTP 403; ETF numbers remain secondary-source relays.",
+    "order_book_depth": "Not captured. Only Kraken top bid/ask was observed.",
+    "derivatives": "No synchronized XRP futures open-interest, funding or liquidation series captured in this update.",
+    "exchange_flows": "No XRP-specific exchange-flow series captured. Binance incident data is multi-asset and provider-reported.",
+    "model_eligible": false,
+    "model_eligibility_reason": "No byte-complete raw-source receipts, SHA-256 hashes or independent timestamp anchors; ETF data is relayed from one inaccessible underlying dashboard; no synchronized multi-venue depth, derivatives or XRP-specific exchange-flow series; no new out-of-sample evaluation."
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "The evidence is mixed and not a complete point-in-time XRP feature set. No directional forecast is justified by this research snapshot."
+  },
+  "next_actions": [
+    "Capture synchronized Kraken, Coinbase and Binance XRP spot ticker and depth snapshots with exchange timestamps, sequence identifiers, raw response bytes and SHA-256 receipts.",
+    "Obtain direct timestamped XRP ETF daily-flow data from SoSoValue or an independent source; retain daily net flows, cumulative net flows and mark-to-market net assets as separate fields.",
+    "Obtain a timestamped CryptoQuant or exchange-native Coinbase Premium series and compare it with synchronized spot prices and volumes.",
+    "Track Santiment's 1M-plus XRP address metric as an address series, and test it against exchange/custodian clustering and independent on-chain balance cohorts.",
+    "Separate RLUSD supply and transfers by XRPL, Base and Ethereum; measure native XRP fee use, bridge volume, liquidity inventory and collateral separately.",
+    "Verify when Coinbase Global Exchange actually enables RLUSD collateral; until then classify the feature as announced future availability.",
+    "Reconcile CryptoQuant's Binance gross incident transfers, Binance's reported net customer withdrawals and later asset-specific net flows without attributing any amount to XRP absent direct evidence.",
+    "Feed the new market observations into the point-in-time feature pipeline only after raw bytes, hashes, source timestamps and source independence checks are captured.",
+    "Keep directional forecasts disabled until chronological walk-forward results beat all four baselines and calibration, drift and shadow-evaluation gates pass."
+  ]
+}

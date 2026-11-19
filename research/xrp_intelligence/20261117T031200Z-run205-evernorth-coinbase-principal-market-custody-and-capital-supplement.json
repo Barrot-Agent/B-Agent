@@ -1,0 +1,154 @@
+{
+  "schema_version": "barrot.xrp.evidence-supplement.v1",
+  "run_id": "run205",
+  "created_at_utc": "2026-11-17T03:12:00Z",
+  "source": {
+    "issuer": "Evernorth Holdings Inc.",
+    "filing_type": "424B3 prospectus supplement attaching Form 10-Q",
+    "filing_date": "2026-11-13",
+    "period_end": "2026-09-30",
+    "sec_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm",
+    "sec_accession": "0001628280-26-073933",
+    "evidence_class": "PRIMARY_REGULATORY_FILING",
+    "raw_source_bytes_archived": false,
+    "raw_source_sha256": null
+  },
+  "findings": [
+    {
+      "id": "EVERNORTH_COINBASE_PRINCIPAL_MARKET_001",
+      "fact": "Evernorth selected Coinbase as the principal market for XRP for financial-reporting purposes.",
+      "evidence": {
+        "excerpt": "Based on this assessment, we selected Coinbase as the trading platform market that represents the principal market for XRP for financial reporting purposes.",
+        "lines": "938-941",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm"
+      },
+      "selection_factors": [
+        "market-based trading volume and activity",
+        "consistency and stability of quoted prices across markets",
+        "market compliance, AML/KYC and accessibility"
+      ],
+      "important_limitation": "Evernorth says it does not actively trade XRP on digital-asset markets; Coinbase is its accounting principal-market selection, not proof of Evernorth execution flow or Coinbase purchases.",
+      "feature_treatment": "COINBASE_PRINCIPAL_MARKET_REFERENCE_FOR_EVERNORTH_ACCOUNTING; NOT_EXECUTION_FLOW; NOT_XRP_DEMAND"
+    },
+    {
+      "id": "EVERNORTH_XRP_CUSTODY_BITGO_001",
+      "fact": "Evernorth states its XRP is held with third-party custodians, initially BitGo Trust.",
+      "evidence": {
+        "lines": "989-991",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm"
+      },
+      "distinction": "BNY's Ripple/RLUSD reserve and eligible-client custody relationships are separate. Do not attribute Evernorth's XRP custody to BNY.",
+      "feature_treatment": "CUSTODY_COUNTERPARTY_RELATIONSHIP; NOT_MARKET_FLOW"
+    },
+    {
+      "id": "EVERNORTH_ELOC_FACILITY_AND_FEE_001",
+      "fact": "Evernorth may direct Cantor to purchase up to 5,218,935 newly issued shares at 97% of applicable VWAP, subject to volume and ownership limits; the resale registration became effective October 30.",
+      "evidence": {
+        "lines": "765-768,894-901",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm"
+      },
+      "terms": {
+        "max_shares": 5218935,
+        "purchase_price": "97% of applicable VWAP, with alternative pricing conditions for larger-volume requests",
+        "ordinary_volume_cap_pct": 20,
+        "cantors_beneficial_ownership_limit_pct": 4.99,
+        "registration_effective_date": "2026-10-30",
+        "commitment_fee_obligation_usd": 500000,
+        "fee_due": "within five business days after 2026-10-30",
+        "fee_refundable": false,
+        "possible_true_up_and_fee_cap_usd": 1000000,
+        "expense_reimbursement_cap_usd": 500000,
+        "facility_expiry": "first day of month following the 14-month anniversary of 2026-10-23, unless earlier terminated"
+      },
+      "capital_classification": "FACILITY_CAPACITY_NOT_CASH_PROCEEDS; 500K FEE IS A CONTRACTUAL FINANCING COST OBLIGATION, NOT CAPITAL RAISED",
+      "draw_status": "No actual ELOC share purchase/proceeds were disclosed in this reviewed filing; do not assume a draw.",
+      "fee_status": "Filing says Evernorth agreed to pay the non-refundable fee; it does not explicitly confirm cash payment in the reviewed text."
+    },
+    {
+      "id": "EVERNORTH_PUBLIC_WARRANTS_001",
+      "fact": "Evernorth assumed 11,739,645 warrants at close; 3,073,366 were exercised for cash between October 12 and November 9, producing $35.3M gross; 8,666,279 remained.",
+      "evidence": {
+        "lines": "781-783",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm"
+      },
+      "strike_usd": 11.5,
+      "nov12_class_a_close_usd": 8.97,
+      "nov12_warrant_price_usd": 1.53,
+      "interpretation": "At the disclosed November 12 Class A price, the $11.50 exercise strike was out of the money. The warrant quote may reflect time/option value; no future exercise is assumed.",
+      "max_gross_cash_if_all_remaining_exercised_at_strike_usd": 99662208.5,
+      "warning": "This is a mathematical maximum conditional on all 8,666,279 remaining warrants being cash-exercised at $11.50; it is not committed capital or a forecast."
+    },
+    {
+      "id": "EVERNORTH_POST_CLOSE_CAPITAL_STACK_001",
+      "fact": "At October 9 closing, Evernorth reported $272.6M gross cash ($224.6M private placement plus $48.0M SPAC trust released after redemptions) and approximately 388.91M XRP contributed in kind.",
+      "evidence": {
+        "lines": "875-880",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm"
+      },
+      "additional_financing": {
+        "convertible_note_principal_usd": 30000000,
+        "gross_proceeds_usd": 30000000,
+        "net_cash_proceeds_usd": 29000000,
+        "capital_markets_advisor_fee_usd": 1000000,
+        "issuance_date": "2026-10-13"
+      },
+      "anti_double_counting": [
+        "The 388.91M XRP is in-kind contributed property, not cash.",
+        "The 84.366M XRP acquired with advance cash is a use of raised cash, not additional capital.",
+        "Warrant proceeds are separate cash receipts after closing.",
+        "ELOC capacity is not proceeds.",
+        "The $0.5M ELOC fee is a cost, not an inflow."
+      ]
+    },
+    {
+      "id": "EVERNORTH_PATHFINDER_OWNERSHIP_001",
+      "fact": "Pubco identifies its principal asset as approximately 71.5% ownership of Pathfinder.",
+      "evidence": {
+        "lines": "1017-1022",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm"
+      },
+      "interpretation": "Do not attribute 100% of Pathfinder's XRP or other assets to public Pubco shareholders."
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Evernorth Holdings Inc.",
+      "relation": "selected principal market for XRP financial reporting",
+      "to": "Coinbase",
+      "status": "issuer-disclosed"
+    },
+    {
+      "from": "Evernorth Holdings Inc.",
+      "relation": "initial XRP custody counterparty",
+      "to": "BitGo Trust",
+      "status": "issuer-disclosed"
+    },
+    {
+      "from": "Evernorth Holdings Inc.",
+      "relation": "committed equity facility counterparty",
+      "to": "CF Principal Investments LLC / Cantor",
+      "status": "contractual; actual draws unverified"
+    },
+    {
+      "from": "Ripple",
+      "relation": "RLUSD reserve custody / eligible-client XRP and RLUSD custody relationship",
+      "to": "BNY",
+      "status": "separate from Evernorth's initially disclosed BitGo custody"
+    }
+  ],
+  "admission": {
+    "source_group": "SEC_EVERNORTH_ISSUER_FILING",
+    "model_eligible": false,
+    "feature_eligible": [
+      "institutional_capital_event_timeline",
+      "custody_relationship_graph",
+      "principal_market_selection_timeline"
+    ],
+    "not_eligible": [
+      "XRP_SPOT_BUY_FLOW",
+      "COINBASE_EXECUTION_VOLUME",
+      "ACTUAL_ELOC_PROCEEDS_UNTIL_DRAW_DISCLOSED"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  }
+}

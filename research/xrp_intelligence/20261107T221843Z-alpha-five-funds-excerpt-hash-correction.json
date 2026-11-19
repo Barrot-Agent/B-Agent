@@ -1,0 +1,19 @@
+{
+  "artifact_type": "append_only_source_excerpt_hash_correction",
+  "schema_version": "1.0.0",
+  "correction_id": "20261107T221843Z-ALPHA-FIVE-FUNDS-EXCERPT-HASH",
+  "created_at_utc": "2026-11-07T22:18:43Z",
+  "supersedes": {
+    "artifact_path": "research/xrp_intelligence/20261107T221027Z-xrp-market-etf-institutional-identity-reconciliation.json",
+    "source_id": "ALPHA_FINANCE_XRP_ETF_DASHBOARD",
+    "excerpt": "Live Covering 5 funds Coin price session close Through 2026-11-06",
+    "original_sha256": "9c535b1017f117f8fca1ba7aa89c3596f205e22d27990f84123adf8de2304f95",
+    "corrected_sha256": "9c535b1017f117f8caa1ba7aa89c3596f205e22d27990f84123adf8de2304f95"
+  },
+  "reason": "The original artifact's expected SHA-256 contains a one-character transcription error. Recalculation over the unchanged exact UTF-8 excerpt produces the corrected digest.",
+  "scope": "Hash metadata only. The source excerpt, reported ETF values, source timestamp, model eligibility and forecast status are unchanged.",
+  "append_only": true,
+  "raw_source_body_retrieved_again": false,
+  "corrected_excerpt_sha256_verified": true,
+  "model_eligible": false
+}

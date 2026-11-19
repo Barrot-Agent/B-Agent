@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "captured_at_utc": "2026-11-03T22:44:00Z",
+  "topic": "XRP collateral eligibility, institutional margin, and Ripple Prime financing",
+  "coinbase_global_exchange": {
+    "accepted_collateral_assets": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "EURC",
+      "XRP",
+      "ADA",
+      "cbETH",
+      "DOGE",
+      "HBAR",
+      "LINK",
+      "AAVE",
+      "NEAR",
+      "TAO",
+      "HYPE",
+      "PAXG",
+      "USDT",
+      "USDC"
+    ],
+    "xrp_status": "officially_listed_as_currently_accepted_collateral_for_perpetual_futures",
+    "constraints": {
+      "concentration": "Per-organization UBO limits based on average daily quantity (ADQ); excess above the limit does not contribute to portfolio value.",
+      "valuation": "Notional value multiplied by collateral weight.",
+      "haircut": "Collateral weight equals 1 minus collateral haircut; the greater of base haircut and closeout-horizon haircut applies.",
+      "liquidation": "Automatic collateral liquidation can occur when portfolio margin falls below maintenance margin."
+    },
+    "xrp_perpetual": {
+      "contract": "XRP-PERP",
+      "settlement": "USDC",
+      "maximum_leverage": "up to 50x per product specifications",
+      "default_initial_margin": "25% (4x)",
+      "eligible_collateral": "All INTX-offered collateral",
+      "note": "Leverage limits, collateral weights and account eligibility are product/jurisdiction specific."
+    },
+    "utilization": "Coinbase does not publish XRP collateral balances, UBO concentration utilization or XRP-specific margin notional in the reviewed help pages.",
+    "sources": [
+      "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/what-is-collateral",
+      "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/perpetual-futures-product-specifications"
+    ]
+  },
+  "ripple_prime": {
+    "collateral_page": "Ripple Prime's official product page lists RLUSD, XRP, tokenized real-world assets and traditional collateral as assets that can be posted; supported assets margin supported positions in a single cross-margin pool.",
+    "collateral_status": "product_level_XRP_collateral_support_listed; actual posted balances not disclosed",
+    "distinction": "RLUSD is explicitly described as accepted collateral; the product page also lists XRP as a postable asset but does not publish XRP-specific eligibility by position, haircut or utilization.",
+    "xrp_services": "Ripple Prime launched U.S. OTC spot prime brokerage in XRP and RLUSD in November 2025; cross-margining covers OTC spot holdings and eligible derivatives.",
+    "actual_usage": "No public XRP collateral balance, XRP-backed loan notional, haircut schedule or borrower-level breakdown was found.",
+    "sources": [
+      "https://ripple.com/products/prime-brokerage/",
+      "https://ripple.com/ripple-press/ripple-launches-digital-asset-spot-prime-brokerage-for-the-united-states-market/",
+      "https://ripple.com/ripple-press/ripple-announces-500-million-strategic-investment-led-by-fortress-citadel-securities-valuing-the-company-at-40-billion-following-record-growth/"
+    ]
+  },
+  "ripple_prime_financing": {
+    "neuberger_facility_usd": 200000000,
+    "neuberger_status": "closed facility; Ripple says it can draw up to $200M; actual drawn balance not disclosed",
+    "neuberger_purpose": "Extend financing to clients in traditional and digital markets; increase Ripple Prime lending capacity.",
+    "senior_notes_usd": 275000000,
+    "senior_notes_status": "upsized private placement of senior unsecured notes closed 2026-08-18; BBB rating reported by Ripple/KBRA",
+    "senior_notes_purpose": "Working capital and general corporate purposes within a regulated entity.",
+    "combined_nominal_financing_usd": 475000000,
+    "interpretation": "The $475M sum combines a draw facility (up to $200M, drawn amount unknown) and $275M notes issued. It is not $475M of XRP purchases, XRP collateral, or confirmed deployed client credit.",
+    "sources": [
+      "https://ripple.com/ripple-press/ripple-prime-secures-usd200-million-debt-facility-from-neuberger-specialty-finance-to-expand-capacity/",
+      "https://ripple.com/ripple-press/ripple-prime-closes-275-million-senior-notes-offering/"
+    ]
+  },
+  "cross_market_access": {
+    "ripple_prime_to_coinbase": "Nodal Clear confirms Ripple Prime clients can access Coinbase Derivatives contracts, including XRP futures, through Nodal Clear.",
+    "access_vs_usage": "This proves an institutional access path, not attributable client volume, open interest, spot buying or collateral posted.",
+    "source": "https://www.nodalclear.com/ripple-offers-clients-access-to-coinbase-derivatives-contracts-cleared-by-nodal-clear/"
+  },
+  "evidence_classification": {
+    "confirmed": [
+      "Coinbase Global Exchange help pages currently list XRP as accepted perpetual-futures collateral.",
+      "Coinbase applies ADQ-based UBO concentration limits and collateral haircuts.",
+      "Ripple Prime's official product page lists XRP as a postable collateral asset within its cross-margin pool.",
+      "Ripple Prime closed a $200M Neuberger facility and a separate $275M senior-notes offering."
+    ],
+    "company_reported": [
+      "Ripple said client collateral doubled after the Hidden Road acquisition and average daily transactions exceeded 60M; the release does not break out XRP versus RLUSD."
+    ],
+    "unknown": [
+      "XRP balances actually pledged at Coinbase or Ripple Prime",
+      "XRP collateral haircuts and concentration utilization by client",
+      "XRP-backed loan notional, liquidation history and borrower distribution",
+      "actual amount drawn under the $200M facility",
+      "allocation of the $275M notes to XRP-related activity"
+    ]
+  },
+  "demand_interpretation": {
+    "positive_channel": "Collateral eligibility can increase the utility of holding XRP and may reduce the need to sell XRP to obtain margin/credit.",
+    "counter_hypothesis": "Collateral eligibility can be used with existing inventory and does not require fresh spot purchases; haircuts, concentration limits and risk appetite may constrain use.",
+    "model_rule": "Do not count eligible collateral as actual collateral. Require reported posted balances, utilization, haircuts, loan notional, client/venue coverage and time-series changes before estimating incremental XRP demand."
+  },
+  "safety": {
+    "public_sources_only": true,
+    "private_data_accessed": false,
+    "unauthorized_access": false,
+    "market_manipulation": false,
+    "investment_action": false
+  }
+}

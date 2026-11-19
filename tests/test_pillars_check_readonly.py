@@ -183,3 +183,9 @@ def test_workflow_withholds_platform_credentials_from_scheduled_check():
     assert "confirm_read_only_github_app_probe" in WORKFLOW
     assert "confirm_read_only_databricks_probe" in WORKFLOW
     assert "default: NO" in WORKFLOW
+
+def test_manual_credential_probes_are_restricted_to_main():
+    assert "if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm_read_only_github_app_probe == 'YES'" in WORKFLOW
+    assert "if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm_read_only_databricks_probe == 'YES'" in WORKFLOW
+    assert "GITHUB_APP_PRIVATE_KEY: ${{ secrets.GITHUB_APP_PRIVATE_KEY }}" in WORKFLOW
+    assert "DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}" in WORKFLOW

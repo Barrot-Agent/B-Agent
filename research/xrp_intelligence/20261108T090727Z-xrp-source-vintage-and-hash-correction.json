@@ -1,0 +1,184 @@
+{
+  "artifact_type": "xrp_source_vintage_and_hash_correction_overlay",
+  "schema_version": "1.0.0",
+  "artifact_id": "20261108T090727Z-xrp-source-vintage-and-hash-correction",
+  "repository": "Barrot-Agent/B-Agent",
+  "review_pr": 1643,
+  "branch": "research/xrp-evidence-archive-20261104",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_research_head_before_correction": "664f52fb7793e2b76e6b7eadbc359944d16c93d9",
+  "append_only": true,
+  "reference_time_utc": "2026-11-08T09:07:27Z",
+  "capture_note": "Rendered pages and search-result snippets are kept distinct. Exact browser retrieval wall-clock times and raw HTTP bytes were not retained. Page/provider timestamps are recorded only where the rendered source exposed them.",
+  "hash_corrections": [
+    {
+      "source_id": "alpha_finance_xrp_etf_1106",
+      "prior_excerpt_sha256": "7a72694b88f6f2b6e2fa25eea787169c5b5526a9be6118527981d14818bcc5bf",
+      "corrected_excerpt_sha256": "7a72694b88f6f2b2e6fa25eea787169c5b5526a9be6118527981d14818bcc5bf",
+      "correction_reason": "The original artifact's SHA-256 hex string was transcribed incorrectly. Recomputing SHA-256 over the unchanged stored excerpt yields the corrected digest. The original artifact and excerpt remain unchanged.",
+      "excerpt_changed": false,
+      "source_claim_changed": false,
+      "model_admission_changed": false
+    }
+  ],
+  "source_vintage_corrections": {
+    "fundingrates_app": {
+      "previous_search_snippet_claimed_as_of_utc": "2026-11-08T06:20:51.267Z",
+      "rendered_page_as_of_utc": "2026-11-03T09:00:54.233Z",
+      "disposition": "QUARANTINED_UNVERIFIED_SEARCH_SNIPPET",
+      "reason": "Opening the cited URL rendered a page whose stated latest snapshot is Nov 3, not Nov 8. The search-result snippet cannot override the rendered page. No current Nov 8 FundingRates observation is verified."
+    },
+    "kodexius": {
+      "previous_snapshot_as_of_utc": "2026-11-08T01:19:00Z",
+      "previous_open_interest_usd": 775070000,
+      "new_snapshot_as_of_utc": "2026-11-08T08:29:00Z",
+      "new_open_interest_usd": 785200000,
+      "new_funding_weighted_pct_per_8h": 0.0091,
+      "new_volume_24h_usd": 707470000,
+      "contract_count": 7,
+      "interpretation": "The 08:29 rendered page is a later provider snapshot; the 01:19 reading remains historical and is not overwritten. Per-contract rounded OI sums to $785.19M versus the $785.20M headline."
+    },
+    "xrp_insights": {
+      "dated_nov6_flow_xrp": -663043,
+      "dated_nov6_holdings_xrp_approx": 1200000000,
+      "dated_nov6_net_assets_usd_approx": 1430000000,
+      "current_dashboard_undated_aum_usd": 1407230000,
+      "current_dashboard_undated_xrp_locked": 1195180000,
+      "current_dashboard_week45_flow_xrp_approx": -810000,
+      "interpretation": "The live dashboard values have no explicit provider timestamp and remain a separate undated observation. They do not overwrite the dated Nov 6 row."
+    },
+    "cryptokeyhole": {
+      "page_updated_at_utc": "2026-11-08T08:12:00Z",
+      "nov6_coverage": "3 of 4 funds; Franklin Templeton XRPZ missing",
+      "nov6_partial_flow_usd": -887000,
+      "future_issuer_file_stamp": "2026-11-09",
+      "future_stamp_disposition": "QUARANTINED"
+    },
+    "tradradar": {
+      "page_updated_at_utc": "2026-11-08T08:20:00Z",
+      "provider_delay_minutes": 15,
+      "exchange_count": 7,
+      "interpretation": "The OI/funding/long-short aggregate is delayed secondary data, not an exchange-native synchronized snapshot."
+    }
+  },
+  "latest_secondary_observations": {
+    "kodexius_0829": {
+      "open_interest_usd": 785200000,
+      "contracts": 7,
+      "funding_weighted_pct_per_8h": 0.0091,
+      "volume_24h_usd": 707470000
+    },
+    "xrpinsights_dashboard_undated": {
+      "aum_usd": 1407230000,
+      "xrp_locked": 1195180000,
+      "week45_flow_xrp_approx": -810000
+    },
+    "fundingrates_app_current_cutoff": "UNVERIFIED_NO_NOV8_OBSERVATION"
+  },
+  "source_receipts": [
+    {
+      "source_id": "fundingrates_rendered_page_vintage",
+      "publisher": "FundingRates.app",
+      "source_class": "secondary_funding_aggregator_rendered_page",
+      "url": "https://fundingrates.app/xrp-funding-rate/",
+      "page_as_of_utc": "2026-11-03T09:00:54.233Z",
+      "independence_group": "fundingrates_app",
+      "excerpt": "The rendered FundingRates.app XRP page, when opened during this run, displayed: As of 09:00 UTC on 2026-11-03, median XRP funding 0.0050% per 8h across 9 venues. Its latest snapshot timestamp was 2026-11-03T09:00:54.233Z and the page says 10 venues listed, 9 used in summary. It does not corroborate a 2026-11-08 06:20 UTC observation. The previously stored 2026-11-08 search-result excerpt is quarantined as an unverified search snippet, not a rendered page observation.",
+      "excerpt_sha256": "cc2bc6f68bc6bcd9a8def52712b5ad809b0fd51f125a18d91b5b04a3acbd3db2",
+      "hash_scope": "SHA-256 of exact normalized rendered-page excerpt; not page HTML or raw exchange bytes.",
+      "limitations": [
+        "Rendered page is five-day stale relative to this run.",
+        "It contradicts the previously indexed Nov 8 search-result snippet; the search snippet is quarantined.",
+        "No current Nov 8 FundingRates observation is verified."
+      ]
+    },
+    {
+      "source_id": "kodexius_xrp_perps_0829",
+      "publisher": "Kodexius",
+      "source_class": "secondary_derivatives_aggregator_rendered_page",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "page_as_of_utc": "2026-11-08T08:29:00Z",
+      "independence_group": "kodexius",
+      "excerpt": "Kodexius rendered XRP perpetual page updated Nov 8, 2026, 08:29 UTC: open interest $785.20M across 7 contracts; funding +0.0091% per 8h, weighted by open interest; 24h volume $707.47M. Per-contract open interest: Binance XRPUSDT $389.19M; Bybit XRPUSDT $142.52M; Hyperliquid XRP/USDC $98.46M; OKX XRP-USDT-SWAP $95.09M; Binance XRPUSDC $32.20M; HTX XRP-USDT $25.11M; Bybit XRPPERP/USDC $2.62M. These sum to $785.19M after display rounding.",
+      "excerpt_sha256": "be73c0cd2a3db80d7959c230df20027f0e4ce70d4bdae5b51f32604ace8a7d0f",
+      "hash_scope": "SHA-256 of exact normalized rendered-page excerpt; not page HTML or raw exchange bytes.",
+      "limitations": [
+        "Secondary aggregate from five exchanges and seven contracts.",
+        "Display rounding makes per-contract sum $785.19M versus headline $785.20M.",
+        "No raw venue response payloads were preserved."
+      ]
+    },
+    {
+      "source_id": "xrpinsights_live_dashboard_undated",
+      "publisher": "XRP Insights",
+      "source_class": "secondary_etf_dashboard",
+      "url": "https://xrp-insights.com/",
+      "page_as_of_utc": null,
+      "independence_group": "xrp_insights_issuer_files",
+      "excerpt": "XRP Insights rendered live dashboard during this run: total AUM $1,407.23M across 7 ETFs; XRP locked 1,195.18M; week 45 net flow -0.81M XRP; daily volume marked Market Closed. Its dated Nov 6 table still reports -663.0K XRP, 1.20B XRP holdings and $1.43B AUM. The live dashboard has no explicit provider timestamp in the captured excerpt, so it is a separate undated display snapshot and must not overwrite the dated Nov 6 values.",
+      "excerpt_sha256": "83bc84829a4057c3cc587b0872329eb877c5bd4fc83beeb384a752f2a82b119a",
+      "hash_scope": "SHA-256 of exact normalized rendered-page excerpt; not page HTML or raw issuer files.",
+      "limitations": [
+        "Current dashboard has no explicit provider timestamp.",
+        "Undated AUM/holdings snapshot is not interchangeable with the dated Nov 6 holdings/flow row.",
+        "Underlying issuer holdings files overlap other ETF aggregators."
+      ]
+    },
+    {
+      "source_id": "tradradar_xrp_perps_delay_method",
+      "publisher": "TradRadar",
+      "source_class": "secondary_derivatives_aggregator_methodology",
+      "url": "https://tradradar.io/markets/xrp",
+      "page_as_of_utc": "2026-11-08T08:20:00Z",
+      "independence_group": "tradradar",
+      "excerpt": "TradRadar XRP futures page updated Nov 8, 2026, 08:20 AM UTC and states its figures are shown with a 15-minute delay. Its seven named perpetual venues are Binance, Bybit, Gate, MEXC, Bitget, Hyperliquid and OKX. The displayed $1.91B OI and -0.42% 24h change are delayed secondary aggregates, not exchange-native synchronized receipts.",
+      "excerpt_sha256": "16f2a75af4004e76d19b67d67b491b80907d5f1f6678aa13a4bebe43e5b26e1f",
+      "hash_scope": "SHA-256 of exact normalized rendered-page excerpt; not page HTML or raw exchange bytes.",
+      "limitations": [
+        "The provider explicitly displays a 15-minute delay.",
+        "The OI and funding aggregates remain secondary and lack captured raw venue payloads."
+      ]
+    },
+    {
+      "source_id": "cryptokeyhole_xrp_etf_partial_vintage_detail",
+      "publisher": "CryptoKeyhole",
+      "source_class": "secondary_aggregator_of_issuer_holdings",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "page_as_of_utc": "2026-11-08T08:12:00Z",
+      "independence_group": "cryptokeyhole_issuer_files",
+      "excerpt": "CryptoKeyhole page updated 8 Nov 2026, 08:12 UTC. It reports 5 Nov complete flow -3,339 XRP across four daily-readable funds, 30 Oct–5 Nov five-session flow -1,137,098 XRP, and 1,076,805,885 XRP held by the four daily-collected funds on 5 Nov. 6 Nov is partial: three of four funds published, with Franklin Templeton XRPZ missing. The 6 Nov table shows -$887K from XRPC and total -$887K at 3/4. A latest issuer-file stamp of 9 Nov 2026 is future relative to the 8 Nov page update and remains quarantined.",
+      "excerpt_sha256": "acc7c84886597261aa7a66f0f69f9c05de3a0629d4304dbf18f508c84d0ddf75",
+      "hash_scope": "SHA-256 of exact normalized rendered-page excerpt; not page HTML or raw issuer bytes.",
+      "limitations": [
+        "Only four of six listed funds are collected daily.",
+        "Nov 6 remains partial at three of four funds.",
+        "The 9 Nov issuer-file stamp is future relative to the 8 Nov page update and is quarantined."
+      ]
+    }
+  ],
+  "reconciliation": {
+    "derivatives": "The later Kodexius $785.20M snapshot is close to its earlier $775.07M reading but remains far below TradRadar $1.91B, Liqwall $1.38B and Bentley $1.62B. Differences remain unresolved across contract/venue coverage and provider methods; do not average.",
+    "etf": "CryptoKeyhole's 6 Nov result is explicitly partial, Alpha Finance reports a five-fund $0, and XRP Insights reports six spot funds plus BITW at -663,043 XRP. Current XRP Insights dashboard values are undated and separate from the dated Nov 6 row.",
+    "source_independence": "The three ETF publishers are distinct but rely on overlapping issuer holdings files. They are not independent confirmations of capital flows."
+  },
+  "data_quality": {
+    "raw_http_wire_bytes_captured": false,
+    "exact_browser_retrieval_time_captured": false,
+    "search_snippet_promoted_to_verified_source": false,
+    "fundingrates_nov8_observation_verified": false,
+    "future_dated_issuer_file_quarantined": true,
+    "undated_dashboard_not_backdated": true
+  },
+  "model_admission": {
+    "eligible": false,
+    "reason": "All new values are secondary, stale, partial, undated or scope-incompatible; no synchronized market cutoff or raw HTTP wire bytes."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED"
+  },
+  "external_actions": {
+    "paper_trade": false,
+    "real_money": false,
+    "external_model_transfer": false
+  }
+}

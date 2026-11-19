@@ -1,0 +1,283 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "run190-supplemental-20261116T140756Z",
+  "captured_at_utc": "2026-11-16T14:07:56Z",
+  "repository": {
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_head": "537cd58ea75b1d04d25b164bb167e7819477cb6f",
+    "pr_number": 1663
+  },
+  "exact_head_ci": {
+    "full_suite_run_id": 43882477549,
+    "job_id": 133351713460,
+    "conclusion": "success",
+    "passed": 3830,
+    "failed": 0,
+    "skipped": 1,
+    "subtests_passed": 19,
+    "duration_seconds": 182.71,
+    "inclusive_coverage_percent": 64.09,
+    "legacy_core_coverage_percent": 77,
+    "dependency_audit_push": 43882477629,
+    "dependency_audit_pr": 43882488837,
+    "dependency_audit": "PASS_ZERO_KNOWN_VULNERABILITIES_SIX_MANIFESTS",
+    "fail_closed_push": 43882477423,
+    "fail_closed_pr": 43882488864,
+    "fail_closed": "PASS",
+    "pull_request_ci": 43882488995,
+    "pull_request_tests": "SKIPPED_BY_INTEGRATION_BRANCH_CONDITION"
+  },
+  "market_observations": [
+    {
+      "source": "Altcoin Buzz / CoinGecko",
+      "url": "https://www.altcoinbuzz.io/price/ripple",
+      "event_time_utc": "2026-11-16T09:20:00Z",
+      "metric": "XRP/USD",
+      "value": 0.9429,
+      "unit": "USD",
+      "context": {
+        "change_24h_percent": -2.71,
+        "change_7d_percent": -12.16
+      }
+    },
+    {
+      "source": "OKX",
+      "url": "https://www.okx.com/price/xrp-xrp",
+      "event_time_utc": "2026-11-16T12:07:16Z",
+      "metric": "XRP/USD",
+      "value": 0.9482,
+      "unit": "USD",
+      "context": {
+        "change_24h_percent": -0.64
+      }
+    },
+    {
+      "source": "CoinGecko",
+      "url": "https://www.coingecko.com/en/coins/xrp/historical_data",
+      "event_time_utc": null,
+      "metric": "displayed XRP/USD",
+      "value": 0.9636,
+      "unit": "USD",
+      "context": {
+        "low_24h": 0.9006,
+        "high_24h": 0.9784,
+        "november_16_close": "N/A"
+      }
+    },
+    {
+      "source": "Liqwall",
+      "url": "https://liqwall.com/open-interest/xrp",
+      "event_time_utc": "2026-11-16T12:52:00Z",
+      "metric": "cross-exchange futures OI",
+      "value": 981000000,
+      "unit": "USD",
+      "context": {
+        "change_24h_percent": -3.2,
+        "average_funding_8h_percent": -0.0049,
+        "binance_funding_8h_percent": -0.0092,
+        "liquidations_24h_usd": 3400000,
+        "long_liquidations_usd": 2300000,
+        "short_liquidations_usd": 1100000,
+        "binance_accounts_long_percent": 72.7
+      }
+    },
+    {
+      "source": "CoinGlass",
+      "url": "https://www.coinglass.com/currencies/XRP/futures",
+      "event_time_utc": null,
+      "metric": "XRP derivatives aggregate",
+      "value": null,
+      "unit": null,
+      "context": {
+        "oi_change_24h_usd_percent": -5.74,
+        "oi_change_24h_coin_percent": -4.07,
+        "weighted_funding_8h_percent": -0.0068,
+        "futures_volume_24h_usd": 4310000000,
+        "spot_volume_24h_usd": 1180000000,
+        "liquidations_24h_usd": 33420000,
+        "long_liquidation_share_percent": 86
+      },
+      "caveat": "Different coverage and no exact timestamp; do not average with Liqwall."
+    },
+    {
+      "source": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "event_time_utc": "2026-11-15T16:00:00Z",
+      "metric": "seven-exchange XRP futures OI",
+      "value": 1330000000,
+      "unit": "USD",
+      "context": {
+        "change_24h_percent": -6.53,
+        "funding_8h_percent": -0.0027,
+        "liquidations_24h_minimum_usd": 37510000,
+        "long_liquidations_usd": 33870000,
+        "short_liquidations_usd": 3650000,
+        "long_accounts_percent": 75.9
+      }
+    },
+    {
+      "source": "Alpha Finance",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "event_time_utc": "2026-11-14",
+      "metric": "five-fund ETF net flow",
+      "value": -1100000,
+      "unit": "USD",
+      "context": {
+        "thirty_session_flow_usd": -1700000,
+        "cumulative_inflows_usd": 1710000000
+      }
+    },
+    {
+      "source": "XRP Insights",
+      "url": "https://xrp-insights.com/",
+      "event_time_utc": "2026-11-13",
+      "metric": "six spot ETFs plus BITW weekly flow",
+      "value": -6080000,
+      "unit": "XRP",
+      "context": {
+        "period": "2026-11-09/2026-11-13",
+        "approximate_usd": -6480000
+      }
+    },
+    {
+      "source": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "event_time_utc": "2026-11-13",
+      "metric": "four-fund ETF flow",
+      "value": -9967,
+      "unit": "XRP",
+      "context": {
+        "funds_reported": 3,
+        "funds_expected": 4,
+        "latest_complete_day": "2026-11-12",
+        "latest_complete_day_flow_xrp": 4337131
+      }
+    }
+  ],
+  "institutional_relationships": [
+    {
+      "parties": [
+        "Ripple",
+        "Coinbase"
+      ],
+      "date": "2026-10-28",
+      "status": "RLUSD launched on Coinbase Prime, Coinbase Exchange and retail app; supported on XRPL, Base and Ethereum.",
+      "source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "limitation": "Coinbase Global Exchange collateral was future rollout at launch, not verified live."
+    },
+    {
+      "parties": [
+        "Ripple",
+        "BNY"
+      ],
+      "date": "2026-10-27",
+      "status": "BNY announced XRP and RLUSD custody support; previously primary RLUSD reserve custodian and Ripple Prime custody provider.",
+      "source": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "limitation": "Tokenized trade finance exploratory; custody is not evidence of XRP accumulation."
+    },
+    {
+      "parties": [
+        "Ripple",
+        "Standard Chartered",
+        "LMAX Group"
+      ],
+      "date": "2026-10-12",
+      "status": "Standard Chartered RLUSD custody on XRPL live; LMAX collateral integration planned.",
+      "source": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "limitation": "Planned collateral is not active collateral or XRP demand."
+    },
+    {
+      "parties": [
+        "SBI Holdings",
+        "SBI VC Trade",
+        "Ripple"
+      ],
+      "date": "2026-06-24",
+      "status": "RLUSD handling launched on SBI VC Trade in Japan.",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "limitation": "VCTRADE deposit/withdrawal support is Ethereum chain only; do not infer XRPL/Base support."
+    },
+    {
+      "parties": [
+        "SBI Ripple Asia",
+        "dsrv labs"
+      ],
+      "date": "2026-02-24",
+      "status": "Japan-Korea remittance/payment feasibility research with XRPL envisaged.",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+      "limitation": "Research, not launched rail or measured XRP flow."
+    }
+  ],
+  "sbic_identity": {
+    "conclusion": "Three separate Japanese Small and Medium Business Investment & Consultation companies, not SBI Holdings or subsidiaries.",
+    "entities": [
+      {
+        "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "alias": "SBIC East Japan",
+        "established": "1963-11-15",
+        "source": "https://www.sbic.co.jp/company/profile/"
+      },
+      {
+        "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "alias": "SBIC Central Japan",
+        "established": "1963-11-18",
+        "source": "https://www.sbic-cj.co.jp/company/about/"
+      },
+      {
+        "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "alias": "SBIC West Japan",
+        "established": "1963-11-20",
+        "source": "https://www.sbic-wj.co.jp/profiles/profile/"
+      }
+    ],
+    "legal_context": "https://www.chusho.meti.go.jp/koukai/kenkyukai/seichoken/r6_002/002.pdf",
+    "sbic_east_chatgpt": "Official 2025 training included ChatGPT and Copilot; education, not OpenAI enterprise contract. https://www.sbic.co.jp/training/20250612co/",
+    "sbi_holdings_chatgpt": "SBI Holdings and SBI Securities announced ChatGPT Enterprise adoption. https://www.sbigroup.co.jp/news/2025/0501_15410.html",
+    "sbi_holdings_anthropic": "SBI Holdings separately announced Claude/Anthropic collaboration. https://www.sbigroup.co.jp/news/2026/0602_16373.html"
+  },
+  "exact_phrase_status": {
+    "actual_capital": "No new primary evidence of ELOC proceeds; facility capacity is not capital received.",
+    "ask_coin": "Unresolved; no unique issuer or XRPL/Ripple relationship verified.",
+    "sbic_chatgpt_sbic": "No exact indexed match; keep SBIC regional entities separate from SBI Holdings.",
+    "camilla_kamilah_stevenson": "No new first-party personal YouTube channel verified; prior TEDx/guest distinction retained."
+  },
+  "cross_analysis": {
+    "run_id": 43882016050,
+    "status": "SUCCESS",
+    "xrp_recent_sentiment_count": 0,
+    "xrp_prior_sentiment_count": 0,
+    "all_history_xrp_mentions": 286,
+    "all_history_xrp_net_sentiment": 0.46,
+    "all_history_ripple_mentions": 219,
+    "all_history_ripple_net_sentiment": 0.48,
+    "caveat": "All-history profile is not current sentiment."
+  },
+  "prediction_gate": {
+    "events": 111,
+    "declared_independence_groups": 85,
+    "canonical_lineage_groups": 46,
+    "missing_raw_sha256_receipts": 111,
+    "missing_exact_publisher_timestamps": 64,
+    "model_eligible_events": 0,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "trained_candidate": "NONE",
+    "shadow_cohort": "NOT_VERIFIED",
+    "independent_evaluator": "NOT_CONFIGURED",
+    "note": "Web observations are not raw-byte receipts and were not admitted as model features."
+  },
+  "source_independence": "Market vendors may share venue feeds; ETF aggregators may reuse issuer files. No observation is treated as independent confirmation without lineage verification.",
+  "actions_not_taken": [
+    "No merge",
+    "No deployment",
+    "No secret rotation",
+    "No Space restart",
+    "No Databricks write",
+    "No Kaggle submission",
+    "No paper trade",
+    "No funds transfer",
+    "No real-money action",
+    "No external-model dispatch",
+    "No directional forecast"
+  ]
+}

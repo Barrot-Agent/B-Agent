@@ -1,0 +1,736 @@
+{
+  "artifact_type": "barrot.xrp.research_run",
+  "schema_version": "1.0.0",
+  "run_id": "run221",
+  "captured_at_utc": "2026-11-17T16:54:18Z",
+  "observed_main_sha": "482f611e8500d1ce88d5e2bdee969eac7e3133dd",
+  "integration_head_at_capture": "b963098f00aaa1b6e0c0603f869d6b2e42283c12",
+  "mission": {
+    "priority": 1,
+    "objective": "XRP intelligence and measured prediction-engine performance",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, safety and verification foundation"
+  },
+  "provenance_policy": {
+    "allowed_sources": "Lawful public and authorized sources only",
+    "raw_capture": "No original publisher HTTP bytes were retained in this run",
+    "hash_policy": "Do not hash rendered snippets or transformed page text as if they were raw publisher bytes",
+    "model_eligibility": "All observations in this artifact are research-only and model-ineligible",
+    "disagreement": "Retain provider scope, timestamps, missing data, counter-hypotheses and source limitations; do not average incompatible aggregates"
+  },
+  "source_registry": [
+    {
+      "source_id": "investing-xrp-daily-20261117",
+      "publisher": "Investing.com",
+      "url": "https://www.investing.com/crypto/xrp/historical-data",
+      "source_date": "2026-11-17",
+      "source_time_label": "10:32:18; timezone not stated",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "investing.com-market-data",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Aggregation methodology and venue composition not established in the retrieved page",
+        "Timestamp timezone not stated"
+      ]
+    },
+    {
+      "source_id": "alertachart-xrp-funding-20261117",
+      "publisher": "AlertaChart",
+      "url": "https://www.alertachart.com/data/funding-rates/xrp",
+      "source_as_of_utc": "2026-11-17T10:36:00Z",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "alertachart-perpetual-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Five venues stated: Binance, Bybit, OKX, Coinbase and Hyperliquid",
+        "OI-weighted aggregation; contract coverage and quote normalization require independent reconciliation"
+      ]
+    },
+    {
+      "source_id": "liqwall-xrp-oi-20261117",
+      "publisher": "Liqwall",
+      "url": "https://liqwall.com/open-interest/xrp",
+      "source_as_of_utc": "2026-11-17T05:52:00Z",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "liqwall-derivatives-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Provider venue universe and contract normalization not fully reconciled against other aggregators"
+      ]
+    },
+    {
+      "source_id": "optimistfi-xrp-oi-1245-20261117",
+      "publisher": "OptimistFi",
+      "url": "https://optimistfi.com/perps/markets/xrp",
+      "source_as_of_utc": "2026-11-17T12:45:00Z",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "optimistfi-perpetual-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Page reported $1.8B OI across 38 venues; another page snapshot from the same publisher at 13:00 UTC reported $1.4B; retained as a provider-internal disagreement"
+      ]
+    },
+    {
+      "source_id": "optimistfi-xrp-oi-1300-20261117",
+      "publisher": "OptimistFi",
+      "url": "https://optimistfi.com/perps/markets/xrp?tab=open-interest",
+      "source_as_of_utc": "2026-11-17T13:00:00Z",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "optimistfi-perpetual-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Same publisher's page reported $1.4B OI; not reconciled with its 12:45 UTC $1.8B page"
+      ]
+    },
+    {
+      "source_id": "tradradar-xrp-oi-20261116",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_as_of_utc": "2026-11-16T15:30:00Z",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "tradradar-perpetual-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Seven exchanges stated; 15-minute delay",
+        "Liquidation figures are minimum observed amounts due incomplete exchange publication"
+      ]
+    },
+    {
+      "source_id": "kraken-xrp-futures-20261117",
+      "publisher": "Kraken",
+      "url": "https://www.kraken.com/features/futures/xrp",
+      "source_date": "2026-11-17",
+      "source_time_label": "10:30 AM; timezone not stated",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "kraken-futures-first-party",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Single venue only",
+        "Timezone of displayed update label not stated"
+      ]
+    },
+    {
+      "source_id": "basis-xrp-perp-orderbook-20261117",
+      "publisher": "Basis Charts",
+      "url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "source_as_of_utc": "2026-11-17T13:49:00Z",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "basis-binance-perpetual-orderbook",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Binance XRPUSDT perpetual book, not spot",
+        "Heatmap captures resting levels that may be cancelled or moved",
+        "Snapshot predates this capture by several hours"
+      ]
+    },
+    {
+      "source_id": "cryptokeyhole-xrp-etf-20261116",
+      "publisher": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_as_of_utc": "2026-11-17T07:25:00Z",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "cryptokeyhole-issuer-file-etf-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "November 16 figure is partial: 2 of 4 daily-tracked funds had reported",
+        "Latest issuer file read 05:35 UTC; not a complete market-wide flow"
+      ]
+    },
+    {
+      "source_id": "xrp-insights-xrp-etf-20261116",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/",
+      "source_date": "2026-11-16",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "xrp-insights-issuer-holdings-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Reports 6 spot funds plus BITW and a +158,148 XRP Nov 16 net change; separate data page says Nov 16 row provisional and dataset data-as-of Nov 13",
+        "Fund universe differs from CryptoKeyhole"
+      ]
+    },
+    {
+      "source_id": "xrp-insights-methodology-20261117",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/data",
+      "source_date": "2026-11-17",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "xrp-insights-issuer-holdings-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Flows derived from day-over-day issuer-reported holdings; reconstructed historical rows and NAV-implied prices are disclosed",
+        "Nov 16 row marked provisional until re-settled"
+      ]
+    },
+    {
+      "source_id": "maketo-xrp-etf-flows-20261116",
+      "publisher": "Maketo",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "source_as_of_utc": "2026-11-17T02:21:00Z",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "maketo-etf-flow-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Reports $0 for Nov 16 and roughly $11M net out over the month; missing/unreported fund data must not be interpreted as a verified zero"
+      ]
+    },
+    {
+      "source_id": "reuters-usd-macro-20261117",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/africa/us-dollar-hits-19-month-peak-fed-hike-bets-aussie-dips-2026-11-17/",
+      "source_date": "2026-11-17",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "reuters-macro-reporting",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered news result; original article bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Dollar index described as near 103.61 and up about 2.1% over six sessions; exact observation timestamp not stated in the retrieved snippet"
+      ]
+    },
+    {
+      "source_id": "coinbase-rlusd-launch-20261028",
+      "publisher": "Coinbase",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "source_date": "2026-10-28",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "coinbase-corporate-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official announcement; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Collateral availability on Coinbase Global Exchange was described as a future rollout, not live at launch"
+      ]
+    },
+    {
+      "source_id": "circle-q3-2026-10q-coinbase-distribution",
+      "publisher": "Circle Internet Group / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "source_date": "2026-11-04",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "sec-edgar-circle-filing",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered SEC filing text; original filing bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Distribution costs are reported as expenses associated with the Coinbase agreements; do not equate them with XRP capital flows or XRP purchases"
+      ]
+    },
+    {
+      "source_id": "sbi-circle-investment-20250609",
+      "publisher": "SBI Holdings / SBI Shinsei Bank",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "source_date": "2025-06-09",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "sbi-holdings-corporate-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official announcement; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Combined $50M Circle equity purchase was split $25M SBI Holdings and $25M SBI Shinsei Bank; not an XRP purchase"
+      ]
+    },
+    {
+      "source_id": "sbi-circle-jv-20250822",
+      "publisher": "SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf",
+      "source_date": "2025-08-22",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "sbi-holdings-corporate-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official PDF text; original PDF bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "JV purpose is USDC distribution and digital-finance use cases in Japan; does not establish XRP bridge usage"
+      ]
+    },
+    {
+      "source_id": "sbi-ripple-rlusd-japan-20260624",
+      "publisher": "SBI VC Trade / Ripple",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "source_date": "2026-06-24",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "sbi-ripple-joint-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official announcement; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "RLUSD distribution on SBI VC Trade is stablecoin access, not proof of XRP purchases or XRP as bridge asset"
+      ]
+    },
+    {
+      "source_id": "sbi-jpysc-launch-20260624",
+      "publisher": "SBI Holdings / SBI Shinsei Trust / Startale",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "source_date": "2026-06-24",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "sbi-startale-jpysc-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official announcement; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "JPYSC is issued by SBI Shinsei Trust and distributed by SBI VC Trade; initial distribution was account-limited, with public-chain migration conditional on legal/tax arrangements"
+      ]
+    },
+    {
+      "source_id": "sbi-jpysc-balances-20261102",
+      "publisher": "SBI VC Trade / SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "source_date": "2026-11-02",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "sbi-vc-trade-corporate-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official announcement; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "JPYSC handling balance above ¥30B and lending balance above ¥10B are SBI-reported service balances; not XRP holdings or XRP capital flows"
+      ]
+    },
+    {
+      "source_id": "sbi-blackrock-jpysc-mou-20261027",
+      "publisher": "SBI Holdings / Startale / BlackRock",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "source_date": "2026-10-27",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "sbi-startale-blackrock-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official announcement; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Basic agreement/MOU for a tokenized MMF and JPYSC ecosystem; not evidence of a completed product launch or XRP bridge use"
+      ]
+    },
+    {
+      "source_id": "sbi-ripple-asia-tokenized-deposit-poc-20260226",
+      "publisher": "SBI Ripple Asia",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "source_date": "2026-02-26",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "sbi-ripple-asia-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official announcement; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "XRPL was the contemplated ledger for tokenized-deposit/deposit-money PoC; XRP was not identified as the bridge asset"
+      ]
+    },
+    {
+      "source_id": "sbi-remit-xrp-corridors-20230906",
+      "publisher": "SBI Remit / SBI VC Trade / SBI Ripple Asia",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "source_date": "2023-09-06",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "sbi-remit-ripple-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official announcement; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Historical announcement for Philippines, Vietnam and Indonesia bank-account corridors; current corridor volumes and live status not established by this source"
+      ]
+    },
+    {
+      "source_id": "bny-ripple-custody-20261027",
+      "publisher": "BNY",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "source_date": "2026-10-27",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "bny-corporate-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official announcement; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Custody support for XRP and RLUSD does not establish new XRP buying, market-making or bridge settlement volume"
+      ]
+    },
+    {
+      "source_id": "circle-usdc-xrpl-20250612",
+      "publisher": "Circle",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "source_date": "2025-06-12",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "circle-corporate-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official announcement; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "USDC issued natively on XRPL does not imply XRP is used as a bridge asset in the transaction"
+      ]
+    },
+    {
+      "source_id": "pnc-coinbase-usdc-ethereum-20261109",
+      "publisher": "PNC / Coinbase",
+      "url": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+      "source_date": "2026-11-09",
+      "retrieved_at_utc": "2026-11-17T16:54:18Z",
+      "independence_group": "pnc-coinbase-corporate-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered official announcement; original bytes not retained",
+      "model_eligible": false,
+      "limitations": [
+        "Pilot is USDC on Ethereum; it is not evidence of XRP bridge use"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "spot-price-20261117",
+      "claim": "Investing.com displayed XRP at $0.9696 for Nov 17, with open $0.9552, high $0.9788, low $0.9505, reported volume 317.74M and +1.51%; source time label 10:32:18 with timezone unstated.",
+      "source_ids": [
+        "investing-xrp-daily-20261117"
+      ],
+      "evidence_class": "SECONDARY_MARKET_AGGREGATE",
+      "counter_hypothesis": "Aggregated volume and price can differ from exchange-native candles; no venue-level trade tape or raw bytes were retained.",
+      "model_eligible": false
+    },
+    {
+      "id": "perpetual-oi-funding-disagreement-20261117",
+      "claim": "XRP derivatives snapshots span $605.04M (AlertaChart), $965M (Liqwall), $1.4B and $1.8B (two OptimistFi page snapshots), and $1.31B (TradRadar, prior day). Funding is negative in AlertaChart and TradRadar but positive in OptimistFi.",
+      "source_ids": [
+        "alertachart-xrp-funding-20261117",
+        "liqwall-xrp-oi-20261117",
+        "optimistfi-xrp-oi-1245-20261117",
+        "optimistfi-xrp-oi-1300-20261117",
+        "tradradar-xrp-oi-20261116",
+        "kraken-xrp-futures-20261117"
+      ],
+      "evidence_class": "CROSS_PROVIDER_DISAGREEMENT",
+      "counter_hypothesis": "Differences may reflect venue universe, contract inclusion, stablecoin/USD normalization, timestamps, stale pages or calculation method; the aggregates are not interchangeable and must not be averaged.",
+      "model_eligible": false
+    },
+    {
+      "id": "perpetual-orderbook-not-spot-20261117",
+      "claim": "Basis Charts reported Binance XRPUSDT perpetual depth at 13:49 UTC: mid $0.9722, 1.03 bps spread, $33.7M bids and $29.0M offers across the nearest 1,000 levels, with roughly $7.0M per side inside ±0.5%.",
+      "source_ids": [
+        "basis-xrp-perp-orderbook-20261117"
+      ],
+      "evidence_class": "SINGLE_VENUE_DERIVATIVES_BOOK",
+      "counter_hypothesis": "This is a resting perpetual book, not consolidated spot liquidity; walls can cancel or move and the snapshot is several hours old.",
+      "model_eligible": false
+    },
+    {
+      "id": "etf-flow-universe-conflict-20261116",
+      "claim": "Nov 16 XRP ETF flow sources disagree: CryptoKeyhole showed -5.197M XRP with only 2/4 tracked daily funds reported; XRP Insights showed +158.148K XRP across 6 spot funds plus BITW with a provisional row; Maketo showed $0 for the day.",
+      "source_ids": [
+        "cryptokeyhole-xrp-etf-20261116",
+        "xrp-insights-xrp-etf-20261116",
+        "xrp-insights-methodology-20261117",
+        "maketo-xrp-etf-flows-20261116"
+      ],
+      "evidence_class": "CROSS_PROVIDER_SCOPE_AND_VINTAGE_DISAGREEMENT",
+      "counter_hypothesis": "Fund universe, issuer-file arrival times, provisional rows, index-fund treatment and missing-data handling differ. A missing report is not zero; no aggregate sign is accepted.",
+      "model_eligible": false
+    },
+    {
+      "id": "macro-dollar-risk-20261117",
+      "claim": "Reuters described the dollar index near 103.61, up about 2.1% over six sessions, with sticky inflation, hawkish Fed signals, December hike expectations and weaker risk appetite.",
+      "source_ids": [
+        "reuters-usd-macro-20261117"
+      ],
+      "evidence_class": "SECONDARY_MACRO_REPORT",
+      "counter_hypothesis": "A stronger dollar/risk-off backdrop can pressure crypto beta, but it does not establish an XRP-specific directional move or timing.",
+      "model_eligible": false
+    }
+  ],
+  "institutional_relationships": [
+    {
+      "id": "coinbase-circle-usdc-distribution",
+      "entities": [
+        "Coinbase",
+        "Circle"
+      ],
+      "relationship": "USDC distribution and reserve-income economics",
+      "claim": "Circle's Q3 2026 SEC filing reports $331.3M of Q3 and $986.6M of nine-month distribution costs in connection with Coinbase agreements. The agreement allocates economics based on USDC held on Coinbase and includes Coinbase participation in broader ecosystem reserve income after approved third-party participants.",
+      "source_ids": [
+        "circle-q3-2026-10q-coinbase-distribution"
+      ],
+      "counter_hypothesis": "This is a stablecoin distribution cost/revenue-sharing arrangement, not XRP market inflow, not evidence that Coinbase must prefer USDC over every other stablecoin, and not a current XRP collateral commitment."
+    },
+    {
+      "id": "coinbase-ripple-rlusd",
+      "entities": [
+        "Coinbase",
+        "Ripple"
+      ],
+      "relationship": "RLUSD listing/distribution across Coinbase platforms and three networks",
+      "claim": "Coinbase announced RLUSD availability on Prime, Exchange and retail across XRPL, Base and Ethereum. One-to-one USD conversion was available at launch; Coinbase Global Exchange collateral availability was described as a future rollout. Ripple said it would provide liquidity on Base.",
+      "source_ids": [
+        "coinbase-rlusd-launch-20261028"
+      ],
+      "counter_hypothesis": "A listing and network support do not establish collateral activation, XRP bridge use, net XRP demand or a change in Coinbase's Circle agreement."
+    },
+    {
+      "id": "sbi-circle-multirail",
+      "entities": [
+        "SBI Holdings",
+        "SBI Shinsei Bank",
+        "SBI VC Trade",
+        "Circle"
+      ],
+      "relationship": "USDC distribution, joint venture and strategic equity investment",
+      "claim": "SBI Holdings and SBI Shinsei Bank announced a combined $50M Circle share investment split $25M each; SBI Holdings and Circle established a JV to promote USDC in Japan. SBI VC Trade became a USDC distributor.",
+      "source_ids": [
+        "sbi-circle-investment-20250609",
+        "sbi-circle-jv-20250822"
+      ],
+      "counter_hypothesis": "The equity investment and JV are Circle/USDC exposures, not XRP capital allocation."
+    },
+    {
+      "id": "sbi-ripple-rlusd-xrp",
+      "entities": [
+        "SBI Holdings",
+        "SBI VC Trade",
+        "SBI Ripple Asia",
+        "Ripple"
+      ],
+      "relationship": "RLUSD distribution, XRP remittance and XRPL development",
+      "claim": "SBI VC Trade began RLUSD handling in Japan in June 2026. Separately, SBI Remit announced XRP-as-bridge remittance corridors to the Philippines, Vietnam and Indonesia in 2023. SBI Ripple Asia's 2026 tokenized-deposit PoC contemplated XRPL but did not identify XRP as the bridge asset.",
+      "source_ids": [
+        "sbi-ripple-rlusd-japan-20260624",
+        "sbi-remit-xrp-corridors-20230906",
+        "sbi-ripple-asia-tokenized-deposit-poc-20260226"
+      ],
+      "counter_hypothesis": "Do not infer that RLUSD, USDC, JPYSC, tokenized deposits or every XRPL PoC require XRP. Historical corridor announcements do not disclose current settlement volume."
+    },
+    {
+      "id": "sbi-startale-jpysc",
+      "entities": [
+        "SBI Holdings",
+        "SBI Shinsei Trust",
+        "SBI VC Trade",
+        "Startale",
+        "BlackRock"
+      ],
+      "relationship": "JPYSC issuance/distribution and tokenized-MMF MOU",
+      "claim": "SBI Shinsei Trust issues JPYSC, SBI VC Trade distributes it, and Startale co-developed the product. SBI reported more than ¥30B JPYSC handling balance and more than ¥10B lending balance on Nov 2. SBI/Startale later announced an MOU with BlackRock Japan to explore a tokenized-MMF and JPYSC ecosystem.",
+      "source_ids": [
+        "sbi-jpysc-launch-20260624",
+        "sbi-jpysc-balances-20261102",
+        "sbi-blackrock-jpysc-mou-20261027"
+      ],
+      "counter_hypothesis": "These are JPYSC balances and a preliminary MOU, not XRP holdings, not an XRP purchase and not proof of production interoperability."
+    },
+    {
+      "id": "bny-ripple-custody",
+      "entities": [
+        "BNY",
+        "Ripple",
+        "RLUSD",
+        "XRP"
+      ],
+      "relationship": "Reserve custody and institutional digital-asset custody",
+      "claim": "BNY announced expanded custody support for XRP and RLUSD and identified its RLUSD reserve-custody role.",
+      "source_ids": [
+        "bny-ripple-custody-20261027"
+      ],
+      "counter_hypothesis": "Custody availability is not equivalent to new market purchases, collateral utilization or XRP settlement volume."
+    },
+    {
+      "id": "circle-usdc-xrpl",
+      "entities": [
+        "Circle",
+        "USDC",
+        "XRPL",
+        "XRP"
+      ],
+      "relationship": "Native USDC issuance on XRPL",
+      "claim": "Circle announced USDC on XRPL. This establishes USDC availability on the ledger, not use of XRP as the bridge asset.",
+      "source_ids": [
+        "circle-usdc-xrpl-20250612"
+      ],
+      "counter_hypothesis": "USDC can move on XRPL without a transaction requiring XRP as an intermediate asset."
+    },
+    {
+      "id": "pnc-coinbase-usdc-ethereum",
+      "entities": [
+        "PNC",
+        "Coinbase",
+        "USDC",
+        "Ethereum"
+      ],
+      "relationship": "Incoming corporate/institutional stablecoin payment pilot",
+      "claim": "PNC announced incoming USDC payments via Coinbase on Ethereum.",
+      "source_ids": [
+        "pnc-coinbase-usdc-ethereum-20261109"
+      ],
+      "counter_hypothesis": "This is an Ethereum/USDC rail, not evidence of XRP usage."
+    }
+  ],
+  "disagreement_register": [
+    {
+      "topic": "XRP open interest and funding",
+      "resolution": "UNRESOLVED",
+      "reason": "Provider snapshots differ by more than 2x and even one provider returned $1.8B and $1.4B within 15 minutes; funding sign differs across aggregators."
+    },
+    {
+      "topic": "Nov 16 ETF flow",
+      "resolution": "UNRESOLVED",
+      "reason": "Partial 2/4-fund outflow conflicts with 6-fund-plus-BITW positive flow and another provider's zero; do not average or infer missing values."
+    },
+    {
+      "topic": "Spot liquidity",
+      "resolution": "INCOMPLETE",
+      "reason": "The new depth snapshot is Binance perpetual, while the existing run220 Fuelmaps snapshot covers a different spot-venue universe; no consolidated executable spot depth was verified."
+    },
+    {
+      "topic": "XRP-specific institutional demand",
+      "resolution": "PARTIALLY_RESOLVED",
+      "reason": "SBI Remit has a documented historical XRP bridge use case; multiple other SBI/Circle/Ripple initiatives use USDC, RLUSD, JPYSC or XRPL without identifying XRP as bridge. Current volumes remain undisclosed."
+    }
+  ],
+  "hypothesis_register": [
+    {
+      "id": "H221-LEVERAGE-RESET",
+      "statement": "The declining Liqwall OI and negative funding observations may reflect leverage reduction and long-position pressure.",
+      "supporting_source_ids": [
+        "liqwall-xrp-oi-20261117",
+        "alertachart-xrp-funding-20261117",
+        "tradradar-xrp-oi-20261116"
+      ],
+      "disconfirming_evidence": [
+        "OptimistFi reported materially higher OI and positive funding; its two snapshots also disagree internally."
+      ],
+      "tests_needed": [
+        "Normalize venue-level contract OI into USD and XRP using common timestamps and contract metadata; compare venue-level liquidation and funding feeds."
+      ]
+    },
+    {
+      "id": "H221-ETF-FLOW-SIGN",
+      "statement": "The Nov 16 ETF flow sign is not currently identifiable from the retrieved sources.",
+      "supporting_source_ids": [
+        "cryptokeyhole-xrp-etf-20261116",
+        "xrp-insights-xrp-etf-20261116",
+        "maketo-xrp-etf-flows-20261116"
+      ],
+      "disconfirming_evidence": [
+        "No single source currently supplies a complete, reconciled all-fund issuer-file set for the date."
+      ],
+      "tests_needed": [
+        "Reconcile each issuer's dated holdings/share files, fund universe, BITW treatment, fee accrual and missing-file state before computing aggregate creations/redemptions."
+      ]
+    },
+    {
+      "id": "H221-MULTIRAIL-COMPETITION",
+      "statement": "SBI is building parallel XRP, RLUSD, USDC and JPYSC rails; some use cases may complement XRPL while others compete for settlement and liquidity.",
+      "supporting_source_ids": [
+        "sbi-remit-xrp-corridors-20230906",
+        "sbi-ripple-rlusd-japan-20260624",
+        "sbi-circle-investment-20250609",
+        "sbi-circle-jv-20250822",
+        "sbi-jpysc-launch-20260624",
+        "sbi-jpysc-balances-20261102",
+        "sbi-ripple-asia-tokenized-deposit-poc-20260226"
+      ],
+      "disconfirming_evidence": [
+        "The presence of stablecoin rails does not prove displacement of XRP ODL; the SBI Ripple Asia PoC uses XRPL and XRP could still be used in separate remittance corridors."
+      ],
+      "tests_needed": [
+        "Obtain actual settlement volumes, corridors, liquidity-provider flows, asset inventory and bridge-asset selection for each product."
+      ]
+    },
+    {
+      "id": "H221-COINBASE-STABLECOIN-ECONOMICS",
+      "statement": "Coinbase has material economic incentives tied to USDC distribution while also expanding RLUSD distribution; these relationships can coexist.",
+      "supporting_source_ids": [
+        "circle-q3-2026-10q-coinbase-distribution",
+        "coinbase-rlusd-launch-20261028"
+      ],
+      "disconfirming_evidence": [
+        "The retrieved sources do not disclose the complete RLUSD commercial terms or whether Coinbase Global Exchange collateral support is live."
+      ],
+      "tests_needed": [
+        "Read Coinbase and Circle Q4 filings, current collateral asset policy and RLUSD liquidity/volume by network."
+      ]
+    }
+  ],
+  "prediction_status": {
+    "existing_registry_version": "run220",
+    "curated_events": 140,
+    "exact_publisher_timestamps": 54,
+    "missing_exact_publisher_timestamps": 86,
+    "byte_exact_raw_source_receipts": 0,
+    "model_eligible_events": 0,
+    "forecasts_issued": 0,
+    "directional_forecast": "NOT_ISSUED",
+    "paper_trading": "NOT_EXECUTED",
+    "note": "This artifact adds research-only rendered-source observations and does not update the event registry or make any observation model-eligible."
+  },
+  "nine_platform_map": {
+    "ChatGPT": {
+      "status": "GitHub connector exercised",
+      "authentication": "Current GitHub connector access tested successfully for repository reads and an integration-branch file update",
+      "permissions": "Repository write used only on existing integration branch; no main write or merge",
+      "data_flow": "Verified GitHub API read/write to Barrot-Agent/B-Agent branch"
+    },
+    "Claude": {
+      "status": "not_tested",
+      "authentication": "not tested",
+      "permissions": "none verified",
+      "data_flow": "none verified"
+    },
+    "Grok": {
+      "status": "workflow_reference_only",
+      "authentication": "GROQ_API_KEY references exist in manual workflows; secret not tested",
+      "permissions": "none verified",
+      "data_flow": "no live Groq request in this run"
+    },
+    "Gemini": {
+      "status": "not_tested",
+      "authentication": "not tested",
+      "permissions": "none verified",
+      "data_flow": "none verified"
+    },
+    "Copilot": {
+      "status": "workflow_reference_only",
+      "authentication": "workflow/documentation references only",
+      "permissions": "none verified",
+      "data_flow": "no live Copilot session tested"
+    },
+    "Codex": {
+      "status": "not_tested",
+      "authentication": "not tested",
+      "permissions": "none verified",
+      "data_flow": "none verified"
+    },
+    "Hugging Face": {
+      "status": "workflow_reference_only",
+      "authentication": "no token tested",
+      "permissions": "no live permission verified",
+      "data_flow": "integration branch quarantines HF sync/deploy workflows; no upload or restart"
+    },
+    "Kaggle": {
+      "status": "workflow_reference_only",
+      "authentication": "no Kaggle token tested",
+      "permissions": "no submission permission exercised",
+      "data_flow": "manual submission workflow remains gated; no competition submission"
+    },
+    "Databricks": {
+      "status": "workflow_reference_only",
+      "authentication": "no token tested in this run",
+      "permissions": "no deployment permission exercised",
+      "data_flow": "pillars-check workflow references a read-only SELECT 1 query; no query was executed by this run"
+    }
+  }
+}

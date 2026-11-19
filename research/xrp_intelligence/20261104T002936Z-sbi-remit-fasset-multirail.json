@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "record_id": "sbi-remit-fasset-xrp-stablecoin-rails-20261104T002936Z",
+  "captured_at_utc": "2026-11-04T00:29:36Z",
+  "scope": "SBI Remit's XRP-related remittance history, total cross-border remittance scale and new Fasset stablecoin infrastructure MoU",
+  "observations": [
+    {
+      "id": "sbi-remit-ownership",
+      "source": "https://www.sbigroup.co.jp/company/group/sbiremit.html",
+      "source_type": "SBI Holdings official group-company profile",
+      "source_data_as_of_date": "2026-08-28",
+      "metric": "SBI Group voting-rights ownership of SBI Remit",
+      "value": 82.96,
+      "unit": "percent",
+      "quality": "official group profile",
+      "notes": [
+        "Ownership ratio includes SBI group and companies/funds consolidated under IFRS as stated by SBI.",
+        "SBI Remit is not 100% owned by SBI Group."
+      ]
+    },
+    {
+      "id": "sbi-remit-cumulative-volume",
+      "source": "https://www.sbigroup.co.jp/news/2026/0618_16415.html",
+      "source_type": "SBI Holdings/SBI Remit official release",
+      "source_publication_date": "2026-06-18",
+      "metric": "SBI Remit cumulative remittance handling amount",
+      "value": 2500000000000,
+      "unit": "JPY",
+      "quality": "company-reported cumulative all-channel amount",
+      "notes": [
+        "SBI Remit stated cumulative remittance handling amount exceeded ¥2.5T as of May 29, 2026.",
+        "This is total SBI Remit remittance volume across channels/corridors, not XRP-specific volume and not a single-day capital flow."
+      ]
+    },
+    {
+      "id": "sbi-remit-fasset-mou",
+      "source": "https://www.sbigroup.co.jp/news/2026/0618_16415.html",
+      "source_type": "SBI Holdings/SBI Remit official release",
+      "source_publication_date": "2026-06-18",
+      "metric": "SBI Remit–Fasset next-generation cross-border remittance infrastructure",
+      "value": "memorandum_of_understanding",
+      "quality": "official MoU; not a production service",
+      "notes": [
+        "The MoU combines SBI Remit's customer base and remittance network with Fasset's stablecoin payment infrastructure.",
+        "Fasset's own reported scale in the SBI release: $32B annual transaction volume, 2M+ digital wallets, 16 blockchain networks and payment routes spanning 50+ banks. These are Fasset-reported claims, not independently verified in this record.",
+        "No production launch date, route-level asset mix, fee schedule or XRP role is disclosed."
+      ]
+    },
+    {
+      "id": "sbi-ripple-asia-ownership",
+      "source": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "source_type": "SBI Holdings official group-company profile",
+      "source_data_as_of_date": "2026-03-31",
+      "metric": "SBI Group voting-rights ownership of SBI Ripple Asia",
+      "value": 60,
+      "unit": "percent",
+      "quality": "official group profile",
+      "notes": [
+        "SBI Ripple Asia is a separate joint venture/business entity; SBI Group reports 60% voting rights.",
+        "This ownership figure is not the same as SBI Group's approximately 9% shareholding in Ripple Labs."
+      ]
+    },
+    {
+      "id": "sbi-ripple-remittance-history",
+      "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf",
+      "source_type": "SBI official investor presentation",
+      "source_publication_date": "2025-06-02",
+      "metric": "SBI Remit XRP-utilizing international remittance",
+      "value": "service_started_2021_and_expanded_to_selected_Southeast_Asian_corridors",
+      "quality": "SBI-reported product history",
+      "notes": [
+        "SBI reports an XRP-utilizing remittance service through SBI Remit and expansion to Philippines, Vietnam and Indonesia in 2023.",
+        "Current XRP-specific transfer volume, market-maker inventory and share of the ¥2.5T total are not disclosed."
+      ]
+    },
+    {
+      "id": "sbi-remit-corridor-expansion",
+      "source": "https://www.sbigroup.co.jp/news/2026/0617_16411.html",
+      "source_type": "SBI Shinsei Bank official release",
+      "source_publication_date": "2026-06-17",
+      "metric": "SBI Remit fiat corridor expansion",
+      "value": "JPY_bank_account_transfers_added",
+      "quality": "official product expansion",
+      "notes": [
+        "SBI Remit added Japanese-yen bank-account remittances alongside local currencies, USD and EUR.",
+        "This is a fiat rail expansion, not evidence of XRP usage."
+      ]
+    },
+    {
+      "id": "sbi-remit-2026-ownership-and-volume",
+      "source": "https://www.sbigroup.co.jp/company/group/sbiremit.html",
+      "source_type": "SBI Holdings official group-company profile",
+      "source_data_as_of_date": "2026-08-28",
+      "metric": "SBI Remit network coverage",
+      "value": "approximately_200_countries_and_regions",
+      "quality": "company-reported service coverage",
+      "notes": [
+        "The profile describes bank-account remittance coverage across about 200 countries/regions.",
+        "Coverage does not establish active volume in every corridor."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI Holdings",
+      "relation": "holds_82.96_percent_voting_rights_in",
+      "to": "SBI Remit",
+      "evidence_class": "official_group_profile",
+      "scope_note": "As of 2026-08-28; ownership includes consolidated subsidiaries/funds."
+    },
+    {
+      "from": "SBI Remit",
+      "relation": "has_cumulative_all_channel_remittance_handling_amount_over",
+      "to": "JPY 2.5 trillion",
+      "evidence_class": "company_reported_2026-05-29",
+      "scope_note": "Not XRP-specific; total across remittance channels."
+    },
+    {
+      "from": "SBI Remit",
+      "relation": "offers_XRP_utilizing_remittance_in_selected_corridors",
+      "to": "Ripple/XRP payment solution",
+      "evidence_class": "SBI_reported_product_history",
+      "scope_note": "Service started 2021 and expanded to Philippines, Vietnam and Indonesia in 2023; current XRP share/volume unknown."
+    },
+    {
+      "from": "SBI Remit",
+      "relation": "signed_MoU_for_stablecoin_cross_border_infrastructure_with",
+      "to": "Fasset",
+      "evidence_class": "official_MoU_2026-06-18",
+      "scope_note": "Exploration/partnership agreement; production use and token/chain selection not disclosed."
+    },
+    {
+      "from": "Fasset",
+      "relation": "claims_network_spanning_16_blockchains_and_50_plus_banks",
+      "to": "stablecoin payment infrastructure",
+      "evidence_class": "Fasset_claim_as_quoted_by_SBI",
+      "scope_note": "Company-reported, not independently verified."
+    },
+    {
+      "from": "SBI Holdings",
+      "relation": "holds_60_percent_voting_rights_in",
+      "to": "SBI Ripple Asia",
+      "evidence_class": "official_group_profile_as_of_2026-03-31",
+      "scope_note": "Separate from SBI's equity interest in Ripple Labs."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "R1",
+      "claim": "SBI Remit is pursuing a multi-rail remittance strategy, retaining XRP-based corridors while adding stablecoin infrastructure through Fasset and fiat options.",
+      "supporting": [
+        "SBI reports an XRP-utilizing remittance service since 2021 and a June 2026 Fasset stablecoin-infrastructure MoU; it also added JPY bank-account remittances."
+      ],
+      "disconfirming": [
+        "No evidence yet that Fasset is in production or that XRP routes have been reduced."
+      ],
+      "test": "Compare corridor-level asset routing, transfer costs, settlement times, liquidity-provider inventory and volume before/after Fasset deployment."
+    },
+    {
+      "id": "R2",
+      "claim": "Fasset stablecoin rails may substitute for XRP bridge legs in some remittance corridors.",
+      "supporting": [
+        "Fasset describes multi-chain stablecoin payment infrastructure across 16 networks and 50+ banks."
+      ],
+      "disconfirming": [
+        "The MoU does not disclose asset selection or a production launch; SBI continues to support XRP corridors."
+      ],
+      "test": "Obtain public route design and post-launch corridor-level settlement-asset mix."
+    },
+    {
+      "id": "R3",
+      "claim": "The ¥2.5T cumulative remittance figure demonstrates SBI Remit's scale but cannot be used as XRP transaction volume or token demand.",
+      "supporting": [
+        "The company reports total remittance handling across approximately 200 countries/regions and multiple currencies."
+      ],
+      "disconfirming": [
+        "None of the cited sources allocates the total by asset or channel."
+      ],
+      "test": "Seek XRP-specific volume disclosures or independent on-chain/partner data; otherwise keep the metric as total network scale only."
+    }
+  ],
+  "unknowns": [
+    "XRP share of SBI Remit's cumulative ¥2.5T handling amount.",
+    "Current XRP-based remittance volume by corridor and settlement route.",
+    "Fasset MoU implementation status, launch date, stablecoin issuer(s), chain(s), banks and routes selected.",
+    "Whether Fasset infrastructure will replace, complement or coexist with SBI Remit's Ripple/XRP routes.",
+    "Actual Fasset annual transaction volume and wallet activity independently verified against primary network data."
+  ],
+  "data_quality": [
+    "The ¥2.5T figure is cumulative total remittance handling, not XRP-only volume and not current capital inflow.",
+    "The 82.96% SBI Remit voting-rights ownership figure is dated 2026-08-28; do not assume 100% ownership.",
+    "SBI Ripple Asia's 60% voting-rights ownership is separate from SBI's approximately 9% Ripple Labs shareholding.",
+    "Fasset's $32B annual volume, 2M+ wallets, 16 chains and 50+ banks are company claims quoted in SBI's release; not independently validated here.",
+    "The Fasset relationship is an MoU, not evidence of a production deployment."
+  ],
+  "next_actions": [
+    "Track SBI Remit/Fasset announcements for a production launch and asset/chain/corridor details.",
+    "Separate SBI Remit's total remittance volume from XRP-specific corridor volume in all future models.",
+    "Compare cost, speed, liquidity and asset routing across Ripple/XRP, Fasset stablecoins, JPYSC and fiat bank transfers.",
+    "Monitor whether Fasset uses XRP or only stablecoins in any SBI route; do not infer from network count."
+  ]
+}

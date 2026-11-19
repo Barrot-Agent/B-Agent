@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "artifact_id": "20261105T081500Z-evernorth-actual-capital-cantor-facility-reconciliation",
+  "artifact_type": "evernorth_actual_cash_in_kind_xrp_debt_and_contingent_financing_reconciliation",
+  "captured_at_utc": "2026-11-05T08:15:00Z",
+  "timestamp_precision": "Minute-level research-run observation; SEC filing dates are retained separately.",
+  "mission_priority": 1,
+  "forecast_issued": false,
+  "model_eligible": false,
+  "eligibility_status": "MODEL_INELIGIBLE_SEC_RENDERED_EXTRACTS_NO_BYTE_COMPLETE_RECEIPTS",
+  "source_capture_policy": {
+    "raw_http_bytes_captured": false,
+    "raw_content_sha256": null,
+    "source_capture_status": "SEC HTML search/find excerpts; original filing bytes not captured",
+    "rendered_excerpt_hashes_are_not_raw_source_hashes": true,
+    "admission_rule": "Retain as corporate-capital research only. Before machine admission, capture the exact SEC filing bytes, accession metadata, publication/acceptance timestamps and SHA-256 receipts."
+  },
+  "source_registry": [
+    {
+      "id": "evernorth_oct30_s1",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC EDGAR",
+      "authority": "issuer SEC registration statement",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "filing_form": "S-1",
+      "filed_date": "2026-10-30",
+      "prospectus_status": "preliminary; subject to completion",
+      "key_claims": [
+        "No proceeds had been received under the Committed Equity Facility as of the prospectus date.",
+        "Approximately $214.0 million of cash was used to acquire XRP from proceeds of Advance Funding Subscription Agreements.",
+        "Approximately $214.05 million cash and 600,000 XRP were associated with Advance Funding Subscription Agreements; $10.5 million cash and 200,000 XRP with Delayed Funding Subscription Agreements; 211,319,096.061435 XRP with the Series C Subscription Agreement; 50,000,000 XRP with the Contributor Related Party Entity Subscription Agreement.",
+        "A $30 million Convertible Senior PIK Note was issued on October 12, 2026 for $30 million cash consideration; $1 million issuance costs were expensed."
+      ],
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "evernorth_oct23_8k_eloc",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC EDGAR",
+      "authority": "issuer SEC current report",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm",
+      "filing_form": "8-K",
+      "event_date": "2026-10-23",
+      "key_claims": [
+        "Optional committed equity facility for up to 5,218,935 newly issued Class A shares.",
+        "Purchase price generally 97% of applicable VWAP, subject to additional pricing rules.",
+        "Purchases are at Evernorth's sole discretion and subject to registration, ownership, trading-volume and price-threshold conditions.",
+        "$521,893.50 upfront commitment fee is payable within five business days after the registration statement becomes effective and is non-refundable regardless of whether purchases occur."
+      ],
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "evernorth_oct23_public_warrant_424b3",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC EDGAR",
+      "authority": "issuer prospectus supplement",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067062/a424b3sticker8-k.htm",
+      "filing_form": "424B3",
+      "prospectus_date": "2026-10-23",
+      "key_claims": [
+        "Up to 11,499,992 shares may be issued upon exercise of Public Warrants.",
+        "Each Public Warrant has an $11.50 exercise price.",
+        "Evernorth receives proceeds from these shares only upon warrant exercise, not from secondary sales of the registered shares."
+      ],
+      "raw_content_sha256": null,
+      "model_eligible": false
+    }
+  ],
+  "capital_reconciliation": {
+    "historical_cash_received_and_deployed": {
+      "category": "actual historical subscription cash; not current free cash",
+      "amount_usd": 214050000,
+      "source": "Advance Funding Subscription Agreements",
+      "timing": "2025 funding, reflected in October 2026 S-1",
+      "use_of_proceeds_usd": 214000000,
+      "use_of_proceeds": "acquire 84,365,876 XRP as reported in the S-1 historical cost table",
+      "residual_cash_not_inferred": true,
+      "classification": "ACTUAL_CASH_RECEIVED_AND_MOSTLY_DEPLOYED_TO_XRP"
+    },
+    "delayed_funding_subscription": {
+      "category": "actual subscription consideration reported at the October 9, 2026 closing",
+      "cash_usd": 10500000,
+      "xrp_tokens": 200000,
+      "classification": "ACTUAL_CONSIDERATION_REPORTED; CASH_USE_NOT_ESTABLISHED_IN_THIS_EXCERPT"
+    },
+    "in_kind_xrp_subscriptions": {
+      "advance_funding_xrp": 600000,
+      "delayed_funding_xrp": 200000,
+      "series_c_xrp": 211319096.061435,
+      "contributor_related_party_xrp": 50000000,
+      "total_xrp": 262119096.061435,
+      "classification": "IN_KIND_XRP_CONTRIBUTIONS_NOT_CASH_AND_NOT_NEW_OPEN_MARKET_PURCHASES"
+    },
+    "convertible_senior_pik_notes": {
+      "issued_date": "2026-10-12",
+      "gross_cash_consideration_usd": 30000000,
+      "issuance_costs_usd": 1000000,
+      "net_proceeds_after_stated_issuance_costs_usd": 29000000,
+      "interest": "4.00% per annum, payable in kind",
+      "maturity_year": 2031,
+      "classification": "ACTUAL_DEBT_FINANCING_NOT_EQUITY_AND_NOT_XRP_PURCHASES_BY_ITSELF"
+    },
+    "cantor_committed_equity_facility": {
+      "agreement_date": "2026-10-23",
+      "maximum_new_shares": 5218935,
+      "illustrative_gross_capacity_usd_at_15_46_reference_price": 80700000,
+      "actual_proceeds_usd_as_of_2026_10_30": 0,
+      "purchase_price": "Generally 97% of applicable VWAP, with additional contractual rules",
+      "issuer_discretion": true,
+      "conditions": [
+        "Effective resale registration statement and final prospectus",
+        "4.99% beneficial-ownership cap",
+        "20% of trading volume limit",
+        "Contractual price threshold",
+        "Additional purchase conditions"
+      ],
+      "upfront_commitment_fee_usd": 521893.5,
+      "upfront_fee_status": "Contractual cash fee payable after the registration statement becomes effective; payment date and actual remittance not verified in the reviewed source set.",
+      "fee_is_capital_raised": false,
+      "classification": "POTENTIAL_FACILITY_ZERO_PROCEEDS_EXPLICITLY_REPORTED_AS_OF_2026_10_30"
+    },
+    "public_warrants": {
+      "maximum_shares": 11499992,
+      "exercise_price_usd": 11.5,
+      "maximum_gross_cash_if_all_exercised_usd": 132249908,
+      "cash_exercise_count_verified": null,
+      "proceeds_verified_usd": null,
+      "classification": "CONTINGENT_POTENTIAL_CASH_ONLY_IF_HOLDERS_EXERCISE"
+    }
+  },
+  "actual_capital_interpretation": [
+    "The latest explicit issuer statement located for the Cantor facility says Evernorth had received zero proceeds under that facility as of the October 30, 2026 S-1 prospectus date.",
+    "The $80.7 million figure is illustrative capacity at a reference share price, not cash raised. Facility purchases require Evernorth notices and multiple conditions.",
+    "The $521,893.50 upfront commitment fee is a fee payable to Cantor, not capital raised. The reviewed filings do not establish that it had actually been remitted by the research cutoff.",
+    "The $132,249,908 public-warrant amount is a maximum arithmetic cash-exercise scenario, not realized proceeds. The company receives no proceeds from secondary sales of the registered shares.",
+    "The $214.05 million advance-funding cash is historical actual cash received, and the S-1 reports approximately $214 million was used to acquire XRP. It must not be counted again as current available cash.",
+    "The $10.5 million delayed-funding cash consideration, in-kind XRP contributions and $30 million PIK note are separate categories. They must not be combined into a single 'XRP purchases' figure.",
+    "In-kind XRP contributions increase treasury holdings but are not contemporaneous open-market purchases. PIK notes are debt financing, not equity."
+  ],
+  "source_disagreement_and_gaps": {
+    "secondary_reporting": "Some secondary reports described the ELOC registration as effective on October 30. The reviewed issuer S-1 is dated October 30 and explicitly reports zero facility proceeds as of its prospectus date; this artifact does not infer commencement or fee payment from secondary reporting.",
+    "current_status_after_2026_10_30": "No later primary filing confirming Cantor facility drawdown was located in this run. Absence of a later filing is not proof that no draw occurred after October 30.",
+    "warrant_exercises": "No exercise count or proceeds receipt was established in the reviewed filings.",
+    "current_cash": "Historical subscription cash, debt proceeds and XRP purchases do not establish Evernorth's current unrestricted cash balance."
+  },
+  "exact_phrase_resolution": {
+    "phrase": "actual capital",
+    "conclusion": "Use actual cash received, in-kind XRP, debt proceeds, contingent facility capacity, warrant-exercise potential and fees as separate typed fields. Do not label announced capacity or warrant arithmetic as actual capital.",
+    "forecast_issued": false
+  },
+  "model_admission": {
+    "status": "EXCLUDED",
+    "reason": "Capital-structure research is not an XRP market feature until time-stamped, independently receipted and linked to verified XRP purchases/flows."
+  },
+  "next_actions": [
+    "Monitor subsequent SEC filings for Cantor facility commencement, purchase notices, shares issued and proceeds received.",
+    "Verify any upfront fee remittance separately from facility proceeds.",
+    "Track public-warrant exercises from issuer/transfer-agent disclosures rather than assuming full exercise.",
+    "Reconcile each actual XRP acquisition against wallet receipts, trade records and subsequent holdings filings."
+  ]
+}

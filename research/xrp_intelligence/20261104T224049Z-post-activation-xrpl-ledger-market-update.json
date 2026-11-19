@@ -1,0 +1,310 @@
+{
+  "schema_version": "barrot.xrp.post-activation-market-update.v1",
+  "artifact_id": "xrp_post_activation_market_update_20261104T224049Z",
+  "artifact_type": "post_activation_xrpl_protocol_state_and_market_microstructure_update",
+  "captured_at_utc": "2026-11-04T22:40:49Z",
+  "data_cutoff_utc": "2026-11-04T22:40:49Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "branch": "research/xrp-evidence-archive-20261104",
+    "review_pr": 1643,
+    "reviewed_head_sha": "d779f8944eb5e417955af05e779838c082bcd63a",
+    "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72"
+  },
+  "preservation": {
+    "append_only": true,
+    "prior_artifacts_modified": false,
+    "raw_source_bytes_archived": false,
+    "immutable_raw_receipts_created": false,
+    "forecast_issued": false,
+    "real_money_actions": false
+  },
+  "source_registry": [
+    {
+      "id": "xrpldashboard_amendments_live_20261104T2240Z",
+      "publisher": "XRPL Dashboard",
+      "source_type": "independent_node_backed_protocol_tracker",
+      "url": "https://xrpldashboard.com/amendments",
+      "retrieved_at_utc": "2026-11-04T22:40:49Z",
+      "source_event_timestamp_utc": null,
+      "source_independence_group": "xrpldashboard_node",
+      "raw_capture_status": "web_rendered_html_extract_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "The page reports fixCleanup3_4_0 enabled at ledger 108112129 at 2026-11-04T14:52:00Z and supplies EnableAmendment transaction hash F2E0342BC2419508DBAB9E869B7057941A07782426167396F87C7D0CA008FA6C.",
+        "The page reports 98 live mainnet amendments, 9 in-flight amendments and no amendment in a 14-day activation countdown.",
+        "Its 2026-11-04 22:06 UTC roll-call snapshot reports SingleAssetVault 21/35, LendingProtocol 19/35 and LendingProtocolV1_1 19/35, with 29 yes votes required.",
+        "The page says its protocol state is read from its own sovereign rippled node through feature RPC and the canonical Amendments ledger object; vote counts are separately attributed to its own validations stream and XRPL Foundation history.",
+        "The page displays XRP at USD 1.3076 as of 22:19 UTC.",
+        "The page includes a signed daily citation leaf prefix 48f78f28237d... for 2026-11-04, but no signature verification or raw signed payload was performed in this run."
+      ],
+      "limitations": [
+        "This is a third-party node-backed tracker, not a byte-complete direct JSON-RPC capture from the canonical network.",
+        "No raw response bytes or SHA-256 receipt were captured.",
+        "The page has two different current-ledger indicators: header ledger 108118734 and body validated-ledger-at-fetch 108118715. This is recorded as a page freshness/cache discrepancy; neither is selected as the activation ledger.",
+        "The displayed lending votes are explicitly timestamped 22:06 UTC and are not treated as a 22:40 live roll call.",
+        "The page does not disclose the underlying market-data source for its USD 1.3076 header quote."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "xrplwin_fixcleanup3_4_0_live_20261104T2240Z",
+      "publisher": "XRPLWin",
+      "source_type": "XRPL explorer ledger-state and amendment-history record",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "retrieved_at_utc": "2026-11-04T22:40:49Z",
+      "source_event_timestamp_utc": "2026-11-04T14:52:00Z",
+      "source_independence_group": "xrplwin_windb",
+      "raw_capture_status": "web_rendered_html_extract_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "XRPLWin identifies fixCleanup3_4_0 as enabled on 2026-11-04 at ledger 108112129.",
+        "XRPLWin reports amendment ID 98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76.",
+        "XRPLWin says its node reads amendment state from ledger 108118849, validator votes from voting ledger 108118783, and majority/enablement from its WinDB EnableAmendment record."
+      ],
+      "limitations": [
+        "This is an explorer's ledger-derived record, not a raw transaction or JSON-RPC response captured by Barrot.",
+        "It shares the same underlying public ledger as XRPL Dashboard, so the two trackers are independent retrieval paths, not independent protocol events.",
+        "The page does not expose byte-complete source receipts in the retrieved rendering."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "xrpl_org_known_amendments_20261104",
+      "publisher": "XRP Ledger documentation",
+      "source_type": "official_protocol_documentation",
+      "url": "https://xrpl.org/resources/known-amendments",
+      "retrieved_at_utc": "2026-11-04T22:40:49Z",
+      "source_event_timestamp_utc": null,
+      "source_independence_group": "xrpl_protocol_primary_docs",
+      "raw_capture_status": "web_rendered_html_extract_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "The official known-amendments reference identifies fixCleanup3_4_0 and its amendment ID and documents its affected protocol subsystems and fixes.",
+        "The official page's dynamic Mainnet Status and amendment status cells rendered as Loading in the retrieved page; it was used for amendment semantics, not live enablement confirmation."
+      ],
+      "limitations": [
+        "The dynamic status portion was not readable in the retrieved rendering.",
+        "No raw page bytes or SHA-256 receipt were captured."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "kraken_xrpusd_ticker_20261104T2240Z",
+      "publisher": "Kraken",
+      "source_type": "primary_exchange_public_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-04T22:40:49Z",
+      "source_event_timestamp_utc": null,
+      "source_independence_group": "kraken_primary_exchange",
+      "raw_capture_status": "rendered_json_response_only",
+      "raw_content_sha256": null,
+      "claims_supported": [
+        "The ticker returned last trade USD 1.31352, best bid USD 1.31376 and best ask USD 1.31387.",
+        "The ticker returned 24-hour volume 41189420.05610191 XRP and 24-hour VWAP USD 1.29201409.",
+        "The ticker returned 24-hour high USD 1.34, 24-hour low USD 1.24016 and UTC daily open USD 1.27513.",
+        "The displayed best bid quantity was 1385 XRP and best ask quantity was 1008 XRP."
+      ],
+      "limitations": [
+        "The ticker response contains no exchange event timestamp; retrieved_at_utc is a capture-time bound, not a provider data-as-of timestamp.",
+        "The web renderer exposed JSON text rather than byte-complete HTTP response bytes, so no immutable raw-source SHA-256 receipt can be claimed.",
+        "The endpoint provides top-of-book quantities only, not a full order-book depth ladder, executable market-impact curve or cross-venue synchronized quote.",
+        "The last-trade price is below the displayed best bid in this response; do not assume the last trade and top-of-book were updated at the same instant.",
+        "The open field is the exchange's UTC daily open, not a rolling 24-hour open."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "protocol_status": {
+    "fixCleanup3_4_0": {
+      "status": "ENABLED",
+      "enablement_utc": "2026-11-04T14:52:00Z",
+      "enablement_ledger": 108112129,
+      "amendment_id": "98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76",
+      "enable_amendment_transaction_hash": "F2E0342BC2419508DBAB9E869B7057941A07782426167396F87C7D0CA008FA6C",
+      "tracker_confirmation": [
+        "XRPL Dashboard",
+        "XRPLWin"
+      ],
+      "tracker_agreement_scope": "Both trackers report the same activation ledger, time and transaction hash. They are separate retrieval paths over the same public ledger, not independent underlying protocol events.",
+      "raw_primary_transaction_verification": "NOT_EXECUTED",
+      "interpretation": "A protocol cleanup/fix amendment is active. It does not itself activate native lending, establish XRP collateral utilization, change XRP supply, or prove new XRP demand."
+    },
+    "native_lending": {
+      "status": "NOT_ACTIVE",
+      "vote_snapshot_utc": "2026-11-04T22:06:00Z",
+      "trusted_validator_count": 35,
+      "required_yes_votes": 29,
+      "yes_votes": {
+        "SingleAssetVault": 21,
+        "LendingProtocol": 19,
+        "LendingProtocolV1_1": 19
+      },
+      "activation_countdown_active": false,
+      "broker_board_status": "AWAITING_AMENDMENT_ACTIVATION",
+      "interpretation": "fixCleanup3_4_0 is a prerequisite-quality maintenance package, not a lending launch. No native lending utilization, loan volume, collateral demand or yield is inferred."
+    }
+  },
+  "market_snapshot": {
+    "currency_pair": "XRP/USD",
+    "venue": "Kraken",
+    "retrieved_at_utc": "2026-11-04T22:40:49Z",
+    "provider_event_timestamp_utc": null,
+    "last_trade_usd": 1.31352,
+    "best_bid_usd": 1.31376,
+    "best_ask_usd": 1.31387,
+    "midpoint_usd": 1.313815,
+    "spread_usd": 0.00011,
+    "spread_bps": 0.8373,
+    "best_bid_quantity_xrp": 1385,
+    "best_ask_quantity_xrp": 1008,
+    "volume_24h_xrp": 41189420.05610191,
+    "vwap_24h_usd": 1.29201409,
+    "high_24h_usd": 1.34,
+    "low_24h_usd": 1.24016,
+    "utc_daily_open_usd": 1.27513,
+    "dashboard_quote": {
+      "publisher": "XRPL Dashboard",
+      "price_usd": 1.3076,
+      "provider_as_of_utc": "2026-11-04T22:19:00Z",
+      "retrieved_at_utc": "2026-11-04T22:40:49Z",
+      "model_eligible": false,
+      "source_method": "not disclosed on retrieved page"
+    },
+    "comparison_policy": "Do not average these quotes or infer arbitrage: they have different timestamps, the dashboard quote source is undisclosed, and Kraken supplies no event timestamp."
+  },
+  "data_quality": {
+    "raw_source_bytes_captured": false,
+    "immutable_raw_receipts_created": false,
+    "rendered_web_extracts_model_eligible": false,
+    "dashboard_current_ledger_indicator_disagreement": {
+      "header_ledger": 108118734,
+      "body_validated_ledger_at_fetch": 108118715,
+      "classification": "same_page_freshness_or_cache_disagreement",
+      "treatment": "Preserve both values; do not select either as a verified current ledger. The activation ledger 108112129 is separately reported by both trackers."
+    },
+    "no_averaging_policy": "Do not average provider quotes, order-book values, open-interest values, ETF values or validator snapshots with different timestamps, scopes or source lineage."
+  },
+  "observations": [
+    {
+      "id": "OBS-FIXCLEANUP3-4-0-ENABLED-20261104",
+      "class": "confirmed_protocol_state_from_two_ledger_trackers",
+      "claim": "fixCleanup3_4_0 was enabled on XRPL mainnet at ledger 108112129 at 2026-11-04T14:52:00Z.",
+      "detail": "The amendment ID and EnableAmendment transaction hash agree across XRPL Dashboard and XRPLWin. Raw transaction bytes were not captured by Barrot, so this is cross-tracker ledger-derived confirmation rather than direct local transaction verification.",
+      "evidence": [
+        "xrpldashboard_amendments_live_20261104T2240Z",
+        "xrplwin_fixcleanup3_4_0_live_20261104T2240Z",
+        "xrpl_org_known_amendments_20261104"
+      ],
+      "disconfirming_or_missing": [
+        "A direct raw JSON-RPC feature/ledger response from two independent nodes is not archived.",
+        "The explorer transaction page rendered only a JavaScript shell in the web reader; the transaction payload was not independently parsed."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-NATIVE-LENDING-REMAINS-INACTIVE-20261104",
+      "class": "timestamped_validator_vote_snapshot",
+      "claim": "Native XRPL lending remained unactivated in the latest readable vote snapshot, with LendingProtocol at 19/35 and SingleAssetVault at 21/35 against 29 required.",
+      "detail": "LendingProtocolV1_1 was 19/35. The dashboard showed no amendment in a 14-day countdown. This is a 22:06 UTC snapshot, not a current 22:40 vote.",
+      "evidence": [
+        "xrpldashboard_amendments_live_20261104T2240Z"
+      ],
+      "disconfirming_or_missing": [
+        "A later timestamped roll call could change the vote counts.",
+        "A new amendment status or activation record after the captured page would supersede this snapshot."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-KRAKEN-XRPUSD-MICROSTRUCTURE-20261104T2240Z",
+      "class": "single_venue_top_of_book_and_24h_ticker_snapshot",
+      "claim": "Kraken's rendered XRP/USD ticker showed a USD 1.31376 bid, USD 1.31387 ask, USD 1.31352 last trade and approximately 0.8370 basis-point displayed spread.",
+      "detail": "The same response showed 41.19 million XRP 24-hour volume, USD 1.29201409 24-hour VWAP and a USD 1.24016–1.34 range. This is not market-wide liquidity or a synchronized cross-venue quote.",
+      "evidence": [
+        "kraken_xrpusd_ticker_20261104T2240Z"
+      ],
+      "disconfirming_or_missing": [
+        "No raw response bytes, exchange event timestamp, full depth ladder or market-impact curve.",
+        "The last trade was below the displayed best bid; quote components may have different update times."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-DASHBOARD-QUOTE-NOT-SYNCHRONIZED-20261104",
+      "class": "secondary_dashboard_quote_with_unknown_provider_method",
+      "claim": "XRPL Dashboard displayed XRP at USD 1.3076 as of 22:19 UTC, which is not directly comparable to Kraken's later retrieved ticker without a synchronized timestamp and disclosed quote methodology.",
+      "detail": "The two values are retained separately and are not averaged or treated as arbitrage.",
+      "evidence": [
+        "xrpldashboard_amendments_live_20261104T2240Z",
+        "kraken_xrpusd_ticker_20261104T2240Z"
+      ],
+      "disconfirming_or_missing": [
+        "The dashboard does not disclose the market-data provider on this page.",
+        "The Kraken ticker does not supply a provider event timestamp."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1-PROTOCOL-READINESS-MAY-PRECEDE-LATER-ADOPTION",
+      "claim": "The activated cleanup package may reduce implementation risk for future vault, lending, AMM and token workflows, but any economic impact requires separate feature activation and actual usage.",
+      "support": [
+        "fixCleanup3_4_0 is enabled on mainnet and covers vault, lending and AMM corrections.",
+        "SingleAssetVault and LendingProtocol amendments remain under validator voting."
+      ],
+      "disconfirming_or_missing": [
+        "No lending amendment is enabled.",
+        "No verified vault deposits, loans, XRP collateral utilization or related fees were captured in this run."
+      ],
+      "test": [
+        "Track separate amendment votes and activation ledgers.",
+        "After activation, measure actual vault assets, loan balances, collateral composition and fees from ledger state."
+      ]
+    },
+    {
+      "id": "H2-MAINTENANCE-ONLY-NO-NEAR-TERM-XRP-DEMAND",
+      "claim": "The event may remain a protocol-maintenance change with no measurable near-term XRP demand effect.",
+      "support": [
+        "The cleanup amendment does not itself activate lending or create a new XRP supply/use mechanism.",
+        "Current vote snapshot remains below the 29-vote threshold for the lending stack."
+      ],
+      "disconfirming_or_missing": [
+        "Later activation and production use could change the demand channels.",
+        "No event study or synchronized market data was run."
+      ],
+      "test": [
+        "Compare pre/post activation ledger activity and market data using event-time controls.",
+        "Require actual XRP-denominated deposits, collateral, fees or payments before assigning demand."
+      ]
+    },
+    {
+      "id": "H3-SPOT-PRICE-MOVE-IS-NOT-ATTRIBUTABLE-TO-THE-AMENDMENT",
+      "claim": "Any contemporaneous XRP price movement may be driven by broader spot flows, derivatives positioning, macro news or other events rather than this protocol amendment.",
+      "support": [
+        "The Kraken quote is one venue and lacks an exchange event timestamp.",
+        "No causal identification or synchronized multi-venue event study was performed."
+      ],
+      "disconfirming_or_missing": [
+        "No current exchange-flow, ETF, funding, liquidation or macro control series was joined in this capture."
+      ],
+      "test": [
+        "Use synchronized venue-level trades/books, derivatives, ETF and macro vintages in a preregistered event study."
+      ]
+    }
+  ],
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "This artifact contains rendered web extracts without byte-complete raw receipts and lacks synchronized market, derivatives, flow and macro features. It is not eligible for model training or directional forecasting."
+  },
+  "next_actions": [
+    "Add direct public XRPL JSON-RPC feature and ledger capture through two allowlisted nodes, preserving exact response bytes, SHA-256 receipts, server/ledger timestamps and validated ledger sequence.",
+    "Verify the EnableAmendment transaction and canonical Amendments ledger object directly from raw responses; retain tracker confirmations as separate provenance.",
+    "Capture timestamped validator roll calls and separate SingleAssetVault, LendingProtocol and LendingProtocolV1_1 activation states; do not equate fixCleanup3_4_0 with lending activation.",
+    "Extend the scheduled market collector to capture full depth ladders and exchange event timestamps from multiple venues, with source-specific staleness controls.",
+    "Preserve the per-run artifact and 90-day retention limitation; do not label it durable WORM storage or a cross-run historical feature store.",
+    "Do not issue a directional XRP forecast until byte-complete source receipts, point-in-time history, baseline comparisons and leakage-safe out-of-sample evaluation are available."
+  ]
+}

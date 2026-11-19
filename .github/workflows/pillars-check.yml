@@ -41,11 +41,11 @@ jobs:
         run: python scripts/pillars_check.py
 
       - name: Install PyJWT for the explicitly approved GitHub App probe
-        if: github.event_name == 'workflow_dispatch' && inputs.confirm_read_only_github_app_probe == 'YES'
+        if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm_read_only_github_app_probe == 'YES'
         run: pip install pyjwt
 
       - name: Run explicitly approved GitHub App read-only probe
-        if: github.event_name == 'workflow_dispatch' && inputs.confirm_read_only_github_app_probe == 'YES'
+        if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm_read_only_github_app_probe == 'YES'
         env:
           GITHUB_APP_PROBE_ENABLED: "true"
           GITHUB_APP_ID: ${{ secrets.GITHUB_APP_ID }}
@@ -60,7 +60,7 @@ jobs:
           PY
 
       - name: Run explicitly approved Databricks read-only probe
-        if: github.event_name == 'workflow_dispatch' && inputs.confirm_read_only_databricks_probe == 'YES'
+        if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.confirm_read_only_databricks_probe == 'YES'
         env:
           DATABRICKS_PROBE_ENABLED: "true"
           DATABRICKS_HOST: dbc-82d64fee-1c2e.cloud.databricks.com

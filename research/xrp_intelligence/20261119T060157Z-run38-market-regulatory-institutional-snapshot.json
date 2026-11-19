@@ -1,0 +1,242 @@
+{
+  "schema_version": "barrot.xrp.run38.market-regulatory-institutional-snapshot.v1",
+  "run_id": "run38",
+  "recorded_at_utc": "2026-11-19T06:01:57Z",
+  "repository": {
+    "main_sha": "82c23e219553164c24073784c529aad75acacd66",
+    "integration_head_at_capture": "0de99c1082bc2ea5a6692c19857019c85364d2bb",
+    "integration_commits_ahead": 402,
+    "integration_commits_behind": 0,
+    "main_tree_entries": 1739,
+    "integration_tree_entries": 2995,
+    "main_paths_missing_from_integration": 0,
+    "integration_pr": 1663,
+    "integration_pr_state": "open",
+    "integration_pr_draft": true,
+    "integration_pr_reviews": 0,
+    "integration_pr_review_threads": 0,
+    "integration_pr_changed_files": 1448,
+    "open_pr_count": 14
+  },
+  "market_snapshot": {
+    "captured_at_utc": "2026-11-19T06:01:57Z",
+    "research_only": true,
+    "model_eligible": false,
+    "eligibility_reasons": [
+      "Kraken response has no provider event timestamp",
+      "OKX response timestamp is approximately 20 minutes old at capture",
+      "USD and USDT quote currencies are not normalized with a synchronized FX observation",
+      "24-hour rolling windows differ across venues",
+      "Only top-of-book ticker fields were retrieved; full depth endpoints were inaccessible",
+      "Hashes below cover rendered JSON strings, not raw transport bytes"
+    ],
+    "venues": [
+      {
+        "venue": "Kraken",
+        "instrument": "XRP/USD",
+        "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "provider_timestamp_utc": null,
+        "last_price": 0.97366,
+        "bid_price": 0.9734,
+        "bid_size_xrp": 150,
+        "ask_price": 0.97341,
+        "ask_size_xrp": 451,
+        "top_spread_bps": 0.1027321618,
+        "volume_24h_xrp": 53364555.35221379,
+        "vwap_24h": 0.97881866,
+        "low_24h": 0.95363,
+        "high_24h": 1.00677,
+        "open_24h": 0.96637,
+        "rendered_response_sha256": "e4296023ae96a4519382e390e09b350453de1b8b3f3c19fd23f0120ae2d67f4c",
+        "raw_bytes_captured": false,
+        "hash_scope": "SHA-256 of the JSON response string exposed by the web retrieval; not raw transport bytes"
+      },
+      {
+        "venue": "OKX",
+        "instrument": "XRP-USDT",
+        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "provider_timestamp_utc": "2026-11-19T05:41:56.138Z",
+        "age_seconds_at_capture": 1200.862,
+        "last_price": 0.9734,
+        "bid_price": 0.9733,
+        "bid_size_xrp": 8640.438061,
+        "ask_price": 0.9734,
+        "ask_size_xrp": 2312.809948,
+        "top_spread_bps": 1.0273796682,
+        "open_24h": 0.9878,
+        "high_24h": 1.0079,
+        "low_24h": 0.9546,
+        "volume_24h_xrp": 33158642.919061,
+        "volume_24h_quote": 32501158.770883884,
+        "rendered_response_sha256": "19534f354293c9e101e52d1c39cd2476a5c366cb86aa082329a415eeedcce021",
+        "raw_bytes_captured": false,
+        "hash_scope": "SHA-256 of the JSON response string exposed by the web retrieval; not raw transport bytes"
+      }
+    ],
+    "depth_capture": {
+      "full_order_book_captured": false,
+      "okx_depth_endpoint": "inaccessible through retrieval",
+      "binance_book_ticker_endpoint": "inaccessible through retrieval",
+      "binance_depth_endpoint": "inaccessible through retrieval",
+      "interpretation": "The bid/ask sizes above are best-level quantities only, not executable depth curves or venue-wide liquidity."
+    },
+    "cross_venue_comparison": {
+      "eligible": false,
+      "reason": "Quote currency, timestamp, and rolling-window bases are not synchronized.",
+      "observed_window_disagreement": "Kraken last is approximately 0.75% above its reported 24-hour open, while OKX last is approximately 1.46% below its own 24-hour open. This is not a cross-venue directional signal."
+    }
+  },
+  "institutional_regulatory": {
+    "ripple_national_trust_bank": {
+      "occ_control_number": "2025-Charter-342347",
+      "proposed_charter_number": "25364",
+      "proposed_name": "Ripple National Trust Bank",
+      "occ_corporate_applications_search_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "occ_original_conditional_approval_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf",
+      "ripple_announcement_url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "filing_status": [
+        {
+          "action": "Receipt",
+          "date": "2025-07-02"
+        },
+        {
+          "action": "Approved",
+          "date": "2025-12-12"
+        },
+        {
+          "action": "Consummated/Effective",
+          "date": "2026-10-26"
+        }
+      ],
+      "status": "CONS UMMATED_EFFECTIVE_2026-10-26",
+      "evidence_assessment": "The OCC Corporate Applications Search is primary evidence and resolves the earlier uncertainty: the charter filing is recorded as consummated/effective on 2026-10-26. The OCC interpretations index still surfaces the original Conditional Approval #1359 letter, but that historic preliminary letter is not the complete current filing-status record.",
+      "operational_limit": "Consummated/effective charter status does not establish that the bank has commenced customer operations, has opened custody accounts, or holds XRP. Ripple's release says custody services will be provided upon opening. RLUSD continues to be issued by Standard Custody & Trust Company, LLC (SCTC), not RNTB.",
+      "xrp_demand_implication": "No XRP custody balance, purchase, flow, or transaction volume is disclosed by the OCC filing-status record or Ripple release."
+    }
+  },
+  "institutional_rails": {
+    "dbs_circle_usdc": {
+      "announcement_date": "2026-11-18",
+      "dbs_source_url": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
+      "circle_source_url": "https://www.circle.com/pressroom",
+      "verified_features": [
+        "Eligible institutional clients can directly mint and redeem USDC through DBS",
+        "24/7 USD-USDC settlement capabilities",
+        "Partnership builds on DBS and Circle participation in Project BLOOM"
+      ],
+      "xrp_or_xrpl_integration_disclosed": false,
+      "interpretation": "A new institutional USDC banking rail and an alternative or complementary stablecoin route. It is not evidence of XRP demand or XRPL settlement."
+    },
+    "bny_ripple": {
+      "announcement_date": "2026-10-27",
+      "bny_source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "ripple_source_url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "verified_features": [
+        "BNY Digital Asset Custody supports XRP and RLUSD for eligible institutional clients",
+        "BNY remains primary reserve custodian for RLUSD"
+      ],
+      "future_plans": "BNY intends to broaden XRPL tokenized-asset support and enable clients to mint and redeem RLUSD directly through BNY, subject to final BNY and regulatory approvals.",
+      "holdings_or_volume_disclosed": false,
+      "interpretation": "Custody availability is not evidence of client holdings, incremental XRP purchases, or realized payment throughput."
+    },
+    "bny_circle": {
+      "announcement_date": "2026-06-29",
+      "bny_source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/bny-expands-relationship-circle-adds-institutional-grade-stablecoin-enablement-services.html",
+      "circle_source_url": "https://www.circle.com/pressroom/bny-expands-relationship-with-circle-and-adds-to-institutional-grade-stablecoin-enablement-services",
+      "verified_features": [
+        "BNY supports USDC custody and client-directed mint/burn workflows",
+        "BNY expanded its role in USDC reserve custody"
+      ],
+      "interpretation": "BNY is a shared institutional custody and stablecoin-services node across Circle/USDC and Ripple/RLUSD; this does not imply issuer ownership or XRP purchase."
+    }
+  },
+  "institutional_13f_digest_corrections": {
+    "jane_street_q3_normalized_rows_sha256": "e2ab6677f0d34eab1f9592bfe3b310f04ad87d491831b696ec3737278fc43348",
+    "jane_street_q2_normalized_rows_sha256": "9f30b92b27d7e16c5fb502b738d5a5f218d65e097f5cc31c326e06df3306cdb8",
+    "hash_scope": "Canonical newline-joined normalized row strings only; neither digest is a hash of raw SEC response bytes.",
+    "raw_sec_bytes_captured": false,
+    "model_eligible": false
+  },
+  "source_quality": {
+    "primary_sources": [
+      "OCC Corporate Applications Search",
+      "DBS official newsroom",
+      "Circle official pressroom",
+      "BNY official newsroom",
+      "Kraken public ticker API",
+      "OKX public ticker API"
+    ],
+    "issuer_and_partner_announcements_for_the_same_event_are_not_counted_as_independent_market_measurements": true,
+    "raw_http_transport_bytes_captured": false,
+    "immutable_worm_anchor_present": false
+  },
+  "competing_hypotheses": [
+    "Institutional custody and reserve-management capability can expand without creating incremental XRP purchases.",
+    "USDC institutional mint/redeem access may compete with, complement, or operate independently of XRP bridge-asset settlement.",
+    "RLUSD custody and future mint/redeem services through BNY may expand RLUSD utility without changing XRP demand.",
+    "Short-horizon price action may be dominated by macro liquidity, spot inventory, leverage, and venue-specific positioning rather than institutional announcements."
+  ],
+  "disconfirming_evidence": [
+    "No BNY XRP client balance or purchase volume was disclosed.",
+    "DBS/Circle announced USDC access without an XRP or XRPL integration.",
+    "The market snapshot lacks synchronized multi-venue depth and current derivatives coverage.",
+    "The OCC filing-status record does not disclose RNTB operating volumes or XRP holdings."
+  ],
+  "no_forecast_issued": true,
+  "forecast_decision": "NO_DIRECTIONAL_FORECAST",
+  "next_actions": [
+    "Correct both Jane Street normalized-row digests and rerun the full repository suite on the new exact head.",
+    "Capture synchronized multi-level spot order books and trades with provider timestamps.",
+    "Capture original SEC and exchange response bytes with SHA-256 receipts and an independently verifiable immutable anchor.",
+    "Replace the echo-only merge workflow with a substantive read-only fail-closed readiness gate.",
+    "Remove Databricks --overwrite or add a verified target backup/hash guard before any external import.",
+    "Keep directional forecast issuance disabled until all point-in-time, walk-forward, calibration, drift, shadow, source-diversity, and independent-attestation thresholds pass."
+  ],
+  "updated_at_utc": "2026-11-19T06:24:30Z",
+  "macro_context": {
+    "event_id": "FOMC_2026-10-27_28_minutes_release_2026-11-18",
+    "reviewed_at_utc": "2026-11-19T06:24:30Z",
+    "meeting_period": "2026-10-27/2026-10-28",
+    "released_at_utc": "2026-11-18T19:00:00Z",
+    "release_source_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261118a.htm",
+    "primary_minutes_url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm",
+    "policy_decision": {
+      "target_range_pct": [
+        3.75,
+        4
+      ],
+      "vote": "10-2",
+      "dissenters": [
+        {
+          "name": "Lisa D. Cook",
+          "preferred_action": "raise target range by 25 basis points"
+        },
+        {
+          "name": "Beth M. Hammack",
+          "preferred_action": "raise target range by 25 basis points"
+        }
+      ]
+    },
+    "financial_stability_observations": [
+      "Federal Reserve staff described tail scenarios in which falling asset prices force investors to deleverage and funds to meet redemptions, potentially causing substantial asset sales.",
+      "Staff highlighted rapid AI-buildout debt growth, off-balance-sheet leasing commitments, and circular financing arrangements as possible loss amplifiers.",
+      "Hedge-fund leverage and limited dealer intermediation capacity were identified as salient amplification channels."
+    ],
+    "macro_geopolitical_observations": [
+      "The meeting's market review noted that evolving developments in the ongoing conflict with Iran and a sharp repricing of French sovereign debt contributed to market swings.",
+      "The review described a stronger broad U.S. dollar, partly associated with widening U.S.-foreign interest-rate differentials.",
+      "The review reported that market-implied policy paths at the time assigned high probability to a 25-basis-point hike by year-end and two further hikes by summer 2027; this is a meeting-period observation, not a current quote."
+    ],
+    "point_in_time_policy": {
+      "event_time": "2026-10-27/2026-10-28",
+      "available_at_utc": "2026-11-18T19:00:00Z",
+      "rule": "Do not backdate the minutes to the meeting dates. The information becomes public and eligible for point-in-time features only after the release timestamp."
+    },
+    "model_eligible": false,
+    "exclusion_reasons": [
+      "One macro event does not establish an XRP-specific predictive relationship.",
+      "No synchronized XRP event study or leakage-safe out-of-sample incremental-value test has been run.",
+      "Use as a dated macro-risk context event only; do not convert narrative into a directional forecast."
+    ]
+  }
+}

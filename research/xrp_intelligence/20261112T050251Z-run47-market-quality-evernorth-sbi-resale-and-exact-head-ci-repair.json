@@ -1,0 +1,260 @@
+{
+  "artifact_type": "barrot.xrp.run_research_and_integration_audit",
+  "schema_version": "1.0.0",
+  "run_id": "Run47",
+  "captured_at_utc": "2026-11-12T05:02:51Z",
+  "mission": {
+    "priority": 1,
+    "primary": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "head_before_commit": "28eafc87d7a7c4709789c51bc19839264b12eff4",
+    "pr": 1661,
+    "draft": true,
+    "mergeable_state": "unstable",
+    "ahead_by": 2082,
+    "behind_by": 0,
+    "changed_files": 1047,
+    "workflow_files": 49,
+    "non_workflow_paths": 998,
+    "main_tree_entries": 1388,
+    "integration_tree_entries": 2306,
+    "integration_tree_blobs": 2197,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "expected_after_commit": {
+      "ahead_by": 2083,
+      "changed_files": 1048,
+      "non_workflow_paths": 999,
+      "integration_tree_entries": 2307,
+      "integration_tree_blobs": 2198
+    }
+  },
+  "exact_head_ci_before_repair": {
+    "head_sha": "28eafc87d7a7c4709789c51bc19839264b12eff4",
+    "run_id": 43157406477,
+    "conclusion": "failure",
+    "passed": 3500,
+    "failed": 5,
+    "subtests": 8,
+    "coverage_percent": 61.34,
+    "duration_seconds": 68.93,
+    "core_passed": 716,
+    "dependency_audit": {
+      "run_id": 43157406550,
+      "manifests": 6,
+      "known_vulnerabilities": 0,
+      "conclusion": "success"
+    },
+    "fail_closed_gate": {
+      "run_id": 43157406574,
+      "conclusion": "success"
+    },
+    "failing_tests": [
+      "tests/test_xrp_event_timeline_ingestion.py::test_xrp_ingestion_workflow_publishes_the_event_timeline_artifact",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_least_privilege_and_external_action_gates_remain_closed",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_repository_snapshot_matches_current_main_and_successor_branch",
+      "tests/test_xrp_nine_platform_current_map_run73.py::test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "tests/test_xrp_public_ingestion.py::test_scheduled_ingestion_workflow_persists_history_without_repository_writes"
+    ],
+    "classification": "Exact-head full-suite failed on 28eafc87d7a7c4709789c51bc19839264b12eff4: 3,500 passed, 5 failed, eight subtests passed, 61.34% coverage in 68.93 seconds. The five failures were test-contract/snapshot defects: literal backslash in the event artifact expectation; security test expected zero branch-tip paths while 17/17 recursive trees contain inherited .config/gh/hosts.yml; stale non-workflow path counts (995 versus 987; verified current count 998); CI failure narrative omitted the required exact-head classification; retention test expected three 90-day artifacts while workflow defines four. The 3,500 other tests passed. Core suite, six-manifest dependency audit and fail-closed gate passed. Wheel/installed verification was skipped after full-suite failure. Run47 corrects these assertions and the new head requires exact-head CI.",
+    "wheel_build": "skipped after test failure"
+  },
+  "repairs": {
+    "event_artifact_assertion": "Use a raw string to match the exact GitHub run-id expression without a literal backslash.",
+    "retention_assertion": "Expected 90-day artifact count corrected from three to four.",
+    "security_assertion": "Expect 17 inherited branch-tip trees and zero changed-file diffs; assert no credential contents read.",
+    "snapshot_and_ci": "Refresh repository counts and exact-head failure evidence.",
+    "event_registry": "Six curated events added; raw_source_sha256 remains null; model_eligible false."
+  },
+  "security": {
+    "credential_path": ".config/gh/hosts.yml",
+    "main_present": false,
+    "integration_present": false,
+    "affected_pr_numbers": [
+      1653,
+      1650,
+      1649,
+      1648,
+      1647,
+      1646,
+      1645,
+      1644,
+      1643,
+      1642,
+      1640,
+      1320,
+      1318,
+      1317,
+      1269,
+      1255,
+      1254
+    ],
+    "recursive_trees_checked": 17,
+    "branch_trees_containing_path": 17,
+    "changed_file_inventories_checked": 17,
+    "changed_file_inventories_containing_path": 0,
+    "all_17_open_and_base_main": true,
+    "contents_read": false,
+    "provider_side_revocation_verified": false,
+    "history_rewritten": false
+  },
+  "market": {
+    "captured_at_utc": "2026-11-12T05:02:51Z",
+    "model_eligible": false,
+    "okx": {
+      "last": 1.0454,
+      "bid": 1.0451,
+      "ask": 1.0452,
+      "event_time_utc": "2026-11-12T04:47:04.271Z",
+      "age_seconds": 946.729,
+      "stale": true
+    },
+    "kraken": {
+      "last": 1.04357,
+      "bid": 1.04374,
+      "ask": 1.04375,
+      "event_time_utc": null,
+      "usdt_usd_mid": 0.998685,
+      "normalized_mid_gap_percent": 0.0029344093
+    },
+    "fuelmaps": {
+      "snapshot_utc": "2026-11-12T04:00:00Z",
+      "mid": 1.0487,
+      "venues": 6,
+      "bids_1pct_usd": 12500000,
+      "asks_1pct_usd": 11600000,
+      "bids_5pct_usd": 29000000,
+      "asks_5pct_usd": 15500000,
+      "bids_10pct_usd": 34300000,
+      "asks_10pct_usd": 16600000,
+      "excluded": [
+        "Binance",
+        "Bitget"
+      ]
+    },
+    "liqwall": {
+      "as_of_utc": "2026-11-12T05:02:00Z",
+      "open_interest_usd": 1160000000,
+      "change_24h_percent": 1.4,
+      "funding_per_8h_percent": 0.0055,
+      "liquidations_usd": 4000000,
+      "long_liquidations_usd": 2900000,
+      "short_liquidations_usd": 1100000,
+      "binance_long_accounts_percent": 75.5
+    },
+    "tradradar_comparison": {
+      "as_of_utc": "2026-11-11T19:05:00Z",
+      "open_interest_usd": 1570000000,
+      "change_24h_percent": -0.97,
+      "funding_per_8h_percent": 0.0045,
+      "long_accounts_percent": 79.7,
+      "coverage_warning": "Different universe/time; do not average."
+    },
+    "ETF_flows": {
+      "through": "2026-11-10",
+      "nov9_usd": -10400000,
+      "nov10_usd": -7600000,
+      "two_day_usd": -18000000,
+      "thirty_session_usd": 1300000,
+      "cumulative_net_inflows_usd": 1710000000,
+      "source_lineage": "SoSoValue-derived; Alpha Finance and Pre-Tick not independent."
+    }
+  },
+  "institutional": {
+    "SEC": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+    "registered_resale_shares": 73688162,
+    "components": {
+      "issued_class_a": 19102635,
+      "potential_class_c_conversions": 31392746,
+      "potential_company_unit_redemptions_or_exchanges": 22953128,
+      "potential_sponsor_warrant_exercise_shares": 239653
+    },
+    "class_a_outstanding_as_of_2026_10_22": 26094680,
+    "sbi_class_a": 9431914,
+    "sbi_class_c": 2359038,
+    "sbi_class_a_percent": 36.1,
+    "sbi_class_c_nonvoting_unlisted_nontransferable": true,
+    "sbi_group_cap_percent": 39.9,
+    "lockup_signatories": [
+      "Ripple",
+      "Sponsor/Arrington",
+      "Contributor Related Party Entity/Larsen Lam Trust"
+    ],
+    "lockup_restricted_class_a_shares": 7044386,
+    "lockup_percent_oct9": 29.8,
+    "sbi_lockup_status": "Unresolved: generic resale language references lock-up provisions; SBI not named in specific signatory list.",
+    "issuer_resale_proceeds_usd": 0,
+    "completed_sbi_resale_verified": false,
+    "evernorth_xrp_sale_verified": false
+  },
+  "event_timeline": {
+    "registry_version": "run47-2026-11-12",
+    "events": 20,
+    "new_events": 6,
+    "raw_source_hashes": 0,
+    "scenario_assembler_wired_on_integration": true,
+    "scheduled_main_capture_verified": false,
+    "receipt_complete": false,
+    "model_eligible": false,
+    "probabilities": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "prediction_engine": {
+    "source_definitions": 47,
+    "scheduled_sources": 45,
+    "baselines": [
+      "naive",
+      "momentum",
+      "mean_reversion",
+      "Gaussian volatility"
+    ],
+    "walk_forward": "chronological with purge/embargo",
+    "calibration": "rolling temporal",
+    "drift": "PSI",
+    "point_in_time_store": "SQLite prototype",
+    "raw_receipts": "local SHA-256 chain; no independent WORM anchoring",
+    "shadow_outcomes": 0,
+    "production_evaluator_key": false,
+    "out_of_sample_lift": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "platforms": {
+    "ChatGPT": "GitHub API authenticated; overprivileged",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "no formal approval",
+    "Codex": "unverified",
+    "HuggingFace": "BUILD_ERROR",
+    "Kaggle": "untested",
+    "Databricks": "HTTP 403",
+    "LunaRoute": "endpoint unverified"
+  },
+  "open_research": {
+    "ASK_Coin": "No primary-source XRPL integration verified.",
+    "actual_capital": "Not a standardized XRP metric; separate cash, in-kind XRP, debt, facilities, ELOC, warrants and resales.",
+    "SBIC": "East/Tokyo, Central/Nagoya, West/Osaka are regional SME investment companies, not SBI Holdings.",
+    "Kamilah_Camilla": "First-party YouTube ownership unverified; no videos attributed."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "actions": {
+    "main_write": false,
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "provider_revocation": false,
+    "external_model_transfer": false,
+    "paper_trade": false,
+    "real_money": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "source_pr_closure": false
+  }
+}

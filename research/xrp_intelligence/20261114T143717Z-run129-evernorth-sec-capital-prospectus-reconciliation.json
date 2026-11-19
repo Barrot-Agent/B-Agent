@@ -1,0 +1,105 @@
+{
+  "artifact_type": "evernorth_actual_capital_and_xrp_treasury_prospectus_reconciliation",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-14T14:37:17.083Z",
+  "issuer": "Evernorth Holdings Inc. / Pathfinder Digital Assets LLC",
+  "evidence_method": "SEC EDGAR primary filing text inspected in the public filing viewer. Original raw HTTP bytes were not retained; no SHA-256 raw-byte receipt is claimed. This is a primary-source research reconciliation, not a Barrot ingestion receipt.",
+  "primary_sources": [
+    {
+      "form": "424B3",
+      "filed_date": "2026-10-30",
+      "accession": "000162828026068590",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm"
+    },
+    {
+      "form": "424B3",
+      "filed_date": "2026-10-19",
+      "accession": "000119312526425367",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm"
+    }
+  ],
+  "findings": {
+    "historical_cash_xrp_purchase": {
+      "amount_usd": 214000000,
+      "period": "2025",
+      "classification": "ACTUAL_HISTORICAL_CASH_DEPLOYMENT",
+      "description": "The filing reports approximately $214.0 million of cash used to acquire XRP using proceeds received under Advance Funding Subscription Agreements; approximately $214.8 million of financing cash was received under those agreements.",
+      "limitation": "Historical financing/acquisition, not a current-period spot-flow measure."
+    },
+    "ripple_related_party_facility": {
+      "lender": "Ripple",
+      "borrower": "Pathfinder Digital Assets LLC (the Company in the filing)",
+      "initial_limit_usd": 7000000,
+      "amended_limit_usd": 10000000,
+      "interest_rate_pct_per_annum": 3.81,
+      "outstanding_as_of_2026_06_30_usd": 6600000,
+      "outstanding_as_of_2026_10_07_usd": 9700000,
+      "amendment_date": "2026-10-07",
+      "repayment_terms": "Amounts outstanding became repayable within five business days after the October 9, 2026 business-combination closing, or earlier on five business days' demand by Ripple.",
+      "classification": "RELATED_PARTY_BORROWING_NOT_NEW_EXTERNAL_EQUITY_CAPITAL",
+      "reconciliation": "The $9.7M includes certain payments Ripple made to third parties on behalf of Pathfinder/Evernorth that were previously recorded as related-party payables and then reclassified as borrowings. The filing does not establish the post-closing settlement status.",
+      "limitation": "Some facility draws funded vendor payments on behalf of Evernorth and were recorded as intercompany receivables/payables; do not classify the full $9.7M as XRP purchases."
+    },
+    "ripple_in_kind_xrp_contribution": {
+      "amount_xrp": 126791458,
+      "recipient": "Pathfinder Digital Assets LLC",
+      "purpose": "The filing says the contributed XRP can be liquidated to fund operating costs for the Company and Pathfinder.",
+      "classification": "IN_KIND_XRP_CONTRIBUTION_NOT_CASH",
+      "limitation": "No evidence in this filing that the full amount was sold or transferred to exchanges; do not count as immediate sell pressure."
+    },
+    "sbi_affiliated_equity": {
+      "strategic_investor": "The prospectus identifies SBI Holdings as a strategic investor and describes the SBI/Ripple SBI Ripple Asia relationship.",
+      "ownership_threshold_pct": 39.9,
+      "threshold_effect": "Certain investors affiliated with SBI Holdings received Class C shares for amounts that would otherwise exceed the 39.9% Class A ownership threshold; Class C shares are convertible under the Pubco governing documents.",
+      "advance_delayed_subscription_shares_class_a": 11748249,
+      "advance_delayed_subscription_shares_class_c": 2359038,
+      "cap_table_label": "SBI",
+      "cap_table_shares": 11790952,
+      "cap_table_context": "The pro forma table labels a line item 'SBI' with 11,790,952 shares. The excerpt does not supply the full legal entity name for that row; do not equate the row automatically with every SBI-affiliated subscription investor.",
+      "classification": "PUBCO_EQUITY_OWNERSHIP_NOT_XRP_HOLDINGS_OR_CASH_PROCEEDS"
+    },
+    "eloc": {
+      "counterparty": "CF Principal Investments LLC (Cantor)",
+      "agreement_date": "2026-10-23",
+      "maximum_new_class_a_shares": 5218935,
+      "term_months_approx": 14,
+      "pricing": "97% of VWAP purchase price; purchase timing at Evernorth's discretion and subject to conditions/volume limits.",
+      "beneficial_ownership_cap_pct": 4.99,
+      "gross_proceeds_cover_and_table_usd": 76770533.85,
+      "estimated_net_proceeds_cover_and_table_usd": 74400000,
+      "body_paragraph_conflicting_gross_proceeds_usd": 80700000,
+      "internal_filing_disagreement": "The cover and illustrative table state approximately $76.8M gross at a $14.71 assumed trading price; one Use of Proceeds paragraph states $80.7M for the same 5,218,935 shares. The table and cover are arithmetically consistent with 5,218,935 × $14.71 ≈ $76.77M. Preserve the $80.7M line as an unresolved filing inconsistency, not a separate financing event.",
+      "issuer_proceeds_distinction": "Evernorth says it receives no proceeds from Cantor's subsequent resale to the market, but may receive purchase proceeds when it elects to issue and sell shares to Cantor.",
+      "intended_use": "General corporate purposes, including potential XRP acquisition and XRP-ecosystem activity, plus working capital.",
+      "classification": "POTENTIAL_FUTURE_EQUITY_FINANCING_NOT_ACTUAL_PROCEEDS",
+      "actual_draw_or_share_issuance_verified": false
+    },
+    "public_warrants_and_convertible_notes": {
+      "public_warrant_shares_registered": 11499992,
+      "public_warrant_exercise_price_usd": 11.5,
+      "maximum_gross_cash_exercise_if_all_exercised_usd": 132249908,
+      "pro_forma_pubco_warrants_unexercised_as_of_2026_06_30": 11739645,
+      "convertible_notes_unconverted_as_of_2026_06_30": 2941176,
+      "classification": "CONTINGENT_POTENTIAL_DILUTION_AND_POTENTIAL_EXERCISE_CAPITAL_NOT_ACTUAL_CASH",
+      "limitation": "The reviewed filing says warrants had not been exercised and notes had not been converted as of the stated June 30 pro forma measurement; it does not establish subsequent exercise totals."
+    },
+    "xrp_per_share_kpi": {
+      "definition": "XRP attributable to Pubco divided by the aggregate Pubco Class A and Class C shares outstanding.",
+      "implication": "Track both XRP holdings and fully diluted share structure. Equity issuance can dilute XRP per share even when total XRP held increases."
+    },
+    "custody_and_ecosystem_intentions": {
+      "primary_custodian": "BitGo Bank & Trust",
+      "stated_all_xrp_custody": "The prospectus says all Evernorth XRP is held through BitGo Trust.",
+      "rlUSD_xrp_amm": "The company intends to use RLUSD in XRP-based DeFi activities, including potential RLUSD/XRP AMM liquidity.",
+      "deployment_timing": "The prospectus says material XRP ecosystem deployment was not anticipated before Q4 2026; the document describes intended strategy, not proof of completed deployment.",
+      "cash_capital_direct_to_projects": "The prospectus says Pubco did not then plan to invest cash capital directly into XRP ecosystem projects; it intended to deploy a portion of existing XRP holdings.",
+      "classification": "CUSTODY_AND_FORWARD_LOOKING_STRATEGY_NOT_VERIFIED_EXECUTED_FLOWS"
+    },
+    "secondary_73_7m_share_claim": {
+      "status": "NOT_INDEPENDENTLY_CONFIRMED_AS_A_SINGLE_REGISTERED_RESALE_BLOCK",
+      "note": "The two reviewed SEC prospectuses disclose distinct instruments: 5,218,935 ELOC shares and 11,499,992 public-warrant shares, while also listing other potential share classes. A secondary AI summary's approximately 73.7M-share figure was not reconciled to a single primary filing block and must not be treated as actual issued shares, cash proceeds or XRP sales."
+    }
+  },
+  "model_eligible": false,
+  "forecast_impact": "No directional forecast. Treat ELOC/warrants as contingent equity-supply events; treat the Ripple facility and in-kind XRP contribution separately from external cash and exchange flows."
+}

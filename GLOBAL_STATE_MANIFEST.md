@@ -465,17 +465,23 @@ done
 ```
 {
   "$schema": "https://opencode.ai/config.json",
-  "default_agent": "barrot",
-  "model": "opencode/deepseek-v4.1-flash-free",
-  "mcp": {
-    "servers": {}
-  },
-  "permission": {
-    "external_directory": "allow",
-    "edit": "allow",
-    "bash": "allow"
-  }
-}
+  "model": "lunaroute/glm-5.3-flash",
+  "provider": {
+    "lunaroute": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LunaRoute",
+      "options": {
+        "baseURL": "https://gw.lunaroute.com/v1",
+        "apiKey": "{env:LUNAROUTE_API_KEY}"
+      },
+      "models": {
+        "glm-5.3-flash": {
+          "name": "GLM 5.3 Flash"
+        },
+        "deepseek-4.1-flash": {
+          "name": "DeepSeek 4.1 Flash"
+        },
+        "muse-
 ```
 
 ## Module: ./.git/barrot_capability_audit/index.json
@@ -6385,6 +6391,7 @@ def triangulate_polygon(
 ```
 
 ## Module: ./barrot_agent/repair/executor.py
+{% raw %}
 ```
 import json
 
@@ -6424,8 +6431,10 @@ Rules:
 - Preserve unrelated code.
 - Return compl
 ```
+{% endraw %}
 
 ## Module: ./barrot_agent/repair/planner.py
+{% raw %}
 ```
 import json
 
@@ -6458,6 +6467,7 @@ Schema:
       "reason": "...",
       "validatio
 ```
+{% endraw %}
 
 ## Module: ./barrot_agent/repair/rollback.py
 ```
@@ -10582,6 +10592,56 @@ mod = im
         "test_rate": 1.0,
         "test_passed": 6,
      
+```
+
+## Module: ./results/mcp_sync/snapshot.json
+```
+{
+  "elapsed_ms": 6055.2,
+  "gaps": [
+    {
+      "candidates": [],
+      "covered_by": [],
+      "covered_categories": [],
+      "filled": false,
+      "missing_categories": [
+        "agent_communication",
+        "task_distribution"
+      ],
+      "name": "Multi-agent coordination",
+      "priority": "high",
+      "reason": "not all required categories have a live tool",
+      "required_tool_categories": [
+        "agent_communication",
+        "task_distribution"
+      ],
+      "target_id": 
+```
+
+## Module: ./results/mcp_sync/last_good.json
+```
+{
+  "generated_at": "2026-11-13T01:45:28.773291+00:00",
+  "servers": {
+    "lunaroute": {
+      "attempts": 1,
+      "error": "",
+      "latency_ms": 6029.6,
+      "missing_env": [],
+      "protocol_version": "2025-06-18",
+      "server_info": {
+        "name": "lunaroute-mcp",
+        "version": "0.1.0"
+      },
+      "source": "live",
+      "status": "connected",
+      "tools": [
+        {
+          "categories": [
+            "document_conversion",
+            "vision"
+          ],
+          
 ```
 
 ## Module: ./scripts/a2a_server.py

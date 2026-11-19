@@ -1,0 +1,307 @@
+{
+  "artifact_type": "barrot_xrp_run33_market_exchange_flow_etf_dbs_bloom_reconciliation",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-19T01:13:00Z",
+  "capture_time_precision": "minute",
+  "mission": "XRP intelligence and measured prediction-engine mastery are Barrot's highest-priority mission; preserve Barrot V3 as execution, orchestration, safety and verification foundation.",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "82c23e219553164c24073784c529aad75acacd66",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_head_sha_at_capture": "20c50967c5eb72f568a51b042b2fd055aaef34f7",
+    "pr_number": 1663,
+    "pr_state": "open",
+    "pr_draft": true
+  },
+  "market": {
+    "asset": "XRP",
+    "quote_capture_window_utc": "2026-11-19T01:12:00Z/2026-11-19T01:13:00Z",
+    "kraken_xrp_usd": {
+      "endpoint": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_timestamp_returned": false,
+      "last": 0.96851,
+      "bid": 0.96842,
+      "bid_size_xrp": 349,
+      "ask": 0.96859,
+      "ask_size_xrp": 174,
+      "spread_basis_points": 1.755,
+      "volume_24h_xrp": 43856101.13514678,
+      "vwap_24h_usd": 0.981593,
+      "high_24h_usd": 1.00677,
+      "low_24h_usd": 0.95485,
+      "trades_24h": 33949,
+      "utc_day_open_usd": 0.96637,
+      "field_semantics": "Kraken o is UTC-day open, not rolling 24-hour open; v[1], p[1], h[1], l[1] are the 24-hour fields."
+    },
+    "okx_xrp_usdt": {
+      "endpoint": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_timestamp_utc": "2026-11-19T00:53:11.072Z",
+      "quote_age_at_capture_seconds": 1196,
+      "last": 0.9673,
+      "bid": 0.9671,
+      "bid_size_xrp": 2996.266227,
+      "ask": 0.9672,
+      "ask_size_xrp": 2765.144,
+      "spread_basis_points": 1.034,
+      "open_24h_usdt": 0.9791,
+      "high_24h_usdt": 1.0079,
+      "low_24h_usdt": 0.9552,
+      "volume_24h_xrp": 30370103.256156,
+      "volume_24h_usdt": 29850391.982977916,
+      "normalization": "No USD conversion applied; synchronized USDT/USD leg was not captured."
+    },
+    "coingecko_cross_check": {
+      "url": "https://www.coingecko.com/en/coins/xrp/historical_data",
+      "displayed_price_usd": 0.9674,
+      "displayed_date": "2026-11-19",
+      "displayed_24h_range_usd": [
+        0.9563,
+        1.01
+      ],
+      "note": "Aggregator cross-check only; page did not expose a precise quote timestamp in the captured excerpt."
+    },
+    "interpretation": [
+      "Kraken and OKX spot quotes were within approximately 0.13% of one another, but the OKX quote was about 20 minutes old at capture.",
+      "Both venue quotes were below their displayed 24-hour reference levels and the Kraken 24-hour VWAP; no directional forecast is justified.",
+      "Top-of-book sizes are not consolidated depth and cannot establish executable liquidity across venues."
+    ]
+  },
+  "exchange_wallet_balances": {
+    "url": "https://xrp-insights.com/exchange-balances",
+    "source_family": "third_party_xrpl_wallet_attribution_aggregator",
+    "data_as_of_utc": "2026-11-18T08:00:00Z",
+    "total_xrp": 22190000000,
+    "wallet_count": 707,
+    "exchange_count": 24,
+    "circulating_supply_reference_xrp": 68890000000,
+    "share_of_circulating_supply_percent": 32.2,
+    "same_wallet_7d_change_xrp": -151900000,
+    "same_wallet_7d_change_percent": -0.68,
+    "same_wallet_30d_change_xrp": -390100000,
+    "same_wallet_30d_change_percent": -1.77,
+    "naive_7d_change_xrp": -141700000,
+    "naive_7d_included_new_wallet_xrp": 10200000,
+    "naive_30d_change_xrp": 132200000,
+    "naive_30d_included_new_wallet_xrp": 522200000,
+    "selected_wallet_attribution": {
+      "upbit_xrp": 6470000000,
+      "coinbase_including_cbXRP_reserve_xrp": 5830000000,
+      "binance_including_binance_peg_reserve_xrp": 2590000000,
+      "bithumb_xrp": 1780000000,
+      "uphold_xrp": 1700000000,
+      "kraken_xrp": 958500000,
+      "sbi_vc_trade_xrp": 56200000
+    },
+    "wrapped_and_non_customer_reserves_xrp": 483100000,
+    "limitations": [
+      "The 22.19B total includes cold storage and reserves; it is not tradable float or immediately available exchange liquidity.",
+      "The same-wallet method controls for newly tracked addresses but cannot distinguish customer withdrawals from exchange internal transfers or movements to untracked wallets.",
+      "The naive 30-day series changes sign after adding newly tracked wallets; the source explicitly reports a +522.2M XRP wallet-coverage addition.",
+      "Wallet labels are third-party attribution, not exchange-certified beneficial ownership."
+    ],
+    "model_eligibility": "RESEARCH_ONLY; do not use as a direct customer-flow feature until wallet labels, raw ledger reads, address-set versions and attribution changes are independently retained."
+  },
+  "derivatives": {
+    "source": "https://tradradar.io/markets/xrp",
+    "source_family": "third_party_multi_exchange_derivatives_aggregator",
+    "updated_at_utc": "2026-11-18T22:20:00Z",
+    "mark_price_as_of_utc": "2026-11-18T22:03:00Z",
+    "mark_price_usd": 0.9631,
+    "open_interest_usd": 1280000000,
+    "open_interest_change_24h_percent": -2.79,
+    "oi_coverage": "7 exchanges",
+    "oi_weighted_funding_percent_per_8h": -0.0002,
+    "liquidations_24h_usd_minimum": 5510000,
+    "long_liquidations_usd": 2520000,
+    "short_liquidations_usd": 2990000,
+    "liquidation_coverage": "5 exchanges; partial exchange liquidation reporting means total is at least this amount",
+    "long_short_accounts_ratio": 3.36,
+    "long_accounts_share_percent": 77.1,
+    "interpretation": "OI contraction and slightly negative funding coexist with a long-skewed account ratio; this is mixed positioning, not a directional signal. Provider venue coverage differs from other OI aggregators."
+  },
+  "etf_flows": {
+    "cryptokeyhole": {
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_family": "issuer_file_aggregation",
+      "updated_at_utc": "2026-11-19T00:55:00Z",
+      "latest_issuer_file_read_at_utc": "2026-11-18T23:55:00Z",
+      "november_17_partial_net_flow_xrp": -3251,
+      "november_17_reported_funds": 3,
+      "november_17_expected_funds": 4,
+      "november_13_latest_complete_day_net_flow_xrp": -9967,
+      "november_9_to_13_complete_5_day_net_flow_xrp": -4923033,
+      "november_18_flow_status": "No issuer files had been published at page update time."
+    },
+    "xrp_insights": {
+      "url": "https://xrp-insights.com/",
+      "source_family": "issuer_file_aggregation",
+      "displayed_holdings_xrp": 1183950000,
+      "displayed_aum_usd": 760050000,
+      "week_47_net_flow_xrp": -5150000,
+      "reported_november_17_flow_xrp": 986,
+      "reported_november_16_flow_xrp": 158100,
+      "universe": "Six US spot XRP ETFs plus BITW; fund holdings and flow coverage differ, with a reported GXRP flow-data gap."
+    },
+    "alpha_finance": {
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_family": "issuer_file_aggregation",
+      "november_17_reported_net_flow_usd": -6100000,
+      "universe": "Five funds; provider dashboard snapshot."
+    },
+    "disagreement": "Provider totals are not reconciled: CryptoKeyhole reports a partial -3,251 XRP for three of four daily-readable funds, XRP Insights reports +986 XRP for a broader six-spot-plus-BITW universe, and Alpha Finance reports -$6.1M across five funds. These are different universes, units and vintages; do not average or select a sign without issuer-row reconstruction."
+  },
+  "institutional_payment_rails": {
+    "dbs_circle": {
+      "primary_source": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
+      "announcement_date": "2026-11-18",
+      "relationship": "Direct DBS-Circle partnership: eligible institutional clients can mint and redeem USDC through DBS with 24/7 USD-USDC settlement.",
+      "confirmed": [
+        "Direct institutional USDC issuance and redemption access through DBS.",
+        "Round-the-clock USD-USDC settlement for minting and redemption.",
+        "Circle's regulated affiliates issue USDC."
+      ],
+      "not_disclosed": [
+        "Go-live date or current production status.",
+        "Eligible client list, jurisdiction-by-jurisdiction access, fees, transaction limits.",
+        "Blockchain or settlement network used for this arrangement."
+      ],
+      "xrp_scope": "The DBS release does not mention XRP, XRPL, Ripple or any XRP settlement leg."
+    },
+    "mas_bloom": {
+      "primary_source": "https://www.mas.gov.sg/news/media-releases/2026/mas-bnm-and-bot-partner-with-industry-to-advance-cross-border-settlement-in-digital-money",
+      "announcement_date": "2026-10-23",
+      "policymaker_members": [
+        "Monetary Authority of Singapore",
+        "Bank Negara Malaysia",
+        "Bank of Thailand"
+      ],
+      "industry_members_relevant_here": [
+        "Circle",
+        "Coinbase",
+        "DBS",
+        "Ripple"
+      ],
+      "objectives": [
+        "Acceptance and settlement across jurisdictions.",
+        "Interoperability across digital-money arrangements and networks.",
+        "Programmable controls including identity verification, sanctions screening and transaction controls."
+      ],
+      "limitations": [
+        "BLOOM is a multi-party public-private initiative, not evidence of a bilateral DBS-Ripple or Circle-Ripple commercial agreement.",
+        "The MAS release names Ripple as a participant but does not identify XRP or XRPL as a settlement asset or network.",
+        "The release does not identify a production go-live or a completed XRP payment."
+      ]
+    },
+    "counter_hypothesis": "Institutional adoption of stablecoin and tokenised-money rails can expand through USDC and bank-led interoperability without requiring XRP as the settlement asset."
+  },
+  "source_receipts": [
+    {
+      "id": "kraken_xrpusd_ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_family": "exchange_primary_api",
+      "captured_at_utc": "2026-11-19T01:13:00Z",
+      "raw_http_bytes_retained": false,
+      "raw_body_sha256": null,
+      "receipt_status": "rendered_api_excerpt_only"
+    },
+    {
+      "id": "okx_xrpusdt_ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_family": "exchange_primary_api",
+      "source_timestamp_utc": "2026-11-19T00:53:11.072Z",
+      "captured_at_utc": "2026-11-19T01:13:00Z",
+      "raw_http_bytes_retained": false,
+      "raw_body_sha256": null,
+      "receipt_status": "rendered_api_excerpt_only"
+    },
+    {
+      "id": "coingecko_xrp_history",
+      "url": "https://www.coingecko.com/en/coins/xrp/historical_data",
+      "source_family": "market_data_aggregator",
+      "captured_at_utc": "2026-11-19T01:13:00Z",
+      "raw_http_bytes_retained": false,
+      "raw_body_sha256": null,
+      "receipt_status": "rendered_page_excerpt_only"
+    },
+    {
+      "id": "tradradar_xrp_perpetuals",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_family": "derivatives_aggregator",
+      "source_timestamp_utc": "2026-11-18T22:20:00Z",
+      "captured_at_utc": "2026-11-19T01:13:00Z",
+      "raw_http_bytes_retained": false,
+      "raw_body_sha256": null,
+      "receipt_status": "rendered_page_excerpt_only"
+    },
+    {
+      "id": "xrp_insights_exchange_wallets",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "source_family": "third_party_xrpl_wallet_attribution_aggregator",
+      "source_timestamp_utc": "2026-11-18T08:00:00Z",
+      "captured_at_utc": "2026-11-19T01:13:00Z",
+      "raw_http_bytes_retained": false,
+      "raw_body_sha256": null,
+      "receipt_status": "rendered_page_excerpt_only"
+    },
+    {
+      "id": "cryptokeyhole_etf_flows",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_family": "issuer_file_aggregation",
+      "source_timestamp_utc": "2026-11-19T00:55:00Z",
+      "captured_at_utc": "2026-11-19T01:13:00Z",
+      "raw_http_bytes_retained": false,
+      "raw_body_sha256": null,
+      "receipt_status": "rendered_page_excerpt_only"
+    },
+    {
+      "id": "xrp_insights_etf_tracker",
+      "url": "https://xrp-insights.com/",
+      "source_family": "issuer_file_aggregation",
+      "captured_at_utc": "2026-11-19T01:13:00Z",
+      "raw_http_bytes_retained": false,
+      "raw_body_sha256": null,
+      "receipt_status": "rendered_page_excerpt_only"
+    },
+    {
+      "id": "alpha_finance_etf_flows",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_family": "issuer_file_aggregation",
+      "captured_at_utc": "2026-11-19T01:13:00Z",
+      "raw_http_bytes_retained": false,
+      "raw_body_sha256": null,
+      "receipt_status": "rendered_search_result_only"
+    },
+    {
+      "id": "dbs_circle_primary",
+      "url": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
+      "source_family": "first_party_corporate",
+      "publication_date": "2026-11-18",
+      "captured_at_utc": "2026-11-19T01:13:00Z",
+      "raw_http_bytes_retained": false,
+      "raw_body_sha256": null,
+      "receipt_status": "rendered_page_excerpt_only"
+    },
+    {
+      "id": "mas_bloom_primary",
+      "url": "https://www.mas.gov.sg/news/media-releases/2026/mas-bnm-and-bot-partner-with-industry-to-advance-cross-border-settlement-in-digital-money",
+      "source_family": "regulator_primary",
+      "publication_date": "2026-10-23",
+      "captured_at_utc": "2026-11-19T01:13:00Z",
+      "raw_http_bytes_retained": false,
+      "raw_body_sha256": null,
+      "receipt_status": "rendered_page_excerpt_only"
+    }
+  ],
+  "provenance_limits": [
+    "No raw HTTP response bytes were retained in this research-only web capture.",
+    "No SHA-256 raw-source hash or external immutable/WORM timestamp anchor is claimed.",
+    "The rendered excerpts are research observations and must not be admitted as raw ingestion receipts or point-in-time model features.",
+    "Source-family independence is preserved: ETF dashboards share issuer filings as upstream sources and are not independent confirmations."
+  ],
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "paper_trade_executed": false,
+    "reason": "No new point-in-time feature-store admission or leakage-safe walk-forward evaluation was performed from these rendered web excerpts. Existing model readiness gates remain unsatisfied."
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "artifact_type": "barrot.xrp.ecosystem_capital_collateral_regulatory_identity_audit",
+  "schema_version": "1.0.0",
+  "run": "18b",
+  "captured_at_utc": "2026-11-18T10:05:00Z",
+  "repository": {
+    "main_sha": "e204c21100f3d059e2ba633d041fe8927b61ccaf",
+    "integration_head_before_append": "1e7b663173c7c659c1642c00d048f27f458ab0d6",
+    "pr": 1663,
+    "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "commits_ahead": 279,
+    "commits_behind": 0,
+    "open_pr_count": 10
+  },
+  "collateral": [
+    {
+      "entity": "Bitnomial Clearinghouse",
+      "evidence": "CFTC Reg 40.6(a) self-certification plus first-party public schedule",
+      "filing": "https://bitnomial.com/exchange/regulatory/cftc/rule-filings/26-005.pdf",
+      "filed": "2026-02-20",
+      "effective": "2026-03-06",
+      "fact": "Bitnomial Clearinghouse self-certified procedure changes to accept XRP as initial margin.",
+      "schedule": "https://bitnomial.com/clearinghouse/",
+      "schedule_updated": "2026-10-30",
+      "accepted_collateral": {
+        "asset": "XRP",
+        "haircut_percent": 40,
+        "notional_limit_usd": 15000000
+      },
+      "maintenance_margin_rates_percent": {
+        "XRPUS": 17,
+        "XRPUH": 17,
+        "XRUH": 17,
+        "XRUY": 17
+      },
+      "caveat": "40% collateral haircut is not the 17% maintenance margin rate. Supporting procedures filed with CFTC are confidential; the public haircut and cap are from Bitnomial's schedule. Do not infer availability to all Payward/Kraken retail accounts.",
+      "model_eligible": false
+    },
+    {
+      "entity": "Bitnomial / Ripple",
+      "evidence": "first-party company announcement",
+      "url": "https://bitnomial.com/news/2025-11-03/rlusd-xrp-margin-collateral/",
+      "date": "2025-11-03",
+      "fact": "XRP and RLUSD margin deposits announced for institutional clients across leveraged perpetuals, futures and options; retail access through Botanical was planned subject to approvals.",
+      "Ripple_executive": "Jack McDonald, SVP Stablecoins, publicly commented on the XRP/RLUSD collateral addition.",
+      "relationship": "direct product/collateral integration and public endorsement; no equity ownership evidence",
+      "model_eligible": false
+    },
+    {
+      "entity": "Payward / Kraken / Bitnomial",
+      "evidence": "first-party acquisition completion",
+      "url": "https://www.payward.com/press-release/payward-completes-acquisition-of-bitnomial-the-first-fully-cftc-licensed-crypto-native-derivatives-stack-in-the-us",
+      "completion_date": "2026-05-01",
+      "ownership": "Payward acquired 100% of Bitnomial; licenses, regulatory structure and third-party clearing operations remained in the Payward group.",
+      "announced_maximum_consideration_usd": 550000000,
+      "consideration": "cash and stock; final consideration not disclosed",
+      "scope": "CFTC-registered FCM, DCM and DCO; Payward described spot margin on Kraken as first rollout and perpetuals/options as future expansion.",
+      "implication": "Kraken's parent owns the clearing infrastructure accepting XRP collateral; this does not establish that every Kraken account/product can post XRP.",
+      "model_eligible": false
+    },
+    {
+      "entity": "Bitnomial XRP/USD perpetual",
+      "evidence": "CFTC-filed self-certification",
+      "url": "https://www.cftc.gov/filings/ptc/ptc09022623231.pdf",
+      "filed": "2026-09-02",
+      "fact": "Cash-settled, margined XRP/USD perpetual based on 10,000 XRP with 24/7 market hours. Cash settlement is not XRP delivery.",
+      "model_eligible": false
+    },
+    {
+      "entity": "CFTC DCM listings",
+      "urls": [
+        "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts/60549",
+        "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts/60308"
+      ],
+      "facts": [
+        "BTNL XRP US Dollar Spot Contract certified 2026-04-21",
+        "CDNA Ripple (XRP) Event Contract certified 2026-04-01"
+      ],
+      "caveat": "Certified product listings do not themselves establish collateral eligibility.",
+      "model_eligible": false
+    },
+    {
+      "entity": "Crypto.com Prime",
+      "evidence": "first-party help-center schedule",
+      "url": "https://help.crypto.com/en/articles/9025995-crypto-com-prime-margin-trading",
+      "fact": "XRP collateral listed with 20% haircut, $1M maximum collateral limit, 5x maximum product leverage and $250K max order limit.",
+      "caveat": "Crypto.com Prime is distinct from the separate U.S. CFTC-licensed CDNA entity; do not conflate.",
+      "model_eligible": false
+    },
+    {
+      "entity": "CME XRP futures offsets",
+      "evidence": "first-party exchange research",
+      "url": "https://www.cmegroup.com/articles/2025/diversifying-crypto-portfolios-with-xrp-and-sol.html",
+      "fact": "25% margin credits for offsetting XRP futures positions against BTC or ETH futures.",
+      "caveat": "Spread credits are not proof that XRP itself is accepted collateral.",
+      "model_eligible": false
+    }
+  ],
+  "regulation": {
+    "source": "SEC interpretation / CFTC guidance",
+    "url": "https://www.cftc.gov/PressRoom/PressReleases/9161-26",
+    "issued": "2026-03-17",
+    "effective": "2026-03-23",
+    "fact": "XRP is explicitly listed among crypto assets identified as digital commodities.",
+    "caveat": "A non-security crypto asset may still be offered or sold subject to an investment contract; Howey remains binding. Do not infer every XRP-related transaction is outside securities law.",
+    "model_eligible": false
+  },
+  "institutional_network": [
+    {
+      "relationship": "Circle <-> Coinbase",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+        "https://investor.coinbase.com/news/news-details/2026/Coinbase-Reports-Third-Quarter-2026-Results/default.aspx"
+      ],
+      "facts": {
+        "circle_distribution_costs_to_coinbase_q3_usd": 331300000,
+        "circle_distribution_costs_to_coinbase_9m_usd": 986600000,
+        "nature": "recognized USDC distribution costs, not XRP purchases or a disclosed cash-settlement date",
+        "allocation": "Coinbase receives allocations based on USDC held on its platform after issuer retention and half of remaining ecosystem-growth amount after approved third-party participants.",
+        "coinbase_renewal": "Coinbase Q3 2026 10-Q says the Circle arrangement was renewed on the same terms.",
+        "coinbase_stablecoin_revenue_increase_higher_balances_q3_usd": 84600000,
+        "coinbase_stablecoin_revenue_decrease_lower_rates_q3_usd": 52800000,
+        "coinbase_stablecoin_revenue_increase_higher_balances_9m_usd": 201600000,
+        "coinbase_stablecoin_revenue_decrease_lower_rates_9m_usd": 166200000,
+        "coinbase_average_usdc_held_usd": 22000000000,
+        "coinbase_yoy_growth_percent": 49,
+        "coinbase_share_of_average_usdc_market_cap_percent": 30,
+        "coinbase_company_claim_share_of_usdc_economics_percent": 50
+      },
+      "classification": "direct material USDC distribution/revenue-sharing relationship; not XRP capital",
+      "model_eligible": false
+    },
+    {
+      "relationship": "Circle USDC platform/reserve metrics",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "period": "2026-Q3",
+      "facts": {
+        "usdc_eop_usd": 73879000000,
+        "usdc_average_usd": 73264000000,
+        "reserve_return_percent": 3.5,
+        "circle_platform_usdc_eop_usd": 13868000000,
+        "circle_platform_daily_weighted_share_percent": 18.1,
+        "usdc_minted_q3_usd": 104304000000,
+        "usdc_redeemed_q3_usd": 103694000000,
+        "stablecoin_market_share_percent": 27,
+        "meaningful_wallets_millions": 7.35
+      },
+      "caveats": [
+        "Meaningful wallets are not unique users.",
+        "Circle-platform balances include Circle Mint, corporate-held and Circle wallet balances, not Coinbase balances.",
+        "Gross mint/redemption is not XRP payment volume."
+      ],
+      "model_eligible": false
+    },
+    {
+      "relationship": "Circle -> Tazapay",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "agreement_date": "2026-09-04",
+      "proposed_consideration_usd": 400000000,
+      "consideration": "Circle Class A shares",
+      "status": "pending; expected close 2027 subject to customary conditions and MAS approval",
+      "purpose": "B2B cross-border payment infrastructure, bank/fintech relationships and local payout rails for USDC distribution",
+      "model_eligible": false
+    },
+    {
+      "relationship": "Circle -> DBS",
+      "source": "https://www.dbs.com/newsroom/DBS_and_Circle_partner_to_expand_institutional_access_to_USDC_in_Asia",
+      "date": "2026-11-18",
+      "facts": [
+        "direct institutional USDC mint/redeem through DBS",
+        "24/7 USD-USDC settlement",
+        "Singapore Project BLOOM"
+      ],
+      "caveat": "Announcement does not identify XRPL or XRP in this rail.",
+      "model_eligible": false
+    },
+    {
+      "relationship": "SBI Holdings / SBI Shinsei Bank -> Circle",
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+        "https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf",
+        "https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access"
+      ],
+      "facts": [
+        "combined $50M Circle equity investment at IPO, split $25M SBI Holdings and $25M SBI Shinsei Bank",
+        "SBI Circle Holdings joint venture established",
+        "SBI VC Trade began general USDC distribution in Japan on 2025-03-26"
+      ],
+      "caveat": "Direct Circle equity/distribution exposure for SBI Group; not XRP purchases.",
+      "model_eligible": false
+    },
+    {
+      "relationship": "SBI Group / SBI VC Trade -> Ripple",
+      "source": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "date": "2026-06-24",
+      "fact": "RLUSD launched in Japan through SBI VC Trade following JFSA approval.",
+      "caveat": "SBI VC Trade distributes both USDC and RLUSD; multi-stablecoin distribution, not exclusivity.",
+      "model_eligible": false
+    },
+    {
+      "relationship": "Circle -> Circle National Trust",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "facts": [
+        "OCC final approval 2026-07-09; opened 2026-07-24",
+        "fiduciary digital-asset custody for Circle and affiliates",
+        "NYDFS limited-purpose trust charter 2026-07-31"
+      ],
+      "caveat": "Does not establish public XRP custody availability.",
+      "model_eligible": false
+    }
+  ],
+  "network_synthesis": "Coinbase, SBI VC Trade, DBS and BNY serve overlapping stablecoin, custody and distribution rails. These are not proof of a unified XRP alliance. USDC bank rails may substitute for XRP bridge liquidity in some corridors; XRPL tokenization and XRP collateral are separate utility channels requiring separate volume and inventory evidence.",
+  "identity_verified_youtube": {
+    "person": "Dr. Kamilah Stevenson",
+    "identity_basis": "first-person guest appearance on Paul Barron Podcast; guest identifies herself, states official YouTube name 'doctor Camilla Stevenson' and warns about fake pages.",
+    "verified_handle": "@drkamilahstevenson",
+    "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "verified_guest_appearance": {
+      "title": "Crypto Panics! W/ @drkamilahstevenson",
+      "channel": "Paul Barron Podcast",
+      "date": "2026-06-11",
+      "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "kind": "verified guest appearance, not own-channel upload"
+    },
+    "own_channel_inventory": "not retrieved in this run; YouTube fetch throttled and vidIQ lookup returned insufficient credits without charging any",
+    "excluded": [
+      "@KamilahStevensonXrpStocks: not cross-linked by verified person",
+      "@drkamilahstevenson-j9r: unverified clone-style handle"
+    ],
+    "claim_gate": "Secondary claim of Japanese bank remittance pilots 60% cheaper and under four seconds lacks named banks, primary documents and transaction data; unverified.",
+    "model_eligible": false
+  },
+  "exact_phrase_research": {
+    "ask_coin": "Permission ASK remains a possible token-name match; no XRP Ledger or Ripple relationship established.",
+    "actual_capital": "No unique XRP-specific project resolved. Verified USDC distribution expenses, Circle equity and pending share-based acquisitions are not XRP purchases.",
+    "sbic_chatgpt_sbic": "No exact phrase match. Tokyo SBIC 2025 ChatGPT/Copilot training remains the strongest explanation; SBIC East/Central/West are distinct from SBI Holdings."
+  },
+  "source_admission": {
+    "raw_http_bytes_captured": false,
+    "raw_sha256_receipts": false,
+    "model_eligible": false,
+    "reason": "Rendered pages and primary documents reviewed for research have not been ingested into the repository raw-byte receipt chain with immutable hashes and point-in-time features."
+  },
+  "prediction": {
+    "directional_forecast": false,
+    "walk_forward_forecasts": 0,
+    "baseline_comparison": "not admitted",
+    "calibration": "not admitted",
+    "drift": "insufficient",
+    "shadow_evaluation": "not verified",
+    "paper_trades": 0,
+    "real_money_actions": 0
+  },
+  "counter_hypotheses": [
+    "XRP collateral eligibility and a 40% haircut demonstrate regulated margin utility, but not actual posted balances, utilization or collateral velocity.",
+    "Payward owns the Bitnomial infrastructure accepting XRP collateral, but this does not mean every Kraken account/product can post XRP.",
+    "USDC distribution and bank rails can substitute for XRP bridge liquidity in some corridors, while XRPL tokenization and XRP collateral are distinct demand channels.",
+    "Circle's $400M Tazapay consideration is share-based and pending, not completed cash investment.",
+    "Kamilah's official-channel identity is verified by first-person self-identification, but own-channel video inventory remains incomplete."
+  ],
+  "next_actions": [
+    "Capture Bitnomial collateral schedules and CFTC filings as accession-bound raw receipts; track haircut, cap, posted balances and utilization separately.",
+    "Add Payward/Bitnomial as a corporate-network node linked to Kraken and regulated XRP collateral infrastructure.",
+    "Capture Circle/Coinbase Q3 filings and reconcile USDC distribution economics, reserves, mint/redemption and bank rails.",
+    "Add SBI Circle Holdings and SBI VC Trade as multi-stablecoin nodes; preserve distinction from SBIC East/Central/West.",
+    "Measure corridor-level USDC/RLUSD/XRP flows to test stablecoin substitution.",
+    "Complete Kamilah official-channel video inventory when public YouTube retrieval is available; exclude unverified same-name channels.",
+    "Keep directional forecasts disabled until raw receipts, walk-forward baselines, calibration, drift and shadow evaluation pass."
+  ]
+}

@@ -1,0 +1,346 @@
+{
+  "schema_version": "barrot.xrp.run-evidence.v1",
+  "run_id": "run86",
+  "captured_at_utc": "2026-11-13T10:03:10Z",
+  "mission": {
+    "priority": 1,
+    "id": "xrp_intelligence_prediction_engine",
+    "foundation": "Barrot V3",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head": "c095bb131fbcb3831aa6e84d2755ef2551e9c6ce",
+    "ahead_by": 2233,
+    "behind_by": 0,
+    "main_recursive_tree_entries": 1381,
+    "integration_recursive_tree_entries": 2342,
+    "pr": {
+      "number": 1662,
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "changed_files": 1096,
+      "additions": 315563,
+      "deletions": 5136,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    },
+    "open_pr_inventory": {
+      "total": 375,
+      "drafts": 361,
+      "non_drafts": 14,
+      "target_main": 367,
+      "other_base": 8
+    }
+  },
+  "verification": {
+    "full_suite": {
+      "run_id": 43405130204,
+      "head_sha": "c095bb131fbcb3831aa6e84d2755ef2551e9c6ce",
+      "event": "pull_request",
+      "status": "success",
+      "passed": 3557,
+      "failed": 0,
+      "subtests_passed": 8,
+      "duration_seconds": 82.9,
+      "inclusive_coverage_pct": 61.72,
+      "legacy_core_coverage_pct": 76,
+      "wheel_build": "PASS",
+      "installed_v3_xrp_mission": "PASS"
+    },
+    "dependency_audit": {
+      "run_id": 43405129739,
+      "status": "success",
+      "manifest_groups": [
+        "root_runtime",
+        "dev",
+        "hf_space",
+        "legacy",
+        "pyproject"
+      ],
+      "result": "PASS"
+    },
+    "fail_closed_gate": {
+      "run_id": 43405129693,
+      "status": "success",
+      "automatic_merge": "DISABLED"
+    },
+    "combined_commit_status_contexts": [],
+    "branch_protection": {
+      "read_result": "HTTP_403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
+      "fallback_ruleset_id": 10863829,
+      "fallback_ruleset_enforcement": "disabled"
+    },
+    "connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true
+    }
+  },
+  "market": {
+    "cutoff_utc": "2026-11-13T10:03:10Z",
+    "admission": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+    "spot": {
+      "okx": {
+        "source": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "provider_event_time_utc": "2026-11-13T09:56:19.569Z",
+        "last_usdt": 1.0279,
+        "bid_usdt": 1.0278,
+        "ask_usdt": 1.0279,
+        "open_24h": 1.0519,
+        "high_24h": 1.0569,
+        "low_24h": 0.9974,
+        "volume_24h_xrp": 46921045.554472,
+        "age_at_cutoff_seconds": 410.431,
+        "collector_max_live_age_seconds": 300,
+        "eligible": false
+      },
+      "kraken": {
+        "source": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "provider_event_time": null,
+        "retrieved_at_utc": "2026-11-13T10:03:10Z",
+        "last_usd": 1.02698,
+        "bid_usd": 1.02697,
+        "ask_usd": 1.02698,
+        "open_24h": 1.04003,
+        "high_24h": 1.05548,
+        "low_24h": 0.99672,
+        "volume_24h_xrp": 36377166.20766802,
+        "eligible": false,
+        "reason": "provider event timestamp absent"
+      },
+      "kraken_usdt_usd": {
+        "source": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+        "provider_event_time": null,
+        "bid_usd": 0.99901,
+        "ask_usd": 0.99902,
+        "last_usd": 0.99903,
+        "eligible": false,
+        "reason": "provider event timestamp absent"
+      },
+      "derived_cross_venue_comparison": {
+        "okx_mid_usdt": 1.02785,
+        "usdt_usd_mid": 0.999015,
+        "okx_mid_usd_normalized": 1.0288634305,
+        "kraken_mid_usd": 1.026975,
+        "difference_pct": 0.183395,
+        "interpretation": "asynchronous indicative comparison only; not executable arbitrage"
+      },
+      "order_book": {
+        "okx_depth_endpoint": "https://www.okx.com/api/v5/market/books?instId=XRP-USDT&sz=20",
+        "kraken_depth_endpoint": "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=20",
+        "retrieval_status": "not_accessible_in_this_research_session",
+        "synchronized_l2_admitted": false
+      }
+    },
+    "derivatives": {
+      "liqwall": {
+        "source": "https://liqwall.com/coins/xrp",
+        "as_of_utc": "2026-11-13T09:42:00Z",
+        "coverage": "all-exchange vendor aggregate",
+        "open_interest_usd": 1130000000,
+        "open_interest_change_24h_pct": -0.8,
+        "funding_8h_avg_pct": -0.001,
+        "binance_funding_8h_pct": 0.0003,
+        "liquidations_24h_usd": 19500000,
+        "long_liquidations_usd": 18400000,
+        "short_liquidations_usd": 1100000,
+        "binance_accounts_long_pct": 74.8,
+        "eligible": false
+      },
+      "seandra": {
+        "source": "https://seandra.ai/perp/xrp",
+        "as_of_utc": "2026-11-13T09:50:00Z",
+        "coverage": "Binance XRPUSDT perpetual only",
+        "open_interest_usd": 302800000,
+        "open_interest_change_24h_pct": -3,
+        "funding_8h_pct": 0.0004,
+        "accounts_long_pct": 75,
+        "top_traders_long_by_size_pct": 67,
+        "forced_closes_minimum_24h_usd": 7300000,
+        "seven_day_coin_oi_change_pct": -14,
+        "seven_day_price_change_pct": -15,
+        "eligible": false
+      },
+      "kodexius": {
+        "source": "https://kodexius.com/data/crypto-derivatives/XRP",
+        "as_of_utc": "2026-11-13T08:44:00Z",
+        "header_aggregate_open_interest_usd": 614050000,
+        "header_contract_count": 7,
+        "first_five_contract_rows_sum_usd": 614040000,
+        "additional_two_usdc_contract_rows_usd": 31000000,
+        "all_seven_displayed_contract_rows_sum_usd": 645040000,
+        "displayed_top_five_shares_sum_pct": 100,
+        "internal_reconciliation": "FAIL",
+        "eligible": false,
+        "reason": "aggregate and share denominator appear to exclude two displayed USDC contracts"
+      },
+      "interpretation": "OI providers use different venue/contract universes. Do not average. Liqwall all-exchange, Seandra Binance-only, and Kodexius internally inconsistent seven-row display are distinct evidence cohorts."
+    },
+    "order_flow_secondary": {
+      "swiftedge": {
+        "source": "https://swiftedge.uk/xrp",
+        "as_of_utc": "2026-11-13T04:02:00Z",
+        "age_at_cutoff_seconds": 21670,
+        "price_usd": 1.0039,
+        "bid_wall": {
+          "price": 0.977,
+          "size_xrp": 4662515
+        },
+        "ask_wall": {
+          "price": 1.009,
+          "size_xrp": 4712668
+        },
+        "flip_price": 1.0025,
+        "whale_net_24h_usd": 1500000,
+        "funding_8h_pct": -0.0079,
+        "open_interest_change_24h_pct": -2.4,
+        "accounts_long_pct": 51.4,
+        "internal_range_conflict": true,
+        "eligible": false,
+        "reason": "approximately six-hour-old snapshot and page's displayed daily range conflicts with current range"
+      }
+    }
+  },
+  "macro_geopolitics": [
+    {
+      "source": "https://www.reuters.com/world/china/china-stages-unannounced-pacific-drills-silent-intimidation-taiwan-officials-say-2026-11-13/",
+      "published_at_utc": "2026-11-13T04:05:00Z",
+      "observation": "Reuters reports more than 100 Chinese vessels at the peak of early-November Pacific drills and around 70 still active on Friday; APEC summit in Shenzhen and expected Trump-Xi meeting next week.",
+      "xrp_relevance": "broad geopolitical risk context only; no direct XRP causal evidence"
+    }
+  ],
+  "source_provenance": {
+    "raw_publisher_bytes_captured_by_barrot": false,
+    "byte_exact_sha256_receipts_created": false,
+    "independent_source_groups_admitted": 0,
+    "note": "Web/API observations were inspected in this run but were not ingested into Barrot's raw receipt archive. Do not admit them to the point-in-time feature store or forecast readiness."
+  },
+  "implementation_status": {
+    "designed": [
+      "read-only public XRP source registry",
+      "scheduled main-only ingestion",
+      "content-addressed per-run receipts",
+      "cross-run receipt-index chain",
+      "point-in-time feature store",
+      "four baseline families",
+      "walk-forward evaluation",
+      "probability calibration",
+      "drift diagnostics",
+      "fail-closed forecast ledger"
+    ],
+    "executed": [
+      "repository inspection",
+      "complete main and integration recursive tree retrieval",
+      "375-open-PR inventory",
+      "1,096-file PR filename inventory",
+      "all 50 changed workflow patches scanned for risky added lines",
+      "current-head full-suite CI",
+      "five-manifest dependency audit",
+      "fail-closed gate",
+      "fresh public spot and derivatives research"
+    ],
+    "verified": [
+      "PR #1662 head c095bb1 full suite 3,557 passed",
+      "dependency audit passed",
+      "fail-closed gate passed",
+      "Barrot V3/XRP mission packaged in wheel",
+      "source branch ancestry comparisons"
+    ],
+    "not_yet_verified": [
+      "scheduled XRP ingestion on main",
+      "independent WORM/trusted timestamp anchoring",
+      "replayable synchronized historical L2 and derivatives",
+      "production evaluator signing key",
+      "independent shadow outcomes",
+      "out-of-sample model superiority"
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "event_registry_curated_events": 73,
+    "byte_exact_raw_publisher_hashes": 0,
+    "model_eligible_events": 0,
+    "reason": "no admitted raw-source receipts or mature synchronized point-in-time evaluation"
+  },
+  "backlog": {
+    "supersession_candidates": [
+      {
+        "pr": 1661,
+        "ahead_of_integration": 0,
+        "behind_integration": 101
+      },
+      {
+        "pr": 1660,
+        "ahead_of_integration": 0,
+        "behind_integration": 282
+      },
+      {
+        "pr": 1643,
+        "ahead_of_integration": 0,
+        "behind_integration": 1344
+      },
+      {
+        "pr": 1642,
+        "ahead_of_integration": 0,
+        "behind_integration": 2249
+      }
+    ],
+    "unique_or_diverged": [
+      {
+        "pr": 1640,
+        "ahead_of_integration": 1,
+        "behind_integration": 1275,
+        "changed_files_against_integration": 3
+      },
+      {
+        "pr": 1653,
+        "ahead_of_integration": 18,
+        "behind_integration": 2250,
+        "changed_files_against_integration": 7
+      },
+      {
+        "pr": 1655,
+        "ahead_of_integration": 17,
+        "behind_integration": 2250,
+        "changed_files_against_integration": 8
+      },
+      {
+        "pr": 1659,
+        "ahead_of_integration": 8,
+        "behind_integration": 2250,
+        "changed_files_against_integration": 6
+      },
+      {
+        "pr": 1615,
+        "ahead_of_integration": 3,
+        "behind_integration": 2291,
+        "changed_files_against_integration": 14
+      },
+      {
+        "pr": 1614,
+        "ahead_of_integration": 36,
+        "behind_integration": 2291,
+        "changed_files_against_integration": 57
+      }
+    ],
+    "policy": "Keep all source PRs open until successor is merged and exact merged content is verified on main. Do not close unique work."
+  },
+  "merge_decision": "NO_MERGE",
+  "blockers": [
+    "PR #1662 remains draft with zero formal approvals/reviews",
+    "branch-protection endpoint returns HTTP 403",
+    "fallback ruleset 10863829 is disabled",
+    "GitHub connector permissions are overbroad",
+    "automatic GitHub Pages publication authorization unresolved",
+    "semantic review of 1,096 changed files incomplete",
+    "raw receipts remain retention-limited and lack independent WORM/trusted timestamp anchoring"
+  ],
+  "next_action": "Continue semantic reconciliation and security review on the existing integration PR; resolve branch-protection visibility, least privilege and Pages publication authorization; then validate main-only scheduled ingestion and external receipt anchoring before forecast admission."
+}
