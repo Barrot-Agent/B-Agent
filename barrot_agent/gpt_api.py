@@ -65,7 +65,7 @@ def _build_app(config: AppConfig, service: Any | None = None) -> type[BaseHTTPRe
             """
             verdict = inbound_gate(
                 Command(
-                    text=f"{action}\\n{json.dumps(details, sort_keys=True, default=str)}",
+                    text=f"{action}\n{json.dumps(details, sort_keys=True, default=str)}",
                     source=Source.FRONTIER_MODEL,
                     received_from="GPT_ACTIONS_HTTP",
                 )
