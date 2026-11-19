@@ -77,7 +77,7 @@ def test_integration_full_suite_runs_on_exact_push_and_pull_request_heads():
     # A push-only success cannot verify the exact PR head, and skipping PR CI
     # would make the merge gate rely on a different event's run.
     for job_name in ("tests", "full-suite"):
-        section = content.split(f"  {job_name}:", 1)[1].split("\\n  ", 1)[0]
+        section = content.split(f"  {job_name}:", 1)[1].split("\n  ", 1)[0]
         job_header = section.split("    steps:", 1)[0]
         assert "if:" not in job_header
 
