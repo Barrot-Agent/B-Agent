@@ -14,9 +14,9 @@ def test_transmute_fails_closed_without_mutating_any_candidate(tmp_path: Path) -
     variant = tmp_path / "variant.py"
     test_file = tmp_path / "test_target.py"
     log_file = tmp_path / "transmute.json"
-    target.write_text("VALUE = 'baseline'\\n", encoding="utf-8")
-    variant.write_text("VALUE = 'candidate'\\n", encoding="utf-8")
-    test_file.write_text("def test_placeholder():\\n    assert True\\n", encoding="utf-8")
+    target.write_text("VALUE = 'baseline'\n", encoding="utf-8")
+    variant.write_text("VALUE = 'candidate'\n", encoding="utf-8")
+    test_file.write_text("def test_placeholder():\n    assert True\n", encoding="utf-8")
     before = {path: path.read_bytes() for path in (target, variant, test_file)}
 
     with pytest.raises(RuntimeError, match="TRANSMUTE QUARANTINED"):
@@ -37,7 +37,7 @@ def test_transmute_fails_closed_without_mutating_any_candidate(tmp_path: Path) -
 
 def test_transmute_cli_exits_without_touching_the_workspace(tmp_path: Path) -> None:
     target = tmp_path / "target.py"
-    target.write_text("VALUE = 1\\n", encoding="utf-8")
+    target.write_text("VALUE = 1\n", encoding="utf-8")
     before = target.read_bytes()
     script = Path(__file__).resolve().parents[1] / "scripts" / "transmute.py"
     result = subprocess.run(
