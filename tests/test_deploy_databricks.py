@@ -113,11 +113,15 @@ def test_workspace_root_is_checked_before_creation_and_existing_targets_are_refu
 def test_databricks_workflows_do_not_overwrite_and_pass_explicit_approval() -> None:
     ops = OPS_WORKFLOW_PATH.read_text(encoding="utf-8")
     deploy = DEPLOY_WORKFLOW_PATH.read_text(encoding="utf-8")
-    assert "--overwrite" not in ops
     assert "Existing paths are never overwritten." in ops
     assert "Target already exists. Refusing to overwrite" in ops
-    assert "BARROT_CONFIRM_EXTERNAL_CHANGE: ${{ inputs.confirm_external_change }}" in deploy
-
+    assert "github.ref == 'refs/heads/main'" in ops
+    assert "inputs.confirm_databricks_workspace_create == 'YES'" in ops
+    assert "--overwrite" not in ops
+    assert "permissions: {}" in deploy
+    assert ("if: $" + "{{ false }}") in deploy
+    assert "secrets." not in deploy
+    assert "BARROT_CONFIRM_EXTERNAL_CHANGE" not in deploy
 
 def test_orchestration_upload_failures_abort_before_job_creation() -> None:
     functions = _functions_for(ORCHESTRATION_PATH)

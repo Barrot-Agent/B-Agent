@@ -27,7 +27,6 @@ def _assert_pinned_action(content: str, action: str, version: int) -> None:
     pattern = rf"uses:\s+{re.escape(action)}@[0-9a-f]{{40}}\s+#\s+v{version}\b"
     assert re.search(pattern, content), action
 
-
 def test_destructive_or_secret_input_workflows_are_disabled() -> None:
     disabled = (
         "force-deploy-space.yml",
@@ -204,10 +203,11 @@ def test_barrot_auto_pr_has_no_unnecessary_pull_request_write_permission() -> No
 
 
 def test_groq_research_pipelines_require_yes_and_upload_artifacts() -> None:
+    for name in ("self-benchmark.yml", "knowledge-signal-cycle.yml"):
+        _assert_quarantined(name)
+
     names = (
         "webmcp-trend-digest.yml",
-        "self-benchmark.yml",
-        "knowledge-signal-cycle.yml",
         "financial-data-refresh.yml",
         "research-topics.yml",
         "frontier-digest.yml",
