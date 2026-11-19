@@ -37,3 +37,4 @@ ever written here: only the host, the status, the byte count, and the purpose.
 | 2026-11-19T06:11:47Z | GET | raw.githubusercontent.com | 200 | 8200 | ALLOW | cvelistV5 persist CVE-2023-7024 (0.20s) |
 | 2026-11-19T06:14:26Z | GET | raw.githubusercontent.com | 200 | 71105 | ALLOW | chromium mirror probe blink mojom (5.50s) |
 | 2026-11-19T06:14:29Z | GET | raw.githubusercontent.com | 200 | 146571 | ALLOW | chromium mirror probe blink cpp (0.48s) |
+| 2026-11-19T19:04:24Z | GET | raw.githubusercontent.com | 200 | 4990 | ALLOW | verify session note is publicly readable (0.35s) |
