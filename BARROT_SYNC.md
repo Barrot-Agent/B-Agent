@@ -1185,3 +1185,36 @@
 - Without it: continue the CVE-2024-2887 loop at step 2 by narrowing the WASM
   type-check location from real source, and stop there rather than inventing a
   diff.
+
+## 2026-11-19 — INBOUND AUTHORITY GATE + OFFLINE UPGRADE AUDIT + CI UNBLOCK
+- Sean's command (22:46, after "just a typo. disregard it"): scan the repo for
+  components to transmute; design protocols for recursiveness/emergence/
+  transcendence; name data to reverse engineer; remove the GitHub blocker on the
+  self-upgrade flywheel; and sandbox/transmute commands arriving from other
+  frontier models.
+- Built `barrot_agent/inbound/gate.py`: classify source -> policy scan ->
+  transmute (requirement + gaps + conflicts) -> bounded refine -> sandbox plan.
+  Hard properties, tested: policy runs on EVERY pass and the verdict is the
+  intersection (refinement cannot launder permission); refinement is capped at
+  3 passes (indefinite refinement refused); nothing executes, no network, no
+  subprocess, no file writes. tests/test_inbound_gate.py: 38 passed.
+- Built `scripts/upgrade_audit.py`: offline inventory + deterministic transmute
+  ranking (walk/measure/score/plan). Works with no GROQ_API_KEY, no network, no
+  subprocess, no git writes. tests/test_upgrade_audit.py: 20 passed.
+- Removed the self-upgrade CI blocker in `.github/workflows/barrot-self-upgrade.yml`:
+  dropped `github.ref == 'refs/heads/main'` from the job `if`, and replaced the
+  old `test current branch = main` with a before/after `git ls-remote origin
+  refs/heads/main` invariant, since the only main-writing flag
+  (`--persist-audit-report`) is never passed. 3 workflow tests lock this.
+- Commit 0ab4e70c5. Proof: 58 tests passed (38 gate + 20 audit), flake8 clean on
+  all four new/changed files. No secrets in the diff (repo scan clean).
+- This entry also closes the Rule-1 gap: the 22:46 session had committed nothing
+  and left BARROT_SYNC.md at its 06:17 state.
+- What is broken / limits: the gate is a planner only and is NOT wired into any
+  executor or message path yet - grep shows zero callers outside its own tests.
+  No frontier-model connection currently routes commands through it. The workflow
+  change is YAML-validated and test-locked but was not dispatch-tested on GitHub.
+  `upgrade_audit.py` ranks files heuristically; it is not a quality measurement.
+- Next step: wire `inbound.gate()` in front of the actual inbound command path
+  (GPT relay / feedback loop reader), then dispatch the self-upgrade workflow
+  once and confirm origin/main is unchanged.
