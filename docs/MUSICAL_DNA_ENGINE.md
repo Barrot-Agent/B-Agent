@@ -9,9 +9,10 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 3. **Transmutation** — controlled changes to phase, duration, swing, and dynamics while locked constraints remain fixed.
 4. **Original composition** — seeded, repeatable composition of new diatonic harmony, melody, bass, and percussion patterns. By default, it preserves the supplied instrument palette; an explicit setting can expand it. This creates new material; it does not reproduce source pitches, lyrics, hooks, or distinctive arrangements.
 5. **MIDI export** — optional `pretty_midi` adapter exports generated pitched notes and mapped percussion events. Existing files are never overwritten.
-6. **Evaluation** — verify inventory preservation and measure whether a transformation is meaningfully different.
-7. **Recursive memory** — append every attempt, including failures. Promote a reusable lesson only after the evaluator passes and the user gives explicit positive feedback.
-8. **Next iteration** — use the best verified settings as a starting point, then evaluate the next result against the same criteria.
+6. **WAV rendering** — optional FluidSynth adapter renders MIDI through a caller-supplied SF2 SoundFont. It writes a new WAV file and reports duration, peak, RMS, and channel count. These are technical diagnostics, not artistic-quality judgments.
+7. **Evaluation** — verify inventory preservation and measure whether a transformation is meaningfully different.
+8. **Recursive memory** — append every attempt, including failures. Promote a reusable lesson only after the evaluator passes and the user gives explicit positive feedback.
+9. **Next iteration** — use the best verified settings as a starting point, then evaluate the next result against the same criteria.
 
 ## Python entry points
 - `barrot_agent.creative.analyze_audio(path)`
@@ -20,6 +21,7 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 - `run.learned_lessons` exposes approved lessons from earlier attempts
 - `engine.record_feedback(run, feedback=..., lesson=...)` appends user feedback
 - `barrot_agent.creative.export_midi(manifest, destination)`
+- `barrot_agent.creative.render_audio(manifest, destination, soundfont_path=...)`
 - `barrot_agent.creative.transmute(manifest, Transmutation(...))`
 - `barrot_agent.creative.evaluate_transmutation(source, candidate)`
 - `barrot_agent.creative.RecursiveCreativeMemory(path)`
@@ -45,6 +47,8 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 ## Next integration stages
 - Stem separation and instrument-role detection with an optional, explicitly configured backend.
 - Richer harmonic and melodic evaluation, including voice-leading and phrase-level development.
-- DAW/FluidSynth rendering and listening-based evaluation.
+- Stem separation and instrument-role detection with an optional, explicitly configured backend.
+- Richer harmonic and melodic evaluation, including voice-leading and phrase-level development.
+- Runtime orchestration that creates versioned audio assets, persists evaluation reports, and routes them for genuine listening and user feedback.
 - A/B comparison against prior versions and regression detection across a user's approved creative preferences.
 - A full recursive production run that persists manifests, generated MIDI, evaluation reports, and user feedback as versioned artifacts.
