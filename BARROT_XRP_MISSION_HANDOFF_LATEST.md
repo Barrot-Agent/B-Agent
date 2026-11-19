@@ -3476,3 +3476,126 @@ The merge decision remains **NO MERGE**: #1663 is draft, has no independent revi
 
 ### Current evidence boundary
 - The full suite and dependency/security gates passed on `e0fd8bcaf43df01d1b08df4db84b5005bbd5a595`. This new 13F/handoff commit is a documentation/research update and will have its own exact-head CI; no merge is authorized until that head passes and independent review/branch protection/workflow audit blockers are resolved.
+
+---
+
+## Run 37 — 2026-11-19 05:20 UTC
+
+### Repository state and integration-first inspection
+
+- **Main SHA:** `82c23e219553164c24073784c529aad75acacd66`.
+- **Existing integration branch:** `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- **Pre-run integration HEAD:** `9fa85498b53d4c68a6b270dcb8fbf849ba338fc8`.
+- **Ancestry:** 396 commits ahead of main, zero behind.
+- **Complete trees:** main 1,739 entries; integration 2,993 entries; zero main paths missing from integration.
+- **PR #1663:** open, draft, mergeable state `clean`, 1,446 changed files, 524,350 additions, 6,754 deletions, no requested reviewers, zero reviews, zero review comments.
+- **Open PR inventory:** 14. No new branch or PR created. Existing integration PR retained.
+
+### Exact-head CI and security evidence for pre-run HEAD 9fa85498
+
+- Push CI run [44458467922](https://github.com/Barrot-Agent/B-Agent/actions/runs/44458467922) completed successfully on the exact SHA.
+- Full repository suite: **4,288 passed, 1 skipped, 11 warnings, 19 subtests passed**, 122.50 seconds.
+- Inclusive coverage: 30,665 statements, 9,043 missed, 68% line coverage. Legacy-core report: 77%, but it omits major packages from that narrower floor.
+- Dependency audit [44458467871](https://github.com/Barrot-Agent/B-Agent/actions/runs/44458467871) passed all six manifests: root, development, integrations, Hugging Face Space, legacy, and PEP 621 dependencies. Each reported no known vulnerabilities.
+- Fail-closed workflow [44458467913](https://github.com/Barrot-Agent/B-Agent/actions/runs/44458467913) succeeded, but inspection shows it only prints that automatic merge is disabled. It is **not yet a substantive merge-readiness gate**.
+- PR CI run [44458474949](https://github.com/Barrot-Agent/B-Agent/actions/runs/44458474949) completed, but its `Tests` and `Full repository test suite` jobs were **skipped** by integration-branch conditions. Pages validation passed. This is not acceptable as the only PR-head verification.
+- The combined commit status endpoint returned `pending`; check-runs are separate. Branch-protection API returned 403; the rulesets endpoint exposed no active rules. Required branch protection therefore remains unverified.
+- The PR remains draft and has no independent review. **No merge.**
+
+### CI correction committed to the existing integration PR
+
+- Removed the two conditions that skipped core and full-suite jobs on integration pull requests.
+- The PR event will now run the full suite on its exact head rather than relying only on a push-triggered run.
+- Added a regression test for the institutional 13F evidence below.
+- These are changes on the existing integration branch, not a new branch or PR. CI for the new commit must complete before its results can be called verified.
+
+### Workflow and external-action audit
+
+The integration diff contains 67 modified existing workflows plus one new XRP ingestion workflow.
+
+- The new `xrp-public-ingestion.yml` is public-data/read-only and stores run artifacts; it is not present on main, and no XRP-ingestion run was found. Its hourly/daily schedule is therefore **designed, not production-executed**. GitHub artifact retention is not WORM storage.
+- The scheduled `pillars-check` is a pre-existing read-only health check: GitHub App installation metadata, Databricks `SELECT 1`, and public Hugging Face Space runtime status. It was not run during this inspection.
+- `barrot-ops` requires an explicit external-change confirmation and exact source SHA, but its Databricks workspace import uses `--overwrite` without a target backup/hash guard. This remains a safety blocker.
+- `deploy-databricks` is manual and confirmation-gated; it deploys code and creates/updates a scheduled job. Not executed.
+- `deploy-a2a-worker` requires explicit deployment and secret-rotation confirmations. Not executed.
+- `kaggle-competitions` requires a manual confirmation and explicit competition allowlist; the script can submit entries. Not executed.
+- `coinbase-paper-trader` is manual and requires an explicit per-run approval. It uses public Coinbase ticker/trade data and Groq, writes simulated local state, and has no Coinbase trading key; its default product is BTC-USD, not XRP. Not executed.
+- Hugging Face restart/deploy and self-hosted sync paths were not run; the self-hosted sync workflow remains quarantined.
+- No Databricks write, deployment, secret rotation, Space restart, Kaggle submission, paper trade, funds transfer, or real-money action occurred.
+
+### Coverage gaps beyond the legacy-core floor
+
+The inclusive report exposes low-coverage packages that the 77% legacy-core floor excludes. Computed line coverage from per-file Stmts/Miss rows:
+
+| Package | Coverage |
+|---|---:|
+| evolution | 81.6% |
+| orchestration | 68.7% |
+| agi | 60.9% |
+| rendering | 61.0% |
+| analysis | 19.4% |
+| ingestion | 15.1% |
+| monetization | 10.1% |
+| tools | 24.8% |
+| repair | 0.0% |
+| knowledge | 0.0% |
+| repository | 52.5% |
+
+The full-suite job includes the active pytest modules under `tests`, the two legacy pytest modules, and the hidden math task. Files named `test_*.py` outside those paths were inspected: the merge-conflict file and analyzer file are standalone simulation/analyzer modules rather than pytest test suites; `scripts/barrot_defensive_self_test.py` can dispatch workflows and mutate local state and must not be run as a test. Package-level floors and targeted tests for the low-coverage major packages remain unfinished.
+
+### XRP institutional evidence: Q3 2026 SEC 13F cross-check
+
+New primary-source reconciliation is stored in:
+
+`research/xrp_intelligence/20261119T052027Z_run37_sec13f_market_snapshot.json`
+
+- **Susquehanna International Group, LLP**, CIK 0001446194, Form 13F-HR accession 0001446194-26-000009, filed 2026-11-16, holdings date 2026-09-30. It reported 1,813,253 common shares across five XRP ETFs, valued at $32,105,403 at quarter-end. These are ETF shares, not XRP tokens or proof of market purchases.
+- Susquehanna separately reported Bitwise puts/calls and calls on Canary, Franklin, and Grayscale. Those option rows are not included in the common-share total.
+- **Jane Street Group, LLC**, CIK 0001595888, Q3 accession 0001595888-26-000162, filed 2026-11-12, holdings date 2026-09-30. Its Bitwise XRP ETF common shares were 733,472 versus 1,205,067 in Q2, a decline of 471,595 shares (-39.13%). Canary and Franklin common ETF shares increased, while substantial call/put positions and separate linked/leveraged XRP ETF shares were also reported.
+- Competing interpretation: issuer rotation, client holdings, market-making, arbitrage, or hedging can explain these positions. The filings do not establish proprietary direction, direct XRP ownership, spot exchange flow, or ETF net creations/redemptions.
+- SEC tables explicitly caution that the Commission has not necessarily reviewed the information for accuracy or completeness.
+- Raw SEC response bytes were not captured. The artifact hashes normalized extracted row strings only; those are **not raw-source hashes**. No WORM anchor exists. The data is research-only and excluded from model features.
+
+Primary SEC sources:
+- [Susquehanna Q3 filing detail](https://www.sec.gov/Archives/edgar/data/1446194/000144619426000009/0001446194-26-000009-index.htm)
+- [Susquehanna Q3 information table](https://www.sec.gov/Archives/edgar/data/1446194/000144619426000009/xslForm13F_X02/file.XML)
+- [Jane Street Q3 filing detail](https://www.sec.gov/Archives/edgar/data/1595888/000159588826000162/0001595888-26-000162-index.htm)
+- [Jane Street Q3 information table](https://www.sec.gov/Archives/edgar/data/1595888/000159588826000162/xslForm13F_X02/q3-2026-13f-hr.xml)
+- [Jane Street Q2 filing detail](https://www.sec.gov/Archives/edgar/data/1595888/000159588826000108/0001595888-26-000108-index.htm)
+- [Jane Street Q2 information table](https://www.sec.gov/Archives/edgar/data/1595888/000159588826000108/xslForm13F_X02/q2-2026-13f-hr.xml)
+
+### Market microstructure snapshot and quality disposition
+
+Two rendered exchange ticker responses were captured/rechecked, but neither is model-eligible:
+
+- Kraken XRP/USD: last 0.97426; bid 0.97407 (347 XRP); ask 0.97420 (1,725 XRP); top spread 1.3345 bps; 24h volume 53.164M XRP; 24h VWAP 0.9789231. The endpoint supplies no provider timestamp and the rendered response was identical on recheck, so freshness is uncertain.
+- OKX XRP-USDT: last 0.9752; bid 0.9751; ask 0.9752; 24h volume 33.325M XRP; provider timestamp 2026-11-19 04:42:13.964 UTC, 38m13s old at recheck. Stale.
+- Full depth endpoints did not yield usable responses. These are top-of-book ticker fields, not depth curves. USD and USDT prices are not compared without synchronized FX and timestamps.
+- The artifact includes hashes of the rendered JSON strings only, not raw transport bytes.
+
+### Forecast and mission decision
+
+**No directional XRP forecast issued.** Institutional 13F data is delayed and non-directional; the market snapshots are stale/uncertain; full order-book depth is unavailable; production ingestion has not run. The walk-forward and calibration framework remains research-only until raw, point-in-time data and out-of-sample performance justify issuance.
+
+### Durable backlog
+
+- **Blocked:** #1663 (draft, PR-head tests were skipped on pre-run HEAD, no independent review, substantive fail-closed gate absent, workflow overwrite guard incomplete); #1668 (overlapping worker changes conflict with integration safety quarantine); #1541 (parent #1540 closed without merge).
+- **Duplicate:** #1665 (Pylint 4.1.4 objective already represented in #1663; do not close until verified on main).
+- **Unique/unreviewed:** #1664, #1666, #1450, #1460, #1440, #1437, #1436, #1353, #1265, #1670.
+- **Ready:** 0. **Merged:** 0. **Superseded:** 0.
+
+### Next concrete actions
+
+1. Verify CI on the new head after the PR-test skip correction and research regression test.
+2. Replace the echo-only merge workflow with a real read-only, fail-closed readiness check; fail if branch protection cannot be verified.
+3. Add a target backup/hash precondition to the Databricks overwrite path, or remove overwrite semantics.
+4. Add package-level tests/coverage gates for analysis, ingestion, monetization, tools, repair, and knowledge without running operational self-test scripts.
+5. Capture raw SEC XML and exchange response bytes with SHA-256 receipts through the scheduled ingestion path; add a durable immutable/WORM anchor before promoting research to model features.
+6. Reconcile issuer-level ETF holdings and market depth before admitting any institutional-flow or liquidity feature.
+
+### Execution labels
+
+- **DESIGNED:** XRP public ingestion, point-in-time features, forecast ledger, walk-forward baselines, calibration/drift framework, and safety-gated orchestration exist on the integration branch.
+- **EXECUTED:** exact-head push CI and dependency audit on pre-run HEAD 9fa85498; primary SEC table review; public ticker retrieval; repository/workflow/coverage audit; one consolidated commit updating CI, the research artifact, its regression test, and this handoff.
+- **VERIFIED:** only the pre-run HEAD 9fa85498 has the successful full-suite result stated above. The new commit requires fresh push and PR CI; no result is claimed yet.
+- **NOT VERIFIED:** production scheduled ingestion, raw/WORM retention, full order-book depth, nine-platform live coordination, directional forecast performance, branch-protection enforcement, or merge readiness.

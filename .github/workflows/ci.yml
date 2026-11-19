@@ -15,8 +15,9 @@ permissions:
   contents: read
 
 jobs:
+  # Run the core and full suites on PR heads as well as pushes. A push-only
+  # success is not a substitute for the exact pull-request head check.
   tests:
-    if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'integration/')
     name: Tests
     runs-on: ubuntu-latest
     steps:
