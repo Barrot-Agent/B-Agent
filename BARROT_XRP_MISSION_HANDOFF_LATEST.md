@@ -3599,3 +3599,8 @@ Two rendered exchange ticker responses were captured/rechecked, but neither is m
 - **EXECUTED:** exact-head push CI and dependency audit on pre-run HEAD 9fa85498; primary SEC table review; public ticker retrieval; repository/workflow/coverage audit; one consolidated commit updating CI, the research artifact, its regression test, and this handoff.
 - **VERIFIED:** only the pre-run HEAD 9fa85498 has the successful full-suite result stated above. The new commit requires fresh push and PR CI; no result is claimed yet.
 - **NOT VERIFIED:** production scheduled ingestion, raw/WORM retention, full order-book depth, nine-platform live coordination, directional forecast performance, branch-protection enforcement, or merge readiness.
+
+
+### CI follow-up — 2026-11-19 05:26 UTC
+
+The first Run 37 commit removed the core-test skip condition but a second identical condition remained on the full-suite job because the initial string replacement affected only the first occurrence. This follow-up removes the remaining condition. Both the core test job and full repository suite now run on integration pull-request heads as well as push events. Fresh exact-head push and PR CI are pending for the new commit; no test result is carried forward from either prior SHA.

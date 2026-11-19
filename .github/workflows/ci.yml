@@ -122,7 +122,6 @@ jobs:
           test ! -e ./_site/GLOBAL_STATE_MANIFEST.md
 
   full-suite:
-    if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'integration/')
     name: Full repository test suite
     runs-on: ubuntu-latest
     timeout-minutes: 60
