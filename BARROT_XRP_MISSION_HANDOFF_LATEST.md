@@ -1,3 +1,68 @@
+# Current checkpoint — Run222 (2026-11-19)
+
+**Disposition: NO MERGE.** The current integration branch has one exact-head full-suite failure caused by a stale test expectation after the event registry advanced from run220 to run221. Run222 updates the registry and the test contract together; the new commit's full-suite result must be verified before any merge decision.
+
+## Repository checkpoint
+
+- Main SHA at start of Run222: `c8e15c90b1e07980d7b5a01c86c1667166a353f6`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`; head at start: `346b6713f5f73866de20f071f2fb6c8c5c74bfd3`.
+- PR #1663: 445 commits ahead, zero behind, 1,462 changed files; draft, zero independent reviews, zero requested reviewers.
+- Complete tree counts: main 1,739 entries; integration 3,004 entries. Every main path is present in integration; 1,265 paths are integration-only.
+- Fourteen PRs remain open. No branch or PR was created; no PR was closed.
+
+## Exact-head verification
+
+- Predecessor integration head `b6b24b368a33fb1e57b1ec0fc77f9144d3a973f4`: push and PR full-suite CI passed with 4,352 passed, 1 skipped, 11 warnings, 19 subtests, and 71.31% inclusive coverage.
+- Head `346b6713f5f73866de20f071f2fb6c8c5c74bfd3`: full suite ran 4,351 passed, 1 failed, 1 skipped, 11 warnings, 19 subtests, 71.31% coverage. The sole failure was `tests/test_xrp_run220_market_institutional_reconciliation.py::test_run220_event_registry_builds_a_cutoff_safe_research_timeline`: the test expected registry version `run220`, while the current registry correctly recorded `run221`. The failure is a stale test contract, not a directional-model or market-data failure.
+- Run222 changes the test to validate registry version `run222`, 150 events, 10 new research-only events, the prior run220/run221 history, and the no-receipt/no-forecast gates. Exact-head CI on the Run222 commit is pending and must be checked before merge.
+- The dependency audit and money audit passed on the preceding checkpoint. The fail-closed merge gate did not pass. Main branch-protection inspection returns HTTP 403; no independent PR approval is present.
+
+## Current XRP observations — research only
+
+- Kraken XRP/USD rendered API output: last $0.99255, bid $0.99251, ask $0.99256, 24-hour volume 49.0969M XRP, VWAP $0.97542731, high $0.9968, low $0.95363, open $0.96637. Recomputed spread 0.5038 bps; last +1.755% versus VWAP and +2.709% versus open. The API response supplied no exchange timestamp and no depth.
+- Fuelmaps six-venue spot book at 12:00 UTC: mid $0.9860; bids exceeded asks across reported bands (±0.5% $7.6M/$6.7M, ±1% $12.3M/$9.5M, ±2% $18.2M/$11.8M, ±5% $21.8M/$14.4M, ±10% $26.9M/$16.1M). Resting orders are cancellable, not executed demand.
+- Basis Binance XRPUSDT perpetual book at 12:04 UTC is a separate instrument: mid $0.9863, spread 1.01 bps, 1,000 levels each side, $32.6M bids/$28.8M offers; ±1% depth $12.7M/$12.3M. Do not combine it with the Fuelmaps spot book.
+- TradRadar at 12:35 UTC: OI $1.25B, -2.92% over 24h; funding +0.009% per 8h; 76.9% long accounts, ratio 3.33; $4.01M liquidations, $3.21M longs. Its earlier same-day snapshot had negative funding and higher OI. This is mixed positioning evidence, not a directional signal.
+- XRP Insights' 08:00 UTC wallet panel: 22.18B XRP across 707 attributed wallets and 24 exchanges; same-wallet change -155.7M over seven days and -444.3M over 30 days. It includes cold storage and is not tradable float. TokenPost separately reports 5.11B XRP, down 190M over eight days, without a reconciled wallet universe. Do not average these series.
+- Coinbase cbXRP page: 155,296,047.04 XRP reserves versus 155,293,800.5 cbXRP supply on Base, about 100.001447% coverage. Compared with its November 16 snapshot, reserve and supply each increased about 2.288M XRP (approximately 1.495%). This is wrapped-supply/custody growth, not proof of market purchases.
+
+## Institutional and capital-flow reconciliation
+
+- DBS and Circle's November 18 announcement gives eligible institutions direct USDC mint/redemption through DBS and 24/7 USD-USDC settlement. The release does not identify XRP, XRPL or Ripple. Circle's page reports $68.0B USDC circulation as of November 16 and native issuance on 38 networks including XRPL; USDC on XRPL is not proof of XRP bridge demand.
+- Coinbase's October 28 RLUSD announcement supports RLUSD deposits/withdrawals on XRPL, Base and Ethereum and distribution through Prime, Exchange and retail. Coinbase Global Exchange collateral support was stated as future, not live at launch; Ripple said it would provide Base liquidity.
+- OCC records Coinbase National Trust Company (charter 25390) as effective November 6 and authorized to open November 9 for fiduciary cryptocurrency custody. Ripple National Trust Bank (charter 25364) is separately effective October 26. These are separate national trust-bank entities; neither record proves a bilateral partnership, deposit-taking retail bank, XRP purchase or migration of custody balances.
+- SBI's May 1, 2026 presentation labels 5.10B XRP as “Actual XRP” held by Ripple, separate from 33.20B in escrow and 61.68B circulating as of April 27. “Actual XRP” is a token-holdings label, not the exact phrase “actual capital.” The same presentation says SBI invested $200M cash in Evernorth. Evernorth's SEC filing separately reports $214.05M aggregate advance-funding cash used to buy 84,365,876 XRP and 388,910,554 XRP contributed in kind; it identifies SBI-affiliated investors in the advance funding but does not allocate the entire cash purchase to SBI. Do not double-count cash and in-kind XRP.
+
+## Identity resolution and exact phrases
+
+- Japan's SBIC East, Central and West are the Tokyo, Nagoya and Osaka regional Small and Medium Business Investment & Consultation companies named under the 1963 Act and identified by their own official company profiles. They are not SBI Holdings, Inc.; the reviewed ChatGPT references are educational seminars, not evidence of an OpenAI commercial partnership.
+- “SBIC, ChatGPT SBIC”: no exact phrase or OpenAI commercial relationship established. “actual capital”: no exact-phrase identity established. “Actual XRP” is not “actual capital.” ASK Coin candidates remain unlinked to XRP.
+- Dr Kamilah/Camilla Stevenson: the iHeart transcript is auto-generated and records a display name, not an exact YouTube handle; the guest warns of fake pages. Two YouTube channels remain candidates only. Identity is not verified and no videos are admitted to the verified inventory.
+
+## Prediction engine, ingestion and platform coordination
+
+- The XRP ingestion, point-in-time feature store, event timeline, scenario/counter-hypothesis, walk-forward, calibration, drift and forecast-ledger modules are implemented on the integration branch. The last passing checkpoint reported module coverage including ingestion 83%, walk-forward 85%, calibration 88%, feature store 80%, forecast ledger 97%, point-in-time features 89%, scenarios 92%, event timeline 92%, drift 82% and source independence 89%.
+- The scheduled ingestion workflow is not present on main, so its schedule is not active in production. The latest source archive record remains 34 receipts (22 raw-retained, 12 digest-only) with 21 source failures and no independently controlled WORM anchor. The current event registry has 150 curated events, all without byte-exact publisher receipts and all model-ineligible.
+- Only GitHub access is tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks have no verified live authentication/data-flow evidence. No external-model dispatch occurred.
+- Integration's `barrot-ops.yml` replaces main's Databricks `--overwrite` import with create-only behavior and a target-absence preflight. No Databricks write was executed. The merge remains blocked, so main retains its older workflow until a safe merge.
+
+## PR backlog
+
+- Blocked: #1663 (draft integration, no independent review); #1668 (provider-failover branch is 5 ahead/3 behind and shares three paths with #1663 but has different blobs); #1541 (MMI security work shares five paths with #1663 but has different blobs and remains stacked).
+- Duplicate intent: #1665 (Pylint 4.1.4 is already represented in integration; do not close until the successor is merged and verified on main).
+- Unique/unreviewed: #1664, #1666, #1670, #1450, #1460, #1440, #1436, #1437, #1353, #1265. The older XRP ledger branches have path overlaps (#1450/#1440 share 64; #1437/#1353 share 5; #1353/#1265 share 3); preserve and reconcile rather than bulk-close.
+- Ready: 0. Merged: 0. Superseded: 0. No PR was closed.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- DESIGNED: the XRP prediction and ingestion architecture and the nine-platform least-privilege coordination map.
+- EXECUTED: current main/tree/PR/branch/CI/security inspection; exact market and institutional research; event-registry refresh; correction of the stale registry-version test.
+- VERIFIED: predecessor head `b6b24b3` full suite passed; head `346b671` failed only the stale run220-versus-run221 assertion; dependency and money audits passed. Run222 exact-head CI remains pending. No directional forecast, paper trade, real-money action, deployment, secret rotation, Space restart, Databricks write or Kaggle submission occurred.
+
+**Next action:** verify the Run222 exact-head full suite and fail-closed gate; then obtain independent review and permission to inspect branch protection, finish the transitive workflow audit, and only then consider the one existing integration PR for merge.
+
+---
+
 # Run 34 — 2026-11-19T02:11Z current-state addendum
 
 **Disposition: KEEP DRAFT — NO MERGE.** The exact prior integration head `1e57a9e5bfc3b7721ec061e47c83bbaac1a5b58e` passed the complete repository suite. Run 34 added and corrected one research artifact and updated this canonical handoff on the existing integration branch. The latest pre-handoff-update head is `87e5036e8e6ab77d611c9e086a69079fbe790b3c`; the handoff update creates another documentation-only head. Exact-head CI for the final head must pass; do not transfer the previous test result.
