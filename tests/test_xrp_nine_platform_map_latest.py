@@ -298,7 +298,7 @@ def test_run31_primary_source_reconciliation_separates_supply_capital_and_distri
     assert sbi["evernorth_xrp_holdings_approx"] == 473000000
     assert sbi["sbi_group_voting_rights_percent"] == 36.1
     assert sbi["sbi_group_economic_interest_percent"] == 20.5
-    assert "not establish Barrot" in sbi["sbi_claude_deployment"]["barrot_connection"].lower()
+    assert "not establish barrot" in sbi["sbi_claude_deployment"]["barrot_connection"].lower()
 
     evernorth = evidence["sources"][1]["observations"]
     assert (
@@ -314,7 +314,8 @@ def test_run31_primary_source_reconciliation_separates_supply_capital_and_distri
     assert circle["coinbase_distribution_cost_q3_2026_usd"] == 331300000
     assert circle["coinbase_distribution_cost_nine_months_2026_usd"] == 986600000
     assert "not 50% of gross" in circle["economics_caveat"].lower()
-    assert circle["circle_sbi_japan"]["ownership_percent"] if "ownership_percent" in circle["circle_sbi_japan"] else circle["circle_sbi_japan"]["circle_ownership_percent"] == 50
+    assert circle["circle_sbi_japan"]["circle_ownership_percent"] == 50
+    assert circle["circle_sbi_japan"]["sbi_ownership_percent"] == 50
 
     videos = evidence["sources"][4:]
     assert videos[0]["attribution_status"] == "VIDEO_LEVEL_GUEST_MATCH_SUPPORTED"
