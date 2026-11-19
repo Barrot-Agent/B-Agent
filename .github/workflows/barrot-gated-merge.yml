@@ -18,6 +18,7 @@ jobs:
   audit-only:
     name: Merge disabled pending gate verification
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       GH_TOKEN: ${{ github.token }}
       REPOSITORY: ${{ github.repository }}
@@ -63,7 +64,7 @@ jobs:
             [[ "$draft" == "false" ]] || add_blocker "PR is still draft"
             [[ "$state" == "open" ]] || add_blocker "PR is not open"
             [[ "$base_ref" == "main" ]] || add_blocker "PR base is not main"
-            [[ "$mergeable" == "true" && "$mergeable_state" == "clean" ]] || add_blocker "PR is not confirmed clean and mergeable"
+            [[ "$mergeable" == "true" ]] || add_blocker "PR has merge conflicts or GitHub has not confirmed mergeability"
 
             if current_main="$(gh api "repos/${REPOSITORY}/git/ref/heads/main" --jq '.object.sha' 2>/dev/null)"; then
               [[ "$base_sha" == "$current_main" ]] || add_blocker "PR base is not the current main SHA"
@@ -78,6 +79,7 @@ jobs:
               add_blocker "PR reviews could not be verified"
             fi
 
+            required_contexts=""
             if protection="$(gh api "repos/${REPOSITORY}/branches/main/protection" 2>/dev/null)"; then
               strict="$(jq -r '.required_status_checks.strict // false' <<< "$protection")"
               [[ "$strict" == "true" ]] || add_blocker "branch protection does not require strict up-to-date checks"
@@ -93,24 +95,64 @@ jobs:
               [[ "$required_approvals" -ge 1 ]] || add_blocker "branch protection does not require an independent approval"
               [[ "$approvals" -ge "$required_approvals" ]] || add_blocker "independent approvals do not satisfy branch-protection count"
 
-              if check_runs="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/check-runs?per_page=100" 2>/dev/null)" &&
-                 statuses="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/status" 2>/dev/null)"; then
-                while IFS= read -r context; do
-                  [[ -n "$context" ]] || continue
-                  run_count="$(jq --arg name "$context" --arg sha "$actual_head" '[.check_runs[] | select(.name == $name and .head_sha == $sha)] | length' <<< "$check_runs")"
-                  run_ok="$(jq --arg name "$context" --arg sha "$actual_head" '[.check_runs[] | select(.name == $name and .head_sha == $sha)] | all(.[]; .status == "completed" and .conclusion == "success")' <<< "$check_runs")"
-                  status_ok="$(jq --arg name "$context" --arg sha "$actual_head" '[.statuses[] | select(.context == $name and .sha == $sha)] | any(.[]; .state == "success")' <<< "$statuses")"
-                  if [[ "$run_count" -gt 0 ]]; then
-                    [[ "$run_ok" == "true" ]] || add_blocker "required check '$context' is not successful on the exact head"
-                  else
-                    [[ "$status_ok" == "true" ]] || add_blocker "required check '$context' is missing or unsuccessful on the exact head"
-                  fi
-                done <<< "$required_contexts"
-              else
-                add_blocker "exact-head checks and commit statuses could not be read"
-              fi
             else
               add_blocker "branch protection could not be verified; refusing to infer approval or bypass settings"
+            fi
+            required_checks=("Tests" "Full repository test suite" "GitHub Pages build (validation only)" "pip-audit" "audit")
+            while IFS= read -r context; do
+              [[ -n "$context" ]] && required_checks+=("$context")
+            done <<< "$required_contexts"
+
+            if check_runs="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/check-runs?per_page=100" 2>/dev/null)" &&
+               statuses="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/status" 2>/dev/null)"; then
+              # The gate starts alongside CI. Wait for exact-head checks to materialize
+              # and complete rather than treating concurrent workflow startup as failure.
+              deadline=$((SECONDS + 600))
+              while true; do
+                pending=0
+                failed=0
+                for required in "${required_checks[@]}"; do
+                  matching="$(jq --arg name "$required" --arg sha "$actual_head" '[.check_runs[] | select(.name == $name and .head_sha == $sha)] | sort_by(.started_at // .completed_at // "")' <<< "$check_runs")"
+                  count="$(jq 'length' <<< "$matching")"
+                  if [[ "$count" -gt 0 ]]; then
+                    latest="$(jq 'last // {}' <<< "$matching")"
+                    run_status="$(jq -r '.status // empty' <<< "$latest")"
+                    run_conclusion="$(jq -r '.conclusion // empty' <<< "$latest")"
+                    if [[ "$run_status" != "completed" ]]; then
+                      pending=1
+                    elif [[ "$run_conclusion" != "success" ]]; then
+                      add_blocker "required check '$required' completed with conclusion '${run_conclusion:-missing}' on the exact head"
+                      failed=1
+                    fi
+                  else
+                    legacy_status="$(jq --arg name "$required" --arg sha "$actual_head" '[.statuses[] | select(.context == $name and .sha == $sha)] | sort_by(.created_at // "") | last // {}' <<< "$statuses")"
+                    state="$(jq -r '.state // empty' <<< "$legacy_status")"
+                    if [[ "$state" == "success" ]]; then
+                      :
+                    elif [[ -z "$state" || "$state" == "pending" ]]; then
+                      pending=1
+                    else
+                      add_blocker "required status '$required' completed with state '${state:-missing}' on the exact head"
+                      failed=1
+                    fi
+                  fi
+                done
+
+                [[ "$failed" == "0" ]] || break
+                [[ "$pending" == "0" ]] && break
+                if (( SECONDS >= deadline )); then
+                  add_blocker "timed out waiting for mandatory exact-head CI checks to complete"
+                  break
+                fi
+                sleep 15
+                if ! check_runs="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/check-runs?per_page=100" 2>/dev/null)" ||
+                   ! statuses="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/status" 2>/dev/null)"; then
+                  add_blocker "exact-head check inventory became unavailable while waiting"
+                  break
+                fi
+              done
+            else
+              add_blocker "exact-head checks and commit statuses could not be read"
             fi
 
             if check_runs="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/check-runs?per_page=100" 2>/dev/null)"; then
