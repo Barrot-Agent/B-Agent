@@ -97,7 +97,8 @@ def test_run45_sbic_entities_and_chatgpt_reference_are_separate_from_sbi_holding
     assert sbic["entities"]["east"]["corporate_number"] == "9011001030621"
     assert sbic["entities"]["central"]["designation"] == "SBIC Central Japan"
     assert sbic["entities"]["west"]["designation"] == "SBIC West Japan"
-    assert "separate regional statutory companies" in sbic["distinction"]
+    assert "distinct regional statutory investment companies" in sbic["distinction"]
+    assert "separate listed financial group holding company" in sbic["distinction"]
     assert "not evidence of an OpenAI partnership" in sbic["chatgpt"]
 
 
