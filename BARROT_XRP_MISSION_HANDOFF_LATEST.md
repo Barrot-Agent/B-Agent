@@ -3673,3 +3673,71 @@ Ten high-risk workflows were inspected. `barrot-ops.yml` still imports to Databr
 **Macro event added to the point-in-time timeline:** The Federal Reserve published the October 27–28 FOMC minutes on November 18 at 2:00 p.m. EST (19:00 UTC). The target range remained 3.75%–4.00% by a 10–2 vote; Lisa D. Cook and Beth M. Hammack preferred a 25 bp increase. Staff discussed forced sales under deleveraging/redemption stress, hedge-fund leverage, limited dealer intermediation, AI-buildout debt and circular financing. The minutes' market review also cited the Iran conflict, French sovereign-debt repricing, and a stronger dollar amid wider rate differentials. This is a dated macro-risk event, not an XRP directional signal. The event's point-in-time availability is the November 18 publication timestamp, not the October meeting dates. [Federal Reserve minutes](https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm)
 
 **Current merge decision remains NO MERGE.** PR #1663 is still draft with no independent review; branch-protection details remain inaccessible through the available GitHub connection; the substantive merge gate is absent; and `barrot-ops.yml` still contains a Databricks `--overwrite` operation without a target backup/hash guard. No external action was run.
+
+
+### Run 39 — 2026-11-19 06:32 UTC — exact-head CI and integration checkpoint
+
+#### Repository state
+
+- Current main SHA: `82c23e219553164c24073784c529aad75acacd66`.
+- Existing integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`; verified pre-handoff-update head: `4416d53112ff348dedeca42dcca2df671da0b4f4`.
+- Main tree: 1,739 entries, complete. Integration tree: 2,996 entries, complete. All 1,739 main paths are present in the integration tree; no missing main paths.
+- PR #1663 is the sole consolidated V3/XRP integration PR: 404 commits ahead, zero behind, 1,449 changed files, 525,375 additions, 6,754 deletions, including 68 changed workflow files. GitHub reports mergeable/clean, but it remains draft.
+- PR #1663 has zero submitted reviews, zero inline review threads and no requested reviewers. The main branch object reports protection enabled; the branch-protection endpoint returns 403 to the available connection. Approval, required-check, and bypass settings therefore remain unverified. Do not infer merge permission from `mergeable=clean`.
+
+#### Exact-head CI — verified on 4416d53112ff348dedeca42dcca2df671da0b4f4
+
+- Pull-request CI [44472099319](https://github.com/Barrot-Agent/B-Agent/actions/runs/44472099319): **success**; all three jobs passed (core tests, Pages validation-only build, full repository suite).
+- Push CI [44472092102](https://github.com/Barrot-Agent/B-Agent/actions/runs/44472092102): **success**; core tests, Pages validation, and full repository suite passed.
+- Full repository suite: **4,293 passed, 1 skipped, 11 warnings, 19 subtests passed in 192.63 seconds**. Inclusive coverage: **68.13%**, above the 62% gate. Legacy-core coverage: **77%**, above the 70% gate. Wheel build, packaged primary-mission check, and installed-wheel smoke verification passed.
+- PR dependency audit [44472099306](https://github.com/Barrot-Agent/B-Agent/actions/runs/44472099306) and push dependency audit [44472092104](https://github.com/Barrot-Agent/B-Agent/actions/runs/44472092104): **success**.
+- PR fail-closed workflow [44472099343](https://github.com/Barrot-Agent/B-Agent/actions/runs/44472099343) and push run [44472092214](https://github.com/Barrot-Agent/B-Agent/actions/runs/44472092214): **success**, but the workflow only prints that automatic merging is disabled. It is not a substantive readiness gate.
+- Money audit [44472099473](https://github.com/Barrot-Agent/B-Agent/actions/runs/44472099473): **success**.
+- GitHub Actions cache reservation hit its configured budget and became read-only; this produced a non-blocking cache-save warning, not a test or dependency failure.
+- These results apply to SHA `4416d53112ff348dedeca42dcca2df671da0b4f4`. This handoff append creates a new documentation-only commit; do not transfer the preceding exact-head result to that new SHA. Fresh CI must verify the post-handoff head.
+
+#### Workflow and external-action security
+
+- The 68 changed workflow files are inventoried. High-risk workflows rechecked in this run include `barrot-ops.yml`, `barrot-gated-merge.yml`, `paid-issue-publish.yml`, `deploy-databricks.yml`, `deploy-a2a-worker.yml`, `kaggle-competitions.yml`, `coinbase-paper-trader.yml`, `ci.yml`, and `xrp-public-ingestion.yml`.
+- `barrot-ops.yml` still imports to `/Shared/barrot_databricks_job` with `--overwrite`. It requires explicit per-run confirmation and an exact main SHA, but has no target backup/hash guard. **Do not dispatch it.**
+- Databricks deployment is manual and exact-main-SHA gated. A2A deployment requires explicit deployment and secret-rotation confirmations. Kaggle submissions require explicit confirmation and an exact competition allowlist. The Coinbase paper-trader is manual, artifact-only, defaults to BTC-USD, and was not run.
+- The paid-issue publisher remains disabled with no credentials loaded. The gated-merge workflow is audit-only/echo-only. The complete transitive workflow-to-script/action/data-flow audit is still unfinished.
+- No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, external-model dispatch, funds transfer, or real-money action occurred.
+
+#### XRP prediction and research readiness
+
+- The XRP public-ingestion workflow exists only on the integration branch; it is absent from main. Its scheduled job is permitted on main, while integration-branch execution is limited to scoped push or manual dispatch. **Production scheduled ingestion is not active on main.**
+- The last market snapshot remains the Run 38 capture at 2026-11-19 06:01:57 UTC. Kraken/OKX observations were top-of-book only, unsynchronized, and not model-eligible; full depth was unavailable. ETF provider universes, units, partial files and cutoffs still disagree. No flow or liquidity feature was promoted from these observations.
+- The integration branch contains public-source ingestion, content-addressed receipt handling, receipt-chain logic, point-in-time feature storage, chronological walk-forward evaluation, naive/momentum/mean-reversion/volatility baselines, forecast ledger, event timeline, scenario/counter-hypothesis and drift components. Their presence and unit tests do not establish production ingestion or predictive edge.
+- The previously recorded ingestion limitations remain: 34 receipts (22 raw-retained, 12 digest-only), 21 source failures, and no independent WORM/timestamp anchor. No newer production ingestion run was executed in this checkpoint.
+- No candidate has met the out-of-sample, shadow-sample, calibration, drift, independent-source-cluster and attestation gates. **No directional XRP forecast was issued.**
+
+#### Nine-platform coordination
+
+GitHub repository access was tested and worked. No authenticated data-flow test or independent task dispatch was performed for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle, or Databricks. No nine-platform live coordination is claimed. Least-privilege permissions and fallbacks remain required.
+
+#### Open PR backlog — 14
+
+- **Blocked:** #1663 (draft; no independent review; substantive readiness gate absent; branch-protection requirements inaccessible; Databricks overwrite guard incomplete), #1668 (overlapping worker paths conflict with the integration quarantine), #1541 (parent #1540 closed without merge).
+- **Duplicate:** #1665 (Pylint 4.1.4 is already present in the integration branch's development requirements; do not close until the change is verified on main).
+- **Unique/unreviewed:** #1664, #1666, #1450, #1460, #1440, #1437, #1436, #1353, #1265, #1670. #1670 is a separate creative-intelligence workstream, not XRP integration. Preserve all unique work; do not bulk-close.
+- **Ready:** 0. **Merged:** 0. **Superseded:** 0. No source PR was closed.
+
+#### Decision and next concrete actions
+
+**NO MERGE.** Exact-head CI now passes on `4416d531`, but that does not clear the independent-review, draft-state, branch-protection, substantive-gate, Databricks overwrite, or full transitive workflow-audit blockers.
+
+1. Verify exact-head CI on the new documentation-only commit created by this handoff update.
+2. Complete the transitive workflow/action/script/data-flow audit; replace the echo-only merge workflow with a read-only fail-closed readiness gate that refuses to proceed when branch protection cannot be verified.
+3. Add target backup/hash preconditions to the Databricks overwrite path or remove overwrite semantics.
+4. Add package-level coverage and tests for analysis, ingestion, monetization, tools, repair, and knowledge while retaining the full-suite job and existing coverage floors.
+5. Activate scheduled ingestion only after the integrated branch is safely merged; capture raw SEC XML and exchange response bytes with SHA-256 receipts and establish an independent immutable/WORM timestamp anchor.
+6. Reconcile issuer-level ETF holdings and synchronized full-depth market data before admitting institutional-flow or liquidity features.
+7. Keep forecasts disabled until leakage-safe walk-forward, calibration, source-diversity, drift, and shadow-evaluation gates pass.
+
+#### Execution labels
+
+- **DESIGNED:** integrated XRP intelligence and prediction architecture plus Barrot V3 execution/safety foundation.
+- **EXECUTED:** complete main/integration tree comparison; open-PR inventory; branch ancestry and changed-file inventory; exact-head PR and push CI review; full-suite log inspection; dependency/fail-closed/money-audit review; targeted high-risk workflow review; canonical handoff update.
+- **VERIFIED:** all 4,293 full-suite tests and required coverage/package checks passed on exact pre-update head `4416d531`; dependency audit, Pages validation, core tests and packaged mission verification passed on that head.
+- **NOT VERIFIED:** post-handoff-update head CI until it completes; full transitive workflow audit; branch-protection approval/check requirements; production scheduled ingestion; independent WORM retention; synchronized full-depth market data; nine-platform live coordination; predictive performance; merge readiness.
