@@ -8,25 +8,25 @@
     "main_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
     "integration": {
       "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
-      "code_head_sha": "73220cb9556266fe1f5942e973938aca43c618bc",
+      "code_head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
       "pr_number": 1663,
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 374,
+      "ahead_by": 379,
       "behind_by": 0,
       "changed_files": 1440,
       "changed_workflow_files": 68,
       "formal_reviews": 0,
-      "snapshot_head_sha": "87253529920cc6389f1e7f5145262e00a762e40c",
-      "commits": 374,
+      "snapshot_head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
+      "commits": 379,
       "additions": 518399,
       "deletions": 6754,
       "mergeable_state": "GitHub reports mergeable, but PR remains draft. Exact-head full suite failed two evidence-contract assertions: stale test expected #1665 blocked while map correctly marks its already-integrated Pylint change duplicate; latest_market_snapshot lacked artifact_path. Test correction and source-linked market artifact are committed to the existing branch; new exact-head CI is pending. Zero independent reviews; branch protection details remain 403; fallback ruleset disabled; CODEOWNERS self-only; main publisher and Pages side effects remain blockers; transitive workflow audit incomplete.",
       "review_comments": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
-      "current_pr_head_sha": "87253529920cc6389f1e7f5145262e00a762e40c",
+      "current_pr_head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
       "snapshot_ahead_by": 364,
       "snapshot_changed_files": 1438,
       "handoff_update_commit_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
@@ -41,10 +41,10 @@
       "latest_exact_head_pr_money_audit_run": 44423330547,
       "latest_exact_head_pr_dependency_audit_run": 44423330551,
       "latest_exact_head_pr_fail_closed_run": 44423330438,
-      "last_audited_at_utc": "2026-11-19T00:17:21Z",
-      "latest_verified_full_suite_head_sha": "73220cb9556266fe1f5942e973938aca43c618bc",
-      "latest_verified_full_suite_run": 44427222271,
-      "current_branch_head_full_suite_status": "PASS on exact head 73220cb: 4,279 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 68.13% inclusive coverage; 77% legacy-core coverage; wheel build and installed Barrot V3/XRP mission verification passed. A later primary-source artifact and regression-test commit advanced the branch to 8725352; exact-head CI on 8725352 is pending."
+      "last_audited_at_utc": "2026-11-19T00:28:52Z",
+      "latest_verified_full_suite_head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
+      "latest_verified_full_suite_run": 44428612376,
+      "current_branch_head_full_suite_status": "PASS on exact head 9d31bde: 4,280 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 186.55 seconds; 68.13% inclusive coverage; 77% legacy-core coverage. Wheel build and isolated installed-wheel verification of Barrot V3, the primary XRP mission and canonical data assets passed."
     },
     "tree_counts": {
       "main": {
@@ -311,7 +311,7 @@
     "external_dispatch_performed": false,
     "external_data_transfer_performed": false,
     "task_assignments_status": "PROPOSED_NOT_DISPATCHED_FOR_EIGHT_EXTERNAL_PLATFORMS",
-    "chatgpt_task_status": "EXECUTED_IN_CURRENT_SESSION: repository/main/PR/tree/ancestry/overlap/CI/security/handoff inspected; exact-head full suite passed on 73220cb; primary SBI/Evernorth/Circle/Claude and YouTube attribution evidence reconciled; new regression test added on 8725352. External platform dispatch and data transfer not performed.",
+    "chatgpt_task_status": "EXECUTED_IN_CURRENT_SESSION: current main/tree, all open PRs, ancestry/overlaps, workflows, dependencies, security settings and handoff inspected; exact-head full suite passed on 9d31bde (4,280 passed, 1 skipped); dependency, fail-closed and money gates passed; primary-source institutional and supply evidence reconciled. No external platform dispatch.",
     "evidence_packet_schema": [
       "claim_id",
       "claim",
@@ -680,7 +680,9 @@
         "Circle Q3 2026 10-Q reports $331.3M Q3 and $986.6M nine-month Coinbase distribution costs; the formula is not 50% of gross reserve income.",
         "SBI reports Claude rollout across 71 group companies; no Barrot authentication or data flow is established."
       ],
-      "model_eligible": false
+      "model_eligible": false,
+      "category_sum_xrp_approx": 99990000000,
+      "unreconciled_rounding_residual_xrp_approx": 10000000
     }
   },
   "ci_evidence": {
@@ -773,23 +775,24 @@
       "pages_deployment_result": "success"
     },
     "current_head_full_suite": {
-      "run_id": 44427222271,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44427222271",
-      "head_sha": "73220cb9556266fe1f5942e973938aca43c618bc",
+      "run_id": 44428612376,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44428612376",
+      "head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
       "status": "completed",
       "conclusion": "success",
-      "passed": 4279,
+      "passed": 4280,
       "tests_failed": 0,
       "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests_passed": 19,
-      "duration_seconds": 121.37,
+      "duration_seconds": 186.55,
       "inclusive_coverage_percent": 68.13,
       "legacy_core_coverage_percent": 77,
       "wheel_build": "success",
-      "packaged_primary_mission": "verified in built wheel and after isolated wheel installation",
-      "result": "PASS on exact head 73220cb. Later commits added the primary-source reconciliation artifact and a regression test; those later commits require a new exact-head run."
+      "packaged_primary_mission": "verified in wheel and after isolated installation",
+      "installed_wheel": "verified Barrot V3, primary XRP mission and canonical data assets",
+      "result": "PASS on exact head 9d31bde."
     },
     "previous_verified_full_suite": {
       "run_id": 44322684443,
@@ -897,54 +900,52 @@
       "note": "The exact-head push full suite remains the controlling test evidence; no merge until it and all required checks finish."
     },
     "current_pr_head_ci": {
-      "head_sha": "73220cb9556266fe1f5942e973938aca43c618bc",
-      "push_ci_run_id": 44427222271,
+      "head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
+      "push_ci_run_id": 44428612376,
       "push_ci_conclusion": "success",
       "standard_tests_job_status": "success",
-      "full_suite_job_id": 135235068773,
-      "full_suite_passed": 4279,
+      "full_suite_job_id": 135239865026,
+      "full_suite_passed": 4280,
       "full_suite_failed": 0,
       "full_suite_skipped": 1,
       "full_suite_coverage_percent": 68.13,
       "legacy_core_coverage_percent": 77,
-      "pr_event_run_id": 44427232995,
+      "dependency_audit_run_id": 44428612536,
+      "dependency_audit_conclusion": "success",
+      "fail_closed_run_id": 44428612395,
+      "fail_closed_conclusion": "success",
+      "pages_validation_status": "success_validation_only",
+      "pr_event_run_id": 44428619302,
       "pr_event_conclusion": "success",
       "pr_event_full_suite_status": "skipped",
-      "pr_event_core_tests_status": "skipped",
-      "dependency_audit_run_id": 44427222345,
-      "dependency_audit_conclusion": "success",
-      "money_audit_run_id": 44427232945,
+      "money_audit_run_id": 44428619390,
       "money_audit_conclusion": "success",
-      "fail_closed_run_id": 44427222330,
-      "fail_closed_conclusion": "success",
-      "pr_fail_closed_run_id": 44427232953,
-      "pr_fail_closed_conclusion": "success",
-      "pr_dependency_audit_run_id": 44427233021,
+      "pr_dependency_audit_run_id": 44428619383,
       "pr_dependency_audit_conclusion": "success",
-      "pages_validation_status": "success_validation_only",
-      "pending_exact_head_sha": "87253529920cc6389f1e7f5145262e00a762e40c",
-      "exact_head_verification": "PASS on 73220cb; pending rerun on 8725352 after adding primary-source evidence and its regression test."
+      "pr_fail_closed_run_id": 44428619335,
+      "pr_fail_closed_conclusion": "success",
+      "exact_head_verification": "PASS — full repository suite, dependency audit, fail-closed gate, money audit, PR dependency audit, PR fail-closed gate and Pages validation all passed on exact head 9d31bde. PR-event test jobs remain skipped because PR #1663 is draft; push-triggered full suite is the proof."
     },
-    "last_verified_code_head_sha": "73220cb9556266fe1f5942e973938aca43c618bc",
+    "last_verified_code_head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
     "last_verified_full_suite": {
-      "head_sha": "73220cb9556266fe1f5942e973938aca43c618bc",
-      "run_id": 44427222271,
+      "head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
+      "run_id": 44428612376,
       "status": "completed",
       "conclusion": "success",
-      "passed": 4279,
+      "passed": 4280,
       "tests_failed": 0,
       "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests_passed": 19,
-      "duration_seconds": 121.37,
+      "duration_seconds": 186.55,
       "inclusive_coverage_percent": 68.13,
       "legacy_core_coverage_percent": 77,
       "wheel_build": "success",
       "installed_wheel_mission_verification": "success",
-      "result": "PASS on exact head 73220cb; does not verify later evidence/test commits."
+      "result": "PASS on exact head 9d31bde."
     },
-    "latest_full_suite_tested_head_sha": "73220cb9556266fe1f5942e973938aca43c618bc",
+    "latest_full_suite_tested_head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
     "remediation_commit_test": "80507968e59d9a2e3f99801734d258e8f2dc1819",
     "current_branch_head_ci_pending": {
       "head_sha": "4cf9b185e95b3b2231713d4dba0246eb394d768c",
@@ -959,11 +960,24 @@
       "next_required_verification": "Run full repository suite, dependency audit, fail-closed gate and money audit on the final corrected integration head; the current test-fix head has not yet been verified."
     },
     "run31_corrected_head": {
-      "current_snapshot_head": "87253529920cc6389f1e7f5145262e00a762e40c",
-      "prior_exact_head_pass": "73220cb9556266fe1f5942e973938aca43c618bc",
-      "prior_exact_head_run": 44427222271,
-      "pending_exact_head_full_suite": true,
-      "reason": "A new primary-source reconciliation artifact and its regression test were added after the 73220cb full-suite pass."
+      "current_snapshot_head": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
+      "latest_verified_full_suite_run": 44428612376,
+      "exact_head_full_suite": "PASS",
+      "passed": 4280,
+      "failed": 0,
+      "skipped": 1,
+      "intermediate_failure_923cf8": {
+        "run_id": 44428271691,
+        "failed": 1,
+        "passed": 4279,
+        "cause": "Test forced SBI's rounded supply categories to equal exactly 100B. Displayed rounded categories actually total 99.99B, leaving a 0.01B residual.",
+        "correction": "Artifact and test now preserve the 10M XRP rounding/unclassified residual instead of force-balancing."
+      },
+      "corrections": [
+        "PR #1665 classification test expects duplicate, matching its exact Pylint dependency change already present in #1663.",
+        "latest_market_snapshot now references a committed market evidence artifact and asserts rendered-response hash scope, no raw wire capture and no WORM anchor.",
+        "Primary-source test now preserves SBI's 99.99B rounded supply-category sum and 0.01B residual."
+      ]
     }
   },
   "security_and_governance": {
@@ -989,10 +1003,10 @@
       "review_threads": 0,
       "requested_reviewers": 0,
       "mergeable": true,
-      "mergeable_state": "GitHub reports mergeable; full suite passed on 73220cb, but newer primary-source artifact/test commit 8725352 requires exact-head verification. Zero independent reviews; branch protection details remain 403; fallback ruleset disabled; CODEOWNERS self-only; main publisher and Pages side effects remain blockers; transitive workflow audit incomplete.",
-      "head_sha": "87253529920cc6389f1e7f5145262e00a762e40c",
+      "mergeable_state": "GitHub reports mergeable. Exact-head full suite, dependency audit, fail-closed gate, money audit, PR dependency audit, PR fail-closed gate and Pages validation passed on 9d31bde. PR remains draft with zero independent reviews; branch protection details remain 403; fallback ruleset disabled; CODEOWNERS self-only; main publisher and Pages side effects remain blockers; transitive workflow audit incomplete.",
+      "head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
       "base_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
-      "ahead_by": 374,
+      "ahead_by": 379,
       "behind_by": 0,
       "changed_files": 1440,
       "changed_workflow_files": 68,
@@ -1189,12 +1203,12 @@
     {
       "number": 1663,
       "classification": "blocked",
-      "note": "Sole consolidated V3/XRP integration; draft; 374 commits ahead/0 behind; 1,440 changed files and 68 workflow files. Full suite passed on 73220cb (4,279 passed, 1 skipped, 0 failed); newer primary-source artifact/regression test on 8725352 requires exact-head rerun. Zero independent reviews; governance/publication/transitive-security blockers remain.",
+      "note": "Sole consolidated V3/XRP integration; draft; 379 commits ahead/0 behind; 1,440 changed files and 68 workflow files. Exact-head full suite passed on 9d31bde (4,280 passed, 1 skipped, 0 failed); dependency, fail-closed, money, PR dependency and PR fail-closed gates passed. Zero independent reviews; governance/publication/transitive-security blockers remain.",
       "base": "main",
       "base_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
       "head": "integration/xrp-v3-mainline-successor-20261115T2101Z",
-      "head_sha": "87253529920cc6389f1e7f5145262e00a762e40c",
-      "commits": 374,
+      "head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
+      "commits": 379,
       "changed_files": 1440,
       "overlap_count": 1440,
       "overlap_paths": "integrated workstream"
@@ -1597,10 +1611,12 @@
       "barrot_connection": "not verified"
     },
     "ripple_supply_sbi_disclosure": {
-      "relationship": "SBI's November 2, 2026 presentation provides a rounded XRP supply allocation dated October 28, 2026: approximately 63.35B in market circulation, 5.23B Ripple holdings currently not in circulation, 31.4B under escrow and 0.01B burned, summing to 100B maximum supply.",
+      "relationship": "SBI's November 2, 2026 presentation gives a rounded XRP supply allocation dated October 28, 2026: approximately 63.35B in market circulation, 5.23B Ripple holdings currently not in circulation, 31.4B under escrow and 0.01B burned. The displayed categories total approximately 99.99B XRP, leaving a 0.01B residual to the 100B maximum. Preserve the rounding/unclassified residual; do not force-balance or relabel it as burn or tradable float.",
       "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
       "as_of_date": "2026-10-28",
-      "model_admission": "research-only until raw source capture, exact timestamped feature construction and independent corroboration"
+      "model_admission": "research-only until raw source capture, exact timestamped feature construction and independent corroboration",
+      "category_sum_xrp_approx": 99990000000,
+      "unreconciled_rounding_residual_xrp_approx": 10000000
     }
   },
   "sbic_identity_reconciliation": {
@@ -2235,7 +2251,7 @@
       "main_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
       "integration_head_audited": "28b69e2d259d9f3061330a7282dafa7c55f81dc0",
       "pr_number": 1663,
-      "ahead_by": 374,
+      "ahead_by": 379,
       "behind_by": 0,
       "changed_files": 1440,
       "changed_workflow_files": 68,
@@ -2245,38 +2261,38 @@
       "open_prs": 13,
       "main_modified": false,
       "integration_head_after_evidence_commits": "4895e44d85e28c669e90d53c6b7cecce9ba3a9da",
-      "commits_ahead": 374,
-      "integration_head_tested": "73220cb9556266fe1f5942e973938aca43c618bc",
-      "integration_head_at_snapshot": "87253529920cc6389f1e7f5145262e00a762e40c"
+      "commits_ahead": 379,
+      "integration_head_tested": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
+      "integration_head_at_snapshot": "9d31bdef4df8453e90069c5a01a6f83efac1055b"
     },
     "ci": {
-      "push_run": 44427222271,
+      "push_run": 44428612376,
       "push_conclusion": "success",
-      "tested_head_sha": "73220cb9556266fe1f5942e973938aca43c618bc",
-      "passed": 4279,
+      "tested_head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
+      "passed": 4280,
       "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests": 19,
-      "duration_seconds": 121.37,
+      "duration_seconds": 186.55,
       "inclusive_coverage_percent": 68.13,
       "legacy_core_coverage_percent": 77,
       "wheel_build": "success",
       "installed_wheel_primary_mission": "verified",
-      "dependency_audit_push_run": 44427222345,
+      "dependency_audit_push_run": 44428612536,
       "dependency_audit_push_result": "success",
-      "fail_closed_push_run": 44427222330,
+      "fail_closed_push_run": 44428612395,
       "fail_closed_push_result": "success",
-      "money_audit_pr_run": 44427232945,
+      "pages_validation": "success_validation_only",
+      "money_audit_pr_run": 44428619390,
       "money_audit_pr_result": "success",
-      "pr_ci_run": 44427232995,
+      "pr_ci_run": 44428619302,
       "pr_ci_result": "success; tests skipped because draft",
-      "dependency_audit_pr_run": 44427233021,
+      "dependency_audit_pr_run": 44428619383,
       "dependency_audit_pr_result": "success",
-      "fail_closed_pr_run": 44427232953,
+      "fail_closed_pr_run": 44428619335,
       "fail_closed_pr_result": "success",
-      "current_snapshot_head": "87253529920cc6389f1e7f5145262e00a762e40c",
-      "exact_head_rerun_pending": true
+      "exact_head_result": "PASS"
     },
     "remediation": {
       "artifact_commit": "859be90c90b0bc233cf21762bc34ab1c00b03111",
@@ -2285,8 +2301,10 @@
         "Changed stale test expectation for #1665 from blocked to duplicate, matching the already-integrated Pylint dependency change.",
         "Added latest_market_snapshot.artifact_path and a source-linked evidence artifact that explicitly records rendered-response hash scope and absence of raw wire bytes/WORM anchoring."
       ],
-      "next": "Run full repository suite, dependency audit, fail-closed gate and money audit on the latest branch head 8725352; the 73220cb predecessor passed.",
-      "map_snapshot_commit": "4895e44d85e28c669e90d53c6b7cecce9ba3a9da"
+      "next": "Complete transitive workflow/security audit and governance blockers; current exact-head full suite and code/security gates passed on 9d31bde.",
+      "map_snapshot_commit": "4895e44d85e28c669e90d53c6b7cecce9ba3a9da",
+      "intermediate_failure_923cf8": "One test failed because rounded SBI supply categories were force-balanced to 100B; fixed by preserving 99.99B sum and 0.01B residual.",
+      "exact_head_9d31b": "PASS: 4,280 passed, 1 skipped, 0 failed; 68.13% inclusive, 77% legacy-core; wheel and installed primary mission verified."
     },
     "market": {
       "kraken_last_usd": 0.96509,
@@ -2312,7 +2330,9 @@
       "artifact_path": "research/xrp_intelligence/20261119T001700Z-run31-primary-source-capital-supply-circle-sbi-creator-reconciliation.json",
       "raw_wire_bytes_captured": false,
       "external_worm_anchor": "NOT_ANCHORED",
-      "model_eligible": false
+      "model_eligible": false,
+      "supply_category_sum_xrp_approx": 99990000000,
+      "residual_to_max_supply_xrp_approx": 10000000
     },
     "youtube_inventory": {
       "verified_video_level_guest_matches": [
