@@ -294,7 +294,7 @@ class RecursiveCreativeMemory:
         }
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self.path.open("a", encoding="utf-8") as handle:
-            handle.write(json.dumps(record, sort_keys=True) + "\\n")
+            handle.write(json.dumps(record, sort_keys=True) + "\n")
         return record
 
     def record_composition_feedback(
@@ -321,7 +321,7 @@ class RecursiveCreativeMemory:
             "status": "verified_lesson" if promoted else "retained_unpromoted_feedback",
         }
         with self.path.open("a", encoding="utf-8") as handle:
-            handle.write(json.dumps(record, sort_keys=True) + "\\n")
+            handle.write(json.dumps(record, sort_keys=True) + "\n")
         return record
 
     def recommend_composition_settings(self) -> dict[str, Any] | None:
