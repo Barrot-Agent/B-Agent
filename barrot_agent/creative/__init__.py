@@ -7,6 +7,7 @@ from .composer import (
     evaluate_composition,
 )
 from .midi_export import export_midi
+from .audio_render import AudioRenderResult, render_audio
 from .musical_dna import (
     Evaluation,
     MusicalEvent,
@@ -50,4 +51,6 @@ __all__ = [
     "compose_original",
     "evaluate_composition",
     "export_midi",
+    "AudioRenderResult",
+    "render_audio",
 ]
