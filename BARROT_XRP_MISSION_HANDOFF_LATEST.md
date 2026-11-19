@@ -5971,3 +5971,108 @@ Continue on the existing integration branch only. Complete the transitive workfl
 - Current code head before this documentation-only postscript: b6d11894f0cfe43f0c6b10504c22d8dc10090052.
 - Exact-head checks on b6d11894: core tests passed; Pages validation-only passed; money audit passed; dependency audit passed. Full repository suite and fail-closed gate were still running at capture. Runs: [CI 44587880574](https://github.com/Barrot-Agent/B-Agent/actions/runs/44587880574), [money audit 44587880145](https://github.com/Barrot-Agent/B-Agent/actions/runs/44587880145), [dependency audit 44587880062](https://github.com/Barrot-Agent/B-Agent/actions/runs/44587880062), [fail-closed gate 44587880214](https://github.com/Barrot-Agent/B-Agent/actions/runs/44587880214). The earlier 4,357-test full-suite pass remains verified on 99d0a54, not transferred to b6d11894.
 - The latest handoff update is documentation-only and will receive its own exact-head CI. PR #1663 remains draft and unmerged. No production action was performed.
+
+
+---
+
+### Integration and research checkpoint — 2026-11-19T20:49:22.417Z
+
+#### Repository state and exact-head verification
+
+- Current main: `e1c3634df28f488819185b7d5697d474bc0bcb9e`.
+- Existing integration head before this handoff update: `5009a8c7bcbd2be66d4d0e2eb4c3971a5070ecf0`.
+- Ancestry: 468 commits ahead, 0 behind; no rebase, force-push or history rewrite.
+- Complete tree inspection: main has 1,739 entries; integration has 3,008. Every main blob path is present in integration. There are 210 main-path blob-SHA differences, corresponding to intentional integration changes, not missing paths.
+- PR #1663 currently changes 1,466 files, including 68 workflow files. Fourteen PRs remain open.
+- Exact-head full repository CI on `5009a8c7bcbd2be66d4d0e2eb4c3971a5070ecf0` passed: 4,368 passed, 1 skipped, 11 warnings, 19 subtests; inclusive coverage 71.34%. [CI run 44609951861](https://github.com/Barrot-Agent/B-Agent/actions/runs/44609951861).
+- Exact-head dependency audit, money audit, core tests and Pages validation-only passed.
+- Exact-head fail-closed gate [44609951797](https://github.com/Barrot-Agent/B-Agent/actions/runs/44609951797) correctly remains blocked for three reasons: PR #1663 is draft; no independent approving review exists; effective branch-protection settings cannot be read (GitHub API 403).
+- Main's GitHub Pages deployment [44587757885](https://github.com/Barrot-Agent/B-Agent/actions/runs/44587757885) succeeded on main at 2026-11-19T18:26:08Z. PR #1663 changes 18 public/documentation paths, including `web/landing.html`, `web/signals.html`, and `docs/INDEX.md`. A merge would publish changed content. No publication authorization was given; do not merge.
+
+#### Workflow-level security audit
+
+- All 68 workflow definitions changed by #1663 were fetched and inspected. Every external `uses:` action reference found in those files is pinned to a full 40-character commit SHA. No unpinned external action reference was found in this workflow set.
+- This is a workflow-definition/action-pin audit, not a completed transitive audit of every called script, composite action, environment variable, secret consumer, or external data flow.
+- `xrp-public-ingestion.yml` defines hourly and daily schedules. GitHub schedules execute from the default branch; the file is absent from main, so production scheduled ingestion is not active. Its integration push capture is scoped to integration paths and uses read-only repository/actions permissions plus expiring workflow artifacts. The user has authorized public-data ingestion, but not deployment or external financial actions.
+- `coinbase-paper-trader.yml` is explicitly disabled, has empty permissions and no active schedule. No paper trade occurred.
+- Hugging Face Space deployment/secret rotation, Cloudflare Worker deployment, Space restart, Kaggle submission and Databricks workspace creation are manual workflows with explicit confirmation gates; none was invoked.
+- `barrot-ops.yml` refuses to overwrite an existing Databricks target and requires explicit confirmation to create a missing target. It was not invoked.
+- `pillars-check.yml` has a daily trigger, but its GitHub App and Databricks probes are gated to manual dispatch plus explicit read-only confirmations. No probe was invoked.
+- `release.yml` is tag-triggered; no tag or release was created. The paid-issue publish workflow has empty permissions and was not invoked.
+- The repository ruleset named “Fall Back” is disabled. The main branch-protection endpoint returns 403; this does not prove that branch protection is absent. Dependabot/code-scanning alert endpoints and `security_and_analysis` settings were not exposed to this connector. Do not infer their state.
+
+#### New primary-source capital and ownership reconciliation
+
+**SBI Holdings and Ripple**
+
+- SBI Holdings' FY2025 financial-results presentation dated 2026-05-01 explicitly describes Ripple as an SBI Group investee and states SBI's approximately 9% equity stake in Ripple.
+- The same presentation's XRP distribution slide is dated 2026-04-27. It labels approximately 5.10B XRP as “Actual XRP”, approximately 33.20B as under escrow, approximately 61.68B as circulated in the market and approximately 0.01B burned. The 5.10B “Actual XRP” is part of Ripple's holdings outside circulation; it is not SBI Holdings' direct XRP balance.
+- SBI's presentation separately says SBI invested USD 200M cash in Evernorth's PIPE and that the financing raised over USD 1B through a combination of spot XRP and cash. These are corporate-equity/cash-financing disclosures, not proof that SBI directly owns the 5.10B “Actual XRP”.
+- Primary source: [SBI Holdings FY2025 financial-results presentation, 2026-05-01, slides 58–60](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf).
+
+**Evernorth — SEC filing reconciliation**
+
+The SEC-filed Evernorth Q3 2026 disclosure, filed 2026-11-13, separates cash purchases, contributed XRP, custody and financing:
+
+- At 2026-09-30, pre-combination Evernorth reported 346,284,972 XRP in custody. The filing's historical cost was USD 846,575,043; carrying value after cumulative impairment was USD 341,887,231; cumulative impairment was USD 271,037,170. The carrying value is an accounting amount, not a contemporaneous market quote.
+- A cash-funded tranche comprised 84,365,876 XRP with recorded purchase cost of USD 214,000,000 (about USD 2.5366 per XRP). The filing separately reports USD 214,049,995 of total advance-funding cash. It does not allocate this purchase tranche to SBI alone. SBI's USD 200M contribution is a distinct company-level disclosure; do not assign all 84.37M XRP to SBI.
+- The filing also identifies XRP contributed through a sponsor associated with RippleWorks, a separate entity from Ripple Labs; a 50M XRP contribution from a Ripple-affiliated entity; and a 126,791,458 XRP contribution from Ripple to Pathfinder. The Ripple contribution was available to fund operating costs and should not automatically be classified as permanently locked treasury.
+- After the business-combination close, 346,484,972 XRP was transferred to Pathfinder. Adding the separately disclosed 126,791,458 XRP Ripple contribution yields 473,276,430 XRP as the reported starting combined treasury. This is a closing/transaction reconciliation, not a verified current balance.
+- SBI-affiliated investors' 39.9% threshold applies to Class A ownership; shares above that threshold are issued as Class C. It is not a statement that SBI's total economic ownership is capped at 39.9%. Ripple and its affiliate have a separate combined 9.9% Pubco ownership cap.
+- At 2026-09-30, the pre-combination company reported approximately USD 91K cash, a USD 10M net working-capital deficit and a USD 185.6M accumulated deficit. A USD 1M related-party credit facility at 3.81% was undrawn at that date. Subsequent financing disclosures include a USD 30M convertible note (approximately USD 29M net proceeds), warrant exercises and an equity-line facility; these introduce financing and dilution variables.
+- Coinbase is identified as the principal market for Evernorth's XRP accounting valuation and as a strategic deployment partner. Principal-market valuation does not mean Coinbase owns or custodies the full treasury. BitGo Trust is identified in the custody history. Ripple is a contributor, related party and announced deployment partner.
+- The company's announced strategy with Ripple, Kraken, Coinbase and BitGo includes institutional XRP strategies. The announcement is not proof that a specified quantity has already been lent, pledged, deployed or sold.
+- Primary source: [Evernorth SEC filing index, accession 0001628280-26-073926](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/). [Evernorth deployment-partner announcement](https://www.nasdaq.com/press-release/evernorth-begin-deploying-473-million-xrp-treasury-ripple-kraken-coinbase-and-bitgo).
+
+**On-chain counter-evidence and unresolved reconciliation**
+
+- XRP Insights' Evernorth page reports 103,129,905 XRP in 13 attributed wallets and 370,346,663 XRP moved outside that attributed set. The latter does not prove a sale; it may include custody or wallet migrations.
+- The page's own timeline/FAQ still says no closing filing was found and describes XRPN as awaiting listing, despite the SEC filing dated 2026-11-13 confirming the October 9 close and post-close transfer. Treat the page as a secondary, partly stale source.
+- The page's reported current-wallet amount plus moved-out amount totals 473,476,568 XRP, which is 200,138 XRP above the SEC-derived 473,276,430 starting treasury. The page also discusses a 200,000 XRP deposit consistent with delayed funding. This is an unresolved wallet-attribution/double-counting reconciliation; do not infer a sale or admit the tracker total as a model feature.
+- Secondary source: [XRP Insights — Evernorth XRPN wallet tracker](https://xrp-insights.com/xrp-radar/evernorth).
+
+#### Circle, SBI and stablecoin-rail context
+
+- Circle's Q3 2026 Form 10-Q reports end-period USDC circulation of USD 73.879B at 2026-09-30. Circle's own USDC page reports USD 68.0B as of 2026-11-16. The two snapshots imply an approximate USD 5.879B (7.96%) decline. This is a supply-level comparison, not an attribution of redemptions to XRP or XRPL.
+- Circle's Q3 filing says Circle and SBI Holdings each contributed approximately JPY equivalent of USD 1.5M to Circle SBI Japan K.K. in November 2025. Circle owns 50%, controls and consolidates the VIE; SBI's interest is presented as noncontrolling interest. Circle reports no significant operating results to date.
+- Circle's Q3 filing recognizes USD 181.8M of ARC token presale revenue. SBI separately disclosed participation by a subsidiary in the ARC presale; SBI's specific allocation was not disclosed. Presale revenue recognized by Circle is not the same as SBI's disclosed investment amount.
+- Circle lists native USDC on XRPL among 38 supported networks. This is a product/network connection, not proof of a direct corporate partnership with Ripple or incremental XRP demand.
+- Primary sources: [Circle Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm), [Circle USDC circulation page](https://www.circle.com/usdc), [SBI Holdings FY2025 presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf).
+
+#### XRP market, exchange-wallet and ETF observations
+
+- Kraken's public XRP/USD ticker endpoint returned a captured snapshot with last trade approximately USD 0.96133, bid USD 0.96144, ask USD 0.96145, 24-hour high USD 0.9968, low USD 0.95363 and volume approximately 43.89M XRP. The response did not expose an exchange event timestamp; treat it as a single-venue retrieval snapshot, not a synchronized market bar. [Kraken public ticker API](https://api.kraken.com/0/public/Ticker?pair=XRPUSD).
+- XRP Insights reports 22.18B XRP in 707 XRPL wallets attributed to 24 exchanges at 2026-11-19 08:00 UTC. It explicitly includes cold storage and some wrapped-asset reserves; this is not tradable float. Its same-wallet comparison reports -155.7M XRP over 7 days and -444.3M over 30 days, but the provider warns that transfers to newly labeled/untracked wallets can appear as outflows.
+- The same wallet-label dataset reports Upbit 6.46B, Coinbase 5.83B (including 153.1M cbXRP reserve and substantial cold-labeled storage), Binance 2.59B (including Binance-Peg reserves), and SBI VC Trade 56.3M XRP in two wallets, over 99% labeled cold. These are exchange-attributed wallet balances, not SBI Holdings proprietary XRP or customer sellable balances.
+- XRP Insights' ETF tracker reports 1.18415B XRP across six US spot ETFs plus BITW and approximately USD 760M AUM; its Nov 18 holdings-delta method reports -5.31M XRP net flow. It excludes GXRP from flow totals while a data gap is corrected. Bitwise's own page independently reports 406,770,577.61 XRP in trust as of Nov 18. Franklin's own page available in this retrieval is only current through Nov 4; Canary's page exposes Nov 18 net assets and custody but not a current XRP quantity in the parsed content. Therefore the aggregate total and flow remain provisional, not a complete issuer-by-issuer reconciliation.
+- Sources: [XRP Insights exchange balances and methodology](https://xrp-insights.com/exchange-balances), [XRP Insights ETF tracker](https://xrp-insights.com/), [Bitwise XRP ETF holdings](https://www.bitwiseetfs.com/single-asset/xrp), [Franklin XRP ETF](https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ), [Canary XRPC](https://canaryetfs.com/xrpc/).
+- Current order-book depth was not captured from a synchronized direct exchange endpoint. Derivatives OI providers still disagree materially because of different venue/contract universes and clocks. Do not average them.
+
+#### Exact-phrase and identity disposition
+
+- “actual capital”: no new primary-source exact match. SBI's official slide uses “Actual XRP” for approximately 5.10B XRP in Ripple's non-escrow holdings; it does not label that amount as SBI holdings or “actual capital”.
+- “ASK Coin”: no verified XRP/Ripple relationship. Keep Permission Coin (ASK) and the separate Ask Coin Telegram candidate distinct.
+- “SBIC, ChatGPT SBIC”: no primary evidence of an OpenAI/ChatGPT partnership. SBIC East/Central/West remain separate regional investment companies, not SBI Holdings.
+- Kamilah/Camilla Stevenson: prior first-person identity evidence remains valid; canonical channel ownership is still not established. No new video was admitted to the verified-person inventory.
+
+#### PR backlog and merge decision
+
+- #1663: sole XRP/V3 integration PR; blocked.
+- #1668: three changed-path overlaps with #1663; blocked pending reconciliation and authorization review.
+- #1541: five changed-path overlaps with #1663; unique MMI security work, not a blanket duplicate.
+- #1665: duplicate candidate because integration already contains `pylint>=4.1.4`, while main remains at `>=4.1.3`; do not close until successor is merged and verified.
+- #1666: unique dependency update; main and integration still specify `kaggle>=1.5.12,<1.6`; its wider `<1.8` range requires compatibility review.
+- #1664 and #1670: unique/unreviewed.
+- #1450, #1460, #1440, #1436, #1437, #1353 and #1265: preserve as unique or unreviewed research/repair work; reconcile their stacked ancestry and path overlap before any closure.
+- No PR was merged or closed.
+
+#### Model eligibility and forecast status
+
+- New SEC/SBI/Circle/market observations above were retrieved as rendered web content, not raw HTTP response bytes. No new raw SHA-256 receipt or immutable external timestamp receipt was created.
+- These observations are research-only and are not admitted to the point-in-time feature store or model training.
+- Exchange-wallet, ETF, Evernorth and stablecoin metrics remain candidates pending raw capture, source-version receipts, normalized event timestamps and reconciliation.
+- **Forecast status: NOT ISSUED.** No directional XRP forecast is supported by the current evidence and out-of-sample acceptance state.
+
+#### Next concrete action
+
+Continue on the existing integration branch. Complete the transitive workflow/script/action and secret/data-flow audit; reconcile Evernorth's 200,138 XRP tracker discrepancy against ledger transactions and custodian addresses; capture raw issuer/SEC/exchange bytes with immutable receipts; finish independent review and effective branch-protection verification; and resolve public Pages publication authorization. Re-run the entire repository suite and security gates on the final exact head. Do not create another XRP/V3 PR, activate paper trading, submit Kaggle entries, deploy, restart Spaces, write to Databricks, transfer funds or issue a directional forecast.
