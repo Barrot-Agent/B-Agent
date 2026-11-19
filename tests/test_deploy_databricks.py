@@ -123,3 +123,20 @@ def test_orchestration_upload_failures_abort_before_job_creation() -> None:
     calls = _calls(functions["_upload_files"])
     assert "RuntimeError" in calls
     assert "Job creation was skipped." in ORCHESTRATION_PATH.read_text(encoding="utf-8")
+
+
+
+def test_existing_jobs_are_never_reset_and_deployment_never_starts_a_job() -> None:
+    for path in (SCRIPT_PATH, ORCHESTRATION_PATH):
+        functions = _functions_for(path)
+        deploy_calls = _calls(functions["_deploy_job"])
+        assert deploy_calls.index("list") < deploy_calls.index("create")
+        assert "RuntimeError" in deploy_calls
+        assert "reset" not in deploy_calls
+        assert "run_now" not in deploy_calls
+        source = path.read_text(encoding="utf-8")
+        assert "PauseStatus.PAUSED" in source
+        assert "PauseStatus.UNPAUSED" not in source
+        assert "client.jobs.reset(" not in source
+        assert "client.jobs.run_now(" not in source
+        assert "def _run_job(" not in source

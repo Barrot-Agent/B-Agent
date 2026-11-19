@@ -1,8 +1,7 @@
 """
 deploy_databricks.py
 ====================
-Uploads the B-Agent codebase to a Databricks workspace and creates (or
-updates) a scheduled job that runs the main agent pipeline.
+Uploads the B-Agent codebase to a new Databricks workspace path and creates a new paused job. Existing jobs are never reset, overwritten, or started.
 
 Authentication is resolved in the following order (highest priority first):
   1. DATABRICKS_HOST + DATABRICKS_TOKEN environment variables
@@ -169,8 +168,8 @@ def _get_or_create_cluster_spec() -> dict:
 
 
 def _deploy_job(client: WorkspaceClient) -> int:
-    """Create or update the Databricks job; return the job ID."""
-    notebook_path = f"{WS_PATH}/app.py"
+    """Create a new paused job; refuse to modify or start any existing job."""
+    notebook_path = f"dbfs:{WS_PATH}/app.py"
     cluster_spec = _get_or_create_cluster_spec()
     environments = [
         sdk_jobs.JobEnvironment(
@@ -183,55 +182,30 @@ def _deploy_job(client: WorkspaceClient) -> int:
         task_key="barrot-main",
         description="Barrot Agent main pipeline",
         spark_python_task=sdk_jobs.SparkPythonTask(
-            python_file=f"dbfs:{notebook_path}",
+            python_file=notebook_path,
         ),
         **cluster_spec,
         environment_key="Default",
     )
 
-    # Check whether job already exists
-    existing_id = None
-    for job in client.jobs.list(name=JOB_NAME):
-        existing_id = job.job_id
-        break
-
-    if existing_id:
-        log.info("Updating existing job %d (%s)…", existing_id, JOB_NAME)
-        client.jobs.reset(
-            job_id=existing_id,
-            new_settings=sdk_jobs.JobSettings(
-                name=JOB_NAME,
-                tasks=[task],
-                schedule=sdk_jobs.CronSchedule(
-                    quartz_cron_expression="0 0 * * * ?",
-                    timezone_id="UTC",
-                    pause_status=sdk_jobs.PauseStatus.UNPAUSED,
-                ),
-                max_concurrent_runs=1,
-                environments=environments,
-            ),
+    # Listing is read-only. Any existing same-name job is a hard stop.
+    for _existing_job in client.jobs.list(name=JOB_NAME):
+        raise RuntimeError(
+            f"Databricks job {JOB_NAME!r} already exists; refusing to reset or overwrite it."
         )
-        return existing_id
-    else:
-        log.info("Creating new job: %s", JOB_NAME)
-        response = client.jobs.create(
-            name=JOB_NAME,
-            tasks=[task],
-            schedule=sdk_jobs.CronSchedule(
-                quartz_cron_expression="0 0 * * * ?",
-                timezone_id="UTC",
-                pause_status=sdk_jobs.PauseStatus.UNPAUSED,
-            ),
-            max_concurrent_runs=1,
-            environments=environments,
-        )
-        return response.job_id
 
-
-def _run_job(client: WorkspaceClient, job_id: int) -> None:
-    """Trigger a single run and log the run URL."""
-    run = client.jobs.run_now(job_id=job_id)
-    log.info("Job run triggered – run_id=%d", run.run_id)
+    response = client.jobs.create(
+        name=JOB_NAME,
+        tasks=[task],
+        schedule=sdk_jobs.CronSchedule(
+            quartz_cron_expression="0 0 * * * ?",
+            timezone_id="UTC",
+            pause_status=sdk_jobs.PauseStatus.PAUSED,
+        ),
+        max_concurrent_runs=1,
+        environments=environments,
+    )
+    return response.job_id
 
 
 # ---------------------------------------------------------------------------
@@ -260,10 +234,8 @@ def main() -> None:
     log.info("Uploaded %d file(s) to %s", n, WS_PATH)
 
     job_id = _deploy_job(client)
-    log.info("Job '%s' deployed with id=%d", JOB_NAME, job_id)
-
-    _run_job(client, job_id)
-    log.info("✅ Databricks deployment complete.")
+    log.info("Job '%s' created paused with id=%d; no job run was started.", JOB_NAME, job_id)
+    log.info("Databricks deployment complete.")
 
 
 if __name__ == "__main__":
