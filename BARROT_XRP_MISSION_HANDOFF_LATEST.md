@@ -1,3 +1,10 @@
+## Run222 timestamp-schema follow-up
+
+The first Run222 content commit (`3b7caaf`) left publisher timestamps null for Kraken and Coinbase's displayed proof-of-reserves page. The event-timeline contract requires non-empty event, availability and capture timestamps. This follow-up uses the registry assembly cutoff for those two observation times, marks their precision as capture-time-only, leaves publisher timestamps null, and records the policy in the registry. It does not fabricate a source timestamp.
+
+The full-suite run for `3b7caaf` was initiated; the follow-up commit will receive its own exact-head CI. No merge is permitted until the new head's full suite, security checks and fail-closed gate are verified.
+
+---
 # Current checkpoint — Run222 (2026-11-19)
 
 **Disposition: NO MERGE.** The current integration branch has one exact-head full-suite failure caused by a stale test expectation after the event registry advanced from run220 to run221. Run222 updates the registry and the test contract together; the new commit's full-suite result must be verified before any merge decision.

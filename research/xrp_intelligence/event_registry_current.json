@@ -6415,10 +6415,10 @@
       "source_status": "provisional",
       "stance": "context",
       "event_status": "occurred",
-      "event_time_utc": null,
+      "event_time_utc": "2026-11-19T15:16:42Z",
       "source_published_at_utc": null,
-      "available_at_utc": null,
-      "captured_at_utc": null,
+      "available_at_utc": "2026-11-19T15:16:42Z",
+      "captured_at_utc": "2026-11-19T15:16:42Z",
       "raw_source_sha256": null,
       "assumptions": [
         "Ticker fields and quote units are interpreted as XRP/USD.",
@@ -6447,7 +6447,7 @@
       "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
       "model_eligible": false,
       "research_only": true,
-      "event_time_precision": "unknown_provider_time",
+      "event_time_precision": "capture_time_only",
       "source_observation_times": [
         "Rendered API output retrieved during Run222; exact retrieval timestamp was not exposed by the browser tool.",
         "The API response contained no exchange event timestamp."
@@ -6474,8 +6474,8 @@
       "event_status": "occurred",
       "event_time_utc": "2026-11-19T12:35:00Z",
       "source_published_at_utc": "2026-11-19T12:35:00Z",
-      "available_at_utc": null,
-      "captured_at_utc": null,
+      "available_at_utc": "2026-11-19T12:35:00Z",
+      "captured_at_utc": "2026-11-19T15:16:42Z",
       "raw_source_sha256": null,
       "assumptions": [
         "Funding interval is interpreted as the page's stated 8-hour rate.",
@@ -6534,8 +6534,8 @@
       "event_status": "occurred",
       "event_time_utc": "2026-11-18T00:00:00Z",
       "source_published_at_utc": null,
-      "available_at_utc": null,
-      "captured_at_utc": null,
+      "available_at_utc": "2026-11-18T00:00:00Z",
+      "captured_at_utc": "2026-11-19T15:16:42Z",
       "raw_source_sha256": null,
       "assumptions": [
         "The announcement describes eligible institutional access, not universal retail access.",
@@ -6589,10 +6589,10 @@
       "source_status": "verified",
       "stance": "context",
       "event_status": "occurred",
-      "event_time_utc": null,
+      "event_time_utc": "2026-11-19T15:16:42Z",
       "source_published_at_utc": null,
-      "available_at_utc": null,
-      "captured_at_utc": null,
+      "available_at_utc": "2026-11-19T15:16:42Z",
+      "captured_at_utc": "2026-11-19T15:16:42Z",
       "raw_source_sha256": null,
       "assumptions": [
         "Coinbase's displayed reserve addresses and cbXRP supply are interpreted as its own proof-of-reserves disclosure.",
@@ -6624,7 +6624,7 @@
       "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
       "model_eligible": false,
       "research_only": true,
-      "event_time_precision": "time_without_timezone",
+      "event_time_precision": "capture_time_only",
       "source_observation_times": [
         "Coinbase page displays refresh time 11/19/2026 12:34 PM; timezone is not labelled.",
         "November 16 comparison values are from the prior Coinbase proof-of-reserves snapshot."
@@ -6651,8 +6651,8 @@
       "event_status": "occurred",
       "event_time_utc": "2026-11-19T12:00:00Z",
       "source_published_at_utc": "2026-11-19T12:00:00Z",
-      "available_at_utc": null,
-      "captured_at_utc": null,
+      "available_at_utc": "2026-11-19T12:00:00Z",
+      "captured_at_utc": "2026-11-19T15:16:42Z",
       "raw_source_sha256": null,
       "assumptions": [
         "USD depth is the provider's displayed aggregation across six spot venues.",
@@ -6710,8 +6710,8 @@
       "event_status": "occurred",
       "event_time_utc": "2026-11-19T12:04:00Z",
       "source_published_at_utc": "2026-11-19T12:04:00Z",
-      "available_at_utc": null,
-      "captured_at_utc": null,
+      "available_at_utc": "2026-11-19T12:04:00Z",
+      "captured_at_utc": "2026-11-19T15:16:42Z",
       "raw_source_sha256": null,
       "assumptions": [
         "The provider's 1,000-level depth is a snapshot, not guaranteed executable liquidity.",
@@ -6767,8 +6767,8 @@
       "event_status": "occurred",
       "event_time_utc": "2026-11-19T08:00:00Z",
       "source_published_at_utc": "2026-11-19T08:00:00Z",
-      "available_at_utc": null,
-      "captured_at_utc": null,
+      "available_at_utc": "2026-11-19T08:00:00Z",
+      "captured_at_utc": "2026-11-19T15:16:42Z",
       "raw_source_sha256": null,
       "assumptions": [
         "The 707-wallet attribution set is the provider's current tracked universe.",
@@ -6827,8 +6827,8 @@
       "event_status": "occurred",
       "event_time_utc": "2026-11-19T11:32:00Z",
       "source_published_at_utc": "2026-11-19T11:32:00Z",
-      "available_at_utc": null,
-      "captured_at_utc": null,
+      "available_at_utc": "2026-11-19T11:32:00Z",
+      "captured_at_utc": "2026-11-19T15:16:42Z",
       "raw_source_sha256": null,
       "assumptions": [
         "The reported 5.11B series is a narrower reserve measure than broad attributed-wallet totals; exact coverage remains unknown."
@@ -6880,8 +6880,8 @@
       "event_status": "occurred",
       "event_time_utc": "2026-11-06T00:00:00Z",
       "source_published_at_utc": null,
-      "available_at_utc": null,
-      "captured_at_utc": null,
+      "available_at_utc": "2026-11-06T00:00:00Z",
+      "captured_at_utc": "2026-11-19T15:16:42Z",
       "raw_source_sha256": null,
       "assumptions": [
         "The OCC CAS filing status and Corporate Decision 1370 describe the federal trust-bank charter, not a state custody subsidiary."
@@ -6939,8 +6939,8 @@
       "event_status": "occurred",
       "event_time_utc": "2026-11-16T00:00:00Z",
       "source_published_at_utc": null,
-      "available_at_utc": null,
-      "captured_at_utc": null,
+      "available_at_utc": "2026-11-16T00:00:00Z",
+      "captured_at_utc": "2026-11-19T15:16:42Z",
       "raw_source_sha256": null,
       "assumptions": [
         "The displayed supply date and network list date are kept separate.",
@@ -7409,7 +7409,8 @@
     "missing_exact_publisher_timestamp_count": 91,
     "declared_independence_group_count": 112,
     "canonical_publisher_lineage_group_count": null,
-    "note": "Run222 adds Kraken XRP/USD top-of-book/VWAP, separate Fuelmaps spot and Basis Binance-perpetual depth snapshots, two non-comparable exchange-balance universes, TradRadar derivatives, Coinbase cbXRP proof-of-reserves growth, DBS/Circle USDC institutional access, Circle's dated USDC supply/network disclosure, and Coinbase's effective national trust-bank charter. Kamilah/Camilla identity remains unresolved: the iHeart transcript gives display names but not exact handles and warns of fake pages; two YouTube channel candidates are quarantined, with no videos admitted to the verified inventory. Exact phrase “actual capital” remains unresolved; SBI's “Actual XRP” is a token-holdings label, not capital. All ten new observations lack byte-exact publisher receipts and remain model-ineligible. No directional forecast is issued."
+    "note": "Run222 adds Kraken XRP/USD top-of-book/VWAP, separate Fuelmaps spot and Basis Binance-perpetual depth snapshots, two non-comparable exchange-balance universes, TradRadar derivatives, Coinbase cbXRP proof-of-reserves growth, DBS/Circle USDC institutional access, Circle's dated USDC supply/network disclosure, and Coinbase's effective national trust-bank charter. Kamilah/Camilla identity remains unresolved: the iHeart transcript gives display names but not exact handles and warns of fake pages; two YouTube channel candidates are quarantined, with no videos admitted to the verified inventory. Exact phrase “actual capital” remains unresolved; SBI's “Actual XRP” is a token-holdings label, not capital. All ten new observations lack byte-exact publisher receipts and remain model-ineligible. No directional forecast is issued. Timestamp schema follow-up: event timeline records require non-empty event_time_utc, available_at_utc and captured_at_utc. Timestamp-less Kraken/Coinbase page observations now use the registry cutoff as observation time while leaving publisher timestamps null.",
+    "timestamp_policy": "For exact publisher timestamps, event_time_utc and available_at_utc preserve the source time. For date-only sources, event_time_utc is normalized to midnight UTC with date_only precision. For sources without a usable publisher timestamp, event_time_utc and available_at_utc use the registry observation cutoff and precision is capture_time_only; source_published_at_utc remains null. captured_at_utc is the registry cutoff. No publisher timestamp is fabricated."
   },
   "declared_independence_group_count": 112,
   "canonical_publisher_lineage_group_count": null
