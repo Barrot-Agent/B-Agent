@@ -4307,3 +4307,104 @@ Primary SBI/Circle sources:
 - Coinbase's, Circle's and Ripple's national trust banks do not issue their respective stablecoins. Issuer, reserve manager, primary custodian, exchange distributor and collateral agent must remain separate roles.
 - The $50M SBI equity investment in Circle and the last-disclosed ~9% Ripple shareholding are direct corporate-capital evidence. They are not evidence of new XRP spot purchases. The ARC presale amount is undisclosed.
 - The exact phrase “SBIC, ChatGPT SBIC” remains unresolved. SBI Circle Holdings is a verified separate JV and may explain acronym confusion, but no ChatGPT partnership or SBIC/OpenAI relationship is established.
+
+
+---
+
+## Run 44 — 2026-11-19 (capture clock 11:54:09Z)
+
+### Repository state and integration boundary
+
+- Current `main`: `a5e9606a71975b08cb681eee373a2d6dc1c36b55`.
+- Existing integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Integration head before this handoff append: `4bdf80b64e0708c973d2b63e356f5f75ceb62397` (Run 44 research artifact commit).
+- Complete, non-truncated trees: main 1,739 entries; integration 3,001 entries. Every main path is present in integration. Integration was 421 commits ahead and zero behind at the pre-append checkpoint.
+- PR #1663 remains the single consolidated V3/XRP integration PR. It is still **draft**, based on the current main SHA above, has 1,457 changed files, zero submitted reviews and zero review threads. No merge occurred.
+- Main still does not contain `barrot_agent/data/missions/primary_mission.json`, `.github/workflows/xrp-public-ingestion.yml`, or this canonical handoff. The XRP mission and scheduled-ingestion implementation therefore remain integration-branch work, not active mainline production capability.
+
+### Exact-head verification — distinguish the tested SHA
+
+The latest fully inspected CI before the Run 44 artifact commit was for exact integration head `911c64a86184e331b680eeba8ffc807bb31b1033`. It must not be represented as testing the later `4bdf80b...` artifact commit or this handoff append.
+
+- PR CI run [44518164411](https://github.com/Barrot-Agent/B-Agent/actions/runs/44518164411): core suite 764 passed, 8 subtests passed; full repository suite 4,302 passed, 1 skipped, 11 warnings, 19 subtests, 149.61 seconds; inclusive coverage 68.10%; Pages validation, wheel build and installed-wheel smoke checks passed.
+- Full-suite job: `135539513802`.
+- Dependency audit run [44518164082](https://github.com/Barrot-Agent/B-Agent/actions/runs/44518164082): all six audited manifests passed.
+- Money audit run [44518164087](https://github.com/Barrot-Agent/B-Agent/actions/runs/44518164087): 14 checks passed.
+- Fail-closed gate run [44518164070](https://github.com/Barrot-Agent/B-Agent/actions/runs/44518164070): correctly failed with `PR is still draft` and `branch protection could not be verified`. Independently, PR #1663 has zero reviews and zero review threads.
+- `GET /branches/main/protection` returned 403. The only separately readable repository ruleset, “Fall Back”, is disabled. Required approval count, strict checks, administrator enforcement and force-push/deletion settings are not independently verified.
+- The Run 44 artifact commit and this handoff append require fresh exact-head CI. Do not reuse the `911c64` results as evidence for a later SHA.
+
+### Coverage audit — a material remaining acceptance gap
+
+The inclusive suite passes, but the 70% legacy-core coverage command explicitly omits major packages. The exact-head coverage report for `911c64` showed:
+
+| Package | Files | Statements | Coverage |
+|---|---:|---:|---:|
+| evolution | 28 | 7,532 | 81.5% |
+| orchestration | 32 | 5,027 | 68.5% |
+| ingestion | 17 | 1,808 | 15.1% |
+| analysis | 8 | 1,118 | 19.4% |
+| monetization | 5 | 336 | 10.1% |
+| tools | 11 | 458 | 24.0% |
+| agi | 5 | 847 | 60.9% |
+| rendering | 18 | 1,629 | 61.0% |
+
+The core 70% command excludes `orchestration`, `ingestion`, `analysis`, `monetization`, `agi` and `rendering` (among other paths). Thus the green full-suite result does not establish adequate coverage for the whole V3 execution foundation. Several orchestration modules have zero measured coverage, including `mcp_github.py`, `mcp_databricks.py`, `mcp_huggingface.py` and `deploy_databricks.py`.
+
+The XRP prediction modules themselves have materially better coverage: `xrp_public_ingestion.py` 78%, `feature_store.py` 73%, `point_in_time_features.py` 87%, `walk_forward.py` 81%, `probability_calibration.py` 85%, `forecast_ledger.py` 76%, `scenario_hypotheses.py` 88%, `event_timeline.py` 90%, `source_independence.py` 85% and `feature_drift.py` 80%.
+
+**Required follow-up:** add deterministic no-network tests for critical V3 orchestration paths, raise orchestration coverage above 70%, and include it in an explicit package-level gate. Do not weaken the inclusive full-suite floor.
+
+### Run 44 XRP market and ETF evidence
+
+Detailed machine-readable record: [Run 44 Kraken and ETF flow reconciliation](research/xrp_intelligence/20261119T115409Z-run44-kraken-etf-flow-disagreement.json), blob SHA `775e9c7e60d94a4704f7f27d433fc92e227c1375`, created by commit `4bdf80b64e0708c973d2b63e356f5f75ceb62397`.
+
+- Kraken XRP/USD ticker: last $0.98756; best bid $0.98752 (451 XRP); best ask $0.98759 (302 XRP); quoted spread approximately 0.71 bps; rolling 24-hour volume 45.075M XRP; VWAP $0.973877; 33,685 trades; high $0.99364; low $0.95363; open $0.96637. This is one venue and top-of-book only, not multi-level depth or a synchronized market composite. No raw response bytes, canonical source hash or provider event timestamp were captured. **Research-only; not feature-store eligible.**
+- ETF flow observations are not directly comparable: CryptoKeyhole's 18 November reading was a partial -3,251 XRP from 2/4 daily reporters; XRP Insights reported -5.152M XRP across 16–18 November for six spot funds plus BITW using issuer-holdings deltas; Alpha Finance showed $0 on 18 November in a five-fund flow series without holdings/AUM; InflowScan withheld a settled 18 November total for its nine-fund report.
+- These publishers do not constitute four independent measurements of one variable. Fund universe, capture time, settlement status, holdings-versus-cash-flow definition, excluded GXRP flows, indirect XRPR exposure and BITW index rebalancing differ. No averaging, no “actual capital” inference and no ETF-flow feature admission.
+- No synchronized multi-level order-book depth was captured. No directional forecast was issued.
+
+### Identity and exact-phrase continuation
+
+- Two YouTube search-index channel records share the Kamilah Stevenson display name and near-identical investor/crypto descriptions: candidate `@drkamilahstevenson` / `UCqUPJMQdkCN6lsLVDnichPA`, and `@drkamilahstevenson-j9r` / `UCGZz6xGqdQDk9wNul__VQbg`. Matching descriptions and search-index labels do not establish channel ownership. Preserve the existing 21 candidate video references; verified creator-upload inventory remains zero until canonical channel metadata or a reciprocal first-party link is captured.
+- No new primary evidence resolves “ASK Coin”, “actual capital”, or “SBIC, ChatGPT SBIC”. Keep Permission Coin (ASK) separate from the Ask Coin Telegram candidate; carry forward the Run 43 SEC cash-versus-in-kind Evernorth reconciliation; keep SBIC East/Central/West distinct from SBI Holdings, SBI Circle Holdings and SB OAI Japan.
+
+### V3 safety and workflow findings
+
+- Main's `mcp_orchestrator.py` still defaults `download_models`, `use_databricks`, `commit_to_github` and `trigger_cicd` to `True`, with default GitHub branch `Main`. The GitHub MCP client exposes direct Contents API writes and workflow dispatch. No such action was invoked.
+- The integration version changes those defaults to `False`, adds an `always_deny` approval mode and requires per-action approval before repository writes or workflow dispatch. Preserve this correction; do not treat the mainline behavior as safe until the integrated change is merged under verified protections.
+- Main's `.github/workflows/barrot-ops.yml` still contains Databricks `--overwrite` and mutable `databricks/setup-cli@main`. The workflow requires explicit `confirm_external_change=YES` and manual dispatch; it was not dispatched. Integration removes `--overwrite`, pins the action and has regression assertions. Main's current workflow remains a destructive-action risk until corrected.
+- Main's `pillars-check.yml` uses mutable `actions/checkout@v7` / `actions/setup-python@v7` and unpinned `pip install requests pyjwt`, then supplies a GitHub App private key and Databricks token to the read-only check process. The script performs GitHub/Hugging Face reads and a Databricks `SELECT 1` query; no workspace write was observed. The integration workflow pins action SHAs, but its direct Python dependencies remain unpinned. Add a hash-locked dependency set and verify token scopes before considering this path complete.
+- The XRP ingestion workflow on integration is read-only and uses pinned action SHAs, but its scheduled trigger is effective only from the default/main branch. It is absent from main, so no production hourly schedule is active. GitHub Actions artifacts have 90-day retention and are explicitly not WORM; the local SQLite append-only triggers and receipt chain do not establish adversarial tamper-proof or independently timestamped retention.
+
+### Open PR inventory and disposition (14 open)
+
+| PR | Current disposition |
+|---|---|
+| #1663 | **Blocked** — sole consolidated integration; draft; 1,457 files; zero reviews/threads; exact-head checks must rerun after Run 44 commits. |
+| #1668 | **Blocked** — draft provider-failover work; stale base; three changed-path overlaps with #1663. |
+| #1665 | **Duplicate** — non-draft Dependabot Pylint 4.1.4 update is already represented in integration; stale base. Do not close until the successor is merged and verified. |
+| #1666 | **Unique/unreviewed** — non-draft Kaggle requirement update, two files, one shared `pyproject.toml` path; stale base. Current integration retains the older <1.6 cap for the documented no-Rust Termux constraint; require compatibility testing before adoption. |
+| #1664 | **Unique/unreviewed** — draft paid-issue pack, 126 files, stale base; includes paper-trading/log and sandbox material. No publication or merge. |
+| #1541 | **Blocked** — draft MMI claim-fingerprint change stacked on a security branch, not main. |
+| #1460, #1450, #1440, #1437, #1436 | **Blocked** — draft XRP ledger/verification research branches with stacked ancestry and overlapping paths; preserve unique evidence while reconciling the chain. |
+| #1353, #1265 | **Blocked** — draft lossless XRP ledger sharding/index migration chain; stacked bases and large overlapping diffs. |
+| #1670 | **Unique/unreviewed** — draft Musical DNA work, five files, no changed-path overlap with #1663; stale main base. |
+
+Ready: 0. Merged: 0. Superseded: 0. No source PRs were closed.
+
+### Run 44 execution status
+
+- **DESIGNED:** XRP mission contract, nine-platform coordination map, point-in-time store, event/scenario and forecast admission architecture.
+- **EXECUTED:** complete main/integration tree comparison; open-PR and ancestry/path review; exact-head CI/job-log inspection; package coverage extraction; public Kraken/ETF/YouTube research; Run 44 research artifact committed to the existing integration branch.
+- **VERIFIED:** main SHA and complete tree; all main paths present on integration; Run 43/44 research artifact read-back; exact-head `911c64` test and audit results; zero PR reviews/threads; branch-protection API denial; mainline safety gaps described above.
+- **NOT VERIFIED:** CI on `4bdf80b...` and this handoff append; production scheduled ingestion; WORM/signed raw-source retention; nine-platform live coordination; branch-protection settings; out-of-sample predictive lift and calibration.
+
+### Next concrete action
+
+1. Add and run no-network regression tests for the default external-action paths in `mcp_orchestrator.py` / `mcp_github.py`; ensure mainline defaults cannot commit or dispatch without explicit per-action approval.
+2. Expand package coverage for V3 orchestration and include a package-specific floor; preserve the existing XRP evolution coverage.
+3. Complete the transitive workflow/action/script/dependency audit, especially Databricks overwrite and the secrets-bearing `pillars-check` workflow. Pin actions and hash-lock runtime dependencies.
+4. Reconcile the stacked XRP ledger PR chain and the two recent Dependabot changes without creating another PR.
+5. Re-run full repository tests, exact-head CI, dependency/security checks and fail-closed gate on the final integration SHA. Obtain independent review and verify actual main branch protections before any merge.
+6. Keep forecast issuance disabled until the primary-mission readiness certificate, receipt-backed walk-forward cohorts, calibration, drift, shadow and independent Ed25519 attestation all pass.
