@@ -6096,3 +6096,117 @@ The Run 46 artifact initially mislabeled USD 271,037,170 as cumulative impairmen
 - Reconciliation: USD 846,575,043 historical cost minus USD 504,687,812 cumulative impairment equals USD 341,887,231 September 30 carrying value.
 
 The artifact and regression test have been corrected. USD 271,037,170 is retained as the 2026 year-to-date charge, not the cumulative figure. Primary evidence: [Evernorth SEC filing, impairment roll-forward and XRP cost-basis table](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm).
+
+
+---
+
+## 2026-11-19 21:08 UTC — Run 11 execution and research update
+
+### Repository and exact-head status
+
+- Current main: `e1c3634df28f488819185b7d5697d474bc0bcb9e`.
+- Current integration head: `e3ddd0a43087b3c3376167fdd1a50426acfda2a5`.
+- Existing branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Compare main...integration: 471 commits ahead, zero behind.
+- Complete recursive trees: main 1,739 entries; integration 3,010 entries. No main path is missing from integration. 210 same-path blob hashes differ because integration contains changes; this is not tree equality and does not establish that every main file is unchanged.
+- PR #1663 is still the sole consolidated XRP/V3 integration PR: 1,468 changed files, draft=true, mergeable=true, no independent reviews, no review threads. GitHub mergeability is not approval.
+- No new branch or PR was created.
+
+### Regression correction and exact-head verification
+
+The prior head `ccf77da65db7f0f5120bc46ddafe16506e21a51f` had one full-suite failure in `tests/test_xrp_run46_sbi_evernorth_circle_market_reconciliation.py`. The test read `sbi_vc_trade_xrp` and `sbi_vc_trade_cold_share_pct` at the parent level, but the Run 46 artifact correctly nests both under `market_observations.exchange_wallets.examples`.
+
+The test-only correction was committed to the existing integration branch as:
+
+`e3ddd0a43087b3c3376167fdd1a50426acfda2a5`
+
+No research artifact values were changed. No main files were modified.
+
+Exact-head CI on `e3ddd0a`:
+- Full repository suite: **4,375 passed, 1 skipped, 11 warnings, 19 subtests**, 132.15 seconds.
+- Inclusive coverage: 71.34%; required floor 62%.
+- Legacy/core coverage: 81%; required floor 70%.
+- Mission-specific coverage: XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%. All configured floors passed.
+- Exact-head full-suite CI: [44614792921](https://github.com/Barrot-Agent/B-Agent/actions/runs/44614792921) — success.
+- Exact-head dependency audit: [44614793334](https://github.com/Barrot-Agent/B-Agent/actions/runs/44614793334) — success; duplicate run [44614801878](https://github.com/Barrot-Agent/B-Agent/actions/runs/44614801878) — success.
+- Exact-head money audit: [44614801947](https://github.com/Barrot-Agent/B-Agent/actions/runs/44614801947) — success.
+- Pages validation-only passed in the successful CI run.
+- Duplicate CI run [44614801982](https://github.com/Barrot-Agent/B-Agent/actions/runs/44614801982) was still in progress at the last poll; one complete exact-head full-suite success is already recorded.
+- GitHub Actions reported its cache budget exhausted/read-only during post-job cache save. This did not fail the test job, but can reduce future cache performance.
+- Fail-closed runs [44614792938](https://github.com/Barrot-Agent/B-Agent/actions/runs/44614792938) and [44614802116](https://github.com/Barrot-Agent/B-Agent/actions/runs/44614802116) were still running at the last poll. Known blockers remain: draft PR, zero independent approvals, branch-protection API 403, and an unapproved public Pages publication side effect.
+
+### Ingestion architecture and durability limits
+
+The integration version of `.github/workflows/xrp-public-ingestion.yml` declares an hourly schedule at minute 3 and a daily schedule at 00:15 UTC. GitHub schedules run from the default branch; this workflow is absent from main, so **production scheduled ingestion is not active**. Its integration-branch push trigger is limited to read-only capture when the workflow or named ingestion/timestamp-audit files change.
+
+The workflow requests only `actions: read` and `contents: read`. It publishes content-addressed raw-source receipts and receipt-chain manifests as 90-day GitHub Actions artifacts; per-run feature-store checkpoints have 7-day retention and daily feature-store/walk-forward archives have 90-day retention. A cache and cross-run receipt-chain index support continuity. These are expiring GitHub artifacts/cache, **not independent WORM storage or an external immutable timestamp authority**. The local `RawReceiptArchive` verifies payload hashes and receipt-chain integrity, but the external durability requirement remains unmet.
+
+The 68 workflow definitions changed by #1663 were previously inspected for external action pins; the observed external `uses:` references in that set were pinned to full 40-character SHAs. This is not a completed transitive audit of every invoked script, composite action, secret consumer, permission path and outbound data flow.
+
+- `coinbase-paper-trader.yml` remains disabled with empty permissions.
+- Legacy Databricks overwrite deployment remains disabled.
+- `barrot-ops.yml` is create-only after verifying target absence and refuses overwrite.
+- Kaggle submission requires explicit dispatch confirmation, exact main SHA and competition allowlist.
+- None of these external workflows was dispatched.
+- Repository ruleset “Fall Back” is disabled. The main branch-protection endpoint returns 403, so effective required checks, approval count and bypass settings remain unverified.
+- Main's Pages deployment succeeded in [run 44587757885](https://github.com/Barrot-Agent/B-Agent/actions/runs/44587757885). #1663 changes public web files including `web/landing.html`, `web/signals.html` and `web/webmcp_monetization.js`; merging would publish them. No publication authorization was given.
+
+### Fresh market observations — research-only, not model eligible
+
+All observations below were retrieved on 2026-11-19. Browser-rendered pages/API responses did not provide preserved raw transport bytes or SHA-256 receipts, so they are not admitted to the point-in-time feature store or training.
+
+- **Kraken public XRP/USD ticker, retrieval approximately 21:05 UTC:** last 0.96333; bid 0.96320 for 2,737 XRP; ask 0.96326 for 234 XRP; 24-hour volume 44,191,278.93 XRP; high 0.99680; low 0.95363; open 0.96637. The returned API payload did not expose an exchange event timestamp. Top-of-book only; not full depth. Bid/ask spread was 0.00006 USD, approximately 0.62 basis points at the displayed midpoint. [Kraken public ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD).
+- **TradRadar, updated 18:05 UTC with 15-minute delay:** mark price 0.9679; aggregate futures OI USD 1.21B across seven exchanges, down 2.86% in 24 hours; OI-weighted funding +0.0015% per eight hours; reported liquidations at least USD 3.61M, of which USD 2.81M longs and USD 0.80656M shorts. [TradRadar XRP futures](https://tradradar.io/markets/xrp).
+- **SwiftEdge, 16:41 UTC:** perpetual price 0.9779; reported perpetual subset OI 70,353,877 XRP (USD 68.8M), down 7.0%; funding -0.0065% per eight hours; displayed bid wall 3,751,018 XRP at 0.9720 and ask wall 5,634,518 XRP at 0.9820. This is a separate perpetual-instrument universe, not aggregate spot depth. [SwiftEdge XRP page](https://swiftedge.uk/xrp/today).
+- These OI/funding observations are not averaged: their venue, instrument, timestamp and coverage definitions differ. The Kraken ticker is not synchronized to either derivatives page. No directional forecast is issued.
+
+### Institutional relationship updates
+
+- **Ripple–Coinbase, 2026-10-28:** Ripple's announcement says RLUSD became available through Coinbase Prime, Coinbase Exchange and the Coinbase retail app, with 1:1 conversion from USD and supported USD-denominated stablecoins. Coinbase Global Exchange collateral support was described as a future follow-on (“will follow”), not a confirmed live capability in that announcement. This is RLUSD distribution, not proof of XRP purchases, XRP collateral activation or XRP settlement volume. [Ripple announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+- **Ripple–BNY, 2026-10-27:** BNY announced custody support for XRP and RLUSD and remains primary reserve custodian for RLUSD. BNY's separate Circle relationship supports USDC custody and mint/burn services. A shared institutional service provider does not establish a direct Ripple–Circle corporate partnership. [Ripple](https://ripple.com/ripple-press/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance/) · [BNY](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html) · [Circle–BNY](https://www.circle.com/pressroom/bny-expands-relationship-with-circle-and-adds-to-institutional-grade-stablecoin-enablement-services).
+- **Binance–Circle, 2026-09-22:** Circle disclosed a USD 100M Binance equity investment via private placement and a renewed five-year commercial agreement to promote USDC on Binance, especially in emerging markets. This is direct equity plus distribution, but not an XRP-specific relationship. [Circle announcement](https://www.circle.com/pressroom/binance-invests-100-million-in-circle-expands-strategic-partnership-and-renews-commercial-agreement-for-five-years).
+- Circle's own distribution-economics article says Coinbase is its largest and longest-standing USDC partner and describes partner revenue sharing. Treat this as Circle's corporate description, not an independent audit of every partner payment. [Circle distribution economics](https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win).
+- **Circle–Tazapay, 2026-09-08:** Circle announced a definitive agreement to acquire Tazapay, expected to close in 2027 subject to conditions and approvals. Circle cited 60+ banking/fintech partners, 100+ payout markets and USD 25B annualized payment volume; the transaction is not yet treated as closed or fully integrated. [Circle announcement](https://www.circle.com/pressroom/circle-expands-global-payments-infrastructure-with-agreement-to-acquire-singapore-based-cross-border-payments-platform-tazapay).
+
+### Evernorth on-chain counter-evidence
+
+XRP Insights' page reports a validated XRPL ledger observation at ledger 108,417,962, closed 2026-11-18 20:40 UTC:
+- 103,129,905 XRP in 13 attributed custody wallets.
+- 370,346,663 XRP moved outside the attributed wallet set, with latest listed movement 2026-10-22.
+- The sum is 473,476,568 XRP, which is 200,138 XRP above the SEC-derived 473,276,430 XRP starting combined treasury.
+- The page still says no closing filing was found as of Nov 18, despite the SEC Q3 filing dated Nov 13 confirming the business combination and treasury transfer. Its closing-status narrative is stale.
+- The tracker does not prove that the 370.35M XRP was sold; destinations remain unattributed. Preserve the 200,138 XRP discrepancy and stale-page conflict. Do not infer sale, current ownership or model eligibility from this tracker alone.
+
+Sources: [XRP Insights Evernorth tracker](https://xrp-insights.com/xrp-radar/evernorth) · [SEC filing index, accession 0001628280-26-073926](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/).
+
+### Kamilah Stevenson video identity disposition
+
+One host-published video is verified as an appearance by Dr. Kamilah Stevenson:
+- **“Crypto Panics! W/ @drkamilahstevenson”**, Paul Barron Podcast, published 2026-06-11. [YouTube video](https://www.youtube.com/watch?v=Sulo54IlQ60).
+- The iHeart episode transcript contains first-person statements identifying her YouTube presence and warning about fake pages. This verifies the guest's appearance and the host's video, not ownership of every similarly named channel.
+- The channel candidate `@drkamilahstevenson` (channel ID `UCqUPJMQdkCN6lsLVDnichPA`) has not yet been directly cross-linked from a first-party social account or website. Duplicate-looking handles `@drkamilahstevenson-j9r` and `@KamilahStevensonXrpStocks` remain unverified. Do not inventory their channel uploads as hers until primary cross-link evidence exists.
+- No new verified match for exact phrases “ASK Coin”, “actual capital”, or “SBIC, ChatGPT SBIC”. “Actual XRP” on SBI's presentation remains distinct from the phrase “actual capital”; no SBI ownership of Ripple's 5.10B “Actual XRP” was established.
+
+Sources: [iHeart interview and transcript](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/) · [Paul Barron episode listing](https://thexrppodcast.podbean.com/).
+
+### Open-PR overlap reconciliation
+
+Fourteen PRs remain open; no PR was closed.
+
+- **#1663** — sole consolidated XRP/V3 integration; blocked by approval, branch-protection and publication gates.
+- **#1668** — provider failover; exact overlaps with #1663: `.github/workflows/barrot-agent.yml`, `scripts/barrot_agent.py`, `tests/test_barrot_agent_script.py`. Its draft workflow adds Cloudflare, OpenRouter and Gemini credentials to a worker job with `contents: write`, `pull-requests: write`, `issues: write`, and uses unpinned `actions/checkout@v7` / `actions/setup-python@v7`. This fails the current least-privilege/action-pin review; do not merge or dispatch it. No provider authentication or data flow was tested.
+- **#1541** — MMI canonical claim fingerprint. Its five paths overlap #1663. The adapter and integration-test blobs are identical to integration; integration's MMI implementation and unit-test files differ but contain the canonical fingerprint and enforcement tests; the research artifact is semantically the same. #1541 is stacked on closed, unmerged #1540; its referenced #1542 is also closed unmerged. Classify as a superseded candidate only after the exact feature is verified on main following #1663 merge; do not close now.
+- **#1665** — one path, `requirements-dev.txt`; integration already has `pylint>=4.1.4`. Duplicate-content candidate; close only after the successor is merged and verified on main.
+- **#1666** — two paths, `pyproject.toml` and `requirements-integrations.txt`; integration still pins `kaggle>=1.5.12,<1.6`. The PR widens to `<1.8`, conflicting with the existing compatibility comment about Rust `rpds-py`; blocked pending compatibility tests.
+- **#1664** — 127 paths, three overlaps (`BARROT_SYNC.md`, `MEMORY.md`, `README.md`); unique paid-issue template work.
+- **#1670** — 12 paths, two overlaps (`docs/INDEX.md`, `pyproject.toml`); unique Musical DNA work.
+- **#1450** 116 paths; **#1460** 8; **#1440** 64; **#1436** 24; **#1437** 5; **#1353** 1,084 — no changed-path overlap with #1663; preserve as unique/unreviewed or reconcile their stacked ancestry before any closure.
+- **#1265** — 144 paths, one overlap with #1663: `.github/workflows/ci.yml`; preserve pending ancestry and workflow-diff review.
+
+Backlog: ready 0; blocked #1663, #1668, #1666; superseded candidates #1541 and #1665 pending successor merge; unique/unreviewed #1664, #1670, #1450, #1460, #1440, #1436, #1437, #1353, #1265. No unique research/repair work was bulk-closed.
+
+### Prediction admission and next action
+
+The machine-readable primary mission remains Priority 1 and Barrot V3 remains the preserved foundation. The forecast policy is still `xrp_forecast_readiness_v6`, `forecast_issuance_enabled=false`, status `NOT_SATISFIED`. Required admission still includes at least 100 training/OOS/shadow samples, overlap-adjusted effective sample sizes, ten-horizon spans, five receipt-backed source clusters, four baselines, paired temporal and source-clustered moving-block bootstrap with 10,000 replicates and 99.375% individual confidence, weighted calibration error <=0.05, leakage PASS, drift STABLE, shadow PASS and independent Ed25519 attestation. No candidate has met these conditions. No directional forecast was issued.
+
+**Next concrete action:** complete the transitive workflow/script/secret/data-flow audit and resolve the public Pages publication gate; then improve external immutable raw-source retention beyond 90-day GitHub artifacts. Keep the scheduled ingestion workflow inactive on main until a legitimate approved merge. Continue with exact-head full-suite and security evidence. Do not create another XRP/V3 PR, dispatch provider credentials, deploy, restart Spaces, write to Databricks, submit Kaggle entries, paper-trade, transfer funds or use real money.
