@@ -288,13 +288,15 @@ def test_run31_primary_source_reconciliation_separates_supply_capital_and_distri
     sbi = evidence["sources"][0]["observations"]
     supply = sbi["xrp_supply_distribution_as_of"]
     assert supply == "2026-10-28"
-    assert (
+    category_sum = (
         sbi["market_circulation_xrp_approx"]
         + sbi["ripple_holdings_not_in_circulation_xrp_approx"]
         + sbi["xrp_under_escrow_approx"]
         + sbi["burned_xrp_approx"]
-        == sbi["maximum_supply_xrp"]
     )
+    assert category_sum == sbi["category_sum_xrp_approx"] == 99990000000
+    assert sbi["unreconciled_rounding_residual_xrp_approx"] == 10000000
+    assert sbi["maximum_supply_xrp"] - category_sum == 10000000
     assert sbi["evernorth_xrp_holdings_approx"] == 473000000
     assert sbi["sbi_group_voting_rights_percent"] == 36.1
     assert sbi["sbi_group_economic_interest_percent"] == 20.5
