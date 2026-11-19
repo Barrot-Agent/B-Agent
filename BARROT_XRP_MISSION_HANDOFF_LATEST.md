@@ -4050,3 +4050,78 @@ Supporting snapshot: `data/xrp_intelligence/snapshots/20261119T100056Z-run41-mar
 **NO MERGE.** Exact-head full suite and dependency/money audits pass, but PR #1663 is still draft, has no independent approval, and branch protection cannot be verified. The workflow transitive audit is incomplete and raw-source retention has no WORM anchor.
 
 Next: finish the remaining workflow-to-script/security audit, reconcile the stacked ledger branches without closing unique research, establish an independent immutable source-retention anchor, and obtain verifiable required-review/branch-protection evidence. Keep the production XRP schedule inactive on main and forecast issuance disabled until these gates and out-of-sample performance are satisfied.
+
+
+## Run 42 — 2026-11-19 11:03:49 UTC
+
+### Current repository state — inspected before mutation
+
+- **main:** `a5e9606a71975b08cb681eee373a2d6dc1c36b55`.
+- **Integration branch:** `174e6b7fa8aa8c62046d589b63faaaa7a9a86901` before this documentation/evidence update.
+- **PR #1663:** open, draft, 416 commits, 1,454 changed files, base is current main, GitHub reports mergeable.
+- Recursive tree inventory: 1,739 main entries and 2,998 integration entries. Every main path is present in the integration tree; no main path is missing.
+- No new branch or PR was created. The existing integration branch is the only XRP/V3 integration workstream.
+
+### Fresh market evidence — research-only
+
+The Fuelmaps six-venue spot-book page reports an XRP mid of **$0.9845 at 10:00 UTC** across Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini. Displayed bids exceed asks at every reported band: $7.2M/$4.9M within ±0.5%, $16.5M/$11.4M within ±2%, and $25.7M/$15.6M within ±10%. Its largest listed bid rows were $0.982 ($1.7M), $0.959 ($1.5M), $0.980 ($1.5M) and $0.981 ($1.4M); the largest listed ask was $1.067 ($1.8M). <https://fuelmaps.io/order-book/>
+
+This is **not** a synchronized raw six-venue snapshot: Fuelmaps averages one-minute book observations into hourly columns, excludes Binance and Bitget, uses only near-price depth from OKX/Kraken, and warns that resting orders can be cancelled. It is a useful cross-venue liquidity observation, not proof of executable support or a forecast.
+
+TradRadar's XRP derivatives page was updated at 03:25 UTC, about 7.65 hours before this run's retrieval. It showed $1.29B open interest, -1.75% 24-hour OI change, -0.011% funding per eight hours, 77.4% long accounts and at least $5.54M liquidations ($3.32M long, $2.22M short). This is stale relative to the 10:00 UTC spot-book observation and overlaps underlying exchange feeds. Do not join the timestamps as one market state or average it with other OI providers. <https://tradradar.io/markets/xrp>
+
+**Competing interpretations retained:** displayed bid skew could reflect real spot absorption, but it could also be temporary/cancellable liquidity or venue-composition bias. Falling OI and negative funding may reflect leverage reduction; long-heavy accounts and long liquidations show positioning imbalance, not proof of net institutional selling. No directional forecast was issued.
+
+### Creator identity — improved, still bounded
+
+A June 11, 2026 iHeart interview with Dr. Kamilah Stevenson records the guest identifying her X, Instagram and YouTube names and warning that fake pages exist. In the same-date host-published YouTube appearance, Paul Barron Podcast tags `@drkamilahstevenson`. This verifies **one host-published interview appearance** and gives a high-confidence candidate for her YouTube handle. It does not authenticate every similarly named channel or every upload.
+
+- Verified host-published appearance: [Crypto Panics! W/ @drkamilahstevenson](https://www.youtube.com/watch?v=Sulo54IlQ60), June 11, 2026.
+- Quarantined candidate: [I Moved My XRP Off The Exchanges](https://www.youtube.com/watch?v=TfFx0g2IgGg), attributed to a channel named Kamilah Stevenson / `@KamilahStevensonXrpStocks`. No first-party cross-link to the interview guest was found. It is not admitted to the verified-person video inventory.
+- No channel-owned video inventory is admitted yet. The guest's warning about impersonation makes the first-party cross-link requirement mandatory.
+
+### Exact-phrase and institutional research
+
+- **ASK Coin:** no new exact-phrase identity resolution; Permission Coin (ASK) and `@AskCoin_bot` remain separate unverified candidates, with no established XRP/XRPL relationship.
+- **“actual capital”:** no new entity resolved. Keep announced commitments, aggregate cash, XRP purchases, in-kind contributions, equity issued, warrant proceeds and undrawn facilities separate. No new evidence proves an SBI-specific cash receipt or a Cantor facility draw.
+- **“SBIC, ChatGPT SBIC”:** no new evidence of an OpenAI partnership. SBIC East/Central/West remain distinct regional investment companies, not SBI Holdings, SBI Ripple Asia or SB OAI Japan GK.
+- Coinbase/Ripple RLUSD distribution, BNY custody, Circle/SBI USDC and Arc relationships, and DBS/Circle USDC access remain as previously classified. No new bilateral relationship or XRP collateral balance was established.
+
+The machine-readable record is `data/xrp_intelligence/snapshots/20261119T110349Z-run42-depth-identity-update.json`. Every web-rendered source in it is marked `raw_payload_captured_in_barrot=false`, has no SHA-256 receipt and is excluded from model features.
+
+### Workflow and security corrections
+
+- `.github/workflows/xrp-public-ingestion.yml` exists on the integration branch but **not on main**. Its hourly and daily schedules therefore are not active on main. It uses read-only `actions:read` and `contents:read` permissions. Raw receipt artifacts and the cross-run index are retained for 90 days; the per-run feature-store checkpoint is 7 days; daily feature-store/walk-forward backup is 90 days. The workflow itself labels GitHub artifacts **not WORM**. A separate externally anchored retention layer remains unverified.
+- `.github/workflows/barrot-ops.yml` has been corrected from the earlier overwrite concern: the Databricks import is explicitly named “no overwrite,” has no `--overwrite` flag, requires both a general external-change confirmation and a Databricks-specific confirmation, runs only from main, and verifies the exact approved main SHA against `origin/main`. No Databricks or Kaggle operation was dispatched.
+- The merge gate is now a substantive read-only fail-closed check, not an echo-only placeholder. It checks exact event SHA, current main base, draft state, mergeability, independent approval, branch protection, strict required checks and exact-head CI. Its exact-head run blocked for three explicit reasons: PR #1663 is still draft; no independent approving review exists; branch protection could not be verified (API access returned 403). It did not attempt a merge.
+
+### Exact-head CI evidence on the pre-update integration head
+
+The following runs all target `174e6b7fa8aa8c62046d589b63faaaa7a9a86901`:
+
+- PR CI: [44504807964](https://github.com/Barrot-Agent/B-Agent/actions/runs/44504807964) — passed.
+- Push CI: [44504797636](https://github.com/Barrot-Agent/B-Agent/actions/runs/44504797636) — passed.
+- PR dependency audit: [44504806918](https://github.com/Barrot-Agent/B-Agent/actions/runs/44504806918) — passed across runtime, development, integrations, Hugging Face Space, legacy and PEP 621 manifests.
+- PR money audit: [44504806924](https://github.com/Barrot-Agent/B-Agent/actions/runs/44504806924) — passed.
+- Fail-closed merge gate: [44504806927](https://github.com/Barrot-Agent/B-Agent/actions/runs/44504806927) — correctly blocked for the three reasons above.
+
+The full repository job reports **4,302 passed, 1 skipped, 11 warnings and 19 subtests**, 68.10% inclusive coverage and the 77% legacy-core floor. The wheel build and packaged primary-mission verification passed. The Python dependency-cache save was non-fatal and did not change the test conclusion.
+
+The latest main CI run is [44396364281](https://github.com/Barrot-Agent/B-Agent/actions/runs/44396364281), successful on `d5d22ac`, not current main `a5e9606a71975b08cb681eee373a2d6dc1c36b55`. Current main's later commit is a paid-issue snapshot refresh; do not call the older CI an exact-head main verification.
+
+**Important:** the new Run 42 evidence/handoff commit is documentation and research data only. The test results above are for its parent `174e6b7fa8aa8c62046d589b63faaaa7a9a86901`; they are not represented as tests on the new commit until its own CI completes.
+
+### Open PR inventory and classifications — 14 open
+
+- **Blocked:** #1663 (draft integration, no approval, branch protection unavailable); #1668 (three worker-path overlaps with #1663); #1541 (five MMI-path overlaps; stacked on #1540, which is closed unmerged).
+- **Duplicate:** #1665 (Pylint 4.1.4 already incorporated into #1663; keep open until merged content is verified on main).
+- **Unique/unreviewed:** #1664 (paid-issue pack, three shared documentation paths; contains paper-trading code that was not executed); #1666 (Kaggle dependency update, one `pyproject.toml` overlap); #1670 (Musical DNA); #1450, #1460, #1440, #1437, #1436, #1353 and #1265 (stacked XRP-ledger/research lineage).
+- #1663 has zero changed-path overlap with #1450, #1460, #1440, #1436, #1437 and #1353; it shares only `.github/workflows/ci.yml` with #1265.
+- Current pairwise lineage overlaps include #1440/#1450 (64 paths), #1353/#1437 (5), and #1265/#1353 (3). The older stack shares canonical research-ledger paths. These are not grounds for bulk closure.
+- Ready: 0. Merged: 0. Superseded: 0. No source PRs were closed.
+
+### Decision and next concrete action
+
+**NO MERGE.** The full suite and dependency/money audits passed on the current pre-update head, but the draft state, missing independent approval and unverified branch protection remain hard blockers. Production ingestion is still absent from main, and prediction remains disabled.
+
+Next: complete the transitive workflow-to-script/action/data-flow audit, independently verify branch protection, reconcile the stacked ledger lineage without discarding unique research, establish WORM/external receipt anchoring, then obtain exact-head CI and independent review before any merge. Continue collecting public XRP data without issuing a directional forecast.
