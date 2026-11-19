@@ -3609,3 +3609,52 @@ The first Run 37 commit removed the core-test skip condition but a second identi
 ### Research regression-test correction — 2026-11-19 05:27 UTC
 
 The new SEC 13F regression test initially addressed the top-level `model_eligibility` field under `institutional_13f`. The artifact stores it at the root. The test path is corrected before treating the new test as verified. Fresh CI remains pending.
+
+
+### Run 38 — 2026-11-19 06:01 UTC
+
+#### Repository integration checkpoint
+
+- Main SHA remains `82c23e219553164c24073784c529aad75acacd66`.
+- Integration head at the start of this run: `0de99c1082bc2ea5a6692c19857019c85364d2bb`; the current PR branch is the existing `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Verified complete trees: main 1,739 entries; integration 2,995 entries; neither tree is truncated; no main path is missing from integration.
+- Git compare: 402 commits ahead, zero behind. PR #1663 has 1,448 changed files, including 68 changed workflow files and 827 research paths.
+- Fourteen open PRs remain. #1663 is still draft, has zero reviews and zero inline review threads. No branch or PR was created in this run.
+- GitHub reports the main branch as protected, but the branch-protection endpoint returned 403 to the available connection. The only repository ruleset returned is a disabled fallback. Required contexts, approval count, and bypass settings are therefore not verified; do not merge.
+
+#### Exact-head CI diagnosis
+
+- Earlier head `5014f851816ba27dd0a103e0a77bbb7912b96e9e` failed two tests: an obsolete test still expected integration PR jobs to be skipped, and the Jane Street Q3 normalized-row digest was wrong.
+- Head `0de99c1082bc2ea5a6692c19857019c85364d2bb` passed the core `Tests` job and Pages validation. The full repository suite ran 4,292 passed, 1 skipped, 1 failed, 11 warnings, and 19 subtests in 188.92 seconds; inclusive coverage was 68.13% (30,665 statements, 9,043 missed). The remaining failure was the Jane Street Q2 normalized-row digest: stored `4f068c4567973d4cac3ce914b2aa3085ce94f7e9101f94bf85895a2f37606d9e`, recomputed `9f30b92b27d7e16c5fb502b738d5a5f218d65e097f5cc31c326e06df3306cdb8`.
+- Dependency audit run [44469843368](https://github.com/Barrot-Agent/B-Agent/actions/runs/44469843368) passed on that exact head. Fail-closed run [44469843422](https://github.com/Barrot-Agent/B-Agent/actions/runs/44469843422) and Pages validation passed, but the fail-closed workflow is still echo-only and is not a substantive merge-readiness gate.
+- The correction transaction in this run updates the Jane Street Q2 digest and adds the research artifact linked below. Fresh exact-head full-suite, dependency, and PR checks are pending; no prior test result is transferred to the new head.
+
+#### New primary-source corrections and XRP context
+
+- **Ripple National Trust Bank:** OCC Corporate Applications Search for control `2025-Charter-342347`, proposed charter 25364, records receipt 2025-07-02, approval 2025-12-12, and **Consummated/Effective 2026-10-26**. This primary OCC filing-status record resolves the earlier uncertainty created by relying only on the original Conditional Approval #1359 letter. It does not prove the bank has commenced customer operations, holds XRP, or has generated custody volume. Ripple's release says custody is to be provided upon opening; RLUSD continues to be issued by SCTC.
+- **DBS/Circle:** on 2026-11-18, DBS and Circle announced direct USDC mint/redemption for eligible institutional clients through DBS with 24/7 USD-USDC settlement, building on Project BLOOM. No XRP/XRPL integration was disclosed. Treat this as an alternative or complementary institutional stablecoin rail, not an XRP-demand observation.
+- **BNY/Ripple:** BNY's 2026-10-27 release says its Digital Asset Custody platform supports XRP and RLUSD for eligible institutional clients and that BNY remains RLUSD's primary reserve custodian. BNY's direct client mint/redeem RLUSD capability was described as a future plan subject to approvals. No XRP holdings, purchases, or custody volumes were disclosed.
+- **BNY/Circle:** BNY's 2026-06-29 release documents USDC custody and client mint/burn workflows. BNY is therefore a shared institutional custody/services node for USDC and RLUSD; this is not evidence of issuer ownership or XRP purchases.
+- **Spot snapshot, captured 2026-11-19 06:01:57 UTC:** Kraken XRP/USD last 0.97366, bid 0.97340 (150 XRP), ask 0.97341 (451 XRP), spread 0.103 bps, 24h volume 53.365M XRP, 24h VWAP 0.97881866; provider timestamp absent. OKX XRP-USDT last 0.9734, bid 0.9733 (8,640.438 XRP), ask 0.9734 (2,312.810 XRP), spread 1.027 bps, 24h volume 33.159M XRP; provider timestamp 05:41:56.138 UTC, about 20 minutes old at capture. These are top-of-book only. Full depth was not retrieved; USD/USDT and rolling windows are not synchronized. Both snapshots are research-only and excluded from model features.
+- The two Jane Street normalized-row digests are now corrected in the prior Run 37 artifact. They hash canonical normalized row strings only, not raw SEC bytes.
+
+Research artifact: `research/xrp_intelligence/20261119T060157Z-run38-market-regulatory-institutional-snapshot.json`.
+
+#### Workflow and external-action audit
+
+Ten high-risk workflows were inspected. `barrot-ops.yml` still imports to Databricks with `--overwrite` and has no target backup/hash guard; do not dispatch. `deploy-databricks.yml` is manual, exact-main-SHA and explicit-confirmation gated; not dispatched. `deploy-a2a-worker.yml` requires explicit deployment and secret-rotation confirmations; not dispatched. `kaggle-competitions.yml` requires explicit submission confirmation and an exact competition allowlist; not dispatched. `coinbase-paper-trader.yml` is a manual artifact-only simulation, defaults to BTC-USD and uses Groq; not dispatched. The paid-issue publisher is disabled, the model-upload workflow is quarantined, and the gated-merge workflow only prints that merging is disabled. No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, external-model dispatch, funds transfer, or real-money action occurred.
+
+#### Backlog and decision
+
+- **Blocked:** #1663 (draft; exact-head full suite still failing pending digest correction; no independent review; substantive readiness gate absent; Databricks overwrite guard incomplete), #1668 (overlapping worker changes conflict with integration quarantine), #1541 (parent #1540 closed without merge).
+- **Duplicate:** #1665 (Pylint 4.1.4 requirement already represented in #1663; do not close until verified on main).
+- **Unique/unreviewed:** #1664, #1666, #1450, #1460, #1440, #1437, #1436, #1353, #1265, #1670. Preserve these; do not bulk-close.
+- Ready: 0. Merged: 0. Superseded: 0. No source PR was closed.
+- **NO MERGE.** Exact-head full-suite verification, independent review, substantive fail-closed readiness checks, branch-protection details, and the Databricks overwrite guard remain blockers.
+
+#### Execution labels
+
+- **DESIGNED:** XRP source ingestion, receipt chain, point-in-time store, walk-forward baselines, calibration/drift framework, forecast ledger, and V3 safety orchestration are present on the integration branch.
+- **EXECUTED:** complete main/integration tree comparison; current PR and open-PR inventory; exact-head CI log diagnosis; correction of both Jane Street normalized-row digests; primary OCC CAS, DBS/Circle, BNY/Ripple and BNY/Circle source review; direct Kraken and OKX ticker retrieval; ten-workflow high-risk audit.
+- **VERIFIED:** core test job and Pages validation passed on `0de99c1`; dependency audit passed on that head. The full suite did not pass because of the Q2 Jane Street digest. The digest correction and new research artifact require fresh exact-head CI.
+- **NOT VERIFIED:** production scheduled ingestion, raw-byte/WORM retention, synchronized full-depth market data, nine-platform live coordination, forecast readiness, substantive merge gate, branch-protection requirements, and merge readiness.
