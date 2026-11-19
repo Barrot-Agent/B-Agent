@@ -435,7 +435,7 @@ class BarrotIntegratedSystem:
                 "knowledge_domains": len(self.agi_system.knowledge_base),
                 "learning_rate": self.agi_system.learning_rate,
             },
-            "agi_orchestrator_status": self.agi_orchestrator.get_agi_status(),
+            "agi_runtime_status": self.agi_orchestrator.get_agi_status(),
             "algorithm_status": self.algorithm_optimizer.get_optimization_report(),
             "performance_summary": self.performance_tracker.get_performance_summary(),
             "email_analysis_history": len(email_analyzer.analysis_history),

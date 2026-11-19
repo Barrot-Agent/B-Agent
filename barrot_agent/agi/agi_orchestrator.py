@@ -442,6 +442,42 @@ class AGIOrchestrator:
             "timestamp": datetime.now(timezone.utc).isoformat(),
         }
 
+    def get_agi_capabilities_report(self) -> Dict[str, Any]:
+        """
+        Return the documented, read-only AGI capabilities report.
+
+        The report is derived from in-memory orchestrator state. It does not
+        invoke models, mutate learning state, or imply that a capability has
+        been independently benchmarked.
+        """
+        capability_names = sorted(capability.value for capability in self.capabilities)
+        knowledge_domains = sorted(self.knowledge_base.keys())
+        total_knowledge_items = sum(
+            len(domain_items) for domain_items in self.knowledge_base.values()
+        )
+
+        return {
+            "orchestrator_status": self.status.value,
+            "initialization_time": self.initialization_time,
+            "capabilities": {
+                "count": len(capability_names),
+                "available": capability_names,
+            },
+            "active_integrations": sorted(self.active_integrations.keys()),
+            "knowledge_domains": {
+                "count": len(knowledge_domains),
+                "domains": knowledge_domains,
+                "total_items": total_knowledge_items,
+            },
+            "learning_history": {
+                "total_learning_sessions": self.metrics.self_improvement_cycles,
+                "decision_count": len(self.decision_history),
+                "improvement_cycles": len(self.improvement_cycles),
+            },
+            "metrics": asdict(self.metrics),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        }
+
     def continuous_improvement_cycle(self, iterations: int = 1) -> List[Dict[str, Any]]:
         """
         Run continuous improvement cycles
