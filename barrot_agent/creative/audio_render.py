@@ -9,7 +9,6 @@ from dataclasses import dataclass
 from pathlib import Path
 import tempfile
 
-import numpy as np
 
 from .midi_export import export_midi
 from .musical_dna import MusicalManifest
@@ -49,6 +48,7 @@ def render_audio(
         raise ValueError("sample_rate must be between 8000 and 192000")
 
     try:
+        import numpy as np
         import pretty_midi
         from scipy.io import wavfile
     except ImportError as exc:
