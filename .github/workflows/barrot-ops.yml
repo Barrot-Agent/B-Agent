@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       confirm_databricks_workspace_create:
-        description: "Set YES only to create the notebook when the target path is confirmed absent. Existing targets are never overwritten."
+        description: "Set YES only to create the notebook when the target path is confirmed absent. Existing paths are never overwritten."
         required: true
         type: choice
         options:
