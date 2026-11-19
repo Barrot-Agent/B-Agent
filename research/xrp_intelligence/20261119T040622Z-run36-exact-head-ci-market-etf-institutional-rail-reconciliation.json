@@ -252,10 +252,15 @@
         "source_url": "https://cryptoetf.today/en/xrp-etf-flows",
         "as_of": "2026-11-18",
         "universe": "five spot ETFs",
-        "flow_2026_11_17_usd": -4900000,
+        "flow_2026_11_17_usd": -6000000,
         "flow_2026_11_18_usd": 0,
         "thirty_session_flow_usd": -10800000,
-        "evidence_grade": "third-party flow series; reports no fund-level holdings/AUM for the XRP series"
+        "evidence_grade": "third-party flow aggregator; Nov 17 is partial 3/5 and Nov 18 is partial 1/5; missing fund rows are not zero.",
+        "xrpc_component_2026_11_17_usd": -4900000,
+        "gxrp_component_2026_11_17_usd": -1100000,
+        "toxr_component_2026_11_17_usd": 0,
+        "coverage_2026_11_17": "3 of 5 reported: XRPC -$4.9M, GXRP -$1.1M, TOXR $0; XRP and XRPZ unreported.",
+        "coverage_2026_11_18": "1 of 5 reported: TOXR $0; other four unreported. Displayed zero is partial, not a complete five-fund total."
       },
       {
         "source": "CryptoKeyhole",
@@ -267,8 +272,22 @@
         "evidence_grade": "partial issuer-file-derived observation"
       }
     ],
-    "reconciliation": "Do not average. The sources use different fund universes, currencies, issuer-file completeness, and calculation methods. XRP Insights' holdings-delta method includes some non-creation/redemption changes; Alpha and CryptoETF disagree on the five-fund USD flow; CryptoKeyhole is partial. Resolve fund by fund against issuer files before feature admission.",
-    "model_eligible": false
+    "reconciliation": "Alpha Finance reports -$6.1M on Nov 17 across its five-fund series and $0 on Nov 18 across 5/5. CryptoETF.today reports -$6.0M on Nov 17 from only three reported rows (XRPC -$4.9M, GXRP -$1.1M, TOXR $0; XRP and XRPZ missing); the -$4.9M value is the XRPC component, not the aggregate. On Nov 18 only TOXR reports $0 while four funds are unreported. The two Nov 17 aggregates are numerically close but coverage is not equivalent. XRP Insights' +159,134 XRP is a broader issuer-holdings delta that includes non-creation/redemption changes; CryptoKeyhole is partial 2/4. Preserve missingness and source scope; do not average or promote missing rows to zero.",
+    "model_eligible": false,
+    "correction_log": [
+      {
+        "correction_id": "RUN36-ETF-CRYPTOETF-AGGREGATE-VS-XRPC-COMPONENT",
+        "correction_status": "CORRECTED",
+        "prior_interpretation": "CryptoETF.today Nov 17 aggregate was initially recorded as -$4.9M.",
+        "corrected_interpretation": "CryptoETF.today shows -$6.0M from reported rows: XRPC -$4.9M, GXRP -$1.1M and TOXR $0; XRP and XRPZ are not reported.",
+        "nov18_coverage": "Only TOXR reports $0; four other funds are not reported.",
+        "source_url": "https://cryptoetf.today/en/xrp-etf-flows",
+        "source_excerpt": "The fund/day table lists Tue 17 Nov total -6.0, with XRPC -4.9, GXRP -1.1 and TOXR 0; the daily summary labels -4.9 as the last XRPC move.",
+        "source_lines": "147, 172, 181-183, 267-287",
+        "correction_capture_time_basis": "Page reopened during the same run; exact retrieval timestamp was not exposed by the web renderer.",
+        "model_eligible": false
+      }
+    ]
   },
   "institutional_rail_counterhypothesis": {
     "status": "VERIFIED_PRIMARY_ANNOUNCEMENTS",
@@ -424,13 +443,13 @@
       "source_id": "SRC-ALPHAFINANCE-XRP-ETF-20261119-RUN36",
       "url": "https://alphafinance.io/etf/xrp/",
       "source_type": "third-party ETF flow aggregator",
-      "citation_ref": "turn780470view2"
+      "citation_ref": "turn584905view0"
     },
     {
       "source_id": "SRC-CRYPTOETF-XRP-ETF-20261119-RUN36",
       "url": "https://cryptoetf.today/en/xrp-etf-flows",
       "source_type": "third-party ETF flow aggregator",
-      "citation_ref": "turn780470view3"
+      "citation_ref": "turn584905view1"
     },
     {
       "source_id": "SRC-CRYPTOKEYHOLE-XRP-ETF-20261119-RUN36",
@@ -468,5 +487,53 @@
       "source_type": "primary custodian announcement",
       "citation_ref": "turn196464search3"
     }
-  ]
+  ],
+  "post_write_verification": {
+    "verified_head_before_etf_correction": "b5ead6c06d893e9c5262e1f05f50cac495d157be",
+    "full_suite": {
+      "run_id": 44456934041,
+      "job_id": 135334117682,
+      "status": "success",
+      "tests_passed": 4288,
+      "tests_skipped": 1,
+      "tests_failed": 0,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 187.47,
+      "inclusive_coverage_percent": 68.13,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build": "PASS",
+      "installed_mission_verification": "PASS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44456934041"
+    },
+    "dependency_audit": {
+      "run_id": 44456934043,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44456934043"
+    },
+    "fail_closed_gate": {
+      "run_id": 44456934048,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44456934048"
+    },
+    "pr_ci": {
+      "run_id": 44456937994,
+      "status": "success",
+      "full_suite": "skipped_because_pr_is_draft",
+      "core_tests": "skipped_because_pr_is_draft",
+      "pages_validation": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44456937994"
+    },
+    "pr_money_audit": {
+      "run_id": 44456938005,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44456938005"
+    },
+    "pr_dependency_audit": {
+      "run_id": 44456937929,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44456937929"
+    },
+    "correction_commit_requires_new_exact_head_ci": true
+  }
 }

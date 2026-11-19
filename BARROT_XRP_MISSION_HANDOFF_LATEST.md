@@ -3417,9 +3417,9 @@ NO MERGE. No deployment, secret rotation, Space restart, Databricks write, Kaggl
 ### ETF flow disagreement — DO NOT AVERAGE
 - XRP Insights reports +159,134 XRP across Nov 16–17 and 1,189,261,215 XRP held on Nov 17, using six spot funds plus BITW. Its metadata says the Nov 18 row is provisional and data is settled only through Nov 17. Its holdings-delta method can count BITW rebalancing/fees as flow, includes XRPR's indirect ETP exposure, excludes GXRP flow during a scrape gap, and reconstructs certain historical rows.
 - Alpha Finance reports five-fund flow of -$6.1M on Nov 17, zero on Nov 18, -$8.3M over seven sessions and -$19.1M over 30 sessions.
-- CryptoETF.today reports five-fund flow of -$4.9M on Nov 17 (last move attributed to XRPC), zero on Nov 18 and -$10.8M over 30 sessions.
+- CryptoETF.today's 17 Nov aggregate is -$6.0M from only 3/5 reported rows: XRPC -$4.9M, GXRP -$1.1M and TOXR $0; XRP and XRPZ are unreported. On 18 Nov only TOXR reports $0; the other four are unreported. The -$4.9M figure is the XRPC component, not the total. The page reports -$10.8M over 30 sessions.
 - CryptoKeyhole reports only -3,251 XRP for Nov 17 from 2 of 4 daily-reporting funds; it is partial.
-- The fund universes, currencies, completeness and calculation methods differ. Alpha Finance and CryptoETF also disagree on the same date's five-fund USD result. Preserve all vintages; no consensus flow or model feature is admitted.
+- Alpha Finance reports -$6.1M on 17 Nov across its five-fund flow series and $0 on 18 Nov across 5/5 funds. CryptoETF's partial 17 Nov total is -$6.0M, not -$4.9M; the latter is XRPC alone. Its 18 Nov zero is also partial (1/5). XRP Insights uses broader holdings deltas and counts some non-creation/redemption changes; CryptoKeyhole is partial. Preserve all vintages and missingness; do not average or treat missing rows as zero. No flow is model-admitted.
 
 ### Institutional counter-hypothesis — primary announcements
 - DBS and Circle announced on Nov 18 that eligible institutions can directly mint/redeem USDC through DBS with near-instant 24/7 USD-USDC settlement. [DBS primary announcement](https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia).
@@ -3442,3 +3442,24 @@ NO MERGE. No deployment, secret rotation, Space restart, Databricks write, Kaggl
 No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, external-model dispatch, paper trade, funds transfer or real-money action occurred.
 
 **Next concrete actions:** complete the transitive workflow/script/action/data-flow audit; add non-destructive backup/hash/CAS protection to Databricks overwrite or remove that path; obtain independent review through an authorized reviewer; reverify branch-protection/required checks; repair SEC contact configuration through an approved monitored project identity; improve raw-receipt retention/independent anchoring; reconcile ETF fund rows against issuer files and obtain synchronized Level-2 snapshots. Keep forecast issuance disabled until all out-of-sample and readiness gates pass.
+
+
+## Run 36 post-write verification and ETF correction — 2026-11-19
+
+### Exact-head CI on the handoff/artifact commit — VERIFIED
+- The branch head `b5ead6c06d893e9c5262e1f05f50cac495d157be` passed the full repository suite in [run 44456934041](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456934041), job 135334117682: 4,288 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.47 seconds; 68.13% inclusive coverage and 77% legacy-core coverage. Wheel build and installed mission verification passed.
+- Dependency audit [44456934043](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456934043), fail-closed gate [44456934048](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456934048), PR money audit [44456938005](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456938005), and PR dependency audit [44456937929](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456937929) passed. PR CI [44456937994](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456937994) passed its applicable jobs; its core/full-suite jobs were skipped because #1663 remains draft.
+- The Run 36 JSON and handoff were corrected together in one non-force commit after re-opening the CryptoETF source. The correction commit is a new head and requires its own exact-head full-suite CI; the preceding result is not transferable.
+
+### ETF data correction — SOURCE ROWS RECONCILED, MODEL-INELIGIBLE
+- CryptoETF.today's 17 Nov aggregate is **-$6.0M**, not -$4.9M. The fund/day table shows XRPC -$4.9M, GXRP -$1.1M and TOXR $0; XRP and XRPZ are unreported. The -$4.9M figure is only the XRPC component.
+- CryptoETF's 18 Nov $0 is also partial: TOXR reports $0; four other funds are unreported. Its asterisked rows must not be treated as complete daily totals.
+- Alpha Finance reports -$6.1M on 17 Nov across its five-fund series and $0 on 18 Nov across 5/5. The two providers' reported 17 Nov totals are close, but CryptoETF coverage is only 3/5, so this is not a fully reconciled five-fund comparison. Alpha's 30-session total is -$19.1M; CryptoETF's is -$10.8M.
+- XRP Insights' +159,134 XRP is based on a broader issuer-holdings delta including BITW and XRPR and some non-creation/redemption changes; CryptoKeyhole is partial 2/4. Preserve each source's scope, missing rows and method. No averaging or model admission.
+
+### Main-branch side-effect audit — ADDITIONAL BLOCKER
+- Main remains `82c23e219553164c24073784c529aad75acacd66`. Its only code-equivalent difference from the last tested main SHA `d5d22ac252f88637a490ed4c1598f8608b6cb786` is the generated `PAID-ISSUES.md` and `data/money/paid_issues.json` pair. Current scheduled Cross Analysis run [44454319508](https://github.com/Barrot-Agent/B-Agent/actions/runs/44454319508) passed.
+- Main's `paid-issue-publish.yml` still has `contents:write`, mutable `actions/checkout@v4` and `actions/download-artifact@v4` tags, and pushes the two generated files after checking `mutations_performed == 0`. The reviewed workflow does not verify an approved source-head SHA or artifact digest before committing. The current integration branch disables this publisher with `permissions: {}` and `if: false`. Treat the main publisher as an automatic workflow side effect and keep it disabled in the successor.
+- `barrot-ops.yml` still requires two explicit YES confirmations and an exact main SHA, but its Databricks command uses `--overwrite` without a target backup/hash/CAS guard. Do not dispatch.
+
+The merge decision remains **NO MERGE**: #1663 is draft, has no independent review, effective branch protection remains unverified, and the complete transitive workflow audit remains unfinished.
