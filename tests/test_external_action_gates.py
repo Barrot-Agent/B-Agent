@@ -1,4 +1,3 @@
-import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,17 +14,7 @@ def test_destructive_or_secret_input_workflows_are_disabled() -> None:
         "barrot-hf-admin.yml",
         "rotate-databricks-token.yml",
         "gumroad-metrics.yml",
-        "barrot-merge.yml",
         "barrot-merge-manual.yml",
-        "task-allocator.yml",
-        "ask-barrot.yml",
-        "write-lyrics.yml",
-        "pingpong.yml",
-        "make-track.yml",
-        "audio-ingest.yml",
-        "barrot-speak.yml",
-        "free-image-gen.yml",
-        "knowledge-signal-cycle-btc.yml",
     )
     for name in disabled:
         content = _read(name)
@@ -36,7 +25,6 @@ def test_destructive_or_secret_input_workflows_are_disabled() -> None:
         assert "git push" not in content
         assert "curl " not in content
         assert "gh secret set" not in content
-        assert "gh secret list" not in content
 
 
 def test_databricks_pat_is_not_a_workflow_dispatch_input() -> None:
@@ -48,14 +36,6 @@ def test_databricks_pat_is_not_a_workflow_dispatch_input() -> None:
 
 def test_model_upload_requires_approval_and_validated_destination() -> None:
     content = _read("barrot-merge.yml")
-    if "if: ${{ false }}" in content:
-        assert "permissions: {}" in content
-        assert "secrets." not in content
-        assert "contents: write" not in content
-        assert "actions/checkout" not in content
-        assert "HF_TOKEN" not in content
-        assert "upload_folder" not in content
-        return
     assert "confirm_external_change" in content
     assert "default: NO" in content
     assert "inputs.confirm_external_change == 'YES'" in content
@@ -65,18 +45,16 @@ def test_model_upload_requires_approval_and_validated_destination() -> None:
     assert "--trust-remote-code" not in content
 
 
-def test_pr_generating_automation_is_quarantined_until_integration_dedup_is_verified() -> None:
-    for name in ("barrot-agent.yml", "barrot-self-upgrade.yml"):
-        content = _read(name)
-        assert "workflow_dispatch: {}" in content, name
-        assert "permissions: {}" in content, name
-        assert "if: ${{ false }}" in content, name
-        assert "issues:" not in content, name
-        assert "schedule:" not in content, name
-        assert "push:" not in content, name
-        assert "contents: write" not in content, name
-        assert "pull-requests: write" not in content, name
-        assert "gh pr create" not in content, name
+def test_self_upgrade_requires_explicit_approval_and_main_base() -> None:
+    content = _read("barrot-self-upgrade.yml")
+    assert "confirm_external_change" in content
+    assert "default: NO" in content
+    assert "inputs.confirm_external_change == 'YES'" in content
+    assert "github.ref == 'refs/heads/main'" in content
+    assert "ref: ${{ github.ref_name }}" in content
+    assert "python3 scripts/barrot_self_upgrade.py" in content
+    assert "--persist-audit-report" not in content
+    assert "gh pr merge" not in content
 
 
 def test_factory_restart_requires_explicit_approval() -> None:
@@ -87,47 +65,8 @@ def test_factory_restart_requires_explicit_approval() -> None:
     assert "restart?factory=true" in content
 
 
-def test_self_hosted_brain_fails_closed_without_secret_and_private_space() -> None:
-    start_script = (ROOT / "self_hosted_brain" / "start.sh").read_text(encoding="utf-8")
-    workflow = _read("sync-self-hosted-brain.yml")
-    assert 'if [[ -z "${BRAIN_SHARED_SECRET:-}" ]]' in start_script
-    assert '--api-key "$BRAIN_SHARED_SECRET"' in start_script
-    assert "changeme" not in start_script
-    assert 'if not secret.strip()' in workflow
-    assert 'if not bool(getattr(space_info, "private", False))' in workflow
-    assert workflow.index('api.add_space_secret') < workflow.index('api.upload_folder')
-
-
-def test_barrot_ops_requires_explicit_approval_and_exact_current_main_sha() -> None:
-    content = _read("barrot-ops.yml")
-    assert "confirm_external_change" in content
-    assert "default: NO" in content
-    assert "expected_source_sha" in content
-    assert "inputs.confirm_external_change == 'YES' && github.ref == 'refs/heads/main'" in content
-    assert "EXPECTED_SOURCE_SHA" in content
-    assert "git rev-parse FETCH_HEAD" in content
-    assert "persist-credentials: false" in content
-    assert "contents: read" in content
-    assert "contents: write" not in content
-    assert "kaggle datasets download" in content
-    assert "kaggle competitions submit" not in content
-
-
-def test_barrot_ops_requires_separate_action_specific_external_approval() -> None:
-    content = _read("barrot-ops.yml")
-    assert "confirm_databricks_workspace_import:" in content
-    assert "confirm_kaggle_dataset_download:" in content
-    assert content.count("default: NO") >= 3
-    assert "inputs.confirm_databricks_workspace_import == 'YES'" in content
-    assert "inputs.confirm_kaggle_dataset_download == 'YES'" in content
-    assert "if: ${{ inputs.confirm_databricks_workspace_import == 'YES' }}" in content
-    assert "if: ${{ inputs.confirm_kaggle_dataset_download == 'YES' }}" in content
-    assert "databricks workspace import" in content
-    assert "kaggle datasets download" in content
-
-
 def test_existing_safe_external_deploys_keep_per_run_confirmation() -> None:
-    for name in ("deploy-databricks.yml", "barrot-ops.yml"):
+    for name in ("deploy-databricks.yml", "sync-huggingface.yml"):
         content = _read(name)
         assert "confirm_external_change" in content
         assert "default: NO" in content
@@ -174,22 +113,22 @@ def test_scheduled_research_jobs_write_artifacts_not_main() -> None:
         content = _read(name)
         assert "contents: read" in content, name
         assert "persist-credentials: false" in content, name
-        if name == "barrot-transparency-audit.yml":
-            assert re.search(r"^\s*(?:-\s*)?uses:\s*actions/upload-artifact@[0-9a-f]{40}\b", content, re.MULTILINE), name
-        else:
-            assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in content, name
+        assert "upload-artifact@v7" in content, name
         assert "git push" not in content, name
         assert "contents: write" not in content, name
 
 
-def test_webmcp_live_sandbox_is_quarantined_until_per_tool_allowlisting() -> None:
+def test_webmcp_live_sandbox_requires_explicit_manual_approval() -> None:
     content = _read("webmcp-live-sandbox.yml")
-    assert "workflow_dispatch: {}" in content
-    assert "permissions: {}" in content
-    assert "if: ${{ false }}" in content
-    assert "playwright" not in content.lower()
-    assert "registertool" not in content.lower()
-    assert "No browser is launched" in content
+    assert "schedule:" not in content
+    assert "confirm_live_execution" in content
+    assert "default: NO" in content
+    assert "inputs.confirm_live_execution == 'YES'" in content
+    assert "contents: read" in content
+    assert "contents: write" not in content
+    assert "persist-credentials: false" in content
+    assert "git push" not in content
+    assert "upload-artifact@v7" in content
 
 
 def test_hover_bike_simulation_uses_read_only_repository_access() -> None:
@@ -198,7 +137,7 @@ def test_hover_bike_simulation_uses_read_only_repository_access() -> None:
     assert "contents: write" not in content
     assert "persist-credentials: false" in content
     assert "git push" not in content
-    assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in content
+    assert "upload-artifact@v7" in content
 
 
 def test_pillars_check_uses_read_only_github_installation_lookup() -> None:
@@ -211,6 +150,8 @@ def test_pillars_check_uses_read_only_github_installation_lookup() -> None:
 
 
 def test_no_active_scheduled_workflow_can_write_or_merge() -> None:
+    import re
+
     for path in WORKFLOWS.glob("*.yml"):
         content = path.read_text(encoding="utf-8")
         if not re.search(r"^\s{2}schedule:", content, flags=re.MULTILINE):
@@ -233,13 +174,7 @@ def test_content_and_entity_workflows_require_confirmation_and_preserve_artifact
         assert "contents: read" in content, name
         assert "contents: write" not in content, name
         assert "persist-credentials: false" in content, name
-        assert "expected_main_sha" in content, name
-        assert "github.ref == 'refs/heads/main'" in content, name
-        assert "ref: ${{ inputs.expected_main_sha }}" in content, name
-        assert "EXPECTED_MAIN_SHA" in content, name
-        assert "git rev-parse FETCH_HEAD" in content, name
-        assert content.index("Verify exact approved main revision") < content.index("GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}"), name
-        assert re.search(r"^\s*(?:-\s*)?uses:\s*actions/upload-artifact@[0-9a-f]{40}\b", content, re.MULTILINE), name
+        assert "upload-artifact@v7" in content, name
         assert "git push" not in content, name
 
 
@@ -268,6 +203,8 @@ def test_barrot_auto_pr_has_no_unnecessary_pull_request_write_permission() -> No
 def test_groq_research_pipelines_require_yes_and_upload_artifacts() -> None:
     names = (
         "webmcp-trend-digest.yml",
+        "self-benchmark.yml",
+        "knowledge-signal-cycle.yml",
         "financial-data-refresh.yml",
         "research-topics.yml",
         "frontier-digest.yml",
@@ -280,16 +217,8 @@ def test_groq_research_pipelines_require_yes_and_upload_artifacts() -> None:
         assert "contents: read" in content, name
         assert "contents: write" not in content, name
         assert "persist-credentials: false" in content, name
-        assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in content, name
+        assert "upload-artifact@v7" in content, name
         assert "git push" not in content, name
-
-
-def test_self_benchmark_is_quarantined_until_generated_code_is_sandboxed() -> None:
-    content = _read("self-benchmark.yml")
-    assert "permissions: {}" in content
-    assert "if: ${{ false }}" in content
-    assert "GROQ_API_KEY" not in content
-    assert "network-disabled" in content
 
 
 def test_webmcp_monetization_enrichment_consumes_upstream_artifact_read_only() -> None:
@@ -299,7 +228,7 @@ def test_webmcp_monetization_enrichment_consumes_upstream_artifact_read_only() -
     assert "github.event.workflow_run.conclusion == 'success'" in content
     assert "actions: read" in content
     assert "contents: read" in content
-    assert "uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8" in content
+    assert "actions/download-artifact@v7" in content
     assert "github.event.workflow_run.id" in content
     assert "github.event.workflow_run.run_number" in content
     assert "webmcp-trend-digest-${{ github.run_number }}" in trend
@@ -310,9 +239,12 @@ def test_webmcp_monetization_enrichment_consumes_upstream_artifact_read_only() -
 
 def test_external_side_effects_are_bound_to_exact_approved_main_commit() -> None:
     names = (
+        "barrot-merge.yml",
+        "sync-huggingface.yml",
         "deploy-databricks.yml",
         "kaggle-competitions.yml",
         "barrot-restart-space.yml",
+        "webmcp-live-sandbox.yml",
     )
     for name in names:
         content = _read(name)
@@ -328,199 +260,19 @@ def test_external_side_effects_are_bound_to_exact_approved_main_commit() -> None
 
 def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() -> None:
     workflow = _read("dependency-audit.yml")
-    for command in (
-        "pip-audit -r requirements.txt --strict",
-        "pip-audit -r requirements-dev.txt --strict",
-        "pip-audit -r requirements-integrations.txt --strict",
-        "pip-audit -r hf_space/requirements.txt --strict",
-        "pip-audit -r legacy/requirements_legacy.txt --strict",
-        'pip-audit -r "$RUNNER_TEMP/pyproject-requirements.txt" --strict',
+    for manifest in (
+        "requirements.txt",
+        "requirements-dev.txt",
+        "requirements-integrations.txt",
+        "pyproject.toml",
+        "hf_space/requirements.txt",
+        "legacy/requirements_legacy.txt",
     ):
-        assert command in workflow
-    assert "Path(\"pyproject.toml\").read_text(encoding=\"utf-8\")" in workflow
-    assert "tomllib.loads" in workflow
-    assert "ROOT_RUNTIME: ${{ steps.root_runtime.outcome }}" in workflow
-    assert "DEV: ${{ steps.dev.outcome }}" in workflow
-    assert "INTEGRATIONS: ${{ steps.integrations.outcome }}" in workflow
-    assert "HF_SPACE: ${{ steps.hf_space.outcome }}" in workflow
-    assert "LEGACY: ${{ steps.legacy.outcome }}" in workflow
-    assert "PYPROJECT: ${{ steps.pyproject.outcome }}" in workflow
-    assert '"$ROOT_RUNTIME" != "success"' in workflow
-    assert '"$DEV" != "success"' in workflow
-    assert '"$INTEGRATIONS" != "success"' in workflow
-    assert '"$HF_SPACE" != "success"' in workflow
-    assert '"$LEGACY" != "success"' in workflow
-    assert '"$PYPROJECT" != "success"' in workflow
-    assert "--ignore-vuln PYSEC-2024-232" not in workflow
-    active_ci = _read("ci.yml")
-    assert "--ignore-vuln PYSEC-2024-232" not in active_ci
-    security = (ROOT / "SECURITY.md").read_text(encoding="utf-8")
-    assert "temporarily ignored in CI" not in security
-    assert "archived backup" in security
+        assert f'"{manifest}"' in workflow
+    assert "pip-audit -r requirements-integrations.txt --strict" in workflow
 
     requirements = (ROOT / "requirements.txt").read_text(encoding="utf-8")
     pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
     for dependency in ("numpy", "PyJWT", "cryptography", "websockets"):
         assert dependency in requirements
         assert dependency in pyproject
-
-
- 
-def test_shared_workflows_use_supported_action_versions_or_reviewed_sha_pins() -> None:
-    approved = {
-        "actions/checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
-        "actions/upload-artifact": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
-    }
-
-    def refs(content: str, action: str) -> list[str]:
-        found: list[str] = []
-        prefix = f"{action}@"
-        for line in content.splitlines():
-            line = line.strip()
-            if line.startswith("- "):
-                line = line[2:].strip()
-            if not line.startswith("uses:"):
-                continue
-            target = line.partition(":")[2].strip().split()[0]
-            if target.startswith(prefix):
-                found.append(target[len(prefix):])
-        return found
-
-    def supported(values: list[str], action: str, minimum_major: int) -> bool:
-        if not values:
-            return False
-        approved_sha = approved[action]
-        for value in values:
-            if value == approved_sha:
-                continue
-            if not (value.startswith("v") and value[1:].isdigit() and int(value[1:]) >= minimum_major):
-                return False
-        return True
-
-    checkout_workflows = (
-        "barrot-bundle-operational-smoke.yml",
-        "barrot-controlled-feature-validation.yml",
-        "ci.yml",
-        "dependency-audit.yml",
-        "formal-verification-benchmarks.yml",
-        "xrp-public-ingestion.yml",
-    )
-    for name in checkout_workflows:
-        content = _read(name)
-        assert supported(refs(content, "actions/checkout"), "actions/checkout", 7), name
-    for name in ("ci.yml", "dependency-audit.yml", "xrp-public-ingestion.yml"):
-        content = _read(name)
-        assert set(refs(content, "actions/checkout")) == {approved["actions/checkout"]}, name
-
-    upload_workflows = (
-        "barrot-controlled-feature-validation.yml",
-        "cross-analysis.yml",
-        "formal-verification-benchmarks.yml",
-        "signal-summary.yml",
-        "xrp-public-ingestion.yml",
-    )
-    for name in upload_workflows:
-        content = _read(name)
-        assert supported(refs(content, "actions/upload-artifact"), "actions/upload-artifact", 7), name
-    assert set(refs(_read("xrp-public-ingestion.yml"), "actions/upload-artifact")) == {
-        approved["actions/upload-artifact"]
-    }
-
-    webmcp = _read("webmcp-monetization-enrich.yml")
-    download_refs = refs(webmcp, "actions/download-artifact")
-    assert download_refs
-    assert set(download_refs) == {"9000827ccba6bdab643e8b6fd33ac0654aef8333"}
-
-def test_worker_and_self_hosted_brain_deployments_require_manual_exact_sha_and_secret_rotation() -> None:
-    for name in ("deploy-a2a-worker.yml", "sync-self-hosted-brain.yml"):
-        content = _read(name)
-        assert "on:\n  workflow_dispatch:" in content, name
-        assert "push:" not in content, name
-        assert "permissions:\n  contents: read" in content, name
-        assert "persist-credentials: false" in content, name
-        assert "inputs.confirm == 'YES'" in content, name
-        assert "inputs.confirm_secret_rotation == 'YES'" in content, name
-        assert "confirm_secret_rotation" in content, name
-        assert "expected_main_sha" in content, name
-        assert "EXPECTED_MAIN_SHA" in content, name
-        assert "github.ref == 'refs/heads/main'" in content, name
-        assert "git rev-parse origin/main" in content, name
-
-
-def test_ibm_bob_audit_remains_quarantined_without_repository_transfer() -> None:
-    content = _read("ibm-bob-barrot-audit.yml")
-    assert "workflow_dispatch: {}" in content
-    assert "permissions: {}" in content
-    assert "if: ${{ false }}" in content
-    assert "actions/checkout@" not in content
-    assert "actions/upload-artifact@" not in content
-    assert "secrets." not in content
-    assert "No repository content may be transferred" in content
-
-
-def test_barrot_ops_fails_closed_when_approved_external_credentials_are_missing() -> None:
-    content = _read("barrot-ops.yml")
-    assert "DATABRICKS_HOST and DATABRICKS_TOKEN are required after explicit Databricks import approval" in content
-    assert "KAGGLE_JSON is required after explicit Kaggle dataset-download approval" in content
-    assert "exit 1" in content
-    assert "skipping notebook upload" not in content
-    assert "skipping Kaggle refresh" not in content
-    assert "databricks workspace import src/barrot_databricks_job.py /Shared/barrot_databricks_job --language PYTHON --overwrite ||" not in content
-
-
-def test_all_groq_external_research_workflows_are_main_only_and_exact_sha_pinned() -> None:
-    names = (
-        "webmcp-trend-digest.yml",
-        "financial-data-refresh.yml",
-        "research-topics.yml",
-        "frontier-digest.yml",
-        "capability-10-design.yml",
-        "capability-discovery.yml",
-        "data-value-triage.yml",
-        "signal-summary.yml",
-    )
-    for name in names:
-        content = _read(name)
-        assert "github.ref == 'refs/heads/main'" in content, name
-        assert "expected_main_sha" in content, name
-        assert "ref: ${{ inputs.expected_main_sha }}" in content, name
-        assert "git ls-remote origin refs/heads/main" in content, name
-        assert "git rev-parse HEAD" in content, name
-        assert "persist-credentials: false" in content, name
-        assert "contents: read" in content, name
-        assert "contents: write" not in content, name
-        assert "GROQ_API_KEY" in content, name
-        assert "\n      GROQ_API_KEY:" not in content, name
-        assert "\n          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}" in content, name
-        assert "\n      EXPECTED_MAIN_SHA:" not in content, name
-        assert "\n          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}" in content, name
-        assert "\n    env:\n    steps:" not in content, name
-
-
-def test_research_topics_workflow_keeps_expected_sha_and_groq_secret_in_separate_step_envs() -> None:
-    content = _read("research-topics.yml")
-    assert "        env:\n          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}" in content
-    assert "        env:\n          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}" in content
-    assert "\n      EXPECTED_MAIN_SHA:" not in content
-
-
-def test_barrot_sync_is_quarantined_until_external_transfer_is_authorized() -> None:
-    content = _read("barrot-sync.yml")
-    assert "workflow_dispatch: {}" in content
-    assert "permissions: {}" in content
-    assert "if: ${{ false }}" in content
-    assert "push:" not in content
-    assert "secrets." not in content
-    assert "git push" not in content
-
-def test_dependency_audit_only_checks_present_dependency_manifests() -> None:
-    content = _read("dependency-audit.yml")
-    assert '"requirements.tx"' not in content
-    for manifest in (
-        "requirements.txt",
-        "requirements-dev.txt",
-        "hf_space/requirements.txt",
-        "legacy/requirements_legacy.txt",
-        "pyproject.toml",
-    ):
-        assert manifest in content

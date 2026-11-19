@@ -124,7 +124,7 @@ Starting subagent: explore
 5. Read full content of: barrot_agent/mcp_discovery.py (first 100 lines)
 6. Read full content of: apex_lattice/cycle.py
 7. Read full content of: apex_lattice/recommendations.py (first 100 lines)
-8. Verify GitHub Actions workflow inventory and required checks
+8. Read full content of: .gitlab-ci.yml (first 100 lines)
 9. Read full content of: .pre-commit-config.yaml
 10. Read full content of: Makefile
 11. Read full content of: barrot_agent/kimi_integration.py (first 100 lines)

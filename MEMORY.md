@@ -276,22 +276,6 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
   ~/barrot/backup-20261117/test-run-churn-0909.patch.
 - Open fix (not done): point those writers at tmp_path. Own transmute run.
 
-
-## Archived integration-side provider notes (2026-11-15)
-- The prior integration record described the OpenCode free model as the default and LunaRoute as optional/unverified with its MCP server disabled.
-- The prior GitHub MCP setup required `GITHUB_MCP_TOKEN` in the OpenCode service environment; authentication and data flow were not verified in that record. OAuth was disabled because the server did not support the required dynamic client registration.
-- These are historical configuration notes, not proof of current provider authentication.
-
-## XRP mission priority (2026-11-17)
-- Highest-priority Barrot mission: XRP intelligence and measured prediction-engine mastery.
-- Barrot V3 remains the execution, orchestration, authorization, safety, and verification foundation.
-- Forecasts remain disabled until byte-exact source receipts, point-in-time eligibility, leakage-safe walk-forward evaluation, baseline comparisons, calibration, drift checks, and independent shadow outcomes qualify a candidate.
-- Current canonical status and evidence: `BARROT_XRP_MISSION_HANDOFF_LATEST.md` and `research/xrp_intelligence/`.
-
-
-## Current provider-authentication status — 2026-11-17
-- Current authentication and end-to-end data flow for the nine-platform coordination matrix are not yet verified in this run. Historical OpenCode/GitHub MCP notes above are historical evidence only; they are not proof of current live authentication or current permissions.
-
 ### Book project — grok-100k-business (started 2026-11-17)
 - Location: book/grok-100k-business/. Contract is toc.yaml; build_book.py measures
   320 words/page (code + HTML comments excluded), emits dist/book.md +
@@ -302,6 +286,8 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Drafted: front matter + Part One = 35.4/45 pages (79%). Phase A (Part Two,
   ch7-12) drafted = 40.5/44 pages (92%). Whole book 76.9/89 drafted pages (86%).
   Outlined: ch13-29. Proposed (unbuilt): Part Six + appendices A-F.
+- Polish order is ch-07, ch-08, ... one chapter per commit. Ch 7 = 7.4/8,
+  ch 8 = 7.4/8 after repair; both evidence-audited against docs.x.ai.
 - Phase A completed 2026-11-17; ch-07..ch-12 status=draft in toc.yaml. Test guard:
   12 book tests pass; full suite 1091 passed / 1 skipped. Awaiting GO for Part Three.
 - Grok facts verified 2026-11-17 (docs.x.ai): Grok Bot = cloud computer + multi-bot

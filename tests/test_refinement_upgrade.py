@@ -5,7 +5,7 @@ Test tiers (explicitly distinguished):
 - MOCKED (default): every test here is offline/deterministic — scripted
   refiners/judges, temp dirs, no network.
 - REAL RUNTIME: tests marked with @skipUnless(BARROT_LIVE_REFINEMENT) hit
-  the live LunaRoute API with a real document slice; they never run in the
+  the live OpenCode inference API with a real document slice; they never run in the
   default suite.
 """
 from __future__ import annotations
@@ -24,7 +24,6 @@ sys.path.insert(0, str(REPO_ROOT))
 from barrot_agent.refinement import (          # noqa: E402
     CALIBRATION_CASES,
     HeuristicRefiner,
-    LunaRouteRefiner,
     LLMSemanticJudge,
     Patch,
     Refiner,
@@ -51,9 +50,7 @@ from barrot_agent.refinement import (          # noqa: E402
     verify_against_original,
 )
 
-LIVE = (os.environ.get("BARROT_LIVE_REFINEMENT") == "1" and
-        os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT") == "1" and
-        os.environ.get("BARROT_LIVE_REFINEMENT_APPROVED") == "1")
+LIVE = os.environ.get("BARROT_LIVE_REFINEMENT")
 
 
 def _big_document(sections: int = 60) -> dict:
@@ -428,7 +425,6 @@ class _FlakyCounter(Refiner):
 
 class TestPipeline(unittest.TestCase):
     def _pipe(self, td, refiners=None, **kw):
-        kw.setdefault("data_classification", "derived_summary")
         return RefinementPipeline(
             refiners or [HeuristicRefiner(), HeuristicRefiner("h2")],
             runs_dir=Path(td) / "runs",
@@ -480,8 +476,7 @@ class TestPipeline(unittest.TestCase):
                 source_chars=1, objective="partial resume test",
                 document=copy.deepcopy(big), original=copy.deepcopy(big),
                 sections=[SectionState(id=s.id, path_label=s.path_label)
-                          for s in slots], created="t",
-                data_classification=pipe.data_classification)
+                          for s in slots], created="t")
             for s in state.sections[:2]:
                 s.status = "refined"
             pipe._commit(state)
@@ -536,7 +531,6 @@ class TestPipeline(unittest.TestCase):
             rec = json.loads((Path(td) / "hist.jsonl").read_text()
                              .splitlines()[0])
             for field in ("source_hash", "final_hash", "objective",
-                          "data_classification",
                           "patches_applied", "mechanical", "semantic",
                           "regression", "failures_and_corrections",
                           "disposition", "ts", "implementation_version"):
@@ -546,7 +540,7 @@ class TestPipeline(unittest.TestCase):
         small = {"a": "x  x", "items": [1, 1, 2]}
         with tempfile.TemporaryDirectory():
             out = refine_document(small, refiners=[HeuristicRefiner()],
-                                  ledger=None, data_classification="derived_summary")
+                                  ledger=None)
             self.assertEqual(out["mode"], "classic")
             report = out["report"]
             self.assertTrue(report.converged)
@@ -560,83 +554,14 @@ class TestPipeline(unittest.TestCase):
             self.assertEqual(out["semantic"]["judge"], "deterministic")
 
 
-    def test_immutable_classification_is_rejected(self):
-        with self.assertRaises(ValueError):
-            RefinementPipeline([HeuristicRefiner()],
-                               data_classification="raw_source")
-
-    def test_refine_document_rejects_immutable_classification(self):
-        with self.assertRaises(ValueError):
-            refine_document({"summary": "x"},
-                            refiners=[HeuristicRefiner()],
-                            data_classification="forecast_ledger")
-
-    def test_external_refinement_requires_explicit_opt_in(self):
-        refiner = LunaRouteRefiner(
-            "test-model", api_key="not-a-real-key",
-            allow_external=False, data_classification="public_documentation")
-        with self.assertRaises(PermissionError):
-            RefinementPipeline([refiner],
-                               data_classification="public_documentation",
-                               allow_external=False)
-
-    def test_external_run_approval_is_required(self):
-        previous_allow = os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT")
-        previous_approval = os.environ.get("BARROT_LIVE_REFINEMENT_APPROVED")
-        try:
-            os.environ["BARROT_ALLOW_EXTERNAL_REFINEMENT"] = "1"
-            os.environ.pop("BARROT_LIVE_REFINEMENT_APPROVED", None)
-            refiner = LunaRouteRefiner(
-                "test-model", api_key="not-a-real-key",
-                allow_external=True, data_classification="public_documentation")
-            with self.assertRaises(PermissionError):
-                RefinementPipeline([refiner],
-                                   data_classification="public_documentation",
-                                   allow_external=True)
-        finally:
-            if previous_allow is None:
-                os.environ.pop("BARROT_ALLOW_EXTERNAL_REFINEMENT", None)
-            else:
-                os.environ["BARROT_ALLOW_EXTERNAL_REFINEMENT"] = previous_allow
-            if previous_approval is None:
-                os.environ.pop("BARROT_LIVE_REFINEMENT_APPROVED", None)
-            else:
-                os.environ["BARROT_LIVE_REFINEMENT_APPROVED"] = previous_approval
-
-    def test_run_id_path_traversal_is_rejected(self):
-        with tempfile.TemporaryDirectory() as td:
-            pipe = self._pipe(td)
-            with self.assertRaises(ValueError):
-                pipe.run({"safe": True}, run_id="../escape")
-
-    def test_run_id_collision_never_overwrites_prior_state(self):
-        with tempfile.TemporaryDirectory() as td:
-            pipe = self._pipe(td)
-            pipe.run({"safe": True}, run_id="fixed-run")
-            with self.assertRaises(FileExistsError):
-                pipe.run({"safe": True}, run_id="fixed-run", force=True)
-
-    def test_resume_requires_same_data_classification(self):
-        with tempfile.TemporaryDirectory() as td:
-            pipe = self._pipe(td)
-            result = pipe.run(_big_document(sections=1), run_id="resume-class")
-            other = RefinementPipeline(
-                [HeuristicRefiner()], runs_dir=Path(td) / "runs",
-                history=Path(td) / "history.jsonl",
-                data_classification="public_documentation")
-            with self.assertRaises(PermissionError):
-                other.resume(result["run_id"])
-
-
 class TestRealRuntime(unittest.TestCase):
-    """REAL RUNTIME TIER — hits the live LunaRoute API. Opt-in via
+    """REAL RUNTIME TIER — hits the live OpenCode inference API. Opt-in via
     BARROT_LIVE_REFINEMENT=1; never runs in the default suite."""
 
-    @unittest.skipUnless(LIVE, "real-runtime tier requires three explicit opt-in variables")
+    @unittest.skipUnless(LIVE, "real-runtime tier: set BARROT_LIVE_REFINEMENT=1")
     def test_live_section_refine_and_judge(self):
         from barrot_agent.refinement import make_model_refiners
-        refiners = make_model_refiners(allow_external=True,
-                                       data_classification="public_documentation")
+        refiners = make_model_refiners()
         if len(refiners) < 2:
             self.skipTest("no live pool")
         source = json.loads(

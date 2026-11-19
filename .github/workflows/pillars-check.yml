@@ -2,6 +2,23 @@ name: Pillars Consistency Check
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm_read_only_github_app_probe:
+        description: "Set YES only for this manual, read-only GitHub App installation metadata probe."
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
+      confirm_read_only_databricks_probe:
+        description: "Set YES only for this manual SELECT 1 Databricks warehouse probe."
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
   schedule:
     - cron: "0 13 * * *"
 
@@ -19,13 +36,40 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version: "3.11"
-      - run: pip install requests pyjwt
-      - name: Run read-only pillars checks
+      - run: pip install requests
+      - name: Run public/read-only pillars checks
         run: python scripts/pillars_check.py
+
+      - name: Install PyJWT for the explicitly approved GitHub App probe
+        if: github.event_name == 'workflow_dispatch' && inputs.confirm_read_only_github_app_probe == 'YES'
+        run: pip install pyjwt
+
+      - name: Run explicitly approved GitHub App read-only probe
+        if: github.event_name == 'workflow_dispatch' && inputs.confirm_read_only_github_app_probe == 'YES'
         env:
+          GITHUB_APP_PROBE_ENABLED: "true"
           GITHUB_APP_ID: ${{ secrets.GITHUB_APP_ID }}
           GITHUB_APP_PRIVATE_KEY: ${{ secrets.GITHUB_APP_PRIVATE_KEY }}
           GITHUB_INSTALLATION_ID: ${{ secrets.GITHUB_INSTALLATION_ID }}
+        run: |
+          python - <<'PY'
+          from scripts.pillars_check import check_github
+          ok, detail = check_github()
+          print(f"[{'OK' if ok else 'FAIL'}] github_app: {detail}")
+          raise SystemExit(0 if ok else 1)
+          PY
+
+      - name: Run explicitly approved Databricks read-only probe
+        if: github.event_name == 'workflow_dispatch' && inputs.confirm_read_only_databricks_probe == 'YES'
+        env:
+          DATABRICKS_PROBE_ENABLED: "true"
           DATABRICKS_HOST: dbc-82d64fee-1c2e.cloud.databricks.com
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DATABRICKS_WAREHOUSE_ID: c85b8f4fea8cd527
+        run: |
+          python - <<'PY'
+          from scripts.pillars_check import check_databricks
+          ok, detail = check_databricks()
+          print(f"[{'OK' if ok else 'FAIL'}] databricks: {detail}")
+          raise SystemExit(0 if ok else 1)
+          PY

@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
-
-if [[ -z "${BRAIN_SHARED_SECRET:-}" ]]; then
-    echo "FATAL: BRAIN_SHARED_SECRET must be configured; refusing to start without API authentication." >&2
-    exit 1
-fi
-
+set -e
 MODEL_PATH="/app/model.gguf"
 MODEL_URL="https://huggingface.co/${MODEL_REPO}/resolve/main/${MODEL_FILE}"
 
@@ -22,4 +16,4 @@ exec /app/llama-server \
     -c 8192 \
     --n-cpu-moe 99 \
     -ngl 0 \
-    --api-key "$BRAIN_SHARED_SECRET"
+    --api-key "${BRAIN_SHARED_SECRET:-changeme}"

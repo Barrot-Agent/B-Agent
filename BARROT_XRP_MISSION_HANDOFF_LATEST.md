@@ -4408,3 +4408,76 @@ Ready: 0. Merged: 0. Superseded: 0. No source PRs were closed.
 4. Reconcile the stacked XRP ledger PR chain and the two recent Dependabot changes without creating another PR.
 5. Re-run full repository tests, exact-head CI, dependency/security checks and fail-closed gate on the final integration SHA. Obtain independent review and verify actual main branch protections before any merge.
 6. Keep forecast issuance disabled until the primary-mission readiness certificate, receipt-backed walk-forward cohorts, calibration, drift, shadow and independent Ed25519 attestation all pass.
+
+
+---
+
+## Run 45 — 2026-11-19 13:08 UTC — current-main security and health-check reconciliation
+
+### Repository checkpoint
+
+- Current main: `c8e15c90b1e07980d7b5a01c86c1667166a353f6` (scheduled paid-issue scan snapshot; parent `a5e9606a71975b08cb681eee373a2d6dc1c36b55`).
+- Existing integration PR #1663 head before this run: `66c4c6449a478ec95b8149cd50146154ce07d154`; base is the exact current main SHA.
+- Complete recursive trees: main 1,739 entries, integration 3,001 entries, neither truncated. All 1,739 main paths are present in integration; 1,262 integration-only paths.
+- GitHub reports 423 commits ahead, zero behind. No new branch or PR.
+- PR #1663 remains draft/open, mergeable, 1,457 changed files, 423 commits, zero independent reviews and zero inline review threads. No merge occurred.
+- Repository permissions for the connected GitHub identity: admin/maintain/push are true. Main reports protected=true, but the branch-protection details endpoint returns HTTP 403. The readable repository ruleset "Fall Back" is disabled. The branch API exposes empty required status-check contexts/checks and non-admin enforcement; do not infer unreturned review, deletion, force-push or administrator settings.
+
+### Exact-head CI on the pre-change integration head
+
+For `66c4c6449a478ec95b8149cd50146154ce07d154`:
+
+- PR CI [44524864561](https://github.com/Barrot-Agent/B-Agent/actions/runs/44524864561): success. Full repository suite: **4,302 passed, 1 skipped, 11 warnings, 19 subtests**, 198.44 seconds; inclusive coverage **68.10%** against 62% floor; legacy-core coverage **77%** against 70% floor. Core suite, Pages validation, wheel build, installed-wheel smoke and packaged primary mission checks passed.
+- Dependency audit [44524867803](https://github.com/Barrot-Agent/B-Agent/actions/runs/44524867803): success; six manifests audited.
+- Money audit [44524865008](https://github.com/Barrot-Agent/B-Agent/actions/runs/44524865008): success; all 14 checks passed.
+- Fail-closed gate [44524864609](https://github.com/Barrot-Agent/B-Agent/actions/runs/44524864609): correctly failed closed. Reasons: PR remains draft, no independent approving review, branch-protection endpoint inaccessible. It performed no merge or mutation.
+- Main scheduled Cross Analysis [44527768696](https://github.com/Barrot-Agent/B-Agent/actions/runs/44527768696): success.
+- Main Pages build [44524140421](https://github.com/Barrot-Agent/B-Agent/actions/runs/44524140421): success.
+
+### New mainline scheduled-health failure — exact evidence
+
+Main `Pillars Consistency Check` [44529399478](https://github.com/Barrot-Agent/B-Agent/actions/runs/44529399478), on main SHA `c8e15c9`, failed at 13:01 UTC:
+
+- GitHub App probe: missing `GITHUB_APP_ID`, `GITHUB_APP_PRIVATE_KEY`, and `GITHUB_INSTALLATION_ID`; no authenticated GitHub App connection was established.
+- Databricks SQL probe: HTTP 403. The workflow supplied a configured token, but the `SELECT 1` request was forbidden. Token scope/warehouse authorization is not established; do not rotate, broaden or expose the token.
+- Hugging Face Space runtime: `stage=BUILD_ERROR`. No Space restart or deployment was attempted.
+- Public GitHub source marker check passed.
+- Public source fiction scan passed.
+
+The main workflow passed platform credentials into its scheduled check despite no GitHub App secrets and a Databricks 403. The scheduled workflow therefore did not provide a verified nine-platform connection. The 403 and BUILD_ERROR remain unresolved external-service states.
+
+### Integration hardening executed on the existing PR
+
+The integration copy of `.github/workflows/pillars-check.yml` and `scripts/pillars_check.py` previously injected GitHub App and Databricks credentials into the scheduled job. This run changes the design to least-privilege, explicit opt-in:
+
+- Scheduled/default execution performs only public/read-only checks. It receives no GitHub App private key, installation ID, Databricks token, host or warehouse ID.
+- GitHub App installation metadata probing is separated into a manual-only step requiring `confirm_read_only_github_app_probe=YES` (default NO).
+- Databricks probing is separated into a manual-only step requiring `confirm_read_only_databricks_probe=YES` (default NO). Its only SQL statement remains `SELECT 1`; HTTP 403 is surfaced as failure, not treated as success.
+- The Python check runner now reports unrequested probes as `[SKIP]`, distinct from success and failure.
+- Regression tests cover credential-free scheduled behavior, explicit manual opt-in, the read-only SQL statement, and the 403 failure path.
+- No manual workflow dispatch was performed. No platform token was read, rotated, broadened or used by this run.
+
+### Integration architecture and prediction readiness
+
+- The integration mission manifest sets XRP intelligence/prediction-engine mastery to priority 1 and preserves Barrot V3 execution, orchestration, safety and verification.
+- The integration orchestrator defaults model downloads, Databricks operations, GitHub commits and CI/CD dispatch to false and uses an `always_deny` approval gate by default. Main still has the legacy true defaults; they remain a merge blocker until the integrated safety change is accepted.
+- The integration includes point-in-time XRP features, public ingestion, source receipts, event/scenario records, chronological walk-forward baselines, calibration, drift and forecast ledger. The scheduled ingestion workflow is not present on main; production ingestion is not active.
+- Raw-source WORM/timestamp anchoring, source failure resolution, synchronized multi-venue order-book coverage, complete exchange-flow attribution, independent nine-platform authentication, shadow sample sufficiency and out-of-sample predictive lift remain unverified.
+- No directional forecast was issued.
+
+### Open PR disposition
+
+Fourteen PRs remain open. #1663 is the sole consolidated V3/XRP integration and remains blocked. #1668 and #1541 remain blocked by worker-path/stacked-branch conflicts. #1665 remains a duplicate of the Pylint 4.1.4 dependency already in #1663; keep it open until verified on main. #1664, #1666, #1670 and the older XRP ledger chain (#1265, #1353, #1436, #1437, #1440, #1450, #1460) remain unique/unreviewed or blocked by stacked ancestry; preserve their distinct evidence. No PR was closed.
+
+### Run 45 execution state
+
+- **DESIGNED:** manual-only platform credential probes with explicit per-run opt-in; scheduled checks remain public and read-only.
+- **EXECUTED:** complete main/integration tree comparison, current open-PR and ancestry inspection, exact-head CI/job inspection, main scheduled-health log inspection, and integration-branch code/test/workflow changes.
+- **VERIFIED before this code update:** exact-head 4,302-test suite, dependency audit, money audit, mainline failure details, current main SHA, tree completeness, and PR review state.
+- **PENDING after this code update:** new integration commit SHA, fresh full repository suite, fresh dependency audit, fresh money audit, and fail-closed gate on the changed head.
+
+**Decision: NO MERGE.** Draft status, no independent review, inaccessible branch-protection detail, empty required status contexts, incomplete transitive workflow audit, mainline unsafe orchestrator defaults, and the absent mainline XRP ingestion workflow remain blockers.
+
+### Next concrete action
+
+Verify the new integration commit and exact-head CI. Keep scheduled probes credential-free. Resolve the Databricks 403 only through authorized administrator-side scope/warehouse diagnosis; do not alter secrets or permissions in this run. Do not restart the Hugging Face Space. Continue the complete workflow/action/script/dependency audit and package-specific V3 coverage work before any merge.

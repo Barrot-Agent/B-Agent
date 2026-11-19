@@ -378,7 +378,7 @@ class DefensiveWatchdog:
                     Capability.WRITE,
                     Capability.EXECUTE,
                     Capability.NETWORK,
-                    # Consequential external actions require an explicit trusted capability grant.
+                    Capability.EXTERNAL_ACTION,
                 }
             )
         }

@@ -1,170 +1,24 @@
 name: Barrot Gated Merge (fail-closed)
 
 on:
-  push:
-    branches: ["integration/**"]
   pull_request:
-    branches: ["main"]
-    types: [opened, synchronize, reopened, ready_for_review, edited, review_requested]
+    types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
 permissions:
   contents: read
   pull-requests: read
-  checks: read
-  statuses: read
 
 jobs:
   audit-only:
     name: Merge disabled pending gate verification
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    env:
-      GH_TOKEN: ${{ github.token }}
-      REPOSITORY: ${{ github.repository }}
-      EVENT_PR_NUMBER: ${{ github.event.pull_request.number || '' }}
-      EXPECTED_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-      REF_NAME: ${{ github.ref_name }}
     steps:
-      - name: Verify exact-head merge readiness without performing a merge
+      - name: Fail closed
         shell: bash
         run: |
           set -euo pipefail
-          blockers=()
-          add_blocker() { blockers+=("$1"); }
-
-          pr_number="$EVENT_PR_NUMBER"
-          if [[ -z "$pr_number" ]]; then
-            owner="${REPOSITORY%%/*}"
-            pr_list="$(gh api "repos/${REPOSITORY}/pulls?state=open&head=${owner}:${REF_NAME}&per_page=100")"
-            pr_count="$(jq 'length' <<< "$pr_list")"
-            if [[ "$pr_count" == "1" ]]; then
-              pr_number="$(jq -r '.[0].number' <<< "$pr_list")"
-            else
-              add_blocker "expected exactly one open PR for this branch; found $pr_count"
-            fi
-          fi
-
-          if [[ -n "$pr_number" ]]; then
-            if ! pr_json="$(gh api "repos/${REPOSITORY}/pulls/${pr_number}" 2>/dev/null)"; then
-              add_blocker "PR metadata could not be read"
-              pr_json='{}'
-            fi
-
-            actual_head="$(jq -r '.head.sha // empty' <<< "$pr_json")"
-            author="$(jq -r '.user.login // empty' <<< "$pr_json")"
-            draft="$(jq -r '.draft // true' <<< "$pr_json")"
-            state="$(jq -r '.state // empty' <<< "$pr_json")"
-            base_ref="$(jq -r '.base.ref // empty' <<< "$pr_json")"
-            base_sha="$(jq -r '.base.sha // empty' <<< "$pr_json")"
-            mergeable="$(jq -r '.mergeable // false' <<< "$pr_json")"
-            mergeable_state="$(jq -r '.mergeable_state // empty' <<< "$pr_json")"
-
-            [[ "$actual_head" == "$EXPECTED_HEAD_SHA" ]] || add_blocker "PR head is not the exact event SHA"
-            [[ "$draft" == "false" ]] || add_blocker "PR is still draft"
-            [[ "$state" == "open" ]] || add_blocker "PR is not open"
-            [[ "$base_ref" == "main" ]] || add_blocker "PR base is not main"
-            [[ "$mergeable" == "true" ]] || add_blocker "PR has merge conflicts or GitHub has not confirmed mergeability"
-
-            if current_main="$(gh api "repos/${REPOSITORY}/git/ref/heads/main" --jq '.object.sha' 2>/dev/null)"; then
-              [[ "$base_sha" == "$current_main" ]] || add_blocker "PR base is not the current main SHA"
-            else
-              add_blocker "current main SHA could not be verified"
-            fi
-
-            if reviews="$(gh api "repos/${REPOSITORY}/pulls/${pr_number}/reviews?per_page=100" 2>/dev/null)"; then
-              approvals="$(jq --arg author "$author" '[.[] | select(.user.login != $author)] | sort_by(.submitted_at // "") | group_by(.user.login) | map(last) | map(select(.state == "APPROVED")) | length' <<< "$reviews")"
-              [[ "$approvals" -ge 1 ]] || add_blocker "no independent approving review exists"
-            else
-              add_blocker "PR reviews could not be verified"
-            fi
-
-            required_contexts=""
-            if protection="$(gh api "repos/${REPOSITORY}/branches/main/protection" 2>/dev/null)"; then
-              strict="$(jq -r '.required_status_checks.strict // false' <<< "$protection")"
-              [[ "$strict" == "true" ]] || add_blocker "branch protection does not require strict up-to-date checks"
-              required_contexts="$(jq -r '[.required_status_checks.contexts[]?, .required_status_checks.checks[]?.context] | unique | .[]' <<< "$protection")"
-              [[ -n "$required_contexts" ]] || add_blocker "branch protection exposes no required status checks"
-              admin_enforced="$(jq -r '.enforce_admins.enabled // false' <<< "$protection")"
-              [[ "$admin_enforced" == "true" ]] || add_blocker "administrator enforcement is not enabled or cannot be verified"
-              force_pushes="$(jq -r '.allow_force_pushes.enabled // false' <<< "$protection")"
-              [[ "$force_pushes" == "false" ]] || add_blocker "branch protection permits force pushes"
-              deletions="$(jq -r '.allow_deletions.enabled // false' <<< "$protection")"
-              [[ "$deletions" == "false" ]] || add_blocker "branch protection permits branch deletion"
-              required_approvals="$(jq -r '.required_pull_request_reviews.required_approving_review_count // 0' <<< "$protection")"
-              [[ "$required_approvals" -ge 1 ]] || add_blocker "branch protection does not require an independent approval"
-              [[ "$approvals" -ge "$required_approvals" ]] || add_blocker "independent approvals do not satisfy branch-protection count"
-
-            else
-              add_blocker "branch protection could not be verified; refusing to infer approval or bypass settings"
-            fi
-            required_checks=("Tests" "Full repository test suite" "GitHub Pages build (validation only)" "pip-audit" "audit")
-            while IFS= read -r context; do
-              [[ -n "$context" ]] && required_checks+=("$context")
-            done <<< "$required_contexts"
-
-            if check_runs="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/check-runs?per_page=100" 2>/dev/null)" &&
-               statuses="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/status" 2>/dev/null)"; then
-              # The gate starts alongside CI. Wait for exact-head checks to materialize
-              # and complete rather than treating concurrent workflow startup as failure.
-              deadline=$((SECONDS + 600))
-              while true; do
-                pending=0
-                failed=0
-                for required in "${required_checks[@]}"; do
-                  matching="$(jq --arg name "$required" --arg sha "$actual_head" '[.check_runs[] | select(.name == $name and .head_sha == $sha)] | sort_by(.started_at // .completed_at // "")' <<< "$check_runs")"
-                  count="$(jq 'length' <<< "$matching")"
-                  if [[ "$count" -gt 0 ]]; then
-                    latest="$(jq 'last // {}' <<< "$matching")"
-                    run_status="$(jq -r '.status // empty' <<< "$latest")"
-                    run_conclusion="$(jq -r '.conclusion // empty' <<< "$latest")"
-                    if [[ "$run_status" != "completed" ]]; then
-                      pending=1
-                    elif [[ "$run_conclusion" != "success" ]]; then
-                      add_blocker "required check '$required' completed with conclusion '${run_conclusion:-missing}' on the exact head"
-                      failed=1
-                    fi
-                  else
-                    legacy_status="$(jq --arg name "$required" --arg sha "$actual_head" '[.statuses[] | select(.context == $name and .sha == $sha)] | sort_by(.created_at // "") | last // {}' <<< "$statuses")"
-                    state="$(jq -r '.state // empty' <<< "$legacy_status")"
-                    if [[ "$state" == "success" ]]; then
-                      :
-                    elif [[ -z "$state" || "$state" == "pending" ]]; then
-                      pending=1
-                    else
-                      add_blocker "required status '$required' completed with state '${state:-missing}' on the exact head"
-                      failed=1
-                    fi
-                  fi
-                done
-
-                [[ "$failed" == "0" ]] || break
-                [[ "$pending" == "0" ]] && break
-                if (( SECONDS >= deadline )); then
-                  add_blocker "timed out waiting for mandatory exact-head CI checks to complete"
-                  break
-                fi
-                sleep 15
-                if ! check_runs="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/check-runs?per_page=100" 2>/dev/null)" ||
-                   ! statuses="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/status" 2>/dev/null)"; then
-                  add_blocker "exact-head check inventory became unavailable while waiting"
-                  break
-                fi
-              done
-            else
-              add_blocker "exact-head checks and commit statuses could not be read"
-            fi
-
-          else
-            add_blocker "PR number could not be resolved"
-          fi
-
-          if [[ "${#blockers[@]}" -gt 0 ]]; then
-            echo "::error::READINESS=BLOCKED"
-            printf ' - %s\n' "${blockers[@]}"
-            echo "This workflow is read-only. It does not approve, label, bypass, or merge."
-            exit 1
-          fi
-
-          echo "READINESS=READY_FOR_HUMAN_MERGE_REVIEW"
-          echo "All verified checks passed. This workflow is read-only and does not merge."
+          echo "Automatic merge is intentionally disabled."
+          echo "This workflow does not approve, label, or merge pull requests."
+          echo "A future merge gate must require successful mandatory checks, current base, non-draft state, mergeability, and explicit authorized approval."
+          echo "No repository content was changed by this workflow."

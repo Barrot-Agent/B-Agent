@@ -1,18 +1,17 @@
-name: Table Freshness Check (quarantined pending private-data access review)
-
+name: Table Freshness Check
 on:
-  workflow_dispatch: {}
-
-permissions: {}
-
+  workflow_dispatch:
 jobs:
-  disabled:
-    if: ${{ false }}
+  check:
     runs-on: ubuntu-latest
     steps:
-      - name: Explain private-data containment
-        run: |
-          echo "The previous diagnostic queried private brain-memory records and printed sampled private rows into workflow logs."
-          echo "A public repository workflow must not expose private workspace content through job logs."
-          echo "Re-enable only after a scoped read-only identity, aggregate-only output, explicit per-run authorization, exact-main-SHA validation and private artifact handling are reviewed."
-          echo "No Databricks credentials are read, no query is executed, and no private rows are emitted."
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - run: python scripts/check_table_freshness.py
+        env:
+          DATABRICKS_HOST: dbc-82d64fee-1c2e.cloud.databricks.com
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_WAREHOUSE_ID: c85b8f4fea8cd527

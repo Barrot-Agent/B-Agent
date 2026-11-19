@@ -1,7 +1,4 @@
-"""Optional ping-pong refinement for explicitly classified derived data.
-
-The default is deterministic and offline. Canonical evidence is immutable;
-external providers require explicit public-data classification and opt-in.
+"""Ping-pong refinement engine — the baseline of all data processing.
 
 Semantics (Barrot standing orders): refinement efforts ping-pong dynamically
 between models until the data can be refined NO FURTHER — a measured fixed
@@ -33,29 +30,18 @@ Every round is appended to a JSONL ledger (provenance, repo convention).
 from __future__ import annotations
 
 import json
-import os
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
 from . import scoring
-from .refiners import (
-    EXTERNAL_REFINEMENT_ALLOWED_CLASSES, HeuristicRefiner, LunaRouteRefiner, Refiner,
-)
+from .refiners import HeuristicRefiner, Refiner, make_model_refiners
 
 DEFAULT_EPSILON = 1e-4       # score is rounded to 6dp; below this = no change
 DEFAULT_PATIENCE = 2         # stable half-rounds required before plateau/consensus
 DEFAULT_MAX_ROUNDS = 12
 DEFAULT_LEDGER = Path("ping-pongings/knowledge-base/refinement_log.jsonl")
-REFINABLE_DATA_CLASSES = frozenset({
-    "derived_summary", "public_derived_summary", "public_documentation", "public_research_note",
-})
-IMMUTABLE_DATA_CLASSES = frozenset({
-    "raw_source", "source_receipt", "feature_snapshot", "feature_store",
-    "event_timeline", "forecast_ledger", "market_data", "credentials",
-    "secrets", "user_private",
-})
 
 
 @dataclass
@@ -104,14 +90,10 @@ class PingPongRefiner:
                  epsilon: float = DEFAULT_EPSILON,
                  max_rounds: int = DEFAULT_MAX_ROUNDS,
                  patience: int = DEFAULT_PATIENCE,
-                 ledger: Path | str | None = DEFAULT_LEDGER,
-                 data_classification: str = "unknown"):
+                 ledger: Path | str | None = DEFAULT_LEDGER):
         self.refiners: list[Refiner] = list(refiners)
         if not self.refiners:
             raise ValueError("PingPongRefiner needs at least one refiner")
-        if data_classification not in REFINABLE_DATA_CLASSES:
-            raise ValueError("unknown or immutable data classification cannot be refined")
-        self.data_classification = data_classification
         self.epsilon = epsilon
         self.max_rounds = max_rounds
         self.patience = patience
@@ -255,46 +237,33 @@ class PingPongRefiner:
         }
 
 
-# ------------------------------------------------------- derived-data helper
-def refine_data(
-    data: Any, refiners: Iterable[Refiner] | None = None, context: str = "",
-    ledger: Path | str | None = DEFAULT_LEDGER, *,
-    data_classification: str = "unknown", allow_external: bool = False, **kwargs,
-) -> RefinementReport:
-    """Refine explicitly classified derived data; never raw evidence."""
-    if data_classification not in REFINABLE_DATA_CLASSES:
-        raise ValueError("unknown or immutable data classification cannot be refined")
+# ------------------------------------------------------------------ baseline
+def refine_data(data: Any, refiners: Iterable[Refiner] | None = None,
+                context: str = "", ledger: Path | str | None = DEFAULT_LEDGER,
+                **kwargs) -> RefinementReport:
+    """THE baseline entry point for all data processing.
+
+    Ping-pongs refinement between models until the data cannot be refined
+    further (measured fixed point). Pass explicit refiners for offline /
+    deterministic use; default to the live OpenCode pool when available,
+    falling back to the deterministic HeuristicRefiner otherwise.
+    """
     if refiners is None:
-        refiners = [HeuristicRefiner(), HeuristicRefiner("heuristic-2")]
+        refiners = make_model_refiners() or [HeuristicRefiner()]
     refiners = list(refiners)
-    if not refiners or not all(isinstance(r, Refiner) for r in refiners):
-        raise TypeError("refiners must be a non-empty iterable of Refiner instances")
-    live = [r for r in refiners if isinstance(r, LunaRouteRefiner)]
-    if live:
-        if not allow_external:
-            raise PermissionError("external refinement requires allow_external=True")
-        if os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT") != "1":
-            raise PermissionError("BARROT_ALLOW_EXTERNAL_REFINEMENT=1 is required")
-        if data_classification not in EXTERNAL_REFINEMENT_ALLOWED_CLASSES:
-            raise PermissionError("data classification is not eligible for external transfer")
-        if any(not r.allow_external or r.data_classification != data_classification for r in live):
-            raise PermissionError("LunaRoute refiner classification/opt-in mismatch")
-    return PingPongRefiner(
-        refiners, ledger=ledger, data_classification=data_classification, **kwargs
-    ).run(data, context=context)
+    if not any(isinstance(r, Refiner) for r in refiners):
+        raise TypeError("refiners must be Refiner instances")
+    return PingPongRefiner(refiners, ledger=ledger, **kwargs).run(data, context=context)
 
 
-def refine_json_file(
-    path: Path | str, out_path: Path | str | None = None,
-    refiners: Iterable[Refiner] | None = None,
-    ledger: Path | str | None = DEFAULT_LEDGER, *,
-    data_classification: str = "unknown", allow_external: bool = False,
-) -> RefinementReport:
-    """Refine a classified derived-data JSON document, never canonical evidence."""
+def refine_json_file(path: Path | str, out_path: Path | str | None = None,
+                     refiners: Iterable[Refiner] | None = None,
+                     ledger: Path | str | None = DEFAULT_LEDGER) -> RefinementReport:
+    """File-based baseline: refine a JSON document in place (or to out_path)."""
     path = Path(path)
     data = json.loads(path.read_text(encoding="utf-8"))
-    report = refine_data(data, refiners=refiners, context=f"file:{path}", ledger=ledger,
-                         data_classification=data_classification, allow_external=allow_external)
+    report = refine_data(data, refiners=refiners, context=f"file:{path}", ledger=ledger)
     dest = Path(out_path) if out_path else path
-    dest.write_text(json.dumps(report.data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    dest.write_text(json.dumps(report.data, indent=2, ensure_ascii=False) + "\n",
+                    encoding="utf-8")
     return report

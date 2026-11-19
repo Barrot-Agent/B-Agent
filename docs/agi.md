@@ -1512,7 +1512,7 @@ print(f"Metrics: {status['metrics']}")
 ### Data Sources
 - **Academic Research**: Papers, journals, conferences
 - **Competition Solutions**: Kaggle, ML challenges
-- **Code Repositories**: GitHub and other supported public implementations
+- **Code Repositories**: GitHub, GitLab, implementations
 - **Expert Knowledge**: Blogs, tutorials, documentation
 - **Benchmark Datasets**: MMLU, HellaSwag, HumanEval, etc.
 

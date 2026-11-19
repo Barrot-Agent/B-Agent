@@ -4,11 +4,10 @@ name: Paid issue hunter
 #
 # Read-only by governance: this repository forbids a scheduled workflow from
 # holding a write permission or pushing commits (test_external_action_gates).
-# It writes no repository files. It produces a workflow artifact only.
-# paid-issue-publish.yml is intentionally disabled pending explicit authorization
-# and independently verified branch protection.
+# So the hunt writes nothing back. It produces an artifact, and
+# paid-issue-publish.yml commits that artifact on workflow_run.
 #
-# The schedule performs automatic read-only collection; workflow_dispatch is also read-only.
+# Disabling the schedule below is the only way to stop it.
 
 on:
   schedule:
@@ -27,12 +26,11 @@ jobs:
   hunt:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           persist-credentials: false
 
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
@@ -54,11 +52,11 @@ jobs:
           PY
 
       - name: Upload the evidence
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        uses: actions/upload-artifact@v4
         with:
           name: paid-issues
           path: |
             PAID-ISSUES.md
             data/money/paid_issues.json
           if-no-files-found: error
-          retention-days: 90
+          retention-days: 7

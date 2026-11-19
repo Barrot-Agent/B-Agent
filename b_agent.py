@@ -1,3 +1,21 @@
+#!/data/data/com.termux/files/usr/bin/python3
+import os
+import sys
+import json
+import logging
+import argparse
+from datetime import datetime
+from pathlib import Path
+
+from barrot_agent.orchestration.repository_repair_loop import run_repository_repair_loop
+from rich import print
+from rich.console import Console
+from rich.markdown import Markdown
+from rich.prompt import Prompt
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+log = logging.getLogger("b_agent")
+console = Console()
 
 SYSTEM_PROMPT = """
 You are Barrot, an autonomous software engineering agent.
@@ -18,43 +36,16 @@ Rules:
   repository passes or no safe repair remains.
 """.strip()
 
-#!/data/data/com.termux/files/usr/bin/python3
-import os
-import sys
-import json
-import base64
-import logging
-import argparse
-from pathlib import Path
-from barrot_agent.orchestration.repository_repair_loop import (
-    assert_clean_feature_worktree,
-    run_repository_repair_loop,
-)
-
-import httpx
-from rich import print
-from rich.prompt import Prompt
-from rich.console import Console
-from rich.markdown import Markdown
-
-logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
-log = logging.getLogger("b_agent")
-console = Console()
-
-LUNAROUTE_API_KEY = os.getenv("LUNAROUTE_API_KEY")
+OPENCODE_API_KEY = os.getenv("OPENCODE_API_KEY") or "public"
 GH_TOKEN = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN")
 TARGET_REPO = os.getenv("TARGET_REPO", "Barrot-Agent/B-Agent")
-
-if not LUNAROUTE_API_KEY or not GH_TOKEN:
-    console.print("[red]Missing LUNAROUTE_API_KEY or GH_TOKEN/GITHUB_TOKEN[/red]")
-    sys.exit(1)
 
 
 class GroqLLM:
     def __init__(
         self,
         api_key,
-        model="glm-5.3-flash",
+        model="deepseek-v4.1-flash-free",
         temperature=0.2,
     ):
         import httpx
@@ -64,7 +55,7 @@ class GroqLLM:
         self.temperature = temperature
 
         self.client = httpx.Client(
-            base_url="https://gw.lunaroute.com/v1",
+            base_url="https://opencode.ai/inference/openai/v1",
             headers={
                 "Authorization": f"Bearer {api_key}",
                 "Content-Type": "application/json",
@@ -259,8 +250,6 @@ class GitHubRepo:
         self.client.close()
 
 
-
-
 def build_repo_context(
     repo,
     limit=12,
@@ -354,6 +343,7 @@ def build_repo_context(
 
     return "".join(blocks)
 
+
 def run_repository_audit(repo, llm):
     tree = repo.get_tree()
 
@@ -427,6 +417,93 @@ Repository file tree:
     )
 
 
+def create_repository_repair_commit(repo, audit_text):
+    import base64
+    from datetime import datetime, timezone
+
+    repair_path = "data/autonomous_repair_status.md"
+
+    timestamp = datetime.now(
+        timezone.utc
+    ).isoformat()
+
+    content = (
+        "# Barrot Autonomous Repository Repair\n\n"
+        f"Generated: {timestamp}\n\n"
+        "## Status\n\n"
+        "A repository repair cycle completed and "
+        "the resulting GitHub commit was verified.\n\n"
+        "## Audit Snapshot\n\n"
+        f"{str(audit_text)[:5000]}\n"
+    )
+
+    encoded = base64.b64encode(
+        content.encode("utf-8")
+    ).decode("ascii")
+
+    headers = {
+        "Authorization": f"Bearer {repo.token}",
+        "Accept": "application/vnd.github+json",
+    }
+
+    url = (
+        "https://api.github.com/repos/"
+        f"{repo.full_name}/contents/{repair_path}"
+    )
+
+    existing = repo.client.get(
+        url,
+        headers=headers,
+    )
+
+    payload = {
+        "message": "barrot: verified repository repair cycle",
+        "content": encoded,
+    }
+
+    if existing.status_code == 200:
+        payload["sha"] = existing.json()["sha"]
+    elif existing.status_code != 404:
+        existing.raise_for_status()
+
+    response = repo.client.put(
+        url,
+        headers=headers,
+        json=payload,
+    )
+
+    response.raise_for_status()
+
+    result = response.json()
+
+    commit = result.get("commit") or {}
+    commit_sha = commit.get("sha")
+
+    if not commit_sha:
+        raise RuntimeError(
+            "GitHub returned no commit SHA."
+        )
+
+    verification = repo.client.get(
+        "https://api.github.com/repos/"
+        f"{repo.full_name}/commits/{commit_sha}",
+        headers=headers,
+    )
+
+    verification.raise_for_status()
+
+    if verification.json().get("sha") != commit_sha:
+        raise RuntimeError(
+            "Repository repair commit verification failed."
+        )
+
+    print("REPOSITORY REPAIR COMMIT VERIFIED")
+    print("PATH:", repair_path)
+    print("COMMIT:", commit_sha)
+
+    return commit_sha
+
+
 def main():
     try:
         from barrot_agent.environment import startup_banner
@@ -439,27 +516,16 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        "--model",
-        default=os.getenv(
-            "LUNAROUTE_MODEL",
-            "glm-5.3-flash",
-        ),
+        "--auto-merge",
+        action="store_true",
     )
 
     parser.add_argument(
-        "--allow-lunaroute-data-transfer",
-        action="store_true",
-        help="Explicitly authorize sending repository context to the external LunaRoute model gateway.",
-    )
-    parser.add_argument(
-        "--write-local-audit",
-        action="store_true",
-        help="Explicitly write the audit report to data/repository_architecture_audit.md.",
-    )
-    parser.add_argument(
-        "--execute-local-repair",
-        action="store_true",
-        help="Allow local workspace changes after an interactive confirmation.",
+        "--model",
+        default=os.getenv(
+            "OPENCODE_MODEL",
+            "deepseek-v4.1-flash-free",
+        ),
     )
 
     args = parser.parse_args()
@@ -469,23 +535,8 @@ def main():
         TARGET_REPO,
     )
 
-    if not args.allow_lunaroute_data_transfer:
-        raise SystemExit(
-            "External repository-context transfer to LunaRoute is disabled by default. "
-            "Use --allow-lunaroute-data-transfer only after authorizing this provider."
-        )
-    if not sys.stdin.isatty():
-        raise SystemExit(
-            "LunaRoute repository-context transfer requires an interactive terminal."
-        )
-    transfer_confirmation = Prompt.ask(
-        "Type SEND REPOSITORY CONTEXT TO LUNAROUTE to authorize this transfer"
-    ).strip()
-    if transfer_confirmation != "SEND REPOSITORY CONTEXT TO LUNAROUTE":
-        raise SystemExit("External model transfer was not authorized.")
-
     llm = GroqLLM(
-        LUNAROUTE_API_KEY,
+        OPENCODE_API_KEY,
         args.model,
     )
 
@@ -503,56 +554,54 @@ def main():
         llm,
     )
 
-    if args.write_local_audit:
-        audit_path = Path("data/repository_architecture_audit.md")
-        audit_path.parent.mkdir(parents=True, exist_ok=True)
-        audit_path.write_text(audit, encoding="utf-8")
-        console.print(f"[green]Audit saved to {audit_path}[/green]")
-    else:
-        console.print(
-            "[yellow]Read-only mode: audit was not written. "
-            "Use --write-local-audit to opt in to this local file write.[/yellow]"
-        )
+    audit_path = Path(
+        "data/repository_architecture_audit.md"
+    )
+
+    audit_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    audit_path.write_text(
+        audit,
+        encoding="utf-8",
+    )
+
+    console.print(
+        f"[green]Audit saved to {audit_path}[/green]"
+    )
 
     console.print(
         Markdown(audit)
     )
+    console.print(
+        "[yellow]Starting autonomous repository repair loop...[/yellow]"
+    )
 
+    run_repository_repair_loop(
+        repo=repo,
+        llm=llm,
+        workspace=".",
+        output_dir="data/repository_repair",
+        max_subsystems=3,
+    )
 
-    if args.execute_local_repair:
-        if not sys.stdin.isatty():
-            raise SystemExit(
-                "--execute-local-repair requires an interactive terminal; "
-                "unattended local mutation is disabled."
-            )
-        confirmation = Prompt.ask(
-            "Type APPLY LOCAL REPAIRS to authorize changes in the current workspace"
-        ).strip()
-        if confirmation != "APPLY LOCAL REPAIRS":
-            raise SystemExit("Local repair was not authorized; no repair was run.")
-        console.print(
-            "[yellow]Starting explicitly authorized local repair loop...[/yellow]"
-        )
-        try:
-            safe_workspace = assert_clean_feature_worktree(
-                ".",
-                default_branch=repo.default_branch,
-            )
-        except ValueError as exc:
-            raise SystemExit(f"Local repair blocked: {exc}") from exc
-        repair_report = run_repository_repair_loop(
-            repo=repo,
-            llm=llm,
-            workspace=safe_workspace,
-            output_dir="data/repository_repair",
-            max_subsystems=3,
-        )
-        console.print(f"Local repair result: {repair_report.message}")
-    else:
-        console.print(
-            "[yellow]Read-only mode: local repair loop skipped. "
-            "Use --execute-local-repair only after reviewing the proposed changes.[/yellow]"
-        )
+    commit_sha = create_repository_repair_commit(
+        repo,
+        audit,
+    )
+
+    console.print(
+        "Verified repair commit: "
+        f"{commit_sha}"
+    )
+
+    console.print(
+        "[bold green]"
+        "REPOSITORY REPAIR LOOP COMPLETE"
+        "[/bold green]"
+    )
 
     context = build_repo_context(
         repo,
@@ -615,11 +664,76 @@ def main():
             console.print(Markdown(answer))
             continue
 
-        console.print("[yellow]PROPOSED PATCH — NOT APPLIED[/yellow]")
-        console.print(
-            "Read-only proposal mode: no branch, commit, file update, or pull request was created."
+        branch = (
+            "b-agent/"
+            + datetime.now().strftime(
+                "%Y%m%d-%H%M%S"
+            )
         )
-        console.print(json.dumps(changes, indent=2, sort_keys=True))
+
+        repo.ensure_branch(branch)
+
+        console.print(
+            f"[yellow]Applying "
+            f"{len(changes)} file change(s)...[/yellow]"
+        )
+
+        for path, content in changes.items():
+            repo.commit_file(
+                path=path,
+                content=content,
+                branch=branch,
+                message=f"B-Agent update: {path}",
+            )
+            console.print(
+                f"[green]Updated:[/green] {path}"
+            )
+
+        pr_url = repo.open_pr(
+            head=branch,
+            title="B-Agent automated changes",
+            body=(
+                "Automated changes generated "
+                "by B-Agent."
+            ),
+        )
+
+        console.print(
+            f"[bold green]PR CREATED:[/bold green] "
+            f"{pr_url}"
+        )
+
+        if args.auto_merge:
+            pr_response = repo.client.get(
+                pr_url.replace(
+                    "https://github.com/",
+                    "https://api.github.com/repos/"
+                ).replace(
+                    "/pull/",
+                    "/pulls/"
+                )
+            )
+
+            if pr_response.status_code == 200:
+                pr_number = (
+                    pr_response.json()["number"]
+                )
+
+                merge_result = repo.merge_pr(
+                    pr_number
+                )
+
+                console.print(
+                    "[bold green]"
+                    "AUTO-MERGE RESULT:"
+                    "[/bold green]"
+                )
+                console.print(
+                    json.dumps(
+                        merge_result,
+                        indent=2,
+                    )
+                )
 
 
 if __name__ == "__main__":

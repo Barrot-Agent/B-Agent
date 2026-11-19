@@ -1,12 +1,5 @@
 {
-  "schema_version": 3,
-  "status": "NOT_EVALUATED",
-  "forecast_eligible": false,
-  "metric": "fixed_horizon_out_of_sample_predictive_accuracy",
-  "accuracy_pct": null,
-  "checked_count": null,
-  "correct_count": null,
-  "reason_code": "NO_QUALIFIED_XRP_MODEL_OR_INDEPENDENT_SHADOW_COHORT",
-  "explanation": "No validated fixed-horizon out-of-sample XRP accuracy is available. The legacy variable-horizon percentage is preserved separately under web/legacy/ and must not be used as predictive-performance evidence. The current dataset has zero model-eligible curated events, no candidate has passed leakage-safe superiority tests against all four baselines, and no independent shadow cohort has qualified.",
-  "legacy_reason_code": "LEGACY_VARIABLE_HORIZON_SCORER_INVALID"
+  "checked_count": 1697,
+  "correct_count": 772,
+  "accuracy_pct": 45.5
 }

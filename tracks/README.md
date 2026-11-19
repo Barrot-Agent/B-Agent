@@ -20,7 +20,7 @@ Each track ships as:
 
 Rebuild anytime: `python3 scripts/make_beats.py` · verify: `--check`.
 
-Cover: `cover.png` (art via LunaRoute image gen, type set with PIL).
+Cover: `cover.png` (art via image gen, type set with PIL).
 
 | # | Track | BPM | Key | Vibe | DNA source |
 |---|-------|-----|-----|------|------------|

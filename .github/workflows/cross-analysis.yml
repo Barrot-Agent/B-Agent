@@ -1,7 +1,12 @@
 name: Cross Analysis
 
 on:
-  # Hourly fallback analyzes the checked-in snapshot; scripts label stale inputs explicitly.
+  # Fire immediately after the Knowledge Signal Cycle produces fresh log.jsonl data
+  workflow_run:
+    workflows: ["Knowledge Signal Cycle"]
+    types: [completed]
+    branches: [main]
+  # Fallback cron kept as safety net
   schedule:
     - cron: '50 * * * *'
   workflow_dispatch:
@@ -11,17 +16,18 @@ permissions:
 
 jobs:
   analyze:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 1
           persist-credentials: false
 
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
 
@@ -35,7 +41,7 @@ jobs:
         run: python3 scripts/entity_sentiment_profile.py
 
       - name: Upload read-only analysis outputs
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        uses: actions/upload-artifact@v7
         with:
           name: cross-analysis-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
@@ -53,7 +59,6 @@ jobs:
           {
             echo "## Cross Analysis"
             echo
-            echo "This scheduled/manual fallback analyzes the checked-in snapshot; source freshness metadata must be inspected."
-            echo "Outputs are attached as a read-only workflow artifact. No repository files are committed or pushed."
-            echo "No external provider is called by this workflow."
+            echo "Read-only analysis completed. Outputs are attached as a workflow artifact."
+            echo "No repository files were committed or pushed."
           } >> "$GITHUB_STEP_SUMMARY"

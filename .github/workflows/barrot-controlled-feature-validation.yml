@@ -71,14 +71,14 @@ jobs:
 
       - name: Checkout the validated commit
         id: checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        uses: actions/checkout@v7
         with:
           ref: ${{ steps.validate.outputs.validated_sha }}
           persist-credentials: false
 
       - name: Set up Python
         id: setup_python
-        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        uses: actions/setup-python@v7
         with:
           python-version: "3.11"
           cache: pip
@@ -132,7 +132,7 @@ jobs:
 
       - name: Upload validation evidence
         if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        uses: actions/upload-artifact@v7
         with:
           name: barrot-controlled-validation-${{ github.run_id }}
           path: validation-evidence/evidence.txt

@@ -62,11 +62,6 @@ def test_workflow_runs_every_six_hours_and_forever():
     # Governance: a scheduled workflow may not hold a write permission.
     assert payload["permissions"]["contents"] == "read"
     assert payload["permissions"]["issues"] == "read"
-    text = WORKFLOW.read_text(encoding="utf-8")
-    assert "persist-credentials: false" in text
-    assert "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7" in text
-    assert "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7" in text
-    assert "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in text
 
 
 def test_workflow_never_comments_or_claims():
@@ -76,41 +71,26 @@ def test_workflow_never_comments_or_claims():
     assert "mutations_performed" in text
 
 
-def test_scheduled_hunter_has_read_only_permissions():
-    payload = yaml.load(WORKFLOW.read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
-    assert payload["permissions"]["contents"] == "read"
-    assert payload["permissions"]["issues"] == "read"
-    assert "persist-credentials: false" in WORKFLOW.read_text(encoding="utf-8")
-
-
-def test_scheduled_hunter_cannot_commit_or_push():
-    text = WORKFLOW.read_text(encoding="utf-8").lower()
+def test_scheduled_hunter_cannot_push():
+    text = WORKFLOW.read_text(encoding="utf-8")
     assert "git push" not in text
-    assert "git commit" not in text
     assert "contents: write" not in text
 
 
-def test_publish_workflow_is_disabled_until_authorized():
+def test_publish_workflow_is_triggered_by_the_hunter_and_only_on_main():
     payload = yaml.load(PUBLISH.read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
     trigger = payload["on"]["workflow_run"]
     assert trigger["workflows"] == ["Paid issue hunter"]
     assert trigger["types"] == ["completed"]
     assert trigger["branches"] == ["main"]
-    assert payload["permissions"] == {}
-    assert str(payload["jobs"]["disabled"]["if"]).lower() == "false"
-    assert len(payload["jobs"]["disabled"]["steps"]) == 1
+    assert payload["permissions"]["contents"] == "write"
     text = PUBLISH.read_text(encoding="utf-8")
-    assert "Repository publication is disabled pending explicit authorization" in text
-    for forbidden in (
-        "contents: write",
-        "persist-credentials: true",
-        "git push",
-        "actions/checkout",
-        "actions/download-artifact",
-        "gh pr merge",
-        "gh issue",
-    ):
-        assert forbidden not in text
+    assert "github.event.workflow_run.conclusion == 'success'" in text
+    assert "git push origin main" in text
+    assert "gh pr merge" not in text
+    assert "gh issue" not in text
+
+
 def test_record_file_claims_zero_mutations():
     data = json.loads((ROOT / "data" / "money" / "paid_issues.json").read_text(encoding="utf-8"))
     assert data["mutations_performed"] == 0

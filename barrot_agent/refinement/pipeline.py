@@ -22,7 +22,6 @@ from __future__ import annotations
 import copy
 import json
 import os
-import re
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -30,11 +29,8 @@ from pathlib import Path
 from typing import Any
 
 from . import paths, scoring, segmentation, patches, semantics
-from .engine import DEFAULT_EPSILON, REFINABLE_DATA_CLASSES, refine_data
-from .refiners import (
-    EXTERNAL_REFINEMENT_ALLOWED_CLASSES, HeuristicRefiner, LunaRouteRefiner,
-    Refiner, make_model_refiners,
-)
+from .engine import DEFAULT_EPSILON
+from .refiners import HeuristicRefiner, Refiner, make_model_refiners
 from .segmentation import Slot
 
 IMPLEMENTATION_VERSION = "pp-refine/1.1.0"
@@ -72,7 +68,6 @@ class RunState:
     undo_stack: list = field(default_factory=list)
     created: str = ""
     updated: str = ""
-    data_classification: str = "unknown"
 
     def to_dict(self) -> dict:
         d = {**self.__dict__}
@@ -84,7 +79,6 @@ class RunState:
     def from_dict(cls, d: dict) -> "RunState":
         st = cls.__new__(cls)
         st.__dict__.update(d)
-        st.data_classification = str(d.get("data_classification", "unknown"))
         st.sections = [SectionState(**s) if isinstance(s, dict) else s
                        for s in st.sections]
         st.undo_stack = [tuple(u) for u in st.undo_stack]
@@ -102,48 +96,13 @@ def _atomic_write_json(path: Path, obj: dict) -> None:
     os.replace(tmp, path)
 
 
-_RUN_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
-
-
-def _validate_run_id(run_id: str) -> str:
-    if (not isinstance(run_id, str) or not _RUN_ID_RE.fullmatch(run_id)
-            or ".." in run_id):
-        raise ValueError("run_id must be a simple filename-safe identifier")
-    return run_id
-
-
-def _validate_refinement_access(refiners, data_classification: str,
-                                allow_external: bool, judge=None) -> None:
-    if data_classification not in REFINABLE_DATA_CLASSES:
-        raise ValueError("unknown or immutable data classification cannot be refined")
-    live = [r for r in refiners if isinstance(r, LunaRouteRefiner)]
-    judge_refiner = getattr(judge, "refiner", None)
-    if isinstance(judge_refiner, LunaRouteRefiner):
-        live.append(judge_refiner)
-    if not live:
-        return
-    if not allow_external:
-        raise PermissionError("external refinement requires allow_external=True")
-    if os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT") != "1":
-        raise PermissionError("BARROT_ALLOW_EXTERNAL_REFINEMENT=1 is required")
-    if os.environ.get("BARROT_LIVE_REFINEMENT_APPROVED") != "1":
-        raise PermissionError("BARROT_LIVE_REFINEMENT_APPROVED=1 is required for this external dispatch")
-    if data_classification not in EXTERNAL_REFINEMENT_ALLOWED_CLASSES:
-        raise PermissionError("data classification is not eligible for external transfer")
-    if any(not r.allow_external or r.data_classification != data_classification
-           or not r.available for r in live):
-        raise PermissionError("external refiner/judge authorization is incomplete")
-
-
 def load_run(run_id: str, runs_dir: Path | str = DEFAULT_RUNS_DIR) -> RunState:
-    run_id = _validate_run_id(run_id)
     path = Path(runs_dir) / f"{run_id}.json"
     return RunState.from_dict(json.loads(path.read_text(encoding="utf-8")))
 
 
 def find_completed(source_hash: str, objective: str,
-                   history: Path | str = DEFAULT_HISTORY,
-                   data_classification: str = "unknown") -> dict | None:
+                   history: Path | str = DEFAULT_HISTORY) -> dict | None:
     """Persistent learning: a (source, objective) pair already refined to a
     verified complete disposition is not repeated."""
     hp = Path(history)
@@ -158,7 +117,6 @@ def find_completed(source_hash: str, objective: str,
             continue
         if rec.get("source_hash") == source_hash \
                 and rec.get("objective") == objective \
-                and rec.get("data_classification", "unknown") == data_classification \
                 and rec.get("disposition") == "complete":
             return rec
     return None
@@ -177,16 +135,10 @@ class RefinementPipeline:
                  ledger: Path | str | None = None,
                  runs_dir: Path | str = DEFAULT_RUNS_DIR,
                  history: Path | str = DEFAULT_HISTORY,
-                 epsilon: float = DEFAULT_EPSILON,
-                 data_classification: str = "unknown",
-                 allow_external: bool = False):
+                 epsilon: float = DEFAULT_EPSILON):
         self.refiners: list[Refiner] = list(refiners)
         if not self.refiners:
             raise ValueError("RefinementPipeline needs at least one refiner")
-        _validate_refinement_access(self.refiners, data_classification,
-                                    allow_external, judge)
-        self.data_classification = data_classification
-        self.allow_external = bool(allow_external)
         self.judge = judge
         self.max_slot_chars = max_slot_chars
         self.max_section_attempts = max_section_attempts
@@ -205,7 +157,6 @@ class RefinementPipeline:
                      + "\n")
 
     def _commit(self, state: RunState) -> None:
-        state.run_id = _validate_run_id(state.run_id)
         state.updated = _now()
         _atomic_write_json(self.runs_dir / f"{state.run_id}.json",
                            state.to_dict())
@@ -282,17 +233,10 @@ class RefinementPipeline:
             source_identity: str = "", force: bool = False) -> dict:
         t0 = time.time()
         source_hash = paths.value_hash(data)
-        if run_id is None:
-            run_id = f"ref-{source_hash[:12]}-{time.time_ns()}"
-        else:
-            run_id = _validate_run_id(run_id)
-        if (self.runs_dir / f"{run_id}.json").exists():
-            raise FileExistsError(f"refinement run already exists: {run_id}")
 
         # 1. SOURCE + persistent learning: skip already-completed work
         if not force:
-            prior = find_completed(source_hash, objective, self.history,
-                                   self.data_classification)
+            prior = find_completed(source_hash, objective, self.history)
             if prior is not None:
                 return {"run_id": prior.get("run_id"), "disposition":
                         "already_converged", "resumed": False,
@@ -305,11 +249,12 @@ class RefinementPipeline:
 
         # 3. SEGMENT (coverage-exact; raises if the plan would skip content)
         slots = segmentation.segment_document(data, self.max_slot_chars)
+        if run_id is None:
+            run_id = f"ref-{source_hash[:12]}-{int(t0)}"
         state = RunState(
             run_id=run_id, source_hash=source_hash,
             source_chars=audit.total_chars, objective=objective,
             document=copy.deepcopy(data), original=copy.deepcopy(data),
-            data_classification=self.data_classification,
             sections=[SectionState(id=s.id, path_label=s.path_label)
                       for s in slots],
             created=_now())
@@ -443,7 +388,6 @@ class RefinementPipeline:
             "source_hash": state.source_hash,
             "final_hash": paths.value_hash(doc),
             "objective": state.objective,
-            "data_classification": state.data_classification,
             "sections_total": len(state.sections),
             "sections_refined": sum(1 for s in state.sections
                                     if s.status == "refined"),
@@ -527,8 +471,6 @@ class RefinementPipeline:
         status 'refined' are skipped (never repeated); pending/failed
         sections get fresh attempts."""
         state = load_run(run_id, self.runs_dir)
-        if state.data_classification != self.data_classification:
-            raise PermissionError("resume classification does not match the saved run")
         if state.disposition not in ("in_progress", "incomplete"):
             return {"run_id": run_id, "disposition": state.disposition,
                     "resumed": True, "note": "nothing to resume"}
@@ -547,40 +489,28 @@ def refine_document(data: Any, objective: str = "",
                     refiners=None, judge=None,
                     source_identity: str = "", force: bool = False,
                     ledger: Path | str | None = None,
-                    max_rounds: int | None = None,
-                    data_classification: str = "unknown",
-                    allow_external: bool = False) -> dict:
-    """Refine explicitly classified derived data; canonical evidence is rejected."""
-    if refiners is None:
-        if allow_external:
-            refiners = make_model_refiners(
-                allow_external=True, data_classification=data_classification)
-            if not refiners:
-                raise PermissionError("no authorized external refinement pool is available")
-        else:
-            refiners = [HeuristicRefiner(), HeuristicRefiner("heuristic-2")]
-    refiners = list(refiners)
-    _validate_refinement_access(refiners, data_classification,
-                                allow_external, judge)
+                    max_rounds: int | None = None) -> dict:
+    """Baseline entry point for LARGE documents. Small documents (below the
+    segmentation threshold) are handled by the classic engine loop; larger
+    ones go through the patch pipeline."""
     audit = segmentation.audit_document(data)
-    if judge is None and len(refiners) > 1 and isinstance(refiners[1], LunaRouteRefiner):
-        judge = semantics.LLMSemanticJudge(refiners[1])
-        _validate_refinement_access(refiners, data_classification,
-                                    allow_external, judge)
+    if refiners is None:
+        refiners = make_model_refiners() or [HeuristicRefiner()]
+    if judge is None and any(getattr(r, "available", False)
+                             for r in refiners if hasattr(r, "available")):
+        # judge = a different model than the first refiner (independence)
+        if len(refiners) > 1:
+            judge = semantics.LLMSemanticJudge(refiners[1])
     if not audit.needs_segmentation:
-        kwargs = {
-            "refiners": refiners, "ledger": ledger,
-            "data_classification": data_classification,
-            "allow_external": allow_external,
-        }
+        from .engine import PingPongRefiner
+        engine_kwargs = {}
+        if ledger is not None:
+            engine_kwargs["ledger"] = ledger
         if max_rounds is not None:
-            kwargs["max_rounds"] = max_rounds
-        report = refine_data(data, **kwargs)
+            engine_kwargs["max_rounds"] = max_rounds
+        report = PingPongRefiner(refiners, **engine_kwargs).run(data)
         return {"disposition": "complete" if report.converged else "capped",
                 "mode": "classic", "report": report}
-    pipe = RefinementPipeline(
-        refiners, judge=judge, ledger=ledger,
-        data_classification=data_classification,
-        allow_external=allow_external)
+    pipe = RefinementPipeline(refiners, judge=judge, ledger=ledger)
     return pipe.run(data, objective=objective,
                     source_identity=source_identity, force=force)

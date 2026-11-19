@@ -1,17 +1,24 @@
-name: Test Semantic Memory (quarantined pending explicit data-sharing authorization)
+name: Test Semantic Memory
 
 on:
-  workflow_dispatch: {}
-
-permissions: {}
+  workflow_dispatch:
+    inputs:
+      query:
+        description: 'Test query'
+        required: false
+        default: 'regulatory action affecting XRP'
 
 jobs:
-  disabled:
-    if: ${{ false }}
+  test:
     runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
+      MEMORY_TEST_QUERY: ${{ github.event.inputs.query }}
     steps:
-      - name: Explain quarantine
-        run: |
-          echo "The previous test workflow sent a caller-supplied query to Groq using a repository secret without an explicit per-run data-sharing confirmation."
-          echo "It remains disabled until public/authorized-input confirmation and a least-privilege, artifact-only contract are implemented."
-          echo "No provider credentials are read and no external request or repository mutation occurs."
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Test query_relevant
+        run: python3 scripts/semantic_memory.py

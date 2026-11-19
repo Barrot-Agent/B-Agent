@@ -1,14 +1,12 @@
 # Reference Acquisition Log — Producer DNA v2 (2026-11-14)
 
-Initiated via LunaRoute MCP (`web_search` 5 queries → 25 hits) + `webfetch`
+Initiated with `web_search` (5 queries → 25 hits) + `webfetch`
 (5 deep sources). Cross-referenced against the v1 cheat sheets in this
 directory. This file records WHAT WAS ACQUIRED and the DELTAS vs our v1
 tracks — the patch list for v2. No copyrighted audio was downloaded;
 technique specs only.
 
 ## MCP connection status
-- LunaRoute remote MCP (`mcp.lunaroute.com/mcp`): CONNECTED — `web_search`,
-  `generate_image`, `convert_document(OCR)` available; used `web_search`.
 - `opencode.list_mcp_resources`: 0 servers/0 templates (no file/memory MCP
   resources exposed) — local repo data + webfetch covered the rest.
 - Local toolchain referenced: `.opencode/skill/music/SKILL.md` (fluidsynth +

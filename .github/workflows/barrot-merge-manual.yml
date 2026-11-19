@@ -1,7 +1,7 @@
 name: Barrot Superior Merge (duplicate disabled)
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 permissions: {}
 
@@ -14,6 +14,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          echo "This duplicate model-upload workflow is disabled."
-          echo "The primary model-upload workflow is also quarantined because its reviewed MergeKit configuration is absent."
+          echo "This duplicate model-upload workflow is disabled. Use barrot-merge.yml only with explicit per-run confirmation."
           echo "No credentials are read and no external action is performed."

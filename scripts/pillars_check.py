@@ -16,6 +16,8 @@ FICTION_TERMS = [
 ]
 
 def check_github():
+    if os.getenv("GITHUB_APP_PROBE_ENABLED", "").lower() != "true":
+        return None, "skipped; manual workflow_dispatch opt-in required"
     app_id, priv, inst = os.getenv("GITHUB_APP_ID"), os.getenv("GITHUB_APP_PRIVATE_KEY"), os.getenv("GITHUB_INSTALLATION_ID")
     if not (app_id and priv and inst):
         return False, "missing GITHUB_APP_ID/PRIVATE_KEY/INSTALLATION_ID"
@@ -29,6 +31,8 @@ def check_github():
     return r.status_code == 200, f"HTTP {r.status_code}"
 
 def check_databricks():
+    if os.getenv("DATABRICKS_PROBE_ENABLED", "").lower() != "true":
+        return None, "skipped; manual workflow_dispatch opt-in required"
     host, token, wh = os.getenv("DATABRICKS_HOST"), os.getenv("DATABRICKS_TOKEN"), os.getenv("DATABRICKS_WAREHOUSE_ID")
     if not (host and token and wh):
         return False, "missing DATABRICKS_HOST/TOKEN/WAREHOUSE_ID"
@@ -88,6 +92,9 @@ if __name__ == "__main__":
             ok, detail = fn()
         except Exception as e:
             ok, detail = False, f"exception: {e}"
+        if ok is None:
+            print(f"[SKIP] {name}: {detail}")
+            continue
         all_ok &= ok
         print(f"[{'OK' if ok else 'FAIL'}] {name}: {detail}")
     sys.exit(0 if all_ok else 1)

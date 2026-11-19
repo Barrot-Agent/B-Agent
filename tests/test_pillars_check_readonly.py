@@ -11,6 +11,7 @@ WORKFLOW = Path(".github/workflows/pillars-check.yml").read_text(encoding="utf-8
 
 
 def test_pillars_check_github_probe_uses_read_only_installation_get(monkeypatch):
+    monkeypatch.setenv("GITHUB_APP_PROBE_ENABLED", "true")
     monkeypatch.setenv("GITHUB_APP_ID", "12345")
     monkeypatch.setenv("GITHUB_APP_PRIVATE_KEY", "test-private-key")
     monkeypatch.setenv("GITHUB_INSTALLATION_ID", "67890")
@@ -118,3 +119,67 @@ def test_repo_source_fiction_reports_http_200_and_scans_body(monkeypatch):
     ok, detail = pillars_check.check_repo_source_fiction()
     assert ok is False
     assert detail.startswith("fiction terms present in GitHub main hf_space/app.py")
+
+
+
+def test_github_probe_skips_without_explicit_opt_in(monkeypatch):
+    for name in ("GITHUB_APP_PROBE_ENABLED", "GITHUB_APP_ID", "GITHUB_APP_PRIVATE_KEY", "GITHUB_INSTALLATION_ID"):
+        monkeypatch.delenv(name, raising=False)
+
+    def fail_get(*args, **kwargs):
+        raise AssertionError("GitHub App credentials must not be used without explicit opt-in")
+
+    monkeypatch.setattr(pillars_check.requests, "get", fail_get)
+    ok, detail = pillars_check.check_github()
+
+    assert ok is None
+    assert "manual workflow_dispatch opt-in" in detail
+
+
+def test_databricks_probe_skips_without_explicit_opt_in(monkeypatch):
+    for name in ("DATABRICKS_PROBE_ENABLED", "DATABRICKS_HOST", "DATABRICKS_TOKEN", "DATABRICKS_WAREHOUSE_ID"):
+        monkeypatch.delenv(name, raising=False)
+
+    def fail_post(*args, **kwargs):
+        raise AssertionError("Databricks credentials must not be used without explicit opt-in")
+
+    monkeypatch.setattr(pillars_check.requests, "post", fail_post)
+    ok, detail = pillars_check.check_databricks()
+
+    assert ok is None
+    assert "manual workflow_dispatch opt-in" in detail
+
+
+def test_explicit_databricks_probe_is_select_one_and_surfaces_forbidden(monkeypatch):
+    monkeypatch.setenv("DATABRICKS_PROBE_ENABLED", "true")
+    monkeypatch.setenv("DATABRICKS_HOST", "workspace.example")
+    monkeypatch.setenv("DATABRICKS_TOKEN", "test-token")
+    monkeypatch.setenv("DATABRICKS_WAREHOUSE_ID", "warehouse-123")
+    calls = []
+    response = Mock(status_code=403)
+
+    def fake_post(url, **kwargs):
+        calls.append((url, kwargs))
+        return response
+
+    monkeypatch.setattr(pillars_check.requests, "post", fake_post)
+    ok, detail = pillars_check.check_databricks()
+
+    assert ok is False
+    assert detail == "HTTP 403"
+    assert calls[0][0] == "https://workspace.example/api/2.0/sql/statements"
+    assert calls[0][1]["json"]["statement"] == "SELECT 1"
+    assert calls[0][1]["json"]["warehouse_id"] == "warehouse-123"
+
+
+def test_workflow_withholds_platform_credentials_from_scheduled_check():
+    default_step = WORKFLOW.split("- name: Run public/read-only pillars checks", 1)[1].split(
+        "- name: Install PyJWT for the explicitly approved GitHub App probe", 1
+    )[0]
+    assert "GITHUB_APP_PRIVATE_KEY" not in default_step
+    assert "DATABRICKS_TOKEN" not in default_step
+    assert "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1" in WORKFLOW
+    assert "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0" in WORKFLOW
+    assert "confirm_read_only_github_app_probe" in WORKFLOW
+    assert "confirm_read_only_databricks_probe" in WORKFLOW
+    assert "default: NO" in WORKFLOW

@@ -7,7 +7,6 @@ from pathlib import Path
 from typing import Any
 
 from barrot_agent.orchestration.repository_repair import RepairCycleEvidence, RepositoryRepairController
-from barrot_agent.orchestration.shared_runtime import Capability, DefensiveWatchdog
 
 
 class FakeBrain:
@@ -29,7 +28,7 @@ def git(cwd: Path, *args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(["git", *args], cwd=cwd, capture_output=True, text=True, check=False)
 
 
-def init_repo(tmp_path: Path, *, origin: bool = False) -> tuple[Path, str]:
+def init_repo(tmp_path: Path, *, origin: bool = False, gitlab: bool = False) -> tuple[Path, str]:
     workspace = tmp_path / "repo"
     workspace.mkdir(parents=True)
     (workspace / "barrot_agent").mkdir()
@@ -51,6 +50,11 @@ def init_repo(tmp_path: Path, *, origin: bool = False) -> tuple[Path, str]:
         remote = tmp_path / "origin.git"
         assert git(tmp_path, "init", "--bare", str(remote)).returncode == 0
         assert git(workspace, "remote", "add", "origin", str(remote)).returncode == 0
+    if gitlab:
+        remote = tmp_path / "gitlab.git"
+        assert git(tmp_path, "init", "--bare", str(remote)).returncode == 0
+        assert git(workspace, "remote", "add", "gitlab", str(remote)).returncode == 0
+
     return workspace, "barrot_agent/target.py"
 
 
@@ -118,34 +122,8 @@ def repair_payload(
     return json.dumps(payload)
 
 
-def make_controller(
-    workspace: Path,
-    brain: FakeBrain,
-    **controller_options: Any,
-) -> RepositoryRepairController:
-    # Test fixtures use disposable local repositories and, when configured,
-    # a local bare origin. Grant EXTERNAL_ACTION explicitly so lifecycle tests
-    # can reach patch validation and local push verification. Production
-    # controllers retain the default fail-closed capability policy.
-    watchdog = DefensiveWatchdog(
-        workspace,
-        repository="Barrot-Agent/B-Agent",
-        task="test/repository-repair",
-        allowed_capabilities={
-            Capability.READ,
-            Capability.WRITE,
-            Capability.EXECUTE,
-            Capability.NETWORK,
-            Capability.EXTERNAL_ACTION,
-        },
-    )
-    controller_options.setdefault("planner_attempts", 3)
-    controller_options.setdefault("watchdog", watchdog)
-    return RepositoryRepairController(
-        brain=brain,
-        workspace=workspace,
-        **controller_options,
-    )
+def make_controller(workspace: Path, brain: FakeBrain) -> RepositoryRepairController:
+    return RepositoryRepairController(brain=brain, workspace=workspace, planner_attempts=3)
 
 
 def run_cycle(workspace: Path, brain: FakeBrain) -> RepairCycleEvidence:

@@ -446,6 +446,7 @@ class BarrotIntegratedSystem:
                 "transcendence_events": len(self.transformative_insights.transcendence_log),
                 "epiphany_moments": len(self.transformative_insights.epiphany_moments),
             },
+            "agi_orchestrator_status": self.agi_orchestrator.get_agi_capabilities_report(),
             "timestamp": datetime.now(timezone.utc).isoformat(),
         }
 

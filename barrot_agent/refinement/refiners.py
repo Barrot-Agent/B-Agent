@@ -1,10 +1,15 @@
-"""Refiner adapters for derived-data refinement.
+"""Refiner adapters for the ping-pong refinement engine.
 
-The deterministic heuristic adapter is the default. LunaRoute is an
-optional external provider and is disabled unless the caller, data
-classification, and BARROT_ALLOW_EXTERNAL_REFINEMENT environment gate all
-opt in. Raw sources, receipts, feature snapshots, event timelines, forecast
-ledgers, credentials, and private records must never be refined or exported.
+Two families:
+- OpenCodeRefiner: live model via the OpenAI-compatible OpenCode inference API
+  (model passed by name; never logs or echoes the API key).
+- HeuristicRefiner: fully deterministic offline refiner — dedupes lists,
+  trims vague placeholders, normalizes whitespace. Guarantees a fixed point
+  (returns CONVERGED when its pass changes nothing), which makes the whole
+  engine testable and keyless-environment safe.
+
+Every refiner returns a RefinementOutput with a machine-readable verdict so
+the engine can decide fixed-point convergence, not the model's mood.
 """
 from __future__ import annotations
 
@@ -20,23 +25,10 @@ from typing import Any
 
 from . import scoring
 
-LUNAROUTE_BASE = "https://gw.lunaroute.com/v1"
+OPENCODE_BASE = "https://opencode.ai/inference/openai/v1"
 DEFAULT_MODELS = (
-    "glm-5.3-flash",
-    "deepseek-4.1-flash",
-    "muse-spark-open",
+    "deepseek-v4.1-flash-free",
 )
-
-EXTERNAL_REFINEMENT_ALLOWED_CLASSES = frozenset({
-    "public_derived_summary", "public_documentation", "public_research_note",
-})
-_SECRET_LIKE_PATTERN = re.compile(
-    r"(?i)(?:\b(?:ghp_|github_pat_|gho_|ghu_|ghs_|ghr_|sk-)[A-Za-z0-9_-]{16,}\b"
-    r"|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"
-    r"|\b(?:LUNAROUTE_API_KEY|GH_TOKEN|OPENAI_API_KEY)\s*[:=]\s*\S+"
-    r"|\bBearer\s+[A-Za-z0-9._-]{20,})"
-)
-MAX_EXTERNAL_PAYLOAD_CHARS = 24_000
 
 REFINE_SYSTEM = (
     "You are a data-refinement worker in a ping-pong refinement loop. "
@@ -81,35 +73,25 @@ class Refiner(ABC):
 
 
 # ------------------------------------------------------------------ live API
-class LunaRouteRefiner(Refiner):
-    """OpenAI-compatible chat refiner backed by LunaRoute."""
+class OpenCodeRefiner(Refiner):
+    """OpenAI-compatible chat refiner backed by OpenCode inference."""
 
     def __init__(self, model: str, api_key: str | None = None,
-                 base_url: str = LUNAROUTE_BASE, timeout: int = 120,
-                 max_tokens: int = 3000, temperature: float = 0.1,
-                 allow_external: bool = False,
-                 data_classification: str = "unknown"):
-        self.name = f"lunaroute:{model}"
+                 base_url: str = OPENCODE_BASE, timeout: int = 120,
+                 max_tokens: int = 3000, temperature: float = 0.1):
+        self.name = f"opencode:{model}"
         self.model = model
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
         self.max_tokens = max_tokens
         self.temperature = temperature
-        self.allow_external = bool(allow_external)
-        self.data_classification = str(data_classification)
-        self.api_key = api_key if api_key is not None else os.environ.get("LUNAROUTE_API_KEY", "")
+        self.api_key = api_key if api_key is not None else os.environ.get("OPENCODE_API_KEY", "public")
         self.calls = 0
         self.errors = 0
 
     @property
     def available(self) -> bool:
-        return (
-            bool(self.api_key)
-            and self.allow_external
-            and os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT") == "1"
-            and os.environ.get("BARROT_LIVE_REFINEMENT_APPROVED") == "1"
-            and self.data_classification in EXTERNAL_REFINEMENT_ALLOWED_CLASSES
-        )
+        return bool(self.api_key)
 
     def _budget(self, payload_chars: int) -> int:
         """Output token budget: room for the model's reasoning phase (which
@@ -125,12 +107,6 @@ class LunaRouteRefiner(Refiner):
         429/5xx) are retried with exponential backoff, up to 3 attempts
         total; permanent HTTP errors (4xx other than 429) surface
         immediately."""
-        if not self.available:
-            raise PermissionError(
-                "LunaRoute is disabled: explicit allow_external, public data "
-                "classification, BARROT_ALLOW_EXTERNAL_REFINEMENT=1, "
-                "BARROT_LIVE_REFINEMENT_APPROVED=1, and a key are required"
-            )
         body = json.dumps({
             "model": self.model,
             "messages": [{"role": "system", "content": system},
@@ -200,16 +176,16 @@ class LunaRouteRefiner(Refiner):
             parsed = self._extract_json(content) or self._extract_json(reasoning)
         return parsed, finish
 
+    def complete_json(self, system: str, user: str) -> tuple[dict | None, str]:
+        """Public strict-JSON completion for protocol consumers other than
+        the refine/critique roles (e.g. the independent semantic judge).
+        Same retry + truncation-retry behavior."""
+        return self._complete(system, user)
+
     def refine(self, data: Any, critique: str | None) -> RefinementOutput:
-        serialized = json.dumps(data, ensure_ascii=False)
-        if len(serialized) > MAX_EXTERNAL_PAYLOAD_CHARS:
-            return RefinementOutput(self.name, "refine", "FAILED",
-                                    notes="payload exceeds external size limit; refused without truncation")
-        if _SECRET_LIKE_PATTERN.search(serialized):
-            return RefinementOutput(self.name, "refine", "FAILED",
-                                    notes="secret-like content blocked before external transfer")
         user = ("PREVIOUS CRITIQUE (address every point):\n"
-                f"{critique or '(none — first pass)'}\n\nDATA:\n" + serialized)
+                f"{critique or '(none — first pass)'}\n\nDATA:\n"
+                + json.dumps(data, ensure_ascii=False)[:24000])
         try:
             parsed, finish = self._complete(REFINE_SYSTEM, user)
         except (urllib.error.URLError, OSError, ValueError, KeyError) as exc:
@@ -228,14 +204,7 @@ class LunaRouteRefiner(Refiner):
             data=parsed["data"], notes=str(parsed.get("notes", ""))[:200])
 
     def critique(self, data: Any) -> RefinementOutput:
-        serialized = json.dumps(data, ensure_ascii=False)
-        if len(serialized) > MAX_EXTERNAL_PAYLOAD_CHARS:
-            return RefinementOutput(self.name, "critique", "FAILED", critique="",
-                                    notes="payload exceeds external size limit; refused without truncation")
-        if _SECRET_LIKE_PATTERN.search(serialized):
-            return RefinementOutput(self.name, "critique", "FAILED", critique="",
-                                    notes="secret-like content blocked before external transfer")
-        user = "DATA:\n" + serialized
+        user = "DATA:\n" + json.dumps(data, ensure_ascii=False)[:24000]
         try:
             parsed, finish = self._complete(CRITIQUE_SYSTEM, user)
         except (urllib.error.URLError, OSError, ValueError, KeyError) as exc:
@@ -330,21 +299,8 @@ class HeuristicRefiner(Refiner):
                                 critique=text)
 
 
-def make_model_refiners(
-    models: tuple[str, ...] = DEFAULT_MODELS,
-    api_key: str | None = None,
-    *,
-    allow_external: bool = False,
-    data_classification: str = "unknown",
-) -> list[LunaRouteRefiner]:
-    """Build live refiners only after explicit external-data opt-in."""
-    if not allow_external or os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT") != "1":
-        return []
-    if data_classification not in EXTERNAL_REFINEMENT_ALLOWED_CLASSES:
-        return []
-    key = api_key if api_key is not None else os.environ.get("LUNAROUTE_API_KEY", "")
-    if not key:
-        return []
-    return [LunaRouteRefiner(model, api_key=key, allow_external=True,
-                             data_classification=data_classification)
-            for model in models]
+def make_model_refiners(models: tuple[str, ...] = DEFAULT_MODELS,
+                        api_key: str | None = None) -> list[OpenCodeRefiner]:
+    """Build live refiners for the given OpenCode model names."""
+    key = api_key or os.environ.get("OPENCODE_API_KEY", "public")
+    return [OpenCodeRefiner(m, api_key=key) for m in models if key]

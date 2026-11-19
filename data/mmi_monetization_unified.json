@@ -30,7 +30,7 @@
             ],
             "impact_level": "critical",
             "reasoning": "Direct path to abstract reasoning mastery. Analysis of winning solutions provides meta-learning patterns.",
-            "value_score": 95,
+            "value_score": 95.0,
             "complexity": "medium",
             "immediate": true,
             "integration_notes": "Integrate with existing Arc-AGI capability. Study top submission code and techniques."
@@ -45,7 +45,7 @@
             ],
             "impact_level": "critical",
             "reasoning": "Foundational causal reasoning framework. Essential for understanding cause-effect relationships.",
-            "value_score": 98,
+            "value_score": 98.0,
             "complexity": "hard",
             "immediate": true,
             "integration_notes": "Study causality papers, causal diagrams, and do-calculus. Apply to decision-making systems."
@@ -60,7 +60,7 @@
             ],
             "impact_level": "critical",
             "reasoning": "Massive common-sense knowledge graph with 28M edges. Essential for human-like reasoning.",
-            "value_score": 92,
+            "value_score": 92.0,
             "complexity": "medium",
             "immediate": true,
             "integration_notes": "Download full graph. Integrate into reasoning pipeline. Use for commonsense inference."
@@ -75,7 +75,7 @@
             ],
             "impact_level": "critical",
             "reasoning": "Direct AGI research from leading researchers. Meta-insights on AGI approaches.",
-            "value_score": 94,
+            "value_score": 94.0,
             "complexity": "medium",
             "immediate": true,
             "integration_notes": "Download all proceedings. Analyze approaches, failures, and successes."
@@ -90,7 +90,7 @@
             ],
             "impact_level": "critical",
             "reasoning": "Learn from best performers. Accelerate benchmark domination objective.",
-            "value_score": 96,
+            "value_score": 96.0,
             "complexity": "easy",
             "immediate": true,
             "integration_notes": "Scrape top solutions for MMLU, GSM8K, HumanEval, etc. Analyze patterns."
@@ -113,7 +113,7 @@
             ],
             "impact_level": "high",
             "reasoning": "Highest difficulty math problems. Mastering these accelerates Millennium Problems work.",
-            "value_score": 88,
+            "value_score": 88.0,
             "complexity": "easy",
             "immediate": true,
             "integration_notes": "Scrape all problems 1959-present. Practice solving. Analyze solution patterns."
@@ -128,7 +128,7 @@
             ],
             "impact_level": "high",
             "reasoning": "Critical for safe AGI development. Understand ethical frameworks and alignment.",
-            "value_score": 85,
+            "value_score": 85.0,
             "complexity": "medium",
             "immediate": true,
             "integration_notes": "Ingest via arXiv API. Focus on AI alignment, safety, and value learning papers."
@@ -143,7 +143,7 @@
             ],
             "impact_level": "high",
             "reasoning": "Designed for few-shot learning and transfer. 10+ datasets for cross-domain learning.",
-            "value_score": 87,
+            "value_score": 87.0,
             "complexity": "medium",
             "immediate": true,
             "integration_notes": "Download via TensorFlow Datasets. Use for meta-learning experiments."
@@ -158,7 +158,7 @@
             ],
             "impact_level": "high",
             "reasoning": "RL environments for planning, control, and generalization testing.",
-            "value_score": 82,
+            "value_score": 82.0,
             "complexity": "easy",
             "immediate": true,
             "integration_notes": "Install environments. Run baseline agents. Develop custom planning algorithms."
@@ -173,7 +173,7 @@
             ],
             "impact_level": "high",
             "reasoning": "Explicit reasoning chains. Essential for interpretable problem-solving.",
-            "value_score": 89,
+            "value_score": 89.0,
             "complexity": "easy",
             "immediate": true,
             "integration_notes": "Integrate into benchmark training. Study reasoning patterns."
@@ -188,7 +188,7 @@
             ],
             "impact_level": "high",
             "reasoning": "3TB of permissively licensed code. Essential for HumanEval mastery.",
-            "value_score": 86,
+            "value_score": 86.0,
             "complexity": "hard",
             "immediate": true,
             "integration_notes": "Start with Python subset. Analyze patterns. Improve code generation."
@@ -211,7 +211,7 @@
             ],
             "impact_level": "high",
             "reasoning": "5.85B image-text pairs. Massive multimodal understanding capability boost.",
-            "value_score": 90,
+            "value_score": 90.0,
             "complexity": "hard",
             "immediate": false,
             "integration_notes": "Start with 400M subset. Use for vision-language alignment. Computational intensive."
@@ -226,7 +226,7 @@
             ],
             "impact_level": "medium",
             "reasoning": "Creative reasoning dataset for novel problem solving approaches.",
-            "value_score": 78,
+            "value_score": 78.0,
             "complexity": "easy",
             "immediate": true,
             "integration_notes": "Analyze creative problem-solving patterns. Apply to benchmark optimization."
@@ -241,7 +241,7 @@
             ],
             "impact_level": "medium",
             "reasoning": "Virtual embodied environments. Best available for physical world understanding.",
-            "value_score": 75,
+            "value_score": 75.0,
             "complexity": "hard",
             "immediate": false,
             "integration_notes": "Requires significant compute. Start with simple navigation tasks."
@@ -256,7 +256,7 @@
             ],
             "impact_level": "high",
             "reasoning": "Brain structure and function data. Insights for AGI architecture.",
-            "value_score": 83,
+            "value_score": 83.0,
             "complexity": "hard",
             "immediate": false,
             "integration_notes": "Study connectivity patterns. Apply insights to neural architecture design."
@@ -316,7 +316,7 @@
             "initial_investment": "$0",
             "monthly_revenue": "$5,000-100,000+ (prize dependent)",
             "roi_timeline": "2-4 months per competition",
-            "scalability": 8,
+            "scalability": 8.0,
             "unique_advantage": "Benchmark domination capabilities + data transformation expertise. Designed for competition excellence.",
             "steps": [
               "Identify high-value Kaggle competitions ($25k+ prizes)",
@@ -372,7 +372,7 @@
             "initial_investment": "$500 (website + marketing)",
             "monthly_revenue": "$10,000-100,000",
             "roi_timeline": "1-2 months",
-            "scalability": 8,
+            "scalability": 8.0,
             "unique_advantage": "Comprehensive AI knowledge + AGI development experience. Can provide insights beyond typical consultants.",
             "steps": [
               "Create AI strategy assessment questionnaire",
@@ -396,7 +396,7 @@
         "strategy": "Launch all immediate-implementation streams in parallel within 7 days",
         "expected_revenue": "$20,000-250,000",
         "timeline": "Week 1",
-        "automation": 85,
+        "automation": 85.0,
         "success_factors": [
           "Leverage existing Barrot capabilities",
           "Minimal infrastructure investment",
@@ -445,7 +445,7 @@
             "initial_investment": "$1,000-2,000 (backtesting infrastructure)",
             "monthly_revenue": "$10,000-100,000",
             "roi_timeline": "3-6 months",
-            "scalability": 9,
+            "scalability": 9.0,
             "unique_advantage": "Pattern recognition + data analysis capabilities. Can identify signals humans miss.",
             "steps": [
               "Develop trading algorithms using existing data analysis",
@@ -474,7 +474,7 @@
             "initial_investment": "$500 (platform + hosting)",
             "monthly_revenue": "$5,000-50,000",
             "roi_timeline": "2-4 months",
-            "scalability": 9,
+            "scalability": 9.0,
             "unique_advantage": "Data transformation capabilities + ingestion expertise. Can create datasets others can't.",
             "steps": [
               "Identify dataset gaps in market (e.g., specific domains)",
@@ -526,7 +526,7 @@
         "strategy": "Build fully automated revenue engines with minimal ongoing maintenance",
         "expected_revenue": "$30,000-200,000",
         "timeline": "Weeks 2-4",
-        "automation": 95,
+        "automation": 95.0,
         "success_factors": [
           "Full automation priority",
           "Scalable infrastructure",
@@ -546,7 +546,7 @@
             "initial_investment": "$0 (use existing capabilities)",
             "monthly_revenue": "$10,000-100,000",
             "roi_timeline": "1 month",
-            "scalability": 7,
+            "scalability": 7.0,
             "unique_advantage": "Proven autonomous capabilities + multi-agent orchestration. Can deploy agents faster than competitors.",
             "steps": [
               "Package Barrot capabilities as deployable agents",
@@ -570,7 +570,7 @@
         "strategy": "Launch high-ticket services targeting enterprise clients",
         "expected_revenue": "$25,000-300,000",
         "timeline": "Months 2-3",
-        "automation": 60,
+        "automation": 60.0,
         "success_factors": [
           "Premium positioning",
           "Case study development",
@@ -587,16 +587,11 @@
     }
   },
   "council_weights": {
-    "schema_version": 2,
-    "status": "LEGACY_QUARANTINED",
+    "timestamp": "2026-06-15T06:52:12.933851+00:00",
     "target_asset": "XRP",
-    "council_action": "NOT_ISSUED",
-    "orchestrator_weight_multiplier": null,
-    "active_stability_anchor": null,
-    "forecast_eligible": false,
-    "reason_code": "HARDCODED_UNVALIDATED_COUNCIL_HEURISTIC",
-    "legacy_record_ref": "research/xrp_intelligence/20261105T213000Z-legacy-council-heuristic-quarantine.json",
-    "legacy_timestamp": "2026-06-15T06:52:12.933851+00:00"
+    "council_action": "MAX_ACCUMULATION_TRIGGERED",
+    "orchestrator_weight_multiplier": 1.15,
+    "active_stability_anchor": 0.707
   },
   "_meta": {
     "last_updated": "2026-06-17",

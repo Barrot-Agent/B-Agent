@@ -95,19 +95,3 @@ PERMANENT MUSCLE MEMORY (Sean's 7 laws - apply every session, never re-ask):
 6. SHIP LOOP: Scan -> Fix -> Test with bash -> Commit -> Log to BARROT_SYNC.md
    -> Repeat. Do not ask permission per file.
 7. REPORT: End every session with 3 lines: Fixed / Upgraded / Still blocked + why.
-
-
-## XRP intelligence and integration execution contract
-- Highest-priority mission: XRP intelligence and measured prediction-engine mastery. Barrot V3 remains the execution, orchestration, authorization, safety, and verification foundation.
-- Highest priority: XRP intelligence and prediction-engine mastery; preserve Barrot V3 as the execution, orchestration, safety, and verification foundation.
-- Deployment context: offline phone deployment in Termux is supported; do not infer network access from that local mode.
-- `scripts/transmute.py` is QUARANTINED; do not execute or replace it unless its quarantine gate is explicitly cleared and verified.
-- At the start of every repository run, inspect current main, the complete main and integration trees, current code, every open PR, branch ancestry, overlapping diffs, CI/workflow runs, dependency manifests, security settings, and the latest durable handoff.
-- Treat the repository as one integrated product. Prefer completing the existing coherent integration PR. Keep at most one active integration PR per workstream. Search open PRs and overlapping paths before creating any branch or PR.
-- Preserve every mainline and integration-only user change. Never reset, clean, stash, restore over, overwrite, discard, force-push, or rewrite branch history. Use non-force fast-forward updates only.
-- Run the complete repository test suite, dependency/security audits, fail-closed gates, wheel/package verification, and Pages validation on the exact final head. Never transfer test results from a parent commit.
-- Never merge draft or incomplete work. Require conflict-free exact-head checks, independent approvals, enforceable branch protection, and a complete security review.
-- No deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, or real-money action without the specific required approval.
-- Maintain separate authentication and data-flow status for ChatGPT, Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle, and Databricks. Groq is not Grok. Configuration or assignment is not proof of a live connection.
-- Keep forecasts disabled until raw-source byte receipts, point-in-time eligibility, chronological leakage-safe walk-forward tests, baseline comparisons, calibration, drift checks, and independent shadow outcomes qualify a candidate. Every forecast must record cutoff, horizon, target, assumptions, alternatives, probabilities, and eventual outcome.
-- Research only lawful public or explicitly authorized sources. Preserve timestamps, provenance, source independence, disagreement, counter-hypotheses, and disconfirming evidence. Never turn corporate transaction volume, custody, escrow releases, listings, or stablecoin settlement into unsupported XRP purchase/bridge-flow claims.

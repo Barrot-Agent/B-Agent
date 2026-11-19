@@ -1,37 +1,22 @@
 {
-  "generated_at": "2026-11-16T12:09:14Z",
-  "freshness_threshold_hours": 48,
-  "forecast_eligible": false,
+  "generated_at": "2026-07-27T09:06:02.266546+00:00",
+  "shift_threshold": 15,
   "assets": {
     "XRP": {
-      "status": "STALE_INPUT",
-      "reason": "Newest input exceeds 48-hour freshness limit.",
-      "latest_ingested_at_utc": "2026-10-29T13:23:01.047283Z",
-      "latest_input_age_hours": 430.77,
-      "recent_24h_score": null,
-      "recent_24h_entries": 0,
-      "prior_24h_score": null,
-      "prior_24h_entries": 0,
-      "minimum_entries_per_window": 5,
-      "shift_threshold_points": 15,
-      "shift": null,
-      "significant_shift": false,
-      "forecast_eligible": false
+      "recent_24h_score": 83,
+      "recent_24h_entries": 3,
+      "prior_24h_score": 19,
+      "prior_24h_entries": 2,
+      "shift": 64,
+      "significant_shift": true
     },
     "BTC": {
-      "status": "STALE_INPUT",
-      "reason": "Newest input exceeds 48-hour freshness limit.",
-      "latest_ingested_at_utc": "2026-10-29T13:38:11.448678Z",
-      "latest_input_age_hours": 430.517,
-      "recent_24h_score": null,
-      "recent_24h_entries": 0,
+      "recent_24h_score": 40,
+      "recent_24h_entries": 24,
       "prior_24h_score": null,
       "prior_24h_entries": 0,
-      "minimum_entries_per_window": 5,
-      "shift_threshold_points": 15,
       "shift": null,
-      "significant_shift": false,
-      "forecast_eligible": false
+      "significant_shift": false
     }
   }
 }
