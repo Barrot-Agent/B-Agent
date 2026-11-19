@@ -1,4 +1,57 @@
-# Barrot XRP Intelligence — Latest Durable Handoff
+# Run 33 — 2026-11-19T01:13Z current-state addendum
+
+**Disposition: KEEP DRAFT — NO MERGE.** The exact-head full repository suite has now passed on predecessor head `20c50967c5eb72f568a51b042b2fd055aaef34f7`. A new research-only Run 33 artifact was then committed to the existing integration branch as `99142cfd6dd378fa528b0361a93f178d9945b14d`. That documentation/data-artifact head has not yet completed exact-head CI; do not transfer the predecessor's test result to it.
+
+## Repository state and CI
+
+- Main SHA: `82c23e219553164c24073784c529aad75acacd66`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Pre-artifact integration head: `20c50967c5eb72f568a51b042b2fd055aaef34f7` (383 commits ahead, zero behind; 1,443 changed files; 68 changed workflow files; 2,990 tree entries).
+- Run 33 evidence artifact commit: `99142cfd6dd378fa528b0361a93f178d9945b14d`; it adds one research JSON file only. The resulting head's full-suite, dependency and fail-closed checks remain pending.
+- Main tree: 1,739 entries. Integration tree before the artifact: 2,990 entries. All 1,739 main paths are present in integration.
+- PR #1663 remains open, draft, GitHub mergeable, with zero submitted reviews and zero requested reviewers. No new branch or PR was created.
+- Exact-head full repository suite on `20c5096`: **4,288 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests passed in 153.65 seconds; 68.13% inclusive coverage**. The full-repository test job, core tests, Pages validation-only build, wheel build and packaged Barrot V3/XRP primary-mission verification all passed. [Full-suite run 44433545097](https://github.com/Barrot-Agent/B-Agent/actions/runs/44433545097).
+- Exact-head dependency audit on `20c5096`: PASS, [44433544933](https://github.com/Barrot-Agent/B-Agent/actions/runs/44433544933). Push fail-closed gate: PASS, [44433545294](https://github.com/Barrot-Agent/B-Agent/actions/runs/44433545294). PR money audit: PASS, [44433554029](https://github.com/Barrot-Agent/B-Agent/actions/runs/44433554029). PR dependency audit: PASS, [44433553978](https://github.com/Barrot-Agent/B-Agent/actions/runs/44433553978). PR fail-closed gate: PASS, [44433554313](https://github.com/Barrot-Agent/B-Agent/actions/runs/44433554313). PR-event test jobs were skipped because #1663 remains draft; push CI is the full-suite evidence.
+- Current main SHA `82c23e2` has no CI run at that exact SHA in the inspected recent workflow inventory. Latest main CI is [44396364281](https://github.com/Barrot-Agent/B-Agent/actions/runs/44396364281) on older SHA `d5d22ac`. Main advanced after the paid-issue publisher committed generated timestamp updates; Pages deployment [44431136074](https://github.com/Barrot-Agent/B-Agent/actions/runs/44431136074) succeeded. This run did not initiate that workflow or deployment.
+
+## Run 33 market and institutional evidence
+
+- New append-only artifact: [Run 33 market, exchange-wallet, ETF, DBS/Circle and BLOOM reconciliation](research/xrp_intelligence/20261119T011300Z-run33-market-exchange-flow-etf-dbs-bloom-reconciliation.json).
+- Kraken XRP/USD rendered API snapshot: last $0.96851; bid/ask $0.96842/$0.96859; spread about 1.76 bps; 24-hour volume 43.856M XRP; 24-hour VWAP $0.981593; range $0.95485–$1.00677. Kraken `o` remains UTC-day open, not rolling 24-hour open.
+- OKX XRP-USDT snapshot: last 0.9673; bid/ask 0.9671/0.9672; quote timestamp 00:53:11.072 UTC, about 20 minutes old at capture; 24-hour volume 30.370M XRP. No USD normalization was applied because a synchronized USDT/USD leg was not captured.
+- XRP Insights' 18 November 08:00 UTC XRPL wallet-attribution snapshot reports 22.19B XRP across 707 wallets attributed to 24 exchanges. Same-wallet balances declined 151.9M XRP over seven days and 390.1M over 30 days. The naive 30-day total instead rose 132.2M because 522.2M XRP in newly tracked wallets was added. The total includes cold storage and wrapped-asset reserves; it is not tradable float. The source warns that same-wallet changes cannot distinguish customer withdrawals from internal exchange transfers or movements to untracked wallets.
+- TradRadar's 22:20 UTC derivatives snapshot reports $1.28B OI (-2.79% 24h), -0.0002% OI-weighted funding per eight hours, at least $5.51M liquidations, $2.52M long and $2.99M short liquidations, and a 3.36 long/short account ratio (77.1% long). OI and liquidation universes differ; the account ratio is not notional exposure. Mixed positioning, not a directional signal.
+- ETF providers disagree. CryptoKeyhole's 00:55 UTC update reports a partial 17 November outflow of 3,251 XRP from 3/4 daily-readable funds; its latest complete 9–13 November five-day flow is -4.923M XRP. XRP Insights reports +986 XRP for 17 November in a six-spot-plus-BITW universe, while Alpha Finance reports -$6.1M across five funds. Different fund coverage, units, issuer-file vintages and data gaps prevent averaging or a single flow sign.
+- DBS and Circle announced direct USDC mint/redeem access through DBS for eligible institutions, with 24/7 USD-USDC settlement. Their 18 November release specifies no chain, go-live date, fees, limits or clients, and does not mention XRP, XRPL or Ripple.
+- MAS's 23 October BLOOM release lists Circle, Coinbase and DBS among existing participants and Ripple among new participants. BLOOM's stated work covers cross-border acceptance/settlement, interoperability and programmable controls. This is a multi-party initiative, not evidence of a bilateral DBS-Ripple deal or XRP settlement. It strengthens the counter-hypothesis that institutional stablecoin/payment adoption can expand without XRP as the settlement asset.
+
+## Data-quality and prediction status
+
+- Run 33 web observations are rendered excerpts, not raw HTTP bytes. The artifact deliberately records `raw_http_bytes_retained=false` and `raw_body_sha256=null`; no SHA-256 receipt, wire capture or external WORM timestamp is claimed. These observations are research-only and are not admitted as point-in-time model features.
+- The integration contains `xrp_public_ingestion.py`, the point-in-time SQLite feature store, chronological walk-forward evaluator and forecast ledger. The feature store's SQL triggers are not adversarially tamper-proof; external signed/checkpointed anchoring remains required.
+- `.github/workflows/xrp-public-ingestion.yml` exists on integration with hourly and daily schedules and read-only permissions. It is absent from main, so production scheduled ingestion is not active on main. Its integration job runs only on scoped integration pushes/manual dispatch, not on integration schedule events.
+- Last recorded ingestion remains run 44301868145: 34 receipts (22 raw, 12 digest-only), 21 source failures, 3,235 feature-history records, 140 events, 107 scenarios and zero walk-forward forecasts. Run32A diagnosed 8 Binance HTTP 451 failures, 5 Bybit HTTP 403 failures, 6 SEC User-Agent configuration failures, 1 Grayscale HTTP 429 and 1 stale Franklin parser failure. No geo bypass or invented SEC contact was used.
+- Forecast ledger readiness policy v6 requires at least 100 OOS samples, 100 shadow samples, five independent source groups, a horizon multiple of ten, weighted calibration error no greater than 5%, and evaluator Ed25519 attestation. These are implemented gates, not evidence that a model has passed them.
+- **Forecast status: NOT_ISSUED.** No directional forecast, paper trade or real-money action.
+
+## Open PR backlog — current inventory
+
+Fourteen PRs are open:
+- **Blocked (5):** #1663 (sole consolidated V3/XRP integration), #1668 (provider failover; overlaps the integration's worker/security paths), #1666 (Kaggle dependency update; compatibility unresolved), #1541 (MMI security branch; overlapping paths), #1265 (stacked XRP ledger index migration; overlapping CI path).
+- **Duplicate (1):** #1665 (Pylint dependency change already represented in #1663; keep open until successor is merged and verified on main).
+- **Unique/unreviewed (8):** #1670, #1664, #1450, #1460, #1440, #1437, #1436, #1353.
+- Ready: 0. Superseded: 0. No source PRs closed.
+
+## Governance blockers and next action
+
+- #1663 remains draft with zero independent reviews. CODEOWNERS remains self-only in the prior audit.
+- Detailed branch-protection read returned HTTP 403 in this run. The repository's visible fallback ruleset remains disabled; effective required checks and bypass permissions are not independently verified. The previous handoff reported empty required-check contexts.
+- Main still contains the paid-issue publisher and automatic Pages deployment side effect; integration quarantines the risky publisher/worker paths and keeps Pages validation-only. The 68 changed workflow definitions still require a complete transitive audit.
+- Next: verify exact-head full suite, dependency audit and fail-closed gate after Run 33 documentation commit `99142cf`; obtain independent review and effective branch-protection evidence; reconcile main's publisher/Pages side effects; finish the transitive workflow audit; capture raw bytes and external immutable receipts; repair SEC/CFTC ingestion; activate scheduled ingestion only through an authorized, verified merge; then run leakage-safe XRP walk-forward baselines and calibration.
+
+**Final decision: NO MERGE.** The previous exact code head passed its full suite and security gates. The latest research-artifact head is awaiting its own CI, and independent review, effective branch protection, main CI freshness, publication governance and raw-source integrity remain unresolved. No deployment, release, secret rotation, Space restart, Kaggle submission, Databricks write, external-model dispatch, paper trade, funds transfer or real-money action occurred.
+
+---
 
 **Evidence review:** Run 31, 2026-11-19.  
 **Mission priority:** XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission.  
