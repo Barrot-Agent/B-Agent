@@ -5746,3 +5746,106 @@ No new external authentication was tested for Claude, Grok, Gemini, Copilot, Cod
 ### Merge disposition
 
 No merge, deployment, provider dispatch, secret change, Space restart, Kaggle submission, Databricks write, paper trade or real-money action occurred. PR #1663 remains draft and fail-closed. The exact-head checks on 6dce5f0 passed, but the new handoff-only commit must receive its own exact-head checks before it can be considered verified.
+
+
+---
+
+## Run 230 — 2026-11-19T18:07:10Z — integrated checkpoint, institutional research and prediction-gate status
+
+### Repository state — VERIFIED
+- Repository: Barrot-Agent/B-Agent
+- Main SHA: \`c8e15c90b1e07980d7b5a01c86c1667166a353f6\`.
+- Integration branch: \`integration/xrp-v3-mainline-successor-20261115T2101Z\`.
+- Integration head before this handoff update: \`99d0a54a1ce8e5c182d9b33ae77abcdfc90a0647\`.
+- Branch ancestry: 460 commits ahead of main, zero behind; GitHub reports mergeable=true (conflict status only, not merge authorization).
+- Recursive trees: main 1,739 entries; integration 3,004 entries. Every path in current main is present in the integration tree; integration contains 1,265 additional paths.
+- PR #1663: 1,462 changed files, 531,629 additions, 6,965 deletions; still draft.
+- Open PR inventory: 14. No new branch or PR created. No merge, deployment, secret operation, Space restart, Kaggle submission, Databricks write, paper trade or funds movement performed.
+
+### Exact-head verification — EXECUTED and VERIFIED on 99d0a54
+- Full repository suite: 4,357 passed, 1 skipped, 11 warnings, 19 subtests passed; 71.34% total coverage. This is the full suite, not only the core CI subset.
+- Dependency audit: passed.
+- Money audit: passed.
+- Core tests: passed.
+- GitHub Pages build: validation-only passed; no public Pages deployment was performed by PR validation.
+- Exact-head runs: [full CI 44579745957](https://github.com/Barrot-Agent/B-Agent/actions/runs/44579745957), [dependency audit 44579745945](https://github.com/Barrot-Agent/B-Agent/actions/runs/44579745945), [money audit 44579745981](https://github.com/Barrot-Agent/B-Agent/actions/runs/44579745981).
+- Fail-closed gate [44581329109](https://github.com/Barrot-Agent/B-Agent/actions/runs/44581329109) failed closed for three reasons: PR remains draft; no independent approving review exists; branch-protection details could not be verified because the API returned HTTP 403.
+- PR has zero formal reviews, zero inline review threads and no requested reviewers. The readable fallback ruleset is disabled. Do not infer effective required checks or bypass settings from inaccessible protection data.
+- Main's scheduled Cross Analysis run [44581698287](https://github.com/Barrot-Agent/B-Agent/actions/runs/44581698287) passed on main SHA c8e15c. No merge occurred, so no post-merge main CI is applicable.
+
+### Integration-first review and PR backlog
+Current open inventory is preserved; do not bulk-close or rewrite stacked branches.
+
+- #1663 — sole consolidated XRP/V3 integration workstream; blocked by draft status, independent review, inaccessible branch-protection details and the unapproved automatic Pages publication side effect.
+- #1668 — zero-cost inference failover; all three changed paths overlap #1663, but the patch content differs. Keep blocked/open until the integrated branch is resolved and exact feature overlap is verified after merge.
+- #1541 — all five changed paths overlap #1663, including MMI claim fingerprint implementation and tests. Superseded candidate only; close only after #1663 is merged and the exact content is verified on main.
+- #1665 — dependency update overlaps requirements-dev.txt already changed by #1663. Duplicate candidate; do not close before successor merge and exact dependency verification.
+- #1666 — Kaggle dependency update touches pyproject.toml also changed by #1663 and has a unique requirements-integrations.txt change. Its proposed upper bound conflicts with the integration's Rust-build compatibility constraint; blocked, not a duplicate.
+- #1664 — unique paid-issue/template pack; draft and not published. Preserve.
+- #1670 — unique musical-DNA feature; touches shared pyproject/docs index but its feature files are distinct. Preserve; outside the XRP workstream.
+- #1460, #1450, #1440, #1437, #1436, #1353 and #1265 — older XRP research/ledger branches. Preserve as unique or unreviewed unless a future exact path-and-content comparison proves otherwise. #1265 has a shared CI workflow path; that alone does not make the entire research branch a duplicate.
+- No source PR was closed in this run.
+
+### Coinbase, Circle, Ripple and SBI — primary-source reconciliation
+
+**Coinbase and Circle — Q3 2026**
+- Coinbase's Q3 release reported average USDC held in Coinbase products of $22B, up 49% year over year and roughly 30% of average USDC market capitalization; Coinbase reported 10.7% crypto trading-volume market share. Source: [Coinbase Q3 2026 results, 2026-10-29](https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/).
+- Coinbase's Q3 Form 10-Q reports stablecoin revenue of $306.905M versus $324.534M a year earlier, down about 5%. Higher average USDC balances contributed $84.6M, while lower average interest rates reduced revenue by $52.8M. Corporate payment-stablecoin-balance income was reclassified to corporate interest and other income from Q1 2026; do not compare the line without that presentation change. The filing says Coinbase renewed its Circle arrangement on the same terms and records a fair-value remeasurement of its Circle investment after Circle's IPO. Source: [Coinbase Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm).
+- Circle's Q3 Form 10-Q reports average USDC circulation of $73.264B, end-period circulation of $73.879B versus $73.749B one year earlier, $13.9T Q3 on-chain transaction volume (+49% year over year), and a 3.5% reserve return rate versus 4.2%. Reserve income was $657.624M, down 7.5%; total revenue and reserve income was $864.888M, up 16.9%.
+- Circle's $207.264M Q3 other revenue included $182.342M of ARC-related revenue. Total revenue growth therefore must not be treated as recurring USDC reserve-income growth. Reserve income represented 76% of Q3 total revenue.
+- Circle's Q3 filing states Coinbase received $331.3M of distribution costs for the quarter versus $361.3M a year earlier. The $30M reduction reflected lower reserve income, partly offset by a slight increase in Coinbase's share of average on-platform USDC balances. The contract allocates Coinbase a share based on USDC held on its platform after issuer retention and a share of remaining ecosystem growth after approved third-party participants. Coinbase's public statement that it captured approximately 50% of USDC economics is a management characterization, not an audited percentage of Circle's total reserve income.
+- Circle reports Q3 USDC minted of $104.304B and redeemed of $103.694B through Circle Mint customer activity. These are gross operational conversion flows, not XRP purchases or proof of XRP demand.
+- Primary sources: [Circle Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm), [Circle Q3 results release](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm).
+- Source independence: Coinbase and Circle SEC filings are separate first-party issuer disclosures and corroborate the commercial arrangement from each party's side. They are not independent third-party measurements of XRP demand.
+
+**SBI identity and operating evidence**
+- Circle's Q3 2026 Form 10-Q says Circle and SBI Holdings each contributed approximately ¥1.5M to Circle SBI Japan K.K. in November 2025; Circle owns 50%, controls and consolidates the VIE, and reports no significant operating results to date. This is a real SBI Holdings relationship, but it is not evidence of a material operating rail or XRP flow.
+- SBI VC Trade's 2026-06-24 RLUSD listing is a separate Ripple/SBI distribution relationship. The issuer is Ripple's trust subsidiary; SBI VC Trade's Japanese classification is not a statement about U.S. legal characterization.
+- SBIC East/Central/West remain separate Japanese regional investment companies, not SBI Holdings. No primary evidence establishes an OpenAI/ChatGPT partnership with those SBIC entities.
+
+**Ripple, Coinbase and custody/collateral**
+- Ripple's 2026-10-28 announcement confirms RLUSD availability through Coinbase Prime, Exchange and retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral availability was described as a later phase; do not mark it live without a separate product confirmation. This is RLUSD distribution, not an XRP purchase or proof of XRP settlement demand. Source: [Ripple/Coinbase RLUSD announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+- BNY's 2026-10-27 collaboration announcement covers RLUSD reserve custody, custody support for XRP and RLUSD, and exploration of tokenized trade finance. Custody support does not establish BNY XRP holdings or buying. Source: [BNY/Ripple announcement](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+- Standard Chartered's 2026-10-12 release says RLUSD custody on XRPL is live for eligible clients, while LMAX collateral mirroring remains subject to final documentation, successful testing, applicable laws, internal approvals and jurisdictional readiness. Do not represent planned collateral eligibility as operational collateral usage. Source: [Standard Chartered release](https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group).
+
+### ETF cash versus in-kind — preserve separate accounting units
+- Bitwise Q3 2026 net cash share capital of approximately $89.392M is derived by subtracting H1 values from nine-month filing totals; it is not a standalone Q3 cash-flow statement. The filing's Q3 schedules also report XRP purchases and in-kind contributions separately. Q3 in-kind XRP creations were approximately 62.328M XRP; Q3 net holdings growth must not be treated as equivalent cash demand.
+- Franklin's Q3 filing reports approximately 26.598M XRP purchased for $35.793M and 41.254M XRP contributed in-kind, valued at $54.858M, with no Q3 redemptions shown.
+- Canary's cited figures are nine-month totals, not Q3-only: 47.078M XRP purchases, 9.555M XRP cash redemptions and 35.377M XRP in-kind contributions.
+- Primary filings: [Bitwise XRP ETF Q3 10-Q](https://www.sec.gov/Archives/edgar/data/2039525/000119312526451776/xrp-20260930.htm), [Franklin XRP ETF Q3 10-Q](https://www.sec.gov/Archives/edgar/data/2059438/000114036126043720/ef20083832_10q.htm), [Canary XRP ETF Q3 10-Q](https://www.sec.gov/Archives/edgar/data/2039505/000199937126025352/xrpc-10q_093026.htm).
+- These filings are primary issuer records, but Bitwise's Q3 cash-capital figure is a period-subtraction derivation. Preserve cash creations/redemptions, cash XRP purchases/sales, in-kind contributions/distributions and sponsor-fee transfers as distinct fields.
+
+### Current market disagreement — research-only, not a forecast
+- Liqwall at 2026-11-19 17:32 UTC reported XRP futures open interest of $914M, down 2.2% over 24 hours; its completed daily series showed $928M on Nov 18 and a 30-day high of $1.49B on Nov 4. Source: https://liqwall.com/open-interest/xrp.
+- TradRadar at 2026-11-19 12:35 UTC reported $1.25B across seven exchanges, down 2.92% over 24 hours, weighted funding +0.0090% per 8 hours, account long/short 3.33 (76.9% long), and at least $4.01M of liquidations, of which $3.21M were longs. Source: https://tradradar.io/markets/xrp.
+- SwiftEdge at 2026-11-19 16:41 UTC reported a separate on-chain-perpetual subset of about $68.8M OI, down 7%, funding -0.0065% per 8 hours, with a 3.75M-XRP bid wall near $0.9720 and a 5.63M-XRP ask wall near $0.9820. Source: https://swiftedge.uk/xrp/today.
+- These observations cover different exchanges, contract types and update clocks. The large OI and funding disagreement is preserved; values are not averaged, and no directional inference is admitted.
+- ETF aggregators also disagree: CryptoKeyhole's Nov 18 figure was partial (2/4 reporting funds, -3,251 XRP); XRP Insights' Nov 16–18 aggregate covered six spot ETF tickers plus BITW and used holdings deltas; Alpha Finance reported zero USD for Nov 18 across five series; InflowScan withheld a settled total. These are not four independent measurements of one flow variable.
+
+### Exact-phrase and creator identity disposition
+- “ASK Coin”: no verified XRP/Ripple relationship. Keep Permission Coin (ASK) and the separate Ask Coin Telegram candidate distinct.
+- “actual capital”: exact phrase/source context remains unresolved. Issuer filings now support a precise cash-versus-in-kind accounting model; do not equate ETF holdings growth with cash entering the market.
+- “SBIC, ChatGPT SBIC”: no primary evidence of an OpenAI relationship. Regional SBIC entities remain distinct from SBI Holdings.
+- Kamilah/Camilla Stevenson: person identity is supported by a first-person interview, but canonical YouTube channel ownership remains unverified. Two same-name channel IDs remain quarantined; current verified creator-video count is zero, candidate references 21, inventory incomplete. Do not attribute candidate videos to the person without a first-party reciprocal link or authorized channel metadata.
+
+### Nine-platform coordination — VERIFIED SCOPE
+- One live platform/session verified: ChatGPT, with the GitHub repository connector used for this run.
+- Copilot: GitHub review events were observed, but no persistent authenticated ChatGPT-to-Copilot data flow is verified.
+- Claude, Grok, Gemini, Codex, Hugging Face, Kaggle and Databricks: no live authentication/data-flow test verified. Do not claim cross-platform dispatch or coordination.
+
+### Prediction-engine acceptance state
+- DESIGNED/EXECUTED on integration: read-only scheduled public ingestion, exact raw-byte capture and SHA-256 receipt code, canonical per-run receipt chain, point-in-time feature store, event timeline, scenario/counter-hypothesis records, chronological walk-forward evaluator, naive/momentum/mean-reversion/volatility baselines, temporal calibration, drift monitor and forecast ledger with independent Ed25519 attestation requirements.
+- The local SQLite feature store uses append-only triggers and point-in-time retrieval but explicitly is not an adversarial tamper-proof boundary. GitHub Actions artifacts/caches are expiring and evictable, not WORM storage or an independent timestamp anchor.
+- The scheduled XRP workflow is present on the integration branch but absent from main. No production main-branch schedule is active or verified. The current web research observations above have no raw HTTP bytes or canonical source receipts and remain research-only/model-ineligible.
+- No trained XRP-specific candidate, mature independent synchronized history, demonstrated out-of-sample lift, validated calibration, stable drift certificate, completed independent shadow cohort or valid evaluator attestation is established. Forecast issuance remains disabled with readiness status NOT_SATISFIED. No directional forecast issued.
+
+### Security, preservation and merge decision
+- Static YAML inspection covered 68 changed workflow files; the transitive script/action/data-flow audit is incomplete.
+- Main's automatic Pages publishing side effect remains unresolved and is not authorized by this task. PR Pages validation is not a production deployment.
+- PR #1663 remains draft, has no independent approval, and effective branch-protection requirements cannot be verified because the endpoint returns 403. Never bypass or infer branch protection.
+- **Decision: NO MERGE.** No merge is authorized until the PR is non-draft, exact-head full-suite and security checks pass, independent approval and required checks are verified, all workflow side effects are reviewed, and the Pages publication side effect is specifically authorized.
+
+### Next concrete action
+Continue on the existing integration branch only. Complete the transitive workflow/script/action audit; verify the ingestion artifact chain and source freshness; resolve external immutable receipt anchoring; obtain independent review and effective branch-protection evidence; and resolve Pages publication authorization. Re-run exact-head CI after any further change. Do not create another XRP/V3 PR, close unique research PRs, issue a directional forecast, or perform any external financial/deployment action.
+
+**Source-capture limitation:** the web-rendered sources used for this checkpoint were not captured as raw HTTP response bytes in the repository and have no new SHA-256 receipts. URLs, publisher identities, document dates, event times where exposed, and source-independence cautions are preserved above. These observations are not admitted to the point-in-time feature store or model training.
