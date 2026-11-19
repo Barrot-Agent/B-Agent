@@ -4125,3 +4125,133 @@ The latest main CI run is [44396364281](https://github.com/Barrot-Agent/B-Agent/
 **NO MERGE.** The full suite and dependency/money audits passed on the current pre-update head, but the draft state, missing independent approval and unverified branch protection remain hard blockers. Production ingestion is still absent from main, and prediction remains disabled.
 
 Next: complete the transitive workflow-to-script/action/data-flow audit, independently verify branch protection, reconcile the stacked ledger lineage without discarding unique research, establish WORM/external receipt anchoring, then obtain exact-head CI and independent review before any merge. Continue collecting public XRP data without issuing a directional forecast.
+
+
+---
+
+## Run 43 — XRP capital-flow, institutional relationship and exact-head integration update
+
+**Captured:** 2026-11-19T11:41Z  
+**Mission priority:** XRP intelligence and measured prediction-engine performance. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+### Repository state
+
+- Current main: `a5e9606a71975b08cb681eee373a2d6dc1c36b55`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Integration head before this handoff update: `8e18dd6a6a69b846bf53d672ff01f32eff6b2afa`.
+- Compare: **418 commits ahead, 0 behind**. Main has 1,739 tree entries; integration has 3,000. Both recursive trees were complete; every current main path exists in integration.
+- PR #1663 remains draft, open, mergeable according to GitHub's mergeability flag, with 418 commits and 1,456 changed files. Review inventory is empty; there are no independent approvals or review threads.
+- No branch was created, no source PR was closed, and no merge was attempted.
+
+### Exact-head verification
+
+The exact PR-head CI for `8e18dd6a6a69b846bf53d672ff01f32eff6b2afa` completed:
+
+- PR CI [44516469488](https://github.com/Barrot-Agent/B-Agent/actions/runs/44516469488): **passed**.
+- Full repository suite: **4,302 passed, 1 skipped, 11 warnings, 19 subtests**, completed in 119.80 seconds.
+- Inclusive package coverage: **68.10%**, above the 62% floor.
+- Legacy core-package coverage-floor step: passed.
+- Wheel build, packaged primary-mission verification and installed-wheel smoke: passed.
+- Core test job and GitHub Pages validation: passed.
+- PR dependency audit [44516469331](https://github.com/Barrot-Agent/B-Agent/actions/runs/44516469331): passed across six dependency manifests.
+- PR money audit [44516469361](https://github.com/Barrot-Agent/B-Agent/actions/runs/44516469361): passed.
+
+The duplicate push CI [44516458123](https://github.com/Barrot-Agent/B-Agent/actions/runs/44516458123) was still running when this handoff was written. Its result is not represented as passed.
+
+The exact-head fail-closed gate [44516469294](https://github.com/Barrot-Agent/B-Agent/actions/runs/44516469294) completed **BLOCKED**, with three explicit reasons: PR #1663 is still draft; no independent approving review exists; and branch protection could not be verified because the protection endpoint returned 403. The gate is read-only and did not approve, bypass, or merge.
+
+Main remains `a5e9606a71975b08cb681eee373a2d6dc1c36b55`. Its CI workflow contains a full-suite job, but the current main commit is the paid-issue snapshot refresh and is excluded by `paths-ignore`; no exact-current-main full-suite run was found. The latest recorded main full-suite run is on an older SHA and is not current-main verification.
+
+### Run 43 research artifact
+
+Added one research snapshot to the existing integration branch, without opening another PR:
+
+`data/xrp_intelligence/snapshots/20261119T112448Z-run43-sec-capital-market-disagreement.json`
+
+Commit: `8e18dd6a6a69b846bf53d672ff01f32eff6b2afa`.
+
+All web-retrieved values in this artifact are explicitly **not model-eligible**: raw response bytes were not captured into the repository in this run, so no raw SHA-256 receipt is claimed.
+
+### SEC issuer filings: cash capital is not in-kind XRP
+
+The September 30, 2026 SEC filings provide a stronger way to measure the distinction behind the exact-phrase research for “actual capital”:
+
+- **Bitwise XRP ETF:** Q3 2026 net cash share capital is approximately **$89.392M**, derived from $127.973M cash share creations less $38.581M cash share redemptions. Separately, in-kind XRP creations were approximately **$82.738M**. Q3 XRP holdings increased by approximately 126.303M XRP after cash purchases, in-kind contributions, cash-redemption sales and sponsor-fee transfers are reconciled. Q3 cash values are explicitly derived by subtracting the H1 filing from the nine-month filing.
+- **Franklin XRP ETF:** Q3 cash XRP purchases were approximately **$35.793M**; in-kind XRP contributions were approximately **$54.858M**; no Q3 redemptions were shown.
+- **Canary XRP ETF:** nine-month figures through September 30 show approximately $70.584M of cash XRP purchases, $13.577M of cash-redemption sales and $49.327M of in-kind creations. These are nine-month, not Q3-only, totals.
+
+The implication is narrow but important: ETF XRP holdings growth is not a valid proxy for cash entering the market. Keep cash creations, cash redemptions, in-kind creations, in-kind redemptions, XRP purchases/sales and sponsor-fee transfers as separate fields. The source filings are primary issuer disclosures, but their raw bytes and receipts still need ingestion before feature-store eligibility.
+
+Primary filing URLs:
+- [Bitwise September 30, 2026 10-Q](https://www.sec.gov/Archives/edgar/data/2039525/000119312526451776/xrp-20260930.htm)
+- [Bitwise June 30, 2026 10-Q](https://www.sec.gov/Archives/edgar/data/2039525/000119312526346245/xrp-20260630.htm)
+- [Franklin September 30, 2026 10-Q](https://www.sec.gov/Archives/edgar/data/2059438/000114036126043720/ef20083832_10q.htm)
+- [Canary September 30, 2026 10-Q](https://www.sec.gov/Archives/edgar/data/2039505/000199937126025352/xrpc-10q_093026.htm)
+
+### Market and ETF disagreement retained
+
+- Liqwall's 07:32 UTC snapshot reported about $940M XRP perpetual open interest, down 2.9%, with +0.0021% funding per eight hours.
+- TradRadar's 03:25 UTC snapshot reported about $1.29B open interest, down 1.75%, with -0.011% funding per eight hours.
+- SwiftEdge's current market brief reported a $0.9757 spot reference, a $0.9606–$0.9872 value area, a $4.7M bid wall near $0.973 and a $4.4M ask wall near $0.981, but the retrieved page did not expose a precise publisher timestamp.
+- A separate SwiftEdge perpetual subset reported about $75M OI and -0.013% funding at 03:56 UTC. It is not comparable to aggregate centralized-exchange OI.
+
+These snapshots differ in timestamp, contract type and venue universe. Do not average them. They are secondary observations without raw receipts and remain excluded from model features.
+
+ETF-flow dashboards also disagree: CryptoKeyhole showed a partial November 18 outflow of 3,251 XRP from two of four daily-reporting funds; XRP Insights showed +159,134 XRP across two settled sessions through November 17 and marked November 18 provisional; Alpha Finance rounded November 18 to zero and reported a 30-session net flow of -$19.1M. The underlying issuer files and fund universes overlap, so these dashboards are not independent confirmations.
+
+### Regulatory and corporate relationship update
+
+- **Ripple National Trust Bank:** the OCC Corporate Applications Search record identifies a national trust-bank charter, approved December 12, 2025 and marked **Consummated/Effective October 26, 2026**. OCC Conditional Approval #1359 states that the earlier approval was preliminary and that commencement required completion of pre-opening requirements. Ripple's October 28 announcement describes final approval. This supports an effective trust-bank charter; it does not establish a Federal Reserve master account or prove every planned service is already operational.
+- **Ripple–Coinbase:** Ripple's October 28 announcement says RLUSD is available through Coinbase Prime, Coinbase Exchange and Coinbase Retail, with XRPL, Base and Ethereum support. It explicitly says Coinbase Global Exchange collateral support would follow; do not mark RLUSD as live collateral there without a later product confirmation.
+- **Ripple–BNY:** BNY's October 27 announcement says it is primary reserve custodian for RLUSD, has a custody relationship with Ripple Prime, and now supports XRP and RLUSD on its Digital Asset Custody platform. Future direct RLUSD mint/redeem and tokenized trade-finance work remain subject to approvals and client requirements.
+- **SBI:** SBI VC Trade's June 24 announcement identifies it as a consolidated SBI Holdings subsidiary and lists RLUSD on its VCTRADE service. The announcement does not identify the regional SBIC East/Central/West entities as counterparties; those entities remain distinct from SBI Holdings.
+- **Coinbase custody:** the Bitwise SEC filing identifies Coinbase Custody Trust Company as the XRP custodian.
+
+Primary/current references:
+- [OCC Corporate Applications Search — Ripple National Trust Bank](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2)
+- [OCC Conditional Approval #1359](https://occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf)
+- [Ripple–Coinbase RLUSD announcement, October 28](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/)
+- [BNY–Ripple custody announcement, October 27](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html)
+- [SBI VC Trade RLUSD announcement, June 24](https://www.sbivc.co.jp/newsview/bsqs09vn_yzv)
+
+Circle's USDC distribution/revenue-sharing relationship with Coinbase and the wider SBI network was not independently re-verified in this run; the existing relationship map remains, with no new claim added.
+
+### Prediction-engine state
+
+- Integration contains public XRP adapters for Binance, Coinbase, Kraken, Bitstamp, Bitbank, OKX, Bybit and Deribit, plus ETF, Ripple/Circle/SBI, Morpho, SEC and CFTC source families.
+- The scheduled `xrp-public-ingestion.yml` workflow exists on integration but not main. Its schedule is not active on main; no production scheduled ingestion was observed in this run.
+- The point-in-time feature contract requires source IDs, independence groups, raw SHA-256 hashes and timestamp/availability checks.
+- The SQLite feature store has trigger-based update/delete deterrence, but is not adversarially tamper-proof. GitHub Actions artifacts and cache checkpoints are not WORM storage; an independently controlled immutable retention/anchor remains unverified.
+- Walk-forward baselines include naive class prior, momentum sign, mean-reversion sign and volatility normal. Calibration uses only earlier outcomes available by the forecast cutoff and a later temporal validation window.
+- The forecast ledger requires an independent Ed25519 evaluator attestation, at least 100 shadow samples, a minimum horizon/sample multiple of 10, weighted calibration error no greater than 5%, and baseline evidence.
+- These are implemented readiness controls, not proof of predictive lift. No directional XRP forecast was issued.
+
+### Workflow/security audit
+
+All 68 workflow files changed by PR #1663 were inspected. The full transitive script/action/data-flow audit is still incomplete.
+
+- The merge gate is read-only and fail-closed.
+- Model-upload, self-upgrade, generic agent dispatch, Databricks bundle deployment, self-benchmark, Groq-chain and semantic-memory test, free-image-generation, track/lyrics generation, Hugging Face sync, self-hosted brain sync, live WebMCP sandbox, paid-issue publishing, scheduler tick, merge queue and private table-freshness workflows are quarantined/disabled.
+- Active external operations that remain available require explicit per-run confirmation and/or an exact approved main SHA. No Databricks deployment, Space restart, secret rotation, Kaggle submission, model dispatch, media generation or paper-trading run was invoked.
+- `barrot-ops.yml` has no `--overwrite` flag and requires external-change confirmation, operation-specific confirmation and exact main SHA.
+- `deploy_databricks.py` checks that the target is absent, does not overwrite, and creates a paused job; it was not executed.
+- The Kaggle competition workflow requires explicit submission confirmation and an exact competition allowlist; it was not executed.
+- `coinbase-paper-trader.yml` is manual and confirmation-gated; its script uses public Coinbase price data and simulated state, not Coinbase trading credentials. It was not executed.
+- Residual issue: scheduled `pillars-check.yml` exposes a GitHub App private key and Databricks token to its runner. The script's Databricks operation is a `SELECT 1` statement and the GitHub App operation is a read-only GET, but the token's actual permission scope was not verified. The workflow also installs `requests` and `PyJWT` inline without exact pins. Verify a dedicated read-only token or quarantine this credential path before merge.
+- `release.yml` retains a tag-triggered GitHub release write permission; no tag/release event occurred.
+
+Dependency manifests audited: runtime, development, integrations, Hugging Face Space, legacy and PEP 621. No lockfiles are present. The exact-head pip-audit passed, but unpinned ranges mean the audited resolution is time-specific.
+
+### Open PR inventory — 14 open
+
+- **Blocked:** #1663 (draft integration; no independent approval; branch protection inaccessible); #1668 (three worker-path overlaps with #1663); #1541 (five MMI-path overlaps and stacked on closed-unmerged #1540).
+- **Duplicate:** #1665 (Pylint 4.1.4 already represented in #1663; keep open until the integrated content is merged and verified on main).
+- **Unique/unreviewed:** #1664 (paid-issue pack); #1666 (Kaggle dependency-range change); #1670 (Musical DNA); #1450, #1460, #1440, #1437, #1436, #1353 and #1265 (stacked XRP research/ledger lineage).
+- Existing overlap facts remain: #1450/#1440 share 64 paths; #1353/#1437 share 5; #1265/#1353 share 3. Do not bulk-close the older research stack.
+- Ready: 0. Merged: 0. Superseded: 0. No source PRs were closed.
+
+### Decision
+
+**NO MERGE.** Exact-head PR CI, full repository tests, dependency audit and money audit passed on `8e18dd6`, but the PR is draft, independent approval is absent, branch protection cannot be verified, the scheduled Databricks token scope remains unknown, and the transitive workflow audit is incomplete.
+
+Next concrete actions: finish the push CI for `8e18dd6`; quarantine or verify the scheduled Databricks credential path; complete the transitive workflow audit; capture SEC and issuer source bytes with SHA-256 receipts; reconcile synchronized venue-level order books and derivatives; obtain independent review and verifiable branch protection. Keep forecast issuance disabled until chronological out-of-sample evaluation, calibration and shadow evidence meet the ledger's readiness policy.
