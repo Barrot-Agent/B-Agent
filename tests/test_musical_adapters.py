@@ -31,6 +31,7 @@ class OriginalCompositionTests(unittest.TestCase):
         roles = {event.role for event in result.events}
         self.assertTrue({"harmony", "melody", "low_end", "pulse", "backbeat"} <= roles)
         self.assertEqual(result.provenance, "original_composition_seed_7")
+        self.assertEqual(result.instruments, template().instruments)
 
     def test_composition_respects_scale_pitch_classes(self):
         result = compose_original(template(), CompositionSettings(bars=4, seed=11))
@@ -38,6 +39,14 @@ class OriginalCompositionTests(unittest.TestCase):
         for event in result.events:
             if event.pitch is not None:
                 self.assertIn(event.pitch % 12, allowed)
+
+    def test_palette_can_be_expanded_when_requested(self):
+        result = compose_original(
+            template(),
+            CompositionSettings(bars=4, seed=12, preserve_instrument_palette=False),
+        )
+        self.assertIn("lead", result.instruments)
+        self.assertIn("hihat", result.instruments)
 
     def test_unsupported_scale_is_rejected(self):
         bad = MusicalManifest(110, 4, "mystery", ("kick",), ())
