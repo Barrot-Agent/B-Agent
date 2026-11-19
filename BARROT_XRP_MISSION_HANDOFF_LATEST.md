@@ -5471,3 +5471,130 @@ Backlog totals: 14 open; 0 ready; 5 blocked; 8 unique/unreviewed; 1 duplicate; 0
 ### Next concrete action
 
 Keep #1663 as the single XRP/V3 integration. Finish the complete transitive workflow/script/action audit, verify current-main automatic side effects and Pages publication containment, obtain an independent review and administrator-confirmed branch-protection evidence, then run/inspect ingestion only through the approved read-only workflow. Do not enable directional forecasts until receipt-backed historical cohorts and the full statistical admission gate pass.
+
+
+---
+
+## Run 228 supplement — order-book depth, exchange-wallet attribution, cbXRP collateral, Evernorth actual capital and Kamilah identity
+
+### Exact-head checkpoint before this supplement — VERIFIED
+
+- Integration head before this documentation commit: `dbcd43ccd1d88e25a789b9c473a6d0525ab3958c`.
+- Push CI [44573265536](https://github.com/Barrot-Agent/B-Agent/actions/runs/44573265536) and PR CI [44573278811](https://github.com/Barrot-Agent/B-Agent/actions/runs/44573278811) both passed.
+- Full repository suite: **4,357 passed, 1 skipped, 11 warnings, 19 subtests passed in 132.25 seconds; 71.34% total coverage**.
+- Push dependency audit [44573265102](https://github.com/Barrot-Agent/B-Agent/actions/runs/44573265102), PR dependency audit [44573278684](https://github.com/Barrot-Agent/B-Agent/actions/runs/44573278684) and PR money audit [44573278543](https://github.com/Barrot-Agent/B-Agent/actions/runs/44573278543) passed.
+- Push and PR fail-closed gates [44573265115](https://github.com/Barrot-Agent/B-Agent/actions/runs/44573265115) and [44573278732](https://github.com/Barrot-Agent/B-Agent/actions/runs/44573278732) blocked as designed for draft status, no independent approval and HTTP 403 on detailed branch-protection verification.
+- This supplement is documentation-only. Its new commit will receive its own exact-head CI; the preceding head's result must not be transferred to it.
+
+### Cross-venue spot order book — RESEARCH ONLY
+
+**Fuelmaps six-venue snapshot, 2026-11-19 17:00 UTC**  
+Source: https://fuelmaps.com/xrp/orderbook
+
+- Aggregated mid: $0.9680; six of six tracked venues reported near-price depth.
+- Within ±0.5%: $8.4M bids versus $6.3M asks.
+- Within ±1%: $13.0M bids versus $10.5M asks.
+- Within ±2%: $18.4M bids versus $11.5M asks.
+- Within ±5%: $20.0M bids versus $15.3M asks.
+- Within ±10%: $26.4M bids versus $16.5M asks, but only five of six venues contributed at that distance.
+- Largest displayed levels: bids around $0.965 ($2.2M), $0.963 ($1.9M) and $0.960 ($1.9M); ask around $0.970 ($1.8M).
+- Tracked venues are Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini. Binance and Bitget are not included in this map. The provider notes that outer-band depth coverage is not uniform across venues.
+- This is a bid-skewed resting-book snapshot, not proof that displayed orders will execute or remain in place. Orders can be canceled, repriced or spoofed. It is not a raw exchange receipt and has no SHA-256 source receipt.
+- The 17:00 UTC aggregated mid ($0.9680) differs from the Kraken XRP/USD last trade of $0.97418 retrieved at 16:59 UTC. Preserve the 0.64% cross-source/venue difference; do not average the two prices or treat them as a synchronized composite.
+
+### Exchange-wallet balances — attribution, not tradable float
+
+**XRP Insights same-wallet exchange-balance map, as of 2026-11-19 08:00 UTC**  
+Sources: https://xrp-insights.com/exchange-balances/ and https://xrp-insights.com/data
+
+- The provider attributes **22.18B XRP** to 707 labeled wallets across 24 exchanges.
+- Its same-wallet method reports -155.7M XRP over seven days and -444.3M XRP over 30 days.
+- Large attributed balances include Upbit 6.46B XRP, Coinbase 5.83B XRP and Binance 2.59B XRP. The provider says the map includes cold-storage and non-customer wallets; Coinbase's attributed balance is approximately 99% cold by its classification.
+- Same-wallet venue changes shown by the provider include Binance -106.3M XRP over seven days, Bithumb -29.7M, Bybit -26.5M, Coinbase +26.1M, Upbit -10.7M and Kraken -5.3M. These are labeled-wallet balance changes, not customer withdrawal records.
+- The tracked South Korean exchange cluster is approximately 8.56B XRP (38.6% of this provider's attributed total). This is a wallet-attribution observation, not evidence that 38.6% of immediately executable XRP liquidity is in Korea.
+- Coinbase's attributed wallet total includes approximately 153.1M cbXRP reserve classified by the provider as non-customer assets. Coinbase's own proof-of-reserves page separately displayed 155,296,047.04 XRP reserve against 155,293,800.50 cbXRP supply, with a 2,246.54 XRP surplus and a displayed refresh time of 3:13 PM (timezone not specified): https://www.coinbase.com/cbXRP. The 2.2M XRP difference between the wallet map and Coinbase's page is unresolved and may reflect label coverage, address scope or page-vintage differences.
+- The exchange-balance publisher relies on public XRPL account data and public wallet labels. It is one publisher/source lineage, not independent confirmation of the ETF-flow dashboard. Wallet reclassification, cold-wallet reshuffles, newly discovered addresses and internal transfers can alter the map without customer deposits or withdrawals.
+- Do not call these changes exchange inflows/outflows or available sell-side supply without wallet-level receipts, exchange confirmation and hot/cold/customer classification. No raw snapshot bytes or hash receipts were captured in this run; these observations remain research-only.
+
+### cbXRP / Morpho collateral channel — secondary evidence, no native-XRP sale established
+
+- Coinbase's cbXRP proof-of-reserves page displays approximately 155.294M cbXRP supply on Base and 155.296M XRP reserve, a near 1:1 backing ratio. This is wrapped-token issuance/custody data, not proof of fresh native XRP spot purchases.
+- CryptoSlate's November 2026 analysis of the Base Morpho cbXRP/USDC market reports 883 liquidation log events from November 7–13, approximately $4.016M USDC repaid, 4.1816M cbXRP seized and approximately $53.53M USDC debt outstanding as of November 13. Source: https://cryptoslate.com/coinbase-wrapped-xrp-collateral-market-liquidations/
+- The 883 count is event logs, not 883 unique borrowers. Collateral seizure does not establish that seized cbXRP was redeemed into native XRP or sold into a public spot book. This is a collateral-stress/credit-transmission feature candidate, not direct spot sell pressure.
+- Preserve separate fields for cbXRP supply, reserve, wrapper mint/burn, Morpho borrow, collateral posted, liquidation events, USDC repaid, cbXRP seized and any verified native-XRP redemption. The bridge from cbXRP liquidation to native-XRP market supply remains unproven.
+
+### Evernorth / XRPN — primary SEC reconciliation of “actual capital”
+
+Primary filing set:
+- SEC prospectus, Form 424B3 dated November 9, 2026: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+- SEC 10-Q, accession 000162828026073871, including subsequent events through November 9: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930_htm.xml
+- SEC 8-K/A dated November 16, 2026: https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/xrpn-20261009.htm
+- October 14 institutional execution-partner announcement: https://www.nasdaq.com/press-release/evernorth-begin-deploying-473-million-xrp-treasury-ripple-kraken-coinbase-and-bitgo
+
+**The 473M XRP headline is not 473M XRP bought with cash.**
+
+- As of October 9, Evernorth reported approximately 473M XRP.
+- The prospectus says $214.1M cash raised through private-placement subscriptions was used to purchase 84,365,876 XRP.
+- Investors also contributed approximately 388,910,554 XRP in kind. The 388.91M in-kind amount is approximately 82.2% of the 473.276M XRP sum represented by those two components; the 84.366M cash-purchased amount is approximately 17.8%.
+- The in-kind contributions include 126,791,458 XRP contributed by Ripple Labs; 211,319,096 XRP contributed by RippleWorks, Inc. to Arrington XRP Capital Fund, LP under the Series C structure; 50M XRP from a Ripple-affiliated Contributor Related Party Entity; and 800,000 XRP across the advance/delayed subscription arrangements. Do not conflate Ripple Labs, RippleWorks, the Arrington sponsor and the unnamed Contributor Related Party Entity as one legal person.
+- At closing, Evernorth reported approximately $272.6M gross cash proceeds before transaction expenses: approximately $224.6M from private-placement investments and approximately $48.0M released from the SPAC trust after redemptions. The in-kind 388.91M XRP was separate from this cash figure.
+- Approximately 80.3% of SPAC public shares (18,463,753 shares) were redeemed. Approximately $193.6M was paid to redeeming holders; only approximately $47.6M of trust cash was released to Pubco. Do not report the $193.6M redemption payment as capital raised by Evernorth.
+- On October 12, Evernorth received approximately $29.0M net proceeds from $30.0M principal of 4.00% convertible senior PIK notes. This is debt, not equity; the prospectus describes potential cash-settlement exposure up to approximately $120M in specified conversion circumstances.
+- Between October 12 and November 9, holders exercised 3,073,366 of 11,739,645 assumed warrants for cash. Evernorth received $35.3M gross proceeds; 8,666,279 warrants remained outstanding. SEC 10-Q exhibit: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/R19.htm
+- The committed equity facility with Cantor covers up to 5,218,935 shares at 97% of applicable VWAP, subject to a 4.99% beneficial-ownership limit and other conditions. Its existence is not evidence that the facility was drawn. The $0.5M commitment fee is a cost, not capital raised.
+- The prospectus says Pubco does not currently plan to invest cash capital directly into XRP ecosystem projects. It intends to deploy a portion of existing XRP holdings into DeFi protocols and RLUSD/XRP liquidity strategies. Its October 14 announcement named Ripple, Kraken, Coinbase and BitGo as institutional execution partners for phased accumulation/deployment from the 473M XRP treasury beginning in Q4 2026; it did not specify a deployment amount. A treasury deployment is not automatically a new spot-market purchase or a new cash capital inflow.
+- This resolves the relevant “actual capital” distinction: cash subscriptions, cash-funded XRP purchases, in-kind XRP contributions, SPAC trust cash after redemptions, debt proceeds, warrant-exercise proceeds and undrawn equity facilities are separate quantities. No single “capital raised” number should combine them without a bridge table.
+
+### SBI Holdings ownership in Evernorth — exact legal entities, not regional SBICs
+
+The SEC prospectus defines “SBI” as SBI Holdings, Inc. and “SBI Stockholders” as four entities controlled by SBI:
+
+1. SBI Venture Fund 2023A Investment LPS
+2. SBI Venture Fund 2023B Investment LPS
+3. SBI PE Holdings Co., Ltd.
+4. SBI Holdings USA, Inc.
+
+The prospectus states each is a subsidiary of or partnership directly or indirectly managed by SBI Holdings, Inc. The principal-securityholder table as of October 22, 2026 reports the four SBI Stockholders collectively holding 9,431,914 Class A shares (36.1% of the then-outstanding Class A class) and 2,359,038 Class C shares (7.5% of the Class C class). Class C has economic/distribution rights but no ordinary voting rights, is not listed and is subject to transfer restrictions. The 39.9% SBI Group figure is a maximum voting-ownership restriction/cap, not a statement that SBI directly owns 39.9% of all Evernorth equity or currently exercises 39.9% of all votes.
+
+The same table reports Ripple with 1,678,382 Class A shares (6.4% of the Class A class) plus 16,461,545 Company Units convertible into Class A, subject to a 9.9% Contributor Group restriction. Arrington XRP Capital Fund, LP holds the Sponsor position; RippleWorks Attributed Ownership is separately capped at 19.9%, with contractual voting/disposition rights over specified side-pocket shares. Evernorth ceased to be wholly owned by or consolidated by Ripple after the October 9 closing. Do not collapse Ripple Labs, RippleWorks, Arrington, SBI Holdings and the four SBI Stockholders into one ownership relationship.
+
+This is direct primary evidence of SBI Holdings-controlled entities' material Evernorth participation. Those entities are not SBIC East, SBIC Central or SBIC West. The regional SBIC corporations remain separate from SBI Holdings.
+
+### Kamilah Stevenson — identity-qualified public YouTube inventory
+
+Identity evidence:
+- In the June 11, 2026 iHeart interview, Kamilah Stevenson identifies her YouTube presence as “doctor Camilla Stevenson” and explicitly warns that many fake pages exist: https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/
+- The matching high-confidence channel is **Kamilah Stevenson — @drkamilahstevenson**, channel ID `UCqUPJMQdkCN6lsLVDnichPA`: https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA
+- The channel handle/name matches the first-person interview's stated YouTube name; an independent channel analytics page reports approximately 143K subscribers and 1.2K videos: https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info
+- Confidence is high from cross-source alignment, but the iHeart transcript does not spell out the exact handle. Do not use matching names alone as proof.
+
+Verified channel uploads found:
+- April 17, 2026 — “Why XRP Matters More Than Your Paycheck” — https://www.youtube.com/watch?v=Us_FIT4RByY (search snapshot: 30,004 views, 2,100 likes).
+- May 17, 2026 — “The People Calling XRP A Scam Are Telling On Themselves.” — https://www.youtube.com/watch?v=SpdhaYB8twQ (15,044 views, 1,300 likes).
+- June 28, 2026 — “This Ends The Bitcoin Vs XRP Debate FOREVER” — https://www.youtube.com/watch?v=H_pp14BO98Q (7,894 views, 750 likes).
+- August 25, 2026 — public upload whose description discusses more than 100M XRP entering Flare's FXRP system, wrapping, DeFi, collateral and yield risks — https://www.youtube.com/watch?v=qtT2hLeFkM0 (search snapshot: 89,042 views, 2,700 likes; exact title was not resolved, so do not invent one).
+- Guest appearance, not her channel upload: December 21, 2025 — “Why Liquidity Comes Before Price XRP Explained” on STOCK UP! with LARRY JONES — https://www.youtube.com/watch?v=mrts0CEPwIc. Its description directly identifies `@drkamilahstevenson` as the guest (31,583 views, 3,600 likes in the search snapshot).
+
+Quarantined / not counted as verified channel inventory:
+- “I Moved My XRP Off The Exchanges” (May 20, 2026), https://www.youtube.com/watch?v=TfFx0g2IgGg, is attributed to Kamilah Stevenson and covered by DailyCoin, but the exact channel ID was not confirmed. Do not include it in the verified-channel count until the uploader identity is resolved.
+- Similar-name channels `UCXm6KAr1WHF6UN7g5b2W7wg` (`@KamilahStevensonXrpStocks`), `UCGZz6xGqdQDk9wNul__VQbg` (`@drkamilahstevenson-j9r`) and `UCYFaD0cVIxjtxIW053EgZpA` (`@KamilahStevenson-e7b`) are separate and not authenticated by the interview. Exclude them; the speaker expressly warned about impersonators.
+- Treat all creator claims as leads, not institutional evidence. In particular, independently verify the >100M FXRP claim on Flare/XRPL data before using it as a supply-lock or demand feature. The creator's views on XRP price, dollar debasement, institutional adoption and macro are not forecasts validated by Barrot.
+
+### Exact-phrase continuation
+
+- “ASK Coin”: no verified XRP-linked issuer, token or legal entity identified.
+- “actual capital”: the useful lead is Evernorth's capital stack above; do not treat the phrase as a separate asset/entity.
+- “SBIC, ChatGPT SBIC”: no OpenAI/ChatGPT-SBIC partnership established. Japanese SBIC training material mentioning ChatGPT is not evidence of an OpenAI relationship or XRP transaction.
+
+### Feature-store admission and prediction disposition
+
+- The Fuelmaps order-book map, XRP Insights wallet attribution, Coinbase cbXRP proof-of-reserves page, Morpho liquidation analysis and YouTube content are **research-only** in this run: original raw bytes, immutable receipts, provider event-time semantics and/or independent corroboration are incomplete.
+- SEC Evernorth filings are primary-source evidence with filing/publication timestamps, but must still be ingested as original bytes with SHA-256 receipts, accession/document identifiers, effective/available times and event-type normalization before point-in-time model use.
+- Evernorth's XRP contribution, SBI ownership, cash/debt/warrant proceeds and future treasury deployment must be separate event/entity/ownership records. Do not create a single capital-flow feature from the headline 473M XRP.
+- No directional XRP forecast is authorized. The research provides new event and feature definitions, not validated predictive lift. All forecasts remain `NOT_SATISFIED`.
+
+### Run 228 supplement disposition
+
+- **EXECUTED:** fresh six-venue order-book research; exchange-wallet attribution and cbXRP/credit-market research; primary SEC Evernorth capital-stack and SBI ownership reconciliation; identity-qualified Kamilah Stevenson channel inventory.
+- **VERIFIED:** SEC filings directly establish the stated Evernorth cash/in-kind/ownership figures; the official channel is cross-matched to a first-person interview and matching handle; exact-head suite/audits on pre-supplement head `dbcd43c` passed.
+- **NOT VERIFIED:** raw-byte/hash receipts for the new live market/DeFi observations; full on-chain confirmation of FXRP supply claim; exact upload identity for `TfFx0g2IgGg`; any directional predictive edge.
