@@ -83,6 +83,15 @@ jobs:
               [[ "$strict" == "true" ]] || add_blocker "branch protection does not require strict up-to-date checks"
               required_contexts="$(jq -r '[.required_status_checks.contexts[]?, .required_status_checks.checks[]?.context] | unique | .[]' <<< "$protection")"
               [[ -n "$required_contexts" ]] || add_blocker "branch protection exposes no required status checks"
+              admin_enforced="$(jq -r '.enforce_admins.enabled // false' <<< "$protection")"
+              [[ "$admin_enforced" == "true" ]] || add_blocker "administrator enforcement is not enabled or cannot be verified"
+              force_pushes="$(jq -r '.allow_force_pushes.enabled // false' <<< "$protection")"
+              [[ "$force_pushes" == "false" ]] || add_blocker "branch protection permits force pushes"
+              deletions="$(jq -r '.allow_deletions.enabled // false' <<< "$protection")"
+              [[ "$deletions" == "false" ]] || add_blocker "branch protection permits branch deletion"
+              required_approvals="$(jq -r '.required_pull_request_reviews.required_approving_review_count // 0' <<< "$protection")"
+              [[ "$required_approvals" -ge 1 ]] || add_blocker "branch protection does not require an independent approval"
+              [[ "$approvals" -ge "$required_approvals" ]] || add_blocker "independent approvals do not satisfy branch-protection count"
 
               if check_runs="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/check-runs?per_page=100" 2>/dev/null)" &&
                  statuses="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/status" 2>/dev/null)"; then

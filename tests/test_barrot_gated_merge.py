@@ -40,7 +40,7 @@ def test_merge_gate_requires_full_suite_and_security_checks_on_exact_head() -> N
         "GitHub Pages build (validation only)",
         "pip-audit",
         "audit",
-        "commits/\${actual_head}/check-runs",
+        "commits/${actual_head}/check-runs",
     ):
         assert required in source
 
