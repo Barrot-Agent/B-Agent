@@ -13,20 +13,20 @@
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 366,
+      "ahead_by": 369,
       "behind_by": 0,
-      "changed_files": 1438,
+      "changed_files": 1439,
       "changed_workflow_files": 68,
       "formal_reviews": 0,
-      "snapshot_head_sha": "28b69e2d259d9f3061330a7282dafa7c55f81dc0",
-      "commits": 366,
+      "snapshot_head_sha": "4895e44d85e28c669e90d53c6b7cecce9ba3a9da",
+      "commits": 369,
       "additions": 518399,
       "deletions": 6754,
       "mergeable_state": "GitHub reports mergeable, but PR remains draft. Exact-head full suite failed two evidence-contract assertions: stale test expected #1665 blocked while map correctly marks its already-integrated Pylint change duplicate; latest_market_snapshot lacked artifact_path. Test correction and source-linked market artifact are committed to the existing branch; new exact-head CI is pending. Zero independent reviews; branch protection details remain 403; fallback ruleset disabled; CODEOWNERS self-only; main publisher and Pages side effects remain blockers; transitive workflow audit incomplete.",
       "review_comments": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
-      "current_pr_head_sha": "28b69e2d259d9f3061330a7282dafa7c55f81dc0",
+      "current_pr_head_sha": "4895e44d85e28c669e90d53c6b7cecce9ba3a9da",
       "snapshot_ahead_by": 364,
       "snapshot_changed_files": 1438,
       "handoff_update_commit_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
@@ -44,7 +44,7 @@
       "last_audited_at_utc": "2026-11-19T00:05:22Z",
       "latest_verified_full_suite_head_sha": "223d5bd687166da0080835636190896344f5c7f1",
       "latest_verified_full_suite_run": 44421533967,
-      "current_branch_head_full_suite_status": "FAIL on exact head 28b69e2: 4,277 passed, 2 evidence-contract assertions failed, 1 skipped, 11 warnings, 19 subtests; remediation is committed to the same integration branch and requires a new exact-head full-suite run."
+      "current_branch_head_full_suite_status": "The audited test head 28b69e2 failed 2 evidence-contract assertions (4,277 passed); artifact and test corrections are committed. Snapshot branch head 4895e44 contains those corrections; exact-head full-suite rerun is pending."
     },
     "tree_counts": {
       "main": {
@@ -54,7 +54,7 @@
         "xrp_research_files": 30
       },
       "integration": {
-        "entries": 2985,
+        "entries": 2986,
         "workflow_files": 93,
         "test_named_files": 547,
         "xrp_research_files": 843
@@ -2201,13 +2201,15 @@
       "pr_number": 1663,
       "ahead_by": 366,
       "behind_by": 0,
-      "changed_files": 1438,
+      "changed_files": 1439,
       "changed_workflow_files": 68,
       "main_tree_entries": 1739,
-      "integration_tree_entries": 2985,
+      "integration_tree_entries": 2986,
       "main_paths_missing_from_integration": 0,
       "open_prs": 13,
-      "main_modified": false
+      "main_modified": false,
+      "integration_head_after_evidence_commits": "4895e44d85e28c669e90d53c6b7cecce9ba3a9da",
+      "commits_ahead": 369
     },
     "ci": {
       "push_run": 44423322969,
@@ -2234,7 +2236,8 @@
         "Changed stale test expectation for #1665 from blocked to duplicate, matching the already-integrated Pylint dependency change.",
         "Added latest_market_snapshot.artifact_path and a source-linked evidence artifact that explicitly records rendered-response hash scope and absence of raw wire bytes/WORM anchoring."
       ],
-      "next": "Exact-head full-suite, dependency, fail-closed and money-audit reruns required on corrected branch head."
+      "next": "Exact-head full-suite, dependency, fail-closed and money-audit reruns required on corrected branch head.",
+      "map_snapshot_commit": "4895e44d85e28c669e90d53c6b7cecce9ba3a9da"
     },
     "market": {
       "kraken_last_usd": 0.96509,
