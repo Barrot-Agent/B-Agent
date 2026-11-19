@@ -20,24 +20,28 @@ def export_midi(manifest: MusicalManifest, destination: str | Path) -> Path:
 
     midi = pretty_midi.PrettyMIDI(initial_tempo=manifest.bpm)
     instruments = {}
+    programs = {"bass": 33, "keys": 4, "lead": 80}
+    drum_pitches = {"kick": 36, "snare": 38, "hihat": 42, "hat": 42, "cymbal": 49, "percussion": 39}
     for name in manifest.instruments:
-        is_drum = name.lower() in {"kick", "snare", "hihat", "hat", "cymbal", "percussion"}
+        is_drum = name.lower() in drum_pitches
         instrument = pretty_midi.Instrument(
-            program=0 if is_drum else 0, is_drum=is_drum, name=name
+            program=programs.get(name.lower(), 0), is_drum=is_drum, name=name
         )
         instruments[name] = instrument
         midi.instruments.append(instrument)
 
     seconds_per_beat = 60.0 / manifest.bpm
     for event in manifest.events:
-        if event.pitch is None:
+        drum_pitch = drum_pitches.get(event.instrument.lower())
+        pitch = event.pitch if event.pitch is not None else drum_pitch
+        if pitch is None:
             continue
         start = event.beat * seconds_per_beat
         end = start + event.duration * seconds_per_beat
         instruments[event.instrument].notes.append(
             pretty_midi.Note(
                 velocity=event.velocity,
-                pitch=event.pitch,
+                pitch=pitch,
                 start=start,
                 end=max(start + 0.01, end),
             )
