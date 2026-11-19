@@ -146,29 +146,22 @@ ARTIFACT_ONLY_WORKFLOWS = (
 )
 
 
-def test_coinbase_paper_trader_is_manual_exact_sha_and_artifact_only() -> None:
+def test_coinbase_paper_trader_remains_disabled_until_shadow_evaluation_is_approved() -> None:
     workflow = (
         REPO_ROOT / ".github" / "workflows" / "coinbase-paper-trader.yml"
     ).read_text(encoding="utf-8")
     lowered = workflow.lower()
-
     assert "workflow_dispatch:" in lowered
+    assert "permissions: {}" in lowered
+    assert ("if: $" + "{{ false }}") in lowered
+    assert "secrets." not in lowered
     assert "schedule:" not in lowered
     assert "push:" not in lowered
     assert "workflow_run:" not in lowered
-    assert "contents: read" in lowered
-    assert "contents: write" not in lowered
-    assert "inputs.confirm == 'yes'" in lowered
-    assert "inputs.expected_main_sha" in lowered
-    assert "expected_main_sha" in lowered
-    assert "git fetch --no-tags --depth=1 origin main" in lowered
-    assert "current_main" in lowered and "checked_out" in lowered
     assert "git push" not in lowered
     assert "git commit" not in lowered
-    assert "actions/upload-artifact@" in lowered
-    assert "retention-days: 7" in lowered
-
-
+    assert "actions/upload-artifact" not in lowered
+    assert "no credentials are read" in lowered
 
 def test_legacy_market_analysis_is_permanently_retired_even_with_opt_in(
     tmp_path: Path,
