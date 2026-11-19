@@ -1,77 +1,74 @@
 #!/usr/bin/env python3
-# ==============================================================================
-# XRP TELEMETRY MATRIX [REPORT GENERATOR ENGINE]
-# Architect: Sean | Node: Brooklyn Core
-# Execution: Barrot-Ω & The Council
-# Objective: XRP Global Equity Dominance - Automated Council Review
-# ==============================================================================
+"""Legacy XRP report entry point, deliberately non-predictive.
+
+This module has no authenticated market-data adapter. It must not manufacture
+prices, sentiment, liquidity, or accumulation recommendations. The report is
+a status notice until verified point-in-time telemetry is supplied by the
+separate XRP ingestion and evidence pipeline.
+"""
+from __future__ import annotations
 
 import asyncio
-import logging
-import os
-import sys
+import math
 from datetime import datetime, timezone
+from pathlib import Path
 
 
 class CouncilReportNode:
-    def __init__(self, stability_anchor: float = 0.707):
+    """Write an explicit no-data/no-forecast status report.
+
+    stability_anchor remains accepted for source compatibility with older
+    callers. It is configuration metadata only and is never treated as a
+    measured market feature.
+    """
+
+    def __init__(
+        self,
+        stability_anchor: float = 0.707,
+        report_path: str | Path = "COUNCIL_REVIEW.md",
+    ) -> None:
+        if isinstance(stability_anchor, bool) or not isinstance(stability_anchor, (int, float)):
+            raise ValueError("stability_anchor must be a finite number")
+        if not math.isfinite(float(stability_anchor)):
+            raise ValueError("stability_anchor must be a finite number")
         self.asset = "XRP"
-        self.stability_anchor = stability_anchor
-        self.report_path = "COUNCIL_REVIEW.md"
+        self.stability_anchor = float(stability_anchor)
+        self.report_path = Path(report_path)
 
-        logging.basicConfig(
-            level=logging.INFO,
-            format="%(asctime)s - [BARROT-Ω COUNCIL] - %(message)s",
-            datefmt="%Y-%m-%d %H:%M:%S",
-        )
-        self.logger = logging.getLogger(__name__)
+    async def generate_report(self) -> None:
+        """Write a deterministic safety report; no network or market calls occur."""
+        generated_at = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+        report_content = f"""# XRP Telemetry Status
 
-    async def generate_report(self):
-        self.logger.info("Synthesizing telemetry data...")
-        await asyncio.sleep(0.5)
+**Generated at:** {generated_at}
+**Asset scope:** {self.asset}
+**Data status:** NO_VERIFIED_TELEMETRY
+**Legacy stability-anchor configuration:** {self.stability_anchor} (not a market observation)
 
-        sentiment_score = 0.94
-        market_price = 1.185
-        shear_variance = 0.233
+## Market measurements
 
-        self.logger.info("Compiling Framework Diagnostics...")
-        await asyncio.sleep(0.5)
+No price, order-book depth, exchange flow, derivatives, sentiment, or liquidity
+measurement is admitted by this legacy report generator. It has no live data
+adapter, source timestamp, raw-source receipt, or provenance record.
 
-        self.logger.info(f"Writing synthesis to physical asset: {self.report_path}...")
+## Forecast status
 
-        report_content = f"""# BARROT-Ω COUNCIL REVIEW
-**Date/Time:** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC
-**Architect:** Sean
-**Stability Anchor:** {self.stability_anchor} Shear
+**NOT_ISSUED**
 
----
+No directional forecast or probability is produced. A forecast requires a
+point-in-time dataset, validated source provenance, leakage-safe out-of-sample
+evaluation, baseline comparison, and probability calibration.
 
-## 1. THE TELEMETRY SYNTHESIS
-* **Target Asset:** {self.asset}
-* **Market Vector:** ${market_price} USD
-* **Hugging Face Narrative Velocity:** High (Sentiment Score: {sentiment_score})
-* **Databricks Liquidity Cross-Corroboration:** MAX_LIQUIDITY
-* **Shear Variance:** {shear_variance}
+## Decision boundary
 
-## 2. FRAMEWORK DIAGNOSTICS
-* **Substrate:** Termux Mobile Node (Active)
-* **Orchestration Hook:** B-Agent Repository (Synchronized)
-* **Config Files Matched:** ai-tools-config.yaml, coin-app-config.yaml, build_manifest.yaml
-* **Python-to-Bash Fluidity:** Stable. Execution layer remains optimal.
-
-## 3. COUNCIL RECOMMENDATIONS
-* **Phase 1 (Immediate):** The current liquidity threshold paired with High narrative velocity indicates optimal accumulation alignment. Recommend binding this specific telemetry loop to an automated GitHub commit trigger to physically archive market states over time.
-* **Phase 2 (Architectural):** To further minimize manual handling, Barrot suggests writing a pure Bash chron-job that automatically reads this Markdown file and pushes the synthesis directly to your live orchestration nodes, completing the feedback loop instantly.
+No accumulation recommendation, trade instruction, automated commit trigger,
+deployment, or external action is authorized by this report. Use the verified
+XRP evidence pipeline and forecast ledger for any future research output.
 """
-        with open(self.report_path, "w") as f:
-            f.write(report_content)
+        self.report_path.write_text(report_content, encoding="utf-8")
 
-        self.logger.info(f"=== COUNCIL REVIEW COMPILED: {self.report_path} ===")
-
-    async def process_telemetry(self):
-        self.logger.info(
-            f"=== INITIALIZING AUTONOMOUS REPORT GENERATOR [Anchor: {self.stability_anchor}] ==="
-        )
+    async def process_telemetry(self) -> None:
+        """Compatibility entry point; this only writes the no-data status report."""
         await self.generate_report()
 
 
@@ -80,4 +77,4 @@ if __name__ == "__main__":
     try:
         asyncio.run(node.process_telemetry())
     except KeyboardInterrupt:
-        sys.exit(0)
+        raise SystemExit(0)
