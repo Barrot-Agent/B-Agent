@@ -2917,3 +2917,134 @@ Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain
 7. Continue synchronized multi-venue L2 capture, ETF issuer-row reconciliation, derivatives venue-universe normalization and leakage-safe walk-forward/baseline/calibration/drift/shadow evaluation.
 
 **Disposition: NO MERGE.** Exact-head full-suite, dependency and fail-closed checks passed on `223d5bd`, but the Run 30 documentation successor still needs exact-head CI. Independent review, branch-protection verification, automatic-publication controls and the full transitive workflow audit remain blockers. No deployment, release, secret rotation, Space restart, Kaggle submission, Databricks write, external-model dispatch, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 32 — 2026-11-19 00:46 UTC
+
+**Disposition: NO MERGE.** The previous integration head passed the expanded full repository suite. The latest main commit was then incorporated into the existing integration branch with a non-force two-parent merge commit. A new evidence artifact and regression test were added to the same branch. Exact-head CI for that final evidence/test commit is required before any merge decision.
+
+### Repository synchronization and automatic main-side effect
+
+- Current main at snapshot: `82c23e219553164c24073784c529aad75acacd66`.
+- Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
+- Integration head before this evidence update: `2d876d5e823ace0025d19d7a2bfd9bc713db05c7`.
+- Main advanced from `d5d22ac252f88637a490ed4c1598f8608b6cb786` to `82c23e219553164c24073784c529aad75acacd66` through automatic commit `hunter: paid issue scan 2026-11-19T00:42Z from run 44431013238`.
+- That main commit changed only `PAID-ISSUES.md` and `data/money/paid_issues.json` timestamps. The active main `paid-issue-publish.yml` workflow has `contents:write`, checks out main with persistent credentials, commits and pushes.
+- The resulting automatic GitHub Pages deployment [44431136074](https://github.com/Barrot-Agent/B-Agent/actions/runs/44431136074) succeeded. This was an automatic repository workflow side effect, not an action initiated by this run.
+- The exact main commit was incorporated into the existing integration branch through non-force merge commit `2d876d5e823ace0025d19d7a2bfd9bc713db05c7`, with parents `4e5c01bb530a2fe5c9efe749a94c9bdd9748ecec` and `82c23e219553164c24073784c529aad75acacd66`. The ref update used an expected-head lease. No force push, reset, stash, branch rewrite, new branch or new PR occurred.
+- After synchronization: 381 commits ahead, zero behind; 1,440 changed files; 68 changed workflow files; 2,987 integration tree entries versus 1,739 main entries; zero main paths missing.
+- The full repository contains 93 workflow files on integration and 92 on main. The 68 changed workflows remain subject to a complete transitive audit.
+
+### Exact-head CI evidence before the main synchronization
+
+Full-suite run [44429499054](https://github.com/Barrot-Agent/B-Agent/actions/runs/44429499054) passed on exact predecessor head `4e5c01bb530a2fe5c9efe749a94c9bdd9748ecec`:
+
+- 4,280 passed; 1 skipped; 0 failed.
+- 11 warnings; 19 subtests passed.
+- 151.38 seconds.
+- 68.13% inclusive coverage; 77% legacy-core coverage.
+- Wheel build and isolated installed-wheel verification of Barrot V3, the primary XRP mission and canonical assets passed.
+- Dependency audit [44429498950](https://github.com/Barrot-Agent/B-Agent/actions/runs/44429498950), fail-closed gate [44429498971](https://github.com/Barrot-Agent/B-Agent/actions/runs/44429498971), PR money audit [44429509029](https://github.com/Barrot-Agent/B-Agent/actions/runs/44429509029), PR dependency audit [44429509361](https://github.com/Barrot-Agent/B-Agent/actions/runs/44429509361) and PR fail-closed gate [44429509275](https://github.com/Barrot-Agent/B-Agent/actions/runs/44429509275) passed. PR CI [44429509055](https://github.com/Barrot-Agent/B-Agent/actions/runs/44429509055) passed but skipped test jobs because the PR remains draft.
+- The main-sync commit changed only the two generated paid-issue files, which `.github/workflows/ci.yml` explicitly ignores. A new regression test was added with this Run 32 evidence artifact so the final evidence commit triggers the full suite. Its exact-head result must be read from the resulting workflow run; no predecessor result is transferred.
+
+### Fresh spot-market evidence
+
+Market API retrieval context: 2026-11-19 00:39:46 UTC.
+
+**Kraken XRP/USD**
+
+- Last trade: $0.96450.
+- Best bid: $0.96479 for 350 XRP.
+- Best ask: $0.96484 for 347 XRP.
+- Spread: 0.5182 bps.
+- 24-hour volume: 44,039,584.638 XRP.
+- 24-hour VWAP: $0.98170350.
+- 24-hour low/high: $0.95485 / $1.00677.
+- Last trade is 1.7524% below 24-hour VWAP.
+- Kraken's `o` field remains the UTC-day open ($0.96637), not the rolling 24-hour open.
+
+**OKX XRP-USDT**
+
+- Exchange event time: 2026-11-19 00:20:49.771 UTC, approximately 18m56s older than the Kraken retrieval.
+- Last: 0.9622 USDT.
+- Bid/ask: 0.9621 / 0.9622 USDT.
+- Bid/ask size: 2,586.397 / 3,534.450 XRP.
+- Spread: 1.0393 bps.
+- 24-hour volume: 30,442,378.236 XRP.
+
+USD normalization was rejected: no synchronized USDT/USD conversion leg was available and the quote timestamps were too far apart. Full synchronized Level 2 depth and sequence reconstruction were not captured. The two top-of-book snapshots are venue-specific and do not support a directional conclusion.
+
+SHA-256 receipts were calculated over the exact JSON text surfaced by the public API viewer. They are not raw HTTP wire-byte captures and are not externally WORM-anchored. The exact hashes and scopes are in the Run 32 artifact.
+
+### ETF flows — partial and non-consensus
+
+CryptoKeyhole's page was updated at 00:35 UTC on November 19:
+
+- November 17: -3,251 XRP, partial, 3 of 4 daily-readable funds reported.
+- November 13: latest complete day, -9,967 XRP.
+- November 9–13: -4,923,033 XRP across five complete sessions.
+- Four funds reported holdings of 1,071,130,804 XRP on November 13.
+- November 18: no issuer files available at the page update.
+
+Do not average this with XRP Insights, Alpha Finance or CryptoTuts. Their universes, units, time cutoffs and completeness differ. CryptoKeyhole reads issuer files, but remains an aggregator rather than an independent issuer confirmation.
+
+### Binance breach: XRP-specific flow and recovery evidence
+
+- On October 29, approximately 233.46M XRP left five Binance wallets.
+- CryptoQuant reports Binance-attributed XRP reserves rising from 2.35B on November 3 to 2.63B on November 5 (+280M). Its large-transfer netflow measure moved from -226M on October 29 to +273M on November 4. The source of the increase remains unknown: internal transfers, customer deposits, OTC purchases and open-market purchases remain competing explanations.
+- XRPL-Utilities traces approximately 216M XRP (about 93% of the stolen amount) to deposit accounts at about ten exchanges and swap services by November 12. Deposit-account arrival is not proof of sale or execution.
+- Reuters reported on November 18 that an Abu Dhabi Global Market Court order requires 18 named companies to keep affected assets frozen and prohibits lending, swapping or mixing pending proceedings. Circle and World Liberty Financial are among the named firms; Tether is not named in the order but says it had frozen $1.5B and is working with Binance. A further hearing is scheduled for December 1.
+- AP separately reported more than $1.2B seized or restrained by US authorities and more than $2.7B frozen/restrained by public and private partners. These totals overlap; do not add them to the $2.85B Binance recovery figure.
+- Reuters on November 18 reported Binance's target to reopen remaining networks and assets by the end of that week, after 87 networks had reopened by November 14. Binance's own November 3 and November 6 recovery tables list XRP on BSC/ETH network rows while the XRP network row lists RLUSD. The reviewed public tables do not establish native XRPL withdrawal availability; do not collapse network/asset pairs.
+- Binance's 95% recovery statement in Reuters on November 18 differs from CryptoQuant's report that Binance said 98% of affected assets were replenished by November 4. Preserve dates and scopes; do not average.
+- Reuters also reported Binance's stated plan to expand into five Asian markets in 2027, with three discussions advanced and no current need for fundraising. Binance does not publish full financial statements, so its balance-sheet resilience claims are not independently auditable from public financial statements.
+
+### Institutional, custody and payment-rail reconciliation
+
+**Ripple–BNY (October 27 primary announcement):** BNY is RLUSD's primary reserve custodian, has an existing Ripple Prime custody relationship, and now supports XRP and RLUSD on its Digital Asset Custody platform. Future direct RLUSD mint/redeem, broader XRPL tokenized-asset support and C2FO supply-chain/tokenized trade-finance use cases are intentions subject to approvals and client requirements. Custody support is not proof of client XRP balances or XRP purchases.
+
+**Ripple–Coinbase (October 28 primary announcement):** RLUSD is available through Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral availability was described as a future step; it is not verified live. Stablecoin distribution is not proof of XRP demand.
+
+**World Bank–Citi–Circle (November 17 primary announcement):** the World Bank Group is exploring an intermediated/interoperable USDC payment model alongside or improving correspondent-banking disbursement rails. This is exploratory, not a production deployment. The announcement does not name Ripple or XRP and is a competing institutional stablecoin pathway.
+
+**SBI–Ripple:** SBI VC Trade announced RLUSD distribution in Japan on June 24 and its own Type 4 electronic-payment-instrument classification under Japanese law. SBI Ripple Asia's February 24 Japan–Korea remittance research and February 26 tokenized-deposit proof of concept contemplated XRPL. These are distribution/research/PoC facts, not evidence of production XRP purchases, collateral use or settlement demand.
+
+**SBI–Circle:** SBI's May 12 primary disclosure confirms a $50M Circle equity investment at listing, participation in the Arc token presale through subsidiaries and the SBI Circle Holdings joint-venture structure. This is strategic equity/USDC alignment, not XRP capital deployment.
+
+**Ripple and Coinbase trust-bank status:** Ripple's October 26 release states final OCC approval; the OCC Corporate Applications Search record shows Consummated/Effective October 26. The accessible OCC Conditional Approval #1359 letter remains the preliminary conditional letter; no separate final OCC decision letter was located in this review. Do not infer that RNTB has commenced operations. Ripple states RLUSD continues to be issued by Standard Custody & Trust Company, its NYDFS-regulated limited-purpose trust company; the national trust bank's approved scope includes segregated reserve management, collateral trustee duties and fiduciary custody.
+
+Coinbase's OCC Corporate Decision #1370 dated November 6 grants final conditional approval, and the OCC CAS record shows Consummated/Effective November 6. Coinbase says it was authorized to open November 9. The entity is a national trust company for fiduciary digital-asset custody, not an insured full-service commercial bank. Migration of custody from Coinbase Custody Trust Company, LLC is intended over a three-year period; completed client-asset migration totals were not verified.
+
+### SBIC, exact phrases and creator identity
+
+No new primary-source identity evidence changed the SBIC conclusion: SBIC East, Central and West are distinct regional Japanese small-business investment/consultation companies, not SBI Holdings. No verified XRP/Ripple ownership or partnership follows from the SBIC names or their ChatGPT training/seminar activity.
+
+The strongest exact-name ASK Coin match remains Permission Coin (ASK); no Ripple/XRPL relationship was established. The phrase “actual capital” remains secondary commentary, not primary proof of XRP capital deployment. One Kamilah Stevenson guest appearance remains video-level verified; a channel-wide inventory remains incomplete and similarly named channels remain excluded.
+
+### Prediction-engine readiness
+
+The integration branch contains `.github/workflows/xrp-public-ingestion.yml`, scheduled at minute 3 hourly and 00:15 UTC daily, with `actions:read` and `contents:read`. It is absent from main and therefore not active in production. Raw-source artifacts have 90-day GitHub retention, feature checkpoints 7 days; this is not WORM storage. The last recorded ingestion remains run 44301868145: 34 receipts (22 raw-retained, 12 digest-only), 21 source failures, 3,235 feature-history records, 140 events, 107 scenarios, zero walk-forward forecasts, zero successful SEC submissions/companyfacts captures and zero of two CFTC weekly source families. Raw-to-feature reconstruction remains unverified.
+
+Forecast status remains **NOT_ISSUED**. No candidate passed chronological out-of-sample testing, naive/momentum/mean-reversion/volatility baselines, calibration, drift, source-cluster, shadow and independent-attestation gates. No directional forecast, paper trade or real-money action occurred.
+
+### Nine-platform coordination
+
+ChatGPT-to-GitHub repository access is verified for this session, including repository/tree/PR/workflow reads and integration-branch writes. Repository metadata reports admin/maintain/push/pull/triage, but token scopes were not introspected and least privilege is not established. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified for Barrot authentication, permissions and data flows. No external model dispatch or evidence transfer occurred.
+
+### Open PR backlog and merge decision
+
+Thirteen PRs remain open:
+
+- **Blocked:** #1663, #1668, #1666, #1541, #1265.
+- **Duplicate:** #1665 (its Pylint dependency change is already present in #1663; do not close until the integrated successor is merged and verified on main).
+- **Unique/unreviewed:** #1664, #1450, #1460, #1440, #1436, #1437, #1353.
+- Ready: zero; superseded: zero.
+
+Main branch metadata reports protection enabled, but required status-check contexts are empty and enforcement is set to `non_admins`. The fallback ruleset remains disabled. `CODEOWNERS` assigns all ownership to `@Barrot-Agent`; PR #1663 has zero independent reviews and remains draft. The active main paid-issue publisher and automatic Pages deployment are confirmed side effects. The integration versions disable the publisher and quarantine the broad-write Barrot worker; the Coinbase paper-trader workflow is artifact-only with explicit confirmation and exact-main-SHA checks. The full transitive audit of all 68 changed workflow definitions, invoked scripts, downloaded artifacts and third-party action dependencies remains incomplete.
+
+**Final decision: NO MERGE.** Exact-head full-suite evidence passed on `4e5c01b`, but the main-sync commit `2d876d5` and the new Run 32 evidence/test commit require their own push-triggered full-suite verification. Independent review, required-check enforcement, Pages side-effect governance and the complete workflow audit remain blockers. No deployment, release, secret rotation, Space restart, Kaggle submission, Databricks write, external-model dispatch, paper trade, funds transfer or real-money action was performed.
+
+Run 32 artifact: [`20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json`](research/xrp_intelligence/20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json).
+Run 32 regression test: [`test_xrp_run32_market_custody_binance_evidence.py`](tests/test_xrp_run32_market_custody_binance_evidence.py).
