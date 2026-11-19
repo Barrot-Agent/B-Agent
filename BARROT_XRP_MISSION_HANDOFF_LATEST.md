@@ -1,14 +1,14 @@
 # Run 34 — 2026-11-19T02:11Z current-state addendum
 
-**Disposition: KEEP DRAFT — NO MERGE.** The exact prior integration head `1e57a9e5bfc3b7721ec061e47c83bbaac1a5b58e` passed the complete repository suite. Run 34 added one research artifact and is updating this canonical handoff on the existing integration branch. The resulting documentation-only head `6bc73c57881cb654c122191c164c09cf930069eb` still requires its own exact-head CI; do not transfer the previous test result to it.
+**Disposition: KEEP DRAFT — NO MERGE.** The exact prior integration head `1e57a9e5bfc3b7721ec061e47c83bbaac1a5b58e` passed the complete repository suite. Run 34 added and corrected one research artifact and updated this canonical handoff on the existing integration branch. The latest pre-handoff-update head is `87e5036e8e6ab77d611c9e086a69079fbe790b3c`; the handoff update creates another documentation-only head. Exact-head CI for the final head must pass; do not transfer the previous test result.
 
 ## Repository, tree and CI
 
 - Main SHA: `82c23e219553164c24073784c529aad75acacd66`.
 - Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
-- Current integration head after Run 34 research artifact: `6bc73c57881cb654c122191c164c09cf930069eb`.
-- PR #1663: [existing consolidated integration](https://github.com/Barrot-Agent/B-Agent/pull/1663), draft, mergeable/clean, zero reviews, zero requested reviewers, zero review threads.
-- PR metadata at this checkpoint: 387 commits ahead of its base, 1445 changed files, 523264 additions, 6754 deletions; head matches the research artifact commit.
+- Pre-handoff-update integration head after Run 34 research corrections: `87e5036e8e6ab77d611c9e086a69079fbe790b3c`.
+- PR #1663: [existing consolidated integration](https://github.com/Barrot-Agent/B-Agent/pull/1663), draft, GitHub mergeable but currently `unstable` while checks are pending, zero reviews, zero requested reviewers, zero review threads.
+- PR metadata at the pre-handoff-update checkpoint: 390 commits ahead of its base, 1445 changed files, 523393 additions, 6754 deletions; head matches the corrected Run 34 research artifact.
 - Main tree: 1,739 entries, complete. Integration tree: 2,992 entries, complete. All 1,739 main paths are present. The PR contains 68 changed workflow files. No new branch or PR was created.
 - Exact-head full repository suite on predecessor `1e57a9e`: **4,288 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests passed in 118.55 seconds; 68.13% inclusive coverage and 77% legacy-core coverage**. Full suite, core tests, Pages validation-only build, wheel build and packaged Barrot V3/XRP mission verification passed. [Run 44435940366](https://github.com/Barrot-Agent/B-Agent/actions/runs/44435940366).
 - Push dependency audit [44435940362](https://github.com/Barrot-Agent/B-Agent/actions/runs/44435940362) and push fail-closed gate [44435940433](https://github.com/Barrot-Agent/B-Agent/actions/runs/44435940433): PASS.
@@ -64,6 +64,21 @@ Ripple's 2026-10-28 corporate release says it received final OCC approval for a 
 - These are unsynchronized top-of-book observations; OKX is USDT-denominated and was not normalized to USD. Large one-snapshot displayed bid/ask ratios are not executable depth or a directional signal.
 - ETF providers disagree: XRP Insights reports +159,134 XRP over Nov 16–17 but counts flow-excluded funds as zero; CryptoKeyhole reports a partial Nov 17 outflow of 3,251 XRP (3/4 daily-read funds) and a partial Nov 16 outflow of 5.197M XRP; Alpha Finance reports -$6.1M on Nov 17 across five funds; CryptoTuts reports -$7.23M over Nov 12–18 across five reported funds. These universes, units, cutoffs and methods differ. Do not average them. Reconcile issuer holdings files fund by fund.
 - XRP Insights reports 22.19B XRP across 707 wallets attributed to 24 exchanges at 2026-11-18 08:00Z, with same-wallet declines of 151.9M XRP over seven days and 390.1M over 30 days. Cold storage and wrapped reserves are included; this is not tradable float.
+
+### Additional institutional, custody and regulatory evidence
+
+- Circle's Arc mainnet launched 2026-09-16. Circle says USDC is the gas asset and quotes SBI Holdings as a founding validator intending to use USDC and JPYSC. Circle reported more than $74B USDC in circulation at launch. This is a distinct Circle rail, not XRPL.
+- Ripple Prime collateral must be separated by asset: Ripple says RLUSD is already used as collateral in some prime-brokerage products and that some derivatives clients hold RLUSD balances. Its current product page lists XRP and RLUSD among possible collateral types, but no public XRP collateral balances or posted-value series were found.
+- BNY's 2026-10-27 announcement says its Digital Asset Custody platform now supports XRP and RLUSD for eligible institutional clients. BNY was already the primary RLUSD reserve custodian. Direct BNY mint/redeem and tokenized trade-finance activity on XRPL remain future intentions subject to approvals; custody support is not proof of client holdings or flows.
+- Ripple's 2026-10-15 RWA perpetual-swap announcement identifies RLUSD as collateral for institutional RWA swaps, with Virtu named as a client. This is evidence of a live product offering, not public client-level collateral volume.
+- Ripple's 2026-10-27 Robinhood partnership adds RLUSD on Robinhood Chain and Bitstamp, planned app distribution, institutional XRPL settlement and Ripple Treasury integration. This is stablecoin/treasury/prime-brokerage adoption, not automatic XRP bridge demand.
+- Ripple's 2026-10-28 company release reports a $900M annualized product-revenue run rate, $16T product transactions enabled in 2025, 85+ licenses and 1,700+ institutions/corporates/enterprises. These are company-reported product metrics, not XRP Ledger volume or XRP notional.
+- The OCC's 2026-10-21 GENIUS Act final rule takes effect 2027-01-18. It establishes requirements for payment stablecoin issuers and certain OCC-supervised custody activities; BSA/AML and OFAC-related rulemaking is separate.
+- Circle and Ripple remain separate stablecoin issuers. No direct bilateral Circle-Ripple partnership was established in the primary sources reviewed. USDC and RLUSD both being available on XRPL does not establish XRP bridge-asset usage.
+
+### ETF flow reconciliation correction
+
+The current source pages show: XRP Insights +159,134 XRP for Nov 16–17, with flow-excluded funds counted as zero; CryptoKeyhole -3,251 XRP for Nov 17 (3 of 4 daily-readable funds) and -5.197M XRP for Nov 16 (also 3 of 4); CryptoKeyhole's latest complete five-day window Nov 9–13 is -4.923M XRP; Alpha Finance reports -$6.1M on Nov 17; CryptoTuts reports -$7.23M over Nov 12–18 across five reported ETFs. These are not directly comparable. Reconcile each issuer's dated holdings file, fund universe, partial status, and publication timestamp before using the values as features. Do not average provider totals.
 
 ### Prediction and evidence status
 
