@@ -5754,11 +5754,11 @@ No merge, deployment, provider dispatch, secret change, Space restart, Kaggle su
 
 ### Repository state — VERIFIED
 - Repository: Barrot-Agent/B-Agent
-- Main SHA: `c8e15c90b1e07980d7b5a01c86c1667166a353f6`.
+- Main SHA at latest reconciliation: `e1c3634df28f488819185b7d5697d474bc0bcb9e` (main advanced during this run).
 - Integration branch: `integration/xrp-v3-mainline-successor-20261115T2101Z`.
-- Integration head before this handoff update: `99d0a54a1ce8e5c182d9b33ae77abcdfc90a0647`.
-- Branch ancestry: 460 commits ahead of main, zero behind; GitHub reports mergeable=true (conflict status only, not merge authorization).
-- Recursive trees: main 1,739 entries; integration 3,004 entries. Every path in current main is present in the integration tree; integration contains 1,265 additional paths.
+- Initial code head for this checkpoint: `99d0a54a1ce8e5c182d9b33ae77abcdfc90a0647`. Subsequent handoff-only commits: `27a2c27a5e4b7f3e252770870e89160a17c509ea`, `eb76170fd9262cce43a93c7014dd6b49d5df0d23`, `b6d11894f0cfe43f0c6b10504c22d8dc10090052`.
+- Branch ancestry at latest comparison: 463 commits ahead, 1 behind. Main's new commit is the paid-issue scan `e1c3634`, parent `c8e15c9`, touching only `PAID-ISSUES.md` and `data/money/paid_issues.json`; neither path is changed by PR #1663. No path conflict was found. The branch was not rebased, reset or force-pushed. GitHub reports mergeable=true (conflict status only, not merge authorization).
+- Recursive trees: main 1,739 entries; integration 3,004 entries. Every current-main path exists in the integration tree; integration contains 1,265 additional paths. The two main files above have newer content on main but are not part of the PR diff.
 - PR #1663: 1,462 changed files, 531,629 additions, 6,965 deletions; still draft.
 - Open PR inventory: 14. No new branch or PR created. No merge, deployment, secret operation, Space restart, Kaggle submission, Databricks write, paper trade or funds movement performed.
 
@@ -5849,3 +5849,11 @@ Current open inventory is preserved; do not bulk-close or rewrite stacked branch
 Continue on the existing integration branch only. Complete the transitive workflow/script/action audit; verify the ingestion artifact chain and source freshness; resolve external immutable receipt anchoring; obtain independent review and effective branch-protection evidence; and resolve Pages publication authorization. Re-run exact-head CI after any further change. Do not create another XRP/V3 PR, close unique research PRs, issue a directional forecast, or perform any external financial/deployment action.
 
 **Source-capture limitation:** the web-rendered sources used for this checkpoint were not captured as raw HTTP response bytes in the repository and have no new SHA-256 receipts. URLs, publisher identities, document dates, event times where exposed, and source-independence cautions are preserved above. These observations are not admitted to the point-in-time feature store or model training.
+
+
+### Post-checkpoint reconciliation — 2026-11-19T18:29Z
+
+- Main advanced from c8e15c90 to e1c3634d through automatic paid-issue scan run [44587578263](https://github.com/Barrot-Agent/B-Agent/actions/runs/44587578263). The commit modifies only PAID-ISSUES.md and data/money/paid_issues.json. PR #1663 changes neither path. The branch is therefore 463 commits ahead and one commit behind, with no changed-path conflict. No rebase, cherry-pick or merge of main into the integration branch was performed.
+- Current code head before this documentation-only postscript: b6d11894f0cfe43f0c6b10504c22d8dc10090052.
+- Exact-head checks on b6d11894: core tests passed; Pages validation-only passed; money audit passed; dependency audit passed. Full repository suite and fail-closed gate were still running at capture. Runs: [CI 44587880574](https://github.com/Barrot-Agent/B-Agent/actions/runs/44587880574), [money audit 44587880145](https://github.com/Barrot-Agent/B-Agent/actions/runs/44587880145), [dependency audit 44587880062](https://github.com/Barrot-Agent/B-Agent/actions/runs/44587880062), [fail-closed gate 44587880214](https://github.com/Barrot-Agent/B-Agent/actions/runs/44587880214). The earlier 4,357-test full-suite pass remains verified on 99d0a54, not transferred to b6d11894.
+- The latest handoff update is documentation-only and will receive its own exact-head CI. PR #1663 remains draft and unmerged. No production action was performed.
