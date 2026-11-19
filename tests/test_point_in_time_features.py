@@ -685,3 +685,73 @@ def test_future_issuer_row_cannot_be_backdated_to_aggregator_observation_date():
             "2026-11-07T17:00:00Z",
             captured_at_utc="2026-11-07T17:05:00Z",
         )
+
+
+def _store_with_explicit_revision(tmp_path, revision_updates=None):
+    from datetime import datetime, timezone
+
+    clock = [datetime.fromisoformat("2026-11-03T16:06:00+00:00")]
+    store = HistoricalFeatureStore(
+        tmp_path / "explicit-revision.sqlite3",
+        clock=lambda: clock[0],
+    )
+    first = build_feature_snapshot(
+        [feature()],
+        cutoff_utc=CUTOFF,
+        captured_at_utc=CAPTURED,
+    )
+    store.append_snapshot(first)
+
+    revised_record = feature(
+        record_id="xrp:spot:mid:2026-11-03T15:59:00Z:v2",
+        feature_version=2,
+        value=1.29,
+        known_at_utc="2026-11-03T16:10:00Z",
+        source_data_as_of_utc="2026-11-03T16:10:00Z",
+        ingested_at_utc="2026-11-03T16:10:02Z",
+        revision_available_at_utc="2026-11-03T16:10:02Z",
+        revision_status="revised",
+        supersedes_record_id="xrp:spot:mid:2026-11-03T15:59:00Z:v1",
+    )
+    if revision_updates:
+        revised_record.update(revision_updates)
+    second = build_feature_snapshot(
+        [revised_record],
+        cutoff_utc="2026-11-03T16:15:00Z",
+        captured_at_utc="2026-11-03T16:15:00Z",
+    )
+    clock[0] = datetime.fromisoformat("2026-11-03T16:16:00+00:00")
+    store.append_snapshot(second)
+    return store, first, second
+
+
+def test_historical_feature_store_accepts_explicit_revision_across_snapshots(tmp_path):
+    store, first, second = _store_with_explicit_revision(tmp_path)
+
+    history = store.records_through("XRP", "2026-11-03T16:20:00Z")
+    assert [item["record_id"] for item in history] == [
+        "xrp:spot:mid:2026-11-03T15:59:00Z:v1",
+        "xrp:spot:mid:2026-11-03T15:59:00Z:v2",
+    ]
+    assert history[-1]["revision_status"] == "revised"
+    assert history[-1]["supersedes_record_id"] == history[0]["record_id"]
+    assert history[-1]["feature_version"] == 2
+    assert store.features_as_of("XRP", "2026-11-03T16:20:00Z")[0]["value"] == 1.29
+    assert store.verify_all_snapshots()["valid"] is True
+    assert first["snapshot_id"] != second["snapshot_id"]
+
+
+@pytest.mark.parametrize(
+    ("revision_updates", "message"),
+    [
+        ({"supersedes_record_id": "unrelated-record"}, "does not supersede the latest known predecessor"),
+        ({"feature_version": 1}, "version does not exceed its predecessor"),
+    ],
+)
+def test_historical_feature_store_rejects_invalid_explicit_revision_chain(
+    tmp_path, revision_updates, message
+):
+    store, _, _ = _store_with_explicit_revision(tmp_path, revision_updates)
+
+    with pytest.raises(FeatureStoreError, match=message):
+        store.records_through("XRP", "2026-11-03T16:20:00Z")
