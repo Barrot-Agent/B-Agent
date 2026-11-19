@@ -3449,7 +3449,7 @@ No deployment, secret rotation, Space restart, Databricks write, Kaggle submissi
 ### Exact-head CI on the handoff/artifact commit — VERIFIED
 - The branch head `b5ead6c06d893e9c5262e1f05f50cac495d157be` passed the full repository suite in [run 44456934041](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456934041), job 135334117682: 4,288 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.47 seconds; 68.13% inclusive coverage and 77% legacy-core coverage. Wheel build and installed mission verification passed.
 - Dependency audit [44456934043](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456934043), fail-closed gate [44456934048](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456934048), PR money audit [44456938005](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456938005), and PR dependency audit [44456937929](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456937929) passed. PR CI [44456937994](https://github.com/Barrot-Agent/B-Agent/actions/runs/44456937994) passed its applicable jobs; its core/full-suite jobs were skipped because #1663 remains draft.
-- The Run 36 JSON and handoff were corrected together in one non-force commit after re-opening the CryptoETF source. The correction commit is a new head and requires its own exact-head full-suite CI; the preceding result is not transferable.
+- The Run 36 JSON and handoff were corrected together in one non-force commit after re-opening the CryptoETF source. Correction head `e0fd8bcaf43df01d1b08df4db84b5005bbd5a595` then passed its own exact-head full-suite CI in [run 44457703258](https://github.com/Barrot-Agent/B-Agent/actions/runs/44457703258); no predecessor result was transferred.
 
 ### ETF data correction — SOURCE ROWS RECONCILED, MODEL-INELIGIBLE
 - CryptoETF.today's 17 Nov aggregate is **-$6.0M**, not -$4.9M. The fund/day table shows XRPC -$4.9M, GXRP -$1.1M and TOXR $0; XRP and XRPZ are unreported. The -$4.9M figure is only the XRPC component.
@@ -3463,3 +3463,16 @@ No deployment, secret rotation, Space restart, Databricks write, Kaggle submissi
 - `barrot-ops.yml` still requires two explicit YES confirmations and an exact main SHA, but its Databricks command uses `--overwrite` without a target backup/hash/CAS guard. Do not dispatch.
 
 The merge decision remains **NO MERGE**: #1663 is draft, has no independent review, effective branch protection remains unverified, and the complete transitive workflow audit remains unfinished.
+
+
+### Institutional holdings — direct SEC 13F reconciliation
+- Goldman Sachs Group Inc (CIK 0000886982) Q2 2026 13F, period ended June 30 and filed Aug 14, reports five XRP spot-ETF positions totaling **7,390,191 shares / $86,506,129**.
+- Its Q3 2026 13F, period ended Sep 30 and filed Nov 16, reports **8,569,107 shares / $144,000,491** across the same five products: 21Shares, Bitwise, Canary, Franklin and Grayscale.
+- Quarter-over-quarter share count increased **1,178,916 (+15.95%)**; reported market value increased **$57,494,362 (+66.46%)**. The value increase includes market-price changes; it is not a cash-flow measure. 21Shares shares decreased 110,359 while the other four products increased.
+- The Q2 SEC sum matches CryptoETF.today's secondary $86.5M Goldman figure to rounding. The page's broader 127-institution/$179M Q2 aggregate remains secondary and has not been reconciled across all managers.
+- The Q3 filing lists eight other included managers. The filing does not identify the XRP ETF positions as proprietary versus client, advisory or market-making inventory. These are ETF shares, not direct XRP token holdings, and do not establish a direct Ripple relationship.
+- Use 2026-06-30/2026-09-30 as event dates and 2026-08-14/2026-11-16 as known-at dates. Do not use these lagged snapshots as daily ETF flows or admit them as predictive features without a point-in-time 13F normalization layer.
+- Primary filings: [Goldman Q2 13F cover](https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.htm), [Q2 holdings table](https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml), [Goldman Q3 13F cover](https://www.sec.gov/Archives/edgar/data/886982/000088698226000647/0000886982-26-000647-index.htm), [Q3 holdings table](https://www.sec.gov/Archives/edgar/data/886982/000088698226000647/xslForm13F_X02/Submit_this.xml).
+
+### Current evidence boundary
+- The full suite and dependency/security gates passed on `e0fd8bcaf43df01d1b08df4db84b5005bbd5a595`. This new 13F/handoff commit is a documentation/research update and will have its own exact-head CI; no merge is authorized until that head passes and independent review/branch protection/workflow audit blockers are resolved.

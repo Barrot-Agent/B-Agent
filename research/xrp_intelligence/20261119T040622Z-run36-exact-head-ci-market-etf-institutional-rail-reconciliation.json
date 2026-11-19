@@ -486,6 +486,34 @@
       "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
       "source_type": "primary custodian announcement",
       "citation_ref": "turn196464search3"
+    },
+    {
+      "source_id": "SRC-SEC-GOLDMAN-13F-Q2-2026-COVER",
+      "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.htm",
+      "source_type": "primary SEC 13F filing cover",
+      "citation_ref": "turn725145view0",
+      "source_independence_group": "Goldman Sachs Group Inc 13F filer"
+    },
+    {
+      "source_id": "SRC-SEC-GOLDMAN-13F-Q2-2026-TABLE",
+      "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml",
+      "source_type": "primary SEC 13F information table",
+      "citation_ref": "turn161032view0",
+      "source_independence_group": "Goldman Sachs Group Inc 13F filer"
+    },
+    {
+      "source_id": "SRC-SEC-GOLDMAN-13F-Q3-2026-COVER",
+      "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000647/0000886982-26-000647-index.htm",
+      "source_type": "primary SEC 13F filing cover",
+      "citation_ref": "turn334621view0",
+      "source_independence_group": "Goldman Sachs Group Inc 13F filer"
+    },
+    {
+      "source_id": "SRC-SEC-GOLDMAN-13F-Q3-2026-TABLE",
+      "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000647/xslForm13F_X02/Submit_this.xml",
+      "source_type": "primary SEC 13F information table",
+      "citation_ref": "turn285943view0",
+      "source_independence_group": "Goldman Sachs Group Inc 13F filer"
     }
   ],
   "post_write_verification": {
@@ -535,5 +563,215 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44456937929"
     },
     "correction_commit_requires_new_exact_head_ci": true
+  },
+  "post_correction_verification": {
+    "verified_head": "e0fd8bcaf43df01d1b08df4db84b5005bbd5a595",
+    "full_suite": {
+      "run_id": 44457703258,
+      "job_id": 135336657873,
+      "status": "success",
+      "tests_passed": 4288,
+      "tests_skipped": 1,
+      "tests_failed": 0,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 156.85,
+      "inclusive_coverage_percent": 68.13,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build": "PASS",
+      "installed_barrot_v3_and_xrp_mission_verification": "PASS",
+      "cache_write_warning": "GitHub Actions cache budget is exhausted/read-only; did not fail the job.",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44457703258"
+    },
+    "dependency_audit": {
+      "run_id": 44457703320,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44457703320"
+    },
+    "fail_closed_gate": {
+      "run_id": 44457703407,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44457703407"
+    },
+    "pr_dependency_audit": {
+      "run_id": 44457710078,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44457710078"
+    },
+    "pr_money_audit": {
+      "run_id": 44457709988,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44457709988"
+    },
+    "pr_fail_closed_gate": {
+      "run_id": 44457709996,
+      "status": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44457709996"
+    },
+    "pr_ci": {
+      "run_id": 44457709986,
+      "status": "success",
+      "pages_validation": "success",
+      "core_tests": "skipped_because_pr_is_draft",
+      "full_suite": "skipped_because_pr_is_draft",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44457709986"
+    },
+    "forecast_status": "NOT_ISSUED",
+    "merge_decision": "NO_MERGE"
+  },
+  "current_branch_state_before_final_handoff_update": {
+    "head": "e0fd8bcaf43df01d1b08df4db84b5005bbd5a595",
+    "main_sha": "82c23e219553164c24073784c529aad75acacd66",
+    "commits_ahead": 395,
+    "commits_behind": 0,
+    "changed_files": 1446,
+    "open_pr_count": 14,
+    "active_pr": 1663,
+    "draft": true,
+    "reviews": 0
+  },
+  "institutional_13f_snapshot": {
+    "source_filer": "GOLDMAN SACHS GROUP INC",
+    "cik": "0000886982",
+    "report_type": "13F-HR",
+    "report_value_unit": "USD to nearest dollar",
+    "consolidated_filing": "Q3 cover page lists eight other included managers; the reported position is not attributable to a single Goldman subsidiary or proven proprietary capital.",
+    "model_eligible": false,
+    "q2_2026": {
+      "period_end": "2026-06-30",
+      "filed_date": "2026-08-14",
+      "shares_total": 7390191,
+      "market_value_usd": 86506129,
+      "positions": [
+        {
+          "issuer": "21Shares XRP ETF",
+          "cusip": "90137T103",
+          "shares": 806126,
+          "market_value_usd": 8206363
+        },
+        {
+          "issuer": "Bitwise XRP ETF",
+          "cusip": "09174F107",
+          "shares": 2208949,
+          "market_value_usd": 25756345
+        },
+        {
+          "issuer": "Canary XRP ETF",
+          "cusip": "13723M100",
+          "shares": 1759090,
+          "market_value_usd": 19490717
+        },
+        {
+          "issuer": "Franklin XRP Trust",
+          "cusip": "355233107",
+          "shares": 2238407,
+          "market_value_usd": 25405919
+        },
+        {
+          "issuer": "Grayscale XRP Trust ETF",
+          "cusip": "38965L106",
+          "shares": 377619,
+          "market_value_usd": 7646785
+        }
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/0000886982-26-000519-index.htm",
+        "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/xslForm13F_X02/InfoTable_2026-08-13_Final_1.xml"
+      ]
+    },
+    "q3_2026": {
+      "period_end": "2026-09-30",
+      "filed_date": "2026-11-16",
+      "shares_total": 8569107,
+      "market_value_usd": 144000491,
+      "positions": [
+        {
+          "issuer": "21Shares XRP ETF",
+          "cusip": "90137T103",
+          "shares": 695767,
+          "market_value_usd": 10081664
+        },
+        {
+          "issuer": "Bitwise XRP ETF",
+          "cusip": "09174F107",
+          "shares": 2307591,
+          "market_value_usd": 38375238
+        },
+        {
+          "issuer": "Canary XRP ETF",
+          "cusip": "13723M100",
+          "shares": 2108998,
+          "market_value_usd": 33258898
+        },
+        {
+          "issuer": "Franklin XRP Trust",
+          "cusip": "355233107",
+          "shares": 2953228,
+          "market_value_usd": 47783229
+        },
+        {
+          "issuer": "Grayscale XRP Trust ETF",
+          "cusip": "38965L106",
+          "shares": 503523,
+          "market_value_usd": 14501462
+        }
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/886982/000088698226000647/0000886982-26-000647-index.htm",
+        "https://www.sec.gov/Archives/edgar/data/886982/000088698226000647/xslForm13F_X02/Submit_this.xml"
+      ]
+    },
+    "q2_to_q3_change": {
+      "shares_delta": 1178916,
+      "shares_change_percent": 15.9524429071,
+      "reported_market_value_delta_usd": 57494362,
+      "reported_market_value_change_percent": 66.4627612686,
+      "share_change_by_issuer": [
+        {
+          "issuer": "21Shares XRP ETF",
+          "shares_delta": -110359,
+          "percent": -13.69004349
+        },
+        {
+          "issuer": "Bitwise XRP ETF",
+          "shares_delta": 98642,
+          "percent": 4.46556258
+        },
+        {
+          "issuer": "Canary XRP ETF",
+          "shares_delta": 349908,
+          "percent": 19.89142113
+        },
+        {
+          "issuer": "Franklin XRP Trust",
+          "shares_delta": 714821,
+          "percent": 31.93436225
+        },
+        {
+          "issuer": "Grayscale XRP Trust ETF",
+          "shares_delta": 125904,
+          "percent": 33.34154267
+        }
+      ],
+      "interpretation": "Share count rose 15.95%; reported market value rose 66.46%, so value change also reflects market-price changes. This is ETF-share exposure, not direct XRP token holdings or net cash inflow."
+    },
+    "secondary_cross_check": {
+      "source": "CryptoETF.today",
+      "claim": "Goldman Sachs held approximately $86.5M across five XRP ETFs at 2026-06-30.",
+      "direct_sec_q2_sum_usd": 86506129,
+      "assessment": "Q2 dollar amount matches the SEC Q2 sum to rounding; the aggregator's separate 127-institution/$179M aggregate remains unverified against every underlying 13F."
+    },
+    "caveats": [
+      "13F is a lagged quarter-end snapshot, not daily flow.",
+      "The filing does not distinguish proprietary holdings from client, advisory or market-making positions.",
+      "ETF shares are not direct XRP token holdings; the issuer's custody/underlying holdings are a separate ledger.",
+      "13F does not establish a direct relationship with Ripple, Coinbase or SBI."
+    ]
+  },
+  "source_independence_groups": {
+    "exchange_market_data": "Kraken and OKX are distinct exchange publishers, but the captured events are not synchronized and quote currencies differ; no cross-venue feature admitted.",
+    "etf_flow_data": "XRP Insights, Alpha Finance, CryptoETF.today and CryptoKeyhole are distinct aggregation pipelines with overlapping issuer-file/third-party flow inputs. They are not four independent primary confirmations. Preserve fund coverage, row missingness, method and vintage.",
+    "institutional_13f": "Goldman Q2 and Q3 are separate SEC primary filings from the same reporting manager, not independent manager confirmations. CryptoETF.today's Q2 Goldman figure is a secondary transformation of the same SEC filing.",
+    "institutional_rails": "DBS/Circle and DBS/Kinexys are separate primary joint announcements. Reprints by counterparties would not count as independent evidence."
   }
 }
