@@ -9,7 +9,13 @@ import random
 import re
 from dataclasses import dataclass
 
-from .musical_dna import Evaluation, MusicalEvent, MusicalManifest, MusicalSection, RecursiveCreativeMemory
+from .musical_dna import (
+    Evaluation,
+    MusicalEvent,
+    MusicalManifest,
+    MusicalSection,
+    RecursiveCreativeMemory,
+)
 
 _NOTE_NAMES = ("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B")
 _NOTE_TO_PC = {name: index for index, name in enumerate(_NOTE_NAMES)}
@@ -24,6 +30,7 @@ class CompositionSettings:
     seed: int = 0
     melody_density: float = 0.55
     swing: float = 0.0
+    preserve_instrument_palette: bool = True
 
     def __post_init__(self) -> None:
         if not 1 <= self.bars <= 256:
@@ -53,7 +60,24 @@ def compose_original(
     """Create a fresh arrangement in the requested scale and instrument palette."""
     root, intervals, minor = _scale_info(template.scale)
     rng = random.Random(settings.seed)
-    instruments = ("kick", "snare", "hihat", "bass", "keys", "lead")
+    default_instruments = ("kick", "snare", "hihat", "bass", "keys", "lead")
+    instruments = template.instruments if settings.preserve_instrument_palette else default_instruments
+    drum_names = [
+        name for name in instruments
+        if name.lower() in {"kick", "snare", "hihat", "hat", "cymbal", "percussion"}
+    ]
+    pitched_names = [
+        name for name in instruments
+        if name.lower() not in {"kick", "snare", "hihat", "hat", "cymbal", "percussion"}
+    ]
+    if not pitched_names:
+        raise ValueError("composition requires at least one pitched instrument")
+    kick_name = "kick" if "kick" in instruments else (drum_names[0] if drum_names else None)
+    snare_name = "snare" if "snare" in instruments else (drum_names[-1] if drum_names else None)
+    hat_name = "hihat" if "hihat" in instruments else ("hat" if "hat" in instruments else None)
+    bass_name = "bass" if "bass" in instruments else pitched_names[0]
+    keys_name = "keys" if "keys" in instruments else pitched_names[0]
+    lead_name = "lead" if "lead" in instruments else pitched_names[-1]
     events: list[MusicalEvent] = []
     beats_per_bar = template.beats_per_bar
 
@@ -75,20 +99,21 @@ def compose_original(
 
         # Independent harmonic voicing and bass foundation.
         for pitch in chord:
-            events.append(MusicalEvent("keys", "harmony", float(start), float(beats_per_bar), 72, pitch))
-        events.append(MusicalEvent("bass", "low_end", float(start), 1.5, 96, chord_root))
-        events.append(MusicalEvent("bass", "low_end", float(start + 2), 1.0, 84, chord_root))
+            events.append(MusicalEvent(keys_name, "harmony", float(start), float(beats_per_bar), 72, pitch))
+        events.append(MusicalEvent(bass_name, "low_end", float(start), 1.5, 96, chord_root))
+        events.append(MusicalEvent(bass_name, "low_end", float(start + 2), 1.0, 84, chord_root))
 
         for beat in range(beats_per_bar):
             # Four-on-the-floor or halftime variations are selected by seed.
-            if beat % 2 == 0 or rng.random() < 0.18:
-                events.append(MusicalEvent("kick", "pulse", float(start + beat), 0.12, 105))
-            if beat % 2 == 1:
-                events.append(MusicalEvent("snare", "backbeat", float(start + beat), 0.12, 94))
-            for subdivision in (0.0, 0.5):
-                if rng.random() < 0.9:
-                    offset = subdivision + (settings.swing if subdivision == 0.5 else 0.0)
-                    events.append(MusicalEvent("hihat", "timekeeping", start + beat + offset, 0.08, rng.randint(55, 88)))
+            if kick_name and (beat % 2 == 0 or rng.random() < 0.18):
+                events.append(MusicalEvent(kick_name, "pulse", float(start + beat), 0.12, 105))
+            if snare_name and beat % 2 == 1:
+                events.append(MusicalEvent(snare_name, "backbeat", float(start + beat), 0.12, 94))
+            if hat_name:
+                for subdivision in (0.0, 0.5):
+                    if rng.random() < 0.9:
+                        offset = subdivision + (settings.swing if subdivision == 0.5 else 0.0)
+                        events.append(MusicalEvent(hat_name, "timekeeping", start + beat + offset, 0.08, rng.randint(55, 88)))
 
         # Melody is generated independently from scale tones and a fresh seed.
         for step in range(beats_per_bar * 2):
@@ -97,7 +122,7 @@ def compose_original(
             beat = start + (step * 0.5) + (settings.swing if step % 2 else 0.0)
             pitch = scale_pitch(rng.randrange(0, len(intervals) * 2), 5)
             duration = rng.choice((0.25, 0.5, 0.75))
-            events.append(MusicalEvent("lead", "melody", float(beat), duration, rng.randint(70, 108), pitch))
+            events.append(MusicalEvent(lead_name, "melody", float(beat), duration, rng.randint(70, 108), pitch))
 
     if settings.bars < 8:
         sections = (MusicalSection("main", 1, settings.bars, 0.65),)
@@ -127,7 +152,12 @@ class CompositionRun:
 
 def evaluate_composition(manifest: MusicalManifest) -> Evaluation:
     """Score required arrangement roles and diatonic pitch consistency."""
-    required_roles = {"harmony", "melody", "low_end", "pulse", "backbeat"}
+    required_roles = {"harmony", "melody", "low_end"}
+    if any(
+        name.lower() in {"kick", "snare", "hihat", "hat", "cymbal", "percussion"}
+        for name in manifest.instruments
+    ):
+        required_roles.update({"pulse", "backbeat"})
     present_roles = {event.role for event in manifest.events}
     role_coverage = len(required_roles & present_roles) / len(required_roles)
     root, intervals, _ = _scale_info(manifest.scale)
