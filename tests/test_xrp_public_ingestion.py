@@ -751,8 +751,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert historical["known_at_utc"] == "2026-11-04T12:30:00.000000Z"
     assert "first observed at this capture time" in historical["limitations"][0]
 
-    assert summary["adapter_version"] == "xrp-public-market-v3.31"
-    assert summary["parser_version"] == "xrp-public-market-v3.30"
+    assert summary["adapter_version"] == xrp_ingestion.ADAPTER_VERSION
+    assert summary["parser_version"] == xrp_ingestion.PARSER_VERSION
     assert summary["quote_basis"]["status"] == "VERIFIED"
     assert summary["quote_basis_feature_count"] == 4
     limitations_text = " ".join(summary["limitations"])
