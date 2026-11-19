@@ -100,10 +100,13 @@ def compose_original(
             duration = rng.choice((0.25, 0.5, 0.75))
             events.append(MusicalEvent("lead", "melody", float(beat), duration, rng.randint(70, 108), pitch))
 
-    sections = (
-        MusicalSection("intro", 1, min(4, settings.bars), 0.35),
-        MusicalSection("main", min(5, settings.bars), max(1, settings.bars - 4), 0.75),
-    )
+    if settings.bars < 8:
+        sections = (MusicalSection("main", 1, settings.bars, 0.65),)
+    else:
+        sections = (
+            MusicalSection("intro", 1, 4, 0.35),
+            MusicalSection("main", 5, settings.bars - 4, 0.75),
+        )
     return MusicalManifest(
         bpm=template.bpm,
         beats_per_bar=beats_per_bar,
