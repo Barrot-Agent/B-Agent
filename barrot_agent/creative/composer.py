@@ -122,6 +122,7 @@ class CompositionRun:
     evaluation: Evaluation
     settings: CompositionSettings
     attempt_id: str
+    learned_lessons: tuple[str, ...] = ()
 
 
 def evaluate_composition(manifest: MusicalManifest) -> Evaluation:
@@ -162,7 +163,11 @@ class RecursiveCompositionEngine:
         if not isinstance(self.memory, RecursiveCreativeMemory):
             raise TypeError("memory must be a RecursiveCreativeMemory")
         recommended = self.memory.recommend_composition_settings()
-        chosen = CompositionSettings(**recommended) if recommended else (settings or CompositionSettings())
+        if recommended and settings is None:
+            recommended["seed"] = int(recommended["seed"]) + 1
+            chosen = CompositionSettings(**recommended)
+        else:
+            chosen = settings or CompositionSettings()
         output = compose_original(template, chosen)
         evaluation = evaluate_composition(output)
         attempt = self.memory.record_composition_attempt(
@@ -171,7 +176,11 @@ class RecursiveCompositionEngine:
             settings=asdict(chosen),
             evaluation=evaluation,
         )
-        return CompositionRun(output, evaluation, chosen, attempt["attempt_id"])
+        lessons = tuple(
+            item["lesson"] for item in self.memory.verified_composition_lessons()
+            if item.get("lesson")
+        )
+        return CompositionRun(output, evaluation, chosen, attempt["attempt_id"], lessons)
 
     def record_feedback(self, run: CompositionRun, *, feedback: str, lesson: str = ""):
         return self.memory.record_composition_feedback(
