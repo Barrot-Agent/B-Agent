@@ -5107,3 +5107,34 @@ These are three sister regional Small and Medium Business Investment & Consultat
 - Forecast disposition: NOT_ISSUED. The dataset does not yet support a directional XRP forecast. No probabilities, target or price direction are published.
 - Next concrete action: configure BARROT_SEC_USER_AGENT with an actual monitored project contact; complete the transitive audit of all 68 changed workflows and their invoked scripts/actions; resolve Pages publication authorization and administrator-confirmed branch protection; then continue historical multi-venue ingestion and primary issuer/AP cash-flow reconciliation. Keep V3 intact and #1663 draft until every merge condition is satisfied.
 - No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, external-model dispatch, force-push, reset, clean, stash, restore-over or discard occurred.
+
+
+---
+
+## Run 226 — 2026-11-19 — order-book band completeness correction
+
+### Finding
+
+The latest synchronized L2 snapshot exposed a feature-quality defect in the XRP depth parser. Kraken's REST endpoint returned 100 levels, but the captured book reached only about 33 bp below and 39 bp above midpoint. The parser still emitted 50 bp and 100 bp depth values as model-eligible because it summed whatever levels happened to be present without verifying that each requested band was fully covered. Those values represented truncated depth, not complete named bands.
+
+### Executed correction on the existing integration branch
+
+- Added a shared order-book band-coverage gate to the existing XRP public ingestion adapter.
+- Applied it to REST Coinbase/Binance, Bitbank, Bitstamp, Kraken, OKX and Bybit spot-depth parsers.
+- Bid depth requires the captured bid side to reach the lower boundary; ask depth requires the ask side to reach the upper boundary; imbalance requires both sides.
+- Incomplete band values remain preserved for research/provenance but are marked model-ineligible with quality status unverified and reason orderbook_band_incomplete_coverage. Best bid, best ask, midpoint and spread remain independently eligible when their timestamp/market-quality checks pass.
+- Bumped adapter/parser versions to v3.32/v3.31.
+- Added tests for side-specific completeness, a truncated Kraken 100-level book, complete 100 bp coverage, and the Coinbase/Binance, Bitbank, Bitstamp, OKX and Bybit parser paths.
+- This is a correction to feature admission, not a price forecast or trading signal.
+
+### Historical-data limitation
+
+Existing feature-store snapshots created by earlier parser versions are not rewritten by this parser change. Historical 50/100 bp depth rows retain their old record-level eligibility until a correction/replay pass re-evaluates their retained raw books. Do not use legacy 50/100 bp depth rows as candidate-model features until that replay or an explicit legacy-feature exclusion is implemented. No candidate model currently consumes these features and no forecast was issued.
+
+### Verification and safety
+
+- The change is committed on the existing #1663 integration branch; no new branch or PR was created.
+- Full-suite, exact-head CI, dependency audit, money audit and the read-only fail-closed gate are pending on the new code/test head.
+- Main remains c8e15c90b1e07980d7b5a01c86c1667166a353f6 at the pre-commit checkpoint. No merge or main change occurred.
+- #1663 remains draft. Pages publication authorization, branch-protection visibility and independent review remain unresolved.
+- No deployment, external model dispatch, paper trade, real-money action, secret rotation, Space restart, Kaggle submission, Databricks write, force-push or branch rewrite occurred.

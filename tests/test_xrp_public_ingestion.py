@@ -915,6 +915,68 @@ def test_kraken_level_timestamps_do_not_define_rest_snapshot_freshness(tmp_path)
     assert summary["snapshot_status"] == "verified"
 
 
+
+
+def test_orderbook_depth_band_coverage_gate_is_side_specific_and_fails_closed():
+    partial = [
+        {"feature_id": "xrp.spot.kraken.orderbook.mid_price", "model_eligible": True, "eligibility_reason": "", "quality_status": "verified", "limitations": []},
+        {"feature_id": "xrp.spot.kraken.orderbook.bid_depth_50bps", "model_eligible": True, "eligibility_reason": "", "quality_status": "verified", "limitations": []},
+        {"feature_id": "xrp.spot.kraken.orderbook.ask_depth_50bps", "model_eligible": True, "eligibility_reason": "", "quality_status": "verified", "limitations": []},
+        {"feature_id": "xrp.spot.kraken.orderbook.depth_imbalance_50bps", "model_eligible": True, "eligibility_reason": "", "quality_status": "verified", "limitations": []},
+    ]
+    xrp_ingestion._apply_orderbook_band_coverage_gate(
+        partial,
+        bids=[(1.289, 1000), (1.2889, 1000)],
+        asks=[(1.291, 1000), (1.2965, 1000)],
+        mid=1.29,
+    )
+    by_id = {item["feature_id"]: item for item in partial}
+    assert by_id["xrp.spot.kraken.orderbook.mid_price"]["model_eligible"] is True
+    assert by_id["xrp.spot.kraken.orderbook.bid_depth_50bps"]["model_eligible"] is False
+    assert by_id["xrp.spot.kraken.orderbook.bid_depth_50bps"]["eligibility_reason"] == "orderbook_band_incomplete_coverage"
+    assert by_id["xrp.spot.kraken.orderbook.ask_depth_50bps"]["model_eligible"] is True
+    assert by_id["xrp.spot.kraken.orderbook.depth_imbalance_50bps"]["model_eligible"] is False
+    assert by_id["xrp.spot.kraken.orderbook.depth_imbalance_50bps"]["quality_status"] == "unverified"
+
+    complete = [
+        {"feature_id": "xrp.spot.coinbase.orderbook.bid_depth_100bps", "model_eligible": True, "eligibility_reason": "", "quality_status": "verified", "limitations": []},
+        {"feature_id": "xrp.spot.coinbase.orderbook.ask_depth_100bps", "model_eligible": True, "eligibility_reason": "", "quality_status": "verified", "limitations": []},
+        {"feature_id": "xrp.spot.coinbase.orderbook.depth_imbalance_100bps", "model_eligible": True, "eligibility_reason": "", "quality_status": "verified", "limitations": []},
+    ]
+    xrp_ingestion._apply_orderbook_band_coverage_gate(
+        complete,
+        bids=[(1.289, 1000), (1.277, 1000)],
+        asks=[(1.291, 1000), (1.303, 1000)],
+        mid=1.29,
+    )
+    assert all(item["model_eligible"] is True for item in complete)
+
+
+def test_kraken_depth_bands_are_ineligible_when_the_100_level_book_is_truncated():
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    source_id = "kraken_spot_depth"
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    records, _event_time, eligible, reason = PARSERS[source_id](
+        response["payload"],
+        source_id=source_id,
+        url=url,
+        digest=hashlib.sha256(response["raw_bytes"]).hexdigest(),
+        captured=captured,
+        http_date=response.get("http_date"),
+    )
+    assert eligible is True and reason == ""
+    by_id = {item["feature_id"]: item for item in records}
+    assert by_id["xrp.spot.kraken.orderbook.mid_price"]["model_eligible"] is True
+    for side in ("bid_depth", "ask_depth", "depth_imbalance"):
+        assert by_id[f"xrp.spot.kraken.orderbook.{side}_10bps"]["model_eligible"] is True
+        for band in (50, 100):
+            feature = by_id[f"xrp.spot.kraken.orderbook.{side}_{band}bps"]
+            assert feature["model_eligible"] is False
+            assert feature["eligibility_reason"] == "orderbook_band_incomplete_coverage"
+            assert feature["quality_status"] == "unverified"
+
+
 def test_kraken_depth_without_server_date_is_raw_only(tmp_path):
     captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
     fetcher = _fake_fetcher(captured)
@@ -951,6 +1013,20 @@ def test_rest_depth_uses_http_date_for_point_in_time_features(tmp_path, source_i
     assert mid["model_eligible"] is True
     assert bid["value"] == pytest.approx(1289.0)
     assert ask["value"] == pytest.approx(1549.2)
+    response = _fake_fetcher(captured)(source_id, dict(ENDPOINTS)[source_id])
+    parsed, _source_time, source_eligible, source_reason = PARSERS[source_id](
+        response["payload"],
+        source_id=source_id,
+        url=dict(ENDPOINTS)[source_id],
+        digest=hashlib.sha256(response["raw_bytes"]).hexdigest(),
+        captured=captured,
+        http_date=response.get("http_date"),
+    )
+    assert source_eligible is True and source_reason == ""
+    parsed_by_id = {item["feature_id"]: item for item in parsed}
+    for side in ("bid_depth", "ask_depth", "depth_imbalance"):
+        for band in (10, 50, 100):
+            assert parsed_by_id[f"xrp.spot.{feature_prefix}.orderbook.{side}_{band}bps"]["model_eligible"] is False
     assert any("no WebSocket sequence bridge" in item for item in mid["limitations"])
 
 
@@ -1198,6 +1274,10 @@ def test_okx_orderbook_uses_provider_timestamp_and_rejects_stale_or_crossed_book
     assert by_feature["xrp.spot.okx.orderbook.best_ask"]["value"] == pytest.approx(1.291)
     assert by_feature["xrp.spot.okx.orderbook.mid_price"]["value"] == pytest.approx(1.29)
     assert by_feature["xrp.spot.okx.orderbook.bid_depth_10bps"]["unit"] == "USDT"
+    assert by_feature["xrp.spot.okx.orderbook.bid_depth_10bps"]["model_eligible"] is True
+    for side in ("bid_depth", "ask_depth", "depth_imbalance"):
+        for band in (50, 100):
+            assert by_feature[f"xrp.spot.okx.orderbook.{side}_{band}bps"]["model_eligible"] is False
     assert by_feature["xrp.spot.okx.orderbook.mid_price"]["sources"][0]["independence_group"] == "okx"
 
     stale_payload = json.loads(json.dumps(response["payload"]))
@@ -2492,7 +2572,11 @@ def test_bitstamp_orderbook_uses_microtimestamp_and_usd_depth_bands():
     assert by_id["xrp.spot.bitstamp.orderbook.mid_price"]["unit"] == "USD/XRP"
     assert by_id["xrp.spot.bitstamp.orderbook.bid_depth_10bps"]["value"] > 0
     assert by_id["xrp.spot.bitstamp.orderbook.ask_depth_100bps"]["value"] > 0
-    assert all(item["model_eligible"] is True for item in records)
+    assert by_id["xrp.spot.bitstamp.orderbook.mid_price"]["model_eligible"] is True
+    for side in ("bid_depth", "ask_depth", "depth_imbalance"):
+        assert by_id[f"xrp.spot.bitstamp.orderbook.{side}_10bps"]["model_eligible"] is True
+        for band in (50, 100):
+            assert by_id[f"xrp.spot.bitstamp.orderbook.{side}_{band}bps"]["model_eligible"] is False
     mismatched = dict(response["payload"], microtimestamp=str(int(response["payload"]["microtimestamp"]) + 1_000_000))
     with pytest.raises(XRPIngestionError, match="timestamps disagree"):
         PARSERS["bitstamp_spot_depth"](
@@ -2606,6 +2690,8 @@ def test_bitbank_depth_requires_fresh_circuit_state_and_rejects_crossed_normal_b
     assert reason == ""
     assert by_id["xrp.spot.bitbank.orderbook.mid_price"]["model_eligible"] is True
     assert by_id["xrp.spot.bitbank.orderbook.bid_depth_10bps"]["unit"] == "JPY"
+    assert by_id["xrp.spot.bitbank.orderbook.bid_depth_10bps"]["model_eligible"] is False
+    assert by_id["xrp.spot.bitbank.orderbook.bid_depth_10bps"]["eligibility_reason"] == "orderbook_band_incomplete_coverage"
     crossed = json.loads(json.dumps(depth))
     crossed["data"]["bids"] = [["180.3", "1000"]]
     crossed["data"]["asks"] = [["180.2", "1000"]]
@@ -2789,6 +2875,9 @@ def test_bybit_orderbook_uses_matching_engine_cts_and_computes_depth():
     assert by_feature["xrp.spot.bybit.orderbook.bid_depth_10bps"]["value"] == pytest.approx(1289.0)
     assert by_feature["xrp.spot.bybit.orderbook.ask_depth_10bps"]["value"] == pytest.approx(1549.2)
     assert by_feature["xrp.spot.bybit.orderbook.depth_imbalance_10bps"]["model_eligible"] is True
+    for side in ("bid_depth", "ask_depth", "depth_imbalance"):
+        for band in (50, 100):
+            assert by_feature[f"xrp.spot.bybit.orderbook.{side}_{band}bps"]["model_eligible"] is False
     assert any("Retail Price Improvement (RPI) orders are excluded" in item for item in by_feature["xrp.spot.bybit.orderbook.mid_price"]["limitations"])
 
 

@@ -33,8 +33,8 @@ from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_document, fetch
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.31"
-PARSER_VERSION = "xrp-public-market-v3.30"
+ADAPTER_VERSION = "xrp-public-market-v3.32"
+PARSER_VERSION = "xrp-public-market-v3.31"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 OKX_QUOTE_BASIS_MAX_SKEW_SECONDS = 60
@@ -1990,6 +1990,53 @@ def _coinbase_candle_page_url(start: datetime, end: datetime) -> str:
     )
     return f"{parts.scheme}://{parts.netloc}{parts.path}?{query}"
 
+def _apply_orderbook_band_coverage_gate(
+    records: list[dict[str, Any]],
+    bids: list[Any],
+    asks: list[Any],
+    mid: float,
+) -> list[dict[str, Any]]:
+    """Exclude depth features when the captured side does not reach its named band."""
+    if not bids or not asks or not math.isfinite(mid) or mid <= 0:
+        raise XRPIngestionError("order-book band coverage requires non-empty sides and a positive midpoint")
+    bid_edge = min(float(level[0]) for level in bids)
+    ask_edge = max(float(level[0]) for level in asks)
+    for record in records:
+        feature_id = record.get("feature_id")
+        match = re.search(r"\.(bid_depth|ask_depth|depth_imbalance)_(\d+)bps$", str(feature_id or ""))
+        if match is None or record.get("model_eligible") is not True:
+            continue
+        feature_side, band_text = match.groups()
+        band = int(band_text)
+        lower_boundary = mid * (1 - band / 10000.0)
+        upper_boundary = mid * (1 + band / 10000.0)
+        bid_complete = bid_edge <= lower_boundary
+        ask_complete = ask_edge >= upper_boundary
+        missing_sides = []
+        if feature_side in {"bid_depth", "depth_imbalance"} and not bid_complete:
+            missing_sides.append("bid")
+        if feature_side in {"ask_depth", "depth_imbalance"} and not ask_complete:
+            missing_sides.append("ask")
+        if not missing_sides:
+            continue
+        record["model_eligible"] = False
+        record["eligibility_reason"] = "orderbook_band_incomplete_coverage"
+        record["quality_status"] = "unverified"
+        limitations = record.get("limitations")
+        if not isinstance(limitations, list):
+            limitations = [] if limitations is None else [str(limitations)]
+        record["limitations"] = [
+            *limitations,
+            (
+                f"Captured {', '.join(missing_sides)} side does not reach the ±{band} bp boundary "
+                f"(bid edge {((mid - bid_edge) / mid * 10000.0):.2f} bp, "
+                f"ask edge {((ask_edge - mid) / mid * 10000.0):.2f} bp); "
+                "the displayed depth is truncated and excluded from model use."
+            ),
+        ]
+    return records
+
+
 def _parse_rest_depth_snapshot(
     payload: Any,
     *,
@@ -2092,6 +2139,7 @@ def _parse_rest_depth_snapshot(
         )
         for name, value, unit in features
     ]
+    _apply_orderbook_band_coverage_gate(records, bids, asks, mid)
     return records, event_s, eligible, reason
 
 
@@ -2399,6 +2447,7 @@ def _parse_bitbank_depth(
     ]
     # Preserve the provider sequence id in the raw receipt; it is not treated as
     # a complete sequence bridge because Bitbank says it is not always consecutive.
+    _apply_orderbook_band_coverage_gate(records, bids, asks, mid)
     return records, event_s, fresh, stale_reason
 
 
@@ -2739,6 +2788,7 @@ def _parse_bitstamp_depth(
         )
         for name, value, unit in features
     ]
+    _apply_orderbook_band_coverage_gate(records, bids, asks, mid)
     return records, event_s, eligible, reason
 
 
@@ -2938,6 +2988,7 @@ def _parse_kraken_depth(payload: Any, *, source_id: str, url: str, digest: str, 
         )
         for name, value, unit in features
     ]
+    _apply_orderbook_band_coverage_gate(records, bids, asks, mid)
     return records, event_s, eligible, reason
 
 
@@ -3124,6 +3175,7 @@ def _parse_okx_depth(
         )
         for name, value, unit in features
     ]
+    _apply_orderbook_band_coverage_gate(records, bids, asks, mid)
     return records, event_s, eligible, reason
 
 
@@ -3317,6 +3369,7 @@ def _parse_bybit_depth(
         )
         for name, value, unit in features
     ]
+    _apply_orderbook_band_coverage_gate(records, bids, asks, mid)
     return records, event_s, eligible, reason
 
 
