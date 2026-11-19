@@ -4,23 +4,128 @@ on:
   push:
     branches: ["integration/**"]
   pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
+    branches: ["main"]
+    types: [opened, synchronize, reopened, ready_for_review, edited, review_requested]
   workflow_dispatch:
 
 permissions:
   contents: read
   pull-requests: read
+  checks: read
+  statuses: read
 
 jobs:
   audit-only:
     name: Merge disabled pending gate verification
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPOSITORY: ${{ github.repository }}
+      EVENT_PR_NUMBER: ${{ github.event.pull_request.number || '' }}
+      EXPECTED_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      REF_NAME: ${{ github.ref_name }}
     steps:
-      - name: Fail closed
+      - name: Verify exact-head merge readiness without performing a merge
         shell: bash
         run: |
           set -euo pipefail
-          echo "Automatic merge is intentionally disabled."
-          echo "This workflow does not approve, label, or merge pull requests."
-          echo "A future merge gate must require successful mandatory checks, current base, non-draft state, mergeability, and explicit authorized approval."
-          echo "No repository content was changed by this workflow."
+          blockers=()
+          add_blocker() { blockers+=("$1"); }
+
+          pr_number="$EVENT_PR_NUMBER"
+          if [[ -z "$pr_number" ]]; then
+            owner="${REPOSITORY%%/*}"
+            pr_list="$(gh api "repos/${REPOSITORY}/pulls?state=open&head=${owner}:${REF_NAME}&per_page=100")"
+            pr_count="$(jq 'length' <<< "$pr_list")"
+            if [[ "$pr_count" == "1" ]]; then
+              pr_number="$(jq -r '.[0].number' <<< "$pr_list")"
+            else
+              add_blocker "expected exactly one open PR for this branch; found $pr_count"
+            fi
+          fi
+
+          if [[ -n "$pr_number" ]]; then
+            if ! pr_json="$(gh api "repos/${REPOSITORY}/pulls/${pr_number}" 2>/dev/null)"; then
+              add_blocker "PR metadata could not be read"
+              pr_json='{}'
+            fi
+
+            actual_head="$(jq -r '.head.sha // empty' <<< "$pr_json")"
+            author="$(jq -r '.user.login // empty' <<< "$pr_json")"
+            draft="$(jq -r '.draft // true' <<< "$pr_json")"
+            state="$(jq -r '.state // empty' <<< "$pr_json")"
+            base_ref="$(jq -r '.base.ref // empty' <<< "$pr_json")"
+            base_sha="$(jq -r '.base.sha // empty' <<< "$pr_json")"
+            mergeable="$(jq -r '.mergeable // false' <<< "$pr_json")"
+            mergeable_state="$(jq -r '.mergeable_state // empty' <<< "$pr_json")"
+
+            [[ "$actual_head" == "$EXPECTED_HEAD_SHA" ]] || add_blocker "PR head is not the exact event SHA"
+            [[ "$draft" == "false" ]] || add_blocker "PR is still draft"
+            [[ "$state" == "open" ]] || add_blocker "PR is not open"
+            [[ "$base_ref" == "main" ]] || add_blocker "PR base is not main"
+            [[ "$mergeable" == "true" && "$mergeable_state" == "clean" ]] || add_blocker "PR is not confirmed clean and mergeable"
+
+            if current_main="$(gh api "repos/${REPOSITORY}/git/ref/heads/main" --jq '.object.sha' 2>/dev/null)"; then
+              [[ "$base_sha" == "$current_main" ]] || add_blocker "PR base is not the current main SHA"
+            else
+              add_blocker "current main SHA could not be verified"
+            fi
+
+            if reviews="$(gh api "repos/${REPOSITORY}/pulls/${pr_number}/reviews?per_page=100" 2>/dev/null)"; then
+              approvals="$(jq --arg author "$author" '[.[] | select(.user.login != $author)] | sort_by(.submitted_at // "") | group_by(.user.login) | map(last) | map(select(.state == "APPROVED")) | length' <<< "$reviews")"
+              [[ "$approvals" -ge 1 ]] || add_blocker "no independent approving review exists"
+            else
+              add_blocker "PR reviews could not be verified"
+            fi
+
+            if protection="$(gh api "repos/${REPOSITORY}/branches/main/protection" 2>/dev/null)"; then
+              strict="$(jq -r '.required_status_checks.strict // false' <<< "$protection")"
+              [[ "$strict" == "true" ]] || add_blocker "branch protection does not require strict up-to-date checks"
+              required_contexts="$(jq -r '[.required_status_checks.contexts[]?, .required_status_checks.checks[]?.context] | unique | .[]' <<< "$protection")"
+              [[ -n "$required_contexts" ]] || add_blocker "branch protection exposes no required status checks"
+
+              if check_runs="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/check-runs?per_page=100" 2>/dev/null)" &&
+                 statuses="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/status" 2>/dev/null)"; then
+                while IFS= read -r context; do
+                  [[ -n "$context" ]] || continue
+                  run_count="$(jq --arg name "$context" --arg sha "$actual_head" '[.check_runs[] | select(.name == $name and .head_sha == $sha)] | length' <<< "$check_runs")"
+                  run_ok="$(jq --arg name "$context" --arg sha "$actual_head" '[.check_runs[] | select(.name == $name and .head_sha == $sha)] | all(.[]; .status == "completed" and .conclusion == "success")' <<< "$check_runs")"
+                  status_ok="$(jq --arg name "$context" --arg sha "$actual_head" '[.statuses[] | select(.context == $name and .sha == $sha)] | any(.[]; .state == "success")' <<< "$statuses")"
+                  if [[ "$run_count" -gt 0 ]]; then
+                    [[ "$run_ok" == "true" ]] || add_blocker "required check '$context' is not successful on the exact head"
+                  else
+                    [[ "$status_ok" == "true" ]] || add_blocker "required check '$context' is missing or unsuccessful on the exact head"
+                  fi
+                done <<< "$required_contexts"
+              else
+                add_blocker "exact-head checks and commit statuses could not be read"
+              fi
+            else
+              add_blocker "branch protection could not be verified; refusing to infer approval or bypass settings"
+            fi
+
+            if check_runs="$(gh api "repos/${REPOSITORY}/commits/${actual_head}/check-runs?per_page=100" 2>/dev/null)"; then
+              for required in "Tests" "Full repository test suite" "GitHub Pages build (validation only)" "pip-audit" "audit"; do
+                matching="$(jq --arg name "$required" --arg sha "$actual_head" '[.check_runs[] | select(.name == $name and .head_sha == $sha)]' <<< "$check_runs")"
+                count="$(jq 'length' <<< "$matching")"
+                all_ok="$(jq 'all(.[]; .status == "completed" and .conclusion == "success")' <<< "$matching")"
+                if [[ "$count" == "0" || "$all_ok" != "true" ]]; then
+                  add_blocker "mandatory check '$required' is missing or not successful on the exact head"
+                fi
+              done
+            else
+              add_blocker "mandatory exact-head CI inventory could not be read"
+            fi
+          else
+            add_blocker "PR number could not be resolved"
+          fi
+
+          if [[ "${#blockers[@]}" -gt 0 ]]; then
+            echo "::error::READINESS=BLOCKED"
+            printf ' - %s\n' "${blockers[@]}"
+            echo "This workflow is read-only. It does not approve, label, bypass, or merge."
+            exit 1
+          fi
+
+          echo "READINESS=READY_FOR_HUMAN_MERGE_REVIEW"
+          echo "All verified checks passed. This workflow is read-only and does not merge."

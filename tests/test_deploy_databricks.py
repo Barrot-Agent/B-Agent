@@ -31,7 +31,8 @@ def test_authentication_preflight_precedes_remote_mutations() -> None:
     functions = _functions()
     calls = _calls(functions["main"])
 
-    assert calls.index("_validate_connection") < calls.index("_ensure_folder")
+    upload_calls = _calls(functions["_upload_files"])
+    assert upload_calls.index("_preflight_workspace_target_absent") < upload_calls.index("_ensure_folder")
     assert calls.index("_validate_connection") < calls.index("_upload_files")
     assert calls.index("_validate_connection") < calls.index("_deploy_job")
     source = SCRIPT_PATH.read_text(encoding="utf-8")
