@@ -274,15 +274,18 @@
         "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf",
         "https://www.sbic.co.jp/training/20250612co/",
         "https://www.sbic-wj.co.jp/seminar/16939/",
-        "https://www.sbic-wj.co.jp/seminar/18038/"
+        "https://www.sbic-wj.co.jp/seminar/18038/",
+        "https://www.sbic-wj.co.jp/disclose/law/"
       ]
-    }
+    },
+    "law_source": "https://www.sbic-wj.co.jp/disclose/law/",
+    "law_finding": "The Small and Medium Business Investment & Consultation Company Law, Article 2, explicitly names exactly three companies: Tokyo, Nagoya and Osaka, each with its own head office in the corresponding city. The law was enacted 1963-06-10."
   },
   "institutional_relationships": {
     "sbi_ripple": {
       "ownership": "SBI Group 60%; Ripple 40% of SBI Ripple Asia, per SBI's FY2024 results presentation dated 2025-05-09.",
       "ripple_equity": "SBI Holdings' official 2025-06-09 release says SBI Group held approximately 9% of Ripple as its largest external shareholder at that time. This is a dated company disclosure, not a verified November 2026 cap-table snapshot.",
-      "operating_rail": "SBI Remit began an international remittance service using XRP as a bridge currency in 2021; later SBI disclosures list expansion to Philippines, Vietnam and Indonesia.",
+      "operating_rail": "SBI Remit began an international remittance service using XRP as a bridge currency in 2021. No verified corridor-level throughput or XRP inventory data was obtained in this run.",
       "rlusd_japan": "SBI VC Trade, a consolidated subsidiary of SBI Holdings, agreed with Ripple subsidiary Standard Custody & Trust Company in 2025 to support Japanese RLUSD issuance/distribution; SBI VC Trade began RLUSD handling on 2026-06-24.",
       "xrpl_projects": "SBI Ripple Asia's 2026-02-26 tokenized-deposit/deposit-money POC and 2026-02-24 Japan-Korea remittance study contemplate XRPL use; neither is proof of a live production bank deployment.",
       "sources": [
@@ -303,7 +306,8 @@
         "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
         "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
         "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf"
-      ]
+      ],
+      "arc_validator": "Circle's 2026-09-16 Arc mainnet announcement identifies SBI Group as a founding validator and says SBI intends to use USDC and JPYSC, a trust-type yen stablecoin issued by SBI Shinsei Trust. Arc uses USDC for gas fees; this is a separate Circle L1, not XRPL."
     },
     "coinbase_circle": {
       "relationship": "Circle remains USDC issuer. Coinbase and Circle's 2023 agreement includes Coinbase equity participation and revenue sharing based on USDC balances on Coinbase and third-party distribution/usage. Coinbase's 2024 Form 10-K describes an initial three-year term.",
@@ -317,14 +321,39 @@
     },
     "coinbase_ripple": {
       "relationship": "Coinbase and Ripple announced an RLUSD distribution partnership on 2026-10-28. At launch RLUSD was available through Coinbase Prime, Exchange and retail app, with deposits/withdrawals across XRPL, Base and Ethereum and 1:1 USD conversion. Ripple said it would provide liquidity on Base.",
-      "collateral_status": "RLUSD collateral support for Coinbase Global Exchange customers was described as a future follow-on, not a live launch feature in the announcement.",
+      "collateral_status": "RLUSD collateral support for Coinbase Global Exchange customers was described as a future follow-on, not a live launch feature in the 2026-10-28 announcement. This differs from Ripple Prime, where Ripple says RLUSD is already used as collateral in some prime-brokerage products.",
       "xrp_caveat": "This establishes RLUSD distribution, not XRP purchases, XRP collateral, or proof of XRP bridge-asset usage.",
       "sources": [
         "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
         "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase"
       ]
     },
-    "counter_hypothesis": "SBI, Coinbase and Circle can expand stablecoin distribution and tokenized-deposit rails using USDC, RLUSD, bank deposits and Circle Arc without creating proportional demand for XRP. XRP demand must be measured through bridge-asset usage, XRP liquidity, XRP-denominated collateral, exchange flows and verified settlement volumes, not inferred from stablecoin announcements."
+    "counter_hypothesis": "Institutional stablecoin distribution, custody, prime brokerage and tokenized finance can grow through USDC, RLUSD, JPYSC, Circle Arc, bank deposits and Ripple Prime without creating proportional XRP spot demand. Even when RLUSD or USDC is used on XRPL, XRP demand must be measured separately through bridge-asset settlement, XRP-denominated collateral, liquidity depth, actual XRP balances and fees.",
+    "ripple_prime_and_bny": {
+      "prime_brokerage": "Ripple completed the Hidden Road acquisition on 2025-10-24 and renamed it Ripple Prime. Ripple says RLUSD is already collateral for a number of prime-brokerage products and some derivatives customers hold RLUSD balances. Its current product page lists RLUSD, XRP, tokenized real-world assets and traditional assets as collateral categories. These are product disclosures, not audited posted-collateral volumes.",
+      "specific_use": "Ripple's 2026-10-15 RWA perpetual-swap launch says institutional clients including Virtu can cross-margin RWA swaps and use RLUSD as collateral. This is a stated live product offering; client-level collateral balances were not disclosed.",
+      "bny_custody": "BNY was selected as primary reserve custodian for RLUSD in July 2025. On 2026-10-27 Ripple and BNY announced that BNY Digital Asset Custody now supports XRP and RLUSD for eligible institutional clients. They intend to enable direct RLUSD mint/redeem through BNY and explore tokenized trade finance on XRPL, subject to final approvals.",
+      "limits": "BNY support is custody availability, not evidence of client XRP holdings or net inflows. Direct BNY mint/redeem and broader XRPL tokenized-asset support are stated future plans subject to approvals.",
+      "sources": [
+        "https://ripple.com/insights/ripple-closes-hidden-road-acquisition/",
+        "https://ripple.com/products/prime-brokerage/",
+        "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+        "https://ripple.com/ripple-press/ripple-selects-bny-to-custody-ripple-usd-reserves/",
+        "https://ripple.com/ripple-press/ripple-expands-its-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+        "https://ripple.com/products/prime-brokerage/"
+      ]
+    },
+    "circle_arc": {
+      "launch": "Circle announced Arc mainnet on 2026-09-16. Circle describes Arc as an L1 for financial markets, real-time money movement and agentic economic activity, with USDC gas fees and more than 100 builders/validators at launch.",
+      "sbi_role": "Circle's release quotes SBI Holdings CEO Yoshitaka Kitao describing SBI Group as a founding validator and saying SBI intends to use USDC and JPYSC, a trust-type yen stablecoin issued by SBI Shinsei Trust.",
+      "xrp_implication": "This is a competing/parallel institutional settlement path that can operate without XRP as the bridge asset. It must be modeled as a counter-hypothesis to XRP adoption, not as positive XRP demand.",
+      "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx"
+    },
+    "ripple_robinhood": {
+      "announcement": "Ripple and Robinhood announced a strategic partnership on 2026-10-27. RLUSD is live on Robinhood Chain and Bitstamp by Robinhood; in-app availability was stated as a later rollout. Robinhood plans to use RLUSD on XRPL for institutional settlement and Ripple Treasury for cash/liquidity operations. Ripple Prime already provides Bitstamp lending and margin financing across roughly 20 digital assets.",
+      "caveat": "This is a stablecoin, treasury and prime-brokerage integration; it is not proof of XRP bridge usage or XRP demand.",
+      "source": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/"
+    }
   },
   "market_snapshot": {
     "capture_observed_at_utc": "2026-11-19T02:11:18Z",
@@ -388,32 +417,46 @@
         "provider": "XRP Insights",
         "window": "2026-11-16 to 2026-11-17",
         "reported_flow_xrp": 159134,
-        "universe": "six spot funds plus BITW; GXRP flow excluded while a gap is corrected",
+        "universe": "six US spot funds plus BITW; sum of funds with computed flows; flow-excluded funds are counted as zero; 2 settled trading days; holdings 1,189,261,215 XRP on Nov 17",
         "source": "https://xrp-insights.com/data"
       },
       {
         "provider": "CryptoKeyhole",
         "window": "2026-11-17 partial",
         "reported_flow_xrp": -3251,
-        "universe": "2 of 4 daily-readable funds had reported; 2 issuers pending",
+        "universe": "3 of 4 daily-readable funds reported; waiting for Bitwise; latest page update 2026-11-19 01:55 UTC",
+        "source": "https://cryptokeyhole.com/etf-flows/xrp/"
+      },
+      {
+        "provider": "CryptoKeyhole",
+        "window": "2026-11-16 partial",
+        "reported_flow_xrp": -5196983,
+        "universe": "3 of 4 daily-readable funds reported; waiting for Bitwise",
+        "source": "https://cryptokeyhole.com/etf-flows/xrp/"
+      },
+      {
+        "provider": "CryptoKeyhole",
+        "window": "2026-11-09 to 2026-11-13 complete",
+        "reported_flow_xrp": -4923033,
+        "universe": "four daily-readable funds; GXRP excluded from daily files and XRPR excluded because direct holdings are not a complete measure",
         "source": "https://cryptokeyhole.com/etf-flows/xrp/"
       },
       {
         "provider": "Alpha Finance",
         "window": "2026-11-17",
         "reported_flow_usd": -6100000,
-        "universe": "five funds",
+        "universe": "five funds; 30-session flow -$10.9M; cumulative inflow $1.70B",
         "source": "https://alphafinance.io/etf/xrp/"
       },
       {
         "provider": "CryptoTuts",
-        "window": "2026-11-11 to 2026-11-17",
+        "window": "2026-11-12 to 2026-11-18",
         "reported_flow_usd": -7230000,
-        "universe": "five funds",
+        "universe": "five reported ETFs; source SoSoValue; 1.12B XRP is an AUM/price conversion, not custody inventory",
         "source": "https://cryptotuts.co/xrp/etf"
       }
     ],
-    "interpretation": "Do not average these values. Their coverage, units, completeness and methodology differ. Issuer-level source files and per-fund holdings must be reconciled before model admission."
+    "interpretation": "Do not average these values. They differ in issuer universe, publication cutoffs, partial-day completeness, flow-excluded fund treatment, units and source lineage. XRP Insights' positive two-day total conflicts with CryptoKeyhole's large partial Nov 16 outflow and Alpha Finance's Nov 17 USD outflow. Reconcile each issuer's dated holdings files and timestamps before model admission."
   },
   "exact_phrase_research": {
     "ask_coin": "Permission Coin (ASK) remains a plausible exact-name match; no primary-source XRP, XRPL or Ripple relationship was established.",
@@ -556,6 +599,77 @@
       "type": "secondary_aggregator",
       "url": "https://cryptotuts.co/xrp/etf",
       "publisher": "CryptoTuts"
+    },
+    {
+      "type": "primary_law",
+      "url": "https://www.sbic-wj.co.jp/disclose/law/",
+      "publisher": "Osaka SBIC; Small and Medium Business Investment & Consultation Company Law"
+    },
+    {
+      "type": "primary_press_release",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "publisher": "Circle",
+      "published": "2026-09-16"
+    },
+    {
+      "type": "primary_press_release",
+      "url": "https://ripple.com/insights/ripple-closes-hidden-road-acquisition/",
+      "publisher": "Ripple",
+      "published": "2025-10-24"
+    },
+    {
+      "type": "primary_product_page",
+      "url": "https://ripple.com/products/prime-brokerage/",
+      "publisher": "Ripple",
+      "published": "accessed 2026-11-19"
+    },
+    {
+      "type": "primary_press_release",
+      "url": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+      "publisher": "Ripple",
+      "published": "2026-10-15"
+    },
+    {
+      "type": "primary_press_release",
+      "url": "https://ripple.com/ripple-press/ripple-expands-its-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "publisher": "Ripple and BNY",
+      "published": "2026-10-27"
+    },
+    {
+      "type": "primary_press_release",
+      "url": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/",
+      "publisher": "Ripple",
+      "published": "2026-10-27"
+    },
+    {
+      "type": "primary_regulator_record",
+      "url": "https://www.occ.treas.gov/news-issuances/news-releases/2025/nr-occ-2025-125b.pdf",
+      "publisher": "Office of the Comptroller of the Currency",
+      "published": "2025-12-12"
+    },
+    {
+      "type": "secondary_aggregator",
+      "url": "https://cryptotuts.co/xrp/etf",
+      "publisher": "CryptoTuts",
+      "published": "2026-11-18"
+    },
+    {
+      "type": "secondary_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "publisher": "CryptoKeyhole",
+      "published": "updated 2026-11-19T01:55:00Z"
     }
-  ]
+  ],
+  "regulatory_disagreement": {
+    "issue": "Ripple National Trust Bank charter status",
+    "corporate_statement": "Ripple's 2026-10-28 company release says it received final OCC approval for a National Trust Bank charter.",
+    "regulator_record": "The OCC's public 2025-12-12 decision letter and published decisions index reviewed in this run show preliminary conditional approval; no final charter authorization or commencement-of-business decision was located in the OCC sources reviewed.",
+    "disposition": "Unresolved source disagreement. Do not describe the charter as operational or the bank as open until the OCC's final approval/commencement authorization is independently located.",
+    "sources": [
+      "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "https://www.occ.treas.gov/news-issuances/news-releases/2025/nr-occ-2025-125.html",
+      "https://www.occ.treas.gov/news-issuances/news-releases/2025/nr-occ-2025-125b.pdf",
+      "https://www.occ.treas.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html"
+    ]
+  }
 }
