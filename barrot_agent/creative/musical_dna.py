@@ -258,7 +258,7 @@ class RecursiveCreativeMemory:
         return record
 
     def verified_lessons(self) -> list[dict[str, Any]]:
-        return [record for record in self.read_all() if record.get("lesson_promoted")]
+        return [record for record in self.read_all() if record.get("lesson_promoted") and record.get("record_type") != "composition_feedback" and "settings" in record and "evaluation" in record]
 
     def recommend_settings(self) -> Transmutation:
         """Return the settings from the best-rated verified lesson, if any."""
