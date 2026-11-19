@@ -47,8 +47,9 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 ## Next integration stages
 - Stem separation and instrument-role detection with an optional, explicitly configured backend.
 - Richer harmonic and melodic evaluation, including voice-leading and phrase-level development.
-- Stem separation and instrument-role detection with an optional, explicitly configured backend.
-- Richer harmonic and melodic evaluation, including voice-leading and phrase-level development.
 - Runtime orchestration that creates versioned audio assets, persists evaluation reports, and routes them for genuine listening and user feedback.
-- A/B comparison against prior versions and regression detection across a user's approved creative preferences.
-- A full recursive production run that persists manifests, generated MIDI, evaluation reports, and user feedback as versioned artifacts.
+- A/B comparison against prior versions and regression detection across approved creative preferences.
+- A full recursive production run that persists manifests, generated MIDI/WAV, evaluation reports, and user feedback as versioned artifacts.
+
+## Rendering prerequisites
+Install the Python extras with `pip install -e ".[music]"`. WAV rendering also requires the native FluidSynth library and a compatible SF2 SoundFont. The SoundFont is supplied by the operator; Barrot does not download or bundle one.
