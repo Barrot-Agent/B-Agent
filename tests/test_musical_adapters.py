@@ -161,9 +161,20 @@ class AudioRenderTests(unittest.TestCase):
                     sample_rate=100,
                 )
     def test_audio_render_writes_new_wav_and_reports_technical_metrics(self):
+        import math
         import sys
 
         from barrot_agent.creative.audio_render import render_audio
+
+        class FakeArray:
+            def __init__(self, values):
+                self.values = list(values)
+                self.size = len(self.values)
+                self.ndim = 1
+                self.shape = (self.size,)
+
+            def __iter__(self):
+                return iter(self.values)
 
         class FakeMidi:
             def __init__(self, path):
@@ -171,6 +182,22 @@ class AudioRenderTests(unittest.TestCase):
 
             def fluidsynth(self, *, fs, sf2_path):
                 return [0.0, 0.5, -0.5]
+
+        numpy = ModuleType("numpy")
+        numpy.float32 = "float32"
+        numpy.float64 = "float64"
+        numpy.asarray = lambda values, dtype=None: FakeArray(values)
+        numpy.isfinite = lambda values: type(
+            "FiniteResult", (), {"all": lambda self: all(math.isfinite(x) for x in values)}
+        )()
+        numpy.clip = lambda values, low, high: FakeArray(
+            max(low, min(high, value)) for value in values
+        )
+        numpy.abs = lambda values: FakeArray(abs(value) for value in values)
+        numpy.max = lambda values: max(values)
+        numpy.square = lambda values, dtype=None: FakeArray(value * value for value in values)
+        numpy.mean = lambda values, dtype=None: sum(values) / len(values)
+        numpy.sqrt = math.sqrt
 
         pretty_midi = ModuleType("pretty_midi")
         pretty_midi.PrettyMIDI = FakeMidi
@@ -192,6 +219,7 @@ class AudioRenderTests(unittest.TestCase):
             soundfont.write_bytes(b"placeholder")
             target = Path(directory) / "render.wav"
             modules = {
+                "numpy": numpy,
                 "pretty_midi": pretty_midi,
                 "scipy": scipy,
                 "scipy.io": scipy_io,
@@ -208,4 +236,3 @@ class AudioRenderTests(unittest.TestCase):
             self.assertAlmostEqual(result.duration_seconds, 3 / 44100)
             self.assertAlmostEqual(result.peak_level, 0.5)
             self.assertEqual(result.channels, 1)
-
