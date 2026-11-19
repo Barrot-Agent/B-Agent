@@ -16,6 +16,9 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 ## Python entry points
 - `barrot_agent.creative.analyze_audio(path)`
 - `barrot_agent.creative.compose_original(manifest, CompositionSettings(...))`
+- `barrot_agent.creative.RecursiveCompositionEngine(memory).create(manifest)`
+- `run.learned_lessons` exposes approved lessons from earlier attempts
+- `engine.record_feedback(run, feedback=..., lesson=...)` appends user feedback
 - `barrot_agent.creative.export_midi(manifest, destination)`
 - `barrot_agent.creative.transmute(manifest, Transmutation(...))`
 - `barrot_agent.creative.evaluate_transmutation(source, candidate)`
@@ -31,6 +34,13 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 - Do not store source audio, lyrics, melodies, or hooks in the learning journal. Store abstract features and fingerprints only.
 - Audio analysis currently treats a mixed recording as a generic source track. True stem separation and instrument identification require a separately validated model/backend.
 - The generated MIDI is a structured composition sketch, not a finished mastered production.
+
+## Recursive iteration behavior
+- Each generation is written to the append-only journal before user feedback arrives.
+- Failed structural evaluations remain recorded and cannot be promoted.
+- A passing result becomes reusable only after explicit positive user feedback and a concrete lesson.
+- The next run uses the best-scoring approved composition settings and advances the random seed to explore a new variation.
+- Approved lesson text is exposed to Barrot so later creative reasoning can account for prior feedback.
 
 ## Next integration stages
 - Stem separation and instrument-role detection with an optional, explicitly configured backend.
