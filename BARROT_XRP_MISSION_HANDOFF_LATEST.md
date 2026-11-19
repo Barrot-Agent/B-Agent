@@ -3048,3 +3048,90 @@ Main branch metadata reports protection enabled, but required status-check conte
 
 Run 32 artifact: [`20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json`](research/xrp_intelligence/20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json).
 Run 32 regression test: [`test_xrp_run32_market_custody_binance_evidence.py`](tests/test_xrp_run32_market_custody_binance_evidence.py).
+
+
+---
+
+## Run 32A — corrections, ingestion failure diagnosis and exact-head test repair
+
+**Disposition: NO MERGE.** This is an append-only correction to Run 32. The original market artifact is retained unchanged. The correction addendum records regulatory-source date corrections, new Circle/DBS evidence, exact ingestion failures and the first Run 32 full-suite failure. Four test assertions failed; 4,282 tests passed. No application-code test failure was reported.
+
+### Corrected OCC chronology
+
+The Run 32 artifact incorrectly dated OCC Corporate Decision CD1370 to November 6. That PDF is the **April 2, 2026 preliminary conditional approval**, not a November 6 final letter.
+
+- Coinbase OCC CAS record: approved April 2, 2026; Consummated/Effective November 6, 2026.
+- Coinbase's November 9 announcement states that final approval was received and the national trust company launched.
+- No separate final OCC decision letter was located in this review.
+- The Coinbase trust company is a national trust company for fiduciary digital-asset custody, not an insured full-service commercial bank. The three-year custody migration is not proof all client assets have migrated.
+
+Ripple's OCC CAS record shows approved December 12, 2025 and Consummated/Effective October 26, 2026. Ripple announced final approval October 26. The publicly accessible OCC Conditional Approval #1359 letter remains preliminary; no separate final OCC decision letter was located. The OCC CAS status is the primary filing-status evidence. Operational opening and customer migration are not independently verified.
+
+### New Circle/DBS competitive route and Circle Q3 economics
+
+**DBS–Circle, November 18:** eligible institutional clients can directly mint and redeem USDC through DBS, with 24/7 USD-USDC settlement for minting/redemption. Circle's regulated affiliates remain the issuers; DBS is the bank access/settlement channel. The joint release names no clients, eligible jurisdictions, supported chains, fees, limits, go-live date or volumes. This is a meaningful competing institutional USDC access route in Asia, not evidence of XRP adoption.
+
+**Circle Q3 2026 SEC Form 10-Q:** the correct primary source is [Circle's Q3 2026 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000046/crcl-20260930.htm), not the Q2 results page used in the first Run 32 draft.
+
+- Q3 gross USDC minting: $104.304B; redemptions: $103.694B; net gross mint less redemption: +$610M.
+- Nine-month gross minting: $260.847B; redemptions: $262.234B; net: -$1.387B.
+- Coinbase distribution costs: $331.3M in Q3 and $986.6M for nine months.
+- The agreement's distribution economics depend on USDC held on Coinbase relative to other distribution partners after issuer retention, plus a separate ecosystem-growth allocation after eligible third-party distribution payments. Do not describe it as a blanket 50% of gross reserve income.
+- Circle reported 7.35M meaningful wallets and 27% stablecoin market share as of September 30; these are issuer-defined metrics, not unique verified users or transaction value.
+
+The DBS/Circle announcement and Circle SEC filing are separate primary source families. They do not establish Ripple/Circle partnership or XRP demand.
+
+### Macro context
+
+Reuters on November 18 reported broad USD strength after stronger US jobs/inflation data and hawkish Fed Governor Christopher Waller comments; the Canadian dollar touched a 19-month low. The US–Canada two-year yield differential was 148.5 bps. This is cross-asset risk/liquidity context only. No XRP-specific causal estimate or directional forecast is established.
+
+### XRP ETF flow context
+
+CryptoKeyhole's issuer-file aggregator shows approximately -2.3M XRP over 16 trading sessions through November 13, with 12 outflow days and 3 inflow days. The largest displayed daily outflow was approximately -9.216M XRP on November 9; the largest inflow was approximately +4.337M XRP on October 28. November 17 remains partial (3 of 4 funds); November 18 has no issuer files. These observations are not averaged with different provider universes and are not independent issuer confirmations.
+
+### Ingestion artifact diagnosis — run 44301868145
+
+The prior 21 failures are now enumerated from the actual workflow artifact `xrp-public-raw-44301868145` (GitHub artifact ID 14426941429, SHA-256 `c9ec648228d5c76136fd68f8d7b0f2b71ea2eb97eebf8b2f8617b9678098b2be`):
+
+- **Binance: 8 HTTP 451 failures** across spot ticker, klines, perpetual premium, open interest, funding, open-interest history, long/short ratio and spot depth. These are unavailable from the runner. No alternate host or proxy was used.
+- **Bybit: 5 HTTP 403 failures** across spot, depth, linear ticker, open interest and funding. Bybit's documentation says US and Mainland China IPs may be restricted; the runner region is unverified. Do not proxy or bypass.
+- **SEC EDGAR: 6 configuration failures.** `BARROT_SEC_USER_AGENT` is missing. The collector requires Barrot-Agent plus a monitored project contact email; no email was invented and no variable was changed.
+- **Grayscale: 1 HTTP 429**, retryable rate limit.
+- **Franklin XRPZ: 1 parser failure.** The raw body was not retained, only its content hash and receipt. The public issuer page currently exposes a September 4 snapshot (273.605M XRP and $383.53M assets), not a current November daily holdings row. Keep it out of current flows until the primary daily data is reconciled.
+
+The raw artifact also confirms:
+
+- 34 receipts: 22 raw-retained, 12 digest-only; receipt-chain verification **PASS** and cross-run continuity sequence 15.
+- Chain head SHA-256: `5d3d4cae7846c0835c2319776c24e864ed9b0245e03012bd363edaae3544c597`.
+- External immutable anchor: **NOT_ANCHORED**. The chain is tamper-evident relative to its stored head, not an independently controlled WORM record.
+- Same-venue OKX XRP-USDT/USDT-USD top-of-book quote basis: **VERIFIED**, 0.657-second timestamp skew, maximum component age 9.533 seconds, four normalized top-of-book features. Both components share one OKX publisher-independence group; depth is not converted.
+- Drift report: 129 feature definitions, 3,235 input records, 980 late-reference records excluded, zero evaluated features, status **INSUFFICIENT_DATA**. No PSI result is available; forecast issuance remains disabled.
+- Raw artifacts retain 90 days; feature-store artifact retention is seven days. This is not permanent storage.
+- 23 sources remain raw-only or digest-only pending units, identity, timestamp, issuer-row, attestation or redistribution validation.
+
+The scheduled ingestion workflow is still integration-only and inactive on main. No SEC variable was set, no restricted provider was bypassed, and no external anchor was fabricated.
+
+### Full-suite failure and test repair
+
+Push full-suite run [44432293042](https://github.com/Barrot-Agent/B-Agent/actions/runs/44432293042) on exact head `bd0f564`:
+
+- 4,282 passed, 4 failed, 1 skipped.
+- 11 warnings; 19 subtests passed.
+- 119.13 seconds.
+- The standard/core test job passed; Pages validation passed; dependency audit [44432293109](https://github.com/Barrot-Agent/B-Agent/actions/runs/44432293109) passed; money audit [44432303247](https://github.com/Barrot-Agent/B-Agent/actions/runs/44432303247) passed.
+- The PR-event run [44432303035](https://github.com/Barrot-Agent/B-Agent/actions/runs/44432303035) passed its non-test checks but skipped standard and full-suite jobs because PR #1663 remains draft.
+
+The four failures are test-contract/evidence-schema mismatches introduced by the Run 32 documentation update: two map tests still expected the previous Run 31 artifact/CI schema, and two new assertions expected different wording from the captured artifact. No application-code test failure was reported. The map/test contracts are being corrected; the next exact-head full suite must pass before any merge decision.
+
+### Current repository and governance state
+
+- Main remains `82c23e219553164c24073784c529aad75acacd66`.
+- Integration head at the failed Run 32 test: `bd0f564c122ed4ef8ce3cf4b764f1152e368e250`, 382 ahead, zero behind, 1,442 changed files.
+- Main branch metadata: protected=true; required status-check contexts/checks are empty; enforcement is `non_admins`. The fallback ruleset is disabled.
+- `CODEOWNERS` remains `* @Barrot-Agent`; PR #1663 remains draft with zero independent reviews.
+- Main's paid-issue publisher remains active. Its automatic commit `82c23e` and Pages deployment run 44431136074 were incorporated into the integration branch; no main write or deployment was initiated by this run.
+- All 68 changed workflow definitions and their transitive scripts/actions remain under review; the bounded spot-check is not a complete security audit.
+
+**Final decision: NO MERGE.** The Run 32 full-suite failure is being repaired. The four failures are limited to stale/mismatched evidence assertions, but exact-head full-suite success is still required. Independent review, non-empty required checks, Pages side-effect governance and the complete workflow audit remain blockers.
+
+Run 32 original evidence is retained unchanged at `research/xrp_intelligence/20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json`. Append-only correction and ingestion diagnostics: `research/xrp_intelligence/20261119T005505Z-run32a-corrections-ingestion-failure-and-circle-usdc-rail.json`.

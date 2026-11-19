@@ -13,20 +13,20 @@
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 381,
+      "ahead_by": 382,
       "behind_by": 0,
-      "changed_files": 1440,
+      "changed_files": 1442,
       "changed_workflow_files": 68,
       "formal_reviews": 0,
-      "snapshot_head_sha": "2d876d5e823ace0025d19d7a2bfd9bc713db05c7",
-      "commits": 381,
+      "snapshot_head_sha": "bd0f564c122ed4ef8ce3cf4b764f1152e368e250",
+      "commits": 382,
       "additions": 518399,
       "deletions": 6754,
-      "mergeable_state": "GitHub reports mergeable. Current main commit 82c23e was incorporated into the existing integration branch with non-force two-parent merge commit 2d876d. Previous exact-head full suite passed on 4e5c01b; main-sync commit changed only generated paid-issue timestamps and was paths-ignored by CI. Run 32 evidence and a regression test are being added; exact-head CI on that final commit is pending. PR remains draft with zero independent reviews. Main branch protection is enabled but required status contexts are empty and enforcement is non_admins; CODEOWNERS is self-only; automatic Pages publication and incomplete transitive workflow review remain blockers.",
+      "mergeable_state": "GitHub reports mergeable; current head bd0f564 has a full-suite failure of four evidence/test assertions (4,282 passed, 1 skipped). Core tests, Pages validation, dependency audit and money audit passed. Corrections are being committed; exact-head full-suite success is required. PR remains draft with zero independent reviews; main required status contexts are empty; Pages side effect and incomplete workflow audit remain blockers.",
       "review_comments": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
-      "current_pr_head_sha": "2d876d5e823ace0025d19d7a2bfd9bc713db05c7",
+      "current_pr_head_sha": "bd0f564c122ed4ef8ce3cf4b764f1152e368e250",
       "snapshot_ahead_by": 364,
       "snapshot_changed_files": 1438,
       "handoff_update_commit_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
@@ -59,7 +59,7 @@
         "xrp_research_files": 30
       },
       "integration": {
-        "entries": 2987,
+        "entries": 2989,
         "workflow_files": 93,
         "test_named_files": 547,
         "xrp_research_files": 843
@@ -107,7 +107,7 @@
       {
         "number": 1663,
         "classification": "blocked",
-        "note": "Sole consolidated V3/XRP integration; draft; 381 ahead/0 behind after non-force merge of current main 82c23e; 1,440 changed files and 68 changed workflow files; prior exact-head full suite passed on 4e5c01b; current main-sync/evidence successor requires exact-head full-suite verification; zero independent reviews; required status contexts empty; automatic Pages publication and transitive workflow/security blockers remain."
+        "note": "Sole consolidated V3/XRP integration; draft; 382 ahead/0 behind after non-force current-main sync; 1,442 changed files and 68 changed workflow files; latest exact-head full suite on bd0f564 failed four evidence/test assertions (4,282 passed, 1 skipped); app/core tests, Pages validation, dependency and money audits passed; corrected evidence tests and addendum are being committed; zero independent reviews; required status contexts empty; automatic Pages publication and transitive workflow/security blockers remain."
       },
       {
         "number": 1668,
@@ -447,19 +447,22 @@
     "quote_basis": {
       "venue": "OKX",
       "status": "VERIFIED",
-      "captured_at_utc": "2026-11-18T12:13:54.617611Z",
-      "mid_usd": 0.983922118,
-      "bid_usd": 0.98386725,
-      "ask_usd": 0.983976986,
-      "spread_bps": 1.115291526,
-      "snapshot_skew_seconds": 0.657,
-      "max_component_age_seconds": 9.532693,
-      "publisher_groups": 1,
-      "raw_sha256": {
-        "okx_spot_ticker": "b6c5140743578ec25228b109998660266dd949a1481f7677aa2bfd8da372ced6",
-        "okx_usdt_usd_ticker": "1fce9a56cc2b45f6df474062346e558670b2e4dd05252c885fb9d8ae288e19a8"
+      "method": "same_venue_synchronized_top_of_book_product",
+      "event_times_utc": {
+        "xrp_quote": "2026-11-18T12:13:45.726Z",
+        "usdt_usd_quote": "2026-11-18T12:13:45.069Z"
       },
-      "limitation": "Same-venue synchronized top-of-book only; one publisher group; no independent corroboration or normalized depth."
+      "snapshot_skew_seconds": 0.657,
+      "maximum_component_age_seconds": 9.532693,
+      "normalized_features": 4,
+      "publisher_independence_groups": 1,
+      "normalized_values_usd": {
+        "best_ask": 0.983976986,
+        "best_bid": 0.98386725,
+        "mid": 0.983922118,
+        "spread_bps": 1.1152915255
+      },
+      "limitation": "Same OKX publisher for XRP-USDT and USDT-USD; top-of-book only, not independent corroboration or converted depth."
     },
     "sec_edgar": {
       "status": "BLOCKED_CONFIGURATION",
@@ -612,7 +615,19 @@
           "coverage": "different units/universes; not averaged"
         }
       ],
-      "reconciliation": "CryptoKeyhole's Nov17 row is partial (3/4); Nov18 has no issuer files. Different fund universes, units and reporting completeness are preserved; no consensus flow is asserted."
+      "reconciliation": "CryptoKeyhole's Nov17 row is partial (3/4); Nov18 has no issuer files. Different fund universes, units and reporting completeness are preserved; no consensus flow is asserted.",
+      "cumulative_16_session_approximate_net_flow_xrp": -2300000,
+      "cumulative_16_session_outflow_days": 12,
+      "cumulative_16_session_inflow_days": 3,
+      "largest_daily_outflow": {
+        "date": "2026-11-09",
+        "xrp": -9216000
+      },
+      "largest_daily_inflow": {
+        "date": "2026-10-28",
+        "xrp": 4337000
+      },
+      "latest_source_url": "https://cryptokeyhole.com/etf-flows/xrp/"
     },
     "last_repository_verification": {
       "head_sha": "da5eef1bca0fee4f527c22fd99c8d4427cc39d7b",
@@ -681,6 +696,107 @@
       "model_eligible": false,
       "category_sum_xrp_approx": 99990000000,
       "unreconciled_rounding_residual_xrp_approx": 10000000
+    },
+    "latest_ingestion_diagnostics": {
+      "source_run_id": 44301868145,
+      "source_run_head_sha": "38b910e7f91e22096a224474be4445ef7f9a7a0d",
+      "source_capture_time_utc": "2026-11-18T12:13:54.617611Z",
+      "raw_artifact": {
+        "artifact_id": 14426941429,
+        "name": "xrp-public-raw-44301868145",
+        "size_bytes": 462640,
+        "github_artifact_digest": "sha256:c9ec648228d5c76136fd68f8d7b0f2b71ea2eb97eebf8b2f8617b9678098b2be",
+        "retention_days": 90,
+        "expires_at_utc": "2027-02-16T12:13:28Z"
+      },
+      "feature_store_artifact": {
+        "artifact_id": 14426626635,
+        "name": "xrp-public-feature-store-44301868145",
+        "size_bytes": 822789,
+        "github_artifact_digest": "sha256:d13e0c1257e9318fa8160bae711b2cfaf79996f2a3aea886a8600048af7caf5d",
+        "retention_days": 7,
+        "expires_at_utc": "2026-11-25T12:14:01Z"
+      },
+      "receipt_chain": {
+        "verification_status": "PASS",
+        "receipts": 34,
+        "raw_retained": 22,
+        "digest_only": 12,
+        "chain_head_sha256": "5d3d4cae7846c0835c2319776c24e864ed9b0245e03012bd363edaae3544c597",
+        "receipt_log_sha256": "d5da01be1b25939875cd2cbd409efe9922957400c8e33b63103fefe232e40fa7",
+        "cross_run_chain_sequence": 15,
+        "cross_run_continuity": "VERIFIED",
+        "external_anchor": "NOT_ANCHORED",
+        "limitation": "Tamper-evident relative to the stored chain head only; no independent WORM or trusted timestamp anchor."
+      },
+      "quote_basis": {
+        "venue": "OKX",
+        "status": "VERIFIED",
+        "method": "same_venue_synchronized_top_of_book_product",
+        "event_times_utc": {
+          "xrp_quote": "2026-11-18T12:13:45.726Z",
+          "usdt_usd_quote": "2026-11-18T12:13:45.069Z"
+        },
+        "snapshot_skew_seconds": 0.657,
+        "maximum_component_age_seconds": 9.532693,
+        "normalized_features": 4,
+        "publisher_independence_groups": 1,
+        "normalized_values_usd": {
+          "best_ask": 0.983976986,
+          "best_bid": 0.98386725,
+          "mid": 0.983922118,
+          "spread_bps": 1.1152915255
+        },
+        "limitation": "Same OKX publisher for XRP-USDT and USDT-USD; top-of-book only, not independent corroboration or converted depth."
+      },
+      "drift_report": {
+        "status": "INSUFFICIENT_DATA",
+        "feature_count": 129,
+        "evaluated_feature_count": 0,
+        "input_records": 3235,
+        "late_reference_record_exclusions": 980,
+        "forecast_issuance_allowed": false,
+        "limitation": "No PSI result is available for any feature; a stable or absent drift statistic cannot support a forecast."
+      },
+      "source_failure_breakdown": {
+        "binance_http_451": 8,
+        "bybit_http_403": 5,
+        "sec_user_agent_configuration": 6,
+        "grayscale_http_429": 1,
+        "franklin_xrpz_parser_failure": 1
+      },
+      "source_failure_details": {
+        "binance": "Eight public spot/perpetual/depth requests returned HTTP 451 from the runner. No data admitted; no alternate host or proxy used.",
+        "bybit": "Five spot/depth/linear-perpetual requests returned HTTP 403. Bybit documentation says U.S. and Mainland China IPs may be restricted. Runner region remains unverified; do not proxy or bypass.",
+        "sec_edgar": "Six submissions/companyfacts requests failed closed because BARROT_SEC_USER_AGENT is not configured with Barrot-Agent plus a monitored project contact email. No address was invented or variable changed.",
+        "grayscale": "HTTP 429; retryable provider rate limit.",
+        "franklin": "Parser could not find expected XRPZ identity/holdings markers. Raw body was not retained in the raw artifact, only a content hash/receipt; the public issuer page currently exposes a stale 2026-09-04 snapshot (273,605,153.38 XRP, $383.53M assets), not a current November daily row."
+      },
+      "model_eligibility": "All failed sources remain excluded. The Franklin stale page is not a current daily holdings/flow observation.",
+      "raw_only_sources_count": 23,
+      "cftc_weekly_source_families_captured": "0 of 2",
+      "no_proxy_or_region_bypass": true
+    },
+    "receipt_chain": {
+      "verification_status": "PASS",
+      "receipts": 34,
+      "raw_retained": 22,
+      "digest_only": 12,
+      "chain_head_sha256": "5d3d4cae7846c0835c2319776c24e864ed9b0245e03012bd363edaae3544c597",
+      "receipt_log_sha256": "d5da01be1b25939875cd2cbd409efe9922957400c8e33b63103fefe232e40fa7",
+      "cross_run_chain_sequence": 15,
+      "cross_run_continuity": "VERIFIED",
+      "external_anchor": "NOT_ANCHORED",
+      "limitation": "Tamper-evident relative to the stored chain head only; no independent WORM or trusted timestamp anchor."
+    },
+    "drift_report": {
+      "status": "INSUFFICIENT_DATA",
+      "feature_count": 129,
+      "evaluated_feature_count": 0,
+      "input_records": 3235,
+      "late_reference_record_exclusions": 980,
+      "forecast_issuance_allowed": false,
+      "limitation": "No PSI result is available for any feature; a stable or absent drift statistic cannot support a forecast."
     }
   },
   "ci_evidence": {
@@ -772,22 +888,22 @@
       "publisher_result": "success; committed generated paid-issue timestamp updates",
       "pages_deployment_run": 44431136074,
       "pages_deployment_result": "success",
-      "main_full_suite_after_commit": "not run; CI paths-ignore excludes PAID-ISSUES.md and data/money/paid_issues.json"
+      "main_full_suite_after_commit": "not run; ci.yml paths-ignore excludes PAID-ISSUES.md and data/money/paid_issues.json"
     },
     "current_head_full_suite": {
-      "head_sha": "4e5c01bb530a2fe5c9efe749a94c9bdd9748ecec",
-      "run_id": 44429499054,
-      "status": "success",
-      "passed": 4280,
-      "failed": 0,
+      "head_sha": "bd0f564c122ed4ef8ce3cf4b764f1152e368e250",
+      "run_id": 44432293042,
+      "status": "completed",
+      "conclusion": "failure",
+      "passed": 4282,
+      "tests_failed": 4,
       "skipped": 1,
       "warnings": 11,
       "subtests_passed": 19,
-      "duration_seconds": 151.38,
+      "duration_seconds": 119.13,
       "inclusive_coverage_percent": 68.13,
-      "legacy_core_coverage_percent": 77,
-      "wheel_build": "success",
-      "installed_wheel_mission_verification": "success"
+      "legacy_core_coverage_percent": null,
+      "failure_classification": "Four evidence/test-contract assertions; no application-code test failure reported."
     },
     "previous_verified_full_suite": {
       "run_id": 44322684443,
@@ -895,31 +1011,25 @@
       "note": "The exact-head push full suite remains the controlling test evidence; no merge until it and all required checks finish."
     },
     "current_pr_head_ci": {
-      "head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
-      "push_ci_run_id": 44428612376,
-      "push_ci_conclusion": "success",
+      "head_sha": "bd0f564c122ed4ef8ce3cf4b764f1152e368e250",
+      "push_ci_run_id": 44432293042,
+      "push_ci_conclusion": "failure",
       "standard_tests_job_status": "success",
-      "full_suite_job_id": 135239865026,
-      "full_suite_passed": 4280,
-      "full_suite_failed": 0,
+      "full_suite_job_id": 135252422756,
+      "full_suite_passed": 4282,
+      "full_suite_failed": 4,
       "full_suite_skipped": 1,
-      "full_suite_coverage_percent": 68.13,
-      "legacy_core_coverage_percent": 77,
-      "dependency_audit_run_id": 44428612536,
+      "dependency_audit_run_id": 44432293109,
       "dependency_audit_conclusion": "success",
-      "fail_closed_run_id": 44428612395,
-      "fail_closed_conclusion": "success",
+      "fail_closed_run_id": null,
+      "fail_closed_conclusion": "not observed in this push run",
+      "money_audit_run_id": 44432303247,
+      "money_audit_conclusion": "success",
       "pages_validation_status": "success_validation_only",
-      "pr_event_run_id": 44428619302,
+      "pr_event_run_id": 44432303035,
       "pr_event_conclusion": "success",
       "pr_event_full_suite_status": "skipped",
-      "money_audit_run_id": 44428619390,
-      "money_audit_conclusion": "success",
-      "pr_dependency_audit_run_id": 44428619383,
-      "pr_dependency_audit_conclusion": "success",
-      "pr_fail_closed_run_id": 44428619335,
-      "pr_fail_closed_conclusion": "success",
-      "exact_head_verification": "PASS — full repository suite, dependency audit, fail-closed gate, money audit, PR dependency audit, PR fail-closed gate and Pages validation all passed on exact head 9d31bde. PR-event test jobs remain skipped because PR #1663 is draft; push-triggered full suite is the proof."
+      "exact_head_verification": "FAIL — four evidence/test-contract assertions; 4,282 passed, 1 skipped. Core tests, Pages validation, dependency audit and money audit passed."
     },
     "last_verified_code_head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
     "last_verified_full_suite": {
@@ -940,7 +1050,7 @@
       "installed_wheel_mission_verification": "success",
       "result": "PASS on exact head 9d31bde."
     },
-    "latest_full_suite_tested_head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
+    "latest_full_suite_tested_head_sha": "bd0f564c122ed4ef8ce3cf4b764f1152e368e250",
     "remediation_commit_test": "80507968e59d9a2e3f99801734d258e8f2dc1819",
     "current_branch_head_ci_pending": {
       "head_sha": "4cf9b185e95b3b2231713d4dba0246eb394d768c",
@@ -974,11 +1084,11 @@
         "Primary-source test now preserves SBI's 99.99B rounded supply-category sum and 0.01B residual."
       ]
     },
-    "post_sync_exact_head_full_suite": "PENDING on evidence/test commit; no predecessor result transferred."
+    "post_sync_exact_head_full_suite": "FAIL on bd0f564: 4,282 passed, 4 failed, 1 skipped. All four failures are stale/mismatched Run32 evidence/test assertions; exact-head correction and full-suite rerun required."
   },
   "security_and_governance": {
     "main_branch_protected": true,
-    "required_status_check_contexts": null,
+    "required_status_check_contexts": [],
     "protection_details_api": "403 — detailed branch-protection endpoint remains inaccessible to the connector.",
     "fallback_ruleset": {
       "id": 10863829,
@@ -999,21 +1109,21 @@
       "review_threads": 0,
       "requested_reviewers": 0,
       "mergeable": true,
-      "mergeable_state": "GitHub reports mergeable. Exact-head full suite, dependency audit, fail-closed gate, money audit, PR dependency audit, PR fail-closed gate and Pages validation passed on 9d31bde. PR remains draft with zero independent reviews; branch protection details remain 403; fallback ruleset disabled; CODEOWNERS self-only; main publisher and Pages side effects remain blockers; transitive workflow audit incomplete.",
-      "head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
-      "base_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
-      "ahead_by": 379,
+      "mergeable_state": "GitHub reports mergeable; current exact-head full suite on bd0f564 failed four evidence/test assertions; correction and rerun required. PR remains draft.",
+      "head_sha": "bd0f564c122ed4ef8ce3cf4b764f1152e368e250",
+      "base_sha": "82c23e219553164c24073784c529aad75acacd66",
+      "ahead_by": 382,
       "behind_by": 0,
-      "changed_files": 1440,
+      "changed_files": 1442,
       "changed_workflow_files": 68,
       "review_comments": 0
     },
     "changed_workflow_files": 68,
     "workflow_diff_scan": "Current PR diff contains 68 workflow YAML files. Prior bounded static review covered 67; the full current workflow set and transitive scripts/actions still require reconciliation.",
     "transitive_script_review": "incomplete",
-    "automatic_pages_deployment_run": 44369186191,
-    "paid_issue_hunter_run": 44251899369,
-    "paid_issue_publish_run": 44369074831,
+    "automatic_pages_deployment_run": 44431136074,
+    "paid_issue_hunter_run": 44431013238,
+    "paid_issue_publish_run": 44431013238,
     "sensitive_branch_path": {
       "path": ".config/gh/hosts.yml",
       "present_in_open_prs": [
@@ -1043,9 +1153,9 @@
       "permission": "contents: write",
       "persist_credentials": true,
       "action": "git push origin main",
-      "main_run_id": 44369074831,
+      "main_run_id": 44431013238,
       "main_run_result": "success",
-      "pages_deployment_run_id": 44396362354,
+      "pages_deployment_run_id": 44431136074,
       "pages_deployment_result": "success",
       "integration_workflow_disabled": true,
       "integration_permission": "permissions: {}",
@@ -1053,10 +1163,10 @@
       "source_guard_status": "ACTIVE_ON_MAIN; DISABLED_ON_INTEGRATION",
       "source_guard": "The integration branch disables the publisher entirely. Main still has the active contents:write workflow_run publisher.",
       "remaining_control": "Main branch protection details and independent review are unavailable; main pushes have a demonstrated Pages deployment side effect.",
-      "latest_pages_deployment_run_id": 44396362354,
+      "latest_pages_deployment_run_id": 44431136074,
       "latest_pages_deployment_result": "success",
-      "latest_pages_deployment_head_sha": "d5d22ac252f88637a490ed4c1598f8608b6cb786",
-      "pages_deployment_trigger": "The prior main checkpoint commit d5d22ac triggered GitHub Pages build and deploy automatically; this run did not initiate that deployment.",
+      "latest_pages_deployment_head_sha": "82c23e219553164c24073784c529aad75acacd66",
+      "pages_deployment_trigger": "Automatic Pages publication followed main's paid-issue publisher commit 82c23e; this run did not initiate the publisher or deployment.",
       "previous_pages_deployment_run_id": 44369186191
     },
     "tag_release_workflow": {
@@ -1193,7 +1303,9 @@
       "ci": "PR CI passed the main-branch test workflow (1,209 passed, 2 skipped, 8 subtests; 78.10% coverage). This is not the expanded integration-branch full-suite matrix. No dependency-audit run was observed for this PR.",
       "reviews": 0,
       "disposition": "BLOCKED — do not merge independently; reconcile into the single V3 integration workstream only after external data-egress policy, provider authentication, least-privilege permissions and expanded full-suite verification are satisfied."
-    }
+    },
+    "required_status_check_enforcement": "non_admins",
+    "main_branch_protection_summary": "protected=true; required contexts/checks are empty; enforcement=non_admins; detailed branch protection endpoint returns 403"
   },
   "open_pr_backlog": [
     {
@@ -1708,8 +1820,55 @@
         "source_date": "2026-08-2026",
         "executed": "Prior primary-source reconciliation recorded $331.3M Q3 2026 and $986.6M nine-month Coinbase distribution costs.",
         "caveat": "Do not simplify contractual distribution economics to 50% of gross reserve income; payout formulas and USDC balances differ."
+      },
+      {
+        "relationship_id": "dbs_circle_direct_usdc_institutional_access",
+        "source_url": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
+        "source_date": "2026-11-18",
+        "source_family": "joint first-party DBS/Circle announcement",
+        "executed_or_announced": "Eligible institutional clients can directly mint and redeem USDC through DBS; the arrangement supports 24/7 USD-USDC settlement for minting/redemption.",
+        "issuer": "Circle's regulated affiliates remain the USDC issuers; DBS is the bank access and settlement channel, not the issuer.",
+        "unknowns": [
+          "named clients",
+          "eligible jurisdictions",
+          "supported blockchains",
+          "fees",
+          "limits",
+          "specific go-live date",
+          "actual volumes"
+        ],
+        "xrp_mentioned": false,
+        "ripple_mentioned": false,
+        "competitive_implication": "A direct bank route into Circle issuance/redemption is a competing institutional dollar-stablecoin access path; it is not evidence of XRP adoption."
       }
-    ]
+    ],
+    "run32_circle_q3_correction": {
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000046/crcl-20260930.htm",
+      "source_type": "SEC Form 10-Q, issuer primary filing",
+      "quarter_end": "2026-09-30",
+      "gross_mint_redeem_flows": {
+        "q3_minted_usdc": 104304000000,
+        "q3_redeemed_usdc": 103694000000,
+        "q3_net_mint_less_redeem_usdc": 610000000,
+        "nine_months_minted_usdc": 260847000000,
+        "nine_months_redeemed_usdc": 262234000000,
+        "nine_months_net_mint_less_redeem_usdc": -1387000000,
+        "caveat": "Gross Circle Mint activity, not a direct measure of XRP demand or a complete bridge to period-end USDC supply."
+      },
+      "distribution_economics": {
+        "coinbase_distribution_cost_q3_usd": 331300000,
+        "coinbase_distribution_cost_nine_months_usd": 986600000,
+        "formula_summary": "Coinbase's allocation is based on USDC held on Coinbase relative to USDC held through other distribution partners after issuer retention; the agreement also allocates half of the remaining amount to broader ecosystem growth after payments to eligible third-party distribution partners.",
+        "not_50_percent_of_gross_reserve_income": true,
+        "caveat": "Do not simplify the contract to a blanket 50% of gross reserve income."
+      },
+      "network_scale": {
+        "meaningful_wallets": 7350000,
+        "usdc_market_share_percent": 27,
+        "as_of": "2026-09-30",
+        "caveat": "Issuer-defined meaningful wallets and market share; not unique verified users or transaction value."
+      }
+    }
   },
   "sbic_identity_reconciliation": {
     "conclusion": "SBIC East, Central and West are separate Japanese regional Small and Medium Business Investment & Consultation companies, not SBI Holdings.",
@@ -1956,7 +2115,7 @@
       "No new ingestion workflow run or walk-forward forecast was observed in this run."
     ]
   },
-  "merge_disposition": "NO_MERGE — prior exact-head full suite passed on 4e5c01b; current main was synchronized via non-force merge; final Run32 evidence/test commit requires exact-head full-suite verification. Draft, zero independent reviews, empty required status contexts, Pages publication side effect and incomplete transitive workflow audit remain blockers.",
+  "merge_disposition": "NO_MERGE — current full suite failed four evidence/test assertions on bd0f564. Corrections/addendum are being committed; exact-head full-suite success, independent review, required status-check enforcement, Pages side-effect governance and complete transitive workflow audit remain blockers.",
   "latest_run_29": {
     "captured_at_utc": "2026-11-18T23:08:34Z",
     "evidence_record": "research/xrp_intelligence/20261118T230834Z-run29-market-institutional-reconciliation.json",
@@ -2917,7 +3076,216 @@
         "source_family": "first_party_corporate",
         "publication_date": "2026-11-09"
       }
-    ]
+    ],
+    "correction_addendum_path": "research/xrp_intelligence/20261119T005505Z-run32a-corrections-ingestion-failure-and-circle-usdc-rail.json",
+    "exact_head_full_suite": {
+      "head_sha": "bd0f564c122ed4ef8ce3cf4b764f1152e368e250",
+      "run_id": 44432293042,
+      "result": "FAIL",
+      "passed": 4282,
+      "failed": 4,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 119.13,
+      "failures": [
+        {
+          "test": "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state",
+          "cause": "The new map set current_head_full_suite.status to success; the test contract expects a workflow status such as completed and a separate conclusion."
+        },
+        {
+          "test": "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity",
+          "cause": "The test still expected the Run 31 artifact path and schema after the map was advanced to Run 32."
+        },
+        {
+          "test": "tests/test_xrp_run32_market_custody_binance_evidence.py::test_run32_market_receipts_preserve_hash_scope_and_quality_flags",
+          "cause": "Assertion expected the exact phrase rendered JSON response text; artifact accurately describes exact JSON response text surfaced by the viewer."
+        },
+        {
+          "test": "tests/test_xrp_run32_market_custody_binance_evidence.py::test_run32_institutional_custody_is_not_equated_with_xrp_demand",
+          "cause": "Assertion expected will follow; artifact accurately states future functionality."
+        }
+      ],
+      "other_checks": {
+        "standard_tests": "PASS",
+        "pages_validation": "PASS; validation only",
+        "dependency_audit_run": 44432293109,
+        "dependency_audit": "PASS",
+        "money_audit_run": 44432303247,
+        "money_audit": "PASS",
+        "pr_event_run": 44432303035,
+        "pr_event": "PASS; full-suite and standard tests skipped because PR remains draft"
+      },
+      "classification": "Evidence/test-contract failures introduced by Run 32 documentation/test update; no application-code test failure was reported."
+    },
+    "ingestion_diagnostics": {
+      "source_run_id": 44301868145,
+      "source_run_head_sha": "38b910e7f91e22096a224474be4445ef7f9a7a0d",
+      "source_capture_time_utc": "2026-11-18T12:13:54.617611Z",
+      "raw_artifact": {
+        "artifact_id": 14426941429,
+        "name": "xrp-public-raw-44301868145",
+        "size_bytes": 462640,
+        "github_artifact_digest": "sha256:c9ec648228d5c76136fd68f8d7b0f2b71ea2eb97eebf8b2f8617b9678098b2be",
+        "retention_days": 90,
+        "expires_at_utc": "2027-02-16T12:13:28Z"
+      },
+      "feature_store_artifact": {
+        "artifact_id": 14426626635,
+        "name": "xrp-public-feature-store-44301868145",
+        "size_bytes": 822789,
+        "github_artifact_digest": "sha256:d13e0c1257e9318fa8160bae711b2cfaf79996f2a3aea886a8600048af7caf5d",
+        "retention_days": 7,
+        "expires_at_utc": "2026-11-25T12:14:01Z"
+      },
+      "receipt_chain": {
+        "verification_status": "PASS",
+        "receipts": 34,
+        "raw_retained": 22,
+        "digest_only": 12,
+        "chain_head_sha256": "5d3d4cae7846c0835c2319776c24e864ed9b0245e03012bd363edaae3544c597",
+        "receipt_log_sha256": "d5da01be1b25939875cd2cbd409efe9922957400c8e33b63103fefe232e40fa7",
+        "cross_run_chain_sequence": 15,
+        "cross_run_continuity": "VERIFIED",
+        "external_anchor": "NOT_ANCHORED",
+        "limitation": "Tamper-evident relative to the stored chain head only; no independent WORM or trusted timestamp anchor."
+      },
+      "quote_basis": {
+        "venue": "OKX",
+        "status": "VERIFIED",
+        "method": "same_venue_synchronized_top_of_book_product",
+        "event_times_utc": {
+          "xrp_quote": "2026-11-18T12:13:45.726Z",
+          "usdt_usd_quote": "2026-11-18T12:13:45.069Z"
+        },
+        "snapshot_skew_seconds": 0.657,
+        "maximum_component_age_seconds": 9.532693,
+        "normalized_features": 4,
+        "publisher_independence_groups": 1,
+        "normalized_values_usd": {
+          "best_ask": 0.983976986,
+          "best_bid": 0.98386725,
+          "mid": 0.983922118,
+          "spread_bps": 1.1152915255
+        },
+        "limitation": "Same OKX publisher for XRP-USDT and USDT-USD; top-of-book only, not independent corroboration or converted depth."
+      },
+      "drift_report": {
+        "status": "INSUFFICIENT_DATA",
+        "feature_count": 129,
+        "evaluated_feature_count": 0,
+        "input_records": 3235,
+        "late_reference_record_exclusions": 980,
+        "forecast_issuance_allowed": false,
+        "limitation": "No PSI result is available for any feature; a stable or absent drift statistic cannot support a forecast."
+      },
+      "source_failure_breakdown": {
+        "binance_http_451": 8,
+        "bybit_http_403": 5,
+        "sec_user_agent_configuration": 6,
+        "grayscale_http_429": 1,
+        "franklin_xrpz_parser_failure": 1
+      },
+      "source_failure_details": {
+        "binance": "Eight public spot/perpetual/depth requests returned HTTP 451 from the runner. No data admitted; no alternate host or proxy used.",
+        "bybit": "Five spot/depth/linear-perpetual requests returned HTTP 403. Bybit documentation says U.S. and Mainland China IPs may be restricted. Runner region remains unverified; do not proxy or bypass.",
+        "sec_edgar": "Six submissions/companyfacts requests failed closed because BARROT_SEC_USER_AGENT is not configured with Barrot-Agent plus a monitored project contact email. No address was invented or variable changed.",
+        "grayscale": "HTTP 429; retryable provider rate limit.",
+        "franklin": "Parser could not find expected XRPZ identity/holdings markers. Raw body was not retained in the raw artifact, only a content hash/receipt; the public issuer page currently exposes a stale 2026-09-04 snapshot (273,605,153.38 XRP, $383.53M assets), not a current November daily row."
+      },
+      "model_eligibility": "All failed sources remain excluded. The Franklin stale page is not a current daily holdings/flow observation.",
+      "raw_only_sources_count": 23,
+      "cftc_weekly_source_families_captured": "0 of 2",
+      "no_proxy_or_region_bypass": true
+    },
+    "circle_q3_correction": {
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000046/crcl-20260930.htm",
+      "source_type": "SEC Form 10-Q, issuer primary filing",
+      "quarter_end": "2026-09-30",
+      "gross_mint_redeem_flows": {
+        "q3_minted_usdc": 104304000000,
+        "q3_redeemed_usdc": 103694000000,
+        "q3_net_mint_less_redeem_usdc": 610000000,
+        "nine_months_minted_usdc": 260847000000,
+        "nine_months_redeemed_usdc": 262234000000,
+        "nine_months_net_mint_less_redeem_usdc": -1387000000,
+        "caveat": "Gross Circle Mint activity, not a direct measure of XRP demand or a complete bridge to period-end USDC supply."
+      },
+      "distribution_economics": {
+        "coinbase_distribution_cost_q3_usd": 331300000,
+        "coinbase_distribution_cost_nine_months_usd": 986600000,
+        "formula_summary": "Coinbase's allocation is based on USDC held on Coinbase relative to USDC held through other distribution partners after issuer retention; the agreement also allocates half of the remaining amount to broader ecosystem growth after payments to eligible third-party distribution partners.",
+        "not_50_percent_of_gross_reserve_income": true,
+        "caveat": "Do not simplify the contract to a blanket 50% of gross reserve income."
+      },
+      "network_scale": {
+        "meaningful_wallets": 7350000,
+        "usdc_market_share_percent": 27,
+        "as_of": "2026-09-30",
+        "caveat": "Issuer-defined meaningful wallets and market share; not unique verified users or transaction value."
+      }
+    },
+    "dbs_circle_rail": {
+      "relationship_id": "dbs_circle_direct_usdc_institutional_access",
+      "source_url": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
+      "source_date": "2026-11-18",
+      "source_family": "joint first-party DBS/Circle announcement",
+      "executed_or_announced": "Eligible institutional clients can directly mint and redeem USDC through DBS; the arrangement supports 24/7 USD-USDC settlement for minting/redemption.",
+      "issuer": "Circle's regulated affiliates remain the USDC issuers; DBS is the bank access and settlement channel, not the issuer.",
+      "unknowns": [
+        "named clients",
+        "eligible jurisdictions",
+        "supported blockchains",
+        "fees",
+        "limits",
+        "specific go-live date",
+        "actual volumes"
+      ],
+      "xrp_mentioned": false,
+      "ripple_mentioned": false,
+      "competitive_implication": "A direct bank route into Circle issuance/redemption is a competing institutional dollar-stablecoin access path; it is not evidence of XRP adoption."
+    },
+    "regulatory_corrections": {
+      "ripple_national_trust_bank": {
+        "occ_cas_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+        "occ_cas_approved_date": "2025-12-12",
+        "occ_cas_consummated_effective_date": "2026-10-26",
+        "ripple_final_approval_announcement_date": "2026-10-26",
+        "public_occ_letter_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf",
+        "public_occ_letter_status": "Conditional Approval #1359 is the preliminary conditional approval letter.",
+        "separate_final_occ_decision_letter_located": false,
+        "operational_opening_independently_verified": false,
+        "conclusion": "OCC CAS is primary evidence of approved and consummated/effective status. Ripple states final approval. The accessible OCC letter remains preliminary; do not infer operating launch or customer migration."
+      },
+      "coinbase_national_trust_company": {
+        "occ_corporate_decision_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+        "occ_corporate_decision_number": "CD1370",
+        "occ_preliminary_conditional_approval_date": "2026-04-02",
+        "occ_cas_url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+        "occ_cas_approved_date": "2026-04-02",
+        "occ_cas_consummated_effective_date": "2026-11-06",
+        "coinbase_final_approval_and_launch_announcement": "https://www.coinbase.com/blog/coinbase-launches-national-trust-company-with-federally-regulated-institutional-grade-custody-offering",
+        "coinbase_announcement_date": "2026-11-09",
+        "final_occ_approval_reported_by_coinbase": true,
+        "separate_final_occ_decision_letter_located": false,
+        "authorized_opening_date_reported": "2026-11-09",
+        "entity_scope": "National trust company providing fiduciary digital-asset custody; not an insured full-service commercial bank.",
+        "custody_migration": "OCC's preliminary approval describes a three-year migration from Coinbase Custody Trust Company; completed client-asset migration totals were not verified.",
+        "correction": "The CD1370 PDF is the April 2 preliminary conditional approval, not a November 6 final letter. The OCC CAS effective date and Coinbase's November 9 final-approval/launch announcement establish the later status."
+      }
+    },
+    "macro_context": {
+      "source_url": "https://www.reuters.com/markets/us/canadian-dollar-hits-19-month-low-after-hawkish-fed-governor-comments-2026-11-18/",
+      "publication_date": "2026-11-18",
+      "observations": {
+        "usd": "Broadly firmer against major currencies after stronger US jobs/inflation data and hawkish Fed Governor Christopher Waller comments.",
+        "canada": "Canadian dollar reached a 19-month low against USD.",
+        "two_year_yield_differential_canada_us_basis_points": 148.5,
+        "oil_usd_per_barrel": 82.5,
+        "oil_change_percent": -4.1
+      },
+      "interpretation": "Potential cross-asset liquidity/risk-premium context only. No XRP-specific causal estimate or directional forecast is established."
+    }
   },
   "run32_evidence_record": {
     "artifact_path": "research/xrp_intelligence/20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json",
@@ -2926,6 +3294,287 @@
     "repository_parent_head": "2d876d5e823ace0025d19d7a2bfd9bc713db05c7",
     "main_sha": "82c23e219553164c24073784c529aad75acacd66",
     "exact_head_ci_after_evidence_commit": "PENDING",
+    "merge_decision": "NO_MERGE",
+    "correction_addendum_path": "research/xrp_intelligence/20261119T005505Z-run32a-corrections-ingestion-failure-and-circle-usdc-rail.json",
+    "latest_tested_head_sha": "bd0f564c122ed4ef8ce3cf4b764f1152e368e250",
+    "latest_full_suite_run_id": 44432293042,
+    "latest_full_suite_result": "FAIL — four evidence/test assertions; 4,282 passed, 1 skipped",
+    "corrected_test_contract_commit_pending": true
+  },
+  "regulatory_status_run32": {
+    "ripple_national_trust_bank": {
+      "occ_cas_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "occ_cas_approved_date": "2025-12-12",
+      "occ_cas_consummated_effective_date": "2026-10-26",
+      "ripple_final_approval_announcement_date": "2026-10-26",
+      "public_occ_letter_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf",
+      "public_occ_letter_status": "Conditional Approval #1359 is the preliminary conditional approval letter.",
+      "separate_final_occ_decision_letter_located": false,
+      "operational_opening_independently_verified": false,
+      "conclusion": "OCC CAS is primary evidence of approved and consummated/effective status. Ripple states final approval. The accessible OCC letter remains preliminary; do not infer operating launch or customer migration."
+    },
+    "coinbase_national_trust_company": {
+      "occ_corporate_decision_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+      "occ_corporate_decision_number": "CD1370",
+      "occ_preliminary_conditional_approval_date": "2026-04-02",
+      "occ_cas_url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "occ_cas_approved_date": "2026-04-02",
+      "occ_cas_consummated_effective_date": "2026-11-06",
+      "coinbase_final_approval_and_launch_announcement": "https://www.coinbase.com/blog/coinbase-launches-national-trust-company-with-federally-regulated-institutional-grade-custody-offering",
+      "coinbase_announcement_date": "2026-11-09",
+      "final_occ_approval_reported_by_coinbase": true,
+      "separate_final_occ_decision_letter_located": false,
+      "authorized_opening_date_reported": "2026-11-09",
+      "entity_scope": "National trust company providing fiduciary digital-asset custody; not an insured full-service commercial bank.",
+      "custody_migration": "OCC's preliminary approval describes a three-year migration from Coinbase Custody Trust Company; completed client-asset migration totals were not verified.",
+      "correction": "The CD1370 PDF is the April 2 preliminary conditional approval, not a November 6 final letter. The OCC CAS effective date and Coinbase's November 9 final-approval/launch announcement establish the later status."
+    }
+  },
+  "macro_context_run32": {
+    "source_url": "https://www.reuters.com/markets/us/canadian-dollar-hits-19-month-low-after-hawkish-fed-governor-comments-2026-11-18/",
+    "publication_date": "2026-11-18",
+    "observations": {
+      "usd": "Broadly firmer against major currencies after stronger US jobs/inflation data and hawkish Fed Governor Christopher Waller comments.",
+      "canada": "Canadian dollar reached a 19-month low against USD.",
+      "two_year_yield_differential_canada_us_basis_points": 148.5,
+      "oil_usd_per_barrel": 82.5,
+      "oil_change_percent": -4.1
+    },
+    "interpretation": "Potential cross-asset liquidity/risk-premium context only. No XRP-specific causal estimate or directional forecast is established."
+  },
+  "latest_run_32a": {
+    "captured_at_utc": "2026-11-19T00:55:05Z",
+    "artifact_path": "research/xrp_intelligence/20261119T005505Z-run32a-corrections-ingestion-failure-and-circle-usdc-rail.json",
+    "supersedes": [
+      {
+        "artifact_path": "research/xrp_intelligence/20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json",
+        "json_pointer": "/regulatory_status/coinbase_national_trust_company/occ_decision_date",
+        "correction": "CD1370 is dated 2026-04-02, not 2026-11-06."
+      },
+      {
+        "artifact_path": "research/xrp_intelligence/20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json",
+        "json_pointer": "/regulatory_status/coinbase_national_trust_company/occ_decision",
+        "correction": "CD1370 is the preliminary conditional approval letter. OCC CAS shows approval 2026-04-02 and Consummated/Effective 2026-11-06; Coinbase announced final approval and launch on 2026-11-09. No separate final OCC letter was located."
+      },
+      {
+        "artifact_path": "research/xrp_intelligence/20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json",
+        "json_pointer": "/institutional_relationships/circle_coinbase_distribution_economics/source_url",
+        "correction": "Use the Q3 2026 Circle SEC Form 10-Q, not the Q2 results page."
+      },
+      {
+        "artifact_path": "research/xrp_intelligence/20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json",
+        "json_pointer": "/ci",
+        "correction": "The first Run 32 evidence/test commit's exact-head full suite failed four evidence-contract assertions; 4,282 tests passed and no application-code test failed."
+      }
+    ],
+    "ci_result": {
+      "head_sha": "bd0f564c122ed4ef8ce3cf4b764f1152e368e250",
+      "run_id": 44432293042,
+      "result": "FAIL",
+      "passed": 4282,
+      "failed": 4,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 119.13,
+      "failures": [
+        {
+          "test": "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state",
+          "cause": "The new map set current_head_full_suite.status to success; the test contract expects a workflow status such as completed and a separate conclusion."
+        },
+        {
+          "test": "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity",
+          "cause": "The test still expected the Run 31 artifact path and schema after the map was advanced to Run 32."
+        },
+        {
+          "test": "tests/test_xrp_run32_market_custody_binance_evidence.py::test_run32_market_receipts_preserve_hash_scope_and_quality_flags",
+          "cause": "Assertion expected the exact phrase rendered JSON response text; artifact accurately describes exact JSON response text surfaced by the viewer."
+        },
+        {
+          "test": "tests/test_xrp_run32_market_custody_binance_evidence.py::test_run32_institutional_custody_is_not_equated_with_xrp_demand",
+          "cause": "Assertion expected will follow; artifact accurately states future functionality."
+        }
+      ],
+      "other_checks": {
+        "standard_tests": "PASS",
+        "pages_validation": "PASS; validation only",
+        "dependency_audit_run": 44432293109,
+        "dependency_audit": "PASS",
+        "money_audit_run": 44432303247,
+        "money_audit": "PASS",
+        "pr_event_run": 44432303035,
+        "pr_event": "PASS; full-suite and standard tests skipped because PR remains draft"
+      },
+      "classification": "Evidence/test-contract failures introduced by Run 32 documentation/test update; no application-code test failure was reported."
+    },
+    "ingestion_diagnostics": {
+      "source_run_id": 44301868145,
+      "source_run_head_sha": "38b910e7f91e22096a224474be4445ef7f9a7a0d",
+      "source_capture_time_utc": "2026-11-18T12:13:54.617611Z",
+      "raw_artifact": {
+        "artifact_id": 14426941429,
+        "name": "xrp-public-raw-44301868145",
+        "size_bytes": 462640,
+        "github_artifact_digest": "sha256:c9ec648228d5c76136fd68f8d7b0f2b71ea2eb97eebf8b2f8617b9678098b2be",
+        "retention_days": 90,
+        "expires_at_utc": "2027-02-16T12:13:28Z"
+      },
+      "feature_store_artifact": {
+        "artifact_id": 14426626635,
+        "name": "xrp-public-feature-store-44301868145",
+        "size_bytes": 822789,
+        "github_artifact_digest": "sha256:d13e0c1257e9318fa8160bae711b2cfaf79996f2a3aea886a8600048af7caf5d",
+        "retention_days": 7,
+        "expires_at_utc": "2026-11-25T12:14:01Z"
+      },
+      "receipt_chain": {
+        "verification_status": "PASS",
+        "receipts": 34,
+        "raw_retained": 22,
+        "digest_only": 12,
+        "chain_head_sha256": "5d3d4cae7846c0835c2319776c24e864ed9b0245e03012bd363edaae3544c597",
+        "receipt_log_sha256": "d5da01be1b25939875cd2cbd409efe9922957400c8e33b63103fefe232e40fa7",
+        "cross_run_chain_sequence": 15,
+        "cross_run_continuity": "VERIFIED",
+        "external_anchor": "NOT_ANCHORED",
+        "limitation": "Tamper-evident relative to the stored chain head only; no independent WORM or trusted timestamp anchor."
+      },
+      "quote_basis": {
+        "venue": "OKX",
+        "status": "VERIFIED",
+        "method": "same_venue_synchronized_top_of_book_product",
+        "event_times_utc": {
+          "xrp_quote": "2026-11-18T12:13:45.726Z",
+          "usdt_usd_quote": "2026-11-18T12:13:45.069Z"
+        },
+        "snapshot_skew_seconds": 0.657,
+        "maximum_component_age_seconds": 9.532693,
+        "normalized_features": 4,
+        "publisher_independence_groups": 1,
+        "normalized_values_usd": {
+          "best_ask": 0.983976986,
+          "best_bid": 0.98386725,
+          "mid": 0.983922118,
+          "spread_bps": 1.1152915255
+        },
+        "limitation": "Same OKX publisher for XRP-USDT and USDT-USD; top-of-book only, not independent corroboration or converted depth."
+      },
+      "drift_report": {
+        "status": "INSUFFICIENT_DATA",
+        "feature_count": 129,
+        "evaluated_feature_count": 0,
+        "input_records": 3235,
+        "late_reference_record_exclusions": 980,
+        "forecast_issuance_allowed": false,
+        "limitation": "No PSI result is available for any feature; a stable or absent drift statistic cannot support a forecast."
+      },
+      "source_failure_breakdown": {
+        "binance_http_451": 8,
+        "bybit_http_403": 5,
+        "sec_user_agent_configuration": 6,
+        "grayscale_http_429": 1,
+        "franklin_xrpz_parser_failure": 1
+      },
+      "source_failure_details": {
+        "binance": "Eight public spot/perpetual/depth requests returned HTTP 451 from the runner. No data admitted; no alternate host or proxy used.",
+        "bybit": "Five spot/depth/linear-perpetual requests returned HTTP 403. Bybit documentation says U.S. and Mainland China IPs may be restricted. Runner region remains unverified; do not proxy or bypass.",
+        "sec_edgar": "Six submissions/companyfacts requests failed closed because BARROT_SEC_USER_AGENT is not configured with Barrot-Agent plus a monitored project contact email. No address was invented or variable changed.",
+        "grayscale": "HTTP 429; retryable provider rate limit.",
+        "franklin": "Parser could not find expected XRPZ identity/holdings markers. Raw body was not retained in the raw artifact, only a content hash/receipt; the public issuer page currently exposes a stale 2026-09-04 snapshot (273,605,153.38 XRP, $383.53M assets), not a current November daily row."
+      },
+      "model_eligibility": "All failed sources remain excluded. The Franklin stale page is not a current daily holdings/flow observation.",
+      "raw_only_sources_count": 23,
+      "cftc_weekly_source_families_captured": "0 of 2",
+      "no_proxy_or_region_bypass": true
+    },
+    "regulatory_corrections": {
+      "ripple_national_trust_bank": {
+        "occ_cas_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+        "occ_cas_approved_date": "2025-12-12",
+        "occ_cas_consummated_effective_date": "2026-10-26",
+        "ripple_final_approval_announcement_date": "2026-10-26",
+        "public_occ_letter_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf",
+        "public_occ_letter_status": "Conditional Approval #1359 is the preliminary conditional approval letter.",
+        "separate_final_occ_decision_letter_located": false,
+        "operational_opening_independently_verified": false,
+        "conclusion": "OCC CAS is primary evidence of approved and consummated/effective status. Ripple states final approval. The accessible OCC letter remains preliminary; do not infer operating launch or customer migration."
+      },
+      "coinbase_national_trust_company": {
+        "occ_corporate_decision_url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+        "occ_corporate_decision_number": "CD1370",
+        "occ_preliminary_conditional_approval_date": "2026-04-02",
+        "occ_cas_url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+        "occ_cas_approved_date": "2026-04-02",
+        "occ_cas_consummated_effective_date": "2026-11-06",
+        "coinbase_final_approval_and_launch_announcement": "https://www.coinbase.com/blog/coinbase-launches-national-trust-company-with-federally-regulated-institutional-grade-custody-offering",
+        "coinbase_announcement_date": "2026-11-09",
+        "final_occ_approval_reported_by_coinbase": true,
+        "separate_final_occ_decision_letter_located": false,
+        "authorized_opening_date_reported": "2026-11-09",
+        "entity_scope": "National trust company providing fiduciary digital-asset custody; not an insured full-service commercial bank.",
+        "custody_migration": "OCC's preliminary approval describes a three-year migration from Coinbase Custody Trust Company; completed client-asset migration totals were not verified.",
+        "correction": "The CD1370 PDF is the April 2 preliminary conditional approval, not a November 6 final letter. The OCC CAS effective date and Coinbase's November 9 final-approval/launch announcement establish the later status."
+      }
+    },
+    "circle_q3_2026": {
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000046/crcl-20260930.htm",
+      "source_type": "SEC Form 10-Q, issuer primary filing",
+      "quarter_end": "2026-09-30",
+      "gross_mint_redeem_flows": {
+        "q3_minted_usdc": 104304000000,
+        "q3_redeemed_usdc": 103694000000,
+        "q3_net_mint_less_redeem_usdc": 610000000,
+        "nine_months_minted_usdc": 260847000000,
+        "nine_months_redeemed_usdc": 262234000000,
+        "nine_months_net_mint_less_redeem_usdc": -1387000000,
+        "caveat": "Gross Circle Mint activity, not a direct measure of XRP demand or a complete bridge to period-end USDC supply."
+      },
+      "distribution_economics": {
+        "coinbase_distribution_cost_q3_usd": 331300000,
+        "coinbase_distribution_cost_nine_months_usd": 986600000,
+        "formula_summary": "Coinbase's allocation is based on USDC held on Coinbase relative to USDC held through other distribution partners after issuer retention; the agreement also allocates half of the remaining amount to broader ecosystem growth after payments to eligible third-party distribution partners.",
+        "not_50_percent_of_gross_reserve_income": true,
+        "caveat": "Do not simplify the contract to a blanket 50% of gross reserve income."
+      },
+      "network_scale": {
+        "meaningful_wallets": 7350000,
+        "usdc_market_share_percent": 27,
+        "as_of": "2026-09-30",
+        "caveat": "Issuer-defined meaningful wallets and market share; not unique verified users or transaction value."
+      }
+    },
+    "dbs_circle": {
+      "relationship_id": "dbs_circle_direct_usdc_institutional_access",
+      "source_url": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
+      "source_date": "2026-11-18",
+      "source_family": "joint first-party DBS/Circle announcement",
+      "executed_or_announced": "Eligible institutional clients can directly mint and redeem USDC through DBS; the arrangement supports 24/7 USD-USDC settlement for minting/redemption.",
+      "issuer": "Circle's regulated affiliates remain the USDC issuers; DBS is the bank access and settlement channel, not the issuer.",
+      "unknowns": [
+        "named clients",
+        "eligible jurisdictions",
+        "supported blockchains",
+        "fees",
+        "limits",
+        "specific go-live date",
+        "actual volumes"
+      ],
+      "xrp_mentioned": false,
+      "ripple_mentioned": false,
+      "competitive_implication": "A direct bank route into Circle issuance/redemption is a competing institutional dollar-stablecoin access path; it is not evidence of XRP adoption."
+    },
+    "macro_context": {
+      "source_url": "https://www.reuters.com/markets/us/canadian-dollar-hits-19-month-low-after-hawkish-fed-governor-comments-2026-11-18/",
+      "publication_date": "2026-11-18",
+      "observations": {
+        "usd": "Broadly firmer against major currencies after stronger US jobs/inflation data and hawkish Fed Governor Christopher Waller comments.",
+        "canada": "Canadian dollar reached a 19-month low against USD.",
+        "two_year_yield_differential_canada_us_basis_points": 148.5,
+        "oil_usd_per_barrel": 82.5,
+        "oil_change_percent": -4.1
+      },
+      "interpretation": "Potential cross-asset liquidity/risk-premium context only. No XRP-specific causal estimate or directional forecast is established."
+    },
     "merge_decision": "NO_MERGE"
   }
 }

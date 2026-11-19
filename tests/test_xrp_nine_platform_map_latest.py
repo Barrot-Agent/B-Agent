@@ -124,8 +124,8 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert security["sensitive_branch_path"]["content_read"] is False
     assert security["automatic_main_writer"]["active"] is True
     assert security["automatic_main_writer"]["integration_workflow_disabled"] is True
-    assert security["automatic_main_writer"]["main_run_id"] == 44369074831
-    assert security["automatic_main_writer"]["pages_deployment_run_id"] == 44396362354
+    assert security["automatic_main_writer"]["main_run_id"] == 44431013238
+    assert security["automatic_main_writer"]["pages_deployment_run_id"] == 44431136074
     backlog = data["open_pr_backlog"]
     summary = data["open_pr_backlog_summary"]
     assert len(backlog) == summary["total_open"]
@@ -166,17 +166,16 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     market = data["prediction_engine"]["latest_market_snapshot"]
     evidence_path = Path(__file__).resolve().parents[1] / market["artifact_path"]
     assert market["artifact_path"] == (
-        "research/xrp_intelligence/20261119T000522Z-run31-exact-head-ci-and-market-evidence.json"
+        "research/xrp_intelligence/20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json"
     )
     evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
-    provenance = evidence["market_snapshot"]["provenance"]
-    assert provenance["raw_wire_bytes_captured"] is False
-    assert provenance["external_worm_anchor"] == "NOT_ANCHORED"
-    kraken_receipt = evidence["market_snapshot"]["kraken_xrp_usd"]
-    assert market["price_usd"] == kraken_receipt["last_usd"]
+    kraken_receipt = evidence["market_snapshot"]["kraken_xrpusd"]
+    assert kraken_receipt["raw_wire_bytes_captured"] is False
+    assert "not raw HTTP wire bytes" in kraken_receipt["raw_sha256_scope"]
+    assert market["price_usd"] == kraken_receipt["last_trade_usd"]
     assert market["source"] == "Kraken public ticker API — XRP/USD"
     assert market["model_eligible"] is False
-    assert market["raw_sha256"] == kraken_receipt["raw_response_sha256"]
+    assert market["raw_sha256"] == kraken_receipt["raw_sha256"]
 
 
 def test_latest_map_preserves_bny_custody_without_overclaiming_xrp_demand():
