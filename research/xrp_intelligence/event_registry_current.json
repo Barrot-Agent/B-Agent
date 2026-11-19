@@ -1,8 +1,8 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run220",
-  "captured_at_utc": "2026-11-17T16:29:24Z",
+  "registry_version": "run221",
+  "captured_at_utc": "2026-11-19T15:10:01Z",
   "source_receipt_status": "140 of 140 curated events have null raw_source_sha256; exact external publisher response bytes were not captured for this registry. 54 events have exact publisher timestamps; 86 lack an exact publisher timestamp. All remain research-only and model-ineligible. A rendered page, search snippet, GitHub artifact ZIP digest or repository commit hash is not an external publisher-byte receipt.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
@@ -5113,7 +5113,8 @@
       "event_time_precision": "date-only",
       "publisher_timestamp_precision": "Official release date stated; exact publication time not stated.",
       "related_source_urls": [
-        "https://www.sbishinseibank.co.jp/en/news/news/20250609a.html"
+        "https://www.sbishinseibank.co.jp/en/news/news/20250609a.html",
+        "https://www.sbigroup.co.jp/english/company/information/history.html"
       ],
       "raw_http_bytes_captured": false
     },
@@ -5383,9 +5384,9 @@
       "domain": "japan_entity_resolution",
       "hypothesis": "SBIC East, SBIC Central and SBIC West refer to three separate regional Small and Medium Business Investment & Consultation companies, not SBI Holdings.",
       "counter_hypothesis": "The shared SBIC acronym and similar investment-related names can cause search and entity-resolution confusion; only legal names, corporate profiles and the governing statute resolve the identities.",
-      "claim": "Japan's Small and Medium Business Investment & Consultation Companies Act (Act No. 101 of 1963, promulgated June 10, 1963) provides for the regional investment-development companies. Official company materials identify Tokyo Small and Medium Business Investment & Consultation Co., Ltd. as SBIC East Japan, Nagoya Small and Medium Business Investment & Consultation Co., Ltd. as SBIC Central Japan, and Osaka Small and Medium Business Investment & Consultation Co., Ltd. as SBIC West Japan. They are separate legal companies and are not SBI Holdings. Tokyo was established Nov 15, 1963; Nagoya Nov 18, 1963; Osaka Nov 20, 1963.",
+      "claim": "Article 2 of Japan's Small and Medium Business Investment & Consultation Companies Act (Act No. 101 of 1963) names exactly three regional companies: Tokyo, Nagoya and Osaka. Their official company profiles identify them respectively as SBIC East Japan, SBIC Central Japan and SBIC West Japan. SBI Holdings' separate corporate profile identifies SBI Holdings, Inc., established July 8, 1999, with the principal business of controlling and managing the SBI Group through share ownership. These sources establish distinct legal identities; they do not by themselves establish the absence of every possible indirect shareholding or business relationship, and they do not establish an XRP relationship for the three SBIC companies.",
       "source_id": "japan_sbic_regional_companies_identity_run192",
-      "source_name": "e-Gov statute and the three regional companies' official profiles",
+      "source_name": "Japan e-Gov Act No. 101/1963 and official SBIC/SBI Holdings corporate profiles",
       "source_url": "https://laws.e-gov.go.jp/law/338AC0000000101",
       "independence_group": "japan-egov-law-and-regional-sbic-official-company-profiles",
       "source_status": "verified",
@@ -5393,8 +5394,8 @@
       "event_status": "occurred",
       "event_time_utc": "1963-06-10T00:00:00Z",
       "source_published_at_utc": null,
-      "available_at_utc": "2026-11-16T16:11:30Z",
-      "captured_at_utc": "2026-11-16T16:11:30Z",
+      "available_at_utc": "2026-11-19T15:10:01Z",
+      "captured_at_utc": "2026-11-19T15:10:01Z",
       "raw_source_sha256": null,
       "assumptions": [
         "The SBIC East/Central/West labels are mapped from each regional company's official English or Japanese company profile.",
@@ -5424,11 +5425,21 @@
       "source_date": "1963-06-10",
       "event_time_precision": "date-only",
       "related_source_urls": [
+        "https://laws.e-gov.go.jp/law/338AC0000000101/20220617_504AC0000000068",
+        "https://www.sbic.co.jp/company/profile/",
+        "https://www.sbic-cj.co.jp/company/about/",
+        "https://www.sbic-wj.co.jp/profiles/profile/",
+        "https://www.sbigroup.co.jp/english/company/information/profile.html",
+        "https://www.sbigroup.co.jp/english/company/information/history.html",
         "https://www.sbic.co.jp/",
         "https://www.sbic-cj.co.jp/",
         "https://www.sbic-wj.co.jp/"
       ],
-      "raw_http_bytes_captured": false
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Rendered official e-Gov and corporate profile pages inspected; original HTTP response bytes were not retained in this research capture.",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true
     },
     {
       "event_id": "sbic-east-chatgpt-seminar-hamamatsu-20260305",
@@ -6747,5 +6758,22 @@
     "declared_independence_group_count": 109,
     "canonical_publisher_lineage_group_count": null,
     "note": "Run220 adds current Kraken spot, Fuelmaps order-book, Liqwall/BitcoinLeverage/TradRadar derivatives, quarantined OptimistFi freshness conflict, two differently scoped XRP ETF trackers, Coinbase/Circle/PNC/SBI institutional stablecoin relationships, and unresolved Kamilah/Camilla YouTube identity candidates. No raw publisher bytes were archived. All 140 events remain model-ineligible; no directional forecast is issued."
+  },
+  "run221_update": {
+    "captured_at_utc": "2026-11-19T15:10:01Z",
+    "prior_event_count": 140,
+    "appended_event_count": 0,
+    "resulting_event_count": 140,
+    "added_event_ids": [],
+    "refreshed_event_ids": [
+      "japan-sbic-east-central-west-legal-identity-19630610",
+      "sbi-circle-investment-and-ripple-equity-stake-20250605"
+    ],
+    "raw_source_sha256_receipts_added": 0,
+    "exact_publisher_timestamp_count": 54,
+    "missing_exact_publisher_timestamp_count": 86,
+    "declared_independence_group_count": 109,
+    "canonical_publisher_lineage_group_count": null,
+    "note": "Run221 resolves SBIC naming from primary sources: e-Gov Act No. 101/1963 Article 2 lists Tokyo, Nagoya and Osaka; official company profiles label them SBIC East, Central and West Japan; SBI Holdings' corporate profile identifies a separate company established in 1999. SBI's official history page is linked as corroboration for the SBI/Circle relationship. No raw publisher response bytes were archived; all 140 events remain research-only and model-ineligible."
   }
 }

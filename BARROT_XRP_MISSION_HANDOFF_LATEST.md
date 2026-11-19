@@ -4577,3 +4577,132 @@ Source pages: https://cryptokeyhole.com/etf-flows/xrp/ ; https://xrp-insights.co
 - Camilla/Kamilah Stevenson identity is still unverified; no video inventory is admitted.
 
 Forecast status: NOT_ISSUED. These market snapshots are descriptive and heterogeneous, not leakage-safe features. No out-of-sample performance or calibration evidence supports a directional XRP forecast.
+
+---
+
+## Run 221 — 2026-11-19T15:10:01Z
+
+### Current repository checkpoint
+
+- Current main: c8e15c90b1e07980d7b5a01c86c1667166a353f6 — unchanged.
+- Verified code/test head before this handoff/data update: b6b24b368a33fb1e57b1ec0fc77f9144d3a973f4.
+- Single active XRP/V3 integration: PR #1663, branch integration/xrp-v3-mainline-successor-20261115T2101Z.
+- PR #1663 is open, draft, mergeable, 444 commits ahead, zero behind, 1,462 changed files, 529,005 additions and 6,965 deletions.
+- Complete recursive trees show every main blob is present in integration. Blob delta against main: 1,252 integration-only blobs and 210 modified shared blobs; 68 workflow files are added or modified.
+- No new branch or PR was created. Existing branch history was extended by ordinary forward commits only.
+
+### Executed and verified on code head b6b24b3
+
+The full repository job discovered 514 tracked active test modules and completed:
+
+- 4,352 passed
+- 1 skipped
+- 11 warnings
+- 19 subtests passed
+- Overall coverage: 71.31%
+- barrot_agent/evolution/forecast_ledger.py: 97% (90% floor)
+- barrot_agent/evolution/feature_store.py: 80% (80% floor)
+- Legacy core coverage: 77%
+- All mission-critical package floors passed.
+
+Exact-head evidence:
+
+- Push full CI: [44550618821](https://github.com/Barrot-Agent/B-Agent/actions/runs/44550618821) — passed.
+- PR full CI: [44550631047](https://github.com/Barrot-Agent/B-Agent/actions/runs/44550631047) — passed.
+- Push dependency audit: [44550618907](https://github.com/Barrot-Agent/B-Agent/actions/runs/44550618907) — passed.
+- PR dependency audit: [44550630944](https://github.com/Barrot-Agent/B-Agent/actions/runs/44550630944) — passed.
+- PR money audit: [44550631099](https://github.com/Barrot-Agent/B-Agent/actions/runs/44550631099) — passed.
+- Push fail-closed gate: [44550618849](https://github.com/Barrot-Agent/B-Agent/actions/runs/44550618849) — blocked.
+- PR fail-closed gate: [44550631140](https://github.com/Barrot-Agent/B-Agent/actions/runs/44550631140) — blocked.
+- The gate's exact blockers are no independent approving review and branch-protection details unavailable (HTTP 403). It did not approve, bypass or merge.
+
+Coverage repair was performed without lowering thresholds. The point-in-time feature-store tests now exercise explicit cross-snapshot revision chains and invalid predecessor/version rejection. Forecast-ledger tests now cover evaluator key loading, Ed25519 attestation rejection paths, canonical raw-receipt validation, readiness-report policy boundaries, readiness-certificate mismatches, feature-snapshot integrity failures, forecast ID collision handling and resolution edge cases.
+
+This evidence belongs to code head b6b24b3. The present commit also updates this handoff and SBIC source metadata; its own exact-head CI must be checked separately. Do not transfer the prior run result to a later SHA.
+
+### Public ingestion artifact audit
+
+Latest inspected ingestion artifact: [Run 44540041137](https://github.com/Barrot-Agent/B-Agent/actions/runs/44540041137), a push-triggered capture on earlier integration head 5b8e39116ddf4cb5367560b947bc10f2c4d10f7d, not a scheduled run and not the current code head.
+
+Verified artifact integrity:
+
+- 34 source receipts: 22 retained raw payloads, 12 digest-only.
+- All 22 retained raw payloads matched their declared SHA-256 values.
+- receipts.jsonl and receipt_chain.jsonl matched the manifest hashes.
+- SQLite integrity check passed.
+- All 16 feature-snapshot manifest hashes and record counts matched.
+- 16 snapshots, 149 source snapshots, 3,489 feature records and 129 unique feature IDs.
+- Five venues: Coinbase, Kraken, Bitstamp, OKX and Bitbank. Every stored market record in this artifact is spot; no derivatives feature records were captured.
+- 21 source failures: eight provider client errors (Binance HTTP 451), five forbidden responses (Bybit HTTP 403), one Grayscale rate limit (429), one Franklin parser/marker failure and six SEC requests blocked by missing BARROT_SEC_USER_AGENT.
+- No region restriction was bypassed. No live Bybit API success is claimed.
+- Cross-run receipt chain sequence 16 reports continuity verified with prior run 44301868145. External WORM anchor remains NOT_ANCHORED; artifact retention is 90 days, not independent immutable storage.
+
+Point-in-time and model-readiness findings:
+
+- The 3,489 feature records cover 129 feature IDs but are not 3,489 independent market observations.
+- Backfilled event times extend to November 3, but the earliest known-at time is November 17. The drift reference window ends November 12, so 1,110 late-known records were excluded; reference sample count and evaluated feature count are both zero.
+- Drift status is INSUFFICIENT_DATA; forecast issuance is false.
+- The event timeline contains 140 curated events and 107 scenarios. All 107 scenarios retain counter-hypotheses. Event statuses: 75 verified, 61 provisional and 4 disputed. All 140 events remain research-only, with zero raw publisher-byte hashes and zero model-eligible events.
+- The OKX USDT/USD quote basis at 2026-11-19 14:06 UTC had a normalized XRP/USD mid of approximately $0.99139368 and spread of 1.1076 bps. It had one source group; only top-of-book prices were normalized, not depth.
+- One 10-bps depth snapshot showed Coinbase bid/ask notional of approximately $491.6k/$365.4k (imbalance +0.147), Kraken $333.1k/$419.3k (-0.115), Bitstamp $278.3k/$386.0k (-0.162), OKX $235.6k/$193.4k USDT (+0.098), and Bitbank ¥32.45M/¥1.245M JPY (+0.926). These are single snapshots in different quote units and timestamp semantics; they are not a directional signal or executable consolidated depth.
+- The ingestion workflow's hourly schedule becomes active only when the workflow is on default branch main. No scheduled production ingestion is claimed before merge.
+
+### Primary-source SBIC identity reconciliation
+
+The registry's existing SBIC identity event now links the exact official pages:
+
+- e-Gov Act No. 101 of 1963, Article 2: https://laws.e-gov.go.jp/law/338AC0000000101/20220617_504AC0000000068.
+- Tokyo SBIC official profile: https://www.sbic.co.jp/company/profile/ — Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; SBIC East Japan.
+- Nagoya SBIC official profile: https://www.sbic-cj.co.jp/company/about/ — Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; SBIC Central Japan.
+- Osaka SBIC official profile: https://www.sbic-wj.co.jp/profiles/profile/ — Osaka Small and Medium Business Investment & Consultation Co., Ltd.; SBIC West Japan.
+- SBI Holdings corporate profile: https://www.sbigroup.co.jp/english/company/information/profile.html — SBI Holdings, Inc., established July 8, 1999, with a distinct holding-company identity.
+
+Article 2 names exactly the Tokyo, Nagoya and Osaka companies. Their official pages supply the East/Central/West labels. SBI Holdings, Inc. is a separate legal entity. This resolves the acronym/identity ambiguity; it does not establish the absence of every possible indirect shareholding or business relationship, and it does not establish an XRP relationship for the three regional SBIC companies. The SBI official history page was also linked to the existing SBI/Circle investment event.
+
+No original HTTP response bytes were retained for this web-source refresh. The SBIC events remain research-only and model-ineligible; no rendered search excerpt was mislabeled as a raw-byte hash.
+
+### PR inventory and classifications
+
+Fourteen open PRs were present:
+
+- #1663 — sole consolidated XRP/V3 integration; blocked by review, branch-protection and Pages authorization.
+- #1665 — duplicate dependency objective: Pylint >=4.1.4 is already present in integration's requirements-dev.txt; do not close until that content is merged and verified on main.
+- #1666 — blocked dependency conflict: its Kaggle upper bound <1.8 conflicts with integration's documented <1.6 compatibility constraint.
+- #1668 — unique inference failover work, but stale base and three overlapping integration paths; preserve and reconcile after the mainline integration.
+- #1541 — unique stacked MMI/security work; five overlaps with #1663, three differing; preserve.
+- #1664 — unique paid-issue templates; unreviewed and unpublished.
+- #1670 — unique creative/Musical DNA work, unrelated to XRP.
+- #1450, #1460, #1440, #1436, #1437, #1353 and #1265 — unique/unreviewed research, repair or ledger work. #1265 has one workflow overlap and 143 unique paths.
+
+No PR was closed. No exact duplicate or unique research work was bulk-closed.
+
+### Governance and external-action blockers
+
+- PR #1663 remains draft with zero formal approvals, zero requested reviewers and zero inline review threads.
+- Main's branch endpoint reports protected, but /branches/main/protection returns HTTP 403 to the available identity. The readable repository ruleset is disabled. Effective required checks, administrator enforcement and bypass permissions remain unverified.
+- Main's GitHub Pages workflow has a successful public build-and-deploy run [44524140421](https://github.com/Barrot-Agent/B-Agent/actions/runs/44524140421). Integration runs build-only validation. Merging can trigger a public deployment; authorization remains unresolved.
+- The integration changes/quarantines several high-risk main workflows (issue-triggered Barrot Agent, paid-issue publishing, Databricks/Hugging Face sync/deploy, table freshness, signal accuracy and automatic Barrot sync). Manual deployment paths remain explicit/confirmed; the release workflow remains tag-triggered. A complete transitive workflow/script/action review is not finished.
+- Main's scheduled Pillars run [44529399478](https://github.com/Barrot-Agent/B-Agent/actions/runs/44529399478) failed on missing GitHub App credentials, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR. Integration makes credential probes manual-only; a public Hugging Face runtime failure may remain until an authorized operator addresses it. No Space restart is authorized.
+- GitHub Actions cache storage remains at budget; cache writes are read-only. This caused warnings, not test failures.
+
+### Mission and forecast status
+
+- XRP Intelligence and Prediction-Engine Mastery remains priority 1 in the integration mission manifest.
+- Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- DESIGNED: point-in-time feature store, raw receipt chain, chronological baselines, calibration, drift and forecast/outcome ledger.
+- EXECUTED: full-suite coverage repair, raw artifact integrity audit, primary-source SBIC identity refresh.
+- VERIFIED: exact-head CI and security audits on code head b6b24b3.
+- NOT VERIFIED: production hourly ingestion on main, independent external WORM retention, synchronized historical derivatives/depth, independent shadow outcomes, measured out-of-sample lift and nine-platform live authentication.
+- Forecast status remains NOT_ISSUED. No directional forecast, guaranteed-return claim, paper trade or real-money action.
+
+### Next concrete action
+
+1. Complete exact-head CI for the handoff/data metadata commit.
+2. Obtain an independent human approval and verify effective main branch protection and required checks through an authorized administrative inspection.
+3. Resolve Pages deployment authorization and complete the remaining workflow/script/action review.
+4. Merge #1663 only after every gate passes; fetch main again, verify the merge commit and files, then run main CI and inspect automatic workflow side effects.
+5. Only after main verification, close exact duplicate dependency/source PRs with cross-references; preserve unique research and security work.
+6. Continue lawful public ingestion, configure the SEC user agent only with an authorized monitored contact identity, capture raw event bytes and independent WORM anchors, and expand synchronized spot/depth/derivatives history.
+7. Keep forecasts disabled until the dataset, leakage-safe out-of-sample lift, calibration and independent shadow-outcome requirements pass.
+
+No merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, paper trade, funds transfer, force-push, reset, clean, stash or discard occurred.
