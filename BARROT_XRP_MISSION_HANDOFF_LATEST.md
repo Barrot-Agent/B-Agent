@@ -3150,3 +3150,60 @@ ChatGPT and the GitHub repository connector were tested. Repository metadata exp
 ### Next concrete action
 
 Wait for exact-head CI on the new append-only metadata/regression-test commit. Keep #1673 draft and unmerged. If the new full suite passes, continue resolving the PR base metadata mismatch without weakening the gate, obtain an independent review and verifiable branch-protection settings, and resolve the Pages publication and A2A security boundaries. Do not merge on db79d8d test evidence.
+
+
+---
+
+## Run246 — 2026-11-20 20:29 UTC — base metadata reconciled; exact-head full suite green
+
+### Base reconciliation completed without branch rewrite
+
+The stale PR-base metadata was resolved through the existing PR's base-ref metadata update:
+
+- Updated PR #1673 with `base_branch=main` using the GitHub PR update operation.
+- PR API now reports base SHA **`b87582fef2229f4fb00418251119815c93fc235c`**, exactly matching current main.
+- PR head remained **`3d61669f7440e1a537fe42919a61748b8862aec4`**. No branch rewrite, force-push, cherry-pick or new PR was performed.
+- Current-main compare is **549 ahead / 0 behind**.
+- GitHub PR metadata: 549 commits, 1,490 changed files, 538,210 additions, 7,104 deletions; 70 changed workflow files.
+- GitHub reports `mergeable=true`, `mergeable_state=unstable`. The PR remains open and draft.
+
+This resolves the stale base-SHA mismatch without weakening the gate or changing its exact-base requirement.
+
+### Exact-head CI — snapshot head `3d61669f7440e1a537fe42919a61748b8862aec4`
+
+- Push CI [44810934927](https://github.com/Barrot-Agent/B-Agent/actions/runs/44810934927): **4,457 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests; 73.22% coverage; 199.46 seconds.
+- PR CI [44810946092](https://github.com/Barrot-Agent/B-Agent/actions/runs/44810946092): **4,457 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests; 73.22% coverage; 201.88 seconds.
+- Core tests and Pages validation-only passed on both events.
+- Dependency audit push [44810934918](https://github.com/Barrot-Agent/B-Agent/actions/runs/44810934918) and PR [44810946006](https://github.com/Barrot-Agent/B-Agent/actions/runs/44810946006): passed across six Python manifests.
+- Money audit [44810946677](https://github.com/Barrot-Agent/B-Agent/actions/runs/44810946677): passed.
+- A2A Worker Tests [44810946216](https://github.com/Barrot-Agent/B-Agent/actions/runs/44810946216): passed.
+- Conflict Integrity [44810945859](https://github.com/Barrot-Agent/B-Agent/actions/runs/44810945859): passed.
+- Cache save reported the repository's configured cache budget is exhausted; cache became read-only. Dependencies installed successfully and no test or coverage check failed.
+
+### Fail-closed gate — stale run evidence, rerun required
+
+- Push gate [44810934947](https://github.com/Barrot-Agent/B-Agent/actions/runs/44810934947) and PR gate [44810946240](https://github.com/Barrot-Agent/B-Agent/actions/runs/44810946240) were started before the base metadata refresh. They recorded the old base SHA and failed on that stale snapshot.
+- The PR base is now verified current, but a new gate execution on the refreshed base is required.
+- PR remains draft. The reviews API returns **zero reviews**. Branch-protection details still return HTTP 403; the gate must continue to block rather than infer or bypass protection.
+- Pages publication authorization remains NOT GRANTED. A2A runner isolation and transitive workflow/script review remain incomplete.
+
+### Live open PR inventory
+
+Twelve open PRs remain: #1673 blocked; #1670 blocked; #1664 unique/unreviewed; #1265 unique/unreviewed; #1663 superseded; #1541 blocked; #1450, #1460, #1440, #1436, #1437 and #1353 unique/unreviewed. Totals: **0 ready, 3 blocked, 1 superseded, 0 exact duplicates, 8 unique/unreviewed**. No PR was closed.
+
+The two differing files in #1670 and three differing files in #1541 remain unresolved; neither is called an exact duplicate. #1663 remains open until #1673 is merged and verified on main.
+
+### XRP readiness and action controls
+
+No new ingestion run was observed. Latest ingestion remains [44654352643](https://github.com/Barrot-Agent/B-Agent/actions/runs/44654352643), captured 2026-11-20 01:32:54 UTC. Walk-forward origins remain **0**; drift remains **INSUFFICIENT_DATA**; forecast issuance remains **NOT_ISSUED**. No directional forecast, paper trade or real-money action occurred.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** priority-one XRP intelligence and prediction-engine architecture; V3 execution/orchestration/safety/verification foundation; leakage-safe forecast admission.
+- **EXECUTED:** reconciled PR base metadata on the existing branch; updated live map and regression assertions; refreshed the durable handoff; no new branch or PR.
+- **VERIFIED:** current main SHA and PR base SHA match; current main is an ancestor of the PR head; exact 3d61669 push and PR full suites pass; six-manifest dependency audits, Money audit, A2A Worker Tests, Conflict Integrity and Pages validation-only pass.
+- **NOT VERIFIED:** exact-head CI after this Run246 map/test/handoff commit; fresh fail-closed gate after base refresh; independent approval; effective branch protection; Pages publication authorization; A2A OS sandbox/credential isolation/egress/task authorization; full transitive workflow/script review; WORM-grade raw-source retention; repeated scheduled ingestion; out-of-sample predictive superiority/calibration/drift.
+
+### Next concrete action
+
+Wait for exact-head CI on this Run246 metadata commit, then verify a fresh fail-closed gate on the now-current base. Keep #1673 draft and unmerged. The gate must still block until an independent approval and verifiable protected-branch settings exist, and public Pages publication and A2A security boundaries are resolved. Do not merge based on the successful parent-head run alone.

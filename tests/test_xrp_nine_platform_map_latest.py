@@ -66,9 +66,11 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert is_sha(integration["code_head_sha"])
     assert is_sha(integration["current_pr_head_sha"])
     assert integration["ahead_by"] == integration["commits"] > 0
-    assert integration["pr_commit_count"] == 555
+    assert integration["pr_commit_count"] == 549
+    assert integration["changed_files"] == 1490
     assert integration["current_main_sha"] == repo["main_sha"]
-    assert integration["base_sha_matches_current_main"] is False
+    assert integration["base_sha_matches_current_main"] is True
+    assert integration["base_sha"] == repo["main_sha"]
     assert integration["behind_by"] == 0
     assert integration["changed_files"] >= 1
     assert 0 <= integration["changed_workflow_files"] <= integration["changed_files"]
