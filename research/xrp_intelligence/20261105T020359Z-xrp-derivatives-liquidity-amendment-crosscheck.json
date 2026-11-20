@@ -1,0 +1,376 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_derivatives_liquidity_and_amendment_crosscheck",
+  "record_id": "xrp-market-crosscheck-20261105T020359Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "data_cutoff_utc": null,
+  "historical_replay_eligible_from_utc": null,
+  "research_scope": [
+    "XRP perpetual derivatives",
+    "centralized-exchange order-book liquidity",
+    "XRPL amendment governance",
+    "source methodology and timestamp reconciliation"
+  ],
+  "forecast_issued": false,
+  "prediction_status": "NOT_ISSUED",
+  "model_eligible": false,
+  "source_registry": [
+    {
+      "id": "tradradar_xrp_perpetuals_20261104T2120Z",
+      "publisher": "TradRadar",
+      "source_type": "multi_exchange_derivatives_aggregator",
+      "url": "https://tradradar.io/markets/xrp",
+      "instrument": "XRP perpetual futures across seven named exchanges",
+      "retrieved_at_utc": null,
+      "source_time_utc": "2026-11-04T21:20:00Z",
+      "capture_method": "web-rendered search-result extract",
+      "raw_content_encoding": null,
+      "raw_content_bytes": null,
+      "raw_content_sha256": null,
+      "independence_group": "tradradar_derivatives_aggregation",
+      "model_eligible": false,
+      "limitations": [
+        "Provider reports a 15-minute display delay; the displayed update time is Nov 4 21:20 UTC.",
+        "Seven-exchange aggregate; not a single exchange or independently reconciled contract universe.",
+        "Liquidations are a lower bound because some venues do not publish complete real-time liquidation data.",
+        "Long/short ratio is account-based, not notional exposure.",
+        "No byte-complete response body or raw exchange receipts were captured."
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z"
+    },
+    {
+      "id": "xrpldashboard_amendment_snapshot_20261104T1527Z",
+      "publisher": "XRPL Dashboard",
+      "source_type": "ledger_derived_validator_amendment_tracker",
+      "url": "https://xrpldashboard.com/amendments",
+      "instrument": "XRPL Mainnet amendment voting",
+      "retrieved_at_utc": null,
+      "source_time_utc": "2026-11-04T15:27:00Z",
+      "capture_method": "web-rendered page extract",
+      "raw_content_encoding": null,
+      "raw_content_bytes": null,
+      "raw_content_sha256": null,
+      "independence_group": "xrpldashboard_own_node_validation_stream",
+      "model_eligible": false,
+      "limitations": [
+        "The displayed voting ledger is 108112639; this is a time-bounded snapshot, not a current Nov 5 vote count.",
+        "The tracker reports 35 of 35 validators heard and 29 required.",
+        "It is a ledger-derived tracker, not a raw validation-message capture in this artifact.",
+        "No byte-complete response body or independent timestamp receipt was captured."
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z"
+    },
+    {
+      "id": "xrpl_to_amendment_explainer_20261104",
+      "publisher": "XRPL.to",
+      "source_type": "secondary_protocol_governance_explainer",
+      "url": "https://xrpl.to/insights/xrpl-amendments-explained",
+      "instrument": "XRPL amendment voting methodology and Nov 4 snapshot",
+      "retrieved_at_utc": null,
+      "source_time_utc": null,
+      "capture_method": "web-rendered page extract",
+      "raw_content_encoding": null,
+      "raw_content_bytes": null,
+      "raw_content_sha256": null,
+      "independence_group": "xrpl_to_protocol_explainer",
+      "model_eligible": false,
+      "limitations": [
+        "Secondary explainer, not an XRPL Foundation or validator primary record.",
+        "Reports 36 trusted validators, whereas XRPL Dashboard's snapshot reports 35 of 35 validators heard.",
+        "Both displayed 29 as the required yes count; denominator definitions are not identical.",
+        "No byte-complete page capture was retained."
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z",
+      "source_date": "2026-11-04"
+    },
+    {
+      "id": "xrpl_official_amendment_docs",
+      "publisher": "XRP Ledger documentation",
+      "source_type": "official_protocol_documentation",
+      "url": "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
+      "instrument": "XRPL amendment activation rules",
+      "retrieved_at_utc": null,
+      "source_time_utc": null,
+      "capture_method": "official documentation page extract",
+      "raw_content_encoding": null,
+      "raw_content_bytes": null,
+      "raw_content_sha256": null,
+      "independence_group": "xrpl_org_protocol_documentation",
+      "model_eligible": false,
+      "limitations": [
+        "Defines protocol rules, not the current live validator tally.",
+        "Documentation was not captured as byte-complete raw source in this run."
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z"
+    },
+    {
+      "id": "coingecko_xrp_cex_depth_20260930",
+      "publisher": "CoinGecko Research",
+      "source_type": "historical_multi_exchange_orderbook_depth_study",
+      "url": "https://www.coingecko.com/research/publications/crypto-liquidity-report-2026",
+      "instrument": "XRP spot order-book depth across eight centralized exchanges",
+      "retrieved_at_utc": null,
+      "source_time_utc": null,
+      "capture_method": "web-rendered report extract",
+      "raw_content_encoding": null,
+      "raw_content_bytes": null,
+      "raw_content_sha256": null,
+      "independence_group": "coingecko_orderbook_research",
+      "model_eligible": false,
+      "limitations": [
+        "Report updated Sep 30, 2026; it is not a live Nov 5 order-book snapshot.",
+        "Eight-exchange study, not the complete XRP venue universe.",
+        "Reported side depths and headline total are rounded estimates."
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z",
+      "source_date": "2026-09-30"
+    },
+    {
+      "id": "basis_binance_xrpusdt_perp_heatmap_20261104T0718Z",
+      "publisher": "Basis Charts",
+      "source_type": "single_venue_perpetual_orderbook_visualization",
+      "url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "instrument": "Binance XRPUSDT perpetual order book",
+      "retrieved_at_utc": null,
+      "source_time_utc": "2026-11-04T07:18:00Z",
+      "capture_method": "web-rendered heatmap extract",
+      "raw_content_encoding": null,
+      "raw_content_bytes": null,
+      "raw_content_sha256": null,
+      "independence_group": "basis_binance_perpetual_book_visualization",
+      "model_eligible": false,
+      "limitations": [
+        "Snapshot is Nov 4 07:18 UTC, materially older than the TradRadar Nov 4 21:20 UTC observation.",
+        "Single Binance perpetual book, not spot liquidity or a consolidated CEX book.",
+        "Walls can be cancelled or moved; displayed depth is not executed volume.",
+        "No raw order-book sequence or byte-complete payload was captured."
+      ],
+      "recorded_at_utc": "2026-11-05T02:13:44.987Z"
+    }
+  ],
+  "derivatives_reconciliation": {
+    "provider": "TradRadar",
+    "as_of_utc": "2026-11-04T21:20:00Z",
+    "instrument_scope": "XRP perpetual futures; Binance, Bybit, Gate, Bitget, MEXC, Hyperliquid and OKX",
+    "mark_price_usd": 1.3045,
+    "mark_price_change_24h_pct": 1.43,
+    "open_interest_usd": 2040000000,
+    "open_interest_change_24h_pct": 1.26,
+    "oi_weighted_funding_pct_per_8h": 0.0086,
+    "liquidations_24h_lower_bound_usd": 8050000,
+    "long_liquidations_usd": 4050000,
+    "short_liquidations_usd": 4000000,
+    "long_short_account_ratio": 3.2,
+    "long_accounts_pct": 76.2,
+    "model_eligible": false,
+    "comparison_to_prior_same_provider_snapshot": {
+      "prior_as_of_utc": "2026-11-04T11:05:00Z",
+      "prior_open_interest_usd_rounded": 2030000000,
+      "prior_funding_pct_per_8h": 0.01,
+      "prior_liquidations_24h_lower_bound_usd": 6770000,
+      "prior_long_short_account_ratio": 3.21,
+      "prior_long_accounts_pct": 76.3,
+      "interpretation": "The later provider snapshot reports slightly higher rounded OI and a higher liquidation lower bound, while the account ratio is nearly unchanged. Rolling 24-hour windows, provider rounding and missing raw contract rows prevent treating the differences as a precise flow series."
+    },
+    "limitations": [
+      "Mark price is not a spot execution price.",
+      "Open interest is not net capital inflow; it is the value of outstanding contracts under the provider's methodology.",
+      "Account long/short ratio is not notional exposure.",
+      "Near-balanced long and short liquidations do not establish direction.",
+      "No native per-exchange contract payloads were captured."
+    ]
+  },
+  "liquidity_reconciliation": {
+    "historical_cex_study": {
+      "publisher": "CoinGecko Research",
+      "updated_at": "2026-09-30",
+      "exchanges": 8,
+      "bid_depth_usd_approx": 18000000,
+      "ask_depth_usd_approx": 14000000,
+      "reported_total_depth_usd_approx": 30000000,
+      "depth_band": "approximately +/-2%",
+      "venue_observations": [
+        "Coinbase showed relatively stronger depth near +/-0.1%.",
+        "Binance led at approximately +/-2%."
+      ],
+      "model_eligible": false
+    },
+    "single_venue_perpetual_snapshot": {
+      "publisher": "Basis Charts",
+      "as_of_utc": "2026-11-04T07:18:00Z",
+      "venue": "Binance",
+      "instrument": "XRPUSDT perpetual",
+      "mid_price_usd": 1.2738,
+      "spread_bps": 0.79,
+      "all_displayed_levels_bid_usd": 36700000,
+      "all_displayed_levels_ask_usd": 31800000,
+      "displayed_levels_each_side": 1000,
+      "depth_within_0_5pct_usd": 15800000,
+      "depth_within_1pct_usd": {
+        "bids": 13200000,
+        "asks": 12200000
+      },
+      "depth_within_2pct_usd": {
+        "bids": 21100000,
+        "asks": 18900000
+      },
+      "model_eligible": false,
+      "limitations": [
+        "The full 1,000-level totals extend beyond the +/-2% band.",
+        "The snapshot is stale relative to the later TradRadar observation.",
+        "A perpetual book is not spot depth and is not directly comparable with CoinGecko's eight-CEX spot study."
+      ]
+    },
+    "no_aggregation_rule": "Do not sum, average or compare these values as if they were synchronized spot liquidity. Preserve product, venue universe, timestamp and price band."
+  },
+  "xrpl_amendment_state": {
+    "snapshot_as_of_utc": "2026-11-04T15:27:00Z",
+    "voting_ledger": 108112639,
+    "validators_heard": 35,
+    "validators_total_reported": 35,
+    "yes_votes_required": 29,
+    "pending_amendments": {
+      "SingleAssetVault": 21,
+      "ConfidentialTransfer": 20,
+      "LendingProtocol": 19,
+      "LendingProtocolV1_1": 19,
+      "DynamicMPT": 16
+    },
+    "prior_fix_activation": {
+      "amendment": "fixCleanup3_4_0",
+      "enabled_at_utc": "2026-11-04T14:52:00Z",
+      "ledger_index": 108112129,
+      "provenance_note": "The activation timestamp and ledger index are preserved from the earlier exact EnableAmendment ledger reconstruction in the XRP research archive; the later dashboard snapshot is a separate post-activation voting view."
+    },
+    "governance_method": {
+      "official_rule": "An amendment must maintain more than 80% support from trusted validators for two weeks. Support falling to 80% or less restarts the period.",
+      "official_enablement_evidence": "An EnableAmendment pseudo-transaction with no flags indicates the amendment is enabled.",
+      "secondary_denominator_disagreement": "XRPL Dashboard reported 35 of 35 validators heard; XRPL.to described 36 trusted validators. The required yes count was 29 in both extracts. Retain the differing denominator scopes."
+    },
+    "interpretation": "The fixCleanup3_4_0 bug-fix amendment was enabled, but SingleAssetVault and LendingProtocol remained below the 29-vote threshold in the Nov 4 15:27 UTC snapshot. A protocol bug fix is not a lending launch, XRP collateral utilization, loan origination or proof of new XRP demand.",
+    "model_eligible": false
+  },
+  "observations": [
+    {
+      "id": "OBS-TRADRADAR-XRP-PERP-20261104-2120",
+      "classification": "provider_reported_multi_exchange_derivatives_snapshot",
+      "claim": "TradRadar displayed approximately $2.04B XRP perpetual open interest, +1.26% over 24 hours, +0.0086% OI-weighted funding per eight hours, at least $8.05M of liquidations, and a 3.20 long/short account ratio with 76.2% long accounts.",
+      "evidence": [
+        "tradradar_xrp_perpetuals_20261104T2120Z"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-XRP-LONG-CROWDING-COUNTEREVIDENCE-20261104-2120",
+      "classification": "positioning_interpretation_with_counterevidence",
+      "claim": "The account ratio is long-skewed, but funding is positive rather than extreme in this snapshot and long/short liquidations are close to balanced. These facts are compatible with crowded longs, but do not prove imminent liquidation or a directional price move.",
+      "evidence": [
+        "tradradar_xrp_perpetuals_20261104T2120Z"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-XRP-DEPTH-TIMESTAMP-SCOPE-20261104",
+      "classification": "non_comparable_liquidity_snapshots",
+      "claim": "CoinGecko's Sep 30 eight-CEX spot-depth study and Basis's Nov 4 07:18 UTC single-Binance-perpetual heatmap differ in date, venue coverage, instrument and price-band definitions. They cannot be combined into one XRP spot-liquidity estimate.",
+      "evidence": [
+        "coingecko_xrp_cex_depth_20260930",
+        "basis_binance_xrpusdt_perp_heatmap_20261104T0718Z"
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-XRPL-AMENDMENT-FIX-VS-LENDING-20261104",
+      "classification": "protocol_governance_not_market_flow",
+      "claim": "The prior ledger reconstruction records fixCleanup3_4_0 enabled at ledger 108112129, while the later Nov 4 15:27 UTC dashboard snapshot shows SingleAssetVault at 21/35 and LendingProtocol at 19/35, both below 29 required. This does not establish that XRPL lending is live or that XRP is being used as collateral.",
+      "evidence": [
+        "xrpldashboard_amendment_snapshot_20261104T1527Z",
+        "xrpl_official_amendment_docs"
+      ],
+      "model_eligible": false
+    }
+  ],
+  "source_independence_and_disagreement": [
+    "TradRadar is one multi-exchange aggregator; its seven venue inputs are not seven independent aggregators.",
+    "Basis is a third-party visualization of Binance's perpetual order book; the underlying venue overlaps the derivatives ecosystem and its snapshot is 14 hours older than TradRadar's displayed update.",
+    "CoinGecko's study is an older eight-CEX spot-depth benchmark and is not a live source.",
+    "XRPL Dashboard and XRPL.to are separate rendered views of the same public ledger/governance process; they are not independent validator networks. Their denominator descriptions differ (35 heard versus 36 trusted) and are retained separately.",
+    "XRPL.org documentation defines the protocol rule but does not provide the current live vote tally.",
+    "No provider values were averaged, and no cross-venue executable spread or arbitrage claim is made."
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "20261105T020359Z::H1-long-skew-vs-balanced-liquidations",
+      "claim": "The long-skewed account ratio and rising reported OI may increase sensitivity to a downside liquidation cascade.",
+      "support": [
+        "TradRadar reports 76.2% long accounts, 3.20 account ratio and +1.26% OI change."
+      ],
+      "disconfirming_or_missing": [
+        "Funding is +0.0086% per eight hours, not an extreme reading by itself.",
+        "Long and short liquidation values are nearly balanced.",
+        "No raw account-level positions, top-trader notional, liquidation clusters or synchronized spot flow are captured."
+      ],
+      "tests": [
+        "Capture native per-exchange OI/funding and liquidation streams at one timestamp; compare account and notional ratios; test whether spot depth absorbs forced flow."
+      ]
+    },
+    {
+      "id": "20261105T020359Z::H2-spot-depth-vs-perpetual-depth",
+      "claim": "XRP may have substantial aggregate spot liquidity while individual venues or perpetual books show materially different near-touch depth.",
+      "support": [
+        "CoinGecko reports broad eight-CEX spot depth; Basis reports a single-venue perpetual snapshot."
+      ],
+      "disconfirming_or_missing": [
+        "The observations are not synchronized and use different instruments, price bands and methods."
+      ],
+      "tests": [
+        "Capture full raw spot and perpetual books on the same venues and timestamp, preserve sequence IDs and normalize depth by common price bands."
+      ]
+    },
+    {
+      "id": "20261105T020359Z::H3-bugfix-activation-vs-lending-readiness",
+      "claim": "The successful fixCleanup3_4_0 activation may be mistaken for the launch of XRPL native lending, although the required lending amendments remained below threshold in the later snapshot.",
+      "support": [
+        "The post-activation dashboard snapshot shows LendingProtocol 19/35 and SingleAssetVault 21/35 against 29 required."
+      ],
+      "disconfirming_or_missing": [
+        "A later validator snapshot could change; no post-Nov-4 Nov-5 vote snapshot was captured."
+      ],
+      "tests": [
+        "Read the current Amendments ledger entry and trusted-validator votes directly; verify every prerequisite amendment and the activation pseudo-transaction before classifying lending as live."
+      ]
+    }
+  ],
+  "data_quality_controls": {
+    "raw_receipt_coverage": "None of the rendered page extracts in this artifact has a byte-complete raw payload or SHA-256 receipt.",
+    "model_eligibility": "NONE",
+    "timestamp_policy": "Preserve each provider's displayed event/update time separately from the research retrieval time. Do not infer synchronization from a common calendar date.",
+    "instrument_policy": "Do not treat perpetual mark price or perpetual order-book depth as spot price or spot depth.",
+    "capital_policy": "Open interest is contract exposure, not net capital inflow. Account ratios are not notional ratios. Liquidation totals are provider-reported and may be lower bounds.",
+    "protocol_policy": "Do not infer a feature launch, collateral utilization or XRP demand from an amendment bug fix or sub-threshold vote count.",
+    "missing": [
+      "Raw TradRadar payload and native exchange OI/funding/liquidation rows.",
+      "Synchronized full-depth spot order books with sequence continuity across Binance, Coinbase, Kraken and Bybit.",
+      "Direct XRPL ledger_entry Amendments state and current validator vote receipts after the Nov 4 snapshot.",
+      "Historical point-in-time depth and derivatives series with provider revision history.",
+      "Independent exchange-wallet flow and issuer collateral/custody records."
+    ]
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "The observations are rendered, time-misaligned and model-ineligible. They do not provide a byte-receipted point-in-time dataset or validated out-of-sample predictive lift."
+  },
+  "next_actions": [
+    "Capture direct Binance, Coinbase, Kraken and Bybit spot order-book and trade payloads with raw bytes, sequence IDs and source timestamps.",
+    "Capture native per-exchange perpetual OI, funding and liquidation payloads on a fixed common contract universe.",
+    "Query XRPL Amendments ledger state and EnableAmendment transactions directly; preserve validator-vote snapshots with ledger indices.",
+    "Keep the 100-training/100-distinct-OOS-origin evaluator gate; do not treat this research artifact as a model feature.",
+    "Continue issuer-level ETF, stablecoin, custody and collateral ingestion without inferring XRP utilization from corporate announcements."
+  ],
+  "recorded_at_utc": "2026-11-05T02:13:44.987Z",
+  "source_retrieval_timestamp_precision": "No exact HTTP retrieval timestamp was exposed for the rendered search-result extracts. Provider event/update times are retained only where the page displayed them. record_id is an artifact identifier, not a source timestamp. No common synchronized data cutoff is available."
+}

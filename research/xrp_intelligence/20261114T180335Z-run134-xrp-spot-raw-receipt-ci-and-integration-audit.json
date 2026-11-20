@@ -1,0 +1,601 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "Run134",
+  "run_cutoff_utc": "2026-11-14T18:03:30Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, authorization, safety and verification",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "ef41ea7d8f1d236774c3e593bc6205bf42555351",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_parent_before_run": "09f256483e2723cf0b79fb3903e5fb51e52fb103",
+    "safety_doc_correction_commit": "059b1b50a310863f2b2d28eb1ab2f69a8ca33323",
+    "tree_inventory": {
+      "main": {
+        "sha": "ef41ea7d8f1d236774c3e593bc6205bf42555351",
+        "entries": 1341,
+        "truncated": false,
+        "workflow_files": 87,
+        "python_files": 503,
+        "test_paths": 108
+      },
+      "integration": {
+        "sha": "09f256483e2723cf0b79fb3903e5fb51e52fb103",
+        "entries": 2404,
+        "truncated": false,
+        "workflow_files": 88,
+        "python_files": 883,
+        "test_paths": 469
+      }
+    },
+    "open_pull_requests": {
+      "total": 373,
+      "drafts": 361,
+      "non_drafts": 12,
+      "base_main": 365,
+      "other_base": 8
+    },
+    "integration_pr": {
+      "number": 1662,
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "base_sha": "ef41ea7d8f1d236774c3e593bc6205bf42555351",
+      "head_sha": "09db62da14929d673730c0e45b5132239dcc626c",
+      "changed_files": 1204,
+      "additions": 360746,
+      "deletions": 5547,
+      "formal_reviews": 0,
+      "review_threads": 0
+    },
+    "ancestry": {
+      "status": "ahead",
+      "ahead_by": 2407,
+      "behind_by": 0,
+      "total_commits": 2407,
+      "compare_file_stats_returned": 300,
+      "compare_endpoint_limited": true
+    },
+    "preserved_large_map": {
+      "path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+      "blob_sha": "710d5cbe1991b68939a6a9ef50a4d3483f78b1b8",
+      "fetch_file_returned_empty_content": true,
+      "interpretation": "Large canonical blob; empty content response is not evidence of an empty file. No modification made."
+    },
+    "open_pr_inventory": {
+      "total": 373,
+      "drafts": 361,
+      "non_drafts": 12,
+      "base_main": 365,
+      "other_base": 8
+    },
+    "source_pr_reconciliation": [
+      {
+        "number": 1661,
+        "changed_files": 1072,
+        "overlap_with_1662": 1070,
+        "source_only": 2,
+        "source_only_paths": [
+          ".github/workflows/barrot-bundle-operational-smoke.yml",
+          ".github/workflows/barrot-controlled-feature-validation.yml"
+        ],
+        "classification": "supersession_candidate_not_exact_duplicate",
+        "draft": true
+      },
+      {
+        "number": 1660,
+        "changed_files": 972,
+        "overlap_with_1662": 970,
+        "source_only": 2,
+        "source_only_paths": [
+          ".github/workflows/barrot-bundle-operational-smoke.yml",
+          ".github/workflows/barrot-controlled-feature-validation.yml"
+        ],
+        "classification": "supersession_candidate_not_exact_duplicate",
+        "draft": true
+      },
+      {
+        "number": 1653,
+        "changed_files": 7,
+        "overlap_with_1662": 1,
+        "source_only": 6,
+        "unresolved_review_threads": 8,
+        "classification": "unique_blocked",
+        "blockers": [
+          "upstream codebase-memory indexer can overwrite existing graph.db.zst despite persistence=false",
+          "--format may take precedence over stdin and discard supplied JSON args",
+          "repository branch/HEAD/dirty snapshot can change during long indexing",
+          "recursive submodule fetch can bypass validated remote allowlist",
+          "degraded index status can be reported as synchronized",
+          "Git fetch timeout can escape structured failure handling",
+          "two additional review findings"
+        ]
+      },
+      {
+        "number": 1643,
+        "changed_files": 670,
+        "overlap_with_1662": 670,
+        "source_only": 0,
+        "review_threads_total": 19,
+        "review_threads_resolved": 19,
+        "review_threads_unresolved": 0,
+        "classification": "full_path_overlap_semantics_still_require_comparison"
+      },
+      {
+        "number": 1642,
+        "changed_files": 7,
+        "overlap_with_1662": 7,
+        "source_only": 0,
+        "classification": "full_path_overlap_semantics_still_require_comparison"
+      },
+      {
+        "number": 1640,
+        "changed_files": 280,
+        "overlap_with_1662": 278,
+        "source_only": 2,
+        "source_only_paths": [
+          ".github/workflows/barrot-bundle-operational-smoke.yml",
+          ".github/workflows/barrot-controlled-feature-validation.yml"
+        ],
+        "classification": "supersession_candidate_not_exact_duplicate",
+        "draft": true
+      },
+      {
+        "number": 1320,
+        "changed_files": 5,
+        "overlap_with_1662": 5,
+        "source_only": 0,
+        "classification": "full_path_overlap_semantics_still_require_comparison"
+      },
+      {
+        "number": 1318,
+        "changed_files": 2,
+        "overlap_with_1662": 2,
+        "source_only": 0,
+        "classification": "full_path_overlap_semantics_still_require_comparison"
+      },
+      {
+        "number": 1317,
+        "changed_files": 6,
+        "overlap_with_1662": 6,
+        "source_only": 0,
+        "classification": "full_path_overlap_semantics_still_require_comparison"
+      },
+      {
+        "number": 1614,
+        "changed_files": 57,
+        "overlap_with_1662": 30,
+        "source_only": 27,
+        "classification": "unique_unreviewed_feature_validator_and_research"
+      },
+      {
+        "number": 1615,
+        "changed_files": 14,
+        "overlap_with_1662": 1,
+        "source_only": 13,
+        "classification": "unique_unreviewed_automation_containment"
+      },
+      {
+        "number": 1269,
+        "changed_files": 9,
+        "overlap_with_1662": 1,
+        "source_only": 8,
+        "classification": "unique_unreviewed_mesh_topology"
+      },
+      {
+        "number": 1655,
+        "changed_files": 8,
+        "overlap_with_1662": 5,
+        "source_only": 3,
+        "classification": "unique_unreviewed_source_catalog"
+      },
+      {
+        "number": 1659,
+        "changed_files": 6,
+        "overlap_with_1662": 2,
+        "source_only": 4,
+        "classification": "unique_unreviewed_local_inference"
+      },
+      {
+        "number": 1641,
+        "changed_files": 3,
+        "overlap_with_1662": 0,
+        "source_only": 3,
+        "classification": "unique_unreviewed_autonomous_experimentation"
+      }
+    ]
+  },
+  "ci": {
+    "failed_exact_head": "09f256483e2723cf0b79fb3903e5fb51e52fb103",
+    "full_suite_run": 43621109699,
+    "full_suite_result": {
+      "passed": 3677,
+      "failed": 1,
+      "subtests": 8,
+      "coverage_percent": 62.84,
+      "conclusion": "failure"
+    },
+    "failure": {
+      "test": "tests/test_barrot_sync_truthfulness.py::test_barrot_sync_does_not_claim_unverified_credentials_or_oauth_revocation",
+      "cause": "BARROT_SYNC.md lacked exact required text: presence/validity in GitHub Secrets is NOT VERIFIED; provider-side OAuth revocation is NOT VERIFIED; it also lacked explicit httpx/sync-skipped/no-sync-commit and no-automatic-external-sync-or-push phrases."
+    },
+    "core_tests": "passed",
+    "dependency_audit_push": {
+      "run_id": 43621109748,
+      "conclusion": "success",
+      "manifest_groups": 6
+    },
+    "dependency_audit_pr": {
+      "run_id": 43621114353,
+      "conclusion": "success",
+      "manifest_groups": 6
+    },
+    "fail_closed_push": {
+      "run_id": 43621109661,
+      "conclusion": "success"
+    },
+    "fail_closed_pr": {
+      "run_id": 43621114382,
+      "conclusion": "success"
+    },
+    "correction": {
+      "commit": "059b1b50a310863f2b2d28eb1ab2f69a8ca33323",
+      "file": "BARROT_SYNC.md",
+      "blob_sha": "66e84fd79cac10e195cadfe8361a18585ec101e2",
+      "test_files_modified": false,
+      "tests_weakened": false,
+      "required_phrases_verified": true,
+      "new_exact_head_ci_pending": true
+    },
+    "final_verified_head": {
+      "sha": "09db62da14929d673730c0e45b5132239dcc626c",
+      "full_suite": {
+        "run_id": 43625301133,
+        "conclusion": "success",
+        "passed": 3681,
+        "failed": 0,
+        "subtests_passed": 8,
+        "duration_seconds": 110.28,
+        "inclusive_coverage_percent": 62.84,
+        "legacy_core_coverage_percent": 76
+      },
+      "wheel": {
+        "built": "b_agent-0.1.0-py3-none-any.whl",
+        "installed": true,
+        "packaged_primary_mission_verified": true,
+        "installed_barrot_v3_xrp_mission_and_canonical_assets_verified": true
+      },
+      "dependency_audit_push": {
+        "run_id": 43625301163,
+        "conclusion": "success",
+        "manifest_groups": 6,
+        "known_vulnerabilities": 0
+      },
+      "dependency_audit_pr": {
+        "run_id": 43625307163,
+        "conclusion": "success",
+        "manifest_groups": 6,
+        "known_vulnerabilities": 0
+      },
+      "fail_closed_push": {
+        "run_id": 43625301137,
+        "conclusion": "success"
+      },
+      "fail_closed_pr": {
+        "run_id": 43625307198,
+        "conclusion": "success"
+      },
+      "core_tests": "success",
+      "pr_event_core_ci": "skipped by integration-branch workflow condition; push-event full suite is authoritative",
+      "non_blocking_warnings": [
+        "GitHub Actions cache budget reached; cache became read-only, job still passed.",
+        "Setuptools emitted a package-discovery warning; wheel built and installed successfully."
+      ]
+    }
+  },
+  "security": {
+    "repository_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true
+    },
+    "main_branch_protection_read": "HTTP 403 Resource not accessible by integration",
+    "integration_branch_protected": false,
+    "fallback_ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled",
+      "rules": [
+        "deletion",
+        "non_fast_forward"
+      ]
+    },
+    "codeowners_main": {
+      "path": ".github/CODEOWNERS",
+      "blob_sha": "c6691a1bf8be8962925b11ad1d57d7bbfc1350d6",
+      "content": "* @Barrot-Agent",
+      "independent_review": false
+    },
+    "unresolved": {
+      "pages_liquid_failure": "Main Pages workflow previously failed parsing GLOBAL_STATE_MANIFEST.md line 6456; do not merge changes that trigger publication without authorization and verified build.",
+      "sync_failure_masking": "Main Barrot Sync previously reported success while b_agent.py --sync failed due missing rich and the workflow masked errors. Integration remains quarantined.",
+      "token_argv": {
+        "status": "main_only_risk; integration_fix_verified",
+        "finding": "The single-quoted git credential-helper contains literal ${GH_TOKEN}; it does not interpolate the secret into git argv. Actual validation argv exposure was in main's curl Authorization header argument and Python fallback positional argument.",
+        "correction": "Integration now sends curl config and Python fallback inputs over stdin, unexports GH_TOKEN during validation child processes, and re-exports it immediately before the Git credential-helper push.",
+        "regression_tests": {
+          "file": "tests/test_push_with_token_security.py",
+          "count": 3,
+          "exact_head_full_suite_passed": true,
+          "assertions": [
+            "token absent from curl argv",
+            "token absent from Python argv",
+            "token absent from validation child environments",
+            "token absent from stdout/stderr",
+            "token supplied through stdin"
+          ]
+        },
+        "main_unchanged": true,
+        "secret_rotated": false
+      }
+    }
+  },
+  "xrp_market": {
+    "model_status": "RESEARCH_ONLY_NOT_ADMITTED",
+    "okx": {
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_event_timestamp_ms": 1794679415369,
+      "provider_event_time_utc": "2026-11-14T18:03:35.369Z",
+      "raw_payload_sha256": "2eb4575d54d569ed8403fb5652b67c7ddeeb0d15ed7bb165f8446b0b0971f063",
+      "raw_payload_utf8": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"0.9591\",\"lastSz\":\"271.860742\",\"askPx\":\"0.9592\",\"askSz\":\"3140.443618\",\"bidPx\":\"0.9591\",\"bidSz\":\"1026.465562\",\"open24h\":\"1.0203\",\"high24h\":\"1.0297\",\"low24h\":\"0.9457\",\"volCcy24h\":\"52987042.6042370431\",\"vol24h\":\"53791344.59008\",\"ts\":\"1794679415369\",\"sodUtc0\":\"1.011\",\"sodUtc8\":\"0.9719\"}],\"msg\":\"\"}",
+      "retrieval_clock": "Exact HTTP retrieval clock not independently exposed; response returned during the 18:03Z research run.",
+      "values": {
+        "last_usdt": 0.9591,
+        "bid_usdt": 0.9591,
+        "ask_usdt": 0.9592,
+        "top_bid_size_xrp": 1026.465562,
+        "top_ask_size_xrp": 3140.443618,
+        "open_24h_usdt": 1.0203,
+        "high_24h_usdt": 1.0297,
+        "low_24h_usdt": 0.9457,
+        "volume_24h_xrp": 53791344.59008,
+        "quote_volume_24h_usdt": 52987042.60423704
+      },
+      "derived": {
+        "change_vs_24h_open_percent": -5.998235812996178,
+        "quoted_spread_basis_points": 1.0425897930469687,
+        "top_level_imbalance": -0.5073252054895999,
+        "top_ask_to_bid_size_ratio": 3.059,
+        "distance_above_24h_low_percent": 1.416939832927988
+      }
+    },
+    "kraken": {
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_timestamp": null,
+      "raw_payload_sha256": "e6cb9daa5f6cfa62354e3514f6cb9de1c7120fd5047d94380304eba64d5811a1",
+      "raw_payload_utf8": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"0.96858000\",\"5163\",\"5163.000\"],\"b\":[\"0.96857000\",\"1\",\"1.000\"],\"c\":[\"0.96890000\",\"51.50263829\"],\"v\":[\"40822913.57805303\",\"49445182.21056783\"],\"p\":[\"0.97931306\",\"0.98556709\"],\"t\":[42553,51247],\"l\":[\"0.94522000\",\"0.94522000\"],\"h\":[\"1.01248000\",\"1.02881000\"],\"o\":\"1.00999000\"}}}",
+      "values": {
+        "last_usd": 0.9689,
+        "bid_usd": 0.96857,
+        "ask_usd": 0.96858,
+        "volume_24h_xrp": 49445182.21056783,
+        "vwap_24h_usd": 0.98556709,
+        "high_24h_usd": 1.02881,
+        "low_24h_usd": 0.94522,
+        "open_24h_usd": 1.00999
+      }
+    },
+    "cross_venue": {
+      "kraken_last_premium_vs_okx_percent": 1.0217912626420578,
+      "interpretation": "Asynchronous and different quote currencies; not executable arbitrage evidence."
+    },
+    "admission_reasons": [
+      "Single-venue timestamped spot observation only",
+      "No synchronized multi-venue full L2 snapshot",
+      "Kraken response lacks provider event timestamp",
+      "No aligned derivatives snapshot",
+      "Git commit receipt is not independent WORM storage or trusted timestamp anchoring"
+    ],
+    "note": "OKX top-level imbalance is one price level only, not full order-book depth or durable liquidity.",
+    "secondary_followup": {
+      "source_time_note": "Follow-up retrieval occurred after the 18:03Z raw receipt; these sources are not synchronized and remain research-only.",
+      "kraken_latest": {
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "last_usd": 0.95748,
+        "bid_usd": 0.95771,
+        "ask_usd": 0.9579,
+        "provider_event_timestamp": null
+      },
+      "bybit": {
+        "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+        "last_usdt": 0.958,
+        "bid_usdt": 0.958,
+        "ask_usdt": 0.9581,
+        "provider_event_time_utc": "2026-11-14T16:56:37.687Z",
+        "stale_at_followup": true
+      },
+      "coinglass": {
+        "url": "https://www.coinglass.com/es/currencies/XRP/historical-data/2026",
+        "price_usd": 0.9755,
+        "change_24h_percent": -4.3,
+        "spot_volume_24h_usd": 636770000,
+        "futures_volume_24h_usd": 2870000000,
+        "open_interest_usd": 2140000000,
+        "liquidations_24h_usd": 17070000,
+        "long_liquidations_share_percent": 97,
+        "funding_display": "-0.0001%; page also labels -0.1% annualized",
+        "daily_close_2026_11_14_usd": 0.9679,
+        "low_2026_11_14_usd": 0.9663,
+        "ytd_change_percent": -47.4,
+        "thirty_day_change_percent": -28.76,
+        "admission": "research-only; page does not expose a synchronized exchange event timestamp"
+      },
+      "coinmarketcap_disagreement": {
+        "english_page_price_usd": 0.9766,
+        "japanese_page_current_converter_usd": 0.9515,
+        "japanese_daily_history_2026_11_14_usd": 0.9486,
+        "admission": "research-only; incompatible page snapshots/vintages"
+      },
+      "conclusion": "The direct OKX 18:03:35Z observation is stale at the later follow-up; Kraken lacks event time; Bybit's 16:56:37Z ticker is stale; aggregate trackers and CoinMarketCap pages disagree. No synchronized spot/L2/derivatives set is admitted and no forecast is issued."
+    }
+  },
+  "etf_flow_reconciliation": {
+    "xrp_insights": {
+      "url": "https://xrp-insights.com/data",
+      "homepage": "https://xrp-insights.com/",
+      "universe": "six US spot funds plus BITW",
+      "nov13_homepage_daily_flow_xrp": 3400000,
+      "nov9_13_week_flow_xrp": -6080000,
+      "holdings_xrp": 1190000000,
+      "aum_usd": 1220000000,
+      "method": "day-over-day issuer-reported holdings changes",
+      "caveat": "data downloads page says as of Nov 12 and Nov 13 row provisional until re-settled; GXRP excluded from flow totals due issuer-page capture gap but included in holdings"
+    },
+    "alpha_finance": {
+      "url": "https://alphafinance.io/etf/xrp/",
+      "universe": "five funds: XRP, XRPZ, XRPC, GXRP, TOXR",
+      "nov13_flow_usd": -1100000,
+      "thirty_session_flow_usd": -581700,
+      "largest_nov13_outflow": "GXRP -$5.5M",
+      "caveat": "Different fund universe; holdings-change methodology"
+    },
+    "coinglass": {
+      "url": "https://www.coinglass.com/currencies/XRP/etf",
+      "universe": "three of five disclosed",
+      "nov13_flow_usd": -1100000,
+      "disclosed_holdings_xrp": 756370000,
+      "disclosed_net_assets_usd": 777240000
+    },
+    "bykaranteli": {
+      "url": "https://bykaranteli.com/etf/xrp",
+      "nov13_flow_usd": -1100000,
+      "five_session_flow_usd": -19100000,
+      "cumulative_inflow_usd": 1790000000,
+      "caveat": "Its cumulative series starts 2026-09-08; fund universe differs"
+    },
+    "cryptotuts": {
+      "url": "https://cryptotuts.co/xrp/etf",
+      "seven_day_net_usd": -19130000,
+      "caveat": "Missing fund observations leave gaps"
+    },
+    "conclusion": "Do not average or combine these series. Nov 13 USD trackers agree near -$1.1M for their covered five-fund cohorts; XRP Insights' +3.40M XRP is a broader six-fund-plus-BITW holdings-change series whose Nov 13 row remains provisional and whose GXRP flow is excluded."
+  },
+  "derivatives": {
+    "liqwall": {
+      "url": "https://liqwall.com/coins/xrp",
+      "page_time_utc": "2026-11-14T01:02:00Z",
+      "oi_usd": 1100000000,
+      "funding_8h_percent": 0.004,
+      "liquidations_24h_usd": 14400000,
+      "long_liquidations_usd": 12800000,
+      "binance_long_accounts_percent": 75.3,
+      "admission": "stale; research only"
+    },
+    "alpha_finance": {
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "page_time_utc": "2026-11-14T14:50:00Z",
+      "oi_usd": 2170000000,
+      "volume_24h_usd": 2720000000,
+      "long_liquidations_24h_usd": 15100000,
+      "short_liquidations_24h_usd": 586200,
+      "admission": "stale at 18:03Z; liquidation clusters are modelled from open interest, not resting orders"
+    },
+    "tradradar": {
+      "url": "https://tradradar.io/markets/xrp",
+      "page_time_utc": "2026-11-14T01:10:00Z",
+      "oi_usd": 1520000000,
+      "oi_change_24h_percent": -1.19,
+      "funding_8h_percent": 0.0017,
+      "minimum_liquidations_24h_usd": 13550000,
+      "long_liquidations_usd": 11760000,
+      "short_liquidations_usd": 1790000,
+      "long_short_ratio": 3.86,
+      "admission": "stale; seven-exchange aggregation"
+    }
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "candidate_model": "not trained",
+    "baselines": [
+      "naive",
+      "momentum",
+      "mean reversion",
+      "volatility"
+    ],
+    "walk_forward": "implemented but no candidate-versus-four-baseline superiority demonstrated",
+    "remaining": [
+      "independent shadow outcomes",
+      "independent WORM archive",
+      "trusted timestamp anchoring",
+      "synchronized historical spot/L2/derivatives/exchange-flow/collateral dataset",
+      "candidate model and calibrated out-of-sample superiority"
+    ]
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub connector authenticated; repository permissions overprivileged",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "no formal PR approval",
+    "Codex": "unverified",
+    "HuggingFace": "prior BUILD_ERROR; no deployment",
+    "Kaggle": "untested; no submission",
+    "Databricks": "prior HTTP 403; no write",
+    "external_dispatch": "none",
+    "independent_red_team_quorum": "not established"
+  },
+  "actions": {
+    "branches_created": 0,
+    "pull_requests_created": 0,
+    "merges": 0,
+    "source_prs_closed": 0,
+    "deployments": 0,
+    "secrets_rotated": 0,
+    "external_model_transfers": 0,
+    "databricks_writes": 0,
+    "kaggle_submissions": 0,
+    "paper_trades": 0,
+    "real_money_actions": 0,
+    "force_pushes": 0,
+    "destructive_worktree_actions": 0
+  },
+  "run_state": {
+    "last_inspected_integration_head": "c5a6e75e38cac00229d38684e3ae352230cf15ee",
+    "last_inspected_pr": {
+      "number": 1662,
+      "head_sha": "c5a6e75e38cac00229d38684e3ae352230cf15ee",
+      "base_sha": "ef41ea7d8f1d236774c3e593bc6205bf42555351",
+      "draft": true,
+      "mergeable": true,
+      "changed_files": 1202,
+      "additions": 360528,
+      "deletions": 5533
+    },
+    "exact_head_push_ci": {
+      "run_id": 43624813126,
+      "status": "queued",
+      "conclusion": null
+    },
+    "exact_head_fail_closed": {
+      "run_id": 43624813149,
+      "status": "queued",
+      "conclusion": null
+    },
+    "exact_head_dependency_audit": "The handoff-only commit did not match dependency-audit path filters. This final commit also updates a file under research/xrp_intelligence and therefore triggers the path-filtered audit; no result is claimed before it runs.",
+    "final_manifest_commit": "This commit; see the resulting PR #1662 head because a commit cannot embed its own SHA.",
+    "security_fix_parent": "d6566d8a2245fd01fec1874677cec4987ba53a04",
+    "security_fix_scope": [
+      "scripts/push_with_token.sh",
+      "tests/test_push_with_token_security.py",
+      "research/xrp_intelligence/20261114T180335Z-run134-xrp-spot-raw-receipt-ci-and-integration-audit.json",
+      "BARROT_XRP_MISSION_HANDOFF_LATEST.md"
+    ],
+    "final_verified_head": "09db62da14929d673730c0e45b5132239dcc626c",
+    "final_verified_at_utc": "2026-11-14T18:16:37Z",
+    "final_handoff_update_parent": "09db62da14929d673730c0e45b5132239dcc626c",
+    "final_handoff_update_ci": "This handoff/audit-only child commit will trigger a fresh exact-head CI cycle; no result is claimed for that child until it completes."
+  }
+}

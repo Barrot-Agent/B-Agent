@@ -1,0 +1,551 @@
+{
+  "schema_version": "barrot.xrp.research-observation.v1",
+  "run_id": "run208",
+  "captured_at_utc": "2026-11-17T06:01:54Z",
+  "mission": {
+    "priority": 1,
+    "id": "xrp_intelligence_prediction_engine",
+    "foundation": "Barrot V3"
+  },
+  "repository_state": {
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_head_sha": "f6e7f570ea98d52b2c2ed22f058a6de642e474c3",
+    "pull_request": 1663,
+    "pull_request_state": "open",
+    "draft": true,
+    "mergeable": true,
+    "commits_ahead": 161,
+    "commits_behind": 0,
+    "changed_files": 1364,
+    "additions": 497340,
+    "deletions": 6809,
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2579,
+    "main_paths_missing_on_integration": 0,
+    "integration_only_paths": 1186,
+    "changed_workflow_paths": 62,
+    "changed_test_paths": 396,
+    "semantic_security_review": "incomplete"
+  },
+  "prediction_gate": {
+    "event_count": 125,
+    "exact_publisher_timestamps": 48,
+    "missing_exact_publisher_timestamps": 77,
+    "raw_source_sha256_receipts": 0,
+    "model_eligible_events": 0,
+    "forecasts_issued": 0,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "note": "Rendered web observations below are descriptive research only. No publisher response bytes were captured; no SHA-256 receipt was fabricated and no observation is admitted to the point-in-time feature store."
+  },
+  "observations": [
+    {
+      "id": "coinglass-xrp-spot-flow-and-venue-depth-2026-11-17",
+      "publisher": "CoinGlass",
+      "source_url": "https://www.coinglass.com/currencies/XRP/spot",
+      "independence_group": "coinglass-xrp-market-data",
+      "publisher_time_utc": "2026-11-17T03:14:00Z",
+      "time_semantics": "The FAQ reports its market snapshot as of 03:14 UTC; the venue depth table was described as updated about 30 minutes before crawl, without a per-row event timestamp.",
+      "metrics": {
+        "spot_volume_24h_usd": 519290000,
+        "spot_volume_change_24h_pct": -18.81,
+        "spot_net_taker_flow_24h_usd": -17360000,
+        "spot_net_taker_flow_7d_usd": -184450000,
+        "futures_volume_24h_usd": 2280000000,
+        "futures_to_spot_volume_ratio": 4.4,
+        "venue_spot_volume_usd": {
+          "Binance XRP/USDT": 110880000,
+          "Coinbase XRP/USD": 77150000,
+          "Upbit XRP/KRW": 74670000,
+          "Gate XRP/USDT": 45810000,
+          "Kraken XRP/USD": 42200000,
+          "OKX XRP/USDT": 36230000
+        },
+        "venue_depth_within_1pct_usd": {
+          "Binance XRP/USDT": 3810000,
+          "Coinbase XRP/USD": 6100000,
+          "Upbit XRP/KRW": 2790000,
+          "Gate XRP/USDT": 560550,
+          "Kraken XRP/USD": 6700000,
+          "OKX XRP/USDT": 3000000
+        }
+      },
+      "interpretation": "Taker-flow net outflow and futures turnover materially above spot are consistent with a derivatives-heavy tape; the venue depth figures are snapshots, not executable guaranteed liquidity.",
+      "limitations": [
+        "Aggregator methodology and venue universe are provider-defined.",
+        "Depth rows do not have exact per-row timestamps.",
+        "No order-book raw payload or trade tape bytes captured."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "coinglass-xrp-live-summary-2026-11-17",
+      "publisher": "CoinGlass",
+      "source_url": "https://www.coinglass.com/currencies/XRP/spot",
+      "independence_group": "coinglass-xrp-market-data",
+      "publisher_time_utc": null,
+      "retrieved_at_utc": "2026-11-17T06:01:54Z",
+      "metrics": {
+        "displayed_price_usd": 0.9624,
+        "displayed_24h_change_pct": 1.24,
+        "range_24h_usd": [
+          0.9415,
+          0.9767
+        ],
+        "spot_volume_24h_usd": 508770000,
+        "futures_volume_24h_usd": 2280000000,
+        "open_interest_usd": 1990000000,
+        "open_interest_to_market_cap_pct": 3.26,
+        "funding_rate_pct_per_8h": -0.0042,
+        "liquidations_24h_usd": 3060000,
+        "long_side_liquidation_share_pct": 58,
+        "etf_flow_usd_2026_11_16": 0,
+        "fear_greed_index": 13
+      },
+      "interpretation": "Live page values are an asynchronous snapshot; the ETF $0 value is not an issuer-complete zero-flow observation.",
+      "limitations": [
+        "Exact page event timestamp not exposed.",
+        "Provider's open-interest universe is not reconciled to other aggregators.",
+        "ETF reporting completeness is uncertain."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "liqwall-xrp-derivatives-2026-11-17T0542Z",
+      "publisher": "Liqwall",
+      "source_url": "https://liqwall.com/coins/xrp",
+      "independence_group": "liqwall-xrp-derivatives",
+      "publisher_time_utc": "2026-11-17T05:42:00Z",
+      "metrics": {
+        "displayed_price_usd": 0.9654,
+        "liquidations_24h_usd": 3100000,
+        "long_liquidations_usd": 1900000,
+        "short_liquidations_usd": 1200000,
+        "funding_average_pct_per_8h": -0.0051,
+        "binance_funding_pct_per_8h": -0.0069,
+        "open_interest_usd": 965000000,
+        "open_interest_change_24h_pct": -3.3,
+        "binance_accounts_long_pct": 73.3
+      },
+      "interpretation": "Funding is negative and liquidations were long-heavy, but Liqwall's aggregate OI is roughly half CoinGlass's displayed OI; do not average or infer identical contract coverage.",
+      "limitations": [
+        "Provider coverage/methodology differs from CoinGlass and Binance-only snapshots.",
+        "No raw exchange-level payloads captured."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "basis-binance-xrpusdt-perpetual-book-2026-11-17T0227Z",
+      "publisher": "Basis Charts",
+      "source_url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "independence_group": "basis-binance-perpetual-orderbook",
+      "publisher_time_utc": "2026-11-17T02:27:00Z",
+      "metrics": {
+        "instrument": "Binance XRPUSDT perpetual",
+        "mid_price_usd": 0.9545,
+        "spread_bps": 1.05,
+        "total_bids_usd": 35400000,
+        "total_offers_usd": 33300000,
+        "bid_share_within_1pct": 54,
+        "depth_within_0_5pct_usd": {
+          "bids": 8100000,
+          "offers": 5300000
+        },
+        "depth_within_1pct_usd": {
+          "bids": 12200000,
+          "offers": 10500000
+        },
+        "depth_within_2pct_usd": {
+          "bids": 20600000,
+          "offers": 16600000
+        }
+      },
+      "interpretation": "Near-book was slightly bid-heavy at the capture; displayed resting size can be cancelled and this is a single perpetual venue, not consolidated spot depth.",
+      "limitations": [
+        "15-minute browser-recorded window; not a durable historical book.",
+        "Perpetual contract, not spot.",
+        "No raw order-book payload captured."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "coinfuty-cross-exchange-orderbook-stale-session-2026-11-17",
+      "publisher": "Coinfuty",
+      "source_url": "https://www.coinfuty.com/orderbook/xrp",
+      "independence_group": "coinfuty-xrp-orderbook",
+      "publisher_time_utc": null,
+      "metrics": {
+        "displayed_depth_within_1pct_usd": {
+          "bids": 52880000,
+          "asks": 44790000
+        },
+        "displayed_depth_within_2pct_usd": {
+          "bids": 76180000,
+          "asks": 68870000
+        },
+        "live_exchange_feeds": "0/5"
+      },
+      "interpretation": "Retain as a stale/incomplete comparison only; no live venue feeds were connected at capture and no event timestamp was available.",
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "xrp-insights-exchange-wallet-balances-2026-11-16T0800Z",
+      "publisher": "XRP Insights",
+      "source_url": "https://xrp-insights.com/exchange-balances",
+      "independence_group": "xrp-insights-xrpl-wallet-attribution",
+      "publisher_time_utc": "2026-11-16T08:00:00Z",
+      "metrics": {
+        "xrp_balance_tracked": 22240000000,
+        "wallet_count": 707,
+        "exchange_count": 24,
+        "share_of_circulating_supply_pct": 32.3,
+        "same_wallet_change_7d_xrp": -126300000,
+        "same_wallet_change_30d_xrp": -344300000,
+        "exchange_balances_7d_xrp": {
+          "Upbit": 22900000,
+          "Coinbase": 36600000,
+          "Binance": -129000000,
+          "Bithumb": -25000000,
+          "Kraken": -21700000,
+          "SBI VC Trade": -567000
+        }
+      },
+      "interpretation": "This is a same-wallet balance comparison, not a complete transfer-flow ledger or proof of selling. It includes cold storage and provider-labeled non-customer reserves such as Coinbase cbXRP/Base and Binance-Peg XRP/BNB Chain.",
+      "limitations": [
+        "Wallet attribution depends on public XRPSCAN labels.",
+        "Cold storage included; balances are not order-book supply.",
+        "Newly labeled wallets excluded from same-wallet change."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "xrp-insights-etf-flows-2026-11-13-settled-2026-11-16-provisional",
+      "publisher": "XRP Insights",
+      "source_url": "https://xrp-insights.com/data",
+      "independence_group": "xrp-insights-issuer-holdings-aggregation",
+      "publisher_time_utc": null,
+      "metrics": {
+        "settled_period": "2026-11-09 through 2026-11-13",
+        "net_flow_xrp": -6078606,
+        "estimated_net_flow_usd": -6600000,
+        "holdings_xrp_2026_11_13": 1189102081,
+        "average_cost_basis_usd": 1.71,
+        "xrp_reference_price_usd_2026_11_13": 0.95,
+        "nov16_row_status": "provisional; not re-settled"
+      },
+      "interpretation": "Issuer-reported holdings deltas imply a modest settled weekly outflow. The Nov 16 $0 ETF dashboard figure is incomplete/provisional, not a verified no-flow result.",
+      "limitations": [
+        "Aggregated issuer files; not independent from the underlying issuer sources.",
+        "Fund universe and exclusion rules differ from SoSoValue and other dashboards."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "xrpl-ripple-escrow-snapshot-2026-11-17T0452Z",
+      "publisher": "XRP Insights / rippled public ledger",
+      "source_url": "https://xrp-insights.com/xrp-radar/escrow",
+      "independence_group": "xrpl-ledger-ripple-escrow-objects",
+      "publisher_time_utc": "2026-11-17T04:52:00Z",
+      "metrics": {
+        "ledger_index": 108382065,
+        "ripple_owned_escrow_xrp": 31100000000,
+        "next_unlock_utc": "2026-12-01T00:00:00Z",
+        "next_unlock_xrp": 1000000000,
+        "re_escrowed_share_last_12_releases_pct": 70,
+        "approximate_net_release_per_month_xrp": 300000000,
+        "november_2026_release_xrp": 1000000000,
+        "november_2026_re_escrowed_xrp": 700000000
+      },
+      "interpretation": "Unlock schedule is a contract event, not a sale. Historical re-escrow behavior is descriptive and not a guarantee of the next cycle.",
+      "limitations": [
+        "Public wallet ownership attribution and ledger object scope must remain explicit.",
+        "No raw JSON-RPC payload captured in this run."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "sbi-vc-trade-rlusd-japan-2026-06-24",
+      "publisher": "SBI Holdings / SBI VC Trade and Ripple",
+      "source_url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "independence_group": "sbi-vc-trade-ripple-joint-announcement",
+      "publisher_time_utc": "2026-06-24T00:00:00Z",
+      "time_precision": "date-only; UTC midnight is a normalized date placeholder, not a claimed publication time",
+      "metrics": {
+        "distributor": "SBI VC Trade Co., Ltd.",
+        "parent": "SBI Holdings, Inc.",
+        "product": "RLUSD",
+        "product_available_from": "2026-06-24 after maintenance",
+        "supported_vctrade_chain": "Ethereum only",
+        "xrpl_deposits_withdrawals_supported": false,
+        "existing_usd_stablecoin": "USDC supported since March 2025",
+        "relationship_history": "SBI Group and Ripple say they have collaborated since 2016"
+      },
+      "interpretation": "Japan RLUSD availability is a real subsidiary-level distribution relationship, but VCTRADE's stated Ethereum-only chain support means it is not evidence of XRPL RLUSD liquidity or XRP bridge demand.",
+      "limitations": [
+        "Official joint announcement; does not disclose RLUSD transaction volume or customer balances.",
+        "Do not attribute the subsidiary's activity to all SBI entities."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "ripple-coinbase-rlusd-distribution-2026-10-28",
+      "publisher": "Ripple and Coinbase",
+      "source_url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "independence_group": "ripple-coinbase-joint-announcement",
+      "publisher_time_utc": "2026-10-28T00:00:00Z",
+      "time_precision": "date-only; UTC midnight is a normalized date placeholder",
+      "metrics": {
+        "availability": "live on Coinbase Prime, Coinbase Exchange and retail app in supported regions",
+        "transfer_networks": [
+          "XRPL",
+          "Base",
+          "Ethereum"
+        ],
+        "conversion": "1:1 from USD and supported USD stablecoins",
+        "ripple_base_liquidity": "Ripple says it will provide liquidity on Base",
+        "global_exchange_collateral": "announced as future availability; no launch date in source"
+      },
+      "interpretation": "Distribution and transfer access are live, but the collateral feature was not part of the initial launch. RLUSD listing does not establish XRP purchases or guaranteed XRP price impact.",
+      "limitations": [
+        "Company announcement; no venue-level RLUSD volumes or collateral balances disclosed."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "ripple-robinhood-multisolution-partnership-2026-10-27",
+      "publisher": "Ripple",
+      "source_url": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/",
+      "independence_group": "ripple-robinhood-announcement",
+      "publisher_time_utc": "2026-10-27T00:00:00Z",
+      "time_precision": "date-only; UTC midnight is a normalized date placeholder",
+      "metrics": {
+        "rlusd_live_on": [
+          "Robinhood Chain",
+          "Bitstamp by Robinhood"
+        ],
+        "robinhood_app": "expected later in 2026; announcement does not establish live retail-app availability",
+        "xrpl_role": "Robinhood to use RLUSD on XRPL for institutional settlement",
+        "ripple_treasury": "Robinhood plans integration for cash/liquidity management, forecasting, payments, risk and intercompany netting",
+        "ripple_prime": "lending/margin financing across roughly 20 digital assets; later Bitstamp perpetual futures planned"
+      },
+      "interpretation": "This is a deeper operational integration than a token listing, but the source does not quantify XRP use, XRP purchases, RLUSD settlement volume or current production throughput.",
+      "limitations": [
+        "Announcement language distinguishes live products from expected/planned features.",
+        "No on-chain transaction cohort or volume receipt captured."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "bny-ripple-digital-asset-custody-2026-10-27",
+      "publisher": "BNY and Ripple",
+      "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "independence_group": "bny-ripple-joint-announcement",
+      "publisher_time_utc": "2026-10-27T00:00:00Z",
+      "time_precision": "date-only; UTC midnight is a normalized date placeholder",
+      "metrics": {
+        "bny_role": "primary reserve custodian for RLUSD; custody relationship with Ripple Prime",
+        "supported_assets": "BNY now supports XRP and RLUSD on Digital Asset Custody platform",
+        "future_rlusd_mint_redeem": "intended; subject to final BNY and regulatory approvals",
+        "xrpl_tokenized_assets": "intended future support",
+        "trade_finance": "exploratory Ripple/BNY/C2FO supply-chain-finance initiative",
+        "rlusd_market_cap_company_reported_usd": 2500000000
+      },
+      "interpretation": "Custody capability is live according to the joint announcement; future mint/redeem and tokenized trade-finance plans are conditional. Custody does not prove BNY owns XRP for its own balance sheet or that client flows have occurred.",
+      "limitations": [
+        "Company announcement; no custody balances, client counts or throughput disclosed."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "c2fo-ripple-xrpl-instant-pay-initiative-2026-10-27",
+      "publisher": "C2FO and Ripple",
+      "source_url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "independence_group": "c2fo-ripple-joint-announcement",
+      "publisher_time_utc": "2026-10-27T00:00:00Z",
+      "time_precision": "date-only; UTC midnight is a normalized date placeholder",
+      "metrics": {
+        "initiative": "C2FO Instant Pay financing and settlement activity to use XRPL and RLUSD",
+        "funding": "participating capital providers fund early payment; settlement on XRPL",
+        "status": "announced initiative; waitlist offered; no deployed volume disclosed",
+        "historical_c2fo_early_pay_working_capital_usd": 520000000000
+      },
+      "interpretation": "The $520B is C2FO's historical Early Pay program volume across existing programs, not XRP Ledger throughput, not RLUSD volume and not capital already committed to the new XRPL initiative.",
+      "limitations": [
+        "Announcement describes intended solution and waitlist, not measured live settlement."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "ripple-national-trust-bank-final-effective-2026-10-26",
+      "publisher": "OCC Corporate Applications Search and Ripple",
+      "source_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "related_source_urls": [
+        "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf",
+        "https://ripple.com/ripple-press/press-releases/"
+      ],
+      "independence_group": "occ-ripple-national-trust-bank-charter",
+      "publisher_time_utc": "2026-10-26",
+      "metrics": {
+        "proposed_bank": "Ripple National Trust Bank",
+        "proposed_charter_number": 25364,
+        "OCC_application": "2025-Charter-342347",
+        "preliminary_conditional_approval": "2025-12-12",
+        "consummated_effective_date": "2026-10-26",
+        "charter_type": "national trust bank under holding company",
+        "intended_activities_in_preliminary_approval": [
+          "RLUSD reserve management",
+          "collateral trustee services",
+          "institutional digital-asset custody"
+        ]
+      },
+      "interpretation": "The OCC application is marked consummated/effective Oct 26. This is a national trust-bank charter, not evidence of a full-service insured deposit bank or FDIC insurance for RLUSD.",
+      "limitations": [
+        "The preliminary approval letter describes proposed activities; final ongoing operating scope and conditions should be checked against final approval documents.",
+        "No RLUSD reserve assets or bank balance-sheet flows are inferred."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "occ-genius-act-final-rule-2026-10-21",
+      "publisher": "Office of the Comptroller of the Currency",
+      "source_url": "https://occ.gov/news-issuances/bulletins/2026/bulletin-2026-50.html",
+      "independence_group": "occ-official-rulemaking",
+      "publisher_time_utc": "2026-10-21",
+      "metrics": {
+        "final_rule_effective_date": "2027-01-18",
+        "scope": "payment stablecoin issuance and related activities under OCC jurisdiction",
+        "separate_rulemaking": "BSA/AML and OFAC sanctions compliance"
+      },
+      "interpretation": "Material stablecoin regulatory framework context, not an XRP-specific catalyst or proof that a particular issuer has completed all licensing steps.",
+      "limitations": [
+        "Final rule is one component of GENIUS Act implementation; other agencies and separate AML/sanctions rulemaking remain relevant."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "circle-coinbase-commercial-and-equity-relationship-q3-2026",
+      "publisher": "Circle and Coinbase SEC filings",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "related_source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+        "https://www.sec.gov/Archives/edgar/data/1876042/000119312525178989/d839239ds1.htm"
+      ],
+      "independence_group": "circle-coinbase-sec-filings",
+      "publisher_time_utc": "2026-11",
+      "metrics": {
+        "circle_distribution_costs_paid_to_coinbase_q3_2026_usd": 331300000,
+        "circle_distribution_costs_paid_to_coinbase_9m_2026_usd": 986600000,
+        "coinbase_10q": "renewed its Circle arrangement on the same terms and reports its investment in Circle remains on the books at 2026-09-30",
+        "circle_2025_s1": "Circle acquired Coinbase's remaining 50% of Centre for approximately $209.9M in Circle shares and Coinbase received a minority equity stake in Circle",
+        "current_coinbase_circle_equity_percentage": "not disclosed in the reviewed filings"
+      },
+      "interpretation": "Coinbase's RLUSD listing is additive to, not proof of replacement for, the ongoing Circle/USDC commercial relationship. Equity and distribution are separate relationship edges.",
+      "limitations": [
+        "The filings do not disclose Coinbase's current Circle ownership percentage.",
+        "Distribution cost is not equal to Coinbase profit or total USDC reserve income."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    },
+    {
+      "id": "stablecoin-supply-contraction-broad-liquidity-context-2026-11",
+      "publisher": "Glassnode / DefiLlama as cited by The Block and secondary data reports",
+      "source_url": "https://www.theblock.co/news/ecosystems/2026-11-11-stablecoin-supply-drops-14-2-billion-largest-contraction-since-2022-bear-market-437907",
+      "related_source_urls": [
+        "https://stablecoininsider.org/stablecoin-supply-drop/",
+        "https://www.coindaro.com/stablecoin-supply-drop-usdc-usdt-defillama/"
+      ],
+      "independence_group": "glassnode-defillama-stablecoin-supply",
+      "publisher_time_utc": "2026-11-09",
+      "metrics": {
+        "glassnode_30d_contraction_usd": 14200000000,
+        "defillama_secondary_30d_estimates_usd": [
+          14500000000,
+          15600000000
+        ],
+        "note": "Different provider universes, revision dates and methodologies."
+      },
+      "interpretation": "Broad stablecoin-liquidity contraction may be relevant to risk-asset conditions but is not evidence of XRP-specific outflows or causation.",
+      "limitations": [
+        "Secondary reports and provider series differ.",
+        "Do not average the different estimates or treat the metric as a direct XRP feature."
+      ],
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256": null,
+      "feature_eligible": false
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "xrp-spot-demand-remains-weak",
+      "hypothesis": "Taker net outflows, weekly spot outflows, futures/spot volume near 4.4x and a recent ETF outflow are consistent with a spot-demand weakness scenario.",
+      "counter_hypothesis": "Tracked exchange balances declined on a same-wallet basis; Binance perpetual near-book showed a modest bid skew; negative funding may support a short-covering rebound.",
+      "disconfirming_evidence": [
+        "Sustained positive net taker flow across multiple spot venues.",
+        "Rising spot volume and depth with lower futures/spot ratio.",
+        "Issuer-complete ETF inflows and stable exchange-wallet coverage."
+      ],
+      "probability": "NOT_ASSIGNED"
+    },
+    {
+      "id": "xrp-derivatives-positioning-is-fragile",
+      "hypothesis": "Negative funding and long-heavy liquidations suggest positioning stress and potential liquidation sensitivity.",
+      "counter_hypothesis": "CoinGlass and Liqwall OI aggregates disagree by about 2x; CoinGlass shows slightly higher OI while Liqwall shows falling OI; provider universes are not reconciled.",
+      "disconfirming_evidence": [
+        "Synchronized exchange-level OI, funding and liquidation payloads with reconciled contract coverage."
+      ],
+      "probability": "NOT_ASSIGNED"
+    },
+    {
+      "id": "institutional-rail-expansion-without-proven-xrp-demand",
+      "hypothesis": "Ripple's BNY, Coinbase, Robinhood, C2FO and SBI relationships expand distribution, custody, treasury and RLUSD settlement infrastructure.",
+      "counter_hypothesis": "Several capabilities are future/planned; SBI VCTRADE supports RLUSD only on Ethereum; Coinbase collateral support was announced as future; C2FO has a waitlist; no XRPL or XRP volume is disclosed.",
+      "disconfirming_evidence": [
+        "Audited or independently verified XRPL settlement volume, native XRP bridge use, collateral balances and counterparty-level flows."
+      ],
+      "probability": "NOT_ASSIGNED"
+    }
+  ],
+  "status": "RESEARCH_ONLY_NO_DIRECTIONAL_FORECAST",
+  "notes": [
+    "CoinGlass, Liqwall, Basis and XRP Insights are not a common synchronized feed; do not average their prices, OI or depth.",
+    "The 22.24B exchange balance figure includes cold storage and public label attribution; it is not liquid sell-side depth.",
+    "SBI VC Trade's RLUSD listing is Ethereum-only, not XRPL.",
+    "Coinbase Global Exchange RLUSD collateral support was announced as future, not live at launch.",
+    "The $520B C2FO Early Pay figure is historical program working capital, not XRPL volume or committed capital.",
+    "Ripple's reported $16T product transaction enablement is company-wide product volume, not XRP Ledger settlement volume.",
+    "No raw publisher response bytes were archived in this run."
+  ]
+}

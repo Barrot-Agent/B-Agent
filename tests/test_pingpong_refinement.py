@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import io
 import json
+import os
 import sys
 import unittest
 import urllib.error
@@ -19,11 +20,12 @@ sys.path.insert(0, str(REPO_ROOT))
 from barrot_agent.refinement import (          # noqa: E402
     DEFAULT_MAX_ROUNDS,
     HeuristicRefiner,
-    OpenCodeRefiner,
+    LunaRouteRefiner,
     PingPongRefiner,
     Refiner,
     RefinementOutput,
     refine_data,
+    make_model_refiners,
     scoring,
 )
 
@@ -130,7 +132,7 @@ class TestEngine(unittest.TestCase):
         a = _ScriptedRefiner("A", ["REFINED"] * 8, ["REFINE"] * 8)
         b = _ScriptedRefiner("B", ["REFINED"] * 8, ["REFINE"] * 8)
         report = PingPongRefiner([a, b], ledger=None, max_rounds=2,
-                                 patience=3).run({"x": 1})
+                                 patience=3, data_classification="derived_summary").run({"x": 1})
         halves = [(h.actor, h.role) for h in report.history]
         self.assertEqual(halves, [("A", "refine"), ("B", "critique"),
                                   ("B", "refine"), ("A", "critique")])
@@ -140,7 +142,7 @@ class TestEngine(unittest.TestCase):
     def test_converges_at_fixed_point(self):
         a = _ScriptedRefiner("A", ["REFINED", "CONVERGED"], ["CONVERGED"])
         b = _ScriptedRefiner("B", ["CONVERGED"], ["CONVERGED"])
-        report = PingPongRefiner([a, b], ledger=None).run({"x": "  y  "})
+        report = PingPongRefiner([a, b], ledger=None, data_classification="derived_summary").run({"x": "  y  "})
         self.assertTrue(report.converged)
         self.assertEqual(report.stop_reason, "model_consensus")
 
@@ -158,7 +160,7 @@ class TestEngine(unittest.TestCase):
         a = ImproveOnce("A", [], [])
         b = _ScriptedRefiner("B", ["REFINED", "REFINED", "REFINED"],
                              ["REFINE", "REFINE", "CONVERGED"])
-        report = PingPongRefiner([a, b], ledger=None, max_rounds=6).run(data)
+        report = PingPongRefiner([a, b], ledger=None, max_rounds=6, data_classification="derived_summary").run(data)
         self.assertEqual(report.data, {"k": "v double"})   # improved exactly once
         # the flat follow-up pings trip the objective plateau backstop
         self.assertTrue(report.converged)
@@ -176,7 +178,7 @@ class TestEngine(unittest.TestCase):
 
         a = Churn("A", [], [])
         b = Churn("B", [], [])
-        report = PingPongRefiner([a, b], ledger=None, max_rounds=12).run({"x": 1})
+        report = PingPongRefiner([a, b], ledger=None, max_rounds=12, data_classification="derived_summary").run({"x": 1})
         self.assertTrue(report.converged)
         self.assertEqual(report.stop_reason, "score_plateau")
         self.assertLess(report.rounds, 12)     # stopped long before the cap
@@ -197,7 +199,7 @@ class TestEngine(unittest.TestCase):
 
         a = FillOne("A", [], [])
         b = _ScriptedRefiner("B", ["REFINE"] * 99, ["REFINE"] * 99)
-        report = PingPongRefiner([a, b], ledger=None, max_rounds=4).run(
+        report = PingPongRefiner([a, b], ledger=None, max_rounds=4, data_classification="derived_summary").run(
             {"a": "", "b": "", "c": "", "d": ""})
         self.assertFalse(report.converged)
         self.assertEqual(report.stop_reason, "max_rounds")
@@ -212,7 +214,7 @@ class TestEngine(unittest.TestCase):
 
         a = Broken("A", [], [])
         b = Broken("B", [], [])
-        report = PingPongRefiner([a, b], ledger=None).run({"x": 1})
+        report = PingPongRefiner([a, b], ledger=None, data_classification="derived_summary").run({"x": 1})
         self.assertFalse(report.converged)
         self.assertEqual(report.stop_reason, "pool_exhausted")
         failed = [h for h in report.history if h.verdict == "FAILED"]
@@ -227,7 +229,7 @@ class TestEngine(unittest.TestCase):
         dead = Dead("dead", [], [])
         alive = _ScriptedRefiner("alive", ["REFINED", "CONVERGED"],
                                  ["CONVERGED"])
-        report = PingPongRefiner([dead, alive], ledger=None).run({"x": "  y "})
+        report = PingPongRefiner([dead, alive], ledger=None, data_classification="derived_summary").run({"x": "  y "})
         self.assertTrue(report.converged)
         self.assertIn("alive", report.models_used)
         # the dead model's FAILED round is ledgered, then the pool rotated
@@ -240,7 +242,7 @@ class TestEngine(unittest.TestCase):
             led = Path(td) / "log.jsonl"
             a = _ScriptedRefiner("A", ["REFINED", "CONVERGED"], ["CONVERGED"])
             b = _ScriptedRefiner("B", ["CONVERGED"], ["CONVERGED"])
-            PingPongRefiner([a, b], ledger=led).run({"x": "  y  "})
+            PingPongRefiner([a, b], ledger=led, data_classification="derived_summary").run({"x": "  y  "})
             lines = led.read_text().strip().splitlines()
             self.assertTrue(lines)
             rows = [json.loads(line) for line in lines]
@@ -257,20 +259,59 @@ class TestBaselineAPI(unittest.TestCase):
     def test_refine_data_dict_fixed_point(self):
         report = refine_data(DIRTY,
                              refiners=[HeuristicRefiner(), HeuristicRefiner("heuristic2")],
-                             ledger=None)
+                             ledger=None, data_classification="derived_summary")
         self.assertTrue(report.converged)
         self.assertGreaterEqual(report.score_end, report.score_start)
         # converged data re-refines to identical output (true fixed point)
         again = refine_data(report.data,
                             refiners=[HeuristicRefiner(), HeuristicRefiner("h2")],
-                            ledger=None)
+                            ledger=None, data_classification="derived_summary")
         self.assertEqual(again.data, report.data)
 
     def test_refine_data_string_and_list(self):
-        r1 = refine_data("  spaced   out  ", refiners=[HeuristicRefiner()], ledger=None)
+        r1 = refine_data("  spaced   out  ", refiners=[HeuristicRefiner()], ledger=None, data_classification="derived_summary")
         self.assertEqual(r1.data, "spaced out")
-        r2 = refine_data(["a", "a", "b", "", ""], refiners=[HeuristicRefiner()], ledger=None)
+        r2 = refine_data(["a", "a", "b", "", ""], refiners=[HeuristicRefiner()], ledger=None, data_classification="derived_summary")
         self.assertEqual(r2.data, ["a", "b"])
+
+    def test_default_refinement_is_offline_even_when_lunaroute_key_exists(self):
+        with mock.patch.dict(os.environ, {"LUNAROUTE_API_KEY": "test-key", "BARROT_ALLOW_EXTERNAL_REFINEMENT": "1"}), \
+             mock.patch("urllib.request.urlopen", side_effect=AssertionError("network must stay closed")):
+            report = refine_data(DIRTY, data_classification="derived_summary", ledger=None)
+        self.assertTrue(report.converged)
+
+    def test_unknown_and_immutable_data_classes_are_rejected(self):
+        for classification in ("unknown", "raw_source", "source_receipt", "feature_snapshot",
+                               "feature_store", "event_timeline", "forecast_ledger",
+                               "market_data", "credentials", "secrets", "user_private"):
+            with self.subTest(classification=classification):
+                with self.assertRaises(ValueError):
+                    refine_data({"value": "x"}, data_classification=classification, ledger=None)
+
+    def test_external_refinement_requires_explicit_caller_opt_in(self):
+        refiner = LunaRouteRefiner("glm-5.3-flash", api_key="test-key",
+                                   allow_external=True, data_classification="public_derived_summary")
+        with mock.patch.dict(os.environ, {"BARROT_ALLOW_EXTERNAL_REFINEMENT": "1"}):
+            with self.assertRaises(PermissionError):
+                refine_data({"value": "public"}, refiners=[refiner],
+                            data_classification="public_derived_summary", ledger=None)
+
+    def test_external_refinement_requires_environment_gate(self):
+        refiner = LunaRouteRefiner("glm-5.3-flash", api_key="test-key",
+                                   allow_external=True, data_classification="public_derived_summary")
+        with mock.patch.dict(os.environ, {"BARROT_ALLOW_EXTERNAL_REFINEMENT": "0"}):
+            with self.assertRaises(PermissionError):
+                refine_data({"value": "public"}, refiners=[refiner],
+                            data_classification="public_derived_summary",
+                            allow_external=True, ledger=None)
+
+    def test_model_refiner_factory_is_disabled_by_default(self):
+        with mock.patch.dict(os.environ, {"LUNAROUTE_API_KEY": "test-key", "BARROT_ALLOW_EXTERNAL_REFINEMENT": "1"}):
+            self.assertEqual(make_model_refiners(), [])
+
+    def test_model_refiner_factory_requires_public_classification(self):
+        with mock.patch.dict(os.environ, {"LUNAROUTE_API_KEY": "test-key", "BARROT_ALLOW_EXTERNAL_REFINEMENT": "1"}):
+            self.assertEqual(make_model_refiners(allow_external=True, data_classification="derived_summary"), [])
 
     def test_file_roundtrip(self):
         import tempfile
@@ -278,13 +319,23 @@ class TestBaselineAPI(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             p = Path(td) / "doc.json"
             p.write_text(json.dumps({"a": "x  x", "dup": [1, 1, 2]}))
-            report = refine_json_file(p, refiners=[HeuristicRefiner()], ledger=None)
+            report = refine_json_file(p, refiners=[HeuristicRefiner()], ledger=None, data_classification="derived_summary")
             self.assertTrue(report.converged)
             reloaded = json.loads(p.read_text())
             self.assertEqual(reloaded, {"a": "x x", "dup": [1, 2]})
 
 
-class TestOpenCodeAdapterShape(unittest.TestCase):
+class TestLunaRouteAdapterShape(unittest.TestCase):
+    def setUp(self):
+        # These adapter tests mock every HTTP request. Satisfy both explicit external
+        # refinement gates without enabling any real provider call.
+        self._external_gate = mock.patch.dict(os.environ, {
+            "BARROT_ALLOW_EXTERNAL_REFINEMENT": "1",
+            "BARROT_LIVE_REFINEMENT_APPROVED": "1",
+        })
+        self._external_gate.start()
+        self.addCleanup(self._external_gate.stop)
+
     def test_request_shape_and_parsing(self):
         captured = {}
 
@@ -308,20 +359,20 @@ class TestOpenCodeAdapterShape(unittest.TestCase):
             captured["body"] = json.loads(req.data.decode())
             return FakeResp(json.dumps(payload))
 
-        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="test-key-123")
+        r = LunaRouteRefiner("glm-5.3-flash", api_key="test-key-123", allow_external=True, data_classification="public_derived_summary")
         with mock.patch("urllib.request.urlopen", fake_urlopen):
             out = r.refine({"a": 1}, critique="fix the thing")
         self.assertEqual(out.verdict, "REFINED")
         self.assertEqual(out.data, {"a": 1})
         self.assertIn("/chat/completions", captured["url"])
-        self.assertEqual(captured["body"]["model"], "deepseek-v4.1-flash-free")
+        self.assertEqual(captured["body"]["model"], "glm-5.3-flash")
         # the key must go to the API, never into the URL
         auth = captured["headers"].get("Authorization", "")
         self.assertTrue(auth.startswith("Bearer "))
         self.assertNotIn("test-key-123", captured["url"])
 
     def test_no_key_means_unavailable(self):
-        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="")
+        r = LunaRouteRefiner("glm-5.3-flash", api_key="")
         self.assertFalse(r.available)
 
     def test_garbage_output_is_failed_not_fatal(self):
@@ -337,7 +388,7 @@ class TestOpenCodeAdapterShape(unittest.TestCase):
         def fake_urlopen(req, timeout=0):
             return FakeResp(json.dumps(payload))
 
-        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="k")
+        r = LunaRouteRefiner("glm-5.3-flash", api_key="k", allow_external=True, data_classification="public_derived_summary")
         with mock.patch("urllib.request.urlopen", fake_urlopen):
             out = r.refine({"a": 1}, critique=None)
         self.assertEqual(out.verdict, "FAILED")
@@ -365,7 +416,7 @@ class TestOpenCodeAdapterShape(unittest.TestCase):
                     "reasoning_content": ""},
                 "finish_reason": "stop"}]}))
 
-        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="k")
+        r = LunaRouteRefiner("deepseek-4.1-flash", api_key="k", allow_external=True, data_classification="public_derived_summary")
         with mock.patch("urllib.request.urlopen", truncated_then_ok):
             out = r.refine({"a": 1}, critique=None)
         self.assertEqual(out.verdict, "REFINED")
@@ -373,9 +424,23 @@ class TestOpenCodeAdapterShape(unittest.TestCase):
         self.assertEqual(len(calls), 2)
         self.assertGreater(calls[1], calls[0])     # doubled budget on retry
 
+    def test_secret_like_payload_is_blocked_before_network(self):
+        r = LunaRouteRefiner("glm-5.3-flash", api_key="test-key",
+                             allow_external=True, data_classification="public_derived_summary")
+        out = r.refine({"token": "ghp_" + "a" * 32}, critique=None)
+        self.assertEqual(out.verdict, "FAILED")
+        self.assertIn("secret-like", out.notes)
+
+    def test_oversized_payload_is_rejected_without_truncation(self):
+        r = LunaRouteRefiner("glm-5.3-flash", api_key="test-key",
+                             allow_external=True, data_classification="public_derived_summary")
+        out = r.refine({"text": "x" * 25_000}, critique=None)
+        self.assertEqual(out.verdict, "FAILED")
+        self.assertIn("without truncation", out.notes)
+
     def test_extract_json_handles_fences(self):
         text = 'Sure!\n```json\n{"data": [1], "verdict": "REFINED", "notes": "n"}\n```'
-        self.assertEqual(OpenCodeRefiner._extract_json(text)["data"], [1])
+        self.assertEqual(LunaRouteRefiner._extract_json(text)["data"], [1])
 
     def test_transient_errors_retried_with_backoff(self):
         attempts = {"n": 0}
@@ -398,7 +463,7 @@ class TestOpenCodeAdapterShape(unittest.TestCase):
                                              "slow down", {}, None)
             return FakeResp(json.dumps(payload))
 
-        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="k")
+        r = LunaRouteRefiner("deepseek-4.1-flash", api_key="k", allow_external=True, data_classification="public_derived_summary")
         with mock.patch("urllib.request.urlopen", flaky_urlopen), \
                 mock.patch("barrot_agent.refinement.refiners.time.sleep") as sleeper:
             out = r.refine({"a": 1}, critique=None)
@@ -412,7 +477,7 @@ class TestOpenCodeAdapterShape(unittest.TestCase):
             raise urllib.error.HTTPError(req.full_url, 403,
                                          "forbidden", {}, None)
 
-        r = OpenCodeRefiner("deepseek-v4.1-flash-free", api_key="k")
+        r = LunaRouteRefiner("deepseek-4.1-flash", api_key="k", allow_external=True, data_classification="public_derived_summary")
         with mock.patch("urllib.request.urlopen", forbidden_urlopen), \
                 mock.patch("barrot_agent.refinement.refiners.time.sleep") as sleeper:
             out = r.refine({"a": 1}, critique=None)

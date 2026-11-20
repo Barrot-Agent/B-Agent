@@ -1,0 +1,83 @@
+{
+  "artifact_type": "barrot.xrp.evernorth_actual_capital_reconciliation",
+  "schema_version": "1.0.0",
+  "run_id": "run206-capital-supplement",
+  "captured_at_utc": "2026-11-17T04:24:00Z",
+  "entity": "Evernorth Holdings Inc. (XRPN)",
+  "primary_source_group": "Evernorth SEC issuer filings",
+  "findings": {
+    "q3_10q": {
+      "filing_date": "2026-11-13",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm",
+      "total_warrants_assumed_at_2026_10_09_closing": 11739645,
+      "strike_usd": 11.5,
+      "cash_exercises_from_2026_10_12_through_2026_11_09": 3073366,
+      "issuer_reported_gross_exercise_proceeds_usd": 35300000,
+      "warrants_remaining_after_exercises": 8666279,
+      "arithmetic_exercised_gross_at_strike_usd": 35343709,
+      "arithmetic_remaining_theoretical_gross_if_all_exercise_for_cash_usd": 99662208.5,
+      "limitation": "10-Q does not disaggregate exercised/remaining counts by public versus sponsor warrant class; no post-November-9 exercise count was verified"
+    },
+    "public_warrant_prospectus": {
+      "filing_date": "2026-11-13",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm",
+      "original_public_warrant_share_ceiling": 11499992,
+      "strike_usd": 11.5,
+      "original_public_warrant_theoretical_gross_ceiling_usd": 132249908,
+      "issuer_proceeds_rule": "company receives proceeds only when public warrants are exercised; not from resale of shares under the prospectus",
+      "interpretation": "the 11,499,992 figure is the public-warrant registration ceiling, not the current remaining total after the 10-Q reports 3,073,366 exercises"
+    },
+    "sponsor_warrant_prospectus": {
+      "filing_date": "2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+      "sponsor_warrants": 239653,
+      "strike_usd": 11.5,
+      "sponsor_warrant_theoretical_gross_ceiling_usd": 2756009.5,
+      "issuer_proceeds_rule": "no proceeds from selling securityholders' resale; proceeds only if sponsor warrants are exercised for cash",
+      "interpretation": "public-warrant count plus sponsor-warrant count equals 11,739,645 total warrants assumed at closing"
+    },
+    "equity_line": {
+      "facility": "Cantor ELOC",
+      "share_capacity": 5218935,
+      "purchase_price_formula": "97% of applicable VWAP",
+      "commitment_fee_usd": 500000,
+      "actual_draws_verified": false,
+      "interpretation": "share capacity and commitment fee are not capital raised; no ELOC proceeds are counted without a disclosed draw"
+    },
+    "other_capital_categories_preserved": {
+      "closing_gross_cash_usd": 272600000,
+      "cash_private_placement_usd": 224600000,
+      "spac_trust_cash_released_usd": 48000000,
+      "xrp_contributed_in_kind": 388910000,
+      "convertible_note_principal_usd": 30000000,
+      "convertible_note_net_cash_proceeds_usd": 29000000,
+      "actual_warrant_exercise_proceeds_gross_usd": 35300000,
+      "sbi_circle_equity_investment_usd": 50000000,
+      "sbi_circle_investment_is_xrp_purchase": false
+    }
+  },
+  "interpretation": {
+    "actual_cash_from_warrant_exercises_usd": 35300000,
+    "remaining_warrant_theoretical_gross_usd": 99662208.5,
+    "original_public_warrant_registration_ceiling_usd": 132249908,
+    "do_not_call_capacity_or_theoretical_exercise_proceeds": "actual capital raised",
+    "do_not_add_in_kind_xrp_to_cash": true,
+    "do_not_add_sbi_circle_equity_investment_to_xrp_purchase": true
+  },
+  "exact_phrase_research": {
+    "phrase": "actual capital",
+    "result": "no separate token/company/issuer identity established; secondary coverage uses the phrase generically for financing and warrant capacity",
+    "controlling_evidence": "SEC issuer filings distinguish actual cash proceeds, non-cash XRP contributions, debt, exercised warrants, remaining warrants and ELOC capacity"
+  },
+  "source_independence": {
+    "group_count": 1,
+    "reason": "all three controlling warrant documents are primary Evernorth SEC issuer filings; they are distinct filings but not independent publishers"
+  },
+  "disconfirming_evidence_and_limits": [
+    "The 10-Q's 8,666,279 remaining warrants are a total across classes; the filing does not disclose the remaining public/sponsor split.",
+    "The $99.662M remaining theoretical amount assumes every remaining warrant is exercised for cash at $11.50.",
+    "No exercise proceeds after 2026-11-09 were verified.",
+    "The $132.250M original public-warrant ceiling must not be represented as current remaining proceeds.",
+    "The ELOC capacity and SBI investment in Circle are separate from XRP cash purchases."
+  ]
+}

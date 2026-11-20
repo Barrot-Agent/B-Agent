@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "artifact_type": "single_venue_market_snapshot",
+  "retrieved_on_utc_date": "2026-11-03",
+  "retrieval_time_precision": "date_only; API response did not expose a server timestamp",
+  "source": {
+    "venue": "Kraken",
+    "endpoint": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "market": "XRP/USD",
+    "source_type": "public_exchange_ticker_api",
+    "independence_note": "Single-venue observation; not a consolidated market price."
+  },
+  "raw_response": {
+    "pair_key": "XXRPZUSD",
+    "ask": [
+      "1.27722000",
+      "6008",
+      "6008.000"
+    ],
+    "bid": [
+      "1.27721000",
+      "185",
+      "185.000"
+    ],
+    "last_trade": [
+      "1.27742000",
+      "39.00000000"
+    ],
+    "volume_today_and_24h": [
+      "17011547.02280577",
+      "21724411.85967479"
+    ],
+    "vwap_today_and_24h": [
+      "1.26863348",
+      "1.26301793"
+    ],
+    "trades_today_and_24h": [
+      17267,
+      24290
+    ],
+    "low_today_and_24h": [
+      "1.24333000",
+      "1.23364000"
+    ],
+    "high_today_and_24h": [
+      "1.28923000",
+      "1.28923000"
+    ],
+    "daily_open": "1.24803000"
+  },
+  "normalized": {
+    "bid_usd": 1.27721,
+    "ask_usd": 1.27722,
+    "last_trade_usd": 1.27742,
+    "spread_usd": 0.00001,
+    "mid_quote_usd": 1.277215,
+    "spread_basis_points": 0.078295,
+    "volume_xrp_today": 17011547.02280577,
+    "volume_xrp_24h": 21724411.85967479,
+    "vwap_usd_today": 1.26863348,
+    "vwap_usd_24h": 1.26301793,
+    "trades_today": 17267,
+    "trades_24h": 24290,
+    "low_usd_today": 1.24333,
+    "low_usd_24h": 1.23364,
+    "high_usd_today": 1.28923,
+    "high_usd_24h": 1.28923,
+    "daily_open_usd": 1.24803,
+    "last_vs_daily_open_pct": 2.3549
+  },
+  "limitations": [
+    "No exchange server timestamp or exact retrieval timestamp was exposed in the response.",
+    "Top-of-book quote and last trade are not a full order-book depth snapshot.",
+    "The daily open is not labelled as a rolling 24-hour open; do not use it as a 24-hour return denominator.",
+    "No other venue was synchronized to this retrieval; do not treat this as a market-wide price.",
+    "This is descriptive market data, not a forecast or trade signal."
+  ],
+  "status": {
+    "raw_capture": "EXECUTED",
+    "json_validation": "VERIFIED",
+    "cross_venue_confirmation": "NOT_EXECUTED",
+    "forecast": "NOT_ISSUED"
+  }
+}

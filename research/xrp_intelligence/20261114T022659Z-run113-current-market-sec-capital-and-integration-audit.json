@@ -1,0 +1,448 @@
+{
+  "schema_version": "barrot.xrp.research_run.v1",
+  "run_id": "run113",
+  "captured_at_utc": "2026-11-14T02:33:52.368Z",
+  "research_cutoff_utc": "2026-11-14T02:33:52.368Z",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "forecast": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED"
+  },
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_sha": "ac848ae271cb180a8afdc9bd87485c2087402088",
+    "ahead_by": 2333,
+    "behind_by": 0,
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2403,
+    "tree_truncated": false,
+    "open_prs": {
+      "total": 375,
+      "drafts": 361,
+      "non_drafts": 14
+    },
+    "pr1662": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "head_sha": "ac848ae271cb180a8afdc9bd87485c2087402088",
+      "commits": 2333,
+      "changed_files": 1162,
+      "additions": 337666,
+      "deletions": 5354,
+      "workflow_files": 50,
+      "public_web_files": 7,
+      "reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    }
+  },
+  "verification": {
+    "exact_head_full_suite": {
+      "run_id": 43546245023,
+      "head_sha": "ac848ae271cb180a8afdc9bd87485c2087402088",
+      "conclusion": "success",
+      "passed": 3626,
+      "subtests": 8,
+      "failed": 0,
+      "inclusive_coverage_percent": 62.34,
+      "duration_seconds": 63.21,
+      "core_passed": 739,
+      "core_coverage_percent": 76,
+      "wheel_build": "passed",
+      "installed_primary_mission": "passed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43546245023"
+    },
+    "dependency_audit": {
+      "run_id": 43546244927,
+      "head_sha": "ac848ae271cb180a8afdc9bd87485c2087402088",
+      "conclusion": "success",
+      "manifest_groups": 5,
+      "known_vulnerabilities_reported": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43546244927"
+    },
+    "fail_closed_gate": {
+      "run_id": 43546244922,
+      "head_sha": "ac848ae271cb180a8afdc9bd87485c2087402088",
+      "conclusion": "success",
+      "merge_enabled": false,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43546244922"
+    },
+    "main_latest_cross_analysis": {
+      "run_id": 43543067246,
+      "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "conclusion": "success"
+    },
+    "main_latest_pillars_consistency": {
+      "run_id": 43430139937,
+      "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "conclusion": "failure",
+      "reasons": [
+        "missing GitHub App identifiers",
+        "Databricks HTTP 403",
+        "Hugging Face BUILD_ERROR"
+      ]
+    }
+  },
+  "market": {
+    "spot": {
+      "okx": {
+        "pair": "XRP-USDT",
+        "last": 1.0056,
+        "bid": 1.0056,
+        "ask": 1.0057,
+        "open_24h": 1.0324,
+        "high_24h": 1.0438,
+        "low_24h": 0.9974,
+        "volume_24h_xrp": 46950000,
+        "event_timestamp_utc": "2026-11-14T01:58:43.467Z",
+        "age_seconds_at_capture": 1695.883,
+        "model_eligible": false
+      },
+      "kraken": {
+        "pair": "XRP/USD",
+        "last": 0.99323,
+        "bid": 0.99268,
+        "ask": 0.993,
+        "provider_event_timestamp": null,
+        "model_eligible": false
+      },
+      "cross_venue_last_price_difference_percent": 1.245,
+      "interpretation": "Asynchronous observations; not an executable spread.",
+      "spot_l2": "No synchronized raw multi-venue spot L2 admitted."
+    },
+    "derivatives": {
+      "liqwall": {
+        "open_interest_usd": 1120000000,
+        "funding_per_8h_percent": -0.0025
+      },
+      "tradradar": {
+        "open_interest_usd": 1530000000,
+        "funding_per_8h_percent": 0.0009
+      },
+      "alpha_finance": {
+        "open_interest_usd": 2270000000,
+        "scope": "different contract/venue aggregation"
+      },
+      "aggregation": "Do not average."
+    },
+    "etf_flows": {
+      "xrp_insights_nov9_12_net_holdings_change_xrp": -9481905,
+      "nov13": "PROVISIONAL",
+      "alpha_xrp_nov12_usd": 0,
+      "alpha_all_crypto_nov13_usd": -9300000,
+      "alpha_all_crypto_assets_reported": 4,
+      "alpha_all_crypto_assets_total": 5,
+      "cryptokeyhole_nov12_partial_xrp": -3322,
+      "cryptokeyhole_missing_issuer_file": true,
+      "interpretation": "Different fund universes and holdings-change methods; not verified cash subscriptions."
+    },
+    "exchange_balances": {
+      "tracked_xrp": 22260000000,
+      "wallets": 707,
+      "exchanges": 24,
+      "same_wallet_change_7d_xrp": -77300000,
+      "same_wallet_change_30d_xrp": -279700000,
+      "includes_cold_and_omnibus": true,
+      "not_tradable_float": true
+    },
+    "cftc": {
+      "report_date": "2026-11-03",
+      "contracts": 7216,
+      "contract_multiplier_xrp": 50000,
+      "contract_equivalent_xrp": 360800000,
+      "noncommercial_net_long_contracts": 1465,
+      "open_interest_weekly_change_contracts": -845,
+      "longs_weekly_change": -281,
+      "shorts_weekly_change": -466
+    }
+  },
+  "institutional": {
+    "evernorth": {
+      "filing_accession": "000162828026073871",
+      "filed_at_utc": "2026-11-13T21:29:00Z",
+      "period_end": "2026-09-30",
+      "business_combination_close": "2026-10-09",
+      "post_close_8k_a": "pending",
+      "xrp_as_of_sep30_approx": 346284000,
+      "impairment_expense_usd": 271037170,
+      "carrying_value_usd": 341887231,
+      "unrestricted_cash_usd": 91397,
+      "refundable_advances_settled_in_equity_usd": 524259563,
+      "q3_net_income_usd": 155264700,
+      "q3_non_cash_fair_value_gain_usd": 162834432,
+      "nine_month_net_loss_usd": 32870033,
+      "warrant_exercise_gross_cash_usd": 35300000,
+      "warrants_exercised": 3073366,
+      "warrants_remaining": 8666279,
+      "pik_note_principal_usd": 30000000,
+      "pik_note_net_after_fee_usd": 29000000,
+      "eloc_max_shares": 5218935,
+      "eloc_proceeds_as_of_nov9_usd": 0,
+      "revenue_status": "No revenue generated; Q3 accounting income driven by non-cash fair-value gain.",
+      "onchain_attribution": {
+        "ledger_sequence": 108312420,
+        "ledger_timestamp_utc": "2026-11-13T22:41:00Z",
+        "attributed_xrp_in_13_custody_linked_wallets": 103129905,
+        "xrp_moved_outside_attributed_wallet_set": 370346525,
+        "last_observed_movement_utc": "2026-10-22",
+        "sale_or_disposition_inferred": false
+      }
+    },
+    "rlusd": {
+      "supply_defillama": {
+        "as_of": "2026-11-14",
+        "total_usd": 2781000000,
+        "ethereum_usd": 2001000000,
+        "xrpl_usd": 764090000,
+        "base_usd": 16110000,
+        "ethereum_share_percent": 71.99,
+        "xrpl_share_percent": 27.47,
+        "base_share_percent": 0.58,
+        "ethereum_change_30d_percent": 47.62,
+        "xrpl_change_30d_percent": -27.9
+      },
+      "secondary_snapshot_disagreement": {
+        "provider": "Coinpedia/KuCoin",
+        "as_of_date": "2026-11-13",
+        "ethereum_usd": 1855000000,
+        "xrpl_usd": 818570000,
+        "interpretation": "Different snapshot time/provider methodology; do not average."
+      },
+      "october_gross_transfer_volume": {
+        "xrpl_usd": 20056000000,
+        "ethereum_usd": 15449000000
+      },
+      "bitquery_payment_quality": {
+        "period": "2026-09-19 through 2026-10-18",
+        "xrpl_payment_count": 7820000,
+        "dust_cluster_share_percent": 99.6,
+        "dust_cluster_wallets": 110,
+        "collector_wallets": 3,
+        "dust_cluster_rlusd_total": 7722,
+        "payments_at_least_1_rlusd": 14600,
+        "payments_at_least_1_rlusd_usd": 7330000000,
+        "top_10_sender_share_percent": 82,
+        "issuer_mints_usd": 728000000,
+        "issuer_redemptions_usd": 744000000,
+        "largest_round_trip_usd": 424000000,
+        "dust_cluster_xrp_fees": 495
+      }
+    }
+  },
+  "identity_research": {
+    "sbic": "SBIC East/Central/West are regional SME investment companies, distinct from SBI Holdings; no commercial OpenAI partnership verified.",
+    "ask_coin": "No canonical XRPL issuer/deployment verified; Permission Coin (ASK) is a separate Base/Polygon candidate.",
+    "actual_capital": "Separate cash, in-kind XRP, cash-funded purchases, debt, warrant proceeds, conditional ELOC and secondary resales.",
+    "kamilah_stevenson": "Person identity established; first-party YouTube channel ownership not verified; own-channel inventory zero."
+  },
+  "prediction_engine": {
+    "implemented": [
+      "48 scheduled public-source definitions",
+      "main-only read-only ingestion workflow",
+      "SHA-256 receipts and local cross-run chain",
+      "SQLite point-in-time feature store",
+      "event/source registry",
+      "four deterministic baselines",
+      "chronological walk-forward with purge/embargo",
+      "temporal calibration and PSI",
+      "paired temporal/source-clustered bootstrap",
+      "fail-closed v6 ledger with Ed25519 attestation"
+    ],
+    "gaps": [
+      "No trained XRP candidate.",
+      "walk_forward bootstrap defaults 1000/30/95% vs v6 10000/100/99.375% individual.",
+      "Candidate-versus-each-of-four-baselines OOS and shadow comparisons not integrated.",
+      "Source-cluster feasibility not demonstrated; multi-publisher outcomes remain unclustered.",
+      "Circular row-index blocks do not enforce cadence or elapsed-time gaps.",
+      "No independent shadow cohort.",
+      "No WORM/trusted timestamp anchor; GitHub artifacts/cache are bounded.",
+      "Ingestion workflow has not executed on main."
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED"
+  },
+  "nine_platforms": {
+    "ChatGPT": {
+      "status": "VERIFIED_CURRENT_SESSION_GITHUB_CONNECTOR",
+      "permissions": "admin/maintain/push/pull/triage; overprivileged",
+      "main_write": false,
+      "external_transfer": false
+    },
+    "Claude": {
+      "status": "UNVERIFIED"
+    },
+    "Grok": {
+      "status": "UNVERIFIED"
+    },
+    "Gemini": {
+      "status": "UNVERIFIED"
+    },
+    "Copilot": {
+      "status": "ONE_OFF_REVIEW_ARTIFACTS_ONLY",
+      "formal_approval": false
+    },
+    "Codex": {
+      "status": "UNVERIFIED"
+    },
+    "Hugging Face": {
+      "status": "PRIOR_BUILD_ERROR",
+      "deployment": false
+    },
+    "Kaggle": {
+      "status": "NOT_TESTED",
+      "submission": false
+    },
+    "Databricks": {
+      "status": "HTTP_403",
+      "write": false
+    },
+    "LunaRoute": {
+      "status": "SEPARATE_INTERNAL_PROVIDER_ENDPOINT_AUTH_UNVERIFIED"
+    }
+  },
+  "workflow_security": {
+    "changed_workflow_files": 50,
+    "reviewed": 50,
+    "quarantined_or_disabled": 26,
+    "active_changed_workflows": 24,
+    "manual_dispatch_additions": 29,
+    "external_actions_executed": false,
+    "xrp_ingestion": {
+      "main_only": true,
+      "read_only": true,
+      "secrets_read": false,
+      "raw_and_chain_retention_days": 90,
+      "per_run_feature_store_retention_days": 7,
+      "daily_archive_retention_days": 90,
+      "storage": "GitHub artifacts/cache, not WORM"
+    },
+    "high_risk_gates": "A2A deployment/secret rotation and Databricks/Kaggle actions require separate explicit inputs and exact main SHA; Groq workflows require public/authorized-input confirmation; none dispatched."
+  },
+  "pr_backlog": {
+    "#1662": "BLOCKED: draft, zero approvals/reviews/threads; incomplete semantic review and security/publication gates.",
+    "#1661": "SUPERSESSION_CANDIDATE 1072/1072 paths overlap.",
+    "#1660": "SUPERSESSION_CANDIDATE 972/972 paths overlap.",
+    "#1643": "SUPERSESSION_CANDIDATE 670/670 paths overlap.",
+    "#1642": "SUPERSESSION_CANDIDATE 7/7 paths overlap.",
+    "#1640": "SUPERSESSION_CANDIDATE 280/280 paths overlap; one source-only commit's action-specific approvals are present in integration.",
+    "unique_preserve": [
+      1653,
+      1655,
+      1659,
+      1615,
+      1614,
+      1320,
+      1318,
+      1317,
+      1269
+    ],
+    "dependency_candidates_blocked": [
+      1650,
+      1649,
+      1648,
+      1647,
+      1646,
+      1645,
+      1644,
+      1255,
+      1254
+    ],
+    "source_prs_closed": []
+  },
+  "source_provenance": [
+    {
+      "publisher": "OKX public REST API",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_type": "primary_exchange_api",
+      "captured_at_utc": "2026-11-14T02:33:52.368Z",
+      "event_timestamp_utc": "2026-11-14T01:58:43.467Z",
+      "raw_bytes_captured": false,
+      "content_hash": null,
+      "model_eligible": false
+    },
+    {
+      "publisher": "Kraken public REST API",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_type": "primary_exchange_api",
+      "captured_at_utc": "2026-11-14T02:33:52.368Z",
+      "event_timestamp_utc": null,
+      "raw_bytes_captured": false,
+      "content_hash": null,
+      "model_eligible": false
+    },
+    {
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/data",
+      "source_type": "secondary_issuer_holdings_aggregator",
+      "captured_at_utc": "2026-11-14T02:33:52.368Z",
+      "raw_bytes_captured": false,
+      "content_hash": null,
+      "model_eligible": false
+    },
+    {
+      "publisher": "DefiLlama",
+      "url": "https://defillama.com/stablecoin/ripple-usd",
+      "source_type": "secondary_onchain_supply_aggregator",
+      "captured_at_utc": "2026-11-14T02:33:52.368Z",
+      "raw_bytes_captured": false,
+      "content_hash": null,
+      "model_eligible": false
+    },
+    {
+      "publisher": "Bitquery",
+      "url": "https://www.bitquery.io/investigations/rlusd-xrpl-dust-bots",
+      "source_type": "onchain_analytics",
+      "captured_at_utc": "2026-11-14T02:33:52.368Z",
+      "raw_bytes_captured": false,
+      "content_hash": null,
+      "model_eligible": false
+    },
+    {
+      "publisher": "StockTitan SEC filing mirror",
+      "url": "https://www.stocktitan.net/sec-filings/XRPN/10-q-evernorth-holdings-inc-quarterly-earnings-report-4b148b6f9f02.html",
+      "source_type": "SEC_10Q_filing_mirror",
+      "captured_at_utc": "2026-11-14T02:33:52.368Z",
+      "filing_accession": "000162828026073871",
+      "raw_bytes_captured": false,
+      "content_hash": null,
+      "model_eligible": false
+    },
+    {
+      "publisher": "SEC EDGAR filing index",
+      "url": "https://www.sec.gov/edgar/browse/?CIK=2092592&owner=exclude",
+      "source_type": "primary_regulatory_index",
+      "captured_at_utc": "2026-11-14T02:33:52.368Z",
+      "raw_bytes_captured": false,
+      "content_hash": null,
+      "model_eligible": false
+    }
+  ],
+  "limitations": [
+    "No byte-exact raw publisher receipts were captured for this web research; no observation is model-eligible.",
+    "No fresh synchronized spot/L2 data.",
+    "ETF vendors overlap and differ in universe/settlement; no averaging.",
+    "Evernorth 10-Q is pre-combination at Sep30; post-close 8-K/A remains pending.",
+    "RLUSD gross transfer volume and transaction count do not establish organic adoption or XRP demand."
+  ],
+  "next_actions": [
+    "Finish 1,162-file semantic review and 50-workflow/seven-public-file review.",
+    "Resolve least privilege, branch protection, integration protection and Pages authorization.",
+    "Integrate policy-matched pairwise bootstrap and cadence-aware resampling.",
+    "Collect synchronized historical market data and independently anchored immutable receipts.",
+    "Train XRP candidate only after data supports it; keep forecasts disabled until OOS and shadow admission."
+  ],
+  "no_merge": true,
+  "no_external_model_dispatch": true,
+  "no_external_data_transfer": true,
+  "no_deployment": true,
+  "no_secret_rotation": true,
+  "no_paper_trade": true,
+  "no_real_money_action": true,
+  "no_main_write": true,
+  "no_force_push": true,
+  "no_source_pr_closure": true
+}

@@ -12,18 +12,36 @@ on:
           - YES
         default: NO
 
+      expected_main_sha:
+        description: "Exact 40-character current main SHA authorized for this external-model run."
+        required: true
+        default: ""
+
 permissions:
   contents: read
 
 jobs:
   research:
-    if: ${{ inputs.confirm_external_research == 'YES' }}
+    if: ${{ github.ref == 'refs/heads/main' && inputs.confirm_external_research == 'YES' && inputs.expected_main_sha != '' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          ref: ${{ inputs.expected_main_sha }}
           persist-credentials: false
-      - uses: actions/setup-python@v7
+      - name: Verify main dispatch and exact approved revision
+        shell: bash
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -euo pipefail
+          [[ "$GITHUB_REF" == "refs/heads/main" ]] || { echo "::error::External-model workflows must be dispatched from main"; exit 1; }
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::A full 40-character main SHA is required"; exit 1; }
+          current_main="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          checked_out="$(git rev-parse HEAD)"
+          [[ "$current_main" == "$EXPECTED_MAIN_SHA" && "$checked_out" == "$EXPECTED_MAIN_SHA" ]] || { echo "::error::main or checkout differs from the approved SHA"; exit 1; }
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: "3.11"
       - name: Generate research topics
@@ -31,7 +49,7 @@ jobs:
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       - name: Preserve topic log as an artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: barrot-research-topics-${{ github.run_number }}
           path: ping-pongings/knowledge-base/topics_log.jsonl

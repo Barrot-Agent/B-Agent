@@ -1,0 +1,462 @@
+{
+  "schema_version": "barrot.xrp.run-audit.v1",
+  "run_id": "Run176",
+  "captured_at_utc": "2026-11-15T22:32:23Z",
+  "mission": {
+    "id": "xrp_intelligence_prediction_engine",
+    "priority": 1,
+    "status": "active",
+    "foundation": "Barrot V3"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "verified_code_head": "9c69f1affad3f34aab9922c88cddc2be85735fb6",
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2511,
+    "main_paths_missing": 0,
+    "divergent_shared_blobs": 169,
+    "divergent_shared_directories": 36,
+    "executable_mode_differences": [
+      {
+        "path": "barrot_agent/analysis/xrp_telemetry_matrix.py",
+        "main_mode": "100755",
+        "integration_mode": "100644"
+      },
+      {
+        "path": "barrot_agent/ingestion/council_ingest_node.py",
+        "main_mode": "100755",
+        "integration_mode": "100644"
+      },
+      {
+        "path": "barrot_agent/orchestration/orchestrator_bridge.py",
+        "main_mode": "100755",
+        "integration_mode": "100644"
+      }
+    ],
+    "successor_only_entries": 1118,
+    "successor_only_blobs": 1107,
+    "successor_only_directories": 11
+  },
+  "pull_request": {
+    "previous_pr": 1662,
+    "previous_pr_state": "closed_unmerged",
+    "previous_pr_closed_at_utc": "2026-11-15T20:55:02Z",
+    "active_pr": 1663,
+    "state": "open",
+    "draft": true,
+    "base": "main",
+    "base_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "head_sha": "9c69f1affad3f34aab9922c88cddc2be85735fb6",
+    "ahead_by": 12,
+    "behind_by": 0,
+    "mergeable": true,
+    "changed_files": 1276,
+    "additions": 410830,
+    "deletions": 6473,
+    "changed_workflows": 48,
+    "changed_test_or_fixture_paths": 393,
+    "xrp_related_paths": 975,
+    "formal_reviews": 0,
+    "approvals": 0,
+    "review_threads": 0,
+    "open_pr_inventory_total": 9,
+    "open_prs_targeting_main": [
+      1663
+    ],
+    "preserved_other_open_prs": [
+      1541,
+      1460,
+      1450,
+      1440,
+      1437,
+      1436,
+      1353,
+      1265
+    ]
+  },
+  "ci": {
+    "main": {
+      "run_id": 43767370808,
+      "head_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+      "conclusion": "success",
+      "passed": 848,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 8
+    },
+    "integration_push": {
+      "run_id": 43768474012,
+      "head_sha": "9c69f1affad3f34aab9922c88cddc2be85735fb6",
+      "conclusion": "success",
+      "full_suite_passed": 3820,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "inclusive_coverage_pct": 64.02,
+      "legacy_core_coverage_pct": 77,
+      "core_passed": 743,
+      "core_subtests": 8,
+      "wheel_build": "passed",
+      "installed_mission_verification": "passed"
+    },
+    "push_fail_closed": {
+      "run_id": 43768474015,
+      "head_sha": "9c69f1affad3f34aab9922c88cddc2be85735fb6",
+      "conclusion": "success"
+    },
+    "push_dependency_audit": {
+      "run_id": 43768474026,
+      "head_sha": "9c69f1affad3f34aab9922c88cddc2be85735fb6",
+      "conclusion": "success",
+      "manifest_count": 6,
+      "known_vulnerabilities": 0
+    },
+    "pr_ci": {
+      "run_id": 43768476667,
+      "head_sha": "9c69f1affad3f34aab9922c88cddc2be85735fb6",
+      "conclusion": "success",
+      "pages_build": "passed",
+      "core_tests": "skipped_by_integration_branch_condition",
+      "full_suite": "skipped_by_integration_branch_condition"
+    },
+    "pr_fail_closed": {
+      "run_id": 43768476665,
+      "head_sha": "9c69f1affad3f34aab9922c88cddc2be85735fb6",
+      "conclusion": "success"
+    },
+    "pr_dependency_audit": {
+      "run_id": 43768476648,
+      "head_sha": "9c69f1affad3f34aab9922c88cddc2be85735fb6",
+      "conclusion": "success"
+    }
+  },
+  "workflow_review": {
+    "changed_workflow_count": 48,
+    "all_workflow_diffs_enumerated": true,
+    "high_impact_workflows_content_inspected": 14,
+    "remaining_called_script_semantic_review": "incomplete",
+    "legacy_writers_quarantined": true,
+    "xrp_ingestion": {
+      "schedule": [
+        "3 * * * *",
+        "15 0 * * *"
+      ],
+      "main_ref_guarded": true,
+      "permissions": {
+        "actions": "read",
+        "contents": "read"
+      },
+      "artifact_retention_days": 90,
+      "worm": false,
+      "verified_main_runs": 0
+    },
+    "manual_external_operations": {
+      "databricks_import_requires_confirmation": true,
+      "kaggle_download_requires_confirmation": true,
+      "exact_main_sha": true,
+      "dispatched": false
+    },
+    "deployment_secret_rotation": {
+      "separate_confirmations": true,
+      "exact_main_sha": true,
+      "dispatched": false
+    },
+    "paper_trading": {
+      "manual_yes": true,
+      "exact_main_sha": true,
+      "position_product_identity_check": true,
+      "dispatched": false
+    },
+    "groq_workflows": {
+      "manual": true,
+      "explicit_yes": true,
+      "exact_main_sha": true,
+      "repository_permissions": "read_only",
+      "dispatched": false
+    },
+    "self_benchmark": "quarantined_pending_secret_free_network_and_filesystem_sandbox"
+  },
+  "market": {
+    "capture_time_utc": "2026-11-15T22:32:23Z",
+    "raw_payload_sha256": null,
+    "model_eligible": false,
+    "spot": [
+      {
+        "venue": "OKX",
+        "instrument": "XRP-USDT",
+        "provider_timestamp_utc": "2026-11-15T22:21:21.864Z",
+        "age_seconds": 661.136,
+        "last": 0.9679,
+        "bid": 0.9677,
+        "ask": 0.9678,
+        "bid_size_xrp": 106.404113,
+        "ask_size_xrp": 9345.405602,
+        "volume_24h_xrp": 64372178.604161,
+        "open_24h": 0.9104,
+        "high_24h": 0.9795,
+        "low_24h": 0.8929,
+        "utc_day_open": 0.9145,
+        "utc8_open": 0.9579,
+        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+      },
+      {
+        "venue": "Kraken",
+        "instrument": "XRPUSD",
+        "provider_timestamp_utc": null,
+        "last": 0.96926,
+        "bid": 0.9692,
+        "ask": 0.96921,
+        "bid_size_xrp": 114,
+        "ask_size_xrp": 1582,
+        "volume_24h_xrp": 47455521.11904544,
+        "open_24h": 0.91378,
+        "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+      },
+      {
+        "venue": "OKX",
+        "instrument": "USDT-USD",
+        "provider_timestamp_utc": "2026-11-15T22:00:28.065Z",
+        "age_seconds": 1914.935,
+        "last": 0.99959,
+        "bid": 0.99959,
+        "ask": 0.9996,
+        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD"
+      }
+    ],
+    "same_venue_quote_skew_seconds": 1253.799,
+    "usd_normalization": "rejected_60_second_gate",
+    "cross_venue_mid_difference_bps_approx": 15,
+    "arbitrage_conclusion": "not_admitted",
+    "full_depth_l2": "not_retrieved",
+    "bybit_spot": "HTTP_403",
+    "raw_receipts": false
+  },
+  "derivatives": [
+    {
+      "provider": "Liqwall",
+      "as_of_utc": "2026-11-15T20:12:00Z",
+      "spot_reference": 0.9617,
+      "open_interest_usd": 1010000000,
+      "open_interest_change_24h_pct": -4.5,
+      "funding_8h_pct": -0.0007,
+      "liquidations_24h_usd": 28400000,
+      "long_liquidations_usd": 24200000,
+      "short_liquidations_usd": 4200000,
+      "binance_accounts_long_pct": 72.7
+    },
+    {
+      "provider": "TradRadar",
+      "as_of_utc": "2026-11-15T16:00:00Z",
+      "spot_reference": 0.9548,
+      "open_interest_usd": 1330000000,
+      "open_interest_change_24h_pct": -6.53,
+      "funding_8h_pct": -0.0027,
+      "liquidations_24h_min_usd": 37510000,
+      "long_liquidations_usd": 33870000,
+      "short_liquidations_usd": 3650000,
+      "long_short_ratio": 3.14,
+      "long_accounts_pct": 75.9
+    }
+  ],
+  "etf_flows": [
+    {
+      "provider": "XRP Insights",
+      "period": "2026-11-06/2026-11-13",
+      "method": "issuer-reported XRP holdings change",
+      "fund_universe": "six US spot funds plus BITW",
+      "net_flow_xrp": -6100000,
+      "approx_usd": -6500000,
+      "holdings_xrp": 1190000000,
+      "assets_usd": 1220000000,
+      "nov13_daily_flow_xrp": 3400000,
+      "gxrp_flow_excluded": true,
+      "source_url": "https://xrp-insights.com/news/xrp-supply-report-2026-11-14"
+    },
+    {
+      "provider": "Alpha Finance",
+      "period": "week ending 2026-11-13",
+      "method": "five-fund SoSoValue-style flow series",
+      "net_flow_usd": -19100000,
+      "nov9_usd": -10400000,
+      "nov10_usd": -7600000,
+      "nov13_usd": -1100000,
+      "source_url": "https://alphafinance.io/etf/xrp/"
+    },
+    {
+      "provider": "CryptoKeyhole",
+      "period": "2026-11-13",
+      "method": "issuer-file XRP holdings changes",
+      "net_flow_xrp_partial": -9967,
+      "reporting_funds": 3,
+      "total_expected_funds": 4,
+      "nov12_complete_flow_xrp": 4337131,
+      "future_dated_file_anomaly": "2026-11-16 file shown as read 2026-11-14; quarantined",
+      "source_url": "https://cryptokeyhole.com/etf-flows/xrp/"
+    }
+  ],
+  "exchange_wallets": {
+    "provider": "XRP Insights",
+    "as_of_utc": "2026-11-14",
+    "attributed_total_xrp": 22260000000,
+    "stable_wallet_set_exchange_count": 23,
+    "same_wallet_change_xrp_7d": 25700000,
+    "binance_excluded_due_to_wallet_set_change": true,
+    "beneficial_ownership_known": false,
+    "tradable_float": false
+  },
+  "institutional": [
+    {
+      "relationship": "Ripple-Coinbase",
+      "date": "2026-10-28",
+      "status": "RLUSD available on Coinbase Prime, Exchange and Retail; XRPL/Base/Ethereum",
+      "collateral_status": "Coinbase Global Exchange collateral described as future follow-up",
+      "source_url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+    },
+    {
+      "relationship": "Ripple-BNY",
+      "date": "2026-10-27",
+      "status": "BNY custody supports XRP and RLUSD",
+      "trade_finance_status": "exploratory",
+      "source_url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+    }
+  ],
+  "identity_research": {
+    "sbic_east_central_west_distinct_from_sbi_holdings": true,
+    "sbic_chatgpt_training_not_openai_commercial_partnership": true,
+    "ask_coin_canonical_xrpl_issuer_verified": false,
+    "actual_capital_standardized_xrp_metric": false,
+    "kamilah_person_identity_verified": true,
+    "candidate_youtube_channel_first_party_crosslink_verified": false,
+    "official_video_attribution_count": 0
+  },
+  "prediction_engine": {
+    "event_registry_events": 85,
+    "independence_groups": 64,
+    "raw_source_hash_missing": 85,
+    "publisher_timestamp_missing": 43,
+    "status_counts": {
+      "verified": 42,
+      "provisional": 42,
+      "disputed": 1
+    },
+    "stance_counts": {
+      "supports": 31,
+      "contradicts": 10,
+      "context": 44
+    },
+    "latest_signal": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED",
+    "candidate_model_qualified": false,
+    "ingestion_on_main_verified": false,
+    "readiness_policy": "xrp_forecast_readiness_v6",
+    "forecast_issuance_enabled": false
+  },
+  "platform_map": {
+    "chatgpt_github": "authenticated_current_connector; overprivileged",
+    "claude": "unverified",
+    "grok": "unverified",
+    "gemini": "unverified",
+    "copilot": "one_off_review_activity_no_formal_approval",
+    "codex": "unverified",
+    "hugging_face": "previous_build_error_no_verified_deployment",
+    "kaggle": "untested",
+    "databricks": "previous_http_403_no_write",
+    "external_model_dispatch_this_run": false
+  },
+  "security": {
+    "branch_protection_read": "HTTP_403",
+    "visible_ruleset_id": 10863829,
+    "visible_ruleset_enforcement": "disabled",
+    "github_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "potential_credential_path": "prior Run175 finding: same 216-byte .config/gh/hosts.yml blob in eight open PR branch tips; content not read; absent main/successor; revocation unverified",
+    "no_secret_read_or_rotation": true
+  },
+  "decisions": {
+    "merge": "NO_MERGE",
+    "reason": [
+      "draft PR",
+      "zero independent reviews/approvals",
+      "zero review threads",
+      "semantic review incomplete",
+      "three file-mode differences",
+      "branch-protection details inaccessible",
+      "connector overprivileged"
+    ],
+    "forecast": "NOT_ISSUED",
+    "paper_trade": false,
+    "deployment": false,
+    "external_model_dispatch": false,
+    "main_write": false,
+    "source_pr_closures": []
+  },
+  "sources": [
+    {
+      "id": "okx_xrp_ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_type": "primary_exchange_api",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "kraken_xrp_ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_type": "primary_exchange_api",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "okx_usdt_usd_ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD",
+      "source_type": "primary_exchange_api",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "liqwall",
+      "url": "https://liqwall.com/coins/xrp",
+      "source_type": "secondary_derivatives_aggregator",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "tradradar",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_type": "secondary_derivatives_aggregator",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "xrp_insights",
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-11-14",
+      "source_type": "secondary_issuer_holdings_reconciliation",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "alpha_finance",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_type": "secondary_fund_flow_tracker_shared_sosovalue_lineage",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "cryptokeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_type": "secondary_issuer_file_tracker_partial",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "ripple_coinbase",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "source_type": "primary_corporate_announcement",
+      "raw_source_sha256": null
+    },
+    {
+      "id": "ripple_bny",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "source_type": "primary_corporate_announcement",
+      "raw_source_sha256": null
+    }
+  ]
+}

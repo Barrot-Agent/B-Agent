@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "artifact_id": "evernorth-capital-capacity-vs-realized-cash-20261107",
+  "research_date_utc": "2026-11-07",
+  "retrieval_time_precision": "date-only; web retrieval does not expose a reliable capture second",
+  "purpose": "Reconcile Evernorth actual debt proceeds, public-warrant exercise capacity, Cantor committed-equity facility, share-count changes and the exact phrase actual capital. Capital capacity is not treated as realized cash or XRP purchases.",
+  "integrity_scope": {
+    "raw_sec_document_bytes_retained": false,
+    "stored_excerpt_digest_algorithm": "SHA-256",
+    "stored_excerpt_digest_scope": "Digest of the exact normalized excerpt string embedded in this artifact; not a hash of original SEC document bytes.",
+    "source_headers_and_http_wire_bytes_retained": false
+  },
+  "primary_sources": [
+    {
+      "id": "sec_8k_business_combination_oct09",
+      "publisher": "SEC / Evernorth Holdings Inc.",
+      "form": "8-K",
+      "filing_date": "2026-10-09",
+      "accession": "0001193125-26-419146",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/",
+      "primary": true,
+      "key_facts": {
+        "class_a_shares_at_closing": 22268905,
+        "class_c_shares_at_closing": 32211992,
+        "pubco_warrants_outstanding_at_closing": 11739645
+      },
+      "excerpt_sha256": "efe2e9d5d5182264ef2d8ce3c4640765cb66cf958cff719ae2ee37081e1186d9"
+    },
+    {
+      "id": "sec_effect_public_warrant_registration_oct19",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "form": "EFFECT",
+      "filing_date": "2026-10-20",
+      "effectiveness_date": "2026-10-19",
+      "accession": "9999999995-26-003285",
+      "registration_number": "333-294417",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003285/9999999995-26-003285-index.html",
+      "primary": true,
+      "interpretation": "Registration statement effectiveness, not SEC endorsement of the securities."
+    },
+    {
+      "id": "sec_424b3_public_warrants_oct19",
+      "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+      "form": "424B3",
+      "filing_date": "2026-10-19",
+      "accession": "0001193125-26-425367",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/",
+      "primary": true,
+      "key_facts": {
+        "public_warrant_shares_registered": 11499992,
+        "exercise_price_usd_per_share": 11.5,
+        "maximum_gross_cash_if_all_exercised_for_cash_usd": 132249908,
+        "proceeds_condition": "Evernorth receives proceeds only to the extent warrants are exercised for cash.",
+        "stated_use_of_proceeds": "General corporate purposes; this filing does not specifically earmark warrant proceeds for XRP."
+      },
+      "excerpt_sha256": "edb722c8ff8142bcb6bb07ccee3e254082c75f7274ebfa3cf488b7feb3c2f0d3",
+      "limitations": [
+        "No assurance holders exercise any or all warrants",
+        "Cashless exercise or other warrant mechanics may produce different cash outcomes",
+        "$132.249908M is a maximum hypothetical gross amount, not cash received"
+      ]
+    },
+    {
+      "id": "sec_8k_cantor_equity_facility_oct23",
+      "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+      "form": "8-K",
+      "filing_date": "2026-10-23",
+      "accession": "0001628280-26-067061",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/",
+      "primary": true,
+      "key_facts": {
+        "counterparty": "CF Principal Investments LLC (Cantor)",
+        "maximum_new_shares": 5218935,
+        "purchase_price_formula": "97% of applicable VWAP",
+        "beneficial_ownership_cap_pct": 4.99,
+        "daily_volume_cap_pct": 20,
+        "upfront_commitment_fee_usd": 521893.5,
+        "facility_type": "Discretionary committed equity facility; not a funded loan or cash balance"
+      }
+    },
+    {
+      "id": "sec_effect_cantor_resale_registration_oct30",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "form": "EFFECT",
+      "filing_date": "2026-11-02",
+      "effectiveness_date": "2026-10-30",
+      "accession": "9999999995-26-003391",
+      "registration_number": "333-299620",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/9999999995-26-003391-index.html",
+      "primary": true,
+      "interpretation": "The resale registration became effective on Oct 30. This satisfies a registration prerequisite; other commencement conditions and Evernorth purchase notices still matter."
+    },
+    {
+      "id": "sec_424b3_cantor_facility_oct30",
+      "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+      "form": "424B3",
+      "filing_date": "2026-10-30",
+      "accession": "0001628280-26-068590",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "primary": true,
+      "key_facts": {
+        "class_a_shares_outstanding_as_of_oct22": 26094680,
+        "pubco_warrant_shares_issuable_as_of_oct22": 9283847,
+        "eloc_shares_available": 5218935,
+        "eloc_shares_as_pct_of_class_a_shares_pct": 16.7,
+        "purchase_price_formula": "97% of applicable VWAP",
+        "company_discretion": "Evernorth may elect to sell all, some or none of the available shares, subject to conditions.",
+        "stated_intended_use": "General corporate purposes including acquisition of XRP and other XRP-ecosystem activities, and working capital.",
+        "actual_draw_status": "No purchase notice, draw or settlement amount was verified in the reviewed filings through 2026-11-07.",
+        "upfront_commitment_fee_usd": 521893.5,
+        "fee_payment_status": "Payment not verified; prospectus states payment within five business days following the Upfront Determination Date."
+      },
+      "excerpt_digests": {
+        "share_count": "20091082effd5069183b6ef7d649fb5bef22e1b1837a14856dc5c80272f71faf",
+        "use_of_proceeds": "20accfafafaf8db0d40b12b459944c2e1cc1e66749162e38a39fe6903a08a902",
+        "purchase_price_formula": "7600be71c0fec8205f2b005fcc0909cb4ea07823744fffb54ed6a8370ad59784",
+        "illustrative_table_row": "22a2d009329177feb33e23abab89c10273733337db77730a2b4f5ec5a24c1642",
+        "illustrative_table_footnote": "6907fc5a27a3ee29d966ccb9ead1a7d189e371835d284847f2eb6594d7bf675b"
+      },
+      "material_disclosure_reconciliation": {
+        "cover_price_oct29_usd": 14.71,
+        "cover_stated_aggregate_gross_usd_approx": 76800000,
+        "summary_of_offering_stated_aggregate_gross_usd_approx": 80700000,
+        "table_footnote_purchase_price_discount_pct": 3,
+        "table_footnote_purchase_price_factor": 0.97,
+        "table_row_reported_gross_usd_approx": 76800000,
+        "calculated_gross_at_14_71_without_discount_usd": 76770533.85,
+        "calculated_gross_at_14_71_with_97pct_vwap_usd": 74467417.8345,
+        "difference_between_reported_76_8m_and_97pct_calculation_usd": 2332582.1655,
+        "stated_net_proceeds_usd_approx": 74400000,
+        "conclusion": "The cover and table row approximate 100% of $14.71, while the table footnote states a 97% purchase-price factor. The summary states approximately $80.7M, a different amount. The stated net proceeds of approximately $74.4M do not reconcile cleanly with the 97%-discounted gross amount and disclosed fees/expenses. Treat headline capacity figures as unreconciled illustrations, not expected or realized proceeds; issuer clarification is required."
+      },
+      "limitations": [
+        "The facility is discretionary and conditional; the company may sell none of the shares",
+        "The 97% VWAP formula makes realized proceeds price- and timing-dependent",
+        "Specific allocation among potential uses has not been determined",
+        "The $521,893.50 fee is an expense, not capital raised",
+        "No actual draw or XRP purchase was verified"
+      ]
+    },
+    {
+      "id": "sec_424b3_pik_note_proceeds_oct30",
+      "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+      "form": "424B3",
+      "filing_date": "2026-10-30",
+      "accession": "0001628280-26-068590",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "primary": true,
+      "key_facts": {
+        "principal_usd": 30000000,
+        "coupon_pct": 4,
+        "instrument": "Convertible Senior PIK Notes due 2031",
+        "issuance_and_payment_date": "2026-10-12",
+        "reported_net_proceeds_before_transaction_expenses_usd": 30000000,
+        "classification": "Actual debt proceeds; not equity and not the Cantor facility or public-warrant proceeds.",
+        "stated_intended_use": "General corporate purposes including acquisition of XRP and other activities within the XRP ecosystem.",
+        "transaction_level_xrp_allocation": "Not verified."
+      },
+      "excerpt_sha256": "e2d111cc874fcffa2d8f899f253e7f5e0c3b07ab3731644baace1b71d867f1d9"
+    }
+  ],
+  "exact_phrase_research": [
+    {
+      "phrase": "actual capital raised",
+      "source_id": "yahoo_reprint_coingape_evernorth_oct21",
+      "publisher": "Yahoo Finance reprint of CoinGape",
+      "publication_date": "2026-10-21",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/xrp-news-sec-approves-ripple-112335918.html",
+      "exact_excerpt": "Actual capital raised will depend on the number of warrants exercised.",
+      "excerpt_sha256": "f213c81ffd0092d22e27bb06f3c4c7dc02014c61a233bfac46775f0e37ba5a9b",
+      "source_class": "Secondary media",
+      "interpretation": "Generic commentary about contingent warrant exercise; not issuer language and not evidence that warrant proceeds were received."
+    },
+    {
+      "phrase": "actual capital",
+      "primary_source_search": "No exact phrase match found in the two 424B3 prospectuses examined; the filings use proceeds, gross proceeds, net proceeds and purchase price.",
+      "source_class": "Primary filing search",
+      "interpretation": "Do not attribute the phrase to Evernorth or SEC."
+    },
+    {
+      "phrase": "actual capital stack",
+      "source_id": "prior_research_archive_kucoin_community_post_20260917",
+      "source_class": "User-generated community commentary",
+      "prior_artifact": "research/xrp_intelligence/20261106T165214Z-xrp-kraken-okx-spot-cross-venue-update.json",
+      "interpretation": "Separate user-generated use of the phrase in discussion of the $30M PIK note; not issuer disclosure."
+    }
+  ],
+  "warrant_count_reconciliation": {
+    "closing_pubco_warrants_oct09": 11739645,
+    "public_warrant_shares_registered_oct19": 11499992,
+    "pubco_warrant_shares_issuable_oct22": 9283847,
+    "closing_to_oct22_difference": 2455798,
+    "illustrative_cash_if_difference_all_exercised_for_cash_usd": 28241677,
+    "class_a_shares_closing_oct09": 22268905,
+    "class_a_shares_oct22": 26094680,
+    "class_a_increase": 3825775,
+    "class_c_shares_closing_oct09": 32211992,
+    "class_c_shares_oct22": 31392746,
+    "class_c_decrease": 819246,
+    "status": "UNRECONCILED",
+    "interpretation": "The Oct 9 closing 8-K, Oct 19 public-warrant prospectus and Oct 30 prospectus report different warrant/share counts at different cutoffs. The 2,455,798 difference could reflect exercises, cancellation/reclassification or a filing/data issue. The reviewed filings do not explicitly reconcile the change or identify cash versus cashless exercises. The illustrative $28.24M is not actual proceeds and must not be booked as such."
+  },
+  "source_independence": {
+    "primary_sec_filings": "Primary issuer/regulatory records for separate dates and transaction types.",
+    "secondary_media": "Yahoo page is a CoinGape reprint; not independent confirmation of issuer cash receipts.",
+    "no_independent_draw_confirmation": true
+  },
+  "competing_hypotheses": [
+    {
+      "hypothesis": "The 2,455,798 reduction in reported Pubco Warrants reflects exercises between Oct 9 and Oct 22.",
+      "support": [
+        "The Oct 9 8-K reports 11,739,645 warrants outstanding; the Oct 30 prospectus reports 9,283,847 shares issuable upon warrant exercise as of Oct 22.",
+        "Class A shares increased between the two dates."
+      ],
+      "counterevidence": [
+        "No reviewed filing explicitly reports the 2,455,798 warrant reduction as exercises.",
+        "Cash versus cashless exercise treatment is not established.",
+        "Class A and Class C share counts also changed, and the total share movement is not fully reconciled."
+      ],
+      "status": "PLAUSIBLE_NOT_ESTABLISHED"
+    },
+    {
+      "hypothesis": "The warrant-count difference reflects a reporting-scope or filing-data inconsistency rather than realized exercises.",
+      "support": [
+        "The filings use different labels/cutoffs and do not provide a roll-forward reconciliation.",
+        "The Oct 30 prospectus contains multiple illustrative ELOC proceeds figures that do not cleanly reconcile with its 97% VWAP formula."
+      ],
+      "counterevidence": [
+        "The Oct 30 count is presented as shares issuable upon exercise as of Oct 22, suggesting a real change in the outstanding warrant population."
+      ],
+      "status": "PLAUSIBLE_NOT_ESTABLISHED"
+    },
+    {
+      "hypothesis": "The Cantor ELOC is a potential future XRP funding channel, not current XRP demand.",
+      "support": [
+        "The resale registration was effective Oct 30 and final prospectus filed Oct 30.",
+        "The prospectus says intended uses include XRP acquisition and XRP ecosystem activity."
+      ],
+      "counterevidence": [
+        "Evernorth may sell all, some or none of the available shares.",
+        "Other contractual commencement conditions and purchase notices apply.",
+        "No draw or XRP purchase was verified.",
+        "The prospectus says specific allocation has not been determined."
+      ],
+      "status": "POTENTIAL_CAPACITY_ONLY"
+    }
+  ],
+  "model_eligibility": {
+    "status": "NOT_ADMITTED",
+    "reasons": [
+      "Capital-capacity figures are not realized cash flows",
+      "No verified warrant exercise receipts or ELOC draw settlements",
+      "Warrant-count roll-forward unresolved",
+      "ELOC proceeds table arithmetic internally inconsistent",
+      "No transaction-level XRP purchase allocation verified"
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "direction": null,
+    "probabilities": null,
+    "horizon": null
+  },
+  "external_actions": {
+    "orders_sent": false,
+    "paper_trade_created": false,
+    "real_money_used": false
+  }
+}

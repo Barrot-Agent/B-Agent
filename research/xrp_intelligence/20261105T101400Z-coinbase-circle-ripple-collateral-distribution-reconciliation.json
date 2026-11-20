@@ -1,0 +1,313 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "artifact_id": "coinbase_circle_ripple_collateral_and_distribution_reconciliation_20261105",
+  "artifact_type": "institutional_capital_stablecoin_distribution_custody_and_collateral_reconciliation",
+  "recorded_on_date": "2026-11-05",
+  "research_run_started_at_utc": "2026-11-05T10:04:26Z",
+  "exact_source_retrieval_timestamps_exposed": false,
+  "model_eligible": false,
+  "forecast_issued": false,
+  "source_capture_policy": {
+    "raw_http_bytes_captured": false,
+    "raw_content_sha256": null,
+    "independent_timestamp_anchor": false,
+    "rendered_sources_are_not_raw_receipts": true,
+    "rule": "This artifact is institutional research only. Do not admit as a point-in-time feature until original filing/announcement bytes are captured, hashes and publication vintages are independently verified, and the source is mapped to a precise entity, account, asset and measurement period."
+  },
+  "source_registry": [
+    {
+      "id": "coinbase_2026q3_10q",
+      "publisher": "Coinbase Global, Inc. / U.S. SEC",
+      "source_type": "primary_regulatory_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "filing_date": "2026-10-29",
+      "reporting_period_end": "2026-09-30",
+      "retrieved_at_utc": null,
+      "retrieval_time_note": "Exact web retrieval timestamp was not separately exposed; this is a date-vintage record.",
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_filing",
+      "independence_group": "coinbase_issuer_sec_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "The filing contains no literal XRP mention in the retrieved text.",
+        "Other crypto asset categories aggregate assets without identifying every asset.",
+        "Period-end balance-sheet amounts, average USDC product balances and unrecognized customer collateral are different measurement populations."
+      ]
+    },
+    {
+      "id": "coinbase_2026q3_earnings_deck",
+      "publisher": "Coinbase Global, Inc. / U.S. SEC",
+      "source_type": "primary_issuer_earnings_exhibit",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/q326earningsdeck_vsec.htm",
+      "filing_date": "2026-10-29",
+      "reporting_period_end": "2026-09-30",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_exhibit",
+      "independence_group": "coinbase_issuer_sec_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "Management metrics are company-defined and should not be treated as independently measured market-wide flows.",
+        "The deck is from the same issuer as the 10-Q and is not an independent source."
+      ]
+    },
+    {
+      "id": "circle_2026q1_10q_coinbase_distribution_terms",
+      "publisher": "Circle Internet Group, Inc. / U.S. SEC",
+      "source_type": "primary_regulatory_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000150/crcl-20260331.htm",
+      "filing_date": "2026-05-06",
+      "reporting_period_end": "2026-03-31",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_filing",
+      "independence_group": "circle_issuer_sec_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "The filing describes the commercial formula, not the complete daily cash settlement ledger.",
+        "The agreement is a Circle-Coinbase commercial arrangement; it does not imply a Circle-Ripple partnership."
+      ]
+    },
+    {
+      "id": "circle_2026q2_10q_distribution_update",
+      "publisher": "Circle Internet Group, Inc. / U.S. SEC",
+      "source_type": "primary_regulatory_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "filing_date": "2026-08-05",
+      "reporting_period_end": "2026-06-30",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_filing",
+      "independence_group": "circle_issuer_sec_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "Reported distribution-cost changes do not provide a full daily Coinbase USDC balance series.",
+        "The Q2 comparison must not be combined with Q3 Coinbase metrics without period alignment."
+      ]
+    },
+    {
+      "id": "coinbase_rlusd_launch_20261028",
+      "publisher": "Coinbase",
+      "source_type": "primary_product_announcement",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "publication_date": "2026-10-28",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_first_party_blog",
+      "independence_group": "coinbase_product_announcement",
+      "model_eligible": false,
+      "limitations": [
+        "The announcement establishes product/network availability, not actual transaction volume or net issuance.",
+        "Coinbase Global Exchange collateral support is described as future availability, not live collateral acceptance at launch.",
+        "Ripple liquidity support is explicitly stated for Base; it is not a disclosed XRP purchase or XRPL bridge flow."
+      ]
+    },
+    {
+      "id": "coinbase_customer_asset_security_statement_20261104",
+      "publisher": "Coinbase",
+      "source_type": "primary_company_security_statement",
+      "url": "https://www.coinbase.com/blog/landing/company?country=US&currency=USD",
+      "publication_date": "2026-11-04",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_first_party_blog_excerpt",
+      "independence_group": "coinbase_company_security_statement",
+      "model_eligible": false,
+      "limitations": [
+        "The 99% cold-storage and 1:1 backing statements are company representations, not an independent proof-of-reserves attestation in this source.",
+        "The statement is not a guarantee against all operational, cyber or insolvency risks."
+      ]
+    },
+    {
+      "id": "circle_centre_acquisition_sec_s1a_20250418",
+      "publisher": "Circle Internet Group, Inc. / U.S. SEC",
+      "source_type": "primary_registration_statement",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000119312525084832/d737521ds1a.htm",
+      "publication_date": "2025-04-18",
+      "retrieved_at_utc": null,
+      "raw_content_sha256": null,
+      "raw_capture_status": "rendered_SEC_registration_statement",
+      "independence_group": "circle_issuer_sec_disclosure",
+      "model_eligible": false,
+      "limitations": [
+        "The filing documents the 2023 Centre acquisition consideration, not Coinbase's current share count.",
+        "The 8.4 million shares were the consideration at the transaction date; they must not be represented as Coinbase's current holdings."
+      ]
+    }
+  ],
+  "coinbase_circle_economics": {
+    "reporting_period": "Q3 2026",
+    "average_usdc_held_in_coinbase_products_usd": 22000000000,
+    "average_usdc_market_cap_usd": 73000000000,
+    "average_product_balance_share_pct": 30,
+    "coinbase_management_claim_share_of_usdc_economics_over_prior_year_pct": 50,
+    "coinbase_q3_stablecoin_revenue_usd": 306905000,
+    "coinbase_q3_stablecoin_revenue_prior_year_usd": 324534000,
+    "circle_agreement_status": "renewed_on_same_terms_as_prior_arrangement",
+    "circle_distribution_formula": {
+      "issuer_retention_applied_first": true,
+      "on_platform_allocation_basis": "USDC held on Coinbase platform after issuer retention",
+      "ecosystem_growth_allocation": "Coinbase receives half of remaining payment base after amounts paid to approved third-party ecosystem participants",
+      "accounting": "Circle accounts for the arrangement as an executory contract within distribution and transaction costs"
+    },
+    "circle_q2_2026_update": {
+      "stated_driver": "decrease in Coinbase share of total average USDC on-platform balances",
+      "year_over_year_coinbase_distribution_cost_change_usd": -7700000,
+      "comparison_period": "Three months ended June 30, 2026 versus three months ended June 30, 2025."
+    },
+    "interpretation": [
+      "Circle and Coinbase have a direct, material distribution/economic relationship tied to USDC platform balances and reserve economics.",
+      "Coinbase's 22B average USDC product balance is a company-defined quarterly average; it is not the same as period-end USDC assets-on-platform.",
+      "Coinbase's support for RLUSD does not terminate or replace its Circle agreement.",
+      "Coinbase's RLUSD listing creates a multi-issuer distribution platform relationship, not evidence of a Circle-Ripple partnership."
+    ],
+    "model_eligible": false
+  },
+  "coinbase_collateral_and_capital": {
+    "reporting_date": "2026-09-30",
+    "loan_receivables_usd": {
+      "fiat_and_payment_stablecoin": 1958539000,
+      "crypto_asset": 17598000,
+      "total": 1976137000
+    },
+    "loan_collateral_requirements_pct_of_loan_fair_value": {
+      "minimum": 100,
+      "maximum": 250
+    },
+    "recognized_lending_collateral_usd": {
+      "fiat_and_payment_stablecoins": 11740000,
+      "crypto_assets_total": 997557000,
+      "crypto_asset_components": {
+        "bitcoin": 920649000,
+        "ethereum": 67005000,
+        "other_crypto_assets": 9903000
+      },
+      "total_recognized_lending_collateral": 1009297000,
+      "other_asset_disclosure_rule": "No individual asset within the Other crypto assets category represented more than 5% of the fair value of total crypto assets held as collateral."
+    },
+    "recognized_derivatives_collateral_usd": {
+      "bitcoin": 298212000,
+      "ethereum": 3731000,
+      "total": 301943000,
+      "minimum_collateral_requirement_pct_of_derivative_notional": 100
+    },
+    "balance_sheet_crypto_assets_held_as_collateral_usd": 1299500000,
+    "reconciliation_rule": "997.557M recognized lending crypto collateral + 301.943M recognized derivatives collateral = 1.2995B balance-sheet crypto assets held as collateral.",
+    "unrecognized_customer_collateral_usd": {
+      "fiat_and_payment_stablecoins": 480450000,
+      "crypto_assets": 2804112000,
+      "total": 3284562000,
+      "asset_level_crypto_breakdown_disclosed": false
+    },
+    "coinbase_assets_pledged_for_short_term_borrowings_usd": {
+      "payment_stablecoins": 58678000,
+      "crypto_assets": 375485000,
+      "total": 434163000,
+      "asset_level_crypto_breakdown_disclosed": false
+    },
+    "customer_asset_policy": "Coinbase states it does not use customer assets as collateral for loans, margin, rehypothecation or similar activities without customer consent.",
+    "xrp_specific_disclosure": {
+      "literal_xrp_mention_found_in_10q": false,
+      "xrp_collateral_amount_disclosed": false,
+      "xrp_derivatives_collateral_amount_disclosed": false,
+      "conclusion": "The filing does not establish XRP collateral acceptance or XRP collateral balances. XRP could be within an aggregated Other crypto assets or unrecognized customer-collateral category, but the filing does not identify it. Do not infer either presence or absence."
+    },
+    "model_eligible": false
+  },
+  "coinbase_ripple_rlusd_distribution": {
+    "launch_date": "2026-10-28",
+    "products": [
+      "Coinbase Prime",
+      "Coinbase Exchange",
+      "Coinbase Retail app"
+    ],
+    "networks_at_launch": [
+      "XRPL",
+      "Base",
+      "Ethereum"
+    ],
+    "usd_conversion_ratio": 1,
+    "ripple_liquidity_support_network": "Base",
+    "coinbase_global_exchange_collateral_support": "FUTURE_NOT_LIVE_AT_LAUNCH",
+    "actual_rlusd_volume_disclosed": false,
+    "xrpl_rlusd_net_flow_disclosed": false,
+    "xrp_bridge_volume_disclosed": false,
+    "interpretation": [
+      "Coinbase is a distributor and trading platform for RLUSD, not the issuer.",
+      "The issuer remains Standard Custody & Trust Company, LLC.",
+      "RLUSD deposits/withdrawals on XRPL can increase XRPL stablecoin utility without proving that users acquire or hold XRP.",
+      "Global Exchange collateral support was announced as future availability; it must not be represented as live on October 28."
+    ],
+    "model_eligible": false
+  },
+  "counter_hypotheses": [
+    {
+      "id": "coinbase_multi_issuer_strategy",
+      "hypothesis": "Coinbase's USDC distribution economics remain significant while its RLUSD listing indicates a multi-issuer stablecoin platform strategy.",
+      "alternative": "RLUSD may remain a smaller complementary asset with limited actual volume; listing alone does not demonstrate meaningful substitution for USDC.",
+      "disconfirming_evidence_to_seek": [
+        "Coinbase product-level RLUSD balances and volumes",
+        "Issuer-specific mint/burn and net-flow data",
+        "Coinbase's future collateral eligibility and actual posted balances"
+      ]
+    },
+    {
+      "id": "xrp_collateral_unknown_not_zero",
+      "hypothesis": "Coinbase's SEC filing does not identify XRP in its disclosed collateral tables.",
+      "alternative": "XRP could be part of the aggregated Other crypto assets or unrecognized customer collateral categories, but the filing does not provide enough detail to establish this.",
+      "disconfirming_evidence_to_seek": [
+        "Asset-level collateral schedules",
+        "Regulatory disclosures naming XRP",
+        "Custodian or borrower confirmations"
+      ]
+    },
+    {
+      "id": "stablecoin_rail_without_xrp_bridge",
+      "hypothesis": "RLUSD availability on XRPL increases stablecoin utility and exchange access but may settle directly in RLUSD without XRP bridge demand.",
+      "alternative": "Cross-currency, liquidity-provider or corridor workflows may require XRP inventory or bridge legs, but no volume evidence is provided.",
+      "disconfirming_evidence_to_seek": [
+        "XRPL DEX/AMM path data",
+        "XRP bridge transaction classifications",
+        "Coinbase/Ripple corridor settlement and inventory disclosures"
+      ]
+    }
+  ],
+  "predictive_admission": {
+    "forecast_status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "real_money_action": false,
+    "reasons": [
+      "Corporate financial and collateral disclosures are period-end or quarterly aggregates, not high-frequency XRP market features.",
+      "Coinbase's collateral disclosures do not identify XRP asset-level balances.",
+      "Coinbase and Circle USDC economics are company-defined and must be kept separate from XRP demand.",
+      "Coinbase's RLUSD launch establishes network availability but does not disclose transaction volume, net issuance or XRP bridge usage.",
+      "No synchronized, raw-byte, independently timestamped dataset or out-of-sample predictive lift is established."
+    ]
+  },
+  "coinbase_circle_equity_relationship": {
+    "historical_transaction": {
+      "date": "2023-08",
+      "transaction": "Circle acquired the remaining 50% equity interest in Centre Consortium LLC from Coinbase in connection with the Collaboration Agreement.",
+      "consideration_usd": 209900000,
+      "circle_common_shares_issued_approx": 8400000,
+      "centre_dissolved_date": "2023-12",
+      "source_id": "circle_centre_acquisition_sec_s1a_20250418"
+    },
+    "continuing_relationship_as_of_2026_09_30": {
+      "coinbase_q3_2026_10q_confirms_no_change_to_circle_arrangement_or_revenue_generated": true,
+      "coinbase_q3_2026_10q_mentions_fair_value_remeasurement_of_its_investment_in_circle_after_ipo": true,
+      "current_share_count_disclosed": false,
+      "current_ownership_percentage_disclosed": false,
+      "exact_circle_investment_fair_value_disclosed": false,
+      "q3_2026_coinbase_investment_gain_loss_line_usd": -39231000,
+      "gain_loss_attribution_rule": "The Q3 net gains/losses on investments line is an aggregate amount. Coinbase says the change versus 2025 was largely due to remeasurement of its Circle investment, but the filing does not attribute the entire line to Circle."
+    },
+    "interpretation": [
+      "Coinbase received Circle equity as consideration for its 50% Centre stake in 2023.",
+      "Coinbase's Q3 2026 10-Q confirms that it still had an investment in Circle subject to fair-value remeasurement after Circle's IPO; the current share count and percentage are not disclosed.",
+      "The continuing USDC distribution agreement and the historical/current equity investment are two distinct direct relationships.",
+      "This does not establish a Circle-Ripple equity relationship or a Coinbase-Ripple equity investment."
+    ],
+    "model_eligible": false
+  }
+}

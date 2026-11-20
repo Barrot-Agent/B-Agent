@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrpl_lending_protocol_collateral_scope",
+  "artifact_id": "xrpl-lending-uncollateralized-scope-20261106T022802Z",
+  "subject": "Primary-source distinction between XRPL's proposed native Lending Protocol, Single Asset Vault funding, borrower collateral and XRP demand",
+  "capture": {
+    "automation_run_started_at_utc": "2026-11-06T02:28:02Z",
+    "exact_page_retrieval_timestamp_utc": null,
+    "note": "Official XRPL documentation supplies the protocol design. XRPLWin supplies time-bounded amendment vote/state snapshots. Exact browser retrieval timestamps and raw HTTP response bytes were not exposed."
+  },
+  "protocol_design": {
+    "lending_protocol": {
+      "standard": "XLS-66",
+      "official_documentation_url": "https://xrpl.org/resources/known-amendments",
+      "amendment_name": "LendingProtocol",
+      "loan_type": "UNCOLLATERALIZED",
+      "funding_source": "Pooled funds from a Single Asset Vault",
+      "underwriting": "Off-chain underwriting and risk management assess borrower creditworthiness.",
+      "specification_summary": "Configurable peer-to-peer fixed-term loans using pooled vault funds; the borrower loan is described as uncollateralized.",
+      "implications": [
+        "Deposits into a Single Asset Vault are funder capital, not borrower collateral.",
+        "The protocol is not a native XRP-secured lending facility as described by XLS-66.",
+        "Off-chain underwriting remains a material credit-risk and operational dependency.",
+        "No actual vault deposits, loan originations, loan balances, defaults or XRP settlement volumes are established by the protocol specification."
+      ]
+    },
+    "single_asset_vault": {
+      "standard": "XLS-65",
+      "official_documentation_url": "https://xrpl.org/resources/known-amendments",
+      "amendment_name": "SingleAssetVault",
+      "purpose": "Aggregates assets from multiple depositors and is intended to be used with the on-chain Lending Protocol.",
+      "interpretation": "A vault's pooled asset is the source of loan funding; it is not evidence that borrowers post XRP collateral."
+    },
+    "lending_protocol_v1_1": {
+      "amendment_name": "LendingProtocolV1_1",
+      "official_documentation_url": "https://xrpl.org/resources/known-amendments",
+      "changes": [
+        "Adds a closed-ended vault with subscription, investment and redemption phases.",
+        "Changes accounting to cash basis so interest is recognized as income when payments are actually made.",
+        "After activation, new loan brokers can only be created against closed-ended vaults."
+      ],
+      "dependency_note": "This amendment extends the LendingProtocol and SingleAssetVault design; its presence in the amendment list does not mean those features are active."
+    },
+    "fix_cleanup_3_4_0": {
+      "amendment_name": "fixCleanup3_4_0",
+      "status": "ENABLED",
+      "enabled_at_utc": "2026-11-04T14:52:00Z",
+      "enabled_ledger": 108112129,
+      "official_documentation_url": "https://xrpl.org/resources/known-amendments",
+      "scope": "A collection of correctness, rounding, permission-delegation and invariant fixes for vaults, lending, AMMs, permissioned DEX, trust lines, NFTs, MPTs, escrow, sponsorship and signing.",
+      "distinction": "This is a safety/correctness amendment. It does not activate LendingProtocol, SingleAssetVault or LendingProtocolV1_1."
+    }
+  },
+  "amendment_state_snapshots": {
+    "voting_threshold_yes_votes": 29,
+    "trusted_validator_count": 35,
+    "observations": [
+      {
+        "amendment": "LendingProtocol",
+        "standard": "XLS-66",
+        "yes_votes": 21,
+        "total_validators": 35,
+        "state_ledger": 108143549,
+        "voting_ledger": 108143359,
+        "status": "VOTING_NO_MAJORITY",
+        "url": "https://xrplwin.com/amendment/LendingProtocol"
+      },
+      {
+        "amendment": "SingleAssetVault",
+        "standard": "XLS-65",
+        "yes_votes": 23,
+        "total_validators": 35,
+        "state_ledger": 108143870,
+        "voting_ledger": 108143615,
+        "status": "VOTING_NO_MAJORITY",
+        "url": "https://xrplwin.com/amendment/SingleAssetVault"
+      },
+      {
+        "amendment": "LendingProtocolV1_1",
+        "yes_votes": 21,
+        "total_validators": 35,
+        "state_ledger": 108143651,
+        "voting_ledger": 108143615,
+        "status": "VOTING_NO_MAJORITY",
+        "url": "https://xrplwin.com/amendment/LendingProtocolV1_1"
+      }
+    ],
+    "interpretation": "At the observed ledger snapshots, all three amendments were below the 29-of-35 threshold. These are time-bounded votes, not a permanent forecast of validator support."
+  },
+  "capital_and_collateral_reconciliation": {
+    "borrower_collateral_required_by_xls66": false,
+    "vault_deposits_are_borrower_collateral": false,
+    "actual_vault_capital_verified": false,
+    "actual_loan_origination_volume_verified": false,
+    "actual_xrp_collateral_balance_verified": false,
+    "actual_xrp_settlement_volume_verified": false,
+    "inference": "Do not classify proposed vault deposits, amendment votes, institutional custody announcements or future lending functionality as actual XRP collateral, XRP purchases or capital deployed."
+  },
+  "source_registry": [
+    {
+      "id": "xrpl_known_amendments",
+      "publisher": "XRPL.org",
+      "source_type": "official protocol documentation",
+      "url": "https://xrpl.org/resources/known-amendments",
+      "independence_group": "xrpl_official_docs",
+      "claims_supported": [
+        "LendingProtocol is uncollateralized and uses pooled Single Asset Vault funds.",
+        "Borrower creditworthiness is assessed by off-chain underwriting and risk management.",
+        "SingleAssetVault aggregates depositor assets.",
+        "LendingProtocolV1_1 adds closed-ended vault phases and cash-basis accounting.",
+        "fixCleanup3_4_0 is a collection of fixes, not a lending activation."
+      ]
+    },
+    {
+      "id": "xrplwin_lending_votes",
+      "publisher": "XRPLWin",
+      "source_type": "ledger/amendment state tracker",
+      "url": "https://xrplwin.com/amendment/LendingProtocol",
+      "independence_group": "xrplwin_ledger_reader",
+      "state_ledger": 108143549,
+      "claims_supported": [
+        "LendingProtocol vote count and threshold snapshot."
+      ]
+    },
+    {
+      "id": "xrplwin_vault_votes",
+      "publisher": "XRPLWin",
+      "source_type": "ledger/amendment state tracker",
+      "url": "https://xrplwin.com/amendment/SingleAssetVault",
+      "independence_group": "xrplwin_ledger_reader",
+      "state_ledger": 108143870,
+      "claims_supported": [
+        "SingleAssetVault vote count and threshold snapshot."
+      ]
+    },
+    {
+      "id": "xrplwin_lending_v11_votes",
+      "publisher": "XRPLWin",
+      "source_type": "ledger/amendment state tracker",
+      "url": "https://xrplwin.com/amendment/LendingProtocolV1_1",
+      "independence_group": "xrplwin_ledger_reader",
+      "state_ledger": 108143651,
+      "claims_supported": [
+        "LendingProtocolV1_1 vote count and threshold snapshot."
+      ]
+    },
+    {
+      "id": "xrplwin_fixcleanup_activation",
+      "publisher": "XRPLWin",
+      "source_type": "ledger/amendment state tracker",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "independence_group": "xrplwin_ledger_reader",
+      "state_ledger": 108143700,
+      "claims_supported": [
+        "fixCleanup3_4_0 activation ledger and enabled state."
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "C1",
+      "hypothesis": "The native XRPL Lending Protocol could eventually create a new credit market funded by pooled vault deposits.",
+      "supporting_evidence": [
+        "Official XRPL docs describe fixed-term peer-to-peer lending from Single Asset Vault pools.",
+        "LendingProtocolV1_1 adds closed-ended vault lifecycle and cash-basis accounting."
+      ],
+      "disconfirming_evidence": [
+        "The loans are explicitly uncollateralized and depend on off-chain underwriting.",
+        "LendingProtocol and SingleAssetVault were below the activation threshold in the observed vote snapshots.",
+        "No actual vault balances, originations, loan performance or XRP-denominated volumes are established."
+      ]
+    },
+    {
+      "id": "C2",
+      "hypothesis": "XRPL protocol-safety progress is being mistaken for immediate collateral utility or XRP demand.",
+      "supporting_evidence": [
+        "fixCleanup3_4_0 is enabled and includes vault/lending rounding and permission fixes.",
+        "The three lending/vault amendments remained below 29/35 votes in observed snapshots."
+      ],
+      "disconfirming_evidence": [
+        "Validator votes can change and the protocol may become available later; this is a time-bounded state assessment."
+      ]
+    }
+  ],
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "data_cutoff_utc": null,
+  "model_ineligibility_reasons": [
+    "The protocol specification describes design, not deployed use or actual capital balances.",
+    "The lending and vault amendments were below the activation threshold at the observed ledgers.",
+    "No on-ledger vault balances, borrower records, loan originations, repayments or defaults were collected.",
+    "No XRP-denominated collateral or settlement series was established.",
+    "No point-in-time historical dataset or out-of-sample price evaluation was executed for this protocol observation."
+  ],
+  "next_tests": [
+    "Monitor amendment votes and activation ledger IDs separately for LendingProtocol, SingleAssetVault and LendingProtocolV1_1.",
+    "If enabled, query validated-ledger Vault and LoanBroker entries and retain ledger index/hash, asset/currency, issuer, amount, broker, maturity and transaction provenance.",
+    "Separate vault depositor assets, borrower liabilities, repayments, defaults, fees and any XRP conversion/settlement legs.",
+    "Require on-ledger evidence before recording actual deployed capital or XRP collateral."
+  ]
+}

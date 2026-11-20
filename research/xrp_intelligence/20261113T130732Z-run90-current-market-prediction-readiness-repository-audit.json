@@ -1,0 +1,498 @@
+{
+  "artifact_type": "barrot.xrp_market_repository_prediction_readiness_audit",
+  "schema_version": "1.0.0",
+  "run_id": "Run90",
+  "captured_at_utc": "2026-11-13T13:07:32Z",
+  "mission": {
+    "priority": 1,
+    "primary": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, safety and verification foundation",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "main_tree_entries": 1381,
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_before_run90_commit": "b4c15161ac41e8343820b3540d879e34df548d40",
+    "integration_tree_entries": 2348,
+    "ancestry": {
+      "ahead_by": 2241,
+      "behind_by": 0
+    },
+    "pr_1662": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "head_sha": "b4c15161ac41e8343820b3540d879e34df548d40",
+      "commits": 2241,
+      "changed_files": 1102,
+      "additions": 315105,
+      "deletions": 5136,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    },
+    "changed_file_composition": {
+      "workflow_files": 50,
+      "test_files": 378,
+      "xrp_research_paths": 576,
+      "python_files_including_tests": 443,
+      "public_web_files": 7,
+      "markdown_files": 26,
+      "docs_directory_files": 3
+    },
+    "open_pr_inventory": {
+      "total": 375,
+      "drafts": 361,
+      "non_drafts": 14,
+      "target_main": 367,
+      "target_other_branches": 8,
+      "fully_semantically_classified": false
+    }
+  },
+  "ci": {
+    "exact_head": "b4c15161ac41e8343820b3540d879e34df548d40",
+    "full_ci_run": 43424614346,
+    "full_suite_job": 131882856177,
+    "full_suite": {
+      "passed": 3557,
+      "failed": 0,
+      "subtests_passed": 8,
+      "inclusive_coverage_percent": 61.72,
+      "duration_seconds": 82.54
+    },
+    "core_suite": {
+      "passed": 729,
+      "coverage_percent": 76
+    },
+    "wheel_build": "PASS",
+    "installed_v3_xrp_mission_verification": "PASS",
+    "dependency_audit_run": 43424613885,
+    "dependency_audit": {
+      "manifest_groups": 5,
+      "known_vulnerabilities_reported": 0,
+      "conclusion": "SUCCESS"
+    },
+    "fail_closed_gate_run": 43424615956,
+    "fail_closed_gate": "PASS; automatic merge remained disabled",
+    "scope_note": "Results apply to b4c15161ac41e8343820b3540d879e34df548d40. Run90 documentation/research descendant requires its own exact-head CI."
+  },
+  "market": {
+    "spot": {
+      "okx_last": 1.0194,
+      "okx_bid": 1.0192,
+      "okx_ask": 1.0193,
+      "okx_event_time_utc": "2026-11-13T13:06:40.668Z",
+      "okx_age_seconds_at_capture": 51.332,
+      "okx_24h_open": 1.0343,
+      "okx_24h_high": 1.044,
+      "okx_24h_low": 0.9974,
+      "okx_24h_volume_xrp": 46397058.287787,
+      "kraken_last": 1.02076,
+      "kraken_bid": 1.02079,
+      "kraken_ask": 1.0208,
+      "kraken_event_time": null,
+      "admission": "Fresh OKX observation not yet ingested or raw-archived; Kraken lacks event timestamp."
+    },
+    "orderbook": {
+      "source": "Fuelmaps",
+      "as_of_utc": "2026-11-13T12:00:00Z",
+      "mid": 1.0237,
+      "venues_included": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "venues_excluded": [
+        "Binance",
+        "Bitget"
+      ],
+      "depth_usd": {
+        "within_0_5pct": {
+          "bids": 8400000,
+          "asks": 6700000,
+          "bid_share_pct": 55.6,
+          "venues": 6
+        },
+        "within_1pct": {
+          "bids": 13400000,
+          "asks": 9200000,
+          "bid_share_pct": 59.2,
+          "venues": 6
+        },
+        "within_2pct": {
+          "bids": 19000000,
+          "asks": 11300000,
+          "bid_share_pct": 62.7,
+          "venues": 6
+        },
+        "within_5pct": {
+          "bids": 26100000,
+          "asks": 13300000,
+          "bid_share_pct": 66.2,
+          "venues": 4
+        },
+        "within_10pct": {
+          "bids": 30500000,
+          "asks": 14800000,
+          "bid_share_pct": 67.2,
+          "venues": 5
+        }
+      },
+      "largest_levels": [
+        {
+          "side": "bid",
+          "price": 0.99,
+          "usd": 3000000
+        },
+        {
+          "side": "bid",
+          "price": 1.021,
+          "usd": 2600000
+        },
+        {
+          "side": "ask",
+          "price": 1.025,
+          "usd": 1900000
+        }
+      ],
+      "admission": "Descriptive only; 67.5 minutes old; cancellable orders; no raw per-venue receipts."
+    },
+    "derivatives": {
+      "liqwall": {
+        "as_of_utc": "2026-11-13T12:52:00Z",
+        "oi_usd": 1120000000,
+        "oi_change_24h_pct": -1.4,
+        "average_funding_8h_pct": 0.0078,
+        "binance_funding_8h_pct": 0.0092,
+        "liquidations_24h_usd": 17400000,
+        "long_liquidations_usd": 16400000,
+        "short_liquidations_usd": 1000000,
+        "binance_long_accounts_pct": 74.8,
+        "binance_top_trader_long_pct": 67.7,
+        "hyperliquid_long_accounts_pct": 52
+      },
+      "coinalyze": {
+        "checked_at_utc": "2026-11-13T12:10:00Z",
+        "binance_oi_usd": 303470000,
+        "binance_oi_fresh": false,
+        "binance_funding_8h_pct": 0.000653,
+        "binance_long_accounts_pct": 74.87,
+        "binance_taker_buy_share_pct": 48.554,
+        "bybit_oi_usd": 246420000,
+        "bybit_oi_fresh": true,
+        "bybit_funding_8h_pct": -0.007873,
+        "bybit_long_accounts_pct": 81.22,
+        "bybit_taker_buy_share_pct": 47.679,
+        "contract_coverage": "2 of 22",
+        "liquidation_coverage": "Binance 24h; Bybit 23/24h"
+      },
+      "interpretation": "Crowded-long/deleveraging hypothesis; venue and vendor disagreements preserved; no directional inference."
+    },
+    "etf_flows": {
+      "xrp_insights": {
+        "as_of": "2026-11-12",
+        "net_flow_xrp": -9481905,
+        "window": "Nov9–12, four settled sessions",
+        "holdings_xrp": 1185698783,
+        "universe": "six US spot ETFs plus BITW",
+        "method": "flow-excluded funds count as zero"
+      },
+      "alpha_finance": {
+        "as_of": "2026-11-12",
+        "net_flow_usd_7_sessions": -18000000,
+        "net_flow_usd_30_sessions": -2800000,
+        "universe": "five funds"
+      },
+      "cryptokeyhole": {
+        "last_complete_day": "2026-11-11",
+        "flow_xrp": -3322,
+        "last_five_complete_sessions_xrp": -10005584,
+        "universe": "four of six daily-read funds",
+        "nov12_status": "issuer files absent at 2026-11-12T23:52Z"
+      },
+      "interpretation": "Different cohorts, source vintages and missing-file rules; overlapping issuer files; do not average."
+    }
+  },
+  "macro_and_regulation": {
+    "glassnode": {
+      "published": "2026-11-11",
+      "stablecoin_supply_30d_change_usd": -14200000000,
+      "window_end": "2026-11-09",
+      "fastest_contraction_since": "2022-06",
+      "btc_etf_outflow_20_sessions_usd": 1600000000,
+      "us_2y_yield_pct": 4.75,
+      "fed_policy_rate_pct": 4,
+      "btc_coinbase_premium": "negative",
+      "btc_counterevidence": "BTC leverage near price cleared; BTC bids outweighed asks within 5% on Binance/Coinbase; 100–1K and 1K–10K BTC cohorts accumulated while other cohorts distributed",
+      "scope": "BTC/broad market context, not XRP-specific causality."
+    },
+    "reuters": {
+      "published_at_utc": "2026-11-12T23:41:00Z",
+      "nominees": [
+        "Kristin Johnson SEC Democrat",
+        "Steven Levine SEC Republican",
+        "Matthew Rowland CFTC Democrat",
+        "Nathan Anonick CFTC Republican"
+      ],
+      "status": "Senate confirmation pending",
+      "context": "Potential personnel/timing change, no XRP-specific rule change established."
+    }
+  },
+  "institutional": {
+    "standard_chartered_rlusd": {
+      "custody": "Live for RLUSD on XRPL through DFSA-regulated DIFC branch",
+      "lmax_collateral_mirroring": "Planned, not live",
+      "distinction": "RLUSD collateral is not native XRP collateral."
+    },
+    "prior_primary_source_dossier": "Run89 and earlier SEC/OCC/SBI/Circle/Coinbase/Ripple evidence remains in Git history."
+  },
+  "prediction_engine": {
+    "source_definitions_total": 48,
+    "hourly_sources": 43,
+    "weekly_cftc_sources": 3,
+    "excluded_noncommercial_xrpl_node_sources": 2,
+    "scheduled_sources": 46,
+    "workflow": "xrp-public-ingestion.yml exists on integration, guarded to main; no successful main scheduled run verified.",
+    "event_registry": {
+      "version": "run71c-2026-11-12",
+      "captured_at_utc": "2026-11-12T23:31:57.440Z",
+      "events": 73,
+      "non_null_raw_source_sha256": 0,
+      "model_eligible_events": 0,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "implemented": [
+      "read-only ingestion design",
+      "SHA-256 per-run receipts and local hash chain",
+      "point-in-time SQLite feature store",
+      "four deterministic baselines",
+      "chronological walk-forward with purge/embargo",
+      "temporal calibration and PSI",
+      "source-independence grouping",
+      "scenario/counter-hypothesis assembler",
+      "fail-closed ledger with independent Ed25519 attestation"
+    ],
+    "missing": [
+      "trained XRP candidate model",
+      "synchronized historical spot/L2/derivatives/flows/collateral",
+      "byte-exact raw publisher receipts",
+      "independent WORM and trusted timestamp",
+      "paired block bootstrap/source-clustered uncertainty",
+      "residual serial-dependence correction",
+      "multivariate/concept drift",
+      "independent shadow cohort",
+      "production evaluator signing key",
+      "measured superiority to all four baselines"
+    ],
+    "gate": {
+      "training_samples": 100,
+      "oos_samples": 100,
+      "shadow_samples": 100,
+      "effective_nonoverlap_horizon_windows": 10,
+      "independent_source_groups": 2,
+      "maximum_weighted_calibration_error": 0.05,
+      "metrics": "Brier and log loss must beat all four baselines",
+      "evaluator": "independent Ed25519"
+    },
+    "retention": {
+      "raw_receipts_days": 90,
+      "per_run_feature_store_days": 7,
+      "daily_archive_days": 90,
+      "independent_worm": false
+    },
+    "forecast_status": "NOT_ISSUED"
+  },
+  "nine_platform_status": {
+    "ChatGPT": "GitHub connector verified this session; admin/maintain/push/pull/triage; least privilege not met",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "review artifacts only; no formal approval on #1662",
+    "Codex": "unverified",
+    "HuggingFace": "prior BUILD_ERROR; no deployment",
+    "Kaggle": "not tested; no submission",
+    "Databricks": "prior HTTP 403; no write",
+    "LunaRoute": "endpoint authentication/data flow unverified",
+    "coordination": "DESIGNED_NOT_DISPATCHED; no external exchange or data transfer"
+  },
+  "identity_research": {
+    "japan_sbic": "SBIC East Tokyo, Central Nagoya and West Osaka are separate from SBI Holdings; ChatGPT seminars are educational, no commercial OpenAI partnership verified.",
+    "ask_coin": "no canonical XRPL issuer/deployment verified",
+    "actual_capital": "separate cash, in-kind XRP, debt, conditional ELOC, warrants and secondary resales",
+    "camilla_kamilah_stevenson": "channel-to-person link unverified; verified own-channel video inventory zero"
+  },
+  "sources": [
+    {
+      "id": "okx_xrp_usdt_spot",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "type": "exchange_primary_api",
+      "independence_group": "okx_spot_primary",
+      "provider_event_at_utc": "2026-11-13T13:06:40.668Z",
+      "retrieved_at_utc": "2026-11-13T13:07:32Z",
+      "raw_source_sha256": null,
+      "normalized_excerpt_sha256": "2a1c7f5942f2b06920964b9b92d87a535176931476b0ad4945f77365b13fbd6c",
+      "excerpt": "OKX XRP-USDT ticker provider event timestamp 1794575200668 ms = 2026-11-13T13:06:40.668Z; retrieved at 2026-11-13T13:07:32Z, age 51.332 seconds. Last 1.0194; bid 1.0192; ask 1.0193; bid size 2381.161695 XRP; ask size 5962.591611 XRP; 24h open 1.0343; high 1.0440; low 0.9974; volume 46,397,058.287787 XRP.",
+      "model_eligible": false,
+      "limitation": "Fresh under 300s; not ingested into Barrot or raw-archived."
+    },
+    {
+      "id": "kraken_xrp_usd_spot",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "type": "exchange_primary_api",
+      "independence_group": "kraken_spot_primary",
+      "provider_event_at_utc": null,
+      "retrieved_at_utc": "2026-11-13T13:07:32Z",
+      "raw_source_sha256": null,
+      "normalized_excerpt_sha256": "8147a41147f31a76b54cb33ecb9eed74c458bc5b355993fb1decdc306616f136",
+      "excerpt": "Kraken XRP/USD ticker retrieved at 2026-11-13T13:07:32Z; last 1.02076; bid 1.02079; ask 1.02080; 24h volume 38,343,082.57078264 XRP; 24h low 0.99672; high 1.04250; no provider event timestamp returned. Not admitted to point-in-time feature store.",
+      "model_eligible": false,
+      "limitation": "No provider event timestamp; not point-in-time admissible."
+    },
+    {
+      "id": "fuelmaps_six_venue_spot_l2",
+      "url": "https://fuelmaps.io/order-book/",
+      "type": "aggregated_spot_orderbook",
+      "independence_group": "fuelmaps_six_venue_aggregate",
+      "provider_event_at_utc": "2026-11-13T12:00:00Z",
+      "retrieved_at_utc": null,
+      "raw_source_sha256": null,
+      "normalized_excerpt_sha256": "f8ffceaa6310af744c9387ba9a0d933facbf05f01df119692cef3aeb12ba77ee",
+      "excerpt": "Fuelmaps six-venue XRP spot book hourly snapshot 2026-11-13T12:00:00Z; midpoint 1.0237; within +/-0.5% bids $8.4M asks $6.7M bid share 55.6%, 6/6 venues; +/-1% bids $13.4M asks $9.2M share 59.2%, 6/6; +/-2% $19.0M/$11.3M share 62.7%, 6/6; +/-5% $26.1M/$13.3M share 66.2%, 4/6; +/-10% $30.5M/$14.8M share 67.2%, 5/6. Binance and Bitget excluded. Resting orders are cancellable.",
+      "model_eligible": false,
+      "limitation": "67.5 minutes old; excludes Binance/Bitget; cancellable resting orders; no raw per-venue books."
+    },
+    {
+      "id": "liqwall_xrp_derivatives",
+      "url": "https://liqwall.com/coins/xrp",
+      "type": "aggregated_derivatives_vendor",
+      "independence_group": "liqwall_derivatives_aggregate",
+      "provider_event_at_utc": "2026-11-13T12:52:00Z",
+      "retrieved_at_utc": null,
+      "raw_source_sha256": null,
+      "normalized_excerpt_sha256": "f42837a5078318d21046b44789d00f68b05b980f258d6f7eb544bfd1c18684c6",
+      "excerpt": "Liqwall XRP aggregate as of 2026-11-13T12:52Z: price $1.02; 24h liquidations $17.4M, longs $16.4M, shorts $1.0M; average funding +0.0078% per 8h, Binance +0.0092%; OI $1.12B, -1.4% over 24h; Binance accounts 74.8% long, top traders 67.7% long; Hyperliquid accounts 52% long.",
+      "model_eligible": false,
+      "limitation": "Vendor aggregate; not exchange-native raw feed."
+    },
+    {
+      "id": "coinalyze_binance_bybit_xrp_perps",
+      "url": "https://bitcoinleverage.com/xrp/funding-rate",
+      "type": "aggregated_derivatives_vendor",
+      "independence_group": "coinalyze_binance_bybit",
+      "provider_event_at_utc": "2026-11-13T12:10:00Z",
+      "retrieved_at_utc": null,
+      "raw_source_sha256": null,
+      "normalized_excerpt_sha256": "5a8eebf20b4bc4f8c54bcc8fd86ecbaeb2963f03ff9ae2ec0a0e9211f7c34db3",
+      "excerpt": "Coinalyze partial coverage, checked 2026-11-13T12:10Z, Binance and Bybit XRPUSDT perps only: Binance OI $303.47M marked stale, funding +0.000653% fresh, 74.87% accounts long, taker buy share 48.554%; Bybit OI $246.42M fresh, funding -0.007873% fresh, 81.22% accounts long, taker buy share 47.679%. Coverage 2 of 22 contracts; liquidation data partial (24h Binance, 23/24h Bybit).",
+      "model_eligible": false,
+      "limitation": "2 of 22 contracts; Binance OI stale; Bybit fresh; funding differs; partial liquidations; venue overlap with Liqwall."
+    },
+    {
+      "id": "xrp_insights_us_spot_etf_flows",
+      "url": "https://xrp-insights.com/data",
+      "type": "issuer_file_derived_etf_aggregator",
+      "independence_group": "xrp_insights_six_etf_plus_bitw",
+      "provider_event_at_utc": "2026-11-12",
+      "retrieved_at_utc": null,
+      "raw_source_sha256": null,
+      "normalized_excerpt_sha256": "bc353a4394c28dc9ba9aa206159f32c50e94a8cceb4b59f7cdeef613eaf365ad",
+      "excerpt": "XRP Insights page data as of 2026-11-12: Nov 9–12 net flow -9,481,905 XRP across six US spot ETFs plus BITW; four settled trading days; total held 1,185,698,783 XRP. Flow-excluded funds count as zero in headline aggregation.",
+      "model_eligible": false,
+      "limitation": "Flow-excluded funds count as zero; issuer-file inputs overlap."
+    },
+    {
+      "id": "alpha_finance_xrp_etf_flows",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "type": "issuer_file_derived_etf_aggregator",
+      "independence_group": "alpha_finance_five_fund_cohort",
+      "provider_event_at_utc": "2026-11-12",
+      "retrieved_at_utc": null,
+      "raw_source_sha256": null,
+      "normalized_excerpt_sha256": "5b55fb6906d01cc2fb19924fc1653fea55a6deb79b5b8c9fbd9b6b5ac0408e1d",
+      "excerpt": "Alpha Finance XRP ETF dashboard through 2026-11-12: five-fund cohort; seven-session flow -$18.0M; 30-session flow -$2.8M; Nov 12 and Nov 11 displayed +$0, Nov 10 -$7.6M, Nov 9 -$10.4M.",
+      "model_eligible": false,
+      "limitation": "Five-fund cohort; zero daily values are not proof every issuer file arrived."
+    },
+    {
+      "id": "cryptokeyhole_xrp_etf_flows",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "type": "issuer_file_derived_etf_aggregator",
+      "independence_group": "cryptokeyhole_four_daily_funds",
+      "provider_event_at_utc": "2026-11-11",
+      "retrieved_at_utc": null,
+      "raw_source_sha256": null,
+      "normalized_excerpt_sha256": "dc50bd2bf67eb88a88420a8999ebf53a43de8342289a36aa4f03931304dce095",
+      "excerpt": "CryptoKeyhole XRP ETF tracker: four of six listed US spot funds read daily; last complete day Nov 11 net -3,322 XRP; last five complete sessions Nov 5–11 net -10,005,584 XRP; Nov 12 issuer files absent at 23:52 UTC Nov 12 read.",
+      "model_eligible": false,
+      "limitation": "Four of six funds read daily; Nov12 issuer files absent at 23:52Z Nov12 read."
+    },
+    {
+      "id": "glassnode_week45_2026",
+      "url": "https://research.glassnode.com/the-week-onchain-week-45-2026/",
+      "type": "market_research_vendor_report",
+      "independence_group": "glassnode_week45_report",
+      "provider_event_at_utc": "2026-11-11T11:00:00Z",
+      "retrieved_at_utc": null,
+      "raw_source_sha256": null,
+      "normalized_excerpt_sha256": "b03bc91f2c261d948c1ffc38dacf2dba493983bc5a4a4cabbd1273f472e7ba39",
+      "excerpt": "Glassnode Week 45 report published 2026-11-11; underlying data cutoffs: price/derivatives 2026-11-11 11:00Z, order book 09:00Z, ETF/stablecoin/cost basis/accumulation through Nov 9. Stablecoin supply contracted $14.2B over 30 days, fastest since June 2022; US spot BTC ETFs had $1.6B net outflows over 20 sessions; Coinbase BTC premium negative; US two-year yield 4.75% versus 4% Fed policy rate; BTC long leverage near price mostly cleared; BTC spot book bids outweighed asks within 5% on Binance/Coinbase since Nov 5; two BTC wallet cohorts (100–1K and 1K–10K BTC) accumulated, but other cohorts distributed. This is BTC/market-wide context, not XRP-specific causal evidence.",
+      "model_eligible": false,
+      "limitation": "BTC/broad-market context only; underlying data through Nov9/11."
+    },
+    {
+      "id": "reuters_sec_cftc_nominations",
+      "url": "https://www.reuters.com/legal/government/white-house-sends-cftc-sec-role-picks-senate-approval-2026-11-12/",
+      "type": "independent_regulatory_news",
+      "independence_group": "reuters_regulatory_reporting",
+      "provider_event_at_utc": "2026-11-12T23:41:00Z",
+      "retrieved_at_utc": null,
+      "raw_source_sha256": null,
+      "normalized_excerpt_sha256": "0f4e0ad7da960138c3da1a73718fbd1e242e56da31cb420c70056cfd49d92cac",
+      "excerpt": "Reuters 2026-11-12 23:41 UTC: White House sent nominations for Kristin Johnson (SEC, Democrat), Steven Levine (SEC, Republican), Matthew Rowland (CFTC, Democrat) and Nathan Anonick (CFTC, Republican) to Senate; confirmation pending. Reuters reports Republicans expected to lose Senate control in January after midterm defeat, potentially affecting timing.",
+      "model_eligible": false,
+      "limitation": "Nominations pending Senate confirmation; no XRP-specific rule change."
+    },
+    {
+      "id": "standard_chartered_rlusd_custody_lmax",
+      "url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "type": "primary_corporate_press_release",
+      "independence_group": "standard_chartered_corporate_disclosure",
+      "provider_event_at_utc": "2026-10-12",
+      "retrieved_at_utc": null,
+      "raw_source_sha256": null,
+      "normalized_excerpt_sha256": "3e27765750582589d05148bd35780b643b62c40a5b157496a5c450de71c47ca0",
+      "excerpt": "Standard Chartered primary release 2026-10-12: custody for Ripple USD (RLUSD) issued on XRPL is live through its DFSA-regulated DIFC branch; the bank, Ripple and LMAX intend to enable RLUSD as eligible collateral via collateral mirroring without transferring the underlying RLUSD to LMAX. Collateral integration is intended/planned, not stated as live.",
+      "model_eligible": false,
+      "limitation": "RLUSD custody live; LMAX collateral mirroring planned; not native XRP collateral."
+    }
+  ],
+  "source_receipt_policy": "normalized_excerpt_sha256 authenticates only the excerpt string. raw_source_sha256 is null because publisher byte-exact bytes were not captured in RawReceiptArchive.",
+  "counter_hypotheses": [
+    "Long liquidation skew, ETF outflows and stablecoin contraction support a deleveraging/risk-off hypothesis.",
+    "Fuelmaps' six-venue book was bid-heavy near price; this is a stale, cancellable snapshot excluding Binance/Bitget.",
+    "Glassnode BTC cohorts and book provide cross-asset counter-evidence only, not XRP evidence.",
+    "Funding diverges by venue and coverage is partial.",
+    "ETF tracker universes and missing-file policies differ; zeros are not universal confirmations."
+  ],
+  "merge_decision": "NO MERGE: #1662 remains draft, with zero formal reviews/approvals/threads and unresolved semantic/security/publication blockers. b4c151 exact-head checks passed; Run90 descendant needs its own CI.",
+  "actions_performed": [
+    "inspected main/integration trees, open PR inventory, #1662 metadata/reviews/files, source branch ancestry/path overlap, exact-head CI jobs/logs and critical workflow differences",
+    "retrieved current XRP spot, order-book, derivatives, ETF, macro, regulatory and RLUSD custody evidence",
+    "prepared Run90 handoff, research audit and nine-platform map on existing integration branch"
+  ],
+  "actions_not_performed": [
+    "no merge or main write",
+    "no deployment or secret rotation",
+    "no Space restart",
+    "no external-model dispatch or transfer",
+    "no Databricks/Kaggle write",
+    "no paper trade or real-money action",
+    "no source PR closure",
+    "no force-push or destructive worktree operation"
+  ]
+}

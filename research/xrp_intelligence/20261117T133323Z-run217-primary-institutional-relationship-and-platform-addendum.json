@@ -1,0 +1,523 @@
+{
+  "artifact_type": "xrp_primary_institutional_relationship_and_platform_coordination_addendum",
+  "schema_version": "1.0.0",
+  "run_id": "run217",
+  "captured_at_utc": "2026-11-17T13:33:23.005Z",
+  "data_cutoff_utc": "2026-11-17T13:33:23.005Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "source_capture": {
+    "method": "public official web pages and rendered official PDF/page content",
+    "raw_http_bytes_captured": false,
+    "raw_source_hashes_captured": false,
+    "model_eligible": false,
+    "limitations": [
+      "The web retrieval layer supplied rendered source content, not raw HTTP response bytes.",
+      "No SHA-256 raw-source receipt is asserted for this addendum."
+    ]
+  },
+  "source_registry": [
+    {
+      "id": "sbi_circle_jv_2025_08_22",
+      "publisher": "SBI Holdings",
+      "published_date": "2025-08-22",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf",
+      "source_type": "primary_corporate_or_regulatory_source",
+      "independence_group": "sbi_holdings_corporate",
+      "retrieved_at_utc": "2026-11-17T13:33:23.005Z",
+      "raw_http_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "verified_claims": [
+        "SBI Holdings announced that a joint venture with Circle Internet Holdings had been established to promote USDC use and Web3/digital-finance use cases in Japan.",
+        "The release recaps the November 2023 MOU and March 2025 formative agreement.",
+        "SBI VC Trade had begun offering USDC services after its March 2025 registration.",
+        "The SBI Group acquired USD 50 million of Circle shares in connection with Circle's NYSE listing."
+      ],
+      "limitations": [
+        "The release does not disclose the joint venture's transaction volume or any XRP allocation."
+      ]
+    },
+    {
+      "id": "sbi_circle_equity_2025_06_09",
+      "publisher": "SBI Holdings and SBI Shinsei Bank",
+      "published_date": "2025-06-09",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "source_type": "primary_corporate_or_regulatory_source",
+      "independence_group": "sbi_holdings_corporate",
+      "retrieved_at_utc": "2026-11-17T13:33:23.005Z",
+      "raw_http_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "verified_claims": [
+        "SBI Holdings acquired USD 25 million of Circle shares and SBI Shinsei Bank acquired USD 25 million, USD 50 million combined, at Circle's NYSE listing."
+      ],
+      "limitations": [
+        "This is an investment in Circle equity, not an XRP purchase or XRP treasury allocation."
+      ]
+    },
+    {
+      "id": "sbi_vc_trade_usdc_registration_2025_03_04",
+      "publisher": "SBI VC Trade",
+      "published_date": "2025-03-04",
+      "url": "https://www.sbigroup.co.jp/news/2025/0304_15290.html",
+      "source_type": "primary_corporate_or_regulatory_source",
+      "independence_group": "sbi_holdings_corporate",
+      "retrieved_at_utc": "2026-11-17T13:33:23.005Z",
+      "raw_http_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "verified_claims": [
+        "SBI VC Trade announced registration as an Electronic Payment Instruments Service Provider, enabling USDC handling in Japan.",
+        "The release identifies SBI VC Trade as a consolidated subsidiary of SBI Holdings."
+      ],
+      "limitations": [
+        "Registration and distribution capability do not establish transaction volume or XRP demand."
+      ]
+    },
+    {
+      "id": "bny_rlusd_reserve_custody_2025_07_09",
+      "publisher": "BNY",
+      "published_date": "2025-07-09",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-selects-bny-to-custody-ripple-usd-reserves.html",
+      "source_type": "primary_corporate_or_regulatory_source",
+      "independence_group": "bny_corporate",
+      "retrieved_at_utc": "2026-11-17T13:33:23.005Z",
+      "raw_http_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "verified_claims": [
+        "Ripple selected BNY as primary custodian for RLUSD reserves."
+      ],
+      "limitations": [
+        "Reserve custody is not evidence of XRP purchases or XRP collateral usage."
+      ]
+    },
+    {
+      "id": "bny_ripple_xrp_rlusd_custody_2026_10_27",
+      "publisher": "BNY",
+      "published_date": "2026-10-27",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "source_type": "primary_corporate_or_regulatory_source",
+      "independence_group": "bny_corporate",
+      "retrieved_at_utc": "2026-11-17T13:33:23.005Z",
+      "raw_http_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "verified_claims": [
+        "BNY announced support for XRP and RLUSD on its Digital Asset Custody platform for eligible institutional clients.",
+        "The release states that BNY is primary reserve custodian for RLUSD and has a custody relationship with Ripple Prime.",
+        "BNY intends to broaden support for XRPL tokenized assets and work toward direct RLUSD mint/redeem for BNY clients, subject to final BNY and regulatory approvals."
+      ],
+      "limitations": [
+        "The release does not disclose client balances, net deposits, XRP holdings, collateral use or transaction volumes.",
+        "Direct mint/redeem through BNY is an intended future capability, not a verified live service."
+      ]
+    },
+    {
+      "id": "coinbase_rlusd_listing_2026_10_28",
+      "publisher": "Coinbase",
+      "published_date": "2026-10-28",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "source_type": "primary_corporate_or_regulatory_source",
+      "independence_group": "coinbase_corporate",
+      "retrieved_at_utc": "2026-11-17T13:33:23.005Z",
+      "raw_http_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "verified_claims": [
+        "Coinbase announced RLUSD availability in supported regions through Coinbase Prime, Coinbase Exchange and the Coinbase app.",
+        "At launch, RLUSD deposits and withdrawals were supported across the XRP Ledger, Base and Ethereum.",
+        "Coinbase stated that availability for Coinbase Global Exchange customers, including use of RLUSD as collateral, would follow."
+      ],
+      "limitations": [
+        "The announced Global Exchange collateral capability was future rollout at publication, not confirmed live."
+      ]
+    },
+    {
+      "id": "circle_coinbase_usdc_economics_2023_08_21",
+      "publisher": "Circle",
+      "published_date": "2023-08-21",
+      "url": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "source_type": "primary_corporate_or_regulatory_source",
+      "independence_group": "circle_corporate",
+      "retrieved_at_utc": "2026-11-17T13:33:23.005Z",
+      "raw_http_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "verified_claims": [
+        "Circle stated that it would remain the USDC issuer and take over issuance/governance responsibilities previously associated with Centre.",
+        "Coinbase took an equity stake in Circle.",
+        "Coinbase and Circle continued sharing reserve income based on USDC held on each platform and agreed to share equally in interest income from broader USDC distribution and usage."
+      ],
+      "limitations": [
+        "This describes the 2023 agreement; current ownership percentages and later amendments require current filings."
+      ]
+    },
+    {
+      "id": "coinbase_circle_2024_10k_equity",
+      "publisher": "Coinbase Global",
+      "published_date": "FY2024 Form 10-K",
+      "url": "https://investor.coinbase.com/files/doc_financials/2024/q4/Coinbase-Global-Inc-2024-10K-for-IR.pdf",
+      "source_type": "primary_corporate_or_regulatory_source",
+      "independence_group": "coinbase_corporate",
+      "retrieved_at_utc": "2026-11-17T13:33:23.005Z",
+      "raw_http_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "verified_claims": [
+        "Coinbase disclosed that its 2023 Centre interest exchange resulted in 3.5% of Circle's fully diluted equity at that transaction, estimated at USD 51.1 million.",
+        "The filing describes an initial three-year Circle Agreement term and reserve-income/distribution economics."
+      ],
+      "limitations": [
+        "The 3.5% figure is historical at the 2023 transaction; current post-IPO ownership percentage is not established by this filing."
+      ]
+    },
+    {
+      "id": "coinbase_rlusd_asset_disclosure_2026_03_31",
+      "publisher": "Coinbase",
+      "published_date": "Holdings as of 2026-03-31",
+      "url": "https://www.coinbase.com/legal/digital-asset-disclosures",
+      "source_type": "primary_corporate_or_regulatory_source",
+      "independence_group": "coinbase_corporate",
+      "retrieved_at_utc": "2026-11-17T13:33:23.005Z",
+      "raw_http_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "verified_claims": [
+        "The displayed Coinbase asset-disclosure table lists RLUSD as Coinbase Holdings: No and Commercial Engagement: Yes for the stated March 31, 2026 holdings cutoff."
+      ],
+      "limitations": [
+        "The holdings cutoff predates Coinbase's October 28, 2026 RLUSD listing; it cannot establish Coinbase's post-listing holdings."
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-SBI-CIRCLE-JV-20250822",
+      "class": "confirmed_primary_corporate_relationship",
+      "claim": "SBI Holdings and Circle Internet Holdings established a Japanese-market joint venture for USDC adoption and Web3/digital-finance use cases.",
+      "evidence": [
+        "sbi_circle_jv_2025_08_22"
+      ],
+      "disconfirming_or_missing": [
+        "No public transaction-volume or XRP allocation evidence in the cited release."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-SBI-CIRCLE-EQUITY-20250609",
+      "class": "confirmed_primary_capital_relationship",
+      "claim": "SBI Holdings and SBI Shinsei Bank acquired USD 25 million each of Circle shares, USD 50 million combined, in connection with Circle's NYSE listing.",
+      "evidence": [
+        "sbi_circle_equity_2025_06_09"
+      ],
+      "disconfirming_or_missing": [
+        "This is Circle equity investment, not XRP acquisition; current post-IPO ownership percentage is not established here."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-SBI-VC-TRADE-USDC-20250304",
+      "class": "confirmed_primary_distribution_capability",
+      "claim": "SBI VC Trade, an SBI Holdings subsidiary, registered to handle USDC in Japan.",
+      "evidence": [
+        "sbi_vc_trade_usdc_registration_2025_03_04"
+      ],
+      "disconfirming_or_missing": [
+        "No XRP bridge usage or XRP demand is disclosed."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-BNY-RLUSD-RESERVES-20250709",
+      "class": "confirmed_primary_custody_relationship",
+      "claim": "BNY was selected as primary custodian for RLUSD reserves.",
+      "evidence": [
+        "bny_rlusd_reserve_custody_2025_07_09"
+      ],
+      "disconfirming_or_missing": [
+        "Reserve custody does not establish XRP balances or use."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-BNY-XRP-RLUSD-CUSTODY-20261027",
+      "class": "confirmed_primary_custody_platform_support",
+      "claim": "BNY announced XRP and RLUSD support on its institutional Digital Asset Custody platform, building on RLUSD reserve custody and its Ripple Prime relationship.",
+      "evidence": [
+        "bny_ripple_xrp_rlusd_custody_2026_10_27"
+      ],
+      "disconfirming_or_missing": [
+        "No client balances, XRP deposits, collateral utilization or net flows were disclosed.",
+        "BNY's direct RLUSD mint/redeem capability through its platform remains subject to final approvals."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-COINBASE-RLUSD-DISTRIBUTION-20261028",
+      "class": "confirmed_primary_distribution_relationship",
+      "claim": "Coinbase announced RLUSD support across Prime, Exchange and retail in supported regions, with XRPL, Base and Ethereum deposit/withdrawal support at launch.",
+      "evidence": [
+        "coinbase_rlusd_listing_2026_10_28"
+      ],
+      "disconfirming_or_missing": [
+        "Coinbase Global Exchange collateral support was described as a future rollout."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-COINBASE-CIRCLE-ECONOMICS-20230821",
+      "class": "confirmed_primary_equity_and_revenue_relationship",
+      "claim": "Coinbase took an equity stake in Circle and retained USDC reserve-income and broader-distribution revenue sharing while Circle remained issuer.",
+      "evidence": [
+        "circle_coinbase_usdc_economics_2023_08_21",
+        "coinbase_circle_2024_10k_equity"
+      ],
+      "disconfirming_or_missing": [
+        "The 3.5% fully diluted equity figure is historical at the 2023 transaction; current post-IPO percentage is not established."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "OBS-COINBASE-RLUSD-HOLDINGS-CUTOFF-20260331",
+      "class": "time_bounded_corporate_disclosure",
+      "claim": "Coinbase's asset disclosure showed no RLUSD holdings but a commercial engagement as of the March 31, 2026 holdings cutoff.",
+      "evidence": [
+        "coinbase_rlusd_asset_disclosure_2026_03_31"
+      ],
+      "disconfirming_or_missing": [
+        "This cutoff predates the October 28, 2026 RLUSD listing and cannot establish later holdings."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "SBI Holdings",
+      "to": "Circle Internet Holdings",
+      "relation": "established Japanese-market joint venture for USDC and Web3/digital-finance use cases",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_circle_jv_2025_08_22"
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle Internet Group",
+      "relation": "USD 25 million strategic equity investment at Circle listing",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_circle_equity_2025_06_09"
+      ]
+    },
+    {
+      "from": "SBI Shinsei Bank",
+      "to": "Circle Internet Group",
+      "relation": "USD 25 million strategic equity investment at Circle listing",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_circle_equity_2025_06_09"
+      ]
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "relation": "registered Japanese distribution/trading access",
+      "status": "confirmed",
+      "evidence": [
+        "sbi_vc_trade_usdc_registration_2025_03_04"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "Ripple",
+      "relation": "primary RLUSD reserve custody and Ripple Prime custody relationship",
+      "status": "confirmed",
+      "evidence": [
+        "bny_rlusd_reserve_custody_2025_07_09",
+        "bny_ripple_xrp_rlusd_custody_2026_10_27"
+      ]
+    },
+    {
+      "from": "BNY Digital Asset Custody",
+      "to": "XRP and RLUSD",
+      "relation": "institutional custody platform support announced for eligible clients",
+      "status": "confirmed",
+      "evidence": [
+        "bny_ripple_xrp_rlusd_custody_2026_10_27"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "trading and distribution on Prime, Exchange and retail in supported regions; XRPL/Base/Ethereum rails at launch",
+      "status": "confirmed",
+      "evidence": [
+        "coinbase_rlusd_listing_2026_10_28"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "equity stake and USDC reserve-income/distribution revenue-sharing agreement",
+      "status": "confirmed_historical_terms",
+      "evidence": [
+        "circle_coinbase_usdc_economics_2023_08_21",
+        "coinbase_circle_2024_10k_equity"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "run217::H1-custody-is-not-capital",
+      "claim": "Institutional custody availability may increase access without creating measurable net XRP purchases or deployed collateral.",
+      "support": [
+        "BNY custody platform announcement"
+      ],
+      "disconfirming_or_missing": [
+        "No disclosed client balances, deposits, collateral utilization or net flows."
+      ],
+      "tests": [
+        "Seek custody AUC/asset-level disclosures, client balances or on-ledger movements attributable to custody clients."
+      ]
+    },
+    {
+      "id": "run217::H2-stablecoin-usage-not-xrp-demand",
+      "claim": "USDC/RLUSD distribution and XRPL stablecoin activity may expand without proportional XRP demand.",
+      "support": [
+        "USDC and RLUSD distribution relationships"
+      ],
+      "disconfirming_or_missing": [
+        "No measured XRP bridge share, XRP inventory use or payment-route split."
+      ],
+      "tests": [
+        "Measure XRP bridge usage, XRP inventory turns and stablecoin-only route share separately."
+      ]
+    },
+    {
+      "id": "run217::H3-collateral-rollout-not-live",
+      "claim": "Coinbase RLUSD collateral support may not be active yet despite the RLUSD listing.",
+      "support": [
+        "Coinbase's October 28 release says Global Exchange collateral support will follow."
+      ],
+      "disconfirming_or_missing": [
+        "No later official launch confirmation found in this capture."
+      ],
+      "tests": [
+        "Require a later official Coinbase product notice or API collateral-eligibility evidence."
+      ]
+    },
+    {
+      "id": "run217::H4-BNY-mint-redeem-future",
+      "claim": "BNY's direct RLUSD mint/redeem capability is a future plan, not a current live service.",
+      "support": [
+        "BNY says the capability is intended and subject to final BNY and regulatory approvals."
+      ],
+      "disconfirming_or_missing": [
+        "No live client launch or mint/redeem volume disclosed."
+      ],
+      "tests": [
+        "Require a launch notice, client eligibility documentation or transaction evidence."
+      ]
+    },
+    {
+      "id": "run217::H5-SBI-circle-investment-not-xrp",
+      "claim": "SBI's Circle equity investment and USDC joint venture do not imply an XRP allocation.",
+      "support": [
+        "Official SBI releases identify Circle equity and USDC distribution."
+      ],
+      "disconfirming_or_missing": [
+        "No XRP treasury, purchase or collateral disclosure in these releases."
+      ],
+      "tests": [
+        "Search SBI filings and treasury disclosures for token-specific XRP exposure."
+      ]
+    }
+  ],
+  "url_correction": {
+    "historical_artifact": "research/xrp_intelligence/20261117T120307Z-run213-xrp-market-and-entity-reconciliation.json",
+    "affected_relationship": "SBI Holdings and Circle Internet Holdings joint venture",
+    "prior_url": "https://www.sbigroup.co.jp/news/2025/0822_15679.htmlSBI",
+    "corrected_primary_url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf",
+    "reason": "The prior artifact URL contained trailing text; the official SBI English PDF was retrieved and verified. The historical Run213 artifact is not rewritten."
+  },
+  "platform_map": [
+    {
+      "platform": "ChatGPT",
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "permission_status": "GitHub repository read and integration-branch write tested; effective token scopes not independently exposed; least privilege not verified",
+      "data_flow_status": "Current session to GitHub REST/contents APIs for Barrot-Agent/B-Agent; no main write; no data sent to another model."
+    },
+    {
+      "platform": "Claude",
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow_status": "NO_LIVE_DATA_FLOW_VERIFIED"
+    },
+    {
+      "platform": "Grok",
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow_status": "NO_LIVE_DATA_FLOW_VERIFIED; Groq is a separate provider and does not prove Grok access."
+    },
+    {
+      "platform": "Gemini",
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow_status": "NO_LIVE_DATA_FLOW_VERIFIED"
+    },
+    {
+      "platform": "Copilot",
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow_status": "No current authenticated review/data flow; assignment is not an approval."
+    },
+    {
+      "platform": "Codex",
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow_status": "NO_LIVE_DATA_FLOW_VERIFIED"
+    },
+    {
+      "platform": "Hugging Face",
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "HF_TOKEN scope not verified; deployment workflows gated",
+      "data_flow_status": "No authenticated sync or Space deployment verified."
+    },
+    {
+      "platform": "Kaggle",
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "Credentials not verified; submission workflow manual and allowlisted",
+      "data_flow_status": "No authenticated dataset write or competition submission."
+    },
+    {
+      "platform": "Databricks",
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "Configured token presence is not proof of valid scope",
+      "data_flow_status": "No current authenticated workspace read/write verified."
+    }
+  ],
+  "coordination_status": {
+    "live_nine_platform_quorum": false,
+    "external_provider_dispatch": false,
+    "inter_model_data_transfer": false,
+    "minority_objections_retained": true,
+    "red_team_review": "Not independently executed across the eight unverified platforms."
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "This addendum contains rendered corporate-source evidence without raw HTTP receipts and contains no market-model evaluation."
+  },
+  "next_actions": [
+    "Verify Coinbase RLUSD holdings and collateral eligibility after the October 28 listing cutoff.",
+    "Seek primary evidence of BNY XRP custody balances, client usage and any collateral deployment.",
+    "Measure SBI/Circle JV USDC distribution volumes and SBI VC Trade product activity without inferring XRP flows.",
+    "Verify current Coinbase ownership percentage in Circle after the IPO using the latest filings.",
+    "Keep all nine platform statuses unverified until authentication, permissions and actual data flow are tested."
+  ]
+}

@@ -1,0 +1,284 @@
+{
+  "schema_version": "1.0",
+  "run": 134,
+  "created_at_utc": "2026-11-10T15:52:00Z",
+  "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "verified_integration_head": "5b5f09bb7a400426911657168bec9ced2ea671c3",
+  "pr": 1660,
+  "verification": {
+    "tests_passed": 3350,
+    "failures": 0,
+    "subtests": 8,
+    "coverage_percent": 59.58,
+    "wheel_build": "passed",
+    "installed_wheel": "passed",
+    "dependency_manifests": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed": "passed; merge disabled",
+    "push_ci": 42847593042,
+    "pr_ci": 42847961153,
+    "push_audit": 42847592976,
+    "pr_audit": 42847961591,
+    "push_gate": 42847593064,
+    "pr_gate": 42847961148
+  },
+  "repository": {
+    "ahead": 1893,
+    "behind": 0,
+    "changed_files": 947,
+    "additions": 267155,
+    "deletions": 3655,
+    "open_prs": 373,
+    "drafts": 358,
+    "non_drafts": 15,
+    "source_prs": [
+      1640,
+      1643,
+      1642
+    ],
+    "no_merge": true
+  },
+  "market_cutoff_utc": "2026-11-10T15:24:43.167Z",
+  "spot": {
+    "kraken": {
+      "pair": "XRP/USD",
+      "last": 1.06176,
+      "bid": 1.0611,
+      "ask": 1.06123,
+      "volume_24h_xrp": 30211000,
+      "open_24h": 1.09748,
+      "high_24h": 1.11573,
+      "low_24h": 1.0475,
+      "event_time_available": false,
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "okx": {
+      "pair": "XRP-USDT",
+      "last": 1.0585,
+      "bid": 1.0584,
+      "ask": 1.0585,
+      "volume_24h_xrp": 71049000,
+      "open_24h": 1.1012,
+      "high_24h": 1.1167,
+      "low_24h": 1.0486,
+      "event_time_utc": "2026-11-10T15:24:43.167Z",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    "usdt_usd_kraken": 0.9988,
+    "normalized_okx_usd": 1.0572298,
+    "normalized_okx_vs_kraken_percent": -0.4267,
+    "change_from_open_percent": {
+      "kraken": -3.2547,
+      "okx": -3.8776
+    },
+    "caveat": "Asynchronous venue observations; not an executable arbitrage signal."
+  },
+  "spot_depth": {
+    "provider": "Fuelmaps",
+    "snapshot_utc": "2026-11-10T13:00:00Z",
+    "venues": 6,
+    "within_1pct_bids_usd": 13800000,
+    "within_1pct_asks_usd": 9200000,
+    "bid_share_percent": 60.1,
+    "excluded": [
+      "Binance",
+      "Bitget"
+    ],
+    "caveat": "Stale versus latest quotes; resting orders are cancellable; no synchronized current L2."
+  },
+  "derivatives": [
+    {
+      "provider": "TradRadar",
+      "time_utc": "2026-11-10T13:40:00Z",
+      "oi_usd": 1610000000,
+      "oi_change_24h_percent": -3.65,
+      "funding_8h_percent": 0.0085,
+      "liquidations_24h_usd": 8750000,
+      "long_liquidations_usd": 8270000,
+      "short_liquidations_usd": 480000,
+      "long_accounts_percent": 79.7,
+      "coverage": "7 exchanges"
+    },
+    {
+      "provider": "Liqwall",
+      "time_utc": "2026-11-10T11:32:00Z",
+      "oi_usd": 1210000000,
+      "oi_change_24h_percent": -1.7,
+      "funding_8h_percent": 0.0084,
+      "liquidations_24h_usd": 3800000,
+      "long_liquidations_usd": 3200000,
+      "short_liquidations_usd": 600000,
+      "binance_accounts_long_percent": 74.1
+    },
+    {
+      "provider": "OptimistFi",
+      "time_utc": "2026-11-10T13:40:00Z",
+      "oi_usd": 1400000000,
+      "coverage": "37 perpetual venues"
+    }
+  ],
+  "etf": {
+    "date": "2026-11-09",
+    "cryptokeyhole_net_xrp": -9216553,
+    "approx_usd": -10100000,
+    "reporting_funds": 3,
+    "expected_daily_funds": 4,
+    "components": {
+      "bitwise": -8594551,
+      "canary": -427341,
+      "toxr_21shares": -194660
+    },
+    "franklin": "pending",
+    "other_trackers_approx_usd": -10400000,
+    "disagreement": "Alpha/Coinglass and ByKaranteli completeness and zero-fill behavior conflict; trackers overlap issuer files.",
+    "model_eligible": false
+  },
+  "macro": {
+    "source": "BLS",
+    "release_utc": "2026-11-10T13:30:00Z",
+    "headline_mom_percent": 0.4,
+    "core_mom_percent": 0.3,
+    "food_mom_percent": 0.5,
+    "energy_mom_percent": 0.7,
+    "shelter_mom_percent": 0.3,
+    "yoy": "affected October 2025 comparison unavailable because data were not collected",
+    "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+  },
+  "relationships": {
+    "sbi_ripple": {
+      "sbi_equity_percent": "about 9% as of 2025-06-09",
+      "source": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "sbi_ripple_asia": "SBI Group 60% voting interest as of 2026-03-31; historical 60/40 SBI/Ripple structure",
+      "remit": "XRP bridge corridors; public volumes not established"
+    },
+    "sbi_circle": {
+      "equity_usd": 50000000,
+      "sbi_holdings_usd": 25000000,
+      "sbi_shinsei_usd": 25000000,
+      "jv": "SBI Circle Holdings / Circle SBI Japan",
+      "ownership": "50/50",
+      "source": "https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf"
+    },
+    "sbi_evernorth": {
+      "pipe_cash_usd": 200000000,
+      "date": "2025-10-21",
+      "source": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+      "note": "SBI cash contribution to Evernorth PIPE, not a direct XRP purchase."
+    },
+    "evernorth_actual_capital": {
+      "private_placement_proceeds_usd": 214100000,
+      "cash_used_to_purchase_xrp_usd": 214000000,
+      "xrp_purchased_with_cash": 84365876,
+      "in_kind_xrp": 388910000,
+      "other": {
+        "loan_draw_usd": 9700000,
+        "notes_usd": 30000000,
+        "eloc_draw_usd": 0
+      },
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "note": "Do not equate SBI's $200M PIPE contribution with all Evernorth proceeds or XRP purchase cash; investor-level settlement remains to be reconciled."
+    },
+    "sbi_rlusd": {
+      "mou": "2025-08-22",
+      "live_launch": "2026-06-24",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "note": "RLUSD distribution is live on SBI VC Trade; does not prove XRP bridge settlement."
+    },
+    "sbi_arc": {
+      "date": "2026-05-12",
+      "amount_usd": null,
+      "total_presale_usd": 222000000,
+      "source": "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+      "note": "SBI allocation undisclosed; Arc is not XRP."
+    },
+    "coinbase_circle": {
+      "circle_distribution_cost_q3_usd": 331300000,
+      "circle_distribution_cost_9m_usd": 986600000,
+      "coinbase_stablecoin_revenue_q3_usd": 306905000,
+      "coinbase_stablecoin_revenue_9m_usd": 904487000,
+      "usdc_average_q3_usd": 73300000000,
+      "usdc_onchain_volume_q3_usd": 13900000000000,
+      "source_coinbase": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "source_circle": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "note": "Different accounting measures; not nettable."
+    },
+    "circle_binance": {
+      "private_placement_usd": 100000000,
+      "shares": 1200000,
+      "price_per_share_usd": 80.84,
+      "date": "2026-09-17"
+    },
+    "ripple_coinbase_rlusd": {
+      "date": "2026-10-28",
+      "status": "Live on Coinbase Prime, Exchange and Retail; XRPL/Base/Ethereum; Global Exchange collateral was future work",
+      "source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+    },
+    "ripple_bny": {
+      "date": "2026-10-27",
+      "status": "XRP/RLUSD custody live; direct mint/redeem and trade-finance expansion future",
+      "source": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+    },
+    "ripple_standard_chartered": {
+      "status": "RLUSD custody on XRPL live; LMAX collateral mirroring planned",
+      "source": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/"
+    },
+    "pnc_coinbase_circle": {
+      "date": "2026-11-09",
+      "status": "USDC payment pilot; not an XRP corridor",
+      "source": "https://www.reuters.com/"
+    },
+    "no_direct_ripple_circle": "No direct Ripple-Circle equity or operating partnership established in reviewed primary sources."
+  },
+  "identity": {
+    "sbic": "Tokyo/Nagoya/Osaka regional SBIC companies are separate from SBI Holdings and SBI Circle Holdings.",
+    "chatgpt": "Tokyo SBIC investee-company training; no OpenAI partnership.",
+    "ask_coin": "separate exchange/token candidates; no XRP integration verified.",
+    "actual_capital": "not a standardized XRP metric; classify cash, XRP, in-kind, debt, facilities and secondary transfers separately.",
+    "kamilah_stevenson": "canonical YouTube identity unverified; no personal video inventory attributed."
+  },
+  "hypotheses": [
+    {
+      "claim": "Long-heavy deleveraging is contributing to weakness.",
+      "counter": "Spot selling and macro repricing also possible; aggregators differ."
+    },
+    {
+      "claim": "13:00 Fuelmaps showed displayed bid-side depth.",
+      "counter": "Orders are cancellable and snapshot stale."
+    },
+    {
+      "claim": "ETF holdings fell.",
+      "counter": "In-kind redemptions/custody transfers and tracker zero-fill remain alternatives."
+    },
+    {
+      "claim": "RLUSD/USDC distribution may increase XRPL activity.",
+      "counter": "Stablecoin usage does not prove XRP bridge demand."
+    },
+    {
+      "claim": "CPI may affect broad risk appetite.",
+      "counter": "No XRP-specific causal effect isolated."
+    }
+  ],
+  "source_quality": {
+    "raw_bytes_captured": false,
+    "raw_hash_receipts": false,
+    "trusted_timestamp": false,
+    "model_eligible": false,
+    "note": "Web research summary only; not an ingestion receipt. Capture raw bytes and SHA-256 through the scheduled collector before model admission."
+  },
+  "prediction": {
+    "status": "NOT_ISSUED",
+    "reason": "Insufficient synchronized historical data, WORM anchoring, shadow outcomes and demonstrated out-of-sample lift."
+  },
+  "nine_platforms": {
+    "chatgpt": "GitHub read/write verified in session",
+    "copilot": "no formal approval or persistent data flow verified",
+    "claude": "unverified",
+    "grok": "unverified",
+    "gemini": "unverified",
+    "codex": "unverified",
+    "hugging_face": "prior BUILD_ERROR",
+    "kaggle": "untested",
+    "databricks": "prior HTTP 403",
+    "external_data_transfer": false
+  }
+}

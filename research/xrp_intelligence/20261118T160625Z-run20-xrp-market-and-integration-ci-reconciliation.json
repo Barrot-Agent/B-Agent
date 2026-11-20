@@ -1,0 +1,337 @@
+{
+  "artifact_type": "barrot_xrp_run20_market_and_repository_ci_reconciliation",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-18T16:06:25Z",
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "13c60af7079700a38b4226b9110d9c9377af7695",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_head_at_capture": "a87173273fdbab3c480b4d95bfec3a74db6f6621",
+    "pr_number": 1663,
+    "pr_state": "open",
+    "draft": true,
+    "ahead_by": 304,
+    "behind_by": 0,
+    "changed_files": 1427,
+    "changed_workflow_files": 67,
+    "main_tree_entries": 1737,
+    "integration_tree_entries": 2978
+  },
+  "market": {
+    "kraken_xrpusd": {
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-18T16:06:25Z",
+      "source_event_time_utc": null,
+      "last": 0.9753,
+      "bid": 0.97505,
+      "ask": 0.97514,
+      "spread_bps": 0.922986991,
+      "volume_24h_xrp": 50378378.64184722,
+      "vwap_24h": 0.98032422,
+      "low_24h": 0.94804,
+      "high_24h": 1.00677,
+      "open_24h": 0.98253,
+      "change_from_open_percent": -0.735855394,
+      "raw_response_sha256": "c8b58a616f2864bbe7438acdf938833c3d9a0561fe3909358ee77a4d8379b432",
+      "raw_response": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"0.97514000\",\"330\",\"330.000\"],\"b\":[\"0.97505000\",\"3122\",\"3122.000\"],\"c\":[\"0.97530000\",\"99.56558747\"],\"v\":[\"30953476.85637974\",\"50378378.64184722\"],\"p\":[\"0.98739053\",\"0.98032422\"],\"t\":[22277,36424],\"l\":[\"0.96908000\",\"0.94804000\"],\"h\":[\"1.00677000\",\"1.00677000\"],\"o\":\"0.98253000\"}}}",
+      "model_eligible": false,
+      "limitation": "retrieval-time only; no source event timestamp; single-venue ticker"
+    },
+    "investing_com": {
+      "source_url": "https://www.investing.com/crypto/xrp/historical-data",
+      "observation_date": "2026-11-18",
+      "row_status": "daily row; session may be incomplete",
+      "price": 0.9897,
+      "open": 0.9835,
+      "high": 1.0066,
+      "low": 0.9703,
+      "volume_usd_millions": 350.74,
+      "change_percent": 0.62,
+      "model_eligible": false,
+      "discrepancy_vs_kraken_last_percent": 1.476468779,
+      "limitation": "different publisher, sampling and daily-bar vintage; not synchronized to Kraken retrieval"
+    },
+    "derivatives": [
+      {
+        "publisher": "AlertaChart",
+        "source_url": "https://www.alertachart.com/data/funding-rates/xrp",
+        "updated_at_utc": "2026-11-18T11:16:00Z",
+        "funding_percent_per_8h": -0.0119,
+        "open_interest_usd": 642060000,
+        "venue_universe": [
+          "Binance",
+          "Bybit",
+          "OKX",
+          "Coinbase",
+          "Hyperliquid"
+        ],
+        "model_eligible": false,
+        "independence_group": "alertachart",
+        "limitation": "OI-weighted aggregator; timestamp is 4h50m before this capture"
+      },
+      {
+        "publisher": "Liqwall",
+        "source_url": "https://liqwall.com/open-interest/xrp",
+        "updated_at_utc": "2026-11-18T05:22:00Z",
+        "open_interest_usd": 958000000,
+        "change_24h_percent": -2.1,
+        "model_eligible": false,
+        "independence_group": "liqwall",
+        "limitation": "different venue/contract universe and older snapshot"
+      },
+      {
+        "publisher": "Coinranking",
+        "source_url": "https://coinranking.com/coin/-l8Mn2pVlRs-p%2Bxrp-xrp/futures",
+        "observation_date": "2026-11-17",
+        "open_interest_usd": 1550000000,
+        "funding_percent": -0.0083,
+        "volume_usd": 2210000000,
+        "model_eligible": false,
+        "independence_group": "coinranking",
+        "limitation": "daily 'Yesterday' row; contract coverage not reconciled"
+      }
+    ],
+    "etf_flows": {
+      "publisher": "CryptoKeyhole",
+      "source_url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "observation_date": "2026-11-17",
+      "flow_xrp": -3251,
+      "funds_reported": 2,
+      "funds_expected": 4,
+      "latest_issuer_file_read_at_utc": "2026-11-18T05:25:00Z",
+      "latest_complete_day": "2026-11-13",
+      "latest_complete_day_flow_xrp": -9967,
+      "model_eligible": false,
+      "independence_group": "cryptokeyhole",
+      "limitation": "partial two-of-four issuer coverage; not a complete complex-wide flow"
+    }
+  },
+  "ci": {
+    "exact_head": "a87173273fdbab3c480b4d95bfec3a74db6f6621",
+    "full_suite_run": 44337506785,
+    "result": "failure",
+    "passed": 4272,
+    "failed": 2,
+    "skipped": 1,
+    "warnings": 11,
+    "subtests": 19,
+    "duration_seconds": 189.57,
+    "failing_tests": [
+      "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state",
+      "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_security_gates_and_open_pr_classifications"
+    ],
+    "root_cause": "Run 19 map rewrite dropped snapshot_head_sha and pre_fix_pr_head_ci; tests correctly rejected incomplete evidence schema.",
+    "dependency_audit_push": {
+      "run_id": 44337506881,
+      "result": "success"
+    },
+    "dependency_audit_pr": {
+      "run_id": 44337522581,
+      "result": "success"
+    },
+    "fail_closed_push": {
+      "run_id": 44337506832,
+      "result": "success"
+    },
+    "fail_closed_pr": {
+      "run_id": 44337522571,
+      "result": "success"
+    },
+    "money_audit_pr": {
+      "run_id": 44337522580,
+      "result": "success"
+    },
+    "pr_ci": {
+      "run_id": 44337522662,
+      "result": "success",
+      "standard_tests": "passed",
+      "full_suite": "skipped because PR is draft"
+    },
+    "previous_exact_head_pass": {
+      "head_sha": "78ed0c1a2e6cec991f6069f4c624e5e40bc96fe0",
+      "run_id": 44322684443,
+      "passed": 4274,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "workflow_audit": {
+    "changed_workflow_definitions_fetched": 67,
+    "unpinned_action_references": 0,
+    "high_risk": [
+      {
+        "path": ".github/workflows/paid-issue-publish.yml",
+        "trigger": "workflow_run",
+        "permission": "contents:write",
+        "persist_credentials": true,
+        "command": "git push origin main",
+        "status": "active"
+      },
+      {
+        "path": ".github/workflows/release.yml",
+        "trigger": "tag push v*.*.*",
+        "permission": "contents:write",
+        "status": "tag-triggered; not run"
+      },
+      {
+        "path": ".github/workflows/xrp-public-ingestion.yml",
+        "trigger": "hourly and daily schedule on main; read-only capture",
+        "status": "integration-only until merged"
+      },
+      {
+        "path": ".github/workflows/barrot-ops.yml",
+        "trigger": "manual",
+        "status": "explicit external-change, Databricks and Kaggle confirmations"
+      },
+      {
+        "path": ".github/workflows/kaggle-competitions.yml",
+        "trigger": "manual",
+        "status": "explicit submission confirmation and exact competition allowlist"
+      },
+      {
+        "path": ".github/workflows/deploy-a2a-worker.yml",
+        "trigger": "manual",
+        "status": "main-only, exact SHA, deployment and secret-rotation confirmation"
+      },
+      {
+        "path": ".github/workflows/deploy-databricks.yml",
+        "trigger": "manual",
+        "status": "main-only, exact SHA and external-change confirmation"
+      },
+      {
+        "path": ".github/workflows/barrot-restart-space.yml",
+        "trigger": "manual",
+        "status": "main-only, exact SHA and restart confirmation"
+      },
+      {
+        "path": ".github/workflows/sync-huggingface.yml",
+        "trigger": "manual",
+        "status": "quarantined; job condition false"
+      },
+      {
+        "path": ".github/workflows/sync-self-hosted-brain.yml",
+        "trigger": "manual",
+        "status": "quarantined; job condition false"
+      },
+      {
+        "path": ".github/workflows/coinbase-paper-trader.yml",
+        "trigger": "manual",
+        "status": "artifact-only simulation; not run"
+      }
+    ],
+    "transitive_script_review": "incomplete",
+    "branch_protection": {
+      "protected": true,
+      "details_api": "403",
+      "ruleset_id": 10863829,
+      "ruleset_enforcement": "disabled"
+    },
+    "codeowners": "* @Barrot-Agent"
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "forecast_issuance_allowed": false,
+    "walk_forward_forecasts": 0,
+    "drift_status": "INSUFFICIENT_DATA",
+    "external_worm_anchor": "NOT_ANCHORED",
+    "raw_to_feature_store_rebuild": false,
+    "sec_edgar": "BLOCKED_CONFIGURATION; BARROT_SEC_USER_AGENT requires approved monitored project contact"
+  },
+  "coordination": {
+    "verified": [
+      "ChatGPT -> GitHub connector -> Barrot-Agent/B-Agent"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "independent_dispatch": false,
+    "external_data_transfer": false,
+    "red_team_quorum": false
+  },
+  "pr_inventory": [
+    {
+      "number": 1663,
+      "classification": "blocked",
+      "overlap_paths": []
+    },
+    {
+      "number": 1664,
+      "classification": "unique/unreviewed",
+      "overlap_paths": [
+        "BARROT_SYNC.md",
+        "MEMORY.md",
+        "README.md"
+      ]
+    },
+    {
+      "number": 1665,
+      "classification": "blocked",
+      "overlap_paths": [
+        "requirements-dev.txt"
+      ]
+    },
+    {
+      "number": 1666,
+      "classification": "blocked",
+      "overlap_paths": [
+        "pyproject.toml"
+      ]
+    },
+    {
+      "number": 1541,
+      "classification": "blocked",
+      "overlap_paths": [
+        "barrot_agent/mmi_adapter.py",
+        "barrot_agent/mmi_v1.py",
+        "research/operations/20261103T005800Z-mmi-canonical-claim-fingerprint.json",
+        "tests/test_mmi_integration.py",
+        "tests/test_mmi_v1.py"
+      ]
+    },
+    {
+      "number": 1460,
+      "classification": "unique/unreviewed",
+      "overlap_paths": []
+    },
+    {
+      "number": 1450,
+      "classification": "unique/unreviewed",
+      "overlap_paths": []
+    },
+    {
+      "number": 1440,
+      "classification": "unique/unreviewed",
+      "overlap_paths": []
+    },
+    {
+      "number": 1437,
+      "classification": "unique/unreviewed",
+      "overlap_paths": []
+    },
+    {
+      "number": 1436,
+      "classification": "unique/unreviewed",
+      "overlap_paths": []
+    },
+    {
+      "number": 1353,
+      "classification": "unique/unreviewed",
+      "overlap_paths": []
+    },
+    {
+      "number": 1265,
+      "classification": "unique/unreviewed",
+      "overlap_paths": [
+        ".github/workflows/ci.yml"
+      ]
+    }
+  ],
+  "disposition": "NO_MERGE; no deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action."
+}

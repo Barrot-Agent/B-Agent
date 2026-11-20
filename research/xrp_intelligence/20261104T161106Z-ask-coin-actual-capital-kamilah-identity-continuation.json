@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "artifact_type": "exact_phrase_and_creator_identity_continuation",
+  "record_id": "xrp-exact-phrase-creator-identity-continuation-20261104T161106Z",
+  "recorded_at_utc": "2026-11-04T16:11:06Z",
+  "research_scope": [
+    "ASK Coin exact-phrase resolution",
+    "actual capital exact-phrase resolution",
+    "Kamilah/Camilla Stevenson YouTube identity gate"
+  ],
+  "forecast_issued": false,
+  "prediction_status": "NOT_ISSUED",
+  "model_eligible": false,
+  "exact_phrase_findings": [
+    {
+      "phrase": "ASK Coin",
+      "status": "AMBIGUOUS_BEST_SUPPORTED_CANDIDATE_NOT_CONFIRMED",
+      "candidate": {
+        "name": "Permission Coin",
+        "ticker": "ASK",
+        "official_website": "https://permission.ai/",
+        "official_token_documentation": "https://docs.permission.ai/ask-token",
+        "official_claims": [
+          "Permission's current public site describes a family-friendly AI product and says ASK rewards positive behavior, including learning and healthy digital habits.",
+          "The official token documentation describes ASK as the Permission ecosystem's native token, with rewards and agent-to-agent coordination utility.",
+          "The token documentation states a fixed supply of 100,000,000,000 ASK.",
+          "The official token documentation lists Base and Polygon contract addresses and describes ASK as a LayerZero OFT live on Stargate.",
+          "The official site says ASK rewards can be redeemed for gift cards through its rewards partner Tremendous, subject to minimum redemption thresholds.",
+          "The reviewed official token page contains no matching text for XRP or XRPL; this is a page-level negative finding, not proof that no third-party bridge exists."
+        ],
+        "network_scope": {
+          "Base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+          "Polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
+          "XRP_Ledger_or_XRPL": "No direct deployment or integration was found in the reviewed official token documentation."
+        },
+        "identity_confidence": "Strong candidate for the generic phrase because the official project uses the ASK ticker; not enough evidence to identify it as the user's intended ASK Coin."
+      },
+      "current_third_party_market_snapshot": {
+        "publisher": "CoinMarketCap",
+        "observed_price_usd": 0.00008694,
+        "observed_market_cap_usd": 1400000,
+        "observed_24h_volume_usd": 120.07,
+        "circulating_supply": 16166619298,
+        "maximum_supply": 100000000000,
+        "observed_holders": 206190,
+        "data_status": "Third-party rendered page; no exact source cutoff or byte-complete raw receipt in this artifact.",
+        "interpretation": "The displayed 24-hour volume is extremely small relative to the displayed market capitalization. Treat it as a low-liquidity warning, not a reliable executable price or a valuation of the wider Permission platform."
+      },
+      "disconfirming_evidence_and_limits": [
+        "The user's phrase alone does not establish Permission Coin as the intended asset.",
+        "Official Permission documentation lists Base and Polygon, both EVM networks; it does not list XRPL or XRP.",
+        "The official site currently emphasizes family AI and reward redemption, while older market-data copy emphasizes the agentic web; preserve the product-positioning evolution rather than treating either description as a complete historical record.",
+        "No verified direct Ripple, SBI, Coinbase, Circle or XRPL relationship was found for this ASK candidate in the reviewed official sources."
+      ],
+      "source_ids": [
+        "permission_official_site_20261104",
+        "permission_official_ask_token_docs_20261104",
+        "coingecko_cmc_permission_ask_20261104"
+      ]
+    },
+    {
+      "phrase": "actual capital",
+      "status": "AMBIGUOUS_NO_SINGLE_EVENT_LINKED_TO_USER_PHRASE",
+      "candidate_occurrences": [
+        {
+          "event_date": "2026-07-28",
+          "claim": "A secondary article describes a $13.84M XRP short on Hyperliquid at 20x leverage and calls approximately $692,000 the implied actual capital.",
+          "arithmetic": {
+            "notional_usd": 13840000,
+            "leverage": 20,
+            "simplified_implied_initial_margin_usd": 692000,
+            "formula": "13,840,000 / 20"
+          },
+          "source_ids": [
+            "tokenforge_xrp_hyperliquid_short_20260728"
+          ],
+          "limitations": [
+            "The article attributes the position to a U.Today report, not a raw account receipt.",
+            "No full wallet/account state, cross-versus-isolated margin mode, other positions, collateral haircuts or account equity were independently verified.",
+            "$692,000 is a simplified notional/leverage calculation, not verified actual capital."
+          ]
+        },
+        {
+          "event_date": "2026-07-04",
+          "claim": "A separate secondary report describes a 14.189M XRP Hyperliquid long with $16.3M notional at 20x and a 52.67 BTC deposit reported at $3.26M.",
+          "arithmetic": {
+            "notional_usd": 16300000,
+            "leverage": 20,
+            "simplified_implied_initial_margin_usd": 815000,
+            "formula": "16,300,000 / 20",
+            "reported_btc_deposit_usd": 3260000
+          },
+          "source_ids": [
+            "chaincatcher_hyperliquid_xrp_long_20260704",
+            "kucoin_hyperliquid_xrp_long_20260704"
+          ],
+          "limitations": [
+            "The sources republish an Onchain Lens attribution; they are not independent account-state verification.",
+            "A gross BTC deposit is not proof that all deposited value became position margin.",
+            "The $815,000 value is an arithmetic estimate under a simplified 20x assumption, not verified account equity."
+          ]
+        }
+      ],
+      "separate_meanings": [
+        "Ripple Prime/Hidden Road regulatory net capital is a regulated firm-capital measure, not an XRP trader's initial margin.",
+        "Customer-segregated funds are not the firm's own capital.",
+        "Repo/reverse-repo financing balances are not the same as regulatory net capital or XRP position margin.",
+        "Position notional, gross deposits, implied initial margin and actual account equity must remain separate."
+      ],
+      "conclusion": "The exact phrase appears in secondary XRP leveraged-position commentary, but no evidence links either Hyperliquid event to the user's original phrase. Preserve both as separate leads and keep Ripple Prime/Hidden Road regulatory capital as a distinct research track.",
+      "source_ids": [
+        "tokenforge_xrp_hyperliquid_short_20260728",
+        "chaincatcher_hyperliquid_xrp_long_20260704",
+        "kucoin_hyperliquid_xrp_long_20260704"
+      ]
+    },
+    {
+      "phrase": "SBIC, ChatGPT SBIC",
+      "status": "NO_VERIFIED_OPENAI_OR_CHATGPT_PARTNERSHIP",
+      "finding": "SBIC East's official 2026-03-05 seminar page documents a generative-AI/ChatGPT seminar with a Microsoft Japan speaker and a ChatGPT-use demonstration. Separately, SBI Holdings and SBI Securities announced ChatGPT Enterprise adoption on 2025-05-01 (SBI Securities from January 2025; SBI Holdings from March 2025). Neither fact establishes an SBIC-East/OpenAI partnership or a ChatGPT integration with XRP prediction systems.",
+      "source_ids": [
+        "sbic_east_chatgpt_education_notice",
+        "sbi_holdings_chatgpt_enterprise_notice"
+      ],
+      "limitation": "The phrase may be shorthand or a transcription; no additional primary evidence establishes a formal SBIC-OpenAI agreement."
+    }
+  ],
+  "creator_identity_audit": {
+    "requested_name_variants": [
+      "Camilla Stevenson",
+      "Kamilah Stevenson",
+      "Dr. Kamilah Stevenson",
+      "Camila Stevenson"
+    ],
+    "candidate_channel": {
+      "youtube_handle": "@drkamilahstevenson",
+      "youtube_url": "https://www.youtube.com/@drkamilahstevenson",
+      "channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
+      "third_party_analytics_publisher": "vling",
+      "third_party_display_name": "Kamilah Stevenson",
+      "third_party_subscriber_count": 143000,
+      "third_party_video_count": 1300,
+      "third_party_join_date": "2015-08-25",
+      "third_party_channel_description": "Stocks, crypto, macro awareness and long-term investing.",
+      "linktree_referrer": "https://linktr.ee/DrKamilahstevenson1",
+      "linktree_joined_month": "2026-10",
+      "linktree_description": "XRP educator; links to a YouTube handle named @drkamilahstevenson.",
+      "linkage_status": "CANDIDATE_HANDLE_LINKED_FROM_LINKTREE_BUT_CHANNEL_ID_AND_REAL_PERSON_NOT_VERIFIED"
+    },
+    "conflicting_or_duplicative_identity_surface": [
+      {
+        "source_id": "idcrawl_kamilah_stevenson_profiles",
+        "claim": "Third-party aggregation reports 20 YouTube profiles and numerous similarly named social profiles, including @drkamilahstevenson, @CoachKamilahStevensonxrp and @KamilahStevensonDigitalNetwork.",
+        "limitation": "This is not first-party identity evidence and may contain stale, duplicate or misattributed profiles."
+      },
+      {
+        "source_id": "telemetr_kamilah_stevenson_telegram",
+        "claim": "A third-party Telegram directory lists @drkamilahstevensona and includes the same YouTube handle in its description.",
+        "limitation": "The Telegram account is not verified; its description does not prove ownership of the YouTube channel."
+      }
+    ],
+    "verification_gaps": [
+      "No first-party website or verified social account was found linking the candidate YouTube channel ID to the same named individual.",
+      "The YouTube handle link and third-party vling channel ID were not authoritatively cross-mapped.",
+      "Multiple similar channels and social accounts create a material impersonation/misattribution risk.",
+      "No authoritative evidence connects the candidate to any previously surfaced Camilla/Camila person or channel."
+    ],
+    "identity_status": "UNVERIFIED_CANDIDATE_ONLY",
+    "video_inventory_status": "NOT_CREATED_PENDING_FIRST_PARTY_IDENTITY_AND_CHANNEL_OWNERSHIP_VERIFICATION",
+    "rule": "Do not attribute or inventory public videos until a first-party cross-link or equivalent authoritative ownership evidence resolves the candidate."
+  },
+  "source_registry": [
+    {
+      "id": "permission_official_site_20261104",
+      "publisher": "Permission",
+      "url": "https://permission.ai/",
+      "source_type": "official_project_website",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": null,
+      "capture_status": "web_rendered_page_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "permission_official_ask_token_docs_20261104",
+      "publisher": "Permission",
+      "url": "https://docs.permission.ai/ask-token",
+      "source_type": "official_token_documentation",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": null,
+      "capture_status": "web_rendered_document_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "coingecko_cmc_permission_ask_20261104",
+      "publisher": "CoinMarketCap",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "source_type": "third_party_market_aggregator",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": null,
+      "capture_status": "web_rendered_page_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "vling_kamilah_channel_20261104",
+      "publisher": "vling",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "source_type": "third_party_channel_analytics",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": null,
+      "capture_status": "web_rendered_page_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "linktree_drkamilahstevenson1_20261104",
+      "publisher": "Linktree",
+      "url": "https://linktr.ee/DrKamilahstevenson1",
+      "source_type": "public_profile_link_hub",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": null,
+      "capture_status": "web_rendered_page_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "youtube_drkamilahstevenson_handle_20261104",
+      "publisher": "YouTube",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "source_type": "public_channel_handle_linked_from_linktree",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": null,
+      "capture_status": "redirected_handle_page_metadata_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "idcrawl_kamilah_stevenson_profiles",
+      "publisher": "IDCrawl",
+      "url": "https://www.idcrawl.com/kamilah-stevenson",
+      "source_type": "third_party_identity_aggregation",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": null,
+      "capture_status": "web_rendered_page_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "telemetr_kamilah_stevenson_telegram",
+      "publisher": "Telemetr",
+      "url": "https://telemetr.io/en/channels/1640789256-drkamilahstevensona",
+      "source_type": "third_party_telegram_directory",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": null,
+      "capture_status": "web_rendered_page_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "tokenforge_xrp_hyperliquid_short_20260728",
+      "publisher": "TokenForge HQ",
+      "url": "https://www.tokenforgehq.com/articles/xrp-hyperliquid-leveraged-short-whale-july-2026",
+      "source_type": "secondary_republication",
+      "source_data_as_of_utc": "2026-07-28",
+      "retrieved_at_utc": null,
+      "capture_status": "web_rendered_article_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "chaincatcher_hyperliquid_xrp_long_20260704",
+      "publisher": "ChainCatcher",
+      "url": "https://www.chaincatcher.com/en/article/2274906",
+      "source_type": "secondary_republication",
+      "source_data_as_of_utc": "2026-07-04",
+      "retrieved_at_utc": null,
+      "capture_status": "web_rendered_article_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "kucoin_hyperliquid_xrp_long_20260704",
+      "publisher": "KuCoin News",
+      "url": "https://www.kucoin.com/news/flash/whale-20x-leverages-14-189m-xrp-worth-16-3m-on-hyperliquid",
+      "source_type": "secondary_republication",
+      "source_data_as_of_utc": "2026-07-04",
+      "retrieved_at_utc": null,
+      "capture_status": "web_rendered_article_extract_only",
+      "raw_content_sha256": null,
+      "model_eligible": false
+    },
+    {
+      "id": "sbic_east_chatgpt_education_notice",
+      "publisher": "SBIC East",
+      "url": "https://www.sbic.co.jp/seminar/20260305js/",
+      "source_type": "official_company_notice",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": null,
+      "capture_status": "prior_primary_source_artifact_reference",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "published_at_date": "2026-03-05",
+      "claims_supported": [
+        "Official SBIC East seminar titled 'Current State and Future of Generative AI (ChatGPT)' on 2026-03-05; hosted by Tokyo Small and Medium Business Investment & Consultation Co., Ltd., co-hosted by Hamamatsu Iwata Shinkin; Microsoft Japan speaker demonstrated ChatGPT use cases."
+      ]
+    },
+    {
+      "id": "sbi_holdings_chatgpt_enterprise_notice",
+      "publisher": "SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/news/2025/0501_15410.html",
+      "source_type": "official_company_notice",
+      "source_data_as_of_utc": null,
+      "retrieved_at_utc": null,
+      "capture_status": "prior_primary_source_artifact_reference",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "published_at_date": "2025-05-01",
+      "claims_supported": [
+        "SBI Holdings and SBI Securities announced ChatGPT Enterprise adoption; SBI Securities had begun use in January 2025 and SBI Holdings began limited employee use in March 2025."
+      ]
+    }
+  ],
+  "source_independence": {
+    "Permission official site and token docs": "Same issuer; complementary pages, not independent corroboration.",
+    "CoinMarketCap": "Third-party market aggregator; not primary token or exchange evidence.",
+    "vling and IDCrawl": "Third-party discovery/analytics surfaces; not identity authorities.",
+    "Linktree and YouTube handle": "A profile-to-handle link exists, but the handle owner and channel ID are not verified.",
+    "ChainCatcher and KuCoin News": "Both republish the same Onchain Lens lead for the July 4 position; not independent on-chain corroboration.",
+    "TokenForge HQ": "Secondary article that cites U.Today for the July 28 short; not a primary Hyperliquid account receipt."
+  },
+  "data_quality_controls": [
+    "No video inventory is created while identity remains unverified.",
+    "No person or channel ownership is inferred from matching names, bios or third-party analytics.",
+    "No ASK candidate is treated as the user's intended asset solely from ticker wording.",
+    "No XRPL integration is inferred from Base/Polygon LayerZero deployment.",
+    "No implied margin calculation is labeled actual account equity or capital deployed.",
+    "No source is model-eligible without byte-complete receipts, exact cutoff and source-quality admission."
+  ],
+  "next_actions": [
+    "Continue exact-phrase searches for ASK Coin across XRPL-native token registries and official project sources.",
+    "Seek a first-party channel cross-link or authoritative YouTube channel ID mapping before video inventory.",
+    "Keep Ripple Prime regulatory capital, Hyperliquid position notional, gross deposits and implied initial margin as separate records.",
+    "Do not issue directional XRP forecasts from these identity and exact-phrase records."
+  ]
+}

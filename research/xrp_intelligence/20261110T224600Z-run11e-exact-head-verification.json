@@ -1,0 +1,55 @@
+{
+  "run_id": "barrot-xrp-run-11e",
+  "captured_at_utc": "2026-11-10T22:46:00Z",
+  "main_sha": "afb3024fbcb976db5acdf52b85e253ff46859ce6",
+  "integration_code_head": "ef4e8a1689a7cc0eb716a16b17b9cfbf6f3e847d",
+  "integration_pr": 1660,
+  "exact_head_ci": {
+    "full_suite_run": 42916902049,
+    "full_suite_job": 130181569908,
+    "head_sha": "ef4e8a1689a7cc0eb716a16b17b9cfbf6f3e847d",
+    "passed": 3369,
+    "failed": 0,
+    "subtests_passed": 8,
+    "coverage_percent": 60,
+    "core_tests": "passed",
+    "wheel_and_installed_mission": "passed",
+    "dependency_audit_run": 42916902053,
+    "manifests": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_gate_run": 42916901942,
+    "conclusion": "passed; automatic merge disabled"
+  },
+  "pr": {
+    "ahead": 1941,
+    "behind": 0,
+    "changed_files": 966,
+    "additions": 271346,
+    "deletions": 3863,
+    "open_prs": 373,
+    "drafts": 358,
+    "non_drafts": 15,
+    "formal_approvals": 0,
+    "review_threads": 0
+  },
+  "security": {
+    "gh_hosts_path_absent_main": true,
+    "gh_hosts_path_absent_integration": true,
+    "targeted_source_pr_branches_with_path": 17,
+    "targeted_source_pr_branches_checked": 17,
+    "credential_contents_read": false,
+    "credential_revoked": false
+  },
+  "cli_safety": {
+    "default_mode": "read-only",
+    "direct_default_branch_writer_removed": true,
+    "automatic_pr_creation_removed": true,
+    "local_repair_requires_interactive_confirmation": true,
+    "clean_worktree_guard": "not yet implemented; keep local repair disabled",
+    "external_lunaroute_transfer_requires_interactive_confirmation": true,
+    "transfer_executed": false
+  },
+  "forecast": "NOT_ISSUED",
+  "no_merge": true,
+  "no_pr_closed": true
+}

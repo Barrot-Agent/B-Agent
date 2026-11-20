@@ -30,7 +30,7 @@ Project-wide instructions live in [`AGENTS.md`](AGENTS.md). Barrot records durab
 
 | Server | Transport | What it adds | Prerequisite |
 |---|---|---|---|
-| `github` | remote — `https://api.githubcopilot.com/mcp/` | Official GitHub MCP: repos, issues, pull requests, code search, Actions | `GITHUB_MCP_TOKEN` set to a GitHub personal access token (stored in the OpenCode service environment) |
+| `github` | remote — `https://api.githubcopilot.com/mcp/` | Official GitHub MCP: repos, issues, pull requests, code search, Actions | `GITHUB_MCP_TOKEN` must be configured in the OpenCode service environment; presence and validity are not verified here |
 | `docling` | local — `uvx --from "docling-mcp[local]" docling-mcp-server --transport stdio` | PDF/DOCX/HTML conversion with OCR through [Docling](https://github.com/docling-project/docling) | [`uv`](https://docs.astral.sh/uv/) installed; first run downloads the Docling stack and models |
 | `searxng` | local — `npx -y mcp-searxng` | Web search and URL reading through [SearXNG](https://github.com/searxng/searxng) | Node.js 22+ and a local SearXNG instance with the JSON API enabled |
 
@@ -54,7 +54,7 @@ service environment, because MCP connections are opened at startup:
 opencode service restart
 ```
 
-The `github` server authenticates with a personal access token read from `GITHUB_MCP_TOKEN`. It is already stored in the OpenCode service environment on this machine:
+The `github` server reads a personal access token from `GITHUB_MCP_TOKEN`. The GitHub MCP authentication is not yet verified by this repository configuration; the variable's presence, validity, and end-to-end data flow must be tested before treating this connection as live:
 
 ```bash
 opencode service set env GITHUB_MCP_TOKEN "$(gh auth token)"
@@ -707,3 +707,10 @@ that is currently the best way to support development.
 ---
 
 **Barrot-Agent** - Intelligent automation and data processing at your fingertips 🦜✨
+
+
+## Historical GitHub MCP setup note
+The prior integration README documented the GitHub remote at `https://api.githubcopilot.com/mcp/`, requiring a least-privilege `GITHUB_MCP_TOKEN` in the OpenCode service environment. It stated that authentication was not verified until a health check and test request succeeded, and that the OAuth flow was unavailable because dynamic client registration was unsupported. Treat this as historical setup guidance, not current connectivity proof.
+
+## MCP connection evidence
+Files under `results/mcp_sync/` are timestamped snapshots, not live connection guarantees. The main-branch Nov 15 snapshot showed the GitHub remote connected and local stdio servers unreachable in that capture. The Nov 13 LunaRoute snapshot is archived as historical evidence only. Re-test authentication, endpoint scope, and data flow before claiming any provider is connected.

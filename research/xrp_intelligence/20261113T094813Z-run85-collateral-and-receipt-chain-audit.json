@@ -1,0 +1,159 @@
+{
+  "schema_version": "barrot.xrp.research-snapshot.v1",
+  "run": "Run85",
+  "captured_at_utc": "2026-11-13T09:48:13.005Z",
+  "data_cutoff_utc": "2026-11-13T09:48:13.005Z",
+  "status": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+  "repository": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_sha": "7a04d89b47625b4ba853b25a13db70b119c2db95",
+    "commits_ahead": 2232,
+    "commits_behind": 0,
+    "pr": 1662,
+    "draft": true
+  },
+  "spot": {
+    "okx": {
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "event_timestamp_utc": "2026-11-13T09:25:46.970Z",
+      "last": 1.0281,
+      "bid": 1.0281,
+      "ask": 1.0282,
+      "open24h": 1.0477,
+      "high24h": 1.0569,
+      "low24h": 0.9974,
+      "volume24h_xrp": 46904898.612321,
+      "age_minutes_at_cutoff": 22.43,
+      "raw_publisher_sha256": null
+    },
+    "kraken": {
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "event_timestamp": null,
+      "last": 1.02749,
+      "bid": 1.02769,
+      "ask": 1.0277,
+      "raw_publisher_sha256": null
+    },
+    "order_book_status": "NOT_ADMITTED; direct L2 endpoints inaccessible through this retrieval path; no synchronized multi-venue snapshot."
+  },
+  "derivatives": {
+    "liqwall": {
+      "url": "https://liqwall.com/coins/xrp",
+      "as_of_utc": "2026-11-13T09:12:00Z",
+      "oi_usd": 1130000000,
+      "oi_24h_pct": -1.1,
+      "weighted_funding_8h_pct": -0.0013,
+      "binance_funding_8h_pct": 0.0002,
+      "liquidations_24h_usd": 19500000,
+      "long_liquidations_usd": 18400000,
+      "binance_long_account_share_pct": 74.8
+    },
+    "kodexius": {
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "as_of_utc": "2026-11-13T08:44:00Z",
+      "oi_usd": 614050000,
+      "contracts": 7,
+      "weighted_funding_8h_pct": 0.0003,
+      "volume24h_usd": 1760000000
+    },
+    "tradradar_stale": {
+      "url": "https://tradradar.io/markets/xrp",
+      "as_of_utc": "2026-11-12T23:55:00Z",
+      "oi_usd": 1550000000,
+      "funding_8h_pct": 0.0098
+    },
+    "reconciliation": "Provider totals are not averaged; venue/contract universes and timestamps differ."
+  },
+  "flows": {
+    "xrp_insights_url": "https://xrp-insights.com/data",
+    "settled_through": "2026-11-11",
+    "nov09_to_nov11_holdings_change_xrp": -9213260,
+    "nov11_tracked_holdings_xrp": 1185967427,
+    "nov12": "PROVISIONAL",
+    "notes": [
+      "Holdings change is not direct cash subscription/redemption.",
+      "GXRP flow excluded while holdings remain included.",
+      "Flow-excluded funds may count as zero; partial zero is not full-cohort zero."
+    ]
+  },
+  "collateral": {
+    "coinbase_cbxrp": {
+      "url": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves",
+      "displayed_refresh": "2026-11-13 08:16 AM; timezone not stated",
+      "reserve_xrp": 153736732.8,
+      "cbxrp_supply": 153734486.27,
+      "excess_xrp": 2246.53,
+      "coverage_pct": 100.0014613,
+      "network": "Base",
+      "assurance": "First-party dashboard, not independent CPA."
+    },
+    "morpho_usdc_cbxrp": {
+      "url": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+      "chain": "Base",
+      "outstanding_usdc_loans_usd": 53630000,
+      "liquidity_usd": 24970000,
+      "total_market_size_usd": 78610000,
+      "lltv_pct": 62.5,
+      "displayed_utilization_pct": 85.21,
+      "recomputed_utilization_pct": 68.23,
+      "utilization_discrepancy": "UNRESOLVED",
+      "borrow_rate_pct": 6.66,
+      "lend_rate_pct": 5.64,
+      "bad_debt_usdc": 0,
+      "interpretation": "Real wrapped-XRP collateral use on Base; not native XRPL collateral or proof of new XRP purchases."
+    },
+    "bny_ripple": {
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "date": "2026-10-27",
+      "live": "BNY supports XRP and RLUSD custody; primary RLUSD reserve custodian; custody relationship with Ripple Prime.",
+      "planned": [
+        "Direct RLUSD mint/redeem for clients.",
+        "Tokenized trade finance on XRPL and C2FO exploration."
+      ]
+    },
+    "rlusd_issuer": {
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "as_of": "2026-11-05",
+      "circulation_usd_b": 2.6329,
+      "reserves_usd_b": 2.748,
+      "coverage_pct": 104.3716,
+      "latest_attestation_listed": "September 2026"
+    },
+    "rlusd_tracker": {
+      "url": "https://xrp-insights.com/data",
+      "as_of": "2026-11-12",
+      "third_party_supply_usd_b": 2.71,
+      "comparison": "Different date/methodology; do not average."
+    }
+  },
+  "provenance": {
+    "source_independence_preserved": true,
+    "raw_publisher_sha256_captured": 0,
+    "barrot_receipt_admitted": false,
+    "model_eligible": false
+  },
+  "competing_hypotheses": [
+    "Long-dominated liquidations, falling OI and price below 24h open support leverage flush/deleveraging.",
+    "Negative aggregate funding and falling OI may mean the long reset is already underway; does not establish reversal.",
+    "cbXRP collateral use demonstrates a Base credit rail but not native XRPL collateral or incremental spot demand."
+  ],
+  "unresolved_disagreements": [
+    "Liqwall OI ~$1.13B versus Kodexius ~$614.05M and stale TradRadar ~$1.55B.",
+    "Morpho displayed utilization 85.21% does not reconcile with 68.23% computed from displayed loans/liquidity.",
+    "Ripple issuer RLUSD Nov5 $2.6329B differs from third-party Nov12 tracker near $2.710B."
+  ],
+  "engineering": {
+    "cross_run_receipt_index": true,
+    "restores_small_prior_index_only": true,
+    "checks_prior_raw_artifact_exists": true,
+    "missing_predecessor_marks_unverified": true,
+    "artifact_retention_days": 90,
+    "worm_anchor": false,
+    "trusted_timestamp_anchor": false,
+    "main_runtime_executed": false
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized point-in-time history, byte-exact anchored receipts, shadow outcomes or out-of-sample superiority over all four baselines."
+  }
+}

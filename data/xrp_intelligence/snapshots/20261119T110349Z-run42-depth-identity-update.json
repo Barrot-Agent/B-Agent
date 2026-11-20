@@ -1,0 +1,330 @@
+{
+  "schema_version": "barrot-xrp-research-snapshot-v1",
+  "run_id": "2026-11-19T11:03:49Z-run42",
+  "created_at_utc": "2026-11-19T11:03:49Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Preserve Barrot V3 as execution, orchestration, safety and verification foundation",
+  "repository": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "a5e9606a71975b08cb681eee373a2d6dc1c36b55",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_head_before": "174e6b7fa8aa8c62046d589b63faaaa7a9a86901",
+    "integration_tree_entries": 2998,
+    "main_tree_entries": 1739,
+    "main_paths_missing_from_integration": 0,
+    "pr_number": 1663,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_commits": 416,
+    "pr_changed_files": 1454,
+    "pr_base_sha": "a5e9606a71975b08cb681eee373a2d6dc1c36b55"
+  },
+  "market_observations": {
+    "spot_depth": {
+      "source": "Fuelmaps six-venue XRP spot order-book map",
+      "source_url": "https://fuelmaps.io/order-book/",
+      "snapshot_as_of_utc": "2026-11-19T10:00:00Z",
+      "retrieved_at_utc": "2026-11-19T11:03:49Z",
+      "mid_usd": 0.9845,
+      "venues": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "bands": [
+        {
+          "range_pct": 0.5,
+          "bids_usd": 7200000,
+          "asks_usd": 4900000,
+          "bid_share_pct": 59.6,
+          "venues": 6
+        },
+        {
+          "range_pct": 1,
+          "bids_usd": 10100000,
+          "asks_usd": 8000000,
+          "bid_share_pct": 56.1,
+          "venues": 6
+        },
+        {
+          "range_pct": 2,
+          "bids_usd": 16500000,
+          "asks_usd": 11400000,
+          "bid_share_pct": 59.2,
+          "venues": 6
+        },
+        {
+          "range_pct": 5,
+          "bids_usd": 20600000,
+          "asks_usd": 12700000,
+          "bid_share_pct": 61.8,
+          "venues": 6
+        },
+        {
+          "range_pct": 10,
+          "bids_usd": 25700000,
+          "asks_usd": 15600000,
+          "bid_share_pct": 62.3,
+          "venues": 6
+        }
+      ],
+      "largest_resting_levels_within_10pct": [
+        {
+          "side": "ask",
+          "price_usd": 1.067,
+          "resting_usd": 1800000
+        },
+        {
+          "side": "bid",
+          "price_usd": 0.982,
+          "resting_usd": 1700000
+        },
+        {
+          "side": "bid",
+          "price_usd": 0.959,
+          "resting_usd": 1500000
+        },
+        {
+          "side": "bid",
+          "price_usd": 0.98,
+          "resting_usd": 1500000
+        },
+        {
+          "side": "bid",
+          "price_usd": 0.981,
+          "resting_usd": 1400000
+        }
+      ],
+      "methodology_and_limitations": [
+        "Spot books only; no futures or perpetual depth.",
+        "Binance and Bitget are absent, including a major spot venue.",
+        "Full-depth rows are supplied by Coinbase, Bitstamp, Bitfinex and Gemini; OKX and Kraken contribute near-price depth only.",
+        "Each hourly column averages one-minute book snapshots; this is not a single synchronized raw exchange snapshot.",
+        "Hourly map can be about 65 minutes old; resting orders can be cancelled or moved.",
+        "Hidden and iceberg orders are not visible; displayed depth is not executable commitment.",
+        "No downloadable pre-recording history is available from the page.",
+        "This web-rendered observation was not captured as raw bytes in Barrot and has no Barrot SHA-256 receipt."
+      ],
+      "model_eligible": false
+    },
+    "derivatives_cross_check": {
+      "source": "TradRadar XRP perpetual futures dashboard",
+      "source_url": "https://tradradar.io/markets/xrp",
+      "source_updated_at_utc": "2026-11-19T03:25:00Z",
+      "retrieved_at_utc": "2026-11-19T11:03:49Z",
+      "age_at_retrieval_hours": 7.65,
+      "mark_price_usd": 0.9623,
+      "reported_oi_usd": 1290000000,
+      "oi_change_24h_pct": -1.75,
+      "oi_weighted_funding_pct_per_8h": -0.011,
+      "liquidations_24h_usd_at_least": 5540000,
+      "long_liquidations_usd": 3320000,
+      "short_liquidations_usd": 2220000,
+      "long_short_account_ratio": 3.43,
+      "long_accounts_pct": 77.4,
+      "venues": [
+        "Binance",
+        "Bybit",
+        "OKX",
+        "Bitget",
+        "Gate",
+        "MEXC",
+        "Hyperliquid"
+      ],
+      "limitations": [
+        "Observation is approximately 7.65 hours old at this run's retrieval time.",
+        "Aggregator combines overlapping exchange feeds; it is not independent of those venues' underlying derivatives data.",
+        "Liquidation figures are a lower bound because exchange real-time publication is incomplete.",
+        "Do not average with other OI providers; the run-41 provider observations differed materially in scope and level.",
+        "No raw payload or immutable Barrot receipt was captured."
+      ],
+      "model_eligible": false
+    },
+    "interpretation": {
+      "supportive_counterevidence": "Fuelmaps shows bid-side displayed spot depth greater than asks across all reported bands, with 59.2% bid share within 2% and 62.3% within 10%.",
+      "adverse_counterevidence": "TradRadar's older snapshot shows declining OI, negative funding, a long-heavy account ratio and more long than short liquidations.",
+      "timing_conflict": "The TradRadar mark price is from 03:25 UTC; the Fuelmaps book is 10:00 UTC. They are not synchronized and cannot establish an intraday causal sequence.",
+      "alternative_hypotheses": [
+        "Displayed bid skew may represent genuine near-price liquidity and absorption.",
+        "Displayed bid skew may be temporary/cancellable liquidity, venue composition bias or a stale hourly average.",
+        "Falling OI and negative funding may reflect leverage reduction rather than a directional bearish signal.",
+        "Long-account concentration and long liquidations may indicate crowded positioning, but not necessarily net institutional selling.",
+        "A price recovery between the two timestamps could reflect spot buying, short covering or ordinary volatility; the available observations cannot distinguish these."
+      ],
+      "forecast_disposition": "NO_DIRECTIONAL_FORECAST"
+    }
+  },
+  "creator_identity": {
+    "person": "Dr. Kamilah Stevenson; transcript and host use Camila/Camilla/Kamilah variants",
+    "identity_evidence": "On the June 11, 2026 iHeart interview transcript, the guest says her X handle is 'cam i am cam Stevenson', Instagram is 'Kamilla Stevenson', and YouTube is 'doctor Camilla Stevenson'; she explicitly warns that fake pages exist and describes copyright complaints.",
+    "likely_youtube_handle": "@drkamilahstevenson",
+    "handle_confidence": "high-confidence candidate, not first-party account-authenticated",
+    "verified_public_youtube_appearance": {
+      "title": "Crypto Panics! W/ @drkamilahstevenson",
+      "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "publisher": "Paul Barron Podcast",
+      "published_at": "2026-06-11",
+      "classification": "verified host-published interview appearance; not a channel-owned upload by the guest",
+      "basis": "The host-published video tags @drkamilahstevenson and matches the same-day iHeart interview and guest's self-description of her YouTube identity."
+    },
+    "channel_owned_video_inventory_admitted": [],
+    "quarantined_candidate": {
+      "channel_title": "Kamilah Stevenson | XRP & Stocks",
+      "channel_url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "handle": "@KamilahStevensonXrpStocks",
+      "candidate_video": "I Moved My XRP Off The Exchanges",
+      "candidate_video_url": "https://www.youtube.com/watch?v=TfFx0g2IgGg",
+      "published_at": "2026-05-20",
+      "reason": "No first-party cross-link to the guest's self-identified accounts was found; keep this channel and its uploads quarantined rather than attributing them to the verified person."
+    },
+    "admission_rule": "Only the host-published interview appearance is admitted. Do not merge similarly named channels or their videos into the verified creator inventory without a direct first-party cross-link."
+  },
+  "exact_phrase_research": {
+    "ASK Coin": "No new exact-phrase identity resolved. Preserve Permission Coin (ASK) and @AskCoin_bot as separate unverified candidates; no XRP/XRPL relationship established.",
+    "actual capital": "No separate entity resolved. Preserve the distinction between announced financing capacity, aggregate cash, XRP purchased, in-kind XRP, issued equity, warrant proceeds and undrawn facilities. No new evidence establishes an SBI-specific cash receipt or a Cantor facility draw.",
+    "SBIC, ChatGPT SBIC": "No new exact-phrase result establishing an OpenAI partnership. SBIC East/Central/West remain regional Small and Medium Business Investment & Consultation companies, separate from SBI Holdings, SBI Group, SBI Ripple Asia and SB OAI Japan GK."
+  },
+  "institutional_relationships": {
+    "new_verified_relationships": [],
+    "unchanged_verified_map": [
+      "Ripple/Coinbase: RLUSD distribution on Coinbase Prime, Exchange and Retail; XRPL, Base and Ethereum support. Coinbase Global Exchange collateral support was described as a future step at launch, not evidence of live XRP or RLUSD collateral usage.",
+      "Ripple/BNY: BNY supports XRP and RLUSD custody and is RLUSD's primary reserve custodian; custody balances and collateral utilization remain undisclosed.",
+      "Circle/SBI: SBI Holdings and SBI Shinsei Bank each invested $25M in Circle; SBI Circle Holdings is a 50/50 JV; SBI VC Trade distributes USDC in Japan.",
+      "SBI/Ripple: SBI Ripple Asia is a distinct historical JV/distribution relationship; it is not proof of current SBI Holdings equity ownership in Ripple.",
+      "Circle/SBI/Coinbase Arc: Arc's USDC gas, SBI Group validator role and Coinbase exchange access are not XRPL integration.",
+      "DBS/Circle: announced USDC institutional issuance/redemption and settlement access; no XRP or XRPL integration stated."
+    ]
+  },
+  "platform_authentication": {
+    "ChatGPT": "GitHub connector read/write tested in this run.",
+    "Claude": "No tested authentication or data-flow evidence.",
+    "Grok": "No tested authentication or data-flow evidence; Groq is a separate provider.",
+    "Gemini": "No tested authentication or data-flow evidence.",
+    "Copilot": "No tested authentication or data-flow evidence.",
+    "Codex": "No tested authentication or data-flow evidence.",
+    "HuggingFace": "Workflow credential references exist; no authenticated end-to-end run.",
+    "Kaggle": "Credential references exist; no credential test or submission.",
+    "Databricks": "Credential references exist; no authenticated query or workspace write."
+  },
+  "prediction_disposition": {
+    "status": "NOT_ISSUED",
+    "reason": [
+      "Fuelmaps and TradRadar observations were not captured as raw source bytes with SHA-256 receipts in Barrot.",
+      "The order-book aggregator excludes Binance and Bitget and reports hourly averaged snapshots rather than synchronized raw books.",
+      "Derivatives provider scope and timestamps are not normalized; no consensus OI is admitted.",
+      "The observations are not a leakage-safe point-in-time dataset and no out-of-sample model comparison/calibration result was generated."
+    ],
+    "real_money_actions": false,
+    "paper_trading": false
+  },
+  "workflow_and_security": {
+    "xrp_public_ingestion_workflow": "Present on integration branch only; absent from current main. It defines hourly and daily schedules, read-only actions/contents permissions, public-data capture, content-addressed receipts, event timeline, point-in-time feature store and walk-forward outputs.",
+    "ingestion_artifact_retention": "Raw receipt artifacts 90 days; append-only cross-run receipt index 90 days; event timeline 90 days; per-run feature-store checkpoint 7 days; daily feature-store/walk-forward backup 90 days. Workflow explicitly labels GitHub artifacts as not WORM.",
+    "production_schedule": "Not active on main because .github/workflows/xrp-public-ingestion.yml is absent from main.",
+    "databricks_operations": "barrot-ops.yml now uses a no-overwrite workspace import, requires confirm_external_change=YES plus a specific Databricks approval input, runs only from main, and verifies the exact expected main SHA against origin/main. No Databricks action was dispatched.",
+    "merge_gate": "Barrot Gated Merge is a substantive read-only fail-closed gate. It checks exact event head, current main base, draft state, mergeability, independent approval, branch protection, strict required checks and exact-head CI. Current run blocked because PR is draft, no independent approving review exists, and branch protection could not be verified.",
+    "remaining_security_work": "Complete transitive workflow-to-script/action/data-flow audit; independently verify branch protection; establish retention beyond 90-day GitHub artifacts with a WORM/externally anchored receipt chain."
+  },
+  "sources": [
+    {
+      "source_id": "SRC-FUELMAPS-XRP-BOOK-20261119-1000Z",
+      "title": "Fuelmaps six-venue XRP spot order-book hourly snapshot",
+      "url": "https://fuelmaps.io/order-book/",
+      "published_at_utc": "2026-11-19T10:00:00Z",
+      "retrieved_at_utc": "2026-11-19T11:03:49Z",
+      "web_refs": [
+        "turn412329view0",
+        "turn355860view0"
+      ],
+      "source_type": "secondary_aggregated_market_data",
+      "independence_group": "six_venue_spot_books_underlying_exchange_feeds",
+      "raw_payload_captured_in_barrot": false,
+      "raw_payload_sha256": null,
+      "barrot_receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "SRC-TRADRADAR-XRP-PERP-20261119-0325Z",
+      "title": "TradRadar XRP perpetual futures snapshot",
+      "url": "https://tradradar.io/markets/xrp",
+      "published_at_utc": "2026-11-19T03:25:00Z",
+      "retrieved_at_utc": "2026-11-19T11:03:49Z",
+      "web_refs": [
+        "turn355860view1"
+      ],
+      "source_type": "secondary_aggregated_derivatives_data",
+      "independence_group": "overlapping_exchange_perpetual_feeds",
+      "raw_payload_captured_in_barrot": false,
+      "raw_payload_sha256": null,
+      "barrot_receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "SRC-IHEART-KAMILAH-INTERVIEW-20260611",
+      "title": "Crypto Panics! with Dr. Kamilah Stevenson",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "published_at": "2026-06-11",
+      "retrieved_at_utc": "2026-11-19T11:03:49Z",
+      "web_refs": [
+        "turn613698view2",
+        "turn924482view0"
+      ],
+      "source_type": "host_interview_with_auto_generated_transcript",
+      "independence_group": "xrp_podcast_episode_20260611",
+      "raw_payload_captured_in_barrot": false,
+      "raw_payload_sha256": null,
+      "barrot_receipt_id": null,
+      "model_eligible": false,
+      "limitations": [
+        "Transcript is automatically generated; complete accuracy is not guaranteed."
+      ]
+    },
+    {
+      "source_id": "SRC-YOUTUBE-PAULBARRON-KAMILAH-20260611",
+      "title": "Crypto Panics! W/ @drkamilahstevenson",
+      "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "published_at": "2026-06-11",
+      "retrieved_at_utc": "2026-11-19T11:03:49Z",
+      "web_refs": [
+        "turn758930youtube1"
+      ],
+      "source_type": "host_published_guest_interview",
+      "independence_group": "paul_barron_podcast_channel",
+      "raw_payload_captured_in_barrot": false,
+      "raw_payload_sha256": null,
+      "barrot_receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE",
+      "title": "I Moved My XRP Off The Exchanges / Kamilah Stevenson channel candidate",
+      "url": "https://www.youtube.com/watch?v=TfFx0g2IgGg",
+      "published_at": "2026-05-20",
+      "retrieved_at_utc": "2026-11-19T11:03:49Z",
+      "web_refs": [
+        "turn355860youtube48",
+        "turn758930youtube0"
+      ],
+      "source_type": "unverified_creator_attribution",
+      "independence_group": "unverified_kamilah_channel_candidate",
+      "raw_payload_captured_in_barrot": false,
+      "raw_payload_sha256": null,
+      "barrot_receipt_id": null,
+      "model_eligible": false,
+      "limitations": [
+        "No first-party cross-link to the verified interview guest's accounts."
+      ]
+    }
+  ],
+  "next_concrete_actions": [
+    "Capture raw source bytes and SHA-256 receipts through the integration ingestion workflow; do not admit web-rendered observations as model features.",
+    "Add Binance and Bitget spot depth where lawful public endpoints permit; preserve venue coverage and snapshot timestamps.",
+    "Normalize derivatives contract scope, venue coverage and timestamp before comparing OI providers.",
+    "Complete workflow-to-script/action/data-flow security review and verify branch protection.",
+    "Add a first-party social cross-link check before admitting any channel-owned Kamilah/Camilla Stevenson uploads.",
+    "Keep the prediction engine disabled until point-in-time data, leakage-safe walk-forward tests, calibration and shadow evaluation support it."
+  ]
+}

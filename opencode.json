@@ -56,18 +56,64 @@
         ],
         "timeout": {
           "startup": 30000
-        },
-        "environment": {
-          "BARROT_A2A_URL": "https://barrot-a2a-worker.amazonprostarelite.workers.dev",
-          "BRAIN_SHARED_SECRET": "{env:BRAIN_SHARED_SECRET}",
-          "BARROT_AGENT_SECRET": "{env:BARROT_AGENT_SECRET}"
+        }
+      },
+      "lunaroute": {
+        "type": "remote",
+        "url": "https://mcp.lunaroute.com/mcp",
+        "disabled": true,
+        "oauth": false,
+        "headers": {
+          "Authorization": "Bearer {env:LUNAROUTE_API_KEY}"
         }
       }
     }
   },
   "permission": {
-    "external_directory": "allow",
-    "edit": "allow",
-    "bash": "allow"
+    "external_directory": "ask",
+    "edit": "ask",
+    "bash": "ask",
+    "webfetch": "ask"
+  },
+  "provider": {
+    "lunaroute": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LunaRoute",
+      "options": {
+        "baseURL": "https://gw.lunaroute.com/v1",
+        "apiKey": "{env:LUNAROUTE_API_KEY}"
+      },
+      "models": {
+        "glm-5.3-flash": {
+          "name": "GLM 5.3 Flash"
+        },
+        "deepseek-4.1-flash": {
+          "name": "DeepSeek 4.1 Flash"
+        },
+        "muse-spark-open": {
+          "name": "Muse Spark Open"
+        }
+      }
+    }
+  },
+  "agent": {
+    "barrot": {
+      "description": "Barrot - main agent",
+      "model": "opencode/deepseek-v4.1-flash-free",
+      "prompt": "Use only providers with tested authentication and data-flow. The default OpenCode free model is the verified configuration. LunaRoute remains optional/unverified and its MCP server is disabled; do not claim a live connection or send data through it until explicitly authorized and verified. Preserve Barrot V3 and follow the XRP mission readiness gates.",
+      "permission": {
+        "*": "ask",
+        "edit": "ask",
+        "bash": "ask",
+        "webfetch": "ask",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "lsp": "allow",
+        "skill": "allow",
+        "question": "allow"
+      }
+    }
   }
 }

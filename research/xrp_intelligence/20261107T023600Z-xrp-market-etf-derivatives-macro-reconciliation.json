@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_market_etf_derivatives_macro_reconciliation",
+  "captured_at_utc": "2026-11-07T02:36:00.000000Z",
+  "data_cutoff_utc": "2026-11-07T02:36:00.000000Z",
+  "scope": "public spot, derivatives, ETF holdings-derived flows and macro context",
+  "market_observations": {
+    "kraken_xrp_usd": {
+      "last_usd": 1.17699,
+      "best_bid_usd": 1.1768,
+      "best_ask_usd": 1.17681,
+      "level1_spread_bps": 0.0849758456,
+      "volume_24h_xrp": 28097381.50548082,
+      "vwap_24h_usd": 1.18645279,
+      "low_24h_usd": 1.17085,
+      "high_24h_usd": 1.22092,
+      "trade_count_24h": 33198,
+      "price_vs_vwap_pct": -0.7975698721,
+      "price_above_low_pct": 0.5244053465,
+      "provider_timestamp_utc": null,
+      "retrieved_at_utc": "2026-11-07T02:36:00.000000Z",
+      "model_eligible": false,
+      "exclusion_reason": "Kraken ticker response contains no provider event timestamp; retrieval time is not substituted for exchange event time.",
+      "utc_day_open_usd": 1.17749,
+      "price_vs_utc_day_open_pct": -0.0424632056
+    },
+    "derivatives": {
+      "tradradar": {
+        "updated_at_utc": "2026-11-07T01:50:00Z",
+        "display_delay_minutes": 15,
+        "mark_price_usd": 1.1791,
+        "price_change_24h_pct": -3.1,
+        "open_interest_usd": 1910000000,
+        "open_interest_change_24h_pct": -0.99,
+        "oi_weighted_funding_pct_per_8h": 0.0046,
+        "liquidations_24h_usd_lower_bound": 8020000,
+        "long_liquidations_usd": 7510000,
+        "short_liquidations_usd": 512330,
+        "long_short_account_ratio": 3.99,
+        "long_account_share_pct": 79.9,
+        "coverage": "7 exchanges for OI/funding; 5 exchanges for liquidations and account ratio"
+      },
+      "alpha_finance": {
+        "as_of_utc": "2026-11-07T01:04:00Z",
+        "spot_usd": 1.1801,
+        "price_change_24h_pct": -3.19,
+        "open_interest_usd": 2780000000,
+        "volume_24h_usd": 2600000000,
+        "long_liquidations_24h_usd": 7800000,
+        "short_liquidations_24h_usd": 538600,
+        "largest_short_cluster": {
+          "price_usd": 1.2048,
+          "modeled_notional_usd": 6100000
+        },
+        "largest_long_cluster": {
+          "price_usd": 1.1698,
+          "modeled_notional_usd": 6200000
+        },
+        "cluster_method": "modeled from open interest and standard leverage tiers; not observed resting orders"
+      },
+      "reconciliation": {
+        "open_interest_difference_usd": 870000000,
+        "alpha_vs_tradradar_pct": 45.54973822,
+        "status": "UNRECONCILED_PROVIDER_UNIVERSES",
+        "do_not_average": true,
+        "reason": "Venue coverage, contract universe, valuation conventions and timestamps are not demonstrated to be identical."
+      }
+    },
+    "etf_flows": {
+      "xrp_insights": {
+        "fund_universe": "6 US spot XRP ETFs plus BITW; GXRP holdings included but excluded from flow totals while its data gap is corrected",
+        "holdings_xrp": 1196540000,
+        "aum_usd": 1496090000,
+        "reported_funds": 7,
+        "nov5_2026_flow_xrp": 110214,
+        "nov2_to_nov5_2026_flow_xrp": -149487,
+        "nov6_status": "not shown; page says it settles the next morning after issuers publish holdings",
+        "flow_method": "day-over-day change in issuer-reported XRP holdings; not direct cash creation/redemption disclosure"
+      },
+      "cryptokeyhole": {
+        "fund_universe": [
+          "Bitwise XRP",
+          "Franklin XRPZ",
+          "Canary XRPC",
+          "21Shares TOXR"
+        ],
+        "nov5_2026_flow_xrp": -3339,
+        "nov2_to_nov5_2026_flow_xrp": -13356,
+        "nov2_to_nov5_method": "sum of four complete daily rows, each -3,339 XRP",
+        "last_five_complete_days_30oct_to_5nov_header_flow_xrp": -1137098,
+        "last_five_complete_days_table_sum_xrp": -1137099,
+        "header_vs_table_rounding_difference_xrp": 1,
+        "holdings_xrp": 1076805885,
+        "nov6_status": "partial 1 of 4 funds; Bitwise file published, Franklin, Canary and 21Shares pending",
+        "updated_at_utc": "2026-11-07T02:32:00Z",
+        "flow_method": "day-over-day change in issuer-published XRP holdings; includes retained staking rewards and coin sales for fees where applicable",
+        "exclusions": {
+          "grayscale": "quarterly SEC filing only; excluded from daily totals",
+          "rex_osprey": "excluded because direct holdings through other ETPs do not represent total holdings or flows",
+          "bitwise_index": "not in the four-fund daily universe"
+        }
+      },
+      "cross_provider": {
+        "nov5_flow_difference_xrp": 113553,
+        "nov2_to_nov5_flow_difference_xrp": -136131,
+        "status": "UNRECONCILED_DIFFERENT_FUND_UNIVERSES",
+        "interpretation": "The published totals are not contradictory on a common universe: XRP Insights includes XRPR and BITW in its broader flow universe while CryptoKeyhole reports four daily-file funds and excludes XRPR and BITW. The per-fund common-universe bridge has not been independently reconstructed from all issuer files.",
+        "do_not_average": true
+      }
+    },
+    "macro_context": {
+      "source": "Reuters / LSEG Lipper",
+      "published_at_utc": "2026-11-06T11:23:00Z",
+      "us_money_market_fund_weekly_net_inflow_usd": 117970000000,
+      "us_equity_fund_weekly_net_inflow_usd": 14810000000,
+      "us_bond_fund_weekly_net_inflow_usd": 7310000000,
+      "week_ending": "2026-11-04",
+      "interpretation": "Defensive cash demand coexisted with positive aggregate equity and bond fund flows; this is mixed risk appetite, not a standalone XRP signal."
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "H1_LONG_DELEVERAGING",
+      "status": "SUPPORTED_BUT_NOT_PROVEN",
+      "evidence": [
+        "TradRadar reports falling OI and long liquidations materially above shorts.",
+        "Alpha reports long liquidations and a modeled long cluster below spot.",
+        "Kraken last is about 0.80% below its 24h VWAP."
+      ],
+      "counterevidence": [
+        "Funding remains positive in TradRadar.",
+        "Alpha and TradRadar OI totals differ by 870M USD.",
+        "No synchronized multi-venue spot depth or trade-imbalance series was captured."
+      ]
+    },
+    {
+      "id": "H2_DERIVATIVES_VENDOR_SCOPE_DIFFERENCE",
+      "status": "OPEN",
+      "evidence": [
+        "Two providers report 1.91B and 2.78B USD open interest at different cutoffs."
+      ],
+      "counterevidence": [
+        "Neither provider supplied a common contract-level reconciliation in the captured evidence."
+      ]
+    },
+    {
+      "id": "H3_ETF_FLOWS_DEPEND_ON_FUND_UNIVERSE",
+      "status": "SUPPORTED",
+      "evidence": [
+        "XRP Insights covers six spot funds plus BITW and excludes GXRP from flows; CryptoKeyhole reports four daily-file funds and excludes XRPR and BITW.",
+        "Nov5 and Nov2-5 totals differ materially, but the fund universes differ."
+      ],
+      "counterevidence": [
+        "A common-universe issuer-file bridge has not yet been reconstructed."
+      ]
+    },
+    {
+      "id": "H4_MACRO_DEFENSIVE_CASH_DEMAND",
+      "status": "CONTEXT_ONLY",
+      "evidence": [
+        "Reuters reports 117.97B USD weekly money-market inflows."
+      ],
+      "counterevidence": [
+        "US equity and bond funds also received net inflows; no XRP-specific causal link is established."
+      ]
+    }
+  ],
+  "provenance": {
+    "retrieved_at_utc": "2026-11-07T02:36:00.000000Z",
+    "raw_hash_scope": "The Kraken SHA-256 is over the exact JSON body text returned by the retrieval tool, not original HTTP wire bytes or headers. Other publisher hashes are over the exact excerpt text recorded below, not full-page response bodies.",
+    "source_independence": [
+      "Kraken is an exchange-native ticker source; it supplies no event timestamp in this response.",
+      "XRP Insights and CryptoKeyhole both derive flows from issuer holdings files. They are separate publisher calculations, not independent underlying economic data.",
+      "TradRadar and Alpha Finance aggregate overlapping exchange derivatives markets; overlap and contract-universe independence are not established.",
+      "Reuters macro reporting is a separate publisher/source group and is context only."
+    ],
+    "sources": [
+      {
+        "source_id": "kraken_xrp_usd_ticker",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "publisher": "Kraken",
+        "source_timestamp_utc": null,
+        "retrieved_at_utc": "2026-11-07T02:36:00.000000Z",
+        "raw_response_text_sha256": "6ce2034f7c1647d720286e513417b16b7248dba9e1f3cb58e532c616e68d8b16",
+        "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.17681000\",\"16612\",\"16612.000\"],\"b\":[\"1.17680000\",\"31\",\"31.000\"],\"c\":[\"1.17699000\",\"1059.40401345\"],\"v\":[\"646087.51601467\",\"28097381.50548082\"],\"p\":[\"1.17841722\",\"1.18645279\"],\"t\":[1431,33198],\"l\":[\"1.17595000\",\"1.17085000\"],\"h\":[\"1.18109000\",\"1.22092000\"],\"o\":\"1.17749000\"}}}",
+        "raw_body_capture": "exact JSON text returned by retrieval tool; HTTP headers and original wire bytes unavailable"
+      },
+      {
+        "source_id": "cryptokeyhole_xrp_etf_flows",
+        "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+        "publisher": "CryptoKeyhole",
+        "source_updated_at_utc": "2026-11-07T02:32:00Z",
+        "retrieved_at_utc": "2026-11-07T02:36:00.000000Z",
+        "excerpt_sha256": "873ccb143de91bb198732c2b00431e9f67bbf96a685549ec44004d7f4bb4a5c3",
+        "raw_page_body_retained": false,
+        "excerpt_text": "XRP ETF flows\nDaily net inflows and outflows of the US spot XRP ETFs, fund by fund, from each issuer's own published holdings file. Holdings, shares and the flow since each fund's first day here for 4 funds, in XRP and US dollars.\nNet flow, 5 Nov 2026: -3,339 XRP; last 5 complete trading days 30 Oct to 5 Nov: -1,137,098 XRP; holdings 1,076,805,885 XRP across 4 funds on 5 Nov.\n6 Nov 2026 partial: 1 of 4 funds published; waiting for Franklin XRPZ, Canary XRPC and 21Shares TOXR. Updated 7 Nov 2026 02:32 UTC.\n5 Nov per-fund XRP flows: Bitwise 0; Franklin 0; Canary -3,339; 21Shares 0.\nThe 4 daily-file funds are Bitwise, Franklin, Canary and 21Shares. Grayscale is quarterly-only and excluded from daily totals; XRPR is excluded because its direct holdings do not represent its holdings or flows.\n"
+      },
+      {
+        "source_id": "xrp_insights_etf_tracker",
+        "url": "https://xrp-insights.com/",
+        "publisher": "XRP Insights",
+        "source_timestamp_utc": null,
+        "retrieved_at_utc": "2026-11-07T02:36:00.000000Z",
+        "excerpt_sha256": "3b1b72f7a33ef5b2a4f3ff4846613ab5b063ac7165e1c2716ddcd31bf4794384",
+        "raw_page_body_retained": false,
+        "excerpt_text": "XRP ETF Tracker: six US spot XRP ETFs plus BITW.\nTotal AUM 1496.09M; 1,196.54M XRP locked; 7 ETFs.\nNov 5 2026: six spot funds plus BITW recorded net inflows of 110,214 XRP.\nNov 2-5 2026: four settled trading days, net flow -149.5K XRP.\nNov 6 2026 not shown yet; it settles next morning once issuers publish holdings.\nGXRP is excluded from flow totals while a data gap is corrected; its holdings still count.\n"
+      },
+      {
+        "source_id": "tradradar_xrp_derivatives",
+        "url": "https://tradradar.io/markets/xrp",
+        "publisher": "TradRadar",
+        "source_updated_at_utc": "2026-11-07T01:50:00Z",
+        "retrieved_at_utc": "2026-11-07T02:36:00.000000Z",
+        "excerpt_sha256": "820303d8e7d6021febc25c482f67c46b8fe05d8def5cdfa8c28256b6678907c5",
+        "raw_page_body_retained": false,
+        "excerpt_text": "XRP futures market data, updated Nov 7 2026 01:50 UTC; displayed with 15-minute delay.\nMark price 1.1791 (-3.10% 24h); open interest 1.91B across 7 exchanges, -0.99% 24h; OI-weighted funding +0.0046% per 8h; liquidations >=8.02M across 5 exchanges; longs 7.51M; shorts 512.33K; long/short 3.99 (79.9% long).\n"
+      },
+      {
+        "source_id": "alpha_finance_xrp_liquidation_heatmap",
+        "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+        "publisher": "Alpha Finance",
+        "source_as_of_utc": "2026-11-07T01:04:00Z",
+        "retrieved_at_utc": "2026-11-07T02:36:00.000000Z",
+        "excerpt_sha256": "cd1d0c20bb99851c40fab29dcd34f6e0dba2ddc51d706ba070c78926fd2ff0aa",
+        "raw_page_body_retained": false,
+        "excerpt_text": "XRP liquidation heatmap, as of Nov 7 2026 01:04 UTC.\nSpot 1.1801 (-3.19%); open interest 2.78B across all venues; 24h volume 2.60B; modeled leverage within 2% 49.6M longs.\n24h liquidations: longs 7.8M; shorts 538.6K.\nClusters are modeled from open interest and standard leverage tiers, not observed resting orders or guaranteed liquidation prices.\n"
+      },
+      {
+        "source_id": "reuters_us_money_market_flows",
+        "url": "https://www.reuters.com/business/caution-over-midterms-ai-cash-burn-drives-surge-us-money-market-fund-inflows-2026-11-06/",
+        "publisher": "Reuters",
+        "published_at_utc": "2026-11-06T11:23:00Z",
+        "retrieved_at_utc": "2026-11-07T02:36:00.000000Z",
+        "excerpt_sha256": "89248c83ce802e28559cb12de897998a9ed742443700c28fedeec2ee1a0e3984",
+        "raw_page_body_retained": false,
+        "excerpt_text": "Reuters, Nov 6 2026 11:23 UTC: US money market funds received net 117.97B dollars in the week to Nov 4, the largest weekly inflow since May 6. US equity funds received 14.81B and US bond funds 7.31B. Technology, industrials and communication services funds recorded outflows; the report links safe-haven demand to midterm caution and concerns about AI spending and cash burn.\n"
+      }
+    ]
+  },
+  "model_admission": {
+    "eligible": false,
+    "reasons": [
+      "Kraken has no provider event timestamp.",
+      "Derivatives observations are stale relative to the 300-second live feature gate and provider totals are unreconciled.",
+      "ETF flow observations are daily holdings deltas with incomplete Nov6 publication and differing fund universes.",
+      "Macro evidence is weekly contextual data, not synchronized XRP-specific feature history.",
+      "No multi-venue depth, trade imbalance or synchronized cross-venue observation is present."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_probability": null,
+    "reason": "The captured evidence does not establish calibrated out-of-sample predictive lift or synchronized feature quality.",
+    "paper_trade_executed": false,
+    "real_money_action": false
+  },
+  "limitations": [
+    "No full depth ladder was captured.",
+    "No synchronized Kraken/Coinbase/OKX/Binance spot book comparison was available.",
+    "No direct issuer creation/redemption cash flow was captured; ETF figures are holdings deltas.",
+    "No contract-level derivatives reconciliation was captured.",
+    "No directional forecast or trade was produced."
+  ]
+}

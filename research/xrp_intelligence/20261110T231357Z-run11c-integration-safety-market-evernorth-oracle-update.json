@@ -1,0 +1,465 @@
+{
+  "schema_version": "1.0",
+  "run_id": "barrot-xrp-run11c",
+  "captured_at_utc": "2026-11-10T23:13:57Z",
+  "mission": {
+    "priority": 1,
+    "primary": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "afb3024fbcb976db5acdf52b85e253ff46859ce6",
+    "integration_branch": "integration/xrp-v3-unified-main-20261110",
+    "verified_code_head": "bb11b44d9db1ba5811d1039f2c3055e832c41664",
+    "pr_number": 1660,
+    "pr_base_sha": "afb3024fbcb976db5acdf52b85e253ff46859ce6",
+    "commits_ahead": 1946,
+    "commits_behind": 0,
+    "changed_files": 968,
+    "additions": 271718,
+    "deletions": 3902,
+    "tree_entries": {
+      "main": 1404,
+      "integration": 2261
+    },
+    "workflow_files": {
+      "main": 78,
+      "integration": 79,
+      "changed": 44
+    },
+    "open_pr_inventory": {
+      "total": 373,
+      "drafts": 358,
+      "non_drafts": 15,
+      "non_draft_numbers": [
+        1660,
+        1653,
+        1650,
+        1649,
+        1648,
+        1647,
+        1646,
+        1645,
+        1644,
+        1320,
+        1318,
+        1317,
+        1269,
+        1255,
+        1254
+      ]
+    },
+    "security": {
+      "path": ".config/gh/hosts.yml",
+      "present_on_current_main": false,
+      "present_on_current_integration": false,
+      "inspected_open_pr_head_trees": 17,
+      "present_on_inspected_heads": 17,
+      "branch_mix": {
+        "non_draft": 14,
+        "draft": 3
+      },
+      "historical_git_object_reachable": true,
+      "file_contents_read": false,
+      "credential_value_recorded": false,
+      "owner_action": "revoke and reissue the exposed credential, then remediate affected branch tips",
+      "actions_taken": "none; no rotation, revocation, history rewrite, or source-branch mutation"
+    }
+  },
+  "verification": {
+    "tested_code_head": "bb11b44d9db1ba5811d1039f2c3055e832c41664",
+    "pr_validation_merge_ref": "8a6e6df407d16fb570b840e34d3ddf87a375f56f",
+    "pr_validation_merge_ref_message": "Merge bb11b44d9db1ba5811d1039f2c3055e832c41664 into afb3024fbcb976db5acdf52b85e253ff46859ce6",
+    "full_suite": {
+      "run_id": 42919518169,
+      "job_id": 130190539803,
+      "tests_passed": 3376,
+      "failures": 0,
+      "subtests_passed": 8,
+      "coverage_percent": 59.78,
+      "wheel_build": "passed",
+      "installed_wheel_primary_mission_check": "passed",
+      "conclusion": "success"
+    },
+    "core_suite": {
+      "job_id": 130190540319,
+      "conclusion": "success"
+    },
+    "dependency_audit": {
+      "run_id": 42919518130,
+      "manifests_audited": 6,
+      "known_vulnerabilities": 0,
+      "conclusion": "success"
+    },
+    "fail_closed_gate": {
+      "run_id": 42919518230,
+      "conclusion": "success",
+      "automatic_merge_enabled": false
+    },
+    "main_runs": {
+      "ci": {
+        "run_id": 42911392830,
+        "conclusion": "success"
+      },
+      "pages_build_and_deploy": {
+        "run_id": 42911391541,
+        "conclusion": "success"
+      },
+      "cross_analysis": {
+        "run_id": 42918404312,
+        "conclusion": "success"
+      }
+    },
+    "cache": "read-only cache budget warnings; no test or audit failure"
+  },
+  "safety_implementation": {
+    "files_changed": [
+      "barrot_agent/orchestration/repository_repair_loop.py",
+      "b_agent.py",
+      "tests/test_repository_repair.py",
+      "tests/test_b_agent_cli_safety.py"
+    ],
+    "regression_tests_added": 7,
+    "guard": "local repair requires a clean named non-default feature worktree; dirty/untracked worktrees, detached/default branches and non-Git workspaces fail closed",
+    "target_restrictions": "reject .git, .config/gh, secret/credential directories, .env files, symlinks and untracked repair targets",
+    "execution": "guard implemented and full suite passed; no local repair loop was executed and no local worktree was changed"
+  },
+  "workflow_audit": {
+    "changed_workflows_reviewed": 44,
+    "findings": [
+      "main b_agent.py contains direct GitHub write/branch/commit/merge methods and --auto-merge; integration version is read-only and has no auto-merge path",
+      "main coinbase-paper-trader is manual without explicit confirmation and pushes state/log to main; integration requires YES and exact main SHA, is read-only and artifact-only",
+      "main A2A worker and self-hosted-brain workflows include push-triggered deployment; integration versions require manual dispatch, exact main SHA and separate secret-rotation confirmation",
+      "Databricks bundle is disabled in integration; Barrot operations requires action-specific confirmation and exact main SHA",
+      "external Groq analysis workflows require explicit per-run data-transfer confirmation and exact main SHA; none was run",
+      "Hugging Face upload, Cloudflare deployment, Space deployment and secret rotation workflows were not executed",
+      "barrot-approve-pr applies a label, not a formal GitHub review; barrot-pr-automerge is disabled; barrot-gated-merge is fail-closed",
+      "XRP ingestion is scheduled hourly at minute 3 with a daily backup at 00:15 UTC, read-only and artifact-first, but exists only on integration and has no verified main run"
+    ]
+  },
+  "market": {
+    "cutoff_utc": "2026-11-10T23:13:57Z",
+    "kraken_xrp_usd": {
+      "retrieved_at_utc": "2026-11-10T23:13:57Z",
+      "provider_event_timestamp": null,
+      "last": 1.05248,
+      "bid": 1.05225,
+      "ask": 1.0523,
+      "open_24h": 1.09748,
+      "high_24h": 1.10473,
+      "low_24h": 1.03011,
+      "volume_24h_xrp": 36242718,
+      "change_from_open_percent": -4.1
+    },
+    "okx_xrp_usdt": {
+      "provider_timestamp_utc": "2026-11-10T22:49:58.273Z",
+      "last": 1.0589,
+      "bid": 1.0589,
+      "ask": 1.059,
+      "open_24h": 1.1031,
+      "high_24h": 1.1073,
+      "low_24h": 1.0311,
+      "volume_24h_xrp": 72580233,
+      "change_from_open_percent": -4.01
+    },
+    "kraken_usdt_usd": {
+      "last": 0.99881
+    },
+    "normalized_okx_usd": 1.05764,
+    "normalized_okx_premium_to_kraken_percent": 0.49,
+    "limitations": [
+      "asynchronous exchange observations",
+      "Kraken response has no provider event timestamp",
+      "OKX observation approximately 24 minutes old at cutoff",
+      "no synchronized fresh spot L2 book captured",
+      "not an executable arbitrage observation"
+    ]
+  },
+  "derivatives": [
+    {
+      "provider": "Liqwall",
+      "timestamp_utc": "2026-11-10T22:32:00Z",
+      "open_interest_usd": 1160000000,
+      "funding_8h_percent": 0.009,
+      "liquidations_24h_usd": 18200000,
+      "long_liquidations_usd": 17100000,
+      "short_liquidations_usd": 1000000,
+      "binance_long_accounts_percent": 74.4
+    },
+    {
+      "provider": "TradRadar",
+      "timestamp_utc": "2026-11-10T22:00:00Z",
+      "open_interest_usd": 1570000000,
+      "open_interest_change_24h_percent": -5.36,
+      "funding_8h_percent": 0.008,
+      "liquidations_24h_usd": 16240000,
+      "long_liquidations_usd": 15190000,
+      "short_liquidations_usd": 1050000,
+      "long_accounts_percent": 79.4
+    },
+    {
+      "provider": "Alpha Finance",
+      "timestamp_utc": "2026-11-10T22:16:00Z",
+      "open_interest_usd": 2340000000,
+      "volume_24h_usd": 3080000000,
+      "long_liquidations_usd": 20000000,
+      "short_liquidations_usd": 1100000,
+      "liquidation_clusters": "modelled from open interest and leverage tiers; not guaranteed events"
+    }
+  ],
+  "derivatives_interpretation": "Open-interest totals differ by roughly 2x due venue coverage and methodology; do not average. Common observation is positive funding, falling open interest and long-heavy liquidations, not a directional forecast.",
+  "etf_flows": {
+    "crypto_keyhole": {
+      "date": "2026-11-09",
+      "reported_funds": 3,
+      "expected_daily_funds": 4,
+      "net_change_xrp": -9216553,
+      "approx_usd": -10100000,
+      "components_xrp": {
+        "bitwise": -8594551,
+        "canary": -427341,
+        "twentyone_shares": -194660
+      },
+      "missing": "Franklin daily file pending; Grayscale quarterly; REX-Osprey excluded from direct-flow calculation"
+    },
+    "xrp_insights": {
+      "date": "2026-11-09",
+      "products": 7,
+      "holdings_xrp": 1185639000,
+      "net_flow_xrp": -9541334,
+      "approx_usd": -9900000,
+      "method": "day-over-day holdings changes; six US spot products plus BITW; GXRP daily flow excluded because of scrape gaps; REX-Osprey and BITW have distinct exposure/rebalancing limitations"
+    },
+    "crypto_etf_tracker": {
+      "date": "2026-11-09",
+      "reported_funds": 3,
+      "expected_funds": 5,
+      "net_flow_usd": -10400000,
+      "components_usd": {
+        "bitwise": -9400000,
+        "canary": -800000,
+        "twentyone_shares": -200000
+      },
+      "missing": "Franklin and Grayscale not reported"
+    },
+    "bykaranteli": {
+      "date": "2026-11-09",
+      "reported_funds": 5,
+      "net_flow_usd": -10400000,
+      "methodology_warning": "missing Franklin/Grayscale rows displayed as zero; not independent confirmation"
+    },
+    "reconciliation": "Aggregators share issuer inputs but differ in fund universe, missing-data treatment, holdings-vs-share-count methods and price snapshots. XRP Insights and CryptoKeyhole differ by 324,781 XRP. Do not average; ETF flows remain model-ineligible pending issuer and settlement reconciliation."
+  },
+  "evernorth": {
+    "onchain_tracker": {
+      "ledger": 108246508,
+      "ledger_time_utc": "2026-11-10T21:00:00Z",
+      "attributed_wallets": 13,
+      "attributed_balance_xrp": 103129905,
+      "sec_reported_closing_balance_xrp": 473276430,
+      "moved_outside_tracked_attribution_since_oct22_xrp": 370346663,
+      "interpretation": "third-party wallet attribution; destinations unclassified and not assumed sold"
+    },
+    "sec_resale_registration": {
+      "filing_date": "2026-11-09",
+      "class_a_resale_shares": 73688162,
+      "sponsor_warrants": 239653,
+      "company_proceeds_from_selling_holder_resales": 0,
+      "exception": "warrant exercise proceeds"
+    },
+    "eloc": {
+      "maximum_new_shares": 5218935,
+      "proceeds_received_as_of_prospectus": 0
+    },
+    "lockup": {
+      "class_a_shares": 7044000,
+      "share_of_issued_class_a_percent": 29.8,
+      "expiry": "2027-04-09",
+      "scope_warning": "does not cover all 73.688M registered resale securities"
+    },
+    "wr_berkley_13g_a": {
+      "shares": 396158,
+      "reported_percent": 1.7,
+      "issuer_context": "Armada Acquisition Corp II pre-merger Class A as of 2026-09-30; not a direct XRP purchase or post-merger Evernorth share count"
+    },
+    "sbi_group_evernorth_holdings": {
+      "class_a_shares": 9431914,
+      "class_c_shares": 2359038,
+      "entities": 4,
+      "class_c_voting": false
+    }
+  },
+  "xrpl": {
+    "amendments": {
+      "enabled": 98,
+      "in_flight": 9,
+      "activation_countdown": 0,
+      "trusted_validators_heard": 35,
+      "votes_required": 29,
+      "single_asset_vault_yes": 23,
+      "lending_protocol_yes": 22,
+      "lending_protocol_v1_1_yes": 22
+    },
+    "amendment_source_disagreement": "XRPL Dashboard lists nine in-flight amendments including CryptoConditionsSuite at zero votes; XRPLWin lists eight open-for-voting amendments. Lending amendments remain below threshold; native lending is not live.",
+    "price_oracles": {
+      "band_xrp_usd": 1.05483,
+      "band_timestamp_utc": "2026-11-10T23:01:12Z",
+      "ruby_oracle_xrp_usd": 1.05744,
+      "ruby_timestamp_utc": "2026-11-10T23:00:10Z",
+      "dia_xrp_usd": 1.05886,
+      "dia_timestamp_utc": "2026-11-10T20:51:20Z",
+      "spread_percent": 0.38,
+      "source_scope_disagreement": "curated XRPL Dashboard production page recognizes DIA only and says Band is not observed; XRPLWin full directory lists Band, RubyOracle and DIA",
+      "eligibility": "provider identity, methodology and consumer use not independently verified; not admitted to model"
+    }
+  },
+  "macro": {
+    "bls_october_2026_cpi": {
+      "release_utc": "2026-11-10T13:30:00Z",
+      "headline_monthly_percent": 0.4,
+      "core_monthly_percent": 0.3,
+      "food_monthly_percent": 0.5,
+      "energy_monthly_percent": 0.7,
+      "shelter_monthly_percent": 0.3,
+      "year_over_year": "affected comparison unavailable because October 2025 survey data were not collected during the lapse in appropriations",
+      "next_release": "2026-12-10 08:30 America/New_York"
+    },
+    "admission": "research/event context only; collector lacks vintage-aware BLS adapter"
+  },
+  "identity_research": {
+    "japan_sbic": "East/Central/West are separate Tokyo, Nagoya and Osaka regional investment-consultation companies, not SBI Holdings",
+    "sbic_america": "Safecon Bureau of Inspection & Certification USA Inc; occupational safety training/inspection/certification; distinct from Japan SBIC and SBI Holdings",
+    "sbic_chatgpt": "2025 trainer post advertised a ChatGPT Plus prize in an AI Safety Professional contest; no OpenAI partnership established",
+    "ask_coin": "Permission's official $ASK token is a Base/Polygon LayerZero OFT; no XRPL/XRP integration verified",
+    "kamilah_stevenson": "Dr. Kamilah Stevenson identity verified through Wealth With Confidence, but no first-party link to a canonical personal YouTube channel; no personal-channel inventory attributed"
+  },
+  "nine_platforms": {
+    "ChatGPT": "current-session GitHub read/write on integration verified; no main write or secret access",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "no formal review on PR #1660",
+    "Codex": "unverified",
+    "HuggingFace": "previous build error; no deployment",
+    "Kaggle": "untested; no submission",
+    "Databricks": "previous HTTP 403; no workspace write",
+    "external_model_data_transfer": "none"
+  },
+  "prediction_engine": {
+    "source_definitions": 46,
+    "hourly_sources": 42,
+    "weekly_cftc_sources": 2,
+    "excluded_noncommercial_xrpl_nodes": 2,
+    "implemented": [
+      "read-only public collector",
+      "SHA-256 raw-source receipts and receipt-chain logic",
+      "point-in-time SQLite feature store",
+      "four deterministic baselines",
+      "chronological walk-forward with purge/embargo",
+      "calibration and drift diagnostics",
+      "fail-closed forecast ledger with Ed25519 evaluator attestation"
+    ],
+    "missing": [
+      "independent WORM storage and trusted timestamp anchor",
+      "raw-receipt replay and durable feature-store reconstruction",
+      "synchronized historical spot/L2/derivatives/exchange-flow/collateral data",
+      "vintage-aware macro adapter and event timeline",
+      "scenario/counter-hypothesis generator",
+      "effective-sample-size correction for overlapping horizons",
+      "sufficient independent shadow outcomes",
+      "production evaluator signing key",
+      "demonstrated out-of-sample lift"
+    ],
+    "workflow": "hourly at minute 3 plus daily feature-store backup at 00:15 UTC; read-only/artifact-first; integration-only; no verified main-branch run",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "backlog": {
+    "active_integration_pr": 1660,
+    "non_draft_classifications": {
+      "1269": "unique/unreviewed topology; eight changed paths",
+      "1317": "unique/unreviewed structural analysis; seven changed paths",
+      "1318": "unique/unreviewed fail-closed schema changes; two changed paths",
+      "1320": "unique safety-critical paper-trader pause; five changed paths, semantic parity review required",
+      "1653": "unique/unreviewed: seven changed files, three unique paths, eight unresolved review threads",
+      "1660": "blocked: sole consolidated V3/XRP integration PR",
+      "1650_1649_1648_1646_1645_1644_1647": "dependency/action overlap candidates; exact version and workflow semantics require reconciliation",
+      "1255_1254": "older dependency candidates; compare exact versions with newer source PRs",
+      "1640_1642_1643": "source branches represented by integration path union; retain until verified successor merge"
+    },
+    "no_prs_closed": true,
+    "no_prs_merged_in_this_run": true
+  },
+  "actions": {
+    "merges": 0,
+    "deployments": 0,
+    "secret_rotations": 0,
+    "secret_revocations": 0,
+    "space_restarts": 0,
+    "kaggle_submissions": 0,
+    "databricks_writes": 0,
+    "external_model_transfers": 0,
+    "paper_trades": 0,
+    "real_money_actions": 0,
+    "force_pushes": 0,
+    "destructive_worktree_operations": 0,
+    "pr_closures": 0
+  },
+  "sources": [
+    {
+      "name": "Kraken XRP/USD ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-10T23:13:57Z",
+      "independence_group": "exchange:kraken",
+      "timestamp_quality": "retrieval timestamp only; no provider event timestamp"
+    },
+    {
+      "name": "OKX XRP-USDT ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "provider_timestamp_utc": "2026-11-10T22:49:58.273Z",
+      "independence_group": "exchange:okx",
+      "timestamp_quality": "provider timestamp"
+    },
+    {
+      "name": "BLS October 2026 CPI",
+      "url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "release_utc": "2026-11-10T13:30:00Z",
+      "independence_group": "official_us_government"
+    },
+    {
+      "name": "Evernorth SEC 424B3",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "filing_date": "2026-11-09",
+      "independence_group": "issuer_sec_filing"
+    },
+    {
+      "name": "Evernorth on-chain wallet attribution",
+      "url": "https://xrp-insights.com/evernorth",
+      "ledger_time_utc": "2026-11-10T21:00:00Z",
+      "independence_group": "third_party_onchain_attribution"
+    },
+    {
+      "name": "XRPL amendment dashboard",
+      "url": "https://xrpldashboard.com/amendments",
+      "captured_at_utc": "2026-11-10T23:13:57Z",
+      "independence_group": "xrpl_ledger_derived"
+    },
+    {
+      "name": "XRPL oracle directory",
+      "url": "https://xrplwin.com/oracles",
+      "captured_at_utc": "2026-11-10T23:13:57Z",
+      "independence_group": "xrpl_ledger_derived"
+    },
+    {
+      "name": "SBIC America official site",
+      "url": "https://safecon.us",
+      "independence_group": "company_primary"
+    },
+    {
+      "name": "Permission official site",
+      "url": "https://permission.io",
+      "independence_group": "project_primary"
+    }
+  ]
+}

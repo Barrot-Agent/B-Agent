@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot_xrp_run15b_exact_head_ci_correction",
+  "run_id": "run15b",
+  "captured_at_utc": "2026-11-11T07:36:51Z",
+  "data_cutoff_utc": "2026-11-11T07:36:51Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "parent_before_correction": "800d4642735c61b0d3bade54d86772ffccd3c4f6",
+    "pr": 1661,
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "mergeable_state": "unstable",
+    "ahead_by": 1995,
+    "behind_by": 0,
+    "changed_files": 985,
+    "workflow_files": 44,
+    "non_workflow_paths": 941,
+    "main_tree_entries": 1388,
+    "integration_tree_entries": 2251,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14
+  },
+  "ci": {
+    "exact_head": "800d4642735c61b0d3bade54d86772ffccd3c4f6",
+    "full_suite": {
+      "run_id": 42980105698,
+      "job_id": 130388288744,
+      "conclusion": "failure",
+      "passed": 3405,
+      "failed": 2,
+      "subtests": 8,
+      "coverage_percent": 59.98,
+      "duration_seconds": 94.93,
+      "wheel_build_verified": false
+    },
+    "failing_tests": [
+      "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
+    ],
+    "failure_classification": "Undefined local data in exact-head test and missing explicit Kamilah channel/video unverified phrase; no application-runtime exception in failure summary.",
+    "core_tests": "passed",
+    "dependency_audit": {
+      "run_id": 42980105807,
+      "passed": true,
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42980105673,
+      "passed": true,
+      "automatic_merge_enabled": false
+    }
+  },
+  "correction": {
+    "status": "COMMITTED_ON_EXISTING_INTEGRATION_BRANCH",
+    "changes": [
+      "Initialize data in exact-head test before using dynamic snapshot references.",
+      "Explicitly state Kamilah channel ownership and video attribution remain unverified without a first-party cross-link.",
+      "Update repository and CI snapshot to parent head and exact run evidence."
+    ],
+    "tests_skipped": 0,
+    "coverage_threshold_lowered": false,
+    "exact_head_reverification": "PENDING"
+  },
+  "security": {
+    "credential_path": ".config/gh/hosts.yml",
+    "present_main": false,
+    "present_integration": false,
+    "other_open_pr_tips_with_path": 17,
+    "credential_contents_read": false,
+    "oauth_revocation": "REPOSITORY_REPORTED; PROVIDER_SIDE_UNVERIFIED",
+    "branch_protection": "HTTP 403",
+    "visible_ruleset": "Fall Back",
+    "visible_ruleset_enforcement": "disabled"
+  },
+  "publication": {
+    "main_signal": "STALE_LEGACY_SIGNAL",
+    "integration_signal": "NOT_ISSUED",
+    "pages_publication_on_main_push": "AUTOMATIC",
+    "authorization": false
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "main_ingestion_verified": false,
+    "public_research_model_eligible": false,
+    "real_money_action": false,
+    "paper_trade": false
+  },
+  "platform_status": {
+    "chatgpt": "CURRENT_SESSION_GITHUB_API_VERIFIED",
+    "lunaroute": "DECLARED_NOT_AUTHENTICATED",
+    "claude": "UNVERIFIED",
+    "grok": "UNVERIFIED",
+    "gemini": "UNVERIFIED",
+    "copilot": "NO_FORMAL_APPROVAL",
+    "codex": "UNVERIFIED",
+    "hugging_face": "NO_DEPLOYMENT",
+    "kaggle": "NO_SUBMISSION",
+    "databricks": "NO_WORKSPACE_WRITE"
+  },
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "main_write": false,
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "external_model_transfer": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "force_push": false,
+    "destructive_worktree_operation": false,
+    "source_pr_closure": false
+  }
+}

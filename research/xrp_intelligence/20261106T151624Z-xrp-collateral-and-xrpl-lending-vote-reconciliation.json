@@ -1,0 +1,241 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "xrp_collateral_and_native_lending_governance_reconciliation_20261106T151624Z",
+  "artifact_type": "xrp_collateral_eligibility_and_xrpl_lending_governance_reconciliation",
+  "recorded_at_utc": "2026-11-06T15:16:24Z",
+  "exact_page_retrieval_times_utc": null,
+  "common_market_cutoff_utc": null,
+  "mission_priority": 1,
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "status": "RESEARCH_ONLY_MODEL_INELIGIBLE",
+  "key_distinctions": [
+    "Coinbase Global Exchange accepts XRP as collateral for perpetual-futures margin; eligibility is not evidence of actual XRP pledged or utilized.",
+    "Coinbase collateral valuation applies organization-level average-daily-quantity limits and asset haircuts; the public pages do not disclose XRP-specific haircut, ADQ cap or pledged quantity.",
+    "Coinbase's Morpho-mediated retail loan route is separate from Coinbase Global Exchange margin. The reported route uses wrapped XRP as collateral and USDC as the borrowing asset; it is not evidence of Coinbase balance-sheet lending or XRP purchases.",
+    "XRPL XLS-66 LendingProtocol is designed for uncollateralized fixed-term loans funded from pooled Single Asset Vault assets, with off-chain underwriting. Vault deposits are funder capital, not borrower collateral.",
+    "The three related XRPL amendments remain below the 29-of-35 threshold; a supermajority must persist for 14 days before activation."
+  ],
+  "current_amendment_snapshots": {
+    "threshold_yes_votes": 29,
+    "required_support_duration_days": 14,
+    "trusted_validators": 35,
+    "observations": [
+      {
+        "amendment": "LendingProtocol",
+        "standard": "XLS-66",
+        "yes_votes": 21,
+        "total_validators": 35,
+        "yes_pct": 60,
+        "state_ledger": 108155386,
+        "voting_ledger": 108155135,
+        "status": "VOTING_BELOW_SUPERMAJORITY"
+      },
+      {
+        "amendment": "SingleAssetVault",
+        "standard": "XLS-65",
+        "yes_votes": 23,
+        "total_validators": 35,
+        "yes_pct": 65.71,
+        "state_ledger": 108154942,
+        "voting_ledger": 108154879,
+        "status": "VOTING_BELOW_SUPERMAJORITY"
+      },
+      {
+        "amendment": "LendingProtocolV1_1",
+        "yes_votes": 21,
+        "total_validators": 35,
+        "yes_pct": 60,
+        "state_ledger": 108155080,
+        "voting_ledger": 108154879,
+        "status": "VOTING_BELOW_SUPERMAJORITY"
+      }
+    ],
+    "interpretation": "These are ledger-indexed snapshots, not wall-clock synchronized observations or forecasts of future validator votes."
+  },
+  "collateral_reconciliation": {
+    "coinbase_global_exchange_xrp_eligible": true,
+    "coinbase_xrp_actual_pledged_quantity": null,
+    "coinbase_xrp_base_haircut": null,
+    "coinbase_xrp_closeout_horizon_haircut": null,
+    "coinbase_xrp_adq_cap": null,
+    "morpho_wrapped_xrp_loan_route_reported": true,
+    "morpho_reported_max_loan_usdc": 100000,
+    "morpho_current_xrp_collateral_balance": null,
+    "morpho_current_utilization": null,
+    "xrpl_xls66_borrower_collateral_required": false,
+    "xrpl_xls65_vault_deposits_are_borrower_collateral": false,
+    "actual_xrpl_vault_capital_verified": false,
+    "actual_xrpl_loan_origination_volume_verified": false,
+    "actual_xrp_collateral_balance_verified": false,
+    "actual_xrp_settlement_volume_verified": false
+  },
+  "source_registry": [
+    {
+      "source_id": "coinbase_global_exchange_collateral_help",
+      "publisher": "Coinbase",
+      "source_type": "official_help_page",
+      "url": "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/what-is-collateral",
+      "independence_group": "coinbase_primary",
+      "normalized_excerpt": "Coinbase Global Exchange lists XRP among assets accepted as collateral for perpetual futures, alongside USDC and other supported assets.",
+      "normalized_excerpt_sha256": "0518499e1625700613c0172cb6cff9dcb7a63c7edae6924f3580fa86b41dc449",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    },
+    {
+      "source_id": "coinbase_cross_collateral_help",
+      "publisher": "Coinbase",
+      "source_type": "official_help_page",
+      "url": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "independence_group": "coinbase_primary",
+      "normalized_excerpt": "Coinbase applies organization-level ADQ limits and asset haircuts; excess collateral above a limit is excluded, and automatic liquidation can occur below maintenance margin.",
+      "normalized_excerpt_sha256": "c72a088740af027633f925ce45249d2c831367694d355718afb1238c2741b07c",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    },
+    {
+      "source_id": "xrpl_known_amendments_official",
+      "publisher": "XRPL.org",
+      "source_type": "official_protocol_documentation",
+      "url": "https://xrpl.org/resources/known-amendments",
+      "independence_group": "xrpl_official_docs",
+      "normalized_excerpt": "XLS-66 describes fixed-term, uncollateralized loans funded from pooled Single Asset Vault assets, with off-chain borrower underwriting.",
+      "normalized_excerpt_sha256": "0e660b55d60e50673f20706608a72eaaf9010b3793a55c2e430ef97a4b263c86",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    },
+    {
+      "source_id": "xrpl_single_asset_vault_official",
+      "publisher": "XRPL.org",
+      "source_type": "official_protocol_documentation",
+      "url": "https://xrpl.org/resources/known-amendments",
+      "independence_group": "xrpl_official_docs",
+      "normalized_excerpt": "XLS-65 defines pooled asset vaults for multiple depositors intended to work with XRPL's native Lending Protocol.",
+      "normalized_excerpt_sha256": "29eb6ebfd3d9f333ca017b02635ac38b0a4a103846d608a5e74b279795c27a83",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    },
+    {
+      "source_id": "xrplwin_lendingprotocol_live_ledger",
+      "publisher": "XRPLWin",
+      "source_type": "ledger_amendment_state_tracker",
+      "url": "https://xrplwin.com/amendment/LendingProtocol",
+      "independence_group": "xrplwin_ledger_reader",
+      "normalized_excerpt": "LendingProtocol: 21/35 yes; 29 required; 14-day supermajority period; state ledger 108155386.",
+      "normalized_excerpt_sha256": "4e9287d255a94d2e1b9028593fb07a2a5b8ca694d71621f04ffb40c52320fa4c",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null,
+      "state_ledger": 108155386,
+      "voting_ledger": 108155135
+    },
+    {
+      "source_id": "xrplwin_single_asset_vault_live_ledger",
+      "publisher": "XRPLWin",
+      "source_type": "ledger_amendment_state_tracker",
+      "url": "https://xrplwin.com/amendment/SingleAssetVault",
+      "independence_group": "xrplwin_ledger_reader",
+      "normalized_excerpt": "SingleAssetVault: 23/35 yes; 29 required; 14-day supermajority period; state ledger 108154942.",
+      "normalized_excerpt_sha256": "9c7e241d9a2a084ce9edcdf8cadfd78b0db807d6ead822c56715dc6775092ed2",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null,
+      "state_ledger": 108154942,
+      "voting_ledger": 108154879
+    },
+    {
+      "source_id": "xrplwin_lending_v11_live_ledger",
+      "publisher": "XRPLWin",
+      "source_type": "ledger_amendment_state_tracker",
+      "url": "https://xrplwin.com/amendment/LendingProtocolV1_1",
+      "independence_group": "xrplwin_ledger_reader",
+      "normalized_excerpt": "LendingProtocolV1_1: 21/35 yes; 29 required; 14-day supermajority period; state ledger 108155080.",
+      "normalized_excerpt_sha256": "76f56467fc1a0033bfe6d8c5912ba4141ce1e02f161df9c096d8049d4e4ef51d",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null,
+      "state_ledger": 108155080,
+      "voting_ledger": 108154879
+    },
+    {
+      "source_id": "coindesk_coinbase_morpho_xrp_usdc_20260219",
+      "publisher": "CoinDesk",
+      "source_type": "secondary_reporting",
+      "url": "https://www.coindesk.com/markets/2026/02/19/coinbase-lets-xrp-ada-and-dogecoin-holders-borrow-up-to-usd100-000-without-selling",
+      "independence_group": "coindesk_secondary",
+      "publication_date": "2026-02-19",
+      "normalized_excerpt": "CoinDesk reported a Coinbase-facing Morpho route for USDC loans against wrapped XRP, up to $100,000; New York excluded.",
+      "normalized_excerpt_sha256": "9506089a0d7cf61cd3f407a33b169c947db4641493b796c104f3308753d15cc0",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1_existing_xrp_utility",
+      "statement": "Collateral eligibility can increase the utility of XRP already held and may let institutions or users obtain liquidity without selling spot XRP.",
+      "supporting": [
+        "Coinbase's official Global Exchange help page lists XRP as eligible perpetual-futures collateral.",
+        "Coinbase documents cross-collateral valuation and automatic liquidation mechanics."
+      ],
+      "disconfirming": [
+        "No XRP-specific pledged balance, ADQ cap, haircut or utilization is publicly disclosed in the reviewed pages.",
+        "Eligibility does not require new XRP purchases."
+      ],
+      "observable_tests": [
+        "Obtain XRP-specific ADQ and haircut disclosures.",
+        "Track actual pledged balances, utilization and collateral liquidations if disclosed."
+      ]
+    },
+    {
+      "id": "H2_no_incremental_spot_demand",
+      "statement": "Collateral eligibility may monetize existing XRP holdings without producing incremental spot demand.",
+      "supporting": [
+        "The official pages establish eligibility and risk mechanics, not actual utilization or purchases.",
+        "The Morpho route is a secondary-reported wrapped-collateral loan flow rather than a Coinbase balance-sheet XRP purchase."
+      ],
+      "disconfirming": [
+        "A future increase in verified pledged XRP balances could show greater collateral use and potential reduction in liquid float."
+      ],
+      "observable_tests": [
+        "Compare verified collateral balances with exchange netflows and spot depth after controlling for market-wide conditions."
+      ]
+    },
+    {
+      "id": "H3_procyclical_collateral_liquidation",
+      "statement": "Haircuts and automatic margin liquidations can amplify selling pressure during sharp price declines.",
+      "supporting": [
+        "Coinbase documents automatic collateral liquidation below maintenance margin and closeout-horizon haircuts."
+      ],
+      "disconfirming": [
+        "Asset-specific haircuts, thresholds, balances and liquidation amounts are not public in the reviewed sources."
+      ],
+      "observable_tests": [
+        "Seek venue-specific XRP collateral and liquidation disclosures; align them with order-book depth and futures OI."
+      ]
+    },
+    {
+      "id": "H4_native_xrpl_lending_is_not_xrp_collateral",
+      "statement": "The proposed XRPL Lending Protocol is an uncollateralized credit design and should not be treated as a native XRP-collateral market.",
+      "supporting": [
+        "XRPL.org describes XLS-66 as uncollateralized and funded by pooled Single Asset Vault assets.",
+        "Live vote snapshots remain below the 29-of-35 threshold for all three related amendments."
+      ],
+      "disconfirming": [
+        "Future amendments or separate third-party lending products could create different collateral structures."
+      ],
+      "observable_tests": [
+        "Track amendment activation and separate product-level deposits, loan balances, collateral assets and settlement volumes."
+      ]
+    }
+  ],
+  "model_use_policy": {
+    "model_eligible": false,
+    "permitted_use": "Institutional product and protocol event context only after point-in-time availability checks.",
+    "prohibited_inference": [
+      "Do not infer actual collateral utilization, XRP purchases, XRP lending volume or price impact from eligibility, loan caps, pooled-vault design or validator votes."
+    ]
+  },
+  "forecast_status": {
+    "status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "data_cutoff_utc": null
+  }
+}

@@ -1,7 +1,12 @@
 {
-    "timestamp": "2026-06-15T06:52:12.933851+00:00",
-    "target_asset": "XRP",
-    "council_action": "MAX_ACCUMULATION_TRIGGERED",
-    "orchestrator_weight_multiplier": 1.15,
-    "active_stability_anchor": 0.707
+  "schema_version": 2,
+  "status": "LEGACY_QUARANTINED",
+  "target_asset": "XRP",
+  "council_action": "NOT_ISSUED",
+  "orchestrator_weight_multiplier": null,
+  "active_stability_anchor": null,
+  "forecast_eligible": false,
+  "reason_code": "HARDCODED_UNVALIDATED_COUNCIL_HEURISTIC",
+  "legacy_record_ref": "research/xrp_intelligence/20261105T213000Z-legacy-council-heuristic-quarantine.json",
+  "legacy_timestamp": "2026-06-15T06:52:12.933851+00:00"
 }

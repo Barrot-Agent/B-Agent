@@ -1,0 +1,365 @@
+{
+  "schema_version": "barrot.xrp.research-evidence.v1",
+  "record_id": "run46-sbi-evernorth-circle-market-reconciliation",
+  "captured_at_utc": "2026-11-19T20:50:25.724Z",
+  "mission": {
+    "priority": 1,
+    "objective": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "evidence_status": "RESEARCH_ONLY",
+  "model_eligible": false,
+  "raw_capture": {
+    "raw_http_bytes_captured": false,
+    "raw_response_sha256": null,
+    "immutable_receipt_id": null,
+    "external_timestamp_anchor": null,
+    "note": "Sources were inspected as rendered web pages or public API responses. Raw response bytes were not persisted in this record. Do not admit these observations to the point-in-time feature store or training set."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional": false,
+    "reason": "No synchronized raw receipts, complete point-in-time market dataset, leakage-safe XRP-specific out-of-sample lift, calibrated probabilities and completed shadow evaluation have been established."
+  },
+  "source_registry": [
+    {
+      "id": "SEC_EVERNORTH_Q3_2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "published_at": "2026-11-13",
+      "source_type": "primary_filing",
+      "independence_group": "SEC_EVERNORTH",
+      "raw_response_sha256": null,
+      "receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "id": "SBI_FY2025_PRESENTATION",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+      "publisher": "SBI Holdings, Inc.",
+      "published_at": "2026-05-01",
+      "source_type": "primary_corporate_presentation",
+      "independence_group": "SBI_HOLDINGS",
+      "raw_response_sha256": null,
+      "receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "id": "CIRCLE_Q3_2026_10Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "published_at": "2026-11-03",
+      "source_type": "primary_filing",
+      "independence_group": "SEC_CIRCLE",
+      "raw_response_sha256": null,
+      "receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "id": "CIRCLE_USDC_PAGE",
+      "url": "https://www.circle.com/usdc",
+      "publisher": "Circle",
+      "published_at": null,
+      "observation_date": "2026-11-16",
+      "source_type": "primary_issuer_metric",
+      "independence_group": "CIRCLE",
+      "raw_response_sha256": null,
+      "receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "id": "XRP_INSIGHTS_EXCHANGE_BALANCES",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "publisher": "XRP Insights",
+      "published_at": null,
+      "observation_time": "2026-11-19T08:00:00Z",
+      "source_type": "secondary_onchain_aggregation",
+      "independence_group": "XRP_INSIGHTS",
+      "raw_response_sha256": null,
+      "receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "id": "XRP_INSIGHTS_ETF_TRACKER",
+      "url": "https://xrp-insights.com/",
+      "publisher": "XRP Insights",
+      "published_at": null,
+      "observation_date": "2026-11-18",
+      "source_type": "secondary_issuer_data_aggregation",
+      "independence_group": "XRP_INSIGHTS",
+      "raw_response_sha256": null,
+      "receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "id": "XRP_INSIGHTS_EVERNORTH",
+      "url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "publisher": "XRP Insights",
+      "published_at": null,
+      "observation_time": "2026-11-19T19:23:00Z",
+      "source_type": "secondary_onchain_wallet_attribution",
+      "independence_group": "XRP_INSIGHTS",
+      "raw_response_sha256": null,
+      "receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "id": "BITWISE_XRP_ETF",
+      "url": "https://www.bitwiseetfs.com/single-asset/xrp",
+      "publisher": "Bitwise",
+      "published_at": null,
+      "observation_date": "2026-11-18",
+      "source_type": "primary_issuer_holdings",
+      "independence_group": "BITWISE",
+      "raw_response_sha256": null,
+      "receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "id": "FRANKLIN_XRP_ETF",
+      "url": "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ",
+      "publisher": "Franklin Templeton",
+      "published_at": null,
+      "observation_date": "2026-11-04",
+      "source_type": "primary_issuer_holdings",
+      "independence_group": "FRANKLIN",
+      "raw_response_sha256": null,
+      "receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "id": "CANARY_XRPC",
+      "url": "https://canaryetfs.com/xrpc/",
+      "publisher": "Canary Capital",
+      "published_at": null,
+      "observation_date": "2026-11-18",
+      "source_type": "primary_issuer_fund_page",
+      "independence_group": "CANARY",
+      "raw_response_sha256": null,
+      "receipt_id": null,
+      "model_eligible": false
+    },
+    {
+      "id": "KRAKEN_XRPUSD_TICKER",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "publisher": "Kraken",
+      "published_at": null,
+      "observation_time": "2026-11-19T20:50:25.724Z",
+      "source_type": "primary_exchange_api",
+      "independence_group": "KRAKEN",
+      "raw_response_sha256": null,
+      "receipt_id": null,
+      "model_eligible": false
+    }
+  ],
+  "capital_and_ownership": {
+    "sbi_holdings": {
+      "ripple_equity_stake_pct": 9,
+      "evidence_date": "2026-04-27",
+      "evidence_note": "SBI Holdings' own FY2025 presentation calls Ripple an SBI Group investee and states an approximately 9% stake. This is corporate equity exposure, not an XRP wallet balance.",
+      "evernorth_cash_investment_usd": 200000000,
+      "evernorth_investment_type": "cash PIPE investment",
+      "sbi_specific_xrp_purchase_allocation_usd": null,
+      "sbi_specific_xrp_purchase_allocation_note": "Not separately allocated in the SEC purchase tranche."
+    },
+    "sbi_ripple_supply_slide": {
+      "as_of": "2026-04-27",
+      "max_supply_xrp": 100000000000,
+      "market_circulated_xrp_approx": 61680000000,
+      "ripple_actual_xrp_outside_escrow_approx": 5100000000,
+      "ripple_xrp_under_escrow_approx": 33200000000,
+      "burned_xrp_approx": 10000000,
+      "semantic_guard": "The slide labels approximately 5.10B as Actual XRP within Ripple's holdings not in circulation. It is not an SBI Holdings balance."
+    },
+    "evernorth_sec_reconciliation": {
+      "pre_close_as_of": "2026-09-30",
+      "pre_close_custody_xrp": 346284972,
+      "pre_close_historical_cost_usd": 846575043,
+      "pre_close_carrying_value_after_impairment_usd": 341887231,
+      "cumulative_impairment_usd": 504687812,
+      "cash_advance_funding_total_usd": 214049995,
+      "cash_purchase_recorded_cost_usd": 214000000,
+      "cash_purchased_xrp": 84365876,
+      "cash_purchase_average_usd_per_xrp": 2.53657059,
+      "sbi_specific_share_of_cash_purchase_xrp": null,
+      "other_disclosed_contributions": {
+        "rippleworks_to_arrington_sponsor_xrp": 211319096,
+        "ripple_affiliate_equity_contribution_xrp": 50000000,
+        "ripple_direct_contribution_to_pathfinder_xrp": 126791458,
+        "delayed_funding_xrp": 200000
+      },
+      "post_close": {
+        "business_combination_close_date": "2026-10-09",
+        "xrp_transferred_to_pathfinder_xrp": 346484972,
+        "ripple_contribution_to_pathfinder_xrp": 126791458,
+        "reported_starting_combined_treasury_xrp": 473276430,
+        "arithmetic_reconciles": true,
+        "note": "346,484,972 transferred to Pathfinder plus 126,791,458 separately contributed by Ripple equals 473,276,430. This is a transaction/closing reconciliation, not a verified current balance."
+      },
+      "ownership_constraints": {
+        "sbi_affiliated_class_a_threshold_pct": 39.9,
+        "sbi_threshold_semantics": "Class A ownership threshold; excess shares issued as Class C. Not a total economic ownership cap.",
+        "ripple_and_affiliate_combined_pubco_cap_pct": 9.9
+      },
+      "pre_close_liquidity_risk": {
+        "cash_usd": 91397,
+        "net_working_capital_deficit_usd": 10000000,
+        "accumulated_deficit_usd": 185600000,
+        "related_party_credit_facility_usd": 1000000,
+        "related_party_credit_interest_pct": 3.81,
+        "facility_drawn_as_of_2026_09_30": false
+      },
+      "post_close_financing_risk": {
+        "convertible_note_principal_usd": 30000000,
+        "convertible_note_net_proceeds_usd": 29000000,
+        "convertible_note_pik_rate_pct": 4,
+        "warrant_exercise_gross_proceeds_usd": 35300000,
+        "warrants_remaining_shares": 8666000,
+        "equity_line_max_shares": 5219000,
+        "equity_line_price_pct_of_vwap": 97
+      },
+      "relationship_roles": {
+        "coinbase": "Principal market used for XRP accounting valuation and an announced institutional deployment partner; this does not establish Coinbase ownership or custody of the full treasury.",
+        "bitgo": "Identified initial digital-asset custodian in the filing's custody history.",
+        "ripple": "Related party, direct XRP contributor, credit counterparty and announced deployment partner.",
+        "rippleworks": "Separate entity from Ripple Labs; source of XRP contributed through the sponsor."
+      },
+      "impairment_2025_usd": 233650642,
+      "impairment_2026_ytd_usd": 271037170,
+      "impairment_q3_2026_usd": 6891073,
+      "impairment_reconciliation_note": "Historical cost 846,575,043 less cumulative impairment since inception 504,687,812 equals September 30 carrying value 341,887,231. The 271,037,170 figure is the nine-month 2026 impairment, not cumulative since inception; Q3 2026 alone was 6,891,073."
+    },
+    "evernorth_onchain_counter_evidence": {
+      "source_id": "XRP_INSIGHTS_EVERNORTH",
+      "attributed_wallets_xrp": 103129905,
+      "wallets_attributed": 13,
+      "moved_outside_attributed_set_xrp": 370346663,
+      "attributed_plus_moved_xrp": 473476568,
+      "reported_starting_treasury_xrp": 473276430,
+      "arithmetic_overage_xrp": 200138,
+      "status": "PROVISIONAL_STALE_SECONDARY",
+      "caveats": [
+        "Moved outside the attributed wallet set does not prove sale or loss of custody.",
+        "The page's timeline says no closing filing was found and describes XRPN as awaiting listing, despite the SEC filing confirming the October 9 close.",
+        "The page discusses a 200,000 XRP delayed-funding deposit; the 200,138 XRP arithmetic difference requires transaction-level reconciliation."
+      ],
+      "model_eligible": false
+    }
+  },
+  "circle_and_stablecoin_rails": {
+    "usdc_circulation": {
+      "sec_end_period_2026_09_30_usd": 73879000000,
+      "circle_page_2026_11_16_usd": 68000000000,
+      "change_usd": -5879000000,
+      "change_pct": -7.95760636,
+      "interpretation": "Cross-snapshot supply contraction only; not a direct XRP flow or evidence of XRPL demand."
+    },
+    "circle_sbi_japan": {
+      "entity": "Circle SBI Japan K.K.",
+      "formed_contribution_date": "2025-11",
+      "circle_contribution_usd_approx": 1500000,
+      "sbi_contribution_usd_approx": 1500000,
+      "circle_ownership_pct": 50,
+      "circle_controls_and_consolidates_vie": true,
+      "sbi_interest_reported_as_noncontrolling": true,
+      "significant_operating_results_through_2026_09_30": false
+    },
+    "arc_presale": {
+      "circle_q3_2026_revenue_recognized_usd": 181800000,
+      "sbi_subsidiary_participation_disclosed": true,
+      "sbi_specific_allocation_usd": null,
+      "note": "Circle's revenue recognized is not the same as the full presale proceeds or SBI's undisclosed allocation."
+    },
+    "network_scope": {
+      "circle_native_usdc_networks_reported": 38,
+      "xrpl_included": true,
+      "note": "Native USDC availability on XRPL is a product/network connection, not proof of a direct Ripple-Circle corporate partnership or XRP buying."
+    }
+  },
+  "market_observations": {
+    "kraken_xrpusd": {
+      "last_trade_usd": 0.96133,
+      "bid_usd": 0.96144,
+      "ask_usd": 0.96145,
+      "high_24h_usd": 0.9968,
+      "low_24h_usd": 0.95363,
+      "volume_24h_xrp": 43890000,
+      "exchange_event_timestamp": null,
+      "model_eligible": false,
+      "note": "Single-venue retrieval snapshot; no exchange event timestamp was exposed."
+    },
+    "exchange_wallets": {
+      "as_of": "2026-11-19T08:00:00Z",
+      "total_xrp": 22180000000,
+      "wallet_count": 707,
+      "exchange_count": 24,
+      "same_wallet_change_7d_xrp": -155700000,
+      "same_wallet_change_30d_xrp": -444300000,
+      "includes_cold_storage": true,
+      "includes_wrapped_asset_reserves": true,
+      "tradable_float": false,
+      "examples": {
+        "upbit_xrp": 6460000000,
+        "coinbase_xrp": 5830000000,
+        "coinbase_cbXRP_reserve_xrp": 153100000,
+        "binance_xrp": 2590000000,
+        "binance_peg_reserve_xrp": 327400000,
+        "sbi_vc_trade_xrp": 56300000,
+        "sbi_vc_trade_cold_share_pct": 99
+      },
+      "note": "XRP Insights reads XRPL balances and uses XRPSCAN labels. Same-wallet declines cannot distinguish customer withdrawals from exchange transfers to untracked wallets."
+    },
+    "etfs": {
+      "as_of": "2026-11-18 close",
+      "reported_total_xrp_six_spot_plus_BITW": 1184150000,
+      "reported_aum_usd": 760000000,
+      "reported_net_holdings_change_xrp": -5310000,
+      "gxrp_excluded_from_flow_total_due_data_gap": true,
+      "bitwise_issuer_confirmed_xrp": 406770577.61,
+      "bitwise_as_of": "2026-11-18",
+      "franklin_official_page_xrp": 310430333.34,
+      "franklin_as_of": "2026-11-04",
+      "canary_net_assets_usd": 229136661.51,
+      "canary_as_of": "2026-11-18",
+      "canary_current_xrp_quantity_from_parsed_page": null,
+      "flow_semantics": "Issuer-reported XRP holdings delta; not automatically net cash purchases or exchange-market buys.",
+      "model_eligible": false
+    },
+    "derivatives": {
+      "open_interest_values_not_aggregated": true,
+      "note": "Third-party OI values differ materially by venue, contract type and update clock. No synchronized direct venue OI set was admitted."
+    },
+    "order_book": {
+      "synchronized_direct_depth_captured": false,
+      "model_eligible": false
+    }
+  },
+  "exact_phrase_and_identity": {
+    "actual_capital": "No new primary exact-phrase match. SBI's official presentation uses 'Actual XRP' for Ripple's approximately 5.10B non-escrow XRP holdings; this is not SBI's token balance.",
+    "ask_coin": "Permission Coin (ASK) and a separate Ask Coin Telegram candidate remain unresolved; no verified XRP/Ripple relationship.",
+    "sbic_chatgpt": "No primary evidence of a ChatGPT/OpenAI relationship with SBIC East/Central/West.",
+    "kamilah_camilla_stevenson": "Prior first-person identity evidence remains; canonical YouTube channel ownership remains unverified; no new video admitted."
+  },
+  "source_conflicts_and_counter_hypotheses": [
+    "Evernorth's reported 473.276M XRP starting treasury is not equivalent to 473.276M fresh cash purchases; contributions and in-kind transfers are material.",
+    "The 126.791M Ripple contribution was available for operating costs, creating potential sale/financing supply; no sale quantity is established.",
+    "Evernorth's 370.347M XRP moved outside the attributed wallet set may be custody movement, not sale; tracker is stale and its arithmetic is off by 200,138 XRP.",
+    "Exchange-wallet declines may reflect wallet relabeling or transfers to untracked wallets, not customer withdrawals or tradable-float contraction.",
+    "ETF holdings deltas are not automatically cash flows; the tracker excludes GXRP flow while a data gap is corrected.",
+    "USDC supply contraction may reflect stablecoin redemptions or market demand changes; it does not imply XRP flows."
+  ],
+  "feature_candidates_not_admitted": [
+    "Evernorth holdings by legal entity, custodian and on-chain wallet with SEC-to-ledger reconciliation.",
+    "Cash-funded XRP purchases separated from in-kind contributions, sponsor transfers and related-party contributions.",
+    "XRP exchange-wallet balances with stable wallet-set versioning, cold/hot labels and wrapped-reserve exclusions.",
+    "Issuer-by-issuer ETF XRP holdings changes, cash creations/redemptions and in-kind legs separated.",
+    "USDC and RLUSD supply by chain, mint/burn, bridge and redemption activity.",
+    "Synchronized spot order-book depth, futures OI/funding/basis and liquidation feeds."
+  ],
+  "source_quality": {
+    "raw_bytes_captured": false,
+    "sha256_receipts_created": 0,
+    "point_in_time_features_written": 0,
+    "reason": "Rendered web/API observations were not persisted as raw HTTP bytes. All new observations remain research-only."
+  }
+}

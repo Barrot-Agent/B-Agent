@@ -1,0 +1,593 @@
+{
+  "artifact_type": "barrot_xrp_run_audit",
+  "schema_version": "1.0.0",
+  "run_id": "Run173",
+  "captured_at_utc": "2026-11-15T20:01:22Z",
+  "mission": {
+    "priority": 1,
+    "foundation": "Barrot V3 execution/orchestration/safety/verification"
+  },
+  "repository": {
+    "captured_at_utc": "2026-11-15T20:01:22Z",
+    "main_sha": "16ec152c5278d38fd8fb4ad8b361de88ab5c7da9",
+    "integration_head_before_run173_commit": "754e7d1e28e97f00cb43f9fdfa5adf1de1a1a21c",
+    "pr_head_sha": "754e7d1e28e97f00cb43f9fdfa5adf1de1a1a21c",
+    "pr_number": 1662,
+    "open_prs": 373,
+    "drafts": 361,
+    "non_drafts": 12,
+    "integration_ahead_by": 2527,
+    "integration_behind_by": 0,
+    "changed_files": 1259,
+    "workflow_files": 48,
+    "non_workflow_paths": 1211,
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2502,
+    "exact_head_full_suite": {
+      "head_sha": "754e7d1e28e97f00cb43f9fdfa5adf1de1a1a21c",
+      "tests_passed": 3805,
+      "tests_failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "run_id": 43753051601
+    },
+    "dependency_audit": {
+      "manifests": 6,
+      "known_vulnerabilities": 0,
+      "run_id": 43753051623
+    },
+    "fail_closed_gate": {
+      "passed": true,
+      "automatic_merge_enabled": false,
+      "run_id": 43753051581
+    },
+    "market_research": {
+      "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+      "retrieved_at_utc": "2026-11-15T20:01:22Z",
+      "raw_http_bytes_captured": false,
+      "raw_source_sha256_captured": false,
+      "full_depth_l2_admitted": false,
+      "usd_normalization_admitted": false,
+      "spot": {
+        "okx": {
+          "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+          "event_time_utc": "2026-11-15T19:43:14.772Z",
+          "age_seconds": 1087.228,
+          "last": 0.9604,
+          "bid": 0.9603,
+          "bid_size_xrp": 5747.760824,
+          "ask": 0.9604,
+          "ask_size_xrp": 1594,
+          "spread_bps": 1.0413,
+          "top_level_imbalance_pct": 56.577,
+          "volume_24h_xrp": 89913226.989945,
+          "volume_24h_quote": 84138584.4708107,
+          "admission": "REJECTED_STALE"
+        },
+        "kraken": {
+          "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+          "event_time_utc": null,
+          "last": 0.96031,
+          "bid": 0.96029,
+          "bid_size_xrp": 391,
+          "ask": 0.9603,
+          "ask_size_xrp": 5207,
+          "spread_bps": 0.1041,
+          "top_level_imbalance_pct": -86.031,
+          "volume_24h_xrp": 65958286.64357929,
+          "open_today": 0.91378,
+          "admission": "REJECTED_TIMESTAMP_UNAVAILABLE"
+        },
+        "bybit": {
+          "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+          "event_time_utc": "2026-11-15T19:08:05.737Z",
+          "age_seconds": 3196.263,
+          "last": 0.9545,
+          "bid": 0.9544,
+          "ask": 0.9545,
+          "admission": "REJECTED_STALE"
+        },
+        "cross_venue_mid_difference_bps": 0.573,
+        "bybit_vs_okx_difference_bps": -60.915,
+        "contradiction": "A same-day secondary article claimed approximately $1.30, materially conflicting with direct OKX/Kraken observations near $0.96; quarantined."
+      },
+      "derivatives": "No new synchronized derivatives snapshot admitted; prior provider differences remain historical.",
+      "etf_flows": "No new issuer-file-complete flow snapshot admitted; prior tracker differences remain unresolved.",
+      "exchange_flows": "No new same-wallet exchange-balance snapshot captured.",
+      "xrpl_stablecoins": {
+        "source": "TokenPost secondary",
+        "published_at_utc": "2026-11-15T13:18:00Z",
+        "measurement_date": "2026-11-13",
+        "supply_usd": 908210000,
+        "weekly_change_pct": -8.01,
+        "rlusd_supply_usd": 818560000,
+        "rlusd_share_pct": 90.13,
+        "dex_volume_7d_usd": 35140000,
+        "dex_volume_change_pct": 28.87,
+        "not_cash_flow": true
+      }
+    },
+    "institutional_update": {
+      "standard_chartered_ripple_lmax": {
+        "date": "2026-10-12",
+        "url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group",
+        "custody": "LIVE for eligible RLUSD on XRPL through Standard Chartered DIFC Branch, regulated by DFSA.",
+        "collateral": "PLANNED and conditional for agreed LMAX products and collateral mirroring; final documentation, testing, laws, approvals and jurisdictional readiness remain outstanding."
+      },
+      "bny_ripple": {
+        "date": "2026-10-27",
+        "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+        "status": "XRP/RLUSD custody support and primary RLUSD reserve custody; tokenized trade-finance work exploratory."
+      },
+      "pnc_coinbase_circle": {
+        "date": "2026-11-09",
+        "url": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+        "status": "Limited pilot: incoming USDC on Ethereum powered by Coinbase Payments, automatically converted 1:1 to USD and deposited at PNC; not XRP settlement."
+      },
+      "sbi_ripple": {
+        "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+        "status": "SBI VC Trade RLUSD distribution is distinct from JPYSC; no proof JPYSC is XRPL-issued."
+      },
+      "circle_coinbase": "Existing USDC distribution economics and PNC pilot remain separate from Ripple RLUSD; no new bilateral Coinbase-SBI contract verified.",
+      "ripple_coinbase": "Existing Coinbase RLUSD access remains distinct from future/not-yet-verified Coinbase Global Exchange collateral support.",
+      "circle_sbi": "Existing 50/50 Circle SBI Japan K.K. is separate from SBIC regional entities and SBI Holdings."
+    },
+    "identity_research": {
+      "sbic": {
+        "east": {
+          "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "corporate_number": "9011001030621",
+          "established": "1963-11-15",
+          "url": "https://www.sbic.co.jp/company/profile/"
+        },
+        "central": {
+          "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "established": "1963-11-18",
+          "url": "https://www.sbic-cj.co.jp/company/about/"
+        },
+        "west": {
+          "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+          "established": "1963-11-20",
+          "url": "https://www.sbic-wj.co.jp/profiles/profile/"
+        },
+        "distinction": "Three separate regional SME investment companies, not SBI Holdings. SBIC East's June 2025 ChatGPT/Copilot training is education, not an OpenAI partnership.",
+        "training_url": "https://www.sbic.co.jp/training/20250612co/"
+      },
+      "ask_coin": {
+        "status": "UNRESOLVED",
+        "conclusion": "No canonical XRPL ASK issuer or Ripple relationship verified; Permission ASK on Base/Polygon is a candidate only."
+      },
+      "actual_capital": {
+        "status": "UNSTANDARDIZED",
+        "categories": [
+          "cash received",
+          "cash-funded XRP purchases",
+          "in-kind XRP contributions",
+          "debt",
+          "warrant exercises",
+          "undrawn facilities",
+          "custody balances",
+          "wallet balances",
+          "token transfer turnover"
+        ]
+      },
+      "sbic_chatgpt": "No canonical partnership verified; SBIC East training only.",
+      "kamilah_stevenson": {
+        "person_identity": "Previously verified at person level; YouTube channel ownership not first-party authenticated.",
+        "candidate_channel": "https://www.youtube.com/@drkamilahstevenson",
+        "linktree": "https://linktr.ee/DrKamilahstevenson1",
+        "status": "QUARANTINED_CANDIDATES_NOT_CONFIRMED_OFFICIAL_UPLOADS",
+        "videos": [
+          {
+            "id": "QslbjGQD0MU",
+            "date": "2025-12-14",
+            "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This"
+          },
+          {
+            "id": "ci0FH73lbCs",
+            "date": "2026-01-13",
+            "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing."
+          },
+          {
+            "id": "cxeX_eu_2H0",
+            "date": "2026-01-15",
+            "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)"
+          }
+        ]
+      }
+    },
+    "platform_status": {
+      "ChatGPT": "VERIFIED_CURRENT_SESSION; GitHub connector admin/maintain/push/pull/triage; overprivileged.",
+      "Claude": "UNVERIFIED_NO_AUTH_TEST",
+      "Grok": "UNVERIFIED_NO_AUTH_TEST",
+      "Gemini": "UNVERIFIED_NO_AUTH_TEST",
+      "Copilot": "ONE_OFF_GITHUB_REVIEW_ACTIVITY_ONLY; no formal approval on PR #1662.",
+      "Codex": "UNVERIFIED_NO_AUTH_TEST",
+      "Hugging Face": "INCONCLUSIVE_FAILED_HEALTH_CHECK; BUILD_ERROR.",
+      "Kaggle": "NOT_TESTED",
+      "Databricks": "AUTHORIZATION_FAILED_HTTP_403"
+    },
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "merge_decision": "NO_MERGE",
+    "no_external_actions": {
+      "merge": false,
+      "deployment": false,
+      "secret_rotation": false,
+      "space_restart": false,
+      "external_model_transfer": false,
+      "databricks_write": false,
+      "kaggle_submission": false,
+      "paper_trade": false,
+      "funds_transfer": false,
+      "real_money": false,
+      "force_push": false,
+      "history_rewrite": false,
+      "destructive_worktree_operation": false,
+      "source_pr_closure": false
+    }
+  },
+  "ci": {
+    "full_suite": {
+      "head_sha": "754e7d1e28e97f00cb43f9fdfa5adf1de1a1a21c",
+      "run_id": 43753051601,
+      "job_id": 132931036176,
+      "passed": 3805,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "coverage_percent": 64.02,
+      "legacy_core_coverage_percent": 77,
+      "duration_seconds": 108.94,
+      "exact_head": true,
+      "conclusion": "success",
+      "wheel_build_verified": true,
+      "installed_wheel_primary_mission_verified": true,
+      "failing_tests": []
+    },
+    "core_tests": {
+      "head_sha": "754e7d1e28e97f00cb43f9fdfa5adf1de1a1a21c",
+      "run_id": 43753051601,
+      "job_id": 132931036430,
+      "passed": 742,
+      "failed": 0,
+      "subtests": 8,
+      "conclusion": "success"
+    },
+    "dependency_audit": {
+      "passed": true,
+      "manifests": 6,
+      "known_vulnerabilities": 0,
+      "run_id": 43753051623,
+      "job_id": 132931036249,
+      "conclusion": "success",
+      "exact_head": true
+    },
+    "fail_closed_gate": {
+      "passed": true,
+      "automatic_merge_enabled": false,
+      "run_id": 43753051581,
+      "job_id": 132931036051,
+      "conclusion": "success",
+      "exact_head": true
+    },
+    "pr_event": {
+      "run_id": 43753056331,
+      "conclusion": "success",
+      "pages_validation": "success",
+      "pages_manifest_rendered": true,
+      "core_tests": "skipped by integration-branch condition",
+      "full_suite": "skipped by integration-branch condition",
+      "dependency_audit_run": 43753056272,
+      "fail_closed_gate_run": 43753056267
+    },
+    "post_evidence_commit_ci": "PENDING"
+  },
+  "market_research": {
+    "point_in_time_eligibility": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+    "retrieved_at_utc": "2026-11-15T20:01:22Z",
+    "raw_http_bytes_captured": false,
+    "raw_source_sha256_captured": false,
+    "full_depth_l2_admitted": false,
+    "usd_normalization_admitted": false,
+    "spot": {
+      "okx": {
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "event_time_utc": "2026-11-15T19:43:14.772Z",
+        "age_seconds": 1087.228,
+        "last": 0.9604,
+        "bid": 0.9603,
+        "bid_size_xrp": 5747.760824,
+        "ask": 0.9604,
+        "ask_size_xrp": 1594,
+        "spread_bps": 1.0413,
+        "top_level_imbalance_pct": 56.577,
+        "volume_24h_xrp": 89913226.989945,
+        "volume_24h_quote": 84138584.4708107,
+        "admission": "REJECTED_STALE"
+      },
+      "kraken": {
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "event_time_utc": null,
+        "last": 0.96031,
+        "bid": 0.96029,
+        "bid_size_xrp": 391,
+        "ask": 0.9603,
+        "ask_size_xrp": 5207,
+        "spread_bps": 0.1041,
+        "top_level_imbalance_pct": -86.031,
+        "volume_24h_xrp": 65958286.64357929,
+        "open_today": 0.91378,
+        "admission": "REJECTED_TIMESTAMP_UNAVAILABLE"
+      },
+      "bybit": {
+        "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+        "event_time_utc": "2026-11-15T19:08:05.737Z",
+        "age_seconds": 3196.263,
+        "last": 0.9545,
+        "bid": 0.9544,
+        "ask": 0.9545,
+        "admission": "REJECTED_STALE"
+      },
+      "cross_venue_mid_difference_bps": 0.573,
+      "bybit_vs_okx_difference_bps": -60.915,
+      "contradiction": "A same-day secondary article claimed approximately $1.30, materially conflicting with direct OKX/Kraken observations near $0.96; quarantined."
+    },
+    "derivatives": "No new synchronized derivatives snapshot admitted; prior provider differences remain historical.",
+    "etf_flows": "No new issuer-file-complete flow snapshot admitted; prior tracker differences remain unresolved.",
+    "exchange_flows": "No new same-wallet exchange-balance snapshot captured.",
+    "xrpl_stablecoins": {
+      "source": "TokenPost secondary",
+      "published_at_utc": "2026-11-15T13:18:00Z",
+      "measurement_date": "2026-11-13",
+      "supply_usd": 908210000,
+      "weekly_change_pct": -8.01,
+      "rlusd_supply_usd": 818560000,
+      "rlusd_share_pct": 90.13,
+      "dex_volume_7d_usd": 35140000,
+      "dex_volume_change_pct": 28.87,
+      "not_cash_flow": true
+    }
+  },
+  "institutional_network": {
+    "standard_chartered_ripple_lmax": {
+      "date": "2026-10-12",
+      "url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group",
+      "custody": "LIVE for eligible RLUSD on XRPL through Standard Chartered DIFC Branch, regulated by DFSA.",
+      "collateral": "PLANNED and conditional for agreed LMAX products and collateral mirroring; final documentation, testing, laws, approvals and jurisdictional readiness remain outstanding."
+    },
+    "bny_ripple": {
+      "date": "2026-10-27",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "status": "XRP/RLUSD custody support and primary RLUSD reserve custody; tokenized trade-finance work exploratory."
+    },
+    "pnc_coinbase_circle": {
+      "date": "2026-11-09",
+      "url": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+      "status": "Limited pilot: incoming USDC on Ethereum powered by Coinbase Payments, automatically converted 1:1 to USD and deposited at PNC; not XRP settlement."
+    },
+    "sbi_ripple": {
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "status": "SBI VC Trade RLUSD distribution is distinct from JPYSC; no proof JPYSC is XRPL-issued."
+    },
+    "circle_coinbase": "Existing USDC distribution economics and PNC pilot remain separate from Ripple RLUSD; no new bilateral Coinbase-SBI contract verified.",
+    "ripple_coinbase": "Existing Coinbase RLUSD access remains distinct from future/not-yet-verified Coinbase Global Exchange collateral support.",
+    "circle_sbi": "Existing 50/50 Circle SBI Japan K.K. is separate from SBIC regional entities and SBI Holdings."
+  },
+  "identity_research": {
+    "sbic": {
+      "east": {
+        "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "corporate_number": "9011001030621",
+        "established": "1963-11-15",
+        "url": "https://www.sbic.co.jp/company/profile/"
+      },
+      "central": {
+        "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "established": "1963-11-18",
+        "url": "https://www.sbic-cj.co.jp/company/about/"
+      },
+      "west": {
+        "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "established": "1963-11-20",
+        "url": "https://www.sbic-wj.co.jp/profiles/profile/"
+      },
+      "distinction": "Three separate regional SME investment companies, not SBI Holdings. SBIC East's June 2025 ChatGPT/Copilot training is education, not an OpenAI partnership.",
+      "training_url": "https://www.sbic.co.jp/training/20250612co/"
+    },
+    "ask_coin": {
+      "status": "UNRESOLVED",
+      "conclusion": "No canonical XRPL ASK issuer or Ripple relationship verified; Permission ASK on Base/Polygon is a candidate only."
+    },
+    "actual_capital": {
+      "status": "UNSTANDARDIZED",
+      "categories": [
+        "cash received",
+        "cash-funded XRP purchases",
+        "in-kind XRP contributions",
+        "debt",
+        "warrant exercises",
+        "undrawn facilities",
+        "custody balances",
+        "wallet balances",
+        "token transfer turnover"
+      ]
+    },
+    "sbic_chatgpt": "No canonical partnership verified; SBIC East training only.",
+    "kamilah_stevenson": {
+      "person_identity": "Previously verified at person level; YouTube channel ownership not first-party authenticated.",
+      "candidate_channel": "https://www.youtube.com/@drkamilahstevenson",
+      "linktree": "https://linktr.ee/DrKamilahstevenson1",
+      "status": "QUARANTINED_CANDIDATES_NOT_CONFIRMED_OFFICIAL_UPLOADS",
+      "videos": [
+        {
+          "id": "QslbjGQD0MU",
+          "date": "2025-12-14",
+          "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This"
+        },
+        {
+          "id": "ci0FH73lbCs",
+          "date": "2026-01-13",
+          "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing."
+        },
+        {
+          "id": "cxeX_eu_2H0",
+          "date": "2026-01-15",
+          "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)"
+        }
+      ]
+    }
+  },
+  "prediction_engine": {
+    "source_definitions": 51,
+    "scheduled_sources": 49,
+    "event_registry": {
+      "version": "run157-20261115",
+      "events": 85,
+      "independence_groups": 64,
+      "missing_raw_source_sha256": 85,
+      "missing_publisher_timestamp": 43,
+      "model_eligible": false
+    },
+    "readiness_policy": {
+      "id": "xrp_forecast_readiness_v6",
+      "minimum_oos_samples": 100,
+      "minimum_shadow_samples": 100,
+      "minimum_horizon_multiple": 10,
+      "minimum_source_groups": 5,
+      "maximum_weighted_calibration_error": 0.05,
+      "required_baselines": [
+        "naive_class_prior",
+        "momentum_sign",
+        "mean_reversion_sign",
+        "volatility_normal"
+      ]
+    },
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "platform_status": {
+    "ChatGPT": "VERIFIED_CURRENT_SESSION; GitHub connector admin/maintain/push/pull/triage; overprivileged.",
+    "Claude": "UNVERIFIED_NO_AUTH_TEST",
+    "Grok": "UNVERIFIED_NO_AUTH_TEST",
+    "Gemini": "UNVERIFIED_NO_AUTH_TEST",
+    "Copilot": "ONE_OFF_GITHUB_REVIEW_ACTIVITY_ONLY; no formal approval on PR #1662.",
+    "Codex": "UNVERIFIED_NO_AUTH_TEST",
+    "Hugging Face": "INCONCLUSIVE_FAILED_HEALTH_CHECK; BUILD_ERROR.",
+    "Kaggle": "NOT_TESTED",
+    "Databricks": "AUTHORIZATION_FAILED_HTTP_403"
+  },
+  "workflow_safety": {
+    "changed_workflow_files_fetched": 48,
+    "high_risk_reaudited": 16,
+    "main_barrot_sync_secret_prefix_echo": true,
+    "main_barrot_sync_push_failure_masked": true,
+    "main_coinbase_paper_trader_missing_approval_and_sha_gates": true,
+    "integration_legacy_writers_quarantined": true,
+    "external_workflows_dispatched": 0
+  },
+  "governance": {
+    "branch_protection_details": "HTTP 403",
+    "fallback_ruleset": 10863829,
+    "fallback_ruleset_enforcement": "disabled",
+    "codeowners": "* @Barrot-Agent",
+    "connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "semantic_review_complete": false,
+    "merge_decision": "NO_MERGE"
+  },
+  "backlog": {
+    "open_prs": 373,
+    "drafts": 361,
+    "non_drafts": 12,
+    "target_main": 365,
+    "target_other_bases": 8,
+    "classifications": {
+      "1317": "diverged unique work; preserve",
+      "1318": "diverged unique work; preserve",
+      "1320": "unique paper-trader safety work; do not close until successor merged and verified",
+      "1597": "unique research; preserve",
+      "1608": "unique C2FO/Evernorth evidence; preserve",
+      "1610": "unique workflow/security work; preserve",
+      "1611": "unique handoff; preserve",
+      "1614": "unique research; preserve",
+      "1615": "unique security work; preserve",
+      "1640": "diverged; preserve unique commits and paths",
+      "1642": "overlapping paths; semantic duplicate not certified",
+      "1643": "overlapping paths; semantic duplicate not certified",
+      "1653": "unique/unreviewed; blocked; preserve",
+      "1660": "superseded-content candidate; preserve unique workflow paths",
+      "1661": "superseded-content candidate; preserve unique workflow paths",
+      "1662": "blocked active integration draft",
+      "1650/1649/1254/1255": "overlapping dependency workstream; preserve pending semantic reconciliation"
+    },
+    "overlap_rule": "Path overlap is not semantic duplicate certification. No source PR closed."
+  },
+  "no_external_actions": {
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "external_model_transfer": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "destructive_worktree_operation": false,
+    "source_pr_closure": false
+  },
+  "next_actions": [
+    "Complete exact-head CI on the Run173 evidence commit.",
+    "Finish semantic review of all 1,259 changed paths.",
+    "Resolve independent review, branch protection and least privilege.",
+    "Establish byte-exact source receipts, WORM archival and synchronized XRP history before candidate evaluation."
+  ],
+  "post_evidence_commit_ci": {
+    "status": "FAILED",
+    "head_sha": "7c09ccdba8582886bd82f7b7d173ff762187f912",
+    "run_id": 43756891173,
+    "passed": 3804,
+    "failed": 2,
+    "skipped": 1,
+    "subtests": 19,
+    "duration_seconds": 160.5,
+    "failing_tests": [
+      {
+        "name": "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+        "cause": "ci_evidence.integration_head_tested remained at historical c71ae4 while latest_attempt was updated to verified code head 754e7."
+      },
+      {
+        "name": "test_run152_run153_run154_run155_run158_run159_run162_run165_run167_run168_run169_and_run172_remain_historical_while_run173_is_current",
+        "cause": "historical Run162 last-fully-passing head 35270 was replaced in the generic last_fully_passing_full_suite field by the newer verified head 754e7; the test needed an explicit Run162 historical field."
+      }
+    ],
+    "classification": "Evidence-contract/test-fixture mismatches; no production runtime failure. Core tests, dependency audits, fail-closed gates and PR Pages validation passed."
+  },
+  "run173_test_contract_correction": {
+    "captured_at_utc": "2026-11-15T20:18:21Z",
+    "failed_head": "7c09ccdba8582886bd82f7b7d173ff762187f912",
+    "correction_scope": "Tests and map evidence fields only; no production code changed.",
+    "corrections": [
+      "Set ci_evidence.integration_head_tested to the same verified code head as ci_evidence.latest_attempt (754e7d1...).",
+      "Preserve the Run162 historical last-passing suite in ci_evidence.run162_last_fully_passing_full_suite while retaining the latest 754e7 suite in ci_evidence.last_fully_passing_full_suite.",
+      "Update the Run152-Run172 historical regression test to read the explicit Run162 historical field."
+    ],
+    "tests_removed": 0,
+    "assertions_weakened": 0,
+    "production_code_changed": false,
+    "post_correction_exact_head_ci": "PENDING"
+  },
+  "post_correction_exact_head_ci": "PENDING"
+}

@@ -1,5 +1,8 @@
 # Barrot A2A → OpenCode Task Bridge
 
+> **Status: QUARANTINED / NOT ACTIVATED.** The 2026-11-20 main-branch deployment attempt failed at Cloudflare authentication (API error 10000 / token error 9109) before Worker deployment; the secret-upload step was skipped. No Worker deployment or secret rotation is verified. The consolidated integration keeps the deploy workflow manual-only, removes the A2A URL/secret from the default OpenCode configuration, and requires explicit `BARROT_A2A_AUTO_RUNNER=YES` before the local consumer can start. Do not enable the runner until OS sandboxing, environment/credential isolation, network-egress restrictions, per-task authorization, and least-privilege GitHub access are implemented and independently reviewed.
+
+
 ## Purpose
 
 The Cloudflare Worker is a durable ingress and task-status gateway. It is not a second Barrot brain and does not call Groq to answer assignments.
@@ -25,10 +28,11 @@ The same `BRAIN_SHARED_SECRET` authenticates the OpenCode runner by default. A s
 
 ## Existing OpenCode host configuration
 
-Run the queue consumer as the same OS user and from the repository checkout used by the existing OpenCode service. `opencode.json` passes the Worker URL to the existing `barrot` MCP server. When that MCP server starts, it launches the outbound consumer automatically if `BARROT_AGENT_SECRET` or `BRAIN_SHARED_SECRET` is present. A file lock ensures only one consumer runs, even when multiple OpenCode sessions load the MCP server. The consumer logs to `~/.barrot/a2a-runner.log`.
+Run the queue consumer as the same OS user and from the repository checkout used by the existing OpenCode service. `opencode.json` passes the Worker URL to the existing `barrot` MCP server. The MCP server launches the outbound consumer only when `BARROT_A2A_AUTO_RUNNER=YES` is explicitly set and the gateway URL plus runner credential are present. The default OpenCode configuration does not provide the A2A URL or secrets, so the consumer remains off. A file lock ensures only one consumer runs, even when multiple OpenCode sessions load the MCP server. The consumer logs to `~/.barrot/a2a-runner.log`.
 
 Environment contract:
 
+- `BARROT_A2A_AUTO_RUNNER` — must be set to `YES` as a separate explicit opt-in; absent by default.
 - `BARROT_A2A_URL` — `https://barrot-a2a-worker.amazonprostarelite.workers.dev` after the Worker is deployed.
 - `BARROT_AGENT_SECRET` — optional dedicated runner credential, supplied through the host's secret/environment manager.
 - `BRAIN_SHARED_SECRET` — fallback runner credential when `BARROT_AGENT_SECRET` is not set.
@@ -47,7 +51,8 @@ The runner is a queue consumer, not an HTTP server. It does not expose the host 
 - A claim has a worker identity and lease. Only that worker may complete the task.
 - Expired leases can be reclaimed, with a three-attempt ceiling.
 - Task input and result sizes are bounded.
-- The runner does not auto-approve OpenCode permissions.
+- The consolidated OpenCode configuration uses ask-before-action permissions; the runner remains disabled by default.
+- The current runner still executes in the host environment and is not OS-sandboxed. Do not activate it until credentials are isolated and task-level actions are technically constrained.
 - The task prompt requires inspection before modification and prohibits commit, push, merge, deployment, credential changes, and external side effects unless that specific action is explicitly authorized in the task.
 - No live trading is enabled by this bridge.
 - Model output is not proof. The runner returns raw execution evidence and exit status; ChatGPT must independently evaluate it.

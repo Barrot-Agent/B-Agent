@@ -1,45 +1,17 @@
-name: Sub-Agent Spawn (thread pool tier)
+name: Sub-Agent Spawn (quarantined pending integration-first authorization)
 
 on:
-  workflow_dispatch:
-    inputs:
-      task:
-        description: "Complex task to decompose and spawn subagents for"
-        required: true
-        default: "Analyze the last 30 days of signal accuracy and recommend threshold changes"
+  workflow_dispatch: {}
+
+permissions: {}
 
 jobs:
-  spawn:
+  disabled:
+    if: ${{ false }}
     runs-on: ubuntu-latest
-    env:
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-      SPAWN_TASK: ${{ github.event.inputs.task }}
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.11"
-      - run: python3 scripts/subagent_spawner.py
-      - name: Commit
+      - name: Explain quarantine
         run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add subagent_run_*.json
-          git diff --cached --quiet || git commit -m "Sub-agent spawn run [skip ci]"
-          push_with_retry() {
-            local max_attempts=5
-            local attempt=1
-            while [ $attempt -le $max_attempts ]; do
-              if git push; then
-                echo "Pushed on attempt $attempt"
-                return 0
-              fi
-              echo "Push attempt $attempt failed, pulling and retrying..."
-              sleep $(( (RANDOM % 5) + attempt ))
-              git pull --no-rebase --no-edit origin main
-              attempt=$(( attempt + 1 ))
-            done
-            echo "FAILED to push after $max_attempts attempts -- data committed locally but not on main"
-            return 1
-          }
-          push_with_retry
+          echo "The previous workflow sent free-form task prompts to Groq and committed generated sub-agent records directly to main."
+          echo "It is disabled until a branch-only, artifact-first task flow enforces explicit data-sharing approval and open-PR deduplication."
+          echo "No provider credentials are read and no repository or external mutation occurs."

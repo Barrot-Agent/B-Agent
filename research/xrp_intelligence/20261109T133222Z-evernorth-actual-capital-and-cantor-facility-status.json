@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "institutional_actual_capital_xrp_treasury_and_committed_equity_facility_reconciliation",
+  "artifact_id": "20261109T133222Z-evernorth-actual-capital-and-cantor-facility-status",
+  "captured_at_utc": "2026-11-09T13:32:22Z",
+  "data_cutoff_utc": "2026-11-09T13:32:22Z",
+  "issuer": "Evernorth Holdings Inc.",
+  "issuer_cik": "0002092592",
+  "primary_sources": [
+    {
+      "id": "EVERNORTH_424B3_20261030",
+      "publisher": "Evernorth Holdings Inc. filing with SEC",
+      "source_class": "issuer prospectus filed with regulator",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "sections": [
+        "Use of Proceeds",
+        "The Committed Equity Financing",
+        "Liquidity and Capital Resources",
+        "Cash Flows",
+        "Digital Assets and Principal Markets"
+      ]
+    },
+    {
+      "id": "EVERNORTH_EFFECT_20261030",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_class": "regulator Notice of Effectiveness",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/xslEFFECTX01/primary_doc.xml",
+      "effectiveness_date": "2026-10-30",
+      "accepted_at": "2026-11-02T00:15:10Z"
+    }
+  ],
+  "source_capture_policy": {
+    "raw_http_bytes_captured": false,
+    "raw_source_sha256_captured": false,
+    "exact_source_urls_and_filing_identifiers_preserved": true,
+    "note": "Public SEC-rendered filing text and official EFFECT notice were reviewed. Raw wire bytes, response headers and signed SEC receipts were not retained."
+  },
+  "verified_historical_capital": {
+    "as_of_date": "2026-10-09",
+    "cash_raised_since_inception_usd": 214100000,
+    "xrp_contributed_in_kind_related_to_private_placements": 261919096,
+    "xrp_purchased_with_cash_proceeds": 84365876,
+    "xrp_purchase_average_price_usd": 2.53657058,
+    "total_xrp_contributed_in_kind_at_closing": 388910554,
+    "reported_xrp_held_as_of_2026_10_09_approx": 473000000,
+    "reconciliation": {
+      "purchased_xrp": 84365876,
+      "total_in_kind_xrp_at_closing": 388910554,
+      "implied_total_xrp": 473276430,
+      "reported_total_rounds_to_approx_473m": true,
+      "treatment_of_261919096": "A component figure within the private-placement XRP disclosures; do not add it again to the 388,910,554 total in-kind closing contribution without an investor-level schedule."
+    },
+    "closing_gross_cash_proceeds_usd": 272600000,
+    "closing_cash_components_usd": {
+      "private_placement_investments": 224600000,
+      "trust_account_release_after_redemptions": 48000000
+    },
+    "closing_cash_before_transaction_expenses": true,
+    "note": "The $214.1m cash raised and $272.6m closing gross cash are related disclosure layers, not additive. The $214.1m cash was used to purchase XRP; in-kind XRP is a separate contribution category."
+  },
+  "additional_financing": {
+    "convertible_notes": {
+      "principal_usd": 30000000,
+      "agreement_date": "2026-09-11",
+      "payment_and_issuance_date": "2026-10-12",
+      "net_proceeds_before_transaction_expenses_usd": 30000000,
+      "coupon_type": "4.00% payment-in-kind interest",
+      "trustee": "NH Investment & Securities Co., as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3",
+      "xrp_purchase_from_these_proceeds_verified": false,
+      "classification": "ACTUAL_CASH_FINANCING_RECEIVED; SUBSEQUENT_XRP_USE_NOT_ESTABLISHED"
+    },
+    "ripple_facilities": {
+      "company_facility": {
+        "borrower": "The Company (not Evernorth)",
+        "limit_usd": 10000000,
+        "amount_borrowed_as_of": "2026-10-07",
+        "amount_borrowed_usd": 9700000,
+        "description": "The prospectus says confirmed amounts drawn included certain third-party payments Ripple made on behalf of the Company and Evernorth; do not treat the full amount as direct XRP purchases."
+      },
+      "evernorth_facility": {
+        "borrower": "Evernorth",
+        "limit_usd": 1000000,
+        "amount_borrowed_as_of": "2026-06-30",
+        "amount_borrowed_usd": 0,
+        "description": "The prospectus states Evernorth had not borrowed under this separate $1.0m revolving facility as of June 30, 2026."
+      }
+    }
+  },
+  "custody_and_market": {
+    "reported_xrp_custodian_initially": "BitGo Trust",
+    "custody_source_date": "2026-10-09 prospectus",
+    "principal_market_for_financial_reporting": "Coinbase",
+    "classification": "Issuer accounting principal-market determination based on volume/activity, quote consistency and access/compliance criteria; not an independent ranking of every exchange and not evidence Coinbase purchased or held Evernorth XRP."
+  },
+  "cantor_committed_equity_facility": {
+    "agreement_date": "2026-10-23",
+    "holder": "CF Principal Investments LLC (Cantor)",
+    "maximum_shares": 5218935,
+    "maximum_percentage_of_class_a_outstanding_as_of_2026_10_22": 16.7,
+    "issuer_obligation": "No obligation to issue or sell; Evernorth may elect in its sole discretion.",
+    "price_formula": "97% of applicable VWAP, subject to stated threshold/block provisions.",
+    "maximum_share_volume_per_purchase": "Lesser of beneficial-ownership cap, stated share request and 20% of trading volume during applicable period, unless parties expressly agree otherwise.",
+    "beneficial_ownership_cap": 0.0499,
+    "registration": {
+      "form": "S-1",
+      "file_number": "333-299620",
+      "effect_notice_accession": "9999999995-26-003391",
+      "effective_date": "2026-10-30",
+      "effect_notice_accepted_at": "2026-11-02T00:15:10Z"
+    },
+    "commencement": {
+      "definition": "The Commencement Date is when each condition to the Holder's obligations in Section 7.2 is satisfied or waived.",
+      "effective_registration_is_one_condition_not_the_only_condition": true,
+      "other_conditions_include": [
+        "material accuracy of representations and warranties",
+        "performance of covenants",
+        "effective resale registration with no stop order",
+        "required SEC filings current",
+        "Nasdaq listing approval subject to notice of issuance",
+        "no continuing Material Adverse Effect",
+        "customary bankruptcy conditions",
+        "legal opinions, auditor comfort letters and compliance certificates"
+      ],
+      "commencement_date_publicly_confirmed": false,
+      "status": "REGISTRATION_EFFECTIVE; COMMENCEMENT_NOT_PUBLICLY_CONFIRMED"
+    },
+    "drawdown": {
+      "purchase_notices_publicly_verified": false,
+      "shares_issued_to_cantor_publicly_verified": false,
+      "cash_settlement_publicly_verified": false,
+      "incremental_xrp_purchase_from_facility_publicly_verified": false,
+      "status": "NO_DRAW_OR_XRP_USE_VERIFIED_IN_REVIEWED_PUBLIC_RECORDS_AS_OF_CAPTURE"
+    },
+    "fees_and_expenses": {
+      "upfront_commitment_fee_usd": 521893.5,
+      "payment_due": "Within five business days after the Upfront Determination Date; based on October 30 effectiveness, the contractual deadline fell on 2026-11-06.",
+      "payment_confirmed": false,
+      "fully_earned_and_nonrefundable_regardless_of_vwap_purchases": true,
+      "aggregate_upfront_plus_additional_cantor_commitment_fee_cap_usd": 1000000,
+      "cantor_expense_reimbursement_cap_usd": 500000,
+      "qualified_independent_underwriter_fee_usd": 200000,
+      "underwriter_expense_cap_usd": 1000,
+      "illustrative_combined_maximum_envelope_usd": 1701000,
+      "note": "The envelope is a disclosed cap scenario, not an assertion that every fee was incurred or paid."
+    },
+    "proceeds_use": "General corporate purposes, including XRP acquisition and other XRP ecosystem activities, and working capital. The issuer expects a substantial portion of any proceeds to acquire XRP, but proceeds are not exclusively ring-fenced for XRP.",
+    "term": "Until the first day of the month next following the 14-month anniversary of the October 23, 2026 agreement, unless earlier terminated.",
+    "equity_dilution_not_xrp_supply": true
+  },
+  "prospectus_arithmetic_reconciliation": {
+    "shares": 5218935,
+    "assumed_xrpn_closing_price_usd_on_2026_10_29": 14.71,
+    "undiscounted_multiplication_usd": 76770533.85,
+    "contract_97_percent_price_calculation_usd": 74467417.8345,
+    "prospectus_cover_narrative_gross_usd": 76800000,
+    "prospectus_cover_narrative_net_usd": 74400000,
+    "table_14_71_row_usd": 76800000,
+    "table_footnote_says_price_assumes_97_percent_vwap": true,
+    "discrepancy": {
+      "table_row_exceeds_97_percent_calculation_by_usd": 2303116.0155,
+      "narrative_net_is_approximately_97_percent_gross_before_separately_disclosed_fees": true,
+      "disclosed_fee_and_expense_schedule_not_reconciled_in_the_74_4m_net_figure": true,
+      "classification": "PROSPECTUS_ARITHMETIC_DISCLOSURE_INCONSISTENCY_REQUIRING_ISSUER_RECONCILIATION"
+    },
+    "treatment": "Flag the internal arithmetic/disclosure inconsistency; do not infer misconduct. The $14.71 cover price is a closing price, while the contractual purchase formula is based on VWAP."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "CANTOR_LINE_FUNDS_XRP",
+      "hypothesis": "The committed equity facility could produce future cash that Evernorth may partly deploy into XRP.",
+      "support": "SEC-filed agreement permits optional share sales and states expected substantial XRP use for any proceeds.",
+      "limitations": "Commencement is conditional; no drawdown, share settlement or incremental XRP purchase is publicly verified; proceeds are discretionary and also available for working capital/general corporate purposes.",
+      "status": "POSSIBLE_NOT_EXECUTED"
+    },
+    {
+      "id": "FACILITY_ALREADY_CREATED_SPOT_DEMAND",
+      "hypothesis": "The existence/effectiveness of the Cantor facility already represents new XRP spot demand.",
+      "support": "No direct supporting evidence.",
+      "limitations": "The facility sells Evernorth equity, not XRP; no share purchase or XRP purchase is verified.",
+      "status": "REJECTED_AS_CURRENT_FLOW"
+    },
+    {
+      "id": "INITIAL_TREASURY_ACTUAL_PURCHASE",
+      "hypothesis": "Evernorth previously raised cash and used part of it to buy XRP.",
+      "support": "Prospectus states $214.1m cash raised, 84,365,876 XRP purchased with those proceeds, and approximately 473m XRP held as of October 9.",
+      "limitations": "Historical holding date is October 9; do not extrapolate to November 9 without current custody/filing evidence.",
+      "status": "CONFIRMED_HISTORICAL"
+    }
+  ],
+  "model_admission": {
+    "actual_historical_xrp_purchase": "Candidate descriptive institutional-flow feature with 2026-10-09 cutoff; requires point-in-time validation and no double counting.",
+    "cantor_facility_capacity": "NOT_A_CAPITAL_FLOW_FEATURE until commencement, share issuance and cash settlement are verified.",
+    "xrp_purchase_from_cantor_proceeds": "NOT_ESTABLISHED",
+    "directional_forecast_eligible": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Monitor EDGAR for a disclosed Commencement Date, Cantor VWAP Purchase Notices, issued shares and settlement amounts.",
+    "Check whether the $521,893.50 upfront fee was paid by the contractual November 6 deadline; do not infer payment from its due date.",
+    "Reconcile the $76.8m/$74.4m proceeds narrative and the $14.71 table row against the 97% VWAP formula and disclosed fees.",
+    "Track current XRP holdings and custody changes separately from historical October 9 balances.",
+    "Do not count private-placement cash, closing gross cash, in-kind XRP and the $30m notes twice."
+  ]
+}

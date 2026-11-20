@@ -1,0 +1,487 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_point_in_time_market_microstructure_and_ingestion_audit",
+  "snapshot_id": "xrp-market-microstructure-20261118T121354Z-run44301868145",
+  "captured_at_utc": "2026-11-18T12:13:54.601693Z",
+  "data_cutoff_utc": "2026-11-18T12:13:54.617611Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "integration_commit": "38b910e7f91e22096a224474be4445ef7f9a7a0d",
+  "main_commit": "e204c21100f3d059e2ba633d041fe8927b61ccaf",
+  "workflow_run": {
+    "id": 44301868145,
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44301868145"
+  },
+  "artifacts": {
+    "raw": {
+      "id": 14426941429,
+      "name": "xrp-public-raw-44301868145",
+      "size_bytes": 462640,
+      "sha256": "c9ec648228d5c76136fd68f8d7b0f2b71ea2eb97eebf8b2f8617b9678098b2be",
+      "retention_days": 90,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44301868145/artifacts/14426941429"
+    },
+    "feature_store": {
+      "id": 14426626635,
+      "name": "xrp-public-feature-store-44301868145",
+      "size_bytes": 822789,
+      "sha256": "d13e0c1257e9318fa8160bae711b2cfaf79996f2a3aea886a8600048af7caf5d",
+      "retention_days": 7,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44301868145/artifacts/14426626635"
+    },
+    "receipt_index": {
+      "id": 14426831633,
+      "name": "xrp-public-receipt-index-44301868145",
+      "size_bytes": 1161,
+      "retention_days": 90
+    },
+    "correction_audit": {
+      "id": 14426556627,
+      "name": "xrp-research-correction-audit-44301868145",
+      "size_bytes": 11923,
+      "source_artifacts_modified": false,
+      "overlay_count": 2,
+      "forecast_issued": false
+    }
+  },
+  "receipt_chain": {
+    "verification_status": "PASS",
+    "receipt_count": 34,
+    "raw_payloads_retained": 22,
+    "digest_only_receipts": 12,
+    "sequence": 15,
+    "previous_run_id": 44300915250,
+    "receipt_log_sha256": "d5da01be1b25939875cd2cbd409efe9922957400c8e33b63103fefe232e40fa7",
+    "chain_log_sha256": "dc22eef6ec2dda12004b7c2bc4096415b4c8885dab1391e30511ca4b8815251d",
+    "chain_head_sha256": "5d3d4cae7846c0835c2319776c24e864ed9b0245e03012bd363edaae3544c597",
+    "cross_run_chain_sha256": "879adcc5b6cf7f1cc1c3f6e8ff93d38e382a2f686b11a8868fbdb5f8f415331a",
+    "continuity_status": "CONTINUED",
+    "external_anchor_status": "NOT_ANCHORED",
+    "independent_timestamp_anchor": false,
+    "retention_limitations": "GitHub Actions artifacts are retention-limited; the hash chain is tamper-evident relative to its head but is not an external WORM store or trusted timestamp authority."
+  },
+  "feature_store": {
+    "snapshot_id": "4cd71512938161dd548f4327f52fb76e4e0472459a05b06ec58afa1ecd6d09be",
+    "status": "verified",
+    "adapter_version": "xrp-public-market-v3.31",
+    "parser_version": "xrp-public-market-v3.30",
+    "history_record_count": 3235,
+    "snapshot_count": 15,
+    "current_snapshot_record_count": 124,
+    "eligible_feature_record_count": 124,
+    "excluded_feature_record_count": 361,
+    "source_snapshot_count": 11,
+    "independent_source_groups": [
+      "bitbank",
+      "bitstamp",
+      "coinbase",
+      "kraken",
+      "okx"
+    ],
+    "independent_source_group_count": 5,
+    "event_count": 140,
+    "scenario_count": 107,
+    "raw_only_source_count": 23,
+    "source_failure_count": 21,
+    "drift": {
+      "status": "INSUFFICIENT_DATA",
+      "evaluated_feature_count": 0,
+      "forecast_issuance_allowed": false
+    },
+    "walk_forward": {
+      "status": "PARTIAL_OR_BLOCKED",
+      "forecast_count": 0
+    },
+    "forecast_status": "NOT_ISSUED",
+    "forecast_issuance_allowed": false
+  },
+  "spot_snapshots": [
+    {
+      "venue": "Coinbase",
+      "pair": "XRP-USD",
+      "event_time_utc": "2026-11-18T12:13:44Z",
+      "last": 0.9842,
+      "bid": 0.9841,
+      "ask": 0.9842,
+      "volume_24h_xrp": 94822678.476473,
+      "rfq_volume_xrp": 3354931.301319,
+      "raw_sha256": "62a6d771f45653cb0be2f4ef373400dd043c8109ddf0b86698d64188290608e9",
+      "source_group": "coinbase"
+    },
+    {
+      "venue": "Kraken",
+      "pair": "XRP-USD",
+      "event_time_utc": "2026-11-18T12:13:44Z",
+      "last": 0.98441,
+      "bid": 0.98396,
+      "ask": 0.98397,
+      "volume_24h_xrp": 46523327.59135999,
+      "vwap_24h": 0.97776058,
+      "high_24h": 1.00677,
+      "low_24h": 0.945,
+      "open_24h": 0.98253,
+      "raw_sha256": "8e792397bb73b6d2565c90ae13c2aec7c0945949c206f9757c24b4df74d0e849",
+      "source_group": "kraken"
+    },
+    {
+      "venue": "Bitstamp",
+      "pair": "XRP-USD",
+      "event_time_utc": "2026-11-18T12:13:44.839566Z",
+      "last": 0.98465,
+      "bid": 0.98419,
+      "ask": 0.9842,
+      "volume_24h_xrp": 12775424.34637913,
+      "vwap_24h": 0.97698,
+      "raw_sha256": "ffa9ee78d50c5f6cf33956e29ce5c19d055e5550772a9c88dee68465637fc2b4",
+      "source_group": "bitstamp"
+    },
+    {
+      "venue": "OKX",
+      "pair": "XRP-USDT",
+      "event_time_utc": "2026-11-18T12:13:45.726Z",
+      "last": 0.9853,
+      "bid": 0.985,
+      "ask": 0.9851,
+      "volume_24h_xrp": 35268464.985241,
+      "quote_volume_24h_usdt": 34466578.87615562,
+      "high_24h": 1.0079,
+      "low_24h": 0.9457,
+      "raw_sha256": "b6c5140743578ec25228b109998660266dd949a1481f7677aa2bfd8da372ced6",
+      "source_group": "okx"
+    },
+    {
+      "venue": "OKX",
+      "pair": "USDT-USD",
+      "event_time_utc": "2026-11-18T12:13:45.069Z",
+      "last": 0.99886,
+      "bid": 0.99885,
+      "ask": 0.99886,
+      "raw_sha256": "1fce9a56cc2b45f6df474062346e558670b2e4dd05252c885fb9d8ae288e19a8",
+      "source_group": "okx"
+    },
+    {
+      "venue": "Bitbank",
+      "pair": "XRP-JPY",
+      "event_time_utc": "2026-11-18T12:13:45.420Z",
+      "last": 157,
+      "bid": 157.017,
+      "ask": 157.018,
+      "volume_24h_xrp": 6428709.0454,
+      "raw_sha256": "6cba5efd60ef7f4edcb03cfb8ed36b0658f904810d16ac3a35da159c45f5fb75",
+      "source_group": "bitbank",
+      "usd_conversion": "not performed"
+    }
+  ],
+  "quote_basis": {
+    "venue": "OKX",
+    "status": "VERIFIED",
+    "method": "Same-venue synchronized XRP-USDT and USDT-USD top-of-book product",
+    "snapshot_skew_seconds": 0.657,
+    "max_snapshot_skew_seconds": 60,
+    "component_max_age_seconds": 9.55,
+    "usd_normalized_top_of_book": {
+      "bid": 0.98386575,
+      "ask": 0.983974686,
+      "mid": 0.983920218,
+      "spread_bps": 1.107
+    },
+    "source_group_count": 1,
+    "limitation": "Only top-of-book converted; OKX depth remains USDT-denominated and is not independent corroboration."
+  },
+  "derivatives_raw_only": [
+    {
+      "venue": "Deribit",
+      "instrument": "XRP_USDC-PERPETUAL",
+      "event_time_utc": "2026-11-18T12:13:47.259Z",
+      "last": 0.98451,
+      "mark": 0.98413,
+      "index": 0.98417,
+      "open_interest_reported": 6648056,
+      "volume_usd": 15087099.44,
+      "funding_8h": 0,
+      "raw_sha256": "345c80635a7492cfb09dca814975495f06f3ae429a49ea230f3b58b040cf3290",
+      "model_eligible": false,
+      "reason": "Contract amount units, OI semantics and depth/sequence semantics remain unvalidated."
+    }
+  ],
+  "orderbook": {
+    "method": "Recomputed from retained raw L2 snapshots. Venue-local, one-time snapshots; no cross-venue aggregation or directional inference.",
+    "venues": [
+      {
+        "venue": "Coinbase",
+        "quote_unit": "USD",
+        "levels": {
+          "bids": 2238,
+          "asks": 11975
+        },
+        "best_bid": 0.9838,
+        "best_ask": 0.9839,
+        "spread_bps": 1.0164,
+        "depth": {
+          "10": {
+            "bid": 194609.29,
+            "ask": 354949.84,
+            "imbalance": -0.2918
+          },
+          "50": {
+            "bid": 1417859.41,
+            "ask": 1333901.04,
+            "imbalance": 0.0305
+          },
+          "100": {
+            "bid": 3302177.69,
+            "ask": 1967367.63,
+            "imbalance": 0.2533
+          }
+        },
+        "raw_sha256": "d3c7b377a2cb7ea147a43ec5f1e8de2d74239ef69df46f7f154277a9f24bce82",
+        "limitation": "Point-in-time REST snapshot with sequence retained; no WebSocket sequence bridge or continuous book reconstruction."
+      },
+      {
+        "venue": "Kraken",
+        "quote_unit": "USD",
+        "levels": {
+          "bids": 100,
+          "asks": 100
+        },
+        "best_bid": 0.98388,
+        "best_ask": 0.98389,
+        "spread_bps": 0.1016,
+        "depth": {
+          "10": {
+            "bid": 268484.94,
+            "ask": 326831.42,
+            "imbalance": -0.098
+          },
+          "50": {
+            "bid": 3187501.92,
+            "ask": 975833.05,
+            "imbalance": 0.5312
+          },
+          "100": {
+            "bid": 3187501.92,
+            "ask": 975833.05,
+            "imbalance": 0.5312
+          }
+        },
+        "raw_sha256": "fff48f83c247b4246af63a0f6a029a4e493e2a463c6e619750d4369f3dce652c",
+        "limitation": "100-level cap; 50bp and 100bp totals coincide."
+      },
+      {
+        "venue": "Bitstamp",
+        "quote_unit": "USD",
+        "levels": {
+          "bids": 568,
+          "asks": 1534
+        },
+        "best_bid": 0.98402,
+        "best_ask": 0.98404,
+        "spread_bps": 0.2032,
+        "depth": {
+          "10": {
+            "bid": 321181.84,
+            "ask": 468126.24,
+            "imbalance": -0.1862
+          },
+          "50": {
+            "bid": 705094.26,
+            "ask": 680238.74,
+            "imbalance": 0.0179
+          },
+          "100": {
+            "bid": 756881.39,
+            "ask": 726565.83,
+            "imbalance": 0.0204
+          }
+        },
+        "raw_sha256": "332b09cb5f7ff2e40cf3b7bf5e0ae24ffed4ae817a4f70e0830fe43d98c66ce8"
+      },
+      {
+        "venue": "OKX",
+        "quote_unit": "USDT",
+        "levels": {
+          "bids": 100,
+          "asks": 100
+        },
+        "best_bid": 0.985,
+        "best_ask": 0.9851,
+        "spread_bps": 1.0152,
+        "depth": {
+          "10": {
+            "bid": 182513.59,
+            "ask": 123207.29,
+            "imbalance": 0.194
+          },
+          "50": {
+            "bid": 995900.64,
+            "ask": 854493.66,
+            "imbalance": 0.0764
+          },
+          "100": {
+            "bid": 1381372.43,
+            "ask": 1200200.78,
+            "imbalance": 0.0702
+          }
+        },
+        "raw_sha256": "c48ee6341eb62615ee91e1afdd8634384eb12076a6e3aa3e46cf171c09deb914",
+        "limitation": "Depth values are USDT, not USD."
+      },
+      {
+        "venue": "Bitbank",
+        "quote_unit": "JPY",
+        "levels": {
+          "bids": 200,
+          "asks": 200
+        },
+        "best_bid": 157.017,
+        "best_ask": 157.018,
+        "spread_bps": 0.0637,
+        "depth": {
+          "10": {
+            "bid_xrp": 117462.73,
+            "ask_xrp": 69162.48,
+            "imbalance": 0.2585
+          },
+          "50": {
+            "bid_xrp": 395680.93,
+            "ask_xrp": 211933.33,
+            "imbalance": 0.3005
+          },
+          "100": {
+            "bid_xrp": 470630.58,
+            "ask_xrp": 220569.71,
+            "imbalance": 0.3595
+          }
+        },
+        "raw_sha256": "fed93710f8ea47d45d166a6d62b87bc16a5627f2597b2f386d4957b5934d5c55",
+        "limitation": "JPY quote; not normalized or compared with USD books."
+      }
+    ],
+    "interpretation": "10bp imbalance is ask-heavy on Coinbase, Kraken and Bitstamp, but bid-heavy on OKX and Bitbank; deeper bands differ. A single snapshot is not predictive."
+  },
+  "source_failures": {
+    "count": 21,
+    "http_status_counts": {
+      "403": 5,
+      "429": 1,
+      "451": 8
+    },
+    "categories": {
+      "provider_client_error": 8,
+      "provider_http_forbidden": 5,
+      "provider_rate_limited": 1,
+      "source_processing_error": 1,
+      "SECEdgarError": 6
+    },
+    "binance": "Eight endpoints returned HTTP 451; no proxy or restriction bypass.",
+    "bybit": "Five endpoints returned HTTP 403; provider documentation warns of US/Mainland China access restrictions; no proxy or restriction bypass.",
+    "grayscale": "Issuer page rate-limited (429).",
+    "franklin": "XRPZ issuer-page identity/holdings markers missing; parser fails closed.",
+    "sec_edgar": "Six requests for Evernorth, Coinbase and Circle submissions/companyfacts blocked because BARROT_SEC_USER_AGENT lacks a monitored project contact.",
+    "etf_csv": "No parser error in this run, but CSV remains digest-only/raw-only because full row-level data is not retained and AP cash creation/redemption reconciliation is pending."
+  },
+  "external_research": {
+    "prior_artifact": "research/xrp_intelligence/20261118T120750Z-xrp-market-microstructure-ingestion-44300915250.json",
+    "etf_flow_reconciliation": {
+      "cryptokeyhole": {
+        "date": "2026-11-17",
+        "flow_xrp": -3251,
+        "coverage": "2/4 funds; waiting for Bitwise and Franklin",
+        "url": "https://cryptokeyhole.com/etf-flows/xrp/"
+      },
+      "xrp_insights": {
+        "date": "2026-11-17",
+        "flow_xrp": 986,
+        "coverage": "6 spot funds plus BITW; GXRP flow excluded",
+        "url": "https://xrp-insights.com/data/xrp-etf-flows.json"
+      },
+      "alpha_finance": {
+        "date": "2026-11-17",
+        "flow_usd": -6100000,
+        "coverage": "5 funds; XRPC approximately -$5M",
+        "url": "https://alphafinance.io/etf/xrp/"
+      },
+      "assessment": "Different fund universes and data vintages. Alpha's Nov 17 XRPC -$5M resembles CryptoKeyhole's Nov 16 -$5M; possible one-session date shift is unproven. Barrot's CSV is digest-only/raw-only; no ETF flow feature admitted."
+    },
+    "supply_and_exchange_balances": {
+      "source": "XRP Insights XRP Radar",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "as_of": "2026-11-18",
+      "attributed_exchange_balances_xrp": 22190000000,
+      "tracked_exchanges": 24,
+      "tracked_wallets": 707,
+      "escrow_xrp": 31100000000,
+      "next_unlock": "2026-12-01",
+      "max_unlock_xrp": 1000000000,
+      "tokenized_rwa_usd": 4330000000,
+      "distributed_rwa_usd": 276000000,
+      "represented_registry_rwa_usd": 4060000000,
+      "limitations": [
+        "Wallet balances are a coverage floor, not total exchange inventory or tradable float.",
+        "Balances are stocks, not exchange flows.",
+        "Most reported RWA notional is represented/registry value, not freely transferable float or XRP purchase demand.",
+        "Dashboard data remains hash-only/raw-only in Barrot."
+      ]
+    },
+    "macro": {
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/dollar-holds-near-19-month-high-data-supports-case-us-rate-hikes-2026-11-18/",
+      "published_at_utc": "2026-11-18T01:34:00Z",
+      "observations": {
+        "dollar_index": 103.8,
+        "december_fed_hike_pricing": "25bp fully priced; small chance of 50bp",
+        "yen_per_usd": 159.3,
+        "boj": "Further tightening signalled; intervention risk if yen weakens rapidly toward 160."
+      },
+      "counterhypothesis": "Reuters also noted the dollar rally may be near exhaustion absent further 2027 repricing. Context only, not an XRP causal forecast."
+    },
+    "institutional_relationships": [
+      {
+        "entities": [
+          "Ripple",
+          "Coinbase"
+        ],
+        "date": "2026-10-28",
+        "fact": "Coinbase added RLUSD to Prime, Exchange and retail, supporting XRPL, Base and Ethereum. Coinbase Global Exchange collateral availability was future, not live at launch.",
+        "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+      },
+      {
+        "entities": [
+          "Ripple",
+          "BNY"
+        ],
+        "date": "2026-10-27",
+        "fact": "BNY supports XRP and RLUSD custody and is primary RLUSD reserve custodian; custody is not proof of XRP buying.",
+        "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+      },
+      {
+        "entities": [
+          "SBI Holdings",
+          "SBI VC Trade",
+          "Ripple"
+        ],
+        "date": "2026-06-24",
+        "fact": "SBI VC Trade launched RLUSD in Japan under its No. 4 electronic payment instrument classification; it is a subsidiary of SBI Holdings.",
+        "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+      }
+    ],
+    "exact_phrase_research": {
+      "ask_coin": "Permission Coin (ASK) remains a possible ticker collision; no XRP/XRPL link established.",
+      "actual_capital": "No new exact-phrase match; prior primary Evernorth SEC filings remain controlling for cash received, XRP contributed/purchased, debt, warrants and optional ELOC capacity.",
+      "sbic_chatgpt_sibc": "No new exact match; prior SBIC East/Central/West identity and Tokyo SBIC 2025 ChatGPT/Copilot training-course hypothesis remain. No OpenAI/Ripple/XRP partnership established.",
+      "camilla_kamilah_stevenson": "No new identity evidence; prior Kamilah candidate @drkamilahstevenson and third-party Paul Barron Podcast appearance remain. No additional owned-channel video verified; do not conflate Kamilah with Camilla."
+    }
+  },
+  "model_admission": "No directional forecast. The snapshot is point-in-time and venue-local. ETF, exchange-wallet, stablecoin dashboard, SBI lending, Morpho and Deribit data remain raw-only or otherwise ineligible. Five independent exchange groups do not compensate for the missing chronological sample size, drift evaluation and out-of-sample baseline evidence.",
+  "limitations": [
+    "Raw artifacts retained 90 days and feature-store artifact 7 days; no independent WORM storage or trusted timestamp anchor.",
+    "No automatic feature-store rebuild from raw receipts.",
+    "Binance HTTP 451 and Bybit HTTP 403 prevent those venue feeds from contributing in this run; no access-control bypass attempted.",
+    "SEC ingestion blocked by missing monitored contact in BARROT_SEC_USER_AGENT.",
+    "ETF CSV is hash-only/raw-only; no row-level data or AP cash settlement evidence.",
+    "Drift evaluator assessed zero eligible features; walk-forward forecast count is zero.",
+    "Cache budget is read-only; cache-save warning does not invalidate the run."
+  ]
+}

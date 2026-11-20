@@ -1,0 +1,1537 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_ecosystem_relationship_update",
+  "captured_at_utc": "2026-11-03T16:41:02Z",
+  "repository_base": {
+    "branch": "main",
+    "commit": "2bc91a58699cd023d7d017be4c13b77cf3a2e069"
+  },
+  "scope": [
+    "XRP and XRPL",
+    "Coinbase",
+    "Circle and USDC",
+    "Ripple and RLUSD",
+    "SBI Group and SBI VC Trade",
+    "SBIC acronym disambiguation",
+    "public phrase research"
+  ],
+  "source_register": [
+    {
+      "id": "S1",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "Coinbase Global, Inc. Form 10-Q for quarter ended 2026-09-30",
+      "published_or_period": "Filed 2026-10-29; period ended 2026-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "source_type": "regulatory_filing",
+      "reliability": "high",
+      "notes": "Primary issuer filing; includes revenue, stablecoin, lending and collateral disclosures."
+    },
+    {
+      "id": "S2",
+      "publisher": "Coinbase",
+      "title": "RLUSD is now available on Coinbase",
+      "published_or_period": "2026-10-28",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "source_type": "official_product_announcement",
+      "reliability": "high",
+      "notes": "Launch networks, supported products and future Global Exchange collateral availability."
+    },
+    {
+      "id": "S3",
+      "publisher": "Ripple",
+      "title": "Ripple and Coinbase Partner to Expand Access to Ripple USD",
+      "published_or_period": "2026-10-28",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Confirms Ripple-Coinbase commercial partnership for RLUSD distribution."
+    },
+    {
+      "id": "S4",
+      "publisher": "Coinbase Help",
+      "title": "What is collateral? Coinbase Global Exchange",
+      "published_or_period": "Current page retrieved 2026-11-03",
+      "url": "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/what-is-collateral",
+      "source_type": "official_product_documentation",
+      "reliability": "high",
+      "notes": "Lists XRP among accepted collateral assets; no public utilization quantities."
+    },
+    {
+      "id": "S5",
+      "publisher": "Coinbase Help",
+      "title": "Coinbase Perpetual Futures Product Specifications",
+      "published_or_period": "Current page retrieved 2026-11-03",
+      "url": "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/perpetual-futures-product-specifications",
+      "source_type": "official_product_documentation",
+      "reliability": "high",
+      "notes": "XRP perpetual is USDC-settled; product specification states acceptable margin is all INTX-offered collateral."
+    },
+    {
+      "id": "S6",
+      "publisher": "Circle",
+      "title": "Now Available: USDC on the XRPL",
+      "published_or_period": "2025-06-12",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "source_type": "official_product_announcement",
+      "reliability": "high",
+      "notes": "Confirms native USDC on XRPL mainnet, Circle Mint and API support."
+    },
+    {
+      "id": "S7",
+      "publisher": "Circle",
+      "title": "USDC on the XRPL",
+      "published_or_period": "Current page retrieved 2026-11-03",
+      "url": "https://www.circle.com/multi-chain-usdc/xrpl",
+      "source_type": "official_product_documentation",
+      "reliability": "high",
+      "notes": "Confirms native issuance, 1:1 redemption for qualified Circle Mint customers and cross-chain movement through Circle Mint/APIs."
+    },
+    {
+      "id": "S8",
+      "publisher": "Circle",
+      "title": "Circle Reports Second Quarter 2026 Results",
+      "published_or_period": "2026-08-05; quarter ended 2026-06-30",
+      "url": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "source_type": "official_financial_release",
+      "reliability": "high",
+      "notes": "USDC circulation, onchain volume, revenue, reserve income, distribution costs and Arc validator cohort."
+    },
+    {
+      "id": "S9",
+      "publisher": "Circle",
+      "title": "Transparency & Stability",
+      "published_or_period": "Dashboard snapshot as of 2026-10-29",
+      "url": "https://www.circle.com/transparency",
+      "source_type": "issuer_transparency_dashboard",
+      "reliability": "high",
+      "notes": "Dynamic issuer-reported USDC circulation, reserve and issuance/redemption figures; snapshot is not a quarterly audited balance."
+    },
+    {
+      "id": "S10",
+      "publisher": "Circle",
+      "title": "Circle to Announce Q3 2026 Financial Results on November 4, 2026",
+      "published_or_period": "2026-10-07",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "source_type": "official_investor_relations_notice",
+      "reliability": "high",
+      "notes": "Q3 earnings webcast scheduled for 2026-11-04 at 08:00 ET."
+    },
+    {
+      "id": "S11",
+      "publisher": "Circle",
+      "title": "SBI Holdings Partners with Circle to Pioneer Digital Currency Innovation in Japan with USDC, Banking, and Web3 Services",
+      "published_or_period": "2023-11-27",
+      "url": "https://www.circle.com/pressroom/sbi-holdings-partners-with-circle-to-pioneer-digital-currency-innovation-in-japan-with-usdc-banking-and-web3-services",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Original SBI-Circle MOU; planned USDC circulation, banking relationship and Web3 services."
+    },
+    {
+      "id": "S12",
+      "publisher": "SBI Holdings / SBI VC Trade",
+      "title": "RLUSD handling begins on VCTRADE",
+      "published_or_period": "2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Confirms SBI VC Trade RLUSD listing and its Japanese Payment Services Act classification approach."
+    },
+    {
+      "id": "S13",
+      "publisher": "SBI Holdings / SBI Shinsei Trust Bank / SBI VC Trade",
+      "title": "JPYSC begins investing part of backing assets in Japanese government bonds",
+      "published_or_period": "2026-09-07",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Identifies JPYSC issuer, operator roles, backing-asset policy and 2026-09-07 supply/lending snapshot."
+    },
+    {
+      "id": "S14",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "title": "Company profile",
+      "published_or_period": "Current page retrieved 2026-11-03",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "source_type": "official_company_profile",
+      "reliability": "high",
+      "notes": "Officially identifies SBIC East Japan and corporate particulars."
+    },
+    {
+      "id": "S15",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "title": "Introductory generative AI and machine learning training for manufacturing",
+      "published_or_period": "2025-06-12 to 2025-06-13",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "source_type": "official_training_listing",
+      "reliability": "high",
+      "notes": "Course curriculum includes ChatGPT use, Copilot, prompt applications, RAG and API implementation; does not establish an OpenAI partnership."
+    },
+    {
+      "id": "S16",
+      "publisher": "XRP Ledger",
+      "title": "Reserves",
+      "published_or_period": "Current documentation retrieved 2026-11-03",
+      "url": "https://xrpl.org/docs/concepts/accounts/reserves",
+      "source_type": "protocol_documentation",
+      "reliability": "high",
+      "notes": "Current mainnet base reserve 1 XRP and owner reserve 0.2 XRP per item; reserve values can change."
+    },
+    {
+      "id": "S17",
+      "publisher": "XRP Ledger",
+      "title": "Transaction Cost",
+      "published_or_period": "Current documentation retrieved 2026-11-03",
+      "url": "https://xrpl.org/docs/concepts/transactions/transaction-cost",
+      "source_type": "protocol_documentation",
+      "reliability": "high",
+      "notes": "Standard minimum transaction cost is 10 drops and is destroyed, not paid to a validator or issuer."
+    },
+    {
+      "id": "S18",
+      "publisher": "XRP Ledger",
+      "title": "Sponsored Fees and Reserves",
+      "published_or_period": "Current documentation retrieved 2026-11-03",
+      "url": "https://xrpl.org/docs/concepts/accounts/sponsored-fees-and-reserves",
+      "source_type": "protocol_documentation",
+      "reliability": "high",
+      "notes": "Sponsors can cover fees and reserve requirements for other accounts; this weakens any assumption that every token user must personally acquire XRP."
+    },
+    {
+      "id": "S19",
+      "publisher": "Circle",
+      "title": "Binance Invests $100 Million in Circle, Expands Strategic Partnership and Renews Commercial Agreement for Five Years",
+      "published_or_period": "2026-09-22",
+      "url": "https://www.circle.com/fr/pressroom/binance-invests-100-million-in-circle-expands-strategic-partnership-and-renews-commercial-agreement-for-five-years",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Shows Circle pursuing additional large exchange distribution and strategic capital."
+    },
+    {
+      "id": "S20",
+      "publisher": "SBI Holdings",
+      "title": "Notice Regarding Participation in Circle’s ARC Token Presale",
+      "published_or_period": "2026-05-12",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf",
+      "source_type": "official_corporate_notice",
+      "reliability": "high",
+      "notes": "SBI notice reports a USD 50 million strategic investment in Circle and participation in ARC token presale."
+    },
+    {
+      "id": "S21",
+      "publisher": "Circle",
+      "title": "Circle Strengthens Commitment to Japan with New Investment and Expanded USDC Access",
+      "published_or_period": "2025-03-24",
+      "url": "https://www.circle.com/fr/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Confirms SBI VC Trade full-scale USDC launch on 2025-03-26 and Circle-SBI Japan partnership."
+    },
+    {
+      "id": "S22",
+      "publisher": "Coinbase",
+      "title": "Coinbase International Exchange",
+      "published_or_period": "Current page retrieved 2026-11-03",
+      "url": "https://www.coinbase.com/international-exchange",
+      "source_type": "official_product_documentation",
+      "reliability": "high",
+      "notes": "States International Exchange is for non-U.S. institutions in select eligible jurisdictions."
+    },
+    {
+      "id": "S23",
+      "publisher": "Association for Computational Linguistics",
+      "title": "Experimental Setup paper referencing the Social Bias Inference Corpus (SBIC)",
+      "published_or_period": "2025",
+      "url": "https://aclanthology.org/anthology-files/pdf/woah/2025.woah-1.21.pdf",
+      "source_type": "peer_reviewed_research_paper",
+      "reliability": "high",
+      "notes": "Uses SBIC to mean Social Bias Inference Corpus; demonstrates acronym collision, not a link to the Japanese company."
+    },
+    {
+      "id": "S24",
+      "publisher": "SBI Holdings / SBI Securities",
+      "title": "SBI Group begins deployment of OpenAI ChatGPT Enterprise",
+      "published_or_period": "2025-05-01",
+      "url": "https://www.sbigroup.co.jp/news/2025/0501_15410.html",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "SBI Holdings says it introduced ChatGPT Enterprise to some employees from March 2025; SBI Securities had introduced it from January 2025; SBI established an internal generative-AI office in July 2023."
+    },
+    {
+      "id": "S25",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "title": "Generative AI (ChatGPT): present and future seminar",
+      "published_or_period": "2026-03-05",
+      "url": "https://www.sbic.co.jp/seminar/20260305js/",
+      "source_type": "official_seminar_listing",
+      "reliability": "high",
+      "notes": "SBIC East Japan seminar on ChatGPT use, hosted with Hamamatsu Iwata Shinkin and featuring a Microsoft evangelist."
+    },
+    {
+      "id": "S26",
+      "publisher": "SBI Holdings",
+      "title": "SBI AI Portal opened to accelerate AI use and innovation",
+      "published_or_period": "2025-05-08",
+      "url": "https://www.sbigroup.co.jp/news/pr/2025/0508_15419.html",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Describes an internal group AI/data platform, approved AI applications, knowledge sharing and governance."
+    },
+    {
+      "id": "S27",
+      "publisher": "SBI Securities / AlpacaTech",
+      "title": "Expansion of AI-generated morning and evening investment information service",
+      "published_or_period": "2025-08-22",
+      "url": "https://www.sbigroup.co.jp/news/pr/2025/0822_15678.html",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Describes a Gemini/Google Cloud generative-AI investment-information service for Japanese and U.S. stocks."
+    },
+    {
+      "id": "S28",
+      "publisher": "Permission",
+      "title": "Official ASK token contract addresses",
+      "published_or_period": "Current docs retrieved 2026-11-03",
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "source_type": "official_token_documentation",
+      "reliability": "high",
+      "notes": "Lists official ASK token contracts on Base and Polygon using LayerZero OFT; no XRPL deployment is listed in the current official contract table."
+    },
+    {
+      "id": "S29",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "Evernorth Holdings Inc. Form 8-K — business combination closing",
+      "published_or_period": "Filed 2026-10-09",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+      "source_type": "regulatory_filing",
+      "reliability": "high",
+      "notes": "Primary source for 80.3% redemptions, XRP in-kind subscriptions, Ripple contribution and closing terms."
+    },
+    {
+      "id": "S30",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "Evernorth Holdings Inc. Form 424B3 prospectus",
+      "published_or_period": "Dated 2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "source_type": "regulatory_filing",
+      "reliability": "high",
+      "notes": "Primary source for XRP holdings, capital flows, SBI ownership, Ripple credit facility, Cantor ELOC, custody and operating risks."
+    },
+    {
+      "id": "S31",
+      "publisher": "gumi Inc.",
+      "title": "Investment in Evernorth, an XRP treasury company",
+      "published_or_period": "2025-10-21",
+      "url": "https://gu3.co.jp/news/archives/9184/",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "gumi disclosed a USD 5 million PIPE investment alongside SBI Holdings, Ripple and others; it also reiterated its board-approved JPY 2.5 billion XRP purchase plan."
+    },
+    {
+      "id": "S32",
+      "publisher": "gumi Inc.",
+      "title": "Shareholder benefit program distributing BTC and XRP through SBI VC Trade",
+      "published_or_period": "2026-02-12",
+      "url": "https://gu3.co.jp/news/archives/9202/",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "gumi announced a JPY 16 million aggregate BTC/XRP shareholder benefit in partnership with SBI VC Trade; the BTC/XRP split is not disclosed."
+    },
+    {
+      "id": "S33",
+      "publisher": "ChainCatcher",
+      "title": "Newly created wallet opens 20x XRP long on Hyperliquid",
+      "published_or_period": "2026-07-04",
+      "url": "https://www.chaincatcher.com/en/article/2274906",
+      "source_type": "secondary_market_report",
+      "reliability": "medium_low",
+      "notes": "Reports 52.67 BTC deposited (about USD 3.26m) and a 14.189m XRP long (about USD 16.3m) at 20x; wallet is shown only as prefix 0x243 and the underlying X post was inaccessible in this pass."
+    },
+    {
+      "id": "S34",
+      "publisher": "Vling",
+      "title": "Kamilah Stevenson YouTube channel metadata",
+      "published_or_period": "Current index retrieved 2026-11-03",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "source_type": "third_party_channel_index",
+      "reliability": "medium",
+      "notes": "Associates channel ID UCqUPJMQdkCN6lsLVDnichPA with Kamilah Stevenson and handle @drkamilahstevenson; its video-count estimate differs from another third-party index."
+    },
+    {
+      "id": "S35",
+      "publisher": "The XRP Podcast with Paul Barron / iHeart",
+      "title": "Crypto Panics! with Dr. Kamilah Stevenson",
+      "published_or_period": "2026",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "source_type": "public_interview_transcript",
+      "reliability": "medium_high",
+      "notes": "Transcript host calls guest Camilla; guest states YouTube is under Doctor Camilla Stevenson and gives social handles, supporting spelling/identity variants."
+    },
+    {
+      "id": "S36",
+      "publisher": "gumi Inc. (TDnet disclosure; PDF mirrored by Minkabu)",
+      "title": "FY2026 full-year and Q4 results presentation",
+      "published_or_period": "2026-06-12",
+      "url": "https://assets.minkabu.jp/news/article_media_content/urn%3Anewsml%3Atdnet.info%3A20260612569071/140120260612569071.pdf",
+      "source_type": "issuer_investor_presentation",
+      "reliability": "high",
+      "notes": "Issuer presentation: gumi-group crypto assets excluding funds ¥14.133bn at 2026-04-30; group including funds about ¥26bn at 2026-03-31 (fund figures unaudited); XRP-concentration strategy, covered calls and SBI Crypto Fund."
+    },
+    {
+      "id": "S37",
+      "publisher": "gumi Inc.",
+      "title": "gumi begins AI-enabled crypto asset management and considers external AI management services",
+      "published_or_period": "2026-06-26",
+      "url": "https://gu3.co.jp/news/archives/9215/",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Official statement on internal AI-assisted crypto management, AI agents, multi-source real-time market analysis, automated dealing and future external service development."
+    },
+    {
+      "id": "S38",
+      "publisher": "SBI Holdings",
+      "title": "SBI Group FY2025 financial results presentation — generative AI adoption and SBI AI Portal",
+      "published_or_period": "2025-05-09",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf",
+      "source_type": "official_investor_presentation",
+      "reliability": "high",
+      "notes": "States SBI Group began Microsoft Azure OpenAI use in August 2023; ChatGPT Enterprise adopted at SBI Holdings and SBI Securities; SBI AI Portal includes Google Gemini 1.5 Flash and Preferred Networks PLaMo 1.0 Prime."
+    }
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "classification": "confirmed_fact",
+      "subject": "Coinbase-Ripple-RLUSD distribution",
+      "statement": "Coinbase added RLUSD to Coinbase Prime, Coinbase Exchange and Coinbase Retail on 2026-10-28. At launch it supports deposits and withdrawals across XRPL, Base and Ethereum and 1:1 conversion from USD. Coinbase stated that availability for Coinbase Global Exchange customers, including RLUSD collateral use, would follow.",
+      "evidence": [
+        "S2",
+        "S3"
+      ],
+      "limitations": [
+        "The announcement does not disclose chain-level RLUSD balances, transfer volumes or institutional usage.",
+        "Future Global Exchange collateral availability must not be represented as live until separately confirmed."
+      ]
+    },
+    {
+      "id": "O2",
+      "classification": "confirmed_fact",
+      "subject": "Circle-USDC-XRPL",
+      "statement": "Circle launched native USDC on XRPL mainnet on 2025-06-12, with Circle Mint and API support. Qualified Circle Mint customers can redeem USDC 1:1; ordinary users rely on secondary-market and intermediary access.",
+      "evidence": [
+        "S6",
+        "S7"
+      ],
+      "limitations": [
+        "Native issuance does not establish transaction volume, active balances or use of XRP as a bridge asset."
+      ]
+    },
+    {
+      "id": "O3",
+      "classification": "confirmed_fact",
+      "subject": "Coinbase-XRP collateral eligibility",
+      "statement": "Coinbase Global Exchange documentation lists XRP as an accepted collateral asset for perpetual-futures margin. XRP perpetual futures are USDC-settled.",
+      "evidence": [
+        "S4",
+        "S5",
+        "S22"
+      ],
+      "limitations": [
+        "The product is associated with Coinbase International Exchange and eligible jurisdictions; it is not evidence that all Coinbase customers, especially U.S. retail customers, can use XRP as collateral.",
+        "No public XRP collateral utilization, haircut, position limit or balance was found."
+      ]
+    },
+    {
+      "id": "O4",
+      "classification": "confirmed_fact",
+      "subject": "Coinbase Q3 2026 financial and collateral disclosures",
+      "statement": "Coinbase's Q3 2026 Form 10-Q says average USDC held in Coinbase products reached an all-time high and its Circle arrangement was renewed on the same terms. It attributes a $84.6 million Q3 and $201.6 million nine-month increase in stablecoin revenue to higher average USDC balances, partly offset by lower interest rates. Institutional loan receivables were $1.976 billion; collateral requirements were 100%-250% of loan fair value. Recognized lending collateral was $1.009 billion, including $11.740 million fiat/payment stablecoins and $997.557 million crypto assets. The crypto collateral table identified BTC, ETH and aggregate 'other crypto'; it did not identify XRP. Borrower-pledged collateral not recognized on the balance sheet totaled $3.285 billion, including $2.804 billion crypto assets. The recognized derivatives-collateral table identified BTC and ETH only.",
+      "evidence": [
+        "S1"
+      ],
+      "limitations": [
+        "No XRP-specific amount can be inferred from aggregate 'other crypto' or unrecognized borrower collateral.",
+        "The absence of an XRP line item does not prove zero XRP use elsewhere in Coinbase products.",
+        "Three counterparties each represented more than 10% of loan receivables, indicating disclosed counterparty concentration."
+      ]
+    },
+    {
+      "id": "O5",
+      "classification": "confirmed_fact",
+      "subject": "Circle USDC operating scale and current supply snapshot",
+      "statement": "Circle reported $73.3 billion USDC in circulation at 2026-06-30, $14.8 trillion Q2 onchain transaction volume, $701 million Q2 revenue and reserve income, $668 million reserve income, and $412 million distribution, transaction and other costs. Circle's transparency dashboard snapshot for 2026-10-29 showed $70.0 billion in circulation and $71.4 billion reserves; it showed a $3.1 billion net decrease over 30 days and a $5.0 billion net decrease over 365 days.",
+      "evidence": [
+        "S8",
+        "S9"
+      ],
+      "limitations": [
+        "The dashboard is dynamic and the Oct 29 snapshot is not a Q3 audited result. Q3 financial results are scheduled for 2026-11-04 at 08:00 ET.",
+        "Comparing quarter-end circulation to a later dashboard date is a point-in-time comparison, not a complete average-supply or flow decomposition."
+      ]
+    },
+    {
+      "id": "O6",
+      "classification": "confirmed_fact",
+      "subject": "Circle-SBI relationship",
+      "statement": "Circle and SBI Holdings announced a 2023 MOU covering USDC circulation, banking relationships and Web3 services. SBI VC Trade launched USDC distribution in Japan in March 2025. Circle's Q2 2026 release listed SBI Group among the founding third-party validator cohort for Circle's Arc network. SBI's 2026 notice also reports a USD 50 million strategic investment in Circle and participation in the ARC token presale.",
+      "evidence": [
+        "S8",
+        "S11",
+        "S20",
+        "S21"
+      ],
+      "limitations": [
+        "A validator-cohort announcement and presale participation do not by themselves establish production payment volume or XRP demand."
+      ]
+    },
+    {
+      "id": "O7",
+      "classification": "confirmed_fact",
+      "subject": "Ripple-SBI relationship",
+      "statement": "SBI VC Trade began handling Ripple's RLUSD on 2026-06-24. SBI VC Trade describes its Japanese-law treatment as a No.4 electronic payment instrument under the Payment Services Act. This is a Japan-law classification approach, not a statement that RLUSD is a U.S. trust instrument.",
+      "evidence": [
+        "S12"
+      ],
+      "limitations": [
+        "Listing and regulatory classification do not disclose circulating supply, trading volume, custody balances or XRP bridge usage."
+      ]
+    },
+    {
+      "id": "O8",
+      "classification": "confirmed_fact",
+      "subject": "SBI JPYSC",
+      "statement": "SBI Shinsei Trust Bank is the issuer of JPYSC; SBI VC Trade acts as issuance委託者 and electronic-payment-instrument service provider. SBI reported about ¥20.1 billion JPYSC issued and about ¥6.9 billion in JPYSC lending applications as of 2026-09-07; it began investing ¥1 billion of backing assets in short-term Japanese government bonds under the amended framework.",
+      "evidence": [
+        "S13"
+      ],
+      "limitations": [
+        "These are issuer-reported figures for the stated date. JPYSC is a separate yen-denominated lane, not evidence of XRP usage or a Circle/Ripple joint product."
+      ]
+    },
+    {
+      "id": "O9",
+      "classification": "confirmed_fact",
+      "subject": "SBIC identity and ChatGPT reference",
+      "statement": "The exact SBIC entity identified by the Japanese company profile is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), established in 1963. Its official 2025 training listing includes ChatGPT and Copilot in a generative-AI/ML course. No OpenAI partnership, SBI Holdings affiliation or XRP relationship is established by those pages.",
+      "evidence": [
+        "S14",
+        "S15",
+        "S23"
+      ],
+      "limitations": [
+        "SBIC is an acronym with other meanings, including Social Bias Inference Corpus in NLP research. The phrase 'ChatGPT SBIC' remains ambiguous without the originating context."
+      ]
+    },
+    {
+      "id": "O10",
+      "classification": "confirmed_fact",
+      "subject": "XRPL native-token mechanics",
+      "statement": "XRPL transaction costs are paid in XRP and destroyed; current standard minimum is 10 drops. Current documented mainnet reserves are 1 XRP base and 0.2 XRP per owner object. Sponsored fees and reserves can allow a sponsor to cover costs for another account.",
+      "evidence": [
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "limitations": [
+        "The minimum fee and reserve mechanics do not imply material XRP price demand; sponsorship and the very small standard fee reduce direct end-user acquisition requirements."
+      ]
+    },
+    {
+      "id": "O11",
+      "classification": "confirmed_fact",
+      "subject": "Circle-Binance distribution and capital relationship",
+      "statement": "Circle and Binance announced a USD 100 million strategic equity investment by Binance and a renewed five-year commercial agreement focused on expanding USDC access, especially in emerging markets. This demonstrates Circle's distribution strategy extends beyond Coinbase.",
+      "evidence": [
+        "S19"
+      ],
+      "limitations": [
+        "The announcement does not establish XRP integration, XRPL transaction volume or any direct relationship with Ripple."
+      ]
+    },
+    {
+      "id": "O12",
+      "classification": "confirmed_fact",
+      "subject": "Coinbase strategic operating priorities",
+      "statement": "Coinbase's Q3 2026 filing identifies its three product priorities as growing the everything exchange, scaling stablecoins and payments, and expanding onchain adoption. It reports resilient crypto derivatives trading volume, expanded tradable assets, record average USDC balances in Coinbase products, renewed Circle arrangements on the same terms, and growth in DEX trading and balances borrowed and lent through Coinbase.",
+      "evidence": [
+        "S1"
+      ],
+      "limitations": [
+        "Management's strategy description is not proof of future results or XRP-specific adoption."
+      ]
+    },
+    {
+      "id": "O13",
+      "classification": "confirmed_fact",
+      "subject": "SBI Holdings-OpenAI enterprise adoption",
+      "statement": "SBI Holdings and SBI Securities officially announced adoption of OpenAI's ChatGPT Enterprise. SBI Holdings began limited employee use in March 2025; SBI Securities had begun in January 2025. SBI also said it established an internal generative-AI office in July 2023. This is a direct enterprise-software adoption relationship, not evidence of an XRP integration or a live Barrot connector.",
+      "evidence": [
+        "S24"
+      ],
+      "limitations": [
+        "The announcement does not disclose seat counts, API use, model versions, external data access or XRP-specific workflows."
+      ]
+    },
+    {
+      "id": "O14",
+      "classification": "confirmed_fact",
+      "subject": "SBIC-ChatGPT educational activity",
+      "statement": "The separate Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan) has published multiple generative-AI/ChatGPT seminars, including a March 5, 2026 seminar titled 'Generative AI (ChatGPT): present and future' and a 2025 course covering ChatGPT usage. This establishes educational programming, not a formal OpenAI partnership.",
+      "evidence": [
+        "S15",
+        "S25"
+      ],
+      "limitations": [
+        "The exact phrase 'SBIC, ChatGPT SBIC' remains ambiguous; the seminar does not prove that SBIC is a ChatGPT customer or an XRP-related entity."
+      ]
+    },
+    {
+      "id": "O15",
+      "classification": "confirmed_fact",
+      "subject": "SBI internal AI platform",
+      "statement": "SBI Holdings announced an internal SBI AI Portal on May 8, 2025, intended to support AI/data literacy, approved generative-AI applications, data-driven decisions, knowledge sharing and governance across the group.",
+      "evidence": [
+        "S26"
+      ],
+      "limitations": [
+        "An internal portal announcement does not identify every underlying provider or prove integration with Barrot."
+      ]
+    },
+    {
+      "id": "O16",
+      "classification": "confirmed_fact",
+      "subject": "SBI Securities-Google Gemini usage",
+      "statement": "SBI Securities and AlpacaTech expanded an AI-generated morning/evening investment-information service using Google Gemini and Google Cloud generative-AI services for Japanese and U.S. market information.",
+      "evidence": [
+        "S27"
+      ],
+      "limitations": [
+        "This is a product-level AI adoption signal, not proof of an authenticated Gemini API connection available to Barrot."
+      ]
+    },
+    {
+      "id": "O17",
+      "classification": "sourced_claim",
+      "subject": "ASK Coin candidate identification",
+      "statement": "If 'ASK Coin' refers to the ASK ticker token, the strongest current candidate is Permission's ASK token. Permission's official documentation lists LayerZero OFT contracts on Base and Polygon; the current official contract table does not list XRPL.",
+      "evidence": [
+        "S28"
+      ],
+      "limitations": [
+        "The phrase remains ambiguous without its originating context. No XRP/XRPL relationship was established for this candidate."
+      ]
+    },
+    {
+      "id": "O18",
+      "classification": "confirmed_fact",
+      "subject": "Evernorth XRP treasury at closing",
+      "statement": "Evernorth's October 30, 2026 SEC prospectus states that it held approximately 473 million XRP as of October 9, 2026. The company had begun trading on Nasdaq under XRPN on October 12.",
+      "evidence": [
+        "S29",
+        "S30"
+      ],
+      "limitations": [
+        "This is an October 9 snapshot, not a November 3 wallet balance. Subsequent acquisitions, disposals, encumbrances or transfers require later filings or validated-ledger custody reconciliation."
+      ]
+    },
+    {
+      "id": "O19",
+      "classification": "confirmed_fact",
+      "subject": "Evernorth XRP acquisition versus in-kind contributions",
+      "statement": "The prospectus states Evernorth raised about $214.1 million cash and 261.919 million XRP through private-placement subscription agreements; it used the $214.1 million cash to purchase 84,365,876.3625 XRP at an average $2.53657058. At closing, investors contributed another 388,910,554 XRP in kind. The 388.91 million in-kind total is reconciled by the 8-K's 211,319,096.061435 XRP from Arrington XRP Capital Fund, 50 million XRP from a Ripple-affiliated trust, 126,791,458 XRP from Ripple, 600,000 XRP from advance subscribers and 200,000 XRP from delayed-funding subscribers. The 84.366 million cash-funded purchase is about 17.8% of the approximately 473.276 million XRP total; the rest was contributed in kind.",
+      "evidence": [
+        "S29",
+        "S30"
+      ],
+      "limitations": [
+        "The in-kind contributions are not equivalent to open-market purchases. The 17.8% ratio is a calculation from the disclosed figures, not a claim about the economic cost basis of contributed XRP."
+      ]
+    },
+    {
+      "id": "O20",
+      "classification": "confirmed_fact",
+      "subject": "Evernorth closing cash, redemptions and debt",
+      "statement": "The October 9 closing 8-K reports that 18,463,753 public shares, about 80.3% of shares with redemption rights, were redeemed for approximately $195.39 million. The prospectus reports approximately $272.6 million gross cash proceeds at closing: $224.6 million from private-placement investments and $48.0 million released from the SPAC trust after redemptions, before transaction expenses. The company also issued $30 million of convertible notes and received $29.0 million net after a $1.0 million capital-markets-advisor fee. The notes carry 4% PIK interest and have a five-year maturity; on specified default/fundamental-transaction events, the purchaser may require cash redemption providing an 8% annual yield.",
+      "evidence": [
+        "S29",
+        "S30"
+      ],
+      "limitations": [
+        "Gross transaction cash proceeds are not the same as unrestricted cash remaining after the earlier $214.1 million XRP purchase and transaction expenses. Do not add the gross proceeds to the existing XRP purchase as if both remained cash."
+      ]
+    },
+    {
+      "id": "O21",
+      "classification": "confirmed_fact",
+      "subject": "SBI ownership and governance position in Evernorth",
+      "statement": "Evernorth's October 30 prospectus ownership table, based on October 22, 2026, lists SBI-controlled entities with 9,431,914 Class A voting shares (36.1% of Class A) and 2,359,038 Class C non-voting shares (7.5% of Class C). The Class C shares have economic/distribution rights but generally no voting rights. The SBI group consists of four SBI-controlled entities. The 39.9% threshold in the amended subscription agreements is a cap on the Class A subscriber-group ownership calculation, not SBI's reported final percentage.",
+      "evidence": [
+        "S30"
+      ],
+      "limitations": [
+        "Class A and Class C percentages have different denominators and should not be summed. The figures are as of October 22 and can change with subsequent issuance or resale."
+      ]
+    },
+    {
+      "id": "O22",
+      "classification": "confirmed_fact",
+      "subject": "Ripple financial and asset relationship with Evernorth",
+      "statement": "Ripple contributed 126,791,458 XRP to Evernorth at closing in exchange for Company Units. A Ripple-affiliated Larsen Lam Children's Remainder Trust separately contributed 50 million XRP for equity interests. Evernorth's prospectus also describes a $7 million master intercompany credit facility with Ripple, increased to a $10 million limit by October 7, 2026; $9.7 million had been borrowed as of October 7 at 3.81% interest, and amounts outstanding became repayable within five business days after closing.",
+      "evidence": [
+        "S29",
+        "S30"
+      ],
+      "limitations": [
+        "Ripple's 126.79m contribution and the trust's 50m subscription are separate legal flows. The credit facility is debt, not equity or XRP purchased in the market."
+      ]
+    },
+    {
+      "id": "O23",
+      "classification": "confirmed_fact",
+      "subject": "Evernorth Cantor committed equity facility",
+      "statement": "On October 23, 2026, Evernorth entered a committed equity facility with Cantor for up to 5,218,935 Class A shares. The purchase price is 97% of the applicable VWAP, subject to conditions and a 4.99% Cantor beneficial-ownership cap. At the October 29 reference share price of $14.71, the prospectus estimates up to $76.8 million gross and $74.4 million net over approximately 14 months if the full share amount is sold. Evernorth pays an upfront $521,893.50 commitment fee, with possible additional fee subject to a $1 million aggregate cap. The company may choose when and whether to issue shares; proceeds are intended for general purposes including XRP acquisition.",
+      "evidence": [
+        "S30"
+      ],
+      "limitations": [
+        "The facility is capacity, not cash already received. No actual drawdown, share issuance, Cantor purchase or facility-funded XRP purchase was verified in this pass."
+      ]
+    },
+    {
+      "id": "O24",
+      "classification": "confirmed_fact",
+      "subject": "gumi-SBI-Ripple-Evernorth capital and distribution links",
+      "statement": "gumi disclosed a $5 million investment in Evernorth's PIPE alongside SBI Holdings, Ripple and others. gumi also reiterated its board-approved JPY 2.5 billion XRP purchase plan and a further XRP acquisition decision funded through a stock-warrant issuance. Separately, gumi's February 2026 shareholder-benefit program partnered with SBI VC Trade to distribute an aggregate JPY 16 million in BTC and XRP to selected shareholders; the asset split was not disclosed.",
+      "evidence": [
+        "S31",
+        "S32"
+      ],
+      "limitations": [
+        "The $5 million Evernorth PIPE is confirmed; gumi's JPY 2.5 billion XRP purchase plan is not proof that the full planned amount was executed. The shareholder-benefit program is not a direct market-purchase amount."
+      ]
+    },
+    {
+      "id": "O25",
+      "classification": "confirmed_fact",
+      "subject": "Evernorth operating condition and strategy",
+      "statement": "The prospectus states Evernorth had not generated revenue through June 30, 2026, reported a $265.6 million loss for the first half of 2026 primarily from digital-asset impairment and fair-value changes in refundable investor advances, and had approximately $0.1 million unrestricted cash with a $696.1 million working-capital deficit at June 30. Its primary KPI is XRP per share. The prospectus describes future plans for XRP acquisition, secured financing using XRP as collateral, lending, yield strategies and XRPL ecosystem activity; these are planned capabilities, not proof of realized revenue or live deployment.",
+      "evidence": [
+        "S30"
+      ],
+      "limitations": [
+        "The financial condition is pre-business-combination and dated June 30, 2026. Post-close cash/debt and current operating performance need later filings."
+      ]
+    },
+    {
+      "id": "O26",
+      "classification": "sourced_claim",
+      "subject": "Hyperliquid XRP position and 'actual capital' phrase candidate",
+      "statement": "A July 4, 2026 ChainCatcher report citing Onchain Lens says a newly created wallet, shown only with the prefix 0x243, deposited 52.67 BTC worth about $3.26 million and then opened a 14.189 million XRP long valued around $16.3 million at 20x leverage. A rough notional/20 calculation is about $815,000 initial margin, but the report's stated BTC deposit is about $3.26 million. Therefore an 'actual capital about $800k' interpretation would describe theoretical position margin, not verified total account collateral or net capital at risk.",
+      "evidence": [
+        "S33"
+      ],
+      "limitations": [
+        "The wallet is truncated and the underlying X post could not be fetched. This is a secondary report, not a verified on-chain reconstruction. Do not use the $815,000 calculation as actual capital."
+      ]
+    },
+    {
+      "id": "O27",
+      "classification": "sourced_claim",
+      "subject": "Camilla/Kamilah Stevenson YouTube identity",
+      "statement": "The strongest public-channel match is Kamilah Stevenson, YouTube handle @drkamilahstevenson, channel ID UCqUPJMQdkCN6lsLVDnichPA. In a June 11, 2026 interview, the guest is introduced as Dr. Kamilah Stevenson; the host addresses her as Camilla, and she says her YouTube is 'Doctor Camilla Stevenson', with X and Instagram spelling variants. Vling indexes the channel as Kamilah Stevenson and reports about 1.3K videos and 143K subscribers. This supports the identity match, but the third-party count is not a complete upload inventory.",
+      "evidence": [
+        "S34",
+        "S35"
+      ],
+      "limitations": [
+        "The complete public upload inventory has not been enumerated. Vling's 1.3K count is third-party metadata, not a verified list of individual public uploads.",
+        "The interview transcript is automatically generated and may contain transcription errors; the creator's spoken channel-name statement is corroborative, not a complete authentication mechanism."
+      ]
+    },
+    {
+      "id": "O28",
+      "classification": "confirmed_fact",
+      "subject": "gumi crypto treasury size",
+      "statement": "gumi's June 12, 2026 issuer presentation reports group crypto assets excluding funds of ¥14.133 billion at April 30, 2026, up 86.4% year over year. It separately reports about ¥26 billion in crypto assets held/managed including funds as of March 31, 2026; fund figures are unaudited and include token-acquisition SAFE investments but exclude equity investments. The presentation also shows the gumi×SBI SBI Crypto Fund at several billion yen as of March 31.",
+      "evidence": [
+        "S36"
+      ],
+      "limitations": [
+        "The ¥14.133bn and ¥26bn figures have different scopes and dates. Neither is an XRP-only balance. Do not treat the full portfolio as XRP or as directly attributable to gumi shareholders."
+      ]
+    },
+    {
+      "id": "O29",
+      "classification": "confirmed_fact",
+      "subject": "gumi XRP concentration and covered-call strategy",
+      "statement": "gumi's issuer presentation says it intends to move its own crypto holdings in principle toward XRP, continue acquiring XRP while monitoring market prices, and use covered calls and other options strategies to seek more stable income. It frames XRP-focused crypto operations as one half of a hybrid company alongside its entertainment business, with entertainment cash flows potentially reinvested into XRP operations. This is a stated strategy, not proof that the entire ¥14.133bn portfolio had already converted to XRP.",
+      "evidence": [
+        "S36"
+      ],
+      "limitations": [
+        "The presentation does not disclose an exact XRP balance, completed conversion schedule, option notionals, strike/expiry distribution or realized covered-call returns."
+      ]
+    },
+    {
+      "id": "O30",
+      "classification": "confirmed_fact",
+      "subject": "gumi AI-managed crypto operations",
+      "statement": "On June 26, 2026 gumi announced that it had begun using current AI technology in the management of its internally held crypto assets, with a longer-term goal of developing an external AI asset-management service. Its announcement describes AI agents, multi-source real-time analysis of price data, news and project developments, and automation of dealing to reduce decision errors and missed opportunities.",
+      "evidence": [
+        "S37"
+      ],
+      "limitations": [
+        "The announcement does not identify models, providers, datasets, execution venues, risk limits, custody arrangements, live deployment scope, backtest results or verified investment performance. It does not prove autonomous trading is fully operational."
+      ]
+    },
+    {
+      "id": "O31",
+      "classification": "confirmed_fact",
+      "subject": "gumi-SBI Crypto Fund and AI investment network",
+      "statement": "gumi's issuer presentation describes SBI Crypto Fund as a gumi×SBI fund investing in listed crypto assets, with several billion yen of assets as of March 31, 2026 and a possible expansion toward individual-investor products. The same presentation says gumi AI Labs had invested in 17 Silicon Valley AI startups, including an AI-agent market-research automation company.",
+      "evidence": [
+        "S36"
+      ],
+      "limitations": [
+        "The presentation does not disclose the SBI Crypto Fund's XRP allocation or the AI startups' names/technical integration. These are portfolio and strategic signals, not proof of a Barrot connection."
+      ]
+    },
+    {
+      "id": "O32",
+      "classification": "confirmed_fact",
+      "subject": "SBI Group multi-provider internal AI stack",
+      "statement": "SBI Holdings' FY2025 presentation says the group began using Microsoft Azure OpenAI in August 2023, adopted OpenAI ChatGPT Enterprise at SBI Holdings and SBI Securities, and launched an internal SBI AI Portal supporting LLM use including Google Gemini 1.5 Flash and Preferred Networks PLaMo 1.0 Prime. This is a documented multi-provider enterprise AI environment within SBI Group.",
+      "evidence": [
+        "S24",
+        "S26",
+        "S38"
+      ],
+      "limitations": [
+        "The presentation does not disclose model-routing architecture, provider-specific seat counts, APIs, security scopes or XRP research workflows. It does not establish any connection to Barrot or to the user's nine-platform orchestration."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "relation": "commercial_distribution_partnership",
+      "asset": "RLUSD",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect",
+      "evidence": [
+        "S2",
+        "S3"
+      ],
+      "note": "Coinbase distributes RLUSD and supports XRPL deposits/withdrawals; this is not a statement that Coinbase or Ripple purchases XRP."
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC_collaboration_and_distribution_economics",
+      "asset": "USDC",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect",
+      "evidence": [
+        "S1"
+      ],
+      "note": "Coinbase says the Circle arrangement was renewed on the same terms and average USDC held in Coinbase products reached an all-time high."
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "native_USDC_issuance",
+      "asset": "USDC",
+      "classification": "confirmed",
+      "xrp_relevance": "direct_protocol_presence_but_not_bridge_use",
+      "evidence": [
+        "S6",
+        "S7"
+      ],
+      "note": "USDC is native on XRPL; no XRP bridge conversion is implied."
+    },
+    {
+      "from": "Ripple",
+      "to": "XRPL",
+      "relation": "RLUSD_native_issuance_and_ecosystem",
+      "asset": "RLUSD",
+      "classification": "confirmed",
+      "xrp_relevance": "direct_protocol_presence_but_not_bridge_use",
+      "evidence": [
+        "S3",
+        "S12"
+      ],
+      "note": "Coinbase's RLUSD support includes XRPL; do not equate RLUSD volume with XRP spot demand."
+    },
+    {
+      "from": "Coinbase",
+      "to": "XRP",
+      "relation": "perpetual_futures_collateral_eligibility",
+      "asset": "XRP",
+      "classification": "confirmed_product_eligibility",
+      "xrp_relevance": "direct_product_link",
+      "evidence": [
+        "S4",
+        "S5",
+        "S22"
+      ],
+      "note": "Eligibility is documented; actual XRP collateral balances and utilization are unknown."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle",
+      "relation": "strategic_partnership_equity_and_Arc_ecosystem",
+      "asset": "USDC/ARC",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect",
+      "evidence": [
+        "S8",
+        "S11",
+        "S20",
+        "S21"
+      ],
+      "note": "SBI has USDC distribution, Arc validator-cohort participation and reported $50m Circle strategic investment."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relation": "longstanding_partnership_and_RLUSD_distribution",
+      "asset": "RLUSD",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect_to_direct_ecosystem",
+      "evidence": [
+        "S12"
+      ],
+      "note": "SBI VC Trade handles RLUSD; this does not establish XRP bridge settlement volumes."
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "relation": "Japanese_distribution",
+      "asset": "USDC",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect",
+      "evidence": [
+        "S11"
+      ],
+      "note": "USDC distribution began in Japan in March 2025."
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relation": "Japanese_distribution",
+      "asset": "RLUSD",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect",
+      "evidence": [
+        "S12"
+      ],
+      "note": "RLUSD handling began 2026-06-24."
+    },
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "JPYSC",
+      "relation": "issuer_and_reserve_custodian",
+      "asset": "JPYSC",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S13"
+      ],
+      "note": "Separate yen-denominated stablecoin project with SBI VC Trade as distribution/operator partner."
+    },
+    {
+      "from": "Circle",
+      "to": "Ripple",
+      "relation": "stablecoin_competition_and_shared_XRPL_rail",
+      "asset": "USDC/RLUSD",
+      "classification": "inference_from_confirmed_products",
+      "xrp_relevance": "shared_rail",
+      "evidence": [
+        "S3",
+        "S6",
+        "S7"
+      ],
+      "note": "Both issuers have stablecoins on XRPL; no direct Circle-Ripple corporate agreement was located in this pass."
+    },
+    {
+      "from": "Circle",
+      "to": "Binance",
+      "relation": "strategic_equity_investment_and_five_year_USDC_distribution_agreement",
+      "asset": "USDC",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S19"
+      ],
+      "note": "Binance announced a USD 100 million strategic investment in Circle and a five-year USDC commercial agreement; this broadens Circle's distribution relationships beyond Coinbase."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "OpenAI",
+      "relation": "ChatGPT_Enterprise_adoption",
+      "asset": "ChatGPT Enterprise",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S24"
+      ],
+      "note": "Enterprise software adoption by SBI Holdings and SBI Securities; no Barrot integration or XRP-specific workflow is disclosed."
+    },
+    {
+      "from": "SBIC East Japan",
+      "to": "ChatGPT",
+      "relation": "public_training_and_seminars",
+      "asset": "ChatGPT",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S15",
+        "S25"
+      ],
+      "note": "SBIC East Japan runs ChatGPT education events; this is separate from SBI Holdings' ChatGPT Enterprise adoption."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SBI AI Portal",
+      "relation": "internal_AI_and_data_enablement_platform",
+      "asset": "AI applications",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect_corporate_capability",
+      "evidence": [
+        "S26"
+      ],
+      "note": "Internal group AI portal and governance initiative."
+    },
+    {
+      "from": "SBI Securities",
+      "to": "Google Gemini",
+      "relation": "generative_AI_investment_information_service",
+      "asset": "Gemini",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S27"
+      ],
+      "note": "Gemini/Google Cloud used for an AI-generated investment-information service; no Barrot connector is established."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Evernorth (XRPN)",
+      "relation": "strategic_equity_investment_and_advance_funding",
+      "asset": "XRPN Class A and Class C equity / cash and XRP subscription",
+      "classification": "confirmed",
+      "xrp_relevance": "direct_treasury_and_governance",
+      "evidence": [
+        "S30"
+      ],
+      "note": "SBI-controlled entities held 9,431,914 Class A shares (36.1% of Class A) and 2,359,038 Class C shares (7.5% of Class C) as of Oct 22, 2026; Class C is generally non-voting but has economic rights."
+    },
+    {
+      "from": "Ripple",
+      "to": "Evernorth (XRPN)",
+      "relation": "XRP_contribution_and_related_party_credit_facility",
+      "asset": "126,791,458 XRP contribution / $10m facility limit",
+      "classification": "confirmed",
+      "xrp_relevance": "direct_treasury_capital_and_credit",
+      "evidence": [
+        "S29",
+        "S30"
+      ],
+      "note": "Ripple contributed 126.79m XRP and provided a related-party facility; $9.7m was borrowed as of Oct 7 and became repayable after closing."
+    },
+    {
+      "from": "Larsen Lam Children's Remainder Trust",
+      "to": "Evernorth (XRPN)",
+      "relation": "Ripple_affiliated_XRP_subscription",
+      "asset": "50,000,000 XRP",
+      "classification": "confirmed",
+      "xrp_relevance": "direct_treasury_capital",
+      "evidence": [
+        "S29",
+        "S30"
+      ],
+      "note": "Separate from Ripple's 126.79m contribution."
+    },
+    {
+      "from": "Arrington XRP Capital Fund",
+      "to": "Evernorth (XRPN)",
+      "relation": "Series_C_XRP_subscription",
+      "asset": "211,319,096.061435 XRP",
+      "classification": "confirmed",
+      "xrp_relevance": "direct_treasury_capital",
+      "evidence": [
+        "S29",
+        "S30"
+      ],
+      "note": "Sponsor received Class A and Class C equity; the prospectus includes side-pocket voting instructions for 4,215,479 Class A shares acquired with RippleWorks' XRP contribution."
+    },
+    {
+      "from": "gumi",
+      "to": "Evernorth (XRPN)",
+      "relation": "PIPE_equity_investment",
+      "asset": "USD 5 million",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect_treasury_capital",
+      "evidence": [
+        "S31"
+      ],
+      "note": "gumi's official announcement says it invested $5m alongside SBI Holdings and Ripple."
+    },
+    {
+      "from": "gumi",
+      "to": "SBI VC Trade",
+      "relation": "shareholder_benefit_distribution_partnership",
+      "asset": "BTC and XRP",
+      "classification": "confirmed",
+      "xrp_relevance": "distribution_channel",
+      "evidence": [
+        "S32"
+      ],
+      "note": "JPY 16m aggregate benefit; BTC/XRP split undisclosed."
+    },
+    {
+      "from": "Evernorth (XRPN)",
+      "to": "XRP",
+      "relation": "public_company_treasury",
+      "asset": "approximately 473 million XRP as of 2026-10-09",
+      "classification": "confirmed",
+      "xrp_relevance": "direct_supply_absorption_and_custody",
+      "evidence": [
+        "S29",
+        "S30"
+      ],
+      "note": "Only 84.366m XRP was explicitly purchased with $214.1m cash; 388.911m XRP was contributed in kind."
+    },
+    {
+      "from": "Evernorth (XRPN)",
+      "to": "Cantor",
+      "relation": "committed_equity_facility",
+      "asset": "up to 5,218,935 Class A shares",
+      "classification": "confirmed_capacity_not_drawdown",
+      "xrp_relevance": "potential_future_XRP_acquisition",
+      "evidence": [
+        "S30"
+      ],
+      "note": "Up to $76.8m gross/$74.4m estimated net at the prospectus reference price, subject to company discretion and conditions."
+    },
+    {
+      "from": "Evernorth (XRPN)",
+      "to": "BitGo Trust",
+      "relation": "XRP_custody",
+      "asset": "XRP treasury",
+      "classification": "confirmed_in_prospectus",
+      "xrp_relevance": "direct_custody",
+      "evidence": [
+        "S30"
+      ],
+      "note": "Prospectus describes XRP held by BitGo Trust; additional custodians were planned but not yet confirmed."
+    },
+    {
+      "from": "Kamilah Stevenson",
+      "to": "YouTube @drkamilahstevenson",
+      "relation": "public_creator_channel",
+      "asset": "XRP and macro videos",
+      "classification": "likely_identity_match",
+      "xrp_relevance": "public_discourse_source",
+      "evidence": [
+        "S34",
+        "S35"
+      ],
+      "note": "Name/spelling variants appear in a public interview; third-party channel ID and count are not exhaustive verification."
+    },
+    {
+      "from": "gumi",
+      "to": "SBI Group",
+      "relation": "strategic_business_synergy_and_SBI_Crypto_Fund",
+      "asset": "listed crypto assets / XRP strategy",
+      "classification": "confirmed",
+      "xrp_relevance": "direct_corporate_strategy_and_capital",
+      "evidence": [
+        "S31",
+        "S36"
+      ],
+      "note": "gumi describes itself as a core company in SBI's neomedia strategy and identifies SBI Crypto Fund as a gumi×SBI vehicle."
+    },
+    {
+      "from": "gumi",
+      "to": "XRP",
+      "relation": "planned_treasury_concentration_and_covered_call_management",
+      "asset": "XRP",
+      "classification": "confirmed_strategy_not_completed_conversion",
+      "xrp_relevance": "direct_treasury_demand_potential",
+      "evidence": [
+        "S36"
+      ],
+      "note": "gumi reports ¥14.133bn total group crypto holdings excluding funds at Apr 30, but does not say all of this is already XRP."
+    },
+    {
+      "from": "gumi",
+      "to": "AI_crypto_management",
+      "relation": "internal_AI_assisted_asset_management",
+      "asset": "AI agents / automated dealing",
+      "classification": "confirmed_announcement_execution_scope_unverified",
+      "xrp_relevance": "direct_competitive_benchmark",
+      "evidence": [
+        "S37"
+      ],
+      "note": "gumi says it began AI-enabled management of its own crypto assets and may commercialize an external service; providers and performance are undisclosed."
+    },
+    {
+      "from": "gumi",
+      "to": "gumi AI Labs",
+      "relation": "venture_investment_in_AI_startups",
+      "asset": "AI research and agent technologies",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect_capability",
+      "evidence": [
+        "S36"
+      ],
+      "note": "17 startup investments, including an AI agent for market-research automation; no disclosed Barrot integration."
+    },
+    {
+      "from": "SBI Group",
+      "to": "Microsoft Azure OpenAI",
+      "relation": "internal_enterprise_genAI_environment",
+      "asset": "Azure OpenAI",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S38"
+      ],
+      "note": "SBI Group says it began using Azure OpenAI in August 2023."
+    },
+    {
+      "from": "SBI Holdings and SBI Securities",
+      "to": "OpenAI ChatGPT Enterprise",
+      "relation": "enterprise_software_adoption",
+      "asset": "ChatGPT Enterprise",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S24",
+        "S38"
+      ],
+      "note": "ChatGPT Enterprise adopted at SBI Securities from January 2025 and SBI Holdings from March 2025."
+    },
+    {
+      "from": "SBI AI Portal",
+      "to": "Google Gemini 1.5 Flash",
+      "relation": "internal_LLM_availability",
+      "asset": "Gemini 1.5 Flash",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S38"
+      ],
+      "note": "Listed as an LLM available through the SBI AI Portal."
+    },
+    {
+      "from": "SBI AI Portal",
+      "to": "Preferred Networks PLaMo 1.0 Prime",
+      "relation": "internal_LLM_availability",
+      "asset": "PLaMo 1.0 Prime",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S38"
+      ],
+      "note": "Listed as an LLM available through the SBI AI Portal."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "name": "Coinbase becomes a multi-issuer stablecoin distribution and execution hub",
+      "thesis": "Coinbase can earn from and influence both USDC and RLUSD distribution rather than being dependent on a single issuer. Its Q3 filing confirms an ongoing Circle economic arrangement while its October 28 RLUSD integration adds a second major issuer.",
+      "supporting_evidence": [
+        "O1",
+        "O4",
+        "O5"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "RLUSD Global Exchange collateral availability was announced as future, not live at launch.",
+        "No RLUSD chain-level or Coinbase-specific volume was disclosed.",
+        "Q3 filing says USDC balances held on Coinbase products rose, but does not disclose the exact balance or Circle payment calculation."
+      ],
+      "status": "plausible_structural_hypothesis"
+    },
+    {
+      "id": "H2",
+      "name": "Stablecoin growth on XRPL increases ledger utility more than XRP spot demand",
+      "thesis": "Native USDC and RLUSD can expand dollar-denominated settlement and token activity on XRPL, but direct XRP demand may be limited to fees, reserves and any separately proven bridge/collateral use.",
+      "supporting_evidence": [
+        "O1",
+        "O2",
+        "O10"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No on-ledger RLUSD/USDC transaction volume, XRP bridge conversion or fee-burn decomposition was collected in this snapshot.",
+        "Standard fees are extremely small and sponsored fees/reserves can reduce the need for every end user to hold XRP."
+      ],
+      "status": "plausible_mechanism_not_quantified"
+    },
+    {
+      "id": "H3",
+      "name": "SBI acts as a multi-currency distribution and institutional infrastructure hub",
+      "thesis": "SBI's USDC, RLUSD and JPYSC lanes position the group across USD stablecoins, yen settlement, custody and tokenized-finance infrastructure. This creates multiple paths into Japanese financial institutions, but XRP usage depends on the actual payment/collateral route selected.",
+      "supporting_evidence": [
+        "O6",
+        "O7",
+        "O8"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Published product availability and partnership announcements do not disclose actual settlement volume or the share routed through XRP.",
+        "JPYSC is a separate yen lane and should not be treated as an XRP integration."
+      ],
+      "status": "plausible_structural_hypothesis"
+    },
+    {
+      "id": "H4",
+      "name": "Coinbase XRP collateral eligibility may create institutional XRP utility",
+      "thesis": "XRP collateral eligibility on Coinbase Global Exchange creates a direct product pathway for XRP to support derivatives positions and potentially influence institutional inventory demand.",
+      "supporting_evidence": [
+        "O3"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No public XRP collateral utilization, haircuts, limits or outstanding balances were found.",
+        "Coinbase's Q3 recognized derivatives-collateral table lists BTC and ETH, not XRP; lending tables aggregate 'other crypto'.",
+        "International Exchange access is restricted by jurisdiction and customer eligibility."
+      ],
+      "status": "product_capability_confirmed_usage_unverified"
+    },
+    {
+      "id": "H5",
+      "name": "USDC supply contraction with rising Coinbase-held balances may indicate distribution concentration",
+      "thesis": "Circle's Oct 29 dashboard shows lower aggregate USDC circulation than at June 30, while Coinbase reports record average USDC balances on its own products. If comparable definitions and periods are confirmed, this could indicate a greater share of USDC held within Coinbase products despite weaker total circulation.",
+      "supporting_evidence": [
+        "O4",
+        "O5"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The Circle figure is a point-in-time snapshot and Coinbase reports an average balance; dates and measures are not directly comparable.",
+        "Q3 results from Circle are not yet available in this snapshot."
+      ],
+      "status": "testable_inference_low_confidence"
+    },
+    {
+      "id": "H6",
+      "name": "Evernorth can create structural XRP supply absorption, but its headline treasury size overstates open-market demand",
+      "thesis": "Evernorth held approximately 473m XRP as of Oct 9, 2026, but only 84.366m was explicitly purchased with $214.1m cash at an average $2.53657; 388.911m was contributed in kind. The treasury may reduce liquid float depending on custody, lockups, lending and encumbrance, but the full 473m should not be counted as fresh market buying.",
+      "supporting_evidence": [
+        "O18",
+        "O19",
+        "O20"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Subsequent custody transfers, lending, collateralization or disposals may change liquid supply.",
+        "In-kind contributions may still represent opportunity cost or investor exposure, but they are not contemporaneous open-market demand."
+      ],
+      "status": "confirmed_holdings_composition_with_unresolved_float_effect"
+    },
+    {
+      "id": "H7",
+      "name": "SBI has substantial governance influence in Evernorth",
+      "thesis": "SBI-controlled entities held 36.1% of Class A voting shares and 7.5% of Class C non-voting economic shares as of Oct 22, 2026. This makes SBI a major strategic shareholder in a public XRP treasury, beyond its separate Ripple/USDC/RLUSD distribution relationships.",
+      "supporting_evidence": [
+        "O21",
+        "O22"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Class A and Class C denominators differ; Class C is generally non-voting. The 39.9% threshold is a cap, not the reported final ownership percentage. Other shareholders and governance rights matter."
+      ],
+      "status": "confirmed_ownership_substantial_influence_not_control"
+    },
+    {
+      "id": "H8",
+      "name": "Evernorth's future financing can add XRP demand but also creates dilution and balance-sheet risk",
+      "thesis": "The company may use a Cantor equity line, convertible debt and other capital raising to purchase more XRP. These mechanisms can support treasury accumulation but are conditional and may dilute shareholders or add financing costs.",
+      "supporting_evidence": [
+        "O20",
+        "O23",
+        "O25"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The ELOC is discretionary and not yet shown drawn; share price, VWAP, ownership caps, registration effectiveness and market conditions constrain proceeds.",
+        "The company reported no revenue and a large pre-close working-capital deficit through June 30, 2026."
+      ],
+      "status": "plausible_future_capital_channel_not_yet_verified"
+    },
+    {
+      "id": "H9",
+      "name": "gumi is developing a Japan-based AI-managed crypto treasury with an XRP concentration strategy",
+      "thesis": "gumi's AI-assisted crypto management, ¥14.133bn group crypto portfolio excluding funds, planned XRP concentration, covered-call strategy and SBI partnership make it a relevant institutional comparator and possible future source of XRP acquisition demand. It may also become a competitor in AI-managed digital-asset services.",
+      "supporting_evidence": [
+        "O28",
+        "O29",
+        "O30",
+        "O31"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The portfolio is not all XRP; exact XRP holdings and acquisition flows are undisclosed.",
+        "The AI announcement provides no model architecture, performance, risk limits, custody or execution evidence.",
+        "The planned external AI service is not confirmed launched."
+      ],
+      "status": "confirmed_strategy_and_AI_launch_announcement_performance_unverified"
+    }
+  ],
+  "sbic_disambiguation": {
+    "verified_entity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+    "distinction": "This is not SBI Holdings, Inc. and no ownership/affiliation with SBI Holdings is established by the cited company profile.",
+    "chatgpt_context": "Its official June 2025 training page lists ChatGPT as part of a general generative-AI curriculum, alongside Copilot, prompt applications, RAG and API implementation. This does not establish a partnership with OpenAI.",
+    "alternate_academic_meaning": "Social Bias Inference Corpus (SBIC) is also a dataset name in NLP research; it is unrelated to the Japanese investment-support company unless separate evidence connects them.",
+    "unresolved_phrase": "The user's exact phrase 'SBIC, ChatGPT SBIC' remains unresolved without its original source/context.",
+    "evidence": [
+      "S14",
+      "S15",
+      "S23",
+      "S24",
+      "S25",
+      "S26",
+      "S27",
+      "S38"
+    ],
+    "possible_related_ai_references": [
+      {
+        "entity": "SBIC East Japan",
+        "relationship": "ChatGPT training/seminars",
+        "evidence": [
+          "S15",
+          "S25"
+        ],
+        "interpretation": "Education and demonstrations; not an OpenAI partnership."
+      },
+      {
+        "entity": "SBI Holdings and SBI Securities",
+        "relationship": "ChatGPT Enterprise adoption",
+        "evidence": [
+          "S24"
+        ],
+        "interpretation": "Direct enterprise software adoption by SBI Group companies; distinct from SBIC East Japan."
+      },
+      {
+        "entity": "SBI Holdings",
+        "relationship": "SBI AI Portal",
+        "evidence": [
+          "S26"
+        ],
+        "interpretation": "Internal AI/data enablement platform."
+      },
+      {
+        "entity": "SBI Securities",
+        "relationship": "Google Gemini market-information service",
+        "evidence": [
+          "S27"
+        ],
+        "interpretation": "Separate AI provider/product relationship."
+      },
+      {
+        "entity": "SBI Group",
+        "relationship": "Azure OpenAI, ChatGPT Enterprise and SBI AI Portal LLM access",
+        "evidence": [
+          "S24",
+          "S26",
+          "S38"
+        ],
+        "interpretation": "Separate from SBIC East Japan; SBI Group's internal AI stack includes Azure OpenAI, ChatGPT Enterprise, Gemini 1.5 Flash and PLaMo 1.0 Prime."
+      }
+    ]
+  },
+  "phrase_watch": {
+    "ask_coin": {
+      "candidate": "Permission ASK token",
+      "status": "best_supported_candidate_not_final_identity",
+      "evidence": [
+        "S28"
+      ],
+      "technical_scope": "Official contract documentation lists Base and Polygon LayerZero OFT deployments.",
+      "xrp_relationship": "none_verified",
+      "note": "If the user meant a different 'ASK Coin', the original source/context is still required."
+    },
+    "actual_capital": {
+      "status": "ambiguous_multiple_candidate_contexts",
+      "candidates": [
+        {
+          "context": "Hyperliquid XRP long",
+          "evidence": [
+            "S33"
+          ],
+          "detail": "Secondary report says 52.67 BTC ($3.26m) deposited and a $16.3m XRP long at 20x. $815k is only notional/20 arithmetic, not verified total capital."
+        },
+        {
+          "context": "Evernorth capital deployed into XRP",
+          "evidence": [
+            "S29",
+            "S30"
+          ],
+          "detail": "$214.1m cash was used to buy 84.365876m XRP; 388.910554m XRP was contributed in kind. This is a verified capital-flow distinction, but not a confirmed match to the exact phrase."
+        },
+        {
+          "context": "gumi corporate crypto treasury",
+          "evidence": [
+            "S36",
+            "S37"
+          ],
+          "detail": "gumi's issuer presentation reports ¥14.133bn group crypto assets excluding funds at 2026-04-30 and a plan to shift the portfolio toward XRP. This is actual portfolio value, not proof of an XRP-only balance or a match to the exact phrase."
+        }
+      ],
+      "note": "No unique intended meaning has been established."
+    },
+    "camilla_stephenson": {
+      "likely_identity": "Kamilah Stevenson / Camila or Camilla Stevenson",
+      "youtube_handle": "@drkamilahstevenson",
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "status": "likely_identity_match_inventory_incomplete",
+      "evidence": [
+        "S34",
+        "S35"
+      ],
+      "notes": "The June 2026 iHeart interview has the host call the guest Camilla and the guest state her YouTube is 'Doctor Camilla Stevenson'; the Vling index identifies the corresponding Kamilah Stevenson channel, handle @drkamilahstevenson, channel ID UCqUPJMQdkCN6lsLVDnichPA, and estimates about 1.3K videos. Identity is a strong match, but the complete public upload inventory remains incomplete."
+    }
+  },
+  "key_unknowns": [
+    "Actual XRP amounts, haircuts, limits and utilization accepted as Coinbase derivatives collateral.",
+    "Whether and when RLUSD becomes usable as collateral on Coinbase Global Exchange after the announced future availability.",
+    "Coinbase-specific RLUSD deposits, withdrawals, trading and chain-level balances.",
+    "Native USDC and RLUSD active balances and transaction volumes on XRPL, separated from other chains.",
+    "SBI VC Trade's actual USDC/RLUSD/JPYSC transaction volumes, custody balances and corridor-level settlement paths.",
+    "Whether any specific SBI/Ripple payment flow uses XRP as a bridge asset rather than fiat or stablecoin settlement.",
+    "Circle Q3 2026 financial results and updated USDC circulation/reserve data, scheduled for 2026-11-04 08:00 ET.",
+    "The originating context for 'SBIC, ChatGPT SBIC', 'ASK Coin' and 'actual capital'.",
+    "Complete public YouTube video inventory and transcript coverage for the likely Kamilah/Camila/Camilla Stevenson channel."
+  ],
+  "next_actions": [
+    "Ingest Circle Q3 results on 2026-11-04 and reconcile reported average USDC balances, reserve income, distribution costs and supply change.",
+    "Capture issuer-level Coinbase Q3 collateral details and compare with Coinbase's live product eligibility; preserve 'eligible' versus 'used' as separate fields.",
+    "Query XRPL validated-ledger data for issuer-specific USDC/RLUSD trustline balances, transfers, DEX activity, transaction fees and reserve sponsorship; separate active balances from issued supply.",
+    "Build SBI product-level volume and custody evidence from SBI VC Trade disclosures, SBI Shinsei Trust Bank filings and public ledger data.",
+    "Update the relationship graph with dates, role, product, jurisdiction, directness and confidence; preserve disconfirming evidence.",
+    "Add a point-in-time feature store with immutable source snapshots before generating any XRP forecasts."
+  ],
+  "research_status": {
+    "designed": [
+      "Relationship graph and competing-hypothesis structure",
+      "Source classification and uncertainty labels"
+    ],
+    "executed": [
+      "SEC Q3 Coinbase filing review",
+      "Coinbase-Ripple RLUSD launch review",
+      "Circle XRPL and SBI relationships review",
+      "SBIC identity and ChatGPT course disambiguation"
+    ],
+    "verified": [
+      "Primary source links and published dates for the claims above"
+    ],
+    "not_yet_done": [
+      "Independent XRPL ledger volume analysis",
+      "SBI product-level flow reconciliation",
+      "Circle Q3 results analysis",
+      "Validated XRP price forecasting"
+    ]
+  },
+  "safety": {
+    "public_authorized_sources_only": true,
+    "no_private_data_or_unauthorized_access": true,
+    "no_market_manipulation": true,
+    "no_trading_or_deployment_action": true
+  }
+}

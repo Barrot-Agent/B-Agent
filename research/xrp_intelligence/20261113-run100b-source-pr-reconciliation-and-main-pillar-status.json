@@ -1,0 +1,237 @@
+{
+  "schema_version": "barrot.xrp.integration-reconciliation.v1",
+  "run": "Run100B",
+  "observation_window_start_utc": "2026-11-13T17:01:16Z",
+  "integration_head_at_capture": "50ec11f9459fa60ed8fbfd90396e68895c2d2c50",
+  "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "pull_request_1662": {
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "head_sha": "50ec11f9459fa60ed8fbfd90396e68895c2d2c50",
+    "changed_files": 1130,
+    "formal_reviews": 0,
+    "approvals": 0,
+    "review_threads": 0
+  },
+  "exact_head_ci": {
+    "full_run": {
+      "id": 43470301411,
+      "job_id": 132040122777,
+      "conclusion": "success",
+      "passed": 3598,
+      "subtests": 8,
+      "failed": 0,
+      "inclusive_coverage_percent": 62.14,
+      "test_duration_seconds": 57.17,
+      "wheel_build": "success",
+      "installed_primary_mission": "success"
+    },
+    "core_job": {
+      "id": 132040123276,
+      "conclusion": "success",
+      "passed": 732,
+      "subtests": 8,
+      "failed": 0,
+      "coverage_percent": 76,
+      "test_duration_seconds": 11.95
+    },
+    "dependency_audit": {
+      "run_id": 43470301448,
+      "job_id": 132040122446,
+      "conclusion": "success",
+      "manifest_groups": 5,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed": {
+      "run_id": 43470301595,
+      "job_id": 132040123078,
+      "conclusion": "success",
+      "automatic_merge": "disabled"
+    },
+    "workflow_note": "The integration/* pull_request CI job is skipped by workflow condition; the push-event full-suite job is the exact-head verification."
+  },
+  "main_workflows": {
+    "main_ci": {
+      "run_id": 43343513172,
+      "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "conclusion": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43343513172"
+    },
+    "pages": {
+      "run_id": 43343511839,
+      "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "conclusion": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43343511839",
+      "finding": "Automatic public Pages deployment is active; PR #1662 changes seven public web files."
+    },
+    "pillars": {
+      "run_id": 43430139937,
+      "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "conclusion": "failure",
+      "job_id": 131901277327,
+      "findings": [
+        "GitHub App integration missing GITHUB_APP_ID/GITHUB_APP_PRIVATE_KEY/GITHUB_INSTALLATION_ID",
+        "Databricks endpoint returned HTTP 403",
+        "Hugging Face Space stage BUILD_ERROR",
+        "deploy_sync only checked main hf_space/app.py",
+        "system_prompt_fiction check clean"
+      ],
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43430139937"
+    },
+    "barrot_sync": {
+      "run_id": 43343513347,
+      "conclusion": "success",
+      "note": "Prior log review showed a masked missing-httpx condition, skipped sync and no-op push; no current secret value was exposed."
+    }
+  },
+  "source_pr_reconciliation": [
+    {
+      "number": 1661,
+      "changed_paths": 1072,
+      "overlap": 1072,
+      "source_only": 0,
+      "main_vs_source": {
+        "ahead": 2141,
+        "behind": 9
+      },
+      "integration_vs_source": {
+        "ahead": 0,
+        "behind": 147
+      },
+      "classification": "supersession candidate; preserve until #1662 is merged and verified on main"
+    },
+    {
+      "number": 1660,
+      "changed_paths": 972,
+      "overlap": 972,
+      "source_only": 0,
+      "main_vs_source": {
+        "ahead": 1963,
+        "behind": 12
+      },
+      "integration_vs_source": {
+        "ahead": 0,
+        "behind": 328
+      },
+      "classification": "supersession candidate; preserve until #1662 is merged and verified on main"
+    },
+    {
+      "number": 1643,
+      "changed_paths": 670,
+      "overlap": 670,
+      "source_only": 0,
+      "main_vs_source": {
+        "ahead": 906,
+        "behind": 17
+      },
+      "integration_vs_source": {
+        "ahead": 0,
+        "behind": 1390
+      },
+      "classification": "supersession candidate; preserve until #1662 is merged and verified on main"
+    },
+    {
+      "number": 1642,
+      "changed_paths": 7,
+      "overlap": 7,
+      "source_only": 0,
+      "main_vs_source": {
+        "ahead": 1,
+        "behind": 17
+      },
+      "integration_vs_source": {
+        "ahead": 0,
+        "behind": 2295
+      },
+      "classification": "supersession candidate; preserve until #1662 is merged and verified on main"
+    },
+    {
+      "number": 1640,
+      "changed_paths": 280,
+      "overlap": 280,
+      "source_only": 0,
+      "main_vs_source": {
+        "ahead": 975,
+        "behind": 16
+      },
+      "integration_vs_source": {
+        "ahead": 1,
+        "behind": 1321
+      },
+      "unique_commit_paths": [
+        ".github/workflows/barrot-ops.yml",
+        "tests/test_external_action_gates.py",
+        "tests/test_external_deploys_require_confirmation.py"
+      ],
+      "semantic_review": "The source commit skips external work when credentials are absent and suppresses Databricks import failures. Integration requires separate Databricks/Kaggle approvals, exact current main SHA, immutable Databricks CLI pin, persist-credentials=false and fails closed on missing credentials. Integration adds tests for these stricter rules. The third file is byte-identical; the other two are semantically superseded by stricter integration versions.",
+      "classification": "supersession candidate; not a unique feature; preserve until #1662 is merged and verified on main"
+    }
+  ],
+  "unique_or_unreviewed_to_preserve": [
+    "#1653 knowledge graph/GitHub sync",
+    "#1655 structural analysis",
+    "#1659 local llama.cpp phone chat",
+    "#1615 safety work",
+    "#1614 prediction validator/ledger",
+    "#1320 paper-trader safety pause",
+    "#1318 schema fail-closed fix",
+    "#1317 structural/MMI foundation",
+    "#1269 mesh topology"
+  ],
+  "identity_and_relationship_updates": {
+    "sbic_chatgpt": {
+      "primary_source": "https://www.sbic.co.jp/training/20250612co/",
+      "finding": "SBIC East's June 12–13, 2025 generative-AI/ML course was restricted to investee companies, taught by a VOST instructor and included ChatGPT and Copilot. A separate Feb 26, 2025 ChatGPT seminar was co-hosted with the Tokyo Chamber of Commerce Taito branch and featured a Microsoft speaker. Educational programming, not an OpenAI commercial partnership.",
+      "sources": [
+        "https://www.sbic.co.jp/training/20250612co/",
+        "https://www.sbic.co.jp/seminar/20250226ym/"
+      ]
+    },
+    "circle_sbi": {
+      "primary_source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250627presentations.pdf",
+      "finding": "SBI Circle Holdings / Circle SBI Japan KK is a 50/50 joint venture. SBI Holdings and SBI Shinsei Bank separately invested $25M each in Circle's 2025 IPO, total $50M. SBI announced a subsidiary's participation in Circle Arc token presale in May 2026; its individual amount was not disclosed. Arc is separate from XRPL.",
+      "sources": [
+        "https://corp.sbishinseibank.co.jp/en/news/news/20250609a.html",
+        "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250627presentations.pdf",
+        "https://www.sbigroup.co.jp/news/2026/0512_16310.html"
+      ]
+    },
+    "ripple_sbi_evernorth_coinbase": {
+      "finding": "SBI's 2025 disclosure describes approximately 9% Ripple equity ownership and SBI Ripple Asia. Separately, the Evernorth SEC prospectus identifies four SBI-controlled subscriber entities and 39.9% SBI-group voting power after closing; exact SBI cash/XRP contribution allocation is not disclosed. The same filing names Coinbase as Evernorth's principal XRP market for financial reporting, not as an exclusive venue or custodian. These are separate relationships, not evidence of a direct SBI-Coinbase partnership.",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    },
+    "youtube": {
+      "finding": "Third-party IDCrawl lists 20 similarly named YouTube profiles, including @drkamilahstevenson with 138K subscribers and multiple lookalikes. No first-party site-to-channel link or YouTube ownership proof was established; do not attribute videos. Verified own-channel inventory remains zero.",
+      "source": "https://www.idcrawl.com/kamilah-stevenson"
+    }
+  },
+  "security_and_decision": {
+    "main_branch_protection_details": "HTTP 403",
+    "visible_fallback_ruleset": {
+      "id": 10863829,
+      "enforcement": "disabled"
+    },
+    "integration_branch_protected": false,
+    "connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "changed_workflows": 50,
+    "changed_public_web_files": 7,
+    "pages_authorization": "unresolved",
+    "decision": "NO_MERGE",
+    "reason": "PR #1662 remains draft with zero formal reviews/approvals/review threads; detailed branch protection cannot be verified; least privilege and Pages publication authorization are unresolved; full semantic reconciliation remains incomplete.",
+    "source_pr_closures": 0
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED",
+    "trained_xrp_candidate_model": false,
+    "real_money_actions": 0,
+    "paper_trades": 0
+  }
+}

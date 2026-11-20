@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261110T144953Z-run132b-evernorth-eloc-effectiveness-and-actual-capital-reconciliation",
+  "captured_at": "2026-11-10T14:49:53Z",
+  "mission_priority": 1,
+  "repository_state": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_pr": 1640,
+    "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "integration_head_before_commit": "c255a7ddf54ac19ac0966c689a45e0c78895538a"
+  },
+  "executive_conclusion": "Evernorth's Cantor ELOC registration became effective October 30, 2026, satisfying the SEC-effectiveness condition. The latest located issuer prospectus, dated November 9, explicitly states that Evernorth had received no proceeds under the facility as of that date. The facility is not actual cash received and is not evidence of incremental XRP purchased.",
+  "eloc": {
+    "issuer": "Evernorth Holdings Inc.",
+    "counterparty": "CF Principal Investments LLC (Cantor)",
+    "agreement_date": "2026-10-23",
+    "registration_statement_no": "333-299620",
+    "registration_effective_at": "2026-10-30T20:00:00Z",
+    "effect_accession": "9999999995-26-003391",
+    "final_prospectus_accession": "000162828026068590",
+    "final_prospectus_date": "2026-10-30",
+    "maximum_new_class_a_shares": 5218935,
+    "issuer_option_not_obligation": true,
+    "purchase_price_formula": "97% of applicable VWAP, with additional terms for accepted purchases exceeding 20% of trading volume.",
+    "limits": {
+      "cantor_beneficial_ownership_cap_pct": 4.99,
+      "purchase_period_volume_cap_pct": 20,
+      "prior_close_threshold": "At least the greater of $1.00, 90% of prior closing price, or a higher price specified by Evernorth.",
+      "commencement_conditions": [
+        "SEC registration effectiveness and final prospectus filed (effectiveness verified October 30)",
+        "Cantor due diligence satisfactory to Cantor",
+        "Cantor not in possession of material non-public information concerning Evernorth",
+        "Other contractual and securities-law conditions"
+      ]
+    },
+    "status_as_of_2026_11_09": {
+      "proceeds_received_usd": 0,
+      "status": "ISSUER_DISCLOSED_NO_PROCEEDS",
+      "source_prospectus_accession": "000162828026072223",
+      "source_prospectus_date": "2026-11-09",
+      "caveat": "This is the latest located issuer disclosure in this run, not a guarantee that no later unreported or subsequently disclosed purchase occurred after November 9."
+    },
+    "resale_registration_distinction": {
+      "registration_statement_no": "333-299739",
+      "prospectus_date": "2026-11-09",
+      "securities_registered_for_selling_securityholders": {
+        "class_a_shares": 73688162,
+        "sponsor_warrants": 239653
+      },
+      "company_proceeds_from_selling_securityholder_resales_usd": 0,
+      "note": "This is a separate selling-securityholder resale prospectus. Do not count these resales as new cash to Evernorth or as Cantor ELOC drawdowns."
+    },
+    "proceeds_estimate_reconciliation": {
+      "cover_illustration_usd": 76800000,
+      "cover_reference_price_usd": 14.71,
+      "cover_reference_date": "2026-10-29",
+      "offering_summary_illustration_usd": 80700000,
+      "max_shares": 5218935,
+      "calculated_undiscounted_at_cover_price_usd": 76770533.85,
+      "calculated_at_97pct_of_same_reference_price_usd": 74467417.8345,
+      "difference_due_to_3pct_discount_usd": 2303116.0155,
+      "status": "UNRECONCILED_PROSPECTUS_PRESENTATION",
+      "note": "The cover illustration is approximately consistent with 5,218,935 × $14.71 before the 3% VWAP discount. The offering summary separately states approximately $80.7M, which does not reconcile to the cover reference price. The actual contractual purchase price is 97% of applicable VWAP, not a fixed $14.71. These are illustrations, not proceeds received."
+    },
+    "fees": {
+      "upfront_commitment_fee_usd": 521893.5,
+      "aggregate_commitment_fee_cap_usd": 1000000,
+      "expense_reimbursement_cap_usd": 500000,
+      "payment_status": "NOT_VERIFIED",
+      "note": "The prospectus describes the fee terms and trigger; no separate cash payment receipt was verified in this run."
+    }
+  },
+  "actual_capital_and_xrp": {
+    "as_of": "2026-10-09",
+    "reported_gross_cash_proceeds_at_closing_usd": 272600000,
+    "gross_cash_components_usd": {
+      "private_placement_investments": 224600000,
+      "trust_account_after_redemptions": 48000000
+    },
+    "before_transaction_expenses": true,
+    "in_kind_xrp_contributions": 388910554.061435,
+    "cash_used_to_purchase_xrp_usd": 214100000,
+    "xrp_reported_purchased_with_cash": 84365876,
+    "xrp_holdings_reported_by_issuer_approx": 473000000,
+    "derived_xrp_total": 473276430.061435,
+    "derived_xrp_reconciliation": {
+      "contributed_xrp": 388910554.061435,
+      "purchased_xrp": 84365876,
+      "sum": 473276430.061435,
+      "agrees_with_issuer_approximation": true,
+      "verification_level": "issuer_filing_arithmetic_only",
+      "not_proven": [
+        "independent on-chain custody",
+        "current holdings after October 9",
+        "exact acquisition dates and venues",
+        "incremental open-market buying after October 9"
+      ]
+    },
+    "funding_components": [
+      {
+        "source": "Advance Funding Subscription",
+        "cash_usd": 214050000,
+        "xrp_in_kind": 600000,
+        "classification": "private placement"
+      },
+      {
+        "source": "Delayed Funding Subscription",
+        "cash_usd": 10500000,
+        "xrp_in_kind": 200000,
+        "classification": "private placement"
+      },
+      {
+        "source": "Arrington XRP Capital Fund Series C Subscription",
+        "cash_usd": 0,
+        "xrp_in_kind": 211319096.061435,
+        "classification": "in-kind XRP contribution"
+      },
+      {
+        "source": "Larsen Lam Children's Remainder Trust",
+        "cash_usd": 0,
+        "xrp_in_kind": 50000000,
+        "classification": "in-kind XRP contribution; issuer describes investor as Ripple-affiliated"
+      },
+      {
+        "source": "Ripple Contribution Agreement",
+        "cash_usd": 0,
+        "xrp_in_kind": 126791458,
+        "classification": "in-kind XRP contribution"
+      }
+    ],
+    "other_actual_financing": [
+      {
+        "source": "Ripple / Pathfinder Company Facility",
+        "facility_limit_usd": 10000000,
+        "borrowed_usd": 9700000,
+        "as_of": "2026-10-07",
+        "classification": "related-party revolving credit/operating liquidity",
+        "xrp_purchase_proven": false
+      },
+      {
+        "source": "Evernorth Facility with Ripple",
+        "facility_limit_usd": 1000000,
+        "borrowed_usd": 0,
+        "as_of": "2026-06-30",
+        "classification": "separate related-party facility",
+        "status_note": "No draw as of June 30 only; later status not established in the cited prospectus."
+      },
+      {
+        "source": "NH Investment & Securities as trustee of Kyobo AIM Corporate Finance General Private Investment Trust No. 3",
+        "principal_usd": 30000000,
+        "issued_at": "2026-10-12",
+        "interest": "4.00% paid in kind",
+        "maturity": "2031",
+        "classification": "convertible senior PIK notes",
+        "xrp_purchase_proven": false
+      }
+    ],
+    "interpretation": "The company had substantial actual funding and issuer-reported XRP holdings from private-placement cash, XRP contributed in kind, and cash-funded XRP purchases. The Cantor ELOC is a separate optional future financing mechanism and had produced no proceeds as of the November 9 prospectus."
+  },
+  "hypotheses": [
+    {
+      "id": "ELOC_H1",
+      "statement": "The Cantor ELOC was already a source of actual cash for XRP purchases by November 9.",
+      "status": "disconfirmed_as_of_latest_issuer_disclosure",
+      "evidence": "November 9 prospectus states no proceeds had been received under the Committed Equity Facility as of that prospectus date."
+    },
+    {
+      "id": "ELOC_H2",
+      "statement": "The ELOC registration became effective on October 30, so the SEC-effectiveness condition was satisfied.",
+      "status": "confirmed",
+      "evidence": "SEC EDGAR EFFECT record for registration 333-299620 lists effectiveness date October 30, 2026; primary XML specifies 4:00 p.m."
+    },
+    {
+      "id": "ELOC_H3",
+      "statement": "The 73,688,162-share November 9 resale registration creates new cash for Evernorth.",
+      "status": "disconfirmed",
+      "evidence": "The selling-securityholder prospectus says resale proceeds go to selling holders, not Evernorth, except potential cash warrant exercise proceeds."
+    },
+    {
+      "id": "ELOC_H4",
+      "statement": "Evernorth's reported 473 million XRP represents only Cantor-funded market purchases.",
+      "status": "disconfirmed",
+      "evidence": "The prospectus identifies 388.91 million XRP contributed in kind and 84.37 million XRP purchased using private-placement cash proceeds."
+    },
+    {
+      "id": "ELOC_H5",
+      "statement": "The $9.7 million Ripple Company Facility borrowing is XRP purchase capital.",
+      "status": "not_supported",
+      "evidence": "The filing describes a related-party revolving credit facility, payments on behalf of the company and Evernorth, and operating-liquidity uses; it does not establish that the $9.7 million was used to buy XRP."
+    }
+  ],
+  "forecast_admission": {
+    "status": "EXCLUDED_FROM_DIRECTIONAL_XRP_FEATURES",
+    "reason": "The ELOC no-proceeds disclosure and historical funding composition are corporate capital-structure facts, not synchronized XRP spot order-flow observations. They may enter a dated event/fundamental feature family only after point-in-time ingestion and independent outcome testing."
+  },
+  "source_receipts": [
+    {
+      "id": "EVERNORTH_ELOC_EFFECT",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/9999999995-26-003391-index.htm",
+      "publisher": "SEC EDGAR",
+      "accession": "9999999995-26-003391",
+      "published_at": "2026-11-02T00:15:10Z",
+      "effective_date": "2026-10-30",
+      "source_independence_group": "SEC_EVERNORTH_FILINGS",
+      "capture_type": "web_rendered_filing_metadata",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "SEC EDGAR Form EFFECT, accession 9999999995-26-003391: Evernorth Holdings Inc., CIK 0002092592, Form S-1, registration file 333-299620, effectiveness date October 30, 2026 at 4:00 p.m. EDT.",
+      "normalized_excerpt_sha256": "4e7b48a24136fb1c499364a576399ab730e8d6f1301eab71d40882fd0d37214c"
+    },
+    {
+      "id": "EVERNORTH_CANTOR_ELOC_PROSPECTUS",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "publisher": "Evernorth Holdings Inc. filing with SEC",
+      "accession": "000162828026068590",
+      "registration_no": "333-299620",
+      "published_at": "2026-10-30",
+      "source_independence_group": "SEC_EVERNORTH_FILINGS",
+      "capture_type": "web_rendered_filing_text",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "Evernorth Form 424B3, registration no. 333-299620, prospectus dated October 30, 2026: the prospectus relates to potential offer and sale by CF Principal Investments LLC (Cantor) of up to 5,218,935 newly issued Class A shares under the October 23, 2026 purchase agreement. Evernorth says it may receive up to approximately $76.8 million gross if all shares are sold at the October 29 closing price of $14.71. The purchase price is 97% of applicable VWAP, subject to additional terms. The facility is optional and subject to conditions. Cantor resale proceeds are not paid to Evernorth.",
+      "normalized_excerpt_sha256": "c4d9b18d3f5b5e16650158abcb5862ff79367e53e9efe2f08aef8397150aa3a9"
+    },
+    {
+      "id": "EVERNORTH_NOV09_SELLING_HOLDER_PROSPECTUS",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "publisher": "Evernorth Holdings Inc. filing with SEC",
+      "accession": "000162828026072223",
+      "registration_no": "333-299739",
+      "published_at": "2026-11-09",
+      "source_independence_group": "SEC_EVERNORTH_FILINGS",
+      "capture_type": "web_rendered_filing_text",
+      "raw_bytes_captured": false,
+      "raw_byte_sha256": null,
+      "normalized_excerpt": "Evernorth Form 424B3, registration no. 333-299739, prospectus dated November 9, 2026: the ELOC registration statement is separate from this selling-securityholder prospectus. The filing states that Pubco has not received any proceeds under the Committed Equity Facility as of the date of this prospectus. It also reports approximately 473 million XRP held as of October 9, 2026. The selling-securityholder resale prospectus covers up to 73,688,162 Class A shares and 239,653 sponsor warrants; sales by selling securityholders do not generate proceeds for Evernorth, except cash proceeds if sponsor warrants are exercised.",
+      "normalized_excerpt_sha256": "4014c6502d36c2345cbf0674bda8b568df4efc5506ada74592fca674189b2502"
+    }
+  ],
+  "raw_receipt_limitation": "The SEC pages were reviewed through rendered/extracted web text. Raw filing bytes were not captured in this run; normalized excerpt hashes are reproducible integrity checks over the exact stored excerpts, not raw-byte hashes."
+}

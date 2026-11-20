@@ -1,0 +1,202 @@
+{
+  "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.0.0",
+  "snapshot_id": "run11-20261118T011500Z",
+  "captured_at_utc": "2026-11-18T01:15:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "b5b22ea58fa069792b0728d47cb2414855234a4a",
+  "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+  "integration_head_before_run": "95dda6b3ee85384c450d1a9d3673a5f3fba3c889",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "platforms": {
+    "ChatGPT": {
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "permission_status": "Repository read and controlled integration-branch writes plus PR metadata updates were exercised. Effective connector token scopes are not independently exposed. Main was not written.",
+      "data_flow": {
+        "verified": true,
+        "description": "Current ChatGPT session -> GitHub connector -> GitHub REST API -> Barrot-Agent/B-Agent. Fetched main and integration trees, open PR inventory, current PR #1663, source PR path lists and ancestry, workflow jobs/logs, dependency audit logs, security workflow definitions and durable handoff. Reconciled one main commit into the integration branch with a normal two-parent merge, then updated the canonical handoff and this map snapshot. No evidence or private data was dispatched to another model."
+      },
+      "external_provider_dispatch": false
+    },
+    "Claude": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No authenticated request or data transfer tested."
+      },
+      "external_provider_dispatch": false
+    },
+    "Grok": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No authenticated request or data transfer tested. Groq is a separate provider and is not evidence of a Grok connection."
+      },
+      "external_provider_dispatch": false
+    },
+    "Gemini": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No authenticated request or data transfer tested."
+      },
+      "external_provider_dispatch": false
+    },
+    "Copilot": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No current Copilot session, repository action or data transfer verified."
+      },
+      "external_provider_dispatch": false
+    },
+    "Codex": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No separate Codex runtime or repository data transfer verified."
+      },
+      "external_provider_dispatch": false
+    },
+    "Hugging Face": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "HF_TOKEN presence and scope not verified; no token read.",
+      "data_flow": {
+        "verified": false,
+        "description": "No Space health check or upload performed. Self-hosted brain and sync workflows quarantined; manual model upload requires explicit YES and exact main SHA."
+      },
+      "external_provider_dispatch": false
+    },
+    "Kaggle": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "Kaggle credential presence and scope not verified.",
+      "data_flow": {
+        "verified": false,
+        "description": "No dataset write or competition submission. Manual workflow requires explicit YES, exact main SHA and competition allowlist."
+      },
+      "external_provider_dispatch": false
+    },
+    "Databricks": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "Workspace credential presence and scope not verified.",
+      "data_flow": {
+        "verified": false,
+        "description": "No workspace read/write or token rotation. Databricks bundle workflow quarantined; deploy workflow is manual and SHA-gated."
+      },
+      "external_provider_dispatch": false
+    }
+  },
+  "verified_edges": [
+    {
+      "from": "ChatGPT current session",
+      "to": "GitHub connector",
+      "purpose": "Repository inspection, exact-head CI/security verification, controlled integration-branch and PR-metadata updates",
+      "status": "CURRENT_SESSION_VERIFIED"
+    },
+    {
+      "from": "Public web sources",
+      "to": "ChatGPT current session",
+      "purpose": "Lawful public XRP market, SEC, OCC, SBI, issuer, ETF and custody research",
+      "status": "RETRIEVAL_VERIFIED; rendered excerpts are not raw-byte receipts"
+    },
+    {
+      "from": "ChatGPT current session",
+      "to": "Claude/Grok/Gemini/Copilot/Codex/Hugging Face/Kaggle/Databricks",
+      "purpose": "No data flow",
+      "status": "NOT_CONNECTED_OR_NOT_TESTED"
+    }
+  ],
+  "coordination_status": {
+    "independent_tasks_assigned_across_nine_platforms": false,
+    "structured_evidence_exchange_across_nine_platforms": false,
+    "verified_external_platforms_beyond_current_chatgpt_github_connector": 0,
+    "independent_red_team_quorum": false,
+    "minority_objections_preserved": true,
+    "live_connections_claimed_without_test": false,
+    "fallback": "Public sources, deterministic repository inspection and exact-head GitHub CI. Do not send private XRP evidence to unverified providers."
+  },
+  "least_privilege": "Not verified across all nine platforms. The current GitHub connector exercised repository read, integration-branch writes and PR metadata updates; effective token scopes are not independently exposed. No provider token was read, expanded or rotated.",
+  "primary_brain_declared_by_repository": {
+    "name": "LunaRoute",
+    "status": "DECLARED_NOT_AUTHENTICATED",
+    "verified": false
+  },
+  "next_actions": [
+    "Verify the next handoff-only commit's exact-head push CI, full suite, dependency audit, money audit, fail-closed gate and Pages validation.",
+    "Complete the remaining 57 changed-workflow and transitive-script security review; retain explicit authorization gates.",
+    "Obtain independent review and verifiable required-check/branch-protection evidence.",
+    "Resolve Pages publication side effects before any merge.",
+    "Keep scheduled XRP ingestion disabled until its workflow is merged to main under authorization and the first scheduled main run is verified.",
+    "Correct Evernorth source records with standalone-versus-pro-forma cash, noncash earnings, related-party liquidity and optional financing distinctions.",
+    "Continue historical multi-venue data, receipt anchoring and leakage-safe out-of-sample model evaluation; no forecast until readiness criteria pass."
+  ],
+  "repository_audit": {
+    "main_sha": "b5b22ea58fa069792b0728d47cb2414855234a4a",
+    "integration_head_before_snapshot": "95dda6b3ee85384c450d1a9d3673a5f3fba3c889",
+    "integration_commits_ahead": 254,
+    "integration_commits_behind": 0,
+    "pr_number": 1663,
+    "pr_draft": true,
+    "pr_changed_files": 1407,
+    "main_tree_entries": 1737,
+    "integration_tree_entries": 2958,
+    "integration_workflow_files": 93,
+    "changed_workflow_files": 67,
+    "exact_head_full_suite_run": "44213481439",
+    "exact_head_full_suite_result": "4257 passed, 1 skipped, 11 warnings, 19 subtests passed; 187.23s; 68.13% inclusive coverage; 77% legacy-core coverage; wheel and installed mission verification passed",
+    "exact_head_dependency_audit_runs": [
+      "44213481502",
+      "44213486372"
+    ],
+    "exact_head_dependency_audit_result": "All six manifests passed pip-audit; no known vulnerabilities found",
+    "exact_head_money_audit_run": "44213486536",
+    "exact_head_money_audit_result": "14 passed",
+    "exact_head_fail_closed_runs": [
+      "44213481585",
+      "44213486375"
+    ],
+    "exact_head_pages_validation": "Passed; validation only, no deployment",
+    "formal_pr_reviews": 0,
+    "review_threads": 0,
+    "branch_protection_details": "403; protected flag visible but required-check configuration not independently inspectable",
+    "fallback_ruleset": "Disabled",
+    "codeowners": "Self-only @Barrot-Agent"
+  },
+  "research_observations": {
+    "latest_lending_market_cutoff_utc": "2026-11-18T00:32:00Z",
+    "liqwall": {
+      "price_usd": 0.9808,
+      "open_interest_usd": 968000000,
+      "open_interest_change_24h_pct": -2.8,
+      "funding_average_8h_pct": 0.0059,
+      "liquidations_24h_usd": 4200000,
+      "liquidations_long_usd": 2100000,
+      "liquidations_short_usd": 2100000,
+      "binance_accounts_long_pct": 73.8
+    },
+    "coinglass": {
+      "open_interest_usd": 2030000000,
+      "open_interest_change_pct": 2.79,
+      "futures_volume_24h_usd": 2280000000,
+      "funding_8h_pct": 0.0019,
+      "futures_spot_volume_ratio": 4.8
+    },
+    "coinranking_previous_day": {
+      "open_interest_usd": 1550000000,
+      "funding_pct": -0.0083,
+      "futures_volume_usd": 2210000000
+    },
+    "provider_disagreement": "Different venue coverage, timestamps and aggregation methods; do not average OI or funding values.",
+    "etf_flows": "CryptoKeyhole Nov 16 partial 2/4 funds: -5,196,983 XRP; latest complete Nov 13: -9,967 XRP. XRP Insights tracks a different six-fund universe; Corpstacking tracks ten products. Holdings totals are not comparable without matching universe and as-of date.",
+    "evernorth_sec_10q": "Pre-business-combination Sept 30 standalone cash $91,397, restricted cash $49,995, accumulated deficit $185.587M, net working capital deficit $10M, no revenue. Q3 net income $155.265M was driven by a $162.834M fair-value gain on refundable investor advances, offset by $6.891M digital-asset impairment and G&A; nine-month net loss $32.870M included $271.037M impairment and $240.311M fair-value gain. Operating cash used $1.722M. Primary liquidity sources were Ripple loans and XRP contributed to Pathfinder; the $1M revolving Ripple facility was undrawn at Sept 30.",
+    "evernorth_actual_vs_potential": "$214.05M advance-funding cash was used to purchase 84,365,876 XRP; 600,000 XRP was contributed in-kind. The Sept 30 Evernorth standalone $91,397 cash is not the $76.027M unaudited pro-forma combined cash figure, which includes SPAC trust release and note proceeds. The CF Principal Investments committed equity facility covers up to 5,218,935 shares; it is not cash received unless shares are sold to the holder.",
+    "occ_status": "OCC Corporate Applications Search records Ripple National Trust Bank as consummated/effective Oct 26, 2026; the OCC Interpretations & Decisions index still displays the Dec 12, 2025 conditional approval and no separate final approval letter was located. Ripple's Oct 26 release says final approval.",
+    "sbi_multirail": "SBI disclosed $50M Circle equity investment ($25M each SBI Holdings and SBI Shinsei), a Circle JV and SBI VC Trade USDC retail payment pilots. SBI-SMBC Oct 30, 2026 capital/business alliance explores stablecoin and tokenized-asset services; it does not establish an XRP link."
+  }
+}

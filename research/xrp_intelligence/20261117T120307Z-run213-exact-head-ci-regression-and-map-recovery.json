@@ -1,0 +1,245 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot_xrp_run_execution_verification",
+  "snapshot_id": "run213-20261117T120307Z",
+  "captured_at_utc": "2026-11-17T12:03:07Z",
+  "mission_priority": 1,
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety, authorization and verification",
+  "repository_state": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "9753132cd2c7b8d5fd88fc265c731f4fc5b11087",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_head_before_recovery": "9f383fae418ea2cf1fbf97e872ee8f966da0fac6",
+    "integration_ahead_by": 182,
+    "integration_behind_by": 0,
+    "main_tree_entries": 1582,
+    "integration_tree_entries": 2782,
+    "pull_request": 1663,
+    "pull_request_state": "open",
+    "pull_request_draft": true,
+    "pull_request_mergeable": true,
+    "changed_files": 1375,
+    "additions": 439610,
+    "deletions": 6476,
+    "integration_head_after_recovery": "b8d02d73e40864a206949c03665ebff09413414f"
+  },
+  "open_pr_inventory": {
+    "count": 9,
+    "items": [
+      {
+        "number": 1663,
+        "title": "Barrot V3 + XRP Intelligence — consolidated mainline successor",
+        "classification": "blocked_active_integration"
+      },
+      {
+        "number": 1541,
+        "title": "Security: fingerprint MMI claim identities instead of trusting caller IDs",
+        "classification": "unique_unreviewed_with_path_overlap",
+        "overlap_with_1663": {
+          "overlapping_paths": 5,
+          "total_paths": 5,
+          "common_ancestor": false,
+          "semantic_equivalence_verified": false
+        }
+      },
+      {
+        "number": 1450,
+        "title": "Research successor: Binance phase-one status, November escrow and PR #1449 audit",
+        "classification": "unique_unreviewed"
+      },
+      {
+        "number": 1460,
+        "title": "Research: XRP institutional multirail, Binance and Kamilah handoff",
+        "classification": "unique_unreviewed"
+      },
+      {
+        "number": 1440,
+        "title": "Stacked repair: make XRP archive validation trigger on research verification branches",
+        "classification": "unique_unreviewed"
+      },
+      {
+        "number": 1436,
+        "title": "Research: Binance XRP theft, issuer freezes and attacker-wallet graph",
+        "classification": "unique_unreviewed"
+      },
+      {
+        "number": 1437,
+        "title": "Repair: correct XRP ledger source addenda and snapshot pointer",
+        "classification": "unique_unreviewed"
+      },
+      {
+        "number": 1353,
+        "title": "Research: losslessly shard XRP ledger with hash-verified read-only validation",
+        "classification": "unique_unreviewed"
+      },
+      {
+        "number": 1265,
+        "title": "Research: compact XRP ledger index with hash-verified snapshot pointer",
+        "classification": "unique_unreviewed_with_path_overlap",
+        "overlap_with_1663": {
+          "overlapping_paths": 1,
+          "total_paths": 144,
+          "common_ancestor": false,
+          "semantic_equivalence_verified": false
+        }
+      }
+    ],
+    "pr1542_state": "closed_unmerged",
+    "source_prs_closed": 0
+  },
+  "ci_evidence": {
+    "tested_head": "9f383fae418ea2cf1fbf97e872ee8f966da0fac6",
+    "full_repository_suite": {
+      "run_id": 44081224961,
+      "job_id": 134032027959,
+      "conclusion": "success",
+      "passed": 4091,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 150.14,
+      "inclusive_coverage_percent": 68.09,
+      "legacy_core_coverage_percent": 77,
+      "wheel": "b_agent-0.1.0-py3-none-any.whl",
+      "wheel_install_verification": "passed; Barrot V3, XRP mission and canonical data assets load"
+    },
+    "core_tests": {
+      "run_id": 44072926983,
+      "job_id": 134003446314,
+      "conclusion": "success"
+    },
+    "pages_validation": {
+      "run_id": 44081224961,
+      "job_id": 134032028285,
+      "conclusion": "success"
+    },
+    "dependency_audit": {
+      "run_id": 44081225044,
+      "job_id": 134032028711,
+      "conclusion": "success"
+    },
+    "fail_closed_gate": {
+      "run_id": 44081225544,
+      "conclusion": "success",
+      "merge_disabled": true
+    },
+    "pull_request_ci": {
+      "run_id": 44072936976,
+      "conclusion": "success",
+      "full_suite": "skipped; exact-head push suite above is the relied-on result",
+      "core_tests": "skipped",
+      "pages": "success"
+    },
+    "operational_warning": "GitHub Actions cache reservation failed because the configured cache budget was exhausted; cache is read-only. This did not fail tests, coverage or wheel verification.",
+    "test_regression_test": "test_run212_map_summary_is_preserved_as_a_timestamped_artifact passed in the 4,091-test suite.",
+    "latest_full_repository_suite": {
+      "run_id": 44082517703,
+      "job_id": 134036439699,
+      "conclusion": "failure",
+      "passed": 4092,
+      "failed": 2,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 120.64,
+      "inclusive_coverage_percent": 68.09,
+      "failure_groups": {
+        "tests/test_xrp_sbic_entity_resolution_run213.py::test_sbic_east_central_west_are_distinct_statutory_companies_not_sbi_holdings": "case-sensitive assertion expected lower-case phrase; evidence text begins with capitalized No",
+        "tests/test_xrp_sbic_entity_resolution_run213.py::test_market_observations_preserve_vendor_cutoffs_and_do_not_create_forecasts": "per-observation raw_source_sha256 and receipt_status fields were omitted from the JSON schema"
+      },
+      "core_tests": "success",
+      "pages_validation": "success",
+      "dependency_audit": "success",
+      "fail_closed_gate": "success",
+      "wheel_build": "skipped_due_to_full_suite_failure"
+    }
+  },
+  "failure_diagnosis": {
+    "classification": "CANONICAL_RESEARCH_MAP_SCHEMA_REGRESSION",
+    "root_cause": "Run212 replaced the 2,747,877-character canonical nine-platform map blob, schema 1.1.0, with a 4,729-character summary map, schema 1.0.0, at the path consumed by historical regression tests.",
+    "canonical_blob_sha": "1a4310a29b1b16640f8841410708ec1403c16141",
+    "replacement_summary_blob_sha": "e40bd3221f4191ba2ebf955b587a1338475bba6f",
+    "affected_test_files": 4,
+    "application_runtime_failure": false,
+    "test_expectations_weakened": false,
+    "latest_head_failure": "Two newly added research-contract tests failed; all other 4,092 tests passed. No application/runtime failure identified."
+  },
+  "recovery": {
+    "canonical_map_restored_from_existing_git_blob": true,
+    "run212_summary_preserved_as_timestamped_artifact": "research/xrp_intelligence/20261117T105932Z-run212-nine-platform-map-summary.json",
+    "new_regression_test": "tests/test_xrp_nine_platform_current_map_run73.py::test_run212_map_summary_is_preserved_as_a_timestamped_artifact",
+    "recovery_commit_parent": "9f383fae418ea2cf1fbf97e872ee8f966da0fac6",
+    "recovery_commit_sha": "b8d02d73e40864a206949c03665ebff09413414f",
+    "next_action": "Add explicit null raw-source receipt fields to every rendered market observation, make the relationship assertion case-insensitive, correct SBIC Central capital to JPY 4,300,800,000, then rerun the full suite on the new exact head."
+  },
+  "prediction_engine_status": {
+    "endpoint_definitions": 51,
+    "scheduled_public_endpoints": 46,
+    "weekly_sources": 3,
+    "public_ingestion_workflow": "present_on_integration_only; not active on main",
+    "schedules_utc": [
+      "3 * * * *",
+      "15 0 * * *"
+    ],
+    "workflow_permissions": "actions:read; contents:read",
+    "raw_receipt_artifact_retention_days": 90,
+    "independent_worm_archive": "not implemented or verified",
+    "point_in_time_feature_validation": "implemented in integration code",
+    "baselines": [
+      "naive_class_prior",
+      "momentum_sign",
+      "mean_reversion_sign",
+      "volatility_normal"
+    ],
+    "readiness_policy": "xrp_forecast_readiness_v6",
+    "minimum_oos_samples": 100,
+    "minimum_shadow_samples": 100,
+    "minimum_horizon_multiple": 10,
+    "minimum_independent_source_groups": 5,
+    "maximum_weighted_calibration_error": 0.05,
+    "external_evaluator_attestation": "Ed25519 signature required; no trusted production evaluator key verified",
+    "drift_monitor": "PSI feature-distribution diagnostic; does not establish label or concept drift",
+    "model_eligible_events": 0,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "security_and_merge": {
+    "main_branch_protection_status": "UNVERIFIED_HTTP_403",
+    "visible_ruleset": {
+      "id": 10863829,
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    },
+    "codeowners": "* @Barrot-Agent",
+    "formal_approvals": 0,
+    "review_threads": 0,
+    "merge_decision": "NO_MERGE",
+    "main_high_write_workflows_still_present": true,
+    "integration_quarantines_or_gates_high_write_workflows": true
+  },
+  "external_actions": {
+    "main_write": false,
+    "merge": false,
+    "deployment": false,
+    "secret_read_or_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money_action": false,
+    "external_model_data_transfer": false
+  },
+  "next_action": "Run the full repository suite, Pages validation, dependency audit and fail-closed gate on the recovery commit; then continue independent semantic/security review and branch-protection verification.",
+  "research_update": {
+    "sbic_central_capital_correction": {
+      "previous_value_jpy": 4380800000,
+      "correct_value_jpy": 4300800000,
+      "source": "https://www.sbic-cj.co.jp/company/about/"
+    },
+    "legal_text_source": "https://www.sbic-wj.co.jp/disclose/law/",
+    "actual_capital_primary_source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm"
+  }
+}

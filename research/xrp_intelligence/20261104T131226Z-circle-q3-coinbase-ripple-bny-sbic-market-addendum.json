@@ -1,0 +1,995 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_intelligence_current_event_market_and_identity_addendum",
+  "record_id": "xrp-intel-2026-11-04-circle-q3-coinbase-ripple-bny-sbic-market-addendum",
+  "captured_at_utc": "2026-11-04T13:12:26Z",
+  "subject": "XRP ecosystem relationships, Circle Q3 2026, institutional custody, market microstructure, SBIC identity, and Kamilah Stevenson identity audit",
+  "repository_context": {
+    "source_pr": 1643,
+    "source_branch": "research/xrp-evidence-archive-20261104",
+    "append_only": true,
+    "raw_source_policy": "Rendered public-source evidence only. No byte-complete source payloads or SHA-256 receipts were captured in this run. Every web-derived observation is excluded from model training until scheduled ingestion stores immutable raw bytes, hashes, retrieval receipts, and point-in-time timestamps."
+  },
+  "source_registry": [
+    {
+      "id": "circle_q3_2026_release",
+      "publisher": "Circle Investor Relations",
+      "authority": "primary issuer financial release",
+      "url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/earnings-result/3Q26-Earnings-Release.pdf",
+      "published_at_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "circle_issuer",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Q3 2026 revenue and reserve income, net income, adjusted EBITDA, reserve income, other revenue, ARC token presale revenue, USDC average and period-end circulation, reserve return rate, distribution/transaction/other costs."
+      ]
+    },
+    {
+      "id": "circle_q3_2026_presentation",
+      "publisher": "Circle Investor Relations",
+      "authority": "primary issuer earnings presentation",
+      "url": "https://s206.q4cdn.com/265218871/files/doc_earnings/2026/q3/presentation/3Q26-Earnings-Presentation.pdf",
+      "published_at_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "circle_issuer",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "USDC supply mix across Coinbase, Circle and off-platform wallets; USDC on-chain transaction volume and market share; Circle Payments Network scale; Arc mainnet metrics; ex-ARC adjusted EBITDA and margin."
+      ]
+    },
+    {
+      "id": "coinbase_q3_2026_release",
+      "publisher": "Coinbase Investor Relations",
+      "authority": "primary issuer earnings release",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/",
+      "published_at_utc": "2026-10-29",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "coinbase_issuer",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Q3 2026 Coinbase financial and operating results; average USDC held in Coinbase products; stablecoin revenue; trading market share."
+      ]
+    },
+    {
+      "id": "coinbase_q3_2026_10q",
+      "publisher": "Coinbase Global, Inc.",
+      "authority": "SEC Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "published_at_utc": "2026-10-29",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "sec_filing_coinbase",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Coinbase Q3 2026 financial disclosures and stablecoin-related operating context."
+      ]
+    },
+    {
+      "id": "circle_q2_2026_10q",
+      "publisher": "Circle Internet Group, Inc.",
+      "authority": "SEC Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "published_at_utc": "2026-08-05",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "sec_filing_circle",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Coinbase distribution agreement mechanics and Circle distribution costs through Q2 2026; Q2 USDC average and period-end circulation."
+      ]
+    },
+    {
+      "id": "coinbase_rlusd_launch",
+      "publisher": "Coinbase",
+      "authority": "primary product announcement",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "published_at_utc": "2026-10-28",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "coinbase_issuer",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "RLUSD availability on Coinbase Prime, Coinbase Exchange and retail; supported deposit and withdrawal networks; Global Exchange collateral support described as forthcoming."
+      ]
+    },
+    {
+      "id": "ripple_coinbase_rlusd_partnership",
+      "publisher": "Ripple",
+      "authority": "primary corporate announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "published_at_utc": "2026-10-28",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "ripple_issuer",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Ripple-Coinbase RLUSD distribution partnership; RLUSD access across XRPL, Base and Ethereum; collateral support timing."
+      ]
+    },
+    {
+      "id": "bny_ripple_custody",
+      "publisher": "BNY",
+      "authority": "primary custodian announcement",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "published_at_utc": "2026-10-27",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "bny_issuer",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "BNY Digital Asset Custody support for XRP and RLUSD; planned direct mint/redeem support for RLUSD subject to approvals; XRPL tokenized trade-finance collaboration."
+      ]
+    },
+    {
+      "id": "occ_ripple_trust_bank",
+      "publisher": "Office of the Comptroller of the Currency",
+      "authority": "primary regulator application record",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "published_at_utc": "2026-10-26",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "occ_regulator",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Ripple National Trust Bank application status approved; consummated/effective date 2026-10-26."
+      ]
+    },
+    {
+      "id": "circle_usdc_xrpl",
+      "publisher": "Circle",
+      "authority": "primary product/network announcement",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "published_at_utc": "2025-06-12",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "circle_issuer",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Native USDC availability on XRPL; Circle Mint and API support. This is a network deployment, not proof of a Circle-Ripple equity or joint-venture relationship."
+      ]
+    },
+    {
+      "id": "xrp_insights_exchange_balances",
+      "publisher": "XRP Insights",
+      "authority": "secondary on-chain wallet attribution and aggregation",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "published_at_utc": "2026-11-04T08:00:00Z",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "xrp_insights_wallet_labels",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Daily XRP Ledger balances for publicly attributed wallets across 24 exchanges; same-wallet 7-day and 30-day changes; wallet-count and storage-label coverage; wrapped-asset reserve and custody caveats."
+      ]
+    },
+    {
+      "id": "xrp_insights_supply_radar",
+      "publisher": "XRP Insights",
+      "authority": "secondary supply aggregation using ledger, issuer, SEC and estimate inputs",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "published_at_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "xrp_insights_supply_aggregation",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Escrow and burn totals; exchange-attributed wallet balances; ETF/index-fund holdings; corporate treasury reports; DeFi/AMM estimates; RWA distributed versus represented values; RLUSD supply split by network."
+      ]
+    },
+    {
+      "id": "xrp_insights_evernorth",
+      "publisher": "XRP Insights",
+      "authority": "secondary on-chain attribution cross-referenced to SEC filings",
+      "url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "published_at_utc": "2026-11-04T05:40:00Z",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "xrp_insights_evernorth",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Evernorth company-reported XRP amount at closing versus attributed on-ledger wallets and movements to unattributed addresses."
+      ]
+    },
+    {
+      "id": "cryptoetf_today_xrp_flows",
+      "publisher": "Crypto ETF Today",
+      "authority": "secondary fund-level ETF flow aggregator",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "published_at_utc": "2026-11-04T05:47:00Z",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "cryptoetf_today",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "US XRP ETF daily flows by fund, 5-fund coverage, T+1 publication and missing-report flags."
+      ]
+    },
+    {
+      "id": "kraken_xrp_usd_ticker",
+      "publisher": "Kraken",
+      "authority": "primary public exchange ticker API",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "kraken_exchange_api",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "XRP/USD last, bid, ask, top-of-book quantities, 24-hour volume, VWAP, high, low and open. API response contains no event timestamp; retrieval time is not substituted for event time."
+      ]
+    },
+    {
+      "id": "kodexius_xrp_derivatives",
+      "publisher": "Kodexius",
+      "authority": "secondary cross-venue derivatives aggregator",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "published_at_utc": "2026-11-04T06:54:00Z",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "kodexius_derivatives",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "XRP perpetual open interest and funding across five venues, with contract count and venue breakdown."
+      ]
+    },
+    {
+      "id": "loris_xrp_derivatives",
+      "publisher": "Loris Tools",
+      "authority": "secondary cross-venue derivatives aggregator",
+      "url": "https://loris.tools/markets/perps/xrp",
+      "published_at_utc": "2026-11-04T09:20:00Z",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "loris_derivatives",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "XRP perpetual open interest, volume and normalized funding across 39 venues."
+      ]
+    },
+    {
+      "id": "arbtide_xrp_funding",
+      "publisher": "ArbTide",
+      "authority": "secondary funding aggregator",
+      "url": "https://arbtide.com/funding-rates/xrp/history",
+      "published_at_utc": "2026-11-04",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "arbtide_funding",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "XRP daily average 8-hour-equivalent funding for 2026-11-04 and recent history."
+      ]
+    },
+    {
+      "id": "sbic_east_profile",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "primary corporate profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "sbic_regional_companies",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "SBIC East Japan legal name, corporate number, establishment date, capital, shareholder classes, 18-prefecture operating area and identification of Nagoya/Osaka as sister companies."
+      ]
+    },
+    {
+      "id": "sbic_central_profile",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "primary corporate profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "sbic_regional_companies",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "SBIC Central Japan legal name, establishment date, capital, five-prefecture operating area and identification of Tokyo/Osaka as sister companies."
+      ]
+    },
+    {
+      "id": "sbic_west_profile",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "primary corporate profile and statutory-purpose disclosure",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "sbic_regional_companies",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "SBIC West Japan legal name, establishment date, capital, 24-prefecture operating area, sister-company identities and statutory purpose under the SME Investment & Consultation Companies Act."
+      ]
+    },
+    {
+      "id": "sbi_holdings_profile",
+      "publisher": "SBI Holdings, Inc.",
+      "authority": "primary corporate profile",
+      "url": "https://www.sbigroup.co.jp/english/company/information/profile.html",
+      "published_at_utc": "2026-06-26",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "sbi_holdings",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "SBI Holdings, Inc. is a separate financial-services holding company established in 1999, with its own headquarters, capital and group-control business."
+      ]
+    },
+    {
+      "id": "sbi_circle_equity",
+      "publisher": "SBI Holdings",
+      "authority": "primary investor announcement",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "published_at_utc": "2025-06-09",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "sbi_holdings",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "SBI Holdings and SBI Shinsei Bank each acquired USD 25 million of Circle shares at the 2025 IPO."
+      ]
+    },
+    {
+      "id": "sbi_circle_jv",
+      "publisher": "SBI Holdings",
+      "authority": "primary investor presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf",
+      "published_at_utc": "2025-06-02",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "sbi_holdings",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "SBI Circle Holdings / Circle SBI Japan KK is a 50:50 SBI-Circle joint venture under an agreement signed 2025-03-18."
+      ]
+    },
+    {
+      "id": "sbi_ripple_equity_jv",
+      "publisher": "SBI Holdings",
+      "authority": "primary investor presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf",
+      "published_at_utc": "2025-02-07",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "sbi_holdings",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "SBI reported approximately 9% of Ripple shares based on actual holdings and described itself as Ripple's largest external shareholder; SBI Ripple Asia ownership 60% SBI / 40% Ripple; SBI Remit began a Japan-to-Philippines remittance service using XRP as bridge currency in 2021."
+      ]
+    },
+    {
+      "id": "sbi_rlusd_japan",
+      "publisher": "Ripple and SBI Group",
+      "authority": "primary product launch announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "published_at_utc": "2026-06-24",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "ripple_sbi",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "RLUSD distribution through SBI VC Trade in Japan under the foreign-issued electronic payment instrument framework."
+      ]
+    },
+    {
+      "id": "kamilah_stevenson_official_site",
+      "publisher": "Dr. Kamilah Stevenson",
+      "authority": "first-party personal/business website",
+      "url": "https://learn.kamilahstevenson.com/",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "kamilah_stevenson_first_party",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Person's name and professional identity as Dr. Kamilah Stevenson / The Wealth Doctor."
+      ]
+    },
+    {
+      "id": "kamilah_stevenson_first_person_interview",
+      "publisher": "Paul Barron Network / iHeart",
+      "authority": "first-person recorded interview with auto-generated transcript",
+      "url": "https://www.iheart.com/podcast/1119-xrp-podcast-with-paul-barron-112170269/episode/kamilah-stevenson-301116862/",
+      "published_at_utc": "2026-06-11",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "kamilah_stevenson_interview",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Guest is introduced as Dr. Kamilah Stevenson; transcript records first-person statement naming X as @iamkamstevenson, Instagram under a Kamilah/Kamilla Stevenson name, YouTube as 'Doctor Camilla Stevenson', and warning that many fake pages exist. Transcript is explicitly auto-generated and may contain errors."
+      ]
+    },
+    {
+      "id": "kamilah_youtube_candidate",
+      "publisher": "YouTube",
+      "authority": "candidate channel page; not first-party cross-linked",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "unverified_channel_candidate",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "A channel with a similar display name exists; no first-party cross-link from the official website or verified social profile was established."
+      ]
+    },
+    {
+      "id": "kamilah_candidate_video_1",
+      "publisher": "Glasp transcript/summary index",
+      "authority": "third-party video attribution candidate",
+      "url": "https://glasp.co/youtube/QslbjGQD0MU",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "unverified_video_attribution",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Candidate video attributed to Kamilah/Camila Stevenson; channel ownership not established."
+      ]
+    },
+    {
+      "id": "kamilah_candidate_video_2",
+      "publisher": "Glasp transcript/summary index",
+      "authority": "third-party video attribution candidate",
+      "url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_independence_group": "unverified_video_attribution",
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Candidate video attributed to Kamilah/Camila Stevenson; channel ownership not established."
+      ]
+    }
+  ],
+  "financial_observations": [
+    {
+      "id": "CIRCLE-Q3-01",
+      "metric": "Q3 2026 revenue and reserve income",
+      "value_usd": 865000000,
+      "change_yoy_pct": 17,
+      "source_ids": [
+        "circle_q3_2026_release"
+      ],
+      "notes": "Issuer-reported; includes reserve income and other revenue."
+    },
+    {
+      "id": "CIRCLE-Q3-02",
+      "metric": "Q3 2026 reserve income",
+      "value_usd": 658000000,
+      "change_yoy_pct": -8,
+      "source_ids": [
+        "circle_q3_2026_release"
+      ],
+      "notes": "Reserve income declined despite average USDC circulation growth; reserve return rate was 3.5%, down 61 basis points year over year."
+    },
+    {
+      "id": "CIRCLE-Q3-03",
+      "metric": "Q3 2026 other revenue",
+      "value_usd": 207000000,
+      "source_ids": [
+        "circle_q3_2026_release"
+      ],
+      "notes": "Includes USD 182 million of ARC token presale revenue. This is not recurring reserve income and does not establish a publicly traded ARC token."
+    },
+    {
+      "id": "CIRCLE-Q3-04",
+      "metric": "Q3 2026 average USDC circulation",
+      "value_usd": 73300000000,
+      "change_yoy_pct": 8,
+      "source_ids": [
+        "circle_q3_2026_release"
+      ],
+      "notes": "Average circulation rose year over year but was below Q2 2026 average of USD 76.524 billion; do not describe sequentially as growth."
+    },
+    {
+      "id": "CIRCLE-Q3-05",
+      "metric": "Q3 2026 end-period USDC circulation",
+      "value_usd": 73900000000,
+      "change_yoy_pct": 0,
+      "source_ids": [
+        "circle_q3_2026_release"
+      ],
+      "notes": "End-period supply was approximately flat year over year; distinct from average circulation."
+    },
+    {
+      "id": "CIRCLE-Q3-06",
+      "metric": "Q3 2026 adjusted EBITDA",
+      "value_usd": 317000000,
+      "change_yoy_pct": 85,
+      "source_ids": [
+        "circle_q3_2026_release"
+      ],
+      "notes": "Presentation shows USD 135 million adjusted EBITDA excluding ARC presale effects; compare both figures and do not treat headline EBITDA growth as purely recurring stablecoin economics."
+    },
+    {
+      "id": "CIRCLE-Q3-07",
+      "metric": "Q3 2026 distribution, transaction and other costs",
+      "value_usd": 412000000,
+      "source_ids": [
+        "circle_q3_2026_release"
+      ],
+      "notes": "Company-reported aggregate; not all attributable to Coinbase."
+    },
+    {
+      "id": "CIRCLE-Q3-08",
+      "metric": "Q3 2026 on-chain USDC transaction volume",
+      "value_usd": 13900000000000,
+      "change_yoy_pct": 49,
+      "source_ids": [
+        "circle_q3_2026_presentation"
+      ],
+      "notes": "Issuer-presented volume metric; transfer volume is not equivalent to payments, economic value added, or XRP demand."
+    },
+    {
+      "id": "CIRCLE-Q3-09",
+      "metric": "Q3 2026 Circle Payments Network annualized TPV",
+      "value_usd": 41300000000,
+      "source_ids": [
+        "circle_q3_2026_presentation"
+      ],
+      "notes": "Annualized trailing-period measure, not actual quarterly settled value."
+    },
+    {
+      "id": "COINBASE-Q3-01",
+      "metric": "Average USDC held in Coinbase products",
+      "value_usd": 22000000000,
+      "change_yoy_pct": 49,
+      "source_ids": [
+        "coinbase_q3_2026_release"
+      ],
+      "notes": "Coinbase-reported average; Circle's Q3 presentation separately shows approximately 31% of end-period USDC circulation on Coinbase."
+    },
+    {
+      "id": "COINBASE-Q3-02",
+      "metric": "Coinbase stated share of USDC economics",
+      "value_text": "approximately 50% over the prior year",
+      "source_ids": [
+        "coinbase_q3_2026_release"
+      ],
+      "notes": "Management statement; not an independently calculated share of all stablecoin economics. Circle's Q2 2026 10-Q provides the contractual distribution-cost mechanics."
+    },
+    {
+      "id": "CIRCLE-CAPITAL-01",
+      "metric": "Binance announced Circle equity investment",
+      "value_usd": 100000000,
+      "source_ids": [
+        "circle_q3_2026_release",
+        "circle_q3_2026_presentation"
+      ],
+      "notes": "Announced strategic equity investment and expanded five-year USDC distribution relationship; do not assume the investment has closed without a subsequent filing."
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "type": "USDC issuance distribution and reserve-economics sharing",
+      "status": "active; SEC-disclosed",
+      "evidence_source_ids": [
+        "circle_q2_2026_10q",
+        "coinbase_q3_2026_release",
+        "circle_q3_2026_presentation"
+      ],
+      "details": [
+        "Circle's Q2 2026 10-Q describes distribution-cost mechanics tied to USDC held on Coinbase and other approved participants.",
+        "Coinbase reported USD 22B average USDC held in its products in Q3 2026, up 49% year over year.",
+        "Circle's Q3 presentation shows about 31% of end-period USDC circulation on Coinbase, 19% on Circle and 50% off-platform.",
+        "Coinbase's approximately 50% USDC-economics statement is management-reported and should not be restated as a universal 50% share of reserve income."
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "XRP Ledger",
+      "type": "native USDC network deployment",
+      "status": "active since 2025-06-12",
+      "evidence_source_ids": [
+        "circle_usdc_xrpl"
+      ],
+      "details": [
+        "USDC is available on XRPL through Circle's network deployment and APIs.",
+        "This is not evidence of a Circle-Ripple equity partnership or a joint issuer arrangement."
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "Coinbase",
+      "type": "RLUSD commercial distribution",
+      "status": "active since 2026-10-28",
+      "evidence_source_ids": [
+        "coinbase_rlusd_launch",
+        "ripple_coinbase_rlusd_partnership"
+      ],
+      "details": [
+        "RLUSD launched on Coinbase Prime, Coinbase Exchange and retail.",
+        "At launch, deposits and withdrawals were supported on XRPL, Base and Ethereum.",
+        "Coinbase Global Exchange RLUSD collateral support was described as forthcoming, not live."
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "BNY",
+      "type": "RLUSD reserve custody and institutional digital-asset custody",
+      "status": "custody support announced; some integrations planned",
+      "evidence_source_ids": [
+        "bny_ripple_custody"
+      ],
+      "details": [
+        "BNY announced XRP and RLUSD support on its Digital Asset Custody platform.",
+        "Direct RLUSD mint/redeem through BNY and broader XRPL tokenized trade-finance work remain planned/subject to approvals; do not treat as live settlement volume."
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "OCC",
+      "type": "national trust bank charter",
+      "status": "approved and consummated/effective 2026-10-26",
+      "evidence_source_ids": [
+        "occ_ripple_trust_bank"
+      ],
+      "details": [
+        "OCC CAS records the Ripple National Trust Bank application as approved and consummated/effective on 2026-10-26.",
+        "A national trust bank charter is not automatically a full-service commercial-bank charter or proof of FDIC-insured deposit-taking; verify permitted activities separately."
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "type": "equity ownership, joint venture and XRP remittance",
+      "status": "historical official disclosures; current stake/volumes not refreshed",
+      "evidence_source_ids": [
+        "sbi_ripple_equity_jv",
+        "sbi_rlusd_japan"
+      ],
+      "details": [
+        "SBI reported approximately 9% of Ripple shares in its 2025 presentation and described itself as Ripple's largest external shareholder; other dated material uses approximately 10%, so current diluted percentage remains unknown.",
+        "SBI Ripple Asia is 60% SBI / 40% Ripple.",
+        "SBI Remit began a Japan-Philippines service using XRP as a bridge currency in 2021; current corridor volume is not established.",
+        "SBI VC Trade distributed RLUSD in Japan from 2026-06-24 under the applicable Japanese electronic-payment-instrument framework."
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle",
+      "type": "equity investment and 50:50 Japan joint venture",
+      "status": "active; official historical disclosures",
+      "evidence_source_ids": [
+        "sbi_circle_equity",
+        "sbi_circle_jv"
+      ],
+      "details": [
+        "SBI Holdings and SBI Shinsei Bank each acquired USD 25M of Circle shares at the 2025 IPO.",
+        "SBI and Circle established a 50:50 Japan joint venture under a 2025-03-18 agreement to promote USDC adoption and use cases."
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "type": "founding validator participation",
+      "status": "announced at 2026-09-16 mainnet launch",
+      "evidence_source_ids": [
+        "circle_q3_2026_presentation",
+        "sbi_circle_jv"
+      ],
+      "details": [
+        "SBI is a founding validator participant in Circle Arc; this is a separate network role from SBI's Ripple equity and XRP remittance relationships."
+      ]
+    },
+    {
+      "from": "SBIC East Japan / SBIC Central Japan / SBIC West Japan",
+      "to": "SBI Holdings",
+      "type": "corporate affiliation",
+      "status": "not established",
+      "evidence_source_ids": [
+        "sbic_east_profile",
+        "sbic_central_profile",
+        "sbic_west_profile",
+        "sbi_holdings_profile"
+      ],
+      "details": [
+        "The three SBIC companies are separate regional Japanese Small and Medium Business Investment & Consultation companies established in 1963.",
+        "Their official profiles identify one another as sister companies and describe regional operating areas and statutory SME-investment purposes.",
+        "No ownership or subsidiary relationship to SBI Holdings was found; acronym similarity is not evidence of affiliation."
+      ]
+    }
+  ],
+  "market_observations": [
+    {
+      "id": "SPOT-KRAKEN-01",
+      "venue": "Kraken",
+      "pair": "XRP/USD",
+      "retrieved_at_utc": "2026-11-04T13:12:26Z",
+      "source_event_timestamp_utc": null,
+      "last_usd": 1.27951,
+      "bid_usd": 1.2794,
+      "bid_size_xrp": 3477,
+      "ask_usd": 1.27951,
+      "ask_size_xrp": 1682,
+      "spread_usd": 0.00011,
+      "spread_bps": 0.86,
+      "top_of_book_bid_ask_imbalance": 0.348,
+      "volume_24h_xrp": 29873459.28,
+      "vwap_24h_usd": 1.27182126,
+      "high_24h_usd": 1.29666,
+      "low_24h_usd": 1.24016,
+      "open_24h_usd": 1.27513,
+      "model_eligible": false,
+      "limitations": [
+        "Single-venue ticker only; top-of-book sizes are not full depth.",
+        "Kraken ticker response has no event timestamp; retrieval time is not a valid substitute for source event time.",
+        "No cross-venue synchronized snapshot or depth curve was captured."
+      ]
+    },
+    {
+      "id": "EXCHANGE-WALLETS-01",
+      "provider": "XRP Insights",
+      "data_as_of_utc": "2026-11-04T08:00:00Z",
+      "tracked_exchange_wallets": 701,
+      "tracked_exchanges": 24,
+      "total_xrp": 22330000000,
+      "same_wallet_change_7d_xrp": -290700000,
+      "same_wallet_change_30d_xrp": -184000000,
+      "model_eligible": false,
+      "limitations": [
+        "Balances are publicly attributed XRPL wallets, including hot/cold and custody balances; not tradable float.",
+        "The 7-day and 30-day changes compare only the same wallet set and cannot distinguish customer withdrawals from exchange internal transfers or movements to unlabeled wallets.",
+        "Newly tracked wallets are excluded from same-wallet changes; two newly tracked wallets added 512M XRP and would distort naive total changes.",
+        "About 489.1M XRP in the total is described as wrapped-asset reserves, insurance or charity funds, not customer exchange deposits.",
+        "The 22.33B broad attributed-wallet total is not comparable to narrower single-venue reserve series such as CryptoQuant or Glassnode."
+      ]
+    },
+    {
+      "id": "SUPPLY-RADAR-01",
+      "provider": "XRP Insights",
+      "data_as_of_utc": "2026-11-04",
+      "observations": {
+        "escrow_xrp": 31100000000,
+        "burned_xrp": 14400000,
+        "etf_and_index_fund_holdings_xrp": 1200000000,
+        "evernorth_company_reported_xrp": 473300000,
+        "evernorth_attributed_on_ledger_xrp": 103100000,
+        "evernorth_moved_to_unattributed_addresses_xrp": 370346663,
+        "defi_amm_xrp": 419000000,
+        "rwa_total_usd": 4330000000,
+        "rwa_distributed_transferable_usd": 276000000,
+        "rwa_represented_registry_usd": 4060000000,
+        "rlusd_xrpl_supply_usd": 870000000,
+        "rlusd_xrpl_and_ethereum_supply_usd": 2590000000
+      },
+      "model_eligible": false,
+      "limitations": [
+        "The 1.20B ETF/index figure includes an index product and fund holding dates range from 2026-09-28 to 2026-11-03; it is not a single synchronized spot-ETF snapshot.",
+        "Evernorth 473.3M is company-reported at closing; only about 103.1M is currently attributed to on-ledger wallets, with about 370.3M moved to unattributed addresses.",
+        "RWA represented registry tokens of about USD 4.06B are not freely transferable investor float; only about USD 276M is described as distributed transferable value.",
+        "Ripple operational holdings are static company-reported Q3 2024 figures and founder holdings are estimates, not current on-chain balances."
+      ]
+    },
+    {
+      "id": "ETF-FLOW-01",
+      "provider": "Crypto ETF Today",
+      "data_as_of_utc": "2026-11-03T00:00:00Z",
+      "reported_net_flow_usd": 0,
+      "funds_covered": 5,
+      "funds_reporting": 2,
+      "funds_missing": 3,
+      "seven_day_net_flow_usd": 3800000,
+      "ytd_net_flow_usd": 647900000,
+      "cumulative_net_flow_usd": 1810000000,
+      "model_eligible": false,
+      "limitations": [
+        "The headline zero is incomplete: Bitwise and 21Shares reported zero; Franklin Templeton, Canary and Grayscale were marked not reported for the 2026-11-03 session.",
+        "T+1 publication; do not treat missing fund reports as zero flow."
+      ]
+    },
+    {
+      "id": "DERIVATIVES-OI-01",
+      "provider_snapshots": [
+        {
+          "provider": "Kodexius",
+          "as_of_utc": "2026-11-04T06:54:00Z",
+          "open_interest_usd": 862540000,
+          "venues": 5,
+          "contracts": 7,
+          "funding_8h_pct": 0.0092,
+          "volume_24h_usd": 1610000000
+        },
+        {
+          "provider": "Loris Tools",
+          "as_of_utc": "2026-11-04T09:20:00Z",
+          "open_interest_usd": 2270000000,
+          "venues": 39,
+          "volume_24h_usd": 2710000000,
+          "funding_range_8h_bps": {
+            "low": -0.6,
+            "high": 8
+          }
+        }
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Provider coverage and contract universes differ materially; do not average or treat the difference as an error without reconciling venue/contract coverage.",
+        "Snapshots are several hours old at retrieval; no synchronized exchange-level raw feed was captured."
+      ]
+    },
+    {
+      "id": "FUNDING-01",
+      "provider_snapshots": [
+        {
+          "provider": "ArbTide",
+          "date_utc": "2026-11-04",
+          "average_8h_pct": 0.0098,
+          "low_hourly_8h_equivalent_pct": 0.0091,
+          "high_hourly_8h_equivalent_pct": 0.0105
+        },
+        {
+          "provider": "Bentley Markets",
+          "as_of_utc": "2026-11-04T03:01:00Z",
+          "weighted_8h_pct": 0.0099,
+          "positive_exchanges": 16,
+          "total_exchanges": 18,
+          "median_8h_pct": 0.01,
+          "lowest_venue_rate_8h_pct": -0.0056,
+          "highest_venue_rate_8h_pct": 0.022
+        }
+      ],
+      "model_eligible": false,
+      "limitations": [
+        "Funding snapshots are not a synchronized settlement ledger; positive means longs pay shorts, but quotes can change before settlement.",
+        "Long/short account ratios from other providers are account counts, not notional positioning; do not interpret them as leverage or net exposure."
+      ]
+    }
+  ],
+  "exact_phrase_research": [
+    {
+      "phrase": "ASK Coin",
+      "status": "no verified XRP/Ripple/SBI/Coinbase/Circle relationship found",
+      "notes": [
+        "A Permission Coin ASK homonym appears in unrelated results; do not connect it to XRP without primary evidence."
+      ]
+    },
+    {
+      "phrase": "actual capital",
+      "status": "no verified exact-phrase match in the candidate Kamilah Stevenson interview transcript or primary XRP ecosystem sources",
+      "notes": [
+        "Unrelated results using the phrase do not establish the intended meaning. The nearby phrase 'trapped capital' in payment/ODL discussions is not the same phrase."
+      ]
+    },
+    {
+      "phrase": "SBIC, ChatGPT SBIC",
+      "status": "no verified match",
+      "notes": [
+        "No official SBIC or SBI Holdings source located using this exact phrase; do not infer an entity or relationship."
+      ]
+    }
+  ],
+  "identity_audit": {
+    "person": "Dr. Kamilah Stevenson; transcript also renders Camila/Camilla/Kamilla variants",
+    "person_identity_status": "high-confidence person-level identity match",
+    "evidence_source_ids": [
+      "kamilah_stevenson_official_site",
+      "kamilah_stevenson_first_person_interview"
+    ],
+    "official_site_social_links": [
+      "Instagram account linked from first-party site: /kamilahstevenson",
+      "Facebook account linked from first-party site: /healthyandbetter"
+    ],
+    "first_person_interview_statement": "The auto-generated transcript records her identifying X as @iamkamstevenson, Instagram under a Kamilah/Kamilla Stevenson name, and YouTube as 'Doctor Camilla Stevenson'; she warns that many fake pages exist.",
+    "transcript_quality": "The publisher labels the transcript auto-generated and warns that accuracy is not guaranteed; audio should be checked before quoting exact spelling.",
+    "youtube_channel_candidates": [
+      {
+        "handle": "@drkamilahstevenson",
+        "status": "candidate only; no first-party cross-link from the official website or verified social account was established"
+      }
+    ],
+    "candidate_videos": [
+      {
+        "video_id": "QslbjGQD0MU",
+        "status": "third-party transcript/summary attribution only; not verified as her own channel content"
+      },
+      {
+        "video_id": "ci0FH73lbCs",
+        "status": "third-party transcript/summary attribution only; not verified as her own channel content"
+      }
+    ],
+    "verified_own_channel_video_inventory": [],
+    "verified_public_interview": "The iHeart/Paul Barron episode 'Crypto Panics! with Dr. Kamilah Stevenson' is a verified public interview with the person, but this run did not establish a YouTube video URL for that episode."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "SBI is pursuing a multi-rail digital-finance strategy rather than an exclusive XRP strategy.",
+      "support": [
+        "Historical Ripple equity and XRP bridge remittance relationships",
+        "USD 50M Circle equity investment and 50:50 Circle Japan JV",
+        "SBI founding validator participation on Circle Arc",
+        "USDC and RLUSD distribution in Japan"
+      ],
+      "disconfirming_or_limiting": [
+        "Current Ripple equity percentage and current XRP corridor volumes are unknown",
+        "Arc validator participation does not prove Arc usage or displacement of XRPL"
+      ],
+      "confidence": "strong strategic interpretation; not evidence of XRP divestment"
+    },
+    {
+      "id": "H2",
+      "claim": "Circle Arc may compete with XRPL for institutional stablecoin settlement and agentic payments.",
+      "support": [
+        "Arc mainnet launched 2026-09-16; Circle reports 100+ builders and Q3 ecosystem traction",
+        "Native USDC fee asset and Circle Payments Network integration",
+        "SBI is in the validator cohort"
+      ],
+      "disconfirming_or_limiting": [
+        "Circle USDC is already native on XRPL",
+        "Ripple RLUSD is distributed through Coinbase and SBI",
+        "No comparable production payment volume or customer migration evidence"
+      ],
+      "confidence": "plausible competitive pressure; displacement not established"
+    },
+    {
+      "id": "H3",
+      "claim": "Coinbase is becoming a cross-issuer distribution and market-infrastructure hub for USDC and RLUSD.",
+      "support": [
+        "USDC distribution economics with Circle",
+        "Approximately USD 22B average USDC held in Coinbase products",
+        "RLUSD listing across Prime, Exchange and retail",
+        "XRP collateral eligibility on Coinbase Global Exchange"
+      ],
+      "disconfirming_or_limiting": [
+        "RLUSD collateral support on Coinbase Global Exchange was forthcoming, not live",
+        "Actual XRP collateral balances and RLUSD distribution volumes are undisclosed"
+      ],
+      "confidence": "strongly supported for access/distribution; actual utilization unknown"
+    },
+    {
+      "id": "H4",
+      "claim": "Stablecoin, custody or XRPL adoption necessarily increases XRP spot demand.",
+      "support": [
+        "XRP is a bridge asset in a historical SBI Remit corridor",
+        "XRP is eligible for cross-collateral on Coinbase Global Exchange"
+      ],
+      "disconfirming_or_limiting": [
+        "USDC and RLUSD can settle on XRPL without using XRP as a bridge asset",
+        "Circle Arc uses USDC for gas",
+        "BNY custody support does not establish XRP purchases",
+        "Coinbase Global Exchange RLUSD collateral support is not yet live"
+      ],
+      "confidence": "not established; do not assume token value capture"
+    }
+  ],
+  "data_quality": [
+    "No immutable raw-byte SHA-256 receipts were captured for the web-rendered sources; all web-derived market and issuer metrics are excluded from model training until archived by the ingestion service.",
+    "Kraken ticker API response has no source event timestamp; capture time cannot be substituted for event time.",
+    "XRP Insights exchange balances are broad attributed wallet totals, not tradable float; the same-wallet methodology is better than naive total subtraction but still cannot identify customer withdrawals or unlabeled-wallet transfers.",
+    "ETF flow headline zero is incomplete because only 2 of 5 XRP funds reported on 2026-11-03.",
+    "Derivatives open-interest totals differ because providers cover different numbers of venues/contracts; no reconciliation or average is valid without contract-level records.",
+    "Circle Q3 headline revenue includes ARC token presale revenue; reserve income fell 8% year over year and average USDC circulation was down sequentially from Q2 despite year-over-year growth.",
+    "Coinbase's approximately 50% USDC-economics statement is a management claim; Circle's disclosed distribution-cost formula is the better contractual source.",
+    "The Ripple National Trust Bank is a national trust bank; do not equate this with a full-service commercial bank or assume deposit-insurance status.",
+    "Kamilah Stevenson person identity is well supported, but her own YouTube channel handle remains unverified because first-party cross-linking is absent and she warns of impersonator pages."
+  ],
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "reason": "No directional XRP forecast is justified by this addendum. Market data are unsynchronized, several sources lack event timestamps or raw receipts, and no chronological out-of-sample model evaluation is attached.",
+    "prohibited_actions": [
+      "No guaranteed-return claims",
+      "No real-money trading",
+      "No paper-trading or order placement"
+    ]
+  },
+  "next_actions": [
+    "Archive Circle Q3 release, presentation, Coinbase Q3 filing, Ripple/BNY/OCC announcements and market snapshots as immutable raw bytes with SHA-256 receipts and publication/retrieval timestamps.",
+    "Reconcile Circle Q3 10-Q when filed; separate recurring reserve income from ARC presale and quantify Coinbase/Binance distribution economics.",
+    "Monitor Coinbase Global Exchange RLUSD collateral activation; keep it classified as forthcoming until dated official product documentation confirms go-live.",
+    "Verify BNY direct RLUSD mint/redeem and XRPL tokenized trade-finance implementation milestones separately from custody support.",
+    "Keep SBIC East/Central/West in a distinct entity class from SBI Holdings; preserve the no-affiliation finding unless primary ownership evidence changes.",
+    "Add XRP Insights daily wallet balances, escrow, ETF and supply data as separate providers/features; preserve coverage changes, wallet-label revisions and data dates.",
+    "Ingest exchange-level spot order-book depth, trades, funding, open interest, liquidations and collateral eligibility with synchronized source timestamps and immutable receipts.",
+    "Resolve Kamilah's YouTube channel through a first-party link from her official website or verified social account before inventorying any own-channel videos.",
+    "Continue exact-phrase searches for ASK Coin, actual capital and SBIC/ChatGPT SBIC; do not promote homonyms into relationships.",
+    "Do not issue a directional forecast until the feature store, leakage-safe walk-forward evaluation, calibration and baseline comparisons pass."
+  ]
+}

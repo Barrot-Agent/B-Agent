@@ -1,0 +1,123 @@
+{
+  "artifact_type": "evernorth_actual_capital_and_xrp_asset_bridge",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-14T14:51:48Z",
+  "cash_bridge": {
+    "sbi_group_announced_cash_commitment_usd": 200000000,
+    "announcement_date": "2025-10-21",
+    "announcement_status": "issuer-announced PIPE commitment; subscriber-level amount not disclosed in the 10-Q",
+    "advance_funding_cash_received_usd": 214049995,
+    "advance_funding_cash_use": "used to purchase 84,365,876.3625 XRP",
+    "delayed_funding_cash_usd": 10500000,
+    "delayed_funding_status": "additional investors; delivered at closing",
+    "spac_trust_release_usd": 48000000,
+    "private_placement_cash_usd": 224549995,
+    "gross_cash_at_close_usd": 272549995,
+    "rounded_filing_total_usd": 272600000,
+    "reconciliation": "214.05M advance funding + 10.5M delayed funding = 224.55M private-placement cash; plus 48M SPAC trust release = 272.55M, reported as 272.6M. SBI's announced 200M is consistent with being within the 214.05M pool; the 10-Q does not disclose the subscriber-level split. Do not add 200M on top."
+  },
+  "xrp_asset_bridge": {
+    "cash_purchased_xrp": 84365876.3625,
+    "advance_funding_inkind_xrp": 600000,
+    "delayed_funding_inkind_xrp": 200000,
+    "rippleworks_to_sponsor_series_c_inkind_xrp": 211319096,
+    "ripple_related_entity_inkind_xrp": 50000000,
+    "pathfinder_transfer_xrp": 346484972,
+    "pathfinder_transfer_reconciliation": "84,365,876.3625 cash-purchased + 600,000 advance in-kind + 200,000 delayed in-kind + 211,319,096 RippleWorks/Sponsor in-kind + 50,000,000 Ripple-related-entity in-kind = 346,484,972 XRP transferred to Pathfinder.",
+    "ripple_separate_in_kind_contribution_xrp": 126791458,
+    "total_derived_xrp": 473276430.3625,
+    "reported_total_xrp_approx": 473000000,
+    "total_reconciliation": "346,484,972 Pathfinder transfer + 126,791,458 separate Ripple contribution = 473,276,430 XRP, consistent with the approximately 473M reported at closing. The 84.366M XRP purchased with cash is already included in XRP assets; do not add it again to cash raised."
+  },
+  "post_close_financing": {
+    "public_warrant_exercises": {
+      "period": "2026-10-12_to_2026-11-09",
+      "shares": 3073366,
+      "exercise_price_usd": 11.5,
+      "gross_cash_usd": 35300000,
+      "remaining_warrants": 8666279,
+      "status": "actual gross cash reported in 10-Q"
+    },
+    "pik_note": {
+      "principal_usd": 30000000,
+      "net_proceeds_usd": 29000000,
+      "type": "debt; not equity"
+    },
+    "pathfinder_ripple_company_facility": {
+      "borrowed_as_of": "2026-10-07",
+      "amount_usd": 9700000,
+      "type": "related-party debt",
+      "repayment_due": "within five business days after closing or earlier on demand",
+      "repayment_status": "not established by retrieved filing"
+    },
+    "separate_evernorth_facility": {
+      "limit_usd": 1000000,
+      "drawn_as_of": "2026-09-30",
+      "amount_usd": 0
+    },
+    "eloc": {
+      "max_shares": 5218935,
+      "price_formula": "97% of applicable VWAP",
+      "beneficial_ownership_cap_percent": 4.99,
+      "term_months": 14,
+      "registration_effective": "2026-10-30",
+      "commitment_fee_usd": 521893.5,
+      "purchase_proceeds_as_of_2026_11_09": "none disclosed"
+    },
+    "eloc_disclosure_inconsistency": {
+      "cover_and_table_gross_usd": 76800000,
+      "use_of_proceeds_gross_usd": 80700000,
+      "estimated_net_after_fees_usd": 74400000,
+      "status": "unresolved prospectus inconsistency; none is actual ELOC proceeds"
+    },
+    "resale_registration": {
+      "registered_shares_approx": 73688162,
+      "type": "secondary selling-holder resale; not issuer proceeds"
+    }
+  },
+  "sbi_equity_table_as_of_2026_10_22": {
+    "sbi_defined_as": "SBI Holdings, Inc.",
+    "entities": [
+      "SBI Venture Fund 2023A Investment LPS",
+      "SBI Venture Fund 2023B Investment LPS",
+      "SBI PE Holdings Co., Ltd.",
+      "SBI Holdings USA, Inc."
+    ],
+    "class_a_shares": 9431914,
+    "class_a_shares_outstanding": 26094680,
+    "class_a_percent_of_class": 36.1,
+    "class_c_shares": 2359038,
+    "class_c_shares_outstanding": 31392746,
+    "class_c_percent_of_class": 7.5,
+    "class_c_voting_status": "non-voting",
+    "total_class_a_plus_class_c_shares": 11790952,
+    "total_common_shares_outstanding": 57487426,
+    "derived_total_common_percent": 20.51,
+    "initial_class_a_ownership_cap_at_closing_percent": 39.9,
+    "correction": "39.9% was the contractual Class A ownership cap at closing, not the current voting percentage shown in the Oct22 table. The table shows 36.1% of Class A and 7.5% of non-voting Class C. Combined 20.51% of all Class A+Class C common shares is derived, not a directly stated SEC percentage."
+  },
+  "interpretation_rules": [
+    "Do not add the announced SBI 200M commitment to the 214.05M aggregate advance-funding cash.",
+    "Do not add cash-funded XRP purchases to cash raised; they are a use of proceeds and are already included in the XRP asset bridge.",
+    "Keep in-kind XRP contributions separate from cash subscriptions.",
+    "Keep debt, PIK notes, warrants, ELOC capacity, resale registrations and actual cash proceeds in separate categories.",
+    "Do not treat the 39.9% initial Class A ownership cap as current voting power, total share ownership or XRP ownership."
+  ],
+  "sources": [
+    {
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+      "type": "primary_SBI_Holdings_announcement",
+      "date": "2025-10-21"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "type": "primary_SEC_10Q",
+      "date": "2026-11-13"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "type": "primary_SEC_424B3",
+      "date": "2026-10-30"
+    }
+  ]
+}

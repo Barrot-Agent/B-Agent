@@ -1,0 +1,99 @@
+{
+  "artifact_type": "barrot.nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.0.0",
+  "run_id": "Run88",
+  "captured_at_utc": "2026-11-13T11:32:30Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_at_audit": "e5755850413cf098e66e99f7202ce430b38a377c",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112"
+  },
+  "coordination_status": "DESIGNED_NOT_DISPATCHED",
+  "least_privilege_required": true,
+  "no_external_model_data_transfer": true,
+  "platforms": {
+    "ChatGPT": {
+      "intended_role": "primary evidence synthesis, GitHub repository inspection and bounded integration updates",
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "data_flow_verified": true,
+      "verified_scope": [
+        "read repository metadata and recursive trees",
+        "read complete paginated open PR inventory",
+        "read PR metadata, source branch ancestry and overlapping diffs",
+        "read CI workflow runs and job logs",
+        "read main and integration workflow/code files",
+        "write documentation and research artifacts to the existing integration branch only"
+      ],
+      "permissions_reported": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "pull": true,
+        "triage": true
+      },
+      "least_privilege": false,
+      "external_model_transfer": false
+    },
+    "Claude": {
+      "intended_role": "independent regulatory, legal and primary-filing review",
+      "authentication_status": "UNVERIFIED",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    "Grok": {
+      "intended_role": "independent spot, order-book, derivatives and market-microstructure review",
+      "authentication_status": "UNVERIFIED",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    "Gemini": {
+      "intended_role": "macro, geopolitics and cross-source contradiction review",
+      "authentication_status": "UNVERIFIED",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    "Copilot": {
+      "intended_role": "security and workflow red-team review",
+      "authentication_status": "REVIEW_ARTIFACTS_ONLY_NO_FORMAL_APPROVAL_ON_PR_1662",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    "Codex": {
+      "intended_role": "repository-wide code, test, dependency and architecture audit",
+      "authentication_status": "UNVERIFIED",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    "HuggingFace": {
+      "intended_role": "offline model-evaluation artifact packaging only; no deployment",
+      "authentication_status": "PRIOR_BUILD_ERROR_NO_DEPLOYMENT",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    "Kaggle": {
+      "intended_role": "reproducible walk-forward benchmark reproduction; no submission",
+      "authentication_status": "UNTESTED_NO_SUBMISSION",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    },
+    "Databricks": {
+      "intended_role": "point-in-time feature-store analytics; no write",
+      "authentication_status": "PRIOR_HTTP_403_NO_WRITE",
+      "data_flow_verified": false,
+      "task_status": "DESIGNED_NOT_DISPATCHED"
+    }
+  },
+  "separate_internal_provider": {
+    "name": "LunaRoute",
+    "authentication_status": "UNVERIFIED",
+    "data_flow_verified": false
+  },
+  "evidence_exchange": {
+    "structured_external_exchange": false,
+    "minority_objections_retained_in_local_evidence": true,
+    "red_team_dispatch": false
+  },
+  "data_flow_policy": "No personal, financial-account, credential or proprietary user data is transferred to external models without a separately authenticated and explicitly authorized flow.",
+  "next_verification": "Test each provider's authentication, data flow and least-privilege scopes independently before dispatch."
+}

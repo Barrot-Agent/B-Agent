@@ -14,8 +14,11 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from collections import deque
 from pathlib import Path
+from threading import Lock
 from typing import Any, Callable
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS_DIR = Path(__file__).resolve().parent
@@ -29,6 +32,11 @@ if SCRIPTS_DIR_STR in sys.path:
 sys.path.insert(1, SCRIPTS_DIR_STR)
 
 from sandbox import verify_result
+
+from barrot_agent.orchestration.learning_curriculum import LearningCurriculum
+from barrot_agent.orchestration.mission_registry import MissionRegistry
+from barrot_agent.orchestration.verified_learning_store import VerifiedLearningStore
+from barrot_agent.orchestration.shared_runtime import Capability, DefensiveWatchdog
 
 from barrot_agent.orchestration.repository_repair import (
     ProjectIdentity,
@@ -56,9 +64,54 @@ TITLE = os.environ.get("TASK_TITLE", "Barrot task")
 TASK_MODE = os.environ.get("TASK_MODE", "engineering").strip().lower()
 ISSUE = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
-MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
-GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
-GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
+LLM_PROVIDER = os.environ.get("BARROT_LLM_PROVIDER", "groq").strip().lower()
+if LLM_PROVIDER not in {"groq", "local"}:
+    raise ValueError("BARROT_LLM_PROVIDER must be 'groq' or 'local'.")
+
+if LLM_PROVIDER == "local":
+    GROQ_ENDPOINT = os.environ.get(
+        "BARROT_LLM_BASE_URL",
+        "http://127.0.0.1:8080/v1/chat/completions",
+    ).strip()
+    MODEL = os.environ.get("BARROT_LLM_MODEL", os.environ.get("BRAIN_MODEL", "")).strip()
+    if not MODEL:
+        raise ValueError(
+            "BARROT_LLM_MODEL is required for the local provider; model selection is not guessed."
+        )
+    local_endpoint = urlsplit(GROQ_ENDPOINT)
+    if local_endpoint.scheme != "http" or local_endpoint.hostname not in {
+        "127.0.0.1",
+        "localhost",
+        "::1",
+    }:
+        raise ValueError(
+            "Local inference must use an HTTP loopback endpoint; do not expose llama.cpp publicly."
+        )
+    GROQ_KEY = os.environ.get("BARROT_LLM_API_KEY", "")
+else:
+    GROQ_ENDPOINT = os.environ.get(
+        "BARROT_LLM_BASE_URL",
+        "https://api.groq.com/openai/v1/chat/completions",
+    ).strip()
+    MODEL = (
+        os.environ.get("BARROT_LLM_MODEL", "").strip()
+        or os.environ.get("BRAIN_MODEL", "").strip()
+        or "openai/gpt-oss-120b"
+    )
+    GROQ_KEY = os.environ.get("BARROT_LLM_API_KEY", os.environ.get("GROQ_API_KEY", ""))
+    remote_endpoint = urlsplit(GROQ_ENDPOINT)
+    if remote_endpoint.scheme != "https" or remote_endpoint.hostname != "api.groq.com":
+        raise ValueError(
+            "Groq credentials may only be sent to https://api.groq.com; "
+            "use BARROT_LLM_PROVIDER=local for loopback inference."
+        )
+
+MAX_REQUEST_TOKENS = int(os.environ.get("BARROT_MAX_REQUEST_TOKENS", "6500"))
+MAX_TPM_TOKENS = int(os.environ.get("BARROT_TPM_TOKEN_BUDGET", "7000"))
+MAX_TOOL_RESULT_CHARS = int(os.environ.get("BARROT_MAX_TOOL_RESULT_CHARS", "1800"))
+if min(MAX_REQUEST_TOKENS, MAX_TPM_TOKENS, MAX_TOOL_RESULT_CHARS) <= 0:
+    raise ValueError("Barrot LLM request, TPM, and tool-result budgets must be positive.")
+
 MAX_TOOL_ROUNDS = 4
 MAX_SEARCH_RESULTS = 50
 
@@ -279,45 +332,157 @@ def _groq_payload(
     return payload
 
 
-def _groq_fallback_models(primary_model: str) -> list[str]:
-    configured = os.environ.get("BRAIN_FALLBACK_MODELS", "").strip()
-    candidates = (
-        [item.strip() for item in configured.split(",") if item.strip()]
-        if configured
-        else [
-            "openai/gpt-oss-20b",
-            "openai/gpt-oss-20b",
-        ]
-    )
-    seen = {primary_model}
-    result: list[str] = []
-    for candidate in candidates:
-        if candidate not in seen:
-            seen.add(candidate)
-            result.append(candidate)
-    return result
+def _estimate_groq_request_tokens(payload: dict[str, Any]) -> int:
+    """Conservative character-based estimate; not a substitute for provider tokenization."""
+    serialized = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+    estimated_prompt_tokens = (len(serialized) * 2 + 4) // 5
+    return estimated_prompt_tokens + max(0, int(payload.get("max_tokens", 0)))
+
+
+def _bound_groq_messages(
+    messages: list[dict[str, Any]],
+    *,
+    tools: list[dict[str, Any]] | None,
+    max_tokens: int,
+    max_request_tokens: int,
+) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    """Drop oldest complete history/tool groups while preserving system, task and latest tool round."""
+    source = list(messages)
+    if not source:
+        raise RuntimeError("LLM_CONTEXT_BUDGET_EXCEEDED: no request messages were supplied.")
+
+    protected_indices = {i for i, item in enumerate(source) if item.get("role") == "system"}
+    user_indices = [i for i, item in enumerate(source) if item.get("role") == "user"]
+    latest_user_index = user_indices[-1] if user_indices else len(source) - 1
+    protected_indices.add(latest_user_index)
+
+    groups: list[list[int]] = []
+    index = 0
+    while index < len(source):
+        if index in protected_indices:
+            index += 1
+            continue
+        item = source[index]
+        tool_calls = item.get("tool_calls") if item.get("role") == "assistant" else None
+        if isinstance(tool_calls, list) and tool_calls:
+            call_ids = {
+                str(call.get("id", ""))
+                for call in tool_calls
+                if isinstance(call, dict) and call.get("id")
+            }
+            group = [index]
+            cursor = index + 1
+            while cursor < len(source) and source[cursor].get("role") == "tool":
+                tool_call_id = str(source[cursor].get("tool_call_id", ""))
+                if call_ids and tool_call_id not in call_ids:
+                    break
+                group.append(cursor)
+                cursor += 1
+            groups.append(group)
+            index = cursor
+        else:
+            groups.append([index])
+            index += 1
+
+    latest_tool_group = None
+    for group in groups:
+        if max(group) <= latest_user_index:
+            continue
+        if any(
+            source[item].get("role") == "assistant" and source[item].get("tool_calls")
+            for item in group
+        ):
+            if latest_tool_group is None or max(group) > max(latest_tool_group):
+                latest_tool_group = group
+
+    retained = set(range(len(source)))
+    optional_groups = [group for group in groups if group is not latest_tool_group]
+    dropped_messages = 0
+
+    def current_candidate() -> tuple[list[dict[str, Any]], int]:
+        candidate = [source[item] for item in sorted(retained)]
+        payload = _groq_payload(candidate, tools=tools, max_tokens=max_tokens)
+        return candidate, _estimate_groq_request_tokens(payload)
+
+    candidate, estimate = current_candidate()
+    for group in sorted(optional_groups, key=lambda item: min(item)):
+        if estimate <= max_request_tokens:
+            break
+        for item in group:
+            retained.discard(item)
+        dropped_messages += len(group)
+        candidate, estimate = current_candidate()
+
+    if estimate > max_request_tokens:
+        raise RuntimeError(
+            "LLM_CONTEXT_BUDGET_EXCEEDED: required system/current-task/recent-tool context "
+            f"estimates {estimate} tokens against a {max_request_tokens}-token request budget."
+        )
+    return candidate, {
+        "estimated_tokens": estimate,
+        "dropped_messages": dropped_messages,
+        "retained_messages": len(candidate),
+    }
+
+
+def _truncate_tool_result(result: str, max_chars: int) -> str:
+    text = str(result)
+    if len(text) <= max_chars:
+        return text
+    marker = f"\n[TRUNCATED by Barrot request budget; original_chars={len(text)}]"
+    return text[: max(0, max_chars - len(marker))] + marker
+
+
+class SlidingWindowTokenBudget:
+    """Per-process rolling token reservation; fails closed rather than retrying a provider."""
+
+    def __init__(self, *, max_tokens: int = MAX_TPM_TOKENS, window_seconds: float = 60.0):
+        if max_tokens <= 0 or window_seconds <= 0:
+            raise ValueError("Sliding-window token budget values must be positive.")
+        self.max_tokens = int(max_tokens)
+        self.window_seconds = float(window_seconds)
+        self._events: deque[tuple[float, int]] = deque()
+        self._lock = Lock()
+
+    def reserve(self, tokens: int, *, now: float | None = None) -> dict[str, int]:
+        amount = max(0, int(tokens))
+        timestamp = time.monotonic() if now is None else float(now)
+        with self._lock:
+            while self._events and timestamp - self._events[0][0] >= self.window_seconds:
+                self._events.popleft()
+            used = sum(value for _, value in self._events)
+            if amount > self.max_tokens or used + amount > self.max_tokens:
+                raise RuntimeError(
+                    "LLM_RATE_LIMITED_TPM: local rolling budget would exceed "
+                    f"{self.max_tokens} tokens per {int(self.window_seconds)} seconds "
+                    f"(used={used}, requested={amount}). No provider retry was attempted."
+                )
+            self._events.append((timestamp, amount))
+            return {"used_tokens": used + amount, "remaining_tokens": self.max_tokens - used - amount}
 
 
 def _send_groq_request(
     payload: dict[str, Any],
     *,
     request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
-    _model_fallback_attempted: bool = False,
-    _rate_limit_retry: bool = False,
     _json_mode_retry: bool = False,
 ) -> dict[str, Any]:
+    estimated_tokens = _estimate_groq_request_tokens(payload)
+    if estimated_tokens > MAX_REQUEST_TOKENS:
+        raise RuntimeError(
+            "LLM_CONTEXT_BUDGET_EXCEEDED: request preflight estimated "
+            f"{estimated_tokens} tokens against {MAX_REQUEST_TOKENS}."
+        )
     if request_sender is not None:
         return request_sender(payload)
     body = json.dumps(payload).encode()
-    request = urllib.request.Request(
-        GROQ_ENDPOINT,
-        data=body,
-        headers={
-            "Authorization": "Bearer " + GROQ_KEY,
-            "Content-Type": "application/json",
-            "User-Agent": "Barrot-Agent/1.0",
-        },
-    )
+    headers = {
+        "Content-Type": "application/json",
+        "User-Agent": "Barrot-Agent/1.0",
+    }
+    if GROQ_KEY:
+        headers["Authorization"] = "Bearer " + GROQ_KEY
+    request = urllib.request.Request(GROQ_ENDPOINT, data=body, headers=headers)
     try:
         with urllib.request.urlopen(request, timeout=90) as response:
             return json.load(response)
@@ -345,51 +510,18 @@ def _send_groq_request(
             return _send_groq_request(
                 fallback_payload,
                 request_sender=request_sender,
-                _model_fallback_attempted=_model_fallback_attempted,
-                _rate_limit_retry=_rate_limit_retry,
                 _json_mode_retry=True,
             )
         if exc.code in {401, 403}:
             raise RuntimeError(f"LLM authentication failed: {detail}") from exc
-        if exc.code == 429 and "tokens per minute" in lowered and not _rate_limit_retry:
-            retry_match = re.search(r"try again in\s+(?:(\d+)m)?([\d.]+)s", lowered)
-            if retry_match:
-                retry_seconds = int(retry_match.group(1) or 0) * 60 + float(retry_match.group(2))
-                if 0 < retry_seconds <= 60:
-                    print(
-                        f"Groq per-minute rate limit reached; retrying current model once in {retry_seconds:.1f}s.",
-                        file=sys.stderr,
-                    )
-                    time.sleep(retry_seconds)
-                    return _send_groq_request(
-                        payload,
-                        request_sender=request_sender,
-                        _model_fallback_attempted=_model_fallback_attempted,
-                        _rate_limit_retry=True,
-                    )
-        if exc.code == 429 and "tokens per day" in lowered and not _model_fallback_attempted:
-            primary_model = str(payload.get("model") or MODEL)
-            fallback_models = _groq_fallback_models(primary_model)
-            failures: list[str] = []
-            for fallback_model in fallback_models:
-                fallback_payload = dict(payload)
-                fallback_payload["model"] = fallback_model
-                print(
-                    f"Groq daily token quota reached for {primary_model}; trying fallback model {fallback_model}.",
-                    file=sys.stderr,
-                )
-                try:
-                    return _send_groq_request(
-                        fallback_payload,
-                        request_sender=request_sender,
-                        _model_fallback_attempted=True,
-                    )
-                except RuntimeError as fallback_exc:
-                    failures.append(f"{fallback_model}: {fallback_exc}")
-            details = "; ".join(failures) if failures else "no fallback models configured"
-            raise RuntimeError(
-                f"Groq daily token quota exhausted for {primary_model}; all configured fallback models failed. {details}"
-            ) from exc
+        if exc.code in {413, 429} and ("tokens per minute" in lowered or "tpm" in lowered):
+            raise RuntimeError(f"LLM_RATE_LIMITED_TPM: Groq HTTP {exc.code}: {detail}") from exc
+        if exc.code == 413:
+            raise RuntimeError(f"LLM_CONTEXT_BUDGET_EXCEEDED: Groq HTTP 413: {detail}") from exc
+        if exc.code == 429 and "tokens per day" in lowered:
+            raise RuntimeError(f"LLM_RATE_LIMITED_DAILY: Groq HTTP 429: {detail}") from exc
+        if exc.code == 429:
+            raise RuntimeError(f"LLM_RATE_LIMITED: Groq HTTP 429: {detail}") from exc
         raise RuntimeError(f"Groq HTTP {exc.code}: {detail}") from exc
     except urllib.error.URLError as exc:
         raise RuntimeError(f"LLM network error: {exc}") from exc
@@ -405,11 +537,25 @@ class ScriptBrain:
         repo_root: Path = ROOT,
         max_tool_rounds: int = MAX_TOOL_ROUNDS,
         enable_tools: bool = True,
+        max_request_tokens: int = MAX_REQUEST_TOKENS,
+        max_tool_result_chars: int = MAX_TOOL_RESULT_CHARS,
+        token_budget: SlidingWindowTokenBudget | None = None,
     ):
         self.request_sender = request_sender
         self.repo_browser = RepoBrowser(repo_root)
         self.max_tool_rounds = max_tool_rounds
         self.enable_tools = enable_tools
+        self.max_request_tokens = min(int(max_request_tokens), MAX_REQUEST_TOKENS)
+        self.max_tool_result_chars = min(int(max_tool_result_chars), MAX_TOOL_RESULT_CHARS)
+        if self.max_request_tokens <= 0 or self.max_tool_result_chars <= 0:
+            raise ValueError("ScriptBrain request and tool-result budgets must be positive.")
+        self.token_budget = token_budget or SlidingWindowTokenBudget(max_tokens=MAX_TPM_TOKENS)
+        self.last_budget_stats: dict[str, int] = {
+            "estimated_tokens": 0,
+            "dropped_messages": 0,
+            "retained_messages": 0,
+            "total_dropped_messages": 0,
+        }
         self.tool_funcs = {
             "repo_browser.print_tree": self.repo_browser.print_tree,
             "repo_browser.search": self.repo_browser.search,
@@ -479,7 +625,8 @@ class ScriptBrain:
             return _tool_error(f"Invalid JSON arguments for {name}: {exc}")
         if not isinstance(arguments, dict):
             return _tool_error(f"Tool arguments for {name} must be an object.")
-        return self.tool_funcs[name](arguments)
+        result = self.tool_funcs[name](arguments)
+        return _truncate_tool_result(result, self.max_tool_result_chars)
 
     def think(self, message: str, history: list[dict[str, str]] | None = None, system: str | None = None, use_tools: bool | None = None, max_output_tokens: int | None = None) -> str:
         messages: list[dict[str, Any]] = []
@@ -492,14 +639,33 @@ class ScriptBrain:
         tools_enabled = (
             self.enable_tools if use_tools is None else bool(use_tools) and bool(self.tools)
         )
+        output_budget = max_output_tokens or (768 if tools_enabled else 1024)
         for _ in range(self.max_tool_rounds):
-            payload = _groq_payload(
+            active_tools = self.tools if tools_enabled else None
+            bounded_messages, budget_stats = _bound_groq_messages(
                 messages,
-                tools=self.tools if tools_enabled else None,
-                max_tokens=max_output_tokens or (1536 if tools_enabled else 1024),
+                tools=active_tools,
+                max_tokens=output_budget,
+                max_request_tokens=self.max_request_tokens,
+            )
+            payload = _groq_payload(
+                bounded_messages,
+                tools=active_tools,
+                max_tokens=output_budget,
                 json_mode=not tools_enabled,
                 reasoning_effort=None if tools_enabled else "low",
             )
+            estimated_tokens = _estimate_groq_request_tokens(payload)
+            if estimated_tokens > self.max_request_tokens:
+                raise RuntimeError(
+                    "LLM_CONTEXT_BUDGET_EXCEEDED: bounded request still exceeds the configured limit."
+                )
+            self.token_budget.reserve(estimated_tokens)
+            self.last_budget_stats["estimated_tokens"] = estimated_tokens
+            self.last_budget_stats["dropped_messages"] = budget_stats["dropped_messages"]
+            self.last_budget_stats["retained_messages"] = budget_stats["retained_messages"]
+            self.last_budget_stats["total_dropped_messages"] += budget_stats["dropped_messages"]
+            messages = bounded_messages
             data = _send_groq_request(payload, request_sender=self.request_sender)
             try:
                 reply = data["choices"][0]["message"]
@@ -617,6 +783,94 @@ def run_gh(args: list[str]) -> subprocess.CompletedProcess[str]:
     )
 
 
+def external_action_approval_valid(action: str, branch: str) -> bool:
+    approved_actions = {
+        item.strip()
+        for item in os.environ.get("BARROT_EXTERNAL_ACTIONS", "").split(",")
+        if item.strip()
+    }
+    return (
+        os.environ.get("BARROT_EXTERNAL_ACTION_APPROVED", "").strip().upper() == "YES"
+        and bool(os.environ.get("BARROT_EXTERNAL_ACTION_APPROVAL_ID", "").strip())
+        and os.environ.get("BARROT_EXTERNAL_ACTION_REPO", "").strip() == REPO
+        and os.environ.get("BARROT_EXTERNAL_ACTION_BRANCH", "").strip() == branch
+        and action in approved_actions
+    )
+
+
+def require_external_action_approval(action: str, branch: str) -> None:
+    if not external_action_approval_valid(action, branch):
+        raise RuntimeError(
+            f"Blocked external action {action!r} for {REPO}@{branch}: require "
+            "BARROT_EXTERNAL_ACTION_APPROVED=YES, a non-empty approval ID, exact repository/branch "
+            "scope, and the action in BARROT_EXTERNAL_ACTIONS."
+        )
+
+
+def require_pr_dedup_attestation() -> None:
+    if (
+        os.environ.get("BARROT_PR_DEDUP_VERIFIED", "").strip().upper() != "YES"
+        or not os.environ.get("BARROT_PR_DEDUP_EVIDENCE", "").strip()
+    ):
+        raise RuntimeError(
+            "Branch/PR creation requires BARROT_PR_DEDUP_VERIFIED=YES and "
+            "BARROT_PR_DEDUP_EVIDENCE referencing the completed open-PR, path-overlap, "
+            "commit-ancestry and prior-work review."
+        )
+
+
+def list_open_pull_requests() -> list[dict[str, Any]]:
+    result = run_gh(
+        [
+            "pr", "list", "--repo", REPO, "--state", "open", "--limit", "1000",
+            "--json", "number,title,headRefName,baseRefName",
+        ]
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            "Unable to enumerate the complete open-PR inventory; branch/PR creation is blocked. "
+            + (result.stderr.strip() or result.stdout.strip())[:1000]
+        )
+    try:
+        items = json.loads(result.stdout or "[]")
+    except (TypeError, ValueError) as exc:
+        raise RuntimeError("Open-PR inventory was not valid JSON; creation is blocked.") from exc
+    if not isinstance(items, list) or len(items) >= 1000:
+        raise RuntimeError("Open-PR inventory may be truncated; creation is blocked.")
+    return [item for item in items if isinstance(item, dict)]
+
+
+def _normalize_pr_title(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", value.lower()).strip()
+
+
+def find_open_pr_conflict(branch: str, title: str) -> tuple[dict[str, Any] | None, str | None]:
+    wanted_title = _normalize_pr_title(title)
+    for item in list_open_pull_requests():
+        if str(item.get("headRefName") or "").strip() == branch:
+            return item, "branch"
+        if _normalize_pr_title(str(item.get("title") or "")) == wanted_title:
+            return item, "title"
+    return None, None
+
+
+def build_repository_watchdog() -> DefensiveWatchdog:
+    allowed = {
+        Capability.READ,
+        Capability.WRITE,
+        Capability.EXECUTE,
+        Capability.NETWORK,
+    }
+    if external_action_approval_valid("repository_sync", BRANCH):
+        allowed.add(Capability.EXTERNAL_ACTION)
+    return DefensiveWatchdog(
+        ROOT,
+        repository=REPO,
+        task=TITLE,
+        allowed_capabilities=allowed,
+    )
+
+
 def build_github_context(task_text: str) -> str:
     lowered = task_text.lower()
     github_context = ""
@@ -630,7 +884,7 @@ def build_github_context(task_text: str) -> str:
                 "--state",
                 "open",
                 "--limit",
-                "100",
+                "1000",
                 "--json",
                 "number,title,mergeable,additions,deletions,author",
                 "-q",
@@ -717,7 +971,27 @@ def configure_git() -> None:
 
 
 def checkout_branch(branch: str) -> None:
-    """Select a task branch without resetting local or remote refs."""
+    """Reuse an existing task branch; require approval and dedup evidence before creating one."""
+    existing, conflict_kind = find_open_pr_conflict(branch, TITLE)
+    if existing and conflict_kind == "title" and existing.get("headRefName") != branch:
+        raise RuntimeError(
+            f"Open PR #{existing.get('number')} already has this objective on another branch; "
+            "reuse/reconcile it instead of creating another branch."
+        )
+    local = run(
+        ["git", "show-ref", "--verify", "--quiet", f"refs/heads/{branch}"],
+        check=False,
+        quiet=True,
+    )
+    remote = run(
+        ["git", "ls-remote", "--exit-code", "--heads", "origin", branch],
+        check=False,
+        quiet=True,
+    )
+    branch_exists = local.returncode == 0 or remote.returncode == 0
+    if not branch_exists:
+        require_external_action_approval("repository_branch_create", branch)
+        require_pr_dedup_attestation()
     try:
         safe_checkout_branch(ROOT, branch)
     except Exception as exc:
@@ -726,6 +1000,12 @@ def checkout_branch(branch: str) -> None:
 
 def post_issue_comment(message: str) -> None:
     if not ISSUE or ISSUE == "0":
+        return
+    if not external_action_approval_valid("issue_comment", BRANCH):
+        print(
+            "ISSUE_COMMENT_BLOCKED=explicit issue_comment approval is absent for this repository/branch.",
+            file=sys.stderr,
+        )
         return
     import tempfile
 
@@ -779,6 +1059,16 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
         or str(cycle_data.get("issue", {}).get("branch", "")).strip()
         or BRANCH
     )
+    existing, conflict_kind = find_open_pr_conflict(head_branch, f"Barrot: {safe_title}")
+    if existing:
+        if conflict_kind == "branch":
+            print(f"EXISTING_OPEN_PR=#{existing.get('number')}; reusing branch; no duplicate PR created.")
+            return
+        raise RuntimeError(
+            f"Open PR #{existing.get('number')} already has this objective; update/reconcile it instead."
+        )
+    require_external_action_approval("pull_request_create", head_branch)
+    require_pr_dedup_attestation()
     body = [
         f"Autonomous execution of #{ISSUE} by Barrot." if ISSUE and ISSUE != "0" else "Autonomous execution by Barrot.",
         "",
@@ -831,6 +1121,14 @@ def persist_scientific_discovery(cycle: dict[str, object] | Any) -> dict[str, An
     cycle_id = re.sub(r"[^A-Za-z0-9._-]", "_", str(payload.get("cycle_id") or "unknown"))
     per_cycle = latest.parent / f"{cycle_id}.json"
     paths = [str(latest.relative_to(ROOT)), str(per_cycle.relative_to(ROOT))]
+    safe_title = TITLE.replace(chr(96), " ").replace('"', "'").replace("$", " ").replace("\n", " ").replace("\r", " ").strip()[:180] or "Scientific discovery"
+    existing_pr, conflict_kind = find_open_pr_conflict(BRANCH, f"Barrot research: {safe_title}")
+    if existing_pr and conflict_kind == "title" and existing_pr.get("headRefName") != BRANCH:
+        raise RuntimeError(
+            f"Open PR #{existing_pr.get('number')} already covers this research objective on another branch."
+        )
+    require_external_action_approval("repository_sync", BRANCH)
+    require_pr_dedup_attestation()
     staged = run(["git", "add", "--", *paths], check=False)
     if staged.returncode != 0:
         raise RuntimeError(staged.stderr.strip() or "Unable to stage scientific-discovery evidence")
@@ -847,7 +1145,6 @@ def persist_scientific_discovery(cycle: dict[str, object] | Any) -> dict[str, An
         if remote.returncode != 0:
             raise RuntimeError("No new evidence to commit and no remote task branch exists")
 
-    safe_title = TITLE.replace(chr(96), " ").replace('"', "'").replace("$", " ").replace("\n", " ").replace("\r", " ").strip()[:180] or "Scientific discovery"
     pr_body = (
         f"Barrot scientific-discovery evidence for issue #{ISSUE}.\n\n"
         f"- cycle_id: {cycle_id}\n"
@@ -857,6 +1154,20 @@ def persist_scientific_discovery(cycle: dict[str, object] | Any) -> dict[str, An
         f"- unresolved_questions: {len(payload.get('unresolved_questions', []))}\n\n"
         "This is an evidence-preserving draft. It makes no claim that the Millennium problem is solved."
     )
+    existing_pr, conflict_kind = find_open_pr_conflict(BRANCH, f"Barrot research: {safe_title}")
+    if existing_pr:
+        if conflict_kind == "branch":
+            return {
+                "record_path": str(latest.relative_to(ROOT)),
+                "commit_sha": commit_sha,
+                "remote_persisted": True,
+                "draft_pr": f"reused existing open PR #{existing_pr.get('number')}",
+            }
+        raise RuntimeError(
+            f"Open PR #{existing_pr.get('number')} already covers this research objective; no new PR created."
+        )
+    require_external_action_approval("pull_request_create", BRANCH)
+    require_pr_dedup_attestation()
     import tempfile
     with tempfile.TemporaryDirectory(prefix="barrot_research_pr_") as tmp_dir:
         body_path = Path(tmp_dir) / "research_pr_body.md"
@@ -1005,6 +1316,27 @@ def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[s
         parsed = json.loads(content)
         if not isinstance(parsed, dict):
             raise ValueError("Model response must be a JSON object.")
+
+        required_keys = ("findings", "open_questions", "counterarguments", "recommended_checks")
+        if set(parsed) != set(required_keys):
+            missing = sorted(set(required_keys) - set(parsed))
+            unexpected = sorted(set(parsed) - set(required_keys))
+            raise ValueError(
+                f"Model response keys mismatch (missing={missing}, unexpected={unexpected})."
+            )
+
+        for key in required_keys:
+            values = parsed[key]
+            if not isinstance(values, list):
+                raise ValueError(f"Model response field {key!r} must be an array.")
+            if len(values) > 3:
+                raise ValueError(f"Model response field {key!r} exceeds the three-item limit.")
+            for index, value in enumerate(values):
+                if not isinstance(value, str):
+                    raise ValueError(f"Model response field {key!r}[{index}] must be a string.")
+                if len(value) > 300:
+                    raise ValueError(f"Model response field {key!r}[{index}] exceeds 300 characters.")
+
         return parsed
 
     try:
@@ -1038,10 +1370,9 @@ def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[s
             return decode_object(retry_raw)
         except (json.JSONDecodeError, ValueError) as retry_error:
             raise RuntimeError(
-                "Model returned invalid JSON after one compact retry: "
+                "Model returned invalid response after one compact retry: "
                 f"{str(retry_error)[:250]}; initial response rejected: {str(first_error)[:250]}"
             ) from retry_error
-
 
 def build_read_only_audit_snapshot() -> dict[str, Any]:
     """Collect bounded, read-only Git and Actions evidence for audit-only tasks."""
@@ -1216,8 +1547,121 @@ def is_explicit_read_only_audit_task(title: str, body: str) -> bool:
     )
 
 
+def build_primary_mission_dispatch() -> dict[str, Any]:
+    """Return the next verified primary-mission goal without provider or repository writes.
+
+    This mode is deterministic and read-only. It is suitable for an explicitly
+    invoked mission-planning step; it does not execute the goal or authorize
+    external actions.
+    """
+    registry = MissionRegistry()
+    manifest = registry.manifest
+    foundation = manifest["foundation"]
+    if manifest["status"] != "active":
+        return {
+            "status": "NOT_ACTIVE",
+            "mission_id": registry.mission_id,
+            "priority": 1,
+            "foundation": foundation["name"],
+            "next_goal": None,
+            "provider_calls": False,
+            "repository_mutation": False,
+            "external_actions_authorized": False,
+        }
+
+    learning_store = VerifiedLearningStore(ROOT / "data" / "evolution" / "verified_lessons.jsonl")
+    curriculum = LearningCurriculum(
+        workspace=str(ROOT),
+        learning_store=learning_store,
+        mission_registry=registry,
+    )
+    goal = curriculum.next_goal()
+    if not isinstance(goal, str) or not goal.strip():
+        raise RuntimeError("Primary mission curriculum returned no active goal.")
+    topic = re.search(r"(?m)^MISSION_TOPIC_ID:\s*([a-zA-Z0-9_.-]+)\s*$", goal)
+    if topic is None:
+        raise RuntimeError("Primary mission goal is missing its topic identifier.")
+
+    return {
+        "status": "READY",
+        "dispatch_mode": "read_only_mission_plan",
+        "mission_id": registry.mission_id,
+        "priority": 1,
+        "topic_id": topic.group(1),
+        "foundation": {
+            "id": foundation["id"],
+            "name": foundation["name"],
+            "preserve": foundation["preserve"],
+        },
+        "next_goal": goal,
+        "acceptance_criteria": list(manifest["acceptance_criteria"]),
+        "guardrails": list(manifest["guardrails"]),
+        "provider_calls": False,
+        "repository_mutation": False,
+        "external_actions_authorized": False,
+    }
+
+
+def _is_groq_rate_limit_error(error: BaseException) -> bool:
+    rendered = f"{type(error).__name__}: {error}".lower()
+    return any(
+        marker in rendered
+        for marker in (
+            "groq http 413",
+            "groq http 429",
+            "rate_limit_exceeded",
+            "tokens per minute",
+            "tpm",
+            "tokens per day",
+            "per-minute token limit",
+            "daily token limit",
+            "rate limit exhausted",
+        )
+    )
+
+
+def _build_deterministic_rate_limit_report(
+    *,
+    task_title: str,
+    issue_number: str,
+    error: BaseException,
+    audit_context: dict[str, str],
+    snapshot: dict[str, Any],
+) -> str:
+    context = {
+        "repository_inventory": str(audit_context.get("inventory", ""))[:5000],
+        "github_context": str(audit_context.get("github_context", ""))[:9000],
+        "targeted_file_context": str(audit_context.get("file_context", ""))[:2500],
+        "directory_context": str(audit_context.get("directory_context", ""))[:2500],
+        "read_only_snapshot": snapshot,
+    }
+    return (
+        "## Barrot deterministic fallback — provider rate limit\n\n"
+        "**Status:** `BLOCKED_PROVIDER_RATE_LIMIT`\n\n"
+        f"**Task:** {task_title}\n"
+        f"**Issue:** #{issue_number if issue_number and issue_number != '0' else 'not supplied'}\n"
+        f"**Provider failure:** {type(error).__name__}: {str(error)[:1000]}\n\n"
+        "### Deterministic work completed\n"
+        "- Repository file inventory and targeted file/directory context were collected.\n"
+        "- Read-only Git branch, HEAD, recent-history, working-tree and Actions evidence was attempted; unavailable fields are labeled.\n"
+        "- Recent GitHub Actions evidence was collected where the GitHub CLI was available.\n"
+        "- Any available open-PR/issue context is preserved below; it is not model-interpreted.\n\n"
+        "### Evidence snapshot\n"
+        "```json\n"
+        + json.dumps(context, ensure_ascii=False, sort_keys=True, indent=2, default=str)[:26000]
+        + "\n```\n\n"
+        "### Execution boundary\n"
+        "No LLM-backed bundle was accepted. No repository source file was changed; no commit, push, pull request, merge, deployment, secret operation, paper trade or financial action was performed. "
+        "Repository repair is **not complete** and this task remains blocked. Retry the provider after the rate-limit window resets; retain this deterministic evidence rather than inventing a model-backed result."
+    )
+
+
 def main() -> None:
     global MAX_SEARCH_RESULTS
+    if TASK_MODE == "mission":
+        print(json.dumps(build_primary_mission_dispatch(), indent=2, sort_keys=True))
+        return
+
     configure_git()
     checkout_branch(BRANCH)
 
@@ -1354,10 +1798,29 @@ def main() -> None:
             except (TypeError, ValueError):
                 report = raw_report
         except Exception as exc:
-            message = (
-                "Barrot read-only audit failed safely; repository repair was not started.\n\n"
-                f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
-            )
+            if _is_groq_rate_limit_error(exc):
+                try:
+                    deterministic_snapshot = {
+                        "git_and_actions": build_read_only_audit_snapshot(),
+                        "source_excerpt_status": "already_collected_for_the_failed_read_only_audit",
+                    }
+                except Exception as snapshot_error:
+                    deterministic_snapshot = {
+                        "status": "UNAVAILABLE",
+                        "error": f"{type(snapshot_error).__name__}: {str(snapshot_error)[:500]}",
+                    }
+                message = _build_deterministic_rate_limit_report(
+                    task_title=TITLE,
+                    issue_number=ISSUE,
+                    error=exc,
+                    audit_context=audit_context,
+                    snapshot=deterministic_snapshot,
+                )
+            else:
+                message = (
+                    "Barrot read-only audit failed safely; repository repair was not started.\n\n"
+                    f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
+                )
             post_issue_comment(message)
             raise SystemExit(message) from exc
         if not report.strip():
@@ -1415,11 +1878,28 @@ def main() -> None:
                 )[:2000],
             )
         except Exception as exc:  # fail closed before repository mutation
-            message = (
-                "Barrot bundle authoring/review failed safely; repository repair was not started.\n\n"
-                f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
-            )
+            if _is_groq_rate_limit_error(exc):
+                try:
+                    deterministic_snapshot = build_read_only_audit_snapshot()
+                except Exception as snapshot_error:
+                    deterministic_snapshot = {
+                        "status": "UNAVAILABLE",
+                        "error": f"{type(snapshot_error).__name__}: {str(snapshot_error)[:500]}",
+                    }
+                message = _build_deterministic_rate_limit_report(
+                    task_title=TITLE,
+                    issue_number=ISSUE,
+                    error=exc,
+                    audit_context=audit_context,
+                    snapshot=deterministic_snapshot,
+                )
+            else:
+                message = (
+                    "Barrot bundle authoring/review failed safely; repository repair was not started.\n\n"
+                    f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
+                )
             post_issue_comment(message)
+            print(message)
             raise SystemExit(message) from exc
 
     lifecycle_path = lifecycle_store.save_plan(
@@ -1450,6 +1930,7 @@ def main() -> None:
         brain=brain,
         workspace=ROOT,
         workspace_verifier=verify_result,
+        watchdog=build_repository_watchdog(),
     )
     queue = WorkQueueController(repair_controller=controller)
     def execute_bundle_task(task: dict[str, Any]) -> Any:

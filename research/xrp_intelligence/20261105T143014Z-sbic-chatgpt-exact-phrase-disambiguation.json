@@ -1,0 +1,209 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "sbic_chatgpt_exact_phrase_disambiguation_20261105T143014Z",
+  "artifact_type": "exact_phrase_entity_disambiguation",
+  "title": "SBIC and ChatGPT SBIC: Social Bias Inference Corpus versus Japanese SBIC and a conflicting COVID-19 expansion",
+  "recorded_at_utc": "2026-11-05T14:30:14Z",
+  "research_cutoff_utc": "2026-11-05T14:30:14Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-evidence-archive-20261104",
+  "review_pr": 1643,
+  "base_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "exact_queries": [
+    "\"SBIC, ChatGPT SBIC\"",
+    "\"SBIC\" \"ChatGPT\"",
+    "\"Social Bias Inference Corpus\" \"65.9\"",
+    "\"COVID-19 Social and Behavioral Impacts Corpus\" SBIC"
+  ],
+  "append_only": {
+    "original_artifacts_modified": false,
+    "purpose": "Resolve a newly surfaced academic use of SBIC in ChatGPT evaluation while preserving its distinction from Japan's SBIC East/Central/West companies and SBI Holdings."
+  },
+  "source_capture_policy": {
+    "raw_bytes_preserved": false,
+    "sha256_receipts": null,
+    "independent_timestamp_anchors": false,
+    "model_eligible": false,
+    "reason": "Rendered paper pages and search extracts were reviewed; source bytes and independent timestamp receipts were not preserved."
+  },
+  "entity_resolution": {
+    "primary_academic_meaning": {
+      "name": "Social Bias Inference Corpus",
+      "abbreviation": "SBIC",
+      "creator_reference": "Sap et al. (2020)",
+      "type": "public NLP dataset",
+      "scope": "Social-media posts and structured inferences about implied social bias, power dynamics and demographic groups."
+    },
+    "japanese_business_meaning": {
+      "name": "Small and Medium Business Investment & Consultation companies",
+      "entities": [
+        "SBIC East Japan",
+        "SBIC Central Japan",
+        "SBIC West Japan"
+      ],
+      "type": "Japanese investment and consultation companies",
+      "relationship_to_academic_dataset": "unrelated; acronym collision only"
+    },
+    "sbi_holdings": {
+      "name": "SBI Holdings",
+      "type": "Japanese financial-services group",
+      "relationship_to_academic_dataset": "unrelated; acronym collision only"
+    },
+    "secondary_covid19_expansion": {
+      "name": "COVID-19 Social and Behavioral Impacts Corpus",
+      "abbreviation_as_printed": "SBIC",
+      "status": "secondary-review-only; no independent primary dataset record verified in this research",
+      "relationship_to_primary_sbic": "conflicts with the primary Ziems et al. paper's definition; possible secondary mis-expansion or a distinct unverified corpus"
+    },
+    "resolution_rule": "Use Social Bias Inference Corpus when referring to the Ziems et al. ChatGPT SBIC benchmark. Require full dataset name and citation when SBIC appears in another context."
+  },
+  "source_registry": [
+    {
+      "source_id": "ziems_etal_computational_social_science_benchmarks",
+      "publisher": "Ziems et al.",
+      "url": "https://arxiv.org/abs/2305.03514",
+      "publication": "Computational Linguistics, 50(1), 237–291 (2024)",
+      "doi": "10.1162/coli_a_00502",
+      "retrieved_on_utc_date": "2026-11-05",
+      "source_independence_group": "primary_research_paper",
+      "raw_capture_status": "rendered_arxiv_and_acl_pages",
+      "model_eligible": false,
+      "claims_supported": [
+        "Section 3.4.4 explicitly expands SBIC as Social Bias Inference Corpus and cites Sap et al. (2020a).",
+        "The paper describes approximately 34,000 inferences about roughly 1,000 demographic groups for the SBIC task.",
+        "The paper treats CovidET as a separate COVID-19 emotion-summarization task, distinct from SBIC.",
+        "Table 7 reports GPT-3.5/ChatGPT preference of 65.9%, GPT-4 60.6% and text-davinci-003 50.0% against human gold-standard explanations for the SBIC generation task.",
+        "The 65.9% value is a pairwise author-preference/ranking result, not classification accuracy, factual accuracy or a financial prediction score.",
+        "The paper reports 25 benchmarks in the abstract while other text/figure descriptions refer to 24; its 20 classification plus 5 generation task breakdown totals 25."
+      ],
+      "limitations": [
+        "The Table 7 percentage is not an accuracy metric.",
+        "The number of pairwise comparisons and a generalizable population-level confidence interval are not established by the reported percentage alone.",
+        "The experiments use 2023-era model versions, not current ChatGPT models.",
+        "The paper's own task-count descriptions are internally inconsistent."
+      ]
+    },
+    {
+      "source_id": "sap_etal_social_bias_frames_and_sbic",
+      "publisher": "Sap et al.",
+      "url": "https://aclanthology.org/2020.acl-main.486/",
+      "publication": "Proceedings of ACL 2020",
+      "doi": "10.18653/v1/2020.acl-main.486",
+      "retrieved_on_utc_date": "2026-11-05",
+      "source_independence_group": "original_dataset_paper",
+      "raw_capture_status": "rendered_acl_primary_page",
+      "model_eligible": false,
+      "claims_supported": [
+        "The paper is titled Social Bias Frames: Reasoning about Social and Power Implications of Language.",
+        "It introduces the Social Bias Inference Corpus (SBIC).",
+        "The corpus includes approximately 150,000 structured annotations and more than 34,000 implications involving about 1,000 demographic groups."
+      ],
+      "limitations": [
+        "The corpus is a social-bias research dataset, not a financial, crypto, XRP or corporate-entity dataset.",
+        "The source warns that language examples can contain offensive or harmful content."
+      ]
+    },
+    {
+      "source_id": "cheng_china_journal_of_econometrics_secondary_review",
+      "publisher": "Cheng Bing, China Journal of Econometrics",
+      "url": "https://cjoe.cjoe.ac.cn/CN/10.12012/CJoE2023-0032",
+      "publication": "2023, 3(3), 589–614",
+      "doi": "10.12012/CJoE2023-0032",
+      "retrieved_on_utc_date": "2026-11-05",
+      "source_independence_group": "secondary_review_article",
+      "raw_capture_status": "rendered_journal_page_and_pdf",
+      "model_eligible": false,
+      "claims_supported": [
+        "The review summarizes ChatGPT and computational-social-science benchmark results, including a 65.9% result.",
+        "Its task list expands SBIC as 'COVID-19 Social and Behavioral Impacts Corpus'.",
+        "The review describes 24 representative tasks."
+      ],
+      "limitations": [
+        "This is a secondary review, not the original SBIC dataset paper or Ziems et al. benchmark paper.",
+        "Its SBIC expansion conflicts with the primary Ziems et al. definition and the separate CovidET task in that paper.",
+        "No primary dataset record for the COVID-19 expansion was independently verified here."
+      ]
+    }
+  ],
+  "reported_chatgpt_result": {
+    "task": "SBIC explanation generation",
+    "model_versions_as_studied": {
+      "ChatGPT": "GPT-3.5 / gpt-3.5-turbo era (2023)",
+      "GPT-4": "GPT-4 (2023)",
+      "baseline": "text-davinci-003"
+    },
+    "pairwise_author_preference_over_human_gold_pct": {
+      "GPT-3.5": 65.9,
+      "GPT-4": 60.6,
+      "text-davinci-003": 50
+    },
+    "metric_type": "pairwise human-author preference over a gold-standard explanation",
+    "not_equivalent_to": [
+      "accuracy",
+      "probability calibration",
+      "factual correctness",
+      "market prediction skill",
+      "current ChatGPT performance"
+    ],
+    "interpretation": "The 65.9% result means authors preferred GPT-3.5-generated SBIC explanations over the dataset's human gold explanations in the paper's pairwise evaluation. It does not mean ChatGPT was 65.9% accurate."
+  },
+  "source_disagreement": {
+    "primary_position": "Ziems et al. explicitly define SBIC as Social Bias Inference Corpus; Sap et al. 2020 is the original dataset paper; CovidET is separately named.",
+    "secondary_position": "Cheng (2023) labels SBIC as COVID-19 Social and Behavioral Impacts Corpus.",
+    "adjudication": "For the ChatGPT SBIC result, the primary Ziems/Sap definition controls. Preserve the Cheng expansion as a conflicting secondary label; do not silently normalize it or assume it refers to the Japanese SBIC companies.",
+    "unresolved": "Whether the Cheng review intended a separate COVID-19 corpus or contains an acronym/translation error is not established by the reviewed primary sources."
+  },
+  "xrp_and_institutional_relationships": {
+    "direct_xrp_relationship_established": false,
+    "relationship_to_ripple_coinbase_circle_or_sbi_holdings": "none established by these sources",
+    "relationship_to_japanese_sbic_companies": "none; acronym collision only",
+    "feature_admission": "not an XRP market feature; at most a separate AI bias-evaluation reference",
+    "safety_note": "The corpus contains social-media statements and demographic implications that may be offensive. Do not ingest it into XRP market training. Any separate bias evaluation must preserve context and avoid reproducing harmful stereotypes."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_SOCIAL_BIAS_INFERENCE_CORPUS",
+      "statement": "The ChatGPT SBIC benchmark refers to the Social Bias Inference Corpus.",
+      "support": [
+        "Primary Ziems et al. definition",
+        "Original Sap et al. dataset paper",
+        "65.9% Table 7 result in the Ziems paper"
+      ],
+      "disconfirming": [
+        "Secondary Cheng review uses a different expansion"
+      ]
+    },
+    {
+      "id": "H2_COVID19_SBIC",
+      "statement": "The secondary review may refer to a distinct COVID-19 Social and Behavioral Impacts Corpus.",
+      "support": [
+        "Cheng (2023) prints this expansion"
+      ],
+      "disconfirming": [
+        "No independent primary dataset record found",
+        "Primary Ziems paper defines SBIC differently and lists CovidET separately"
+      ]
+    },
+    {
+      "id": "H3_JAPANESE_SBIC",
+      "statement": "The acronym may refer to Japan's SBIC East/Central/West companies in a corporate context.",
+      "support": [
+        "Official Japanese company identities and profiles"
+      ],
+      "disconfirming": [
+        "The ChatGPT 65.9% paper is an NLP dataset evaluation, not a corporate or investment study"
+      ]
+    }
+  ],
+  "admission": {
+    "xrp_feature_eligible": false,
+    "model_eligible": false,
+    "directional_forecast_issued": false,
+    "reason": [
+      "Academic benchmark context, not market data.",
+      "Acronym collision and secondary-source disagreement retained.",
+      "65.9% is pairwise preference, not accuracy.",
+      "No XRP, Ripple, Coinbase, Circle, SBI Holdings or Japanese SBIC relationship established."
+    ]
+  }
+}

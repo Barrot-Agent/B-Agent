@@ -1,12 +1,4 @@
-name: Paid issue publish
-
-# Commits what paid-issue-hunter.yml produced. Separate file on purpose: the
-# scheduled workflow is forbidden from writing (test_external_action_gates), and a
-# workflow_run trigger is the only way to keep the 6-hour cadence and still land
-# PAID-ISSUES.md in the repository.
-#
-# It only publishes on a successful run of the hunter on main. Nothing else is
-# written, nothing is merged, no issue is touched.
+name: Paid issue publish (disabled; hunter artifact remains read-only)
 
 on:
   workflow_run:
@@ -14,55 +6,16 @@ on:
     types: [completed]
     branches: [main]
 
-permissions:
-  contents: write
-  actions: read
-
-concurrency:
-  group: paid-issue-publish
-  cancel-in-progress: false
+permissions: {}
 
 jobs:
-  publish:
-    if: github.event.workflow_run.conclusion == 'success'
+  disabled:
+    if: false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
-      - name: Download the evidence
-        uses: actions/download-artifact@v4
-        with:
-          name: paid-issues
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ github.token }}
-          path: artifact
-
-      - name: Place the files
+      - name: Explain disabled state
         run: |
-          set -e
-          test -f artifact/PAID-ISSUES.md
-          test -f artifact/data/money/paid_issues.json
-          cp artifact/PAID-ISSUES.md PAID-ISSUES.md
-          mkdir -p data/money
-          cp artifact/data/money/paid_issues.json data/money/paid_issues.json
-          python3 - <<'PY'
-          import json
-          data = json.load(open("data/money/paid_issues.json"))
-          assert data["mutations_performed"] == 0, "refusing to publish a hunter record with mutations"
-          print("rows:", len(data["rows"]), "statuses:", data["status_values"])
-          PY
-
-      - name: Commit when it changed
-        run: |
-          git config user.name "barrot-hunter"
-          git config user.email "barrot-hunter@users.noreply.github.com"
-          git add PAID-ISSUES.md data/money/paid_issues.json
-          if git diff --cached --quiet; then
-            echo "no change this run"
-            exit 0
-          fi
-          git commit -m "hunter: paid issue scan $(date -u +%Y-%m-%dT%H:%MZ) from run ${{ github.event.workflow_run.id }}"
-          git push origin main
+          echo "The paid-issue hunter remains read-only and retains its result as a seven-day workflow artifact."
+          echo "This publisher previously copied that artifact into repository files and pushed directly to main."
+          echo "Repository publication is disabled pending explicit authorization and independently verified branch protection."
+          echo "No credentials are loaded, no files are changed, and no repository or external mutation occurs."

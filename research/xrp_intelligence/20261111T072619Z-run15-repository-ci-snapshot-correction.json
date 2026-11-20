@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot_xrp_run15_repository_ci_snapshot_correction",
+  "run_id": "run15",
+  "captured_at_utc": "2026-11-11T07:26:19Z",
+  "data_cutoff_utc": "2026-11-11T07:26:19Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "integration_parent_before_correction": "ab3763fd5b181672f989d7b9fcee7641ef572a9f",
+    "pr": 1661,
+    "pr_state": "open",
+    "draft": true,
+    "mergeable": true,
+    "mergeable_state": "unstable",
+    "ahead_by": 1994,
+    "behind_by": 0,
+    "changed_files": 984,
+    "workflow_files": 44,
+    "non_workflow_paths": 940,
+    "main_tree_entries": 1388,
+    "integration_tree_entries": 2250,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "local_git_transport": "FAILED_DNS_RESOLUTION; GitHub API inspection succeeded"
+  },
+  "ci": {
+    "exact_head": "ab3763fd5b181672f989d7b9fcee7641ef572a9f",
+    "full_suite": {
+      "run_id": 42978453521,
+      "job_id": 130382947054,
+      "conclusion": "failure",
+      "passed": 3402,
+      "failed": 5,
+      "subtests": 8,
+      "coverage_percent": 59.98,
+      "duration_seconds": 59.97,
+      "wheel_build_verified": false
+    },
+    "failing_tests": [
+      "test_repository_snapshot_matches_current_main_and_successor_branch",
+      "test_superseded_pr_1660_is_retained_until_successor_merge",
+      "test_exact_head_ci_evidence_is_scoped_to_the_tested_parent_head",
+      "test_spot_snapshot_preserves_provider_event_time_and_window_semantics",
+      "test_identity_research_keeps_sbic_ask_actual_capital_and_kamilah_gates"
+    ],
+    "failure_classification": "Stale snapshot expectations: five current-map contract assertions failed. Three used outdated integration-head references; two omitted the Kraken UTC-day-open comparison warning and the definition that actual capital is not a standardized XRP metric. The reported failure list contains no application-runtime exception.",
+    "core_tests": "passed",
+    "dependency_audit": {
+      "run_id": 42978453447,
+      "passed": true,
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42978453581,
+      "passed": true,
+      "automatic_merge_enabled": false
+    },
+    "previous_successful_full_suite": {
+      "head_sha": "3b11e39f253ac8d07d02eb5da0c770155614f814",
+      "run_id": 42964502259,
+      "passed": 3407,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 59.98
+    }
+  },
+  "correction": {
+    "status": "COMMITTED_ON_EXISTING_INTEGRATION_BRANCH",
+    "changes": [
+      "Replace hard-coded integration SHA/count expectations with consistency checks against the captured repository snapshot.",
+      "Record exact failed CI evidence without weakening or skipping tests.",
+      "Add explicit warning not to compare Kraken UTC-day open with OKX rolling 24-hour open.",
+      "Define actual capital as not a standardized XRP metric and preserve cash/in-kind/debt/contingent-capacity distinctions.",
+      "Update current-map snapshot to the parent head and exact CI/security run identifiers."
+    ],
+    "exact_head_reverification": "PENDING_AFTER_COMMIT"
+  },
+  "security": {
+    "credential_path": ".config/gh/hosts.yml",
+    "present_on_main": false,
+    "present_on_integration": false,
+    "other_open_pr_tips_containing_path": 17,
+    "credential_contents_read": false,
+    "oauth_revocation": "REPOSITORY_REPORTED; PROVIDER_SIDE_NOT_INDEPENDENTLY_VERIFIED",
+    "branch_protection_endpoint": "HTTP 403",
+    "visible_ruleset": "Fall Back",
+    "visible_ruleset_enforcement": "disabled"
+  },
+  "publication": {
+    "main_public_signal": "STALE_LEGACY_SIGNAL",
+    "integration_signal": "NOT_ISSUED",
+    "pages_publication_on_main_push": "AUTOMATIC",
+    "publication_authorized": false
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "public_research_model_eligible": false,
+    "successful_main_ingestion_verified": false,
+    "real_money_action": false,
+    "paper_trade": false
+  },
+  "nine_platforms": {
+    "chatgpt": "CURRENT_SESSION_GITHUB_API_ACCESS_VERIFIED",
+    "lunaroute": "DECLARED_NOT_AUTHENTICATED",
+    "claude": "UNVERIFIED",
+    "grok": "UNVERIFIED",
+    "gemini": "UNVERIFIED",
+    "copilot": "NO_FORMAL_APPROVAL_VERIFIED",
+    "codex": "UNVERIFIED",
+    "hugging_face": "NO_DEPLOYMENT_VERIFIED",
+    "kaggle": "NO_SUBMISSION",
+    "databricks": "NO_WORKSPACE_WRITE"
+  },
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "main_write": false,
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "external_model_transfer": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money_action": false,
+    "force_push": false,
+    "destructive_worktree_operation": false,
+    "source_pr_closure": false
+  }
+}

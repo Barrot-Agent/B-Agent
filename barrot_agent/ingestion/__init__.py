@@ -10,5 +10,5 @@ longevity_micro_ingestion   Aging and longevity research ingestion.
 millennium_problems_micro_ingestion  Millennium Prize Problems knowledge ingestion.
 merge_conflict_micro_ingestion  Merge conflict resolution pattern ingestion.
 docs_ingestion         Documentation ingestion pipeline.
-council_ingest_node    Council/collective knowledge ingestion node.
+council_ingest_node    Legacy council placeholder (quarantined; no action injection).
 """
