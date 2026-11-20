@@ -421,7 +421,7 @@
       "conflict_type": "content",
       "strategy_used": "auto_merge",
       "success": true,
-      "time_to_resolve": 5.0,
+      "time_to_resolve": 5,
       "manual_intervention_required": false,
       "lessons_learned": [
         "Successfully resolved src/config.py",
@@ -437,7 +437,7 @@
       "conflict_type": "content",
       "strategy_used": "auto_merge",
       "success": true,
-      "time_to_resolve": 5.0,
+      "time_to_resolve": 5,
       "manual_intervention_required": false,
       "lessons_learned": [
         "Successfully resolved src/auth.py",
@@ -452,7 +452,7 @@
     {
       "technique_id": "RT001",
       "name": "Accept Both Changes with Manual Review",
-      "description": "Merge both changes and manually review for correctness",
+      "description": "Historical accept-both pattern; outcome rate is unverified. Use only when both changes are independently required, compatible, and validated.",
       "applicable_types": [
         "content"
       ],
@@ -466,9 +466,9 @@
         "Understanding of code context",
         "Review capability"
       ],
-      "success_rate": 0.85,
-      "risk_level": "Medium",
-      "automation_level": "Semi-Automated"
+      "success_rate": null,
+      "risk_level": "High",
+      "automation_level": "Manual only; explicit authorization required"
     },
     {
       "technique_id": "RT002",
@@ -597,7 +597,7 @@
     "total_best_practices": 7,
     "total_learning_outcomes": 2,
     "strategy_success_rates": {
-      "auto_merge": 1.0
+      "auto_merge": 1
     }
   }
 }
