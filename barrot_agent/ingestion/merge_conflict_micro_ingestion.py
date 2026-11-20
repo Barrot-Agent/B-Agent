@@ -22,6 +22,8 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
+from .conflict_resolution_policy import ConflictEvidence, decision_as_dict
+
 
 class ConflictType(Enum):
     """Types of merge conflicts that can be encountered"""
@@ -180,7 +182,7 @@ class MergeConflictMicroIngestion:
                 indicators=["import", "from", "require"],
                 file_patterns=["*.py", "*.js", "*.ts"],
                 frequency="High",
-                auto_resolvable=True,
+                auto_resolvable=False,
             ),
             ConflictPattern(
                 pattern_id="CP003",
@@ -239,8 +241,8 @@ class MergeConflictMicroIngestion:
         self.resolution_techniques = [
             ResolutionTechnique(
                 technique_id="RT001",
-                name="Accept Both Changes with Manual Review",
-                description="Merge both changes and manually review for correctness",
+                name="Accept Both — Manual Semantic Review Only",
+                description="Never select both by default. Consider a composed result only after both changes are proven necessary, compatible, and independently validated.",
                 applicable_types=[ConflictType.CONTENT.value],
                 strategy=ResolutionStrategy.ACCEPT_BOTH.value,
                 commands=[
@@ -249,7 +251,7 @@ class MergeConflictMicroIngestion:
                     "git commit -m 'Resolved conflict by merging both changes'",
                 ],
                 prerequisites=["Understanding of code context", "Review capability"],
-                success_rate=0.85,
+                success_rate=0.0,
                 risk_level="Medium",
                 automation_level="Semi-Automated",
             ),
@@ -264,7 +266,7 @@ class MergeConflictMicroIngestion:
                     "git merge -Xignore-all-space <branch>",
                 ],
                 prerequisites=["Git 2.0+"],
-                success_rate=0.98,
+                success_rate=0.0,
                 risk_level="Low",
                 automation_level="Fully Automated",
             ),
@@ -279,7 +281,7 @@ class MergeConflictMicroIngestion:
                     "git merge-file <current> <base> <incoming>",
                 ],
                 prerequisites=["Access to merge base"],
-                success_rate=0.75,
+                success_rate=0.0,
                 risk_level="Medium",
                 automation_level="Semi-Automated",
             ),
@@ -296,7 +298,7 @@ class MergeConflictMicroIngestion:
                     "eslint --fix <file>",
                 ],
                 prerequisites=["Code formatters installed"],
-                success_rate=0.95,
+                success_rate=0.0,
                 risk_level="Low",
                 automation_level="Fully Automated",
             ),
@@ -312,7 +314,7 @@ class MergeConflictMicroIngestion:
                     "# YAML: yq for merging",
                 ],
                 prerequisites=["Config-aware merge tools"],
-                success_rate=0.90,
+                success_rate=0.0,
                 risk_level="Low",
                 automation_level="Fully Automated",
             ),
@@ -327,7 +329,7 @@ class MergeConflictMicroIngestion:
                     "git merge -s recursive -X diff-algorithm=patience <branch>",
                 ],
                 prerequisites=["Git 1.7.10+"],
-                success_rate=0.80,
+                success_rate=0.0,
                 risk_level="Low",
                 automation_level="Automated",
             ),
@@ -342,7 +344,7 @@ class MergeConflictMicroIngestion:
                     "# Git will automatically reuse resolutions",
                 ],
                 prerequisites=["Git rerere enabled"],
-                success_rate=0.99,
+                success_rate=0.0,
                 risk_level="Very Low",
                 automation_level="Fully Automated",
             ),
@@ -684,20 +686,15 @@ import numpy as np
     def get_recommended_strategy(
         self, conflict_type: str, file_path: str
     ) -> Optional[ResolutionTechnique]:
-        """Get recommended resolution strategy based on conflict type and context"""
-        applicable_techniques = [
-            tech for tech in self.resolution_techniques if conflict_type in tech.applicable_types
-        ]
+        """Deprecated: static technique rankings are not evidence of correctness.
 
-        if not applicable_techniques:
-            return None
-
-        # Sort by success rate
-        applicable_techniques.sort(key=lambda x: x.success_rate, reverse=True)
-        return applicable_techniques[0]
+        The legacy knowledge catalog is retained for reference only. Runtime
+        recommendations must come from the evidence-gated policy.
+        """
+        return None
 
     def analyze_conflict(self, conflict_content: str, file_path: str) -> Dict[str, Any]:
-        """Analyze a conflict and provide recommendations"""
+        """Analyze conflict markers and fail closed unless semantic evidence is supplied."""
         analysis = {
             "conflict_detected": True,
             "file_path": file_path,
@@ -705,31 +702,49 @@ import numpy as np
             "patterns_matched": [],
             "recommended_technique": None,
             "auto_resolvable": False,
-            "risk_assessment": "Unknown",
+            "manual_review_required": True,
+            "risk_assessment": "Manual review required",
         }
 
-        # Detect conflict type
         for pattern in self.conflict_patterns:
-            for indicator in pattern.indicators:
-                if indicator in conflict_content:
-                    analysis["patterns_matched"].append(pattern.name)
-                    analysis["conflict_type"] = pattern.conflict_type
-                    analysis["auto_resolvable"] = pattern.auto_resolvable
-                    break
+            if any(indicator in conflict_content for indicator in pattern.indicators):
+                analysis["patterns_matched"].append(pattern.name)
+                analysis["conflict_type"] = pattern.conflict_type
+                break
 
-        # Get recommended technique
-        if analysis["conflict_type"]:
-            technique = self.get_recommended_strategy(analysis["conflict_type"], file_path)
-            if technique:
-                analysis["recommended_technique"] = {
-                    "name": technique.name,
-                    "description": technique.description,
-                    "commands": technique.commands,
-                    "success_rate": technique.success_rate,
-                    "automation_level": technique.automation_level,
-                }
-                analysis["risk_assessment"] = technique.risk_level
+        normalized_path = file_path.replace("\\", "/").lower()
+        if ".github/workflows/" in normalized_path or "/workflow" in normalized_path:
+            policy_type = "workflow"
+        elif any(token in normalized_path for token in ("security", "permission", "secret", "credential", "/auth")):
+            policy_type = "security"
+        elif "migration" in normalized_path or "schema" in normalized_path:
+            policy_type = "migration"
+        elif "lock" in Path(normalized_path).name:
+            policy_type = "lockfile"
+        elif any(token in normalized_path for token in ("database", "/db/")):
+            policy_type = "database"
+        elif any(token in normalized_path for token in ("generated", "dist/", "build/")):
+            policy_type = "generated"
+        else:
+            policy_type = analysis["conflict_type"] or "content"
 
+        evidence = ConflictEvidence(
+            conflict_type=policy_type,
+            evidence_summary=(
+                "Conflict markers identify overlapping edits but do not establish "
+                "intent, behavior preservation, or semantic compatibility."
+            ),
+        )
+        decision = decision_as_dict(evidence)
+        analysis["policy_decision"] = decision
+        analysis["auto_resolvable"] = False
+        analysis["recommended_technique"] = None
+        analysis["manual_review_required"] = decision["choice"] == "manual"
+        analysis["risk_assessment"] = (
+            "High — manual review required"
+            if policy_type in {"workflow", "security", "migration", "lockfile", "database", "generated"}
+            else "Manual review required"
+        )
         return analysis
 
     def export_to_json(self, output_dir: str = ".") -> Dict[str, str]:
