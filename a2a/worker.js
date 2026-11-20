@@ -391,7 +391,7 @@ export class BarrotTaskQueue {
         result: null,
         error: null
       };
-      await txn.put("task:" + taskId, task);
+      await this.storage.put("task:" + taskId, task);
       return json({ task_id: taskId, status: task.status, created_at: task.created_at });
     });
   }
@@ -413,7 +413,7 @@ export class BarrotTaskQueue {
           task.status = "failed";
           task.error = "worker_lease_expired_max_attempts";
           task.updated_at = new Date(now).toISOString();
-          await txn.put(entry.key, task);
+          await this.storage.put(entry.key, task);
           continue;
         }
         task.status = "running";
@@ -422,7 +422,7 @@ export class BarrotTaskQueue {
         task.lease_until = now + leaseSeconds * 1000;
         task.updated_at = new Date(now).toISOString();
         if (!task.started_at) task.started_at = task.updated_at;
-        await txn.put(entry.key, task);
+        await this.storage.put(entry.key, task);
         return json({ task });
       }
       return json({ task: null });
@@ -449,7 +449,7 @@ export class BarrotTaskQueue {
       task.completed_at = new Date(now).toISOString();
       task.updated_at = task.completed_at;
       task.lease_until = null;
-      await txn.put(key, task);
+      await this.storage.put(key, task);
       return json({ task_id: taskId, status: task.status, completed_at: task.completed_at });
     });
   }
