@@ -918,17 +918,13 @@ outcome = LearningOutcome(
 mcmi.record_learning_outcome(outcome)
 ```
 
-### Success Rate Tracking
+### Outcome Measurement
 
-The system automatically tracks success rates for each strategy:
-
-- **Rerere**: 99% (fully automated, very reliable)
-- **Whitespace**: 98% (automated, minimal risk)
-- **Import Merge**: 95% (automated with formatting)
-- **Config Merge**: 90% (semantic understanding)
-- **Manual Review**: no universal success rate; outcomes require case-specific evidence and review
-- **Recursive**: 80% (good for large changes)
-- **Three-Way**: 75% (requires analysis)
+No validated strategy success rates are currently established. Historical
+percentages in the original knowledge base are unverified estimates, not
+measured outcomes, and must not be used as confidence scores or authorization
+to automate a resolution. Track only outcomes backed by reviewed diffs,
+test results, and an auditable record of the exact base and head revisions.
 
 ---
 
@@ -939,7 +935,7 @@ The system automatically tracks success rates for each strategy:
 1. **PR Monitoring**
    - Detect conflicts in open PRs
    - Analyze conflict patterns
-   - Apply appropriate strategies
+   - Produce evidence-gated recommendations only; do not apply a resolution automatically
 
 2. **Resolution Recommendation (fail-closed)**
    - Run the evidence-gated conflict policy
