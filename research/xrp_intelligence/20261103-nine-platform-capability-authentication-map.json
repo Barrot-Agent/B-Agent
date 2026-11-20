@@ -155,7 +155,8 @@
     ],
     "verified": [
       "GitHub read/write connector used to inspect repo, create draft branches and PRs; exact-head CI and fail-closed gates verified for listed PRs",
-      "2026-11-20: current GitHub repository connector permissions and main/integration SHAs inspected; PR #1673 exact-head CI and fail-closed result inspected; no external platform authentication or dispatch performed."
+      "2026-11-20: current GitHub repository connector permissions and main/integration SHAs inspected; PR #1673 exact-head CI and fail-closed result inspected; no external platform authentication or dispatch performed.",
+      "2026-11-20: exact current integration head 251682e passed the 4,441-item full repository suite (4,440 passed, 1 skipped) plus dependency, money and A2A audits; fail-closed gate remained blocked for draft/no approval/unverifiable protection."
     ],
     "not_executed": [
       "No live Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks collaboration/authentication verified."
@@ -175,16 +176,16 @@
     "no_real_money_trading": true
   },
   "latest_verification": {
-    "verified_at_utc": "2026-11-20T09:28:40Z",
+    "verified_at_utc": "2026-11-20T09:46:34Z",
     "repository": "Barrot-Agent/B-Agent",
     "main_sha": "7f8e3626c355bb3d89afdff56aeed5e056cb88f4",
     "main_tree_entries": 1751,
     "integration_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z",
-    "integration_head": "fc61430d301f368432d49b2ead013294d3a490cb",
+    "integration_head": "251682e1023afe3029c4fa7a87cecf09e59f8acf",
     "integration_tree_entries": 3040,
     "integration_pr": 1673,
     "integration_pr_state": "open_draft",
-    "integration_pr_ahead": 520,
+    "integration_pr_ahead": 523,
     "integration_pr_behind": 0,
     "github_connector_permissions": {
       "admin": true,
@@ -195,6 +196,7 @@
     },
     "main_branch_metadata": {
       "protected": true,
+      "enforcement_level": "non_admins",
       "required_status_contexts": [],
       "classic_protection_endpoint": "403_FORBIDDEN"
     },
@@ -220,6 +222,38 @@
       "Databricks"
     ],
     "cross_platform_dispatch_or_data_transfer": "NOT_EXECUTED",
-    "note": "GitHub repository access is verified, but effective branch-protection rules and required-check enforcement are not. No other platform is represented as authenticated or live-connected."
+    "note": "GitHub repository access is verified, but effective branch-protection rules and required-check enforcement are not. No other platform is represented as authenticated or live-connected.",
+    "integration_pr_commits": 523,
+    "exact_head_full_suite": {
+      "run_id": 44712782428,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44712782428",
+      "result": "success",
+      "collected": 4441,
+      "passed": 4440,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 23,
+      "inclusive_coverage_pct": 73.08,
+      "runtime_seconds": 192.72
+    },
+    "exact_head_audits": {
+      "dependency_audit": "passed",
+      "dependency_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44712782373",
+      "money_audit": "passed",
+      "money_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44712782393",
+      "a2a_worker_tests": "passed",
+      "a2a_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44712782375",
+      "pages_build": "validation_only_passed_no_deployment"
+    },
+    "fail_closed_gate": {
+      "result": "blocked",
+      "run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44712782385",
+      "reasons": [
+        "PR remains draft",
+        "no independent approving review",
+        "branch protection could not be verified"
+      ]
+    },
+    "live_external_platform_dispatch": "NOT_EXECUTED"
   }
 }
