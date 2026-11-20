@@ -739,7 +739,7 @@ import numpy as np
         analysis["policy_decision"] = decision
         analysis["auto_resolvable"] = False
         analysis["recommended_technique"] = None
-        analysis["manual_review_required"] = decision["choice"] == "manual"
+        analysis["manual_review_required"] = True
         analysis["risk_assessment"] = (
             "High — manual review required"
             if policy_type in {"workflow", "security", "migration", "lockfile", "database", "generated"}
