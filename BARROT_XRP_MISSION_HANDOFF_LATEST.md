@@ -961,3 +961,236 @@ Changed-path overlap does not establish byte-identical duplicate content. A blob
 ### Disposition
 
 All Morpho and Maple page observations remain **research-only / not feature-store eligible** because raw payload bytes, retrieval receipts and synchronized historical series were not captured in Barrot. Add these sources to the next ingestion validation pass with strict source-vintage and custody semantics. No directional forecast is issued. No deployment, market action, paper trade, real-money action, PR merge or source-PR closure occurred.
+
+
+---
+
+## Run 11 — 2026-11-20 09:59 UTC research and integration checkpoint
+
+### Executive state
+
+- Mission priority remains **XRP intelligence and measured prediction-engine performance**.
+- Barrot V3 remains the protected execution, orchestration, safety and verification foundation.
+- **No new branch or PR was created. No merge, source-PR closure, deployment, secret change, external model dispatch, paper trade or real-money action was performed in this run.**
+- Main is `7f8e3626c355bb3d89afdff56aeed5e056cb88f4`.
+- Consolidated integration PR #1673 is based on that exact main SHA and is at code head `109625985268c1aef6f5d8731f7574cb75f2047a`.
+- Main tree: 1,751 entries. Integration tree: 3,040 entries. Recursive tree comparison: **zero main paths missing from integration**.
+- PR #1673: 525 commits ahead, zero behind, 1,494 changed files, draft, mergeable flag true, mergeable state unstable.
+- Existing handoff blob before this append: `760a0557c4cde2f4c5b95b776a9e5a1f573c5ecc`.
+
+### Mainline changes since the previous checkpoint
+
+Verified merged PRs:
+
+| PR | Merge commit | Subject |
+|---|---|---|
+| #1672 | `73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f` | GPT Actions connected to existing OpenCode execution |
+| #1674 | `33d02d3b3251350aaede9df04fcb701f2398d016` | MMI-backed capability curriculum |
+| #1675 | `7e343f78b9d9e98328105988585ef4da9e0bd77f` | Evidence-gated autonomous conflict resolution |
+| #1676 | `08ecb81e9e7501a7ff4a241c2dae6eef766ff2d3` | Governed V3 OpenCode documentation |
+
+Main CI passed after the merges at:
+- #1674 / #1672 ancestry: [44669957726](https://github.com/Barrot-Agent/B-Agent/actions/runs/44669957726)
+- #1675: [44680354718](https://github.com/Barrot-Agent/B-Agent/actions/runs/44680354718)
+- #1676: [44680928702](https://github.com/Barrot-Agent/B-Agent/actions/runs/44680928702)
+
+The current main head `7f8e362` is a subsequent paid-issue-hunter data commit, not one of those merge commits. Its scheduled Cross Analysis passed at [44714284942](https://github.com/Barrot-Agent/B-Agent/actions/runs/44714284942), but a full CI run on the exact `7f8e362` head was not found.
+
+### Exact-head integration verification
+
+On code head `109625985268c1aef6f5d8731f7574cb75f2047a`:
+
+- [CI / full repository suite 44713877185](https://github.com/Barrot-Agent/B-Agent/actions/runs/44713877185): **4,440 passed, 1 skipped, 11 warnings, 23 subtests**, 159.78 seconds, inclusive coverage **73.08%**.
+- Key coverage: XRP telemetry 92%; MMI 92%; feature store 80%; forecast ledger 97%; point-in-time features 89%; source registry 95%; Barrot integration 62%; AGI orchestrator 52%.
+- [Dependency audit 44713877453](https://github.com/Barrot-Agent/B-Agent/actions/runs/44713877453): passed.
+- [Money audit 44713877046](https://github.com/Barrot-Agent/B-Agent/actions/runs/44713877046): passed.
+- [A2A Worker tests 44713877181](https://github.com/Barrot-Agent/B-Agent/actions/runs/44713877181): passed.
+- The cache budget warning is non-blocking; cache is read-only and the test suite passed.
+
+The fail-closed gate [44713877166](https://github.com/Barrot-Agent/B-Agent/actions/runs/44713877166) failed as designed:
+1. PR #1673 remains draft.
+2. No review records exist on #1673.
+3. The GitHub integration receives HTTP 403 when reading main branch-protection details. Main is marked protected, but the actual required checks, strict-up-to-date setting, review count and administrator enforcement cannot be verified.
+
+No merge was attempted. PR #1673 changes public web assets; merging it would trigger the existing GitHub Pages deployment workflow. The user's no-deployment-without-specific-approval rule remains a separate blocker even if CI and branch protection are later resolved.
+
+### Security PR #1677 — gate result is not merge authorization
+
+PR #1677 is non-draft and changes six A2A/OpenCode files. Its head is `0d4b3484c95a46ff9f61417f94c97a391d0fefff`, based on `7e343f78`, which is **two commits behind current main** (`08ecb81` and `7f8e362)). Its branch is unprotected and it has no review records.
+
+Its Tests, Full Repository Test Suite and audit checks passed on its own older head. Its check named “Merge disabled pending gate verification” is a no-op: the job log explicitly says automatic merge is intentionally disabled and then exits successfully. It does not verify branch protection, approvals or readiness. Do not treat that success as a merge gate.
+
+The six paths overlap with #1673 but are not byte-identical. The integration branch already contains related manual-only deployment controls, explicit opt-in and tests, but semantic reconciliation is still required. Preserve #1677 until the security changes are reviewed against the current integration head; do not close it as a duplicate.
+
+### Automatic mainline side effect discovered
+
+The current main commit `7f8e362` was created by the existing scheduled Paid Issue Hunter workflow at 06:31 UTC. The follow-on publisher workflow wrote `PAID-ISSUES.md` and `data/money/paid_issues.json` directly to main. The Pages workflow then successfully deployed main commit `7f8e362` to [https://barrot-agent.github.io/B-Agent/](https://barrot-agent.github.io/B-Agent/).
+
+This was an automatic repository workflow side effect, not an action taken by this run. No issue was claimed and no funds moved. However, the published candidate is a data-quality failure:
+- The single row is marked `READY` with `amount_usd: 3`.
+- Its quote contains “$3.43M”.
+- `scripts/paid_issue_hunter.py` uses a numeric regex that truncates suffix amounts such as `M` and `K`; the resulting small number is still marked READY.
+- The renderer documents a $50 minimum, but the current path does not enforce that minimum before assigning READY.
+
+The scheduled hunter is read-only, but `paid-issue-publish.yml` has `contents: write` and pushes the artifact to main on `workflow_run`. The subsequent Pages deployment is real and verified. This is an existing external-write/publication path and must be included in the V3 safety review. No change or rollback was made because that would modify a separate mainline workflow outside this XRP integration.
+
+### Current XRP market snapshot — research-only, not model-ingested
+
+Retrieval window: approximately 09:59 UTC, November 20, 2026.
+
+**Spot**
+- Kraken XRP/USD: last $0.95628; bid $0.95603; ask $0.95604; 24-hour volume 39.97M XRP; 24-hour high $0.99680; low $0.94679. The displayed spread is approximately 0.105 bps.
+- OKX XRP/USDT: quote timestamp 2026-11-20 09:59:01.764 UTC; last 0.9564; bid 0.9561; ask 0.9562; 24-hour open 0.9864; high 0.9979; low 0.9478; volume 47.14M XRP; turnover 45.57M USDT; 24-hour change approximately -3.04%. The displayed spread is approximately 1.046 bps.
+- Do not directly normalize XRP/USD and XRP/USDT without a synchronized USDT/USD quote. Kraken's top-of-book and OKX's top-of-book are not a cross-venue depth curve. A synchronized Level-2 snapshot was not captured in this run; the integration code has configured depth adapters.
+
+Sources: [Kraken public ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [OKX public ticker](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT).
+
+**Derivatives — vendor aggregate, not primary exchange receipts**
+- Liqwall snapshot at 09:42 UTC: XRP $0.9602; $920M open interest, -0.1% over 24 hours; $5.2M liquidations, of which $4.5M were longs and $708K shorts; average funding -0.0046% per eight hours; Binance funding 0.0000%; 74.7% of Binance accounts with XRP positions were long.
+- This is evidence of a recent long-liquidation imbalance, not a directional forecast. OI was nearly flat and the funding picture differed by venue.
+
+Source: [Liqwall XRP dashboard](https://liqwall.com/coins/xrp), snapshot 2026-11-20 09:42 UTC.
+
+**Exchange-wallet balances**
+- XRP Insights snapshot 2026-11-20 08:00 UTC: 22.18B XRP in 707 XRPL wallets attributed to 24 exchanges, 32.2% of its 68.89B circulating-supply denominator.
+- Same-wallet change: -86.0M XRP over seven days and -434.3M over 30 days.
+- Largest attributed balances: Upbit 6.46B; Coinbase 5.82B; Binance 2.60B; Bithumb 1.77B.
+- 484.7M XRP in the tracked set is identified as non-customer reserve/insurance/wrapped-token backing, including 153.7M attributed to Coinbase cbXRP and 327.4M Binance-Peg XRP. About 48.5% of the tracked total is labeled cold and 39.7% is unclassified.
+- These are attributed-wallet balances, not exchange order-book reserves or tradable float. The source explicitly warns that untracked wallet transfers can appear as outflows.
+
+Source and methodology: [XRP Insights exchange balances](https://xrp-insights.com/exchange-balances).
+
+**Coinbase cbXRP and collateral**
+- Coinbase's own proof-of-reserves page reported, on its 2026-11-20 02:05 AM refresh, 156,138,671.16 XRP reserve against 156,136,424.62 cbXRP supply on Base. This is direct issuer reserve evidence, not an exchange-flow estimate.
+- Coinbase Help confirms that eligible users can borrow USDC against XRP through the Morpho onchain lending protocol on Base; Coinbase supplies the user interface and Morpho supplies the lending protocol. This creates a collateral/credit channel, not proof of incremental spot buying.
+- XRP Insights' wallet-label estimate of 153.7M cbXRP reserve differs from Coinbase's direct 156.14M proof-of-reserves figure; retain both vintages and do not substitute the attributed-wallet number for issuer proof of reserves.
+
+Sources: [Coinbase cbXRP proof of reserves](https://www.coinbase.com/cbxrp/proof-of-reserves), [Coinbase crypto-backed loans](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro).
+
+**Spot ETF flows — universe reconciliation**
+- XRP Insights reports week 47 (November 16–19, four trading days) at -4.96M XRP, approximately -$4.91M; the November 19 row is provisional. Its previous week (November 9–13) is -6.08M XRP, approximately -$6.64M.
+- XRP Insights explicitly excludes GXRP from computed flow totals while a holdings capture gap is corrected, although GXRP holdings remain in total holdings.
+- A SoSoValue-derived report carried by KuCoin reports -$19.13M for November 9–13 and includes a large GXRP redemption. The apparent discrepancy is therefore at least partly a fund-universe/capture-gap difference; it is not evidence that one series can be silently substituted for the other.
+- Preserve per-fund issuer holdings, flow status, provisional/reconstructed status and excluded-fund flags. Holdings changes are not automatically cash subscriptions or redemptions.
+
+Sources: [XRP Insights ETF tracker and daily methodology](https://xrp-insights.com/), [XRP ETF data dictionary](https://xrp-insights.com/data), [KuCoin's SoSoValue-derived weekly report](https://www.kucoin.com/blog/in-xrp-etf-outflows-8-month-high-2026).
+
+**RLUSD and stablecoin rails**
+- Ripple's transparency page reported $2.6899B circulating RLUSD and $2.8265B reserve funds as of November 12, 2026.
+- XRP Insights' on-chain dashboard on November 20 reported approximately $2.81B across XRPL and Ethereum: $745.8M on XRPL (27%) and $2.06B on Ethereum (73%), excluding smaller L2/sidechain balances. The two totals have different dates and measurement definitions; retain both rather than forcing a false match.
+- Most tracked RLUSD supply is on Ethereum, not XRPL. RLUSD growth is not equivalent to XRP demand or bridge-asset usage.
+
+Sources: [Ripple RLUSD transparency](https://ripple.com/products/stablecoin/transparency/), [XRP Insights on-chain supply dashboard](https://xrp-insights.com/xrp-radar).
+
+### Coinbase, Circle, Ripple and SBI — updated relationship graph
+
+**Coinbase ↔ Circle**
+- Coinbase's Q3 2026 Form 10-Q says average USDC held in Coinbase products reached an all-time high and that its arrangement with Circle was renewed on the same terms.
+- Coinbase attributes +$84.6M in Q3 and +$201.6M over the first nine months of 2026 to higher average USDC balances, partly offset by lower interest rates (-$52.8M Q3; -$166.2M nine months).
+- Coinbase's filing also records fair-value remeasurement of its investment in Circle after Circle's IPO. The filing establishes equity exposure but does not state a current ownership percentage in the cited passage.
+- Circle's Q3 2026 10-Q reports distribution costs under its Coinbase agreements of $331.3M for Q3 and $986.6M for the first nine months of 2026. The filing explains that Coinbase allocations depend on USDC held on its platform after issuer retention and include half of the remaining broader-ecosystem amount after approved third-party participants.
+- This is a direct equity and distribution relationship with meaningful mutual economic exposure, not merely a listing relationship.
+
+Primary sources: [Coinbase Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm), [Circle Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+
+**Circle ↔ SBI Holdings**
+- Circle's Q3 2026 10-Q states that Circle and SBI each contributed yen equivalent to approximately $1.5M to Circle SBI Japan K.K. in November 2025.
+- Circle owns 50%, consolidates the VIE because it controls the activities that most affect it, and reports no significant operating results to date as of September 30, 2026.
+- SBI's March 25, 2025 announcement described the joint venture as 50:50. SBI VC Trade is a separate distribution channel and has offered USDC in Japan; do not equate the JV's reported operating results with the entire SBI VC Trade business.
+
+Sources: [SBI Holdings JV announcement](https://www.sbigroup.co.jp/english/news/pdf/2025/0325_c_en.pdf), [Circle Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm).
+
+**Ripple ↔ SBI Holdings / SBI operating companies**
+- Ripple announced official RLUSD availability in Japan with SBI Group and SBI VC Trade on June 24, 2026. This is a stablecoin distribution relationship, not proof of XRP purchases.
+- Ripple's official SBI Ripple Asia page makes two distinct statements: SBI Ripple Asia sells RippleNet software and itself does not handle XRP; separately, Ripple's XRP-bridged On-Demand Liquidity service is already commercialized in Japan through SBI Remit, Coins.ph and SBI VC Trade. The company-level limitation must not be generalized to the entire SBI Group or its ODL partners.
+- Thus the relationship includes both software/payment infrastructure that need not use XRP and a specific XRP-bridge ODL route. These must be separate features and event types.
+
+Sources: [Ripple/SBI RLUSD launch, June 24, 2026](https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/), [SBI Ripple Asia official description](https://ripple.com/company/sbi-ripple-asia/).
+
+**Coinbase ↔ Ripple / XRP**
+- No direct Coinbase-Ripple corporate joint venture or equity relationship was established in this run.
+- The verified connections are product and market infrastructure: Coinbase lists XRP, holds XRP reserves backing cbXRP 1:1, and offers XRP-backed USDC borrowing through Morpho on Base. This can increase XRP's collateral utility while also creating liquidation/credit channels; it does not prove net spot accumulation.
+- Circle USDC is also available on XRPL, but USDC settlement on XRPL does not inherently require XRP as a bridge asset.
+
+**Circle ↔ Ripple**
+- Both issue dollar stablecoins and compete/overlap in institutional settlement and multi-chain distribution. No direct corporate partnership between Circle and Ripple was established in this run.
+- Circle's USDC and Ripple's RLUSD are distinct liabilities with different issuers, reserve structures, distribution contracts and chain footprints.
+
+### SBIC, SoftBank and ChatGPT — identity correction
+
+- Japan's SBIC regional companies remain separate from SBI Holdings and from SoftBank Group.
+- Tokyo SBIC's official materials show a February 26, 2025 seminar titled “The Present and Future of Generative AI (ChatGPT)” and a June 12–13, 2025 AI/ML course that included ChatGPT use. These are educational events, not evidence of an OpenAI partnership.
+- Separately, SoftBank Group/SoftBank Corp and OpenAI launched **SB OAI Japan GK** on November 5, 2025. It is a 50:50 joint venture between OpenAI and C Holdings Corporation; C Holdings is owned 51% by SoftBank Corp and 49% by SoftBank Group. This is a genuine OpenAI-SoftBank JV, but it is not SBIC East, Central or West and is not SBI Holdings' Circle JV.
+- Exact phrase `SBIC, ChatGPT SBIC` remains unresolved. The SBIC training events and SB OAI Japan JV are plausible adjacent entities that must not be conflated.
+
+Sources: [Tokyo SBIC ChatGPT seminar PDF](https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%82%B2%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf), [SBIC Tokyo AI/ML course](https://www.sbic.co.jp/training/20250612co/), [SoftBank/OpenAI SB OAI Japan announcement](https://www.softbank.jp/en/corp/news/press/sbkk/2025/20251105_02/).
+
+### Exact phrases and Kamilah/Camilla video identity
+
+- `ASK Coin`: no primary source establishing an XRP-linked entity or token was found in this run.
+- `actual capital`: no primary-source context was found that defines the user's exact phrase. Market capitalization, ETF holdings deltas, wallet attribution, collateral pledges and stablecoin supply must not be relabeled as actual cash capital.
+- `SBIC, ChatGPT SBIC`: no exact match found; the separate SBIC education and SB OAI Japan JV findings above are retained as disambiguation candidates.
+- YouTube search identifies channel `Kamilah Stevenson | XRP & Stocks`, channel ID `UCXm6KAr1WHF6UN7g5b2W7wg`, and attributes “I Moved My XRP Off The Exchanges” (May 20, 2026) to Kamilah Stevenson. A separate indexed video “Ripple Just Became a BANK” (December 14, 2025) is also attributed to Kamilah/Camila Stevenson.
+- The channel's real-world identity has not been independently cross-linked to the Dr. Kamilah Stevenson interview/profile candidate. Do not admit either video to a verified creator inventory until that cross-link is established.
+
+Candidates only: [Kamilah Stevenson channel](https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg), [I Moved My XRP Off The Exchanges](https://www.youtube.com/watch?v=TfFx0g2IgGg), [Ripple Just Became a BANK](https://www.youtube.com/watch?v=QslbjGQD0MU).
+
+### Integrated prediction-engine status
+
+**EXECUTED / VERIFIED on the integration branch**
+- Seven-venue spot ticker ingestion and configured multi-venue Level-2 depth adapters.
+- Binance/Bybit derivatives, Deribit XRP-USDC perpetual ticker/book, funding/open-interest/long-short data.
+- ETF issuer pages and XRP Insights daily flows, attributed XRPL exchange wallets, Ripple RLUSD transparency, Circle USDC transparency, SBI lending page, Morpho cbXRP market/state/liquidity/oracle, Coinbase cbXRP proof of reserves and CFTC reports.
+- SEC EDGAR adapter for Evernorth, Coinbase and Circle.
+- SHA-256 raw receipts, append-only point-in-time feature store, source-independence groups, event timeline, four deterministic baselines, leakage-safe chronological walk-forward evaluation, temporal calibration, drift diagnostics, scenario/counter-hypothesis records and fail-closed forecast ledger.
+
+**DESIGNED / NOT YET VERIFIED**
+- Independent WORM/timestamp anchoring.
+- Production scheduled captures on main: the workflow's hourly and daily schedules are main-only. Integration-branch push captures are scoped to ingestion/timestamp-audit code changes.
+- Full historical synchronization and quality reconciliation across spot, depth, derivatives, ETF, exchange-wallet and collateral series.
+- A learned candidate that beats all four baselines out of sample, stable calibration, drift validation and sufficient shadow observations.
+
+The ingestion workflow is read-only (`actions: read`, `contents: read`) and artifacts have 90-day retention. Receipt-chain continuity checks predecessor artifacts, but GitHub Actions artifacts are not independent WORM storage. The SEC issuer registry currently contains Evernorth, Coinbase and Circle; SBI Holdings is not yet in that SEC registry and Ripple is not an SEC-reporting issuer in the configured set. Add SBI primary investor-relations and Ripple corporate-disclosure feeds with explicit availability times and conservative source lineage.
+
+**Forecast status: NOT_ISSUED.** No directional forecast is supported by the current verified out-of-sample record. The current spot, exchange-wallet, ETF, derivatives and stablecoin observations in this addendum are research-only and were not captured as immutable Barrot raw receipts or promoted into the feature store.
+
+### Nine-platform coordination
+
+GitHub is the only platform whose authentication and repository access were exercised in this run. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain **not verified as live connections**. No credentials were requested, no external model was dispatched and no data was sent to those providers. Preserve least privilege and record actual permission/data-flow tests before changing any platform's status.
+
+### Current open-PR inventory — 17 preserved
+
+| PR | Classification | Current disposition |
+|---|---|---|
+| #1673 | blocked | Active consolidated integration; draft, no reviews, branch-protection 403, Pages deployment approval outstanding |
+| #1677 | blocked / security overlap | Six-file A2A quarantine candidate; stale base by two commits; its gate is a no-op success; semantic reconciliation with #1673 required |
+| #1671 | blocked / security overlap | Inbound GPT Actions authority gate; draft, stale base; review against current V3 integration |
+| #1670 | unique/unreviewed | Musical DNA recursive-learning feature; separate creative workstream |
+| #1668 | blocked | Provider failover; draft and requires workflow/secret review |
+| #1666 | blocked | Dependabot Kaggle dependency update; stale base and current-head validation required |
+| #1665 | blocked | Dependabot Pylint update; stale base and current-head validation required |
+| #1664 | blocked / unique | Paid-issue PR-template product staging; distinct content, not published by this PR |
+| #1663 | superseded candidate | Older V3/XRP integration successor; reconcile losslessly before any closure |
+| #1541 | unique/unreviewed / security | MMI canonical-claim fingerprint work; path overlap is not proof of duplicate content |
+| #1460 | unique/unreviewed | XRP institutional multirail, Binance and Kamilah research |
+| #1450 | unique/unreviewed | Binance phase-one, escrow and PR #1449 audit |
+| #1440 | unique/unreviewed | XRP archive validation trigger repair |
+| #1437 | unique/unreviewed | XRP ledger source-addenda repair |
+| #1436 | unique/unreviewed | Binance XRP theft and attacker-wallet graph |
+| #1353 | unique/unreviewed | XRP ledger sharding research |
+| #1265 | unique/unreviewed | XRP ledger index/snapshot-pointer research |
+
+No unique research or creative PR was bulk-closed. #1663 is not to be closed until #1673 is merged and its content is verified on main. #1677 is not to be closed as an exact duplicate merely because paths overlap.
+
+### Next concrete actions
+
+1. Keep #1673 as the single active integration PR. Do not create another XRP integration PR.
+2. Resolve draft/review/branch-protection verification and obtain explicit authorization for the Pages deployment that a merge would trigger.
+3. Reconcile #1677 and #1671 security changes into the existing integration branch only after semantic review; do not treat their older checks or no-op gates as merge evidence.
+4. Audit the automatic paid-issue publisher and correct the suffix/minimum-amount validation before trusting any READY candidate. Do not publish or deploy a new revision without authorization.
+5. Add primary SBI Holdings/SBI VC Trade disclosures and Ripple corporate releases to scheduled evidence ingestion; keep the SBIC regional publisher group separate from SBI Group.
+6. Capture synchronized multi-venue L2 depth and USDT/USD quotes, reconcile ETF issuer-level holdings (including GXRP gaps), and capture Coinbase/Morpho/cbXRP and RLUSD chain supply as raw receipts.
+7. Establish independent immutable retention, complete historical point-in-time datasets, then run chronological baseline and learned-model comparisons. Keep forecast status NOT_ISSUED until the full evaluation standard is met.
+8. Refresh the nine-platform capability/authentication/permission/data-flow map only with tested evidence.
+
+This checkpoint is a research and documentation update on the existing integration branch. Main remains at `7f8e3626c355bb3d89afdff56aeed5e056cb88f4`; no merge or mainline code change was made by this run.
