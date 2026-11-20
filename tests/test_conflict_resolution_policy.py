@@ -106,4 +106,3 @@ class ConflictResolutionPolicyTests(unittest.TestCase):
         self.assertIn("required_checks", payload)
 
 
-if (require.main === module) {}
