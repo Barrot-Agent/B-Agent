@@ -7652,3 +7652,73 @@ The 5199 result is not a pass. The PR-event CI run 44662250904 was still running
 - Fail-closed checks [44662608450](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662608450) and [44662612955](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662612955) were still running.
 
 This artifact/handoff correction adds no new branch, PR or runtime workflow. Its resulting commit requires its own exact-head CI. Forecast issuance remains NOT_ISSUED and merge remains blocked.
+
+
+---
+
+## Run 230 follow-up 3 — 243798 exact-suite result, Circle/Coinbase economics and market-quality check — 2026-11-20T02:50:53Z
+
+### 1. Exact-head test result
+
+On `24379814ee4f00536065881a974d54294d69900c`:
+
+- Full repository suite: **4,388 passed, 1 failed, 1 skipped, 11 warnings, 19 subtests**.
+- Runtime: 159.54 seconds; inclusive coverage 71.34%.
+- Core tests and Pages validation passed.
+- Dependency audits [44662901496](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662901496) and [44662911256](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662911256) passed all six manifests.
+- Money audit [44662911290](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662911290) passed; A2A Worker tests [44662911268](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662911268) passed.
+- Push CI [44662901648](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662901648) and PR CI [44662911250](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662911250) failed only the new Franklin evidence regression test. The test used `holdings["xrp_sold_for_expenses"]`; the canonical artifact field is `xrp_sold_for_fund_expenses`. The assertion is corrected in this update. This is a test-schema mismatch, not a discrepancy in the SEC holdings bridge.
+- Fail-closed checks [44662901493](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662901493) and [44662911242](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662911242) failed closed. The new head must rerun the entire suite.
+
+### 2. New Circle–Coinbase primary-source reconciliation
+
+Two separate counterparty SEC filings for the nine months ended September 30, 2026 disclose the economics of the Circle–Coinbase USDC distribution relationship:
+
+**Circle 10-Q:** https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+
+- Circle reports distribution costs paid to Coinbase of $331.3M in Q3 2026 versus $361.3M in Q3 2025, and $986.6M for the first nine months of 2026 versus $996.8M in 2025.
+- The nine-month Coinbase distribution cost decreased $10.2M because Coinbase's share of average USDC on-platform balances fell enough to more than offset higher reserve income.
+- Total distribution and transaction costs still increased $24.0M (2.0%), driven by $34.2M higher costs with other strategic distribution partners.
+- The agreement allocates amounts based on USDC held on Coinbase after Circle's issuer retention; Coinbase also receives half of the remaining broader-ecosystem amount after approved third-party participants.
+- Circle defines the relevant platform percentage as a daily weighted share of total USDC in circulation, not simply the absolute number of USDC held by Coinbase.
+
+**Coinbase 10-Q:** https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+
+- Coinbase stablecoin revenue was $306.905M in Q3 2026 versus $324.534M in Q3 2025, and $904.487M for nine months versus $907.485M in 2025.
+- Coinbase attributes positive revenue effects of $84.6M and $201.6M to higher average USDC balances in its products, offset by negative effects of $52.8M and $166.2M from lower average interest rates.
+- Coinbase said average USDC held in its products reached an all-time high and that it renewed the Circle arrangement on the same terms.
+
+**Interpretation:** an all-time-high absolute USDC balance on Coinbase can coexist with a lower Coinbase share of total average USDC on-platform balances if total USDC circulation grows faster. Circle's distribution expense and Coinbase's stablecoin revenue are separate accounting measures; they must not be subtracted to infer Coinbase profit or a reconciled settlement amount. The relationship demonstrates strong USDC distribution economics, not XRP bridge-asset usage or XRP demand. The two filings are separate primary disclosures by counterparties, but describe the same underlying agreement. Rendered SEC content was captured; raw HTTP bytes and SHA-256 receipts were not, so the artifact is not model-eligible.
+
+Structured evidence: `research/xrp_intelligence/20261120T025053Z-run230-circle-coinbase-usdc-distribution-economics.json`.
+
+### 3. Research-only live spot quality check
+
+At approximately 2026-11-20 02:42:35 UTC, rendered public ticker responses showed:
+
+| Venue | Last | Bid / ask | 24h XRP volume |
+|---|---:|---:|---:|
+| Kraken XRP/USD | $0.95208 | $0.95234 / $0.95235 | 47.25M |
+| OKX XRP/USDT | 0.9524 USDT | 0.9523 / 0.9524 | 40.39M |
+
+Kraken reported a 24h VWAP of $0.97248083 and a $0.94679–$0.9968 range. Its last price was approximately 2.10% below its 24h VWAP. The Kraken endpoint did not provide an exchange event timestamp.
+
+OKX's XRP/USDT event timestamp was 02:24:57.778 UTC; the USDT/USD conversion quote was timestamped 01:57:58.072 UTC, 26m59.706s older. The indicative normalized XRP/USD value of approximately $0.95134 and -7.74 bps basis versus Kraken is **rejected** because the conversion leg is stale relative to the XRP quote. It is not a synchronized cross-venue basis or arbitrage observation.
+
+These are one-shot ticker/top-of-book observations, not Level-2 depth or continuous liquidity. Rendered responses did not include raw HTTP bytes or SHA-256 receipts; all remain model-ineligible and no forecast was issued.
+
+Sources: https://api.kraken.com/0/public/Ticker?pair=XRPUSD ; https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT ; https://www.okx.com/api/v5/market/ticker?instId=USDT-USD
+
+### 4. Current repository disposition
+
+At this snapshot, PR #1673 remains draft and open, 494 commits ahead / zero behind, 1,475 changed files, based on main `73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f`. Main tree is 1,744 entries / 1,572 blobs; integration tree 3,018 entries / 2,833 blobs; no main paths are missing. No new branch or PR was created. The #1663 predecessor remains superseded but open pending successor merge and main verification. All 16 open PRs are preserved.
+
+The follow-up commit fixes the Franklin test field name and adds the Circle/Coinbase structured SEC evidence, market-quality observation and regression test. Its exact-head full suite, dependency/security checks and fail-closed gate must run again. Merge remains NO_MERGE: PR is draft, has zero independent approvals, effective branch-protection settings are inaccessible (HTTP 403), Pages publication is not authorized and the A2A runner's sandbox/credential isolation remains unresolved.
+
+**DESIGNED:** receipt-backed public ingestion, point-in-time features, baselines, leakage-safe walk-forward evaluation, calibration, drift and forecast ledger.
+
+**EXECUTED:** current main/tree/PR/overlap/security audit; exact-head CI failure diagnosis and test repair; Franklin XRP ETF cash/in-kind reconciliation; Circle/Coinbase Q3 USDC distribution economics; live ticker quality check; durable handoff and structured evidence updates.
+
+**VERIFIED:** main SHA/tree; all 16 open PRs and changed-path overlaps; 243798 exact-head full-suite failure and its single assertion cause; dependency, money, A2A and Pages checks passed; primary SEC filing figures and arithmetic reconciled. The follow-up commit's exact-head suite is pending.
+
+No merge, source-PR closure, force-push, deployment, Pages publication initiated by this run, secret read/rotation, Space restart, external model dispatch, external data transfer, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.

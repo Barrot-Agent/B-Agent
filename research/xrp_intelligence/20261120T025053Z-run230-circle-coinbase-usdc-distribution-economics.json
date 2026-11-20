@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "artifact_type": "circle_coinbase_usdc_distribution_economics_reconciliation",
+  "captured_at_utc": "2026-11-20T02:50:53Z",
+  "reporting_period_end": "2026-09-30",
+  "source_capture": {
+    "retrieved_at_utc": "2026-11-20T02:50:53Z",
+    "raw_http_bytes_captured": false,
+    "raw_sha256_receipt": "NOT_CAPTURED",
+    "external_timestamp_anchor": "NOT_ANCHORED",
+    "model_eligible": false,
+    "feature_store_eligible": false,
+    "limitation": "Both SEC filings were inspected through rendered web content. Exact raw HTTP response bytes and SHA-256 receipts were not captured by Barrot ingestion."
+  },
+  "circle_filing": {
+    "registrant": "Circle Internet Group, Inc.",
+    "form": "10-Q",
+    "accession": "000187604226000311",
+    "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+    "source_independence_group": "circle_issuer_sec_filing",
+    "distribution_costs_to_coinbase_usd": {
+      "q3_2026": 331300000,
+      "q3_2025": 361300000,
+      "nine_months_2026": 986600000,
+      "nine_months_2025": 996800000
+    },
+    "nine_month_decrease_to_coinbase_usd": -10200000,
+    "total_distribution_and_transaction_costs_nine_month_change_usd": 24000000,
+    "total_distribution_and_transaction_costs_nine_month_change_percent": 2,
+    "increase_from_other_strategic_distribution_partnerships_usd": 34200000,
+    "explanation": "Circle says the USD 10.2M decrease in distribution costs paid to Coinbase was caused by a lower Coinbase share of average USDC on-platform balances, which more than offset higher reserve income. Total distribution and transaction costs nevertheless increased USD 24.0M (2.0%) due to increased activity with other strategic distribution partners.",
+    "allocation_mechanics": "Coinbase receives allocations based on USDC held on its platform after Circle's issuer retention, and half of the remaining amount tied to broader ecosystem growth after amounts paid to approved third-party ecosystem participants.",
+    "average_platform_share_metric": "Circle defines daily weighted-average percentage of USDC on platform as the daily platform-held share weighted by total USDC in circulation; this percentage is used to calculate the platform's share of reserve income."
+  },
+  "coinbase_filing": {
+    "registrant": "Coinbase Global, Inc.",
+    "form": "10-Q",
+    "accession": "000167978826000122",
+    "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+    "source_independence_group": "coinbase_exchange_sec_filing",
+    "stablecoin_revenue_usd": {
+      "q3_2026": 306905000,
+      "q3_2025": 324534000,
+      "nine_months_2026": 904487000,
+      "nine_months_2025": 907485000
+    },
+    "stablecoin_revenue_change_usd": {
+      "q3": -17629000,
+      "nine_months": -2998000
+    },
+    "higher_average_usdc_balance_effect_usd": {
+      "q3": 84600000,
+      "nine_months": 201600000
+    },
+    "lower_interest_rate_effect_usd": {
+      "q3": 52800000,
+      "nine_months": 166200000
+    },
+    "operational_disclosure": "Coinbase reported that average USDC held in Coinbase products reached an all-time high and that it renewed its arrangement with Circle on the same terms.",
+    "source_note": "Coinbase describes the stablecoin-revenue drivers as increases from higher average USDC balances and decreases from lower average interest rates. These are management-attributed effects, not separate cash receipts."
+  },
+  "relationship": {
+    "parties": [
+      "Circle Internet Financial / Circle Internet Group",
+      "Coinbase Global, Inc."
+    ],
+    "type": "USDC distribution and reserve-income collaboration agreement",
+    "direction": "Circle records distribution costs associated with the Coinbase agreement; Coinbase records stablecoin revenue and other related operating economics.",
+    "corroboration": "Two separate counterparty SEC filings disclose the same underlying arrangement and related economics. They are distinct issuer disclosures, but not independent of the same commercial contract.",
+    "accounting_boundary": "Circle's distribution costs paid to Coinbase and Coinbase's stablecoin revenue are different accounting measures. Do not subtract them to infer Coinbase profit, Circle margin, or a fully reconciled settlement amount."
+  },
+  "interpretation": {
+    "absolute_balance_vs_relative_share": "Coinbase can report an all-time-high absolute average USDC balance while Circle reports a lower Coinbase share of average USDC on-platform balances; absolute balances and share of total circulation are different measures.",
+    "circle_distribution_costs_equal_coinbase_revenue": false,
+    "xrp_as_required_bridge_evidenced": false,
+    "xrp_demand_signal": "None established. The agreement concerns USDC distribution and reserve-income allocation; it does not establish that XRP is required as a bridge asset or that USDC balances create XRP demand.",
+    "directional_forecast_issued": false,
+    "model_eligible": false
+  },
+  "counter_hypotheses": [
+    "A lower Coinbase share of average USDC on-platform balances may coexist with a record absolute Coinbase USDC balance if total USDC circulation grows faster.",
+    "Circle distribution expense may move differently from Coinbase stablecoin revenue because the two issuers classify and recognize amounts differently and Coinbase stablecoin revenue may include other sources.",
+    "Growth in USDC distribution and Coinbase stablecoin economics does not establish XRP bridge usage, XRP collateral demand or net XRP accumulation."
+  ],
+  "source_line_references": {
+    "circle": "SEC 10-Q lines 1636, 1684-1688 and 1850",
+    "coinbase": "SEC 10-Q lines 1521-1522, 1580-1592 and 1605-1611"
+  },
+  "sources": [
+    {
+      "source_id": "SEC-CIRCLE-10Q-2026-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "publisher": "Circle Internet Group, Inc. / SEC EDGAR",
+      "source_type": "primary",
+      "source_independence_group": "circle_issuer_sec_filing",
+      "period_end": "2026-09-30"
+    },
+    {
+      "source_id": "SEC-COINBASE-10Q-2026-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "Coinbase Global, Inc. / SEC EDGAR",
+      "source_type": "primary",
+      "source_independence_group": "coinbase_exchange_sec_filing",
+      "period_end": "2026-09-30"
+    }
+  ]
+}

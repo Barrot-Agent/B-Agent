@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-20T02:44:04Z",
+  "captured_at_utc": "2026-11-20T02:50:53Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -18,15 +18,15 @@
       "changed_files": 1475,
       "changed_workflow_files": 69,
       "formal_reviews": 0,
-      "snapshot_head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
+      "snapshot_head_sha": "24379814ee4f00536065881a974d54294d69900c",
       "commits": 494,
-      "additions": 538337,
+      "additions": 538394,
       "deletions": 6981,
-      "mergeable_state": "GitHub reports mergeable; full repository suite on 5199cf failed two evidence-contract assertions (one fixed on 0bf27, one artifact field fix in this update); 0bf27 exact-head full suite is still running. PR remains draft, no independent approval, branch-protection HTTP 403, Pages publication unauthorized, A2A runner sandbox/credential isolation unresolved.",
+      "mergeable_state": "GitHub reports mergeable; exact-head full suite on 243798 failed one evidence-test field-name assertion (xrp_sold_for_expenses vs canonical xrp_sold_for_fund_expenses), corrected in this update. Dependency audits, money audit, A2A tests and Pages validation passed; PR remains draft with zero independent approvals, branch-protection HTTP 403, Pages publication unauthorized and A2A runner sandbox/credential isolation unresolved.",
       "review_comments": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
-      "current_pr_head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
+      "current_pr_head_sha": "24379814ee4f00536065881a974d54294d69900c",
       "snapshot_ahead_by": 364,
       "snapshot_changed_files": 1438,
       "handoff_update_commit_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
@@ -56,8 +56,8 @@
       "formal_approvals": 0,
       "unresolved_review_threads": 0,
       "classification": "BLOCKED_ACTIVE_INTEGRATION_DRAFT",
-      "updated_at": "2026-11-20T02:44:04Z",
-      "snapshot_commit_boundary": "The repository and CI state are observed at 0bf27 before this artifact/handoff correction commit."
+      "updated_at": "2026-11-20T02:50:53Z",
+      "snapshot_commit_boundary": "Repository state is observed at 243798 before this test/evidence/handoff update."
     },
     "tree_counts": {
       "main": {
@@ -249,7 +249,7 @@
       "data_flow": {
         "status": "verified",
         "path": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
-        "last_verified_at_utc": "2026-11-20T02:44:04Z",
+        "last_verified_at_utc": "2026-11-20T02:50:53Z",
         "observed_flow": "Inspected current main, complete recursive trees, all 16 open PRs, pairwise changed-path overlaps, branch ancestry, exact-head CI and failed-test logs, dependency/money/A2A checks, workflow side effects, branch-protection response and canonical handoff; committed only to the existing integration branch; no main write or external-model transfer."
       },
       "permissions": [
@@ -396,7 +396,7 @@
     "external_dispatch_performed": false,
     "external_data_transfer_performed": false,
     "task_assignments_status": "PROPOSED_NOT_DISPATCHED_FOR_EIGHT_EXTERNAL_PLATFORMS",
-    "chatgpt_task_status": "EXECUTED: verified exact 5199 full-suite failure (4,387 passed, 2 failed) and diagnosed both evidence-contract failures; corrected the latest-ingestion/NOT_ISSUED test contract and ETF valuation arithmetic; added explicit top-level model_eligible=false to the SEC artifact; verified current 0bf27 push/PR checks are running with core, Pages, dependency, money and A2A checks passing.",
+    "chatgpt_task_status": "EXECUTED: inspected exact 243798 full-suite log; diagnosed sole Franklin artifact test field-name mismatch; corrected it; added counterparty SEC filings on Circle/Coinbase USDC distribution economics and a research-only synchronized-market-quality observation with timestamp and non-admission caveats.",
     "evidence_packet_schema": [
       "claim_id",
       "claim",
@@ -978,23 +978,72 @@
       "forecast_issuance_allowed": false,
       "limitation": "No PSI result is available for any feature; a stable or absent drift statistic cannot support a forecast."
     },
-    "current_forecast_status": "NOT_ISSUED"
+    "current_forecast_status": "NOT_ISSUED",
+    "latest_market_snapshot_research_only": {
+      "captured_at_utc": "2026-11-20T02:42:35.478Z",
+      "capture_method": "rendered public exchange API responses",
+      "raw_http_bytes_captured": false,
+      "raw_sha256_receipt": "NOT_CAPTURED",
+      "external_timestamp_anchor": "NOT_ANCHORED",
+      "model_eligible": false,
+      "kraken_xrpusd": {
+        "last_usd": 0.95208,
+        "bid_usd": 0.95234,
+        "ask_usd": 0.95235,
+        "bid_size_xrp": 5377,
+        "ask_size_xrp": 133,
+        "volume_24h_xrp": 47250073.67837709,
+        "vwap_24h_usd": 0.97248083,
+        "low_24h_usd": 0.94679,
+        "high_24h_usd": 0.9968,
+        "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "event_timestamp": "not supplied by this endpoint"
+      },
+      "okx_xrp_usdt": {
+        "last_usdt": 0.9524,
+        "bid_usdt": 0.9523,
+        "ask_usdt": 0.9524,
+        "bid_size_xrp": 1248.6,
+        "ask_size_xrp": 1893.8,
+        "volume_24h_xrp": 40392381.520037,
+        "event_timestamp_utc": "2026-11-20T02:24:57.778Z",
+        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+      },
+      "okx_usdt_usd": {
+        "last_usd": 0.99889,
+        "event_timestamp_utc": "2026-11-20T01:57:58.072Z",
+        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD"
+      },
+      "normalization": {
+        "okx_usdt_usd_quote_age_relative_to_xrp_quote_seconds": 1619.706,
+        "indicative_normalized_xrp_usd": 0.951342,
+        "indicative_basis_vs_kraken_bps": -7.74,
+        "disposition": "REJECTED — USDT/USD conversion leg is 26m59.706s older than XRP/USDT quote; Kraken endpoint supplies no exchange event timestamp. Not a synchronized cross-venue basis or arbitrage observation."
+      },
+      "context": {
+        "prior_kraken_rendered_observation_usd": 0.9645,
+        "prior_observation_time_utc": "2026-11-20T01:32:38Z",
+        "indicative_change_percent": -1.287,
+        "current_vs_kraken_24h_vwap_percent": -2.097,
+        "caveat": "One-shot ticker/top-of-book data is cancelable liquidity, not Level-2 depth or a continuous order-book series. No model feature or directional forecast admitted."
+      }
+    }
   },
   "ci_evidence": {
-    "exact_code_head": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
-    "push_ci_run": 44662608601,
+    "exact_code_head": "24379814ee4f00536065881a974d54294d69900c",
+    "push_ci_run": 44662901648,
     "full_suite": {
-      "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
-      "run_id": 44662608601,
-      "status": "in_progress",
-      "conclusion": null,
-      "passed": 0,
-      "failed": 0,
-      "skipped": 0,
-      "warnings": 0,
-      "subtests": 0,
-      "inclusive_coverage_percent": 0,
-      "note": "Exact-head full repository test job is still running; no result inferred."
+      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+      "run_id": 44662901648,
+      "status": "completed",
+      "conclusion": "failure",
+      "passed": 4388,
+      "failed": 1,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 19,
+      "duration_seconds": 159.54,
+      "inclusive_coverage_percent": 71.34
     },
     "wheel_and_installed_v3": "passed",
     "dependency_audit_runs": [
@@ -1008,7 +1057,7 @@
       44657999484
     ],
     "money_audit_run": 44657999499,
-    "pr_ci_run": 44662612933,
+    "pr_ci_run": 44662911250,
     "pr_full_suite": "PR event CI passed on 9c71; full repository suite passed in push run 44393080713.",
     "pre_fix_pr_head_ci": {
       "run_id": 44269593667,
@@ -1039,54 +1088,57 @@
     },
     "current_head_dependency_audits": [
       {
-        "run_id": 44662608619,
+        "run_id": 44662901496,
         "event": "push",
-        "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
+        "head_sha": "24379814ee4f00536065881a974d54294d69900c",
         "conclusion": "success",
         "manifests": 6
       },
       {
-        "run_id": 44662612791,
+        "run_id": 44662911256,
         "event": "pull_request",
-        "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
+        "head_sha": "24379814ee4f00536065881a974d54294d69900c",
         "conclusion": "success",
         "manifests": 6
       }
     ],
     "current_head_fail_closed_runs": [
       {
-        "run_id": 44662608450,
+        "run_id": 44662901493,
         "event": "push",
-        "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
-        "conclusion": "in_progress",
+        "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+        "conclusion": "failure",
         "blockers": [
           "draft PR",
           "zero independent approvals",
-          "branch-protection details HTTP 403"
+          "branch-protection details HTTP 403",
+          "full repository test suite failed"
         ]
       },
       {
-        "run_id": 44662612955,
+        "run_id": 44662911242,
         "event": "pull_request",
-        "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
-        "conclusion": "in_progress",
+        "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+        "conclusion": "failure",
         "blockers": [
           "draft PR",
           "zero independent approvals",
-          "branch-protection details HTTP 403"
+          "branch-protection details HTTP 403",
+          "full repository test suite failed"
         ]
       }
     ],
     "current_head_money_audit": {
-      "run_id": 44662612840,
-      "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
+      "run_id": 44662911290,
+      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
       "event": "pull_request",
-      "conclusion": "success"
+      "conclusion": "success",
+      "tests_passed": 14
     },
     "current_head_pages_validation": {
-      "run_id": 44662608601,
-      "job_id": 136044191865,
-      "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
+      "run_id": 44662901648,
+      "job_id": 136045155065,
+      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
       "conclusion": "success",
       "validation_only": true
     },
@@ -1103,16 +1155,17 @@
       "last_code_ci_result": "success"
     },
     "current_head_full_suite": {
-      "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
-      "run_id": 44662608601,
-      "status": "in_progress",
-      "conclusion": null,
-      "passed": 0,
-      "tests_failed": 0,
-      "skipped": 0,
-      "warnings": 0,
-      "subtests_passed": 0,
-      "inclusive_coverage_percent": 0
+      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+      "run_id": 44662901648,
+      "status": "completed",
+      "conclusion": "failure",
+      "passed": 4388,
+      "tests_failed": 1,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 159.54,
+      "inclusive_coverage_percent": 71.34
     },
     "previous_verified_full_suite": {
       "run_id": 44322684443,
@@ -1217,12 +1270,12 @@
       "note": "The exact-head push full suite remains the controlling test evidence; no merge until it and all required checks finish."
     },
     "current_pr_head_ci": {
-      "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
-      "push_ci_run_id": 44662608601,
-      "push_ci_conclusion": null,
-      "pr_event_run_id": 44662612933,
-      "pr_event_conclusion": null,
-      "pr_event_full_suite_status": "in_progress"
+      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+      "push_ci_run_id": 44662901648,
+      "push_ci_conclusion": "failure",
+      "pr_event_run_id": 44662911250,
+      "pr_event_conclusion": "failure",
+      "pr_event_full_suite_status": "failure"
     },
     "last_verified_code_head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
     "last_verified_full_suite": {
@@ -1311,19 +1364,19 @@
       "reason": "Cloudflare authentication error 10000/9109"
     },
     "next_documentation_commit_exact_head_ci": "PENDING; map/handoff documentation-only commit must be tested on its own exact head.",
-    "latest_exact_head_push_ci_run": 44662608601,
-    "latest_exact_head_pr_ci_run": 44662612933,
-    "latest_exact_head_full_suite_run": 44662608601,
-    "latest_exact_head_full_suite_result": "IN_PROGRESS on exact head 0bf27d; core tests and Pages validation passed; dependency audit, money audit and A2A Worker tests passed; full repository suite pending.",
-    "latest_exact_head_full_suite": "IN_PROGRESS on exact head 0bf27d; core tests and Pages validation passed; dependency audit, money audit and A2A Worker tests passed; full repository suite pending.",
-    "latest_exact_head_dependency_audit_run": 44662608619,
-    "latest_exact_head_pr_dependency_audit_run": 44662612791,
-    "latest_exact_head_pr_money_audit_run": 44662612840,
-    "latest_exact_head_fail_closed_run": 44662612955,
-    "latest_exact_head_a2a_worker_tests_run": 44662612849,
+    "latest_exact_head_push_ci_run": 44662901648,
+    "latest_exact_head_pr_ci_run": 44662911250,
+    "latest_exact_head_full_suite_run": 44662901648,
+    "latest_exact_head_full_suite_result": "FAIL on exact head 243798: 4,388 passed, 1 failed, 1 skipped, 11 warnings, 19 subtests; 159.54 seconds; 71.34% coverage. Sole failure is test field-name mismatch, fixed in this update.",
+    "latest_exact_head_full_suite": "FAIL on exact head 243798: 4,388 passed, 1 failed, 1 skipped, 11 warnings, 19 subtests; 159.54 seconds; 71.34% coverage. Sole failure is test field-name mismatch, fixed in this update.",
+    "latest_exact_head_dependency_audit_run": 44662901496,
+    "latest_exact_head_pr_dependency_audit_run": 44662911256,
+    "latest_exact_head_pr_money_audit_run": 44662911290,
+    "latest_exact_head_fail_closed_run": 44662911242,
+    "latest_exact_head_a2a_worker_tests_run": 44662911268,
     "current_head_a2a_worker_tests": {
-      "run_id": 44662612849,
-      "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
+      "run_id": 44662911268,
+      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
       "event": "pull_request",
       "conclusion": "success"
     },
@@ -1348,22 +1401,20 @@
       ]
     },
     "current_head_core_tests": {
-      "push_job_id": 136044192197,
-      "push_conclusion": "success",
-      "pr_job_id": null,
-      "pr_conclusion": null
+      "push_job_id": 136045155098,
+      "push_conclusion": "success"
     },
     "latest_attempt": {
-      "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
-      "push_ci_run": 44662608601,
-      "pr_ci_run": 44662612933,
-      "full_suite": "IN_PROGRESS",
-      "dependency_push_run": 44662608619,
-      "dependency_pr_run": 44662612791,
-      "money_audit_run": 44662612840,
-      "a2a_worker_tests_run": 44662612849,
-      "fail_closed_push_run": 44662608450,
-      "fail_closed_pr_run": 44662612955
+      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+      "push_ci_run": 44662901648,
+      "pr_ci_run": 44662911250,
+      "full_suite": "FAIL_ONE_TEST",
+      "dependency_push_run": 44662901496,
+      "dependency_pr_run": 44662911256,
+      "money_audit_run": 44662911290,
+      "a2a_worker_tests_run": 44662911268,
+      "fail_closed_push_run": 44662901493,
+      "fail_closed_pr_run": 44662911242
     },
     "last_completed_head_5199": {
       "head_sha": "5199cf68f2603f68158702cf3828b43c729c9e2b",
@@ -1381,6 +1432,21 @@
         "test_latest_map_matches_repository_and_forecast_admission_state: test expected historical ingestion run 44565285365 while canonical latest ingestion is 44654352643; corrected on 0bf27.",
         "test_run230_franklin_xrp_etf_cash_and_in_kind_flows_reconcile: artifact lacked top-level model_eligible flag; added in this update."
       ]
+    },
+    "last_completed_head_243798": {
+      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+      "push_run": 44662901648,
+      "pr_run": 44662911250,
+      "status": "completed",
+      "conclusion": "failure",
+      "passed": 4388,
+      "tests_failed": 1,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 159.54,
+      "inclusive_coverage_percent": 71.34,
+      "failure": "test_run230_franklin_xrp_etf_cash_and_in_kind_flows_reconcile: test used xrp_sold_for_expenses; canonical artifact field is xrp_sold_for_fund_expenses. Assertion corrected in this update."
     }
   },
   "security_and_governance": {
@@ -1718,17 +1784,17 @@
       "review_threads": 0,
       "requested_reviewers": 0,
       "mergeable": true,
-      "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
+      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
       "base_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
       "ahead_by": 494,
       "behind_by": 0,
       "changed_files": 1475,
       "changed_workflow_files": 69,
-      "exact_head_full_suite": "IN_PROGRESS on exact head 0bf27d; core tests and Pages validation passed; dependency, money and A2A checks passed; full repository suite pending.",
+      "exact_head_full_suite": "FAIL on 243798: 4,388 passed, 1 failed, 1 skipped; sole failure is test fixture field-name mismatch, corrected in this update.",
       "dependency_audit": "PASS on push and pull_request",
       "money_audit": "PASS",
       "a2a_worker_tests": "PASS",
-      "fail_closed": "IN_PROGRESS; merge remains blocked by draft/review/branch-protection requirements"
+      "fail_closed": "BLOCKED"
     },
     "main_paid_issue_publisher": {
       "active": true,
@@ -1767,7 +1833,7 @@
       "classification": "blocked",
       "changed_files": 1474,
       "overlap_with_1673": 1474,
-      "note": "Active consolidated V3/XRP integration successor; 494 commits ahead and zero behind at the captured snapshot; draft; exact-head full suite on 0bf27d in progress after core, Pages, dependency, money and A2A checks passed; zero independent approvals; branch-protection HTTP 403; Pages publication unauthorized; A2A runner sandbox/credential isolation unresolved."
+      "note": "Active consolidated V3/XRP integration successor; 494 commits ahead and zero behind at snapshot; draft; exact-head full suite on 243798 has one test fixture field-name mismatch, corrected in this update; dependency audits, money audit, A2A tests and Pages validation passed; no independent approval; branch-protection HTTP 403; Pages publication unauthorized; A2A runner sandbox/credential isolation unresolved."
     },
     {
       "number": 1663,
@@ -1975,6 +2041,16 @@
       "model_eligible": false,
       "caveat": "Holdings growth is not all cash demand; preserve cash purchases, in-kind contributions, expense sales and zero redemptions separately.",
       "fair_value_discount_to_cost_percent": 12.317126212427254
+    },
+    "circle_coinbase_usdc_distribution_economics": {
+      "artifact_path": "research/xrp_intelligence/20261120T025053Z-run230-circle-coinbase-usdc-distribution-economics.json",
+      "circle_9m_distribution_costs_to_coinbase_usd": 986600000,
+      "circle_9m_2025_distribution_costs_to_coinbase_usd": 996800000,
+      "circle_9m_change_usd": -10200000,
+      "coinbase_9m_stablecoin_revenue_usd": 904487000,
+      "coinbase_9m_2025_stablecoin_revenue_usd": 907485000,
+      "model_eligible": false,
+      "caveat": "Circle distribution costs and Coinbase stablecoin revenue are separate accounting measures, not directly reconcilable. No XRP bridge requirement is established."
     }
   },
   "institutional_relationship_graph": {
@@ -2332,6 +2408,20 @@
       "administrator_and_transfer_agent": "BNY Mellon Asset Servicing",
       "cash_custodian": "BNY Mellon Asset Servicing",
       "caveat": "Do not conflate BNY's cash-custody role for XRPZ with its separate Ripple/RLUSD custody relationship."
+    },
+    "circle_coinbase_distribution_economics": {
+      "evidence_status": "two_counterparty_primary_SEC_filings",
+      "artifact_path": "research/xrp_intelligence/20261120T025053Z-run230-circle-coinbase-usdc-distribution-economics.json",
+      "circle_distribution_costs_to_coinbase_usd": {
+        "q3_2026": 331300000,
+        "nine_months_2026": 986600000
+      },
+      "coinbase_stablecoin_revenue_usd": {
+        "q3_2026": 306905000,
+        "nine_months_2026": 904487000
+      },
+      "coinbase_average_usdc_balances": "all-time high; renewed Circle arrangement on same terms",
+      "caveat": "Absolute Coinbase USDC balances can be at an all-time high while its share of total average USDC on-platform balances declines. No XRP bridge usage established."
     }
   },
   "sbic_identity_reconciliation": {
@@ -4155,9 +4245,9 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-20T02:44:04Z",
+  "last_verified_at_utc": "2026-11-20T02:50:53Z",
   "latest_run_id": 230,
-  "latest_run_captured_at_utc": "2026-11-20T02:44:04Z",
+  "latest_run_captured_at_utc": "2026-11-20T02:50:53Z",
   "current_main_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
   "current_successor_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z",
   "observed_main_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
@@ -4558,7 +4648,7 @@
       "classification": "blocked",
       "changed_files": 1474,
       "overlap_with_1673": 1474,
-      "note": "Active consolidated V3/XRP integration successor; 494 commits ahead and zero behind at the captured snapshot; draft; exact-head full suite on 0bf27d in progress after core, Pages, dependency, money and A2A checks passed; zero independent approvals; branch-protection HTTP 403; Pages publication unauthorized; A2A runner sandbox/credential isolation unresolved."
+      "note": "Active consolidated V3/XRP integration successor; 494 commits ahead and zero behind at snapshot; draft; exact-head full suite on 243798 has one test fixture field-name mismatch, corrected in this update; dependency audits, money audit, A2A tests and Pages validation passed; no independent approval; branch-protection HTTP 403; Pages publication unauthorized; A2A runner sandbox/credential isolation unresolved."
     },
     {
       "number": 1663,
@@ -5100,13 +5190,13 @@
       "real_money_actions": 0
     }
   },
-  "snapshot_boundary": "Repository state and workflow evidence captured at integration head 0bf27d943f9e9f866642b9bc91dc7c3b485086e6; this artifact-flag/handoff update follows that snapshot and requires its own exact-head CI.",
+  "snapshot_boundary": "Repository and CI state captured at integration head 24379814ee4f00536065881a974d54294d69900c; this follow-up adds Circle/Coinbase SEC relationship evidence, a research-only market observation and fixes the Franklin artifact field-name assertion. The resulting commit requires its own exact-head CI.",
   "latest_run_230": {
     "captured_at_utc": "2026-11-20T02:31:22Z",
     "repository": {
       "main_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
       "integration_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z",
-      "integration_head_before_artifact_fix": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
+      "integration_head_before_followup": "24379814ee4f00536065881a974d54294d69900c",
       "pr_number": 1673,
       "state": "open",
       "draft": true,
@@ -5120,51 +5210,45 @@
       "main_paths_missing_from_integration": 0
     },
     "ci": {
-      "push_ci_run": 44662608601,
-      "pr_ci_run": 44662612933,
-      "prior_head_5199_full_suite": {
-        "run_id": 44662244655,
-        "passed": 4387,
-        "failed": 2,
+      "push_ci_run": 44662901648,
+      "pr_ci_run": 44662911250,
+      "full_suite": {
+        "status": "FAIL",
+        "passed": 4388,
+        "failed": 1,
         "skipped": 1,
         "warnings": 11,
-        "duration_seconds": 128.07
+        "subtests": 19,
+        "duration_seconds": 159.54,
+        "coverage_percent": 71.34
       },
-      "full_suite": {
-        "status": "IN_PROGRESS",
-        "passed": null,
-        "failed": null,
-        "skipped": null,
-        "coverage_percent": null
-      },
-      "core_tests": "PASS",
       "dependency_audits": [
         {
-          "run_id": 44662608619,
+          "run_id": 44662901496,
           "status": "PASS"
         },
         {
-          "run_id": 44662612791,
+          "run_id": 44662911256,
           "status": "PASS"
         }
       ],
       "money_audit": {
-        "run_id": 44662612840,
+        "run_id": 44662911290,
         "status": "PASS"
       },
       "a2a_worker_tests": {
-        "run_id": 44662612849,
+        "run_id": 44662911268,
         "status": "PASS"
       },
       "pages_validation": "PASS_VALIDATION_ONLY",
       "fail_closed_runs": [
         {
-          "run_id": 44662608450,
-          "status": "IN_PROGRESS"
+          "run_id": 44662901493,
+          "status": "FAIL"
         },
         {
-          "run_id": 44662612955,
-          "status": "IN_PROGRESS"
+          "run_id": 44662911242,
+          "status": "FAIL"
         }
       ]
     },
@@ -5332,15 +5416,86 @@
       "real_money_actions": 0
     },
     "post_update_head_ci": {
-      "head_sha": "0bf27d943f9e9f866642b9bc91dc7c3b485086e6",
-      "full_suite_status": "IN_PROGRESS",
+      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+      "full_suite_status": "FAIL_ONE_TEST",
       "core_tests": "PASS",
       "pages_validation": "PASS_VALIDATION_ONLY",
       "dependency_push": "PASS",
       "dependency_pr": "PASS",
       "money_audit": "PASS",
       "a2a_worker_tests": "PASS",
-      "fail_closed": "IN_PROGRESS"
+      "fail_closed": "FAIL_CLOSED"
+    },
+    "market_snapshot_research_only": {
+      "captured_at_utc": "2026-11-20T02:42:35.478Z",
+      "capture_method": "rendered public exchange API responses",
+      "raw_http_bytes_captured": false,
+      "raw_sha256_receipt": "NOT_CAPTURED",
+      "external_timestamp_anchor": "NOT_ANCHORED",
+      "model_eligible": false,
+      "kraken_xrpusd": {
+        "last_usd": 0.95208,
+        "bid_usd": 0.95234,
+        "ask_usd": 0.95235,
+        "bid_size_xrp": 5377,
+        "ask_size_xrp": 133,
+        "volume_24h_xrp": 47250073.67837709,
+        "vwap_24h_usd": 0.97248083,
+        "low_24h_usd": 0.94679,
+        "high_24h_usd": 0.9968,
+        "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "event_timestamp": "not supplied by this endpoint"
+      },
+      "okx_xrp_usdt": {
+        "last_usdt": 0.9524,
+        "bid_usdt": 0.9523,
+        "ask_usdt": 0.9524,
+        "bid_size_xrp": 1248.6,
+        "ask_size_xrp": 1893.8,
+        "volume_24h_xrp": 40392381.520037,
+        "event_timestamp_utc": "2026-11-20T02:24:57.778Z",
+        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+      },
+      "okx_usdt_usd": {
+        "last_usd": 0.99889,
+        "event_timestamp_utc": "2026-11-20T01:57:58.072Z",
+        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD"
+      },
+      "normalization": {
+        "okx_usdt_usd_quote_age_relative_to_xrp_quote_seconds": 1619.706,
+        "indicative_normalized_xrp_usd": 0.951342,
+        "indicative_basis_vs_kraken_bps": -7.74,
+        "disposition": "REJECTED — USDT/USD conversion leg is 26m59.706s older than XRP/USDT quote; Kraken endpoint supplies no exchange event timestamp. Not a synchronized cross-venue basis or arbitrage observation."
+      },
+      "context": {
+        "prior_kraken_rendered_observation_usd": 0.9645,
+        "prior_observation_time_utc": "2026-11-20T01:32:38Z",
+        "indicative_change_percent": -1.287,
+        "current_vs_kraken_24h_vwap_percent": -2.097,
+        "caveat": "One-shot ticker/top-of-book data is cancelable liquidity, not Level-2 depth or a continuous order-book series. No model feature or directional forecast admitted."
+      }
+    },
+    "coinbase_circle": {
+      "artifact_path": "research/xrp_intelligence/20261120T025053Z-run230-circle-coinbase-usdc-distribution-economics.json",
+      "circle_q3_distribution_costs_to_coinbase_usd": 331300000,
+      "circle_9m_distribution_costs_to_coinbase_usd": 986600000,
+      "coinbase_q3_stablecoin_revenue_usd": 306905000,
+      "coinbase_9m_stablecoin_revenue_usd": 904487000,
+      "circle_costs_equal_coinbase_revenue": false,
+      "xrp_bridge_requirement_evidenced": false,
+      "model_eligible": false
+    },
+    "institutional_relationships": {
+      "circle_coinbase": {
+        "artifact_path": "research/xrp_intelligence/20261120T025053Z-run230-circle-coinbase-usdc-distribution-economics.json",
+        "circle_q3_distribution_costs_to_coinbase_usd": 331300000,
+        "circle_9m_distribution_costs_to_coinbase_usd": 986600000,
+        "coinbase_q3_stablecoin_revenue_usd": 306905000,
+        "coinbase_9m_stablecoin_revenue_usd": 904487000,
+        "circle_costs_equal_coinbase_revenue": false,
+        "xrp_bridge_requirement_evidenced": false,
+        "model_eligible": false
+      }
     }
   }
 }

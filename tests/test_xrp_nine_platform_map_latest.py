@@ -414,10 +414,40 @@ def test_run230_franklin_xrp_etf_cash_and_in_kind_flows_reconcile():
     assert (
         holdings["cash_purchased_xrp"]
         + holdings["in_kind_contributed_xrp"]
-        - holdings["xrp_sold_for_expenses"]
+        - holdings["xrp_sold_for_fund_expenses"]
         == holdings["net_increase_xrp"]
     )
     roles = evidence["custody_and_prime_broker_roles"]
     assert roles["xrp_custodian"] == "Coinbase Custody Trust Company, LLC"
     assert roles["prime_broker"] == "Coinbase Inc. (affiliate of XRP custodian)"
     assert roles["cash_custodian"] == "BNY Mellon Asset Servicing"
+
+
+def test_run230_circle_coinbase_distribution_economics_keep_accounting_boundaries():
+    root = Path(__file__).resolve().parents[1]
+    evidence_path = (
+        root
+        / "research"
+        / "xrp_intelligence"
+        / "20261120T025053Z-run230-circle-coinbase-usdc-distribution-economics.json"
+    )
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+    assert evidence["model_eligible"] is False
+    assert evidence["source_capture"]["raw_http_bytes_captured"] is False
+    assert evidence["source_capture"]["raw_sha256_receipt"] == "NOT_CAPTURED"
+
+    circle = evidence["circle_filing"]
+    coinbase = evidence["coinbase_filing"]
+    assert circle["distribution_costs_to_coinbase_usd"]["q3_2026"] == 331300000
+    assert circle["distribution_costs_to_coinbase_usd"]["q3_2025"] == 361300000
+    assert circle["distribution_costs_to_coinbase_usd"]["nine_months_2026"] == 986600000
+    assert circle["distribution_costs_to_coinbase_usd"]["nine_months_2025"] == 996800000
+    assert circle["nine_month_decrease_to_coinbase_usd"] == -10200000
+    assert coinbase["stablecoin_revenue_usd"]["q3_2026"] == 306905000
+    assert coinbase["stablecoin_revenue_usd"]["nine_months_2026"] == 904487000
+    assert coinbase["higher_average_usdc_balance_effect_usd"]["q3"] == 84600000
+    assert coinbase["higher_average_usdc_balance_effect_usd"]["nine_months"] == 201600000
+    assert coinbase["lower_interest_rate_effect_usd"]["q3"] == 52800000
+    assert coinbase["lower_interest_rate_effect_usd"]["nine_months"] == 166200000
+    assert evidence["interpretation"]["circle_distribution_costs_equal_coinbase_revenue"] is False
+    assert evidence["interpretation"]["xrp_as_required_bridge_evidenced"] is False
