@@ -7622,3 +7622,33 @@ The Franklin XRPZ evidence artifact's cost-to-fair-value discount was recomputed
 This follow-up correction is documentation/evidence/test-only. It creates no new branch or PR. It will trigger another exact-head run; neither the 19f09 failure nor the still-running 5199 run is being represented as a pass for the follow-up commit.
 
 **Current disposition remains NO_MERGE.** PR #1673 is draft with zero independent approvals; effective branch-protection settings remain inaccessible (HTTP 403); Pages publication is unauthorized; transitive workflow/script security review is incomplete. No external or financial action occurred.
+
+
+---
+
+## Run 230 follow-up 2 — 5199 exact-suite result and 0bf27 artifact fix — 2026-11-20T02:44:04Z
+
+### 5199 exact-head result
+
+Push CI [44662244655](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662244655) completed on `5199cf68f2603f68158702cf3828b43c729c9e2b`:
+
+- **4,387 passed, 2 failed, 1 skipped, 11 warnings, 19 subtests**.
+- Runtime 128.07 seconds; inclusive coverage 71.34%.
+- The two failures were evidence-contract issues:
+  1. The test still expected historical ingestion run `44565285365`; the canonical latest ingestion in the map is `44654352643`. The 0bf27 test update corrected this and aligned forecast status to `NOT_ISSUED`.
+  2. The new Franklin SEC evidence test expected a top-level `model_eligible` field, while the artifact only carried the equivalent nested prediction-admission field. The artifact fix in this update adds explicit top-level `model_eligible: false`.
+
+The 5199 result is not a pass. The PR-event CI run 44662250904 was still running at this snapshot.
+
+### Current head before this follow-up
+
+- Current observed branch head: `0bf27d943f9e9f866642b9bc91dc7c3b485086e6`.
+- PR #1673: 494 commits ahead, zero behind; 1,475 changed files; 538,337 additions; 6,981 deletions.
+- Recursive trees: main 1,744 entries / 1,572 blobs; integration 3,018 entries / 2,833 blobs; zero main paths missing.
+- Push CI [44662608601](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662608601) and PR CI [44662612933](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662612933) are running the full repository suite.
+- Core tests passed; Pages validation passed without deployment.
+- Dependency audits [44662608619](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662608619) and [44662612791](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662612791) passed all six manifests.
+- Money audit [44662612840](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662612840) passed; A2A Worker tests [44662612849](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662612849) passed.
+- Fail-closed checks [44662608450](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662608450) and [44662612955](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662612955) were still running.
+
+This artifact/handoff correction adds no new branch, PR or runtime workflow. Its resulting commit requires its own exact-head CI. Forecast issuance remains NOT_ISSUED and merge remains blocked.
