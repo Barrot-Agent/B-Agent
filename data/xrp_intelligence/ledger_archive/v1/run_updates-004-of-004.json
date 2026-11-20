@@ -1,0 +1,260 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 3,
+  "chunk_count": 4,
+  "record_count": 2,
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T00:13:00Z",
+      "update_type": "BINANCE_SECURITY_FREEZE_ASK_COIN_ACTUAL_CAPITAL_SBI_SBIC_CREATOR_IDENTITY_AND_WORKFLOW_AUDIT",
+      "main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-20261029",
+        "SRC-AP-BINANCE-SECURITY-20261029",
+        "SRC-XRPL-FREEZE-CONTROLS-20261030",
+        "SRC-PRIVY-RIPPLE-XRPL-20261013",
+        "SRC-TRADRADAR-XRP-PERP-20261029T1905Z",
+        "SRC-CMC-XRP-QUOTE-20261030T0012Z",
+        "SRC-COINDESK-XRP-QUOTE-20261030T0012Z",
+        "SRC-COINBASE-XRP-QUOTE-20261030T0012Z",
+        "SRC-PERMISSION-ASK-DOCS-20261030",
+        "SRC-CMC-PERMISSION-ASK-20261030",
+        "SRC-CMC-GOASK-20261030",
+        "SRC-TIMESTABLOID-ACTUAL-CAPITAL-20251015",
+        "SRC-COINTURK-XRP-MULTIPLIER-202610",
+        "SRC-YOUTUBE-KAMILAH-CHANNEL-20261030",
+        "SRC-IHEART-KAMILAH-CAMILLA-INTERVIEW-20261030"
+      ],
+      "research_snapshot_path": "data/xrp_intelligence/snapshots/20261030T0013Z-binance-freeze-ask-actual-capital-and-platform-audit.json",
+      "research_graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T0013Z-binance-freeze-ask-actual-capital-and-platform-audit.json",
+      "verification_at_recording": {
+        "status": "PR1353_ARCHIVE_VALIDATOR_12_TESTS_PASS_AND_GATE_PASS; PR1355_CORE_CI_347_TESTS_PLUS_8_SUBTESTS_PASS_AND_GATE_PASS; PR1356_CORE_CI_AND_GATE_PENDING; BINANCE_INCIDENT_UNCONFIRMED; FREEZE_ASSET_ATTRIBUTION_UNKNOWN; FORECAST_NOT_ISSUED",
+        "pr1353": {
+          "number": 1353,
+          "head_sha": "70b0734de634e7534c0666dd2e659c7661c51b36",
+          "validator_run_id": 40977696412,
+          "validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40977696412",
+          "tests_passed": 12,
+          "gate_run_id": 40977700019,
+          "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40977700019",
+          "draft": true,
+          "merged": false
+        },
+        "pr1355": {
+          "number": 1355,
+          "head_sha": "33776a0f838e875a8c1dfedc046105520b75659f",
+          "ci_run_id": 40977830076,
+          "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40977830076",
+          "tests_passed": 347,
+          "subtests_passed": 8,
+          "duration_seconds": 8.45,
+          "gate_run_id": 40977830097,
+          "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40977830097",
+          "draft": true,
+          "merged": false,
+          "mergeable": true
+        },
+        "pr1356": {
+          "number": 1356,
+          "head_sha": "5179a5d757314133deb92cb0f81116dd60bc77b4",
+          "ci_run_id": 40978222013,
+          "gate_run_id": 40978222024,
+          "status": "IN_PROGRESS_AT_CAPTURE",
+          "draft": true,
+          "merged": false
+        },
+        "cognitive_pingpong_run": {
+          "run_id": 40977942469,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40977942469",
+          "conclusion": "SUCCESS",
+          "main_sha_after": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+          "finding": "Separate runner jobs did not transfer generated files to commit job; commit job checked out fresh main, git add Barrot-Agent/logs failed with missing path but was ignored, push was Everything up-to-date. No durable cognitive state was committed."
+        },
+        "main_signal": {
+          "timestamp": "2026-10-29T13:23:33.142057+00:00",
+          "score": 44,
+          "confidence": 0,
+          "news_score": 88,
+          "news_entries": 11,
+          "provider_failures": [
+            "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+            "Groq HTTP 429"
+          ],
+          "status": "STALE_INVALID_NOT_A_PRICE_FORECAST"
+        },
+        "main_summary": {
+          "status": "STALE_DIRECTIONAL_NARRATIVE_AND_AUDIO_REFERENCE"
+        },
+        "main_accuracy": {
+          "checked_count": 1683,
+          "correct_count": 772,
+          "accuracy_pct": 45.9,
+          "status": "LEGACY_VARIABLE_HORIZON_NOT_COMPARABLE"
+        },
+        "paper_state": {
+          "position_product": null,
+          "position_size": 0.012445158497236623,
+          "cash_usd": 9009.936613782476,
+          "trade_count": 126,
+          "mutation_performed": false
+        },
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "workflow_dispatch_performed": false,
+        "real_money_trade": false,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-30T00:24:00Z",
+      "update_type": "FRESH_MAIN_SAFETY_PRS_KAGGLE_EXTERNAL_ACTION_GUARD_AND_PUBLIC_VIDEO_INVENTORY",
+      "main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-20261029",
+        "SRC-AP-BINANCE-SECURITY-20261029",
+        "SRC-XRPL-FREEZE-CONTROLS-20261030",
+        "SRC-PRIVY-RIPPLE-XRPL-20261013",
+        "SRC-TRADRADAR-XRP-PERP-20261029T1905Z",
+        "SRC-CMC-XRP-QUOTE-20261030T0012Z",
+        "SRC-COINDESK-XRP-QUOTE-20261030T0012Z",
+        "SRC-COINBASE-XRP-QUOTE-20261030T0012Z",
+        "SRC-PERMISSION-ASK-DOCS-20261030",
+        "SRC-CMC-PERMISSION-ASK-20261030",
+        "SRC-CMC-GOASK-20261030",
+        "SRC-TIMESTABLOID-ACTUAL-CAPITAL-20251015",
+        "SRC-COINTURK-XRP-MULTIPLIER-202610",
+        "SRC-YOUTUBE-KAMILAH-CHANNEL-20261030",
+        "SRC-IHEART-KAMILAH-CAMILLA-INTERVIEW-20261030",
+        "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z",
+        "SRC-REUTERS-COINBASE-Q3-20261029T211600Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261029T211600Z",
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261029T2210Z",
+        "SRC-RIPPLE-CIRCLE-USDC",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+        "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+        "SRC-SBI-RLUSD-JAPAN-2026",
+        "SRC-SBI-BITBANK-COMPLETE-20261029T151040Z",
+        "SRC-SBI-XRP-CARD-20261029T151040Z",
+        "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+        "SRC-RUN25-20261029T014151-SBIC-WEST",
+        "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+        "SRC-SBI-GROUP-DIRECTORY-2026-10-07",
+        "SRC-SBI-CAPITAL-2005-SBIC",
+        "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-20261028T1219Z",
+        "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM",
+        "SRC-GLASP-KAMILAH-RIPPLE-BANK-2025-12-14",
+        "SRC-RIPPLE-C2FO-XRPL-TRADE-FINANCE-2026-10-27"
+      ],
+      "queued_source_candidates_path": "data/xrp_intelligence/queued_source_candidates/20261030T0024Z-kamilah-channel-public-video-candidates.json",
+      "research_snapshot_path": "data/xrp_intelligence/snapshots/20261030T0024Z-fresh-main-prs-kaggle-and-video-inventory.json",
+      "verification_at_recording": {
+        "status": "PR1353_ARCHIVE_VALIDATOR_PASS_PREVIOUS_HEAD; PR1355_1356_1357_1358_1359_ALL_EXACT_HEAD_CI_AND_GATES_PASS; KAGGLE_RUN_FAILED_BEFORE_API_CALL; NO_MAIN_WRITE; VIDEO_INVENTORY_PARTIAL",
+        "pr1353": {
+          "number": 1353,
+          "head_sha": "473f1e6779bd05e52aaa21b63732966b04da2173",
+          "validator_run_id": 40978742864,
+          "tests_passed": 12,
+          "gate_run_id": 40978746494,
+          "draft": true,
+          "merged": false
+        },
+        "pr1355": {
+          "number": 1355,
+          "head_sha": "33776a0f838e875a8c1dfedc046105520b75659f",
+          "ci_run_id": 40977830076,
+          "tests_passed": 347,
+          "subtests_passed": 8,
+          "gate_run_id": 40977830097,
+          "draft": true,
+          "merged": false,
+          "mergeable": true
+        },
+        "pr1356": {
+          "number": 1356,
+          "head_sha": "5179a5d757314133deb92cb0f81116dd60bc77b4",
+          "ci_run_id": 40978222013,
+          "tests_passed": 343,
+          "subtests_passed": 8,
+          "gate_run_id": 40978222024,
+          "draft": true,
+          "merged": false,
+          "mergeable": true
+        },
+        "pr1357": {
+          "number": 1357,
+          "head_sha": "5d602ef3905c0bf59bc3f67257b16fb9e516dbae",
+          "ci_run_id": 40978883419,
+          "tests_passed": 346,
+          "subtests_passed": 8,
+          "gate_run_id": 40978883440,
+          "draft": true,
+          "merged": false,
+          "mergeable": true
+        },
+        "pr1358": {
+          "number": 1358,
+          "head_sha": "2805a2c4470d896e537703af035aa68c347d1e04",
+          "ci_run_id": 40978964575,
+          "tests_passed": 352,
+          "subtests_passed": 8,
+          "gate_run_id": 40978964609,
+          "draft": true,
+          "merged": false,
+          "mergeable": true
+        },
+        "pr1359": {
+          "number": 1359,
+          "head_sha": "b17e5515ea21c8e2fba16f8dd1880e4872f01398",
+          "ci_run_id": 40979080151,
+          "tests_passed": 343,
+          "subtests_passed": 8,
+          "gate_run_id": 40979079918,
+          "draft": true,
+          "merged": false,
+          "mergeable": true
+        },
+        "kaggle_scheduled_run": {
+          "run_id": 40978947983,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40978947983",
+          "conclusion": "FAILURE",
+          "root_cause": "Workflow called root-level kaggle_competitions_automation.py, but actual script is scripts/kaggle_competitions_automation.py; run failed before Kaggle API or submission step.",
+          "submission_executed": false
+        },
+        "cognitive_pingpong_run": {
+          "run_id": 40977942469,
+          "conclusion": "SUCCESS_NO_MAIN_COMMIT",
+          "root_cause": "Separate jobs did not share generated files; final job staged missing Barrot-Agent/logs path but ignored failure; no commit was created."
+        },
+        "pr_overlapping_paths": {
+          "ci_workflow": [
+            1355,
+            1358
+          ],
+          "test_v3_scripts": [
+            1356,
+            1357,
+            1359
+          ],
+          "status": "REQUIRES_REBASE_OR_CONSOLIDATION_BEFORE_MULTI_PR_MERGE"
+        },
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "workflow_dispatch_performed": false,
+        "real_money_trade": false,
+        "kaggle_submission": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    }
+  ]
+}

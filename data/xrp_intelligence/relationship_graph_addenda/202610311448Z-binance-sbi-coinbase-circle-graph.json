@@ -1,0 +1,343 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-202610311448Z-BINANCE-SBI-COINBASE-CIRCLE",
+  "captured_at_utc": "2026-10-31T14:48:24.128Z",
+  "source_ids": [
+    "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-202610311448Z-BINANCE-POR-METHODOLOGY",
+    "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS",
+    "SRC-202610311448Z-SBI-VISA-DIGITAL-MOU",
+    "SRC-202610311448Z-SBI-SHINSEI-XRP-VOUCHER",
+    "SRC-202610311448Z-SBI-RLUSD-LISTING",
+    "SRC-202610311448Z-REUTERS-COINBASE-KEY-HARDENING",
+    "SRC-202610311448Z-GITHUB-PR-WORKFLOW-AUDIT"
+  ],
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "BINANCE_POR",
+      "label": "Binance PoR snapshot 2026-10-31 00:00 UTC",
+      "kind": "RESERVE_SNAPSHOT"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "NATIVE_ASSET"
+    },
+    {
+      "id": "BINANCE_SAFU",
+      "label": "Binance SAFU",
+      "kind": "EMERGENCY_FUND"
+    },
+    {
+      "id": "BINANCE_FUTURES_INSURANCE",
+      "label": "Binance Futures Insurance Fund",
+      "kind": "DERIVATIVES_LOSS_BUFFER"
+    },
+    {
+      "id": "BINANCE_TREASURY",
+      "label": "Binance corporate treasury",
+      "kind": "CORPORATE_BALANCE_SHEET"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_CUSTODY_AND_DERIVATIVES"
+    },
+    {
+      "id": "COINBASE_OFFLINE_KEYS",
+      "label": "Coinbase offline key systems",
+      "kind": "CUSTODY_CONTROL"
+    },
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings",
+      "kind": "FINANCIAL_GROUP"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "CRYPTO_EXCHANGE"
+    },
+    {
+      "id": "APLUS",
+      "label": "Aplus",
+      "kind": "CARD_ISSUER"
+    },
+    {
+      "id": "VISA_JAPAN",
+      "label": "Visa Japan",
+      "kind": "PAYMENT_NETWORK"
+    },
+    {
+      "id": "SBI_SECURITIES",
+      "label": "SBI Securities",
+      "kind": "BROKERAGE"
+    },
+    {
+      "id": "SBI_SHINSEI",
+      "label": "SBI Shinsei Bank",
+      "kind": "BANK"
+    },
+    {
+      "id": "SBI_CARD",
+      "label": "SBI VISA Crypto Card",
+      "kind": "RETAIL_REWARD_PRODUCT"
+    },
+    {
+      "id": "REWARD_POINTS",
+      "label": "Card reward points",
+      "kind": "LOYALTY_REWARD"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "CRYPTO_COMPANY"
+    },
+    {
+      "id": "RLUSD",
+      "label": "RLUSD",
+      "kind": "ISSUER_CONTROLLED_STABLECOIN"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "USDC",
+      "label": "USDC",
+      "kind": "ISSUER_CONTROLLED_STABLECOIN"
+    },
+    {
+      "id": "SBI_VISA_MOU",
+      "label": "SBI–Visa digital-finance MOU",
+      "kind": "EXPLORATORY_AGREEMENT"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E1",
+      "source": "BINANCE",
+      "target": "BINANCE_POR",
+      "relationship": "PUBLISHED_POST_INCIDENT_RESERVE_SNAPSHOT",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-202610311448Z-BINANCE-POR-METHODOLOGY"
+      ],
+      "claim": "Binance says the 2026-10-31 00:00 UTC snapshot was updated; full zk-SNARK proof pending."
+    },
+    {
+      "id": "E2",
+      "source": "BINANCE_POR",
+      "target": "XRP",
+      "relationship": "CLAIMED_AT_LEAST_1_TO_1_CUSTOMER_COVERAGE",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3"
+      ],
+      "claim": "XRP is one of ten assets Binance says are fully backed at 100%; exact XRP units and independent reconciliation are unknown."
+    },
+    {
+      "id": "E3",
+      "source": "BINANCE_SAFU",
+      "target": "BINANCE",
+      "relationship": "PARTIAL_REPLENISHMENT_FUNDING_ANNOUNCED",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3"
+      ],
+      "claim": "Binance says partial SAFU deployment is expected within 24 hours and plans to replenish SAFU to approximately USD 1B."
+    },
+    {
+      "id": "E4",
+      "source": "BINANCE_FUTURES_INSURANCE",
+      "target": "BINANCE",
+      "relationship": "PORTION_REALLOCATED_TO_INCIDENT_RECOVERY",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3"
+      ],
+      "claim": "Binance says a portion was used; exact remaining balance and independent stress test are unavailable."
+    },
+    {
+      "id": "E5",
+      "source": "BINANCE_TREASURY",
+      "target": "BINANCE",
+      "relationship": "CORPORATE_TREASURY_RECOVERY_FUNDING",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3"
+      ],
+      "claim": "Binance says corporate treasury contributed; token-specific allocation unknown."
+    },
+    {
+      "id": "E6",
+      "source": "BINANCE",
+      "target": "BINANCE_TREASURY",
+      "relationship": "REMAINING_10_PERCENT_OUTSIDE_TOP_TEN",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3"
+      ],
+      "claim": "Binance says remaining 10% consists of less-liquid assets outside the ten named top-ten assets."
+    },
+    {
+      "id": "E7",
+      "source": "COINBASE",
+      "target": "COINBASE_OFFLINE_KEYS",
+      "relationship": "PRECAUTIONARY_OFFLINE_KEY_SYSTEM_ADJUSTMENT",
+      "evidence_class": "SECONDARY_REPORTING_OF_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-202610311448Z-REUTERS-COINBASE-KEY-HARDENING"
+      ],
+      "claim": "Reuters reports Coinbase adjusted offline key-storage systems after the incident; no XRP-specific market implication established."
+    },
+    {
+      "id": "E8",
+      "source": "SBI_CARD",
+      "target": "XRP",
+      "relationship": "OPTIONAL_RETAIL_REWARD_ASSET",
+      "evidence_class": "PRIMARY_PRODUCT_PAGE",
+      "source_ids": [
+        "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS"
+      ],
+      "claim": "One of BTC, ETH or XRP can be selected per card."
+    },
+    {
+      "id": "E9",
+      "source": "REWARD_POINTS",
+      "target": "SBI_VC_TRADE",
+      "relationship": "AUTOMATIC_MONTHLY_CRYPTO_CREDIT",
+      "evidence_class": "PRIMARY_PRODUCT_PAGE",
+      "source_ids": [
+        "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS"
+      ],
+      "claim": "Points are converted by month-end using SBI VC Trade displayed sales price, not an execution record."
+    },
+    {
+      "id": "E10",
+      "source": "SBI_SECURITIES",
+      "target": "REWARD_POINTS",
+      "relationship": "INVESTMENT_ACCUMULATION_REWARD_CHANNEL",
+      "evidence_class": "PRIMARY_PRODUCT_PAGE",
+      "source_ids": [
+        "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS"
+      ],
+      "claim": "SBI Securities credit-card investment accumulation can earn crypto rewards; XRP selection and quantities unknown."
+    },
+    {
+      "id": "E11",
+      "source": "SBI_SHINSEI",
+      "target": "XRP",
+      "relationship": "TIME_DEPOSIT_XRP_VOUCHER_CAMPAIGN",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-202610311448Z-SBI-SHINSEI-XRP-VOUCHER"
+      ],
+      "claim": "Six-month yen deposit campaign offered XRP vouchers; redemptions and sourcing unknown."
+    },
+    {
+      "id": "E12",
+      "source": "SBI_HOLDINGS",
+      "target": "SBI_VISA_MOU",
+      "relationship": "EXPLORATORY_DIGITAL_FINANCE_STABLECOIN_COOPERATION",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-202610311448Z-SBI-VISA-DIGITAL-MOU"
+      ],
+      "claim": "Exploratory MOU; no XRP-specific Visa product or Ripple contract established."
+    },
+    {
+      "id": "E13",
+      "source": "SBI_VC_TRADE",
+      "target": "RLUSD",
+      "relationship": "DIRECT_RLUSD_LISTING_WITH_RIPPLE",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-202610311448Z-SBI-RLUSD-LISTING"
+      ],
+      "claim": "RLUSD handling began on VCTRADE 2026-06-24; RLUSD is distinct from native XRP."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Binance's October 31 snapshot restored XRP customer-custody coverage to at least 1:1.",
+      "status": "SUPPORTED_BY_COMPANY_STATEMENT; FULL_PROOF_PENDING",
+      "supporting": [
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-202610311448Z-BINANCE-POR-METHODOLOGY"
+      ],
+      "disconfirming": [
+        "No full zk-SNARK proof at capture.",
+        "No independent same-time reserve-address/customer-liability recomputation.",
+        "Exact XRP reserve and liability units not disclosed."
+      ]
+    },
+    {
+      "id": "H2",
+      "statement": "Binance's recovery created material new XRP spot or OTC demand.",
+      "status": "UNPROVEN",
+      "supporting": [
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3"
+      ],
+      "disconfirming": [
+        "No XRP-specific purchase quantity or execution records.",
+        "Existing inventory, treasury and OTC alternatives remain plausible."
+      ]
+    },
+    {
+      "id": "H3",
+      "statement": "Futures Insurance Fund reallocation could reduce derivatives loss-absorption capacity.",
+      "status": "PLAUSIBLE_RISK; MAGNITUDE_UNKNOWN",
+      "supporting": [
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3"
+      ],
+      "disconfirming": [
+        "Binance says remaining balance is above required risk level; no independent balance or stress test."
+      ]
+    },
+    {
+      "id": "H4",
+      "statement": "SBI card and deposit programs create recurring XRP retail distribution.",
+      "status": "MECHANISM_CONFIRMED; AGGREGATE_VOLUME_UNKNOWN",
+      "supporting": [
+        "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS",
+        "SRC-202610311448Z-SBI-SHINSEI-XRP-VOUCHER"
+      ],
+      "disconfirming": [
+        "No XRP selection share, reward units or redemption totals.",
+        "Reward inventory could be sourced from existing holdings or OTC."
+      ]
+    },
+    {
+      "id": "H5",
+      "statement": "SBI–Visa MOU is an XRP-specific partnership.",
+      "status": "NOT_ESTABLISHED",
+      "supporting": [
+        "SRC-202610311448Z-SBI-VISA-DIGITAL-MOU"
+      ],
+      "disconfirming": [
+        "MOU is exploratory and does not name XRP or Ripple."
+      ]
+    },
+    {
+      "id": "H6",
+      "statement": "Coinbase offline-key changes increase XRP spot demand.",
+      "status": "NOT_ESTABLISHED",
+      "supporting": [
+        "SRC-202610311448Z-REUTERS-COINBASE-KEY-HARDENING"
+      ],
+      "disconfirming": [
+        "Security-control adjustment is not an XRP-specific product or market purchase."
+      ]
+    }
+  ]
+}

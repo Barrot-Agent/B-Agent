@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "record_type": "incident_correction",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030730-UNINTENDED-MAIN-WRITE-CORRECTION",
+  "captured_at_utc": "2026-10-29T03:07:30.000Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; preserve Barrot V3 as execution and verification foundation.",
+  "previous_snapshot": {
+    "path": "data/xrp_intelligence/snapshots/20261029T030525-index-gate-pass-asset-feature-pr1283.json",
+    "blob_sha": "facb292dcd43c9961ce8671a530cf69b8bffd425",
+    "commit_sha": "4831f12c796add9187ee14febba7e21a6d4f76d1",
+    "captured_at_utc": "2026-10-29T03:05:25.000Z"
+  },
+  "incident": {
+    "classification": "UNINTENDED_DIRECT_MAIN_WRITE",
+    "severity": "PROCESS_CONTROL_BREACH",
+    "main_commit_sha": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
+    "main_commit_url": "https://github.com/Barrot-Agent/B-Agent/commit/afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
+    "added_path": "data/xrp_intelligence/snapshots/20261029T030620-paper-replay-2361-index-gate.json",
+    "added_blob_sha": "ba4347ea2107fe77195f8f9f17d859410e9eecca",
+    "cause": "A GitHub create_file call omitted its branch argument and defaulted to main.",
+    "incorrect_embedded_field": {
+      "field": "main_modified_by_this_run",
+      "value": false,
+      "correct_value": true
+    },
+    "remediation": "No further main write, delete, revert, or overwrite was attempted. This correction is recorded only on the existing research branch. Preserve the main commit for auditability; any removal or amendment requires explicit approval."
+  },
+  "prior_verified_work": {
+    "paper_trading_log_records": 2361,
+    "paper_trading_replay": "PASS_READ_ONLY",
+    "persisted_state_matches": true,
+    "pr1283": 1283,
+    "pr1283_core_ci_run": 40809993316,
+    "pr1283_core_ci": "PASS_170_TESTS_4_SUBTESTS_6.17S",
+    "pr1283_gate_run": 40809993459,
+    "pr1283_gate": "PASS",
+    "latest_index_gate_before_incident_run": 40810190498,
+    "latest_index_gate_status": "PASS_FOR_PRIOR_INDEX_HEAD_ONLY"
+  },
+  "source_ids": [
+    "SRC-RUN33-20261029T030730-UNINTENDED-MAIN-WRITE-AFD870",
+    "SRC-RUN33-20261029T030730-MAIN-SNAPSHOT-BA4347"
+  ],
+  "main_modified_by_this_run": true,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_manually_executed": false,
+  "paper_trading_state_mutated": false,
+  "real_money_trade": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Do not perform any further direct writes to main. All future file writes must pass an explicit research/safety branch.",
+    "Keep the unintended main snapshot and commit intact for auditability; do not delete, revert or overwrite without approval.",
+    "Review and correct the process-control gap before any future repository mutation.",
+    "Continue normal research and PR work only on explicit non-main branches."
+  ],
+  "snapshot_character_count": 2910
+}

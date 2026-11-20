@@ -1,0 +1,268 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T083758Z-BINANCE-POR-MARKET-REPO-SAFETY",
+  "captured_at_utc": "2026-10-31T08:37:58Z",
+  "source_reference_count": 14,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031-GH-MAIN-CROSS-ANALYSIS-075151Z",
+    "SRC-20261031-GH-PR1401-CROSS-ANALYSIS-READONLY",
+    "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP",
+    "SRC-20261031-GH-PR1400-FORECAST-LEDGER-SOURCE-REGISTRY",
+    "SRC-20261031-GH-PR1353-LEDGER-VALIDATOR-RECOVERY",
+    "SRC-20261031-BINANCE-SECURITY-UPDATE2-POR",
+    "SRC-20261031-COINDESK-POR-SNAPSHOT-NOV1",
+    "SRC-20261031-COINDESK-POR-FULL-REPORT-NOV2",
+    "SRC-20261031-BITQUERY-BINANCE-HACK-XRP-RECEIVER-0643Z",
+    "SRC-20261031-TRADRADAR-XRP-DERIVATIVES-0750Z",
+    "SRC-20261031-KODEXIUS-XRP-DERIVATIVES-0644Z",
+    "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+    "SRC-20261031-COINCODEX-XRP-HISTORICAL-OCT31",
+    "SRC-20261031-COINGECKO-XRP-HISTORICAL-OCT30"
+  ],
+  "nodes": [
+    {
+      "id": "BINANCE_MAIN",
+      "type": "crypto_exchange",
+      "label": "Binance"
+    },
+    {
+      "id": "BINANCE_CROSS_ANALYSIS_WORKFLOW",
+      "type": "github_workflow",
+      "label": "Cross Analysis main writer"
+    },
+    {
+      "id": "PR1401",
+      "type": "github_pull_request",
+      "label": "Read-only Cross Analysis proposal"
+    },
+    {
+      "id": "PR1402",
+      "type": "github_pull_request",
+      "label": "Approval push no-op proposal"
+    },
+    {
+      "id": "APPROVAL_WORKFLOW",
+      "type": "github_workflow",
+      "label": "Barrot Controlled PR Approval"
+    },
+    {
+      "id": "PR1400",
+      "type": "github_pull_request",
+      "label": "Fixed-horizon forecast ledger"
+    },
+    {
+      "id": "FORECAST_LEDGER",
+      "type": "prediction_engine_component",
+      "label": "Append-only forecast/outcome ledger"
+    },
+    {
+      "id": "PR1353",
+      "type": "github_pull_request",
+      "label": "XRP ledger archive validation"
+    },
+    {
+      "id": "XRP_ARCHIVE_VALIDATOR",
+      "type": "validation_component",
+      "label": "XRP archive index validator"
+    },
+    {
+      "id": "BITQUERY",
+      "type": "analytics_provider",
+      "label": "Bitquery"
+    },
+    {
+      "id": "XRP_ATTACK_RECEIVER",
+      "type": "xrpl_account",
+      "label": "Binance incident XRP receiver"
+    },
+    {
+      "id": "TRADRADAR",
+      "type": "market_data_provider",
+      "label": "TradRadar"
+    },
+    {
+      "id": "KODEXIUS",
+      "type": "market_data_provider",
+      "label": "Kodexius"
+    },
+    {
+      "id": "CRYPTOETF",
+      "type": "etf_flow_provider",
+      "label": "CryptoETF.today"
+    },
+    {
+      "id": "XRP",
+      "type": "cryptoasset",
+      "label": "XRP"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E-MAIN-CROSS-ANALYSIS-WRITES",
+      "from": "BINANCE_CROSS_ANALYSIS_WORKFLOW",
+      "relation": "commits_and_pushes_to",
+      "to": "main",
+      "evidence_class": "WORKFLOW_SOURCE_AND_SUCCESSFUL_RUN",
+      "source_ids": [
+        "SRC-20261031-GH-MAIN-CROSS-ANALYSIS-075151Z"
+      ]
+    },
+    {
+      "id": "E-PR1401-READONLY",
+      "from": "PR1401",
+      "relation": "proposes_read_only_artifact_replacement_for",
+      "to": "BINANCE_CROSS_ANALYSIS_WORKFLOW",
+      "evidence_class": "OPEN_DRAFT_PR_AND_GREEN_CI_GATE",
+      "source_ids": [
+        "SRC-20261031-GH-PR1401-CROSS-ANALYSIS-READONLY"
+      ]
+    },
+    {
+      "id": "E-PR1402-PUSH-NOOP",
+      "from": "PR1402",
+      "relation": "proposes_push_noop_for",
+      "to": "APPROVAL_WORKFLOW",
+      "evidence_class": "EXACT_PUSH_RUN_SUCCESS_APPROVAL_JOB_SKIPPED",
+      "source_ids": [
+        "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP"
+      ]
+    },
+    {
+      "id": "E-PR1400-SOURCE-REGISTRY",
+      "from": "PR1400",
+      "relation": "adds_optional_source_registry_validation_to",
+      "to": "FORECAST_LEDGER",
+      "evidence_class": "EXACT_HEAD_CI_AND_GATE_PASS",
+      "source_ids": [
+        "SRC-20261031-GH-PR1400-FORECAST-LEDGER-SOURCE-REGISTRY"
+      ]
+    },
+    {
+      "id": "E-PR1353-VALIDATOR-RECOVERY",
+      "from": "PR1353",
+      "relation": "corrects_snapshot_pointer_index_version_for",
+      "to": "XRP_ARCHIVE_VALIDATOR",
+      "evidence_class": "FAILED_RUN_ROOT_CAUSE_AND_SUBSEQUENT_PASS",
+      "source_ids": [
+        "SRC-20261031-GH-PR1353-LEDGER-VALIDATOR-RECOVERY"
+      ]
+    },
+    {
+      "id": "E-BITQUERY-RECEIVER-OBSERVATION",
+      "from": "BITQUERY",
+      "relation": "reports_stale_snapshot_of",
+      "to": "XRP_ATTACK_RECEIVER",
+      "evidence_class": "ONCHAIN_PROVIDER_SNAPSHOT_2026_10_30T0643Z",
+      "source_ids": [
+        "SRC-20261031-BITQUERY-BINANCE-HACK-XRP-RECEIVER-0643Z"
+      ]
+    },
+    {
+      "id": "E-RECEIVER-HOLDS-XRP",
+      "from": "XRP_ATTACK_RECEIVER",
+      "relation": "held_approximately_233_5m_xrp_at_snapshot",
+      "to": "XRP",
+      "evidence_class": "BITQUERY_CHAIN_STATE_AT_2026_10_30T0643Z",
+      "source_ids": [
+        "SRC-20261031-BITQUERY-BINANCE-HACK-XRP-RECEIVER-0643Z"
+      ]
+    },
+    {
+      "id": "E-TRADRADAR-OI",
+      "from": "TRADRADAR",
+      "relation": "reports_1850m_oi_across_7_exchanges",
+      "to": "XRP",
+      "evidence_class": "PROVIDER_MARKET_DATA",
+      "source_ids": [
+        "SRC-20261031-TRADRADAR-XRP-DERIVATIVES-0750Z"
+      ]
+    },
+    {
+      "id": "E-KODEXIUS-OI",
+      "from": "KODEXIUS",
+      "relation": "reports_738_72m_oi_across_7_contracts",
+      "to": "XRP",
+      "evidence_class": "PROVIDER_MARKET_DATA",
+      "source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-DERIVATIVES-0644Z"
+      ]
+    },
+    {
+      "id": "E-CRYPTOETF-FLOW",
+      "from": "CRYPTOETF",
+      "relation": "reports_partial_minus_700k_oct30_flow",
+      "to": "XRP",
+      "evidence_class": "T_PLUS_1_PARTIAL_TWO_OF_FIVE_FUNDS",
+      "source_ids": [
+        "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-APPROVAL-PUSH-NOOP-REGRESSION",
+      "statement": "An explicit push trigger plus a zero-permission no-op job prevents the approval workflow's observed push-event zero-job condition on the tested PR branch.",
+      "classification": "BRANCH_LEVEL_REGRESSION_CONFIRMED; MAIN_FIX_PENDING",
+      "supporting_source_ids": [
+        "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP"
+      ],
+      "disconfirming_or_alternative": [
+        "Manual workflow_dispatch approval path remains untested.",
+        "The fix is not merged to main; unrelated event/configuration causes remain possible."
+      ],
+      "status": "PUSH_PATH_VERIFIED_ON_PR_BRANCH"
+    },
+    {
+      "id": "H-CROSS-ANALYSIS-MAIN-WRITER",
+      "statement": "The scheduled Cross Analysis workflow is the direct cause of the recurring main-branch generated-file commit because it has contents:write and an explicit git add/commit/push step.",
+      "classification": "ROOT_CAUSE_CONFIRMED_FOR_THIS_COMMIT",
+      "supporting_source_ids": [
+        "SRC-20261031-GH-MAIN-CROSS-ANALYSIS-075151Z",
+        "SRC-20261031-GH-PR1401-CROSS-ANALYSIS-READONLY"
+      ],
+      "disconfirming_or_alternative": [
+        "The workflow still produces 3,217 entity pairs and 990 profiles; only the sentiment-shift windows were empty and only the timestamp field changed."
+      ],
+      "status": "MAIN_WRITER_ACTIVE_PR1401_UNMERGED"
+    },
+    {
+      "id": "H-BINANCE-XRP-RECEIVER-STATE",
+      "statement": "The attacker receiver held approximately 233.5M XRP and had no outgoing transaction at Bitquery's 2026-10-30 06:43 UTC snapshot.",
+      "classification": "PROVIDER_SNAPSHOT_FACT; CURRENT_STATE_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-20261031-BITQUERY-BINANCE-HACK-XRP-RECEIVER-0643Z"
+      ],
+      "disconfirming_or_alternative": [
+        "Snapshot is over a day old at current cutoff; fresh XRPL account_info and transaction history were not queried."
+      ],
+      "status": "STALE_NOT_CURRENT"
+    },
+    {
+      "id": "H-XRP-OI-PROVIDER-UNIVERSES",
+      "statement": "TradRadar's $1.85B and Kodexius's $738.72M XRP open-interest totals are not directly comparable because one aggregates seven exchanges and the other seven contracts.",
+      "classification": "DATA_QUALITY_INFERENCE",
+      "supporting_source_ids": [
+        "SRC-20261031-TRADRADAR-XRP-DERIVATIVES-0750Z",
+        "SRC-20261031-KODEXIUS-XRP-DERIVATIVES-0644Z"
+      ],
+      "disconfirming_or_alternative": [
+        "Contract-level crosswalk could reveal overlap and methodology differences; no common-universe reconstruction is complete."
+      ],
+      "status": "KEEP_SERIES_SEPARATE"
+    },
+    {
+      "id": "H-XRP-ETF-OUTFLOW",
+      "statement": "CryptoETF.today's October 30 -$0.7M XRP flow is a partial observation, not a complete five-fund daily outflow.",
+      "classification": "PROVIDER_COVERAGE_FACT",
+      "supporting_source_ids": [
+        "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL"
+      ],
+      "disconfirming_or_alternative": [
+        "The remaining three funds may later report zero, inflow or outflow; the total can change."
+      ],
+      "status": "PARTIAL_TWO_OF_FIVE"
+    }
+  ]
+}

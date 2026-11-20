@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "record_type": "barrot_v3_repository_audit_snapshot",
+  "snapshot_id": "BARROT-V3-20261030T150337Z-CROSS-ANALYSIS-AND-HF-TOKEN-EXPOSURE-AUDIT",
+  "captured_at_utc": "2026-10-30T15:03:37Z",
+  "main_sha": "541520d7e96b5b86109d5cb6f1549c75fc0262ea",
+  "repository": "Barrot-Agent/B-Agent",
+  "default_branch": "main",
+  "github_connector_access": "VERIFIED",
+  "confirmed_main_workflow": {
+    "path": ".github/workflows/cross-analysis.yml",
+    "blob_sha": "143bb2ed89ef4e2d85071a583896adad2c37c81b",
+    "permissions": "contents:write",
+    "triggers": [
+      "workflow_run: Knowledge Signal Cycle completed on main",
+      "schedule: 50 * * * *",
+      "workflow_dispatch"
+    ],
+    "behavior": "Runs three analysis scripts, stages generated JSON, commits and pushes to main.",
+    "latest_observed_main_commit": "541520d7e96b5b86109d5cb6f1549c75fc0262ea",
+    "latest_commit_message": "Cross-analysis refresh [skip ci]",
+    "changed_path": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "trigger_attribution": "UNKNOWN_BETWEEN_HOURLY_SCHEDULE_AND_WORKFLOW_RUN"
+  },
+  "pull_requests": [
+    {
+      "number": 1353,
+      "head_sha": "47f5cbda35cb4aebe8e8f3ff7d0b72c3fb79a9cf",
+      "base_sha": "99a1880fa6fb2f0ef681ce816c2421f6de24a676",
+      "status": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+      "validator_run": 41076072940,
+      "validator_tests_passed": 18,
+      "gate_run": 41076072904,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "full_repository_ci": "NOT_RUN"
+    },
+    {
+      "number": 1371,
+      "head_sha": "660345e8453bbf9d7225c51e73b2cadde06e6804",
+      "base_sha": "653b66de9a9545bc756a34385972f06038229783",
+      "status": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+      "core_ci_run": 41056935897,
+      "tests_passed": 347,
+      "subtests_passed": 8,
+      "gate_run": 41056936005,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "staleness": "OLDER_THAN_PR1373"
+    },
+    {
+      "number": 1373,
+      "head_sha": "99c5efbdcbff55aea9294d7bbfa235879f812f02",
+      "base_sha": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+      "status": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+      "core_ci_run": 41061593599,
+      "tests_passed": 347,
+      "subtests_passed": 8,
+      "gate_run": 41061593629,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "main_ahead_by": 2,
+      "intervening_paths": [
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ]
+    },
+    {
+      "number": 1374,
+      "head_sha": "6cca1e74de1e58f6dca3ea892d6eb6627db93524",
+      "base_sha": "3a1b1e7a2cf2a22e262d73592ceec9196356fbae",
+      "status": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+      "core_ci_run": 41074034581,
+      "tests_passed": 345,
+      "subtests_passed": 8,
+      "gate_run": 41074034681,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "main_ahead_by": 1,
+      "intervening_paths": [
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ],
+      "overlap_with_pr1373": [
+        ".github/workflows/ci.yml"
+      ]
+    }
+  ],
+  "main_huggingface_merge": {
+    "paths": [
+      ".github/workflows/barrot-merge.yml",
+      ".github/workflows/barrot-merge-manual.yml"
+    ],
+    "blob_sha": "c7ca217273f49dfafeeee5d0c1ebf6e26617c1f0",
+    "permissions": "contents:read",
+    "confirmed_risk": "HF_TOKEN is written to global ~/.git-credentials and exposed to mergekit-yaml --trust-remote-code; checkout credentials persist by default.",
+    "pr1374_mitigation": "Removes credential store, sets persist-credentials:false, removes HF_TOKEN from merge step and scopes it to final upload step.",
+    "remaining_risk": "Remote code execution remains enabled; token-free merge context reduces credential exposure but does not sandbox remote code."
+  },
+  "other_main_risks": [
+    "Merge queue remains mutation-capable with contents:write and pull-requests:write; dry_run=false and max_prs=0 were previously verified and remain subject to fresh audit.",
+    "Paper-trader persisted position remains nonzero with null product identity; no state mutation or dispatch.",
+    "Full repository CI has not been run.",
+    "Cross-analysis read-only PR is not active on main until approved and merged."
+  ],
+  "platform_coordination": {
+    "github": "CONNECTED_AND_READ_TESTED",
+    "claude": "NOT_TESTED",
+    "grok": "NOT_TESTED",
+    "gemini": "NOT_TESTED",
+    "copilot": "NOT_TESTED",
+    "codex": "NOT_TESTED",
+    "hugging_face": "NOT_TESTED",
+    "kaggle": "NOT_TESTED",
+    "databricks": "NOT_TESTED"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "pr_merged": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "paper_state_mutated": false,
+    "external_submission": false,
+    "huggingface_upload": false,
+    "deployment": false,
+    "real_money_trade": false
+  },
+  "full_repository_ci": "NOT_RUN"
+}

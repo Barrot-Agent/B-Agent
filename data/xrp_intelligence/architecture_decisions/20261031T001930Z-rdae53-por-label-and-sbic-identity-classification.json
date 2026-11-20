@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T001930Z-RDAE53-POR-LABEL-AND-SBIC-IDENTITY-CLASSIFICATION",
+  "created_at_utc": "2026-10-31T00:19:30Z",
+  "status": "ADOPTED_FOR_EVIDENCE_CLASSIFICATION",
+  "decisions": [
+    "Treat Bitquery's rDAE53 attribution as a secondary-source label to Binance's published PoR address list. Do not treat it as proof of membership in the 1 October 2026 XRP reserve numerator until the exact list version and XRP asset row are verified.",
+    "Record the 185,017,485.5 XRP rDAE53 transfer as a separate conditional stress case: if it depleted the October 1 XRP PoR numerator, the rounded 100.77%/2.496B baseline yields about 93.36% modeled coverage and 165.798M XRP shortfall before offsets. This is not an observed reserve ratio and is excluded from forecasts.",
+    "Keep the other four incident source wallets as PoR-membership unknown; do not generalize rDAE53's label to the cluster.",
+    "Resolve Japanese SBIC as three statutory regional companies: Tokyo SBIC East Japan, Nagoya SBIC Central Japan and Osaka SBIC West Japan. Keep them distinct from SBI Holdings.",
+    "Classify the 26 February 2025 Tokyo SBIC ChatGPT event as education/co-hosted seminar with a Microsoft speaker, not OpenAI partnership, investment or product integration.",
+    "Classify the film-industry Camilla Stephenson as an identity candidate only. Do not equate her with Kamilah Stevenson or assign any YouTube channel/video list without primary channel evidence."
+  ],
+  "invariants": [
+    "Bitquery's label source is the published PoR list, but its snapshot date and XRP asset mapping remain unspecified.",
+    "A PoR address label does not establish beneficial ownership or an asset balance at a historical snapshot.",
+    "The 93.36% calculation is conditional and cannot be represented as actual post-incident XRP reserve coverage.",
+    "Japanese SBIC is three companies defined by statute; the letters SBI in their English abbreviations do not prove an affiliation with SBI Holdings.",
+    "The ChatGPT seminar is not evidence of an OpenAI partnership.",
+    "No YouTube channel identity for the intended Camilla Stephenson has been verified."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

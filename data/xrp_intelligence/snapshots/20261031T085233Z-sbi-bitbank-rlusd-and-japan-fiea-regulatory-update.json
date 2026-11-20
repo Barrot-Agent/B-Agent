@@ -1,0 +1,124 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "snapshot_id": "XRP-20261031T085233Z-SBI-BITBANK-RLUSD-AND-JAPAN-FIEA-UPDATE",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T085233Z-sbi-bitbank-rlusd-and-japan-fiea-regulatory-update.json",
+  "captured_at_utc": "2026-10-31T08:52:33Z",
+  "data_cutoff_utc": "2026-10-31T08:52:33Z",
+  "source_reference_count": 12,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031T085233Z-SBI-BITBANK-CLOSE",
+    "SRC-20261031T085233Z-SBI-BITBANK-COMBINATION",
+    "SRC-20261031T085233Z-BITBANK-XRPJPY",
+    "SRC-20261031T085233Z-SBI-VISA-XRP-REWARDS",
+    "SRC-20261031T085233Z-ORICO-XRP-POINTS",
+    "SRC-20261031T085233Z-SBI-SHINSEI-XRP-DEPOSIT-REWARD",
+    "SRC-20261031T085233Z-RIPPLE-RLUSD-JAPAN-SBI",
+    "SRC-20261031T085233Z-SBIVC-RLUSD-CUSTODY-GROWTH",
+    "SRC-20261031T085233Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261031T085233Z-JAPAN-FIEA-2026-CRYPTO-REFORM",
+    "SRC-20261031T085233Z-XRPL-NO-NEW-XRP-ISSUANCE",
+    "SRC-20261031T085233Z-SBI-VC-TRADE-XRPJPY-LEVERAGE"
+  ],
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T084614Z-etf-actual-capital-and-sbic-acronym-resolution.json",
+  "sbi_group_xrp_footprint": {
+    "bitbank": {
+      "acquisition_status": "100_PERCENT_SUBSIDIARY_COMPLETED_2026-10-01",
+      "xrp_jpy_market": "CONFIRMED",
+      "group_combination_metrics": {
+        "assets_under_custody_jpy": 1100000000000,
+        "accounts": 2920000,
+        "as_of": "2026-04-30",
+        "status": "PRE_CLOSE_COMBINED_COMPANY_FIGURES"
+      }
+    },
+    "sbi_vc_trade": {
+      "xrp_jpy_spot": "CONFIRMED",
+      "xrp_jpy_leverage": "CONFIRMED; 2026-06-22_TO_2026-07-03_SPREAD_PROMOTION_EXPIRED",
+      "current_registrations": [
+        "crypto_asset_exchange_service_provider",
+        "type_1_financial_instruments_service_provider",
+        "electronic_payment_instruments_exchange_service_provider"
+      ]
+    },
+    "retail_distribution": [
+      {
+        "rail": "SBI VISA Crypto Card",
+        "assets": [
+          "BTC",
+          "ETH",
+          "XRP"
+        ],
+        "mechanism": "select one asset at application; points automatically exchanged monthly; SBI VC Trade account required"
+      },
+      {
+        "rail": "Orico Points",
+        "assets": [
+          "BTC",
+          "ETH",
+          "XRP"
+        ],
+        "mechanism": "1200 points for JPY1000 equivalent; credited to SBI VC Trade account"
+      },
+      {
+        "rail": "SBI Shinsei time-deposit campaign",
+        "asset": "XRP",
+        "mechanism": "historical six-month yen deposit campaign with XRP vouchers up to JPY20000"
+      }
+    ],
+    "stablecoins": {
+      "rlusd_japan_launch": "2026-06-24_AFTER_JFSA_APPROVAL_UNDER_PAYMENT_SERVICES_ACT_VIA_SBI_VC_TRADE",
+      "sbi_vc_trade_sep2026_custody_growth_ranking": [
+        "RLUSD",
+        "JPYSC",
+        "TON"
+      ],
+      "ranking_semantics": "GROWTH_RATE_NOT_ABSOLUTE_BALANCE",
+      "circle_usdc": "SEPARATE_USDC_DISTRIBUTION_RELATIONSHIP_ALREADY_DOCUMENTED"
+    },
+    "sbi_ripple_asia": {
+      "project": "tokenized deposits and deposit-based digital money using MoneyTap and token issuance platform",
+      "xrpl_role": "CONCEPTUAL_POC_INFRASTRUCTURE",
+      "production_status": "NOT_ESTABLISHED",
+      "xrp_demand": "NOT_QUANTIFIED"
+    }
+  },
+  "japan_regulatory_update": {
+    "law": "Law No.64 of 2026 amending the Financial Instruments and Exchange Act and Payment Services Act",
+    "passed": "2026-07-15",
+    "promulgated": "2026-07-23",
+    "core_crypto_provisions": "WITHIN_ONE_YEAR_OF_PROMULGATION; EXACT_COMMENCEMENT_DATE_NOT_SET",
+    "principal_changes": [
+      "cryptoasset trading business moves into FIEA framework",
+      "exchange/issuer information disclosure obligations",
+      "insider trading restrictions for cryptoassets handled by registered exchanges",
+      "tipping and trading-recommendation prohibitions",
+      "market manipulation and stealth-marketing controls",
+      "custody-system-provider regulation",
+      "custody, security and reserve requirements"
+    ],
+    "specified_cryptoasset_definition": "A cryptoasset where a particular person alone has authority to issue, plus categories to be set by Cabinet Office Ordinance",
+    "xrp_subcategory": "LIKELY_NON_SPECIFIED_CRYPTOASSET_BECAUSE_NO_PERSON_CAN_ISSUE_NEW_XRP; INFERENCE_ONLY_PENDING_ORDINANCE_AND_OFFICIAL_CLASSIFICATION",
+    "xrp_insider_trading_scope": "LIKELY_IN_SCOPE_BECAUSE_XRP_IS_HANDLED_BY_REGISTERED_EXCHANGES_SUCH_AS_BITBANK_AND_SBI_VC_TRADE; LEGAL_IMPLEMENTATION_PENDING",
+    "reported_105_asset_list": "NO_OFFICIAL_105_ASSET_LIST_LOCATED; DO_NOT_ASSERT_XRP_INCLUSION_FROM_UNVERIFIED_COUNT"
+  },
+  "prediction_engine": {
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "retail_xrp_distribution_feature": "NOT_ADMITTED_UNTIL_REWARD_CONVERSION_AND_NET_PURCHASE_VOLUME_VERIFIED",
+    "sbi_custody_feature": "NOT_ADMITTED_UNTIL_POST_CLOSE_GROUP_WIDE_RESERVES_AND_LIABILITIES_RECONCILED"
+  },
+  "repository_state": {
+    "main_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+    "research_branch_last_verified_head": "3700b322c0d56d3056c805c2506c2207297e49f7",
+    "validator_run_id": 41186290754,
+    "validator_status": "PASS_372_SHARDS_20_TESTS",
+    "gate_run_id": 41186294445,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "approval_push_run_id": 41186289976,
+    "approval_push_status": "FAILURE_ZERO_JOBS"
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

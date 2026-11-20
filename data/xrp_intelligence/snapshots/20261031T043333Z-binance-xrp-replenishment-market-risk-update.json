@@ -1,0 +1,311 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T043333Z-BINANCE-XRP-REPLENISHMENT-MARKET-RISK",
+  "captured_at_utc": "2026-10-31T04:33:33Z",
+  "data_cutoff_utc": "2026-10-31T04:24:00Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T041500Z-cbxrp-morpho-sbi-circle-x402-actual-capital.json",
+  "source_references": [
+    "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+    "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+    "SRC-20261031-XRPL-FREEZE-DOCS-043333Z",
+    "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+    "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z",
+    "SRC-20261031-CRYPTOETF-XRP-PARTIAL-043333Z",
+    "SRC-20261031-BINANCE-POR-PAGE-043333Z"
+  ],
+  "source_reference_count": 7,
+  "findings": [
+    {
+      "id": "F-043333-01",
+      "classification": "CONFIRMED_FACT",
+      "claim": "Binance's October 30 19:33 UTC official update states unauthorized withdrawals caused approximately $6.3B in losses, that more than $6.34B in company funds was set aside, $5B was held in exact affected token assets, and the remaining relevant assets were being purchased through market and OTC channels.",
+      "source_ids": [
+        "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z"
+      ],
+      "counterevidence_or_limit": "Company statement; no independent audit or token-level XRP allocation. The update does not name XRP in its examples or disclose any XRP purchase fill."
+    },
+    {
+      "id": "F-043333-02",
+      "classification": "SOURCED_CLAIM",
+      "claim": "TRM reports five Binance-labelled XRPL wallets transferred 233.46M XRP to one attacker address between 20:05 and 20:09 UTC on October 29, as part of approximately $6.36B across ten chains.",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ],
+      "counterevidence_or_limit": "TRM's current receiver balance statement is only as of October 30 00:30 UTC; the current October 31 balance is unknown."
+    },
+    {
+      "id": "F-043333-03",
+      "classification": "CONFIRMED_FACT",
+      "claim": "TRM confirms 40.5M RLUSD frozen on-chain by Ripple, approximately 825M USDC by Circle and approximately 1.77B USDT by Tether; this is not a freeze of native XRP.",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+        "SRC-20261031-XRPL-FREEZE-DOCS-043333Z"
+      ],
+      "counterevidence_or_limit": "These are time-bounded provider findings; freeze is not recovery. A separate approximate $200M Ripple assistance statement is not reconciled to the 40.5M RLUSD on-chain amount."
+    },
+    {
+      "id": "F-043333-04",
+      "classification": "CONFIRMED_FACT",
+      "claim": "XRPL documentation states native XRP cannot be frozen by an issuer; issuer freeze functionality applies to issued tokens such as RLUSD and USDC.",
+      "source_ids": [
+        "SRC-20261031-XRPL-FREEZE-DOCS-043333Z"
+      ],
+      "counterevidence_or_limit": "Custodial exchanges may restrict their own customers' access, and legal processes may affect custodians; that is not an XRPL issuer freeze."
+    },
+    {
+      "id": "F-043333-05",
+      "classification": "SOURCED_CLAIM",
+      "claim": "At 04:24 UTC Alpha reported XRP $1.2466, OI $2.81B, 24h volume $2.20B and $1.7M/$1.3M long/short liquidations; at 04:12 UTC Liqwall reported OI $1.32B, +0.2% 24h, funding +0.0066% and $1.8M/$1.3M liquidations.",
+      "source_ids": [
+        "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+        "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z"
+      ],
+      "counterevidence_or_limit": "The 2.13x open-interest gap is not reconciled; venue/contract coverage may differ. Similar liquidation totals do not validate the OI universe."
+    },
+    {
+      "id": "F-043333-06",
+      "classification": "SOURCED_CLAIM",
+      "claim": "CryptoETF.today reports a preliminary October 30 XRP ETF net outflow of $0.7M from only two of five funds.",
+      "source_ids": [
+        "SRC-20261031-CRYPTOETF-XRP-PARTIAL-043333Z"
+      ],
+      "counterevidence_or_limit": "Partial T+1 observation; three funds had not reported. It is not a final daily flow."
+    },
+    {
+      "id": "F-043333-07",
+      "classification": "INFERENCE",
+      "claim": "Binance's post-incident replenishment may create token-specific market or OTC demand, but XRP demand cannot be quantified until token-level reserves or purchases are disclosed.",
+      "source_ids": [
+        "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+        "SRC-20261031-BINANCE-POR-PAGE-043333Z"
+      ],
+      "counterevidence_or_limit": "Existing inventory, OTC sourcing, internal transfers or non-XRP assets may satisfy the reserve plan."
+    },
+    {
+      "id": "F-043333-08",
+      "classification": "SOURCED_CLAIM",
+      "claim": "TRM attributes the incident to North Korea's TraderTraitor with high confidence.",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ],
+      "counterevidence_or_limit": "Binance's official update does not name the actor; public law-enforcement confirmation was not found."
+    }
+  ],
+  "market_observations": [
+    {
+      "id": "M-043333-01",
+      "metric": "XRP_USD_ALPHA",
+      "value": 1.2466,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:24:00Z",
+      "source_id": "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-02",
+      "metric": "XRP_OPEN_INTEREST_ALPHA",
+      "value": 2810000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:24:00Z",
+      "source_id": "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-03",
+      "metric": "XRP_24H_VOLUME_ALPHA",
+      "value": 2200000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:24:00Z",
+      "source_id": "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-04",
+      "metric": "XRP_24H_LONG_LIQUIDATIONS_ALPHA",
+      "value": 1700000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:24:00Z",
+      "source_id": "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-05",
+      "metric": "XRP_24H_SHORT_LIQUIDATIONS_ALPHA",
+      "value": 1300000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:24:00Z",
+      "source_id": "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-06",
+      "metric": "XRP_OPEN_INTEREST_LIQWALL",
+      "value": 1320000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:12:00Z",
+      "source_id": "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-07",
+      "metric": "XRP_FUNDING_AVERAGE_LIQWALL",
+      "value": 0.0066,
+      "unit": "percent_per_8h",
+      "observed_at_utc": "2026-10-31T04:12:00Z",
+      "source_id": "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-08",
+      "metric": "BINANCE_XRP_LONG_ACCOUNT_SHARE_LIQWALL",
+      "value": 72.9,
+      "unit": "percent_of_accounts",
+      "observed_at_utc": "2026-10-31T04:12:00Z",
+      "source_id": "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-09",
+      "metric": "XRP_ETF_NET_FLOW_OCT30_PARTIAL",
+      "value": -700000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:33:33Z",
+      "source_id": "SRC-20261031-CRYPTOETF-XRP-PARTIAL-043333Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-10",
+      "metric": "BINANCE_INCIDENT_LOSS_ESTIMATE",
+      "value": 6300000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-30T19:33:00Z",
+      "source_id": "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-11",
+      "metric": "BINANCE_COMPANY_FUNDS_SET_ASIDE",
+      "value": 6340000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-30T19:33:00Z",
+      "source_id": "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-12",
+      "metric": "BINANCE_AFFECTED_TOKEN_ASSETS_HELD",
+      "value": 5000000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-30T19:33:00Z",
+      "source_id": "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-13",
+      "metric": "BINANCE_ASSETS_FROZEN_ONCHAIN",
+      "value": 3000000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-30T19:33:00Z",
+      "source_id": "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-043333-14",
+      "metric": "BINANCE_INCIDENT_XRP_TRANSFER",
+      "value": 233460000,
+      "unit": "XRP",
+      "observed_at_utc": "2026-10-29T20:09:00Z",
+      "source_id": "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+      "admitted_to_model": false
+    }
+  ],
+  "source_discrepancies": [
+    {
+      "issue": "Ripple freeze amount and asset scope",
+      "detail": "TRM confirms 40.5M RLUSD frozen on-chain. A separate Binance co-CEO statement described approximately $200M of Ripple assistance, but that amount is not reconciled to native XRP or the 40.5M RLUSD. Do not label $200M as XRP or as the exact RLUSD freeze.",
+      "status": "OPEN_RECONCILE"
+    },
+    {
+      "issue": "XRP attacker receiver current balance",
+      "detail": "TRM's balance statement is as of 2026-10-30 00:30 UTC. No fresh raw XRPL account_info or transaction history was read by 2026-10-31 04:24 UTC.",
+      "status": "STALE_RECHECK_REQUIRED"
+    },
+    {
+      "issue": "XRP derivatives open interest",
+      "detail": "Alpha $2.81B at 04:24 UTC versus Liqwall $1.32B at 04:12 UTC, approximately 2.13x. Liquidation totals are broadly similar; contract coverage is not.",
+      "status": "OPEN_NON_COMPARABLE"
+    },
+    {
+      "issue": "October 30 XRP ETF flow",
+      "detail": "CryptoETF.today shows -$0.7M from two of five funds only.",
+      "status": "PARTIAL_T_PLUS_1"
+    }
+  ],
+  "event_timeline": [
+    {
+      "event_date": "2026-10-29T20:05:00Z/2026-10-29T20:09:00Z",
+      "event": "Five Binance-labelled XRPL wallets transferred 233.46M XRP to one attacker receiver, per TRM.",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-30T19:33:00Z",
+      "event": "Binance published Security Incident Update #2: $6.3B loss estimate, $6.34B company funds set aside, $5B held in affected token assets, remaining purchases through market/OTC and updated PoR expected by Nov 2.",
+      "source_ids": [
+        "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-31T04:12:00Z",
+      "event": "Liqwall XRP derivatives snapshot: $1.32B OI, positive funding and $3.1M 24-hour liquidations.",
+      "source_ids": [
+        "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-31T04:24:00Z",
+      "event": "Alpha XRP derivatives snapshot: $2.81B OI, $2.20B 24-hour volume and $3.0M long/short liquidations combined.",
+      "source_ids": [
+        "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z"
+      ]
+    }
+  ],
+  "upcoming_milestones": [
+    {
+      "target": "2026-10-31T07:33:00Z",
+      "event": "Approximate 12-hour window after Binance Update #2 for the planned initial Proof of Reserves snapshot; exact publication time not guaranteed.",
+      "status": "PLANNED_NOT_OBSERVED"
+    },
+    {
+      "target": "2026-11-02",
+      "event": "Binance expects post-incident Proof of Reserves results by this date.",
+      "status": "OFFICIAL_TARGET_NOT_COMPLETED"
+    }
+  ],
+  "actual_capital_controls": [
+    "Binance's $6.34B reserve allocation is not an XRP-specific buy estimate.",
+    "The $5B already-held affected token assets and remaining market/OTC acquisitions must be reconciled token by token.",
+    "Do not infer actual fills from a purchase plan; require transaction, reserve-address or independently disclosed execution evidence.",
+    "Stablecoin freezes are immobilization, not recovery or net new capital.",
+    "Native XRP cannot be issuer-frozen; RLUSD, USDC and USDT are issued assets with separate issuer controls.",
+    "ETF flow remains partial until all five funds report.",
+    "Provider-specific OI must remain separate until contract universes reconcile."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "prediction_engine_status": "FIXED_HORIZON_DESIGN_ONLY; NO_CALIBRATED_WALK_FORWARD_MODEL",
+  "notes": "No directional XRP forecast issued. The incident adds a potentially material reserve-replenishment catalyst, but token-specific XRP demand, current attacker-wallet balance and synchronized market features remain unverified.",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T043333Z-binance-xrp-replenishment-market-risk-update.json",
+  "created_at_utc": "2026-10-31T04:33:33Z",
+  "source_ids": [
+    "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+    "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+    "SRC-20261031-XRPL-FREEZE-DOCS-043333Z",
+    "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+    "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z",
+    "SRC-20261031-CRYPTOETF-XRP-PARTIAL-043333Z",
+    "SRC-20261031-BINANCE-POR-PAGE-043333Z"
+  ]
+}

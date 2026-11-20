@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1012-PR1302-CI-FINAL",
+  "captured_at_utc": "2026-10-29T10:12:58Z",
+  "data_cutoff_utc": "2026-10-29T10:12:58Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "forecast_status": "NOT_ISSUED",
+  "market_feature_admission": false,
+  "summary": "PR #1302 exact-head core CI passed 184 tests plus 4 subtests in 6.60 seconds; the fail-closed gate passed. PR #1302 is draft/unmerged and based on current main. It removes mutation capability from the merge-queue workflow on its branch. Main remains unchanged and still contains the risky workflow until an approved merge; no workflow was manually dispatched.",
+  "pr1302": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1302",
+    "branch": "safety/merge-queue-readonly-fresh-main-20261029T1012Z",
+    "base_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+    "head_sha": "36bf551925b533617c78c806e327c110f437f02b",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "changed_files": 3,
+    "additions": 53,
+    "deletions": 202,
+    "core_ci": {
+      "run_id": 40855667441,
+      "status": "PASS",
+      "tests_passed": 184,
+      "subtests_passed": 4,
+      "duration_seconds": 6.6,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667441"
+    },
+    "fail_closed_gate": {
+      "run_id": 40855667392,
+      "status": "PASS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667392"
+    }
+  },
+  "main_workflow": {
+    "path": ".github/workflows/merge-queue.yml",
+    "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+    "risk": "Write permissions, mode=all, dry_run=false default, unlimited max_prs=0 and merge-capable commands remain on main."
+  },
+  "relationship_graph_addendum": {
+    "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1012-pr1302-final-ci-gate.json",
+    "blob_sha": "b7638f4a689044deb3cf7aa8c2291e6e3963507f",
+    "commit_sha": "b6015bcd782d40ba0e6b4f3fb9be55343ffcabf6",
+    "edges": 3,
+    "hypotheses": 1
+  },
+  "sources": [
+    {
+      "id": "SRC-RUN54-20261029T1012Z-MAIN-HEAD",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/649394b89b957b4719d4b689de47bc004bcd45f0"
+    },
+    {
+      "id": "SRC-RUN54-20261029T1012Z-MERGE-WORKFLOW",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml"
+    },
+    {
+      "id": "SRC-RUN54-20261029T1012Z-PR1302",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1302"
+    },
+    {
+      "id": "SRC-RUN54-20261029T1012Z-CI",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667441"
+    },
+    {
+      "id": "SRC-RUN54-20261029T1012Z-GATE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667392"
+    },
+    {
+      "id": "SRC-RUN55-20261029T1012Z-PR1302-HEAD",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1302"
+    },
+    {
+      "id": "SRC-RUN55-20261029T1012Z-PR1302-CI-PASS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667441"
+    },
+    {
+      "id": "SRC-RUN55-20261029T1012Z-PR1302-GATE-PASS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667392"
+    }
+  ],
+  "verification": {
+    "snapshot_readback": "PENDING_AFTER_CREATE",
+    "graph_readback": "PASS",
+    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "pr1302_core_ci": "PASS_184_TESTS_4_SUBTESTS_6.60S",
+    "pr1302_fail_closed_gate": "PASS",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "workflow_dispatched": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T001607Z-BINANCE-XRP-POR-CUSHION-CONDITIONAL-SENSITIVITY",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T001607Z-binance-xrp-por-cushion-conditional-sensitivity.json",
+  "created_at_utc": "2026-10-31T00:16:07Z",
+  "captured_at_utc": "2026-10-31T00:16:07Z",
+  "data_cutoff_utc": "2026-10-31T00:16:07Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T001232Z-binance-reserve-derivatives-etf-and-coinbase-rlusd-update.json",
+  "source_ids": [
+    "SRC-BINANCE-POR-METHODOLOGY-20261031T001607Z",
+    "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+    "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+  ],
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "findings": [
+    {
+      "finding_id": "F-20261031T001607Z-01",
+      "classification": "SECONDARY_REPORTED_OFFICIAL_XRP_POR_BASELINE",
+      "statement": "The Edge's analysis of Binance's 1 October 2026 PoR page reports XRP reserve coverage of 100.77% and customer net balances of 2.496B XRP, rounded to the nearest million; Gate News reports the same 100.77% ratio. Binance's official PoR page describes wallet ownership verification, user-balance snapshots and a Download All Address control, but the actual file was not retrieved.",
+      "source_ids": [
+        "SRC-BINANCE-POR-METHODOLOGY-20261031T001607Z",
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+        "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+      ],
+      "disconfirming_evidence": "The reserve baseline is pre-incident and secondary-reported; no official XRP address export or exact five-wallet crosswalk is available."
+    },
+    {
+      "finding_id": "F-20261031T001607Z-02",
+      "classification": "CONDITIONAL_XRP_RESERVE_STRESS_SENSITIVITY",
+      "statement": "Using the rounded reported baseline, implied pre-incident XRP reserves are approximately 2.5152B and surplus approximately 19.2192M XRP. If all 233.4619431M XRP transferred from the five incident source wallets came from PoR-listed reserves with no offsets, modeled coverage would be approximately 91.42% and shortfall approximately 214.243M XRP. About 8.23% of the incident transfer from PoR-listed reserves would exhaust the implied surplus.",
+      "source_ids": [
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+        "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+      ],
+      "disconfirming_evidence": "This is not an observed post-incident reserve ratio. The five XRPL source wallets' membership in the official PoR address set is unknown, and Binance subsequently reported company funds, frozen assets and replenishment activity."
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261031T001607Z-01",
+      "asset": "XRP",
+      "metric": "binance_october_1_2026_por_reserve_ratio",
+      "value": {
+        "reserve_ratio_pct": 100.77,
+        "customer_net_balances_xrp_rounded": 2496000000,
+        "implied_onchain_reserves_xrp_approx": 2515219200,
+        "implied_surplus_xrp_approx": 19219200,
+        "prior_year_ratio_pct": 102.91,
+        "customer_net_balance_change_yoy_pct": -9.3
+      },
+      "unit": "XRP_percent",
+      "as_of_utc": "2026-10-01T00:00:00Z",
+      "retrieved_at_utc": "2026-10-31T00:16:07Z",
+      "source_ids": [
+        "SRC-BINANCE-POR-METHODOLOGY-20261031T001607Z",
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+        "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+      ],
+      "classification": "SECONDARY_REPORT_OF_BINANCE_OFFICIAL_POR_SNAPSHOT",
+      "admission_status": "BASELINE_CONTEXT_ONLY_PENDING_OFFICIAL_EXPORT",
+      "notes": "The Edge says customer balances are rounded to the nearest million and ratio is on-chain wallet balance divided by customer net account balance. Gate News corroborates 100.77%; both report the same Binance snapshot, not independent address-level recalculations."
+    },
+    {
+      "observation_id": "OBS-20261031T001607Z-02",
+      "asset": "XRP",
+      "metric": "conditional_post_incident_por_coverage_sensitivity",
+      "value": {
+        "customer_net_balances_xrp_rounded": 2496000000,
+        "reported_preincident_ratio_pct": 100.77,
+        "implied_preincident_reserve_surplus_xrp_approx": 19219200,
+        "incident_transfer_xrp": 233461943.1,
+        "poR_source_share_threshold_pct_to_exhaust_surplus": 8.2322625,
+        "coverage_if_100pct_transfer_was_from_por_pct": 91.4165568,
+        "conditional_shortfall_xrp_if_100pct_transfer_from_por": 214242743.1,
+        "formula": "(customer_net_balances_xrp * reserve_ratio - incident_xrp_from_por) / customer_net_balances_xrp * 100"
+      },
+      "unit": "XRP_percent_scenario",
+      "as_of_utc": "2026-10-31T00:16:07Z",
+      "retrieved_at_utc": "2026-10-31T00:16:07Z",
+      "source_ids": [
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+        "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+      ],
+      "classification": "CONDITIONAL_STRESS_SCENARIO_DERIVED_FROM_SECONDARY_POR_BASELINE_AND_VALIDATED_XRPL_TRANSFERS",
+      "admission_status": "SCENARIO_ONLY_NOT_OBSERVED_NOT_MODEL_FEATURE",
+      "notes": "Assumes the fraction of the 233.4619431M transfer sourced from PoR-listed wallets is 100% for the full-loss scenario. At approximately 8.23% of the transfer, the reported 0.77% reserve cushion is exhausted. Official address membership and offsets are unknown."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T001607Z-01",
+      "claim": "If more than approximately 8.23% of the 233.4619431 XRP incident transfer originated from wallets included in Binance's 1 October 2026 XRP PoR address set, the reported 0.77% pre-incident XRP reserve cushion would be exhausted absent offsetting reserve balances or replenishment. If all of it came from PoR-listed wallets, the conditional ratio would be about 91.42%.",
+      "assessment": "HIGH_IMPACT_CONDITIONAL_SCENARIO; SOURCE_WALLET_MEMBERSHIP_UNVERIFIED",
+      "supporting_evidence": [
+        "The Edge reports 100.77% XRP PoR coverage and 2.496B XRP customer net balances on 1 October 2026.",
+        "The five validated XRPL incident payments total 233,461,943.1 XRP.",
+        "The implied pre-incident surplus from rounded figures is approximately 19.219M XRP, 8.23% of the incident transfer."
+      ],
+      "disconfirming_evidence": [
+        "No official October 1 PoR XRP address export has been retrieved or matched to the five source wallets.",
+        "The 100.77% ratio and 2.496B customer balance are secondary-reported and rounded.",
+        "Binance later reported more than $6.34B in company funds, approximately $3B frozen and market/OTC replenishment; these offsets are not included in the stress arithmetic."
+      ],
+      "unknowns": [
+        "Which of the five XRPL source wallets, if any, are included in the official XRP PoR address set.",
+        "Exact October 1 reserve-address XRP total and exact customer net liabilities.",
+        "Post-incident XRP reserve-address balances and token-specific replenishment."
+      ],
+      "confidence": "HIGH_FOR_ARITHMETIC_CONDITIONAL; LOW_FOR_WALLET_MEMBERSHIP_AND_ACTUAL_POST_INCIDENT_RATIO"
+    }
+  ],
+  "limitation_ids": [
+    "LIM-20261031T001607Z-01",
+    "LIM-20261031T001607Z-02"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Retrieve Binance's official October 1 PoR address export and crosswalk all five XRPL source wallets.",
+    "Obtain exact source-address XRP balances and customer net-liability figure from the official snapshot.",
+    "Compare the November 1 PoR XRP reserve ratio and address balances after incident remediation.",
+    "Keep the 91.42% result scenario-only until address membership and offsets are verified."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "workflow_dispatches": 0,
+  "paper_state_mutations": 0,
+  "real_money_trades": 0
+}

@@ -1,0 +1,159 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T140856Z-COINBASE-RLUSD-ETF-FLOW-CONFLICT",
+  "captured_at_utc": "2026-10-29T14:08:56.062Z",
+  "data_cutoff_utc": "2026-10-29T14:08:56.062Z",
+  "observed_main_sha": "2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868",
+  "forecast_status": "NOT_ISSUED",
+  "summary": "Official Ripple material confirms RLUSD became available through Coinbase Prime, Coinbase Exchange and retail app on Oct 28, with XRPL/Base/Ethereum rails; Coinbase Global Exchange collateral use remains a future rollout. Secondary ETF trackers disagree in units, fund coverage and settlement status, including an internal 3/5 versus 5/5 reporting contradiction on one dashboard. No ETF-flow feature admitted; no synchronized XRP market panel or forecast produced. PR #1325 and #1326 exact-head CI/gates pass but both remain draft/unmerged.",
+  "findings": [
+    {
+      "id": "FIND-20261029T140856Z-RLUSD-COINBASE-DISTRIBUTION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Ripple and Coinbase announced RLUSD availability on Coinbase Prime, Coinbase Exchange and retail app starting Oct 28, with deposits/withdrawals across XRPL, Base and Ethereum. Coinbase Global Exchange collateral availability was described as a future rollout, not live collateral usage at the announcement cutoff.",
+      "source_ids": [
+        "SRC-WEB-RIPPLE-COINBASE-RLUSD-20261029T140856Z"
+      ],
+      "limitation": "Announcement proves availability scope, not executed volume, net XRP demand or collateral utilization."
+    },
+    {
+      "id": "FIND-20261029T140856Z-COINBASE-MULTISTABLECOIN-STRATEGY",
+      "evidence_class": "SECONDARY_REPORTED",
+      "claim": "Reuters reports Coinbase broadened stablecoin offerings beyond its USDC-centered offering to include RLUSD, PYUSD and Open USD, consistent with multi-issuer distribution.",
+      "source_ids": [
+        "SRC-WEB-REUTERS-COINBASE-RLUSD-20261029T140856Z"
+      ],
+      "limitation": "No current USDC/RLUSD balance mix or share-shift measurement admitted; one report does not establish displacement."
+    },
+    {
+      "id": "FIND-20261029T140856Z-ETF-FLOW-CONFLICT",
+      "evidence_class": "DATA_QUALITY_CONFLICT",
+      "claim": "ETF trackers report different XRP flow quantities and scopes: Alpha Finance says $0 on Oct 28 across five funds; XRP Insights reports −3.13M XRP for Oct 26–27 across six spot funds plus BITW and marks Oct 28 provisional; CryptoETF.today contains a 3/5 versus 5/5 reporting inconsistency; XRP Desk reports approximately −4,000 XRP with a different/unreconciled universe.",
+      "source_ids": [
+        "SRC-WEB-ALPHA-XRP-ETF-FLOWS-20261029T140856Z",
+        "SRC-WEB-XRP-INSIGHTS-ETF-FLOWS-20261029T140856Z",
+        "SRC-WEB-CRYPTOETF-XRP-FLOWS-20261029T140856Z",
+        "SRC-WEB-XRPDESK-ETF-FLOWS-20261029T140856Z"
+      ],
+      "limitation": "Do not average, infer net capital flows or admit as a model feature until fund-level issuer holdings and settlement cutoffs are normalized."
+    },
+    {
+      "id": "FIND-20261029T140856Z-CORPORATE-EARNINGS-WATCH",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Coinbase Q3 results are scheduled for Oct 29 after US market close; Circle Q3 results are scheduled for Nov 4 at 8:00 a.m. ET.",
+      "source_ids": [
+        "SRC-WEB-COINBASE-Q3-SCHEDULE-20261029T140856Z",
+        "SRC-WEB-CIRCLE-Q3-SCHEDULE-20261029T140856Z"
+      ],
+      "limitation": "These are scheduled disclosures, not evidence of realized results or directional XRP price effects."
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-WEB-RIPPLE-COINBASE-RLUSD-20261029T140856Z",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+    },
+    {
+      "id": "SRC-WEB-REUTERS-COINBASE-RLUSD-20261029T140856Z",
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/"
+    },
+    {
+      "id": "SRC-WEB-ALPHA-XRP-ETF-FLOWS-20261029T140856Z",
+      "url": "https://alphafinance.io/etf/xrp/"
+    },
+    {
+      "id": "SRC-WEB-XRP-INSIGHTS-ETF-FLOWS-20261029T140856Z",
+      "url": "https://xrp-insights.com/data"
+    },
+    {
+      "id": "SRC-WEB-CRYPTOETF-XRP-FLOWS-20261029T140856Z",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows"
+    },
+    {
+      "id": "SRC-WEB-XRPDESK-ETF-FLOWS-20261029T140856Z",
+      "url": "https://xrpdesk.app/"
+    },
+    {
+      "id": "SRC-WEB-COINBASE-Q3-SCHEDULE-20261029T140856Z",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx"
+    },
+    {
+      "id": "SRC-WEB-CIRCLE-Q3-SCHEDULE-20261029T140856Z",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026"
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261029T140856Z-ALPHA-XRP-ETF-20261028",
+      "source_id": "SRC-WEB-ALPHA-XRP-ETF-FLOWS-20261029T140856Z",
+      "period_start": "2026-10-28",
+      "period_end": "2026-10-28",
+      "metric": "net_xrp_etf_flow",
+      "value": 0,
+      "unit": "USD",
+      "scope": "5 funds per Alpha Finance",
+      "quality_status": "SECONDARY_SOURCE_REPORTED_SCOPE_SPECIFIC",
+      "model_admission": false,
+      "reason_not_admitted": "Not reconciled against issuer-level fund holdings and other tracker universes."
+    },
+    {
+      "observation_id": "OBS-20261029T140856Z-XRPINSIGHTS-XRP-ETF-20261026-27",
+      "source_id": "SRC-WEB-XRP-INSIGHTS-ETF-FLOWS-20261029T140856Z",
+      "period_start": "2026-10-26",
+      "period_end": "2026-10-27",
+      "metric": "net_xrp_etf_flow",
+      "value": -3132685,
+      "unit": "XRP",
+      "scope": "6 spot funds plus BITW per XRP Insights",
+      "quality_status": "PROVISIONAL_ADJACENT_DAY_WINDOW",
+      "model_admission": false,
+      "reason_not_admitted": "Different dates and fund population; Oct 28 row provisional."
+    },
+    {
+      "observation_id": "OBS-20261029T140856Z-CRYPTOETF-XRP-ETF-20261028",
+      "source_id": "SRC-WEB-CRYPTOETF-XRP-FLOWS-20261029T140856Z",
+      "period_start": "2026-10-28",
+      "period_end": "2026-10-28",
+      "metric": "net_xrp_etf_flow",
+      "value": 0,
+      "unit": "USD",
+      "scope": "5 spot ETFs per tracker",
+      "quality_status": "INTERNALLY_INCONSISTENT",
+      "model_admission": false,
+      "reason_not_admitted": "Page simultaneously says 3/5 and 5/5 funds reported; needs source-file reconciliation."
+    },
+    {
+      "observation_id": "OBS-20261029T140856Z-XRPDESK-XRP-ETF-20261028",
+      "source_id": "SRC-WEB-XRPDESK-ETF-FLOWS-20261029T140856Z",
+      "period_start": "2026-10-28",
+      "period_end": "2026-10-28",
+      "metric": "net_xrp_etf_flow",
+      "value": -4000,
+      "unit": "XRP",
+      "scope": "Tracked products; precise universe not reconciled",
+      "quality_status": "SCOPE_UNCLEAR",
+      "model_admission": false,
+      "reason_not_admitted": "Universe and aggregation differ; do not average with other trackers."
+    }
+  ],
+  "verification": {
+    "main_head_verified": "2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868",
+    "main_unchanged_by_this_run": true,
+    "pr1325": {
+      "head_sha": "3335b44eb30bbf0b0ffbb7e58b1171d79c0212f1",
+      "ci": "PASS_196_TESTS_PLUS_4_SUBTESTS_6.84S",
+      "gate": "PASS_FAIL_CLOSED",
+      "state": "DRAFT_OPEN_UNMERGED"
+    },
+    "pr1326": {
+      "head_sha": "be98558d5a8a2cb7f4aef136f407cc4153b367e7",
+      "ci": "PASS_189_TESTS_PLUS_4_SUBTESTS_6.85S",
+      "gate": "PASS_FAIL_CLOSED",
+      "state": "DRAFT_OPEN_UNMERGED"
+    },
+    "market_feature_admission": false,
+    "forecast_status": "NOT_ISSUED",
+    "snapshot_readback": "PENDING_AT_CAPTURE"
+  }
+}

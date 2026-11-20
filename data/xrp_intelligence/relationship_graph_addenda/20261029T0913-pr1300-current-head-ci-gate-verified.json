@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T0913-PR1300-CURRENT-HEAD-VERIFIED",
+  "captured_at_utc": "2026-10-29T09:13:13Z",
+  "observed_main_sha": "9bfb3010d2a28f486af808c90a2a4565e76a5234",
+  "policy": "Exact-head CI/gate verifies the draft proposal only. Main remains unchanged; no approval or merge is implied.",
+  "nodes": [
+    {
+      "id": "BARROT_MAIN_LEGACY_ACCURACY",
+      "label": "Main-branch legacy XRP accuracy artifact (46.5%)",
+      "kind": "INVALID_PERFORMANCE_METRIC"
+    },
+    {
+      "id": "BARROT_PR1300",
+      "label": "PR #1300 fail-closed accuracy evaluator proposal",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    },
+    {
+      "id": "BARROT_PR1300_CURRENT_CI",
+      "label": "PR #1300 current-head core CI",
+      "kind": "CI_EVIDENCE"
+    },
+    {
+      "id": "BARROT_PR1300_CURRENT_GATE",
+      "label": "PR #1300 current-head fail-closed gate",
+      "kind": "GATE_EVIDENCE"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN51-PR1300-CURRENT-CI",
+      "source": "BARROT_PR1300",
+      "target": "BARROT_PR1300_CURRENT_CI",
+      "relationship": "EXACT_HEAD_TESTS_PASSED",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "Current head ca1bf0b2de81451a5a0db346dafb95672bfee48f passed 187 tests plus 4 subtests in 6.47 seconds. This verifies the proposal's tests, not main behavior.",
+      "source_ids": [
+        "SRC-RUN51-20261029T0913Z-PR1300-CURRENT-HEAD",
+        "SRC-RUN51-20261029T0913Z-PR1300-CI"
+      ]
+    },
+    {
+      "id": "EDGE-RUN51-PR1300-CURRENT-GATE",
+      "source": "BARROT_PR1300",
+      "target": "BARROT_PR1300_CURRENT_GATE",
+      "relationship": "FAIL_CLOSED_GATE_PASSED_WITH_AUTOMERGE_DISABLED",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "Current-head fail-closed gate passed and explicitly disables automatic merge. PR #1300 remains draft/unmerged, and main still exposes the legacy 46.5% metric until an approved change is merged.",
+      "source_ids": [
+        "SRC-RUN51-20261029T0913Z-PR1300-CURRENT-HEAD",
+        "SRC-RUN51-20261029T0913Z-PR1300-GATE",
+        "SRC-RUN50-20261029T0910Z-MAIN-ACCURACY"
+      ]
+    }
+  ],
+  "hypotheses": [],
+  "notes": [
+    "DESIGNED: replace invalid variable-horizon metric with NOT_EVALUATED and preserve old figure as NOT_COMPARABLE.",
+    "EXECUTED: current-head CI and fail-closed gate ran on GitHub Actions.",
+    "VERIFIED: current-head CI passed 187 tests plus 4 subtests in 6.47 seconds; gate passed.",
+    "NOT VERIFIED: main remains unchanged; the public artifact still reports the legacy metric until approval and merge.",
+    "No forecast, real-money trade, main write, deployment or merge occurred."
+  ]
+}

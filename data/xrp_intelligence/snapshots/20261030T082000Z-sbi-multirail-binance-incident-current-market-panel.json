@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-2026-10-30T082000Z-SBI-MULTIRAIL-BINANCE-INCIDENT-CURRENT-MARKET-PANEL",
+  "captured_at_utc": "2026-10-30T08:20:00Z",
+  "data_cutoff_utc": "2026-10-30T07:50:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T082000Z-sbi-multirail-binance-incident-current-market-panel.json",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution and verification foundation.",
+  "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261030T081200Z-sbi-jpysc-trust-custody-openstandard-bitbank-xrp-distribution-v2.json",
+  "confirmed_facts": [
+    {
+      "claim": "Five Binance-labelled XRPL source wallets transferred exactly 233,461,943.1 native XRP to the same receiver in five validated payments.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-14693052-20261029T200700Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-13140680-20261029T200820Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-11955157-20261029T200850Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-8655567-20261029T200920Z"
+      ]
+    },
+    {
+      "claim": "Bithomp's 07:23 UTC capture showed approximately 233,461,943.10004 XRP at the receiver with no outgoing XRP payment in the displayed history.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+        "SRC-BITQUERY-BINANCE-HACK-UPDATED-20261030T0643Z"
+      ]
+    },
+    {
+      "claim": "Bitquery's 08:18 refresh still reports approximately 233.5M XRP at the receiver as of its 06:43 UTC chain cutoff, with no outgoing transaction.",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-HACK-REVISION-9-CHAINS-20261030T0818Z"
+      ]
+    },
+    {
+      "claim": "Bitquery describes 17 drained Binance hot wallets across nine chains and approximately $2.7B frozen/rescued; it reports about $3.2B still with the attacker at 06:43 UTC.",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-HACK-REVISION-9-CHAINS-20261030T0818Z"
+      ]
+    },
+    {
+      "claim": "Reuters reports TRM Labs attributes the incident to TraderTraitor with high confidence and describes ten blockchains.",
+      "source_ids": [
+        "SRC-REUTERS-TRM-BINANCE-10-CHAIN-ATTRIBUTION-20261030T0800Z"
+      ]
+    },
+    {
+      "claim": "TradRadar's 07:50 UTC XRP perpetual snapshot shows $1.84B OI, -6% 24h OI change, negative funding and at least $32.45M liquidations, predominantly longs.",
+      "source_ids": [
+        "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0750Z"
+      ]
+    },
+    {
+      "claim": "Alpha Finance reports October 29 net XRP spot ETF inflow of $8.4M across five funds.",
+      "source_ids": [
+        "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-20261029T1600Z"
+      ],
+      "qualification": "Secondary tracker; still requires issuer-file reconciliation."
+    },
+    {
+      "claim": "SBI's acquisition of Bitbank completed October 1; SBI's XRP card/bond incentives, JPYSC, RLUSD/USDC distribution, XRPL startup support and trust consolidation plans are documented in official group releases.",
+      "source_ids": [
+        "SRC-SBI-TRUST-MERGER-20261029",
+        "SRC-SBI-JPYSC-JGB-RESERVES-20260907",
+        "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016",
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+        "SRC-SBI-JPYSC-ACCOUNT-BOUND-LAUNCH-20260624",
+        "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001",
+        "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501",
+        "SRC-SBI-START-BOND-XRP-REWARD-SOLD-OUT-20261030",
+        "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+        "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220"
+      ]
+    }
+  ],
+  "sourced_claims": [
+    {
+      "claim": "Bitquery says every drained hot wallet carries a Binance PoR label in its address data.",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-HACK-REVISION-9-CHAINS-20261030T0818Z"
+      ],
+      "qualification": "Third-party address attribution; not an official Binance October 1 XRP address-set crosswalk."
+    },
+    {
+      "claim": "Bitquery reports nine chains, while Reuters' TRM-based report says ten.",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-HACK-REVISION-9-CHAINS-20261030T0818Z",
+        "SRC-REUTERS-TRM-BINANCE-10-CHAIN-ATTRIBUTION-20261030T0800Z"
+      ],
+      "qualification": "Provider-scope/methodology discrepancy; do not force a single count."
+    },
+    {
+      "claim": "CoinDesk reports institutional exchange withdrawals after the Binance incident.",
+      "source_ids": [
+        "SRC-COINDESK-INSTITUTIONAL-CEX-WITHDRAWALS-20261030T0356Z"
+      ],
+      "qualification": "Anonymous-source claim with no amounts, destinations or XRP-specific attribution."
+    },
+    {
+      "claim": "CryptoETF.today reports +$7.1M for October 29 but only two of five funds had reported.",
+      "source_ids": [
+        "SRC-CRYPTOETF-XRP-ETF-FLOWS-PARTIAL-20261029T1600Z"
+      ],
+      "qualification": "Partial snapshot, not a completed daily total."
+    }
+  ],
+  "inferences": [
+    {
+      "claim": "The Binance XRP transfer remains a latent supply overhang rather than confirmed selling pressure.",
+      "basis": "Bithomp at 07:23 and Bitquery's 06:43 chain cutoff both show the receiver still holding the amount; no later movement is verified here."
+    },
+    {
+      "claim": "The 9-versus-10 chain discrepancy reflects provider scope or attribution differences, not necessarily an additional or missing XRP event.",
+      "basis": "Bitquery explicitly says XRP and Solana share no address with the other chains; they are tied by timing, unusual transfer construction and Binance's total."
+    },
+    {
+      "claim": "The 07:50 TradRadar panel is consistent with continuing long-led deleveraging, but it is not directionally predictive.",
+      "basis": "OI remains down, funding is negative and long liquidations dominate; price has rebounded from earlier lows and venue coverage is incomplete."
+    },
+    {
+      "claim": "October 29 ETF flows were positive in the complete five-fund Alpha tracker, but cross-provider cumulative totals and partial data remain unreconciled.",
+      "basis": "Alpha reports 5/5 funds and +$8.4M; CryptoETF.today reports 2/5 and +$7.1M."
+    },
+    {
+      "claim": "SBI's digital-asset strategy is multi-rail: XRP distribution/market access coexists with JPYSC, USDC, RLUSD, OUSD interoperability exploration, tokenized-MMF exploration and planned custody consolidation.",
+      "basis": "Official SBI releases; no single integrated production architecture or XRP-specific collateral flow is disclosed."
+    }
+  ],
+  "unknowns": [
+    "Whether the five Binance XRPL source wallets appear in the official October 1 PoR address download or the XRP-BF2 backing address.",
+    "Whether Binance has replenished XRP reserves and the XRP-specific ratio in the November 1 snapshot.",
+    "Whether the attacker receiver moved XRP after Bithomp's 07:23 UTC capture.",
+    "Why Bitquery counts nine chains while TRM's Reuters-reported attribution counts ten.",
+    "Actual post-acquisition Bitbank XRP/JPY market share, customer migration and XRP custody balances.",
+    "Aggregate XRP credited through SBI Visa Crypto Card and SBI START bond reward.",
+    "Whether JPYSC/OUSD PoC will use a public chain, whether the BlackRock tokenized-MMF MOU becomes production, and whether either has an XRP/XRPL role.",
+    "Whether SBI Clearing Trust's planned merger into SBI Shinsei Trust receives approvals and whether the surviving trust bank will custody XRP specifically.",
+    "Actual October 29 XRP ETF creations/redemptions by all five fund issuers and the reason cumulative trackers differ."
+  ],
+  "market_observations": [
+    {
+      "provider": "TradRadar",
+      "cutoff_utc": "2026-10-30T07:50:00Z",
+      "price_usd": 1.2497,
+      "price_change_24h_percent": -3.04,
+      "open_interest_usd": 1840000000,
+      "oi_change_24h_percent": -6,
+      "funding_percent_per_8h": -0.0049,
+      "liquidations_24h_minimum_usd": 32450000,
+      "long_liquidations_usd": 30320000,
+      "short_liquidations_usd": 2130000,
+      "long_account_share_percent": 78.8,
+      "source_ids": [
+        "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0750Z"
+      ],
+      "admission": "RESEARCH_ONLY"
+    },
+    {
+      "provider": "Liqwall",
+      "cutoff_utc": "2026-10-30T01:32:00Z",
+      "price_usd": 1.22,
+      "open_interest_usd": 1300000000,
+      "oi_change_24h_percent": -0.9,
+      "liquidations_24h_usd": 39300000,
+      "long_liquidations_usd": 38100000,
+      "short_liquidations_usd": 1100000,
+      "average_funding_percent_per_8h": -0.0008,
+      "binance_funding_percent_per_8h": 0.01,
+      "binance_long_account_share_percent": 74.1,
+      "source_ids": [
+        "SRC-LIQWALL-XRP-PERPETUALS-20261030T0132Z"
+      ],
+      "admission": "RESEARCH_ONLY; DIFFERENT_SCOPE_AND_CUTOFF"
+    },
+    {
+      "provider": "Alpha Finance",
+      "cutoff_utc": "2026-10-29_SESSION_CLOSE",
+      "xrp_spot_etf_net_flow_usd": 8400000,
+      "funds_reported": 5,
+      "funds_total": 5,
+      "thirty_session_flow_usd": 98900000,
+      "cumulative_flow_usd": 1730000000,
+      "source_ids": [
+        "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-20261029T1600Z"
+      ],
+      "admission": "RESEARCH_ONLY; SECONDARY_TRACKER"
+    },
+    {
+      "provider": "CryptoETF.today",
+      "cutoff_utc": "2026-10-29_T_PLUS_1_PARTIAL",
+      "xrp_spot_etf_net_flow_usd": 7100000,
+      "funds_reported": 2,
+      "funds_total": 5,
+      "source_ids": [
+        "SRC-CRYPTOETF-XRP-ETF-FLOWS-PARTIAL-20261029T1600Z"
+      ],
+      "admission": "PARTIAL; NOT_FINAL"
+    }
+  ],
+  "sbi_digital_asset_stack": {
+    "bitbank_acquisition_completed": "2026-10-01",
+    "bitbank_xrp_jpy_market": "CoinGecko snapshot: approx USD 7.54M 24h volume, 0.01% spread, +2% depth USD 354k, -2% depth USD 915k; exact timestamp unavailable.",
+    "retail_xrp_channels": [
+      "SBI VISA Crypto Card point conversion to XRP",
+      "SBI START bond one-time XRP reward"
+    ],
+    "jpy_sc_issued_jpy_as_of_2026_09_07": 20100000000,
+    "jpy_sc_lending_applications_jpy": 6900000000,
+    "jpy_sc_short_term_jgb_allocation_jpy": 1000000000,
+    "sbi_vc_trade_rlusd_since": "2026-06-24",
+    "sbi_vc_trade_usdc_since": "2025-03",
+    "jpy_sc_ousd_poc": "UNDER_CONSIDERATION",
+    "blackrock_tokenized_mmf_mou": "EXPLORATORY",
+    "sbi_clearing_trust_merger": "PLANNED_2026-12-31_SUBJECT_TO_APPROVAL",
+    "sbic_entity_disambiguation": "SBIC East Japan is distinct from SBICAH GK/SBI Crypto Asset Holdings and SBI Clearing Trust."
+  },
+  "source_ids": [
+    "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-14693052-20261029T200700Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-13140680-20261029T200820Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-11955157-20261029T200850Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-8655567-20261029T200920Z",
+    "SRC-BITQUERY-BINANCE-HACK-UPDATED-20261030T0643Z",
+    "SRC-COINDESK-XRP-LIQUIDATIONS-20261030T0622Z",
+    "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0700Z",
+    "SRC-TRACKWHALE-XRP-FLOWS-20261030T0745Z",
+    "SRC-COINDESK-XRPL-RESTRICTED-TOKEN-FIXES-20261030T0545Z",
+    "SRC-COINDESK-INSTITUTIONAL-CEX-WITHDRAWALS-20261030T0356Z",
+    "SRC-COINBASE-CBXRP-POR-REFRESH-20261030T0805Z",
+    "SRC-BINANCE-OFFICIAL-POR-METHODOLOGY-20261030T0805Z",
+    "SRC-COINDESK-BINANCE-PO-RESERVES-ETH-WALLET-20261030T0017Z",
+    "SRC-SBI-TRUST-MERGER-20261029",
+    "SRC-SBI-JPYSC-JGB-RESERVES-20260907",
+    "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016",
+    "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+    "SRC-SBI-JPYSC-ACCOUNT-BOUND-LAUNCH-20260624",
+    "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001",
+    "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501",
+    "SRC-SBI-START-BOND-XRP-REWARD-SOLD-OUT-20261030",
+    "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+    "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220",
+    "SRC-SBICAH-SBI-CRYPTO-ASSET-HOLDINGS-20230214",
+    "SRC-BITBANK-XRPJPY-LIQUIDITY-COINGECKO-20261030T0805Z",
+    "SRC-COINLAW-BINANCE-POR-ASSET-SUMMARY-20261012",
+    "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930",
+    "SRC-COINDESK-OPENSTANDARD-RIPPLE-PARTNER-20260630",
+    "SRC-SBI-VCTRADE-RLUSD-AND-USDC-20260624",
+    "SRC-BITQUERY-BINANCE-HACK-REVISION-9-CHAINS-20261030T0818Z",
+    "SRC-REUTERS-TRM-BINANCE-10-CHAIN-ATTRIBUTION-20261030T0800Z",
+    "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0750Z",
+    "SRC-LIQWALL-XRP-PERPETUALS-20261030T0132Z",
+    "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-20261029T1600Z",
+    "SRC-CRYPTOETF-XRP-ETF-FLOWS-PARTIAL-20261029T1600Z"
+  ],
+  "source_independence": {
+    "bitquery_trm_bithomp": "Different providers examine the same public XRPL transactions. TRM/Reuters chain attribution and Bitquery chain count differ; underlying XRP transfers remain the same.",
+    "coindesk_coinglass": "CoinDesk's marketwide liquidation report relies on CoinGlass; treat as one lineage.",
+    "tradradar_liqwall": "Separate aggregators with materially different venue coverage/cutoffs; never average without harmonized scope.",
+    "etf_trackers": "Alpha reports five funds; CryptoETF.today reports only two. Different completeness and cumulative totals require issuer-file crosswalk.",
+    "sbi": "Official SBI releases are primary for group ownership/products/announced plans, not independent proof of volumes or XRP market demand."
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "repository_state": {
+    "main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+    "pr1353_verified_head": "8798099fd344e6d9f98c37abde9deb6629deb130",
+    "pr1353_validator": "18/18 PASS",
+    "pr1353_gate": "PASS; merge disabled",
+    "pr1366": "OPEN_DRAFT_UNMERGED; 347 tests + 8 subtests and fail-closed gate passed",
+    "approval_workflow_push_event": "FAILED_ZERO_JOBS; root cause unresolved"
+  }
+}

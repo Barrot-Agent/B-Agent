@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T070712Z-BINANCE-PHASE1-PR1449",
+  "captured_at_utc": "2026-11-01T07:07:12Z",
+  "branch": "verify/xrp-ledger-archive-20261101T031615Z",
+  "prior_head_sha": "57a3dc585131207087af8505608ebbe82f082883",
+  "verified_this_run": [
+    "XRP Insights tracker observation at ledger 108038942 (05:39 UTC): 1B release reported, 0 re-escrow by that ledger, 30.4B remaining; destination not decoded.",
+    "Binance Update #4 lists XRP in phase-one withdrawals 06:00-09:00 UTC and reports 95% aggregate coverage; network status page at capture showed no records, so actual XRP availability remains unconfirmed.",
+    "GitHub main SHA 760b61e; 218 open PRs, 208 drafts, 10 ready; 212 main-based PRs stale and #1449 is the sole current-main-based PR.",
+    "PR #1449 exact-head CI passed 367 tests plus eight subtests; fail-closed gate passed with merging disabled."
+  ],
+  "unresolved": [
+    "Binance XRP withdrawal availability and first successful transaction.",
+    "Raw escrow transaction Destination fields and post-release transfers/re-escrow.",
+    "Current Binance attacker wallet balance.",
+    "XRP-specific Binance asset purchases and acquisition venue.",
+    "Approval workflow zero-job anomaly root cause.",
+    "Full repository CI, complete dependency scan and security-alert review.",
+    "Archive exact-head validation for the new 457-shard target."
+  ],
+  "next_actions": [
+    "Run exact-head archive validator after the new append and record its actual result; do not call it verified before completion.",
+    "Obtain asset-specific Binance XRP status and any successful public withdrawal transaction.",
+    "Decode both EscrowFinish transactions at a newer validated ledger and trace follow-on transfers.",
+    "Refresh the attacker wallet through an independent public explorer/API.",
+    "Verify Binance November 3 Proof of Reserves and separate company coverage from XRP-specific acquisition.",
+    "Keep PR #1449 open/draft/unmerged pending explicit approval; do not merge.",
+    "Continue PR #1445 external mutation review and resolve the approval-workflow anomaly.",
+    "Continue SBIC, ASK Coin, actual-capital and Camilla/Kamilah identity work; preserve unresolved identity distinctions.",
+    "Continue leakage-safe walk-forward design; no forecast until model evaluation is valid."
+  ],
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "manual_workflow_dispatch_performed": false,
+    "secret_access": false,
+    "paper_position_mutated": false,
+    "real_money_trade_performed": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "artifact_paths": [
+    "data/xrp_intelligence/research_ledger.json",
+    "data/xrp_intelligence/snapshots/20261101T070712Z-binance-phase1-escrow-and-pr1449-audit.json",
+    "data/xrp_intelligence/relationship_graph_addenda/20261101T070712Z-binance-phase1-xrp-escrow-and-main-safety-graph.json",
+    "data/xrp_intelligence/architecture_decisions/20261101T070712Z-binance-withdrawal-status-and-pr1449-safety.json",
+    "data/repository_audits/20261101T070712Z-main-pr1449-and-workflow-safety-audit.json"
+  ],
+  "source_ids": [
+    "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 137,
+  "chunk_count": 138,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T091333Z-INSTITUTIONAL-RAILS-SOURCE-CROSSWALK-AND-VALIDATOR-REPAIR",
+      "created_at_utc": "2026-10-31T09:13:33Z",
+      "data_cutoff_utc": "2026-10-31T09:13:33Z",
+      "source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+        "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+        "SRC-20261031T090517Z-GH-MAIN-CROSS-ANALYSIS-COMMIT",
+        "SRC-20261031T090517Z-GH-OPEN-PR-INVENTORY",
+        "SRC-20261031T090517Z-GH-PR1400-FIXED-HORIZON-LOCKED-HEAD",
+        "SRC-20261031T090517Z-GH-PR1400-EXACT-HEAD-CI",
+        "SRC-20261031T090517Z-GH-PR1400-FAIL-CLOSED-GATE",
+        "SRC-20261031T090517Z-GH-PR1401-READONLY-CROSS-ANALYSIS",
+        "SRC-20261031T090517Z-GH-PR1402-APPROVAL-PUSH-NOOP",
+        "SRC-20261031T090517Z-GH-PR1398-DATABRICKS-TOKEN-SAFETY",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805",
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+        "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+        "SRC-CIRCLE-ARC-MAINNET-20260916",
+        "SRC-SBIC-EAST-JAPAN-PROFILE-20261030T162330Z"
+      ],
+      "summary": "Corrected the 09:05:17 institutional-rails snapshot/graph/ADR after exact-head validator 41187700141 identified two non-resolving Circle source IDs and a stale archive_policy.archive_shards_total (375 versus 378 live pointer chunks). The corrected copies use canonical Circle Arc and USDC-on-XRPL source IDs, canonical SEC filing IDs, and explicit aliases showing four newly fetched records duplicate previously archived BNY/Robinhood/Coinbase/Q3 documents and are not independent corroboration. Added two new immutable archive shards and corrected archive counts. Prior snapshots, graph, ADR, shards and failed validator evidence remain preserved. Fail-closed gate 41187703687 passed with merging disabled; validator re-run pending.",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T091333Z-bny-robinhood-coinbase-institutional-rails-corrected-source-crosswalk.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T091333Z-bny-robinhood-coinbase-circle-sbi-graph-corrected-source-crosswalk.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T091333Z-institutional-rails-source-crosswalk-and-archive-policy-correction.json",
+      "previous_validator_run_id": 41187700141,
+      "previous_validator_status": "FAIL",
+      "previous_validator_errors": [
+        "archive_policy archive_shards_total must match live pointer chunk totals",
+        "snapshot references unknown source IDs: SRC-20261031-CIRCLE-ARC-MAINNET-0916; SRC-20261031-CIRCLE-USDC-XRPL-0612-2025"
+      ],
+      "previous_gate_run_id": 41187703687,
+      "previous_gate_status": "PASS_MERGE_DISABLED",
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "source_references": 22,
+        "missing_source_references": 0,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_changed_by_this_run": false,
+        "merge_performed": false,
+        "force_push_performed": false,
+        "manual_workflow_dispatch_performed": false,
+        "paper_position_mutated": false,
+        "real_money_trade_performed": false
+      }
+    }
+  ]
+}

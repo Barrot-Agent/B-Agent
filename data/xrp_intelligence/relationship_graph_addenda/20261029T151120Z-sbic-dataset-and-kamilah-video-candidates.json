@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T151120Z-SBIC-DATASET-AND-KAMILAH-VIDEO-CANDIDATES",
+  "captured_at_utc": "2026-10-29T15:11:20Z",
+  "observed_main_sha": "fb2f59012c1ba6d3bf1417d36545bb46028c8f65",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_ACADEMIC_PRIMARY_SOURCE",
+      "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "SECONDARY_ACADEMIC_SOURCE",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "causal_rule": "Acronym collision is not an entity relationship. Creator commentary is not market-flow evidence. Keep identity candidates separate until primary evidence resolves them."
+  },
+  "nodes": [
+    {
+      "id": "SBIC_TERM",
+      "label": "Ambiguous acronym SBIC",
+      "kind": "TERM"
+    },
+    {
+      "id": "SBIC_JAPAN_SME_INVESTMENT",
+      "label": "Japanese Small and Medium Business Investment & Consultation entities",
+      "kind": "COMPANY_FAMILY_CANDIDATE"
+    },
+    {
+      "id": "SBIC_CORPUS",
+      "label": "Social Bias Inference Corpus",
+      "kind": "ACADEMIC_DATASET"
+    },
+    {
+      "id": "CHATGPT",
+      "label": "ChatGPT/LLM evaluation context",
+      "kind": "AI_SYSTEM"
+    },
+    {
+      "id": "KAMILAH_STEVENSON_CHANNEL",
+      "label": "Kamilah Stevenson public XRP/Stocks channel candidate",
+      "kind": "PUBLIC_CREATOR_CHANNEL"
+    },
+    {
+      "id": "XRP_CUSTODY_VIDEO",
+      "label": "Why I Moved My XRP Off Exchanges",
+      "kind": "PUBLIC_VIDEO"
+    },
+    {
+      "id": "XRP_YEN_CARRY_VIDEO",
+      "label": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "kind": "PUBLIC_VIDEO"
+    },
+    {
+      "id": "CAMILLA_STEPHENSON_IDENTITY",
+      "label": "Camilla Stephenson identity target",
+      "kind": "UNRESOLVED_PERSON_ENTITY"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-20261029T151120Z-SBIC-DATASET-MEANING",
+      "source": "SBIC_TERM",
+      "target": "SBIC_CORPUS",
+      "relationship": "ACRONYM_EXPANSION_IN_ACADEMIC_NLP",
+      "evidence_class": "CONFIRMED_ACADEMIC_PRIMARY_SOURCE",
+      "claim": "ACL paper explicitly names the Social Bias Inference Corpus (SBIC).",
+      "source_ids": [
+        "SRC-ACL-SBIC-DATASET-20261029T151120Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151120Z-CHATGPT-SBIC-CANDIDATE",
+      "source": "CHATGPT",
+      "target": "SBIC_CORPUS",
+      "relationship": "POSSIBLE_ACADEMIC_EVALUATION_CONTEXT_FOR_EXACT_PHRASE",
+      "evidence_class": "SECONDARY_ACADEMIC_SOURCE",
+      "claim": "An indexed academic PDF discusses ChatGPT-generated explanations in an SBIC evaluation context; this is a candidate interpretation only.",
+      "source_ids": [
+        "SRC-SCIENGINE-CHATGPT-SBIC-20261029T151120Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151120Z-KAMILAH-CUSTODY-VIDEO",
+      "source": "KAMILAH_STEVENSON_CHANNEL",
+      "target": "XRP_CUSTODY_VIDEO",
+      "relationship": "PUBLIC_VIDEO_BY_CHANNEL_CANDIDATE",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "claim": "Public video description discusses XRP custody, off-exchange holdings and execution/slippage; contains affiliate disclosures.",
+      "source_ids": [
+        "SRC-YT-KAMILAH-XRP-CUSTODY-20261029T151120Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151120Z-KAMILAH-YEN-CARRY-VIDEO",
+      "source": "KAMILAH_STEVENSON_CHANNEL",
+      "target": "XRP_YEN_CARRY_VIDEO",
+      "relationship": "PUBLIC_VIDEO_BY_CHANNEL_CANDIDATE",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "claim": "Public video argues oil shocks and yen carry-trade unwind could stress global liquidity and make XRP infrastructure relevant; claim is unverified.",
+      "source_ids": [
+        "SRC-YT-KAMILAH-XRP-YEN-CARRY-20261029T151120Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151120Z-CAMILLA-KAMILAH-IDENTITY-UNRESOLVED",
+      "source": "KAMILAH_STEVENSON_CHANNEL",
+      "target": "CAMILLA_STEPHENSON_IDENTITY",
+      "relationship": "IDENTITY_EQUIVALENCE_NOT_ESTABLISHED",
+      "evidence_class": "UNKNOWN",
+      "claim": "Search results contain Kamilah Stevenson XRP videos and separate Camilla Stephenson professional/film profiles. No reliable primary source establishes these are the same person.",
+      "source_ids": [
+        "SRC-YT-KAMILAH-XRP-CUSTODY-20261029T151120Z",
+        "SRC-YT-KAMILAH-XRP-YEN-CARRY-20261029T151120Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261029T151120Z-CHATGPT-SBIC-ACADEMIC",
+      "statement": "The exact phrase 'ChatGPT SBIC' may refer to ChatGPT/LLM evaluation on the Social Bias Inference Corpus rather than a Japanese company.",
+      "status": "COMPETING_UNTESTED_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-ACL-SBIC-DATASET-20261029T151120Z",
+        "SRC-SCIENGINE-CHATGPT-SBIC-20261029T151120Z"
+      ],
+      "disconfirming_evidence": [
+        "The user's research instruction explicitly singles out Japan's SBIC; without the original phrase context, the intended entity could be a Japanese firm."
+      ],
+      "tests_needed": [
+        "Locate the original use of the phrase and compare surrounding names, URLs, Japanese corporate identifiers and research citations."
+      ]
+    },
+    {
+      "id": "HYP-20261029T151120Z-YEN-CARRY-XRP-CAUSALITY",
+      "statement": "A yen carry-trade unwind could affect crypto-wide liquidity and XRP volatility, but does not necessarily benefit XRP relative to BTC, USD stablecoins or cash.",
+      "status": "UNTESTED_CREATOR_THESIS",
+      "supporting_source_ids": [
+        "SRC-YT-KAMILAH-XRP-YEN-CARRY-20261029T151120Z"
+      ],
+      "disconfirming_evidence": [
+        "Risk-off deleveraging may reduce XRP demand alongside other risk assets; no event study or route-level flows are provided in the video description."
+      ],
+      "tests_needed": [
+        "Build a timestamped event study for documented yen carry-trade stress windows, control for BTC, USD/JPY, rates, oil, broad crypto beta, XRP funding/OI and spot flows; use leakage-safe out-of-sample tests."
+      ]
+    }
+  ],
+  "notes": [
+    "Do not merge Japanese SBIC entities and the academic SBIC corpus into one node.",
+    "The exact identity of Camilla Stephenson remains unresolved; Kamilah Stevenson video results are maintained as a separate candidate channel.",
+    "The creator's affiliate disclosures and macro thesis are provenance context, not proof of institutional relationships or XRP price effects."
+  ]
+}

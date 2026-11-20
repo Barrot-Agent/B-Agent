@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T232127Z-GITHUB-PR1432-SIGNAL-SAFETY-AND-ARCHIVE-VERIFICATION",
+  "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+  "captured_at_utc": "2026-10-31T23:21:27Z",
+  "created_at_utc": "2026-10-31T23:21:27Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "publisher": "GitHub — Barrot-Agent/B-Agent live repository",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-10-31T23:21:27Z",
+      "evidence_class": "PRIMARY_REPOSITORY_AND_ACTIONS_OBSERVATION",
+      "claims": [
+        "Main remains b51099e04b410f49e28d9c80201f68847aa8118a; this run did not modify main.",
+        "PR #1432 is open, draft, mergeable and unmerged; base is current main b51099e, head is 91eae69c3994f9aebfb7ce3a866bb09bb569af33. CI run 41252147218 passed and fail-closed gate 41252147202 passed with merging disabled.",
+        "PR #1432 changes emit_signal.py to reject malformed model JSON, return null score/confidence on provider failure, emit UNAVAILABLE/NOT_ISSUED without history append when unavailable, and store failed price lookup as null.",
+        "PR #1432 changes Knowledge Signal Cycle to manual, contents:read, persist-credentials:false, artifact-only, no direct main commit/push, and no scheduled trigger pending durable deduplication/storage.",
+        "PR #1431 remains open, draft and unmerged; its CI and fail-closed gate passed, but main Cross Analysis still retains write capability until an approved merge.",
+        "Main knowledge-base log.jsonl is empty; config last updated 2026-10-29 13:23:01 UTC; latest_signal is 57.74 hours old at this capture, score 44, confidence 0, with GitHub Models credential absence and Groq 429 in its source; signal_history.jsonl is empty.",
+        "The approval workflow again failed on a push event with zero jobs: run 41252000889; root cause remains unknown.",
+        "The research data head 853d49dc passed exact-head archive validation run 41252001740, PR validation 41252004448 and fail-closed gate 41252004489; 442 shards, 34 source revision addenda, 29 pending archive append, 32 tests, zero errors and no state mutation."
+      ],
+      "limitations": [
+        "PR #1432 is a proposal; its fix is not active on main.",
+        "PR #1431 is a proposal; Cross Analysis remains write-capable on main.",
+        "The full repository CI was not run; dependency/security scan remains incomplete; branch-protection detail endpoint remains inaccessible.",
+        "The prior 202-open-PR inventory was not fully recounted in this capture.",
+        "No workflow was dispatched and no secret was accessed."
+      ]
+    }
+  ],
+  "findings": [
+    "The fail-open signal-output defect has a minimal fresh-main draft fix with passing CI and fail-closed gate.",
+    "The signal pipeline remains manual-only in the proposal; no schedule is added until persistent deduplication and reviewed promotion exist.",
+    "The latest exact-head archive validation passed on 853d49dc; the next ledger metadata successor is not yet validated."
+  ],
+  "limitations": [
+    "The PRs remain unmerged and main writers remain active.",
+    "No current XRP price forecast is produced by the sentiment script."
+  ],
+  "pending_archive_append": false,
+  "exact_head_validation": false,
+  "status": "PENDING_EXACT_HEAD_VALIDATION"
+}

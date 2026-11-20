@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "XRP-INTELLIGENCE-SOURCES-202610311448Z",
+  "captured_at_utc": "2026-10-31T14:48:24.128Z",
+  "observed_research_head": "b945d0054a1acabb95ae3be4a20b4d309c6bc0e3",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "sources": [
+    {
+      "source_id": "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+      "publisher": "Binance",
+      "title": "Security Incident | Recovery Update #3",
+      "url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "published_at_utc": "2026-10-31T14:24:00Z",
+      "retrieved_at_utc": "2026-10-31T14:48:24.128Z",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "BINANCE_OFFICIAL",
+      "claims": [
+        "Binance says aggregate incident coverage has increased from approximately 80% to 90%.",
+        "Binance says BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC are fully backed at 100% in a new PoR snapshot taken 2026-10-31 00:00 UTC.",
+        "Binance says the remaining 10% consists of less-liquid tokens outside the ten named assets.",
+        "Binance says replenishment uses partial SAFU, a portion of the Futures Insurance Fund and corporate treasury.",
+        "Binance estimates full zk-SNARK proof generation by 2026-11-03 and targets withdrawal resumption on 2026-11-01."
+      ],
+      "limitations": [
+        "Company statement; full proof was not available at capture.",
+        "No XRP-specific units, USD purchases, spot/OTC venue split or reserve-address crosswalk disclosed.",
+        "The 90% aggregate figure is not converted into a dollar amount or XRP demand."
+      ]
+    },
+    {
+      "source_id": "SRC-202610311448Z-BINANCE-POR-METHODOLOGY",
+      "publisher": "Binance",
+      "title": "Proof of Reserves methodology",
+      "url": "https://www.binance.com/en/proof-of-reserves",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T14:48:24.128Z",
+      "evidence_class": "PRIMARY_DOCUMENTATION",
+      "independence_group": "BINANCE_OFFICIAL",
+      "claims": [
+        "Binance describes address ownership verification, user-liability snapshots, zk-SNARK proof generation and Merkle-tree inclusion verification."
+      ],
+      "limitations": [
+        "Rendered page did not expose the full new asset-level table as machine-readable text at capture.",
+        "Methodology page is not an independent third-party audit."
+      ]
+    },
+    {
+      "source_id": "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS",
+      "publisher": "SBI VC Trade",
+      "title": "SBI VISA Crypto Card current product and reward terms",
+      "url": "https://www.sbivc.co.jp/cryptocard",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T14:48:24.128Z",
+      "evidence_class": "PRIMARY_PRODUCT_PAGE",
+      "independence_group": "SBI_VC_TRADE_PRODUCT_PAGE",
+      "claims": [
+        "One asset per card may be selected from BTC, ETH or XRP.",
+        "Standard card earns JPY 1 equivalent per JPY 200 spend; Gold earns JPY 2 equivalent per JPY 200 spend.",
+        "Monthly points for the 6th-to-5th cycle are credited around the 17th and converted by month-end into the selected crypto.",
+        "Conversion quantity uses SBI VC Trade's displayed sales price at 06:59:59 on the previous day; XRP units are truncated to seven decimals.",
+        "The September 1–October 31 campaign offers a JPY 500 joining benefit, Standard spending reward up to JPY 2,000 and Gold spending reward up to JPY 4,000; issuance by November 30, spend through December 5, reward by February 2027.",
+        "Campaign reward priority for multiple cards is Gold before Standard, then BTC before ETH before XRP."
+      ],
+      "limitations": [
+        "No cardholder count, XRP selection share, reward units or realized aggregate credit volume disclosed.",
+        "Sales-price reference is not an execution record; reward inventory may come from existing inventory, OTC or spot purchases.",
+        "Campaign application window ends 2026-10-31 JST; current page terms are dynamic."
+      ]
+    },
+    {
+      "source_id": "SRC-202610311448Z-SBI-VISA-DIGITAL-MOU",
+      "publisher": "SBI Holdings / Visa Japan",
+      "title": "Basic agreement to explore cooperation in digital finance and payments",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16303.html",
+      "published_at_utc": "2026-05-01T00:00:00Z",
+      "retrieved_at_utc": "2026-10-31T14:48:24.128Z",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "SBI_HOLDINGS_VISA_MOU",
+      "claims": [
+        "SBI Holdings and Visa Japan signed an exploratory basic agreement covering digital finance, payments and possible digital-asset/stablecoin use."
+      ],
+      "limitations": [
+        "Exploratory MOU; no completed XRP product, Ripple contract or stablecoin issuance mandate established."
+      ]
+    },
+    {
+      "source_id": "SRC-202610311448Z-SBI-SHINSEI-XRP-VOUCHER",
+      "publisher": "SBI Shinsei Bank / SBI VC Trade",
+      "title": "Yen time-deposit campaign with XRP exchange vouchers",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0202_16075.html",
+      "published_at_utc": "2026-02-02T00:00:00Z",
+      "retrieved_at_utc": "2026-10-31T14:48:24.128Z",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "SBI_SHINSEI_SBI_VC_TRADE_CAMPAIGN",
+      "claims": [
+        "The campaign offered XRP vouchers against eligible six-month yen deposits from JPY 300,000, with a maximum JPY 20,000 equivalent.",
+        "XRP quantity reference was 2026-07-02 06:59 JST."
+      ],
+      "limitations": [
+        "Total eligible deposits, voucher issuance, redemption, XRP units credited and sourcing are not disclosed."
+      ]
+    },
+    {
+      "source_id": "SRC-202610311448Z-SBI-RLUSD-LISTING",
+      "publisher": "SBI VC Trade / Ripple",
+      "title": "SBI VC Trade begins handling Ripple USD (RLUSD)",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "published_at_utc": "2026-06-24T00:00:00Z",
+      "retrieved_at_utc": "2026-10-31T14:48:24.128Z",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "SBI_VC_TRADE_RIPPLE_RLUSD_JOINT_RELEASE",
+      "claims": [
+        "SBI VC Trade began handling Ripple's RLUSD on VCTRADE on 2026-06-24."
+      ],
+      "limitations": [
+        "RLUSD is a Ripple-issued stablecoin distinct from native XRP; listing does not establish XRP purchases or collateral demand."
+      ]
+    },
+    {
+      "source_id": "SRC-202610311448Z-REUTERS-COINBASE-KEY-HARDENING",
+      "publisher": "Reuters",
+      "title": "Crypto exchanges call for quick moves to bolster defenses after Binance heist",
+      "url": "https://www.reuters.com/legal/government/crypto-exchanges-call-quick-moves-bolster-defenses-after-binance-heist-2026-10-31/",
+      "published_at_utc": "2026-10-31T00:26:00Z",
+      "retrieved_at_utc": "2026-10-31T14:48:24.128Z",
+      "evidence_class": "SECONDARY_REPORTING_OF_COMPANY_STATEMENT",
+      "independence_group": "REUTERS_REPORTING",
+      "claims": [
+        "Reuters reports Coinbase said it adjusted systems that store cryptocurrency keys offline as a precaution after the Binance incident."
+      ],
+      "limitations": [
+        "Exact control changes are undisclosed; this is a custody response, not evidence of an XRP-specific product, reserve or demand change."
+      ]
+    },
+    {
+      "source_id": "SRC-202610311448Z-GITHUB-PR-WORKFLOW-AUDIT",
+      "publisher": "GitHub REST API / Barrot-Agent repository",
+      "title": "Current-main pull request, workflow and CI audit",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T14:48:24.128Z",
+      "evidence_class": "DIRECT_REPOSITORY_OBSERVATION",
+      "independence_group": "GITHUB_REPOSITORY_STATE",
+      "claims": [
+        "Main is e560236d494e5f24548abfc53c23829865a565f9.",
+        "There are 190 open PRs: 180 drafts, 10 ready; 188 target main, five target the current main SHA and 183 are stale.",
+        "PRs #1413–#1417 are draft, unmerged and based on current main; their exact-head CI and fail-closed gates passed.",
+        "Main retains scheduled/manual write-capable workflows including cross-analysis, signal accuracy, scheduler tick and Databricks token rotation."
+      ],
+      "limitations": [
+        "Branch-protection detail endpoint returned 403; required-check policy not independently inspected.",
+        "Full repository CI and dependency vulnerability scan were not run.",
+        "Local dirty-worktree state was not inspected."
+      ]
+    }
+  ],
+  "independence_policy": {
+    "primary_vs_secondary": "Binance and SBI statements are primary company claims. Reuters is secondary reporting. GitHub state is direct repository observation.",
+    "non_independence": "SBI/Visa card and MOU sources are related counterparties; do not count them as independent market corroboration.",
+    "actual_capital": "Reward face value, exchange price reference and aggregate recovery coverage are not executed XRP purchases or net external capital."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 74,
+  "chunk_count": 75,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T18:11:48Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T18:11:48Z",
+      "update_type": "CORRECT_LEDGER_VALIDATOR_FIXTURE_AND_SNAPSHOT_PATH",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "prior_data_head": "20a31818a83b2f93d3ab7d3be2f8533b880f6547",
+      "test_fixture_correction_commit": "6722c0d693b21b920ad66e0c6ccdda7b499f85a1",
+      "superseded_snapshot_path": "data/xrp_intelligence/snapshots/20261030T180231Z-fomc-macro-xrp-etf-market-and-repo-audit.json",
+      "corrected_snapshot_path": "data/xrp_intelligence/snapshots/20261030T180231Z-fomc-macro-xrp-etf-market-and-repo-audit-corrected.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T181148Z-validator-fixture-and-snapshot-path-correction.json",
+      "repository_audit_path": "data/repository_audits/20261030T181148Z-validator-root-cause-and-correction.json",
+      "prior_validator_run_id": 41104531465,
+      "prior_validator_result": "17 passed, 2 failed",
+      "root_causes": [
+        "v3 fixture omitted archive_policy and pointer objects",
+        "snapshot payload omitted snapshot_path"
+      ],
+      "corrections": [
+        "updated v3 fixture with consistent pointers and policy counts",
+        "created corrected snapshot copy; original remains unreferenced"
+      ],
+      "new_sources": 0,
+      "new_relationship_edges": 0,
+      "new_hypotheses": 0,
+      "new_market_observations": 0,
+      "new_limitations": 1,
+      "validation_status": "PENDING_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "safety": {
+        "main_modified": false,
+        "merge_performed": false,
+        "force_push": false,
+        "workflow_dispatch_performed": false,
+        "paper_state_mutated": false,
+        "real_money_trade": false
+      }
+    }
+  ]
+}

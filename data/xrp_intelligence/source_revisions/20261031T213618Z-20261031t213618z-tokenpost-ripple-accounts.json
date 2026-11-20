@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS",
+  "source_id": "SRC-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "created_at_utc": "2026-10-31T21:36:18Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS",
+      "publisher": "TokenPost — Two Ripple Accounts Still Hold 1 Billion XRP Ahead of Nov. 1",
+      "url": "https://www.tokenpost.com/news/investing/43438",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-29T10:48:00Z",
+      "evidence_class": "SECONDARY_ONCHAIN_TRANSACTION_HISTORY_REPORT",
+      "claims": [
+        "Two Ripple-labelled XRPL accounts each showed a 500M XRP balance on Oct29.",
+        "Four EscrowFinish transactions on Oct1 delivered 100M+400M to one account and 200M+300M to the other.",
+        "The report found no later outgoing XRP payment from either account through its Oct29 observation.",
+        "The same two accounts were associated with two Nov1 escrow objects containing another 500M each."
+      ],
+      "limitations": [
+        "Wallet balances are dated Oct29, not a fresh Oct31 raw account-state check.",
+        "No sale, exchange deposit, OTC sale or current balance is established.",
+        "The 2B framing is 1B previously released and held plus 1B still escrowed/eligible, not 2B already unlocked or sold."
+      ]
+    }
+  ],
+  "findings": [
+    "Two Ripple-labelled XRPL accounts each showed a 500M XRP balance on Oct29.",
+    "Four EscrowFinish transactions on Oct1 delivered 100M+400M to one account and 200M+300M to the other.",
+    "The report found no later outgoing XRP payment from either account through its Oct29 observation.",
+    "The same two accounts were associated with two Nov1 escrow objects containing another 500M each."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "Wallet balances are dated Oct29, not a fresh Oct31 raw account-state check.",
+    "No sale, exchange deposit, OTC sale or current balance is established.",
+    "The 2B framing is 1B previously released and held plus 1B still escrowed/eligible, not 2B already unlocked or sold."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

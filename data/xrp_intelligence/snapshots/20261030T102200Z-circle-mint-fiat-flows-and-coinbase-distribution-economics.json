@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-2026-10-30T102200Z-CIRCLE-MINT-FIAT-FLOWS-AND-COINBASE-DISTRIBUTION",
+  "captured_at_utc": "2026-10-30T10:22:00Z",
+  "data_cutoff_utc": "2026-10-30T10:22:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T102200Z-circle-mint-fiat-flows-and-coinbase-distribution-economics.json",
+  "confirmed_facts": [
+    {
+      "claim": "Circle Q2 2026 Circle Mint customers initiated USD83.004B in USDC minting and USD86.784B in redemptions; net mint-minus-redemption was -USD3.780B.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Circle H1 2026 Circle Mint customers initiated USD156.543B in minting and USD158.540B in redemptions; net was -USD1.997B.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Circle's 2025 comparatives were Q2 net +USD1.357B and H1 net +USD17.476B.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Circle incurred USD324.6M Q2 and USD655.3M H1 distribution costs under Coinbase agreements; total distribution, transaction and other costs were USD412.470M Q2 and USD819.251M H1.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Circle says Coinbase allocations are based partly on USDC held on Coinbase's platform after issuer retention and partly on broader ecosystem growth after approved third-party participant payments; Circle also says Coinbase and Binance distribution costs depend on their respective platform balances and platform policies.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    }
+  ],
+  "derived_metrics": [
+    {
+      "metric": "Coinbase-agreement distribution cost / Circle total distribution, transaction and other costs",
+      "q2_2026_percent": 78.6966,
+      "h1_2026_percent": 79.9877,
+      "classification": "DERIVED_RATIO",
+      "caveat": "Not Coinbase share of USDC balances, all distributor payouts or XRP demand."
+    }
+  ],
+  "inferences": [
+    {
+      "claim": "Circle Mint fiat-conversion flows are a more direct measure of primary-market USD/USDC conversion than generic on-chain transfer volume.",
+      "basis": "Circle's SEC definition of mint/redeem activity as fiat conversions initiated by Circle Mint customers."
+    },
+    {
+      "claim": "Coinbase is economically important to Circle's USDC distribution model, and its platform balance and commercial terms affect Circle's costs.",
+      "basis": "Circle's disclosed allocation mechanics and Coinbase-agreement distribution costs."
+    }
+  ],
+  "unknowns": [
+    "Circle Q3 2026 mint/redemption flows and Q3 distribution-cost details are not yet available at this cutoff.",
+    "Circle Mint flow data do not capture all secondary-market USDC transactions or all end-user distribution routes.",
+    "No direct mapping from Circle Mint fiat conversions to XRPL USDC liquidity, RLUSD substitution or native XRP purchases has been established.",
+    "Coinbase's exact numeric share of Circle's average USDC on-platform balances remains undisclosed in the cited filing."
+  ],
+  "disconfirming_evidence": [
+    {
+      "claim": "Q2 and H1 2026 Circle Mint net flows were negative despite higher year-over-year average USDC circulation; gross minting/redemption and supply stock therefore require separate treatment.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Circle explicitly states that changes in interest rates and USDC circulation are complex and highly uncertain; it does not claim a deterministic rate-to-supply relationship.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    }
+  ],
+  "source_ids": [
+    "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030",
+    "SRC-COINBASE-Q3-2026-10Q-SEC-20261030",
+    "SRC-COINBASE-Q3-2026-IR-RELEASE-USDC-20261030",
+    "SRC-CIRCLE-Q2-2026-PLATFORM-METRIC-ATTRIBUTION-CORRECTION-20261030",
+    "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030"
+  ],
+  "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T102200Z-circle-mint-fiat-flows-and-coinbase-distribution-economics.json",
+  "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T102200Z-circle-mint-actual-capital-feature-contract.json",
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "graph_blob_sha": "8505120054b6dd8f79f64061f2d7db03f082db08",
+  "architecture_decision_blob_sha": "f1126211d3a632986f8afc07c554889d46fd748c"
+}

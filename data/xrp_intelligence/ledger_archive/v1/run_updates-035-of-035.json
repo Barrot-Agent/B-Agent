@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 34,
+  "chunk_count": 35,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T10:15:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T10:15:00Z",
+      "update_type": "CORRECT_CIRCLE_COINBASE_USDC_PLATFORM_METRIC_ATTRIBUTION_AND_REFRESH_PAPER_TRADER_SAFETY",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "d943e10119d8c31cce055bd420a471026c96ff4e",
+      "data_snapshot_commit_sha": "d15f51657f0f3fc2e887a7630d277a19d6586ca7",
+      "correction": {
+        "prior_graph_addendum_id": "XRP-GRAPH-20261030T083100Z-CIRCLE-SBI-JV-COINBASE-USDC-ECONOMICS",
+        "superseded_observation_id": "MOBS-CIRCLE-Q2-USDC-RESERVE-PLATFORM-20261030",
+        "issue": "Circle's 19.5% USDC-on-platform daily weighted-average share and USD12.442B end balance were mislabeled as Coinbase metrics.",
+        "correction": "Circle 10-Q defines these as Circle's own platform metrics. Coinbase Q3 average USD22B eligible-product USDC and USD8.616B point-in-time AOP USDC are distinct measures.",
+        "new_snapshot": "data/xrp_intelligence/snapshots/20261030T101500Z-circle-coinbase-platform-metric-attribution-correction.json",
+        "new_graph": "data/xrp_intelligence/relationship_graph_addenda/20261030T101500Z-circle-coinbase-platform-metric-attribution-correction.json",
+        "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261030T101500Z-circle-coinbase-metric-definitions-and-rate-sensitivity.json",
+        "source_ids": [
+          "SRC-COINBASE-Q3-2026-10Q-SEC-20261030",
+          "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030",
+          "SRC-COINBASE-Q3-2026-IR-RELEASE-USDC-20261030",
+          "SRC-CIRCLE-Q2-2026-PLATFORM-METRIC-ATTRIBUTION-CORRECTION-20261030",
+          "SRC-SBI-CIRCLE-IPO-INVESTMENT-RECHECK-20261030",
+          "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030",
+          "SRC-SBI-CIRCLE-JV-50-50-PRESENTATION-RECHECK-20261030",
+          "SRC-CIRCLE-USDC-XRPL-NATIVE-RECHECK-20261030",
+          "SRC-COINBASE-RLUSD-PLATFORM-RECHECK-20261030",
+          "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220",
+          "SRC-SBI-VCTRADE-RLUSD-AND-USDC-20260624",
+          "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501"
+        ]
+      },
+      "repository_audit": {
+        "current_main_sha": "7bc248654412643af1baf071db707771cb1ce2e5",
+        "main_branch_protected": true,
+        "main_required_status_checks": [],
+        "cross_analysis_workflow_still_write_enabled": true,
+        "pr1366": {
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1366",
+          "head_sha": "4a826f1130418bcd1eb475b8af48e50c2a267a26",
+          "base_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+          "state": "OPEN_DRAFT_UNMERGED",
+          "main_ahead_by": 6,
+          "changed_path_overlap": false,
+          "core_ci_run": 41024099995,
+          "core_ci": "347 tests and 8 subtests passed",
+          "gate_run": 41024100209,
+          "gate": "PASS_MERGE_DISABLED"
+        },
+        "pr1367": {
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1367",
+          "head_sha": "9ee42d8a6d2e90a43e15f80558b7ec599aad84a0",
+          "base_sha": "7bc248654412643af1baf071db707771cb1ce2e5",
+          "state": "OPEN_DRAFT_UNMERGED",
+          "core_ci_run": 41038585878,
+          "core_ci": "352 tests and 8 subtests passed in 8.13 seconds",
+          "gate_run": 41038585782,
+          "gate": "PASS_MERGE_DISABLED"
+        },
+        "active_paper_trader_workflow": "workflow_dispatch only; not scheduled",
+        "persisted_paper_state": {
+          "position_size": 0.012445158497236623,
+          "position_product": null,
+          "avg_entry_price": 80436.84,
+          "cash_usd": 9009.936613782476,
+          "trade_count": 126
+        },
+        "paper_state_mutated": false,
+        "workflow_dispatch_performed": false,
+        "main_modified": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "real_money_trade": false
+      },
+      "platform_coordination": {
+        "github_connector": "VERIFIED_IN_SESSION",
+        "claude": "NOT_TESTED",
+        "grok": "NOT_TESTED",
+        "gemini": "NOT_TESTED",
+        "copilot": "NOT_TESTED",
+        "codex": "NOT_TESTED",
+        "hugging_face": "NOT_TESTED",
+        "kaggle": "NOT_TESTED",
+        "databricks": "NOT_TESTED"
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "next_action": "Obtain Circle Q3 results on November 4; reconcile Circle-defined USDC-on-platform, Coinbase eligible-product average balances and Coinbase AOP by matched definitions; continue Binance PoR wallet crosswalk and XRP receiver monitoring; keep PRs draft/unmerged pending approval."
+    }
+  ]
+}

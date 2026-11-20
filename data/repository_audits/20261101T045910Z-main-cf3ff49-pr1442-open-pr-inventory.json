@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261101T045910Z-BAGENT-MAIN-PR1442",
+  "captured_at_utc": "2026-11-01T04:59:10Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "cf3ff49e4128c732fe84ca36efb7f0424774e904",
+  "main_write_paths_active": [
+    ".github/workflows/cross-analysis.yml",
+    ".github/workflows/scheduler-tick.yml",
+    ".github/workflows/merge-queue.yml"
+  ],
+  "main_commit_interpretation": "generated_at-only sentiment_shift.json update despite zero qualifying recent/prior XRP and BTC observations.",
+  "pr1442": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1442",
+    "state": "OPEN",
+    "draft": true,
+    "merged": false,
+    "mergeable": true,
+    "base_sha": "cf3ff49e4128c732fe84ca36efb7f0424774e904",
+    "head_sha": "bc84abfeefee3ca60f43fa729d5631ad84719c55",
+    "ci_run_id": 41275266085,
+    "ci_conclusion": "SUCCESS",
+    "tests_passed": 349,
+    "subtests_passed": 8,
+    "gate_run_id": 41275266092,
+    "gate_conclusion": "SUCCESS",
+    "gate_merge_disabled": true
+  },
+  "open_pr_inventory": {
+    "total": 213,
+    "drafts": 203,
+    "ready": 10,
+    "main_based": 208,
+    "stale_main_based": 207,
+    "current_main_based": 1,
+    "non_main_based": 5
+  },
+  "known_blockers": [
+    "Approval workflow push-event/zero-job anomaly unresolved.",
+    "Full repository CI not run.",
+    "Dependency vulnerability scan incomplete.",
+    "Security-alert access unavailable.",
+    "Branch-protection detail endpoint returned 403; other protection settings unknown."
+  ],
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "external_deployment": false
+  }
+}

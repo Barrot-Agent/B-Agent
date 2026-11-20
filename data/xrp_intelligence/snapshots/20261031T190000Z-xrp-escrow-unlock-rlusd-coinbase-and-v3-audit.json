@@ -1,0 +1,338 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "XRP-20261031T190000Z-ESCROW-UNLOCK-RLUSD-COINBASE-AND-V3-AUDIT",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T190000Z-xrp-escrow-unlock-rlusd-coinbase-and-v3-audit.json",
+  "captured_at_utc": "2026-10-31T19:00:21Z",
+  "data_cutoff_utc": "2026-10-31T19:00:21Z",
+  "extends_snapshot": "data/xrp_intelligence/snapshots/20261031T171300Z-binance-safu-transfer-and-xrp-reserve-correction.json",
+  "source_bundle_path": "data/xrp_intelligence/sources/20261031T190000Z-xrp-escrow-rlusd-coinbase-source-bundle.json",
+  "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T190000Z-xrp-escrow-rlusd-coinbase-relationship-graph.json",
+  "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T190000Z-escrow-event-and-rlusd-chain-supply-admission.json",
+  "repository_audit_path": "data/repository_audits/20261031T190000Z-main-200-pr-workflow-and-prediction-audit.json",
+  "source_ids": [
+    "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE",
+    "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP",
+    "SRC-20261031T190021Z-RIPPLE-TRANSPARENCY-LIVE",
+    "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION",
+    "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY",
+    "SRC-20261031T190021Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+    "SRC-20261031T190021Z-XRPLTO-RLUSD-SUPPLY",
+    "SRC-20261031T190021Z-XRLINEAGE-RLUSD-SUPPLY-CONFLICT",
+    "SRC-20261031T190021Z-GITHUB-MAIN-200-PR-WORKFLOW-AUDIT"
+  ],
+  "source_reference_count": 10,
+  "missing_source_references": 0,
+  "confirmed_findings": [
+    {
+      "id": "ESCROW-NOV1",
+      "statement": "Two Ripple-owned escrow objects totaling 1B XRP have FinishAfter 2026-11-01T00:00Z at ledger 108028302, closed 2026-10-31T18:03Z.",
+      "source_ids": [
+        "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE"
+      ],
+      "evidence_class": "PUBLIC_ONCHAIN_DERIVED"
+    },
+    {
+      "id": "ESCROW-12M-RELOCK",
+      "statement": "Prior 12 releases: 12B released, 8.4B re-escrowed (70%), 3.6B net outside escrow; October 2026 was 1B released, 700M re-escrowed, 300M net.",
+      "source_ids": [
+        "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE"
+      ],
+      "evidence_class": "PUBLIC_ONCHAIN_HISTORY"
+    },
+    {
+      "id": "COINBASE-RLUSD-LISTING",
+      "statement": "Coinbase/Ripple announced RLUSD access on Prime, Exchange, Retail with XRPL/Base/Ethereum deposits/withdrawals; Ripple Base liquidity; Global Exchange collateral deferred.",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP"
+      ],
+      "evidence_class": "JOINT_PRIMARY_ANNOUNCEMENT"
+    },
+    {
+      "id": "DELOITTE-SEP-ATTESTATION",
+      "statement": "Deloitte Sep30 report: 2,399,995,528 RLUSD outstanding; $2,524,008,274 reserves; opinion fairly stated in all material respects.",
+      "source_ids": [
+        "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION"
+      ],
+      "evidence_class": "INDEPENDENT_ACCOUNTANT_ATTESTATION"
+    },
+    {
+      "id": "RIPPLE-OCT29-LIVE",
+      "statement": "Ripple live page displays $2.627B circulation and $2.7586B reserves as of Oct29; not the Sep30 attestation.",
+      "source_ids": [
+        "SRC-20261031T190021Z-RIPPLE-TRANSPARENCY-LIVE"
+      ],
+      "evidence_class": "ISSUER_DISPLAY"
+    },
+    {
+      "id": "RLUSD-707M-CLUSTER",
+      "statement": "XRP Insights, stables.cool and XRPL.to report about 707.4M RLUSD on XRPL; Ethereum about 1.71B; sources are correlated.",
+      "source_ids": [
+        "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY",
+        "SRC-20261031T190021Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+        "SRC-20261031T190021Z-XRPLTO-RLUSD-SUPPLY"
+      ],
+      "evidence_class": "CORRELATED_SECONDARY_ONCHAIN"
+    }
+  ],
+  "company_claims": [
+    {
+      "id": "BINANCE-UPDATE3",
+      "statement": "Binance claims 90% total replenishment and 100% backing for ten assets including XRP; full ZK proof estimated by Nov3.",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3"
+      ],
+      "evidence_class": "COMPANY_CLAIM_PENDING_FULL_PROOF"
+    }
+  ],
+  "conflicting_observations": [
+    {
+      "id": "XRLINEAGE-910M",
+      "statement": "XR-Lineage displayed 910.3M RLUSD at 13:52:19Z and 2,000 trustlines, about 202.9M above the 707.4M cluster.",
+      "source_ids": [
+        "SRC-20261031T190021Z-XRLINEAGE-RLUSD-SUPPLY-CONFLICT",
+        "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY",
+        "SRC-20261031T190021Z-XRPLTO-RLUSD-SUPPLY"
+      ],
+      "evidence_class": "UNRESOLVED_PROVIDER_SCOPE_CONFLICT"
+    },
+    {
+      "id": "TWO-CHAIN-VS-GLOBAL",
+      "statement": "Oct31 two-chain dashboard total near $2.42B differs from Ripple's Oct29 global issuer display $2.627B; dates/network scope differ.",
+      "source_ids": [
+        "SRC-20261031T190021Z-RIPPLE-TRANSPARENCY-LIVE",
+        "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY",
+        "SRC-20261031T190021Z-XRP-INSIGHTS-RLUSD-SUPPLY"
+      ],
+      "evidence_class": "SCOPE_AND_CUTOFF_MISMATCH"
+    }
+  ],
+  "inferences": [
+    "If 70% re-escrow repeats, Nov1 1B release implies 700M re-escrow and 300M net outside escrow; scenario only.",
+    "Coinbase three-network access creates a plausible distribution channel, but no transaction crosswalk proves XRPL decline migrated to Coinbase-supported chains.",
+    "Chain-specific RLUSD decline does not establish global redemption or net capital leaving Ripple's stablecoin system."
+  ],
+  "unknowns": [
+    "Whether and when Nov1 escrow objects are finished.",
+    "Where released XRP goes and how much is re-escrowed or sold.",
+    "Raw XR-Lineage query and meaning of 2,000 trustlines.",
+    "Aligned RLUSD supply/bridge flows on Base, Optimism, Ink, Unichain and XRPL EVM.",
+    "Whether Coinbase Global Exchange RLUSD collateral is live; Oct28 announcement said deferred."
+  ],
+  "disconfirming_evidence": [
+    "Prior 12 releases re-escrowed 70%; 1B scheduled does not imply 1B sell pressure.",
+    "Deloitte Sep30 and Ripple Oct29 show reserves above outstanding/circulation, but dates/assurance differ.",
+    "Three 707.4M dashboards are correlated; XR-Lineage is an outlier with a different trustline count.",
+    "Coinbase explicitly deferred Global Exchange RLUSD collateral."
+  ],
+  "event_timeline": [
+    {
+      "at_utc": "2026-10-28T12:00:00Z",
+      "event": "Coinbase/Ripple RLUSD distribution announcement; XRPL/Base/Ethereum; Base liquidity; Global Exchange collateral deferred.",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP"
+      ]
+    },
+    {
+      "at_utc": "2026-10-29",
+      "event": "Ripple transparency page displays $2.627B circulation and $2.7586B reserves.",
+      "source_ids": [
+        "SRC-20261031T190021Z-RIPPLE-TRANSPARENCY-LIVE"
+      ]
+    },
+    {
+      "at_utc": "2026-10-31T18:03:00Z",
+      "event": "Pinned XRPL ledger 108028302 shows next 1B Ripple escrow FinishAfter at 2026-11-01T00:00Z.",
+      "source_ids": [
+        "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE"
+      ]
+    },
+    {
+      "at_utc": "2026-11-01T00:00:00Z",
+      "event": "Two Ripple escrow objects totaling 1B XRP become eligible for EscrowFinish; actual transaction/disposition remains to be observed.",
+      "source_ids": [
+        "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE"
+      ]
+    },
+    {
+      "at_utc": "2026-11-01",
+      "event": "Binance stated target date for phased withdrawal reopening; not verified.",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3"
+      ]
+    },
+    {
+      "at_utc": "2026-11-03",
+      "event": "Binance stated estimated date for full ZK PoR proof; not guaranteed.",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3"
+      ]
+    }
+  ],
+  "market_observations": [
+    {
+      "metric": "ripple_escrow_next_unlock",
+      "value": 1000000000,
+      "unit": "XRP",
+      "observed_at_utc": "2026-10-31T18:03:00Z",
+      "ledger_index": 108028302,
+      "source_ids": [
+        "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE"
+      ],
+      "feature_admission": "SCHEDULED_EVENT_CONTEXT_ONLY"
+    },
+    {
+      "metric": "ripple_escrow_total",
+      "value": 31400000000,
+      "unit": "XRP",
+      "observed_at_utc": "2026-10-31T18:03:00Z",
+      "ledger_index": 108028302,
+      "source_ids": [
+        "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE"
+      ],
+      "feature_admission": "SUPPLY_CONTEXT_ONLY"
+    },
+    {
+      "metric": "ripple_escrow_12m_relock_ratio",
+      "value": 70,
+      "unit": "percent",
+      "observed_at_utc": "2026-10-31T18:03:00Z",
+      "source_ids": [
+        "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE"
+      ],
+      "feature_admission": "HISTORICAL_BASE_RATE_NOT_GUARANTEE"
+    },
+    {
+      "metric": "rlusd_xrpl_supply",
+      "value": 707400000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T15:10:00Z",
+      "source_ids": [
+        "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY",
+        "SRC-20261031T190021Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+        "SRC-20261031T190021Z-XRPLTO-RLUSD-SUPPLY"
+      ],
+      "feature_admission": "CHAIN_CONTEXT_ONLY"
+    },
+    {
+      "metric": "rlusd_ethereum_supply",
+      "value": 1710000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T15:10:00Z",
+      "source_ids": [
+        "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY",
+        "SRC-20261031T190021Z-XRP-INSIGHTS-RLUSD-SUPPLY"
+      ],
+      "feature_admission": "CHAIN_CONTEXT_ONLY"
+    },
+    {
+      "metric": "rlusd_oct29_issuer_circulation",
+      "value": 2627000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-29",
+      "source_ids": [
+        "SRC-20261031T190021Z-RIPPLE-TRANSPARENCY-LIVE"
+      ],
+      "feature_admission": "ISSUER_DISPLAY_NOT_ATTESTATION"
+    },
+    {
+      "metric": "rlusd_oct29_issuer_reserves",
+      "value": 2758600000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-29",
+      "source_ids": [
+        "SRC-20261031T190021Z-RIPPLE-TRANSPARENCY-LIVE"
+      ],
+      "feature_admission": "ISSUER_DISPLAY_NOT_ATTESTATION"
+    },
+    {
+      "metric": "rlusd_sep30_attested_outstanding",
+      "value": 2399995528,
+      "unit": "RLUSD",
+      "observed_at_utc": "2026-09-30T21:00:00Z",
+      "source_ids": [
+        "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION"
+      ],
+      "feature_admission": "INDEPENDENT_ACCOUNTANT_ATTESTED"
+    },
+    {
+      "metric": "rlusd_sep30_attested_reserve",
+      "value": 2524008274,
+      "unit": "USD",
+      "observed_at_utc": "2026-09-30T21:00:00Z",
+      "source_ids": [
+        "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION"
+      ],
+      "feature_admission": "INDEPENDENT_ACCOUNTANT_ATTESTED"
+    }
+  ],
+  "calculations": {
+    "unlock_seconds_remaining": 17979,
+    "if_70pct_relock_repeats": {
+      "released_xrp": 1000000000,
+      "reescrowed_xrp": 700000000,
+      "net_outside_escrow_xrp": 300000000,
+      "scenario_only": true
+    },
+    "sep30_reserve_surplus_usd": 124012746,
+    "sep30_reserve_coverage_pct": 105.167207,
+    "oct29_live_surplus_usd_m": 131.5999999999999,
+    "oct29_live_coverage_pct": 105.009517,
+    "xrpl_share_two_chain_pct": 29.2628,
+    "ethereum_share_two_chain_pct": 70.7372,
+    "xrlineage_gap_usd_m": 202.9
+  },
+  "competing_hypotheses": [
+    {
+      "id": "HYP-ESCROW-REPEAT-RELOCK",
+      "claim": "Nov1 1B unlock repeats recent 70% re-escrow pattern, leaving about 300M net outside escrow.",
+      "status": "BASE_RATE_SCENARIO_NOT_FORECAST",
+      "support": [
+        "Prior 12 releases each re-escrowed 700M of 1B."
+      ],
+      "disconfirming": [
+        "Historical pattern is not contractual; amount/timing may change."
+      ],
+      "next_test": "Observe EscrowFinish/EscrowCreate at pinned ledgers after 00:00Z."
+    },
+    {
+      "id": "HYP-RLUSD-COINBASE-CHAIN-REALLOCATION",
+      "claim": "Some XRPL RLUSD decline after Oct28 reflects allocation to Coinbase-supported Ethereum/Base rather than global redemption.",
+      "status": "PLAUSIBLE_NOT_CONFIRMED",
+      "support": [
+        "Coinbase added XRPL/Base/Ethereum access; Ripple announced Base liquidity; Ethereum supply rose in the captured window."
+      ],
+      "disconfirming": [
+        "Ethereum increase smaller than XRPL decrease; Base and bridge/mint paths not reconciled; dates/scopes differ."
+      ],
+      "next_test": "Reconcile per-chain balances, NTT transfers, burns/mints and Coinbase deposit/withdrawal labels at aligned timestamps."
+    },
+    {
+      "id": "HYP-RLUSD-ISSUER-REDEMPTION",
+      "claim": "Some XRPL RLUSD decline reflects redemptions/burns rather than chain migration.",
+      "status": "PLAUSIBLE_COUNTERHYPOTHESIS",
+      "support": [
+        "RLUSD supply follows deposits/redemptions; XRPL supply is reported lower."
+      ],
+      "disconfirming": [
+        "Ripple Oct29 global issuer display exceeds Sep30 attested circulation, though dates differ; no burn IDs matched."
+      ],
+      "next_test": "Trace issuer redemption flows and all chain balances over same 24h."
+    },
+    {
+      "id": "HYP-RLUSD-PROVIDER-SCOPE",
+      "claim": "XR-Lineage 910.3M is a tracked-wallet/sample metric, stale display or scope error.",
+      "status": "DATA_QUALITY_HYPOTHESIS",
+      "support": [
+        "XR-Lineage shows 2,000 trustlines vs XRPL.to 101,560; three other providers cluster near 707.4M."
+      ],
+      "disconfirming": [
+        "XR-Lineage labels figure live supply; raw scope unknown."
+      ],
+      "next_test": "Obtain raw API response and compare canonical issuer gateway_balances at same ledger."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

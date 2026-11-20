@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 21,
+  "chunk_count": 22,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:05:12Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T08:05:12Z",
+      "update_type": "BINANCE_XRP_POR_ATTRIBUTION_CROSSCHECK_MARKET_DELEVERAGING_XRPL_RESTRICTED_TOKEN_UPDATE_AND_PR1366_VERIFICATION",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_append": "9da8094c0b3014df4ded9a9a45c086581d380567",
+      "observed_main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-HACK-UPDATED-20261030T0643Z",
+        "SRC-COINDESK-XRP-LIQUIDATIONS-20261030T0622Z",
+        "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0700Z",
+        "SRC-TRACKWHALE-XRP-FLOWS-20261030T0745Z",
+        "SRC-COINDESK-XRPL-RESTRICTED-TOKEN-FIXES-20261030T0545Z",
+        "SRC-COINDESK-INSTITUTIONAL-CEX-WITHDRAWALS-20261030T0356Z",
+        "SRC-COINBASE-CBXRP-POR-REFRESH-20261030T0805Z",
+        "SRC-BINANCE-OFFICIAL-POR-METHODOLOGY-20261030T0805Z",
+        "SRC-COINDESK-BINANCE-PO-RESERVES-ETH-WALLET-20261030T0017Z"
+      ],
+      "findings": {
+        "binance_xrp_incident": {
+          "receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+          "five_source_wallet_total_xrp": 233461943.1,
+          "bitquery_receiver_balance_at_0643_utc_approx_xrp": 233500000,
+          "bitquery_receiver_outgoing_observed": false,
+          "bitquery_says_17_drained_wallets_have_binance_por_labels": true,
+          "coin_desk_october_1_por_crosswalk": "Confirms Binance 14 Ethereum wallet only; does not identify the five XRPL addresses",
+          "official_xrp_address_crosswalk": "NOT_COMPLETED",
+          "xrp_bf2_backing_crosswalk": "NOT_COMPLETED",
+          "reserve_shortfall": "NOT_ESTABLISHED"
+        },
+        "coinbase_cbxrp": {
+          "native_reserve_xrp": 151405263.6,
+          "cbxrp_base_supply": 151403016.07,
+          "excess_reserve_xrp": 2247.53,
+          "calculated_coverage_percent": 100.00148,
+          "dashboard_data_refreshed_at_utc": "2026-10-29T14:04:00Z",
+          "visible_reserve_address_overlap_with_five_binance_sources": false,
+          "growth_or_net_new_buying": "UNKNOWN_SINGLE_SNAPSHOT"
+        },
+        "market_structure": {
+          "tradradar_cutoff_utc": "2026-10-30T07:00:00Z",
+          "xrp_price_usd": 1.2661,
+          "open_interest_usd": 1870000000,
+          "open_interest_change_24h_percent": -4.49,
+          "funding_per_8h_percent": -0.0054,
+          "liquidations_24h_minimum_usd": 32180000,
+          "long_liquidations_usd": 30050000,
+          "short_liquidations_usd": 2130000,
+          "long_account_share_percent": 78.8,
+          "coindesk_coinglass_marketwide_liquidations_usd": 1530000000,
+          "coindesk_xrp_liquidations_usd": 38100000,
+          "coindesk_marketwide_long_share_percent": 83.8,
+          "trackwhale_7d_tracked_net_exchange_flow_xrp": -210090000,
+          "trackwhale_flow_status": "INCIDENT_CONTAMINATED_LIMITED_LARGE_TRANSFER_PANEL"
+        },
+        "xrpl_compliance": {
+          "proposal": "fixCleanup3_5_0",
+          "proposed_changes": 4,
+          "merged": false,
+          "activated": false,
+          "validator_threshold": "More than 80% trusted validators for two consecutive weeks",
+          "foundation_reported_user_impact": "No known users affected; no outsider exploitation known"
+        },
+        "institutional_custody_claim": {
+          "reported_exchange_withdrawals": "Anonymous-source CoinDesk report",
+          "amount": "UNKNOWN",
+          "destinations": "UNKNOWN",
+          "xrp_specific": "NOT_ESTABLISHED"
+        }
+      },
+      "repository": {
+        "main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+        "pr1366_url": "https://github.com/Barrot-Agent/B-Agent/pull/1366",
+        "pr1366_head_sha": "4a826f1130418bcd1eb475b8af48e50c2a267a26",
+        "pr1366_core_ci_run_id": 41024099995,
+        "pr1366_core_ci_tests_passed": 347,
+        "pr1366_core_ci_subtests_passed": 8,
+        "pr1366_core_ci_duration_seconds": 8.58,
+        "pr1366_gate_run_id": 41024100209,
+        "pr1366_gate_status": "PASS_MERGE_DISABLED",
+        "pr1366_state": "OPEN_DRAFT_UNMERGED",
+        "pr1366_base_current_at_creation": true
+      },
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    }
+  ]
+}

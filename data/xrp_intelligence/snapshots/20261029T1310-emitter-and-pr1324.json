@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1310-EMITTER-AND-PR1324",
+  "captured_at_utc": "2026-10-29T13:10:00Z",
+  "data_cutoff_utc": "2026-10-29T13:10:00Z",
+  "observed_main_sha": "750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736",
+  "forecast_status": "NOT_ISSUED",
+  "summary": "Current main signal emitter has two material data-quality problems: malformed model JSON becomes fabricated neutral score/confidence 50/0.5, and malformed or timezone-naive news timestamps are admitted because parse failures are ignored; non-finite relevance weights are not rejected. Draft PR #1324 proposes strict classifier schema validation, finite/timestamp checks, explicit descriptive-score semantics and forecast_status=NOT_ISSUED with a structured no-forecast record. Four regression tests were added to the already CI-listed tests/test_v3_scripts.py. PR #1324 is based on current main 750ccb and has 3 commits ahead/0 behind; no CI/gate run was visible at capture. PR #1323's read-only merge queue has passing CI and gate but is now one commit behind main due to a paper-trading log-only commit. Main's paper trader remains scheduled and has a nonzero simulated position with product identity null. The public XRP signal remains score 44/confidence 0.0 with provider failures. No market features admitted; no forecast issued.",
+  "findings": [
+    {
+      "id": "FIND-RUN65-EMITTER-FALLBACK-DEFECT",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Current main scripts/emit_signal.py returns score 50/confidence 0.5/neutral when model response parsing fails. If both providers fail, it returns score 0/confidence 0.0, then blends score with the news score when news exists. The emitted artifact does not explicitly mark forecast status or distinguish descriptive sentiment from return prediction.",
+      "source_ids": [
+        "SRC-GH-MAIN-EMITTER-20261029T1310Z",
+        "SRC-GH-MAIN-XRP-SIGNAL-20261029T1310Z"
+      ],
+      "limitation": "The current artifact is a sentiment/news summary, not a calibrated price forecast. No forecast issued."
+    },
+    {
+      "id": "FIND-RUN65-NEWS-TIMESTAMP-QUALITY",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Current _news_score ignores timestamp parse failures and does not reject non-finite relevance weights or unknown sentiment labels. Such rows can distort a rolling-window feature. PR #1324 adds strict exclusion and regression tests.",
+      "source_ids": [
+        "SRC-GH-MAIN-EMITTER-20261029T1310Z",
+        "SRC-GH-PR1324-COMPARE-20261029T1310Z"
+      ],
+      "limitation": "The number of affected historical rows has not been measured; no retrospective feature or score rewrite was performed."
+    },
+    {
+      "id": "FIND-RUN65-PR1324-PROPOSAL",
+      "evidence_class": "PROPOSED_FIX",
+      "claim": "PR #1324 changes only scripts/emit_signal.py and tests/test_v3_scripts.py, adds four deterministic tests, and was created from main 750ccbaf. Remote compare reports 3 commits ahead, 0 behind. Files were read back; CI/gate not visible at capture.",
+      "source_ids": [
+        "SRC-GH-PR1324-STATUS-20261029T1310Z",
+        "SRC-GH-PR1324-COMPARE-20261029T1310Z"
+      ],
+      "limitation": "Draft and unmerged; do not claim tests pass until exact-head CI and gate are observed."
+    },
+    {
+      "id": "FIND-RUN65-PR1323-VERIFIED",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "claim": "PR #1323's read-only merge-queue workflow passed 187 tests plus 4 subtests in 6.65 seconds, including both new regression tests, and the fail-closed gate passed.",
+      "source_ids": [
+        "SRC-GH-PR1323-CI-20261029T1307Z",
+        "SRC-GH-PR1323-GATE-20261029T1307Z",
+        "SRC-GH-PR1323-CI-LOG-20261029T1307Z"
+      ],
+      "limitation": "Draft and unmerged. Main advanced one log-only commit after the PR base; current mergeability must be rechecked before approval."
+    },
+    {
+      "id": "FIND-RUN65-PAPER-TRADER-OPEN-BLOCKER",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main still runs the paper trader every 30 minutes and commits/pushes its state/log. State remains position_size 0.012445158497236623, position_product null, average entry 80436.84, cash about 9009.94, trade_count 126.",
+      "source_ids": [
+        "SRC-GH-MAIN-PAPER-STATE-20261029T1307Z",
+        "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1304Z"
+      ],
+      "limitation": "PR #1320 remains draft/unmerged. Full historical log replay remains blocked; state was not mutated."
+    },
+    {
+      "id": "FIND-RUN65-ACCIDENTAL-GRAPH-CLEANUP-PENDING",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "The prior unintended data-only relationship graph file remains on main. PR #1308 remains open, draft and unmerged.",
+      "source_ids": [
+        "SRC-GH-PR1308-STATUS-20261029T1307Z"
+      ],
+      "limitation": "Main has not been restored to its prior tree; no merge or deletion was performed."
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-GH-MAIN-EMITTER-20261029T1310Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736/scripts/emit_signal.py"
+    },
+    {
+      "id": "SRC-GH-MAIN-XRP-SIGNAL-20261029T1310Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json"
+    },
+    {
+      "id": "SRC-GH-PR1324-STATUS-20261029T1310Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1324"
+    },
+    {
+      "id": "SRC-GH-PR1324-COMPARE-20261029T1310Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736...xrp/emit-signal-explicit-not-issued-and-data-quality-20261029T1308Z"
+    },
+    {
+      "id": "SRC-GH-PR1323-CI-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40878454961"
+    },
+    {
+      "id": "SRC-GH-PR1323-GATE-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40878454822"
+    },
+    {
+      "id": "SRC-GH-PR1323-CI-LOG-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40878454961"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-STATE-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/coinbase-paper-trader.yml"
+    },
+    {
+      "id": "SRC-GH-PR1308-STATUS-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1308"
+    }
+  ],
+  "market_observations": [],
+  "verification": {
+    "main_sha": "750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736",
+    "pr1323_ci": "PASS_187_TESTS_PLUS_4_SUBTESTS_6.65S",
+    "pr1323_gate": "PASS_FAIL_CLOSED",
+    "pr1323_base_status": "ONE_COMMIT_BEHIND_MAIN_LOG_ONLY",
+    "pr1324_head": "9230e52ebd359766f136fe031d64cf48ee35578f",
+    "pr1324_compare": "3_AHEAD_0_BEHIND",
+    "pr1324_changed_paths": [
+      "scripts/emit_signal.py",
+      "tests/test_v3_scripts.py"
+    ],
+    "pr1324_readback": "PASS",
+    "pr1324_ci": "NOT_VISIBLE_AT_CAPTURE",
+    "pr1324_gate": "NOT_VISIBLE_AT_CAPTURE",
+    "pr1320_ci": "PASS_196_TESTS_PLUS_4_SUBTESTS_6.77S",
+    "pr1320_gate": "PASS_FAIL_CLOSED",
+    "pr1319_ci": "PASS_190_TESTS_PLUS_4_SUBTESTS_6.63S",
+    "pr1319_gate": "PASS_FAIL_CLOSED",
+    "paper_trader_schedule": "ACTIVE",
+    "paper_trader_position_identity": "UNKNOWN",
+    "prior_main_write_cleanup_pr1308": "DRAFT_OPEN_UNMERGED",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "workflow_dispatch_performed": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false
+  }
+}

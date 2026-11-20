@@ -1,0 +1,260 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-30T0111Z-COINBASE-BINANCE-BITNOMIAL-XRPL-VALIDATOR-FIX",
+  "captured_at_utc": "2026-10-30T01:11:40Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T0111Z-coinbase-binance-bitnomial-xrpl-validator-fix.json",
+  "observed_main_sha": "0b20a401724218ede2b9e85d304a907c0c1ceda1",
+  "focus": "Coinbase Q3 strategic position; Circle USDC supply and XRPL; Ripple RLUSD/Coinbase partnership; Binance security-event freezes; Bitnomial XRP/RLUSD margin collateral; CFTC pilot scope; XRPL 3.3.0 amendment activation; creator-video fact-check; append-only ledger-validator root cause and exact-head fix.",
+  "source_ids": [
+    "SRC-COINBASE-Q3-2026-SEC-DECK",
+    "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-20261028",
+    "SRC-RIPPLE-INSTITUTIONAL-FOOTPRINT-20261028",
+    "SRC-CIRCLE-USDC-TRANSPARENCY-20261026",
+    "SRC-CIRCLE-USDC-ON-XRPL-20250612",
+    "SRC-REUTERS-BINANCE-SECURITY-FREEZES-20261029",
+    "SRC-AP-BINANCE-SECURITY-FREEZES-20261029",
+    "SRC-ALPHA-XRP-ETF-TRACKER-20261028",
+    "SRC-ALPHA-ETF-CROSS-ASSET-20261029",
+    "SRC-BITNOMIAL-COLLATERAL-TABLE-20261002",
+    "SRC-BITNOMIAL-RLUSD-XRP-MARGIN-20251103",
+    "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT-20251208",
+    "SRC-XRPL-FREEZE-DOCS-20261030",
+    "SRC-XRPL-3-3-0-RELEASE-20260806",
+    "SRC-XRPL-XLS96-CONFIDENTIAL-TRANSFERS-20260910",
+    "SRC-XRPL-XLS68-SPONSORED-FEES-20260915",
+    "SRC-XRPL-AMENDMENT-STATUS-XRPLDASHBOARD-20261029",
+    "SRC-XRPL-AMENDMENT-STATUS-XRPLTO-20261029",
+    "SRC-YOUTUBE-KAMILAH-XRP-COLLATERAL-20251206",
+    "SRC-YOUTUBE-KAMILAH-XRPL-AMENDMENTS-20260730",
+    "SRC-YOUTUBE-KAMILAH-XRP-MACRO-20260303",
+    "SRC-GITHUB-LEDGER-VALIDATOR-FAIL-20261030",
+    "SRC-GITHUB-LEDGER-VALIDATOR-FIX-20261030",
+    "SRC-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-20261030",
+    "SRC-GITHUB-BAGENT-MAIN-AND-PR-AUDIT-20261030"
+  ],
+  "findings": [
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REPORTED",
+      "claim": "Coinbase Q3 2026 revenue $1.216B; stablecoin revenue $307M; average USDC held in Coinbase products $22B; global crypto trading-volume share 10.7%; transaction revenue $590.2M, down about 43% YoY. GAAP profit includes a large crypto-investment gain, so recurring profitability should not be inferred from headline net income.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-SEC-DECK"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_COUNTERPARTY_ANNOUNCEMENT",
+      "claim": "Coinbase began supporting RLUSD across Prime, Exchange and retail on Oct 28 with XRPL/Base/Ethereum deposits and withdrawals. Global Exchange collateral availability is a future rollout, not live capability in the announcement.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-20261028"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_ISSUER_TRANSPARENCY",
+      "claim": "Circle reported $71.0B USDC circulation and $71.2B reserves as of Oct 26, with net circulation down $4.2B over 30 days. This does not reveal destination flows.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261026"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_PRODUCT_ANNOUNCEMENT",
+      "claim": "Circle USDC has been natively available on XRPL since Jun 12, 2025 through Circle Mint and APIs without requiring a third-party bridge. This establishes direct Circle-to-XRPL infrastructure, not proportional XRP demand.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-ON-XRPL-20250612"
+      ]
+    },
+    {
+      "evidence_class": "SECONDARY_REPUTABLE_REPORT",
+      "claim": "Reuters reports $2.54B total assets frozen during Binance's investigation, including nearly $1.57B Tether, over $800M Circle and roughly $200M attributed to Ripple. Binance said user funds were safe; cause and losses were not confirmed. Ripple's asset type and chain are unidentified.",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-FREEZES-20261029",
+        "SRC-AP-BINANCE-SECURITY-FREEZES-20261029"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_PROTOCOL_DOCUMENTATION",
+      "claim": "Native XRP cannot be frozen by an issuer on XRPL; custodial exchanges can restrict assets they custody. Therefore the reported Ripple $200M freeze cannot be asserted to be an on-ledger freeze of native XRP.",
+      "source_ids": [
+        "SRC-XRPL-FREEZE-DOCS-20261030",
+        "SRC-REUTERS-BINANCE-SECURITY-FREEZES-20261029"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_CLEARINGHOUSE_RULES_PAGE",
+      "claim": "Bitnomial Clearinghouse, a CFTC-registered DCO, lists XRP as accepted collateral with a 40% haircut and $15M notional limit. This is venue-specific acceptance, not blanket CFTC approval or evidence of actual utilization.",
+      "source_ids": [
+        "SRC-BITNOMIAL-COLLATERAL-TABLE-20261002",
+        "SRC-BITNOMIAL-RLUSD-XRP-MARGIN-20251103"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATOR_ANNOUNCEMENT",
+      "claim": "The CFTC's Dec 8, 2025 digital-asset collateral pilot announcement explicitly names BTC, ETH and USDC, not XRP. The CFTC pilot and Bitnomial's separate DCO collateral rules are distinct legal/operational pathways.",
+      "source_ids": [
+        "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT-20251208",
+        "SRC-BITNOMIAL-COLLATERAL-TABLE-20261002"
+      ]
+    },
+    {
+      "evidence_class": "SECONDARY_ETF_TRACKER",
+      "claim": "Alpha Finance's XRP-specific page reports +$90.4M over 30 trading sessions; its cross-asset page reports +$10.9M over 30 calendar days and +$291.5M over 90 days. The windows and fund populations differ; this is not a common-series contradiction.",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-TRACKER-20261028",
+        "SRC-ALPHA-ETF-CROSS-ASSET-20261029"
+      ]
+    },
+    {
+      "evidence_class": "SECONDARY_INDEPENDENT_NODE_OBSERVATION",
+      "claim": "XRPL amendment evidence indicates BatchV1_1 and PermissionDelegationV1_1 enabled in October; ConfidentialTransfer, DynamicMPT and Sponsor remained below 29/35 in two independent node dashboards on Oct 29. Exact vote counts differ slightly; do not average them.",
+      "source_ids": [
+        "SRC-XRPL-3-3-0-RELEASE-20260806",
+        "SRC-XRPL-AMENDMENT-STATUS-XRPLDASHBOARD-20261029",
+        "SRC-XRPL-AMENDMENT-STATUS-XRPLTO-20261029",
+        "SRC-XRPL-XLS96-CONFIDENTIAL-TRANSFERS-20260910",
+        "SRC-XRPL-XLS68-SPONSORED-FEES-20260915"
+      ]
+    },
+    {
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "claim": "The XRP ledger validator initially failed because it required every immutable shard's creation-time chunk_count to equal the latest pointer total. The fix now validates global chunk index and permits valid append-generation metadata; exact-head regression suite passed 15 tests and fail-closed gate passed.",
+      "source_ids": [
+        "SRC-GITHUB-LEDGER-VALIDATOR-FAIL-20261030",
+        "SRC-GITHUB-LEDGER-VALIDATOR-FIX-20261030"
+      ]
+    },
+    {
+      "evidence_class": "UNKNOWN",
+      "claim": "The controlled-approval workflow continues to emit push-event runs with zero jobs despite inspected workflow files declaring workflow_dispatch only. The event/version discrepancy remains unresolved.",
+      "source_ids": [
+        "SRC-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-20261030"
+      ]
+    }
+  ],
+  "market_panel": {
+    "coinbase_q3": {
+      "total_revenue_usd": 1216000000,
+      "transaction_revenue_usd": 590200000,
+      "transaction_revenue_yoy_change_pct": -43,
+      "subscription_services_revenue_usd": 570000000,
+      "stablecoin_revenue_usd": 307000000,
+      "average_usdc_held_usd": 22000000000,
+      "global_crypto_volume_share_pct": 10.7,
+      "assets_on_platform_usd": 377000000000,
+      "adjusted_ebitda_usd": 332900000,
+      "adjusted_net_income_usd": 77700000,
+      "source_id": "SRC-COINBASE-Q3-2026-SEC-DECK",
+      "xrp_specific": false
+    },
+    "circle_usdc": {
+      "as_of": "2026-10-26",
+      "circulation_usd": 71000000000,
+      "reserves_usd": 71200000000,
+      "net_30d_change_usd": -4200000000,
+      "source_id": "SRC-CIRCLE-USDC-TRANSPARENCY-20261026",
+      "destination_flow_known": false
+    },
+    "binance_security_event": {
+      "reported_total_frozen_usd": 2540000000,
+      "tether_reported_frozen_usd": 1570000000,
+      "circle_reported_frozen_usd": 800000000,
+      "ripple_reported_frozen_usd": 200000000,
+      "ripple_asset_type": "UNKNOWN",
+      "customer_loss_confirmed": false,
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-FREEZES-20261029",
+        "SRC-AP-BINANCE-SECURITY-FREEZES-20261029"
+      ]
+    },
+    "bitnomial_xrp_collateral": {
+      "haircut_pct": 40,
+      "notional_limit_usd": 15000000,
+      "venue_specific": true,
+      "utilization_known": false,
+      "source_id": "SRC-BITNOMIAL-COLLATERAL-TABLE-20261002"
+    },
+    "xrp_etf_tracker": {
+      "alpha_xrp_page_30_trading_sessions_usd": 90400000,
+      "alpha_cross_asset_30_calendar_days_usd": 10900000,
+      "alpha_cross_asset_90_days_usd": 291500000,
+      "common_fund_population": false,
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-TRACKER-20261028",
+        "SRC-ALPHA-ETF-CROSS-ASSET-20261029"
+      ]
+    },
+    "xrpl_amendments": {
+      "batch_v1_1": "REPORTED_ENABLED_2026-10-09",
+      "permission_delegation_v1_1": "REPORTED_ENABLED_2026-10-08",
+      "confidential_transfer": "BELOW_29_OF_35",
+      "dynamic_mpt": "BELOW_29_OF_35",
+      "sponsor": "BELOW_29_OF_35",
+      "exact_vote_counts": "DASHBOARD_DISAGREEMENT",
+      "source_ids": [
+        "SRC-XRPL-AMENDMENT-STATUS-XRPLDASHBOARD-20261029",
+        "SRC-XRPL-AMENDMENT-STATUS-XRPLTO-20261029"
+      ]
+    }
+  },
+  "repository_state": {
+    "main_sha": "0b20a401724218ede2b9e85d304a907c0c1ceda1",
+    "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+    "research_branch_head_before_snapshot": "7074a97f8fb4075a6bcd49321d0e0e9f2016545d",
+    "pr1353": {
+      "state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "base": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+      "head": "7074a97f8fb4075a6bcd49321d0e0e9f2016545d",
+      "validator_run": 40984071380,
+      "validator_tests": 15,
+      "gate_run": 40984074773,
+      "gate": "PASS"
+    },
+    "pr_inventory": {
+      "open_drafts": [
+        1349,
+        1353,
+        1355,
+        1356,
+        1357,
+        1358,
+        1359
+      ],
+      "merged_by_this_run": []
+    },
+    "overlapping_paths": {
+      ".github/workflows/ci.yml": [
+        1355,
+        1358
+      ],
+      "tests/test_v3_scripts.py": [
+        1356,
+        1357,
+        1359
+      ]
+    },
+    "main_signal": "STALE_INVALID_NOT_A_RETURN_FORECAST",
+    "main_public_summary": "STALE",
+    "main_merge_queue": "MUTATION_CAPABLE_UNTIL_APPROVED_FIX",
+    "paper_position_identity": "UNRESOLVED_NONZERO_POSITION_PRODUCT_NULL",
+    "approval_workflow_push_event": "ZERO_JOB_FAILURE_ROOT_CAUSE_UNRESOLVED",
+    "full_repository_ci_on_research_branch": "NOT_RUN"
+  },
+  "unresolved": [
+    "SBIC/ChatGPT SBIC original phrase context remains unresolved; regional SBIC companies, SBI Group entities and the Social Bias Inference Corpus remain separate candidates.",
+    "ASK Coin leading candidate remains Permission Coin ASK, but original context and any XRP relationship are unconfirmed.",
+    "Actual-capital accounting remains incomplete; exchange transfers, CVD, ETF flows and market-cap changes are not interchangeable with net new capital.",
+    "Camilla Stephenson identity remains unverified against Kamilah/Camila Stevenson channel candidate; video inventory is partial.",
+    "No synchronized multi-venue XRP spot/perpetual, ETF, USDC/RLUSD and institutional-collateral panel has been validated for forecasting.",
+    "No verified utilization/volume data exists for Bitnomial XRP collateral; accepted collateral limits do not prove material capital deployment.",
+    "Ripple's reported roughly $200M freeze asset, chain, addresses and custody path remain unknown.",
+    "No live collaboration across all nine target platforms was verified."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_executed": false,
+  "workflow_dispatch_performed": false,
+  "real_money_trade": false
+}

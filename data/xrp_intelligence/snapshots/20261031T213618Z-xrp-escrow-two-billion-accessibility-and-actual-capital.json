@@ -1,0 +1,274 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T213618Z-ESCROW-TWO-BILLION-AND-ACTUAL-CAPITAL",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "data_cutoff_utc": "2026-10-31T21:36:18Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T213618Z-xrp-escrow-two-billion-accessibility-and-actual-capital.json",
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T210244Z-TRADRADAR-XRP",
+    "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-10Q",
+    "SRC-20261031T211452Z-SEC-21SHARES-XRP-ETF-10Q"
+  ],
+  "source_revision_ids": [
+    "SRC-20261031T213618Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS",
+    "SRC-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME",
+    "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE",
+    "SRC-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+    "SRC-20261031T213618Z-RIPPLE-COINBASE-RLUSD",
+    "SRC-20261031T213618Z-TOKENPOST-SOSOVALUE-XRP-ETF",
+    "SRC-20261031T213618Z-ALPHAFINANCE-XRP-ETF",
+    "SRC-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+    "SRC-20261031T213618Z-GITHUB-BAGENT-AUDIT"
+  ],
+  "executive_findings": [
+    "The 2B XRP framing is 1B previously released and reported in two Ripple-labelled accounts as of Oct29 plus 1B still in two escrow objects eligible Nov1 00:00 UTC. It is not 2B already unlocked, sold or deposited to exchanges.",
+    "The trailing 12-month escrow sample shows 70% re-escrow, not a rule or guaranteed November outcome.",
+    "Ripple's $16T 2025 product-enabled volume is portfolio-wide, not XRP-specific. Ripple Payments lifetime volume is separately stated at about $150B; a secondary source reports $13T in Ripple Treasury payments volume. Actual XRP-routed share and inventory remain unknown.",
+    "SBI Remit's official 2023 announcement documents XRP as bridge asset and SBI VC Trade as real-time supplier. Current volumes and inventory are unknown.",
+    "BNY officially supports XRP and RLUSD custody, but does not disclose customer XRP balances. Coinbase's Oct28 RLUSD launch is stablecoin distribution; Global Exchange collateral support was planned for a later phase.",
+    "TokenPost/SoSoValue reports -$496,496 ETF flow Oct30; AlphaFinance reports +$8.4M Oct29. Different dates and provider universes."
+  ],
+  "escrow": {
+    "scheduled_release_xrp": 1000000000,
+    "scheduled_eligibility_utc": "2026-11-01T00:00:00Z",
+    "objects": 2,
+    "object_size_xrp": 500000000,
+    "prior_released_balance_reported_xrp": 1000000000,
+    "prior_balance_accounts": 2,
+    "prior_balance_each_xrp": 500000000,
+    "prior_balance_observation_utc": "2026-10-29",
+    "combined_gross_accessibility_context_xrp": 2000000000,
+    "combined_context_definition": "1B previously reported in two wallet balances plus 1B still locked pending two EscrowFinish transactions",
+    "trailing_12_months": {
+      "gross_released_xrp": 12000000000,
+      "re_escrowed_xrp": 8400000000,
+      "re_escrow_pct": 70,
+      "net_outside_escrow_xrp": 3600000000
+    },
+    "total_reported_escrow_xrp": 31400000000,
+    "escrow_objects_total": 98,
+    "owner_accounts": 8,
+    "current_raw_account_state_verified": false,
+    "escrow_finish_transactions_verified": false,
+    "exchange_deposit_or_sale_verified": false,
+    "interpretation": "Eligibility is not execution; release is not sale; wallet balance is not exchange supply."
+  },
+  "market": {
+    "last_derivatives_observation": {
+      "provider": "TradRadar",
+      "observed_at_utc": "2026-10-31T19:45:00Z",
+      "price_usd": 1.2536,
+      "price_change_24h_pct": 0.34,
+      "open_interest_usd": 1870000000,
+      "open_interest_change_24h_pct": 0.37,
+      "oi_weighted_funding_8h_pct": 0.0046,
+      "long_account_share_pct": 75.3,
+      "liquidations_24h_usd": 358240
+    },
+    "note": "Provider-specific observation, not a live 21:36 UTC quote; long-account share is not notional exposure."
+  },
+  "capital_and_adoption": {
+    "ripple_2025_product_enabled_volume_usd": 16000000000000,
+    "ripple_2025_product_volume_scope": "All Ripple products; not XRP-specific.",
+    "ripple_payments_lifetime_volume_usd": 150000000000,
+    "ripple_treasury_2025_payment_volume_usd": 13000000000000,
+    "ripple_treasury_metric_evidence": "SECONDARY_REPORT_NOT_INDEPENDENTLY_RECONCILED_TO_PRIMARY_FILING",
+    "xrp_specific_payment_volume": "UNKNOWN",
+    "xrp_routed_share": "UNKNOWN",
+    "customer_xrp_inventory_requirements": "UNKNOWN",
+    "sbi_remit_xrp_bridge_use": "DOCUMENTED_IN_2023_COMPANY_ANNOUNCEMENT",
+    "bny_xrp_custody": "OFFICIALLY_SUPPORTED; CLIENT_BALANCES_UNKNOWN",
+    "coinbase_rlusd_distribution": "OFFICIALLY_LAUNCHED_OCT28_2026_ACROSS_XRPL_BASE_ETHEREUM",
+    "coinbase_global_exchange_rlusd_collateral": "PLANNED_LATER_NOT_LIVE_AT_ANNOUNCEMENT"
+  },
+  "etf_flows": {
+    "tokenpost_sosovalue_oct30_net_flow_usd": -496496,
+    "tokenpost_sosovalue_oct30_funds": 5,
+    "tokenpost_sosovalue_cumulative_net_inflows_usd": 1810000000,
+    "tokenpost_sosovalue_net_assets_usd": 1420000000,
+    "alphafinance_oct29_net_flow_usd": 8400000,
+    "alphafinance_30_session_net_flow_usd": 98900000,
+    "alphafinance_cumulative_net_flow_usd": 1730000000,
+    "reconciliation": "Different dates and source universes; preserve both, do not average or infer spot execution."
+  },
+  "hypotheses": [
+    {
+      "id": "H-2B-ACCESSIBILITY",
+      "status": "INFERENCE_NOT_SALE",
+      "statement": "Potential 2B XRP under Ripple-associated account control is 1B in two wallet balances plus 1B still escrowed.",
+      "support": [
+        "Two accounts each reported 500M Oct29.",
+        "Two 500M escrow objects scheduled Nov1."
+      ],
+      "disconfirming": [
+        "Raw state not refreshed after Oct29.",
+        "No EscrowFinish or sale at cutoff."
+      ],
+      "next_test": "Capture validated XRPL ledger before/after Nov1 00:00 UTC."
+    },
+    {
+      "id": "H-ESCROW-SELL-PRESSURE",
+      "status": "UNSUPPORTED",
+      "statement": "The Nov1 eligibility creates immediate spot sell pressure.",
+      "support": [
+        "Gross 1B eligibility."
+      ],
+      "disconfirming": [
+        "70% trailing re-escrow sample.",
+        "Prior 1B wallet balances had no outgoing payments through Oct29.",
+        "No exchange deposit or sale."
+      ],
+      "next_test": "Trace EscrowFinish, Destination, transfers, exchange deposits and order-book impact."
+    },
+    {
+      "id": "H-16T-XRP-DEMAND",
+      "status": "NOT_ESTABLISHED",
+      "statement": "Ripple's $16T product volume implies proportional XRP demand.",
+      "support": [
+        "Broad institutional activity."
+      ],
+      "disconfirming": [
+        "$16T spans products; $150B Payments is separate; $13T Treasury is secondary; XRP-routed share unknown."
+      ],
+      "next_test": "Obtain corridor-level XRP volume, inventory and velocity."
+    },
+    {
+      "id": "H-RLUSD-SUBSTITUTION",
+      "status": "COMPETING_HYPOTHESIS",
+      "statement": "RLUSD substitutes for XRP in some corridors and complements it in others.",
+      "support": [
+        "RLUSD multi-chain dollar settlement."
+      ],
+      "disconfirming": [
+        "Ripple positions XRP as bridge for lower-liquidity corridors; actual routing mix unknown."
+      ],
+      "next_test": "Measure route selection, RLUSD transfer volume and XRP inventory."
+    },
+    {
+      "id": "H-SBI-XRP",
+      "status": "USE_CASE_CONFIRMED_SCALE_UNKNOWN",
+      "statement": "SBI Remit's documented remittance flow creates transactional XRP use.",
+      "support": [
+        "Official SBI Remit XRP bridge and SBI VC Trade supply."
+      ],
+      "disconfirming": [
+        "2023 announcement; current volumes/inventory unknown."
+      ],
+      "next_test": "Find current corridor metrics and public SBI VC Trade wallet flows."
+    },
+    {
+      "id": "H-BNY-CUSTODY",
+      "status": "ACCESS_CONFIRMED_BALANCES_UNKNOWN",
+      "statement": "BNY custody support lowers institutional access friction for XRP.",
+      "support": [
+        "Official BNY custody announcement."
+      ],
+      "disconfirming": [
+        "No balances, purchases or collateral utilization disclosed."
+      ],
+      "next_test": "Seek client adoption and transfer disclosures."
+    },
+    {
+      "id": "H-ETF-FLOW",
+      "status": "CONTEXT_ONLY",
+      "statement": "ETF redemptions may contribute to short-term sell-side activity.",
+      "support": [
+        "TokenPost/SoSoValue Oct30 -$496,496."
+      ],
+      "disconfirming": [
+        "Canary inflow offsets; AP hedging/in-kind routes alter timing; AlphaFinance Oct29 +$8.4M."
+      ],
+      "next_test": "Align issuer reports, AP hedges and spot execution."
+    },
+    {
+      "id": "H-COINBASE-RLUSD-XRP",
+      "status": "INDIRECT_ONLY",
+      "statement": "Coinbase RLUSD distribution increases XRPL access but does not establish XRP purchases.",
+      "support": [
+        "RLUSD on XRPL and Coinbase."
+      ],
+      "disconfirming": [
+        "Base/Ethereum routes bypass XRPL; collateral not live at launch; no XRP buy/hold requirement."
+      ],
+      "next_test": "Measure chain split and actual collateral launch."
+    }
+  ],
+  "source_bundle_path": "data/xrp_intelligence/sources/20261031T213618Z-escrow-ripple-volume-sbi-bny-coinbase-etf-sources.json",
+  "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T213618Z-escrow-ripple-capital-sbi-bny-coinbase-graph.json",
+  "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T213618Z-escrow-2b-actual-capital-and-route-attribution.json",
+  "repository_audit_path": "data/repository_audits/20261031T213618Z-main-pr-workflow-and-freshness-audit.json",
+  "prediction_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "data_quality": {
+    "raw_xrpl_rpc_read": false,
+    "current_ripple_wallet_balances": "STALE_SECONDARY_OBSERVATION_OCT29",
+    "escrow_finish_status": "NOT_YET_VERIFIED_AT_CUTOFF",
+    "source_independence": "Official Ripple/BNY/SBI sources corroborate product relationships; TokenPost and AlphaFinance are separate secondary ETF-flow aggregators with different cutoffs."
+  },
+  "repository": {
+    "main_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+    "open_pr_count": 202,
+    "current_main_base_prs_verified": [
+      1429,
+      1430
+    ],
+    "base_sha_classification": "PARTIAL_REAUDIT",
+    "pr1429": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "d83f82438621308d7173770bb2539a179f25db7c",
+      "ci_run_id": 41241608596,
+      "tests": 345,
+      "subtests": 8,
+      "gate_run_id": 41241608616,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    "pr1430": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "962d0b23f84c4aaa84496bac10da0b62aa006c5d",
+      "ci_run_id": 41243412000,
+      "tests": 346,
+      "subtests": 8,
+      "gate_run_id": 41243411930,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    "pr1427_stale_base_sha": "97546c3f47bf64cb52956fab306f0a2d6fe473ce",
+    "main_cross_analysis": "CONTENTS_WRITE_STILL_ON_MAIN; timestamp-only zero-sample output; PR1429 unmerged",
+    "knowledge_signal_cycle": "MANUAL_ONLY; CONTENTS_WRITE; DIRECT_MAIN_COMMIT_PUSH",
+    "scheduler_tick": "15_MINUTE_SCHEDULE; CONTENTS_WRITE_AND_ACTIONS_WRITE",
+    "databricks_token_workflow": "UNSAFE_TOKEN_INPUT_SHELL_INTERPOLATION_REMAINS_ON_MAIN",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_scan": "NOT_RUN"
+  },
+  "platform_coordination": {
+    "targets": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "verified_active": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "others": "NOT_AUTHENTICATED_OR_TESTED"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "main_modified_by_scheduled_workflow": true,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "paper_state_mutation": false,
+    "real_money_trade": false
+  }
+}

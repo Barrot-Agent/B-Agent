@@ -56,9 +56,9 @@ jobs:
         run: |
           set -euo pipefail
 
-          repo="${GITHUB_REPOSITORY}"
+          repo="$GITHUB_REPOSITORY"
 
-          pr_json="$(gh api             "repos/${repo}/pulls/${PR_NUMBER}"             --jq '{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}')"
+          pr_json="$(gh api "repos/${repo}/pulls/${PR_NUMBER}" --jq '{number,state,base_ref:.base.ref,head_sha:.head.sha,head_ref:.head.ref,head_repo:.head.repo.full_name}')"
 
           echo "$pr_json"
 
@@ -94,19 +94,21 @@ jobs:
         run: |
           set -euo pipefail
 
-          repo="${GITHUB_REPOSITORY}"
+          repo="$GITHUB_REPOSITORY"
 
-          gh api             --method POST             "repos/${repo}/issues/${PR_NUMBER}/labels"             -f "labels[]=approved"
+          gh api --method POST "repos/${repo}/issues/${PR_NUMBER}/labels" -f "labels[]=approved"
 
       - name: Record approval evidence
         shell: bash
         run: |
           set -euo pipefail
 
-          repo="${GITHUB_REPOSITORY}"
+          repo="$GITHUB_REPOSITORY"
           timestamp="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
 
-          gh pr comment "$PR_NUMBER"             --repo "$repo"             --body "Barrot controlled approval recorded.
+          gh pr comment "$PR_NUMBER" \
+            --repo "$repo" \
+            --body "Barrot controlled approval recorded.
 
 PR: #${PR_NUMBER}
 Head SHA: ${EXPECTED_HEAD_SHA}
@@ -114,7 +116,7 @@ Reason: ${APPROVAL_REASON}
 Workflow run: ${GITHUB_SERVER_URL}/${repo}/actions/runs/${GITHUB_RUN_ID}
 Recorded at: ${timestamp}
 
-This action applied the \`approved\` label only. It did not merge the PR."
+This action applied the `approved` label only. It did not merge the PR."
 
           echo "BARROT_APPROVAL=PASS"
           echo "PR_NUMBER=$PR_NUMBER"

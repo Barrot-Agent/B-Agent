@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T231645Z-ESCROW-OWNER-PAGE-CONFLICT-RAW-LEDGER-VERIFICATION",
+  "captured_at_utc": "2026-10-31T23:16:45Z",
+  "status": "ACCEPTED_FOR_RESEARCH",
+  "decisions": [
+    "Record Bithomp's two public account pages as conflicting secondary explorer observations, not proof that the escrow objects are absent.",
+    "Preserve XRP Insights' pinned-ledger #108031214 claim as a separate source; do not treat its raw JSON-RPC methodology statement as independently verified by this run.",
+    "Keep the November 1 1B XRP event classified as scheduled FinishAfter eligibility reported by XRP Insights; current raw account-object state remains unverified.",
+    "Do not issue a directional forecast or admit escrow-supply features until the discrepancy is resolved at a common validated ledger.",
+    "Preserve the Bithomp source revision as pending archive append; do not overwrite prior escrow snapshots."
+  ],
+  "required_verification": [
+    "Retrieve account_objects(type=escrow) for both owner accounts at ledger_index 108031214 from an authorized public XRPL node.",
+    "Retrieve account_tx for both accounts and verify the four October 1 EscrowFinish hashes and metadata.",
+    "At the current validated ledger, verify the two November 1 escrow objects' Owner, Destination, Amount, FinishAfter, CancelAfter and ledger object indexes.",
+    "After 00:00 UTC, verify actual EscrowFinish transaction hashes and subsequent EscrowCreate/disposition."
+  ],
+  "feature_admission": {
+    "scheduled_unlock": "SECONDARY_TRACKER_CLAIM_WITH_CONFLICTING_EXPLORER_PAGES",
+    "raw_escrow_object_state": "NOT_VERIFIED",
+    "directional_features": [],
+    "forecast_status": "NOT_ISSUED"
+  }
+}

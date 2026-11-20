@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T0606-SBIC-CRYPTO-ASK-COIN-DISAMBIGUATION",
+  "captured_at_utc": "2026-10-29T06:06:00.000Z",
+  "policy": "Append-only, evidence-graded entity disambiguation. Group membership and acronym overlap do not establish a direct XRP relationship or price causation. Legal complaints establish what a party alleged or defined, not adjudicated merits.",
+  "nodes": [
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings, Inc.",
+      "kind": "JAPANESE_FINANCIAL_GROUP"
+    },
+    {
+      "id": "SBI_CRYPTO",
+      "label": "SBI Crypto Co., Ltd. (SBIC in a 2023 legal complaint)",
+      "kind": "CRYPTO_MINING_SUBSIDIARY; CURRENT_GROUP_LISTING_CONFIRMED"
+    },
+    {
+      "id": "SBI_RIPPLE_ASIA",
+      "label": "SBI Ripple Asia",
+      "kind": "SEPARATE_SBI_GROUP_COMPANY"
+    },
+    {
+      "id": "SBI_CAPITAL",
+      "label": "SBI Capital Co., Ltd. (historical SBIC usage)",
+      "kind": "HISTORICAL_INVESTMENT_ENTITY_CURRENT_STATUS_UNKNOWN"
+    },
+    {
+      "id": "SBIC_EAST",
+      "label": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "kind": "SME_INVESTMENT_AND_CONSULTATION_COMPANY"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "PERMISSION_IO",
+      "label": "Permission.io",
+      "kind": "PERMISSION_BASED_ADVERTISING_AND_DATA_ENGAGEMENT_PROJECT"
+    },
+    {
+      "id": "ASK_COIN_PERMISSION",
+      "label": "ASK Coin / Permission Coin",
+      "kind": "PERMISSION_IO_ECOSYSTEM_TOKEN"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN42-SBI-HOLDINGS-SBI-CRYPTO-SUBSIDIARY",
+      "source": "SBI_HOLDINGS",
+      "target": "SBI_CRYPTO",
+      "relationship": "SUBSIDIARY_AND_GROUP_COMPANY_LISTING",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "status": "OFFICIAL_SBI_HOLDINGS_NOTICE_2025-10-02_AND_GROUP_OVERVIEW_2026-10-07",
+      "claim": "SBI Holdings described SBI Crypto as a subsidiary in its 2025 notice and its 2026 group overview still lists SBI Crypto. The 2025 notice reports an unauthorized outflow of SBI Crypto-owned crypto assets and says restructuring was under consideration. It separately distinguishes SBI VC Trade and BITPOINT Japan. No XRP-specific activity is established by these sources.",
+      "source_ids": [
+        "SRC-RUN42-20261029T0606Z-SBI-GROUP-OVERVIEW",
+        "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-2025-INCIDENT",
+        "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-MINING"
+      ]
+    },
+    {
+      "id": "EDGE-RUN42-PERMISSION-IO-ASK-COIN",
+      "source": "PERMISSION_IO",
+      "target": "ASK_COIN_PERMISSION",
+      "relationship": "PROJECT_TOKEN_AND_USER_REWARD_ASSET",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "status": "PERMISSION_IO_ANNOUNCEMENT_2021-04-08",
+      "claim": "Permission.io's announcement identifies ASK coins as part of its permission-based advertising and data-engagement ecosystem. This resolves one exact-phrase candidate but does not establish an XRP connection.",
+      "source_ids": [
+        "SRC-RUN42-20261029T0606Z-ASK-COIN-PERMISSION-IO"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN42-SBIC-CRYPTO-ORIGINAL-REFERENT",
+      "class": "ENTITY_RESOLUTION",
+      "hypothesis": "The original 'Japan's SBIC' reference could mean SBI Crypto Co., Ltd., because a public legal complaint explicitly defines that entity as SBIC and SBI Holdings' current group overview lists SBI Crypto.",
+      "confidence": "MEDIUM_FOR_CANDIDATE; LOW_FOR_ORIGINAL_REFERENT",
+      "supporting_source_ids": [
+        "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-LEGAL-ACRONYM",
+        "SRC-RUN42-20261029T0606Z-SBI-GROUP-OVERVIEW",
+        "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-2025-INCIDENT"
+      ],
+      "counter_hypotheses": [
+        "The original reference means historical SBI Capital Co., Ltd., which SBI Holdings also abbreviated SBIC in 2005-2007.",
+        "The original reference means SBIC East Japan, a separate SME investment and consultation entity.",
+        "The phrase may refer to another entity or ticker collision."
+      ],
+      "disconfirming_evidence_needed": [
+        "Original source passage and surrounding context identifying the intended entity.",
+        "Current registry filings if the intended entity is SBI Capital and current legal status matters."
+      ],
+      "xrp_relationship": "NONE_ESTABLISHED_FOR_SBI_CRYPTO_ITSELF"
+    },
+    {
+      "id": "HYP-RUN42-SBI-CRYPTO-INDIRECT-XRP-LINK",
+      "class": "COMPETING_INFERENCE",
+      "hypothesis": "SBI Crypto may have an indirect group-level association with XRP because SBI Holdings also lists SBI Ripple Asia, but no direct SBI Crypto XRP product, custody, payment, or trading relationship is established by the reviewed sources.",
+      "confidence": "LOW; INDIRECT_GROUP_ASSOCIATION_ONLY",
+      "supporting_source_ids": [
+        "SRC-RUN42-20261029T0606Z-SBI-GROUP-OVERVIEW",
+        "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-2025-INCIDENT",
+        "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-MINING"
+      ],
+      "counter_hypotheses": [
+        "SBI Crypto and SBI Ripple Asia are separate entities with distinct operations; group membership alone does not imply shared XRP exposure or causal price impact."
+      ],
+      "disconfirming_evidence_needed": [
+        "SBI Crypto filings or product documentation showing direct XRP holdings, custody, trading, payments, or partnership.",
+        "Entity-level disclosures linking SBI Crypto operations to Ripple or XRP rather than only to SBI Holdings."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN42-ASK-COIN-PERMISSION-CANDIDATE",
+      "class": "ENTITY_RESOLUTION",
+      "hypothesis": "The exact phrase ASK Coin plausibly refers to Permission.io's ASK token in some contexts; the phrase is not unique and should not be assumed to refer to an XRP-linked asset.",
+      "confidence": "HIGH_FOR_PERMISSION_IO_CANDIDATE; LOW_FOR_ORIGINAL_CONTEXT",
+      "supporting_source_ids": [
+        "SRC-RUN42-20261029T0606Z-ASK-COIN-PERMISSION-IO"
+      ],
+      "counter_hypotheses": [
+        "The original phrase refers to an unrelated inactive exchange listing or another token or ticker."
+      ],
+      "disconfirming_evidence_needed": [
+        "Original phrase context, chain or contract address, or source identifying the intended ASK asset."
+      ],
+      "xrp_relationship": "NONE_ESTABLISHED"
+    }
+  ],
+  "notes": [
+    "SBIC now has at least three Japanese entity candidates: SBI Crypto Co., Ltd. (legal-complaint acronym), historical SBI Capital Co., Ltd. (official 2005-2007 acronym), and SBIC East Japan. The original referent remains unresolved.",
+    "SBI Holdings' group-company overview lists SBI Crypto, SBI Capital and SBI Ripple Asia separately. Do not transfer Ripple or XRP relationships between sibling entities without entity-level evidence.",
+    "The 2025 SBI Holdings notice says SBI VC Trade and BITPOINT Japan had separate asset-management entities and no impact was identified there from the reported SBI Crypto outflow. Do not overgeneralize the incident.",
+    "The exact-name Camilla Stephenson search returns multiple unrelated public profiles. None is linked to the XRP video creator; preserve the probable Kamilah or Camila channel candidate separately.",
+    "Permission.io's ASK token is distinct from XRP; no direct ASK-XRP relationship is established."
+  ]
+}

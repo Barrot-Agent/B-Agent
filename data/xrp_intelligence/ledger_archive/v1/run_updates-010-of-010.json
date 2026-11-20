@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 9,
+  "chunk_count": 10,
+  "record_count": 1,
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T02:35:00Z",
+      "update_type": "RIPPLE_PRIME_LEGAL_ENTITY_BITNOMIAL_FCM_PATH_AND_COINBASE_Q3_STRATEGY",
+      "main_sha": "ec52a66b1c1067920e29cf16d8c3044dd3ec3451",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_update": "871ab14ed63e348041a400e1d80bb681b5900d55",
+      "source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-REUTERS-COINBASE-Q3-PREDICTION-MARKETS-20261030T0235Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z",
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+      ],
+      "finding": "The exact legal entity Hidden Road Partners CIV US LLC is both (a) named on Bitnomial's current clearing-member list and (b) identified by Ripple's official FCM disclosure as a registered FCM and SEC/FINRA broker-dealer. Ripple states Hidden Road is now Ripple Prime. This is a direct institutional/clearing-network connection, not merely a broad brand association. It creates a plausible XRP collateral path if the FCM has filed the required Letter 26-05 notice and satisfies conditions; no public evidence of its reliance date, XRP collateral deposits or utilization was found. Coinbase Financial Markets remains the Letter 26-05 requestor; its requestor status does not establish its own XRP use or a Bitnomial clearing relationship.",
+      "coinbase_strategy": "Reuters Q3 2026 reports prediction markets exceeded $200M annualized run-rate revenue; prediction markets plus derivatives represented about 25% of transaction revenue; subscription/services about 49% of net revenue. This supports Coinbase's multi-product diversification thesis, while transaction revenue still fell 43% year-over-year and the annualized prediction figure is not recognized quarterly revenue or XRP-specific activity.",
+      "verification": {
+        "source_readback": "PASS",
+        "source_id_unique_check": "PENDING_AFTER_APPEND",
+        "latest_pr1353_head_before_append": "871ab14ed63e348041a400e1d80bb681b5900d55",
+        "latest_pr1353_gate_run_id": 40992208098,
+        "latest_pr1353_gate_status": "PASS",
+        "pr1362": "OPEN_DRAFT_UNMERGED; exact-head core CI in progress at capture; fail-closed gate passed",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "workflow_dispatch_performed": false,
+        "real_money_trade": false,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    }
+  ]
+}

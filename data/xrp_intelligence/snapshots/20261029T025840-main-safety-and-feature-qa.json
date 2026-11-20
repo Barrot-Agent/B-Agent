@@ -1,0 +1,232 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T025840-MAIN-SAFETY-AND-FEATURE-QA",
+  "captured_at_utc": "2026-10-29T02:58:40.000Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; preserve Barrot V3 as execution and verification foundation.",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_branch": "main",
+    "main_sha": "6cdaff2c725b0013c23a3f35abfaa397eb72e847",
+    "main_commit_url": "https://github.com/Barrot-Agent/B-Agent/commit/6cdaff2c725b0013c23a3f35abfaa397eb72e847",
+    "main_commit_message": "Cross-analysis refresh [skip ci]",
+    "main_commit_date_utc": "2026-10-29T02:51:40Z",
+    "latest_commit_files": [
+      "ping-pongings/knowledge-base/entity_cooccurrence.json",
+      "ping-pongings/knowledge-base/entity_sentiment_profile.json",
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "direct_main_write_by_this_run": false
+  },
+  "current_run_update": {
+    "task": "Inspect current repository and research state; replay current paper-trading log; audit merge controls, workflow failures, and XRP feature provenance.",
+    "completed_at_utc": "2026-10-29T02:58:40.000Z",
+    "findings": [
+      "Main still contains a mutation-capable merge queue.",
+      "PR #1282 remains draft and unmerged; exact-head CI and gate passed, but its branch is 3 commits ahead and 6 behind current main.",
+      "A full read-only replay of all 2360 paper-trading rows exactly matches persisted numeric state and all logged result/portfolio checks.",
+      "Signal-summary workflow failed because Groq returned HTTP 429 after daily token usage reached 199459 of 200000 and the request needed 638 tokens.",
+      "Cross-analysis entity profiles are global across XRP/BTC pipelines and unweighted by asset relevance; they are not valid XRP-only features without a target-specific transformation."
+    ]
+  },
+  "merge_controls_audit": {
+    "main_workflow_path": ".github/workflows/merge-queue.yml",
+    "main_workflow_blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+    "current_main_capabilities": [
+      "contents:write",
+      "pull-requests:write",
+      "branch update",
+      "PR comments",
+      "gh pr merge",
+      "mode=all",
+      "dry_run defaults false",
+      "max_prs=0 means unlimited"
+    ],
+    "safety_pr": 1282,
+    "safety_pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1282",
+    "safety_pr_head": "b803fcb68d3302f6799b2e5f7aadd1afcc27f568",
+    "safety_pr_state": "DRAFT_OPEN_UNMERGED",
+    "safety_pr_mergeable": true,
+    "safety_pr_ahead_by": 3,
+    "safety_pr_behind_by": 6,
+    "exact_head_core_ci": {
+      "run_id": 40804504273,
+      "status": "PASS",
+      "tests": 169,
+      "subtests": 4,
+      "duration_seconds": 7.57
+    },
+    "exact_head_gate": {
+      "run_id": 40804504256,
+      "status": "PASS"
+    },
+    "main_current_head_status": "NO_COMMIT_STATUSES_RETURNED",
+    "path_overlap_with_six_main_side_commits": false,
+    "merge_authorization_for_previous_PRs": "NOT_ESTABLISHED",
+    "no_merge_or_force_push": true
+  },
+  "workflow_anomalies": {
+    "approval_workflow_path": ".github/workflows/barrot-approve-pr.yml",
+    "approval_workflow_blob_sha": "bc78b4c4ac9824ffbde99eee64621885e6a52076",
+    "zero_job_run": {
+      "id": 40804796563,
+      "event": "push",
+      "conclusion": "failure",
+      "jobs": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40804796563"
+    },
+    "approval_workflow_root_cause": "UNRESOLVED",
+    "signal_summary_failure": {
+      "run_id": 40806806734,
+      "job_id": 123227603139,
+      "conclusion": "failure",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40806806734",
+      "provider": "Groq",
+      "http_status": 429,
+      "limit_tokens_per_day": 200000,
+      "used_tokens": 199459,
+      "requested_tokens": 638,
+      "retry_after_seconds": 41.904,
+      "output_written": false
+    }
+  },
+  "paper_trading": {
+    "log_blob_sha": "f6fd4303116f4f22d976c935092c793be4be1454",
+    "state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
+    "script_blob_sha": "b38ab435f575b6037f05fa8e9ea00fd487d2d9eb",
+    "records": 2360,
+    "malformed_records": 0,
+    "timestamp_order_errors": 0,
+    "products": {
+      "BTC-USD": 2360
+    },
+    "actions": {
+      "buy": 36,
+      "sell": 89,
+      "hold": 2235
+    },
+    "result_mismatches": 0,
+    "portfolio_value_mismatches": 0,
+    "portfolio_change_mismatches": 0,
+    "cumulative_return_mismatches": 0,
+    "max_portfolio_value_difference_usd": 0.004997567590180552,
+    "replay_state": {
+      "cash_usd": 8011.936613782476,
+      "position_size": 0.024901276579239066,
+      "avg_entry_price": 80436.84,
+      "trade_count": 125,
+      "position_product": null
+    },
+    "persisted_state_matches": true,
+    "latest_record_timestamp": "2026-10-29T02:35:08.976804+00:00",
+    "latest_price": 79750.4,
+    "latest_portfolio_value_usd": 9997.82,
+    "state_mutated": false,
+    "real_money_trade": false
+  },
+  "cross_analysis_quality": {
+    "generated_from": {
+      "xrp_entries": 1200,
+      "btc_entries": 1230
+    },
+    "xrp_log": {
+      "records": 1200,
+      "distilled_records": 840,
+      "entries_with_positive_xrp_relevance": 652,
+      "titles_mentioning_btc_or_bitcoin": 143,
+      "titles_mentioning_btc_or_bitcoin_without_xrp_or_ripple": 114
+    },
+    "btc_log": {
+      "records": 1230,
+      "distilled_records": 357,
+      "entries_with_positive_btc_relevance": 357
+    },
+    "entity_pairs": 3205,
+    "entity_profiles": 987,
+    "entity_cooccurrence_is_global": true,
+    "entity_sentiment_profile_is_global_and_unweighted": true,
+    "asset_specific_sentiment_profile_available": false,
+    "sentiment_shift": {
+      "xrp": {
+        "recent_24h_score": null,
+        "recent_24h_entries": 0,
+        "prior_24h_score": null,
+        "prior_24h_entries": 0
+      },
+      "btc": {
+        "recent_24h_score": null,
+        "recent_24h_entries": 0,
+        "prior_24h_score": 100,
+        "prior_24h_entries": 1
+      }
+    },
+    "feature_admission": "BLOCKED_FOR_XRP_DIRECTIONAL_MODEL_UNTIL_TARGET_ASSET_SCOPE_AND_RELEVANCE_WEIGHTING_ARE_EXPLICIT",
+    "interpretation": "Cross-asset headlines can be legitimate macro context; the observed issue is not necessarily incorrect ingestion, but global unweighted entity sentiment cannot be treated as XRP-specific evidence. Null sentiment shift is insufficient eligible data, not neutral sentiment."
+  },
+  "research_state": {
+    "source_records_before_update": 689,
+    "run_updates_before_update": 131,
+    "limitations_before_update": 150,
+    "relationship_edges": 128,
+    "competing_hypotheses": 78,
+    "market_observations": 68,
+    "new_synchronized_xrp_market_observations_admitted": 0,
+    "forecast_status": "NOT_ISSUED",
+    "sbic_original_phrase_identity": "UNRESOLVED",
+    "exact_phrase_investigations": [
+      "ASK Coin",
+      "actual capital",
+      "SBIC, ChatGPT SBIC"
+    ],
+    "camilla_stephenson_canonical_youtube_identity": "UNVERIFIED",
+    "public_video_inventory": "INCOMPLETE",
+    "live_platform_collaboration_verified": [
+      "ChatGPT",
+      "GitHub repository access"
+    ],
+    "other_target_platforms": "UNVERIFIED"
+  },
+  "next_actions": [
+    "Keep PR #1282 draft and unmerged; review its exact-head CI/gate and current six-commit base lag. Do not merge without approval.",
+    "Add target-asset-specific, relevance-weighted entity sentiment profiles while preserving existing global descriptive outputs; test with fixtures before feature admission.",
+    "Keep generated cross-analysis data off main until a reviewed promotion path exists; assess consumer/deployment implications before changing output delivery.",
+    "Investigate the zero-job approval workflow using event/run diagnostics; do not claim a root cause.",
+    "Keep the signal summary NOT_ISSUED on provider quota exhaustion; review the existing fallback PR rather than creating another duplicate.",
+    "Obtain an automated core-CI/gate path for the research ledger branch.",
+    "Continue Coinbase Q3, Circle/USDC/RLUSD, SBI/SBIC, ETF/derivatives, exact-phrase and creator-identity research."
+  ],
+  "limitations": [
+    "This run's PR list query returned only the first 100 entries; no current total open-PR count is claimed.",
+    "PR #1282 exact-head checks are historical checks for its head, not checks on current main or on the research ledger.",
+    "The current main combined-status query returned no commit statuses; this is not proof that all workflows passed.",
+    "No synchronized current XRP market panel was captured; forecast remains NOT_ISSUED."
+  ],
+  "source_ids": [
+    "SRC-RUN29-20261029T025840-MAIN-HEAD-6CDA",
+    "SRC-RUN29-20261029T025840-MAIN-MERGE-QUEUE-WORKFLOW",
+    "SRC-RUN29-20261029T025840-PR1282-STATE",
+    "SRC-RUN29-20261029T025840-PR1282-CI",
+    "SRC-RUN29-20261029T025840-PR1282-GATE",
+    "SRC-RUN29-20261029T025840-APPROVAL-WORKFLOW",
+    "SRC-RUN29-20261029T025840-ZERO-JOB-RUN-40804796563",
+    "SRC-RUN29-20261029T025840-SIGNAL-SUMMARY-RUN-40806806734",
+    "SRC-RUN29-20261029T025840-SIGNAL-SUMMARY-LOG",
+    "SRC-RUN29-20261029T025840-PAPER-LOG-2360",
+    "SRC-RUN29-20261029T025840-PAPER-STATE",
+    "SRC-RUN29-20261029T025840-PAPER-TRADER-SCRIPT",
+    "SRC-RUN29-20261029T025840-ENTITY-COOCCURRENCE-OUTPUT",
+    "SRC-RUN29-20261029T025840-ENTITY-SENTIMENT-OUTPUT",
+    "SRC-RUN29-20261029T025840-SENTIMENT-SHIFT-OUTPUT",
+    "SRC-RUN29-20261029T025840-ENTITY-COOCCURRENCE-SCRIPT",
+    "SRC-RUN29-20261029T025840-ENTITY-SENTIMENT-SCRIPT",
+    "SRC-RUN29-20261029T025840-SENTIMENT-SHIFT-SCRIPT",
+    "SRC-RUN29-20261029T025840-CROSS-ANALYSIS-WORKFLOW"
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_manually_executed": false,
+  "paper_trading_state_mutated": false,
+  "real_money_trade": false,
+  "snapshot_character_count": 9959
+}

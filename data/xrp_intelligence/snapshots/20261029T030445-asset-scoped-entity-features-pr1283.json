@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030445-ASSET-SCOPED-FEATURE-PR1283",
+  "captured_at_utc": "2026-10-29T03:04:45.000Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; preserve Barrot V3 as execution and verification foundation.",
+  "previous_snapshot": {
+    "path": "data/xrp_intelligence/snapshots/20261029T025840-main-safety-and-feature-qa.json",
+    "blob_sha": "49ee4760aae2f4da25ffe759af3e79482fc287f9",
+    "commit_sha": "0ab61f21294b8dbec8cd591e22a4ceff7efc7cc9",
+    "captured_at_utc": "2026-10-29T02:58:40.000Z"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "6cdaff2c725b0013c23a3f35abfaa397eb72e847",
+    "main_modified_by_this_run": false
+  },
+  "current_run_update": {
+    "type": "ASSET_SCOPED_ENTITY_FEATURES_PR_AND_CI_VERIFICATION",
+    "findings": [
+      "Created draft PR #1283 from current main to add relevance-weighted XRP/BTC-specific entity profiles and cooccurrence views while retaining global descriptive outputs.",
+      "Local isolated fixtures passed 2 tests; exact-head core CI passed 170 tests plus 4 subtests in 6.17 seconds; fail-closed gate passed.",
+      "PR #1283 remains draft and unmerged; no main write, merge, deployment, or market-feature admission occurred.",
+      "Four new push-event runs for barrot-approve-pr.yml on successive branch commits failed with zero jobs. The main workflow file still declares workflow_dispatch only. Root cause remains unresolved."
+    ]
+  },
+  "pr1283": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1283",
+    "state": "OPEN",
+    "draft": true,
+    "merged": false,
+    "mergeable": true,
+    "base_sha": "6cdaff2c725b0013c23a3f35abfaa397eb72e847",
+    "head_sha": "9c5ad6caee862e000fdfc638c0d0a07923e0ecfb",
+    "changed_files": [
+      "scripts/entity_cooccurrence.py",
+      "scripts/entity_sentiment_profile.py",
+      ".github/workflows/ci.yml",
+      "tests/test_asset_scoped_entity_features.py"
+    ],
+    "local_tests": "2 PASSED",
+    "core_ci": {
+      "run_id": 40809993316,
+      "status": "PASS",
+      "tests": 170,
+      "subtests": 4,
+      "duration_seconds": 6.17
+    },
+    "gate": {
+      "run_id": 40809993459,
+      "status": "PASS"
+    }
+  },
+  "feature_data_quality": {
+    "current_main_entity_sentiment": "GLOBAL_UNWEIGHTED_ACROSS_XRP_AND_BTC_LOGS",
+    "current_main_cooccurrence": "GLOBAL_AGGREGATE_WITH_PIPELINE_ASSET_EXAMPLES",
+    "xrp_log_btc_only_title_count": 114,
+    "asset_specific_features_on_main": false,
+    "pr1283_asset_specific_outputs": "RELEVANCE_WEIGHTED_AND_PIPELINE_SCOPED",
+    "prediction_admission": "BLOCKED_UNTIL_REVIEW_AND_WALK_FORWARD_EVALUATION"
+  },
+  "workflow_anomaly": {
+    "path": ".github/workflows/barrot-approve-pr.yml",
+    "declared_trigger": "workflow_dispatch only",
+    "push_event_zero_job_runs": [
+      40809960387,
+      40809965420,
+      40809969664,
+      40809973844
+    ],
+    "jobs_for_latest_run": 0,
+    "root_cause": "UNRESOLVED"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Keep PR #1283 draft and unmerged despite passing CI/gate; review schema compatibility and feature semantics.",
+    "Continue investigating the recurring zero-job approval-workflow runs without triggering approval actions or claiming a fix.",
+    "Keep PR #1282 draft/unmerged; its read-only merge-queue fix still needs review and main remains mutation-capable.",
+    "Do not admit global entity sentiment or cooccurrence outputs as XRP-specific directional features; use asset-scoped outputs only after independent leakage, calibration and walk-forward review.",
+    "Continue Coinbase Q3, Circle/USDC/RLUSD, SBI/SBIC, ETF/derivatives and exact-phrase/YouTube identity research."
+  ],
+  "source_ids": [
+    "SRC-RUN30-20261029T030445-PR1283",
+    "SRC-RUN30-20261029T030445-PR1283-HEAD-COMMIT",
+    "SRC-RUN30-20261029T030445-CI-40809993316",
+    "SRC-RUN30-20261029T030445-GATE-40809993459",
+    "SRC-RUN30-20261029T030445-APPROVAL-ZEROJOB-40809960387",
+    "SRC-RUN30-20261029T030445-APPROVAL-ZEROJOB-40809965420",
+    "SRC-RUN30-20261029T030445-APPROVAL-ZEROJOB-40809969664",
+    "SRC-RUN30-20261029T030445-APPROVAL-ZEROJOB-40809973844",
+    "SRC-RUN30-20261029T030445-CI-LOG-170-PASSED"
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_manually_executed": false,
+  "paper_trading_state_mutated": false,
+  "real_money_trade": false,
+  "snapshot_character_count": 4536
+}

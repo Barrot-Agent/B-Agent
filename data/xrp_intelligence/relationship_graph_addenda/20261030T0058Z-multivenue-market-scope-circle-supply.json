@@ -1,0 +1,194 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T0058Z-MULTIVENUE-MARKET-SCOPE-CIRCLE-SUPPLY",
+  "captured_at_utc": "2026-10-30T00:58:00Z",
+  "observed_main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_PRIMARY_ISSUER_TRANSPARENCY",
+      "SECONDARY_DYNAMIC_MARKET_DATA",
+      "SECONDARY_ETF_TRACKER",
+      "REPOSITORY_OBSERVATION",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "causal_rule": "No price effect or capital rotation is inferred from stablecoin supply changes, ETF tracker changes, exchange transfers, derivatives OI or corporate announcements without synchronized point-in-time evidence, reconciled populations and out-of-sample testing."
+  },
+  "nodes": [
+    {
+      "id": "CIRCLE",
+      "label": "Circle",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "USDC",
+      "label": "USDC",
+      "kind": "FIAT_BACKED_STABLECOIN"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "XRP_DERIVATIVES",
+      "label": "XRP perpetual derivatives",
+      "kind": "DERIVATIVES_MARKET"
+    },
+    {
+      "id": "COINGECKO",
+      "label": "CoinGecko aggregate",
+      "kind": "MARKET_DATA_AGGREGATOR"
+    },
+    {
+      "id": "KODEXIUS",
+      "label": "Kodexius seven-contract panel",
+      "kind": "MARKET_DATA_AGGREGATOR"
+    },
+    {
+      "id": "BINANCE",
+      "label": "Binance XRP perpetuals",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "FIBONOMY",
+      "label": "Fibonomy Binance snapshot",
+      "kind": "MARKET_DATA_AGGREGATOR"
+    },
+    {
+      "id": "XRP_ETFS",
+      "label": "US XRP ETF/ETP trackers",
+      "kind": "INSTITUTIONAL_FUND_DATA"
+    },
+    {
+      "id": "XRP_INSIGHTS",
+      "label": "XRP Insights",
+      "kind": "ETF_TRACKER"
+    },
+    {
+      "id": "ALPHA_FINANCE",
+      "label": "Alpha Finance",
+      "kind": "ETF_TRACKER"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-CIRCLE-USDC-SUPPLY-CONTRACTION-20261030",
+      "source": "CIRCLE",
+      "target": "USDC",
+      "relationship": "ISSUER_REPORTED_CIRCULATION_AND_RESERVES",
+      "evidence_class": "CONFIRMED_PRIMARY_ISSUER_TRANSPARENCY",
+      "claim": "Circle reports $71.0B USDC circulation and $71.2B reserves as of Oct 26, 2026, with a -$4.2B 30-day net circulation change. This is not a measured XRP or RLUSD inflow.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261030T0058Z"
+      ]
+    },
+    {
+      "id": "EDGE-COINGECKO-KODEXIUS-OI-SCOPE-DISAGREEMENT-20261030",
+      "source": "COINGECKO",
+      "target": "KODEXIUS",
+      "relationship": "NONCOMPARABLE_AGGREGATE_VS_SEVEN_CONTRACT_OI",
+      "evidence_class": "SECONDARY_DYNAMIC_MARKET_DATA",
+      "claim": "CoinGecko reports about $4.087B XRP perpetual OI while Kodexius reports $764.70M across seven contracts. Instrument/venue coverage and timestamps are not reconciled; neither figure should be substituted for the other.",
+      "source_ids": [
+        "SRC-COINGECKO-XRP-MARKET-DERIVATIVES-20261030T0058Z",
+        "SRC-KODEXIUS-XRP-PERP-20261029T2332Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-OI-SINGLE_VENUE_SCOPE-20261030",
+      "source": "FIBONOMY",
+      "target": "BINANCE",
+      "relationship": "SINGLE_EXCHANGE_PERPETUAL_SNAPSHOT",
+      "evidence_class": "SECONDARY_DYNAMIC_MARKET_DATA",
+      "claim": "Fibonomy reports Binance XRPUSDT OI about $402.79M and +0.0100% 8-hour funding. This is a single-venue snapshot; it is not the total XRP derivatives market.",
+      "source_ids": [
+        "SRC-FIBONOMY-BINANCE-XRP-PERP-20261030T0058Z"
+      ]
+    },
+    {
+      "id": "EDGE-XRP-ETF-TRACKER-POPULATION-CONFLICT-20261030",
+      "source": "XRP_INSIGHTS",
+      "target": "ALPHA_FINANCE",
+      "relationship": "DIFFERENT_FUND_UNIVERSE_AND_FLOW_METHODOLOGY",
+      "evidence_class": "SECONDARY_ETF_TRACKER",
+      "claim": "XRP Insights reports +174,140 XRP on Oct 28 and -2.96M XRP over Oct 26-28 across six spot funds plus BITW with GXRP flow exclusion; Alpha Finance reports $0 on Oct 28 across five spot funds. These are not a reconciled common series.",
+      "source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-20261030T0058Z",
+        "SRC-ALPHA-XRP-ETF-20261030T0058Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-XRP-OI-AGGREGATOR-SCOPE-20261030",
+      "claim": "The large gap between broad CoinGecko XRP perpetual OI and Kodexius' seven-contract OI is primarily a coverage/instrument-universe difference, possibly including additional exchanges, futures types or duplicate contract aggregation.",
+      "supporting_source_ids": [
+        "SRC-COINGECKO-XRP-MARKET-DERIVATIVES-20261030T0058Z",
+        "SRC-KODEXIUS-XRP-PERP-20261029T2332Z"
+      ],
+      "disconfirming_evidence": [
+        "No common instrument-level crosswalk or API payload has been compared.",
+        "Some aggregators may double-count or stale-cache venue contracts.",
+        "Kodexius itself covers seven contracts, not necessarily the entire market."
+      ],
+      "status": "UNRESOLVED_DATA_DEFINITION; BLOCK_FEATURE_ADMISSION"
+    },
+    {
+      "id": "HYP-XRP-PERP-LEVERAGE-SENSITIVITY-20261030",
+      "claim": "CoinGecko's reported perps/spot volume ratio of 3.2x and positive aggregate funding may indicate that leveraged positioning can amplify short-horizon XRP moves.",
+      "supporting_source_ids": [
+        "SRC-COINGECKO-XRP-MARKET-DERIVATIVES-20261030T0058Z",
+        "SRC-KODEXIUS-XRP-PERP-20261029T2332Z",
+        "SRC-FIBONOMY-BINANCE-XRP-PERP-20261030T0058Z"
+      ],
+      "disconfirming_evidence": [
+        "Bybit funding in the Kodexius venue table is negative while other venues are positive.",
+        "Open interest can represent hedges and market-maker inventory, not directional bets.",
+        "OI/volume populations and quote cutoffs are not synchronized."
+      ],
+      "status": "PLAUSIBLE_MARKET_MICROSTRUCTURE_HYPOTHESIS_NOT_TESTED"
+    },
+    {
+      "id": "HYP-USDC-CONTRACTION-NOT-XRP-ROTATION-20261030",
+      "claim": "Circle's $4.2B 30-day USDC circulation decline could reflect net redemptions, broad risk reduction, treasury/payment seasonality or movement into multiple other assets; it cannot be attributed to XRP or RLUSD without destination-flow evidence.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261030T0058Z"
+      ],
+      "disconfirming_evidence": [
+        "Coinbase Q3 showed material USDC balances and RLUSD distribution is newly expanded, but no post-listing balance series is available.",
+        "No matched wallet, exchange, OTC or issuer mint/burn flow connects USDC redemptions to XRP purchases.",
+        "USDC supply changes can be driven by unrelated payment and treasury demand."
+      ],
+      "status": "CAUSAL_DESTINATION_UNKNOWN"
+    },
+    {
+      "id": "HYP-XRP-ETF-FLOW-TRACKER-DIVERGENCE-20261030",
+      "claim": "The XRP ETF flow discrepancy reflects different fund universes, GXRP flow treatment, in-kind/creation settlement and data refresh cutoffs rather than necessarily a real disagreement about the same portfolio population.",
+      "supporting_source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-20261030T0058Z",
+        "SRC-ALPHA-XRP-ETF-20261030T0058Z"
+      ],
+      "disconfirming_evidence": [
+        "Issuer-level holdings and shares outstanding have not yet been cross-walked for each fund.",
+        "A $0 report may reflect missing/not-yet-posted data rather than actual zero flow."
+      ],
+      "status": "METHODOLOGY_RECONCILIATION_REQUIRED"
+    }
+  ],
+  "source_ids": [
+    "SRC-CIRCLE-USDC-TRANSPARENCY-20261030T0058Z",
+    "SRC-COINGECKO-XRP-MARKET-DERIVATIVES-20261030T0058Z",
+    "SRC-KODEXIUS-XRP-PERP-20261029T2332Z",
+    "SRC-FIBONOMY-BINANCE-XRP-PERP-20261030T0058Z",
+    "SRC-COINPAPRIKA-XRP-QUOTE-20261029T1846Z",
+    "SRC-COINDESK-XRP-QUOTE-20261030T0058Z",
+    "SRC-XRP-INSIGHTS-ETF-20261030T0058Z",
+    "SRC-ALPHA-XRP-ETF-20261030T0058Z"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false
+}

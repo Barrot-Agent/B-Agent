@@ -1,0 +1,388 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-20261101T045910Z-SBI-CIRCLE-EVERNORTH-COINBASE-BINANCE",
+  "captured_at_utc": "2026-11-01T04:59:10Z",
+  "source_ids": [
+    "SRC-20261101T045910Z-BINANCE-RECOVERY-UPDATE4",
+    "SRC-20261101T045910Z-SEC-CIRCLE-Q2-10Q",
+    "SRC-20261101T045910Z-SBI-CIRCLE-RIPPLE-STRATEGIC-INVESTMENT",
+    "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+    "SRC-20261101T045910Z-EVERNORTH-NASDAQ-CLOSING",
+    "SRC-20261101T045910Z-SEC-EVERNORTH-424B3-XRP-TREASURY",
+    "SRC-20261101T045910Z-XRP-INSIGHTS-EVERNORTH-ONCHAIN-CUSTODY",
+    "SRC-20261101T045910Z-SBI-REMIT-XRP-CORRIDORS",
+    "SRC-20261101T045910Z-SBI-CIRCLE-JV-NAME-MAPPING",
+    "SRC-20261101T045910Z-OKX-XRP-MARKET-SNAPSHOT",
+    "SRC-20261101T045910Z-LIQWALL-XRP-MARKET-SNAPSHOT",
+    "SRC-20261101T045910Z-GITHUB-BAGENT-PR1442-MAIN-AUDIT",
+    "SRC-20261031T152000Z-COINBASE-Q3-10Q",
+    "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP",
+    "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV",
+    "SRC-20261031T121200Z-SBI-CIRCLE-ARC-50M",
+    "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT",
+    "SRC-20261031T085233Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261031T085233Z-SBI-VISA-XRP-REWARDS",
+    "SRC-20261031T170700Z-SBI-VC-TRADE-DCA",
+    "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD",
+    "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261031T121200Z-SBIC-EAST-JAPAN-PROFILE",
+    "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE",
+    "SRC-20261031T152000Z-SBIC-20250226",
+    "SRC-20261031T152000Z-SBIC-INDEX",
+    "SRC-20261031T085233Z-SBI-BITBANK-CLOSE",
+    "SRC-20261031T152000Z-SBI-ACCUMULATION",
+    "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T152000Z-SC-RLUSD",
+    "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT",
+    "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ",
+    "SRC-20261031T112204Z-BITQUERY-BINANCE-ONCHAIN-TRACE",
+    "SRC-20261031T104500Z-ELLIPTIC-BINANCE-UPDATE",
+    "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE",
+    "SRC-20261031T170700Z-LIQWALL-XRP-PANEL"
+  ],
+  "source_reference_count": 36,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E1",
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relation": "~9% equity as of 2025-06-09",
+      "status": "DATED_CONFIRMED",
+      "source_ids": [
+        "SRC-20261101T045910Z-SBI-CIRCLE-RIPPLE-STRATEGIC-INVESTMENT"
+      ]
+    },
+    {
+      "edge_id": "E2",
+      "from": "SBI Holdings",
+      "to": "Circle",
+      "relation": "$25M equity; SBI Shinsei separately $25M",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-20261101T045910Z-SBI-CIRCLE-RIPPLE-STRATEGIC-INVESTMENT"
+      ]
+    },
+    {
+      "edge_id": "E3",
+      "from": "SBI Holdings",
+      "to": "Evernorth",
+      "relation": "$200M PIPE cash contribution",
+      "status": "CONFIRMED_COMMITMENT",
+      "source_ids": [
+        "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE"
+      ]
+    },
+    {
+      "edge_id": "E4",
+      "from": "SBI Holdings",
+      "to": "Evernorth",
+      "relation": "36.1% Class A; 7.5% Class C as of 2026-10-22",
+      "status": "CONFIRMED_AS_OF_DATE",
+      "source_ids": [
+        "SRC-20261101T045910Z-SEC-EVERNORTH-424B3-XRP-TREASURY"
+      ]
+    },
+    {
+      "edge_id": "E5",
+      "from": "SBI Holdings",
+      "to": "Circle SBI Japan / SBI Circle Holdings",
+      "relation": "50% JV interest",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-20261101T045910Z-SBI-CIRCLE-JV-NAME-MAPPING"
+      ]
+    },
+    {
+      "edge_id": "E6",
+      "from": "Circle",
+      "to": "Circle SBI Japan / SBI Circle Holdings",
+      "relation": "50% ownership; VIE control",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-20261101T045910Z-SEC-CIRCLE-Q2-10Q"
+      ]
+    },
+    {
+      "edge_id": "E7",
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "Native USDC issuance",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT"
+      ]
+    },
+    {
+      "edge_id": "E8",
+      "from": "XRPL",
+      "to": "XRP",
+      "relation": "DEX/autobridge can use XRP as bridge asset; volume unknown",
+      "status": "CAPABILITY_CONFIRMED",
+      "source_ids": [
+        "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT"
+      ]
+    },
+    {
+      "edge_id": "E9",
+      "from": "SBI Ripple Asia",
+      "to": "XRPL",
+      "relation": "Tokenized-deposit POC; not production",
+      "status": "PILOT",
+      "source_ids": [
+        "SRC-20261031T085233Z-SBI-RIPPLE-ASIA-XRPL-POC"
+      ]
+    },
+    {
+      "edge_id": "E10",
+      "from": "SBI Remit",
+      "to": "XRP",
+      "relation": "Bridge-currency corridors to Philippines/Vietnam/Indonesia; volume unknown",
+      "status": "ANNOUNCED_USE",
+      "source_ids": [
+        "SRC-20261101T045910Z-SBI-REMIT-XRP-CORRIDORS"
+      ]
+    },
+    {
+      "edge_id": "E11",
+      "from": "SBI Holdings",
+      "to": "Bitbank",
+      "relation": "100% acquisition completed 2026-10-01",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-20261031T085233Z-SBI-BITBANK-CLOSE"
+      ]
+    },
+    {
+      "edge_id": "E12",
+      "from": "SBI VC Trade",
+      "to": "XRP",
+      "relation": "DCA and reward-point conversion products; executed volume unknown",
+      "status": "PRODUCT_CONFIRMED",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VC-TRADE-DCA"
+      ]
+    },
+    {
+      "edge_id": "E13",
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "relation": "Ethereum route documented; XRPL route not established",
+      "status": "ROUTE_CONFIRMED",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY"
+      ]
+    },
+    {
+      "edge_id": "E14",
+      "from": "Evernorth",
+      "to": "XRP",
+      "relation": "473.276M at closing; mixed cash and in-kind sources",
+      "status": "CONFIRMED_AT_CLOSING",
+      "source_ids": [
+        "SRC-20261101T045910Z-SEC-EVERNORTH-424B3-XRP-TREASURY"
+      ]
+    },
+    {
+      "edge_id": "E15",
+      "from": "Evernorth",
+      "to": "BitGo Trust",
+      "relation": "13 attributed 2-of-3 multisig custody wallets",
+      "status": "TRACKER_ATTRIBUTION",
+      "source_ids": [
+        "SRC-20261101T045910Z-XRP-INSIGHTS-EVERNORTH-ONCHAIN-CUSTODY"
+      ]
+    },
+    {
+      "edge_id": "E16",
+      "from": "Evernorth",
+      "to": "Unattributed XRPL addresses",
+      "relation": "370.35M moved outside attributed set; destinations unknown",
+      "status": "UNKNOWN_DESTINATION",
+      "source_ids": [
+        "SRC-20261101T045910Z-XRP-INSIGHTS-EVERNORTH-ONCHAIN-CUSTODY"
+      ]
+    },
+    {
+      "edge_id": "E17",
+      "from": "Ripple",
+      "to": "Evernorth",
+      "relation": "$10M facility; $9.7M drawn at 3.81%; no XRP security interest established",
+      "status": "CONFIRMED_AS_OF_DATE",
+      "source_ids": [
+        "SRC-20261101T045910Z-SEC-EVERNORTH-424B3-XRP-TREASURY"
+      ]
+    },
+    {
+      "edge_id": "E18",
+      "from": "Circle",
+      "to": "Coinbase",
+      "relation": "$655.3M H1 distribution costs; Q3 agreement renewed same terms",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-20261101T045910Z-SEC-CIRCLE-Q2-10Q"
+      ]
+    },
+    {
+      "edge_id": "E19",
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "Equity investment disclosed; amount not specified",
+      "status": "CONFIRMED_AMOUNT_UNKNOWN",
+      "source_ids": [
+        "SRC-20261031T152000Z-COINBASE-Q3-10Q"
+      ]
+    },
+    {
+      "edge_id": "E20",
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "Prime/Exchange/Retail distribution; collateral support deferred at launch",
+      "status": "DISTRIBUTION_CONFIRMED",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP"
+      ]
+    },
+    {
+      "edge_id": "E21",
+      "from": "Regional SBIC entities",
+      "to": "ChatGPT",
+      "relation": "Educational seminars only",
+      "status": "EDUCATIONAL_ONLY",
+      "source_ids": [
+        "SRC-20261031T152000Z-SBIC-20250226"
+      ]
+    },
+    {
+      "edge_id": "E22",
+      "from": "Regional SBIC entities",
+      "to": "SBI Holdings",
+      "relation": "No affiliation established",
+      "status": "DISTINCT_ENTITIES",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBIC-EAST-JAPAN-PROFILE"
+      ]
+    },
+    {
+      "edge_id": "E23",
+      "from": "Binance",
+      "to": "XRP",
+      "relation": "Phase-one withdrawals scheduled 06:00–09:00 UTC",
+      "status": "SCHEDULED_NOT_LIVE",
+      "source_ids": [
+        "SRC-20261101T045910Z-BINANCE-RECOVERY-UPDATE4"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "SBI is building a multi-rail portfolio across Ripple/XRP, Circle/USDC and Evernorth XRP treasury.",
+      "confidence": "MODERATE",
+      "counter": "Separate investments and rails; coordinated mandate unproven.",
+      "disconfirming": [
+        "SBI-Circle JV had no significant results to June 30.",
+        "SBI VC Trade USDC route is Ethereum; XRPL route unproven."
+      ]
+    },
+    {
+      "id": "H2",
+      "statement": "SBI's $200M Evernorth investment can support institutional XRP treasury demand.",
+      "confidence": "MODERATE_FOR_COMMITMENT_LOW_FOR_SPOT_IMPACT",
+      "counter": "Pooled cash and in-kind subscriptions prevent attribution of purchases to SBI.",
+      "disconfirming": [
+        "473M closing XRP was not all market purchases."
+      ]
+    },
+    {
+      "id": "H3",
+      "statement": "Evernorth's 370.35M outflow may be DeFi, lending or collateral deployment.",
+      "confidence": "LOW_SPECULATIVE",
+      "counter": "Ordinary custody migration or wallet relabeling.",
+      "disconfirming": [
+        "No destination or pledge evidence."
+      ]
+    },
+    {
+      "id": "H4",
+      "statement": "USDC on XRPL may deepen DEX liquidity and XRP bridge routing.",
+      "confidence": "MODERATE_CAPABILITY_LOW_REALIZED_DEMAND",
+      "counter": "USDC activity may not route through XRP.",
+      "disconfirming": [
+        "No measured DEX/autobridge volume."
+      ]
+    },
+    {
+      "id": "H5",
+      "statement": "SBI-Circle JV may become a material Japanese USDC channel.",
+      "confidence": "LOW_TO_MODERATE",
+      "counter": "Low-activity legal vehicle; SBI VC Trade distributes separately.",
+      "disconfirming": [
+        "No significant results to June 30."
+      ]
+    },
+    {
+      "id": "H6",
+      "statement": "Coinbase is economically central to Circle USDC distribution.",
+      "confidence": "HIGH_FOR_MATERIAL_RELATIONSHIP",
+      "counter": "Other distributors; distribution costs are not Coinbase profit.",
+      "disconfirming": [
+        "Rate sensitivity and other channels."
+      ]
+    },
+    {
+      "id": "H7",
+      "statement": "Coinbase's USDC and RLUSD listings reflect multi-issuer strategy.",
+      "confidence": "MODERATE",
+      "counter": "RLUSD may remain limited while USDC dominates balances.",
+      "disconfirming": [
+        "RLUSD collateral support deferred; no comparable balances."
+      ]
+    },
+    {
+      "id": "H8",
+      "statement": "SBI DCA and rewards may create recurring retail XRP acquisition.",
+      "confidence": "MODERATE_PRODUCT_LOW_FLOW",
+      "counter": "Rewards may use inventory and not create net market buys.",
+      "disconfirming": [
+        "Volumes and sourcing undisclosed."
+      ]
+    },
+    {
+      "id": "H9",
+      "statement": "Binance withdrawal reopening may create pent-up outflows.",
+      "confidence": "SCENARIO_ONLY",
+      "counter": "Normal deposits and arbitrage may offset withdrawals.",
+      "disconfirming": [
+        "Schedule not live; actual flows unavailable."
+      ]
+    },
+    {
+      "id": "H10",
+      "statement": "SBIC may conflate regional SBIC corporations, SBI Holdings and SBI-Circle JV.",
+      "confidence": "HIGH_ENTITY_DISTINCTION",
+      "counter": "Intended referent may be another entity.",
+      "disconfirming": [
+        "No official source calls the SBI-Circle JV 'SBIC'."
+      ]
+    }
+  ],
+  "minority_objections": [
+    "SBI investments do not prove coordinated XRP/USDC strategy.",
+    "SBI-Circle JV had no significant operating results to June 30.",
+    "Evernorth outflow may be custody migration.",
+    "Coinbase distribution costs are not net profit.",
+    "Binance coverage remains company-reported pending cryptographic PoR."
+  ],
+  "exclusions": [
+    "Do not infer Ripple equity equals XRP ownership.",
+    "Do not allocate SBI's $200M directly to purchases.",
+    "Do not classify Evernorth outflow as sale, DeFi or collateral without evidence.",
+    "Do not treat 473M at closing as current or locked supply.",
+    "Do not treat Circle Mint gross flows as net supply.",
+    "Do not conflate regional SBIC with SBI Holdings.",
+    "Do not call Binance withdrawals live before transaction evidence.",
+    "No directional feature admission without point-in-time event studies."
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T041053-COINBASE-IDENTITY-AND-SIGNAL-SAFETY-CORRECTION",
+  "captured_at_utc": "2026-10-29T04:10:53.000Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; preserve Barrot V3 as the execution and verification foundation.",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "default_branch": "main",
+    "main_sha": "45833c0170755bfaa589573bc9fec0190c0b163f",
+    "main_commit_message": "Paper trade cycle [skip ci]",
+    "main_modified_by_this_run": false,
+    "research_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+    "research_branch_head_before_snapshot": "fade79df7a3fe36d56a6260c4603df35b104377d",
+    "previous_snapshot": {
+      "path": "data/xrp_intelligence/snapshots/20261029T031030-main-pages-deployment-incident.json",
+      "blob_sha": "c6af7281ce82ecc1e5c44699880d5ab138f95473",
+      "commit_sha": "d5faa5a64e2f16531a58a3192e094e5921d20a94",
+      "captured_at_utc": "2026-10-29T03:10:30.000Z"
+    }
+  },
+  "current_xrp_signal": {
+    "artifact_path": "web/latest_signal.json",
+    "artifact_timestamp_utc": "2026-10-29T03:26:07.441213Z",
+    "score": 44,
+    "confidence": 0,
+    "news_score": 88,
+    "news_entries": 11,
+    "provider_status": "UNAVAILABLE_MISSING_GITHUB_MODEL_CREDENTIALS_AND_GROQ_HTTP_429",
+    "summary_status": "INVALID_PRESENTATION: summary still describes mixed/bullish headline sentiment despite confidence 0",
+    "forecast_status": "NOT_ISSUED",
+    "fix_pr": {
+      "number": 1288,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1288",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "head_sha": "07009da95c8ba964985282de693f6c6571ddd282",
+      "base_sha": "45833c0170755bfaa589573bc9fec0190c0b163f",
+      "changed_files": 4,
+      "core_ci_run": 40816036107,
+      "core_ci": "PASS_173_TESTS_4_SUBTESTS_6.67S",
+      "gate_run": 40816036119,
+      "gate": "PASS_FAIL_CLOSED"
+    }
+  },
+  "paper_trading_replay": {
+    "last_verified_snapshot": "data/xrp_intelligence/snapshots/20261029T030620-paper-replay-2361-index-gate.json",
+    "last_verified_at_utc": "2026-10-29T03:06:20Z",
+    "records_at_last_verification": 2361,
+    "current_log_blob_sha": "4443646150103c5dc149669f6ac3c689c341f44e",
+    "current_log_replayed_this_run": false,
+    "status": "STALE_PRIOR_REPLAY; current main paper-trading log changed after the last verified replay",
+    "state_mutated": false,
+    "real_money_trade": false
+  },
+  "relationship_graph": {
+    "addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T040827-coinbase-multistablecoin-strategy.json",
+    "addendum_blob_sha": "278c7fb2996c06ce98cab56acb1d29dc641d98a5",
+    "addendum_commit_sha": "9fdc8fa3a8fea27b1109f97a1becab9c7d9da9a5",
+    "new_relationship_edges": 1,
+    "new_competing_hypotheses": 3,
+    "finding": "Coinbase-Ripple RLUSD distribution is confirmed. Additive multi-issuer distribution and competitive USDC-share shift remain competing low-confidence hypotheses. RLUSD on XRPL is not evidence by itself of XRP bridge demand or price impact."
+  },
+  "exact_phrase_research": {
+    "ask_coin": "Two distinct candidates remain: inactive Ask Coin exchange listing and Permission.io ASK token. No XRP link established.",
+    "actual_capital": "The generic market-cap-versus-inflow explanation is not tied to the original phrase context; no predictive feature admitted.",
+    "sbic_chatgpt": "SBIC East Japan is the SME investment/consultation entity; its public 2025 curriculum mentions ChatGPT. This proves a course-topic mention only, not an OpenAI partnership or XRP link. SBICAH GK is a separate Bitbank acquisition vehicle.",
+    "creator_identity": {
+      "requested_name": "Camilla Stephenson",
+      "candidate": "Dr Kamilah Stevenson / Camila or Camilla Stevenson",
+      "handle_candidate": "@drkamilahstevenson",
+      "status": "PROBABLE_ALIAS_ASSOCIATION; CANONICAL_CHANNEL_ID_UNRESOLVED",
+      "evidence": [
+        "Official YouTube handle page title is Kamilah Stevenson.",
+        "Paul Barron Podcast video tags @drkamilahstevenson and features Dr Kamilah Stevenson.",
+        "iHeart transcript contains Camila/Camilla spelling variants."
+      ],
+      "disconfirming_or_ambiguous_evidence": [
+        "A separate Camilla Stephenson appears in UK location-management coverage; no link to the XRP creator is established.",
+        "Prior public search surfaced two different Kamilah-named YouTube channel IDs."
+      ],
+      "video_inventory_status": "PARTIAL; 10 seed videos are not a complete public-upload inventory; Shorts/live/archives/transcripts remain to be enumerated."
+    }
+  },
+  "platform_coordination": {
+    "status": "NO_NEW_LIVE_CONNECTIONS_TESTED",
+    "rule": "Do not claim Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle, Databricks or other platform collaboration unless exact authenticated action evidence is captured.",
+    "architecture": "Keep least-privilege adapters, structured evidence packets, source provenance, disagreement records and fallbacks."
+  },
+  "repository_safety": {
+    "merge_queue_main_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+    "merge_queue_risk": "ACTIVE_MANUAL_WORKFLOW_HAS_WRITE_PERMISSIONS_MODE_ALL_AND_GH_PR_MERGE",
+    "pr1282": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1282",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "head_sha": "b803fcb68d3302f6799b2e5f7aadd1afcc27f568",
+      "ci_run": 40804504273,
+      "ci": "PASS_169_TESTS_4_SUBTESTS_7.57S",
+      "gate_run": 40804504256,
+      "gate": "PASS"
+    },
+    "pr1267": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1267",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "status": "STALE_63_COMMITS_BEHIND_MAIN"
+    },
+    "pr1288": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1288",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "head_sha": "07009da95c8ba964985282de693f6c6571ddd282",
+      "ci_run": 40816036107,
+      "ci": "PASS_173_TESTS_4_SUBTESTS_6.67S",
+      "gate_run": 40816036119,
+      "gate": "PASS_FAIL_CLOSED"
+    },
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_manually_executed": false,
+    "external_deployment_triggered_by_this_run": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "new_synchronized_xrp_market_observations_admitted": 0,
+  "source_ids": [
+    "SRC-RUN38-20261029T040827-YOUTUBE-HANDLE-DRKAMILAHSTEVENSON",
+    "SRC-RUN38-20261029T040827-YOUTUBE-PAUL-BARRON-KAMILAH-IDENTITY",
+    "SRC-RUN38-20261029T040827-IHEART-KAMILAH-CAMILA-IDENTITY",
+    "SRC-RUN38-20261029T040827-MAIN-HEAD",
+    "SRC-RUN38-20261029T040827-MAIN-XRP-SIGNAL-INVALID",
+    "SRC-RUN38-20261029T040827-MAIN-XRP-SUMMARY-INVALID",
+    "SRC-RUN38-20261029T040827-PAPER-LOG-CHANGED",
+    "SRC-RUN38-20261029T040827-PR1288-HEAD",
+    "SRC-RUN38-20261029T040827-PR1288-CI-40816036107",
+    "SRC-RUN38-20261029T040827-PR1288-GATE-40816036119",
+    "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+    "SRC-COINBASE-RLUSD-BLOG-2026-10-28",
+    "SRC-COINBASE-Q2-2026",
+    "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+    "SRC-ASKCOIN-CMC-INACTIVE-2026-10-28",
+    "SRC-PERMISSION-ASK-COIN-CHAINWIRE-2022-02-17",
+    "SRC-ACTUAL-CAPITAL-MARKET-CAP-EXPLANATION-2026-10-28T1711Z",
+    "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+    "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-20261028T1219Z",
+    "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
+    "SRC-GLASP-KAMILAH-XRP-NEED-2026-03-19",
+    "SRC-YT-CHANNEL-KAMILAH-XRPSTOCKS-20261028T1308Z",
+    "SRC-RUN27-20261029T020930-PR1282-CI-40804504273",
+    "SRC-RUN27-20261029T020930-PR1282-GATE-40804504256",
+    "SRC-RUN37-20261029T031030-INDEX-GATE-40810559125"
+  ],
+  "next_actions": [
+    "Keep PR #1288 draft and unmerged pending human review; its exact-head CI and fail-closed gate passed.",
+    "Resolve the active merge-queue workflow risk through review of PR #1282; do not merge or dispatch the merge queue without explicit authorization.",
+    "Re-run the paper-trading replay against the current main log and verify persisted state without mutating it.",
+    "Resolve the canonical @drkamilahstevenson channel ID, then enumerate all public uploads, Shorts, livestreams and archives before claiming inventory completeness.",
+    "After Coinbase publishes Q3 2026 results on October 29 after market close, capture the official release and compare disclosed USDC/stablecoin economics without assuming RLUSD displacement.",
+    "Continue exact-phrase research for ASK Coin and actual capital; keep them out of XRP features until the original context and identity are corroborated.",
+    "Run the research-ledger validator/gate for the new index head where supported; do not treat PR #1288 CI as validation of the separate research index."
+  ],
+  "snapshot_character_count": 9418,
+  "correction_of": {
+    "path": "data/xrp_intelligence/snapshots/20261029T040827-coinbase-identity-and-signal-safety.json",
+    "blob_sha": "8df78f43b3aab6db267461ef4d47224adfbbd45a",
+    "reason": "The first snapshot file was retained unchanged but recorded a null relationship-graph blob SHA because create_file returns a commit SHA rather than a content SHA. This corrective snapshot records the verified blob SHA; the first snapshot is superseded and is not the latest index target."
+  }
+}

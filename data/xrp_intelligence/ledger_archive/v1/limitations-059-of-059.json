@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 58,
+  "chunk_count": 59,
+  "record_count": 5,
+  "created_at_utc": "2026-10-30T16:23:30Z",
+  "records": [
+    "Arc is operated by a permissioned validator set and Circle says it has not been reviewed or approved by NYDFS or another regulator. Circle's launch list includes JPYC but not JPYSC in StableFX; JPYSC public-chain transfer remains conditional and the JPYSC-OUSD connection is a PoC. Do not infer live JPYSC-on-Arc settlement or a production Japanese corridor.",
+    "SBI VCTRADE's documented USDC deposit route is Ethereum-only and its RLUSD deposit/withdrawal route is Ethereum-only with XRPL planned. Coinbase's RLUSD launch supports XRPL, Base and Ethereum, but Coinbase Global Exchange collateral support was stated as future. Do not generalize network support across distributors or products.",
+    "SBI XRP deposit/shareholder coupons, Visa card rewards and two million registered accounts establish distribution channels, not realized XRP purchases, redemptions, active users or holdings. The USDC merchant pilot disclosed no transaction volumes or production rollout.",
+    "Circle USYC is supported as off-exchange collateral for Binance institutional derivatives, but no outstanding collateral balances, utilization, haircuts or customer mix are public in the cited announcement. Product eligibility is not proof of usage or XRP substitution.",
+    "Japanese-unit correction: the official JPYSC reserve announcement says 10億円 (JPY1.0B) in short-term JGBs, not JPY10B. The prior source-040 note was wrong by 10x; original historical shard retained and superseded by source SRC-JPYSC-JGB-ALLOCATION-AMOUNT-CORRECTION-20261030T162330Z."
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 43,
+  "chunk_count": 44,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T12:40:17Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T12:40:17Z",
+      "update_type": "CIRCLE_COINBASE_ACTUAL_CAPITAL_T54_AND_FRESH_MAIN_CROSS_ANALYSIS_SAFETY",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "fd8e5efb0eca074499abee5acbebd2c219137e6e",
+      "research_addendum": {
+        "snapshot_path": "data/xrp_intelligence/snapshots/20261030T124017Z-circle-coinbase-t54-and-main-safety-pr1371.json",
+        "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T124017Z-circle-coinbase-t54-and-main-safety-pr1371.json",
+        "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T124017Z-actual-capital-x402-and-readonly-cross-analysis.json",
+        "source_ids": [
+          "SRC-TRM-BINANCE-XRP-INCIDENT-20261030T1235Z",
+          "SRC-GITHUB-MAIN-CROSS-ANALYSIS-WORKFLOW-20261030T1235Z",
+          "SRC-GITHUB-PR1371-CROSS-ANALYSIS-SAFETY-20261030T1239Z",
+          "SRC-GITHUB-PR1371-CI-GATE-20261030T1239Z"
+        ],
+        "new_relationship_edges": 12,
+        "new_hypotheses": 5,
+        "new_market_observations": 6,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED"
+      },
+      "findings": [
+        "TRM's October 29 incident report attributes 233.46M native XRP transferred from five Binance-attributed XRPL wallets to one attacker address; TRM says it remained there at its 00:30 UTC cutoff. The report's North Korea/TraderTraitor attribution is TRM's high-confidence assessment; Binance root cause was not yet published.",
+        "Coinbase Q3 2026 Form 10-Q reveals one unnamed counterparty contributed 27% of Q3 revenue and 25% of nine-month revenue. Its identity and risk channel remain unknown; no link to Circle or Ripple is inferred.",
+        "Coinbase Q3 recognized lending collateral was USD1.009297B and recognized derivatives collateral USD301.943M; the token-level tables name BTC and ETH but no XRP. A separate USD3.284562B unrecognized customer-collateral pool has no token-level breakdown, so zero XRP exposure cannot be inferred.",
+        "Circle Mint Q2 2026 net fiat conversions were -USD3.780B and H1 -USD1.997B. These are Circle Mint customer conversions, not total USDC market-wide flows or XRP capital flows.",
+        "Circle's Q2 reserve structure was approximately 84% BlackRock-managed Circle Reserve Fund and 16% bank cash. Aggregate FDIC coverage was approximately USD1.8M across seven reserve banks; stablecoin-holder liabilities are not FDIC insured.",
+        "Circle's own 19.5% weighted-average USDC-on-platform share is a Circle metric, not Coinbase's. Coinbase's Q3 average USDC held in eligible products was USD22B; Circle's Coinbase-related distribution costs were USD324.6M Q2 and USD655.3M H1.",
+        "T54's dashboard reports 14.736M x402 service payments and USD42,048.63 settled, implying approximately USD0.00285 per payment if scopes match. It supports XRP, RLUSD and USDC; asset mix is undisclosed and some entries are Unverified. No native-XRP demand is inferred.",
+        "Mastercard AP4M lists Coinbase, Ripple and t54 Labs as participants in a multi-rail partner ecosystem; it does not specify XRP/XRPL settlement. t54's Evernorth integration remains intended, and Evernorth's reported 473M XRP treasury is a holding, not a market flow.",
+        "Fresh-main PR #1371 was created from main 653b66de9a9545bc756a34385972f06038229783 to remove scheduled cross-analysis writes. Exact-head CI passed 347 tests plus 8 subtests; fail-closed gate passed and explicitly kept merging disabled. PR remains draft/open/unmerged/mergeable.",
+        "Main still has a write-enabled cross-analysis workflow and a mutation-capable manual merge queue. PR #1368 and #1369 are behind current main; PR #1370 is based on current main and has passed its exact-head core CI and fail-closed gate."
+      ],
+      "repository_audit": {
+        "latest_main_sha": "653b66de9a9545bc756a34385972f06038229783",
+        "pr1371": {
+          "state": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+          "base": "653b66de9a9545bc756a34385972f06038229783",
+          "head": "660345e8453bbf9d7225c51e73b2cadde06e6804",
+          "core_ci_run": 41056935897,
+          "core_tests_passed": 347,
+          "core_subtests_passed": 8,
+          "gate_run": 41056936005,
+          "gate_status": "PASS_MERGE_DISABLED",
+          "changed_paths": [
+            ".github/workflows/ci.yml",
+            ".github/workflows/cross-analysis.yml",
+            "tests/test_cross_analysis_workflow_safety.py"
+          ]
+        },
+        "pr1368": {
+          "state": "OPEN_DRAFT_UNMERGED",
+          "head": "bbfb1d6ea014721209d6904df035137b3398abc1",
+          "base": "71a95b330a1c82ed5ccb6ccb3abe76e8c37a49d6",
+          "behind_current_main": 6,
+          "core_tests_passed": 347,
+          "subtests_passed": 8,
+          "gate": "PASS_ON_RECORDED_HEAD"
+        },
+        "pr1369": {
+          "state": "OPEN_DRAFT_UNMERGED",
+          "head": "6592cdc199f73645f850d96718a4f32ad46e27e8",
+          "base": "71a95b330a1c82ed5ccb6ccb3abe76e8c37a49d6",
+          "behind_current_main": 2,
+          "core_tests_passed": 343,
+          "subtests_passed": 8,
+          "gate": "PASS_ON_RECORDED_HEAD"
+        },
+        "pr1370": {
+          "state": "OPEN_DRAFT_UNMERGED",
+          "head": "4eb9768ccbefc3735a651d14220e1273392ee471",
+          "base": "653b66de9a9545bc756a34385972f06038229783",
+          "core_tests_passed": 343,
+          "subtests_passed": 8,
+          "ci_run": 41055294671,
+          "gate_run": 41055294717,
+          "gate": "PASS_MERGE_DISABLED"
+        },
+        "main_cross_analysis_write_enabled": true,
+        "main_merge_queue_write_enabled": true,
+        "full_repository_ci": "NOT_RUN",
+        "main_modified": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "workflow_dispatch_performed": false,
+        "paper_state_mutated": false,
+        "real_money_trade": false
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "next_action": "Continue synchronized XRP spot/perpetual/ETF and actual-collateral history; crosswalk Binance XRP wallets against official PoR; preserve Coinbase counterparty identity as unknown; reconcile T54 payment IDs and asset mix; wait for PR #1371 review/approval before any merge."
+    }
+  ]
+}

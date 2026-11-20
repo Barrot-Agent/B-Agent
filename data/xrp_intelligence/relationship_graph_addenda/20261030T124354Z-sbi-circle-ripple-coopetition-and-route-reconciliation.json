@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-2026-10-30T124354Z-SBI-CIRCLE-RIPPLE-COOPETITION",
+  "captured_at_utc": "2026-10-30T12:43:54Z",
+  "previous_addendum": "data/xrp_intelligence/relationship_graph_addenda/20261030T124017Z-circle-coinbase-t54-and-main-safety-pr1371.json",
+  "edges": [
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "CIRCLE",
+      "relationship": "November 2023 USDC/banking/Web3 MOU; August 2025 50/50 JV; USD25M IPO investment",
+      "status": "PRIMARY_SBI_AND_CIRCLE_CORPORATE_DISCLOSURES",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+        "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602",
+        "SRC-SBI-CIRCLE-EQUITY-INVESTMENT-20250609"
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "CIRCLE_SBI_JAPAN_KK",
+      "relationship": "50% JV ownership",
+      "status": "PRIMARY_SBI_INVESTOR_PRESENTATION",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "CIRCLE_SBI_JAPAN_KK",
+      "relationship": "50% JV ownership through Circle Internet Holdings",
+      "status": "PRIMARY_SBI_INVESTOR_PRESENTATION",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602",
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "USDC",
+      "relationship": "Licensed Japanese distribution; public trading began March 26 2025; USDC lending product announced March 2026",
+      "status": "PRIMARY_SBI_PRODUCT_ANNOUNCEMENTS",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+        "SRC-SBI-VCTRADE-USDC-LENDING-20260318"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "RLUSD",
+      "relationship": "Japanese VCTRADE distribution launched June 24 2026",
+      "status": "PRIMARY_SBI_AND_RIPPLE_LAUNCH",
+      "source_ids": [
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "USDC_ON_XRPL",
+      "relationship": "Current USDC inbound deposit FAQ specifies Ethereum only; no SBI VCTRADE XRPL inbound route established",
+      "status": "PRIMARY_SBI_SUPPORT_FAQ",
+      "source_ids": [
+        "SRC-SBI-VCTRADE-USDC-ETHEREUM-ONLY-DEPOSIT-2026"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "XRPL_USDC",
+      "relationship": "Native USDC launched on XRPL; Circle Mint and APIs support the XRPL asset",
+      "status": "PRIMARY_CIRCLE_PRODUCT_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612"
+      ]
+    },
+    {
+      "from": "RIPPLE",
+      "to": "CIRCLE",
+      "relationship": "Direct product partnership to launch USDC on XRPL",
+      "status": "PRIMARY_RIPPLE_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612"
+      ]
+    },
+    {
+      "from": "XRPL_USDC",
+      "to": "XRP",
+      "relationship": "Ripple states XRPL DEX/auto-bridging uses XRP as an essential bridge currency for efficient USDC trading",
+      "status": "RIPPLE_PRODUCT_CLAIM; ACTUAL_EXECUTED_BRIDGE_VOLUME_UNQUANTIFIED",
+      "source_ids": [
+        "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612"
+      ]
+    },
+    {
+      "from": "RIPPLE",
+      "to": "RLUSD",
+      "relationship": "RLUSD issued by Ripple subsidiary Standard Custody & Trust Company; SBI VC Trade distributes in Japan",
+      "status": "PRIMARY_SBI_AND_RIPPLE_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624"
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "RIPPLE",
+      "relationship": "Historical approx. 9% equity stake reported in Feb 2025; SBI Ripple Asia and long-running strategic partnership",
+      "status": "DATED_PRIMARY_SBI_PRESENTATION; CURRENT_STAKE_UNKNOWN",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY"
+      ]
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "SBI_HOLDINGS",
+      "relationship": "No affiliation established; separate Japanese SME investment corporation",
+      "status": "DISTINCT_LEGAL_ENTITY; DO_NOT_CONFLATE",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-CHATGPT-EVENT-20260305"
+      ]
+    }
+  ],
+  "hypothesis_additions": [
+    {
+      "hypothesis_id": "HYP-SBI-MULTI-ISSUER-DISTRIBUTION-20261030",
+      "claim": "SBI is deliberately positioning itself as a regulated multi-issuer stablecoin distribution hub rather than an exclusive Ripple/USDC channel.",
+      "supporting_source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+        "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602",
+        "SRC-SBI-CIRCLE-EQUITY-INVESTMENT-20250609",
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624"
+      ],
+      "counterevidence": "Public product balances, revenue by issuer, distribution volumes and internal strategic documents are unavailable; commercial scale and exclusivity clauses are unknown.",
+      "status": "STRONGLY_SUPPORTED_STRATEGY_INFERENCE"
+    },
+    {
+      "hypothesis_id": "HYP-CIRCLE-RIPPLE-COOPETITION-ON-XRPL-20261030",
+      "claim": "Circle and Ripple cooperate on USDC/XRPL infrastructure while competing through USDC and RLUSD stablecoin products.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+        "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612",
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624"
+      ],
+      "counterevidence": "The direct partnership is specific to USDC deployment on XRPL; it does not establish broader corporate alignment or joint RLUSD strategy.",
+      "status": "DIRECT_PRODUCT_COOPERATION_AND_ISSUER_COMPETITION_CONFIRMED"
+    },
+    {
+      "hypothesis_id": "HYP-SBI-RETAIL-USD-DISTRIBUTION-IMPLIES-XRPL-USE-20261030",
+      "claim": "SBI's Japanese USDC/RLUSD distribution creates meaningful XRPL settlement and XRP bridge demand.",
+      "supporting_source_ids": [
+        "SRC-SBI-VCTRADE-USDC-ETHEREUM-ONLY-DEPOSIT-2026",
+        "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624",
+        "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612"
+      ],
+      "counterevidence": "SBI's current USDC inbound route is Ethereum-only; RLUSD chain support is unspecified; no SBI-linked XRPL settlement volumes or XRP bridge execution data are disclosed.",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "hypothesis_id": "HYP-SBI-CIRCLE-JV-EXCLUSIVE-USDC-ALIGNMENT-20261030",
+      "claim": "The Circle-SBI JV makes SBI's stablecoin strategy exclusive to Circle/USDC.",
+      "supporting_source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+        "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602",
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624"
+      ],
+      "counterevidence": "SBI VC Trade launched RLUSD in June 2026 and publicly describes two USD stablecoin offerings; no exclusivity is disclosed.",
+      "status": "DISCONFIRMED_BY_PARALLEL_RLUSD_DISTRIBUTION"
+    },
+    {
+      "hypothesis_id": "HYP-SBI-EQUITY-PORTFOLIO-DRIVES-XRP-PRICE-SUPPORT-20261030",
+      "claim": "SBI's historical Ripple stake and Circle investment imply coordinated support for XRP price.",
+      "supporting_source_ids": [
+        "SRC-SBI-CIRCLE-EQUITY-INVESTMENT-20250609",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY"
+      ],
+      "counterevidence": "Equity investments and distribution agreements do not establish proprietary XRP purchases, coordinated market activity, price support or current holdings; no such flows are evidenced.",
+      "status": "SPECULATIVE_NOT_SUPPORTED"
+    }
+  ],
+  "source_ids": [
+    "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+    "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602",
+    "SRC-SBI-CIRCLE-EQUITY-INVESTMENT-20250609",
+    "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+    "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612",
+    "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624",
+    "SRC-SBI-VCTRADE-USDC-ETHEREUM-ONLY-DEPOSIT-2026",
+    "SRC-SBI-VCTRADE-USDC-LENDING-20260318",
+    "SRC-SBIC-EAST-JAPAN-CHATGPT-EVENT-20260305",
+    "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY"
+  ]
+}

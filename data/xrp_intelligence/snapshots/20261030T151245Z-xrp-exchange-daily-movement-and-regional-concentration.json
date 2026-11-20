@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T151245Z-EXCHANGE-DAILY-MOVEMENT-AND-REGIONAL-CONCENTRATION",
+  "captured_at_utc": "2026-10-30T15:12:45Z",
+  "data_cutoff_utc": "2026-10-30T08:00:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T151245Z-xrp-exchange-daily-movement-and-regional-concentration.json",
+  "source_ids": [
+    "SRC-BINANCE-OFFICIAL-IN-KIND-REPLENISHMENT-20261030T150337Z",
+    "SRC-BITQUERY-BINANCE-XRP-POR-LABELS-20261030",
+    "SRC-COINDESK-BINANCE-OCT1-POR-WALLET-CROSSWALK-20261030",
+    "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-20261030T150337Z",
+    "SRC-XRPINSIGHTS-EXCHANGE-DAILY-REGIONAL-20261030T151245Z"
+  ],
+  "findings": {
+    "exchange_balances": {
+      "provider": "XRP Insights",
+      "balance_method": "rippled account_info on latest validated ledger once daily around 08:00 UTC",
+      "attribution_method": "XRPSCAN public labels",
+      "tracked_exchanges": 24,
+      "tracked_wallets": 701,
+      "total_xrp": 22370000000,
+      "circulating_supply_provider_definition_xrp": 68590000000,
+      "share_of_provider_defined_circulating_supply_pct": 32.6,
+      "same_wallet_change_7d_xrp": -234900000,
+      "same_wallet_change_30d_xrp": -146100000,
+      "daily_same_wallet_change_xrp": {
+        "20261029": -41200000,
+        "20261030": -207300000,
+        "method_note": "Daily bars exclude exchanges whose wallet set changed that day; not a single fixed cross-day cohort."
+      },
+      "regional_balance_xrp": {
+        "south_korea": 8600000000,
+        "united_states": 8590000000,
+        "japan": 1380000000,
+        "global_offshore": 2650000000,
+        "rest_of_world": 1150000000
+      },
+      "regional_share_pct": {
+        "south_korea": 38.4,
+        "united_states": 38.4,
+        "japan": 6.2,
+        "global_offshore": 11.9,
+        "rest_of_world": 5.1
+      },
+      "storage_label_split_pct": {
+        "cold": 49,
+        "hot": 14,
+        "unclassified": 37.5
+      },
+      "top_exchange_balances_xrp": {
+        "upbit": 6430000000,
+        "coinbase": 5840000000,
+        "binance": 2580000000,
+        "bithumb": 1850000000,
+        "uphold": 1710000000,
+        "kraken": 1040000000,
+        "bitbank": 576200000,
+        "coincheck": 554000000,
+        "sbi_vc_trade": 59500000
+      },
+      "identified_non_customer_reserves_xrp": {
+        "binance_peg_xrp_bnb_chain": 325800000,
+        "coinbase_cbxrp_base": 151400000,
+        "insurance_and_charity_funds": 11200000,
+        "total": 488400000
+      },
+      "known_methodological_gaps": [
+        "No per-wallet daily history; only per-exchange totals are retained.",
+        "Same-wallet change cannot tell customer withdrawal from exchange transfer to an untracked wallet.",
+        "Daily bars exclude exchanges whose wallet set changed; daily bars cannot be summed into 7d/30d fixed-cohort totals.",
+        "Wallets include cold storage, wrapped-token backing and other non-customer reserves; not tradable float.",
+        "Regional categories use exchange HQ or registration jurisdiction, not customer residence or ownership."
+      ],
+      "refresh": "Balances once daily at 08:00 UTC; page regenerates hourly from stored rows."
+    },
+    "binance_incident_comparison": {
+      "confirmed_incident_transfer_xrp": 233461943.1,
+      "all_exchange_daily_same_wallet_change_oct30_xrp": -207300000,
+      "incident_amount_as_pct_of_daily_aggregate_decline_pct": 88.8,
+      "all_exchange_7d_same_wallet_change_xrp": -234900000,
+      "incident_amount_as_pct_of_7d_aggregate_decline_pct": 99.4,
+      "binance_7d_same_wallet_change_xrp": -173200000,
+      "incident_amount_as_pct_of_binance_7d_decline_pct": 134.8,
+      "status": "TEMPORAL_AND_MAGNITUDE_ALIGNMENT_ONLY",
+      "interpretation": "The October 30 daily aggregate decline is temporally aligned with the late-October-29 incident and close in magnitude, but the provider does not publish per-wallet daily history and the daily bar may exclude exchanges whose wallet set changed. Binance's 7-day net decline is smaller than the transfer. No causal attribution is established."
+    },
+    "market_feature_admission": {
+      "admitted": false,
+      "reason": "The daily aggregate is temporally aligned but lacks per-wallet daily history and fixed-cohort coverage flags needed to isolate the stolen accounts; cold storage and non-customer reserves remain included."
+    },
+    "forecast_status": "NOT_ISSUED"
+  }
+}

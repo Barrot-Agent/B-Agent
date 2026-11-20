@@ -1,0 +1,326 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T190223Z-PR1342-CURRENT-HEAD-CI-MARKET-CONFLICTS",
+  "captured_at_utc": "2026-10-29T19:02:23Z",
+  "observed_main_sha": "5dc330a0fb1d7159a27ceafab4bfe35fee071708",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_REPOSITORY_OBSERVATION",
+      "CONFIRMED_PRIMARY_SOURCE",
+      "SOURCED_SECONDARY_MARKET_OBSERVATION",
+      "INFERENCE",
+      "UNKNOWN"
+    ],
+    "causal_rule": "Do not convert a dashboard, company schedule, stablecoin announcement, account ratio, or co-occurrence into XRP price causality without reconciled measurements and out-of-sample evidence."
+  },
+  "nodes": [
+    {
+      "id": "XRP_ASSET",
+      "label": "XRP",
+      "kind": "DIGITAL_ASSET"
+    },
+    {
+      "id": "MAIN_SIGNAL",
+      "label": "web/latest_signal.json on main",
+      "kind": "INVALID_DESCRIPTIVE_SIGNAL"
+    },
+    {
+      "id": "MAIN_SUMMARY",
+      "label": "web/latest_signal_summary.json on main",
+      "kind": "STALE_PUBLIC_ARTIFACT"
+    },
+    {
+      "id": "PR1342",
+      "label": "Draft strict emitter and static NOT_ISSUED summary PR",
+      "kind": "PROPOSED_CODE_AND_ARTIFACT_CHANGE"
+    },
+    {
+      "id": "PAPER_STATE",
+      "label": "Persisted simulated paper-trading state",
+      "kind": "SIMULATED_STATE"
+    },
+    {
+      "id": "UNIDENTIFIED_POSITION",
+      "label": "Nonzero simulated position with null product identity",
+      "kind": "UNRESOLVED_STATE"
+    },
+    {
+      "id": "MERGE_QUEUE",
+      "label": "Main mutation-capable merge queue",
+      "kind": "WORKFLOW_RISK"
+    },
+    {
+      "id": "LIQWALL_XRP_PANEL",
+      "label": "Liqwall XRP derivatives panel",
+      "kind": "SECONDARY_MARKET_PANEL"
+    },
+    {
+      "id": "ALPHA_XRP_HEATMAP",
+      "label": "Alpha Finance XRP liquidation heatmap",
+      "kind": "MODELLED_SECONDARY_MARKET_PANEL"
+    },
+    {
+      "id": "TRADRADAR_XRP_PANEL",
+      "label": "TradRadar XRP derivatives panel",
+      "kind": "SECONDARY_MARKET_PANEL"
+    },
+    {
+      "id": "XRP_INSIGHTS_ETF",
+      "label": "XRP Insights ETF flow tracker",
+      "kind": "SECONDARY_FLOW_TRACKER"
+    },
+    {
+      "id": "ALPHA_ETF",
+      "label": "Alpha Finance ETF flow tracker",
+      "kind": "SECONDARY_FLOW_TRACKER"
+    },
+    {
+      "id": "ETF_FLOW_SERIES",
+      "label": "Issuer-holdings-derived XRP fund flow series",
+      "kind": "UNRECONCILED_MEASUREMENT"
+    },
+    {
+      "id": "COINBASE_Q3_EVENT",
+      "label": "Coinbase Q3 2026 results schedule",
+      "kind": "CORPORATE_DISCLOSURE_EVENT"
+    },
+    {
+      "id": "CIRCLE_Q3_EVENT",
+      "label": "Circle Q3 2026 results schedule",
+      "kind": "CORPORATE_DISCLOSURE_EVENT"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-20261029T190223Z-PR1342-EMITTER",
+      "source": "PR1342",
+      "target": "MAIN_SIGNAL",
+      "relationship": "PROPOSES_STRICT_PARSER_AND_NOT_ISSUED_METADATA",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "PR #1342 rejects malformed classifier schemas and invalid news records, emits descriptive sentiment semantics and NOT_ISSUED forecast metadata. Exact-head CI/gate passed; PR remains draft/unmerged.",
+      "source_ids": [
+        "SRC-GH-PR1342-STATE-20261029T190223Z",
+        "SRC-GH-PR1342-CI-20261029T190223Z",
+        "SRC-GH-PR1342-EMITTER-20261029T190223Z",
+        "SRC-GH-PR1342-TESTS-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-PR1342-SUMMARY",
+      "source": "PR1342",
+      "target": "MAIN_SUMMARY",
+      "relationship": "PROPOSES_STATIC_NOT_ISSUED_ARTIFACT",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "PR #1342 replaces the stale summary with a non-directional NOT_ISSUED artifact and removes the old audio reference. No automatic publishing is restored.",
+      "source_ids": [
+        "SRC-GH-PR1342-STATE-20261029T190223Z",
+        "SRC-GH-PR1342-CI-20261029T190223Z",
+        "SRC-GH-PR1342-GATE-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-MAIN-SIGNAL",
+      "source": "MAIN_SIGNAL",
+      "target": "XRP_ASSET",
+      "relationship": "DESCRIPTIVE_SENTIMENT_ONLY_NOT_RETURN_FORECAST",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "Main signal has confidence 0.0 and explicit provider failures; score/news score cannot be treated as calibrated price probability.",
+      "source_ids": [
+        "SRC-GH-XRP-SIGNAL-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-MAIN-SUMMARY",
+      "source": "MAIN_SUMMARY",
+      "target": "XRP_ASSET",
+      "relationship": "STALE_DIRECTIONAL_NARRATIVE",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "Main summary still narrates mixed/modestly positive sentiment and references audio from the stale signal. This is a publication integrity issue, not a price signal.",
+      "source_ids": [
+        "SRC-GH-XRP-SUMMARY-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-PAPER-IDENTITY",
+      "source": "PAPER_STATE",
+      "target": "UNIDENTIFIED_POSITION",
+      "relationship": "PERSISTS_NONZERO_POSITION_WITH_NULL_PRODUCT",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "The persisted simulated position is nonzero but position_product is null. No XRP/BTC asset link is inferred; manual execution must fail closed until approved reconciliation.",
+      "source_ids": [
+        "SRC-GH-PAPER-STATE-20261029T190223Z",
+        "SRC-GH-PAPER-WORKFLOW-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-MERGE-QUEUE",
+      "source": "MERGE_QUEUE",
+      "target": "PAPER_STATE",
+      "relationship": "SEPARATE_REPOSITORY_SAFETY_RISK_NOT_DIRECT_STATE_WRITER",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "The merge queue can mutate PRs/branches; the manual paper-trader separately can push state after dispatch. They are distinct risks.",
+      "source_ids": [
+        "SRC-GH-MERGE-QUEUE-20261029T190223Z",
+        "SRC-GH-PAPER-WORKFLOW-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-LIQWALL",
+      "source": "LIQWALL_XRP_PANEL",
+      "target": "XRP_ASSET",
+      "relationship": "REPORTS_DERIVATIVES_METRICS",
+      "evidence_class": "SOURCED_SECONDARY_MARKET_OBSERVATION",
+      "claim": "Liqwall reports $1.44B OI at 15:52 UTC, +0.0071% average funding per 8h and long-skewed Binance account counts. Not normalized to other dashboards.",
+      "source_ids": [
+        "SRC-WEB-LIQWALL-XRP-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-ALPHA-HEATMAP",
+      "source": "ALPHA_XRP_HEATMAP",
+      "target": "XRP_ASSET",
+      "relationship": "REPORTS_OI_AND_MODELLED_LIQUIDATION_LEVELS",
+      "evidence_class": "SOURCED_SECONDARY_MARKET_OBSERVATION",
+      "claim": "Alpha Finance reports $3.02B OI at 13:22 UTC and explicitly describes liquidation levels as modelled estimates rather than guaranteed triggers.",
+      "source_ids": [
+        "SRC-WEB-ALPHA-XRP-LIQ-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-TRADRADAR",
+      "source": "TRADRADAR_XRP_PANEL",
+      "target": "XRP_ASSET",
+      "relationship": "REPORTS_DERIVATIVES_METRICS",
+      "evidence_class": "SOURCED_SECONDARY_MARKET_OBSERVATION",
+      "claim": "TradRadar reports $2.03B OI at 16:20 UTC, +0.0083% funding per 8h and 78.7% long account share across five venues. Scope differs from the other panels.",
+      "source_ids": [
+        "SRC-WEB-TRADRADAR-XRP-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-XRPINSIGHTS-ETF",
+      "source": "XRP_INSIGHTS_ETF",
+      "target": "ETF_FLOW_SERIES",
+      "relationship": "REPORTS_PROVISIONAL_HOLDINGS_CHANGES",
+      "evidence_class": "SOURCED_SECONDARY_MARKET_OBSERVATION",
+      "claim": "XRP Insights reports +174,140 XRP for Oct 28 but marks the row provisional; its universe includes six spot funds plus BITW with documented flow exclusions.",
+      "source_ids": [
+        "SRC-WEB-XRPINSIGHTS-ETF-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-ALPHA-ETF",
+      "source": "ALPHA_ETF",
+      "target": "ETF_FLOW_SERIES",
+      "relationship": "REPORTS_DOLLAR_FLOW_FOR_FIVE_SPOT_FUNDS",
+      "evidence_class": "SOURCED_SECONDARY_MARKET_OBSERVATION",
+      "claim": "Alpha Finance reports $0 for Oct 28 across five spot funds. It is not directly comparable to the provisional XRP Insights XRP-unit series.",
+      "source_ids": [
+        "SRC-WEB-ALPHA-ETF-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-COINBASE-Q3",
+      "source": "COINBASE_Q3_EVENT",
+      "target": "XRP_ASSET",
+      "relationship": "POTENTIAL_INDIRECT_EVENT_MONITOR_ONLY",
+      "evidence_class": "UNKNOWN",
+      "claim": "Coinbase Q3 results are scheduled after market close. Any XRP impact requires post-release event-window analysis and controls; no result or direction is inferred.",
+      "source_ids": [
+        "SRC-WEB-COINBASE-Q3-SCHEDULE-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190223Z-CIRCLE-Q3",
+      "source": "CIRCLE_Q3_EVENT",
+      "target": "XRP_ASSET",
+      "relationship": "POTENTIAL_INDIRECT_STABLECOIN_ECOSYSTEM_MONITOR_ONLY",
+      "evidence_class": "UNKNOWN",
+      "claim": "Circle Q3 results are scheduled for Nov 4 at 8:00 a.m. ET. No XRP-specific causal link or unreleased result is inferred.",
+      "source_ids": [
+        "SRC-WEB-CIRCLE-Q3-20261029T190223Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-20261029T190223Z-OI-SCOPE",
+      "claim": "The $1.44B, $2.03B and $3.02B XRP open-interest observations primarily reflect different cutoffs, venue sets and aggregation methods rather than one synchronized market state.",
+      "supporting_source_ids": [
+        "SRC-WEB-LIQWALL-XRP-20261029T190223Z",
+        "SRC-WEB-ALPHA-XRP-LIQ-20261029T190223Z",
+        "SRC-WEB-TRADRADAR-XRP-20261029T190223Z"
+      ],
+      "disconfirming_evidence": [
+        "No per-venue contract-level normalized snapshot was reconstructed.",
+        "The vendor panels may overlap in venues; the exact contribution of scope differences is unknown."
+      ],
+      "status": "PLAUSIBLE_DATA_QUALITY_HYPOTHESIS_NOT_MODEL_FEATURE"
+    },
+    {
+      "id": "HYP-20261029T190223Z-LONG-CROWDING",
+      "claim": "Positive funding, high long-account shares and larger long liquidations may indicate leveraged-long fragility, but do not establish a directional XRP move.",
+      "supporting_source_ids": [
+        "SRC-WEB-LIQWALL-XRP-20261029T190223Z",
+        "SRC-WEB-TRADRADAR-XRP-20261029T190223Z"
+      ],
+      "disconfirming_evidence": [
+        "Account ratios are not notional exposure.",
+        "Snapshots are not synchronized; open interest differs materially.",
+        "Liquidation heatmap levels are modelled, not guaranteed triggers."
+      ],
+      "status": "LOW_CONFIDENCE_SCENARIO_NOT_FORECAST"
+    },
+    {
+      "id": "HYP-20261029T190223Z-ETF-FLOW",
+      "claim": "The Oct 28 ETF-flow disagreement is primarily a measurement/population/settlement issue rather than a proven contradiction in one common series.",
+      "supporting_source_ids": [
+        "SRC-WEB-XRPINSIGHTS-ETF-20261029T190223Z",
+        "SRC-WEB-ALPHA-ETF-20261029T190223Z"
+      ],
+      "disconfirming_evidence": [
+        "Issuer-level holdings and shares-outstanding records have not been normalized row by row.",
+        "XRP Insights explicitly marks Oct 28 provisional and documents flow exclusions."
+      ],
+      "status": "PROVISIONAL_FLOW_NOT_ADMITTED"
+    },
+    {
+      "id": "HYP-20261029T190223Z-COINBASE-EVENT",
+      "claim": "Coinbase's Q3 disclosure could affect broad crypto risk appetite or stablecoin-economics expectations, but an XRP-specific effect is unproven and may be indirect.",
+      "supporting_source_ids": [
+        "SRC-WEB-COINBASE-Q3-SCHEDULE-20261029T190223Z"
+      ],
+      "disconfirming_evidence": [
+        "Results were not yet available at this cutoff.",
+        "No event-window study or XRP-specific Coinbase flow attribution has been run.",
+        "Bitcoin, macro rates, liquidity and broad crypto-sector moves are confounders."
+      ],
+      "status": "EVENT_TO_MONITOR_NO_DIRECTIONAL_CLAIM"
+    }
+  ],
+  "source_ids": [
+    "SRC-GH-MAIN-HEAD-20261029T190223Z",
+    "SRC-GH-XRP-SIGNAL-20261029T190223Z",
+    "SRC-GH-XRP-SUMMARY-20261029T190223Z",
+    "SRC-GH-PAPER-STATE-20261029T190223Z",
+    "SRC-GH-PAPER-WORKFLOW-20261029T190223Z",
+    "SRC-GH-MERGE-QUEUE-20261029T190223Z",
+    "SRC-GH-PR1342-STATE-20261029T190223Z",
+    "SRC-GH-PR1342-CI-20261029T190223Z",
+    "SRC-GH-PR1342-GATE-20261029T190223Z",
+    "SRC-GH-PR1342-EMITTER-20261029T190223Z",
+    "SRC-GH-PR1342-TESTS-20261029T190223Z",
+    "SRC-GH-CI-WORKFLOW-20261029T190223Z",
+    "SRC-GH-GATE-WORKFLOW-20261029T190223Z",
+    "SRC-WEB-LIQWALL-XRP-20261029T190223Z",
+    "SRC-WEB-ALPHA-XRP-LIQ-20261029T190223Z",
+    "SRC-WEB-TRADRADAR-XRP-20261029T190223Z",
+    "SRC-WEB-XRPINSIGHTS-ETF-20261029T190223Z",
+    "SRC-WEB-ALPHA-ETF-20261029T190223Z",
+    "SRC-WEB-CIRCLE-Q3-20261029T190223Z",
+    "SRC-WEB-COINBASE-Q3-SCHEDULE-20261029T190223Z"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "main_modified_by_this_run": false
+}

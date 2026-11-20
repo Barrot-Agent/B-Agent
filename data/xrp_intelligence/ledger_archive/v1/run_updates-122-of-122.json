@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 121,
+  "chunk_count": 122,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T044233Z-PR1393-CI-AND-MAIN-WRITE-AUDIT",
+      "created_at_utc": "2026-10-31T04:42:33Z",
+      "data_cutoff_utc": "2026-10-31T04:41:52Z",
+      "summary": "Verified the Morpho pagination-cursor correction on PR #1393 exact head 573f916: CI run 41169234347 passed 349 tests plus 8 subtests; fail-closed gate 41169234345 passed with merging disabled. The research ledger data head 8b9cb9 passed the actual 332-shard validator and 20 regression tests in run 41169603528; gate 41169603535 passed. Main remains df35e4. Main still has cross-analysis, signal-accuracy and scheduler-tick workflows with write capability; PR #1392 makes the first two read-only but leaves scheduler-tick queue commits to main. Scheduler allowlist only dispatches the PR #1225 controlled validation workflow. No PR merged; no main write, manual dispatch, force-push or trade.",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1393-CI-043633Z",
+        "SRC-20261031-GITHUB-PR1393-GATE-043633Z",
+        "SRC-20261031-GITHUB-XRP-LEDGER-VALIDATOR-044139Z",
+        "SRC-20261031-GITHUB-XRP-LEDGER-GATE-044139Z",
+        "SRC-20261031-GITHUB-MAIN-HEAD-044233Z",
+        "SRC-20261031-GITHUB-MAIN-WORKFLOWS-044233Z",
+        "SRC-20261031-GITHUB-PR1392-044233Z",
+        "SRC-20261031-GITHUB-PR1394-044233Z",
+        "SRC-20261031-GITHUB-PR1390-044233Z"
+      ],
+      "repository_audit_path": "data/repository_audits/20261031T044233Z-pr1393-cursor-fix-and-main-write-audit.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T044233Z-main-writer-and-scheduler-queue-containment.json",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T043333Z-binance-xrp-replenishment-market-risk-update.json",
+      "verification": {
+        "verified_data_head_sha": "8b9cb9c33a9ebff3eaa129e64db423afebda6e6a",
+        "validator_run_id": 41169603528,
+        "validator_status": "PASS",
+        "archive_shards_checked": 332,
+        "validator_regression_tests_passed": 20,
+        "gate_run_id": 41169603535,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "metadata_successor_pending": true
+      },
+      "engineering": {
+        "pr1393_head": "573f91614e3b7542ff485575bd2d55f598b9c20d",
+        "pr1393_ci_run_id": 41169234347,
+        "pr1393_tests_passed": 349,
+        "pr1393_subtests_passed": 8,
+        "pr1393_gate_run_id": 41169234345,
+        "pr1393_gate_status": "PASS_MERGE_DISABLED",
+        "pr1393_live_api_executed": false,
+        "pr1392_state": "OPEN_DRAFT_UNMERGED",
+        "pr1394_state": "OPEN_DRAFT_UNMERGED"
+      },
+      "main_sha": "df35e4ef72200495ce83126fcf26e78cc8cf775b",
+      "main_changed_by_this_run": false,
+      "merge_performed": false,
+      "force_push_performed": false,
+      "manual_workflow_dispatch_performed": false,
+      "real_money_trade_performed": false
+    }
+  ]
+}

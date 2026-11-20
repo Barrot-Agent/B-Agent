@@ -1,0 +1,227 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T162330Z-SBI-CIRCLE-RIPPLE-COINBASE-MULTI-RAIL",
+  "captured_at_utc": "2026-10-30T16:23:30Z",
+  "source_ids": [
+    "SRC-CIRCLE-ARC-MAINNET-20260916",
+    "SRC-SBI-XRP-TERM-DEPOSIT-COUPON-20260202",
+    "SRC-SBI-XRP-SHAREHOLDER-COUPON-20260204",
+    "SRC-SBI-VISA-CRYPTO-CARD-20260501",
+    "SRC-SBI-VCTRADE-2M-ACCOUNTS-20260707",
+    "SRC-SBI-ARC-PRESALE-20260512",
+    "SRC-SBI-USDC-MERCHANT-PILOT-20260430",
+    "SRC-COINBASE-RLUSD-3-CHAIN-LISTING-20261028",
+    "SRC-BINANCE-CIRCLE-100M-AND-USDC-AGREEMENT-20260922",
+    "SRC-CIRCLE-USYC-BINANCE-OFFEXCHANGE-COLLATERAL-20250724",
+    "SRC-SBIC-EAST-JAPAN-PROFILE-20261030T162330Z",
+    "SRC-SBIC-CHATGPT-SEMINAR-20260305-20261030T162330Z",
+    "SRC-JPYSC-JGB-ALLOCATION-AMOUNT-CORRECTION-20261030T162330Z",
+    "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+    "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602",
+    "SRC-SBI-CIRCLE-EQUITY-INVESTMENT-20250609",
+    "SRC-SBI-STARTALE-50M-EQUITY-INVESTMENT-20260326",
+    "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+    "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612",
+    "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624",
+    "SRC-SBI-VCTRADE-USDC-ETHEREUM-ONLY-DEPOSIT-2026",
+    "SRC-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY-XRPL-PLANNED-20261030",
+    "SRC-SBI-SMBC-STARTALE-MARKETING-5PCT-20261030",
+    "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-PILOT-20261016",
+    "SRC-JPYSC-ISSUANCE-JGB-RESERVE-AND-LENDING-20260907",
+    "SRC-JPYSC-ACCOUNT-ONLY-PUBLIC-CHAIN-PLANNED-20260624",
+    "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+    "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805",
+    "SRC-SEC-CIRCLE-S1-2025-COINBASE-COLLABORATION-OWNERSHIP"
+  ],
+  "edges": [
+    {
+      "from": "CIRCLE",
+      "to": "ARC_MAINNET",
+      "relationship": "Launched public mainnet 16 Sep 2026; USDC gas, StableFX and Circle Payments Network; permissioned validator set.",
+      "status": "PRIMARY_CIRCLE_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "ARC_MAINNET",
+      "relationship": "Named founding validator; SBI says it will participate in Arc operation and governance.",
+      "status": "PRIMARY_CIRCLE_AND_SBI_STATEMENTS"
+    },
+    {
+      "from": "COINBASE",
+      "to": "ARC_MAINNET",
+      "relationship": "Named digital-asset exchange access partner; not listed in founding validator cohort.",
+      "status": "PRIMARY_CIRCLE_ANNOUNCEMENT"
+    },
+    {
+      "from": "BINANCE",
+      "to": "ARC_MAINNET",
+      "relationship": "Named digital-asset exchange access partner; not listed in founding validator cohort.",
+      "status": "PRIMARY_CIRCLE_ANNOUNCEMENT"
+    },
+    {
+      "from": "BINANCE",
+      "to": "CIRCLE",
+      "relationship": "USD100M strategic equity investment and five-year commercial agreement to promote USDC globally.",
+      "status": "PRIMARY_CIRCLE_ANNOUNCEMENT"
+    },
+    {
+      "from": "CIRCLE_USYC",
+      "to": "BINANCE_INSTITUTIONAL_DERIVATIVES",
+      "relationship": "USYC tokenized money-market fund supported as yield-bearing off-exchange collateral, held through bank triparty or Ceffu custody.",
+      "status": "PRIMARY_CIRCLE_PRODUCT_ANNOUNCEMENT; UTILIZATION_UNKNOWN"
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "CIRCLE_SBI_HOLDINGS",
+      "relationship": "Separate 50/50 SBI-Circle JV and USD50M SBI strategic equity investment in Circle.",
+      "status": "PRIMARY_SBI_DISCLOSURES"
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "ARC_TOKEN_PRESALE",
+      "relationship": "SBI participated through a consolidated subsidiary; consortium raised USD222M, SBI's allocation undisclosed.",
+      "status": "PRIMARY_SBI_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "XRP_RETAIL_DISTRIBUTION",
+      "relationship": "SBI Shinsei Bank term-deposit campaign offered up to JPY20,000 XRP coupon; SBI shareholder benefit offered JPY2,000 XRP coupon to eligible bands.",
+      "status": "PRIMARY_SBI_PROMOTIONS; REDEMPTIONS_UNKNOWN"
+    },
+    {
+      "from": "SBI_VC_TRADE_APLUS_VISA",
+      "to": "XRP_REWARDS",
+      "relationship": "SBI VISA Crypto Card lets each card select one reward asset from BTC, ETH or XRP; points automatically convert monthly.",
+      "status": "PRIMARY_SBI_PRODUCT_ANNOUNCEMENT; ACTUAL_REWARD_VOLUME_UNKNOWN"
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "JAPAN_CRYPTO_DISTRIBUTION",
+      "relationship": "Reported 2M registered accounts as of 6 Jul 2026 after BITPOINT merger effective 1 Apr; account registrations are not active users.",
+      "status": "PRIMARY_SBI_METRIC"
+    },
+    {
+      "from": "SBI_VC_TRADE_APLUS",
+      "to": "USDC_MERCHANT_PAYMENT_PILOT",
+      "relationship": "Five-day QR-code USDC retail pilot at Unatoto Honmachi and Bic Camera Namba in May 2026; no transaction volume/production rollout disclosed.",
+      "status": "PRIMARY_SBI_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "RLUSD",
+      "relationship": "Japan distribution launched; current VCTRADE deposits/withdrawals are Ethereum-only and XRPL support is planned, not live.",
+      "status": "PRIMARY_SBI_PRODUCT_PAGE"
+    },
+    {
+      "from": "COINBASE",
+      "to": "RLUSD",
+      "relationship": "Added to Prime, Exchange and app on 28 Oct 2026; supported deposits/withdrawals across XRPL, Base and Ethereum; Coinbase Global Exchange collateral availability to follow.",
+      "status": "PRIMARY_COINBASE_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_STARTALE_MARKETING",
+      "to": "JPYSC_OUSD_INTEROPERABILITY",
+      "relationship": "SBI/Startale exploring JPYSC-OUSD interoperability PoC; SMBC Group agreed to 5% stake in SBI Startale Marketing. Separate from SBI Circle Holdings JV.",
+      "status": "PRIMARY_SBI_ANNOUNCEMENTS; POC_NOT_PRODUCTION"
+    },
+    {
+      "from": "SBI_SHINSEI_TRUST",
+      "to": "JPYSC_RESERVES",
+      "relationship": "JPYSC issuance ~JPY20.1B; JPY1.0B allocated to short-term JGBs; ~JPY6.9B lending applications. JPYSC remains account-only; public-chain route conditional.",
+      "status": "PRIMARY_SBI_DISCLOSURE; JGB_AMOUNT_CORRECTED"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "XRPL_USDC_AND_RIPPLE",
+      "relationship": "Circle USDC native on XRPL and direct technical/product partnership with Ripple; Ripple describes XRP as XRPL DEX auto-bridge asset.",
+      "status": "PRIMARY_CIRCLE_AND_RIPPLE_ANNOUNCEMENTS; EXECUTED_BRIDGE_VOLUME_UNKNOWN"
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "CHATGPT_EDUCATION_SEMINAR",
+      "relationship": "SBIC East Japan hosted a ChatGPT/generative-AI seminar with a Microsoft Japan speaker and local credit-union co-host; no OpenAI partnership or XRP relationship.",
+      "status": "PRIMARY_SBIC_PROFILE_AND_EVENT"
+    },
+    {
+      "from": "COINBASE",
+      "to": "CIRCLE_USDC_ECONOMICS",
+      "relationship": "Coinbase's USDC distribution arrangement renewed on same terms; Coinbase reported Q3 2026 stablecoin revenue USD306.9M and average USDC held in products USD22B. Circle reported USD324.6M Q2 distribution costs paid to Coinbase.",
+      "status": "PRIMARY_SEC_FILINGS; CURRENT_EQUITY_PERCENTAGE_UNVERIFIED"
+    },
+    {
+      "from": "COINBASE",
+      "to": "OPEN_STANDARD_OUSD",
+      "relationship": "Coinbase is a founding Open Standard partner; SBI/Startale joined and are exploring JPYSC-OUSD interoperability.",
+      "status": "PRIMARY_SBI_AND_OPEN_STANDARD_ANNOUNCEMENTS; POC_NOT_PRODUCTION"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T162330Z-SBI-MULTI-RAIL-STRATEGY",
+      "claim": "SBI is pursuing a multi-rail strategy across XRP, RLUSD, USDC, JPYSC, OUSD, Arc and traditional payment distribution rather than choosing one exclusive blockchain/stablecoin partner.",
+      "status": "STRONGLY_SUPPORTED_AS_STRATEGIC_INFERENCE",
+      "support": [
+        "SBI Circle JV and USD50M Circle equity",
+        "SBI Circle Arc founding-validator role and ARC presale participation",
+        "SBI/Startale JPYSC and OUSD PoC with SMBC 5% stake",
+        "SBI XRP rewards/card and Ripple RLUSD distribution"
+      ],
+      "counter_hypothesis": "These initiatives sit in different subsidiaries and stages; no single public corporate document states one integrated multi-rail strategy."
+    },
+    {
+      "id": "HYP-20261030T162330Z-ARC-STABLECOIN-SUBSTITUTION",
+      "claim": "Arc's USDC-gas model and StableFX could substitute for XRP as an intermediary in some stablecoin-only cross-border corridors.",
+      "status": "POSSIBLE_NOT_MEASURED",
+      "support": [
+        "USDC gas, sub-second finality and 24/7 StableFX",
+        "Coinbase and Binance are named Arc exchange access partners"
+      ],
+      "counter_hypothesis": "JPYSC is not publicly transferable at capture, JPYSC-OUSD is a PoC, Arc validators are permissioned and no Arc corridor volumes or XRP displacement are disclosed."
+    },
+    {
+      "id": "HYP-20261030T162330Z-XRPL-USDC-XRP-COMPLEMENTARITY",
+      "claim": "Native USDC on XRPL can increase XRPL stablecoin liquidity while preserving a role for XRP as a DEX bridge asset.",
+      "status": "POSSIBLE_NOT_MEASURED",
+      "support": [
+        "Circle USDC launched natively on XRPL",
+        "Ripple says XRPL DEX auto-bridging uses XRP"
+      ],
+      "counter_hypothesis": "No executed bridge turnover, order-book depth, or incremental XRP demand has been measured; stablecoin pairs can trade directly."
+    },
+    {
+      "id": "HYP-20261030T162330Z-SBI-XRP-RETAIL-DISTRIBUTION",
+      "claim": "SBI deposit/shareholder rewards and Visa card points may expand retail XRP acquisition and retention in Japan.",
+      "status": "DISTRIBUTION_CHANNEL_CONFIRMED; NET_BUYING_UNKNOWN",
+      "support": [
+        "XRP vouchers offered through deposits and shareholder benefits",
+        "Visa card allows XRP as one selectable reward asset",
+        "SBI VC Trade reported 2M registered accounts"
+      ],
+      "counter_hypothesis": "Campaigns have no published redemption/volume data; account registrations are not active users; reward XRP may be sourced from inventory rather than open-market purchases."
+    },
+    {
+      "id": "HYP-20261030T162330Z-COINBASE-MULTI-ISSUER",
+      "claim": "Coinbase is broadening stablecoin distribution beyond USDC while retaining material Circle economics.",
+      "status": "SUPPORTED_AS_PRODUCT_STRATEGY",
+      "support": [
+        "Coinbase added RLUSD to Prime/Exchange/app and supports three networks",
+        "Coinbase is an Arc exchange partner and Open Standard founding partner",
+        "USDC average balances and Q3 stablecoin revenue remain substantial"
+      ],
+      "counter_hypothesis": "No RLUSD/OUSD/Arc volume or revenue contribution is disclosed; USDC remains the dominant measured stablecoin revenue source."
+    },
+    {
+      "id": "HYP-20261030T162330Z-CIRCLE-USYC-COLLATERAL",
+      "claim": "Circle's USYC/USDC collateral stack may increase institutional preference for yield-bearing tokenized Treasury collateral over volatile crypto collateral in some derivatives workflows.",
+      "status": "INTEGRATION_CONFIRMED_UTILIZATION_UNKNOWN",
+      "support": [
+        "Circle announced USYC as off-exchange collateral for Binance institutional derivatives",
+        "USYC is near-instantly fungible with USDC"
+      ],
+      "counter_hypothesis": "No balances, haircuts, utilization, client mix or direct comparison with XRP collateral are disclosed; product availability does not establish actual adoption."
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

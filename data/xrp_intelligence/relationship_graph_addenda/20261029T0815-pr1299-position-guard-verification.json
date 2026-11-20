@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T0815-PR1299-POSITION-GUARD-VERIFIED",
+  "captured_at_utc": "2026-10-29T08:15:30.000Z",
+  "observed_main_sha": "eb4422a5897745ec563303ade106cfd2549eac3c",
+  "policy": "Exact-head tests verify the proposed guard, not a change to main or a repair of persisted paper-trading state.",
+  "nodes": [
+    {
+      "id": "BARROT_PAPER_TRADER",
+      "label": "Barrot simulated BTC-USD paper trader",
+      "kind": "SIMULATED_TRADING_WORKFLOW"
+    },
+    {
+      "id": "BARROT_PR1299",
+      "label": "PR #1299 fresh-main paper-trader identity guard",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    },
+    {
+      "id": "LEGACY_POSITION_NULL_PRODUCT",
+      "label": "Persisted nonzero simulated position with null product identity",
+      "kind": "UNRECONCILED_STATE"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN49-PR1299-IDENTITY-GUARD-VERIFIED",
+      "source": "BARROT_PAPER_TRADER",
+      "target": "BARROT_PR1299",
+      "relationship": "FAIL_CLOSED_POSITION_IDENTITY_GUARD_TESTED",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "PR #1299 exact head passed 191 tests plus 4 subtests in 6.19s and the fail-closed gate. Its guard stops before provider/model calls when an open simulated position has missing/mismatched product identity or invalid size. The persisted state remains unchanged; after approval/merge, the scheduled paper-trader cycle will intentionally stop until the legacy position is reconciled. Main remains unguarded while the PR is draft.",
+      "source_ids": [
+        "SRC-RUN49-20261029T0815Z-PR1299-PR",
+        "SRC-RUN49-20261029T0815Z-PR1299-CI",
+        "SRC-RUN49-20261029T0815Z-PR1299-GATE"
+      ]
+    }
+  ],
+  "hypotheses": [],
+  "notes": [
+    "DESIGNED: guard rejects unidentified/mismatched positions and records product identity on new buys.",
+    "EXECUTED: exact-head core CI and fail-closed gate ran on GitHub Actions.",
+    "VERIFIED: CI and gate passed; PR remains draft/unmerged; no state migration or main write occurred.",
+    "Operational follow-up: determine a separately approved reconciliation procedure; never infer the legacy position's product or rewrite state automatically."
+  ]
+}

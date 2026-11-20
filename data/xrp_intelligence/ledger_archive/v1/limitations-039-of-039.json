@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 38,
+  "chunk_count": 39,
+  "record_count": 5,
+  "created_at_utc": "2026-10-30T12:40:17Z",
+  "records": [
+    "Coinbase's Q3 2026 filing does not identify the counterparty responsible for 27% of Q3 revenue. No relationship to Circle, Ripple, a market maker or XRP may be inferred without new evidence.",
+    "Circle Mint minted/redeemed totals are limited to Circle Mint customer fiat conversions; they are not total USDC supply changes, all exchange flows or XRP capital flows.",
+    "Circle's Circle Reserve Fund and bank-cash disclosures describe reserve composition, not stress-tested redemption behavior. No impairment, reserve loss or redemption failure is established; USDC-holder liabilities are not FDIC insured.",
+    "T54's x402 aggregate dashboard is operator-reported, multi-asset and not independently reconciled to validated XRPL transaction IDs. The implied USD0.00285 average is conditional on matching scopes; asset mix and repeat economic counterparties remain unknown.",
+    "PR #1371 is draft and unmerged. Its 30-day artifacts are not a durable feature store; exact-head core CI and fail-closed gate passed, but full repository CI was not run and the change is not active on main."
+  ]
+}

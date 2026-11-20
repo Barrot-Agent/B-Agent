@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_snapshot",
+  "audit_id": "REPO-AUDIT-20261031T232127Z-MAIN-WRITERS-KNOWLEDGE-SIGNAL-AND-PR1432",
+  "captured_at_utc": "2026-10-31T23:21:27Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "source_ids": [
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "main_sha": "b51099e04b410f49e28d9c80201f68847aa8118a",
+  "main_writers": {
+    "cross_analysis": {
+      "workflow": ".github/workflows/cross-analysis.yml",
+      "contents_write": true,
+      "git_commit": true,
+      "git_push": true,
+      "pr1431": "OPEN_DRAFT_UNMERGED"
+    },
+    "knowledge_signal_cycle": {
+      "workflow": ".github/workflows/knowledge-signal-cycle.yml",
+      "trigger": "workflow_dispatch only",
+      "contents_write": true,
+      "git_commit": true,
+      "git_push": true,
+      "pr1432": "OPEN_DRAFT_UNMERGED"
+    },
+    "scheduler_tick": {
+      "workflow": ".github/workflows/scheduler-tick.yml",
+      "schedule": "*/15 * * * *",
+      "contents_write": true,
+      "actions_write": true,
+      "git_commit": true
+    }
+  },
+  "knowledge_signal_current_main": {
+    "log_jsonl_entries": 0,
+    "log_jsonl_blob_sha": "de9787cdf7911b19ad7be02a74c6b4fabde2b482",
+    "config_last_updated_utc": "2026-10-29T13:23:01.047536Z",
+    "latest_signal_timestamp_utc": "2026-10-29T13:23:33.142057Z",
+    "latest_signal_age_hours": 57.745,
+    "latest_signal_score": 44,
+    "latest_signal_confidence": 0,
+    "latest_signal_news_score": 88,
+    "latest_signal_news_entries": 11,
+    "provider_status": "GitHub Models missing credential; Groq HTTP 429",
+    "signal_history_entries": 0,
+    "interpretation": "Stale unavailable sentiment artifact, not a current sentiment estimate or forecast."
+  },
+  "pr1431": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1431",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "head_sha": "57531208184dc3ac2d49a6cce3265c3a1dd8e061",
+    "base_sha": "f0bbed8c51974e4e0b4cb98b09a8ef0eb5fe0fbb",
+    "ci_run": 41246255670,
+    "ci": "PASS",
+    "gate_run": 41246255620,
+    "gate": "PASS_MERGE_DISABLED",
+    "compare_current_main": "DIVERGED_AHEAD_3_BEHIND_1"
+  },
+  "pr1432": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1432",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "head_sha": "91eae69c3994f9aebfb7ce3a866bb09bb569af33",
+    "base_sha": "b51099e04b410f49e28d9c80201f68847aa8118a",
+    "changed_files": 4,
+    "additions": 249,
+    "deletions": 35,
+    "new_regression_tests": 8,
+    "ci_run": 41252147218,
+    "ci": "PASS",
+    "gate_run": 41252147202,
+    "gate": "PASS_MERGE_DISABLED",
+    "changes": [
+      "strict model JSON validation",
+      "null score/confidence on provider failure",
+      "no history append on unavailable/zero confidence",
+      "null rather than zero on failed price lookup",
+      "manual read-only artifact-only workflow",
+      "no schedule until durable dedupe/storage/promotion design"
+    ]
+  },
+  "archive_validation": {
+    "validated_head": "853d49dc1db4631b1aaaa81f67a531ea6c6ebac2",
+    "push_validator_run": 41252001740,
+    "pr_validator_run": 41252004448,
+    "gate_run": 41252004489,
+    "status": "PASS",
+    "archive_shards": 442,
+    "source_revision_addenda_checked": 34,
+    "pending_archive_append": 29,
+    "tests_passed": 32,
+    "errors": 0,
+    "state_mutated": false,
+    "metadata_successor_validation": "PENDING"
+  },
+  "approval_workflow": {
+    "run": 41252000889,
+    "event": "push",
+    "conclusion": "failure",
+    "jobs": 0,
+    "root_cause": "UNKNOWN"
+  },
+  "limitations": [
+    "No full repository CI or complete dependency vulnerability scan.",
+    "Branch protection required-check details endpoint returned 403.",
+    "Open PR inventory not fully recounted in this capture."
+  ],
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  }
+}

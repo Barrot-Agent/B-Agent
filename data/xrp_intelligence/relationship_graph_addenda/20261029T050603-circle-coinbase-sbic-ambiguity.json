@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T050603-CIRCLE-COINBASE-SBIC-AMBIGUITY",
+  "captured_at_utc": "2026-10-29T05:06:03.000Z",
+  "policy": "Append-only, evidence-graded. Corporate distribution, reserve economics, collateral eligibility, XRPL usage and XRP spot demand are separate variables. No edge implies price causation.",
+  "nodes": [
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_CUSTODY_AND_STABLECOIN_DISTRIBUTION_PLATFORM"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle Internet Group, Inc.",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "USDC",
+      "label": "USDC",
+      "kind": "USD_STABLECOIN"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple Labs, Inc.",
+      "kind": "DIGITAL_ASSET_INFRASTRUCTURE_COMPANY"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD",
+      "kind": "USD_STABLECOIN"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_BLOCKCHAIN"
+    },
+    {
+      "id": "BASE",
+      "label": "Base",
+      "kind": "COINBASE_LAYER_2_NETWORK"
+    },
+    {
+      "id": "ETHEREUM",
+      "label": "Ethereum",
+      "kind": "PUBLIC_BLOCKCHAIN"
+    },
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "CRYPTO_EXCHANGE_AND_FINANCIAL_PLATFORM"
+    },
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings, Inc.",
+      "kind": "JAPANESE_FINANCIAL_GROUP"
+    },
+    {
+      "id": "SBI_CAPITAL",
+      "label": "SBI Capital Co., Ltd. (historical SBIC usage)",
+      "kind": "HISTORICAL_INVESTMENT_ENTITY_CURRENT_STATUS_UNKNOWN"
+    },
+    {
+      "id": "SBIC_EAST",
+      "label": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "kind": "SME_INVESTMENT_AND_CONSULTATION_COMPANY"
+    },
+    {
+      "id": "CHATGPT",
+      "label": "ChatGPT",
+      "kind": "GENERATIVE_AI_PRODUCT"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN39-COINBASE-CIRCLE-USDC-ECONOMICS",
+      "source": "COINBASE",
+      "target": "CIRCLE",
+      "relationship": "USDC_DISTRIBUTION_ECONOMICS_AND_COMMERCIAL_COLLABORATION",
+      "evidence_class": "COMPANY_REPORTED_CROSS_CORROBORATED",
+      "status": "COINBASE_Q2_2026_AND_CIRCLE_H1_2026_DISCLOSURES",
+      "claim": "Coinbase reported average USDC held in its products reached $20 billion in Q2 2026 and that it captured approximately 50% of USDC economics over the prior year. Circle separately reported that about 59 cents of each dollar of H1 2026 revenue went to global distribution partners and transaction costs. Circle's 59-cent figure is global and must not be misattributed entirely to Coinbase. The disclosures support material distribution economics, not an XRP flow.",
+      "source_ids": [
+        "SRC-COINBASE-Q2-2026",
+        "SRC-RUN39-20261029T050603-CIRCLE-USDC-ECONOMICS"
+      ]
+    },
+    {
+      "id": "EDGE-RUN39-CIRCLE-BINANCE-AGREEMENT",
+      "source": "CIRCLE",
+      "target": "BINANCE",
+      "relationship": "STRATEGIC_EQUITY_INVESTMENT_AND_FIVE_YEAR_USDC_DISTRIBUTION_AGREEMENT",
+      "evidence_class": "CONFIRMED_BILATERAL_COMPANY_ANNOUNCEMENT",
+      "status": "ANNOUNCED_2026-09-22",
+      "claim": "Circle and Binance announced a five-year commercial agreement focused on expanding USDC access, and Binance announced a $100 million strategic equity investment in Circle. This is evidence of Circle's multi-platform distribution strategy; it is not an XRP relationship.",
+      "source_ids": [
+        "SRC-RUN39-20261029T050603-CIRCLE-BINANCE-AGREEMENT"
+      ]
+    },
+    {
+      "id": "EDGE-RUN39-SBI-CAPITAL-HISTORICAL-SBIC",
+      "source": "SBI_HOLDINGS",
+      "target": "SBI_CAPITAL",
+      "relationship": "HISTORICAL_SUBSIDIARY_AND_GOLDMAN_SACHS_JOINT_VENTURE_CONTEXT",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE_HISTORICAL",
+      "status": "OFFICIAL_DISCLOSURE_2007-05-21; CURRENT_ENTITY_STATUS_UNKNOWN",
+      "claim": "SBI Holdings' 2007 official release uses SBIC for SBI Capital Co., Ltd. and describes a 40% share transfer to Goldman Sachs that made SBIC a joint venture in that historical context. The release does not establish the entity's current legal status or any direct relationship between SBI Capital and XRP.",
+      "source_ids": [
+        "SRC-RUN39-20261029T050603-SBI-CAPITAL-SBIC"
+      ]
+    },
+    {
+      "id": "EDGE-RUN39-COINBASE-RLUSD-COLLATERAL-ROLLOUT",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "GLOBAL_EXCHANGE_COLLATERAL_FUTURE_ROLLOUT_NOT_LIVE_AT_ANNOUNCEMENT",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "status": "ANNOUNCED_2026-10-28",
+      "claim": "Coinbase announced RLUSD availability on Coinbase Prime, Coinbase Exchange and its retail app, with deposits and withdrawals across XRPL, Base and Ethereum. The announcement said Coinbase Global Exchange collateral availability would follow. Do not model RLUSD as already live collateral at that cutoff.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN39-COINBASE-ADDITIVE-DISTRIBUTION",
+      "class": "INFERENCE",
+      "hypothesis": "Coinbase may be adding RLUSD as an incremental stablecoin rail while preserving USDC's existing distribution economics; the launch alone does not demonstrate a switch away from USDC.",
+      "confidence": "LOW_TO_MEDIUM",
+      "supporting_source_ids": [
+        "SRC-COINBASE-Q2-2026",
+        "SRC-RUN39-20261029T050603-CIRCLE-USDC-ECONOMICS",
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28"
+      ],
+      "counter_hypotheses": [
+        "RLUSD and other new stablecoins could gradually take share from USDC on Coinbase.",
+        "The listing may be primarily a competitive positioning move with limited actual customer use."
+      ],
+      "disconfirming_evidence_needed": [
+        "Time-aligned Coinbase USDC/RLUSD balances and conversions before and after launch.",
+        "Issuer- and platform-level volume, distribution-cost and revenue-share disclosures.",
+        "Net flows by chain, venue and stablecoin after controlling for total stablecoin-market growth."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN39-COINBASE-USDC-SHARE-SHIFT",
+      "class": "COMPETING_INFERENCE",
+      "hypothesis": "RLUSD distribution may reduce USDC's relative share of Coinbase's stablecoin activity, but this is unmeasured at the current cutoff.",
+      "confidence": "LOW",
+      "supporting_source_ids": [
+        "SRC-RUN39-20261029T050603-CIRCLE-USDC-ECONOMICS",
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28"
+      ],
+      "counter_hypotheses": [
+        "Coinbase's USDC balances and economics may remain strong because of established distribution incentives and existing customer holdings.",
+        "Overall stablecoin use may expand enough that multiple issuers grow without a material absolute USDC decline."
+      ],
+      "disconfirming_evidence_needed": [
+        "Quarter-over-quarter Coinbase stablecoin mix, USDC balances, RLUSD volumes and disclosed distribution costs.",
+        "Evidence that USDC share remains stable or rises after the RLUSD launch."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN39-XRPL-ACTIVITY-NOT-XRP-DEMAND",
+      "class": "INFERENCE",
+      "hypothesis": "RLUSD activity on XRPL may increase ledger utility without proportionate XRP spot demand unless measured flows use XRP as a bridge asset or otherwise create net XRP inventory demand.",
+      "confidence": "LOW_TO_MEDIUM",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28"
+      ],
+      "counter_hypotheses": [
+        "Measurable XRP pathfinding, DEX routing, market-making or collateral usage could create incremental demand or liquidity effects.",
+        "Stablecoin activity could substitute for some XRP bridge-asset use rather than complement it."
+      ],
+      "disconfirming_evidence_needed": [
+        "XRPL RLUSD supply and transfer flows by time and counterparty category.",
+        "XRP DEX/pathfinding volumes, order-book depth, spreads, exchange net flows and venue-normalized turnover.",
+        "An event study with BTC, rates, market-wide liquidity and other concurrent catalysts as controls."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN39-SBIC-ACRONYM-AMBIGUITY",
+      "class": "ENTITY_RESOLUTION_AND_UNKNOWN",
+      "hypothesis": "The phrase 'Japan's SBIC' cannot safely be assigned to one legal entity without its original context. Official public sources use SBIC for SBIC East Japan and, historically, for SBI Capital Co., Ltd.; neither candidate is thereby shown to have a direct XRP relationship.",
+      "confidence": "HIGH_THAT_AMBIGUITY_EXISTS; ORIGINAL_REFERENCE_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+        "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-20261028T1219Z",
+        "SRC-RUN39-20261029T050603-SBI-CAPITAL-SBIC"
+      ],
+      "counter_hypotheses": [
+        "The original phrase could refer to SBI Holdings, SBI VC Trade, SBICAH GK, or another acronym expansion rather than either SBIC candidate."
+      ],
+      "disconfirming_evidence_needed": [
+        "Original video/transcript/source context identifying the named entity.",
+        "A primary document showing a direct contract, investment, custody, collateral or payment relationship with XRP."
+      ],
+      "xrp_price_effect": "NOT_APPLICABLE"
+    }
+  ],
+  "notes": [
+    "Coinbase Q2 2026 figures are company-reported; Q3 results were scheduled for October 29, 2026 after market close and were not available at the 05:06 UTC capture.",
+    "Circle's H1 distribution economics are issuer-reported aggregate figures, not independent proof of Coinbase's exact share and not XRP-specific capital flows.",
+    "XRP ETF trackers returned incompatible windows and fund universes; neither tracker figure is admitted as a model feature pending fund-level reconciliation.",
+    "The official SBIC East Japan curriculum mentions ChatGPT as a training topic, not as a partnership or live integration.",
+    "No direct Coinbase-SBI relationship or SBI Capital-to-XRP relationship is established by these sources."
+  ]
+}

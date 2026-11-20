@@ -1,0 +1,42 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 127,
+  "chunk_count": 128,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "LIM-20261031T092042Z-COINBASE-Q3-INVESTMENT-GAINS",
+      "category": "earnings_quality",
+      "statement": "Coinbase's Q3 2026 GAAP net income of $718.697M included $715.022M gains on crypto assets held for investment, primarily fair-value remeasurement of BTC and ETH. Q3 revenue fell 35% YoY, transaction revenue 44%, subscription/services 20%, and Adjusted EBITDA 58%; adjusted net income was approximately $77.7M. Do not treat GAAP net income or investment marks as recurring trading revenue or XRP demand.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T092042Z-COINBASE-Q3-XRP-COLLATERAL-COMPOSITION",
+      "category": "collateral_and_custody",
+      "statement": "Coinbase's Q3 10-Q reports approximately $1.3B crypto assets held as collateral and $389.7M crypto assets borrowed, but does not disclose token-level composition. BTC and ETH investment holdings are itemized; approximately $314M of other crypto is aggregated, with no individual other-crypto position above 5% of total investment fair value. XRP-specific proprietary holdings and collateral balances remain unknown.",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029"
+      ]
+    },
+    {
+      "id": "LIM-20261031T092042Z-COINBASE-MARKET-SHARE-CONVERSION-METHOD",
+      "category": "market_data_quality",
+      "statement": "Coinbase's Q3 10.7% crypto trading-volume market-share series was adjusted to include stablecoin-conversion activity. It is not directly comparable to spot/derivatives-only exchange-volume shares unless peer methodologies and competitor sets are aligned.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ]
+    }
+  ]
+}

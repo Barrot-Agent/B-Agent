@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T165000Z-SAFU-WALLET-CROSS-EXPLORER",
+  "captured_at_utc": "2026-10-31T16:50:00Z",
+  "status": "ACCEPTED_WITH_TIMING_AND_SOURCE_QUALIFIERS",
+  "decisions": [
+    "Use the latest confirmed Binance page update timestamp, 15:23 UTC October 31, as the conservative anchor for the 24-hour SAFU deployment window; the page was originally published at 14:24 UTC and does not explicitly state which timestamp starts the clock.",
+    "Do not conclude that SAFU deployment failed before November 1 15:23 UTC; the official window remains open through that conservative deadline.",
+    "Record 15,000.00147092 BTC as a cross-explorer displayed balance, corroborated by BitInfoCharts, Tokenview and SoChain, while preserving the 27-versus-28 transaction-count discrepancy and absent current block-height timestamp.",
+    "Treat the SAFU acquisition program as aimed at remaining less-liquid tokens outside the ten fully backed assets; XRP is in the ten-asset set, so no incremental XRP purchase or demand is inferred.",
+    "Keep SAFU, Futures Insurance Fund and corporate treasury as distinct funding sources. The Futures Insurance Fund is not user assets and Binance says only excess above required coverage was reallocated.",
+    "Do not admit SAFU wallet balances or insurance-fund pools as directional XRP features until time-aligned historical observations, source refresh timestamps and coverage denominators are available."
+  ],
+  "required_verification": [
+    "Recheck SAFU wallet after 2026-11-01T15:23:00Z.",
+    "Obtain raw transaction IDs and UTXO balance from an independent current explorer/API.",
+    "Compare full November 3 PoR asset-level XRP reserves and liabilities.",
+    "Capture official Futures Insurance Fund refresh at 00:00 UTC and compare pool-level balances."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

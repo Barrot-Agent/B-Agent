@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T060800Z-BINANCE-XRPL-INDEPENDENT-TRACE-AND-VALIDATOR-V3",
+  "captured_at_utc": "2026-10-30T06:08:00Z",
+  "nodes": [
+    {
+      "id": "BITQUERY",
+      "label": "Bitquery blockchain analytics",
+      "kind": "ONCHAIN_ANALYTICS_PROVIDER"
+    },
+    {
+      "id": "BINANCE_XRPL_DRAINED_WALLETS",
+      "label": "Five Binance-attributed XRPL wallets",
+      "kind": "EXCHANGE_CUSTODY_WALLETS"
+    },
+    {
+      "id": "BINANCE_XRP_ATTACKER_RECEIVER",
+      "label": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "kind": "ATTACKER_CONTROLLED_XRPL_ACCOUNT"
+    },
+    {
+      "id": "BINANCE_POR_LABEL_SET",
+      "label": "Binance proof-of-reserves labeled wallet set",
+      "kind": "EXCHANGE_RESERVE_DISCLOSURE_ADDRESS_SET"
+    },
+    {
+      "id": "BINANCE_STATUS_UPDATE",
+      "label": "Deposits normal; withdrawals paused; 48-hour target",
+      "kind": "COMPANY_OPERATIONAL_STATUS"
+    },
+    {
+      "id": "ALPHA_XRP_ETF",
+      "label": "Alpha Finance XRP ETF flow tracker",
+      "kind": "SECONDARY_FLOW_PROVIDER"
+    },
+    {
+      "id": "CRYPTOETF_TODAY",
+      "label": "CryptoETF.today XRP ETF flow tracker",
+      "kind": "SECONDARY_PARTIAL_FLOW_PROVIDER"
+    },
+    {
+      "id": "XRP_INSIGHTS",
+      "label": "XRP Insights issuer-holdings aggregator",
+      "kind": "SECONDARY_HOLDINGS_PROVIDER"
+    },
+    {
+      "id": "COINDESK_POR_REVIEW",
+      "label": "CoinDesk Binance proof-of-reserves analysis",
+      "kind": "SECONDARY_RESERVE_ANALYSIS"
+    },
+    {
+      "id": "COINBASE_MIGRATION_HYPOTHESIS",
+      "label": "Possible post-incident venue/custody migration",
+      "kind": "UNVERIFIED_MARKET_HYPOTHESIS"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-BITQUERY-CORROBORATES-XRP-TRANSFER-20261030",
+      "source": "BITQUERY",
+      "target": "BINANCE_XRPL_DRAINED_WALLETS",
+      "relationship": "INDEPENDENT_PROVIDER_TRACE_233_5M_XRP",
+      "evidence_class": "INDEPENDENT_ONCHAIN_ANALYTICS",
+      "claim": "Bitquery reports five Binance-attributed XRPL accounts sent about 233.5M XRP to a new receiver; this independently corroborates TRM's 233.46M figure using the same public ledger but separate analytics.",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z",
+        "SRC-TRM-BINANCE-THEFT-XRPL-RLUSD-20261030T0508Z"
+      ]
+    },
+    {
+      "id": "EDGE-XRP-ATTACKER-RECEIVER-STATIC-0354Z-20261030",
+      "source": "BINANCE_XRP_ATTACKER_RECEIVER",
+      "target": "XRP",
+      "relationship": "233_5M_XRP_REMAINED_AT_0354Z",
+      "evidence_class": "BITQUERY_ONCHAIN_BALANCE_OBSERVATION",
+      "claim": "Bitquery reports approximately 233.5M XRP still at the receiver and no outbound transaction through its 03:54 UTC Oct 30 holdings cutoff; later status is unknown.",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-DRAINED-WALLETS-POR-LABEL-20261030",
+      "source": "BINANCE_XRPL_DRAINED_WALLETS",
+      "target": "BINANCE_POR_LABEL_SET",
+      "relationship": "BITQUERY_LABELS_DRAINED_WALLETS_AS_POR",
+      "evidence_class": "SECONDARY_ADDRESS_LABEL_CLAIM",
+      "claim": "Bitquery says every drained wallet carries a Binance proof-of-reserves label in its address data. This is not a recomputed current reserve ratio or proof of customer-liability coverage.",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z",
+        "SRC-COINDESK-BINANCE-POR-WALLET-IMPACT-20261030T0608Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-OPERATIONAL-STATUS-20261030",
+      "source": "BINANCE",
+      "target": "BINANCE_STATUS_UPDATE",
+      "relationship": "DEPOSITS_NORMAL_WITHDRAWALS_PAUSED",
+      "evidence_class": "VERIFIED_OFFICIAL_ACCOUNT_STATEMENT",
+      "claim": "Binance's verified account says deposits operate normally, withdrawals remain paused during security work and it expects resumption within 48 hours; this is not a completed postmortem.",
+      "source_ids": [
+        "SRC-BINANCE-VERIFIED-DEPOSITS-WITHDRAWALS-20261030T0608Z",
+        "SRC-REUTERS-BINANCE-INCIDENT-STATUS-AND-MARKET-REACTION-20261030T0608Z"
+      ]
+    },
+    {
+      "id": "EDGE-ALPHA-XRP-ETF-OCT29-20261030",
+      "source": "ALPHA_XRP_ETF",
+      "target": "XRP",
+      "relationship": "REPORTED_PLUS_8_4M_USD_FIVE_FUNDS",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "claim": "Alpha Finance reports +$8.4M on Oct 29 across five funds; its fund universe and settlement cutoff differ from other trackers.",
+      "source_ids": [
+        "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-OCT29-20261030T0608Z"
+      ]
+    },
+    {
+      "id": "EDGE-CRYPTOETF-XRP-ETF-PARTIAL-OCT29-20261030",
+      "source": "CRYPTOETF_TODAY",
+      "target": "XRP",
+      "relationship": "REPORTED_PLUS_7_1M_USD_TWO_OF_FIVE_FUNDS",
+      "evidence_class": "PARTIAL_SECONDARY_MARKET_DATA",
+      "claim": "CryptoETF.today reports +$7.1M on Oct 29 with only two of five funds reported; it is a partial reading, not a completed daily flow.",
+      "source_ids": [
+        "SRC-CRYPTOETF-TODAY-XRP-PARTIAL-FLOW-OCT29-20261030T0608Z"
+      ]
+    },
+    {
+      "id": "EDGE-XRPINSIGHTS-OCT28-ETF-HOLDINGS-FLOW-20261030",
+      "source": "XRP_INSIGHTS",
+      "target": "XRP",
+      "relationship": "OCT28_PLUS_174K_XRP_OCT26_28_MINUS_2_96M",
+      "evidence_class": "ISSUER_HOLDINGS_AGGREGATOR",
+      "claim": "XRP Insights reports +174,140 XRP on Oct 28 and -2.96M XRP over Oct 26-28 across six spot funds plus BITW, with GXRP excluded from flow sums and Oct 29 provisional.",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-XRP-ETF-HOLDINGS-OCT28-20261030T0608Z"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-MIGRATION-UNMEASURED-20261030",
+      "source": "BINANCE",
+      "target": "COINBASE_MIGRATION_HYPOTHESIS",
+      "relationship": "POTENTIAL_POST_INCIDENT_CUSTODY_MIGRATION",
+      "evidence_class": "SPECULATION_WITH_DISCONFIRMING_EVIDENCE",
+      "claim": "Coinbase could receive some post-incident custody/trading migration, but no Binance-to-Coinbase XRP flows or new customer balances are measured.",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-INCIDENT-STATUS-AND-MARKET-REACTION-20261030T0608Z",
+        "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-20261029-20261030T0508Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-BINANCE-XRP-ATTACKER-OVERHANG-20261030",
+      "status": "TRANSFER_AND_STATIC_BALANCE_CORROBORATED; FUTURE_DISPOSITION_UNKNOWN"
+    },
+    {
+      "id": "HYP-BINANCE-POR-CUSTOMER-COVERAGE-RISK-20261030",
+      "status": "ASSET-BACKING-RISK_SCENARIO; XRP_RATIO_UNVERIFIED"
+    },
+    {
+      "id": "HYP-POST-INCIDENT-EXCHANGE-MIGRATION-TO-COINBASE-20261030",
+      "status": "SPECULATIVE; FLOW_CONFIRMATION_REQUIRED"
+    },
+    {
+      "id": "HYP-XRP-ETF-FLOW-VENDOR-DISAGREEMENT-20261030",
+      "status": "CONFIRMED_MEASUREMENT_INCOMPATIBILITY; TRUE_DAILY_FLOW_REQUIRES_RECONCILIATION"
+    }
+  ],
+  "source_independence": {
+    "trm_vs_bitquery": "Separate analytics providers analyzing the same public ledger; corroborates amount/timing/balance but not fully independent raw evidence.",
+    "reuters_vs_trm": "Reuters reports TRM/Chainalysis attribution; do not count syndicated Reuters text as an additional independent chain trace.",
+    "etf_trackers": "Alpha Finance, CryptoETF.today and XRP Insights use different fund universes/cutoffs and issuer data; do not average their headlines."
+  },
+  "disconfirming_evidence_retained": true,
+  "forecast_status": "NOT_ISSUED"
+}

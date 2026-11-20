@@ -1,0 +1,101 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "snapshot_id": "XRP-20261031T084614Z-ETF-ACTUAL-CAPITAL-AND-SBIC-ACRONYM-RESOLUTION",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T084614Z-etf-actual-capital-and-sbic-acronym-resolution.json",
+  "captured_at_utc": "2026-10-31T08:46:14Z",
+  "data_cutoff_utc": "2026-10-31T08:46:14Z",
+  "source_reference_count": 9,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031-MAKETO-XRP-ETF-HOLDINGS-OCT30",
+    "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+    "SRC-20261031-CRYPTOKEYHOLE-XRP-ISSUER-FLOWS-OCT30-PARTIAL",
+    "SRC-20261031-TOKYO-SBIC-OFFICIAL-PROFILE",
+    "SRC-20261031-NAGOYA-SBIC-SISTER-COMPANY-RELATIONSHIP",
+    "SRC-20261031-OSAKA-SBIC-CHATGPT-WORKSHOP",
+    "SRC-20261031-US-SBA-SBIC-OFFICIAL-PROGRAM",
+    "SRC-20261031-OPENAI-SBIC-LOW-AUTHORITY-SPECULATION",
+    "SRC-20261031-SOCIAL-BIAS-INFERENCE-CORPUS-ACL"
+  ],
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T084254Z-approval-zero-job-main-counterexample-and-364-shard-validation.json",
+  "actual_capital": {
+    "distinction": "ETF AUM change is not the same as net capital flow or XRP units held.",
+    "maketo": {
+      "as_of": "2026-10-30",
+      "xrp_fund_value_usd": 1430000000,
+      "xrp_units_estimate": 1140000000,
+      "sep30_value_usd": 1680000000,
+      "change_in_marked_value_usd": -254300000,
+      "provider_estimated_net_flow_since_sep30_usd": 19000000,
+      "interpretation": "Large marked-value decline despite positive estimated net flow; price depreciation is a major contributor, not proof of $254.3M capital outflow."
+    },
+    "cryptoetf_today": {
+      "session_date": "2026-10-30",
+      "net_flow_usd": -700000,
+      "reported_funds": 2,
+      "total_funds": 5,
+      "status": "PARTIAL",
+      "missing_funds": [
+        "Franklin",
+        "Canary",
+        "Grayscale"
+      ]
+    },
+    "cryptokeyhole": {
+      "session_date": "2026-10-30",
+      "net_flow_usd": -866000,
+      "reported_funds": 2,
+      "total_funds": 4,
+      "status": "PARTIAL",
+      "reported_funds_detail": {
+        "Bitwise": -866000,
+        "21Shares": 0
+      },
+      "missing_funds": [
+        "Franklin",
+        "Canary"
+      ],
+      "grayscale_daily_collection": "NOT_COLLECTED; provider does not work around issuer site bot challenge"
+    },
+    "provider_discrepancy": "-$700K versus -$866K partial totals; coverage and methodology differ; do not average.",
+    "capital_status": "NO_SINGLE_CONSOLIDATED_ACTUAL_CAPITAL_FIGURE_ESTABLISHED"
+  },
+  "sbic_resolution": {
+    "japan": {
+      "entity_system": "THREE_REGIONAL_SISTER_COMPANIES",
+      "entities": [
+        "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+        "Osaka Small Business Investment and Development Company (SBIC West Japan)",
+        "Nagoya Small and Medium Business Investment & Consultation Co., Ltd."
+      ],
+      "specific_referent": "UNRESOLVED"
+    },
+    "us": {
+      "entity": "U.S. Small Business Administration Small Business Investment Company program",
+      "mechanism": "SBA licenses private funds and provides government-guaranteed leverage matched with private capital",
+      "distinct_from_japan": true
+    },
+    "research": {
+      "entity": "Social Bias Inference Corpus",
+      "distinct_from_japan_and_us_program": true
+    },
+    "chatgpt_context": "Official Osaka SBIC and Tokyo SBIC materials show educational generative-AI/ChatGPT seminars; no OpenAI partnership or investment evidenced.",
+    "speculative_lead": "One low-authority Japanese blog lists U.S. SBIC as a hypothetical funding route for an OpenAI government-stake scenario; no official evidence of use.",
+    "xrp_relationship": "NO_DIRECT_XRP_RELATIONSHIP_ESTABLISHED"
+  },
+  "prediction_engine": {
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "capital_flow_feature_policy": "SEPARATE_MARKED_AUM_NET_FLOW_UNITS_HELD_AND_ISSUER_FILE_COVERAGE"
+  },
+  "repository_state": {
+    "main_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+    "research_branch_last_exact_validator_head": "4a6ebf8ec8f3bee8e5a69e9f080d84de400ceb39",
+    "validator_run_id": 41185805200,
+    "validator_status": "PASS_367_SHARDS_20_TESTS_NO_ERRORS_STATE_UNCHANGED",
+    "fail_closed_gate_status": "NOT_OBSERVED"
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

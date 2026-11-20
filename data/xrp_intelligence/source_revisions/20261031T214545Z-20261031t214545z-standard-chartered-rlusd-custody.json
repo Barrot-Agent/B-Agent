@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+  "source_id": "SRC-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+  "captured_at_utc": "2026-10-31T21:45:45Z",
+  "created_at_utc": "2026-10-31T21:45:45Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+      "publisher": "Standard Chartered — RLUSD custody and planned LMAX collateral integration",
+      "url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-10-12",
+      "evidence_class": "PRIMARY_BANK_STATEMENT",
+      "claims": [
+        "Standard Chartered says institutional custody for RLUSD issued on XRPL is live for eligible clients through its DIFC branch regulated by DFSA.",
+        "Standard Chartered is working with Ripple and LMAX to make RLUSD eligible collateral using a collateral-mirroring model that does not require transfer of the underlying RLUSD to the venue."
+      ],
+      "limitations": [
+        "The live service is RLUSD custody, not native XRP custody.",
+        "LMAX collateral mirroring remains subject to documentation, testing, regulation and internal approvals.",
+        "No custody balances, collateral utilization or client counts are disclosed."
+      ]
+    }
+  ],
+  "findings": [
+    "Standard Chartered says institutional custody for RLUSD issued on XRPL is live for eligible clients through its DIFC branch regulated by DFSA.",
+    "Standard Chartered is working with Ripple and LMAX to make RLUSD eligible collateral using a collateral-mirroring model that does not require transfer of the underlying RLUSD to the venue."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "The live service is RLUSD custody, not native XRP custody.",
+    "LMAX collateral mirroring remains subject to documentation, testing, regulation and internal approvals.",
+    "No custody balances, collateral utilization or client counts are disclosed."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-2026-10-30T132500Z-COINBASE-CIRCLE-FINANCIAL-FLOW-DECOMPOSITION",
+  "captured_at_utc": "2026-10-30T13:25:00Z",
+  "title": "Separate stablecoin reserve income, distribution payments, equity stakes and XRP capital flows",
+  "status": "ADOPTED_FOR_RESEARCH_SCHEMA",
+  "decisions": [
+    {
+      "field_family": "corporate_equity",
+      "required_fields": [
+        "investor",
+        "issuer",
+        "share_count",
+        "ownership_pct",
+        "as_of_date",
+        "source_filing",
+        "current_or_historical"
+      ],
+      "rule": "Store historical ownership percentages with an explicit as-of date; do not carry an IPO cap-table percentage forward as current ownership without a current filing."
+    },
+    {
+      "field_family": "stablecoin_distribution_economics",
+      "required_fields": [
+        "issuer",
+        "distributor",
+        "payment_base",
+        "issuer_retention",
+        "party_product_economics",
+        "ecosystem_economics",
+        "approved_participants",
+        "period",
+        "amount",
+        "currency"
+      ],
+      "rule": "Separate reserve income, issuer retention, distributor payments and third-party incentives. A distribution payment is an expense/revenue transfer, not new capital entering an underlying crypto asset."
+    },
+    {
+      "field_family": "reserve_rate_sensitivity",
+      "required_fields": [
+        "reserve_yield",
+        "circulation_assumption",
+        "reserve_allocation_assumption",
+        "scenario_rate_change_bps",
+        "reserve_income_delta",
+        "distribution_cost_delta",
+        "scenario_or_forecast"
+      ],
+      "rule": "Store issuer rate sensitivities as conditional scenarios with assumptions; never treat them as market forecasts."
+    },
+    {
+      "field_family": "coinbase_circle_metric_reconciliation",
+      "required_fields": [
+        "metric_name",
+        "definition",
+        "measurement_window",
+        "point_in_time_or_average",
+        "amount",
+        "source_filing"
+      ],
+      "rule": "Do not combine Coinbase average USDC held in products with point-in-time USDC Assets on Platform until definitions and scope are reconciled."
+    },
+    {
+      "field_family": "xrp_capital_link",
+      "required_fields": [
+        "xrp_transaction_or_collateral_evidence",
+        "settlement_route",
+        "venue",
+        "time_window",
+        "executed_amount"
+      ],
+      "rule": "Do not infer XRP demand from USDC distribution revenue, Circle reserve income, Coinbase equity value or stablecoin circulation without a measured XRP transaction or collateral path."
+    }
+  ],
+  "market_features_admitted": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

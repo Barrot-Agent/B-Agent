@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 14,
+  "chunk_count": 15,
+  "record_count": 4,
+  "created_at_utc": "2026-10-30T06:13:00Z",
+  "records": [
+    "Coinbase's indexed official cbXRP dashboard showed an Oct29 09:14 UTC reserve/supply snapshot, but direct page open returned a stale Oct6 cache. Multiple regional official search results repeat the Oct29 values; retain the cache discrepancy and require raw XRPL wallet/contract reconciliation before treating it as a continuously current balance.",
+    "The 325.8M XRP-BF2 reserve quantity is from XRP Insights' secondary public-wallet aggregation. Binance's 2019 official announcement confirms the 1:1 native-backing mechanism, not the current reserve quantity.",
+    "The 488.4M wrapped/insurance/charity reserve decomposition is a known component of the 22.58B labeled exchange-wallet total. Excluding it yields 22.0916B, but that remainder still includes customer custody, cold storage and other non-tradable balances; it is not executable float.",
+    "The five Binance XRPL source-wallet addresses from the Oct29 theft were not identified in the public Bitquery article inspected. No evidence establishes that the Binance XRP-BF2 backing address was compromised; the 233.46M/325.8M ratio is scale-only, not exposure."
+  ]
+}

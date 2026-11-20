@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-20261031T231645Z-BITHOMP-XRP-INSIGHTS-ESCROW-CONFLICT",
+  "captured_at_utc": "2026-10-31T23:16:45Z",
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGES"
+  ],
+  "nodes": [
+    {
+      "id": "RIPPLE_ESCROW_ACCOUNTS",
+      "label": "Ripple escrow owner accounts r9UUEX…HiYp and rB3WNZ…scPn",
+      "kind": "XRPL_ACCOUNTS"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_LEDGER"
+    },
+    {
+      "id": "XRP_INSIGHTS",
+      "label": "XRP Insights escrow tracker",
+      "kind": "SECONDARY_ONCHAIN_AGGREGATOR"
+    },
+    {
+      "id": "BITHOMP",
+      "label": "Bithomp public explorer",
+      "kind": "SECONDARY_EXPLORER"
+    },
+    {
+      "id": "ESCROW_OBJECTS",
+      "label": "Reported November 1 escrow objects",
+      "kind": "XRPL_ESCROW_OBJECTS"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E-XI-ESCROW",
+      "source": "XRP_INSIGHTS",
+      "target": "ESCROW_OBJECTS",
+      "relationship": "REPORTS_TWO_OBJECTS_TOTALING_1B_XRP_FINISH_AFTER_2026-11-01T00:00Z_AT_LEDGER_108031214",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATION_CLAIMING_RIPPLED_JSON_RPC",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
+      ]
+    },
+    {
+      "id": "E-BITHOMP-ACCOUNT-1",
+      "source": "BITHOMP",
+      "target": "RIPPLE_ESCROW_ACCOUNTS",
+      "relationship": "PUBLIC_PAGES_DISPLAY_500M_BALANCE_NO_TRANSACTIONS_AND_NO_ESCROW_OBJECTS",
+      "evidence_class": "SECONDARY_EXPLORER_PAGE_POTENTIALLY_STALE_OR_INCOMPLETE",
+      "source_ids": [
+        "SRC-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGES"
+      ]
+    },
+    {
+      "id": "E-ESCROW-OWNER",
+      "source": "RIPPLE_ESCROW_ACCOUNTS",
+      "target": "XRPL",
+      "relationship": "OWNER_ACCOUNTS_OF_ESCROW_OBJECTS_AS_REPORTED_BY_XRP_INSIGHTS; RAW_STATE_NOT_INDEPENDENTLY_VERIFIED",
+      "evidence_class": "UNRESOLVED_SOURCE_CONFLICT",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGES"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-BITHOMP-STALE",
+      "status": "PLAUSIBLE_NOT_CONFIRMED",
+      "statement": "Bithomp's account pages are stale or incomplete and omit current escrow objects/transactions.",
+      "support": [
+        "r9 page says active 6 months ago and no transactions; rB3 page also says no transactions despite XRP Insights listing October 1 EscrowFinish hashes."
+      ],
+      "disconfirming": [
+        "Bithomp page is a separate public explorer and explicitly reports no escrow objects for both addresses."
+      ],
+      "next_test": "Query raw account_objects and account_tx at ledger #108031214 and a fresh validated ledger."
+    },
+    {
+      "id": "H-XRP-INSIGHTS-MISATTRIBUTION",
+      "status": "PLAUSIBLE_NOT_CONFIRMED",
+      "statement": "XRP Insights may have a wallet attribution, ledger parsing or page-generation error.",
+      "support": [
+        "Bithomp's public pages do not show escrow objects on the named accounts."
+      ],
+      "disconfirming": [
+        "XRP Insights documents a pinned validated ledger, direct rippled JSON-RPC account_objects/account_tx method and provides October 1 transaction hashes."
+      ],
+      "next_test": "Verify each escrow ledger object index, Owner, Destination, Amount, FinishAfter and transaction metadata directly against XRPL nodes."
+    },
+    {
+      "id": "H-ACCOUNT-PAGE-SCOPE",
+      "status": "UNKNOWN",
+      "statement": "The explorer page may show only liquid account balance while omitting escrow objects because of cache, rendering or indexing scope.",
+      "support": [
+        "The pages show 500M XRP balance and stale activity labels."
+      ],
+      "disconfirming": [
+        "The page explicitly says no escrow objects, so omission cannot be assumed without raw evidence."
+      ],
+      "next_test": "Compare Bithomp raw transaction/object API with public rippled JSON-RPC at the same ledger."
+    }
+  ],
+  "limitations": [
+    "The source conflict does not prove escrow deletion, release or a changed November schedule.",
+    "Do not classify the scheduled 1B as sell pressure.",
+    "No directional forecast or feature admission."
+  ]
+}

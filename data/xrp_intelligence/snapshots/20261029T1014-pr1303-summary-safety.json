@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1014-PR1303-SUMMARY-SAFETY",
+  "captured_at_utc": "2026-10-29T10:14:11Z",
+  "data_cutoff_utc": "2026-10-29T10:14:11Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "forecast_status": "NOT_ISSUED",
+  "market_feature_admission": false,
+  "summary": "Created fresh-main draft PR #1303 to make XRP summary generation fail closed on missing/invalid/zero-confidence signals and remove scheduled Git push/commit behavior. The current main summary workflow still commits and pushes generated summaries/audio. PR #1303 checks were not yet visible at cutoff. Main remains unchanged.",
+  "pr1303": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1303",
+    "branch": "safety/xrp-summary-fail-closed-fresh-main-20261029T1013Z",
+    "base_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+    "head_sha": "de96d0ff97d83f7175a98ba77d3a04cae533d889",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "changed_files": 4,
+    "additions": 316,
+    "deletions": 88,
+    "ci": {
+      "status": "NOT_YET_VISIBLE_AT_CUTOFF"
+    },
+    "gate": {
+      "status": "NOT_YET_VISIBLE_AT_CUTOFF"
+    }
+  },
+  "main_signal": {
+    "path": "web/latest_signal.json",
+    "timestamp": "2026-10-29T09:24:32.128435+00:00",
+    "score": 44,
+    "confidence": 0,
+    "news_score": 88,
+    "news_entries": 11,
+    "provider_failures": [
+      "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+      "Groq HTTP 429"
+    ],
+    "validity": "INVALID_NOT_A_FORECAST"
+  },
+  "main_summary_workflow": {
+    "path": ".github/workflows/signal-summary.yml",
+    "blob_sha": "1718b45beaf1f8aa002ce332b2b828d27049508b",
+    "risk": "Scheduled/workflow_run job commits and pushes web/latest_signal_summary.json and generated audio."
+  },
+  "relationship_graph_addendum": {
+    "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1014-pr1303-summary-safety.json",
+    "blob_sha": "c71598690956d5b87949a40cc320fba3ecf369d8",
+    "commit_sha": "1431ff55e0d8fa2c083eae7a70f8b5d045f96f6a",
+    "edges": 4,
+    "hypotheses": 1
+  },
+  "sources": [
+    {
+      "id": "SRC-RUN56-20261029T1014Z-MAIN-HEAD",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/649394b89b957b4719d4b689de47bc004bcd45f0"
+    },
+    {
+      "id": "SRC-RUN56-20261029T1014Z-MAIN-SIGNAL",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json"
+    },
+    {
+      "id": "SRC-RUN56-20261029T1014Z-MAIN-SUMMARY",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json"
+    },
+    {
+      "id": "SRC-RUN56-20261029T1014Z-MAIN-SUMMARY-WORKFLOW",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/signal-summary.yml"
+    },
+    {
+      "id": "SRC-RUN56-20261029T1014Z-PR1303",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1303"
+    },
+    {
+      "id": "SRC-RUN56-20261029T1014Z-CI",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions"
+    },
+    {
+      "id": "SRC-RUN56-20261029T1014Z-GATE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions"
+    }
+  ],
+  "verification": {
+    "graph_readback": "PASS",
+    "snapshot_readback": "PENDING_AFTER_CREATE",
+    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "pr1303_ci": "NOT_YET_VISIBLE_AT_CUTOFF",
+    "pr1303_gate": "NOT_YET_VISIBLE_AT_CUTOFF",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "workflow_dispatched": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  }
+}

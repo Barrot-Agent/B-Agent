@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T190523Z-PR1342-CURRENT-BASE-MERGEABILITY-RECHECKED",
+  "captured_at_utc": "2026-10-29T19:05:23Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains the execution and verification foundation.",
+  "observed_main_sha": "5dc330a0fb1d7159a27ceafab4bfe35fee071708",
+  "research_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+  "source_ids": [
+    "SRC-GH-PR1342-STATE-RECHECK-20261029T190523Z",
+    "SRC-GH-PR1342-BODY-REVIEW-20261029T190523Z",
+    "SRC-GH-PR1342-CI-20261029T190223Z",
+    "SRC-GH-PR1342-GATE-20261029T190223Z",
+    "SRC-GH-XRP-SIGNAL-20261029T190223Z",
+    "SRC-GH-XRP-SUMMARY-20261029T190223Z",
+    "SRC-GH-PAPER-STATE-20261029T190223Z",
+    "SRC-GH-MERGE-QUEUE-20261029T190223Z"
+  ],
+  "findings": [
+    {
+      "id": "FINDING-PR1342-MERGEABILITY-20261029T190523Z",
+      "status": "MERGEABLE_TRUE; DRAFT_OPEN_UNMERGED",
+      "detail": "PR #1342 metadata recheck reports mergeable=true, draft=true, merged=false. Head is 0b8d3f7adc44b17a22678e70234ee6dad8212f08; base is 5dc330a0fb1d7159a27ceafab4bfe35fee071708; five commits ahead and one behind. The base-side commit changes only sentiment_shift.json, outside the PR's three changed paths. No approval or merge was performed."
+    },
+    {
+      "id": "FINDING-PR1342-CHECKS-20261029T190523Z",
+      "status": "EXACT_HEAD_CI_AND_GATE_PASS",
+      "detail": "Core CI run 40936500680 completed successfully with 298 tests and 8 subtests passed in 6.60 seconds. Fail-closed gate run 40936500732 passed. These checks verify the PR head only."
+    },
+    {
+      "id": "FINDING-MAIN-XRP-ARTIFACTS-20261029T190523Z",
+      "status": "MAIN_STILL_INVALID_STALE",
+      "detail": "Main still serves score 44, confidence 0.0, provider failures and an older mixed/modestly positive public summary. PR #1342 remains unmerged; no fix is live on main."
+    },
+    {
+      "id": "FINDING-PAPER-STATE-20261029T190523Z",
+      "status": "IDENTITY_UNRESOLVED_NO_MUTATION",
+      "detail": "Paper trader remains manual-dispatch-only. Persisted nonzero position has position_product null. No workflow dispatch or state repair occurred."
+    }
+  ],
+  "interpretation": "The consolidated XRP emitter and summary safety proposal now has passing exact-head CI and fail-closed gate, and GitHub's latest PR metadata recheck reports mergeable=true. It remains draft and unmerged, so main's invalid signal and stale public summary are unchanged. Approval is still required. No calibrated price forecast is available.",
+  "unknowns": [
+    "PR #1342 remains draft/unmerged; passing CI, gate and mergeable=true do not authorize a merge.",
+    "Main's stale XRP signal/summary remain live until an approved merge and a separately controlled publication step.",
+    "The simulated paper position's product identity remains null and unresolved.",
+    "The main merge queue remains mutation-capable until its separate safety PR is approved.",
+    "The derivatives and ETF-flow observations from the prior snapshot remain unnormalized and are not admitted as features."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "workflow_dispatch_performed": false,
+  "real_money_trade": false
+}

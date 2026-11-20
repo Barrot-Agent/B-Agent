@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T052616Z-BINANCE-UPDATE4-PHASE1-AND-PR1442-CI",
+  "captured_at_utc": "2026-11-01T05:26:16Z",
+  "source_ids": [
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T052616Z-GITHUB-BAGENT-MAIN-PR1442-VERIFICATION"
+  ],
+  "supersedes_revision_id": "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
+  "claims": [
+    "Binance Recovery Update #4, published 2026-11-01 04:08 UTC, raises the company-reported aggregate replenishment figure from 90% to approximately 95%.",
+    "The same announcement states that XRP and RLUSD are among ten named assets reported 100% backed.",
+    "The remaining 5% is described as less-liquid assets outside the named top ten.",
+    "Phase one of withdrawals is scheduled for 06:00–09:00 UTC on November 1 and explicitly includes the XRP network.",
+    "At the 05:26:16 UTC capture, the phase-one window had not started; no XRP withdrawal reopening or completed customer withdrawal was verified.",
+    "Reuters' 04:57 UTC report corroborates that Binance made the 95% and phase-one announcements, but does not independently verify reserve assets.",
+    "PR #1442 exact-head CI passed 349 tests and 8 subtests; its fail-closed gate passed with merging disabled. Main remains unchanged and privileged workflows remain active."
+  ],
+  "observations": {
+    "binance_update4": {
+      "published_at_utc": "2026-11-01T04:08:00Z",
+      "aggregate_replenishment_pct_company_claim": 95,
+      "previous_update_pct": 90,
+      "remaining_pct": 5,
+      "remaining_scope": "LESS_LIQUID_ASSETS_OUTSIDE_TOP_TEN",
+      "top_ten_assets": [
+        "BTC",
+        "ETH",
+        "USDT",
+        "BNB",
+        "SOL",
+        "USDC",
+        "XRP",
+        "USD1",
+        "RLUSD",
+        "ZEC"
+      ],
+      "top_ten_coverage_pct_company_claim": 100,
+      "phase_one_window_start_utc": "2026-11-01T06:00:00Z",
+      "phase_one_window_end_utc": "2026-11-01T09:00:00Z",
+      "xrp_network_included": true,
+      "availability": "PROGRESSIVE; CHECK_NETWORK_STATUS",
+      "deposits_open_company_statement": true,
+      "xrp_specific_purchase_quantity": "UNDISCLOSED"
+    },
+    "withdrawal_status_at_capture": "ANNOUNCED_NOT_YET_STARTED; LIVE_XRP_NETWORK_AVAILABILITY_UNCONFIRMED",
+    "network_status_page": {
+      "url": "https://www.binance.com/en/network",
+      "last_updated_displayed": "2026-11-01 05:11:02 AM",
+      "rendered_table": "NO_RECORDS",
+      "interpretation": "SERVER_RENDERED_PAGE_DID_NOT_EXPOSE_ASSET_ROWS; NOT EVIDENCE THAT XRP IS OPEN OR SUSPENDED"
+    },
+    "reuters": {
+      "published_at_utc": "2026-11-01T04:57:00Z",
+      "corroboration_class": "REPORTS_SAME_BINANCE_ANNOUNCEMENT; NOT_INDEPENDENT_RESERVE_VERIFICATION"
+    },
+    "github": {
+      "main_sha": "cf3ff49e4128c732fe84ca36efb7f0424774e904",
+      "pr1442_head_sha": "bc84abfeefee3ca60f43fa729d5631ad84719c55",
+      "pr1442_base_sha": "cf3ff49e4128c732fe84ca36efb7f0424774e904",
+      "pr1442_state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41275266085,
+      "ci_tests_passed": 349,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41275266092,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "open_pr_count": 200,
+      "main_based_prs": 195,
+      "stale_main_based_prs": 194,
+      "current_main_based_prs": 1,
+      "non_main_based_prs": 5,
+      "draft_prs": 191,
+      "ready_prs": 9,
+      "cross_analysis_run_id": 41274697648,
+      "cross_analysis_xrp_recent_entries": 0,
+      "cross_analysis_xrp_prior_entries": 0,
+      "cross_analysis_btc_recent_entries": 0,
+      "cross_analysis_btc_prior_entries": 0,
+      "scheduler_tick_run_id": 41276373377,
+      "scheduler_tick_entries_fired": 0,
+      "scheduler_tick_queue_size": 1,
+      "scheduler_tick_push_result": "EVERYTHING_UP_TO_DATE",
+      "full_repository_ci": "NOT_RUN",
+      "dependency_scan": "NOT_RUN",
+      "security_alert_access": "UNAVAILABLE"
+    }
+  },
+  "evidence_classification": {
+    "confirmed_primary": "The official Binance announcement states the 95% aggregate figure, top-ten coverage claim and phase-one asset/network list.",
+    "corroborated_secondary": "Reuters reports the same announcement; this is not independent verification of Binance's reserve assets.",
+    "inference": "The announced phase-one XRP network reopening creates a measurable event window for subsequent exchange outflows, if service availability is confirmed.",
+    "speculation_not_admitted": "Any claim that Binance bought a specific quantity of XRP, that customers will sell withdrawn XRP, or that the reopening will cause XRP price appreciation/depreciation.",
+    "unknowns": [
+      "Actual XRP-specific replenishment purchases and funding sources.",
+      "Actual XRP withdrawal availability and first successful withdrawal timestamp.",
+      "Customer outflow totals and destination classifications.",
+      "Full cryptographic reserve proof and liability reconciliation.",
+      "Current balance and later activity of the 233.46M-XRP attacker receiver.",
+      "November 1 escrow Destination fields and subsequent disposition."
+    ]
+  },
+  "feature_admission": "NO_DIRECTIONAL_FEATURE; ANNOUNCED_EVENT_MARKER_ONLY_PENDING_ACTUAL_WITHDRAWAL_OBSERVATIONS",
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "pending_archive_append": true
+}

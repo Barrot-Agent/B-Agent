@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T001232Z-MARKET-UNIVERSE-AND-RESERVE-CROSSWALK-GATES",
+  "created_at_utc": "2026-10-31T00:12:32Z",
+  "status": "ADOPTED_FOR_RESEARCH_AND_FEATURE_GATING",
+  "context": "The Binance incident now has an official company funding update, a secondary Ethereum-only PoR crosswalk, provider-divergent XRP derivatives aggregates, point-in-time spot depth, non-final ETF holdings data and a direct Ripple-Coinbase RLUSD distribution announcement. These sources measure different assets, universes and states.",
+  "decisions": [
+    "Keep Binance corporate funding commitments, token-by-token reserves, frozen assets, recovered assets and customer liabilities as separate fields; do not infer an XRP reserve ratio from aggregate USD statements.",
+    "Treat CoinDesk's Binance 14/16 proof-of-reserves analysis as Ethereum-only. The five XRPL source-wallet membership question can be resolved only by an official XRP address export plus raw validated XRPL balances and corresponding customer liabilities.",
+    "Record Binance's market/OTC acquisition statement as a potential capital-flow channel, not executed XRP demand. Require token-level quantity, trade/OTC execution evidence and timing before admitting any XRP replenishment feature.",
+    "Store OI, funding, liquidations, long/short ratios and spot depth by provider, venue, contract, pair, timestamp and coverage universe. Do not average CoinGecko's broad 134-market aggregate with TradRadar's seven-exchange subset.",
+    "Use issuer-reported ETF holdings and settled daily rows. Keep provisional rows out of model training; separate spot funds, derivative products, index-fund sleeves, reconstructed rows and withheld fund flows.",
+    "Treat Ripple-Coinbase RLUSD trading/management and network support as a direct stablecoin distribution relationship. Coinbase Global Exchange RLUSD collateral remains future availability until verified live. No XRP collateral or price-demand feature is inferred.",
+    "Keep dynamic spot prices and order-book depth context-only until exact point-in-time timestamps, source methodology, quote currency, venue and data freshness are captured.",
+    "No XRP market feature is admitted from this snapshot. Forecast remains NOT_ISSUED until immutable fixed-horizon outcomes, leakage-safe point-in-time features, baseline comparison, walk-forward evaluation and probability calibration are executed and verified."
+  ],
+  "invariants": [
+    "Binance 14 Ethereum PoR membership does not establish membership of any XRPL source wallet.",
+    "Frozen assets are not recovered assets; company funds set aside are not token-level proof-of-reserves.",
+    "RLUSD, USDC, USDT, XRP and ETH are distinct assets; stablecoin activity does not automatically create XRP demand.",
+    "Spot depth, derivatives OI and funding are provider/venue scoped and cannot be merged without identical universe and timestamp.",
+    "ETF holdings-derived flows are not equivalent to independently verified net external capital.",
+    "DESIGNED, EXECUTED and VERIFIED remain separate states.",
+    "No forecast or real-money trade is authorized by this research snapshot."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

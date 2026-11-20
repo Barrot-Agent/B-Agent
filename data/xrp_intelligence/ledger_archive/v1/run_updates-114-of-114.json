@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 113,
+  "chunk_count": 114,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T024000Z-LEGACY-SIGNAL-EVALUATOR-INTEGRITY-AUDIT",
+      "created_at_utc": "2026-10-31T02:40:00Z",
+      "data_cutoff_utc": "2026-10-31T02:40:00Z",
+      "summary": "Read and parsed the complete main-branch XRP signal history (1,716 JSONL records), summary, evaluator code, daily workflow and latest signal. Confirmed the 45.5% legacy hit counter is not comparable: 1,697 checked outcomes use variable horizons and a neutral <2% rule; no checked_at or exact price timestamp is stored. 19 records remain unchecked because price_at_emission=0. Among checked records, 1,119 fallback/no-sentiment signals have confidence 0 and a 49.69% legacy hit rate; 578 Groq signals average 0.947 confidence but have a 37.37% hit rate. The latest signal is 37.3 hours old with confidence 0 and explicit missing-token/Groq-429 errors.",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SUMMARY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z",
+        "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-COMMIT-03A867-20261031T024000Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T024000Z-legacy-signal-evaluator-integrity-audit.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T024000Z-signal-generation-evaluation-provider-failure-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T024000Z-fixed-horizon-outcomes-and-legacy-accuracy-quarantine.json",
+      "actions": [
+        "Parsed all 1,716 records from web/signal_history.jsonl through the GitHub Contents API; verified 1,697 checked and 19 unchecked.",
+        "Recomputed 772/1697=45.492%, matching the summary, but classified the metric NOT_COMPARABLE because horizon and target definitions are invalid for skill claims.",
+        "Separated checked outcomes by signal source, confidence and score class; found 1,119 fallback/no-sentiment records and 578 Groq-labelled records.",
+        "Verified all 19 unchecked entries have price_at_emission=0; evaluator skips them and no outcome is recorded.",
+        "Inspected evaluator code: one current CoinGecko price per daily run is applied to all eligible records older than 24h; no checked_at timestamp or exact horizon is stored.",
+        "Inspected the daily 23:55 UTC workflow; it has contents:write and pushes the mutable history and summary to main.",
+        "Inspected latest signal: 2026-10-29T13:23:33Z, score 44, confidence 0, provider errors; no newer committed XRP signal exists.",
+        "Did not change main, modify signal history, generate a forecast or alter paper positions."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "No immutable fixed-horizon prediction/outcome schema or evaluator has been executed.",
+        "No exact evaluation timestamps or price-source timestamps exist in the legacy history.",
+        "No walk-forward benchmark, calibration, baseline comparison, overlap purge or drift evaluation exists.",
+        "Current signal provider failures and stale signal prevent a valid live forecast.",
+        "PR #1386's read-only accuracy remediation remains draft/unmerged."
+      ],
+      "next_actions": [
+        "Keep the 45.5% legacy metric marked NOT_COMPARABLE and prevent it from being presented as model accuracy.",
+        "Design a new immutable prediction contract with fixed 1h/4h/24h/72h/7d horizons, exact UTC cutoffs, price-feed provenance and explicit target definitions.",
+        "Separate prediction records from outcome records; never rewrite emitted forecasts or backfill with future data.",
+        "Add provider-health gates: missing credentials, HTTP 429, stale input or confidence unavailable must yield NOT_EVALUATED, not a neutral score.",
+        "Build chronological walk-forward evaluation with purge/embargo for overlapping horizons and compare to naive directional, drift and momentum baselines.",
+        "Evaluate probabilities with Brier score, log loss, calibration slope/intercept and reliability bins; retain uncertainty and regime drift.",
+        "Keep paper/shadow evaluation separate from any live trading and do not issue forecasts until the fixed-horizon evaluator is implemented and tested."
+      ],
+      "source_reference_count": 6,
+      "missing_source_references": 0
+    }
+  ]
+}

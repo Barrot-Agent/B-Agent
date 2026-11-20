@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 67,
+  "chunk_count": 68,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T16:32:42Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T16:32:42Z",
+      "update_type": "YOUTUBE_CREATOR_IDENTITY_AND_PARTIAL_PUBLIC_VIDEO_INVENTORY",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T163242Z-youtube-creator-identity-and-candidate-inventory.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T163242Z-youtube-creator-identity-and-candidate-inventory.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T163242Z-creator-content-evidence-classification.json",
+      "source_ids": [
+        "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-OFFEXCHANGE-20260201",
+        "SRC-YOUTUBE-KAMILAH-STEVENSON-GLOBAL-FINANCE-XRP-20260306",
+        "SRC-YOUTUBE-KAMILAH-STEVENSON-INFLATION-XRP-BTC-20251209",
+        "SRC-YOUTUBE-KAMILAH-STEVENSON-CRYPTO-SHIFT-20251129"
+      ],
+      "findings": "A current public search did not resolve an exact Camilla Stephenson YouTube channel. Kamilah Stevenson is a similar-name candidate with four verified public video URLs covering XRP off-exchange custody, yen-carry-trade/global-liquidity narrative, inflation/XRP/Bitcoin positioning and broad macro-liquidity/crypto commentary. The candidate identity remains unverified; this is a partial inventory, not all videos by the requested creator. Content is classified as creator opinion, not primary market evidence.",
+      "new_sources": 4,
+      "new_relationship_edges": 2,
+      "new_hypotheses": 1,
+      "new_market_observations": 0,
+      "prior_research_head": "330613b2256a5272085c5fec4df4608fd678b721",
+      "new_append_validation": "PENDING_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "no_main_write": true,
+      "no_merge": true,
+      "no_force_push": true,
+      "no_dispatch": true,
+      "no_paper_state_mutation": true,
+      "no_real_money_trade": true
+    }
+  ]
+}

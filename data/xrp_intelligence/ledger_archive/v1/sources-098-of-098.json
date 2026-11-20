@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 97,
+  "chunk_count": 98,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "SRC-C2FO-OFFICIAL-INSTANTPAY-20261031T033000Z",
+      "source_id": "SRC-C2FO-OFFICIAL-INSTANTPAY-20261031T033000Z",
+      "publisher": "C2FO",
+      "title": "C2FO and Ripple Partner to Modernize Trade Finance Using the XRP Ledger",
+      "url": "https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "published_at": "2026-10-27",
+      "retrieved_at_utc": "2026-10-31T03:30:00Z",
+      "evidence_class": "PRIMARY_CORPORATE_ANNOUNCEMENT",
+      "independence_group": "RIPPLE_SWELL_2026_ANNOUNCEMENT_CLUSTER",
+      "summary": "C2FO's own Oct. 27 release reports that existing C2FO Early Pay programs have helped businesses access more than $525B in working capital. It separately describes C2FO Instant Pay as an initiative using XRPL and RLUSD for settlement, funded by participating capital providers, with interested businesses directed to a waitlist. Ripple's parallel Oct. 27 release reports more than $520B for the existing Early Pay programs.",
+      "limitations": "The $525B figure is historical company-reported Early Pay activity, not Instant Pay production volume, XRPL settlement value, XRP demand or new capital deployed by this initiative. The parallel Ripple release says $520B; preserve the publisher-specific discrepancy. No funded invoice count, settled value, named capital providers or production transaction IDs are disclosed."
+    }
+  ]
+}

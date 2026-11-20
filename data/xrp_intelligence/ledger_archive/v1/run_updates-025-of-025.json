@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 24,
+  "chunk_count": 25,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:20:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T08:20:00Z",
+      "update_type": "EXACT_HEAD_LEDGER_VALIDATION_PASS_SBI_MULTIRAIL_UPDATE_AND_FRESH_MARKET_PANEL",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_append": "8798099fd344e6d9f98c37abde9deb6629deb130",
+      "observed_main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-HACK-REVISION-9-CHAINS-20261030T0818Z",
+        "SRC-REUTERS-TRM-BINANCE-10-CHAIN-ATTRIBUTION-20261030T0800Z",
+        "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0750Z",
+        "SRC-LIQWALL-XRP-PERPETUALS-20261030T0132Z",
+        "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-20261029T1600Z",
+        "SRC-CRYPTOETF-XRP-ETF-FLOWS-PARTIAL-20261029T1600Z"
+      ],
+      "validator_evidence": {
+        "push_run_id": 41025502034,
+        "push_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41025502034",
+        "pull_request_run_id": 41025506041,
+        "pull_request_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41025506041",
+        "validator_head_sha": "8798099fd344e6d9f98c37abde9deb6629deb130",
+        "tests_passed": 18,
+        "tests_failed": 0,
+        "duration_seconds": 0.11,
+        "fail_closed_gate_run_id": 41025506060,
+        "fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41025506060",
+        "fail_closed_gate_status": "PASS_MERGE_DISABLED",
+        "previous_failure_root_causes": [
+          "Wrong record_type in three newly appended archive shards",
+          "Missing snapshot_path field in immutable snapshot file"
+        ],
+        "corrections": "Correctly typed replacement archive shards and a snapshot v2 with matching snapshot_path were appended; malformed originals and prior snapshot preserved unreferenced."
+      },
+      "binance_incident_update": {
+        "bitquery_updated_at_utc": "2026-10-30T08:18:00Z",
+        "bitquery_chains": 9,
+        "bitquery_hot_wallets": 17,
+        "bitquery_frozen_or_rescued_usd": 2700000000,
+        "bitquery_attacker_holdings_usd_at_0643_utc": 3200000000,
+        "bitquery_xrp_receiver_balance_approx": 233500000,
+        "bitquery_xrp_receiver_no_outgoing_at_0643": true,
+        "trm_reported_chain_count": 10,
+        "chain_count_discrepancy": "BITQUERY 9 VS TRM/REUTERS 10; PROVIDER SCOPE/METHODOLOGY NOT RESOLVED",
+        "xrp_source_wallet_official_binance_por_crosswalk": "UNKNOWN"
+      },
+      "market_update": {
+        "tradradar_cutoff_utc": "2026-10-30T07:50:00Z",
+        "xrp_price_usd": 1.2497,
+        "open_interest_usd": 1840000000,
+        "oi_change_24h_percent": -6,
+        "funding_percent_per_8h": -0.0049,
+        "liquidations_minimum_usd": 32450000,
+        "long_liquidations_usd": 30320000,
+        "short_liquidations_usd": 2130000,
+        "long_account_share_percent": 78.8,
+        "liqwall_0132_utc": {
+          "open_interest_usd": 1300000000,
+          "oi_change_24h_percent": -0.9,
+          "liquidations_usd": 39300000,
+          "long_liquidations_usd": 38100000,
+          "short_liquidations_usd": 1100000,
+          "average_funding_percent_per_8h": -0.0008
+        },
+        "provider_scope_difference": "DO NOT AVERAGE; DIFFERENT VENUES, CUTOFFS AND PUBLICATION COVERAGE"
+      },
+      "etf_update": {
+        "alpha_finance_2026_10_29_complete_five_funds_usd": 8400000,
+        "cryptoetf_today_2026_10_29_partial_two_of_five_usd": 7100000,
+        "alpha_30_session_flow_usd": 98900000,
+        "alpha_cumulative_flow_usd": 1730000000,
+        "cryptoetf_cumulative_flow_usd": 1810000000,
+        "reconciliation": "PARTIAL COVERAGE AND FUND/METHODOLOGY SCOPE DIFFER; USE ALPHA AS FIVE-FUND COMPLETED TRACKER SNAPSHOT, STILL VERIFY AGAINST ISSUER FILES"
+      },
+      "sbi_research": "Latest SBI snapshot includes completed Bitbank acquisition, XRP/JPY market snapshot, Visa card and START bond XRP reward channels, JPYSC reserve/JGB allocation, JPYSC/OUSD PoC, BlackRock tokenized-MMF MOU, trust merger plan, RLUSD/USDC distribution and SBIC/SBICAH disambiguation.",
+      "repository": {
+        "main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+        "pr1353_head_verified": "8798099fd344e6d9f98c37abde9deb6629deb130",
+        "pr1353_validator_tests_passed": 18,
+        "pr1353_gate_run_id": 41025506060,
+        "pr1353_state": "OPEN_DRAFT_UNMERGED",
+        "pr1366_head": "4a826f1130418bcd1eb475b8af48e50c2a267a26",
+        "pr1366_core_ci_tests_passed": 347,
+        "pr1366_core_ci_subtests_passed": 8,
+        "pr1366_gate_run_id": 41024100209,
+        "pr1366_state": "OPEN_DRAFT_UNMERGED",
+        "approval_workflow_push_run_id": 41025500784,
+        "approval_workflow_push_run_state": "FAILURE_ZERO_JOBS",
+        "approval_workflow_main_and_branch_trigger": "workflow_dispatch_only",
+        "approval_workflow_root_cause": "UNRESOLVED"
+      },
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    }
+  ]
+}

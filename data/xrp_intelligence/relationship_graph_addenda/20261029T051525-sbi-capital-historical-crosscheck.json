@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T051525-SBI-CAPITAL-HISTORICAL-CROSSCHECK",
+  "captured_at_utc": "2026-10-29T05:15:25.000Z",
+  "policy": "Append-only identity cross-check. A historical acronym expansion is not proof of current legal status or an XRP relationship.",
+  "nodes": [
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings, Inc.",
+      "kind": "JAPANESE_FINANCIAL_GROUP"
+    },
+    {
+      "id": "SBI_CAPITAL",
+      "label": "SBI Capital Co., Ltd. (historical SBIC usage)",
+      "kind": "HISTORICAL_INVESTMENT_ENTITY_CURRENT_STATUS_UNKNOWN"
+    },
+    {
+      "id": "SBIC_EAST",
+      "label": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "kind": "SME_INVESTMENT_AND_CONSULTATION_COMPANY"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN40-SBI-CAPITAL-2005-HISTORICAL-SBIC",
+      "source": "SBI_HOLDINGS",
+      "target": "SBI_CAPITAL",
+      "relationship": "HISTORICAL_SUBSIDIARY_AND_MEZZANINE_BUYOUT_INVESTMENT",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE_HISTORICAL",
+      "status": "OFFICIAL_SBI_HOLDINGS_RELEASES_2005-07-06_AND_2007-05-21",
+      "claim": "SBI Holdings' 2005 release explicitly calls SBI Capital Co., Ltd. 'SBIC' and describes investment through SBI Mezzanine Fund; its 2007 release describes the SBI Capital share transfer to a Goldman Sachs affiliate and a 60/40 ownership structure after the transaction. This establishes a historical Japanese entity using the SBIC acronym. It does not establish current legal status, a direct XRP relationship, or that this is the entity meant by the original reference.",
+      "source_ids": [
+        "SRC-RUN40-20261029T051525-SBI-CAPITAL-2005-SBIC",
+        "SRC-RUN39-20261029T050603-SBI-CAPITAL-SBIC"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN40-SBI-CAPITAL-ACRONYM-CANDIDATE",
+      "class": "ENTITY_RESOLUTION",
+      "hypothesis": "In SBI Holdings documents from 2005-2007, SBIC refers to SBI Capital Co., Ltd.; this is a verified historical Japanese candidate distinct from SBIC East Japan, but the intended entity in the original user reference remains unresolved.",
+      "confidence": "HIGH_FOR_HISTORICAL_EXPANSION; LOW_FOR_ORIGINAL_REFERENT",
+      "supporting_source_ids": [
+        "SRC-RUN40-20261029T051525-SBI-CAPITAL-2005-SBIC",
+        "SRC-RUN39-20261029T050603-SBI-CAPITAL-SBIC"
+      ],
+      "counter_hypotheses": [
+        "The original reference means SBIC East Japan, another SBI Group entity, or a different acronym expansion."
+      ],
+      "disconfirming_evidence_needed": [
+        "Original video/source passage containing SBIC and enough surrounding context to identify the legal entity.",
+        "Current registry/filing evidence establishing the legal successor or current status of SBI Capital Co., Ltd."
+      ],
+      "xrp_relationship": "NONE_ESTABLISHED_FOR_SBI_CAPITAL_ITSELF"
+    }
+  ],
+  "notes": [
+    "The historical SBI Capital candidate must not inherit SBI Holdings' separate Ripple/XRP relationships without direct entity-level evidence.",
+    "SBIC East Japan's ChatGPT training-course mention is a separate entity and does not establish an OpenAI partnership.",
+    "No direct SBI Capital-to-XRP or SBI Capital-to-Coinbase/Circle edge is established."
+  ]
+}

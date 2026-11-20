@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T163200Z-RESERVE-AND-MARKET-ADMISSION",
+  "captured_at_utc": "2026-10-31T16:32:00Z",
+  "status": "ACCEPTED_FOR_EVENT_TIMELINE; PRICE_FEATURES_NOT_ADMITTED",
+  "decisions": [
+    "Record Binance's 90% aggregate replenishment as a company claim reported by Reuters, not as an independently audited reserve result.",
+    "Record XRP's inclusion in the ten-token minimum 1:1 coverage set, while keeping the full proof and asset-level liability reconciliation pending.",
+    "Do not infer XRP-specific purchases, XRP-specific replenishment quantities or spot demand from the aggregate 90% figure.",
+    "Store Liqwall and Binance price observations as separate provider-specific snapshots with their own data timestamps.",
+    "Do not compare rolling 24-hour liquidations with partial UTC calendar-day totals.",
+    "Do not use Binance account long-share as notional exposure or the page's broad Fear & Greed value as XRP-specific sentiment.",
+    "Keep all new observations out of directional prediction features until source, timestamp and contract-universe reconciliation is complete."
+  ],
+  "required_verification": [
+    "Full Binance post-incident PoR with asset-level XRP reserve and liability values.",
+    "Reserve-address crosswalk for the five Binance incident XRPL source wallets.",
+    "Cross-provider contract-level XRP open-interest and funding reconciliation.",
+    "Walk-forward, leakage-safe benchmark and probability calibration before issuing forecasts."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

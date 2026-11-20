@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0",
+  "record_type": "entity_research_snapshot",
+  "snapshot_id": "ENTITY-20261031T001930Z-JAPAN-SBIC-AND-CAMILLA-IDENTITY-AUDIT",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T001930Z-japan-sbic-and-camilla-identity-audit.json",
+  "created_at_utc": "2026-10-31T00:19:30Z",
+  "captured_at_utc": "2026-10-31T00:19:30Z",
+  "data_cutoff_utc": "2026-10-31T00:19:30Z",
+  "source_ids": [
+    "SRC-SBIC-TOKYO-EAST-PROFILE-20261031T001930Z",
+    "SRC-SBIC-NAGOYA-CENTRAL-PROFILE-20261031T001930Z",
+    "SRC-SBIC-OSAKA-WEST-PROFILE-20261031T001930Z",
+    "SRC-SBIC-LAW-1963-ARTICLE2-20261031T001930Z",
+    "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20250226",
+    "SRC-FILMEDINBURGH-CAMILLA-STEPHENSON-BURKE-HARE"
+  ],
+  "source_reference_count": 6,
+  "missing_source_references": 0,
+  "findings": [
+    {
+      "finding_id": "E-20261031T001930Z-01",
+      "classification": "JAPANESE_STATUTORY_ENTITY_IDENTITY_RESOLVED",
+      "statement": "The Small and Medium Business Investment & Consultation Companies Act (1963, Article 2) defines exactly three regional companies: Tokyo, Nagoya and Osaka. Official profiles identify them as SBIC East Japan, SBIC Central Japan and SBIC West Japan respectively. They are distinct legal entities and sister companies; 'Japan's SBIC' is a network of three regional institutions, not one company.",
+      "source_ids": [
+        "SRC-SBIC-TOKYO-EAST-PROFILE-20261031T001930Z",
+        "SRC-SBIC-NAGOYA-CENTRAL-PROFILE-20261031T001930Z",
+        "SRC-SBIC-OSAKA-WEST-PROFILE-20261031T001930Z",
+        "SRC-SBIC-LAW-1963-ARTICLE2-20261031T001930Z"
+      ],
+      "disconfirming_evidence": "No evidence reviewed connects these statutory companies to SBI Holdings, Ripple, Coinbase or XRP."
+    },
+    {
+      "finding_id": "E-20261031T001930Z-02",
+      "classification": "CHATGPT_SBIC_EVENT_IDENTIFICATION",
+      "statement": "Tokyo SBIC's official 26 February 2025 seminar program is titled 'The Present and Future of Generative AI (ChatGPT)'. It was co-hosted with the Tokyo Chamber of Commerce and Industry Taito branch, with a Microsoft Japan speaker and Japan Finance Corporation Tokyo/Ueno branches as supporters. This is an educational event, not an OpenAI partnership, investment or product integration.",
+      "source_ids": [
+        "SRC-SBIC-TOKYO-EAST-PROFILE-20261031T001930Z",
+        "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20250226"
+      ],
+      "disconfirming_evidence": "The original phrase context is not available; the separate Social Bias Inference Corpus meaning of SBIC remains a documented alternative in research literature."
+    },
+    {
+      "finding_id": "E-20261031T001930Z-03",
+      "classification": "CAMILLA_STEPHENSON_PUBLIC_IDENTITY_CANDIDATE",
+      "statement": "Film Edinburgh, a public film office, credits a Camilla Stephenson as location manager for Burke and Hare (2010). This establishes a public film-industry professional with the exact name, but not that she is the person intended in the user's YouTube request.",
+      "source_ids": [
+        "SRC-FILMEDINBURGH-CAMILLA-STEPHENSON-BURKE-HARE"
+      ],
+      "disconfirming_evidence": "No exact-name YouTube channel was verified; no video inventory can be attributed to this candidate."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "edge_id": "E-20261031T001930Z-01",
+      "from_entity": "Act on Small and Medium Business Investment & Consultation Companies (1963)",
+      "relation": "statutorily_defines_three_companies",
+      "to_entity": "Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies",
+      "status": "OFFICIAL_STATUTE",
+      "source_ids": [
+        "SRC-SBIC-LAW-1963-ARTICLE2-20261031T001930Z"
+      ],
+      "details": "Article 2 specifies the three companies and their respective head-office cities."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-02",
+      "from_entity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "relation": "official_English_brand",
+      "to_entity": "SBIC East Japan",
+      "status": "OFFICIAL_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-SBIC-TOKYO-EAST-PROFILE-20261031T001930Z"
+      ],
+      "details": "Distinct legal entity; established 15 November 1963."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-03",
+      "from_entity": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "relation": "official_English_brand",
+      "to_entity": "SBIC Central Japan",
+      "status": "OFFICIAL_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-SBIC-NAGOYA-CENTRAL-PROFILE-20261031T001930Z"
+      ],
+      "details": "Distinct legal entity; established 18 November 1963."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-04",
+      "from_entity": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "relation": "official_English_brand",
+      "to_entity": "SBIC West Japan",
+      "status": "OFFICIAL_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-SBIC-OSAKA-WEST-PROFILE-20261031T001930Z"
+      ],
+      "details": "Distinct legal entity; established 20 November 1963."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-05",
+      "from_entity": "Tokyo SBIC",
+      "relation": "co_hosted_educational_seminar_on",
+      "to_entity": "Generative AI (ChatGPT), 26 February 2025",
+      "status": "OFFICIAL_EVENT_PROGRAM",
+      "source_ids": [
+        "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20250226"
+      ],
+      "details": "Tokyo Chamber of Commerce and Industry Taito branch was co-host; Microsoft Japan speaker; Japan Finance Corporation branches supported."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-06",
+      "from_entity": "Tokyo SBIC ChatGPT seminar",
+      "relation": "evidence_of",
+      "to_entity": "Educational use/discussion of ChatGPT, not OpenAI partnership",
+      "status": "EVENT_PROGRAM_SCOPE",
+      "source_ids": [
+        "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20250226"
+      ],
+      "details": "No partnership, investment or product integration is described."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-07",
+      "from_entity": "Three Japanese SBIC regional companies",
+      "relation": "relationship_to_SBI_Holdings_or_XRP",
+      "to_entity": "NOT_ESTABLISHED_IN_REVIEWED_SOURCES",
+      "status": "UNKNOWN_NO_RELATIONSHIP_EVIDENCE",
+      "source_ids": [
+        "SRC-SBIC-TOKYO-EAST-PROFILE-20261031T001930Z",
+        "SRC-SBIC-NAGOYA-CENTRAL-PROFILE-20261031T001930Z",
+        "SRC-SBIC-OSAKA-WEST-PROFILE-20261031T001930Z",
+        "SRC-SBIC-LAW-1963-ARTICLE2-20261031T001930Z"
+      ],
+      "details": "Do not infer affiliation from the shared letters SBI/SBIC."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-08",
+      "from_entity": "Camilla Stephenson",
+      "relation": "credited_as",
+      "to_entity": "Location manager for Burke and Hare (2010)",
+      "status": "FILM_EDINBURGH_OFFICIAL_PAGE",
+      "source_ids": [
+        "SRC-FILMEDINBURGH-CAMILLA-STEPHENSON-BURKE-HARE"
+      ],
+      "details": "Public film-industry identity candidate; identity match to user's intended YouTube creator not established."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-09",
+      "from_entity": "Camilla Stephenson film-industry candidate",
+      "relation": "YouTube_channel_identity",
+      "to_entity": "UNRESOLVED",
+      "status": "NO_VERIFIED_CHANNEL_FOUND",
+      "source_ids": [
+        "SRC-FILMEDINBURGH-CAMILLA-STEPHENSON-BURKE-HARE"
+      ],
+      "details": "No exhaustive video inventory can be attributed without an exact channel identity."
+    }
+  ],
+  "limitations": [
+    {
+      "id": "LIM-20261031T001930Z-03",
+      "category": "sbic_chatgpt_event_not_partnership",
+      "statement": "The exact 'ChatGPT SBIC' phrase is consistent with a Tokyo SBIC educational seminar about ChatGPT on 26 February 2025, co-hosted with the Tokyo Chamber of Commerce and Industry Taito branch and featuring a Microsoft speaker. This does not prove the user's original phrase referred to that event, and it does not establish an OpenAI partnership or XRP relationship.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-SBIC-TOKYO-EAST-PROFILE-20261031T001930Z",
+        "SRC-SBIC-LAW-1963-ARTICLE2-20261031T001930Z",
+        "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20250226"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001930Z-04",
+      "category": "camilla_stephenson_youtube_identity_unresolved",
+      "statement": "Film Edinburgh verifies a Camilla Stephenson credited as a location manager for Burke and Hare (2010), but no exact-name YouTube channel has been verified. This candidate must not be equated with Kamilah Stevenson or another channel owner. An exhaustive list of videos posted by the intended Camilla Stephenson cannot be claimed until the channel identity is established.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-FILMEDINBURGH-CAMILLA-STEPHENSON-BURKE-HARE"
+      ]
+    }
+  ],
+  "next_actions": [
+    "Preserve the three-company legal identity and do not conflate SBIC with SBI Holdings.",
+    "Keep the 2025 ChatGPT seminar classified as educational activity, not partnership.",
+    "Continue exact-name YouTube channel discovery; do not merge Camilla Stephenson and Kamilah Stevenson identities without primary evidence."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

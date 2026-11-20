@@ -1,0 +1,226 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-30T022300Z-CFTC-BITNOMIAL-MARKET-AND-VALIDATOR-AUDIT",
+  "captured_at_utc": "2026-10-30T02:23:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T022300Z-cftc-bitnomial-market-and-validator-audit.json",
+  "observed_main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+  "focus": "Direct review of CFTC Letter 26-05 and March 20 FAQ; Bitnomial DCO XRP collateral terms; Ripple Prime/Hidden Road clearing-member relationship; Coinbase Financial Markets' role as no-action requestor; current XRP leverage/liquidation and ETF-flow methodology conflicts; PR #1353 duplicate source ID and append-only correction.",
+  "source_ids": [
+    "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+    "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT-SCOPE-20261030T020327Z",
+    "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-RULES-20261002",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+    "SRC-BITNOMIAL-RLUSD-XRP-MARGIN-20251103",
+    "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20260717",
+    "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024",
+    "SRC-RIPPLE-PRIME-US-SPOT-XRP-RLUSD-20251103",
+    "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z",
+    "SRC-REUTERS-COINBASE-Q3-20261029T211600Z",
+    "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0100Z",
+    "SRC-LIQWALL-XRP-DERIVATIVES-20261029T2222Z",
+    "SRC-BITCOINLEVERAGE-XRP-DERIVATIVES-20261030T0001Z",
+    "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261030T0217Z",
+    "SRC-XRP-INSIGHTS-ETF-DATA-20261030T0137Z",
+    "SRC-GITHUB-PR1353-DUPLICATE-SOURCE-ID-20261030T0223Z",
+    "SRC-GITHUB-PR1353-STRUCTURAL-READBACK-20261030T0223Z"
+  ],
+  "findings": [
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATOR_NO_ACTION_LETTER",
+      "claim": "CFTC Staff Letter 26-05 (Feb 6, 2026) reissued Letter 25-40 in response to Coinbase Financial Markets' request and extends the payment-stablecoin definition to include a national trust bank. It is a conditional staff no-action position for FCMs, not a Commission rule or blanket XRP approval.",
+      "source_ids": [
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATOR_FAQ_DIRECTLY_REVIEWED",
+      "claim": "The March 20 CFTC staff FAQ directly confirms that DCOs may accept crypto as initial margin if Regulation 39.13(g)(10) minimal credit, market and liquidity risk is met; DCOs set stressed haircuts and review them at least monthly. FCMs relying on Letter 26-05 must file prior notice; only payment stablecoins, BTC and ETH are accepted during the first three months from each FCM's commencement. After that period, other crypto may be accepted if the continuing conditions are met. Crypto is not eligible collateral for uncleared swaps under the cited rules.",
+      "source_ids": [
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_DCO_RULES_PAGE",
+      "claim": "Bitnomial Clearinghouse, a CFTC-registered DCO, lists XRP accepted collateral at a 40% haircut and $15M notional limit. Its XRP product maintenance-margin entries are 17%; this is a separate control from the collateral haircut. Actual XRP deposits and utilization are not disclosed.",
+      "source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_DCO_RISK_METHODOLOGY",
+      "claim": "Bitnomial says its margins target 99% of expected price movement over a historical period and portfolio margin uses CME SPAN over one day. This gives generic risk-method context but not the exact XRP haircut model or utilization.",
+      "source_ids": [
+        "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20260717"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_CORPORATE_RELATIONSHIP",
+      "claim": "Bitnomial lists Hidden Road Partners CIV US LLC among clearing members. Ripple acquired Hidden Road and rebranded it Ripple Prime. This establishes a group-level structural connection to Bitnomial's clearing network, not actual XRP collateral deposits or trading volume.",
+      "source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+      ]
+    },
+    {
+      "evidence_class": "INFERENCE_WITH_UNKNOWN_UTILIZATION",
+      "claim": "The combination of Bitnomial's DCO-level XRP acceptance, the conditional FCM framework, and the Hidden Road/Ripple Prime clearing-member connection creates a plausible institutional path for XRP collateral. FCM-specific Letter 26-05 reliance, legal entity usage, XRP customer balances and utilization remain unknown.",
+      "source_ids": [
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+      ]
+    },
+    {
+      "evidence_class": "UNKNOWN_COINBASE_XRP_COLLATERAL_USE",
+      "claim": "Coinbase Financial Markets requested the no-action framework, but no evidence in this run establishes a Coinbase–Bitnomial clearing-member relationship or Coinbase's actual acceptance of XRP collateral.",
+      "source_ids": [
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z"
+      ]
+    },
+    {
+      "evidence_class": "SECONDARY_MARKET_OBSERVATION_SCOPE_CONFLICT",
+      "claim": "TradRadar reports $1.82B seven-venue XRP OI, down 9.13%, +0.0032% OI-weighted funding and at least $33.02M liquidations (mostly longs) at 01:00 UTC Oct 30. Liqwall reports $1.35B, -0.0007% average funding and $23.2M liquidations at 22:22 UTC Oct 29. BitcoinLeverage covers only Binance and Bybit and reports partial liquidation coverage. These panels must not be averaged.",
+      "source_ids": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0100Z",
+        "SRC-LIQWALL-XRP-DERIVATIVES-20261029T2222Z",
+        "SRC-BITCOINLEVERAGE-XRP-DERIVATIVES-20261030T0001Z"
+      ]
+    },
+    {
+      "evidence_class": "SECONDARY_ETF_METHODOLOGY_CONFLICT",
+      "claim": "CryptoKeyhole reports Oct 28 +4.338M XRP across four daily-reporting funds; XRP Insights reports Oct 26–28 settled net flow -2.959M XRP across a different population and marks Oct 29 provisional. Different fund universes, issuer publication times, one-day date mapping and GXRP/BITW treatment prevent direct reconciliation.",
+      "source_ids": [
+        "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261030T0217Z",
+        "SRC-XRP-INSIGHTS-ETF-DATA-20261030T0137Z"
+      ]
+    },
+    {
+      "evidence_class": "REPOSITORY_VALIDATION_FINDING",
+      "claim": "The current PR #1353 source archive has one duplicate source ID. A replacement shard with a unique ID was created while retaining the prior shard; source pointer update and exact-head Python validation remain pending.",
+      "source_ids": [
+        "SRC-GITHUB-PR1353-DUPLICATE-SOURCE-ID-20261030T0223Z",
+        "SRC-GITHUB-PR1353-STRUCTURAL-READBACK-20261030T0223Z"
+      ]
+    }
+  ],
+  "market_panel": {
+    "as_of_utc": "2026-10-30T01:00:00Z",
+    "trad_radar": {
+      "price_usd": 1.2231,
+      "change_24h_pct": -7.35,
+      "open_interest_usd": 1820000000,
+      "open_interest_change_24h_pct": -9.13,
+      "funding_oi_weighted_pct_per_8h": 0.0032,
+      "liquidations_24h_usd_min": 33020000,
+      "long_liquidations_usd": 31880000,
+      "short_liquidations_usd": 1140000,
+      "long_account_share_pct": 79.4,
+      "venues_oi": 7,
+      "venues_liquidations": 5
+    },
+    "liqwall": {
+      "as_of_utc": "2026-10-29T22:22:00Z",
+      "price_usd": 1.25,
+      "open_interest_usd": 1350000000,
+      "open_interest_change_24h_pct": -0.1,
+      "funding_average_pct_per_8h": -0.0007,
+      "binance_funding_pct_per_8h": 0.0018,
+      "liquidations_24h_usd": 23200000,
+      "long_liquidations_usd": 22500000,
+      "short_liquidations_usd": 779000,
+      "long_account_share_pct": 75.4,
+      "top_trader_long_account_share_pct": 68.1
+    },
+    "bitcoinleverage_partial": {
+      "as_of_utc": "2026-10-30T00:01:00Z",
+      "coverage": "Binance and Bybit only; partial liquidation windows",
+      "binance_open_interest_usd": 363370000,
+      "bybit_open_interest_usd": 277100000,
+      "binance_long_account_share_pct": 75.44,
+      "bybit_long_account_share_pct": 81.37,
+      "binance_funding_pct_per_8h": 0.01,
+      "bybit_funding_pct_per_8h": -0.001123
+    },
+    "etf_flows": {
+      "cryptokeyhole": {
+        "oct28_net_flow_xrp": 4337696,
+        "oct28_net_flow_usd": 5751000,
+        "funds_included": 4,
+        "oct29_partial_funds_reported": 2,
+        "oct29_partial_flow_xrp": 2232630,
+        "updated_at_utc": "2026-10-30T02:17:00Z"
+      },
+      "xrp_insights": {
+        "settled_period": "2026-10-26/2026-10-28",
+        "settled_net_flow_xrp": -2958545,
+        "holdings_oct28_xrp": 1190251285,
+        "oct29_row_status": "PROVISIONAL",
+        "fund_population": "six US spot funds plus BITW; GXRP holdings included but flows excluded",
+        "generated_at_utc": "2026-10-30T01:37:03Z"
+      }
+    }
+  },
+  "repository_state": {
+    "main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+    "pr1353": {
+      "head_sha_before_update": "ff6f9e6dd403ad47c3a45e4356a73c661baf21bd",
+      "base": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "prior_validator_run_id": 40990012521,
+      "prior_validator_passed": 14,
+      "prior_validator_failed": 1,
+      "prior_gate_run_id": 40990370969,
+      "prior_gate": "PASS",
+      "current_source_duplicate_count": 1
+    },
+    "main_signal": {
+      "timestamp": "2026-10-29T13:23:33.142057+00:00",
+      "score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "provider_errors": [
+        "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+        "Groq HTTP 429"
+      ],
+      "status": "STALE_NOT_A_FORECAST"
+    },
+    "main_summary": "STALE_MIXED_POSITIVE_NARRATIVE_WITH_OLD_AUDIO_REFERENCE",
+    "cross_analysis_workflow": "SCHEDULED_AND_WORKFLOW_RUN_TRIGGERED; contents:write; commits and pushes generated knowledge files to main",
+    "merge_queue": "MANUAL_DISPATCH_ONLY; contents:write and pull-requests:write; mode defaults label; dry_run defaults false; max_prs defaults unlimited",
+    "active_main_prs": [
+      1355,
+      1356,
+      1357,
+      1358,
+      1359
+    ],
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "unresolved": [
+    "FCM-specific Letter 26-05 reliance notices and start dates for Bitnomial Clearing LLC, Coinbase Financial Markets and Ripple Prime are not verified.",
+    "Bitnomial XRP collateral utilization, customer deposits, collateral inventory, turnover, and $15M cap aggregation basis remain unknown.",
+    "Coinbase Financial Markets' role as the Letter 26-05 requestor does not establish Coinbase XRP collateral use or a Coinbase–Bitnomial clearing-member relationship.",
+    "Ripple Prime/Hidden Road's Bitnomial clearing-member relationship is structural evidence only; actual XRP collateral flows remain unknown.",
+    "CryptoKeyhole and XRP Insights ETF flow figures require matched per-fund issuer holdings and date alignment; no flow feature is admitted.",
+    "TradRadar, Liqwall and BitcoinLeverage derivatives observations have different venue scope/timestamps; no market feature is admitted.",
+    "SBIC/ChatGPT SBIC, ASK Coin original context, actual-capital reconstruction and Camilla/Kamilah/Camila identity remain unresolved or partial.",
+    "Nine-platform live collaboration remains unverified; only the connected GitHub access used in this run was tested.",
+    "PR #1353 current-head Python regression tests have not been executed after the duplicate-ID correction; exact-head CI status remains pending.",
+    "Full repository CI was not run; individual PR checks are separate."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_executed": false,
+  "workflow_dispatch_performed": false,
+  "real_money_trade": false
+}

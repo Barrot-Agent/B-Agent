@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 143,
+  "chunk_count": 144,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "LIM-XRP-ESCROW-RLUSD-CHAIN-SUPPLY-MAIN-WRITERS-20261031T190021Z",
+      "recorded_at_utc": "2026-10-31T19:00:21Z",
+      "category": "ESCROW_EVENT_RLUSD_CHAIN_SUPPLY_AND_REPOSITORY_SAFETY",
+      "severity": "HIGH_FOR_FEATURE_ADMISSION_AND_MUTATION",
+      "status": "OPEN_UNKNOWN",
+      "statement": "The Nov1 1B XRP escrow unlock is not an immediate sale; 70% re-escrow is not guaranteed. RLUSD supply providers conflict (707.4M vs 910.3M), and Coinbase listing does not prove chain migration. Main retains write-capable workflows, public unsalted subscriber hashes (currently empty), and a prior accidental test-only main commit.",
+      "impact": "Misclassifying escrow, chain supply or tracked-wallet outliers contaminates predictive features; active main writers and public deterministic email hashes create integrity/privacy risk.",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE",
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP",
+        "SRC-20261031T190021Z-RIPPLE-TRANSPARENCY-LIVE",
+        "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION",
+        "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY",
+        "SRC-20261031T190021Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+        "SRC-20261031T190021Z-XRPLTO-RLUSD-SUPPLY",
+        "SRC-20261031T190021Z-XRLINEAGE-RLUSD-SUPPLY-CONFLICT",
+        "SRC-20261031T190021Z-GITHUB-MAIN-200-PR-WORKFLOW-AUDIT"
+      ],
+      "unresolved": [
+        "Nov1 EscrowFinish hashes/timestamps/destinations/disposition.",
+        "Whether 70% re-escrow repeats.",
+        "XR-Lineage 910.3M raw query and 2,000 trustline scope.",
+        "Aligned RLUSD mint/burn/bridge flows across approved networks.",
+        "Coinbase Global Exchange collateral launch and posted collateral.",
+        "Full main workflow writer inventory and approval.",
+        "Server-side subscriber verification; current file empty.",
+        "Full repository CI, lockfile, security alerts and branch-protection details."
+      ],
+      "disconfirming_evidence": [
+        "Prior 12 releases re-escrowed 70%.",
+        "Deloitte Sep30 and Ripple Oct29 show reserves above outstanding/circulation, with different dates and assurance.",
+        "Three 707.4M dashboards are correlated; XR-Lineage is outlier.",
+        "Coinbase says Global Exchange collateral deferred.",
+        "PR #1423 remains open/stale and does not change main."
+      ],
+      "feature_admission": "EVENT_AND_CUSTODY_CONTEXT_ONLY; NO_DIRECTIONAL_XRP_FEATURE; NO_FORECAST"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_run_handoff",
+  "handoff_id": "HANDOFF-XRP-20261031T231645Z-PRE-ESCROW-CONFLICT-AND-V3-VERIFICATION",
+  "recorded_at_utc": "2026-10-31T23:16:45Z",
+  "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261031T230816Z-pre-escrow-binance-daily-delta-and-v3-audit.json",
+  "source_revision_path": "data/xrp_intelligence/source_revisions/20261031T231645Z-bithomp-ripple-escrow-owner-page-conflict.json",
+  "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T231645Z-bithomp-vs-xrp-insights-escrow-conflict.json",
+  "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T231645Z-escrow-owner-page-conflict-and-raw-ledger-verification.json",
+  "new_finding": {
+    "status": "UNRESOLVED_SOURCE_CONFLICT",
+    "xrp_insights_ledger": 108031214,
+    "xrp_insights_as_of_utc": "2026-10-31T21:13:00Z",
+    "xrp_insights_claim": "Two escrow objects totaling 1B XRP; 13 objects and 4.5B XRP attributed to each of the two owner accounts.",
+    "bithomp_claim": "Both public account pages show 500M XRP balance, no transactions found and no escrow objects.",
+    "likely_data_quality_explanation": "Bithomp pages appear stale/incomplete: one reports active 6 months ago, and both show no transactions despite four October 1 EscrowFinish hashes listed by XRP Insights.",
+    "raw_state": "NOT_OBTAINED"
+  },
+  "october_1_hashes": [
+    "5D4BFA6F6758638E37701C6C3C4728ED8F08451D55FDBD2E9E8949A3F7CA19D2",
+    "CE74096B4027F936FA1D157A76CF02D4D95E3FA1D39943CA706E0C880A745DE8",
+    "B5668A27B7C71C90FE434D25815CDC957544BE659899BD9833E1291F93BA0F5F",
+    "65FCEB474F815A8B295C8029C337193156D857C33EB8FB970F0EDBB578D41D77"
+  ],
+  "current_time_utc": "2026-10-31T23:16:45Z",
+  "seconds_until_escrow_eligibility": 2595,
+  "validation": {
+    "data_head": "220b94e0565546ea96e80615ce16edc8aa199a02",
+    "push_validator_run": 41251752795,
+    "push_validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41251752795",
+    "push_validator_conclusion": "success",
+    "tests_passed": 32,
+    "archive_shards_checked": 442,
+    "source_revision_addenda_checked": 33,
+    "pending_archive_append": 28,
+    "pull_request_validator_run": 41251755253,
+    "pull_request_validator_conclusion": "success",
+    "fail_closed_gate_run": 41251755277,
+    "fail_closed_gate_conclusion": "success",
+    "merge_enabled": false,
+    "approval_workflow_zero_job_run": 41251751427,
+    "approval_workflow_conclusion": "failure",
+    "jobs": 0,
+    "root_cause": "UNKNOWN"
+  },
+  "repository": {
+    "main_sha": "b51099e04b410f49e28d9c80201f68847aa8118a",
+    "cross_analysis_pr": 1431,
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci": "PASS",
+    "gate": "PASS_MERGE_DISABLED",
+    "main_writer_still_active": true
+  },
+  "archive": {
+    "previous_archive_shards": 442,
+    "previous_archive_records": 3477,
+    "new_source_revision_pending_archive_append": true,
+    "existing_pending_archive_addenda": 28,
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false
+  },
+  "blockers": [
+    "Bithomp account pages conflict with XRP Insights pinned-ledger escrow data.",
+    "No raw account_objects/account_tx response was obtained; Bithomp API token was not available and not used.",
+    "The 28 inherited source-revision addenda remain pending archive append."
+  ],
+  "next_action": "Resolve the two-account escrow-object discrepancy against raw public XRPL JSON-RPC at the same validated ledger; then observe actual November 1 EscrowFinish and follow-on disposition.",
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  }
+}

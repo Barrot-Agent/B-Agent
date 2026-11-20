@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 69,
+  "chunk_count": 70,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T16:52:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T16:52:00Z",
+      "update_type": "XRP_MARKET_MACRO_AND_BINANCE_REPLENISHMENT_SYNCHRONIZATION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T165200Z-market-macro-and-binance-replenishment.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T165200Z-market-macro-and-binance-replenishment.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T165200Z-point-in-time-market-panel.json",
+      "source_ids": [
+        "SRC-ALPHAFINANCE-XRP-DERIVATIVES-20261030T1330Z",
+        "SRC-LIQWALL-XRP-DERIVATIVES-20261030T1102Z",
+        "SRC-XRPINSIGHTS-ETF-FLOWS-20261029-20261030T1652Z",
+        "SRC-ALPHAFINANCE-ETF-FLOWS-20261029-20261030T1652Z",
+        "SRC-CRYPTOETF-PARTIAL-XRP-FLOWS-20261029-20261030T1652Z",
+        "SRC-BINANCE-VERIFIED-RESERVE-REPLENISHMENT-20261030T1055Z",
+        "SRC-REUTERS-BOJ-YEN-MACRO-20261030",
+        "SRC-BITQUERY-BINANCE-HACK-20261030-UPDATE",
+        "SRC-BINANCE-SUPPORT-INCIDENT-UPDATED-20261030T1136Z"
+      ],
+      "findings": "Added fresh timestamped XRP derivatives panels, reconciled incompatible open-interest aggregates without averaging, established that Oct 29 ETF flows predate the Binance XRP drain, recorded Binance's aggregate in-kind replenishment with XRP allocation unknown, and captured BOJ/yen macro context.",
+      "new_sources": 9,
+      "new_relationship_edges": 8,
+      "new_hypotheses": 5,
+      "new_market_observations": 4,
+      "prior_research_head": "31cecbef8bc28a731177670c4cddc2abcd517910",
+      "new_append_validation": "PENDING_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "no_main_write": true,
+      "no_merge": true,
+      "no_force_push": true,
+      "no_dispatch": true,
+      "no_paper_state_mutation": true,
+      "no_real_money_trade": true
+    }
+  ]
+}

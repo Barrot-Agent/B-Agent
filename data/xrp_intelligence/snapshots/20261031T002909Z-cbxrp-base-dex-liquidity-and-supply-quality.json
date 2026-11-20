@@ -1,0 +1,252 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T002909Z-CBXRP-BASE-DEX-LIQUIDITY-AND-SUPPLY-QUALITY",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T002909Z-cbxrp-base-dex-liquidity-and-supply-quality.json",
+  "created_at_utc": "2026-10-31T00:29:09Z",
+  "captured_at_utc": "2026-10-31T00:29:09Z",
+  "data_cutoff_utc": "2026-10-31T00:29:09Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T002653Z-coinbase-cbxrp-reserve-and-custody.json",
+  "source_ids": [
+    "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z",
+    "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z",
+    "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z"
+  ],
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "findings": [
+    {
+      "finding_id": "F-20261031T002909Z-01",
+      "classification": "CBXRP_BASE_DEX_ACTIVITY_AND_LIQUIDITY",
+      "statement": "DexTrading's 00:28 UTC snapshot shows cbXRP around $1.25, $3.57M 24-hour volume, $485K liquidity in the main Aero cbXRP/WETH pool and 4,965 trades (2,477 buys, 2,488 sells). Other displayed Base pools include cbXRP/cbBTC on Aero, cbXRP/WETH on PancakeSwap and cbXRP/USDC on Uniswap V3. The 7.36x volume-to-main-pool-liquidity ratio indicates turnover, not net capital inflow.",
+      "source_ids": [
+        "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z"
+      ],
+      "disconfirming_evidence": "Single aggregator snapshot; pool liquidity is not guaranteed executable depth and buy/sell trade counts do not measure notional net flow."
+    },
+    {
+      "finding_id": "F-20261031T002909Z-02",
+      "classification": "THIRD_PARTY_CBXRP_SUPPLY_DATA_QUALITY_FAILURE",
+      "statement": "CoinDesk's opened page displays 107.04M cbXRP supply, while Trading Strategy's cached page body displays 60.95M and its search snippet displays 151.403M. These are stale/inconsistent against Coinbase's first-party 151.403M supply display. The third-party values are excluded from current supply estimates.",
+      "source_ids": [
+        "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z",
+        "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z"
+      ],
+      "disconfirming_evidence": "Coinbase's own page is first-party but not an independent audit; independent direct contract supply verification remains pending."
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261031T002909Z-01",
+      "asset": "cbXRP",
+      "metric": "basexrp_cbXRP_dex_market_snapshot",
+      "value": {
+        "price_usd": 1.25,
+        "change_24h_pct": 1.59,
+        "market_cap_usd": 189980000,
+        "volume_24h_usd": 3570000,
+        "main_aero_cbxrp_weth_liquidity_usd": 485000,
+        "trade_count_24h": 4965,
+        "buys_24h": 2477,
+        "sells_24h": 2488,
+        "volume_to_main_pool_liquidity_ratio": 7.360824742,
+        "as_of_utc": "2026-10-31T00:28:00Z",
+        "other_pools": [
+          {
+            "pair": "cbXRP/cbBTC",
+            "venue": "Aero",
+            "liquidity_usd": 152300
+          },
+          {
+            "pair": "cbXRP/WETH",
+            "venue": "PancakeSwap",
+            "liquidity_usd": 117000
+          },
+          {
+            "pair": "cbXRP/USDC",
+            "venue": "Uniswap V3",
+            "liquidity_usd": 92700
+          }
+        ]
+      },
+      "unit": "USD_percent_trades",
+      "as_of_utc": "2026-10-31T00:28:00Z",
+      "retrieved_at_utc": "2026-10-31T00:29:09Z",
+      "source_ids": [
+        "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z"
+      ],
+      "classification": "DEXTRADING_SINGLE_PROVIDER_BASE_DEX_SNAPSHOT",
+      "admission_status": "LIQUIDITY_CONTEXT_ONLY_NOT_NET_CAPITAL_OR_PRICE_FEATURE",
+      "notes": "Buy/sell trade counts are almost balanced. Volume-to-liquidity ratio is turnover, not a measure of net inflow."
+    },
+    {
+      "observation_id": "OBS-20261031T002909Z-02",
+      "asset": "cbXRP",
+      "metric": "coindesk_cbXRP_supply_outlier",
+      "value": {
+        "price_usd": 1.0826,
+        "market_cap_usd": 115884212,
+        "volume_24h_usd": 150208,
+        "supply_cbxrp": 107040000,
+        "coinbase_first_party_supply_reference": 151403016.069,
+        "relative_supply_difference_pct": 29.301276302700686
+      },
+      "unit": "USD_cbXRP",
+      "as_of_utc": "STALE_PAGE_CRAWLED_APPROX_2026_07",
+      "retrieved_at_utc": "2026-10-31T00:29:09Z",
+      "source_ids": [
+        "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z"
+      ],
+      "classification": "THIRD_PARTY_STALE_OR_INCONSISTENT_SUPPLY_OUTLIER",
+      "admission_status": "EXCLUDED_FROM_CURRENT_SUPPLY_AND_PRICE_FEATURES",
+      "notes": "The page is materially stale relative to Coinbase's current first-party reserve/supply display."
+    },
+    {
+      "observation_id": "OBS-20261031T002909Z-03",
+      "asset": "cbXRP",
+      "metric": "tradingstrategy_cbXRP_supply_cache_disagreement",
+      "value": {
+        "page_body_supply_cbxrp": 60954937,
+        "search_snippet_supply_cbxrp": 151403016,
+        "coinbase_first_party_supply_reference": 151403016.069,
+        "page_body_crawl_age_months": 6
+      },
+      "unit": "cbXRP",
+      "as_of_utc": "STALE_CACHED_PAGE",
+      "retrieved_at_utc": "2026-10-31T00:29:09Z",
+      "source_ids": [
+        "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z"
+      ],
+      "classification": "THIRD_PARTY_INTERNAL_CACHE_INCONSISTENCY",
+      "admission_status": "EXCLUDED_FROM_CURRENT_SUPPLY_FEATURES",
+      "notes": "Search snippet and opened page body conflict; do not treat the snippet as independent corroboration."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T002909Z-01",
+      "claim": "cbXRP has active Base DEX turnover and multiple pools, but the current provider snapshot shows almost balanced buy/sell counts and does not demonstrate net external capital inflow or a directional price signal.",
+      "assessment": "ACTIVE_MARKET_ACCESS_CONFIRMED_BY_AGGREGATOR; NET_FLOW_UNKNOWN",
+      "supporting_evidence": [
+        "DexTrading reports $3.57M 24-hour volume, $485K main-pool liquidity and 4,965 trades at 00:28 UTC.",
+        "Buys (2,477) and sells (2,488) are nearly balanced.",
+        "Additional cbXRP pairs are displayed on Aero, PancakeSwap and Uniswap V3."
+      ],
+      "disconfirming_evidence": [
+        "Trade counts are not notional amounts and the provider does not independently identify wash trading or arbitrage.",
+        "One aggregator snapshot cannot establish sustained liquidity or institutional collateral utilization."
+      ],
+      "unknowns": [
+        "Pair-level notional buy/sell volumes and order-book/slippage curves.",
+        "On-chain mint/burn flows, LP position concentration and DeFi collateral utilization."
+      ],
+      "confidence": "MEDIUM_FOR_ACTIVITY_SNAPSHOT; LOW_FOR_NET_FLOW"
+    },
+    {
+      "hypothesis_id": "H-20261031T002909Z-02",
+      "claim": "Third-party cbXRP supply pages are stale or internally inconsistent; Coinbase's first-party proof-of-reserves page is the best available published reserve/supply reference, but independent Base contract verification is still needed.",
+      "assessment": "DATA_QUALITY_FAILURE_CONFIRMED; PRIMARY_SOURCE_STILL_SELF_REPORTED",
+      "supporting_evidence": [
+        "Coinbase page reports 151,403,016.069 cbXRP.",
+        "CoinDesk opened page reports 107.04M and older market values.",
+        "Trading Strategy opened body reports 60.95M while its search snippet says 151.403M."
+      ],
+      "disconfirming_evidence": [
+        "Coinbase first-party page itself is not an independent audit and its displayed refresh time varies by locale/cache."
+      ],
+      "unknowns": [
+        "Current on-chain totalSupply() from an accessible independent Base RPC.",
+        "Whether third-party providers are delayed, indexing bridged supply differently or using stale caches."
+      ],
+      "confidence": "HIGH_FOR_PROVIDER_INCONSISTENCY; MEDIUM_FOR_COINBASE_PAGE_AS_BEST_PUBLISHED_BASELINE"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "edge_id": "E-20261031T002909Z-01",
+      "from_entity": "cbXRP",
+      "relation": "trades_on",
+      "to_entity": "Base DEX pools: Aero, PancakeSwap, Uniswap V3",
+      "status": "DEXTRADING_AGGREGATOR_SNAPSHOT",
+      "source_ids": [
+        "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z"
+      ],
+      "details": "Pairs include cbXRP/WETH, cbXRP/cbBTC and cbXRP/USDC."
+    },
+    {
+      "edge_id": "E-20261031T002909Z-02",
+      "from_entity": "Aero cbXRP/WETH main pool",
+      "relation": "displayed_liquidity_and_volume",
+      "to_entity": "$485K liquidity / $3.57M 24h volume",
+      "status": "THIRD_PARTY_SNAPSHOT_2026_10_31T0028Z",
+      "source_ids": [
+        "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z"
+      ],
+      "details": "7.36x turnover relative to displayed pool liquidity; not net inflow."
+    },
+    {
+      "edge_id": "E-20261031T002909Z-03",
+      "from_entity": "cbXRP Base DEX trading",
+      "relation": "displayed_trade_count",
+      "to_entity": "2,477 buys / 2,488 sells in 24h",
+      "status": "THIRD_PARTY_SNAPSHOT",
+      "source_ids": [
+        "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z"
+      ],
+      "details": "Trade counts nearly balanced; notional amounts not disclosed."
+    },
+    {
+      "edge_id": "E-20261031T002909Z-04",
+      "from_entity": "CoinDesk cbXRP page",
+      "relation": "reports_stale_supply_outlier",
+      "to_entity": "107.04M cbXRP",
+      "status": "STALE_OR_INCONSISTENT_PAGE",
+      "source_ids": [
+        "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z"
+      ],
+      "details": "Excluded from current supply measurement."
+    },
+    {
+      "edge_id": "E-20261031T002909Z-05",
+      "from_entity": "Trading Strategy cbXRP page",
+      "relation": "reports_conflicting_cached_supply",
+      "to_entity": "60.95M page body vs 151.403M search snippet",
+      "status": "INTERNAL_CACHE_INCONSISTENCY",
+      "source_ids": [
+        "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z"
+      ],
+      "details": "Excluded from current supply measurement."
+    },
+    {
+      "edge_id": "E-20261031T002909Z-06",
+      "from_entity": "Coinbase cbXRP proof-of-reserves page",
+      "relation": "preferred_published_supply_reserve_baseline_over_stale_aggregators",
+      "to_entity": "151.403M cbXRP / 151.405M XRP",
+      "status": "FIRST_PARTY_PUBLISHED_BUT_NOT_INDEPENDENT_AUDIT",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+        "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z",
+        "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z"
+      ],
+      "details": "Independent Base contract totalSupply() read remains outstanding."
+    }
+  ],
+  "limitation_ids": [
+    "LIM-20261031T002909Z-01",
+    "LIM-20261031T002909Z-02",
+    "LIM-20261031T002909Z-03"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Reconcile cbXRP Base totalSupply() from an independent Base RPC with Coinbase's reserve page and retain block number/time.",
+    "Capture pool-level swap events and notional buy/sell amounts for Aero, PancakeSwap and Uniswap V3; calculate slippage curves and LP concentration.",
+    "Track cbXRP mint/burn events against Coinbase XRPL reserve addresses to estimate actual XRP lockup and release.",
+    "Quarantine stale CoinDesk and Trading Strategy cbXRP supply observations from current market features."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "workflow_dispatches": 0,
+  "paper_state_mutations": 0,
+  "real_money_trades": 0
+}

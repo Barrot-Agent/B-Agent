@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_snapshot",
+  "snapshot_id": "BARROT-REPO-AUDIT-20261030T161501Z-MAIN-WORKFLOWS-AND-HF-SECURITY",
+  "captured_at_utc": "2026-10-30T16:15:01Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "dd907496d7989c4f421fb137cca6794314e9812a",
+  "latest_main_commit": {
+    "sha": "dd907496d7989c4f421fb137cca6794314e9812a",
+    "message": "Cross-analysis refresh [skip ci]",
+    "created_at_utc": "2026-10-30T15:51:49Z"
+  },
+  "workflow_findings": {
+    "cross_analysis": {
+      "path": ".github/workflows/cross-analysis.yml",
+      "triggers": [
+        "workflow_run: Knowledge Signal Cycle completed on main",
+        "hourly cron 50 * * * *",
+        "workflow_dispatch"
+      ],
+      "permissions": {
+        "contents": "write"
+      },
+      "behavior": "Commits and pushes generated co-occurrence, sentiment-shift and entity-sentiment outputs to main.",
+      "status": "ACTIVE_MAIN_RISK"
+    },
+    "merge_queue": {
+      "path": ".github/workflows/merge-queue.yml",
+      "permissions": {
+        "contents": "write",
+        "pull-requests": "write",
+        "checks": "read",
+        "statuses": "read"
+      },
+      "defaults": {
+        "mode": "label",
+        "label": "merge-queue",
+        "dry_run": false,
+        "max_prs": 0
+      },
+      "capabilities": [
+        "update branch",
+        "comment",
+        "merge",
+        "delete branch"
+      ],
+      "status": "MUTATION_CAPABLE_MANUAL_WORKFLOW"
+    },
+    "paper_trader": {
+      "path": ".github/workflows/coinbase-paper-trader.yml",
+      "trigger": "workflow_dispatch only",
+      "configured_product": "BTC-USD",
+      "state_path": "web/paper_trading_state.json",
+      "state": {
+        "position_size": 0.012445158497236623,
+        "avg_entry_price": 80436.84,
+        "cash_usd": 9009.936613782476,
+        "trade_count": 126,
+        "position_product": null
+      },
+      "status": "DO_NOT_DISPATCH_UNIDENTIFIED_POSITION"
+    },
+    "kaggle": {
+      "path": ".github/workflows/kaggle-competitions.yml",
+      "trigger": "daily 00:00 UTC plus manual",
+      "configured_script": "python kaggle_competitions_automation.py",
+      "actual_script": "scripts/kaggle_competitions_automation.py",
+      "script_behavior": "Automatically submits a baseline to up to five active competitions; no main-branch explicit opt-in guard.",
+      "status": "CURRENT_PATH_MISMATCH_BLOCKS_RUN; CONDITIONAL_EXTERNAL_SUBMISSION_RISK",
+      "pr": "https://github.com/Barrot-Agent/B-Agent/pull/1359"
+    },
+    "free_image_generation": {
+      "path": ".github/workflows/free-image-gen.yml",
+      "trigger": "workflow_dispatch only",
+      "permissions": {
+        "contents": "write"
+      },
+      "token_scope": "HF_TOKEN at job scope",
+      "configured_script": "python3 free_image_gen.py",
+      "actual_script": "scripts/free_image_gen.py",
+      "status": "CURRENT_PATH_MISMATCH_BLOCKS_RUN; MAIN_WRITE_AND_TOKEN_SCOPE_RISK",
+      "pr": "https://github.com/Barrot-Agent/B-Agent/pull/1370"
+    },
+    "hf_model_merge": {
+      "paths": [
+        ".github/workflows/barrot-merge.yml",
+        ".github/workflows/barrot-merge-manual.yml"
+      ],
+      "status": "DUPLICATE_MAIN_WORKFLOWS; GLOBAL_HF_TOKEN_AND_CREDENTIAL_STORE; --trust-remote-code",
+      "config_path": "merges/barrot-superior/config.yaml",
+      "config_present_on_main": false,
+      "fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1374"
+    }
+  },
+  "pull_requests": {
+    "pr1353": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1353",
+      "head": "1f650ba661bdd03566874d0ebb63c082690517b3",
+      "validator_run": 41079190008,
+      "tests_passed": 18,
+      "gate_run": 41079190076,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "status": "OPEN_DRAFT_UNMERGED"
+    },
+    "pr1374": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1374",
+      "head": "5f70b26eac93b4835130db2541e085dd2e107ce2",
+      "base_merge_base": "3a1b1e7a2cf2a22e262d73592ceec9196356fbae",
+      "behind_main": 3,
+      "ci_run": 41087890290,
+      "tests_passed": 347,
+      "subtests_passed": 8,
+      "gate_run": 41087890315,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "verification": "EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS"
+    },
+    "pr1373": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1373",
+      "head": "99c5efbdcbff55aea9294d7bbfa235879f812f02",
+      "behind_main": 4,
+      "prior_ci": "347 tests + 8 subtests passed",
+      "prior_gate": "PASS",
+      "status": "OPEN_DRAFT_UNMERGED"
+    },
+    "pr1370": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1370",
+      "head": "4eb9768ccbefc3735a651d14220e1273392ee471",
+      "behind_main": 7,
+      "prior_ci": "343 tests + 8 subtests passed",
+      "prior_gate": "PASS",
+      "status": "OPEN_DRAFT_UNMERGED"
+    },
+    "pr1367": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1367",
+      "head": "9ee42d8a6d2e90a43e15f80558b7ec599aad84a0",
+      "behind_main": 10,
+      "prior_ci": "352 tests + 8 subtests passed",
+      "prior_gate": "PASS",
+      "status": "OPEN_DRAFT_UNMERGED"
+    },
+    "pr1369": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1369",
+      "head": "9da6c9e03bb43c2c23c5e3408e8730d602879b90",
+      "behind_main": 26,
+      "prior_ci": "343 tests + 8 subtests passed",
+      "prior_gate": "PASS",
+      "status": "OPEN_DRAFT_UNMERGED"
+    },
+    "pr1359": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1359",
+      "head": "b17e5515ea21c8e2fba16f8dd1880e4872f01398",
+      "behind_main": 21,
+      "prior_ci": "343 tests + 8 subtests passed",
+      "prior_gate": "PASS",
+      "status": "OPEN_DRAFT_UNMERGED"
+    }
+  },
+  "signal": {
+    "path": "web/latest_signal.json",
+    "timestamp": "2026-10-29T13:23:33.142057+00:00",
+    "score": 44,
+    "confidence": 0,
+    "errors": [
+      "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+      "Groq HTTP 429"
+    ],
+    "status": "STALE_INVALID_NOT_A_FORECAST"
+  },
+  "verification": {
+    "full_repository_ci": "NOT_RUN",
+    "github_connector": "VERIFIED",
+    "other_eight_platforms": "NOT_AUTHENTICATED_OR_LIVE_TESTED"
+  },
+  "external_actions": {
+    "main_write": false,
+    "merge": false,
+    "force_push": false,
+    "deployment": false,
+    "workflow_dispatch": false,
+    "paper_state_mutation": false,
+    "real_money_trade": false,
+    "kaggle_submission": false,
+    "huggingface_upload": false
+  }
+}

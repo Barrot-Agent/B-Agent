@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_run_handoff",
+  "handoff_id": "HANDOFF-XRP-20261031T230816Z-PRE-ESCROW-MONITOR",
+  "recorded_at_utc": "2026-10-31T23:08:16Z",
+  "data_cutoff_utc": "2026-10-31T21:13:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T230816Z-pre-escrow-binance-daily-delta-and-v3-audit.json",
+  "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T230816Z-escrow-binance-daily-delta-and-v3-graph.json",
+  "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T230816Z-pre-escrow-event-and-exchange-delta-feature-admission.json",
+  "source_revision_paths": [
+    "data/xrp_intelligence/source_revisions/20261031T230816Z-xrp-insights-escrow-preunlock.json",
+    "data/xrp_intelligence/source_revisions/20261031T230816Z-xrp-insights-exchange-delta-reconciliation.json",
+    "data/xrp_intelligence/source_revisions/20261031T230816Z-tradradar-stale-search-result-reconciliation.json",
+    "data/xrp_intelligence/source_revisions/20261031T230816Z-github-main-workflow-pr1431-audit.json"
+  ],
+  "findings": [
+    "At capture, 51m44s remained until the November 1 00:00 UTC escrow eligibility; the latest pinned XRPL ledger available through the tracker was 21:13 UTC.",
+    "The detailed exchange page reports Binance +17.6M XRP over seven days and +30.3M over 30 days, while the overview displays +196.2M with no interval label.",
+    "The rounded per-exchange overview deltas sum to approximately +106.58M, close to the detailed page's +105.9M aggregate daily change; the +196.2M figure is therefore likely daily but remains an inference.",
+    "The broad exchange total fell 133M over seven days even as Binance's own broad attributed-wallet total rose 17.6M; the decline is not a Binance-only event.",
+    "The latest verified TradRadar observation remains 20:10 UTC. The current search-index result at 17:45 UTC is older and was rejected.",
+    "Main remains at b51099e; Cross Analysis, Knowledge Signal Cycle and Scheduler Tick retain direct-write capabilities.",
+    "PR #1431 CI and fail-closed gate passed, but it remains draft, unmerged, three commits ahead and one behind current main."
+  ],
+  "evidence": {
+    "escrow_source_ref": "turn950077view0",
+    "exchange_source_ref": "turn564616view0",
+    "overview_source_ref": "turn959062view0",
+    "tradradar_latest_verified_source": "SRC-20261031T210244Z-TRADRADAR-XRP",
+    "github_pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1431",
+    "github_ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41246255670",
+    "github_gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41246255620"
+  },
+  "current_state": {
+    "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+    "research_branch_head_before_update": "6fac958f1be505e3551020dba8970ac4edfffd8a",
+    "main_sha": "b51099e04b410f49e28d9c80201f68847aa8118a",
+    "archive_shards_before_update": 442,
+    "archive_records_before_update": 3477,
+    "pending_source_revision_archive_append_before_update": 28,
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false
+  },
+  "changes": {
+    "data_commit_status": "TO_BE_CREATED",
+    "metadata_successor_status": "TO_BE_CREATED",
+    "exact_head_validation": "PENDING",
+    "archive_shard_append": "NOT_PERFORMED_IN_THIS_RUN"
+  },
+  "blockers": [
+    "No direct raw XRPL JSON-RPC account_objects/account_tx response in this run.",
+    "The XRP Insights downloadable JSON was not fetched, so the overview delta interval remains inferred.",
+    "Main branch protection required-check details and full security-alert access remain unavailable.",
+    "The 28 inherited source-revision archive additions remain pending."
+  ],
+  "next_action": "After 00:00 UTC, obtain a fresh validated XRPL ledger and verify actual EscrowFinish, destination and follow-on disposition; then reconcile Binance's machine-readable daily delta and append a transaction-level event study.",
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  }
+}

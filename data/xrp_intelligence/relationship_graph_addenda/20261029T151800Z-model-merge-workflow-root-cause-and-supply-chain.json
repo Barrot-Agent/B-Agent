@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T151800Z-MODEL-MERGE-WORKFLOW-ROOT-CAUSE",
+  "captured_at_utc": "2026-10-29T15:18:00Z",
+  "observed_main_sha": "fb2f59012c1ba6d3bf1417d36545bb46028c8f65",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_REPOSITORY_OBSERVATION",
+      "CONFIRMED_CI_RUN",
+      "PROPOSED_FIX",
+      "UNRESOLVED_WORKFLOW_ANOMALY",
+      "INFERENCE",
+      "UNKNOWN"
+    ],
+    "causal_rule": "A workflow's existence is not evidence that it completed. Distinguish a configured external-publish path from an executed upload; dependency looseness is a risk, not a proven vulnerability."
+  },
+  "nodes": [
+    {
+      "id": "BARROT_MAIN",
+      "label": "Barrot-Agent/B-Agent main",
+      "kind": "REPOSITORY"
+    },
+    {
+      "id": "HF_MODEL_MERGE_WORKFLOW",
+      "label": "Manual Hugging Face model merge workflow",
+      "kind": "CI_WORKFLOW"
+    },
+    {
+      "id": "HF_MODEL_MERGE_DUPLICATE",
+      "label": "Duplicate manual model merge workflow",
+      "kind": "CI_WORKFLOW"
+    },
+    {
+      "id": "MISSING_MERGE_CONFIG",
+      "label": "merges/barrot-superior/config.yaml",
+      "kind": "MISSING_REPOSITORY_INPUT"
+    },
+    {
+      "id": "HF_TOKEN",
+      "label": "Hugging Face publication token",
+      "kind": "SECRET"
+    },
+    {
+      "id": "DEPENDENCY_MANIFESTS",
+      "label": "Python dependency manifests",
+      "kind": "DEPENDENCY_CONTROL"
+    },
+    {
+      "id": "CONTROLLED_APPROVAL_WORKFLOW",
+      "label": "Barrot controlled PR approval workflow",
+      "kind": "CI_WORKFLOW"
+    },
+    {
+      "id": "PR1336",
+      "label": "Draft fail-fast preflight PR #1336",
+      "kind": "PROPOSED_FIX"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-20261029T151800Z-WORKFLOW-REQUIRES-MISSING-CONFIG",
+      "source": "HF_MODEL_MERGE_WORKFLOW",
+      "target": "MISSING_MERGE_CONFIG",
+      "relationship": "REQUIRES_ABSENT_CONFIG_PATH",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "Workflow calls mergekit-yaml with merges/barrot-superior/config.yaml, but current main tree contains no such file.",
+      "source_ids": [
+        "SRC-GH-HF-MODEL-MERGE-20261029T151800Z",
+        "SRC-GH-MERGE-CONFIG-MISSING-20261029T151800Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151800Z-WORKFLOW-EXTERNAL-PUBLISH",
+      "source": "HF_MODEL_MERGE_WORKFLOW",
+      "target": "HF_TOKEN",
+      "relationship": "USES_SECRET_TO_UPLOAD_EXTERNAL_MODEL",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "Manual workflow stores HF_TOKEN in a temporary git credential file, uses mergekit with --trust-remote-code, and uploads to Barrot-Agent on Hugging Face. No upload was performed by this run.",
+      "source_ids": [
+        "SRC-GH-HF-MODEL-MERGE-20261029T151800Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151800Z-DUPLICATE-WORKFLOW",
+      "source": "HF_MODEL_MERGE_WORKFLOW",
+      "target": "HF_MODEL_MERGE_DUPLICATE",
+      "relationship": "IDENTICAL_WORKFLOW_CONTENT_AND_SHA",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "Both workflow files have identical content and blob SHA, creating two manual entry points for the same external-publish action.",
+      "source_ids": [
+        "SRC-GH-HF-MODEL-MERGE-20261029T151800Z",
+        "SRC-GH-HF-MODEL-MERGE-DUPLICATE-20261029T151800Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151800Z-DEPENDENCIES-UNPINNED",
+      "source": "BARROT_MAIN",
+      "target": "DEPENDENCY_MANIFESTS",
+      "relationship": "BROAD_LOWER_BOUNDS_WITHOUT_LOCKFILE",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "requirements.txt/pyproject.toml use minimum-only version constraints, CI installs several unpinned packages, and no conventional lockfile appears in the main tree.",
+      "source_ids": [
+        "SRC-GH-DEPENDENCY-MANIFESTS-20261029T151800Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151800Z-APPROVAL-RUN-ANOMALY",
+      "source": "CONTROLLED_APPROVAL_WORKFLOW",
+      "target": "BARROT_MAIN",
+      "relationship": "PUSH_EVENT_FAILURE_WITH_ZERO_JOBS_DESPITE_MANUAL_ONLY_YAML",
+      "evidence_class": "UNRESOLVED_WORKFLOW_ANOMALY",
+      "claim": "The current workflow declares workflow_dispatch only, but the recorded failed run is event=push and has zero jobs; exact trigger/version mismatch remains unknown.",
+      "source_ids": [
+        "SRC-GH-APPROVE-WORKFLOW-20261029T151800Z",
+        "SRC-GH-APPROVE-RUN-PUSH-NO-JOBS-20261029T151800Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151800Z-PR1336-FAILFAST",
+      "source": "PR1336",
+      "target": "HF_MODEL_MERGE_WORKFLOW",
+      "relationship": "PRECHECK_MISSING_CONFIG_BEFORE_INSTALL_AND_SECRET",
+      "evidence_class": "PROPOSED_FIX",
+      "claim": "PR #1336 adds a fail-fast config preflight before dependency installation and token access; exact-head CI and fail-closed gate passed, but it remains unmerged.",
+      "source_ids": [
+        "SRC-GH-PR1336-20261029T151800Z",
+        "SRC-GH-PR1336-CI-20261029T151800Z",
+        "SRC-GH-PR1336-GATE-20261029T151800Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261029T151800Z-MODEL-MERGE-FAIL-FAST",
+      "statement": "The immediate deterministic root cause for the manual model-merge path is a missing config file; preflight is the minimal safe fix, but model building remains blocked until the intended config is restored.",
+      "status": "ROOT_CAUSE_CONFIRMED_CONFIG_REMAINS_MISSING",
+      "supporting_source_ids": [
+        "SRC-GH-HF-MODEL-MERGE-20261029T151800Z",
+        "SRC-GH-MERGE-CONFIG-MISSING-20261029T151800Z",
+        "SRC-GH-PR1336-CI-20261029T151800Z"
+      ],
+      "disconfirming_evidence": [
+        "A different config path could be generated or supplied at runtime, but the inspected workflow hardcodes the absent path."
+      ],
+      "tests_needed": [
+        "Obtain the approved merge configuration and pin model repository revisions before enabling the external upload path."
+      ]
+    },
+    {
+      "id": "HYP-20261029T151800Z-APPROVAL-RUN-EVENT-MISMATCH",
+      "statement": "The push-event failure with zero jobs is likely a workflow-version/event metadata mismatch rather than a failure inside the approval job.",
+      "status": "UNRESOLVED_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-GH-APPROVE-WORKFLOW-20261029T151800Z",
+        "SRC-GH-APPROVE-RUN-PUSH-NO-JOBS-20261029T151800Z"
+      ],
+      "disconfirming_evidence": [
+        "No job logs or job payload are available, and the run may have been created from an earlier workflow revision."
+      ],
+      "tests_needed": [
+        "Fetch the run's workflow_id/path, event commit SHA, workflow revision and raw run payload; compare the workflow file at that exact SHA."
+      ]
+    }
+  ],
+  "notes": [
+    "PR #1336 is draft/unmerged; it only fails fast on the missing config and does not perform or approve any Hugging Face upload.",
+    "No SCA/pip-audit or dependency lock resolution was executed; do not claim any specific dependency is vulnerable.",
+    "Main branch protection is enabled but its required status-check context list is empty; effective rulesets and bypass behavior remain unverified.",
+    "No market features admitted; forecast remains NOT_ISSUED."
+  ]
+}

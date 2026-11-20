@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T1017-CIRCLE-ARC-SBI-COINBASE",
+  "captured_at_utc": "2026-10-29T10:17:43Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "policy": "Use official corporate statements to map announced relationships. Distinguish a named founding-validator cohort from proof that a validator is currently active; do not infer XRP price causality from ecosystem membership.",
+  "nodes": [
+    {
+      "id": "CIRCLE",
+      "label": "Circle Internet Group, Inc.",
+      "kind": "STABLECOIN_ISSUER_AND_BLOCKCHAIN_OPERATOR"
+    },
+    {
+      "id": "ARC",
+      "label": "Arc public mainnet, Circle-built L1",
+      "kind": "STABLECOIN_NATIVE_FINANCIAL_BLOCKCHAIN"
+    },
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings, Inc.",
+      "kind": "JAPANESE_FINANCIAL_GROUP"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase Global, Inc.",
+      "kind": "EXCHANGE_CUSTODY_AND_STABLECOIN_DISTRIBUTION_PLATFORM"
+    },
+    {
+      "id": "USDC",
+      "label": "USDC stablecoin",
+      "kind": "USD_STABLECOIN"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple Labs, Inc.",
+      "kind": "PRIVATE_FINTECH_COMPANY"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD",
+      "kind": "USD_STABLECOIN"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN59-CIRCLE-ARC",
+      "source": "CIRCLE",
+      "target": "ARC",
+      "relationship": "LAUNCHED_PUBLIC_MAINNET_AND_OPERATES_ECOSYSTEM",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Circle announced Arc public mainnet launch on Sep 16, 2026, with native integration into Circle's platform, stablecoins, payments and financial-market infrastructure. The release describes a phased validator rollout and a distinct Arc roadmap.",
+      "source_ids": [
+        "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK",
+        "SRC-CIRCLE-ARC-MAINNET-2026-09-16-RECHECK-2026-10-28T1006Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN59-SBI-ARC-COHORT",
+      "source": "SBI_HOLDINGS",
+      "target": "ARC",
+      "relationship": "NAMED_IN_FOUNDING_VALIDATOR_COHORT_PHASED_ROLLOUT",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Circle's official Arc launch release names SBI Group among the founding validator cohort for a phased rollout. This verifies the announced cohort relationship; it does not independently prove SBI is actively validating blocks at this cutoff.",
+      "source_ids": [
+        "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK",
+        "SRC-CIRCLE-ARC-SBI-FOUNDING-VALIDATOR-2026-10-28T1111Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN59-COINBASE-ARC-ACCESS",
+      "source": "COINBASE",
+      "target": "ARC",
+      "relationship": "NAMED_EXCHANGE_PARTICIPANT_PROVIDING_ACCESS",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Circle's Arc launch release names Coinbase in the day-one exchange cohort intended to give users and institutions access into Arc. This is not evidence that Coinbase is an Arc validator or that Arc access uses XRP.",
+      "source_ids": [
+        "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK"
+      ]
+    },
+    {
+      "id": "EDGE-RUN59-ARC-USDC-GAS",
+      "source": "ARC",
+      "target": "USDC",
+      "relationship": "USDC_REQUIRED_FOR_GAS_FEES",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Circle describes Arc fees as paid in USDC, with no volatile native token required for gas. This is a different fee architecture from XRPL's XRP-denominated transaction costs; it does not prove substitution or price impact.",
+      "source_ids": [
+        "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK"
+      ]
+    },
+    {
+      "id": "EDGE-RUN59-SBI-MULTI-RAIL",
+      "source": "SBI_HOLDINGS",
+      "target": "XRP",
+      "relationship": "PARALLEL_RIPPLE_XRP_AND_CIRCLE_ARC_RELATIONSHIPS",
+      "evidence_class": "INFERENCE_FROM_CONFIRMED_RELATIONSHIPS",
+      "claim": "SBI Group has documented historical XRP/ODL remittance relationships with Ripple and is named in Circle Arc's founding validator cohort; SBI VC Trade also handles RLUSD and has a USDC relationship. This supports a multi-rail relationship map, not exclusivity, active XRP demand or price causality.",
+      "source_ids": [
+        "SRC-SBI-REMIT",
+        "SRC-RIPPLE-SBI-RLUSD",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+        "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK",
+        "SRC-SBI-VC-TRADE-ODL-EXPANSION-2023-09-06"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN59-SBI-MULTI-RAIL-OPTIONALITY",
+      "statement": "SBI Group's documented Ripple/XRP, USDC/RLUSD and announced Arc-cohort relationships may reflect diversification and strategic optionality across payment/settlement rails rather than an exclusive bet.",
+      "status": "PLAUSIBLE_INFERENCE_NOT_CAUSAL",
+      "supporting_source_ids": [
+        "SRC-SBI-REMIT",
+        "SRC-RIPPLE-SBI-RLUSD",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+        "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK"
+      ],
+      "disconfirming_evidence": [
+        "The announcements do not disclose relative capital allocation, transaction routing share, validator revenue or an internal strategy tying the relationships together."
+      ],
+      "tests_needed": [
+        "Find SBI filings/management statements quantifying Arc role, Ripple/XRP flows, USDC/RLUSD volumes, custody and capital allocation; keep announcement and realized-use measures separate."
+      ]
+    },
+    {
+      "id": "HYP-RUN59-ARC-COMPETITION-XRP",
+      "statement": "Arc's USDC-native fees and institutional settlement design could compete with some stablecoin or cross-border payment workflows associated with XRP, while also coexisting with them.",
+      "status": "UNTESTED_COMPETITION_AND_COMPLEMENTARITY",
+      "supporting_source_ids": [
+        "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK",
+        "SRC-SBI-REMIT",
+        "SRC-RIPPLE-SBI-RLUSD"
+      ],
+      "disconfirming_evidence": [
+        "XRP is a native XRPL asset and bridge asset in certain remittance corridors; stablecoins, XRP and different chains can serve different settlement/collateral roles. No comparable route-level cost, liquidity or volume data were established."
+      ],
+      "tests_needed": [
+        "Compare actual route-level transaction counts, settlement time, total cost, FX spread, bridge-asset usage and liquidity by corridor; use matched controls and avoid inferring XRP demand from USDC volume."
+      ]
+    },
+    {
+      "id": "HYP-RUN59-COINBASE-MULTICHAIN",
+      "statement": "Coinbase's participation in Arc and RLUSD distribution, alongside its Circle/USDC economics, is consistent with a multi-chain, multi-stablecoin distribution strategy rather than an exclusive Circle or Ripple alignment.",
+      "status": "PLAUSIBLE_STRATEGIC_INFERENCE",
+      "supporting_source_ids": [
+        "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK",
+        "SRC-COINBASE-Q2-2026-IR",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28"
+      ],
+      "disconfirming_evidence": [
+        "Public announcements do not quantify Coinbase's expected revenue share, actual RLUSD balances, Arc transaction volume or future collateral usage."
+      ],
+      "tests_needed": [
+        "After Coinbase Q3 release, reconcile reported USDC economics, RLUSD availability and balances, Arc integration status, XRP trading/custody/collateral and realized volume."
+      ]
+    }
+  ],
+  "notes": [
+    "Confirmed: Circle announced Arc public mainnet; USDC is used for gas; SBI Group is named in the founding validator cohort; Coinbase is named among exchange participants providing access.",
+    "Sourced claim boundary: Arc validator rollout is phased; no claim is made that SBI's validator is currently active.",
+    "Inference: SBI Group may be pursuing multi-rail optionality. This does not establish a strategy document, transaction volume or price effect.",
+    "Disconfirming alternatives retained: XRP bridge usage can coexist with USDC-native rails; Coinbase may distribute competing and complementary stablecoins across networks.",
+    "No XRP forecast or market feature is admitted from these relationship announcements alone."
+  ]
+}

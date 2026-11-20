@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 114,
+  "chunk_count": 115,
+  "record_count": 4,
+  "records": [
+    {
+      "id": "LIM-20261031T064600Z-ALL-EXCHANGE-CHANGE-NOT-BINANCE-THEFT",
+      "category": "aggregate_exchange_flow_vs_single_exchange_incident",
+      "statement": "XRP Insights reports -234.9M XRP across all 24 tracked exchanges over Oct23-Oct30, while Binance's own same-wallet change is -173.2M. The all-exchange -234.9M happens to be close in magnitude to the 233.46M five-wallet incident transfer, but it is not a Binance-only measure and cannot be attributed to the theft. The prior CryptoQuant approximately 220M Binance reserve decline uses a different provider universe. No source-wallet crosswalk or same-time customer-liability/PoR reconciliation exists.",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z",
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T064600Z-SBI-VC-TRADE-PUBLIC-WALLET-ATTRIBUTION",
+      "category": "exchange_custody_not_proprietary_holdings",
+      "statement": "XRP Insights attributes 59.5M XRP in two XRPL wallets to SBI VC Trade, with >99% cold-labeled storage, as of Oct30 08:00 UTC. This is evidence of XRP exchange/custody infrastructure attributed to SBI VC Trade, not proof that SBI Group owns 59.5M XRP as corporate treasury, that SBI VC Trade holds the tokens for its own account, or that the balance is available for sale. No official SBI VC Trade PoR or beneficial-owner breakdown is provided.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T064600Z-EXCHANGE-WALLETS-NOT-TRADABLE-FLOAT",
+      "category": "exchange_wallet_universe_and_wrapped_reserve_scope",
+      "statement": "The 22.37B XRP total includes cold storage, omnibus customer custody, wrapped-token backing reserves and insurance/charity balances. XRP Insights explicitly identifies 488.4M non-customer reserves/funds and warns that public exchange-wallet labels are not an official exchange count or tradable-float estimate. Same-wallet changes cannot distinguish customer withdrawals, theft, internal migration or transfers to newly labeled wallets; the provider publishes no per-wallet history.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T064600Z-APPROVAL-WORKFLOW-REPEATED-ZERO-JOBS",
+      "category": "repeated_approval_workflow_push_event_zero_jobs",
+      "statement": "Approval workflow runs 41177228657 and 41177519094 were both triggered by push events and failed with zero jobs, while the inspected workflow on main and the research branch declares workflow_dispatch only. No job logs exist. Root cause remains UNKNOWN; do not attribute to invalid YAML or bypass the approval gate.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0638Z",
+        "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0645Z"
+      ]
+    }
+  ]
+}

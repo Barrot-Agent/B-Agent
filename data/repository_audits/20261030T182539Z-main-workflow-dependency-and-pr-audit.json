@@ -1,0 +1,263 @@
+{
+  "schema_version": "1.0",
+  "record_type": "barrot_repository_audit",
+  "audit_id": "BARROT-REPO-AUDIT-20261030T182539Z",
+  "captured_at_utc": "2026-10-30T18:25:39Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "current_main_sha": "53d1becbefe622badc550178fbfe125312df5795",
+  "latest_main_commit": "Cross-analysis refresh [skip ci]",
+  "latest_main_commit_at_utc": "2026-10-30T17:51:50Z",
+  "current_research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "current_research_pr": 1353,
+  "current_research_pr_head": "3fa0da76f972734a5513d7d6f670a3ed260aeef0",
+  "verified_data_head": "deb95b051ab827664f41d1f242232b0d99af4d9d",
+  "data_head_validator_run": 41106502610,
+  "data_head_validator_tests": "19 passed",
+  "data_head_fail_closed_gate_run": 41106502407,
+  "data_head_gate": "PASS_MERGE_DISABLED",
+  "metadata_successor_ci": "not returned at audit cutoff",
+  "main_workflows": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "blob_sha": "143bb2ed89ef4e2d85071a583896adad2c37c81b",
+      "triggers": [
+        "schedule hourly at minute 50",
+        "workflow_run",
+        "workflow_dispatch"
+      ],
+      "permissions": {
+        "contents": "write"
+      },
+      "behavior": "checkout main, generate cross-analysis JSON, git add, commit and push to main; retry path pulls main and pushes again",
+      "risk": "HIGH_AUTOMATIC_MAIN_WRITES",
+      "proposal_pr": 1373
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+      "triggers": [
+        "workflow_dispatch"
+      ],
+      "permissions": {
+        "contents": "write",
+        "pull-requests": "write"
+      },
+      "defaults": {
+        "mode": "merge-queue",
+        "max_prs": 0,
+        "dry_run": false
+      },
+      "capabilities": [
+        "update branches",
+        "merge pull requests",
+        "delete merged branches"
+      ],
+      "risk": "HIGH_MANUAL_MUTATION_CAPABILITY",
+      "proposal_pr": 1369
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "blob_sha": "014806e842a14b3961c4b80f9c4a6e855da3f65e",
+      "triggers": [
+        "daily schedule at 23:55 UTC",
+        "workflow_dispatch"
+      ],
+      "permissions": {
+        "contents": "write"
+      },
+      "behavior": "pip install requests without pin, run variable-horizon accuracy evaluator, commit signal_history.jsonl and signal_accuracy.json to main",
+      "risk": "HIGH_AUTOMATIC_MAIN_WRITES_AND_INVALID_METRIC",
+      "proposal_pr": 1355
+    },
+    {
+      "path": ".github/workflows/barrot-controlled-feature-validation.yml",
+      "blob_sha": "45cfee291d03bbce72c60bbf7d21937c04b78547",
+      "triggers": [
+        "workflow_dispatch only"
+      ],
+      "permissions": {
+        "contents": "read",
+        "pull-requests": "read"
+      },
+      "checkout_persist_credentials": false,
+      "allowlist": "PR #1225 and exact feature branch/head",
+      "risk": "LOW_DECLARED_READ_ONLY",
+      "anomaly": {
+        "run_id": 41094471936,
+        "event": "push",
+        "jobs": 0,
+        "root_cause": "UNKNOWN_NO_JOB_LOGS"
+      }
+    }
+  ],
+  "dependencies": {
+    "requirements_txt_blob_sha": "8c81e45483ed5092afe836070d8aee1d28e6567d",
+    "requirements": "lower-bound-only constraints (e.g. torch>=2.0.0, transformers>=4.40.0, streamlit>=1.35.0, requests>=2.32.0); no upper bounds in inspected file",
+    "lockfile_audit": "NOT_COMPLETED",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "github_actions_pinning": "actions are referenced by mutable version tags (e.g. checkout@v4, setup-python@v5), not immutable commit SHAs",
+    "huggingface_proposal_pr1374": {
+      "ci_run": 41087890290,
+      "tests": "347 passed + 8 subtests",
+      "gate_run": 41087890315,
+      "gate": "PASS_MERGE_DISABLED",
+      "remaining": [
+        "mergekit and transitive dependencies not pinned",
+        "Actions not immutable-SHA pinned",
+        "merges/barrot-superior/config.yaml missing on main",
+        "artifact transfer and actual Hugging Face upload not executed"
+      ]
+    }
+  },
+  "prediction_engine": {
+    "latest_signal": {
+      "timestamp_utc": "2026-10-29T13:23:33Z",
+      "score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "provider_failures": [
+        "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+        "Groq HTTP 429"
+      ],
+      "status": "STALE_NOT_A_FORECAST"
+    },
+    "legacy_accuracy": {
+      "checked": 1683,
+      "correct": 772,
+      "reported_pct": 45.9,
+      "method": "variable elapsed horizon and mutable evaluation state",
+      "status": "NOT_COMPARABLE_NOT_VALID_OUT_OF_SAMPLE_SKILL"
+    },
+    "raw_history_reconciliation": "Not completed in this audit; current evaluator logic and summary were inspected, but no full row-by-row historical outcome audit is claimed.",
+    "fix_pr1355": {
+      "head": "33776a0f838e875a8c1dfedc046105520b75659f",
+      "base": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+      "main_ahead_by": 23,
+      "main_changed_paths_since_base": [
+        ".github/workflows/barrot-controlled-feature-validation.yml",
+        "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ],
+      "no_changed_path_overlap": true,
+      "core_ci_run": 40977830076,
+      "tests": "347 passed + 8 subtests",
+      "gate_run": 40977830097,
+      "gate": "PASS_MERGE_DISABLED",
+      "state": "OPEN_DRAFT_UNMERGED"
+    }
+  },
+  "pull_requests": [
+    {
+      "number": 1353,
+      "head": "3fa0da76f972734a5513d7d6f670a3ed260aeef0",
+      "base": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "data_head": "deb95b051ab827664f41d1f242232b0d99af4d9d",
+      "validator_run": 41106502610,
+      "tests": "19 passed",
+      "gate_run": 41106502407,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1355,
+      "head": "33776a0f838e875a8c1dfedc046105520b75659f",
+      "base": "main",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "core_ci_run": 40977830076,
+      "tests": "347 passed + 8 subtests",
+      "gate_run": 40977830097,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1363,
+      "head": "45c7b187458d076c22797f7fb8ca434c43826a66",
+      "base": "main",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "core_ci_run": 41006916313,
+      "tests": "352 passed + 8 subtests",
+      "gate_run": 41006916326,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1367,
+      "head": "9ee42d8a6d2e90a43e15f80558b7ec599aad84a0",
+      "base": "main",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "core_ci_run": 41038585878,
+      "gate_run": 41038585782,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1369,
+      "head": "6592cdc199f73645f850d96718a4f32ad46e27e8",
+      "base": "main",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "core_ci_run": 41046195282,
+      "gate_run": 41046195358,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1373,
+      "head": "99c5efbdcbff55aea9294d7bbfa235879f812f02",
+      "base": "main",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "core_ci_run": 41061593599,
+      "tests": "347 passed + 8 subtests",
+      "gate_run": 41061593629,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1374,
+      "head": "5f70b26eac93b4835130db2541e085dd2e107ce2",
+      "base": "main",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "core_ci_run": 41087890290,
+      "tests": "347 passed + 8 subtests",
+      "gate_run": 41087890315,
+      "gate": "PASS_MERGE_DISABLED"
+    }
+  ],
+  "security_assessment": {
+    "high_risks": [
+      "cross-analysis scheduled main writes",
+      "signal-accuracy scheduled main writes and invalid legacy metric",
+      "manual merge queue can merge and delete branches with dry_run=false and unlimited max_prs=0",
+      "unpinned Python dependency ranges",
+      "GitHub Actions references not pinned to immutable SHAs"
+    ],
+    "unresolved": [
+      "push-event zero-job approval workflow anomaly",
+      "full dependency lockfile and CVE audit",
+      "full repository CI",
+      "actual Hugging Face artifact transfer test"
+    ]
+  },
+  "access": {
+    "github_connector": "VERIFIED",
+    "claude": "NOT_TESTED",
+    "grok": "NOT_TESTED",
+    "gemini": "NOT_TESTED",
+    "copilot": "NOT_TESTED",
+    "codex": "NOT_TESTED",
+    "hugging_face": "NOT_TESTED",
+    "kaggle": "NOT_TESTED",
+    "databricks": "NOT_TESTED"
+  },
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "workflow_dispatch_performed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false,
+    "full_repository_ci": "NOT_RUN"
+  }
+}

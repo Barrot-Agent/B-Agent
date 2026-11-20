@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "B-AGENT-20261031T162002Z-VALIDATOR-AND-APPROVAL-WORKFLOW-AUDIT",
+  "captured_at_utc": "2026-10-31T16:20:02Z",
+  "main": {
+    "sha": "21ff522fe6457fb472e8140c180f0643b7948b29",
+    "main_modified_by_this_run": false,
+    "last_observed_scheduled_cross_analysis_run": 41216859095,
+    "last_observed_pages_deploy": 41216871854
+  },
+  "branch": {
+    "name": "research/xrp-ledger-shard-migration-20261029T2210Z",
+    "head": "99427ef0daf06ab87ce5323f5bd11dad5ef075d7",
+    "pr": 1353,
+    "state": "OPEN_DRAFT_UNMERGED"
+  },
+  "archive_validation": {
+    "push_run": 41219004757,
+    "push_job": 124589454677,
+    "pr_run": 41219009620,
+    "pr_job": 124589469375,
+    "fail_closed_gate_run": 41219009629,
+    "gate": "PASS_MERGE_DISABLED",
+    "shards_checked": 408,
+    "source_count": 2087,
+    "run_update_count": 351,
+    "limitations": 951,
+    "errors": [
+      "snapshot references unknown source IDs: SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE"
+    ],
+    "snapshot_blob_sha_matched": true,
+    "compileall": "PASS",
+    "isolated_tests": "SKIPPED_AFTER_VALIDATOR_FAILURE",
+    "state_mutated": false
+  },
+  "proposed_repair": {
+    "source_id": "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE",
+    "source_shard": "sources-124-of-124.json",
+    "regression_test": "tests/test_sbic_identity.py",
+    "status": "DESIGNED_AND_COMMITTED_PENDING_EXACT_HEAD_VALIDATION"
+  },
+  "approval_workflow": {
+    "run_id": 41219003766,
+    "event": "push",
+    "jobs": 0,
+    "conclusion": "failure",
+    "workflow_path": ".github/workflows/barrot-approve-pr.yml",
+    "declared_trigger": "workflow_dispatch only",
+    "root_cause": "UNKNOWN"
+  },
+  "scheduler_tick": {
+    "latest_run_id": 41218952011,
+    "status": "SUCCESS",
+    "main_sha_unchanged": true,
+    "queue_mutation_detail": "NOT_RETRIEVED"
+  },
+  "prs": {
+    "open": 191,
+    "drafts": 181,
+    "ready": 10,
+    "main_based": 189,
+    "non_main_based": 2,
+    "current_main_base": 0,
+    "stale_main_based": 189
+  },
+  "main_write_risks": [
+    "cross-analysis.yml contents:write",
+    "scheduler-tick.yml contents:write and actions:write",
+    "rotate-databricks-token.yml new_token input and gh secret set",
+    "merge-queue.yml manual merge capability",
+    "coinbase-paper-trader.yml manual paper-state writer"
+  ],
+  "preservation": {
+    "main_writes_by_this_run": 0,
+    "merges": 0,
+    "force_pushes": 0,
+    "manual_dispatches": 0,
+    "deployments": 0,
+    "paper_positions_mutated": 0,
+    "real_money_trades": 0
+  }
+}

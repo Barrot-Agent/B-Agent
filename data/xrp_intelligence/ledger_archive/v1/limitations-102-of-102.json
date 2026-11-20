@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 101,
+  "chunk_count": 102,
+  "record_count": 6,
+  "records": [
+    {
+      "id": "LIM-20261031T012136Z-01",
+      "category": "cbxrp_liquidator_history_and_disposition",
+      "statement": "The 132 cbXRP liquidation count and $1.07478M USDC repaid/$136.24K bonus are one third-party indexer's attribution to one address, with activity ending October 8. Its realized-take measure covers only 45 transactions and scope is unclear. It does not establish beneficial owner, cbXRP disposition or total market liquidations.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-LIQUIDIFY-MORPHO-CBXRP-LIQUIDATOR-0X4C0F-20261031T012136Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T012136Z-02",
+      "category": "batched_liquidation_scope",
+      "statement": "The 701.6 cbXRP seizure for 829.4 USDC repaid and $105.09 bonus is one log in a 30-liquidation transaction. Retained proceeds are not measured. Do not treat it as batch total or native XRP sold.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-LIQUIDIFY-MORPHO-CBXRP-BATCH-0X24BE-20261031T012136Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T012136Z-03",
+      "category": "coinbase_cbXRP_unwrap_route_not_observed",
+      "statement": "Coinbase officially documents automatic cbXRP-to-native-XRP credit for eligible Coinbase Exchange deposits. This establishes a possible redemption route, not that observed Morpho liquidators used it. No Coinbase deposit, unwrap or subsequent XRP sale was attributed to the liquidators.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z",
+        "SRC-LIQUIDIFY-MORPHO-CBXRP-LIQUIDATOR-0X4C0F-20261031T012136Z",
+        "SRC-LIQUIDIFY-MORPHO-CBXRP-BATCH-0X24BE-20261031T012136Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T012136Z-04",
+      "category": "multiple_morpho_market_parameters",
+      "statement": "At least two distinct cbXRP/USDC Morpho markets are visible with 62.5% and 77% LLTV. A single vault allocation or market snapshot is not total Coinbase product exposure. Coinbase does not publish market IDs or channel loan volume.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-MORPHO-CLEARSTAR-CBXRP-VAULT-20261031T012136Z",
+        "SRC-STEAKHOUSE-CBXRP-USDC-77LLTV-20261031T012136Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T012136Z-05",
+      "category": "vault_allocation_vs_total_market_liquidity",
+      "statement": "Clearstar's $410.85K allocation is one vault position while $6.47M is underlying market liquidity. Neither is total market supply or Coinbase-originated borrowing. No Circle-specific supplier position is established.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-MORPHO-CLEARSTAR-CBXRP-VAULT-20261031T012136Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T012136Z-06",
+      "category": "morpho_public_api_not_yet_executed",
+      "statement": "Morpho documents public REST routes and historical data capabilities, but no API request was executed. Pagination, rate limits, timestamp semantics and completeness must be validated before scheduled ingestion is marked executed.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-MORPHO-PUBLIC-API-DOCS-20261031T012136Z"
+      ]
+    }
+  ]
+}

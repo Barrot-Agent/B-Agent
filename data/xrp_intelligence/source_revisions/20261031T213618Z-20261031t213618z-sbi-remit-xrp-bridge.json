@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T213618Z-SBI-REMIT-XRP-BRIDGE",
+  "source_id": "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "created_at_utc": "2026-10-31T21:36:18Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE",
+      "publisher": "SBI Remit — XRP-based international money transfer service expansion",
+      "url": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2023-09-06",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "SBI Remit says it has used Ripple Payments since 2017 and XRP as a bridge between fiat currencies for Japan-to-Philippines remittances since 2021.",
+        "The Sep2023 expansion covered bank-account payouts in the Philippines, Vietnam and Indonesia.",
+        "SBI VC Trade sends XRP in response to SBI Remit payment requests in real time; Tranglo processes payouts.",
+        "SBI Remit says XRP bridge use reduces the need to pre-fund destination accounts."
+      ],
+      "limitations": [
+        "This documents a 2023 use case, not current volume or inventory.",
+        "Payment throughput is not permanent XRP capital; tokens may turn over and be reused.",
+        "Current corridor volumes and XRP sourcing are undisclosed."
+      ]
+    }
+  ],
+  "findings": [
+    "SBI Remit says it has used Ripple Payments since 2017 and XRP as a bridge between fiat currencies for Japan-to-Philippines remittances since 2021.",
+    "The Sep2023 expansion covered bank-account payouts in the Philippines, Vietnam and Indonesia.",
+    "SBI VC Trade sends XRP in response to SBI Remit payment requests in real time; Tranglo processes payouts.",
+    "SBI Remit says XRP bridge use reduces the need to pre-fund destination accounts."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "This documents a 2023 use case, not current volume or inventory.",
+    "Payment throughput is not permanent XRP capital; tokens may turn over and be reused.",
+    "Current corridor volumes and XRP sourcing are undisclosed."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

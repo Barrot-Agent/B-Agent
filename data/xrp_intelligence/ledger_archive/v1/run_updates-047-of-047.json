@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 46,
+  "chunk_count": 47,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T12:50:29Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T12:50:29Z",
+      "update_type": "XRP_LEDGER_SOURCE_REFERENCE_CORRECTION_EXACT_HEAD_VALIDATION_PASS",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "verified_head_sha": "99fae2a24d0d6b697256d01b89aaac86e0d687f5",
+      "validator_run_id": 41058383260,
+      "validator_tests_passed": 18,
+      "validator_tests_failed": 0,
+      "validator_job": "Validate sharded XRP ledger and regression tests",
+      "validator_log": "python -m pytest --noconftest -o addopts= tests/test_xrp_ledger_index.py -q; 18 passed in 0.11s; compileall passed.",
+      "archive_shards_checked": 125,
+      "source_ids_unique": true,
+      "archive_records_roundtrip": true,
+      "fail_closed_gate_run_id": 41058383279,
+      "fail_closed_gate_status": "PASS_MERGE_DISABLED",
+      "gate_log": "Automatic merge intentionally disabled; no approval, label or merge; no repository content changed.",
+      "prior_failure": {
+        "head_sha": "8caf532646529caedd8b3e3dacc274ca6b3d136b",
+        "validator_run_id": 41058015161,
+        "tests_passed": 17,
+        "tests_failed": 1,
+        "root_cause": "Noncanonical SBIC event source ID in the 12:43 snapshot/graph."
+      },
+      "correction": {
+        "canonical_source_id": "SRC-SBIC-EAST-JAPAN-CHATGPT-SEMINAR-20260305-20261030T0411Z",
+        "successor_snapshot": "data/xrp_intelligence/snapshots/20261030T124900Z-sbi-circle-ripple-source-reference-correction.json",
+        "successor_graph": "data/xrp_intelligence/relationship_graph_addenda/20261030T124900Z-sbi-circle-ripple-source-reference-correction.json",
+        "prior_snapshot_and_graph_preserved": true
+      },
+      "full_repository_ci": "NOT_RUN",
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "main_modified": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    }
+  ]
+}

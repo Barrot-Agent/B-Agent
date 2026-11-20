@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T030130Z-BITNOMIAL-FCM-CIRCLE-ACI-COINBASE-Q3",
+  "captured_at_utc": "2026-10-30T03:01:30Z",
+  "observed_main_sha": "84f991932d3137ae8df49cead40f611a83a97c2c",
+  "nodes": [
+    {
+      "id": "BITNOMIAL_CLEARINGHOUSE",
+      "label": "Bitnomial Clearinghouse LLC",
+      "kind": "CFTC_REGISTERED_DCO"
+    },
+    {
+      "id": "BITNOMIAL_EXCHANGE",
+      "label": "Bitnomial Exchange LLC",
+      "kind": "CFTC_REGULATED_DERIVATIVES_EXCHANGE"
+    },
+    {
+      "id": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "label": "Hidden Road Partners CIV US LLC",
+      "kind": "REGISTERED_FCM_AND_BROKER_DEALER"
+    },
+    {
+      "id": "RIPPLE_PRIME",
+      "label": "Ripple Prime",
+      "kind": "RIPPLE_GROUP_PRIME_BROKER"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "DIGITAL_ASSET_AND_PAYMENT_INFRASTRUCTURE_COMPANY"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_DIGITAL_ASSET"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD",
+      "kind": "RIPPLE_ISSUED_STABLECOIN"
+    },
+    {
+      "id": "CFTC_LETTER_26_05",
+      "label": "CFTC Staff Letter 26-05",
+      "kind": "CONDITIONAL_FCM_NO_ACTION_POSITION"
+    },
+    {
+      "id": "COINBASE_FINANCIAL_MARKETS",
+      "label": "Coinbase Financial Markets Inc.",
+      "kind": "REGISTERED_FCM_REQUESTOR"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase Global",
+      "kind": "EXCHANGE_CUSTODY_DISTRIBUTION_AND_FINANCIAL_PLATFORM"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle Internet Group",
+      "kind": "STABLECOIN_AND_PAYMENT_INFRASTRUCTURE_ISSUER"
+    },
+    {
+      "id": "USDC",
+      "label": "USD Coin",
+      "kind": "CIRCLE_ISSUED_STABLECOIN"
+    },
+    {
+      "id": "ACI_WORLDWIDE",
+      "label": "ACI Worldwide",
+      "kind": "PAYMENTS_ORCHESTRATION_PROVIDER"
+    },
+    {
+      "id": "BRE_B_COLOMBIA",
+      "label": "Bre-B Colombia",
+      "kind": "INTEROPERABLE_INSTANT_PAYMENT_RAIL"
+    },
+    {
+      "id": "TOKYO_SBIC",
+      "label": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "kind": "JAPANESE_SME_INVESTMENT_AND_SUPPORT_COMPANY"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-BITNOMIAL-XRP-RLUSD-MARGIN-AVAILABILITY-20251103",
+      "source": "BITNOMIAL_CLEARINGHOUSE",
+      "target": "XRP",
+      "relationship": "COMPANY_ANNOUNCED_XRP_MARGIN_DEPOSITS_AVAILABLE_TO_INSTITUTIONAL_CLIENTS",
+      "evidence_class": "COMPANY_REPORTED_PRIMARY_OPERATIONAL_ANNOUNCEMENT",
+      "claim": "Bitnomial announced XRP margin deposits available to institutional clients trading leveraged perpetuals, futures and options, subject to applicable regulatory approvals. The same announcement includes RLUSD.",
+      "source_ids": [
+        "SRC-BITNOMIAL-RLUSD-XRP-COLLATERAL-LAUNCH-20251103"
+      ]
+    },
+    {
+      "id": "EDGE-BITNOMIAL-XRP-CURRENT-COLLATERAL-TERMS-20261030",
+      "source": "BITNOMIAL_CLEARINGHOUSE",
+      "target": "XRP",
+      "relationship": "CURRENT_PUBLISHED_DCO_COLLATERAL_HAIRCUT_AND_CAP",
+      "evidence_class": "CONFIRMED_PRIMARY_DCO_RULES_PAGE",
+      "claim": "The current DCO page lists XRP collateral at a 40% haircut and $15M notional limit; XRP product maintenance margin is separately 17%. The collateral haircut, notional cap and product maintenance margin are different controls.",
+      "source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-HRP-CIV-BITNOMIAL-CLEARING-MEMBER-20261030",
+      "source": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "target": "BITNOMIAL_CLEARINGHOUSE",
+      "relationship": "EXACT_LEGAL_ENTITY_LISTED_AS_CLEARING_MEMBER",
+      "evidence_class": "CONFIRMED_PRIMARY_DCO_RULES_PAGE",
+      "claim": "Bitnomial's current clearing-member list includes the exact legal entity Hidden Road Partners CIV US LLC.",
+      "source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-HRP-CIV-RIPPLE-PRIME-LEGAL-ENTITY-20261030",
+      "source": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "target": "RIPPLE_PRIME",
+      "relationship": "RIPPLE_DISCLOSURE_AND_ACQUISITION_BRAND_IDENTITY",
+      "evidence_class": "CONFIRMED_PRIMARY_FCM_DISCLOSURE",
+      "claim": "Ripple's FCM disclosure identifies Hidden Road Partners CIV US LLC as a registered FCM and SEC/FINRA broker-dealer; Ripple separately announced the Hidden Road acquisition closed and Hidden Road became Ripple Prime.",
+      "source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+      ]
+    },
+    {
+      "id": "EDGE-HRP-CIV-CFTC-26-05-CONDITIONAL-XRP-PATH-20261030",
+      "source": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "target": "CFTC_LETTER_26_05",
+      "relationship": "POTENTIAL_FCM_RELIANCE_REQUIRES_ENTITY_SPECIFIC_NOTICE_AND_CONDITIONS",
+      "evidence_class": "CONDITIONAL_REGULATORY_PATH_INFERENCE",
+      "claim": "As a registered FCM, Hidden Road Partners CIV US LLC could potentially rely on the conditional FCM framework only after its own prior WinJammer notice and compliance. During the initial three months it may accept only payment stablecoins, BTC and ETH; after that it may accept other qualifying crypto assets if continuing conditions are met. No public notice or XRP acceptance by this FCM was verified.",
+      "source_ids": [
+        "SRC-CFTC-FAQ-26-05-Q7-Q11-202603",
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206"
+      ]
+    },
+    {
+      "id": "EDGE-CFTC-DCO-CRYPTO-INITIAL-MARGIN-202603",
+      "source": "CFTC_LETTER_26_05",
+      "target": "BITNOMIAL_CLEARINGHOUSE",
+      "relationship": "DCO_MAY_ACCEPT_CRYPTO_AS_INITIAL_MARGIN_WITH_RISK_CONTROLS",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATORY_STAFF_FAQ",
+      "claim": "CFTC staff FAQ says a DCO may accept crypto assets as initial margin if minimal credit, market and liquidity risks are met; the DCO sets stressed-market haircuts and reviews them at least monthly. This DCO-level rule is distinct from the FCM's Letter 26-05 notice and initial-period requirements.",
+      "source_ids": [
+        "SRC-CFTC-FAQ-26-05-Q7-Q11-202603",
+        "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20250717"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-FCM-LETTER-REQUESTOR-20260206",
+      "source": "COINBASE_FINANCIAL_MARKETS",
+      "target": "CFTC_LETTER_26_05",
+      "relationship": "REQUESTOR_OF_FCM_NO_ACTION_POSITION",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATORY_RECORD",
+      "claim": "Coinbase Financial Markets was the requestor context for the FCM collateral no-action position. This does not establish that Coinbase uses XRP collateral, is a Bitnomial clearing member, or has a Ripple Prime collateral relationship.",
+      "source_ids": [
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-Q3-STABLECOIN-AND-DIVERSIFICATION-20261029",
+      "source": "COINBASE",
+      "target": "USDC",
+      "relationship": "GROUP_REPORTED_USDC_BALANCES_AND_ECONOMIC_SHARE",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_RESULTS",
+      "claim": "Coinbase reported $22B average USDC held in its products in Q3, 49% year-over-year growth, and approximately 50% of USDC economics captured over the prior year. It also reported 10.7% crypto trading-volume share, subscription/services at 49% of net revenue, and prediction markets above $200M annualized run-rate.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-OFFICIAL-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-CIRCLE-ACI-USDC-BRE-B-COLOMBIA-20261027",
+      "source": "CIRCLE",
+      "target": "BRE_B_COLOMBIA",
+      "relationship": "USDC_SETTLEMENT_PILOT_VIA_ACI_CONNETIC",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claim": "Circle and ACI announced a Colombia-focused initiative to evaluate USDC settlement alongside existing payment operations through ACI Connetic and Bre-B. The announcement does not identify XRPL or XRP in this implementation and gives no production volume.",
+      "source_ids": [
+        "SRC-CIRCLE-ACI-USDC-COLOMBIA-PILOT-20261027"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-BITNOMIAL-XRP-COLLATERAL-INSTITUTIONAL-UTILITY-20261030",
+      "claim": "Bitnomial's company-announced XRP margin support and published DCO collateral terms create a real institutional collateral utility channel for XRP.",
+      "supporting_source_ids": [
+        "SRC-BITNOMIAL-RLUSD-XRP-COLLATERAL-LAUNCH-20251103",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ],
+      "counter_evidence": [
+        "40% haircut and $15M notional limit are restrictive relative to BTC and ETH terms.",
+        "No customer deposits, collateral utilization, turnover or XRP purchase data is public in the reviewed sources."
+      ],
+      "status": "SUPPORTED_CAPABILITY; ECONOMIC_SCALE_UNKNOWN"
+    },
+    {
+      "id": "HYP-RIPPLE-PRIME-FCM-XRP-COLLATERAL-PATH-20261030",
+      "claim": "Ripple Prime's Hidden Road Partners CIV US LLC has a direct clearing-member path into Bitnomial and could potentially accept XRP customer collateral under Letter 26-05 after satisfying its entity-specific notice and initial-period requirements.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-CFTC-FAQ-26-05-Q7-Q11-202603"
+      ],
+      "counter_evidence": [
+        "No public WinJammer notice, reliance date or XRP customer collateral use was verified.",
+        "FCM and DCO obligations are distinct; clearing-member status does not prove FCM acceptance."
+      ],
+      "status": "STRUCTURAL_PATH_CONFIRMED; ACTUAL_FCM_USE_UNKNOWN"
+    },
+    {
+      "id": "HYP-XRP-COLLATERAL-SPOT-DEMAND-AMPLIFICATION-20261030",
+      "claim": "If institutions must source XRP specifically to post it as margin, collateral acceptance could create incremental XRP inventory demand.",
+      "supporting_source_ids": [
+        "SRC-BITNOMIAL-RLUSD-XRP-COLLATERAL-LAUNCH-20251103",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ],
+      "counter_evidence": [
+        "Institutions may post existing XRP inventory rather than buy in the spot market.",
+        "The $15M notional cap and 40% haircut constrain the published Bitnomial channel.",
+        "No deposits, source-of-XRP data or utilization are available."
+      ],
+      "status": "INFERENCE_UNQUANTIFIED"
+    },
+    {
+      "id": "HYP-CIRCLE-ACI-USDC-PARALLEL-RAIL-20261030",
+      "claim": "Circle's ACI/Bre-B Colombia initiative demonstrates USDC settlement being integrated into existing payment infrastructure independently of XRPL, strengthening a parallel stablecoin payment rail.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-ACI-USDC-COLOMBIA-PILOT-20261027"
+      ],
+      "counter_evidence": [
+        "The announcement describes a pilot/evaluation rather than measured production volume.",
+        "ACI says its orchestration platform supports an evolving multi-provider ecosystem; this is not proof of exclusive competition with Ripple."
+      ],
+      "status": "ANNOUNCED_PILOT; COMMERCIAL_SCALE_UNKNOWN"
+    },
+    {
+      "id": "HYP-COINBASE-DIVERSIFICATION-RESILIENCE-20261030",
+      "claim": "Coinbase's derivatives, prediction-market, stablecoin and subscription expansion may reduce dependence on spot trading cycles.",
+      "supporting_source_ids": [
+        "SRC-COINBASE-Q3-2026-OFFICIAL-20261029"
+      ],
+      "counter_evidence": [
+        "Transaction revenue fell 43% year-over-year.",
+        "Adjusted net income was $78M versus $719M GAAP net income, which included investment gains.",
+        "No XRP-specific contribution is disclosed."
+      ],
+      "status": "STRATEGIC_DIVERSIFICATION_CONFIRMED; CYCLE_IMMUNITY_DISCONFIRMED"
+    },
+    {
+      "id": "HYP-XRP-OCT30-LEVERAGE-DELEVERAGING-20261030",
+      "claim": "Price weakness, falling open interest and long-dominant liquidations are consistent with a leveraged-long deleveraging event.",
+      "supporting_source_ids": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0215Z"
+      ],
+      "counter_evidence": [
+        "Aggregate funding is negative while some venues remain positive.",
+        "Long-account share is not notional exposure.",
+        "Liquidation coverage is incomplete and only five venues are counted."
+      ],
+      "status": "LOW_CONFIDENCE_MARKET_STRUCTURE_INTERPRETATION; NOT_DIRECTIONAL"
+    },
+    {
+      "id": "HYP-XRP-ETF-FLOW-DIFFERENCE-UNIVERSE-EFFECT-20261030",
+      "claim": "The apparent October 28 ETF-flow discrepancy is primarily a fund-universe, provisional-settlement and data-gap methodology difference rather than a single comparable series disagreement.",
+      "supporting_source_ids": [
+        "SRC-CRYPTOKEYHOLE-XRP-ETF-20261030T0230Z",
+        "SRC-XRP-INSIGHTS-ETF-20261030T0301Z"
+      ],
+      "counter_evidence": [
+        "A full issuer-by-issuer crosswalk with matched holdings and share counts has not yet been completed."
+      ],
+      "status": "LIKELY_METHODOLOGY_EFFECT; CROSSWALK_PENDING"
+    }
+  ],
+  "source_ids": [
+    "SRC-BITNOMIAL-RLUSD-XRP-COLLATERAL-LAUNCH-20251103",
+    "SRC-CFTC-FAQ-26-05-Q7-Q11-202603",
+    "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20250717",
+    "SRC-COINBASE-Q3-2026-OFFICIAL-20261029",
+    "SRC-CIRCLE-ACI-USDC-COLOMBIA-PILOT-20261027",
+    "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0215Z",
+    "SRC-CRYPTOKEYHOLE-XRP-ETF-20261030T0230Z",
+    "SRC-XRP-INSIGHTS-ETF-20261030T0301Z",
+    "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20260305",
+    "SRC-COINMARKETCAP-XRP-UNSTAMPED-SPOT-20261030T0301Z",
+    "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+    "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+    "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T1014-PR1303-CI-FINAL",
+  "captured_at_utc": "2026-10-29T10:14:55Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "policy": "Final exact-head CI/gate evidence validates only the draft branch. Main remains unchanged.",
+  "nodes": [
+    {
+      "id": "BARROT_PR1303",
+      "label": "Fresh-main fail-closed XRP summary proposal #1303",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    },
+    {
+      "id": "BARROT_PR1303_CI_FINAL",
+      "label": "PR #1303 core CI final result",
+      "kind": "CI_EVIDENCE"
+    },
+    {
+      "id": "BARROT_PR1303_GATE_FINAL",
+      "label": "PR #1303 fail-closed gate final result",
+      "kind": "GATE_EVIDENCE"
+    },
+    {
+      "id": "BARROT_MAIN_SUMMARY_WORKFLOW",
+      "label": "Main summary workflow still pushes generated output",
+      "kind": "MUTATION_CAPABLE_WORKFLOW"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN57-PR1303-CI",
+      "source": "BARROT_PR1303",
+      "target": "BARROT_PR1303_CI_FINAL",
+      "relationship": "EXACT_HEAD_CORE_CI_PASSED",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "PR #1303 head de96d0ff97d83f7175a98ba77d3a04cae533d889 passed 187 tests plus 4 subtests in 6.63 seconds on run 40855936989. This verifies the proposed branch's tests, not main behavior or forecast quality.",
+      "source_ids": [
+        "SRC-RUN57-20261029T1014Z-PR1303-HEAD",
+        "SRC-RUN57-20261029T1014Z-PR1303-CI-PASS"
+      ]
+    },
+    {
+      "id": "EDGE-RUN57-PR1303-GATE",
+      "source": "BARROT_PR1303",
+      "target": "BARROT_PR1303_GATE_FINAL",
+      "relationship": "FAIL_CLOSED_GATE_PASSED_AUTOMERGE_DISABLED",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "Gate run 40855937424 passed; logs explicitly state automatic merge is disabled and the gate does not approve, label, merge or modify repository content.",
+      "source_ids": [
+        "SRC-RUN57-20261029T1014Z-PR1303-HEAD",
+        "SRC-RUN57-20261029T1014Z-PR1303-GATE-PASS"
+      ]
+    },
+    {
+      "id": "EDGE-RUN57-PR1303-MAIN-BOUNDARY",
+      "source": "BARROT_PR1303",
+      "target": "BARROT_MAIN_SUMMARY_WORKFLOW",
+      "relationship": "FIX_NOT_APPLIED_TO_MAIN",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "PR #1303 remains draft/unmerged; main still has a summary workflow that commits/pushes generated output and still has the invalid signal/summary combination.",
+      "source_ids": [
+        "SRC-RUN57-20261029T1014Z-PR1303-HEAD",
+        "SRC-RUN56-20261029T1014Z-MAIN-SUMMARY-WORKFLOW"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN57-FAIL-CLOSED-SUMMARY",
+      "statement": "Summary output must remain non-directional when signal confidence is zero or model providers fail.",
+      "status": "SAFETY_INVARIANT",
+      "supporting_source_ids": [
+        "SRC-RUN57-20261029T1014Z-PR1303-CI-PASS",
+        "SRC-RUN57-20261029T1014Z-PR1303-GATE-PASS"
+      ],
+      "disconfirming_evidence": [
+        "Source headlines can still be summarized descriptively, but must not be presented as a model forecast or confidence-bearing signal."
+      ],
+      "tests_needed": [
+        "Retain tests for provider failure, missing credentials, zero confidence, malformed/non-finite values, stale signal timestamps and artifact-only workflow."
+      ]
+    }
+  ],
+  "notes": [
+    "DESIGNED: fail-closed signal validation and artifact-only summary workflow.",
+    "EXECUTED: PR #1303 exact-head core CI and fail-closed gate completed.",
+    "VERIFIED: 187 tests plus 4 subtests passed in 6.63 seconds; gate passed.",
+    "NOT VERIFIED: main remains unchanged; PR is draft/unmerged; no forecast skill is established."
+  ]
+}

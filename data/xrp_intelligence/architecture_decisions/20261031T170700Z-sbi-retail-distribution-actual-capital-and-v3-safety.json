@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T170700Z-SBI-RETAIL-DISTRIBUTION-ACTUAL-CAPITAL-AND-V3-SAFETY",
+  "captured_at_utc": "2026-10-31T17:07:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH; NO_MARKET_FEATURE_ADMISSION",
+  "decisions": [
+    "Separate customer-funded SBI VC Trade scheduled XRP purchases from card-point rewards and shareholder-benefit XRP credits.",
+    "Record the DCA mechanism as a customer-funded purchase product only when the customer selects XRP and prefunds JPY; do not infer active plans or executed units.",
+    "Record card points and shareholder XRP coupons as reward/distribution liabilities, not proof of public spot or OTC purchases.",
+    "Keep SBI Group's Ripple strategic-investor/JV relationship distinct from actual XRP treasury holdings or purchases.",
+    "Do not conflate Tokyo SBIC East Japan with SBI Holdings or SBI VC Trade.",
+    "Keep Binance and Liqwall price/derivatives series provider-scoped; do not average open-interest totals or confuse rolling and UTC-day liquidation windows.",
+    "Keep all new market features out of the directional prediction engine pending provenance, point-in-time history and out-of-sample validation.",
+    "PR #1419 and #1420 are bounded fresh-main draft remediations; they remain unmerged and main writers remain active."
+  ],
+  "required_verification": [
+    "Obtain XRP-specific SBI DCA plan counts, monthly JPY order/fill totals and external execution/inventory reconciliation.",
+    "Obtain SBI VISA card XRP selection mix, monthly points and XRP units credited.",
+    "Obtain each SBI shareholder program's eligible-holder count, redemption rate and XRP units credited.",
+    "Reconcile reward liabilities with SBI VC Trade treasury inventory and external spot/OTC purchases.",
+    "Complete exact-head validation of the new research-ledger append.",
+    "Obtain fresh-main workflow remediation review; do not merge without user approval.",
+    "Resolve remaining main-branch writer paths, branch protection evidence, dependency lockfiles and security-alert access."
+  ],
+  "feature_admission": {
+    "product_mechanics": "ADMITTED",
+    "actual_capital_quantity": "BLOCKED",
+    "directional_price_feature": "NOT_ADMITTED"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "source_ids": [
+    "SRC-20261031T170700Z-SBI-VC-TRADE-DCA",
+    "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD",
+    "SRC-20261031T170700Z-SBI-HOLDINGS-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-ARUHI-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-SHINSEI-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-GLOBAL-ASSET-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-VISA-CARD-LAUNCH",
+    "SRC-20261031T170700Z-SBI-VC-TRADE-CORPORATE"
+  ]
+}

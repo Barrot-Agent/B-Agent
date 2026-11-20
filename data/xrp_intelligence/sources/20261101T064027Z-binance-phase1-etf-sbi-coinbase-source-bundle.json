@@ -1,0 +1,430 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "BUNDLE-20261101T064027Z-BINANCE-PHASE1-ETF-SBI-COINBASE",
+  "captured_at_utc": "2026-11-01T06:40:27Z",
+  "source_count": 20,
+  "new_source_ids": [
+    "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T064027Z-XRP-INSIGHTS-ETF-WEEK44",
+    "SRC-20261101T064027Z-MAKETO-XRP-ETF-FLOWS",
+    "SRC-20261101T064027Z-CHAINCATCHER-SOSOVALUE-XRP-ETF",
+    "SRC-20261101T064027Z-KAIRO-TRADE-XRP-OI",
+    "SRC-20261101T064027Z-KODEXIUS-XRP-OI",
+    "SRC-20261101T064027Z-JUSTSCREENER-XRP-OI",
+    "SRC-20261101T064027Z-TRDESK-XRP-OI",
+    "SRC-20261101T064027Z-COINGLASS-XRP-OI",
+    "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+    "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS",
+    "SRC-20261101T064027Z-CIRCLE-USDC-TRANSPARENCY",
+    "SRC-20261101T064027Z-REUTERS-COINBASE-Q3-2026",
+    "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE",
+    "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+    "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+    "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+    "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS",
+    "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT",
+    "SRC-20261101T064027Z-GITHUB-PR1446-SCHEDULED-WRITERS"
+  ],
+  "existing_source_references": [
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T045910Z-GITHUB-PR1444-REMAINING-WRITERS-AUDIT",
+    "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+    "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+    "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+    "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+    "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+    "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+    "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q",
+    "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+    "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+      "publisher": "Binance",
+      "title": "Deposit and withdrawal network status recheck during XRP phase-one window",
+      "url": "https://www.binance.com/en-GB/network",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": null,
+      "evidence_class": "PRIMARY_EXCHANGE_STATUS_PAGE",
+      "independence_group": "BINANCE_OFFICIAL",
+      "claims": [
+        "At retrieval the page displayed last-updated text 2026-10-30 01:00 with timezone undisclosed and a No Data table.",
+        "The page did not expose an XRP-specific available/paused row during the announced 2026-11-01 06:00-09:00 UTC phase-one window."
+      ],
+      "limitations": [
+        "The status page is stale relative to the announced window.",
+        "No XRP availability conclusion can be drawn from an empty status table.",
+        "No successful customer withdrawal transaction was independently observed."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-XRP-INSIGHTS-ETF-WEEK44",
+      "publisher": "XRP Insights",
+      "title": "XRP supply report and spot ETF flows, week ending October 30, 2026",
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-10-31",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-10-31",
+      "evidence_class": "SECONDARY_ISSUER_HOLDINGS_AGGREGATOR",
+      "independence_group": "XRP_INSIGHTS",
+      "claims": [
+        "Reported 1.1966B XRP held across six spot funds plus BITW and approximately $1.503B AUM.",
+        "Reported weekly net holdings change of approximately +3.39M XRP for October 26-30.",
+        "Reported October 29 +6.40M XRP and October 30 -49,932 XRP.",
+        "Flow totals exclude GXRP while its holdings remain included; BITW is included in the tracker universe."
+      ],
+      "limitations": [
+        "Flow is derived from holdings changes, not a direct cash-subscription ledger.",
+        "GXRP flow data is excluded because of a source gap.",
+        "Historical rows include some reconstructed observations; the tracker documents these in its methodology.",
+        "Provider totals cannot be compared without matching fund universe and cutoff."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-MAKETO-XRP-ETF-FLOWS",
+      "publisher": "Maketo",
+      "title": "XRP ETF daily and weekly net-flow tracker",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-11-01T02:22:00Z",
+      "evidence_class": "SECONDARY_ETF_FLOW_AGGREGATOR",
+      "independence_group": "MAKETO",
+      "claims": [
+        "Reported approximately -$496.5K on October 30, +$4.3M over the past week and +$19M over the past month.",
+        "Tracker reports five funds: XRP, XRPZ, XRPC, GXRP and TOXR."
+      ],
+      "limitations": [
+        "Five-fund universe differs from XRP Insights, which includes BITW and other spot funds while excluding GXRP from flow totals.",
+        "Cash-flow methodology is not fully reconciled to issuer-level XRP inventory changes.",
+        "Do not average with holdings-delta data."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-CHAINCATCHER-SOSOVALUE-XRP-ETF",
+      "publisher": "ChainCatcher / SoSoValue",
+      "title": "US XRP spot ETF net inflows on October 29, 2026",
+      "url": "https://www.chaincatcher.com/en/article/2300227",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-10-30T10:01:54Z",
+      "evidence_class": "SECONDARY_ETF_FLOW_AGGREGATOR",
+      "independence_group": "SOSOVALUE_REPUBLISHED_BY_CHAINCATCHER",
+      "claims": [
+        "Reported approximately $8.4316M total net inflow on October 29.",
+        "Reported XRPZ and Bitwise as the largest contributors in the published breakdown."
+      ],
+      "limitations": [
+        "Republished provider data, not a primary issuer cash ledger.",
+        "Fund universe and calculation basis must be matched before comparison with holdings-delta trackers."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-KAIRO-TRADE-XRP-OI",
+      "publisher": "Kairo Trade",
+      "title": "XRP perpetual futures open interest and venue snapshot",
+      "url": "https://kairo.trade/asset/xrp",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-11-01T04:43:00Z",
+      "evidence_class": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "independence_group": "KAIRO_TRADE",
+      "claims": [
+        "Reported approximately $1.9B XRP open interest across 13 venues at 04:43 UTC.",
+        "Reported XRP price near $1.2508, 24-hour turnover near $608.1M and weighted funding near +0.0100% per eight hours.",
+        "Reported venue-specific funding dispersion, including negative Bybit funding and positive Binance funding."
+      ],
+      "limitations": [
+        "Venue and contract inclusion rules are not fully aligned with other aggregators.",
+        "Snapshot is not a consolidated exchange audit feed.",
+        "Do not combine with narrower contract-only or broader CME-inclusive totals."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-KODEXIUS-XRP-OI",
+      "publisher": "Kodexius",
+      "title": "XRP derivatives open-interest snapshot",
+      "url": "https://kodexius.com/crypto/xrp/open-interest",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-11-01T05:34:00Z",
+      "evidence_class": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "independence_group": "KODEXIUS",
+      "claims": [
+        "Reported approximately $749.19M open interest across seven contracts at 05:34 UTC.",
+        "Reported weighted funding near +0.0047% per eight hours and 24-hour volume near $399.61M."
+      ],
+      "limitations": [
+        "Seven-contract universe is narrower than venue-wide aggregators.",
+        "Not comparable to 13-venue or 26-exchange totals.",
+        "The provider's contract inclusion and notional conversion require further audit."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-JUSTSCREENER-XRP-OI",
+      "publisher": "JustScreener",
+      "title": "XRP open interest by exchange",
+      "url": "https://justscreener.com/en/market/XRP/open-interest",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-11-01T05:58:00Z",
+      "evidence_class": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "independence_group": "JUSTSCREENER",
+      "claims": [
+        "Reported approximately $1.6B open interest across nine exchanges at 05:58 UTC.",
+        "Published exchange-level values broadly consistent with a narrower venue set than CME-inclusive aggregators."
+      ],
+      "limitations": [
+        "Exchange universe differs from other providers.",
+        "Not a primary exchange contract ledger.",
+        "Do not average with Kodexius, Kairo, TRdesk or CoinGlass."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-TRDESK-XRP-OI",
+      "publisher": "TRdesk",
+      "title": "XRP derivatives open interest across 26 exchanges",
+      "url": "https://trdesk.com/open-interest/xrp",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": null,
+      "evidence_class": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "independence_group": "TRDESK",
+      "claims": [
+        "Reported approximately $2.66B XRP open interest across 26 exchanges.",
+        "Includes CME in its venue set; CME was shown as a material component."
+      ],
+      "limitations": [
+        "Broader venue and contract universe than perpetual-only dashboards.",
+        "CME futures and perpetual swaps should be separated before model use.",
+        "Page observation time was not exposed in the retrieved result."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-COINGLASS-XRP-OI",
+      "publisher": "CoinGlass",
+      "title": "XRP futures and spot market dashboard",
+      "url": "https://www.coinglass.com/currencies/XRP",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": null,
+      "evidence_class": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "independence_group": "COINGLASS",
+      "claims": [
+        "Dashboard displayed approximately $2.81B open interest, $893.75M futures volume and $166.07M spot volume in the retrieved observation."
+      ],
+      "limitations": [
+        "The page did not expose a synchronized observation timestamp in the captured result.",
+        "Coverage and contract methodology differ from narrower providers.",
+        "Do not use as a point-in-time feature without timestamped raw capture."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+      "publisher": "DefiLlama",
+      "title": "XRP Ledger stablecoin market-cap snapshot",
+      "url": "https://defillama.com/stablecoins/xrpledger",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-10-31",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATOR",
+      "independence_group": "DEFILLAMA",
+      "claims": [
+        "Displayed approximately $799.09M total stablecoin market cap on XRPL.",
+        "Displayed RLUSD dominance near 88.55% and approximately -24.55% seven-day change."
+      ],
+      "limitations": [
+        "Token inclusion and pricing methodology are provider-defined.",
+        "Stablecoin supply is a stock measure, not transfer volume or XRP demand.",
+        "Seven-day change does not identify redemption versus cross-chain migration or reclassification."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS",
+      "publisher": "stables.cool",
+      "title": "XRP Ledger stablecoin supply by asset",
+      "url": "https://stables.cool/chain/xrpledger",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-10-31T06:10:00Z",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATOR",
+      "independence_group": "STABLES_COOL",
+      "claims": [
+        "Displayed approximately $712.2M total XRPL stablecoin supply at 06:10 UTC.",
+        "Displayed approximately $707.4M RLUSD and $4.8M USDC on XRPL."
+      ],
+      "limitations": [
+        "Total stablecoin universe differs from DefiLlama; the totals are not interchangeable.",
+        "On-chain supply does not measure velocity, CEX settlement or net capital flows.",
+        "RLUSD chain-supply change requires transfer, issuance and redemption tracing."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-CIRCLE-USDC-TRANSPARENCY",
+      "publisher": "Circle",
+      "title": "USDC transparency and reserve statistics",
+      "url": "https://www.circle.com/transparency",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-10-29",
+      "evidence_class": "PRIMARY_ISSUER_DISCLOSURE",
+      "independence_group": "CIRCLE_OFFICIAL",
+      "claims": [
+        "Displayed approximately $70.0B USDC in circulation and $71.4B reserve funds as of October 29.",
+        "Displayed seven-day net supply change near -$0.8B, 30-day near -$3.1B and 365-day near -$5.0B."
+      ],
+      "limitations": [
+        "Issuer-level global figures are not XRPL-specific.",
+        "Other aggregators display different total circulating-supply figures and may use different cutoffs or chain coverage.",
+        "Gross issuance/redemption volume is not the same as net supply change."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-REUTERS-COINBASE-Q3-2026",
+      "publisher": "Reuters",
+      "title": "Coinbase Q3 2026 results and strategic diversification",
+      "url": "https://www.reuters.com/business/finance/coinbase-snaps-losing-streak-with-third-quarter-profit-crypto-trading-rebound-2026-10-29/",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-10-29",
+      "evidence_class": "SECONDARY_FINANCIAL_REPORTING",
+      "independence_group": "REUTERS",
+      "claims": [
+        "Reported Coinbase Q3 revenue down approximately 37% and transaction revenue down approximately 43% to $590.2M.",
+        "Reported net income of $718.7M was heavily supported by unrealized crypto investment gains; adjusted net income was materially lower.",
+        "Reported market-share and prediction-market/derivatives diversification indicators, including prediction-market revenue annualized above $200M."
+      ],
+      "limitations": [
+        "Secondary reporting; SEC filings remain primary for financial line items.",
+        "Market-share and annualized revenue figures depend on the cited measurement period and methodology.",
+        "Do not infer XRP-specific trading or collateral demand from company-wide results."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE",
+      "publisher": "SBI Holdings",
+      "title": "Capital and business alliance with Sumitomo Mitsui Financial Group",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-10-30",
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "independence_group": "SBI_OFFICIAL",
+      "claims": [
+        "SBI Holdings and SMFG announced a capital and business alliance to explore stablecoin and digital-finance services.",
+        "The announcement positions the alliance around broader digital-asset and payment infrastructure."
+      ],
+      "limitations": [
+        "The announcement does not establish a Ripple or XRP product integration.",
+        "Exploration and alliance terms are not proof of production flows or committed capital deployment into XRP."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+      "publisher": "SBI Holdings",
+      "title": "SBI, Startale and BlackRock memorandum on tokenized money-market fund and JPYSC",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-10-27",
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "independence_group": "SBI_OFFICIAL",
+      "claims": [
+        "SBI, Startale and BlackRock announced exploratory work linking a tokenized money-market-fund concept with JPYSC.",
+        "The announcement is an MOU/exploration, not a completed public settlement product."
+      ],
+      "limitations": [
+        "No Ripple or XRP integration is identified in the announcement.",
+        "No production transaction volume, tokenized-fund AUM or XRP collateral use is disclosed."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+      "publisher": "SBI Holdings",
+      "title": "SBI Group and Startale join Open Standard",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-10-16",
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "independence_group": "SBI_OFFICIAL",
+      "claims": [
+        "SBI Group and Startale joined Open Standard, a consortium described as having more than 140 participants including Coinbase, BlackRock, Visa, Stripe and Mastercard.",
+        "The announcement describes planned interoperability testing between JPYSC and OUSD."
+      ],
+      "limitations": [
+        "OUSD is distinct from Circle USDC and Ripple RLUSD.",
+        "A planned interoperability test does not establish production usage or XRP routing.",
+        "No direct XRP integration is named."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+      "publisher": "SBI Holdings",
+      "title": "JPYSC issuance and initial SBI VC Trade account distribution",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-06-24",
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "independence_group": "SBI_OFFICIAL",
+      "claims": [
+        "SBI Shinsei Trust Bank announced JPYSC issuance with initial distribution through SBI VC Trade accounts.",
+        "Public-chain circulation was described as a later step after legal, tax and operational issues are addressed."
+      ],
+      "limitations": [
+        "Initial account distribution is not evidence of public-chain circulation.",
+        "No XRP or XRPL bridge requirement is identified."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS",
+      "publisher": "SBI Securities / SBI Holdings",
+      "title": "SBI START bond investor XRP reward campaign",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0220_16126.html",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-02-20",
+      "evidence_class": "PRIMARY_AFFILIATE_ANNOUNCEMENT",
+      "independence_group": "SBI_OFFICIAL",
+      "claims": [
+        "The SBI START bond offering on ibet for Fin included XRP rewards to eligible purchasers according to purchase amount."
+      ],
+      "limitations": [
+        "The bond is not denominated in XRP and is not issued on XRPL.",
+        "The announcement does not establish reward totals, market-purchase amounts or secondary-market demand."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT",
+      "publisher": "SBI Holdings",
+      "title": "SBI shareholder benefit XRP coupon program",
+      "url": "https://www.sbigroup.co.jp/news/2026/0204_16085.html",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-02-04",
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "independence_group": "SBI_OFFICIAL",
+      "claims": [
+        "SBI described a shareholder-benefit program distributing XRP acquisition coupon codes through SBI VC Trade."
+      ],
+      "limitations": [
+        "Coupon distribution is not a disclosed open-market purchase quantity.",
+        "Redemption rates and actual XRP acquired by recipients are not disclosed."
+      ]
+    },
+    {
+      "id": "SRC-20261101T064027Z-GITHUB-PR1446-SCHEDULED-WRITERS",
+      "publisher": "GitHub / Barrot-Agent",
+      "title": "PR #1446 scheduled issue and metrics writer quarantine",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1446",
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "publication_time_utc": "2026-11-01T06:35:00Z",
+      "evidence_class": "PRIMARY_REPOSITORY_CHANGE_AND_CI_EVIDENCE",
+      "independence_group": "BARROT_GITHUB",
+      "claims": [
+        "PR #1446 changes five scheduled workflows to read-only/artifact-first operation and defaults issue-mutating scripts to dry-run.",
+        "Exact head a5f98fa2fc53a8875e45017f5ec4bdcedcead080 passed 346 tests and eight subtests in CI run 41281605535.",
+        "Fail-closed gate run 41281605590 passed with merging disabled."
+      ],
+      "limitations": [
+        "PR remains draft, open and unmerged; main still has the old workflow capabilities.",
+        "CI success verifies the proposed branch, not production deployment or main-branch remediation."
+      ]
+    }
+  ],
+  "notes": [
+    "All new source records were captured from public pages or repository-visible evidence.",
+    "Primary filings and company announcements are separated from secondary market aggregators.",
+    "Provider observations are not averaged where universes, timestamps or methodologies differ.",
+    "No market feature is admitted and no forecast is issued."
+  ]
+}

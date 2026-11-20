@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 156,
+  "chunk_count": 157,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "RUN-XRP-PRE-ESCROW-DERIVATIVES-INGESTION-FRESHNESS-20261031T200209Z",
+      "recorded_at_utc": "2026-10-31T20:02:09Z",
+      "update_type": "XRP_PRE_ESCROW_EVENT_AND_KNOWLEDGE_PIPELINE_FRESHNESS",
+      "data_cutoff_utc": "2026-10-31T20:02:09Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T200209Z-pre-escrow-derivatives-and-ingestion-freshness.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T200209Z-escrow-derivatives-and-knowledge-pipeline-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T200209Z-escrow-event-and-stale-sentiment-feature-admission.json",
+      "repository_audit_path": "data/repository_audits/20261031T200209Z-main-writers-ingestion-freshness-and-pr-base-audit.json",
+      "source_ids": [
+        "SRC-20261031T200209Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261031T200209Z-TRADRADAR-XRP",
+        "SRC-20261031T200209Z-GITHUB-WORKFLOW-PR-AUDIT",
+        "SRC-20261031T200209Z-KB-FRESHNESS",
+        "SRC-20261031T200209Z-XRPL-ESCROW-DOCS"
+      ],
+      "findings": [
+        "1B XRP is FinishAfter eligibility, not execution or sale; 14,271 seconds remained at cutoff.",
+        "Prior 12 cycles re-escrowed 70%, historical baseline only.",
+        "TradRadar: $1.87B OI (+1.70%), price $1.2557 (+1.10%), aggregate funding +0.0050%; Bybit and OKX negative; account ratio not notional.",
+        "XRP/BTC logs are ~54h stale; zero qualifying entries in both adjacent 24h windows; Knowledge Signal Cycle manual-only.",
+        "Cross Analysis created a timestamp-only sentiment_shift update after zero samples; entity profile is full-history, not current.",
+        "200 open PRs; all 198 main-based PRs stale."
+      ],
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "source_references": 5,
+        "missing_source_references": 0,
+        "expected_archive_shards": 433,
+        "expected_source_records": 2134,
+        "expected_run_updates": 360,
+        "expected_limitations": 961
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "safety": {
+        "main_modified": false,
+        "merge": false,
+        "force_push": false,
+        "manual_dispatch": false,
+        "secret_access": false,
+        "trade": false
+      }
+    }
+  ]
+}

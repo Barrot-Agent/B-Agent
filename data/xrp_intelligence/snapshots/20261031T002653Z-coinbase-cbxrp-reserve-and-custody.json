@@ -1,0 +1,300 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T002653Z-COINBASE-CBXRP-RESERVE-AND-CUSTODY",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T002653Z-coinbase-cbxrp-reserve-and-custody.json",
+  "created_at_utc": "2026-10-31T00:26:53Z",
+  "captured_at_utc": "2026-10-31T00:26:53Z",
+  "data_cutoff_utc": "2026-10-31T00:26:53Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T001930Z-rdae53-por-label-and-conditional-xrp-sensitivity.json",
+  "source_ids": [
+    "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+    "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-20260331",
+    "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+  ],
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "findings": [
+    {
+      "finding_id": "F-20261031T002653Z-01",
+      "classification": "DIRECT_COINBASE_XRP_COLLATERALIZATION",
+      "statement": "Coinbase's cbXRP proof-of-reserves page shows 151,405,263.6 XRP held against 151,403,016.069 cbXRP on Base, a derived coverage of 100.001484% and surplus of 2,247.531 XRP. Coinbase says cbXRP is backed 1:1 by XRP held by Coinbase. Twenty XRPL reserve addresses are listed, and their displayed balances sum to within 0.002 XRP of the displayed total.",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ],
+      "disconfirming_evidence": "The page is first-party and dynamic, not an independent audit; its refresh timezone is unspecified and the BaseScan contract link returned 403."
+    },
+    {
+      "finding_id": "F-20261031T002653Z-02",
+      "classification": "COINBASE_XRP_HOLDINGS_AND_COMMERCIAL_ENGAGEMENT_DISCLOSURE",
+      "statement": "Coinbase's disclosure, with holdings dated 31 March 2026, marks XRP as held and commercially engaged in the US/NY trading-assets table and marks XRP and cbXRP held/commercially engaged in the Coinbase Custody Trust Company table. The disclosure defines commercial engagement broadly and does not state holding amounts.",
+      "source_ids": [
+        "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-20260331"
+      ],
+      "disconfirming_evidence": "This is a dated categorical disclosure, not a current dollar/XRP holding amount or evidence of market-making."
+    },
+    {
+      "finding_id": "F-20261031T002653Z-03",
+      "classification": "CBXRP_BASE_NETWORK_AND_GEOGRAPHIC_ACCESS",
+      "statement": "Coinbase's product documentation says wrapped assets are 1:1 backed by assets held in Coinbase custody, cbXRP is supported on Base, and cbXRP is automatically unwrapped when deposited to a Coinbase Exchange account. The help page lists regional send/receive restrictions including Japan and New York State.",
+      "source_ids": [
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+      ],
+      "disconfirming_evidence": "Regional availability is subject to change; the help page does not quantify cbXRP flows or on-chain usage."
+    },
+    {
+      "finding_id": "F-20261031T002653Z-04",
+      "classification": "BINANCE_INCIDENT_ADDRESS_CROSSWALK",
+      "statement": "None of the 20 Coinbase-published cbXRP reserve addresses exactly matches the five Binance-labelled XRPL incident source addresses. This rules out exact address overlap in the displayed reserve set, not broader beneficial-owner, custodian or service-provider relationships.",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ],
+      "disconfirming_evidence": "A string comparison cannot establish ownership relationships or rule out common infrastructure."
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261031T002653Z-01",
+      "asset": "XRP/cbXRP",
+      "metric": "coinbase_cbXRP_reserve_and_supply",
+      "value": {
+        "reserve_xrp": 151405263.6,
+        "total_supply_cbxrp": 151403016.069,
+        "base_token_contract": "0xcb585250f852C6c6bf90434AB21A00f02833a4af",
+        "reserve_address_count": 20,
+        "listed_address_sum_xrp": 151405263.59799996,
+        "listed_sum_delta_from_displayed_total_xrp": 0.0020000338554382324,
+        "coverage_pct": 100.0014844691066,
+        "surplus_xrp": 2247.5309999883175,
+        "displayed_usd_value_reserve_approx": 189650233.18,
+        "display_refresh_displayed": "2026-10-30 13:29 (timezone unspecified)"
+      },
+      "unit": "XRP_cbXRP_USD_percent",
+      "as_of_utc": "2026-10-30T13:29:00_LOCAL_TIMEZONE_UNKNOWN",
+      "retrieved_at_utc": "2026-10-31T00:26:53Z",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ],
+      "classification": "COINBASE_FIRST_PARTY_WRAPPED_ASSET_RESERVE_SNAPSHOT",
+      "admission_status": "CUSTODY_COLLATERAL_BASELINE_NOT_PRICE_FEATURE",
+      "notes": "The 20 displayed XRPL address balances sum to 151,405,263.598 XRP, within 0.002 XRP of the page's 151,405,263.6 total. BaseScan returned 403, so contract supply is not independently chain-verified in this run."
+    },
+    {
+      "observation_id": "OBS-20261031T002653Z-02",
+      "asset": "XRP/cbXRP",
+      "metric": "coinbase_cbXRP_reserve_coverage_and_surplus",
+      "value": {
+        "reserve_xrp": 151405263.6,
+        "supply_cbxrp": 151403016.069,
+        "coverage_pct": 100.0014844691066,
+        "surplus_xrp": 2247.5309999883175,
+        "surplus_pct_of_supply": 0.0014844691065890219
+      },
+      "unit": "XRP_percent",
+      "as_of_utc": "2026-10-30T13:29:00_LOCAL_TIMEZONE_UNKNOWN",
+      "retrieved_at_utc": "2026-10-31T00:26:53Z",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ],
+      "classification": "DERIVED_FROM_COINBASE_FIRST_PARTY_RESERVE_PAGE",
+      "admission_status": "CUSTODY_COLLATERAL_BASELINE_NOT_PRICE_FEATURE",
+      "notes": "Derived coverage is 100.001484%; the displayed reserve exceeds supply by 2,247.531 XRP. This is a first-party published reserve/supply comparison, not an independent audit."
+    },
+    {
+      "observation_id": "OBS-20261031T002653Z-03",
+      "asset": "XRP/cbXRP",
+      "metric": "coinbase_cbXRP_reserve_address_concentration",
+      "value": {
+        "address_count": 20,
+        "top_address_balance_xrp": 39201671.585,
+        "top_address_share_pct": 25.8918816,
+        "top_six_balance_xrp": 89265239.525,
+        "top_six_share_pct": 58.9578178,
+        "top_fourteen_share_pct": 99.9999604,
+        "exact_overlap_with_five_binance_incident_sources": 0
+      },
+      "unit": "XRP_percent_addresses",
+      "as_of_utc": "2026-10-30T13:29:00_LOCAL_TIMEZONE_UNKNOWN",
+      "retrieved_at_utc": "2026-10-31T00:26:53Z",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ],
+      "classification": "DERIVED_ADDRESS_DISTRIBUTION_AND_EXACT_STRING_CROSSWALK",
+      "admission_status": "CUSTODY_CONCENTRATION_CONTEXT_ONLY",
+      "notes": "Address concentration is within one Coinbase-published reserve set; it does not reveal signer/key control. Zero exact-address overlap with the five Binance incident source addresses is a deterministic string comparison only."
+    },
+    {
+      "observation_id": "OBS-20261031T002653Z-04",
+      "asset": "XRP/cbXRP",
+      "metric": "cbXRP_share_of_xrp_circulating_supply",
+      "value": {
+        "cbxrp_supply_xrp_equivalent": 151403016.069,
+        "circulating_supply_reference_xrp": 63350000000,
+        "share_pct": 0.23899450050355173
+      },
+      "unit": "XRP_percent",
+      "as_of_utc": "2026-10-31T00:26:53Z",
+      "retrieved_at_utc": "2026-10-31T00:26:53Z",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z"
+      ],
+      "classification": "APPROXIMATE_SCALE_COMPARISON",
+      "admission_status": "CONTEXT_ONLY_NOT_PRICE_FEATURE",
+      "notes": "Approximate 0.239% using CoinGecko's contemporaneous circulating-supply display; denominator is a third-party dynamic aggregate."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T002653Z-01",
+      "claim": "Coinbase has created a measurable Base-side wrapped-XRP collateral rail: about 151.4M XRP backs 151.4M cbXRP at near-exact 1:1 coverage. This provides custody-backed Base liquidity and locks underlying XRP, but does not by itself prove incremental net XRP demand or price impact.",
+      "assessment": "DIRECT_CUSTODY_COLLATERAL_CONFIRMED_BY_FIRST_PARTY_PAGE; MARKET_IMPACT_UNKNOWN",
+      "supporting_evidence": [
+        "Coinbase cbXRP PoR page reports reserve and supply totals and 20 XRP reserve addresses.",
+        "Coinbase Help states 1:1 backing and Base network support.",
+        "The 20 displayed balances reconcile to within 0.002 XRP of the displayed total."
+      ],
+      "disconfirming_evidence": [
+        "First-party disclosure is not independent audit; Base contract supply was not independently verified due 403.",
+        "cbXRP supply is approximately 0.239% of circulating XRP supply, so its scale is limited relative to total float."
+      ],
+      "unknowns": [
+        "Mint/burn flow history and net changes in cbXRP supply.",
+        "Whether cbXRP collateral is used in DeFi or institutional financing and at what utilization.",
+        "Custody key/signing architecture and independent attestation."
+      ],
+      "confidence": "HIGH_FOR_COINBASE_REPORTED_RESERVE_AND_SUPPLY; LOW_FOR_MARKET_IMPACT"
+    },
+    {
+      "hypothesis_id": "H-20261031T002653Z-02",
+      "claim": "Coinbase's XRP position is broader than spot listing: native XRP holdings and commercial engagement, custody support, cbXRP on Base, and RLUSD distribution across XRPL/Base/Ethereum place Coinbase as a cross-chain XRP/Ripple distribution and custody intermediary. This is an evidence-based strategic-position inference, not proof of coordinated market-making or price control.",
+      "assessment": "MULTI_RAIL_POSITIONING_INFERENCE; PRICE_CONTROL_NOT_ESTABLISHED",
+      "supporting_evidence": [
+        "Coinbase disclosures mark XRP holdings and commercial engagement yes as of 31 March 2026.",
+        "cbXRP reserve page shows 151.4M XRP-backed Base supply.",
+        "Coinbase and Ripple announced RLUSD availability on Prime, Exchange and Retail with XRPL/Base/Ethereum deposits and withdrawals; future collateral is not yet live."
+      ],
+      "disconfirming_evidence": [
+        "Commercial engagement is broadly defined and no holding amount is disclosed.",
+        "RLUSD collateral is future availability and cbXRP supply is modest versus XRP circulation.",
+        "No evidence of coordinated market-making, proprietary directional positioning or price manipulation."
+      ],
+      "unknowns": [
+        "Current Coinbase corporate XRP holdings and institutional customer custody totals.",
+        "cbXRP mint/burn flows, DeFi collateral utilization and market depth by venue.",
+        "Live RLUSD collateral activation and actual XRP collateral eligibility."
+      ],
+      "confidence": "MEDIUM_FOR_MULTI_RAIL_POSITIONING; LOW_FOR_PRICE_CAUSALITY"
+    }
+  ],
+  "limitation_ids": [
+    "LIM-20261031T002653Z-01",
+    "LIM-20261031T002653Z-02",
+    "LIM-20261031T002653Z-03"
+  ],
+  "cbxrp_reserve_addresses": [
+    {
+      "address": "rUf5QkXtwVr9XxCdVhn1pFN7ZyMwGhN5Ng",
+      "balance_xrp": 39201671.585
+    },
+    {
+      "address": "rU7N8Xzf9EJWXUG6sjAy5ZWMJcUjdyiUma",
+      "balance_xrp": 10012713.588
+    },
+    {
+      "address": "rKif7H93DSSCn8gKEdjRWHUeJDM4b6vurN",
+      "balance_xrp": 10012713.588
+    },
+    {
+      "address": "rKPDtetbuPAPbDyyaVht9MBQPCrFN65Qo5",
+      "balance_xrp": 10012713.588
+    },
+    {
+      "address": "rKCoXM19TiWLaqGAsri3bDFWc94iHtaJpD",
+      "balance_xrp": 10012713.588
+    },
+    {
+      "address": "rhYmSnmT5XLNWZzXZAfD1ZNDXeggnDMHuR",
+      "balance_xrp": 10012713.588
+    },
+    {
+      "address": "r3YxGciPmY3HyobVEN8gfmMHDxqHFmU3wU",
+      "balance_xrp": 9755744.519
+    },
+    {
+      "address": "r41Jx7vxzTaXH7nK3P53zUjm4owTdPE2CR",
+      "balance_xrp": 9755744.519
+    },
+    {
+      "address": "rGpqh1aMFFhuB6fsUuvPXjmgvthFtaM8fQ",
+      "balance_xrp": 9616945.996
+    },
+    {
+      "address": "rLRDoTHU6sAdXR7HA1iYdBAvWYcHXn4GBW",
+      "balance_xrp": 9616945.996
+    },
+    {
+      "address": "rpqziPCuAHQ6taD1qghQqgZWv9K513iRnX",
+      "balance_xrp": 9369334.258
+    },
+    {
+      "address": "rajKGWBnMMPMVWFEeA8KJXWbha9YCBQsG2",
+      "balance_xrp": 7467227.216
+    },
+    {
+      "address": "rK67ipQVbZ5EUywDa4BDE7bVnkxBiVYXu",
+      "balance_xrp": 4250151.733
+    },
+    {
+      "address": "rU1DGbMWhrFSJLPcrtKuV5iPyD1wrVgeaU",
+      "balance_xrp": 2307869.836
+    },
+    {
+      "address": "rMbVVXFHaBpSpJhdR1xvy7dkQL1gtnkopg",
+      "balance_xrp": 10
+    },
+    {
+      "address": "rKopBmtBSMmUD6NCFNwGTG3b9ZxNzf7Tt4",
+      "balance_xrp": 10
+    },
+    {
+      "address": "rJUkgjvo3P7qXw8nh6ctHJfGwEoBrRyqhx",
+      "balance_xrp": 10
+    },
+    {
+      "address": "rGoZhmTeMo4Ew7aKQyJaHCA4LbcDo83fRK",
+      "balance_xrp": 10
+    },
+    {
+      "address": "rPLrMQu2RozGABz6FHNaBHkrNLeTThKwNd",
+      "balance_xrp": 10
+    },
+    {
+      "address": "rscyTNHsx52vxVVNb3CvCFyRQMfLtEPYRt",
+      "balance_xrp": 10
+    }
+  ],
+  "cbxrp_address_sum_xrp": 151405263.59799996,
+  "cbxrp_address_sum_delta_xrp": 0.0020000338554382324,
+  "binance_incident_source_addresses": [
+    "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+    "rBtttd61FExHC68vsZ8dqmS3DfjFEceA1A",
+    "rfQ9EcLkU6WnNmkS3EwUkFeXeN47Rk8Cvi",
+    "rarG6FaeYhnzSKSS5EEPofo4gFsPn2bZKk",
+    "rNU4eAowPuixS5ZCWaRL72UUeKgxcKExpK"
+  ],
+  "exact_address_overlap": [],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Retrieve Base contract supply through an accessible independent RPC or verified explorer and reconcile with Coinbase's 151,403,016.069 cbXRP display.",
+    "Track Coinbase cbXRP mint/burn supply and reserve-address balances over time to estimate net XRP lockup and releases.",
+    "Determine whether cbXRP is used as collateral in Base DeFi/institutional lending and quantify utilization from public contracts.",
+    "Cross-check current Coinbase XRP corporate holdings and Prime custody totals from the next financial filing; do not infer amounts from categorical disclosure."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "workflow_dispatches": 0,
+  "paper_state_mutations": 0,
+  "real_money_trades": 0
+}

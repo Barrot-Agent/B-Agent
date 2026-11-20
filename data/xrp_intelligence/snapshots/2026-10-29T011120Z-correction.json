@@ -1,0 +1,398 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T011120Z-CORRECTION",
+  "captured_at_utc": "2026-10-29T01:11:20.367Z",
+  "snapshot_character_count": 18924,
+  "mission_priority": "XRP intelligence and prediction-engine mastery is Barrot's highest-priority mission; Barrot V3 remains the execution and verification foundation.",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "default_branch": "main",
+    "main_sha": "de30245082545242485b894bda53054b50c313aa",
+    "main_protected": true,
+    "research_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+    "research_branch_head_before_snapshot": "ec7f943493452d41a113326a052cd43107bb9679",
+    "previous_index_pointer": {
+      "record_type": "snapshot_reference",
+      "index_format_version": "2.0",
+      "schema_version": "1.0",
+      "captured_at_utc": "2026-10-29T00:09:14.462Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-29T0009Z-CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
+      "snapshot_blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
+      "snapshot_commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe"
+    },
+    "intermediate_snapshot_preserved": {
+      "path": "data/xrp_intelligence/snapshots/2026-10-29T010857Z-handoff.json",
+      "blob_sha": "74fd87473f852700981c172860f1640f7f409434",
+      "captured_at_utc": "2026-10-29T01:08:57.802Z",
+      "indexed_at_capture": false
+    },
+    "main_commit_delta_since_2026_10_29T0009Z": {
+      "previous_main_sha": "950607740de052d804d0b431c481bf2abda37a04",
+      "current_main_sha": "de30245082545242485b894bda53054b50c313aa",
+      "commits_ahead": 29,
+      "changed_paths": [
+        ".github/workflows/ci.yml",
+        "barrot_agent/rendering/asset_loader.py",
+        "barrot_agent/rendering/mesh_topology.py",
+        "barrot_agent/rendering/obj_mesh_loader.py",
+        "barrot_agent/rendering/polygon_triangulation.py",
+        "barrot_agent/rendering/quality_metrics.py",
+        "ping-pongings/knowledge-base/config.json",
+        "ping-pongings/knowledge-base/config_btc.json",
+        "ping-pongings/knowledge-base/entity_cooccurrence.json",
+        "ping-pongings/knowledge-base/entity_sentiment_profile.json",
+        "ping-pongings/knowledge-base/log.jsonl",
+        "ping-pongings/knowledge-base/log_btc.jsonl",
+        "ping-pongings/knowledge-base/sentiment_shift.json",
+        "web/latest_signal.json",
+        "web/latest_signal_btc.json",
+        "web/latest_signal_summary.json",
+        "web/paper_trading_log.jsonl",
+        "web/signal_history.jsonl",
+        "web/signal_history_btc.jsonl"
+      ]
+    },
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false,
+    "external_merge_observed": {
+      "pr_number": 1273,
+      "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1273",
+      "merged_by": "Barrot-Agent",
+      "merged_at_utc": "2026-10-29T01:07:06Z",
+      "merge_commit_sha": "de30245082545242485b894bda53054b50c313aa",
+      "pr_head_sha": "1ed0283b631c021114af05fb991db4e542864564",
+      "base_sha": "2ecaea85c7da993aa1d6f3b31e9fccf8b71c3598",
+      "performed_by_this_run": false,
+      "approval_evidence_in_this_run": "NOT_PRESENT; audit authorization separately",
+      "action": "OBSERVE_AND_AUDIT_ONLY; DO_NOT_REVERT_AUTOMATICALLY"
+    }
+  },
+  "previous_snapshot": {
+    "path": "data/xrp_intelligence/snapshots/2026-10-29T010857Z-handoff.json",
+    "blob_sha": "74fd87473f852700981c172860f1640f7f409434",
+    "captured_at_utc": "2026-10-29T01:08:57.802Z",
+    "preserved_unchanged": true
+  },
+  "current_run_update": {
+    "run_sequence": 120,
+    "source_ids": [
+      "SRC-RUN16-MAIN-HEAD-20261029T010857Z",
+      "SRC-RUN16-LATEST-SIGNAL-20261029T010857Z",
+      "SRC-RUN16-ACCURACY-WORKFLOW-20261029T010857Z",
+      "SRC-RUN16-SUMMARY-WORKFLOW-20261029T010857Z",
+      "SRC-RUN16-PAPER-STATE-20261029T010857Z",
+      "SRC-RUN16-PAPER-LOG-READBACK-20261029T010857Z",
+      "SRC-RUN16-PR1274-CHECKS-20261029T010857Z",
+      "SRC-RUN16-PR1275-CHECKS-20261029T010857Z",
+      "SRC-RUN16-PR1273-STATE-20261029T010857Z",
+      "SRC-RUN16-LEDGER-BRANCH-20261029T010857Z",
+      "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z",
+      "SRC-RUN16-SNAPSHOT-READBACK-20261029T010857Z",
+      "SRC-RUN17-MAIN-HEAD-20261029T011120Z",
+      "SRC-RUN17-PAPER-LOG-BLOB-REPLAY-20261029T011120Z",
+      "SRC-RUN17-PAPER-STATE-20261029T011120Z",
+      "SRC-RUN17-PR1273-MERGE-20261029T011120Z",
+      "SRC-RUN17-PR1274-CHECKS-20261029T011120Z",
+      "SRC-RUN17-PR1275-CHECKS-20261029T011120Z",
+      "SRC-RUN17-ACCURACY-WORKFLOW-20261029T011120Z",
+      "SRC-RUN17-SUMMARY-WORKFLOW-20261029T011120Z",
+      "SRC-RUN17-APPROVAL-WORKFLOW-20261029T011120Z"
+    ],
+    "summary": "Corrected the prior handoff using a successful exact Git-blob replay of the current paper-trading log; recorded the observed PR #1273 merge by Barrot-Agent; preserved all prior snapshots and did not modify main.",
+    "forecast_status": "NOT_ISSUED",
+    "new_synchronized_xrp_market_observations_admitted": 0,
+    "new_relationship_edges": 0,
+    "new_competing_hypotheses": 0
+  },
+  "repository_ci": {
+    "pr1274": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1274",
+      "title": "Safety: retire invalid XRP accuracy scoring on fresh main",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "exact_head_ci": {
+        "status": "PASS",
+        "tests_passed": 147,
+        "duration_seconds": 5.14,
+        "run_id": 40798107398,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798107398"
+      },
+      "fail_closed_gate": {
+        "status": "PASS",
+        "run_id": 40798107409,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798107409"
+      },
+      "behind_current_main_by": 21,
+      "changed_paths": [
+        ".github/workflows/check-signal-accuracy.yml",
+        "scripts/check_signal_accuracy.py",
+        "tests/test_v3_scripts.py"
+      ],
+      "overlap_with_main_since_base": [],
+      "mergeability_at_capture": true,
+      "recheck_required": true
+    },
+    "pr1275": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1275",
+      "title": "Safety: fix controlled approval PR metadata parsing on fresh main",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "exact_head_ci": {
+        "status": "PASS",
+        "tests_passed": 146,
+        "duration_seconds": 6.35,
+        "run_id": 40798190526,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798190526"
+      },
+      "fail_closed_gate": {
+        "status": "PASS",
+        "run_id": 40798190515,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798190515"
+      },
+      "behind_current_main_by": 21,
+      "changed_paths": [
+        ".github/workflows/barrot-approve-pr.yml",
+        "tests/test_v3_scripts.py"
+      ],
+      "overlap_with_main_since_base": [],
+      "mergeability_at_capture": true,
+      "recheck_required": true
+    },
+    "pr1270": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1270",
+      "status": "STALE_PREDECESSOR; PRESERVE OPEN DRAFT; DO_NOT_MERGE_AS_IS",
+      "exact_head_ci": "PASS_147_TESTS",
+      "gate": "PASS"
+    },
+    "pr1271": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1271",
+      "status": "STALE_PREDECESSOR; PRESERVE OPEN DRAFT; DO_NOT_MERGE_AS_IS",
+      "exact_head_ci": "PASS_146_TESTS",
+      "gate": "PASS"
+    },
+    "pr1273": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1273",
+      "title": "Reconcile OBJ topology integration with current main",
+      "state": "closed",
+      "draft": false,
+      "merged": true,
+      "mergeable": true,
+      "changed_files": 9,
+      "exact_head_checks": "NOT_RECONFIRMED_IN_THIS_RUN",
+      "merged_at_utc": "2026-10-29T01:07:06Z",
+      "merged_by": "Barrot-Agent",
+      "merge_commit_sha": "de30245082545242485b894bda53054b50c313aa",
+      "head_sha": "1ed0283b631c021114af05fb991db4e542864564",
+      "base_sha": "2ecaea85c7da993aa1d6f3b31e9fccf8b71c3598",
+      "merge_performed_by_this_run": false,
+      "authorization_audit_required": true
+    },
+    "pr1265": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1265",
+      "title": "Research: compact XRP ledger index with hash-verified snapshot pointer",
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "status": "RESEARCH_BRANCH_REMAINS_DIVERGED; CORE_CI_NOT_TRIGGERED_FOR_RESEARCH_BASE"
+    },
+    "pr1267": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1267",
+      "title": "Safety: deterministic XRP summary fallback and artifact-only workflow on current main",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "status": "SUMMARY_WORKFLOW_FIX_NOT_CONFIRMED_IN_MAIN"
+    }
+  },
+  "main_workflow_audit": {
+    "latest_signal": {
+      "path": "web/latest_signal.json",
+      "blob_sha": "d81cb0d68869cb7e633888d8d0c136858f12e59a",
+      "timestamp": "2026-10-29T00:46:33.621455+00:00",
+      "score": 44,
+      "confidence": 0,
+      "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(11)",
+      "news_score": 88,
+      "news_entries": 11,
+      "interpretation": "Not a valid directional forecast; model credentials are missing, Groq returned HTTP 429, and headline classifier output is not validated price-direction evidence."
+    },
+    "accuracy_workflow": {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "blob_sha": "014806e842a14b3961c4b80f9c4a6e855da3f65e",
+      "has_contents_write": true,
+      "commits_generated_history": true,
+      "pushes_to_main": true,
+      "proposed_fix_pr": 1274
+    },
+    "summary_workflow": {
+      "path": ".github/workflows/signal-summary.yml",
+      "blob_sha": "1718b45beaf1f8aa002ce332b2b828d27049508b",
+      "commits_summary_or_audio": true,
+      "pushes_to_main": true,
+      "proposed_fix_pr": 1267,
+      "current_main_contains_fix": false
+    },
+    "approval_workflow": {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "current_main_blob_sha": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
+      "trigger": "workflow_dispatch only",
+      "current_main_has_invalid_top_level_selectors": true,
+      "proposed_fix_pr": 1275,
+      "historical_zero_job_push_event_root_cause": "UNKNOWN; PR #1275 fixes metadata parsing only"
+    }
+  },
+  "paper_trading": {
+    "state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
+    "cash_usd": 8011.936613782476,
+    "position_size": 0.024901276579239066,
+    "position_product": null,
+    "avg_entry_price": 80436.84,
+    "trade_count": 125,
+    "current_log_blob_sha": "70940ce2a11ab6006bd0ac8aa9e9a15c25f37b5a",
+    "current_log_blob_url": "https://api.github.com/repos/Barrot-Agent/B-Agent/git/blobs/70940ce2a11ab6006bd0ac8aa9e9a15c25f37b5a",
+    "current_log_characters": 1451450,
+    "current_log_records": 2357,
+    "replay": {
+      "method": "Read-only replay of scripts/coinbase_paper_trader.py execute_paper_trade semantics against exact Git blob",
+      "script_blob_sha": "b38ab435f575b6037f05fa8e9ea00fd487d2d9eb",
+      "malformed_jsonl_records": 0,
+      "timestamp_order_errors": 0,
+      "product_universe": [
+        "BTC-USD"
+      ],
+      "action_counts": {
+        "buy": 36,
+        "sell": 89,
+        "hold": 2232
+      },
+      "portfolio_value_mismatches": 0,
+      "portfolio_change_mismatches": 0,
+      "cumulative_return_mismatches": 0,
+      "result_transition_mismatches": 0,
+      "state_numeric_fields_match": true,
+      "position_product_remains_null": true,
+      "first_log_timestamp_offset_from_started_at_seconds": 0.638156,
+      "started_at_offset_interpretation": "Persisted state started about 0.638 seconds before the first log record; expected, not a financial-state mismatch."
+    },
+    "current_full_replay_status": "PASS_READ_ONLY_2357_ROWS",
+    "state_mutated": false
+  },
+  "market_research": {
+    "forecast_status": "NOT_ISSUED",
+    "synchronized_xrp_market_observations_admitted": 0,
+    "prior_market_observations_carried_forward": 63,
+    "relationship_edges_carried_forward": 104,
+    "competing_hypotheses": 70,
+    "new_hypothesis": {
+      "id": "HYP-RUN16-CIRCLE-RESERVE-REVENUE-SENSITIVITY-20261029T010857Z",
+      "status": "INFERENCE_WITH_SECONDARY_CLAIM",
+      "hypothesis": "Circle's reserve-income exposure may be sensitive to rates and stablecoin distribution shifts; an AI-agent-driven migration of balances is a proposed risk scenario, not an observed cause of USDC outflows or XRP demand.",
+      "supporting_evidence": [
+        "The Block reported on 2026-10-27 that Mizuho estimated 10–20% medium-term reserve-revenue downside risk if AI agents steer USDC holders toward higher-yield fiat alternatives or other platforms."
+      ],
+      "counter_hypotheses": [
+        "USDC distribution network effects and payment integrations may offset any balance migration.",
+        "Reserve revenue may change primarily with policy rates and circulation, not AI-agent routing.",
+        "Even if USDC balances migrate, no XRP demand effect follows without chain- and route-level evidence."
+      ],
+      "disconfirming_evidence_needed": [
+        "Issuer filings and subsequent USDC circulation/reserve revenue data show no material impact.",
+        "No observable change in XRPL USDC balances or XRP bridge-path share after relevant adoption events."
+      ],
+      "xrp_link": "INDIRECT_SPECULATIVE_ONLY",
+      "confidence": "LOW",
+      "source_ids": [
+        "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z"
+      ]
+    },
+    "circle_source_claim": {
+      "source": "https://www.theblock.co/news/business/2026-10-27-mizuho-cuts-circle-price-target-431826",
+      "publication_date": "2026-10-27",
+      "claim": "Mizuho reportedly estimated 10–20% medium-term reserve-revenue downside risk if AI agents steer USDC holders toward higher-yield alternatives.",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "not_observed_impact": true,
+      "direct_xrp_link": "NOT_ESTABLISHED"
+    },
+    "coinbase_q3": "Official results scheduled for 2026-10-29 after market close; not available at this capture (local 2026-10-28 evening).",
+    "fomc": "October 28 hold at 3.75%–4.00% with two dissents; no synchronized post-announcement XRP cross-asset panel admitted.",
+    "sbic_identity": "Regional SBIC entities remain distinct; originating phrase does not resolve which entity was intended.",
+    "phrase_investigations": {
+      "ASK_Coin": "UNRESOLVED_ORIGINAL_CONTEXT",
+      "actual_capital": "UNRESOLVED_ORIGINAL_CONTEXT",
+      "SBIC_ChatGPT_SBIC": "UNRESOLVED_ORIGINAL_CONTEXT",
+      "Camilla_Stephenson_YouTube": "CANONICAL_IDENTITY_AND_EXHAUSTIVE_PUBLIC_VIDEO_INVENTORY_UNVERIFIED"
+    }
+  },
+  "platform_coordination": {
+    "verified_live_access": [
+      "ChatGPT",
+      "GitHub repository connector"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "rule": "Do not claim live collaboration without authenticated end-to-end evidence."
+  },
+  "next_actions": [
+    "Audit the PR #1273 merge by Barrot-Agent at 2026-10-29T01:07:06Z; merger authorization is not established in this run. Do not revert or merge anything automatically.",
+    "Recheck PRs #1274 and #1275 against current main; both passed exact-head CI/gates on their own heads but are 21 commits behind and remain draft/unmerged.",
+    "Preserve paper-trading state. Full 2,357-row replay now passes; position_product remains null and no state write is authorized.",
+    "Update the research-ledger index pointer to this correction snapshot; keep the 01:08:57Z intermediate snapshot and the 00:09Z indexed snapshot unchanged.",
+    "Obtain supported core-CI/gate verification for the compact-ledger research branch; do not treat previous PR CI as verification of this index head.",
+    "Remove direct-main writes from the signal-summary workflow through reviewed PR #1267 or a fresh-main successor.",
+    "Reconcile synchronized XRP spot, derivatives, ETF, stablecoin and payment-rail data before feature admission.",
+    "Capture Coinbase's official Q3 results after the October 29 after-market release.",
+    "Continue SBIC/exact-phrase/YouTube identity research and retain disconfirming evidence."
+  ],
+  "limitations": [
+    "2026-10-29T01:11:20.367Z: The intermediate 01:08:57Z snapshot was committed but not indexed; it is preserved unchanged and superseded by this correction snapshot.",
+    "2026-10-29T01:11:20.367Z: PR #1273 was merged by Barrot-Agent at 01:07:06Z. This run did not perform the merge; authorization evidence was not established here. Do not automatically revert.",
+    "2026-10-29T01:11:20.367Z: PRs #1274 and #1275 are 21 commits behind current main. No overlapping paths were observed, but exact-head checks and mergeability must be refreshed before approval.",
+    "2026-10-29T01:11:20.367Z: Current paper-trading log replay passes 2,357 rows, but position_product remains null. BTC-USD is the identity candidate; no state mutation was authorized.",
+    "2026-10-29T01:11:20.367Z: Compact-ledger research-base PR still lacks verified full core CI and latest index-head gate."
+  ],
+  "source_ids": [
+    "SRC-RUN16-MAIN-HEAD-20261029T010857Z",
+    "SRC-RUN16-LATEST-SIGNAL-20261029T010857Z",
+    "SRC-RUN16-ACCURACY-WORKFLOW-20261029T010857Z",
+    "SRC-RUN16-SUMMARY-WORKFLOW-20261029T010857Z",
+    "SRC-RUN16-PAPER-STATE-20261029T010857Z",
+    "SRC-RUN16-PAPER-LOG-READBACK-20261029T010857Z",
+    "SRC-RUN16-PR1274-CHECKS-20261029T010857Z",
+    "SRC-RUN16-PR1275-CHECKS-20261029T010857Z",
+    "SRC-RUN16-PR1273-STATE-20261029T010857Z",
+    "SRC-RUN16-LEDGER-BRANCH-20261029T010857Z",
+    "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z",
+    "SRC-RUN16-SNAPSHOT-READBACK-20261029T010857Z",
+    "SRC-RUN17-MAIN-HEAD-20261029T011120Z",
+    "SRC-RUN17-PAPER-LOG-BLOB-REPLAY-20261029T011120Z",
+    "SRC-RUN17-PAPER-STATE-20261029T011120Z",
+    "SRC-RUN17-PR1273-MERGE-20261029T011120Z",
+    "SRC-RUN17-PR1274-CHECKS-20261029T011120Z",
+    "SRC-RUN17-PR1275-CHECKS-20261029T011120Z",
+    "SRC-RUN17-ACCURACY-WORKFLOW-20261029T011120Z",
+    "SRC-RUN17-SUMMARY-WORKFLOW-20261029T011120Z",
+    "SRC-RUN17-APPROVAL-WORKFLOW-20261029T011120Z"
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_executed": false,
+  "paper_trading_state_mutated": false,
+  "real_money_trade": false
+}

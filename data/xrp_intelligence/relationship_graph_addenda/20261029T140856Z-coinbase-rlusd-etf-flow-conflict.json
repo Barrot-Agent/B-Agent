@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T140856Z-COINBASE-RLUSD-ETF-FLOW-CONFLICT",
+  "captured_at_utc": "2026-10-29T14:08:56.062Z",
+  "observed_main_sha": "2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868",
+  "policy": {
+    "evidence_classes": [
+      "REPOSITORY_OBSERVATION",
+      "PROPOSED_FIX",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "causal_rule": "Descriptive sentiment is not a price forecast. Feature-quality defects must be tested for their effect on out-of-sample performance; a proposed code change is not a deployed fix."
+  },
+  "nodes": [
+    {
+      "id": "COINBASE",
+      "label": "Coinbase distribution and exchange platform",
+      "kind": "COMPANY"
+    },
+    {
+      "id": "RIPPLE_RLUSD",
+      "label": "Ripple USD stablecoin",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "CIRCLE_USDC",
+      "label": "Circle USDC stablecoin",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "NETWORK"
+    },
+    {
+      "id": "XRP_TOKEN_DEMAND",
+      "label": "XRP spot demand and liquidity",
+      "kind": "MARKET_VARIABLE"
+    },
+    {
+      "id": "XRP_ETF_FLOWS",
+      "label": "Reported US XRP ETF flows",
+      "kind": "MARKET_DATA"
+    },
+    {
+      "id": "ETF_FLOW_TRACKERS",
+      "label": "Secondary ETF flow dashboards",
+      "kind": "DATA_SOURCES"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-20261029T140856Z-COINBASE-RLUSD-RAILS",
+      "source": "COINBASE",
+      "target": "RIPPLE_RLUSD",
+      "relationship": "DISTRIBUTES_RLUSD_ON_PRIME_EXCHANGE_RETAIL",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Coinbase announced RLUSD availability on Prime, Exchange and retail app from Oct 28; RLUSD supports deposits/withdrawals across XRPL, Base and Ethereum.",
+      "source_ids": [
+        "SRC-WEB-RIPPLE-COINBASE-RLUSD-20261029T140856Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T140856Z-RLUSD-XRPL-NOT-XRP-DEMAND",
+      "source": "RIPPLE_RLUSD",
+      "target": "XRP_TOKEN_DEMAND",
+      "relationship": "NETWORK_SUPPORT_DOES_NOT_PROVE_XRP_SPOT_DEMAND",
+      "evidence_class": "INFERENCE",
+      "claim": "RLUSD's availability on XRPL may add stablecoin utility, but stablecoin transfers can occur without proportional XRP purchases beyond network-reserve/fee requirements; route-level XRP usage and net spot demand are unmeasured.",
+      "source_ids": [
+        "SRC-WEB-RIPPLE-COINBASE-RLUSD-20261029T140856Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T140856Z-COINBASE-USDC-RLUSD-MULTIISSUER",
+      "source": "COINBASE",
+      "target": "CIRCLE_USDC",
+      "relationship": "MULTISTABLECOIN_DISTRIBUTION_CONTEXT",
+      "evidence_class": "SECONDARY_REPORTED",
+      "claim": "Reuters describes Coinbase as historically centered on USDC while broadening offerings to RLUSD, PYUSD and Open USD. This indicates multiple issuer offerings, not measured USDC displacement.",
+      "source_ids": [
+        "SRC-WEB-REUTERS-COINBASE-RLUSD-20261029T140856Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T140856Z-ETF-TRACKERS-DISAGREE",
+      "source": "ETF_FLOW_TRACKERS",
+      "target": "XRP_ETF_FLOWS",
+      "relationship": "NONCOMPARABLE_SCOPE_UNITS_AND_SETTLEMENT",
+      "evidence_class": "DATA_QUALITY_CONFLICT",
+      "claim": "Secondary trackers differ in fund universe, units and cutoff; one page internally conflicts on the number of funds reporting. Raw flow values must remain source-specific until issuer-level reconciliation.",
+      "source_ids": [
+        "SRC-WEB-ALPHA-XRP-ETF-FLOWS-20261029T140856Z",
+        "SRC-WEB-XRP-INSIGHTS-ETF-FLOWS-20261029T140856Z",
+        "SRC-WEB-CRYPTOETF-XRP-FLOWS-20261029T140856Z",
+        "SRC-WEB-XRPDESK-ETF-FLOWS-20261029T140856Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261029T140856Z-RLUSD-ADDITIVE",
+      "statement": "RLUSD on Coinbase is additive multi-stablecoin distribution and may expand XRPL utility without materially displacing USDC.",
+      "status": "UNTESTED",
+      "supporting_source_ids": [
+        "SRC-WEB-RIPPLE-COINBASE-RLUSD-20261029T140856Z",
+        "SRC-WEB-REUTERS-COINBASE-RLUSD-20261029T140856Z"
+      ],
+      "disconfirming_evidence": [
+        "Coinbase may reallocate balances, incentives or liquidity between issuers; no current balance-share data is available."
+      ],
+      "tests_needed": [
+        "Track issuer-reported circulating supply, Coinbase-reported stablecoin balances/economics, chain-specific RLUSD supply/transfer activity and route-level XRP usage over aligned dates."
+      ]
+    },
+    {
+      "id": "HYP-20261029T140856Z-RLUSD-SHARE-SHIFT",
+      "statement": "RLUSD distribution may shift some Coinbase stablecoin balances or trading activity away from USDC and other stablecoins.",
+      "status": "COMPETING_UNTESTED_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-WEB-REUTERS-COINBASE-RLUSD-20261029T140856Z"
+      ],
+      "disconfirming_evidence": [
+        "A broad multi-issuer strategy may grow total stablecoin use without reducing USDC; no share-shift measurement yet."
+      ],
+      "tests_needed": [
+        "Compare aligned USDC/RLUSD balances, trading pairs, fees and transfer activity before/after launch; control for overall crypto activity and seasonality."
+      ]
+    },
+    {
+      "id": "HYP-20261029T140856Z-XRPL-UTILITY-NO-XRP-SPOT",
+      "statement": "RLUSD usage on XRPL may increase without proportionate XRP spot demand.",
+      "status": "UNTESTED",
+      "supporting_source_ids": [
+        "SRC-WEB-RIPPLE-COINBASE-RLUSD-20261029T140856Z"
+      ],
+      "disconfirming_evidence": [
+        "XRPL transaction routing or liquidity provision could create additional XRP demand in some corridors, but this has not been measured."
+      ],
+      "tests_needed": [
+        "Measure RLUSD corridor flows, XRP bridge-asset path usage, DEX/AMM liquidity and net spot flows with transaction-level exclusions and independent validation."
+      ]
+    },
+    {
+      "id": "HYP-20261029T140856Z-ETF-FLOW-TRACKER-ARTIFACT",
+      "statement": "Apparent short-window XRP ETF flow differences may primarily reflect universe, unit, settlement and tracker-methodology differences rather than opposing real capital flows.",
+      "status": "PLAUSIBLE_DATA_QUALITY_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-WEB-ALPHA-XRP-ETF-FLOWS-20261029T140856Z",
+        "SRC-WEB-XRP-INSIGHTS-ETF-FLOWS-20261029T140856Z",
+        "SRC-WEB-CRYPTOETF-XRP-FLOWS-20261029T140856Z",
+        "SRC-WEB-XRPDESK-ETF-FLOWS-20261029T140856Z"
+      ],
+      "disconfirming_evidence": [
+        "After all fund holdings are aligned, genuine net creations/redemptions may still differ from zero."
+      ],
+      "tests_needed": [
+        "Rebuild daily flows from each issuer's holdings/shares files, normalize units and T+1 cutoffs, preserve exclusions and compare each dashboard to the reconstructed fund-level ledger."
+      ]
+    }
+  ],
+  "notes": [
+    "No ETF-flow feature admitted because the source universes, units and settlement cutoffs are not reconciled.",
+    "Coinbase Global Exchange collateral availability for RLUSD was announced as future rollout; do not describe it as live collateral usage at this cutoff.",
+    "Coinbase and Circle earnings are scheduled events, not price signals.",
+    "No synchronized XRP market panel was admitted; forecast remains NOT_ISSUED."
+  ]
+}

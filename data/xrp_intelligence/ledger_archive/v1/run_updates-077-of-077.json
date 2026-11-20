@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 76,
+  "chunk_count": 77,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T18:22:06Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T18:22:06Z",
+      "update_type": "BINANCE_POR_ETH_WALLET_CONFIRMED_XRPL_ADDRESS_CROSSWALK_STILL_BLOCKED",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "34385c53b92978e30d2293f07635959721c98575",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T182206Z-binance-por-wallet-crosswalk-and-xrpl-cluster.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T182206Z-binance-por-wallet-crosswalk-and-xrpl-cluster.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T182206Z-por-membership-and-reserve-coverage.json",
+      "source_ids": [
+        "SRC-COINDESK-BINANCE14-POR-20261030",
+        "SRC-BINANCE-POR-OFFICIAL-PAGE-20261030",
+        "SRC-WHALEALERT-XRPL-BINANCE-ROTATIONS-2023-2026",
+        "SRC-BITHOMP-BINANCE-XRPL-ACCOUNTS-20261030",
+        "SRC-RANGE-BINANCE-HACK-TIMELINE-20261030"
+      ],
+      "new_sources": 5,
+      "new_relationship_edges": 6,
+      "new_hypotheses": 4,
+      "new_market_observations": 0,
+      "key_findings": "CoinDesk confirms that Binance14, an Ethereum hot wallet, was included in Binance's October 1 PoR and held 89,475 ETH plus 1.26B USDT among 37 assets. CoinDesk estimates the 204,500 ETH theft could reduce ETH reserve coverage from 100% to about 94% if not replenished. This does not establish PoR membership for the five separate XRPL source wallets. Historical Whale Alert transfers and Bithomp activation labels support a Binance-attributed XRPL operational cluster, but the official October 1 downloadable address file remains unavailable through static extraction.",
+      "validation_status": "PENDING_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "safety": {
+        "main_modified": false,
+        "merge_performed": false,
+        "force_push": false,
+        "workflow_dispatch_performed": false,
+        "paper_state_mutated": false,
+        "real_money_trade": false
+      },
+      "next_action": "Retrieve the official October 1 Binance all-address PoR file and exact-match the five XRPL wallets; if not accessible, preserve the explicit unknown and do not estimate XRP reserve coverage."
+    }
+  ]
+}

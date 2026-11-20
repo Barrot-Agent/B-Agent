@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T042000Z-HIDDEN-ROAD-DAILY-SEGREGATION-SERIES",
+  "captured_at_utc": "2026-10-30T04:20:00Z",
+  "nodes": [
+    {
+      "id": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "label": "Hidden Road Partners CIV US LLC / Ripple Prime US FCM",
+      "kind": "REGISTERED_FCM"
+    },
+    {
+      "id": "RIPPLE_DAILY_FCM_INDEX",
+      "label": "Ripple / Hidden Road daily FOCUS II disclosure index",
+      "kind": "PRIMARY_REGULATORY_DISCLOSURE_INDEX"
+    },
+    {
+      "id": "HIDDEN_ROAD_DCO_MARGIN_SERIES",
+      "label": "Hidden Road aggregate customer DCO cash margin series, Oct 16–28 2026",
+      "kind": "AGGREGATE_FCM_CUSTOMER_MARGIN_SERIES"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_DIGITAL_ASSET"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-HIDDEN-ROAD-DAILY-FCM-MARGIN-20261016",
+      "source": "HIDDEN_ROAD_DCO_MARGIN_SERIES",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "DAILY_4D2_CUSTOMER_SEGREGATION_AND_DCO_MARGIN_2026-10-16",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "For 2026-10-16, aggregate FCM customer DCO cash margin was $641734322; required segregation was $602426224. Total segregation/excess not captured in this extraction. No token-level composition is disclosed.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261016-20261030T0420Z"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDEN-ROAD-DAILY-FCM-MARGIN-20261019",
+      "source": "HIDDEN_ROAD_DCO_MARGIN_SERIES",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "DAILY_4D2_CUSTOMER_SEGREGATION_AND_DCO_MARGIN_2026-10-19",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "For 2026-10-19, aggregate FCM customer DCO cash margin was $628784054; required segregation was $595225607. Total segregation/excess not captured in this extraction. No token-level composition is disclosed.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261019-20261030T0420Z"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDEN-ROAD-DAILY-FCM-MARGIN-20261020",
+      "source": "HIDDEN_ROAD_DCO_MARGIN_SERIES",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "DAILY_4D2_CUSTOMER_SEGREGATION_AND_DCO_MARGIN_2026-10-20",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "For 2026-10-20, aggregate FCM customer DCO cash margin was $633790386; required segregation was $602617165. Total segregation was $667975928 and excess was $65358763. No token-level composition is disclosed.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDEN-ROAD-DAILY-FCM-MARGIN-20261021",
+      "source": "HIDDEN_ROAD_DCO_MARGIN_SERIES",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "DAILY_4D2_CUSTOMER_SEGREGATION_AND_DCO_MARGIN_2026-10-21",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "For 2026-10-21, aggregate FCM customer DCO cash margin was $634964753; required segregation was $599936541. Total segregation/excess not captured in this extraction. No token-level composition is disclosed.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261021-20261030T0420Z"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDEN-ROAD-DAILY-FCM-MARGIN-20261022",
+      "source": "HIDDEN_ROAD_DCO_MARGIN_SERIES",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "DAILY_4D2_CUSTOMER_SEGREGATION_AND_DCO_MARGIN_2026-10-22",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "For 2026-10-22, aggregate FCM customer DCO cash margin was $588347717; required segregation was $562005106. Total segregation/excess not captured in this extraction. No token-level composition is disclosed.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261022-20261030T0420Z"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDEN-ROAD-DAILY-FCM-MARGIN-20261023",
+      "source": "HIDDEN_ROAD_DCO_MARGIN_SERIES",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "DAILY_4D2_CUSTOMER_SEGREGATION_AND_DCO_MARGIN_2026-10-23",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "For 2026-10-23, aggregate FCM customer DCO cash margin was $570123149; required segregation was $552095835. Total segregation/excess not captured in this extraction. No token-level composition is disclosed.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261023-20261030T0420Z"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDEN-ROAD-DAILY-FCM-MARGIN-20261026",
+      "source": "HIDDEN_ROAD_DCO_MARGIN_SERIES",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "DAILY_4D2_CUSTOMER_SEGREGATION_AND_DCO_MARGIN_2026-10-26",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "For 2026-10-26, aggregate FCM customer DCO cash margin was $570252807; required segregation was $547047952. Total segregation/excess not captured in this extraction. No token-level composition is disclosed.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261026-20261030T0420Z"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDEN-ROAD-DAILY-FCM-MARGIN-20261027",
+      "source": "HIDDEN_ROAD_DCO_MARGIN_SERIES",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "DAILY_4D2_CUSTOMER_SEGREGATION_AND_DCO_MARGIN_2026-10-27",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "For 2026-10-27, aggregate FCM customer DCO cash margin was $594410456; required segregation was $561659407. Total segregation was $627239386 and excess was $65579979. No token-level composition is disclosed.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261027-20261030T0420Z"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDEN-ROAD-DAILY-FCM-MARGIN-20261028",
+      "source": "HIDDEN_ROAD_DCO_MARGIN_SERIES",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "DAILY_4D2_CUSTOMER_SEGREGATION_AND_DCO_MARGIN_2026-10-28",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "For 2026-10-28, aggregate FCM customer DCO cash margin was $563766164; required segregation was $548123588. Total segregation was $613720673 and excess was $65597085. No token-level composition is disclosed.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261028-20261030T0420Z"
+      ]
+    },
+    {
+      "id": "EDGE-RIPPLE-DAILY-INDEX-LINKS-FOCUS-FILINGS",
+      "source": "RIPPLE_DAILY_FCM_INDEX",
+      "target": "HIDDEN_ROAD_DCO_MARGIN_SERIES",
+      "relationship": "PUBLISHES_DATED_DAILY_FOCUS_II_FILINGS",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE_INDEX",
+      "claim": "The official Ripple-hosted 12-month disclosure index links daily FOCUS II filings for Hidden Road Partners CIV US LLC, with the latest inspected filing dated October 28 and submitted October 29, 2026.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-INDEX-20261030T0420Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-HIDDEN-ROAD-AGGREGATE-MARGIN-DECLINE-NOT-XRP-SELLING-20261030",
+      "claim": "The decline in aggregate Hidden Road customer DCO cash margins and required segregation from October 16 to October 28 reflects changing aggregate FCM customer futures exposures/positions/margin requirements; it is not evidence of XRP selling or XRP collateral withdrawal.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261016-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261028-20261030T0420Z"
+      ],
+      "counter_evidence": [
+        "The series is incomplete and does not provide contract-level/product-level positions.",
+        "Changes in margin may result from price, mix, options, settlement and rule changes."
+      ],
+      "status": "AGGREGATE_SERIES_CONFIRMED; XRP_CAUSAL_LINK_UNKNOWN"
+    },
+    {
+      "id": "HYP-HIDDEN-ROAD-EXCESS-BUFFER-IS-NOT-FREE-CASH-20261030",
+      "claim": "The roughly $65.4–$65.6M excess segregated funds reported on October 20, 27 and 28 are customer segregation buffers above required funds, not proprietary free cash, XRP buying capacity or an investable reserve.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261027-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261028-20261030T0420Z"
+      ],
+      "counter_evidence": [
+        "The FCM's management target is $27.3M, but excess above target remains within the customer segregation framework and cannot be treated as free firm capital."
+      ],
+      "status": "REGULATORY_CLASSIFICATION_CONFIRMED"
+    }
+  ],
+  "source_ids": [
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-INDEX-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261016-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261019-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261021-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261022-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261023-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261026-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261027-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261028-20261030T0420Z"
+  ]
+}

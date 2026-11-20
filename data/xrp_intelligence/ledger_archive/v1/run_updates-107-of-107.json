@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 106,
+  "chunk_count": 107,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T002653Z-COINBASE-CBXRP-RESERVE-AND-CUSTODY-CROSSWALK",
+      "created_at_utc": "2026-10-31T00:26:53Z",
+      "data_cutoff_utc": "2026-10-31T00:26:53Z",
+      "summary": "Added Coinbase's first-party cbXRP proof-of-reserves snapshot: 151,405,263.6 XRP reserves backing 151,403,016.069 cbXRP on Base, 100.001484% derived coverage and 2,247.531 XRP surplus. The page lists 20 XRPL reserve addresses; their displayed balances sum to 151,405,263.598 XRP, only 0.002 below the displayed total. No exact address matches the five Binance incident source wallets. Coinbase's March 31 digital-asset disclosure marks XRP and cbXRP held/commercially engaged; Coinbase defines commercial engagement broadly and gives no amounts. Coinbase Help confirms cbXRP is Base-only and 1:1 backed, with regional send/receive restrictions including Japan and New York. This is a direct institutional custody/collateral rail, not a price-demand feature. No forecast issued.",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+        "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-20260331",
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T002653Z-coinbase-cbxrp-reserve-and-custody.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T002653Z-coinbase-cbxrp-reserve-custody-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T002653Z-coinbase-cbxrp-collateral-data-gates.json",
+      "actions": [
+        "Captured Coinbase's live cbXRP proof-of-reserves page and transcribed all 20 displayed XRPL reserve addresses and balances.",
+        "Summed the 20 balances locally: 151,405,263.598 XRP, within 0.002 XRP of Coinbase's 151,405,263.6 total.",
+        "Compared 151,405,263.6 XRP reserve to 151,403,016.069 cbXRP supply: 100.001484% coverage and 2,247.531 XRP surplus.",
+        "Compared all 20 Coinbase reserve addresses with the five Binance incident source addresses; zero exact string matches.",
+        "Read Coinbase's March 31 digital-asset disclosure and official wrapped-assets help; recorded XRP/cbXRP holding/commercial-engagement status and Base-only wrapped-asset support with regional restrictions.",
+        "BaseScan returned HTTP 403; contract supply was not independently read from Base. Coinbase page remains the first-party source."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "Coinbase cbXRP page is first-party and not an independent audit; displayed refresh timezone is unspecified.",
+        "BaseScan contract page returned HTTP 403; cbXRP supply not independently chain-verified in this run.",
+        "Coinbase's March 31 categorical holdings/commercial-engagement disclosure gives no amounts and is not a current balance.",
+        "No cbXRP mint/burn time series or DeFi collateral utilization has been measured."
+      ],
+      "next_actions": [
+        "Obtain Base contract total supply through an accessible independent RPC/explorer and reconcile with Coinbase page.",
+        "Build a timestamped reserve-address and cbXRP supply time series; measure mint/burn and net XRP lockup/release.",
+        "Trace public cbXRP collateral use in Base lending/DeFi protocols and quantify actual utilization, liquidations and redemption path.",
+        "Reconcile Coinbase's XRP holdings and Prime custody disclosures in the next SEC filing; keep corporate holdings separate from cbXRP backing."
+      ],
+      "source_reference_count": 3,
+      "missing_source_references": 0
+    }
+  ]
+}

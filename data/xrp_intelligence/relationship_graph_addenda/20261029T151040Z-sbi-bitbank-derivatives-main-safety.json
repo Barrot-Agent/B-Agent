@@ -1,0 +1,255 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T151040Z-SBI-BITBANK-DERIVATIVES-MAIN-SAFETY",
+  "captured_at_utc": "2026-10-29T15:10:40Z",
+  "observed_main_sha": "fb2f59012c1ba6d3bf1417d36545bb46028c8f65",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_PRIMARY_SOURCE",
+      "COMPANY_REPORTED",
+      "SECONDARY_UNVERIFIED",
+      "REPOSITORY_OBSERVATION",
+      "PROPOSED_FIX",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "causal_rule": "Ownership, product availability, derivative positioning, and repository test results do not by themselves prove XRP price causality. Keep source scope, cutoff, unit and uncertainty attached to every edge."
+  },
+  "nodes": [
+    {
+      "id": "SBI_GROUP",
+      "label": "SBI Holdings group",
+      "kind": "COMPANY"
+    },
+    {
+      "id": "BITBANK",
+      "label": "bitbank Japanese crypto exchange",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "EXCHANGE_AND_EPI_PROVIDER"
+    },
+    {
+      "id": "SBI_XRP_REWARD_CARD",
+      "label": "SBI/Visa XRP reward-card option",
+      "kind": "RETAIL_DISTRIBUTION"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD stablecoin",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP token",
+      "kind": "CRYPTO_ASSET"
+    },
+    {
+      "id": "XRP_PERPS",
+      "label": "XRP perpetual derivatives positioning",
+      "kind": "MARKET_VARIABLE"
+    },
+    {
+      "id": "TRADRADAR",
+      "label": "TradRadar dashboard",
+      "kind": "SECONDARY_DATA_SOURCE"
+    },
+    {
+      "id": "SEANDRA",
+      "label": "Seandra Binance perpetual dashboard",
+      "kind": "SECONDARY_DATA_SOURCE"
+    },
+    {
+      "id": "BARROT_MAIN",
+      "label": "Barrot-Agent/B-Agent main",
+      "kind": "REPOSITORY"
+    },
+    {
+      "id": "PAPER_STATE",
+      "label": "Persisted simulated paper-trader position",
+      "kind": "REPOSITORY_STATE"
+    },
+    {
+      "id": "XRP_SIGNAL",
+      "label": "Current descriptive XRP signal artifact",
+      "kind": "REPOSITORY_ARTIFACT"
+    },
+    {
+      "id": "MERGE_QUEUE",
+      "label": "Mutation-capable manual merge queue",
+      "kind": "CI_WORKFLOW"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-20261029T151040Z-SBI-BITBANK-OWNERSHIP",
+      "source": "SBI_GROUP",
+      "target": "BITBANK",
+      "relationship": "WHOLLY_OWNS_FROM_2026_10_01",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI Holdings says the acquisition completed Oct 1, 2026 and bitbank became wholly owned.",
+      "source_ids": [
+        "SRC-SBI-BITBANK-COMPLETE-20261029T151040Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151040Z-BITBANK-XRPJPY",
+      "source": "BITBANK",
+      "target": "XRP",
+      "relationship": "PREEXISTING_XRP_JPY_MARKET_ACCESS",
+      "evidence_class": "COMPANY_REPORTED",
+      "claim": "bitbank's official XRP market page documents XRP/JPY access and a May 2017 trading start. SBI ownership combines this existing venue with SBI's exchange group.",
+      "source_ids": [
+        "SRC-BITBANK-XRP-JPY-MARKET-20261029T151040Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151040Z-SBI-XRP-REWARDS",
+      "source": "SBI_GROUP",
+      "target": "SBI_XRP_REWARD_CARD",
+      "relationship": "OFFERS_XRP_AS_REWARD_OPTION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI/Visa reward card permits XRP as a selected crypto reward asset.",
+      "source_ids": [
+        "SRC-SBI-XRP-CARD-20261029T151040Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151040Z-SBI-RLUSD",
+      "source": "SBI_VC_TRADE",
+      "target": "RLUSD",
+      "relationship": "HANDLES_RLUSD_IN_JAPAN_FROM_2026_06_24",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI VC Trade and Ripple announced RLUSD handling in Japan; this is a stablecoin product relationship, not proof of XRP demand.",
+      "source_ids": [
+        "SRC-SBI-RLUSD-JAPAN-20261029T151040Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151040Z-XRP-PERP-LONG-SKEW",
+      "source": "XRP_PERPS",
+      "target": "XRP",
+      "relationship": "LEVERAGE_POSITIONING_MAY_AMPLIFY_SHORT_TERM_VOLATILITY",
+      "evidence_class": "INFERENCE",
+      "claim": "Secondary dashboards report positive funding, high long-account ratios and long liquidations while price is down. This can indicate fragile long positioning but does not establish the next price direction.",
+      "source_ids": [
+        "SRC-WEB-TRADRADAR-XRP-DERIVATIVES-20261029T151040Z",
+        "SRC-WEB-SEANDRA-XRP-BINANCE-PERPS-20261029T151040Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151040Z-MAIN-PAPER-MANUAL-ONLY",
+      "source": "BARROT_MAIN",
+      "target": "PAPER_STATE",
+      "relationship": "MANUAL_EXECUTION_ONLY_BUT_POSITION_IDENTITY_UNVALIDATED",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main no longer has the 30-minute cron schedule, but manual dispatch can still mutate simulated state/log and the nonzero position has null product identity. PR #1334 proposes a script-level guard.",
+      "source_ids": [
+        "SRC-GH-MAIN-PAUSE-SCHEDULE-20261029T151040Z",
+        "SRC-GH-PAPER-WORKFLOW-20261029T151040Z",
+        "SRC-GH-PAPER-STATE-20261029T151040Z",
+        "SRC-GH-PR1334-20261029T151040Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151040Z-MAIN-SIGNAL-NOT-FORECAST",
+      "source": "BARROT_MAIN",
+      "target": "XRP_SIGNAL",
+      "relationship": "INVALID_SIGNAL_MUST_NOT_BE_INTERPRETED_AS_PRICE_FORECAST",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Current artifact reports confidence 0.0 and provider failures; summary still narrates positive sentiment. No calibrated fixed-horizon forecast is issued.",
+      "source_ids": [
+        "SRC-GH-XRP-SIGNAL-20261029T151040Z",
+        "SRC-GH-XRP-SUMMARY-20261029T151040Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T151040Z-MERGE-QUEUE-RISK",
+      "source": "BARROT_MAIN",
+      "target": "MERGE_QUEUE",
+      "relationship": "MANUAL_WORKFLOW_HAS_MUTATION_CAPABILITIES",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main's manual merge queue still has write permissions and merge commands; PR #1335 proposes a read-only replacement.",
+      "source_ids": [
+        "SRC-GH-MERGE-QUEUE-20261029T151040Z",
+        "SRC-GH-PR1335-20261029T151040Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261029T151040Z-SBI-BITBANK-DISTRIBUTION",
+      "statement": "SBI's full ownership of bitbank may strengthen Japanese XRP distribution and execution optionality because bitbank already offers XRP/JPY markets.",
+      "status": "UNTESTED",
+      "supporting_source_ids": [
+        "SRC-SBI-BITBANK-COMPLETE-20261029T151040Z",
+        "SRC-BITBANK-XRP-JPY-MARKET-20261029T151040Z"
+      ],
+      "disconfirming_evidence": [
+        "No post-acquisition XRP/JPY depth, volume, customer migration or net-flow change is measured; SBI said near-term consolidated earnings impact was expected to be limited."
+      ],
+      "tests_needed": [
+        "Compare pre/post acquisition XRP/JPY spread, depth, turnover, active accounts, custody balances and net flows with broader Japan-market controls; check any exchange reporting changes."
+      ]
+    },
+    {
+      "id": "HYP-20261029T151040Z-SBI-MULTI-ASSET-RAILS",
+      "statement": "SBI is building multi-asset digital-asset distribution across XRP rewards and RLUSD handling rather than making an exclusive bet on XRP or stablecoins.",
+      "status": "COMPETING_UNTESTED_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-SBI-XRP-CARD-20261029T151040Z",
+        "SRC-SBI-RLUSD-JAPAN-20261029T151040Z",
+        "SRC-SBI-BITBANK-COMPLETE-20261029T151040Z"
+      ],
+      "disconfirming_evidence": [
+        "Product announcements do not show adoption, balance mix, route usage or whether activity is complementary versus substitutive."
+      ],
+      "tests_needed": [
+        "Track issuer/asset balances, XRP reward conversion and redemption, SBI VC Trade volumes, RLUSD on/off-ramp volumes and route-level XRP bridge use."
+      ]
+    },
+    {
+      "id": "HYP-20261029T151040Z-XRP-PERP-LEVERAGE-FRAGILITY",
+      "statement": "Falling XRP price with slightly rising aggregate open interest, positive funding and larger long liquidations may indicate fragile leveraged-long positioning and elevated squeeze/liquidation risk.",
+      "status": "PLAUSIBLE_BUT_LOW_CONFIDENCE",
+      "supporting_source_ids": [
+        "SRC-WEB-TRADRADAR-XRP-DERIVATIVES-20261029T151040Z",
+        "SRC-WEB-SEANDRA-XRP-BINANCE-PERPS-20261029T151040Z"
+      ],
+      "disconfirming_evidence": [
+        "Funding is modest; the aggregate dashboard and Binance subset differ in cutoff and scope; account ratios are not notional exposure and OI can rise as hedges open."
+      ],
+      "tests_needed": [
+        "Collect synchronized venue-level OI, funding interval, mark/index basis, liquidations, spot depth, volume and positioning with source timestamps; test out of sample against price-only and BTC-risk baselines."
+      ]
+    },
+    {
+      "id": "HYP-20261029T151040Z-SIGNAL-FAIL-CLOSED-NECESSITY",
+      "statement": "A descriptive news score with zero confidence and provider failures should remain NOT_ISSUED until a fixed-horizon target and calibrated out-of-sample model exist.",
+      "status": "ENGINEERING_SAFETY_REQUIREMENT",
+      "supporting_source_ids": [
+        "SRC-GH-XRP-SIGNAL-20261029T151040Z",
+        "SRC-GH-XRP-SUMMARY-20261029T151040Z",
+        "SRC-GH-PR1334-CI-20261029T151040Z"
+      ],
+      "disconfirming_evidence": [
+        "None for the fail-closed requirement; a separate calibrated model could later qualify after independent evaluation."
+      ],
+      "tests_needed": [
+        "Keep provider-failure, malformed-input and stale-signal tests; separately build leakage-safe walk-forward evaluation and calibration before issuing a forecast."
+      ]
+    }
+  ],
+  "notes": [
+    "The acronym SBIC remains context-dependent; this snapshot adds verified SBI Group corporate and product relationships but does not resolve the original phrase's intended entity.",
+    "SBI's bitbank acquisition and XRP/JPY access are confirmed, but market impact remains unmeasured.",
+    "Derivatives observations are secondary and non-admitted; do not use them as forecast features until synchronized and independently corroborated.",
+    "Coinbase Q3 results are scheduled after US market close Oct 29; Circle Q3 results are scheduled Nov 4 at 08:00 ET. These are monitoring events, not directional signals.",
+    "Main's paper-trader cron schedule is already removed; manual dispatch remains unsafe until the position identity guard is approved and merged.",
+    "Main's merge queue remains mutation-capable; PR #1335 is draft/unmerged."
+  ]
+}

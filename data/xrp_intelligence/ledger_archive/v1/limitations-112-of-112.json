@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 111,
+  "chunk_count": 112,
+  "record_count": 6,
+  "records": [
+    {
+      "id": "LIM-20261031T050500Z-BINANCE-XRP-ALLOCATION",
+      "category": "token_specific_replenishment_unknown",
+      "statement": "Binance's October 30 Security Incident Update #2 reports more than $6.34B company funds set aside, $5B held in exact affected token assets and remaining relevant token purchases through market/OTC channels, but no token-level XRP allocation, purchase quantity, execution venue, fill or settlement was disclosed.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-BINANCE-UPDATE2-0505Z",
+        "SRC-20261031-REUTERS-BINANCE-RESERVE-0505Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T050500Z-BINANCE-WITHDRAWAL-POR-TIMING",
+      "category": "incident_update_not_yet_verified",
+      "statement": "At the 2026-10-31T05:05Z cutoff, no later official announcement verifying withdrawal resumption or the initial post-incident PoR snapshot was found. The approximately 12-hour initial snapshot target from the Oct30 19:33Z update is 2026-10-31 07:33Z; the approximately 34-hour withdrawal target is 2026-11-01 05:33Z; results were expected by Nov2. These are targets, not completed events.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-BINANCE-UPDATE2-0505Z",
+        "SRC-20261031-COINDESK-BINANCE-BREACH-0505Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T050500Z-XRP-OI-UNIVERSE",
+      "category": "derivatives_market_data_non_comparable",
+      "statement": "Kodexius reports $739.41M XRP OI across seven contracts at 00:14Z Oct31; TradRadar reports $1.85B across seven exchanges at 23:20Z Oct30. Different contract/venue universes and observation times prevent averaging or treating the difference as a market move. Preserve provider-specific series until contract-level coverage is reconciled.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-OI-0014Z",
+        "SRC-20261031-TRADRADAR-XRP-OI-2320Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T050500Z-XRP-DAILY-CANDLE-CAUSALITY",
+      "category": "event_study_confounding",
+      "statement": "Investing.com daily candles show Oct29 XRP -6.84% and Oct30 +1.22%, but the Oct29 daily interval includes the Binance incident and other market events. Daily OHLC cannot identify incident causality; synchronized BTC/ETH controls, event-level spot depth, venue-specific derivatives and exact incident timestamps are required.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-INVESTING-XRP-HISTORY-0505Z",
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T050500Z-MAIN-WORKFLOW-INVENTORY",
+      "category": "repository_workflow_inventory_not_exhaustive",
+      "statement": "GitHub code search and targeted file reads identified multiple scheduled write-capable workflows, but this is not a complete permission audit of every workflow, action, repository ruleset or effective token setting. The first open-PR page returned 100 items; the last full open-PR count of 168 is from 04:28Z and was not refreshed. Some workflows have contents:write but their exact mutation target/run was not established.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GITHUB-CROSS-ANALYSIS-0505Z",
+        "SRC-20261031-GITHUB-ACCURACY-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-SCHEDULER-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-SELFDEPLOY-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-SUBSCRIBER-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-PINGPONG-ENGINE-0505Z",
+        "SRC-20261031-GITHUB-RIEMANN-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-GUMROAD-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-WEBMCP-SANDBOX-0505Z",
+        "SRC-20261031-GITHUB-WEBMCP-MONETIZATION-0505Z",
+        "SRC-20261031-GITHUB-TRANSPARENCY-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-HOVER-WORKFLOW-0505Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T050500Z-PR-REMEDIATION-SCOPE",
+      "category": "partial_safety_remediation",
+      "statement": "PR #1395 only disables the scheduler-tick queue writer/dispatcher if approved and merged. PR #1392 proposes read-only cross-analysis, signal-accuracy and telemetry behavior but remains draft/unmerged and does not address all other scheduled writers. Main remains exposed until each relevant change is reviewed and approved; no merge was authorized.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GITHUB-PR1392-0505Z",
+        "SRC-20261031-GITHUB-PR1395-0505Z",
+        "SRC-20261031-GITHUB-PR1395-CI-0505Z",
+        "SRC-20261031-GITHUB-PR1395-GATE-0505Z"
+      ]
+    }
+  ]
+}

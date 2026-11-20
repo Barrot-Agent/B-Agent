@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_snapshot",
+  "audit_id": "AUDIT-20261031T025600Z-MAIN-REPEAT-WRITE-AND-TELEMETRY-PR1391",
+  "audit_path": "data/repository_audits/20261031T025600Z-main-repeat-write-and-telemetry-pr1391.json",
+  "snapshot_path": "data/repository_audits/20261031T025600Z-main-repeat-write-and-telemetry-pr1391.json",
+  "created_at_utc": "2026-10-31T02:56:00Z",
+  "captured_at_utc": "2026-10-31T02:56:00Z",
+  "data_cutoff_utc": "2026-10-31T02:56:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "b3759544b72a1db392b7e437c85cf4970cdcac74",
+  "main_protected_flag": true,
+  "branch_protection_details_status": "NOT_ACCESSIBLE_403",
+  "source_ids": [
+    "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+    "SRC-GH-PAGES-DEPLOY-41161885309-20261031T025208Z",
+    "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z",
+    "SRC-GH-PR1391-TELEMETRY-READONLY-20261031T025440Z",
+    "SRC-GH-PR-INVENTORY-20261031T025600Z",
+    "SRC-GH-SCHEDULER-TICK-41161577082-20261031T024755Z"
+  ],
+  "source_reference_count": 6,
+  "missing_source_references": 0,
+  "main_write_evidence": [
+    {
+      "workflow": "Cross Analysis",
+      "run_id": 41161874626,
+      "event": "schedule",
+      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41161874626",
+      "run_head_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+      "commit_sha": "b3759544b72a1db392b7e437c85cf4970cdcac74",
+      "commit_message": "Cross-analysis refresh [skip ci]",
+      "push_log": "7a780de..b375954 main -> main",
+      "changed_paths": [
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ],
+      "commit_signed": false,
+      "script_output": "XRP: insufficient data in one or both windows (recent n=0, prior n=0); BTC: insufficient data in one or both windows (recent n=0, prior n=0).",
+      "causal_attribution": "CONFIRMED_BY_RUN_LOG_AND_SUCCESSFUL_GIT_PUSH"
+    },
+    {
+      "workflow": "Barrot Autonomous Self-Deployment",
+      "run_id": 41148251682,
+      "event": "schedule",
+      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41148251682",
+      "commit_sha": "f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9",
+      "changed_paths": [
+        "AUTONOMOUS_DEPLOYMENT_REPORT.md"
+      ],
+      "pages_deployment_run_id": 41148264821,
+      "causal_attribution": "CONFIRMED_BY_SUCCESSFUL_WORKFLOW_COMMIT_AND_DOWNSTREAM_PAGES_DEPLOYMENT"
+    }
+  ],
+  "scheduler_tick": {
+    "run_id": 41161577082,
+    "event": "schedule",
+    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41161577082",
+    "entries_fired": 0,
+    "queue_entries": 1,
+    "commit_push_step": "executed",
+    "push_result": "Everything up-to-date",
+    "main_mutation": "NONE_IN_THIS_RUN",
+    "write_capability": "PRESENT"
+  },
+  "workflow_inventory": {
+    "scheduled_main_write_paths": [
+      ".github/workflows/cross-analysis.yml",
+      ".github/workflows/check-signal-accuracy.yml",
+      ".github/workflows/scheduler-tick.yml",
+      ".github/workflows/autonomous_self_deployment.yml"
+    ],
+    "manual_mutation_paths": [
+      ".github/workflows/merge-queue.yml"
+    ],
+    "automatic_merge_workflow": "barrot-pr-automerge.yml is workflow_dispatch-only and fail-closed; no automatic merge performed."
+  },
+  "open_pr_inventory": {
+    "open_pr_count": 166,
+    "draft_count": 156,
+    "ready_for_review_count": 10,
+    "main_based_count": 164,
+    "current_main_base_count": 1,
+    "stale_main_base_count": 163,
+    "non_main_base_count": 2,
+    "as_of_utc": "2026-10-31T02:56:00Z"
+  },
+  "safety_prs": [
+    {
+      "number": 1386,
+      "head_sha": "74c47f2a8a64aefc96ff64f3247bbf48789da052",
+      "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+      "state": "OPEN",
+      "draft": true,
+      "mergeable": true,
+      "ci_run_id": 41158736348,
+      "ci_tests_passed": 354,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41158736337,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "purpose": "Remove scheduled cross-analysis main writes and quarantine legacy accuracy",
+      "base_status": "ONE_COMMIT_BEHIND_MAIN"
+    },
+    {
+      "number": 1390,
+      "head_sha": "19f4f9181b439f5399a43ba5df6112a92e11b8d2",
+      "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+      "state": "OPEN",
+      "draft": true,
+      "mergeable": true,
+      "ci_run_id": 41158871301,
+      "ci_tests_passed": 348,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41158871353,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "purpose": "Restrict scheduler dispatch to validation allowlist",
+      "base_status": "ONE_COMMIT_BEHIND_MAIN",
+      "remaining_issue": "Queue commit/push capability remains"
+    },
+    {
+      "number": 1388,
+      "head_sha": "854f52bd50a333a94c16cda7234942a69301e540",
+      "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+      "state": "OPEN",
+      "draft": true,
+      "mergeable": true,
+      "ci_run_id": 41158878672,
+      "ci_tests_passed": 344,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41158878561,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "purpose": "Read-only merge queue and deployment gate",
+      "base_status": "ONE_COMMIT_BEHIND_MAIN"
+    },
+    {
+      "number": 1391,
+      "head_sha": "fc97396245f3b90d79645a57643333104e67f339",
+      "base_sha": "b3759544b72a1db392b7e437c85cf4970cdcac74",
+      "state": "OPEN",
+      "draft": true,
+      "mergeable": true,
+      "ci_run_id": 41162060701,
+      "ci_tests_passed": 349,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41162060753,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "purpose": "Read-only telemetry artifact workflow",
+      "base_status": "CURRENT_MAIN"
+    }
+  ],
+  "repository_checks": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "security_alerts": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "branch_protection_details": "NOT_ACCESSIBLE_403"
+  },
+  "findings": [
+    {
+      "finding_id": "RA-20261031T025600Z-01",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Scheduled Cross Analysis run 41161874626 pushed main commit b375954; its only changed path was sentiment_shift.json, and XRP/BTC shift windows had zero observations."
+    },
+    {
+      "finding_id": "RA-20261031T025600Z-02",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The b375954 main push triggered successful GitHub Pages deployment run 41161885309."
+    },
+    {
+      "finding_id": "RA-20261031T025600Z-03",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Scheduled telemetry workflow run 41148251682 committed f97ac7a to main and the resulting main push triggered successful Pages deployment run 41148264821."
+    },
+    {
+      "finding_id": "RA-20261031T025600Z-04",
+      "classification": "CONFIRMED_FACT",
+      "statement": "PR #1391 exact-head CI passed 349 tests plus 8 subtests and its fail-closed gate passed; it remains draft, open and unmerged."
+    },
+    {
+      "finding_id": "RA-20261031T025600Z-05",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Scheduler Tick run 41161577082 fired zero entries and pushed no changes, but the workflow retained a commit/push step and write capability."
+    },
+    {
+      "finding_id": "RA-20261031T025600Z-06",
+      "classification": "UNKNOWN",
+      "statement": "Detailed branch protection rules and any bypass actor remain unavailable; the main branch API reports protected=true while scheduled workflow pushes succeeded."
+    }
+  ],
+  "main_changed_by_this_run": false,
+  "main_changed_by_scheduled_workflow": true,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false,
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "status": "PENDING_EXACT_HEAD_VALIDATION"
+}

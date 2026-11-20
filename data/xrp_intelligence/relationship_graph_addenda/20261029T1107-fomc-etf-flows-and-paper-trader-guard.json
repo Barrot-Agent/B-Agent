@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T1107-FOMC-ETF-PAPER-TRADER",
+  "captured_at_utc": "2026-10-29T11:07:45Z",
+  "observed_main_sha": "93ebf983d803b567c88d9026dc64f02732203e4b",
+  "policy": "Treat official macro statements as event context, distinguish fund-flow universe/cutoff differences, and separate paper-trading state mutations from real-money trades. No XRP forecast is issued from these sources alone.",
+  "nodes": [
+    {
+      "id": "FED_FOMC",
+      "label": "Federal Open Market Committee",
+      "kind": "MACRO_POLICY_ENTITY"
+    },
+    {
+      "id": "XRP_MARKET",
+      "label": "XRP spot and derivatives markets",
+      "kind": "CRYPTO_ASSET_MARKET"
+    },
+    {
+      "id": "XRP_SPOT_ETF_FLOWS",
+      "label": "US XRP spot ETF flow proxies",
+      "kind": "INSTITUTIONAL_FLOW_DATA"
+    },
+    {
+      "id": "ALPHA_FINANCE",
+      "label": "Alpha Finance ETF-flow series",
+      "kind": "SECONDARY_DATA_AGGREGATOR"
+    },
+    {
+      "id": "XRP_INSIGHTS",
+      "label": "XRP Insights issuer-holdings dataset",
+      "kind": "SECONDARY_DATA_FROM_ISSUER_HOLDINGS"
+    },
+    {
+      "id": "PAPER_TRADER_STATE",
+      "label": "B-Agent simulated paper-trading state",
+      "kind": "SIMULATION_STATE"
+    },
+    {
+      "id": "PAPER_TRADER_WORKFLOW",
+      "label": "Coinbase Paper Trader GitHub workflow",
+      "kind": "SCHEDULED_REPOSITORY_MUTATION"
+    },
+    {
+      "id": "PR1306",
+      "label": "PR #1306 manual-only paper-trader identity guard",
+      "kind": "DRAFT_UNMERGED_REMEDIATION"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN61-FOMC-MIXED-POLICY",
+      "source": "FED_FOMC",
+      "target": "XRP_MARKET",
+      "relationship": "MACRO_POLICY_EVENT_WITH_MIXED_RATE_SIGNAL",
+      "evidence_class": "CONFIRMED_POLICY_EVENT_PLUS_UNTESTED_MARKET_EFFECT",
+      "claim": "The Fed held rates at 3.75%-4.00%, but two voters preferred a 25 bp hike and the statement emphasized elevated inflation and geopolitical uncertainty. The event may influence broad liquidity/risk appetite; direct XRP response and causal magnitude are not established.",
+      "source_ids": [
+        "SRC-FED-FOMC-STATEMENT-20261028"
+      ]
+    },
+    {
+      "id": "EDGE-RUN61-ALPHA-ETF-FLOWS",
+      "source": "ALPHA_FINANCE",
+      "target": "XRP_SPOT_ETF_FLOWS",
+      "relationship": "REPORTS_FIVE_FUND_DOLLAR_FLOW_SERIES",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "claim": "Alpha Finance reports zero net flow on Oct 28 and +90.4M USD over 30 sessions across its five-fund series. Treat as one secondary proxy with its own universe and cutoff.",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-RUN61-XRPINSIGHTS-ETF-FLOWS",
+      "source": "XRP_INSIGHTS",
+      "target": "XRP_SPOT_ETF_FLOWS",
+      "relationship": "REPORTS_ISSUER_HOLDINGS_CHANGES_IN_XRP_UNITS",
+      "evidence_class": "SECONDARY_DATA_FROM_ISSUER_HOLDINGS",
+      "claim": "XRP Insights reports -3,132,685 XRP for Oct 26-27 across six spot funds plus BITW and marks Oct 28 provisional. This series differs in population, units and settlement cutoff from Alpha Finance.",
+      "source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-RUN61-PAPER-STATE-IDENTITY-DEFECT",
+      "source": "PAPER_TRADER_WORKFLOW",
+      "target": "PAPER_TRADER_STATE",
+      "relationship": "SCHEDULED_WORKFLOW_MUTATES_STATE_WITH_UNIDENTIFIED_OPEN_POSITION",
+      "evidence_class": "CONFIRMED_REPOSITORY_STATE_AND_COMMIT",
+      "claim": "The workflow runs every 30 minutes and commits state/log. The latest cycle appended a simulated BTC-USD sell while persisted position_product remained null and position_size remained nonzero. This is a paper-trading state-integrity defect, not a real-money trade.",
+      "source_ids": [
+        "SRC-GH-MAIN-PAPER-STATE-20261029T1107Z",
+        "SRC-GH-MAIN-PAPER-LOG-20261029T1107Z",
+        "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1107Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN61-PR1306-IDENTITY-GUARD",
+      "source": "PR1306",
+      "target": "PAPER_TRADER_WORKFLOW",
+      "relationship": "PROPOSES_MANUAL_ONLY_PRECHECK_AND_FAIL_CLOSED_POSITION_IDENTITY",
+      "evidence_class": "PROPOSED_REMEDIATION_UNMERGED",
+      "claim": "PR #1306 removes the 30-minute schedule, adds preflight and script-level identity checks, and preserves the existing state. Exact-head CI and fail-closed gate passed; main remains scheduled until approval and merge.",
+      "source_ids": [
+        "SRC-GH-PR1306-CI-20261029T1107Z",
+        "SRC-GH-PR1306-GATE-20261029T1107Z",
+        "SRC-GH-PR1306-20261029T1107Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN61-FOMC-MIXED-RISK-APPETITE",
+      "statement": "The rate hold may support near-term risk appetite, while hawkish dissents, elevated inflation and geopolitical uncertainty may offset that support; net XRP impact is ambiguous.",
+      "status": "PLAUSIBLE_MACRO_HYPOTHESIS_NOT_DIRECTIONAL",
+      "supporting_source_ids": [
+        "SRC-FED-FOMC-STATEMENT-20261028"
+      ],
+      "disconfirming_evidence": [
+        "XRP may be dominated over the relevant horizon by crypto-specific flows, leverage, liquidity and regulatory events rather than the rate decision."
+      ],
+      "tests_needed": [
+        "Timestamp the announcement; measure XRP and matched crypto/FX/rates responses over pre-registered horizons; compare against BTC and broad risk proxies with event-study controls."
+      ]
+    },
+    {
+      "id": "HYP-RUN61-ETF-FLOW-UNIVERSE-EXPLAINS-DISAGREEMENT",
+      "statement": "The apparent ETF-flow discrepancy likely reflects differences in fund universe, units, holdings publication timing and provisional settlement rather than a single contradictory measurement.",
+      "status": "PLAUSIBLE_DATA_QUALITY_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ],
+      "disconfirming_evidence": [
+        "Even after aligning funds and timestamps, the series may disagree due to source errors or issuer corrections."
+      ],
+      "tests_needed": [
+        "Reconstruct each fund's daily holdings and shares outstanding from issuer records; normalize XRP and USD units; mark provisional/settled status; retain per-fund rows before aggregation."
+      ]
+    },
+    {
+      "id": "HYP-RUN61-ETF-FLOWS-DO-NOT-ESTABLISH-PRICE-CAUSALITY",
+      "statement": "Even reconciled ETF flows would be an institutional-demand feature, not proof that flows cause XRP price moves; flows may be reactive or hedged.",
+      "status": "UNTESTED_CAUSALITY",
+      "supporting_source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ],
+      "disconfirming_evidence": [
+        "Persistent, time-aligned creations could predict subsequent returns after controlling for market beta and derivatives positioning."
+      ],
+      "tests_needed": [
+        "Use leakage-safe lagged flows, matched controls, fixed horizons, walk-forward testing, and compare with a no-flow baseline; record uncertainty and sample size."
+      ]
+    }
+  ],
+  "notes": [
+    "FOMC decision is confirmed official macro context, not a standalone XRP price signal.",
+    "ETF flow series differ in fund universe, units and settlement status; no flow feature was admitted.",
+    "The paper trader remains scheduled on main and has an unidentified open simulated position; PR #1306 is a tested draft proposal, not deployed.",
+    "Forecast status remains NOT_ISSUED because no synchronized XRP market panel was admitted."
+  ]
+}

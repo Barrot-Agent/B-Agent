@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T181710Z-SBIC-CHATGPT-ASK-IDENTITY-RESOLUTION",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T181710Z-sbic-chatgpt-ask-identity-resolution.json",
+  "captured_at_utc": "2026-10-30T18:17:10Z",
+  "data_cutoff_utc": "2026-10-30T18:17:10Z",
+  "source_ids": [
+    "SRC-ACL-SBIC-SOCIAL-BIAS-INFERENCE-2020",
+    "SRC-ZIEMS-LLM-CSS-BENCHMARK-SBIC-2023V3",
+    "SRC-CHENG-CSS-REVIEW-SBIC-MISEXPANSION-2023",
+    "SRC-PERMISSION-OFFICIAL-FAMILY-AI-20261030",
+    "SRC-PERMISSION-OFFICIAL-ASK-TOKEN-DOCS-20261030",
+    "SRC-CMC-PERMISSION-ASK-20261030T1817Z",
+    "SRC-COINGECKO-PERMISSION-ASK-20261030T1817Z",
+    "SRC-COINBASE-BASE-OFFICIAL-2023"
+  ],
+  "findings": {
+    "sbic": {
+      "resolved_meaning": "Social Bias Inference Corpus (SBIC), introduced by Sap et al. in ACL 2020. This is distinct from Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), which remains a separate Japanese organization researched in prior snapshots.",
+      "primary_dataset_facts": {
+        "structured_annotations": 150000,
+        "implications_over": 34000,
+        "demographic_groups_approx": 1000
+      },
+      "chatgpt_metric": {
+        "gpt_3_5_turbo_pairwise_preference_over_human_gold_pct": 65.9,
+        "gpt_4_pairwise_preference_over_human_gold_pct": 60.6,
+        "text_davinci_003_pairwise_preference_over_human_gold_pct": 50,
+        "metric": "proportion of pairwise rankings where the two authors unanimously preferred the model explanation to a gold human explanation",
+        "not": "classification accuracy, F1, percentage of examples correctly labeled, or a current ChatGPT model score"
+      },
+      "evaluation_design": "Zero-shot generation on the SBIC Social Bias Inference task; two authors acted as blind annotators, ties prohibited, unanimous vote required. GPT-3.5 and GPT-4 are 2023-era model labels; do not map these results to current GPT-6.",
+      "source_conflict": "A 2023 secondary review incorrectly expands SBIC as a COVID-19 social/behavioral implications corpus and conflates its gold standard with political ideology. The primary ACL paper and Ziems et al. paper explicitly identify Social Bias Inference Corpus; the same benchmark lists CovidET separately."
+    },
+    "ask_coin": {
+      "candidate": "Permission Coin (ticker ASK) is a plausible token candidate for the exact phrase ASK Coin, but the originating context does not establish that it is the intended asset.",
+      "current_official_positioning": "Permission's current official site redirects permission.io to permission.ai and positions the product as Family Friendly AI. It describes ASK as a utility/rewards token, explicitly not an investment product, and says rewards can be redeemed for gift cards through Tremendous.",
+      "official_token_docs": {
+        "max_supply": 100000000000,
+        "standard": "LayerZero OFT",
+        "networks": [
+          "Base",
+          "Polygon"
+        ],
+        "base_contract": "0xBB146326778227A8498b105a18f84E0987A684b4",
+        "polygon_contract": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
+        "utility": [
+          "incentives and rewards",
+          "agent-to-agent coordination",
+          "ecosystem alignment"
+        ],
+        "future": [
+          "governance",
+          "staking"
+        ]
+      },
+      "coinbase_relationship": "ASK is deployed on Base, which Coinbase says it incubated inside Coinbase. This is an indirect network/ecosystem relationship, not evidence of a direct Coinbase investment, listing, endorsement or commercial contract.",
+      "xrp_relationship": "The official ASK documentation lists Base and Polygon, not XRPL. No direct XRP/XRPL integration was found in the official materials reviewed. Absence in these sources is not proof that no private or indirect relationship exists.",
+      "market_data_conflict": {
+        "coinmarketcap": {
+          "price_usd": 0.00008766,
+          "market_cap_usd": 1417258,
+          "volume_24h_usd": 242.92,
+          "circulating_supply": 16166619298,
+          "range_24h_usd": [
+            0.00008761,
+            0.00009974
+          ]
+        },
+        "coingecko": {
+          "price_usd": 0.0001267,
+          "market_cap_usd": 2927307,
+          "volume_24h_usd": 92.9,
+          "circulating_supply": 23107027514,
+          "range_24h_usd": [
+            0.0001258,
+            0.0001278
+          ]
+        },
+        "assessment": "The price ranges do not overlap; circulating-supply estimates differ by approximately 6.94B ASK (about 42.9%). Market-cap and volume figures are therefore not reconciled and must not be averaged. CoinGecko shows only about USD2.7K of combined ±2% depth across three tracked markets and about USD150 of combined 24h venue volume in its snapshot. Treat the token as extremely illiquid and price discovery as unreliable."
+      }
+    },
+    "actual_capital": {
+      "status": "EXACT_PHRASE_SOURCE_UNRESOLVED",
+      "analytical_distinction": "Market capitalization is price multiplied by circulating supply; it is not the sum of cash invested or net capital inflows. Actual capital flow requires separately measured subscriptions, redemptions, executed trades, OTC settlements and collateral movements."
+    },
+    "camilla_stephenson": {
+      "identity_status": "UNVERIFIED",
+      "public_youtube_inventory_status": "No authoritative YouTube channel or complete video inventory for the exact name Camilla Stephenson was verified in the public indexed searches in this run. Kamilah Stevenson is not assumed to be the same person."
+    },
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

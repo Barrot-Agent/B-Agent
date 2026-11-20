@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T151800Z-MODEL-MERGE-WORKFLOW-ROOT-CAUSE",
+  "captured_at_utc": "2026-10-29T15:18:00Z",
+  "data_cutoff_utc": "2026-10-29T15:18:00Z",
+  "observed_main_sha": "fb2f59012c1ba6d3bf1417d36545bb46028c8f65",
+  "forecast_status": "NOT_ISSUED",
+  "summary": "Workflow/security audit found the two manual Hugging Face model-merge workflows are identical, install unpinned or loosely bounded dependencies, use --trust-remote-code and HF_TOKEN to publish externally, and reference merges/barrot-superior/config.yaml, which is absent from current main. Fresh-main PR #1336 adds a fail-fast preflight before dependency installation/token access and passed 297 tests plus 8 subtests in 7.84 seconds; gate passed. The config itself remains missing, so intended model merge cannot proceed until it is restored through an approved change. Separately, the controlled approval workflow currently declares workflow_dispatch only, while a recent failed run is labeled push and has zero jobs; root cause unresolved. Main unchanged; no workflow dispatch or external upload.",
+  "findings": [
+    {
+      "id": "FIND-20261029T151800Z-MODEL-MERGE-MISSING-CONFIG",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "Both duplicate model merge workflows reference merges/barrot-superior/config.yaml, but that path is absent from the current main tree. They would install dependencies and access HF_TOKEN before failing at the merge step; PR #1336 adds a preflight before those steps.",
+      "source_ids": [
+        "SRC-GH-HF-MODEL-MERGE-20261029T151800Z",
+        "SRC-GH-HF-MODEL-MERGE-DUPLICATE-20261029T151800Z",
+        "SRC-GH-MERGE-CONFIG-MISSING-20261029T151800Z",
+        "SRC-GH-PR1336-20261029T151800Z",
+        "SRC-GH-PR1336-CI-20261029T151800Z",
+        "SRC-GH-PR1336-GATE-20261029T151800Z"
+      ],
+      "limitation": "PR remains draft/unmerged. The preflight surfaces the missing input but does not restore the intended model configuration."
+    },
+    {
+      "id": "FIND-20261029T151800Z-DEPENDENCY-SUPPLY-CHAIN",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Root dependency manifests use broad minimum-only versions, CI installs several unpinned packages, and no conventional lockfile was found in the recursive tree. The external model merge workflow also uses --trust-remote-code and an HF_TOKEN upload path.",
+      "source_ids": [
+        "SRC-GH-DEPENDENCY-MANIFESTS-20261029T151800Z",
+        "SRC-GH-HF-MODEL-MERGE-20261029T151800Z"
+      ],
+      "limitation": "No vulnerability scanner or full dependency-resolution audit was run; this is a reproducibility and supply-chain risk finding, not a confirmed CVE."
+    },
+    {
+      "id": "FIND-20261029T151800Z-APPROVE-WORKFLOW-METADATA-MISMATCH",
+      "evidence_class": "UNRESOLVED_WORKFLOW_ANOMALY",
+      "claim": "The currently retrieved controlled approval workflow declares workflow_dispatch only, but GitHub reports a failed push-event run with zero jobs. This does not establish that the approval job ran or that a label/comment was applied.",
+      "source_ids": [
+        "SRC-GH-APPROVE-WORKFLOW-20261029T151800Z",
+        "SRC-GH-APPROVE-RUN-PUSH-NO-JOBS-20261029T151800Z"
+      ],
+      "limitation": "Need workflow revision/run metadata and exact event commit to resolve the mismatch; no approval action was executed by this run."
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-GH-HF-MODEL-MERGE-20261029T151800Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-merge.yml"
+    },
+    {
+      "id": "SRC-GH-HF-MODEL-MERGE-DUPLICATE-20261029T151800Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-merge-manual.yml"
+    },
+    {
+      "id": "SRC-GH-MERGE-CONFIG-MISSING-20261029T151800Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/tree/main"
+    },
+    {
+      "id": "SRC-GH-DEPENDENCY-MANIFESTS-20261029T151800Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/requirements.txt"
+    },
+    {
+      "id": "SRC-GH-PR1336-20261029T151800Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1336"
+    },
+    {
+      "id": "SRC-GH-PR1336-CI-20261029T151800Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40899959534"
+    },
+    {
+      "id": "SRC-GH-PR1336-GATE-20261029T151800Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40899959571"
+    },
+    {
+      "id": "SRC-GH-APPROVE-WORKFLOW-20261029T151800Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml"
+    },
+    {
+      "id": "SRC-GH-APPROVE-RUN-PUSH-NO-JOBS-20261029T151800Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40899947365"
+    }
+  ],
+  "market_observations": [],
+  "verification": {
+    "source_reference_count": 9,
+    "missing_source_references": 0,
+    "source_ids_unique": true,
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED",
+    "readback_status_at_capture": "PENDING"
+  }
+}

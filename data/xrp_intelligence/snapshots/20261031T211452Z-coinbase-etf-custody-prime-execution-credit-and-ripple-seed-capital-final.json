@@ -1,0 +1,361 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T211452Z-COINBASE-ETF-CUSTODY-CREDIT-AND-RIPPLE-SEED",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T211452Z-coinbase-etf-custody-prime-execution-credit-and-ripple-seed-capital-final.json",
+  "captured_at_utc": "2026-10-31T21:14:52Z",
+  "data_cutoff_utc": "2026-10-31T21:14:52Z",
+  "coinbase_institutional_xrp_position": {
+    "funds_with_coinbase_in_custodian_set": 5,
+    "spot_funds_total": 6,
+    "combined_fund_holdings_with_coinbase_in_custodian_set_xrp": 1142200000,
+    "all_spot_funds_plus_bitw_xrp": 1196600000,
+    "share_of_total_pct": 95.45,
+    "actual_coinbase_custody_allocation": "UNKNOWN; multi-custodian allocations are undisclosed",
+    "fund_holdings_oct30_xrp": {
+      "Bitwise": 415400000,
+      "Franklin": 310400000,
+      "Canary": 243700000,
+      "TwentyOneShares": 107300000,
+      "Grayscale": 65400000,
+      "REX_Osprey": 33400000,
+      "BITW": 21000000
+    },
+    "sec_confirmed_roles": {
+      "Bitwise": {
+        "custodian": "Coinbase Custody",
+        "prime_execution_agent": "Coinbase Inc",
+        "trade_credit_lender": "Coinbase Credit",
+        "principal_market_for_nav_as_of_2026_06_30": "Coinbase",
+        "xrp_held_2026_06_30": 286838445.9126
+      },
+      "Franklin": {
+        "custodian": "Coinbase Custody",
+        "prime_broker": "Coinbase Inc"
+      },
+      "TwentyOneShares": {
+        "custodians": [
+          "Coinbase Custody",
+          "BitGo",
+          "Anchorage"
+        ],
+        "xrp_held_2026_06_30": 108256464.0739,
+        "allocation": "UNKNOWN"
+      },
+      "Canary": {
+        "custodians": [
+          "Coinbase Custody",
+          "BitGo"
+        ],
+        "xrp_held_2026_06_30": 231279000,
+        "allocation": "UNKNOWN"
+      },
+      "Grayscale": {
+        "primary_custodian": "Coinbase Custody",
+        "additional_custodian": "Anchorage",
+        "allocation": "UNKNOWN"
+      }
+    },
+    "interpretation": "Coinbase is a central institutional custody/prime-services provider. The 1.1422B aggregate is not Coinbase's actual custody balance. ETF custody vaults are excluded from the public exchange-wallet total."
+  },
+  "bitwise_fund_flows": {
+    "as_of": "2026-06-30",
+    "xrp_holdings": 286838445.9126,
+    "market_value_usd": 299229867,
+    "principal_market": "Coinbase",
+    "h1_2026": {
+      "xrp_additions": 181530188,
+      "xrp_redemptions": 25610148,
+      "xrp_sponsor_fee_disposals": 304794,
+      "net_xrp_inventory_change": 155615246
+    },
+    "q2_2026": {
+      "xrp_additions": 105315793,
+      "xrp_redemptions": 13190376,
+      "xrp_sponsor_fee_disposals": 191749,
+      "net_xrp_inventory_change": 91933668
+    },
+    "method": "Cash and in-kind creations/redemptions; Trust receives XRP from APs/liquidity providers and does not itself trade on digital-asset markets."
+  },
+  "bitwise_coinbase_trade_credit": {
+    "lender": "Coinbase Credit Inc",
+    "agent": "Coinbase Inc",
+    "custody_agent": "Coinbase Custody Trust Company",
+    "instruments": [
+      "cash trade credit",
+      "XRP trade credit"
+    ],
+    "use": "Coinbase Trading Platform under rare Agent Execution Model",
+    "collateral": "first-priority security interest/lien/set-off over Trust Trading Balance and Trust XRP Account",
+    "interval_hours": 24,
+    "repayment": "generally by 6:00 p.m. ET the following calendar day",
+    "default_remedy": "secured-creditor rights and potential liquidation of Trading Balance and Trust XRP Account",
+    "utilization": "UNKNOWN; actual outstanding balance and authorized amount undisclosed; Trust-Directed Trade Model is normal"
+  },
+  "ripple_21shares_seed": {
+    "investor": "Ripple Markets Inc",
+    "purchase_date": "2024-12-20",
+    "initial_seed_shares": 10000000,
+    "purchase_amount_usd": 220676000,
+    "restriction": "two years from 2024-12-20 plus six months after first listing; later applicable restriction controls",
+    "two_year_date": "2026-12-20",
+    "fund_holdings_june30_2026_xrp": 108256464.0739,
+    "h1_2026": {
+      "xrp_contributions": 14338631.5739,
+      "xrp_redemptions": 41458741.0077,
+      "xrp_expenses": 182500,
+      "net_xrp_inventory_change": -27302609.434,
+      "net_cash_capital_transactions_usd": -49500531
+    },
+    "q2_2026": {
+      "xrp_contributions": 4679662.7365,
+      "xrp_redemptions": 2144858.2811,
+      "xrp_expenses": 80000,
+      "net_xrp_inventory_change": 2454804.4554,
+      "net_cash_capital_transactions_usd": 3701981
+    },
+    "interpretation": "Ripple purchased ETF shares, not a documented equivalent amount of spot XRP. The lock-up concerns ETF shares, not native XRP escrow."
+  },
+  "exchange_wallet_methodology": {
+    "tracked_wallets": 701,
+    "exchanges": 24,
+    "total_xrp": 22480000000,
+    "cold_labeled_pct": 48.4,
+    "hot_labeled_pct": 14,
+    "unclassified_pct": 37.8,
+    "non_customer_reserve_xrp": 487200000,
+    "non_customer_breakdown": {
+      "binance_peg_methodology_xrp": 325800000,
+      "coinbase_cbxrp_xrp": 150200000,
+      "insurance_charity_xrp": 11200000
+    },
+    "binance_peg_table_value_xrp": 327400000,
+    "discrepancy_xrp": 1600000,
+    "coinbase_cold_labeled_xrp": 5810000000,
+    "per_wallet_history_stored": false,
+    "etf_custody_vaults_counted": false,
+    "extra_untracked_exchange_wallet_estimate_xrp": 323000000,
+    "limitations": [
+      "No per-wallet history; daily balances are per exchange.",
+      "Wallet labels are XRPSCAN labels; balances read from rippled account_info.",
+      "ETF custody vaults without public exchange labels excluded.",
+      "Cold and operational balances are not tradable float."
+    ]
+  },
+  "actual_capital_examples": {
+    "bitwise_h1_2026_net_xrp_inventory_change": 155615246,
+    "twentyone_shares_h1_2026_net_xrp_inventory_change": -27302609.434,
+    "twentyone_shares_h1_2026_net_cash_capital_usd": -49500531,
+    "twentyone_shares_q2_2026_net_cash_capital_usd": 3701981,
+    "interpretation": "Fund-level cash and XRP inventory flows are more direct than AUM changes, but cash and in-kind routes must be separated; these are not total market-wide net capital."
+  },
+  "source_ids": [
+    "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-10Q",
+    "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-S1A-TRADE-CREDIT",
+    "SRC-20261031T211452Z-SEC-21SHARES-XRP-ETF-10Q",
+    "SRC-20261031T211452Z-SEC-FRANKLIN-XRP-ETF-10Q",
+    "SRC-20261031T211452Z-SEC-CANARY-XRP-ETF-10Q",
+    "SRC-20261031T211452Z-SEC-GRAYSCALE-XRP-ETF-424B3",
+    "SRC-20261031T211452Z-XRP-INSIGHTS-ETF-CUSTODY-AND-HOLDINGS",
+    "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+  ],
+  "source_reference_count": 8,
+  "missing_source_references": 0,
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "main_modified_by_this_run": false,
+  "merge": false,
+  "force_push": false,
+  "manual_workflow_dispatch": false,
+  "secret_access": false,
+  "paper_state_mutated": false,
+  "real_money_trade": false,
+  "original_first_attempt_path": "data/xrp_intelligence/snapshots/20261031T211452Z-coinbase-etf-custody-prime-execution-credit-and-ripple-seed-capital-corrected.json",
+  "expected_archive_shards": 439,
+  "expected_archive_records_roundtrip": 3474,
+  "expected_source_records": 2149,
+  "expected_run_updates": 362,
+  "expected_limitations": 963,
+  "source_revision_addenda": [
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T-current-xrp-insights-binance-peg-reserve-correction.json",
+      "blob_sha": "3d0c7bf3acbd8b355b1b2b02ca335a96765a352a",
+      "commit_sha": null,
+      "revision_id": "REV-XRP-INSIGHTS-BINANCE-PEG-RESERVE-20261031",
+      "captured_at_utc": "2026-10-31T17:19:41Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T-current-xrp-insights-binance-peg-reserve-internal-conflict.json",
+      "blob_sha": "fe793b30d208cbe29af559dcf91ca205dc903c9d",
+      "commit_sha": null,
+      "revision_id": "REV-XRP-INSIGHTS-BINANCE-PEG-RESERVE-INTERNAL-CONFLICT-20261031",
+      "captured_at_utc": "2026-10-31T17:20:43Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T-current-sbi-dca-version-and-biz-card-campaign.json",
+      "blob_sha": "e5e8d129976565fd1afeeb6cf3a6931f59205df7",
+      "commit_sha": null,
+      "revision_id": "REV-SBI-DCA-ASSET-COUNT-AND-BIZ-CARD-CAMPAIGN-20261031",
+      "captured_at_utc": "2026-10-31T17:22:22Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T173756Z-binance-xrp-por-screenshot-reconciliation.json",
+      "blob_sha": "a0f61304d15a0f15c01bc502a82a1c5b496d8f5e",
+      "commit_sha": "8021ca699fb0a6174955bafb37da3dd605274a1c",
+      "revision_id": "REV-BINANCE-XRP-POR-20261031T173756Z",
+      "source_id": "SRC-20261031T173756Z-CRYPTOTIMES-BINANCE-POR-SCREENSHOT",
+      "captured_at_utc": "2026-10-31T17:37:56Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T173944Z-sbi-vctrade-dca-canonical-page.json",
+      "blob_sha": "a24228fc73abd77a34a7d4357647b668401ad7d0",
+      "commit_sha": "1ef821ecd008e2fa24547a25f2923c746bc829f0",
+      "revision_id": "REV-SBI-VCTRADE-DCA-CANONICAL-20261031T173944Z",
+      "source_id": "SRC-20261031T173944Z-SBI-VC-TRADE-DCA-CANONICAL",
+      "captured_at_utc": "2026-10-31T17:39:44Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T175112Z-ask-coinbase-dex-wallet-relationship.json",
+      "blob_sha": "54771504bc587eb72f61eb7ae05a86d9bd9ea989",
+      "commit_sha": "e05dc9369f4eb4a20f31c82ada3978ce184c303d",
+      "revision_id": "REV-ASK-COINBASE-DEX-EMBEDDED-WALLET-20261031T175112Z",
+      "source_id": "SRC-20261031T175112Z-ASK-COINBASE-WALLET-DEX-RELATIONSHIP",
+      "captured_at_utc": "2026-10-31T17:51:12Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T175218Z-binance-recovery-update3-xrp-por-safu-reconciliation.json",
+      "blob_sha": "3517170103527a98d4d4c4f613d0d15215295686",
+      "commit_sha": "e189dfb69a0cd61a620b990068816509ae4842c7",
+      "revision_id": "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
+      "source_id": "SRC-20261031T175218Z-BINANCE-RECOVERY-UPDATE3-RECONCILIATION",
+      "captured_at_utc": "2026-10-31T17:52:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T175703Z-xrpl-rlusd-supply-coinbase-listing-exchange-reserve-reconciliation.json",
+      "blob_sha": "f73584782ff8865019fc43d352cd0577165338e0",
+      "commit_sha": "1f817b7d591792af36848762cb5cdf815d0bdd79",
+      "revision_id": "REV-XRPL-RLUSD-SUPPLY-EXCHANGE-RESERVES-COINBASE-LISTING-20261031T175703Z",
+      "source_id": "SRC-20261031T175703Z-XRPL-SUPPLY-RESERVES-COINBASE-RLUSD-LISTING",
+      "captured_at_utc": "2026-10-31T17:57:03Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "revision_id": "REV-SBIC-JAPAN-KAMILAH-YOUTUBE-OCC-TRUST-CHARTER-20261031T190021Z",
+      "source_id": "SRC-20261031T190021Z-SBIC-REGIONAL-ENTITIES-KAMILAH-YOUTUBE-OCC-CHARTERS",
+      "path": "data/xrp_intelligence/source_revisions/20261031T190021Z-sbic-regional-entities-kamilah-youtube-and-occ-trust-charters.json",
+      "blob_sha": "a0cb61670ca00786586c4282762a8026c490c77c",
+      "commit_sha": "d4f0814382a4bf5f3766b13c1ab02e94212de12e",
+      "captured_at_utc": "2026-10-31T19:00:21Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "revision_id": "REV-TRADRADAR-XRP-1945Z-UPDATE-20261031T201433Z",
+      "source_id": "SRC-20261031T200209Z-TRADRADAR-XRP",
+      "path": "data/xrp_intelligence/source_revisions/20261031T201433Z-tradradar-xrp-derivatives-1945z-update-v4.json",
+      "blob_sha": "a279d044723ff0c387a4ee7100340694e3ce1197",
+      "commit_sha": "5ed367cfa9bf584a7b31632d7355bacc5f90e370",
+      "captured_at_utc": "2026-10-31T20:14:33Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATION_RETRY",
+      "pending_archive_append": true
+    }
+  ],
+  "source_revision_addenda_pending_archive_append": 10,
+  "inherited_pending_source_revision_addenda": [
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T-current-xrp-insights-binance-peg-reserve-correction.json",
+      "blob_sha": "3d0c7bf3acbd8b355b1b2b02ca335a96765a352a",
+      "commit_sha": null,
+      "revision_id": "REV-XRP-INSIGHTS-BINANCE-PEG-RESERVE-20261031",
+      "captured_at_utc": "2026-10-31T17:19:41Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T-current-xrp-insights-binance-peg-reserve-internal-conflict.json",
+      "blob_sha": "fe793b30d208cbe29af559dcf91ca205dc903c9d",
+      "commit_sha": null,
+      "revision_id": "REV-XRP-INSIGHTS-BINANCE-PEG-RESERVE-INTERNAL-CONFLICT-20261031",
+      "captured_at_utc": "2026-10-31T17:20:43Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T-current-sbi-dca-version-and-biz-card-campaign.json",
+      "blob_sha": "e5e8d129976565fd1afeeb6cf3a6931f59205df7",
+      "commit_sha": null,
+      "revision_id": "REV-SBI-DCA-ASSET-COUNT-AND-BIZ-CARD-CAMPAIGN-20261031",
+      "captured_at_utc": "2026-10-31T17:22:22Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T173756Z-binance-xrp-por-screenshot-reconciliation.json",
+      "blob_sha": "a0f61304d15a0f15c01bc502a82a1c5b496d8f5e",
+      "commit_sha": "8021ca699fb0a6174955bafb37da3dd605274a1c",
+      "revision_id": "REV-BINANCE-XRP-POR-20261031T173756Z",
+      "source_id": "SRC-20261031T173756Z-CRYPTOTIMES-BINANCE-POR-SCREENSHOT",
+      "captured_at_utc": "2026-10-31T17:37:56Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T173944Z-sbi-vctrade-dca-canonical-page.json",
+      "blob_sha": "a24228fc73abd77a34a7d4357647b668401ad7d0",
+      "commit_sha": "1ef821ecd008e2fa24547a25f2923c746bc829f0",
+      "revision_id": "REV-SBI-VCTRADE-DCA-CANONICAL-20261031T173944Z",
+      "source_id": "SRC-20261031T173944Z-SBI-VC-TRADE-DCA-CANONICAL",
+      "captured_at_utc": "2026-10-31T17:39:44Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T175112Z-ask-coinbase-dex-wallet-relationship.json",
+      "blob_sha": "54771504bc587eb72f61eb7ae05a86d9bd9ea989",
+      "commit_sha": "e05dc9369f4eb4a20f31c82ada3978ce184c303d",
+      "revision_id": "REV-ASK-COINBASE-DEX-EMBEDDED-WALLET-20261031T175112Z",
+      "source_id": "SRC-20261031T175112Z-ASK-COINBASE-WALLET-DEX-RELATIONSHIP",
+      "captured_at_utc": "2026-10-31T17:51:12Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T175218Z-binance-recovery-update3-xrp-por-safu-reconciliation.json",
+      "blob_sha": "3517170103527a98d4d4c4f613d0d15215295686",
+      "commit_sha": "e189dfb69a0cd61a620b990068816509ae4842c7",
+      "revision_id": "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
+      "source_id": "SRC-20261031T175218Z-BINANCE-RECOVERY-UPDATE3-RECONCILIATION",
+      "captured_at_utc": "2026-10-31T17:52:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T175703Z-xrpl-rlusd-supply-coinbase-listing-exchange-reserve-reconciliation.json",
+      "blob_sha": "f73584782ff8865019fc43d352cd0577165338e0",
+      "commit_sha": "1f817b7d591792af36848762cb5cdf815d0bdd79",
+      "revision_id": "REV-XRPL-RLUSD-SUPPLY-EXCHANGE-RESERVES-COINBASE-LISTING-20261031T175703Z",
+      "source_id": "SRC-20261031T175703Z-XRPL-SUPPLY-RESERVES-COINBASE-RLUSD-LISTING",
+      "captured_at_utc": "2026-10-31T17:57:03Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "revision_id": "REV-SBIC-JAPAN-KAMILAH-YOUTUBE-OCC-TRUST-CHARTER-20261031T190021Z",
+      "source_id": "SRC-20261031T190021Z-SBIC-REGIONAL-ENTITIES-KAMILAH-YOUTUBE-OCC-CHARTERS",
+      "path": "data/xrp_intelligence/source_revisions/20261031T190021Z-sbic-regional-entities-kamilah-youtube-and-occ-trust-charters.json",
+      "blob_sha": "a0cb61670ca00786586c4282762a8026c490c77c",
+      "commit_sha": "d4f0814382a4bf5f3766b13c1ab02e94212de12e",
+      "captured_at_utc": "2026-10-31T19:00:21Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "revision_id": "REV-TRADRADAR-XRP-1945Z-UPDATE-20261031T201433Z",
+      "source_id": "SRC-20261031T200209Z-TRADRADAR-XRP",
+      "path": "data/xrp_intelligence/source_revisions/20261031T201433Z-tradradar-xrp-derivatives-1945z-update-v4.json",
+      "blob_sha": "a279d044723ff0c387a4ee7100340694e3ce1197",
+      "commit_sha": "5ed367cfa9bf584a7b31632d7355bacc5f90e370",
+      "captured_at_utc": "2026-10-31T20:14:33Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATION_RETRY",
+      "pending_archive_append": true
+    }
+  ],
+  "inherited_pending_source_revision_addenda_count": 10
+}

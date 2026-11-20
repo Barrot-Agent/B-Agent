@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "captured_at_utc": "2026-11-01T06:05:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "694fc4241f543917fc6eb787c025bf1eb6726595",
+    "latest_commit_utc": "2026-11-01T06:03:40Z",
+    "latest_commit_message": "chore: Barrot telemetry report",
+    "changed_files": [
+      {
+        "path": "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+        "change": "timestamp only"
+      }
+    ],
+    "report_status": "OPERATIONAL",
+    "deployment_health_verified": false,
+    "sentiment_shift_generated_at_utc": "2026-11-01T05:51:47.806586Z",
+    "xrp_recent_entries": 0,
+    "xrp_prior_entries": 0,
+    "btc_recent_entries": 0,
+    "btc_prior_entries": 0,
+    "privileged_workflows_still_active": [
+      "cross-analysis.yml",
+      "scheduler-tick.yml",
+      "merge-queue.yml",
+      "autonomous_self_deployment.yml",
+      "check-signal-accuracy.yml",
+      "subscriber_sync.yml",
+      "rotate-databricks-token.yml",
+      "deploy-a2a-worker.yml",
+      "sync-self-hosted-brain.yml",
+      "barrot-hf-admin.yml"
+    ]
+  },
+  "workflow_inventory": {
+    "total_workflow_files_observed": 0,
+    "count_status": "NOT_RECOUNTED_IN_THIS_AUDIT",
+    "critical_findings": [
+      {
+        "path": ".github/workflows/cross-analysis.yml",
+        "risk": "contents:write; scheduled/workflow_run triggers; commits/pushes generated analysis outputs; latest observed zero-sample sentiment timestamp refresh."
+      },
+      {
+        "path": ".github/workflows/scheduler-tick.yml",
+        "risk": "contents:write and actions:write; scheduled tick can dispatch workflow files without a specific allowlist."
+      },
+      {
+        "path": ".github/workflows/merge-queue.yml",
+        "risk": "manual dispatch, contents/pull-requests write, dry_run=false, max_prs=0 unlimited, branch updates and merge capability; explicit user-approval check absent."
+      },
+      {
+        "path": ".github/workflows/autonomous_self_deployment.yml",
+        "risk": "six-hour schedule commits timestamp-only telemetry report to main with Status: OPERATIONAL; deployment not verified."
+      },
+      {
+        "path": ".github/workflows/check-signal-accuracy.yml",
+        "risk": "daily schedule writes signal_history and signal_accuracy directly to main."
+      },
+      {
+        "path": ".github/workflows/subscriber_sync.yml",
+        "risk": "hourly schedule reads Gumroad purchaser emails, stores unsalted SHA-256 hashes in public web/subscribers.json and commits to main; current file read is empty count 0."
+      },
+      {
+        "path": ".github/workflows/rotate-databricks-token.yml",
+        "risk": "workflow input new_token interpolated into shell command and passed to gh secret set; successful mutation not established."
+      },
+      {
+        "path": ".github/workflows/deploy-a2a-worker.yml",
+        "risk": "main push to a2a/** automatically deploys Cloudflare Worker and uploads configured secrets."
+      },
+      {
+        "path": ".github/workflows/sync-self-hosted-brain.yml",
+        "risk": "main push to self_hosted_brain/** uploads folder to Hugging Face and may propagate a secret."
+      },
+      {
+        "path": ".github/workflows/barrot-hf-admin.yml",
+        "risk": "manual workflow deletes an existing Hugging Face Space before creating another."
+      },
+      {
+        "path": ".github/workflows/auto-resolve-issues.yml",
+        "risk": "scheduled issues:write; issue closure behavior requires separate logic review."
+      },
+      {
+        "path": ".github/workflows/barrot-autonomous-resolver.yml",
+        "risk": "hourly schedule with issues:write and pull-requests:write; external issue/PR mutation behavior requires separate review."
+      },
+      {
+        "path": ".github/workflows/knowledge-signal-cycle.yml",
+        "risk": "manual-only but contents:write and direct main commit/push; scheduler dispatch removal in PR #1443 would reduce indirect dispatch exposure if approved."
+      },
+      {
+        "path": ".github/workflows/knowledge-signal-cycle-btc.yml",
+        "risk": "manual-only but contents:write and direct main commit/push."
+      }
+    ]
+  },
+  "pr_inventory": {
+    "captured_at_utc": "2026-11-01T06:05:00Z",
+    "total": 215,
+    "draft": 205,
+    "ready": 10,
+    "main_based": 210,
+    "current_main_base": 0,
+    "stale_main_base": 210,
+    "non_main_base": 5
+  },
+  "safety_prs": [
+    {
+      "number": 1443,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1443",
+      "base_sha": "0ae640073f01321555d7f69dfc28d5b62a348fc6",
+      "head_sha": "23ba72611eeb02b6eee5d87df1d7bad79816958e",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41278911244,
+      "tests_passed": 349,
+      "subtests_passed": 8,
+      "gate_run_id": 41278911251,
+      "gate_status": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1444,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1444",
+      "base_sha": "0ae640073f01321555d7f69dfc28d5b62a348fc6",
+      "head_sha": "680037388ba80f0ed75eccb918469123dfd69bea",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "previous_head_ci_run_id": 41279321433,
+      "previous_head_tests_passed": 359,
+      "previous_head_tests_failed": 4,
+      "previous_head_subtests_passed": 8,
+      "previous_head_gate_run_id": 41279321432,
+      "previous_head_gate_status": "PASS_MERGE_DISABLED",
+      "current_head_ci_status": "NOT_YET_OBSERVED"
+    }
+  ],
+  "limitations": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_lockfile_inventory": "PARTIAL",
+    "vulnerability_scan": "NOT_RUN",
+    "security_alerts": "NOT_ACCESSIBLE",
+    "branch_protection_details": "403_FROM_AVAILABLE_GITHUB_INTEGRATION",
+    "main_remediation_applied": false
+  },
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false
+}

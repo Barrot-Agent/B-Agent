@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_snapshot",
+  "audit_id": "AUDIT-20261031T090517Z-MAIN-PR-AUTOMATION-AND-PREDICTION-LEDGER",
+  "captured_at_utc": "2026-10-31T09:05:17Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "13be82b6f4b8e2803e7b6b23872bb155cb589484",
+    "commit_message": "Cross-analysis refresh [skip ci]",
+    "created_at_utc": "2026-10-31T08:51:35Z",
+    "changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "diff": "generated_at timestamp only",
+    "signed": false,
+    "associated_workflow_runs_returned": 0,
+    "file_state": {
+      "xrp_recent_24h_score": null,
+      "xrp_recent_24h_entries": 0,
+      "xrp_prior_24h_score": null,
+      "xrp_prior_24h_entries": 0,
+      "btc_recent_24h_score": null,
+      "btc_recent_24h_entries": 0,
+      "btc_prior_24h_score": null,
+      "btc_prior_24h_entries": 0
+    },
+    "attribution": "Matches the active Cross Analysis writer pattern; exact workflow run association for this commit was not returned."
+  },
+  "open_pr_inventory": {
+    "total_open": 176,
+    "drafts": 166,
+    "ready_for_review": 10,
+    "main_based": 174,
+    "current_main_base": 0,
+    "stale_main_base": 174,
+    "non_main_base": 2,
+    "method": "GitHub REST pulls endpoint state=open, pages 1-2, 100 per page; exact base SHA compared with main 13be82b."
+  },
+  "workflow_findings": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "ACTIVE_MAIN_WRITER",
+      "evidence": "contents:write and automatic git add/commit/push; repeated timestamp-only main commits observed",
+      "proposed_fix_pr": 1401,
+      "pr_state": "OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "MUTATION_CAPABLE",
+      "evidence": "contents:write and actions:write; previous tick fired zero entries but capability remains",
+      "proposed_fix_pr": 1397,
+      "pr_state": "OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "risk": "PUSH_ZERO_JOB_ANOMALY",
+      "evidence": "main workflow remains manual-dispatch path; prior push events returned zero jobs; PR1402 explicit push no-op passed on branch",
+      "proposed_fix_pr": 1402,
+      "pr_state": "OPEN_DRAFT_UNMERGED",
+      "manual_dispatch_tested": false,
+      "root_cause": "UNKNOWN"
+    },
+    {
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "risk": "UNSAFE_WORKFLOW_INPUT_INTERPOLATION",
+      "evidence": "main workflow accepts new_token and interpolates it into gh secret set shell command; PR1398 removes input and mutation capability",
+      "proposed_fix_pr": 1398,
+      "pr_state": "OPEN_DRAFT_UNMERGED"
+    }
+  ],
+  "pull_requests": {
+    "1398": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "2ea9a8dcad1c51f85d345fcdca02c50902ec5285",
+      "base_sha": "33a490e2793f2c4250c7b370d4cc7cf308dbf6fe",
+      "compare_current_main": "4_AHEAD_3_BEHIND",
+      "github_mergeable": true,
+      "ci_run_id": 41176897933,
+      "tests_passed": 344,
+      "subtests_passed": 8,
+      "gate_run_id": 41176897925,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "limitation": "Safe replacement is not active on main; branch remains stale."
+    },
+    "1400": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "5f3ac52478d5e97bebda377dfc89a06b634c31f4",
+      "base_sha": "b28f43c907517e939e299e8766e2ebe655a0df13",
+      "compare_current_main": "4_AHEAD_2_BEHIND",
+      "github_mergeable": true,
+      "ci_run_id": 41187141721,
+      "tests_passed": 371,
+      "subtests_passed": 8,
+      "gate_run_id": 41187141804,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "change": "Fixed-horizon append-only forecast/outcome ledger; optional source registry; freshness guard; OS-level locking for reads/writes and duplicate-ID prevention."
+    },
+    "1401": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "275ca3b3856db4324e89f9adb46225f1a2772956",
+      "base_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+      "compare_current_main": "1_AHEAD_1_BEHIND",
+      "github_mergeable": true,
+      "ci_run_id": 41183168254,
+      "tests_passed": 345,
+      "subtests_passed": 8,
+      "gate_run_id": 41183168176,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "limitation": "Artifact-only output does not preserve tracked-file/Pages refresh behavior."
+    },
+    "1402": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "da31a8392fa4f9acd09a55dff77ba7892f143751",
+      "base_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+      "compare_current_main": "2_AHEAD_1_BEHIND",
+      "github_mergeable": true,
+      "ci_run_id": 41184451373,
+      "tests_passed": 342,
+      "subtests_passed": 8,
+      "gate_run_id": 41184451359,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "push_noop_run_id": 41184448544,
+      "push_noop_status": "SUCCESS",
+      "manual_workflow_dispatch_tested": false
+    }
+  },
+  "dependencies_and_security": {
+    "dependency_lockfiles_found": 0,
+    "manifest_inventory_status": "PARTIAL_READ_ONLY_MANIFEST_INVENTORY",
+    "security_alerts_status": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "full_repository_ci": "NOT_RUN"
+  },
+  "platform_coordination": {
+    "platforms_designed": 9,
+    "platforms_authenticated_external": 0,
+    "live_external_collaborators": 0,
+    "verified_handoffs": 0,
+    "status": "DESIGNED_NOT_EXECUTED"
+  },
+  "actions_by_this_run": {
+    "main_branch_modified": false,
+    "pr_merged": false,
+    "force_push": false,
+    "deployment": false,
+    "manual_workflow_dispatch": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false,
+    "research_branch_updated": true,
+    "pr1400_branch_updated": true
+  }
+}

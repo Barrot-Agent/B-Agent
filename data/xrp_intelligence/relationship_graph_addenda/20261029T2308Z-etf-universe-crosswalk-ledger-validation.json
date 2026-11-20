@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T2308Z-ETF-UNIVERSE-CROSSWALK-LEDGER-VALIDATION",
+  "captured_at_utc": "2026-10-29T23:08:00Z",
+  "observed_main_sha": "4c4ae6c2611c33254e3d92e1110ce588bf6f59e4",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_REPOSITORY_READBACK",
+      "SECONDARY_TRACKER_REFRESH",
+      "SECONDARY_ARTICLE_DERIVED_FROM_TRACKER",
+      "SECONDARY_FUND_HOLDINGS_CROSSCHECK",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "causal_rule": "Fund holdings, modeled acquisition cost and corporate announcements are not proof of same-day spot purchases or future price direction. Require matched product universes, synchronized as-of dates, shares outstanding/creation-redemption evidence and out-of-sample validation.",
+    "source_independence_rule": "CryptoSlate's flow/cost discussion depends on XRP Insights' dataset and must not count as independent corroboration."
+  },
+  "nodes": [
+    {
+      "id": "XRP_INSIGHTS",
+      "label": "XRP Insights ETF tracker",
+      "kind": "SECONDARY_ISSUER_HOLDINGS_DERIVED_TRACKER"
+    },
+    {
+      "id": "CORPSTACKING_XRP_FUNDS",
+      "label": "CorpStacking direct-XRP fund universe",
+      "kind": "SECONDARY_FUND_HOLDINGS_TRACKER"
+    },
+    {
+      "id": "CRYPTOSLATE",
+      "label": "CryptoSlate ETF methodology article",
+      "kind": "SECONDARY_EDITORIAL_SOURCE"
+    },
+    {
+      "id": "XRP_ETF_HOLDINGS",
+      "label": "Issuer-reported XRP fund holdings",
+      "kind": "FUND_INVENTORY_MEASURE"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP spot asset",
+      "kind": "CRYPTO_ASSET"
+    },
+    {
+      "id": "BARROT_LEDGER_VALIDATION",
+      "label": "Sharded ledger validator and regression suite",
+      "kind": "RESEARCH_INFRASTRUCTURE"
+    },
+    {
+      "id": "BARROT_V3",
+      "label": "Barrot V3 execution and verification foundation",
+      "kind": "AGENT_FOUNDATION"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-XRPINSIGHTS-HOLDINGS-FLOWS-20261029",
+      "source": "XRP_INSIGHTS",
+      "target": "XRP_ETF_HOLDINGS",
+      "relationship": "DERIVES_DAILY_FLOW_FROM_ISSUER_REPORTED_HOLDINGS",
+      "evidence_class": "SECONDARY_TRACKER_METHOD_STATEMENT",
+      "claim": "The tracker reports holdings for six US spot XRP ETFs plus BITW, with Oct 26–28 net change of about -2.96M XRP and Oct 28 +174,140 XRP. GXRP is excluded from flow totals during a historical data-gap correction while remaining in the holdings total.",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-ETF-20261029T211600Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-CRYPTOSLATE-DEPENDS-ON-XRPINSIGHTS-20261029",
+      "source": "CRYPTOSLATE",
+      "target": "XRP_INSIGHTS",
+      "relationship": "CITES_AND_REUSES_TRACKER_FLOW_SERIES",
+      "evidence_class": "SECONDARY_SOURCE_DEPENDENCY",
+      "claim": "CryptoSlate's Oct 29 cost-basis and matched-cohort flow article uses XRP Insights' series; it is methodology commentary, not an independent flow measurement.",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-ETF-20261029T211600Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-CORPSTACKING-DIFFERENT-UNIVERSE-20261029",
+      "source": "CORPSTACKING_XRP_FUNDS",
+      "target": "XRP_ETF_HOLDINGS",
+      "relationship": "REPORTS_BROADER_DIRECT_XRP_FUND_UNIVERSE",
+      "evidence_class": "SECONDARY_TRACKER_CROSSCHECK",
+      "claim": "CorpStacking reports 1.4095B XRP across ten direct-XRP funds/ETPs and excludes diversified basket funds such as BITW. Its product universe differs from XRP Insights' six US spot funds plus BITW, so headline totals are not directly comparable.",
+      "source_ids": [],
+      "external_source_candidate_id": "Q-CORPSTACKING-XRP-FUND-UNIVERSE-20261029"
+    },
+    {
+      "id": "EDGE-BARROT-VALIDATION-WORKFLOW-20261029",
+      "source": "BARROT_LEDGER_VALIDATION",
+      "target": "BARROT_V3",
+      "relationship": "PROPOSED_READ_ONLY_BRANCH_SCOPED_VALIDATION",
+      "evidence_class": "CONFIRMED_REPOSITORY_CHANGE; TEST_EXECUTION_UNVERIFIED",
+      "claim": "Commit 44dc24f added a branch-scoped push workflow with read-only contents permission, pinned pytest and a ledger validator test command. The PR-associated fail-closed gate passed as run 40971226101, but the push-triggered pytest run result was not accessible through the available connector; do not mark the validator suite passed.",
+      "external_url": "https://github.com/Barrot-Agent/B-Agent/pull/1353"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-XRP-ETF-RETENTION-VS-FLOW-COHORT-20261029",
+      "claim": "Most measured XRP Insights fund exposure was retained through the Oct 23–28 price decline, despite a modest net holdings reduction over Oct 26–28.",
+      "supporting_source_ids": [
+        "SRC-XRPINSIGHTS-ETF-20261029T211600Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ],
+      "disconfirming_evidence": [
+        "GXRP is excluded from flow totals while the data gap is corrected.",
+        "Cash vs in-kind creations, share-count changes and AP records are not reconciled.",
+        "The measured cohort is not all global XRP funds or all XRP holders."
+      ],
+      "status": "PLAUSIBLE_TRACKER_DERIVED"
+    },
+    {
+      "id": "HYP-ETF-UNIVERSE-DIFFERENCE-VS-DATA-CONFLICT-20261029",
+      "claim": "The difference between 1.190B and 1.409B XRP reflects fund-universe and product-classification differences rather than necessarily a data error.",
+      "supporting_source_ids": [
+        "SRC-XRPINSIGHTS-ETF-20261029T211600Z"
+      ],
+      "disconfirming_evidence": [
+        "Fund-level crosswalk is incomplete.",
+        "As-of dates differ by fund.",
+        "Sponsor disclosures may reveal stale or incorrect tracker rows."
+      ],
+      "status": "LIKELY_METHOD_EXPLANATION_UNVERIFIED"
+    },
+    {
+      "id": "HYP-ETF-COST-ESTIMATE-NOT-PRICE-FLOOR-20261029",
+      "claim": "Modeled ETF acquisition cost is a historical proxy, not a support level, shareholder cost basis or return forecast.",
+      "supporting_source_ids": [
+        "SRC-XRPINSIGHTS-ETF-20261029T211600Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ],
+      "disconfirming_evidence": [
+        "Predictive value could be tested later, but no pre-registered out-of-sample test exists.",
+        "Creation/redemption and NAV data could improve flow attribution without making the cost estimate a price floor."
+      ],
+      "status": "METHODOLOGICAL_CONSTRAINT"
+    }
+  ],
+  "source_ids": [
+    "SRC-XRPINSIGHTS-ETF-20261029T211600Z",
+    "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029",
+    "SRC-GH-MAIN-SIGNAL-20261029T2210Z"
+  ],
+  "external_source_queue": {
+    "path": "data/xrp_intelligence/queued_source_candidates/20261029T2308Z-etf-universe-crosswalk.json",
+    "candidate_count": 3,
+    "canonical_ingestion": "PENDING_LEDGER_VALIDATOR_AND_TEST_VERIFICATION"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false
+}

@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "ADR-XRP-20261031-043333-BINANCE-REPLENISHMENT-XRP-EVENT-STUDY",
+  "created_at_utc": "2026-10-31T04:33:33Z",
+  "title": "Binance incident reserve reconciliation, native XRP freeze semantics and market-event controls",
+  "status": "DESIGNED_NOT_EXECUTED",
+  "source_references": [
+    "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+    "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+    "SRC-20261031-XRPL-FREEZE-DOCS-043333Z",
+    "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+    "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z",
+    "SRC-20261031-CRYPTOETF-XRP-PARTIAL-043333Z",
+    "SRC-20261031-BINANCE-POR-PAGE-043333Z"
+  ],
+  "source_reference_count": 7,
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Keep Binance's $6.34B aggregate allocation and market/OTC replacement plan separate from XRP-specific demand. Require token-level reserve or execution evidence.",
+      "implementation": "DESIGNED",
+      "validation": "Await post-incident PoR snapshot and any disclosed XRP-specific transactions."
+    },
+    {
+      "id": "D2",
+      "decision": "Treat TRM's 233.46M XRP transfer as sourced on-chain analysis, but the receiver balance as stale after 2026-10-30 00:30 UTC.",
+      "implementation": "DESIGNED_NOT_EXECUTED",
+      "validation": "Obtain a fresh raw XRPL account_info and complete transaction-history snapshot with validated ledger index and cutoff."
+    },
+    {
+      "id": "D3",
+      "decision": "Separate native XRP from issued RLUSD, USDC, USDT and USD1. Issuers may freeze their own issued tokens, not native XRP.",
+      "implementation": "DESIGNED",
+      "validation": "Use XRPL protocol documentation; never count the 40.5M RLUSD freeze as XRP recovered."
+    },
+    {
+      "id": "D4",
+      "decision": "Preserve Alpha and Liqwall open interest as provider-specific observations. Do not average the 2.13x discrepancy.",
+      "implementation": "DESIGNED",
+      "validation": "Reconcile contract IDs, venue coverage, quote currency, notional conversion and timestamps before feature admission."
+    },
+    {
+      "id": "D5",
+      "decision": "Treat Oct30 ETF -$0.7M as partial T+1, two of five funds only.",
+      "implementation": "DESIGNED",
+      "validation": "Re-read all five fund reports after completion; reconcile issuer creations/redemptions."
+    },
+    {
+      "id": "D6",
+      "decision": "Use the Binance event as an event-study candidate, not a directional signal. Control for BTC/ETH, market-wide risk, funding, liquidations, spot depth, ETF flows and incident timestamps.",
+      "implementation": "DESIGNED_NOT_EXECUTED",
+      "validation": "No causal event study or calibrated probability produced in this run."
+    },
+    {
+      "id": "D7",
+      "decision": "Keep TRM's TraderTraitor attribution as a high-confidence provider assessment, not an official law-enforcement conclusion.",
+      "implementation": "DESIGNED",
+      "validation": "Require independent or official corroboration before reclassification."
+    },
+    {
+      "id": "D8",
+      "decision": "Keep all new market observations out of the prediction feature store until provider coverage and point-in-time controls pass.",
+      "implementation": "DESIGNED",
+      "validation": "market_features_admitted remains false; forecast remains NOT_ISSUED."
+    }
+  ],
+  "platform_coordination": {
+    "platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "status": "DESIGNED_NOT_EXECUTED",
+    "authenticated_external_platforms": 0,
+    "verified_handoffs": 0,
+    "least_privilege_required": true
+  },
+  "safety": {
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_manual_workflow_dispatch": true,
+    "no_paper_state_mutation": true,
+    "no_real_money_trade": true
+  },
+  "next_actions": [
+    "Refresh the attacker receiver using raw XRPL public-node account_info and transaction history.",
+    "Crosswalk the five Binance XRPL source wallets against the official post-incident PoR address export.",
+    "Reconcile Binance's token-level reserve replacement by XRP, BTC, ETH, USDT, USDC, RLUSD and other affected assets.",
+    "Re-read all five XRP ETF funds after Oct30 T+1 completion.",
+    "Resolve Alpha/Liqwall OI universe mismatch and preserve venue-level funding/liquidations.",
+    "Build a controlled event study with broad-market controls; no forecast until fixed-horizon calibration and walk-forward gates pass."
+  ]
+}

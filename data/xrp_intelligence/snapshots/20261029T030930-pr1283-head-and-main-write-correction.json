@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030930-PR1283-HEAD-AND-MAIN-WRITE-CORRECTION",
+  "captured_at_utc": "2026-10-29T03:09:30.000Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; preserve Barrot V3 as execution and verification foundation.",
+  "previous_snapshot": {
+    "path": "data/xrp_intelligence/snapshots/20261029T030730-unintended-main-write-correction.json",
+    "blob_sha": "0881a4fc97fae2ecee280a3acda4635925e1ffd8",
+    "commit_sha": "86946fd89cb023c43ae32b3e1fc59d02f9356066",
+    "captured_at_utc": "2026-10-29T03:07:30.000Z"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
+    "main_commit_message": "Research: snapshot current paper-trading replay and index gate",
+    "main_modified_by_this_run": true
+  },
+  "main_write_incident": {
+    "classification": "UNINTENDED_DIRECT_MAIN_WRITE",
+    "commit": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
+    "path": "data/xrp_intelligence/snapshots/20261029T030620-paper-replay-2361-index-gate.json",
+    "blob_sha": "ba4347ea2107fe77195f8f9f17d859410e9eecca",
+    "incorrect_embedded_field": "main_modified_by_this_run=false",
+    "action": "No further main mutation, deletion, revert or overwrite. Corrective evidence remains on research branch."
+  },
+  "pr1283": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1283",
+    "state": "DRAFT_OPEN_UNMERGED",
+    "head_sha": "4280f945bc0f47e5738bab7b747243cb8efaf96c",
+    "base_sha": "6cdaff2c725b0013c23a3f35abfaa397eb72e847",
+    "core_ci_run": 40810414493,
+    "core_ci": "PASS_171_TESTS_4_SUBTESTS_4.96S",
+    "gate_run": 40810414537,
+    "gate": "PASS",
+    "mergeable": true,
+    "feature_admission": "BLOCKED_PENDING_REVIEW_AND_WALK_FORWARD"
+  },
+  "research_index": {
+    "prior_head_sha": "c69239346bb6872bc4c9eee3190fae2e0b4734d8",
+    "gate_run": 40810431252,
+    "gate": "PASS",
+    "successor_gate": "PENDING_OR_UNVERIFIED"
+  },
+  "paper_trading_replay": {
+    "records": 2361,
+    "malformed": 0,
+    "timestamp_order_errors": 0,
+    "result_mismatches": 0,
+    "portfolio_value_mismatches": 0,
+    "persisted_state_matches": true,
+    "position_product": null,
+    "state_mutated": false,
+    "real_money_trade": false
+  },
+  "approval_workflow": {
+    "zero_job_run": 40810426511,
+    "event": "push",
+    "jobs": 0,
+    "root_cause": "UNRESOLVED"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "source_ids": [
+    "SRC-RUN36-20261029T030930-PR1283-HEAD-4280F",
+    "SRC-RUN36-20261029T030930-PR1283-CI-40810414493",
+    "SRC-RUN36-20261029T030930-PR1283-GATE-40810414537",
+    "SRC-RUN36-20261029T030930-INDEX-GATE-40810431252",
+    "SRC-RUN36-20261029T030930-ZEROJOB-40810426511"
+  ],
+  "next_actions": [
+    "Keep PR #1282 and PR #1283 draft and unmerged pending human review.",
+    "Do not write to main again; use explicit non-main branches for all further repository writes.",
+    "Preserve the accidental main snapshot and its commit; do not delete, revert or overwrite without approval.",
+    "Continue investigating the zero-job approval workflow discrepancy.",
+    "Keep new asset-specific entity outputs out of directional model features until independent leakage, calibration and walk-forward evaluation pass."
+  ],
+  "main_modified_by_this_run": true,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_manually_executed": false,
+  "paper_trading_state_mutated": false,
+  "real_money_trade": false,
+  "snapshot_character_count": 3566
+}

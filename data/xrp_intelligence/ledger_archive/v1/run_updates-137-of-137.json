@@ -1,0 +1,61 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 136,
+  "chunk_count": 137,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T090517Z-BNY-ROBINHOOD-COINBASE-INSTITUTIONAL-RAILS-AND-PR1400-LOCK",
+      "created_at_utc": "2026-10-31T09:05:17Z",
+      "data_cutoff_utc": "2026-10-31T09:05:17Z",
+      "source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+        "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+        "SRC-20261031T090517Z-GH-MAIN-CROSS-ANALYSIS-COMMIT",
+        "SRC-20261031T090517Z-GH-OPEN-PR-INVENTORY",
+        "SRC-20261031T090517Z-GH-PR1400-FIXED-HORIZON-LOCKED-HEAD",
+        "SRC-20261031T090517Z-GH-PR1400-EXACT-HEAD-CI",
+        "SRC-20261031T090517Z-GH-PR1400-FAIL-CLOSED-GATE",
+        "SRC-20261031T090517Z-GH-PR1401-READONLY-CROSS-ANALYSIS",
+        "SRC-20261031T090517Z-GH-PR1402-APPROVAL-PUSH-NOOP",
+        "SRC-20261031T090517Z-GH-PR1398-DATABRICKS-TOKEN-SAFETY",
+        "SRC-20261031-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION",
+        "SRC-20261031-COINBASE-Q3-2026-10Q-CIRCLE-RENEWAL",
+        "SRC-20261031-CIRCLE-USDC-XRPL-0612-2025",
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0916"
+      ],
+      "summary": "Added primary-source evidence for BNY's XRP/RLUSD institutional custody capability, Ripple/Robinhood's RLUSD institutional settlement on XRPL plus Treasury/Prime integration, Coinbase's RLUSD distribution across Prime/Exchange/retail with XRPL/Base/Ethereum rails, and Coinbase's Q3 multi-product/USDC economics. Built a relationship graph with six competing hypotheses and explicit counter-evidence. No XRP capital inflow or price impact inferred. Audited current main and 176 open PRs. Added OS-level advisory locking and a concurrent duplicate-ID regression test to PR #1400; exact-head CI passed 371 tests plus 8 subtests and fail-closed gate passed. PR remains open, draft and unmerged.",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T090517Z-bny-robinhood-coinbase-institutional-rails.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T090517Z-bny-robinhood-coinbase-circle-sbi-relationship-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T090517Z-institutional-custody-stablecoin-distribution-and-xrp-demand-separation.json",
+      "repository_audit_path": "data/repository_audits/20261031T090517Z-main-pr-automation-and-prediction-ledger-audit.json",
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "source_references": 17,
+        "missing_source_references": 0,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_sha": "13be82b6f4b8e2803e7b6b23872bb155cb589484",
+        "main_changed_by_this_run": false,
+        "pr1400_head_sha": "5f3ac52478d5e97bebda377dfc89a06b634c31f4",
+        "pr1400_ci_run_id": 41187141721,
+        "pr1400_tests_passed": 371,
+        "pr1400_subtests_passed": 8,
+        "pr1400_gate_run_id": 41187141804,
+        "pr1400_gate_status": "PASS_MERGE_DISABLED",
+        "merge_performed": false,
+        "force_push_performed": false,
+        "manual_workflow_dispatch_performed": false,
+        "paper_position_mutated": false,
+        "real_money_trade_performed": false,
+        "external_platform_authentications": 0
+      }
+    }
+  ]
+}

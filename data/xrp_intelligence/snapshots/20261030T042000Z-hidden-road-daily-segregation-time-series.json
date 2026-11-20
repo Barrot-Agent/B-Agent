@@ -1,0 +1,295 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-2026-10-30T042000Z-HIDDEN-ROAD-DAILY-SEGREGATION-SERIES",
+  "captured_at_utc": "2026-10-30T04:20:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T042000Z-hidden-road-daily-segregation-time-series.json",
+  "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "research_head_before_append": "152ebb0ee02e521c811a397410b9a08512f99f39",
+  "observed_main_sha": "ecc69ff83149a80136eb6e6b17a63dbab34dc060",
+  "focus": "Build a dated, primary-source daily customer-segregation and DCO-margin control series for Ripple Prime's Hidden Road FCM from October 16 through October 28, 2026, and explicitly prevent this aggregate FCM series from being mislabelled as XRP collateral or XRP-specific demand.",
+  "source_ids": [
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-INDEX-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261016-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261019-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261021-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261022-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261023-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261026-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261027-20261030T0420Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261028-20261030T0420Z"
+  ],
+  "daily_institutional_observations": [
+    {
+      "date": "2026-10-16",
+      "submit": "2026-10-19",
+      "net_ledger_cash": 782426464,
+      "unrealized_futures_pnl": -186535755,
+      "net_equity": 602426224,
+      "required": 602426224,
+      "dco_cash_margin": 641734322,
+      "bank_cash": 2000000,
+      "securities": 0,
+      "total_segregation": null,
+      "excess": null,
+      "entity": "Hidden Road Partners CIV US LLC",
+      "report_type": "FOCUS_II_DAILY_4D2_CUSTOMER_SEGREGATION",
+      "asset_scope": "AGGREGATE_CUSTOMER_FUTURES; NOT_TOKEN_SPECIFIC",
+      "source_id": "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261016-20261030T0420Z"
+    },
+    {
+      "date": "2026-10-19",
+      "submit": "2026-10-20",
+      "net_ledger_cash": 783286188,
+      "unrealized_futures_pnl": -195674508,
+      "net_equity": 595225607,
+      "required": 595225607,
+      "dco_cash_margin": 628784054,
+      "bank_cash": 2000000,
+      "securities": 0,
+      "total_segregation": null,
+      "excess": null,
+      "entity": "Hidden Road Partners CIV US LLC",
+      "report_type": "FOCUS_II_DAILY_4D2_CUSTOMER_SEGREGATION",
+      "asset_scope": "AGGREGATE_CUSTOMER_FUTURES; NOT_TOKEN_SPECIFIC",
+      "source_id": "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261019-20261030T0420Z"
+    },
+    {
+      "date": "2026-10-20",
+      "submit": "2026-10-21",
+      "net_ledger_cash": 786372745,
+      "unrealized_futures_pnl": -192038441,
+      "net_equity": 602617165,
+      "required": 602617165,
+      "dco_cash_margin": 633790386,
+      "bank_cash": 2000000,
+      "securities": 0,
+      "total_segregation": 667975928,
+      "excess": 65358763,
+      "entity": "Hidden Road Partners CIV US LLC",
+      "report_type": "FOCUS_II_DAILY_4D2_CUSTOMER_SEGREGATION",
+      "asset_scope": "AGGREGATE_CUSTOMER_FUTURES; NOT_TOKEN_SPECIFIC",
+      "source_id": "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z"
+    },
+    {
+      "date": "2026-10-21",
+      "submit": "2026-10-22",
+      "net_ledger_cash": 773839332,
+      "unrealized_futures_pnl": -181333742,
+      "net_equity": 599936541,
+      "required": 599936541,
+      "dco_cash_margin": 634964753,
+      "bank_cash": 2000000,
+      "securities": 0,
+      "total_segregation": null,
+      "excess": null,
+      "entity": "Hidden Road Partners CIV US LLC",
+      "report_type": "FOCUS_II_DAILY_4D2_CUSTOMER_SEGREGATION",
+      "asset_scope": "AGGREGATE_CUSTOMER_FUTURES; NOT_TOKEN_SPECIFIC",
+      "source_id": "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261021-20261030T0420Z"
+    },
+    {
+      "date": "2026-10-22",
+      "submit": "2026-10-23",
+      "net_ledger_cash": 765194781,
+      "unrealized_futures_pnl": -218596772,
+      "net_equity": 562005106,
+      "required": 562005106,
+      "dco_cash_margin": 588347717,
+      "bank_cash": 2000000,
+      "securities": 0,
+      "total_segregation": null,
+      "excess": null,
+      "entity": "Hidden Road Partners CIV US LLC",
+      "report_type": "FOCUS_II_DAILY_4D2_CUSTOMER_SEGREGATION",
+      "asset_scope": "AGGREGATE_CUSTOMER_FUTURES; NOT_TOKEN_SPECIFIC",
+      "source_id": "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261022-20261030T0420Z"
+    },
+    {
+      "date": "2026-10-23",
+      "submit": "2026-10-26",
+      "net_ledger_cash": 761408107,
+      "unrealized_futures_pnl": -229919477,
+      "net_equity": 552095835,
+      "required": 552095835,
+      "dco_cash_margin": 570123149,
+      "bank_cash": 4662302,
+      "securities": 0,
+      "total_segregation": null,
+      "excess": null,
+      "entity": "Hidden Road Partners CIV US LLC",
+      "report_type": "FOCUS_II_DAILY_4D2_CUSTOMER_SEGREGATION",
+      "asset_scope": "AGGREGATE_CUSTOMER_FUTURES; NOT_TOKEN_SPECIFIC",
+      "source_id": "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261023-20261030T0420Z"
+    },
+    {
+      "date": "2026-10-26",
+      "submit": "2026-10-27",
+      "net_ledger_cash": 750695821,
+      "unrealized_futures_pnl": -220741066,
+      "net_equity": 547047952,
+      "required": 547047952,
+      "dco_cash_margin": 570252807,
+      "bank_cash": 2000000,
+      "securities": 0,
+      "total_segregation": null,
+      "excess": null,
+      "entity": "Hidden Road Partners CIV US LLC",
+      "report_type": "FOCUS_II_DAILY_4D2_CUSTOMER_SEGREGATION",
+      "asset_scope": "AGGREGATE_CUSTOMER_FUTURES; NOT_TOKEN_SPECIFIC",
+      "source_id": "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261026-20261030T0420Z"
+    },
+    {
+      "date": "2026-10-27",
+      "submit": "2026-10-28",
+      "net_ledger_cash": 726432108,
+      "unrealized_futures_pnl": -178448721,
+      "net_equity": 561658907,
+      "required": 561659407,
+      "dco_cash_margin": 594410456,
+      "bank_cash": 3813874,
+      "securities": 0,
+      "net_settlement": 15339536,
+      "total_segregation": 627239386,
+      "excess": 65579979,
+      "entity": "Hidden Road Partners CIV US LLC",
+      "report_type": "FOCUS_II_DAILY_4D2_CUSTOMER_SEGREGATION",
+      "asset_scope": "AGGREGATE_CUSTOMER_FUTURES; NOT_TOKEN_SPECIFIC",
+      "source_id": "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261027-20261030T0420Z"
+    },
+    {
+      "date": "2026-10-28",
+      "submit": "2026-10-29",
+      "net_ledger_cash": 712433185,
+      "unrealized_futures_pnl": -179844183,
+      "net_equity": 548123588,
+      "required": 548123588,
+      "dco_cash_margin": 563766164,
+      "bank_cash": 2410000,
+      "securities": 0,
+      "net_settlement": 32009923,
+      "total_segregation": 613720673,
+      "excess": 65597085,
+      "entity": "Hidden Road Partners CIV US LLC",
+      "report_type": "FOCUS_II_DAILY_4D2_CUSTOMER_SEGREGATION",
+      "asset_scope": "AGGREGATE_CUSTOMER_FUTURES; NOT_TOKEN_SPECIFIC",
+      "source_id": "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261028-20261030T0420Z"
+    }
+  ],
+  "findings": [
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "Nine selected business-day FOCUS II filings from October 16–28 report Hidden Road's aggregate 4d(2) customer-futures net ledger balance, unrealized futures P/L, required segregation and cash margin at DCOs. The latest listed report in the official 12-month index is October 28, submitted October 29.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-INDEX-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261016-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261019-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261021-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261022-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261023-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261026-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261027-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261028-20261030T0420Z"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "DCO cash margins declined from $641.734M on October 16 to $563.766M on October 28 (-12.15%); required segregation declined from $602.426M to $548.124M (-9.01%).",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261016-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261028-20261030T0420Z"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "For October 20, 27 and 28, total funds in segregation were $667.976M, $627.239M and $613.721M respectively, while excess segregated funds remained $65.359M, $65.580M and $65.597M. The FCM management target residual interest was $27.3M.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261027-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261028-20261030T0420Z"
+      ]
+    },
+    {
+      "evidence_class": "INFERENCE",
+      "claim": "The aggregate FCM customer-margin and required-segregation series declined across the sampled dates while the reported excess buffer remained nearly flat on the three days with total/excess captured. This describes an FCM-wide customer futures collateral/segregation control series, not an XRP position or market-flow series.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261016-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261027-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261028-20261030T0420Z"
+      ]
+    },
+    {
+      "evidence_class": "UNKNOWN",
+      "claim": "No daily report inspected identifies XRP, RLUSD, USDC, individual contracts, customers, product-specific positions or asset-level collateral composition. The data cannot establish whether XRP was posted to Bitnomial or any other DCO.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-INDEX-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261016-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261019-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261021-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261022-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261023-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261026-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261027-20261030T0420Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261028-20261030T0420Z"
+      ]
+    }
+  ],
+  "series_metadata": {
+    "date_range": [
+      "2026-10-16",
+      "2026-10-28"
+    ],
+    "observation_count": 9,
+    "sampling": "Selected business days; weekends and other dates omitted.",
+    "latest_available_daily_filing": "2026-10-28",
+    "latest_submission_date": "2026-10-29",
+    "variables": [
+      "net_ledger_cash",
+      "unrealized_futures_pnl",
+      "net_equity",
+      "required_segregation",
+      "DCO_cash_margin",
+      "bank_cash",
+      "securities",
+      "total_segregation",
+      "excess_segregated_funds"
+    ],
+    "missing_values": "Null means the corresponding total/excess was not captured in this extraction, not zero.",
+    "asset_scope": "Aggregate FCM customer futures/segregation; not token-specific; no XRP attribution."
+  },
+  "derived": {
+    "oct16_to_oct28_dco_cash_margin_change_usd": -77968158,
+    "oct16_to_oct28_dco_cash_margin_change_pct": -12.15,
+    "oct16_to_oct28_required_segregation_change_usd": -54302636,
+    "oct16_to_oct28_required_segregation_change_pct": -9.01,
+    "oct20_to_oct28_dco_cash_margin_change_usd": -70024222,
+    "oct20_to_oct28_dco_cash_margin_change_pct": -11.05,
+    "oct20_to_oct28_required_segregation_change_usd": -54493577,
+    "oct20_to_oct28_required_segregation_change_pct": -9.04,
+    "oct20_to_oct28_excess_segregated_funds_change_usd": 238322,
+    "oct20_to_oct28_excess_segregated_funds_change_pct": 0.36,
+    "caveat": "Not a complete daily panel. These aggregate customer balances can move with contract mix, customer positions, futures prices, options, settlement and margin methodology. No XRP-specific interpretation is permitted."
+  },
+  "model_admission": {
+    "admitted_as_xrp_feature": false,
+    "possible_future_role": "Aggregate institutional derivatives/customer-margin control series or cross-market context feature only after complete point-in-time ingestion, missing-date handling, scope stability and walk-forward testing.",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository_state": {
+    "main_sha": "ecc69ff83149a80136eb6e6b17a63dbab34dc060",
+    "research_branch_head_before_append": "152ebb0ee02e521c811a397410b9a08512f99f39",
+    "pr_1353": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "152ebb0ee02e521c811a397410b9a08512f99f39",
+      "last_validator_run_id": 41002187116,
+      "last_validator_tests_passed": 15,
+      "last_gate_run_id": 41002190479,
+      "last_gate_status": "PASS"
+    },
+    "main_modified_by_this_run": false
+  }
+}

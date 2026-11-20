@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T230816Z-GITHUB-MAIN-WORKFLOW-PR1431-AUDIT",
+  "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+  "captured_at_utc": "2026-10-31T23:08:16Z",
+  "created_at_utc": "2026-10-31T23:08:16Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "publisher": "GitHub — Barrot-Agent/B-Agent live repository",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-10-31T23:08:16Z",
+      "publication_time_utc": "2026-10-31T22:51:57Z",
+      "evidence_class": "PRIMARY_REPOSITORY_AND_WORKFLOW_OBSERVATION",
+      "claims": [
+        "Current main is b51099e04b410f49e28d9c80201f68847aa8118a; the 22:51:57 UTC commit changed only ping-pongings/knowledge-base/sentiment_shift.json generated_at.",
+        "Main Cross Analysis still declares contents:write and performs git commit and git push; Knowledge Signal Cycle remains workflow_dispatch-only with contents:write and direct push; Scheduler Tick runs every 15 minutes with contents:write and actions:write.",
+        "PR #1431 is open, draft, mergeable and unmerged; base f0bbed8, head 5753120. Against current main it is 3 commits ahead and 1 behind; its three changed paths do not overlap the latest main timestamp-only sentiment_shift.json change.",
+        "PR #1431 CI run 41246255670 passed and fail-closed gate 41246255620 passed with merging disabled."
+      ],
+      "limitations": [
+        "PR #1431 is a proposal; its read-only workflow is not active on main.",
+        "The full repository CI suite was not run; dependency/security scanning remains incomplete.",
+        "Full branch-protection details remain inaccessible through the available read endpoint.",
+        "The prior 202-open-PR inventory was not fully recounted in this capture."
+      ]
+    }
+  ],
+  "findings": [
+    "The existing main writer remains active until an approved merge; this run did not modify main.",
+    "PR #1431 has exact-head CI and fail-closed gate success, but remains draft and one commit behind current main."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "No PR merge, main-branch write, force-push, deployment or manual workflow dispatch was performed.",
+    "The proposed PR removes automatic tracked-file and Pages updates; replacement publishing is not implemented."
+  ],
+  "corrections": [],
+  "pending_archive_append": false,
+  "exact_head_validation": false,
+  "status": "PENDING_EXACT_HEAD_VALIDATION"
+}

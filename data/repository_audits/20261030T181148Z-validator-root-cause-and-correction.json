@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "record_type": "barrot_repository_audit",
+  "audit_id": "BARROT-REPO-AUDIT-20261030T181148Z-VALIDATOR-ROOT-CAUSE",
+  "captured_at_utc": "2026-10-30T18:11:48Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "53d1becbefe622badc550178fbfe125312df5795",
+  "main_modified": false,
+  "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "branch_head_before_correction": "20a31818a83b2f93d3ab7d3be2f8533b880f6547",
+  "latest_correction_commit": "6722c0d693b21b920ad66e0c6ccdda7b499f85a1",
+  "validator_run": {
+    "id": 41104531465,
+    "status": "FAILURE",
+    "passed": 17,
+    "failed": 2,
+    "root_causes": [
+      "v3 test fixture did not include archive_policy and pointer objects",
+      "new snapshot payload omitted snapshot_path"
+    ]
+  },
+  "gate_run": {
+    "id": 41104531559,
+    "status": "QUEUED_AT_CAPTURE",
+    "automatic_merge": "DISABLED"
+  },
+  "corrections_applied": [
+    "v3 test fixture now creates source/run/limitation archive pointers and matching archive_policy",
+    "corrected snapshot copy created with snapshot_path matching the latest pointer; malformed original remains preserved unreferenced"
+  ],
+  "next_validation": "Await exact-head XRP ledger validator and fail-closed gate after all corrections and latest index update.",
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "workflow_dispatch_performed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false,
+    "full_repository_ci": "NOT_RUN"
+  }
+}

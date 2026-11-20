@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 107,
+  "chunk_count": 108,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T003700Z-COINBASE-MORPHO-CBXRP-USDC-COLLATERAL-RAIL",
+      "created_at_utc": "2026-10-31T00:37:00Z",
+      "data_cutoff_utc": "2026-10-31T00:36:00Z",
+      "summary": "Added official Coinbase evidence that XRP-backed USDC loans use Morpho on Base and require cbXRP collateral; identified the likely cbXRP/USDC market and quantified market-wide USDC debt, collateral, utilization, vault allocations and liquidation risk. Circle-issued USDC is the debt asset, but Circle is not established as lender. Added current-main audit for PR #1388 and #1386; no merge or main write.",
+      "source_ids": [
+        "SRC-COINBASE-LOAN-BLOG-20261031T0037Z",
+        "SRC-COINBASE-LOAN-COLLATERAL-20261031T0037Z",
+        "SRC-COINBASE-LOAN-BACKUP-CBXRP-20261031T0037Z",
+        "SRC-COINBASE-LOAN-HEALTH-20261031T0037Z",
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z",
+        "SRC-CIRCLE-USDC-BASE-20261031T0037Z",
+        "SRC-CIRCLE-USDC-XRPL-20261031T0037Z",
+        "SRC-THEBLOCK-COINBASE-XRP-MORPHO-20260218",
+        "SRC-GITHUB-BARROT-MAIN-PR1388-AUDIT-20261031T0037Z",
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T003700Z-coinbase-morpho-cbxrp-usdc-collateral-rail.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T003700Z-coinbase-morpho-cbxrp-usdc-collateral-rail-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T003700Z-cbxrp-usdc-collateral-feature-gates.json",
+      "repository_audit_path": "data/repository_audits/20261031T003700Z-main-pr1388-and-cbxrp-collateral-audit.json",
+      "actions": [
+        "Cross-referenced Coinbase's official loan announcement, collateral terms, backup collateral asset table and loan-health documentation.",
+        "Verified XRP loans require cbXRP on Base at contract 0xcb585250f852c6c6bf90434ab21a00f02833a4af.",
+        "Inspected Morpho Watch API-derived 00:31 UTC cbXRP/USDC market data and Morpho app market ID 0xd4a903dc…6e4109.",
+        "Cross-checked Circle's official native USDC support on Base and XRPL.",
+        "Separated market-wide permissionless Morpho balances from Coinbase-specific product usage and Circle's issuer role from vault lending.",
+        "Recorded the Coinbase 4.38% penalty versus Morpho 12.67–12.68% bonus discrepancy and Morpho liquidity-field inconsistency.",
+        "Audited current main, 163 open PRs, stale base distribution, PR #1386/#1388 CI and fail-closed gates, approval workflow zero-job failure, dependencies and unavailable security-alert endpoints."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "Morpho app and aggregator liquidity/utilization fields are not fully reconciled.",
+        "Coinbase channel share within the permissionless Morpho market is not disclosed.",
+        "Circle's direct market supply/lender role is unknown.",
+        "Liquidation-to-native-XRP sale path is not traced.",
+        "Coinbase and Morpho liquidation-penalty displays conflict.",
+        "Full repository CI and dependency vulnerability scan were not run."
+      ],
+      "next_actions": [
+        "Reconcile Morpho market supply, borrow, available liquidity, utilization and rates from one block-consistent public API snapshot; resolve Morpho app/aggregator field differences.",
+        "Obtain the exact Coinbase UI-to-Morpho market mapping and distinguish Coinbase-originated borrowers from permissionless direct users without inferring identity from wallet heuristics.",
+        "Build 30/90-day immutable series for cbXRP supply, Morpho borrow, collateral, vault allocation, rates, liquidations and Base DEX depth.",
+        "Trace sampled liquidation transactions from Morpho collateral seizure through cbXRP DEX sale, Coinbase redemption and any XRPL/CEX transfer; do not assume the full chain.",
+        "Clarify the Coinbase 4.38% penalty versus Morpho 12.67–12.68% liquidation bonus and the generic 86% note versus the market-specific 62.5% LLTV.",
+        "Identify vault-level USDC suppliers only from public, attributable records; do not attribute vault capital to Circle without direct evidence.",
+        "Keep all collateral and stablecoin measures out of price-prediction features until point-in-time history, data-quality checks, leakage controls and walk-forward tests pass."
+      ],
+      "source_reference_count": 12,
+      "missing_source_references": 0
+    }
+  ]
+}

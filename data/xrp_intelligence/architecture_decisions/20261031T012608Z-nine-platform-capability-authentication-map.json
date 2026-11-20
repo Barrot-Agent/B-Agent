@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0",
+  "record_type": "platform_capability_authentication_dataflow_map",
+  "map_id": "PLATFORM-MAP-20261031T012608Z-NINE-PLATFORM-XRP-COORDINATION",
+  "created_at_utc": "2026-10-31T01:26:08Z",
+  "status": "DESIGNED_NOT_EXECUTED",
+  "mission": "Coordinate independent XRP research, prediction-engine validation and Barrot V3 engineering across nine requested platforms without implying untested connections.",
+  "global_status": {
+    "target_platform_count": 9,
+    "authenticated_external_platforms": 0,
+    "live_external_collaborators_verified": 0,
+    "verified_external_handoffs": 0,
+    "chatgpt_session": "ACTIVE",
+    "github_connector": "VERIFIED_SEPARATE_FROM_NINE_TARGETS",
+    "github_exact_head_pr_and_ledger_workflows": "VERIFIED"
+  },
+  "platforms": [
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "authentication": "Current ChatGPT session active; no separate external API credential used.",
+      "capabilities": "Research orchestration, public-source retrieval, structured synthesis, hypothesis generation, red-team review, forecasting methodology and GitHub tool orchestration.",
+      "permission_scope": "Use only currently available tools and authorized connected GitHub access; no private-account data unless explicitly authorized.",
+      "task_assignment": "Maintain canonical evidence ledger; coordinate task briefs; normalize evidence; compare hypotheses; preserve minority objections; review prediction calibration and leakage controls.",
+      "data_flow_in": "Public filings, official statements, market data, agent evidence bundles, GitHub PR/CI evidence.",
+      "data_flow_out": "Structured research tasks, evidence schemas, branch/PR changes and verification reports.",
+      "status": "EXECUTED_IN_CURRENT_SESSION; external collaboration not applicable."
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "authentication": "NOT_TESTED; no authenticated session/API connector verified.",
+      "capabilities": "Proposed independent counter-hypothesis generation, long-context filing analysis and technical red-team.",
+      "permission_scope": "Proposed public/authorized source read-only; no repository write or private data.",
+      "task_assignment": "Independent red-team of Coinbase/Morpho cbXRP collateral transmission and competing institutional adoption hypotheses.",
+      "data_flow_in": "Frozen source packet with source IDs, timestamps and claims.",
+      "data_flow_out": "Evidence matrix, counter-evidence, assumptions and minority objections.",
+      "status": "DESIGNED_NOT_AUTHENTICATED"
+    },
+    {
+      "id": "grok",
+      "name": "Grok",
+      "authentication": "NOT_TESTED; no authenticated session/API connector verified.",
+      "capabilities": "Proposed public discussion/social narrative monitoring and event discovery.",
+      "permission_scope": "Public posts only; no private accounts, scraping behind access controls, deception or identity inference.",
+      "task_assignment": "Collect timestamped public XRP/Coinbase/Circle/SBI narratives; label bot/coordination uncertainty and distinguish narrative from verified facts.",
+      "data_flow_in": "Public query scope and event windows.",
+      "data_flow_out": "URL-level evidence, timestamps, author/public-account metadata only where public, sentiment claims and counterexamples.",
+      "status": "DESIGNED_NOT_AUTHENTICATED"
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "authentication": "NOT_TESTED; no authenticated session/API connector verified.",
+      "capabilities": "Proposed primary-source discovery, regulatory/filing crosswalk and document extraction.",
+      "permission_scope": "Public regulator/company filings read-only.",
+      "task_assignment": "Independent U.S./Japan regulatory and institutional filing review; resolve SBIC identity and SBI/Circle/Startale legal relationships.",
+      "data_flow_in": "Named entities, jurisdictions, filing dates and source gaps.",
+      "data_flow_out": "Official filing citations, entity distinctions, dates, legal status and unresolved questions.",
+      "status": "DESIGNED_NOT_AUTHENTICATED"
+    },
+    {
+      "id": "copilot",
+      "name": "GitHub Copilot",
+      "authentication": "NOT_TESTED as a separate platform; GitHub repository connector is not proof of Copilot access.",
+      "capabilities": "Proposed in-editor code review and test suggestions.",
+      "permission_scope": "Scoped repository read-only initially; branch-only changes after authorization; no merge or main write.",
+      "task_assignment": "Independent review of scheduler, workflows, dependency pinning and regression tests.",
+      "data_flow_in": "Specific PR diff, test output and acceptance criteria.",
+      "data_flow_out": "Review comments, patch suggestions and test evidence.",
+      "status": "DESIGNED_NOT_AUTHENTICATED"
+    },
+    {
+      "id": "codex",
+      "name": "Codex",
+      "authentication": "NOT_TESTED as a separate target-platform session; available GitHub tools do not prove Codex collaboration.",
+      "capabilities": "Proposed deterministic code changes, test generation and repository task execution.",
+      "permission_scope": "Isolated branch/worktree; preserve dirty state; no reset/clean/stash/force-push/merge or external deployment.",
+      "task_assignment": "Implement bounded V3 fixes and prediction-engine modules with exact-head tests and handoff manifests.",
+      "data_flow_in": "Issue/PR task bundle, source files, allowed paths and explicit completion gates.",
+      "data_flow_out": "Minimal commits, tests, CI links, diff summary and rollback-safe handoff.",
+      "status": "DESIGNED_NOT_AUTHENTICATED"
+    },
+    {
+      "id": "huggingface",
+      "name": "Hugging Face",
+      "authentication": "Public web access only; no Hub token or private Space credential tested.",
+      "capabilities": "Proposed public model/dataset discovery, reproducible model evaluation and controlled artifact storage.",
+      "permission_scope": "Public model/dataset read-only; uploads disabled until credential isolation, artifact provenance and approval are verified.",
+      "task_assignment": "Benchmark time-series, calibration and text-event models; inspect public XRP/finance datasets and model licenses.",
+      "data_flow_in": "Sanitized feature schema and public datasets.",
+      "data_flow_out": "Model cards, evaluation metrics, dataset provenance and reproducible artifacts.",
+      "status": "DESIGNED_NOT_AUTHENTICATED"
+    },
+    {
+      "id": "kaggle",
+      "name": "Kaggle",
+      "authentication": "NOT_TESTED; no API token or authenticated session verified.",
+      "capabilities": "Proposed independent public dataset benchmarking and reproducible notebook experiments.",
+      "permission_scope": "Public dataset read-only; no competition submissions, paid compute or account writes.",
+      "task_assignment": "Independent benchmark notebooks for fixed-horizon XRP returns, volatility and calibration using point-in-time public data.",
+      "data_flow_in": "Versioned sanitized datasets and fixed evaluation splits.",
+      "data_flow_out": "Notebook source, metrics, leakage audit and dataset/version identifiers.",
+      "status": "DESIGNED_NOT_AUTHENTICATED"
+    },
+    {
+      "id": "databricks",
+      "name": "Databricks",
+      "authentication": "NOT_TESTED; no workspace, SQL warehouse or token verified.",
+      "capabilities": "Proposed historical feature store, Delta tables, scheduled ingestion and distributed walk-forward backtesting.",
+      "permission_scope": "Read-only workspace/catalog initially; isolated schema for writes after explicit authorization; no external sharing.",
+      "task_assignment": "Design and, when authenticated, execute point-in-time feature storage, data-quality checks, drift monitoring and reproducible backtests.",
+      "data_flow_in": "Immutable source snapshots, schema registry and provenance records.",
+      "data_flow_out": "Versioned feature tables, lineage, quality reports and backtest artifacts.",
+      "status": "DESIGNED_NOT_AUTHENTICATED"
+    }
+  ],
+  "separate_verified_connectors": [
+    {
+      "name": "GitHub connector",
+      "repository": "Barrot-Agent/B-Agent",
+      "status": "VERIFIED_USED",
+      "capabilities": "Repository reads, PR inspection, branch creation, branch-only commits, PR creation and CI/Actions evidence retrieval.",
+      "permissions_used_this_run": "Read repository/PR/workflow evidence; created and updated dedicated branches and draft PR #1390; no main write or merge.",
+      "constraints": "No GitHub secret values accessed; no merge, force-push or deployment."
+    }
+  ],
+  "structured_handoff_schema": {
+    "required_fields": [
+      "task_id",
+      "platform_id",
+      "task_scope",
+      "data_cutoff_utc",
+      "source_ids",
+      "claim_id",
+      "claim_text",
+      "evidence_class",
+      "source_url",
+      "published_at",
+      "retrieved_at_utc",
+      "independence_group",
+      "supporting_evidence",
+      "disconfirming_evidence",
+      "assumptions",
+      "uncertainty",
+      "confidence",
+      "artifact_checksum",
+      "execution_status",
+      "verification_status"
+    ],
+    "execution_status_values": [
+      "DESIGNED",
+      "EXECUTED",
+      "BLOCKED"
+    ],
+    "verification_status_values": [
+      "NOT_VERIFIED",
+      "VERIFIED",
+      "FAILED"
+    ],
+    "rule": "A platform response is not an evidence source until its claims resolve to traceable source URLs or reproducible artifacts. A platform handoff is not verified until artifact checksum, schema and task acceptance checks pass."
+  },
+  "task_independence_and_disagreement": {
+    "parallelize": "Assign independent source discovery and hypothesis testing; do not show one agent another agent's conclusion before its first independent submission when feasible.",
+    "adjudication": "Compare primary-source strength, source independence, timestamp alignment, measurement definitions, reproducibility and disconfirming evidence; do not resolve by majority vote.",
+    "minority_objections": "Retain unresolved dissent with author/platform, claim, evidence, assumptions and test that could resolve it.",
+    "red_team": "A separate reviewer challenges source identity, causal direction, look-ahead leakage, alternative explanations and model overfit.",
+    "no_forced_unanimity": true
+  },
+  "least_privilege_and_fallbacks": {
+    "default_permissions": "Public read-only; no credential sharing between platforms.",
+    "credentials": "Use platform-native scoped credentials only after explicit authentication; never put secrets in prompts, repository files or shared evidence bundles.",
+    "writes": "Branch-only code writes after task authorization; no main writes, merges, force-pushes, deployments or real-money actions.",
+    "data_minimization": "Share only sanitized public research evidence and necessary code; no private personal data.",
+    "fallback": "If an API is unavailable/rate-limited, use cached timestamped public snapshots or local deterministic analysis and mark the task BLOCKED/DEFERRED rather than fabricating a handoff."
+  },
+  "acceptance_gates": [
+    "Authentication and permission scope tested separately for each platform.",
+    "A minimal read-only probe succeeds and records exact endpoint/workspace and timestamp.",
+    "A structured evidence handoff validates against the schema.",
+    "Source provenance and independence groups are checked.",
+    "A reviewer reproduces at least one result.",
+    "Write capability remains disabled until a separate approval and branch-only test."
+  ],
+  "current_result": "Only the ChatGPT session and the separate GitHub connector are verified active. The other eight target platforms are design targets, not live collaborators. No external credentials were requested or used."
+}

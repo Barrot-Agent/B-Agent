@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_addendum",
+  "audit_id": "AUDIT-20261101T001510Z-PR1433-EXACT-HEAD-CI-AND-ARCHIVE-VALIDATOR",
+  "captured_at_utc": "2026-11-01T00:15:10Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "a989ae6ee81106e5a3521d89883c59e263d6d305",
+  "pr": {
+    "number": 1433,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1433",
+    "state": "OPEN",
+    "draft": true,
+    "merged": false,
+    "mergeable": true,
+    "base_sha": "a989ae6ee81106e5a3521d89883c59e263d6d305",
+    "head_sha": "a246a55743b50e9c089dec9a3c1ca0763ca2ff99",
+    "changed_files": 5,
+    "additions": 449,
+    "deletions": 60,
+    "ci_run_id": 41255694751,
+    "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41255694751",
+    "ci_conclusion": "SUCCESS",
+    "ci_tests_passed": 354,
+    "ci_subtests_passed": 8,
+    "ci_job": "Tests",
+    "ci_job_id": 124698269049,
+    "new_timestamp_regression_tests": 3,
+    "gate_run_id": 41255694694,
+    "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41255694694",
+    "gate_conclusion": "SUCCESS",
+    "gate_semantics": "Merge disabled pending gate verification",
+    "exact_head_ci_verified": true
+  },
+  "prior_prs": [
+    {
+      "number": 1431,
+      "base_sha": "f0bbed8c51974e4e0b4cb98b09a8ef0eb5fe0fbb",
+      "status": "STALE_BASE_OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "number": 1432,
+      "base_sha": "b51099e04b410f49e28d9c80201f68847aa8118a",
+      "head_sha": "91eae69c3994f9aebfb7ce3a866bb09bb569af33",
+      "status": "STALE_BASE_OPEN_DRAFT_UNMERGED",
+      "prior_ci": "PASS_ON_OLD_HEAD"
+    }
+  ],
+  "research_archive_validation": {
+    "data_head_sha": "11e8c2db63e340bd6b28709b930170a6b99d6b5b",
+    "validator_run_id": 41255857106,
+    "validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41255857106",
+    "validator_conclusion": "CANCELLED",
+    "fail_closed_gate_run_id": 41255857050,
+    "fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41255857050",
+    "fail_closed_gate_conclusion": "SUCCESS",
+    "gate_semantics": "Merge disabled pending gate verification",
+    "exact_archive_validation": "NOT_VERIFIED_VALIDATOR_CANCELLED",
+    "metadata_successor_head_sha": "5c49a29694f89dc030ff85c197523392b94d72fe",
+    "metadata_successor_runs_returned": 0
+  },
+  "main_workflow_risk": {
+    "path": ".github/workflows/knowledge-signal-cycle.yml",
+    "blob_sha": "21aae946ec92fbe2bd176fa79e57406b32da9517",
+    "trigger": "workflow_dispatch",
+    "contents_permission": "write",
+    "direct_git_commit_and_push": true,
+    "status": "MAIN_WRITE_CAPABILITY_REMAINS_UNTIL_APPROVED_MERGE"
+  },
+  "limitations": [
+    "PR #1433 CI and fail-closed gate passed on its exact head; PR remains draft and unmerged.",
+    "No full repository CI run was performed.",
+    "No complete dependency vulnerability scan was performed.",
+    "The research archive validator was cancelled on the data head; the archive append and metadata successor remain unverified.",
+    "No workflow was manually dispatched."
+  ],
+  "safety": {
+    "main_changed_by_this_run": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "workflow_dispatch_performed": false,
+    "real_money_trade_performed": false
+  }
+}

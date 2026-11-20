@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 148,
+  "chunk_count": 149,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "LIM-BINANCE-UPDATE4-XRP-WITHDRAWAL-AND-REPLENISHMENT-ATTRIBUTION-20261101T052616Z",
+      "recorded_at_utc": "2026-11-01T05:26:16Z",
+      "category": "BINANCE_XRP_WITHDRAWAL_AND_REPLENISHMENT_ATTRIBUTION",
+      "severity": "HIGH",
+      "status": "OPEN_UNKNOWN",
+      "statement": "Binance Update #4 reports 95% aggregate replenishment, 100% coverage for XRP among the top ten, and phase-one XRP network withdrawals scheduled 06:00–09:00 UTC; no XRP-specific purchases or actual withdrawal flows are disclosed.",
+      "impact": "Conflating company-wide replenishment, customer-asset coverage, XRP purchases and actual customer withdrawals would create false capital-flow and market-impact signals.",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL"
+      ],
+      "unresolved": [
+        "XRP-specific purchase quantity, venue, price and funding source.",
+        "Actual XRP withdrawal activation time and successful withdrawal count.",
+        "Customer withdrawals versus internal wallet reshuffling.",
+        "External destination types and subsequent exchange deposits/trades.",
+        "Full cryptographic Proof of Reserves and liability reconciliation."
+      ],
+      "feature_admission": "ANNOUNCED_EVENT_MARKER_ONLY; NO_DIRECTIONAL_FEATURE; NO_FORECAST"
+    },
+    {
+      "id": "LIM-XRP-ESCROW-DESTINATION-AND-DISPOSITION-UNKNOWN-20261101T052616Z",
+      "recorded_at_utc": "2026-11-01T05:26:16Z",
+      "category": "XRPL_ESCROW_DESTINATION_AND_DISPOSITION",
+      "severity": "HIGH",
+      "status": "OPEN_UNKNOWN",
+      "statement": "The latest accessible XRP Insights snapshot reports the November 1 gross 1B XRP release and zero re-escrow by ledger 108036051 at 02:31 UTC, but raw transaction metadata and Destination fields were not independently retrieved and later disposition is unknown.",
+      "impact": "Gross release and tracker-reported net outside escrow must not be equated with exchange inflow, OTC sale, or market sell pressure.",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "unresolved": [
+        "Raw validated-ledger transaction JSON for both EscrowFinish hashes.",
+        "Destination fields and affected ledger nodes.",
+        "Subsequent transfers, EscrowCreate, exchange deposits and sale evidence."
+      ],
+      "feature_admission": "NO_DIRECTIONAL_FEATURE; NO_FORECAST"
+    },
+    {
+      "id": "LIM-BAGENT-MAIN-WORKFLOW-WRITERS-PR1442-UNMERGED-20261101T052616Z",
+      "recorded_at_utc": "2026-11-01T05:26:16Z",
+      "category": "BAGENT_MAIN_PRIVILEGED_WORKFLOW_AND_STALE_SENTIMENT",
+      "severity": "CRITICAL",
+      "status": "OPEN_REMEDIATION_PROPOSED",
+      "statement": "Main retains write/dispatch-capable Cross Analysis, Scheduler Tick and Merge Queue workflows. PR #1442 passes exact-head CI/gate but is open, draft and unmerged. Cross Analysis emitted zero-sample XRP/BTC sentiment shift with a new generated_at timestamp.",
+      "impact": "Scheduled workflow capability can mutate repository state without the requested approval boundary; generated_at-only updates can misrepresent stale data as fresh.",
+      "source_ids": [
+        "SRC-20261101T052616Z-GITHUB-BAGENT-MAIN-PR1442-VERIFICATION"
+      ],
+      "unresolved": [
+        "Explicit approval enforcement and least-privilege workflow permissions on main.",
+        "Separate artifact publisher/Pages refresh path.",
+        "Approval workflow zero-job anomaly.",
+        "Full repository CI and dependency/security scanning."
+      ],
+      "feature_admission": "NOT_MARKET_FEATURE; MAIN_SAFETY_REMEDIATION_NOT_APPLIED"
+    }
+  ]
+}

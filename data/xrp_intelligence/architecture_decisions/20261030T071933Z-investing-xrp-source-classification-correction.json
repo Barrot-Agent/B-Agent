@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "XRP-INVESTING-SOURCE-CLASSIFICATION-CORRECTION-20261030T071933Z",
+  "recorded_at_utc": "2026-10-30T07:19:33Z",
+  "status": "EXECUTED_AS_PROVENANCE_CORRECTION; MODEL_FEATURE_ADMISSION_BLOCKED",
+  "decision": "Treat the earlier Investing.com XRP historical-data page as a generic XRP instrument with unspecified venue, not an OKX venue quote. Preserve the original source shard unchanged and add an explicit correction record that supersedes its venue label.",
+  "rationale": "Direct page inspection shows the page header '# XRP' and provider 'Investing.com'; no OKX venue is identified. The earlier source record's URL is the generic Investing.com XRP historical-data page. Its 03:41:35 UTC quote and the 06:33:27 UTC quote can be compared only as same-provider observations, not as venue-specific OKX prices.",
+  "required_fields": [
+    "instrument_label",
+    "provider",
+    "venue_if_explicit",
+    "quote_timestamp_utc",
+    "page_access_timestamp_utc",
+    "aggregation_methodology",
+    "price",
+    "change_24h",
+    "daily_ohlcv_cutoff",
+    "volume_denomination",
+    "source_correction_of"
+  ],
+  "feature_policy": "Do not admit either Investing.com snapshot as a venue-specific feature. Use the same-provider change only as descriptive context. A predictive feature requires source methodology, synchronized multi-venue observations, exact timestamp and independent corroboration.",
+  "unresolved": [
+    "Investing.com market-data aggregation methodology and contributing venues are not disclosed on the inspected page.",
+    "Displayed volume denomination and exact daily-row cutoff are not established.",
+    "No synchronized cross-venue order-book, trades, CVD, funding, open interest or ETF creation/redemption panel is available."
+  ]
+}

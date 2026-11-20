@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T001607Z-BINANCE-XRP-POR-CUSHION",
+  "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T001607Z-binance-xrp-por-cushion-graph.json",
+  "created_at_utc": "2026-10-31T00:16:07Z",
+  "captured_at_utc": "2026-10-31T00:16:07Z",
+  "source_ids": [
+    "SRC-BINANCE-POR-METHODOLOGY-20261031T001607Z",
+    "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+    "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+  ],
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T001607Z-01",
+      "from_entity": "Binance official Proof of Reserves page",
+      "relation": "describes",
+      "to_entity": "1:1 user-asset custody proof, reserve-wallet ownership checks, balance snapshots, Merkle/zk-SNARK verification and Download All Address control",
+      "status": "OFFICIAL_METHODOLOGY_PAGE_RETRIEVED; EXPORT_NOT_RETRIEVED",
+      "source_ids": [
+        "SRC-BINANCE-POR-METHODOLOGY-20261031T001607Z"
+      ],
+      "details": "The page does not expose the downloaded address rows in the captured response."
+    },
+    {
+      "edge_id": "E-20261031T001607Z-02",
+      "from_entity": "Binance XRP Proof of Reserves snapshot",
+      "relation": "reported_coverage_on_2026_10_01",
+      "to_entity": "100.77% of customer net account balances",
+      "status": "SECONDARY_REPORT_OF_OFFICIAL_BINANCE_PAGE",
+      "source_ids": [
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+        "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+      ],
+      "details": "The Edge and Gate News report the same 100.77% figure; they are not independent address-level calculations."
+    },
+    {
+      "edge_id": "E-20261031T001607Z-03",
+      "from_entity": "Binance XRP customer net balances on 2026-10-01",
+      "relation": "reported_at",
+      "to_entity": "Approximately 2.496B XRP",
+      "status": "SECONDARY_REPORTED_ROUNDED_FIGURE",
+      "source_ids": [
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030"
+      ],
+      "details": "The Edge states balances above 1,000 are rounded to the nearest million."
+    },
+    {
+      "edge_id": "E-20261031T001607Z-04",
+      "from_entity": "Five Binance-labelled XRPL incident source wallets",
+      "relation": "membership_in_official_XRP_PoR_address_set",
+      "to_entity": "UNKNOWN_PENDING_ADDRESS_EXPORT",
+      "status": "UNVERIFIED",
+      "source_ids": [
+        "SRC-BINANCE-POR-METHODOLOGY-20261031T001607Z",
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030"
+      ],
+      "details": "Do not infer membership from Bithomp labels or the separate Binance 14 Ethereum PoR finding."
+    },
+    {
+      "edge_id": "E-20261031T001607Z-05",
+      "from_entity": "233,461,943.1 XRP incident transfer",
+      "relation": "conditional_full_source_from_PoR_stress_case",
+      "to_entity": "Approximately 91.42% modeled XRP coverage and 214.243M XRP shortfall",
+      "status": "SCENARIO_ONLY_NOT_OBSERVED",
+      "source_ids": [
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+        "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+      ],
+      "details": "Assumes all transferred XRP came from PoR-listed reserves and ignores corporate replenishment, freezes, recovery and other reserve changes."
+    },
+    {
+      "edge_id": "E-20261031T001607Z-06",
+      "from_entity": "PoR implied XRP surplus of approximately 19.219M",
+      "relation": "exhausted_if_incident_transfer_from_PoR_exceeds",
+      "to_entity": "Approximately 8.23% of 233.4619431M XRP",
+      "status": "DERIVED_CONDITIONAL_THRESHOLD",
+      "source_ids": [
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+        "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+      ],
+      "details": "Rounded source inputs make this a sensitivity threshold, not an exact measured reserve shortfall."
+    }
+  ],
+  "disconfirming_evidence": [
+    {
+      "hypothesis_id": "H-20261031T001607Z-01",
+      "disconfirming_evidence": [
+        "No official October 1 PoR XRP address export has been retrieved or matched to the five source wallets.",
+        "The 100.77% ratio and 2.496B customer balance are secondary-reported and rounded.",
+        "Binance later reported more than $6.34B in company funds, approximately $3B frozen and market/OTC replenishment; these offsets are not included in the stress arithmetic."
+      ]
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

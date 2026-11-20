@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "BUNDLE-20261101T075930Z-BINANCE-PHASE1-MARKET-ESCROW-MAIN",
+  "captured_at_utc": "2026-11-01T07:59:30Z",
+  "source_count": 5,
+  "new_source_ids": [
+    "SRC-20261101T075930Z-BINANCE-NETWORK-STATUS-PAGE",
+    "SRC-20261101T071000Z-TRADRADAR-XRP-DERIVATIVES",
+    "SRC-20261101T074000Z-SEANDRA-BINANCE-XRP-PERP",
+    "SRC-20261101T064200Z-XRP-INSIGHTS-ESCROW-LEDGER-108039913",
+    "SRC-20261101T075930Z-GITHUB-MAIN-PR-INVENTORY-AUDIT"
+  ],
+  "existing_source_references": [
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261101T075930Z-BINANCE-NETWORK-STATUS-PAGE",
+      "publisher": "Binance",
+      "title": "Deposit & Withdrawal Status",
+      "url": "https://www.binance.com/en/network",
+      "retrieved_at_utc": "2026-11-01T07:59:30Z",
+      "page_last_updated_displayed": "2026-11-01 07:34",
+      "timezone": "UNDISCLOSED",
+      "evidence_class": "PRIMARY_DYNAMIC_STATUS_PAGE_RENDER",
+      "independence_group": "BINANCE_PRIMARY",
+      "claim": "Rendered page displayed an empty No Data table; no asset-level XRP row.",
+      "limitation": "No Data is not proof of XRP withdrawal availability or unavailability."
+    },
+    {
+      "id": "SRC-20261101T071000Z-TRADRADAR-XRP-DERIVATIVES",
+      "publisher": "TradRadar",
+      "title": "XRP futures market data",
+      "url": "https://tradradar.io/markets/xrp",
+      "retrieved_at_utc": "2026-11-01T07:59:30Z",
+      "observation_time_utc": "2026-11-01T07:10:00Z",
+      "evidence_class": "SECONDARY_AGGREGATED_EXCHANGE_MARKET_DATA",
+      "independence_group": "TRADRADAR_MARKET_DATA",
+      "observation": {
+        "price_usd": 1.2539,
+        "change_24h_pct": 0.57,
+        "oi_usd": 1890000000,
+        "oi_change_24h_pct": 1.79,
+        "venues": [
+          "Binance",
+          "Bybit",
+          "MEXC",
+          "Gate",
+          "Bitget",
+          "Hyperliquid",
+          "OKX"
+        ],
+        "funding_oi_weighted_8h_pct": 0.005,
+        "liquidations_24h_usd_min": 296880,
+        "long_liquidations_usd": 156580,
+        "short_liquidations_usd": 140290,
+        "long_short_ratio": 3.57,
+        "long_account_share_pct": 78.1
+      },
+      "limitation": "15-minute delay; liquidation total lower bound; account share is not notional exposure."
+    },
+    {
+      "id": "SRC-20261101T074000Z-SEANDRA-BINANCE-XRP-PERP",
+      "publisher": "Seandra AI",
+      "title": "XRP Binance USDT perpetual data",
+      "url": "https://seandra.ai/perp/xrp",
+      "retrieved_at_utc": "2026-11-01T07:59:30Z",
+      "observation_time_utc": "2026-11-01T07:40:00Z",
+      "evidence_class": "SECONDARY_SINGLE_VENUE_DERIVATIVES_DATA",
+      "independence_group": "SEANDRA_BINANCE_PERP",
+      "observation": {
+        "contract": "XRPUSDT Binance perpetual",
+        "price_usd": 1.25,
+        "change_24h_pct": 0.7,
+        "oi_usd": 335500000,
+        "oi_change_24h_pct": 1.2,
+        "funding_8h_pct": 0.01,
+        "long_account_share_pct": 72,
+        "top_trader_long_share_pct": 71,
+        "forced_closes_24h_usd_min": 137000,
+        "oi_change_7d_in_coins_pct": -13,
+        "price_change_7d_pct": -3.6
+      },
+      "limitation": "Binance contract only; not a total-market OI estimate."
+    },
+    {
+      "id": "SRC-20261101T064200Z-XRP-INSIGHTS-ESCROW-LEDGER-108039913",
+      "publisher": "XRP Insights",
+      "title": "XRP Escrow Unlock Schedule — ledger 108,039,913",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "retrieved_at_utc": "2026-11-01T07:59:30Z",
+      "observation_time_utc": "2026-11-01T06:42:00Z",
+      "validated_ledger": 108039913,
+      "evidence_class": "TRACKER_DERIVED_FROM_PUBLIC_RIPPLED_JSON_RPC",
+      "independence_group": "XRP_INSIGHTS_XRPL_TRACKER",
+      "claim": "Tracker reports two EscrowFinish events at 00:00:02 UTC totaling 1B XRP, zero re-escrow by ledger 108039913, 30.4B XRP in 96 Ripple-owned escrow objects across eight accounts, and 64.2% re-escrow over the prior 12 releases.",
+      "method": "Tracker states it reads account_objects and account_tx from s1.ripple.com with xrplcluster.com fallback, pinned to one validated ledger.",
+      "limitation": "Raw Destination fields and subsequent transfers were not independently decoded."
+    },
+    {
+      "id": "SRC-20261101T075930Z-GITHUB-MAIN-PR-INVENTORY-AUDIT",
+      "publisher": "GitHub REST API",
+      "title": "Barrot-Agent/B-Agent main, PR and Actions audit",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-11-01T07:59:30Z",
+      "evidence_class": "AUTHORIZED_REPOSITORY_API_STATE",
+      "independence_group": "GITHUB_REPOSITORY_API",
+      "observation": {
+        "main_sha": "c8e66e95f385f48a03bb17b4498dc969a43fa97b",
+        "open_prs": 219,
+        "drafts": 209,
+        "ready": 10,
+        "main_targeted": 213,
+        "stale_main_targeted": 213,
+        "current_main_targeted": 0,
+        "non_main": 6,
+        "pr1449_head": "dce8be8e8df59390c7a986c7ff7a2b699cb18593",
+        "pr1449_base": "760b61e216f1044d4faaa359962939757d9d6adf",
+        "pr1449_compare": "DIVERGED_AHEAD_1_BEHIND_1",
+        "pr1449_mergeable_state": "clean",
+        "pr1449_ci_tests": 367,
+        "pr1449_ci_subtests": 8,
+        "pr1449_gate": "PASS_MERGE_DISABLED",
+        "cross_analysis_run": 41286457391,
+        "scheduler_tick_run": 41286201403,
+        "approval_zero_job_run": 41285458536
+      },
+      "limitation": "Full repository CI, complete dependency scan and security-alert review remain incomplete."
+    }
+  ],
+  "notes": [
+    "Binance official Update #4 and Reuters are reused as existing source references; no duplicate source records.",
+    "Five new sources remain pending immutable archive append.",
+    "Derivative provider universes are kept separate; no OI averaging.",
+    "No market features admitted; forecast NOT_ISSUED."
+  ]
+}

@@ -1,0 +1,405 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T0111Z-COINBASE-BINANCE-BITNOMIAL-XRPL-VALIDATOR-FIX",
+  "captured_at_utc": "2026-10-30T01:11:40Z",
+  "observed_main_sha": "0b20a401724218ede2b9e85d304a907c0c1ceda1",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_PRIMARY_COMPANY_REPORTED",
+      "CONFIRMED_PRIMARY_ISSUER_TRANSPARENCY",
+      "CONFIRMED_PRIMARY_REGULATOR_ANNOUNCEMENT",
+      "CONFIRMED_PRIMARY_CLEARINGHOUSE_RULES_PAGE",
+      "CONFIRMED_PRIMARY_PROTOCOL_DOCUMENTATION",
+      "SECONDARY_REPUTABLE_REPORT",
+      "SECONDARY_ETF_TRACKER",
+      "SECONDARY_INDEPENDENT_NODE_OBSERVATION",
+      "CREATOR_CLAIM_UNVERIFIED",
+      "REPOSITORY_CI_VERIFICATION",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "causal_rule": "No XRP price effect, capital rotation, collateral utilization or adoption impact is inferred from corporate announcements, stablecoin supply changes, exchange freezes, ETF tracker totals or protocol releases without synchronized point-in-time flow evidence and out-of-sample testing."
+  },
+  "nodes": [
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_AND_FINANCIAL_PLATFORM"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "USDC",
+      "label": "USDC",
+      "kind": "FIAT_BACKED_STABLECOIN"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "BLOCKCHAIN_AND_FINANCIAL_INFRASTRUCTURE_COMPANY"
+    },
+    {
+      "id": "RLUSD",
+      "label": "RLUSD",
+      "kind": "FIAT_BACKED_STABLECOIN"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_BLOCKCHAIN"
+    },
+    {
+      "id": "BITNOMIAL",
+      "label": "Bitnomial",
+      "kind": "CFTC_REGULATED_DERIVATIVES_GROUP"
+    },
+    {
+      "id": "BITNOMIAL_CLEARINGHOUSE",
+      "label": "Bitnomial Clearinghouse",
+      "kind": "CFTC_REGISTERED_DCO"
+    },
+    {
+      "id": "CFTC",
+      "label": "Commodity Futures Trading Commission",
+      "kind": "US_DERIVATIVES_REGULATOR"
+    },
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "CRYPTO_EXCHANGE_AND_CUSTODIAN"
+    },
+    {
+      "id": "TETHER",
+      "label": "Tether",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "XRP_ETF_TRACKERS",
+      "label": "XRP ETF/ETP trackers",
+      "kind": "SECONDARY_FUND_DATA"
+    },
+    {
+      "id": "XRPL_AMENDMENTS",
+      "label": "XRPL protocol amendments",
+      "kind": "NETWORK_GOVERNANCE"
+    },
+    {
+      "id": "KAMILAH_CHANNEL_CANDIDATE",
+      "label": "Kamilah/Camila Stevenson channel candidate",
+      "kind": "PUBLIC_CREATOR_IDENTITY_CANDIDATE"
+    },
+    {
+      "id": "CAMILLA_STEPHENSON_CANDIDATE",
+      "label": "Camilla Stephenson requested identity",
+      "kind": "UNVERIFIED_PERSON_IDENTITY"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-COINBASE-Q3-STABLECOIN-ECONOMICS-20261030",
+      "source": "COINBASE",
+      "target": "USDC",
+      "relationship": "Q3_REPORTED_DISTRIBUTION_AND_ECONOMIC_EXPOSURE",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REPORTED",
+      "claim": "Coinbase reported $22B average USDC held in its products and $307M stablecoin revenue in Q3 2026. These are company-wide USDC/stablecoin economics, not XRP-specific customer flows.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-SEC-DECK"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-RLUSD-DISTRIBUTION-20261030",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "RETAIL_AND_INSTITUTIONAL_LISTING_DISTRIBUTION",
+      "evidence_class": "CONFIRMED_PRIMARY_COUNTERPARTY_ANNOUNCEMENT",
+      "claim": "Coinbase began RLUSD access through Prime, Exchange and retail on Oct 28; deposits/withdrawals on XRPL, Base and Ethereum. Global Exchange collateral availability was future at announcement.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-20261028"
+      ]
+    },
+    {
+      "id": "EDGE-CIRCLE-USDC-NATIVE-XRPL-20261030",
+      "source": "CIRCLE",
+      "target": "XRPL",
+      "relationship": "NATIVE_USDC_ISSUANCE_CIRCLE_MINT_AND_API_SUPPORT",
+      "evidence_class": "CONFIRMED_PRIMARY_PRODUCT_ANNOUNCEMENT",
+      "claim": "Circle made native USDC available on XRPL in June 2025 through Circle Mint and APIs without requiring a third-party bridge. This establishes Circle's direct operational presence on XRPL.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-ON-XRPL-20250612"
+      ]
+    },
+    {
+      "id": "EDGE-CIRCLE-USDC-SUPPLY-20261030",
+      "source": "CIRCLE",
+      "target": "USDC",
+      "relationship": "ISSUER_REPORTED_SUPPLY_AND_RESERVES",
+      "evidence_class": "CONFIRMED_PRIMARY_ISSUER_TRANSPARENCY",
+      "claim": "Circle reports $71.0B circulation and $71.2B reserves as of Oct 26, with -$4.2B net circulation over 30 days. Destination flows are unknown.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261026"
+      ]
+    },
+    {
+      "id": "EDGE-RIPPLE-COINBASE-RLUSD-20261030",
+      "source": "RIPPLE",
+      "target": "COINBASE",
+      "relationship": "RLUSD_DISTRIBUTION_AND_MARKET_ACCESS_PARTNERSHIP",
+      "evidence_class": "CONFIRMED_PRIMARY_COUNTERPARTY_ANNOUNCEMENT",
+      "claim": "Ripple and Coinbase announced RLUSD distribution on Coinbase's Prime, Exchange and retail platforms; this is a commercial relationship around RLUSD, not evidence of Ripple equity ownership or XRP price causality.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-20261028"
+      ]
+    },
+    {
+      "id": "EDGE-BITNOMIAL-XRP-COLLATERAL-20261030",
+      "source": "BITNOMIAL_CLEARINGHOUSE",
+      "target": "XRP",
+      "relationship": "ACCEPTED_NATIVE_MARGIN_COLLATERAL",
+      "evidence_class": "CONFIRMED_PRIMARY_CLEARINGHOUSE_RULES_PAGE",
+      "claim": "Bitnomial Clearinghouse lists XRP collateral with a 40% haircut and $15M notional cap. This is a specific DCO rule and does not establish broad eligibility across all CFTC-regulated markets.",
+      "source_ids": [
+        "SRC-BITNOMIAL-COLLATERAL-TABLE-20261002",
+        "SRC-BITNOMIAL-RLUSD-XRP-MARGIN-20251103"
+      ]
+    },
+    {
+      "id": "EDGE-BITNOMIAL-RLUSD-MARGIN-20261030",
+      "source": "BITNOMIAL",
+      "target": "RLUSD",
+      "relationship": "MARGIN_COLLATERAL_ACCEPTANCE",
+      "evidence_class": "CONFIRMED_PRIMARY_COUNTERPARTY_ANNOUNCEMENT",
+      "claim": "Bitnomial announced RLUSD margin deposits for institutional perpetuals, futures and options alongside XRP support, extending its Ripple relationship.",
+      "source_ids": [
+        "SRC-BITNOMIAL-RLUSD-XRP-MARGIN-20251103"
+      ]
+    },
+    {
+      "id": "EDGE-CFTC-PILOT-ASSET-SCOPE-20261030",
+      "source": "CFTC",
+      "target": "USDC",
+      "relationship": "DIGITAL_ASSET_COLLATERAL_PILOT_SCOPE",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATOR_ANNOUNCEMENT",
+      "claim": "The CFTC's Dec 8, 2025 pilot release names BTC, ETH and USDC. XRP is not named in that announcement; this must be kept separate from Bitnomial's own XRP collateral rules.",
+      "source_ids": [
+        "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT-20251208",
+        "SRC-BITNOMIAL-COLLATERAL-TABLE-20261002"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-ISSUER-FREEZE-EVENT-20261030",
+      "source": "BINANCE",
+      "target": "CIRCLE",
+      "relationship": "REPORTED_SECURITY_EVENT_ASSET_FREEZES",
+      "evidence_class": "SECONDARY_REPUTABLE_REPORT",
+      "claim": "Reuters reports Binance's investigation and issuer freezes: nearly $1.57B Tether, over $800M Circle and roughly $200M Ripple. The Ripple asset type is unidentified; frozen totals are reported, not audited recoveries.",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-FREEZES-20261029",
+        "SRC-AP-BINANCE-SECURITY-FREEZES-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-XRPL-NATIVE-XRP-FREEZE-DISTINCTION-20261030",
+      "source": "XRPL",
+      "target": "XRP",
+      "relationship": "NATIVE_ASSET_NOT_ISSUER_FREEZABLE",
+      "evidence_class": "CONFIRMED_PRIMARY_PROTOCOL_DOCUMENTATION",
+      "claim": "XRPL issuer freeze controls apply to issued tokens, not native XRP. Custodial exchanges may restrict assets held in their own custody. Ripple's reported $200M freeze therefore cannot be labeled an on-ledger freeze of native XRP.",
+      "source_ids": [
+        "SRC-XRPL-FREEZE-DOCS-20261030",
+        "SRC-REUTERS-BINANCE-SECURITY-FREEZES-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-ALPHA-ETF-WINDOW-POPULATION-20261030",
+      "source": "XRP_ETF_TRACKERS",
+      "target": "XRP",
+      "relationship": "DIFFERENT_WINDOW_AND_FUND_UNIVERSE_FLOW_ESTIMATES",
+      "evidence_class": "SECONDARY_ETF_TRACKER",
+      "claim": "Alpha Finance's XRP-specific page uses 30 trading sessions while its cross-asset page uses 30 calendar days; different fund coverage and cutoff prevent direct comparison.",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-TRACKER-20261028",
+        "SRC-ALPHA-ETF-CROSS-ASSET-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-XRPL-3_3_0-AMENDMENT-STATUS-20261030",
+      "source": "XRPL",
+      "target": "XRPL_AMENDMENTS",
+      "relationship": "RELEASED_FEATURES_VERSUS_MAINNET_ACTIVATION",
+      "evidence_class": "SECONDARY_INDEPENDENT_NODE_OBSERVATION",
+      "claim": "The 3.3.0 release contains six amendments; two substantive amendments are reported enabled, while ConfidentialTransfer, DynamicMPT and Sponsor remain below the activation threshold in two independent node snapshots. Release inclusion is not activation.",
+      "source_ids": [
+        "SRC-XRPL-3-3-0-RELEASE-20260806",
+        "SRC-XRPL-AMENDMENT-STATUS-XRPLDASHBOARD-20261029",
+        "SRC-XRPL-AMENDMENT-STATUS-XRPLTO-20261029",
+        "SRC-XRPL-XLS96-CONFIDENTIAL-TRANSFERS-20260910",
+        "SRC-XRPL-XLS68-SPONSORED-FEES-20260915"
+      ]
+    },
+    {
+      "id": "EDGE-KAMILAH-VIDEO-IDENTITY-UNRESOLVED-20261030",
+      "source": "KAMILAH_CHANNEL_CANDIDATE",
+      "target": "CAMILLA_STEPHENSON_CANDIDATE",
+      "relationship": "PUBLIC_VIDEO_ATTRIBUTION_IDENTITY_NOT_ESTABLISHED",
+      "evidence_class": "CREATOR_CLAIM_UNVERIFIED",
+      "claim": "The channel and video candidates use Kamilah/Camila spelling variants; identity equivalence with the requested Camilla Stephenson is not established.",
+      "source_ids": [
+        "SRC-YOUTUBE-KAMILAH-XRP-COLLATERAL-20251206",
+        "SRC-YOUTUBE-KAMILAH-XRPL-AMENDMENTS-20260730",
+        "SRC-YOUTUBE-KAMILAH-XRP-MACRO-20260303"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-COINBASE-DIVERSIFIED-REVENUE-VS-CYCLE-20261030",
+      "claim": "Coinbase's stablecoin, subscription/services, derivatives and prediction-market businesses may reduce reliance on spot transaction fees.",
+      "supporting_source_ids": [
+        "SRC-COINBASE-Q3-2026-SEC-DECK"
+      ],
+      "disconfirming_evidence": [
+        "Transaction revenue still fell about 43% year-over-year.",
+        "Stablecoin revenue is exposed to USDC circulation and reserve yields; subscription/services may still correlate with crypto activity.",
+        "GAAP net income includes a large investment gain, so headline profit overstates recurring operating performance."
+      ],
+      "status": "PLAUSIBLE_CORPORATE_STRATEGY_HYPOTHESIS_NOT_CAUSAL_MODEL"
+    },
+    {
+      "id": "HYP-USDC-CONTRACTION-NOT-XRP-ROTATION-20261030",
+      "claim": "Circle's 30-day USDC contraction may reflect redemptions, treasury/payment seasonality or broad risk reduction rather than capital moving into XRP or RLUSD.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261026",
+        "SRC-CIRCLE-USDC-ON-XRPL-20250612"
+      ],
+      "disconfirming_evidence": [
+        "No matched issuer, wallet, exchange, OTC or ETF data connects USDC redemptions to XRP purchases.",
+        "USDC's XRPL deployment proves availability, not actual XRP bridge demand."
+      ],
+      "status": "DESTINATION_UNKNOWN"
+    },
+    {
+      "id": "HYP-BINANCE-FREEZES-COMPLIANCE-VS-CENSORSHIP-20261030",
+      "claim": "Issuer freezes may demonstrate institutional compliance capability and law-enforcement coordination while also exposing centralized stablecoin censorship/concentration risk.",
+      "supporting_source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-FREEZES-20261029",
+        "SRC-AP-BINANCE-SECURITY-FREEZES-20261029"
+      ],
+      "disconfirming_evidence": [
+        "Freeze amounts are reported, not independently audited; exact incident cause and customer loss remain unresolved.",
+        "The effect on user trust, redemptions and market liquidity has not been measured."
+      ],
+      "status": "COMPETING_POLICY_AND_MARKET_HYPOTHESES"
+    },
+    {
+      "id": "HYP-BITNOMIAL-XRP-COLLATERAL-CAPITAL-EFFICIENCY-20261030",
+      "claim": "XRP collateral acceptance at Bitnomial may improve capital efficiency for institutional derivatives participants and create a use case for held XRP inventory.",
+      "supporting_source_ids": [
+        "SRC-BITNOMIAL-COLLATERAL-TABLE-20261002",
+        "SRC-BITNOMIAL-RLUSD-XRP-MARGIN-20251103"
+      ],
+      "disconfirming_evidence": [
+        "40% haircut and $15M notional cap constrain capacity.",
+        "Actual deposited collateral, usage, market-maker balances and incremental XRP demand are undisclosed.",
+        "This is venue-specific, not blanket CFTC approval."
+      ],
+      "status": "REAL_CAPABILITY_CONFIRMED_UTILIZATION_UNKNOWN"
+    },
+    {
+      "id": "HYP-CFTC-PILOT-VS-BITNOMIAL-XRP-ELIGIBILITY-20261030",
+      "claim": "XRP can be eligible collateral under a specific CFTC-registered clearinghouse rule even though it is not named in the CFTC's Dec 2025 digital-assets pilot announcement.",
+      "supporting_source_ids": [
+        "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT-20251208",
+        "SRC-BITNOMIAL-COLLATERAL-TABLE-20261002"
+      ],
+      "disconfirming_evidence": [
+        "No evidence here that the CFTC pilot itself includes XRP.",
+        "No evidence that all FCMs, DCOs or clearing venues may accept XRP on the same terms."
+      ],
+      "status": "DISTINCT_REGULATORY_AND_VENUE_PATHWAYS"
+    },
+    {
+      "id": "HYP-RIPPLE-200M-FREEZE-NOT-NATIVE-XRP-20261030",
+      "claim": "Ripple's reported roughly $200M freeze likely concerns issued tokens or assets in custodial systems rather than a protocol-level freeze of native XRP.",
+      "supporting_source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-FREEZES-20261029",
+        "SRC-XRPL-FREEZE-DOCS-20261030"
+      ],
+      "disconfirming_evidence": [
+        "Reuters does not identify the asset, chain, addresses or custody mechanism.",
+        "Native XRP may still be frozen by a centralized custodian at the account level even though no issuer can freeze it on-ledger."
+      ],
+      "status": "ASSET_IDENTITY_UNKNOWN"
+    },
+    {
+      "id": "HYP-ETF-TRACKER-DIFFERENCE-WINDOWS-20261030",
+      "claim": "The Alpha Finance ETF figures differ mainly because one uses 30 trading sessions and the other 30 calendar days, in addition to differing fund populations/cutoffs.",
+      "supporting_source_ids": [
+        "SRC-ALPHA-XRP-ETF-TRACKER-20261028",
+        "SRC-ALPHA-ETF-CROSS-ASSET-20261029"
+      ],
+      "disconfirming_evidence": [
+        "Fund-by-fund holdings, shares outstanding and creations/redemptions have not been reconciled.",
+        "Page refresh and late settlement corrections may still change the totals."
+      ],
+      "status": "METHODOLOGY_RECONCILIATION_REQUIRED"
+    },
+    {
+      "id": "HYP-XRPL-INSTITUTIONAL-UPGRADE-ADOPTION-GAP-20261030",
+      "claim": "XRPL's new token privacy, sponsorship and dynamic MPT capabilities may improve institutional fit if amendments activate and real issuers deploy them.",
+      "supporting_source_ids": [
+        "SRC-XRPL-3-3-0-RELEASE-20260806",
+        "SRC-XRPL-XLS96-CONFIDENTIAL-TRANSFERS-20260910",
+        "SRC-XRPL-XLS68-SPONSORED-FEES-20260915",
+        "SRC-XRPL-AMENDMENT-STATUS-XRPLDASHBOARD-20261029",
+        "SRC-XRPL-AMENDMENT-STATUS-XRPLTO-20261029"
+      ],
+      "disconfirming_evidence": [
+        "ConfidentialTransfer, DynamicMPT and Sponsor remain below threshold in the observed Oct 29 snapshots.",
+        "Protocol capability does not prove enterprise adoption, liquidity or XRP demand.",
+        "No production deployment/usage metrics have been collected."
+      ],
+      "status": "TECHNICAL_CAPABILITY_AND_ADOPTION_SEPARATED"
+    }
+  ],
+  "source_ids": [
+    "SRC-COINBASE-Q3-2026-SEC-DECK",
+    "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-20261028",
+    "SRC-RIPPLE-INSTITUTIONAL-FOOTPRINT-20261028",
+    "SRC-CIRCLE-USDC-TRANSPARENCY-20261026",
+    "SRC-CIRCLE-USDC-ON-XRPL-20250612",
+    "SRC-REUTERS-BINANCE-SECURITY-FREEZES-20261029",
+    "SRC-AP-BINANCE-SECURITY-FREEZES-20261029",
+    "SRC-ALPHA-XRP-ETF-TRACKER-20261028",
+    "SRC-ALPHA-ETF-CROSS-ASSET-20261029",
+    "SRC-BITNOMIAL-COLLATERAL-TABLE-20261002",
+    "SRC-BITNOMIAL-RLUSD-XRP-MARGIN-20251103",
+    "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT-20251208",
+    "SRC-XRPL-FREEZE-DOCS-20261030",
+    "SRC-XRPL-3-3-0-RELEASE-20260806",
+    "SRC-XRPL-XLS96-CONFIDENTIAL-TRANSFERS-20260910",
+    "SRC-XRPL-XLS68-SPONSORED-FEES-20260915",
+    "SRC-XRPL-AMENDMENT-STATUS-XRPLDASHBOARD-20261029",
+    "SRC-XRPL-AMENDMENT-STATUS-XRPLTO-20261029",
+    "SRC-YOUTUBE-KAMILAH-XRP-COLLATERAL-20251206",
+    "SRC-YOUTUBE-KAMILAH-XRPL-AMENDMENTS-20260730",
+    "SRC-YOUTUBE-KAMILAH-XRP-MACRO-20260303",
+    "SRC-GITHUB-LEDGER-VALIDATOR-FAIL-20261030",
+    "SRC-GITHUB-LEDGER-VALIDATOR-FIX-20261030",
+    "SRC-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-20261030",
+    "SRC-GITHUB-BAGENT-MAIN-AND-PR-AUDIT-20261030"
+  ],
+  "market_observations": 6,
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false
+}

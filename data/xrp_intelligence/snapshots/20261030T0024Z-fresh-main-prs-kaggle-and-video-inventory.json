@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-30T0024Z-FRESH-MAIN-PRS-KAGGLE-VIDEO",
+  "captured_at_utc": "2026-10-30T00:24:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T0024Z-fresh-main-prs-kaggle-and-video-inventory.json",
+  "observed_main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+  "focus": "Fresh-main safety PRs, scheduled Kaggle external-submission risk, synthetic cognitive workflow audit, current signal and paper-state blockers, partial public-video inventory and unresolved creator identity.",
+  "source_ids": [
+    "SRC-REUTERS-BINANCE-SECURITY-20261029",
+    "SRC-AP-BINANCE-SECURITY-20261029",
+    "SRC-XRPL-FREEZE-CONTROLS-20261030",
+    "SRC-PRIVY-RIPPLE-XRPL-20261013",
+    "SRC-TRADRADAR-XRP-PERP-20261029T1905Z",
+    "SRC-CMC-XRP-QUOTE-20261030T0012Z",
+    "SRC-COINDESK-XRP-QUOTE-20261030T0012Z",
+    "SRC-COINBASE-XRP-QUOTE-20261030T0012Z",
+    "SRC-PERMISSION-ASK-DOCS-20261030",
+    "SRC-CMC-PERMISSION-ASK-20261030",
+    "SRC-CMC-GOASK-20261030",
+    "SRC-TIMESTABLOID-ACTUAL-CAPITAL-20251015",
+    "SRC-COINTURK-XRP-MULTIPLIER-202610",
+    "SRC-YOUTUBE-KAMILAH-CHANNEL-20261030",
+    "SRC-IHEART-KAMILAH-CAMILLA-INTERVIEW-20261030",
+    "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z",
+    "SRC-REUTERS-COINBASE-Q3-20261029T211600Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261029T211600Z",
+    "SRC-CIRCLE-USDC-TRANSPARENCY-20261029T2210Z",
+    "SRC-RIPPLE-CIRCLE-USDC",
+    "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+    "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+    "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+    "SRC-SBI-RLUSD-JAPAN-2026",
+    "SRC-SBI-BITBANK-COMPLETE-20261029T151040Z",
+    "SRC-SBI-XRP-CARD-20261029T151040Z",
+    "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+    "SRC-RUN25-20261029T014151-SBIC-WEST",
+    "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+    "SRC-SBI-GROUP-DIRECTORY-2026-10-07",
+    "SRC-SBI-CAPITAL-2005-SBIC",
+    "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-20261028T1219Z",
+    "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM",
+    "SRC-GLASP-KAMILAH-RIPPLE-BANK-2025-12-14",
+    "SRC-RIPPLE-C2FO-XRPL-TRADE-FINANCE-2026-10-27"
+  ],
+  "queued_source_candidates_path": "data/xrp_intelligence/queued_source_candidates/20261030T0024Z-kamilah-channel-public-video-candidates.json",
+  "findings": [
+    {
+      "classification": "VERIFIED_CODE_FINDING",
+      "claim": "Main Kaggle workflow runs daily and references KAGGLE_USERNAME/KAGGLE_KEY, but invokes a root-level script path that does not exist. The actual script is under scripts/. The scheduled run failed at script invocation before Kaggle API or submission.",
+      "source_ids": []
+    },
+    {
+      "classification": "VERIFIED_CODE_FINDING",
+      "claim": "The Kaggle script automatically submitted dummy baseline predictions to up to five competitions; PR #1359 adds manual-only dispatch and explicit allow_submission=false by default plus a code-level guard.",
+      "source_ids": []
+    },
+    {
+      "classification": "VERIFIED_CODE_FINDING",
+      "claim": "The Cognitive PingPong workflow had write permissions and scheduled triggers but generated files in isolated jobs; the commit job checked out a fresh workspace, failed to stage a missing Barrot-Agent/logs path (ignored) and pushed no changes. The successful run did not persist cognitive state.",
+      "source_ids": []
+    },
+    {
+      "classification": "VERIFIED_TEST_EVIDENCE",
+      "claim": "Fresh-main PRs #1355 through #1359 each have passing exact-head core CI and fail-closed gates. All remain draft and unmerged.",
+      "source_ids": []
+    },
+    {
+      "classification": "VERIFIED_REPOSITORY_BLOCKER",
+      "claim": "PRs #1355 and #1358 overlap .github/workflows/ci.yml; PRs #1356, #1357 and #1359 overlap tests/test_v3_scripts.py. A planned multi-PR merge requires rebase/consolidation and new checks.",
+      "source_ids": []
+    },
+    {
+      "classification": "IDENTITY_UNRESOLVED",
+      "claim": "Kamilah-branded channel and Camila/Camilla interview variants remain plausible identity candidates but are not proven to be the exact requested Camilla Stephenson.",
+      "source_ids": [
+        "SRC-YOUTUBE-KAMILAH-CHANNEL-20261030",
+        "SRC-IHEART-KAMILAH-CAMILLA-INTERVIEW-20261030"
+      ]
+    }
+  ],
+  "repository_state": {
+    "main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+    "current_main_signal": {
+      "timestamp": "2026-10-29T13:23:33.142057+00:00",
+      "score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "provider_failures": [
+        "missing GitHub model credentials",
+        "Groq HTTP 429"
+      ],
+      "status": "STALE_INVALID_NOT_A_RETURN_FORECAST"
+    },
+    "current_main_summary": "STALE_DIRECTIONAL_NARRATIVE_AND_AUDIO_REFERENCE",
+    "current_accuracy": {
+      "checked_count": 1683,
+      "correct_count": 772,
+      "accuracy_pct": 45.9,
+      "status": "LEGACY_VARIABLE_HORIZON_NOT_COMPARABLE"
+    },
+    "paper_state": {
+      "position_product": null,
+      "position_size": 0.012445158497236623,
+      "cash_usd": 9009.936613782476,
+      "trade_count": 126,
+      "status": "UNRESOLVED_SIMULATED_STATE"
+    },
+    "main_merge_queue": "MUTATION_CAPABLE; PR1335_OLD_BASE_UNREFRESHED",
+    "model_merge_workflow": "MISSING merges/barrot-superior/config.yaml; HF_TOKEN; --trust-remote-code; loose dependency versions; PR1336_OLD_BASE",
+    "pr_statuses": {
+      "1353": {
+        "head": "473f1e6779bd05e52aaa21b63732966b04da2173",
+        "tests": 12,
+        "gate": "PASS",
+        "draft": true,
+        "merged": false
+      },
+      "1355": {
+        "head": "33776a0f838e875a8c1dfedc046105520b75659f",
+        "tests": 347,
+        "subtests": 8,
+        "gate": "PASS",
+        "draft": true,
+        "merged": false
+      },
+      "1356": {
+        "head": "5179a5d757314133deb92cb0f81116dd60bc77b4",
+        "tests": 343,
+        "subtests": 8,
+        "gate": "PASS",
+        "draft": true,
+        "merged": false
+      },
+      "1357": {
+        "head": "5d602ef3905c0bf59bc3f67257b16fb9e516dbae",
+        "tests": 346,
+        "subtests": 8,
+        "gate": "PASS",
+        "draft": true,
+        "merged": false
+      },
+      "1358": {
+        "head": "2805a2c4470d896e537703af035aa68c347d1e04",
+        "tests": 352,
+        "subtests": 8,
+        "gate": "PASS",
+        "draft": true,
+        "merged": false
+      },
+      "1359": {
+        "head": "b17e5515ea21c8e2fba16f8dd1880e4872f01398",
+        "tests": 343,
+        "subtests": 8,
+        "gate": "PASS",
+        "draft": true,
+        "merged": false
+      }
+    },
+    "overlapping_pr_files": {
+      ".github/workflows/ci.yml": [
+        1355,
+        1358
+      ],
+      "tests/test_v3_scripts.py": [
+        1356,
+        1357,
+        1359
+      ]
+    },
+    "main_modified_by_this_run": false
+  },
+  "video_inventory": {
+    "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+    "channel_title": "Kamilah Stevenson | XRP & Stocks",
+    "candidate_video_count": 8,
+    "inventory_status": "PARTIAL_NOT_EXHAUSTIVE",
+    "identity_status": "UNRESOLVED_EXACT_CAMILLA_STEPHENSON",
+    "queued_candidate_file": "data/xrp_intelligence/queued_source_candidates/20261030T0024Z-kamilah-channel-public-video-candidates.json"
+  },
+  "architecture_status": {
+    "forecast_engine": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "nine_platform_coordination": "DESIGNED_ONLY; GitHub/ChatGPT connector access was tested; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks were not live-authenticated/handed off in this run.",
+    "kaggle_submission": "DISABLED_BY_PROPOSED_PR_ONLY; main workflow still has old schedule until approval/merge.",
+    "paper_trading": "NOT_READY; legacy product identity unresolved"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_executed": false,
+  "workflow_dispatch_performed": false,
+  "real_money_trade": false
+}

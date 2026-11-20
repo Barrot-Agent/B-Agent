@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1107-FOMC-ETF-PAPER-TRADER",
+  "captured_at_utc": "2026-10-29T11:07:45Z",
+  "data_cutoff_utc": "2026-10-29T11:07:45Z",
+  "observed_main_sha": "93ebf983d803b567c88d9026dc64f02732203e4b",
+  "forecast_status": "NOT_ISSUED",
+  "market_feature_admission": false,
+  "summary": "Fresh official macro evidence: the FOMC held rates at 3.75%-4.00% on October 28, with two voters preferring a 25 bp hike and inflation/geopolitical uncertainty still elevated. XRP ETF flow proxies remain non-comparable: Alpha Finance's five-fund series reports zero flow on Oct 28 and +$90.4M over 30 sessions, while XRP Insights reports -3,132,685 XRP over Oct 26-27 across six spot funds plus BITW and marks Oct 28 provisional. Meanwhile, main's scheduled Coinbase paper trader appended a BTC-USD sell at 11:04:23Z while its open position still has position_product=null. PR #1306 proposes manual-only execution and fail-closed identity checks; exact-head CI and gate passed, but it remains draft/unmerged.",
+  "findings": [
+    {
+      "claim": "FOMC held target range at 3.75%-4.00% by 10-2 vote; two voters preferred a 25 bp hike",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "note": "Macro event only. No direct XRP price effect is established."
+    },
+    {
+      "claim": "Alpha Finance reports zero XRP ETF flow on Oct 28 and +$90.4M over 30 sessions",
+      "status": "SECONDARY_MARKET_DATA",
+      "source": "https://alphafinance.io/etf/xrp/",
+      "note": "Five-fund dollar series; Oct 28 close listed as $1.3309. Coverage and cutoff differ from other aggregators."
+    },
+    {
+      "claim": "XRP Insights reports -3,132,685 XRP over Oct 26-27 and marks Oct 28 provisional",
+      "status": "SECONDARY_DATA_FROM_ISSUER_HOLDINGS",
+      "source": "https://xrp-insights.com/data",
+      "note": "Six spot funds plus BITW, flow measured as daily holdings changes in XRP units; not directly comparable with Alpha Finance's five-fund dollar series."
+    },
+    {
+      "claim": "Main paper-trading state has a nonzero open position with null product identity",
+      "status": "CONFIRMED_REPOSITORY_ARTIFACT",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "note": "Position size 0.012445158497236623; product identity null; average entry 80436.84; trade count 126. State was not changed in this run."
+    },
+    {
+      "claim": "Scheduled paper trader appended a BTC-USD sell of $998 at $80,121.27 and pushed state/log to main",
+      "status": "CONFIRMED_REPOSITORY_COMMIT",
+      "source": "https://github.com/Barrot-Agent/B-Agent/commit/93ebf983d803b567c88d9026dc64f02732203e4b",
+      "note": "Paper-trading only, not real money. Confirms the recurring workflow remains active and state integrity is not protected on main."
+    },
+    {
+      "claim": "PR #1306 proposes manual-only workflow and fail-closed product identity guard",
+      "status": "PROPOSED_REMEDIATION_UNMERGED",
+      "source": "https://github.com/Barrot-Agent/B-Agent/pull/1306",
+      "note": "Exact-head core CI and fail-closed gate passed. Draft/unmerged; main continues scheduled runs until approval and merge."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-RUN61-FOMC-MIXED-RISK-APPETITE",
+      "statement": "The rate hold may support near-term risk appetite, while hawkish dissents, elevated inflation and geopolitical uncertainty may offset that support; net XRP impact is ambiguous.",
+      "status": "PLAUSIBLE_MACRO_HYPOTHESIS_NOT_DIRECTIONAL",
+      "supporting_source_ids": [
+        "SRC-FED-FOMC-STATEMENT-20261028"
+      ],
+      "disconfirming_evidence": [
+        "XRP may be dominated over the relevant horizon by crypto-specific flows, leverage, liquidity and regulatory events rather than the rate decision."
+      ],
+      "tests_needed": [
+        "Timestamp the announcement; measure XRP and matched crypto/FX/rates responses over pre-registered horizons; compare against BTC and broad risk proxies with event-study controls."
+      ]
+    },
+    {
+      "id": "HYP-RUN61-ETF-FLOW-UNIVERSE-EXPLAINS-DISAGREEMENT",
+      "statement": "The apparent ETF-flow discrepancy likely reflects differences in fund universe, units, holdings publication timing and provisional settlement rather than a single contradictory measurement.",
+      "status": "PLAUSIBLE_DATA_QUALITY_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ],
+      "disconfirming_evidence": [
+        "Even after aligning funds and timestamps, the series may disagree due to source errors or issuer corrections."
+      ],
+      "tests_needed": [
+        "Reconstruct each fund's daily holdings and shares outstanding from issuer records; normalize XRP and USD units; mark provisional/settled status; retain per-fund rows before aggregation."
+      ]
+    },
+    {
+      "id": "HYP-RUN61-ETF-FLOWS-DO-NOT-ESTABLISH-PRICE-CAUSALITY",
+      "statement": "Even reconciled ETF flows would be an institutional-demand feature, not proof that flows cause XRP price moves; flows may be reactive or hedged.",
+      "status": "UNTESTED_CAUSALITY",
+      "supporting_source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ],
+      "disconfirming_evidence": [
+        "Persistent, time-aligned creations could predict subsequent returns after controlling for market beta and derivatives positioning."
+      ],
+      "tests_needed": [
+        "Use leakage-safe lagged flows, matched controls, fixed horizons, walk-forward testing, and compare with a no-flow baseline; record uncertainty and sample size."
+      ]
+    }
+  ],
+  "relationship_graph_addendum": {
+    "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+    "blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
+    "commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
+    "nodes": 8,
+    "edges": 5,
+    "hypotheses": 3
+  },
+  "sources": [
+    {
+      "id": "SRC-GH-MAIN-PAPER-STATE-20261029T1107Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-LOG-20261029T1107Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/93ebf983d803b567c88d9026dc64f02732203e4b"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1107Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/coinbase-paper-trader.yml"
+    },
+    {
+      "id": "SRC-GH-PR1306-CI-20261029T1107Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862852994"
+    },
+    {
+      "id": "SRC-GH-PR1306-GATE-20261029T1107Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862853088"
+    },
+    {
+      "id": "SRC-GH-PR1306-20261029T1107Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1306"
+    },
+    {
+      "id": "SRC-FED-FOMC-STATEMENT-20261028",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm"
+    },
+    {
+      "id": "SRC-ALPHA-XRP-ETF-FLOWS-20261029",
+      "url": "https://alphafinance.io/etf/xrp/"
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029",
+      "url": "https://xrp-insights.com/data"
+    }
+  ],
+  "macro_events": [
+    {
+      "entity": "Federal Open Market Committee",
+      "date": "2026-10-28",
+      "status": "CONFIRMED",
+      "summary": "Target range held at 3.75%-4.00% by 10-2 vote; two dissenters preferred a 25 bp hike; statement cites strong activity, elevated inflation and geopolitical uncertainty.",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm"
+    }
+  ],
+  "corporate_events": [
+    {
+      "entity": "Coinbase Global",
+      "scheduled": "2026-10-29 after US market close",
+      "status": "NOT_YET_DUE_AT_CUTOFF",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx"
+    },
+    {
+      "entity": "Circle Internet Group",
+      "scheduled": "2026-11-04 08:00 ET",
+      "status": "FUTURE_EVENT",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-to-Announce-Q3-2026-Financial-Results-on-November-4-2026/default.aspx"
+    }
+  ],
+  "verification": {
+    "graph_readback": "PASS",
+    "snapshot_readback": "PENDING_AFTER_CREATE",
+    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "pr1304_ci": "PASS_EXACT_HEAD",
+    "pr1304_gate": "PASS_EXACT_HEAD",
+    "pr1305_ci": "PASS_EXACT_HEAD",
+    "pr1305_gate": "PASS_EXACT_HEAD",
+    "pr1306_ci": "PASS_EXACT_HEAD",
+    "pr1306_gate": "PASS_EXACT_HEAD",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false,
+    "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+  }
+}

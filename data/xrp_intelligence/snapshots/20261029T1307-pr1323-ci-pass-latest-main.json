@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1307-PR1323-CI-PASS-LATEST-MAIN",
+  "captured_at_utc": "2026-10-29T13:07:00Z",
+  "data_cutoff_utc": "2026-10-29T13:07:00Z",
+  "observed_main_sha": "750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736",
+  "forecast_status": "NOT_ISSUED",
+  "summary": "Main advanced from 96ccfc to 750ccb through one append-only BTC-USD paper-trading log commit at 13:05:02Z. Persisted paper state remains unchanged with a nonzero simulated position and position_product=null, while the 30-minute workflow still commits/pushes state and log. XRP signal remains score 44/confidence 0.0 with missing GitHub model credentials and Groq HTTP 429; the summary continues to describe positive headlines. PR #1320's position guard and PR #1319's summary guard have passing exact-head CI/gates but remain draft/unmerged. Fresh-main PR #1323's read-only merge-queue proposal now has passing core CI (187 tests plus 4 subtests in 6.65 seconds) and passing fail-closed gate; its branch is now one commit behind main due only to the paper-log append, so base/mergeability must be rechecked before approval. PR #1308 remains unmerged and the prior accidental data-only graph file remains on main. No market features admitted; no forecast issued.",
+  "findings": [
+    {
+      "id": "FIND-RUN65-PR1323-CI-FINAL",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "claim": "PR #1323 head 7ff6ec33803edc5f476dadcab26302c448c1b917 passed core CI: 187 tests plus 4 subtests in 6.65 seconds; both new read-only merge-queue regression tests passed. The fail-closed gate passed.",
+      "source_ids": [
+        "SRC-GH-PR1323-CI-20261029T1307Z",
+        "SRC-GH-PR1323-GATE-20261029T1307Z",
+        "SRC-GH-PR1323-CI-LOG-20261029T1307Z"
+      ],
+      "limitation": "The PR remains draft/unmerged. Main advanced one commit after branch creation; the commit only appends a paper-trading log row. Recheck current-base mergeability before approval."
+    },
+    {
+      "id": "FIND-RUN65-MAIN-LATEST-PAPER-LOG-APPEND",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main head 750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736 is a paper-trade-cycle commit that appends a BTC-USD hold row at 2026-10-29T13:05:02.494977Z. Persisted state remains position_size 0.012445158497236623 and position_product null; trade_count remains 126.",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-20261029T1307Z",
+        "SRC-GH-MAIN-PAPER-LOG-COMMIT-20261029T1307Z",
+        "SRC-GH-MAIN-PAPER-STATE-20261029T1307Z"
+      ],
+      "limitation": "The full log file content was not returned by the file action; the appended row is verified from the commit diff. This is simulated BTC trading, not XRP evaluation or real-money activity."
+    },
+    {
+      "id": "FIND-RUN65-XRP-SIGNAL-STILL-INVALID",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Current main XRP signal still has score 44, confidence 0.0, news score 88 from 11 entries and explicit provider failures for missing GitHub model credentials and Groq HTTP 429. The summary continues to narrate bullish headline tags.",
+      "source_ids": [
+        "SRC-GH-MAIN-XRP-SIGNAL-20261029T1307Z"
+      ],
+      "limitation": "No synchronized XRP market panel or immutable fixed-horizon outcome record was admitted. Forecast remains NOT_ISSUED."
+    },
+    {
+      "id": "FIND-RUN65-PR1308-CLEANUP-STILL-PENDING",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "The prior unintended data-only relationship-graph file remains on main. PR #1308 remains open, draft and unmerged.",
+      "source_ids": [
+        "SRC-GH-PR1308-STATUS-20261029T1307Z"
+      ],
+      "limitation": "No merge, delete, reset or force-push was performed."
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-GH-MAIN-HEAD-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-LOG-COMMIT-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-STATE-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-XRP-SIGNAL-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json"
+    },
+    {
+      "id": "SRC-GH-PR1323-CI-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40878454961"
+    },
+    {
+      "id": "SRC-GH-PR1323-GATE-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40878454822"
+    },
+    {
+      "id": "SRC-GH-PR1323-CI-LOG-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40878454961"
+    },
+    {
+      "id": "SRC-GH-PR1308-STATUS-20261029T1307Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1308"
+    }
+  ],
+  "market_observations": [],
+  "verification": {
+    "main_sha": "750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736",
+    "main_commit_scope": "PAPER_TRADING_LOG_APPEND_ONLY",
+    "paper_state_readback": "PASS",
+    "paper_state_position_product": "null",
+    "paper_trader_schedule": "ACTIVE",
+    "signal_readback": "PASS_INVALID_SIGNAL",
+    "pr1319_ci": "PASS_190_TESTS_PLUS_4_SUBTESTS_6.63S",
+    "pr1319_gate": "PASS_FAIL_CLOSED",
+    "pr1320_ci": "PASS_196_TESTS_PLUS_4_SUBTESTS_6.77S",
+    "pr1320_gate": "PASS_FAIL_CLOSED",
+    "pr1323_ci": "PASS_187_TESTS_PLUS_4_SUBTESTS_6.65S",
+    "pr1323_gate": "PASS_FAIL_CLOSED",
+    "pr1323_current_base": "ONE_COMMIT_BEHIND_MAIN_LOG_ONLY",
+    "pr1308_cleanup": "DRAFT_OPEN_UNMERGED",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "workflow_dispatch_performed": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false
+  }
+}

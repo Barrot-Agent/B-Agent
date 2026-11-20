@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-BAGENT-20261031T210244Z-MAIN-CROSS-ANALYSIS-PR1429",
+  "captured_at_utc": "2026-10-31T21:02:44Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+  "default_branch": "main",
+  "protected_flag": true,
+  "branch_protection_details_status": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
+  "current_main_workflows": {
+    "cross_analysis": {
+      "path": ".github/workflows/cross-analysis.yml",
+      "permissions": "contents:write",
+      "triggers": [
+        "workflow_run: Knowledge Signal Cycle completed on main",
+        "schedule: 50 * * * *",
+        "workflow_dispatch"
+      ],
+      "actions": [
+        "entity_cooccurrence.py",
+        "sentiment_shift.py",
+        "entity_sentiment_profile.py"
+      ],
+      "persistence": "git add three outputs; commit; git push; on failure git pull --no-rebase then push",
+      "latest_run_id": 41240863905,
+      "latest_run_conclusion": "success",
+      "latest_commit_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+      "changed_paths": [
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ],
+      "diff_summary": "one line added/one line deleted; generated_at timestamp only",
+      "latest_values": {
+        "xrp_recent_entries": 0,
+        "xrp_prior_entries": 0,
+        "xrp_recent_score": null,
+        "xrp_prior_score": null,
+        "btc_recent_entries": 0,
+        "btc_prior_entries": 0,
+        "btc_recent_score": null,
+        "btc_prior_score": null
+      },
+      "pages_deployment_run_id": 41240873472,
+      "pages_deployment_conclusion": "success"
+    },
+    "knowledge_signal_cycle": {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "permissions": "contents:write",
+      "triggers": [
+        "workflow_dispatch only"
+      ],
+      "persistence": "commits and pushes knowledge logs and signal files"
+    },
+    "scheduler_tick": {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "permissions": "contents:write, actions:write",
+      "triggers": [
+        "every 15 minutes",
+        "workflow_dispatch"
+      ],
+      "persistence": "commits and pushes schedule queue"
+    },
+    "databricks_token_rotation": {
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "triggers": [
+        "workflow_dispatch with required new_token input"
+      ],
+      "risk": "Interpolates input into shell command invoking gh secret set and dispatches deployment; unsafe input design remains on main; no secret accessed by this audit."
+    }
+  },
+  "pull_requests": {
+    "open_total": 201,
+    "drafts": 191,
+    "ready": 10,
+    "target_main": 199,
+    "stale_target_main": 198,
+    "current_base_target_main": 1,
+    "non_main_targets": 2,
+    "latest_current_base_pr": {
+      "number": 1429,
+      "title": "Safety: make scheduled Cross Analysis read-only on fresh main",
+      "state": "open",
+      "draft": true,
+      "base_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+      "head_sha": "d83f82438621308d7173770bb2539a179f25db7",
+      "ci_run_id": 41241608596,
+      "ci_result": "345 tests + 8 subtests passed",
+      "gate_run_id": 41241608616,
+      "gate_result": "passed; merging disabled",
+      "merged": false
+    }
+  },
+  "full_repository_ci": "NOT_RUN",
+  "dependency_vulnerability_scan": "NOT_RUN",
+  "security_alerts": "NOT_ACCESSIBLE_THROUGH_CONNECTED_INTEGRATION",
+  "required_status_checks": "UNKNOWN_FULL_PROTECTION_DETAILS_FORBIDDEN",
+  "conclusions": [
+    "Cross Analysis still writes a timestamp-only artifact to main when both adjacent sentiment windows have zero entries.",
+    "PR #1429 is a fresh-main, minimal read-only/artifact-only proposal and is verified on its exact head, but remains draft and unmerged.",
+    "The latest main write was performed by the existing scheduled workflow, not by this run.",
+    "Other scheduled/manual writer paths remain on main; this PR does not quarantine them.",
+    "No merge, main write by this run, force-push, deployment or manual workflow dispatch occurred."
+  ]
+}

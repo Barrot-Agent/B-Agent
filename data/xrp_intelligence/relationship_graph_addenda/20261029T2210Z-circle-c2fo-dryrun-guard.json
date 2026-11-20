@@ -1,0 +1,210 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T2210Z-CIRCLE-C2FO-DRYRUN-GUARD",
+  "captured_at_utc": "2026-10-29T22:10:00Z",
+  "observed_main_sha": "98e9107d92a1e19cfcec0b268c64f834c88208ae",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_PRIMARY_ISSUER_DASHBOARD",
+      "CONFIRMED_CORPORATE_ANNOUNCEMENT",
+      "CONFIRMED_REPOSITORY_VERIFICATION",
+      "SECONDARY_SOURCE_CLAIM",
+      "INFERENCE",
+      "SPECULATION",
+      "UNKNOWN"
+    ],
+    "causal_rule": "Issuer supply, corporate announcements and secondary derivatives dashboards are not causal proof of XRP price effects. Features require synchronized, reconciled data and out-of-sample validation."
+  },
+  "nodes": [
+    {
+      "id": "CIRCLE_USDC",
+      "label": "Circle / USDC",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase Global",
+      "kind": "EXCHANGE_CUSTODY_STABLECOIN_DISTRIBUTION"
+    },
+    {
+      "id": "RIPPLE_RLUSD",
+      "label": "Ripple / RLUSD",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "C2FO",
+      "label": "C2FO Instant Pay / Early Pay",
+      "kind": "WORKING_CAPITAL_PLATFORM"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_BLOCKCHAIN"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP asset",
+      "kind": "CRYPTO_ASSET"
+    },
+    {
+      "id": "XRP_PERPETUALS",
+      "label": "XRP perpetual derivatives",
+      "kind": "DERIVATIVES_MARKET"
+    },
+    {
+      "id": "BARROT_DRYRUN",
+      "label": "Barrot provider-backed dry-run safety",
+      "kind": "PROPOSED_EXECUTION_GUARD"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-CIRCLE-USDC-CIRCULATION",
+      "source": "CIRCLE_USDC",
+      "target": "USDC_CIRCULATION",
+      "relationship": "ISSUER_SUPPLY_AND_REDEMPTION_REPORTING",
+      "evidence_class": "CONFIRMED_PRIMARY_ISSUER_DASHBOARD",
+      "claim": "Circle reports $71.0B circulation and $71.2B reserves as of Oct 26, with net circulation down $4.2B over 30 days; this is not chain-level or XRP flow data.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261029T2210Z"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-USDC-ECONOMICS",
+      "source": "COINBASE",
+      "target": "CIRCLE_USDC",
+      "relationship": "DISTRIBUTION_AND_REVENUE_INTERDEPENDENCE",
+      "evidence_class": "CONFIRMED_FACT_FROM_PRIMARY_FILING",
+      "claim": "Coinbase Q3 reported $307M stablecoin revenue and $22B average USDC held in Coinbase products. Circle's Oct 26 supply snapshot is a different period and does not quantify subsequent Coinbase balances or revenue.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261029T2210Z"
+      ]
+    },
+    {
+      "id": "EDGE-C2FO-RIPPLE-RLUSD",
+      "source": "C2FO",
+      "target": "RIPPLE_RLUSD",
+      "relationship": "ANNOUNCED_TRADE_FINANCE_SETTLEMENT_INITIATIVE",
+      "evidence_class": "CONFIRMED_CORPORATE_ANNOUNCEMENT",
+      "claim": "C2FO/Ripple announced an RLUSD settlement initiative on XRPL. No realized production volume is disclosed; $520B is historical C2FO program activity, not XRPL throughput.",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-RLUSD-XRPL-20261029T2210Z"
+      ]
+    },
+    {
+      "id": "EDGE-RLUSD-XRPL",
+      "source": "RIPPLE_RLUSD",
+      "target": "XRPL",
+      "relationship": "ANNOUNCED_SETTLEMENT_RAIL",
+      "evidence_class": "CONFIRMED_CORPORATE_ANNOUNCEMENT",
+      "claim": "The initiative describes RLUSD settlement on XRPL; it does not establish XRP as a bridge asset in every transaction.",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-RLUSD-XRPL-20261029T2210Z"
+      ]
+    },
+    {
+      "id": "EDGE-XRPL-XRP-DEMAND",
+      "source": "XRPL",
+      "target": "XRP",
+      "relationship": "POTENTIAL_ACTIVITY_TO_ASSET_DEMAND_LINK",
+      "evidence_class": "INFERENCE",
+      "claim": "More XRPL activity may affect XRP through fees, bridge inventory or market-making, but transaction design and measured flows determine the effect. No causal coefficient is established.",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-RLUSD-XRPL-20261029T2210Z"
+      ]
+    },
+    {
+      "id": "EDGE-PERP-XRP-FEEDBACK",
+      "source": "XRP_PERPETUALS",
+      "target": "XRP",
+      "relationship": "POTENTIAL_LEVERAGE_AND_LIQUIDATION_FEEDBACK",
+      "evidence_class": "INFERENCE",
+      "claim": "Positive funding, long-account skew and long liquidations may indicate leverage fragility, but scope conflicts and stale timestamps block directional inference.",
+      "source_ids": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261029T2210Z",
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261029T2210Z"
+      ]
+    },
+    {
+      "id": "EDGE-PR1352-DRYRUN",
+      "source": "BARROT_DRYRUN",
+      "target": "BARROT_V3",
+      "relationship": "PROPOSED_READ_ONLY_EXECUTION_GUARD",
+      "evidence_class": "CONFIRMED_REPOSITORY_VERIFICATION",
+      "claim": "PR #1352 adds broader Git/GitHub mutation guards, skips local Git setup in dry-run, stores the plan outside .git and uploads both report and bundle. Tests/gate passed; live provider execution remains unverified and main is unchanged.",
+      "source_ids": [
+        "SRC-GH-PR1351-DRYRUN-CI-20261029T2210Z",
+        "SRC-GH-PR1352-DRYRUN-CI-20261029T2210Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-CIRCLE-USDC-CONTRACTION-VS-DISTRIBUTION",
+      "claim": "Persistent USDC circulation contraction could affect Coinbase's stablecoin economics, but does not establish XRP outflow or price impact.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261029T2210Z"
+      ],
+      "disconfirming_evidence": [
+        "Issuer-wide series does not identify chain/platform balances.",
+        "Coinbase Q3 metrics are historical quarterly measures.",
+        "Treasury rotation or venue migration may explain redemptions."
+      ],
+      "status": "PLAUSIBLE_UNVERIFIED"
+    },
+    {
+      "id": "HYP-C2FO-RLUSD-XRPL-UTILITY-VS-XRP-DEMAND",
+      "claim": "The C2FO/Ripple initiative may expand XRPL enterprise settlement utility without proportional XRP spot demand.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-C2FO-RLUSD-XRPL-20261029T2210Z"
+      ],
+      "disconfirming_evidence": [
+        "No production volume quantified.",
+        "$520B is historical program-wide working capital, not XRPL throughput.",
+        "No XRP bridge/inventory flows measured."
+      ],
+      "status": "PLAUSIBLE_UNVERIFIED"
+    },
+    {
+      "id": "HYP-XRP-PERP-LONG-FRAGILITY-VS-UNWIND",
+      "claim": "Positive funding and long-account skew with mostly long liquidations are consistent with leverage fragility, but may describe an unwind already underway.",
+      "supporting_source_ids": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261029T2210Z",
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261029T2210Z"
+      ],
+      "disconfirming_evidence": [
+        "OI scopes differ.",
+        "Account ratios are not notional exposure.",
+        "One funding interval is unspecified and observations are delayed."
+      ],
+      "status": "LOW_CONFIDENCE_SCENARIO_ONLY"
+    },
+    {
+      "id": "HYP-BARROT-DRYRUN-GUARD",
+      "claim": "PR #1352 reduces dry-run mutation risk if merged.",
+      "supporting_source_ids": [
+        "SRC-GH-PR1351-DRYRUN-CI-20261029T2210Z",
+        "SRC-GH-PR1352-DRYRUN-CI-20261029T2210Z"
+      ],
+      "disconfirming_evidence": [
+        "CI is not a live provider run.",
+        "Guards are not a security sandbox.",
+        "Main is unchanged."
+      ],
+      "status": "TESTED_ON_BRANCH_NOT_DEPLOYED"
+    }
+  ],
+  "source_ids": [
+    "SRC-CIRCLE-USDC-TRANSPARENCY-20261029T2210Z",
+    "SRC-RIPPLE-C2FO-RLUSD-XRPL-20261029T2210Z",
+    "SRC-TRADRADAR-XRP-DERIVATIVES-20261029T2210Z",
+    "SRC-SEANDRA-BINANCE-XRP-PERP-20261029T2210Z",
+    "SRC-GH-PR1351-DRYRUN-CI-20261029T2210Z",
+    "SRC-GH-PR1352-DRYRUN-CI-20261029T2210Z",
+    "SRC-GH-MAIN-SIGNAL-20261029T2210Z",
+    "SRC-SBIC-CHATGPT-EVENT-20261029T2210Z"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "main_modified_by_this_run": false
+}

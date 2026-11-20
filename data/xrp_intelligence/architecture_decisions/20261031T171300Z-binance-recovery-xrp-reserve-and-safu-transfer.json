@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T171300Z-BINANCE-SAFU-TRANSFER-AND-RESERVE-CAUSALITY",
+  "captured_at_utc": "2026-10-31T17:14:56Z",
+  "status": "ACCEPTED; EXACT_DESTINATION_AND_ZK_PROOF_PENDING",
+  "decisions": [
+    "Treat Binance's 90% replenishment and 100% top-ten coverage, including XRP, as company-reported claims pending the full November 3 zero-knowledge proof.",
+    "Do not infer an XRP-specific replacement purchase from Binance's remaining 10%; Binance says that remainder is outside the top ten and less liquid.",
+    "Treat the reported 7,500 BTC SAFU movement as a reserve transfer/reallocation with unknown destination and purpose; do not classify it as a market sale or XRP purchase.",
+    "Prefer fresh Arkham and Lookonchain evidence for the SAFU source-wallet balance while retaining BitInfoCharts' 15,000 BTC result as a stale conflicting observation.",
+    "Downgrade the hypothesis that Binance suffered a persistent 220M XRP reserve depletion caused by the incident; XRP Insights' Oct 31 same-wallet rebound and Binance 7d/30d changes are disconfirming, but provider wallet universes still differ.",
+    "Treat broad exchange-attributed XRP balances as custody/reserve context, not tradable float; explicitly remove Binance-Peg and cbXRP backing reserves from customer/available-float interpretations.",
+    "Do not admit SAFU transfers or exchange wallet totals as directional prediction features without point-in-time reconciliation and out-of-sample validation."
+  ],
+  "required_verification": [
+    "Find the 7,500 BTC transaction hash and destination address using public on-chain explorers/authorized APIs.",
+    "Trace destination wallet balances and subsequent transfers to determine whether BTC was retained, exchanged, sent OTC or moved internally.",
+    "Verify the November 3 full Binance PoR zero-knowledge proof and compare same-time XRP customer liabilities and reserve addresses.",
+    "Crosswalk Binance XRP wallets between CryptoQuant and XRP Insights; isolate customer, cold, Binance-Peg and operational balances.",
+    "Verify Binance withdrawal reopening on November 1 and any subsequent official status."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NO_DIRECTIONAL_FEATURE_ADMITTED",
+  "source_ids": [
+    "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T171300Z-REUTERS-BINANCE-90PCT",
+    "SRC-20261031T171300Z-LOOKONCHAIN-SAFU-7500",
+    "SRC-20261031T171300Z-ARKHAM-SAFU-BALANCE-7500",
+    "SRC-20261031T171300Z-BITINFOCHARTS-SAFU-STALE-15000",
+    "SRC-20261031T171300Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+  ]
+}

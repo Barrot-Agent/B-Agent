@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T1304-SIGNAL-PAPER-TRADER-MERGE-QUEUE",
+  "captured_at_utc": "2026-10-29T13:04:00Z",
+  "observed_main_sha": "96ccfc4344c55d419495d75f1360d756a8c10796",
+  "policy": {
+    "evidence_classes": [
+      "REPOSITORY_OBSERVATION",
+      "CONFIRMED_CI_RUN",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "causal_rule": "A repository workflow capability is evidence of a possible control path, not proof that it caused a historical event. Invalid provider output is not a price forecast."
+  },
+  "nodes": [
+    {
+      "id": "XRP_SIGNAL_PIPELINE",
+      "label": "Barrot XRP signal pipeline",
+      "kind": "REPOSITORY_COMPONENT"
+    },
+    {
+      "id": "XRP_FORECAST",
+      "label": "XRP forecast issuance",
+      "kind": "MODEL_OUTPUT"
+    },
+    {
+      "id": "PAPER_TRADER_STATE",
+      "label": "Barrot BTC-USD paper-trader state",
+      "kind": "SIMULATED_STATE"
+    },
+    {
+      "id": "PAPER_TRADER_WORKFLOW",
+      "label": "Scheduled paper-trader workflow",
+      "kind": "GITHUB_ACTIONS_WORKFLOW"
+    },
+    {
+      "id": "MERGE_QUEUE_WORKFLOW",
+      "label": "Mutation-capable merge queue",
+      "kind": "GITHUB_ACTIONS_WORKFLOW"
+    },
+    {
+      "id": "OPEN_PULL_REQUESTS",
+      "label": "Open pull requests and branches",
+      "kind": "REPOSITORY_STATE"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN65-PROVIDER-FAILURE-FORECAST-NOT-ISSUED",
+      "source": "XRP_SIGNAL_PIPELINE",
+      "target": "XRP_FORECAST",
+      "relationship": "PROVIDER_FAILURE_REQUIRES_NON_ISSUANCE",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "The current main signal records missing GitHub model credentials and Groq HTTP 429 while confidence is 0.0. The score/headline blend is not a valid directional forecast; forecast status remains NOT_ISSUED.",
+      "source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T1304Z",
+        "SRC-GH-MAIN-SUMMARY-WORKFLOW-20261029T1304Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN65-PAPER-TRADER-UNKNOWN-POSITION",
+      "source": "PAPER_TRADER_WORKFLOW",
+      "target": "PAPER_TRADER_STATE",
+      "relationship": "SCHEDULED_MUTATION_WITH_UNRESOLVED_POSITION_IDENTITY",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main still schedules the paper trader every 30 minutes and commits/pushes its state/log. The persisted nonzero position has position_product=null. PR #1320 proposes to remove the schedule and fail closed but is unmerged.",
+      "source_ids": [
+        "SRC-GH-MAIN-PAPER-STATE-20261029T1304Z",
+        "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1304Z",
+        "SRC-GH-PR1320-STATUS-20261029T1304Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN65-MERGE-QUEUE-MUTATION-CAPABILITY",
+      "source": "MERGE_QUEUE_WORKFLOW",
+      "target": "OPEN_PULL_REQUESTS",
+      "relationship": "WORKFLOW_HAS_BRANCH_UPDATE_COMMENT_MERGE_DELETE_CAPABILITIES",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main merge-queue workflow has write permissions and commands for branch updates, comments, PR merges and branch deletion. This is a credible risk path but does not prove causality for any prior unexpected merge. PR #1323 proposes a read-only replacement and has not yet produced visible CI/gate evidence.",
+      "source_ids": [
+        "SRC-GH-PR1323-STATUS-20261029T1304Z",
+        "SRC-GH-PR1323-FILES-READBACK-20261029T1304Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN65-UNEXPECTED-MERGE-CAUSE",
+      "statement": "A prior unexpected PR merge may have used the mutation-capable merge-queue workflow, but direct API/CLI action or another authorized automation remains plausible.",
+      "status": "CAUSALITY_UNRESOLVED",
+      "supporting_source_ids": [
+        "SRC-GH-PR1323-STATUS-20261029T1304Z"
+      ],
+      "disconfirming_evidence": [
+        "No run-level evidence in this capture ties the workflow to the historical merge; the workflow is manually dispatched rather than scheduled."
+      ],
+      "tests_needed": [
+        "Inspect historical workflow runs and audit logs with authorized access; compare actor, event, run inputs, merge timestamp, and merge commit. Do not infer cause from capability alone."
+      ]
+    },
+    {
+      "id": "HYP-RUN65-XRP-NEWS-SCORE-VALIDITY",
+      "statement": "The headline-only news score may be descriptive context, but it cannot substitute for a model forecast when the sentiment provider fails and confidence is zero.",
+      "status": "SUPPORTED_AS_DATA-QUALITY_RULE_NOT_PRICE_DIRECTION",
+      "supporting_source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T1304Z"
+      ],
+      "disconfirming_evidence": [
+        "The news score may still be useful as a separately labeled descriptive feature after source quality, asset relevance, timestamp, duplication and event-impact checks."
+      ],
+      "tests_needed": [
+        "Keep news score separate from forecast score; require immutable target/horizon/probability records and evaluate incremental out-of-sample value against a baseline."
+      ]
+    }
+  ],
+  "notes": [
+    "PR #1319 and PR #1320 have passing exact-head CI and fail-closed gates but remain unmerged.",
+    "PR #1323 is a fresh-main read-only merge-queue proposal; its CI/gate status was not visible at snapshot cutoff.",
+    "PR #1308 still proposes removal of one unintended data-only graph file from main; it remains unmerged.",
+    "No market observations were admitted and no forecast was issued."
+  ]
+}

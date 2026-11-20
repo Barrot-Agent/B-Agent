@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-2026-10-30T124017Z-ACTUAL-CAPITAL-X402-AND-READONLY-CROSS-ANALYSIS",
+  "captured_at_utc": "2026-10-30T12:40:17Z",
+  "title": "Separate issuer-specific fiat flows, collateral hierarchy, agent-service payments and repository verification state",
+  "status": "ADOPTED_FOR_RESEARCH_SCHEMA; PR1371_IMPLEMENTED_ON_BRANCH_ONLY",
+  "decisions": [
+    {
+      "field_family": "coinbase_counterparty_concentration",
+      "required_fields": [
+        "counterparty_share_revenue_pct",
+        "period",
+        "counterparty_identity",
+        "business_line",
+        "contractual_exposure",
+        "source_filing"
+      ],
+      "rule": "Record concentration even when identity is undisclosed. Do not attribute the counterparty to Circle, Ripple or any named entity without filing-level evidence."
+    },
+    {
+      "field_family": "circle_mint_fiat_flows",
+      "required_fields": [
+        "minted_usd",
+        "redeemed_usd",
+        "net_usd",
+        "period",
+        "customer_scope",
+        "source_filing"
+      ],
+      "rule": "Circle Mint fiat conversions are issuer-primary-market flows, not total USDC supply changes, exchange flows or XRP capital flows."
+    },
+    {
+      "field_family": "stablecoin_reserve_structure",
+      "required_fields": [
+        "reserve_fund_share_pct",
+        "cash_share_pct",
+        "fund_manager",
+        "bank_count",
+        "fdic_coverage_usd",
+        "access_denied_tokens_usd",
+        "as_of"
+      ],
+      "rule": "Separate fund assets, bank cash, access-denied liabilities and FDIC coverage. Do not label USDC holder liabilities as FDIC insured."
+    },
+    {
+      "field_family": "coinbase_collateral",
+      "required_fields": [
+        "recognized_lending_collateral_by_asset",
+        "recognized_derivatives_collateral_by_asset",
+        "unrecognized_customer_collateral",
+        "token_level_completeness",
+        "as_of"
+      ],
+      "rule": "Keep recognized lending, recognized derivatives and unrecognized customer collateral separate. Absence of XRP from a token-level table is not proof of zero XRP exposure where aggregate unrecognized collateral lacks token breakdown."
+    },
+    {
+      "field_family": "x402_service_payment_volume",
+      "required_fields": [
+        "service_payment_count",
+        "value_settled_usd",
+        "payment_asset",
+        "issuer_address",
+        "validated_ledger_tx_hash",
+        "batch_check_id",
+        "settlement_status",
+        "repeat_counterparty"
+      ],
+      "rule": "Separate service payments from XRPL ledger transactions. Batch Checks can settle many service payments; aggregate multi-asset counts are not native-XRP demand."
+    },
+    {
+      "field_family": "institutional_partner_maturity",
+      "required_fields": [
+        "relationship_type",
+        "announcement_date",
+        "status",
+        "production_transaction_evidence",
+        "asset_or_rail",
+        "volume"
+      ],
+      "rule": "Separate investment, partner-list participation, MOU, intended integration, closed beta and production deployment. Do not infer XRP settlement from a multi-rail partner list."
+    },
+    {
+      "field_family": "binance_incident_xrp_supply",
+      "required_fields": [
+        "source_wallets",
+        "receiver",
+        "validated_ledger_tx_hashes",
+        "amount_xrp",
+        "receiver_balance",
+        "as_of",
+        "exchange_deposit_or_sale_evidence"
+      ],
+      "rule": "Treat stolen XRP as a custody event and potential future supply overhang. Do not classify it as sell pressure until on-chain disposition or executed selling is observed."
+    },
+    {
+      "field_family": "cross_analysis_workflow_delivery",
+      "required_fields": [
+        "main_sha",
+        "pr_head_sha",
+        "permissions",
+        "persisted_checkout_credentials",
+        "artifact_paths",
+        "retention_days",
+        "exact_head_ci",
+        "fail_closed_gate",
+        "merge_state"
+      ],
+      "rule": "Scheduled analysis may generate artifacts but must not write to main without explicit approval. PR branch verification is distinct from deployment/activation; 30-day artifacts are not the durable feature store."
+    }
+  ],
+  "feature_admission": "NONE. Coinbase concentration, Circle Mint flows/reserves, T54 service payments and Binance incident observations remain context-only until point-in-time synchronized history and out-of-sample predictive value are demonstrated.",
+  "execution_status": "PR1371_BRANCH_AND_PR_CREATED; NO_MAIN_DEPLOYMENT",
+  "verification_status": "PR1371_EXACT_HEAD_CORE_CI_347_PLUS_8_PASSED; FAIL_CLOSED_GATE_PASSED; FULL_REPOSITORY_CI_NOT_RUN",
+  "forecast_status": "NOT_ISSUED"
+}

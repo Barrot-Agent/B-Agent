@@ -1,0 +1,74 @@
+{
+  "migration_id": "XRP-LEDGER-INDEX-POINTER-20261028T1959Z",
+  "recorded_at_utc": "2026-10-28T19:59:48Z",
+  "updated_at_utc": "2026-10-28T20:10:23Z",
+  "status": "DRAFT_NOT_MERGED",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+  "previous_index": {
+    "path": "data/xrp_intelligence/research_ledger.json",
+    "commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
+    "blob_sha": "43bd8941513820cdc8a1aacbf59c3a67de8893d4",
+    "characters": 989081,
+    "inline_latest_snapshot_characters": 462600
+  },
+  "initial_snapshot": {
+    "path": "data/xrp_intelligence/snapshots/2026-10-28T1959Z.json",
+    "blob_sha": "54384e1208c4f794140c1478e00fe3c03d8f9d50",
+    "commit_sha": "634990451ccee51646efebf44d5fd30b213e0baa",
+    "status": "PRESERVED_SUPERSEDED_FOR_CURRENT_HANDOFF"
+  },
+  "current_snapshot": {
+    "path": "data/xrp_intelligence/snapshots/2026-10-28T2008Z.json",
+    "blob_sha": "4a018851b109239b9bf9c2a849ebf7568cc5be8a",
+    "commit_sha": "cbfcf2425e6c98d042172b6b34aed6437fe621e1",
+    "characters": 534104,
+    "status": "CURRENT_POINTER_TARGET"
+  },
+  "new_index": {
+    "path": "data/xrp_intelligence/research_ledger.json",
+    "format_version": "2.0",
+    "characters": 467544
+  },
+  "preservation": {
+    "source_records_retained": true,
+    "run_updates_retained": true,
+    "limitations_retained": true,
+    "index_only_verification_metadata_moved": true,
+    "prior_index_recoverable_from_git_history": true,
+    "prior_snapshots_unchanged": true,
+    "main_modified": false,
+    "merge_performed": false
+  },
+  "rationale": "Replace the duplicated inline latest snapshot with a hash-verified pointer. A second immutable snapshot corrects ledger metrics from the first capture; neither prior index nor prior snapshot was rewritten.",
+  "validation": {
+    "automatic_ci": "NOT_TRIGGERED_FOR_RESEARCH-BASE_PR",
+    "local_tests": "PASS_6_SYNTHETIC_FIXTURE_TESTS",
+    "tests_passed": 6,
+    "duration_seconds": 0.05,
+    "command": "python -m pytest -q tests/test_xrp_ledger_index.py",
+    "py_compile": "PASS",
+    "actual_github_pointer_readback": "PASS",
+    "full_repository_local_integration": "NOT_RUN",
+    "current_main_paper_replay": "PASS_2347_ROWS",
+    "reason": "Core CI workflow only triggers pull_request for base main. The full repository integration test was not run against a complete local checkout.",
+    "automated_ci": "NOT_TRIGGERED_FOR_RESEARCH-BASE_PR",
+    "latest_snapshot_pointer_readback": "PASS",
+    "latest_research_addendum": "RECORDED",
+    "current_main_sha": "428244171d4f24d4962733e9372fe36f5ea4b941"
+  },
+  "previous_pointer_snapshot": {
+    "path": "data/xrp_intelligence/snapshots/2026-10-28T2001Z-correction.json",
+    "blob_sha": "bae917bd6297850667e679a9d1476517a599b38e",
+    "commit_sha": "5cfa94252bb517c0349762482c1a872d98d0e48c",
+    "status": "PRESERVED_PREVIOUS_CAPTURE"
+  },
+  "latest_research_addendum_at_utc": "2026-10-28T20:10:23Z",
+  "latest_research_addendum_sources": [
+    "SRC-RUN11-CIRCLE-TRANSPARENCY-20261028T2010Z",
+    "SRC-RUN11-XRP-INSIGHTS-ETF-20261028T2010Z",
+    "SRC-RUN11-ALPHA-ETF-20261028T2010Z",
+    "SRC-RUN11-XRPINVESTOR-ETF-20261028T2010Z",
+    "SRC-RUN11-COINBASE-Q3-DATE-20261028T2010Z"
+  ]
+}

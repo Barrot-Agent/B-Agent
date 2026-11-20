@@ -1,0 +1,203 @@
+{
+  "record_type": "xrp_relationship_graph_addendum",
+  "schema_version": "1.0",
+  "graph_id": "GRAPH-20261031T123652Z-BINANCE-POR-AND-SCHEDULER-SECURITY",
+  "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031t123652z-binance-por-and-scheduler-security-graph.json",
+  "created_at_utc": "2026-10-31T12:36:52Z",
+  "data_cutoff_utc": "2026-10-31T12:36:52Z",
+  "source_ids": [
+    "SRC-20261031T123652Z-BINANCE-POR-PAGE-STATUS",
+    "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2",
+    "SRC-20261031T123652Z-GITHUB-PR1412-SCHEDULER-QUARANTINE",
+    "SRC-20261031T123652Z-GITHUB-MAIN-PR-INVENTORY",
+    "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE",
+    "SRC-20261031T121200Z-GITHUB-PR1411-TOKEN-SAFETY",
+    "SRC-20261031T121200Z-XRP-INSIGHTS-NOV1-ESCROW"
+  ],
+  "source_reference_count": 7,
+  "missing_source_references": 0,
+  "nodes": [
+    {
+      "id": "binance",
+      "label": "Binance",
+      "type": "exchange"
+    },
+    {
+      "id": "binance-por",
+      "label": "Binance Proof of Reserves",
+      "type": "reserve-attestation"
+    },
+    {
+      "id": "binance-incident",
+      "label": "October 29, 2026 Binance security incident",
+      "type": "security-event"
+    },
+    {
+      "id": "xrp",
+      "label": "XRP",
+      "type": "cryptoasset"
+    },
+    {
+      "id": "xrp-escrow",
+      "label": "XRPL XRP escrow objects",
+      "type": "protocol-objects"
+    },
+    {
+      "id": "github-main",
+      "label": "B-Agent main branch",
+      "type": "repository-branch"
+    },
+    {
+      "id": "scheduler-tick",
+      "label": "Scheduler Tick workflow",
+      "type": "github-actions-workflow"
+    },
+    {
+      "id": "scheduler-python",
+      "label": "scripts/scheduler.py",
+      "type": "scheduler-implementation"
+    },
+    {
+      "id": "schedule-queue",
+      "label": "schedule_queue.jsonl",
+      "type": "repository-state"
+    },
+    {
+      "id": "github-actions",
+      "label": "GitHub Actions workflow dispatch",
+      "type": "automation-capability"
+    },
+    {
+      "id": "github-workflow-directory",
+      "label": ".github/workflows directory",
+      "type": "workflow-registry"
+    },
+    {
+      "id": "pr1412",
+      "label": "PR #1412 read-only scheduler quarantine",
+      "type": "proposed-change"
+    },
+    {
+      "id": "pr1411",
+      "label": "PR #1411 token-input safety proposal",
+      "type": "proposed-change"
+    },
+    {
+      "id": "databricks-token-workflow",
+      "label": "rotate-databricks-token.yml",
+      "type": "github-actions-workflow"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "E-20261031T123652Z-01",
+      "from": "binance",
+      "to": "binance-por",
+      "relationship": "announced initial snapshot within 12 hours; results due 2026-11-02",
+      "evidence_class": "COMPANY_REPORTED",
+      "source_ids": [
+        "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "edge_id": "E-20261031T123652Z-02",
+      "from": "binance-por",
+      "to": "binance",
+      "relationship": "public page rendered blank audit/verification/Merkle metadata at 2026-10-31 12:31:30 UTC",
+      "evidence_class": "OFFICIAL_PAGE_RENDER_OBSERVATION",
+      "source_ids": [
+        "SRC-20261031T123652Z-BINANCE-POR-PAGE-STATUS"
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "edge_id": "E-20261031T123652Z-03",
+      "from": "scheduler-tick",
+      "to": "schedule-queue",
+      "relationship": "reads queue and writes fired status back to repository queue file",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "source_ids": [
+        "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "edge_id": "E-20261031T123652Z-04",
+      "from": "scheduler-tick",
+      "to": "github-actions",
+      "relationship": "actions:write capability and GH_TOKEN workflow dispatch",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "source_ids": [
+        "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "edge_id": "E-20261031T123652Z-05",
+      "from": "scheduler-python",
+      "to": "github-workflow-directory",
+      "relationship": "accepts any existing workflow filename; no reviewed allowlist",
+      "evidence_class": "CONFIRMED_CODE_OBSERVATION",
+      "source_ids": [
+        "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "edge_id": "E-20261031T123652Z-06",
+      "from": "pr1412",
+      "to": "scheduler-tick",
+      "relationship": "proposes read-only queue audit, contents:read, no dispatch or main writes",
+      "evidence_class": "PROPOSED_PR_CHANGE_WITH_CI_EVIDENCE",
+      "source_ids": [
+        "SRC-20261031T123652Z-GITHUB-PR1412-SCHEDULER-QUARANTINE"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "edge_id": "E-20261031T123652Z-07",
+      "from": "pr1411",
+      "to": "databricks-token-workflow",
+      "relationship": "proposes removal of raw token input, shell interpolation, secret mutation and deployment dispatch",
+      "evidence_class": "PROPOSED_PR_CHANGE_WITH_CI_EVIDENCE",
+      "source_ids": [
+        "SRC-20261031T121200Z-GITHUB-PR1411-TOKEN-SAFETY"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "edge_id": "E-20261031T123652Z-08",
+      "from": "xrp-escrow",
+      "to": "xrp",
+      "relationship": "provider-reported 1B XRP release scheduled for 2026-11-01 00:00 UTC; finish/re-escrow/sale unknown",
+      "evidence_class": "SOURCED_PROVIDER_OBSERVATION",
+      "source_ids": [
+        "SRC-20261031T121200Z-XRP-INSIGHTS-NOV1-ESCROW"
+      ],
+      "confidence": "MEDIUM"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Binance PoR snapshot may be complete while public fields remain unpublished or dynamically unavailable.",
+      "status": "UNRESOLVED",
+      "confidence": "LOW"
+    },
+    {
+      "id": "H2",
+      "statement": "Main scheduler broad dispatch capability is a structural high-risk path, though no pending entry or exploitation was observed.",
+      "status": "STRUCTURAL_RISK_CONFIRMED",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "H3",
+      "statement": "Read-only queue audit is a safe temporary quarantine because no pending queue entries exist; long-term scheduling requires external durable state and allowlist.",
+      "status": "PROPOSED_ON_PR_BRANCH_ONLY",
+      "confidence": "HIGH"
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

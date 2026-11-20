@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T1015-SBIC-CHATGPT-DISAMBIGUATION",
+  "captured_at_utc": "2026-10-29T10:15:49Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "policy": "Entity disambiguation only. A name/acronym or training curriculum does not establish a Ripple/XRP partnership, token holding or capital flow.",
+  "nodes": [
+    {
+      "id": "SBIC_EAST_JAPAN",
+      "label": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "kind": "JAPANESE_SME_INVESTMENT_ENTITY"
+    },
+    {
+      "id": "SBIC_CENTRAL_JAPAN",
+      "label": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan)",
+      "kind": "JAPANESE_SME_INVESTMENT_ENTITY"
+    },
+    {
+      "id": "SBIC_WEST_JAPAN",
+      "label": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan)",
+      "kind": "JAPANESE_SME_INVESTMENT_ENTITY"
+    },
+    {
+      "id": "SBIC_HISTORICAL_SBI_CAPITAL",
+      "label": "SBI Capital Co., Ltd., historically abbreviated SBIC in SBI Holdings releases",
+      "kind": "HISTORICAL_SBI_ENTITY"
+    },
+    {
+      "id": "SBI_CRYPTO",
+      "label": "SBI Crypto Co., Ltd.",
+      "kind": "CRYPTO_MINING_ENTITY"
+    },
+    {
+      "id": "CHATGPT_TRAINING_EAST",
+      "label": "SBIC East Japan generative-AI/ChatGPT training curriculum",
+      "kind": "TRAINING_EVENT"
+    },
+    {
+      "id": "CHATGPT_TRAINING_WEST",
+      "label": "SBIC West Japan generative-AI/ChatGPT seminar",
+      "kind": "TRAINING_EVENT"
+    },
+    {
+      "id": "XRP_RIPPLE",
+      "label": "Ripple and XRP ecosystem",
+      "kind": "ECOSYSTEM"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN58-EAST-TRAINING",
+      "source": "SBIC_EAST_JAPAN",
+      "target": "CHATGPT_TRAINING_EAST",
+      "relationship": "PUBLISHED_CHATGPT_TRAINING_CURRICULUM",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The official East Japan training page lists ChatGPT usage as part of a June 12-13, 2025 generative-AI/machine-learning course restricted to investee companies. It proves a training curriculum, not an OpenAI partnership.",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+        "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
+        "SRC-RUN58-20261029T1015Z-EAST-TRAINING-RECONFIRM"
+      ]
+    },
+    {
+      "id": "EDGE-RUN58-WEST-TRAINING",
+      "source": "SBIC_WEST_JAPAN",
+      "target": "CHATGPT_TRAINING_WEST",
+      "relationship": "PUBLISHED_CHATGPT_GENERATIVE_AI_SEMINAR",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The official West Japan profile identifies Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan), and its public seminar material discusses ChatGPT and generative AI. This is separate from East Japan and not evidence of an XRP relationship.",
+      "source_ids": [
+        "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
+        "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z",
+        "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM"
+      ]
+    },
+    {
+      "id": "EDGE-RUN58-SISTER-COMPANIES",
+      "source": "SBIC_EAST_JAPAN",
+      "target": "SBIC_WEST_JAPAN",
+      "relationship": "OFFICIAL_SISTER_COMPANIES_WITH_SEPARATE_REGIONAL_COVERAGE",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Official profiles describe Tokyo, Nagoya and Osaka SME investment/consultation companies as sister companies under the SME Investment & Consultation Companies Act, with different regional coverage. Shared SBIC branding does not make them SBI Crypto or historical SBI Capital.",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+        "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
+        "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN58-NO-XRP-EDGE",
+      "source": "SBIC_EAST_JAPAN",
+      "target": "XRP_RIPPLE",
+      "relationship": "NO_DIRECT_RELATIONSHIP_ESTABLISHED_IN_REVIEWED_SOURCES",
+      "evidence_class": "UNKNOWN_WITH_SEARCH_BOUNDARY",
+      "claim": "The reviewed SBIC East/West training and company-profile sources do not establish Ripple partnership, XRP holdings, XRP payment use, custody or investment. This is a bounded absence-of-evidence finding, not proof that no relationship exists elsewhere.",
+      "source_ids": [
+        "SRC-RUN58-20261029T1015Z-EAST-TRAINING-RECONFIRM",
+        "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM",
+        "SRC-SBI-REMIT",
+        "SRC-RIPPLE-SBI-RLUSD"
+      ]
+    },
+    {
+      "id": "EDGE-RUN58-ACRONYM-OVERLOAD",
+      "source": "SBIC_HISTORICAL_SBI_CAPITAL",
+      "target": "SBI_CRYPTO",
+      "relationship": "ACRONYM_COLLISION_NOT_ENTITY_IDENTITY",
+      "evidence_class": "ENTITY_DISAMBIGUATION",
+      "claim": "SBI Holdings historically used SBIC for SBI Capital Co., Ltd.; a separate legal complaint uses SBIC for SBI Crypto Co., Ltd.; the regional Japanese SME investment companies also use SBIC in their English branding. Resolve the original referent from its surrounding source, not the acronym alone.",
+      "source_ids": [
+        "SRC-SBI-CAPITAL-2005-SBIC",
+        "SRC-SBI-CAPITAL-GS-JV-2007",
+        "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+        "SRC-RUN25-20261029T014151-SBIC-WEST",
+        "SRC-RUN58-20261029T1015Z-EAST-TRAINING-RECONFIRM",
+        "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN58-CHATGPT-SBIC-TRAINING",
+      "statement": "The phrase 'ChatGPT SBIC' may refer to training organized by one of the Japanese regional SBIC SME investment companies.",
+      "status": "PLAUSIBLE_CONTEXTUAL_HYPOTHESIS_NOT_RESOLVED",
+      "supporting_source_ids": [
+        "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
+        "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z",
+        "SRC-RUN58-20261029T1015Z-EAST-TRAINING-RECONFIRM",
+        "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM"
+      ],
+      "disconfirming_evidence": [
+        "The original phrase/context is not supplied in the current evidence; SBI Crypto and historical SBI Capital also have used SBIC in distinct contexts."
+      ],
+      "tests_needed": [
+        "Match the original phrase to a dated post, document, video or named entity before resolving intended meaning."
+      ]
+    },
+    {
+      "id": "HYP-RUN58-SBIC-XRP",
+      "statement": "A regional SBIC training page implies an XRP or Ripple relationship.",
+      "status": "NOT_SUPPORTED",
+      "supporting_source_ids": [],
+      "disconfirming_evidence": [
+        "The cited training and profile pages describe SME investment/support and generative-AI training, not XRP, Ripple, crypto custody or token investment."
+      ],
+      "tests_needed": [
+        "Require a direct official statement, filing or transaction record naming the exact legal entity and XRP/Ripple relationship."
+      ]
+    }
+  ],
+  "notes": [
+    "Confirmed: East and West are distinct regional SME investment/consultation companies; both publish ChatGPT/GenAI training materials.",
+    "Inference: 'ChatGPT SBIC' could be a reference to one of these courses, but the intended entity is still unresolved.",
+    "Unknown: no direct East/West SBIC-to-XRP edge is established in reviewed sources.",
+    "Do not conflate these companies with historical SBI Capital Co., Ltd., SBI Crypto Co., Ltd. or SBI Group's Ripple relationships."
+  ]
+}
