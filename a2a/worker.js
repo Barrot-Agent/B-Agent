@@ -1,6 +1,9 @@
 import { RIEMANN_RESEARCH_CORPUS } from "./riemann_research_corpus.js";
 
 const MAX_REQUEST_BYTES = 64 * 1024;
+const RATE_WINDOW_MS = 60_000;
+const RATE_LIMIT = 30;
+const clients = new Map();
 const MAX_TASK_TEXT = 32 * 1024;
 const MAX_RESULT_BYTES = 96 * 1024;
 const MAX_OUTSTANDING_TASKS = 100;
@@ -113,6 +116,23 @@ function constantTimeEqual(a, b) {
   return mismatch === 0;
 }
 
+function clientAllowed(request) {
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  const now = Date.now();
+  const entry = clients.get(ip);
+  if (clients.size >= 1024) {
+    for (const [key, value] of clients) {
+      if (now - value.started >= RATE_WINDOW_MS) clients.delete(key);
+    }
+  }
+  if (!entry || now - entry.started >= RATE_WINDOW_MS) {
+    clients.set(ip, { started: now, count: 1 });
+    return true;
+  }
+  entry.count += 1;
+  return entry.count <= RATE_LIMIT;
+}
+
 function authorized(request, secret) {
   return Boolean(secret) && constantTimeEqual(request.headers.get("x-barrot-auth") || "", secret);
 }
@@ -161,6 +181,7 @@ async function handleJsonRpc(request, env) {
   if (!authorized(request, env.BRAIN_SHARED_SECRET)) {
     return jsonRpcError(null, -32001, "Unauthorized");
   }
+  if (!clientAllowed(request)) return jsonRpcError(null, -32029, "Rate limit exceeded");
   let payload;
   try { payload = await readJson(request); }
   catch (error) {
@@ -268,6 +289,7 @@ export default {
 
     if (path === "/v1/tasks" && request.method === "POST") {
       if (!authorized(request, env.BRAIN_SHARED_SECRET)) return json({ error: "unauthorized" }, 401);
+      if (!clientAllowed(request)) return json({ error: "rate_limit_exceeded" }, 429);
       let body;
       try { body = await readJson(request); }
       catch (error) {
