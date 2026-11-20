@@ -56,6 +56,9 @@
         ],
         "timeout": {
           "startup": 30000
+        },
+        "environment": {
+          "BARROT_A2A_URL": "https://barrot-a2a-worker.amazonprostarelite.workers.dev"
         }
       }
     }
