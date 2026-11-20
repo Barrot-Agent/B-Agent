@@ -421,7 +421,7 @@
       "conflict_type": "content",
       "strategy_used": "auto_merge",
       "success": true,
-      "time_to_resolve": 5,
+      "time_to_resolve": 5.0,
       "manual_intervention_required": false,
       "lessons_learned": [
         "Successfully resolved src/config.py",
@@ -437,7 +437,7 @@
       "conflict_type": "content",
       "strategy_used": "auto_merge",
       "success": true,
-      "time_to_resolve": 5,
+      "time_to_resolve": 5.0,
       "manual_intervention_required": false,
       "lessons_learned": [
         "Successfully resolved src/auth.py",
@@ -597,7 +597,7 @@
     "total_best_practices": 7,
     "total_learning_outcomes": 2,
     "strategy_success_rates": {
-      "auto_merge": 1
+      "auto_merge": 1.0
     }
   }
 }
