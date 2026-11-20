@@ -301,4 +301,5 @@ def test_a2a_worker_deployment_uploads_only_its_required_authentication_secret()
     assert "contents: read" in content
     assert "contents: write" not in content
     assert "GROQ_API_KEY" not in content
-    assert content.count("BRAIN_SHARED_SECRET") == 2
+    assert "secrets: |\n            BRAIN_SHARED_SECRET\n" in content
+    assert "BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}" in content
