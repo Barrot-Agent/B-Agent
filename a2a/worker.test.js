@@ -120,3 +120,28 @@ test("Agent Card and OpenAPI are public metadata only", async () => {
   assert.equal(schema.status, 200);
   assert.ok((await schema.json()).paths["/v1/tasks"]);
 });
+
+
+test("task submission enforces the per-client rate limit", async () => {
+  const { queue } = makeQueue();
+  const namespace = {
+    idFromName: () => "primary",
+    get: () => ({ fetch: (input, init) => queue.fetch(new Request(input, init)) }),
+  };
+  const env = { BRAIN_SHARED_SECRET: "rate-limit-secret", BARROT_TASKS: namespace };
+  const statuses = [];
+  for (let index = 0; index < 31; index++) {
+    const response = await worker.fetch(new Request("https://worker.test/v1/tasks", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "X-Barrot-Auth": "rate-limit-secret",
+        "CF-Connecting-IP": "198.51.100.77",
+      },
+      body: JSON.stringify({ title: "Task " + index, instructions: "Run task " + index }),
+    }), env);
+    statuses.push(response.status);
+  }
+  assert.equal(statuses.filter(status => status === 202).length, 30);
+  assert.equal(statuses[30], 429);
+});
