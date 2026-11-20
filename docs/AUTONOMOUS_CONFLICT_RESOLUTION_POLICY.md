@@ -35,3 +35,25 @@ the intended change and preservation of existing behavior have been established.
 
 Use `barrot_agent.ingestion.conflict_resolution_policy.recommend_resolution`
 with a `ConflictEvidence` instance. Missing evidence defaults to manual review.
+
+
+## Runtime enforcement and verification boundary
+
+The legacy `MergeConflictMicroIngestion.analyze_conflict` path now delegates to
+this policy and returns **manual review** when it has only conflict-marker and
+file-path evidence. Its historical technique catalog is reference material,
+not an authority to select or apply a resolution. Historical percentage values
+are not measured success rates and are no longer used for ranking.
+
+The policy never applies a resolution. Even a fully evidenced `incoming` or
+`both` recommendation has `auto_apply=false`; a separate explicit human
+authorization is required before any repository mutation.
+
+The PR workflow performs a real, read-only Git merge-tree check against the
+PR's current base and head. It blocks the check when Git reports conflicts.
+It does not attempt to resolve, approve, or merge the pull request.
+
+The Git integration tests create temporary repositories and exercise clean
+three-way merges, conflicting edits, conflict-marker preservation, and the
+non-mutating merge-tree check. These tests validate Git behavior and Barrot's
+fail-closed decision boundary; they do not claim an autonomous resolver exists.
