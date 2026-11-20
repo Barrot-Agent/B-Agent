@@ -579,17 +579,15 @@ eslint --fix <file>
 jq -s 'reduce .[] as $item ({}; . * $item)' file1.json file2.json
 ```
 
-#### 5. **Accept Both Changes with Review**
-- **Success Rate**: 85%
-- **Risk Level**: Medium
-- **Automation**: Semi-Automated
-- **Best For**: Complex logic conflicts
+#### 5. **Evidence-Gated Semantic Integration**
+- **Success Rate**: UNVERIFIED — no measured outcome rate is available
+- **Risk Level**: High until independently reviewed
+- **Automation**: Manual only; explicit authorization required
+- **Best For**: Cases where both changes are independently required and proven compatible
 
-```bash
-# Manual editing required
-git add <file>
-git commit -m "Resolved conflict by merging both changes"
-```
+Never accept both merely to clear conflict markers. Inspect the merge base and
+both versions, validate the composed result, run relevant tests, and obtain
+explicit human authorization before applying it.
 
 #### 6. **Recursive Strategy with Patience**
 - **Success Rate**: 80%
@@ -928,7 +926,7 @@ The system automatically tracks success rates for each strategy:
 - **Whitespace**: 98% (automated, minimal risk)
 - **Import Merge**: 95% (automated with formatting)
 - **Config Merge**: 90% (semantic understanding)
-- **Manual Review**: 85% (depends on reviewer)
+- **Manual Review**: no universal success rate; outcomes require case-specific evidence and review
 - **Recursive**: 80% (good for large changes)
 - **Three-Way**: 75% (requires analysis)
 
@@ -943,10 +941,11 @@ The system automatically tracks success rates for each strategy:
    - Analyze conflict patterns
    - Apply appropriate strategies
 
-2. **Automatic Resolution**
-   - Auto-resolve safe conflicts
-   - Flag manual review needs
-   - Document resolutions
+2. **Resolution Recommendation (fail-closed)**
+   - Run the evidence-gated conflict policy
+   - Default to manual review when evidence is missing or ambiguous
+   - Never auto-apply a recommended choice; require explicit human authorization
+   - Keep the autonomous resolver quarantined until separately reviewed and authorized
 
 3. **Communication Filtering**
    - Prevent unresolved conflicts in messages
@@ -962,17 +961,14 @@ The system automatically tracks success rates for each strategy:
 ### Configuration
 
 ```python
-# Enable automated conflict resolution
+# Conflict analysis is advisory and fail-closed.
 barrot_config = {
     "merge_conflict_resolution": {
         "enabled": True,
-        "auto_resolve_safe_conflicts": True,
-        "require_manual_review_for": [
-            "delete_modify",
-            "complex_content"
-        ],
-        "notify_on_resolution": True,
-        "track_metrics": True
+        "auto_resolve_safe_conflicts": False,
+        "require_human_authorization": True,
+        "manual_review_on_missing_evidence": True,
+        "track_verified_outcomes_only": True
     }
 }
 ```
@@ -1195,10 +1191,10 @@ Generated: 2026-01-02T13:04:31.914037
 - **Strategy**: semantic_merge
 
 ### Accept Both Changes with Manual Review (RT001)
-- **Success Rate**: 85.0%
-- **Risk Level**: Medium
-- **Automation**: Semi-Automated
-- **Strategy**: accept_both
+- **Success Rate**: UNVERIFIED (not measured)
+- **Risk Level**: High
+- **Automation**: Manual only; explicit authorization required
+- **Strategy**: accept_both — advisory only after evidence gate
 
 ### Recursive Strategy with Patience (RT006)
 - **Success Rate**: 80.0%
