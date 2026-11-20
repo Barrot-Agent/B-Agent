@@ -1,0 +1,196 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_id": "xrp_kraken_okx_spot_cross_venue_update_20261106T165214Z",
+  "artifact_type": "cross_venue_spot_ticker_reconciliation",
+  "recorded_at_utc": "2026-11-06T17:01:18Z",
+  "mission_priority": 1,
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "status": "RESEARCH_ONLY_MODEL_INELIGIBLE",
+  "capture_contract": {
+    "common_point_in_time_cutoff_utc": null,
+    "exact_tool_retrieval_timestamp_utc": null,
+    "original_http_wire_bytes_captured": false,
+    "normalized_rendered_response_excerpts_hashed": true,
+    "note": "The OKX ticker exposes a provider timestamp. The Kraken ticker response exposes no event timestamp or sequence ID, and the web retrieval interface exposes no exact request timestamp or original HTTP headers/body bytes. These are separate observations, not a synchronized market snapshot."
+  },
+  "source_independence_groups": [
+    "kraken_exchange",
+    "okx_exchange"
+  ],
+  "source_registry": [
+    {
+      "source_id": "KRAKEN_XRPUSD_TICKER_RUN11",
+      "publisher": "Kraken",
+      "source_type": "primary_exchange_public_spot_ticker_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "independence_group": "kraken_exchange",
+      "provider_event_timestamp_utc": null,
+      "exact_retrieval_timestamp_utc": null,
+      "retrieval_time_precision": "NOT_EXPOSED_BY_CAPTURE_INTERFACE",
+      "quote_currency": "USD",
+      "excerpt": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.19701000\",\"3254\",\"3254.000\"],\"b\":[\"1.19700000\",\"2328\",\"2328.000\"],\"c\":[\"1.19701000\",\"40.94349551\"],\"v\":[\"22516918.75885045\",\"40853344.51145337\"],\"p\":[\"1.19264429\",\"1.20893791\"],\"t\":[25689,42852],\"l\":[\"1.17173000\",\"1.17173000\"],\"h\":[\"1.22190000\",\"1.25361000\"],\"o\":\"1.20567000\"}}}",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "a855f44e09f804bb9ae601e204669a9f89be0b9b429bc1e6030fbbf1e254a9f9",
+        "scope": "Exact normalized rendered JSON excerpt; not original HTTP wire bytes, response headers or an independently timestamped exchange event."
+      }
+    },
+    {
+      "source_id": "OKX_XRPUSDT_TICKER_20261106T165214Z",
+      "publisher": "OKX",
+      "source_type": "primary_exchange_public_spot_ticker_api",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "independence_group": "okx_exchange",
+      "provider_event_timestamp_utc": "2026-11-06T16:52:14.179Z",
+      "exact_retrieval_timestamp_utc": null,
+      "retrieval_time_precision": "PROVIDER_EVENT_TIMESTAMP_AVAILABLE",
+      "quote_currency": "USDT",
+      "excerpt": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1942\",\"lastSz\":\"1.5\",\"askPx\":\"1.1941\",\"askSz\":\"2581.980432\",\"bidPx\":\"1.194\",\"bidSz\":\"2496.877575\",\"open24h\":\"1.2465\",\"high24h\":\"1.2481\",\"low24h\":\"1.1743\",\"volCcy24h\":\"84781944.8787324024\",\"vol24h\":\"70276327.587022\",\"ts\":\"1793983934179\",\"sodUtc0\":\"1.2072\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
+      "receipt": {
+        "algorithm": "SHA-256",
+        "digest": "79e2fce177cd2f2605f131c83a96280a94a3c820abf3c3f6735526119f7ca976",
+        "scope": "Exact normalized rendered JSON excerpt; not original HTTP wire bytes or response headers."
+      }
+    }
+  ],
+  "spot_observations": [
+    {
+      "source_id": "KRAKEN_XRPUSD_TICKER_RUN11",
+      "instrument": "XRP/USD",
+      "last_trade_usd": 1.19701,
+      "best_bid_usd": 1.197,
+      "best_bid_quantity_xrp": 2328,
+      "best_ask_usd": 1.19701,
+      "best_ask_quantity_xrp": 3254,
+      "spread_bps": 0.08354183984063114,
+      "volume_24h_xrp": 40853344.51145337,
+      "vwap_24h_usd": 1.20893791,
+      "low_24h_usd": 1.17173,
+      "high_24h_usd": 1.25361,
+      "utc_day_open_usd": 1.20567,
+      "last_vs_vwap_24h_pct": -0.9866437226705882,
+      "last_vs_utc_day_open_pct": -0.7182728275564765,
+      "last_above_24h_low_pct": 2.157493620543982,
+      "provider_event_timestamp_utc": null,
+      "quote_components_same_exchange_response": true,
+      "quote_components_same_event_sequence_established": false
+    },
+    {
+      "source_id": "OKX_XRPUSDT_TICKER_20261106T165214Z",
+      "instrument": "XRP/USDT",
+      "last_trade_usdt": 1.1942,
+      "best_bid_usdt": 1.194,
+      "best_bid_quantity_xrp": 2496.877575,
+      "best_ask_usdt": 1.1941,
+      "best_ask_quantity_xrp": 2581.980432,
+      "spread_bps": 0.837485867425895,
+      "volume_24h_xrp": 70276327.587022,
+      "quote_volume_24h_usdt": 84781944.8787324,
+      "open_24h_usdt": 1.2465,
+      "high_24h_usdt": 1.2481,
+      "low_24h_usdt": 1.1743,
+      "utc_day_open_usdt": 1.2072,
+      "utc_8h_open_usdt": 1.1877,
+      "last_vs_open_24h_pct": -4.195748094665063,
+      "last_vs_utc_day_open_pct": -1.076872100728965,
+      "last_vs_utc_8h_open_pct": 0.5472762482108262,
+      "last_above_24h_low_pct": 1.6946265860512622,
+      "provider_event_timestamp_utc": "2026-11-06T16:52:14.179Z",
+      "provider_timestamp_epoch_ms": 1793983934179,
+      "quote_components_same_exchange_response": true,
+      "quote_components_same_event_sequence_established": false
+    }
+  ],
+  "cross_venue_reconciliation": {
+    "observations_are_synchronized": false,
+    "common_point_in_time_cutoff_utc": null,
+    "quote_currencies_differ": true,
+    "kraken_event_timestamp_missing": true,
+    "cross_venue_price_spread_or_arbitrage_claim_permitted": false,
+    "order_book_depth_observed": false,
+    "interpretation": "Both exchange tickers place XRP near 1.19 in their respective quote currencies. Kraken is about 0.99% below its rolling 24-hour VWAP and 0.72% below its UTC-day open. OKX is about 4.20% below its rolling 24-hour open, 1.08% below its UTC-day open and 0.55% above its UTC 8-hour open. These are exchange-specific comparisons with different reference windows. The raw Kraken and OKX last prices must not be treated as a synchronized spread, executable arbitrage or common return."
+  },
+  "context_from_prior_artifact": {
+    "artifact_id": "xrp_market_exchange_flow_stablecoin_reconciliation_20261106T160035Z",
+    "prior_kraken_retrieval_upper_bound_utc": "2026-11-06T16:00:35Z",
+    "prior_kraken_last_trade_usd": 1.1798,
+    "later_kraken_rendered_last_trade_usd": 1.19701,
+    "naive_retrieval_to_retrieval_change_pct": 1.45856,
+    "permitted_interpretation": "A later rendered Kraken ticker showed a higher last price than the earlier 16:00:35Z capture. The Kraken provider event timestamp remains absent, so this is not admitted as a precise return or event-study observation.",
+    "rolling_24h_volume_is_not_monotonic": true
+  },
+  "derivatives_status": {
+    "status": "NO_NEW_SYNCHRONIZED_DERIVATIVES_OBSERVATION",
+    "prior_artifact_id": "xrp_market_exchange_flow_stablecoin_reconciliation_20261106T160035Z",
+    "note": "The prior TradRadar 14:55 UTC display is retained as a separate stale vintage; it is not carried forward as a current 17:00 UTC derivatives observation."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "partial_spot_rebound_after_intraday_selloff",
+      "supporting": [
+        "The later Kraken rendered last is above the prior 16:00:35Z Kraken rendered last.",
+        "The OKX last is 0.55% above its UTC 8-hour open."
+      ],
+      "disconfirming": [
+        "Kraken remains below its 24-hour VWAP and UTC-day open.",
+        "OKX remains below its 24-hour and UTC-day opens.",
+        "Kraken lacks a provider event timestamp; no synchronized return series is established."
+      ],
+      "status": "PLAUSIBLE_NOT_CONFIRMED"
+    },
+    {
+      "id": "broader_selloff_not_yet_reversed",
+      "supporting": [
+        "Both venue-specific last prices remain below their respective UTC-day opens.",
+        "OKX is 4.20% below its 24-hour open.",
+        "The preceding derivatives vintage showed a large long-liquidation imbalance."
+      ],
+      "disconfirming": [
+        "The spot observations are later than the preceding low and are consistent with a partial rebound.",
+        "The derivatives vintage is stale and cannot establish current positioning."
+      ],
+      "status": "PLAUSIBLE_NOT_CAUSAL"
+    },
+    {
+      "id": "venue_and_window_mismatch",
+      "supporting": [
+        "Kraken quotes XRP/USD without a provider event timestamp.",
+        "OKX quotes XRP/USDT with a provider timestamp.",
+        "The rolling 24-hour and UTC 8-hour/UTC-day reference windows differ."
+      ],
+      "disconfirming": [
+        "Both are primary exchange ticker endpoints and each is useful within its own venue/time definition."
+      ],
+      "status": "CONFIRMED_DATA_LIMITATION"
+    }
+  ],
+  "forecast_status": {
+    "status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "target": null,
+    "horizon": null,
+    "probabilities": null,
+    "assumptions": null,
+    "alternatives": null
+  },
+  "model_eligibility": {
+    "eligible": false,
+    "reasons": [
+      "No common point-in-time cutoff.",
+      "Kraken provider event timestamp and exact tool retrieval timestamp are unavailable.",
+      "Quote currencies differ (USD and USDT).",
+      "No synchronized order-book depth or executable slippage data.",
+      "No fresh derivatives observation aligned to either spot ticker.",
+      "Rendered excerpt hashes are not byte-complete original HTTP receipts.",
+      "No leakage-safe out-of-sample event study, calibration or evaluator attestation supports directional use."
+    ]
+  },
+  "safety": {
+    "research_only": true,
+    "paper_trade_executed": false,
+    "real_money_action": false,
+    "external_submission": false,
+    "external_ai_data_transfer": false
+  }
+}

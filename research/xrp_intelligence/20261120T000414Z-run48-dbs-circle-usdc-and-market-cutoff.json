@@ -1,0 +1,238 @@
+{
+  "artifact_type": "xrp_market_and_institutional_rail_reconciliation",
+  "schema_version": "1.0.0",
+  "research_run": 48,
+  "captured_at_utc": "2026-11-20T00:08:04Z",
+  "market_data_cutoff_utc": "2026-11-20T00:04:14.470Z",
+  "admission_status": "RESEARCH_ONLY_NO_BYTE_EXACT_RAW_RECEIPTS",
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "spot_observations": {
+    "kraken_xrp_usd": {
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "exchange_event_timestamp_utc": null,
+      "capture_window_utc": "2026-11-20T00:04Z",
+      "last_usd": 0.9603,
+      "bid_usd": 0.96026,
+      "ask_usd": 0.96033,
+      "spread_bps": 0.728943,
+      "volume_24h_xrp": 44858225.62279856,
+      "vwap_24h_usd": 0.97354299,
+      "high_24h_usd": 0.9968,
+      "low_24h_usd": 0.952,
+      "raw_source_sha256": null,
+      "limitations": [
+        "Kraken ticker response supplied no exchange event timestamp",
+        "Browser-rendered response bytes were not retained"
+      ]
+    },
+    "okx_xrp_usdt": {
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "exchange_event_timestamp_utc": "2026-11-20T00:04:14.470Z",
+      "last_usdt": 0.9624,
+      "bid_usdt": 0.9625,
+      "ask_usdt": 0.9626,
+      "spread_bps": 1.038907,
+      "volume_24h_xrp": 39231212.275461,
+      "raw_source_sha256": null
+    },
+    "okx_usdt_usd": {
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD",
+      "exchange_event_timestamp_utc": "2026-11-20T00:03:52.065Z",
+      "last_usd": 0.99888,
+      "bid_usd": 0.99888,
+      "ask_usd": 0.99889,
+      "raw_source_sha256": null
+    },
+    "quote_basis_reconciliation": {
+      "okx_quote_timestamp_gap_seconds": 22.405,
+      "configured_quote_basis_tolerance_seconds": 60,
+      "usdt_basis_status": "WITHIN_60_SECOND_TOLERANCE",
+      "normalized_okx_last_usd": 0.961322112,
+      "normalized_okx_midpoint_usd": 0.961476757,
+      "kraken_midpoint_usd": 0.960295,
+      "normalized_okx_midpoint_bps_above_kraken_midpoint": 12.306187,
+      "normalized_okx_last_bps_above_kraken_last": 10.643674,
+      "cross_venue_synchronization_status": "UNVERIFIED_KRAKEN_EVENT_TIME_MISSING",
+      "interpretation": "Unresolved cross-venue quote difference; not an arbitrage claim. Fees, executable depth, latency, venue risk and the missing Kraken event timestamp are not resolved."
+    }
+  },
+  "order_book_depth": {
+    "status": "NOT_VERIFIED_THIS_RUN",
+    "endpoints_attempted": [
+      "https://www.okx.com/api/v5/market/books?instId=XRP-USDT&sz=100",
+      "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100",
+      "https://api.binance.com/api/v3/depth?symbol=XRPUSDT&limit=100",
+      "https://api.bybit.com/v5/market/orderbook?category=spot&symbol=XRPUSDT&limit=100",
+      "https://api.exchange.coinbase.com/products/XRP-USD/book?level=2"
+    ],
+    "limitation": "The web retrieval layer did not return these depth payloads. Do not infer depth from top-of-book spreads or from the existence of adapters in the integration branch."
+  },
+  "derivatives_observations": [
+    {
+      "source": "TradRadar",
+      "source_url": "https://tradradar.io/markets/xrp",
+      "source_updated_at_utc": "2026-11-19T18:05:00Z",
+      "observed_at_utc": "2026-11-19T18:09:00Z",
+      "scope": "Seven exchanges for open interest/funding; five exchanges for liquidations and account long/short",
+      "open_interest_usd": 1210000000,
+      "open_interest_change_24h_pct": -2.86,
+      "oi_weighted_funding_per_8h_pct": 0.0015,
+      "liquidations_24h_usd_minimum": 3610000,
+      "long_liquidations_usd": 2810000,
+      "short_liquidations_usd": 806560,
+      "long_account_share_pct": 76.7,
+      "raw_source_sha256": null,
+      "status": "RESEARCH_ONLY_PROVIDER_DASHBOARD"
+    },
+    {
+      "source": "TokenPost",
+      "source_url": "https://www.tokenpost.com/news/investing/60299",
+      "published_at_utc": "2026-11-18T10:10:00Z",
+      "scope": "Secondary report; exchange universe and precise latest OI cutoff not fully specified",
+      "reported_oi_usd_nov9": 1050000000,
+      "reported_latest_oi_usd": 752000000,
+      "reported_binance_net_outflows_since_nov10_usd": 127000000,
+      "reported_etf_outflows_nov9_to_nov13_usd": 19100000,
+      "raw_source_sha256": null,
+      "status": "SECONDARY_REPORT_UNRECONCILED"
+    },
+    {
+      "source": "SwiftEdge",
+      "source_url": "https://swiftedge.uk/xrp/today",
+      "observed_date": "2026-11-19",
+      "status": "QUARANTINED_INTERNAL_INCONSISTENCY",
+      "reason": "Rendered page contains conflicting current price, bid-wall and ask-wall values in separate sections; do not use as a quantitative feature until corrected."
+    }
+  ],
+  "institutional_events": [
+    {
+      "event_date": "2026-11-18",
+      "entities": [
+        "DBS",
+        "Circle"
+      ],
+      "relationship": "DIRECT_PARTNERSHIP",
+      "facts": [
+        "Eligible institutional clients can mint and redeem USDC directly through DBS.",
+        "The release describes 24/7 USD-USDC settlement for minting and redemption.",
+        "Both organizations participate in MAS Project BLOOM."
+      ],
+      "primary_source": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
+      "interpretation": "A direct USDC institutional distribution and liquidity-management rail in Asia. The release does not require XRP or XRPL and does not disclose transaction volume."
+    },
+    {
+      "event_date": "2026-11-16",
+      "entities": [
+        "DBS",
+        "Kinexys by J.P. Morgan",
+        "Ant International",
+        "Swift"
+      ],
+      "relationship": "TOKENIZED_DEPOSIT_INTEROPERABILITY",
+      "facts": [
+        "DBS and Kinexys launched 24/7 cross-border tokenized-deposit transfers between US and Singapore permissioned blockchain ecosystems.",
+        "Ant International is identified as the first client.",
+        "Swift's ledger acts as an orchestration layer; settlement remains in the banks' existing systems."
+      ],
+      "primary_source": "https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers",
+      "interpretation": "A parallel institutional payment rail. It is not an XRP or XRPL deployment."
+    },
+    {
+      "event_date": "2026-10-28",
+      "entities": [
+        "Ripple",
+        "Coinbase"
+      ],
+      "relationship": "DIRECT_RLUSD_DISTRIBUTION",
+      "facts": [
+        "RLUSD became available through Coinbase Prime, Coinbase Exchange and Coinbase Retail.",
+        "The release identifies XRPL, Base and Ethereum deposit/withdrawal support.",
+        "RLUSD collateral support on Coinbase Global Exchange was described as a future follow-on."
+      ],
+      "primary_source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "interpretation": "Direct stablecoin distribution; not proof of XRP being required for RLUSD settlement."
+    },
+    {
+      "event_date": "2026-10-27",
+      "entities": [
+        "Ripple",
+        "BNY"
+      ],
+      "relationship": "DIRECT_CUSTODY_AND_EXPLORATION",
+      "facts": [
+        "BNY announced support for XRP and RLUSD custody on its Digital Asset Custody platform.",
+        "Ripple and BNY said they would explore tokenized trade-finance use cases, including work with C2FO."
+      ],
+      "primary_source": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "interpretation": "Institutional custody support for XRP and RLUSD; tokenized trade-finance work is exploratory, not a completed production flow."
+    }
+  ],
+  "relationship_graph_updates": {
+    "confirmed_edges": [
+      "DBS <-> Circle: direct USDC mint/redeem and settlement partnership announced 2026-11-18",
+      "DBS <-> Kinexys by J.P. Morgan: tokenized-deposit interoperability launch announced 2026-11-16",
+      "Ripple <-> Coinbase: direct RLUSD distribution partnership announced 2026-10-28",
+      "Ripple <-> BNY: direct XRP/RLUSD custody and tokenized trade-finance exploration announced 2026-10-27"
+    ],
+    "not_established": [
+      "No DBS-Ripple partnership is established by these releases.",
+      "No Circle-Ripple corporate partnership is established by the DBS-Circle release.",
+      "No XRP bridge requirement is established for DBS-USDC or DBS-Kinexys flows."
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "hypothesis": "Direct USDC mint/redeem and tokenized-deposit interoperability can route some institutional USD flows without XRP.",
+      "evidence_for": [
+        "DBS-Circle direct mint/redeem partnership",
+        "DBS-Kinexys permissioned tokenized-deposit interoperability"
+      ],
+      "evidence_against_or_limits": [
+        "No transaction-level market share or corridor volumes disclosed",
+        "Does not address corridors where XRP liquidity is independently selected"
+      ]
+    },
+    {
+      "hypothesis": "XRP can still serve distinct bridge-liquidity, trading, collateral or settlement roles alongside stablecoin and tokenized-deposit rails.",
+      "evidence_for": [
+        "XRP remains supported for institutional custody by BNY",
+        "Coinbase offers XRP collateral products in a separate product line"
+      ],
+      "evidence_against_or_limits": [
+        "No aggregate XRP collateral utilization or transaction-level bridge-volume evidence admitted in this snapshot"
+      ]
+    },
+    {
+      "hypothesis": "The cross-venue spot difference reflects basis, timing or venue-specific liquidity rather than executable arbitrage.",
+      "evidence_for": [
+        "OKX USDT/USD quote was 22.405 seconds older than XRP-USDT",
+        "Kraken event timestamp is unavailable",
+        "No depth payloads or fee-adjusted execution path verified"
+      ],
+      "evidence_against_or_limits": [
+        "Normalized top-of-book midpoint difference is measurable at approximately 12.31 bps"
+      ]
+    }
+  ],
+  "quality_controls": {
+    "raw_http_bytes_retained": false,
+    "sha256_receipts_created": false,
+    "independent_timestamp_anchor": false,
+    "source_independence_review": "Publisher/domain groups are distinct; no claim of independent underlying market-data lineage.",
+    "point_in_time_admission": "BLOCKED",
+    "reasons": [
+      "No byte-exact raw receipts",
+      "Kraken exchange event timestamp missing",
+      "Depth payloads unavailable",
+      "Derivative provider scopes differ",
+      "One secondary derivatives source and one internally inconsistent dashboard are quarantined"
+    ]
+  },
+  "limitations": [
+    "All live market values are browser-rendered observations and not feature-store inputs.",
+    "Reported derivatives OI values from TradRadar and TokenPost are not averaged because provider universe and cutoff differ.",
+    "Top-of-book is not order-book depth.",
+    "Corporate announcements establish product/relationship facts, not transaction volumes or XRP demand."
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "artifact_type": "kamilah_stevenson_podcast_self_identification_addendum",
+  "observed_on_utc_date": "2026-11-05",
+  "exact_retrieval_timestamp_utc": null,
+  "timestamp_note": "The iHeart page was retrieved during this research run; the page did not provide a byte-complete capture timestamp. The episode publication date is distinct from retrieval time.",
+  "episode": {
+    "title": "Crypto Panics! with Dr. Kamilah Stevenson",
+    "publisher": "iHeart",
+    "show": "The XRP Podcast with Paul Barron",
+    "publication_date": "2026-06-11",
+    "duration_minutes": 42,
+    "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+    "transcript_status": "auto-generated; publisher warns complete accuracy is not guaranteed"
+  },
+  "transcript_observations": [
+    {
+      "time": "00:09",
+      "speaker": "host",
+      "observation": "Host says the guest is Camila and describes her as appearing on YouTube discussing XRP."
+    },
+    {
+      "time": "00:16",
+      "speaker": "host",
+      "observation": "Host addresses the guest as Camilla."
+    },
+    {
+      "time": "40:07",
+      "speaker": "guest",
+      "observation": "Guest gives self-reported cross-platform display-name descriptions: a transcript-rendered X name resembling 'cam i am cam Stevenson', Instagram name 'Kamilla Stevenson', and YouTube name 'doctor Camilla Stevenson'."
+    },
+    {
+      "time": "40:07-40:26",
+      "speaker": "guest",
+      "observation": "Guest warns that fake pages exist and says she is working against them."
+    },
+    {
+      "time": "41:00-41:16",
+      "speaker": "guest",
+      "observation": "Guest says she has filed copyright-infringement notices; this remains a self-reported statement, not independently verified enforcement history."
+    }
+  ],
+  "identity_reconciliation": {
+    "title_name": "Kamilah Stevenson",
+    "spoken_name_variants": [
+      "Camila",
+      "Camilla"
+    ],
+    "self_reported_platform_display_names": {
+      "x": "cam i am cam Stevenson (auto-transcript rendering; exact handle unknown)",
+      "instagram": "Kamilla Stevenson (display name; exact handle unknown)",
+      "youtube": "doctor Camilla Stevenson (display name; exact channel URL not supplied in the transcript)"
+    },
+    "relation_to_prior_youtube_candidate": {
+      "prior_candidate_handle": "@drkamilahstevenson",
+      "prior_candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "transcript_supports_same_public_creator_hypothesis": true,
+      "channel_ownership_verified_by_this_source": false,
+      "exact_handle_match_verified": false
+    },
+    "identity_assessment": "The episode provides a useful first-person, cross-platform naming statement and supports a probable public-creator identity cluster across Kamilah/Camila/Camilla/Kamilla variants. It does not independently prove legal identity, account ownership, exact social handles or control of the previously identified YouTube channel.",
+    "legal_identity_verified": false,
+    "exact_social_handles_verified": false,
+    "canonical_youtube_channel_verified": false
+  },
+  "video_inventory_treatment": {
+    "classify_this_iheart_episode_as_youtube_video": false,
+    "reason": "This source is an iHeart podcast episode. The guest's statement that she has a YouTube presence is not a link to this episode on YouTube.",
+    "prior_public_youtube_inventory_count": 13,
+    "prior_inventory_exhaustive": false,
+    "new_youtube_video_added": 0
+  },
+  "xrp_claim_handling": {
+    "episode_topic_includes_xrp": true,
+    "guest_market_or_adoption_statements_are_primary_market_data": false,
+    "claims_eligible_as_event_features": false,
+    "reason": "Interview statements are attributed opinions and commentary, not independently verified XRP market, institutional-flow, regulatory or payment-rail observations."
+  },
+  "sources": [
+    {
+      "id": "IHEART_KAMILAH_STEVENSON_XRP_PODCAST_20260611",
+      "publisher": "iHeart",
+      "publication_date": "2026-06-11",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "source_type": "public podcast page with auto-generated transcript",
+      "independence_group": "iHeart episode transcript",
+      "raw_bytes_captured": false
+    }
+  ],
+  "model_admission": {
+    "eligible": false,
+    "directional_forecast_issued": false,
+    "reason": "Identity-resolution context and interview commentary are not XRP market features. Transcript is auto-generated and no byte-complete source receipt was captured."
+  },
+  "preservation": {
+    "name_variants_preserved": true,
+    "exact_handles_not_inferred": true,
+    "legal_identity_not_claimed": true,
+    "channel_ownership_not_claimed": true,
+    "interview_not_misclassified_as_youtube_video": true,
+    "market_claims_not_admitted_as_facts": true
+  }
+}

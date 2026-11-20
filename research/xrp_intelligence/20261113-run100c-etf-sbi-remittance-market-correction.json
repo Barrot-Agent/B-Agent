@@ -1,0 +1,208 @@
+{
+  "schema_version": "barrot.xrp.research-correction.v1",
+  "run": "Run100C",
+  "captured_during_run_window_utc": {
+    "start": "2026-11-13T17:01:16Z",
+    "end": "after 2026-11-13T17:19:00Z"
+  },
+  "repository": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_at_capture": "6728fdb4514b68b2bf16710b5f4904c6e29709c4",
+    "pr_1662_head": "6728fdb4514b68b2bf16710b5f4904c6e29709c4",
+    "pr_1662_state": "open/draft",
+    "pr_1662_changed_files": 1131
+  },
+  "market": {
+    "spot": [
+      {
+        "source": "OKX public spot ticker",
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "provider_event_time_utc": "2026-11-13T16:53:17.070Z",
+        "last_usdt": 1.0174,
+        "bid_usdt": 1.0172,
+        "ask_usdt": 1.0173,
+        "bid_size_xrp": 2311.421189,
+        "ask_size_xrp": 859.8,
+        "open_24h_usdt": 1.0253,
+        "high_24h_usdt": 1.044,
+        "low_24h_usdt": 0.9974,
+        "volume_24h_xrp": 48315156.626066,
+        "model_eligible": false,
+        "reason": "Event timestamp is older than the 300-second admission limit at run cutoff; top-of-book only, not full depth."
+      },
+      {
+        "source": "Kraken public XRP/USD ticker",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "provider_event_time": null,
+        "last_usd": 1.0179,
+        "bid_usd": 1.01791,
+        "ask_usd": 1.01792,
+        "volume_24h_xrp": 36642121.14868932,
+        "model_eligible": false,
+        "reason": "Provider event timestamp absent; retrieval-time observation only."
+      },
+      {
+        "source": "Binance.US XRP price page",
+        "url": "https://www.binance.us/price/xrp",
+        "provider_event_time": null,
+        "displayed_last_usd": 1.0188,
+        "displayed_24h_change_percent": -0.38,
+        "displayed_7d_change_percent": -14.59,
+        "displayed_30d_change_percent": -23.7,
+        "model_eligible": false,
+        "reason": "Page does not expose a provider event timestamp; some market statistics are attributed to CoinMarketCap."
+      }
+    ],
+    "depth": {
+      "source": "Fuelmaps",
+      "url": "https://fuelmaps.io/order-book/",
+      "snapshot_time_utc": "2026-11-13T09:00:00Z",
+      "mid_usd": 1.0275,
+      "within_1pct": {
+        "bids_usd": 11900000,
+        "asks_usd": 10100000
+      },
+      "within_2pct": {
+        "bids_usd": 16600000,
+        "asks_usd": 11100000
+      },
+      "model_eligible": false,
+      "reason": "Approximately eight hours old; aggregator summary, resting orders can be cancelled; not synchronized raw venue L2."
+    },
+    "derivatives": {
+      "source": "Liqwall",
+      "url": "https://liqwall.com/coins/xrp",
+      "snapshot_time_utc": "2026-11-13T07:02:00Z",
+      "open_interest_usd": 1120000000,
+      "average_funding_per_8h": -0.000025,
+      "binance_funding_per_8h": 0.000026,
+      "liquidations_24h_usd": 19300000,
+      "long_liquidations_usd": 18400000,
+      "short_liquidations_usd": 906000,
+      "binance_long_account_share": 0.752,
+      "model_eligible": false,
+      "reason": "Approximately ten hours old; vendor aggregate."
+    },
+    "exchange_flows": {
+      "source": "TrackWhale",
+      "url": "https://trackwhale.io/xrp-whale-tracker",
+      "snapshot_time_utc": "2026-11-13T09:20:00Z",
+      "tracked_large_transfers": 53,
+      "seven_day_inflows_xrp": 79730000,
+      "seven_day_outflows_xrp": 187040000,
+      "seven_day_net_outflow_xrp": 107310000,
+      "latest_large_transfer": {
+        "time_utc": "2026-11-13T09:11:00Z",
+        "amount_xrp": 14500000,
+        "route": "unknown wallet to unknown wallet",
+        "classification": "rotation"
+      },
+      "model_eligible": false,
+      "reason": "Selected large-transfer sample; not complete exchange-wallet accounting; internal/exchange-to-exchange movements excluded."
+    }
+  },
+  "etf_flow_correction": {
+    "correction": "The earlier Run100 note that XRP Insights' dashboard showed a Nov12 daily flow of -268,644 XRP while its data page still marked Nov12 provisional was based on a stale search snippet. The current live dashboard and data page agree on the week-to-date result; Nov12 is settled on the data page.",
+    "xrp_insights": {
+      "url": "https://xrp-insights.com/data",
+      "data_as_of": "2026-11-12",
+      "settled_trading_days": 4,
+      "nov9_to_nov12_net_flow_xrp": -9481905,
+      "holdings_xrp": 1185698783,
+      "universe": "six US spot funds plus BITW"
+    },
+    "cryptokeyhole": {
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "latest_partial_day": "2026-11-12",
+      "partial_flow_xrp": -3322,
+      "reported_funds": 3,
+      "expected_funds": 4,
+      "missing_file": "Franklin Templeton",
+      "last_complete_day": "2026-11-11",
+      "last_complete_day_flow_xrp": -3322,
+      "five_complete_sessions_nov5_to_nov11_xrp": -10005584,
+      "coverage_note": "Daily tracking excludes Grayscale where issuer pages block automated access and excludes XRPR because its 1940 Act structure is not directly comparable."
+    },
+    "alpha_finance": {
+      "url": "https://alphafinance.io/etf/xrp/",
+      "universe": "five-fund cohort",
+      "nov12_flow_usd": 0,
+      "seven_session_nov5_to_nov12_flow_usd": -18000000,
+      "thirty_session_flow_usd": -2800000,
+      "nov9_flow_usd": -10400000,
+      "nov10_flow_usd": -7600000
+    },
+    "corpstacking": {
+      "url": "https://www.corpstacking.com/treasuries/by-token/ripple",
+      "as_of": "2026-11-13",
+      "holdings_xrp": 1398686615,
+      "universe": "10 XRP funds/ETPs/trusts; broader than US spot ETF cohort"
+    },
+    "source_independence": "These aggregators use overlapping issuer holdings files but different fund universes, settlement dates and missing-file rules. Holdings changes are not independently verified cash subscriptions. Do not average or label the cohorts independent."
+  },
+  "sbi_ripple_network": {
+    "sbi_ripple_asia": {
+      "source": "SBI Holdings official group profile",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "as_of": "2026-03-31",
+      "sbi_group_voting_rights_percent": 60,
+      "ripple_voting_rights_percent": 40,
+      "source_note": "SBI Group's 60% is a consolidated group voting-rights aggregate."
+    },
+    "xrp_activity_distinction": {
+      "source": "Ripple official SBI Ripple Asia profile",
+      "url": "https://ripple.com/company/sbi-ripple-asia/",
+      "finding": "SBI Ripple Asia says it does not handle XRP directly; its business is RippleNet software services to financial institutions and remittance businesses. Do not equate RippleNet adoption with native XRP settlement."
+    },
+    "actual_xrp_remittance": {
+      "source": "SBI Holdings 2023 primary release",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "date": "2023-09-06",
+      "finding": "SBI Remit sends customer payment requests; SBI VC Trade sends XRP in real time; Tranglo processes local-currency payouts. The corridor expansion covered bank-account remittances to the Philippines, Vietnam and Indonesia. XRP is explicitly used as a bridge between fiat currencies.",
+      "volume_disclosed": false
+    },
+    "sbi_remit_ownership": {
+      "source": "SBI Holdings official profile",
+      "url": "https://www.sbigroup.co.jp/english/company/group/sbiremit.html",
+      "as_of": "2026-08-28",
+      "sbi_group_voting_rights_percent": 82.96
+    },
+    "xrpl_research_not_live": {
+      "source": "SBI Ripple Asia primary announcement",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+      "date": "2026-02-24",
+      "finding": "SBI Ripple Asia and DSRV began research on Japan-Korea blockchain remittance/payment use cases, considering XRPL. This is research, not verified production XRP volume."
+    },
+    "tokenized_deposits_poc": {
+      "source": "SBI Ripple Asia primary announcement",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "date": "2026-02-26",
+      "finding": "Conceptual proof of concept for tokenized deposits and deposit-type digital money using MoneyTap and a token issuance platform, with XRPL considered. Not evidence of a live XRP liquidity requirement."
+    }
+  },
+  "institutional_relationships": {
+    "sbi_circle": {
+      "source": "SBI official presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250627presentations.pdf",
+      "finding": "SBI Circle Holdings / Circle SBI Japan KK is a 50/50 JV; SBI Holdings and SBI Shinsei Bank invested $25M each in Circle's IPO, total $50M. Arc is a separate L1, not XRPL."
+    },
+    "sbi_evernorth_coinbase": {
+      "source": "SEC Evernorth prospectus",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "finding": "Four SBI-controlled entities and 39.9% SBI-group voting power after closing; exact SBI cash/XRP contribution allocation is undisclosed. Coinbase is Evernorth's principal XRP market for financial reporting, not an exclusive venue/custodian or direct SBI-Coinbase partnership."
+    }
+  },
+  "identity": {
+    "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate regional SME investment companies, not SBI Holdings. SBIC East's official 2025 ChatGPT/Copilot course was restricted to investee companies; its separate ChatGPT seminar was co-hosted with the Tokyo Chamber of Commerce Taito branch and featured a Microsoft speaker. Educational, not an OpenAI partnership.",
+    "ask_coin": "No canonical XRPL issuer/deployment verified.",
+    "actual_capital": "Evernorth gross cash, in-kind XRP, cash-funded XRP purchases, PIK debt, related-party facility, ELOC capacity, warrants and secondary resales remain separate. The ELOC had zero proceeds as of Nov9.",
+    "kamilah_youtube": "Third-party IDCrawl lists 20 similarly named YouTube profiles, including a 138K-subscriber candidate; no first-party channel ownership link established. No video attribution; verified own-channel inventory remains zero."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED",
+    "trained_xrp_candidate_model": false,
+    "model_eligible_current_market_observations": 0,
+    "reason": "No mature synchronized historical dataset and no independently receipted current web observations; only deterministic baselines are evaluated."
+  }
+}

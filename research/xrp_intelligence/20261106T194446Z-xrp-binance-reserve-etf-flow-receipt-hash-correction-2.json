@@ -1,0 +1,29 @@
+{
+  "schema_version": "barrot.xrp.source-receipt-correction.v1",
+  "artifact_id": "xrp_binance_reserve_etf_flow_receipt_hash_correction_2_20261106T194446Z",
+  "correction_type": "receipt_hash_metadata_only",
+  "recorded_at_utc": "2026-11-06T19:44:46Z",
+  "target_artifact_path": "research/xrp_intelligence/20261106T193345Z-xrp-binance-reserve-etf-flow-cross-source-reconciliation.json",
+  "target_artifact_git_blob_sha1": "7d632f7201ef1901239dc54270fa260cdcd97309",
+  "target_source_id": "CRYPTOTICKER_XRP_PRICE_ETF_OKX_20261106",
+  "target_json_pointer": "/source_registry/5/sha256",
+  "prior_value": "e2a5036258409c2137abab8c772bb5c8cf15a4d44e0afa987546e621c8bb9bbe",
+  "corrected_value": "dbc33e3b2be3767e199981764da89f94af8033aae4fae187d56c3120866fef08",
+  "excerpt_sha256": "dbc33e3b2be3767e199981764da89f94af8033aae4fae187d56c3120866fef08",
+  "reason": "The initial artifact creation transcribed an incorrect SHA-256 value for the normalized CryptoTicker excerpt. The stored excerpt and all observations remain unchanged. Recomputing SHA-256 over the exact stored UTF-8 excerpt yields corrected_value.",
+  "preservation": {
+    "source_artifact_modified": false,
+    "source_excerpt_modified": false,
+    "market_observation_modified": false,
+    "append_only": true,
+    "correction_applies_to_derived_view_only": true
+  },
+  "model_eligibility": false,
+  "forecast_issued": false,
+  "safety": {
+    "real_money_used": false,
+    "paper_trade_executed": false,
+    "orders_submitted": false,
+    "funds_transferred": false
+  }
+}

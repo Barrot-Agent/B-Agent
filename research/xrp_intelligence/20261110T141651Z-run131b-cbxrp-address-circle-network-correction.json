@@ -1,0 +1,268 @@
+{
+  "schema_version": "barrot.xrp.append_only_correction.v1",
+  "artifact_type": "xrp_market_identity_and_circle_network_correction",
+  "correction_id": "RUN131B-CORR-01",
+  "captured_at_utc": "2026-11-10T14:16:51Z",
+  "corrects_artifact": "research/xrp_intelligence/20261110T141058Z-run131b-coinbase-occ-pnc-cbxrp-market-update.json",
+  "correction_policy": "Append-only correction. The original artifact is preserved. Consumers must apply this correction to the specified field and must not treat the original collateral_token value as authoritative.",
+  "corrections": [
+    {
+      "field": "market_snapshot.morpho_cbxrp_usdc.collateral_token",
+      "original_value": "0xcb585250f852b6e08f4c7c32d4f71b54bda02913",
+      "corrected_value": "0xcb585250f852b6c6bf90434ab21a00f02833a4af",
+      "reason": "The original artifact contains an address transcription error in the collateral-token suffix. The scheduled Barrot ingestion source constant and the Morpho market page's abbreviated collateral address agree on the corrected value.",
+      "source_ids": [
+        "barrot_morpho_contract_constants",
+        "morpho_watch_market_identity"
+      ],
+      "model_eligible": false
+    }
+  ],
+  "corrected_market_identity": {
+    "chain_id": 8453,
+    "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+    "loan_token": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+    "collateral_token": "0xcb585250f852b6c6bf90434ab21a00f02833a4af",
+    "oracle": "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde",
+    "source_constant_file": "barrot_agent/evolution/xrp_public_ingestion.py",
+    "source_constant_lines": {
+      "loan_token": 73,
+      "collateral_token": 74,
+      "oracle": 75
+    },
+    "source_file_blob_sha": "16281af557427cb8a72dbdf2874a9db61e06863a"
+  },
+  "source_registry": [
+    {
+      "id": "barrot_morpho_contract_constants",
+      "publisher": "Barrot-Agent/B-Agent",
+      "publisher_group": "barrot_repository",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/c869905562d0aeae552eca807fcbdf28c5ae0a1b/barrot_agent/evolution/xrp_public_ingestion.py",
+      "type": "versioned_repository_source",
+      "scope": "Exact Morpho chain, market, loan-token, collateral-token and oracle constants in the inspected integration commit."
+    },
+    {
+      "id": "morpho_watch_market_identity",
+      "publisher": "Morpho Watch, sourced from Morpho API",
+      "publisher_group": "morpho_api",
+      "url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "type": "onchain_market_aggregator_identity_crosscheck",
+      "publication_date": "2026-11-10",
+      "scope": "Market ID, cbXRP abbreviated token address, USDC abbreviated token address and Chainlink oracle identity."
+    },
+    {
+      "id": "circle_q3_2026_release",
+      "publisher": "Circle Internet Group (SEC exhibit)",
+      "publisher_group": "circle",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm",
+      "type": "primary_issuer_earnings_release",
+      "publication_date": "2026-11-04",
+      "scope": "Circle Payments Network, Tazapay, Arc, Visa Direct/USDC, Binance, Samsung Wallet and Tereina strategic operating disclosures."
+    }
+  ],
+  "circle_network_expansion": {
+    "cpn_annualized_tpv_usd_billions": 41.3,
+    "cpn_metric_class": "issuer_reported_annualized_transaction_volume_not_net_capital",
+    "tazapay_acquisition": {
+      "status": "definitive_agreement_signed_pending_regulatory_approvals",
+      "expected_close_year": 2027,
+      "target_claimed_annualized_payment_volume_usd_billions_lower_bound": 25,
+      "target_claimed_banking_and_fintech_partners_lower_bound": 60,
+      "target_claimed_local_payout_markets_lower_bound": 100,
+      "target_claimed_transaction_volume_with_stablecoins_pct": 60,
+      "model_eligible": false,
+      "limitation": "Tazapay is not yet acquired. Its reported volume and partner network are target-company figures quoted by Circle; do not attribute them to Circle's current operating volume."
+    },
+    "visa_direct_usdc_prefunding": {
+      "status": "commercial_deployment_announced",
+      "partner": "Inyo Global",
+      "geography_count_lower_bound": 180,
+      "asset": "USDC",
+      "model_eligible": false,
+      "limitation": "Circle's release describes commercial deployment, but no XRP/XRPL route or transaction volume is disclosed."
+    },
+    "arc_mainnet": {
+      "launch_date": "2026-09-16",
+      "day_one_institutional_and_ecosystem_builders_lower_bound": 100,
+      "native_asset_integration": "USDC",
+      "model_eligible": false,
+      "limitation": "Arc is a separate network. Native USDC integration is not XRP utility or XRPL activity."
+    },
+    "samsung_wallet_usdc": {
+      "status": "announced_eligible_us_users",
+      "qualifying_bank_account_countries_lower_bound": 60,
+      "asset": "USDC",
+      "model_eligible": false,
+      "limitation": "Issuer-announced distribution capability; transaction volumes and XRP linkage undisclosed."
+    },
+    "tereina_sap_integration": {
+      "status": "announced",
+      "assets": [
+        "USDC",
+        "EURC"
+      ],
+      "ecosystem": "SAP",
+      "model_eligible": false,
+      "limitation": "Issuer-announced integration; no XRP or XRPL settlement path identified."
+    }
+  },
+  "additional_observations": [
+    {
+      "id": "OBS-CIRCLE-CPN-TPV-2026Q3",
+      "classification": "issuer_reported_annualized_network_volume",
+      "claim": "Circle reported Circle Payments Network annualized TPV of $41.3B in Q3 2026.",
+      "evidence": [
+        "circle_q3_2026_release"
+      ],
+      "limitations": [
+        "Annualized TPV is gross transaction throughput, not net capital inflow, XRP demand or realized cash settlement."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-TAZAPAY-AGREEMENT-2026Q3",
+      "classification": "pending_acquisition_forward_looking",
+      "claim": "Circle signed a definitive agreement to acquire Tazapay, with expected close in 2027 subject to regulatory approvals; Circle quoted target metrics of $25B+ annualized payment volume, 60+ bank/fintech partners, 100+ local payout markets and about 60% stablecoin-related transaction volume.",
+      "evidence": [
+        "circle_q3_2026_release"
+      ],
+      "limitations": [
+        "The transaction has not closed. Target metrics are not Circle's current volume and must not be added to Circle Payments Network TPV."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-VISA-DIRECT-USDC-2026Q3",
+      "classification": "issuer_reported_commercial_deployment",
+      "claim": "Circle's Q3 release says Visa Direct moved stablecoin prefunding from pilots to commercial deployment with Inyo Global, enabling eligible clients to prefund cross-border payouts using USDC across 180+ countries.",
+      "evidence": [
+        "circle_q3_2026_release"
+      ],
+      "limitations": [
+        "No XRP or XRPL leg is specified; volume and XRP conversion are undisclosed."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-ARC-MAINNET-2026Q3",
+      "classification": "issuer_reported_network_launch",
+      "claim": "Circle says Arc public mainnet launched September 16, 2026 with more than 100 institutional and ecosystem builders on day one and native USDC integration.",
+      "evidence": [
+        "circle_q3_2026_release"
+      ],
+      "limitations": [
+        "Arc is a separate network; builder count is not production payment volume and does not establish XRP utility."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-WALLET-ENTERPRISE-DISTRIBUTION-2026Q3",
+      "classification": "issuer_reported_distribution_announcements",
+      "claim": "Circle's Q3 release also describes Samsung Wallet USDC payments to qualifying bank accounts in 60+ countries and Tereina integration of USDC/EURC into SAP-related enterprise workflows.",
+      "evidence": [
+        "circle_q3_2026_release"
+      ],
+      "limitations": [
+        "Issuer announcements do not establish active user counts, settlement volume, net capital or XRP linkage."
+      ]
+    }
+  ],
+  "relationship_graph_additions": [
+    {
+      "from": "Circle",
+      "to": "Circle Payments Network",
+      "relation": "operates_network_with_issuer_reported_41_3B_annualized_TPV",
+      "status": "issuer_reported",
+      "evidence": [
+        "circle_q3_2026_release"
+      ],
+      "limitation": "Gross annualized TPV is not net capital or XRP flow."
+    },
+    {
+      "from": "Circle",
+      "to": "Tazapay",
+      "relation": "definitive_acquisition_agreement_pending_close",
+      "status": "pending_regulatory_approval",
+      "evidence": [
+        "circle_q3_2026_release"
+      ],
+      "limitation": "Do not consolidate Tazapay's metrics into Circle before closing."
+    },
+    {
+      "from": "Circle",
+      "to": "Visa Direct / Inyo Global",
+      "relation": "USDC_stablecoin_prefunding_commercial_deployment",
+      "status": "issuer_reported",
+      "evidence": [
+        "circle_q3_2026_release"
+      ],
+      "limitation": "No XRP or XRPL leg identified."
+    },
+    {
+      "from": "Circle",
+      "to": "Arc",
+      "relation": "public_mainnet_and_native_USDC_integration",
+      "status": "launched_2026_09_16",
+      "evidence": [
+        "circle_q3_2026_release"
+      ],
+      "limitation": "Separate network; no XRP value capture established."
+    },
+    {
+      "from": "Circle",
+      "to": "Samsung Wallet",
+      "relation": "USDC_payment_distribution",
+      "status": "issuer_reported",
+      "evidence": [
+        "circle_q3_2026_release"
+      ],
+      "limitation": "No XRP leg or transaction volume disclosed."
+    },
+    {
+      "from": "Circle",
+      "to": "Tereina / SAP ecosystem",
+      "relation": "USDC_EURC_enterprise_workflow_integration",
+      "status": "issuer_reported",
+      "evidence": [
+        "circle_q3_2026_release"
+      ],
+      "limitation": "No XRP or XRPL settlement path identified."
+    }
+  ],
+  "competing_hypotheses_additions": [
+    {
+      "id": "RUN131B-CORR::H6-circle-payment-network-expansion",
+      "claim": "Circle is expanding from USDC issuance and distribution into a broader payments, enterprise and network stack; this can increase stablecoin utility while remaining independent of XRP value capture.",
+      "support": [
+        "CPN $41.3B annualized TPV reported for Q3.",
+        "Visa Direct USDC prefunding described as commercial deployment.",
+        "Arc launched with native USDC integration and 100+ day-one institutional/ecosystem builders.",
+        "Tazapay agreement could add local payout rails if it closes."
+      ],
+      "disconfirming_or_missing": [
+        "No chain-level breakdown of CPN volume in this release.",
+        "Tazapay acquisition is not closed.",
+        "No XRP/XRPL leg is identified in these announcements.",
+        "Annualized and target-company volumes are not net capital."
+      ],
+      "tests": [
+        "Obtain CPN chain/counterparty/settlement breakdowns.",
+        "Verify Tazapay closing and post-close reported volumes.",
+        "Measure USDC issuance/redemption and net balances by chain.",
+        "Test whether any Circle payment corridors actually route through XRP rather than direct stablecoin settlement."
+      ]
+    }
+  ],
+  "model_admission": {
+    "collateral_token_correction": "Identity correction only; Morpho data remains digest-only/raw-only pending direct block-height and oracle-round verification.",
+    "circle_network_expansion": "Issuer-reported quarterly context only; no direct XRP feature admission.",
+    "predictions_issued": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "source_capture": {
+    "raw_wire_bytes_available": false,
+    "raw_source_sha256_receipts_created": false,
+    "note": "This append-only correction records source identities and claims but does not represent manual web retrieval text as raw HTTP bytes or a raw-source SHA-256 receipt."
+  },
+  "prediction_boundary": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized XRP event window or calibrated out-of-sample evidence; Circle network growth, cbXRP collateral and macro pricing remain contextual observations."
+  }
+}

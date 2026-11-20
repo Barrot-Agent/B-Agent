@@ -1,0 +1,398 @@
+{
+  "schema_version": "1.3.0",
+  "snapshot_id": "run184-followup2-20261116T041630Z",
+  "captured_at_utc": "2026-11-16T04:16:30Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+  "integration_head_at_capture": "6063c3dc9004731e02af4205225c1bb9db8e9df4",
+  "integration_pr": 1663,
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "verified",
+      "evidence": "Run184: GitHub connector authenticated and used to retrieve complete recursive main and integration trees (main 1,393; integration 2,531; zero main paths missing), enumerate all nine open PRs, inspect #1663 metadata/reviews/files, inspect main branch protection visibility and rulesets, and update the existing integration branch. Permissions remain admin/maintain/push/pull/triage and are overprivileged.",
+      "data_flow": "ChatGPT GitHub connector -> GitHub REST API -> Barrot-Agent/B-Agent integration branch",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": false
+    },
+    {
+      "name": "Claude",
+      "authentication": "unverified"
+    },
+    {
+      "name": "Grok",
+      "authentication": "unverified",
+      "notes": "Groq is a separate provider and is not Grok; no Grok connection tested."
+    },
+    {
+      "name": "Gemini",
+      "authentication": "unverified"
+    },
+    {
+      "name": "Copilot",
+      "authentication": "historical_one_off_activity",
+      "evidence": "Run182: no formal PR review or approval on #1663; historical one-off activity is not a live integration or approval."
+    },
+    {
+      "name": "Codex",
+      "authentication": "unverified"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "unverified",
+      "evidence": "Prior BUILD_ERROR; no verified deployment or current authenticated data flow."
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "untested",
+      "evidence": "No submission or authenticated data-flow test."
+    },
+    {
+      "name": "Databricks",
+      "authentication": "unverified",
+      "evidence": "Prior HTTP 403; no verified write or current authenticated data flow."
+    }
+  ],
+  "adjacent_integrations": [
+    {
+      "name": "Groq",
+      "authentication": "workflow_secret_configured_but_not_tested_in_Run180",
+      "notes": "Groq-backed research/design workflows are not one of the nine platforms and must not be labeled Grok. No external request dispatched in this run."
+    },
+    {
+      "name": "OpenCode GitHub MCP",
+      "authentication": "unverified",
+      "notes": "GITHUB_MCP_TOKEN configuration has no verified successful health check or authenticated request."
+    }
+  ],
+  "coordination": {
+    "independent_tasks_dispatched": false,
+    "structured_evidence_exchange": false,
+    "disagreement_resolution": false,
+    "minority_objections_preserved": true,
+    "independent_red_team_quorum": false,
+    "live_connections_claimed": false,
+    "fallback": "Deterministic local analysis and lawful public read-only sources; no provider credential or external-model dispatch."
+  },
+  "governance": {
+    "main_protected": true,
+    "branch_protection_api": "HTTP 403 — detailed branch-protection settings unavailable to connector; branch object itself reports protected=true and visible required status contexts empty",
+    "required_status_contexts_visible": [],
+    "fallback_ruleset_id": 10863829,
+    "fallback_ruleset_enforcement": "disabled",
+    "codeowners": "* @Barrot-Agent (verified at .github/CODEOWNERS on main)",
+    "pr1663_draft": true,
+    "pr1663_mergeable": true,
+    "formal_reviews": 0,
+    "approvals": 0,
+    "review_threads": 0,
+    "github_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "least_privilege_satisfied": false,
+    "merge_decision": "NO_MERGE",
+    "pr1663_changed_files_at_capture": 1298,
+    "pr1663_commits_ahead": 62,
+    "pr1663_commits_behind": 0,
+    "blockers": [
+      "PR #1663 remains draft",
+      "zero formal reviews, approvals and review threads",
+      "1,298 changed paths require complete semantic review, prioritizing 48 workflow definitions and called scripts",
+      "main branch-protection detail endpoint returns HTTP 403; branch object reports protected=true but no required status contexts are visible",
+      "fallback ruleset 10863829 is disabled",
+      "CODEOWNERS assigns all paths to @Barrot-Agent",
+      "GitHub connector permissions remain admin/maintain/push/pull/triage and are overprivileged",
+      "full-suite run on 909262e failed because Run184 introduced an unmatched closing brace in tests/test_riemann_harvest.py; that brace has been removed on 6063c3d, whose exact-head full suite is still running at this capture",
+      "main Riemann Research Harvest must also override pytest.ini's global --cov/--cov-fail-under addopts for its focused three-test run; integration now adds -o addopts= so the subset is not incorrectly judged against the full-package 70% coverage floor"
+    ],
+    "pr1663_head_sha": "6063c3dc9004731e02af4205225c1bb9db8e9df4",
+    "main_tree_entries": 1393,
+    "integration_tree_entries": 2533,
+    "main_paths_missing": 0,
+    "shared_blob_differences": 205,
+    "shared_tree_differences": 36,
+    "integration_only_paths": 1140,
+    "main_test_files": 94,
+    "integration_test_files": 460,
+    "pr1663_additions": 415914,
+    "pr1663_deletions": 6473,
+    "pr1663_open_pr_count": 9,
+    "open_pr_count": 9
+  },
+  "verification": {
+    "last_verified_full_suite": {
+      "head_sha": "18a51be5e7b3f8cb999c4ffb8b4673d9ca3fa843",
+      "run_id": 43796840272,
+      "conclusion": "success",
+      "passed": 3829,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "pytest_duration_seconds": 177.14,
+      "inclusive_coverage_percent": 64.09,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build": "passed",
+      "installed_v3_xrp_mission": "passed",
+      "pages_validation": "passed",
+      "note": "Exact push run on 18a51be; does not verify later heads."
+    },
+    "last_verified_dependency_audit": {
+      "head_sha": "18a51be5e7b3f8cb999c4ffb8b4673d9ca3fa843",
+      "push_run_id": 43796840220,
+      "pr_run_id": 43796847559,
+      "conclusion": "success",
+      "known_vulnerabilities": 0
+    },
+    "last_verified_fail_closed": {
+      "head_sha": "18a51be5e7b3f8cb999c4ffb8b4673d9ca3fa843",
+      "push_run_id": 43796840206,
+      "pr_run_id": 43796847623,
+      "push_conclusion": "success",
+      "pr_conclusion": "success"
+    },
+    "last_verified_pr_ci": {
+      "head_sha": "18a51be5e7b3f8cb999c4ffb8b4673d9ca3fa843",
+      "run_id": 43796847597,
+      "conclusion": "success",
+      "test_jobs": "skipped by integration-branch condition",
+      "pages_validation": "passed"
+    },
+    "current_branch_head": {
+      "head_sha": "6063c3dc9004731e02af4205225c1bb9db8e9df4",
+      "previous_head_full_suite": {
+        "run_id": 43802643373,
+        "conclusion": "failure",
+        "failure": "SyntaxError unmatched '}' at tests/test_riemann_harvest.py:49"
+      },
+      "full_suite": "in_progress",
+      "full_suite_run_id": 43803021095,
+      "core_tests": "passed",
+      "pages_validation": "passed",
+      "push_dependency_audit": "in_progress",
+      "push_dependency_audit_run_id": 43803021197,
+      "pr_ci": "passed",
+      "pr_ci_run_id": 43803027222,
+      "pr_dependency_audit": "in_progress",
+      "pr_dependency_audit_run_id": 43803027213,
+      "push_fail_closed": "passed",
+      "push_fail_closed_run_id": 43803021190,
+      "pr_fail_closed": "passed",
+      "pr_fail_closed_run_id": 43803027302,
+      "correction": "Stray brace removed; targeted Riemann validation now invokes pytest with -o addopts= to avoid applying the global full-suite coverage threshold to the focused subset.",
+      "current_head_exact_suite": "pending"
+    },
+    "main_ci": {
+      "head_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+      "ci_run_id": 43767370808,
+      "ci_conclusion": "success",
+      "main_full_suite": {
+        "passed": 848,
+        "failed": 0,
+        "skipped": 1,
+        "subtests": 8
+      },
+      "pages_run_id": 43767370504,
+      "pages_conclusion": "failure",
+      "pages_error": "Liquid syntax error in GLOBAL_STATE_MANIFEST.md around line 6450",
+      "latest_cross_analysis_run_id": 43788722561,
+      "cross_analysis_conclusion": "success",
+      "barrot_sync_run_id": 43767370810,
+      "barrot_sync_conclusion": "false green: ModuleNotFoundError for rich; sync skipped; git push failure suppressed by || true"
+    },
+    "last_verified_pr_dependency_audit": {
+      "head_sha": "b64c16819c854709ad8ba18c350da934cd65447f",
+      "run_id": 43795401030,
+      "conclusion": "success",
+      "known_vulnerabilities": 0
+    },
+    "last_attempted_full_suite": {
+      "head_sha": "b64c16819c854709ad8ba18c350da934cd65447f",
+      "run_id": 43795396503,
+      "status": "completed",
+      "conclusion": "success",
+      "passed": 3829,
+      "failed": 0,
+      "skipped": 1,
+      "subtests": 19,
+      "pytest_duration_seconds": 154.29
+    },
+    "test_assertion_correction": {
+      "file": "tests/test_xrp_event_timeline_ingestion.py",
+      "old": "not a third-party audit",
+      "new": "rather than a third-party audit",
+      "classification": "test wording aligned with existing event text; no assertion removed or gate weakened"
+    },
+    "coverage_gaps": [
+      "Inclusive coverage is 64.09%; the 77% legacy-core metric omits major packages including agi, ingestion, analysis, monetization and orchestration. Continue package-specific coverage expansion."
+    ],
+    "packaging_warnings": [
+      "project.license TOML table is deprecated",
+      "build warns barrot_agent.data.missions and data.research are absent from package configuration; required primary_mission.json is verified inside the wheel and installed V3/XRP mission loads, but data.research packaging requirements need review."
+    ],
+    "evernorth_capital_supplement": {
+      "event_id": "evernorth-q3-2026-preclose-liquidity-and-postclose-xrp-restriction-release",
+      "postclose_xrp_arithmetic": 473276430,
+      "pathfinder_related_party_debt_usd": 9700000,
+      "repayment_status": "not confirmed in reviewed filing",
+      "potential_xrp_liquidation_authorized_by_disclosure": true,
+      "actual_sale_confirmed": false,
+      "model_eligible": false
+    },
+    "main_latest_scheduled_workflow_failure": {
+      "workflow": "Riemann Research Harvest",
+      "run_id": 43798453131,
+      "job_id": 133072626996,
+      "head_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+      "conclusion": "failure",
+      "root_cause": "The workflow installs pytest but not pytest-cov; pytest.ini adds --cov options, causing argument parsing to fail. tests/conftest.py also imports AppConfig through pydantic-settings.",
+      "integration_fix_commits": [
+        "3b2b4f1bd8564cf1076fb61ddac28b9dfa94cda4",
+        "8db2aaef5d96c433ecf677da05843981bad108b1"
+      ],
+      "integration_fix": "Install pytest, pytest-cov and pydantic-settings; a regression test asserts all three dependencies.",
+      "manual_dispatch_performed": false,
+      "actual_workflow_execution_verified": false
+    },
+    "riemann_workflow_validation": {
+      "main_failure_run_id": 43798453131,
+      "original_issue": "pytest-cov missing for pytest.ini --cov options; pydantic-settings also required by tests/conftest.py",
+      "followup_issue": "pytest.ini also sets --cov-fail-under=70; a three-test subset should not be held to the full-package coverage threshold",
+      "integration_fix": "Install pytest, pytest-cov and pydantic-settings; run focused tests with -o addopts=; regression test asserts dependencies and override.",
+      "actual_workflow_dispatch": false,
+      "actual_workflow_execution_verified": false
+    }
+  },
+  "workflow_audit": {
+    "changed_workflow_files": 48,
+    "explicit_false_job_guards": 27,
+    "remaining_active_workflows": 21,
+    "high_impact_workflows_and_called_scripts_reviewed": 14,
+    "called_scripts_reviewed": 13,
+    "external_operations_dispatched": false,
+    "findings": [
+      "No explicit contents/issues/pull-requests/actions write grant was found in the 48 changed workflow definitions; repository-level default workflow permissions could not be read through the connector.",
+      "Eight Groq-backed research/design workflows require manual YES confirmation, refs/heads/main, an exact 40-character expected main SHA, and read-only repository permissions where declared.",
+      "Coinbase paper-trader requires typed YES, exact main SHA, position-product identity preflight and artifact-only output; it was not dispatched.",
+      "Barrot Ops requires separate Databricks and Kaggle confirmations plus exact source SHA; it was not dispatched.",
+      "A2A deployment requires separate deployment and secret-rotation confirmations plus exact main SHA; it was not dispatched.",
+      "XRP public ingestion is read-only, main-ref guarded and has no provider secrets; GitHub artifacts are retained 90 days and are not WORM storage.",
+      "27 workflows have explicit false job guards, including legacy repository writers and external sync/deployment paths."
+    ]
+  },
+  "collateral_research": {
+    "captured_at_utc": "2026-11-16T02:44:53Z",
+    "coinbase_cbxrp_reserve_xrp": 153008338.56,
+    "cbxrp_supply": 153006092.03,
+    "morpho_liquidation_logs": 883,
+    "morpho_usdc_repaid": 4016076.34226,
+    "morpho_cbxrp_seized": 4181584.301387,
+    "morpho_current_outstanding_usd": 48080000,
+    "morpho_current_utilization_percent": 90.59,
+    "morpho_supplier_top_three_share_percent": 68.51,
+    "coinglass_current_oi_usd": 1980000000,
+    "coinglass_current_funding_8h_percent": -0.0074,
+    "coinglass_current_liquidations_usd": 4500000,
+    "coinglass_search_cache_liquidations_usd": 33420000,
+    "native_xrp_sale_proven": false,
+    "model_eligible": false
+  },
+  "run183_update": {
+    "captured_at_utc": "2026-11-16T03:04:08Z",
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_code_head": "b64c16819c854709ad8ba18c350da934cd65447f",
+    "integration_tree_entries": 2529,
+    "main_tree_entries": 1393,
+    "main_paths_missing": 0,
+    "shared_paths_with_different_blobs": 205,
+    "commits_ahead": 54,
+    "commits_behind": 0,
+    "pull_request": {
+      "number": 1663,
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "merged": false,
+      "changed_files": 1294,
+      "formal_reviews": 0,
+      "review_threads": 0,
+      "base": "main"
+    },
+    "open_pr_numbers": [
+      1663,
+      1541,
+      1450,
+      1460,
+      1440,
+      1436,
+      1437,
+      1353,
+      1265
+    ],
+    "branch_protection": "HTTP 403 through connector; ruleset 10863829 is disabled",
+    "codeowners": "* @Barrot-Agent",
+    "github_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "current_head_ci": {
+      "full_suite": "success",
+      "dependency_audit": "success",
+      "push_fail_closed": "success",
+      "pr_ci": "success; test jobs skipped by integration-branch condition",
+      "pr_dependency_audit": "success",
+      "pr_fail_closed": "success"
+    },
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "run184_research_update": {
+    "added_event_ids": [
+      "standard-chartered-rlusd-xrpl-custody-lmax-collateral-plan-2026-10-12",
+      "xrpl-amendment-rollcall-2026-11-16T0400Z"
+    ],
+    "event_count": 104,
+    "source_independence_groups": 81,
+    "missing_raw_receipts": 104,
+    "missing_publisher_timestamps": 59,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "run184_followup": {
+    "captured_at_utc": "2026-11-16T04:14:12Z",
+    "failed_head_sha": "909262e12b0306be322e0d4048546c99aee667b2",
+    "failed_full_suite_run_id": 43802643373,
+    "failure": "SyntaxError unmatched '}' at tests/test_riemann_harvest.py:49",
+    "correction": "Removed the single trailing unmatched brace; no test assertions or production behavior changed.",
+    "current_research": {
+      "coingecko_xrp": "$0.9595; 24h range $0.9433-$0.9784; page has no exact event timestamp.",
+      "coinmarketcap_xrp": "$0.9628; 24h range $0.9444-$0.9771; page has no exact event timestamp.",
+      "coinglass_xrp": "$0.9477; 24h low/high $0.8922/$0.9789; 24h spot volume $1.18B; futures volume $4.31B; OI $1.97B (-5.74%); funding -0.0068%/8h; liquidations $33.42M, 86% longs; page snapshot lacks a unified event timestamp.",
+      "liqwall_oi": "$997M as of 2026-11-16 03:02 UTC, -2.5%/24h, 30-day range $995M-$1.49B.",
+      "etf_flows": "SoSoValue five-fund tracker reported 11 sessions without a net inflow since Oct 29 and November net outflows of $19.66M through Nov 13; not independent from trackers using the same issuer files.",
+      "exchange_balances": "22.25B XRP in 707 labeled wallets across 24 exchanges as of Nov 15 08:00 UTC; same-wallet 7d change -97.9M XRP; cold storage included."
+    },
+    "market_feature_admission": "Rejected: provider timestamps are absent or asynchronous; CoinGlass and Liqwall OI differ by roughly 2x under different venue/contract coverage; no byte-exact receipts or synchronized full-depth L2 were captured.",
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "run184_followup2": {
+    "captured_at_utc": "2026-11-16T04:16:30Z",
+    "head_at_capture": "6063c3dc9004731e02af4205225c1bb9db8e9df4",
+    "syntax_correction": "completed on predecessor 6063c3d",
+    "focused_pytest_config": "-o addopts= added to prevent global full-suite coverage floor from applying to the focused Riemann test subset",
+    "full_suite_status": "in_progress"
+  }
+}

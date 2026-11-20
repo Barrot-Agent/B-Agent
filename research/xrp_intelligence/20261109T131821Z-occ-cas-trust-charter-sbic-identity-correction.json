@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "occ_cas_trust_charter_effective_status_and_sbic_identity_correction",
+  "artifact_id": "20261109T131821Z-occ-cas-trust-charter-sbic-identity-correction",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-09T13:18:21Z",
+  "data_cutoff_utc": "2026-11-09T13:18:21Z",
+  "capture_policy": {
+    "lawful_public_sources_only": true,
+    "primary_regulator_and_company_pages_only": true,
+    "raw_http_wire_bytes_captured": false,
+    "raw_source_sha256_captured": false,
+    "provenance_scope": "Exact public-page fields were transcribed from the linked OCC Corporate Applications Search records and official SBIC company pages. No claim is made that raw HTTP bytes, response headers or signed regulator receipts were retained.",
+    "source_independence": "The three charter records are separate filings from the same OCC CAS system and are not independent publishers. SBIC regional company profiles are separate primary company sources.",
+    "model_admission": false
+  },
+  "occ_cas": {
+    "status_definition": "The OCC Corporate Applications Search page explicitly lists the filing status action Consummated/Effective and its date. This is a regulator-recorded charter status, not proof of customer asset balances, XRP use, lending volume or commencement of every proposed product.",
+    "records": [
+      {
+        "entity": "Coinbase National Trust Company",
+        "parent_company": "Coinbase Global, Inc. (identified in OCC Corporate Decision #1370)",
+        "occ_control_number": "2025-Charter-343449",
+        "filing_id": "3RAoRRek6o4j",
+        "proposed_charter_number": "25390",
+        "application_type": "New Bank Charter",
+        "transaction_form": "Charter National Bank Under Holding Company (Trust Bank)",
+        "trust_powers_requested": true,
+        "receipt_date": "2025-10-03",
+        "approved_date": "2026-04-02",
+        "consummated_effective_date": "2026-11-06",
+        "status": "OCC_CAS_CONSUMMATED_EFFECTIVE",
+        "primary_source_url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+        "scope_source_url": "https://www.occ.treas.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+        "scope_from_corporate_decision_1370": {
+          "fiduciary_digital_asset_custody": true,
+          "custody_customer_transactional_services": "Accept, hold and transfer custodied fiat currency and digital assets within the customer's custodial account.",
+          "affiliate_access": "Finder access only to Coinbase affiliates' staking, prime trading and prime financing; the trust bank does not itself provide those underlying services.",
+          "cash_custody": "Fiat held in custody is placed in for-benefit-of accounts at third-party banks.",
+          "insured_depository_institution": false,
+          "stablecoin_issuance_proposed_by_bank": false,
+          "capital_conditions": {
+            "minimum_tier_1_capital_usd": 60000000,
+            "eligible_liquid_assets_requirement": "Greater of at least 50% of Tier 1 capital or USD 30 million.",
+            "operating_expense_liquidity": "180 days of operating expenses in Eligible Liquid Assets, not double-counted with the preceding requirement.",
+            "duration": "First three years of operation, subject to the decision's conditions."
+          }
+        },
+        "evidence_limitations": [
+          "The CAS effective date is not an AUC balance or proof that a particular asset such as XRP is held.",
+          "The OCC decision describes a trust-company business, not a commercial deposit-taking bank.",
+          "The capital requirements are regulatory conditions, not evidence that USD 60 million was actually raised or that XRP was purchased.",
+          "Affiliate prime-financing access is a finder/referral relationship, not proof that the trust bank itself lends."
+        ]
+      },
+      {
+        "entity": "Ripple National Trust Bank",
+        "parent_company": "Ripple (company-reported relationship; OCC CAS record identifies the proposed bank name and filing status)",
+        "occ_control_number": "2025-Charter-342347",
+        "filing_id": "RjzoD2gxmYOv",
+        "proposed_charter_number": "25364",
+        "application_type": "New Bank Charter",
+        "transaction_form": "Charter National Bank Under Holding Company (Trust Bank)",
+        "trust_powers_requested": true,
+        "receipt_date": "2025-07-02",
+        "approved_date": "2025-12-12",
+        "consummated_effective_date": "2026-10-26",
+        "status": "OCC_CAS_CONSUMMATED_EFFECTIVE",
+        "primary_source_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+        "scope_company_source_url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank",
+        "scope_company_reported": "Segregated RLUSD reserve management, collateral-trustee functions for RLUSD holders and fiduciary digital-asset custody.",
+        "evidence_limitations": [
+          "The company-described RLUSD reserve and collateral-trust functions do not establish XRP collateralization.",
+          "RLUSD issuer identity remains distinct from the national trust bank.",
+          "No XRP acquisition, XRP balance, collateral utilization or customer-flow amount is established by the CAS status record."
+        ]
+      },
+      {
+        "entity": "First National Digital Currency Bank, N.A.",
+        "brand_or_group_name": "Circle National Trust (Circle company-reported name)",
+        "parent_company": "Circle group (company-reported relationship)",
+        "occ_control_number": "2025-Charter-342299",
+        "filing_id": "D79Z71vmerN8",
+        "proposed_charter_number": "25361",
+        "application_type": "New Bank Charter",
+        "transaction_form": "Charter National Bank Under Holding Company (Trust Bank)",
+        "trust_powers_requested": true,
+        "receipt_date": "2025-06-30",
+        "approved_date": "2025-12-12",
+        "consummated_effective_date": "2026-07-24",
+        "status": "OCC_CAS_CONSUMMATED_EFFECTIVE",
+        "primary_source_url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+        "scope_company_source_url": "https://www.circle.com/pressroom/circle-receives-final-occ-approval-to-establish-national-trust-bank",
+        "scope_company_reported": "Fiduciary custody; Circle described reserve-management capability as a future capability in its announcement.",
+        "evidence_limitations": [
+          "The trust bank is not thereby established as the USDC issuer; Circle's regulated issuer affiliates remain distinct.",
+          "A reserve-management capability announcement is not proof of XRP reserve allocation or XRP collateral use.",
+          "No XRP acquisition, XRP balance or XRP payment flow is established by the CAS status record."
+        ]
+      }
+    ],
+    "interpretation": [
+      "All three separate national trust-bank filings now show OCC CAS status Consummated/Effective: Circle 2026-07-24, Ripple 2026-10-26 and Coinbase 2026-11-06.",
+      "The Coinbase status is no longer OCC-DOCUMENT-PENDING. The official CAS detail page resolves the earlier discrepancy with the slower-updating Interpretations & Decisions index.",
+      "The Interpretations & Decisions index lists published decisions through September 2026 and is updated as letters are ready for publication; its lack of a later row does not override the individual CAS filing status.",
+      "The three charters are institutional custody/trust infrastructure. Their effective dates do not establish that XRP is required, held, pledged, purchased or used as a settlement asset."
+    ]
+  },
+  "actual_capital_taxonomy": {
+    "regulatory_capital_requirement": "A legal minimum or liquidity condition imposed on a regulated entity.",
+    "paid_in_or_raised_capital": "Cash/equity actually contributed or raised; not established by the OCC CAS status pages.",
+    "assets_under_custody": "Client assets held in custody; not the custodian's own capital and not automatically market purchases.",
+    "stablecoin_reserves": "Assets backing a stablecoin issuer's liabilities; not XRP collateral unless the issuer explicitly discloses XRP in the reserve composition.",
+    "xrp_spot_acquisition": "Executed XRP purchases net of sales and transfers; requires trade/settlement or equivalent primary evidence.",
+    "xrp_collateral_utilization": "XRP actually pledged and outstanding in a lending/financing position; custody or collateral eligibility alone is insufficient.",
+    "current_verified_xrp_purchase_or_collateral_amount_usd": null,
+    "current_verified_xrp_purchase_or_collateral_amount_status": "NOT_ESTABLISHED"
+  },
+  "sbic_entity_resolution": {
+    "acronym_context": "In the exact Japan small-business investment-company context, SBIC refers to Small and Medium Business Investment & Consultation Co. entities. It is not a synonym for SBI Holdings.",
+    "entities": [
+      {
+        "regional_label": "SBIC East Japan",
+        "legal_name_ja": "東京中小企業投資育成株式会社",
+        "legal_name_en": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "corporate_number": "9011001030621",
+        "established": "1963-11-15",
+        "primary_source_url": "https://www.sbic.co.jp/company/profile/"
+      },
+      {
+        "regional_label": "SBIC Central Japan",
+        "legal_name_ja": "名古屋中小企業投資育成株式会社",
+        "legal_name_en": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "established": "1963-11-18",
+        "primary_source_url": "https://www.sbic-cj.co.jp/company/about/"
+      },
+      {
+        "regional_label": "SBIC West Japan",
+        "legal_name_ja": "大阪中小企業投資育成株式会社",
+        "legal_name_en": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "established": "1963-11-20",
+        "primary_source_url": "https://www.sbic-wj.co.jp/profiles/profile/"
+      }
+    ],
+    "relationship_classification": "The regional profiles identify the other regional companies as sister companies. Treat East, Central and West as distinct legal entities; do not merge them with SBI Holdings or infer an SBI Holdings parent/subsidiary relationship.",
+    "chatgpt_reference": {
+      "host": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "event_title": "Introductory Generative AI and Machine Learning Training for Manufacturing",
+      "event_dates": [
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "audience": "Investee companies only; the official page says general companies could not register.",
+      "curriculum_day_1": "Included ChatGPT usage.",
+      "curriculum_day_2": "Included Microsoft Copilot features.",
+      "instructor": "Takashi Otsuka, VOST Education Division",
+      "primary_source_url": "https://www.sbic.co.jp/training/20250612co/",
+      "classification": "EDUCATIONAL_TRAINING_EVENT",
+      "does_not_establish": [
+        "An OpenAI-SBI Holdings commercial partnership.",
+        "A ChatGPT deployment at SBI Holdings.",
+        "An XRP, Ripple, Circle or stablecoin relationship.",
+        "Live AI-platform integration or data sharing."
+      ]
+    }
+  },
+  "competing_hypotheses": [
+    {
+      "id": "OCC_TRUST_CUSTODY_ACCESS",
+      "hypothesis": "Federal trust-bank status may strengthen institutional custody and related service capabilities for Coinbase, Ripple and Circle.",
+      "supporting_evidence": "Separate OCC CAS Consummated/Effective statuses and the Coinbase OCC decision's fiduciary custody scope.",
+      "limitations": "No current AUC, client migration, XRP holdings or utilization series is established here."
+    },
+    {
+      "id": "OCC_TRUST_XRP_DEMAND",
+      "hypothesis": "The trust-bank developments directly create incremental XRP demand.",
+      "supporting_evidence": "No direct supporting evidence in these CAS records.",
+      "disconfirming_evidence": "The records concern legal entity status and trust/custody activities; Coinbase's decision does not propose stablecoin issuance and Ripple's company-described reserve/collateral scope concerns RLUSD.",
+      "status": "UNSUPPORTED"
+    },
+    {
+      "id": "SBIC_CHATGPT_PARTNERSHIP",
+      "hypothesis": "The SBIC/ChatGPT reference establishes a commercial partnership with SBI Holdings.",
+      "supporting_evidence": "The Tokyo SBIC official training page lists ChatGPT curriculum.",
+      "disconfirming_evidence": "The page describes a two-day educational course for Tokyo SBIC investee companies, not a partnership or deployment.",
+      "status": "DISCONFIRMED_BY_SCOPE"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "model_eligible_features": [],
+  "next_actions": [
+    "Track actual Coinbase National Trust opening and three-year custody migration disclosures separately from charter status.",
+    "Track Ripple National Trust actual RLUSD reserve and collateral-trust operations without reclassifying RLUSD reserves as XRP collateral.",
+    "Track Circle National Trust actual custody/reserve-management commencement separately from USDC issuance by regulated affiliates.",
+    "Search primary filings for paid-in capital, AUC, client asset balances and XRP-specific collateral; keep these measures separate.",
+    "Preserve the SBIC regional legal-entity distinction in all future exact-phrase and relationship-graph work."
+  ]
+}

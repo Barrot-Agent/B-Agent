@@ -1,0 +1,700 @@
+{
+  "run_id": "Run123",
+  "checked_at_utc": "2026-11-10T07:17:43Z",
+  "parent_integration_sha": "8a0d5d053caf529dfd7686919069f07c76c43a7f",
+  "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "repository": {
+    "default_branch": "main",
+    "main_tree_entries": 1404,
+    "integration_tree_entries": 1539,
+    "main_workflow_files": 86,
+    "integration_workflow_files": 87,
+    "open_pull_requests": 372,
+    "open_pull_request_pages": {
+      "page_size": 100,
+      "pages": [
+        100,
+        100,
+        100,
+        72
+      ]
+    },
+    "drafts": 356,
+    "non_drafts": 16,
+    "non_draft_numbers": [
+      1640,
+      1643,
+      1653,
+      1644,
+      1645,
+      1646,
+      1647,
+      1648,
+      1649,
+      1650,
+      1320,
+      1318,
+      1317,
+      1269,
+      1255,
+      1254
+    ]
+  },
+  "integration_pr": {
+    "number": 1640,
+    "title": "Integrate MMI, verified XRP feature snapshots and V3 safety foundation",
+    "state": "open",
+    "draft": false,
+    "mergeable": true,
+    "base": "main",
+    "base_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "head_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "head_sha": "8a0d5d053caf529dfd7686919069f07c76c43a7f",
+    "commits_ahead": 911,
+    "commits_behind": 0,
+    "changed_paths": 242,
+    "reviews": {
+      "submissions": 62,
+      "commented": 62,
+      "approved": 0
+    },
+    "review_threads": {
+      "total": 22,
+      "resolved": 22,
+      "unresolved": 0,
+      "all_outdated": true
+    },
+    "changed_workflows": 43,
+    "public_asset_paths": [
+      "web/webmcp_monetization.js"
+    ]
+  },
+  "exact_head_verification": {
+    "tested_sha": "8a0d5d053caf529dfd7686919069f07c76c43a7f",
+    "full_ci_run": 42771625175,
+    "full_ci_conclusion": "success",
+    "full_repository_test_job": "success",
+    "core_test_job": "success",
+    "full_suite_passed": 1347,
+    "failed": 0,
+    "subtests_passed": 8,
+    "inclusive_coverage_pct": 59.48,
+    "core_passed": 677,
+    "wheel_build_install_and_mission_verification": "passed",
+    "dependency_audit_run": 42771625284,
+    "dependency_audit_conclusion": "success",
+    "manifests_audited": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_gate_run": 42771625224,
+    "fail_closed_gate_conclusion": "success",
+    "automatic_merge": "disabled"
+  },
+  "main_verification": {
+    "branch_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "protected": true,
+    "ci_run": 42526890841,
+    "ci_conclusion": "success",
+    "dependency_audit_run": 42579080840,
+    "dependency_audit_conclusion": "success",
+    "latest_scheduled_cross_analysis_run": 42771367141,
+    "latest_scheduled_cross_analysis_conclusion": "success",
+    "xrp_public_ingestion_workflow_on_main": false,
+    "primary_mission_manifest_on_main": false,
+    "branch_protection_api": "HTTP 403 Resource not accessible by integration",
+    "visible_fallback_ruleset": "Fall Back",
+    "fallback_ruleset_enforcement": "disabled"
+  },
+  "market_snapshot": {
+    "captured_at_utc": "2026-11-10T07:17:43Z",
+    "spot": {
+      "kraken_xrp_usd": {
+        "last": 1.1036,
+        "bid": 1.10359,
+        "ask": 1.1036,
+        "spread_bps": 0.0906129513,
+        "volume_24h_xrp": 25165935.45059824,
+        "vwap_24h": 1.09437278,
+        "open_utc": 1.09748,
+        "high_24h": 1.11573,
+        "low_24h": 1.07502,
+        "provider_event_timestamp": "not supplied",
+        "source": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "surfaced_response_text_sha256": "f938dbcff3f0c254df73685f70717ab2d57d8820bfef53993ffe22244e0ccc8e"
+      },
+      "okx_xrp_usdt": {
+        "last": 1.1026,
+        "bid": 1.1026,
+        "ask": 1.1027,
+        "spread_bps": 0.9069060899,
+        "volume_24h_xrp": 64114107.857793,
+        "volume_24h_usdt": 70231930.88600609,
+        "high_24h": 1.1167,
+        "low_24h": 1.0764,
+        "provider_event_timestamp_utc": "2026-11-10T07:10:42.741Z",
+        "source": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "surfaced_response_text_sha256": "6a831a030d21e7047563e3accbb4888ae19e0968121dc688fcc2a3313c05d700"
+      },
+      "kraken_usdt_usd": {
+        "last": 0.99868,
+        "bid": 0.99868,
+        "ask": 0.99869,
+        "source": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+        "surfaced_response_text_sha256": "d8e85eb2bab786f3fc1032ffded31edf45ff85aab3f88613589cfd8bb4d893d2"
+      },
+      "derived_cross_check": {
+        "okx_usdt_price_normalized_using_kraken_usdtusd_last": 1.101144568,
+        "difference_vs_kraken_xrp_usd_pct": -0.2224929322,
+        "classification": "asynchronous cross-venue reference only; not executable arbitrage"
+      },
+      "provenance_limit": "Hashes cover exact JSON response text surfaced by the web retrieval, not original HTTP transport bytes or headers."
+    },
+    "spot_orderbook": {
+      "provider": "Fuelmaps",
+      "snapshot_utc": "2026-11-10T07:00:00Z",
+      "mid": 1.1008,
+      "venues_reporting": 6,
+      "venues": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "excluded_venues": [
+        "Binance",
+        "Bitget"
+      ],
+      "depth_usd": {
+        "within_0_5_pct": {
+          "bids": 7100000,
+          "asks": 5800000,
+          "bid_share_pct": 55.1,
+          "venues": 6
+        },
+        "within_1_pct": {
+          "bids": 12400000,
+          "asks": 10000000,
+          "bid_share_pct": 55.4,
+          "venues": 6
+        },
+        "within_2_pct": {
+          "bids": 17700000,
+          "asks": 10700000,
+          "bid_share_pct": 62.4,
+          "venues": 6
+        },
+        "within_5_pct": {
+          "bids": 24100000,
+          "asks": 12900000,
+          "bid_share_pct": 65.1,
+          "venues": 6
+        },
+        "within_10_pct": {
+          "bids": 31800000,
+          "asks": 14700000,
+          "bid_share_pct": 68.3,
+          "venues": 5
+        }
+      },
+      "largest_resting_levels_usd": [
+        {
+          "side": "bid",
+          "price": 1.05,
+          "notional": 2500000
+        },
+        {
+          "side": "bid",
+          "price": 1,
+          "notional": 2100000
+        },
+        {
+          "side": "bid",
+          "price": 1.094,
+          "notional": 2000000
+        },
+        {
+          "side": "ask",
+          "price": 1.102,
+          "notional": 1900000
+        },
+        {
+          "side": "bid",
+          "price": 1.098,
+          "notional": 1900000
+        }
+      ],
+      "source": "https://fuelmaps.io/order-book/",
+      "provenance_limit": "Web-rendered hourly snapshot; original HTTP bytes were not preserved. Resting orders can be cancelled and are not executed volume."
+    },
+    "derivatives": [
+      {
+        "provider": "TradRadar",
+        "as_of_utc": "2026-11-10T05:05:00Z",
+        "open_interest_usd": 1650000000,
+        "open_interest_24h_change_pct": -3.66,
+        "funding_pct_per_8h": 0.0056,
+        "liquidations_24h_usd_min": 8770000,
+        "long_liquidations_usd": 8020000,
+        "short_liquidations_usd": 749120,
+        "long_short_ratio": 3.89,
+        "long_account_share_pct": 79.5,
+        "oi_venues": 7,
+        "liquidation_venues": 5,
+        "source": "https://tradradar.io/markets/xrp"
+      },
+      {
+        "provider": "Liqwall",
+        "as_of_utc": "2026-11-10T02:22:00Z",
+        "open_interest_usd": 1220000000,
+        "open_interest_24h_change_pct": -1.8,
+        "funding_pct_per_8h": 0.0055,
+        "liquidations_24h_usd": 8200000,
+        "long_liquidations_usd": 7500000,
+        "short_liquidations_usd": 706000,
+        "binance_long_account_share_pct": 74.5,
+        "source": "https://liqwall.com/coins/xrp"
+      },
+      {
+        "provider": "Alpha Finance",
+        "as_of_utc": "2026-11-10T01:40:00Z",
+        "open_interest_usd": 2480000000,
+        "long_liquidations_24h_usd": 8000000,
+        "short_liquidations_24h_usd": 831700,
+        "modeled_short_liquidity_above_usd": 52900000,
+        "modeled_long_liquidity_below_usd": 48200000,
+        "source": "https://alphafinance.io/liquidation-heatmap/xrp",
+        "limitation": "Liquidation levels are modeled from open interest and leverage tiers, not confirmed positions or executions."
+      }
+    ],
+    "derivatives_interpretation": "All three sources show long-heavy liquidation pressure and declining open interest in their reported windows. OI differs by about 2.03x across providers; venue coverage and timestamps differ. Do not average."
+  },
+  "etf_flow_reconciliation": {
+    "trading_day": "2026-11-09",
+    "alpha_finance": {
+      "reported_total_usd": -10400000,
+      "fund_components_usd": {
+        "Bitwise": -9400000,
+        "Franklin": 0,
+        "Canary": -811400,
+        "Grayscale": 0,
+        "TOXR_21Shares": -212900
+      },
+      "funds_reported": 5,
+      "cumulative_net_flow_usd": 1720000000,
+      "rolling_30_session_net_flow_usd": 8900000,
+      "upstream_source": "Coinglass commercial API",
+      "source": "https://alphafinance.io/etf/xrp/",
+      "methodology": "https://alphafinance.io/methodology/",
+      "limitation": "Aggregator-reported figures; its methodology says figures are displayed as Coinglass reports them. The zeroes for Franklin and Grayscale are not independently confirmed against issuer files in this run."
+    },
+    "cryptoetf_today": {
+      "reported_partial_total_usd": -10300000,
+      "reported_components_usd": {
+        "Bitwise": -9400000,
+        "Canary": -700000,
+        "TOXR_21Shares": -200000
+      },
+      "missing_funds": [
+        "XRPZ Franklin Templeton",
+        "GXRP Grayscale"
+      ],
+      "funds_reported": 3,
+      "total_funds": 5,
+      "cumulative_net_flow_usd": 1800000000,
+      "rolling_30_session_net_flow_usd": 115000000,
+      "ytd_net_flow_usd": 637600000,
+      "page_published_utc": "2026-11-10T05:48:00Z",
+      "source": "https://cryptoetf.today/en/xrp-etf-flows",
+      "methodology": "https://cryptoetf.today/en/methodology",
+      "calculation": "(shares(T+1)-shares(T))*NAV(T), with source-specific same-day timing exceptions; T+1 publication.",
+      "internal_inconsistency": "The page says 3 of 5 funds reported and marks XRPZ/GXRP as not reported in the table, but a lower summary line says 5 of 5. Use the detailed 3-of-5 state and retain the contradiction."
+    },
+    "cryptokeyhole": {
+      "latest_complete_day": "2026-11-06",
+      "latest_complete_day_xrp_flow": -752048,
+      "latest_complete_day_usd_flow": -887000,
+      "funds_reported_latest_complete_day": 4,
+      "nov_9_status": "none of four daily-tracked funds had published a 9 Nov file in the captured page",
+      "source": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "methodology": "https://cryptokeyhole.com/methodology/",
+      "method": "Issuer daily holdings/NAV files; sites that refuse automated reads are left without figures rather than bypassed."
+    },
+    "reconciliation": {
+      "daily_partial_estimates_are_close": true,
+      "daily_difference_usd": 100000,
+      "alpha_vs_cryptoetf_cumulative_difference_usd": -80000000,
+      "alpha_vs_cryptoetf_30_session_difference_usd": -106100000,
+      "conclusion": "The 9 Nov partial outflow is approximately $10.3M-$10.4M, but full-complex coverage and rolling/cumulative history are not reconciled. Different upstream providers and calculation methods prevent averaging. CryptoKeyhole's latest complete day is 6 Nov, so its 9 Nov absence is a freshness/coverage gap, not a directly conflicting 9 Nov number.",
+      "model_eligibility": "NOT_ADMITTED"
+    }
+  },
+  "macro": {
+    "event": "U.S. CPI and Real Earnings for October 2026",
+    "scheduled_utc": "2026-11-10T13:30:00Z",
+    "scheduled_et": "2026-11-10 08:30 ET",
+    "status_at_capture": "not yet released",
+    "source": "https://www.bls.gov/schedule/2026/"
+  },
+  "prediction_engine": {
+    "implemented_on_integration_branch": [
+      "40 public source records: 36 hourly, two weekly CFTC and two excluded non-commercial XRPL nodes",
+      "raw-byte SHA-256 capture in the scheduled workflow and receipt-chain logic",
+      "point-in-time SQLite feature store",
+      "four deterministic baselines",
+      "chronological walk-forward evaluation with horizon purge/embargo",
+      "calibration and drift diagnostics",
+      "fail-closed forecast ledger requiring trusted Ed25519 evaluator signature"
+    ],
+    "scheduled_workflow": "present on integration only; cron 3 minutes past each hour and 00:15 UTC daily; job is main-only",
+    "main_activation": "not active; main returns 404 for .github/workflows/xrp-public-ingestion.yml and data/missions/primary_mission.json",
+    "remaining_gaps": [
+      "independent WORM storage and trusted timestamp anchoring",
+      "complete synchronized historical spot, L2, derivatives, exchange-flow and collateral data",
+      "effective-sample-size correction for overlapping horizons",
+      "sufficient independent shadow outcomes",
+      "real-data calibration and demonstrated out-of-sample lift"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "platform_coordination": {
+    "ChatGPT": "current-session GitHub read/write verified",
+    "Copilot": "comment-only PR review activity; zero approvals; no independent authenticated data flow",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Codex": "unverified",
+    "Hugging_Face": "prior build error; no deployment",
+    "Kaggle": "untested; no submission",
+    "Databricks": "prior HTTP 403; no workspace write",
+    "external_model_data_transfer": "none"
+  },
+  "pr_path_overlap_audit": {
+    "basis": "Changed filename overlap against PR #1640's 242 changed paths. Zero path overlap does not prove semantic independence; review content and commits before closing or superseding.",
+    "counts": [
+      {
+        "pr": 1643,
+        "changed": 670,
+        "overlap": 7,
+        "unique_paths": 663,
+        "classification": "unique research archive; blocked/stale; preserve"
+      },
+      {
+        "pr": 1653,
+        "changed": 7,
+        "overlap": 1,
+        "unique_paths": 6,
+        "classification": "unique knowledge graph; blocked by eight unresolved review threads; preserve"
+      },
+      {
+        "pr": 1655,
+        "changed": 8,
+        "overlap": 5,
+        "unique_paths": 3,
+        "classification": "unique structural/source-catalog material; preserve"
+      },
+      {
+        "pr": 1659,
+        "changed": 6,
+        "overlap": 2,
+        "unique_paths": 4,
+        "classification": "unique local llama.cpp integration material; preserve"
+      },
+      {
+        "pr": 1641,
+        "changed": 3,
+        "overlap": 0,
+        "unique_paths": 3,
+        "classification": "unique bounded experimentation material; preserve"
+      },
+      {
+        "pr": 1642,
+        "changed": 7,
+        "overlap": 7,
+        "unique_paths": 0,
+        "classification": "exact path duplicate candidate; do not close until verified successor merge"
+      },
+      {
+        "pr": 1614,
+        "changed": 57,
+        "overlap": 8,
+        "unique_paths": 49,
+        "classification": "unique prediction research material; preserve"
+      },
+      {
+        "pr": 1611,
+        "changed": 8,
+        "overlap": 6,
+        "unique_paths": 2,
+        "classification": "prediction contract overlap; two unique paths; reconcile"
+      },
+      {
+        "pr": 1608,
+        "changed": 3,
+        "overlap": 0,
+        "unique_paths": 3,
+        "classification": "unique C2FO/Evernorth research artifact; preserve"
+      },
+      {
+        "pr": 1605,
+        "changed": 1,
+        "overlap": 0,
+        "unique_paths": 1,
+        "classification": "unique market microstructure artifact; preserve"
+      },
+      {
+        "pr": 1597,
+        "changed": 17,
+        "overlap": 0,
+        "unique_paths": 17,
+        "classification": "unique path archive; semantic overlap review required"
+      },
+      {
+        "pr": 1591,
+        "changed": 14,
+        "overlap": 0,
+        "unique_paths": 14,
+        "classification": "unique path archive; semantic overlap review required"
+      },
+      {
+        "pr": 1586,
+        "changed": 19,
+        "overlap": 0,
+        "unique_paths": 19,
+        "classification": "unique path archive; semantic overlap review required"
+      },
+      {
+        "pr": 1583,
+        "changed": 8,
+        "overlap": 0,
+        "unique_paths": 8,
+        "classification": "unique path archive; semantic overlap review required"
+      },
+      {
+        "pr": 1581,
+        "changed": 2,
+        "overlap": 0,
+        "unique_paths": 2,
+        "classification": "unique path archive; semantic overlap review required"
+      },
+      {
+        "pr": 1571,
+        "changed": 13,
+        "overlap": 0,
+        "unique_paths": 13,
+        "classification": "unique path archive; semantic overlap review required"
+      },
+      {
+        "pr": 1568,
+        "changed": 4,
+        "overlap": 0,
+        "unique_paths": 4,
+        "classification": "unique path archive; semantic overlap review required"
+      },
+      {
+        "pr": 1556,
+        "changed": 4,
+        "overlap": 0,
+        "unique_paths": 4,
+        "classification": "unique path archive; semantic overlap review required"
+      },
+      {
+        "pr": 1554,
+        "changed": 3,
+        "overlap": 0,
+        "unique_paths": 3,
+        "classification": "unique path archive; semantic overlap review required"
+      },
+      {
+        "pr": 1644,
+        "changed": 8,
+        "overlap": 8,
+        "unique_paths": 0,
+        "classification": "dependency/action workflow overlap; exact versions and changed actions require reconciliation"
+      },
+      {
+        "pr": 1645,
+        "changed": 1,
+        "overlap": 1,
+        "unique_paths": 0,
+        "classification": "dependency/action overlap; reconcile exact version"
+      },
+      {
+        "pr": 1646,
+        "changed": 1,
+        "overlap": 1,
+        "unique_paths": 0,
+        "classification": "requirements-dev overlap; reconcile exact version"
+      },
+      {
+        "pr": 1647,
+        "changed": 6,
+        "overlap": 6,
+        "unique_paths": 0,
+        "classification": "dependency/action workflow overlap; reconcile exact versions"
+      },
+      {
+        "pr": 1648,
+        "changed": 1,
+        "overlap": 1,
+        "unique_paths": 0,
+        "classification": "requirements-dev overlap; reconcile exact version"
+      },
+      {
+        "pr": 1649,
+        "changed": 1,
+        "overlap": 1,
+        "unique_paths": 0,
+        "classification": "legacy requirements overlap; reconcile exact version"
+      },
+      {
+        "pr": 1650,
+        "changed": 1,
+        "overlap": 1,
+        "unique_paths": 0,
+        "classification": "legacy requirements overlap; reconcile exact version"
+      },
+      {
+        "pr": 1320,
+        "changed": 5,
+        "overlap": 5,
+        "unique_paths": 0,
+        "classification": "exact path overlap; paper-trader safety content included"
+      },
+      {
+        "pr": 1318,
+        "changed": 2,
+        "overlap": 2,
+        "unique_paths": 0,
+        "classification": "exact path overlap; structural output schema content included"
+      },
+      {
+        "pr": 1317,
+        "changed": 6,
+        "overlap": 6,
+        "unique_paths": 0,
+        "classification": "exact path overlap; structural/MMI content included"
+      },
+      {
+        "pr": 1269,
+        "changed": 9,
+        "overlap": 1,
+        "unique_paths": 8,
+        "classification": "unique mesh/topology paths; preserve"
+      },
+      {
+        "pr": 1255,
+        "changed": 1,
+        "overlap": 1,
+        "unique_paths": 0,
+        "classification": "legacy requirements overlap; reconcile"
+      },
+      {
+        "pr": 1254,
+        "changed": 1,
+        "overlap": 1,
+        "unique_paths": 0,
+        "classification": "legacy requirements overlap; reconcile"
+      }
+    ]
+  },
+  "merge_decision": {
+    "status": "BLOCKED",
+    "reasons": [
+      "zero approving reviews on #1640",
+      "main is protected, but detailed branch-protection endpoint returns HTTP 403",
+      "visible repository fallback ruleset is disabled, so effective approval/check requirements remain unverified",
+      "a main push triggered a successful dynamic GitHub Pages build-and-deploy on 2026-11-08; the deploy job completed successfully; authorization for another automatic publication is not established"
+    ],
+    "pages_run": 42526890275,
+    "pages_conclusion": "success",
+    "pages_jobs": [
+      "build",
+      "deploy",
+      "report-build-status"
+    ],
+    "merge_not_performed": true
+  },
+  "actions_taken": {
+    "repository_changes": "research artifact and durable handoff only on existing integration branch; no code or workflow changes",
+    "new_branch": false,
+    "new_pr": false,
+    "merged_prs": [],
+    "closed_prs": [],
+    "deployment": false,
+    "secret_rotation": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money_action": false,
+    "force_push": false,
+    "destructive_worktree_action": false
+  },
+  "source_register": [
+    {
+      "id": "kraken_xrp_usd",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "type": "public exchange REST API",
+      "independence_group": "Kraken"
+    },
+    {
+      "id": "okx_xrp_usdt",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "type": "public exchange REST API",
+      "independence_group": "OKX"
+    },
+    {
+      "id": "kraken_usdt_usd",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "type": "public exchange REST API",
+      "independence_group": "Kraken"
+    },
+    {
+      "id": "fuelmaps_spot_depth",
+      "url": "https://fuelmaps.io/order-book/",
+      "type": "six-venue spot depth aggregator",
+      "independence_group": "Fuelmaps"
+    },
+    {
+      "id": "tradradar_derivatives",
+      "url": "https://tradradar.io/markets/xrp",
+      "type": "multi-exchange derivatives aggregator",
+      "independence_group": "TradRadar"
+    },
+    {
+      "id": "liqwall_derivatives",
+      "url": "https://liqwall.com/coins/xrp",
+      "type": "multi-exchange derivatives aggregator",
+      "independence_group": "Liqwall"
+    },
+    {
+      "id": "alpha_liquidation_heatmap",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "type": "modeled liquidation heatmap",
+      "independence_group": "Alpha/Coinglass"
+    },
+    {
+      "id": "alpha_etf_flows",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "type": "ETF flow aggregator",
+      "independence_group": "Coinglass via Alpha"
+    },
+    {
+      "id": "cryptoetf_xrp_flows",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "type": "share-count/NAV-derived ETF flow aggregator",
+      "independence_group": "CryptoETF.today"
+    },
+    {
+      "id": "cryptokeyhole_xrp_flows",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "type": "issuer daily holdings/NAV collector",
+      "independence_group": "CryptoKeyhole"
+    },
+    {
+      "id": "bls_cpi_calendar",
+      "url": "https://www.bls.gov/schedule/2026/",
+      "type": "official macro release calendar",
+      "independence_group": "BLS"
+    }
+  ]
+}

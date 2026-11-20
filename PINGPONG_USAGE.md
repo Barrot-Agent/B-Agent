@@ -1,213 +1,77 @@
-# Ping-Pong Request System
+# Ping-Pong Request and Refinement System
 
-## Overview
+## External request handoff
 
-The `emit_pingpong_request` function allows Barrot-Agent to defer complex processing tasks to Sean's 22-agent entanglement system.
+The legacy emit_pingpong_request interface declares a handoff to an external 22-agent system. Its authentication, permissions, receipt path and data flow are NOT VERIFIED. Do not treat it as a live integration or commit payloads to trigger an external system without explicit authorization.
 
-## Usage
+## Refinement engine
 
-```python
-from emit_pingpong import emit_pingpong_request
+The Ping-Pong refinement engine provides deterministic normalization and a patch-based pipeline for large JSON documents. It is a data-quality/refactoring component, not the XRP prediction engine and not a source-verification system.
 
-# Create your payload
-payload = {
-    "task": "process_quantum_data",
-    "priority": "high",
-    "data": {"items": [1, 2, 3]}
-}
+### Data classification and safety
 
-# Emit the request
-emit_pingpong_request(payload)
-```
+- Offline deterministic refinement is the default.
+- data_classification is mandatory. Allowed local classes are derived_summary, public_derived_summary, public_documentation, and public_research_note.
+- Immutable classes include raw_source, source_receipt, feature_snapshot, feature_store, event_timeline, forecast_ledger, market_data, credentials, secrets, and user_private.
+- Immutable evidence must never pass through this component.
+- External LunaRoute calls are disabled unless the caller passes allow_external=True, the environment contains BARROT_ALLOW_EXTERNAL_REFINEMENT=1 and BARROT_LIVE_REFINEMENT_APPROVED=1, the classification is one of public_derived_summary, public_documentation, or public_research_note, the refiner is constructed with the same classification, and the API key is available.
+- Secret-like strings and payloads larger than 24,000 characters are rejected before transfer. Large documents are segmented into bounded sections; each section is independently checked.
+- A classification is an explicit caller assertion, not an automatic content classifier. Do not label a payload public unless its source and rights have been checked.
+- No external call is made by the default CLI, scheduled ingestion or test suite.
 
-## Output
+### Fixed-point engine
 
-The function creates a `pingpong_request.json` file with the following structure:
+The small-document engine alternates refiners and critiques until model consensus or a deterministic score plateau. It uses a hard round cap, rotates to another refiner on failure, retries transient 429/5xx/timeouts, and records each half-round in a JSONL ledger.
 
-```json
-{
-  "timestamp": "2025-12-30T11:39:52.503571+00:00",
-  "payload": { ... },
-  "origin": "barrot",
-  "directive": "offload_pingpong",
-  "notes": "Barrot defers to Sean's 22-agent entanglement system."
-}
-```
+### Large-document pipeline (pp-refine/1.1.0)
 
-## Workflow
+The main-branch upgrade adds a resumable 10-stage process:
 
-1. Call `emit_pingpong_request(payload)` with your data
-2. The function generates `pingpong_request.json`
-3. Commit the JSON file to GitHub
-4. The external system (Sean's 22-agent entanglement system) picks up the request
-5. Processing is offloaded to the external system
+    SOURCE → AUDIT → SEGMENT → REFINE → GENERATE PATCHES → VALIDATE → APPLY → SEMANTIC EVALUATION → REGRESSION TEST → RECORD RESULTS
 
-## Notes
+- Audit and segmentation: every source leaf must be covered exactly once; slots are bounded to the model output budget and preserve order.
+- Patch generation: targeted replace, set, delete, and splice operations use canonical paths and hash preconditions.
+- Conflict handling: overlapping or incompatible patches are rejected with a recorded cause.
+- Rollback: batches can be rolled back exactly. Verification detects missing content, undeclared deletions, changed paths outside patch scopes, and smuggled changes.
+- Semantic evaluation: deterministic checks detect loss and factual drift. An independent judge may claim improvement only after passing three reference calibration cases; deterministic checks can veto regressions.
+- Resumability: per-section state and source hashes are persisted. A completed source hash, objective and classification is not repeated. Resume requires the original classification.
+- Run safety: run IDs are filename-safe; path traversal and accidental run-ID overwrite are rejected.
 
-- The generated `pingpong_request.json` file is excluded from version control by default (see `.gitignore`)
-- To trigger the external system, you must manually commit and push the JSON file
-- Timestamps are in ISO 8601 format with UTC timezone
+### Python API
 
----
+    from barrot_agent.refinement import HeuristicRefiner, refine_data, refine_document
 
-# Ping-Pong Refinement Engine — the baseline of all data processing
+    small = refine_data(
+        data,
+        refiners=[HeuristicRefiner()],
+        data_classification="derived_summary",
+    )
 
-`barrot_agent.refinement` refines any JSON-able data by ping-ponging between
-models until the data **cannot be refined further** — a measured fixed point,
-not a model's mood.
+    large = refine_document(
+        document,
+        objective="normalize formatting without changing facts",
+        refiners=[HeuristicRefiner()],
+        data_classification="public_documentation",
+    )
 
-## How it decides to stop
+External use additionally requires caller opt-in, both external authorization environment variables, an eligible public classification, matching LunaRoute adapter and valid key. This is a separate explicit action; no model dispatch is performed by this documentation or by the default runtime.
 
-Two independent signals, either one ends the run with `converged=True`:
+### CLI
 
-| signal | meaning |
-|---|---|
-| `model_consensus` | the refining model returned `CONVERGED`, the critic returned `CONVERGED`, and no data change was accepted for `patience` half-rounds |
-| `score_plateau` | the deterministic quality score (`scoring.py`: completeness/consistency/specificity/redundancy) has been flat for `patience` consecutive ping halves — cosmetic byte-churn is not refinement, so the loop stops regardless of model enthusiasm |
+The CLI requires --classification. It defaults to offline mode, prints the result to stdout, and never overwrites the source file.
 
-Non-converged exits: `max_rounds` (hard cap) and `pool_exhausted` (every
-model in the pool failed a pass, after in-pool rotation and per-call retry
-with backoff).
+    python3 scripts/pingpong_refine.py report.json --classification derived_summary
+    python3 scripts/pingpong_refine.py report.json --classification public_documentation --out report.refined.json
+    python3 scripts/pingpong_refine.py large.json --classification public_research_note --objective "normalize" --offline
 
-## Safety semantics
+External mode additionally requires --live, --allow-external-data, BARROT_ALLOW_EXTERNAL_REFINEMENT=1, BARROT_LIVE_REFINEMENT_APPROVED=1, an eligible public classification and a valid key. Replacing an existing output requires --force-output.
 
-- **No silent data loss**: a rewrite is accepted only if the score does not
-  regress. Non-improving rewrites are applied (they may still carry real
-  semantic fixes the mechanical score cannot see) but count as unstable and
-  feed the plateau counter.
-- **Dynamic pool**: round r starts at `refiner[r % n]`; a failed actor hands
-  the paddle to the next model within the same pass; the critic is always a
-  different model than the one that just refined. Roles swap every round.
-- **Transient errors** (timeouts, HTTP 429/5xx) are retried with exponential
-  backoff (3 attempts); responses truncated by the token budget
-  (`finish_reason=length`) are retried once with a doubled budget.
-- **Ledger**: every half-round is appended to
-  `ping-pongings/knowledge-base/refinement_log.jsonl`.
+### Live verification
 
-## Python API
+scripts/live_refine_verify.py is a manual verification driver for the public repository capability audit. It requires BARROT_LIVE_REFINEMENT=1 and both external authorization variables; it writes to a unique run-specific artifact and refuses to overwrite evidence. It is not called by a workflow.
 
-```python
-from barrot_agent import refine_data, refine_json_file, HeuristicRefiner
+The default GitHub Actions test suite is mocked/offline. The pingpong.yml Groq workflow remains quarantined on integration with no permissions and an always-false job. The Cognitive PingPong Engine workflow remains quarantined as well.
 
-report = refine_data(data)                       # live OpenCode pool
-report = refine_data(data, refiners=[HeuristicRefiner()], ledger=None)  # offline
-report.converged, report.stop_reason, report.score_start, report.score_end
-report.data        # the refined data (fixed point)
-report.history     # per-half-round records
+### Limitations
 
-refine_json_file("doc.json")                     # in place
-refine_json_file("doc.json", out_path="out.json")
-```
-
-## CLI
-
-```bash
-python3 scripts/pingpong_refine.py data.json             # in place, live pool
-python3 scripts/pingpong_refine.py in.json -o out.json   # to file
-echo '{"a": "x  x"}' | python3 scripts/pingpong_refine.py -
-python3 scripts/pingpong_refine.py data.json --offline   # deterministic, no API
-python3 scripts/pingpong_refine.py data.json --max-rounds 8 --no-ledger
-```
-
-Exit codes: `0` converged, `1` capped (`max_rounds`/`pool_exhausted`), `2` input error.
-
-## Large documents: the patch pipeline (pp-refine/1.1.0)
-
-The classic loop truncates its prompt echo at 24,000 chars. Documents above
-that threshold are automatically routed through the **patch pipeline**
-(`RefinementPipeline`, `refine_document`), which implements the full
-10-step workflow:
-
-```
-SOURCE → AUDIT → SEGMENT → REFINE → GENERATE PATCHES → VALIDATE → APPLY
-       → SEMANTIC EVALUATION → REGRESSION TEST → RECORD RESULTS
-```
-
-- **AUDIT** (`segmentation.audit_document`): size/depth/leaf profile, and
-  whether segmentation is needed (threshold: 24,000 chars).
-- **SEGMENT** (`segmentation.segment_document`): coverage-exact slot plan.
-  Every leaf of the source is covered exactly once — `dict_keys` slots
-  (key groups), `list_slice` slots (contiguous, ordered), and
-  `string_range` slots (paragraph/sentence-bounded ranges of oversized
-  string leaves). Each slot carries bounded sibling context. The coverage
-  contract raises if the plan would skip anything, so no content can be
-  silently dropped.
-- **REFINE** (`RefinementPipeline._refine_slot`): each slot ping-pongs
-  through the existing refiner pool (same `OpenCodeRefiner`/`HeuristicRefiner`
-  engine); a candidate is rejected up front on mechanical or deterministic
-  semantic regression, with the critique fed back for the retry.
-- **GENERATE PATCHES / VALIDATE / APPLY** (`patches.py`): section diffs
-  become targeted patches (`replace`/`set`/`delete`/`splice`) on canonical
-  dot-paths. Every patch is hash-preconditioned against the live document;
-  overlapping, conflicting (same path, different new value) and
-  incompatible (DELETE vs SET) patches are rejected with an explicit cause;
-  splices on one leaf apply in offset-safe order. Failed patches never
-  abort the batch — they are rejected individually and reported.
-- **SEMANTIC EVALUATION** (`semantics.py`): four separate results —
-  **A.** mechanical score (unchanged `scoring.py`), **B.** semantic score,
-  **C.** regression score, **D.** overall status (`improved`/`unchanged`/
-  `regressed`). The deterministic core is offline, repeatable, and can
-  only certify non-regression or flag loss (meaning coverage, numeric
-  drift, key loss) — it never claims improvement. Claiming `improved`
-  requires an **independent judge** (`LLMSemanticJudge` wired to a
-  different model than the refiner) that has passed **calibration**: three
-  reference cases (`CALIBRATION_CASES`) with known expected verdicts. An
-  uncalibrated judge is downgraded and cannot vote `improved`; the
-  deterministic core can veto any judge verdict.
-- **REGRESSION TEST** (`patches.verify_against_original`): proves the
-  final document against the original — every original leaf still present
-  (unless a declared DELETE removed it), nothing changed outside declared
-  patch scopes (smuggle detection), untouched containers keep their exact
-  child structure, ordering preserved.
-- **RECORD RESULTS** (`pipeline.py`): atomic per-section run state
-  (`refinement_runs/<run_id>.json`) is the resume point; the persistent
-  learning history (`refinement_history.jsonl`) records source
-  identity/hashes, objective, patches, mechanical + semantic + regression
-  results, failures and corrections, disposition, timestamp and
-  implementation version (`pp-refine/1.1.0`).
-
-Failure handling: if semantic quality regresses, the refinement is NOT
-accepted merely because the mechanical score improved — the batch is
-rolled back to the original and one corrected attempt is made with the
-judge's regressions as critique; if that also regresses, the run is
-recorded as `rolled_back`. A run is only `complete` when **no** section
-failed or was skipped AND verification passed; otherwise it reports
-`incomplete` with the exact section IDs. Interrupted runs resume with
-`--resume <run_id>` (sections already `refined` are never repeated), and
-a `(source, objective)` pair already converged in the learning history is
-skipped unless `--force` is given.
-
-```python
-from barrot_agent import RefinementPipeline, refine_document, LLMSemanticJudge
-
-out = refine_document(big_doc, objective="tighten and verify")
-out["disposition"], out["mechanical"], out["semantic"], out["verification"]
-out["run_id"]                          # resume/audit handle
-
-pipe = RefinementPipeline(refiners, judge=LLMSemanticJudge(other_refiner))
-out = pipe.run(big_doc, objective="...")
-out = pipe.resume(out["run_id"])       # after interruption
-```
-
-CLI:
-
-```bash
-python3 scripts/pingpong_refine.py big.json --objective "tighten and verify"
-python3 scripts/pingpong_refine.py big.json --resume ref-<id>
-python3 scripts/pingpong_refine.py big.json --force    # ignore history
-```
-
-Exit codes: `0` complete/already_converged, `1` incomplete/rolled_back,
-`2` input error. Small documents (<24K chars) keep using the classic loop.
-
-Known limitations: judge context is capped at 20,000 chars per side
-(`LLMSemanticJudge.max_chars`) — for very large documents the judge sees
-a prefix; canonical dot-paths escape literal dots in keys, so keys
-containing dots are not addressable.
-
-## Standing rule
-
-This engine is the **baseline of all data processing**: new data pipelines
-should route their datasets through `refine_data` (or the CLI) instead of
-ad-hoc one-pass cleanups, so every dataset converges to a measured fixed
-point with a full provenance ledger.
+The deterministic score measures completeness, consistency, specificity and redundancy; it does not measure factual truth or XRP forecasting accuracy. The semantic judge sees bounded prefixes (20,000 characters per side in the current implementation), and uncalibrated judges cannot claim improvement. This component must never refine canonical XRP receipts, market snapshots, feature stores, event timelines or forecast ledgers.

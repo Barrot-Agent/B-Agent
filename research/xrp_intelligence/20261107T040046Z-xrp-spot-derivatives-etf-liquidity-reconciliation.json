@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "artifact_id": "xrp-spot-derivatives-etf-liquidity-reconciliation-20261107T040046Z",
+  "captured_at_utc": "2026-11-07T04:00:46Z",
+  "purpose": "Append-only point-in-time reconciliation. Research context only; not a trading signal or admitted model feature.",
+  "raw_response_hash_scope": "SHA-256 covers the exact UTF-8 JSON response text returned by the retrieval layer. Original HTTP wire bytes, headers, transport certificate chain and independent timestamp anchoring were not retained.",
+  "direct_exchange_observations": [
+    {
+      "source_id": "kraken_xrpusd_ticker_20261107T040046Z",
+      "publisher": "Kraken",
+      "independence_group": "exchange:kraken",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-07T04:00:46Z",
+      "provider_event_time_utc": null,
+      "source_timestamp_status": "not supplied by endpoint",
+      "raw_response_sha256": "d096115b70d7ed35d8d0c33f01794a366b8059f5d6391c23add47f714e387502",
+      "raw_response_bytes": 318,
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.15381000\",\"3862\",\"3862.000\"],\"b\":[\"1.15380000\",\"5295\",\"5295.000\"],\"c\":[\"1.15408000\",\"10.09969225\"],\"v\":[\"4054155.28794886\",\"30353418.44397852\"],\"p\":[\"1.16307556\",\"1.18252126\"],\"t\":[4645,34761],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.20678000\"],\"o\":\"1.17749000\"}}}",
+      "parsed": {
+        "pair": "XRP/USD",
+        "last_usd": 1.15408,
+        "best_bid_usd": 1.1538,
+        "best_ask_usd": 1.15381,
+        "bid_size_xrp": 5295,
+        "ask_size_xrp": 3862,
+        "rolling_24h_volume_xrp": 30353418.44397852,
+        "rolling_24h_vwap_usd": 1.18252126,
+        "rolling_24h_low_usd": 1.15046,
+        "rolling_24h_high_usd": 1.20678,
+        "utc_daily_open_usd": 1.17749,
+        "trades_24h": 34761
+      },
+      "limitations": [
+        "No provider event timestamp",
+        "Level-1 quote only; no multi-level depth",
+        "UTC daily open is not a rolling-24-hour open"
+      ]
+    },
+    {
+      "source_id": "okx_xrpusdt_ticker_20261107T040046Z",
+      "publisher": "OKX",
+      "independence_group": "exchange:okx",
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "retrieved_at_utc": "2026-11-07T04:00:46Z",
+      "provider_event_time_utc": "2026-11-07T03:49:20.541Z",
+      "provider_timestamp_epoch_ms": 1794023360541,
+      "provider_age_seconds_at_capture": 685.459,
+      "raw_response_sha256": "bca0199d974ec0389d35c602b5c645b6b86b577eeadbb75551f946cec9cf4395",
+      "raw_response_bytes": 352,
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1568\",\"lastSz\":\"10.296815\",\"askPx\":\"1.157\",\"askSz\":\"1.5\",\"bidPx\":\"1.1569\",\"bidSz\":\"8868.206475\",\"open24h\":\"1.2057\",\"high24h\":\"1.2085\",\"low24h\":\"1.1518\",\"volCcy24h\":\"68941652.0506061047\",\"vol24h\":\"58152592.964996\",\"ts\":\"1794023360541\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
+      "parsed": {
+        "instrument": "XRP-USDT",
+        "last_usdt": 1.1568,
+        "best_bid_usdt": 1.1569,
+        "best_ask_usdt": 1.157,
+        "bid_size_xrp": 8868.206475,
+        "ask_size_xrp": 1.5,
+        "rolling_24h_open_usdt": 1.2057,
+        "rolling_24h_low_usdt": 1.1518,
+        "rolling_24h_high_usdt": 1.2085,
+        "rolling_24h_volume_xrp": 58152592.964996,
+        "rolling_24h_volume_usdt": 68941652.0506061
+      },
+      "quality_decision": "STALE_FOR_LIVE_FEATURES",
+      "freshness_limit_seconds": 300,
+      "limitations": [
+        "Provider timestamp is 685.459 seconds old at capture",
+        "USDT is not normalized to USD",
+        "Level-1 quote only; no multi-level depth"
+      ]
+    }
+  ],
+  "secondary_market_observations": [
+    {
+      "source_id": "alphafinance_xrp_derivatives_20261107T025000Z",
+      "publisher": "Alpha Finance",
+      "independence_group": "aggregator:alpha-finance",
+      "source_url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "source_data_as_of_utc": "2026-11-07T02:50:00Z",
+      "retrieved_at_utc": "2026-11-07T04:00:46Z",
+      "age_seconds_at_capture": 4246,
+      "reported": {
+        "spot_usd": 1.1676,
+        "open_interest_usd": 2750000000,
+        "volume_24h_usd": 2610000000,
+        "long_liquidations_24h_usd": 8800000,
+        "short_liquidations_24h_usd": 539400,
+        "largest_short_liquidation_cluster_usd": 6500000,
+        "largest_long_liquidation_cluster_usd": 3400000
+      },
+      "methodology_limits": [
+        "Liquidation clusters are modeled from open interest and leverage tiers, not observed resting liquidation orders",
+        "Exchange/contract coverage differs from other aggregators",
+        "Snapshot is stale for live feature admission"
+      ]
+    },
+    {
+      "source_id": "tradradar_xrp_derivatives_20261107T014500Z",
+      "publisher": "TradRadar",
+      "independence_group": "aggregator:tradradar",
+      "source_url": "https://tradradar.io/markets/xrp",
+      "source_data_as_of_utc": "2026-11-07T01:45:00Z",
+      "retrieved_at_utc": "2026-11-07T04:00:46Z",
+      "age_seconds_at_capture": 8146,
+      "reported": {
+        "mark_price_usd": 1.1792,
+        "price_change_24h_pct": -3.13,
+        "open_interest_usd": 1900000000,
+        "open_interest_change_24h_pct": -1.06,
+        "oi_weighted_funding_pct_per_8h": 0.0045,
+        "liquidations_24h_lower_bound_usd": 8020000,
+        "long_liquidations_24h_usd": 7510000,
+        "short_liquidations_24h_usd": 512330,
+        "long_short_account_ratio": 3.98,
+        "long_account_share_pct": 79.9
+      },
+      "methodology_limits": [
+        "Displayed with 15-minute delay",
+        "Liquidations are a lower bound across the provider's five reporting venues",
+        "Provider contract universe differs from Alpha Finance"
+      ]
+    }
+  ],
+  "liquidity_context": [
+    {
+      "source_id": "fuelmaps_xrp_depth_20261106T210000Z",
+      "publisher": "Fuelmaps",
+      "independence_group": "aggregator:fuelmaps",
+      "source_url": "https://fuelmaps.io/order-book/",
+      "source_data_as_of_utc": "2026-11-06T21:00:00Z",
+      "retrieved_at_utc": "2026-11-07T04:00:46Z",
+      "age_seconds_at_capture": 25246,
+      "reported": {
+        "mid_usd": 1.1732,
+        "venues_covering": "6 of 6",
+        "depth_within_0_5pct": {
+          "bids_usd": 8400000,
+          "asks_usd": 5400000,
+          "bid_share_pct": 60.8
+        },
+        "depth_within_1pct": {
+          "bids_usd": 12900000,
+          "asks_usd": 8700000,
+          "bid_share_pct": 59.6
+        },
+        "depth_within_2pct": {
+          "bids_usd": 18700000,
+          "asks_usd": 9400000,
+          "bid_share_pct": 66.5
+        },
+        "depth_within_5pct": {
+          "bids_usd": 23900000,
+          "asks_usd": 10300000,
+          "bid_share_pct": 69.9
+        }
+      },
+      "quality_decision": "HISTORICAL_CONTEXT_ONLY",
+      "limitations": [
+        "Hourly snapshot is 7 hours old",
+        "Not synchronized to the current spot observations",
+        "Aggregated provider methodology; no raw per-venue ladders retained"
+      ]
+    }
+  ],
+  "etf_flow_reconciliation": [
+    {
+      "source_id": "alphafinance_xrp_etf_20261106_session",
+      "publisher": "Alpha Finance",
+      "source_url": "https://alphafinance.io/etf/xrp/",
+      "source_data_as_of": "2026-11-06 US session",
+      "reported_funds": 5,
+      "reported_daily_net_flow_usd": 0,
+      "reported_7_session_net_flow_usd": 8400000,
+      "reported_cumulative_net_flow_usd": 1730000000,
+      "net_assets_and_holdings_published": false,
+      "limitation": "Flow series is not a holdings or AUM file; fund-level completeness and issuer-native creation/redemption records were not retained in this capture."
+    },
+    {
+      "source_id": "cryptoetf_today_xrp_20261106_partial",
+      "publisher": "CryptoETF.today",
+      "source_url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "source_data_as_of": "2026-11-06 T+1",
+      "reported_funds": 5,
+      "funds_reported": 1,
+      "displayed_current_net_flow_usd": 0,
+      "completeness": "PARTIAL",
+      "limitation": "Only 1 of 5 funds had reported. The displayed zero is not a complete-session zero."
+    },
+    {
+      "source_id": "xrp_insights_xrp_etf_20261105_settled",
+      "publisher": "XRP Insights",
+      "source_url": "https://xrp-insights.com/",
+      "source_data_as_of": "2026-11-05 settled close",
+      "reported_universe": "6 US spot funds plus BITW",
+      "nov_5_holdings_derived_flow_xrp": 110214,
+      "nov_2_to_nov_5_holdings_derived_flow_xrp": -149487,
+      "combined_xrp_held": 1200000000,
+      "combined_net_assets_usd": 1540000000,
+      "nov_6_status": "PROVISIONAL",
+      "methodology_limits": [
+        "Flow is day-over-day issuer-reported holdings change, not direct cash creation/redemption",
+        "GXRP omitted from flow totals while its holdings remain included",
+        "Universe differs from other aggregators"
+      ]
+    }
+  ],
+  "macro_context": [
+    {
+      "source_id": "reuters_money_market_flows_20261106",
+      "publisher": "Reuters",
+      "source_url": "https://www.reuters.com/business/caution-over-midterms-ai-cash-burn-drives-surge-us-money-market-fund-inflows-2026-11-06/",
+      "publication_date": "2026-11-06",
+      "reported": "US money-market funds received $117.97B net inflows in the week to November 4, the largest weekly inflow in six months, amid caution around midterm elections and AI spending/cash burn.",
+      "model_treatment": "Macro context only. No causal XRP relationship established."
+    }
+  ],
+  "derived_checks": {
+    "kraken_level_1_spread_bps": 0.08666975788859914,
+    "okx_level_1_spread_bps": 0.8643415877954015,
+    "raw_okx_last_premium_vs_kraken_pct": 0.23568556772495253,
+    "kraken_last_vs_utc_daily_open_pct": -1.9881272877051992,
+    "okx_last_vs_rolling_24h_open_pct": -4.055735257526738,
+    "kraken_last_vs_rolling_24h_vwap_pct": -2.4051373080598903,
+    "alpha_vs_tradradar_open_interest_difference_usd": 850000000,
+    "alpha_vs_tradradar_open_interest_ratio": 1.4473684210526316,
+    "interpretation": "These are arithmetic reconciliations of asynchronous observations. USD/USDT is not normalized; no cross-venue return or executable arbitrage is established."
+  },
+  "competing_hypotheses": [
+    {
+      "hypothesis": "Recent spot weakness and long-side liquidation skew are consistent with deleveraging pressure.",
+      "supporting_evidence": [
+        "Kraken last is below its rolling 24-hour VWAP",
+        "OKX last is below its rolling 24-hour open",
+        "TradRadar reports long liquidations substantially above short liquidations"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "TradRadar and Alpha Finance snapshots are stale and have materially different open-interest totals",
+        "OKX ticker is stale under the 300-second rule",
+        "Kraken provides no event timestamp",
+        "No synchronized multi-venue depth or signed order-flow series is available"
+      ],
+      "status": "PLAUSIBLE_NOT_ESTABLISHED"
+    },
+    {
+      "hypothesis": "The reported derivatives differences primarily reflect different venue/contract coverage and capture times rather than a true $850M market-wide OI change.",
+      "supporting_evidence": [
+        "Alpha Finance and TradRadar publish different venue and contract scopes",
+        "Their observation times differ by 65 minutes"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No raw venue-by-venue contract inventory from both providers was retained for this capture"
+      ],
+      "status": "PLAUSIBLE_NOT_ESTABLISHED"
+    },
+    {
+      "hypothesis": "ETF flow for November 6 is not yet settled or comparable across aggregators.",
+      "supporting_evidence": [
+        "CryptoETF.today explicitly reports only 1 of 5 funds",
+        "XRP Insights marks November 6 provisional",
+        "Alpha Finance shows a zero row without publishing holdings or AUM"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Alpha Finance labels its dashboard through the November 6 session and shows 5 of 5 funds, but issuer-native files were not captured"
+      ],
+      "status": "DATA_COMPLETENESS_UNRESOLVED"
+    }
+  ],
+  "model_eligibility": {
+    "status": "NOT_ADMITTED",
+    "reasons": [
+      "Kraken provider event timestamp missing",
+      "OKX provider timestamp age exceeds 300 seconds",
+      "No synchronized cross-venue spot/depth capture",
+      "No raw multi-level order-book ladders retained",
+      "Derivatives provider OI differs by $850M and coverage is unreconciled",
+      "ETF November 6 reporting is partial/provisional or lacks issuer-native receipts",
+      "No point-in-time historical feature window is constructed from these observations"
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "direction": null,
+    "probabilities": null,
+    "horizon": null,
+    "reason": "The evidence does not satisfy Barrot's forecast-readiness and point-in-time requirements."
+  },
+  "external_actions": {
+    "orders_sent": false,
+    "paper_trade_created": false,
+    "real_money_used": false
+  }
+}

@@ -1,0 +1,266 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_live_spot_derivatives_snapshot",
+  "artifact_id": "20261109T060150Z-live-spot-derivatives-corroboration",
+  "repository": "Barrot-Agent/B-Agent",
+  "captured_at_utc": "2026-11-09T06:01:50Z",
+  "data_cutoff_utc": "2026-11-09T06:01:50Z",
+  "capture_policy": {
+    "lawful_public_sources_only": true,
+    "raw_http_wire_bytes_captured": false,
+    "hash_scope": "SHA-256 values for the exact JSON text surfaced by web retrieval or exact normalized excerpts; not HTTP wire bytes, headers, or a signed exchange receipt.",
+    "source_independence": "Kraken spot and Binance Futures are separate venue endpoints but different instruments and non-synchronized timestamps. TradRadar aggregates Binance, Bybit, Gate, Bitget, MEXC, Hyperliquid and OKX, so its Binance component overlaps the direct Binance observation. Swiftedge venue coverage is not disclosed. Do not count aggregator outputs as independent confirmation.",
+    "model_admission_policy": "Snapshot/context only. No field in this artifact is model-eligible. Missing Kraken event time, stale Binance event time, absent synchronized multi-venue depth, aggregator dependence and missing executable slippage prevent admission."
+  },
+  "spot": {
+    "venue": "Kraken",
+    "instrument": "XRP/USD spot",
+    "endpoint": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "retrieved_at_utc": "2026-11-09T06:01:50Z",
+    "provider_event_time_utc": null,
+    "event_time_status": "NOT_RETURNED_BY_ENDPOINT",
+    "raw_response_sha256": "3355d05e1a7ded96c6796a162ea45fa424a3663a92b97588448e9a58fd875e84",
+    "raw_response_hash_scope": "Exact JSON text surfaced by web retrieval; not HTTP wire bytes.",
+    "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.09923000\",\"961\",\"961.000\"],\"b\":[\"1.09906000\",\"723\",\"723.000\"],\"c\":[\"1.09931000\",\"1434.74289432\"],\"v\":[\"8339404.07440827\",\"34543561.46679071\"],\"p\":[\"1.10828420\",\"1.12358967\"],\"t\":[7979,30614],\"l\":[\"1.09792000\",\"1.09309000\"],\"h\":[\"1.12503000\",\"1.16816000\"],\"o\":\"1.11203000\"}}}",
+    "observations": {
+      "last_usd": 1.09931,
+      "best_bid_usd": 1.09906,
+      "best_ask_usd": 1.09923,
+      "top_quote_mid_usd": 1.099145,
+      "top_quote_spread_absolute_usd": 0.00017,
+      "top_quote_spread_bps": 1.5466567195,
+      "last_vs_24h_open_pct": -1.1438540327,
+      "last_vs_24h_vwap_pct": -2.1609018531,
+      "volume_24h_xrp": 34543561.46679071,
+      "vwap_24h_usd": 1.12358967,
+      "low_24h_usd": 1.09309,
+      "high_24h_usd": 1.16816,
+      "open_24h_usd": 1.11203,
+      "trade_count_24h": 30614
+    },
+    "quality": {
+      "status": "RETRIEVAL_TIME_ONLY_SINGLE_VENUE_QUOTE",
+      "model_eligible": false,
+      "reason_codes": [
+        "MISSING_PROVIDER_EVENT_TIME",
+        "SINGLE_VENUE",
+        "TOP_OF_BOOK_IS_NOT_DEPTH",
+        "NO_EXECUTABLE_SLIPPAGE_CAPTURE"
+      ],
+      "note": "The 1.55 bps spread is derived from the returned best bid/ask only. It is not full order-book depth, market-wide spread, or executable slippage."
+    }
+  },
+  "derivatives": {
+    "venue": "Binance Futures",
+    "instrument": "XRPUSDT perpetual premium index",
+    "endpoint": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+    "retrieved_at_utc": "2026-11-09T06:01:50Z",
+    "provider_event_time_utc": "2026-11-09T05:40:27Z",
+    "age_seconds_at_capture": 1283,
+    "raw_response_sha256": "10571b666be37521574b6a723e067dd87f8e1e157f0205ea2acc07a23ef8b2a6",
+    "raw_response_hash_scope": "Exact JSON text surfaced by web retrieval; not HTTP wire bytes.",
+    "raw_response_text": "{\"symbol\":\"XRPUSDT\",\"markPrice\":\"1.09995789\",\"indexPrice\":\"1.10051690\",\"estimatedSettlePrice\":\"1.10314441\",\"lastFundingRate\":\"-0.00000756\",\"interestRate\":\"0.00010000\",\"nextFundingTime\":1794211200000,\"time\":1794202827000}",
+    "observations": {
+      "mark_price_usdt": 1.09995789,
+      "index_price_usdt": 1.1005169,
+      "estimated_settle_price_usdt": 1.10314441,
+      "last_funding_rate_decimal": -0.00000756,
+      "next_funding_time_utc": "2026-11-09T08:00:00Z"
+    },
+    "quality": {
+      "status": "DIRECT_VENUE_BUT_STALE_AT_CAPTURE",
+      "model_eligible": false,
+      "freshness_limit_seconds": 900,
+      "reason_codes": [
+        "EVENT_AGE_EXCEEDS_15_MINUTES",
+        "NOT_SYNCHRONIZED_WITH_KRAKEN_SPOT",
+        "NO_OPEN_INTEREST_CAPTURE"
+      ]
+    }
+  },
+  "secondary_derivatives_and_depth_context": [
+    {
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_class": "secondary_multi_exchange_aggregator",
+      "provider_updated_at_utc": "2026-11-09T05:10:00Z",
+      "reported_delay_seconds": 900,
+      "independence_group": "trad_radar_multi_exchange",
+      "underlying_venues": [
+        "Binance",
+        "Bybit",
+        "Gate",
+        "Bitget",
+        "MEXC",
+        "Hyperliquid",
+        "OKX"
+      ],
+      "normalized_excerpt": "XRP $1.1055; open interest $1.72B across 7 exchanges; OI 24h change -9.80%; OI-weighted funding +0.0003% per 8h; liquidations at least $31.52M, including $30.59M longs and $930.77K shorts; long/short 4.03 (80.1% long).",
+      "excerpt_sha256": "7a4ea9be22ac6464a0007b4a0e723abae597fa3ccd24df710461a639a89afb13",
+      "per_exchange_funding_percent_per_8h": {
+        "Binance": -0.0007,
+        "Bybit": 0.0003,
+        "Gate": 0.0003,
+        "Bitget": -0.0036,
+        "MEXC": -0.0007,
+        "Hyperliquid": 0.01,
+        "OKX": -0.0006
+      },
+      "model_eligible": false,
+      "reason_codes": [
+        "AGGREGATED_NOT_RAW_VENUE_RECEIPT",
+        "REPORTED_15_MINUTE_DELAY",
+        "OVERLAPS_DIRECT_BINANCE_FEED",
+        "CROSS_VENUE_FUNDING_HETEROGENEITY"
+      ]
+    },
+    {
+      "publisher": "Swiftedge",
+      "url": "https://swiftedge.uk/xrp/levels",
+      "source_class": "secondary_perpetual_orderbook_wall_aggregator",
+      "provider_updated_at_utc": "2026-11-09T05:39:00Z",
+      "instrument": "XRP perpetual futures; not spot",
+      "normalized_excerpt": "XRP perpetual 1.0998; bid wall 1.0720 with 4,040,707 XRP; ask wall 1.1050 with 3,721,001 XRP.",
+      "excerpt_sha256": "22f71363776e2b80a2f4d7b0923aebb3b1fec5aa757e42838a5ccaca7d03b9d8",
+      "model_eligible": false,
+      "reason_codes": [
+        "AGGREGATOR_VENUE_COVERAGE_UNDISCLOSED",
+        "FUTURES_NOT_SPOT",
+        "NO_RAW_VENUE_BOOK_RECEIPT",
+        "RESTING_WALLS_CAN_BE_PULLED"
+      ]
+    },
+    {
+      "publisher": "Liqwall",
+      "url": "https://liqwall.com/ru/coins/xrp",
+      "source_class": "secondary_derivatives_aggregator",
+      "search_snippet_claimed_updated_at_utc": "2026-11-09T02:12:00Z",
+      "search_snippet_claimed_values": {
+        "open_interest_usd": 1270000000,
+        "funding_percent_per_8h": 0.0019,
+        "liquidations_24h_usd": 30200000,
+        "long_liquidations_24h_usd": 29400000,
+        "binance_long_accounts_percent": 73.9
+      },
+      "opened_page_displayed_snapshot_time_utc": "2026-11-03T20:22:00Z",
+      "opened_page_displayed_values": {
+        "open_interest_usd": 1470000000,
+        "funding_percent_per_8h": 0.01,
+        "liquidations_24h_usd": 3300000
+      },
+      "normalized_excerpt": "Search result reported a 2026-11-09 snapshot, but the opened page body displayed a 2026-11-03 snapshot with materially different values.",
+      "excerpt_sha256": "41448eee1b33507c6a3de81f010b6b26455d7f86682ecd72a28a8c64d036be44",
+      "status": "EXCLUDED_UNREPRODUCED_AND_STALE_PAGE_CONFLICT",
+      "model_eligible": false,
+      "reason_codes": [
+        "SEARCH_SNIPPET_NOT_REPRODUCED_IN_OPENED_PAGE",
+        "STALE_PAGE_BODY",
+        "UNVERIFIED_CURRENT_VALUES"
+      ]
+    }
+  ],
+  "macro_calendar_watch": [
+    {
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "event": "October 2026 Consumer Price Index and Real Earnings release",
+      "scheduled_at_utc": "2026-11-10T13:30:00Z",
+      "scheduled_at_et": "2026-11-10T08:30:00-05:00",
+      "status": "UPCOMING_AT_CAPTURE",
+      "model_eligible": false,
+      "note": "Calendar event only; no result is available at this cutoff."
+    }
+  ],
+  "evidence_assessment": {
+    "supported_observations": [
+      "One Kraken XRP/USD ticker snapshot shows the last below that venue's 24-hour open and 24-hour VWAP.",
+      "The direct Binance Futures funding observation is negative, while TradRadar's OI-weighted cross-venue funding is positive; its per-venue table shows heterogeneous funding signs.",
+      "TradRadar reports a 24-hour OI contraction and long-heavy liquidations, but this is one delayed aggregator, not independently verified cash flow.",
+      "Swiftedge reports nearby XRP perpetual futures order-book walls; these are not spot depth and are not immutable liquidity."
+    ],
+    "competing_hypotheses": [
+      "The single-venue spot snapshot is consistent with intraday weakness relative to its own open and VWAP.",
+      "Reported OI contraction and long-heavy liquidations may reflect deleveraging, but may also reflect incomplete venue coverage, notional conventions or aggregator methodology.",
+      "Positive cross-venue weighted funding alongside negative Binance funding indicates heterogeneous positioning rather than a uniform market-wide long or short bias.",
+      "Reported resting futures walls may be genuine liquidity or temporary orders that can be moved or cancelled."
+    ],
+    "disconfirming_or_missing_evidence": [
+      "Kraken did not return a provider event timestamp.",
+      "No synchronized multi-venue spot order-book depth or executable slippage was captured.",
+      "The Binance premium-index event is 1,283 seconds old, beyond the 900-second freshness limit.",
+      "No direct current open-interest endpoint response was obtained.",
+      "The TradRadar aggregation includes Binance and therefore overlaps the direct Binance venue observation.",
+      "The Liqwall current search snippet could not be reproduced from its opened page body and is excluded.",
+      "No current exchange-flow, collateral-utilization or primary ETF-creation/redemption receipt is included."
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "model_eligible_features": [],
+    "directional_forecast_authorized": false
+  },
+  "source_receipts": [
+    {
+      "source_id": "KRAKEN_XRPUSD_TICKER_20261109T060150Z",
+      "publisher": "Kraken",
+      "source_class": "direct_exchange_public_api",
+      "independence_group": "kraken_spot",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "provider_event_time_utc": null,
+      "retrieved_at_utc": "2026-11-09T06:01:50Z",
+      "sha256": "3355d05e1a7ded96c6796a162ea45fa424a3663a92b97588448e9a58fd875e84",
+      "hash_scope": "exact JSON text surfaced by web retrieval; not HTTP wire bytes"
+    },
+    {
+      "source_id": "BINANCE_XRPUSDT_PREMIUM_20261109T054027Z",
+      "publisher": "Binance Futures",
+      "source_class": "direct_exchange_public_api",
+      "independence_group": "binance_futures",
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT",
+      "provider_event_time_utc": "2026-11-09T05:40:27Z",
+      "retrieved_at_utc": "2026-11-09T06:01:50Z",
+      "sha256": "10571b666be37521574b6a723e067dd87f8e1e157f0205ea2acc07a23ef8b2a6",
+      "hash_scope": "exact JSON text surfaced by web retrieval; not HTTP wire bytes"
+    },
+    {
+      "source_id": "TRADRADAR_XRP_DERIVATIVES_20261109T051000Z",
+      "publisher": "TradRadar",
+      "source_class": "secondary_multi_exchange_aggregator",
+      "independence_group": "trad_radar_multi_exchange",
+      "url": "https://tradradar.io/markets/xrp",
+      "provider_event_time_utc": "2026-11-09T05:10:00Z",
+      "sha256": "7a4ea9be22ac6464a0007b4a0e723abae597fa3ccd24df710461a639a89afb13",
+      "hash_scope": "normalized excerpt only; not raw page or HTTP wire bytes"
+    },
+    {
+      "source_id": "SWIFTEDGE_XRP_PERPETUAL_WALLS_20261109T053900Z",
+      "publisher": "Swiftedge",
+      "source_class": "secondary_perpetual_orderbook_wall_aggregator",
+      "independence_group": "swiftedge_unknown_venue_coverage",
+      "url": "https://swiftedge.uk/xrp/levels",
+      "provider_event_time_utc": "2026-11-09T05:39:00Z",
+      "sha256": "22f71363776e2b80a2f4d7b0923aebb3b1fec5aa757e42838a5ccaca7d03b9d8",
+      "hash_scope": "normalized excerpt only; not raw page or HTTP wire bytes"
+    },
+    {
+      "source_id": "LIQWALL_XRP_SEARCH_SNIPPET_CONFLICT_20261109",
+      "publisher": "Liqwall",
+      "source_class": "secondary_derivatives_aggregator",
+      "independence_group": "liqwall_unknown_venue_coverage",
+      "url": "https://liqwall.com/ru/coins/xrp",
+      "provider_event_time_utc": null,
+      "sha256": "41448eee1b33507c6a3de81f010b6b26455d7f86682ecd72a28a8c64d036be44",
+      "hash_scope": "normalized search-snippet/page-conflict description; not raw page or HTTP wire bytes",
+      "status": "EXCLUDED"
+    },
+    {
+      "source_id": "BLS_CPI_OCTOBER_2026_SCHEDULE",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "source_class": "primary_macro_calendar",
+      "independence_group": "bls_primary",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "provider_event_time_utc": "2026-11-10T13:30:00Z",
+      "retrieved_at_utc": "2026-11-09T06:01:50Z",
+      "sha256": null,
+      "hash_scope": "No raw response hash captured; event time is a primary-source calendar observation."
+    }
+  ]
+}

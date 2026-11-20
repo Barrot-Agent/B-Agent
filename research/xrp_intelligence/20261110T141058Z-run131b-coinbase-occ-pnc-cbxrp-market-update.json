@@ -1,0 +1,881 @@
+{
+  "schema_version": "barrot.xrp.institutional-collateral-run.v1",
+  "artifact_type": "xrp_coinbase_circle_pnc_occ_cbxrp_market_reconciliation",
+  "run_id": "131B",
+  "captured_at_utc": "2026-11-10T14:10:58Z",
+  "data_cutoff_utc": "2026-11-10T14:01:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "repository_head_before_addendum": "c869905562d0aeae552eca807fcbdf28c5ae0a1b",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository_state": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "main_tree": {
+      "entries": 1404,
+      "files": 1299,
+      "workflow_files": 86
+    },
+    "integration_tree": {
+      "entries": 1568,
+      "files": 1455,
+      "workflow_files": 87
+    },
+    "open_pull_requests": 372,
+    "pr_1640": {
+      "state": "open",
+      "draft": false,
+      "head_sha": "c869905562d0aeae552eca807fcbdf28c5ae0a1b",
+      "base_sha": "d4d43be3427375cf79d190e768976de062e20287",
+      "commits_ahead": 964,
+      "commits_behind": 0,
+      "changed_files": 273,
+      "mergeable": true,
+      "mergeable_state": "clean",
+      "reviews_commented": 62,
+      "reviews_approved": 0,
+      "review_threads_resolved": 22,
+      "review_threads_outdated": 22
+    },
+    "pr_1643": {
+      "state": "open",
+      "head_sha": "238f3ff4a69420882c77d225626a352ba19a412c",
+      "base_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+      "commits_ahead": 906,
+      "commits_behind_current_main": 1,
+      "changed_files": 670,
+      "overlap_with_1640": 7,
+      "unique_paths": 663,
+      "mergeable": false,
+      "mergeable_state": "dirty",
+      "current_head_ci": "not_found"
+    },
+    "main_xrp_ingestion_module_present": false,
+    "main_scheduled_xrp_ingestion_workflow_present": false,
+    "integration_scheduled_xrp_ingestion_workflow_present": true,
+    "main_commit_workflow_runs": 0
+  },
+  "exact_head_verification_parent": {
+    "head_sha": "c869905562d0aeae552eca807fcbdf28c5ae0a1b",
+    "full_ci_run": 42830889965,
+    "full_ci_conclusion": "success",
+    "full_suite_tests_passed": 1380,
+    "full_suite_failed": 0,
+    "subtests_passed": 8,
+    "duration_seconds": 66.01,
+    "inclusive_coverage_pct": 59.58,
+    "wheel_build_install": "success",
+    "dependency_audit_run": 42830889854,
+    "dependency_audit_conclusion": "success",
+    "manifests_passed": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_gate_run": 42830889942,
+    "fail_closed_gate_conclusion": "success",
+    "automatic_merge_disabled": true,
+    "scope_note": "These checks verify the parent head c869905562d0aeae552eca807fcbdf28c5ae0a1b. The Run131B evidence/test commit created after this artifact is not covered by these runs; new exact-head CI is required."
+  },
+  "source_capture": {
+    "mode": "manual public-web research and API retrieval",
+    "raw_wire_bytes_available": false,
+    "raw_source_sha256_receipts_created": false,
+    "integrity_limitation": "The web retrieval interface did not expose original HTTP response bytes/headers for this addendum. Do not treat normalized page text or this Git commit as a raw-source SHA-256 receipt. Scheduled ingestion already implements raw-byte SHA-256 receipts for its allowlisted public sources but has not run on main.",
+    "retrieval_precision": "Source pages were inspected during the 2026-11-10 14:04-14:10 UTC research window; exact per-request timestamps are not available for every page. Provider timestamps are retained where supplied."
+  },
+  "source_registry": [
+    {
+      "id": "coinbase_occ_final_approval",
+      "url": "https://www.coinbase.com/blog/coinbase-launches-national-trust-company-with-federally-regulated-institutional-grade-custody-offering",
+      "publisher": "Coinbase",
+      "publisher_group": "coinbase",
+      "type": "official_company_announcement",
+      "publication_date": "2026-11-09",
+      "scope": "Coinbase says OCC final approval to charter Coinbase National Trust Company; OCC filing record separately identifies final status."
+    },
+    {
+      "id": "occ_coinbase_cas_record",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+      "publisher": "Office of the Comptroller of the Currency",
+      "publisher_group": "occ",
+      "type": "primary_regulatory_record",
+      "publication_date": "2026-11-06",
+      "scope": "Coinbase National Trust Company application/charter record; reported consummated/effective date November 6, 2026."
+    },
+    {
+      "id": "coinbase_pnc_usdc_pilot",
+      "url": "https://www.coinbase.com/blog/coinbase-and-pnc-expand-partnership-to-bring-stablecoin-payment-acceptance-to-corporate-clients",
+      "publisher": "Coinbase",
+      "publisher_group": "coinbase",
+      "type": "official_company_announcement",
+      "publication_date": "2026-11-09",
+      "scope": "Pilot for eligible PNC Corporate and Institutional Banking clients to receive USDC and automatically convert to USD."
+    },
+    {
+      "id": "coinbase_q3_2026_release",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/",
+      "publisher": "Coinbase Global",
+      "publisher_group": "coinbase",
+      "type": "issuer_earnings_release",
+      "publication_date": "2026-10-29",
+      "scope": "Q3 2026 market share, assets on platform, USDC balances, revenue mix, derivatives and prediction markets."
+    },
+    {
+      "id": "coinbase_q3_2026_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "Coinbase Global (SEC filing)",
+      "publisher_group": "coinbase",
+      "type": "primary_issuer_sec_filing",
+      "publication_date": "2026-10-29",
+      "scope": "Q3 2026 financial statements and Circle distribution arrangement renewal."
+    },
+    {
+      "id": "circle_q3_2026_release",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000309/finalq3epr-110326.htm",
+      "publisher": "Circle Internet Group (SEC exhibit)",
+      "publisher_group": "circle",
+      "type": "primary_issuer_earnings_release",
+      "publication_date": "2026-11-04",
+      "scope": "Q3 USDC circulation, onchain volume, reserve income, distribution costs, ARC presale and operating metrics."
+    },
+    {
+      "id": "circle_q3_2026_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "publisher": "Circle Internet Group (SEC filing)",
+      "publisher_group": "circle",
+      "type": "primary_issuer_sec_filing",
+      "publication_date": "2026-11-04",
+      "scope": "Coinbase distribution-cost formula and amounts, reserve economics, Circle/Binance and platform concentration."
+    },
+    {
+      "id": "morpho_cbxrp_usdc_market",
+      "url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "publisher": "Morpho Watch, sourced from Morpho API",
+      "publisher_group": "morpho_api",
+      "type": "onchain_market_aggregator_snapshot",
+      "publication_date": "2026-11-10",
+      "scope": "Base cbXRP/USDC market state updated 14:01 UTC; market ID and token/oracle identifiers cross-check against Barrot's scheduled Morpho source registry."
+    },
+    {
+      "id": "coinbase_cbxrp_proof_of_reserves",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "publisher": "Coinbase",
+      "publisher_group": "coinbase",
+      "type": "issuer_proof_of_reserves_dashboard",
+      "publication_date": "2026-11-10",
+      "scope": "Displayed XRP reserve and cbXRP supply; refresh timezone unspecified."
+    },
+    {
+      "id": "bls_october_2026_cpi",
+      "url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "publisher_group": "bls",
+      "type": "primary_government_statistical_release",
+      "publication_date": "2026-11-10",
+      "scope": "October CPI first-release vintage at 13:30 UTC; year-over-year comparisons unavailable for most series."
+    },
+    {
+      "id": "investing_cme_pre_cpi",
+      "url": "https://www.investing.com/central-banks/fed-rate-monitor",
+      "publisher": "Investing.com using CME 30-Day Fed Funds futures",
+      "publisher_group": "cme_fed_funds_futures",
+      "type": "pre_release_market_pricing_snapshot",
+      "publication_date": "2026-11-10",
+      "scope": "Updated 08:25 ET, five minutes before CPI; December 9 odds 97.8% for 25bp hike and 2.2% hold."
+    },
+    {
+      "id": "barrons_cme_post_cpi",
+      "url": "https://www.barrons.com/livecoverage/stock-market-news-today-111026/card/odds-of-a-larger-december-rate-hike-jump-after-cpi-JCMu5hQ9u1Lqcae8Zr9k",
+      "publisher": "Barron's reporting CME FedWatch",
+      "publisher_group": "cme_fed_funds_futures",
+      "type": "post_release_secondary_market_report",
+      "publication_date": "2026-11-10",
+      "scope": "Reports post-CPI December odds 86.4% for 25bp and 13.6% for 50bp, with no hold probability; exact capture minute unavailable."
+    },
+    {
+      "id": "wsj_cme_post_cpi",
+      "url": "https://www.wsj.com/livecoverage/stock-market-cpi-inflation-11-10-2026/card/traders-dial-up-rate-hike-bets-UHxkB8mixxnMCsJGBcH6",
+      "publisher": "Wall Street Journal reporting CME futures",
+      "publisher_group": "cme_fed_funds_futures",
+      "type": "post_release_secondary_market_report",
+      "publication_date": "2026-11-10",
+      "scope": "Reports approximately 90% for 25bp and 10% for 50bp versus prior-day 84%/0%; exact capture minute unavailable."
+    },
+    {
+      "id": "kraken_xrp_usd_ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "publisher": "Kraken",
+      "publisher_group": "kraken",
+      "type": "public_exchange_ticker_api",
+      "publication_date": "2026-11-10",
+      "scope": "Ticker payload had no provider event timestamp and repeated an identical cached response; model-ineligible."
+    },
+    {
+      "id": "okx_xrp_usdt_ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "publisher": "OKX",
+      "publisher_group": "okx",
+      "type": "public_exchange_ticker_api",
+      "publication_date": "2026-11-10",
+      "scope": "Provider timestamp 13:48:36.536 UTC; 1,341.464 seconds old at the 14:10:58 UTC capture."
+    },
+    {
+      "id": "xrp_insights_etf_dataset",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "publisher": "XRP Insights",
+      "publisher_group": "xrp_insights",
+      "type": "issuer_holdings_derived_etf_dataset",
+      "publication_date": "2026-11-10",
+      "scope": "Generated 13:35 UTC; 1,604 rows, 232 trading days, latest settled row November 9; flow values are holdings deltas with exclusions and reconstruction caveats."
+    },
+    {
+      "id": "cryptoetf_xrp_flows",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "publisher": "CryptoETF",
+      "publisher_group": "cryptoetf",
+      "type": "aggregated_issuer_flow_dashboard",
+      "publication_date": "2026-11-10",
+      "scope": "November 9 partial 3-of-5 fund set, approximately $10.3M net outflow; overlapping issuer-source universe."
+    },
+    {
+      "id": "cryptokeyhole_xrp_flows",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "publisher": "CryptoKeyhole",
+      "publisher_group": "cryptokeyhole",
+      "type": "aggregated_issuer_flow_dashboard",
+      "publication_date": "2026-11-10",
+      "scope": "November 9 partial 3-of-4 daily fund set; approximately 9.217M XRP outflow; overlapping issuer-source universe."
+    },
+    {
+      "id": "coinbase_xrp_collateral_help",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+      "publisher": "Coinbase",
+      "publisher_group": "coinbase",
+      "type": "official_product_documentation",
+      "publication_date": "2026-11-10",
+      "scope": "XRP collateral eligibility for USDC borrowing through Coinbase's Morpho-enabled Base loan product; no spot purchase claim."
+    },
+    {
+      "id": "coinbase_ripple_rlusd_listing",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "publisher": "Ripple",
+      "publisher_group": "ripple",
+      "type": "official_joint_product_announcement",
+      "publication_date": "2026-10-28",
+      "scope": "RLUSD support on XRP Ledger, Base and Ethereum; Coinbase distribution and liquidity boundaries."
+    }
+  ],
+  "market_snapshot": {
+    "observed_at_utc": "2026-11-10T14:01:00Z",
+    "morpho_cbxrp_usdc": {
+      "chain_id": 8453,
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "loan_token": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+      "collateral_token": "0xcb585250f852b6e08f4c7c32d4f71b54bda02913",
+      "oracle": "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde",
+      "supplied_usdc_usd_millions": 62.93,
+      "borrowed_usdc_usd_millions": 55.37,
+      "available_usdc_usd_millions": 7.56,
+      "utilization_pct": 88,
+      "collateral_cbxrp_millions": 120.4,
+      "collateral_value_usd_millions": 128.6,
+      "borrowers_or_open_loans": 11694,
+      "borrow_apy_pct": 6.98,
+      "supply_apy_pct": 6.12,
+      "lltv_pct": 62.5,
+      "liquidation_bonus_pct": 12.68,
+      "oracle_price_usdc": 1.07,
+      "displayed_cbxrp_price_usdc": 1.068,
+      "liquidations_last_30d": 1479,
+      "debt_repaid_last_30d_usd_millions": 6.27,
+      "displayed_top_borrower_health_factor": 1.03,
+      "displayed_top_borrower_price_drop_to_liquidation_pct": 3,
+      "largest_three_vaults_supply_usd_millions": 44.5,
+      "largest_three_vaults_share_pct": 70.7135,
+      "top_ten_vaults_supply_usd_millions": 53.09,
+      "top_ten_vaults_share_pct": 84.3636,
+      "source_timestamp_utc": "2026-11-10T14:01:00Z",
+      "source": "Morpho Watch, data from Morpho API",
+      "model_eligible": false,
+      "model_exclusion": "Scheduled Barrot Morpho parser retains these sources digest-only/raw-only. Direct block-height and borrower-state reconciliation is required."
+    },
+    "coinbase_cbxrp_reserves": {
+      "reserve_xrp": 152372342.33,
+      "cbxrp_supply": 152370095.8,
+      "displayed_surplus_xrp": 2246.53,
+      "displayed_refresh_local": "2026-11-10 09:34",
+      "refresh_timezone": "unspecified",
+      "model_eligible": false
+    },
+    "indicative_cbxrp_collateral_share": {
+      "formula": "120.40M cbXRP in Morpho market / 152.3700958M displayed Coinbase cbXRP supply",
+      "value_pct": 79.0181,
+      "model_eligible": false,
+      "limitation": "Source timestamps are not synchronized; reserve page timezone is unspecified."
+    },
+    "coinbase_business": {
+      "q3_2026_market_share_pct": 10.7,
+      "assets_on_platform_market_share_pct": 12.5,
+      "average_usdc_held_usd_billions": 22,
+      "subscription_and_services_share_of_net_revenue_pct": 49,
+      "prediction_markets_annualized_revenue_usd_millions": 200,
+      "crypto_derivatives_volume_two_year_cagr_pct": 179,
+      "q3_net_income_usd_millions": 718.7,
+      "q3_adjusted_ebitda_usd_millions": 332.9
+    },
+    "circle_business": {
+      "average_usdc_circulation_usd_billions": 73.3,
+      "end_period_usdc_circulation_usd_billions": 73.9,
+      "q3_usdc_onchain_volume_usd_trillions": 13.9,
+      "q3_total_revenue_and_reserve_income_usd_millions": 865,
+      "q3_reserve_income_usd_millions": 658,
+      "q3_other_revenue_usd_millions": 207,
+      "arc_presale_revenue_component_usd_millions": 182,
+      "q3_distribution_transaction_other_costs_usd_millions": 412,
+      "q3_net_income_usd_millions": 226,
+      "q3_adjusted_ebitda_usd_millions": 317,
+      "coinbase_distribution_costs_q3_usd_millions": 331.3,
+      "coinbase_distribution_costs_nine_months_usd_millions": 986.6,
+      "usdc_minted_q3_usd_billions": 104,
+      "usdc_redeemed_q3_usd_billions": 104,
+      "stablecoin_market_share_pct": 27
+    },
+    "spot_quality": {
+      "okx_xrp_usdt_provider_timestamp_utc": "2026-11-10T13:48:36.536Z",
+      "okx_age_at_capture_seconds": 1341.464,
+      "okx_model_eligible": false,
+      "kraken_provider_timestamp": null,
+      "kraken_identical_cached_payload_repeated": true,
+      "kraken_model_eligible": false,
+      "binance_depth_http_status": 403,
+      "okx_depth_http_status": 403,
+      "synchronized_post_cpi_cross_venue_quotes_available": false,
+      "interpretation": "403 is access failure, not zero liquidity. Kraken missing event time and OKX staleness exclude these observations."
+    },
+    "fed_pricing": {
+      "pre_release_cme_snapshot": {
+        "observed_at_utc": "2026-11-10T13:25:00Z",
+        "hike_25bp_pct": 97.8,
+        "hold_pct": 2.2,
+        "source": "Investing.com CME 30-Day Fed Funds futures monitor"
+      },
+      "post_release_cme_reports": [
+        {
+          "hike_25bp_pct": 86.4,
+          "hike_50bp_pct": 13.6,
+          "hold_pct": 0,
+          "source": "Barron's report of CME FedWatch",
+          "capture_time": "after 13:30 UTC; exact minute unavailable"
+        },
+        {
+          "hike_25bp_pct": 90,
+          "hike_50bp_pct": 10,
+          "hold_pct": 0,
+          "source": "WSJ report of CME futures",
+          "capture_time": "after 13:30 UTC; exact minute unavailable"
+        }
+      ],
+      "model_eligible": false,
+      "interpretation": "The post-release reports agree that a 50bp tail appeared, but their exact probabilities differ. They share CME underlying data and are not independent market venues. Do not average."
+    },
+    "etf_flows": {
+      "november_9_status": "partial",
+      "cryptoetf_funds_reported": 3,
+      "cryptoetf_funds_expected": 5,
+      "cryptoetf_net_flow_usd_millions_approx": -10.3,
+      "cryptokeyhole_funds_reported": 3,
+      "cryptokeyhole_funds_expected": 4,
+      "cryptokeyhole_net_flow_xrp_millions_approx": -9.217,
+      "xrp_insights_latest_settled_row": "2026-11-09",
+      "model_eligible": false,
+      "interpretation": "Issuer holdings-derived changes and overlapping aggregators are not verified net cash, spot execution or independent confirmations."
+    }
+  },
+  "observations": [
+    {
+      "id": "OBS-COINBASE-OCC-20261106",
+      "classification": "confirmed_regulatory_and_issuer_claim",
+      "claim": "Coinbase announced final OCC approval for Coinbase National Trust Company on November 9; the OCC filing record identifies the charter as consummated/effective November 6, 2026.",
+      "evidence": [
+        "coinbase_occ_final_approval",
+        "occ_coinbase_cas_record"
+      ],
+      "limitations": [
+        "This is a national trust-company charter, not proof of an FDIC-insured commercial deposit bank.",
+        "The charter does not establish XRP-specific custody balances, purchases, collateral or settlement volumes."
+      ]
+    },
+    {
+      "id": "OBS-PNC-USDC-PILOT-20261109",
+      "classification": "confirmed_company_announced_pilot",
+      "claim": "Eligible PNC Corporate and Institutional Banking clients in a pilot can receive USDC through Coinbase Payment APIs; incoming USDC is automatically converted 1-to-1 to USD and deposited into a designated PNC account.",
+      "evidence": [
+        "coinbase_pnc_usdc_pilot"
+      ],
+      "limitations": [
+        "Only Coinbase's announcement was located; no independent PNC release or pilot transaction volume was verified.",
+        "The described asset is USDC; no XRP, XRPL or RLUSD leg is specified."
+      ]
+    },
+    {
+      "id": "OBS-COINBASE-Q3-2026-STRATEGIC-POSITION",
+      "classification": "issuer_reported_financial_and_operating_metrics",
+      "claim": "Coinbase reported 10.7% crypto trading-volume market share, 12.5% assets-on-platform share, $22B average USDC held in Coinbase products, subscription/services revenue equal to 49% of Q3 net revenue, $200M annualized prediction-market revenue and 179% two-year CAGR in crypto derivatives volume.",
+      "evidence": [
+        "coinbase_q3_2026_release",
+        "coinbase_q3_2026_10q"
+      ],
+      "limitations": [
+        "Company-reported metrics; none is XRP-specific.",
+        "Average USDC balances are not equivalent to new net USDC issuance or XRP purchases."
+      ]
+    },
+    {
+      "id": "OBS-COINBASE-CIRCLE-RENEWAL",
+      "classification": "confirmed_issuer_filing",
+      "claim": "Coinbase's Q3 10-Q says its arrangement with Circle was renewed on the same terms; Coinbase also reported Q3 stablecoin revenue and record average USDC balances.",
+      "evidence": [
+        "coinbase_q3_2026_10q"
+      ],
+      "limitations": [
+        "Coinbase's recognized stablecoin revenue is not identical to Circle's distribution-cost measure.",
+        "The arrangement concerns USDC economics, not XRP demand."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-Q3-2026-ECONOMICS",
+      "classification": "issuer_reported_financial_and_operating_metrics",
+      "claim": "Circle reported $73.3B average USDC circulation, $13.9T Q3 onchain transaction volume, $865M revenue and reserve income, $658M reserve income, $207M other revenue including $182M ARC presale revenue, $412M distribution/transaction/other costs and $226M net income.",
+      "evidence": [
+        "circle_q3_2026_release",
+        "circle_q3_2026_10q"
+      ],
+      "limitations": [
+        "Gross onchain transaction volume is not net capital inflow.",
+        "ARC presale revenue is a distinct non-recurring component; do not treat it as recurring USDC economics.",
+        "USDC issuer metrics are not XRPL-specific."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-COINBASE-DISTRIBUTION-COSTS",
+      "classification": "confirmed_issuer_filing",
+      "claim": "Circle reported $331.3M of Q3 distribution costs in connection with agreements with Coinbase and $986.6M for the first nine months; allocations depend on USDC held on Coinbase after issuer retention and broader ecosystem-growth arrangements.",
+      "evidence": [
+        "circle_q3_2026_10q"
+      ],
+      "limitations": [
+        "These are Circle-incurred distribution costs, not a direct measure of Coinbase-recognized revenue or XRP flows.",
+        "Do not net these costs against Coinbase's reported stablecoin revenue."
+      ]
+    },
+    {
+      "id": "OBS-MORPHO-CBXRP-MARKET-20261110T1401Z",
+      "classification": "timestamped_onchain_market_aggregator_snapshot",
+      "claim": "At 14:01 UTC MorphoWatch/Morpho API showed $62.93M USDC supplied, $55.37M borrowed, 88.0% utilization, $7.56M available, 120.40M cbXRP collateral valued at $128.6M, 11,694 open loans, 6.98% borrow APY, 6.12% supply APY, 62.5% LLTV and 12.68% liquidation bonus.",
+      "evidence": [
+        "morpho_cbxrp_usdc_market",
+        "coinbase_xrp_collateral_help"
+      ],
+      "limitations": [
+        "MorphoWatch is an aggregator of Morpho API data; direct on-chain block-height reconciliation is still required.",
+        "This is a Base/Morpho market, not native XRPL lending.",
+        "Collateral usage does not prove new XRP spot purchases or net external capital."
+      ]
+    },
+    {
+      "id": "OBS-MORPHO-LIQUIDATION-RISK-20261110",
+      "classification": "sourced_market_risk_observation",
+      "claim": "MorphoWatch reported 1,479 liquidations in the preceding 30 days with $6.27M debt repaid; one displayed top borrower had health factor 1.03 and a 3.0% price drop to liquidation.",
+      "evidence": [
+        "morpho_cbxrp_usdc_market"
+      ],
+      "limitations": [
+        "The health factor is borrower-specific, not a market-wide average.",
+        "Historical liquidations are not a forecast of future liquidations."
+      ]
+    },
+    {
+      "id": "OBS-MORPHO-LENDER-CONCENTRATION-20261110",
+      "classification": "derived_from_sourced_market_snapshot",
+      "claim": "The three largest listed vaults supplied $44.50M, approximately 70.71% of the market's $62.93M supply; the ten listed vaults supplied $53.09M, approximately 84.36%.",
+      "evidence": [
+        "morpho_cbxrp_usdc_market"
+      ],
+      "limitations": [
+        "Vault concentration is not the same as beneficial lender concentration; direct suppliers and vault depositors can overlap.",
+        "Derived from a single timestamped Morpho API snapshot."
+      ]
+    },
+    {
+      "id": "OBS-CBXRP-RESERVE-RECONCILIATION-20261110",
+      "classification": "issuer_reported_reserve_and_supply_snapshot",
+      "claim": "Coinbase's proof-of-reserves page displayed 152,372,342.33 XRP reserve against 152,370,095.8 cbXRP supply, a displayed surplus of 2,246.53 XRP.",
+      "evidence": [
+        "coinbase_cbxrp_proof_of_reserves"
+      ],
+      "limitations": [
+        "Displayed refresh time is 9:34 AM but timezone is unspecified.",
+        "This is Coinbase's own reserve dashboard, not an independent custodian attestation."
+      ]
+    },
+    {
+      "id": "OBS-CBXRP-MORPHO-SUPPLY-SHARE-20261110",
+      "classification": "derived_non_admitted_ratio",
+      "claim": "120.40M cbXRP in the Morpho market divided by 152.3700958M displayed cbXRP supply is approximately 79.02%.",
+      "evidence": [
+        "morpho_cbxrp_usdc_market",
+        "coinbase_cbxrp_proof_of_reserves"
+      ],
+      "limitations": [
+        "Source timestamps are not synchronized and Coinbase does not publish market allocation; this ratio is indicative only and is not model-admitted."
+      ]
+    },
+    {
+      "id": "OBS-CPI-POST-RELEASE-FED-PRICING-20261110",
+      "classification": "macro_event_with_disagreeing_market_snapshots",
+      "claim": "The pre-release CME futures snapshot at 08:25 ET showed 97.8% for a 25bp December hike and 2.2% hold. Post-release media reports described CME pricing of either 86.4% for 25bp plus 13.6% for 50bp, or approximately 90%/10%; the common signal is that a 50bp tail appeared while a December hike remained priced as certain.",
+      "evidence": [
+        "bls_october_2026_cpi",
+        "investing_cme_pre_cpi",
+        "barrons_cme_post_cpi",
+        "wsj_cme_post_cpi"
+      ],
+      "limitations": [
+        "Post-release capture minutes differ or are undisclosed; preserve snapshots and do not average.",
+        "Barron's and WSJ report the same underlying CME market, not independent market venues.",
+        "This is a macro policy-pricing feature, not an XRP price signal."
+      ]
+    },
+    {
+      "id": "OBS-SPOT-STALE-AND-DEPTH-ACCESS-20261110",
+      "classification": "data_quality_quarantine",
+      "claim": "The OKX XRP-USDT ticker provider timestamp was 13:48:36.536 UTC, 1,341.464 seconds before the 14:10:58 UTC capture; Kraken supplied no provider timestamp and repeated an identical cached payload. Binance and OKX depth API requests returned HTTP 403 in this retrieval path.",
+      "evidence": [
+        "okx_xrp_usdt_ticker",
+        "kraken_xrp_usd_ticker"
+      ],
+      "limitations": [
+        "HTTP 403 means the source was inaccessible through this retrieval path, not that market depth was zero.",
+        "No synchronized cross-venue post-CPI spot/depth snapshot was available."
+      ]
+    },
+    {
+      "id": "OBS-ETF-PARTIAL-FLOW-20261109",
+      "classification": "partial_issuer_holdings_derived_flow",
+      "claim": "Two public aggregators reported partial November 9 XRP ETF outflows of roughly $10.1M-$10.3M across three funds; XRP Insights' holdings-derived dataset has a November 9 settled row but different fund coverage and exclusion rules.",
+      "evidence": [
+        "xrp_insights_etf_dataset",
+        "cryptoetf_xrp_flows",
+        "cryptokeyhole_xrp_flows"
+      ],
+      "limitations": [
+        "Aggregators overlap issuer source files and are not independent confirmations.",
+        "Holdings changes are not verified cash subscriptions, in-kind redemptions or spot executions.",
+        "ETF flows remain model-ineligible until fund universe, vintage, settlement method and source rows reconcile."
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Coinbase National Trust Company",
+      "to": "Office of the Comptroller of the Currency",
+      "relation": "national_trust_charter_final_approval",
+      "status": "confirmed",
+      "evidence": [
+        "coinbase_occ_final_approval",
+        "occ_coinbase_cas_record"
+      ],
+      "limitation": "Custody charter does not establish XRP-specific balances or FDIC-insured deposit banking."
+    },
+    {
+      "from": "Coinbase",
+      "to": "PNC Bank",
+      "relation": "stablecoin_payment_infrastructure_pilot",
+      "status": "confirmed_company_announced",
+      "evidence": [
+        "coinbase_pnc_usdc_pilot"
+      ],
+      "limitation": "Pilot scope and volumes undisclosed; no independent PNC confirmation located."
+    },
+    {
+      "from": "PNC Bank",
+      "to": "USDC",
+      "relation": "receive_then_convert_1_to_1_to_usd",
+      "status": "confirmed_pilot_design",
+      "evidence": [
+        "coinbase_pnc_usdc_pilot"
+      ],
+      "limitation": "No XRP/XRPL route specified."
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC_distribution_and_economic_arrangement",
+      "status": "confirmed_sec_filings",
+      "evidence": [
+        "coinbase_q3_2026_10q",
+        "circle_q3_2026_10q"
+      ],
+      "limitation": "Distribution costs and Coinbase revenue are different accounting measures."
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "stablecoin_issuer_and_reserve_economics",
+      "status": "confirmed_issuer_filings",
+      "evidence": [
+        "circle_q3_2026_release",
+        "circle_q3_2026_10q"
+      ],
+      "limitation": "Issuer-wide volume does not identify XRPL-specific use or XRP conversion."
+    },
+    {
+      "from": "Coinbase",
+      "to": "Morpho",
+      "relation": "customer_interface_for_xrp_backed_usdc_borrowing",
+      "status": "confirmed_product_and_market_mapping",
+      "evidence": [
+        "coinbase_xrp_collateral_help",
+        "morpho_cbxrp_usdc_market"
+      ],
+      "limitation": "Morpho is the lending protocol; Coinbase is not the protocol operator."
+    },
+    {
+      "from": "cbXRP",
+      "to": "Morpho Base cbXRP/USDC market",
+      "relation": "posted_collateral",
+      "status": "sourced_onchain_market_snapshot",
+      "evidence": [
+        "morpho_cbxrp_usdc_market"
+      ],
+      "limitation": "Requires direct block-height/onchain reconciliation before model admission."
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "relation": "RLUSD_distribution_and_multichain_support",
+      "status": "confirmed_joint_announcement",
+      "evidence": [
+        "coinbase_ripple_rlusd_listing"
+      ],
+      "limitation": "RLUSD support on XRPL does not imply XRP is used as settlement asset."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "RUN131B::H1-USDC-bank-rail-expansion",
+      "claim": "Coinbase's PNC pilot and Circle's distribution network can expand institutional USDC payment access and strengthen Coinbase's payments position.",
+      "support": [
+        "PNC pilot uses Coinbase Payment APIs and USD conversion.",
+        "Coinbase reports $22B average USDC held; Circle reports $73.3B average USDC circulation and $13.9T Q3 onchain volume.",
+        "Circle reports $331.3M Q3 distribution costs connected with Coinbase agreements."
+      ],
+      "disconfirming_or_missing": [
+        "Pilot transaction volume, active client count and net settlement capital are undisclosed.",
+        "USDC gross onchain volume includes transfers that are not new capital.",
+        "The described PNC pilot does not specify XRP or XRPL."
+      ],
+      "tests": [
+        "Obtain PNC/Coinbase pilot volume and active-client disclosures.",
+        "Reconcile USDC issuance/redemption and onchain flows by chain and counterparty.",
+        "Measure incremental USDC balances separately from gross transaction volume."
+      ]
+    },
+    {
+      "id": "RUN131B::H2-Coinbase-multirail-access-not-xrp-demand",
+      "claim": "Coinbase's custody, USDC, RLUSD and cbXRP products form a multi-asset distribution strategy that can broaden access to XRP without proving net XRP acquisition or XRP settlement demand.",
+      "support": [
+        "Coinbase National Trust Company received final OCC approval.",
+        "Coinbase supports RLUSD on XRPL, Base and Ethereum.",
+        "Coinbase's Morpho-enabled product permits USDC borrowing against cbXRP."
+      ],
+      "disconfirming_or_missing": [
+        "No XRP-specific institutional custody balance or incremental spot purchase was established.",
+        "RLUSD and USDC transfers can settle without XRP as intermediary.",
+        "Custody and collateral are not equivalent to proprietary holdings or market purchases."
+      ],
+      "tests": [
+        "Track XRP and cbXRP reserve changes with exact timestamps and onchain receipts.",
+        "Measure XRP conversion routing on XRPL and Coinbase venues.",
+        "Separate custody assets, wrapped supply, collateral, customer holdings and proprietary inventory."
+      ]
+    },
+    {
+      "id": "RUN131B::H3-cbxrp-liquidity-vs-liquidation",
+      "claim": "cbXRP-backed USDC borrowing can provide liquidity without immediate XRP sale but can also create forced-sale pressure during collateral drawdowns.",
+      "support": [
+        "Morpho market has $55.37M USDC debt and 120.40M cbXRP collateral.",
+        "Utilization is 88%; 1,479 liquidations and $6.27M debt repaid were reported over 30 days.",
+        "One displayed borrower has health factor 1.03 and 3% price distance to liquidation."
+      ],
+      "disconfirming_or_missing": [
+        "Market-level aggregates do not identify borrower-level net exposure or likely liquidation timing.",
+        "Borrowers can repay or add collateral; liquidation collateral need not be sold on spot immediately.",
+        "The MorphoWatch page is an aggregator; direct block-level verification remains pending."
+      ],
+      "tests": [
+        "Capture exact Morpho market state, borrower health distribution, oracle rounds and liquidation transactions at block height.",
+        "Reconcile seized cbXRP disposition and subsequent exchange deposits/sales.",
+        "Model both hold/borrow and liquidation pathways separately."
+      ]
+    },
+    {
+      "id": "RUN131B::H4-CPI-tightening-tail-risk",
+      "claim": "The hotter October CPI release and post-release Fed pricing increase the near-term risk of tighter financial conditions, which can pressure high-beta crypto assets.",
+      "support": [
+        "BLS reports headline CPI +0.4% m/m and core +0.3% m/m; both exceeded Reuters preview consensus by 0.1pp.",
+        "Post-release CME reporting introduced a 50bp December hike probability of approximately 10%-13.6%.",
+        "Cross-asset reporting describes higher Treasury yields and lower Bitcoin after the release."
+      ],
+      "disconfirming_or_missing": [
+        "Post-release Fed pricing sources disagree and exact capture times are unavailable.",
+        "No synchronized XRP/BTC/UST/DXY pre/post event window was captured.",
+        "A macro surprise does not establish a causal XRP return."
+      ],
+      "tests": [
+        "Capture timestamped CME futures, Treasury yields, DXY, BTC and XRP across identical event windows.",
+        "Estimate event response only after controlling for concurrent news and market beta.",
+        "Retain source-level market-pricing snapshots rather than averaging them."
+      ]
+    },
+    {
+      "id": "RUN131B::H5-ETF-redemptions-vs-holdings-reclassification",
+      "claim": "November 9 ETF outflows may indicate reduced fund demand, but incomplete fund coverage and holdings-derived methodologies prevent interpreting them as verified spot selling.",
+      "support": [
+        "CryptoETF and CryptoKeyhole report partial three-fund outflow observations.",
+        "XRP Insights publishes issuer-holdings-derived changes and explicitly documents exclusions/reconstruction."
+      ],
+      "disconfirming_or_missing": [
+        "Fund universes differ and pending funds can materially change the daily total.",
+        "Cash versus in-kind redemptions and secondary-market trades are unresolved.",
+        "The aggregators share issuer data and are not independent confirmations."
+      ],
+      "tests": [
+        "Reconcile every issuer file, NAV, shares outstanding, XRP holdings, cash/in-kind creation/redemption and timestamp.",
+        "Separate fund-level flows from spot execution and custody movements.",
+        "Keep incomplete days out of directional features."
+      ]
+    }
+  ],
+  "data_quality": {
+    "no_averaging_policy": "Do not average market-pricing snapshots with different capture times or instruments. Do not treat aggregators of the same issuer files as independent. Preserve source-level disagreement.",
+    "quarantined_observations": [
+      "OBS-CBXRP-MORPHO-SUPPLY-SHARE-20261110",
+      "OBS-SPOT-STALE-AND-DEPTH-ACCESS-20261110",
+      "OBS-ETF-PARTIAL-FLOW-20261109",
+      "OBS-CPI-POST-RELEASE-FED-PRICING-20261110"
+    ],
+    "raw_source_hash_status": "No manual web source was represented as a raw-byte SHA-256 receipt. Scheduled HTTP collector remains the required path for immutable raw-source hashing."
+  },
+  "model_admission": {
+    "coinbase_occ_charter": "Institutional/regulatory event only; not an XRP flow feature.",
+    "pnc_usdc_pilot": "Event record only; no pilot volume or XRP path.",
+    "coinbase_q3": "Quarterly company-level context; not XRP-specific.",
+    "circle_q3": "Quarterly issuer-level context; not XRPL-specific.",
+    "cbxrp_morpho": "Raw/digest-only pending direct block-height reconciliation and borrower-level historical replay.",
+    "coinbase_cbxrp_reserves": "Raw/digest-only; timezone and independent attestation limitations.",
+    "cpi_headline_core": "May be admitted as first-release macro event values with release ID and exact 13:30 UTC timestamp; no directional implication.",
+    "fed_rate_pricing": "Not admitted until exact post-release capture times and source definitions are reconciled.",
+    "spot_tickers": "Excluded due missing/stale provider timestamps.",
+    "etf_flows": "Excluded while fund coverage, settlement type and holdings-vs-cash distinctions remain unresolved."
+  },
+  "predictions": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized post-CPI multi-venue XRP spot/depth window and no new leakage-safe out-of-sample evaluation or shadow outcomes. Macro, institutional and collateral observations are context, not a calibrated directional signal.",
+    "target": null,
+    "horizon": null,
+    "probabilities": null,
+    "confidence": null,
+    "alternatives": [
+      "risk-off repricing from higher expected Fed path",
+      "macro tightening already largely priced before CPI",
+      "USDC/Coinbase institutional rail expansion without XRP value capture",
+      "cbXRP collateral utility supporting holders",
+      "cbXRP liquidations increasing procyclical sell pressure",
+      "partial ETF outflows reflecting fund-specific holdings changes"
+    ]
+  },
+  "platform_map": [
+    {
+      "platform": "ChatGPT",
+      "status": "tested_current_runtime",
+      "authentication": "Current ChatGPT runtime successfully used connected GitHub access and public web retrieval in this run.",
+      "permission_scope": "Read/write on the existing integration branch; no main write, secrets, branch-protection administration, deployment or external-model transfer."
+    },
+    {
+      "platform": "Claude",
+      "status": "not_tested",
+      "authentication": "No authenticated live connection or data flow tested.",
+      "permission_scope": "No repository or evidence access granted."
+    },
+    {
+      "platform": "Grok",
+      "status": "not_tested",
+      "authentication": "No authenticated live connection or data flow tested.",
+      "permission_scope": "No repository or evidence access granted."
+    },
+    {
+      "platform": "Gemini",
+      "status": "not_tested",
+      "authentication": "No authenticated live connection or data flow tested.",
+      "permission_scope": "No repository or evidence access granted."
+    },
+    {
+      "platform": "Copilot",
+      "status": "not_tested",
+      "authentication": "GitHub review-bot comments exist, but no separate authenticated Copilot task handoff or persistent data flow was tested.",
+      "permission_scope": "Review comments do not establish live agent collaboration or approval."
+    },
+    {
+      "platform": "Codex",
+      "status": "not_tested",
+      "authentication": "No authenticated live connection or data flow tested.",
+      "permission_scope": "No repository or evidence access granted."
+    },
+    {
+      "platform": "Hugging Face",
+      "status": "workflow_reference_only",
+      "authentication": "No successful authenticated Space operation was tested in this run; prior BUILD_ERROR remains recorded.",
+      "permission_scope": "No upload, restart or external mutation."
+    },
+    {
+      "platform": "Kaggle",
+      "status": "not_tested",
+      "authentication": "No authenticated live connection or data flow tested.",
+      "permission_scope": "No submission or dataset write."
+    },
+    {
+      "platform": "Databricks",
+      "status": "workflow_reference_only",
+      "authentication": "No successful authenticated workspace connection was tested; prior HTTP 403 remains recorded.",
+      "permission_scope": "No workspace write or job execution."
+    }
+  ],
+  "agent_exchange_contract": {
+    "schema": "source_id, publisher_group, retrieved_at_utc, source_event_time_utc, claim, classification, evidence_refs, limitations, disconfirming_evidence, hypothesis_id, test_spec, reviewer_objection",
+    "disagreement_policy": "Preserve minority objections and publisher-lineage conflicts. Resolve only with primary evidence, timestamp alignment, source independence and reproducible tests; never force consensus.",
+    "least_privilege_policy": "Read-only public sources by default; no external model receives repository files unless a separately authenticated and approved adapter is tested.",
+    "adapter_status": "Architecture designed; only ChatGPT/GitHub access tested in this runtime. Other platform adapters are not live collaborators."
+  },
+  "blockers": [
+    "PR #1640 has zero APPROVED reviews despite 62 COMMENTED reviews and 22/22 resolved outdated threads.",
+    "GitHub Pages can publish automatically after a main push; the user has not separately authorized that external publication.",
+    "Detailed branch-protection configuration remains inaccessible; branch API reports protected=true but empty required-status contexts.",
+    "Main has no XRP public-ingestion module or scheduled workflow; no successful scheduled main run exists.",
+    "Raw web research in this addendum does not include original HTTP bytes or raw SHA-256 receipts.",
+    "Coinbase reserve refresh timezone is unspecified; Morpho and reserve timestamps cannot be aligned.",
+    "Spot and order-book data are stale or inaccessible; no synchronized post-CPI XRP event window.",
+    "Post-release CME probability snapshots differ and have no exact capture minute.",
+    "PR #1643 remains stale, dirty and unverified at its current head."
+  ],
+  "next_actions": [
+    "Add a versioned BLS/PCE/Fed/Treasury/FX/energy event adapter to the existing public ingestion pipeline with raw-byte receipts, first-release vintages and exact availability timestamps.",
+    "Add direct Morpho API/onchain block-height verification for market state, oracle rounds, borrower health and liquidation transactions; keep digest-only until tests pass.",
+    "Capture synchronized XRP/USD and XRP/USDT spot tickers and L2 books from multiple venues, preserving quote currency and provider timestamps.",
+    "Reconcile ETF issuer files, fund coverage, cash/in-kind creations/redemptions and spot executions before feature admission.",
+    "Implement event timelines, scenario/counter-hypothesis generation and a shadow-evaluation runner; preserve no-forecast gating.",
+    "Resolve PR #1640's independent approval and Pages publication blocker before merge; do not merge or deploy while either remains.",
+    "Prepare a current-main successor for the unique #1643 research archive only after #1640's integration decision; retain its 663 unique paths."
+  ]
+}

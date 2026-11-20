@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "20261107T200308Z-evernorth-sbi-ownership-cross-filing-reconciliation",
+  "artifact_type": "append_only_cross_filing_ownership_correction",
+  "captured_at_utc": "2026-11-07T20:03:08Z",
+  "supersedes_interpretation_of": "research/xrp_intelligence/20261107T200308Z-sbic-evernorth-capital-askcoin-kamilah-live-market-reconciliation.json",
+  "correction_scope": "SBI Holdings' Evernorth class allocation and ownership percentages only. The earlier artifact preserves the October 9 Form 8-K snapshot. This artifact adds the later October 30 Form 424B3 schedule and explicitly records the unresolved cross-filing difference.",
+  "issuer": "Evernorth Holdings Inc.",
+  "latest_published_schedule": {
+    "filing_date": "2026-10-30",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+    "sbi_entity_definition": "The 424B3 defines 'SBI' as SBI Holdings, Inc. and 'SBI Stockholders' as SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc.",
+    "sbi_class_a_shares": 9431914,
+    "sbi_class_c_shares": 2359038,
+    "sbi_pubco_common_stock_percent": 21.4,
+    "sbi_voting_power_percent": 39.9,
+    "total_class_a_shares": 23638882,
+    "total_class_c_shares": 31392746,
+    "total_company_units": 22953128,
+    "sbi_company_units": 0,
+    "class_c_rights": "Non-voting; convertible into Class A under the charter.",
+    "interpretation": "SBI Holdings is the largest single disclosed voting holder in the October 30 pro forma table at 39.9% voting power, not a majority holder. Its 21.4% figure is the filing's share of Pubco Common Stock (Class A plus Class C) and should not be described as total fully diluted equity because separate Company Units and potential conversions also exist."
+  },
+  "prior_closing_schedule": {
+    "filing_date": "2026-10-13",
+    "event_date": "2026-10-09",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+    "sbi_class_a_shares": 8885293,
+    "sbi_class_c_shares": 2905659,
+    "class_a_total": 22268905,
+    "class_c_total": 32211992,
+    "sbi_percent_of_class_a": 39.9,
+    "sbi_percent_of_class_c": 9,
+    "class_a_rights": "Voting",
+    "class_c_rights": "Non-voting"
+  },
+  "reconciliation": {
+    "aggregate_sbi_class_a_plus_class_c_shares_in_both_filings": 11790952,
+    "class_a_increase_in_later_424b3": 546621,
+    "class_c_decrease_in_later_424b3": 546621,
+    "arithmetic": "8,885,293 + 2,905,659 = 9,431,914 + 2,359,038 = 11,790,952.",
+    "denominator_change": {
+      "prior_8k_class_a_plus_class_c": 54480897,
+      "later_424b3_class_a_plus_class_c": 55031628,
+      "difference": 550731
+    },
+    "status": "UNRESOLVED_CROSS_FILING_CAP_TABLE_DIFFERENCE",
+    "conclusion": "The later prospectus reports the same aggregate SBI A+C share count but reallocates 546,621 shares between the reported Class A and Class C categories. The overall Class A/Class C denominators also change. No explicit bridge explaining the difference was located. Preserve both dated disclosures; use the October 30 schedule as the latest published ownership table without claiming the difference represents a transfer, correction or completed conversion."
+  },
+  "latest_table_other_holders": {
+    "sponsor": {
+      "common_stock_percent": 61.4,
+      "voting_power_percent": 19.9
+    },
+    "ripple_contributor": {
+      "common_stock_percent": 3,
+      "voting_power_percent": 7.1
+    },
+    "contributor_related_party_entity": {
+      "common_stock_percent": 1.2,
+      "voting_power_percent": 2.8
+    },
+    "other_advance_and_delayed_subscribers": {
+      "common_stock_percent": 4.2,
+      "voting_power_percent": 9.8
+    },
+    "spac_public_shareholders": {
+      "common_stock_percent": 8.8,
+      "voting_power_percent": 20.5
+    }
+  },
+  "source_receipts": [
+    {
+      "source_id": "evernorth_424b3_sbi_table",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "independence_group": "evernorth_sec_424b3_oct30",
+      "source_type": "issuer_sec_filing_ownership_table",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "filing_date": "2026-10-30",
+      "lines": "2397-2407; definitions 343-344; SBI footnote 3484",
+      "captured_excerpt_text": "Evernorth's October 30, 2026 Form 424B3 pro forma capitalization table lists SBI (defined in the filing as SBI Holdings, Inc.) with 9,431,914 Pubco Class A shares, 2,359,038 Pubco Class C shares, 21.4% of outstanding Pubco Common Stock and 39.9% of voting power. The same table lists 23,638,882 Class A shares, 31,392,746 Class C shares and 22,953,128 Company Units in total. The SBI row has no Company Units. The filing's footnote identifies the four SBI Stockholders as SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc.",
+      "captured_excerpt_sha256": "4e564014ab0217acf934f04813e8ff773f143a9d79756e3df16fcc5194fe4267",
+      "model_eligible": false
+    },
+    {
+      "source_id": "evernorth_8k_sbi_table",
+      "publisher": "Evernorth Holdings Inc. / U.S. SEC",
+      "independence_group": "evernorth_sec_8k_oct09",
+      "source_type": "issuer_sec_filing_ownership_table",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+      "filing_date": "2026-10-13",
+      "event_date": "2026-10-09",
+      "lines": "258-318",
+      "captured_excerpt_text": "Evernorth's October 9, 2026 closing Form 8-K beneficial-ownership table lists SBI Holdings, Inc. with 8,885,293 Class A shares (39.9% of Class A) and 2,905,659 Class C shares (9.0% of Class C), against 22,268,905 Class A and 32,211,992 Class C shares outstanding. Class A is voting and Class C is non-voting.",
+      "captured_excerpt_sha256": "9d96e36aadcbf6ba7ae38092ab6600efb09942b2f4e57c4d3b1765f7325a1b3d",
+      "model_eligible": false
+    },
+    {
+      "source_id": "evernorth_sbi_cross_filing",
+      "publisher": "Cross-filing arithmetic reconciliation",
+      "independence_group": "derived_from_two_issuer_sec_filings",
+      "source_type": "derived_source_reconciliation",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm"
+      ],
+      "captured_excerpt_text": "The October 9 Form 8-K and October 30 Form 424B3 disclose different SBI class allocations. The 8-K reports 8,885,293 Class A plus 2,905,659 Class C; the later 424B3 reports 9,431,914 Class A plus 2,359,038 Class C. Aggregate SBI A+C shares are identical in both (11,790,952), while 546,621 shares move from the reported Class C count to the reported Class A count. The later 424B3 states SBI has 21.4% of Pubco Common Stock and 39.9% of voting power. The filings' overall share denominators also differ; no explicit bridge reconciling the changed capitalization table was located. Preserve both dated snapshots; use the October 30 prospectus as the latest published schedule, not as proof of a completed transfer or correction.",
+      "captured_excerpt_sha256": "36b5cba4d50aeeaee5c8fbd1f3ad9f6d1d5310a47e5d9e9c8827edab889cd32b",
+      "model_eligible": false
+    }
+  ],
+  "prediction_relevance": {
+    "xrp_direct_holding": "Evernorth is an XRP treasury vehicle; SBI Holdings' equity stake is indirect exposure to Evernorth's XRP treasury and business, not the same as SBI Holdings directly holding the disclosed XRP tokens.",
+    "xrp_demand_signal": "The ownership table establishes capital alignment and voting exposure, but does not establish additional spot XRP purchases, incremental exchange demand or future flows.",
+    "forecast_admission": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}

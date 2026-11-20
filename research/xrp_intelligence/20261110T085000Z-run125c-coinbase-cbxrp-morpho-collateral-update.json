@@ -1,0 +1,118 @@
+{
+  "run_id": "run125c",
+  "captured_at_utc": "2026-11-10T08:50:00Z",
+  "code_test_head": "ab70744f0ef0073f52933ff9908e8cec4204f5b8",
+  "exact_head_verification": {
+    "full_ci_run": 42785230391,
+    "tests": 1355,
+    "failures": 0,
+    "subtests": 8,
+    "coverage_percent": 59.48,
+    "core_tests": 677,
+    "dependency_audit_run": 42785230472,
+    "dependency_audit_manifests": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_gate_run": 42785230083,
+    "all_passed": true
+  },
+  "coinbase_cbxrp_proof_of_reserves": [
+    {
+      "locale": "en-US",
+      "displayed_refresh": "2026-11-10 02:04 AM",
+      "reserve_xrp": 151921083.53,
+      "supply_cbxrp": 151918836.99,
+      "excess_reserve_xrp": 2246.54,
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves"
+    },
+    {
+      "locale": "en-GB",
+      "displayed_refresh": "2026-11-10 04:44 AM",
+      "reserve_xrp": 152372342.33,
+      "supply_cbxrp": 152370095.8,
+      "excess_reserve_xrp": 2246.53,
+      "url": "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves"
+    },
+    {
+      "locale": "en-ES",
+      "displayed_refresh": "2026-11-10 06:34 AM",
+      "reserve_xrp": 152372342.33,
+      "supply_cbxrp": 152370095.8,
+      "excess_reserve_xrp": 2246.53,
+      "url": "https://www.coinbase.com/es-es/cbxrp/proof-of-reserves"
+    }
+  ],
+  "cbxrp_interpretation": "Coinbase explicitly states 1:1 backing. Locale pages expose different cached snapshots and displayed local refresh times; do not normalize their sequence without timezone metadata. The 152M cbXRP reserve attributed by XRP Insights is independently corroborated by Coinbase primary pages.",
+  "morpho_market": {
+    "chain_id": 8453,
+    "network": "Base",
+    "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+    "loan_token": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "collateral_token": "0xcb585250f852C6c6bf90434AB21A00f02833a4af",
+    "oracle": "0x031b2EFC8d70042Ac8d9f5c793c4149eC4b60fdE",
+    "irm": "0x46415998764C29aB2a25CbeA6254146D50D22687",
+    "lltv_percent": 62.5,
+    "creation_block": 40855874,
+    "primary_market_page": "https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp",
+    "primary_api_market_parameters": "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+    "api_docs": "https://docs.morpho.org/developers/api/morpho/",
+    "api_capabilities": "Public REST market params, total supply/borrow assets and shares, fee, oracle quote and historical state/APY. REST does not provide market-wide collateral totals or a market-wide borrower-health list; GraphQL remains served for existing integrations.",
+    "secondary_snapshots": [
+      {
+        "source": "Catenaa",
+        "published": "2026-11-08",
+        "snapshot_utc": "2026-11-08T02:21:00Z",
+        "usdc_debt": 58300000,
+        "cbxrp_collateral": 120600000,
+        "usdc_supply": 66300000,
+        "withdrawable_usdc": 8100000,
+        "supplier_apy_percent": 6.1,
+        "borrower_apy_percent": 7,
+        "utilization_percent": 88,
+        "debt_at_risk_in_10_percent_price_decline_usd": 8400000,
+        "liquidations_nov6_7": 384,
+        "usdc_repaid_nov6_7": 1600000,
+        "cbxrp_seized_nov6_7": 1530000,
+        "lifetime_liquidations_since_feb": 3713,
+        "bad_debt_reported": 0,
+        "url": "https://catenaa.com/markets/cryptocurrencies/cbxrp-loans-morpho-liquidation-risk/"
+      },
+      {
+        "source": "CryptoSlate",
+        "published": "2026-11-07",
+        "snapshot_utc": "2026-11-06T13:24:54Z",
+        "debt_within_10_percent_decline_usdc": 8844820.21,
+        "positions_within_10_percent": 1070,
+        "debt_within_5_percent_decline_usdc": 3229610.99,
+        "positions_within_5_percent": 462,
+        "assumption": "Debt and collateral quantities unchanged; 5% positions are included in the 10% set.",
+        "url": "https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/"
+      }
+    ],
+    "concentration_estimate_percent": 79.15,
+    "concentration_note": "120.6M cbXRP collateral divided by a later 152.370M Coinbase proof-of-reserves supply is an indicative cross-date ratio, not a synchronized market share.",
+    "interpretation": "cbXRP liquidation pressure acts first on the Base wrapper and Morpho collateral market. Native XRP spot supply is affected only if seized cbXRP is redeemed or otherwise transmits into native XRP markets; no such sale is inferred."
+  },
+  "ingestion_gap": {
+    "current_public_source_records": 40,
+    "morpho_sources_registered": false,
+    "coinbase_cbxrp_por_registered": false,
+    "next_step": "Add public Morpho market params/state/oracle/history and Coinbase cbXRP proof-of-reserves as separately timestamped sources; preserve the REST limitation on aggregate borrower health and do not infer native XRP sales from cbXRP liquidations."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "provenance": {
+    "web_original_transport_bytes_preserved": false,
+    "sha256_receipts": null,
+    "model_admission": false
+  },
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "merge": false,
+    "close_prs": false,
+    "deploy": false,
+    "external_model_transfer": false,
+    "paper_trade": false,
+    "real_money": false,
+    "force_push": false
+  }
+}

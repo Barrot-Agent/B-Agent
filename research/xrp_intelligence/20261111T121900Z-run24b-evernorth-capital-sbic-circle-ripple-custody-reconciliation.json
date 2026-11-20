@@ -1,0 +1,193 @@
+{
+  "artifact_type": "evernorth_primary_capital_and_sbi_circle_ripple_sbic_reconciliation",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-11T12:19:00Z",
+  "status": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "precommit_sha": "3e73459f0fbe297b5ea16b556f188e625abd8712",
+    "pr": 1661
+  },
+  "evernorth": {
+    "sec_filing_date": "2026-11-09",
+    "reported_xrp_at_2026_10_09": 473276430,
+    "gross_cash_proceeds_at_closing_usd": 272600000,
+    "gross_cash_composition": {
+      "private_placement_cash_usd": 224600000,
+      "spac_trust_after_redemptions_usd": 48000000,
+      "before_transaction_expenses": true
+    },
+    "private_placement_composition": {
+      "advance_funding_cash_usd": 214049995,
+      "advance_funding_xrp": 600000,
+      "delayed_funding_cash_usd": 10500000,
+      "delayed_funding_xrp": 200000
+    },
+    "cash_used_to_buy_xrp": {
+      "xrp": 84365876.3625,
+      "average_price_usd": 2.53657058,
+      "source": "SEC Form 424B3"
+    },
+    "in_kind_xrp_contributions_total": 388910554,
+    "named_in_kind_components": {
+      "series_c_sponsor_xrp": 211319096.061435,
+      "ripple_related_party_entity_xrp": 50000000,
+      "advance_funding_xrp": 600000,
+      "delayed_funding_xrp": 200000
+    },
+    "sbi_cash_commitment_usd": 200000000,
+    "sbi_commitment_included_in_advance_pool": true,
+    "subscriber_level_sbi_allocation_disclosed": false,
+    "debt": {
+      "convertible_senior_pik_note_usd": 30000000,
+      "coupon_percent": 4,
+      "maturity_year": 2031,
+      "issued_date": "2026-10-12",
+      "proceeds_received_at_closing": true
+    },
+    "related_party_company_facility": {
+      "borrowed_as_of_2026_06_30_usd": 6600000,
+      "repayment_terms": "Within five business days after Closing, or earlier upon five business days' notice of demand by Ripple.",
+      "post_close_balance_or_repayment_status": "Not established by retrieved filing section."
+    },
+    "cantor_eloc": {
+      "max_new_shares": 5218935,
+      "price_formula": "97% of VWAP, subject to registration and purchase conditions.",
+      "proceeds_received_as_of_2026_11_09_usd": 0,
+      "upfront_fee_usd": 521893.5,
+      "fee_non_refundable_regardless_of_purchases": true,
+      "classification": "Contingent equity capacity; not cash raised or XRP bought."
+    },
+    "resale_registration": {
+      "class_a_shares_registered": 73688162,
+      "sponsor_warrants_registered": 239653,
+      "company_proceeds_from_selling_holder_resales_usd": 0,
+      "potential_cash_warrant_exercise_gross_proceeds_if_all_exercised_usd": 2800000,
+      "classification": "Secondary resale registration is not new company capital; only cash warrant exercise may generate proceeds."
+    },
+    "custody_ledger": {
+      "ledger_index": 108259036,
+      "ledger_closed_at_utc": "2026-11-11T10:57:00Z",
+      "third_party_attributed_wallets": 13,
+      "attributed_xrp": 103129905,
+      "share_of_company_reported_total_percent": 21.8,
+      "moved_outside_attributed_set_xrp": 370346663,
+      "latest_outside_transfer_date": "2026-10-22",
+      "destination_attribution": false,
+      "sold_or_exchange_deposit_inferred": false,
+      "limitations": [
+        "Wallet attribution is third-party analysis of XRPL ledger reads and address labels.",
+        "370.35M outside the attributed set is not assumed sold, missing or lost.",
+        "Company-reported total and on-chain attribution have different reference dates."
+      ]
+    },
+    "cash_purchased_tranche_mark": {
+      "xrp": 84365876.3625,
+      "historical_cash_cost_usd": 214049995,
+      "asynchronous_normalized_reference_price_usd": 1.05624033,
+      "indicative_mark_value_usd": 89110641.09,
+      "indicative_change_vs_cost_percent": -58.37,
+      "classification": "Unrealized descriptive mark only; not realized loss and not a valuation of all company XRP."
+    },
+    "capital_rule": "Keep gross cash, private-placement cash, SPAC trust, cash-purchased XRP, XRP contributed in kind, PIK debt, related-party facility, contingent ELOC, resale registration and possible warrant proceeds separate. Never sum them into a single capital number."
+  },
+  "sbi_relationships": {
+    "evernorth_cash_investment_usd": 200000000,
+    "evernorth_source": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+    "circle_equity_investment": {
+      "total_usd": 50000000,
+      "sbi_holdings_usd": 25000000,
+      "sbi_shinsei_bank_usd": 25000000,
+      "announcement_date": "2025-06-09",
+      "source": "https://www.sbigroup.co.jp/news/2025/0609_15491.html"
+    },
+    "ripple_equity": "SBI official disclosure reports approximately 9% Ripple equity ownership; see SBI investor disclosure referenced in canonical map.",
+    "sbi_ripple_asia": "60/40 SBI/Ripple joint venture.",
+    "usdc_japan": "SBI VC Trade launched USDC handling in Japan on 2025-03-26 via Circle/SBI partnership; Circle source https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access.",
+    "rlusd_japan": "SBI VC Trade and Ripple subsidiary Standard Custody signed a Japan RLUSD issuance/distribution MoU on 2025-08-22; source https://www.sbigroup.co.jp/news/2025/0822_15680.html.",
+    "rail_separation": "USDC, RLUSD and JPYSC are distinct rails; stablecoin distribution/custody does not establish XRP bridge volume, XRP collateral use or proprietary XRP purchases."
+  },
+  "sbic_identity": {
+    "east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+    "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+    "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+    "distinction": "Separate regional statutory SME investment-consultation companies; not SBI Holdings.",
+    "tokyo_training": {
+      "date": "2025-06-12 to 2025-06-13",
+      "audience": "SBIC investee companies only",
+      "content": "Generative AI and machine-learning course included ChatGPT usage, Copilot, APIs and RAG.",
+      "instructor": "Takashi Otsuka of VOST",
+      "source": "https://www.sbic.co.jp/training/20250612co/",
+      "interpretation": "Educational training, not an OpenAI commercial partnership."
+    },
+    "exact_phrase": "No verified primary-source match for the exact combined phrase 'SBIC, ChatGPT SBIC'."
+  },
+  "identity_gates": {
+    "ask_coin": "Permission Coin ASK is a Base/Polygon LayerZero OFT candidate; no XRPL/XRP integration verified. Other Askcoin listings are separate.",
+    "actual_capital": "Not a standardized primary-source metric; maintain category ledger.",
+    "kamilah_camilla_youtube": "Multiple candidate channels exist; no first-party link confirms ownership by Dr. Kamilah Stevenson; Camilla is not assumed to be the same person. No video inventory attributed."
+  },
+  "source_provenance": [
+    {
+      "source": "SEC Evernorth Form 424B3",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "source_type": "primary filing",
+      "filed": "2026-11-09"
+    },
+    {
+      "source": "SBI Evernorth $200M cash investment announcement",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+      "source_type": "primary issuer disclosure",
+      "published": "2025-10-21"
+    },
+    {
+      "source": "SBI $50M Circle investment split",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "source_type": "primary issuer disclosure",
+      "published": "2025-06-09"
+    },
+    {
+      "source": "SBI/Ripple Standard Custody RLUSD Japan MoU",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15680.html",
+      "source_type": "primary issuer disclosure",
+      "published": "2025-08-22"
+    },
+    {
+      "source": "Circle USDC Japan launch and SBI partnership",
+      "url": "https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access",
+      "source_type": "primary issuer disclosure",
+      "published": "2025-03-24"
+    },
+    {
+      "source": "Tokyo SBIC generative-AI training",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "source_type": "primary regional SBIC disclosure",
+      "published": "2025-06-12"
+    },
+    {
+      "source": "XRP Insights Evernorth ledger attribution",
+      "url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "source_type": "third-party XRPL ledger analysis",
+      "snapshot": "2026-11-11T10:57:00Z"
+    }
+  ],
+  "source_independence": [
+    "SEC filing and SBI investment announcement are separate primary disclosures; SBI's $200M is included within the SEC aggregate advance funding pool, not additive.",
+    "XRP Insights uses XRPL ledger reads and third-party wallet attribution; it is not Evernorth's own custody statement or an independent audit.",
+    "Circle's USDC Japan announcement and SBI's own investment disclosure corroborate distinct parts of the SBI/Circle relationship.",
+    "Stablecoin rail announcements do not establish XRP payment or collateral use."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "model_eligibility": {
+    "status": "EXCLUDED",
+    "reason": "Public-web evidence is not in Barrot's immutable raw-source receipt pipeline and point-in-time feature store."
+  },
+  "safety": {
+    "no_directional_forecast": true,
+    "no_paper_trade": true,
+    "no_real_money_action": true,
+    "no_external_model_transfer": true
+  }
+}

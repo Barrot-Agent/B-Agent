@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "sbi_ripple_equity_latest_official_disclosure_correction",
+  "captured_at_utc": "2026-11-03T22:49:02Z",
+  "supersedes_claim": "The February 7, 2025 SBI presentation was the latest official Ripple equity percentage located.",
+  "correction": {
+    "status": "CORRECTED",
+    "finding": "A later official SBI Group / SBI Shinsei Bank notice dated June 9, 2025 also states that SBI Group currently held approximately 9% of Ripple shares and was Ripple's largest external shareholder.",
+    "effective_disclosure_date": "2025-06-09",
+    "percentage": "approximately 9%",
+    "ownership_type": "Ripple corporate equity, not XRP token ownership",
+    "current_2026_status": "No later official percentage was found in this review; do not present 9% as a verified November 2026 holding."
+  },
+  "source": {
+    "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf",
+    "title": "Notice Regarding the Investment in Circle Internet Group, Inc.",
+    "issuer": "SBI Holdings, Inc. and SBI Shinsei Bank, Limited",
+    "publication_date": "2025-06-09",
+    "retrieved_at_utc": "2026-11-03T22:49:02Z",
+    "claims": [
+      "SBI Holdings and SBI Shinsei Bank invested USD 25 million each in Circle, USD 50 million combined, in connection with Circle's June 5, 2025 NYSE listing.",
+      "The same notice states that SBI Holdings invested in Ripple in 2016 and held approximately 9% of Ripple shares as its largest external shareholder as of the notice date.",
+      "The notice describes SBI's investment and partnership history across Ripple, R3/Corda and Securitize, reinforcing a multi-partner strategy rather than an exclusive single-ledger strategy."
+    ]
+  },
+  "evidence_class": "primary issuer disclosure",
+  "interpretation": {
+    "confirmed": "As of June 9, 2025, SBI Holdings reported approximately 9% Ripple equity ownership while also committing USD 25 million to Circle; SBI Shinsei Bank separately committed USD 25 million to Circle.",
+    "inference": "SBI's disclosed portfolio shows parallel strategic exposure to Ripple and Circle, consistent with a multi-rail digital-finance strategy.",
+    "not_established": "Current 2026 Ripple share percentage, XRP token holdings, actual remittance volumes, or any plan to replace XRPL with Circle Arc."
+  },
+  "safety": {
+    "public_source_only": true,
+    "private_data_accessed": false,
+    "secrets_accessed": false,
+    "model_price_feature": false
+  },
+  "next_actions": [
+    "Use June 9, 2025 as the latest official SBI Ripple equity percentage disclosure found, not February 7, 2025.",
+    "Continue searching for a later SBI annual report, shareholder filing or official presentation that updates Ripple share ownership.",
+    "Keep Ripple equity, XRP token inventory, and SBI Group stablecoin/Arc participation as separate graph edges."
+  ]
+}

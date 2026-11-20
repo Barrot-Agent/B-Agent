@@ -1,0 +1,129 @@
+{
+  "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.0.0",
+  "snapshot_id": "run227-20261117T231333Z",
+  "captured_at_utc": "2026-11-17T23:13:33Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "c54447c320ba2efd783659c7685e969de45e90b0",
+  "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+  "integration_head_before_run": "6f5b180f86f63c6e1b5d10f1e59b2191a962f426",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "platforms": {
+    "ChatGPT": {
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "permission_status": "Repository read and controlled integration-branch write used; effective connector token scopes not independently exposed.",
+      "data_flow": {
+        "verified": true,
+        "description": "Current ChatGPT session -> GitHub connector -> GitHub REST API -> Barrot-Agent/B-Agent. Main, full tree, open PR inventory, branch ancestry, PR #1663, workflow jobs/logs, artifact receipts and source files inspected. No data sent to another model."
+      },
+      "external_provider_dispatch": false
+    },
+    "Claude": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No authenticated request or data transfer tested."
+      },
+      "external_provider_dispatch": false
+    },
+    "Grok": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No authenticated request or data transfer tested. Groq is a separate provider and is not evidence of a Grok connection."
+      },
+      "external_provider_dispatch": false
+    },
+    "Gemini": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No authenticated request or data transfer tested."
+      },
+      "external_provider_dispatch": false
+    },
+    "Copilot": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No current Copilot session, repository action or data transfer verified."
+      },
+      "external_provider_dispatch": false
+    },
+    "Codex": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "NOT_VERIFIED",
+      "data_flow": {
+        "verified": false,
+        "description": "No separate Codex runtime or repository data transfer verified."
+      },
+      "external_provider_dispatch": false
+    },
+    "Hugging Face": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "HF_TOKEN presence and scope not verified; no token read.",
+      "data_flow": {
+        "verified": false,
+        "description": "No Space health check or upload performed. Self-hosted brain and sync workflows quarantined; manual model upload requires explicit YES and exact main SHA."
+      },
+      "external_provider_dispatch": false
+    },
+    "Kaggle": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "Kaggle credential presence and scope not verified.",
+      "data_flow": {
+        "verified": false,
+        "description": "No dataset write or competition submission. Manual workflow requires explicit YES, exact main SHA and competition allowlist."
+      },
+      "external_provider_dispatch": false
+    },
+    "Databricks": {
+      "authentication_status": "NOT_TESTED",
+      "permission_status": "Workspace credential presence and scope not verified.",
+      "data_flow": {
+        "verified": false,
+        "description": "No workspace read/write or token rotation. Databricks bundle workflow quarantined; deploy workflow is manual and SHA-gated."
+      },
+      "external_provider_dispatch": false
+    }
+  },
+  "verified_edges": [
+    {
+      "from": "ChatGPT current session",
+      "to": "GitHub connector",
+      "purpose": "Repository inspection, exact-head CI review and controlled integration-branch updates",
+      "status": "CURRENT_SESSION_VERIFIED"
+    },
+    {
+      "from": "Public web sources",
+      "to": "ChatGPT current session",
+      "purpose": "Lawful public market, issuer, ETF, derivatives and Morpho documentation research",
+      "status": "RETRIEVAL_VERIFIED; not all sources have raw-byte receipts"
+    }
+  ],
+  "coordination_status": {
+    "independent_tasks_assigned_across_nine_platforms": false,
+    "structured_evidence_exchange_across_nine_platforms": false,
+    "verified_external_platforms_beyond_current_chatgpt_github_connector": 0,
+    "independent_red_team_quorum": false,
+    "minority_objections_preserved": true,
+    "live_connections_claimed_without_test": false,
+    "fallback": "Public sources, deterministic repository inspection and full-suite CI; do not send private XRP evidence to unverified providers."
+  },
+  "least_privilege": "Not verified across all nine platforms. No provider token was read, expanded or rotated.",
+  "primary_brain_declared_by_repository": {
+    "name": "LunaRoute",
+    "status": "DECLARED_NOT_AUTHENTICATED",
+    "verified": false
+  },
+  "next_actions": [
+    "Test provider authentication only when separately authorized and available.",
+    "Assign independent source-checking tasks and preserve disagreements before any model dispatch.",
+    "Obtain an independent red-team reviewer before integration merge."
+  ]
+}

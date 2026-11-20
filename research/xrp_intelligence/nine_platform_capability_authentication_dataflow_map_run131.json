@@ -1,0 +1,313 @@
+{
+  "artifact_type": "nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-14T15:07:00.423Z",
+  "last_verified_at_utc": "2026-11-14T15:07:00.423Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+  "observed_integration_head_before_map_commit": "9c2914c52ddb9940818be61ad5a9b37619ba2208",
+  "mission_id": "xrp_intelligence_prediction_engine",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication_status": "VERIFIED_CURRENT_SESSION",
+      "verified_capability": "GitHub connector read/write; current repository and Git Data API access tested",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "data_flow": "ChatGPT session -> GitHub connector -> repository metadata, trees, files, PRs, CI and Git Data API",
+      "least_privilege_status": "FAIL_OVERPRIVILEGED",
+      "independent_task_status": "LOCAL_RESEARCH_ONLY"
+    },
+    {
+      "name": "Claude",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Grok",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No Grok authentication tested; Groq is separate",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED",
+      "evidence_note": "Groq is a separate provider; historical Groq HTTP 413 does not verify Grok access."
+    },
+    {
+      "name": "Gemini",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Copilot",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [
+        "Historical one-off review activity"
+      ],
+      "data_flow": "No persistent data exchange; no formal approval on #1662",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED",
+      "evidence_note": "Copilot PR-reviewer comments observed on PR #1653; this does not prove an authenticated Copilot session or data-flow integration."
+    },
+    {
+      "name": "Codex",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No current deployment or write verified",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED",
+      "evidence_note": "Main Pillars run reported Space BUILD_ERROR; no current authenticated deployment tested."
+    },
+    {
+      "name": "Kaggle",
+      "authentication_status": "NOT_VERIFIED",
+      "verified_capabilities": [],
+      "data_flow": "No authenticated data flow or submission tested",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED",
+      "evidence_note": "No Kaggle authentication, submission or execution tested."
+    },
+    {
+      "name": "Databricks",
+      "authentication_status": "FAILED_HTTP_403",
+      "verified_capabilities": [],
+      "data_flow": "Prior read-only validation returned HTTP 403; no write attempted",
+      "least_privilege_status": "UNKNOWN",
+      "independent_task_status": "NOT_DISPATCHED",
+      "evidence_note": "Main Pillars run received HTTP 403; no read/write data flow established."
+    }
+  ],
+  "coordination": {
+    "status": "GITHUB_ONLY_VERIFIED_NO_EXTERNAL_MODEL_COORDINATION",
+    "independent_tasks_dispatched": 0,
+    "structured_evidence_exchange": false,
+    "disagreement_resolution": "Local source reconciliation only; no cross-platform evidence exchange.",
+    "minority_objections": "Retain Copilot and CodeRabbit review objections on PR #1653; no external red-team quorum.",
+    "independent_red_team": false,
+    "no_unverified_platform_calls": true,
+    "no_external_model_data_transfer": true
+  },
+  "repository_state": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_head_before_run131_commit": "847a20732032ed6fc62e3689a41eb1f129f64904",
+    "integration_ahead_by": 2397,
+    "integration_behind_by": 0,
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2441,
+    "open_prs": 375,
+    "open_pr_drafts": 361,
+    "open_pr_non_drafts": 14
+  },
+  "integration_pr": {
+    "number": 1662,
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "head_sha": "847a20732032ed6fc62e3689a41eb1f129f64904",
+    "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "changed_files": 1200,
+    "commits_ahead": 2397,
+    "formal_approvals": 0,
+    "formal_reviews": 0,
+    "review_threads": 0,
+    "requested_reviewers": 0,
+    "merge_status": "BLOCKED_DRAFT_REVIEW_AND_PUBLICATION_AUTHORIZATION"
+  },
+  "latest_ci": {
+    "parent_head": "847a20732032ed6fc62e3689a41eb1f129f64904",
+    "current_head": "847a20732032ed6fc62e3689a41eb1f129f64904",
+    "full_suite": {
+      "run_id": 43607313752,
+      "job_id": 132484645380,
+      "conclusion": "success",
+      "tests_passed": 3641,
+      "subtests_passed": 8,
+      "coverage_percent": 62.47
+    },
+    "core_suite": {
+      "run_id": 43607313752,
+      "job_id": 132484645582,
+      "conclusion": "success",
+      "tests_passed": 742,
+      "subtests_passed": 8
+    },
+    "wheel_build_install": {
+      "conclusion": "success",
+      "wheel": "b_agent-0.1.0-py3-none-any.whl"
+    },
+    "dependency_audit": {
+      "run_id": 43607313757,
+      "job_id": 132484645756,
+      "conclusion": "success",
+      "manifest_groups": 5,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43607313798,
+      "job_id": 132484645696,
+      "conclusion": "success",
+      "merge_enabled": false
+    },
+    "pull_request_ci": "SKIPPED_BY_INTEGRATION_BRANCH_CONDITION",
+    "full_suite_execution": "PUSH_EVENT_EXACT_HEAD"
+  },
+  "security": {
+    "main_branch_protected": null,
+    "integration_branch_protected": null,
+    "branch_protection_details": "GET branch protection returned HTTP 403 Resource not accessible by integration; only repository ruleset found is 'Fall Back' with enforcement disabled; effective classic protection remains UNKNOWN.",
+    "github_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "codeowners": "* @Barrot-Agent; no independent human reviewer configured in CODEOWNERS.",
+    "pages_publication_authorized": false,
+    "main_branch_write": "NO_WRITE_PERFORMED",
+    "secret_values_read": false,
+    "external_model_transfer": false,
+    "historical_gh_hosts_file": "Absent from current main and integration trees; historical branch references were not opened and no secret values were read."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Correct #1661 backlog marker while preserving its unique BARROT_SYNC.md path, then rerun full suite.",
+    "Restore canonical map schema while preserving Run128/Run129 snapshot keys and add Run130 snapshot.",
+    "Rerun exact-head full repository suite, wheel build, dependency audit and fail-closed gates.",
+    "Complete semantic review of all 1,197 PR paths, prioritizing 50 workflows and seven public web files.",
+    "Resolve least-privilege connector access, branch-protection visibility, independent CODEOWNERS/review and Pages publication authorization.",
+    "Establish independently anchored raw-source receipts and synchronized historical XRP datasets.",
+    "Reconcile exchange wallet-label changes, ETF cohort differences and current derivatives coverage before model admission.",
+    "Train an XRP-specific candidate only after dataset and outcome independence requirements are met.",
+    "Keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified."
+  ],
+  "backlog_classification": {
+    "1317": {
+      "source_paths": 6,
+      "overlap": 6,
+      "source_only": 0,
+      "status": "SUPERSESSION_CANDIDATE"
+    },
+    "1318": {
+      "source_paths": 2,
+      "overlap": 2,
+      "source_only": 0,
+      "status": "SUPERSESSION_CANDIDATE"
+    },
+    "1320": {
+      "source_paths": 5,
+      "overlap": 5,
+      "source_only": 0,
+      "status": "SUPERSESSION_CANDIDATE"
+    },
+    "1611": {
+      "source_paths": 8,
+      "overlap": 7,
+      "source_only": 1,
+      "status": "UNIQUE_UNREVIEWED"
+    },
+    "1614": {
+      "source_paths": 57,
+      "overlap": 30,
+      "source_only": 27,
+      "status": "UNIQUE_UNREVIEWED"
+    },
+    "1615": {
+      "source_paths": 14,
+      "overlap": 1,
+      "source_only": 13,
+      "status": "UNIQUE_UNREVIEWED"
+    },
+    "1640": {
+      "source_paths": 280,
+      "overlap": 280,
+      "source_only": 0,
+      "status": "SUPERSESSION_CANDIDATE"
+    },
+    "1642": {
+      "source_paths": 7,
+      "overlap": 7,
+      "source_only": 0,
+      "status": "SUPERSESSION_CANDIDATE_PRESERVE_FOR_SEMANTIC_REVIEW"
+    },
+    "1643": {
+      "source_paths": 670,
+      "overlap": 670,
+      "source_only": 0,
+      "status": "SUPERSESSION_CANDIDATE"
+    },
+    "1653": {
+      "source_paths": 7,
+      "overlap": 1,
+      "source_only": 6,
+      "status": "UNIQUE_UNREVIEWED"
+    },
+    "1655": {
+      "source_paths": 8,
+      "overlap": 5,
+      "source_only": 3,
+      "status": "UNIQUE_UNREVIEWED"
+    },
+    "1659": {
+      "source_paths": 6,
+      "overlap": 2,
+      "source_only": 4,
+      "status": "UNIQUE_UNREVIEWED"
+    },
+    "1660": {
+      "source_paths": 972,
+      "overlap": 972,
+      "source_only": 0,
+      "status": "SUPERSESSION_CANDIDATE"
+    },
+    "1661": {
+      "source_paths": 1072,
+      "overlap": 1071,
+      "source_only": 1,
+      "source_only_path": "BARROT_SYNC.md",
+      "status": "SUPERSESSION_CANDIDATE_WITH_UNIQUE_PATH_PRESERVED"
+    },
+    "1644-1650_and_1254-1255": "BLOCKED_DEPENDENCY_CANDIDATES_REQUIRE_INDIVIDUAL_CURRENT_MAIN_VALIDATION",
+    "source_prs_closed": 0
+  },
+  "run": 131,
+  "observed_integration_head_before_run131_commit": "847a20732032ed6fc62e3689a41eb1f129f64904",
+  "run131_verification": {
+    "captured_at_utc": "2026-11-14T15:07:00.423Z",
+    "current_map_file_repaired": true,
+    "raw_source_capture": "WEB_TOOL_EXCERPTS_ONLY; no byte-exact HTTP response or SEC filing files were materialized; raw SHA-256 receipts are null and these excerpts are not feature-store-admissible.",
+    "current_market_snapshot_utc": "2026-11-14T15:00:15.260Z",
+    "market_data_feature_eligible": false,
+    "prediction_status": "NOT_ISSUED",
+    "reason": "Spot observations are asynchronous and partially stale; L2, derivatives OI/funding and synchronized historical coverage were unavailable.",
+    "latest_research_corrections": [
+      "Evernorth SBI ownership distinguishes Oct 9 closing 21.4% common / 39.9% voting power from Oct 22 36.1% of Class A voting / 7.5% of non-voting Class C / 20.51% total common.",
+      "Circle SBI Japan K.K. and SBI Circle Holdings K.K. are English/Japanese names for the same 50/50 JV; Circle consolidates the VIE and reported no significant operating results through 2026-09-30.",
+      "Coinbase Q3 2026 USDC rewards table increases ($17.675m Q3, $47.655m nine-month) conflict with narrative increases ($71.6m and $175.7m); preserve both without reconciliation.",
+      "SBI participation in the Arc token presale amount is undisclosed; Circle reported $242.2m gross presale proceeds, $181.8m revenue recognized and $61.4m deferred revenue; IDG $25m is included, not additional."
+    ],
+    "backlog_corrections": [
+      "PR #1661 BARROT_SYNC.md path exists in #1662 but content is not identical; #1661 retains approximately 144KB historical run history absent from the 2KB compact #1662 file. Keep #1661 open until unique history is archived or reconciled.",
+      "PR #1653 is unique but blocked: 17 commits behind main, 8 unresolved review threads, 6 high-severity issues summarized by Copilot review and 2 CodeRabbit nitpicks; do not merge.",
+      "PR #1660/#1640/#1642/#1643 have overlapping paths but exact blob equivalence is not verified; do not close before merge and post-merge content verification."
+    ]
+  }
+}

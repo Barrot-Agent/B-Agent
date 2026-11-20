@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "barrot-nine-platform-run115-20261110T052028Z",
+  "captured_at_utc": "2026-11-10T05:20:28Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "integration_parent_head": "c2d07243ce417fda43c1485c09b9c25e71c43cc8",
+  "active_pr": 1640,
+  "current_map_path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+  "current_map_last_captured_utc": "2026-11-10T02:37:25Z",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "status": "VERIFIED_CURRENT_SESSION",
+      "authentication": "current session; GitHub read and existing-branch write verified",
+      "capabilities": [
+        "GitHub repository inspection",
+        "PR/branch/tree/CI/review inspection",
+        "existing-branch evidence commits",
+        "public web research"
+      ],
+      "data_flow": "Repository and public evidence into this session; no onward external transfer."
+    },
+    {
+      "name": "Claude",
+      "status": "UNVERIFIED",
+      "authentication": "not tested",
+      "data_flow": "none"
+    },
+    {
+      "name": "Grok",
+      "status": "UNVERIFIED",
+      "authentication": "not tested",
+      "data_flow": "none"
+    },
+    {
+      "name": "Gemini",
+      "status": "UNVERIFIED",
+      "authentication": "not tested",
+      "data_flow": "none"
+    },
+    {
+      "name": "Copilot",
+      "status": "COMMENT_ONLY_NOT_CONNECTED",
+      "authentication": "no separate authentication verified",
+      "evidence": "62 PR review submissions on #1640 are COMMENTED; zero approvals.",
+      "data_flow": "No persistent external pipeline verified."
+    },
+    {
+      "name": "Codex",
+      "status": "UNVERIFIED",
+      "authentication": "not tested",
+      "data_flow": "none"
+    },
+    {
+      "name": "Hugging Face",
+      "status": "BLOCKED_UNVERIFIED",
+      "authentication": "prior Space health check BUILD_ERROR; not revalidated",
+      "data_flow": "No upload or Space deployment."
+    },
+    {
+      "name": "Kaggle",
+      "status": "NOT_TESTED",
+      "authentication": "not tested",
+      "data_flow": "No upload or competition submission."
+    },
+    {
+      "name": "Databricks",
+      "status": "BLOCKED_UNVERIFIED",
+      "authentication": "main Pillars check returned HTTP 403",
+      "data_flow": "No workspace write."
+    }
+  ],
+  "independent_assignments": [
+    {
+      "platform": "Claude",
+      "task": "forecast leakage, probability calibration and counter-hypothesis red-team",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Grok",
+      "task": "independent public event/entity source discovery",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Gemini",
+      "task": "regulatory, custody and payment-rail primary-source cross-check",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Copilot",
+      "task": "GitHub review feedback only",
+      "status": "COMMENT_ONLY"
+    },
+    {
+      "platform": "Codex",
+      "task": "code and full-suite test-gap audit",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Hugging Face",
+      "task": "offline model evaluation after authentication and approval",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Kaggle",
+      "task": "reproducible public-data benchmark research; no submission",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Databricks",
+      "task": "historical feature-store evaluation after authentication and approval",
+      "status": "DESIGNED_NOT_EXECUTED"
+    }
+  ],
+  "coordination_policy": {
+    "evidence_exchange": "none with external platforms",
+    "disagreement": "primary-source quality, point-in-time availability and source independence outrank aggregator count; retain minority objections",
+    "red_team": "required before forecast issuance",
+    "least_privilege": "no repository contents or secrets sent to unverified platforms",
+    "fallback": "deterministic local/repository work"
+  },
+  "no_external_model_data_transfer": true,
+  "no_external_mutation": true
+}

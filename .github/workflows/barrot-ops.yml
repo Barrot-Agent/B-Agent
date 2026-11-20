@@ -3,14 +3,27 @@ name: Barrot Operations Pipeline
 on:
   workflow_dispatch:
     inputs:
-      confirm_external_change:
-        description: "Set to YES only after explicit human approval for this specific run"
+      confirm_databricks_workspace_create:
+        description: "Set YES only to create the notebook when the target path is confirmed absent. Existing paths are never overwritten."
         required: true
         type: choice
         options:
           - NO
           - YES
         default: NO
+      confirm_kaggle_dataset_download:
+        description: "Set YES only to download the public dataset to this ephemeral runner. This workflow never submits Kaggle entries."
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
+      expected_main_sha:
+        description: "Exact 40-character current main commit approved for this single run."
+        required: true
+        type: string
+
 permissions:
   contents: read
 
@@ -19,42 +32,128 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  sync-platforms:
-    if: ${{ inputs.confirm_external_change == 'YES' }}
+  databricks-create:
+    if: ${{ github.ref == 'refs/heads/main' && inputs.expected_main_sha != '' && inputs.confirm_databricks_workspace_create == 'YES' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ inputs.expected_main_sha }}
+          fetch-depth: 1
+          persist-credentials: false
 
-      # Hugging Face deployment is owned by sync-huggingface.yml.
-      # Do not push the GitHub repository's main branch directly to the Space:
-      # the Space has its own history and hf_space/ is the intended deploy source.
+      - name: Verify exact approved main revision
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -euo pipefail
+          if [[ ! "${EXPECTED_MAIN_SHA}" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::expected_main_sha must be a full 40-character lowercase commit SHA."
+            exit 1
+          fi
+          actual_sha="$(git rev-parse HEAD)"
+          current_main_sha="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          if [[ "${actual_sha}" != "${EXPECTED_MAIN_SHA}" ]]; then
+            echo "::error::Checked-out commit does not match expected_main_sha."
+            exit 1
+          fi
+          if [[ "${current_main_sha}" != "${EXPECTED_MAIN_SHA}" ]]; then
+            echo "::error::main moved after approval; refusing external operation."
+            exit 1
+          fi
 
-      - name: Setup Databricks CLI
-        uses: databricks/setup-cli@main
+      - name: Setup Databricks CLI v1.25.0
+        uses: databricks/setup-cli@4f41a4c5291b531c1bb1e5760d677999cd484f89 # v1.25.0
 
-      - name: Run Databricks Job
+      - name: Verify target absence and create without overwrite
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
-          if [ -z "$DATABRICKS_HOST" ] || [ -z "$DATABRICKS_TOKEN" ]; then
-            echo "::warning::DATABRICKS_HOST or DATABRICKS_TOKEN not set, skipping notebook upload"
-            exit 0
+          set -euo pipefail
+          if [ -z "${DATABRICKS_HOST}" ] || [ -z "${DATABRICKS_TOKEN}" ]; then
+            echo "::error::DATABRICKS_HOST or DATABRICKS_TOKEN is missing; refusing workspace mutation."
+            exit 1
           fi
-          databricks workspace import src/barrot_databricks_job.py /Shared/barrot_databricks_job --language PYTHON --overwrite || \
-            echo "::warning::Notebook upload failed; skipping upload-only step"
 
-      - name: Kaggle Data Refresh
+          host="${DATABRICKS_HOST#https://}"
+          host="${host#http://}"
+          host="${host%/}"
+          if [[ "${host}" != "dbc-82d64fee-1c2e.cloud.databricks.com" ]]; then
+            echo "::error::DATABRICKS_HOST is not the approved workspace host; refusing to send the token."
+            exit 1
+          fi
+          host="https://${host}"
+
+          target="/Shared/barrot_databricks_job"
+          status_file="$(mktemp)"
+          trap 'rm -f "${status_file}"' EXIT
+          status_code="$(curl --silent --show-error --output "${status_file}" --write-out '%{http_code}' \
+            --header "Authorization: Bearer ${DATABRICKS_TOKEN}" \
+            --get --data-urlencode "path=${target}" \
+            "${host}/api/2.0/workspace/get-status")"
+
+          case "${status_code}" in
+            404)
+              echo "Target is absent. Create-only import may proceed."
+              ;;
+            200)
+              echo "::error::Target already exists. Refusing to overwrite; no workspace mutation performed."
+              exit 1
+              ;;
+            *)
+              echo "::error::Could not verify target absence (HTTP ${status_code}). Refusing mutation."
+              cat "${status_file}"
+              exit 1
+              ;;
+          esac
+
+          sha256sum src/barrot_databricks_job.py
+          databricks workspace import src/barrot_databricks_job.py "${target}" --language PYTHON
+
+  kaggle-download:
+    if: ${{ github.ref == 'refs/heads/main' && inputs.expected_main_sha != '' && inputs.confirm_kaggle_dataset_download == 'YES' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ inputs.expected_main_sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Verify exact approved main revision
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -euo pipefail
+          if [[ ! "${EXPECTED_MAIN_SHA}" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::expected_main_sha must be a full 40-character lowercase commit SHA."
+            exit 1
+          fi
+          actual_sha="$(git rev-parse HEAD)"
+          current_main_sha="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          if [[ "${actual_sha}" != "${EXPECTED_MAIN_SHA}" ]]; then
+            echo "::error::Checked-out commit does not match expected_main_sha."
+            exit 1
+          fi
+          if [[ "${current_main_sha}" != "${EXPECTED_MAIN_SHA}" ]]; then
+            echo "::error::main moved after approval; refusing external operation."
+            exit 1
+          fi
+
+      - name: Download public Kaggle dataset to ephemeral runner
         env:
           KAGGLE_JSON: ${{ secrets.KAGGLE_JSON }}
         run: |
-          if [ -z "$KAGGLE_JSON" ]; then
-            echo "::warning::KAGGLE_JSON not set, skipping Kaggle refresh"
-            exit 0
+          set -euo pipefail
+          if [ -z "${KAGGLE_JSON}" ]; then
+            echo "::error::KAGGLE_JSON is missing; refusing Kaggle API access."
+            exit 1
           fi
-          pip install kaggle
-          export KAGGLE_CONFIG_DIR="$RUNNER_TEMP/.kaggle"
-          mkdir -p "$KAGGLE_CONFIG_DIR"
-          printf '%s' "$KAGGLE_JSON" > "$KAGGLE_CONFIG_DIR/kaggle.json"
-          chmod 600 "$KAGGLE_CONFIG_DIR/kaggle.json"
-          kaggle datasets download scribedpengenius/barrot-kaggle-featured --unzip
+          python -m pip install "kaggle==1.7.4.5"
+          export KAGGLE_CONFIG_DIR="${RUNNER_TEMP}/.kaggle"
+          mkdir -p "${KAGGLE_CONFIG_DIR}" "${RUNNER_TEMP}/barrot-kaggle-featured"
+          printf '%s' "${KAGGLE_JSON}" > "${KAGGLE_CONFIG_DIR}/kaggle.json"
+          chmod 600 "${KAGGLE_CONFIG_DIR}/kaggle.json"
+          kaggle datasets download scribedpengenius/barrot-kaggle-featured \
+            --path "${RUNNER_TEMP}/barrot-kaggle-featured" --unzip

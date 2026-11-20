@@ -1,0 +1,426 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_market_and_entity_reconciliation",
+  "snapshot_id": "run213-research-20261117T120307Z",
+  "captured_at_utc": "2026-11-17T12:03:07Z",
+  "source_capture_method": "public search results and rendered public pages",
+  "raw_http_bytes_captured": false,
+  "raw_source_sha256": null,
+  "receipt_status": "not_a_raw_HTTP_receipt; not eligible for point-in-time model ingestion",
+  "forecast_status": "NOT_ISSUED",
+  "model_admission": {
+    "eligible_observations": 0,
+    "reason": "search-rendered observations lack raw byte receipts and complete source-event timestamps; vendor cutoffs and universes differ"
+  },
+  "market_observations": [
+    {
+      "source": "Investing.com",
+      "url": "https://www.investing.com/crypto/xrp/historical-data",
+      "observation_time": "2026-11-17 partial daily row; exact page update time not stated",
+      "scope": "XRP/USD daily market aggregate",
+      "values": {
+        "price_usd": 0.9566,
+        "open_usd": 0.9552,
+        "high_usd": 0.968,
+        "low_usd": 0.9505,
+        "volume_usd_millions": 337.53,
+        "change_percent": 0.15
+      },
+      "model_eligible": false,
+      "independence": "aggregator; underlying venue mix not fully disclosed",
+      "raw_source_sha256": null,
+      "receipt_status": "not_captured_from_raw_http"
+    },
+    {
+      "source": "CoinMarketCap",
+      "url": "https://coinmarketcap.com/es/currencies/xrp/xrp/usdt/",
+      "observation_time": "2026-11-17 page snapshot; displayed local time 10:41:48, timezone not stated",
+      "scope": "XRP/USDT converter",
+      "values": {
+        "price_usdt": 0.9579,
+        "usd_quote": 0.9569
+      },
+      "model_eligible": false,
+      "independence": "separate aggregator; feed independence not established",
+      "raw_source_sha256": null,
+      "receipt_status": "not_captured_from_raw_http"
+    },
+    {
+      "source": "Basis Charts",
+      "url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+      "observation_time_utc": "2026-11-17T08:11:00Z",
+      "scope": "Binance XRPUSDT perpetual order book, not spot",
+      "values": {
+        "mid": 0.9599,
+        "spread_basis_points": 1.04,
+        "bids_usd_millions": 35.2,
+        "offers_usd_millions": 33.4,
+        "depth_within_half_percent_usd_millions": 14,
+        "bid_share_within_one_percent": 53
+      },
+      "model_eligible": false,
+      "independence": "single venue perpetual book",
+      "raw_source_sha256": null,
+      "receipt_status": "not_captured_from_raw_http"
+    },
+    {
+      "source": "Swiftedge",
+      "url": "https://swiftedge.uk/xrp",
+      "observation_time_utc": "2026-11-17T07:39:00Z",
+      "scope": "XRP perpetual order flow and vendor-derived positioning",
+      "values": {
+        "price": 0.9607,
+        "change_percent": 0.6,
+        "open_interest_change_percent": 2,
+        "funding_percent_per_8h": -0.0031,
+        "accounts_long_percent": 60.4,
+        "whale_net_usd": -307000,
+        "largest_bid_wall_xrp": 6280985,
+        "largest_ask_wall_xrp": 5577881
+      },
+      "model_eligible": false,
+      "independence": "secondary vendor; methodology and venue coverage require independent reconciliation",
+      "raw_source_sha256": null,
+      "receipt_status": "not_captured_from_raw_http"
+    },
+    {
+      "source": "Liqwall",
+      "url": "https://liqwall.com/open-interest/xrp",
+      "observation_time_utc": "2026-11-17T05:52:00Z",
+      "scope": "all-exchange futures open interest as reported by provider",
+      "values": {
+        "open_interest_usd_millions": 965,
+        "change_24h_percent": -3.3,
+        "thirty_day_high_usd_billions": 1.49,
+        "thirty_day_low_usd_billions": 0.968
+      },
+      "model_eligible": false,
+      "independence": "provider aggregate; venue set not identical to TradRadar",
+      "raw_source_sha256": null,
+      "receipt_status": "not_captured_from_raw_http"
+    },
+    {
+      "source": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "observation_time_utc": "2026-11-16T15:30:00Z",
+      "scope": "seven exchange perpetual futures aggregate",
+      "values": {
+        "open_interest_usd_billions": 1.31,
+        "change_24h_percent": -5.04,
+        "funding_percent_per_8h": -0.0063,
+        "liquidations_usd_millions_minimum": 3.5,
+        "long_liquidations_usd_millions": 1.98,
+        "short_liquidations_usd_millions": 1.52,
+        "long_accounts_percent": 77.1
+      },
+      "model_eligible": false,
+      "independence": "seven-venue aggregate; different cutoff and venue universe from Liqwall",
+      "raw_source_sha256": null,
+      "receipt_status": "not_captured_from_raw_http"
+    },
+    {
+      "source": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "observation_time_utc": "2026-11-17T07:25:00Z",
+      "scope": "four daily-reporting US spot XRP ETFs; two of four had reported for Nov 16",
+      "values": {
+        "nov16_partial_net_flow_xrp": -5196983,
+        "nov16_partial_net_flow_usd_millions": -5,
+        "reported_funds": 2,
+        "eligible_daily_funds": 4,
+        "latest_complete_day": "2026-11-13"
+      },
+      "model_eligible": false,
+      "independence": "issuer-file-derived but partial fund cohort; explicit cutoff",
+      "raw_source_sha256": null,
+      "receipt_status": "not_captured_from_raw_http"
+    },
+    {
+      "source": "XRP Insights",
+      "url": "https://xrp-insights.com/",
+      "observation_time": "2026-11-16 US close; retrieved 2026-11-17",
+      "scope": "six spot funds plus BITW",
+      "values": {
+        "nov16_net_flow_xrp": 158148,
+        "nov16_net_flow_usd": 151600,
+        "combined_holdings_xrp_billions": 1.19
+      },
+      "model_eligible": false,
+      "independence": "aggregator-derived holdings changes; different fund universe and cutoff from CryptoKeyhole",
+      "raw_source_sha256": null,
+      "receipt_status": "not_captured_from_raw_http"
+    },
+    {
+      "source": "Alpha Finance",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "observation_time": "through 2026-11-16; page retrieved 2026-11-17",
+      "scope": "five-fund cohort",
+      "values": {
+        "nov16_net_flow_usd": 0,
+        "last_seven_sessions_usd_millions": -20.2,
+        "last_thirty_sessions_usd_millions": -4.8,
+        "cumulative_net_inflow_usd_billions": 1.71
+      },
+      "model_eligible": false,
+      "independence": "five-fund series; no common fund-universe reconciliation",
+      "raw_source_sha256": null,
+      "receipt_status": "not_captured_from_raw_http"
+    },
+    {
+      "source": "Maketo",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "observation_time_utc": "2026-11-17T02:21:00Z",
+      "scope": "five-fund cohort",
+      "values": {
+        "nov16_net_flow_usd": 0,
+        "last_week_usd_millions": -8.7,
+        "last_month_usd_millions": -11
+      },
+      "model_eligible": false,
+      "independence": "five-fund series; earlier retrieval cutoff",
+      "raw_source_sha256": null,
+      "receipt_status": "not_captured_from_raw_http"
+    }
+  ],
+  "market_interpretation": {
+    "price_context": "Nov 17 aggregate observations cluster around $0.9566-$0.9579, while a separate perp vendor snapshot is around $0.9607-$0.9599. These are not synchronized spot prices.",
+    "leverage": "Liqwall and TradRadar show falling OI; Swiftedge shows rising OI. Do not average: venue coverage, cutoff and metric definitions differ.",
+    "depth": "Basis shows a slightly bid-heavy Binance perpetual book at 08:11 UTC; this is not spot depth or proof of durable demand. Swiftedge walls are vendor-derived and can be cancelled.",
+    "etf_flows": "CryptoKeyhole's Nov 16 figure is explicitly partial; XRP Insights includes six spot funds plus BITW; Alpha and Maketo use five-fund cohorts and report zero for Nov 16. The values are not directly comparable.",
+    "counter_hypotheses": [
+      "OI contraction can be position closure or liquidation, not necessarily new short initiation.",
+      "A one-venue bid-heavy perpetual book can be transient and can be pulled.",
+      "ETF net flow can be positive in a broader fund set while a partial subset reports outflows.",
+      "Stablecoin adoption on XRPL increases network utility but does not translate mechanically into proportional XRP purchases.",
+      "SBI's Circle/Arc/USDC activity is not evidence of XRP demand."
+    ]
+  },
+  "law_and_entities": {
+    "sbic_law": {
+      "title": "Small and Medium Business Investment & Consultation Companies Act",
+      "law_id": "338AC0000000101",
+      "act_number": "Act No. 101 of 1963",
+      "articles": {
+        "1": "purpose: invest in SMEs to strengthen equity capital and support sound growth",
+        "2": "enumerates Tokyo, Nagoya and Osaka companies as the three statutory companies"
+      },
+      "url": "https://www.sbic-wj.co.jp/disclose/law/",
+      "e_gov_url": "https://laws.e-gov.go.jp/law/338AC0000000101?occasion_date=20260101"
+    },
+    "entities": {
+      "sbic_east": {
+        "legal_name_ja": "東京中小企業投資育成株式会社",
+        "legal_name_en": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "designation": "SBIC East Japan",
+        "corporate_number": "9011001030621",
+        "established": "1963-11-15",
+        "capital_jpy": 6673400000,
+        "operating_area": "18 prefectures east of Shizuoka, Nagano and Niigata",
+        "shareholder_categories": [
+          "local governments",
+          "chambers of commerce",
+          "financial institutions",
+          "business companies"
+        ],
+        "source": "https://www.sbic.co.jp/company/profile/"
+      },
+      "sbic_central": {
+        "legal_name_ja": "名古屋中小企業投資育成株式会社",
+        "legal_name_en": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "designation": "SBIC Central Japan",
+        "established": "1963-11-18",
+        "capital_jpy": 4300800000,
+        "operating_area": [
+          "Aichi",
+          "Gifu",
+          "Mie",
+          "Toyama",
+          "Ishikawa"
+        ],
+        "source": "https://www.sbic-cj.co.jp/company/about/"
+      },
+      "sbic_west": {
+        "legal_name_ja": "大阪中小企業投資育成株式会社",
+        "legal_name_en": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "designation": "SBIC West Japan",
+        "established": "1963-11-20",
+        "capital_jpy": 6822000000,
+        "operating_area": "24 prefectures west of Fukui, Shiga, Nara and Wakayama",
+        "source": "https://www.sbic-wj.co.jp/profiles/profile/"
+      },
+      "sbi_holdings": {
+        "legal_name": "SBI Holdings, Inc.",
+        "role": "holding company controlling and managing SBI Group through share ownership",
+        "source": "https://www.sbigroup.co.jp/english/company/information/profile.html"
+      }
+    },
+    "relationship_conclusion": "The three SBIC companies are the three distinct statutory investment-development corporations under Act No. 101 of 1963. Their official profiles identify them as sister companies to one another. SBI Holdings is a separate holding company. No SBI Holdings ownership or group affiliation for the three SBIC companies was identified in the reviewed primary records; this is a scoped negative finding, not proof that no indirect commercial contact has ever existed.",
+    "xrp_relationship": "No XRP, Ripple, Circle, Coinbase or SBI Holdings relationship was identified for SBIC East, Central or West."
+  },
+  "institutional_relationships": [
+    {
+      "from": "Circle",
+      "to": "SBI Holdings",
+      "type": "strategic_mou_and_joint_venture",
+      "dates": [
+        "2023-11",
+        "2025-03",
+        "2025-08-22"
+      ],
+      "detail": "SBI Circle Holdings joint venture; USDC distribution and Japanese banking/Web3 use cases.",
+      "source": "https://www.sbigroup.co.jp/news/2025/0822_15679.htmlSBI"
+    },
+    {
+      "from": "SBI Holdings and SBI Shinsei Bank",
+      "to": "Circle",
+      "type": "equity_investment",
+      "date": "2025-06-05",
+      "detail": "SBI Holdings and SBI Shinsei Bank acquired $50 million of Circle shares at its NYSE listing: $25 million each. Transaction occurred June 5; announcement June 9.",
+      "source": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "announced_at": "2025-06-09"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "type": "japan_distribution",
+      "date": "2025-03-26",
+      "detail": "SBI VC Trade launched USDC distribution after Japanese regulatory registration.",
+      "source": "https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "type": "founding_validator",
+      "date": "2026-09-16",
+      "detail": "SBI Group is in Arc's founding validator cohort and says it will contribute to network operation and governance.",
+      "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/"
+    },
+    {
+      "from": "SBI Holdings subsidiaries",
+      "to": "ARC Token",
+      "type": "presale_participation",
+      "date": "2026-05-12",
+      "detail": "SBI Holdings disclosed participation through consolidated subsidiaries; SBI's amount was not disclosed; the wider consortium raised $222 million.",
+      "source": "https://www.sbigroup.co.jp/news/2026/0512_16310.html"
+    },
+    {
+      "from": "SBI Shinsei Trust",
+      "to": "JPYSC",
+      "type": "issuer",
+      "date": "2026-06-24",
+      "detail": "Trust-type yen stablecoin issuer; initial access limited to SBI VC Trade accounts, with public-chain distribution conditional on legal and tax treatment.",
+      "source": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "type": "distribution",
+      "date": "2026-06-24",
+      "detail": "Initial distribution through customer accounts at SBI VC Trade.",
+      "source": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+    },
+    {
+      "from": "Ripple",
+      "to": "SBI Holdings and SBI VC Trade",
+      "type": "RLUSD_Japan_launch",
+      "date": "2026-06-24",
+      "detail": "RLUSD approved and offered to Japanese retail and institutional users through SBI VC Trade; Ripple described a relationship dating to 2016.",
+      "source": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/"
+    },
+    {
+      "from": "Ripple",
+      "to": "Coinbase",
+      "type": "RLUSD_distribution",
+      "date": "2026-10-28",
+      "detail": "RLUSD became tradable/manageable on Coinbase Prime, Exchange and Retail; Global Exchange collateral support was described as a future rollout, not confirmed live.",
+      "source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "type": "USDC_issuer_equity_and_revenue_share",
+      "date": "2023-08-21",
+      "detail": "Circle remains USDC issuer; Coinbase took an equity stake and shares reserve-related revenue by platform balances plus broader distribution/usage interest income.",
+      "source": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx"
+    },
+    {
+      "from": "Coinbase",
+      "to": "USDC",
+      "type": "distribution_and_market_incentives",
+      "date": "current_document_2026",
+      "detail": "Coinbase states it receives revenue based on USDC held on Coinbase and third-party platforms and offers trading/minting incentives.",
+      "source": "https://help.coinbase.com/en/prime/usdc"
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "type": "native_USDC_deployment",
+      "date": "2025-06-12",
+      "detail": "USDC live natively on XRPL mainnet with Circle Mint and API support; no bridge required.",
+      "source": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl"
+    },
+    {
+      "from": "BNY",
+      "to": "Ripple",
+      "type": "custody_and_reserve_services",
+      "date": "2026-10-27",
+      "detail": "BNY expanded custody support to XRP and RLUSD, serves as primary RLUSD reserve custodian and Ripple Prime custodian; invoice-finance exploration with C2FO is exploratory.",
+      "source": "https://www.theblock.co/news/business/2026-10-27-ripple-bny-explore-using-xrp-ledger-finance-approved-invoices"
+    }
+  ],
+  "exact_phrase_research": {
+    "ask_coin": {
+      "resolution": "Permission.io ASK / Permission Coin, a consent-based advertising and data-reward token; no XRP or XRPL relationship established.",
+      "source": "https://www.prnewswire.com/news-releases/permissionio-announces-availability-on-google-cloud-marketplace-to-accelerate-permission-based-advertising-301360920.html"
+    },
+    "actual_capital": {
+      "resolution": "The phrase is not a defined XRP asset or accounting category. SEC filings distinguish $214.05M advance cash, 600,000 XRP contributed in kind, 84,365,876 XRP purchased with the cash, other XRP contributions, gross closing cash and optional equity-facility capacity. Optional ELOC capacity is not cash received; no draw was identified in the reviewed filing.",
+      "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm",
+      "additional_primary_sources": [
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm"
+      ]
+    },
+    "sbic_chatgpt_sibc": {
+      "resolution": "No verified exact-phrase match, partnership, or entity relationship found in indexed public sources searched."
+    },
+    "kamilah_stevenson_youtube": {
+      "resolution": "Dr. Kamilah Stevenson identity is supported by her official web presence, but no official YouTube channel link was verified. No video inventory attributed to her or to Camilla Stevenson is made."
+    }
+  },
+  "sources": [
+    "https://www.investing.com/crypto/xrp/historical-data",
+    "https://coinmarketcap.com/es/currencies/xrp/xrp/usdt/",
+    "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+    "https://swiftedge.uk/xrp",
+    "https://liqwall.com/open-interest/xrp",
+    "https://tradradar.io/markets/xrp",
+    "https://cryptokeyhole.com/etf-flows/xrp/",
+    "https://xrp-insights.com/",
+    "https://alphafinance.io/etf/xrp/",
+    "https://maketo.com/etf/xrp/flows",
+    "https://laws.e-gov.go.jp/law/338AC0000000101?occasion_date=20260101",
+    "https://www.sbic.co.jp/company/profile/",
+    "https://www.sbic-cj.co.jp/company/about/",
+    "https://www.sbic-wj.co.jp/profiles/profile/",
+    "https://www.sbigroup.co.jp/english/company/information/profile.html",
+    "https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access",
+    "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+    "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
+    "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+    "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+    "https://www.sbigroup.co.jp/news/2025/0822_15679.htmlSBI",
+    "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+    "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+    "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+    "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+    "https://help.coinbase.com/en/prime/usdc",
+    "https://www.prnewswire.com/news-releases/permissionio-announces-availability-on-google-cloud-marketplace-to-accelerate-permission-based-advertising-301360920.html",
+    "https://www.sbic-wj.co.jp/disclose/law/",
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm",
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm",
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm"
+  ]
+}

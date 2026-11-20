@@ -31,7 +31,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: main
           persist-credentials: false
@@ -47,13 +47,14 @@ jobs:
             exit 1
           fi
           actual="$(git rev-parse HEAD)"
-          if [[ "$actual" != "$EXPECTED_SOURCE_SHA" ]]; then
-            echo "Checked-out main commit does not match the approved source SHA." >&2
+          current="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          if [[ "$actual" != "$EXPECTED_SOURCE_SHA" || "$current" != "$EXPECTED_SOURCE_SHA" ]]; then
+            echo "Checked-out commit or current main ref does not match the approved source SHA." >&2
             exit 1
           fi
 
       - name: Set up Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version: '3.11'
 

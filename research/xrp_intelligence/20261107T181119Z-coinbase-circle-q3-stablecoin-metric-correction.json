@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "correction_id": "coinbase-q3-2026-stablecoin-revenue-correction-2026-11-07",
+  "corrected_at_utc": "2026-11-07T18:11:19Z",
+  "append_only": true,
+  "supersedes_artifact_path": "research/xrp_intelligence/20261107T180947Z-coinbase-circle-sbi-q3-network-economics-update.json",
+  "supersedes_artifact_git_blob_sha1": "10a50efc8863ba318fe944e37f2ef7f7a637ea92",
+  "superseded_fields": [
+    "q3_2026_economics.coinbase.stablecoin_revenue_on_platform_usd",
+    "q3_2026_economics.coinbase.stablecoin_revenue_off_platform_usd",
+    "q3_2026_economics.coinbase.total_stablecoin_revenue_usd",
+    "source_receipts[source_id=coinbase_q3_2026_earnings_deck]"
+  ],
+  "incorrect_prior_values": {
+    "stablecoin_revenue_on_platform_usd": 202000000,
+    "stablecoin_revenue_off_platform_usd": 126000000,
+    "total_stablecoin_revenue_usd": 328000000,
+    "source_url": "https://s27.q4cdn.com/397450999/files/doc_financials/2026/q3/COIN-Q3-2026-Shareholder-Letter.pdf",
+    "status": "not_supported_by_the_official_SEC_exhibit"
+  },
+  "corrected_primary_source": {
+    "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/q326earningsdeck_vsec.htm",
+    "filing": "Coinbase Q3 2026 Earnings Presentation, Exhibit 99.1",
+    "q3_stablecoin_revenue_usd": 307000000,
+    "q3_stablecoin_revenue_growth_qoq_percent": 5,
+    "average_usdc_held_in_coinbase_products_usd": 22000000000,
+    "average_off_platform_usdc_balances_usd": 51000000000,
+    "revenue_split_on_vs_off_platform_disclosed": false,
+    "relevant_slides": [
+      9,
+      22
+    ],
+    "exact_interpretation": "Slide 22 reports Q3 stablecoin revenue of $307M (+5% Q/Q). Slide 9 reports $22B average USDC held in Coinbase products and $51B average off-platform USDC balances. The official deck does not support the previously stated $202M/$126M revenue split."
+  },
+  "circle_side_unchanged": {
+    "q3_coinbase_related_distribution_costs_usd": 331300000,
+    "nine_month_coinbase_related_distribution_costs_usd": 986600000,
+    "source": "Circle Q3 2026 Form 10-Q",
+    "comparability": "Circle distribution costs and Coinbase stablecoin revenue are different accounting measures. The arithmetic difference of -$24.3M is not Coinbase profit/loss, Circle margin, or a reconciliation."
+  },
+  "correction_reason": "The prior artifact treated an unverified search-result extraction as an on-platform/off-platform revenue split. The primary SEC earnings exhibit explicitly reports $307M total Q3 stablecoin revenue and separately reports USDC balance metrics. The revenue split is withdrawn.",
+  "model_admission": false,
+  "forecast_status": "NOT_ISSUED",
+  "source_receipts": [
+    {
+      "source_id": "coinbase_q3_stablecoin_revenue",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/q326earningsdeck_vsec.htm",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "773988260b60146d8b44857635cbf5d9e0d091b9d980f36167108bdbe8f27fb1",
+      "excerpt": "Q3 2026 Coinbase stablecoin revenue was $307 million, up 5% quarter over quarter. The earnings deck attributes growth to a new all-time high in average USDC held in Coinbase products and higher interest rates, partially offset by off-platform balances."
+    },
+    {
+      "source_id": "coinbase_q3_usdc_balances",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/q326earningsdeck_vsec.htm",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "c4344ef5753ead24578d7b7a2dc5f1f56f48bb5eb3e07eb05211ade3826fb742",
+      "excerpt": "Q3 2026 average USDC held in Coinbase products was $22 billion; average off-platform USDC balances were $51 billion. The deck does not disclose a $202 million on-platform and $126 million off-platform stablecoin revenue split."
+    },
+    {
+      "source_id": "coinbase_q3_10q_arrangement",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "0f7658d80ac728f37a9e162c838d93d95768363df19ecba73c4f84b0d0fb5faf",
+      "excerpt": "During the third quarter of 2026, Coinbase renewed its arrangement with Circle on the same terms; the average amount of USDC held on Coinbase products reached an all-time high during the quarter."
+    },
+    {
+      "source_id": "circle_q3_distribution_costs",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "receipt_kind": "normalized_text_excerpt",
+      "sha256": "9001b1bda4d5915be3b49d7b911a302738fac2f18c1f17e55daea0e92dddc281",
+      "excerpt": "Q3 2026 Coinbase-related distribution costs $331.3 million; nine months ended September 30, 2026 Coinbase-related distribution costs $986.6 million; average USDC circulation $73.264 billion; September 30 USDC circulation $73.879 billion; USDC on Circle's platform $13.868 billion."
+    }
+  ]
+}

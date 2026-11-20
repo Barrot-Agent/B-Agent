@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_spot_market_snapshot",
+  "artifact_id": "kraken-xrpusd-rendered-capture-20261106T0002Z",
+  "asset": "XRP",
+  "market": "XRP/USD",
+  "venue": "Kraken",
+  "retrieval_window_utc": {
+    "start": "2026-11-05T23:58:10Z",
+    "end": "2026-11-06T00:02:33Z",
+    "precision": "bounded retrieval window; exact request time unavailable"
+  },
+  "source": {
+    "source_id": "kraken_public_ticker_xrpusd",
+    "publisher": "Kraken",
+    "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "source_scope": "single-venue spot ticker",
+    "source_independence_group": "kraken_xrpusd_ticker",
+    "provider_event_time_utc": null,
+    "provider_http_date_utc": null,
+    "data_cutoff_utc": null,
+    "capture": {
+      "kind": "web_rendered_json_text",
+      "rendered_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.20668000\",\"1507\",\"1507.000\"],\"b\":[\"1.20649000\",\"1915\",\"1915.000\"],\"c\":[\"1.20659000\",\"415.77685950\"],\"v\":[\"20162.96642483\",\"40803607.21137389\"],\"p\":[\"1.20569243\",\"1.26015867\"],\"t\":[51,39543],\"l\":[\"1.20538000\",\"1.19797000\"],\"h\":[\"1.20666000\",\"1.32583000\"],\"o\":\"1.20567000\"}}}",
+      "rendered_text_sha256": "da6485abc1566e966836953ceaf9ff6ca999fd132b978cc633d36d081a244c1f",
+      "rendered_text_utf8_bytes": 315,
+      "raw_http_wire_bytes_captured": false,
+      "response_headers_captured": false,
+      "note": "The hash binds the exact JSON text exposed by the retrieval interface. It is not represented as a byte-complete HTTP wire capture or provider-signed receipt."
+    }
+  },
+  "observations": {
+    "last_trade_usd": "1.20659000",
+    "last_trade_volume_xrp": "415.77685950",
+    "best_bid_usd": "1.20649000",
+    "best_ask_usd": "1.20668000",
+    "bid_size_xrp": "1915",
+    "ask_size_xrp": "1507",
+    "today_vwap_usd": "1.20569243",
+    "rolling_24h_vwap_usd": "1.26015867",
+    "today_volume_xrp": "20162.96642483",
+    "rolling_24h_volume_xrp": "40803607.21137389",
+    "today_trade_count": 51,
+    "rolling_24h_trade_count": 39543,
+    "today_open_usd": "1.20567000",
+    "rolling_24h_low_usd": "1.19797000",
+    "rolling_24h_high_usd": "1.32583000"
+  },
+  "derived_observations": {
+    "midpoint_usd": 1.206585,
+    "displayed_spread_basis_points": 1.5746922098311555,
+    "last_vs_rolling_24h_vwap_percent": -4.2509464304205435,
+    "last_vs_today_open_percent": 0.0763061202484927,
+    "last_vs_rolling_24h_low_percent": 0.7195505730527518,
+    "last_vs_rolling_24h_high_percent": -8.993611548991954
+  },
+  "contextual_evidence": {
+    "macro_risk_context": [
+      {
+        "source_id": "reuters_us_equity_ai_trade_unwind_20261105",
+        "publisher": "Reuters",
+        "publication_date": "2026-11-05",
+        "url": "https://www.reuters.com/business/wall-street-fear-gauge-jumps-most-since-liberation-day-ai-trade-stumbles-2026-11-05/",
+        "reported_observations": {
+          "nasdaq_100_change_percent": -6.4,
+          "nasdaq_composite_change_percent": -5.5,
+          "vix_level": 28.36,
+          "estimated_nasdaq_market_value_erased_usd_trillion": 2.5
+        },
+        "source_capture_status": "secondary article search result; raw publisher bytes not captured",
+        "limitation": "Broad equity/AI-risk context only; no causal XRP attribution."
+      },
+      {
+        "source_id": "guardian_us_equity_selloff_20261105",
+        "publisher": "The Guardian",
+        "publication_date": "2026-11-05",
+        "url": "https://www.theguardian.com/business/2026/nov/05/nasdaq-heading-for-worst-day-in-18-months-as-wall-street-sustains-widespread-losses",
+        "reported_observations": {
+          "nasdaq_composite_change_percent": -5.5,
+          "dow_jones_change_percent": -3.4,
+          "sp500_change_percent": -4.3
+        },
+        "source_capture_status": "secondary article search result; raw publisher bytes not captured",
+        "limitation": "Index and publication-time definitions must be preserved; not an XRP causal measure."
+      }
+    ],
+    "etf_flow_context": {
+      "source_id": "coinpaper_xrp_etf_flow_report_20261105",
+      "publisher": "Coinpaper",
+      "publication_date": "2026-11-05",
+      "url": "https://coinpaper.com/38371/xrp-et-fs-record-zero-inflows-as-ripple-expands-banking-business-with-bny-coinbase-and-robinhood",
+      "reported_observations": {
+        "november_2_net_flow_usd": -530000,
+        "november_3_net_flow_usd": 0,
+        "november_4_status": "preliminary zero among reporting funds"
+      },
+      "source_capture_status": "secondary report citing CryptoETF Today; raw issuer/AP files not captured",
+      "limitation": "Not verified AP cash creation/redemption. Fund universe and reporting completeness differ from other trackers."
+    }
+  },
+  "competing_hypotheses": [
+    {
+      "hypothesis": "Broad risk-off and cross-asset deleveraging contributed to XRP weakness.",
+      "supporting_evidence": [
+        "Reuters and The Guardian reported a sharp US equity/AI-trade selloff on 2026-11-05."
+      ],
+      "disconfirming_evidence": [
+        "No synchronized XRP-versus-equity event study is attached.",
+        "The Kraken ticker is a single venue and has no provider event timestamp."
+      ]
+    },
+    {
+      "hypothesis": "XRP-specific leveraged positioning and liquidation activity contributed to price pressure.",
+      "supporting_evidence": [
+        "Earlier same-day secondary derivatives dashboards reported long-heavy liquidations and declining USD-notional open interest."
+      ],
+      "disconfirming_evidence": [
+        "Those dashboards have different venue coverage and observation times; they are not synchronized with this Kraken snapshot."
+      ]
+    },
+    {
+      "hypothesis": "XRP-specific spot supply or ETF-related flows contributed to price pressure.",
+      "supporting_evidence": [
+        "Some secondary ETF trackers reported flat or negative daily observations."
+      ],
+      "disconfirming_evidence": [
+        "Fund universes differ; some observations were preliminary; issuer/AP cash creations and redemptions were not independently verified."
+      ]
+    },
+    {
+      "hypothesis": "Measurement timing and venue coverage explain part of the apparent disagreement.",
+      "supporting_evidence": [
+        "The Kraken response has no provider event time or HTTP Date header, and derivatives/ETF sources use different cutoffs."
+      ],
+      "disconfirming_evidence": [
+        "A synchronized multi-venue, event-time dataset is not yet available."
+      ]
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "forecast_issued": false,
+  "model_eligible": false,
+  "model_ineligibility_reasons": [
+    "No provider event timestamp or HTTP Date header was available.",
+    "Exact request time is unknown; only a bounded retrieval window is known.",
+    "The capture is rendered JSON text, not byte-complete HTTP wire evidence.",
+    "Single-venue ticker observations do not represent consolidated spot liquidity.",
+    "Macro and ETF context is secondary reporting with separate timestamps and incomplete raw receipts.",
+    "No synchronized event-time derivatives, exchange-flow or issuer/AP cash-flow panel is attached."
+  ],
+  "limitations": [
+    "No directional inference is drawn from a single spot ticker.",
+    "The API response contains no provider timestamp; retrieval time is not substituted for event time.",
+    "The displayed spread is top-of-book only and does not measure executable depth or slippage.",
+    "The ticker's today fields and rolling 24-hour fields are retained separately.",
+    "No forecast or trading recommendation is issued."
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "schema_version": "barrot.xrp.research_addendum.v1",
+  "run_id": "run112a",
+  "captured_at_utc": "2026-11-14T02:16:05Z",
+  "subject": "RLUSD cross-chain supply, gross transfer volume, payment-quality and concentration",
+  "mission_relevance": "Separate stablecoin infrastructure adoption from economically meaningful XRP demand and prevent raw transaction-count/transfer-volume leakage into the XRP prediction feature store.",
+  "current_supply": {
+    "provider": "DefiLlama",
+    "as_of_date": "2026-11-14",
+    "accessed_at_utc": "2026-11-14T02:16:05Z",
+    "total_rlusd_usd": 2781000000,
+    "ethereum_usd": 2001000000,
+    "xrpl_usd": 764090000,
+    "base_usd": 16110000,
+    "other_supported_chains": "Small residual balances on OP Mainnet, Ink and Unichain.",
+    "ethereum_share_percent": 71.99,
+    "xrpl_share_percent": 27.47,
+    "base_share_percent": 0.58,
+    "ethereum_change_1d_percent": 7.83,
+    "xrpl_change_1d_percent": -6.66,
+    "ethereum_change_7d_percent": 11.97,
+    "xrpl_change_7d_percent": -13.62,
+    "ethereum_change_30d_percent": 47.62,
+    "xrpl_change_30d_percent": -27.9,
+    "url": "https://defillama.com/stablecoin/ripple-usd",
+    "interpretation": "Ethereum currently holds roughly 72% of tracked RLUSD supply and XRPL roughly 27.5%. Over 30 days the displayed Ethereum supply rose 47.62% while XRPL supply fell 27.90%. This is a provider snapshot, not issuer reserve accounting or proof of a direct bridge transfer."
+  },
+  "october_transfer_volume": {
+    "provider": "Token Relations, November 6 2026 post, quoted by Coinpedia November 13",
+    "xrpl_october_gross_transfer_usd": 20056000000,
+    "ethereum_october_gross_transfer_usd": 15449000000,
+    "combined_gross_transfer_usd": 35506000000,
+    "xrpl_share_percent": 56.4,
+    "ethereum_share_percent": 43.6,
+    "original_post_url": "https://x.com/TokenRelations/status/2118806216520741062",
+    "original_post_access": "HTTP 403 through public retrieval; quotation preserved in Coinpedia article.",
+    "secondary_source": "https://coinpedia.org/news/rlusd-transfer-volume-beats-ethereum-but-supply-tells-a-different-story/",
+    "secondary_published_at_utc": "2026-11-13T10:31:00Z",
+    "turnover_calculation": {
+      "provider": "Coindoo calculation from Token Relations transfer totals and DefiLlama daily historical supply",
+      "xrpl_average_october_supply_usd": 1060000000,
+      "ethereum_average_october_supply_usd": 1407000000,
+      "xrpl_gross_transfer_to_average_supply_multiple": 18.9,
+      "ethereum_gross_transfer_to_average_supply_multiple": 10.97,
+      "calculation_url": "https://coindoo.com/xrp-ledger-turns-over-rlusd-19x-ethereum-manages-11x/",
+      "caveat": "Gross turnover measures repeated movement, not unique economic value, new capital, beneficial owners or payments for goods and services."
+    },
+    "weekly_counterevidence": {
+      "week_ending_2026_11_01": {
+        "xrpl_usd": 6699000000,
+        "ethereum_usd": 5017000000,
+        "total_usd": 11716000000
+      },
+      "week_starting_2026_11_02": {
+        "xrpl_usd": 3953000000,
+        "ethereum_usd": 3962000000,
+        "interpretation": "Ethereum narrowly retook the weekly lead; the October monthly lead did not persist in the latest reported week."
+      },
+      "source": "https://thecryptobasic.com/2026/11/10/xrpl-leads-as-rlusd-hits-new-ath-weekly-volume-of-11b/"
+    }
+  },
+  "payment_quality_and_concentration": {
+    "provider": "Bitquery direct XRP Ledger on-chain investigation",
+    "measurement_window_utc": "2026-09-19 through 2026-10-18",
+    "published_or_verified_date": "2026-10-19",
+    "all_distinct_account_rlusd_payments": 7821066,
+    "payments_under_1_rlusd": 7806466,
+    "under_1_rlusd_share_percent": 99.8,
+    "cluster_wallets": 110,
+    "cluster_payments_to_three_collectors": 7789341,
+    "cluster_share_of_all_rlusd_payment_count_percent": 99.6,
+    "rlusd_carried_by_cluster_payments": 7722,
+    "payments_at_least_1_rlusd": 14600,
+    "genuine_issuer_value_in_payments_at_least_1_usd": 7330000000,
+    "top_10_sender_value_usd": 6050000000,
+    "top_10_share_of_genuine_issuer_value_percent": 82,
+    "senders_over_10000_usd": 184,
+    "senders_over_1000000_usd": 50,
+    "median_payment_rlusd": 150,
+    "issuer_mint_value_usd": 728000000,
+    "issuer_mint_payment_count": 97,
+    "issuer_redemption_value_usd": 744000000,
+    "issuer_redemption_payment_count": 68,
+    "issuer_loop_share_approx_percent": 20,
+    "round_trip_pair_value_usd": 424000000,
+    "round_trip_gross_volume_inflation_usd": 848000000,
+    "cluster_xrp_fees_30d": 495,
+    "cluster_fee_cost_usd_at_provider_valuation": 648,
+    "cluster_funding_pattern": "110 wallets received XRP and RLUSD from Binance-labelled proof-of-reserves wallets; collectors swept flows through a destination-tag deposit account back to a Binance-labelled wallet. Bitquery says the pattern fits one Binance customer; it does not attribute conduct to Binance itself.",
+    "cluster_shutdown": "The 110-wallet cluster wound down between October 14 and October 16, coinciding with the October 15 Cross River announcement. Bitquery explicitly says the causal reason is unknown.",
+    "methodology_limits": [
+      "Counts XRP Ledger Payment transactions between distinct accounts that delivered the genuine RLUSD issuer currency; trades, self-payments, escrows, account deletions and failed transactions are excluded.",
+      "The 110-wallet cluster is inferred from common collectors and funding; it is not a verified real-world identity.",
+      "The 14,600 payments at least one RLUSD are not all independently proven commercial payments.",
+      "Exchange/custodian omnibus and destination-tag wallets can legitimately concentrate large settlement flows.",
+      "Issuer mint/redemption and round-trip transfers inflate gross transfer volume without equivalent net capital movement."
+    ],
+    "url": "https://bitquery.io/investigations/rlusd-xrpl-dust-bots"
+  },
+  "bank_rail": {
+    "provider": "Cross River Bank primary announcement",
+    "announcement_date": "2026-10-15",
+    "capability": "RLUSD integrated into Cross River Core Operating System; eligible fintech businesses can access USD/RLUSD through one API and use XRPL settlement alongside ACH, wires and real-time payment rails.",
+    "availability": "Limited US states at announcement.",
+    "actual_volume_disclosed": false,
+    "url": "https://www.crossriver.com/newsroom/cross-river-embeds-ripple-usd-stablecoin-on-the-xrp-ledger-into-its-core-banking-infrastructure-expanding-faster-payment-capabilities-for-businesses"
+  },
+  "feature_engineering_implications": [
+    "Do not use raw RLUSD payment count as an adoption feature without bot/dust classification.",
+    "Store gross transfer volume, net issuer supply change, mint/redemption, self/round-trip flows and bridge movements separately.",
+    "Track high-value payment count/value, unique sender/receiver counts, top-10 concentration, HHI, issuer share, exchange/custodian-labelled destinations and source confidence.",
+    "Separate XRPL RLUSD stock from gross XRPL RLUSD flow and from XRP spot demand.",
+    "Do not infer that RLUSD transfer volume creates proportional XRP purchases; XRP fee and reserve demand is a separate, measurable channel.",
+    "Treat Cross River integration as deployed infrastructure with limited-state availability, but actual throughput remains undisclosed."
+  ],
+  "competing_hypotheses": [
+    "H1: XRPL is developing genuine high-value institutional RLUSD settlement, reflected in the October transfer-volume lead and Cross River integration.",
+    "H2: Gross transfer volume is materially amplified by issuer mint/redemption, exchange/custodian sweeps and round trips; the Bitquery concentration analysis supports this caution.",
+    "H3: October activity may be a temporary venue/custody flow rotation; November 2 weekly volume was essentially tied and DefiLlama's November 14 supply snapshot shows Ethereum holding about 72% while XRPL supply fell 27.9% over 30 days."
+  ],
+  "model_admission": "NOT_ADMITTED: aggregator and on-chain research summaries are not byte-exact Barrot source receipts; the measurement windows, source definitions and independent lineage must be ingested and reconciled before feature use.",
+  "forecast_status": "NOT_ISSUED",
+  "accuracy_status": "NOT_EVALUATED"
+}

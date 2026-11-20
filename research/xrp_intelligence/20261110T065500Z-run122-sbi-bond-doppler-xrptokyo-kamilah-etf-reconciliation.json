@@ -1,0 +1,182 @@
+{
+  "run_id": "Run122",
+  "checked_at_utc": "2026-11-10T06:55:00Z",
+  "parent_integration_sha": "dd6abfd9fcf6196a2af0c4c10b7c186c6002423a",
+  "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "run121_verification": {
+    "tested_sha": "dd6abfd9fcf6196a2af0c4c10b7c186c6002423a",
+    "full_suite_passed": 1347,
+    "failed": 0,
+    "subtests_passed": 8,
+    "coverage_pct": 59.48,
+    "core_passed": 677,
+    "wheel_installed_and_mission_verified": true,
+    "dependency_manifests_passed": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_gate": true,
+    "ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42771039298",
+    "audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42771039251",
+    "gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/42771039703"
+  },
+  "sbi_start_bond": {
+    "issue_amount_jpy": 10000000000,
+    "sold_out": true,
+    "issue_date": "2026-03-24",
+    "maturity_date": "2029-03-23",
+    "tenor_years": 3,
+    "coupon_pct_annual_pretax": 2.15,
+    "platform": "BOOSTRY ibet for Fin",
+    "trading_venue": "Osaka Digital Exchange START PTS",
+    "not_xrpl_issued": true,
+    "not_xrp_denominated": true,
+    "initial_xrp_benefit": {
+      "eligibility": "qualified domestic individual/corporate bondholders with confirmed payment, SBI VC Trade account and completed receipt procedure",
+      "threshold_jpy": 100000,
+      "benefit_jpy_equivalent_per_threshold": 200,
+      "benefit_pct": 0.2,
+      "scheduled_by": "2026-05-15",
+      "xrp_price_reference_jst": "2026-05-13T06:59:00+09:00",
+      "separate_from_coupon": true
+    },
+    "future_interest_date_benefits": "not determined in February 20 disclosure; not implied or guaranteed to match initial benefit",
+    "theoretical_max_initial_reward_jpy_equivalent": 20000000,
+    "actual_eligible_principal_and_xrp_distributed": "not disclosed",
+    "classification": "¥10B SBI Holdings debt issuance; XRP is a conditional investor benefit, not a ¥10B XRP purchase or XRP demand.",
+    "primary_sources": [
+      "https://www.sbigroup.co.jp/english/news/pdf/2026/0220_a_en.pdf",
+      "https://www.sbisec.co.jp/contents/lp/2026/bond_st_260220_sbistart.html"
+    ]
+  },
+  "doppler": {
+    "announcement_date": "2025-12-17",
+    "parties": [
+      "SBI Ripple Asia",
+      "Doppler Finance"
+    ],
+    "scope": "MOU to explore XRP yield infrastructure and RWA tokenization on XRPL",
+    "custodian": "SBI Digital Markets (MAS-regulated digital asset entity)",
+    "mislabel_correction": "Not SBI Digital Finance; do not conflate SBI Ripple Asia, SBI Digital Markets, SBI VC Trade or SBI Holdings.",
+    "status": "exploratory MOU; no public product launch, AUM, XRP balance, client count, capital amount or production volume verified",
+    "source": "https://blog.doppler.finance/blog/sbi-ripple-asia-partners-with-doppler-finance-for-xrp-yield-and-rwa-tokenization"
+  },
+  "xrp_tokyo_claim_audit": {
+    "official_agenda": "https://www.xrp-tokyo.io/agenda",
+    "event_date": "2026-04-07",
+    "confirmed_sessions": [
+      "stablecoins/tokenized deposits panel with SBI VC Trade, HashPort, JPYC and Rakuten Wallet",
+      "Evernorth COO Meg Nakamura keynote",
+      "institutional blockchain adoption panel with GMO Aozora Bank, HashHub and Fireblocks Japan",
+      "SBI Ripple Asia/Tobu Top Tours tokenized tourism payments",
+      "SBI VC Trade RLUSD keynote",
+      "Doppler Finance institutional XRPL adoption keynote"
+    ],
+    "secondary_claims": {
+      "cost_savings_pct": 60,
+      "settlement_seconds_under": 4,
+      "new_odl_pairs": 12,
+      "source_urls": [
+        "https://dailycoin.com/japanese-banks-report-60-cost-savings-using-xrp-over-swift/",
+        "https://247wallst.com/investing/2026/04/10/xrp-news-ripples-japanese-bank-pilots-just-showed-60-cost-savings-using-xrp-over-swift/"
+      ]
+    },
+    "primary_data_found": false,
+    "named_remittance_banks_in_official_agenda": false,
+    "ripple_odl_pair_list_found": false,
+    "classification": "UNVERIFIED secondary claims; official agenda confirms event and institutional sessions but does not publish those metrics."
+  },
+  "kamilah_channel_inventory": {
+    "identity_status": "high-confidence channel-level attribution; exact official-site-to-YouTube handle cross-link not found",
+    "channel_handle_candidate": "@drkamilahstevenson",
+    "channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
+    "subscriber_count_third_party_approx": 138000,
+    "direct_youtube_search_result_followers_range": [
+      137000,
+      140000
+    ],
+    "official_brand_site": "https://learn.kamilahstevenson.com/",
+    "inventory": [
+      {
+        "id": "Gy4BuGhAWE8",
+        "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+        "published": "2025-12-03",
+        "views": 21568,
+        "likes": null,
+        "url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8"
+      },
+      {
+        "id": "iwhpNT73zpk",
+        "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+        "published": "2026-03-06",
+        "views": 32040,
+        "likes": 2300,
+        "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+      },
+      {
+        "id": "qtT2hLeFkM0",
+        "title": "More Than 100 Million XRP Was Moved Into Flare's FXRP System — And XRP Holders Did It Voluntarily",
+        "published": "2026-08-25",
+        "views": 89042,
+        "likes": 2700,
+        "url": "https://www.youtube.com/watch?v=qtT2hLeFkM0"
+      },
+      {
+        "id": "Wa0Teymjaks",
+        "title": "The CLARITY Act Is Not XRP's Biggest Event This Week",
+        "published": "2026-09-13",
+        "views": 19984,
+        "likes": 1131,
+        "url": "https://www.youtube.com/watch?v=Wa0Teymjaks"
+      }
+    ],
+    "excluded_candidates": [
+      "Democrats’ Win Shook AI and Crypto. XRP Has a Head Start",
+      "The 'Secret' XRP Update Everyone's Panicking About (Debunked)"
+    ],
+    "exclusion_reason": "Aggregator-only results lacked direct YouTube IDs in this check; multiple lookalike accounts share similar bios.",
+    "camilla_variant": "no distinct Camilla identity verified",
+    "guest_show_appearances_not_counted_as_personal_channel_uploads": true
+  },
+  "exact_phrase_status": {
+    "sbic_chatgpt": "No exact phrase match; official Tokyo SBIC training includes ChatGPT/Copilot instruction, not a partnership.",
+    "ask_coin": "Unresolved; Permission Coin ASK and inactive Ask Coin exchange are distinct candidates; no XRP integration verified.",
+    "actual_capital": "No standardized XRP metric; cash, in-kind XRP, debt, contingent equity, secondary resales and token rewards must be separate."
+  },
+  "etf_flow_conflict": {
+    "prior_run120_121_capture": {
+      "crypto_keyhole_reported_xrp": -9216553,
+      "usd_millions": -10.1,
+      "coverage": "3 of 4 daily tracked funds",
+      "capture_utc": "2026-11-10T06:12:00Z"
+    },
+    "later_search_index_state": {
+      "crypto_keyhole": "none of four daily-tracked funds had published a November 9 file; latest complete day November 6",
+      "november_6_complete_day_xrp": -752048,
+      "coverage": "4 of 4"
+    },
+    "other_trackers": [
+      {
+        "name": "Alpha Finance",
+        "november_9_usd_millions": -10.4,
+        "funds": 5
+      },
+      {
+        "name": "CryptoETF.today",
+        "november_9_usd_millions": -10.3,
+        "coverage": "3 of 5"
+      }
+    ],
+    "classification": "November 9 aggregate disputed/not model eligible pending direct issuer file byte-level reconciliation; preserve prior captures without overwriting."
+  },
+  "market_freshness": {
+    "last_validated_spot_snapshot": "Run121: OKX 2026-11-10T06:40:33.969Z; Kraken retrieval lacked provider event timestamp",
+    "last_validated_spot_depth": "Fuelmaps 2026-11-10T06:00:00Z",
+    "last_validated_derivatives": "TradRadar 2026-11-10T05:50:00Z",
+    "subsequent_api_open_attempts": "served stale August 2026 cached payloads; excluded",
+    "no_new_synchronized_capture_admitted": true
+  },
+  "prediction_status": "NOT_ISSUED",
+  "run122_web_observations_model_eligible": false,
+  "raw_transport_bytes_preserved": false,
+  "raw_source_sha256_claimed": false,
+  "no_merge_or_external_actions": true
+}

@@ -1,0 +1,298 @@
+{
+  "schema_version": "barrot.xrp.research-run.v1",
+  "run_id": "56C",
+  "captured_at_utc": "2026-11-12T12:44:01Z",
+  "mission": {
+    "priority": 1,
+    "primary": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository": {
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "verified_code_head": "b92f17dae28b945a8eb2ad1ca9b6057d9cea2858",
+    "ahead_by": 2104,
+    "behind_by": 0,
+    "main_tree_entries": 1388,
+    "integration_tree_entries_before_handoff": 2316,
+    "pr_number": 1661,
+    "pr_draft": true,
+    "changed_files": 1057,
+    "workflow_files": 49,
+    "other_paths": 1008,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "base_main": 366,
+    "other_base": 8
+  },
+  "ci": {
+    "run_id": 43220051141,
+    "full_job_id": 131188965569,
+    "head_sha": "b92f17dae28b945a8eb2ad1ca9b6057d9cea2858",
+    "tests": 3507,
+    "passed": 3507,
+    "failed": 0,
+    "subtests": 8,
+    "broad_coverage_percent": 61.35,
+    "broad_floor": 53,
+    "full_suite_seconds": 79.63,
+    "core_job_id": 131188964820,
+    "core_tests": 716,
+    "core_passed": 716,
+    "core_subtests": 8,
+    "core_seconds": 16.22,
+    "core_coverage_report_percent_rounded": 76,
+    "core_coverage_floor": 70,
+    "core_gate_passed": true,
+    "wheel_build_passed": true,
+    "installed_wheel_mission_verification_passed": true,
+    "dependency_audit_run": 43220051114,
+    "dependency_audit_groups": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_pr_run": 43220051020,
+    "fail_closed_push_run": 43220038204
+  },
+  "coverage_change": {
+    "files": [
+      ".github/workflows/ci.yml",
+      "tests/test_ci_coverage_scope.py"
+    ],
+    "description": "Added 70% legacy core-scope coverage report gate after broad 53% all-package gate; both passed on exact head.",
+    "tests_removed_or_weakened": false
+  },
+  "workflow_audit": {
+    "changed_workflows": 49,
+    "quarantined_writer_workflows": 11,
+    "workflow_run_jobs": 1,
+    "workflow_run_permissions": [
+      "actions:read",
+      "contents:read"
+    ],
+    "manual_gated_workflows": [
+      "barrot-ops.yml",
+      "coinbase-paper-trader.yml",
+      "deploy-a2a-worker.yml",
+      "financial-data-refresh.yml"
+    ],
+    "external_actions_triggered": 0,
+    "action_pinning": "major-version tags; immutable SHA pinning remains a hardening item"
+  },
+  "security": {
+    "main_protected": true,
+    "required_status_contexts": [],
+    "branch_protection_api": "403",
+    "fallback_ruleset_id": 10863829,
+    "fallback_ruleset_enforcement": "disabled",
+    "github_permissions": [
+      "admin",
+      "maintain",
+      "pull",
+      "push",
+      "triage"
+    ],
+    "least_privilege": false,
+    "pages_publication_authorized": false,
+    "provider_side_oauth_revocation": "unverified"
+  },
+  "backlog": {
+    "path_overlap_only": [
+      {
+        "pr": 1660,
+        "changed": 972,
+        "shared_with_1661": 972,
+        "source_only": 0
+      },
+      {
+        "pr": 1643,
+        "changed": 670,
+        "shared_with_1661": 670,
+        "source_only": 0
+      },
+      {
+        "pr": 1640,
+        "changed": 280,
+        "shared_with_1661": 280,
+        "source_only": 0
+      },
+      {
+        "pr": 1642,
+        "changed": 7,
+        "shared_with_1661": 7,
+        "source_only": 0
+      },
+      {
+        "pr": 1653,
+        "changed": 7,
+        "shared_with_1661": 1,
+        "source_only": 6
+      },
+      {
+        "pr": 1655,
+        "changed": 8,
+        "shared_with_1661": 5,
+        "source_only": 3
+      }
+    ],
+    "blob_comparison_refreshed": false,
+    "source_prs_closed": []
+  },
+  "market": {
+    "okx": {
+      "last": 1.0372,
+      "bid": 1.0371,
+      "ask": 1.0372,
+      "event_timestamp": "2026-11-12T12:36:29.686Z",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    "kraken": {
+      "last": 1.03424,
+      "bid": 1.03412,
+      "ask": 1.03413,
+      "event_timestamp": null,
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "usdt_usd_mid": 0.998665,
+    "normalized_okx_last": 1.035820524,
+    "cross_venue_gap_percent": 0.1528198484,
+    "l2_snapshot": "not obtained",
+    "raw_receipt_status": "not captured; model-ineligible"
+  },
+  "etf_disagreement": [
+    {
+      "source": "The Block",
+      "date": "2026-11-11",
+      "daily_flow_usd": -7600000,
+      "aum_usd": 1100000000,
+      "url": "https://www.theblock.co/data/etfs"
+    },
+    {
+      "source": "Alpha Finance",
+      "through": "2026-11-10",
+      "cohort": "five funds",
+      "daily_flow_usd": -7600000,
+      "thirty_session_flow_usd": 1300000,
+      "cumulative_net_inflows_usd": 1710000000,
+      "url": "https://alphafinance.io/etf/xrp/"
+    },
+    {
+      "source": "TheXRPInvestor",
+      "products": 12,
+      "xrp_holdings": 1190000000,
+      "aum_usd": 1260000000,
+      "url": "https://thexrpinvestor.com/xrp-etf-flows"
+    },
+    {
+      "source": "CryptoETF.today",
+      "date": "2026-11-11",
+      "xrp_holdings": 1124880734,
+      "url": "https://cryptoetf.today/en/xrp-etf-flows"
+    },
+    {
+      "source": "XRP Insights",
+      "date": "2026-11-10",
+      "xrp_holdings_total": 1190000000,
+      "spot_only_holdings": 1160000000,
+      "url": "https://xrp-insights.com/"
+    }
+  ],
+  "identity": {
+    "ask_coin": "Permission ASK; 100B fixed supply; Base/Polygon; no verified XRPL deployment; Coinbase Embedded Wallet relationship is wallet/data infrastructure only.",
+    "actual_capital": "CBC Globe phrase is secondary; Evernorth Cantor ELOC is conditional equity capacity, not cash received or verified XRP purchase.",
+    "sbic": "Japanese SBIC East/Central/West, SBI Holdings and Social Bias Inference Corpus remain distinct; no verified OpenAI partnership.",
+    "stevenson_candidates": [
+      {
+        "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+        "date": "2025-12-14",
+        "id": "QslbjGQD0MU",
+        "url": "https://glasp.co/youtube/QslbjGQD0MU"
+      },
+      {
+        "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+        "date": "2026-01-13",
+        "id": "ci0FH73lbCs",
+        "url": "https://glasp.co/youtube/ci0FH73lbCs"
+      },
+      {
+        "title": "Why Most People Will Lose Their Crypto Wealth (Even If They’re Right)",
+        "date": "2026-01-15",
+        "id": "cxeX_eu_2H0",
+        "url": "https://glasp.co/youtube/cxeX_eu_2H0"
+      },
+      {
+        "title": "How Much XRP Do You ACTUALLY Need?",
+        "date": "2026-03-19",
+        "id": "rv0BAV0vLgo",
+        "url": "https://glasp.co/youtube/rv0BAV0vLgo"
+      }
+    ],
+    "channel_candidates": [
+      "@KamilahStevensonXrpStocks / UCXm6KAr1WHF6UN7g5b2W7wg",
+      "@drkamilahstevenson (third-party link)",
+      "UCqUPJMQdkCN6lsLVDnichPA (Vling index)"
+    ],
+    "verified_inventory_updated": false
+  },
+  "architecture": {
+    "source_definitions": 47,
+    "scheduled_sources": 45,
+    "collector": "read-only allowlisted",
+    "receipts": "SHA-256 and hash-chain prototype",
+    "feature_store": "SQLite point-in-time",
+    "baselines": [
+      "naive",
+      "momentum",
+      "mean-reversion",
+      "volatility"
+    ],
+    "walk_forward": "chronological with purge/embargo",
+    "calibration_drift": "prototype",
+    "forecast_ledger": "fail-closed; Ed25519 attestation required",
+    "outstanding": [
+      "WORM anchoring",
+      "trusted timestamps",
+      "replayable historical reconstruction",
+      "synchronized historical market/flow/collateral data",
+      "production signing key",
+      "shadow outcomes",
+      "candidate model and measured out-of-sample lift",
+      "main-branch scheduled ingestion"
+    ]
+  },
+  "platforms": {
+    "ChatGPT_GitHub": "verified auth/data flow; overprivileged",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "no formal PR approval",
+    "Codex": "unverified",
+    "HuggingFace": "last BUILD_ERROR",
+    "Kaggle": "untested",
+    "Databricks": "last HTTP 403",
+    "LunaRoute": "endpoint auth/data flow unverified",
+    "external_model_transfer": "none"
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Run56C web observations lack byte-exact RawReceiptArchive receipts; independent anchoring, historical replay, shadow outcomes and measured candidate-model lift remain incomplete."
+  },
+  "sources": [
+    "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+    "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+    "https://www.theblock.co/data/etfs",
+    "https://alphafinance.io/etf/xrp/",
+    "https://thexrpinvestor.com/xrp-etf-flows",
+    "https://cryptoetf.today/en/xrp-etf-flows",
+    "https://xrp-insights.com/",
+    "https://docs.permission.ai/ask-token",
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+    "https://cbcglobe.com/en/articles/2026/10/12/breaking-ripple-xrp-in-the-1-35-range-evernorth-nasdaq-listi-def18f6b",
+    "https://www.sbic.co.jp/training/20250612co/",
+    "https://glasp.co/youtube/QslbjGQD0MU",
+    "https://glasp.co/youtube/ci0FH73lbCs",
+    "https://glasp.co/youtube/cxeX_eu_2H0",
+    "https://glasp.co/youtube/rv0BAV0vLgo"
+  ]
+}

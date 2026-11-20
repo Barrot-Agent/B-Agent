@@ -1,0 +1,489 @@
+{
+  "artifact_type": "barrot.xrp.run_research_addendum",
+  "schema_version": "1.0.0",
+  "run_id": "run199-research-addendum",
+  "captured_at_utc": "2026-11-16T22:14:05.105Z",
+  "repository": {
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "base_head": "d0bb7e196bbb7f8d288b83741fe6df502ba48a69",
+    "base_head_ahead_by": 126,
+    "base_head_behind_by": 0,
+    "base_tree_entries": 2566,
+    "pr1663": {
+      "draft": true,
+      "changed_files": 1338,
+      "commits": 126,
+      "formal_reviews": 0,
+      "review_threads": 0
+    }
+  },
+  "exact_head_verification_on_parent": {
+    "head": "d0bb7e196bbb7f8d288b83741fe6df502ba48a69",
+    "full_suite": {
+      "run_id": 43967254830,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43967254830",
+      "status": "success",
+      "passed": 3844,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 115.13,
+      "inclusive_coverage_pct": 66.9,
+      "legacy_core_coverage_pct": 77,
+      "wheel_build": "passed",
+      "installed_v3_xrp_mission_smoke": "passed",
+      "pages_validation": "passed"
+    },
+    "dependency_audit": {
+      "run_id": 43967254916,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43967254916",
+      "status": "success",
+      "manifests": 6,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed": {
+      "run_id": 43967254834,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43967254834",
+      "status": "success"
+    },
+    "cache_warning": "GitHub Actions cache budget was exhausted; cache is read-only. It did not affect test, coverage, wheel or Pages results."
+  },
+  "current_kraken_spot_snapshot": {
+    "source": "Kraken public REST Ticker API",
+    "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "captured_at_utc": "2026-11-16T22:14:05.105Z",
+    "provider_timestamp_utc": null,
+    "raw_http_bytes_captured": false,
+    "raw_source_sha256": null,
+    "point_in_time_eligible": false,
+    "admission": "DESCRIPTIVE_ONLY",
+    "last_usd": 0.9579,
+    "bid_usd": 0.95787,
+    "ask_usd": 0.95792,
+    "spread_usd": 0.00005,
+    "spread_basis_points": 0.52198,
+    "top_bid_size_xrp": 485,
+    "top_ask_size_xrp": 784,
+    "volume_24h_xrp": 44673460.95089964,
+    "vwap_24h_usd": 0.9555694,
+    "approximate_24h_notional_usd": 42688592.28,
+    "high_24h_usd": 0.97742,
+    "low_24h_usd": 0.94005,
+    "open_24h_usd": 0.97373,
+    "change_from_open_pct": -1.6257,
+    "limitations": [
+      "Single venue only.",
+      "Top-of-book only; not full depth.",
+      "No provider timestamp or byte-exact source receipt.",
+      "Not admitted to point-in-time feature store."
+    ]
+  },
+  "institutional_evidence": [
+    {
+      "id": "ripple-swell-2026-recap",
+      "publisher": "Ripple",
+      "independence_group": "ripple",
+      "published_date": "2026-11-16",
+      "url": "https://ripple.com/insights/ripple-swell-2026-recap/",
+      "classification": "company-reported corporate/product metrics and event recap",
+      "claims": {
+        "attendees": 1500,
+        "institutions_corporates_enterprises_using_ripple": ">1700",
+        "multiple_solution_customer_growth": "3x",
+        "exit_2026_annualized_product_revenue_run_rate_usd": 900000000
+      },
+      "counter_hypothesis": "These are Ripple-reported company/product metrics, not audited realized revenue or XRP purchases. Multi-product usage may primarily involve RLUSD, custody, treasury and fiat rails."
+    },
+    {
+      "id": "ripple-oct28-banner-year",
+      "publisher": "Ripple",
+      "independence_group": "ripple",
+      "published_date": "2026-10-28",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "classification": "company-reported product and network scale",
+      "claims": {
+        "transactions_enabled_across_products_2025_usd": ">16T",
+        "licenses": ">85",
+        "payout_markets": ">60",
+        "ripple_payments_lifetime_volume_expected_by_year_end_usd": "~150B",
+        "rlusd_market_cap_as_of_release_usd": "~2.6B"
+      },
+      "caveat": "The $16T figure is transactions enabled across Ripple products in 2025; the ~$150B figure is Ripple Payments network lifetime volume. Neither is XRP spot turnover, XRP ledger settlement volume or XRP demand."
+    },
+    {
+      "id": "aviva-tokenized-gbp-liquidity-fund",
+      "publisher": "Aviva Investors",
+      "independence_group": "aviva-investors",
+      "published_date": "2026-10-26",
+      "url": "https://www.avivainvestors.com/en-gb/about/company-news/2026/10/aviva-investors-launches-tokenised-share-class-for-sterling-liquidity-fund/",
+      "classification": "launched tokenized fund share class on XRPL",
+      "claims": {
+        "underlying_fund_aum_gbp": "~22B",
+        "invested_across_two_tokenized_share_classes_gbp": ">86M",
+        "aviva_investment_in_new_gbp_share_class_gbp": 50,
+        "structure": "digital twin; underlying off-chain UCITS fund structure remains"
+      },
+      "custody": "BNY is the fund custodian; Komainu supports institutional digital-asset custody; Licuido provides digital infrastructure.",
+      "counter_hypothesis": "The £22B is the underlying fund's AUM, not the value tokenized on XRPL. The £50M Aviva investment and £86M across two share classes are fund investments, not XRP purchases."
+    },
+    {
+      "id": "cross-river-rlusd-xrpl-core-banking",
+      "publisher": "Cross River",
+      "independence_group": "cross-river",
+      "published_date": "2026-10-15",
+      "url": "https://www.crossriver.com/newsroom/cross-river-embeds-ripple-usd-stablecoin-on-the-xrp-ledger-into-its-core-banking-infrastructure-expanding-faster-payment-capabilities-for-businesses",
+      "classification": "RLUSD/XRPL banking integration; limited availability",
+      "claims": {
+        "integration": "RLUSD on XRPL integrated into Cross River Core Operating System; single API for fintechs; USD/RLUSD movement, cross-border settlement and treasury flows"
+      },
+      "limitations": [
+        "Services available only in limited states.",
+        "No transaction count, settlement value or XRP purchase volume disclosed."
+      ]
+    },
+    {
+      "id": "c2fo-instant-pay-xrpl-rlusd",
+      "publisher": "C2FO",
+      "independence_group": "c2fo",
+      "published_date": "2026-10-27",
+      "url": "https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "classification": "announced initiative / limited rollout / waitlist",
+      "claims": {
+        "settlement_asset": "RLUSD",
+        "ledger": "XRPL",
+        "funding": "participating capital providers fund approved invoice early payments"
+      },
+      "status": "C2FO's current Instant Pay page remains waitlist/limited rollout. Production XRPL transaction volumes have not been verified.",
+      "counter_hypothesis": "The financing capital is supplied by participating providers; this is not evidence of XRP collateral, XRP treasury purchases or an active high-volume settlement flow."
+    },
+    {
+      "id": "ripple-prime-rwa-perpetual-swaps",
+      "publisher": "Ripple",
+      "independence_group": "ripple",
+      "published_date": "2026-10-15",
+      "url": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+      "classification": "launched institutional RWA swap service",
+      "claims": {
+        "reference_markets": ">100",
+        "named_institutional_client": "Virtu",
+        "venue": "Trade.xyz contracts on Hyperliquid",
+        "collateral_supported": "RLUSD",
+        "cross_margining": true,
+        "license_region": "CIV BVI"
+      },
+      "counter_hypothesis": "This establishes an RLUSD collateral path for RWA swaps, not XRP collateral or direct XRP demand."
+    },
+    {
+      "id": "mastercard-stablecoin-settlement-roadmap",
+      "publisher": "Mastercard",
+      "independence_group": "mastercard",
+      "published_date": "2026-06-03",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-expands-settlement-capabilities-to-include-stablecoin.html",
+      "classification": "announced settlement capabilities and network support",
+      "claims": {
+        "stablecoins_in_scope": [
+          "USDC",
+          "PYUSD",
+          "USDG",
+          "USDP",
+          "RLUSD"
+        ],
+        "networks_in_scope": [
+          "Arbitrum",
+          "Base",
+          "Canton",
+          "Ethereum",
+          "Polygon",
+          "Solana",
+          "Tempo",
+          "XRPL"
+        ],
+        "expected_early_partners": [
+          "ARQ",
+          "CBW Bank",
+          "Cross River",
+          "Lead Bank",
+          "Nuvei"
+        ]
+      },
+      "limitation": "The announcement does not publish a stablecoin-by-network matrix. Do not infer that every listed stablecoin is available on every listed network or that all flows use XRP."
+    },
+    {
+      "id": "privy-xrpl-wallet-integration",
+      "publisher": "Privy",
+      "independence_group": "privy",
+      "published_date": null,
+      "url": "https://www.privy.io/blog/building-payments-and-agentic-commerce-with-the-xrp-ledger",
+      "classification": "announced developer wallet integration",
+      "claims": {
+        "capabilities_announced": [
+          "programmatic XRPL wallets",
+          "transaction signing",
+          "XRP and RLUSD support",
+          "x402/agentic commerce"
+        ],
+        "future_work": [
+          "policy controls",
+          "gas sponsorship"
+        ]
+      },
+      "limitation": "Capability announcement, not evidence of production transaction volume or net XRP demand."
+    },
+    {
+      "id": "dbs-franklin-ripple-sgbenji-rlusd-mou",
+      "publisher": "DBS",
+      "independence_group": "dbs",
+      "published_date": "2025-09-18",
+      "url": "https://www.dbs.com/newsroom/DBS_and_Franklin_Templeton_to_launch_trading_and_lending_solutions_powered_by_tokenised_money_market_funds_and_Ripples_RLUSD_stablecoin",
+      "classification": "memorandum of understanding / planned trading and lending",
+      "claims": {
+        "tokenized_fund": "sgBENJI",
+        "cash_leg": "RLUSD",
+        "proposed_collateral": "sgBENJI"
+      },
+      "limitation": "DBS described collateral use as a future exploration; the MOU is not evidence that sgBENJI collateral lending is live."
+    }
+  ],
+  "sentiment_pipeline_diagnosis": {
+    "latest_main_cross_analysis_run": {
+      "run_id": 43964350423,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43964350423",
+      "conclusion": "success",
+      "xrp_recent_24h_entries": 0,
+      "xrp_prior_24h_entries": 0,
+      "btc_recent_24h_entries": 0,
+      "btc_prior_24h_entries": 0
+    },
+    "main_xrp_log": {
+      "path": "ping-pongings/knowledge-base/log.jsonl",
+      "blob_sha": "de9787cdf7911b19ad7be02a74c6b4fabde2b482",
+      "rows": 1208,
+      "first_ingested_at_utc": "2026-07-14T00:49:14.963734Z",
+      "last_ingested_at_utc": "2026-10-29T13:23:01.047283Z"
+    },
+    "main_btc_log": {
+      "path": "ping-pongings/knowledge-base/log_btc.jsonl",
+      "blob_sha": "31af85bcf269b7af3c3c6ca0792642b4155d3f2c",
+      "rows": 1245,
+      "first_ingested_at_utc": "2026-07-27T06:55:24.297081Z",
+      "last_ingested_at_utc": "2026-10-29T13:38:11.448678Z"
+    },
+    "cross_analysis_workflow": "Main cross-analysis.yml is schedule + workflow_dispatch only; no workflow_run trigger from Knowledge Signal Cycle. It reads checked-in log.jsonl/log_btc.jsonl and does not ingest news.",
+    "knowledge_signal_cycle_workflow": "Main knowledge-signal-cycle.yml is workflow_dispatch only, requires confirm_external_research=YES, calls GitHub Models/Groq for distillation, uploads artifacts and does not commit/push refreshed checked-in logs. It is not connected to the hourly Cross Analysis data path.",
+    "entity_sentiment_profile": "Aggregates all historical log rows without a time-window filter; XRP +0.455 (186 bullish, 44 neutral, 56 bearish) is historical corpus sentiment, not current market sentiment.",
+    "sentiment_shift": "Filters adjacent 24-hour windows; zero entries because checked-in logs stop on 2026-10-29.",
+    "conclusion": "Cross Analysis success is an execution result, not proof of fresh sentiment coverage. The scheduled public XRP market-ingestion workflow on integration is the deterministic non-LLM path; it is absent from main.",
+    "cross_analysis_triggered_by_knowledge_signal_cycle": false,
+    "integration_cross_analysis": "Integration branch uses an hourly read-only Cross Analysis with freshness-aware output; legacy Knowledge Signal Cycle is quarantined/disabled. It does not make external model calls."
+  },
+  "prediction_engine_code_review": {
+    "forecast_ledger_schema": "barrot.xrp.model-readiness.v6",
+    "required_evaluation_type": "chronological_walk_forward_model_evaluation",
+    "candidate_model_must_differ_from_baseline": true,
+    "data_requirements": {
+      "verified_point_in_time_manifest": true,
+      "byte_complete_raw_receipts": true,
+      "independent_source_groups_minimum": 5,
+      "training_samples_minimum": 100,
+      "out_of_sample_samples_minimum": 100,
+      "shadow_samples_minimum": 100,
+      "effective_oos_samples_minimum": 10,
+      "effective_shadow_samples_minimum": 10,
+      "each_window_span_minimum_horizons": 10,
+      "shadow_must_follow_oos": true
+    },
+    "performance_requirements": {
+      "baselines": [
+        "naive_class_prior",
+        "momentum_sign",
+        "mean_reversion_sign",
+        "volatility_normal"
+      ],
+      "candidate_must_beat_each_on": [
+        "Brier score",
+        "log loss"
+      ],
+      "evaluation_windows": [
+        "out_of_sample",
+        "shadow"
+      ],
+      "weighted_calibration_error_max": 0.05,
+      "drift_status": "STABLE",
+      "leakage_check": "PASS"
+    },
+    "uncertainty_requirements": {
+      "method": "paired temporal and source-clustered moving-block bootstrap",
+      "bootstrap_replicates_minimum": 10000,
+      "familywise_comparisons": 8,
+      "multiplicity": "Bonferroni",
+      "minimum_paired_origins": 100,
+      "minimum_source_clusters": 5,
+      "upper_confidence_bounds_for_brier_and_log_loss_difference_must_be_below_zero": true
+    },
+    "evaluator_attestation": "Independent Ed25519 evaluator signature required; untrusted or missing keys fail closed.",
+    "walk_forward_scope": "Current evaluator produces four deterministic baseline evaluations. A distinct candidate model must be evaluated separately and pass the readiness report; baseline-only evaluation cannot authorize a forecast."
+  },
+  "forecast_gate": {
+    "registry_version": "run192-followup",
+    "events": 125,
+    "raw_source_sha256_receipts": 0,
+    "exact_publisher_timestamps": 48,
+    "missing_exact_publisher_timestamps": 77,
+    "model_eligible_events": 0,
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED"
+  },
+  "source_receipt_status": "All web-tool and API observations in this addendum are research-only; no exact publisher HTTP bytes, raw-source SHA-256 receipts or external WORM timestamps were captured.",
+  "transfer_hypothesis": "Institutional adoption may increase Ripple product revenue, RLUSD use, tokenized-fund activity and stablecoin settlement without creating proportional XRP demand. Measure XRP-specific balances, collateral, spot purchases, DEX liquidity, bridge flows and fee/transaction demand separately.",
+  "actions": {
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false,
+    "external_model_dispatch": false
+  },
+  "ingestion_scope_gap": {
+    "current_coverage": [
+      "multi-venue spot tickers",
+      "spot order-book depth",
+      "perpetual order books/open interest/funding",
+      "exchange-attributed wallets",
+      "ETF flows",
+      "RLUSD/USDC supply",
+      "SBI stablecoin lending observations",
+      "Morpho/cbXRP collateral",
+      "CFTC positioning",
+      "XRPL node/operator observations"
+    ],
+    "missing_or_incomplete": [
+      "autonomous public news/RSS ingestion",
+      "systematic FRED/BLS/Treasury/Fed macro series",
+      "geopolitical event feed",
+      "autonomous event discovery beyond curated registry"
+    ],
+    "status": "DESIGNED_GAPS_REMAIN",
+    "note": "Do not schedule the manual LLM-backed Knowledge Signal Cycle as a substitute for deterministic public ingestion. Add credential-free official feeds with byte-exact receipts and publisher timestamps."
+  },
+  "final_exact_head_verification": {
+    "verified_parent_head": "3c91c394a2ac572443bc073722c6eb3f5746605b",
+    "full_suite": {
+      "run_id": 43969238220,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43969238220",
+      "status": "success",
+      "passed": 3844,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "duration_seconds": 171.72,
+      "inclusive_coverage_pct": 66.9,
+      "legacy_core_coverage_floor": "passed",
+      "wheel_build": "passed",
+      "installed_v3_xrp_mission_smoke": "passed",
+      "pages_validation": "passed"
+    },
+    "dependency_audit": {
+      "push_run_id": 43969238325,
+      "pr_run_id": 43969250508,
+      "status": "success",
+      "manifests": 6,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed": {
+      "push_run_id": 43969238204,
+      "pr_run_id": 43969250703,
+      "status": "success"
+    },
+    "pr_ci": {
+      "run_id": 43969250911,
+      "status": "success",
+      "tests_job": "skipped_by_integration_branch_condition",
+      "full_suite_job": "skipped_by_integration_branch_condition"
+    },
+    "cache_warning": "GitHub Actions cache budget reached; cache read-only. Tests and build succeeded.",
+    "note": "This is the exact result for parent head 3c91c39. The following research/handoff correction commit is a new head and requires its own exact-head checks."
+  },
+  "identity_research": {
+    "exact_phrase_searches": [
+      {
+        "query": "SBIC, ChatGPT SBIC",
+        "result": "No verified Japan-SBIC/OpenAI partnership found.",
+        "disambiguation": "Search results also surface Social Bias Inference Corpus (SBIC), an academic dataset used in ChatGPT/toxic-content research; this is distinct from Japanese SBIC East/Central/West and SBI Holdings."
+      },
+      {
+        "query": "ASK Coin actual capital XRP",
+        "result": "No verified XRP/Ripple relationship for an ASK Coin matching this exact phrase.",
+        "candidate": "Permission Coin (ASK) remains a lexical candidate only; no XRP relationship established."
+      },
+      {
+        "query": "actual capital XRP",
+        "result": "No distinct project or token relationship verified. Evernorth SEC disclosures remain the primary capital-stack evidence; cash proceeds, in-kind XRP, debt, warrants and ELOC capacity must stay separate."
+      }
+    ],
+    "youtube_channel_candidates": [
+      {
+        "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+        "title": "Kamilah Stevenson | XRP & Stocks",
+        "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+        "attribution": "YouTube search results",
+        "status": "channel_candidate; cross-channel identity unverified"
+      },
+      {
+        "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "title": "Kamilah Stevenson",
+        "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+        "attribution": "third-party TrendReport channel link",
+        "status": "channel_candidate; cross-channel identity unverified"
+      },
+      {
+        "handle": "@drkamilahstevenson",
+        "url": "https://www.youtube.com/@drkamilahstevenson",
+        "attribution": "previously observed candidate",
+        "status": "separate candidate; no verified cross-link to other channel IDs"
+      }
+    ],
+    "attributed_video_candidates": [
+      {
+        "video_id": "YJdK1LvmJSo",
+        "url": "https://www.youtube.com/watch?v=YJdK1LvmJSo",
+        "publisher_date": "2026-04-19",
+        "attribution": "Kamilah Stevenson via YouTube search",
+        "status": "candidate; exact channel cross-link unverified"
+      },
+      {
+        "video_id": "pFru4idBTMA",
+        "url": "https://www.youtube.com/watch?v=pFru4idBTMA",
+        "publisher_date": "2026-05-12",
+        "attribution": "Kamilah Stevenson via YouTube search",
+        "status": "candidate; exact channel cross-link unverified"
+      },
+      {
+        "video_id": "anzmlZ-a7K4",
+        "url": "https://www.youtube.com/watch?v=anzmlZ-a7K4",
+        "publisher_date": "2026-11-10",
+        "attribution": "third-party TrendReport links this video to channel UCqUPJMQdkCN6lsLVDnichPA",
+        "status": "candidate; YouTube page fetch throttled"
+      }
+    ],
+    "identity_conclusion": "Channel-level attribution is available for candidates, but no first-party cross-link or legal/person identity verification establishes that these separate channels belong to the same person. No Camilla Stevenson channel was verified.",
+    "unverified_creator_claims": [
+      "4.09B XRP accumulated",
+      "7.03B exchange outflows",
+      "$3.5B XRPL RWA settlement in 30 days",
+      "$900M XRPL settlement in one day"
+    ],
+    "fact_check": "The Nov 10 BlackRock/SBI video title appears to reference SBI's Oct 27 MOU with BlackRock to explore tokenized money-market funds and JPYSC. The MOU is exploratory and does not establish an XRP integration.",
+    "sources": [
+      "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "https://www.youtube.com/@drkamilahstevenson",
+      "https://www.sbigroup.co.jp/news/pr/2026/1027_16512.html"
+    ]
+  }
+}

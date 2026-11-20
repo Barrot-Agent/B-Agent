@@ -4,7 +4,6 @@ import re
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEPLOY_WORKFLOWS = (
     ".github/workflows/barrot-ops.yml",
-    ".github/workflows/deploy-databricks.yml",
     ".github/workflows/sync-huggingface.yml",
     ".github/workflows/databricks-bundle.yml",
 )
@@ -16,12 +15,29 @@ def test_external_deploy_workflows_are_manual_and_fail_closed() -> None:
         assert re.search(r"(?m)^  push:", workflow) is None, relative_path
         assert re.search(r"(?m)^  schedule:", workflow) is None, relative_path
         assert "workflow_dispatch:" in workflow, relative_path
-        assert "default: NO" in workflow, relative_path
-        assert "options:" in workflow and "- YES" in workflow, relative_path
-        assert "inputs.confirm_external_change == 'YES'" in workflow, relative_path
+        if relative_path == ".github/workflows/barrot-ops.yml":
+            assert "default: NO" in workflow
+            assert "options:" in workflow and "- YES" in workflow
+            assert "inputs.confirm_databricks_workspace_create == 'YES'" in workflow
+            assert "inputs.confirm_kaggle_dataset_download == 'YES'" in workflow
+            assert "github.ref == 'refs/heads/main'" in workflow
+            assert "workspace/get-status" in workflow
+            assert "--overwrite" not in workflow
+            assert "databricks/setup-cli@4f41a4c5291b531c1bb1e5760d677999cd484f89" in workflow
+            assert "kaggle datasets submit" not in workflow
+            assert "contents: read" in workflow
+        else:
+            assert "permissions: {}" in workflow, relative_path
+            assert ("if: $" + "{{ false }}") in workflow, relative_path
+            assert "secrets." not in workflow, relative_path
+            assert "uses:" not in workflow, relative_path
         assert re.search(r"(?m)^\s*(contents|pull-requests):\s*write\b", workflow) is None, relative_path
-        if relative_path.endswith(("sync-huggingface.yml", "deploy-databricks.yml")):
-            assert "expected_source_sha" in workflow, relative_path
-            assert "github.ref == 'refs/heads/main'" in workflow, relative_path
-        if relative_path.endswith("sync-huggingface.yml"):
-            assert "permissions:\n  contents: read" in workflow, relative_path
+
+def test_legacy_databricks_overwrite_workflow_is_quarantined() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "deploy-databricks.yml"
+    ).read_text(encoding="utf-8")
+    assert "permissions: {}" in workflow
+    assert "if: ${{ false }}" in workflow
+    assert "secrets." not in workflow
+    assert "scripts/deploy_databricks.py" not in workflow

@@ -1,9 +1,9 @@
 """
 Module 1 — Dataset Manager & Registry
 
-Central registry for all 40+ globally integrated 3D datasets.
-Handles automatic discovery, indexing, versioning, license tracking,
-and quality metadata for every source in the absorption system.
+Central registry for the default 3D dataset metadata catalogue.
+Records describe source metadata and licensing; they do not imply that
+source assets have been downloaded or integrated into a running renderer.
 """
 
 from __future__ import annotations
@@ -50,7 +50,7 @@ class DatasetRecord:
 
 class DatasetManager:
     """
-    Central registry and query interface for all integrated 3D datasets.
+    Central registry and query interface for registered 3D dataset metadata.
 
     Usage::
 
@@ -163,7 +163,7 @@ class DatasetManager:
     # ------------------------------------------------------------------ #
 
     def _load_default_datasets(self) -> None:  # noqa: C901
-        """Pre-register all 40+ globally integrated datasets."""
+        """Pre-register the supported default dataset metadata catalogue."""
 
         # ── Tier 1: High-Fidelity 3D Asset Libraries ───────────────── #
         self.register_dataset(

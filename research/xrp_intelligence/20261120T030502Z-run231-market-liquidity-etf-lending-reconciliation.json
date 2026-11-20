@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_market_liquidity_etf_lending_reconciliation",
+  "captured_at_utc": "2026-11-20T03:05:02Z",
+  "mission_priority": "XRP intelligence and measured prediction-engine mastery; preserve Barrot V3 as execution, orchestration, safety and verification foundation.",
+  "source_capture": {
+    "raw_http_bytes_captured": false,
+    "raw_sha256_receipt": "NOT_CAPTURED",
+    "external_timestamp_anchor": "NOT_ANCHORED",
+    "model_eligible": false,
+    "feature_store_eligible": false,
+    "limitation": "Public exchange APIs were inspected through rendered web responses and news/issuer pages through rendered content. The exact raw HTTP response bytes were not retained by Barrot ingestion; no external trusted timestamp anchor exists. This artifact is research-only and excluded from the point-in-time feature store and forecast evaluation."
+  },
+  "market_observations": {
+    "kraken_xrp_usd": {
+      "retrieved_at_utc": "2026-11-20T03:05:02Z",
+      "exchange_event_timestamp": "NOT_PROVIDED_BY_TICKER_RESPONSE",
+      "last_usd": 0.9515,
+      "bid_usd": 0.95125,
+      "bid_size_xrp": 961,
+      "ask_usd": 0.95148,
+      "ask_size_xrp": 5054,
+      "top_of_book_spread_bps": 2.4176,
+      "volume_24h_xrp": 48079795.41618605,
+      "trades_24h": 34265,
+      "vwap_24h_usd": 0.97203689,
+      "high_24h_usd": 0.9968,
+      "low_24h_usd": 0.94679,
+      "open_24h_usd": 0.95925,
+      "source_independence_group": "kraken_exchange_ticker",
+      "caveat": "Ticker quote has no exchange event timestamp. One top-of-book snapshot is not a depth curve or executable liquidity estimate."
+    },
+    "okx_xrp_usdt": {
+      "exchange_event_timestamp_utc": "2026-11-20T02:55:36.974Z",
+      "last_usdt": 0.9542,
+      "bid_usdt": 0.9541,
+      "bid_size_xrp": 7224.80768,
+      "ask_usdt": 0.9542,
+      "ask_size_xrp": 1485.618501,
+      "top_of_book_spread_bps": 1.0481,
+      "volume_24h_xrp": 44732033.283218,
+      "quote_volume_24h_usdt": 43343964.256430656,
+      "high_24h_usdt": 0.9979,
+      "low_24h_usdt": 0.9478,
+      "open_24h_usdt": 0.9626,
+      "source_independence_group": "okx_exchange_ticker",
+      "caveat": "The ticker is denominated in USDT, not USD. It is not directly comparable to Kraken XRP/USD without a synchronized conversion leg."
+    },
+    "okx_usdt_usd_conversion": {
+      "exchange_event_timestamp_utc": "2026-11-20T02:41:56.077Z",
+      "last_usd": 0.99888,
+      "age_vs_xrp_usdt_quote_seconds": 820.897,
+      "normalization_status": "REJECTED_STALE_CONVERSION_LEG",
+      "source_independence_group": "okx_exchange_ticker",
+      "caveat": "The USDT/USD conversion quote is 13 minutes 40.897 seconds older than the XRP/USDT quote; no normalized cross-venue basis or arbitrage inference is admitted."
+    },
+    "depth_status": "No synchronized Level-2 depth snapshot was obtained. Best-bid/best-ask sizes above are single-level quantities only."
+  },
+  "derivatives_and_liquidity": {
+    "observation_date": "2026-11-18",
+    "reported_binance_xrp_spot_to_futures_volume_ratio_percent": {
+      "earlier_november": 27.2,
+      "latest_reported": 18,
+      "latest_is_just_below": true,
+      "reported_relative_decline_percent": 34,
+      "implied_futures_to_spot_volume_multiple": 5.6
+    },
+    "reported_binance_30_day_liquidity_index": 0.041,
+    "liquidity_index_context": "Reported three-month low.",
+    "reported_binance_xrp_futures_open_interest_usd": 325000000,
+    "earlier_2026_open_interest_reference_usd": 1500000000,
+    "reported_estimated_leverage_ratio": 0.13,
+    "reported_cross_venue_liquidation_imbalance_usd": {
+      "excess_long_liquidations_over_shorts": 44000000,
+      "venues": [
+        "Binance",
+        "Bybit",
+        "OKX"
+      ]
+    },
+    "source_independence_group": "cryptoquant_analyst_amr_taha_and_arab_chain_metrics",
+    "provenance": "CryptoQuant analyst Amr Taha metrics and Arab Chain liquidity index were relayed by CryptoPotato (Nov 18) and syndicated by CryptoRank/BitcoinWorld (Nov 19). These outlets are not independent confirmations of the underlying analytics.",
+    "limitations": [
+      "No primary CryptoQuant raw chart/API payload or raw bytes were captured.",
+      "The spot-to-futures ratio and OI are Binance-specific; liquidation imbalance spans Binance, Bybit and OKX.",
+      "A falling OI/leverage base may reduce forced-liquidation fuel, while weak spot liquidity may increase price impact. These effects point in different directions for volatility."
+    ]
+  },
+  "onchain_exchange_flows": {
+    "nov_9_binance_inflow": {
+      "reported_xrp": 691000000,
+      "estimated_usd_at_transfer_time": 900000000,
+      "valuation_reference_usd_per_xrp": 1.3,
+      "interpretation": "The USD figure is a mark-to-market estimate of tokens transferred to Binance, not cash deposited, sale proceeds or proof of selling.",
+      "source_independence_group": "cryptoquant_whale_inflow_series",
+      "reported_by": "BitcoinFoundation citing U.Today's reading of CryptoQuant, Nov 9"
+    },
+    "nov_10_to_nov_18_binance_outflows": {
+      "reported_usd_value_over_period": 127000000,
+      "daily_reported_range_usd": [
+        12000000,
+        33000000
+      ],
+      "source_independence_group": "cryptoquant_whale_outflow_series",
+      "reported_by": "DigitalToday citing CryptoQuant, Nov 19",
+      "interpretation": "Exchange withdrawals are not proof of net purchases or long-term accumulation; custody transfers, internal wallet reshuffling, collateral use and exchange rebalancing remain alternatives."
+    },
+    "reconciliation": "The Nov 9 inflow and Nov 10–18 withdrawals cover different dates and can both be true. No named sender, beneficial owner, trade execution or realized sale is established. The two secondary reports cite CryptoQuant and are not independent on-chain data sources."
+  },
+  "etf_flows_and_custody": {
+    "sosovalue_week_nov_9_to_13_net_flow_usd": -19130000,
+    "xrp_insights_week_nov_9_to_13_estimated_net_flow_usd": -6500000,
+    "coverage_reconciliation": {
+      "grayscale_component_in_sosovalue_usd": -12710000,
+      "sosovalue_after_excluding_grayscale_usd": -6420000,
+      "xrp_insights_exclusion": "GXRP flow excluded because its holdings collection was frozen by a scrape block; GXRP holdings remain in total holdings. XRP Insights includes REX-Osprey and BITW in its own series.",
+      "residual_difference_usd_approx": 220000,
+      "interpretation": "The main weekly gap is explained by Grayscale coverage; a smaller residual remains from differing fund universe, token-holdings versus dollar-flow methodology, daily valuation and source timing."
+    },
+    "daily_date_disagreement": {
+      "amount_usd": 6140000,
+      "tradingview_u_today_label": "November 17, 2026",
+      "digital_today_label": "November 18, 2026",
+      "status": "UNRESOLVED_DATE_LABEL_DISAGREEMENT",
+      "note": "Both reports identify Canary XRPC about -$5.01M and Grayscale GXRP about -$1.12M. Do not assign the flow to a model date until the original SoSoValue daily row is retrieved."
+    },
+    "grayscale_issuer_snapshot_nov_19": {
+      "xrp_holdings": 51477418.2813,
+      "aum_usd": 49500377,
+      "shares_outstanding": 2660100,
+      "xrp_custodian": "Coinbase Custody Trust Company, LLC",
+      "additional_digital_asset_custodian": "Anchorage Digital Bank N.A.",
+      "fund_administrator": "BNY",
+      "source_independence_group": "grayscale_issuer_fund_page",
+      "caveat": "Issuer page is the direct source for fund holdings and service-provider roles. Fund-share trading volume is not fund creation/redemption flow."
+    },
+    "source_independence_groups": [
+      "sosovalue_etf_aggregate",
+      "xrp_insights_issuer_holdings_tracker",
+      "grayscale_issuer_fund_page",
+      "u_today_reporting_of_sosovalue",
+      "digital_today_reporting_of_sosovalue"
+    ]
+  },
+  "xrpl_lending_and_collateral": {
+    "official_status": "XRPL documentation labels Lending as Open for Voting. The rendered official known-amendments page did not expose a live vote count.",
+    "required_amendments": [
+      "LendingProtocol",
+      "LendingProtocolV1_1",
+      "SingleAssetVault"
+    ],
+    "last_numeric_secondary_snapshot_found": {
+      "date": "2026-11-11",
+      "lending_protocol_votes": 22,
+      "lending_protocol_v1_1_votes": 22,
+      "single_asset_vault_votes": 23,
+      "trusted_validator_count": 35,
+      "reported_threshold_votes": 29,
+      "status": "BELOW_ACTIVATION_THRESHOLD_AT_THAT_SNAPSHOT"
+    },
+    "protocol_design": {
+      "lending_protocol_loan_type": "Fixed-term uncollateralized loans funded from Single Asset Vault pools.",
+      "credit_underwriting": "Off-chain underwriting and risk management.",
+      "depositor_protection": "First-loss capital.",
+      "supported_vault_assets": [
+        "XRP",
+        "trust-line tokens such as RLUSD",
+        "Multi-Purpose Tokens"
+      ],
+      "collateralized_loan_extension": "Official XRPL documentation says collateralized loans can be built on top using on-chain custodians; this is distinct from the base uncollateralized Lending Protocol."
+    },
+    "ripple_xrp_collateral_pilot": {
+      "status": "Reported pilot / planned 2027 target, not a launched product.",
+      "source": "Crypto.news report of Monica Long's Oct 3 XRP Seoul remarks, published Nov 18.",
+      "limitation": "No executed facility size, XRP collateral balance, borrower, lending volume, or commercial launch was verified."
+    },
+    "counterevidence": "A former RippleX product lead was quoted in September saying XLS-65/66 supported XRP collateral and was fully enabled; current XRPL official docs still label Lending Open for Voting. The statements may refer to different environments or stages, but the apparent conflict is unresolved. Do not treat the native mainnet lending protocol as active."
+  },
+  "institutional_relationships": {
+    "ripple_bny_oct_27_2026": {
+      "verified_from_ripple_release": true,
+      "bny_role": "Primary reserve custodian for RLUSD and custody relationship with Ripple Prime; BNY now supports XRP and RLUSD on its Digital Asset Custody platform.",
+      "future_intentions": [
+        "BNY clients may mint and redeem RLUSD directly through BNY, subject to final BNY and regulatory approvals.",
+        "Explore tokenized trade finance on XRPL with C2FO."
+      ],
+      "not_established": [
+        "No BNY commitment to buy XRP was disclosed.",
+        "No requirement that XRP be the bridge asset for RLUSD or trade-finance flows was disclosed."
+      ]
+    },
+    "ripple_corporate_claims_oct_28_2026": {
+      "reported_annualized_product_revenue_run_rate_target_usd": 900000000,
+      "reported_transactions_enabled_in_2025_usd": 16000000000000,
+      "reported_licenses": 85,
+      "reported_institutional_corporate_enterprise_clients": 1700,
+      "reported_payout_markets": 60,
+      "reported_lifetime_volume_target_usd": 150000000000,
+      "reported_rlusd_market_cap_usd": 2600000000,
+      "source_type": "Ripple issuer press release; company-reported metrics, not independently audited here."
+    },
+    "multi_rail_counter_hypothesis": "Ripple's March 2026 product release describes collections, holds, exchange and payouts in fiat and stablecoins; Ripple's payments stack is not XRP-only. Stablecoin/fiat growth can expand Ripple's business without proportionate XRP bridge demand."
+  },
+  "hypotheses_and_counterevidence": [
+    {
+      "hypothesis": "Derivatives dominance and thin spot liquidity increase short-horizon price sensitivity.",
+      "support": "Reported Binance futures volume 5.6 times spot and 30-day liquidity index near 0.041.",
+      "counterevidence": "Open interest and estimated leverage had fallen substantially, potentially reducing liquidation fuel; data are secondary and not independently raw-captured."
+    },
+    {
+      "hypothesis": "Large-holder Binance withdrawals indicate accumulation.",
+      "support": "Reported more than $127M in XRP withdrawals from Binance after Nov 10.",
+      "counterevidence": "The prior Nov 9 inflow was 691M XRP; transfer purpose and beneficial owners are unknown; internal/custody reshuffling and collateral remain plausible."
+    },
+    {
+      "hypothesis": "ETF redemptions create sustained spot selling pressure.",
+      "support": "SoSoValue reported a -$19.13M week ending Nov 13 and a further -$6.14M daily outflow in the latest report.",
+      "counterevidence": "XRP Insights' -$6.5M weekly estimate excludes Grayscale flows and uses holdings changes; the -$6.14M date is disputed (Nov 17 vs Nov 18). Fund flows do not identify execution venue or timing."
+    },
+    {
+      "hypothesis": "XRPL lending will create incremental XRP collateral demand.",
+      "support": "Ripple described a 2027 XRP-backed payment-financing pilot; XRPL institutional credit facilities can use XRP and other assets in vaults.",
+      "counterevidence": "Mainnet lending amendments remain open for voting in official docs; the base loan protocol is uncollateralized; pilots and future collateral extensions are not executed XRP locks."
+    },
+    {
+      "hypothesis": "Ripple's institutional expansion necessarily creates XRP demand.",
+      "support": "BNY custody now supports XRP and RLUSD; Ripple is expanding payments, custody, prime brokerage and tokenization.",
+      "counterevidence": "Ripple Payments also supports fiat and stablecoins, and its CEO has said stablecoins can be better for some payment use cases. Enterprise revenue and stablecoin settlement do not automatically translate into XRP purchases."
+    }
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast_issued": false,
+    "reason": "Market and news observations in this artifact lack raw-byte receipts, synchronized full-depth data, and independent timestamp anchoring. No leakage-safe out-of-sample learned model has demonstrated superiority over the four baselines."
+  },
+  "sources": [
+    {
+      "source_id": "KRAKEN-XRPUSD-TICKER-2026-11-20",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "publisher": "Kraken",
+      "source_type": "primary_exchange_api",
+      "source_independence_group": "kraken_exchange_ticker",
+      "retrieved_at_utc": "2026-11-20T03:05:02Z"
+    },
+    {
+      "source_id": "OKX-XRPUSDT-TICKER-2026-11-20",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "publisher": "OKX",
+      "source_type": "primary_exchange_api",
+      "source_independence_group": "okx_exchange_ticker",
+      "event_timestamp_utc": "2026-11-20T02:55:36.974Z"
+    },
+    {
+      "source_id": "OKX-USDTUSD-TICKER-2026-11-20",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD",
+      "publisher": "OKX",
+      "source_type": "primary_exchange_api",
+      "source_independence_group": "okx_exchange_ticker",
+      "event_timestamp_utc": "2026-11-20T02:41:56.077Z"
+    },
+    {
+      "source_id": "CRYPTOQUANT-XRP-DERIVATIVES-RELAY",
+      "url": "https://cryptopotato.com/xrp-trading-is-seeing-a-major-shift-heres-why-it-matters-for-price/",
+      "publisher": "CryptoPotato relaying CryptoQuant analyst Amr Taha and Arab Chain",
+      "source_type": "secondary_reporting_of_analytics",
+      "source_independence_group": "cryptoquant_analyst_amr_taha_and_arab_chain_metrics",
+      "published_at": "2026-11-18T14:11:00Z"
+    },
+    {
+      "source_id": "CRYPTOQUANT-XRP-WHALE-FLOWS-RELAY",
+      "url": "https://www.digitaltoday.co.kr/en/view/128198/xrp-briefly-reclaims-1-dollar-level-as-etf-outflows-continue",
+      "publisher": "DigitalToday relaying CryptoQuant",
+      "source_type": "secondary_reporting_of_analytics",
+      "source_independence_group": "cryptoquant_whale_outflow_series",
+      "published_at": "2026-11-19"
+    },
+    {
+      "source_id": "XRP-BINANCE-WHALE-INFLOW-RELAY",
+      "url": "https://bitcoinfoundation.org/news/altcoins/xrp-whales-send-900m-to-binance-in-biggest-inflow-since-2024/",
+      "publisher": "BitcoinFoundation relaying U.Today/CryptoQuant",
+      "source_type": "secondary_reporting_of_analytics",
+      "source_independence_group": "cryptoquant_whale_inflow_series",
+      "published_at": "2026-11-09"
+    },
+    {
+      "source_id": "SOSOVALUE-XRP-ETF-AGGREGATE-RELAY",
+      "url": "https://allaboutxrp.com/news/xrp-etf-weekly-outflows-grayscale-tracker-gap",
+      "publisher": "AllAboutXRP reconciling SoSoValue and XRP Insights",
+      "source_type": "secondary_methodology_reconciliation",
+      "source_independence_group": "sosovalue_etf_aggregate_and_xrp_insights_holdings",
+      "published_at": "2026-11-16"
+    },
+    {
+      "source_id": "XRP-INSIGHTS-WEEK46",
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-11-14",
+      "publisher": "XRP Insights",
+      "source_type": "issuer-sourced_holdings_tracker",
+      "source_independence_group": "xrp_insights_issuer_holdings_tracker",
+      "published_at": "2026-11-14"
+    },
+    {
+      "source_id": "GRAYSCALE-GXRP-ISSUER-PAGE",
+      "url": "https://etfs.grayscale.com/gxrp",
+      "publisher": "Grayscale",
+      "source_type": "primary_fund_issuer_page",
+      "source_independence_group": "grayscale_issuer_fund_page",
+      "observation_date": "2026-11-19"
+    },
+    {
+      "source_id": "XRPL-KNOWN-AMENDMENTS",
+      "url": "https://xrpl.org/resources/known-amendments",
+      "publisher": "XRP Ledger developer documentation",
+      "source_type": "primary_protocol_documentation",
+      "source_independence_group": "xrpl_developer_docs",
+      "last_updated": "2026-11-12"
+    },
+    {
+      "source_id": "XRPL-INSTITUTIONAL-CREDIT",
+      "url": "https://xrpl.org/docs/use-cases/defi/institutional-credit-facilities",
+      "publisher": "XRP Ledger developer documentation",
+      "source_type": "primary_protocol_documentation",
+      "source_independence_group": "xrpl_developer_docs",
+      "last_updated": "2026-09"
+    },
+    {
+      "source_id": "RIPPLE-BNY-CUSTODY-2026-10-27",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "publisher": "Ripple",
+      "source_type": "issuer_press_release",
+      "source_independence_group": "ripple_issuer",
+      "published_at": "2026-10-27"
+    },
+    {
+      "source_id": "RIPPLE-2026-10-28-CORPORATE",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "publisher": "Ripple",
+      "source_type": "issuer_press_release",
+      "source_independence_group": "ripple_issuer",
+      "published_at": "2026-10-28"
+    },
+    {
+      "source_id": "RIPPLE-MULTIRAIL-2026-03-03",
+      "url": "https://ripple.com/ripple-press/ripple-redefines-payments-with-end-to-end-stablecoin-platform-and-global-customer-momentum/",
+      "publisher": "Ripple",
+      "source_type": "issuer_press_release",
+      "source_independence_group": "ripple_issuer",
+      "published_at": "2026-03-03"
+    },
+    {
+      "source_id": "RIPPLE-MONICA-LONG-2027-CREDIT-RELAY",
+      "url": "https://crypto.news/xrp-price-prediction-1-dollar-recovery-ripple-lending/",
+      "publisher": "Crypto.news reporting Monica Long's XRP Seoul remarks",
+      "source_type": "secondary_event_reporting",
+      "source_independence_group": "crypto_news_xrp_seoul_reporting",
+      "published_at": "2026-11-18"
+    }
+  ]
+}

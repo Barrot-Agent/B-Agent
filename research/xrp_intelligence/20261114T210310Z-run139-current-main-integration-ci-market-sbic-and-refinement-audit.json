@@ -1,0 +1,488 @@
+{
+  "run": "Run139",
+  "captured_at_utc": "2026-11-14T21:03:10Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "protected_foundation": "Barrot V3 execution, orchestration, safety, authorization and verification",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "f1708870fcde80a01d14509609affc558e5cc065",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_sha": "32333a4433281a4c574fac52dc57c9a7e70d74cf",
+    "integration_ahead_by": 2421,
+    "integration_behind_by": 0,
+    "main_tree": {
+      "entries": 1349,
+      "python_files": 509,
+      "test_python_files": 96,
+      "workflow_yml_files": 79,
+      "xrp_ingestion_workflow": false,
+      "canonical_xrp_handoff": false
+    },
+    "integration_tree": {
+      "entries": 2418,
+      "python_files": 891,
+      "test_python_files": 457,
+      "workflow_yml_files": 80,
+      "xrp_research_files": 696,
+      "xrp_ingestion_workflow": true,
+      "canonical_xrp_handoff": true
+    },
+    "pr_1662": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "base_sha": "f1708870fcde80a01d14509609affc558e5cc065",
+      "head_sha": "32333a4433281a4c574fac52dc57c9a7e70d74cf",
+      "commits_ahead": 2421,
+      "commits_behind": 0,
+      "changed_files": 1216,
+      "additions": 364734,
+      "deletions": 5797,
+      "workflow_files": 48,
+      "public_web_files": 7,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    },
+    "open_pr_inventory": {
+      "total": 373,
+      "drafts": 361,
+      "non_drafts": 12,
+      "current_integration_branch_prs": [
+        1662
+      ],
+      "overlap_or_supersession_candidates": [
+        1661,
+        1660,
+        1640,
+        1496,
+        1251,
+        1227,
+        1195,
+        1170
+      ],
+      "closures_performed": 0
+    },
+    "access": {
+      "repository_permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "main_protected": true,
+      "integration_protected": false,
+      "main_branch_protection_api": "403 Resource not accessible by integration",
+      "integration_branch_protection_api": "403 Resource not accessible by integration",
+      "fallback_ruleset": {
+        "id": 10863829,
+        "enforcement": "disabled"
+      }
+    }
+  },
+  "verification": {
+    "integration_exact_head": {
+      "sha": "32333a4433281a4c574fac52dc57c9a7e70d74cf",
+      "ci_run": 43639966602,
+      "result": "success",
+      "full_repository_tests_passed": 3717,
+      "subtests_passed": 19,
+      "failed": 0,
+      "inclusive_coverage_percent": 63.28,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build": "passed",
+      "installed_barrot_v3_and_xrp_mission": "passed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43639966602"
+    },
+    "dependency_audit": {
+      "run": 43639966560,
+      "result": "success",
+      "manifest_groups": 6,
+      "known_vulnerabilities_reported": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43639966560"
+    },
+    "fail_closed_gate": {
+      "run": 43639966637,
+      "result": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43639966637"
+    },
+    "pr_event_ci": {
+      "run": 43639971552,
+      "result": "success",
+      "note": "Pages validation passed; Tests and Full repository test suite were skipped by the integration-branch event guard",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43639971552"
+    },
+    "pr_dependency_audit": {
+      "run": 43639971526,
+      "result": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43639971526"
+    },
+    "pr_fail_closed_gate": {
+      "run": 43639971562,
+      "result": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43639971562"
+    },
+    "main_exact_head": {
+      "sha": "f1708870fcde80a01d14509609affc558e5cc065",
+      "ci_run": 43635426745,
+      "result": "success",
+      "tests_passed": 810,
+      "subtests_passed": 8,
+      "failed": 0,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43635426745"
+    },
+    "current_head_after_run139_commit": "PENDING; parent-head results above must not be attributed to the new documentation/evidence commit"
+  },
+  "main_branch_findings": {
+    "ping_pong_refinement": {
+      "introducing_commit": "f1708870fcde80a01d14509609affc558e5cc065",
+      "files": [
+        "barrot_agent/refinement/refiners.py",
+        "barrot_agent/refinement/engine.py",
+        "barrot_agent/refinement/scoring.py",
+        "scripts/pingpong_refine.py"
+      ],
+      "main_default_behavior": "refine_data() calls make_model_refiners() when refiners are omitted; make_model_refiners() constructs live LunaRoute adapters whenever LUNAROUTE_API_KEY is present. Main has no caller opt-in, public-data classification, immutable-data denylist or secret-pattern gate on this default path.",
+      "risk": "Unclassified data passed to the default refinement entry point can be sent to the LunaRoute gateway when a key is present. This is an external data-flow authorization risk, not evidence that a transfer occurred in this run.",
+      "integration_hardening": {
+        "default": "deterministic offline HeuristicRefiner",
+        "explicit_caller_opt_in": "allow_external=True",
+        "environment_gate": "BARROT_ALLOW_EXTERNAL_REFINEMENT=1",
+        "allowed_external_classes": [
+          "public_derived_summary",
+          "public_documentation",
+          "public_research_note"
+        ],
+        "immutable_classes": [
+          "raw_source",
+          "source_receipt",
+          "feature_snapshot",
+          "feature_store",
+          "event_timeline",
+          "forecast_ledger",
+          "market_data",
+          "credentials",
+          "secrets",
+          "user_private"
+        ],
+        "secret_like_payload_block": "enabled",
+        "oversized_payload": "rejected without truncation above 24000 characters",
+        "tests": [
+          "default refinement remains offline even when LunaRoute key and environment gate exist",
+          "unknown and immutable data classes rejected",
+          "external refinement requires caller opt-in and environment gate",
+          "model-refiner factory disabled by default",
+          "secret-like payload blocked before network"
+        ]
+      },
+      "nine_platform_limitation": "The new engine is a three-model LunaRoute pool behind one gateway; it is not nine-platform coordination. No external-model dispatch or data transfer was performed in this run."
+    },
+    "barrot_sync": {
+      "workflow": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-sync.yml",
+      "latest_run": 43635426753,
+      "result": "GitHub Actions reports success despite b_agent.py --sync failing with ModuleNotFoundError: No module named 'rich'; the workflow converts the failure to an echo and masks git push failure with || true.",
+      "observed_log": "Barrot running on LunaRoute - ",
+      "secret_exposure_correction": "The current log contains only the fixed 30-character prefix; no secret bytes were observed in the log. The prior claim of a confirmed secret-prefix disclosure is not supported by this run.",
+      "integration_state": "workflow quarantined with no permissions and disabled job",
+      "no_dispatch_or_secret_rotation": true,
+      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43635426753"
+    },
+    "coinbase_paper_trader": {
+      "workflow": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/coinbase-paper-trader.yml",
+      "trigger": "manual workflow_dispatch",
+      "configured_product_id": "BTC-USD",
+      "persisted_state": {
+        "position_size": 0.012445158497236623,
+        "position_product": null,
+        "avg_entry_price": 80436.84,
+        "trade_count": 126
+      },
+      "risk": "A pre-existing simulated position has no product identity while the workflow hardcodes BTC-USD. No workflow dispatch or paper trade occurred.",
+      "integration_state": "explicit confirmation and exact-main-SHA/product-identity preflight required; read-only/artifact-only"
+    },
+    "scheduled_xrp_ingestion": {
+      "integration_workflow": ".github/workflows/xrp-public-ingestion.yml",
+      "present_on_main": false,
+      "present_on_integration": true,
+      "scheduled_main_only": true,
+      "execution_on_main": "not observed",
+      "storage": "GitHub Actions artifacts/cache, 90-day receipts and event artifacts; not independent WORM storage",
+      "conclusion": "Designed and committed on integration; not active or verified on main."
+    },
+    "pages": {
+      "main_run": 43635426265,
+      "result": "success",
+      "integration_pr_validation_run": 43639971552,
+      "publication": "not deployed"
+    }
+  },
+  "xrp_market": {
+    "cutoff_utc": "2026-11-14T21:03:10Z",
+    "observations": [
+      {
+        "source": "OKX",
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "event_time_utc": "2026-11-14T20:55:58.271Z",
+        "age_seconds_at_cutoff": 432,
+        "pair": "XRP-USDT",
+        "last": 0.9254,
+        "bid": 0.9253,
+        "ask": 0.9254,
+        "bid_size_xrp": 1910.3,
+        "ask_size_xrp": 1463.759821,
+        "spread_bps": 1.0807,
+        "open_24h": 1.0243,
+        "high_24h": 1.0243,
+        "low_24h": 0.9149,
+        "volume_24h_xrp": 65690636.015326,
+        "quote_volume_24h_usdt": 63975006.833042465,
+        "derived_24h_change_percent": -9.6554,
+        "model_eligible": false,
+        "reason": "432 seconds old, exceeds 300-second freshness gate; only top-level sizes, no synchronized full L2; raw-byte receipt not captured"
+      },
+      {
+        "source": "Kraken",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "event_time_utc": null,
+        "last": 0.9402,
+        "bid": 0.94002,
+        "ask": 0.94032,
+        "volume_24h_xrp": 58390882.92970996,
+        "spread_bps": 3.1909,
+        "model_eligible": false,
+        "reason": "provider event timestamp absent"
+      },
+      {
+        "source": "Kraken USDT/USD",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+        "event_time_utc": null,
+        "last": 0.99916,
+        "bid": 0.99915,
+        "ask": 0.99916,
+        "model_eligible": false,
+        "reason": "provider event timestamp absent"
+      }
+    ],
+    "derived_cross_venue_check": {
+      "okx_usd_proxy": 0.924622664,
+      "kraken_xrpusd": 0.9402,
+      "apparent_gap_percent": 1.6847,
+      "interpretation": "not executable arbitrage; asynchronous observations, missing Kraken event time and missing synchronized USDT/USD time"
+    },
+    "source_admission": "research-only; no feature-store admission and no forecast"
+  },
+  "etf_flows": {
+    "xrp_insights": {
+      "date": "2026-11-13",
+      "daily_flow_xrp": 3400000,
+      "weekly_flow_xrp": -6080000,
+      "universe": "six US spot funds plus BITW",
+      "status": "Nov 13 provisional; GXRP excluded from flow calculation due issuer-data gap while holdings remain counted",
+      "url": "https://xrp-insights.com/"
+    },
+    "alpha_finance": {
+      "date": "2026-11-13",
+      "daily_flow_usd": -1100000,
+      "five_day_flow_usd": -19100000,
+      "thirty_session_flow_usd": -581700,
+      "universe": "five funds",
+      "url": "https://alphafinance.io/etf/xrp/"
+    },
+    "bykaranteli": {
+      "date": "2026-11-13",
+      "daily_flow_usd": -1100000,
+      "five_day_flow_usd": -19100000,
+      "universe": "five-fund dashboard",
+      "url": "https://bykaranteli.com/etf/xrp"
+    },
+    "coinglass": {
+      "date": "2026-11-13",
+      "daily_flow_usd": -1100000,
+      "disclosed_fund_coverage": "3 of 5",
+      "holdings_xrp": 756370000,
+      "url": "https://www.coinglass.com/currencies/XRP/etf"
+    },
+    "disagreement": "XRP Insights reports a provisional positive daily XRP quantity while other dashboards report a negative USD flow. Fund universe, BITW inclusion, issuer data gaps, provisional settlement and valuation methodology differ. These dashboards reuse overlapping issuer filings and are not four independent source clusters. Do not average."
+  },
+  "derivatives": {
+    "liqwall": {
+      "as_of_utc": "2026-11-14T10:02:00Z",
+      "open_interest_usd": 1090000000,
+      "open_interest_change_24h_percent": 0.3,
+      "funding_average_8h_percent": -0.0068,
+      "liquidations_24h_usd": 13200000,
+      "long_liquidations_usd": 12100000,
+      "short_liquidations_usd": 1100000,
+      "binance_long_accounts_percent": 75.4,
+      "url": "https://liqwall.com/coins/xrp"
+    },
+    "alpha_finance": {
+      "as_of_utc": "2026-11-14T14:50:00Z",
+      "open_interest_usd": 2170000000,
+      "volume_24h_usd": 2720000000,
+      "long_liquidations_usd": 15100000,
+      "short_liquidations_usd": 586200,
+      "heatmap": "modelled from open interest; not resting orders",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/"
+    },
+    "tradradar": {
+      "as_of_utc": "2026-11-14T16:45:00Z",
+      "open_interest_usd": 1400000000,
+      "open_interest_change_24h_percent": -5.5,
+      "funding_8h_percent": -0.0006,
+      "liquidations_24h_min_usd": 19750000,
+      "long_liquidations_usd": 19280000,
+      "short_liquidations_usd": 464470,
+      "long_short_accounts_ratio": 3.68,
+      "long_accounts_percent": 78.6,
+      "venue_count": 7,
+      "url": "https://tradradar.io/markets/xrp"
+    },
+    "disagreement": "Open interest spans approximately $1.09B-$2.17B; venue coverage and timestamps differ. All snapshots are stale at the 21:03 UTC cutoff. No averaging or directional inference."
+  },
+  "xrpl_governance": {
+    "dashboard_url": "https://xrpldashboard.com/amendments",
+    "node_roll_call_as_of_utc": "2026-11-14T20:35:00Z",
+    "validators_heard": 35,
+    "threshold_yes": 29,
+    "votes": {
+      "SingleAssetVault": 23,
+      "LendingProtocol": 22,
+      "LendingProtocolV1_1": 22
+    },
+    "activation_countdown_amendments": 0,
+    "dashboard_fetch_time_utc": "2026-11-14T20:44:00Z",
+    "dashboard_cache_age_seconds_at_fetch": 468.9,
+    "dashboard_inconsistency": "page header ledger 108332021 differs from displayed validated ledger 108331913; price check failed; vote counts are stale relative to cutoff",
+    "official_rule": "More than 80% of trusted validators for 14 consecutive days; loss of support resets the period.",
+    "official_source": "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
+    "conclusion": "native LendingProtocol/SingleAssetVault stack remains inactive; no XRP native-lending demand feature admitted"
+  },
+  "identity_and_exact_phrases": {
+    "sbic_east": {
+      "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "english_label": "SBIC East Japan",
+      "established": "1963-11-15",
+      "capital_jpy": 6673400000,
+      "territory": "18 prefectures east of Shizuoka, Nagano and Niigata; official profile also describes other areas",
+      "official_profile": "https://www.sbic.co.jp/company/profile/"
+    },
+    "sbic_central": {
+      "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "english_label": "SBIC Central Japan",
+      "established": "1963-11-18",
+      "capital_jpy": 4300800000,
+      "territory": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+      "official_profile": "https://www.sbic-cj.co.jp/company/about/"
+    },
+    "sbic_west": {
+      "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "english_label": "SBIC West Japan",
+      "established": "1963-11-20",
+      "capital_jpy": 6822000000,
+      "territory": "24 prefectures west of Fukui, Shiga, Nara and Wakayama",
+      "official_profile": "https://www.sbic-wj.co.jp/profiles/profile/"
+    },
+    "sbic_relation": "The three are sibling regional investment-development companies under Japan's SME Investment and Consultation Company Act, not SBI Holdings subsidiaries.",
+    "chatgpt_phrase": "SBIC East's official June 12-13, 2025 investee-company AI/ML training included ChatGPT usage and Copilot. It was a portfolio-company training course, not evidence of an OpenAI partnership.",
+    "sb_oai_distinction": "SB OAI Japan GK is the separate 50/50 OpenAI/C Holdings (SoftBank-controlled) JV; it is not SBI Holdings and not one of the three SBIC companies.",
+    "ask_coin": "Permission Coin ASK is one identifiable ASK token, with Base and Polygon deployments; no canonical XRPL ASK issuer address verified.",
+    "actual_capital": "No standardized XRP metric named actual capital found; retain separate categories for cash received, XRP in-kind, purchases, debt, warrants, facilities and secondary resales.",
+    "kamilah": "New candidate channel @KamilahStevensonXrpStocks surfaced, but no first-party cross-link to Dr. Kamilah Stevenson was verified. Do not attribute its videos; no verified own-channel inventory added."
+  },
+  "nine_platform_status": {
+    "ChatGPT": {
+      "authentication": "GitHub connector authenticated in this session",
+      "permissions": "admin, maintain, push, pull, triage",
+      "status": "overprivileged; least-privilege remediation required"
+    },
+    "Claude": {
+      "authentication": "unverified",
+      "data_flow": "not tested"
+    },
+    "Grok": {
+      "authentication": "unverified",
+      "data_flow": "not tested"
+    },
+    "Gemini": {
+      "authentication": "unverified",
+      "data_flow": "not tested"
+    },
+    "Copilot": {
+      "authentication": "no formal PR approval",
+      "data_flow": "not verified"
+    },
+    "Codex": {
+      "authentication": "unverified",
+      "data_flow": "not tested"
+    },
+    "HuggingFace": {
+      "authentication": "previous BUILD_ERROR; no deployment verified"
+    },
+    "Kaggle": {
+      "authentication": "untested; no submission"
+    },
+    "Databricks": {
+      "authentication": "previous HTTP 403; no write"
+    },
+    "LunaRoute": {
+      "authentication": "not re-tested in this run; not one of the nine platforms; no dispatch or data transfer"
+    }
+  },
+  "prediction_readiness": {
+    "implemented_on_integration": [
+      "scheduled read-only source definitions",
+      "content-addressed receipt code",
+      "cross-run receipt-chain prototype",
+      "SQLite point-in-time feature store",
+      "event timeline and counter-hypothesis generation",
+      "naive/momentum/mean-reversion/volatility baselines",
+      "chronological walk-forward evaluation",
+      "probability calibration",
+      "PSI drift monitoring",
+      "fail-closed forecast ledger",
+      "Ed25519 independent-evaluator attestation"
+    ],
+    "not_verified_on_main": [
+      "scheduled XRP ingestion",
+      "production receipt chain",
+      "feature-store history",
+      "walk-forward evaluation"
+    ],
+    "blockers": [
+      "no trained XRP-specific candidate",
+      "no demonstrated superiority to four baselines",
+      "no independent shadow cohort",
+      "no independent WORM archive/trusted timestamp anchor",
+      "insufficient synchronized historical multi-venue L2/derivatives/exchange-flow/collateral coverage",
+      "no trusted evaluator keys configured"
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "accuracy_status": "NOT_EVALUATED",
+    "real_money_or_paper_trades": 0
+  },
+  "execution": {
+    "new_branch": false,
+    "new_pr": false,
+    "main_modified": false,
+    "merge": false,
+    "source_pr_closures": 0,
+    "workflow_dispatches": 0,
+    "external_model_transfers": 0,
+    "secret_rotation": false,
+    "deployment": false,
+    "force_push": false,
+    "history_rewrite": false,
+    "destructive_worktree_operations": false
+  },
+  "next_actions": [
+    "Complete semantic review of all 1,216 PR paths, prioritizing 48 workflows and seven public-web files.",
+    "Keep the integration PingPong default offline and preserve the explicit public-derived-data opt-in; do not merge main's unguarded default.",
+    "Resolve least-privilege GitHub access, independent CODEOWNERS/review, branch protection and required checks.",
+    "Fix main Barrot Sync dependency and false-green behavior; keep integration quarantine until authorized and verified.",
+    "Keep the Coinbase paper-trader workflow undispatched until position identity is reconciled and explicit approval exists.",
+    "Merge the read-only XRP ingestion workflow only after governance; then verify actual scheduled main runs and 90-day artifact retention, while separately pursuing WORM anchoring.",
+    "Capture synchronized fresh spot/L2 and derivatives receipts, reconcile ETF fund universes and validator status, then evaluate a real XRP candidate against four baselines and independent shadow outcomes."
+  ]
+}

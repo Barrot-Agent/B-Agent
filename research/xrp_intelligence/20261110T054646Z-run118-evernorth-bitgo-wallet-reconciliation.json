@@ -1,0 +1,249 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "run_id": "run118",
+  "captured_at_utc": "2026-11-10T05:46:46Z",
+  "mission_priority": 1,
+  "preserved_foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "repository_state_before_commit": {
+    "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+    "integration_head": "c22ee9905bfcd795a9faf0385a20e7397e4f594b",
+    "integration_branch": "integration/core-capabilities-mmi-structural-paper-20261104",
+    "pr1640": {
+      "state": "open",
+      "ahead": 904,
+      "behind": 0,
+      "changed_paths": 237
+    },
+    "open_prs": 372,
+    "drafts": 356,
+    "non_drafts": 16
+  },
+  "exact_head_verification": {
+    "head": "c22ee9905bfcd795a9faf0385a20e7397e4f594b",
+    "full_ci": {
+      "run_id": 42763890424,
+      "conclusion": "success",
+      "tests_passed": 1347,
+      "tests_failed": 0,
+      "subtests_passed": 8,
+      "coverage_percent": 59.48,
+      "coverage_floor_percent": 53
+    },
+    "core": {
+      "tests_passed": 677,
+      "subtests_passed": 8
+    },
+    "dependency_audit": {
+      "run_id": 42763890408,
+      "conclusion": "success",
+      "manifests": 6,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 42763890620,
+      "conclusion": "success",
+      "automatic_merge": "DISABLED"
+    },
+    "installed_wheel": "PASS",
+    "barrot_v3_import": "PASS",
+    "packaged_xrp_mission": "PASS",
+    "warnings": [
+      "GitHub Actions cache is read-only; cache save failed after tests and wheel verification.",
+      "Non-fatal setuptools metadata/package-discovery warnings."
+    ]
+  },
+  "tracker": {
+    "publisher": "XRP Insights",
+    "url": "https://xrp-insights.com/xrp-radar/evernorth/data.json",
+    "ledger_index": 108232014,
+    "ledger_hash": "84D79E8D9C1DD8E292BD5DDFC2F33B3F9923A4DAE5F0A845B7C3217ED3698A65",
+    "ledger_close_time_utc": "2026-11-10T04:34:40Z",
+    "attributed_wallets": 13,
+    "current_attributed_xrp": 103129904.54985002,
+    "external_outflow_xrp": 370346663.22975004,
+    "history_complete": true,
+    "displayed_external_movement_rows": 18,
+    "displayed_row_sum_xrp": 370346661.22975,
+    "summary_minus_rows_xrp": 2
+  },
+  "independent_ledger_analysis": {
+    "publisher": "Q-Eternal",
+    "url": "https://q-eternal.com/blog/2026-10-23/",
+    "reported_batch": "16 Payment transactions from 2026-10-22T18:08:12Z to 18:08:22Z, 9 source wallets to 10 destination wallets, ledgers 107832376–107832379.",
+    "reported_control": "All 19 source/destination accounts were created by BitGo initializer rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix and configured as 2-of-3 multisig.",
+    "tranche_matches": [
+      {
+        "category": "Arrington sponsor",
+        "disclosed_xrp": 211319096.061435,
+        "destination_total_xrp": 211319104,
+        "accounts": [
+          "rK1BUXU1LD3JEkRLCqY9pKq4BEVKmDrzbf",
+          "rJQ4sQVyoYT2SfRNJRXXfqU4rHS915UAjW",
+          "rLyTyA4nQJMy7T2wgKrd33KeZdjcEMPc2w",
+          "rGy4zJtGfGtF7dtjZmBraQTcfZSQgwqpaa"
+        ]
+      },
+      {
+        "category": "Ripple contribution",
+        "disclosed_xrp": 126791458,
+        "destination_total_xrp": 126791464,
+        "accounts": [
+          "rPjKkBTutrvvoboPUuaxSaeXNki5XvjDei",
+          "rwtokyDZhkRwcC6h7b58Bv11tPFEdtJ9EW",
+          "rDFrBJGy2QMNphpknEWLjmrDsavmUewVrh"
+        ]
+      },
+      {
+        "category": "Contributor related-party",
+        "disclosed_xrp": 50000000,
+        "destination_total_xrp": 50000001,
+        "accounts": [
+          "rPhQdyEaz4kcSoYKTAQhvkvdYxWKKw2vSC"
+        ]
+      },
+      {
+        "category": "Cash-purchased XRP",
+        "disclosed_xrp": 84365876.3625,
+        "destination_total_xrp": 84365878,
+        "accounts": [
+          "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj"
+        ]
+      },
+      {
+        "category": "Delayed-funding XRP",
+        "disclosed_xrp": 200000,
+        "destination_total_xrp": 200001,
+        "accounts": [
+          "rMNWpkSN7iJaxmsf61uGWn1qWCeZ6STmyw"
+        ]
+      }
+    ],
+    "unresolved": "The SEC closing 8-K separately discloses 600,000 XRP from Advance Funding Subscribers. Q-Eternal's five-row destination table does not separately reconcile that tranche."
+  },
+  "explorer_cross_checks": [
+    {
+      "address": "rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+      "label": "BitGo",
+      "url": "https://bithomp.com/account/rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix"
+    },
+    {
+      "address": "rJQ4sQVyoYT2SfRNJRXXfqU4rHS915UAjW",
+      "balance": "52.8M XRP",
+      "activation": "2026-10-20 by BitGo initializer",
+      "multisig": true,
+      "url": "https://bithomp.com/account/rJQ4sQVyoYT2SfRNJRXXfqU4rHS915UAjW"
+    },
+    {
+      "address": "rK1BUXU1LD3JEkRLCqY9pKq4BEVKmDrzbf",
+      "balance": "52.8M XRP",
+      "activation": "2026-10-20 by BitGo initializer",
+      "multisig": true,
+      "url": "https://bithomp.com/account/rK1BUXU1LD3JEkRLCqY9pKq4BEVKmDrzbf"
+    },
+    {
+      "address": "rLyTyA4nQJMy7T2wgKrd33KeZdjcEMPc2w",
+      "balance": "52.8M XRP",
+      "activation": "2026-10-20 by BitGo initializer",
+      "multisig": true,
+      "url": "https://bithomp.com/account/rLyTyA4nQJMy7T2wgKrd33KeZdjcEMPc2w"
+    },
+    {
+      "address": "rwtokyDZhkRwcC6h7b58Bv11tPFEdtJ9EW",
+      "balance": "42.3M XRP",
+      "activation": "2026-10-20 by BitGo initializer",
+      "multisig": true,
+      "url": "https://bithomp.com/account/rwtokyDZhkRwcC6h7b58Bv11tPFEdtJ9EW"
+    },
+    {
+      "address": "rDFrBJGy2QMNphpknEWLjmrDsavmUewVrh",
+      "balance": "42.3M XRP",
+      "activation": "2026-10-20 by BitGo initializer",
+      "multisig": true,
+      "url": "https://bithomp.com/account/rDFrBJGy2QMNphpknEWLjmrDsavmUewVrh"
+    },
+    {
+      "address": "rMNWpkSN7iJaxmsf61uGWn1qWCeZ6STmyw",
+      "balance": "200K XRP",
+      "activation": "2026-10-12 by BitGo initializer",
+      "multisig": true,
+      "url": "https://bithomp.com/account/rMNWpkSN7iJaxmsf61uGWn1qWCeZ6STmyw"
+    },
+    {
+      "address": "rHuRnnWDUB4UBy8Sf2XvJDMEC4rFgts1xi",
+      "balance": "200K XRP",
+      "activation": "2026-10-12 by BitGo initializer",
+      "multisig": true,
+      "url": "https://bithomp.com/account/rHuRnnWDUB4UBy8Sf2XvJDMEC4rFgts1xi"
+    },
+    {
+      "address": "rLMYD4r2WMsReN42naTzDLc8MAmHAbjyw5",
+      "balance": "100K XRP",
+      "activation": "2026-10-12 by BitGo initializer",
+      "multisig": true,
+      "url": "https://bithomp.com/account/rLMYD4r2WMsReN42naTzDLc8MAmHAbjyw5"
+    },
+    {
+      "address": "rPhQdyEaz4kcSoYKTAQhvkvdYxWKKw2vSC",
+      "balance": "50M XRP",
+      "activation": "2025-11-12 by BitGo initializer",
+      "multisig": true,
+      "url": "https://bithomp.com/account/rPhQdyEaz4kcSoYKTAQhvkvdYxWKKw2vSC"
+    },
+    {
+      "address": "rGy4zJtGfGtF7dtjZmBraQTcfZSQgwqpaa",
+      "balance": "52.8M XRP",
+      "activation": "2025-11-12 by BitGo initializer",
+      "multisig": true,
+      "url": "https://bithomp.com/account/rGy4zJtGfGtF7dtjZmBraQTcfZSQgwqpaa"
+    },
+    {
+      "address": "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+      "balance": "96.2M XRP at current page capture",
+      "activation": "2026-10-20 by BitGo initializer",
+      "multisig": true,
+      "url": "https://bithomp.com/account/rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj"
+    },
+    {
+      "address": "rUWUJ2F3aZknSd8PVutoMnxowMK792maTD",
+      "balance": "25.6M XRP",
+      "activation": "2019-09-09 by BitGo initializer",
+      "multisig": true,
+      "activated_accounts_count": 93,
+      "url": "https://bithomp.com/account/rUWUJ2F3aZknSd8PVutoMnxowMK792maTD"
+    }
+  ],
+  "additional_inbound": {
+    "amount_xrp": 5223608.29,
+    "date_utc": "2026-10-23T02:47:00Z",
+    "from": "rUWUJ2F3aZknSd8PVutoMnxowMK792maTD",
+    "to": "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+    "destination_tag": 2,
+    "classification": "UNATTRIBUTED_CUSTODY_TRANSFER_OR_POSSIBLE_PURCHASE",
+    "note": "Source and destination are BitGo-created multisig accounts with no public Evernorth label. No reviewed SEC filing confirms an additional Evernorth acquisition."
+  },
+  "classification": {
+    "tracker_field_meaning": "XRP left the 13-wallet attributed set; not proof XRP left BitGo custody or Evernorth economic control.",
+    "best_current_classification": "PROBABLE_INTERNAL_BITGO_CUSTODY_REORGANIZATION_HIGH_CONFIDENCE",
+    "not_evidence_of": [
+      "exchange deposit",
+      "sale",
+      "tradable-float increase",
+      "confirmed distribution"
+    ],
+    "caveats": [
+      "Not every destination has a first-party Evernorth label.",
+      "Direct rippled transaction replay was not completed.",
+      "Tracker row count and 2-XRP sum discrepancy remain.",
+      "Q-Eternal's 16-payment count differs from the tracker's 14 rows in the 18:08 window.",
+      "600,000 advance-subscriber XRP is not separately reconciled in Q-Eternal's five-row table."
+    ],
+    "model_admission": false,
+    "feature_rule": "Keep wallet_set_outflow_xrp separate from exchange_netflow, sell_pressure, confirmed_exchange_deposit, confirmed_exchange_trade and same_custodian_reorganization. Run110 already excludes the dataset from model admission."
+  },
+  "provenance": {
+    "raw_http_wire_bytes_preserved": false,
+    "raw_ledger_hashes_created": false,
+    "direct_rippled_rpc_replay": "NOT_COMPLETED",
+    "model_admitted": false
+  }
+}

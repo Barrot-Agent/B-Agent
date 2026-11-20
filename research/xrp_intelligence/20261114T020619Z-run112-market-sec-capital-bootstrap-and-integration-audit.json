@@ -1,0 +1,294 @@
+{
+  "schema_version": "barrot.xrp.research_run.v1",
+  "run_id": "run112",
+  "research_cutoff_utc": "2026-11-14T02:06:19Z",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "forecast": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED"
+  },
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_sha": "6b9c8dadc1810e3a0b296a4b713f307ab106bef4",
+    "ahead_by": 2325,
+    "behind_by": 0,
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2400,
+    "tree_truncated": false,
+    "open_prs": {
+      "total": 375,
+      "drafts": 361,
+      "non_drafts": 14
+    },
+    "pr1662": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "head_sha": "6b9c8dadc1810e3a0b296a4b713f307ab106bef4",
+      "commits": 2325,
+      "changed_files": 1159,
+      "additions": 336448,
+      "deletions": 5354,
+      "workflow_files": 50,
+      "public_web_files": 7,
+      "reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    },
+    "permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true,
+      "least_privilege": false
+    },
+    "branch_protection": {
+      "main_metadata_protected": true,
+      "detail_endpoint": "HTTP 403",
+      "fallback_ruleset_10863829": "disabled",
+      "integration_protected": false
+    },
+    "exact_head_ci": {
+      "run_id": 43541249872,
+      "head_sha": "6b9c8dadc1810e3a0b296a4b713f307ab106bef4",
+      "conclusion": "success",
+      "tests_passed": 3626,
+      "subtests": 8,
+      "failures": 0,
+      "coverage_percent": 62.34,
+      "duration_seconds": 108.87,
+      "core_tests": 739,
+      "core_coverage_percent": 76,
+      "wheel_build": "passed",
+      "installed_mission": "passed"
+    },
+    "dependency_audit": {
+      "run_id": 43541249830,
+      "conclusion": "success",
+      "manifest_groups": 5,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed": {
+      "run_id": 43541249816,
+      "conclusion": "success",
+      "merge_enabled": false
+    },
+    "workflow_counts": {
+      "main": 87,
+      "integration": 88
+    },
+    "merge_decision": "NO_MERGE"
+  },
+  "market": {
+    "cutoff_utc": "2026-11-14T02:06:19Z",
+    "okx": {
+      "pair": "XRP-USDT",
+      "last": 1.0056,
+      "bid": 1.0056,
+      "ask": 1.0057,
+      "open24h": 1.0324,
+      "high24h": 1.0438,
+      "low24h": 0.9974,
+      "volume24h_xrp": 46950596.0317,
+      "event_time_utc": "2026-11-14T01:58:43.467Z",
+      "age_seconds": 456.533,
+      "fresh_300s": false,
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    "kraken": {
+      "pair": "XRP/USD",
+      "last": 1.00461,
+      "bid": 1.00479,
+      "ask": 1.00491,
+      "event_time_utc": null,
+      "fresh_300s": false,
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    "spot_l2": "No synchronized raw multi-venue spot L2 admitted; OKX books and Binance depth endpoints inaccessible.",
+    "derivatives": [
+      {
+        "provider": "TradRadar",
+        "time_utc": "2026-11-13T22:35:00Z",
+        "open_interest_usd": 1530000000,
+        "funding_8h_percent": 0.0009,
+        "liquidations_24h_min_usd": 13470000,
+        "long_liquidations_min_usd": 11730000,
+        "short_liquidations_min_usd": 1750000,
+        "long_short_ratio": 3.85,
+        "long_share_percent": 79.4,
+        "url": "https://tradradar.io/markets/xrp"
+      },
+      {
+        "provider": "Kodexius",
+        "time_utc": "2026-11-13T19:14:00Z",
+        "open_interest_usd": 606720000,
+        "funding_8h_percent": 0.0069,
+        "volume24h_usd": 1660000000,
+        "url": "https://kodexius.com/data/crypto-derivatives/XRP"
+      }
+    ],
+    "derivatives_caveat": "Different contract/venue universes and stale observations; do not average.",
+    "etf_disagreement": {
+      "xrp_insights_data": "Data page as of Nov 11; Nov 12 provisional; Nov 9-11 holdings change -9,213,260 XRP.",
+      "xrp_insights_home": "Homepage says Nov 12 settled -268,644 XRP and Nov 9-12 total approximately -9.48M XRP.",
+      "cryptoetf_today": "Nov 12 initially partial +$0.1M across 3/5 funds; same page later says 5/5 reported.",
+      "alpha_finance": "Through Nov 12; Nov 12 zero for five-fund cohort; 30-session -$2.8M.",
+      "cryptokeyhole": "Latest daily-read data through Nov 11; Nov 12 issuer files incomplete; reported -6,627,738 XRP over its stated window.",
+      "admission": "Source vintages, fund universes and missing-file rules disagree. No averaging; no flow feature admitted."
+    },
+    "exchange_balances": {
+      "provider": "XRP Insights",
+      "snapshot_utc": "2026-11-13T08:01:00Z",
+      "tracked_xrp": 22260000000,
+      "wallets": 707,
+      "exchanges": 24,
+      "same_wallet_7d_change_xrp": -77300000,
+      "same_wallet_30d_change_xrp": -279700000,
+      "naive_30d_change_including_new_wallets_xrp": 238000000,
+      "new_wallets_30d_xrp": 517700000,
+      "caveat": "Includes cold/omnibus storage; new-wallet inclusion reverses the sign of naive 30-day change; not tradable float.",
+      "url": "https://xrp-insights.com/exchange-balances"
+    },
+    "macro": {
+      "date": "2026-11-13",
+      "yen_usd": "JPY crossed 160 per USD",
+      "japan_intervention_jpy": 15400000000000,
+      "new_york_fed_operations_usd": 497000000,
+      "url": "https://www.reuters.com/markets/us/japans-finance-minister-vows-action-yen-breaches-160-threshold-2026-11-13/"
+    },
+    "raw_receipts": {
+      "byte_exact_payloads_retained": false,
+      "barrot_receipts_created": false,
+      "model_eligible": false
+    }
+  },
+  "institutional": {
+    "evernorth_10q": {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "filed_utc": "2026-11-13T21:29:00Z",
+      "period_end": "2026-09-30",
+      "pre_combination_financials": true,
+      "close_date": "2026-10-09",
+      "nine_month_net_loss_usd": -32870033,
+      "q3_net_income_usd": 155264700,
+      "q3_fair_value_gain_on_advances_usd": 162834432,
+      "nine_month_xrp_impairment_usd": 271037170,
+      "sept30_xrp_carrying_value_usd": 341887231,
+      "sept30_cash_usd": 91397,
+      "refundable_advances_settled_in_equity_usd": 524259563,
+      "cash_repaid": 0,
+      "pathfinder_gross_xrp_at_close": 473276430,
+      "pubco_pathfinder_common_unit_ownership_percent": 71.5,
+      "derived_pro_rata_xrp_lookthrough": 338392647.45,
+      "lookthrough_is_not_direct_custody": true,
+      "warrants_exercised": 3073366,
+      "gross_warrant_cash_usd": 35300000,
+      "warrants_remaining": 8666279,
+      "exercise_price_usd": 11.5,
+      "remaining_warrants_theoretical_gross_cash_usd": 99662208.5,
+      "convertible_note_principal_usd": 30000000,
+      "net_cash_after_advisor_fee_usd": 29000000,
+      "pik_rate_percent": 4,
+      "eloc_shares": 5218935,
+      "eloc_price": "97% of applicable VWAP; discretionary/conditional",
+      "eloc_proceeds_as_of_nov9_usd": 0,
+      "coinbase_role": "Principal market for XRP financial reporting, not exclusive execution/custody.",
+      "initial_post_close_custodian": "BitGo Trust",
+      "revenue": "No revenue generated; Pubco depends on Pathfinder distributions.",
+      "pending": "8-K/A with Pathfinder financial statements and combined-company pro forma information."
+    },
+    "relationships": {
+      "coinbase_rlusd": "RLUSD live on Prime, Exchange and Retail on XRPL, Base and Ethereum; Coinbase Global Exchange collateral support was forthcoming, not live.",
+      "pnc_coinbase": "USDC pilot with automatic USD conversion; not XRP settlement.",
+      "standard_chartered": "RLUSD custody on XRPL live through DIFC branch; LMAX collateral mirroring planned and conditional.",
+      "sbi_rlusd": "SBI VC Trade announced Japan RLUSD distribution on 2026-06-24; distinct from XRP remittance.",
+      "sbi_circle": "50/50 JV; SBI Holdings and SBI Shinsei each invested $25M in Circle IPO.",
+      "sbi_visa": "SBI VC Trade/Aplus/Visa card rewards can convert to BTC, ETH or XRP; not proof of on-chain XRP settlement.",
+      "sbi_xrp_remittance": "SBI Remit/SBI VC Trade/Tranglo is the distinct XRP remittance route.",
+      "sbi_ripple_asia": "60/40 SBI Group/Ripple software-services JV; does not directly handle XRP."
+    },
+    "eba_usdc": {
+      "classification_date": "2026-10-14",
+      "dual_supervision_effective": "2026-11-12",
+      "correction": "Nov 12 is the supervision start, not the original classification date.",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union"
+    }
+  },
+  "identity": {
+    "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka are regional SME investment companies, not SBI Holdings; ChatGPT seminars are educational, not proof of an OpenAI partnership.",
+    "ask_coin": "No canonical XRPL issuer/deployment verified; Permission Coin (ASK) is a separate Base/Polygon candidate.",
+    "actual_capital": "Separate cash, in-kind XRP, cash-funded purchases, debt, advances settled in equity, conditional ELOC, warrants and secondary resales.",
+    "kamilah_stevenson": "Person identity established; first-party YouTube ownership not verified; own-channel video inventory remains zero."
+  },
+  "prediction_engine": {
+    "implemented": [
+      "48 scheduled public endpoints",
+      "read-only main-only ingestion workflow",
+      "SHA-256 receipts/local cross-run chain",
+      "SQLite point-in-time store",
+      "event timeline/source-independence registry",
+      "four deterministic baselines",
+      "chronological walk-forward with purge/embargo",
+      "temporal calibration and PSI",
+      "paired moving-block bootstrap",
+      "v6 fail-closed forecast ledger with Ed25519 attestation"
+    ],
+    "verified_gaps": [
+      "walk_forward.py calls bootstrap defaults of 1,000 replicates, 30 origins and 95% confidence; v6 ledger requires 10,000 replicates, 100 paired origins and 99.375% individual confidence for eight Bonferroni comparisons.",
+      "Current walk-forward bootstrap uses naive_class_prior as the single benchmark; candidate-versus-each-of-four-baselines OOS and shadow comparisons are not yet verified.",
+      "Source clusters require one canonical independence group per target record; multi-publisher composites remain unclustered.",
+      "Circular row-index blocks are sorted by timestamp but do not enforce cadence or maximum elapsed-time gaps; missing-origin gaps can be bridged.",
+      "No trained XRP-specific candidate model, mature synchronized historical data, independent WORM/time anchoring or independent shadow cohort."
+    ],
+    "forecast": "NOT_ISSUED",
+    "accuracy": "NOT_EVALUATED"
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub authenticated; overprivileged",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "review artifacts; no formal PR approval",
+    "Codex": "unverified",
+    "Hugging Face": "prior BUILD_ERROR; no deployment",
+    "Kaggle": "untested; no submission",
+    "Databricks": "HTTP 403; no write",
+    "LunaRoute": "separate provider; remote MCP disabled on integration, enabled on main; endpoint auth unverified",
+    "external_dispatch": false
+  },
+  "next_actions": [
+    "Fix walk-forward/bootstrap parameter mismatch and add v6 policy-level regression tests.",
+    "Implement time-gap-aware block segmentation and empirical coverage, cluster-count and block-length sensitivity tests.",
+    "Define a multi-source outcome-panel estimand without assigning composite outcomes to arbitrary publishers.",
+    "Acquire synchronized historical spot/L2/derivatives/flows/collateral with byte-exact receipts and independent retention/timestamp anchoring.",
+    "Complete semantic review of 1,159 changed paths, especially 50 workflows and seven public web files.",
+    "Resolve least privilege, branch-protection visibility, remote MCP containment and Pages publication authorization.",
+    "Keep forecast issuance disabled until calibrated out-of-sample superiority and independent shadow outcomes are verified."
+  ],
+  "sources": [
+    "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+    "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "https://tradradar.io/markets/xrp",
+    "https://kodexius.com/data/crypto-derivatives/XRP",
+    "https://xrp-insights.com/data",
+    "https://xrp-insights.com/",
+    "https://cryptoetf.today/en/xrp-etf-flows",
+    "https://alphafinance.io/etf/xrp/",
+    "https://cryptokeyhole.com/etf-flows/xrp/",
+    "https://xrp-insights.com/exchange-balances",
+    "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+    "https://www.eba.europa.eu/publications-and-media/press-releases/eba-classifies-usdc-first-significant-e-money-token-european-union",
+    "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+    "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+    "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+    "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+    "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+    "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+    "https://www.reuters.com/markets/us/japans-finance-minister-vows-action-yen-breaches-160-threshold-2026-11-13/"
+  ],
+  "source_capture_limitations": "The current research observations are contextual only. Exact publisher bytes, full HTTP headers, source hashes and durable ingestion receipts were not captured in Barrot; none is model-eligible."
+}
