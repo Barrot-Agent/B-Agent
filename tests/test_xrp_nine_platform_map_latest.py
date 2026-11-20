@@ -66,6 +66,9 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert is_sha(integration["code_head_sha"])
     assert is_sha(integration["current_pr_head_sha"])
     assert integration["ahead_by"] == integration["commits"] > 0
+    assert integration["pr_commit_count"] == 555
+    assert integration["current_main_sha"] == repo["main_sha"]
+    assert integration["base_sha_matches_current_main"] is False
     assert integration["behind_by"] == 0
     assert integration["changed_files"] >= 1
     assert 0 <= integration["changed_workflow_files"] <= integration["changed_files"]
@@ -137,11 +140,14 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert counts.get("ready", 0) == summary["ready"]
     assert counts.get("duplicate", 0) == summary["duplicate"]
     assert counts.get("superseded", 0) == summary["superseded"]
+    expected_open_prs = {1673, 1670, 1664, 1265, 1663, 1541, 1450, 1460, 1440, 1436, 1437, 1353}
+    assert {item["number"] for item in backlog} == expected_open_prs
     assert next(item for item in backlog if item["number"] == 1673)["classification"] == "blocked"
     assert next(item for item in backlog if item["number"] == 1663)["classification"] == "superseded"
-    assert next(item for item in backlog if item["number"] == 1665)["classification"] == "duplicate"
-    assert next(item for item in backlog if item["number"] == 1666)["classification"] == "blocked"
-    assert next(item for item in backlog if item["number"] == 1668)["classification"] == "blocked"
+    assert next(item for item in backlog if item["number"] == 1670)["classification"] == "blocked"
+    assert next(item for item in backlog if item["number"] == 1541)["classification"] == "blocked"
+    assert next(item for item in backlog if item["number"] == 1664)["classification"] == "unique/unreviewed"
+    assert next(item for item in backlog if item["number"] == 1265)["classification"] == "unique/unreviewed"
     assert data["merge_decision"] == "NO_MERGE"
     prior_ci = data["ci_evidence"]["pre_fix_pr_head_ci"]
     assert prior_ci["head_sha"] == "bdc77944fb6de3b2ce036a5cc26d0af2538ddb92"

@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-20T19:10:00Z",
+  "captured_at_utc": "2026-11-20T20:17:04Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -13,40 +13,40 @@
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 546,
+      "ahead_by": 548,
       "behind_by": 0,
       "changed_files": 1511,
       "changed_workflow_files": 70,
       "formal_reviews": 0,
-      "snapshot_head_sha": "7cdc349e72edc1242c6ff50a2e3129092a3d1fb9",
-      "commits": 554,
-      "additions": 537373,
-      "deletions": 7024,
-      "mergeable_state": "Exact-head CI passes; blocked by draft, stale PR base SHA, no independent approval and branch-protection HTTP 403.",
+      "snapshot_head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+      "commits": 548,
+      "additions": 539295,
+      "deletions": 7310,
+      "mergeable_state": "BLOCKED: exact-head full repository suite has two stale metadata assertions; PR remains draft; PR base SHA c599419 differs from current main b87582f although the current-main compare is 548 ahead / 0 behind; no independent approval; branch-protection details HTTP 403; Pages publication authorization, A2A runner isolation and transitive workflow/script review remain unresolved.",
       "review_comments": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
-      "current_pr_head_sha": "7cdc349e72edc1242c6ff50a2e3129092a3d1fb9",
-      "snapshot_ahead_by": 364,
-      "snapshot_changed_files": 1438,
+      "current_pr_head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+      "snapshot_ahead_by": 548,
+      "snapshot_changed_files": 1511,
       "handoff_update_commit_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
       "research_record_commit_sha": "a4186aa70fa0b3685c74a9018c3152d7a4be835d",
       "branch_sync_commit": "dbc6b327a56dc66493fb06cc32164a2043509280",
       "latest_research_artifact_commit": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
-      "latest_exact_head_push_ci_run": 44798591725,
-      "latest_exact_head_full_suite": "PASS on exact head 7cdc349: 4,457 passed, 1 skipped, 0 failed, 11 warnings, 32 subtests; 167.60 seconds; 73.22% coverage. PR CI independently passed in 213.07 seconds.",
-      "latest_exact_head_dependency_audit_run": 44668096070,
-      "latest_exact_head_fail_closed_run": 44798603085,
-      "latest_exact_head_pr_ci_run": 44798602692,
-      "latest_exact_head_pr_money_audit_run": 44668101743,
-      "latest_exact_head_pr_dependency_audit_run": 44668101701,
-      "latest_exact_head_pr_fail_closed_run": 44668101736,
-      "last_audited_at_utc": "2026-11-20T19:10:00Z",
+      "latest_exact_head_push_ci_run": 44800130866,
+      "latest_exact_head_full_suite": "FAIL on exact snapshot head db79d8d: 4,455 passed, 2 failed, 1 skipped, 11 warnings, 32 subtests; 73.22% coverage. Both failures are stale nine-platform map metadata/backlog assertions.",
+      "latest_exact_head_dependency_audit_run": 44800130437,
+      "latest_exact_head_fail_closed_run": 44800130788,
+      "latest_exact_head_pr_ci_run": 44800144530,
+      "latest_exact_head_pr_money_audit_run": 44800144077,
+      "latest_exact_head_pr_dependency_audit_run": 44800143921,
+      "latest_exact_head_pr_fail_closed_run": 44800143591,
+      "last_audited_at_utc": "2026-11-20T20:17:04Z",
       "latest_verified_full_suite_head_sha": "7cdc349e72edc1242c6ff50a2e3129092a3d1fb9",
       "latest_verified_full_suite_run": 44668101674,
       "current_branch_head_full_suite_status": "PASS on exact head 7cdc349: 4,457 passed, 1 skipped, 0 failed, 11 warnings, 32 subtests; 73.22% coverage.",
-      "latest_exact_head_full_suite_run": 44798591725,
-      "latest_exact_head_full_suite_result": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%.",
+      "latest_exact_head_full_suite_run": 44800130866,
+      "latest_exact_head_full_suite_result": "FAIL: tests/test_xrp_nine_platform_map_latest.py has two metadata assertions failing; no XRP model or forecast assertion failed.",
       "main_sync_merge_commit": "2d876d5e823ace0025d19d7a2bfd9bc713db05c7",
       "main_sync_source_sha": "82c23e219553164c24073784c529aad75acacd66",
       "post_sync_exact_head_full_suite": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%.",
@@ -56,21 +56,24 @@
       "formal_approvals": 0,
       "unresolved_review_threads": 0,
       "classification": "BLOCKED_ACTIVE_INTEGRATION_DRAFT",
-      "updated_at": "2026-11-20T03:40:32.475Z",
+      "updated_at": "2026-11-20T20:17:04Z",
       "snapshot_commit_boundary": "Run243 repository and exact-head CI state captured at 0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40 before this documentation-only schema correction. The correction triggers a new exact-head CI run; no application code, workflow or dependency changes are included.",
       "current_head_full_suite_status": "FAIL on exact head 0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40: 4,439 passed, 1 failed, 1 skipped, 11 warnings, 23 subtests; root cause is open_pr_backlog numeric-key object instead of array.",
       "latest_exact_head_dependency_pr_run": 44775926966,
       "latest_exact_head_dependency_push_run": 44775912191,
       "latest_exact_head_money_audit_run": 44798602698,
-      "latest_exact_head_a2a_worker_tests_run": 44798602615,
+      "latest_exact_head_a2a_worker_tests_run": 44800143525,
       "latest_exact_head_fail_closed_pr_run": 44775926864,
       "latest_exact_head_fail_closed_push_run": 44775912148,
       "snapshot_boundary": "Repository and exact-head CI observed at a71cb725 before this single-commit handoff/platform-map update. The new metadata commit must receive its own exact-head CI; no code/workflow/dependency files change.",
       "current_main_sha": "b87582fef2229f4fb00418251119815c93fc235c",
       "latest_exact_head_dependency_audit_push_run": 44798591743,
       "latest_exact_head_dependency_audit_pr_run": 44798602739,
-      "latest_exact_head_conflict_integrity_run": 44798602730,
-      "latest_exact_head_fail_closed_result": "BLOCKED: draft; PR base SHA differs from current main; no independent approving review; branch-protection HTTP 403."
+      "latest_exact_head_conflict_integrity_run": 44800143575,
+      "latest_exact_head_fail_closed_result": "BLOCKED: draft; PR base SHA differs from current main; no independent approving review; branch-protection HTTP 403.",
+      "pr_commit_count": 555,
+      "base_sha_matches_current_main": false,
+      "post_update_exact_head_ci": "PENDING_AFTER_RUN245_METADATA_AND_REGRESSION_TEST_COMMIT"
     },
     "tree_counts": {
       "main": {
@@ -87,7 +90,7 @@
     "main_paths_missing_from_integration": 0,
     "security_snapshot": {
       "main_branch_protected": true,
-      "detailed_branch_protection": "HTTP 403; effective required checks, administrator enforcement and approval count cannot be independently inspected.",
+      "detailed_branch_protection": "HTTP 403 — Resource not accessible by integration; effective required checks and administrator enforcement cannot be independently inspected.",
       "repository_rulesets": [
         {
           "name": "Fall Back",
@@ -108,13 +111,13 @@
       "integration_branch_protected": false,
       "main_required_status_check_contexts": [],
       "main_required_status_check_enforcement": "non_admins",
-      "current_main_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
+      "current_main_sha": "b87582fef2229f4fb00418251119815c93fc235c",
       "main_sync_merge_commit": "2d876d5e823ace0025d19d7a2bfd9bc713db05c7",
       "automatic_pages_deployment_run": 44653117146,
       "automatic_paid_issue_hunter_run": 44431013238,
       "main_a2a_deployment_run": 44653118169,
       "main_a2a_deployment_result": "Failed Cloudflare authentication (10000/9109); secret-upload step skipped; no successful deployment or secret upload verified.",
-      "changed_workflow_files": 69,
+      "changed_workflow_files": 70,
       "workflow_definition_scan_count": 69,
       "unpinned_uses_references_found": 0,
       "transitive_workflow_script_security_review": "INCOMPLETE; 69 changed YAML files statically scanned, selected high-risk workflows/scripts semantically reviewed; all transitive scripts and action dependencies not yet cleared.",
@@ -135,9 +138,9 @@
     "open_pr_backlog_summary": {
       "total_open": 12,
       "ready": 0,
-      "blocked": 1,
-      "unique_unreviewed": 9,
-      "duplicate": 1,
+      "blocked": 3,
+      "unique_unreviewed": 8,
+      "duplicate": 0,
       "superseded": 1
     },
     "integration_branch_protected": false,
@@ -147,92 +150,93 @@
         "classification": "blocked",
         "changed_files": 1511,
         "overlap_with_1673": 1511,
-        "note": "Single active Barrot V3/XRP integration draft. Exact-head suite and required audits pass; fail-closed gate blocks draft state, stale PR base SHA, zero independent approvals and branch-protection HTTP 403."
-      },
-      {
-        "number": 1663,
-        "classification": "superseded",
-        "changed_files": 1470,
-        "overlap_with_1673": 1470,
-        "note": "Superseded predecessor of #1673; retain until successor is merged and verified on main."
+        "note": "Sole active Barrot V3/XRP integration draft. Current exact-head full suite fails two stale metadata assertions; PR base SHA c599419 differs from current main b87582f despite current-main compare showing 548 ahead / 0 behind. Zero independent reviews; branch-protection details HTTP 403; Pages publication authorization, A2A runner isolation and transitive workflow/script review remain unresolved."
       },
       {
         "number": 1670,
-        "classification": "duplicate",
+        "classification": "blocked",
         "changed_files": 12,
         "overlap_with_1673": 12,
-        "note": "All paths exist in #1673; 10/12 blobs identical. docs/INDEX.md and pyproject.toml differ due integrated union. Confirm content equivalence after successor merge before closing."
+        "note": "Musical DNA/recursive-learning workstream; 49 commits ahead / 2 behind current main. All 12 paths overlap #1673, but prior blob comparison found 10 identical and 2 different (docs/INDEX.md and pyproject.toml). Preserve pending exact content reconciliation; do not classify as an exact duplicate."
       },
       {
         "number": 1664,
         "classification": "unique/unreviewed",
         "changed_files": 133,
         "overlap_with_1673": 4,
-        "note": "129 unique paths; preserve."
-      },
-      {
-        "number": 1541,
-        "classification": "unique/unreviewed",
-        "changed_files": 5,
-        "overlap_with_1673": 5,
-        "note": "2 blobs identical and 3 differ; MMI fingerprint changes require content-level reconciliation."
-      },
-      {
-        "number": 1460,
-        "classification": "unique/unreviewed",
-        "changed_files": 8,
-        "overlap_with_1673": 0,
-        "note": "Unique XRP institutional multirail/Binance/Kamilah research."
-      },
-      {
-        "number": 1450,
-        "classification": "unique/unreviewed",
-        "changed_files": 116,
-        "overlap_with_1673": 0,
-        "note": "Unique Binance phase-one, escrow and ledger research."
-      },
-      {
-        "number": 1440,
-        "classification": "unique/unreviewed",
-        "changed_files": 64,
-        "overlap_with_1673": 0,
-        "note": "Unique XRP archive-validation trigger repair."
-      },
-      {
-        "number": 1437,
-        "classification": "unique/unreviewed",
-        "changed_files": 5,
-        "overlap_with_1673": 0,
-        "note": "Unique XRP ledger source-addenda correction."
-      },
-      {
-        "number": 1436,
-        "classification": "unique/unreviewed",
-        "changed_files": 24,
-        "overlap_with_1673": 0,
-        "note": "Unique Binance XRP theft, issuer-freeze and attacker-wallet research."
-      },
-      {
-        "number": 1353,
-        "classification": "unique/unreviewed",
-        "changed_files": 1084,
-        "overlap_with_1673": 0,
-        "note": "Unique lossless XRP ledger sharding and hash-verified read-only validation."
+        "note": "Paid-issue/product pack; 129 unique paths, 4 shared. Branch is 19 ahead / 2 behind current main. Preserve separately; publication and paper-trading actions are not authorized."
       },
       {
         "number": 1265,
         "classification": "unique/unreviewed",
         "changed_files": 144,
         "overlap_with_1673": 1,
-        "note": "143 paths unique; one shared ci.yml path; preserve pending file-level reconciliation."
+        "note": "XRP ledger index-pointer migration; 143 unique research/archive paths and one shared workflow path. No common ancestor directly to current main; preserve its stacked research lineage."
+      },
+      {
+        "number": 1663,
+        "classification": "superseded",
+        "changed_files": 1470,
+        "overlap_with_1673": 1470,
+        "note": "Superseded predecessor of #1673; all 1,470 changed paths overlap the active successor. Branch is 486 ahead / 17 behind current main. Keep open until #1673 is merged and its content is verified on main."
+      },
+      {
+        "number": 1541,
+        "classification": "blocked",
+        "changed_files": 5,
+        "overlap_with_1673": 5,
+        "note": "MMI canonical-claim-fingerprint source PR; all five paths overlap #1673, but prior blob comparison found two identical and three different. No common ancestor directly to current main. Preserve for exact content/test reconciliation."
+      },
+      {
+        "number": 1450,
+        "classification": "unique/unreviewed",
+        "changed_files": 116,
+        "overlap_with_1673": 0,
+        "note": "Unique Binance phase-one, escrow and ledger research; stacked on #1436. Preserve and review as part of its research chain."
+      },
+      {
+        "number": 1460,
+        "classification": "unique/unreviewed",
+        "changed_files": 8,
+        "overlap_with_1673": 0,
+        "note": "Unique XRP institutional multirail, Coinbase/Circle/SBI and Kamilah research; stacked on #1450. Preserve."
+      },
+      {
+        "number": 1440,
+        "classification": "unique/unreviewed",
+        "changed_files": 64,
+        "overlap_with_1673": 0,
+        "note": "Unique XRP archive-validation trigger repair; stacked on #1436. Preserve."
+      },
+      {
+        "number": 1436,
+        "classification": "unique/unreviewed",
+        "changed_files": 24,
+        "overlap_with_1673": 0,
+        "note": "Unique Binance XRP theft, issuer-freeze and attacker-wallet graph; stacked on #1353. Preserve."
+      },
+      {
+        "number": 1437,
+        "classification": "unique/unreviewed",
+        "changed_files": 5,
+        "overlap_with_1673": 0,
+        "note": "Unique XRP ledger source-addenda correction; stacked on #1353. Preserve."
+      },
+      {
+        "number": 1353,
+        "classification": "unique/unreviewed",
+        "changed_files": 1084,
+        "overlap_with_1673": 0,
+        "note": "Unique lossless XRP ledger sharding and hash-verified read-only validation; stacked on #1265. Preserve; no common ancestor directly to current main."
       }
     ],
-    "last_audited_at_utc": "2026-11-20T19:10:00Z",
+    "last_audited_at_utc": "2026-11-20T20:17:04Z",
     "open_prs": 12,
-    "integration_ahead_by": 546,
+    "integration_ahead_by": 548,
     "integration_behind_by": 0,
     "changed_files": 1511,
-    "workflow_files_changed": 70
+    "workflow_files_changed": 70,
+    "current_main_sha": "b87582fef2229f4fb00418251119815c93fc235c"
   },
   "platforms": {
     "ChatGPT": {
@@ -419,7 +423,7 @@
       "branch protection and approval enforcement",
       "forecast admission and calibration"
     ],
-    "red_team_status": "NOT_EXECUTED — no independently authenticated external reviewer.",
+    "red_team_status": "NOT_EXECUTED — no external model dispatch or independent red-team review occurred.",
     "provider_failover_review": {
       "pr_number": 1668,
       "status": "BLOCKED_NOT_MERGED",
@@ -446,7 +450,8 @@
       "disposition": "Do not merge independently. Current integration branch quarantines this worker and has newer token-budget, local-provider and TPM-specific controls in scripts/barrot_agent.py. Reconcile only after security review and data-egress authorization."
     },
     "sbi_claude_context": "SBI's public November 2026 presentation reports Claude Mythos/Claude Security use within SBI Group. This is corporate adoption evidence only; it does not verify a Barrot connection or authorize external dispatch.",
-    "last_verified_at_utc": "2026-11-20T18:03:23Z"
+    "last_verified_at_utc": "2026-11-20T18:03:23Z",
+    "run245_status": "ChatGPT/GitHub connector verified; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified."
   },
   "prediction_engine": {
     "source_registry": {
@@ -1366,40 +1371,50 @@
       "drift_status": "INSUFFICIENT_DATA",
       "forecast_issuance": "DISABLED",
       "current_market_capture": "No fresh Run244 market capture; Run243 remains research-only and not model eligible."
+    },
+    "run245_status": {
+      "captured_at_utc": "2026-11-20T20:17:04Z",
+      "latest_ingestion_run_id": 44654352643,
+      "latest_ingestion_captured_at_utc": "2026-11-20T01:32:54.379952Z",
+      "new_ingestion_run_observed": false,
+      "production_schedule_status": "NOT_ACTIVE_ON_MAIN",
+      "walk_forward_origins": 0,
+      "drift_status": "INSUFFICIENT_DATA",
+      "forecast_issuance": "NOT_ISSUED",
+      "directional_forecast_issued": false
     }
   },
   "ci_evidence": {
-    "exact_code_head": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
-    "push_ci_run": 44781064268,
+    "exact_code_head": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+    "push_ci_run": 44800130866,
     "full_suite": {
-      "head_sha": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
-      "run_id": 44781077496,
+      "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+      "run_id": 44800130866,
       "status": "completed",
       "conclusion": "failure",
-      "passed": 4439,
-      "failed": 1,
+      "passed": 4455,
+      "failed": 2,
       "skipped": 1,
       "warnings": 11,
-      "subtests": 23,
-      "duration_seconds": 203.3,
-      "inclusive_coverage_percent": 73.08,
-      "legacy_core_coverage_percent": 82,
-      "failure": "tests/test_xrp_nine_platform_map_latest.py:134 — TypeError: string indices must be integers; open_pr_backlog was a numeric-key object instead of an array."
+      "subtests": 32,
+      "duration_seconds": 180.38,
+      "inclusive_coverage_percent": 73.22,
+      "failure": "Two stale metadata assertions in tests/test_xrp_nine_platform_map_latest.py."
     },
     "wheel_and_installed_v3": "passed",
     "dependency_audit_runs": [
-      44781064430,
-      44781077582
+      44800130437,
+      44800143921
     ],
     "dependency_manifests": 6,
     "known_vulnerabilities_reported": 0,
     "fail_closed_runs": [
-      44781064174,
-      44781077516
+      44800130788,
+      44800143591
     ],
-    "money_audit_run": 44781077616,
-    "pr_ci_run": 44781077496,
-    "pr_full_suite": "FAIL on exact head 0bc985: 4,439 passed, 1 failed, 1 skipped; only failure is the map backlog array/object schema mismatch.",
+    "money_audit_run": 44800144077,
+    "pr_ci_run": 44800144530,
+    "pr_full_suite": "FAIL on exact snapshot head db79d8d: 4,455 passed, 2 failed, 1 skipped; both failures are stale map metadata/backlog assertions.",
     "pre_fix_pr_head_ci": {
       "run_id": 44269593667,
       "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44269593667",
@@ -1429,15 +1444,15 @@
     },
     "current_head_dependency_audits": [
       {
-        "run_id": 44781064430,
-        "head_sha": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
+        "run_id": 44800130437,
+        "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
         "event": "push",
         "conclusion": "success",
         "manifests": 6
       },
       {
-        "run_id": 44781077582,
-        "head_sha": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
+        "run_id": 44800143921,
+        "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
         "event": "pull_request",
         "conclusion": "success",
         "manifests": 6
@@ -1445,42 +1460,53 @@
     ],
     "current_head_fail_closed_runs": [
       {
-        "run_id": 44781064174,
-        "head_sha": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
+        "run_id": 44800130788,
+        "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
         "event": "push",
         "conclusion": "failure",
         "blockers": [
-          "exact-head full repository suite failed one test",
           "PR remains draft",
+          "PR base SHA c599419 differs from current main b87582f",
           "no independent approving review",
-          "branch protection could not be verified (HTTP 403)"
+          "branch protection HTTP 403",
+          "exact-head full suite failed two metadata assertions"
         ]
       },
       {
-        "run_id": 44781077516,
-        "head_sha": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
+        "run_id": 44800143591,
+        "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
         "event": "pull_request",
         "conclusion": "failure",
         "blockers": [
-          "exact-head full repository suite failed one test",
           "PR remains draft",
+          "PR base SHA c599419 differs from current main b87582f",
           "no independent approving review",
-          "branch protection could not be verified (HTTP 403)"
+          "branch protection HTTP 403",
+          "exact-head full suite failed two metadata assertions"
         ]
       }
     ],
     "current_head_money_audit": {
-      "run_id": 44781077616,
-      "head_sha": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
+      "run_id": 44800144077,
+      "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
       "event": "pull_request",
       "conclusion": "success"
     },
     "current_head_pages_validation": {
-      "run_id": 44668101674,
-      "job_id": 136062274394,
-      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
-      "conclusion": "success",
-      "validation_only": true
+      "push": {
+        "run_id": 44800130866,
+        "job_id": 136509805773,
+        "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+        "conclusion": "success",
+        "validation_only": true
+      },
+      "pull_request": {
+        "run_id": 44800144530,
+        "job_id": 136509853771,
+        "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+        "conclusion": "success",
+        "validation_only": true
+      }
     },
     "main_after_paid_issue_publish": {
       "main_sha": "c8e15c90b1e07980d7b5a01c86c1667166a353f6",
@@ -1495,19 +1521,18 @@
       "last_code_ci_result": "success"
     },
     "current_head_full_suite": {
-      "head_sha": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
-      "run_id": 44781077496,
+      "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+      "run_id": 44800130866,
       "status": "completed",
       "conclusion": "failure",
-      "passed": 4439,
-      "tests_failed": 1,
+      "passed": 4455,
+      "tests_failed": 2,
       "skipped": 1,
       "warnings": 11,
-      "subtests_passed": 23,
-      "duration_seconds": 203.3,
-      "inclusive_coverage_percent": 73.08,
-      "legacy_core_coverage_percent": 82,
-      "failure": "open_pr_backlog serialization/schema mismatch; deterministic correction converts it to a list and synchronizes the 19-item inventory."
+      "subtests_passed": 32,
+      "duration_seconds": 180.38,
+      "inclusive_coverage_percent": 73.22,
+      "failure": "test_latest_map_matches_repository_and_forecast_admission_state: stale ahead_by/commits values (546 vs 554; current compare is 548 ahead / 0 behind, GitHub PR commit count 555). test_latest_map_preserves_security_gates_and_open_pr_classifications: backlog had 19 entries while current live open PR count is 12; assertions still referenced closed PRs #1665, #1666 and #1668."
     },
     "previous_verified_full_suite": {
       "run_id": 44322684443,
@@ -1524,17 +1549,17 @@
       "result": "passed on preceding exact code head; not a substitute for a871732"
     },
     "main_ci": {
-      "current_main_sha": "c599419c284ed5c3e21c44c91d5d4229191dced8",
-      "latest_code_ci_head_sha": "08ecb81e9e7501a7ff4a241c2dae6eef766ff2d3",
-      "run_id": 44680928702,
+      "current_main_sha": "b87582fef2229f4fb00418251119815c93fc235c",
+      "run_id": 44793753474,
       "status": "completed",
       "conclusion": "success",
-      "passed": 1230,
+      "passed": 1252,
       "failed": 0,
       "skipped": 2,
-      "subtests": 12,
-      "coverage_percent": 78.17,
-      "current_main_full_suite": "NOT_RUN on c599419: current main commit changes only PAID-ISSUES.md and data/money/paid_issues.json; path filters excluded the commit. Combined commit status for c599419 is empty. The 1,230-pass run is on prior code head 08ecb81, not current main."
+      "subtests": 21,
+      "coverage_percent": 78.87,
+      "duration_seconds": 37.04,
+      "current_main_full_suite": "PASS on exact main SHA b87582f: 1,252 passed, 2 skipped, 0 failed; 21 subtests; 78.87% coverage."
     },
     "pr_test_jobs": "Exact PR-event CI ran both core and full repository suites on 19f09; core tests passed, full suite failed five evidence-contract assertions. Pages validation passed without deployment.",
     "post_handoff_head_ci": {
@@ -1613,13 +1638,12 @@
       "note": "The exact-head push full suite remains the controlling test evidence; no merge until it and all required checks finish."
     },
     "current_pr_head_ci": {
-      "head_sha": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
-      "push_ci_run_id": 44781064268,
+      "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+      "push_ci_run_id": 44800130866,
       "push_ci_conclusion": "failure",
-      "pr_event_run_id": 44781077496,
+      "pr_event_run_id": 44800144530,
       "pr_event_conclusion": "failure",
-      "pr_event_full_suite_status": "failure",
-      "full_suite_job_id": 136443598098
+      "pr_event_full_suite_status": "failure"
     },
     "last_verified_code_head_sha": "2d38b05a2a20d929cba26a685b4ad0204108f3f3",
     "last_verified_full_suite": {
@@ -1638,7 +1662,7 @@
       "legacy_core_coverage_percent": 81,
       "result": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%."
     },
-    "latest_full_suite_tested_head_sha": "bd0f564c122ed4ef8ce3cf4b764f1152e368e250",
+    "latest_full_suite_tested_head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
     "remediation_commit_test": "80507968e59d9a2e3f99801734d258e8f2dc1819",
     "current_branch_head_ci_pending": null,
     "cache_warning": "GitHub Actions cache budget exhausted; cache is read-only. Cache-save warning only, not a test or security-gate failure.",
@@ -1670,16 +1694,16 @@
       ]
     },
     "post_sync_exact_head_full_suite": "FAIL on bd0f564: 4,282 passed, 4 failed, 1 skipped. All four failures are stale/mismatched Run32 evidence/test assertions; exact-head correction and full-suite rerun required.",
-    "latest_exact_head_ci_run": 44781064268,
+    "latest_exact_head_ci_run": 44800130866,
     "latest_exact_head_ci_conclusion": "failure",
-    "latest_exact_head_full_suite_passed": 4439,
-    "latest_exact_head_full_suite_failed": 1,
+    "latest_exact_head_full_suite_passed": 4455,
+    "latest_exact_head_full_suite_failed": 2,
     "latest_exact_head_full_suite_skipped": 1,
-    "latest_exact_head_subtests": 23,
-    "latest_exact_head_full_suite_coverage_percent": 73.08,
-    "latest_exact_head_full_suite_duration_seconds": 203.3,
-    "last_fully_passing_full_suite_head": "a71cb725eb3ff54cb431a88b6614f0cae6f5f962",
-    "last_fully_passing_full_suite_run_id": 44775927084,
+    "latest_exact_head_subtests": 32,
+    "latest_exact_head_full_suite_coverage_percent": 73.22,
+    "latest_exact_head_full_suite_duration_seconds": 180.38,
+    "last_fully_passing_full_suite_head": "7cdc349e72edc1242c6ff50a2e3129092a3d1fb9",
+    "last_fully_passing_full_suite_run_id": 44798591725,
     "latest_main_pillars_consistency_check_run": 44529399478,
     "latest_main_pillars_consistency_check_conclusion": "failure",
     "latest_main_pillars_consistency_check_failure_reasons": [
@@ -1703,40 +1727,46 @@
       "reason": "Cloudflare authentication error 10000/9109; secret-upload step skipped; no successful deployment verified."
     },
     "next_documentation_commit_exact_head_ci": "PENDING; map/handoff documentation-only commit must be tested on its own exact head.",
-    "latest_exact_head_push_ci_run": 44662901648,
-    "latest_exact_head_pr_ci_run": 44781077496,
-    "latest_exact_head_full_suite_run": 44781077496,
-    "latest_exact_head_full_suite_result": "FAIL on exact head 0bc985: 4,439 passed, 1 failed, 1 skipped, 11 warnings, 23 subtests; failure is the map backlog array/object schema mismatch.",
+    "latest_exact_head_push_ci_run": 44800130866,
+    "latest_exact_head_pr_ci_run": 44800144530,
+    "latest_exact_head_full_suite_run": 44800130866,
+    "latest_exact_head_full_suite_result": "FAIL on db79d8d: 4,455 passed, 2 failed, 1 skipped, 11 warnings, 32 subtests, 73.22% coverage.",
     "latest_exact_head_full_suite": "FAIL on exact head 0bc985: 4,439 passed, 1 failed, 1 skipped, 11 warnings, 23 subtests; failure is the map backlog array/object schema mismatch.",
-    "latest_exact_head_dependency_audit_run": 44781064430,
-    "latest_exact_head_pr_dependency_audit_run": 44781077582,
-    "latest_exact_head_pr_money_audit_run": 44781077616,
-    "latest_exact_head_fail_closed_run": 44781064174,
-    "latest_exact_head_a2a_worker_tests_run": 44781077487,
+    "latest_exact_head_dependency_audit_run": 44800130437,
+    "latest_exact_head_pr_dependency_audit_run": 44800143921,
+    "latest_exact_head_pr_money_audit_run": 44800144077,
+    "latest_exact_head_fail_closed_run": 44800130788,
+    "latest_exact_head_a2a_worker_tests_run": 44800143525,
     "current_head_a2a_worker_tests": {
-      "run_id": 44781077487,
-      "head_sha": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
-      "event": "pull_request",
+      "run_id": 44800143525,
+      "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
       "conclusion": "success"
     },
     "last_completed_full_suite": {
-      "head_sha": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
-      "run_id": 44781077496,
+      "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+      "run_id": 44800130866,
       "status": "completed",
       "conclusion": "failure",
-      "passed": 4439,
-      "tests_failed": 1,
+      "passed": 4455,
+      "tests_failed": 2,
       "skipped": 1,
       "warnings": 11,
-      "subtests_passed": 23,
-      "duration_seconds": 203.3,
-      "inclusive_coverage_percent": 73.08,
-      "legacy_core_coverage_percent": 82,
-      "failure": "open_pr_backlog serialization/schema mismatch; deterministic correction converts it to a list and synchronizes the 19-item inventory."
+      "subtests_passed": 32,
+      "duration_seconds": 180.38,
+      "inclusive_coverage_percent": 73.22,
+      "failure": "test_latest_map_matches_repository_and_forecast_admission_state: stale ahead_by/commits values (546 vs 554; current compare is 548 ahead / 0 behind, GitHub PR commit count 555). test_latest_map_preserves_security_gates_and_open_pr_classifications: backlog had 19 entries while current live open PR count is 12; assertions still referenced closed PRs #1665, #1666 and #1668."
     },
     "current_head_core_tests": {
-      "push_job_id": 136045155098,
-      "push_conclusion": "success"
+      "push": {
+        "run_id": 44800130866,
+        "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+        "conclusion": "success"
+      },
+      "pull_request": {
+        "run_id": 44800144530,
+        "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+        "conclusion": "success"
+      }
     },
     "latest_attempt": {
       "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
@@ -1781,12 +1811,14 @@
       "duration_seconds": 159.54,
       "inclusive_coverage_percent": 71.34,
       "failure": "test_run230_franklin_xrp_etf_cash_and_in_kind_flows_reconcile: test used xrp_sold_for_expenses; canonical artifact field is xrp_sold_for_fund_expenses. Assertion corrected in this update."
-    }
+    },
+    "latest_exact_head_pr_fail_closed_run": 44800143591,
+    "latest_exact_head_conflict_integrity_run": 44800143575
   },
   "security_and_governance": {
     "main_branch_protected": true,
     "required_status_check_contexts": [],
-    "protection_details_api": "HTTP 403 — detailed branch-protection endpoint inaccessible; repository metadata reports protected=true, required contexts empty and enforcement=non_admins.",
+    "protection_details_api": "HTTP 403 — Resource not accessible by integration; branch-protection requirements cannot be independently verified.",
     "fallback_ruleset": {
       "name": "Fall Back",
       "enforcement": "disabled"
@@ -1873,7 +1905,7 @@
       "trigger": "tag push v*.*.*",
       "release_tag_pushed_this_run": false
     },
-    "transitive_workflow_script_security_review": "INCOMPLETE; 69/69 changed workflow YAML definitions received surface review; selected high-risk scripts were semantically reviewed; remaining invoked scripts and third-party action transitive dependencies are not fully cleared.",
+    "transitive_workflow_script_security_review": "INCOMPLETE; prior review covered 69 workflow definitions; this run inspected the added XRP ingestion workflow and current high-risk main workflows, but did not clear every transitive script/action dependency.",
     "release_workflow": {
       "workflow": ".github/workflows/release.yml",
       "permission": "contents: write",
@@ -1985,7 +2017,7 @@
     "required_status_check_contexts_status": "not verified; detailed branch-protection endpoint returned HTTP 403",
     "integration_branch_protected": false,
     "least_privilege_status": "NOT_VERIFIED — token scopes were not introspected; repository permission includes admin/maintain/push/pull/triage, broader than read-only research.",
-    "open_pr_backlog_count": 19,
+    "open_pr_backlog_count": 12,
     "provider_failover_pr_1668": {
       "state": "open",
       "draft": true,
@@ -2003,7 +2035,7 @@
       "disposition": "BLOCKED — do not merge independently; reconcile into the single V3 integration workstream only after external data-egress policy, provider authentication, least-privilege permissions and expanded full-suite verification are satisfied."
     },
     "required_status_check_enforcement": "non_admins",
-    "main_branch_protection_summary": "protected=true; required contexts/checks are empty; enforcement=non_admins; detailed branch protection endpoint returns 403",
+    "main_branch_protection_summary": "protected=true; required contexts/checks empty; enforcement=non_admins; detailed branch-protection endpoint HTTP 403; fallback ruleset disabled.",
     "main_workflow_differential": {
       "main_paid_issue_hunter_run": 44523988640,
       "main_paid_issue_publisher_run": 44524050218,
@@ -2110,7 +2142,7 @@
     "pages_deployment_authorized": false,
     "workflow_definition_scan_count": 69,
     "no_external_actions_performed": true,
-    "main_current_sha": "c599419c284ed5c3e21c44c91d5d4229191dced8",
+    "main_current_sha": "b87582fef2229f4fb00418251119815c93fc235c",
     "current_main_workflow_writer": "Paid issue publisher remains active on main with contents:write and direct push; integration successor disables it.",
     "pr_1673": {
       "draft": true,
@@ -2118,23 +2150,27 @@
       "review_threads": 0,
       "requested_reviewers": 0,
       "mergeable": true,
-      "mergeable_state": "unstable; exact-head full suite failed one test",
-      "head_sha": "0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40",
+      "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
       "base_sha": "c599419c284ed5c3e21c44c91d5d4229191dced8",
-      "ahead_by": 544,
+      "ahead_by": 548,
       "behind_by": 0,
-      "changed_files": 1494,
-      "changed_workflow_files": 69,
+      "changed_files": 1511,
+      "changed_workflow_files": 70,
       "review_comments": 0,
-      "exact_head_full_suite": "FAIL: 4,439 passed, 1 failed, 1 skipped; map backlog array/object schema mismatch."
+      "pr_commit_count": 555,
+      "base_sha_matches_current_main": false,
+      "exact_head_full_suite": "FAIL: 4,455 passed, 2 failed, 1 skipped; two stale map metadata assertions."
     },
     "main_paid_issue_publisher": {
       "active": true,
       "workflow": ".github/workflows/paid-issue-publish.yml",
       "permission": "contents:write",
+      "trigger": "workflow_run after successful Paid issue hunter on main",
       "persistent_checkout_credentials": true,
-      "trigger": "workflow_run after successful Paid issue hunter run on main",
-      "pushes_to_main": true
+      "direct_push_to_main": true,
+      "verified_from_current_main_file": true,
+      "source_file_sha": "38d5c5243114d1a300350591408db5d9fa567319",
+      "executed_this_run": false
     },
     "integration_paid_issue_publisher": {
       "active": false,
@@ -2159,7 +2195,7 @@
       "disposition": "QUARANTINED"
     },
     "pages_publication_authorization": "NOT_GRANTED",
-    "current_main_sha": "c599419c284ed5c3e21c44c91d5d4229191dced8",
+    "current_main_sha": "b87582fef2229f4fb00418251119815c93fc235c",
     "run11_security_review": {
       "changed_workflow_definitions_reviewed": 69,
       "workflow_surface_review": "EXECUTED",
@@ -2218,141 +2254,212 @@
       "failure": "docs/AUTONOMOUS_CONFLICT_RESOLUTION_POLICY.md missing required phrase 'explicit human authorization'",
       "consolidation_target": true
     },
-    "last_reviewed_at_utc": "2026-11-20T18:03:23Z"
+    "last_reviewed_at_utc": "2026-11-20T20:17:04Z",
+    "main_coinbase_paper_trader": {
+      "active": true,
+      "workflow": ".github/workflows/coinbase-paper-trader.yml",
+      "trigger": "workflow_dispatch",
+      "reads_groq_api_key": true,
+      "default_product": "BTC-USD",
+      "typed_confirmation": false,
+      "exact_main_sha_gate": false,
+      "direct_push_to_main": true,
+      "action_refs_pinned": false,
+      "executed_this_run": false
+    },
+    "main_a2a_deployment": {
+      "active": true,
+      "workflow": ".github/workflows/deploy-a2a-worker.yml",
+      "trigger": "workflow_dispatch_only",
+      "permissions": "contents:read",
+      "deployment_confirmation": "YES",
+      "secret_rotation_confirmation": "YES",
+      "exact_main_sha_required": true,
+      "action_refs_pinned": true,
+      "deployment_executed_this_run": false,
+      "secret_upload_executed_this_run": false
+    },
+    "main_huggingface_sync": {
+      "active": true,
+      "workflow": ".github/workflows/sync-huggingface.yml",
+      "trigger": "workflow_dispatch",
+      "explicit_external_change_yes": true,
+      "exact_main_sha_required": true,
+      "can_upload_space_files": true,
+      "can_delete_or_replace_space_variables_and_propagate_secrets": true,
+      "action_refs_pinned": false,
+      "package_install_pinned": false,
+      "executed_this_run": false
+    },
+    "main_pages_publication": {
+      "enabled": true,
+      "automatic_on_main_push": true,
+      "latest_run_id": 44793752670,
+      "latest_run_conclusion": "success",
+      "authorization": "NOT_GRANTED",
+      "publication_executed_this_run": false
+    },
+    "run245_current_main_workflow_review": {
+      "captured_at_utc": "2026-11-20T20:17:04Z",
+      "files_verified": {
+        "paid_issue_publish": {
+          "path": ".github/workflows/paid-issue-publish.yml",
+          "blob_sha": "38d5c5243114d1a300350591408db5d9fa567319",
+          "workflow_run_trigger": true,
+          "contents_write": true,
+          "direct_main_push": true
+        },
+        "coinbase_paper_trader": {
+          "path": ".github/workflows/coinbase-paper-trader.yml",
+          "blob_sha": "73f6e0089d78526760e2af5ef45055091cef48b8",
+          "manual_dispatch": true,
+          "groq_secret": true,
+          "typed_confirmation": false,
+          "expected_sha_gate": false,
+          "direct_main_push": true,
+          "actions_unpinned": true
+        },
+        "deploy_a2a_worker": {
+          "path": ".github/workflows/deploy-a2a-worker.yml",
+          "blob_sha": "ce173b3ad7dc515c28aa55b3981e2045d9bf408c",
+          "manual_only": true,
+          "deploy_yes": true,
+          "secret_rotation_yes": true,
+          "expected_main_sha": true,
+          "contents_read_only": true,
+          "actions_pinned": true
+        },
+        "sync_huggingface": {
+          "path": ".github/workflows/sync-huggingface.yml",
+          "blob_sha": "8dcd5da8d817f71aa083b96d03f307ef9db4f5c0",
+          "manual_yes": true,
+          "expected_main_sha": true,
+          "space_upload": true,
+          "secret_propagation": true,
+          "actions_unpinned": true,
+          "package_install_unpinned": true
+        }
+      },
+      "xrp_ingestion_workflow": {
+        "path": ".github/workflows/xrp-public-ingestion.yml",
+        "branch_only": true,
+        "main_sha_does_not_contain_workflow": true,
+        "schedules": [
+          "3 * * * *",
+          "15 0 * * *"
+        ],
+        "job_condition": "scheduled execution is main-only; integration runs only on scoped push or workflow_dispatch",
+        "permissions": {
+          "actions": "read",
+          "contents": "read"
+        },
+        "integration_capture_trigger": "scoped push on integration/** and manual dispatch",
+        "current_run_performed": false
+      },
+      "main_ci": {
+        "run_id": 44793753474,
+        "head_sha": "b87582fef2229f4fb00418251119815c93fc235c",
+        "conclusion": "success",
+        "passed": 1252,
+        "failed": 0,
+        "skipped": 2,
+        "subtests": 21,
+        "coverage_percent": 78.87,
+        "duration_seconds": 37.04
+      },
+      "pages_deployment": {
+        "run_id": 44793752670,
+        "head_sha": "b87582fef2229f4fb00418251119815c93fc235c",
+        "conclusion": "success",
+        "authorization": "NOT_GRANTED"
+      }
+    },
+    "no_external_actions_executed": true
   },
   "open_pr_backlog": [
     {
-      "number": 1679,
-      "classification": "blocked",
-      "changed_files": 15,
-      "overlap_with_1673": 0,
-      "note": "Conflict-resolution workstream; 27 commits ahead of main and zero behind. Eight of its 15 paths overlap PR #1678; seven are unique to #1679. Exact-head full suite failed one documentation assertion because docs/AUTONOMOUS_CONFLICT_RESOLUTION_POLICY.md omits the required phrase 'explicit human authorization'. Designate #1679 as the single consolidation candidate; port the unique read-only workflow from #1678 after review. Draft; no merge."
-    },
-    {
-      "number": 1678,
-      "classification": "blocked",
-      "changed_files": 9,
-      "overlap_with_1673": 0,
-      "note": "Conflict-resolution source PR; 15 commits ahead of main and zero behind. Eight of nine paths overlap #1679; the unique path is .github/workflows/barrot-conflict-integrity.yml. Exact-head full repository suite passed (1,243 passed, 2 skipped, 21 subtests), but the PR remains draft. Treat as source-only for consolidation into #1679; do not merge independently."
-    },
-    {
       "number": 1673,
       "classification": "blocked",
-      "changed_files": 1494,
-      "overlap_with_1673": 1494,
-      "note": "Active consolidated V3/XRP integration successor; 544 commits ahead and zero behind main; 1,494 changed files including 69 workflow definitions. Exact-head full suite on 0bc985 failed one map-schema test: 4,439 passed, 1 failed, 1 skipped, 11 warnings, 23 subtests; test expected open_pr_backlog to be an array but the JSON stored a numeric-key object. Parent code head a71cb72 passed 4,440 tests, but that is not current-head evidence. Draft, zero independent approvals, branch-protection details HTTP 403, automatic Pages publication on main unauthorized, A2A sandbox/egress/task authorization unresolved, and transitive workflow/script review incomplete."
-    },
-    {
-      "number": 1664,
-      "classification": "unique/unreviewed",
-      "changed_files": 135,
-      "overlap_with_1673": 6,
-      "note": "Paid-issue/product pack; six shared paths and 129 unique paths. Branch is 17 commits ahead and one behind main. Contains distinct product templates, Chrome security exercises and paper-trading/XRP scripts. Preserve as a separate workstream; no publication or paper trading authorized."
-    },
-    {
-      "number": 1668,
-      "classification": "blocked",
-      "changed_files": 3,
-      "overlap_with_1673": 3,
-      "note": "Provider failover work; all three paths overlap #1673. Branch is five commits ahead and 15 behind main. It forwards prompts/tool definitions to external providers; redaction, user egress authorization and live provider authentication are not verified. Do not merge independently."
-    },
-    {
-      "number": 1677,
-      "classification": "blocked",
-      "changed_files": 6,
-      "overlap_with_1673": 6,
-      "note": "A2A security source PR; all six paths overlap #1673 but are not byte-identical. Branch is six commits ahead and three behind main. Preserve until successor merge and exact content verification."
+      "changed_files": 1511,
+      "overlap_with_1673": 1511,
+      "note": "Sole active Barrot V3/XRP integration draft. Current exact-head full suite fails two stale metadata assertions; PR base SHA c599419 differs from current main b87582f despite current-main compare showing 548 ahead / 0 behind. Zero independent reviews; branch-protection details HTTP 403; Pages publication authorization, A2A runner isolation and transitive workflow/script review remain unresolved."
     },
     {
       "number": 1670,
       "classification": "blocked",
       "changed_files": 12,
       "overlap_with_1673": 12,
-      "note": "Musical DNA/creative intelligence workstream; all 12 paths overlap #1673, but branch content differs. Branch is 47 commits ahead and 14 behind main; GitHub reports mergeable=false. Preserve separately; resolve ancestry/conflicts before review."
+      "note": "Musical DNA/recursive-learning workstream; 49 commits ahead / 2 behind current main. All 12 paths overlap #1673, but prior blob comparison found 10 identical and 2 different (docs/INDEX.md and pyproject.toml). Preserve pending exact content reconciliation; do not classify as an exact duplicate."
     },
     {
-      "number": 1671,
-      "classification": "blocked",
-      "changed_files": 8,
-      "overlap_with_1673": 8,
-      "note": "Inbound GPT Actions authority-gate source PR; all eight paths overlap #1673. Branch is nine commits ahead and 11 behind main. Review task-level authority, workflow permissions and credential paths before any integration."
+      "number": 1664,
+      "classification": "unique/unreviewed",
+      "changed_files": 133,
+      "overlap_with_1673": 4,
+      "note": "Paid-issue/product pack; 129 unique paths, 4 shared. Branch is 19 ahead / 2 behind current main. Preserve separately; publication and paper-trading actions are not authorized."
     },
     {
       "number": 1265,
       "classification": "unique/unreviewed",
       "changed_files": 144,
       "overlap_with_1673": 1,
-      "note": "XRP ledger index-pointer migration; one CI path overlaps and 143 research/archive paths are unique. Stacked research branch with no common ancestor directly to current main; it is the base of PR #1353. Preserve and reconcile the chain before any merge."
+      "note": "XRP ledger index-pointer migration; 143 unique research/archive paths and one shared workflow path. No common ancestor directly to current main; preserve its stacked research lineage."
     },
     {
       "number": 1663,
       "classification": "superseded",
       "changed_files": 1470,
       "overlap_with_1673": 1470,
-      "note": "Superseded predecessor integration PR; all 1,470 changed paths overlap #1673. It is 486 commits ahead and 10 behind current main. Keep open until #1673 is merged and its content verified on main; then close only with an explicit cross-reference."
-    },
-    {
-      "number": 1666,
-      "classification": "blocked",
-      "changed_files": 2,
-      "overlap_with_1673": 1,
-      "note": "Kaggle dependency upper-bound proposal; one pyproject path overlaps and requirements-integrations.txt is unique. Branch is one commit ahead and 18 behind main. The integration still constrains Kaggle below 1.6; compatibility and expanded tests remain unresolved."
-    },
-    {
-      "number": 1665,
-      "classification": "duplicate",
-      "changed_files": 1,
-      "overlap_with_1673": 1,
-      "note": "Pylint >=4.1.4 is already present in the integration requirements. Branch is one commit ahead and 18 behind main. Keep open until the successor is merged and the dependency is verified on main; then close with an explicit cross-reference."
+      "note": "Superseded predecessor of #1673; all 1,470 changed paths overlap the active successor. Branch is 486 ahead / 17 behind current main. Keep open until #1673 is merged and its content is verified on main."
     },
     {
       "number": 1541,
       "classification": "blocked",
       "changed_files": 5,
       "overlap_with_1673": 5,
-      "note": "MMI canonical-claim-fingerprint source PR; all five paths overlap #1673 but branch ancestry has no common ancestor with current main. Preserve for exact code/test/artifact reconciliation; do not independently merge."
+      "note": "MMI canonical-claim-fingerprint source PR; all five paths overlap #1673, but prior blob comparison found two identical and three different. No common ancestor directly to current main. Preserve for exact content/test reconciliation."
     },
     {
       "number": 1450,
       "classification": "unique/unreviewed",
       "changed_files": 116,
       "overlap_with_1673": 0,
-      "note": "Binance phase-one/escrow research; no path overlap with #1673. Stacked on the Binance research branch from #1436. Preserve and review as a research chain."
+      "note": "Unique Binance phase-one, escrow and ledger research; stacked on #1436. Preserve and review as part of its research chain."
     },
     {
       "number": 1460,
       "classification": "unique/unreviewed",
       "changed_files": 8,
       "overlap_with_1673": 0,
-      "note": "XRP institutional multirail, Binance and Kamilah research; no path overlap with #1673. Stacked on #1450. Preserve and review after its parent."
+      "note": "Unique XRP institutional multirail, Coinbase/Circle/SBI and Kamilah research; stacked on #1450. Preserve."
     },
     {
       "number": 1440,
       "classification": "unique/unreviewed",
       "changed_files": 64,
       "overlap_with_1673": 0,
-      "note": "XRP archive-validation trigger repair; no path overlap with #1673. Stacked on the Binance research branch from #1436. Preserve and reconcile with its parent."
+      "note": "Unique XRP archive-validation trigger repair; stacked on #1436. Preserve."
     },
     {
       "number": 1436,
       "classification": "unique/unreviewed",
       "changed_files": 24,
       "overlap_with_1673": 0,
-      "note": "Binance XRP theft, issuer freezes and attacker-wallet graph; no path overlap with #1673. Stacked on the ledger-shard research branch from #1353. Preserve."
+      "note": "Unique Binance XRP theft, issuer-freeze and attacker-wallet graph; stacked on #1353. Preserve."
     },
     {
       "number": 1437,
       "classification": "unique/unreviewed",
       "changed_files": 5,
       "overlap_with_1673": 0,
-      "note": "XRP ledger source addenda and snapshot-pointer repair; no path overlap with #1673. Stacked on #1353. Preserve."
+      "note": "Unique XRP ledger source-addenda correction; stacked on #1353. Preserve."
     },
     {
       "number": 1353,
       "classification": "unique/unreviewed",
       "changed_files": 1084,
       "overlap_with_1673": 0,
-      "note": "Lossless hash-verified XRP ledger archive/migration; no path overlap with #1673. Stacked on #1265. Preserve; no common ancestor directly to current main."
+      "note": "Unique lossless XRP ledger sharding and hash-verified read-only validation; stacked on #1265. Preserve; no common ancestor directly to current main."
     }
   ],
   "merge_decision": "NO_MERGE",
@@ -2901,9 +3008,9 @@
   "open_pr_backlog_summary": {
     "total_open": 12,
     "ready": 0,
-    "blocked": 1,
-    "unique_unreviewed": 9,
-    "duplicate": 1,
+    "blocked": 3,
+    "unique_unreviewed": 8,
+    "duplicate": 0,
     "superseded": 1
   },
   "snapshot_id": "run243-20261120T180323Z",
@@ -4722,9 +4829,9 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-20T19:10:00Z",
+  "last_verified_at_utc": "2026-11-20T20:17:04Z",
   "latest_run_id": 244,
-  "latest_run_captured_at_utc": "2026-11-20T19:10:00Z",
+  "latest_run_captured_at_utc": "2026-11-20T20:17:04Z",
   "current_main_sha": "b87582fef2229f4fb00418251119815c93fc235c",
   "current_successor_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z",
   "observed_main_sha": "b87582fef2229f4fb00418251119815c93fc235c",
@@ -5125,84 +5232,84 @@
       "classification": "blocked",
       "changed_files": 1511,
       "overlap_with_1673": 1511,
-      "note": "Single active Barrot V3/XRP integration draft. Exact-head suite and required audits pass; fail-closed gate blocks draft state, stale PR base SHA, zero independent approvals and branch-protection HTTP 403."
-    },
-    {
-      "number": 1663,
-      "classification": "superseded",
-      "changed_files": 1470,
-      "overlap_with_1673": 1470,
-      "note": "Superseded predecessor of #1673; retain until successor is merged and verified on main."
+      "note": "Sole active Barrot V3/XRP integration draft. Current exact-head full suite fails two stale metadata assertions; PR base SHA c599419 differs from current main b87582f despite current-main compare showing 548 ahead / 0 behind. Zero independent reviews; branch-protection details HTTP 403; Pages publication authorization, A2A runner isolation and transitive workflow/script review remain unresolved."
     },
     {
       "number": 1670,
-      "classification": "duplicate",
+      "classification": "blocked",
       "changed_files": 12,
       "overlap_with_1673": 12,
-      "note": "All paths exist in #1673; 10/12 blobs identical. docs/INDEX.md and pyproject.toml differ due integrated union. Confirm content equivalence after successor merge before closing."
+      "note": "Musical DNA/recursive-learning workstream; 49 commits ahead / 2 behind current main. All 12 paths overlap #1673, but prior blob comparison found 10 identical and 2 different (docs/INDEX.md and pyproject.toml). Preserve pending exact content reconciliation; do not classify as an exact duplicate."
     },
     {
       "number": 1664,
       "classification": "unique/unreviewed",
       "changed_files": 133,
       "overlap_with_1673": 4,
-      "note": "129 unique paths; preserve."
-    },
-    {
-      "number": 1541,
-      "classification": "unique/unreviewed",
-      "changed_files": 5,
-      "overlap_with_1673": 5,
-      "note": "2 blobs identical and 3 differ; MMI fingerprint changes require content-level reconciliation."
-    },
-    {
-      "number": 1460,
-      "classification": "unique/unreviewed",
-      "changed_files": 8,
-      "overlap_with_1673": 0,
-      "note": "Unique XRP institutional multirail/Binance/Kamilah research."
-    },
-    {
-      "number": 1450,
-      "classification": "unique/unreviewed",
-      "changed_files": 116,
-      "overlap_with_1673": 0,
-      "note": "Unique Binance phase-one, escrow and ledger research."
-    },
-    {
-      "number": 1440,
-      "classification": "unique/unreviewed",
-      "changed_files": 64,
-      "overlap_with_1673": 0,
-      "note": "Unique XRP archive-validation trigger repair."
-    },
-    {
-      "number": 1437,
-      "classification": "unique/unreviewed",
-      "changed_files": 5,
-      "overlap_with_1673": 0,
-      "note": "Unique XRP ledger source-addenda correction."
-    },
-    {
-      "number": 1436,
-      "classification": "unique/unreviewed",
-      "changed_files": 24,
-      "overlap_with_1673": 0,
-      "note": "Unique Binance XRP theft, issuer-freeze and attacker-wallet research."
-    },
-    {
-      "number": 1353,
-      "classification": "unique/unreviewed",
-      "changed_files": 1084,
-      "overlap_with_1673": 0,
-      "note": "Unique lossless XRP ledger sharding and hash-verified read-only validation."
+      "note": "Paid-issue/product pack; 129 unique paths, 4 shared. Branch is 19 ahead / 2 behind current main. Preserve separately; publication and paper-trading actions are not authorized."
     },
     {
       "number": 1265,
       "classification": "unique/unreviewed",
       "changed_files": 144,
       "overlap_with_1673": 1,
-      "note": "143 paths unique; one shared ci.yml path; preserve pending file-level reconciliation."
+      "note": "XRP ledger index-pointer migration; 143 unique research/archive paths and one shared workflow path. No common ancestor directly to current main; preserve its stacked research lineage."
+    },
+    {
+      "number": 1663,
+      "classification": "superseded",
+      "changed_files": 1470,
+      "overlap_with_1673": 1470,
+      "note": "Superseded predecessor of #1673; all 1,470 changed paths overlap the active successor. Branch is 486 ahead / 17 behind current main. Keep open until #1673 is merged and its content is verified on main."
+    },
+    {
+      "number": 1541,
+      "classification": "blocked",
+      "changed_files": 5,
+      "overlap_with_1673": 5,
+      "note": "MMI canonical-claim-fingerprint source PR; all five paths overlap #1673, but prior blob comparison found two identical and three different. No common ancestor directly to current main. Preserve for exact content/test reconciliation."
+    },
+    {
+      "number": 1450,
+      "classification": "unique/unreviewed",
+      "changed_files": 116,
+      "overlap_with_1673": 0,
+      "note": "Unique Binance phase-one, escrow and ledger research; stacked on #1436. Preserve and review as part of its research chain."
+    },
+    {
+      "number": 1460,
+      "classification": "unique/unreviewed",
+      "changed_files": 8,
+      "overlap_with_1673": 0,
+      "note": "Unique XRP institutional multirail, Coinbase/Circle/SBI and Kamilah research; stacked on #1450. Preserve."
+    },
+    {
+      "number": 1440,
+      "classification": "unique/unreviewed",
+      "changed_files": 64,
+      "overlap_with_1673": 0,
+      "note": "Unique XRP archive-validation trigger repair; stacked on #1436. Preserve."
+    },
+    {
+      "number": 1436,
+      "classification": "unique/unreviewed",
+      "changed_files": 24,
+      "overlap_with_1673": 0,
+      "note": "Unique Binance XRP theft, issuer-freeze and attacker-wallet graph; stacked on #1353. Preserve."
+    },
+    {
+      "number": 1437,
+      "classification": "unique/unreviewed",
+      "changed_files": 5,
+      "overlap_with_1673": 0,
+      "note": "Unique XRP ledger source-addenda correction; stacked on #1353. Preserve."
+    },
+    {
+      "number": 1353,
+      "classification": "unique/unreviewed",
+      "changed_files": 1084,
+      "overlap_with_1673": 0,
+      "note": "Unique lossless XRP ledger sharding and hash-verified read-only validation; stacked on #1265. Preserve; no common ancestor directly to current main."
     }
   ],
   "run229_evidence_record": {
@@ -7006,5 +7113,152 @@
       "funds_transferred": false,
       "real_money": false
     }
+  },
+  "run245_no_external_actions": true,
+  "latest_run_245": {
+    "run_id": 245,
+    "captured_at_utc": "2026-11-20T20:17:04Z",
+    "main_sha": "b87582fef2229f4fb00418251119815c93fc235c",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z",
+    "snapshot_head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+    "code_head_sha": "7cdc349e72edc1242c6ff50a2e3129092a3d1fb9",
+    "current_main_compare": {
+      "ahead_by": 548,
+      "behind_by": 0
+    },
+    "pr_metadata": {
+      "pr_number": 1673,
+      "state": "open",
+      "draft": true,
+      "base_sha": "c599419c284ed5c3e21c44c91d5d4229191dced8",
+      "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+      "github_commit_count": 555,
+      "changed_files": 1511,
+      "changed_workflow_files": 70
+    },
+    "tree_counts": {
+      "main": {
+        "entries": 1759,
+        "blobs": 1585
+      },
+      "integration": {
+        "entries": 3044,
+        "blobs": 2857
+      },
+      "main_paths_missing_from_integration": 0
+    },
+    "open_pr_summary": {
+      "total_open": 12,
+      "ready": 0,
+      "blocked": 3,
+      "unique_unreviewed": 8,
+      "duplicate": 0,
+      "superseded": 1
+    },
+    "full_suite": {
+      "push_run": 44800130866,
+      "pr_run": 44800144530,
+      "passed": 4455,
+      "failed": 2,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 32,
+      "coverage_percent": 73.22,
+      "conclusion": "failure",
+      "failure_class": "stale metadata assertions only"
+    },
+    "other_checks": {
+      "dependency_push": 44800130437,
+      "dependency_pr": 44800143921,
+      "money_audit": 44800144077,
+      "a2a_worker_tests": 44800143525,
+      "conflict_integrity": 44800143575,
+      "pages_validation": "success validation-only"
+    },
+    "main_ci": {
+      "run_id": 44793753474,
+      "passed": 1252,
+      "failed": 0,
+      "skipped": 2,
+      "subtests": 21,
+      "coverage_percent": 78.87,
+      "conclusion": "success"
+    },
+    "forecast_status": "NOT_ISSUED",
+    "external_actions_performed": false,
+    "merge_decision": "NO_MERGE"
+  },
+  "run245_evidence_record": {
+    "run_id": 245,
+    "captured_at_utc": "2026-11-20T20:17:04Z",
+    "main_sha": "b87582fef2229f4fb00418251119815c93fc235c",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z",
+    "snapshot_head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+    "code_head_sha": "7cdc349e72edc1242c6ff50a2e3129092a3d1fb9",
+    "current_main_compare": {
+      "ahead_by": 548,
+      "behind_by": 0
+    },
+    "pr_metadata": {
+      "pr_number": 1673,
+      "state": "open",
+      "draft": true,
+      "base_sha": "c599419c284ed5c3e21c44c91d5d4229191dced8",
+      "head_sha": "db79d8d5a36c022ec5b78c8ed88ccae32b845f50",
+      "github_commit_count": 555,
+      "changed_files": 1511,
+      "changed_workflow_files": 70
+    },
+    "tree_counts": {
+      "main": {
+        "entries": 1759,
+        "blobs": 1585
+      },
+      "integration": {
+        "entries": 3044,
+        "blobs": 2857
+      },
+      "main_paths_missing_from_integration": 0
+    },
+    "open_pr_summary": {
+      "total_open": 12,
+      "ready": 0,
+      "blocked": 3,
+      "unique_unreviewed": 8,
+      "duplicate": 0,
+      "superseded": 1
+    },
+    "full_suite": {
+      "push_run": 44800130866,
+      "pr_run": 44800144530,
+      "passed": 4455,
+      "failed": 2,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 32,
+      "coverage_percent": 73.22,
+      "conclusion": "failure",
+      "failure_class": "stale metadata assertions only"
+    },
+    "other_checks": {
+      "dependency_push": 44800130437,
+      "dependency_pr": 44800143921,
+      "money_audit": 44800144077,
+      "a2a_worker_tests": 44800143525,
+      "conflict_integrity": 44800143575,
+      "pages_validation": "success validation-only"
+    },
+    "main_ci": {
+      "run_id": 44793753474,
+      "passed": 1252,
+      "failed": 0,
+      "skipped": 2,
+      "subtests": 21,
+      "coverage_percent": 78.87,
+      "conclusion": "success"
+    },
+    "forecast_status": "NOT_ISSUED",
+    "external_actions_performed": false,
+    "merge_decision": "NO_MERGE"
   }
 }

@@ -3068,3 +3068,85 @@ Backlog totals: **0 ready, 1 blocked, 1 superseded, 1 duplicate candidate, 9 uni
 ### Next concrete action
 
 Keep #1673 draft and unmerged. Resolve the stale PR base SHA versus current-main discrepancy without weakening the gate; obtain genuine independent review and authorized branch-protection visibility; resolve Pages publication authorization; complete A2A isolation and transitive workflow/script review. Exact-head code tests now pass. Remaining blockers are governance, publication and security.
+
+
+---
+
+## Run245 — 2026-11-20 20:17 UTC — current-main reinspection and exact-head metadata failure triage
+
+### Repository state and ancestry
+
+- Current main: `b87582fef2229f4fb00418251119815c93fc235c`.
+- Existing integration branch: `integration/xrp-v3-mainline-successor-20261120T0135Z`.
+- Snapshot head before this append-only correction: `db79d8d5a36c022ec5b78c8ed88ccae32b845f50`; last code-bearing head: `7cdc349e72edc1242c6ff50a2e3129092a3d1fb9`.
+- Current-main-to-integration compare: **548 ahead / 0 behind**. The current main commit is an ancestor of the integration head; no merge-base divergence exists for #1673.
+- GitHub PR metadata still reports base SHA `c599419c284ed5c3e21c44c91d5d4229191dced8`, while current main is `b87582fef2229f4fb00418251119815c93fc235c`. The fail-closed gate blocks this metadata mismatch. Do not bypass it.
+- GitHub reports 555 commits on the PR object; the current-main-to-head comparison counts 548 commits ahead. The handoff/map now distinguish those two values.
+- Recursive trees are complete and untruncated: main **1,759 entries / 1,585 blobs**; integration **3,044 entries / 2,857 blobs**; **zero main paths missing** from integration.
+- PR #1673: 1,511 changed files, including 70 workflow files; open, draft, and GitHub-reported mergeable.
+- Main branch metadata reports `protected=true`, required status contexts empty and enforcement `non_admins`. The detailed branch-protection endpoint returns HTTP 403. The only visible repository ruleset, “Fall Back,” is disabled. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`. PR #1673 has zero formal reviews, zero approvals, zero review comments and no requested reviewers.
+
+### Exact-head CI — failure diagnosed, correction committed in this run
+
+On snapshot head `db79d8d5a36c022ec5b78c8ed88ccae32b845f50`:
+
+- Push CI [44800130866](https://github.com/Barrot-Agent/B-Agent/actions/runs/44800130866): **4,455 passed, 2 failed, 1 skipped, 11 warnings, 32 subtests; 73.22% coverage**.
+- PR CI [44800144530](https://github.com/Barrot-Agent/B-Agent/actions/runs/44800144530): same two failures; core tests and Pages validation-only job passed.
+- Failure 1: `tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state` — stale map values recorded 546 ahead / 554 commits. Live compare is 548 ahead / 0 behind; GitHub PR metadata reports 555 commits.
+- Failure 2: `tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_security_gates_and_open_pr_classifications` — the serialized backlog still contained 19 entries while GitHub currently returns 12 open PRs. The test also asserted classifications for #1665, #1666 and #1668, which are no longer open.
+- These are repository-evidence/schema assertions, not XRP model failures. No model test or forecast-readiness test failed.
+- Corrective change in this commit: synchronize the nine-platform map with the live 12-PR inventory and current ancestry; distinguish PR-object commit count from compare ahead count; correct #1670 and #1541 to blocked pending file-level reconciliation; update the regression test to assert the current open PR set. This commit also records the current-main workflow review and the failed parent-head CI evidence.
+- **The new commit's exact-head CI is pending.** No parent-head result is being transferred to the new head.
+- Other checks on the snapshot head passed: dependency audits [44800130437](https://github.com/Barrot-Agent/B-Agent/actions/runs/44800130437) and [44800143921](https://github.com/Barrot-Agent/B-Agent/actions/runs/44800143921), Money audit [44800144077](https://github.com/Barrot-Agent/B-Agent/actions/runs/44800144077), A2A Worker Tests [44800143525](https://github.com/Barrot-Agent/B-Agent/actions/runs/44800143525), Conflict Integrity [44800143575](https://github.com/Barrot-Agent/B-Agent/actions/runs/44800143575), and Pages validation-only passed. Fail-closed gates [44800130788](https://github.com/Barrot-Agent/B-Agent/actions/runs/44800130788) and [44800143591](https://github.com/Barrot-Agent/B-Agent/actions/runs/44800143591) blocked as designed.
+
+### Main CI and current workflow/security differential
+
+- Current main exact-head CI [44793753474](https://github.com/Barrot-Agent/B-Agent/actions/runs/44793753474): **1,252 passed, 2 skipped, 0 failed, 21 subtests, 78.87% coverage**.
+- Main Pages deployment [44793752670](https://github.com/Barrot-Agent/B-Agent/actions/runs/44793752670) succeeded on the current main SHA. Public publication remains unauthorized for this integration.
+- Main paid-issue publisher remains active: `.github/workflows/paid-issue-publish.yml` uses `workflow_run`, `contents: write`, persistent checkout credentials and pushes generated artifacts directly to main.
+- Main Coinbase paper-trader remains a manual workflow that reads `GROQ_API_KEY` and pushes simulated state to main without a typed YES confirmation or expected-main-SHA gate. Its actions are not SHA-pinned. It was not dispatched.
+- Correction to earlier handoff wording: current main's A2A Worker deployment workflow is already **manual-only**, requires separate YES confirmations for deployment and secret rotation, verifies the exact main SHA, has `contents: read`, and pins its Cloudflare/checkout actions. No deployment or secret upload occurred.
+- Main Hugging Face sync is manual with explicit external-change YES and expected main SHA, but it can upload Space files and propagate/delete Space variables/secrets; checkout/setup-python actions and the package install are not pinned. It was not dispatched.
+- Dependabot is configured for weekly pip and GitHub Actions updates. The six dependency manifests inspected are `pyproject.toml`, `requirements.txt`, `requirements-dev.txt`, `requirements-integrations.txt`, `hf_space/requirements.txt` and `legacy/requirements_legacy.txt`. The exact-head integration dependency audits passed across all six manifests.
+- The integration-only `.github/workflows/xrp-public-ingestion.yml` has read-only `actions: read` and `contents: read` permissions. Its cron schedule is gated to main; integration captures run only on scoped push or workflow_dispatch. The workflow file is not on main, so production scheduled ingestion is not active on main.
+
+### Current open PR inventory — 12 preserved
+
+| PR | Classification | Changed paths | Overlap with #1673 | Branch ancestry / disposition |
+|---|---|---:|---:|---|
+| #1673 | blocked | 1,511 | 1,511 | 548 ahead / 0 behind current main; sole V3/XRP integration draft |
+| #1670 | blocked | 12 | 12 | 49 ahead / 2 behind; 10 identical blobs, 2 differing; reconcile before disposition |
+| #1664 | unique/unreviewed | 133 | 4 | 19 ahead / 2 behind; 129 unique product paths |
+| #1265 | unique/unreviewed | 144 | 1 | no common ancestor directly to current main; 143 unique research/archive paths |
+| #1663 | superseded | 1,470 | 1,470 | 486 ahead / 17 behind; retain until successor merge and main verification |
+| #1541 | blocked | 5 | 5 | no common ancestor directly to main; 2 identical blobs, 3 differing |
+| #1450 | unique/unreviewed | 116 | 0 | stacked on #1436; preserve |
+| #1460 | unique/unreviewed | 8 | 0 | stacked on #1450; preserve |
+| #1440 | unique/unreviewed | 64 | 0 | stacked on #1436; preserve |
+| #1436 | unique/unreviewed | 24 | 0 | stacked on #1353; preserve |
+| #1437 | unique/unreviewed | 5 | 0 | stacked on #1353; preserve |
+| #1353 | unique/unreviewed | 1,084 | 0 | stacked on #1265; preserve |
+
+Classification totals: **0 ready, 3 blocked, 1 superseded, 0 exact duplicates, 8 unique/unreviewed**. No PR was closed. #1670 is not called an exact duplicate because two file blobs differ. #1541 remains blocked pending exact reconciliation.
+
+### XRP intelligence and forecast readiness
+
+- No new XRP ingestion run was observed in this run. Latest ingestion remains [44654352643](https://github.com/Barrot-Agent/B-Agent/actions/runs/44654352643), captured 2026-11-20 01:32:54 UTC: 34 receipts (22 raw, 12 digest-only), 21 source failures, 128 eligible features, 367 excluded features, 1,863 feature-history records, 150 events and 117 scenarios.
+- Raw HTTP wire-byte capture, independent WORM/timestamp anchoring, continuous multi-venue Level-2 reconstruction and complete raw-receipt-to-feature-store rebuild remain unverified.
+- Walk-forward origins: **0**. Drift: **INSUFFICIENT_DATA**. Forecast issuance: **NOT_ISSUED**. No directional forecast or model-superiority claim is authorized.
+- No current-market quote was admitted as a model feature in this run.
+
+### Nine-platform coordination
+
+ChatGPT and the GitHub repository connector were tested. Repository metadata exposes admin, maintain, push, pull and triage permissions; connector token scopes were not introspected. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified for live authentication/data flow. No external model dispatch, cross-platform data transfer or independent red-team review occurred.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** XRP public ingestion, raw-source SHA-256 receipts, point-in-time features, event timelines, scenarios/counter-hypotheses, four baselines, leakage-safe walk-forward evaluation, calibration, drift monitoring and forecast ledger; Barrot V3 remains the execution/orchestration/safety/verification foundation.
+- **EXECUTED:** Re-fetched current main, complete recursive trees, PR inventory, branch ancestry, all open-PR changed-path lists, exact-head workflow runs/logs, current main CI, branch protection/rulesets, CODEOWNERS, dependency manifests and current high-risk main workflows. Updated the existing integration branch's live map, backlog and regression assertions; no branch or PR was created.
+- **VERIFIED:** Main SHA/tree, 548/0 integration ancestry, zero missing main paths, 12 open PRs and path-overlap counts, exact failure causes on db79d8d, main CI success, dependency/Money/A2A/Conflict/Pages-validation successes, branch-protection HTTP 403 and disabled fallback ruleset.
+- **NOT VERIFIED:** New commit exact-head CI; PR base metadata reconciliation; independent review; effective branch-protection requirements; Pages publication authorization; complete transitive workflow/script review; A2A runner OS sandbox, credential isolation, egress restriction and task-level authorization; external platform authentication; WORM retention; repeated scheduled ingestion; XRP out-of-sample predictive superiority, calibration and drift.
+
+### Next concrete action
+
+Wait for exact-head CI on the new append-only metadata/regression-test commit. Keep #1673 draft and unmerged. If the new full suite passes, continue resolving the PR base metadata mismatch without weakening the gate, obtain an independent review and verifiable branch-protection settings, and resolve the Pages publication and A2A security boundaries. Do not merge on db79d8d test evidence.
