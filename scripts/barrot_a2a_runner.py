@@ -262,7 +262,7 @@ def main(argv: list[str] | None = None) -> int:
             did_work = False
         if args.once:
             return 0
-        time.sleep(0 if did_work else max(1.0, args.poll_seconds))
+        time.sleep(max(1.0, args.poll_seconds))
 
 
 if __name__ == "__main__":
