@@ -5,6 +5,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 
 ## docs
 
+- docs/A2A_OPENCODE_TASK_BRIDGE.md - Barrot A2A → OpenCode Task Bridge
 - docs/ADVANCED_ENERGY_INGESTION.md - 🔬 Advanced Energy Systems Data Ingestion Manifest
 - docs/ADVANCED_MONETIZATION_PROTOCOLS.md - 💰 Barrot Advanced Monetization Protocols
 - docs/ADVANCED_PROPULSION_RESEARCH.md - 🚀 Barrot Advanced Propulsion & Transportation Research

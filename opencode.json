@@ -56,6 +56,11 @@
         ],
         "timeout": {
           "startup": 30000
+        },
+        "environment": {
+          "BARROT_A2A_URL": "https://barrot-a2a-worker.amazonprostarelite.workers.dev",
+          "BRAIN_SHARED_SECRET": "{env:BRAIN_SHARED_SECRET}",
+          "BARROT_AGENT_SECRET": "{env:BARROT_AGENT_SECRET}"
         }
       }
     }
