@@ -6778,3 +6778,28 @@ Additional #1671 blocker: `barrot_agent/gpt_api.py` exposes issue GET and POST r
 4. Build synchronized historical XRP datasets and a learned candidate; compare it with all four baselines using leakage-safe chronological tests, calibration, drift and shadow outcomes before any forecast.
 
 No merge, PR closure, force-push, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, data transfer, funds transfer or real-money action occurred in this run.
+
+
+## Run 48 research addendum — 2026-11-20T00:04Z market cutoff and Asia institutional rails
+
+### Spot and basis (research-only)
+
+- Kraken XRP/USD API: last **$0.96030**, bid **$0.96026**, ask **$0.96033**, 24-hour volume **44.86M XRP**; top-of-book spread approximately **0.73 bps**. Kraken's response has no exchange event timestamp.
+- OKX XRP/USDT: last **0.9624 USDT**, bid **0.9625**, ask **0.9626**, 24-hour volume **39.23M XRP**, event timestamp **2026-11-20 00:04:14.470 UTC**. OKX USDT/USD: **0.99888 USD**, event timestamp **00:03:52.065 UTC**. The USDT basis timestamps differ by **22.405 seconds**, within the configured 60-second basis tolerance.
+- Normalized OKX XRP top-of-book midpoint is approximately **$0.961477**, versus Kraken midpoint **$0.960295**, a difference of **12.31 bps**. Normalized last-price difference is **10.64 bps**. This is an unresolved venue/basis discrepancy, not an arbitrage claim: Kraken event time is missing, and fee-adjusted executable depth is unavailable.
+- Direct depth endpoints for OKX, Kraken, Binance, Bybit and Coinbase did not return payloads through the current retrieval layer. No depth curve or executable liquidity conclusion is claimed. These observations have no byte-exact raw receipts and are excluded from the feature store.
+
+### Derivatives disagreement
+
+- TradRadar's November 19 18:05–18:09 UTC dashboard reports **$1.21B** open interest across seven exchanges, down **2.86%** over 24 hours; OI-weighted funding **+0.0015% per 8h**; at least **$3.61M** liquidations across five exchanges, with 76.7% long accounts.
+- TokenPost's November 18 report cites OI falling from approximately **$1.05B on Nov 9 to $752M** in its latest reading, Binance net outflows above **$127M since Nov 10**, and **$19.1M** ETF outflows for Nov 9–13. Its exact OI cutoff and venue universe are not fully specified.
+- The OI values are not averaged. The scopes and timestamps differ. SwiftEdge's rendered page contains conflicting current price and wall values and is quarantined pending correction.
+
+### Institutional network update
+
+- **DBS–Circle, Nov 18:** DBS's primary release says eligible institutions can directly mint and redeem USDC through DBS with 24/7 USD-USDC settlement. Both participate in MAS Project BLOOM. This is a direct USDC institutional rail; the release does not specify XRP or XRPL use and provides no transaction-volume figures. [DBS primary release](https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia).
+- **DBS–Kinexys/J.P. Morgan, Nov 16:** DBS says the live solution enables 24/7 cross-border tokenized-deposit transfers between US and Singapore permissioned ecosystems, with Ant International as first client and Swift's ledger as orchestration. It is a separate rail, not an XRP deployment. [DBS primary release](https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers).
+- **Ripple–Coinbase, Oct 28:** RLUSD distribution across Coinbase Prime, Exchange and Retail; supported on XRPL, Base and Ethereum. Global Exchange collateral support was described as future follow-on. [Ripple primary release](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+- **Ripple–BNY, Oct 27:** BNY announced XRP and RLUSD custody support and exploratory tokenized trade-finance work with Ripple/C2FO. [BNY primary release](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+
+Counter-hypothesis retained: institutional USDC mint/redeem and tokenized-deposit rails can service some USD corridors without XRP, but public releases do not quantify volumes or disprove XRP use in other corridors. Corporate announcements are not transaction-level XRP-demand evidence. Forecast remains `NOT_ISSUED`.
