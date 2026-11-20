@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
-Updated: 2026-11-20T09:28:40Z (latest state is in the superseding section at the end)
+Updated: 2026-11-20 (Run 232 superseding section at the end)
 
 ## Mission priority
 
@@ -1683,3 +1683,93 @@ These are meaningful safety improvements on the integration branch, not yet on m
 The preceding code head `0685526ea9c754b99032d39811f9d68d4d6db1f3` passed the full repository suite (4,440 passed, 1 skipped, 0 failed) and exact-head dependency/money/A2A/Pages validation checks. The subsequent handoff-only commit `3b86b8cbf1777a4c61ef40242f811e805daf8d68` changes no runtime code. Its own full-suite CI was still in progress at the time this research addendum was prepared; do not describe that documentation commit's exact-head suite as complete until GitHub reports a conclusion.
 
 The PR remains draft, no independent approval is present, branch-protection configuration remains unreadable through the current integration permission (HTTP 403), and automatic Pages publication remains an unapproved merge side effect. No merge or mainline modification was performed.
+
+
+---
+
+## Run 232 — current-main reconciliation, exact-head CI and workflow safety review
+**Checkpoint:** 2026-11-20, after exact-head CI completed at 13:41 UTC.
+
+### Repository state — verified from GitHub
+- Repository: `Barrot-Agent/B-Agent`; default branch: `main`.
+- **Current main SHA:** `c599419c284ed5c3e21c44c91d5d4229191dced8`; recursive tree: 1,751 entries.
+- **Active consolidated PR:** [#1673](https://github.com/Barrot-Agent/B-Agent/pull/1673), branch `integration/xrp-v3-mainline-successor-20261120T0135Z`.
+- **Exact PR head:** `adda35d6d8aa9a89e68eae4824f74b79e047725d`; base SHA is the current main SHA above.
+- Integration recursive tree: 3,040 entries; comparison is 531 commits ahead / 0 behind; PR metadata reports 1,494 changed files, 535,892 additions and 7,024 deletions. GitHub reports mergeable, but the PR is still draft. Mergeability is not approval or branch-protection evidence.
+- The current main handoff file `BARROT_XRP_MISSION_HANDOFF.md` is empty. This file, `BARROT_XRP_MISSION_HANDOFF_LATEST.md`, remains the canonical durable handoff on the integration branch. Main does not yet contain the integration handoff or XRP scheduled-ingestion workflow.
+
+### Exact-head verification — head `adda35d`
+- Full repository test suite: **4,440 passed, 1 skipped, 0 failed; 11 warnings; 23 subtests passed; 127.25 seconds**.
+- Inclusive coverage: **73.08%**. Mission-critical coverage floors all passed.
+- [PR CI 44745889173](https://github.com/Barrot-Agent/B-Agent/actions/runs/44745889173): full repository suite, core tests and GitHub Pages validation-only build passed.
+- [Push CI 44745878202](https://github.com/Barrot-Agent/B-Agent/actions/runs/44745878202): passed.
+- [Dependency audit 44745889303](https://github.com/Barrot-Agent/B-Agent/actions/runs/44745889303): all six Python manifests passed.
+- [Money audit 44745889210](https://github.com/Barrot-Agent/B-Agent/actions/runs/44745889210): passed.
+- [A2A worker tests 44745889364](https://github.com/Barrot-Agent/B-Agent/actions/runs/44745889364): passed.
+- [Fail-closed merge gate 44745889235](https://github.com/Barrot-Agent/B-Agent/actions/runs/44745889235): **BLOCKED as designed**, not a test-suite failure. It reports: PR remains draft; no independent approving review exists; branch protection could not be verified. The workflow is read-only and does not merge.
+- The exact-head full-suite log reports 4,440 passed, 1 skipped, 11 warnings and 23 subtests. The setup-python cache budget warning leaves cache storage read-only; it did not fail the suite.
+
+These results apply to `adda35d`, not to any later commit. Any subsequent branch change must receive its own exact-head checks.
+
+### Governance — merge remains prohibited
+- PR #1673: zero formal reviews, zero approvals, zero inline review comments, no requested reviewers or teams.
+- Main and integration `.github/CODEOWNERS` both assign all paths only to `@Barrot-Agent`; there is no independent code owner.
+- GitHub reports `main` as protected, but `GET /branches/main/protection` returns HTTP 403 to the connected integration. Effective required checks, strict-up-to-date enforcement, required approval count and administrator enforcement therefore remain unverified.
+- The visible repository ruleset “Fall Back” (ID 10863829) is disabled.
+- No branch-protection bypass or merge was attempted.
+
+### Workflow review — 69 changed workflow definitions
+A source-level pattern review was executed across all 69 workflow files whose blobs differ between current main and PR #1673. This is not a complete semantic/transitive review of every invoked script or action. No `pull_request_target` trigger was found in that changed set; external `uses:` references observed in the reviewed files were pinned to full commit SHAs. The following behaviors were checked directly:
+
+- **A2A deployment:** current main's `.github/workflows/deploy-a2a-worker.yml` deploys on a main push affecting A2A paths and uploads `BRAIN_SHARED_SECRET`. The integration branch changes it to manual-only, requires explicit `YES` for deployment and secret rotation, checks the exact current main SHA, disables persisted checkout credentials and pins the Cloudflare action. The runner itself remains disabled unless `BARROT_A2A_AUTO_RUNNER=YES`; sandboxing, credential isolation, egress control and task authorization are still incomplete. No deployment or secret upload was run.
+- **Paid-issue publisher:** current main's `paid-issue-publish.yml` has `contents: write`, copies the hunter artifact into repository files and runs `git push origin main`. The integration disables this publisher and keeps the hunter read-only/artifact-only. This intentionally stops the current automatic repository-publication behavior; it is a material merge side effect that must remain visible in the merge decision.
+- **Coinbase paper trader:** current main's manual BTC-USD paper-trader workflow calls an external LLM and commits simulated trade state directly to main without an exact per-run approval gate. The integration quarantines it with empty permissions and a disabled job. No paper-trading workflow was dispatched.
+- **Pillars probes:** current main's scheduled workflow passes GitHub App and Databricks credentials to the probe script without separate manual opt-in. The scheduled main run [44740697804](https://github.com/Barrot-Agent/B-Agent/actions/runs/44740697804) failed: GitHub App metadata was missing, Databricks returned HTTP 403, and the Hugging Face Space reported `stage=BUILD_ERROR`. The integration keeps public checks scheduled but gates the GitHub App probe and Databricks `SELECT 1` probe behind separate manual `YES` inputs. No probe was dispatched by this run.
+- **Databricks:** the legacy overwrite/reset workflow is disabled in the integration. The separate `barrot-ops.yml` path requires explicit confirmation, exact main SHA and verified target absence before a create-only workspace import; its Kaggle dataset operation is download-only and separately confirmed.
+- **Kaggle submissions:** the integration's competition-submission workflow is manual-only, requires explicit `YES`, an exact competition allowlist and an exact current main SHA. No Kaggle submission was made.
+- **Space restart:** the integration workflow requires manual `YES` and exact source SHA. No Space restart occurred.
+- **MCP listing:** `money-mcp-listing.yml` is a read-only preflight; it does not publish to the MCP registry or request OIDC write permission.
+- **Release:** `release.yml` still has `contents: write` on a version-tag push. No tag was created and no release was published.
+- **Pages:** main's dynamic [Pages deployment run 44736047089](https://github.com/Barrot-Agent/B-Agent/actions/runs/44736047089) succeeded on the current main commit. PR #1673 changes public web assets; its PR CI only builds/validates Pages and does not deploy. A merge would trigger the main publication path, so explicit publication authorization remains unresolved.
+
+### XRP ingestion and prediction status
+- `barrot_agent/data/missions/primary_mission.json` sets `xrp_intelligence_prediction_engine` to priority 1, active, with Barrot V3 preserved as the execution/orchestration/safety/verification foundation.
+- Forecast issuance is explicitly `false`; admission status is `NOT_SATISFIED`. No directional forecast is authorized.
+- `.github/workflows/xrp-public-ingestion.yml` exists on the integration branch and is absent from main. Its scheduled triggers run only from the default branch; integration pushes/manual dispatch are separate test/capture paths. Therefore scheduled production XRP ingestion is not yet active on main.
+- The ingestion workflow uses read-only Actions/Contents permissions, pinned actions and public-data adapters. It stores run artifacts and restores feature-store checkpoints from GitHub artifacts/cache. Those are finite, mutable storage mechanisms, not independent WORM retention or trusted timestamp anchoring.
+- The collector and SEC adapter are implemented on the integration branch. The SEC user-agent defaults to blank unless configured; the actual repository-variable value is not readable here. Do not invent a contact identity or claim SEC capture success without a valid configured contact and receipt-backed run.
+- The integrated stack includes exchange/XRPL public-source adapters, source-quality checks, SHA-256 receipts/hash-chain logic, point-in-time SQLite features, event timelines, counter-hypotheses, four deterministic baselines, purged/embargoed chronological walk-forward evaluation, calibration/drift diagnostics and a fail-closed forecast/outcome ledger. Implementation presence is not proof of synchronized production history, independent WORM retention, model superiority or shadow performance.
+
+### Nine-platform coordination
+Only this ChatGPT session's GitHub connector is authenticated and tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified as live authenticated/data-flow connections. No external model dispatch or cross-platform data transfer occurred.
+
+### Open PR inventory — 17, no closures
+- **Blocked active integration:** #1673.
+- **Superseded predecessor, preserve until successor is merged and verified:** #1663.
+- **Security hardening / partially represented, exact diff reconciliation required:** #1677.
+- **GPT Actions authority gate / partially integrated; preserve until exact path reconciliation:** #1671.
+- **Musical DNA capability / code represented in successor, exact diff reconciliation required:** #1670.
+- **Unique provider failover, not yet integrated:** #1668.
+- **Unique staged product, unpublished:** #1664.
+- **Dependency updates, do not close without exact path/blob reconciliation:** #1665 and #1666.
+- **Partially overlapping MMI claim fingerprint; not a full duplicate:** #1541.
+- **Unique research/repair/ledger work to preserve:** #1450, #1460, #1440, #1437, #1436, #1353 and #1265.
+
+No PR was merged or closed. No branch was rewritten or force-pushed.
+
+### DESIGNED / EXECUTED / VERIFIED
+- **DESIGNED:** mission priority, source-quality contract, point-in-time feature store, forecast admission thresholds, four baselines, walk-forward/calibration/drift/shadow framework, nine-platform evidence map.
+- **EXECUTED:** current main/tree/PR reconciliation; exact-head CI and security workflow retrieval; static review of 69 changed workflow definitions; direct inspection of the highest-risk A2A, paid-issue, paper-trader, Databricks, Kaggle, Space-restart, Pages and XRP-ingestion workflow paths.
+- **VERIFIED:** current main SHA/tree, PR base/head and ancestry, 4,440-test exact-head result on `adda35d`, six-manifest dependency audit, money audit, A2A worker tests, Pages validation-only build, zero formal reviews, self-only CODEOWNERS, disabled fallback ruleset and HTTP 403 branch-protection limitation.
+- **NOT VERIFIED:** independent approval, effective branch-protection requirements, full transitive audit of all changed workflows/scripts, public Pages publication authorization, production scheduled ingestion on main, independent WORM anchoring, complete synchronized historical XRP data, predictive superiority, calibration and shadow-evaluation admission.
+
+### Next concrete actions
+1. Obtain an independent security/code review and formal approval; the integration author cannot self-approve.
+2. Have a repository owner/admin verify and, if appropriate, configure effective main branch protection and required exact-head checks. Do not bypass the 403 or disabled ruleset.
+3. Resolve the public Pages publication decision and explicitly accept/reject the paid-issue publisher and legacy paper-trader behavior changes before merge.
+4. Complete the transitive workflow-to-script review, especially A2A, Databricks, Hugging Face, Kaggle, release, paid-issue and external API paths.
+5. Re-run exact-head full suite, dependency/security, money, A2A and fail-closed checks after any code changes.
+6. Only after every merge condition is satisfied, merge #1673 through normal GitHub protections; fetch main again, verify the merge commit/tree and run main CI. Then close only exact superseded source PRs whose contents are verified on main.
+7. After an authorized merge, activate and verify scheduled XRP ingestion, independent raw-byte retention and synchronized historical market data. Keep forecasts disabled until every admission criterion passes.
+
+No merge, Pages publication, deployment, secret rotation/upload, Space restart, Databricks write, Kaggle submission, external model dispatch, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred in this run.
