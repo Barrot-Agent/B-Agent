@@ -13,8 +13,8 @@ This file is now the compact current-state handoff. The complete prior handoff, 
 ## Repository state
 
 - **Current main SHA:** 7f8e3626c355bb3d89afdff56aeed5e056cb88f4. Main tree: 1,751 entries.
-- **Verified integration code head:** 6628327b47065d84818fabb113056038fe346071. Integration tree: 3,040 entries. Branch: integration/xrp-v3-mainline-successor-20261120T0135Z.
-- **Active integration PR:** [#1673](https://github.com/Barrot-Agent/B-Agent/pull/1673), base SHA 7f8e3626c355bb3d89afdff56aeed5e056cb88f4, 517 commits ahead / 0 behind, 1,494 changed files, 534,679 additions and 7,024 deletions. Changed-file inventory: 69 workflows, 422 tests, 74 barrot_agent files, 5 XRP data files, 8 docs files and 916 other files.
+- **Latest exact-head CI-tested code head:** fc61430d301f368432d49b2ead013294d3a490cb. Integration tree: 3,040 entries. Later map/handoff commits are documentation-only; see the superseding current-state section below.
+- **Active integration PR:** [#1673](https://github.com/Barrot-Agent/B-Agent/pull/1673), base SHA 7f8e3626c355bb3d89afdff56aeed5e056cb88f4, 522 commits ahead / 0 behind, 1,494 changed files, 535,051 additions and 7,024 deletions. Changed-file inventory: 69 workflows, 422 test paths and 74 barrot_agent paths; 1,130 paths contain XRP-related identifiers.
 - PR #1673 is open, draft and reported mergeable. It has no independent approving review. No merge was attempted.
 - **Mainline merges:** PR #1672 and PR #1674 are already merged. PR #1674's merge commit is 33d02d3b3251350aaede9df04fcb701f2398d016. Main subsequently advanced to 7f8e362 through the existing paid-issue publisher workflow, not through this integration.
 - **Branch protection:** GitHub branch metadata reports main as protected, but the direct branch-protection endpoint returns HTTP 403. The metadata exposes empty required-check contexts/checks; the only visible repository ruleset, “Fall Back,” is disabled. Effective required checks, strict status enforcement and administrator enforcement remain unverified. Do not infer them.
@@ -39,7 +39,7 @@ The XRP ingestion code declares public spot/depth sources for Binance, Coinbase,
 
 The workflow uses read-only actions/contents permissions and pinned actions. The raw archive is file-based and hash-chained; GitHub artifacts and cache are still mutable/expiring infrastructure, not independent WORM retention. Raw artifact retention is finite, and some sources whose redistribution rights are not established retain only hashes/receipts rather than page bytes. Independent WORM storage and timestamp anchoring remain missing.
 
-## Exact-head verification — VERIFIED on code head 6628327
+## Historical exact-head verification — code head 6628327 (superseded by the current-state verification below)
 
 The prior code head 6f52e50 had two full-suite failures in the legacy rendering dataset tests: the test expected at least 40 registered datasets when the catalogue contained 32, and the generated report omitted categories outside its curated tier map. Commit 6628327 fixed the underlying report behavior and corrected the test to assert the actual catalogue contract and required core entries. It also removed unsupported claims that registry metadata proved downloaded assets, licence entitlement or measured rendering performance.
 
