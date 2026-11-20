@@ -7594,3 +7594,31 @@ Sixteen open PRs remain: blocked #1673, #1671, #1668, #1666, #1541 and #1265; su
 **VERIFIED:** current main SHA and recursive tree ancestry; all 16 open PRs and pairwise changed-path overlaps; exact-head CI failure causes; dependency, money and A2A Worker checks passed; SEC filing content and arithmetic reconciled. The new atomic update commit's CI remains pending. Branch-protection requirements, independent review, Pages authorization, full transitive security review, external WORM anchoring and predictive superiority remain unverified.
 
 No merge, source-PR closure, force-push, deployment, Pages publication initiated by this run, secret read/rotation, Space restart, external model dispatch, external data transfer, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 230 follow-up — post-write verification and evidence-contract correction — 2026-11-20T02:41:26Z
+
+### Current integration head
+
+The atomic evidence/test/handoff commit is `5199cf68f2603f68158702cf3828b43c729c9e2b`. PR #1673 remains the only active consolidated V3/XRP integration PR. Its observed state after that commit is 493 commits ahead of main `73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f`, zero behind, 1,475 changed files, 538,253 additions and 6,981 deletions. Recursive trees show main 1,744 entries / 1,572 blobs and integration 3,018 entries / 2,833 blobs; zero main paths are missing.
+
+### Current exact-head CI
+
+On exact head `5199cf68f2603f68158702cf3828b43c729c9e2b`:
+- Push CI [44662244655](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662244655) and PR CI [44662250904](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662250904) are running the expanded full repository suite.
+- Core test jobs passed on both events.
+- Pages build validation passed; it did not deploy.
+- PR dependency audit [44662250940](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662250940) passed all six manifests.
+- Money audit [44662250896](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662250896) passed.
+- A2A Worker tests [44662250960](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662250960) passed.
+- Push dependency audit [44662244653](https://github.com/Barrot-Agent/B-Agent/actions/runs/44662244653) and both fail-closed checks remain in progress at this snapshot.
+
+A further static review of the updated test exposed two stale expectations that were not reached by the first failing assertion: the latest canonical ingestion is run `44654352643` (not historical run `44565285365`), and forecast status is `NOT_ISSUED` (not the older string `disabled`). The test now follows the canonical latest-ingestion record and preserves the no-forecast rule.
+
+The Franklin XRPZ evidence artifact's cost-to-fair-value discount was recomputed from the filed values: `($501,430,187 - $439,668,398) / $501,430,187 × 100 = 12.3171262124%`. The regression test now checks this calculation and the beginning-to-ending XRP holdings bridge within explicit floating-point tolerance.
+
+This follow-up correction is documentation/evidence/test-only. It creates no new branch or PR. It will trigger another exact-head run; neither the 19f09 failure nor the still-running 5199 run is being represented as a pass for the follow-up commit.
+
+**Current disposition remains NO_MERGE.** PR #1673 is draft with zero independent approvals; effective branch-protection settings remain inaccessible (HTTP 403); Pages publication is unauthorized; transitive workflow/script security review is incomplete. No external or financial action occurred.

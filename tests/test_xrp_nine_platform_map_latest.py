@@ -81,12 +81,12 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
         "scheduled_sources": 51,
     }
     ingestion = data["prediction_engine"]["latest_ingestion"]
-    assert ingestion["run_id"] == 44565285365
+    assert ingestion["run_id"] == 44654352643
     assert ingestion["receipt_count"] == 34
     assert ingestion["receipts"] == ingestion["receipt_count"]
     assert ingestion["source_failures"] == 21
     assert ingestion["walk_forward_forecasts"] == 0
-    assert ingestion["forecast_issuance"] == "disabled"
+    assert ingestion["forecast_issuance"] == "NOT_ISSUED"
     assert ingestion["external_anchor"] == "NOT_ANCHORED"
     assert ingestion["drift_status"] == "INSUFFICIENT_DATA"
 
@@ -94,7 +94,7 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert is_sha(current_ci["head_sha"])
     assert current_ci["run_id"] > 0
     assert current_ci["status"] in {"queued", "in_progress", "completed"}
-    assert current_ci["conclusion"] in {"success", "failure", "cancelled"}
+    assert current_ci["conclusion"] in {"success", "failure", "cancelled", None}
     assert current_ci["passed"] >= 0
     assert current_ci["tests_failed"] >= 0
     assert current_ci["skipped"] >= 0
@@ -102,12 +102,12 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     current_pr_ci = data["ci_evidence"]["current_pr_head_ci"]
     assert is_sha(current_pr_ci["head_sha"])
     assert current_pr_ci["push_ci_run_id"] > 0
-    assert current_pr_ci["push_ci_conclusion"] in {"success", "failure", "cancelled"}
+    assert current_pr_ci["push_ci_conclusion"] in {"success", "failure", "cancelled", None}
     assert current_pr_ci["pr_event_run_id"] > 0
-    assert current_pr_ci["pr_event_conclusion"] in {"success", "failure", "cancelled"}
+    assert current_pr_ci["pr_event_conclusion"] in {"success", "failure", "cancelled", None}
     assert current_pr_ci["pr_event_full_suite_status"] in {"success", "failure", "skipped", "in_progress", "queued"}
     assert data["prediction_engine"]["walk_forward_forecasts"] == 0
-    assert data["prediction_engine"]["forecast_issuance"] == "disabled"
+    assert data["prediction_engine"]["forecast_issuance"] == "NOT_ISSUED"
 
 
 def test_latest_map_preserves_security_gates_and_open_pr_classifications():
@@ -407,6 +407,10 @@ def test_run230_franklin_xrp_etf_cash_and_in_kind_flows_reconcile():
     assert flows["xrp_redemptions"] == 0
     assert flows["in_kind_xrp_redemptions"] == 0
     assert holdings["net_increase_xrp"] == 133452525.3844
+    assert abs((holdings["ending_xrp"] - holdings["beginning_xrp"]) - holdings["net_increase_xrp"]) < 1e-6
+    valuation = evidence["valuation_interpretation"]
+    expected_discount = (holdings["ending_cost_usd"] - holdings["ending_fair_value_usd"]) / holdings["ending_cost_usd"] * 100
+    assert abs(valuation["fair_value_discount_to_cost_percent"] - expected_discount) < 1e-9
     assert (
         holdings["cash_purchased_xrp"]
         + holdings["in_kind_contributed_xrp"]
