@@ -2089,3 +2089,57 @@ Two trackers report different 19 November XRP ETF results because their definiti
 - PR #1673 remains draft and blocked by independent approval, unverifiable effective branch protection, unresolved Pages publication side effect and incomplete transitive workflow/security review.
 - No merge, main write, deployment, Pages publication, secret rotation, Space restart, Databricks write, Kaggle submission, external model dispatch, funds transfer, force-push or destructive worktree operation occurred.
 - Next concrete action: complete independent review and governance evidence; resolve the Pages publication and paid-issue-publisher behavior changes; finish the 69-workflow transitive security review and source-PR semantic reconciliation. After any legitimately authorized merge, refetch main, verify merge commit/tree, run main CI, then activate scheduled ingestion and independent immutable retention. Keep forecasts disabled until the full dataset, chronological OOS superiority, calibration, drift, shadow and independent-attestation criteria pass.
+
+
+---
+
+## Run 236 — institutional stablecoin rail map and XRP-demand counterhypotheses
+**Capture window:** 2026-11-20, approximately 15:05 UTC. Sources below are public first-party announcements unless explicitly labeled otherwise.
+
+### Newly verified Coinbase / Circle / PNC relationship
+**PNC + Coinbase + Circle-issued USDC**:
+- PNC's November 9, 2026 first-party release says eligible Corporate & Institutional Banking clients can receive USDC on **Ethereum**, powered by Coinbase Payment products.
+- Incoming USDC is automatically converted 1:1 into USD and deposited into a designated PNC deposit account.
+- The offering is a limited pilot for eligible clients. Neither participant discloses participant count, realized payment volume, corridor-level throughput or a broad rollout date.
+- Coinbase's own November 9 release confirms Coinbase Payment APIs supply the stablecoin payment infrastructure while PNC supplies the bank account and treasury-management relationship.
+- Primary sources: https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients and https://www.coinbase.com/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance
+- This is a verified indirect Circle relationship because the payment asset is USDC, issued by Circle affiliates. The announced pilot uses Ethereum, not XRPL; no XRP bridge or XRP settlement is identified. It is **not evidence of XRP demand**.
+
+### Newly verified Coinbase / Samsung / Bastion custody-distribution relationship
+- Coinbase's October 8, 2026 announcement says USDC will be the default dollar stablecoin in Samsung Wallet in the US, alongside a licensed partner.
+- Coinbase says it provides subcustody of the USDC held in Samsung Wallet on behalf of that licensed provider through Coinbase Prime; the release identifies Bastion as the licensed stablecoin custodian/infrastructure partner.
+- The announcement describes a consumer distribution/custody arrangement, not an XRP product or an XRP settlement flow.
+- Primary source: https://www.coinbase.com/blog/coinbase-and-samsung-bring-usdc-to-samsung-wallet
+- Do not collapse issuer, distributor, subcustodian and licensed stablecoin infrastructure provider into one legal entity: Circle issues USDC; Coinbase supplies distribution/payment/subcustody infrastructure; Samsung Wallet is the consumer interface; Bastion is the licensed partner named by Coinbase.
+
+### Circle USDC network scale and chain scope — current first-party page
+- Circle's USDC page reports **$68.0B in circulation as of 2026-11-16**.
+- It states USDC is natively issued on 38 blockchain networks, explicitly including the XRPL.
+- The same page says USDC is 100% backed by highly liquid cash and cash-equivalent assets, with monthly Big Four reserve attestations; the Circle Reserve Fund is custodied at BNY and managed by BlackRock.
+- Sources: https://www.circle.com/usdc and Circle's reserve disclosure links from that page.
+- Important distinction: USDC's native availability on XRPL establishes an XRPL stablecoin rail, not use of XRP as the bridge asset. Chain-native USDC transfer counts, XRP DEX trades, XRP bridge payments and off-chain USD bank settlement are separate measurements.
+
+### Cross-network institutional relationship map
+- **Circle ↔ DBS (Nov 18, 2026):** eligible institutional clients can directly mint/redeem USDC through DBS with 24/7 USD-USDC settlement. This is a bank-to-issuer stablecoin access rail, not an XRP settlement announcement. First-party source: https://www.circle.com/pressroom/dbs-and-circle-expand-institutional-access-to-usdc-in-asia
+- **Circle ↔ BNY:** BNY is primary custodian for the Circle Reserve Fund and supports institutional USDC custody/mint/burn workflows.
+- **Ripple ↔ BNY:** BNY is primary reserve custodian for RLUSD and announced support for XRP and RLUSD on its Digital Asset Custody platform, with tokenized trade-finance use cases described as exploratory.
+- **Ripple ↔ SBI Holdings / SBI VC Trade:** Ripple's June 24, 2026 first-party release confirms RLUSD's official Japan launch through SBI VC Trade after JFSA approval. Source: https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/
+- **Coinbase ↔ Circle:** Coinbase remains a major USDC distribution and economic partner; the PNC and Samsung announcements show concrete distribution/payment/custody routes. Do not treat Coinbase's role in USDC as proof that Coinbase uses XRP for these flows.
+- These are overlapping institutional infrastructure relationships, not one unified payment rail. Common custody at BNY does not mean the same issuer, reserve pool, chain, settlement asset or customer balance.
+
+### Prediction-engine implications and counterhypotheses
+1. Stablecoin adoption can expand while XRP bridge-asset demand remains unchanged or declines. USDC/USDT/RLUSD payment value is not automatically XRP demand.
+2. USDC on XRPL can create XRPL transaction and liquidity activity without requiring XRP as the payment unit; native token transfers and XRP bridge conversions must be separated.
+3. Coinbase distribution/custody and PNC/Samsung adoption may increase stablecoin access and payment activity, but disclosed pilot volumes are absent. Treat these as event-timeline facts until transaction-level evidence is available.
+4. BNY's common custody relationships could reduce institutional custody friction across several assets; they do not establish XRP allocation, lending collateral or market purchases.
+5. Ripple/SBI RLUSD distribution could support XRPL and institutional payment adoption, but it may also substitute for XRP in some payment legs. Measure actual route-level asset selection and conversion legs before assigning a positive or negative XRP-demand effect.
+
+### Feature admission rules
+- Keep USDC total circulation, USDC-by-chain supply, RLUSD-by-chain supply, PNC pilot receipts, DBS mint/redemption, Circle Payments Network throughput, XRPL DEX volume, XRP bridge conversions, XRP order-book flow and exchange wallet balances as separate features/targets.
+- No feature may be created from a press release's announced capability as if it were realized volume. Record announcement date, effective date, pilot/production state, chain, token, issuer, operator, custody role, settlement asset and disclosed volume separately.
+- The PNC/Samsung/DBS announcements are first-party capability evidence, not realized flow observations. No directional forecast or model feature admission is made from them.
+
+### Run 236 disposition
+- No new evidence changes the mission priority: XRP intelligence remains priority 1; Barrot V3 remains the execution, orchestration, safety and verification foundation.
+- Forecast issuance remains **false / NOT_SATISFIED**. No directional forecast, model-superiority claim, paper trade or real-money action.
+- No PR, branch or mainline code was created or modified. This section updates only the existing durable handoff on the existing integration branch.
