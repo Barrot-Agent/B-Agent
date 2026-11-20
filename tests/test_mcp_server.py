@@ -39,6 +39,7 @@ def test_registered_in_opencode_config():
     assert server["type"] == "local"
     assert server["command"] == ["python3", "scripts/barrot_mcp_server.py"]
     assert (ROOT / server["command"][1]).exists()
+    assert server["environment"]["BARROT_A2A_URL"] == "https://barrot-a2a-worker.amazonprostarelite.workers.dev"
 
 
 def test_tools_list_contains_the_original_five():
