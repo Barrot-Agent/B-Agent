@@ -6803,3 +6803,111 @@ No merge, PR closure, force-push, deployment, secret rotation, Space restart, Ka
 - **Ripple–BNY, Oct 27:** BNY announced XRP and RLUSD custody support and exploratory tokenized trade-finance work with Ripple/C2FO. [BNY primary release](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
 
 Counter-hypothesis retained: institutional USDC mint/redeem and tokenized-deposit rails can service some USD corridors without XRP, but public releases do not quantify volumes or disprove XRP use in other corridors. Corporate announcements are not transaction-level XRP-demand evidence. Forecast remains `NOT_ISSUED`.
+
+
+## Run 11 verification and research delta — 2026-11-20T00:21:37Z
+
+### Repository and integration state
+
+- Main remains `e1c3634df28f488819185b7d5697d474bc0bcb9e`.
+- Integration branch before this handoff-only commit: `5ed3374f9169b6fdeb53ee0df5aed291583aaa16`; GitHub compare reports **483 commits ahead, 0 behind**.
+- Recursive Git trees: main **1,739 entries**; integration **3,012 entries**. No main-tree paths are missing from integration; integration has **1,273 integration-only paths**.
+- PR #1663 currently reports **1,470 changed files, +536,151 / -6,965 lines**. It remains open, draft, and mergeable according to GitHub's mergeability field; mergeability is not approval or branch-protection evidence.
+- Open PR inventory: **15**. No branch or PR was created, no source PR was closed, and main was not modified.
+
+### Exact-head CI and merge gate
+
+All results below are for exact head `5ed3374f9169b6fdeb53ee0df5aed291583aaa16`, not a predecessor:
+
+- Full CI [44644461248](https://github.com/Barrot-Agent/B-Agent/actions/runs/44644461248): **success**. Full repository suite: **4,375 passed, 1 skipped, 11 warnings, 19 subtests**, 201.13 seconds; inclusive coverage **71.34%** and legacy/core coverage **81%**. Core tests and Pages validation-only also passed. The eight mission floors passed: XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%.
+- Six-manifest dependency audit [44644461260](https://github.com/Barrot-Agent/B-Agent/actions/runs/44644461260): **success**.
+- Money/safety audit [44644472878](https://github.com/Barrot-Agent/B-Agent/actions/runs/44644472878): **success**.
+- Fail-closed gate [44644682253](https://github.com/Barrot-Agent/B-Agent/actions/runs/44644682253): **BLOCKED**, as intended. Exact blockers: PR is still draft; no independent approving review exists; branch-protection settings could not be verified because the API returned HTTP 403.
+- The main branch-protection endpoint remains inaccessible (403). The only repository ruleset returned by the API is named “Fall Back” and has enforcement **disabled**. Effective required checks, approval count, strict-up-to-date enforcement and administrator enforcement therefore remain unverified. Do not infer safety settings from the branch's protected flag.
+- The full-suite job emitted a cache-budget warning; GitHub Actions cache became read-only. This did not fail tests or alter the test result.
+- No merge, branch-protection bypass, publication, deployment, secret change or external financial action occurred.
+
+### Dependencies and security posture
+
+The six audited manifests are `requirements.txt`, `requirements-dev.txt`, `requirements-integrations.txt`, `hf_space/requirements.txt`, `legacy/requirements_legacy.txt`, and the PEP 621 dependencies in `pyproject.toml`. Dependabot is configured for weekly pip and GitHub Actions updates, with a five-PR limit for each ecosystem.
+
+The optional integration manifest still pins `huggingface_hub>=0.23,<0.31` and `kaggle>=1.5.12,<1.6` to avoid the documented Rust-dependent transitive build paths. PR #1666 proposes a different Kaggle upper bound and remains unreviewed; do not accept it without compatibility and full-suite evidence.
+
+The workflow audit remains conservative: 68 changed workflow YAML files were inventoried; the prior handoff records 33/68 manually inspected, with nine workflow bodies and eight invoked scripts receiving deeper review. The remaining transitive workflow/script/action/secret/data-flow audit is not complete.
+
+### Prediction-engine code and ingestion workflow inspected
+
+The current integration branch contains the following implemented modules:
+
+- `barrot_agent/evolution/xrp_public_ingestion.py` (6,254 lines): public fetch/parse adapters, HTTP cache-age and live-eligibility gates, source failure records, order-book parsers, and `RawReceiptArchive` receipt/hash-chain verification.
+- `barrot_agent/evolution/feature_store.py`: append-only SQLite historical snapshots, point-in-time reads, source lineage and verification.
+- `barrot_agent/evolution/point_in_time_features.py`: feature-record validation, independent source-group calculation and snapshot construction.
+- `barrot_agent/evolution/forecast_ledger.py`: forecast normalization, immutable forecast events, readiness-report validation, raw-receipt checks and trusted Ed25519 evaluator-attestation verification.
+
+The existing `.github/workflows/xrp-public-ingestion.yml` declares hourly capture at minute 3 and daily capture at 00:15 UTC. Scheduled production capture is main-only; integration-branch execution is scoped to relevant code/workflow pushes or manual dispatch. Its GitHub token is read-only (`actions:read`, `contents:read`); raw receipts and feature-store checkpoints are uploaded as 90-day GitHub artifacts and caches, **not independent WORM storage**. The schedules are not active on main until the workflow reaches the default branch. No ingestion dispatch or new market-data capture was executed in this run.
+
+The existing receipt chain is a useful integrity control, but expiring GitHub artifacts do not meet the independent WORM/timestamp-anchor requirement. Forecast issuance remains **NOT_ISSUED**; no learned XRP-specific candidate has demonstrated leakage-safe out-of-sample superiority and completed shadow validation.
+
+### Primary-source SBIC resolution and ChatGPT references
+
+Official company profiles resolve the three regional Japanese SBIC entities:
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; official profile lists its corporate number, 18-prefecture coverage and Nagoya/Osaka as sister companies: https://www.sbic.co.jp/company/profile/
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; its official profile uses the abbreviation “SBIC Central Japan,” identifies the 1963 establishment and five-prefecture coverage: https://www.sbic-cj.co.jp/company/about/
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; its official profile uses “SBIC West Japan,” identifies its 1963 establishment, 24-prefecture coverage and the Tokyo/Nagoya sister companies: https://www.sbic-wj.co.jp/profiles/profile/
+
+These are three distinct regional SME investment-development companies established under Japan's SME Investment & Consultation Companies Act. They are not SBI Holdings, SBI Capital, SBI Crypto or SBI VC Trade.
+
+SBIC West's official October 23, 2024 seminar flyer describes a generative-AI introductory seminar that explicitly discusses ChatGPT. It is an educational seminar administered by Osaka SBIC, not evidence of an OpenAI partnership or technical integration: https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf. The original phrase “SBIC, ChatGPT SBIC” remains unresolved; a regional-SBIC training context is plausible but not proven to be the user's intended referent.
+
+A separate SBI Holdings primary release from May 21, 2007 uses “SBIC” for **SBI Capital Co., Ltd.** and records a 40% share transfer to a Goldman Sachs group company, leaving SBI Holdings with 60% in that historical post-transfer structure. That is a historical corporate acronym use; current legal status is not established by the 2007 release. It is not one of the three regional SME SBICs: https://www.sbigroup.co.jp/english/news/pdf/2007/0521_a_en.pdf. SBI Crypto is another separate entity/acronym collision.
+
+### SBI, Ripple and XRP: new primary-source reconciliation
+
+SBI Holdings' May 1, 2026 FY2025 results presentation (PDF pages 58–60) labels approximately **5.10 billion XRP** as “Actual XRP” within Ripple's holdings not in circulation, separate from approximately **33.20 billion XRP under escrow**. The same slide lists approximately 61.68 billion XRP circulating and 0.01 billion burned; the XRP quantities are dated **April 27, 2026**. It also describes SBI's approximately **9% equity stake in Ripple**, Ripple's March 2026 $750 million share buyback at a $50 billion corporate valuation, and the November 2025 $500 million financing at a $40 billion valuation. The 5.10 billion is Ripple's reported non-circulating holding category, not an SBI XRP balance and not “actual capital”: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf.
+
+The same presentation describes an SBI shareholder-benefit option denominated in XRP: JPY 2,000 or JPY 8,000 equivalent depending on SBI shareholding tier, converted using the July 31, 2026 rate. This is a shareholder distribution/benefit, not evidence that SBI bought the distributed XRP on the open market.
+
+SBI Ripple Asia's February 26, 2026 announcement describes a proof of concept for tokenized deposits/deposit-type digital money using existing financial infrastructure. Its February 24, 2026 announcement describes joint Japan–Korea remittance/payment research with dsrv. The XRPL is considered as infrastructure in these exploratory initiatives; neither announcement establishes a production launch, XRP bridge-asset requirement, or measured XRP demand:
+- https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
+- https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html
+
+### Exchange-wallet concentration: definition and counter-hypotheses
+
+XRP Insights' November 19, 2026 08:00 UTC snapshot reports **22.18 billion XRP** in 707 wallets attributed to 24 exchanges, equal to 32.2% of its 68.89 billion circulating-supply denominator. It explicitly includes cold storage and some non-customer wrapped-asset reserves. Its same-wallet comparisons show -155.7 million XRP over seven days and -444.3 million over 30 days. The method warns that a same-wallet balance change cannot distinguish a customer withdrawal from an exchange transfer to an address not yet tracked: https://xrp-insights.com/exchange-balances.
+
+Concentration details include Upbit 6.46B, Coinbase 5.83B (including a separately identified 153.1M cbXRP Base reserve), Binance 2.59B (including 327.4M Binance-Peg XRP BNB Chain reserve), Bithumb 1.78B, Uphold 1.70B, Kraken 961.3M, bitbank 580.7M and SBI VC Trade 56.3M (two attributed wallets, over 99% labeled cold). These are attributed exchange/custody wallet balances, not immediately executable order-book float, customer net selling, or corporate holdings. The tracker reports South Korea 8.56B and the United States 8.49B, but its labels and cold-storage inclusion must travel with every derived feature.
+
+### Kamilah Stevenson channel-identity conflict and video-claim red team
+
+Fresh YouTube indexing surfaced a channel named **“Kamilah Stevenson | Xrp & Stocks”**, handle `@KamilahStevensonXrpStocks`, channel ID `UCXm6KAr1WHF6UN7g5b2W7wg`. It attributes two indexed videos:
+- https://www.youtube.com/watch?v=YJdK1LvmJSo — indexed as published April 19, 2026; 38,625 views and 2,600 likes at the indexed snapshot. Its description claims 4.09B XRP whale accumulation, a 32% supply share and 7.03B XRP exchange outflows in February.
+- https://www.youtube.com/watch?v=RaEKvOftCaM — indexed as published April 21, 2026; 14,492 views; indexed result has no description.
+
+The existing Barrot creator profile `data/xrp_intelligence/sources/kamilah_stevenson_channel.json` names a **different channel ID**, `UCqUPJMQdkCN6lsLVDnichPA`, with `identity_status=PROBABLE_MATCH`. No official cross-link or handle-history evidence currently connects these two channel IDs. YouTube page fetches were throttled. Keep them as separate channel candidates; do not merge their videos or assert legal-person identity. The Camilla Stephenson film-industry namesake remains unconnected. The inventory is still partial, not complete.
+
+The video's numerical claims are not model-eligible:
+- FinanceFeeds' April 14 article attributes the 4.09B/32% figure to wallets holding 10M–1B XRP and cites Santiment, but it is secondary reporting: https://financefeeds.com/xrp-eyes-1-60-as-clarity-act-roundtable-nears-why-xrp-outperforms-eth-in-2026/.
+- Santiment's May 14 community insight separately says wallets holding at least 10M XRP held 45.83B, or 68.5% of its stated coin-supply denominator. This is a different cohort/time/denominator and cannot be substituted for the April 10M–1B claim: https://app.santiment.net/insights/read/xrp-ledger-sees-its-elite-whales-accumulating-to-an-8-year-high-10847.
+- The 7.03B February exchange-outflow figure is repeated by secondary reports attributing it to CryptoQuant; a directly retrievable primary aggregate-series receipt was not established in this run. Gross exchange outflows are not net capital inflows and do not prove accumulation.
+- The separate 32.2% XRP Insights number above is the share of circulating supply in labeled exchange wallets, not a whale-ownership statistic.
+
+### Exact-phrase status
+
+“ASK Coin” remains ambiguous between an inactive Ask Coin exchange listing and Permission Coin's distinct ASK token; no direct XRP relationship is established for either candidate. “Actual capital” still has no located primary-source context and may concern the distinction between market capitalization, exchange-wallet movement and net cash deployment. SBI's official phrase “Actual XRP” is a separate Ripple supply category, not evidence that the original phrase meant the same thing. Preserve the competing interpretations; do not collapse them into one entity or claim.
+
+### Market-data quality
+
+Browser-rendered API observations were research-only. Kraken returned XRP/USD last 0.96325, bid 0.96344, ask 0.96353 and 44.57M XRP 24-hour volume, but no exchange event timestamp. OKX returned XRP/USDT 0.9624 with event timestamp 2026-11-20T00:04:14.470Z; its USDT/USD observation was timestamped 2026-11-20T00:03:52.065Z. The Kraken event time is missing and the OKX snapshot is older than this run's cutoff. Coinbase, Kraken and OKX depth endpoints could not be retrieved through the browser in this run. No synchronized cross-venue basis, depth metric or market feature was admitted. No raw byte-exact HTTP receipts were created.
+
+### Nine-platform and authorization state
+
+GitHub repository access was tested. No new authentication/data-flow test was performed for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks; no external model dispatch or data transfer occurred. Their coordination status remains designed, not live-verified.
+
+No directional forecast, paper trade, real-money action, Kaggle submission, Databricks write, deployment, publication, Space restart, secret rotation or funds transfer occurred.
+
+### Backlog and next concrete action
+
+All 15 open PRs remain preserved. #1663 is blocked on draft status, independent review and branch-protection visibility. #1671 remains a separate security-sensitive draft: it overlaps #1663 in `.github/workflows/barrot-self-upgrade.yml`, `.github/workflows/ci.yml`, `tests/test_external_action_gates.py` and `tests/test_v3_scripts.py`; it re-enables a dispatchable self-upgrade workflow with write permissions/Groq secret access and must not be imported without a distinct security decision. #1664 remains a separate staged-product branch with overlapping workflow/docs paths and no publication authorization. #1668 remains a separate provider-failover objective with broad write permissions and external-provider secrets. #1666 remains unique/unreviewed pending Kaggle dependency compatibility. #1665 is duplicate-content candidate only after main verification. #1541 is a superseded-content candidate only after lossless reconciliation. #1670 and older research-ledger PRs remain unique/unreviewed and preserved.
+
+Next: continue the transitive workflow/script/security audit; reconcile #1671 and #1664 against the integration branch without importing their external-action behavior; obtain independently verifiable review/branch-protection evidence before any merge decision; establish independent WORM/timestamp anchoring; then obtain synchronized historical XRP spot, order-book, derivatives, ETF and exchange-flow receipts and complete the leakage-safe baseline/learned-candidate evaluation. The integration branch's existing hourly/daily ingestion schedules remain inactive on main until a safe merge. Forecast remains **NOT_ISSUED**.
