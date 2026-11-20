@@ -91,11 +91,12 @@ def seed_reverse_engineering_curriculum(
     This function only writes planner metadata. It never fetches or executes
     a source. Each target requires provenance and verification before MMI.
     """
+    source_list = tuple(sources)
     for need in NEEDS:
         planner.add_need(need)
 
     added = 0
-    for source in sources:
+    for source in source_list:
         target = AcquisitionTarget(
             target_id=f"{CURRICULUM_ID}:{source.target_id}",
             need_id=source.need_id,
@@ -129,7 +130,7 @@ def seed_reverse_engineering_curriculum(
         "curriculum_id": CURRICULUM_ID,
         "version": CURRICULUM_VERSION,
         "needs_registered": len(NEEDS),
-        "targets_registered": len(tuple(sources)),
+        "targets_registered": len(source_list),
         "new_targets_added": added,
     }
 
