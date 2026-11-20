@@ -30,7 +30,8 @@ Run the process as the same OS user and from the repository checkout used by the
 Environment contract:
 
 - `BARROT_A2A_URL` — `https://barrot-a2a.amazonprostarelite.workers.dev` after the Worker is deployed.
-- `BRAIN_SHARED_SECRET` — the existing shared secret, supplied through the host's secret/environment manager.
+- `BARROT_AGENT_SECRET` — optional dedicated runner credential, supplied through the host's secret/environment manager.
+- `BRAIN_SHARED_SECRET` — fallback runner credential when `BARROT_AGENT_SECRET` is not set.
 - `BARROT_WORKDIR` — absolute path to the existing B-Agent checkout.
 - `BARROT_OPENCODE_AGENT` — optional; defaults to `barrot`.
 - `BARROT_TASK_TIMEOUT_SECONDS` — optional; defaults to 1800 seconds, maximum 1800.
