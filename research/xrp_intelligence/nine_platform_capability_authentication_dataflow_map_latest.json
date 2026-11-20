@@ -1,63 +1,63 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-20T02:50:53Z",
+  "captured_at_utc": "2026-11-20T03:40:32.475Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
     "main_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
     "integration": {
       "branch": "integration/xrp-v3-mainline-successor-20261120T0135Z",
-      "code_head_sha": "162132a41c3843bffd7770d1e5fc04213be20857",
+      "code_head_sha": "2d38b05a2a20d929cba26a685b4ad0204108f3f3",
       "pr_number": 1673,
       "state": "open",
       "draft": true,
       "mergeable": true,
-      "ahead_by": 494,
+      "ahead_by": 501,
       "behind_by": 0,
-      "changed_files": 1475,
+      "changed_files": 1477,
       "changed_workflow_files": 69,
       "formal_reviews": 0,
-      "snapshot_head_sha": "24379814ee4f00536065881a974d54294d69900c",
-      "commits": 494,
-      "additions": 538394,
+      "snapshot_head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+      "commits": 501,
+      "additions": 531520,
       "deletions": 6981,
-      "mergeable_state": "GitHub reports mergeable; exact-head full suite on 243798 failed one evidence-test field-name assertion (xrp_sold_for_expenses vs canonical xrp_sold_for_fund_expenses), corrected in this update. Dependency audits, money audit, A2A tests and Pages validation passed; PR remains draft with zero independent approvals, branch-protection HTTP 403, Pages publication unauthorized and A2A runner sandbox/credential isolation unresolved.",
+      "mergeable_state": "GitHub reports mergeable=true; fail-closed gate blocks draft status, zero independent approvals and HTTP 403 branch-protection visibility; exact-head tests pass but publication and A2A security blockers remain.",
       "review_comments": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
-      "current_pr_head_sha": "24379814ee4f00536065881a974d54294d69900c",
+      "current_pr_head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
       "snapshot_ahead_by": 364,
       "snapshot_changed_files": 1438,
       "handoff_update_commit_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
       "research_record_commit_sha": "a4186aa70fa0b3685c74a9018c3152d7a4be835d",
       "branch_sync_commit": "dbc6b327a56dc66493fb06cc32164a2043509280",
       "latest_research_artifact_commit": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
-      "latest_exact_head_push_ci_run": 44657991767,
-      "latest_exact_head_full_suite": "FAIL on exact head 28b69e2: 4,277 passed, 2 failed, 1 skipped, 11 warnings, 19 subtests; 68.13% inclusive coverage. Both failures are evidence-contract assertions in tests/test_xrp_nine_platform_map_latest.py, not product/runtime failures.",
-      "latest_exact_head_dependency_audit_run": 44657999543,
-      "latest_exact_head_fail_closed_run": 44657999484,
-      "latest_exact_head_pr_ci_run": 44657999486,
-      "latest_exact_head_pr_money_audit_run": 44657999499,
-      "latest_exact_head_pr_dependency_audit_run": 44657999543,
-      "latest_exact_head_pr_fail_closed_run": 44657999484,
-      "last_audited_at_utc": "2026-11-20T02:15:29.318Z",
-      "latest_verified_full_suite_head_sha": "bb5fbc01dec6f80f2f33112850c66bf76850c5ad",
-      "latest_verified_full_suite_run": 44657991767,
-      "current_branch_head_full_suite_status": "PASS on exact head 9d31bde: 4,280 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 186.55 seconds; 68.13% inclusive coverage; 77% legacy-core coverage. Wheel build and isolated installed-wheel verification of Barrot V3, the primary XRP mission and canonical data assets passed.",
-      "latest_exact_head_full_suite_run": 44657991767,
-      "latest_exact_head_full_suite_result": "PASS on exact head bb5fbc: 4,388 passed, 1 skipped, 11 warnings, 19 subtests; 203.58 seconds; 71% inclusive coverage; 81% legacy-core coverage.",
+      "latest_exact_head_push_ci_run": 44668095924,
+      "latest_exact_head_full_suite": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%.",
+      "latest_exact_head_dependency_audit_run": 44668096070,
+      "latest_exact_head_fail_closed_run": 44668095922,
+      "latest_exact_head_pr_ci_run": 44668101674,
+      "latest_exact_head_pr_money_audit_run": 44668101743,
+      "latest_exact_head_pr_dependency_audit_run": 44668101701,
+      "latest_exact_head_pr_fail_closed_run": 44668101736,
+      "last_audited_at_utc": "2026-11-20T03:40:32.475Z",
+      "latest_verified_full_suite_head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+      "latest_verified_full_suite_run": 44668101674,
+      "current_branch_head_full_suite_status": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%.",
+      "latest_exact_head_full_suite_run": 44668101674,
+      "latest_exact_head_full_suite_result": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%.",
       "main_sync_merge_commit": "2d876d5e823ace0025d19d7a2bfd9bc713db05c7",
       "main_sync_source_sha": "82c23e219553164c24073784c529aad75acacd66",
-      "post_sync_exact_head_full_suite": "PENDING; evidence/test commit will trigger push CI",
+      "post_sync_exact_head_full_suite": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%.",
       "title": "Barrot V3 + XRP Intelligence — consolidated mainline successor",
       "base_ref": "main",
       "base_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
       "formal_approvals": 0,
       "unresolved_review_threads": 0,
       "classification": "BLOCKED_ACTIVE_INTEGRATION_DRAFT",
-      "updated_at": "2026-11-20T02:50:53Z",
-      "snapshot_commit_boundary": "Repository state is observed at 243798 before this test/evidence/handoff update."
+      "updated_at": "2026-11-20T03:40:32.475Z",
+      "snapshot_commit_boundary": "Repository and CI state observed at a96dbcd07c290e63f4f5ebbbc5351094cae0ee50 before this combined handoff/map metadata commit; code head remains 2d38b05a2a20d929cba26a685b4ad0204108f3f3."
     },
     "tree_counts": {
       "main": {
@@ -65,7 +65,7 @@
         "blobs": 1572
       },
       "integration": {
-        "entries": 3018,
+        "entries": 3020,
         "blobs": 2833
       }
     },
@@ -82,14 +82,14 @@
       "codeowners": "* @Barrot-Agent",
       "independent_pr_reviews": 0,
       "main_paid_issue_publisher": "active workflow_run publisher with contents:write and persistent checkout credentials; integration version disabled.",
-      "integration_paid_issue_publisher": "disabled",
+      "integration_paid_issue_publisher": "disabled; permissions empty; no repository write.",
       "main_pages_publication": "automatic Pages deployment is enabled; PR #1673 changes public-facing files; no publication authorization.",
       "main_coinbase_paper_trader": "manual workflow with Groq secret; writes simulated state and pushes main without typed confirmation or expected-SHA gate",
-      "integration_coinbase_paper_trader": "manual typed YES + exact main SHA + read-only permissions + artifact-only output; not executed",
+      "integration_coinbase_paper_trader": "disabled with permissions empty; no secret loaded and no run performed.",
       "main_release": "tag-triggered contents:write release; integration pins third-party actions but retains tag-triggered release creation",
       "integration_release": "tag-triggered release retained; action refs pinned to commit SHAs",
-      "transitive_workflow_audit": "INCOMPLETE: 93 workflow files on integration, 68 changed in PR. Run 32 compared five high-risk workflows across main/integration and inspected XRP ingestion workflow; all 68 definitions, invoked scripts and action transitive dependencies still require reconciliation.",
-      "integration_pages_publication": "validation-only",
+      "transitive_workflow_audit": "INCOMPLETE: 69/69 changed workflow YAML definitions received trigger/permission/secret/side-effect surface review; selected high-risk scripts were semantically inspected; all invoked scripts and third-party action dependencies are not yet cleared.",
+      "integration_pages_publication": "validation-only; no deployment.",
       "integration_branch_protected": false,
       "main_required_status_check_contexts": [],
       "main_required_status_check_enforcement": "non_admins",
@@ -98,19 +98,21 @@
       "automatic_pages_deployment_run": 44653117146,
       "automatic_paid_issue_hunter_run": 44431013238,
       "main_a2a_deployment_run": 44653118169,
-      "main_a2a_deployment_result": "failed Cloudflare authentication (10000/9109); successful deploy or secret upload not verified.",
+      "main_a2a_deployment_result": "Failed Cloudflare authentication (10000/9109); secret-upload step skipped; no successful deployment or secret upload verified.",
       "changed_workflow_files": 69,
       "workflow_definition_scan_count": 69,
       "unpinned_uses_references_found": 0,
       "transitive_workflow_script_security_review": "INCOMPLETE; 69 changed YAML files statically scanned, selected high-risk workflows/scripts semantically reviewed; all transitive scripts and action dependencies not yet cleared.",
       "main_opencode_runner_autostart": "main config supplies A2A endpoint and secret environment references; MCP server auto-starts runner when endpoint and secret are present; bash/edit permissions allow.",
       "integration_opencode_runner": "explicit opt-in required; default endpoint/secret removed; OpenCode permissions ask.",
-      "runner_sandbox": "not verified; subprocess inherits host environment; no verified OS sandbox, egress restriction or independent task-level authorization.",
+      "runner_sandbox": "NOT_VERIFIED: integration A2A runner requires BARROT_A2A_AUTO_RUNNER=YES but subprocess inherits the full host environment; no verified OS sandbox, egress restriction or independent task-level authorization.",
       "pages_enabled": true,
       "pages_deployment_authorized": false,
       "connector_token_scopes_introspected": false,
       "least_privilege_status": "NOT_VERIFIED; repository metadata reports admin/maintain/push/pull/triage; token scopes were not introspected.",
-      "security_policy_exception": "PYSEC-2024-232 appears only in archived backup; active ci.yml and dependency-audit.yml contain no ignore flag."
+      "security_policy_exception": "PYSEC-2024-232 appears only in archived backup; active ci.yml and dependency-audit.yml contain no ignore flag.",
+      "direct_main_push_utility": "scripts/push_with_token.sh defaults BRANCH=main and can push directly to main; no force push observed; guard required before autonomous use.",
+      "last_reviewed_at_utc": "2026-11-20T03:40:32.475Z"
     },
     "open_pr_backlog_summary": {
       "total_open": 16,
@@ -125,16 +127,16 @@
       {
         "number": 1673,
         "classification": "blocked",
-        "changed_files": 1474,
+        "changed_files": 1477,
         "overlap_with_1673": 1474,
-        "note": "Sole active consolidated V3/XRP integration successor; 491 commits ahead of current main, 0 behind; draft; exact-head CI passed; no independent review; effective branch protection unavailable; Pages publication not authorized; A2A host-runner security boundary remains unresolved."
+        "note": "Active consolidated V3/XRP integration successor; 501 commits ahead and zero behind; 1,477 changed files including 69 workflow definitions; exact-head full suite passes on a96dbcd (4,390 passed, 1 skipped, 0 failed); dependency, money, A2A-worker and Pages-validation checks pass. Still blocked: draft, zero independent approvals, branch-protection HTTP 403, unauthorized Pages publication, A2A sandbox/credential/egress boundary unresolved, transitive audit incomplete and direct-main push utility requires a guard."
       },
       {
         "number": 1663,
         "classification": "superseded",
         "changed_files": 1470,
         "overlap_with_1673": 1470,
-        "note": "Predecessor integration branch. All 1,470 changed paths overlap the current successor. Keep open until #1673 is merged and its content is verified on main; then close only with an explicit superseded cross-reference."
+        "note": "Superseded predecessor integration PR; all 1,470 changed paths overlap #1673. Keep open until #1673 is merged and verified on main, then close only with an explicit cross-reference."
       },
       {
         "number": 1671,
@@ -235,11 +237,11 @@
         "note": "Lossless hash-verified XRP ledger archive/migration; no path overlap. Preserve."
       }
     ],
-    "last_audited_at_utc": "2026-11-20T02:15:29.318Z",
+    "last_audited_at_utc": "2026-11-20T03:40:32.475Z",
     "open_prs": 16,
-    "integration_ahead_by": 491,
+    "integration_ahead_by": 501,
     "integration_behind_by": 0,
-    "changed_files": 1474,
+    "changed_files": 1477,
     "workflow_files_changed": 69
   },
   "platforms": {
@@ -249,8 +251,8 @@
       "data_flow": {
         "status": "verified",
         "path": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
-        "last_verified_at_utc": "2026-11-20T02:50:53Z",
-        "observed_flow": "Inspected current main, complete recursive trees, all 16 open PRs, pairwise changed-path overlaps, branch ancestry, exact-head CI and failed-test logs, dependency/money/A2A checks, workflow side effects, branch-protection response and canonical handoff; committed only to the existing integration branch; no main write or external-model transfer."
+        "last_verified_at_utc": "2026-11-20T03:40:32.475Z",
+        "observed_flow": "Inspected current main, complete recursive trees, all 16 open PRs, branch ancestry and overlaps, exact-head CI and failure logs, dependency/money/A2A checks, all 69 changed workflow definitions, selected high-risk scripts, branch-protection response and canonical handoff; committed only documentation to the existing integration branch; no main write, deployment or external-model transfer."
       },
       "permissions": [
         "admin",
@@ -274,7 +276,8 @@
         "status": "EXECUTED_IN_CURRENT_SESSION",
         "task": "Inspected current main, full tree, all open PRs, branch ancestry and overlaps, workflow/security settings, exact-head CI and durable handoff; synchronized the existing integration branch to current main with a non-force two-parent merge commit; captured and reconciled current XRP market evidence; updated the evidence map and handoff.",
         "expected_output": "Exact-head evidence, source-linked repository state, tested integration changes and durable handoff"
-      }
+      },
+      "task_assignment_status": "EXECUTED_IN_CURRENT_SESSION"
     },
     "Claude": {
       "authentication_status": "unverified",
@@ -396,7 +399,7 @@
     "external_dispatch_performed": false,
     "external_data_transfer_performed": false,
     "task_assignments_status": "PROPOSED_NOT_DISPATCHED_FOR_EIGHT_EXTERNAL_PLATFORMS",
-    "chatgpt_task_status": "EXECUTED: inspected exact 243798 full-suite log; diagnosed sole Franklin artifact test field-name mismatch; corrected it; added counterparty SEC filings on Circle/Coinbase USDC distribution economics and a research-only synchronized-market-quality observation with timestamp and non-admission caveats.",
+    "chatgpt_task_status": "EXECUTED: inspected current main, complete recursive trees, all 16 open PRs, 501-commit ancestry and 1,477-file integration diff; corrected the Run174 handoff regression anchor; exact-head full suite passes (4,390 passed, 1 skipped, 0 failed); dependency, money, A2A-worker and Pages-validation checks pass; reviewed all 69 changed workflow definitions and selected high-risk scripts. No external model dispatch or data transfer; eight external platform connections remain unverified.",
     "evidence_packet_schema": [
       "claim_id",
       "claim",
@@ -453,7 +456,7 @@
       "disposition": "Do not merge independently. Current integration branch quarantines this worker and has newer token-budget, local-provider and TPM-specific controls in scripts/barrot_agent.py. Reconcile only after security review and data-egress authorization."
     },
     "sbi_claude_context": "SBI's public November 2026 presentation reports Claude Mythos/Claude Security use within SBI Group. This is corporate adoption evidence only; it does not verify a Barrot connection or authorize external dispatch.",
-    "last_verified_at_utc": "2026-11-19T16:52:37Z"
+    "last_verified_at_utc": "2026-11-20T03:40:32.475Z"
   },
   "prediction_engine": {
     "source_registry": {
@@ -831,7 +834,7 @@
       "pr_fail_closed_gate_run": 44411860777,
       "wheel_build_and_installed_mission_verification": "PASS"
     },
-    "production_schedule_status": "NOT_ACTIVE_ON_MAIN",
+    "production_schedule_status": "NOT_ACTIVE_ON_MAIN — XRP public ingestion workflow is configured on the integration branch; no scheduled main-branch ingestion is verified because PR #1673 is unmerged.",
     "exchange_wallet_balances": {
       "xrp_insights": {
         "as_of_utc": "2026-11-18T08:00:00Z",
@@ -1027,38 +1030,131 @@
         "current_vs_kraken_24h_vwap_percent": -2.097,
         "caveat": "One-shot ticker/top-of-book data is cancelable liquidity, not Level-2 depth or a continuous order-book series. No model feature or directional forecast admitted."
       }
+    },
+    "latest_market_research_web_crosscheck": {
+      "captured_at_utc": "2026-11-20T03:40:32.475Z",
+      "capture_method": "public web-indexed market dashboards; rendered summaries, not raw HTTP captures",
+      "raw_http_bytes_captured": false,
+      "raw_sha256_receipt": "NOT_CAPTURED",
+      "external_timestamp_anchor": "NOT_ANCHORED",
+      "model_eligible": false,
+      "fuelmaps": {
+        "source_url": "https://fuelmaps.io/order-book/",
+        "event_time_utc": "2026-11-20T00:00:00Z",
+        "mid_usd": 0.9598,
+        "venues_covering": "6 of 6",
+        "depth_usd": {
+          "within_0_5pct": {
+            "bids": 7300000,
+            "asks": 6800000
+          },
+          "within_1pct": {
+            "bids": 12600000,
+            "asks": 8100000
+          },
+          "within_2pct": {
+            "bids": 17600000,
+            "asks": 9200000
+          },
+          "within_5pct": {
+            "bids": 19400000,
+            "asks": 12300000
+          },
+          "within_10pct": {
+            "bids": 26800000,
+            "asks": 13700000,
+            "venues_covering": "5 of 6"
+          }
+        },
+        "caveat": "Aggregated hourly snapshot; venue-level raw books and exact weighting not independently captured."
+      },
+      "basis_binance_perp": {
+        "source_url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+        "event_time_utc": "2026-11-20T00:23:00Z",
+        "mid_usd": 0.965,
+        "spread_bps": 1.04,
+        "book_scope": "Binance XRPUSDT perpetual; nearest 1,000 levels per side",
+        "depth_usd": {
+          "all_levels": {
+            "bids": 34000000,
+            "asks": 30000000
+          },
+          "within_0_5pct": {
+            "bids": 6100000,
+            "asks": 9200000
+          },
+          "within_1pct": {
+            "bids": 11600000,
+            "asks": 13000000
+          },
+          "within_2pct": {
+            "bids": 19100000,
+            "asks": 19500000
+          }
+        },
+        "caveat": "Perpetual book, not spot; resting orders can cancel; snapshot is not a continuous sequence."
+      },
+      "robod": {
+        "source_url": "https://robod.com/markets/xrp?range=all",
+        "event_date": "2026-11-20",
+        "price_usd": 0.968,
+        "spot_volume_24h_usd": 589360000,
+        "futures_volume_24h_usd": 1410000000,
+        "open_interest_usd": 1010000000,
+        "liquidations_24h_usd": 3530000,
+        "long_liquidations_usd": 2750000,
+        "short_liquidations_usd": 784100,
+        "caveat": "Aggregator coverage and venue weighting not established; not synchronized to other sources."
+      },
+      "swiftedge": {
+        "source_url": "https://swiftedge.uk/xrp/levels",
+        "event_time_utc": "2026-11-19T20:36:00Z",
+        "perpetual_price_usd": 0.9617,
+        "bid_wall": {
+          "price": 0.956,
+          "size_xrp": 6171932
+        },
+        "ask_wall": {
+          "price": 0.965,
+          "size_xrp": 5063345
+        },
+        "caveat": "Perpetual positioning snapshot; older and not a spot-liquidity observation."
+      },
+      "reconciliation": "Fuelmaps multi-venue spot aggregate shows bid-side depth skew near the mid; Basis single-venue perpetual book shows ask-side depth greater than bids within ±0.5% and ±1%. Robod and Swiftedge have different universes and times. Preserve disagreement; do not average or infer direction.",
+      "admission": "RESEARCH_ONLY; not admitted to point-in-time feature store or forecast evaluation."
     }
   },
   "ci_evidence": {
-    "exact_code_head": "24379814ee4f00536065881a974d54294d69900c",
-    "push_ci_run": 44662901648,
+    "exact_code_head": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+    "push_ci_run": 44668095924,
     "full_suite": {
-      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
-      "run_id": 44662901648,
+      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+      "run_id": 44668101674,
       "status": "completed",
-      "conclusion": "failure",
-      "passed": 4388,
-      "failed": 1,
+      "conclusion": "success",
+      "passed": 4390,
+      "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests": 19,
-      "duration_seconds": 159.54,
-      "inclusive_coverage_percent": 71.34
+      "duration_seconds": 187.14,
+      "inclusive_coverage_percent": 71.34,
+      "legacy_core_coverage_percent": 81
     },
     "wheel_and_installed_v3": "passed",
     "dependency_audit_runs": [
-      44657991640,
-      44657999543
+      44668096070,
+      44668101701
     ],
     "dependency_manifests": 6,
     "known_vulnerabilities_reported": 0,
     "fail_closed_runs": [
-      44657991650,
-      44657999484
+      44668095922,
+      44668101736
     ],
-    "money_audit_run": 44657999499,
-    "pr_ci_run": 44662911250,
-    "pr_full_suite": "PR event CI passed on 9c71; full repository suite passed in push run 44393080713.",
+    "money_audit_run": 44668101743,
+    "pr_ci_run": 44668101674,
+    "pr_full_suite": "PASS on exact head a96dbcd: full repository suite passed; push and pull-request CI both successful.",
     "pre_fix_pr_head_ci": {
       "run_id": 44269593667,
       "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44269593667",
@@ -1088,57 +1184,63 @@
     },
     "current_head_dependency_audits": [
       {
-        "run_id": 44662901496,
+        "run_id": 44668096070,
         "event": "push",
-        "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+        "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
         "conclusion": "success",
         "manifests": 6
       },
       {
-        "run_id": 44662911256,
+        "run_id": 44668101701,
         "event": "pull_request",
-        "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+        "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
         "conclusion": "success",
         "manifests": 6
       }
     ],
     "current_head_fail_closed_runs": [
       {
-        "run_id": 44662901493,
+        "run_id": 44668095922,
         "event": "push",
-        "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+        "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
         "conclusion": "failure",
         "blockers": [
-          "draft PR",
-          "zero independent approvals",
-          "branch-protection details HTTP 403",
-          "full repository test suite failed"
+          "PR remains draft",
+          "zero independent approving reviews",
+          "branch-protection details return HTTP 403; required checks and administrator enforcement cannot be independently verified",
+          "Pages publication is enabled on main but not authorized",
+          "A2A runner has no verified OS sandbox, egress restriction or task-level authorization",
+          "transitive script/action security review remains incomplete",
+          "scripts/push_with_token.sh defaults to BRANCH=main and can push directly to main"
         ]
       },
       {
-        "run_id": 44662911242,
+        "run_id": 44668101736,
         "event": "pull_request",
-        "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+        "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
         "conclusion": "failure",
         "blockers": [
-          "draft PR",
-          "zero independent approvals",
-          "branch-protection details HTTP 403",
-          "full repository test suite failed"
+          "PR remains draft",
+          "zero independent approving reviews",
+          "branch-protection details return HTTP 403; required checks and administrator enforcement cannot be independently verified",
+          "Pages publication is enabled on main but not authorized",
+          "A2A runner has no verified OS sandbox, egress restriction or task-level authorization",
+          "transitive script/action security review remains incomplete",
+          "scripts/push_with_token.sh defaults to BRANCH=main and can push directly to main"
         ]
       }
     ],
     "current_head_money_audit": {
-      "run_id": 44662911290,
-      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+      "run_id": 44668101743,
+      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
       "event": "pull_request",
       "conclusion": "success",
       "tests_passed": 14
     },
     "current_head_pages_validation": {
-      "run_id": 44662901648,
-      "job_id": 136045155065,
-      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+      "run_id": 44668101674,
+      "job_id": 136062274394,
+      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
       "conclusion": "success",
       "validation_only": true
     },
@@ -1155,17 +1257,18 @@
       "last_code_ci_result": "success"
     },
     "current_head_full_suite": {
-      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
-      "run_id": 44662901648,
+      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+      "run_id": 44668101674,
       "status": "completed",
-      "conclusion": "failure",
-      "passed": 4388,
-      "tests_failed": 1,
+      "conclusion": "success",
+      "passed": 4390,
+      "tests_failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests_passed": 19,
-      "duration_seconds": 159.54,
-      "inclusive_coverage_percent": 71.34
+      "duration_seconds": 187.14,
+      "inclusive_coverage_percent": 71.34,
+      "legacy_core_coverage_percent": 81
     },
     "previous_verified_full_suite": {
       "run_id": 44322684443,
@@ -1270,39 +1373,34 @@
       "note": "The exact-head push full suite remains the controlling test evidence; no merge until it and all required checks finish."
     },
     "current_pr_head_ci": {
-      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
-      "push_ci_run_id": 44662901648,
-      "push_ci_conclusion": "failure",
-      "pr_event_run_id": 44662911250,
-      "pr_event_conclusion": "failure",
-      "pr_event_full_suite_status": "failure"
+      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+      "push_ci_run_id": 44668095924,
+      "push_ci_conclusion": "success",
+      "pr_event_run_id": 44668101674,
+      "pr_event_conclusion": "success",
+      "pr_event_full_suite_status": "success"
     },
-    "last_verified_code_head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
+    "last_verified_code_head_sha": "2d38b05a2a20d929cba26a685b4ad0204108f3f3",
     "last_verified_full_suite": {
-      "head_sha": "9d31bdef4df8453e90069c5a01a6f83efac1055b",
-      "run_id": 44428612376,
+      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+      "run_id": 44668101674,
       "status": "completed",
       "conclusion": "success",
-      "passed": 4280,
+      "passed": 4390,
       "tests_failed": 0,
       "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests_passed": 19,
-      "duration_seconds": 186.55,
-      "inclusive_coverage_percent": 68.13,
-      "legacy_core_coverage_percent": 77,
-      "wheel_build": "success",
-      "installed_wheel_mission_verification": "success",
-      "result": "PASS on exact head 9d31bde."
+      "duration_seconds": 187.14,
+      "inclusive_coverage_percent": 71.34,
+      "legacy_core_coverage_percent": 81,
+      "result": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%."
     },
     "latest_full_suite_tested_head_sha": "bd0f564c122ed4ef8ce3cf4b764f1152e368e250",
     "remediation_commit_test": "80507968e59d9a2e3f99801734d258e8f2dc1819",
-    "current_branch_head_ci_pending": {
-      "head_sha": "4cf9b185e95b3b2231713d4dba0246eb394d768c",
-      "reason": "research-evidence-only artifact update after last verified full-suite head; exact-head push CI required before merge"
-    },
-    "cache_warning": "GitHub Actions cache budget exhausted; cache step warning only, not a test or security-gate failure.",
+    "current_branch_head_ci_pending": null,
+    "cache_warning": "GitHub Actions cache budget exhausted; cache is read-only. Cache-save warning only, not a test or security-gate failure.",
     "run31_remediation": {
       "evidence_artifact_commit": "859be90c90b0bc233cf21762bc34ab1c00b03111",
       "test_contract_fix_commit": "820f35f2d97f8dcd888c0787375260bc772715df",
@@ -1331,16 +1429,16 @@
       ]
     },
     "post_sync_exact_head_full_suite": "FAIL on bd0f564: 4,282 passed, 4 failed, 1 skipped. All four failures are stale/mismatched Run32 evidence/test assertions; exact-head correction and full-suite rerun required.",
-    "latest_exact_head_ci_run": 44569140064,
+    "latest_exact_head_ci_run": 44668095924,
     "latest_exact_head_ci_conclusion": "success",
-    "latest_exact_head_full_suite_passed": 4388,
+    "latest_exact_head_full_suite_passed": 4390,
     "latest_exact_head_full_suite_failed": 0,
     "latest_exact_head_full_suite_skipped": 1,
     "latest_exact_head_subtests": 19,
-    "latest_exact_head_full_suite_coverage_percent": 71,
-    "latest_exact_head_full_suite_duration_seconds": 203.58,
-    "last_fully_passing_full_suite_head": "2c3c7e115ab8301753182f708a62cbf03e20018b",
-    "last_fully_passing_full_suite_run_id": 44569140064,
+    "latest_exact_head_full_suite_coverage_percent": 71.34,
+    "latest_exact_head_full_suite_duration_seconds": 187.14,
+    "last_fully_passing_full_suite_head": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+    "last_fully_passing_full_suite_run_id": 44668101674,
     "latest_main_pillars_consistency_check_run": 44529399478,
     "latest_main_pillars_consistency_check_conclusion": "failure",
     "latest_main_pillars_consistency_check_failure_reasons": [
@@ -1361,60 +1459,53 @@
     "main_a2a_deployment": {
       "run_id": 44653118169,
       "conclusion": "failure",
-      "reason": "Cloudflare authentication error 10000/9109"
+      "reason": "Cloudflare authentication error 10000/9109; secret-upload step skipped; no successful deployment verified."
     },
     "next_documentation_commit_exact_head_ci": "PENDING; map/handoff documentation-only commit must be tested on its own exact head.",
     "latest_exact_head_push_ci_run": 44662901648,
-    "latest_exact_head_pr_ci_run": 44662911250,
-    "latest_exact_head_full_suite_run": 44662901648,
-    "latest_exact_head_full_suite_result": "FAIL on exact head 243798: 4,388 passed, 1 failed, 1 skipped, 11 warnings, 19 subtests; 159.54 seconds; 71.34% coverage. Sole failure is test field-name mismatch, fixed in this update.",
-    "latest_exact_head_full_suite": "FAIL on exact head 243798: 4,388 passed, 1 failed, 1 skipped, 11 warnings, 19 subtests; 159.54 seconds; 71.34% coverage. Sole failure is test field-name mismatch, fixed in this update.",
-    "latest_exact_head_dependency_audit_run": 44662901496,
-    "latest_exact_head_pr_dependency_audit_run": 44662911256,
-    "latest_exact_head_pr_money_audit_run": 44662911290,
-    "latest_exact_head_fail_closed_run": 44662911242,
-    "latest_exact_head_a2a_worker_tests_run": 44662911268,
+    "latest_exact_head_pr_ci_run": 44668101674,
+    "latest_exact_head_full_suite_run": 44668101674,
+    "latest_exact_head_full_suite_result": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%.",
+    "latest_exact_head_full_suite": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%.",
+    "latest_exact_head_dependency_audit_run": 44668096070,
+    "latest_exact_head_pr_dependency_audit_run": 44668101701,
+    "latest_exact_head_pr_money_audit_run": 44668101743,
+    "latest_exact_head_fail_closed_run": 44668095922,
+    "latest_exact_head_a2a_worker_tests_run": 44668101689,
     "current_head_a2a_worker_tests": {
-      "run_id": 44662911268,
-      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+      "run_id": 44668101689,
+      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
       "event": "pull_request",
       "conclusion": "success"
     },
     "last_completed_full_suite": {
-      "head_sha": "19f09eb74869851377ce1d28af282c03ee560c79",
-      "run_id": 44659491151,
+      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+      "run_id": 44668101674,
       "status": "completed",
-      "conclusion": "failure",
-      "passed": 4383,
-      "tests_failed": 5,
+      "conclusion": "success",
+      "passed": 4390,
+      "tests_failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests_passed": 19,
-      "duration_seconds": 176.21,
-      "inclusive_coverage_percent": 71.34,
-      "failing_tests": [
-        "test_latest_map_matches_repository_and_forecast_admission_state",
-        "test_latest_map_preserves_security_gates_and_open_pr_classifications",
-        "test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity",
-        "test_latest_map_preserves_unresolved_phrase_and_creator_identity_controls",
-        "test_run227_main_workflow_differential_and_publication_gate_are_preserved"
-      ]
+      "duration_seconds": 187.14,
+      "inclusive_coverage_percent": 71.34
     },
     "current_head_core_tests": {
       "push_job_id": 136045155098,
       "push_conclusion": "success"
     },
     "latest_attempt": {
-      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
-      "push_ci_run": 44662901648,
-      "pr_ci_run": 44662911250,
-      "full_suite": "FAIL_ONE_TEST",
-      "dependency_push_run": 44662901496,
-      "dependency_pr_run": 44662911256,
-      "money_audit_run": 44662911290,
-      "a2a_worker_tests_run": 44662911268,
-      "fail_closed_push_run": 44662901493,
-      "fail_closed_pr_run": 44662911242
+      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+      "push_ci_run": 44668095924,
+      "pr_ci_run": 44668101674,
+      "full_suite": "PASS",
+      "dependency_push_run": 44668096070,
+      "dependency_pr_run": 44668101701,
+      "money_audit_run": 44668101743,
+      "a2a_worker_tests_run": 44668101689,
+      "fail_closed_push_run": 44668095922,
+      "fail_closed_pr_run": 44668101736
     },
     "last_completed_head_5199": {
       "head_sha": "5199cf68f2603f68158702cf3828b43c729c9e2b",
@@ -1539,7 +1630,7 @@
       "trigger": "tag push v*.*.*",
       "release_tag_pushed_this_run": false
     },
-    "transitive_workflow_script_security_review": "incomplete",
+    "transitive_workflow_script_security_review": "INCOMPLETE; 69/69 changed workflow YAML definitions received surface review; selected high-risk scripts were semantically reviewed; remaining invoked scripts and third-party action transitive dependencies are not fully cleared.",
     "release_workflow": {
       "workflow": ".github/workflows/release.yml",
       "permission": "contents: write",
@@ -1647,11 +1738,11 @@
       },
       "limitations": "This is a bounded spot-check, not a full audit of all 67 changed workflows, all invoked scripts, action transitive dependencies, artifacts or target-side effects."
     },
-    "transitive_script_review_detail": "Run 26 inspected four invoked scripts and nine workflow paths. Full transitive review of all 67 changed workflow definitions, invoked scripts, downloaded artifacts and third-party action supply chains remains incomplete.",
+    "transitive_script_review_detail": "Reviewed all 69 changed workflow definitions for triggers, permissions, secrets, action refs and side-effect paths. Semantically reviewed barrot_agent.py, barrot_mcp_server.py, barrot_a2a_runner.py, a2a_server.py, deploy_databricks.py, paid_issue_hunter.py, pillars_check.py and push_with_token.sh. A2A runner remains quarantined: opt-in required, but subprocess inherits host environment and no OS sandbox, egress restriction or task-level authorization is verified. push_with_token.sh defaults BRANCH=main and needs a direct-main guard. Full transitive script/action review remains incomplete.",
     "required_status_check_contexts_status": "not verified; detailed branch-protection endpoint returned HTTP 403",
     "integration_branch_protected": false,
     "least_privilege_status": "NOT_VERIFIED — token scopes were not introspected; repository permission includes admin/maintain/push/pull/triage, broader than read-only research.",
-    "open_pr_backlog_count": 13,
+    "open_pr_backlog_count": 16,
     "provider_failover_pr_1668": {
       "state": "open",
       "draft": true,
@@ -1777,42 +1868,44 @@
     "workflow_definition_scan_count": 69,
     "no_external_actions_performed": true,
     "main_current_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
-    "current_main_workflow_writer": "Paid issue publish remains active on main; integration successor disables it.",
+    "current_main_workflow_writer": "Paid issue publisher remains active on main with contents:write and direct push; integration successor disables it.",
     "pr_1673": {
       "draft": true,
       "formal_reviews": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
       "mergeable": true,
-      "head_sha": "24379814ee4f00536065881a974d54294d69900c",
+      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
       "base_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
-      "ahead_by": 494,
+      "ahead_by": 501,
       "behind_by": 0,
-      "changed_files": 1475,
+      "changed_files": 1477,
       "changed_workflow_files": 69,
-      "exact_head_full_suite": "FAIL on 243798: 4,388 passed, 1 failed, 1 skipped; sole failure is test fixture field-name mismatch, corrected in this update.",
-      "dependency_audit": "PASS on push and pull_request",
+      "exact_head_full_suite": "PASS: 4,390 passed, 1 skipped, 0 failed; 71.34% inclusive coverage.",
+      "dependency_audit": "PASS on push and pull_request; six manifests",
       "money_audit": "PASS",
       "a2a_worker_tests": "PASS",
-      "fail_closed": "BLOCKED"
+      "fail_closed": "BLOCKED: draft PR, zero independent approvals and branch-protection HTTP 403."
     },
     "main_paid_issue_publisher": {
       "active": true,
       "workflow": ".github/workflows/paid-issue-publish.yml",
       "permission": "contents:write",
       "persistent_checkout_credentials": true,
-      "trigger": "workflow_run after successful Paid issue hunter run on main"
+      "trigger": "workflow_run after successful Paid issue hunter run on main",
+      "pushes_to_main": true
     },
     "integration_paid_issue_publisher": {
       "active": false,
       "permission": "permissions: {}",
-      "job_condition": "if: false"
+      "job_condition": "if: false",
+      "executed": false
     },
     "a2a_main_runner": {
-      "autostart_condition": "A2A URL and shared/agent secret are present",
+      "autostart_condition": "A2A URL and shared/agent secret are present on main",
       "opencode_permissions": "bash/edit allow",
       "deployment_run": 44653118169,
-      "deployment_result": "Cloudflare auth failure; actual live Worker state unverified"
+      "deployment_result": "Cloudflare auth failure 10000/9109; secret upload skipped; live Worker state unverified"
     },
     "a2a_integration_runner": {
       "opt_in": "BARROT_A2A_AUTO_RUNNER=YES",
@@ -1825,22 +1918,53 @@
       "disposition": "QUARANTINED"
     },
     "pages_publication_authorization": "NOT_GRANTED",
-    "current_main_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f"
+    "current_main_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
+    "run11_security_review": {
+      "changed_workflow_definitions_reviewed": 69,
+      "workflow_surface_review": "EXECUTED",
+      "transitive_script_and_action_review": "INCOMPLETE",
+      "key_findings": [
+        "Main paid-issue publisher has contents:write and pushes generated files directly to main; integration publisher is disabled.",
+        "Main Coinbase paper-trader workflow loads GROQ_API_KEY and pushes simulated state to main without typed confirmation or expected-main-SHA gate; integration workflow is disabled.",
+        "Main A2A deploy workflow ran after PR #1672 merged and failed Cloudflare authentication (10000/9109); secret upload was skipped. Integration version is manual-only and was not executed.",
+        "Integration A2A runner requires BARROT_A2A_AUTO_RUNNER=YES but inherits the full host environment; OS sandbox, egress restriction and task-level authorization are unverified.",
+        "scripts/push_with_token.sh defaults BRANCH=main; direct push is not force-push but can bypass PR review if branch protection permits.",
+        "Kaggle submission and Databricks write workflows were not dispatched; no submission or write occurred.",
+        "GitHub Pages deployment on main is automatic and not authorized; integration Pages workflow is validation-only."
+      ],
+      "merge_blockers": [
+        "PR remains draft",
+        "zero independent approving reviews",
+        "branch-protection details return HTTP 403; required checks and administrator enforcement cannot be independently verified",
+        "Pages publication is enabled on main but not authorized",
+        "A2A runner has no verified OS sandbox, egress restriction or task-level authorization",
+        "transitive script/action security review remains incomplete",
+        "scripts/push_with_token.sh defaults to BRANCH=main and can push directly to main"
+      ]
+    },
+    "integration_coinbase_paper_trader": {
+      "status": "DISABLED",
+      "permissions": "empty",
+      "secret_loaded": false,
+      "artifact_only": false,
+      "executed": false
+    },
+    "last_security_review_at_utc": "2026-11-20T03:40:32.475Z"
   },
   "open_pr_backlog": [
     {
       "number": 1673,
       "classification": "blocked",
-      "changed_files": 1474,
+      "changed_files": 1477,
       "overlap_with_1673": 1474,
-      "note": "Active consolidated V3/XRP integration successor; 494 commits ahead and zero behind at snapshot; draft; exact-head full suite on 243798 has one test fixture field-name mismatch, corrected in this update; dependency audits, money audit, A2A tests and Pages validation passed; no independent approval; branch-protection HTTP 403; Pages publication unauthorized; A2A runner sandbox/credential isolation unresolved."
+      "note": "Active consolidated V3/XRP integration successor; 501 commits ahead and zero behind; 1,477 changed files including 69 workflow definitions; exact-head full suite passes on a96dbcd (4,390 passed, 1 skipped, 0 failed); dependency, money, A2A-worker and Pages-validation checks pass. Still blocked: draft, zero independent approvals, branch-protection HTTP 403, unauthorized Pages publication, A2A sandbox/credential/egress boundary unresolved, transitive audit incomplete and direct-main push utility requires a guard."
     },
     {
       "number": 1663,
       "classification": "superseded",
       "changed_files": 1470,
       "overlap_with_1673": 1470,
-      "note": "Superseded predecessor integration PR; all 1,470 changed paths overlap #1673. Keep open until #1673 is merged and verified on main, then close only with explicit cross-reference."
+      "note": "Superseded predecessor integration PR; all 1,470 changed paths overlap #1673. Keep open until #1673 is merged and verified on main, then close only with an explicit cross-reference."
     },
     {
       "number": 1671,
@@ -1956,7 +2080,9 @@
     "space_restarts": 0,
     "paper_trades": 0,
     "funds_transfers": 0,
-    "real_money_actions": 0
+    "real_money_actions": 0,
+    "integration_branch_documentation_commits": 1,
+    "integration_branch_metadata_files_updated": 2
   },
   "institutional_capital_reconciliation": {
     "entity": "Evernorth Holdings Inc. / Pathfinder Digital Assets LLC",
@@ -2451,10 +2577,10 @@
     "chatgpt_course": "VOST-delivered course for SBIC investee companies; not an OpenAI partnership."
   },
   "research_phrase_status": {
-    "ASK Coin": "Unresolved: Permission Coin (ASK) is the strongest exact-name match surfaced; no verified Ripple/XRPL/XRP relationship.",
-    "actual capital": "Exact phrase/source context remains unresolved. Separately, Franklin XRP Trust's SEC Form 10-Q reports USD 83,835,501 of cash-funded XRP purchases for share creations in the six months ended 2026-09-30; this is a verified fund-level cash purchase, distinct from USD 95,638,129 of in-kind XRP contributions, SBI's USD 50M Circle investment and Ripple corporate capital.",
-    "SBIC, ChatGPT SBIC": "Unresolved; SBIC East/Central/West are distinct Japanese regional SME investment/consultation companies. The SBIC West ChatGPT event is educational, not an OpenAI partnership.",
-    "Camilla/Kamilah Stevenson": "Person identity supported by first-person interview and video-level guest match; candidate YouTube channel ownership remains unverified and unlinked videos must not be attributed.",
+    "ASK Coin": "Unresolved. Permission Coin (ASK) remains the strongest exact-name candidate surfaced; no verified Ripple/XRPL/XRP relationship and no new primary-source match.",
+    "actual capital": "Exact phrase/source context remains unresolved. No new primary-source match. Keep fund cash-funded XRP purchases, in-kind contributions, corporate equity financing and market-cap changes as distinct accounting categories.",
+    "SBIC, ChatGPT SBIC": "Exact phrase remains unresolved. Official SBIC East training page (June 12–13, 2025) lists ChatGPT and Copilot in a generative-AI course for investee companies; this is educational activity, not an OpenAI partnership or XRP relationship.",
+    "Camilla/Kamilah Stevenson": "Guest identity has interview/video-level support, but YouTube channel ownership is not authenticated. Candidate channel IDs UCqUPJMQdkCN6lsLVDnichPA and UCXm6KAr1WHF6UN7g5b2W7wg remain unlinked; no channel-wide inventory or cross-channel attribution.",
     "run32": {
       "sbic": "SBIC East, Central and West remain distinct Japanese regional small-business investment/consultation companies; not SBI Holdings. No new primary evidence of an XRP/Ripple relationship.",
       "ask_coin": "Permission Coin (ASK) is the strongest exact-name match; no Ripple/XRPL relationship established.",
@@ -2518,7 +2644,56 @@
     "candidate_channel_id_conflict": [
       "UCqUPJMQdkCN6lsLVDnichPA",
       "UCXm6KAr1WHF6UN7g5b2W7wg"
-    ]
+    ],
+    "run11_channel_crosscheck": {
+      "guest_identity_evidence": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "guest_transcript_caveat": "Automatically generated transcript; guest/host use Camila/Camilla while episode title uses Dr. Kamilah Stevenson.",
+      "candidate_channels": [
+        {
+          "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+          "handle": "@drkamilahstevenson",
+          "source_url": "https://glasp.co/youtube/channel/UCqUPJMQdkCN6lsLVDnichPA",
+          "status": "UNVERIFIED_NO_FIRST_PARTY_CROSS_LINK"
+        },
+        {
+          "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+          "handle": "@KamilahStevensonXrpStocks",
+          "source_url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+          "status": "UNVERIFIED_CONFLICTING_CANDIDATE"
+        }
+      ],
+      "provisional_video_level_matches": [
+        {
+          "video_id": "QslbjGQD0MU",
+          "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+          "date": "2025-12-14",
+          "source_url": "https://glasp.co/youtube/QslbjGQD0MU",
+          "attribution": "Glasp author byline Kamilah Stevenson; transcript says Camila Stevenson; channel ownership not authenticated."
+        },
+        {
+          "video_id": "ci0FH73lbCs",
+          "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+          "date": "2026-01-13",
+          "source_url": "https://glasp.co/youtube/ci0FH73lbCs",
+          "attribution": "Glasp author byline Kamilah Stevenson; transcript says Camila Stevenson; channel ownership not authenticated."
+        },
+        {
+          "video_id": "YJdK1LvmJSo",
+          "title": "XRP whale accumulation / exchange outflows",
+          "date": "2026-04-19",
+          "source_url": "https://www.youtube.com/watch?v=YJdK1LvmJSo",
+          "attribution": "YouTube indexed uploader display name Kamilah Stevenson; channel ID unresolved; claims unverified."
+        },
+        {
+          "video_id": "TfFx0g2IgGg",
+          "title": "I Moved My XRP Off The Exchanges",
+          "date": "2026-05-20",
+          "source_url": "https://www.youtube.com/watch?v=TfFx0g2IgGg",
+          "attribution": "YouTube indexed uploader display name Kamilah Stevenson; channel ID unresolved; no description in indexed result."
+        }
+      ],
+      "inventory_status": "PROVISIONAL_VIDEO_LEVEL_CANDIDATES_ONLY; no channel-wide inventory; do not attribute channel uploads until first-party ownership cross-link resolves the channel-ID conflict."
+    }
   },
   "latest_ecosystem_evidence": {
     "circle_world_bank_citi_usdc_rails": {
@@ -2783,7 +2958,7 @@
       "No new ingestion workflow run or walk-forward forecast was observed in this run."
     ]
   },
-  "merge_disposition": "NO_MERGE — current full suite failed four evidence/test assertions on bd0f564. Corrections/addendum are being committed; exact-head full-suite success, independent review, required status-check enforcement, Pages side-effect governance and complete transitive workflow audit remain blockers.",
+  "merge_disposition": "NO_MERGE — exact-head full suite now passes (4,390 passed, 1 skipped, 0 failed), and dependency/money/A2A-worker/Pages-validation checks pass. Merge remains blocked by draft status, zero independent approvals, branch-protection HTTP 403, unauthorized Pages publication, unresolved A2A sandbox/credential/egress controls, incomplete transitive security review and direct-main push utility.",
   "latest_run_29": {
     "captured_at_utc": "2026-11-18T23:08:34Z",
     "evidence_record": "research/xrp_intelligence/20261118T230834Z-run29-market-institutional-reconciliation.json",
@@ -4245,9 +4420,9 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-20T02:50:53Z",
-  "latest_run_id": 230,
-  "latest_run_captured_at_utc": "2026-11-20T02:50:53Z",
+  "last_verified_at_utc": "2026-11-20T03:40:32.475Z",
+  "latest_run_id": 231,
+  "latest_run_captured_at_utc": "2026-11-20T03:40:32.475Z",
   "current_main_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
   "current_successor_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z",
   "observed_main_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
@@ -4646,16 +4821,16 @@
     {
       "number": 1673,
       "classification": "blocked",
-      "changed_files": 1474,
+      "changed_files": 1477,
       "overlap_with_1673": 1474,
-      "note": "Active consolidated V3/XRP integration successor; 494 commits ahead and zero behind at snapshot; draft; exact-head full suite on 243798 has one test fixture field-name mismatch, corrected in this update; dependency audits, money audit, A2A tests and Pages validation passed; no independent approval; branch-protection HTTP 403; Pages publication unauthorized; A2A runner sandbox/credential isolation unresolved."
+      "note": "Active consolidated V3/XRP integration successor; 501 commits ahead and zero behind; 1,477 changed files including 69 workflow definitions; exact-head full suite passes on a96dbcd (4,390 passed, 1 skipped, 0 failed); dependency, money, A2A-worker and Pages-validation checks pass. Still blocked: draft, zero independent approvals, branch-protection HTTP 403, unauthorized Pages publication, A2A sandbox/credential/egress boundary unresolved, transitive audit incomplete and direct-main push utility requires a guard."
     },
     {
       "number": 1663,
       "classification": "superseded",
       "changed_files": 1470,
       "overlap_with_1673": 1470,
-      "note": "Superseded predecessor integration PR; all 1,470 changed paths overlap #1673. Keep open until #1673 is merged and verified on main, then close only with explicit cross-reference."
+      "note": "Superseded predecessor integration PR; all 1,470 changed paths overlap #1673. Keep open until #1673 is merged and verified on main, then close only with an explicit cross-reference."
     },
     {
       "number": 1671,
@@ -5190,7 +5365,7 @@
       "real_money_actions": 0
     }
   },
-  "snapshot_boundary": "Repository and CI state captured at integration head 24379814ee4f00536065881a974d54294d69900c; this follow-up adds Circle/Coinbase SEC relationship evidence, a research-only market observation and fixes the Franklin artifact field-name assertion. The resulting commit requires its own exact-head CI.",
+  "snapshot_boundary": "Repository and exact-head CI state verified at a96dbcd07c290e63f4f5ebbbc5351094cae0ee50; this commit updates only the canonical mission handoff and nine-platform map.",
   "latest_run_230": {
     "captured_at_utc": "2026-11-20T02:31:22Z",
     "repository": {
@@ -5496,6 +5671,239 @@
         "xrp_bridge_requirement_evidenced": false,
         "model_eligible": false
       }
+    }
+  },
+  "latest_run_231": {
+    "captured_at_utc": "2026-11-20T03:40:32.475Z",
+    "repository": {
+      "main_sha": "73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f",
+      "integration_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z",
+      "branch_head_before_metadata_update": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+      "code_head_sha": "2d38b05a2a20d929cba26a685b4ad0204108f3f3",
+      "pr_number": 1673,
+      "pr_state": "open",
+      "draft": true,
+      "mergeable": true,
+      "ahead_by": 501,
+      "behind_by": 0,
+      "changed_files": 1477,
+      "changed_workflow_files": 69,
+      "main_tree_entries": 1744,
+      "integration_tree_entries": 3020,
+      "main_paths_missing_from_integration": 0,
+      "open_prs": 16
+    },
+    "ci": {
+      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
+      "full_suite": {
+        "run_id": 44668101674,
+        "push_run_id": 44668095924,
+        "passed": 4390,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 19,
+        "duration_seconds": 187.14,
+        "inclusive_coverage_percent": 71.34,
+        "legacy_core_coverage_percent": 81,
+        "conclusion": "success"
+      },
+      "dependency_audits": [
+        {
+          "run_id": 44668096070,
+          "event": "push",
+          "conclusion": "success",
+          "manifests": 6
+        },
+        {
+          "run_id": 44668101701,
+          "event": "pull_request",
+          "conclusion": "success",
+          "manifests": 6
+        }
+      ],
+      "money_audit": {
+        "run_id": 44668101743,
+        "conclusion": "success",
+        "tests_passed": 14
+      },
+      "a2a_worker_tests": {
+        "run_id": 44668101689,
+        "conclusion": "success"
+      },
+      "pages_validation": "success; validation only; no deployment",
+      "fail_closed_runs": [
+        {
+          "run_id": 44668095922,
+          "conclusion": "failure"
+        },
+        {
+          "run_id": 44668101736,
+          "conclusion": "failure"
+        }
+      ],
+      "fail_closed_blockers": [
+        "PR remains draft",
+        "zero independent approving reviews",
+        "branch-protection details return HTTP 403; required checks and administrator enforcement cannot be independently verified",
+        "Pages publication is enabled on main but not authorized",
+        "A2A runner has no verified OS sandbox, egress restriction or task-level authorization",
+        "transitive script/action security review remains incomplete",
+        "scripts/push_with_token.sh defaults to BRANCH=main and can push directly to main"
+      ]
+    },
+    "xrp_ingestion": {
+      "last_successful_run_id": 44654352643,
+      "head_sha": "4cf4039771450b13469b96ecec52ad06d124a602",
+      "event": "push",
+      "created_at_utc": "2026-11-20T01:32:27Z",
+      "conclusion": "success",
+      "artifact_retention": "raw/event/receipt artifacts 90 days; per-run feature store 7 days; not WORM",
+      "receipt_count": 34,
+      "raw_retained": 22,
+      "digest_only": 12,
+      "source_failures": 21,
+      "eligible_features": 128,
+      "excluded_features": 367,
+      "independence_groups": 5,
+      "point_in_time_violations": 0,
+      "events": 150,
+      "scenarios": 117,
+      "receipt_chain": "PASS_WITHIN_RUN",
+      "external_anchor": "NOT_ANCHORED",
+      "walk_forward_forecasts": 0,
+      "drift_status": "INSUFFICIENT_DATA",
+      "forecast_issuance": "NOT_ISSUED",
+      "source_failure_breakdown": {
+        "binance": "historical/derivatives provider client errors",
+        "bybit": "HTTP 403",
+        "sec_edgar": "missing monitored contact identity; six requests failed"
+      },
+      "production_schedule_status": "NOT_ACTIVE_ON_MAIN"
+    },
+    "market_research_only": {
+      "captured_at_utc": "2026-11-20T03:40:32.475Z",
+      "capture_method": "public web-indexed market dashboards; rendered summaries, not raw HTTP captures",
+      "raw_http_bytes_captured": false,
+      "raw_sha256_receipt": "NOT_CAPTURED",
+      "external_timestamp_anchor": "NOT_ANCHORED",
+      "model_eligible": false,
+      "fuelmaps": {
+        "source_url": "https://fuelmaps.io/order-book/",
+        "event_time_utc": "2026-11-20T00:00:00Z",
+        "mid_usd": 0.9598,
+        "venues_covering": "6 of 6",
+        "depth_usd": {
+          "within_0_5pct": {
+            "bids": 7300000,
+            "asks": 6800000
+          },
+          "within_1pct": {
+            "bids": 12600000,
+            "asks": 8100000
+          },
+          "within_2pct": {
+            "bids": 17600000,
+            "asks": 9200000
+          },
+          "within_5pct": {
+            "bids": 19400000,
+            "asks": 12300000
+          },
+          "within_10pct": {
+            "bids": 26800000,
+            "asks": 13700000,
+            "venues_covering": "5 of 6"
+          }
+        },
+        "caveat": "Aggregated hourly snapshot; venue-level raw books and exact weighting not independently captured."
+      },
+      "basis_binance_perp": {
+        "source_url": "https://www.basischarts.com/liquidity-heatmap/xrp-usdt",
+        "event_time_utc": "2026-11-20T00:23:00Z",
+        "mid_usd": 0.965,
+        "spread_bps": 1.04,
+        "book_scope": "Binance XRPUSDT perpetual; nearest 1,000 levels per side",
+        "depth_usd": {
+          "all_levels": {
+            "bids": 34000000,
+            "asks": 30000000
+          },
+          "within_0_5pct": {
+            "bids": 6100000,
+            "asks": 9200000
+          },
+          "within_1pct": {
+            "bids": 11600000,
+            "asks": 13000000
+          },
+          "within_2pct": {
+            "bids": 19100000,
+            "asks": 19500000
+          }
+        },
+        "caveat": "Perpetual book, not spot; resting orders can cancel; snapshot is not a continuous sequence."
+      },
+      "robod": {
+        "source_url": "https://robod.com/markets/xrp?range=all",
+        "event_date": "2026-11-20",
+        "price_usd": 0.968,
+        "spot_volume_24h_usd": 589360000,
+        "futures_volume_24h_usd": 1410000000,
+        "open_interest_usd": 1010000000,
+        "liquidations_24h_usd": 3530000,
+        "long_liquidations_usd": 2750000,
+        "short_liquidations_usd": 784100,
+        "caveat": "Aggregator coverage and venue weighting not established; not synchronized to other sources."
+      },
+      "swiftedge": {
+        "source_url": "https://swiftedge.uk/xrp/levels",
+        "event_time_utc": "2026-11-19T20:36:00Z",
+        "perpetual_price_usd": 0.9617,
+        "bid_wall": {
+          "price": 0.956,
+          "size_xrp": 6171932
+        },
+        "ask_wall": {
+          "price": 0.965,
+          "size_xrp": 5063345
+        },
+        "caveat": "Perpetual positioning snapshot; older and not a spot-liquidity observation."
+      },
+      "reconciliation": "Fuelmaps multi-venue spot aggregate shows bid-side depth skew near the mid; Basis single-venue perpetual book shows ask-side depth greater than bids within ±0.5% and ±1%. Robod and Swiftedge have different universes and times. Preserve disagreement; do not average or infer direction.",
+      "admission": "RESEARCH_ONLY; not admitted to point-in-time feature store or forecast evaluation."
+    },
+    "identity_research": {
+      "sbic_east_training_url": "https://www.sbic.co.jp/training/20250612co/",
+      "training_dates": "2025-06-12 to 2025-06-13",
+      "topics": [
+        "generative AI",
+        "ChatGPT",
+        "Copilot",
+        "machine learning"
+      ],
+      "interpretation": "Educational training for investee companies; no OpenAI partnership or XRP relationship established.",
+      "exact_phrase_status": "ASK Coin, actual capital and SBIC/ChatGPT SBIC remain unresolved at primary-source level.",
+      "youtube_channel_ownership": "UNVERIFIED; candidate channel IDs conflict; no channel-wide inventory."
+    },
+    "forecast_status": "NOT_ISSUED",
+    "external_actions": {
+      "merges": 0,
+      "new_branches": 0,
+      "new_prs": 0,
+      "source_prs_closed": 0,
+      "deployments": 0,
+      "secret_reads": 0,
+      "secret_rotations": 0,
+      "external_model_dispatches": 0,
+      "external_data_transfers": 0,
+      "databricks_writes": 0,
+      "kaggle_submissions": 0,
+      "space_restarts": 0,
+      "paper_trades": 0,
+      "funds_transfers": 0,
+      "real_money_actions": 0,
+      "integration_branch_documentation_commits": 1
     }
   }
 }
