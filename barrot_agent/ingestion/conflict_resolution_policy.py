@@ -96,8 +96,8 @@ def recommend_resolution(evidence: ConflictEvidence) -> ResolutionDecision:
         and evidence.protected_area_reviewed
     ):
         return ResolutionDecision(
-            ResolutionChoice.BOTH, True, 0.90,
-            "Both changes are required, compatibility was reviewed, and the combined result passed validation.",
+            ResolutionChoice.BOTH, False, 0.90,
+            "Both changes are required and validated; this is a recommendation only. Explicit human authorization is required before applying it.",
             checks, asdict(evidence),
         )
 
@@ -109,8 +109,8 @@ def recommend_resolution(evidence: ConflictEvidence) -> ResolutionDecision:
         and evidence.protected_area_reviewed
     ):
         return ResolutionDecision(
-            ResolutionChoice.INCOMING, True, 0.90,
-            "Incoming is the intended PR improvement; existing behavior was preserved and the result was reviewed and tested.",
+            ResolutionChoice.INCOMING, False, 0.90,
+            "Incoming is the intended PR improvement and passed validation; this is a recommendation only. Explicit human authorization is required before applying it.",
             checks, asdict(evidence),
         )
 
