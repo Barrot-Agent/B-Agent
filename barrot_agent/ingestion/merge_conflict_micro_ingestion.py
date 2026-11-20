@@ -184,7 +184,7 @@ class MergeConflictMicroIngestion:
                 indicators=["import", "from", "require"],
                 file_patterns=["*.py", "*.js", "*.ts"],
                 frequency="High",
-                auto_resolvable=True,
+                auto_resolvable=False,
             ),
             ConflictPattern(
                 pattern_id="CP003",
@@ -194,7 +194,7 @@ class MergeConflictMicroIngestion:
                 indicators=["config", "settings", "properties"],
                 file_patterns=["*.json", "*.yaml", "*.yml", "*.toml", "*.ini"],
                 frequency="Medium",
-                auto_resolvable=True,
+                auto_resolvable=False,
             ),
             ConflictPattern(
                 pattern_id="CP004",
@@ -204,7 +204,7 @@ class MergeConflictMicroIngestion:
                 indicators=["# ", "## ", "/**", "<!--"],
                 file_patterns=["*.md", "*.rst", "*.txt"],
                 frequency="Medium",
-                auto_resolvable=True,
+                auto_resolvable=False,
             ),
             ConflictPattern(
                 pattern_id="CP005",
@@ -214,7 +214,7 @@ class MergeConflictMicroIngestion:
                 indicators=["spaces", "tabs", "indentation"],
                 file_patterns=["*"],
                 frequency="Low",
-                auto_resolvable=True,
+                auto_resolvable=False,
             ),
             ConflictPattern(
                 pattern_id="CP006",
