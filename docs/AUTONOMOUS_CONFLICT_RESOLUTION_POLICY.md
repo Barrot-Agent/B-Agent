@@ -63,6 +63,7 @@ not enable a live GitHub resolver.
 
 ## Execution boundary
 
-The autonomous resolver workflow remains quarantined and the gated-merge
-workflow remains read-only. This change does not activate automatic conflict
-resolution, PR approval, merge, push, or deployment.
+Every recommended choice requires explicit human authorization before any
+repository mutation. The autonomous resolver workflow remains quarantined and
+the gated-merge workflow remains read-only. This change does not activate
+automatic conflict resolution, PR approval, merge, push, or deployment.
