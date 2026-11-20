@@ -7,7 +7,10 @@ second OpenCode server or expose the local runtime to the public internet.
 from __future__ import annotations
 
 import argparse
-import fcntl
+try:
+    import fcntl
+except ImportError:  # pragma: no cover - the production host is POSIX
+    fcntl = None
 import json
 import logging
 import os
@@ -25,8 +28,8 @@ from typing import Any
 from urllib.parse import urljoin
 
 LOG = logging.getLogger("barrot_a2a_runner")
-MAX_STDOUT = 64_000
-MAX_STDERR = 16_000
+MAX_STDOUT = 32_000
+MAX_STDERR = 8_000
 DEFAULT_TIMEOUT = 1800
 DEFAULT_LEASE = 3600
 _SECRET_PATTERN = re.compile(
@@ -57,6 +60,8 @@ def runner_lock_path() -> Path:
 
 
 def runner_is_active() -> bool:
+    if fcntl is None:
+        return False
     path = runner_lock_path()
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a+", encoding="utf-8") as handle:
@@ -69,6 +74,8 @@ def runner_is_active() -> bool:
 
 
 def acquire_runner_lock():
+    if fcntl is None:
+        raise RuntimeError("POSIX file locking is required for a singleton A2A runner")
     path = runner_lock_path()
     path.parent.mkdir(parents=True, exist_ok=True)
     handle = path.open("a+", encoding="utf-8")
@@ -87,7 +94,7 @@ class WorkerClient:
         self.timeout = timeout
 
     def request(self, path: str, payload: dict[str, Any] | None = None) -> dict[str, Any]:
-        data = None if payload is None else json.dumps(payload).encode("utf-8")
+        data = None if payload is None else json.dumps(payload, ensure_ascii=False).encode("utf-8")
         request = urllib.request.Request(
             urljoin(self.base_url, path.lstrip("/")),
             data=data,
@@ -281,7 +288,11 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-    lock_handle = acquire_runner_lock()
+    try:
+        lock_handle = acquire_runner_lock()
+    except OSError as exc:
+        LOG.error("Cannot establish runner singleton lock: %s", type(exc).__name__)
+        return 2
     if lock_handle is None:
         LOG.info("Another Barrot A2A runner already owns the singleton lock; exiting")
         return 0
@@ -290,7 +301,7 @@ def main(argv: list[str] | None = None) -> int:
     error_backoff = max(1.0, args.poll_seconds)
     while True:
         try:
-            did_work = run_once(client, workdir, args.agent, args.timeout_seconds, args.opencode_bin)
+            run_once(client, workdir, args.agent, args.timeout_seconds, args.opencode_bin)
             error_backoff = max(1.0, args.poll_seconds)
         except Exception as exc:
             LOG.error("Task poll failed: %s", exc)
