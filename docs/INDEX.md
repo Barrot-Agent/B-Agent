@@ -52,6 +52,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/PR_113_RESOLUTION_COMPLETE.md - PR #113 Merge Conflict Resolution - COMPLETE
 - docs/PR_DEEP_READ.md - (no heading)
 - docs/PR_TRIAGE_REPORT.md - PR Triage Report
+- docs/PRODUCT_FOUNDRY_STATUS.md - Barrot Foundry status
 - docs/QUANTUM_AGI_INTEGRATION.md - Quantum Entanglement, AGI, and Advanced Algorithmic Logic Integration
 - docs/QUICKSTART_MMI_MONETIZATION.md - 🚀 Quick Start: MMI & Monetization Implementation
 - docs/STEP5_BARROT_INITIATIVE.md - STEP 5 — Barrot Initiative: Data Layer Health-Check & Topology Introspection
