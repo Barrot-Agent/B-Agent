@@ -28,4 +28,5 @@ jobs:
         working-directory: a2a
         run: node --test worker.test.js
       - name: Validate Wrangler configuration and bundle without deploying
+        working-directory: a2a
         run: npx --yes wrangler@4 deploy --dry-run
