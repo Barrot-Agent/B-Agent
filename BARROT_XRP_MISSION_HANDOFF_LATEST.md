@@ -121,3 +121,8 @@ Still missing:
 ## Safety record
 
 No merge, source-PR closure, force-push, deployment, Pages publication initiated by this run, secret read/rotation, Space/Worker restart, external model dispatch, external data transfer, Databricks write, Kaggle submission, paper trade, funds transfer or real-money operation occurred.
+
+
+## Preserved Run174 regression anchors
+
+The original Run174 recovery audit remains part of this integration's preserved evidence: `Run174`, historical main SHA `5b2a9c46eb878250dfec99190e294909cd5835bf`, and `research/xrp_intelligence/20261115T210147Z-run174-mainline-successor-recovery-audit.json`. This historical anchor is retained for regression traceability; it is not the current main SHA and must not be used as a present-day base.
