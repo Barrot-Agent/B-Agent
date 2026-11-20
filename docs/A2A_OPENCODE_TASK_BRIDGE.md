@@ -25,7 +25,7 @@ The same `BRAIN_SHARED_SECRET` authenticates the OpenCode runner by default. A s
 
 ## Existing OpenCode host configuration
 
-Run the process as the same OS user and from the repository checkout used by the existing OpenCode service. The OpenCode CLI's default shared-service behavior is intentional: do not pass `--standalone` and do not start another `opencode serve` process.
+Run the queue consumer as the same OS user and from the repository checkout used by the existing OpenCode service. `opencode.json` passes the Worker URL to the existing `barrot` MCP server. When that MCP server starts, it launches the outbound consumer automatically if `BARROT_AGENT_SECRET` or `BRAIN_SHARED_SECRET` is present. A file lock ensures only one consumer runs, even when multiple OpenCode sessions load the MCP server. The consumer logs to `~/.barrot/a2a-runner.log`.
 
 Environment contract:
 
@@ -37,15 +37,7 @@ Environment contract:
 - `BARROT_TASK_TIMEOUT_SECONDS` — optional; defaults to 1800 seconds, maximum 1800.
 - `BARROT_A2A_POLL_SECONDS` — optional; defaults to 5 seconds.
 
-Start the runner with:
-
-```bash
-python3 scripts/barrot_a2a_runner.py
-```
-
-Use the existing host's process supervisor to keep this worker running and restart it after failure. The script is a queue consumer, not an HTTP server. Do not expose the host or its OpenCode API publicly. The runner's 3600-second task lease exceeds its 1800-second execution timeout; an abandoned lease is recoverable and claims are bounded to three attempts.
-
-For a one-task smoke test, use `python3 scripts/barrot_a2a_runner.py --once`.
+The runner is a queue consumer, not an HTTP server. It does not expose the host or OpenCode API publicly, and it does not start another OpenCode server. The existing OpenCode MCP lifecycle starts it; a singleton lock prevents duplicate consumers. For a manual diagnostic or one-task smoke test, use `python3 scripts/barrot_a2a_runner.py --once`. The runner's 3600-second task lease exceeds its 1800-second execution timeout; an abandoned lease is recoverable and claims are bounded to three attempts.
 
 ## Safety and execution semantics
 
