@@ -1557,3 +1557,129 @@ No PR was merged or closed. No source branch was rewritten or force-pushed. The 
 7. Keep forecasts disabled until the learned model demonstrates leakage-safe out-of-sample superiority, calibration, drift, shadow evaluation, and independent attestation.
 
 No mainline code change, merge, deployment, Pages publication by this run, secret operation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer, or real-money action occurred.
+
+
+---
+
+## Primary-source research addendum — 2026-11-20 13:40 UTC
+
+This section records new primary-source identity and institutional evidence found after the 13:26 checkpoint. It does not alter runtime code or authorize deployment/merge.
+
+### 1. Japan SBIC identity — RESOLVED FROM OFFICIAL COMPANY PAGES
+
+The three regional SBIC entities are distinct Japanese legal companies, linked as sister companies:
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社), official site `sbic.co.jp`. Its official company profile explicitly uses “SBIC East Japan,” gives corporate number `9011001030621`, establishment in 1963, and an operating area covering 18 prefectures east of Shizuoka, Nagano and Niigata. It lists Nagoya and Osaka as sister companies.
+  Source: https://www.sbic.co.jp/company/profile/
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (名古屋中小企業投資育成株式会社), official site `sbic-cj.co.jp`. Its company profile explicitly uses “SBIC Central Japan,” established 1963, and lists Aichi, Gifu, Mie, Toyama and Ishikawa as its operating area. It lists Tokyo and Osaka as sister companies.
+  Source: https://www.sbic-cj.co.jp/company/about/
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. (大阪中小企業投資育成株式会社), official site `sbic-wj.co.jp`. Its profile explicitly uses “SBIC West Japan,” established 1963, and lists 24 prefectures west of Fukui, Shiga, Nara and Wakayama. It lists Tokyo and Nagoya as sister companies.
+  Source: https://www.sbic-wj.co.jp/profiles/profile/
+
+These are regional SME investment/development policy institutions established under Japan's Small and Medium Business Investment & Consultation Companies Act. They are not SBI Holdings, not SBI VC Trade, and not a single SBI Group subsidiary. Tokyo's official page describes its shareholder base as local governments, chambers of commerce, financial institutions and operating companies. The reciprocal “sister company” links establish affiliation among the three SBIC regionals, not ownership by SBI Holdings.
+
+### 2. “SBIC, ChatGPT SBIC” — likely source identified, partnership NOT established
+
+Tokyo SBIC's official training archive lists a completed two-day course for portfolio companies on June 12–13, 2025: “Introduction to Generative AI and Machine Learning for Manufacturing.” Its curriculum explicitly includes ChatGPT usage, Microsoft Copilot, prompt/business use, AI-generated code, information-leakage risk, RAG and API implementation. The page says general companies could not enroll; the course was restricted to portfolio companies and is marked completed.
+
+Source: https://www.sbic.co.jp/training/20250612co/
+
+This is a strong primary-source explanation for an “SBIC + ChatGPT” reference. It is a training course delivered by an outside instructor, not evidence of an OpenAI partnership, model deployment, ChatGPT integration contract, or SBI Holdings relationship. Exact original phrase attribution remains unresolved.
+
+### 3. SBI banking, rewards and XRPL relationships — separate evidence classes
+
+Primary-source findings:
+
+- **SBI Shinsei Bank + SBI VC Trade, February 2, 2026:** an official campaign offered XRP exchange vouchers to eligible customers placing at least ¥300,000 in a six-month yen term deposit, with voucher value tiered by deposit amount up to ¥20,000. This was a time-limited campaign with entry/deposit deadlines through March 31, 2026; it was not a conversion of the full deposit principal into XRP.
+  Source: https://www.sbigroup.co.jp/news/pr/2026/0202_16075.html
+- **SBI VC Trade + Aplus + Visa, May 1, 2026:** an official announcement introduced SBI Visa Crypto Card products. The cardholder chooses BTC, ETH or XRP; card points are automatically exchanged into the selected asset, subject to an SBI VC Trade account. No public asset-by-asset redemption total was found, so the announcement does not establish the amount of XRP actually purchased.
+  Source: https://www.sbigroup.co.jp/news/2026/0501_16304.html
+- **SBI Ripple Asia, February 26, 2026:** an official conceptual proof-of-concept considered tokenized deposits and deposit-based digital money using existing infrastructure including MoneyTap and an SBI Ripple Asia token-issuance platform, with XRPL contemplated as the blockchain technology. This is a concept POC, not proof of a production bank settlement rail, transaction volume, or XRP bridge-asset use.
+  Source: https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
+- **SBI VC Trade, July 7, 2026:** the company reported 2 million registered service accounts as of July 6, 2026. It is an SBI Holdings consolidated subsidiary and offers crypto/stablecoin services; the account count is not an XRP-holder count or XRP balance.
+  Source: https://www.sbigroup.co.jp/news/2026/0707_16468.html
+
+A June 10, 2026 pilot allowing customers to direct approximately 20% of deposit interest into crypto vouchers (BTC/ETH/XRP) is reported by secondary outlets citing Nikkei. No matching primary SBI release was located in this search. Do not conflate that report with the independently verified February XRP-voucher campaign. Treat the June pilot's detailed terms and actual participation as secondary-reported/unverified until a primary bank notice or terms document is captured.
+
+### 4. Circle, Coinbase and XRPL — updated official product facts
+
+Circle's current USDC page states:
+- USDC is natively supported on 38 blockchains as of September 16, 2026, including the XRPL.
+- Circulation was $68.0B as of November 16, 2026.
+- Circle describes USDC as fully backed by cash and cash-equivalent reserves with monthly third-party attestations.
+- Circle says the Circle Reserve Fund is custodied at BNY Mellon and managed by BlackRock.
+- Coinbase is displayed among Circle's institutional-grade liquidity partners.
+
+Source: https://www.circle.com/usdc
+
+This verifies USDC availability on XRPL and specific Circle/BNY/BlackRock and Circle/Coinbase ecosystem relationships. It does **not** establish that USDC flows use XRP as the bridge asset, quantify XRP fee/reserve demand, or demonstrate XRP price impact. The distinction between USDC settlement on XRPL and XRP bridge usage remains mandatory.
+
+### 5. Ripple Payments Direct — current corridor and rail status
+
+Ripple's official Payments Direct change history records:
+- November 2026: Indonesia IDR corridor `ID_BIFAST` restored to the API documentation/specification after being withdrawn in September.
+- October 2026: Quotes v3 returns one quote per available payment rail; the selected rail travels with the quote into the payment. For stablecoin payouts, the blockchain network is the payment rail.
+- September 2026: Japan JPY corridor `JP_ZENGIN` restored.
+- October 2026: Turkey TRY payouts paused pending regulatory review.
+
+Source: https://docs.ripple.com/products/payments-direct-2/change-history
+
+These are product/API documentation and corridor-status observations. They are not proof of completed payment volumes, XRP routing, XRP bridge usage, or the specific blockchain used for an individual corridor.
+
+### 6. Camilla/Kamilah Stevenson identity and YouTube inventory
+
+The June 11, 2026 iHeart interview identifies its guest as Dr. Kamilah Stevenson. In the transcript she says she uses X, Instagram, and YouTube under variants of “Cam/ Kamilah / Doctor Camilla Stevenson,” and explicitly warns that many fake pages exist. The transcript is direct evidence of the guest's claimed social presence, but it does not provide the exact YouTube channel URL or handle.
+
+Source: https://www.iheart.com/podcast/1333-the-xrptracer-podcast-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/
+
+YouTube search attributes “I Moved My XRP Off The Exchanges” to Kamilah Stevenson, published May 20, 2026. The channel handle has not been directly cross-linked by the guest or by a verified official profile. Third-party directories list multiple similar/fake channels, consistent with the guest's warning.
+
+Candidate video: https://www.youtube.com/watch?v=TfFx0g2IgGg
+
+**Inventory disposition:** one candidate video recorded, but not admitted to the verified official-channel inventory. Do not attribute other lookalike channels or reposts to the guest without a direct authenticated cross-link.
+
+### 7. Current derivatives and ETF disagreement — research-only
+
+New provider snapshots:
+- AlertaChart, November 20 11:52 UTC: OI-weighted funding -0.0019% per eight hours (-2.13% annualized) across Binance, Bybit, OKX, Coinbase and Hyperliquid; reported OI $599.44M for that five-venue set.
+- TradRadar, November 20 09:05 UTC: $1.21B OI across seven exchanges, -3.39% in 24 hours; OI-weighted funding -0.0036% per eight hours; $5.31M reported liquidations, $4.54M longs.
+- Liqwall, November 20 00:12 UTC: $915M OI, -0.8% in 24 hours.
+- OptimistFi, November 20 06:49 UTC: $1.7B OI across 38 venues, funding approximately -2.9% annualized.
+- TradersWeek reports approximately $921.97M across eight exchanges, down 2.9% in 24 hours, with approximately 77% of accounts long.
+
+Sources:
+https://www.alertachart.com/data/funding-rates/xrp
+https://tradradar.io/markets/xrp
+https://liqwall.com/open-interest/xrp
+https://optimistfi.com/perps/markets/xrp
+https://tradersweek.com/it/crypto/derivatives/xrp
+
+These are not a single consistent OI universe. Exchange count, instrument coverage, timestamp, and aggregation methodology differ. Negative funding in several CEX aggregates is evidence of positioning/carry conditions, not a directional forecast. Do not average these totals or backfill them as synchronized point-in-time features.
+
+ETF aggregators agree on zero reported net XRP ETF flow for November 19, but differ in holdings/AUM and preliminary coverage:
+- Crypto ETF Today reports 30-day net flow -$19M, AUM $1.08B, cumulative +$1.79B, with November 19 zero and November 17 -$6M total.
+- TradersWeek reports zero November 19 net flow, 7-day net flow -$8.4M and holdings around 1.15B XRP; its November 19 figures are preliminary, with five of six funds reported and two estimated from holdings changes.
+
+Sources:
+https://cryptoetf.today/en/xrp-etf-flows
+https://tradersweek.com/crypto/etf-flows
+
+The agreement on zero November 19 flow is useful but still secondary. Different fund universes, estimated holdings, timing, and preliminary status prevent treating the two dashboards as identical records.
+
+### 8. High-risk workflow spot audit — EXECUTED, not a complete 69-file review
+
+Read-only main-vs-integration comparison found these specific branch changes:
+
+- `scripts/push_with_token.sh`: integration branch rejects `BRANCH=main` and directs changes through a reviewed PR; current main still permits the default direct-main push path.
+- `.github/workflows/deploy-a2a-worker.yml`: current main deploys on main push or manual dispatch; integration branch removes push deployment and requires explicit `YES` deployment and separate `YES` secret-rotation inputs, exact current main SHA, and pinned actions.
+- `.github/workflows/deploy-databricks.yml`: integration branch disables the legacy overwrite workflow. Its own explanation says the legacy script overwrites workspace files, resets an unpaused scheduled job and triggers a run.
+- `.github/workflows/coinbase-paper-trader.yml`: integration branch disables the legacy BTC-USD paper trader because it calls an external LLM and writes simulated trades to repository state without an exact per-run approval gate.
+- `.github/workflows/kaggle-competitions.yml`: explicit YES, competition allowlist, exact main SHA, and a check that main has not advanced are retained.
+
+These are meaningful safety improvements on the integration branch, not yet on main. The complete transitive review of all 69 changed workflows and their scripts remains unfinished. No deployment, secret rotation, Databricks write, Kaggle submission, paper trade, or Space restart was run.
+
+### 9. Verification boundary after this documentation update
+
+The preceding code head `0685526ea9c754b99032d39811f9d68d4d6db1f3` passed the full repository suite (4,440 passed, 1 skipped, 0 failed) and exact-head dependency/money/A2A/Pages validation checks. The subsequent handoff-only commit `3b86b8cbf1777a4c61ef40242f811e805daf8d68` changes no runtime code. Its own full-suite CI was still in progress at the time this research addendum was prepared; do not describe that documentation commit's exact-head suite as complete until GitHub reports a conclusion.
+
+The PR remains draft, no independent approval is present, branch-protection configuration remains unreadable through the current integration permission (HTTP 403), and automatic Pages publication remains an unapproved merge side effect. No merge or mainline modification was performed.
