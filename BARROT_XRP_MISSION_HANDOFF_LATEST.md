@@ -6911,3 +6911,203 @@ No directional forecast, paper trade, real-money action, Kaggle submission, Data
 All 15 open PRs remain preserved. #1663 is blocked on draft status, independent review and branch-protection visibility. #1671 remains a separate security-sensitive draft: it overlaps #1663 in `.github/workflows/barrot-self-upgrade.yml`, `.github/workflows/ci.yml`, `tests/test_external_action_gates.py` and `tests/test_v3_scripts.py`; it re-enables a dispatchable self-upgrade workflow with write permissions/Groq secret access and must not be imported without a distinct security decision. #1664 remains a separate staged-product branch with overlapping workflow/docs paths and no publication authorization. #1668 remains a separate provider-failover objective with broad write permissions and external-provider secrets. #1666 remains unique/unreviewed pending Kaggle dependency compatibility. #1665 is duplicate-content candidate only after main verification. #1541 is a superseded-content candidate only after lossless reconciliation. #1670 and older research-ledger PRs remain unique/unreviewed and preserved.
 
 Next: continue the transitive workflow/script/security audit; reconcile #1671 and #1664 against the integration branch without importing their external-action behavior; obtain independently verifiable review/branch-protection evidence before any merge decision; establish independent WORM/timestamp anchoring; then obtain synchronized historical XRP spot, order-book, derivatives, ETF and exchange-flow receipts and complete the leakage-safe baseline/learned-candidate evaluation. The integration branch's existing hourly/daily ingestion schedules remain inactive on main until a safe merge. Forecast remains **NOT_ISSUED**.
+
+
+---
+
+## Run 12 — 2026-11-20T01:08:40Z
+
+### 1. Repository state, integration ancestry, and exact-head evidence
+
+**DESIGNED:** Keep PR #1663 as the single XRP/V3 integration workstream. Do not create a successor PR while the existing branch can be reconciled without conflict.
+
+**EXECUTED:** Main advanced from `e1c3634df28f488819185b7d5697d474bc0bcb9e` to `6099445de23754a62908d6325af7f15b19191bd8` through one paid-issue scan commit. Its only changed paths were `PAID-ISSUES.md` and `data/money/paid_issues.json`; neither path was changed by PR #1663. Their integration-branch blobs matched the merge base, so the main update was reconciled without a conflict.
+
+A non-force merge commit was added to the existing integration branch:
+
+- Merge commit: `31d4c850843753ba33078044faa1effe3f0c3559`
+- Parents, in order: prior integration head `76490f78178d2a7b602c451096d52374fb297b2c`, then current main `6099445de23754a62908d6325af7f15b19191bd8`
+- Result: 485 commits ahead, 0 behind main
+- No branch rewrite, force-push, new branch, new PR, main merge, or PR closure.
+
+Tree inspection was complete and not truncated: main 1,739 entries; integration 3,012 entries. PR #1663 remains draft, 1,470 changed files, 485 commits, and is still the only XRP/V3 integration PR.
+
+**VERIFIED — prior exact head only:** `76490f78178d2a7b602c451096d52374fb297b2c` passed the full repository suite in CI run [44646074446](https://github.com/Barrot-Agent/B-Agent/actions/runs/44646074446): 4,375 passed, 1 skipped, 11 warnings, 19 subtests, 198.63 seconds. Inclusive coverage was 71%; legacy/core 81%; XRP telemetry 92%; MMI 92%; feature store 80%; forecast ledger 97%; point-in-time features 89%; source registry 95%; integration 62%; AGI orchestrator 52%.
+
+Exact-head dependency audit [44646074489](https://github.com/Barrot-Agent/B-Agent/actions/runs/44646074489) passed all six manifests. Money audit [44646074442](https://github.com/Barrot-Agent/B-Agent/actions/runs/44646074442) passed. Pages validation-only passed. Fail-closed gate [44646137571](https://github.com/Barrot-Agent/B-Agent/actions/runs/44646137571) blocked merge.
+
+**NOT VERIFIED:** The new merge commit `31d4c85` and the subsequent handoff append have not inherited those test results. New exact-head CI, dependency audit, money audit, and fail-closed results must be checked on the final branch head.
+
+The full-suite log also reported that the GitHub Actions cache budget was exhausted and cache writes became read-only. This was a warning, not a test failure.
+
+Main's current commit has a successful scheduled Cross Analysis run [44649415091](https://github.com/Barrot-Agent/B-Agent/actions/runs/44649415091). Its paid-issue scan triggered Pages deployment [44647718601](https://github.com/Barrot-Agent/B-Agent/actions/runs/44647718601), which succeeded. This was an automatic main-branch side effect, not an action taken in this run. It demonstrates that merging PR #1663 would publish its website changes through Pages; explicit publication authorization remains unresolved.
+
+### 2. Workflow, dependency, and security audit
+
+**EXECUTED:** All 68 workflow YAML paths changed by PR #1663 were fetched and surface-reviewed for triggers, token permissions, secret references, deployment commands, external actions, and command surfaces. The no-permission legacy stubs fetched in this pass were quarantined/inert with `permissions: {}` and disabled job conditions. No unpinned external `uses:` reference was observed in the 68-path integration set. This is a workflow surface audit, not completion of every transitive script/data-flow review.
+
+Specific integration-branch controls verified:
+
+- `xrp-public-ingestion.yml` is scheduled on the integration branch, uses read-only repository permissions, and is not active on main.
+- `barrot-ops.yml` is manual, requires an exact main SHA and explicit confirmation, applies a Databricks host allowlist and create-only target handling; its Kaggle path is download-only.
+- `kaggle-competitions.yml` is manual, requires explicit confirmation and a competition allowlist; no submission occurred.
+- `deploy-a2a-worker.yml` on the integration branch is manual-only, requires both `confirm=YES` and `confirm_secret_rotation=YES`, and uses pinned action SHAs; it was not run.
+- `release.yml` grants `contents: write` only on tag publication; no tag was created.
+- `coinbase-paper-trader.yml`, `signal_ledger.yml`, `self-benchmark.yml`, `sync-huggingface.yml`, `sync-self-hosted-brain.yml`, `paid-issue-publish.yml`, and other legacy automation stubs remain disabled or read-only.
+- `paid-issue-hunter.yml` is scheduled/read-only; no paid issue was published.
+
+**New security finding — PR #1672:** The separate OpenCode A2A task-bridge branch is not safe to integrate in its current form.
+
+- Its `deploy-a2a-worker.yml` runs on pushes to main, not only manual dispatch, and would deploy a Cloudflare Worker and set its shared-secret environment value as a merge side effect.
+- It references `actions/checkout@v7` and `cloudflare/wrangler-action@v4` by mutable tags rather than full commit SHAs.
+- `opencode.json` grants broad `bash`, `edit`, and external-directory permissions.
+- The MCP server starts a background runner when configured; the OpenCode child process inherits the server environment. The runner invokes OpenCode without an OS sandbox, environment allowlist, network-egress restriction, or enforced per-task approval boundary.
+- Prompt text instructing the model not to expose secrets or perform writes is not a technical security boundary. The argv-based subprocess invocation did not show `shell=True`, but arbitrary shell execution is deliberately enabled inside OpenCode.
+- Worker rate limiting is in-memory/per-isolate, not a durable identity-based quota.
+- PR #1672's CI run [44651663961](https://github.com/Barrot-Agent/B-Agent/actions/runs/44651663961) passed 1,219 tests with 2 skipped and 78% coverage; A2A worker tests and money audit passed. Its “Merge disabled pending gate verification” job [44651663890](https://github.com/Barrot-Agent/B-Agent/actions/runs/44651663890) is a successful no-op fail-closed job, not merge authorization. No dependency audit ran on that head.
+- **Decision:** keep #1672 blocked. Do not merge, deploy, set/rotate its Worker secret, or enable the runner without a separate security redesign and specific deployment approval.
+
+Other open work remains blocked or preserved as described in section 8 below. Branch-protection inspection still returns HTTP 403; the returned fallback ruleset is disabled. Effective branch-protection requirements and administrator enforcement remain unverified. PR #1663 has no independent approving review and remains draft.
+
+### 3. Fresh market and flow observations — research-only, not model inputs
+
+Browser-rendered public API observations were retrieved around 2026-11-20 01:12 UTC. They have no raw-byte SHA-256 receipts and are excluded from the feature store.
+
+- Kraken XRP/USD: last $0.95963; bid $0.95860; ask $0.95862; 24-hour volume 46.097M XRP; trade count 33,849; VWAP $0.97310876; 24-hour high $0.9968 and low $0.9520. Kraken did not expose an event timestamp in the returned ticker.
+- OKX XRP/USDT: last 0.9658; bid 0.9658; ask 0.9659; 24-hour volume 38.589M XRP; quote volume 37.509M USDT; event timestamp 2026-11-20T01:11:09.371Z.
+- OKX USDT/USD: last 0.99889, timestamp 2026-11-20T00:35:25.068Z. It was roughly 36 minutes older than the XRP/USDT observation. USD normalization was rejected; the apparent cross-venue price difference is not a synchronized basis or arbitrage signal.
+- Binance XRPUSDT perpetual premium endpoint: mark $0.9610; index $0.96163526; last funding rate 0.00000060 per eight hours (0.00006%); endpoint timestamp 2026-11-20T01:03:29Z. This is one venue, not a market-wide derivatives signal.
+- Direct depth endpoints did not return usable synchronized Level-2 data. No order-book depth or executable-liquidity claim is admitted.
+
+Sources: [Kraken ticker](https://api.kraken.com/0/public/Ticker?pair=XRPUSD), [OKX XRP ticker](https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT), [OKX USDT/USD ticker](https://www.okx.com/api/v5/market/ticker?instId=USDT-USD), [Binance perpetual premium](https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT).
+
+**ETF-flow update:** CryptoKeyhole refreshed at approximately 00:57 UTC on November 20. Its three daily-reporting U.S. spot funds showed a provisional November 18 net outflow of 3,251 XRP; the latest five complete days (November 12–18) totaled approximately -876,320 XRP; cumulative flows from October 23 through November 18 were approximately -7,504,058 XRP; reported holdings were approximately 659.16M XRP across those three reporting funds. November 19 issuer files were not yet available. The tracker does not cover every product in its wider list.
+
+A separately indexed article claimed an 11-day inflow streak and $170M of inflows, but its own body referenced August dates and an August 27 price. It is stale/misdated and is rejected as November evidence. Do not average it with the issuer-file-based tracker.
+
+[XRP ETF flow tracker](https://cryptokeyhole.com/etf-flows/xrp/). The prior XRP Insights wallet-attribution snapshot remains approximately 22.18B XRP across 707 wallets attributed to 24 exchanges, with seven-day and 30-day same-wallet changes of approximately -155.7M and -444.3M XRP. It includes cold and wrapped reserves; it is not tradable float or proof of customer withdrawals. [XRP Insights](https://xrp-insights.com/).
+
+### 4. Institutional, custody, stablecoin, and payment-rail reconciliation
+
+**Ripple and Circle now both have active federally chartered trust-bank entities.**
+
+- OCC's Corporate Applications Search records Ripple National Trust Bank as approved on 2025-12-12 and consummated/effective on 2026-10-26. The OCC trust-bank list active as of 2026-10-31 includes Ripple National Trust Bank, charter 25364.
+- The same OCC list includes First National Digital Currency Bank, N.A., charter 25361. Circle's current licensing page identifies that entity as operating under the name Circle National Trust. Circle's Q2 2026 results report final OCC approval.
+- These are national trust-bank/custody structures, not ordinary deposit-taking retail banks. Circle states that Circle National Trust does not accept deposits or make loans. Ripple's OCC application is for trust-company/fiduciary activities, including RLUSD reserve administration and institutional digital-asset custody; do not infer retail deposits or general commercial lending.
+
+Primary sources: [OCC Ripple CAS record](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2), [OCC active trust-bank list, 2026-10-31](https://occ.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf), [Circle licenses](https://www.circle.com/legal/licenses), [Circle National Trust](https://www.circle.com/circle-national-trust), [Circle Q2 2026 results](https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results).
+
+**DTCC / Ripple Prime distinction:**
+
+- DTCC's May 4, 2026 release explicitly lists Ripple Prime in the DTCC Industry Working Group alongside Goldman Sachs and J.P. Morgan. This confirms working-group participation.
+- It does not establish that Ripple Prime is a direct DTC Tokenization Service participant, that it clears through DTC in its own name, or that XRP is used in the service.
+- DTCC's October 28 launch release lists 20 direct DTC Tokenization Service participants; Ripple Prime is not among them. The service is currently integrated with Canton Network and DTCC's private Besu network. The November 12 release announces a future Solana connection; other network additions are planned for 2027. XRPL is not listed as a current supported network.
+- Therefore, “Ripple Prime is operating inside DTCC alongside Goldman/JPM” overstates the evidence. The supported statement is “Ripple Prime participates in DTCC's industry working group.”
+
+Primary sources: [DTCC working-group announcement, 2026-05-04](https://www.dtcc.com/press-releases/2026/dtcc-advances-development-of-new-tokenization-service), [DTCC Tokenization Service launch, 2026-10-28](https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live), [DTCC Tokenization Hub](https://www.dtcc.com/products-and-services/digital-assets/tokenization/hub).
+
+**Circle / SBI / competing rails:**
+
+- Circle's Q2 2026 release identifies SBI Group and DTCC among Arc's founding third-party validator cohort. The release does not name the exact SBI legal entity; do not silently convert “SBI Group” into SBI Holdings, SBI VC Trade, or one of the Japanese regional SBIC companies.
+- Circle's November 18 Reuters announcement with DBS gives eligible institutions direct USDC minting/redemption and 24/7 USD-USDC settlement in Asia.
+- Coinbase and PNC's November 9 pilot lets eligible PNC institutional clients receive Circle USDC and automatically convert it to USD. This is a direct Coinbase/PNC distribution and service relationship using Circle-issued USDC, not XRP.
+- DBS also launched a separate tokenized-deposit cross-border solution with J.P. Morgan. These are credible alternative dollar/payment rails and must be included as counter-hypotheses to any claim that XRP is required for all institutional cross-border settlement.
+- Ripple and Coinbase's October 28 RLUSD distribution agreement is a direct commercial relationship across Coinbase retail, Exchange and Prime. RLUSD support on XRPL, Base and Ethereum does not prove XRP is required as a bridge asset. Circle's USDC availability on XRPL is likewise not proof of a Ripple-Circle corporate partnership or XRP demand.
+
+Sources: [Circle Q2 results](https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results), [DBS-Circle Reuters, 2026-11-18](https://www.reuters.com/world/asia-pacific/dbs-partners-with-circle-expand-institutional-access-usdc-asia-2026-11-18/), [PNC-Coinbase Reuters, 2026-11-09](https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/), [Ripple press center](https://ripple.com/press-releases/).
+
+### 5. Evernorth capital and lending-claim correction
+
+The May 5 Kamilah video claim that Evernorth committed 400M XRP to “native lending” is not substantiated at that level of specificity.
+
+- Evernorth's SEC prospectus reports approximately 473.276M XRP in its post-close treasury as of October 9, 2026 and says yield strategies commenced following closing.
+- The prospectus describes potential traditional and decentralized lending/yield strategies, but does not disclose that 400M XRP was deployed, the amount actually lent, a named protocol, loan counterparties, utilization, or realized yield.
+- Evernorth's September 30 10-Q reports approximately 346.285M XRP before the business combination, approximately $91K cash, a working-capital deficit of about $10M, and an accumulated deficit of about $185.6M. Those pre-close financial figures must not be confused with post-close treasury holdings.
+- XRP contributed in kind, Ripple's Pathfinder contribution, SBI's $200M equity investment in Evernorth, warrant proceeds, debt, and actual cash purchases are separate capital categories. None can be substituted for another.
+
+Primary filings: [SEC filing accession 0001628280-26-073926](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/), [Evernorth prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm).
+
+### 6. Kamilah Stevenson channel verification and public-video inventory
+
+Channel-level identity is now stronger than the prior unresolved candidate: the Linktree profile `DrKamilahstevenson1` links to YouTube handle `@drkamilahstevenson`, whose channel ID is `UCqUPJMQdkCN6lsLVDnichPA`. This is a cross-platform self-link, not independent verification of legal identity, academic credentials, or professional licenses.
+
+Verified creator-channel uploads found in this search:
+
+1. [Ripple Just Became a BANK — And XRP Holders Need to Understand This](https://www.youtube.com/watch?v=QslbjGQD0MU), 2025-12-13.
+2. [If Ripple Became a Bank, Why Isn't XRP Moving? Let Me Explain](https://www.youtube.com/watch?v=CR680fV7bcY), 2025-12-15.
+3. [Motley Fool just predicted XRP will fall below $1 within 5 years — here's what they're missing](https://www.youtube.com/watch?v=SId2NMmBi3s), 2026-05-05.
+
+The May 5 video's principal claims were red-teamed:
+
+- “Ripple just became a bank” was premature as a December 2025 statement: OCC approval was then preliminary/conditional. It became accurate only in the narrower trust-bank sense after final effectiveness on October 26, 2026.
+- “400M XRP in native lending” is not supported by a disclosed deployed amount or protocol in Evernorth's SEC filings.
+- Ripple Prime's DTCC working-group membership is real, but is not evidence of direct DTC Tokenization Service participation or XRP settlement.
+- “Japanese banks are running live production corridors at 60% less than SWIFT” remains unverified. The official XRP Tokyo agenda shows institutional-adoption programming and a GMO Aozora Bank speaker, but no primary bank cost study, named corridor, transaction sample, or audited 60% comparison was located.
+- “XRP eliminates trillions in trapped capital” and “a pattern that has never failed” are promotional/generalized claims, not measured evidence or validated forecasts.
+- Video descriptions include affiliate/education calls to action; preserve that incentive context when evaluating claims.
+
+The separate channel `@KamilahStevensonXrpStocks`, ID `UCXm6KAr1WHF6UN7g5b2W7wg`, is not linked from the verified Linktree and remains a separate unverified identity candidate. Do not attribute its uploads to the verified channel.
+
+Sources: [Linktree](https://linktr.ee/DrKamilahstevenson1), [verified channel](https://www.youtube.com/@drkamilahstevenson), [official XRP Tokyo site](https://xrptokyo.com/).
+
+### 7. Exact-phrase and macro continuation
+
+- `ASK Coin`: no verified primary-source XRP relationship found. Permission Coin's ASK token and unrelated Ask Coin exchange references remain separate candidates.
+- `actual capital`: no primary source located for the exact phrase in the current Kamilah/XRP context. It must not be conflated with SBI's “Actual XRP” label for Ripple non-escrow holdings.
+- `SBIC, ChatGPT SBIC`: no exact primary-source phrase match. The SBIC West ChatGPT/generative-AI seminar is an educational event, not an OpenAI partnership. SBIC East/Central/West remain separate Japanese regional SME investment companies, not SBI Holdings.
+
+Macro context: a Reuters November 19 poll found 86% of surveyed economists expected the BOJ to raise its policy rate from 1.25% to 1.50% at the December 17–18 meeting; the yen was near 160 per USD. This is a poll, not a BOJ decision. The FOMC minutes released November 18 add U.S. rate/inflation uncertainty. These belong in event features and FX/capital-flow scenarios, not as stand-alone XRP directional signals.
+
+[Reuters BOJ poll, 2026-11-19](https://www.reuters.com/world/bank-japan-raise-interest-rates-december-again-by-end-march-economists-say-2026-11-19/), [Federal Reserve October 27–28 minutes](https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm).
+
+### 8. Prediction-engine implementation and readiness
+
+Current inspected code on the integration branch confirms:
+
+- `xrp_public_ingestion.py` version 3.32: explicit host allowlist; 300-second live ticker age; 60-second order-book age; 60-second OKX quote-basis skew; one-year Coinbase hourly backfill cap; ingestion-only behavior.
+- `feature_store.py`: append-oriented SQLite point-in-time store with receipt/manifest checks. Its own documentation correctly states that local unkeyed hashes and SQLite triggers are not an adversarial tamper-proof boundary.
+- `walk_forward.py`: chronological point-in-time availability checks and four deterministic baselines: naive class prior, momentum sign, mean-reversion sign, and volatility-normal.
+- `forecast_ledger.py` readiness policy v6: minimum 100 out-of-sample samples, 100 shadow samples, horizon-multiple guard, five independent source groups, weighted calibration error at or below 0.05, and externally managed Ed25519 evaluator keys.
+- `feature_drift.py`: diagnostic PSI-based univariate drift monitor; it does not itself authorize forecasts.
+- `scenario_hypotheses.py`: provenance-bound, explicitly authored hypotheses and counter-hypotheses; it does not infer causality or generate probabilities.
+
+Still missing: independent WORM/timestamp anchoring; broader synchronized historical depth/flow/derivatives/ETF datasets; a learned candidate with leakage-safe out-of-sample superiority over all four baselines; stable calibration and multivariate/concept-drift validation; completed shadow evaluation; independent signed evaluator attestation.
+
+**Forecast status: NOT_ISSUED.** The fresh web observations in this run are not receipt-backed feature-store inputs. No directional forecast, paper trade, or real-money action was made.
+
+### 9. Current open PR inventory — 16 open, none closed
+
+The REST `/pulls?state=open` inventory returned 16. The earlier issue-search result omitted older open PRs #1665 and #1666; they remain open.
+
+| PR | Classification | Reason |
+|---|---|---|
+| #1663 | blocked — primary XRP/V3 integration | Draft; no independent approval; branch protection inaccessible; Pages publication boundary unresolved; exact new-head checks pending |
+| #1672 | blocked — A2A/OpenCode task bridge | Push-to-main auto-deploy, unpinned action tags, broad OpenCode permissions, inherited secrets, no OS sandbox/approval boundary |
+| #1671 | blocked — inbound GPT Actions gate | Security-sensitive workflow/API changes require route-authentication and write-scope review |
+| #1668 | blocked — provider failover | Overlapping worker paths and provider-secret/workflow review required |
+| #1664 | blocked — staged paid-issue pack | Large unrelated change; publication and paper-trading boundaries require review |
+| #1666 | blocked — Kaggle dependency compatibility | Widens Kaggle to `<1.8` despite documented `rpds-py`/Rust compatibility risk at >=1.6 |
+| #1665 | unique dependency update; possible future duplicate | Main still has Pylint >=4.1.3; integration has >=4.1.4; do not close until main is verified |
+| #1670 | unique/unreviewed | Separate creative-music workstream; preserve |
+| #1541 | unique/unreviewed MMI security | Stacked claim-bound provenance work; five overlapping paths do not make it a duplicate |
+| #1460 | unique/unreviewed research lineage | Preserve |
+| #1450 | unique/unreviewed research lineage | Preserve |
+| #1440 | unique/unreviewed research lineage | Preserve |
+| #1437 | unique/unreviewed research lineage | Preserve |
+| #1436 | unique/unreviewed research lineage | Preserve |
+| #1353 | unique/unreviewed research lineage | Preserve |
+| #1265 | unique/unreviewed research lineage | Preserve |
+
+No PR was merged, closed, or bulk-triaged. No new PR was created.
+
+### 10. Next concrete actions
+
+1. Verify full-suite CI, dependency audit, money audit, and fail-closed gate on the final post-handoff branch head; do not reuse the `76490f` result.
+2. Finish the transitive workflow/script audit, prioritizing A2A runner, self-upgrade, paid-issue publication, Kaggle, and Databricks paths.
+3. Keep #1672 blocked until its deployment trigger, pinned actions, sandbox, environment inheritance, task authorization, and secret boundaries are redesigned and separately approved.
+4. Obtain independently verifiable branch-protection and review evidence; resolve the Pages publication authorization boundary.
+5. Add independently controlled immutable raw-source anchoring.
+6. Expand synchronized historical XRP spot, depth, derivatives, exchange-flow, collateral, ETF, stablecoin, and event datasets.
+7. Build and evaluate a learned candidate against all four baselines; retain the forecast issuance gate until OOS and shadow requirements pass.
+
+No Cloudflare deployment, Pages deployment initiated by this run, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, funds transfer, paper trading, or real-money action occurred. The Pages deployment noted above was an automatic main-branch side effect from the pre-existing paid-issue scan commit.
