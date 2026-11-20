@@ -2468,3 +2468,105 @@ No PR was closed. Do not bulk-close unique research or feature work. Reclassify 
 8. Accumulate enough independent snapshots and non-overlapping labeled horizons to evaluate all four baselines, calibration, drift, candidate readiness and a later independent shadow cohort.
 9. Keep forecast issuance NOT_ISSUED until those gates pass. No real-money or paper-trading actions.
 
+
+
+## Run 240 research addendum — Japan SBIC identity, FIEA, SBI/Circle/Ripple links, Kamilah attribution
+**Research cutoff:** 2026-11-20 16:26 UTC. Primary-source findings are separated from secondary reporting and unresolved attribution.
+
+### Japan's SBIC identity — RESOLVED from primary evidence
+
+Japan's “SBIC East / Central / West” refers to three separate regional Small and Medium Business Investment & Consultation companies created under the Japanese Small and Medium Business Investment & Consultation Company Act (Act No. 101 of 1963). The statute names the Tokyo, Nagoya and Osaka companies; the companies' own profiles identify the other two as sister companies:
+
+- Tokyo Small and Medium Business Investment & Consultation Co., Ltd. — East Japan; corporate number 9011001030621; established 15 November 1963; official profile: https://www.sbic.co.jp/company/profile/
+- Nagoya Small and Medium Business Investment & Consultation Co., Ltd. — Central Japan; established 18 November 1963; official profile: https://www.sbic-cj.co.jp/company/profile/
+- Osaka Small and Medium Business Investment & Consultation Co., Ltd. — West Japan; established 20 November 1963; official profile: https://www.sbic-wj.co.jp/company/profile/
+- The Osaka SBIC's published text of the governing Act identifies the three companies and their statutory purpose: https://www.sbic-wj.co.jp/disclose/law/
+
+These are not SBI Holdings, Inc. The latter is a separate financial-services holding company established in 1999 and listed on the Tokyo Stock Exchange Prime Market under 8473: https://www.sbigroup.co.jp/company/profile.html. The three Japanese SBICs are sister companies under a 1963 statute, not regional divisions of SBI Holdings. No primary evidence reviewed establishes an SBI Holdings parent/subsidiary relationship. The public profile pages summarize shareholder categories rather than exposing a complete shareholder register, so do not make a stronger negative claim about every possible minority shareholding.
+
+“SBIC” is also used in the United States for SBA-licensed Small Business Investment Companies; that U.S. regulatory meaning is separate from the three Japanese regional corporations. Do not conflate either meaning with SBI Holdings or SBI Shinsei Bank.
+
+### Japan's 2026 crypto/FIEA reform — claim partly confirmed, timing corrected
+
+The FSA's Financial System Council Working Group report recommended moving crypto-asset regulation from the Payment Services Act to the Financial Instruments and Exchange Act and classifying crypto-assets as financial instruments distinct from securities:
+https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/02.pdf
+
+The Diet record for Cabinet Bill 57 confirms passage by the House of Representatives on 11 June 2026, passage by the House of Councillors on 15 July 2026, and promulgation on 23 July 2026 as Act No. 64 of 2026:
+https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm
+
+The official House summary says the amendment establishes crypto-asset information disclosure, crypto trading-business regulation and unfair-trading controls:
+https://www.shugiin.go.jp/Internet/itdb_rchome.nsf/html/rchome/Horitsu/zaimu36970C7C54FB6F5649258E120016B355.htm
+
+The core crypto-asset provisions were not yet in force as of this research cutoff; the commencement date is to be set by Cabinet Order within one year of promulgation. The August 12, 2026 commencement applied to specified penalty and investigative-power provisions, not the entire crypto-asset framework. The law does not declare XRP to be a security. It creates a FIEA framework for crypto-assets as financial instruments distinct from securities. The phrase “over 100 assets” is not an XRP-specific list in the statute or the FSA summary; treat the count as an unverified market-listing count until a primary official list is produced.
+
+### SBI / Ripple / Circle / Coinbase — direct and indirect relationship map
+
+**SBI Holdings ↔ Ripple**
+- SBI Holdings and Ripple formed SBI Ripple Asia in 2016 as a joint venture for blockchain-based cross-border payments and financial services in Japan and Korea.
+- SBI Remit used Ripple DLT for Japan–Thailand remittances from 2017 and Japan–Vietnam remittances from 2019. Those early DLT services should not automatically be described as XRP bridge usage.
+- SBI Remit introduced XRP as a bridge currency in 2021 for Japan-to-Philippines digital-wallet remittances. In September 2023, SBI Remit, SBI VC Trade and SBI Ripple Asia announced expansion of the XRP-based bank-account remittance service to the Philippines, Vietnam and Indonesia. The announcement states that SBI VC Trade supplies XRP in real time in response to SBI Remit's remittance requests. This is a documented production XRP use case, not merely an XRPL proof of concept.
+- Primary sources: https://www.sbigroup.co.jp/news/2023/0906_14052.html and https://www.sbigroup.co.jp/english/company/group/sbiremit.html
+
+**SBI Ripple Asia / XRPL versus XRP**
+- On 26 February 2026, SBI Ripple Asia announced a conceptual proof of tokenized deposits and deposit-backed digital money using MoneyTap and its token-issuance platform, with XRPL as the contemplated blockchain. This is an XRPL ledger proof of concept; it does not establish XRP as the bridge asset or a production settlement asset in that design.
+- Primary source: https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
+
+**SBI VC Trade ↔ Ripple / RLUSD**
+- SBI Holdings, SBI VC Trade and Ripple/Standard Custody agreed in August 2025 to work toward RLUSD issuance and distribution in Japan: https://www.sbigroup.co.jp/news/2025/0822_15680.html
+- SBI VC Trade began RLUSD trading on 24 June 2026. RLUSD is issued by Ripple subsidiary Standard Custody & Trust Company. Crucial chain limitation: VCTRADE service supports Ethereum only; the official notice says deposits/withdrawals of RLUSD on other chains, including XRPL, are not supported in that service. Therefore the SBI RLUSD listing is not proof of an SBI-operated RLUSD/XRPL settlement rail and does not itself create XRP bridge demand.
+- Primary source: https://www.sbivc.co.jp/newsview/bsqs09vn_yzv
+- SBI VC Trade's dated RLUSD page reported circulation of $1.8665B and reserve assets of $1.9813B as of 27 August 2026. These are dated figures, not a current November snapshot: https://home.sbivc.co.jp/rlusd
+
+**SBI ↔ Circle**
+- On 9 June 2025, SBI Holdings and SBI Shinsei Bank announced strategic Circle share purchases at the NYSE IPO: $25M each, $50M combined.
+- Circle's SEC S-1 independently identifies SBI Holdings as a partner to expand USDC access in Japan.
+- Primary sources: https://www.sbigroup.co.jp/news/2025/0609_15491.html and https://www.sec.gov/Archives/edgar/data/1876042/000119312525178989/d839239ds1.htm
+
+**Coinbase ↔ Circle**
+- Circle's S-1 says Coinbase received a minority equity stake under the August 2023 collaboration. The S-1's June 30, 2025 ownership table reports Coinbase with 8,367,442 Class A shares (4.0%) before the IPO offering and 7,901,791 shares (3.7%) after the full underwriters' option; voting power was 2.8% before and 2.6% after.
+- Circle acquired Coinbase's remaining 50% interest in Centre for $209.9M in Circle shares in August 2023; Centre became wholly owned by Circle and was dissolved in December 2023. Circle states that it has sole governance over the Circle stablecoin network after the restructuring.
+- Under the Collaboration Agreement, Coinbase receives party-product economics based on USDC held in each party's custodial products/managed wallets and 50% of the remaining payment base after Circle's issuer retention and approved-participant payments. This is not “50% of all Circle revenue” or a direct 50% ownership of USDC reserves.
+- Circle reported that Coinbase-held USDC represented approximately 20% of circulation at December 31, 2024 and 21% at June 30, 2025; Coinbase's daily weighted-average share was approximately 23% for the first half of 2025, based on information Coinbase supplied to Circle.
+- SEC primary source: https://www.sec.gov/Archives/edgar/data/1876042/000119312525178989/d839239ds1.htm
+
+**SBI ↔ Coinbase**
+- No direct SBI–Coinbase joint venture or direct operating partnership was established by the primary evidence reviewed.
+- The indirect connection is through Circle: Coinbase is a minority shareholder and major USDC distributor; SBI Holdings and SBI Shinsei Bank invested in Circle and SBI Holdings is a Circle USDC-access partner in Japan. This is a shared Circle ecosystem relationship, not proof of a direct Coinbase–SBI agreement.
+- Ripple and Circle also have distinct stablecoin roles: RLUSD is Ripple-issued; USDC is Circle-issued. USDC availability on XRPL does not make USDC an XRP bridge asset.
+
+### SBI Shinsei Bank crypto-interest pilot — secondary claim, not yet primary-confirmed
+
+The XRP Podcast interview discussed a reported SBI Shinsei Bank pilot in which part of deposit interest could be redeemed as crypto vouchers for BTC, ETH and XRP. Secondary reports attribute the June 10, 2026 start and 20% interest share to Nikkei. No matching primary bank press release or published redemption-volume result was located in the official news archive search.
+
+Do not conflate this report with SBI Shinsei Bank's official February 2026 XRP voucher campaign, which awards an XRP voucher based on the qualifying deposit amount, not a conversion of deposit interest:
+https://www.sbishinseibank.co.jp/campaign/cam_2602_xrp_trade/
+
+Even if the interest-voucher pilot operated as reported, it is a retail rewards mechanism. Without redemption records, SBI VC Trade execution data or disclosed XRP purchases, it does not establish a measurable net spot-market inflow.
+
+### Dr. Kamilah / Camilla Stevenson — person verified; channel attribution still unresolved
+
+A public XRP Podcast interview with Paul Barron, published 11 June 2026, identifies the guest as Dr. Kamilah Stevenson. In the interview she self-reports X as “cam_i_am_cam,” Instagram as “Kamilla Stevenson,” and YouTube as “doctor Camilla Stevenson”; the transcript also records her warning that fake pages exist. The interview is a primary statement by the guest, but the transcription has spelling/phonetic variation between Kamilah, Kamilla and Camilla.
+
+Verified public appearance:
+- Paul Barron Podcast, “Crypto Panics! with Dr. Kamilah Stevenson”: https://www.youtube.com/watch?v=Sulo54IlQ60
+- Official website/marketing page surfaced in search: https://learn.kamilahstevenson.com/
+
+Two candidate channels surfaced, but neither is yet linked from a verified first-party profile or website:
+- https://www.youtube.com/@drkamilahstevenson (channel ID UCqUPJMQdkCN6lsLVDnichPA)
+- https://www.youtube.com/@KamilahStevenson-t1o (channel ID UCMyxBSCnhvuYsyrOqTJ1N5w)
+
+Do not attribute either candidate's video catalog to the interview guest yet. Her explicit warning about fake pages makes name-only matching unsafe. One verified guest appearance is not an inventory of her own channel.
+
+### Exact-phrase research status
+
+- “ASK Coin” + XRP/Ripple: no credible exact-phrase primary-source match surfaced.
+- “actual capital” + XRP/Ripple: no credible exact-phrase primary-source match surfaced. The interview uses related but different wording about real assets moving across payment rails; do not rewrite that as the exact phrase.
+- “SBIC, ChatGPT SBIC”: no credible exact-phrase primary-source match surfaced.
+- These are unresolved searches, not proof that no such use exists.
+
+### Verification and remaining work
+
+- Exact full-suite verification on the prior handoff code head 866538b36b4aca92f2cd911a8c69c23ea20d3bf7 passed again: 4,440 passed, 1 skipped, 0 failed, 11 warnings, 23 subtests; 73.08% total coverage and 82% legacy core coverage. Dependency audit, worker tests and Pages validation-only build passed.
+- The fail-closed gate on that head failed for the same three reasons: PR draft, no independent approving review, branch protection inaccessible (403). No merge.
+- Continue to keep XRP forecasts NOT_ISSUED until multiple point-in-time ingestion runs, external receipt anchoring, source-cluster diversity, leakage-safe OOS baseline results, calibration and independent shadow evaluation are verified.
+
