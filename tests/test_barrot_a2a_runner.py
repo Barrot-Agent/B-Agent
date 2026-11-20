@@ -113,5 +113,22 @@ class RunnerQueueTests(unittest.TestCase):
         client.complete.assert_not_called()
 
 
+    def test_singleton_lock_prevents_duplicate_runners(self) -> None:
+        import os
+        import tempfile
+        from scripts.barrot_a2a_runner import acquire_runner_lock, runner_is_active
+
+        with tempfile.TemporaryDirectory() as directory:
+            lock_path = Path(directory) / "runner.lock"
+            with patch.dict(os.environ, {"BARROT_A2A_LOCK_FILE": str(lock_path)}):
+                lock = acquire_runner_lock()
+                self.assertIsNotNone(lock)
+                try:
+                    self.assertTrue(runner_is_active())
+                finally:
+                    lock.close()
+                self.assertFalse(runner_is_active())
+
+
 if __name__ == "__main__":
     unittest.main()
