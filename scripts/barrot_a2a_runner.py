@@ -236,9 +236,9 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     base_url = os.getenv("BARROT_A2A_URL", "").strip()
-    secret = os.getenv("BRAIN_SHARED_SECRET", "")
+    secret = os.getenv("BARROT_AGENT_SECRET") or os.getenv("BRAIN_SHARED_SECRET", "")
     if not base_url or not secret:
-        LOG.error("BARROT_A2A_URL and BRAIN_SHARED_SECRET must be configured; values are never logged")
+        LOG.error("BARROT_A2A_URL and BARROT_AGENT_SECRET or BRAIN_SHARED_SECRET must be configured; values are never logged")
         return 2
     workdir = Path(args.workdir).expanduser().resolve()
     if not workdir.is_dir():
