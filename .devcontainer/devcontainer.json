@@ -1,12 +1,18 @@
 {
   "name": "B-Agent-Runtime",
-  "build": { "dockerfile": "Dockerfile" },
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "22"
     }
   },
-  "postCreateCommand": "npm install --global @google/gemini-cli",
+  "postCreateCommand": "npm install --global --prefix /tmp/gemini-cli @google/gemini-cli",
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/tmp/gemini-cli/bin"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
