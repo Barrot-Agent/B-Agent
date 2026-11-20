@@ -7,6 +7,7 @@ second OpenCode server or expose the local runtime to the public internet.
 from __future__ import annotations
 
 import argparse
+import fcntl
 import json
 import logging
 import os
@@ -49,6 +50,34 @@ def bounded_text(value: Any, limit: int) -> str:
     if len(text) > limit:
         return text[-limit:] + "\n[truncated]"
     return text
+
+def runner_lock_path() -> Path:
+    default = Path.home() / ".barrot" / "a2a-runner.lock"
+    return Path(os.getenv("BARROT_A2A_LOCK_FILE", str(default))).expanduser()
+
+
+def runner_is_active() -> bool:
+    path = runner_lock_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a+", encoding="utf-8") as handle:
+        try:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            return True
+        fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+        return False
+
+
+def acquire_runner_lock():
+    path = runner_lock_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    handle = path.open("a+", encoding="utf-8")
+    try:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        handle.close()
+        return None
+    return handle
 
 
 class WorkerClient:
@@ -252,14 +281,24 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    lock_handle = acquire_runner_lock()
+    if lock_handle is None:
+        LOG.info("Another Barrot A2A runner already owns the singleton lock; exiting")
+        return 0
     client = WorkerClient(base_url, secret)
     LOG.info("Barrot outbound task runner ready; workdir=%s agent=%s", workdir, args.agent)
+    error_backoff = max(1.0, args.poll_seconds)
     while True:
         try:
             did_work = run_once(client, workdir, args.agent, args.timeout_seconds, args.opencode_bin)
+            error_backoff = max(1.0, args.poll_seconds)
         except Exception as exc:
             LOG.error("Task poll failed: %s", exc)
-            did_work = False
+            if args.once:
+                return 1
+            time.sleep(error_backoff)
+            error_backoff = min(error_backoff * 2, 300.0)
+            continue
         if args.once:
             return 0
         time.sleep(max(1.0, args.poll_seconds))
