@@ -30,6 +30,8 @@ sys.path.insert(1, SCRIPTS_DIR_STR)
 
 from sandbox import verify_result
 
+from barrot_agent.orchestration.shared_runtime import ProviderClient, RetryPolicy
+
 from barrot_agent.orchestration.repository_repair import (
     ProjectIdentity,
     RepositoryRepairController,
@@ -298,6 +300,88 @@ def _groq_fallback_models(primary_model: str) -> list[str]:
     return result
 
 
+
+def _free_provider_specs() -> list[dict[str, str]]:
+    """Return only explicitly configured zero-price provider routes."""
+    specs: list[dict[str, str]] = []
+    cloudflare_token = os.environ.get("CLOUDFLARE_API_TOKEN", "").strip()
+    cloudflare_account = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "").strip()
+    if cloudflare_token and cloudflare_account:
+        specs.append({
+            "name": "cloudflare-workers-ai",
+            "url": f"https://api.cloudflare.com/client/v4/accounts/{cloudflare_account}/ai/v1/chat/completions",
+            "key": cloudflare_token,
+            "model": os.environ.get("BARROT_CLOUDFLARE_FREE_MODEL", "@cf/zai-org/glm-4.7-flash").strip(),
+        })
+
+    openrouter_key = os.environ.get("OPENROUTER_API_KEY", "").strip()
+    if openrouter_key:
+        specs.append({
+            "name": "openrouter-free",
+            "url": "https://openrouter.ai/api/v1/chat/completions",
+            "key": openrouter_key,
+            # The free router is deliberately pinned; never fall back to paid models.
+            "model": "openrouter/free",
+        })
+
+    gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    allow_gemini = os.environ.get("BARROT_ALLOW_GEMINI_FREE_TIER", "").strip().lower() in {"1", "true", "yes"}
+    if gemini_key and allow_gemini:
+        specs.append({
+            "name": "google-gemini-free",
+            "url": "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+            "key": gemini_key,
+            "model": os.environ.get("BARROT_GEMINI_FREE_MODEL", "gemini-3.1-flash-lite").strip(),
+        })
+    return specs
+
+
+def _send_zero_cost_fallback(payload: dict[str, Any]) -> dict[str, Any]:
+    """Try configured $0 routes through the V3 ProviderClient; fail closed."""
+    failures: list[str] = []
+    for spec in _free_provider_specs():
+        candidate = dict(payload)
+        candidate["model"] = spec["model"]
+
+        def send(request_payload: dict[str, Any], provider: dict[str, str] = spec) -> dict[str, Any]:
+            body = json.dumps(request_payload).encode("utf-8")
+            request = urllib.request.Request(
+                provider["url"],
+                data=body,
+                headers={
+                    "Authorization": "Bearer " + provider["key"],
+                    "Content-Type": "application/json",
+                    "User-Agent": "Barrot-Agent/1.0",
+                },
+            )
+            try:
+                with urllib.request.urlopen(request, timeout=90) as response:
+                    result = json.load(response)
+            except urllib.error.HTTPError as exc:
+                detail = exc.read().decode("utf-8", errors="replace")[:500]
+                raise RuntimeError(f"HTTP {exc.code}: {detail}") from exc
+            except urllib.error.URLError as exc:
+                raise RuntimeError(f"network error: {exc}") from exc
+            if not isinstance(result, dict) or not isinstance(result.get("choices"), list):
+                raise RuntimeError("provider returned an incompatible chat-completions response")
+            return result
+
+        client = ProviderClient(
+            name=spec["name"],
+            send=send,
+            retry_policy=RetryPolicy(max_attempts=1),
+            sleep_fn=lambda _delay: None,
+        )
+        response, _records, failure = client.request(candidate)
+        if response is not None and failure is None:
+            print(f"Barrot inference provider selected: {spec['name']}", file=sys.stderr)
+            return response
+        if failure is not None:
+            failures.append(f"{spec['name']} [{failure.code}]: {failure.message[:350]}")
+
+    details = "; ".join(failures) if failures else "no zero-cost provider credentials are configured"
+    raise RuntimeError("Groq daily quota exhausted; all configured zero-cost fallback routes failed: " + details)
+
 def _send_groq_request(
     payload: dict[str, Any],
     *,
@@ -387,9 +471,19 @@ def _send_groq_request(
                 except RuntimeError as fallback_exc:
                     failures.append(f"{fallback_model}: {fallback_exc}")
             details = "; ".join(failures) if failures else "no fallback models configured"
+            if request_sender is None and os.environ.get("BARROT_ENABLE_FREE_FALLBACKS", "true").strip().lower() in {"1", "true", "yes"}:
+                try:
+                    return _send_zero_cost_fallback(payload)
+                except Exception as fallback_exc:
+                    details += "; zero-cost provider chain: " + str(fallback_exc)[:1800]
             raise RuntimeError(
                 f"Groq daily token quota exhausted for {primary_model}; all configured fallback models failed. {details}"
             ) from exc
+        if exc.code == 429 and request_sender is None and os.environ.get("BARROT_ENABLE_FREE_FALLBACKS", "true").strip().lower() in {"1", "true", "yes"}:
+            try:
+                return _send_zero_cost_fallback(payload)
+            except Exception as fallback_exc:
+                detail += "; zero-cost provider chain: " + str(fallback_exc)[:1800]
         raise RuntimeError(f"Groq HTTP {exc.code}: {detail}") from exc
     except urllib.error.URLError as exc:
         raise RuntimeError(f"LLM network error: {exc}") from exc

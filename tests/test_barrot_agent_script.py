@@ -415,3 +415,71 @@ def test_barrot_agent_manual_dispatch_requires_explicit_confirmation() -> None:
     assert "required: true" in workflow
     assert "default: false" in workflow
     assert "(github.event_name == 'workflow_dispatch' && inputs.confirm == true)" in workflow
+
+
+def test_free_provider_specs_are_zero_cost_and_gemini_requires_explicit_opt_in(monkeypatch):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    monkeypatch.setenv("CLOUDFLARE_API_TOKEN", "cf-test")
+    monkeypatch.setenv("CLOUDFLARE_ACCOUNT_ID", "account-test")
+    monkeypatch.setenv("OPENROUTER_API_KEY", "or-test")
+    monkeypatch.setenv("GEMINI_API_KEY", "gemini-test")
+    monkeypatch.delenv("BARROT_ALLOW_GEMINI_FREE_TIER", raising=False)
+    module = load_script_module("barrot_agent_free_provider_specs_test")
+
+    specs = module._free_provider_specs()
+
+    assert [item["name"] for item in specs] == ["cloudflare-workers-ai", "openrouter-free"]
+    assert specs[0]["model"] == "@cf/zai-org/glm-4.7-flash"
+    assert specs[1]["model"] == "openrouter/free"
+    assert all(item["url"].startswith("https://") for item in specs)
+    assert all("paid" not in item["model"].lower() for item in specs)
+
+    monkeypatch.setenv("BARROT_ALLOW_GEMINI_FREE_TIER", "true")
+    specs = module._free_provider_specs()
+    assert specs[-1]["name"] == "google-gemini-free"
+    assert specs[-1]["model"] == "gemini-3.1-flash-lite"
+
+
+def test_zero_cost_fallback_uses_v3_provider_client_and_preserves_payload(monkeypatch):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    monkeypatch.setenv("CLOUDFLARE_API_TOKEN", "cf-test")
+    monkeypatch.setenv("CLOUDFLARE_ACCOUNT_ID", "account-test")
+    monkeypatch.setenv("OPENROUTER_API_KEY", "or-test")
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    module = load_script_module("barrot_agent_free_provider_client_test")
+    calls = []
+
+    class FakeProviderClient:
+        def __init__(self, *, name, send, retry_policy, sleep_fn):
+            self.name = name
+            self.send = send
+            calls.append(("init", name, retry_policy.max_attempts))
+
+        def request(self, payload):
+            calls.append(("request", self.name, payload))
+            if self.name == "cloudflare-workers-ai":
+                return None, [], SimpleNamespace(code="LLM_RATE_LIMITED", message="429 rate limited")
+            return {"choices": [{"message": {"content": "fallback answer"}}]}, [], None
+
+    monkeypatch.setattr(module, "ProviderClient", FakeProviderClient)
+    original = {
+        "model": "openai/gpt-oss-120b",
+        "messages": [{"role": "user", "content": "public repository task"}],
+        "tools": [{"type": "function", "function": {"name": "repo_browser.search"}}],
+        "tool_choice": "auto",
+    }
+
+    response = module._send_zero_cost_fallback(original)
+
+    assert response["choices"][0]["message"]["content"] == "fallback answer"
+    assert [item[1] for item in calls if item[0] == "init"] == [
+        "cloudflare-workers-ai", "openrouter-free"
+    ]
+    routed_payload = [item[2] for item in calls if item[0] == "request"][-1]
+    assert routed_payload["model"] == "openrouter/free"
+    assert routed_payload["messages"] == original["messages"]
+    assert routed_payload["tools"] == original["tools"]
+    assert routed_payload["tool_choice"] == "auto"
+    assert original["model"] == "openai/gpt-oss-120b"
