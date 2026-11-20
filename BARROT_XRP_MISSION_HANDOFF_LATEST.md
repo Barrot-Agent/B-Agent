@@ -2185,3 +2185,49 @@ Two trackers report different 19 November XRP ETF results because their definiti
 - No directional XRP forecast or scenario probability was issued.
 - No model training, paper trading or real-money action occurred.
 - Main remains unchanged; all macro findings are recorded in this single durable handoff on the existing integration branch.
+
+
+---
+
+## Run 238 — full changed-workflow screen and main-vs-integration safety delta
+**Capture window:** 2026-11-20, approximately 15:09 UTC. Read-only inspection of all 69 changed `.github/workflows/*.{yml,yaml}` paths in PR #1673, plus direct main/integration comparison of high-risk workflows.
+
+### Static screen of all 69 changed workflow files
+- All 69 changed workflow files were fetched from the integration head and screened for triggers, declared permissions, token/secret references, external side-effect commands and action references.
+- No `pull_request_target` trigger was found in the 69 changed workflows.
+- Every third-party `uses:` action reference found in the changed workflow set was pinned to a full 40-character commit SHA. This does **not** establish that inline npm/pip/CLI dependencies are pinned or hash-verified.
+- Several dispatch-only workflows do not declare a top-level `permissions:` block. Their effective default token permissions depend on repository Actions settings, which are not available through the tested repository metadata endpoint. Add explicit `permissions: {}` or the minimum read-only scopes where appropriate.
+- Inline installs remain a supply-chain gap: examples include unpinned `pip install requests`, `pip install huggingface_hub`, `pip install kaggle pandas scikit-learn`, `pip install pyyaml`, and `npx --yes wrangler@4`. The six-manifest dependency audit does not automatically cover every inline workflow install. Pin versions and hashes or move these dependencies into audited manifests.
+
+### Material unsafe-main workflows and integration-branch remediation
+1. **Paid issue publisher — direct-main write on main.** Main's `paid-issue-publish.yml` runs after the scheduled Paid issue hunter, has `contents: write`, copies artifacts into repository files and pushes directly to main. The integration branch replaces it with `permissions: {}`, an unconditional `if: false` job and an explicit explanation. This is a live mainline integration-first violation until the replacement is merged or the workflow is separately disabled by an authorized repository administrator. No setting or mainline change was made in this run.
+2. **A2A Worker deployment — push-triggered external deployment on main.** Main's `deploy-a2a-worker.yml` deploys Cloudflare on pushes touching `a2a/**` and uploads `BRAIN_SHARED_SECRET`, with no per-run approval gate. The integration branch changes it to manual dispatch, explicit deployment confirmation, separate secret-rotation confirmation, exact current-main SHA verification, and SHA-pinned Cloudflare action. No deployment or secret change occurred.
+3. **Self-hosted brain — automatic Space deployment on main.** Main's `sync-self-hosted-brain.yml` uploads code on pushes to `self_hosted_brain/**` and can propagate `BRAIN_SHARED_SECRET`. The integration branch quarantines the job with `if: false`; its retained path requires explicit deployment/secret approval, exact SHA, private Space verification and registers the secret before code upload. No Space was created or changed.
+4. **Coinbase paper trader — unapproved main write on main.** Main's manual BTC-USD paper trader reads Groq credentials and pushes simulated state/log files to main without a separate exact-run approval. The integration branch disables it and documents that it is not the XRP shadow-evaluation engine. No paper trade occurred.
+5. **Autonomous self-upgrade — branch/PR writer on main.** Main's manual workflow has `contents: write` and `pull-requests: write`, then runs candidate-generation code. The integration branch disables it until full open-PR inventory/overlap reuse and one-active-workstream rules are implemented. No branch or PR was generated.
+6. **Hugging Face sync — code and secret propagation on main.** Main's manual `sync-huggingface.yml` uploads Space code and deletes/replaces Space variables/secrets after a single confirmation. The integration branch disables it pending private-target, exact-current-main and separate secret-rotation controls. No Space upload or secret change occurred.
+7. **Databricks bundle — deployment and job run on main.** Main's manual workflow accepts one YES input, uses `databricks/setup-cli@main`, then validates/deploys a bundle and runs a job without an exact-main-SHA gate. The integration branch disables this legacy path. No Databricks write or job execution occurred.
+8. **Databricks legacy deployment — main manual path.** Main's manual deploy path checks an approved SHA but not whether main moved after approval. The integration branch disables the legacy path. No deployment occurred.
+9. **Barrot operations — overwrite and dataset download on main.** Main's manual operations workflow uses `databricks/setup-cli@main`, can import a notebook with `--overwrite`, and downloads a Kaggle dataset when credentials exist. The integration branch splits the operations, requires separate confirmations and exact current-main SHA, restricts the Databricks host, refuses existing workspace targets, and limits Kaggle to an explicitly approved public dataset download. No workspace write or Kaggle download occurred.
+10. **Space restart and Kaggle competition submission.** Main already requires manual confirmation and an expected SHA for Space restart, and explicit confirmation/competition allowlist for Kaggle submission. The integration branch strengthens both by checking that remote main still equals the approved SHA. No restart or competition submission occurred.
+11. **Model upload/merge.** Main's manual Barrot merge workflow can merge and upload a model to Hugging Face after a confirmation and SHA check. The integration branch disables it because the reviewed MergeKit configuration is absent. No model merge/upload occurred.
+
+### Other workflow dispositions checked
+- `paid-issue-publish.yml` on the integration branch is disabled with no token permissions and no mutation.
+- `webmcp-monetization-enrich.yml` is a `workflow_run` consumer of a successful trend-digest artifact; it reads the upstream artifact and writes only a new 30-day workflow artifact, not repository files or an external service.
+- `money-mcp-listing.yml` is a protocol/metadata preflight; it explicitly says no registry publish is attempted and does not grant OIDC `id-token: write`.
+- `pillars-check.yml` has a daily schedule for public/read-only checks; its optional GitHub App metadata and Databricks `SELECT 1` probes require manual YES inputs on main.
+- `release.yml` creates a GitHub Release only on a `v*.*.*` tag push. A normal PR merge does not itself create such a tag.
+- `autonomous_self_deployment.yml`, `force-deploy-space.yml`, `barrot-merge.yml`, `barrot-merge-manual.yml`, `barrot-self-upgrade.yml`, `coinbase-paper-trader.yml`, `sync-self-hosted-brain.yml` and the integration branch's legacy Databricks/Hugging Face paths are quarantined or disabled as described above.
+- `deploy.yml.disabled` and `sovereign_deploy.yml.disabled` are not active workflow files. The active CI workflow builds GitHub Pages in validation-only mode; no active Pages deployment workflow was found in the current recursive workflow tree. Repository Pages source/settings could not be read through the tested API path, so a branch-source publication side effect is **unverified**, not confirmed. Correct prior wording: do not claim a merge automatically publishes Pages until the Pages settings are independently checked.
+
+### Current integration gate after Run 238 handoff commit
+- Main SHA remains `c599419c284ed5c3e21c44c91d5d4229191dced8`.
+- PR #1673 remains draft/open; no independent approving review. The latest handoff-only commit is recorded by the GitHub commit history. Its exact-head CI was queued at capture; the last fully verified full-suite head remains `a3104f6a14902aae14222a7705e72739cc3c571f` (4,440 passed, 1 skipped, 0 failed, 73.08% inclusive coverage). Do not transfer that result to later documentation commits.
+- The effective main branch-protection endpoint still returns HTTP 403; the visible fallback ruleset is disabled. No bypass or merge was attempted.
+- **Current merge blockers:** draft status; no independent approval; effective branch-protection/required-check settings unavailable; full transitive workflow dependency review remains; inline dependency pinning and default token permissions require remediation/verification. Pages publication is an unresolved settings question, not an observed active deploy workflow.
+
+### Run 238 disposition
+- Main was not modified. The 69-workflow screen and main/integration safety comparison are recorded in this existing durable handoff.
+- No PRs were created or closed. No external deployment, Space restart, secret rotation, Databricks write, Kaggle download/submission, paper trade, funds transfer or direct-main push occurred.
+- Next concrete action: obtain an independent approving review and effective branch-protection evidence; review inline workflow dependencies and default token permissions; preserve the current main SHA; then use the existing consolidated PR and verify all gates on its exact current head before any merge.
