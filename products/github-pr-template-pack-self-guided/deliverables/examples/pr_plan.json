@@ -1,0 +1,38 @@
+{
+  "note": "SYNTHETIC EXAMPLE: the issue URL is a placeholder. Replace it and rerun your own tests before using this as a PR body.",
+  "issue_id": "issue-42",
+  "issue_url": "https://github.com/example/project/issues/42",
+  "summary": "Adds the paid-issue kit: ledger scoring, PR packaging, and the 120-minute timebox.",
+  "change_bullets": [
+    "Added ledger.py with hard gates, effective-rate scoring, and a CSV ledger.",
+    "Added pack.py with a PR body builder and an evidence-pack validator.",
+    "Added timebox.py with six ordered phases totalling 120 minutes."
+  ],
+  "why": "The kit needs a tested way to decide which paid issues are worth attempting and to package proof without unverifiable claims.",
+  "test_command": "python3 -m unittest discover -s tests",
+  "test_result": "Ran 76 tests in 0.095s, OK",
+  "risk": "The default thresholds are opinionated and may reject legitimate work; they are configurable in Policy.",
+  "rollback": "Delete the paid_issue_kit package and the tests; no other module imports it.",
+  "checklist": [
+    "Full suite run after the last edit",
+    "No unrelated files changed",
+    "Every new module has tests"
+  ],
+  "claims": [
+    {
+      "text": "The ledger rejects an issue with no stated amount.",
+      "evidence": "tests/test_ledger.py::test_missing_amount_is_no_go",
+      "limit": "Only the parseable-amount path is covered; amounts inside images are not read."
+    },
+    {
+      "text": "The timebox refuses an out-of-order checkpoint.",
+      "evidence": "tests/test_timebox.py::test_out_of_order_checkpoint_rejected",
+      "limit": "Ordering is enforced; wall-clock honesty depends on the operator."
+    }
+  ],
+  "command": "python3 -m unittest discover -s tests",
+  "exit_code": 0,
+  "output": "Ran 76 tests in 0.095s\n\nOK",
+  "commit": "uncommitted (example)",
+  "environment": "Python 3.13.5, Linux, no third-party test dependencies"
+}

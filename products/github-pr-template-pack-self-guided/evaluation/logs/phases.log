@@ -1,0 +1,8 @@
+phase        minutes  purpose
+triage            15  Read the issue. Confirm amount, acceptance criteria, and one-PR scope.
+reproduce         20  Reproduce the failure or restate the requirement in a failing test.
+patch             40  Smallest change that makes the test pass. No unrelated edits.
+test              25  Run the suite. Capture command, exit code, and output.
+package           15  Write the PR body and evidence pack. Check every claim.
+submit             5  Open the PR, link the issue, and record the URL.
+total            120

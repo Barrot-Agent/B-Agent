@@ -1,0 +1,86 @@
+[
+  {
+    "issue_id": "ex-101",
+    "url": "https://github.com/example/cli/issues/101",
+    "repo": "example/cli",
+    "title": "Upload retries on transient network errors",
+    "amount_usd": 500,
+    "acceptance_criteria": "Upload retries three times with backoff and prints the final error.",
+    "repo_stars": 240,
+    "repo_pushed_at": "2026-11-12T09:00:00Z",
+    "archived": false,
+    "escrow_verified": true,
+    "platform": "opire",
+    "labels": [
+      "bounty"
+    ],
+    "comments": 2,
+    "effort_hours": 2,
+    "payout_fee_fraction": 0.0,
+    "expenses_usd": 0
+  },
+  {
+    "issue_id": "ex-102",
+    "url": "https://github.com/example/docs/issues/7",
+    "repo": "example/docs",
+    "title": "Fix a broken link in the install guide",
+    "amount_usd": 25,
+    "acceptance_criteria": "The install guide links to the current release page.",
+    "repo_stars": 900,
+    "repo_pushed_at": "2026-11-15T09:00:00Z",
+    "escrow_verified": false,
+    "platform": "",
+    "labels": [
+      "bounty"
+    ],
+    "effort_hours": 2
+  },
+  {
+    "issue_id": "ex-103",
+    "url": "https://github.com/example/legacy/issues/44",
+    "repo": "example/legacy",
+    "title": "Add CSV export to the report command",
+    "amount_usd": 800,
+    "acceptance_criteria": "Report command writes a CSV with a header row and one row per record.",
+    "repo_stars": 61,
+    "repo_pushed_at": "2025-08-01T09:00:00Z",
+    "escrow_verified": false,
+    "platform": "",
+    "labels": [
+      "bounty"
+    ],
+    "effort_hours": 6
+  },
+  {
+    "issue_id": "ex-104",
+    "url": "https://github.com/example/api/issues/19",
+    "repo": "example/api",
+    "title": "Improve the error message for expired tokens",
+    "amount_usd": null,
+    "acceptance_criteria": "Expired tokens return a message naming the refresh endpoint.",
+    "repo_stars": 150,
+    "repo_pushed_at": "2026-11-10T09:00:00Z",
+    "escrow_verified": false,
+    "platform": "",
+    "labels": [
+      "bounty"
+    ],
+    "effort_hours": 3
+  },
+  {
+    "issue_id": "ex-105",
+    "url": "https://github.com/example/parser/issues/88",
+    "repo": "example/parser",
+    "title": "Refactor the parser into three modules",
+    "amount_usd": 300,
+    "acceptance_criteria": "The parser is split into lexer, parser, and renderer modules.",
+    "repo_stars": 420,
+    "repo_pushed_at": "2026-11-16T09:00:00Z",
+    "escrow_verified": false,
+    "platform": "",
+    "labels": [
+      "bounty"
+    ],
+    "effort_hours": 10
+  }
+]
