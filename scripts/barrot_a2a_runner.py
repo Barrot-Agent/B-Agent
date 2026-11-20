@@ -18,7 +18,6 @@ import re
 import shutil
 import socket
 import subprocess
-import sys
 import time
 import urllib.error
 import urllib.request
@@ -30,6 +29,7 @@ from urllib.parse import urljoin
 LOG = logging.getLogger("barrot_a2a_runner")
 MAX_STDOUT = 32_000
 MAX_STDERR = 8_000
+MAX_COMPLETION_BODY_BYTES = 80_000
 DEFAULT_TIMEOUT = 1800
 DEFAULT_LEASE = 3600
 _SECRET_PATTERN = re.compile(
@@ -53,6 +53,18 @@ def bounded_text(value: Any, limit: int) -> str:
     if len(text) > limit:
         return text[-limit:] + "\n[truncated]"
     return text
+
+
+def fit_result_payload(result: dict[str, Any]) -> dict[str, Any]:
+    bounded = dict(result)
+    for field in ("stdout", "stderr"):
+        while len(json.dumps(bounded, ensure_ascii=False).encode("utf-8")) > MAX_COMPLETION_BODY_BYTES:
+            value = bounded.get(field)
+            if not isinstance(value, str) or len(value) <= 128:
+                break
+            bounded[field] = value[: max(64, len(value) // 2)] + "\n[truncated]"
+    return bounded
+
 
 def runner_lock_path() -> Path:
     default = Path.home() / ".barrot" / "a2a-runner.lock"
@@ -95,6 +107,8 @@ class WorkerClient:
 
     def request(self, path: str, payload: dict[str, Any] | None = None) -> dict[str, Any]:
         data = None if payload is None else json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        if data is not None and len(data) > 96_000:
+            raise RuntimeError("Worker request exceeds the safe payload limit")
         request = urllib.request.Request(
             urljoin(self.base_url, path.lstrip("/")),
             data=data,
@@ -143,7 +157,7 @@ class WorkerClient:
                 "worker_id": worker_id,
                 "success": success,
                 "error": error,
-                "result": result,
+                "result": fit_result_payload(result),
             },
         )
 
