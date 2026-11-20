@@ -21,6 +21,10 @@ class LegacyConflictAnalyzerGateTests(unittest.TestCase):
     def test_legacy_strategy_lookup_without_evidence_returns_none(self):
         self.assertIsNone(self.analyzer.get_recommended_strategy("content", "app/module.py"))
 
+    def test_legacy_patterns_never_claim_automatic_resolution(self):
+        self.assertTrue(self.analyzer.conflict_patterns)
+        self.assertFalse(any(pattern.auto_resolvable for pattern in self.analyzer.conflict_patterns))
+
     def test_validated_both_choice_remains_advisory_only(self):
         conflict = "<<<<<<< HEAD\nvalue = 'current'\n=======\nvalue = 'incoming'\n>>>>>>> feature"
         evidence = ConflictEvidence(
