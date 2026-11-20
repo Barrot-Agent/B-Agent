@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T070712Z-BINANCE-PHASE1-ESCROW-PR1449",
+  "captured_at_utc": "2026-11-01T07:07:12Z",
+  "source_id": "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+  "source_ids": [
+    "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL"
+  ],
+  "source_bundle_path": "data/xrp_intelligence/sources/20261101T070712Z-binance-phase1-escrow-pr1449-source-bundle.json",
+  "source_bundle_blob_sha": "c4ea780eb0937167cd2bb75e3f2db2f7b880d9af",
+  "supersedes_revision_id": "REV-20261101T064027Z-BINANCE-PHASE1-ETF-SBI-COINBASE-PR1446",
+  "claims": [
+    "Binance Recovery Update #4, published 2026-11-01 04:08 UTC, lists XRP in progressive phase-one withdrawals between 06:00 and 09:00 UTC and reports 95% aggregate incident coverage; the ten listed top assets including XRP and RLUSD are company-reported as 100% backed.",
+    "The Binance public network status page, rechecked at 2026-11-01 07:07:12 UTC, displayed a last-updated value of 2026-11-01 06:53:22 AM with timezone undisclosed and a rendered 'No records' table; this does not establish XRP availability or unavailability.",
+    "XRP Insights reports ledger 108038942 at 2026-11-01 05:39 UTC, 1B XRP released at 00:00:02 UTC, zero re-escrow by that ledger, 30.4B XRP remaining, 96 objects and eight owner accounts; raw Destination fields and later disposition remain unverified.",
+    "GitHub main remains at 760b61e216f1044d4faaa359962939757d9d6adf. The live inventory is 218 open PRs, 208 drafts, 10 ready, 213 main-based, 212 stale and one current-main-based PR (#1449).",
+    "PR #1449 head dce8be8e8df59390c7a986c7ff7a2b699cb18593 passed exact-head CI run 41283447287 with 367 tests and eight subtests; fail-closed gate 41283447301 passed with merging disabled. The PR remains open, draft and unmerged."
+  ],
+  "observations": [
+    {
+      "source_id": "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+      "captured_at_utc": "2026-11-01T07:07:12Z",
+      "displayed_last_updated": "2026-11-01 06:53:22 AM",
+      "displayed_timezone": "NOT_DISCLOSED",
+      "rendered_table": "NO_RECORDS",
+      "xrp_asset_status": "NOT_EXPOSED"
+    },
+    {
+      "source_id": "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+      "ledger_index": 108038942,
+      "ledger_time_utc": "2026-11-01T05:39:00Z",
+      "gross_release_xrp": 1000000000,
+      "first_escrow_finish_utc": "2026-11-01T00:00:02Z",
+      "reescrow_observed_by_pinned_ledger_xrp": 0,
+      "remaining_escrow_xrp": 30400000000,
+      "remaining_objects": 96,
+      "owner_accounts": 8,
+      "raw_destination_verified": false
+    },
+    {
+      "source_id": "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT",
+      "main_sha": "760b61e216f1044d4faaa359962939757d9d6adf",
+      "open_prs": 218,
+      "draft_prs": 208,
+      "ready_prs": 10,
+      "main_based_prs": 213,
+      "stale_main_based_prs": 212,
+      "current_main_based_prs": [
+        1449
+      ],
+      "non_main_based_prs": 5,
+      "pr1449_head_sha": "dce8be8e8df59390c7a986c7ff7a2b699cb18593",
+      "ci_run_id": 41283447287,
+      "tests_passed": 367,
+      "subtests_passed": 8,
+      "gate_run_id": 41283447301,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "pr_state": "OPEN_DRAFT_UNMERGED"
+    }
+  ],
+  "evidence_classification": {
+    "binance_update4": "COMPANY_REPORTED_PRIMARY_ANNOUNCEMENT",
+    "binance_network_status": "PRIMARY_STATUS_PAGE_WITH_EMPTY_RENDERED_TABLE",
+    "xrp_escrow": "SECONDARY_LEDGER_DERIVED_TRACKER; RAW_TRANSACTION_DESTINATION_NOT_INDEPENDENTLY_VERIFIED",
+    "github_pr1449": "PRIMARY_REPOSITORY_AND_CI_EVIDENCE"
+  },
+  "feature_admission": {
+    "market_features_admitted": false,
+    "reason": "No successful XRP withdrawal, raw escrow destination, or market-impact linkage is verified."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "pending_archive_append": true,
+  "status": "PENDING_ARCHIVE_APPEND",
+  "correction_reason": "Append current Binance phase-one status recheck, newer pinned XRP escrow observation and fresh-main PR #1449 exact-head CI/current-main audit. Preserve earlier 06:40 snapshot, source revision and archive shards unchanged."
+}

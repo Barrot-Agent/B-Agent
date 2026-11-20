@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261101T072500Z-PR1450-13-SOURCE-STUB-REPAIR",
+  "captured_at_utc": "2026-11-01T07:25:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "branch": "main",
+    "sha": "760b61e216f1044d4faaa359962939757d9d6adf",
+    "protected": true,
+    "required_status_check_contexts": [],
+    "main_modified_by_this_run": false
+  },
+  "pr_inventory": {
+    "open": 219,
+    "draft": 209,
+    "ready": 10,
+    "main_based": 213,
+    "current_main_base_count": 1,
+    "current_main_base_pr_numbers": [
+      1449
+    ],
+    "stale_main_based": 212,
+    "non_main_based": 6
+  },
+  "safety_prs": {
+    "pr1449": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "dce8be8e8df59390c7a986c7ff7a2b699cb18593",
+      "ci_run_id": 41283447287,
+      "tests_passed": 367,
+      "subtests_passed": 8,
+      "gate_run_id": 41283447301,
+      "gate_status": "PASS_MERGE_DISABLED"
+    },
+    "pr1450": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "28c0f1de2a796d23472a4ec8850b31167af4eea4",
+      "validator_run_id": 41284561140,
+      "validator_status": "FAIL_ONLY_13_UNKNOWN_SOURCE_IDS",
+      "archive_shards_checked": 459,
+      "archive_policy_counts_reconciled": true,
+      "snapshot_reference_mode": true,
+      "snapshot_blob_sha_matched": true,
+      "source_revision_addenda_checked": 49,
+      "source_revision_addenda_pending_archive_append": 43,
+      "gate_run_id": 41284561167,
+      "gate_status": "PASS_MERGE_DISABLED"
+    }
+  },
+  "limitations": [
+    "PR #1450 still needs exact-head revalidation after adding 13 unresolved source stubs.",
+    "Main scheduled writers remain active; PR #1449 is draft/unmerged.",
+    "Full repository CI, comprehensive dependency scan and security-alert review remain incomplete.",
+    "Approval workflow push-event/zero-job anomaly remains unresolved."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false,
+  "secret_access": false,
+  "paper_or_real_trade": false,
+  "source_ids": [
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+  ]
+}

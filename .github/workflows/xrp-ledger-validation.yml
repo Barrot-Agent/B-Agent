@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - research/xrp-ledger-shard-migration-20261029T2210Z
+      - verify/xrp-ledger-archive-20261101T031615Z
+      - verify/xrp-ledger-archive-20261101T070712Z
   pull_request:
     branches:
-      - research/xrp-ledger-index-pointer-migration-20261028T1959Z
+      - research/xrp-ledger-shard-migration-20261029T2210Z
+      - research/binance-xrp-hack-graph-20261101T0108Z
+      - verify/xrp-ledger-archive-20261101T070712Z
 
 permissions:
   contents: read
@@ -17,7 +21,7 @@ concurrency:
 
 jobs:
   validate-ledger:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.ref == 'research/xrp-ledger-shard-migration-20261029T2210Z'
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     name: Validate sharded XRP ledger and regression tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -34,8 +38,8 @@ jobs:
       - name: Install pinned test runner
         run: python -m pip install --disable-pip-version-check pytest==8.4.2
       - name: Compile validator and tests
-        run: python -m compileall -q scripts/validate_xrp_ledger_index.py tests/test_xrp_ledger_index.py tests/test_xrp_exchange_balance_snapshot.py tests/test_sbic_identity.py
+        run: python -m compileall -q scripts/validate_xrp_ledger_index.py tests/test_xrp_ledger_index.py tests/test_xrp_exchange_balance_snapshot.py tests/test_sbic_identity.py tests/test_xrp_ledger_validation_workflow_trigger.py
       - name: Validate actual repository ledger and archive pointers
         run: python scripts/validate_xrp_ledger_index.py --root .
       - name: Run isolated ledger validator regression suite
-        run: python -m pytest --noconftest -o addopts= tests/test_xrp_ledger_index.py tests/test_xrp_exchange_balance_snapshot.py tests/test_sbic_identity.py -q
+        run: python -m pytest --noconftest -o addopts= tests/test_xrp_ledger_index.py tests/test_xrp_exchange_balance_snapshot.py tests/test_sbic_identity.py tests/test_xrp_ledger_validation_workflow_trigger.py -q

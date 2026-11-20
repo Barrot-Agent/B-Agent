@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "captured_at_utc": "2026-11-01T06:40:27Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "694fc4241f543917fc6eb787c025bf1eb6726595",
+    "latest_commit_message": "chore: Barrot telemetry report",
+    "latest_commit_utc": "2026-11-01T06:03:40Z",
+    "changed_path": "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+    "change": "timestamp only",
+    "report_status": "OPERATIONAL",
+    "deployment_health_verified": false,
+    "scheduled_main_writer_remains_active": true
+  },
+  "pr_inventory": {
+    "total": 217,
+    "draft": 207,
+    "ready": 10,
+    "main_based": 212,
+    "current_main_base": 2,
+    "stale_main_based": 210,
+    "non_main_base": 5,
+    "captured_at_utc": "2026-11-01T06:40:27Z",
+    "method": "GitHub open-PR API inventory; counts are point-in-time and must be rechecked before any review action."
+  },
+  "safety_prs": [
+    {
+      "number": 1444,
+      "head": "8d8965eaa72b9402ad1dedec9d752387256a51dd",
+      "base": "0ae640073f01321555d7f69dfc28d5b62a348fc6",
+      "current_main": "694fc4241f543917fc6eb787c025bf1eb6726595",
+      "behind": 1,
+      "ahead": 25,
+      "mergeable": true,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41279721635,
+      "tests": 363,
+      "subtests": 8,
+      "gate_run": 41279721643,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1445,
+      "head": "ac04af6f19db8a1d39eaf1346943628db1acc2cb",
+      "base": "694fc4241f543917fc6eb787c025bf1eb6726595",
+      "ahead": 7,
+      "behind": 0,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41280065967,
+      "tests": 346,
+      "subtests": 8,
+      "gate_run": 41280065895,
+      "gate": "PASS_MERGE_DISABLED",
+      "residual_risks": [
+        "Manual YES inputs are not a protected-environment reviewer gate.",
+        "Self-upgrade retains contents:write and pull-requests:write and its non-main dispatch condition does not prevent the script from persisting to main.",
+        "Model upload retains --trust-remote-code and an external HF write token behind a dispatch input.",
+        "No protected environment declaration was observed in the changed workflows."
+      ]
+    },
+    {
+      "number": 1446,
+      "head": "a5f98fa2fc53a8875e45017f5ec4bdcedcead080",
+      "base": "694fc4241f543917fc6eb787c025bf1eb6726595",
+      "ahead": 9,
+      "behind": 0,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41281605535,
+      "tests": 346,
+      "subtests": 8,
+      "gate_run": 41281605590,
+      "gate": "PASS_MERGE_DISABLED",
+      "scope": [
+        "auto-resolve-issues",
+        "barrot-autonomous-resolver",
+        "daily-digest",
+        "self-schedule",
+        "gumroad-metrics"
+      ],
+      "changes": [
+        "read-only permissions",
+        "artifact-first outputs",
+        "default dry-run issue scripts",
+        "raw Gumroad response suppressed",
+        "no scheduled main commits or issue mutations in these five paths"
+      ]
+    }
+  ],
+  "workflow_risks": [
+    {
+      "path": ".github/workflows/auto-resolve-issues.yml",
+      "trigger": "schedule",
+      "permissions": "issues:write/actions:read",
+      "behavior": "may comment on and close stale [Auto] workflow-failure issues after checking the latest run"
+    },
+    {
+      "path": ".github/workflows/barrot-autonomous-resolver.yml",
+      "trigger": "hourly schedule",
+      "permissions": "issues:write/pull-requests:write",
+      "behavior": "creates failure issues and assigns unassigned issues/PRs to vars.COPILOT_ASSIGNEE if configured; value and live handoff unverified"
+    },
+    {
+      "path": ".github/workflows/daily-digest.yml",
+      "trigger": "daily schedule",
+      "permissions": "issues:write",
+      "behavior": "creates a daily digest issue"
+    },
+    {
+      "path": ".github/workflows/self-schedule.yml",
+      "trigger": "scheduled",
+      "permissions": "issues:write",
+      "behavior": "creates barrot-task issues for stale knowledge-base sources"
+    },
+    {
+      "path": ".github/workflows/gumroad-metrics.yml",
+      "trigger": "daily schedule",
+      "permissions": "contents:write",
+      "behavior": "fetches aggregate Gumroad /products data, writes gumroad_metrics.json and commits to main"
+    },
+    {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "trigger": "manual",
+      "permissions": "contents:write",
+      "behavior": "manual main writer; indirect scheduler dispatch is addressed by PR #1443 if merged"
+    },
+    {
+      "path": ".github/workflows/knowledge-signal-cycle-btc.yml",
+      "trigger": "manual",
+      "permissions": "contents:write",
+      "behavior": "manual main writer; indirect scheduler dispatch is addressed by PR #1443 if merged"
+    },
+    {
+      "path": ".github/workflows/coinbase-paper-trader.yml",
+      "trigger": "manual",
+      "permissions": "contents:write",
+      "behavior": "paper-state writer; no Coinbase API secret visible in workflow; script-level review pending"
+    },
+    {
+      "path": ".github/workflows/barrot-agent.yml",
+      "trigger": "issue label",
+      "permissions": "contents:write/issues:write/pull-requests:write",
+      "behavior": "issue-label-triggered branch and draft-PR writer; reviewed script path pushes task branch and opens PR, no main push found in reviewed functions"
+    }
+  ],
+  "controls_already_proposed": [
+    "PR #1443: Cross Analysis, Scheduler Tick and Merge Queue quarantine.",
+    "PR #1444: telemetry/signal accuracy artifact-only; subscriber sync manual-confirmed; Databricks token rotation disabled; Cloudflare/Self-hosted deployments manual-only; HF Admin disabled.",
+    "PR #1445: Force Deploy Space disabled; model upload and Space restart require explicit confirmation; Self-Upgrade requires confirmation and refuses dispatch on main."
+  ],
+  "other_controls": {
+    "barrot_pr_automerge": "DISABLED",
+    "deploy_databricks": "MANUAL_WITH_EXPLICIT_CONFIRMATION",
+    "sync_huggingface": "MANUAL_WITH_EXPLICIT_CONFIRMATION",
+    "barrot_ops": "MANUAL_WITH_EXPLICIT_CONFIRMATION",
+    "barrot_approve_pr_zero_job_push_runs": "EXPECTED_UNMATCHED_PUSH_EVENT_BECAUSE_WORKFLOW_DISPATCH_ONLY"
+  },
+  "limitations": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "security_alert_access": "NOT_ACCESSIBLE",
+    "branch_protection_details": "403_FROM_AVAILABLE_GITHUB_INTEGRATION",
+    "main_remediation_applied": false
+  },
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false,
+  "audit_id": "AUDIT-20261101T064027Z-MAIN-SCHEDULED-WRITERS-PR1444-1445-1446",
+  "main_sha": "694fc4241f543917fc6eb787c025bf1eb6726595",
+  "scheduled_workflow_risks": [
+    {
+      "workflow": "auto-resolve-issues.yml",
+      "main_status": "WRITE_CAPABLE_OR_MUTATING_BEHAVIOR_REMAINS_UNTIL_PR1446_MERGED",
+      "proposed": "READ_ONLY_DRY_RUN_ARTIFACT"
+    },
+    {
+      "workflow": "barrot-autonomous-resolver.yml",
+      "main_status": "ISSUE_AND_PR_MUTATION_PATHS_REMAIN_UNTIL_PR1446_MERGED",
+      "proposed": "READ_ONLY_AUDIT_ARTIFACT"
+    },
+    {
+      "workflow": "daily-digest.yml",
+      "main_status": "ISSUE_CREATION_PATH_REMAINS_UNTIL_PR1446_MERGED",
+      "proposed": "ARTIFACT_ONLY"
+    },
+    {
+      "workflow": "self-schedule.yml",
+      "main_status": "ISSUE_CREATION_PATH_REMAINS_UNTIL_PR1446_MERGED",
+      "proposed": "READ_ONLY_DRY_RUN_ARTIFACT"
+    },
+    {
+      "workflow": "gumroad-metrics.yml",
+      "main_status": "MAIN_COMMIT_PUSH_PATH_REMAINS_UNTIL_PR1446_MERGED",
+      "proposed": "AGGREGATE_ARTIFACT_ONLY"
+    }
+  ],
+  "approval_workflow_zero_job_classification": "EXPECTED_UNMATCHED_PUSH_EVENT: barrot-approve-pr.yml is workflow_dispatch-only; push events produce zero jobs by design, not an approval failure.",
+  "full_repository_ci": "NOT_RUN",
+  "dependency_vulnerability_scan": "INCOMPLETE",
+  "security_alert_review": "UNAVAILABLE",
+  "pr_merged": false,
+  "force_push": false,
+  "manual_workflow_dispatch": false,
+  "secret_access": false,
+  "paper_or_real_trade": false,
+  "next_actions": [
+    "Keep PR #1446 draft/unmerged until explicit approval; verify the exact main SHA before review.",
+    "Require protected-environment reviewers or keep external mutation workflows disabled; input-only YES is not a verified owner-approval gate.",
+    "Review PR #1444's one-commit base lag individually; do not bulk-rebase.",
+    "Audit PR #1445's self-upgrade write path and --trust-remote-code model upload before any dispatch.",
+    "Run full repository CI, lockfile-based dependency scanning and security-alert review."
+  ]
+}
