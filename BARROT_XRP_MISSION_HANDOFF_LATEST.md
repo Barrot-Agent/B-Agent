@@ -7384,3 +7384,101 @@ Sixteen PRs are open. No source PR was closed:
 **VERIFIED:** exact-head full suite, dependency audit, money audit and A2A worker tests passed; main CI after #1672 passed; current main and integration tree ancestry verified; per-run receipt chain verified. Effective branch protection, independent approval, public Pages authorization, independent WORM/timestamp anchoring, predictive superiority and shadow readiness remain unverified.
 
 No merge, force-push, deployment, Pages publication initiated by this refresh, secret rotation, Space restart, Databricks write, Kaggle submission, external model dispatch, funds transfer, paper trading, or real-money action occurred.
+
+
+---
+
+## Institutional-rail and integration-overlap refresh — 2026-11-20T02:15:29.318Z
+
+### 1. New primary-source institutional evidence
+
+**MAS BLOOM — shared participation, not a bilateral Ripple/Circle/Coinbase contract**
+
+The Monetary Authority of Singapore's BLOOM page, published 19 November 2026, identifies a public-private initiative for domestic and cross-border digital-money settlement. Its industry-member list includes Ripple, Circle, Coinbase, DBS, J.P. Morgan, Partior and other banks/payment firms. Its stated work covers acceptance and settlement across jurisdictions, interoperability between digital-money arrangements, programmable controls, corporate treasury, trade finance and agentic payments. The page contains no XRP/XRPL reference. Common membership is not proof of a bilateral agreement, production deployment or XRP settlement. Primary source: https://www.mas.gov.sg/schemes-and-initiatives/bloom
+
+**MAS Project Guardian — separate tokenised collateral network**
+
+The separate Guardian initiative's 19 November 2026 member list includes SBI Digital Asset Holdings, DBS, J.P. Morgan, BNY, Citi and other financial institutions. Guardian's collateral work covers eligibility, custody, valuation, return and enforcement. The named SBI entity is SBI Digital Asset Holdings; do not substitute SBI Holdings, SBI Ripple Asia or any of the regional SBIC companies. No XRP-specific role is established. Primary source: https://www.mas.gov.sg/schemes-and-initiatives/project-guardian
+
+**MAS tokenised bills — live wholesale-CBDC settlement and collateral path**
+
+MAS announced on 19 November that it had issued S$100 million of four-week tokenised MAS Bills on 6 November 2026, natively on its Singapore Dollar Test Network and settled using wholesale CBDC. DBS, HSBC Singapore, OCBC, Standard Chartered Singapore and UOB participated as primary dealers; the auction received applications exceeding twice the issuance size. Maturity is 4 December 2026. MAS says the next phase will expand issuance and collateral-management use. This is a central-bank money/tokenised-collateral rail, not an XRP transaction. Primary source: https://www.mas.gov.sg/news/media-releases/2026/mas-announces-successful-issuance-of-tokenised-mas-bills-on-the-singapore-dollar-test-network
+
+**DBS–Circle — direct institutional USDC mint/redeem**
+
+On 18 November, DBS and Circle announced that eligible institutional clients can mint and redeem USDC directly through DBS, with 24/7 USD-USDC settlement. DBS says this reduces reliance on secondary-market liquidity for eligible clients. The announcement does not disclose corridor volumes or an XRP leg. Primary source: https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia
+
+**DBS–Kinexys — tokenised-deposit interoperability**
+
+On 16 November, DBS and J.P. Morgan's Kinexys launched a commercially ready 24/7 cross-border USD tokenised-deposit transfer solution between blockchain-based accounts in the United States and Singapore. Ant International is the first client; Partior provides settlement orchestration. The DBS release describes permissioned bank-led deposit networks and does not disclose an XRP leg. Primary source: https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers
+
+**Circle Arc and SBI**
+
+Circle's 16 September Arc mainnet release describes a public L1 with a permissioned validator set, USDC-denominated gas, sub-second finality, 24/7 StableFX and Circle Payments Network integration. SBI Group is listed among the founding validators. Circle states that USDC represented 98.8% of agent-driven transaction volume; the linked Dune dashboard was not independently inspected, so this remains an issuer-reported metric. Arc's published gas model does not require XRP. Primary source: https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet
+
+**SBI's two separate corporate exposures**
+
+SBI's 12 May 2026 disclosure says its 2023 MOU with Circle was followed by a joint-venture agreement in March 2025 and establishment of Circle SBI Japan in 2025; SBI VC Trade began USDC trading in March 2025 after becoming Japan's first and sole registered Electronic Payment Instruments Service Provider. The same SBI disclosure reports a USD 50 million strategic investment in Circle pursuant to Circle's NYSE listing. SBI's May 2026 presentation separately reports an approximately 9% Ripple equity stake. These are parallel SBI Group relationships with Circle and Ripple; they do not establish that Circle uses XRP, that Ripple and Circle have a direct corporate partnership, or that SBI bought XRP with the Circle investment. Primary sources: https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf and https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentation.pdf
+
+MAS's 1 September 2026 stablecoin consultation proposes a single-currency stablecoin framework addressing reserves, capital, redemption at par and disclosure, including limited recognition of comparable foreign regimes. This is a consultation/legislative process, not proof that USDC or RLUSD has been designated an MAS-regulated stablecoin. Primary source: https://www.mas.gov.sg/news/media-releases/2026/mas-consults-on-legislative-amendments-to-implement-stablecoin-regulatory-framework
+
+### 2. Counter-hypotheses to retain
+
+1. **Stablecoin/tokenised-deposit substitution:** direct USDC mint/redeem, tokenised deposits and wholesale CBDC could reduce XRP-bridge demand in some USD corridors.
+2. **Complementary multi-asset settlement:** XRP could remain useful for non-USD conversion or corridors where XRP liquidity is superior, while stablecoins handle USD settlement and tokenised deposits handle bank-liability transfers.
+3. **SBI portfolio diversification:** SBI's Ripple equity, Circle JV/investment and Arc validator role are consistent with a multi-network portfolio, not evidence of exclusive commitment to XRP or USDC.
+4. **Shared initiative membership:** Ripple, Circle and Coinbase share BLOOM membership, but that does not establish a bilateral product, XRP bridge leg or production volume.
+
+Required measurements before promoting any of these hypotheses: corridor-level transaction volumes; actual XRP bridge legs; stablecoin mint/redemption; tokenised-deposit and wholesale-CBDC settlement values; settlement-asset identity per leg; fees, latency and slippage; order-book depth; collateral eligibility and actual collateral utilisation. Announcement counts and AUM changes are not substitutes.
+
+Web-rendered sources above are research evidence only. Their raw HTTP bytes, exact-response SHA-256 receipts and trusted timestamps were not captured by Barrot's ingestion pipeline in this refresh; they are not feature-store eligible.
+
+### 3. PR overlap and backlog reconciliation
+
+The current #1673 successor has 1,474 changed files and 491 commits, based on current main `73e4dfa`, 491 ahead and zero behind. Recursive trees show no main paths missing. Pairwise changed-path intersections with all other open PRs:
+
+| PR | Paths changed | Overlap with #1673 | Classification |
+|---|---:|---:|---|
+| #1663 | 1,470 | 1,470 | Superseded predecessor; retain until successor merge verification |
+| #1671 | 8 | 4 | Blocked, distinct security-sensitive inbound GPT/action gate |
+| #1664 | 134 | 4 | Unique/unreviewed paid-issue product |
+| #1670 | 12 | 2 | Unique/unreviewed creative intelligence |
+| #1668 | 3 | 3 | Blocked provider failover; its code is not present in #1673 |
+| #1666 | 2 | 1 | Blocked Kaggle dependency compatibility |
+| #1665 | 1 | 1 | Duplicate candidate; Pylint floor is already present, but full file differs |
+| #1541 | 5 | 5 | Blocked stacked MMI work; fingerprint behavior is present but only one of five blobs is identical |
+| #1265 | 144 | 1 | Blocked stacked ledger migration; 143 unique archive paths |
+| #1450 | 116 | 0 | Unique research |
+| #1460 | 8 | 0 | Unique research |
+| #1440 | 64 | 0 | Unique repair |
+| #1437 | 5 | 0 | Unique repair |
+| #1436 | 24 | 0 | Unique research |
+| #1353 | 1,084 | 0 | Unique lossless archive/migration |
+
+Sixteen PRs remain open: 6 blocked, 1 superseded predecessor, 1 duplicate candidate and 8 unique/unreviewed; zero ready. No branch was created and no PR was closed. #1541 and #1265 are not to be bulk-closed: their overlapping workflow/code paths do not make their unique evidence/archive content duplicates.
+
+### 4. Workflow and A2A security findings
+
+- Static scan covered 69 changed workflow YAML files. All third-party action references in the changed set are full commit-SHA pinned; no mutable action reference was found. The only explicit `contents: write` in the changed set is the tag-triggered release workflow. This is not a complete transitive audit of every invoked script and action dependency.
+- Main branch metadata says protected=true, but required status contexts are empty and enforcement is reported as `non_admins`; the detailed branch-protection endpoint returns HTTP 403. The only returned fallback ruleset is disabled. `CODEOWNERS` assigns `* @Barrot-Agent`; the PR has zero independent approvals. Do not infer administrator enforcement or required approvals.
+- Main's paid-issue publisher remains active with `contents: write` and persistent checkout credentials; the integration version disables it. Main Pages publication is automatic and has already succeeded after a main push. #1673 changes public-facing files, so publication remains unauthorized.
+- Main's `opencode.json` contains an A2A endpoint and secret environment references; its MCP server auto-starts the queue runner when URL and secret are present, and OpenCode permissions allow bash/edit. The integration requires explicit `BARROT_A2A_AUTO_RUNNER=YES`, removes default endpoint/secret values and changes permissions to ask. However, the runner still inherits the host process environment and is not OS-sandboxed; egress restrictions and task-level authorization are not verified. Keep it quarantined.
+- Main A2A deployment run 44653118169 failed with Cloudflare authentication errors 10000/9109. This is not evidence of a successful deployment or secret upload; the actual existing Worker state remains unverified.
+- The integration `SECURITY.md` clarifies that `PYSEC-2024-232` occurs only in an archived backup; the active CI and dependency-audit workflows contain no ignore flag.
+
+### 5. Exact-head verification and disposition
+
+On exact head `bb5fbc01dec6f80f2f33112850c66bf76850c5ad`:
+- Push CI 44657991767 and PR CI 44657999486 passed.
+- Full suite: **4,388 passed, 1 skipped, 11 warnings, 19 subtests**; 203.58 seconds; 71% inclusive coverage and 81% legacy-core coverage. All mission package floors passed.
+- Dependency audit 44657999543 passed all six manifests with no known vulnerabilities reported.
+- Money audit 44657999499 passed 14 tests.
+- A2A Worker Tests 44657999551 passed.
+- Fail-closed runs 44657991650 and 44657999484 correctly blocked on draft status, zero independent approvals and branch-protection HTTP 403.
+- Main CI after #1672 merge: 44653118253 passed 1,219 tests, 2 skipped, 8 subtests, 78% coverage.
+- Main Pages deployment 44653117146 succeeded automatically; no deployment was initiated by this run.
+- Main A2A deployment 44653118169 failed Cloudflare authentication.
+
+This update is documentation-only. The next combined handoff/map commit must run its own exact-head full suite, dependency audit, money audit and fail-closed gate; do not transfer the bb5fbc result to the new commit.
+
+**Forecast status remains NOT_ISSUED.** No XRP-specific learned candidate has demonstrated out-of-sample superiority; drift evaluated zero features; no independent shadow cohort exists. No merge, deployment, secret rotation, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
