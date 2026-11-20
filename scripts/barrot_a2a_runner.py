@@ -29,9 +29,9 @@ MAX_STDERR = 16_000
 DEFAULT_TIMEOUT = 1800
 DEFAULT_LEASE = 3600
 _SECRET_PATTERN = re.compile(
-    r"(?i)((?:authorization\\s*[:=]\\s*bearer\\s+)|"
-    r"(?:(?:api[_-]?key|token|secret|password)\\s*[:=]\\s*))"
-    r"([^\\s,;\\\"']+)"
+    r"(?i)((?:authorization\s*[:=]\s*bearer\s+)|"
+    r"(?:(?:api[_-]?key|token|secret|password)\s*[:=]\s*))"
+    r"([^\s,;\\"']+)"
 )
 
 
@@ -40,14 +40,14 @@ def utc_now() -> str:
 
 
 def redact(text: str) -> str:
-    return _SECRET_PATTERN.sub(r"\\1[REDACTED]", text)
+    return _SECRET_PATTERN.sub(r"\1[REDACTED]", text)
 
 
 def bounded_text(value: Any, limit: int) -> str:
     text = str(value or "")
     text = redact(text)
     if len(text) > limit:
-        return text[-limit:] + "\\n[truncated]"
+        return text[-limit:] + "\n[truncated]"
     return text
 
 
