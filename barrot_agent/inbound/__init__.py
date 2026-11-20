@@ -1,1 +1,1 @@
-"""Package marker for the inbound authority gate."""
+"""Inbound command authority and policy gate."""

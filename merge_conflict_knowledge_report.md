@@ -21,25 +21,25 @@ Generated: 2026-01-02T13:04:31.914037
 ### Import Statement Conflict (CP002)
 - **Type**: content
 - **Frequency**: High
-- **Auto-Resolvable**: True
+- **Auto-Resolvable**: False
 - **Description**: Different imports added to the same location
 
 ### Configuration Merge (CP003)
 - **Type**: content
 - **Frequency**: Medium
-- **Auto-Resolvable**: True
+- **Auto-Resolvable**: False
 - **Description**: Configuration files modified in both branches
 
 ### Documentation Conflict (CP004)
 - **Type**: content
 - **Frequency**: Medium
-- **Auto-Resolvable**: True
+- **Auto-Resolvable**: False
 - **Description**: Documentation updates conflict between branches
 
 ### Whitespace Only (CP005)
 - **Type**: whitespace
 - **Frequency**: Low
-- **Auto-Resolvable**: True
+- **Auto-Resolvable**: False
 - **Description**: Conflict caused only by whitespace differences
 
 ### File Rename Collision (CP006)
@@ -81,10 +81,10 @@ Generated: 2026-01-02T13:04:31.914037
 - **Strategy**: semantic_merge
 
 ### Accept Both Changes with Manual Review (RT001)
-- **Success Rate**: 85.0%
-- **Risk Level**: Medium
-- **Automation**: Semi-Automated
-- **Strategy**: accept_both
+- **Success Rate**: UNVERIFIED (not measured)
+- **Risk Level**: High
+- **Automation**: Manual only; explicit authorization required
+- **Strategy**: accept_both — advisory only after evidence gate
 
 ### Recursive Strategy with Patience (RT006)
 - **Success Rate**: 80.0%

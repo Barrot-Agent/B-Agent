@@ -417,13 +417,16 @@ def test_persist_audit_report_is_idempotent_when_main_already_matches(tmp_path: 
     assert ("push", "origin", "HEAD:main") not in git_in_calls
 
 
-def test_self_upgrade_workflow_requires_approval_and_restores_main() -> None:
+def test_self_upgrade_workflow_requires_approval_and_proves_main_unchanged() -> None:
     workflow = SELF_UPGRADE_WORKFLOW.read_text(encoding="utf-8")
 
     assert 'ref: ${{ github.ref_name }}' in workflow
     assert "confirm_external_change" in workflow
     assert "inputs.confirm_external_change == 'YES'" in workflow
-    assert "github.ref == 'refs/heads/main'" in workflow
+    assert "github.ref == 'refs/heads/main'" not in workflow
+    assert "Record origin/main before the run" in workflow
+    assert "git ls-remote origin refs/heads/main" in workflow
+    assert 'test "${main_after}" = "${MAIN_BEFORE}"' in workflow
     assert "python3 scripts/barrot_self_upgrade.py" in workflow
     assert "--persist-audit-report" not in workflow
     assert 'git push origin "HEAD:${GITHUB_REF_NAME}"' not in workflow

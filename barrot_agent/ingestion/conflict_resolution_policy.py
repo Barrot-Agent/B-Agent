@@ -1,16 +1,12 @@
 """Evidence-gated decisions for GitHub-style merge conflict choices.
 
-This module recommends a resolution; it never edits a repository or merges a PR.
-The UI labels are normalized as:
-- current: the target/base branch version
-- incoming: the PR/source branch version
-- both: a reviewed composition of both versions
+This module recommends a resolution only. It never applies a choice, edits a
+repository, approves a pull request, merges, pushes, or deploys.
 """
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from enum import Enum
-from typing import Optional
 
 
 class ResolutionChoice(str, Enum):
@@ -22,13 +18,10 @@ class ResolutionChoice(str, Enum):
 
 @dataclass(frozen=True)
 class ConflictEvidence:
-    """Facts established by inspection, not assumptions.
-
-    Defaults are deliberately false so missing evidence cannot authorize a
-    destructive one-sided choice.
-    """
+    """Facts established by inspection. Missing evidence always fails closed."""
 
     conflict_type: str = "content"
+    file_path: str = ""
     incoming_is_intended_pr_change: bool = False
     incoming_preserves_current_behavior: bool = False
     incoming_is_validated: bool = False
@@ -46,6 +39,7 @@ class ConflictEvidence:
 @dataclass(frozen=True)
 class ResolutionDecision:
     choice: ResolutionChoice
+    # Compatibility field; this policy never authorizes automatic application.
     auto_apply: bool
     confidence: float
     rationale: str
@@ -56,38 +50,70 @@ class ResolutionDecision:
 HIGH_RISK_TYPES = {
     "binary", "rename", "delete_modify", "submodule", "generated",
     "lockfile", "migration", "security", "permissions", "workflow",
-    "deployment", "secret", "database",
+    "deployment", "secret", "database", "authentication", "authorization",
+}
+HIGH_RISK_PATH_PARTS = {
+    "secrets", "credentials", "migrations", "terraform", "infrastructure",
+    "deploy", "deployment", "auth", "security", "permissions",
+}
+HIGH_RISK_FILENAMES = {
+    "codeowners", ".gitmodules", "dockerfile", "docker-compose.yml",
+    "docker-compose.yaml", "poetry.lock", "pipfile.lock", "cargo.lock",
+    "package-lock.json", "pnpm-lock.yaml", "yarn.lock",
 }
 
 
+def _is_high_risk_path(file_path: str) -> bool:
+    normalized = file_path.replace("\\", "/").strip("/").lower()
+    if not normalized:
+        return False
+    parts = normalized.split("/")
+    filename = parts[-1]
+    if filename in HIGH_RISK_FILENAMES:
+        return True
+    if filename.startswith(("auth", "security", "permission", "secret", "credential")):
+        return True
+    if normalized.startswith((".github/workflows/", ".github/actions/")):
+        return True
+    if normalized == ".github/codeowners" or filename == "codeowners":
+        return True
+    if any(part in HIGH_RISK_PATH_PARTS for part in parts[:-1]):
+        return True
+    if filename == ".env" or filename.startswith(".env."):
+        return True
+    return filename.endswith((".lock", ".sql"))
+
+
 def recommend_resolution(evidence: ConflictEvidence) -> ResolutionDecision:
-    """Return a conservative recommendation from explicit evidence.
-
-    Incoming is the contextual default for an intended PR improvement, but
-    never wins solely because it is incoming or because Barrot authored it.
-    """
-    kind = evidence.conflict_type.strip().lower().replace("-", "_")
-    checks = (
-        "compare base, current, and incoming versions",
-        "identify behavior and invariants changed on each side",
-        "run relevant tests and inspect the final diff",
+    """Recommend a choice from explicit evidence; never authorize applying it."""
+    kind = (
+        evidence.conflict_type.strip().lower()
+        .replace("-", "_").replace("/", "_").replace(" ", "_")
     )
-
-    if kind in HIGH_RISK_TYPES or evidence.security_or_data_loss_risk:
+    checks = (
+        "compare merge base, current, and incoming versions",
+        "identify behavior and invariants changed on each side",
+        "inspect the complete proposed result and its diff",
+        "run relevant tests against the exact candidate result",
+    )
+    if (
+        kind in HIGH_RISK_TYPES
+        or evidence.security_or_data_loss_risk
+        or _is_high_risk_path(evidence.file_path)
+    ):
         return ResolutionDecision(
             ResolutionChoice.MANUAL, False, 0.0,
-            "High-risk conflict: require explicit semantic review; do not choose a side automatically.",
-            checks + ("obtain maintainer approval for the resolved result",),
+            "High-risk conflict or protected path: require explicit semantic review; no side may be selected automatically.",
+            checks + ("obtain explicit maintainer authorization for the resolved result",),
             asdict(evidence),
         )
-
     if evidence.current_is_authoritative and evidence.incoming_is_superseded_or_invalid:
         return ResolutionDecision(
             ResolutionChoice.CURRENT, False, 0.95,
-            "Evidence identifies the current version as authoritative and the incoming change as superseded or invalid.",
-            checks, asdict(evidence),
+            "Evidence identifies current as authoritative and incoming as superseded or invalid; human authorization is still required.",
+            checks + ("obtain explicit human authorization before retaining current",),
+            asdict(evidence),
         )
-
     if (
         evidence.both_changes_are_required
         and evidence.both_changes_are_compatible
@@ -96,11 +122,11 @@ def recommend_resolution(evidence: ConflictEvidence) -> ResolutionDecision:
         and evidence.protected_area_reviewed
     ):
         return ResolutionDecision(
-            ResolutionChoice.BOTH, True, 0.90,
-            "Both changes are required, compatibility was reviewed, and the combined result passed validation.",
-            checks, asdict(evidence),
+            ResolutionChoice.BOTH, False, 0.90,
+            "Both changes are required, compatibility was reviewed, and the composed result passed validation. Human authorization is still required.",
+            checks + ("obtain explicit human authorization before applying the composition",),
+            asdict(evidence),
         )
-
     if (
         evidence.incoming_is_intended_pr_change
         and evidence.incoming_preserves_current_behavior
@@ -109,18 +135,18 @@ def recommend_resolution(evidence: ConflictEvidence) -> ResolutionDecision:
         and evidence.protected_area_reviewed
     ):
         return ResolutionDecision(
-            ResolutionChoice.INCOMING, True, 0.90,
-            "Incoming is the intended PR improvement; existing behavior was preserved and the result was reviewed and tested.",
-            checks, asdict(evidence),
+            ResolutionChoice.INCOMING, False, 0.90,
+            "Incoming is the intended improvement; existing behavior was preserved and the result was reviewed and tested. Human authorization is still required.",
+            checks + ("obtain explicit human authorization before applying incoming",),
+            asdict(evidence),
         )
-
     if evidence.current_is_authoritative:
         return ResolutionDecision(
             ResolutionChoice.CURRENT, False, 0.75,
-            "Current is marked authoritative, but the evidence is insufficient for automatic application.",
-            checks, asdict(evidence),
+            "Current is marked authoritative, but evidence is insufficient for automatic application. Human authorization is required.",
+            checks + ("obtain explicit human authorization before retaining current",),
+            asdict(evidence),
         )
-
     return ResolutionDecision(
         ResolutionChoice.MANUAL, False, 0.0,
         "Insufficient evidence to discard either side or safely combine them. Stop and request semantic review.",

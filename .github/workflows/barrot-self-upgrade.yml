@@ -22,12 +22,6 @@ concurrency:
 
 jobs:
   audit_and_upgrade:
-    # Dispatchable from any branch. The previous `github.ref == 'refs/heads/main'`
-    # condition blocked the flywheel from the working branch while protecting
-    # nothing: this job pushes `selfupgrade/<slug>-<stamp>` and opens a PR with
-    # `--base main`. The only main-writing code path is
-    # `scripts/barrot_self_upgrade.py --persist-audit-report`, and this workflow
-    # does not pass that flag. The final step proves main did not move.
     if: ${{ inputs.confirm_external_change == 'YES' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
