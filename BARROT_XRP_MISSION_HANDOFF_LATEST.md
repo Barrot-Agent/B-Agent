@@ -2231,3 +2231,47 @@ Two trackers report different 19 November XRP ETF results because their definiti
 - Main was not modified. The 69-workflow screen and main/integration safety comparison are recorded in this existing durable handoff.
 - No PRs were created or closed. No external deployment, Space restart, secret rotation, Databricks write, Kaggle download/submission, paper trade, funds transfer or direct-main push occurred.
 - Next concrete action: obtain an independent approving review and effective branch-protection evidence; review inline workflow dependencies and default token permissions; preserve the current main SHA; then use the existing consolidated PR and verify all gates on its exact current head before any merge.
+
+
+---
+
+## Run 239 — XRPL x402 / agentic-payment evidence audit
+**Capture window:** 2026-11-20, approximately 15:15 UTC. This is an ecosystem adoption audit, not a directional XRP forecast.
+
+### Primary protocol and institutional evidence
+- XRPL's official documentation confirms that XRPL is a supported x402 settlement chain through an implementation contributed by T54. Agents can pay for x402-gated services in XRP or RLUSD; the facilitator verifies an on-chain payment and issues a signed receipt. Official docs: https://xrpl.org/docs/agents/agentic-payments-x402
+- The same official documentation says the x402 `SourceTag` is chosen by the merchant and identifies the paid endpoint, not the payer/agent. It explicitly warns against using that tag as agent attribution. This is a key schema constraint for any x402 activity dataset.
+- T54's own Verifiable Intent documentation says VI is optional/additive: plain x402 payments still work without it; a valid L1→L3 chain is forwarded to Trustline for an allow/deny/review risk decision. Without the chain, no Trustline risk call is applied. Source: https://xrpl-x402.t54.ai/docs/verifiable-intent
+- Mastercard's June 10, 2026 first-party Agent Pay for Machines announcement lists t54 Labs, Coinbase and RippleX among the initial partners/supporters. The programme is explicitly multi-rail (cards, accounts and stablecoins). This establishes a shared partner ecosystem, not a direct Coinbase–Ripple–T54 joint product, XRP exclusivity or realized payment volume. Source: https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-launches-agent-pay-for-machines.html
+- T54's status page reported both XRPL mainnet and testnet facilitators operational at capture. It listed resolved testnet incidents on Nov 16 (16 minutes), Nov 11 (14 minutes) and Oct 16 (15 minutes); no mainnet incident was listed. This is operator-reported status, not independent SLA verification. Source: https://xrpl-ai.org/status
+
+### Operator-reported activity and independent-check limits
+- T54's XRPL AI Hub reports 15,995,382 total transactions, USD 92,010.96 all-time value settled, 203 registered merchants and 5,519 live services. It reports a four-week average weekly settled value of USD 15,448. The operator's own transaction ledger lists transaction hashes, ledger indices, amounts and counterparties. Source: https://xrpl-ai.org/
+- The implied all-time mean is approximately **$0.00575 per reported transaction** (USD 92,010.96 / 15,995,382). This is a derived average from the operator's aggregate count/value, not an independently audited economic-value measure.
+- The linked XRP Insights Radar reports 15,995,376 “agent transactions,” 197 active agents, 202 merchants, 5,989 paid services and all-time settled value of 7,036 XRP plus 83,073 RLUSD; it also reports only one settlement on its most recent daily observation. Source: https://xrp-insights.com/xrp-radar
+- The two dashboards differ by six in transaction count and differ in merchants, services and daily settlement summaries. They appear to consume the same T54 index, so they are not independent confirmations. The daily “one settlement” value and the live hub's recent entries have not been reconciled to a common cutoff or definition.
+- The T54 transaction ledger's first page showed recent entries marked **Intent status: Unverified**. One sampled entry displayed hash `1C93EF85AF9770A6614EC9B45D6EE9000000E9597A73AA0DAEE109226957CE78`, amount 0.002 RLUSD, ledger index 108,453,379, timestamp 2026-11-20 12:00:50 UTC, merchant/buyer addresses, invoice ID and SourceTag 804681468. Source: https://xrpl-ai.org/transactions and https://xrpl-ai.org/tx/1C93EF85AF9770A6614EC9B45D6EE9000000E9597A73AA0DAEE109226957CE78
+- The XRPL Explorer link rendered only its JavaScript shell; XRPSCAN returned HTTP 403 in this capture. The transaction hash/ledger index is operator-published and has not been independently re-fetched from a public rippled node in this run. Do not label the sampled transaction independently verified.
+
+### Material source disagreement: SourceTag and “agent transactions”
+- XRP Insights Radar describes all x402 settlements as tagged with the “facilitator's SourceTag 804681468” and says this tag verifies agent transactions.
+- XRPL's official x402 documentation states the SourceTag is merchant-selected and identifies the endpoint/resource being paid, not the payer/agent. The same transaction can therefore carry an endpoint tag without proving which agent initiated it.
+- T54's transaction detail separately labels the sampled intent status “Unverified”; T54's own docs say Verifiable Intent is optional. This does not prove the underlying XRPL payment failed, but it does mean that the sampled record does not establish a verified L1→L3 intent chain.
+- Preserve the disagreement. Until transaction-level raw ledger fields, invoice binding, merchant source-tag configuration, buyer account and optional VI verification are independently checked, do not use 804681468 as a unique facilitator/agent identifier or treat the full 15.9M count as 15.9M independently verified agent identities.
+
+### XRP-demand interpretation
+1. x402 is a genuine XRPL payment use case supported by official XRPL docs and T54's reference implementation.
+2. The payment asset may be XRP **or** RLUSD (and other supported IOUs are listed in the T54 ecosystem); the full x402 count is not XRP-only.
+3. The operator-reported USD 92K all-time value and approximately $0.00575 mean value per reported transaction are small relative to institutional payment rails and global XRP spot turnover. They establish early micro-payment activity, not material bridge-asset demand.
+4. A high request/transaction count can coexist with low economic value. Count, distinct agents, distinct buyers, successful on-chain Payments, VI-verified payments, XRP-denominated value, RLUSD-denominated value, unique merchants and paid service calls must be separate metrics.
+5. Mastercard's partner list demonstrates a multi-rail agent-payment ecosystem; it does not imply Mastercard settles through XRP or that Coinbase's participation routes USDC/other payments through XRP.
+
+### Feature admission rules
+- Candidate fields: protocol request ID, on-chain transaction hash, validated ledger index/time, transaction type, delivered amount, currency/issuer, source account, destination account, merchant endpoint ID, merchant-selected SourceTag, invoice ID, facilitator, VI presence/status, receipt signature/verification, distinct buyer/agent identity evidence, and USD conversion method/time.
+- Keep XRP and RLUSD payments separate. Do not infer unique agent identity from SourceTag. Do not count an HTTP 402 request, merchant service listing or batch Check as an individual XRP Payment without transaction-level mapping.
+- T54 aggregate counts and USD totals remain operator-reported. The XRP Insights Radar appears to reuse the same index and is not an independent source. No raw transaction receipt/hash chain, independent ledger verification or model-eligible feature row was created in this run.
+
+### Run 239 disposition
+- x402 remains a real but early, low-value, multi-asset XRPL use case. Its current evidence does not justify a material XRP-demand uplift or directional forecast.
+- Forecast issuance remains **false / NOT_SATISFIED**. No paper trade or real-money action.
+- Main remains unchanged. The findings are appended to the existing durable handoff on the existing integration branch.
