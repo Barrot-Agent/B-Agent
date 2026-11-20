@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-19T18:25:27+00:00",
+  "built_at": "2026-11-20T00:39:38+00:00",
   "queries": [
     "label:bounty",
     "bounty in:body",
@@ -10,7 +10,30 @@
     "opire in:body"
   ],
   "limit": 10,
-  "rows": [],
-  "status_values": [],
+  "rows": [
+    {
+      "url": "https://github.com/web3VE/web3VE/issues/145",
+      "title": "K3 Capital\u306esBOLD\u4fdd\u7ba1\u5eab\u306eswap()\u304c\u62c5\u4fdd\u306e\u53d7\u3051\u6e21\u3057\u3092\u78ba\u304b\u3081\u305a\u4f7f\u7528\u8a31\u53ef\u3082\u6b8b\u3057\u305f\u305f\u3081\u3001\u6301\u3061\u5206\u306e\u4fa1\u683c\u3092\u3064\u308a\u4e0a\u3052\u3089\u308c\u7d04343\u4e07BOLD\u6d41\u51fa\uff08Ethereum\uff09",
+      "repo": "web3VE/web3VE",
+      "number": 145,
+      "amount_usd": 3,
+      "platform_link": "",
+      "labels": [
+        "Candidate"
+      ],
+      "skills": [
+        "audit"
+      ],
+      "difficulty": 2.5,
+      "score": 1.2,
+      "stars": 21,
+      "last_push": "2026-10-07",
+      "quote": "- [The Crypto Times\uff1aK3 Capital Offers 15% Bounty to Recover $3.43M Lost in sBOLD Exploit](https://www.cryptotimes.io/2026/11/19/k3-capital-offers-15-bounty-to-r",
+      "status": "READY"
+    }
+  ],
+  "status_values": [
+    "READY"
+  ],
   "mutations_performed": 0
 }
