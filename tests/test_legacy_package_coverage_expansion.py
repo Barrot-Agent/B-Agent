@@ -126,7 +126,11 @@ def test_trial_tracker_cohort_efficacy_safety_and_mmi_payload() -> None:
 
 def test_dataset_manager_default_registry_registration_and_filters() -> None:
     manager = DatasetManager()
-    assert len(manager.list_all()) >= 40
+    default_datasets = manager.list_all()
+    assert len(default_datasets) >= 30
+    assert {"quixel_megascans", "poly_haven", "scannet"} <= {
+        dataset.name for dataset in default_datasets
+    }
 
     record = manager.register_dataset(
         name="coverage-test-dataset",

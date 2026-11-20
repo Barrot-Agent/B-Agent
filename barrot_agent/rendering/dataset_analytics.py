@@ -2,7 +2,7 @@
 Module 15 — Dataset Analytics Dashboard
 
 Real-time statistics, usage tracking, download metrics, performance
-graphs and quality reports across all 40+ integrated datasets.
+graphs and quality reports across all registered dataset records.
 Also provides the ``generate_build_report()`` function that produces
 Barrot's comprehensive build report.
 """
@@ -192,21 +192,21 @@ class DatasetAnalytics:
         lines.append("---\n")
         lines.append("## Executive Summary\n")
         lines.append(
-            "Barrot is now a **complete, real-time 3D rendering engine** with global dataset "
-            "access.  The comprehensive dataset absorption system integrates 40+ major 3D "
-            "rendering datasets, models, textures, materials, and scene databases — making "
-            "Barrot capable of photorealistic rendering from the world's largest collection "
-            "of 3D assets."
+            f"Barrot's 3D dataset registry currently contains **{m.registered_datasets} "
+            "metadata records** spanning asset libraries, scene databases, point clouds, "
+            "materials and benchmarks. Registry entries describe candidate sources; they do "
+            "not prove that source assets have been downloaded, licensed for a given use, "
+            "or integrated into a running renderer."
         )
 
         lines.append("\n---\n")
         lines.append("## System Metrics\n")
         lines.append("| Metric | Value |")
         lines.append("|--------|-------|")
-        lines.append(f"| Total Assets Registered | **{m.total_assets_loaded:,}+** |")
+        lines.append(f"| Reported Dataset Assets | **{m.total_assets_loaded:,}** |")
         lines.append(f"| Registered Datasets | **{m.registered_datasets}** |")
-        lines.append(f"| Total Raw Data Size | **{m.total_memory_used_gb:,.0f} GB** |")
-        lines.append(f"| Optimised Memory Footprint | **{m.optimised_memory_gb:,.0f} GB** |")
+        lines.append(f"| Sum of Registered Size Estimates | **{m.total_memory_used_gb:,.0f} GB** |")
+        lines.append(f"| Estimated Optimised Footprint | **{m.optimised_memory_gb:,.0f} GB** |")
         lines.append(f"| Average Asset Load Time | **{m.average_load_time_ms} ms** |")
         lines.append(f"| Real-Time Capable Assets | **{m.real_time_capable_pct}%** |")
         lines.append(f"| Overall Quality Score | **{m.overall_quality_score}/5.0** |")
@@ -219,7 +219,7 @@ class DatasetAnalytics:
                 "Module 01",
                 "Dataset Manager & Registry",
                 "✅ OPERATIONAL",
-                "Central registry for all 40+ datasets — auto-discovery, versioning, licence tracking",
+                f"Central registry for {m.registered_datasets} dataset metadata records — source and licence tracking",
             ),
             (
                 "Module 02",
@@ -273,7 +273,7 @@ class DatasetAnalytics:
                 "Module 10",
                 "Real-Time Dataset Indexing",
                 "✅ OPERATIONAL",
-                "Sub-10ms queries across all 40+ datasets — full-text, faceted, similarity search",
+                "Metadata filtering by category, tag and level of detail",
             ),
             (
                 "Module 11",
@@ -312,7 +312,7 @@ class DatasetAnalytics:
             lines.append(f"| {num} | **{name}** | {status} | {desc} |")
 
         lines.append("\n---\n")
-        lines.append("## Integrated Datasets (40+ Sources)\n")
+        lines.append(f"## Integrated Dataset Registry ({len(datasets)} metadata records)\n")
 
         tier_order = {
             "photogrammetry": "Tier 1 — High-Fidelity 3D Asset Libraries",
@@ -348,6 +348,21 @@ class DatasetAnalytics:
                     f"| {ds.license} | ⭐ {ds.quality_score}/5 |"
                 )
 
+        # Keep every registered category visible, including categories outside the curated tier map.
+        for cat in sorted(set(by_category) - set(tier_order)):
+            entries = by_category[cat]
+            lines.append(f"\n### Additional Registry Category — {cat.replace('_', ' ').title()}\n")
+            lines.append("| Dataset | Assets | Formats | Licence | Quality |")
+            lines.append("|---------|--------|---------|---------|---------|")
+            for ds in entries:
+                fmts = ", ".join(ds.formats[:3])
+                if len(ds.formats) > 3:
+                    fmts += f" +{len(ds.formats) - 3}"
+                lines.append(
+                    f"| **{ds.name}** | {ds.asset_count:,} | {fmts} "
+                    f"| {ds.license} | {ds.quality_score}/5 |"
+                )
+
         lines.append("\n---\n")
         lines.append("## Category Asset Distribution\n")
         lines.append("| Category | Assets |")
@@ -358,7 +373,7 @@ class DatasetAnalytics:
             lines.append(f"| {cat.replace('_', ' ').title()} | {count:,} |")
 
         lines.append("\n---\n")
-        lines.append("## Performance Capabilities\n")
+        lines.append("## Configured Performance Targets (not independently benchmarked)\n")
         perf_rows = [
             ("Target Frame Rate", "60 – 120 FPS"),
             ("Maximum Resolution", "4K (3840 × 2160)"),
@@ -404,15 +419,12 @@ class DatasetAnalytics:
         lines.append("\n---\n")
         lines.append("## Conclusion\n")
         lines.append(
-            "Barrot has successfully absorbed the world's largest collection of 3D rendering "
-            f"datasets — **{m.registered_datasets} data sources**, "
-            f"**{m.total_assets_loaded:,}+ assets**, across every major category of 3D content.  "
-            "All 15 pipeline modules are operational.  "
-            "The system is capable of loading, streaming, converting, validating, and rendering "
-            "any 3D scene in real-time at up to **120 FPS in 4K** — from a single photogrammetry "
-            "scan to an entire city block.\n\n"
-            "> *Barrot is now a complete, production-grade, real-time 3D rendering engine "
-            "with global dataset access.*"
+            f"The registry contains **{m.registered_datasets} dataset metadata records** and "
+            f"reports **{m.total_assets_loaded:,} associated assets** across its registered "
+            "categories. These are catalogue and analytics values, not independent proof of "
+            "asset downloads, licence entitlements, production integrations or rendering "
+            "throughput. The performance figures above are configured targets and require "
+            "separate hardware benchmarks before being described as measured results."
         )
 
         lines.append("\n---")
