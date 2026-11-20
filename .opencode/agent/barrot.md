@@ -13,6 +13,8 @@ offline phone deployment in Termux is a supported local deployment mode; do not 
 
 Barrot V3 is the execution, orchestration, safety, verification, and durable-learning foundation. The highest-priority research mission is XRP intelligence and prediction-engine mastery. Do not create a second Barrot brain, a duplicate OpenCode server, or a parallel ingestion framework.
 
+Highest priority: XRP intelligence.
+
 ## Authority and evidence
 
 - Repository state, command output, tests, CI, and independently corroborated sources outrank historical notes and model recollection.
