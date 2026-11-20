@@ -1326,3 +1326,62 @@ Japan's SBIC East/Central/West identity remains resolved as three regional SME i
 7. Continue leakage-safe walk-forward comparisons and shadow evaluation. Keep forecasts disabled until all prediction gates pass.
 
 No mainline code change, merge, deployment, publication, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer or real-money action occurred in this run.
+
+
+---
+
+## Verification correction — 2026-11-20 12:11 UTC
+
+This append-only correction supersedes the 11:51 UTC market snapshot and corrects one interpretation in that snapshot. No source bytes were captured; all market figures remain research-only and excluded from model features.
+
+### Exact-head CI on 315501c — VERIFIED
+
+The documentation-only handoff commit 315501c033c22879ea147ee3b6e0ce46bf18fd1a passed the exact-head PR CI:
+
+- Full repository suite: **4,440 passed, 1 skipped, 0 failed**, 11 warnings, 23 subtests; 130.81 seconds.
+- Inclusive coverage: **73.08%**; legacy/core floor and all mission package floors passed.
+- Dependency audit: passed six manifests.
+- Money audit: passed.
+- A2A Worker tests: passed.
+- GitHub Pages build: validation-only passed.
+- Exact-head fail-closed gate: blocked, with three blockers only: PR remains draft, no independent approving review, and branch protection could not be verified (HTTP 403). It remains read-only and does not merge.
+
+Run links:
+- CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/44733101893
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/44733102107
+- Money audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/44733102306
+- A2A Worker tests: https://github.com/Barrot-Agent/B-Agent/actions/runs/44733101992
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/44733102087
+
+This verification belongs to 315501c. The next handoff-only commit created by this correction is documentation-only; do not transfer this exact-head CI claim to a later SHA without its own run.
+
+### Latest Kraken snapshot — 2026-11-20 12:11:13 UTC
+
+The public Kraken XRP/USD ticker returned:
+
+- Best bid $0.95153; best ask $0.95154; midpoint $0.951535.
+- Indicative top-of-book spread approximately 0.105 bps.
+- Displayed best bid size 332 XRP; best ask size 5,720 XRP.
+- Last trade $0.95189, approximately 3.73 bps above the displayed midpoint.
+- 24-hour volume approximately 38.63 million XRP; 24-hour VWAP $0.969575; high $0.99680; low $0.94679; open $0.95925.
+
+The ticker still supplies no exchange event timestamp. The last trade and current quote are not synchronized by a disclosed timestamp. This is one venue and top-of-book only; it does not establish executable depth or slippage. It supersedes the 11:51 UTC Kraken observation for current-state display, but neither snapshot is model-eligible.
+
+Source: https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+
+### ETF flow interpretation correction
+
+The correct source is https://cryptoetf.today/en/xrp-etf-flows.
+
+For November 17, the page's -$6.0M total is composed of -$4.9M from XRPC and -$1.1M from GXRP. The headline's -$4.9M refers specifically to XRPC, not the five-fund total. The earlier addendum incorrectly described this as a provider-internal disagreement; that claim is withdrawn.
+
+The page still shows zero total XRP ETF net flow on November 19, -$19.0M over 30 trading days, five inflow days and ten outflow days, $1.08B net assets and +$1.79B cumulative net flow. November month-to-date headline is -$25.7M while the sum of the displayed rounded daily rows is approximately -$25.2M. The $0.5M difference may be rounding or a scope/update issue; it is not resolved from this page alone. Rows dated November 16–19 are marked provisional. This remains a secondary aggregator, not issuer-reported cash receipts.
+
+The page also reports -$718.7M in total U.S. crypto ETF flows and CEFI 9 for November 19. This is broad-market context, not an XRP-specific flow signal.
+
+### Current state after this correction
+
+- Main remains 7f8e3626c355bb3d89afdff56aeed5e056cb88f4.
+- PR #1673 was at head 315501c before this documentation-only correction; the correction creates a new documentation-only head and will trigger fresh CI.
+- No mainline code change, merge, deployment, publication, secret rotation, paper trade, funds transfer or real-money action occurred.
+- Forecast status remains NOT_ISSUED.
