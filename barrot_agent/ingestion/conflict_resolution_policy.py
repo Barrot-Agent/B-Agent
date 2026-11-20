@@ -71,6 +71,8 @@ def _is_high_risk_path(file_path: str) -> bool:
     filename = parts[-1]
     if filename in HIGH_RISK_FILENAMES:
         return True
+    if filename.startswith(("auth", "security", "permission", "secret", "credential")):
+        return True
     if normalized.startswith((".github/workflows/", ".github/actions/")):
         return True
     if normalized == ".github/codeowners" or filename == "codeowners":
