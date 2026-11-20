@@ -41,14 +41,14 @@ def start_background_a2a_runner() -> bool:
         return False
     if not (os.getenv("BARROT_AGENT_SECRET") or os.getenv("BRAIN_SHARED_SECRET")):
         return False
-    from scripts.barrot_a2a_runner import runner_is_active
-
-    if runner_is_active():
-        return False
-    log_dir = Path.home() / ".barrot"
-    log_dir.mkdir(parents=True, exist_ok=True)
-    log_path = log_dir / "a2a-runner.log"
     try:
+        from scripts.barrot_a2a_runner import runner_is_active
+
+        if runner_is_active():
+            return False
+        log_dir = Path.home() / ".barrot"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_path = log_dir / "a2a-runner.log"
         with log_path.open("a", encoding="utf-8") as log_handle:
             subprocess.Popen(
                 [sys.executable, str(ROOT / "scripts" / "barrot_a2a_runner.py")],
