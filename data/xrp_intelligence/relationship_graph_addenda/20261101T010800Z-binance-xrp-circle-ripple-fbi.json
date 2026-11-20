@@ -1,0 +1,283 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261101T010800Z-BINANCE-XRP-CIRCLE-RIPPLE-FBI",
+  "captured_at_utc": "2026-11-01T01:08:00Z",
+  "data_cutoff_utc": "2026-11-01T01:04:00Z",
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "type": "exchange",
+      "label": "Binance"
+    },
+    {
+      "id": "BINANCE_HOT_WALLETS_XRPL",
+      "type": "custody_cluster",
+      "label": "Five Binance XRPL hot wallets"
+    },
+    {
+      "id": "ATTACKER_XRP",
+      "type": "xrpl_account",
+      "label": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx"
+    },
+    {
+      "id": "XRP_233M",
+      "type": "digital_asset_balance",
+      "label": "233,461,943.1 XRP"
+    },
+    {
+      "id": "TRADERTRAITOR",
+      "type": "threat_actor_attribution",
+      "label": "FBI-attributed North Korean TraderTraitor"
+    },
+    {
+      "id": "FBI",
+      "type": "law_enforcement",
+      "label": "Federal Bureau of Investigation"
+    },
+    {
+      "id": "TRM",
+      "type": "blockchain_intelligence",
+      "label": "TRM Labs"
+    },
+    {
+      "id": "BITQUERY",
+      "type": "blockchain_analytics",
+      "label": "Bitquery"
+    },
+    {
+      "id": "ELLIPTIC",
+      "type": "blockchain_intelligence",
+      "label": "Elliptic"
+    },
+    {
+      "id": "CIRCLE",
+      "type": "stablecoin_issuer",
+      "label": "Circle"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin",
+      "label": "USDC"
+    },
+    {
+      "id": "CCTP",
+      "type": "cross_chain_rail",
+      "label": "Circle Cross-Chain Transfer Protocol"
+    },
+    {
+      "id": "RIPPLE",
+      "type": "company",
+      "label": "Ripple"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin",
+      "label": "RLUSD"
+    },
+    {
+      "id": "TETHER",
+      "type": "stablecoin_issuer",
+      "label": "Tether"
+    },
+    {
+      "id": "USDT",
+      "type": "stablecoin",
+      "label": "USDT"
+    },
+    {
+      "id": "BINANCE_RECOVERY",
+      "type": "corporate_finance",
+      "label": "SAFU + Futures Insurance Fund + corporate treasury"
+    },
+    {
+      "id": "BINANCE_POR",
+      "type": "reserve_verification",
+      "label": "31 Oct PoR snapshot; full ZK proof estimated Nov 3"
+    },
+    {
+      "id": "COINBASE",
+      "type": "exchange",
+      "label": "Coinbase Exchange"
+    },
+    {
+      "id": "COINGECKO",
+      "type": "market_data_provider",
+      "label": "CoinGecko market/depth snapshot"
+    },
+    {
+      "id": "XRPL",
+      "type": "blockchain",
+      "label": "XRP Ledger"
+    },
+    {
+      "id": "CROSS_ANALYSIS",
+      "type": "github_workflow",
+      "label": "Barrot main Cross Analysis writer"
+    },
+    {
+      "id": "PR1435",
+      "type": "github_pull_request",
+      "label": "Read-only artifact-only Cross Analysis proposal"
+    }
+  ],
+  "edges": [
+    {
+      "from": "BINANCE_HOT_WALLETS_XRPL",
+      "to": "ATTACKER_XRP",
+      "relation": "sent_five_valid_signed_payments",
+      "amount_xrp": 233461943.1,
+      "evidence_class": "ONCHAIN_ANALYTICS_CORROBORATED",
+      "sources": [
+        "TRM",
+        "BITQUERY",
+        "ELLIPTIC",
+        "XRPLWIN"
+      ]
+    },
+    {
+      "from": "ATTACKER_XRP",
+      "to": "XRP_233M",
+      "relation": "held_balance_as_of_2026_10_31T1651Z",
+      "evidence_class": "ONCHAIN_OBSERVATION",
+      "source": "BITQUERY",
+      "current_state": "UNKNOWN_AFTER_CUTOFF"
+    },
+    {
+      "from": "FBI",
+      "to": "TRADERTRAITOR",
+      "relation": "official_attribution_for_overall_binance_theft",
+      "evidence_class": "OFFICIAL_ATTRIBUTION",
+      "scope": "overall_incident; FBI alert does not list the XRPL address"
+    },
+    {
+      "from": "TRM",
+      "to": "TRADERTRAITOR",
+      "relation": "high_confidence_attribution",
+      "evidence_class": "SOURCED_ANALYST_ASSESSMENT"
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_RECOVERY",
+      "relation": "claims_90pct_replenishment_and_100pct_top_ten_coverage",
+      "evidence_class": "COMPANY_CLAIM_PENDING_FULL_ZK_PROOF"
+    },
+    {
+      "from": "BINANCE_RECOVERY",
+      "to": "XRP_233M",
+      "relation": "customer_asset_coverage_does_not_recover_stolen_xrp",
+      "evidence_class": "DISTINCT_BALANCE_SHEETS"
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_POR",
+      "relation": "publishes_snapshot_and_promises_full_proof",
+      "evidence_class": "OFFICIAL_STATEMENT"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "USDC",
+      "relation": "issuer_can_freeze_identified_addresses",
+      "evidence_class": "CONFIRMED_OPERATIONAL_ACTION",
+      "amount_usdc": 823000000
+    },
+    {
+      "from": "CIRCLE",
+      "to": "CCTP",
+      "relation": "operates_cross_chain_transfer_rail",
+      "evidence_class": "CONFIRMED_PRODUCT_RELATIONSHIP"
+    },
+    {
+      "from": "CCTP",
+      "to": "TRADERTRAITOR",
+      "relation": "used_in_attacker_avalanche_usdc_to_ethereum_path",
+      "evidence_class": "ONCHAIN_ANALYTICS_OBSERVATION",
+      "intentional_assistance": "NOT_EVIDENCED"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "RLUSD",
+      "relation": "issuer_can_freeze_issuer_controlled_balances",
+      "evidence_class": "CONFIRMED_OPERATIONAL_ACTION",
+      "amount_rlusd": 40500000,
+      "chain": "Ethereum"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "ATTACKER_XRP",
+      "relation": "cannot_freeze_native_xrp_at_protocol_level",
+      "evidence_class": "PROTOCOL_ASSET_DISTINCTION"
+    },
+    {
+      "from": "TETHER",
+      "to": "USDT",
+      "relation": "issuer_froze_attacker_linked_balances",
+      "evidence_class": "CONFIRMED_OPERATIONAL_ACTION",
+      "amount_usdt_approx": 1770000000
+    },
+    {
+      "from": "COINGECKO",
+      "to": "COINBASE",
+      "relation": "reports_XRP_USD_volume_and_depth",
+      "evidence_class": "MARKET_DATA_OBSERVATION",
+      "exact_quote_timestamp": "NOT_EXPOSED"
+    },
+    {
+      "from": "BINANCE",
+      "to": "COINBASE",
+      "relation": "possible_customer_or_volume_share_shift",
+      "evidence_class": "HYPOTHESIS_ONLY",
+      "status": "NO_FLOW_EVIDENCE"
+    },
+    {
+      "from": "CROSS_ANALYSIS",
+      "to": "PR1435",
+      "relation": "read_only_successor_proposal",
+      "evidence_class": "VERIFIED_EXACT_HEAD_CI; NOT_MERGED"
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "H1",
+      "name": "Replacement purchases create XRP demand",
+      "causal_chain": "Binance reserves shortfall → market/OTC XRP acquisition → net external XRP demand",
+      "status": "UNRESOLVED",
+      "key_missing": "XRP-specific acquisition quantity, source wallet and execution venue"
+    },
+    {
+      "id": "H2",
+      "name": "Attacker wallet creates contingent XRP supply overhang",
+      "causal_chain": "attacker account first outgoing → destination/bridge/exchange → potential sell flow",
+      "status": "CONDITIONAL",
+      "key_missing": "post-16:51 UTC account state and any sale evidence"
+    },
+    {
+      "id": "H3",
+      "name": "Issuer freezes increase preference for permissioned stablecoins",
+      "causal_chain": "freeze capability and law-enforcement coordination → institutional risk-control preference",
+      "status": "INFERENCE",
+      "key_missing": "subsequent issuance, balances, volumes and customer decisions"
+    },
+    {
+      "id": "H4",
+      "name": "Binance outage shifts activity toward Coinbase",
+      "causal_chain": "withdrawal disruption → user migration → venue volume/depth change",
+      "status": "SPECULATION",
+      "key_missing": "verified deposits, withdrawals and market-share change"
+    },
+    {
+      "id": "H5",
+      "name": "XRPL protocol vulnerability caused theft",
+      "causal_chain": "protocol fault → unauthorized ledger transfer",
+      "status": "DISCONFIRMED_BY_AVAILABLE_EVIDENCE",
+      "key_missing": "none identified; observed transactions were validly signed"
+    }
+  ],
+  "exclusions": [
+    "Do not infer the attacker XRP balance is currently unchanged after 2026-10-31 16:51 UTC.",
+    "Do not equate Binance 100% XRP customer coverage with recovery or purchase of the stolen 233.46M XRP.",
+    "Do not infer Circle intentionally facilitated the attack because CCTP was used in a laundering route.",
+    "Do not infer Coinbase gained customers or volume from Binance's outage without flow evidence.",
+    "Do not infer a price direction from the hack, escrow eligibility or the indicative CoinGecko snapshot."
+  ]
+}

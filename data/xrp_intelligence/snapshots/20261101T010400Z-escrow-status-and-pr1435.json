@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "XRP-20261101T010400Z-ESCROW-STATUS-AND-PR1435",
+  "captured_at_utc": "2026-11-01T01:04:00Z",
+  "data_cutoff_utc": "2026-11-01T01:03:55Z",
+  "event": {
+    "name": "Ripple November 2026 XRP escrow eligibility",
+    "eligibility_time_utc": "2026-11-01T00:00:00Z",
+    "gross_scheduled_xrp": 1000000000,
+    "escrow_object_count": 2,
+    "owner_accounts": [
+      "r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp",
+      "rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn"
+    ],
+    "latest_tracker_ledger": 108033174,
+    "latest_tracker_ledger_time_utc": "2026-10-31T23:22:00Z",
+    "tracker_age_at_capture_minutes": 102,
+    "event_status": "ELIGIBILITY_TIME_PASSED_EXECUTION_UNVERIFIED",
+    "raw_post_event_ledger_obtained": false,
+    "escrow_finish_hashes": [],
+    "destination_receipts": [],
+    "follow_on_transfers": [],
+    "reescrow_creates": [],
+    "exchange_deposits": [],
+    "market_supply_change_verified": false,
+    "temporal_warning": "The page's pinned ledger predates eligibility by 38 minutes. Its current eligibility text is not post-event transaction evidence."
+  },
+  "prior_pattern": {
+    "observation_window": "November 2025 through October 2026",
+    "released_xrp": 12000000000,
+    "reescrowed_xrp": 8400000000,
+    "reescrow_ratio": 0.7,
+    "net_outside_escrow_xrp": 3600000000,
+    "interpretation": "Descriptive historical prior only; not a protocol rule, November forecast, or sale estimate."
+  },
+  "repository": {
+    "main_sha": "93d99064389fbe09bd6ca01d9d283fdc52a13c5b",
+    "latest_main_commit": "Cross-analysis refresh [skip ci]",
+    "latest_main_commit_time_utc": "2026-11-01T00:57:03Z",
+    "main_cross_analysis_writer_active": true,
+    "zero_sample_timestamp_only_refresh": true,
+    "pr1435": {
+      "number": 1435,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1435",
+      "head_sha": "c3d239dde20a80c4b8a452c5225c93ea49c59883",
+      "base_sha": "93d99064389fbe09bd6ca01d9d283fdc52a13c5b",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_tests": 345,
+      "ci_subtests": 8,
+      "gate": "PASS_MERGE_DISABLED"
+    }
+  },
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "source_reference_count": 2,
+  "missing_source_references": 0,
+  "source_revision_ids": [
+    "REV-20261101T010400Z-XRP-ESCROW-STALE-LEDGER-AND-OWNER-CACHE",
+    "REV-20261101T010400Z-GITHUB-CROSS-ANALYSIS-MAIN-WRITER-AND-PR1435"
+  ],
+  "source_revision_addenda_count": 2,
+  "source_revision_addenda_pending_archive_append": 2,
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "limitations": [
+    "No raw post-eligibility validated XRPL account_objects/account_tx response was obtained.",
+    "The latest XRP Insights pinned ledger is 38 minutes before eligibility; the page was 102 minutes stale at capture.",
+    "Bithomp owner pages are stale/incomplete and cannot independently establish post-event state.",
+    "No escrow finish, destination, follow-on transfer, re-escrow or exchange deposit has been verified in this run.",
+    "Main Cross Analysis still has a scheduled contents:write path until PR #1435 is approved and merged.",
+    "PR #1435 exact-head CI passed, but full repository CI and comprehensive dependency/security scans were not run.",
+    "No directional forecast or market feature is admitted."
+  ]
+}

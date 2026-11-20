@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 6,
+  "chunk_count": 7,
+  "record_count": 9,
+  "records": [
+    "CFTC Letter 26-05 is a staff no-action position, not a Commission rule or blanket asset approval. Its initial three-month asset restriction is measured from each FCM's own commencement of reliance; FCM-specific WinJammer notice and reliance date for Bitnomial Clearing LLC, Coinbase Financial Markets or Ripple Prime remain unknown.",
+    "Bitnomial's published XRP collateral acceptance at a CFTC-registered DCO does not establish that any FCM has relied on Letter 26-05 to accept XRP from customers, nor does it establish XRP collateral balances, deposits, utilization, customer counts or realized clearing volume.",
+    "Bitnomial's XRP collateral haircut of 40%, $15M notional limit and XRP contract maintenance margin of 17% are distinct controls. The published page does not define the $15M cap's aggregation basis; no dollar value of collateral utilization can be inferred.",
+    "Coinbase Financial Markets is the requestor underlying CFTC Letter 26-05. No evidence in this run establishes Coinbase Financial Markets as a Bitnomial clearing member, an XRP collateral user, or a direct counterparty of Ripple Prime in this collateral channel.",
+    "Hidden Road Partners CIV US LLC appears on Bitnomial's clearing-member list and Ripple acquired Hidden Road, now Ripple Prime. The exact operating subsidiary, collateral flows and any XRP positions through that membership are not publicly established.",
+    "CryptoKeyhole and XRP Insights ETF flows are not directly comparable: the former daily series covers four issuer files and applies its own date mapping; the latter tracks six US spot funds plus BITW, excludes GXRP flows and marks Oct 29 provisional. Fund-level matched holdings and issuer timestamps are required before reconciling the Oct 28 +4.338M XRP vs Oct 26-28 -2.959M XRP figures.",
+    "XRP derivatives dashboards have incompatible coverage and timestamps. TradRadar's seven-venue OI, Liqwall's all-exchange OI and BitcoinLeverage's two-venue partial Coinalyze panel must not be averaged. Long/short account ratios are not notional exposure and reported liquidation totals may be partial.",
+    "The research-branch source archive contained one duplicate ID across two CFTC pilot records. A corrected replacement shard was created with a unique ID while preserving the prior shard. The ledger pointer update and exact-head Python validator remain pending; no current full validator pass is claimed.",
+    "Current XRP market observations show heavy long liquidations and falling open interest, but the panel is not synchronized or sufficiently reconciled for feature admission. No directional forecast is issued and no market feature is admitted."
+  ]
+}

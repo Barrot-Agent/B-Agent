@@ -1,0 +1,393 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-20261031T213618Z-ESCROW-RIPPLE-CAPITAL-SBI-BNY-COINBASE",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "source_ids": [
+    "SRC-20261031T213618Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS",
+    "SRC-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME",
+    "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE",
+    "SRC-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+    "SRC-20261031T213618Z-RIPPLE-COINBASE-RLUSD",
+    "SRC-20261031T213618Z-TOKENPOST-SOSOVALUE-XRP-ETF",
+    "SRC-20261031T213618Z-ALPHAFINANCE-XRP-ETF",
+    "SRC-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+    "SRC-20261031T213618Z-GITHUB-BAGENT-AUDIT"
+  ],
+  "nodes": [
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "ASSET"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "LEDGER"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "COMPANY"
+    },
+    {
+      "id": "ESCROW",
+      "label": "Two 500M escrow objects eligible Nov1",
+      "kind": "ESCROW"
+    },
+    {
+      "id": "ACCOUNT_A",
+      "label": "Ripple-labelled 500M account A Oct29",
+      "kind": "ACCOUNT"
+    },
+    {
+      "id": "ACCOUNT_B",
+      "label": "Ripple-labelled 500M account B Oct29",
+      "kind": "ACCOUNT"
+    },
+    {
+      "id": "RIPPLE_PAYMENTS",
+      "label": "Ripple Payments",
+      "kind": "PAYMENT_PRODUCT"
+    },
+    {
+      "id": "RIPPLE_TREASURY",
+      "label": "Ripple Treasury",
+      "kind": "TREASURY_SOFTWARE"
+    },
+    {
+      "id": "RLUSD",
+      "label": "RLUSD",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "BNY",
+      "label": "BNY",
+      "kind": "CUSTODIAN"
+    },
+    {
+      "id": "SBI_REMIT",
+      "label": "SBI Remit",
+      "kind": "REMITTANCE"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "TRANGLO",
+      "label": "Tranglo",
+      "kind": "PAYOUT_PROVIDER"
+    },
+    {
+      "id": "XRP_ETF",
+      "label": "US spot XRP ETFs",
+      "kind": "FUNDS"
+    },
+    {
+      "id": "SOSOVALUE",
+      "label": "SoSoValue",
+      "kind": "DATA_PROVIDER"
+    },
+    {
+      "id": "ALPHA",
+      "label": "Alpha Finance",
+      "kind": "DATA_PROVIDER"
+    },
+    {
+      "id": "C2FO",
+      "label": "C2FO",
+      "kind": "TRADE_FINANCE"
+    },
+    {
+      "id": "MAIN",
+      "label": "B-Agent main",
+      "kind": "GIT_BRANCH"
+    },
+    {
+      "id": "PR1429",
+      "label": "Cross Analysis safety PR",
+      "kind": "PULL_REQUEST"
+    },
+    {
+      "id": "PR1430",
+      "label": "Merge Queue safety PR",
+      "kind": "PULL_REQUEST"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E1",
+      "source": "RIPPLE",
+      "target": "ESCROW",
+      "relationship": "ASSOCIATED_WITH_1B_XRP_FINISH_AFTER",
+      "evidence_class": "SECONDARY_ONCHAIN",
+      "source_ids": [
+        "SRC-20261031T213618Z-XRP-INSIGHTS-ESCROW"
+      ]
+    },
+    {
+      "id": "E2",
+      "source": "RIPPLE",
+      "target": "ACCOUNT_A",
+      "relationship": "500M_BALANCE_REPORTED_OCT29",
+      "evidence_class": "SECONDARY_TRANSACTION_REPORT",
+      "source_ids": [
+        "SRC-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS"
+      ]
+    },
+    {
+      "id": "E3",
+      "source": "RIPPLE",
+      "target": "ACCOUNT_B",
+      "relationship": "500M_BALANCE_REPORTED_OCT29",
+      "evidence_class": "SECONDARY_TRANSACTION_REPORT",
+      "source_ids": [
+        "SRC-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS"
+      ]
+    },
+    {
+      "id": "E4",
+      "source": "ESCROW",
+      "target": "XRPL",
+      "relationship": "FINISH_AFTER_TIMELOCK",
+      "evidence_class": "SECONDARY_ONCHAIN",
+      "source_ids": [
+        "SRC-20261031T213618Z-XRP-INSIGHTS-ESCROW"
+      ]
+    },
+    {
+      "id": "E5",
+      "source": "RIPPLE",
+      "target": "RIPPLE_PAYMENTS",
+      "relationship": "150B_LIFETIME_VOLUME; XRP_ROUTE_SHARE_UNKNOWN",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME"
+      ]
+    },
+    {
+      "id": "E6",
+      "source": "RIPPLE",
+      "target": "RIPPLE_TREASURY",
+      "relationship": "13T_2025_VOLUME_SECONDARY_CLAIM",
+      "evidence_class": "SECONDARY_EDITORIAL",
+      "source_ids": [
+        "SRC-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME"
+      ]
+    },
+    {
+      "id": "E7",
+      "source": "SBI_REMIT",
+      "target": "XRP",
+      "relationship": "XRP_BRIDGE_ASSET",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE"
+      ]
+    },
+    {
+      "id": "E8",
+      "source": "SBI_VC_TRADE",
+      "target": "SBI_REMIT",
+      "relationship": "REAL_TIME_XRP_SUPPLY_PER_PAYMENT_REQUEST",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE"
+      ]
+    },
+    {
+      "id": "E9",
+      "source": "SBI_REMIT",
+      "target": "TRANGLO",
+      "relationship": "PAYOUT_PROCESSING",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE"
+      ]
+    },
+    {
+      "id": "E10",
+      "source": "BNY",
+      "target": "XRP",
+      "relationship": "INSTITUTIONAL_CUSTODY_SUPPORT",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "E11",
+      "source": "BNY",
+      "target": "RLUSD",
+      "relationship": "PRIMARY_RESERVE_CUSTODIAN",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "E12",
+      "source": "BNY",
+      "target": "C2FO",
+      "relationship": "EXPLORATORY_TOKENIZED_TRADE_FINANCE",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "E13",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "DISTRIBUTION_ON_XRPL_BASE_ETHEREUM",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T213618Z-RIPPLE-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "E14",
+      "source": "RLUSD",
+      "target": "XRPL",
+      "relationship": "ISSUED_ON_SUPPORTED_NETWORK",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+        "SRC-20261031T213618Z-RIPPLE-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "E15",
+      "source": "RIPPLE",
+      "target": "XRP",
+      "relationship": "POSITIONS_XRP_AS_BRIDGE_AND_RLUSD_AS_COMPLEMENT",
+      "evidence_class": "PRIMARY_COMPANY_STRATEGY",
+      "source_ids": [
+        "SRC-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY"
+      ]
+    },
+    {
+      "id": "E16",
+      "source": "XRP_ETF",
+      "target": "SOSOVALUE",
+      "relationship": "OCT30_NET_OUTFLOW_MINUS_496496_USD",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "source_ids": [
+        "SRC-20261031T213618Z-TOKENPOST-SOSOVALUE-XRP-ETF"
+      ]
+    },
+    {
+      "id": "E17",
+      "source": "XRP_ETF",
+      "target": "ALPHA",
+      "relationship": "OCT29_NET_INFLOW_PLUS_8_4M_USD",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "source_ids": [
+        "SRC-20261031T213618Z-ALPHAFINANCE-XRP-ETF"
+      ]
+    },
+    {
+      "id": "E18",
+      "source": "PR1429",
+      "target": "MAIN",
+      "relationship": "PROPOSES_READ_ONLY_CROSS_ANALYSIS",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "source_ids": [
+        "SRC-20261031T213618Z-GITHUB-BAGENT-AUDIT"
+      ]
+    },
+    {
+      "id": "E19",
+      "source": "PR1430",
+      "target": "MAIN",
+      "relationship": "PROPOSES_EXPLICIT_CONFIRMATION_FOR_LIVE_MERGE_QUEUE",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "source_ids": [
+        "SRC-20261031T213618Z-GITHUB-BAGENT-AUDIT"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "status": "INFERENCE_NOT_SALE",
+      "statement": "2B combined account/escrow context is 1B reported in wallets plus 1B still locked.",
+      "disconfirming": [
+        "No raw current account state; no EscrowFinish."
+      ],
+      "next_test": "Pinned ledger and account_tx at Nov1."
+    },
+    {
+      "id": "H2",
+      "status": "UNSUPPORTED",
+      "statement": "Nov1 eligibility creates immediate selling.",
+      "disconfirming": [
+        "70% re-escrow history; no exchange deposit/sale."
+      ],
+      "next_test": "Trace destinations and venue deposits."
+    },
+    {
+      "id": "H3",
+      "status": "NOT_ESTABLISHED",
+      "statement": "$16T Ripple product volume implies XRP demand.",
+      "disconfirming": [
+        "Portfolio-wide metric; XRP-routed share unknown."
+      ],
+      "next_test": "Corridor-level settlement and inventory data."
+    },
+    {
+      "id": "H4",
+      "status": "COMPETING",
+      "statement": "RLUSD substitutes in some corridors and complements XRP in others.",
+      "disconfirming": [
+        "Actual route share unknown."
+      ],
+      "next_test": "Route-level XRP/RLUSD comparison."
+    },
+    {
+      "id": "H5",
+      "status": "USE_CASE_CONFIRMED_SCALE_UNKNOWN",
+      "statement": "SBI Remit has documented XRP bridge use.",
+      "disconfirming": [
+        "Current volume/inventory unknown."
+      ],
+      "next_test": "Current corridor disclosures."
+    },
+    {
+      "id": "H6",
+      "status": "ACCESS_CONFIRMED_BALANCES_UNKNOWN",
+      "statement": "BNY custody lowers institutional access friction.",
+      "disconfirming": [
+        "No client balances disclosed."
+      ],
+      "next_test": "Custody adoption/transfer disclosures."
+    },
+    {
+      "id": "H7",
+      "status": "CONTEXT_ONLY",
+      "statement": "ETF outflows may contribute to short-term sell-side activity.",
+      "disconfirming": [
+        "Different providers/cutoffs and AP hedging."
+      ],
+      "next_test": "Issuer-level creation/redemption and execution data."
+    },
+    {
+      "id": "H8",
+      "status": "INDIRECT_ONLY",
+      "statement": "Coinbase RLUSD distribution is not evidence of XRP purchases.",
+      "disconfirming": [
+        "XRPL usage may generate fees but chain split unknown."
+      ],
+      "next_test": "Measure XRPL share and collateral activation."
+    }
+  ]
+}

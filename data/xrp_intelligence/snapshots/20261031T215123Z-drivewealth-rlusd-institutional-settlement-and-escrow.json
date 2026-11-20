@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T215123Z-DRIVEWEALTH-RLUSD-INSTITUTIONAL-SETTLEMENT-AND-ESCROW",
+  "captured_at_utc": "2026-10-31T21:51:23Z",
+  "data_cutoff_utc": "2026-10-31T21:51:23Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T215123Z-drivewealth-rlusd-institutional-settlement-and-escrow.json",
+  "supersedes_snapshot_id": "XRP-20261031T215008Z-ESCROW-COUNTDOWN-CORRECTION",
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T210244Z-TRADRADAR-XRP",
+    "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-10Q",
+    "SRC-20261031T211452Z-SEC-21SHARES-XRP-ETF-10Q"
+  ],
+  "source_revision_ids": [
+    "SRC-20261031T212655Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T212655Z-TOKENPOST-RIPPLE-ACCOUNTS",
+    "SRC-20261031T212655Z-RIPPLE-16T-PRODUCT-VOLUME",
+    "SRC-20261031T212655Z-BNY-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T212655Z-SBI-REMIT-XRP-BRIDGE",
+    "SRC-20261031T212655Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+    "SRC-20261031T212655Z-RIPPLE-COINBASE-RLUSD",
+    "SRC-20261031T212655Z-TOKENPOST-SOSOVALUE-XRP-ETF",
+    "SRC-20261031T212655Z-ALPHAFINANCE-XRP-ETF",
+    "SRC-20261031T212655Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+    "SRC-20261031T212655Z-GITHUB-BAGENT-AUDIT",
+    "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS",
+    "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+    "SRC-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+    "SRC-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+    "SRC-20261031T214545Z-STABLECOININSIDER-RLUSD",
+    "SRC-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+    "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP",
+    "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT"
+  ],
+  "actual_capital": {
+    "ripple_treasury_2025_payment_volume_usd": 13000000000000,
+    "ripple_treasury_evidence": "PRIMARY_COMPANY_STATEMENT",
+    "ceo_estimated_offchain_share_pct": 99.9,
+    "approx_residual_crypto_rail_share_pct": 0.1,
+    "approx_residual_value_usd": 13000000000,
+    "ripple_prime_2025_volume_low_usd": 3000000000000,
+    "ripple_prime_2025_volume_high_usd": 4000000000000,
+    "ceo_estimated_offchain_share": "99%+",
+    "aggregate_ripple_product_volume_usd": 16000000000000,
+    "one_percent_onchain_scenario_usd": 160000000000,
+    "onchain_conversion_measure_2027": "CEO said Ripple would measure what share could move on-chain in 2027; scenario only, not a committed target or forecast.",
+    "xrp_specific_onchain_volume": "UNKNOWN",
+    "xrp_routed_share": "UNKNOWN",
+    "rlusd_routed_share": "UNKNOWN",
+    "interpretation": "The headline $16T is overwhelmingly off-chain per the CEO interview; it is not current XRP liquidity or XRP transaction volume. Approximate residuals are executive estimates, not audited."
+  },
+  "ripple_treasury": {
+    "native_digital_asset_account": "LAUNCHED_APRIL_1_2026",
+    "supported_assets": [
+      "XRP",
+      "RLUSD"
+    ],
+    "customer_account_capability": "Regulated Ripple-native digital asset account; view, hold, receive and manage balances.",
+    "ripple_treasury_payments_volume_2025_usd": 13000000000000,
+    "ripple_treasury_volume_2025_onchain": "CEO says 99.9 percent did not touch crypto rails or stablecoins.",
+    "corporate_customer_reach": "CEO said platform touches over 1,000 corporates.",
+    "customer_xrp_balances": "UNKNOWN",
+    "customer_rlusd_balances": "UNKNOWN",
+    "xrp_payment_routing": "UNKNOWN",
+    "future_cross_border_settlement": "PLANNED_NOT_VERIFIED_LIVE",
+    "future_overnight_repo": "PLANNED_NOT_VERIFIED_LIVE"
+  },
+  "rlusd_chain_split": {
+    "ceo_oct28_claim": {
+      "xrpl_share": "ABOUT_HALF",
+      "ethereum_share": "ABOUT_HALF",
+      "evidence": "CEO_INTERVIEW_TRANSCRIPT"
+    },
+    "xrp_insights_oct31": {
+      "total_usd": 2420000000,
+      "xrpl_usd": 707000000,
+      "ethereum_usd": 1710000000,
+      "xrpl_share_pct": 29.2,
+      "as_of_utc": "2026-10-31T12:54:00Z"
+    },
+    "stablecoininsider_oct27": {
+      "total_usd": 2590000000,
+      "xrpl_usd": 1020000000,
+      "ethereum_usd": 1570000000,
+      "xrpl_share_pct": 39.4
+    },
+    "defillama_oct29": {
+      "xrpl_total_stablecoin_cap_usd": 1069000000,
+      "rlusd_dominance_pct": 91.48,
+      "derived_rlusd_xrpl_usd_approx": 978000000
+    },
+    "status": "UNRESOLVED_PROVIDER_AND_CUTOFF_DISCREPANCY",
+    "interpretation": "Do not select one share as truth. Reconcile issuer account and holder balances on XRPL with Ethereum ERC20 totalSupply, frozen/treasury/escrow exclusions and timestamps."
+  },
+  "institutional_collateral": {
+    "standard_chartered_rlusd_xrpl_custody": "LIVE_FOR_ELIGIBLE_DIFC_CLIENTS; DFSA-REGULATED",
+    "standard_chartered_native_xrp_custody": "NOT_STATED",
+    "lmax_ripple_financing_usd": 150000000,
+    "lmax_ripple_partnership": "MULTIYEAR_RLUSD_COLLATERAL_AND_SETTLEMENT_INTEGRATION_ANNOUNCED",
+    "lmax_rlusd_collateral_mirroring": "PLANNED_NOT_LIVE; subject to documentation, testing, regulation and approvals",
+    "lmax_collateral_asset": "RLUSD_NOT_NATIVE_XRP",
+    "ripple_prime_lmax_connectivity": "PRICE_DISCOVERY_AND_INSTITUTIONAL_LIQUIDITY_PATHWAY_ANNOUNCED; actual volumes unknown",
+    "lmax_actual_rlusd_collateral_balances": "UNKNOWN",
+    "lmax_actual_xrp_collateral_balances": "UNKNOWN"
+  },
+  "escrow": {
+    "scheduled_release_xrp": 1000000000,
+    "scheduled_eligibility_utc": "2026-11-01T00:00:00Z",
+    "seconds_remaining_at_capture": 7717,
+    "prior_released_balance_reported_xrp": 1000000000,
+    "prior_balance_observation_utc": "2026-10-29",
+    "combined_accessibility_context_xrp": 2000000000,
+    "definition": "1B reported in two Ripple-labelled wallet balances plus 1B still escrowed/eligible; not 2B sold or unlocked.",
+    "raw_account_state_verified": false,
+    "escrow_finish_verified": false,
+    "sale_or_exchange_deposit_verified": false,
+    "countdown_correction": {
+      "previous_snapshot_id": "XRP-20261031T214545Z-ACTUAL-CAPITAL-RLUSD-SPLIT-AND-INSTITUTIONAL-COLLATERAL",
+      "previous_recorded_seconds_remaining": 4455,
+      "previous_correct_seconds_remaining": 8055,
+      "current_seconds_remaining": 7717,
+      "correction_reason": "Previous countdown error was corrected in the prior snapshot; this value is recalculated from the current capture timestamp."
+    }
+  },
+  "strategic_position": {
+    "ceo_characterization": {
+      "coinbase": "exchange-led",
+      "circle": "stablecoin-led and moving toward payments",
+      "ripple": "bridge between traditional finance and blockchain"
+    },
+    "classification": "CEO_STRATEGIC_OPINION_NOT_INDEPENDENT_COMPETITIVE_RANKING",
+    "ripple_stated_xrp_goal": "drive XRP liquidity, utility and trust",
+    "counter_hypothesis": "RLUSD distribution and collateral utility may grow without proportional XRP demand; XRP use depends on route, fee, bridge and inventory choices."
+  },
+  "hypotheses": [
+    {
+      "id": "H-160B-ONCHAIN",
+      "status": "CEO_SCENARIO_NOT_FORECAST",
+      "statement": "Moving one percent of $16T product volume on-chain would equal $160B activity.",
+      "support": [
+        "CEO stated one percent arithmetic and 2027 conversion measurement."
+      ],
+      "disconfirming": [
+        "99.9 percent of Treasury and 99 percent plus of Prime described as off-chain.",
+        "No asset split; on-chain activity may use RLUSD, XRP or other assets."
+      ],
+      "next_test": "Track on-chain volumes by product, asset, network, corridor and customer."
+    },
+    {
+      "id": "H-ONCHAIN-XRP-DEMAND",
+      "status": "NOT_ESTABLISHED",
+      "statement": "Future on-chain conversion creates proportional XRP demand.",
+      "support": [
+        "CEO says Ripple wants to drive XRP liquidity and utility."
+      ],
+      "disconfirming": [
+        "RLUSD and tokenized assets can move without XRP as bridge; no asset split disclosed."
+      ],
+      "next_test": "Measure XRP bridge volume, inventory, velocity and DEX pathing."
+    },
+    {
+      "id": "H-RLUSD-HALF-XRPL",
+      "status": "CONFLICTING_EVIDENCE",
+      "statement": "About half of RLUSD is on XRPL.",
+      "support": [
+        "CEO interview Oct28."
+      ],
+      "disconfirming": [
+        "XRP Insights Oct31 reports 29.2 percent; Stablecoin Insider Oct27 reports 39.4 percent; DefiLlama Oct29 derived estimate about $978M."
+      ],
+      "next_test": "Pinned XRPL issuer/holder balances and Ethereum contract totalSupply with consistent exclusions."
+    },
+    {
+      "id": "H-SC-LMAX-COLLATERAL",
+      "status": "CUSTODY_LIVE_COLLATERAL_PLANNED",
+      "statement": "SC custody and LMAX collateral mirroring may create institutional RLUSD collateral rails.",
+      "support": [
+        "SC says XRPL RLUSD custody is live for eligible clients; Ripple financed LMAX $150M."
+      ],
+      "disconfirming": [
+        "Collateral mirroring remains planned; no balances or utilization."
+      ],
+      "next_test": "Verify production launch, eligible products, haircuts, balances and utilization."
+    },
+    {
+      "id": "H-TREASURY-XRP-ACCESS",
+      "status": "CAPABILITY_CONFIRMED_USAGE_UNKNOWN",
+      "statement": "Ripple Treasury account support may reduce corporate friction for XRP holdings.",
+      "support": [
+        "Official digital asset account feature supports XRP and RLUSD; CEO says platform touches over 1,000 corporates."
+      ],
+      "disconfirming": [
+        "No customer balances or payment routing disclosed."
+      ],
+      "next_test": "Obtain adoption, holdings and asset-specific transaction data."
+    }
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "drivewealth": {
+    "relationship_status": "ANNOUNCED_INTEGRATION_IN_PROGRESS",
+    "rlusd_settlement": "RLUSD on XRPL with Ripple Mint burn/mint for Europe; US expansion planned.",
+    "ripple_payments": "Cross-border acceptance integration for DriveWealth global partners.",
+    "custody": "Digital-asset custody integration in Europe; broader market expansion planned.",
+    "collateral": "Stablecoin-funded brokerage collateral accounts can convert to cash near real time per company announcement; asset-level collateral usage and balances unknown.",
+    "ripple_prime": "Delta One equity-financing opportunities are exploratory.",
+    "distribution": "DriveWealth says it powers 100-plus partners globally.",
+    "native_xrp_collateral": "NOT_STATED",
+    "xrp_bridge_demand": "NOT_ESTABLISHED; RLUSD settlement on XRPL requires XRP network fees but does not necessarily use XRP as bridge asset."
+  },
+  "executive_findings": [
+    "Ripple and DriveWealth announced an integration to settle in Europe using RLUSD on XRPL and Ripple Mint, with US expansion planned.",
+    "DriveWealth is integrating Ripple Payments for cross-border acceptance, working on digital-asset custody in Europe, and exploring equity-financing opportunities with Ripple Prime Delta One.",
+    "DriveWealth says stablecoins can fund brokerage collateral accounts and convert to cash near real time; actual RLUSD volumes, collateral balances and XRP demand are unknown.",
+    "The integration is in progress; production use and live volumes were not verified."
+  ],
+  "source_revision_addenda_new_ids": [
+    "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT"
+  ]
+}

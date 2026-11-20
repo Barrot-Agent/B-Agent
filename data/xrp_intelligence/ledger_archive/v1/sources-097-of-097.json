@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 96,
+  "chunk_count": 97,
+  "record_count": 4,
+  "records": [
+    {
+      "id": "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+      "source_id": "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+      "publisher": "xrpldashboard — independent own-node amendment monitor",
+      "title": "XRPL Sponsor amendment and fixCleanup3_4_0 roll call at 2026-10-31T02:52Z",
+      "url": "https://xrpldashboard.com/amendments",
+      "retrieved_at_utc": "2026-10-31T03:07:00Z",
+      "evidence_class": "ON_LEDGER_GOVERNANCE_OBSERVATION",
+      "independence_group": "XRPLDASHBOARD_OWN_NODE",
+      "summary": "The page's own-node roll call at 2026-10-31T02:52Z heard 34 of 35 trusted validators. Sponsor had 9 yes, needs 28, short by 19 and was not in majority. fixCleanup3_4_0 had 33 of 34 yes, five votes above its 28-vote threshold, with a 14-day countdown that began 2026-10-21T14:46Z and a projected activation around 2026-11-04T14:46Z if support holds. The page explains that more than 80% must be maintained for 14 consecutive days and the ledger decides activation.",
+      "limitations": "This is an independent dashboard's own-node roll call, not the canonical ledger itself. Vote denominator is validators heard at that roll call and can vary; activation projection can reset if support falls. Treat as a timestamped observation and corroborate against on-ledger Amendments/Majorities."
+    },
+    {
+      "id": "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
+      "source_id": "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
+      "publisher": "XRP Ledger official documentation",
+      "title": "Sponsored Fees and Reserves — XLS-68 mechanics",
+      "url": "https://xrpl.org/docs/concepts/accounts/sponsored-fees-and-reserves",
+      "retrieved_at_utc": "2026-10-31T03:07:00Z",
+      "evidence_class": "OFFICIAL_PROTOCOL_DOCUMENTATION",
+      "independence_group": "XRPL_OFFICIAL_DOCUMENTATION",
+      "summary": "The Sponsor covers transaction fees and/or reserve requirements while the Sponsee retains control of its keys. Sponsorship does not transfer XRP to the Sponsee; the sponsor retains XRP and the ledger attributes the reserve obligation to the sponsor. Sponsorship requires the Sponsor amendment. The current account-creation special case is a Payment with tfSponsorCreatedAccount. The reserve formula shifts account reserve and sponsored-object reserve obligations to the sponsor. Ending object sponsorship requires the Sponsee to have sufficient XRP; the check requires fixCleanup3_4_0.",
+      "limitations": "Documentation describes the feature and rules but does not establish Mainnet activation or production adoption. The Sponsor amendment status must be checked separately."
+    },
+    {
+      "id": "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z",
+      "source_id": "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z",
+      "publisher": "XRP Ledger official security disclosure",
+      "title": "Vulnerability Disclosure Report: XLS-68 Sponsored Fees and Reserves",
+      "url": "https://xrpl.org/blog/2026/vulnerabilitydisclosurereport-bug-aug2026",
+      "retrieved_at_utc": "2026-10-31T03:07:00Z",
+      "published_at_utc": "2026-09-21T00:00:00Z",
+      "evidence_class": "OFFICIAL_SECURITY_DISCLOSURE",
+      "independence_group": "XRPL_OFFICIAL_SECURITY_DISCLOSURE",
+      "summary": "A reserve-accounting vulnerability was reported 2026-08-07 during Devnet testing of Sponsor. The Sponsor amendment was not activated on Mainnet and no funds were at risk. The fix was released in xrpld v3.4.0 on 2026-09-17. The design adopts conditional sponsorship exit: the Sponsee must self-fund the reserve, another sponsor must assume it, or the sponsored object/account must be deleted. The docs say the object-reserve exit check requires fixCleanup3_4_0.",
+      "limitations": "The disclosure is an official project report, not an independent security audit. The software fix release does not itself activate the fixCleanup3_4_0 or Sponsor amendments on Mainnet."
+    },
+    {
+      "id": "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z",
+      "source_id": "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z",
+      "publisher": "GitHub — XRPLF/rippled",
+      "title": "PR #8606 — feat: Add SponsoredAccountCreate",
+      "url": "https://github.com/XRPLF/rippled/pull/8606",
+      "retrieved_at_utc": "2026-10-31T03:07:00Z",
+      "evidence_class": "PROTOCOL_CODE_AND_REVIEW_STATE",
+      "independence_group": "XRPLF_GITHUB_PULL_REQUEST",
+      "commit_sha": "29696f811b5fe477508a0bf0750056ec8c4aa8b5",
+      "summary": "Open PR #8606 targets develop, head 29696f811b5fe477508a0bf0750056ec8c4aa8b5, one commit, 14 files, 1,532 additions and 39 deletions; last updated 2026-10-16T03:18:36Z and mergeable_state blocked. It introduces a separate SponsorV1_1 amendment and SponsoredAccountCreate transaction type 96 for zero-balance account creation with sponsor-backed reserve. The diff includes an explicit zero-Destination test and proposal-cleanup integration test. Two Copilot review threads remain unresolved despite author replies that fixes were made. Check-runs show 26 success, 5 skipped, 0 failed; no maintainer approval or merge is recorded.",
+      "limitations": "This is an unmerged development-branch proposal, not a Mainnet feature. Sponsor and SponsorV1_1 activation requirements remain separate. Green checks do not resolve open review threads or establish maintainer acceptance."
+    }
+  ]
+}

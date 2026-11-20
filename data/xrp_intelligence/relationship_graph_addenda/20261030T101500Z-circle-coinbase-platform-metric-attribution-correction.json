@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T101500Z-CIRCLE-COINBASE-PLATFORM-METRIC-CORRECTION",
+  "captured_at_utc": "2026-10-30T10:15:00Z",
+  "correction_of_addendum": "XRP-GRAPH-20261030T083100Z-CIRCLE-SBI-JV-COINBASE-USDC-ECONOMICS",
+  "supersedes_market_observation_ids": [
+    "MOBS-CIRCLE-Q2-USDC-RESERVE-PLATFORM-20261030"
+  ],
+  "correction_note": "The prior graph addendum mislabeled Circle's own USDC-on-platform metrics as Coinbase metrics. Circle's Q2 10-Q defines these as Circle Mint accounts, corporate-held USDC and Circle-provided non-custodial wallets; the daily weighted-average percentage is used to calculate Circle's share of reserve income under the Collaboration Agreement. It is not Coinbase's platform share or balance. Prior snapshot and graph remain immutable.",
+  "nodes": [
+    {
+      "id": "CIRCLE",
+      "label": "Circle Internet Group",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase Global",
+      "kind": "EXCHANGE_CUSTODY_AND_DISTRIBUTION"
+    },
+    {
+      "id": "USDC",
+      "label": "USDC",
+      "kind": "USD_STABLECOIN"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_BLOCKCHAIN"
+    },
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings",
+      "kind": "FINANCIAL_GROUP"
+    },
+    {
+      "id": "CIRCLE_SBI_JAPAN_KK",
+      "label": "Circle SBI Japan K.K. / SBI Circle Holdings",
+      "kind": "50_50_JV"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "PAYMENTS_BLOCKCHAIN_COMPANY"
+    },
+    {
+      "id": "RLUSD",
+      "label": "RLUSD",
+      "kind": "USD_STABLECOIN"
+    }
+  ],
+  "edges": [],
+  "metric_attribution_corrections": [
+    {
+      "prior_observation_id": "MOBS-CIRCLE-Q2-USDC-RESERVE-PLATFORM-20261030",
+      "corrected_observation_id": "MOBS-CIRCLE-Q2-USDC-PLATFORM-CORRECTED-20261030",
+      "entity": "CIRCLE",
+      "metrics": {
+        "circle_usdc_on_platform_end_usd": 12442000000,
+        "circle_usdc_on_platform_daily_weighted_average_percent": 19.5,
+        "usdc_in_circulation_end_usd": 73269000000,
+        "usdc_in_circulation_average_usd": 76524000000,
+        "reserve_return_rate_percent": 3.5
+      },
+      "definition": "Circle's own platform: Circle Mint accounts, corporate-held USDC and Circle-provided non-custodial wallets. The daily weighted-average percentage is Circle's share of USDC in circulation on its own platform and is used to calculate Circle's share of reserve income under the Collaboration Agreement. It is not Coinbase's share.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "observation_id": "MOBS-COINBASE-Q3-USDC-PRODUCTS-AOP-20261030",
+      "entity": "COINBASE",
+      "period": "2026-Q3",
+      "metrics": {
+        "average_usdc_held_in_coinbase_products_usd": 22000000000,
+        "average_usdc_market_cap_usd": 73000000000,
+        "approximate_share_of_average_usdc_market_cap_percent": 30.1,
+        "average_usdc_held_in_coinbase_products_yoy_growth_percent": 49,
+        "aop_usdc_value_at_2026_09_30_usd": 8616000000,
+        "stablecoin_revenue_q3_2026_usd": 306905000,
+        "stablecoin_revenue_q3_2025_usd": 324534000,
+        "stablecoin_revenue_yoy_change_percent": -5.43,
+        "higher_average_usdc_balance_revenue_contribution_q3_usd": 84600000,
+        "lower_average_interest_rate_revenue_impact_q3_usd": -52800000
+      },
+      "definitions": {
+        "average_usdc_held_in_coinbase_products": "Coinbase earnings-deck metric: corporate USDC balances and USDC held for customers in eligible Coinbase products.",
+        "assets_on_platform_usdc": "Point-in-time September 30 AOP measure of assets held/managed in digital wallets and custody, with customer-held-key exclusions."
+      },
+      "qualification": "USD22B average eligible-product balance and USD8.616B point-in-time AOP USDC are not interchangeable. Circle's USD12.442B/19.5% Circle-platform metrics are a third, separately defined measure.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-10Q-SEC-20261030",
+        "SRC-COINBASE-Q3-2026-IR-RELEASE-USDC-20261030"
+      ]
+    },
+    {
+      "observation_id": "MOBS-CIRCLE-COINBASE-DISTRIBUTION-ECONOMICS-Q2-2026",
+      "entity": "CIRCLE",
+      "counterparty": "COINBASE",
+      "period": "2026-Q2_AND_H1",
+      "metrics": {
+        "distribution_cost_to_coinbase_q2_usd": 324600000,
+        "distribution_cost_to_coinbase_h1_usd": 655300000
+      },
+      "qualification": "Circle 10-Q reports these costs under agreements with Coinbase. The 19.5% Circle-platform share is not Coinbase's share; Circle separately says Coinbase's share of total average USDC on-platform balances decreased, without publishing that numeric share in the cited table.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    }
+  ],
+  "hypothesis_updates": [
+    {
+      "id": "HYP-COINBASE-CIRCLE-ECONOMIC-INTERDEPENDENCE-20261030",
+      "update": "Strengthened by SEC filings: Coinbase renewed its Circle arrangement on the same terms; Circle reports material distribution costs under Coinbase agreements; Coinbase reports USD22B average USDC in eligible products. Exact Coinbase share of Circle's average USDC on-platform balances remains undisclosed."
+    },
+    {
+      "id": "HYP-STABLECOIN-RESERVE-YIELD-MACRO-SENSITIVITY-20261030",
+      "update": "Coinbase Q3 10-Q quantifies offsetting balance and rate effects (+USD84.6M from higher average balances; -USD52.8M from lower rates). Circle says the relationship between rates and USDC circulation is complex, highly uncertain and unproven."
+    },
+    {
+      "id": "HYP-USDC-XRPL-COMPLEMENT-BRIDGE-SUBSTITUTION-20261030",
+      "update": "No change in causal status: native USDC and RLUSD on XRPL establish coexistence, not proof of XRP bridge substitution or incremental XRP demand."
+    }
+  ],
+  "limitations": [
+    "Circle Q2 2026 19.5% daily weighted-average USDC-on-platform figure and USD12.442B end balance belong to Circle's own platform, not Coinbase. Circle defines its platform to include Circle Mint, corporate-held USDC and Circle-provided non-custodial wallets.",
+    "Coinbase Q3 2026 average USD22B USDC held in eligible Coinbase products is a company-defined average metric including corporate balances and customer balances in eligible products; it is not the same as Coinbase's USD8.616B point-in-time USDC AOP balance at September 30.",
+    "Circle's USD655.3M H1 and USD324.6M Q2 distribution costs under Coinbase agreements are Circle expenses. Circle's 19.5% platform share is not Coinbase's contractual share; Circle says Coinbase's share of average USDC on-platform balances declined but does not quantify it in the cited table."
+  ],
+  "source_ids": [
+    "SRC-COINBASE-Q3-2026-10Q-SEC-20261030",
+    "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030",
+    "SRC-COINBASE-Q3-2026-IR-RELEASE-USDC-20261030",
+    "SRC-CIRCLE-Q2-2026-PLATFORM-METRIC-ATTRIBUTION-CORRECTION-20261030",
+    "SRC-SBI-CIRCLE-IPO-INVESTMENT-RECHECK-20261030",
+    "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030",
+    "SRC-SBI-CIRCLE-JV-50-50-PRESENTATION-RECHECK-20261030",
+    "SRC-CIRCLE-USDC-XRPL-NATIVE-RECHECK-20261030",
+    "SRC-COINBASE-RLUSD-PLATFORM-RECHECK-20261030",
+    "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220",
+    "SRC-SBI-VCTRADE-RLUSD-AND-USDC-20260624",
+    "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

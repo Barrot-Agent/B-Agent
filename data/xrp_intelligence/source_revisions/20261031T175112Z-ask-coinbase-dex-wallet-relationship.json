@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-ASK-COINBASE-DEX-EMBEDDED-WALLET-20261031T175112Z",
+  "captured_at_utc": "2026-10-31T17:51:12Z",
+  "source_id": "SRC-20261031T175112Z-ASK-COINBASE-WALLET-DEX-RELATIONSHIP",
+  "sources": [
+    {
+      "source_id": "SRC-PERMISSION-ASK-COINBASE-EMBEDDED-WALLET-20260922",
+      "publisher": "Permission",
+      "title": "Your ASK Wallet, Now Powered by Coinbase",
+      "url": "https://www.permission.ai/blog/ask-wallet-update",
+      "published_at": "2026-09-22",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "PERMISSION_OFFICIAL"
+    },
+    {
+      "source_id": "SRC-COINBASE-ASK-DEX-ONLY-20261031",
+      "publisher": "Coinbase",
+      "title": "How to buy Permission Coin on Coinbase in Australia",
+      "url": "https://www.coinbase.com/en-au/how-to-buy/base-permission-token-84b4",
+      "retrieved_at_utc": "2026-10-31T17:51:12Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "COINBASE_OFFICIAL"
+    },
+    {
+      "source_id": "SRC-PERMISSION-ASK-CONTRACTS-2026",
+      "publisher": "Permission Docs",
+      "title": "ASK Token Contract Addresses",
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "PERMISSION_OFFICIAL"
+    },
+    {
+      "source_id": "SRC-COINMARKETCAP-ASK-MARKET-20261031",
+      "publisher": "CoinMarketCap",
+      "title": "Permission Coin market data",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "retrieved_at_utc": "2026-10-31T17:51:12Z",
+      "evidence_class": "SECONDARY_MARKET_AGGREGATOR",
+      "independence_group": "COINMARKETCAP"
+    },
+    {
+      "source_id": "SRC-COINBASE-ASK-XRP-CONVERTER-2026",
+      "publisher": "Coinbase",
+      "title": "ASK to XRP converter",
+      "url": "https://www.coinbase.com/converter/ask/xrp",
+      "evidence_class": "COINBASE_CONVERTER_NOT_EXECUTABLE_MARKET_EVIDENCE",
+      "independence_group": "COINBASE_OFFICIAL"
+    }
+  ],
+  "confirmed_relationships": [
+    "Permission's September 22, 2026 announcement says the ASK wallet moved to Coinbase Embedded Wallet infrastructure. Coinbase secures the private key; the Permission user authorizes transactions through the Permission login. Permission says it no longer holds the wallet keys.",
+    "Permission says the email address, account identifier and wallet information are shared with Coinbase for wallet operation. This is a wallet-infrastructure/data-processing relationship, not evidence of Coinbase Exchange holding ASK customer balances in its centralized exchange product.",
+    "Coinbase's October 31 product page explicitly says Permission Coin is only tradable on decentralized exchanges and does not directly trade on Coinbase's centralized exchange. The page describes DEX routing in the Coinbase app.",
+    "Permission's official contract documentation lists ASK OFT-20 contracts on Base (0xBB146326778227A8498b105a18f84E0987A684b4) and Polygon (0xaA3717090cddc9b227e49d0d84a28ac0a996e6ff), with LayerZero OFT and Stargate support. The reviewed official contract list does not list XRPL.",
+    "Coinbase's ASK/XRP converter page is a conversion calculator. It does not establish an executable ASK/XRP order book, a centralized-exchange listing, an XRP-settled pair, or an ASK bridge to XRPL."
+  ],
+  "market_context": {
+    "coinmarketcap_capture": {
+      "price_usd": 0.00008822,
+      "market_cap_usd": 1420000,
+      "circulating_supply_ask": 16166619298,
+      "max_supply_ask": 100000000000,
+      "displayed_24h_volume_usd": 0,
+      "capture_date": "2026-10-31"
+    },
+    "data_quality": "Market aggregators disagree on ASK 24-hour volume and chain/market coverage; treat volume as low-confidence and do not infer net capital from market capitalization or a converter quote."
+  },
+  "xrp_relationship_assessment": {
+    "direct_xrpl_contract": "NOT_IDENTIFIED_IN_REVIEWED_OFFICIAL_PERMISSION_CONTRACT_LIST",
+    "direct_ask_xrp_pair": "NOT_ESTABLISHED",
+    "coinbase_embedded_wallet_to_xrp": "NO_DIRECT_XRP_RELATIONSHIP_ESTABLISHED",
+    "coinbase_dex_conversion_quote": "NON_EXECUTABLE_CONVERTER_EVIDENCE_ONLY",
+    "shared_coinbase_infrastructure": "INDIRECT_WALLET_PROVIDER_RELATIONSHIP_ONLY"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H-ASK-COINBASE-INFRASTRUCTURE",
+      "claim": "Coinbase's ASK relationship is primarily embedded-wallet infrastructure and DEX access, not a centralized-exchange listing or XRP integration.",
+      "status": "SUPPORTED_BY_PRIMARY_SOURCES"
+    },
+    {
+      "id": "H-ASK-XRP-INTEGRATION",
+      "claim": "ASK has a direct XRP/XRPL bridge or executable ASK/XRP market through Coinbase.",
+      "status": "UNSUPPORTED; NO_OFFICIAL_XRPL_CONTRACT_OR_EXECUTABLE_PAIR_FOUND"
+    },
+    {
+      "id": "H-ASK-CONVERTER-IMPLIES-LIQUIDITY",
+      "claim": "A Coinbase ASK/XRP converter quote proves actual ASK/XRP liquidity or capital flow.",
+      "status": "DISCONFIRMED_BY_PRODUCT_CONTEXT; CONVERTER_IS_NOT_AN_ORDER_BOOK"
+    }
+  ],
+  "limitations": [
+    "Coinbase DEX chain availability is region- and product-specific; the Australian page lists Base and Solana while the US page has described Ethereum, Base and Solana. Do not infer a single universal chain set.",
+    "The official Permission contract documentation lists Base and Polygon; no XRPL contract was identified in the reviewed official list, but absence from that list is not proof that no third-party wrapped representation exists.",
+    "CoinMarketCap's captured zero-volume value may reflect provider coverage or delayed aggregation. CoinGecko displays different small-volume values. No precise ASK market-wide volume is admitted.",
+    "The converter's displayed ASK/XRP rate is a derived conversion quote, not evidence of an executable trade or external capital flow."
+  ],
+  "feature_admission": "ENTITY_AND_MARKET_STRUCTURE_CONTEXT_ONLY; NO_XRP_PRICE_FEATURE; NO_ACTUAL_CAPITAL_INFERENCE",
+  "pending_archive_append": true,
+  "exact_head_validation": "NOT_RUN"
+}

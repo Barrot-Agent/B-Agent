@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 110,
+  "chunk_count": 111,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "LIM-20261031T043333Z-BINANCE-XRP-REPLENISHMENT",
+      "category": "institutional_capital_and_reserve_attribution",
+      "statement": "Binance's $6.34B company-fund allocation and market/OTC replacement program are aggregate statements. The $5B in exact affected token assets is not broken down by token in the announcement; no XRP-specific purchase quantity, fill, reserve address or completed replenishment is disclosed. The Nov 2 Proof of Reserves result is not yet available at this cutoff.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+        "SRC-20261031-BINANCE-POR-PAGE-043333Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T043333Z-XRP-ATTACKER-RECEIVER-STALE",
+      "category": "onchain_incident_state_freshness",
+      "statement": "TRM's public report says 233.46M XRP remained at the attacker receiver as of 2026-10-30 00:30 UTC; earlier reporting observed no outgoing XRP through 06:43 UTC Oct 30. No fresh raw XRPL account_info and transaction-history read was completed at the 2026-10-31 04:24 UTC market cutoff. Current receiver balance and movement status are unknown.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T043333Z-DERIVATIVES-ETF-COVERAGE",
+      "category": "market_data_quality_and_partial_flow",
+      "statement": "Alpha's $2.81B XRP OI and Liqwall's $1.32B OI differ by about 2.13x within 12 minutes, while their 24-hour liquidation totals are broadly similar. Provider contract universes and OI aggregation are not reconciled. Oct30 ETF flow is only -$0.7M from 2 of 5 funds and is partial T+1. Exclude composite OI and final daily ETF-flow features.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+        "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z",
+        "SRC-20261031-CRYPTOETF-XRP-PARTIAL-043333Z"
+      ]
+    }
+  ]
+}

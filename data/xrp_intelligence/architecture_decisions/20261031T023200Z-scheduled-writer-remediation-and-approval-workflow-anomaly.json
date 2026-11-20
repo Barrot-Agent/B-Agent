@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T023200Z-SCHEDULED-WRITER-REMEDIATION-AND-APPROVAL-WORKFLOW-ANOMALY",
+  "created_at_utc": "2026-10-31T02:32:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_AND_REMEDIATION",
+  "context": "Exact GitHub Actions logs now identify the scheduled Cross Analysis workflow as the cause of the latest main-branch write. The Scheduler Tick has a separate credentialed write/dispatch path. Three safety PRs are green but remain unmerged.",
+  "decisions": [
+    "Scheduled analytical workflows must not commit or push generated outputs directly to main; use bounded artifacts or a dedicated branch with a draft PR and explicit review.",
+    "PR #1386 is the current tested remediation for Cross Analysis and legacy accuracy. It is open/draft/mergeable with 354 tests plus 8 subtests and a fail-closed gate pass; do not merge without explicit authorization.",
+    "PR #1390 is the current tested scheduler allowlist remediation. It is open/draft/mergeable with 348 tests plus 8 subtests and a fail-closed gate pass; do not merge without explicit authorization.",
+    "PR #1388 is the current tested read-only merge-queue remediation. It is open/draft/mergeable with 344 tests plus 8 subtests and a fail-closed gate pass; do not merge without explicit authorization.",
+    "Treat the Cross Analysis sentiment-shift output with zero XRP/BTC samples as NOT_EVALUATED. Do not admit it to XRP intelligence or prediction features; avoid timestamp-only main commits.",
+    "Keep Scheduler Tick's queue mutation and dispatch privileges under least privilege; the no-op run is not proof that future queue entries are harmless.",
+    "Do not assume branch protection prevented or permitted the Cross Analysis push; branch-protection rules and bypass actors remain unknown because the endpoint returned 403.",
+    "Investigate the approval workflow's push-event/zero-job anomaly from event metadata and workflow history; do not manually dispatch it or apply approval labels as a diagnostic.",
+    "Keep full repository CI and dependency vulnerability scanning explicitly NOT_RUN until executed."
+  ],
+  "invariants": [
+    "No merge, force-push, main write, manual workflow dispatch, approval label or paper-state mutation in this run.",
+    "DESIGNED, EXECUTED and VERIFIED remain separate.",
+    "Green PR checks do not activate the remediation while PRs remain unmerged.",
+    "Zero-sample sentiment is not a prediction.",
+    "Branch-protection details remain unknown; do not infer bypass configuration.",
+    "Automatic merging remains disabled."
+  ],
+  "main_writer_root_cause": "CONFIRMED_CROSS_ANALYSIS_SCHEDULE",
+  "scheduler_write_capability": "PRESENT_NOOP_IN_LATEST_RUN",
+  "approval_workflow_anomaly": "UNRESOLVED",
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

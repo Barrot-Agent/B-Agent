@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T010400Z-VALIDATED-ESCROW-AND-READONLY-CROSS-ANALYSIS",
+  "created_at_utc": "2026-11-01T01:04:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_PROCESS; CODE_PROPOSAL_OPEN",
+  "context": "The November 1 escrow eligibility time passed, but the latest tracker ledger predates eligibility. Separately, main's hourly Cross Analysis workflow committed a generated_at-only sentiment file while both XRP and BTC windows contained zero qualifying observations.",
+  "decisions": [
+    "Treat FinishAfter eligibility, EscrowFinish execution, destination receipt, follow-on movement, EscrowCreate re-lock, exchange deposit and actual sale as separate states.",
+    "Require a post-eligibility validated ledger index, raw account_objects and account_tx responses, transaction hashes, tesSUCCESS metadata and affected nodes before asserting execution.",
+    "Do not use Bithomp's stale owner-page panels or search-result absence as negative proof.",
+    "Do not admit escrow amount or destination movement as a predictive feature until same-ledger corroboration and disposition tracing pass quality checks.",
+    "Do not treat generated_at as data freshness. Require qualifying observation count, publication time, ingestion time and source freshness in every feature record.",
+    "PR #1435 is the current-main Cross Analysis quarantine proposal: contents:read, checkout credentials disabled, no repository commit/push, six bounded artifacts. It remains draft and unmerged.",
+    "Automatic tracked-file and Pages refresh is paused by the proposal; a separate least-privilege publisher must be designed and reviewed before restoration.",
+    "Keep all overlapping prior PRs open and unchanged; do not merge stale or overlapping versions without exact-base review and approval."
+  ],
+  "evidence_gates": {
+    "escrow": {
+      "validated_ledger_required": true,
+      "account_objects_required": true,
+      "account_tx_required": true,
+      "transaction_metadata_required": true,
+      "destination_and_follow_on_trace_required": true
+    },
+    "features": {
+      "minimum_observation_count_required": true,
+      "publication_timestamp_required": true,
+      "ingestion_timestamp_required": true,
+      "source_independence_required": true
+    },
+    "workflow": {
+      "contents_write_allowed": false,
+      "checkout_persist_credentials": false,
+      "repository_push_allowed": false,
+      "manual_dispatch_performed": false
+    }
+  },
+  "prediction_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "next_action": "Obtain raw validated XRPL account_objects/account_tx after 00:00 UTC; keep PR #1435 unmerged pending approval and continue reviewing the remaining main write-capable workflows."
+}

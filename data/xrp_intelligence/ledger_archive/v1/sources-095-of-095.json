@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 94,
+  "chunk_count": 95,
+  "record_count": 6,
+  "records": [
+    {
+      "id": "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+      "source_id": "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent main",
+      "title": "Complete XRP signal history JSONL (1,716 records)",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/signal_history.jsonl",
+      "retrieved_at_utc": "2026-10-31T02:40:00Z",
+      "evidence_class": "REPOSITORY_DATASET",
+      "independence_group": "BARROT_SIGNAL_PIPELINE",
+      "git_blob_sha": "0176d7879b046fecb55f4b225cf22aae7761d26a",
+      "content_bytes": 1456744,
+      "summary": "The full 1,716-record JSONL was retrieved through the GitHub Contents API and parsed. It spans 2026-07-29T07:14:07Z through 2026-10-29T13:23:33Z. 1,697 records have checked=true; 19 remain unchecked. The schema has timestamp, signal_text, score, confidence, source, news_score, news_entries, generated_at_unix, price_at_emission, checked, correct and price_at_check. No checked_at, checked_at_unix, price_at_check_timestamp, horizon, venue or price-source timestamp field exists. Among checked records, 1,119 are fallback/no-sentiment with confidence 0 and 556 marked correct (49.69% under the legacy rule); 578 are Groq-labelled with mean confidence 0.947 and 216 marked correct (37.37%).",
+      "limitations": "The history file is mutable JSONL rewritten by the evaluator; the exact price observation time and horizon cannot be reconstructed from records. These descriptive hit rates are not out-of-sample skill or calibration metrics. The 19 unchecked entries have price_at_emission=0 and are not evaluated."
+    },
+    {
+      "id": "SRC-GH-SIGNAL-ACCURACY-SUMMARY-20261031T024000Z",
+      "source_id": "SRC-GH-SIGNAL-ACCURACY-SUMMARY-20261031T024000Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent main",
+      "title": "Legacy signal accuracy summary",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/signal_accuracy.json",
+      "retrieved_at_utc": "2026-10-31T02:40:00Z",
+      "evidence_class": "REPOSITORY_DATASET",
+      "independence_group": "BARROT_SIGNAL_PIPELINE",
+      "git_blob_sha": "0c186b904ec3ae668ac53da42087931ccf483d0e",
+      "summary": "The committed summary reports checked_count=1697, correct_count=772 and accuracy_pct=45.5. The ratio 772/1697 is 45.492%, rounded to 45.5%. This is a legacy hit counter under a variable-horizon, nonstandard neutral-band rule, not a valid out-of-sample performance estimate.",
+      "limitations": "The summary does not disclose horizon, class mix, provider failures, confidence calibration, baseline performance, uncertainty intervals or evaluation price provenance."
+    },
+    {
+      "id": "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+      "source_id": "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent main",
+      "title": "Legacy signal accuracy evaluator source code",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/scripts/check_signal_accuracy.py",
+      "retrieved_at_utc": "2026-10-31T02:40:00Z",
+      "evidence_class": "REPOSITORY_SOURCE_CODE",
+      "independence_group": "BARROT_SIGNAL_PIPELINE",
+      "git_blob_sha": "f7630d5655a66001d9de19c30451e5d6e53940a4",
+      "summary": "The evaluator sets MIN_AGE_SECONDS=24h, fetches one current XRP price from CoinGecko per run, then checks every unchecked record older than 24h against that same current price. It classifies score>60 as bullish (correct if price rose), score<40 as bearish (correct if price did not rise), and scores 40–60 as neutral (correct if absolute return is under 2%). It stores checked/correct/price_at_check, but no checked_at timestamp or exact horizon, then rewrites the full JSONL file and summary.",
+      "limitations": "The daily workflow means the effective horizon varies; exact elapsed time is not stored. The neutral rule is not directional accuracy. No baseline, calibration, Brier/log loss, walk-forward split, overlap purge, fee/slippage or venue-specific price methodology exists."
+    },
+    {
+      "id": "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z",
+      "source_id": "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent main",
+      "title": "Daily signal accuracy workflow",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/check-signal-accuracy.yml",
+      "retrieved_at_utc": "2026-10-31T02:40:00Z",
+      "evidence_class": "REPOSITORY_SOURCE_CODE",
+      "independence_group": "BARROT_SIGNAL_PIPELINE",
+      "git_blob_sha": "014806e842a14b3961c4b80f9c4a6e855da3f65e",
+      "summary": "The workflow runs daily at 23:55 UTC and supports workflow_dispatch. It requests contents:write, runs scripts/check_signal_accuracy.py, then commits and pushes web/signal_history.jsonl and web/signal_accuracy.json directly to main. It installs requests without a pinned version.",
+      "limitations": "The workflow is a scheduled main writer until the tested read-only remediation PR #1386 is authorized and merged. The latest matching accuracy commit was identified by message and timestamp, but its exact Actions run ID was not resolved."
+    },
+    {
+      "id": "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z",
+      "source_id": "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent main",
+      "title": "Latest committed XRP signal",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "retrieved_at_utc": "2026-10-31T02:40:00Z",
+      "evidence_class": "REPOSITORY_DATASET",
+      "independence_group": "BARROT_SIGNAL_PIPELINE",
+      "git_blob_sha": "1e1d5d9867fd0fe87a140c04c3361e19884eb1cf",
+      "summary": "The latest committed XRP signal is timestamped 2026-10-29T13:23:33.142057Z, score 44, confidence 0.0, news_score 88, news_entries 11. Its source string explicitly reports missing GITHUB_TOKEN/GH_MODELS_TOKEN and Groq HTTP 429. It records price_at_emission $1.29 in history and price_at_check $1.25, marked incorrect under the neutral <2% rule. At the 2026-10-31T02:40Z audit cutoff it is approximately 37.3 hours old.",
+      "limitations": "The signal is stale and provider-unavailable. A high news_score does not validate sentiment, relevance, or predictive power. No new committed XRP signal exists after this timestamp."
+    },
+    {
+      "id": "SRC-GH-SIGNAL-ACCURACY-COMMIT-03A867-20261031T024000Z",
+      "source_id": "SRC-GH-SIGNAL-ACCURACY-COMMIT-03A867-20261031T024000Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent main",
+      "title": "Daily signal accuracy commit 03a86747680a79033435746c367aa96c6a641c20",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/03a86747680a79033435746c367aa96c6a641c20",
+      "retrieved_at_utc": "2026-10-31T02:40:00Z",
+      "evidence_class": "REPOSITORY_EXECUTION_EVIDENCE",
+      "independence_group": "BARROT_SIGNAL_PIPELINE",
+      "summary": "Commit 03a8674 was created 2026-10-30T23:59:32Z, parent 86c136be. It changed checked_count from 1,683 to 1,697 while correct_count remained 772 and accuracy fell from 45.9% to 45.5%. It modified 14 signal-history records from 2026-10-28T21:21:11Z through 2026-10-29T13:23:33Z, marking all 14 incorrect at price_at_check $1.25. Relative to the commit timestamp, their approximate elapsed times were 34.6–50.6 hours, not a fixed 24 hours.",
+      "limitations": "The commit timestamp approximates the evaluator run time; the exact CoinGecko quote timestamp is not stored. No Actions run ID was resolved for this commit."
+    }
+  ]
+}

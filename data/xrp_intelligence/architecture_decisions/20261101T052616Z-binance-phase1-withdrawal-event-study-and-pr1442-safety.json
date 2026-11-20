@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T052616Z-BINANCE-PHASE1-WITHDRAWAL-EVENT-STUDY-AND-PR1442-SAFETY",
+  "captured_at_utc": "2026-11-01T05:26:16Z",
+  "title": "Treat Binance's XRP withdrawal reopening as an announced event window, not an observed flow; preserve main-branch safety boundary",
+  "status": "ACCEPTED_FOR_RESEARCH_AND_MONITORING; NO_FORECAST; MAIN_REMEDIATION_NOT_APPLIED",
+  "context": [
+    "Binance Recovery Update #4 at 04:08 UTC raises its company-reported aggregate replenishment from 90% to 95%.",
+    "The announcement states that XRP and RLUSD are among ten assets reported 100% backed; the remaining 5% is less-liquid assets outside the top ten.",
+    "Phase one of withdrawals is scheduled between 06:00 and 09:00 UTC on November 1 and includes the XRP network, with progressive activation.",
+    "At 05:26:16 UTC the phase-one window had not started. The public network-status page last updated at 05:11 but exposed no asset rows in its rendered response.",
+    "The latest escrow observation remains tracker ledger 108036051 at 02:31 UTC; raw destination metadata and later disposition remain unknown.",
+    "PR #1442 is based on current main and exact-head CI/gate passed, but remains open, draft and unmerged."
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Supersede the prior 90% aggregate Binance company claim with Update #4's 95% claim while preserving Update #3 as historical evidence.",
+      "reason": "The newer official statement explicitly raises the aggregate figure; historical source records must not be rewritten."
+    },
+    {
+      "id": "D2",
+      "decision": "Classify the 06:00–09:00 UTC phase-one XRP network reopening as ANNOUNCED_NOT_YET_STARTED at the 05:26:16 UTC cutoff.",
+      "reason": "The official announcement gives a progressive window, not proof of actual service availability or completed withdrawals."
+    },
+    {
+      "id": "D3",
+      "decision": "Run a pre-registered withdrawal event study using actual XRP network availability, transaction-level withdrawals, wallet-role classification, spot liquidity, order-book depth, trade volume, perpetual basis, open interest and funding.",
+      "reason": "An announcement is not a flow; the study must observe the actual event and distinguish internal wallet moves from external customer withdrawals."
+    },
+    {
+      "id": "D4",
+      "decision": "Do not infer XRP sales or market pressure from withdrawals; require destination classification and corroborating trade/venue evidence.",
+      "reason": "Withdrawals can be transfers to self-custody, other exchanges, custodians or OTC counterparties."
+    },
+    {
+      "id": "D5",
+      "decision": "Keep Binance's 95% aggregate and 100% XRP/RLUSD coverage as company-reported claims pending the full cryptographic proof and liability reconciliation.",
+      "reason": "The announcement does not provide XRP-specific acquisition quantity or a complete independently verified asset/liability crosswalk."
+    },
+    {
+      "id": "D6",
+      "decision": "Keep the November escrow and Binance withdrawal events as separate graph components; temporal overlap alone does not establish causality.",
+      "reason": "No transaction-level or counterparty link is available."
+    },
+    {
+      "id": "D7",
+      "decision": "Keep PR #1442 open/draft/unmerged; use its exact-head CI and fail-closed gate as evidence of a tested proposal only.",
+      "reason": "Main still contains privileged scheduled writer and merge paths until an approved change is merged."
+    },
+    {
+      "id": "D8",
+      "decision": "Do not admit new directional market features or issue an XRP forecast from this update.",
+      "reason": "The event has not started and there are no observed withdrawal flows or validated predictive outcomes."
+    }
+  ],
+  "ingestion_contract": {
+    "required_timestamps": [
+      "source_publication_time_utc",
+      "retrieved_at_utc",
+      "source_data_cutoff_utc",
+      "event_window_start_utc",
+      "actual_service_open_time_utc",
+      "transaction_ledger_time_utc",
+      "captured_at_utc"
+    ],
+    "source_independence": "Reuters reports the same Binance announcement and is not independent proof of reserves. Keep publisher and underlying information source distinct.",
+    "withdrawal_event_study": {
+      "pre_windows_hours": [
+        1,
+        4,
+        24
+      ],
+      "post_windows_hours": [
+        1,
+        4,
+        24
+      ],
+      "required_features": [
+        "XRP network service state",
+        "Binance hot/cold wallet outflows",
+        "external destination classification",
+        "same-wallet balance changes",
+        "XRP spot volume",
+        "order-book depth and spread",
+        "spot/perpetual basis",
+        "open interest",
+        "funding",
+        "liquidations",
+        "BTC and ETH controls"
+      ],
+      "confounders": [
+        "internal exchange wallet reshuffling",
+        "custody consolidation",
+        "withdrawals to another exchange",
+        "OTC settlement",
+        "market-wide risk moves",
+        "concurrent Ripple escrow disposition",
+        "API/status-page delays"
+      ],
+      "sale_inference_rule": "A withdrawal or wallet transfer alone is not a sale. Require venue deposit attribution and trade/flow evidence."
+    },
+    "feature_admission": "Require exact transaction/ledger timestamps, wallet-role evidence, source independence, provider coverage and missingness checks. Do not backfill unknown values as zero.",
+    "prediction_contract": "Every forecast must state target, horizon, data cutoff, assumptions, probability/confidence, alternatives, baseline, model version, calibration and later outcome.",
+    "live_trading": "Shadow/paper only until leakage-safe walk-forward skill, calibration, drift and execution controls are independently reviewed."
+  },
+  "platform_coordination": {
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "status": "DESIGNED_NOT_EXECUTED",
+    "authenticated_external_platforms": 0,
+    "live_external_collaborators": 0,
+    "verified_handoffs": 0,
+    "github_access": "VERIFIED",
+    "rule": "No live collaboration claim without successful least-privilege authentication and a tested structured handoff."
+  },
+  "repository_safety": {
+    "main_sha": "cf3ff49e4128c732fe84ca36efb7f0424774e904",
+    "pr1442": 1442,
+    "pr1442_head_sha": "bc84abfeefee3ca60f43fa729d5631ad84719c55",
+    "pr1442_ci_run_id": 41275266085,
+    "pr1442_tests_passed": 349,
+    "pr1442_subtests_passed": 8,
+    "pr1442_gate_run_id": 41275266092,
+    "pr1442_gate_status": "PASS_MERGE_DISABLED",
+    "pr1442_state": "OPEN_DRAFT_UNMERGED",
+    "main_writers_active": true,
+    "full_repository_ci": "NOT_RUN",
+    "dependency_scan": "NOT_RUN",
+    "security_alert_access": "NOT_ACCESSIBLE",
+    "current_run_main_modified": false
+  },
+  "unresolved": [
+    "Actual XRP withdrawal availability and first successful withdrawal timestamp during the 06:00–09:00 UTC window.",
+    "Customer XRP withdrawal quantities, destinations and whether funds leave Binance-controlled custody.",
+    "XRP-specific replenishment purchase amount, venues, prices and funding sources.",
+    "Full cryptographic Proof of Reserves and liability reconciliation.",
+    "Current attacker-wallet balance and any post-October-31 outflows.",
+    "Raw November 1 EscrowFinish metadata, Destination fields and subsequent disposition.",
+    "Main branch-protection details; available endpoint returned 403.",
+    "Approval workflow zero-job anomaly, full repository CI and dependency/security scans."
+  ],
+  "supersedes_decision": "ADR-20261101T040000Z-ESCROW-EVENT-AND-MAIN-WRITER-SAFETY"
+}

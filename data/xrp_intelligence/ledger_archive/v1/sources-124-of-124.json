@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 123,
+  "chunk_count": 124,
+  "record_count": 3,
+  "created_at_utc": "2026-10-31T16:20:02Z",
+  "records": [
+    {
+      "id": "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "title": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan) — Official Company Profile",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "published_date": null,
+      "retrieved_at_utc": "2026-10-31T16:20:02Z",
+      "evidence_type": "PRIMARY_OFFICIAL_COMPANY_PROFILE",
+      "independence_group": "SBIC_OFFICIAL_WEBSITE",
+      "status": "VERIFIED",
+      "notes": "Official company profile identifies the Japanese legal name 東京中小企業投資育成株式会社 and English name Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan); corporate number 9011001030621; established 1963-11-15; Shibuya, Tokyo headquarters; East Japan service area (Shizuoka, Nagano, Niigata and east of 18 prefectures); sister companies Nagoya and Osaka. Shareholder categories include 18 local governments, chambers of commerce, financial institutions and business companies. This is not evidence of an SBI Holdings or SBI VC Trade affiliation, nor of an XRP/Ripple/Circle relationship."
+    },
+    {
+      "id": "SRC-20261031T162002Z-GITHUB-XRP-LEDGER-VALIDATOR-FAILURE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41219004757",
+      "title": "XRP Ledger Archive Validation — exact-head failure 99427ef",
+      "publisher": "GitHub Actions",
+      "published_date": "2026-10-31",
+      "retrieved_at_utc": "2026-10-31T16:20:02Z",
+      "evidence_type": "DIRECT_WORKFLOW_RUN_AND_JOB_LOG",
+      "independence_group": "GITHUB_ACTIONS_RUN",
+      "status": "VERIFIED",
+      "notes": "Run 41219004757, job 124589454677, exact head 99427ef0daf06ab87ce5323f5bd11dad5ef075d7. Validator checked 408 archive shards, pointer counts reconciled, snapshot blob SHA matched, but returned BLOCKED due one unknown source ID: SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE. Compileall passed; isolated regression tests were skipped after validator failure; state_mutated=false. The missing source record is being restored from the official SBIC profile."
+    },
+    {
+      "id": "SRC-20261031T162002Z-GITHUB-APPROVAL-WORKFLOW-ZERO-JOB",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41219003766",
+      "title": "barrot-approve-pr workflow — push event with zero jobs",
+      "publisher": "GitHub Actions",
+      "published_date": "2026-10-31",
+      "retrieved_at_utc": "2026-10-31T16:20:02Z",
+      "evidence_type": "DIRECT_WORKFLOW_RUN_AND_WORKFLOW_FILE_OBSERVATION",
+      "independence_group": "GITHUB_ACTIONS_RUN",
+      "status": "VERIFIED_RUN_ROOT_CAUSE_UNKNOWN",
+      "notes": "Run 41219003766 is event=push, conclusion=failure, jobs=0, head 99427ef0daf06ab87ce5323f5bd11dad5ef075d7. The main-branch .github/workflows/barrot-approve-pr.yml declares workflow_dispatch only. No job log exists because no jobs were created. Root cause remains unknown; invalid YAML is not established."
+    }
+  ]
+}

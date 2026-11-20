@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T165900Z-COINBASE-CIRCLE-SBI-COLLATERAL-AND-MULTIRAIL",
+  "captured_at_utc": "2026-10-30T16:59:00Z",
+  "data_cutoff_utc": "2026-09-30T23:59:59Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T165900Z-coinbase-circle-sbi-collateral-and-multirail.json",
+  "source_ids": [
+    "SRC-COINBASE-Q3-2026-10Q-COLLATERAL-20261030",
+    "SRC-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION-20261030",
+    "SRC-COINBASE-Q3-2026-EARNINGS-USDC-20261030",
+    "SRC-SBI-CIRCLE-JV-50-50-AND-CIRCLE-CONTROL-20261030",
+    "SRC-SBI-CIRCLE-ARC-INVESTMENT-20260512",
+    "SRC-SBI-JPYSC-LAUNCH-ACCOUNT-ONLY-20260624",
+    "SRC-SBI-JPYSC-JGB-RESERVE-AND-LENDING-20260907",
+    "SRC-SBI-SMBC-JPYSC-CAPITAL-ALLIANCE-20261030",
+    "SRC-SBI-STARTALE-BLACKROCK-JPYSC-MMF-MOU-20261027",
+    "SRC-CIRCLE-USDC-XRPL-NATIVE-AND-XRP-AUTO-BRIDGE-20250612",
+    "SRC-COINBASE-RLUSD-THREE-NETWORK-LISTING-20261028",
+    "SRC-CIRCLE-ARC-MAINNET-INSTITUTIONAL-RAILS-20260916"
+  ],
+  "findings": {
+    "coinbase_collateral": {
+      "q3_2026_sec_10q_as_of": "2026-09-30",
+      "loan_receivables_usd": 1976137000,
+      "loan_collateral_requirement": "100%-250% of loan fair value",
+      "recognized_lending_collateral_usd": 1009297000,
+      "recognized_lending_collateral_breakdown_usd": {
+        "BTC": 920649000,
+        "ETH": 67005000,
+        "other_crypto": 9903000,
+        "fiat_payment_stablecoins": 11740000
+      },
+      "unrecognized_customer_collateral_usd": 3284562000,
+      "unrecognized_customer_collateral_breakdown_usd": {
+        "crypto": 2804112000,
+        "fiat_payment_stablecoins": 480450000
+      },
+      "recognized_derivatives_collateral_usd": 325766000,
+      "derivatives_breakdown_usd": {
+        "BTC": 322341000,
+        "ETH": 3731000
+      },
+      "derivatives_requirement": "at least 100% of derivative notional",
+      "xrp_status": "No XRP is separately identified in the recognized derivatives collateral table. Other recognized lending crypto totals USD9.903M. The USD2.804B unrecognized customer crypto collateral is not token-level disaggregated; XRP inclusion remains unknown."
+    },
+    "circle_coinbase_economics": {
+      "circle_q2_2026_distribution_costs_to_coinbase_usd": 324600000,
+      "circle_h1_2026_distribution_costs_to_coinbase_usd": 655300000,
+      "circle_q2_usdc_circulation_average_usd": 76524000000,
+      "circle_q2_usdc_on_platform_end_usd": 12442000000,
+      "coinbase_q3_2026_average_usdc_in_products_usd": 22000000000,
+      "coinbase_q3_2026_stablecoin_revenue_usd": 306905000,
+      "note": "Circle's USDC-on-platform measure at Q2 end and Coinbase's average USDC in products for Q3 are different definitions and periods; do not divide one by the other or infer market share."
+    },
+    "sbi_circle": {
+      "circle_sbi_japan_legal_equity_split": {
+        "SBI": 50,
+        "Circle": 50
+      },
+      "circle_accounting_control": "Circle consolidates the VIE; SBI equity shown as noncontrolling interest",
+      "circle_sbi_japan_contributions_nov2025_usd_equivalent_each": 1500000,
+      "significant_operating_results_to_june2026": false,
+      "sbi_strategic_investment_in_circle_usd": 50000000,
+      "separate_sbi_investment_in_startale_usd": 50000000,
+      "note": "Two distinct USD50M investments: SBI into Circle shares and SBI into Startale Series A. Do not conflate them."
+    },
+    "sbi_jpysc": {
+      "issuer": "SBI Shinsei Trust Bank",
+      "distributor": "SBI VC Trade",
+      "co_developer": "Startale Group",
+      "launch_date": "2026-06-24",
+      "initial_rail": "SBI VC Trade accounts only",
+      "public_chain_transfer": "conditional future migration after legal/tax clarification",
+      "issued_balance_jpy_20260907": 20100000000,
+      "jgb_backing_allocation_jpy": 1000000000,
+      "lending_applications_jpy": 6900000000,
+      "actual_loans_confirmed": false,
+      "smbc_alliance_date": "2026-10-30",
+      "smbc_approx_equity_interest_pct": 5,
+      "equity_interest_status": "secondary reported; official alliance confirmed; closing not verified",
+      "blackrock_tokenized_mmf_mou_date": "2026-10-27",
+      "blackrock_mou_status": "MOU only; not live collateral integration"
+    },
+    "arc_and_multirail": {
+      "arc_public_mainnet_date": "2026-09-16",
+      "gas": "USDC",
+      "validator_set": "permissioned",
+      "sbi_group": "founding validator",
+      "exchange_access_partners": [
+        "Coinbase",
+        "Binance",
+        "Upbit"
+      ],
+      "institutional_collateral_assets": [
+        "USYC",
+        "BUIDL",
+        "private credit",
+        "cirBTC"
+      ],
+      "xrp_role": "not announced as native gas, collateral or settlement asset on Arc launch",
+      "regulatory_status": "Circle says no regulatory authority had reviewed or approved Arc at launch"
+    },
+    "xrp_and_stablecoins": {
+      "native_usdc_on_xrpl_since": "2025-06-12",
+      "xrp_auto_bridge": "XRPL DEX auto-bridging uses XRP as essential bridge currency",
+      "actual_xrp_bridge_volume": "not disclosed",
+      "coinbase_rlusd_networks_at_launch": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "coinbase_rlusd_exchange_collateral": "planned, not live at launch"
+    },
+    "interpretation": {
+      "thesis": "SBI is building a multi-rail strategy spanning Ripple/XRP, Circle/USDC, JPYSC/Startale, and Arc institutional infrastructure; these are parallel capabilities rather than proof of one exclusive rail.",
+      "counter_hypothesis": "Different rails may serve separate products, jurisdictions, customers and liquidity needs; announced integrations and MOUs do not prove operational substitution or direct XRP demand.",
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false
+    }
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

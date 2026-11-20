@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "XRP-20261101T031615Z-LEDGER-VALIDATOR-TRIGGER-AND-POINTER-REPAIR",
+  "captured_at_utc": "2026-11-01T03:16:15Z",
+  "data_cutoff_utc": "2026-11-01T02:52:00Z",
+  "supersedes_snapshot_id": "XRP-20261101T031418Z-ATTACKER-WALLET-SOURCE-PROVENANCE-CORRECTION",
+  "supersedes_snapshot_path": "data/xrp_intelligence/snapshots/20261101T031418Z-attacker-wallet-provenance-correction.json",
+  "correction": {
+    "issue": "The preceding 03:09 snapshot combined the XRPLWin Oct30 article with a 16:51 UTC Oct31 observation. The 16:51 timestamp belongs to Bitquery's Oct31 investigation, not the XRPLWin article.",
+    "disposition": "PRESERVE_PRIOR_SNAPSHOT; THIS CORRECTION IS THE CURRENT PROVENANCE RECORD",
+    "corrected_source_attribution": [
+      {
+        "publisher": "Bitquery",
+        "url": "https://www.bitquery.io/investigations/binance-hack",
+        "publication_date": "2026-10-31",
+        "publication_time_utc": "NOT_SPECIFIED",
+        "data_cutoff_utc": "2026-10-31T16:51:00Z",
+        "claims": [
+          "Bitquery says holdings were read from each chain at 16:51 UTC on October 31.",
+          "Its XRP Ledger row lists the attacker account rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx with 233.5M XRP and says it had never sent a transaction as of 16:51 UTC.",
+          "Bitquery says it found no attacker funds sent to an exchange deposit address or mixer at its 16:51 UTC cutoff."
+        ],
+        "limitations": [
+          "Rounded 233.5M figure; not the exact 233,461,943.10005 amount.",
+          "The 16:51 UTC observation is stale by 2h23m at this correction capture.",
+          "The live Bitquery explorer link for the XRPL address returned HTTP 403 through the public browser; no bypass or unauthorized access attempted.",
+          "Current balance and post-16:51 transactions remain unknown."
+        ]
+      },
+      {
+        "publisher": "XRPLWin",
+        "url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+        "publication_date": "2026-10-30",
+        "publication_time_utc": "NOT_SPECIFIED",
+        "data_cutoff_utc": "UNKNOWN; ARTICLE PUBLISHED OCTOBER 30",
+        "claims": [
+          "XRPLWin lists five Binance hot-wallet transfers totaling 233,461,943.1 XRP between 20:05 and 20:09 UTC on October 29.",
+          "It identifies a Check transaction at 22:35 UTC on October 29 as the account's most recent transaction at article publication and reports balance 233,461,943.10005 XRP with no outgoing transactions at that time."
+        ],
+        "limitations": [
+          "The article is dated October 30; it does not support an October 31 16:51 UTC observation.",
+          "Exact article data cutoff time is not stated.",
+          "It cannot establish the account's current balance on November 1."
+        ]
+      }
+    ],
+    "invalidated_attribution": "Do not cite XRPLWin as the source for the 2026-10-31T16:51Z observation. Do not treat either source as a live balance."
+  },
+  "corrected_attacker_wallet_state": {
+    "address": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "bitquery_reported_balance_xrp": 233500000,
+    "bitquery_cutoff_utc": "2026-10-31T16:51:00Z",
+    "xrplwin_reported_exact_balance_xrp": 233461943.10005,
+    "xrplwin_article_date": "2026-10-30",
+    "current_balance_as_of_capture": "UNKNOWN",
+    "later_outgoing_transactions": "UNKNOWN_AFTER_BITQUERY_2026-10-31T16:51Z",
+    "exchange_deposit_or_sale_after_cutoff": "NOT_ESTABLISHED"
+  },
+  "source_candidates_pending_registry": [
+    {
+      "id": "CAND-20261101T031418Z-BITQUERY-BINANCE-XRP-ATTACKER",
+      "publisher": "Bitquery",
+      "url": "https://www.bitquery.io/investigations/binance-hack",
+      "data_cutoff_utc": "2026-10-31T16:51:00Z"
+    },
+    {
+      "id": "CAND-20261101T031418Z-XRPLWIN-BINANCE-XRP-ATTACKER",
+      "publisher": "XRPLWin",
+      "url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+      "publication_date": "2026-10-30",
+      "data_cutoff_utc": "UNKNOWN"
+    }
+  ],
+  "registered_source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T210244Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "registered_source_reference_count": 3,
+  "missing_registered_source_references": 0,
+  "archive_shards_appended": 0,
+  "source_revision_addenda_appended": 0,
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_action": "Use an independently accessible public XRPL data endpoint or a verified Bitquery data product to obtain a new validated-ledger balance and account_tx history. Do not bypass the 403 explorer response.",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261101T031615Z-xrp-ledger-validator-repair-snapshot.json",
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T210244Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "source_revision_ids": [
+    "REV-20261031T230816Z-XRP-INSIGHTS-ESCROW-PREUNLOCK",
+    "REV-20261031T230816Z-XRP-INSIGHTS-EXCHANGE-DELTA-RECONCILIATION",
+    "REV-20261031T230816Z-TRADRADAR-STALE-SEARCH-RESULT-RECONCILIATION",
+    "REV-20261031T230816Z-GITHUB-MAIN-WORKFLOW-PR1431-AUDIT",
+    "REV-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGE-CONFLICT",
+    "REV-20261031T232127Z-GITHUB-PR1432-SIGNAL-SAFETY-AND-ARCHIVE-VERIFICATION",
+    "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS",
+    "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
+    "REV-20261101T010400Z-XRP-ESCROW-STALE-LEDGER-AND-OWNER-CACHE",
+    "REV-20261101T010400Z-GITHUB-CROSS-ANALYSIS-MAIN-WRITER-AND-PR1435",
+    "REV-20261101T010800Z-BINANCE-XRP-ATTACKER-ADDRESS-ISSUER-FREEZES",
+    "REV-20261101T020400Z-XRP-ESCROW-FINISH-LEDGER-108034152",
+    "REV-20261101T020400Z-GITHUB-MAIN-CROSS-ANALYSIS-PR1438-AND-VALIDATOR-TRIGGER",
+    "REV-20261101T030943Z-XRP-INSIGHTS-POSTRELEASE-LEDGER-108035119"
+  ],
+  "source_revision_addenda_count": 42,
+  "source_revision_addenda_pending_archive_append": 36,
+  "source_revision_addenda_corrected_pointer_count": 3,
+  "source_revision_addenda_corrected_paths": [
+    "data/xrp_intelligence/source_revisions/20261101T031615Z-corrected-001238-xrp-escrow-post-eligibility-status.json",
+    "data/xrp_intelligence/source_revisions/20261101T031615Z-corrected-010400-xrp-escrow-stale-ledger-and-owner-cache.json",
+    "data/xrp_intelligence/source_revisions/20261101T031615Z-corrected-010400-github-cross-analysis-writer-pr1435.json"
+  ],
+  "archive_validator_trigger_repair_branch": "verify/xrp-ledger-archive-20261101T031615Z",
+  "archive_validation_status": "PENDING_AUTOMATIC_PUSH_VALIDATION"
+}

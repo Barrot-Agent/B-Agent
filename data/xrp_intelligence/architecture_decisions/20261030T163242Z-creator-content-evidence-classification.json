@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-20261030T163242Z-CREATOR-CONTENT-EVIDENCE-CLASSIFICATION",
+  "captured_at_utc": "2026-10-30T16:32:42Z",
+  "status": "ADOPTED_FOR_RESEARCH",
+  "decisions": [
+    {
+      "area": "creator_identity",
+      "rule": "Do not merge Camilla Stephenson, Camilla Stevenson, Camila Stephenson and Kamilah Stevenson without a public identity cross-link or direct confirmation. Preserve each channel/person as a separate entity until resolved."
+    },
+    {
+      "area": "creator_content",
+      "rule": "Classify YouTube claims as creator commentary/opinion, capture exact video URL, publication date and observed engagement counts, and independently corroborate factual claims before adding them to evidence or prediction features."
+    },
+    {
+      "area": "inventory_completeness",
+      "rule": "A web-search result set is not an exhaustive channel upload inventory. Require a verified channel ID and complete public uploads feed before claiming all videos have been inventoried."
+    },
+    {
+      "area": "prediction_feature_admission",
+      "rule": "Creator narratives about XRP custody, yen carry trades or liquidity are public-discourse features only; do not treat them as actual custody movements, capital flows or causal market evidence."
+    }
+  ],
+  "prior_evidence_preserved": true
+}

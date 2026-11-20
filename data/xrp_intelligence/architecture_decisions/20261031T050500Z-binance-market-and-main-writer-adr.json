@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T050500Z-BINANCE-MARKET-AND-MAIN-WRITE-CONTROLS",
+  "created_at_utc": "2026-10-31T05:05:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_AND_PROPOSED_SAFETY_REMEDIATION",
+  "context": "Fresh Binance incident update, XRP daily/derivatives data, current B-Agent main and exact-head PR/CI state were inspected.",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Treat Binance $6.34B reserve, $5B already-held affected tokens and approximately $3B frozen as separate aggregate company/partner statements. Do not infer XRP-specific purchase demand without token-level evidence.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D2",
+      "decision": "Keep Kodexius and TradRadar OI series separate. No composite OI feature until exact contract/venue coverage, quote currency and timestamp alignment are reconciled.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D3",
+      "decision": "Do not attribute Oct29 XRP daily return to the Binance incident without event-level study and BTC/ETH controls.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D4",
+      "decision": "PR #1395 is the minimal tested proposal to suspend scheduler queue dispatch/main commits until an external-state persistence and least-privilege dispatch design is reviewed. Keep it draft/unmerged pending approval.",
+      "status": "PROPOSED_PR_OPEN"
+    },
+    {
+      "id": "D5",
+      "decision": "PR #1392 remains the candidate for read-only Cross-analysis, signal-accuracy and telemetry outputs, but it is stale by one main commit and leaves other scheduled writers outside scope. Require fresh-main validation and a full workflow inventory.",
+      "status": "PROPOSED_PR_OPEN"
+    },
+    {
+      "id": "D6",
+      "decision": "PR #1393's Morpho cursor correction is verified on its exact head, but live API ingestion and subsequent-page retrieval are not executed. Do not admit Morpho features yet.",
+      "status": "PROPOSED_PR_OPEN"
+    },
+    {
+      "id": "D7",
+      "decision": "No XRP market feature is admitted and no directional forecast is issued. Fixed-horizon, walk-forward, calibration and shadow evaluation remain prerequisites.",
+      "status": "ACTIVE"
+    }
+  ],
+  "evidence_ids": [
+    "SRC-20261031-BINANCE-UPDATE2-0505Z",
+    "SRC-20261031-REUTERS-BINANCE-RESERVE-0505Z",
+    "SRC-20261031-COINDESK-BINANCE-BREACH-0505Z",
+    "SRC-20261031-INVESTING-XRP-HISTORY-0505Z",
+    "SRC-20261031-KODEXIUS-XRP-OI-0014Z",
+    "SRC-20261031-TRADRADAR-XRP-OI-2320Z",
+    "SRC-20261031-GITHUB-MAIN-COMMIT-0505Z",
+    "SRC-20261031-GITHUB-CROSS-ANALYSIS-0505Z",
+    "SRC-20261031-GITHUB-ACCURACY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SCHEDULER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SELFDEPLOY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SUBSCRIBER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-PINGPONG-ENGINE-0505Z",
+    "SRC-20261031-GITHUB-RIEMANN-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-GUMROAD-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-WEBMCP-SANDBOX-0505Z",
+    "SRC-20261031-GITHUB-WEBMCP-MONETIZATION-0505Z",
+    "SRC-20261031-GITHUB-TRANSPARENCY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-HOVER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-PR1392-0505Z",
+    "SRC-20261031-GITHUB-PR1393-0505Z",
+    "SRC-20261031-GITHUB-PR1395-0505Z",
+    "SRC-20261031-GITHUB-PR1395-CI-0505Z",
+    "SRC-20261031-GITHUB-PR1395-GATE-0505Z"
+  ],
+  "acceptance_tests": [
+    "Exact-head GitHub CI on PR #1395: 344 tests and 8 subtests passed.",
+    "PR #1395 fail-closed gate passed with automatic merge disabled.",
+    "Snapshot source references must resolve against the append-only source archive.",
+    "Research-ledger exact-head validator must reconcile all archive pointers, record counts and snapshot blob SHA."
+  ],
+  "unresolved": [
+    "Current attacker receiver raw XRPL account_info and transaction history not refreshed.",
+    "Binance official post-incident PoR not yet published at cutoff.",
+    "Token-specific XRP replenishment quantity and fills unknown.",
+    "Scheduled and manual main-write workflow inventory is incomplete; effective token permissions and branch rulesets are not fully verified.",
+    "Other eight target platforms remain unauthenticated."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false,
+  "real_money_trade_performed": false,
+  "next_actions": [
+    "At/after 2026-10-31T07:33Z, check Binance's initial PoR snapshot and reconcile XRP token balances and addresses.",
+    "At/after 2026-11-01T05:33Z, verify Binance withdrawal restoration from official status.",
+    "Run full scheduled/manual workflow permission and destination audit; do not disable unrelated workflows without approval.",
+    "Complete Morpho API pagination and live read-only ingestion in a controlled environment.",
+    "Build synchronized XRP/BTC/ETH event study and fixed-horizon walk-forward benchmark."
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261031T002508Z-MAIN-WRITE-SAFETY-CONSOLIDATION-PR1386",
+  "created_at_utc": "2026-10-31T00:25:08Z",
+  "captured_at_utc": "2026-10-31T00:25:08Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "default_branch": "main",
+  "main": {
+    "head_sha": "f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9",
+    "compare_status": "IDENTICAL_TO_INSPECTED_HEAD",
+    "previous_main_sha": "86c136be4ea17c2174ebc61482f2656a745d3694",
+    "modified_by_this_run": false,
+    "active_write_paths": [
+      {
+        "path": ".github/workflows/cross-analysis.yml",
+        "status": "WRITE_CAPABLE_ON_MAIN",
+        "risk": "Scheduled hourly and workflow_run triggers still have contents: write and automatic git commit/push. Read-only replacement is in PR #1386 but not merged."
+      },
+      {
+        "path": ".github/workflows/check-signal-accuracy.yml",
+        "status": "WRITE_CAPABLE_ON_MAIN",
+        "risk": "Daily scheduled evaluator still has contents: write and historical signal mutation; PR #1386 changes this to read-only artifact output but is not merged."
+      },
+      {
+        "path": ".github/workflows/knowledge-signal-cycle.yml",
+        "status": "MANUAL_WRITE_CAPABLE",
+        "risk": "Manual workflow has write capability; no dispatch occurred."
+      },
+      {
+        "path": ".github/workflows/merge-queue.yml",
+        "status": "MANUAL_MUTATION_CAPABLE",
+        "risk": "Manual merge queue retains write/merge/delete capability; no dispatch occurred."
+      }
+    ],
+    "latest_observed_main_writes": [
+      {
+        "commit_sha": "86c136be4ea17c2174ebc61482f2656a745d3694",
+        "path": "ping-pongings/knowledge-base/sentiment_shift.json",
+        "message": "Cross-analysis refresh [skip ci]",
+        "classification": "SCHEDULED_AUTOMATED_WRITE"
+      },
+      {
+        "commit_sha": "03a86747680a79033435746c367aa96c6a641c20",
+        "paths": [
+          "web/signal_history.jsonl",
+          "web/signal_accuracy.json"
+        ],
+        "message": "Daily accuracy update",
+        "classification": "SCHEDULED_MUTABLE_EVALUATION_WRITE",
+        "effect": "Appended 14 checks and changed legacy summary from 1,683/772/45.9% to 1,697/772/45.5%; metric remains NOT_COMPARABLE."
+      },
+      {
+        "commit_sha": "f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9",
+        "path": "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+        "message": "chore: Barrot telemetry report",
+        "classification": "TELEMETRY_ONLY"
+      }
+    ]
+  },
+  "open_pr_inventory": {
+    "total_open": 162,
+    "draft": 152,
+    "ready_for_review": 10,
+    "stale_main_base": 159,
+    "current_main_base": 1,
+    "non_main_base": 2,
+    "scope_note": "Count from GitHub Search API; prior full inventory recorded 159 stale main-based and two non-main PRs. This run reverified the current-main PR #1386 and did not enumerate all 162 rows individually."
+  },
+  "pull_requests": [
+    {
+      "number": 1386,
+      "title": "Safety: remove scheduled main writes and quarantine legacy XRP accuracy",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1386",
+      "head_sha": "969fbd32b7909014e013056f3ae4cb33e17a8c54",
+      "base_sha": "f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9",
+      "state": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+      "changed_files": 10,
+      "ci_run_id": 41149771642,
+      "ci_status": "PASS",
+      "tests_passed": 354,
+      "subtests_passed": 8,
+      "gate_run_id": 41149771730,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "summary": "Consolidates read-only cross-analysis and daily accuracy workflow fixes, checkout credential isolation, bounded artifact outputs, historical metric quarantine and regression tests. PR #1383's cross-analysis fix was ported here. No merge."
+    },
+    {
+      "number": 1383,
+      "title": "Safety: make scheduled cross-analysis read-only",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1383",
+      "head_sha": "e84b42b398bf16fe12bacdfafba2ef14f51b395f",
+      "base_sha": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+      "state": "OPEN_DRAFT_UNMERGED_MERGEABLE_HISTORICAL_DUPLICATE",
+      "summary": "Its workflow and six regression tests were ported to PR #1386; a comment records the consolidation. This PR remains open and was not closed."
+    },
+    {
+      "number": 1353,
+      "title": "Research: losslessly shard XRP ledger with hash-verified read-only validation",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1353",
+      "head_sha": "4cbf0977f60de1bb43515380bda7d1b5a91eb233",
+      "base_ref": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+      "state": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+      "validator_run_id": 41149978685,
+      "validator_status": "PASS_20_TESTS",
+      "gate_run_id": 41149978777,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "archive_shards_checked": 291,
+      "sources": 1740,
+      "run_updates": 309,
+      "limitations": 739,
+      "summary": "Latest research append includes rDAE53 PoR-list label qualification, conditional XRP reserve stress sensitivity, Japanese SBIC three-company resolution, ChatGPT seminar classification and Camilla identity limitation."
+    }
+  ],
+  "approval_workflow": {
+    "path": ".github/workflows/barrot-approve-pr.yml",
+    "latest_run_id": 41149973514,
+    "status": "FAILURE_ZERO_JOBS",
+    "job_count": 0,
+    "root_cause": "UNRESOLVED_NO_JOB_LOGS",
+    "note": "This push-event failure recurred on the ledger metadata receipt commit; no bypass or manual dispatch was attempted."
+  },
+  "prediction_engine": {
+    "legacy_accuracy": {
+      "checked_count": 1697,
+      "correct_count": 772,
+      "accuracy_pct": 45.5,
+      "status": "NOT_COMPARABLE_NOT_VALID_OUT_OF_SAMPLE_SKILL"
+    },
+    "accuracy_safety_pr": 1386,
+    "latest_signal_status": "STALE_MAIN_SIGNAL_SCORE_44_CONFIDENCE_0_PROVIDER_CREDENTIAL_OR_GROQ_429_ISSUE",
+    "fixed_horizon_model": "NOT_IMPLEMENTED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "dependencies": {
+    "manifests": [
+      "requirements.txt",
+      "requirements-dev.txt",
+      "pyproject.toml",
+      "hf_space/requirements.txt",
+      "a2a/package.json"
+    ],
+    "lockfiles_found": [],
+    "finding": "Lower-bound-only dependency specifications and no lockfile; reproducibility/dependency-drift risk."
+  },
+  "security": {
+    "dependabot": "NOT_ACCESSIBLE",
+    "code_scanning": "NOT_ACCESSIBLE",
+    "secret_scanning": "NOT_ACCESSIBLE",
+    "sbom": "NOT_ACCESSIBLE",
+    "full_repository_ci": "NOT_RUN",
+    "interpretation": "Security alert state is unknown; no zero-alert claim."
+  },
+  "platforms": {
+    "ChatGPT": "ACTIVE_CURRENT_SESSION",
+    "GitHub": "CONNECTED_AND_TESTED",
+    "Claude": "NOT_AUTHENTICATED_OR_TESTED",
+    "Grok": "NOT_AUTHENTICATED_OR_TESTED",
+    "Gemini": "NOT_AUTHENTICATED_OR_TESTED",
+    "Copilot": "NOT_AUTHENTICATED_OR_TESTED",
+    "Codex": "GITHUB_CONNECTOR_TESTED_STANDALONE_PLATFORM_AUTH_NOT_VERIFIED",
+    "HuggingFace": "NOT_AUTHENTICATED_OR_TESTED",
+    "Kaggle": "NOT_AUTHENTICATED_OR_TESTED",
+    "Databricks": "NOT_AUTHENTICATED_OR_TESTED"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merges": 0,
+    "force_pushes": 0,
+    "deployments": 0,
+    "manual_workflow_dispatches": 0,
+    "paper_state_mutations": 0,
+    "real_money_trades": 0
+  },
+  "next_actions": [
+    "Keep PR #1386 draft/open; its exact-head core CI and fail-closed gate passed, but main write paths remain active until approved merge.",
+    "Keep PR #1353 draft/open; 291-shard exact-head validation and fail-closed gate passed. The approval-workflow zero-job push failure remains unresolved.",
+    "Do not close PR #1383 automatically; it is now a historical duplicate of the cross-analysis changes in #1386.",
+    "Verify current main's cross-analysis and daily accuracy writers remain unchanged before the next scheduled cycle.",
+    "Complete official Binance XRP PoR address export and asset-level crosswalk, including rDAE53 and the other four incident source wallets.",
+    "Keep the 93.36% rDAE53 reserve sensitivity scenario-only until snapshot date and XRP asset mapping are verified.",
+    "Do not use legacy 45.5% accuracy as model skill; fixed-horizon model remains unimplemented.",
+    "Inspect security alerts and dependency lockfile status only through authorized views; full repository CI and vulnerability scan remain not run."
+  ]
+}

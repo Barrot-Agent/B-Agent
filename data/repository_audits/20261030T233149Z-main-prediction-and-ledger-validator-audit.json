@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261030T233149Z-MAIN-PREDICTION-AND-LEDGER-VALIDATOR",
+  "created_at_utc": "2026-10-30T23:31:49Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "default_branch": "main",
+  "main": {
+    "sha": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+    "protected": true,
+    "protected_detail": "Branch protection reported; complete ruleset detail not inspected in this run.",
+    "modified_by_this_run": false
+  },
+  "new_pull_requests": [
+    {
+      "number": 1383,
+      "title": "Safety: make scheduled cross-analysis read-only on latest main",
+      "head_sha": "e84b42b398bf16fe12bacdfafba2ef14f51b395f",
+      "base_sha": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": {
+        "run_id": 41142381247,
+        "result": "PASS",
+        "tests_passed": 348,
+        "subtests_passed": 8
+      },
+      "gate": {
+        "run_id": 41142381916,
+        "result": "PASS",
+        "merge_disabled": true
+      }
+    },
+    {
+      "number": 1384,
+      "title": "Prediction integrity: quarantine legacy variable-horizon accuracy",
+      "head_sha": "c2127c5e8eff1d089f059a7d6a51add3d6aa289a",
+      "base_sha": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": {
+        "run_id": 41142979230,
+        "result": "PASS",
+        "tests_passed": 348,
+        "subtests_passed": 8
+      },
+      "gate": {
+        "run_id": 41142979206,
+        "result": "PASS",
+        "merge_disabled": true
+      }
+    },
+    {
+      "number": 1385,
+      "title": "Barrot task bundles: combine safety-heading extraction and bounded output",
+      "head_sha": "62c3cfb09602aac359867e67e808201f378b05b0",
+      "base_sha": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+      "state": "OPEN_DRAFT_UNMERGED_CI_PENDING",
+      "prior_head": {
+        "sha": "39475ffc5a638bf56e094693325c4ab23527004e",
+        "ci_run_id": 41143368073,
+        "tests_passed": 344,
+        "subtests_passed": 8,
+        "gate_run_id": 41143368103,
+        "gate": "PASS_MERGE_DISABLED"
+      },
+      "new_commit": {
+        "sha": "62c3cfb09602aac359867e67e808201f378b05b0",
+        "changes": [
+          "Adds a deterministic critical finding for destructive rollback commands such as git checkout --, git restore, git reset --hard, git clean, git stash, force-push, branch deletion, rm -rf, Remove-Item -Recurse -Force and del /s.",
+          "Adds 11 unsafe-command regression cases and one preservation-first acceptance case.",
+          "Strengthens the bundle-engineering system prompt to preserve existing work."
+        ],
+        "local_regex_cases_passed": 12,
+        "ci": "PENDING"
+      }
+    },
+    {
+      "number": 1353,
+      "title": "Lossless XRP research ledger and archive migration",
+      "head_sha": "PENDING_FINAL_LEDGER_COMMIT",
+      "base_ref": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "prior_head": "9c1c721acaa8423da09936280a57dbbcb01bdf7c",
+      "prior_regression_suite": {
+        "run_id": 41144121383,
+        "tests_passed": 19,
+        "gate_run_id": 41144121401,
+        "gate": "PASS_MERGE_DISABLED"
+      }
+    }
+  ],
+  "related_open_pull_requests": [
+    {
+      "number": 1379,
+      "state": "OPEN_DRAFT_STALE_BASE",
+      "base_sha": "34722b7053c33ea0424d18005da7a8eeebab2147",
+      "note": "Broader signal and knowledge workflow safety proposal; fresh-main validation required."
+    },
+    {
+      "number": 1380,
+      "state": "OPEN_DRAFT_SUPERSEDED_BY_1385",
+      "note": "Authorization heading recognition included in #1385."
+    },
+    {
+      "number": 1381,
+      "state": "OPEN_DRAFT_STALE_BASE",
+      "note": "Read-only merge queue proposal; not merged."
+    },
+    {
+      "number": 1382,
+      "state": "OPEN_DRAFT_SUPERSEDED_BY_1385",
+      "note": "Bounded output budget included in #1385."
+    }
+  ],
+  "issue_1377": {
+    "state": "OPEN",
+    "status": "BLOCKED_PENDING_NORMAL_FAIL_CLOSED_RERUN",
+    "prior_failure": "Generated MMI bundle omitted required completion_gate and recovery_plan arrays and did not yield an explicit authorization-boundary section; it also contained a destructive rollback instruction using git checkout -- <file>.",
+    "candidate_fix_pr": 1385,
+    "rerun_performed": false,
+    "new_guard_commit": "62c3cfb09602aac359867e67e808201f378b05b0"
+  },
+  "main_workflow_risks": [
+    {
+      "workflow": ".github/workflows/cross-analysis.yml",
+      "risk": "Main still grants contents:write and commits/pushes scheduled generated files until PR #1383 is approved and merged."
+    },
+    {
+      "workflow": ".github/workflows/check-signal-accuracy.yml",
+      "risk": "Main still runs the legacy variable-horizon evaluator and can write historical signal records until PR #1384 is approved and merged."
+    },
+    {
+      "workflow": ".github/workflows/knowledge-signal-cycle.yml",
+      "risk": "Manual workflow retains repository write/commit behavior; broader proposal #1379 is stale-base and unmerged."
+    },
+    {
+      "workflow": ".github/workflows/merge-queue.yml",
+      "risk": "Manual merge queue retains consequential write/merge/delete capability; proposal #1381 is stale-base and unmerged."
+    },
+    {
+      "workflow": ".github/workflows/barrot-approve-pr.yml",
+      "risk": "Push-event run 41144115490 failed with zero jobs although inspected main workflow declares workflow_dispatch only; root cause remains unknown, not proven to be YAML syntax."
+    }
+  ],
+  "research_branch_validation_gap": {
+    "workflow": ".github/workflows/xrp-ledger-validation.yml",
+    "observed_steps": [
+      "Checkout exact commit",
+      "Set up Python",
+      "Install pinned pytest",
+      "Compile validator and tests",
+      "Run isolated ledger validator regression suite"
+    ],
+    "missing_step": "The workflow did not invoke python scripts/validate_xrp_ledger_index.py --root . against the checked-out repository. Its 19 passing tests were isolated regression tests, not proof that all live repository archive pointers and snapshot references passed.",
+    "fix_prepared_in_this_update": "Added actual-repository validator invocation before regression tests and a test that asserts the workflow retains this step; pending exact-head CI."
+  },
+  "automation_resolver_run": {
+    "run_id": 41141876076,
+    "status": "SUCCESS",
+    "scope": "Issue/PR routing and assignment steps only; it did not execute code repairs or a repository repair bundle."
+  },
+  "prediction_engine": {
+    "main_signal_last_audited_score": 44,
+    "confidence": 0,
+    "provider_state": "Missing credential / Groq HTTP 429 in last inspected main snapshot",
+    "legacy_accuracy_pct": 45.9,
+    "legacy_accuracy_status": "NOT_VALID_OUT_OF_SAMPLE_SKILL",
+    "accuracy_fix_pr": 1384,
+    "fixed_horizon_model": "NOT_IMPLEMENTED",
+    "fixed_horizon_contract_status": "DESIGNED_NOT_EXECUTED_OR_VALIDATED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "security_and_dependencies": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_lockfile_audit": "NOT_RUN",
+    "vulnerability_scan": "NOT_RUN",
+    "HuggingFace_remote_code_and_artifact_trust": "OPEN"
+  },
+  "platform_coordination": {
+    "ChatGPT": "ACTIVE_IN_CURRENT_SESSION",
+    "GitHub": "CONNECTED_AND_TESTED",
+    "Claude": "NOT_AUTHENTICATED_OR_TESTED",
+    "Grok": "NOT_AUTHENTICATED_OR_TESTED",
+    "Gemini": "NOT_AUTHENTICATED_OR_TESTED",
+    "Copilot": "NOT_AUTHENTICATED_OR_TESTED",
+    "Codex": "NOT_AUTHENTICATED_OR_TESTED",
+    "HuggingFace": "NOT_AUTHENTICATED_OR_TESTED",
+    "Kaggle": "NOT_AUTHENTICATED_OR_TESTED",
+    "Databricks": "NOT_AUTHENTICATED_OR_TESTED"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merges": 0,
+    "force_pushes": 0,
+    "deployments": 0,
+    "manual_workflow_dispatches": 0,
+    "paper_state_mutations": 0,
+    "real_money_trades": 0,
+    "PR_branch_updates": 1,
+    "research_branch_updates": 1
+  },
+  "next_actions": [
+    "Verify the new research-branch exact-head workflow actually executes scripts/validate_xrp_ledger_index.py against all live archive pointers and the current snapshot.",
+    "Reconcile the Bithomp title/body account balance discrepancy with raw validated account_info or a second explorer.",
+    "Crosswalk all five source addresses and rs8Z against the official Binance October 1 PoR export; do not infer reserve replenishment from the two post-incident transfers.",
+    "Refresh the attacker receiver after 06:43 UTC and reconcile every subsequent outgoing transaction.",
+    "Track RLUSD bot cluster and high-value flows separately; build net-flow measures with issuer plumbing, roundtrip and omnibus transfers excluded.",
+    "Wait for exact-head CI and fail-closed gate on PR #1385 commit 62c3cf; do not rerun issue #1377 until the fix is validated and normal approval gates are satisfied.",
+    "Keep PRs #1383 and #1384 open, draft and unmerged pending user approval; audit knowledge-signal and merge-queue workflows on fresh main.",
+    "Run full repository CI, dependency lockfile audit and vulnerability scan separately."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 17,
+  "chunk_count": 18,
+  "record_count": 7,
+  "created_at_utc": "2026-10-30T06:08:00Z",
+  "records": [
+    {
+      "id": "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z",
+      "evidence_class": "INDEPENDENT_ONCHAIN_ANALYTICS_PROVIDER",
+      "url": "https://bitquery.io/investigations/binance-hack",
+      "title": "Binance hack: chain-by-chain on-chain investigation",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T06:08:00Z",
+      "note": "Bitquery independently traces five Binance-attributed XRPL accounts sending about 233.5M XRP to a newly created receiver. It reports the receiver still held 233.5M XRP and had never sent a transaction at 03:54 UTC on Oct 30. It identifies the public receiver as rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx. Bitquery says the XRPL and Solana drains share no address with the other incident chains; linkage is based on timing, unusual transaction construction and Binance's own total. Its public report covers nine chains, versus TRM's ten-chain scope. Same underlying public ledger, independent analytics provider; not an independent primary source."
+    },
+    {
+      "id": "SRC-BINANCE-VERIFIED-DEPOSITS-WITHDRAWALS-20261030T0608Z",
+      "evidence_class": "COMPANY_REPORTED_VERIFIED_OFFICIAL_ACCOUNT",
+      "url": "https://www.binance.com/en/square/post/10-30-2026-binance-says-deposits-normal-withdrawals-paused-for-security-revamp-eyes-48-hour-restoration-382748430882486",
+      "title": "Binance says deposits normal, withdrawals paused for security revamp",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T06:08:00Z",
+      "note": "A Binance News post marked as the verified official account says deposits are operating normally, withdrawals remain paused during a security overhaul, and Binance expects withdrawals to resume within 48 hours. It says the full attack path is still under investigation and a comprehensive report will follow. This is a later status update than the initial statement that both deposits and withdrawals were temporarily suspended."
+    },
+    {
+      "id": "SRC-REUTERS-BINANCE-INCIDENT-STATUS-AND-MARKET-REACTION-20261030T0608Z",
+      "evidence_class": "INDEPENDENT_NEWS_REPORT",
+      "url": "https://www.reuters.com/legal/transactional/tether-circle-freeze-238-billion-after-binance-reports-security-incident-2026-10-29/",
+      "title": "Reuters: Binance freezes assets after $6.3 billion heist",
+      "published_at": "2026-10-29T22:26:00Z",
+      "accessed_at_utc": "2026-10-30T06:08:00Z",
+      "note": "Reuters reports Binance's $6.3B impact estimate, about $3B frozen, deposits unaffected and withdrawals expected to resume within 48 hours; it reports BTC/ETH and crypto-equity market reaction, Coinbase's statement that it was unaffected, and TRM/Chainalysis attribution claims. Reuters is independent journalism but its threat-actor attribution is sourced to the analytics firms, not an independently reproduced XRPL trace."
+    },
+    {
+      "id": "SRC-COINDESK-BINANCE-POR-WALLET-IMPACT-20261030T0608Z",
+      "evidence_class": "SECONDARY_ANALYSIS_OF_EXCHANGE_PROOF_OF_RESERVES",
+      "url": "https://www.coindesk.com/business/2026/10/30/binance-hack-drained-wallets-backing-customer-assets-reserve-data-shows",
+      "title": "CoinDesk: Binance hack drained wallets backing customer assets",
+      "published_at": "2026-10-30T00:17:00Z",
+      "accessed_at_utc": "2026-10-30T06:08:00Z",
+      "note": "CoinDesk's review says the Ethereum hot wallet Binance 14 appears in Binance's Oct 1 proof-of-reserves set; its reported pre-event ETH reserve ratio was 100%, and the stolen ~204,500 ETH could imply ~94% coverage until replenished. It also reports 108.26% pre-event USDC coverage. This does not calculate an XRP reserve ratio and does not establish the five XRPL wallet balances or current customer liabilities."
+    },
+    {
+      "id": "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-OCT29-20261030T0608Z",
+      "evidence_class": "SECONDARY_MARKET_DATA_PROVIDER",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance XRP ETF dashboard through Oct 29",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T06:08:00Z",
+      "note": "Dashboard reports +$8.4M XRP ETF net flow for Oct 29 across five funds, +$98.9M over 30 sessions and $1.73B cumulative net inflow. The fund table includes XRP, XRPZ, XRPC, GXRP and TOXR; XRPR is not in this displayed five-fund universe. This is a provider-derived flow series, not issuer-level reconciliation."
+    },
+    {
+      "id": "SRC-CRYPTOETF-TODAY-XRP-PARTIAL-FLOW-OCT29-20261030T0608Z",
+      "evidence_class": "SECONDARY_MARKET_DATA_PARTIAL",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "title": "CryptoETF.today XRP ETF flow tracker, partial Oct 29",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T06:08:00Z",
+      "note": "Reports +$7.1M for Oct 29 but explicitly says only two of five funds had reported. The figure is partial and must not be compared as a completed daily total with Alpha Finance's five-fund +$8.4M."
+    },
+    {
+      "id": "SRC-XRPINSIGHTS-XRP-ETF-HOLDINGS-OCT28-20261030T0608Z",
+      "evidence_class": "ISSUER_HOLDINGS_AGGREGATOR_SECONDARY",
+      "url": "https://xrp-insights.com/data",
+      "title": "XRP Insights issuer-holdings and ETF-flow dataset",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T06:08:00Z",
+      "note": "Dataset reports holdings through Oct 28 of 1,190,251,285 XRP across six spot funds plus BITW; Oct 28 flow +174,140 XRP and Oct 26-28 combined flow -2,958,545 XRP. GXRP is excluded from flow totals while its holdings remain in total holdings; Oct 29 is provisional. Its universe and methodology differ from Alpha Finance and CryptoETF.today."
+    }
+  ]
+}

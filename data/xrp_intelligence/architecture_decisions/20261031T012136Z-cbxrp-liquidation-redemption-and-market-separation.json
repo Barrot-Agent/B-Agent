@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T012136Z-CBXRP-LIQUIDATION-REDEMPTION-AND-MARKET-SEPARATION",
+  "created_at_utc": "2026-10-31T01:21:36Z",
+  "status": "ACCEPTED_FOR_RESEARCH_NOT_MODEL_ADMISSION",
+  "context": "Coinbase confirms cbXRP can be redeemed to native XRP on eligible Exchange deposits; public Morpho data shows cbXRP liquidations and distinct LLTV markets. Downstream liquidator-to-Coinbase redemption and sale remain unobserved.",
+  "decisions": [
+    "Model lifecycle separately: native XRP custody backing → cbXRP mint/transfer → Morpho collateral → liquidation seizure → liquidator disposition → optional Coinbase deposit/unwrap → native XRP balance → optional sale/withdrawal.",
+    "Mark liquidation seizure and Coinbase unwrap mechanism confirmed independently; liquidator-to-Coinbase transfer and native XRP sale remain UNKNOWN until exact transaction lineage is proven.",
+    "Maintain separate time series per Morpho market ID, chain, collateral/loan token, oracle, LLTV, liquidation penalty, curator, vault allocation, supply, borrow, utilization and liquidity.",
+    "Do not assume 62.5% LLTV is Coinbase's exclusive route; a separate 77% market exists and Coinbase does not disclose market routing.",
+    "Distinguish vault allocation from underlying market liquidity and total market supply/borrow; do not attribute USDC supply to Circle or Coinbase without supplier evidence.",
+    "Use Morpho public REST API only after endpoint, pagination, timestamp, rate-limit and historical completeness tests.",
+    "Treat liquidation/unwrap observations as collateral-risk and possible supply-transmission variables, not directional XRP price features until full transmission and out-of-sample value are established."
+  ],
+  "invariants": [
+    "Seized cbXRP is not native XRP sold.",
+    "Coinbase unwrap capability is not proof a liquidator used it.",
+    "Native XRP credited to Coinbase is not proof of spot sale.",
+    "A liquidator address is not a verified person or institution.",
+    "Vault allocation is not full market supply or Coinbase loan volume.",
+    "Different LLTV markets are not interchangeable.",
+    "Circle issuing USDC does not establish Circle as a Morpho supplier."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T064600Z-EXCHANGE-WALLET-CUSTODY-VS-FREE-FLOAT-AND-RESERVE-CAUSALITY",
+  "captured_at_utc": "2026-10-31T06:46:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_ARCHITECTURE",
+  "decisions": [
+    {
+      "id": "DEC-EXCHANGE-WALLET-UNIVERSE-AND-FREE-FLOAT",
+      "rule": "Keep publicly labeled exchange wallet totals, same-wallet net changes, official PoR reserves, customer liabilities, wrapped-token backing and tradable float as separate data concepts.",
+      "rationale": "XRP Insights' 22.37B total includes cold custody, omnibus customer wallets and 488.4M non-customer wrapped/insurance/charity balances. Its methodology is direct XRPL account_info plus XRPSCAN labels, but labels are not beneficial-owner proof.",
+      "feature_admission": "NO_TRADABLE_FLOAT_FEATURE; retain raw provider-specific snapshots only."
+    },
+    {
+      "id": "DEC-SBI-VC-TRADE-CUSTODY-CLASSIFICATION",
+      "rule": "Record SBI VC Trade's 59.5M XRP across two public-labeled XRPL wallets as exchange/custody infrastructure evidence, not SBI Group treasury or proprietary holdings.",
+      "rationale": "The source provides public labels and balances but no official PoR or beneficial-owner breakdown.",
+      "feature_admission": "STRUCTURAL_ECOSYSTEM_RELATIONSHIP_ONLY; no quantitative price feature."
+    },
+    {
+      "id": "DEC-BINANCE-INCIDENT-RESERVE-CAUSALITY-CORRECTION",
+      "rule": "Do not equate the all-exchange -234.9M seven-day same-wallet change with the 233.46M Binance theft. Use Binance-specific -173.2M as the relevant provider observation and keep CryptoQuant's approximately 220M decline as a separate wallet-universe series.",
+      "rationale": "The XRP Insights all-exchange total spans 24 venues; Binance-specific movement is smaller. No five-wallet crosswalk, per-wallet history or same-time PoR/customer-liability reconciliation exists.",
+      "feature_admission": "EVENT_STUDY_CANDIDATE_ONLY; no exchange-outflow signal until causal classification."
+    },
+    {
+      "id": "DEC-SBI-REGIONAL-EXCHANGE-DATA",
+      "rule": "Keep Japan's 1.38B XRP (6.2% of tracked exchange-wallet total) as exchange registration/HQ grouping, not beneficial-owner residence or corporate treasury.",
+      "rationale": "The regional breakdown groups Upbit/Bithumb/Coinone/Korbit, Coinbase/Uphold/Kraken, and Japanese venues including SBI VC Trade, bitbank, Coincheck and bitFlyer.",
+      "feature_admission": "DESCRIPTIVE_REGIONAL_CUSTODY_ONLY."
+    }
+  ],
+  "source_ids": [
+    "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z",
+    "SRC-20261031-BINANCE-UPDATE2-0505Z"
+  ],
+  "next_actions": [
+    "Request/locate official SBI VC Trade PoR or custody disclosures and reconcile its two public wallet labels.",
+    "Crosswalk Binance's five incident source wallets against the XRP Insights 153-wallet Binance set.",
+    "Obtain raw XRPL transaction histories and validated account balances for all five incident sources and the attacker receiver.",
+    "Compare the same-time Binance PoR reserve addresses with customer liabilities when the post-incident snapshot is published.",
+    "Keep all exchange-wallet changes out of the price model until cause, universe and customer-vs-reserve classification are stable."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

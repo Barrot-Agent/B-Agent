@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-2026-10-30T132500Z-COINBASE-CIRCLE-EQUITY-REVENUE-RATE-SENSITIVITY",
+  "captured_at_utc": "2026-10-30T13:25:00Z",
+  "previous_addendum": "data/xrp_intelligence/relationship_graph_addenda/20261030T131600Z-sbi-vctrade-network-route-matrix.json",
+  "source_ids": [
+    "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+    "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805",
+    "SRC-SEC-CIRCLE-S1-2025-COINBASE-COLLABORATION-OWNERSHIP",
+    "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+    "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+    "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612",
+    "SRC-SBI-VCTRADE-USDC-RLUSD-ETHEREUM-CHAIN-FAQ-20261030"
+  ],
+  "edges": [
+    {
+      "from": "COINBASE_GLOBAL",
+      "to": "CIRCLE_INTERNET_GROUP",
+      "relationship": "Minority equity stake; 3.7% post-IPO as of 2025 S-1; current percentage unknown",
+      "status": "PRIMARY_SEC_S1_HISTORICAL_OWNERSHIP",
+      "source_ids": [
+        "SRC-SEC-CIRCLE-S1-2025-COINBASE-COLLABORATION-OWNERSHIP"
+      ]
+    },
+    {
+      "from": "CIRCLE_INTERNET_GROUP",
+      "to": "COINBASE_GLOBAL",
+      "relationship": "USDC distribution collaboration and reserve-income payment formula; Q3 2026 renewed on same terms",
+      "status": "PRIMARY_SEC_S1_AND_Q3_2026_10Q",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+        "SRC-SEC-CIRCLE-S1-2025-COINBASE-COLLABORATION-OWNERSHIP"
+      ]
+    },
+    {
+      "from": "CIRCLE_INTERNET_GROUP",
+      "to": "COINBASE_GLOBAL",
+      "relationship": "$324.6M Q2 2026 and $655.3M H1 2026 distribution costs paid under Coinbase agreements",
+      "status": "PRIMARY_SEC_Q2_2026_10Q",
+      "source_ids": [
+        "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805"
+      ]
+    },
+    {
+      "from": "CIRCLE_USDC",
+      "to": "XRPL",
+      "relationship": "Native USDC deployment on XRPL; no inference that Coinbase distributes material USDC balances there",
+      "status": "PRIMARY_CIRCLE_RIPPLE_XRPL_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+        "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612"
+      ]
+    },
+    {
+      "from": "COINBASE_GLOBAL",
+      "to": "XRP",
+      "relationship": "Exchange/custody support and cbXRP native XRP reserve on Base; separate from Circle revenue-sharing economics",
+      "status": "PREVIOUSLY_RECORDED_PRIMARY_COINBASE_RESERVE_SNAPSHOT",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261029"
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "CIRCLE_INTERNET_GROUP",
+      "relationship": "Japanese JV and separate strategic investment; current VCTRADE stablecoin routes are Ethereum-only",
+      "status": "PRIMARY_SBI_CIRCLE_AND_SBI_VCTRADE_DISCLOSURES",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+        "SRC-SBI-VCTRADE-USDC-RLUSD-ETHEREUM-CHAIN-FAQ-20261030"
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "RIPPLE",
+      "relationship": "Historical Ripple equity stake and ongoing commercial ecosystem relationships; current cap table not verified",
+      "status": "HISTORICAL_SBI_INVESTOR_PRESENTATION_AND_OFFICIAL_PARTNERSHIPS",
+      "source_ids": [
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624"
+      ]
+    },
+    {
+      "from": "COINBASE_GLOBAL",
+      "to": "RIPPLE_RLUSD",
+      "relationship": "Coinbase distribution/listing of RLUSD on Ethereum, Base and XRPL; no Coinbase equity stake in Ripple established",
+      "status": "PRIMARY_RIPPLE_COINBASE_LISTING_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-RIPPLE-RLUSD-COINBASE-LISTING-20261028"
+      ]
+    }
+  ],
+  "hypothesis_additions": [
+    {
+      "hypothesis_id": "HYP-COINBASE-CIRCLE-ECONOMIC-ALIGNMENT-20261030",
+      "claim": "Coinbase's minority Circle equity stake and revenue-sharing arrangement incentivize USDC distribution and platform balances, strengthening the USDC ecosystem.",
+      "supporting_source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+        "SRC-SEC-CIRCLE-S1-2025-COINBASE-COLLABORATION-OWNERSHIP"
+      ],
+      "counterevidence": "Coinbase's share of average USDC on-platform balances declined in Circle's H1 2026 comparison even while total USDC circulation grew; Coinbase's stablecoin revenue fell 5% YoY in Q3 2026.",
+      "status": "SUPPORTED_ECONOMIC_ALIGNMENT; FUTURE_GROWTH_NOT_GUARANTEED"
+    },
+    {
+      "hypothesis_id": "HYP-CIRCLE-COINBASE-RATE-SENSITIVITY-20261030",
+      "claim": "Falling reserve yields can reduce Circle reserve income and Coinbase stablecoin revenue even when USDC balances grow.",
+      "supporting_source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+        "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805"
+      ],
+      "counterevidence": "Higher USDC circulation and average balances can partially offset lower reserve yields; Circle's 100bp sensitivity holds circulation constant and is not a forecast.",
+      "status": "SUPPORTED_MECHANISM; MAGNITUDE_CONDITIONAL"
+    },
+    {
+      "hypothesis_id": "HYP-COINBASE-CIRCLE-XRPL-COMPLEMENTARITY-20261030",
+      "claim": "Circle's USDC deployment on XRPL and Coinbase's XRP/cbXRP custody could be complementary to XRPL ecosystem growth.",
+      "supporting_source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+        "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612"
+      ],
+      "counterevidence": "No evidence in the filings establishes material Coinbase USDC distribution on XRPL, USDC-to-XRP conversion flow, or a causal relationship between Circle's distribution payments and XRP demand.",
+      "status": "POSSIBLE_COMPLEMENTARITY; DIRECT_XRP_DEMAND_UNPROVEN"
+    },
+    {
+      "hypothesis_id": "HYP-SBI-CIRCLE-RIPPLE-CAPITAL-BRIDGE-20261030",
+      "claim": "SBI Holdings' separate investments/partnerships with Circle and Ripple make SBI an indirect strategic bridge between both ecosystems.",
+      "supporting_source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624"
+      ],
+      "counterevidence": "No evidence establishes coordinated capital allocation, shared governance, or an SBI VC Trade stablecoin route on XRPL; current VCTRADE network support lists USDC/RLUSD on Ethereum and JPYSC transfers unsupported.",
+      "status": "DOCUMENTED_CROSS-ECOSYSTEM_LINK; COORDINATION_UNPROVEN"
+    }
+  ],
+  "economic_relationship": {
+    "coinbase_circle_equity_pct_historical": 3.7,
+    "coinbase_circle_distribution_formula": "issuer retention + party product economics + 50% of remaining payment base to Coinbase after approved participants",
+    "circle_coinbase_q2_distribution_cost_usd_m": 324.6,
+    "circle_coinbase_h1_distribution_cost_usd_m": 655.3,
+    "q3_2026_contract_status": "renewed on same terms",
+    "xrp_causal_link": "NOT_ESTABLISHED"
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

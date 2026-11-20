@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T024000Z-FIXED-HORIZON-OUTCOMES-AND-LEGACY-ACCURACY-QUARANTINE",
+  "created_at_utc": "2026-10-31T02:40:00Z",
+  "status": "ACCEPTED_FOR_IMPLEMENTATION_DESIGN",
+  "context": "The current main-branch XRP signal history and evaluator were fully inspected. The legacy 45.5% metric is reproducible but not comparable prediction skill. Provider failures, stale signals, missing emission prices, variable horizons and overlapping records invalidate directional performance claims.",
+  "decisions": [
+    "Preserve the legacy 1,697/772/45.5% metric as historical data, label it NOT_COMPARABLE, and never present it as calibrated or out-of-sample model accuracy.",
+    "Create immutable prediction events and separate immutable outcome events; never rewrite the original prediction record when an outcome becomes available.",
+    "Every prediction must record exact UTC data cutoff, emission time, horizon, target, assumptions, model/version, feature snapshot SHA, source IDs, price source, price timestamp, probability distribution, confidence/calibration version, alternatives and later outcome reference.",
+    "Use fixed evaluation horizons of 1h, 4h, 24h, 72h and 7d with explicit target definitions; no minimum-age/current-price shortcut.",
+    "Use a timestamped venue composite or documented reference-price methodology for both emission and outcome; record venue, quote type, exact timestamp, spread and source provenance.",
+    "Require probabilities for mutually exclusive outcomes (up/flat/down) that sum to one; do not treat an LLM's uncalibrated confidence scalar as probability.",
+    "Provider credential failure, HTTP 429, stale source data, missing price, or missing feature snapshot must produce NOT_EVALUATED and suppress directional forecasts; never substitute a neutral score such as 44.",
+    "Separate directional labels from neutral/low-volatility outcomes; do not combine a <2% neutral-band rule with directional hit rates.",
+    "Use chronological walk-forward splits, purge/embargo overlapping horizons, and compare with always-up, always-down, zero-return, drift and momentum baselines.",
+    "Evaluate Brier score, log loss, calibration slope/intercept, reliability bins/ECE, balanced accuracy and uncertainty by horizon and regime; report confidence intervals and drift.",
+    "Do not admit features or issue forecasts until point-in-time leakage checks, baseline comparisons, calibration and shadow/paper evaluation pass.",
+    "Keep the current accuracy workflow read-only; PR #1386 is the tested remediation but remains draft/unmerged. No main write or merge is authorized in this run."
+  ],
+  "invariants": [
+    "Forecasts require a fixed horizon and explicit target.",
+    "Prediction records are immutable; outcomes are separate append-only records.",
+    "Missing provider or price data means NOT_EVALUATED, not neutral.",
+    "Company-reported and market observations retain source provenance and timestamp.",
+    "No real-money use before shadow/paper validation and explicit authorization.",
+    "Legacy accuracy is descriptive only and NOT_COMPARABLE.",
+    "No forecast is issued from the current stale/provider-failed signal."
+  ],
+  "legacy_accuracy_status": "NOT_COMPARABLE",
+  "fixed_horizon_contract_status": "DESIGN_REQUIRED",
+  "fixed_horizon_implementation_status": "NOT_EXECUTED",
+  "walk_forward_status": "NOT_EXECUTED",
+  "calibration_status": "NOT_EXECUTED",
+  "shadow_evaluation_status": "NOT_EXECUTED",
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

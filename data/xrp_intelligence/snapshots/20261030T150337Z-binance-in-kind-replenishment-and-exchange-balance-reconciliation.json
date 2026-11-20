@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T150337Z-BINANCE-IN-KIND-REPLENISHMENT-AND-EXCHANGE-BALANCE",
+  "captured_at_utc": "2026-10-30T15:03:37Z",
+  "data_cutoff_utc": "2026-10-30T15:03:37Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T150337Z-binance-in-kind-replenishment-and-exchange-balance-reconciliation.json",
+  "source_ids": [
+    "SRC-BITQUERY-BINANCE-XRP-POR-LABELS-20261030",
+    "SRC-COINDESK-BINANCE-OCT1-POR-WALLET-CROSSWALK-20261030",
+    "SRC-BINANCE-OFFICIAL-POR-METHOD-20261030",
+    "SRC-BINANCE-OFFICIAL-WITHDRAWAL-STATUS-20261030",
+    "SRC-BINANCE-OFFICIAL-IN-KIND-REPLENISHMENT-20261030T150337Z",
+    "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-20261030T150337Z",
+    "SRC-REPO-PR-WORKFLOW-AUDIT-20261030T150337Z"
+  ],
+  "findings": {
+    "binance_replenishment": {
+      "announcement": "Verified Binance News official account, 2026-10-30",
+      "company_funds_allocated_usd": 6340000000,
+      "affected_token_assets_already_held_usd": 5000000000,
+      "remaining_affected_token_assets_being_acquired_usd": 1340000000,
+      "acquisition_channels": [
+        "public market",
+        "over-the-counter"
+      ],
+      "frozen_or_protected_assets_usd": 3000000000,
+      "frozen_assets_excluded_from_company_reserve": true,
+      "restoration_started": true,
+      "token_level_allocations": "NOT_DISCLOSED",
+      "xrp_specific_replenishment_amount_xrp": null,
+      "xrp_specific_existing_inventory_amount_xrp": null,
+      "xrp_specific_remaining_shortfall_xrp": null,
+      "interpretation": "Potential in-kind XRP demand exists only if an XRP-specific shortfall remains after existing token inventory and recoveries; no XRP allocation or execution quantity is public."
+    },
+    "binance_por_context": {
+      "bitquery_label_claim": "Bitquery labels all 17 drained wallets, including five XRPL source accounts, as Binance PoR wallets.",
+      "official_binance_address_file_crosswalk": "NOT_EXECUTED",
+      "coindesk_october_1_crosswalk_scope": "Binance 14 Ethereum hot wallet appears in the October 1 PoR set; article reports 1.26B USDT and 89,475 ETH among 37 assets.",
+      "coindesk_eth_reserve_assessment": "CoinDesk estimates the approximately 204,500 ETH theft could reduce the October 1 100% ETH reserve ratio to approximately 94% before replenishment.",
+      "five_xrpl_wallets_official_por_membership": "NOT_ESTABLISHED",
+      "next_snapshot_date": "2026-11-01",
+      "next_snapshot_date_evidence": "SECONDARY_REPORTING; Binance official post says updated PoR will follow remediation but does not specify November 1."
+    },
+    "incident_xrp_status": {
+      "five_source_wallet_transfer_total_xrp": 233461943.1,
+      "attacker_receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "receiver_balance_xrp_rounded_at_1456_utc": 233500000,
+      "receiver_outgoing_transactions_after_activation_at_1456_capture": "NONE_DISPLAYED_BY_BITHOMP",
+      "five_source_wallet_current_residual_xrp": 45.99,
+      "residual_status": "CORRECTED_BY_2026-10-30T14:56Z_ERRATUM; prior 309,389.79 XRP estimate superseded."
+    },
+    "exchange_wallet_balances": {
+      "source": "XRP Insights; XRPL wallet balances with public XRPSCAN labels",
+      "source_data_cutoff_utc": "2026-10-30T08:00:00Z",
+      "tracked_exchanges": 24,
+      "tracked_wallets": 701,
+      "all_tracked_xrp": 22370000000,
+      "all_tracked_same_wallet_change_7d_xrp": -234900000,
+      "all_tracked_same_wallet_change_30d_xrp": -146100000,
+      "binance_xrp_aggregate": 2580000000,
+      "binance_same_wallet_change_7d_xrp": -173200000,
+      "binance_same_wallet_change_30d_xrp": -164500000,
+      "coinbase_xrp_aggregate": 5840000000,
+      "coinbase_same_wallet_change_7d_xrp": 1100000,
+      "coinbase_same_wallet_change_30d_xrp": 12500000,
+      "sbi_vc_trade_xrp_aggregate": 59500000,
+      "sbi_vc_trade_same_wallet_change_7d_xrp": -893000,
+      "sbi_vc_trade_same_wallet_change_30d_xrp": -10500000,
+      "identified_non_customer_reserves": {
+        "binance_peg_xrp_on_bnb_chain": 327400000,
+        "coinbase_cbxrp_backing_on_base": 151400000,
+        "binance_charity_and_binance_us_separate_exchange": 14600000
+      },
+      "custody_scope": "Includes hot and cold storage and identified non-customer backing; not tradable float or customer liabilities.",
+      "per_wallet_daily_history": "NOT_PUBLISHED_IN_THIS_DATASET"
+    },
+    "derived_comparisons": {
+      "incident_transfer_as_pct_of_all_exchange_7d_same_wallet_decline": 99.4,
+      "incident_transfer_as_pct_of_binance_7d_same_wallet_decline": 134.8,
+      "status": "MAGNITUDE_COMPARISON_ONLY",
+      "interpretation": "The total exchange decline is close in magnitude to the incident amount, but Binance's own reported net decline is smaller than the transfer. Wallet-set membership, offsets, internal transfers and other exchange flows prevent attribution.",
+      "coinbase_vs_binance": "Coinbase's +1.1M XRP seven-day change does not establish migration from Binance's -173.2M; self-custody, other venues, internal reclassification and untracked wallets remain alternatives."
+    },
+    "market_feature_admission": {
+      "admitted": false,
+      "reason": "No token-level replenishment allocation, official five-wallet PoR crosswalk, per-wallet daily exchange history or synchronized market panel."
+    },
+    "forecast_status": "NOT_ISSUED"
+  }
+}

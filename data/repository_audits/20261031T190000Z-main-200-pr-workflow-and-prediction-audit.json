@@ -1,0 +1,266 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_snapshot",
+  "audit_id": "BAGENT-20261031T190021Z-MAIN-200-PR-WORKFLOW-PREDICTION-AUDIT",
+  "captured_at_utc": "2026-10-31T19:00:21Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "97546c3f47bf64cb52956fab306f0a2d6fe473ce",
+  "main_latest_commit": {
+    "sha": "97546c3f47bf64cb52956fab306f0a2d6fe473ce",
+    "message": "Cross-analysis refresh [skip ci]",
+    "committed_at_utc": "2026-10-31T18:51:39Z",
+    "parent_sha": "4973114b8b467129957b0f5ff0d6ddd720bced35",
+    "changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "change_semantics": "generated_at timestamp only",
+    "associated_workflow_run_count": 0,
+    "likely_workflow": "cross-analysis.yml",
+    "exact_trigger": "UNKNOWN"
+  },
+  "accidental_main_write": {
+    "commit_sha": "4973114b8b467129957b0f5ff0d6ddd720bced35",
+    "committed_at_utc": "2026-10-31T18:51:24Z",
+    "parent_sha": "a7b253051f17100b1e44889d17c0177cff389ea5",
+    "changed_path": "tests/test_pillars_check_readonly.py",
+    "change": "45-line mocked test only; dummy private-key string; no live secret; not registered in main CI",
+    "cause": "Prior automation tool call omitted branch argument",
+    "status": "PRESERVATION_RULE_VIOLATION_DISCLOSED; FILE_REMAINS_ON_MAIN; NO_DIRECT_REVERT"
+  },
+  "open_pr_inventory": {
+    "total": 200,
+    "drafts": 190,
+    "ready_for_review": 10,
+    "main_based": 198,
+    "stale_main_based": 196,
+    "current_main_based": [
+      1427,
+      1426
+    ],
+    "non_main_based": 2
+  },
+  "current_main_based_prs": [
+    {
+      "number": 1427,
+      "title": "Revert accidental test-only main commit (current-base correction)",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1427",
+      "base_sha": "97546c3f47bf64cb52956fab306f0a2d6fe473ce",
+      "head_sha": "fcd0e2bc24c5b1876552ac55c0f4a6873eef227d",
+      "state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "ci_run_id": 41231514693,
+      "tests_passed": 342,
+      "subtests_passed": 8,
+      "gate_run_id": 41231514688,
+      "gate_status": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1426,
+      "title": "Revert accidental test-only main commit",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1426",
+      "base_sha": "97546c3f47bf64cb52956fab306f0a2d6fe473ce",
+      "head_sha": "09c2f6bf586cbd35fb40f6d8faf920282ff4433a",
+      "state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "ci_run_id": 41231460250,
+      "tests_passed": 342,
+      "subtests_passed": 8,
+      "gate_run_id": 41231460274,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "note": "Duplicate; #1427 is newer."
+    }
+  ],
+  "reviewed_prs": [
+    {
+      "number": 1424,
+      "title": "Fixed-horizon XRP forecast/outcome ledger",
+      "base_sha": "a7b253051f17100b1e44889d17c0177cff389ea5",
+      "head_sha": "fa18b71f795f3fc3320ad6babb036158c28ac915",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_freshness": "2_COMMITS_BEHIND_DIVERGED",
+      "ci_run_id": 41230399833,
+      "tests_passed": 385,
+      "subtests_passed": 8,
+      "gate_run_id": 41230399874,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "assessment": "Forecast/outcome recording foundation only; not trained model; no market ingestion, mandatory source registry, walk-forward, drift or shadow."
+    },
+    {
+      "number": 1425,
+      "title": "Read-only Python dependency audit",
+      "base_sha": "a7b253051f17100b1e44889d17c0177cff389ea5",
+      "head_sha": "3cacb94605666b95163c89255a3d2ae8c4602a4e",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_freshness": "2_COMMITS_BEHIND_DIVERGED",
+      "ci_run_id": 41230886799,
+      "tests_passed": 346,
+      "subtests_passed": 8,
+      "audit_run_id": 41230886944,
+      "audit_packages_resolved": 132,
+      "audit_reported_vulnerabilities": 0,
+      "gate_run_id": 41230886937,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "assessment": "No lockfile; audit resolves manifest constraints, not pinned deployment."
+    },
+    {
+      "number": 1423,
+      "title": "Workflow writer quarantine and token-input safety",
+      "base_sha": "a7b253051f17100b1e44889d17c0177cff389ea5",
+      "head_sha": "d4865534a1fdc20751f6c440ce722cb08ba193cf",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_freshness": "2_COMMITS_BEHIND_DIVERGED",
+      "ci_run_id": 41231632018,
+      "tests_passed": 353,
+      "subtests_passed": 8,
+      "gate_run_id": 41231632007,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "assessment": "Quarantines several scheduled writers; six more remain; subscriber privacy needs server-side replacement."
+    },
+    {
+      "number": 1422,
+      "title": "XRP institutional capital, custody, collateral and RLUSD rails",
+      "base_sha": "a7b253051f17100b1e44889d17c0177cff389ea5",
+      "head_sha": "557994fe85df09e4adad4096e5a5808dcfb904df",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_freshness": "2_COMMITS_BEHIND_DIVERGED",
+      "ci_run_id": 41230734352,
+      "gate_run_id": 41230734356,
+      "gate_status": "PASS_MERGE_DISABLED"
+    }
+  ],
+  "main_write_paths": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "permissions": [
+        "contents:write"
+      ],
+      "trigger": "workflow_run/hourly/manual",
+      "behavior": "commits entity/sentiment outputs to main",
+      "status": "ACTIVE"
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "permissions": [
+        "contents:write",
+        "actions:write"
+      ],
+      "trigger": "every 15 minutes/manual",
+      "behavior": "scheduler tick/dispatch and queue commit",
+      "status": "ACTIVE"
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "permissions": [
+        "contents:write"
+      ],
+      "trigger": "daily/manual",
+      "behavior": "rewrites signal history/accuracy and pushes main",
+      "status": "ACTIVE"
+    },
+    {
+      "path": ".github/workflows/autonomous_self_deployment.yml",
+      "permissions": [
+        "implicit/default"
+      ],
+      "trigger": "every 6 hours/manual",
+      "behavior": "writes telemetry report and pushes main",
+      "status": "ACTIVE"
+    },
+    {
+      "path": ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
+      "permissions": [
+        "contents:write",
+        "issues:write",
+        "pull-requests:write"
+      ],
+      "trigger": "every 6 hours/main push/manual",
+      "behavior": "writes synthetic quality claims and attempts main push",
+      "status": "ACTIVE"
+    },
+    {
+      "path": ".github/workflows/subscriber_sync.yml",
+      "permissions": [
+        "implicit/default"
+      ],
+      "trigger": "hourly/manual",
+      "behavior": "publishes unsalted SHA-256 purchaser email hashes to public web/subscribers.json",
+      "status": "ACTIVE_PRIVACY_RISK"
+    },
+    {
+      "path": ".github/workflows/coinbase-paper-trader.yml",
+      "permissions": [
+        "implicit/default"
+      ],
+      "trigger": "manual",
+      "behavior": "commits paper state/log; no dispatch",
+      "status": "MANUAL"
+    },
+    {
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "permissions": [
+        "contents:read declared"
+      ],
+      "trigger": "manual",
+      "behavior": "accepts new_token interpolated into gh secret set shell command and attempts deploy; successful mutation unproven",
+      "status": "UNSAFE_INPUT"
+    },
+    {
+      "path": ".github/workflows/pillars-check.yml",
+      "permissions": [
+        "implicit/default"
+      ],
+      "trigger": "daily/manual",
+      "behavior": "script may mint an installation token unnecessarily; PR #1423 proposes read-only GET",
+      "status": "CREDENTIAL_MINIMIZATION"
+    }
+  ],
+  "subscriber_privacy": {
+    "public_file": "web/subscribers.json",
+    "current_content": {
+      "emails": [],
+      "count": 0
+    },
+    "risk": "If populated, deterministic unsalted SHA-256 normalized email hashes are public and client-side matched; not anonymization.",
+    "remediation": "Requires server-side keyed verification/payment-provider flow; no endpoint or secret storage authorized.",
+    "status": "RISK_PRESENT_BUT_CURRENT_FILE_EMPTY"
+  },
+  "dependency_status": {
+    "manifests": [
+      "requirements.txt",
+      "requirements-dev.txt",
+      "pyproject.toml"
+    ],
+    "lockfiles_found": 0,
+    "pr1425_audit": {
+      "packages": 132,
+      "reported_vulnerabilities": 0,
+      "scope": "manifest-constrained resolution, not pinned deployment"
+    }
+  },
+  "security": {
+    "github_alerts": "NOT_ACCESSIBLE",
+    "branch_protection_details": "403",
+    "required_status_contexts": "EMPTY_IN_RETURNED_READ_RESPONSE; full configuration unverified",
+    "full_repository_ci": "NOT_RUN"
+  },
+  "blockers": [
+    "196/198 main-based PRs stale; no bulk rebase/merge.",
+    "Main writers remain active until approved PR merges.",
+    "PR #1423/#1424/#1425/#1422 stale by two commits.",
+    "Subscriber privacy needs authorized server-side design.",
+    "Full CI/security scan incomplete.",
+    "No local worktree access; no local files changed."
+  ],
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "deployment": false,
+    "secret_access": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false
+  }
+}

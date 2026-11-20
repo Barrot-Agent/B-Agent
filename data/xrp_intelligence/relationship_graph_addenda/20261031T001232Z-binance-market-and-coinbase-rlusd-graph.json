@@ -1,0 +1,227 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T001232Z-BINANCE-MARKET-COINBASE-RLUSD",
+  "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T001232Z-binance-market-and-coinbase-rlusd-graph.json",
+  "created_at_utc": "2026-10-31T00:12:32Z",
+  "captured_at_utc": "2026-10-31T00:12:32Z",
+  "source_ids": [
+    "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z",
+    "SRC-REUTERS-BINANCE-LOSS-COVER-20261030T1403Z",
+    "SRC-COINDESK-BINANCE14-ETH-POR-20261030T0416Z",
+    "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0400Z",
+    "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T0530Z",
+    "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z",
+    "SRC-COINMARKETCAP-XRP-MARKETS-20261031T001232Z",
+    "SRC-ALPHAFINANCE-XRP-ETF-20261029",
+    "SRC-XRPINSIGHTS-ETF-TOTALS-20261030T233337Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+  ],
+  "source_reference_count": 10,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T001232Z-01",
+      "from_entity": "Binance",
+      "relation": "reported_incident_loss",
+      "to_entity": "Approximately $6.3B in token assets",
+      "status": "OFFICIAL_BINANCE_STATEMENT",
+      "source_ids": [
+        "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z",
+        "SRC-REUTERS-BINANCE-LOSS-COVER-20261030T1403Z"
+      ],
+      "details": "Incident began around 20:05 UTC on 29 October; company says users will not bear loss."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-02",
+      "from_entity": "Binance",
+      "relation": "set_aside_company_funds_for_incident",
+      "to_entity": "More than $6.34B; including $5B exact impacted token assets",
+      "status": "OFFICIAL_COMPANY_STATEMENT_NOT_INDEPENDENTLY_AUDITED",
+      "source_ids": [
+        "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z",
+        "SRC-REUTERS-BINANCE-LOSS-COVER-20261030T1403Z"
+      ],
+      "details": "Remaining relevant token assets to be acquired through market and OTC channels; no XRP-specific amount disclosed."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-03",
+      "from_entity": "Binance",
+      "relation": "reported_onchain_frozen_assets",
+      "to_entity": "Approximately $3B",
+      "status": "OFFICIAL_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z",
+        "SRC-REUTERS-BINANCE-LOSS-COVER-20261030T1403Z"
+      ],
+      "details": "Frozen assets are not equivalent to recovered assets; token and chain breakdown not supplied in the update."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-04",
+      "from_entity": "Binance 14 Ethereum hot wallet",
+      "relation": "included_in",
+      "to_entity": "Binance 1 October 2026 proof-of-reserves address set",
+      "status": "COINDESK_SECONDARY_REVIEW_OF_OFFICIAL_EXPORT",
+      "source_ids": [
+        "SRC-COINDESK-BINANCE14-ETH-POR-20261030T0416Z"
+      ],
+      "details": "Ethereum wallet only; do not map this relationship to the five XRPL source addresses."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-05",
+      "from_entity": "Binance 14 and Binance 16",
+      "relation": "reported_eth_outflow_and_estimated_post_loss_coverage",
+      "to_entity": "Approximately 204,500 ETH removed; estimated ETH coverage near 94%",
+      "status": "COINDESK_SECONDARY_ESTIMATE",
+      "source_ids": [
+        "SRC-COINDESK-BINANCE14-ETH-POR-20261030T0416Z"
+      ],
+      "details": "Based on October 1 reserve ratio and reported ETH loss; not an audited current reserve ratio."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-06",
+      "from_entity": "Five Binance-labelled XRPL incident source wallets",
+      "relation": "official_october_1_xrp_por_membership",
+      "to_entity": "UNRESOLVED",
+      "status": "UNKNOWN_PENDING_OFFICIAL_ADDRESS_EXPORT",
+      "source_ids": [
+        "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z",
+        "SRC-COINDESK-BINANCE14-ETH-POR-20261030T0416Z"
+      ],
+      "details": "CoinDesk's Binance 14 Ethereum crosswalk does not establish XRPL source-wallet membership."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-07",
+      "from_entity": "Ripple",
+      "relation": "partnered_with",
+      "to_entity": "Coinbase",
+      "status": "OFFICIAL_RIPPLE_ANNOUNCEMENT_2026_10_28",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+      ],
+      "details": "Direct partnership to expand RLUSD distribution; no direct XRP collateral or purchase commitment announced."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-08",
+      "from_entity": "Coinbase Prime, Coinbase Exchange and Coinbase Retail",
+      "relation": "enable_trading_and_management_of",
+      "to_entity": "RLUSD",
+      "status": "ANNOUNCED_LIVE_FROM_2026_10_28",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+      ],
+      "details": "Retail and institutional clients can trade and manage RLUSD on these platforms."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-09",
+      "from_entity": "Coinbase Global Exchange",
+      "relation": "planned_collateral_support_for",
+      "to_entity": "RLUSD",
+      "status": "ANNOUNCED_FUTURE_AVAILABILITY_NOT_LIVE",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+      ],
+      "details": "Ripple states collateral functionality will follow; no live collateral balance established."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-10",
+      "from_entity": "RLUSD",
+      "relation": "deposit_withdrawal_network_support",
+      "to_entity": "XRPL, Base and Ethereum",
+      "status": "OFFICIAL_RIPPLE_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+      ],
+      "details": "Multi-chain distribution does not imply all RLUSD volume uses XRPL or creates XRP demand."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-11",
+      "from_entity": "Ripple",
+      "relation": "will_provide_RLUSD_liquidity_on",
+      "to_entity": "Base",
+      "status": "OFFICIAL_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+      ],
+      "details": "Liquidity provision is specifically stated for Base."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-12",
+      "from_entity": "U.S. XRP spot ETF complex",
+      "relation": "reported_net_inflow_on_2026_10_29",
+      "to_entity": "+$8.4M across five Alpha Finance funds",
+      "status": "THIRD_PARTY_AGGREGATOR_SNAPSHOT",
+      "source_ids": [
+        "SRC-ALPHAFINANCE-XRP-ETF-20261029"
+      ],
+      "details": "Session closed before the first identified Binance XRPL incident transfer."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-13",
+      "from_entity": "Coinbase Exchange XRP/USD",
+      "relation": "displayed_point_in_time_depth",
+      "to_entity": "CoinGecko snapshot: +2% $3.667M / -2% $7.547M",
+      "status": "DYNAMIC_AGGREGATOR_SNAPSHOT_NOT_EXECUTABLE_GUARANTEE",
+      "source_ids": [
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z"
+      ],
+      "details": "Depth is pair- and time-specific."
+    },
+    {
+      "edge_id": "E-20261031T001232Z-14",
+      "from_entity": "Binance XRP/USDT and XRP/USDC",
+      "relation": "displayed_point_in_time_depth",
+      "to_entity": "CoinGecko snapshot: USDT +2% $2.247M/-2% $1.999M; USDC +2% $0.548M/-2% $0.546M",
+      "status": "DYNAMIC_AGGREGATOR_SNAPSHOT_NOT_EXECUTABLE_GUARANTEE",
+      "source_ids": [
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z"
+      ],
+      "details": "Keep XRP/USDT and XRP/USDC separate."
+    }
+  ],
+  "disconfirming_evidence": [
+    {
+      "hypothesis_id": "H-20261031T001232Z-01",
+      "disconfirming_evidence": [
+        "CoinDesk's Ethereum-only PoR analysis estimates ETH backing near 94% before replenishment.",
+        "No independent current PoR reconciliation or XRP address export was retrieved."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261031T001232Z-02",
+      "disconfirming_evidence": [
+        "CoinDesk's Binance 14 finding is Ethereum-only and does not name the five XRPL accounts.",
+        "Binance has not published an XRP-specific reserve ratio or the required address crosswalk in the retrieved update."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261031T001232Z-03",
+      "disconfirming_evidence": [
+        "The statement is aggregate USD and does not identify XRP or a purchase execution.",
+        "Some impacted tokens may be replenished through corporate inventory, SAFU or frozen assets rather than open-market buying."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261031T001232Z-04",
+      "disconfirming_evidence": [
+        "The providers use different universes, times and weighting methods; disagreement may be coverage rather than a true market-position conflict."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261031T001232Z-05",
+      "disconfirming_evidence": [
+        "Fund coverage and flow methodologies differ; XRP Insights' 30 October row is provisional and BITW rebalancing can affect holding deltas.",
+        "The 29 October ETF session closed before the first Binance XRPL drain."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261031T001232Z-06",
+      "disconfirming_evidence": [
+        "Coinbase Global Exchange collateral functionality is explicitly future availability.",
+        "No XRP-specific collateral, conversion, bridge or order-book flow is disclosed."
+      ]
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

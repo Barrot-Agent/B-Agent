@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_addendum",
+  "audit_id": "AUDIT-20261101T010400Z-MAIN-93D990-CROSS-ANALYSIS-PR1435",
+  "captured_at_utc": "2026-11-01T01:04:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "93d99064389fbe09bd6ca01d9d283fdc52a13c5b",
+  "main_latest_commit": {
+    "sha": "93d99064389fbe09bd6ca01d9d283fdc52a13c5b",
+    "url": "https://github.com/Barrot-Agent/B-Agent/commit/93d99064389fbe09bd6ca01d9d283fdc52a13c5b",
+    "created_at_utc": "2026-11-01T00:57:03Z",
+    "message": "Cross-analysis refresh [skip ci]",
+    "changed_path": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "only_generated_at_changed": true,
+    "generated_at_before": "2026-10-31T23:51:39.713838+00:00",
+    "generated_at_after": "2026-11-01T00:57:02.819207+00:00",
+    "xrp_recent_entries": 0,
+    "xrp_prior_entries": 0,
+    "xrp_recent_score": null,
+    "xrp_prior_score": null,
+    "xrp_shift": null,
+    "btc_recent_entries": 0,
+    "btc_prior_entries": 0,
+    "btc_recent_score": null,
+    "btc_prior_score": null,
+    "btc_shift": null
+  },
+  "main_cross_analysis_workflow": {
+    "path": ".github/workflows/cross-analysis.yml",
+    "blob_sha": "143bb2ed89ef4e2d85071a583896adad2c37c81b",
+    "permissions": {
+      "contents": "write"
+    },
+    "triggers": [
+      "hourly schedule",
+      "workflow_run after Knowledge Signal Cycle completion",
+      "workflow_dispatch"
+    ],
+    "write_steps": [
+      "git add",
+      "git commit",
+      "git push",
+      "git pull fallback"
+    ],
+    "status": "ACTIVE_MAIN_WRITE_PATH"
+  },
+  "pr1435": {
+    "number": 1435,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1435",
+    "state": "OPEN",
+    "draft": true,
+    "merged": false,
+    "mergeable": true,
+    "base_sha": "93d99064389fbe09bd6ca01d9d283fdc52a13c5b",
+    "head_sha": "c3d239dde20a80c4b8a452c5225c93ea49c59883",
+    "branch": "safety/cross-analysis-readonly-main-93d990-20261101T0100Z",
+    "changed_files": [
+      ".github/workflows/ci.yml",
+      ".github/workflows/cross-analysis.yml",
+      "tests/test_cross_analysis_workflow_safety.py"
+    ],
+    "ci": {
+      "run_id": 41259443317,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41259443317",
+      "conclusion": "SUCCESS",
+      "tests_passed": 345,
+      "subtests_passed": 8
+    },
+    "gate": {
+      "run_id": 41259443418,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41259443418",
+      "conclusion": "SUCCESS",
+      "semantics": "MERGING_DISABLED"
+    },
+    "proposed_effect": "Read-only analysis with six 30-day artifacts; no main writes or persisted checkout credentials.",
+    "tradeoff": "Tracked outputs and current Pages refresh pause; no replacement publisher included."
+  },
+  "prior_pr_status": [
+    {
+      "number": 1431,
+      "base_sha": "f0bbed8c51974e4e0b4cb98b09a8ef0eb5fe0fbb",
+      "ahead_by": 3,
+      "behind_by": 4,
+      "status": "SUPERSEDED_BY_FRESH_MAIN_PR1435"
+    },
+    {
+      "number": 1433,
+      "base_sha": "a989ae6ee81106e5a3521d89883c59e263d6d305",
+      "ahead_by": 6,
+      "behind_by": 1,
+      "status": "OPEN_DRAFT_UNMERGED; EXACT_HEAD_CI_PASSED_ON_OLD_BASE"
+    },
+    {
+      "number": 1424,
+      "base_sha": "a7b253051f17100b1e44889d17c0177cff389ea5",
+      "ahead_by": 8,
+      "behind_by": 9,
+      "status": "OPEN_DRAFT_UNMERGED; FRESH_BASE_REVIEW_REQUIRED"
+    },
+    {
+      "number": 1422,
+      "base_sha": "a7b253051f17100b1e44889d17c0177cff389ea5",
+      "ahead_by": 43,
+      "behind_by": 9,
+      "status": "OPEN_DRAFT_UNMERGED; PATH_AND_EVIDENCE_REVIEW_REQUIRED"
+    }
+  ],
+  "other_main_risks": {
+    "knowledge_signal_cycle": {
+      "permission": "contents:write",
+      "trigger": "workflow_dispatch",
+      "direct_commit_and_push": true,
+      "status": "MAIN_WRITE_CAPABILITY_REMAINS"
+    },
+    "scheduler_tick": {
+      "permissions": [
+        "contents:write",
+        "actions:write"
+      ],
+      "schedule": "*/15 * * * *",
+      "dispatch_and_commit": true,
+      "status": "MAIN_WRITE_CAPABILITY_REMAINS"
+    },
+    "databricks_token_rotation": {
+      "workflow_input_accepts_token": true,
+      "shell_interpolation": true,
+      "status": "UNSAFE_INPUT_SURFACE_REMAINS_ON_MAIN"
+    }
+  },
+  "verification": {
+    "pr1435_exact_head_ci": true,
+    "pr1435_fail_closed_gate": true,
+    "full_repository_ci": false,
+    "complete_dependency_scan": false,
+    "security_alert_access": false,
+    "archive_validator_for_latest_research_head": "CANCELLED_PREVIOUS_HEAD; NEW_HEAD_NOT_RUN"
+  },
+  "safety": {
+    "main_changed_by_this_run": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "workflow_dispatch_performed": false,
+    "secret_accessed": false,
+    "real_money_trade_performed": false
+  }
+}

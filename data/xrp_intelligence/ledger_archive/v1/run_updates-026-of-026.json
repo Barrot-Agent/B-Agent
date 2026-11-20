@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 25,
+  "chunk_count": 26,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:22:54Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T08:22:54Z",
+      "update_type": "EXACT_HEAD_LEDGER_VALIDATOR_AND_FAIL_CLOSED_GATE_PASS_AFTER_SCHEMA_AND_SNAPSHOT_PATH_REPAIR",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "verified_head_sha": "e873a464b8cbcf544131fd6f3bf4b4d2510c8ee9",
+      "validator_pr_run_id": 41026027736,
+      "validator_pr_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41026027736",
+      "validator_tests_passed": 18,
+      "validator_tests_failed": 0,
+      "validator_duration_seconds": 0.07,
+      "fail_closed_gate_run_id": 41026027735,
+      "fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41026027735",
+      "fail_closed_gate_status": "PASS_MERGE_DISABLED",
+      "push_validator_run_id": 41026022846,
+      "push_validator_status": "PENDING_AT_CAPTURE",
+      "previous_failures_resolved": [
+        "Archive shard record_type envelope corrected using new immutable copies; original malformed files preserved unreferenced.",
+        "Snapshot pointer path mismatch corrected using a new immutable snapshot copy with matching snapshot_path; prior snapshots preserved unreferenced."
+      ],
+      "verified_archive_counts": {
+        "sources": 1344,
+        "run_updates": 226,
+        "limitations": 382,
+        "referenced_shards": 72
+      },
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261030T082000Z-sbi-multirail-binance-incident-current-market-panel.json",
+      "latest_snapshot_blob_sha": "232b093cc4f62cf8e4f869eafda1b872d674aed2",
+      "source_references": 36,
+      "missing_source_references": 0,
+      "graph_references": 36,
+      "missing_graph_references": 0,
+      "source_ids_unique": true,
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "workflow_dispatch_performed": false
+    }
+  ]
+}

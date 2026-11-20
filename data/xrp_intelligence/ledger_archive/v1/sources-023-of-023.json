@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 22,
+  "chunk_count": 23,
+  "record_count": 9,
+  "created_at_utc": "2026-10-30T08:05:12Z",
+  "records": [
+    {
+      "id": "SRC-BITQUERY-BINANCE-HACK-UPDATED-20261030T0643Z",
+      "evidence_class": "INDEPENDENT_BLOCKCHAIN_ANALYTICS_SECONDARY",
+      "url": "https://bitquery.io/investigations/binance-hack",
+      "title": "Bitquery Binance incident investigation — refreshed chain balances",
+      "published_at": "2026-10-30T06:43:00Z",
+      "accessed_at_utc": "2026-10-30T08:05:12Z",
+      "note": "Bitquery reports that at 06:43 UTC the attacker still held approximately 233.5M XRP at rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx and that the XRP receiver had never sent a transaction. It says all 17 drained hot wallets carried Binance proof-of-reserves labels in Bitquery address data. This is a provider attribution, not a direct Binance-signed PoR crosswalk. Bitquery notes the XRP Ledger account shares no address with the other incident chains, although its transfer construction/timing is consistent with the incident. The underlying public XRPL transactions are the same events independently indexed by other explorers."
+    },
+    {
+      "id": "SRC-COINDESK-XRP-LIQUIDATIONS-20261030T0622Z",
+      "evidence_class": "SECONDARY_MARKET_REPORT_USING_COINGLASS_DATA",
+      "url": "https://www.coindesk.com/markets/2026/10/30/bitcoin-ether-and-xrp-selloff-wipes-out-usd1-5-billion-in-leveraged-crypto-bets",
+      "title": "CoinDesk — $1.53B crypto liquidations after Binance incident",
+      "published_at": "2026-10-30T06:22:00Z",
+      "accessed_at_utc": "2026-10-30T08:05:12Z",
+      "note": "CoinDesk reports CoinGlass 24-hour liquidations of $1.53B by Friday morning in Asia; 83.8% were longs. XRP accounted for $38.1M; Binance accounted for $754.6M or 49.2% of the total, including $670.6M of longs. The article says short liquidations rose during the subsequent rebound. This is a rolling-window secondary report using CoinGlass data, not a venue-complete XRP-only time series."
+    },
+    {
+      "id": "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0700Z",
+      "evidence_class": "AGGREGATED_MULTI_EXCHANGE_DERIVATIVES_DASHBOARD",
+      "url": "https://tradradar.io/markets/xrp",
+      "title": "TradRadar XRP perpetual futures dashboard — 07:00 UTC snapshot",
+      "published_at": "2026-10-30T07:00:00Z",
+      "accessed_at_utc": "2026-10-30T08:05:12Z",
+      "note": "At 07:00 UTC TradRadar displayed XRP $1.2661 (-2.18% 24h), open interest $1.87B across seven exchanges (-4.49% 24h), OI-weighted funding -0.0054% per eight hours, at least $32.18M liquidations across five exchanges ($30.05M longs; $2.13M shorts), and a 3.72 long/short account ratio (78.8% long). The page says data are delayed 15 minutes and exchange liquidation publication is incomplete. Do not average with CoinGlass's different rolling window."
+    },
+    {
+      "id": "SRC-TRACKWHALE-XRP-FLOWS-20261030T0745Z",
+      "evidence_class": "PUBLIC_LARGE_TRANSFER_TRACKER_SECONDARY",
+      "url": "https://trackwhale.io/xrp-whale-tracker",
+      "title": "TrackWhale XRP large-transfer and exchange-flow dashboard",
+      "published_at": "2026-10-30T07:45:00Z",
+      "accessed_at_utc": "2026-10-30T08:05:12Z",
+      "note": "At 07:45 UTC TrackWhale displayed seven-day tracked large-transfer exchange inflows of 14.72M XRP ($17.81M, one transfer), outflows of 224.81M XRP ($287.63M, four transfers), and net flow -210.09M XRP. The feed includes the 185.02M XRP Binance-to-unknown transfer from the incident and a 35.6M USD-equivalent Ripple-labelled wallet transfer to an unknown wallet at 06:42 UTC. This is a limited large-transfer tracker, not complete exchange flow or investor capital. The negative netflow is incident-contaminated and must not be interpreted as voluntary holder withdrawals or a bullish signal."
+    },
+    {
+      "id": "SRC-COINDESK-XRPL-RESTRICTED-TOKEN-FIXES-20261030T0545Z",
+      "evidence_class": "SECONDARY_REPORT_OF_XRPL_FOUNDATION_AND_DEVELOPER_PROPOSALS",
+      "url": "https://www.coindesk.com/tech/2026/10/30/xrp-ledger-developers-tighten-the-rules-for-who-can-hold-restricted-tokens",
+      "title": "CoinDesk — proposed XRPL restricted-token fixes",
+      "published_at": "2026-10-30T05:45:00Z",
+      "accessed_at_utc": "2026-10-30T08:05:12Z",
+      "note": "CoinDesk reports four proposed code changes bundled as fixCleanup3_5_0 to close exceptions allowing restricted issued tokens to reach unapproved accounts. The XRPL Foundation said it knew of no outsider exploiting the remaining exceptions and no users were affected. The changes were not merged or activated at publication; activation would require support from more than 80% of trusted validators for two consecutive weeks. This is a proposed protocol compliance hardening, not a live network change."
+    },
+    {
+      "id": "SRC-COINDESK-INSTITUTIONAL-CEX-WITHDRAWALS-20261030T0356Z",
+      "evidence_class": "SECONDARY_REPORT_BASED_ON_ANONYMOUS_SOURCES",
+      "url": "https://www.coindesk.com/markets/2026/10/30/institutional-crypto-investors-rush-to-pull-funds-from-exchanges-after-binance-hack",
+      "title": "CoinDesk — reported institutional withdrawals from centralized exchanges",
+      "published_at": "2026-10-30T03:56:00Z",
+      "accessed_at_utc": "2026-10-30T08:05:12Z",
+      "note": "CoinDesk cites unnamed people familiar with the matter who said institutional investors were withdrawing crypto from centralized exchanges after the Binance incident and rebalancing trading books. The report provides no amounts, destination venues, assets or XRP-specific attribution. Treat as a sourced but unquantified claim, not a measured exchange-flow observation."
+    },
+    {
+      "id": "SRC-COINBASE-CBXRP-POR-REFRESH-20261030T0805Z",
+      "evidence_class": "OFFICIAL_ISSUER_PROOF_OF_RESERVES_DASHBOARD",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "title": "Coinbase cbXRP proof-of-reserves dashboard",
+      "published_at": "2026-10-29T14:04:00Z",
+      "accessed_at_utc": "2026-10-30T08:05:12Z",
+      "note": "Coinbase's official page stated that cbXRP is backed 1:1 by XRP held by Coinbase. Data refreshed 2026-10-29 14:04 UTC: total reserve 151,405,263.6 XRP; cbXRP supply 151,403,016.07 on Base; excess 2,247.53 XRP and calculated coverage approximately 100.00148%. The page lists the underlying XRP reserve addresses. None of the five Binance incident source addresses appears in the displayed Coinbase reserve-address list. This is an issuer-published point-in-time dashboard, not an independent audit or proof of net new XRP buying."
+    },
+    {
+      "id": "SRC-BINANCE-OFFICIAL-POR-METHODOLOGY-20261030T0805Z",
+      "evidence_class": "OFFICIAL_EXCHANGE_PROOF_OF_RESERVES_METHODOLOGY_PAGE",
+      "url": "https://www.binance.com/en/proof-of-reserves",
+      "title": "Binance official proof-of-reserves methodology and address-download page",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T08:05:12Z",
+      "note": "The official Binance page describes PoR as custody assets held for users, says it provides a Download All Address facility, and describes wallet-ownership checks, customer-balance snapshots, Merkle-tree inclusion and zk-SNARK verification. The address-download payload for the October 1 snapshot was not retrieved in this run. Therefore this source establishes the official verification method and availability of a download, not membership of the five XRP source wallets."
+    },
+    {
+      "id": "SRC-COINDESK-BINANCE-PO-RESERVES-ETH-WALLET-20261030T0017Z",
+      "evidence_class": "SECONDARY_REPORT_OF_BINANCE_OCTOBER_1_POR_CROSSWALK",
+      "url": "https://www.coindesk.com/business/2026/10/30/binance-hack-drained-wallets-backing-customer-assets-reserve-data-shows",
+      "title": "CoinDesk — Binance hot wallet and October 1 proof-of-reserves crosswalk",
+      "published_at": "2026-10-30T00:17:00Z",
+      "accessed_at_utc": "2026-10-30T08:05:12Z",
+      "note": "CoinDesk reports its review of Binance's October 1 PoR data found the Ethereum hot wallet Binance 14 in the reserve set. The article quantifies an estimated ETH backing decline to roughly 94% before replenishment and says the November 1 snapshot should show replacement. The named wallet is Ethereum Binance 14; this article does not itself identify the five XRPL source addresses as part of that PoR set. Do not generalize its ETH reserve result to XRP."
+    }
+  ]
+}

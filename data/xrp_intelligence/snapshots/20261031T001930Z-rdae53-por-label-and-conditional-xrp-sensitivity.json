@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T001930Z-RDAE53-POR-LABEL-AND-XRP-SENSITIVITY",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T001930Z-rdae53-por-label-and-conditional-xrp-sensitivity.json",
+  "created_at_utc": "2026-10-31T00:19:30Z",
+  "captured_at_utc": "2026-10-31T00:19:30Z",
+  "data_cutoff_utc": "2026-10-31T00:19:30Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T001607Z-binance-xrp-por-cushion-conditional-sensitivity.json",
+  "source_ids": [
+    "SRC-BITQUERY-RLUSD-BOTS-POR-LABEL-REVIEW-20261031T001930Z",
+    "SRC-WHALEALERT-RDAE53-185M-XRP-20261029T2005Z",
+    "SRC-BITHOMP-RDAE53-ACCOUNT-BALANCE-20261030T233149Z",
+    "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+    "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+  ],
+  "source_reference_count": 5,
+  "missing_source_references": 0,
+  "findings": [
+    {
+      "finding_id": "F-20261031T001930Z-01",
+      "classification": "BITQUERY_SECONDARY_LABEL_TO_PUBLISHED_BINANCE_POR_LIST",
+      "statement": "Bitquery explicitly states that its XRPL exchange labels are drawn from exchange-published PoR lists and names rDAE53 as Binance in that list. This is stronger than a generic Bithomp Binance label. Bitquery does not specify the exact PoR snapshot date/version or asset-specific XRP balance.",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-BOTS-POR-LABEL-REVIEW-20261031T001930Z"
+      ],
+      "disconfirming_evidence": "The official address export was not downloaded; no date/version or XRP asset-balance row is shown."
+    },
+    {
+      "finding_id": "F-20261031T001930Z-02",
+      "classification": "EXACT_INCIDENT_SOURCE_WALLET_MATCH",
+      "statement": "The rDAE53 wallet is the sender of the 185,017,485.5 XRP incident transfer to rK21... at 20:05 UTC on 29 October. Whale Alert independently reports the same transaction rounded to 185,017,485 XRP and approximately $235.8M; Bithomp's prior account snapshot preserves the decimal amount.",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-BOTS-POR-LABEL-REVIEW-20261031T001930Z",
+        "SRC-WHALEALERT-RDAE53-185M-XRP-20261029T2005Z",
+        "SRC-BITHOMP-RDAE53-ACCOUNT-BALANCE-20261030T233149Z"
+      ],
+      "disconfirming_evidence": "Transaction evidence proves movement and address identity, not beneficial ownership, the exact PoR snapshot version or the source asset's inclusion in the October 1 XRP reserve numerator."
+    },
+    {
+      "finding_id": "F-20261031T001930Z-03",
+      "classification": "CONDITIONAL_RDAE53_ONLY_XRP_POR_STRESS",
+      "statement": "If rDAE53 was included in the 1 October 2026 XRP PoR set and the 185.0174855M XRP transferred on 29 October depleted that reserve numerator, the rounded 100.77%/2.496B baseline yields a conditional post-transfer ratio of about 93.36% and a shortfall of about 165.798M XRP before offsets. The transfer is about 79.25% of the five-wallet total and 9.63 times the implied pre-incident surplus.",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-BOTS-POR-LABEL-REVIEW-20261031T001930Z",
+        "SRC-WHALEALERT-RDAE53-185M-XRP-20261029T2005Z",
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+        "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+      ],
+      "disconfirming_evidence": "The label's snapshot date and XRP asset mapping are unknown. Binance later reported company funds, frozen assets and replenishment; none are included in this stress calculation."
+    },
+    {
+      "finding_id": "F-20261031T001930Z-04",
+      "classification": "OTHER_FOUR_XRPL_SOURCE_WALLETS_UNRESOLVED",
+      "statement": "The other four wallets in the five-source 233,461,943.1 XRP incident cluster have Binance explorer labels, but no matching published-PoR-list attribution was found in the reviewed Bitquery passage. Their official PoR membership remains unresolved.",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-BOTS-POR-LABEL-REVIEW-20261031T001930Z"
+      ],
+      "disconfirming_evidence": "Absence of a label in this article is not proof that an address is absent from Binance's PoR export."
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261031T001930Z-01",
+      "asset": "XRP",
+      "metric": "rdae53_incident_transfer",
+      "value": {
+        "amount_xrp": 185017485.5,
+        "receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "transaction_hash": "78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A",
+        "ledger_timestamp_utc": "2026-10-29T20:05:00Z",
+        "usd_value_whale_alert_approx": 235800000,
+        "share_of_five_wallet_total_pct": 79.24952694356291
+      },
+      "unit": "XRP_USD",
+      "as_of_utc": "2026-10-29T20:05:00Z",
+      "retrieved_at_utc": "2026-10-31T00:19:30Z",
+      "source_ids": [
+        "SRC-WHALEALERT-RDAE53-185M-XRP-20261029T2005Z",
+        "SRC-BITHOMP-RDAE53-ACCOUNT-BALANCE-20261030T233149Z"
+      ],
+      "classification": "VALIDATED_XRPL_TRANSFER_WITH_INDEPENDENT_ALERT",
+      "admission_status": "CONTEXT_ONLY_NOT_PRICE_FEATURE",
+      "notes": "Whale Alert rounds the amount; prior Bithomp record preserves 185,017,485.5 XRP."
+    },
+    {
+      "observation_id": "OBS-20261031T001930Z-02",
+      "asset": "XRP",
+      "metric": "rdae53_only_conditional_por_stress",
+      "value": {
+        "transfer_xrp": 185017485.5,
+        "share_of_five_wallet_total_pct": 79.24952694356291,
+        "implied_preincident_surplus_xrp": 19219200,
+        "threshold_share_of_rdae_transfer_pct": 10.387774943574184,
+        "conditional_post_transfer_coverage_pct": 93.35744048477565,
+        "conditional_shortfall_xrp": 165798285.5
+      },
+      "unit": "XRP_percent_scenario",
+      "as_of_utc": "2026-10-31T00:19:30Z",
+      "retrieved_at_utc": "2026-10-31T00:19:30Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-BOTS-POR-LABEL-REVIEW-20261031T001930Z",
+        "SRC-WHALEALERT-RDAE53-185M-XRP-20261029T2005Z",
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030"
+      ],
+      "classification": "CONDITIONAL_SCENARIO_NOT_OBSERVED",
+      "admission_status": "SCENARIO_ONLY_NOT_MODEL_FEATURE",
+      "notes": "Assumes rDAE53 is part of the October 1 XRP PoR numerator and its full 185.0174855M transfer came from those reserves. Exact list version and asset mapping remain unknown."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T001930Z-01",
+      "claim": "rDAE53 is a Binance published-PoR-list address according to Bitquery; if that list corresponds to the 1 October 2026 XRP PoR set and the 185.0174855M XRP transfer depleted that reserve numerator, the conditional coverage falls to approximately 93.36% with a 165.798M XRP shortfall before offsets.",
+      "assessment": "STRONGER_CONDITIONAL_SCENARIO; DATE_AND_ASSET_MEMBERSHIP_UNVERIFIED",
+      "supporting_evidence": [
+        "Bitquery explicitly states rDAE53 is labeled Binance in the exchange's published PoR list.",
+        "Whale Alert and the prior Bithomp snapshot identify rDAE53 as sender of the 185.0174855M XRP incident transfer.",
+        "The Edge/Gate report 100.77% XRP reserve coverage and 2.496B XRP customer net balances on 1 October."
+      ],
+      "disconfirming_evidence": [
+        "Bitquery does not state the PoR list version or prove the address's XRP balance was in the 1 October XRP numerator.",
+        "Binance subsequently reported a $6.34B company backstop, approximately $3B frozen and token replenishment activity; offsets are excluded."
+      ],
+      "unknowns": [
+        "Exact published PoR list date/version used by Bitquery's label.",
+        "Whether rDAE53 was an XRP reserve address in the 1 October snapshot and its exact XRP balance then.",
+        "Exact post-incident reserve-address balances and customer liabilities."
+      ],
+      "confidence": "HIGH_FOR_ADDRESS_LABEL_AND_TRANSFER; LOW_FOR_ACTUAL_XRP_POR_IMPACT"
+    },
+    {
+      "hypothesis_id": "H-20261031T001930Z-02",
+      "claim": "The phrase 'ChatGPT SBIC' most plausibly points to Tokyo SBIC's 26 February 2025 generative-AI/ChatGPT seminar, but the user's original context is unavailable and this is not evidence of an OpenAI partnership.",
+      "assessment": "PLAUSIBLE_EVENT_IDENTIFICATION_NOT_PARTNERSHIP",
+      "supporting_evidence": [
+        "Tokyo SBIC's official PDF names the seminar 'The Present and Future of Generative AI (ChatGPT)' and lists the Microsoft speaker, co-host and supporters.",
+        "Japanese law defines three separate regional investment-development companies; Tokyo is one of them."
+      ],
+      "disconfirming_evidence": [
+        "The exact original phrase may refer to another event or the Social Bias Inference Corpus; no partnership statement appears in the seminar program."
+      ],
+      "unknowns": [
+        "The exact source/context in which the user encountered 'SBIC, ChatGPT SBIC'.",
+        "Whether another person or organization was intended."
+      ],
+      "confidence": "MEDIUM_FOR_EVENT_MATCH; HIGH_THAT_NO_PARTNERSHIP_IS_ESTABLISHED"
+    },
+    {
+      "hypothesis_id": "H-20261031T001930Z-03",
+      "claim": "A public film-industry professional named Camilla Stephenson is credited as a location manager, but the user's intended YouTube creator has not been identified and no channel can be safely attributed to her.",
+      "assessment": "IDENTITY_CANDIDATE_ONLY; YOUTUBE_CHANNEL_UNRESOLVED",
+      "supporting_evidence": [
+        "Film Edinburgh's official page for Burke and Hare reproduces a testimonial signed Camilla Stephenson, location manager."
+      ],
+      "disconfirming_evidence": [
+        "Exact-name YouTube searches did not return a verified channel; a separate Kamilah Stevenson channel is not identity evidence."
+      ],
+      "unknowns": [
+        "Whether the film-industry professional is the person the user means.",
+        "The intended channel URL and all videos posted by that channel."
+      ],
+      "confidence": "HIGH_FOR_FILM_CREDIT; LOW_FOR_USER_IDENTITY_MATCH"
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "limitation_ids": [
+    "LIM-20261031T001930Z-01",
+    "LIM-20261031T001930Z-02",
+    "LIM-20261031T001930Z-03",
+    "LIM-20261031T001930Z-04"
+  ],
+  "next_actions": [
+    "Retrieve the official Binance October 1 PoR address export and verify rDAE53's exact row, snapshot date and XRP balance; then crosswalk the other four incident source wallets.",
+    "Recompute the conditional ratio using exact XRP reserve balances and exact customer net liabilities, then incorporate verified replenishment/frozen/recovered assets without double counting.",
+    "Keep the 93.36% scenario out of forecasts and feature store until the address/asset/time crosswalk is verified."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "workflow_dispatches": 0,
+  "paper_state_mutations": 0,
+  "real_money_trades": 0
+}

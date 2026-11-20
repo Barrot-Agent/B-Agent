@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 51,
+  "chunk_count": 52,
+  "record_count": 13,
+  "created_at_utc": "2026-10-30T16:23:30Z",
+  "records": [
+    {
+      "id": "SRC-CIRCLE-ARC-MAINNET-20260916",
+      "evidence_class": "PRIMARY_CIRCLE_MAINNET_LAUNCH_ANNOUNCEMENT",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
+      "title": "Circle launches Arc mainnet; SBI Group founding validator, Coinbase/Binance exchange access partners",
+      "published_at": "2026-09-16",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "Circle says Arc public mainnet launched with USDC gas, sub-second deterministic finality, StableFX 24/7 cross-currency settlement and native Circle Payments Network integration. SBI Group is a founding validator. Coinbase, Binance and Upbit are listed separately as digital-asset exchange access partners, not founding validators. Circle says Arc is operated by a permissioned validator set and has not been reviewed or approved by NYDFS or another regulator. StableFX local stablecoins active/onboarding include JPYC but not JPYSC. Circle says 10B ARC tokens were genesis-minted but explicitly says this is not a commitment to public token launch; Proof-of-Stake transition is a 2027 roadmap."
+    },
+    {
+      "id": "SRC-SBI-XRP-TERM-DEPOSIT-COUPON-20260202",
+      "evidence_class": "PRIMARY_SBI_BANK_AND_EXCHANGE_RETAIL_PROMOTION",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0202_16075.html",
+      "title": "SBI Shinsei Bank and SBI VC Trade offer XRP coupons for yen term deposits",
+      "published_at": "2026-02-02",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "Campaign required at least JPY300,000 in a six-month yen term deposit and an entry; coupon value scaled by deposit, maximum JPY20,000 for deposits of JPY30M or more. Entry/deposit period ended 31 March 2026. XRP quantity was to be calculated at SBI VC Trade's 2 July 2026 sale price. No total redemptions, XRP acquisition source or open-market purchase amount disclosed."
+    },
+    {
+      "id": "SRC-SBI-XRP-SHAREHOLDER-COUPON-20260204",
+      "evidence_class": "PRIMARY_SBI_SHAREHOLDER_BENEFIT_ANNOUNCEMENT",
+      "url": "https://www.sbigroup.co.jp/news/2026/0204_16085.html",
+      "title": "SBI Holdings shareholder benefit includes optional XRP coupon",
+      "published_at": "2026-02-04",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "Eligible SBI Holdings shareholders could choose an XRP coupon redeemable through SBI VC Trade or a product bundle. The published lower-tier benefit is JPY2,000 equivalent for specified share-count/holding-period bands; eligibility is conditional. Total claims, XRP source and net market purchases are not disclosed."
+    },
+    {
+      "id": "SRC-SBI-VISA-CRYPTO-CARD-20260501",
+      "evidence_class": "PRIMARY_SBI_APLUS_VISA_CARD_ANNOUNCEMENT",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "title": "SBI VISA Crypto Card allows BTC, ETH or XRP rewards",
+      "published_at": "2026-05-01",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "SBI VC Trade, APLUS and Visa launched cards whose points are automatically exchanged monthly into one asset selected per card: BTC, ETH or XRP. Launch promotion offered up to 2.5% standard and 10% Gold campaign reward subject to caps and dates. No XRP reward distribution totals, card adoption or market-purchase sourcing disclosed."
+    },
+    {
+      "id": "SRC-SBI-VCTRADE-2M-ACCOUNTS-20260707",
+      "evidence_class": "PRIMARY_SBI_EXCHANGE_ACCOUNT_METRIC",
+      "url": "https://www.sbigroup.co.jp/news/2026/0707_16468.html",
+      "title": "SBI VC Trade reports two million registered accounts after BITPOINT merger",
+      "published_at": "2026-07-07",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "SBI VC Trade reports 2,000,000 registered service accounts as of 6 July 2026. The release says the BITPOINT Japan merger became effective 1 April 2026 and strengthened the service base. These are registered accounts, not monthly active users or XRP holders; brand integration was still planned for December 2026."
+    },
+    {
+      "id": "SRC-SBI-ARC-PRESALE-20260512",
+      "evidence_class": "PRIMARY_SBI_CIRCLE_ARC_TOKEN_PRESALE_ANNOUNCEMENT",
+      "url": "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+      "title": "SBI Holdings participates in Circle ARC token presale",
+      "published_at": "2026-05-12",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "SBI says a consolidated subsidiary participated in Circle's ARC token presale. Circle's investor consortium raised USD222M in total; SBI's own allocation is not disclosed. SBI describes this as an extension of its existing Circle relationship, including a USD50M Circle equity investment and SBI Circle Holdings JV. Presale participation is not evidence of public token launch or realized return."
+    },
+    {
+      "id": "SRC-SBI-USDC-MERCHANT-PILOT-20260430",
+      "evidence_class": "PRIMARY_SBI_APLUS_USDC_RETAIL_PAYMENT_PILOT",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0430_16290.html",
+      "title": "SBI VC Trade and APLUS announce five-day USDC QR payment pilot",
+      "published_at": "2026-04-30",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "Five-day USDC QR-code payment pilot ran 25–29 May 2026 at Unatoto Honmachi and designated areas of Bic Camera Namba. The announcement describes a proof of concept, not a production rollout. No transaction count, volume, merchant conversion rate or XRP use is disclosed."
+    },
+    {
+      "id": "SRC-COINBASE-RLUSD-3-CHAIN-LISTING-20261028",
+      "evidence_class": "PRIMARY_COINBASE_RLUSD_LISTING_ANNOUNCEMENT",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "title": "Coinbase adds RLUSD to Prime, Exchange and app with XRPL, Base and Ethereum transfers",
+      "published_at": "2026-10-28",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "Coinbase says supported customers can trade/manage RLUSD through Coinbase Prime, Coinbase Exchange and the Coinbase app, and deposit/withdraw RLUSD on XRP Ledger, Base and Ethereum. Coinbase Global Exchange collateral availability will follow later, so it is not live at launch. Ripple said it will provide liquidity on Base. This is RLUSD distribution and network access, not XRP spot buying."
+    },
+    {
+      "id": "SRC-BINANCE-CIRCLE-100M-AND-USDC-AGREEMENT-20260922",
+      "evidence_class": "PRIMARY_CIRCLE_BINANCE_EQUITY_AND_COMMERCIAL_AGREEMENT",
+      "url": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx",
+      "title": "Binance invests USD100M in Circle and renews five-year USDC commercial agreement",
+      "published_at": "2026-09-22",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "Circle says Binance made a USD100M strategic equity investment through private placement at a 5% discount to pre-close market price, with a transfer lock-up up to two years subject to exceptions. The companies entered a new five-year agreement to promote and integrate USDC globally, especially in emerging markets. Exact ownership percentage is not disclosed."
+    },
+    {
+      "id": "SRC-CIRCLE-USYC-BINANCE-OFFEXCHANGE-COLLATERAL-20250724",
+      "evidence_class": "PRIMARY_CIRCLE_BINANCE_INSTITUTIONAL_COLLATERAL_INTEGRATION",
+      "url": "https://investor.circle.com/news/news-details/2025/Circles-USYC-Now-Supported-as-Yield-Bearing-Off-Exchange-Collateral-for-Binances-Institutional-Clients/default.aspx",
+      "title": "Circle USYC supported as yield-bearing off-exchange collateral for Binance institutional derivatives",
+      "published_at": "2025-07-24",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "Circle announced USYC, a tokenized money-market fund, as off-exchange collateral for Binance institutional derivatives. USYC is held with supporting banks through Binance Banking Triparty or Ceffu; it is natively issued on BNB Chain and has near-instant fungibility with USDC. This confirms product integration/eligibility, not actual outstanding balances, customer utilization, haircuts or XRP substitution."
+    },
+    {
+      "id": "SRC-SBIC-EAST-JAPAN-PROFILE-20261030T162330Z",
+      "evidence_class": "PRIMARY_SBI_EAST_JAPAN_CORPORATE_IDENTITY",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "title": "SBIC East Japan legal identity and corporate profile",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "Official profile identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), corporate number 9011001030621, established 15 November 1963. Shareholder categories include local governments, chambers of commerce, financial institutions and operating companies. This is not SBI Holdings or SBI VC Trade; no SBI Group affiliation is established by this profile."
+    },
+    {
+      "id": "SRC-SBIC-CHATGPT-SEMINAR-20260305-20261030T162330Z",
+      "evidence_class": "PRIMARY_SBIC_CHATGPT_EDUCATIONAL_EVENT",
+      "url": "https://www.sbic.co.jp/seminar/20260305js/",
+      "title": "SBIC East Japan March 5, 2026 ChatGPT/generative-AI seminar",
+      "published_at": "2026-03-05",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "SBIC East Japan hosted a free seminar on generative AI/ChatGPT, co-hosted with Hamamatsu Iwata Shinkin, with a Microsoft Japan executive evangelist as speaker. This is an educational event; it does not establish an OpenAI partnership, SBI Holdings affiliation or XRP investment."
+    },
+    {
+      "id": "SRC-JPYSC-JGB-ALLOCATION-AMOUNT-CORRECTION-20261030T162330Z",
+      "evidence_class": "PRIMARY_SOURCE_TRANSLATION_AND_UNIT_CORRECTION",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "title": "Correction: JPYSC short-term JGB allocation is JPY1.0B, not JPY10B",
+      "published_at": "2026-09-07",
+      "accessed_at_utc": "2026-10-30T16:23:30Z",
+      "note": "Re-read of the official Japanese source: it says 10億円 (JPY1,000,000,000 = JPY1.0B), not JPY10B. The same source says JPYSC issuance ~201億円 = JPY20.1B and lending applications ~69億円 = JPY6.9B. The prior source-040 note incorrectly translated 10億 as JPY10B. This append-only correction supersedes the prior amount; the original record is preserved."
+    }
+  ]
+}

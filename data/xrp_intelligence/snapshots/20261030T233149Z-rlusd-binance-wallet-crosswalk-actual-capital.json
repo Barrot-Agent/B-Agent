@@ -1,0 +1,600 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261030T233149Z-RLUSD-BINANCE-WALLET-CROSSWALK",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T233149Z-rlusd-binance-wallet-crosswalk-actual-capital.json",
+  "created_at_utc": "2026-10-30T23:31:49Z",
+  "captured_at_utc": "2026-10-30T23:31:49Z",
+  "data_cutoff_utc": "2026-10-30T23:31:49Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261030T232113Z-bitquery-binance-por-labels-circle-freeze-aave-collateral.json",
+  "correction_of_snapshot_path": null,
+  "source_ids": [
+    "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z",
+    "SRC-BITHOMP-RDAE53-ACCOUNT-BALANCE-20261030T233149Z",
+    "SRC-BITHOMP-RBTTTD-ACCOUNT-BALANCE-20261030T233149Z",
+    "SRC-BITHOMP-RFQ9-ACCOUNT-BALANCE-20261030T233149Z",
+    "SRC-BITHOMP-RARG6-ACCOUNT-BALANCE-20261030T233149Z",
+    "SRC-BITHOMP-RNU4-ACCOUNT-BALANCE-20261030T233149Z",
+    "SRC-BITHOMP-RDAE53-TO-RS8Z-XRP-20261029T231220Z",
+    "SRC-BITHOMP-RDAE53-TO-RS8Z-RLUSD-20261030T012710Z",
+    "SRC-BITHOMP-RS8Z-ACCOUNT-BALANCE-20261030T233149Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+    "SRC-BITQUERY-BINANCE-POR-LABELS-CIRCLE-FREEZE-AAVE-20261030T232113Z",
+    "SRC-BITQUERY-BINANCE-HACK-XRP-TRACE-20261030"
+  ],
+  "source_reference_count": 12,
+  "missing_source_references": 0,
+  "findings": [
+    {
+      "finding_id": "F-20261030T233149Z-01",
+      "classification": "ONCHAIN_PAYMENT_COUNT_COMPOSITION",
+      "statement": "Bitquery counts 7,821,066 account-to-account RLUSD payments from 19 September to 18 October; 7,789,341 (99.6%) went from a 110-wallet cluster to three collectors and carried only 7,722 RLUSD in total. The cluster is inferred from shared funding and receivers, not identified beneficial owners.",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "disconfirming_evidence": "The remaining 14,600 payments of at least 1 RLUSD moved $7.33B gross; the high-value flow is materially different from the dust cluster."
+    },
+    {
+      "finding_id": "F-20261030T233149Z-02",
+      "classification": "CROSS_INVESTIGATION_EXACT_ADDRESS_MATCH",
+      "statement": "The exact address rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr is identified by Bitquery as the RLUSD cluster's Binance-labelled funding wallet and by Bithomp as the source of 185,017,485.5 XRP sent to the incident receiver at 20:05 UTC on 29 October. This is an address match, not a common-actor finding.",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+        "SRC-BITQUERY-BINANCE-POR-LABELS-CIRCLE-FREEZE-AAVE-20261030T232113Z",
+        "SRC-BITQUERY-BINANCE-HACK-XRP-TRACE-20261030"
+      ],
+      "disconfirming_evidence": "Bitquery says the bot pattern fits one Binance customer rather than Binance itself; an exchange omnibus wallet can serve unrelated customers. The bot cluster shut down 13–15 days before the incident."
+    },
+    {
+      "finding_id": "F-20261030T233149Z-03",
+      "classification": "POST_INCIDENT_BINANCE_LABELLED_WALLET_TRANSFERS",
+      "statement": "After the 185M XRP transfer, rDAE53 sent 11,141,435.843 XRP to Bithomp-labelled Binance account rs8Z at 23:12:20 UTC on 29 October, then 51,172,508 RLUSD to the same destination at 01:27:10 UTC on 30 October. These are confirmed successful payments between explorer-labelled accounts; they do not establish replenishment or recovery.",
+      "source_ids": [
+        "SRC-BITHOMP-RDAE53-TO-RS8Z-XRP-20261029T231220Z",
+        "SRC-BITHOMP-RDAE53-TO-RS8Z-RLUSD-20261030T012710Z",
+        "SRC-BITHOMP-RS8Z-ACCOUNT-BALANCE-20261030T233149Z"
+      ],
+      "disconfirming_evidence": "No official Binance statement or raw PoR export identifies the destination as a reserve-replenishment account; account labels do not prove beneficial ownership."
+    },
+    {
+      "finding_id": "F-20261030T233149Z-04",
+      "classification": "EXPLORER_BALANCE_SNAPSHOT_WITH_DISPLAY_DISCREPANCY",
+      "statement": "At retrieval, Bithomp page bodies displayed 11.59 XRP for rDAE53 and 8.60 XRP for each of the four other incident source accounts, a body-derived aggregate of 45.99 XRP. The page title summaries display 12.99 and 10.00 XRP respectively, a 7 XRP aggregate discrepancy. Raw account_info is still required.",
+      "source_ids": [
+        "SRC-BITHOMP-RDAE53-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RBTTTD-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RFQ9-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RARG6-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RNU4-ACCOUNT-BALANCE-20261030T233149Z"
+      ],
+      "disconfirming_evidence": "Bithomp title/body values conflict; no second explorer or raw validated account_info result was obtained."
+    },
+    {
+      "finding_id": "F-20261030T233149Z-05",
+      "classification": "GROSS_RLUSD_VOLUME_DECOMPOSITION",
+      "statement": "The $7.33B of RLUSD payments of at least 1 RLUSD includes $728M issuer-to-mint-wallet and $744M redemption-to-issuer flows, plus a separate $424M each-way wallet roundtrip. Those $2.32B gross components are approximately 31.65% of reported gross volume and are not net new external capital.",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "disconfirming_evidence": "Other large transfers may represent genuine settlement or rebalancing; beneficial owners and economic purpose of most addresses remain unknown."
+    },
+    {
+      "finding_id": "F-20261030T233149Z-06",
+      "classification": "HIGH_VALUE_RLUSD_FLOW_CONCENTRATION",
+      "statement": "After dust removal, Bitquery reports 14,600 payments, 1,826 senders and 1,536 receivers, $7.33B gross value and a 150 RLUSD median. Ten senders moved $6.05B (about 82.5%); 828 payments of at least $1M moved $6.98B (about 95.2%).",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "disconfirming_evidence": "Public transfers do not reveal beneficial ownership, net external capital or final economic settlement; exchange/custody omnibus behavior and issuer plumbing are included."
+    },
+    {
+      "finding_id": "F-20261030T233149Z-07",
+      "classification": "TEMPORAL_ASSOCIATION_NOT_CAUSATION",
+      "statement": "The bot cluster began shutting down at 17:00 UTC on 14 October; the first collector's last payment was 03:44 UTC on 15 October and the second collector dropped sharply at 03:00 UTC on 16 October. Cross River announced its RLUSD integration on 15 October. Bitquery found no ledger event explaining the shutdown.",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "disconfirming_evidence": "No transaction fee spike or ledger amendment explains the timing; coincidence or an off-chain decision remain plausible."
+    },
+    {
+      "finding_id": "F-20261030T233149Z-08",
+      "classification": "XRP_FEE_COST_NOT_XRP_MARKET_DEMAND",
+      "statement": "Bitquery estimates 495 XRP in fees for 8,602,917 transactions, about $648 at its 19 October valuation price of $1.31. This is a network-usage cost, not evidence of material XRP acquisition or price demand.",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "disconfirming_evidence": "Fees are a real XRP-denominated network cost, but the amount is tiny relative to market turnover and the 233.46M XRP incident transfer."
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261030T233149Z-01",
+      "asset": "RLUSD",
+      "metric": "xrpl_account_to_account_payments_30d",
+      "value": 7821066,
+      "unit": "payments",
+      "as_of_utc": "2026-10-18T13:00:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "BITQUERY_ONCHAIN_ANALYTICS",
+      "admission_status": "NOT_ADMITTED_AS_ADOPTION_FEATURE",
+      "notes": "Bitquery window 19 September–18 October; only successful Payment transactions between different accounts delivering RLUSD."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-02",
+      "asset": "RLUSD",
+      "metric": "110_wallet_cluster_payments_to_three_collectors",
+      "value": {
+        "payments": 7789341,
+        "share_percent": 99.6,
+        "cluster_wallets": 110,
+        "collector_wallets": 3,
+        "rlusd_total": 7722,
+        "average_rlusd_per_payment": 0.00099
+      },
+      "unit": "payments_and_RLUSD",
+      "as_of_utc": "2026-10-18T13:00:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "BITQUERY_CLUSTER_INFERENCE",
+      "admission_status": "NOT_ADMITTED_AS_ORGANIC_ADOPTION_OR_XRP_DEMAND",
+      "notes": "The 110-wallet cluster is inferred from shared funding and collectors; 99.6% is payment count, not value."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-03",
+      "asset": "RLUSD/XRP",
+      "metric": "bot_cluster_funding_from_binance_labelled_wallets",
+      "value": {
+        "rlusd_from_rDAE53": 13341,
+        "rlusd_funding_payments": 1431,
+        "rlusd_funded_wallets": 109,
+        "xrp_from_six_binance_labelled_wallets": 5419,
+        "xrp_funding_payments": 810
+      },
+      "unit": "RLUSD_XRP_and_payments",
+      "as_of_utc": "2026-10-18T13:00:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "BITQUERY_ADDRESS_LABEL_AND_FLOW_ANALYSIS",
+      "admission_status": "NOT_ADMITTED_AS_CAPITAL_FLOW",
+      "notes": "Bitquery's detailed table says 109 wallets received RLUSD from rDAE53 although the inferred cluster contains 110."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-04",
+      "asset": "XRPL",
+      "metric": "cluster_share_of_all_account_to_account_payments_8_to_14_october",
+      "value": {
+        "cluster_payments": 1580084,
+        "total_payments": 3467989,
+        "share_percent": 45.6
+      },
+      "unit": "payments_and_percent",
+      "as_of_utc": "2026-10-14T23:59:59Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "BITQUERY_ONCHAIN_ACTIVITY_ANALYSIS",
+      "admission_status": "NOT_ADMITTED_AS_ORGANIC_NETWORK_GROWTH",
+      "notes": "Includes all account-to-account payments in any currency; collector cluster represented 45.6% during the stated week."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-05",
+      "asset": "XRP",
+      "metric": "cluster_xrp_transaction_fees",
+      "value": {
+        "fees_xrp": 495,
+        "transactions": 8602917,
+        "usd_at_bitquery_valuation": 648,
+        "xrp_usd_reference": 1.31
+      },
+      "unit": "XRP_transactions_USD",
+      "as_of_utc": "2026-10-19T13:00:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "BITQUERY_FEE_ANALYSIS",
+      "admission_status": "NOT_ADMITTED_AS_PRICE_DEMAND_FEATURE",
+      "notes": "Fee cost is real network usage but not evidence of material spot acquisition."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-06",
+      "asset": "RLUSD",
+      "metric": "genuine_issuer_payments_ge_1_RLUSD",
+      "value": {
+        "payments": 14600,
+        "senders": 1826,
+        "receivers": 1536,
+        "gross_value_usd": 7330000000,
+        "median_payment_rlusd": 150
+      },
+      "unit": "payments_USD",
+      "as_of_utc": "2026-10-18T13:00:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "BITQUERY_ISSUER_VERIFIED_GROSS_TRANSFER_ANALYSIS",
+      "admission_status": "NOT_ADMITTED_AS_NET_CAPITAL_OR_SETTLEMENT",
+      "notes": "Bitquery checked the issuer address; it reports 30 look-alike-token payments worth $38.6M separately and excludes them from the genuine-issuer total."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-07",
+      "asset": "RLUSD",
+      "metric": "payments_ge_1M_usd",
+      "value": {
+        "payments": 828,
+        "gross_value_usd": 6980000000,
+        "share_of_gross_percent": 95.2
+      },
+      "unit": "payments_USD_percent",
+      "as_of_utc": "2026-10-18T13:00:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "BITQUERY_GROSS_TRANSFER_ANALYSIS",
+      "admission_status": "NOT_ADMITTED_AS_NET_CAPITAL",
+      "notes": "High-value payments dominate gross transfer value despite being a small fraction of payment count."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-08",
+      "asset": "RLUSD",
+      "metric": "top_ten_sender_concentration",
+      "value": {
+        "top_ten_gross_value_usd": 6050000000,
+        "share_percent": 82.5
+      },
+      "unit": "USD_percent",
+      "as_of_utc": "2026-10-18T13:00:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "BITQUERY_ADDRESS_CONCENTRATION_ANALYSIS",
+      "admission_status": "NOT_ADMITTED_AS_NET_CAPITAL",
+      "notes": "Ten largest senders account for about 82% of gross high-value RLUSD transfers."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-09",
+      "asset": "RLUSD",
+      "metric": "issuer_mint_and_redemption_gross_flows",
+      "value": {
+        "issuer_to_mint_wallet_usd": 728000000,
+        "issuer_payments": 97,
+        "redemption_wallet_to_issuer_usd": 744000000,
+        "redemption_payments": 68,
+        "total_gross_usd": 1472000000,
+        "share_of_7_33B_percent": 20.1
+      },
+      "unit": "USD_payments_percent",
+      "as_of_utc": "2026-10-18T13:00:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "BITQUERY_ISSUER_PLUMBING_ANALYSIS",
+      "admission_status": "EXCLUDED_FROM_NET_EXTERNAL_CAPITAL",
+      "notes": "Issuer minting and redemption plumbing is part of gross ledger transfer value and must be isolated."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-10",
+      "asset": "RLUSD",
+      "metric": "matched_two_wallet_roundtrip",
+      "value": {
+        "outbound_usd": 424000000,
+        "return_usd": 424000000,
+        "gross_usd": 848000000,
+        "share_of_7_33B_percent": 11.6
+      },
+      "unit": "USD",
+      "as_of_utc": "2026-10-18T13:00:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "BITQUERY_MATCHED_ROUNDTRIP_ANALYSIS",
+      "admission_status": "EXCLUDED_FROM_NET_EXTERNAL_CAPITAL",
+      "notes": "One wallet received $424M and returned every dollar in the same number of tagged payments; the pair had no other counterparty."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-11",
+      "asset": "RLUSD",
+      "metric": "issuer_plumbing_plus_documented_roundtrip_gross_share",
+      "value": {
+        "gross_components_usd": 2320000000,
+        "total_gross_usd": 7330000000,
+        "share_percent": 31.65
+      },
+      "unit": "USD_percent",
+      "as_of_utc": "2026-10-18T13:00:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "DERIVED_GROSS_VOLUME_DECOMPOSITION",
+      "admission_status": "NOT_ADMITTED_AS_NET_CAPITAL",
+      "notes": "Derived from issuer mint/redeem gross ($1.472B) plus matched roundtrip gross ($848M); other flows remain unclassified."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-12",
+      "asset": "XRP",
+      "metric": "incident_transfer_from_rDAE53_to_receiver",
+      "value": {
+        "xrp": 185017485.5,
+        "from": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+        "to": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "tx_hash": "78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A",
+        "ledger_index": 107986693
+      },
+      "unit": "XRP",
+      "as_of_utc": "2026-10-29T20:05:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+        "SRC-BITQUERY-BINANCE-POR-LABELS-CIRCLE-FREEZE-AAVE-20261030T232113Z",
+        "SRC-BITQUERY-BINANCE-HACK-XRP-TRACE-20261030"
+      ],
+      "classification": "CONFIRMED_VALIDATED_XRPL_PAYMENT_AND_PROVIDER_TRACE",
+      "admission_status": "NOT_ADMITTED_AS_SELLING_PRESSURE",
+      "notes": "This is the same rDAE53 address that Bitquery identifies as RLUSD bot-cluster funding wallet; exact address match does not establish common operator."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-13",
+      "asset": "XRP",
+      "metric": "post_incident_transfer_rDAE53_to_rs8Z",
+      "value": {
+        "xrp": 11141435.843,
+        "from": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+        "to": "rs8ZPbYqgecRcDzQpJYAMhSxSi5htsjnza",
+        "tx_hash": "A3385338DABFD08E63B5718566FF0E6E5A352876166B421E0450B68729BB6410",
+        "ledger_index": 107989480
+      },
+      "unit": "XRP",
+      "as_of_utc": "2026-10-29T23:12:20Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITHOMP-RDAE53-TO-RS8Z-XRP-20261029T231220Z",
+        "SRC-BITHOMP-RS8Z-ACCOUNT-BALANCE-20261030T233149Z"
+      ],
+      "classification": "CONFIRMED_VALIDATED_XRPL_PAYMENT_EXPLORER_LABELLED_BINANCE_TO_BINANCE",
+      "admission_status": "NOT_ADMITTED_AS_REPLENISHMENT_OR_NET_CAPITAL",
+      "notes": "Occurred after the 185M XRP transfer; both endpoints are Bithomp-labelled Binance. It demonstrates later account activity, not an official recovery or replenishment."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-14",
+      "asset": "RLUSD",
+      "metric": "post_incident_transfer_rDAE53_to_rs8Z",
+      "value": {
+        "rlusd": 51172508,
+        "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+        "from": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+        "to": "rs8ZPbYqgecRcDzQpJYAMhSxSi5htsjnza",
+        "tx_hash": "0B9D3AF460BA9C5EA84D75F369854D90C57A441752C3608AB78208A39B1683B7",
+        "ledger_index": 107991454
+      },
+      "unit": "RLUSD",
+      "as_of_utc": "2026-10-30T01:27:10Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITHOMP-RDAE53-TO-RS8Z-RLUSD-20261030T012710Z",
+        "SRC-BITHOMP-RS8Z-ACCOUNT-BALANCE-20261030T233149Z"
+      ],
+      "classification": "CONFIRMED_VALIDATED_XRPL_PAYMENT_EXPLORER_LABELLED_BINANCE_TO_BINANCE",
+      "admission_status": "NOT_ADMITTED_AS_XRP_DEMAND_OR_NET_CAPITAL",
+      "notes": "Ripple is the RLUSD issuer; the sender is rDAE53. This is not an XRP transfer and does not prove collateral or reserve replenishment."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-15",
+      "asset": "XRP",
+      "metric": "five_source_wallet_displayed_residual_balances",
+      "value": {
+        "rDAE53_body_xrp": 11.59,
+        "other_four_body_xrp_each": 8.6,
+        "body_sum_xrp": 45.99,
+        "title_summary_values_xrp": [
+          12.99,
+          10,
+          10,
+          10,
+          10
+        ],
+        "title_summary_sum_xrp": 52.99,
+        "title_body_difference_xrp": 7
+      },
+      "unit": "XRP",
+      "as_of_utc": "2026-10-30T23:31:49Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITHOMP-RDAE53-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RBTTTD-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RFQ9-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RARG6-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RNU4-ACCOUNT-BALANCE-20261030T233149Z"
+      ],
+      "classification": "BITHOMP_DYNAMIC_ACCOUNT_PAGE_SNAPSHOT_WITH_INTERNAL_DISPLAY_DISCREPANCY",
+      "admission_status": "NOT_ADMITTED_PENDING_RAW_ACCOUNT_INFO",
+      "notes": "The body-derived 45.99 XRP total matches the earlier captured estimate, but the page title summaries are 7 XRP higher in aggregate. No raw validated account_info was obtained."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-16",
+      "asset": "XRP",
+      "metric": "rs8Z_binance_labelled_destination_account_display",
+      "value": {
+        "body_xrp_approx": 1600000000,
+        "total_worth_usd_approx": 2000000000,
+        "page_title_xrp_rounded": 2000000000
+      },
+      "unit": "XRP_USD_approximate",
+      "as_of_utc": "2026-10-30T23:31:49Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITHOMP-RS8Z-ACCOUNT-BALANCE-20261030T233149Z"
+      ],
+      "classification": "BITHOMP_DYNAMIC_ACCOUNT_PAGE_SNAPSHOT",
+      "admission_status": "NOT_ADMITTED_AS_OFFICIAL_POR_OR_COLLATERAL",
+      "notes": "Destination page is Bithomp-labelled Binance; body shows about 1.6B XRP and $2.0B total worth, while title rounds to 2B XRP."
+    },
+    {
+      "observation_id": "OBS-20261030T233149Z-17",
+      "asset": "RLUSD/XRPL",
+      "metric": "bot_cluster_shutdown_and_cross_river_announcement_timing",
+      "value": {
+        "first_collector_inflow_drop_utc": "2026-10-14T17:00:00Z",
+        "first_collector_last_payment_utc": "2026-10-15T03:44:00Z",
+        "second_collector_drop_utc": "2026-10-16T03:00:00Z",
+        "cross_river_announcement_date": "2026-10-15",
+        "ledger_cause_found": false
+      },
+      "unit": "event_timeline",
+      "as_of_utc": "2026-10-16T03:00:00Z",
+      "retrieved_at_utc": "2026-10-30T23:31:49Z",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z"
+      ],
+      "classification": "TEMPORAL_ASSOCIATION_ONLY",
+      "admission_status": "NOT_ADMITTED_AS_CAUSAL_FEATURE",
+      "notes": "Bitquery explicitly says the ledger does not explain the shutdown; timing is not evidence of causation."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261030T233149Z-01",
+      "claim": "The headline RLUSD payment count materially overstates organic XRPL adoption during 19 September–18 October because 99.6% of the counted payments were attributed to a 110-wallet dust cluster.",
+      "assessment": "HIGH_CONFIDENCE_FOR_COUNT_COMPOSITION; NOT_A_BROAD_ADOPTION_VERDICT",
+      "supporting_evidence": [
+        "7,789,341 of 7,821,066 payments went to three collectors and carried only 7,722 RLUSD.",
+        "The cluster was funded from Binance-labelled wallets and paid 495 XRP in fees for 8.6M transactions."
+      ],
+      "disconfirming_evidence": [
+        "14,600 payments of at least 1 RLUSD moved $7.33B gross.",
+        "1,826 senders and 1,536 receivers appear in the high-value sample."
+      ],
+      "unknowns": [
+        "Beneficial owners of high-value senders and receivers.",
+        "Economic purpose and net external settlement of the $7.33B gross flows."
+      ],
+      "confidence": "HIGH_FOR_COUNT_COMPOSITION; MEDIUM_FOR_ADOPTION_INTERPRETATION"
+    },
+    {
+      "hypothesis_id": "H-20261030T233149Z-02",
+      "claim": "Gross RLUSD transfer value overstates net new capital because issuer mint/redemption plumbing and a matched two-wallet roundtrip contribute approximately $2.32B (31.65%) of the $7.33B gross total.",
+      "assessment": "SUPPORTED_DECOMPOSITION; NET_EXTERNAL_CAPITAL_UNKNOWN",
+      "supporting_evidence": [
+        "Issuer mint/redemption flows total approximately $1.472B gross.",
+        "A wallet pair passed $424M each way, adding $848M gross without an external payee."
+      ],
+      "disconfirming_evidence": [
+        "The remaining transfers may represent real settlement, exchange/custody movements or rebalancing; beneficial owners are unknown."
+      ],
+      "unknowns": [
+        "Net flows among independent beneficial owners.",
+        "How much of the remaining $5.01B represents economic settlement versus omnibus/custody movement."
+      ],
+      "confidence": "HIGH_FOR_IDENTIFIED_COMPONENTS; LOW_FOR_NET_CAPITAL"
+    },
+    {
+      "hypothesis_id": "H-20261030T233149Z-03",
+      "claim": "The shared rDAE53 address connects the RLUSD bot-funding analysis to one of the five XRP incident source wallets, but does not connect the bot operator to the theft actor.",
+      "assessment": "EXACT_ADDRESS_MATCH; COMMON_OPERATOR_NOT_ESTABLISHED",
+      "supporting_evidence": [
+        "Bitquery identifies rDAE53 as the RLUSD funding source for 109 bot wallets.",
+        "Bithomp records 185,017,485.5 XRP from the same address to the incident receiver at 20:05 UTC on 29 October."
+      ],
+      "disconfirming_evidence": [
+        "Bitquery says the pattern fits one Binance customer rather than Binance itself.",
+        "The cluster shutdown was 13–15 days before the XRP incident.",
+        "An exchange omnibus wallet can serve unrelated customers."
+      ],
+      "unknowns": [
+        "Beneficial owner of the bot cluster.",
+        "Whether any operational account or customer links the cluster to the incident actor."
+      ],
+      "confidence": "HIGH_FOR_ADDRESS_MATCH; LOW_FOR_ANY_ACTOR_LINK"
+    },
+    {
+      "hypothesis_id": "H-20261030T233149Z-04",
+      "claim": "Post-incident XRP and RLUSD transfers from rDAE53 to another Binance-labelled account indicate that the source account continued to make successful payments after the 185M XRP transfer.",
+      "assessment": "POST_INCIDENT_ACCOUNT_ACTIVITY_CONFIRMED; CONTROL_AND_RECOVERY_UNKNOWN",
+      "supporting_evidence": [
+        "11,141,435.843 XRP moved to rs8Z at 23:12:20 UTC on 29 October.",
+        "51,172,508 RLUSD moved to rs8Z at 01:27:10 UTC on 30 October."
+      ],
+      "disconfirming_evidence": [
+        "These could be routine sweeps or rebalancing; labels do not prove ownership or who controlled signing at each moment."
+      ],
+      "unknowns": [
+        "Whether access was continuously retained or recovered.",
+        "Whether any post-incident movement represented reserve replenishment."
+      ],
+      "confidence": "HIGH_FOR_TRANSACTION_FACTS; LOW_FOR_CONTROL_INTERPRETATION"
+    },
+    {
+      "hypothesis_id": "H-20261030T233149Z-05",
+      "claim": "The Cross River RLUSD integration announcement caused the 110-wallet bot cluster to shut down.",
+      "assessment": "NOT_ESTABLISHED; TEMPORAL_ASSOCIATION_ONLY",
+      "supporting_evidence": [
+        "The first collector's inflow fell on 14 October and its last payment was early 15 October; Cross River announced on 15 October; the second collector fell sharply on 16 October."
+      ],
+      "disconfirming_evidence": [
+        "Bitquery found no fee spike, ledger amendment or other ledger event explaining the shutdown and explicitly says timing alone cannot identify a cause."
+      ],
+      "unknowns": [
+        "Off-chain decision, operator intent, or unrelated operational cause."
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "hypothesis_id": "H-20261030T233149Z-06",
+      "claim": "Binance itself operated the 110-wallet RLUSD bot cluster.",
+      "assessment": "DISFAVORED_BY_AVAILABLE_SOURCE_EVIDENCE; OPERATOR_UNKNOWN",
+      "supporting_evidence": [
+        "The wallets were funded through Binance-labelled exchange wallets."
+      ],
+      "disconfirming_evidence": [
+        "Bitquery explicitly states the flow pattern fits one Binance customer rather than Binance itself.",
+        "No direct Binance operation, instruction or beneficial-owner evidence is presented."
+      ],
+      "unknowns": [
+        "Identity of the customer or operator."
+      ],
+      "confidence": "LOW; NOT_ATTRIBUTED"
+    }
+  ],
+  "limitation_ids": [
+    "LIM-20261030T233149Z-01",
+    "LIM-20261030T233149Z-02",
+    "LIM-20261030T233149Z-03",
+    "LIM-20261030T233149Z-04",
+    "LIM-20261030T233149Z-05",
+    "LIM-20261030T233149Z-06",
+    "LIM-20261030T233149Z-07",
+    "LIM-20261030T233149Z-08",
+    "LIM-20261030T233149Z-09",
+    "LIM-20261030T233149Z-10",
+    "LIM-20261030T233149Z-11"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Obtain raw validated XRPL account_info for all five Binance-labelled source accounts and reconcile the Bithomp title/body discrepancy.",
+    "Refresh the attacker receiver and its complete post-06:43 UTC transaction history; preserve exact ledger indexes and timestamps.",
+    "Crosswalk rDAE53, the other four source accounts and rs8Z against the official Binance October 1 PoR address export; do not substitute explorer labels.",
+    "Trace the RLUSD collector-to-deposit-account loop and separate gross transfer value, issuer mint/redemption, matched roundtrips, exchange/custody omnibus flows and net external settlement.",
+    "Keep the bot cluster as an anomaly label; do not use raw RLUSD payment count as organic adoption or XRP demand.",
+    "Continue fixed-horizon XRP feature-store work only after synchronized venue, ETF, funding, OI, liquidity and event data pass quality checks."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "workflow_dispatches": 0,
+  "paper_state_mutations": 0,
+  "real_money_trades": 0
+}

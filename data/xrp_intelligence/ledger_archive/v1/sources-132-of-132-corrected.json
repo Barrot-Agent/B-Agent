@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 131,
+  "chunk_count": 132,
+  "record_count": 7,
+  "records": [
+    {
+      "id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "retrieved_at_utc": "2026-10-31T21:02:44Z",
+      "claims": [
+        "At XRP Ledger #108029266 closed 2026-10-31 19:06 UTC, two Ripple-owned escrow objects totaling 1,000,000,000 XRP have FinishAfter 2026-11-01T00:00:00Z.",
+        "The page reports 31.4B XRP in 98 Ripple-owned escrow objects across 8 accounts and 32 scheduled unlocks remaining.",
+        "For the preceding 12 monthly releases, 12B XRP was released and 8.4B XRP re-escrowed (70%); net 3.6B XRP outside escrow.",
+        "The page reports a median 11-second delay from eligibility to EscrowFinish and a maximum observed delay of 2.3 days."
+      ],
+      "limitations": [
+        "The underlying ledger observation is 19:06 UTC, earlier than this research cutoff.",
+        "FinishAfter eligibility does not prove EscrowFinish, destination receipt, exchange deposit or sale.",
+        "The 70% pattern is a 12-cycle historical sample, not a forecast or protocol rule."
+      ]
+    },
+    {
+      "id": "SRC-20261031T210244Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "retrieved_at_utc": "2026-10-31T21:02:44Z",
+      "publication_time_utc": "2026-10-31T08:00:00Z",
+      "claims": [
+        "The 08:00 UTC snapshot attributes 22.48B XRP to 701 wallets across 24 exchanges; cold storage is included.",
+        "Same-wallet aggregate change is -133.0M XRP over 7 days and -12.3M XRP over 30 days.",
+        "Binance is attributed 2.78B XRP across 153 wallets, including 327.4M Binance-Peg reserve and 7.8M Binance US; same-wallet changes are +17.6M over 7 days and +30.3M over 30 days.",
+        "Coinbase is attributed 5.85B XRP across 358 wallets, including 150.2M cbXRP reserve; same-wallet changes are +17.7M over 7 days and +18.4M over 30 days.",
+        "Upbit is attributed 6.43B XRP; SBI VC Trade is attributed 59.5M XRP across 2 wallets, labelled greater than 99% cold, with -899K over 7 days and -10.5M over 30 days.",
+        "The provider's same-wallet daily table shows -207.3M on October 30 and +105.9M on October 31."
+      ],
+      "limitations": [
+        "Wallet labels and exchange groupings are provider-maintained, not exchange attestations or customer-liability data.",
+        "Balances include cold storage, wrapped/operational reserves, charity and affiliate wallets; not tradable float or beneficial ownership.",
+        "Same-wallet changes cannot distinguish customer withdrawals, internal migrations or transfers to newly labelled/untracked wallets.",
+        "Binance's positive same-wallet 7-day series is not directly comparable to CryptoQuant's narrower reserve series."
+      ]
+    },
+    {
+      "id": "SRC-20261031T210244Z-XRP-INSIGHTS-ETF-FLOWS",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/",
+      "retrieved_at_utc": "2026-10-31T21:02:44Z",
+      "publication_time_utc": "2026-10-31",
+      "claims": [
+        "For October 26-30, tracked US spot XRP ETFs plus BITW show +3.39M XRP net holdings-derived flow, approximately $4.03M.",
+        "Combined tracked ETF holdings are approximately 1.1966B XRP with $1.51B net assets at October 30 close.",
+        "October 30 daily holdings-derived flow is -49,932 XRP, approximately -$62.4K.",
+        "GXRP is excluded from flow totals while holdings remain included because of a data gap."
+      ],
+      "limitations": [
+        "Flow is calculated from changes in issuer-reported holdings, not gross spot execution or independently observed cash subscriptions.",
+        "GXRP exclusion and reporting timing affect the aggregate.",
+        "ETF holdings-derived flow is not directly linkable to exchange-wallet movements without transfer-level evidence."
+      ]
+    },
+    {
+      "id": "SRC-20261031T210244Z-TRADRADAR-XRP",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "retrieved_at_utc": "2026-10-31T21:02:44Z",
+      "publication_time_utc": "2026-10-31T20:10:00Z",
+      "claims": [
+        "At 20:10 UTC, XRP mark price was $1.253 (+0.38% over 24 hours).",
+        "Open interest across 7 exchanges was $1.87B, up 0.48% over 24 hours.",
+        "OI-weighted funding was +0.0048% per 8 hours.",
+        "Reported 24-hour liquidations were at least $353.25K: $130.62K longs and $222.63K shorts.",
+        "Long/short account ratio across 4 exchanges was 3.04, or 75.2% long accounts.",
+        "Bybit funding was -0.0081% and OKX -0.0023%, while Binance, MEXC, Bitget and Hyperliquid were +0.0100%."
+      ],
+      "limitations": [
+        "Provider aggregates seven exchanges for OI, five for liquidations and four for account ratios.",
+        "Liquidation data are a lower bound; account share is not notional exposure.",
+        "Provider methodology and contract universes are not independently reconciled."
+      ]
+    },
+    {
+      "id": "SRC-20261031T210244Z-BINANCE-RECOVERY-UPDATE3",
+      "publisher": "Binance",
+      "url": "https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-3-90-of-stolen-assets-replenished-proof-of-reserves-snapshot-provided-2026-10-31-1fdf1f61559c401da0435895ffcccb62",
+      "retrieved_at_utc": "2026-10-31T21:02:44Z",
+      "publication_time_utc": "2026-10-31T14:24:00Z",
+      "claims": [
+        "Binance says aggregate incident asset coverage/replenishment rose from approximately 80% to 90%.",
+        "Binance lists BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC as fully backed at 100%.",
+        "Binance says the 2026-10-31 00:00 UTC Proof of Reserves snapshot was updated; the full zero-knowledge proof is estimated by 2026-11-03 UTC.",
+        "Binance says replenishment uses partial SAFU deployment, a portion of the Futures Insurance Fund and corporate treasury.",
+        "The remaining approximately 10% consists of less-liquid tokens outside the named top ten; Binance says it will continue market and OTC acquisitions.",
+        "Binance says withdrawals are targeted to resume on Sunday 2026-11-01."
+      ],
+      "limitations": [
+        "100% XRP backing is a company claim pending the complete zero-knowledge proof and independent address/liability reconciliation.",
+        "90% aggregate incident coverage is not an XRP-specific purchase quantity or capital-flow figure.",
+        "Token-specific XRP replenishment quantity, venue, timing and funding-source split are undisclosed.",
+        "The full proof is estimated for November 3, not independently verified."
+      ]
+    },
+    {
+      "id": "SRC-20261031T210244Z-RIPPLE-COINBASE-RLUSD",
+      "publisher": "Ripple",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "retrieved_at_utc": "2026-10-31T21:02:44Z",
+      "publication_time_utc": "2026-10-28",
+      "claims": [
+        "Ripple and Coinbase announced RLUSD distribution on Coinbase Prime, Coinbase Exchange and Coinbase Retail, with support across XRPL, Base and Ethereum.",
+        "Ripple says retail and institutional users can trade/manage RLUSD with 1:1 conversion from USD and supported USD-denominated stablecoins.",
+        "Ripple says RLUSD collateral availability for Coinbase Global Exchange customers will follow later; it was not described as live at announcement.",
+        "Ripple says it will provide liquidity for RLUSD growth on Base."
+      ],
+      "limitations": [
+        "Company announcement; independent product-use volumes and chain-specific settlement volumes were not provided.",
+        "RLUSD distribution is not evidence of native XRP purchases or XRP collateral deployment.",
+        "Global Exchange collateral support was future/planned at announcement."
+      ]
+    },
+    {
+      "id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "publisher": "GitHub repository observation",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-10-31T21:02:44Z",
+      "claims": [
+        "Default branch main was c4d24176169ea1307b0eada82a6cbc62ca96e029 and marked protected=true; full branch-protection details returned 403.",
+        "Main Cross Analysis workflow declares contents:write, hourly schedule at minute 50, workflow_run after Knowledge Signal Cycle and workflow_dispatch; it commits and pushes three generated outputs.",
+        "Cross Analysis run 41240863905 succeeded at 2026-10-31T20:51:40Z and created commit c4d24176169ea1307b0eada82a6cbc62ca96e029 at 20:51:46Z; commit comparison shows only sentiment_shift.json changed by one line added and one deleted.",
+        "The committed sentiment_shift.json contains null scores and zero recent/prior entries for both XRP and BTC; the only change is generated_at timestamp.",
+        "Pages deployment run 41240873472 succeeded.",
+        "Open PR inventory: 201 total, 191 drafts, 10 ready; 199 target main, of which 198 have a base SHA older than current main and one is current-base PR #1429.",
+        "PR #1429 is draft/open on current main, head d83f82438621308d7173770bb2539a179f25db7; CI run 41241608596 passed 345 tests plus 8 subtests; fail-closed gate 41241608616 passed with merging disabled."
+      ],
+      "limitations": [
+        "This repository observation is time-bounded to the captured API state.",
+        "Branch protection flag is visible, but full protection rules were not accessible through the connected GitHub integration.",
+        "Full repository CI and complete dependency/security scanning remain unexecuted.",
+        "PR #1429 is unmerged; its proposed fix is not active on main."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T051200Z-BINANCE-RESTORATION-OI-PR1353-DIVERGENCE",
+  "created_at_utc": "2026-10-31T05:12:00Z",
+  "source_ids": [
+    "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+    "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+    "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+    "SRC-20261031-INVESTING-XRP-LIVE-0047Z",
+    "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z",
+    "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+    "SRC-20261031-GITHUB-PR1353-GATE-0510Z"
+  ],
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "type": "exchange"
+    },
+    {
+      "id": "BINANCE_USER_RESTORATION",
+      "label": "Binance affected-asset restoration",
+      "type": "company_claim"
+    },
+    {
+      "id": "BINANCE_POR",
+      "label": "Binance Proof of Reserves",
+      "type": "disclosure"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "type": "native_crypto_asset"
+    },
+    {
+      "id": "KODEXIUS",
+      "label": "Kodexius",
+      "type": "market_data_provider"
+    },
+    {
+      "id": "TRADRADAR",
+      "label": "TradRadar",
+      "type": "market_data_provider"
+    },
+    {
+      "id": "B_AGENT_MAIN",
+      "label": "B-Agent main",
+      "type": "repository_branch"
+    },
+    {
+      "id": "PR1353",
+      "label": "PR #1353 research ledger branch",
+      "type": "pull_request"
+    }
+  ],
+  "edges": [
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_USER_RESTORATION",
+      "relation": "states_asset_restoration_has_begun",
+      "status": "OFFICIAL_VERIFIED_ACCOUNT_CLAIM; AMOUNT_AND_TOKEN_BREAKDOWN_UNKNOWN",
+      "source_ids": [
+        "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z"
+      ]
+    },
+    {
+      "from": "BINANCE_USER_RESTORATION",
+      "to": "XRP",
+      "relation": "possible_xrp_specific_customer_asset_credits_or_replenishment",
+      "status": "UNKNOWN; NO_XRP_SPECIFIC_AMOUNT_OR_TRANSACTION_EVIDENCE",
+      "source_ids": [
+        "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z"
+      ]
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_POR",
+      "relation": "planned_post_incident_reserve_disclosure",
+      "status": "INITIAL_SNAPSHOT_TARGET_2026_10_31T0733Z; RESULTS_TARGET_NOV2",
+      "source_ids": [
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ]
+    },
+    {
+      "from": "KODEXIUS",
+      "to": "XRP",
+      "relation": "reports_contract_level_open_interest_and_funding",
+      "status": "734.17M_OI_7_CONTRACTS_2026_10_31T0454Z",
+      "source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-OI-0454Z"
+      ]
+    },
+    {
+      "from": "TRADRADAR",
+      "to": "XRP",
+      "relation": "reports_exchange_level_open_interest_and_funding",
+      "status": "1.84B_OI_7_EXCHANGES_2026_10_31T0435Z",
+      "source_ids": [
+        "SRC-20261031-TRADRADAR-XRP-OI-0435Z"
+      ]
+    },
+    {
+      "from": "KODEXIUS",
+      "to": "TRADRADAR",
+      "relation": "provider_coverage_and_methodology_discrepancy",
+      "status": "2.506X_TOTAL_OI_DIFFERENCE; 1.498X_COMMON_EXCHANGE_SUM_DIFFERENCE; DO_NOT_AVERAGE",
+      "source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+        "SRC-20261031-TRADRADAR-XRP-OI-0435Z"
+      ]
+    },
+    {
+      "from": "PR1353",
+      "to": "B_AGENT_MAIN",
+      "relation": "long_lived_research_branch_comparison",
+      "status": "DIVERGED_1177_AHEAD_351_BEHIND; PR_METADATA_MERGEABLE_FLAG_CONFLICTS; DO_NOT_MERGE_AS_IS",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z"
+      ]
+    },
+    {
+      "from": "PR1353",
+      "to": "B_AGENT_MAIN",
+      "relation": "exact_head_ledger_validation",
+      "status": "HEAD_A3DB8BA_VALIDATED_337_SHARDS_20_TESTS_GATE_PASS; DOES_NOT_PROVE_MERGE_SAFETY",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+        "SRC-20261031-GITHUB-PR1353-GATE-0510Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-051200-01",
+      "hypothesis": "Binance has begun crediting some affected assets to customer balances.",
+      "status": "OFFICIAL_CLAIM_NOT_INDEPENDENTLY_TRANSACTION_VERIFIED",
+      "support": [
+        "Verified Binance News account says affected-asset restoration has begun."
+      ],
+      "disconfirming_or_alternative": [
+        "No amount, user-credit ledger or token-level breakdown is public.",
+        "Restoration may be an internal reimbursement process distinct from withdrawal availability."
+      ],
+      "test": "Seek token-specific restoration totals and reconcile reserve/PoR addresses and user-liability disclosures."
+    },
+    {
+      "id": "H-051200-02",
+      "hypothesis": "Binance's remaining approximately $1.34B replacement purchases include meaningful XRP demand.",
+      "status": "POSSIBLE_NOT_ESTABLISHED",
+      "support": [
+        "XRP was among the assets involved in the incident."
+      ],
+      "disconfirming_or_alternative": [
+        "No XRP-specific allocation or execution evidence.",
+        "Existing inventory or OTC sourcing may satisfy obligations without visible spot buying."
+      ],
+      "test": "Compare token-specific reserve addresses and verified transaction/fill disclosures."
+    },
+    {
+      "id": "H-051200-03",
+      "hypothesis": "Kodexius/TradRadar OI divergence is caused by different contract coverage or methodology.",
+      "status": "LIKELY_MEASUREMENT_SCOPE_DIFFERENCE_NOT_FULLY_EXPLAINED",
+      "support": [
+        "Kodexius lists seven contracts across five exchanges; TradRadar aggregates seven exchanges.",
+        "Overlapping exchange-level values also differ."
+      ],
+      "disconfirming_or_alternative": [
+        "No complete raw contract export or methodology reconciliation."
+      ],
+      "test": "Align contract IDs, position units, quote currency, linear/inverse treatment, conversion and timestamp."
+    },
+    {
+      "id": "H-051200-04",
+      "hypothesis": "PR #1353 is safe to merge because PR metadata says mergeable=true.",
+      "status": "REJECTED_PENDING_RECONCILIATION",
+      "support": [
+        "PR info endpoint reported mergeable=true."
+      ],
+      "disconfirming_or_alternative": [
+        "Compare endpoint reports diverged, 1,177 ahead and 351 behind main.",
+        "Exact-head validation is not merge-safety validation."
+      ],
+      "test": "Create a fresh-main migration branch containing only intended research artifacts; preserve original branch."
+    }
+  ]
+}

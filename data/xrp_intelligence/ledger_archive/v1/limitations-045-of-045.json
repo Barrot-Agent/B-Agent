@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 44,
+  "chunk_count": 45,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T13:05:00Z",
+  "records": [
+    "The 13:00 UTC exact-head ledger validator failed because SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027 was reused for two different primary documents. The canonical SBI document remains under that ID; the Startale document now has the distinct ID SRC-STARTALE-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027. The new eight-record corrected shard preserves both documents, while the original duplicate shard and earlier seven-record correction remain preserved unreferenced. The two publishers are MOU counterparties, so their announcements corroborate the agreement but do not independently prove production execution, tokenized-fund issuance, settlement volume or XRP usage. Exact-head validation is pending."
+  ]
+}

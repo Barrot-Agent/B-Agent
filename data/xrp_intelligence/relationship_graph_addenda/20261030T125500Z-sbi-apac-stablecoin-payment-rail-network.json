@@ -1,0 +1,206 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-2026-10-30T125500Z-SBI-APAC-STABLECOIN-AND-PAYMENT-RAIL-NETWORK",
+  "captured_at_utc": "2026-10-30T12:55:00Z",
+  "previous_addendum": "data/xrp_intelligence/relationship_graph_addenda/20261030T125300Z-sbi-vctrade-rlusd-ethereum-only-xrpl-future.json",
+  "edges": [
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "STARTALE_GROUP",
+      "relationship": "Approx. USD50M strategic equity investment in March 2026; planned equity-method affiliate",
+      "status": "PRIMARY_SBI_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-SBI-STARTALE-50M-EQUITY-INVESTMENT-20260326"
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "SBI_STARTALE_MARKETING",
+      "relationship": "SBI-Startale JV promoting JPYSC; SMBC Group agreed to acquire 5% equity on October 30",
+      "status": "PRIMARY_SBI_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-SBI-SMBC-STARTALE-MARKETING-5PCT-20261030"
+      ]
+    },
+    {
+      "from": "SMBC_GROUP",
+      "to": "SBI_STARTALE_MARKETING",
+      "relationship": "Agreed 5% equity stake; capital/business alliance to study stablecoin financial services",
+      "status": "PRIMARY_SBI_ANNOUNCEMENT; INVESTMENT_AMOUNT_UNDISCLOSED",
+      "source_ids": [
+        "SRC-SBI-SMBC-STARTALE-MARKETING-5PCT-20261030"
+      ]
+    },
+    {
+      "from": "SBI_STARTALE_MARKETING",
+      "to": "JPYSC",
+      "relationship": "Promotes JPYSC use cases and institutional/corporate adoption",
+      "status": "PRIMARY_SBI_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-SBI-SMBC-STARTALE-MARKETING-5PCT-20261030",
+        "SRC-JPYSC-ACCOUNT-ONLY-PUBLIC-CHAIN-PLANNED-20260624"
+      ]
+    },
+    {
+      "from": "SBI_DIGITAL_ASSET_OPPORTUNITY_FUND",
+      "to": "PHOTONPAY",
+      "relationship": "Investment decision through SBI-Sygnum-Azimut fund; amount undisclosed",
+      "status": "PRIMARY_SBI_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-SBI-PHOTONPAY-INVESTMENT-20261030"
+      ]
+    },
+    {
+      "from": "PHOTONPAY",
+      "to": "MASTERCARD",
+      "relationship": "May 2026 AI-agent card-payment proof-of-concept using per-transaction tokens",
+      "status": "PHOTONPAY_POC_DESCRIBED_IN_SBI_PRIMARY_ANNOUNCEMENT; NOT_PRODUCTION",
+      "source_ids": [
+        "SRC-SBI-PHOTONPAY-INVESTMENT-20261030"
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS_AND_STARTALE",
+      "to": "OPEN_STANDARD",
+      "relationship": "Alliance membership; exploring JPYSC-OUSD pilot; shared ecosystem includes Coinbase, Mastercard, Visa, Stripe and BlackRock",
+      "status": "PRIMARY_SBI_STARTALE_ANNOUNCEMENT; SHARED_CONSORTIUM_NOT_BILATERAL_CONTRACT",
+      "source_ids": [
+        "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-PILOT-20261016"
+      ]
+    },
+    {
+      "from": "OPEN_STANDARD",
+      "to": "COINBASE",
+      "relationship": "Named founding partner of OUSD/Open Standard",
+      "status": "PRIMARY_STARTALE_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-PILOT-20261016"
+      ]
+    },
+    {
+      "from": "OPEN_STANDARD",
+      "to": "MASTERCARD",
+      "relationship": "Named founding partner of OUSD/Open Standard",
+      "status": "PRIMARY_STARTALE_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-PILOT-20261016"
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS_AND_STARTALE",
+      "to": "BLACKROCK",
+      "relationship": "MOU to explore tokenized MMF and JPYSC ecosystem",
+      "status": "PRIMARY_MOU; NOT_PRODUCTION",
+      "source_ids": [
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027"
+      ]
+    },
+    {
+      "from": "SBI_SHINSEI_TRUST_BANK",
+      "to": "JPYSC",
+      "relationship": "Issuer; trust assets include JPY10B short-term JGB allocation as of Sep 7 2026",
+      "status": "PRIMARY_ISSUER_DISCLOSURE",
+      "source_ids": [
+        "SRC-JPYSC-ISSUANCE-JGB-RESERVE-AND-LENDING-20260907"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "JPYSC",
+      "relationship": "Distributor; account-only initial service, external transfers/public-chain not enabled",
+      "status": "PRIMARY_SBI_LAUNCH_AND_PRODUCT_PAGE",
+      "source_ids": [
+        "SRC-JPYSC-ACCOUNT-ONLY-PUBLIC-CHAIN-PLANNED-20260624"
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "CIRCLE",
+      "relationship": "Separate 50/50 USDC JV and historical USD50M IPO investment",
+      "status": "PRIMARY_SBI_DISCLOSURES; DISTINCT_FROM_JPYSC",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "RLUSD",
+      "relationship": "Japanese distribution; current VCTRADE network Ethereum only, XRPL planned",
+      "status": "PRIMARY_SBI_PRODUCT_PAGE",
+      "source_ids": [
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624",
+        "SRC-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY-XRPL-PLANNED-20261030"
+      ]
+    }
+  ],
+  "hypothesis_additions": [
+    {
+      "hypothesis_id": "HYP-SBI-APAC-MULTIRAIL-STABLECOIN-STRATEGY-20261030",
+      "claim": "SBI is building a multi-issuer, multi-currency APAC settlement and tokenized-asset ecosystem rather than an XRP-exclusive strategy.",
+      "supporting_source_ids": [
+        "SRC-SBI-SMBC-STARTALE-MARKETING-5PCT-20261030",
+        "SRC-SBI-PHOTONPAY-INVESTMENT-20261030",
+        "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-PILOT-20261016",
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624",
+        "SRC-JPYSC-ISSUANCE-JGB-RESERVE-AND-LENDING-20260907"
+      ],
+      "counterevidence": "Most connections are MOU, investment, pilot or product-announcement stage; executed cross-network volumes and commercial economics are not disclosed.",
+      "status": "STRONGLY_SUPPORTED_STRATEGY_INFERENCE"
+    },
+    {
+      "hypothesis_id": "HYP-JPYSC-OUSD-ONCHAIN-LIQUIDITY-20261030",
+      "claim": "JPYSC-OUSD interoperability could create yen-dollar on-chain liquidity and tokenized-asset settlement routes.",
+      "supporting_source_ids": [
+        "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-PILOT-20261016",
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+        "SRC-JPYSC-ISSUANCE-JGB-RESERVE-AND-LENDING-20260907"
+      ],
+      "counterevidence": "JPYSC remains account-only with no external wallet transfers; Open Standard connection is pilot exploration; BlackRock arrangement is an MOU; no production transactions or launch date.",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "hypothesis_id": "HYP-SBI-OPENSTANDARD-DIRECT-COINBASE-INTEGRATION-20261030",
+      "claim": "SBI's Open Standard membership establishes a direct commercial integration with Coinbase.",
+      "supporting_source_ids": [
+        "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-PILOT-20261016"
+      ],
+      "counterevidence": "The source establishes shared alliance membership and a JPYSC-OUSD pilot exploration; it does not disclose a bilateral contract, Coinbase integration workstream or XRP route.",
+      "status": "NOT_ESTABLISHED_SHARED_CONSORTIUM_ONLY"
+    },
+    {
+      "hypothesis_id": "HYP-PHOTONPAY-STABLECOIN-VOLUME-AND-XRP-DEMAND-20261030",
+      "claim": "PhotonPay's USD65B annualized TPV creates meaningful XRP demand through stablecoin payments.",
+      "supporting_source_ids": [
+        "SRC-SBI-PHOTONPAY-INVESTMENT-20261030"
+      ],
+      "counterevidence": "USD65B covers all fiat and stablecoin payment rails; stablecoin share, supported chains, XRP usage, liquidity-provider routes and executed XRP purchases are undisclosed.",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "hypothesis_id": "HYP-SBI-JPYSC-JGB-RESERVE-AND-XRP-COLLATERAL-20261030",
+      "claim": "JPYSC's short-term JGB reserve investment creates a collateral relationship with XRP.",
+      "supporting_source_ids": [
+        "SRC-JPYSC-ISSUANCE-JGB-RESERVE-AND-LENDING-20260907"
+      ],
+      "counterevidence": "The JGBs back JPYSC trust assets; no XRP collateral or XRPL route is disclosed. Reserve assets and XRP collateral are distinct.",
+      "status": "DISCONFIRMED_AS_STATED"
+    }
+  ],
+  "source_ids": [
+    "SRC-SBI-SMBC-STARTALE-MARKETING-5PCT-20261030",
+    "SRC-SBI-PHOTONPAY-INVESTMENT-20261030",
+    "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-PILOT-20261016",
+    "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+    "SRC-JPYSC-ISSUANCE-JGB-RESERVE-AND-LENDING-20260907",
+    "SRC-JPYSC-ACCOUNT-ONLY-PUBLIC-CHAIN-PLANNED-20260624",
+    "SRC-JPYSC-LENDING-INITIAL-3PCT-20260713",
+    "SRC-SBI-STARTALE-50M-EQUITY-INVESTMENT-20260326",
+    "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+    "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624",
+    "SRC-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY-XRPL-PLANNED-20261030",
+    "SRC-SBIC-EAST-JAPAN-CHATGPT-SEMINAR-20260305-20261030T0411Z"
+  ]
+}

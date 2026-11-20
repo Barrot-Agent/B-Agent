@@ -1,0 +1,363 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-20261031T210244Z-EXCHANGE-ETF-BINANCE-COINBASE-ESCROW",
+  "captured_at_utc": "2026-10-31T21:02:44Z",
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T210244Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ETF-FLOWS",
+    "SRC-20261031T210244Z-TRADRADAR-XRP",
+    "SRC-20261031T210244Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T210244Z-RIPPLE-COINBASE-RLUSD",
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "nodes": [
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_LEDGER"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "COMPANY"
+    },
+    {
+      "id": "ESCROW_NOV1",
+      "label": "Two escrow objects eligible 2026-11-01 00:00 UTC",
+      "kind": "ESCROW_SET"
+    },
+    {
+      "id": "XRP_INSIGHTS",
+      "label": "XRP Insights",
+      "kind": "SECONDARY_ONCHAIN_DATA_PROVIDER"
+    },
+    {
+      "id": "EXCHANGE_WALLETS",
+      "label": "701 labelled wallets across 24 exchanges",
+      "kind": "CUSTODY_WALLET_DATASET"
+    },
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "CENTRALIZED_EXCHANGE"
+    },
+    {
+      "id": "BINANCE_WALLETS",
+      "label": "Binance-attributed XRPL wallet set",
+      "kind": "CUSTODY_WALLET_SET"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_CUSTODY_AND_DISTRIBUTION_PROVIDER"
+    },
+    {
+      "id": "COINBASE_WALLETS",
+      "label": "Coinbase-attributed XRPL wallet set",
+      "kind": "CUSTODY_WALLET_SET"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "JAPANESE_EXCHANGE"
+    },
+    {
+      "id": "SBI_WALLETS",
+      "label": "SBI VC Trade-attributed XRPL wallet set",
+      "kind": "CUSTODY_WALLET_SET"
+    },
+    {
+      "id": "XRP_ETF_COMPLEX",
+      "label": "Six spot XRP ETFs plus BITW",
+      "kind": "INVESTMENT_FUND_COMPLEX"
+    },
+    {
+      "id": "ETF_CUSTODY",
+      "label": "Issuer-reported XRP holdings",
+      "kind": "CUSTODY_ASSET"
+    },
+    {
+      "id": "BINANCE_POR",
+      "label": "Binance 2026-10-31 00:00 UTC PoR snapshot",
+      "kind": "COMPANY_RESERVE_SNAPSHOT"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD",
+      "kind": "ISSUER_CONTROLLED_STABLECOIN"
+    },
+    {
+      "id": "TRADRADAR",
+      "label": "TradRadar",
+      "kind": "DERIVATIVES_DATA_PROVIDER"
+    },
+    {
+      "id": "XRP_PERPS",
+      "label": "XRP perpetual futures across seven exchanges",
+      "kind": "DERIVATIVES_MARKET"
+    },
+    {
+      "id": "CROSS_ANALYSIS",
+      "label": "Cross Analysis GitHub workflow",
+      "kind": "AUTOMATION_WORKFLOW"
+    },
+    {
+      "id": "MAIN",
+      "label": "B-Agent main branch",
+      "kind": "GIT_BRANCH"
+    },
+    {
+      "id": "PR1429",
+      "label": "Fresh-main read-only Cross Analysis proposal",
+      "kind": "PULL_REQUEST"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-XRP-INSIGHTS-EXCHANGE-UNIVERSE",
+      "source": "XRP_INSIGHTS",
+      "target": "EXCHANGE_WALLETS",
+      "relationship": "ATTRIBUTES_701_WALLETS_ACROSS_24_EXCHANGES",
+      "evidence_class": "SECONDARY_ONCHAIN_LABEL_DERIVED",
+      "claim": "22.48B XRP attributed to exchange-labelled wallets including cold storage; not tradable float.",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-TRACKED-BALANCE",
+      "source": "BINANCE",
+      "target": "BINANCE_WALLETS",
+      "relationship": "ATTRIBUTED_BALANCE_2_78B_XRP",
+      "evidence_class": "SECONDARY_ONCHAIN_LABEL_DERIVED",
+      "claim": "153 wallets, including 327.4M Binance-Peg reserve and 7.8M Binance US; same-wallet change +17.6M over 7d and +30.3M over 30d.",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-TRACKED-BALANCE",
+      "source": "COINBASE",
+      "target": "COINBASE_WALLETS",
+      "relationship": "ATTRIBUTED_BALANCE_5_85B_XRP",
+      "evidence_class": "SECONDARY_ONCHAIN_LABEL_DERIVED",
+      "claim": "358 wallets, including 150.2M cbXRP reserve; same-wallet change +17.7M over 7d and +18.4M over 30d.",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-TRACKED-BALANCE",
+      "source": "SBI_VC_TRADE",
+      "target": "SBI_WALLETS",
+      "relationship": "ATTRIBUTED_BALANCE_59_5M_XRP",
+      "evidence_class": "SECONDARY_ONCHAIN_LABEL_DERIVED",
+      "claim": "Two provider-labelled wallets, greater than 99% cold-labelled; not official PoR or proprietary SBI ownership.",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "EDGE-ETF-HOLDINGS",
+      "source": "XRP_ETF_COMPLEX",
+      "target": "ETF_CUSTODY",
+      "relationship": "HOLDS_APPROX_1_1966B_XRP",
+      "evidence_class": "SECONDARY_ISSUER_HOLDINGS_DERIVED",
+      "claim": "October 30 issuer-holdings snapshot, approximately $1.51B net assets; weekly holdings-derived flow +3.39M XRP.",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ETF-FLOWS"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-POR-XRP-CLAIM",
+      "source": "BINANCE",
+      "target": "BINANCE_POR",
+      "relationship": "CLAIMS_100PCT_XRP_BACKING",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Binance lists XRP among ten tokens fully backed at 100%; full zk proof estimated by November 3.",
+      "source_ids": [
+        "SRC-20261031T210244Z-BINANCE-RECOVERY-UPDATE3"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-POR-CLAIM-LIMIT",
+      "source": "BINANCE_POR",
+      "target": "XRP",
+      "relationship": "COMPANY_CLAIM_NOT_YET_FULLY_PROVED",
+      "evidence_class": "UNKNOWN",
+      "claim": "The 100% claim is not independently verified until the full proof and address/liability reconciliation are available.",
+      "source_ids": [
+        "SRC-20261031T210244Z-BINANCE-RECOVERY-UPDATE3"
+      ]
+    },
+    {
+      "id": "EDGE-RIPPLE-ESCROW",
+      "source": "RIPPLE",
+      "target": "ESCROW_NOV1",
+      "relationship": "OWNS_TWO_ESCROW_OBJECTS_1B_XRP",
+      "evidence_class": "SECONDARY_ONCHAIN_LABEL_DERIVED",
+      "claim": "FinishAfter eligibility at 2026-11-01 00:00 UTC; no finish transaction or sale verified at cutoff.",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
+      ]
+    },
+    {
+      "id": "EDGE-ESCROW-XRPL",
+      "source": "ESCROW_NOV1",
+      "target": "XRPL",
+      "relationship": "VALIDATED_LEDGER_TIMELOCK",
+      "evidence_class": "SECONDARY_ONCHAIN_LABEL_DERIVED",
+      "claim": "Escrow schedule read from on-ledger FinishAfter fields at ledger 108029266.",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
+      ]
+    },
+    {
+      "id": "EDGE-RIPPLE-COINBASE-RLUSD",
+      "source": "RIPPLE",
+      "target": "COINBASE",
+      "relationship": "RLUSD_DISTRIBUTION_PARTNERSHIP",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "RLUSD distribution through Coinbase Prime, Exchange and Retail on XRPL, Base and Ethereum.",
+      "source_ids": [
+        "SRC-20261031T210244Z-RIPPLE-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "EDGE-RLUSD-XRPL",
+      "source": "RLUSD",
+      "target": "XRPL",
+      "relationship": "SUPPORTED_NETWORK",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "RLUSD deposits and withdrawals supported on XRPL; this is stablecoin activity, not native XRP buying.",
+      "source_ids": [
+        "SRC-20261031T210244Z-RIPPLE-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "EDGE-RLUSD-COINBASE-COLLATERAL",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "GLOBAL_EXCHANGE_COLLATERAL_PLANNED_NOT_LIVE",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Coinbase Global Exchange collateral support was described as following later, not live at the October 28 announcement.",
+      "source_ids": [
+        "SRC-20261031T210244Z-RIPPLE-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "EDGE-TRADRADAR-XRP-PERPS",
+      "source": "TRADRADAR",
+      "target": "XRP_PERPS",
+      "relationship": "AGGREGATES_SEVEN_EXCHANGES",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "claim": "$1.87B OI, +0.48% 24h; +0.0048% weighted funding; 75.2% long accounts across four exchanges.",
+      "source_ids": [
+        "SRC-20261031T210244Z-TRADRADAR-XRP"
+      ]
+    },
+    {
+      "id": "EDGE-CROSS-ANALYSIS-MAIN-WRITE",
+      "source": "CROSS_ANALYSIS",
+      "target": "MAIN",
+      "relationship": "SCHEDULED_CONTENTS_WRITE_AND_GIT_PUSH",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main workflow has contents:write and commits generated outputs; latest run wrote timestamp-only zero-sample sentiment output.",
+      "source_ids": [
+        "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+      ]
+    },
+    {
+      "id": "EDGE-PR1429-READONLY",
+      "source": "PR1429",
+      "target": "CROSS_ANALYSIS",
+      "relationship": "PROPOSES_READONLY_ARTIFACT_OUTPUT",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Fresh-main PR removes commit/push, sets contents:read and uploads outputs; CI 345+8 and fail-closed gate passed; remains unmerged.",
+      "source_ids": [
+        "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-EXCHANGE-NET-DECLINE",
+      "statement": "The 133M seven-day decline in tracked exchange-labelled XRP wallets reflects net customer withdrawal/self-custody.",
+      "status": "INFERENCE_NOT_CONFIRMED",
+      "support": [
+        "Same-wallet total fell 133M over 7d."
+      ],
+      "disconfirming": [
+        "Wallet balances include cold storage and operational reserves; changes cannot distinguish customer flows from wallet migrations or untracked destinations."
+      ],
+      "next_test": "Obtain per-wallet transaction histories, exchange address attestations and transfer-level destination classification."
+    },
+    {
+      "id": "H-BINANCE-INCIDENT-RESERVE",
+      "statement": "The Binance hack caused a persistent net decline in Binance XRP reserves.",
+      "status": "WEAKENED_BY_CURRENT_PROVIDER_SERIES",
+      "support": [
+        "Earlier CryptoQuant reserve series reported a separate approximately 220M decline."
+      ],
+      "disconfirming": [
+        "XRP Insights' Binance same-wallet set is +17.6M over 7d and +30.3M over 30d as of Oct 31; provider wallet universes and windows differ."
+      ],
+      "next_test": "Crosswalk the five incident source wallets against official Binance PoR addresses and the exact CryptoQuant tracked set."
+    },
+    {
+      "id": "H-ETF-EXCHANGE-ROTATION",
+      "statement": "ETF creations explain the decline in exchange-labelled XRP wallets.",
+      "status": "UNSUPPORTED_CAUSAL_HYPOTHESIS",
+      "support": [
+        "ETF holdings-derived weekly flow is +3.39M XRP while exchange-labelled wallets are -133M over 7d."
+      ],
+      "disconfirming": [
+        "Different universes and cutoffs; ETF holdings changes are not gross spot executions; no transfer-level link."
+      ],
+      "next_test": "Compare issuer creation/redemption records, custodian wallet movements and exchange transfer hashes at aligned cutoffs."
+    },
+    {
+      "id": "H-ESCROW-SELL-PRESSURE",
+      "statement": "The November 1 1B XRP escrow eligibility will create immediate spot sell pressure.",
+      "status": "UNSUPPORTED_SPECULATION",
+      "support": [
+        "Two objects totaling 1B XRP become eligible at 00:00 UTC."
+      ],
+      "disconfirming": [
+        "No EscrowFinish verified at cutoff; destination is predetermined; historical 70% re-escrow is only a baseline; no exchange sale evidence."
+      ],
+      "next_test": "Trace EscrowFinish, destination, subsequent transfers, EscrowCreate and order-book impact."
+    },
+    {
+      "id": "H-DERIVATIVES-CROWDED-LONG",
+      "statement": "Positive aggregate funding and 75.2% long accounts indicate crowded-long liquidation risk.",
+      "status": "CONDITIONAL_INFERENCE",
+      "support": [
+        "Positive OI-weighted funding, OI growth and long-account skew."
+      ],
+      "disconfirming": [
+        "Bybit and OKX funding negative; account share is not notional exposure; liquidations are incomplete lower bounds."
+      ],
+      "next_test": "Align notional long/short exposure, basis, depth, venue OI and liquidation history."
+    },
+    {
+      "id": "H-BINANCE-XRP-100PCT-POR",
+      "statement": "Binance has independently demonstrated 100% XRP reserve backing after the incident.",
+      "status": "COMPANY_CLAIM_PENDING_PROOF",
+      "support": [
+        "Binance states XRP is 100% backed in its Oct 31 PoR snapshot."
+      ],
+      "disconfirming": [
+        "Full zk proof estimated Nov 3; exact XRP units, official address list and same-time customer liabilities have not been independently reconciled."
+      ],
+      "next_test": "Verify the full proof, XRP reserve addresses and customer net liabilities at the same snapshot time."
+    }
+  ]
+}

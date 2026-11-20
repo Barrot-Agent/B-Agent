@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 37,
+  "chunk_count": 38,
+  "record_count": 8,
+  "created_at_utc": "2026-10-30T12:43:54Z",
+  "records": [
+    {
+      "id": "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+      "evidence_class": "PRIMARY_SBI_CORPORATE_ANNOUNCEMENT",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf",
+      "title": "SBI Holdings — establishment of joint venture with Circle Internet Holdings",
+      "published_at": "2025-08-22",
+      "accessed_at_utc": "2026-10-30T12:43:54Z",
+      "note": "SBI states it established a joint venture with Circle Internet Holdings, following a November 2023 MOU and March 2025 formative JV agreement. Purpose: promote USDC use in Japan and create Web3/digital-finance use cases. SBI says its subsidiary SBI VC Trade began USDC trading in March 2025. The release says the SBI Group acquired USD50M of Circle shares at IPO; the exact split is documented separately by SBI as USD25M each from SBI Holdings and SBI Shinsei Bank. This is a USDC/Japan partnership, not an XRP-specific JV."
+    },
+    {
+      "id": "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602",
+      "evidence_class": "PRIMARY_SBI_INVESTOR_PRESENTATION",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf",
+      "title": "SBI Holdings 2025 information meeting — Circle SBI Japan KK / SBI Circle Holdings joint venture",
+      "published_at": "2025-06-02",
+      "accessed_at_utc": "2026-10-30T12:43:54Z",
+      "note": "SBI investor presentation identifies the English name Circle SBI Japan KK and Japanese name SBI Circle Holdings Co., Ltd. It shows a 50% SBI / 50% Circle investment ratio and describes the JV's purpose as supporting exchanges handling USDC and creating use cases with payment service providers. This is the official SBI presentation; it does not disclose current operating revenue, circulating balances or a current cap-table update."
+    },
+    {
+      "id": "SRC-SBI-CIRCLE-EQUITY-INVESTMENT-20250609",
+      "evidence_class": "PRIMARY_SBI_AND_BANK_INVESTMENT_NOTICE",
+      "url": "https://corp.sbishinseibank.co.jp/en/news/news/20250609a.html",
+      "title": "SBI Holdings and SBI Shinsei Bank — USD50M strategic investment in Circle IPO",
+      "published_at": "2025-06-09",
+      "accessed_at_utc": "2026-10-30T12:43:54Z",
+      "note": "SBI Holdings and SBI Shinsei Bank report a combined USD50M investment in Circle Internet Group at its June 5, 2025 NYSE listing, split USD25M each. The English notice also identifies the planned joint venture as Circle SBI Japan KK. This is the original investment amount, not current market value or a disclosed present ownership percentage."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+      "evidence_class": "PRIMARY_CIRCLE_PRODUCT_ANNOUNCEMENT",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "title": "Circle — USDC now available natively on the XRP Ledger",
+      "published_at": "2025-06-12",
+      "accessed_at_utc": "2026-10-30T12:43:54Z",
+      "note": "Circle says native USDC launched on XRPL mainnet June 12, 2025, with no bridge required; Circle Mint and Circle APIs support USDC on XRPL and qualified businesses can mint/redeem via Circle Mint. Circle's issuer address is rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE. This establishes native USDC availability on XRPL, not a specific SBI VC Trade XRPL route or incremental XRP demand."
+    },
+    {
+      "id": "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612",
+      "evidence_class": "PRIMARY_RIPPLE_PARTNERSHIP_ANNOUNCEMENT",
+      "url": "https://ripple.com/ripple-press/ripple-and-circle-launch-usdc-on-the-xrp-ledger/",
+      "title": "Ripple and Circle announce USDC launch on XRPL",
+      "published_at": "2025-06-12",
+      "accessed_at_utc": "2026-10-30T12:43:54Z",
+      "note": "Ripple describes a direct partnership with Circle to bring USDC to XRPL. Ripple states XRPL DEX and auto-bridging features leverage XRP as an essential bridge currency for efficient USDC trading. This is direct technical/product cooperation on USDC-on-XRPL while Ripple separately issues competing RLUSD. The announcement is not evidence of measured executed XRP bridge volume or market demand."
+    },
+    {
+      "id": "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624",
+      "evidence_class": "PRIMARY_SBI_AND_RIPPLE_LAUNCH_ANNOUNCEMENT",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "title": "Ripple and SBI Group launch RLUSD in Japan through SBI VC Trade",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-10-30T12:43:54Z",
+      "note": "Ripple and SBI announce RLUSD availability in Japan through SBI VC Trade following Japanese regulatory approval. SBI's local classification is a new Type 4 electronic payment instrument under its Payment Services Act interpretation. This confirms RLUSD distribution on VCTRADE; the announcement does not specify that VCTRADE custody/deposits/withdrawals use XRPL rather than Ethereum."
+    },
+    {
+      "id": "SRC-SBI-VCTRADE-USDC-ETHEREUM-ONLY-DEPOSIT-2026",
+      "evidence_class": "PRIMARY_SBI_DISTRIBUTOR_SUPPORT_FAQ",
+      "url": "https://www.sbivc.co.jp/faqs/content/emf0zqgoyer1",
+      "title": "SBI VC Trade — USDC deposits accepted only on Ethereum network",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T12:43:54Z",
+      "note": "SBI VC Trade's current support FAQ states USDC deposits are accepted only when sent on Ethereum; USDC sent over BNB Smart Chain, Arbitrum or other networks will not be credited or recoverable. This proves the documented inbound VCTRADE USDC route is Ethereum-only at capture. It does not establish the full withdrawal network policy or RLUSD network support."
+    },
+    {
+      "id": "SRC-SBI-VCTRADE-USDC-LENDING-20260318",
+      "evidence_class": "PRIMARY_SBI_PRODUCT_ANNOUNCEMENT",
+      "url": "https://www.sbivc.co.jp/newsview/jaqycajmbpt",
+      "title": "SBI VC Trade launches USDC lending service",
+      "published_at": "2026-03-18",
+      "accessed_at_utc": "2026-10-30T12:43:54Z",
+      "note": "SBI VC Trade announced USDC lending from March 19, 2026, with an initial 12-week promotional annualized rate of 10% and a planned normal rate around 5%, subject to market conditions and recruitment limits. This is a product offer, not evidence of current realized yield, outstanding loan balances, collateral composition or XRP purchases."
+    }
+  ]
+}

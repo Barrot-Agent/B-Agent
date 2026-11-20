@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T180231Z-FOMC-MACRO-ETF-MARKET-REPO-AUDIT",
+  "captured_at_utc": "2026-10-30T18:02:31Z",
+  "data_cutoff_utc": "2026-10-30T18:02:31Z",
+  "source_ids": [
+    "SRC-FED-FOMC-OCT28-OFFICIAL-RUN11",
+    "SRC-ALPHA-XRP-ETF-OCT29-RUN11",
+    "SRC-SOSOVALUE-XRP-ETF-OCT29-RUN11",
+    "SRC-CMC-XRP-MARKET-180231Z-RUN11",
+    "SRC-REUTERS-US-FUND-FLOWS-OCT30-RUN11",
+    "SRC-AP-BINANCE-INCIDENT-OCT30-RUN11",
+    "SRC-BINANCE-SECURITY-UPDATE-OCT30-RUN11",
+    "SRC-BITQUERY-BINANCE-INCIDENT-OCT30-RUN11"
+  ],
+  "findings": {
+    "market": {
+      "xrp_provider_snapshot": {
+        "provider": "CoinMarketCap",
+        "price_usd": 1.25,
+        "market_cap_usd": 79390000000,
+        "volume_24h_usd": 4630000000,
+        "price_change_24h_pct": -2.89,
+        "volume_change_24h_pct": 116.5,
+        "low_24h_usd": 1.2,
+        "high_24h_usd": 1.31,
+        "observation_time": "retrieval time; provider's own observation timestamp not exposed",
+        "admission": "CONTEXT_ONLY_NOT_MODEL_FEATURE"
+      },
+      "etf_flows": {
+        "alpha_finance": {
+          "oct29_net_flow_usd": 8400000,
+          "fund_coverage": 5,
+          "thirty_session_net_flow_usd": 98900000,
+          "cumulative_net_flow_usd": 1730000000
+        },
+        "sosovalue_derived": {
+          "oct29_net_flow_usd": 8431600,
+          "total_net_asset_value_usd": 1465000000,
+          "cumulative_net_inflow_usd": 1809000000
+        },
+        "reconciliation": "Daily net-flow values are close; cumulative totals differ by approximately USD79M. Provider universes, fund coverage, definitions and cutoffs are not reconciled. Do not average cumulative totals or treat the figures as interchangeable."
+      },
+      "event_ordering": {
+        "us_spot_etf_session_close_utc": "2026-10-29T20:00:00Z",
+        "first_identified_binance_xrpl_transfer_utc": "2026-10-29T20:05:00Z",
+        "conclusion": "October 29 ETF flow observation precedes the first identified Binance XRPL drain; it cannot be a response to that incident."
+      }
+    },
+    "macro": {
+      "fomc_oct28": {
+        "target_range_pct": [
+          3.75,
+          4
+        ],
+        "vote": "10-2",
+        "dissenters_preferred_hike_25bp": [
+          "Lisa D. Cook",
+          "Beth M. Hammack"
+        ],
+        "official_assessment": "activity strong; inflation elevated; geopolitical uncertainty elevated"
+      },
+      "broad_fund_flows_week_ended_oct28": {
+        "us_equity_funds_net_usd": -6650000000,
+        "us_bond_funds_net_usd": 2040000000,
+        "money_market_funds_net_usd": -47660000000,
+        "technology_sector_funds_net_usd": 4540000000
+      },
+      "interpretation": "Risk-allocation and monetary-policy context only. These data do not identify XRP-specific subscriptions, redemptions, spot orders or causal price impact."
+    },
+    "binance_incident": {
+      "official_company_statement": {
+        "estimated_impact_usd": 6300000000,
+        "assets_frozen_usd": 3000000000,
+        "customer_loss_coverage": "SAFU and company funds",
+        "private_key_leak": "no evidence found in initial investigation",
+        "updated_por": "promised after remediation"
+      },
+      "analytics_attribution": "TRM Labs and Chainalysis assessments reported by AP point to TraderTraitor; Binance has not confirmed actor identity.",
+      "xrp_transfer": "233,461,943.1 XRP from five Binance-labelled XRPL wallets to one attacker receiver; prior public receiver observation at 2026-10-30T07:23:00Z showed no outgoing XRP payment. No fresh receiver observation was obtained at this 18:02Z cutoff.",
+      "chain_coverage": "Bitquery reports nine chains and TRM reports ten; provider scope and totals remain non-identical."
+    },
+    "repository": {
+      "current_main_sha": "53d1becbefe622badc550178fbfe125312df5795",
+      "latest_main_commit": "Cross-analysis refresh [skip ci] at 2026-10-30T17:51:50Z",
+      "cross_analysis_workflow": {
+        "blob_sha": "143bb2ed89ef4e2d85071a583896adad2c37c81b",
+        "scheduled": true,
+        "workflow_run_trigger": true,
+        "contents_permission": "write",
+        "automatic_git_add_commit_push": true
+      },
+      "merge_queue_workflow": {
+        "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+        "workflow_dispatch_only": true,
+        "contents_permission": "write",
+        "pull_requests_permission": "write",
+        "default_dry_run": false,
+        "default_max_prs": 0,
+        "can_update_branches_merge_prs_delete_branches": true
+      },
+      "latest_signal": {
+        "timestamp_utc": "2026-10-29T13:23:33Z",
+        "score": 44,
+        "confidence": 0,
+        "news_score": 88,
+        "news_entries": 11,
+        "provider_failures": [
+          "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+          "Groq HTTP 429"
+        ],
+        "classification": "STALE_INVALID_NOT_A_FORECAST"
+      },
+      "legacy_accuracy": {
+        "checked": 1683,
+        "correct": 772,
+        "reported_pct": 45.9,
+        "classification": "NOT_COMPARABLE_VARIABLE_HORIZON"
+      },
+      "pr1353": {
+        "head_sha": "f86fbb525d9f3586d083778bfde4a0f76551a770",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "latest_validator_runs": "queued at capture; exact-head result pending"
+      },
+      "pr1373": {
+        "head_sha": "99c5efbdcbff55aea9294d7bbfa235879f812f02",
+        "base_sha": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "core_ci_run": 41061593599,
+        "core_ci": "347 tests plus 8 subtests passed",
+        "gate_run": 41061593629,
+        "gate": "PASS_MERGE_DISABLED",
+        "main_ahead_by": 6,
+        "main_only_changed_paths": [
+          ".github/workflows/barrot-controlled-feature-validation.yml",
+          "ping-pongings/knowledge-base/sentiment_shift.json"
+        ]
+      },
+      "pr1374": {
+        "head_sha": "5f70b26eac93b4835130db2541e085dd2e107ce2",
+        "base_sha": "3a1b1e7a2cf2a22e262d73592ceec9196356fbae",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "core_ci_run": 41087890290,
+        "core_ci": "347 tests plus 8 subtests passed",
+        "gate_run": 41087890315,
+        "gate": "PASS_MERGE_DISABLED",
+        "main_ahead_by": 5,
+        "main_only_changed_paths": [
+          ".github/workflows/barrot-controlled-feature-validation.yml",
+          "ping-pongings/knowledge-base/sentiment_shift.json"
+        ],
+        "remaining_blockers": [
+          "merges/barrot-superior/config.yaml missing from main",
+          "artifact transfer and actual Hugging Face upload not executed",
+          "mergekit and transitive dependencies not pinned",
+          "GitHub Actions references not pinned to immutable commit SHAs"
+        ]
+      },
+      "no_main_write_this_run": true,
+      "merge_performed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    },
+    "archive_integrity": {
+      "before_correction": {
+        "sources_records": 1462,
+        "sources_chunks": 52,
+        "run_updates_records": 268,
+        "run_updates_chunks": 67,
+        "limitations_records": 503,
+        "limitations_chunks": 59,
+        "total_shards": 178
+      },
+      "live_pointer_totals": {
+        "sources_records": 1506,
+        "sources_chunks": 58,
+        "run_updates_records": 274,
+        "run_updates_chunks": 73,
+        "limitations_records": 509,
+        "limitations_chunks": 65,
+        "total_shards": 196
+      },
+      "defect": "archive_policy summary counts had fallen behind authoritative pointer counts; validator previously checked the pointers and their shard hashes but did not compare the duplicated archive_policy summary.",
+      "correction": "archive_policy arrays and total were reconciled to live pointers; validator and regression test were extended to fail closed on future drift.",
+      "verification": "pending exact-head CI after the validator change"
+    }
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T180231Z-fomc-macro-xrp-etf-market-and-repo-audit-corrected.json",
+  "correction": {
+    "recorded_at_utc": "2026-10-30T18:11:48Z",
+    "correction_reason": "The first append omitted the required snapshot_path field. That file is preserved unreferenced; this corrected copy has an explicit matching path and is the only version referenced by the latest ledger pointer.",
+    "supersedes_path": "data/xrp_intelligence/snapshots/20261030T180231Z-fomc-macro-xrp-etf-market-and-repo-audit.json"
+  }
+}

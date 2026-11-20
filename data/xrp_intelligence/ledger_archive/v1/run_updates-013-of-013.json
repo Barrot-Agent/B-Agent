@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 12,
+  "chunk_count": 13,
+  "record_count": 1,
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T03:08:30Z",
+      "update_type": "RIPPLE_PRIME_FCM_ACTUAL_CAPITAL_AND_REPO_BALANCE_SHEET_RECONCILIATION",
+      "main_sha": "84f991932d3137ae8df49cead40f611a83a97c2c",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "verified_prior_head_sha": "7730a0759ed372ccc9ca6c7184b23f77b1a3f034",
+      "source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731",
+        "SRC-SEC-HIDDENROAD-SOFC-20251231",
+        "SRC-KBRA-RIPPLE-PRIME-BBB-RATING-20260402",
+        "SRC-CFTC-FCM-FINANCIAL-DATA-METHODOLOGY-20261030",
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+      ],
+      "cftc_fcm_comparison": {
+        "as_of": "2026-07-31",
+        "hidden_road_partners_civ_us_llc": {
+          "adjusted_net_capital_usd": 731397154,
+          "required_net_capital_usd": 21413624,
+          "excess_net_capital_usd": 709983530,
+          "customer_assets_in_segregation_usd": 642769243,
+          "customer_segregation_required_usd": 581460604,
+          "excess_segregated_funds_usd": 61308639,
+          "target_residual_interest_usd": 27300000
+        },
+        "coinbase_financial_markets_inc": {
+          "adjusted_net_capital_usd": 310422285,
+          "required_net_capital_usd": 8351941,
+          "excess_net_capital_usd": 302070344,
+          "customer_assets_in_segregation_usd": 283373035,
+          "customer_segregation_required_usd": 155332638,
+          "excess_segregated_funds_usd": 128040397,
+          "target_residual_interest_usd": 15000000,
+          "part30_customer_assets_usd": 6009150,
+          "cleared_swap_customer_assets_usd": 155749427
+        },
+        "interpretation": "Hidden Road's reported adjusted net capital and segregated customer assets are larger than Coinbase Financial Markets' in this July snapshot, but the firms have different customer/product mixes; this is not an apples-to-apples measure of group size, XRP exposure, collateral usage, or cash available to buy XRP."
+      },
+      "sec_financial_statement": {
+        "as_of": "2025-12-31",
+        "total_assets_usd": 39019093000,
+        "total_liabilities_usd": 38498692000,
+        "member_equity_usd": 520401000,
+        "cash_usd": 17696000,
+        "reverse_repo_assets_usd": 38182647000,
+        "repo_liabilities_usd": 37769582000,
+        "parent_ripple_repo_usd": 100000000,
+        "parent_capital_contributions_after_year_end_through_2026_02_26_usd": 70000000,
+        "interpretation": "The entity's balance sheet is dominated by matched-book U.S. Treasury/MBS/agency repo financing, not free cash or XRP inventory. The $100M Ripple-parent repo is secured by U.S. Treasuries; it is not an XRP collateral transaction. The $70M is parent capital support, not customer XRP demand."
+      },
+      "key_correction": "FCM customer segregated assets, FCM adjusted net capital, repo financing and parent capital support are distinct measures. None is a proxy for XRP collateral deposits. The SEC statement does not identify XRP separately and does not establish that no client XRP was ever held.",
+      "verification": {
+        "sources_appended": 4,
+        "exact_head_python_validation_for_prior_head": "PASS_15_TESTS",
+        "prior_validator_run_id": 40995575523,
+        "prior_gate_run_id": 40995579814,
+        "new_append_validator": "PENDING",
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "workflow_dispatch_performed": false,
+        "paper_state_mutated": false,
+        "real_money_trade": false
+      }
+    }
+  ]
+}

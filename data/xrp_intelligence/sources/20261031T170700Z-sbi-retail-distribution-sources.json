@@ -1,0 +1,323 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "BARROT-XRP-SBI-RETAIL-DISTRIBUTION-AND-V3-AUDIT-20261031T170700Z",
+  "captured_at_utc": "2026-10-31T17:07:00Z",
+  "data_cutoff_utc": "2026-10-31T17:07:00Z",
+  "observed_main_sha": "9a25f4c05983c93c2fb572f7c2ff0f6c5006a999",
+  "observed_research_branch_head": "2bca5f4214f16eaaf40dead24147b6fc6bff5312",
+  "sources": [
+    {
+      "source_id": "SRC-20261031T170700Z-SBI-VC-TRADE-DCA",
+      "publisher": "SBI VC Trade Co., Ltd.",
+      "title": "Kantan Tsumitate official scheduled crypto-asset accumulation terms",
+      "url": "https://www.sbivc.co.jp/services/tsumitate",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_GROUP_OFFICIAL_PRODUCT_ECOSYSTEM",
+      "claims": [
+        "XRP is one of 28 assets eligible for SBI VC Trade's scheduled accumulation service.",
+        "Each order can be set from JPY 500 to JPY 2,000,000 in one-yen increments.",
+        "Customers may configure daily, weekly or monthly purchases per asset.",
+        "Customers must pre-fund sufficient JPY in the SBI VC Trade account; automatic bank-account debit is not supported.",
+        "Orders can be skipped when sufficient buying power is unavailable or service conditions are not met."
+      ],
+      "limitations": [
+        "No XRP-specific active-plan count, order count, aggregate JPY amount, filled XRP units, cancellations or execution venue is disclosed.",
+        "The product page does not establish whether SBI VC Trade sources XRP externally, through OTC counterparties or from existing inventory.",
+        "A configured plan is not evidence that every scheduled order executed.",
+        "No net external XRP capital or price impact can be calculated from product availability."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD",
+      "publisher": "SBI VC Trade Co., Ltd.; APLUS",
+      "title": "SBI VISA Crypto Card official product terms and current campaign status",
+      "url": "https://www.sbivc.co.jp/cryptocard",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_GROUP_OFFICIAL_PRODUCT_ECOSYSTEM",
+      "claims": [
+        "Each card selects one reward asset from BTC, ETH or XRP; eligible card points are automatically converted into the selected crypto-asset.",
+        "Standard earns one JPY 1 point per JPY 200 eligible shopping; Gold earns two JPY 1 points per JPY 200.",
+        "Eligible spend is measured from the 6th through the 5th; points are generally credited around the 17th of the following month and converted by that month's end.",
+        "The conversion quantity uses SBI VC Trade's displayed sales price at 06:59:59 Japan time on the preceding day; XRP is truncated to seven decimal places.",
+        "The September 1–October 31, 2026 application campaign was displayed as ended at capture time, November 1, 2026 Japan time; issuance deadline November 30, eligible spend through December 5, and rewards targeted by February 2027.",
+        "Campaign reward ceilings were JPY 2,000 equivalent for Standard and JPY 4,000 equivalent for Gold, plus a JPY 500-equivalent joining benefit subject to asset-priority rules."
+      ],
+      "limitations": [
+        "The acquisition campaign is closed in Japan at this capture; ordinary card and monthly reward mechanics are distinct from the expired sign-up campaign.",
+        "No XRP-selected card count, monthly reward-point total, XRP units credited or inventory procurement source is disclosed.",
+        "Point conversion is a reward-distribution mechanism, not proof of a customer-funded open-market XRP purchase.",
+        "The displayed sales-price reference is not a transaction-level execution record or proof of an external venue fill."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-SBI-HOLDINGS-XRP-SHAREHOLDER",
+      "publisher": "SBI Holdings, Inc.",
+      "title": "2026 shareholder benefit notice — XRP coupon option",
+      "url": "https://www.sbigroup.co.jp/news/2026/0204_16085.html",
+      "published_at_utc": "2026-02-04",
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_GROUP_OFFICIAL_SHAREHOLDER_BENEFITS",
+      "claims": [
+        "The 2026 benefit applies to shareholders on the March 31, 2026 record date.",
+        "Eligible holders in the 100-to-under-1,000-share tier, and 1,000-share holders with under one year of continuous ownership, may choose a JPY 2,000-equivalent XRP coupon or an SBI Alapromo product set.",
+        "Eligible holders with at least 1,000 shares and more than one year of continuous ownership may choose an JPY 8,000-equivalent XRP coupon or an SBI Alapromo product set.",
+        "XRP quantity is calculated using SBI VC Trade's displayed sale price on the July 31, 2026 application deadline.",
+        "XRP receipt requires an eligible domestic resident aged 18 or older with a same-name SBI VC Trade account."
+      ],
+      "limitations": [
+        "The coupon application deadline was July 31, 2026 and has passed.",
+        "The release does not disclose take-up, XRP selection share, coupon redemption, XRP units credited or inventory sourcing.",
+        "The coupon is a shareholder benefit, not evidence of a customer-funded spot purchase."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-SBI-ARUHI-XRP-SHAREHOLDER",
+      "publisher": "SBI ARUHI Co., Ltd.",
+      "title": "2026 shareholder benefit notice — XRP distribution",
+      "url": "https://www.sbigroup.co.jp/news/2026/0312_16171.html",
+      "published_at_utc": "2026-03-12",
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_GROUP_OFFICIAL_SHAREHOLDER_BENEFITS",
+      "claims": [
+        "The 2026 benefit applies to shareholders on the March 31, 2026 record date with at least 100 shares.",
+        "The benefit is JPY 500-equivalent XRP for 100 to under 1,000 shares and for 1,000 or more shares held less than one year.",
+        "Holders of at least 1,000 shares with at least one year of continuous ownership receive JPY 1,000-equivalent XRP.",
+        "XRP quantity is calculated using SBI VC Trade's sale price around mid-August 2026.",
+        "Receipt requires an eligible domestic resident aged 18 or older with a same-name SBI VC Trade account."
+      ],
+      "limitations": [
+        "The coupon application window was scheduled for early August 2026 and is no longer current.",
+        "No eligible shareholder count, redemption rate, XRP units credited or sourcing venue is disclosed.",
+        "Benefit value is not proof of net external XRP capital."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER",
+      "publisher": "SBI Insurance Group, Inc.",
+      "title": "Shareholder benefit program and SBI–Ripple relationship disclosure",
+      "url": "https://www.sbigroup.co.jp/news/2025/1029_15853.html",
+      "published_at_utc": "2025-10-29",
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_GROUP_OFFICIAL_SHAREHOLDER_BENEFITS",
+      "claims": [
+        "For the 2026 March 31 record date, the program provides JPY 2,500-equivalent XRP for 100–499 shares, JPY 10,000 for at least 500 shares held less than two years, and JPY 12,000 for at least 500 shares held more than two years.",
+        "XRP is credited to a same-name SBI VC Trade account; eligible holders must be able to open such an account.",
+        "The stated purpose includes improving awareness and investment attractiveness and deepening understanding of the SBI Group.",
+        "The release states that parent SBI Holdings is an investor in Ripple Labs and a strategic partner, and that SBI Ripple Asia was established as a joint venture in 2016."
+      ],
+      "limitations": [
+        "No eligible shareholder count, XRP coupon redemption rate, units credited, procurement source or external spot/OTC fill is disclosed.",
+        "The SBI–Ripple strategic relationship does not establish a specific XRP treasury purchase or price-support agreement.",
+        "The release is an SBI Group primary source, not independent corroboration of its own corporate relationship claims."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-SBI-SHINSEI-XRP-SHAREHOLDER",
+      "publisher": "SBI Shinsei Bank, Ltd.",
+      "title": "2026 shareholder benefit notice — XRP coupon option",
+      "url": "https://www.sbigroup.co.jp/news/2026/0225_16135.html",
+      "published_at_utc": "2026-02-25",
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_GROUP_OFFICIAL_SHAREHOLDER_BENEFITS",
+      "claims": [
+        "The 2026 benefit applies to shareholders on the March 31, 2026 record date.",
+        "Holders of at least 100 shares may choose an approximately JPY 2,000-equivalent XRP coupon or an SBI Alapromo product.",
+        "XRP quantity is calculated using SBI VC Trade's sale price in early December 2026 after the application deadline.",
+        "XRP receipt requires an eligible domestic resident aged 18 or older with a same-name SBI VC Trade account."
+      ],
+      "limitations": [
+        "The release says future-year benefits will be reconsidered and does not promise annual continuation.",
+        "No redemption, XRP unit, inventory sourcing or external purchase data is disclosed.",
+        "The coupon is a benefit liability, not proof of an open-market XRP buy."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-SBI-GLOBAL-ASSET-XRP-SHAREHOLDER",
+      "publisher": "SBI Global Asset Management, Inc.",
+      "title": "2026 shareholder benefits — XRP and commemorative XRP award",
+      "url": "https://www.sbigroup.co.jp/news/2025/1027_15845.html",
+      "published_at_utc": "2025-10-27",
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_GROUP_OFFICIAL_SHAREHOLDER_BENEFITS",
+      "claims": [
+        "For the March 31, 2026 record date, the base XRP benefit is JPY 2,500 equivalent for 100–499 shares, JPY 10,000 for at least 500 shares held under one year, and JPY 12,000 for at least 500 shares held over one year.",
+        "The 2026 program adds a separate JPY 3,000-equivalent commemorative XRP benefit for holders of at least 1,000 shares, in addition to the base award.",
+        "Some qualifying long-term holders with at least 1,000 shares can therefore receive JPY 15,000 equivalent across the base and commemorative XRP benefits.",
+        "XRP is credited to a same-name SBI VC Trade account; the award quantity is calculated using the March 31, 2026 17:00 JST XRP price."
+      ],
+      "limitations": [
+        "No eligible shareholder count, actual XRP selection or redemption rate, units credited or procurement source is disclosed.",
+        "The JPY benefit value cannot be converted into aggregate XRP without eligible-holder and redemption data.",
+        "The benefit is a distribution program, not proof of an external spot purchase."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-SBI-VISA-CARD-LAUNCH",
+      "publisher": "SBI VC Trade Co., Ltd.; APLUS Co., Ltd.; Visa Worldwide Japan",
+      "title": "SBI Group and Visa launch SBI VISA Crypto Card",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "published_at_utc": "2026-05-01",
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_APLUS_VISA_OFFICIAL_PARTNERSHIP",
+      "claims": [
+        "SBI VC Trade, APLUS and Visa announced the SBI VISA Crypto Card on May 1, 2026.",
+        "Eligible card points automatically convert into a selected crypto-asset, with BTC, ETH and XRP among the selectable assets.",
+        "The card is a retail distribution and reward mechanism involving SBI VC Trade, APLUS and Visa."
+      ],
+      "limitations": [
+        "The release does not disclose XRP-selected card count, reward units, monthly credited XRP or procurement source.",
+        "A Visa card partnership is not evidence of an XRP payment-rail integration or Coinbase relationship."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-SBI-VC-TRADE-CORPORATE",
+      "publisher": "SBI VC Trade Co., Ltd.",
+      "title": "SBI VC Trade official corporate and service overview",
+      "url": "https://www.sbivc.co.jp/",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_VC_TRADE_OFFICIAL",
+      "claims": [
+        "SBI VC Trade describes itself as a wholly owned SBI Group subsidiary.",
+        "Its VCTRADE service lists XRP, USDC, RLUSD and JPYSC among supported assets and offers spot, leverage, accumulation, lending and staking services."
+      ],
+      "limitations": [
+        "A product listing does not establish actual traded volume, customer holdings, XRP reserve balances or external execution sourcing.",
+        "VCTRADE and BITPOINT are distinct services and their balances must not be combined without an explicit crosswalk."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-BINANCE-XRP-PRICE",
+      "publisher": "Binance Price Directory",
+      "title": "XRP price and market statistics page",
+      "url": "https://www.binance.com/en/price/xrp",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "MARKET_DATA_PROVIDER",
+      "independence_group": "BINANCE_PRICE_DIRECTORY",
+      "claims": [
+        "The page's last-updated marker is October 31, 2026 11:53 UTC and displayed XRP at approximately USD 1.25, +0.18% over 24 hours.",
+        "The page displayed approximately USD 79.1B market capitalization, USD 2B 24-hour volume, 63.4B circulating supply, and a USD 1.23–1.26 24-hour range."
+      ],
+      "limitations": [
+        "The page's market-data timestamp is 11:53 UTC, several hours older than the later Liqwall derivatives observation.",
+        "The directory's displayed metrics are not a synchronized multi-exchange order-book snapshot.",
+        "The page's AI-generated commentary is excluded from the evidence record."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-LIQWALL-XRP-PANEL",
+      "publisher": "Liqwall",
+      "title": "XRP all-exchange futures, funding, open-interest and liquidation panel",
+      "url": "https://liqwall.com/coins/xrp",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "MARKET_DATA_PROVIDER",
+      "independence_group": "LIQWALL_DERIVATIVES_AGGREGATION",
+      "claims": [
+        "At 2026-10-31 16:42 UTC, XRP was approximately USD 1.25.",
+        "The panel reported USD 1.33B aggregate open interest, up 0.8% over 24 hours.",
+        "Average funding was +0.0040% per eight hours and Binance funding +0.0100% per eight hours.",
+        "Rolling 24-hour liquidations were USD 808K: USD 542K longs and USD 266K shorts.",
+        "72.9% of Binance accounts with XRP positions were long; Binance top-trader accounts were 71.0% long."
+      ],
+      "limitations": [
+        "The account long/short ratio is not notional exposure.",
+        "The rolling 24-hour liquidation window is not comparable to the page's UTC-day liquidation bins.",
+        "Provider contract universe and aggregation methodology differ from other observed XRP OI providers; do not average OI totals.",
+        "This panel is a point-in-time provider observation, not an independently audited exchange feed."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-GITHUB-MAIN-REF-PR-INVENTORY",
+      "publisher": "GitHub repository API",
+      "title": "B-Agent main ref and open pull-request inventory",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "AUTHORIZED_REPOSITORY_OBSERVATION",
+      "independence_group": "GITHUB_REPOSITORY_API",
+      "claims": [
+        "Main remained at 9a25f4c05983c93c2fb572f7c2ff0f6c5006a999.",
+        "The live open-PR inventory contained 193 PRs: 183 drafts and 10 ready for review.",
+        "191 PRs targeted main; 189 had stale base SHAs and two current-main PRs were #1419 and #1420."
+      ],
+      "limitations": [
+        "The open-PR inventory is a point-in-time API observation and may change immediately.",
+        "The full repository CI suite and full dependency/security scan were not run in this audit."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-GITHUB-PR-1419",
+      "publisher": "GitHub",
+      "title": "PR #1419 — Cross Analysis read-only remediation",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1419",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "AUTHORIZED_REPOSITORY_OBSERVATION",
+      "independence_group": "GITHUB_PULL_REQUEST_1419",
+      "claims": [
+        "PR #1419 is based on exact current main 9a25f4c05983c93c2fb572f7c2ff0f6c5006a999 and head 4fd68e3b0a00868e52ae10aa9369372b9df12df4.",
+        "The proposal changes Cross Analysis to contents:read, disables checkout credential persistence, removes Git add/commit/push, and uploads six generated outputs as a bounded artifact.",
+        "Exact-head CI run 41222623134 passed 345 tests plus 8 subtests; fail-closed gate 41222623112 passed with merging disabled.",
+        "The PR remains open, draft, mergeable and unmerged."
+      ],
+      "limitations": [
+        "The fix is not active on main until approved and merged.",
+        "Artifact-only output pauses automatic tracked-web updates; a separately reviewed publisher would be required to retain public-site refresh."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-GITHUB-PR-1420",
+      "publisher": "GitHub",
+      "title": "PR #1420 — Scheduler dispatch and Databricks token-input quarantine",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1420",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "AUTHORIZED_REPOSITORY_OBSERVATION",
+      "independence_group": "GITHUB_PULL_REQUEST_1420",
+      "claims": [
+        "PR #1420 is based on exact current main 9a25f4c05983c93c2fb572f7c2ff0f6c5006a999 and head 9950a00fae54afed0c84db2e1946f6c6f1f9fa15.",
+        "The scheduler proposal changes unattended execution to a read-only queue audit and removes actions:write, dispatch, queue commits and pushes.",
+        "The Databricks token workflow proposal removes the new_token input, sets permissions to empty, and explicitly reports ROTATION_NOT_PERFORMED.",
+        "The PR remains open, draft, mergeable and unmerged."
+      ],
+      "limitations": [
+        "Automatic scheduler execution remains active on main until approved and merged.",
+        "The token workflow remains unsafe on main until approved and merged; successful secret mutation by the original workflow was not established."
+      ]
+    },
+    {
+      "source_id": "SRC-20261031T170700Z-GITHUB-CI-GATES-1419-1420",
+      "publisher": "GitHub Actions",
+      "title": "Exact-head CI and fail-closed gate evidence for PRs #1419 and #1420",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "evidence_class": "AUTHORIZED_CI_EXECUTION_EVIDENCE",
+      "independence_group": "GITHUB_ACTIONS_RUNS",
+      "claims": [
+        "PR #1419 final head CI run 41222623134 passed 345 tests and 8 subtests; gate run 41222623112 passed with merging disabled.",
+        "PR #1420 final head CI run 41222627119 passed 346 tests and 8 subtests; gate run 41222627169 passed with merging disabled.",
+        "PR #1419's first CI attempt failed because the newly inserted test-list continuation contained a literal backslash-n argument; the CI list was corrected in a subsequent commit and the final exact head passed."
+      ],
+      "limitations": [
+        "These are PR-specific test results, not a full repository CI run.",
+        "Passing fail-closed gates explicitly kept merging disabled; neither PR was merged."
+      ]
+    }
+  ],
+  "independence_policy": "SBI product and shareholder-benefit sources are official but belong to one affiliated SBI ecosystem and are not independent external corroboration. Binance and Liqwall are separate market-data providers with different timestamps and coverage. GitHub PR and Actions records are direct authorized repository observations."
+}

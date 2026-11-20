@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 129,
+  "chunk_count": 130,
+  "record_count": 9,
+  "records": [
+    {
+      "id": "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE",
+      "source_id": "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE",
+      "publisher": "XRP Insights",
+      "title": "XRP Escrow Unlock Schedule — pinned XRPL ledger 108028302",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "retrieved_at_utc": "2026-10-31T18:03:00Z",
+      "evidence_class": "PUBLIC_ONCHAIN_DERIVED_SNAPSHOT",
+      "independence_group": "XRP_INSIGHTS_RIPPLED_RPC",
+      "claims": [
+        "Two Ripple-owned escrow objects totaling 1B XRP have FinishAfter 2026-11-01T00:00:00Z at ledger 108028302, closed 2026-10-31T18:03Z.",
+        "Ripple-owned escrow totals 31.4B XRP across 98 objects and 8 accounts.",
+        "Prior 12 releases: 12B released, 8.4B re-escrowed (70%), 3.6B net outside escrow; median EscrowFinish delay 11 seconds, max 2.3 days.",
+        "October 2026: 1B released, 700M re-escrowed, 300M net."
+      ],
+      "limitations": [
+        "Third-party derived public-rippled data, not a Ripple forecast.",
+        "FinishAfter eligibility is not proof of EscrowFinish, destination, exchange deposit or sale.",
+        "70% is historical, not guaranteed."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP",
+      "source_id": "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP",
+      "publisher": "Ripple and Coinbase",
+      "title": "Ripple and Coinbase Partner to Expand Access to Ripple USD",
+      "url": "https://www.businesswire.com/news/home/20261028332697/en/",
+      "published_at_utc": "2026-10-28T12:00:00Z",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "JOINT_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "independence_group": "RIPPLE_COINBASE_JOINT",
+      "claims": [
+        "RLUSD available through Coinbase Prime, Exchange and Retail from October 28.",
+        "Deposits/withdrawals supported across XRPL, Base and Ethereum.",
+        "Ripple says it will provide Base liquidity.",
+        "Coinbase Global Exchange RLUSD collateral use is deferred, not live at launch."
+      ],
+      "limitations": [
+        "Joint announcement, not independent evidence of volumes or net capital.",
+        "No chain-by-chain Coinbase balances or migration volume disclosed."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-RIPPLE-TRANSPARENCY-LIVE",
+      "source_id": "SRC-20261031T190021Z-RIPPLE-TRANSPARENCY-LIVE",
+      "publisher": "Ripple",
+      "title": "Ripple USD Transparency — issuer display as of October 29, 2026",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "ISSUER_LIVE_DISPLAY",
+      "independence_group": "RIPPLE_OFFICIAL",
+      "claims": [
+        "Ripple displays $2,627.0M circulating RLUSD and $2,758.6M reserve funds as of Oct29.",
+        "Derived cushion $131.6M, approximately 5.01% of circulation.",
+        "Standard Custody & Trust Company identified as issuer."
+      ],
+      "limitations": [
+        "Issuer display is not an independent Oct29 attestation; monthly report dates remain separate."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION",
+      "source_id": "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION",
+      "publisher": "Deloitte & Touche LLP / Standard Custody & Trust Company",
+      "title": "RLUSD Reserve Report — September 2026 independent accountant's report",
+      "url": "https://cdn.sanity.io/files/ior4a5y3/production/850ed07e8f0556b3b1c1d43eb2a0fc4ef6538ce1.pdf/RLUSD%20Attestation%20Report%20(Sep)_Final%20Signed.pdf",
+      "published_at_utc": "2026-10-26",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "INDEPENDENT_ACCOUNTANT_ATTESTATION",
+      "independence_group": "DELOITTE_ATTESTATION",
+      "claims": [
+        "Deloitte examined management's assertion for Sep21 and Sep30 at 5pm ET and opined it was fairly stated in all material respects.",
+        "Sep30: 2,399,995,528 RLUSD outstanding; reserve $2,524,008,274.",
+        "Derived surplus $124,012,746; coverage approximately 105.167%.",
+        "Outstanding units include NYDFS-approved XRPL, Ethereum, Base, Unichain, Optimism, Ink and XRPL EVM Sidechain."
+      ],
+      "limitations": [
+        "Exam dates are Sep21/Sep30, not Oct29/31; not a live proof of intraday redemption liquidity."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY",
+      "source_id": "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY",
+      "publisher": "stables.cool",
+      "title": "RLUSD chain supply dashboard — Oct31 2026",
+      "url": "https://stables.cool/RLUSD",
+      "retrieved_at_utc": "2026-10-31T15:10:00Z",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATOR",
+      "independence_group": "STABLES_COOL_ONCHAIN",
+      "claims": [
+        "Two-chain display: $2.42B total, Ethereum $1.71B and XRPL $707.4M.",
+        "At 15:10 UTC, XRPL 24h change -23.48%, Ethereum +1.05%."
+      ],
+      "limitations": [
+        "Provider warns public on-chain data may contain errors; two-chain scope excludes other networks; correlated with other issuer-account readers."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+      "source_id": "SRC-20261031T190021Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+      "publisher": "XRP Insights",
+      "title": "XRP Radar — RLUSD chain split and XRP supply breakdown",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATION",
+      "independence_group": "XRP_INSIGHTS_RIPPLED_AND_ISSUER_CONTRACTS",
+      "claims": [
+        "Oct31 display reports about $707M RLUSD on XRPL and $1.71B on Ethereum.",
+        "Distinguishes $276M distributed RWA from $4.06B represented/registry value.",
+        "XRP price reference $1.25 was timestamped 12:54 UTC, not current at 19:00."
+      ],
+      "limitations": [
+        "Exact RLUSD timestamp not stated; two-chain scope excludes smaller deployments; represented RWA is not transferable float."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-XRPLTO-RLUSD-SUPPLY",
+      "source_id": "SRC-20261031T190021Z-XRPLTO-RLUSD-SUPPLY",
+      "publisher": "XRPL.to",
+      "title": "RLUSD Supply Tracker — XRP Ledger issuer obligation",
+      "url": "https://xrpl.to/insights/rlusd-supply-tracker",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "SECONDARY_ONCHAIN_ISSUER_OBLIGATION_READ",
+      "independence_group": "XRPL_TO_ISSUER_ACCOUNT",
+      "claims": [
+        "Reports 707,358,110 RLUSD on XRPL from issuer rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De, refreshed hourly.",
+        "Reports about 67,863 holders and 101,560 trustlines; top ten accounts hold about 84%."
+      ],
+      "limitations": [
+        "Provider interpretation, not issuer attestation; correlated with other issuer-obligation readers; concentration is not beneficial ownership."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-XRLINEAGE-RLUSD-SUPPLY-CONFLICT",
+      "source_id": "SRC-20261031T190021Z-XRLINEAGE-RLUSD-SUPPLY-CONFLICT",
+      "publisher": "XRPL-Utilities / XR-Lineage",
+      "title": "XR-Lineage RLUSD supply observation — conflicting tracked value",
+      "url": "https://xrpl-utilities.com/lineage/",
+      "retrieved_at_utc": "2026-10-31T13:52:19Z",
+      "evidence_class": "CONFLICTING_SECONDARY_TRACKED_WALLET_OBSERVATION",
+      "independence_group": "XRPL_UTILITIES_LINEAGE",
+      "claims": [
+        "Page displayed 910.3M RLUSD on XRPL at 13:52:19 UTC, 907.3M Oct22 baseline and 2,000 tracked trustlines."
+      ],
+      "limitations": [
+        "About 202.9M above the 707.4M cluster; 2,000 trustlines differs from XRPL.to's 101,560; no raw query retrieved; quarantine from features."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-GITHUB-MAIN-200-PR-WORKFLOW-AUDIT",
+      "source_id": "SRC-20261031T190021Z-GITHUB-MAIN-200-PR-WORKFLOW-AUDIT",
+      "publisher": "GitHub REST API and Barrot-Agent/B-Agent",
+      "title": "Current main, open PR inventory, workflow and CI audit",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "REPOSITORY_API_AND_CODE_OBSERVATION",
+      "independence_group": "GITHUB_REST_AND_ACTIONS",
+      "claims": [
+        "200 open PRs: 190 drafts, 10 ready; 198 main-based, 196 stale, 2 current-main, 2 non-main.",
+        "Main 97546c3; only current-main PRs #1426/#1427, duplicate draft deletions of one accidental test file.",
+        "PR #1424 CI 385+8; #1425 CI 346+8 and dependency audit 132 packages/0 reported vulnerabilities; #1423 CI 353+8; #1427 CI 342+8; all gates passed disabled.",
+        "Main retains cross-analysis/scheduler writes, daily accuracy writer, autonomous/cognitive writers, hourly subscriber sync, manual paper-trader and unsafe Databricks token-input path.",
+        "Subscriber sync publishes unsalted SHA-256 purchaser email hashes to public web/subscribers.json; current file empty.",
+        "Main 18:51:39Z commit changed only sentiment_shift.json generated_at; no workflow run returned. Parent 18:51:24Z added a 45-line mocked test file directly to main."
+      ],
+      "limitations": [
+        "Bounded audit, not full CI/security/dependency audit; no lockfile; security alerts/branch protection unavailable; prior main write was not made in this run."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T181710Z-SBIC-CHATGPT-ASK-IDENTITY-RESOLUTION",
+  "captured_at_utc": "2026-10-30T18:17:10Z",
+  "source_ids": [
+    "SRC-ACL-SBIC-SOCIAL-BIAS-INFERENCE-2020",
+    "SRC-ZIEMS-LLM-CSS-BENCHMARK-SBIC-2023V3",
+    "SRC-CHENG-CSS-REVIEW-SBIC-MISEXPANSION-2023",
+    "SRC-PERMISSION-OFFICIAL-FAMILY-AI-20261030",
+    "SRC-PERMISSION-OFFICIAL-ASK-TOKEN-DOCS-20261030",
+    "SRC-CMC-PERMISSION-ASK-20261030T1817Z",
+    "SRC-COINGECKO-PERMISSION-ASK-20261030T1817Z",
+    "SRC-COINBASE-BASE-OFFICIAL-2023"
+  ],
+  "edges": [
+    {
+      "from": "SBIC_ACRONYM_IN_CHATGPT_BENCHMARK_CONTEXT",
+      "to": "SOCIAL_BIAS_INFERENCE_CORPUS",
+      "relationship": "Primary ACL 2020 paper explicitly names the Social Bias Inference Corpus; separate from Japanese SBIC East Japan.",
+      "status": "PRIMARY_CONFIRMED"
+    },
+    {
+      "from": "GPT_3_5_TURBO_2023",
+      "to": "SBIC_HUMAN_GOLD_EXPLANATION",
+      "relationship": "65.9% of pairwise rankings unanimously preferred GPT-3.5 explanations over gold human explanations in the specific zero-shot Social Bias Inference task.",
+      "status": "PRIMARY_CONFIRMED_METRIC_SEMANTICS"
+    },
+    {
+      "from": "GPT_4_2023",
+      "to": "SBIC_HUMAN_GOLD_EXPLANATION",
+      "relationship": "60.6% pairwise preference over gold human explanations in the same narrow task.",
+      "status": "PRIMARY_CONFIRMED"
+    },
+    {
+      "from": "CHENG_2023_SECONDARY_REVIEW",
+      "to": "SBIC_ACRONYM",
+      "relationship": "Secondary review expands SBIC as COVID-19 social/behavioral implications and conflates the gold reference with political ideology; contradicted by primary ACL and benchmark sources.",
+      "status": "SECONDARY_CONFLICT_DISCONFIRMED"
+    },
+    {
+      "from": "PERMISSION_AI",
+      "to": "PERMISSION_ASK_TOKEN",
+      "relationship": "Official current site and token documentation describe ASK as a utility/rewards token for Permission's family-AI and agent ecosystem; official site says it is not an investment product.",
+      "status": "PRIMARY_COMPANY_DOCUMENTATION"
+    },
+    {
+      "from": "PERMISSION_ASK_TOKEN",
+      "to": "LAYERZERO_OFT_BASE_POLYGON",
+      "relationship": "Official docs list Base and Polygon OFT contracts; migration from legacy Wormhole Base representation to LayerZero contract is reported by CoinGecko.",
+      "status": "PRIMARY_DOCS_WITH_SECONDARY_MIGRATION_NOTE"
+    },
+    {
+      "from": "COINBASE",
+      "to": "BASE_NETWORK",
+      "relationship": "Coinbase says Base was incubated inside Coinbase and is an open Ethereum L2; ASK's Base deployment creates an indirect network relationship only.",
+      "status": "PRIMARY_COMPANY_STATEMENT"
+    },
+    {
+      "from": "PERMISSION_ASK_TOKEN",
+      "to": "XRP_LEDGER_XRP",
+      "relationship": "No direct XRPL/XRP integration appears in the official Permission ASK documentation reviewed; no causal or commercial link established.",
+      "status": "NO_DIRECT_LINK_FOUND_IN_REVIEWED_SOURCES"
+    },
+    {
+      "from": "CMC_PERMISSION_ASK_MARKET_DATA",
+      "to": "COINGECKO_PERMISSION_ASK_MARKET_DATA",
+      "relationship": "Price, 24h ranges, circulating supply, market cap and volume materially disagree; the market feed is not reconciled.",
+      "status": "DATA_QUALITY_CONFLICT"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T181710Z-SBIC-CHATGPT-MEANING",
+      "claim": "The phrase 'SBIC, ChatGPT SBIC' refers to the Social Bias Inference Corpus benchmark rather than the Japanese SBIC investment company.",
+      "status": "HIGH_CONFIDENCE_CONTEXTUAL_RESOLUTION",
+      "support": [
+        "ACL 2020 primary paper explicitly defines SBIC as Social Bias Inference Corpus",
+        "Ziems et al. 2023 explicitly uses Social Bias Inference (SBIC) and reports 65.9% GPT-3.5 and 60.6% GPT-4 pairwise preference"
+      ],
+      "counter_evidence": [
+        "A 2023 secondary review mis-expands the acronym as COVID-19 social/behavioral implications",
+        "Japanese SBIC East Japan independently exists, but is unrelated to the benchmark"
+      ],
+      "required_test": "Retain both entity records and match future source context to exact acronym use."
+    },
+    {
+      "id": "HYP-20261030T181710Z-ASK-PERMISSION-CANDIDATE",
+      "claim": "Permission Coin (ASK) is the intended ASK Coin referenced by the user.",
+      "status": "PLAUSIBLE_CANDIDATE_NOT_CONFIRMED",
+      "support": [
+        "Official Permission site and docs use the ASK ticker",
+        "Public market listings identify Permission Coin (ASK)"
+      ],
+      "counter_evidence": [
+        "Ticker collisions are common",
+        "No originating video, article or speaker context ties this token to the user's phrase"
+      ],
+      "required_test": "Find the originating public statement or channel before assigning identity."
+    },
+    {
+      "id": "HYP-20261030T181710Z-ASK-COINBASE-INDIRECT",
+      "claim": "Permission ASK has an indirect Coinbase ecosystem relationship through deployment on Base.",
+      "status": "CONFIRMED_INFRASTRUCTURE_RELATIONSHIP_ONLY",
+      "support": [
+        "Permission docs list ASK Base contract",
+        "Coinbase says Base is incubated inside Coinbase"
+      ],
+      "counter_evidence": [
+        "No direct Coinbase investment, listing, endorsement or commercial agreement found"
+      ],
+      "required_test": "Look for official Coinbase asset listing, Base ecosystem grant or Permission partnership announcement."
+    },
+    {
+      "id": "HYP-20261030T181710Z-ASK-XRPL-NO-LINK",
+      "claim": "Permission ASK has no direct XRP/XRPL integration.",
+      "status": "NO_DIRECT_LINK_FOUND_NOT_PROOF_OF_ABSENCE",
+      "support": [
+        "Official docs list Base and Polygon only"
+      ],
+      "counter_evidence": [
+        "Private, unpublished or indirect integrations cannot be ruled out"
+      ],
+      "required_test": "Search XRPL token registries, on-ledger issuances, issuer addresses and official Permission announcements."
+    },
+    {
+      "id": "HYP-20261030T181710Z-ACTUAL-CAPITAL",
+      "claim": "The phrase 'actual capital' refers to distinguishing market capitalization from actual cash invested or net capital flows.",
+      "status": "ANALYTICAL_INTERPRETATION_SOURCE_UNRESOLVED",
+      "support": [
+        "Market-cap formula is price times circulating supply; it does not measure cash inflow"
+      ],
+      "counter_evidence": [
+        "No exact original speaker or document has been identified"
+      ],
+      "required_test": "Continue exact-phrase search and source attribution."
+    },
+    {
+      "id": "HYP-20261030T181710Z-CAMILLA-YOUTUBE",
+      "claim": "The public YouTube channel previously considered under the name Kamilah/Camila Stevenson belongs to Camilla Stephenson.",
+      "status": "NOT_SUPPORTED",
+      "support": [],
+      "counter_evidence": [
+        "No authoritative identity link found; exact-name channel search did not verify a match"
+      ],
+      "required_test": "Require exact channel identity or direct self-identification before combining video inventories."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

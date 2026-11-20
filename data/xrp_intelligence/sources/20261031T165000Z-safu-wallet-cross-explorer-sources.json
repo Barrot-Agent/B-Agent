@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "XRP-SAFU-WALLET-CROSS-EXPLORER-20261031T165000Z",
+  "captured_at_utc": "2026-10-31T16:50:00Z",
+  "data_cutoff_utc": "2026-10-31T16:50:00Z",
+  "observed_main_sha": "21ff522fe6457fb472e8140c180f0643b7948b29",
+  "observed_research_head_sha": "266264f312baacb7ab2464b9ce9973a0650d1190",
+  "existing_source_ids": [
+    "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ",
+    "SRC-20261031T164500Z-BITINFOCHARTS-SAFU-BTC-ADDRESS",
+    "SRC-20261031T164500Z-SWOLECHARTS-BINANCE-FUTURES-INSURANCE",
+    "SRC-20261031T164500Z-ADGM-NEST-CLEARING-REGISTER",
+    "SRC-20261031T164500Z-BINANCE-ADGM-LEGAL-ENTITY-STRUCTURE"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T165000Z-TOKENVIEW-SAFU-BTC-ADDRESS",
+      "publisher": "Tokenview",
+      "title": "Bitcoin address balance and transaction history — Binance-designated SAFU wallet",
+      "url": "https://btc.tokenview.io/en/address/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T16:50:00Z",
+      "evidence_type": "THIRD_PARTY_ONCHAIN_EXPLORER_OBSERVATION",
+      "independence_group": "TOKENVIEW_ONCHAIN",
+      "status": "VERIFIED_PROVIDER_OBSERVATION",
+      "claims": [
+        "The page displays a balance of 15,000.00147092 BTC for the Binance-designated SAFU address.",
+        "The page reports 27 transactions, total received 31,277.00056174 BTC and total sent 16,276.99909082 BTC; latest transaction shown is 2026-08-09."
+      ],
+      "limitations": [
+        "The page does not expose a precise block-height or data-refresh timestamp in the captured result.",
+        "The transaction count differs from BitInfoCharts' 28; net received-minus-sent and displayed balance agree to displayed precision."
+      ]
+    },
+    {
+      "id": "SRC-20261031T165000Z-SOCHAIN-SAFU-BTC-ADDRESS",
+      "publisher": "SoChain",
+      "title": "Bitcoin address transaction history — Binance-designated SAFU wallet",
+      "url": "https://sochain.com/address/BTC/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T16:50:00Z",
+      "evidence_type": "THIRD_PARTY_ONCHAIN_EXPLORER_OBSERVATION",
+      "independence_group": "SOCHAIN_ONCHAIN",
+      "status": "VERIFIED_PROVIDER_OBSERVATION",
+      "claims": [
+        "The page lists 27 transactions for the Binance-designated SAFU BTC address and shows the latest transaction dated 2026-08-09.",
+        "The displayed balance is consistent with approximately 15,000.00147092 BTC."
+      ],
+      "limitations": [
+        "The page's data-refresh timestamp and exact current block height were not available in the captured result.",
+        "The latest transaction date is not proof that no unconfirmed or separately held SAFU assets exist."
+      ]
+    }
+  ],
+  "independence_policy": "Tokenview, SoChain and BitInfoCharts are separate public explorer providers. They corroborate the displayed address balance and latest transaction date, but the differing transaction counts and absent block-height timestamps remain data-quality limitations. Binance's official announcement identifies the address."
+}

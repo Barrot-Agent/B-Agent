@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 45,
+  "chunk_count": 46,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T13:16:00Z",
+  "records": [
+    "SBI VC Trade's network-support matrix applies to VCTRADE only. It does not establish network support across all SBI Group affiliates, Circle Mint, Ripple services or third-party venues. The matrix confirms native XRP on XRPL, USDC and RLUSD on Ethereum, and no JPYSC deposit/withdrawal support. It does not disclose internal stablecoin/XRP trading pairs, customer balances, executed conversion volume, liquidity depth or price impact. Circle USDC and Ripple RLUSD are deployed on XRPL elsewhere; this finding is a venue-specific route gap, not a global lack of XRPL stablecoin liquidity."
+  ]
+}

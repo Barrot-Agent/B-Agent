@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T084254Z-APPROVAL-WORKFLOW-DEFAULT-BRANCH-COUNTEREXAMPLE",
+  "captured_at_utc": "2026-10-31T08:42:54Z",
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031-GH-XRP-LEDGER-VALIDATOR-41185679403",
+    "SRC-20261031-GH-APPROVAL-ZERO-JOBS-41185678470",
+    "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP"
+  ],
+  "nodes": [
+    {
+      "id": "MAIN",
+      "type": "git_branch",
+      "label": "main b90e600"
+    },
+    {
+      "id": "APPROVAL_WORKFLOW",
+      "type": "github_workflow",
+      "label": "Barrot Controlled PR Approval on default branch"
+    },
+    {
+      "id": "PR1402",
+      "type": "github_pull_request",
+      "label": "Push no-op proposal"
+    },
+    {
+      "id": "PR1402_BRANCH",
+      "type": "git_branch",
+      "label": "PR #1402 branch"
+    },
+    {
+      "id": "XRP_RESEARCH_BRANCH",
+      "type": "git_branch",
+      "label": "XRP research branch e8d442"
+    },
+    {
+      "id": "XRP_LEDGER_VALIDATOR",
+      "type": "validation_component",
+      "label": "XRP archive validator"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E-PR1402-PUSH-PASS",
+      "from": "PR1402_BRANCH",
+      "relation": "contains_push_noop_that_passed",
+      "to": "APPROVAL_WORKFLOW",
+      "evidence_class": "EXACT_PUSH_RUN_SUCCESS",
+      "source_ids": [
+        "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP"
+      ]
+    },
+    {
+      "id": "E-MAIN-DEFAULT-WORKFLOW-STILL-FAILS",
+      "from": "XRP_RESEARCH_BRANCH",
+      "relation": "push_event_uses_unmodified_default_workflow_and_gets_zero_jobs",
+      "to": "APPROVAL_WORKFLOW",
+      "evidence_class": "EXACT_PUSH_RUN_ZERO_JOBS",
+      "source_ids": [
+        "SRC-20261031-GH-APPROVAL-ZERO-JOBS-41185678470"
+      ]
+    },
+    {
+      "id": "E-PR1402-NOT-MERGED",
+      "from": "PR1402",
+      "relation": "not_yet_changed",
+      "to": "MAIN",
+      "evidence_class": "OPEN_DRAFT_UNMERGED_PR",
+      "source_ids": [
+        "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP",
+        "SRC-20261031-GH-APPROVAL-ZERO-JOBS-41185678470"
+      ]
+    },
+    {
+      "id": "E-XRP-VALIDATOR-PASS",
+      "from": "XRP_LEDGER_VALIDATOR",
+      "relation": "validated_exact_head",
+      "to": "XRP_RESEARCH_BRANCH",
+      "evidence_class": "364_SHARDS_20_TESTS_PASS",
+      "source_ids": [
+        "SRC-20261031-GH-XRP-LEDGER-VALIDATOR-41185679403"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-PR1402-BRANCH-ONLY-FIX",
+      "statement": "The push-noop fix is effective on the PR branch but not active on other branches while main remains unchanged; the zero-job condition persists repository-wide until PR #1402 is approved and merged.",
+      "classification": "CONFIRMED_FOR_OBSERVED_BRANCHES",
+      "supporting_source_ids": [
+        "SRC-20261031-GH-XRP-LEDGER-VALIDATOR-41185679403",
+        "SRC-20261031-GH-APPROVAL-ZERO-JOBS-41185678470",
+        "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP"
+      ],
+      "disconfirming_or_alternative": [
+        "Other branches that independently contain the new workflow may also pass.",
+        "Manual workflow_dispatch behavior remains untested."
+      ],
+      "status": "MAIN_FIX_PENDING"
+    },
+    {
+      "id": "H-XRP-ARCHIVE-VALIDATOR-EXACT-HEAD",
+      "statement": "The 364-shard research ledger at e8d442 is structurally consistent and passed the exact-head validator without state mutation.",
+      "classification": "VERIFIED_VALIDATOR_RESULT",
+      "supporting_source_ids": [
+        "SRC-20261031-GH-XRP-LEDGER-VALIDATOR-41185679403"
+      ],
+      "disconfirming_or_alternative": [
+        "No fail-closed gate run was found for e8d442; gate status remains unverified."
+      ],
+      "status": "VALIDATOR_PASS_GATE_NOT_OBSERVED"
+    }
+  ]
+}

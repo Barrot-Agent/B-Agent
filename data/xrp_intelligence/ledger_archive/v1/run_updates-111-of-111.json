@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 110,
+  "chunk_count": 111,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T020816Z-BNY-COINBASE-CIRCLE-SBI-SBIC-INSTITUTIONAL-MULTIRAIL",
+      "created_at_utc": "2026-10-31T02:08:16Z",
+      "data_cutoff_utc": "2026-10-31T02:08:16Z",
+      "summary": "Added primary evidence for BNY's live XRP/RLUSD custody support, BNY/Ripple/C2FO trade-finance exploration, C2FO Instant Pay RLUSD settlement, Coinbase RLUSD distribution, Coinbase's continuing Circle economics, Circle Arc's SBI/Coinbase roles, Ripple National Trust Bank's OCC effective date, SBI's multi-rail strategy and the exact Tokyo SBIC/ChatGPT seminar identity. Added synchronized provider-scoped ETF and Binance-perpetual observations and refreshed main/PR/workflow audit.",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z",
+        "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z",
+        "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z",
+        "SRC-SBI-OPEN-STANDARD-20261031T020816Z",
+        "SRC-RIPPLE-SBI-RLUSD-JAPAN-20261031T020816Z",
+        "SRC-TOKYO-SBIC-GENAI-SEMINAR-20261031T020816Z",
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029-20261031T020816Z",
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T2245Z",
+        "SRC-XRP-INSIGHTS-ETF-HOLDINGS-20261029-20261031T020816Z",
+        "SRC-MAKETO-XRP-ETF-FLOWS-20261029-20261031T020816Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T020816Z-institutional-xrp-custody-stablecoin-and-trade-finance.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T020816Z-institutional-rlusd-custody-trade-finance-coinbase-circle-sbi-sbic.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T020816Z-institutional-capital-and-token-value-capture-separation.json",
+      "repository_audit_path": "data/repository_audits/20261031T020816Z-main-safety-pr-fresh-main-audit.json",
+      "actions": [
+        "Verified BNY's official XRP and RLUSD custody support for eligible clients and separated live custody from future tokenized-asset/mint-redeem plans.",
+        "Separated C2FO's historical $520B working-capital access from the new Instant Pay initiative; recorded RLUSD as settlement asset and participating capital providers as funders.",
+        "Verified Coinbase RLUSD availability on Prime/Exchange/Retail and deposits/withdrawals on XRPL/Base/Ethereum; marked Coinbase Global Exchange collateral functionality as future.",
+        "Reconciled Coinbase Q3 and Circle Q2 SEC filings, including the renewed Circle arrangement, USDC platform metrics and distribution costs.",
+        "Mapped Circle Arc roles: SBI Group founding validator, Coinbase exchange-access partner, USDC gas, Aave/Morpho credit-market infrastructure.",
+        "Resolved the ChatGPT/SBIC event to Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; kept it separate from SBI Holdings and OpenAI.",
+        "Updated PR #1386, #1390 and #1388 branches with current main using non-force merge commits; verified exact-head CI and fail-closed gates."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "No C2FO Instant Pay actual funded amount or XRPL transaction volume.",
+        "No BNY XRP custody balance or collateral acceptance terms.",
+        "Coinbase RLUSD Global Exchange collateral availability remains future at announcement.",
+        "Circle Q3 2026 data not yet published; Q3 results scheduled for November 4.",
+        "Camilla Stephenson YouTube channel identity remains unresolved."
+      ],
+      "next_actions": [
+        "Verify C2FO Instant Pay live transactions and participating capital providers.",
+        "Track BNY XRP custody product activation and any disclosed balances/collateral terms.",
+        "Verify Coinbase RLUSD Global Exchange collateral go-live and balances.",
+        "Reconcile Circle/Coinbase Q3 economics after Circle's November 4 release.",
+        "Build event-study controls that separate announcement clusters from actual XRPL/XRP flows."
+      ],
+      "source_reference_count": 17,
+      "missing_source_references": 0
+    }
+  ]
+}

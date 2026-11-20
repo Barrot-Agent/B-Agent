@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T161501Z-DERIVATIVES-ETF-AND-REPOSITORY-SECURITY",
+  "captured_at_utc": "2026-10-30T16:15:01Z",
+  "source_ids": [
+    "SRC-BINANCE-OFFICIAL-IN-KIND-REPLENISHMENT-20261030T150337Z",
+    "SRC-BITQUERY-BINANCE-XRP-POR-LABELS-20261030",
+    "SRC-COINDESK-BINANCE-OCT1-POR-WALLET-CROSSWALK-20261030",
+    "SRC-LIQWALL-XRP-DERIVATIVES-20261030T161501Z",
+    "SRC-XRPINSIGHTS-ETF-FLOWS-20261030T161501Z",
+    "SRC-REPO-MAIN-WORKFLOW-AUDIT-20261030T161501Z",
+    "SRC-REPO-PR1374-HF-ISOLATION-REDTEAM-20261030T161501Z"
+  ],
+  "edges": [
+    {
+      "from": "BINANCE",
+      "to": "CUSTOMER_RESTITUTION_IN_KIND_RESERVE",
+      "relationship": "Company reports >$6.34B reserve, $5B already held in affected token assets and approximately $1.34B to acquire through market and OTC; approximately $3B frozen is separate.",
+      "status": "OFFICIAL_COMPANY_ANNOUNCEMENT; XRP_ALLOCATION_UNKNOWN"
+    },
+    {
+      "from": "BITQUERY",
+      "to": "BINANCE_XRPL_SOURCE_WALLETS",
+      "relationship": "Bitquery says all 17 drained hot wallets carry Binance PoR labels in its address data; the XRP leg comprises five accounts and 233.46M XRP.",
+      "status": "PROVIDER_ADDRESS_LABELS; RAW_OFFICIAL_XRP_ADDRESS_FILE_NOT_RETRIEVED"
+    },
+    {
+      "from": "COINDESK",
+      "to": "BINANCE_OCTOBER_1_PROOF_OF_RESERVES",
+      "relationship": "CoinDesk independently identifies Ethereum Binance 14 in the October 1 PoR data and estimates ETH backing near 94% after the drain; this is not an XRP reserve ratio.",
+      "status": "SECONDARY_REVIEW; ETH_SPECIFIC"
+    },
+    {
+      "from": "LIQWALL",
+      "to": "XRP_DERIVATIVES_MARKET",
+      "relationship": "At 04:32 UTC: OI $1.31B, 24h liquidations $39.6M (96% longs), average funding -0.0101%/8h; provider-specific coverage.",
+      "status": "PUBLIC_AGGREGATE_SNAPSHOT; NOT_SYNCHRONIZED_WITH_TRADRADAR"
+    },
+    {
+      "from": "TRADRADAR",
+      "to": "XRP_DERIVATIVES_MARKET",
+      "relationship": "At 04:00 UTC: seven-exchange OI $1.85B, 24h liquidations at least $31.72M (95.4% longs), OI-weighted funding -0.0077%/8h.",
+      "status": "PUBLIC_AGGREGATE_SNAPSHOT; DIFFERENT_VENUE_SCOPE"
+    },
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "US_XRP_SPOT_ETF_HOLDINGS",
+      "relationship": "Reports +6.40M XRP on October 29 across six spot funds plus BITW, with 1.19665B XRP held; flow is based on issuer-reported holdings.",
+      "status": "ISSUER_HOLDING_CHANGE_AGGREGATOR; FUND_UNIVERSE_DECLARED"
+    },
+    {
+      "from": "XRP_ETF_OCTOBER_29_FLOW",
+      "to": "BINANCE_XRPL_INCIDENT",
+      "relationship": "The ETF session closed at approximately 20:00 UTC, four minutes before the first XRPL drain at 20:04 UTC.",
+      "status": "PRE_INCIDENT_FLOW; NOT_A_RESPONSE_TO_THE_INCIDENT"
+    },
+    {
+      "from": "BARROT_PR_1374",
+      "to": "HUGGINGFACE_MODEL_MERGE_SECURITY",
+      "relationship": "Separate merge and upload jobs/runners, no token in remote-code job, upload job has empty GitHub permissions, validated model-name input and symlink checks.",
+      "status": "EXACT_HEAD_347_TESTS_PLUS_8_SUBTESTS_AND_FAIL_CLOSED_GATE_PASS; OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "from": "BARROT_MAIN",
+      "to": "CROSS_ANALYSIS_GENERATED_COMMITS",
+      "relationship": "Hourly and workflow_run triggers retain contents:write and automatic main commits/pushes.",
+      "status": "LIVE_MAIN_CONFIGURATION; READ_ONLY_PR_NOT_MERGED"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T161501Z-BINANCE-IN-KIND-XRP-DEMAND",
+      "claim": "Some of Binance's approximately $1.34B in remaining in-kind asset purchases could include XRP and create market or OTC demand.",
+      "status": "POSSIBLE_NOT_QUANTIFIED",
+      "support": [
+        "Binance says purchases will be made in the exact affected tokens through market and OTC channels.",
+        "XRP was one of the affected assets."
+      ],
+      "counter_hypothesis": "The aggregate could be concentrated in BTC, ETH, stablecoins or other affected assets; no XRP quantity, venue, execution time or price is disclosed."
+    },
+    {
+      "id": "HYP-20261030T161501Z-XRP-LONG-UNWIND",
+      "claim": "The October 30 XRP derivatives panel is consistent with a long-led leverage unwind rather than evidence of net spot selling.",
+      "status": "SUPPORTED_AS_DERIVATIVES_DESCRIPTION_ONLY",
+      "support": [
+        "Liqwall reports 96% of liquidations were longs and negative average funding.",
+        "TradRadar independently reports long-dominated liquidations and negative OI-weighted funding."
+      ],
+      "counter_hypothesis": "OI scopes differ materially, account ratios are not notional exposure, and no synchronized spot order-flow panel isolates spot selling."
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

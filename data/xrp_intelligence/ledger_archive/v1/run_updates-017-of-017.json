@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 16,
+  "chunk_count": 17,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T06:08:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T06:08:00Z",
+      "update_type": "BINANCE_XRPL_INDEPENDENT_TRACE_BINANCE_STATUS_ETF_RECONCILIATION_AND_LEDGER_VALIDATOR_V3_FIX",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_append": "bcbdcdacbf0c7d65ece89d681107d4195703b77c",
+      "main_sha": "a644a2254a2c38e20a3b368090ced43d4767e561",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z",
+        "SRC-BINANCE-VERIFIED-DEPOSITS-WITHDRAWALS-20261030T0608Z",
+        "SRC-REUTERS-BINANCE-INCIDENT-STATUS-AND-MARKET-REACTION-20261030T0608Z",
+        "SRC-COINDESK-BINANCE-POR-WALLET-IMPACT-20261030T0608Z",
+        "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-OCT29-20261030T0608Z",
+        "SRC-CRYPTOETF-TODAY-XRP-PARTIAL-FLOW-OCT29-20261030T0608Z",
+        "SRC-XRPINSIGHTS-XRP-ETF-HOLDINGS-OCT28-20261030T0608Z",
+        "SRC-TRM-BINANCE-THEFT-XRPL-RLUSD-20261030T0508Z",
+        "SRC-BINANCE-SECURITY-UPDATE-20261030T0508Z",
+        "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-20261029-20261030T0508Z",
+        "SRC-TRADRADAR-XRP-PERP-20261030T0435Z"
+      ],
+      "incident_observations": {
+        "xrp_transfer": "TRM 233.46M XRP; Bitquery 233.5M rounded; five Binance XRPL wallets; receiver rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx; no outbound transfer through 03:54 UTC according to Bitquery.",
+        "cross_chain_scope": "TRM reports 10 chains; Bitquery reports 9. Bitquery says XRP/Solana share no address with other chains and are linked by timing, unusual construction and Binance's aggregate impact.",
+        "binance_status": "Deposits operating normally; withdrawals still paused; verified Binance News account expected resumption within 48h. Full technical postmortem pending.",
+        "proof_of_reserves": "Bitquery labels all drained wallets as Binance PoR wallets; CoinDesk identifies Binance 14 (Ethereum) in Oct1 PoR. No XRP-specific reserve ratio recalculated.",
+        "issuer_freezes": "TRM's token-level trace confirms 40.5M RLUSD frozen; wider ~$200M Ripple assistance statement not fully reconciled."
+      },
+      "market_observations": [
+        {
+          "provider": "Bitquery",
+          "captured_at_utc": "2026-10-30T03:54:00Z",
+          "asset": "XRP",
+          "observation": "233.5M XRP remained at attacker receiver; receiver had not sent a transaction since drain",
+          "type": "ONCHAIN_CUSTODY_EVENT",
+          "not_a_sale": true
+        },
+        {
+          "provider": "ETF trackers",
+          "captured_at_utc": "2026-10-30T06:08:00Z",
+          "asset": "XRP",
+          "observation": "Alpha +$8.4M/5 funds vs CryptoETF.today +$7.1M/2 of 5 funds for Oct29; XRP Insights Oct28 +174.14K XRP and Oct26-28 -2.96M XRP",
+          "type": "FLOW_MEASUREMENT_DISAGREEMENT",
+          "feature_admission": false
+        }
+      ],
+      "validator_fix": {
+        "root_cause": "index_format_version 3.0 rejected by validator hard-coded to 2.0",
+        "exact_head": "bcbdcdacbf0c7d65ece89d681107d4195703b77c",
+        "tests_passed": 18,
+        "tests_failed": 0,
+        "validator_run_id": 41012274744,
+        "gate_run_id": 41012274881,
+        "merge_disabled": true
+      },
+      "pr_status": {
+        "pr1353": {
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1353",
+          "state": "OPEN_DRAFT_UNMERGED",
+          "head": "bcbdcdacbf0c7d65ece89d681107d4195703b77c",
+          "validator": "18_PASS",
+          "gate": "PASS"
+        },
+        "pr1363": {
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1363",
+          "state": "OPEN_DRAFT_UNMERGED",
+          "head": "45c7b187458d076c22797f7fb8ca434c43826a66",
+          "ci_run_id": 41006916313,
+          "gate_run_id": 41006916326,
+          "base": "bbff39f358239613acb6a8781e217c9f10515167",
+          "current_main": "a644a2254a2c38e20a3b368090ced43d4767e561",
+          "mergeable": true,
+          "main_ahead_commits": 2,
+          "changed_path_overlap": false
+        },
+        "approval_workflow": {
+          "run_id": 41012267755,
+          "status": "FAILED_ZERO_JOBS_ROOT_CAUSE_UNRESOLVED"
+        }
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    }
+  ]
+}

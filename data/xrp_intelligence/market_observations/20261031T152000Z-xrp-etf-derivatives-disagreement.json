@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "record_type": "market_observation_bundle",
+  "captured_at_utc": "2026-10-31T15:20:00Z",
+  "data_cutoff_utc": "2026-10-31T15:20:00Z",
+  "observations": [
+    {
+      "id": "MKT-BINANCE-XRP-1144Z",
+      "type": "spot",
+      "source_id": "SRC-20261031T152000Z-BINANCE-PRICE",
+      "observed_at_utc": "2026-10-31T11:44:00Z",
+      "price_usd": 1.24737,
+      "change_24h_percent": -0.02,
+      "status": "STALE_AT_CUTOFF"
+    },
+    {
+      "id": "MKT-TRADRADAR-XRP-OI",
+      "type": "derivatives",
+      "source_id": "SRC-20261031T152000Z-TRADRADAR",
+      "observed_at_utc": "2026-10-31T11:45:00Z",
+      "open_interest_usd": 1860000000,
+      "funding_8h_percent": 0.0081,
+      "liquidations_24h_usd_at_least": 1700000,
+      "status": "PROVIDER_SPECIFIC"
+    },
+    {
+      "id": "MKT-KODEXIUS-XRP-OI",
+      "type": "derivatives",
+      "source_id": "SRC-20261031T152000Z-KODEXIUS",
+      "observed_at_utc": "2026-10-31T12:34:00Z",
+      "open_interest_usd": 738990000,
+      "funding_8h_percent": 0.0073,
+      "volume_24h_usd": 876430000,
+      "status": "PROVIDER_SPECIFIC"
+    },
+    {
+      "id": "MKT-XRP-INSIGHTS-ETF",
+      "type": "etf_holdings_change",
+      "source_id": "SRC-20261031T152000Z-XRP-INSIGHTS",
+      "observed_at_utc": "2026-10-31T13:51:00Z",
+      "holdings_xrp": 1196600000,
+      "supply_share_percent": 1.1966,
+      "daily_change_xrp": -49932,
+      "five_day_change_xrp": 3390000,
+      "status": "HOLDINGS_CHANGE_NOT_VERIFIED_NET_PURCHASE"
+    },
+    {
+      "id": "MKT-CRYPTOETF-XRP",
+      "type": "etf_flow_aggregator",
+      "source_id": "SRC-20261031T152000Z-CRYPTOETF",
+      "observed_at_utc": "2026-10-31T05:48:00Z",
+      "net_flow_usd": 200000,
+      "funds_reporting": 3,
+      "funds_tracked": 5,
+      "status": "PARTIAL_NOT_ADMITTED"
+    },
+    {
+      "id": "MKT-CRYPTOKEYHOLE-XRP",
+      "type": "etf_holdings_change",
+      "source_id": "SRC-20261031T152000Z-CRYPTOKEYHOLE",
+      "observed_at_utc": "2026-10-31T15:00:00Z",
+      "holdings_day": "2026-10-29",
+      "change_xrp": 2971429,
+      "funds_reporting": 4,
+      "funds_tracked": 6,
+      "status": "PARTIAL_METADATA_QUARANTINED"
+    }
+  ],
+  "reconciliation": {
+    "open_interest_ratio": 2.5169488085089107,
+    "etf": "Different dates/universes/methods; no daily XRP ETF feature admitted.",
+    "derivatives": "Do not average provider OI; overlapping venue values differ materially."
+  }
+}

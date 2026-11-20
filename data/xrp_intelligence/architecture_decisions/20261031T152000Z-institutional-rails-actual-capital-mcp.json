@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031-INSTITUTIONAL-RAILS-ACTUAL-CAPITAL-AND-MCP",
+  "captured_at_utc": "2026-10-31T15:20:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_NOT_A_TRADE_SIGNAL",
+  "decisions": [
+    "Admit Coinbase/Ripple RLUSD listing, BNY XRP/RLUSD custody, Aviva tokenization, Ripple Prime RLUSD collateral, C2FO Instant Pay, Ripple Treasury and Robinhood to event timeline with live/planned/announced states separated.",
+    "Record Ripple National Trust Bank as OCC-effective; Ripple describes segregated RLUSD reserve management, collateral trustee and fiduciary custody powers. Standard Custody & Trust Company remains RLUSD issuer.",
+    "Treat Ripple Prime RWA-swap collateral as RLUSD, not XRP. Coinbase Global Exchange and SC/LMAX collateral paths remain planned at capture.",
+    "Treat BNY XRP/RLUSD custody as institutional custody access, not proof of AUC or XRP purchases.",
+    "Treat C2FO Instant Pay as receivables financing by participating capital providers with RLUSD settlement on XRPL; waitlist is not production volume.",
+    "Treat Aviva GBP 50M as fund-share capital with underlying assets off-chain, not XRP.",
+    "Treat Coinbase Q3 USDC metrics and Circle distribution economics as platform context; Q3 net income is materially affected by crypto-investment gains.",
+    "Treat SBI as multi-rail with Circle/USDC/Arc and Ripple/XRP/RLUSD; no exclusivity.",
+    "Resolve SBIC in this context as Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; repeated ChatGPT/GenAI seminars are educational, not an OpenAI partnership.",
+    "Evaluate XRPL-Utilities free reads/MCP as an independent adapter; paid USD 0.10 x402 scans were not used or authorized.",
+    "Keep ETF and derivatives provider series separate; no daily ETF-flow feature or composite OI feature admitted.",
+    "Treat Binance Update #3's 90% replenishment and top-ten 1:1 coverage including XRP as company claims; no XRP-specific purchase quantity disclosed."
+  ],
+  "required_verification": [
+    "BNY custody balances and direct RLUSD mint/redeem launch",
+    "RNTB operating disclosures",
+    "C2FO Instant Pay production volume and funded receivables",
+    "Aviva tokenized share units, holders, subscriptions/redemptions and XRPL fees",
+    "Ripple Prime RWA OI and RLUSD collateral balances",
+    "SBI accumulation/rewards/points units and inventory sourcing",
+    "XRP ETF issuer shares outstanding and holdings",
+    "Exchange-level public OI reconciliation",
+    "XRPL-Utilities free endpoints against independent XRPL node and issuer data"
+  ],
+  "actual_capital_policy": "A fund share subscription, receivables advance, stablecoin balance, issuer reserve, exchange inventory, reward credit, ETF AUM change, share creation/redemption and XRP spot/OTC execution are distinct. Only reconciled XRP execution or holdings acquisition is XRP purchase capital.",
+  "feature_admission": {
+    "institutional_timeline": "ADMITTED",
+    "graph": "ADMITTED",
+    "market_observations": "PROVIDER_SPECIFIC_ONLY",
+    "daily_etf_flow": "NOT_ADMITTED",
+    "composite_oi": "NOT_ADMITTED",
+    "directional_xrp_feature": "NOT_ADMITTED",
+    "forecast": "NOT_ISSUED"
+  }
+}

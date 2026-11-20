@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-2026-10-30T124354Z-SBI-MULTIISSUER-CIRCLE-RIPPLE-ROUTE-SEMANTICS",
+  "captured_at_utc": "2026-10-30T12:43:54Z",
+  "title": "Model SBI as a multi-issuer distribution network; separate stablecoin availability from XRPL and XRP usage",
+  "status": "ADOPTED_FOR_RESEARCH_SCHEMA",
+  "decisions": [
+    {
+      "field_family": "sbi_circle_corporate_relationship",
+      "required_fields": [
+        "legal_entity_name_english",
+        "legal_entity_name_japanese",
+        "sbi_ownership_pct",
+        "circle_ownership_pct",
+        "investment_amount_usd",
+        "investing_entities",
+        "as_of",
+        "purpose"
+      ],
+      "rule": "Record Circle SBI Japan KK / SBI Circle Holdings Co., Ltd. as a 50/50 USDC-focused JV. Record the USD50M Circle IPO investment separately from the JV and separately from XRP flows."
+    },
+    {
+      "field_family": "sbi_multi_issuer_distribution",
+      "required_fields": [
+        "distributor_legal_entity",
+        "issuer",
+        "token",
+        "launch_date",
+        "japanese_legal_classification",
+        "supported_deposit_networks",
+        "supported_withdrawal_networks",
+        "balances",
+        "flows"
+      ],
+      "rule": "SBI VC Trade's USDC and RLUSD offerings establish multi-issuer distribution. Do not assume the two products share custody, networks, redemption paths or liquidity."
+    },
+    {
+      "field_family": "circle_ripple_coopetition",
+      "required_fields": [
+        "product",
+        "relationship_type",
+        "network",
+        "issuer",
+        "technical_role",
+        "executed_bridge_volume",
+        "commercial_scope"
+      ],
+      "rule": "Record direct Circle-Ripple cooperation on USDC/XRPL separately from Ripple's RLUSD competition. Ripple's XRP bridge description is a product claim until actual DEX/auto-bridge execution volumes are measured."
+    },
+    {
+      "field_family": "sbi_xrpl_route",
+      "required_fields": [
+        "platform",
+        "token",
+        "network",
+        "deposit_support",
+        "withdrawal_support",
+        "onchain_tx_hash",
+        "as_of"
+      ],
+      "rule": "SBI VC Trade USDC inbound deposits are documented as Ethereum-only. Do not infer an XRPL route from native USDC availability on XRPL or from SBI's separate RLUSD listing."
+    },
+    {
+      "field_family": "sbi_equity_exposure",
+      "required_fields": [
+        "investor_entity",
+        "issuer_entity",
+        "amount",
+        "stake_pct",
+        "as_of",
+        "source"
+      ],
+      "rule": "SBI's USD50M Circle IPO investment and dated approximately 9% Ripple stake are separate historical equity exposures. Do not infer current ownership, token holdings or price-support behavior."
+    },
+    {
+      "field_family": "sbic_entity_disambiguation",
+      "required_fields": [
+        "legal_name",
+        "corporate_number",
+        "entity_type",
+        "jurisdiction",
+        "relationship_to_sbi_holdings"
+      ],
+      "rule": "Keep SBIC East Japan separate from SBI Holdings, SBI VC Trade, Circle SBI Japan KK and SBI Ripple Asia. Acronym similarity is not corporate affiliation."
+    }
+  ],
+  "feature_admission": "NONE. SBI JV, equity investments, USDC/RLUSD listings and network routes are corporate/operational context. No SBI-linked XRPL settlement or XRP bridge-volume feature is admitted without transaction-level evidence.",
+  "forecast_status": "NOT_ISSUED"
+}

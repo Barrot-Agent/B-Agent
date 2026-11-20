@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261031T050500Z-SCHEDULED-WRITER-AND-PR1395",
+  "captured_at_utc": "2026-10-31T05:05:00Z",
+  "main_sha": "ab053b0fc9714ef7fe368636a1fd3f6b02aab85c",
+  "main_latest_commit": {
+    "sha": "ab053b0fc9714ef7fe368636a1fd3f6b02aab85c",
+    "parent": "df35e4ef72200495ce83126fcf26e78cc8cf775b",
+    "message": "Cross-analysis refresh [skip ci]",
+    "author": "Barrot-Agent",
+    "author_date": "2026-10-31T04:52:02Z",
+    "signed": false,
+    "changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "diff_characterization": "generated_at timestamp changed; XRP/BTC recent and prior entry counts remain zero; scores null",
+    "associated_actions_run_count": 0,
+    "attribution": "Cross-analysis workflow code/message/path strongly match; exact triggering event/run not linked."
+  },
+  "scheduled_workflow_inventory": {
+    "direct_or_explicit_main_push_paths": [
+      {
+        "path": ".github/workflows/cross-analysis.yml",
+        "schedule": "hourly fallback plus workflow_run",
+        "permission": "contents:write",
+        "push": "git commit and push",
+        "pr_remediation": 1392
+      },
+      {
+        "path": ".github/workflows/check-signal-accuracy.yml",
+        "schedule": "daily",
+        "permission": "contents:write",
+        "push": "git commit and push",
+        "pr_remediation": 1392
+      },
+      {
+        "path": ".github/workflows/scheduler-tick.yml",
+        "schedule": "every 15 minutes",
+        "permission": "contents:write + actions:write",
+        "push": "queue commit/push and gh workflow dispatch",
+        "pr_remediation": 1395
+      },
+      {
+        "path": ".github/workflows/autonomous_self_deployment.yml",
+        "schedule": "every 6 hours",
+        "permission": "no explicit workflow permission block; effective default unknown",
+        "push": "git commit and push origin main",
+        "pr_remediation": 1392
+      },
+      {
+        "path": ".github/workflows/subscriber_sync.yml",
+        "schedule": "hourly",
+        "permission": "no explicit contents permission block; effective default unknown",
+        "push": "git commit and push origin main",
+        "pr_remediation": null
+      },
+      {
+        "path": ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
+        "schedule": "every 6 hours plus push trigger",
+        "permission": "contents:write",
+        "push": "git commit and push origin main",
+        "pr_remediation": null
+      },
+      {
+        "path": ".github/workflows/riemann-harvest.yml",
+        "schedule": "weekly",
+        "permission": "contents:write",
+        "push": "git commit and push",
+        "pr_remediation": null
+      },
+      {
+        "path": ".github/workflows/gumroad-metrics.yml",
+        "schedule": "weekly",
+        "permission": "contents:write",
+        "push": "git commit and push",
+        "pr_remediation": null
+      },
+      {
+        "path": ".github/workflows/webmcp-live-sandbox.yml",
+        "schedule": "weekly",
+        "permission": "contents:write",
+        "push": "git commit and push",
+        "pr_remediation": null
+      },
+      {
+        "path": ".github/workflows/webmcp-monetization-enrich.yml",
+        "schedule": "weekly plus workflow_run",
+        "permission": "contents:write",
+        "push": "git commit and push",
+        "pr_remediation": null
+      },
+      {
+        "path": ".github/workflows/barrot-transparency-audit.yml",
+        "schedule": "weekly",
+        "permission": "contents:write",
+        "push": "git commit and push",
+        "pr_remediation": null
+      }
+    ],
+    "scheduled_write_permission_path_target_unverified": [
+      {
+        "path": ".github/workflows/hover_bike_updates.yml",
+        "schedule": "weekly",
+        "permission": "contents:write",
+        "push": "not established in inspected excerpt"
+      }
+    ],
+    "manual_write_paths_reviewed": [
+      ".github/workflows/knowledge-signal-cycle.yml",
+      ".github/workflows/task-allocator.yml",
+      ".github/workflows/coinbase-paper-trader.yml"
+    ],
+    "external_issue_write_path": [
+      ".github/workflows/self-schedule.yml — scheduled, issues:write; creates gated issues rather than committing to main"
+    ],
+    "disabled_workflows_excluded": [
+      ".github/workflows/barrot_singularity.yml.disabled",
+      ".github/workflows/barrot-pr-automerge.yml.disabled",
+      ".github/workflows/deploy.yml.disabled"
+    ],
+    "status": "TARGETED_INVENTORY_NOT_EXHAUSTIVE"
+  },
+  "pull_requests": [
+    {
+      "number": 1392,
+      "head_sha": "a220326569e2da370842287f2390503fe06199ae",
+      "base_sha": "df35e4ef72200495ce83126fcf26e78cc8cf775b",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "base_behind_current_main": 1,
+      "ci_run_id": 41167455337,
+      "ci_tests_passed": 388,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41167455378,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "scope": "read-only Cross-analysis, signal accuracy, telemetry; scheduler queue still has a write path; other scheduled writers not covered"
+    },
+    {
+      "number": 1393,
+      "head_sha": "573f91614e3b7542ff485575bd2d55f598b9c20d",
+      "base_sha": "df35e4ef72200495ce83126fcf26e78cc8cf775b",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "base_behind_current_main": 1,
+      "ci_run_id": 41169234347,
+      "ci_tests_passed": 349,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41169234345,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "scope": "Morpho cbXRP ingestion and top-level cursor detection; live API not executed"
+    },
+    {
+      "number": 1395,
+      "head_sha": "cf85491c97ea7a187229c048e5a47be38c58996a",
+      "base_sha": "ab053b0fc9714ef7fe368636a1fd3f6b02aab85c",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "base_behind_current_main": 0,
+      "ci_run_id": 41171097594,
+      "ci_tests_passed": 344,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41171097557,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "scope": "manual-only read-only scheduler queue audit; disables automatic queue dispatch pending external-state design"
+    }
+  ],
+  "open_pr_inventory": {
+    "first_page_returned": 100,
+    "full_count_status": "NOT_RECOUNTED_THIS_RUN",
+    "last_full_count": 168,
+    "last_full_count_at_utc": "2026-10-31T04:28:05Z"
+  },
+  "security_and_dependencies": {
+    "dependency_lockfiles": "0 found in prior partial manifest inventory; full inventory not complete",
+    "security_alerts": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "full_repository_ci": "NOT_RUN",
+    "branch_protection_and_rulesets": "NOT_VERIFIED",
+    "workflow_token_effective_defaults": "NOT_FULLY_VERIFIED"
+  },
+  "main_safety_status": "UNRESOLVED_MULTIPLE_SCHEDULED_WRITE_PATHS; PR1392_AND_PR1395_OPEN_UNMERGED",
+  "main_changed_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false
+}

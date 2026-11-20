@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 109,
+  "chunk_count": 110,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T012136Z-CBXRP-LIQUIDATION-TO-NATIVE-XRP-REDEMPTION-RAIL",
+      "created_at_utc": "2026-10-31T01:21:36Z",
+      "data_cutoff_utc": "2026-10-31T01:21:36Z",
+      "summary": "Extended Coinbase/Morpho collateral research into the liquidation-to-redemption pathway. Verified Coinbase's official cbXRP deposit auto-unwrap mechanism, indexed 132 historical cbXRP/USDC liquidation events for one Base liquidator, captured a 701.6 cbXRP seizure within a 30-action batch, and confirmed separate 62.5% and 77% LLTV markets. No liquidator-to-Coinbase redemption or native XRP sale was traced.",
+      "source_ids": [
+        "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z",
+        "SRC-LIQUIDIFY-MORPHO-CBXRP-LIQUIDATOR-0X4C0F-20261031T012136Z",
+        "SRC-LIQUIDIFY-MORPHO-CBXRP-BATCH-0X24BE-20261031T012136Z",
+        "SRC-MORPHO-CLEARSTAR-CBXRP-VAULT-20261031T012136Z",
+        "SRC-STEAKHOUSE-CBXRP-USDC-77LLTV-20261031T012136Z",
+        "SRC-MORPHO-PUBLIC-API-DOCS-20261031T012136Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T012136Z-cbxrp-morpho-liquidations-and-native-redemption-path.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T012136Z-cbxrp-morpho-liquidation-redemption-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T012136Z-cbxrp-liquidation-redemption-and-market-separation.json",
+      "actions": [
+        "Verified Coinbase's official 1:1 cbXRP backing and automatic cbXRP-to-native-XRP credit on eligible Coinbase Exchange deposits.",
+        "Recorded 132 cbXRP/USDC Morpho liquidations attributed to address 0x4c0f…19f4, with $1.07478M USDC debt repaid and $136.24K bonus during its Sep 13–Oct 8 activity window.",
+        "Recorded one 701.6 cbXRP seizure for 829.4 USDC debt and $105.09 bonus within a 30-action batch; retained proceeds are not measured.",
+        "Identified a separate 77% LLTV cbXRP/USDC market alongside the 62.5% market and separated market IDs, vault allocations and underlying liquidity.",
+        "Reviewed Morpho public REST API documentation; API execution remains not performed."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "No transfer from identified liquidators to Coinbase Exchange deposit addresses was observed.",
+        "No cbXRP unwrap/burn and native XRP credit linked to the liquidations was traced.",
+        "No subsequent native XRP CEX sale was attributed to seized collateral.",
+        "Coinbase has not disclosed which Morpho market IDs its interface routes through.",
+        "Morpho API public reads and historical pagination have not been executed."
+      ],
+      "next_actions": [
+        "Trace 0x4c0f and 0xa5e989 cbXRP balances and transfers after liquidations using the official Base cbXRP contract.",
+        "Look for Coinbase Exchange cbXRP deposit/unwrap events linked to those liquidators; do not infer identity from address proximity.",
+        "Reconcile 62.5% and 77% market IDs, oracles, LLTVs, supply/borrow, collateral at risk and curator/vault exposure.",
+        "Execute read-only Morpho REST API queries and validate pagination, timestamps and rate limits.",
+        "Keep liquidation/unwrap metrics separate from spot-market supply and Coinbase product volume."
+      ],
+      "source_reference_count": 6,
+      "missing_source_references": 0
+    }
+  ]
+}

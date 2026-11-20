@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T002909Z-CBXRP-BASE-DEX-LIQUIDITY",
+  "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T002909Z-cbxrp-base-dex-liquidity-and-supply-quality-graph.json",
+  "created_at_utc": "2026-10-31T00:29:09Z",
+  "captured_at_utc": "2026-10-31T00:29:09Z",
+  "source_ids": [
+    "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z",
+    "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z",
+    "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z"
+  ],
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T002909Z-01",
+      "from_entity": "cbXRP",
+      "relation": "trades_on",
+      "to_entity": "Base DEX pools: Aero, PancakeSwap, Uniswap V3",
+      "status": "DEXTRADING_AGGREGATOR_SNAPSHOT",
+      "source_ids": [
+        "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z"
+      ],
+      "details": "Pairs include cbXRP/WETH, cbXRP/cbBTC and cbXRP/USDC."
+    },
+    {
+      "edge_id": "E-20261031T002909Z-02",
+      "from_entity": "Aero cbXRP/WETH main pool",
+      "relation": "displayed_liquidity_and_volume",
+      "to_entity": "$485K liquidity / $3.57M 24h volume",
+      "status": "THIRD_PARTY_SNAPSHOT_2026_10_31T0028Z",
+      "source_ids": [
+        "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z"
+      ],
+      "details": "7.36x turnover relative to displayed pool liquidity; not net inflow."
+    },
+    {
+      "edge_id": "E-20261031T002909Z-03",
+      "from_entity": "cbXRP Base DEX trading",
+      "relation": "displayed_trade_count",
+      "to_entity": "2,477 buys / 2,488 sells in 24h",
+      "status": "THIRD_PARTY_SNAPSHOT",
+      "source_ids": [
+        "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z"
+      ],
+      "details": "Trade counts nearly balanced; notional amounts not disclosed."
+    },
+    {
+      "edge_id": "E-20261031T002909Z-04",
+      "from_entity": "CoinDesk cbXRP page",
+      "relation": "reports_stale_supply_outlier",
+      "to_entity": "107.04M cbXRP",
+      "status": "STALE_OR_INCONSISTENT_PAGE",
+      "source_ids": [
+        "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z"
+      ],
+      "details": "Excluded from current supply measurement."
+    },
+    {
+      "edge_id": "E-20261031T002909Z-05",
+      "from_entity": "Trading Strategy cbXRP page",
+      "relation": "reports_conflicting_cached_supply",
+      "to_entity": "60.95M page body vs 151.403M search snippet",
+      "status": "INTERNAL_CACHE_INCONSISTENCY",
+      "source_ids": [
+        "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z"
+      ],
+      "details": "Excluded from current supply measurement."
+    },
+    {
+      "edge_id": "E-20261031T002909Z-06",
+      "from_entity": "Coinbase cbXRP proof-of-reserves page",
+      "relation": "preferred_published_supply_reserve_baseline_over_stale_aggregators",
+      "to_entity": "151.403M cbXRP / 151.405M XRP",
+      "status": "FIRST_PARTY_PUBLISHED_BUT_NOT_INDEPENDENT_AUDIT",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+        "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z",
+        "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z"
+      ],
+      "details": "Independent Base contract totalSupply() read remains outstanding."
+    }
+  ],
+  "disconfirming_evidence": [
+    {
+      "hypothesis_id": "H-20261031T002909Z-01",
+      "disconfirming_evidence": [
+        "Trade counts are not notional amounts and the provider does not independently identify wash trading or arbitrage.",
+        "One aggregator snapshot cannot establish sustained liquidity or institutional collateral utilization."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261031T002909Z-02",
+      "disconfirming_evidence": [
+        "Coinbase first-party page itself is not an independent audit and its displayed refresh time varies by locale/cache."
+      ]
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

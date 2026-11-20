@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 135,
+  "chunk_count": 136,
+  "record_count": 2,
+  "records": [
+    {
+      "id": "SRC-20261101T060400Z-BINANCE-NETWORK-STATUS-PAGE",
+      "publisher": "Binance — Deposit & Withdrawal Status / Network Status",
+      "url": "https://www.binance.bh/en/network",
+      "retrieved_at_utc": "2026-11-01T06:04:00Z",
+      "publication_time_utc": "NOT_DISCLOSED",
+      "evidence_class": "PRIMARY_EXCHANGE_STATUS_PAGE_RENDERED_INCOMPLETE",
+      "claims": [
+        "The official Binance network-status page displayed last updated 2026-11-01 05:28:24 AM; timezone was not disclosed.",
+        "The server-rendered asset table displayed 'No records' at retrieval."
+      ],
+      "limitations": [
+        "No XRP-specific asset row or live withdrawal status was exposed.",
+        "The empty table does not establish that XRP withdrawals are open or suspended.",
+        "The displayed update time cannot be normalized to UTC without a timezone declaration."
+      ]
+    },
+    {
+      "id": "SRC-20261101T060400Z-GITHUB-BAGENT-MAIN-PR1444-AUDIT",
+      "publisher": "GitHub API and GitHub Actions — Barrot-Agent/B-Agent main, pull requests and workflow evidence",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-11-01T06:05:00Z",
+      "publication_time_utc": "2026-11-01T06:03:40Z",
+      "evidence_class": "PRIMARY_REPOSITORY_AND_CI_STATE",
+      "claims": [
+        "Main is at 694fc4241f543917fc6eb787c025bf1eb6726595; its latest commit at 06:03:40 UTC changes only the timestamp in AUTONOMOUS_DEPLOYMENT_REPORT.md while the report retains Status: OPERATIONAL.",
+        "The open PR API returned 215 PRs: 205 drafts, 10 ready, 210 main-based, zero based on latest main, 210 stale main-based and five non-main.",
+        "PR #1443 head 23ba72611eeb02b6eee5d87df1d7bad79816958e passed CI run 41278911244 with 349 tests and 8 subtests; gate 41278911251 passed with merging disabled; PR remains open/draft/unmerged.",
+        "PR #1444 current head 680037388ba80f0ed75eccb918469123dfd69bea contains fixes for four failures from prior head cb7f8f41491cf69ef3e5275a7fe88296c1510875; current-head CI rerun not observed.",
+        "Main retains scheduled and manual workflow mutation paths until approved changes are merged."
+      ],
+      "limitations": [
+        "PR #1444 current-head CI/gate status remains pending; its prior CI failure must not be reported as fixed until rerun passes.",
+        "PRs #1443 and #1444 are based on 0ae640073f01321555d7f69dfc28d5b62a348fc6, one commit behind current main 694fc4241f543917fc6eb787c025bf1eb6726595.",
+        "Full repository CI, complete dependency vulnerability scanning and security-alert review remain incomplete.",
+        "Full branch-protection details endpoint returned 403; required status-check configuration remains unknown.",
+        "No main remediation has been applied by these draft PRs."
+      ]
+    }
+  ]
+}

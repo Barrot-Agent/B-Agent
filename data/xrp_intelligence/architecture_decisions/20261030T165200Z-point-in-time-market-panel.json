@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-20261030T165200Z-POINT-IN-TIME-MARKET-PANEL",
+  "captured_at_utc": "2026-10-30T16:52:00Z",
+  "status": "ADOPTED_FOR_RESEARCH",
+  "decisions": [
+    {
+      "area": "derivatives_aggregation",
+      "rule": "Keep each provider's OI, funding, liquidation and coverage as separate timestamped panels. Never average incomparable provider totals."
+    },
+    {
+      "area": "event_time",
+      "rule": "Align market and ETF observations to UTC event cutoffs; an ETF session closing before an incident cannot be labelled an incident response."
+    },
+    {
+      "area": "corporate_replenishment",
+      "rule": "Do not infer token-specific market demand from aggregate exchange reserve/replenishment amounts without token quantities and execution evidence."
+    },
+    {
+      "area": "macro_features",
+      "rule": "Use BOJ, yen, dollar and Treasury observations as context features only after point-in-time history, source provenance and walk-forward validation."
+    },
+    {
+      "area": "forecast_gate",
+      "rule": "No directional forecast until fixed-horizon labels, baselines, leakage controls, calibration and out-of-sample evaluation are in place."
+    }
+  ],
+  "prior_evidence_preserved": true
+}

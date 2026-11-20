@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 17,
+  "chunk_count": 18,
+  "record_count": 5,
+  "created_at_utc": "2026-10-30T07:23:30Z",
+  "records": [
+    "Bithomp labels the five source accounts as Binance and shows four were activated by rDAE53, but these are third-party explorer labels/activation metadata. They do not prove the addresses appear in Binance's October 1 official proof-of-reserves download.",
+    "The receiver's 233,461,943.10004 XRP balance and absence of outgoing XRP payments are a point-in-time Bithomp page observation at capture. This does not guarantee future immobility, complete indexing or no later sale.",
+    "The five validated XRPL transactions are displayed by one explorer provider (Bithomp). TRM and Bitquery independently analyze the same underlying public ledger, so provider agreement is not independent physical evidence.",
+    "Bithomp's approximately $902.3M XRPL transfer volume is distinct from its approximately $13.07M XRPL DEX trading volume and does not represent $902.3M of new capital or executed market purchases. Both are XRPL-only measures.",
+    "Current balances displayed on the five source account pages are dynamic and include possible post-incident transactions. Do not use them as exact pre-incident wallet balances or customer reserve deficits."
+  ]
+}

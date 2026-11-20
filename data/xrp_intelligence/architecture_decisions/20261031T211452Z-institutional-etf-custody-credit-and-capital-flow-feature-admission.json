@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T211452Z-COINBASE-ETF-CUSTODY-CREDIT-RIPPLE-SEED",
+  "captured_at_utc": "2026-10-31T21:14:52Z",
+  "status": "ACCEPTED_FOR_RESEARCH; NO_DIRECTIONAL_FEATURES",
+  "decisions": [
+    "Treat Coinbase as a major institutional XRP infrastructure provider: custodian in five ETF custodian sets, prime broker for Franklin, Prime Execution Agent for Bitwise, Trade Credit Lender for Bitwise and Bitwise's principal market for GAAP NAV at June30 2026.",
+    "Do not equate 1.1422B XRP held by funds whose custodian set includes Coinbase with Coinbase's actual custody balance; multi-custodian allocation is undisclosed.",
+    "Treat Coinbase trade credit as a secured short-term contractual facility, not proof of outstanding borrowing. The Agent Execution Model is rare; Trust-Directed Trade Model is normal.",
+    "Record Coinbase's first-priority lien and default liquidation rights as a contingent collateral pathway; no default or current encumbrance is established.",
+    "Treat Ripple Markets' $220.676M 21Shares seed investment as ETF-share capital, not an equivalent direct XRP spot purchase. The Dec20 2026 date is a share lock-up milestone, not an XRP escrow release.",
+    "Separate cash creations from in-kind creations and cash redemptions from in-kind redemptions; ETF creations are not always exchange-market purchases.",
+    "Use SEC fund-level XRP inventory and cash capital transactions as actual fund-level evidence, keeping funds and periods separate: Bitwise H1 net inventory +155.615M XRP; 21Shares H1 net inventory -27.303M XRP and net cash capital -$49.501M.",
+    "Do not add ETF custody holdings to XRP Insights exchange-wallet totals; ETF custody vaults without public exchange labels are excluded.",
+    "Flag the 1.6M Binance-Peg reserve discrepancy and lack of per-wallet history; exchange balances remain custody context, not customer flows or tradable float.",
+    "No directional feature is admitted and no forecast is issued."
+  ],
+  "feature_admission": {
+    "coinbase_etf_custody": "INSTITUTIONAL_CUSTODY_CONTEXT_ONLY",
+    "coinbase_trade_credit": "CONTRACTUAL_COLLATERAL_RISK_CONTEXT_ONLY; UTILIZATION_UNKNOWN",
+    "ripple_21shares_seed": "ETF_SHARE_CAPITAL_EVENT_CONTEXT_ONLY",
+    "etf_cash_inkind_flows": "FUND_LEVEL_FLOW_CANDIDATE_PENDING_NORMALIZATION",
+    "exchange_wallet_balances": "CUSTODY_CONTEXT_ONLY",
+    "directional_xrp_features": [],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "next_tests": [
+    "Extract historical cash and in-kind creations/redemptions for all six US spot XRP ETFs.",
+    "Search subsequent Bitwise filings for Coinbase Credit drawdowns, outstanding balances, fees, defaults or amended limits.",
+    "Obtain same-date custodian allocation for multi-custodian ETFs if publicly disclosed.",
+    "Track Ripple Markets seed-share lock-up through Dec20 2026 without assuming redemption.",
+    "Reconcile Binance-Peg 325.8M versus 327.4M and preserve no-per-wallet-history limitation."
+  ],
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "paper_state_mutation": false,
+    "real_money_trade": false
+  }
+}

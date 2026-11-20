@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY",
+  "source_id": "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "created_at_utc": "2026-10-31T21:36:18Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY",
+      "publisher": "BNY — Ripple collaboration expands custody and tokenized trade-finance exploration",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-27",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "BNY supports XRP and RLUSD on its Digital Asset Custody platform for eligible clients.",
+        "BNY identifies itself as primary reserve custodian for RLUSD and cites an existing Ripple Prime custody relationship.",
+        "BNY and Ripple are exploring tokenized trade finance on XRPL with C2FO.",
+        "Direct RLUSD mint/redeem through BNY is a future initiative subject to BNY and regulatory approvals."
+      ],
+      "limitations": [
+        "No XRP customer custody balances, client count or purchase volume are disclosed.",
+        "Custody availability does not prove XRP acquisition or collateral utilization.",
+        "Future mint/redeem and trade-finance plans are conditional."
+      ]
+    }
+  ],
+  "findings": [
+    "BNY supports XRP and RLUSD on its Digital Asset Custody platform for eligible clients.",
+    "BNY identifies itself as primary reserve custodian for RLUSD and cites an existing Ripple Prime custody relationship.",
+    "BNY and Ripple are exploring tokenized trade finance on XRPL with C2FO.",
+    "Direct RLUSD mint/redeem through BNY is a future initiative subject to BNY and regulatory approvals."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "No XRP customer custody balances, client count or purchase volume are disclosed.",
+    "Custody availability does not prove XRP acquisition or collateral utilization.",
+    "Future mint/redeem and trade-finance plans are conditional."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

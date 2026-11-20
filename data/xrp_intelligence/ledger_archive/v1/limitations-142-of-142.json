@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 141,
+  "chunk_count": 142,
+  "record_count": 1,
+  "created_at_utc": "2026-10-31T17:07:00Z",
+  "records": [
+    {
+      "id": "LIM-20261031T170700Z-SBI-RETAIL-DISTRIBUTION-ACTUAL-CAPITAL",
+      "recorded_at_utc": "2026-10-31T17:07:00Z",
+      "category": "ACTUAL_CAPITAL_AND_SBI_XRP_DISTRIBUTION",
+      "severity": "HIGH_FOR_FEATURE_ADMISSION",
+      "status": "OPEN_UNKNOWN",
+      "statement": "SBI's DCA, card and shareholder-benefit products establish distribution mechanisms but do not disclose XRP-specific plan counts, fills, reward selections, redemptions, credited units, inventory sourcing or external venue purchases.",
+      "impact": "Treating JPY product limits or reward face values as actual net external XRP capital would overstate demand and contaminate prediction features.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VC-TRADE-DCA",
+        "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD",
+        "SRC-20261031T170700Z-SBI-HOLDINGS-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-ARUHI-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-SHINSEI-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-GLOBAL-ASSET-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-VISA-CARD-LAUNCH",
+        "SRC-20261031T170700Z-SBI-VC-TRADE-CORPORATE",
+        "SRC-20261031T170700Z-BINANCE-XRP-PRICE",
+        "SRC-20261031T170700Z-LIQWALL-XRP-PANEL",
+        "SRC-20261031T170700Z-GITHUB-MAIN-REF-PR-INVENTORY",
+        "SRC-20261031T170700Z-GITHUB-PR-1419",
+        "SRC-20261031T170700Z-GITHUB-PR-1420",
+        "SRC-20261031T170700Z-GITHUB-CI-GATES-1419-1420"
+      ],
+      "disconfirming_evidence": [
+        "DCA orders can be skipped when prefunded JPY is insufficient.",
+        "Card and shareholder benefits are reward liabilities that may be fulfilled from existing dealer inventory or internal transfers.",
+        "Some benefits allow a non-crypto alternative; cardholders select only one reward asset."
+      ],
+      "required_data": [
+        "SBI VC Trade XRP-specific DCA active-plan count and monthly executed JPY/XRP units.",
+        "Card XRP selection share, points accrued and XRP units credited.",
+        "Shareholder program eligible-holder counts, coupon redemptions and XRP units credited.",
+        "SBI VC Trade treasury inventory and external spot/OTC procurement reconciliation."
+      ],
+      "feature_admission": "PRODUCT_MECHANICS_ONLY; ACTUAL_CAPITAL_QUANTITY_BLOCKED; NO_DIRECTIONAL_PRICE_FEATURE"
+    }
+  ]
+}

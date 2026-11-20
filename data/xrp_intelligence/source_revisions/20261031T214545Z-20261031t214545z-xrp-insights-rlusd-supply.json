@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+  "source_id": "SRC-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+  "captured_at_utc": "2026-10-31T21:45:45Z",
+  "created_at_utc": "2026-10-31T21:45:45Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+      "publisher": "XRP Insights — Week 44 RLUSD chain-supply snapshot",
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-10-31",
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-10-31T12:54:00Z",
+      "evidence_class": "SECONDARY_ONCHAIN_SUPPLY_AGGREGATION",
+      "claims": [
+        "The indexed Oct31 report gives total RLUSD supply around $2.42B.",
+        "It attributes about $707M to XRPL and $1.71B to Ethereum, or roughly 29 percent on XRPL."
+      ],
+      "limitations": [
+        "Page could not be opened directly in this run; figures are from the indexed public summary.",
+        "Provider contract/account inclusion and frozen or treasury balance treatment require raw-chain reconciliation.",
+        "This differs from other providers and the CEO statement."
+      ]
+    }
+  ],
+  "findings": [
+    "The indexed Oct31 report gives total RLUSD supply around $2.42B.",
+    "It attributes about $707M to XRPL and $1.71B to Ethereum, or roughly 29 percent on XRPL."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "Page could not be opened directly in this run; figures are from the indexed public summary.",
+    "Provider contract/account inclusion and frozen or treasury balance treatment require raw-chain reconciliation.",
+    "This differs from other providers and the CEO statement."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

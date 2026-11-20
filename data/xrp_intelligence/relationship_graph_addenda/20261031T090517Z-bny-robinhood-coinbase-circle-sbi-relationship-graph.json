@@ -1,0 +1,426 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T090517Z-BNY-ROBINHOOD-COINBASE-CIRCLE-SBI",
+  "captured_at_utc": "2026-10-31T09:05:17Z",
+  "source_reference_count": 17,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+    "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+    "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+    "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+    "SRC-20261031T090517Z-GH-MAIN-CROSS-ANALYSIS-COMMIT",
+    "SRC-20261031T090517Z-GH-OPEN-PR-INVENTORY",
+    "SRC-20261031T090517Z-GH-PR1400-FIXED-HORIZON-LOCKED-HEAD",
+    "SRC-20261031T090517Z-GH-PR1400-EXACT-HEAD-CI",
+    "SRC-20261031T090517Z-GH-PR1400-FAIL-CLOSED-GATE",
+    "SRC-20261031T090517Z-GH-PR1401-READONLY-CROSS-ANALYSIS",
+    "SRC-20261031T090517Z-GH-PR1402-APPROVAL-PUSH-NOOP",
+    "SRC-20261031T090517Z-GH-PR1398-DATABRICKS-TOKEN-SAFETY",
+    "SRC-20261031-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION",
+    "SRC-20261031-COINBASE-Q3-2026-10Q-CIRCLE-RENEWAL",
+    "SRC-20261031-CIRCLE-USDC-XRPL-0612-2025",
+    "SRC-20261031-CIRCLE-ARC-MAINNET-0916"
+  ],
+  "nodes": [
+    {
+      "id": "RIPPLE",
+      "type": "company",
+      "label": "Ripple"
+    },
+    {
+      "id": "BNY",
+      "type": "bank_custodian",
+      "label": "BNY / The Bank of New York Mellon"
+    },
+    {
+      "id": "XRP",
+      "type": "cryptoasset",
+      "label": "XRP"
+    },
+    {
+      "id": "XRPL",
+      "type": "public_blockchain",
+      "label": "XRP Ledger"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin",
+      "label": "Ripple USD"
+    },
+    {
+      "id": "ROBINHOOD",
+      "type": "financial_platform",
+      "label": "Robinhood"
+    },
+    {
+      "id": "BITSTAMP_ROBINHOOD",
+      "type": "crypto_exchange",
+      "label": "Bitstamp by Robinhood"
+    },
+    {
+      "id": "RIPPLE_TREASURY",
+      "type": "treasury_software",
+      "label": "Ripple Treasury"
+    },
+    {
+      "id": "RIPPLE_PRIME",
+      "type": "prime_broker",
+      "label": "Ripple Prime"
+    },
+    {
+      "id": "COINBASE",
+      "type": "crypto_platform",
+      "label": "Coinbase"
+    },
+    {
+      "id": "COINBASE_PRIME",
+      "type": "institutional_platform",
+      "label": "Coinbase Prime"
+    },
+    {
+      "id": "COINBASE_EXCHANGE",
+      "type": "exchange",
+      "label": "Coinbase Exchange"
+    },
+    {
+      "id": "COINBASE_RETAIL",
+      "type": "retail_platform",
+      "label": "Coinbase app"
+    },
+    {
+      "id": "CIRCLE",
+      "type": "stablecoin_issuer",
+      "label": "Circle"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin",
+      "label": "USD Coin"
+    },
+    {
+      "id": "SBI_GROUP",
+      "type": "financial_group",
+      "label": "SBI Group"
+    },
+    {
+      "id": "ARC",
+      "type": "blockchain_network",
+      "label": "Circle Arc"
+    },
+    {
+      "id": "MORPHO",
+      "type": "credit_protocol",
+      "label": "Morpho"
+    },
+    {
+      "id": "C2FO",
+      "type": "working_capital_platform",
+      "label": "C2FO"
+    },
+    {
+      "id": "SBIC_TOKYO",
+      "type": "sme_investment_corporation",
+      "label": "Tokyo SBIC East Japan"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E-BNY-XRP-CUSTODY",
+      "from": "BNY",
+      "relation": "supports_institutional_custody_for",
+      "to": "XRP",
+      "evidence_class": "OFFICIAL_CUSTODY_PLATFORM_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "E-BNY-RLUSD-CUSTODY",
+      "from": "BNY",
+      "relation": "supports_custody_for",
+      "to": "RLUSD",
+      "evidence_class": "OFFICIAL_CUSTODY_PLATFORM_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "E-BNY-RIPPLE-RESERVE-CUSTODIAN",
+      "from": "BNY",
+      "relation": "is_primary_reserve_custodian_for",
+      "to": "RLUSD",
+      "evidence_class": "OFFICIAL_BANK_ANNOUNCEMENT_REITERATING_EXISTING_ROLE",
+      "source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "E-RIPPLE-BNY-STRATEGIC-COLLABORATION",
+      "from": "RIPPLE",
+      "relation": "expanded_digital_asset_custody_and_tokenized_finance_collaboration_with",
+      "to": "BNY",
+      "evidence_class": "JOINT_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "E-BNY-RLUSD-MINT-REDEEM-FUTURE",
+      "from": "BNY",
+      "relation": "intends_subject_to_approval_to_enable_client_mint_and_redeem",
+      "to": "RLUSD",
+      "evidence_class": "FUTURE_INTENT_SUBJECT_TO_FINAL_APPROVALS",
+      "source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "E-BNY-C2FO-XRPL-EXPLORATION",
+      "from": "BNY",
+      "relation": "explores_supply_chain_finance_on",
+      "to": "XRPL",
+      "evidence_class": "EXPLORATORY_NOT_PRODUCTION",
+      "source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "E-RIPPLE-ROBINHOOD-PARTNERSHIP",
+      "from": "RIPPLE",
+      "relation": "announced_strategic_partnership_with",
+      "to": "ROBINHOOD",
+      "evidence_class": "OFFICIAL_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL"
+      ]
+    },
+    {
+      "id": "E-ROBINHOOD-RLUSD-XRPL-SETTLEMENT",
+      "from": "ROBINHOOD",
+      "relation": "announced_use_of_RLUSD_on_for_institutional_settlement",
+      "to": "XRPL",
+      "evidence_class": "ANNOUNCED_USE_CASE_VOLUME_UNKNOWN",
+      "source_ids": [
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL"
+      ]
+    },
+    {
+      "id": "E-ROBINHOOD-RLUSD-CHANNELS",
+      "from": "ROBINHOOD",
+      "relation": "offers_or_plans_to_offer",
+      "to": "RLUSD",
+      "evidence_class": "LIVE_ON_ROBINHOOD_CHAIN_AND_BITSTAMP_APP_LATER",
+      "source_ids": [
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL"
+      ]
+    },
+    {
+      "id": "E-ROBINHOOD-RIPPLE-TREASURY",
+      "from": "ROBINHOOD",
+      "relation": "plans_to_integrate",
+      "to": "RIPPLE_TREASURY",
+      "evidence_class": "COMPANY_ANNOUNCED_FUTURE_INTEGRATION",
+      "source_ids": [
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL"
+      ]
+    },
+    {
+      "id": "E-RIPPLE-PRIME-BITSTAMP-FINANCING",
+      "from": "RIPPLE_PRIME",
+      "relation": "provides_lending_and_margin_financing_across_roughly_20_assets_to",
+      "to": "BITSTAMP_ROBINHOOD",
+      "evidence_class": "COMPANY_ANNOUNCED_EXISTING_RELATIONSHIP_ASSET_LIST_UNKNOWN",
+      "source_ids": [
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL"
+      ]
+    },
+    {
+      "id": "E-COINBASE-RLUSD-DISTRIBUTION",
+      "from": "COINBASE",
+      "relation": "lists_RLUSD_across_Prime_Exchange_and_retail_app",
+      "to": "RLUSD",
+      "evidence_class": "OFFICIAL_PRODUCT_LAUNCH",
+      "source_ids": [
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK"
+      ]
+    },
+    {
+      "id": "E-COINBASE-XRPL-RLUSD-RAIL",
+      "from": "COINBASE",
+      "relation": "supports_RLUSD_deposits_and_withdrawals_on",
+      "to": "XRPL",
+      "evidence_class": "OFFICIAL_LAUNCH_NETWORK_SUPPORT",
+      "source_ids": [
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING"
+      ]
+    },
+    {
+      "id": "E-COINBASE-RLUSD-GLOBAL-COLLATERAL-FUTURE",
+      "from": "COINBASE",
+      "relation": "plans_later_global_exchange_support_including_RLUSD_collateral",
+      "to": "RLUSD",
+      "evidence_class": "FUTURE_FOLLOW_ON_NOT_LIVE_AT_LAUNCH",
+      "source_ids": [
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING"
+      ]
+    },
+    {
+      "id": "E-COINBASE-CIRCLE-USDC-ECONOMICS",
+      "from": "COINBASE",
+      "relation": "distributes_USDC_under_material_economic_arrangement_with",
+      "to": "CIRCLE",
+      "evidence_class": "SEC_FILINGS_AND_COMPANY_Q3_RESULTS",
+      "source_ids": [
+        "SRC-20261031-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION",
+        "SRC-20261031-COINBASE-Q3-2026-10Q-CIRCLE-RENEWAL",
+        "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS"
+      ]
+    },
+    {
+      "id": "E-CIRCLE-USDC-XRPL",
+      "from": "CIRCLE",
+      "relation": "issues_USDC_natively_on",
+      "to": "XRPL",
+      "evidence_class": "OFFICIAL_CIRCLE_AND_RIPPLE_ANNOUNCEMENTS",
+      "source_ids": [
+        "SRC-20261031-CIRCLE-USDC-XRPL-0612-2025"
+      ]
+    },
+    {
+      "id": "E-SBI-ARC-VALIDATOR",
+      "from": "SBI_GROUP",
+      "relation": "is_founding_validator_on",
+      "to": "ARC",
+      "evidence_class": "CIRCLE_OFFICIAL_ARC_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0916"
+      ]
+    },
+    {
+      "id": "E-COINBASE-ARC-ACCESS",
+      "from": "COINBASE",
+      "relation": "is_exchange_access_partner_on",
+      "to": "ARC",
+      "evidence_class": "CIRCLE_OFFICIAL_ARC_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0916"
+      ]
+    },
+    {
+      "id": "E-MORPHO-ARC-CREDIT",
+      "from": "MORPHO",
+      "relation": "participates_as_credit_layer_on",
+      "to": "ARC",
+      "evidence_class": "CIRCLE_OFFICIAL_ARC_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0916"
+      ]
+    },
+    {
+      "id": "E-SBIC-SEPARATE-FROM-SBI",
+      "from": "SBIC_TOKYO",
+      "relation": "is_distinct_from",
+      "to": "SBI_GROUP",
+      "evidence_class": "OFFICIAL_ENTITY_PROFILES_AND_CORPORATE_RECORDS",
+      "source_ids": [
+        "SRC-20261031-SBIC-TOKYO-EAST-COMPANY-PROFILE"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-BNY-XRP-CUSTODY-ADOPTION",
+      "statement": "BNY's support for XRP custody increases institutional access and lowers custody friction.",
+      "classification": "SERVICE_CAPABILITY_CONFIRMED; ADOPTION_IMPACT_UNMEASURED",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY"
+      ],
+      "disconfirming_or_alternative": [
+        "No XRP AUC or client balance disclosed.",
+        "A custody capability can exist with low or zero client utilization."
+      ],
+      "status": "CONFIRMED_SERVICE_NOT_CONFIRMED_BALANCE"
+    },
+    {
+      "id": "H-ROBINHOOD-RLUSD-XRPL-SETTLEMENT",
+      "statement": "Robinhood's announced RLUSD institutional settlement on XRPL may expand XRPL stablecoin settlement activity.",
+      "classification": "ANNOUNCED_USE_CASE_CONFIRMED; VOLUME_AND_XRP_DEMAND_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL"
+      ],
+      "disconfirming_or_alternative": [
+        "RLUSD settlement may occur without XRP as bridge asset.",
+        "No volume, counterparty or XRP inventory disclosure."
+      ],
+      "status": "ADOPTION_HYPOTHESIS_NOT_PRICE_FEATURE"
+    },
+    {
+      "id": "H-COINBASE-MULTI-STABLECOIN-DISTRIBUTION",
+      "statement": "Coinbase is expanding as a multi-stablecoin distribution platform rather than replacing Circle USDC with RLUSD.",
+      "classification": "STRONGLY_SUPPORTED_COMPANY_POSITIONING",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+        "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+        "SRC-20261031-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION",
+        "SRC-20261031-COINBASE-Q3-2026-10Q-CIRCLE-RENEWAL"
+      ],
+      "disconfirming_or_alternative": [
+        "Future changes to distribution economics or product allocation could alter the mix.",
+        "No current RLUSD versus USDC net-flow split disclosed."
+      ],
+      "status": "COEXISTENCE_BETTER_SUPPORTED_THAN_REPLACEMENT"
+    },
+    {
+      "id": "H-INSTITUTIONAL-STACK-COMPLEMENTARITY",
+      "statement": "BNY custody, Robinhood settlement/treasury and Coinbase distribution form complementary institutional rails around Ripple assets.",
+      "classification": "CROSS_ANNOUNCEMENT_INFERENCE_NOT_COORDINATED_PLAN",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING"
+      ],
+      "disconfirming_or_alternative": [
+        "Announcements are separate bilateral relationships.",
+        "No joint operating agreement or shared capital plan disclosed.",
+        "BNY future capabilities remain approval-dependent."
+      ],
+      "status": "PLAUSIBLE_COMPLEMENTARITY_COORDINATION_UNPROVEN"
+    },
+    {
+      "id": "H-XRP-COLLATERAL-AND-CUSTODY-DEMAND",
+      "statement": "BNY XRP custody and Coinbase/Morpho collateral channels could improve institutional XRP utility.",
+      "classification": "MECHANISM_AND_SERVICE_CAPABILITIES_DOCUMENTED; ACTUAL_DEMAND_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0916"
+      ],
+      "disconfirming_or_alternative": [
+        "No XRP collateral balances, borrowing utilization or custody AUC disclosed.",
+        "Coinbase Global Exchange RLUSD collateral support is not live at launch and is not XRP collateral.",
+        "Morpho cbXRP and Coinbase derivatives collateral are separate systems."
+      ],
+      "status": "NO_FEATURE_ADMISSION"
+    },
+    {
+      "id": "H-RLUSD-SETTLEMENT-VS-XRP-DEMAND",
+      "statement": "Growth in RLUSD settlement on XRPL may increase ledger use without materially increasing XRP demand.",
+      "classification": "COUNTER_HYPOTHESIS_AND_ECONOMIC_MECHANISM",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031-CIRCLE-USDC-XRPL-0612-2025"
+      ],
+      "disconfirming_or_alternative": [
+        "If actual settlement requires substantial XRP bridge inventory or creates material liquidity demand, the effect could be larger.",
+        "No bridge-asset or XRP inventory data disclosed."
+      ],
+      "status": "RETAIN_AS_PRIMARY_COUNTER_HYPOTHESIS"
+    }
+  ]
+}

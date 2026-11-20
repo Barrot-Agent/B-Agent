@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T083758Z-BINANCE-POR-MARKET-DATA-PREDICTION-LEDGER",
+  "captured_at_utc": "2026-10-31T08:37:58Z",
+  "status": "ACCEPTED_FOR_RESEARCH_ARCHITECTURE",
+  "source_ids": [
+    "SRC-20261031-GH-MAIN-CROSS-ANALYSIS-075151Z",
+    "SRC-20261031-GH-PR1401-CROSS-ANALYSIS-READONLY",
+    "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP",
+    "SRC-20261031-GH-PR1400-FORECAST-LEDGER-SOURCE-REGISTRY",
+    "SRC-20261031-GH-PR1353-LEDGER-VALIDATOR-RECOVERY",
+    "SRC-20261031-BINANCE-SECURITY-UPDATE2-POR",
+    "SRC-20261031-COINDESK-POR-SNAPSHOT-NOV1",
+    "SRC-20261031-COINDESK-POR-FULL-REPORT-NOV2",
+    "SRC-20261031-BITQUERY-BINANCE-HACK-XRP-RECEIVER-0643Z",
+    "SRC-20261031-TRADRADAR-XRP-DERIVATIVES-0750Z",
+    "SRC-20261031-KODEXIUS-XRP-DERIVATIVES-0644Z",
+    "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+    "SRC-20261031-COINCODEX-XRP-HISTORICAL-OCT31",
+    "SRC-20261031-COINGECKO-XRP-HISTORICAL-OCT30"
+  ],
+  "decisions": [
+    {
+      "id": "DEC-BINANCE-POR-NOT-YET-PUBLISHED",
+      "rule": "Do not treat the post-incident Proof of Reserves as published until the actual dated snapshot and matching customer liabilities are retrieved. Keep Binance's $1.34B acquisition estimate aggregate and XRP allocation unknown.",
+      "rationale": "Binance's update gives a Nov 2 results deadline; CoinDesk reports a Nov 1 snapshot. No post-incident PoR result was found by the current cutoff.",
+      "feature_admission": "NO_XRP_RESERVE_FEATURE"
+    },
+    {
+      "id": "DEC-BITQUERY-XRP-RECEIVER-STALE",
+      "rule": "Use Bitquery's 233.5M XRP receiver balance only as a 2026-10-30T06:43Z historical snapshot; do not describe it as current.",
+      "rationale": "The provider explicitly timestamps its cross-chain holdings at 06:43 UTC Oct 30; later XRPL state was not retrieved.",
+      "feature_admission": "HISTORICAL_EVENT_CONTEXT_ONLY"
+    },
+    {
+      "id": "DEC-BITQUERY-TRM-CHAIN-SCOPE",
+      "rule": "Preserve Bitquery's nine-chain and TRM's ten-chain scopes separately; retain the finding that Bitquery sees no shared address between XRP/Solana and the other clusters.",
+      "rationale": "Providers describe different chain coverage and explicitly state that the XRP/Solana clusters are linked by timing/transaction construction rather than shared addresses.",
+      "feature_admission": "NO_COMMON_ADDRESS_INFERENCE"
+    },
+    {
+      "id": "DEC-XRP-OI-PROVIDER-SEPARATION",
+      "rule": "Do not average TradRadar $1.85B and Kodexius $738.72M OI. Store provider/contract universe metadata and reconcile overlapping contracts first.",
+      "rationale": "Seven-exchange aggregation differs from seven-contract aggregation and produces an approximately 2.50x difference.",
+      "feature_admission": "SEPARATE_PROVIDER_SERIES_ONLY"
+    },
+    {
+      "id": "DEC-XRP-ETF-PARTIAL",
+      "rule": "Treat the Oct 30 -$0.7M XRP ETF flow as partial because only two of five funds reported; missing funds are not zero.",
+      "rationale": "The provider's fund-level table shows 21Shares at zero, Bitwise at -$0.7M, and three funds not reported.",
+      "feature_admission": "PARTIAL_OBSERVATION_ONLY"
+    },
+    {
+      "id": "DEC-PR1401-ARTIFACT-ONLY",
+      "rule": "The read-only Cross Analysis proposal is a safe containment path but must be paired with a separately reviewed Pages deployment if unattended public-site freshness is required.",
+      "rationale": "The PR removes contents:write and git push but uploads artifacts instead of updating tracked web files or Pages.",
+      "feature_admission": "REPOSITORY_SAFETY_ONLY"
+    },
+    {
+      "id": "DEC-PR1402-PUSH-NOOP",
+      "rule": "Accept the push-no-op branch regression as verified only for push events; keep manual workflow_dispatch approval untested and do not merge automatically.",
+      "rationale": "Exact push run 41184448544 succeeded with no-op job success and approval job skipped; PR remains unmerged.",
+      "feature_admission": "WORKFLOW_REGRESSION_EVIDENCE_ONLY"
+    },
+    {
+      "id": "DEC-PR1400-OPTIONAL-SOURCE-REGISTRY",
+      "rule": "When a source registry is supplied, require forecast and outcome source IDs to be members; when absent, persist NOT_CHECKED. Keep source-quality/independence checks and concurrency locking as separate work.",
+      "rationale": "The exact-head tests verify optional membership validation without falsely claiming that missing registry means verified provenance.",
+      "feature_admission": "FORECAST_LEDGER_INTEGRITY_ONLY"
+    },
+    {
+      "id": "DEC-PR1353-EXACT-HEAD",
+      "rule": "Treat ac1b479 as the last verified 361-shard data head and ce75aba as an unverified metadata successor until a validator run covers ce75aba or a later append.",
+      "rationale": "The prior validator passed on ac1b479; current branch head ce75aba is a later commit.",
+      "feature_admission": "ARCHIVE_POINTER_ONLY"
+    },
+    {
+      "id": "DEC-NO-XRP-FORECAST",
+      "rule": "Do not issue a directional XRP forecast from these provider snapshots; keep OI, ETF and reserve features out of the model until coverage and cutoff semantics are reconciled.",
+      "rationale": "OI universes are non-comparable, ETF flow is partial, attacker receiver state is stale and no calibrated walk-forward model has passed.",
+      "feature_admission": "NO_FEATURE_ADMISSION"
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

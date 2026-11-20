@@ -1,0 +1,367 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T022300Z-CFTC-BITNOMIAL-MARKET-AND-VALIDATOR-AUDIT",
+  "captured_at_utc": "2026-10-30T02:23:00Z",
+  "observed_main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_PRIMARY_REGULATOR_NO_ACTION_LETTER",
+      "CONFIRMED_PRIMARY_REGULATOR_FAQ_DIRECTLY_REVIEWED",
+      "CONFIRMED_PRIMARY_DCO_RULES_PAGE",
+      "CONFIRMED_CORPORATE_RELATIONSHIP",
+      "INFERENCE",
+      "UNKNOWN",
+      "SECONDARY_MARKET_OBSERVATION_SCOPE_CONFLICT",
+      "SECONDARY_ETF_METHODOLOGY_CONFLICT"
+    ],
+    "causal_rule": "DCO eligibility, FCM reliance, clearing-member relationships, customer collateral utilization and XRP price demand are separate graph edges. Do not infer actual collateral balances or price causality from eligibility announcements."
+  },
+  "nodes": [
+    {
+      "id": "CFTC_MPD",
+      "label": "CFTC Market Participants Division",
+      "kind": "REGULATOR_STAFF"
+    },
+    {
+      "id": "CFTC_LETTER_26_05",
+      "label": "Staff no-action Letter 26-05",
+      "kind": "CONDITIONAL_FCM_NO_ACTION_POSITION"
+    },
+    {
+      "id": "COINBASE_FINANCIAL_MARKETS",
+      "label": "Coinbase Financial Markets, Inc.",
+      "kind": "REGISTERED_FCM_REQUESTOR"
+    },
+    {
+      "id": "BITNOMIAL_DCO",
+      "label": "Bitnomial Clearinghouse, LLC",
+      "kind": "CFTC_REGISTERED_DCO"
+    },
+    {
+      "id": "BITNOMIAL_FCM",
+      "label": "Bitnomial Clearing, LLC",
+      "kind": "CFTC_REGISTERED_FCM_AND_CLEARING_MEMBER"
+    },
+    {
+      "id": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "label": "Hidden Road Partners CIV US LLC",
+      "kind": "BITNOMIAL_CLEARING_MEMBER"
+    },
+    {
+      "id": "RIPPLE_PRIME",
+      "label": "Ripple Prime (formerly Hidden Road)",
+      "kind": "RIPPLE_GROUP_PRIME_BROKER"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP native digital asset",
+      "kind": "NATIVE_DIGITAL_ASSET"
+    },
+    {
+      "id": "XRP_DCO_COLLATERAL",
+      "label": "XRP accepted collateral at Bitnomial DCO",
+      "kind": "VENUE_SPECIFIC_COLLATERAL"
+    },
+    {
+      "id": "XRP_MARKET_DERIVATIVES",
+      "label": "XRP perpetual/futures positioning",
+      "kind": "MARKET_STRUCTURE"
+    },
+    {
+      "id": "XRP_ETF_ISSUERS",
+      "label": "US XRP ETF issuers",
+      "kind": "INSTITUTIONAL_CAPITAL_FLOWS"
+    },
+    {
+      "id": "CIRCLE_USDC",
+      "label": "Circle / USDC",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_AND_DISTRIBUTION"
+    },
+    {
+      "id": "RIPPLE_RLUSD",
+      "label": "Ripple / RLUSD",
+      "kind": "STABLECOIN_ISSUER"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-COINBASE-FCM-REQUESTED-LETTER-26-05-20261030",
+      "source": "COINBASE_FINANCIAL_MARKETS",
+      "target": "CFTC_LETTER_26_05",
+      "relationship": "REQUESTED_NO_ACTION_FRAMEWORK",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATOR_NO_ACTION_LETTER",
+      "claim": "CFTC Letter 26-05 was issued in response to a request from Coinbase Financial Markets. This does not prove Coinbase itself uses XRP collateral.",
+      "source_ids": [
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206"
+      ]
+    },
+    {
+      "id": "EDGE-CFTC-LETTER-26-05-ENABLES-CONDITIONAL-FCM-DIGITAL-ASSET-COLLATERAL",
+      "source": "CFTC_LETTER_26_05",
+      "target": "BITNOMIAL_FCM",
+      "relationship": "CONDITIONAL_FCM_RELIANCE_PATH_IF_NOTICE_AND_CONDITIONS_MET",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATOR_FAQ_DIRECTLY_REVIEWED",
+      "claim": "An FCM may rely on the staff no-action position for eligible non-security digital assets accepted by a registered DCO, subject to prior notice, initial three-month asset restrictions, valuation/haircuts, segregation, risk and reporting conditions. Whether Bitnomial Clearing LLC filed or relies is unknown.",
+      "source_ids": [
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-CFTC-FAQ-DCO-RISK-ACCEPTANCE",
+      "source": "CFTC_MPD",
+      "target": "BITNOMIAL_DCO",
+      "relationship": "DCO_CRYPTO_INITIAL_MARGIN_SUBJECT_TO_MINIMUM_RISK_AND_HAIRCUTS",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATOR_FAQ_DIRECTLY_REVIEWED",
+      "claim": "CFTC staff FAQ says a DCO may accept crypto assets as initial margin if Regulation 39.13(g)(10) minimal credit, market and liquidity risk is met; DCO sets stress-aware haircuts and reviews at least monthly. Staff FAQ creates no binding rights or rules.",
+      "source_ids": [
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-BITNOMIAL-DCO-ACCEPTS-XRP-COLLATERAL",
+      "source": "BITNOMIAL_DCO",
+      "target": "XRP_DCO_COLLATERAL",
+      "relationship": "ACCEPTS_XRP_WITH_40_PERCENT_HAIRCUT_AND_15M_NOTIONAL_LIMIT",
+      "evidence_class": "CONFIRMED_PRIMARY_DCO_RULES_PAGE",
+      "claim": "Bitnomial's published DCO schedule lists XRP at a 40% collateral haircut and $15M notional limit; XRP product maintenance margin is separately listed at 17%. Actual utilization is undisclosed.",
+      "source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDEN-ROAD-CIV-IS-BITNOMIAL-CLEARING-MEMBER",
+      "source": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "target": "BITNOMIAL_DCO",
+      "relationship": "LISTED_CLEARING_MEMBER",
+      "evidence_class": "CONFIRMED_PRIMARY_DCO_RULES_PAGE",
+      "claim": "Hidden Road Partners CIV US LLC is named on Bitnomial's current clearing-member list.",
+      "source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-RIPPLE-ACQUIRED-HIDDEN-ROAD",
+      "source": "RIPPLE_PRIME",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "FORMER_HIDDEN_ROAD_BUSINESS_ACQUIRED_AND_REBRANDED_AS_RIPPLE_PRIME",
+      "evidence_class": "CONFIRMED_CORPORATE_RELATIONSHIP",
+      "claim": "Ripple announced the acquisition close and rebrand of Hidden Road as Ripple Prime. The exact operating subsidiary and account-level collateral flows through the listed clearing-member entity are not publicly established.",
+      "source_ids": [
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+      ]
+    },
+    {
+      "id": "EDGE-RIPPLE-PRIME-BITNOMIAL-XRP-COLLATERAL-PATH",
+      "source": "RIPPLE_PRIME",
+      "target": "XRP_DCO_COLLATERAL",
+      "relationship": "PLAUSIBLE_INSTITUTIONAL_PATH_THROUGH_LISTED_CLEARING_MEMBER",
+      "evidence_class": "INFERENCE",
+      "claim": "Ripple Prime's Hidden Road lineage and the named Bitnomial clearing-member relationship, combined with Bitnomial's XRP collateral acceptance, create a plausible institutional route. No public evidence proves XRP deposits, client use or collateral balances.",
+      "source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024",
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-FCM-TO-BITNOMIAL-UNKNOWN",
+      "source": "COINBASE_FINANCIAL_MARKETS",
+      "target": "BITNOMIAL_DCO",
+      "relationship": "DIRECT_CLEARING_OR_XRP_COLLATERAL_USE_NOT_ESTABLISHED",
+      "evidence_class": "UNKNOWN",
+      "claim": "Coinbase Financial Markets requested Letter 26-05, but no evidence in this run establishes a Coinbase Financial Markets–Bitnomial clearing-member relationship or actual XRP collateral use.",
+      "source_ids": [
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-XRP-DERIVATIVES-LEVERAGE-UNWIND",
+      "source": "XRP_MARKET_DERIVATIVES",
+      "target": "XRP",
+      "relationship": "OBSERVED_LONG_LIQUIDATION_AND_OPEN_INTEREST_CONTRACTION",
+      "evidence_class": "SECONDARY_MARKET_OBSERVATION_SCOPE_CONFLICT",
+      "claim": "Several secondary panels show falling OI and long liquidations dominating the 24-hour window; scope and timestamps differ, so this supports an observed deleveraging hypothesis, not a directional forecast.",
+      "source_ids": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0100Z",
+        "SRC-LIQWALL-XRP-DERIVATIVES-20261029T2222Z",
+        "SRC-BITCOINLEVERAGE-XRP-DERIVATIVES-20261030T0001Z"
+      ]
+    },
+    {
+      "id": "EDGE-XRP-ETF-FLOW-DATE-POPULATION-DIFFERENCE",
+      "source": "XRP_ETF_ISSUERS",
+      "target": "XRP",
+      "relationship": "HOLDINGS_DERIVED_FLOW_SERIES_NOT_RECONCILED",
+      "evidence_class": "SECONDARY_ETF_METHODOLOGY_CONFLICT",
+      "claim": "CryptoKeyhole and XRP Insights report different daily/period figures because fund populations, date conventions, issuer publication times and excluded/reconstructed funds differ. A per-fund crosswalk is required.",
+      "source_ids": [
+        "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261030T0217Z",
+        "SRC-XRP-INSIGHTS-ETF-DATA-20261030T0137Z"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-CIRCLE-RIPPLE-MULTIISSUER-DISTRIBUTION",
+      "source": "COINBASE",
+      "target": "CIRCLE_USDC",
+      "relationship": "DISTRIBUTES_USDC_AND_HAS_REPORTED_USDC_ECONOMIC_EXPOSURE",
+      "evidence_class": "CONFIRMED_COMPANY_REPORTED",
+      "claim": "Coinbase reports $22B average USDC held in Coinbase products and $307M Q3 stablecoin revenue; Circle issues USDC. Coinbase also distributes RLUSD. This shows distribution/economic interdependence and multi-issuer strategy, not exclusive control or XRP demand.",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z",
+        "SRC-REUTERS-COINBASE-Q3-20261029T211600Z"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-DISTRIBUTES-RLUSD",
+      "source": "COINBASE",
+      "target": "RIPPLE_RLUSD",
+      "relationship": "LISTING_AND_DISTRIBUTION_ON_XRPL_BASE_ETHEREUM",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "claim": "Coinbase announced RLUSD distribution on Prime, Exchange and retail with XRPL, Base and Ethereum support. This is multi-issuer distribution, not proof of RLUSD displacing USDC or creating proportional XRP demand.",
+      "source_ids": [
+        "SRC-RIPPLE-PRIME-US-SPOT-XRP-RLUSD-20251103",
+        "SRC-BITNOMIAL-RLUSD-XRP-MARGIN-20251103"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-BITNOMIAL-XRP-COLLATERAL-INSTITUTIONAL-PATH-20261030",
+      "claim": "A usable institutional XRP collateral path exists at Bitnomial through DCO acceptance and an FCM relying on CFTC Letter 26-05; Ripple Prime's Hidden Road lineage creates a structural route into the clearing network.",
+      "supporting_source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+      ],
+      "disconfirming_evidence": [
+        "FCM-specific Letter 26-05 reliance notice and start date not found.",
+        "No public XRP collateral deposit or utilization data.",
+        "40% haircut and $15M notional limit constrain scale.",
+        "Coinbase requestor status does not prove Coinbase XRP use."
+      ],
+      "status": "PLAUSIBLE_PATH; ACTUAL_USE_UNVERIFIED"
+    },
+    {
+      "id": "HYP-XRP-COLLATERAL-USE-CREATES-MARGINAL-SPOT-DEMAND-20261030",
+      "claim": "If institutional XRP collateral utilization rises materially, firms may need to acquire or retain XRP inventory, potentially reducing freely circulating float and supporting incremental spot demand.",
+      "supporting_source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+      ],
+      "disconfirming_evidence": [
+        "Existing inventory may be posted without new purchases.",
+        "Collateral may be rehypothecated or sourced OTC.",
+        "Low utilization or the $15M cap may make the channel immaterial.",
+        "No deposit, turnover or inventory acquisition data is public."
+      ],
+      "status": "SPECULATIVE_CAUSAL_HYPOTHESIS_NOT_A_PRICE_FORECAST"
+    },
+    {
+      "id": "HYP-XRP-LEVERAGED-LONG-DELEVERAGING-20261030",
+      "claim": "The latest secondary market panels indicate a long-led leveraged unwind: price down, open interest down, and reported liquidations dominated by longs.",
+      "supporting_source_ids": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0100Z",
+        "SRC-LIQWALL-XRP-DERIVATIVES-20261029T2222Z",
+        "SRC-BITCOINLEVERAGE-XRP-DERIVATIVES-20261030T0001Z"
+      ],
+      "disconfirming_evidence": [
+        "Aggregate OI/funding differ materially by source and timestamp.",
+        "Long/short account ratios are not notional exposure.",
+        "Liquidation reporting is incomplete and venue-specific.",
+        "A completed unwind could precede stabilization or a reversal; no direction follows."
+      ],
+      "status": "OBSERVED_PATTERN; CAUSALITY_AND_FORWARD_DIRECTION_UNRESOLVED"
+    },
+    {
+      "id": "HYP-XRP-ETF-DATE-ALIGNMENT-EXPLAINS-FLOW-DISAGREEMENT-20261030",
+      "claim": "The apparent Oct 28 ETF flow conflict is partly attributable to issuer file timing and date mapping, especially Franklin's one-trading-day publication convention, plus different fund populations and treatment of GXRP/BITW/REX.",
+      "supporting_source_ids": [
+        "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261030T0217Z",
+        "SRC-XRP-INSIGHTS-ETF-DATA-20261030T0137Z"
+      ],
+      "disconfirming_evidence": [
+        "The raw issuer files have not been matched fund-by-fund for the same holdings timestamp.",
+        "Remaining discrepancies may reflect additional methodology or data-capture differences."
+      ],
+      "status": "LIKELY_METHODOLOGY_CONTRIBUTOR; FULL_RECONCILIATION_PENDING"
+    }
+  ],
+  "market_observations": [
+    {
+      "source_id": "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0100Z",
+      "timestamp_utc": "2026-10-30T01:00:00Z",
+      "metric": "XRP mark price",
+      "value": 1.2231,
+      "unit": "USD",
+      "admitted": false
+    },
+    {
+      "source_id": "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0100Z",
+      "timestamp_utc": "2026-10-30T01:00:00Z",
+      "metric": "XRP open interest",
+      "value": 1820000000,
+      "unit": "USD across 7 venues",
+      "admitted": false
+    },
+    {
+      "source_id": "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0100Z",
+      "timestamp_utc": "2026-10-30T01:00:00Z",
+      "metric": "XRP 24h liquidations",
+      "value": 33020000,
+      "unit": "USD minimum; 31.88M longs",
+      "admitted": false
+    },
+    {
+      "source_id": "SRC-LIQWALL-XRP-DERIVATIVES-20261029T2222Z",
+      "timestamp_utc": "2026-10-29T22:22:00Z",
+      "metric": "XRP open interest",
+      "value": 1350000000,
+      "unit": "USD all exchanges; source-specific aggregation",
+      "admitted": false
+    },
+    {
+      "source_id": "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261030T0217Z",
+      "timestamp_utc": "2026-10-30T02:17:00Z",
+      "metric": "XRP ETF Oct 28 holdings-derived flow",
+      "value": 4337696,
+      "unit": "XRP across 4 funds",
+      "admitted": false
+    },
+    {
+      "source_id": "SRC-XRP-INSIGHTS-ETF-DATA-20261030T0137Z",
+      "timestamp_utc": "2026-10-30T01:37:03Z",
+      "metric": "XRP ETF Oct 26-28 settled holdings-derived flow",
+      "value": -2958545,
+      "unit": "XRP across different fund universe",
+      "admitted": false
+    }
+  ],
+  "source_ids": [
+    "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+    "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+    "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20260717",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-RULES-20261002",
+    "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024",
+    "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0100Z",
+    "SRC-LIQWALL-XRP-DERIVATIVES-20261029T2222Z",
+    "SRC-BITCOINLEVERAGE-XRP-DERIVATIVES-20261030T0001Z",
+    "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261030T0217Z",
+    "SRC-XRP-INSIGHTS-ETF-DATA-20261030T0137Z",
+    "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z",
+    "SRC-REUTERS-COINBASE-Q3-20261029T211600Z",
+    "SRC-GITHUB-PR1353-DUPLICATE-SOURCE-ID-20261030T0223Z",
+    "SRC-GITHUB-PR1353-STRUCTURAL-READBACK-20261030T0223Z"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false
+}

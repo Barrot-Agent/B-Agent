@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "ADR-20261030T180231Z-POINT-IN-TIME-MACRO-ETF-AND-ARCHIVE-INTEGRITY",
+  "captured_at_utc": "2026-10-30T18:02:31Z",
+  "decision": "Do not admit single-provider XRP price snapshots, unreconciled ETF cumulative flows, or broad macro fund-flow observations as directional features until timestamp, universe and causal-validation requirements are met. Enforce archive-policy counts against live immutable pointer counts.",
+  "rules": [
+    "Every market observation records provider, capture timestamp, provider observation timestamp if exposed, instrument/venue universe, units and missingness.",
+    "ETF flow providers are not averaged when fund coverage, settlement windows, cumulative definitions or holdings universes differ.",
+    "The October 29 US ETF session close at 20:00 UTC precedes the first identified Binance XRP transfer at 20:05 UTC; ETF flow is pre-incident context, not incident response.",
+    "Macro event and weekly fund-flow observations remain context-only until a point-in-time walk-forward model establishes incremental predictive value beyond BTC/ETH and market-wide controls.",
+    "No directional forecast until fixed-horizon outcomes, immutable feature snapshots, baseline comparisons, calibration and shadow evaluation pass.",
+    "For v3 research ledgers, archive_policy arrays record_count/chunk_count, archive_shards_total and corresponding ledger_metrics must match authoritative archive_pointer totals; validator fails closed on mismatch."
+  ],
+  "status": "DESIGNED_AND_CODED_PENDING_EXACT_HEAD_VERIFICATION",
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

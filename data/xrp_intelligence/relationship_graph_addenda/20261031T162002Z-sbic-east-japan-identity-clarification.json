@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261031T162002Z-SBIC-EAST-JAPAN-IDENTITY",
+  "captured_at_utc": "2026-10-31T16:20:02Z",
+  "extends_graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T160137Z-xrp-exchange-wallets-binance-recovery-graph.json",
+  "source_ids": [
+    "SRC-20261031T152000Z-COINBASE-RLUSD",
+    "SRC-20261031T152000Z-COINBASE-Q3-IR",
+    "SRC-20261031T152000Z-COINBASE-Q3-10Q",
+    "SRC-20261031T152000Z-OCC-RIPPLE-NTB",
+    "SRC-20261031T152000Z-AVIVA-XRPL",
+    "SRC-20261031T152000Z-SC-RLUSD",
+    "SRC-20261031T152000Z-RIPPLE-STRATEGY",
+    "SRC-20261031T152000Z-BNY-RIPPLE",
+    "SRC-20261031T152000Z-C2FO",
+    "SRC-20261031T152000Z-ROBINHOOD",
+    "SRC-20261031T152000Z-RIPPLE-PRIME",
+    "SRC-20261031T152000Z-XRPL-AI-KIT",
+    "SRC-20261031T152000Z-RIPPLE-TREASURY",
+    "SRC-20261031T152000Z-SBI-ACCUMULATION",
+    "SRC-20261031T152000Z-ORICO",
+    "SRC-20261031T152000Z-XRPL-UTILS-METHOD",
+    "SRC-20261031T152000Z-XRPL-UTILS-HEALTH",
+    "SRC-20261031T152000Z-XRP-INSIGHTS",
+    "SRC-20261031T152000Z-CRYPTOETF",
+    "SRC-20261031T152000Z-CRYPTOKEYHOLE",
+    "SRC-20261031T152000Z-BINANCE-PRICE",
+    "SRC-20261031T152000Z-TRADRADAR",
+    "SRC-20261031T152000Z-KODEXIUS",
+    "SRC-20261031T152000Z-SBIC-INDEX",
+    "SRC-20261031T152000Z-SBIC-20250226",
+    "SRC-20261031T152000Z-GITHUB-AUDIT",
+    "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-202610311448Z-BINANCE-POR-METHODOLOGY",
+    "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS",
+    "SRC-202610311448Z-SBI-VISA-DIGITAL-MOU",
+    "SRC-202610311448Z-SBI-SHINSEI-XRP-VOUCHER",
+    "SRC-202610311448Z-SBI-RLUSD-LISTING",
+    "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV",
+    "SRC-20261031T121200Z-CIRCLE-ARC-MAINNET-ROLES",
+    "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT",
+    "SRC-20261031T121200Z-SBI-SMFG-STABLECOIN-PARTNERSHIP",
+    "SRC-20261031T121200Z-SBI-STARTALE-BLACKROCK-JPYSC-MOU",
+    "SRC-20261031T121200Z-SBI-OPEN-STANDARD-JPYSC-OUSD",
+    "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE",
+    "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE",
+    "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+    "SRC-20261031T160137Z-REUTERS-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T160137Z-GITHUB-MAIN-PR-WORKFLOW-AUDIT",
+    "SRC-20261031T162002Z-GITHUB-XRP-LEDGER-VALIDATOR-FAILURE",
+    "SRC-20261031T162002Z-GITHUB-APPROVAL-WORKFLOW-ZERO-JOB"
+  ],
+  "nodes": [
+    {
+      "id": "TOKYO_SBIC",
+      "label": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "kind": "SME_INVESTMENT_CORPORATION"
+    },
+    {
+      "id": "SBIC_EAST_JAPAN",
+      "label": "SBIC East Japan",
+      "kind": "OFFICIAL_ENGLISH_BRAND"
+    },
+    {
+      "id": "NAGOYA_SBIC",
+      "label": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "kind": "SISTER_COMPANY"
+    },
+    {
+      "id": "OSAKA_SBIC",
+      "label": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "kind": "SISTER_COMPANY"
+    },
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings, Inc.",
+      "kind": "FINANCIAL_HOLDING_COMPANY"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade Co., Ltd.",
+      "kind": "CRYPTO_EXCHANGE"
+    },
+    {
+      "id": "SME_INVESTEES",
+      "label": "SME investee companies",
+      "kind": "PORTFOLIO_COMPANIES"
+    },
+    {
+      "id": "CHATGPT",
+      "label": "ChatGPT",
+      "kind": "AI_PRODUCT"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "NATIVE_ASSET"
+    }
+  ],
+  "edges": [
+    {
+      "id": "SBIC-162002-1",
+      "source": "TOKYO_SBIC",
+      "target": "SBIC_EAST_JAPAN",
+      "relationship": "official English brand/descriptor",
+      "evidence_class": "PRIMARY_OFFICIAL_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE"
+      ]
+    },
+    {
+      "id": "SBIC-162002-2",
+      "source": "TOKYO_SBIC",
+      "target": "SME_INVESTEES",
+      "relationship": "long-term equity investment and management support; stable shareholder without day-to-day management interference",
+      "evidence_class": "PRIMARY_OFFICIAL_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE"
+      ]
+    },
+    {
+      "id": "SBIC-162002-3",
+      "source": "TOKYO_SBIC",
+      "target": "NAGOYA_SBIC",
+      "relationship": "officially identified sister company",
+      "evidence_class": "PRIMARY_OFFICIAL_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE"
+      ]
+    },
+    {
+      "id": "SBIC-162002-4",
+      "source": "TOKYO_SBIC",
+      "target": "OSAKA_SBIC",
+      "relationship": "officially identified sister company",
+      "evidence_class": "PRIMARY_OFFICIAL_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE"
+      ]
+    },
+    {
+      "id": "SBIC-162002-5",
+      "source": "TOKYO_SBIC",
+      "target": "CHATGPT",
+      "relationship": "educational seminar/training context; no product partnership established",
+      "evidence_class": "OFFICIAL_EVENT_AND_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-20261031T152000Z-SBIC-INDEX",
+        "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE"
+      ]
+    },
+    {
+      "id": "SBIC-162002-6",
+      "source": "TOKYO_SBIC",
+      "target": "SBI_HOLDINGS",
+      "relationship": "affiliation not established; do not infer common ownership from the letters SBI",
+      "evidence_class": "ENTITY_DISAMBIGUATION_NOT_A_POSITIVE_AFFILIATION_CLAIM",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE"
+      ]
+    },
+    {
+      "id": "SBIC-162002-7",
+      "source": "TOKYO_SBIC",
+      "target": "SBI_VC_TRADE",
+      "relationship": "distinct legal/business entity; no direct relationship established in reviewed sources",
+      "evidence_class": "ENTITY_DISAMBIGUATION",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-SBIC-EAST-JAPAN-IS-SBI-HOLDINGS",
+      "claim": "SBIC East Japan is a subsidiary or operating division of SBI Holdings.",
+      "status": "NOT_SUPPORTED_BY_REVIEWED_EVIDENCE",
+      "support": [
+        "Shared letters SBI in English shorthand only"
+      ],
+      "disconfirming": [
+        "Official legal name is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; official profile gives a separate corporate number and shareholder categories; Nagoya and Osaka are identified as sister companies"
+      ],
+      "unknowns": [
+        "Complete named shareholder register and any indirect minority holdings"
+      ],
+      "next_test": "Review official corporate registry and named shareholder disclosures if a direct ownership claim becomes material."
+    },
+    {
+      "id": "HYP-SBIC-HAS-DIRECT-XRP-RELATIONSHIP",
+      "claim": "SBIC East Japan has a direct XRP, Ripple, Circle or digital-asset custody/payment relationship.",
+      "status": "NO_EVIDENCE_FOUND",
+      "support": [],
+      "disconfirming": [
+        "Official mandate and profile describe SME equity investment and management support; no XRP/crypto product or partnership identified"
+      ],
+      "unknowns": [
+        "Unpublished portfolio-level investments or private commercial activity"
+      ],
+      "next_test": "Search official investment disclosures and public portfolio announcements; do not infer from SBI VC Trade or SBI Holdings activity."
+    }
+  ]
+}

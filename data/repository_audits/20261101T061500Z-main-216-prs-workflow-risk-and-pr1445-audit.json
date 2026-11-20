@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "captured_at_utc": "2026-11-01T06:15:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "694fc4241f543917fc6eb787c025bf1eb6726595",
+    "latest_commit_message": "chore: Barrot telemetry report",
+    "latest_commit_utc": "2026-11-01T06:03:40Z",
+    "changed_path": "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+    "change": "timestamp only",
+    "report_status": "OPERATIONAL",
+    "deployment_health_verified": false,
+    "scheduled_main_writer_remains_active": true
+  },
+  "pr_inventory": {
+    "total": 216,
+    "draft": 206,
+    "ready": 10,
+    "main_based": 211,
+    "current_main_base": 1,
+    "stale_main_based": 210,
+    "non_main_base": 5,
+    "captured_at_utc": "2026-11-01T06:15:00Z"
+  },
+  "safety_prs": [
+    {
+      "number": 1443,
+      "head": "23ba72611eeb02b6eee5d87df1d7bad79816958e",
+      "base": "0ae640073f01321555d7f69dfc28d5b62a348fc6",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41278911244,
+      "tests": 349,
+      "subtests": 8,
+      "gate_run": 41278911251,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1444,
+      "head": "8d8965eaa72b9402ad1dedec9d752387256a51dd",
+      "base": "0ae640073f01321555d7f69dfc28d5b62a348fc6",
+      "current_main": "694fc4241f543917fc6eb787c025bf1eb6726595",
+      "behind": 1,
+      "mergeable": true,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41279721635,
+      "tests": 363,
+      "subtests": 8,
+      "gate_run": 41279721643,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1445,
+      "head": "ac04af6f19db8a1d39eaf1346943628db1acc2cb",
+      "base": "694fc4241f543917fc6eb787c025bf1eb6726595",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41280065967,
+      "tests": 346,
+      "subtests": 8,
+      "gate_run": 41280065895,
+      "gate": "PASS_MERGE_DISABLED"
+    }
+  ],
+  "workflow_risks": [
+    {
+      "path": ".github/workflows/auto-resolve-issues.yml",
+      "trigger": "schedule",
+      "permissions": "issues:write/actions:read",
+      "behavior": "may comment on and close stale [Auto] workflow-failure issues after checking the latest run"
+    },
+    {
+      "path": ".github/workflows/barrot-autonomous-resolver.yml",
+      "trigger": "hourly schedule",
+      "permissions": "issues:write/pull-requests:write",
+      "behavior": "creates failure issues and assigns unassigned issues/PRs to vars.COPILOT_ASSIGNEE if configured; value and live handoff unverified"
+    },
+    {
+      "path": ".github/workflows/daily-digest.yml",
+      "trigger": "daily schedule",
+      "permissions": "issues:write",
+      "behavior": "creates a daily digest issue"
+    },
+    {
+      "path": ".github/workflows/self-schedule.yml",
+      "trigger": "scheduled",
+      "permissions": "issues:write",
+      "behavior": "creates barrot-task issues for stale knowledge-base sources"
+    },
+    {
+      "path": ".github/workflows/gumroad-metrics.yml",
+      "trigger": "daily schedule",
+      "permissions": "contents:write",
+      "behavior": "fetches aggregate Gumroad /products data, writes gumroad_metrics.json and commits to main"
+    },
+    {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "trigger": "manual",
+      "permissions": "contents:write",
+      "behavior": "manual main writer; indirect scheduler dispatch is addressed by PR #1443 if merged"
+    },
+    {
+      "path": ".github/workflows/knowledge-signal-cycle-btc.yml",
+      "trigger": "manual",
+      "permissions": "contents:write",
+      "behavior": "manual main writer; indirect scheduler dispatch is addressed by PR #1443 if merged"
+    },
+    {
+      "path": ".github/workflows/coinbase-paper-trader.yml",
+      "trigger": "manual",
+      "permissions": "contents:write",
+      "behavior": "paper-state writer; no Coinbase API secret visible in workflow; script-level review pending"
+    },
+    {
+      "path": ".github/workflows/barrot-agent.yml",
+      "trigger": "issue label",
+      "permissions": "contents:write/issues:write/pull-requests:write",
+      "behavior": "issue-label-triggered branch and draft-PR writer; reviewed script path pushes task branch and opens PR, no main push found in reviewed functions"
+    }
+  ],
+  "controls_already_proposed": [
+    "PR #1443: Cross Analysis, Scheduler Tick and Merge Queue quarantine.",
+    "PR #1444: telemetry/signal accuracy artifact-only; subscriber sync manual-confirmed; Databricks token rotation disabled; Cloudflare/Self-hosted deployments manual-only; HF Admin disabled.",
+    "PR #1445: Force Deploy Space disabled; model upload and Space restart require explicit confirmation; Self-Upgrade requires confirmation and refuses dispatch on main."
+  ],
+  "other_controls": {
+    "barrot_pr_automerge": "DISABLED",
+    "deploy_databricks": "MANUAL_WITH_EXPLICIT_CONFIRMATION",
+    "sync_huggingface": "MANUAL_WITH_EXPLICIT_CONFIRMATION",
+    "barrot_ops": "MANUAL_WITH_EXPLICIT_CONFIRMATION",
+    "barrot_approve_pr_zero_job_push_runs": "EXPECTED_UNMATCHED_PUSH_EVENT_BECAUSE_WORKFLOW_DISPATCH_ONLY"
+  },
+  "limitations": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "security_alert_access": "NOT_ACCESSIBLE",
+    "branch_protection_details": "403_FROM_AVAILABLE_GITHUB_INTEGRATION",
+    "main_remediation_applied": false
+  },
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false
+}

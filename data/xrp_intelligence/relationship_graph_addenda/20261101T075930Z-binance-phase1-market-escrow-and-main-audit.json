@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-20261101T075930Z-BINANCE-PHASE1-ESCROW-MARKET-MAIN",
+  "captured_at_utc": "2026-11-01T07:59:30Z",
+  "source_ids": [
+    "SRC-20261101T075930Z-BINANCE-NETWORK-STATUS-PAGE",
+    "SRC-20261101T071000Z-TRADRADAR-XRP-DERIVATIVES",
+    "SRC-20261101T074000Z-SEANDRA-BINANCE-XRP-PERP",
+    "SRC-20261101T064200Z-XRP-INSIGHTS-ESCROW-LEDGER-108039913",
+    "SRC-20261101T075930Z-GITHUB-MAIN-PR-INVENTORY-AUDIT",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+  ],
+  "edges": [
+    {
+      "from": "BINANCE",
+      "to": "XRP_NETWORK",
+      "relation": "INCLUDES_IN_PROGRESSIVE_PHASE1_WITHDRAWAL_ROLLOUT",
+      "status": "ANNOUNCED_NOT_ASSET_LEVEL_CONFIRMED",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ]
+    },
+    {
+      "from": "REUTERS",
+      "to": "BINANCE_WITHDRAWALS",
+      "relation": "REPORTS_PHASE1_BEGAN_AND_BTC_WITHDRAWALS_RESUMED; XRP_LISTED",
+      "status": "BTC_RESUMED; XRP_SUCCESS_UNVERIFIED",
+      "source_ids": [
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL"
+      ]
+    },
+    {
+      "from": "BINANCE_STATUS_PAGE",
+      "to": "XRP_WITHDRAWAL_STATUS",
+      "relation": "NO_ASSET_LEVEL_ROW_RENDERED",
+      "status": "UNCONFIRMED",
+      "source_ids": [
+        "SRC-20261101T075930Z-BINANCE-NETWORK-STATUS-PAGE"
+      ]
+    },
+    {
+      "from": "RIPPLE_ESCROW_NOV1",
+      "to": "XRP_SUPPLY",
+      "relation": "TRACKER_REPORTS_1B_ESCROWFINISH_AND_ZERO_REESCROW_BY_LEDGER_108039913",
+      "status": "RELEASE_REPORTED; DESTINATION_UNKNOWN",
+      "source_ids": [
+        "SRC-20261101T064200Z-XRP-INSIGHTS-ESCROW-LEDGER-108039913"
+      ]
+    },
+    {
+      "from": "TRADRADAR",
+      "to": "XRP_DERIVATIVES",
+      "relation": "AGGREGATES_SEVEN_VENUES",
+      "status": "OBSERVED_07:10Z",
+      "source_ids": [
+        "SRC-20261101T071000Z-TRADRADAR-XRP-DERIVATIVES"
+      ]
+    },
+    {
+      "from": "SEANDRA",
+      "to": "BINANCE_XRPUSDT_PERPETUAL",
+      "relation": "SINGLE_VENUE_OI_FUNDING_AND_ACCOUNT_RATIO",
+      "status": "OBSERVED_07:40Z",
+      "source_ids": [
+        "SRC-20261101T074000Z-SEANDRA-BINANCE-XRP-PERP"
+      ]
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "CROSS_ANALYSIS",
+      "relation": "SCHEDULED_WRITE_CAPABILITY; TIMESTAMP_ONLY_ZERO_SAMPLE_UPDATE",
+      "status": "ACTIVE_ON_MAIN",
+      "source_ids": [
+        "SRC-20261101T075930Z-GITHUB-MAIN-PR-INVENTORY-AUDIT"
+      ]
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "SCHEDULER_TICK",
+      "relation": "WRITE_AND_WORKFLOW_DISPATCH_CAPABILITY; ZERO_ENTRIES_FIRED",
+      "status": "ACTIVE_ON_MAIN",
+      "source_ids": [
+        "SRC-20261101T075930Z-GITHUB-MAIN-PR-INVENTORY-AUDIT"
+      ]
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "MERGE_QUEUE",
+      "relation": "MANUAL_PRIVILEGED_MERGE_CAPABILITY_WITHOUT_EXPLICIT_USER_APPROVAL_CHECK",
+      "status": "ACTIVE_ON_MAIN",
+      "source_ids": [
+        "SRC-20261101T075930Z-GITHUB-MAIN-PR-INVENTORY-AUDIT"
+      ]
+    },
+    {
+      "from": "BAGENT_PR1449",
+      "to": "BAGENT_MAIN",
+      "relation": "PROPOSED_WRITER_QUARANTINE_NOT_MERGED; BASE_STALE",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "source_ids": [
+        "SRC-20261101T075930Z-GITHUB-MAIN-PR-INVENTORY-AUDIT"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "XRP withdrawals, if enabled, can reduce Binance-labelled custody balances without implying net buying or selling.",
+      "status": "CONDITIONAL_INFERENCE",
+      "disconfirming": "No successful XRP withdrawal or asset-level status row."
+    },
+    {
+      "id": "H2",
+      "claim": "The 1B escrow release creates a potential supply overhang only if transfers reach sale/market-making venues.",
+      "status": "UNRESOLVED",
+      "disconfirming": "No destination or sale verified."
+    },
+    {
+      "id": "H3",
+      "claim": "Positive funding and long-account skew may increase liquidation sensitivity but do not predict direction.",
+      "status": "INFERENCE",
+      "disconfirming": "Funding modest; account ratios not notional exposure."
+    },
+    {
+      "id": "H4",
+      "claim": "Binance restoration may shift venue flows but does not establish Coinbase market-share gains.",
+      "status": "UNTESTED",
+      "disconfirming": "No customer migration evidence."
+    }
+  ],
+  "disconfirming_evidence": [
+    "Reuters confirms Bitcoin withdrawals resumed but not XRP withdrawal success.",
+    "Binance status page rendered no asset-level rows.",
+    "TradRadar and Seandra OI cover different universes.",
+    "Raw escrow Destination fields not decoded."
+  ],
+  "unknowns": [
+    "XRP withdrawal availability.",
+    "Escrow destinations and subsequent transfers.",
+    "Attacker wallet current balance.",
+    "XRP-specific Binance replacement purchases.",
+    "Coinbase XRP-specific collateral and customer migration."
+  ]
+}

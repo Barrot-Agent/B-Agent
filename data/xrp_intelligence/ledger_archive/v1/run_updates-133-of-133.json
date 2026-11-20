@@ -1,0 +1,38 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 132,
+  "chunk_count": 133,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T084254Z-APPROVAL-ZERO-JOB-COUNTEREXAMPLE-AND-364-SHARD-VALIDATION",
+      "created_at_utc": "2026-10-31T08:42:54Z",
+      "data_cutoff_utc": "2026-10-31T08:42:54Z",
+      "source_ids": [
+        "SRC-20261031-GH-XRP-LEDGER-VALIDATOR-41185679403",
+        "SRC-20261031-GH-APPROVAL-ZERO-JOBS-41185678470",
+        "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP"
+      ],
+      "summary": "Verified exact-head XRP archive validation at e8d442: 364 shards, 1,954 sources, 335 run updates, 851 limitations, 20 tests, zero errors, no state mutation. No fail-closed gate run was found for this head. Discovered a default-branch approval-workflow counterexample: PR #1402's push no-op passed on its own branch, but a push to the XRP research branch using the unmodified default workflow still failed with zero jobs (run 41185678470). PR #1402 remains open and unmerged; repository-wide fix is not active. No main change or merge.",
+      "repository_audit_path": "data/repository_audits/20261031T084254Z-approval-workflow-counterexample-and-archive-validator-audit.json",
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "archive_validator_last_head": "e8d4427e0e2bfc5a1fc3604f41e8cbd6486a98e1",
+        "archive_validator_run_id": 41185679403,
+        "archive_validator_status": "PASS",
+        "archive_validator_shards_checked": 364,
+        "archive_validator_tests_passed": 20,
+        "archive_fail_closed_gate_status": "NOT_OBSERVED",
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_changed_by_this_run": false,
+        "merge_performed": false,
+        "force_push_performed": false,
+        "manual_workflow_dispatch_performed": false
+      }
+    }
+  ]
+}

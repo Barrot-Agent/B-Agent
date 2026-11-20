@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-20261030T162330Z-SBI-MULTI-RAIL-AND-ARC-XRP-COMPETITION",
+  "captured_at_utc": "2026-10-30T16:23:30Z",
+  "status": "ADOPTED_FOR_RESEARCH",
+  "decisions": [
+    {
+      "area": "entity_resolution",
+      "rule": "Keep SBIC East Japan distinct from SBI Holdings and its subsidiaries. Keep SBI Circle Holdings (50/50 SBI-Circle JV) distinct from SBI Startale Marketing (SBI-Startale JV with SMBC 5% participation)."
+    },
+    {
+      "area": "arc_role_classification",
+      "rule": "Record SBI Group as a founding validator; Coinbase and Binance are exchange access partners, not founding validators. Arc uses USDC gas, has a permissioned validator set and Circle says it has not been reviewed or approved by NYDFS or another regulator."
+    },
+    {
+      "area": "arc_vs_xrp",
+      "rule": "Treat Arc as a potential stablecoin-native substitute for XRP in some corridors, not proof of XRP replacement. StableFX currently lists JPYC but not JPYSC; JPYSC public-chain circulation and JPYSC-OUSD interoperability remain future/PoC."
+    },
+    {
+      "area": "xrpl_stablecoin_complementarity",
+      "rule": "Keep Circle USDC-on-XRPL and Ripple's XRP auto-bridge thesis as a separate complementarity hypothesis. Do not infer executed XRP bridge volume or price demand without on-chain DEX route/volume measurements."
+    },
+    {
+      "area": "sbi_xrp_distribution",
+      "rule": "Treat deposit vouchers, shareholder coupons, card rewards and 2M registered accounts as distribution evidence only. Do not translate them into XRP spot demand, active users or holdings without redemption and flow data."
+    },
+    {
+      "area": "coinbase_rlusd_network_access",
+      "rule": "Coinbase announced RLUSD deposits/withdrawals on XRPL, Base and Ethereum across Prime/Exchange/app. Coinbase Global Exchange collateral support was stated as future; do not mark it live. SBI VCTRADE's current RLUSD route remains Ethereum-only with XRPL planned."
+    },
+    {
+      "area": "institutional_collateral",
+      "rule": "Circle USYC off-exchange collateral on Binance is a confirmed product integration; actual balances/utilization are unknown. Do not compare it quantitatively with Bitnomial XRP haircuts without published eligibility, valuation and utilization data."
+    },
+    {
+      "area": "japanese_unit_translation",
+      "rule": "Normalize Japanese financial units explicitly: 1億円 = JPY100M; 10億円 = JPY1B; 69億円 = JPY6.9B; 201億円 = JPY20.1B. Correct the earlier source-040 JPYSC JGB note from JPY10B to JPY1B in a new append-only correction record; preserve the original shard."
+    },
+    {
+      "area": "capital_vs_campaigns",
+      "rule": "Separate actual equity investments, reserve backing assets, lending applications, customer reward coupons, account registrations and executed market purchases. Campaign face value is not market inflow."
+    },
+    {
+      "area": "forecast_admission",
+      "rule": "No new directional XRP forecast or market feature admitted from corporate announcements. Require executed volume, on-chain flows, point-in-time timestamps and out-of-sample calibration."
+    }
+  ],
+  "prior_evidence_preserved": true
+}

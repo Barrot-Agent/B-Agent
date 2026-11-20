@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-20261031T214545Z-TREASURY-RLUSD-STANDARD-CHARTERED-LMAX",
+  "captured_at_utc": "2026-10-31T21:45:45Z",
+  "source_ids": [
+    "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+    "SRC-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+    "SRC-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+    "SRC-20261031T214545Z-STABLECOININSIDER-RLUSD",
+    "SRC-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+    "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP"
+  ],
+  "nodes": [
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "COMPANY"
+    },
+    {
+      "id": "TREASURY",
+      "label": "Ripple Treasury",
+      "kind": "TREASURY_PLATFORM"
+    },
+    {
+      "id": "PRIME",
+      "label": "Ripple Prime",
+      "kind": "PRIME_BROKER"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "ASSET"
+    },
+    {
+      "id": "RLUSD",
+      "label": "RLUSD",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "LEDGER"
+    },
+    {
+      "id": "ETH",
+      "label": "Ethereum",
+      "kind": "LEDGER"
+    },
+    {
+      "id": "CORPORATES",
+      "label": "Corporate treasury customers",
+      "kind": "CUSTOMERS"
+    },
+    {
+      "id": "SC",
+      "label": "Standard Chartered DIFC",
+      "kind": "CUSTODIAN"
+    },
+    {
+      "id": "LMAX",
+      "label": "LMAX Group",
+      "kind": "INSTITUTIONAL_VENUE"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "BNY",
+      "label": "BNY",
+      "kind": "RESERVE_CUSTODIAN"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E1",
+      "source": "TREASURY",
+      "target": "CORPORATES",
+      "relationship": "13T_2025_PAYMENT_VOLUME_99_9_PERCENT_OFFCHAIN_PER_CEO",
+      "evidence_class": "CEO_INTERVIEW",
+      "source_ids": [
+        "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT"
+      ]
+    },
+    {
+      "id": "E2",
+      "source": "PRIME",
+      "target": "CORPORATES",
+      "relationship": "3_TO_4T_2025_VOLUME_99_PERCENT_PLUS_OFFCHAIN_PER_CEO",
+      "evidence_class": "CEO_INTERVIEW",
+      "source_ids": [
+        "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT"
+      ]
+    },
+    {
+      "id": "E3",
+      "source": "RIPPLE",
+      "target": "XRPL",
+      "relationship": "2027_ONCHAIN_CONVERSION_MEASURE_1_PERCENT_160B_SCENARIO",
+      "evidence_class": "CEO_INTERVIEW",
+      "source_ids": [
+        "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT"
+      ]
+    },
+    {
+      "id": "E4",
+      "source": "TREASURY",
+      "target": "XRP",
+      "relationship": "REGULATED_DIGITAL_ASSET_ACCOUNT_SUPPORT",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS"
+      ]
+    },
+    {
+      "id": "E5",
+      "source": "TREASURY",
+      "target": "RLUSD",
+      "relationship": "REGULATED_DIGITAL_ASSET_ACCOUNT_SUPPORT",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS"
+      ]
+    },
+    {
+      "id": "E6",
+      "source": "RLUSD",
+      "target": "XRPL",
+      "relationship": "CHAIN_SHARE_CLAIM_ABOUT_HALF_BUT_PROVIDER_DATA_29_TO_39_PERCENT",
+      "evidence_class": "CONFLICTING_SOURCES",
+      "source_ids": [
+        "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+        "SRC-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+        "SRC-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+        "SRC-20261031T214545Z-STABLECOININSIDER-RLUSD"
+      ]
+    },
+    {
+      "id": "E7",
+      "source": "SC",
+      "target": "RLUSD",
+      "relationship": "LIVE_XRPL_RLUSD_CUSTODY_FOR_ELIGIBLE_DIFC_CLIENTS",
+      "evidence_class": "PRIMARY_BANK_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "E8",
+      "source": "SC",
+      "target": "LMAX",
+      "relationship": "PLANNED_RLUSD_COLLATERAL_MIRRORING",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+        "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP"
+      ]
+    },
+    {
+      "id": "E9",
+      "source": "RIPPLE",
+      "target": "LMAX",
+      "relationship": "150M_FINANCING_AND_MULTIYEAR_RLUSD_PARTNERSHIP",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP"
+      ]
+    },
+    {
+      "id": "E10",
+      "source": "PRIME",
+      "target": "LMAX",
+      "relationship": "INSTITUTIONAL_PRICE_DISCOVERY_AND_LIQUIDITY_CONNECTIVITY",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP"
+      ]
+    },
+    {
+      "id": "E11",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "DISTRIBUTION_ON_XRPL_BASE_ETHEREUM",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T212655Z-RIPPLE-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "E12",
+      "source": "CIRCLE",
+      "target": "XRPL",
+      "relationship": "USDC_SUPPORT_AND_CCTP_ECOSYSTEM",
+      "evidence_class": "PREVIOUSLY_VERIFIED_PUBLIC_DOCUMENTATION",
+      "source_ids": [
+        "SRC-20261031T070536Z-CIRCLE-CCTP-XRPL-USDC"
+      ]
+    },
+    {
+      "id": "E13",
+      "source": "BNY",
+      "target": "RLUSD",
+      "relationship": "PRIMARY_RESERVE_CUSTODY",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T212655Z-BNY-XRP-RLUSD-CUSTODY"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "status": "CEO_SCENARIO_NOT_FORECAST",
+      "statement": "One percent of $16T moved on-chain equals $160B activity.",
+      "disconfirming": [
+        "Current product volumes are overwhelmingly off-chain; no asset split."
+      ],
+      "next_test": "Measure post-launch asset/network conversion."
+    },
+    {
+      "id": "H2",
+      "status": "NOT_ESTABLISHED",
+      "statement": "On-chain conversion creates proportional XRP demand.",
+      "disconfirming": [
+        "RLUSD and tokenized assets can move without XRP bridge."
+      ],
+      "next_test": "Measure XRP bridge and inventory requirements."
+    },
+    {
+      "id": "H3",
+      "status": "CONFLICTING_EVIDENCE",
+      "statement": "About half RLUSD is on XRPL.",
+      "disconfirming": [
+        "Providers show about 29 to 39 percent."
+      ],
+      "next_test": "Pinned issuer/holder and ERC20 supply reconciliation."
+    },
+    {
+      "id": "H4",
+      "status": "CUSTODY_LIVE_COLLATERAL_PLANNED",
+      "statement": "SC/LMAX may create RLUSD collateral rails.",
+      "disconfirming": [
+        "LMAX collateral mirroring is not live."
+      ],
+      "next_test": "Verify launch and collateral balances."
+    },
+    {
+      "id": "H5",
+      "status": "CAPABILITY_CONFIRMED_USAGE_UNKNOWN",
+      "statement": "Ripple Treasury digital accounts may increase corporate XRP access.",
+      "disconfirming": [
+        "No client holdings or settlement volumes."
+      ],
+      "next_test": "Obtain customer adoption and asset balances."
+    }
+  ]
+}

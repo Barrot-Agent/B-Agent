@@ -1,0 +1,376 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261031T160137Z-EXCHANGE-WALLETS-BINANCE-RECOVERY",
+  "captured_at_utc": "2026-10-31T16:01:37Z",
+  "extends_graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T152000Z-institutional-multirail.json",
+  "source_ids": [
+    "SRC-20261031T152000Z-COINBASE-RLUSD",
+    "SRC-20261031T152000Z-COINBASE-Q3-IR",
+    "SRC-20261031T152000Z-COINBASE-Q3-10Q",
+    "SRC-20261031T152000Z-OCC-RIPPLE-NTB",
+    "SRC-20261031T152000Z-AVIVA-XRPL",
+    "SRC-20261031T152000Z-SC-RLUSD",
+    "SRC-20261031T152000Z-RIPPLE-STRATEGY",
+    "SRC-20261031T152000Z-BNY-RIPPLE",
+    "SRC-20261031T152000Z-C2FO",
+    "SRC-20261031T152000Z-ROBINHOOD",
+    "SRC-20261031T152000Z-RIPPLE-PRIME",
+    "SRC-20261031T152000Z-XRPL-AI-KIT",
+    "SRC-20261031T152000Z-RIPPLE-TREASURY",
+    "SRC-20261031T152000Z-SBI-ACCUMULATION",
+    "SRC-20261031T152000Z-ORICO",
+    "SRC-20261031T152000Z-XRPL-UTILS-METHOD",
+    "SRC-20261031T152000Z-XRPL-UTILS-HEALTH",
+    "SRC-20261031T152000Z-XRP-INSIGHTS",
+    "SRC-20261031T152000Z-CRYPTOETF",
+    "SRC-20261031T152000Z-CRYPTOKEYHOLE",
+    "SRC-20261031T152000Z-BINANCE-PRICE",
+    "SRC-20261031T152000Z-TRADRADAR",
+    "SRC-20261031T152000Z-KODEXIUS",
+    "SRC-20261031T152000Z-SBIC-INDEX",
+    "SRC-20261031T152000Z-SBIC-20250226",
+    "SRC-20261031T152000Z-GITHUB-AUDIT",
+    "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-202610311448Z-BINANCE-POR-METHODOLOGY",
+    "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS",
+    "SRC-202610311448Z-SBI-VISA-DIGITAL-MOU",
+    "SRC-202610311448Z-SBI-SHINSEI-XRP-VOUCHER",
+    "SRC-202610311448Z-SBI-RLUSD-LISTING",
+    "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV",
+    "SRC-20261031T121200Z-CIRCLE-ARC-MAINNET-ROLES",
+    "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT",
+    "SRC-20261031T121200Z-SBI-SMFG-STABLECOIN-PARTNERSHIP",
+    "SRC-20261031T121200Z-SBI-STARTALE-BLACKROCK-JPYSC-MOU",
+    "SRC-20261031T121200Z-SBI-OPEN-STANDARD-JPYSC-OUSD",
+    "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE",
+    "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE",
+    "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+    "SRC-20261031T160137Z-REUTERS-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T160137Z-GITHUB-MAIN-PR-WORKFLOW-AUDIT"
+  ],
+  "nodes": [
+    {
+      "id": "XRP_INSIGHTS",
+      "label": "XRP Insights",
+      "kind": "SECONDARY_ONCHAIN_AGGREGATOR"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_LEDGER"
+    },
+    {
+      "id": "XRPSCAN",
+      "label": "XRPSCAN public account labels",
+      "kind": "WALLET_ATTRIBUTION_SOURCE"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "NATIVE_ASSET"
+    },
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "EXCHANGE_CUSTODY"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_CUSTODY"
+    },
+    {
+      "id": "UPBIT",
+      "label": "Upbit",
+      "kind": "EXCHANGE_CUSTODY"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "JAPANESE_CRYPTO_EXCHANGE"
+    },
+    {
+      "id": "SOUTH_KOREAN_EXCHANGES",
+      "label": "South Korean exchanges",
+      "kind": "REGIONAL_EXCHANGE_GROUP"
+    },
+    {
+      "id": "BINANCE_POR_20261031",
+      "label": "Binance 2026-10-31 00:00 UTC PoR snapshot",
+      "kind": "COMPANY_REPORTED_RESERVE_SNAPSHOT"
+    },
+    {
+      "id": "BINANCE_RECOVERY_UPDATE3",
+      "label": "Binance Recovery Update #3",
+      "kind": "COMPANY_INCIDENT_UPDATE"
+    },
+    {
+      "id": "AVIVA",
+      "label": "Aviva Investors",
+      "kind": "ASSET_MANAGER"
+    },
+    {
+      "id": "BNY",
+      "label": "BNY",
+      "kind": "INSTITUTIONAL_CUSTODIAN"
+    },
+    {
+      "id": "C2FO",
+      "label": "C2FO",
+      "kind": "WORKING_CAPITAL_PLATFORM"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "DIGITAL_ASSET_INFRASTRUCTURE"
+    },
+    {
+      "id": "RNTB",
+      "label": "Ripple National Trust Bank",
+      "kind": "NATIONAL_TRUST_BANK"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E160137-1",
+      "source": "XRP_INSIGHTS",
+      "target": "XRPL",
+      "relationship": "reads rippled account_info on latest validated ledger at approximately 08:00 UTC",
+      "evidence_class": "PUBLISHED_METHOD_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "E160137-2",
+      "source": "XRP_INSIGHTS",
+      "target": "XRPSCAN",
+      "relationship": "uses public labels for exchange attribution",
+      "evidence_class": "PUBLISHED_METHOD_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "E160137-3",
+      "source": "BINANCE",
+      "target": "XRP",
+      "relationship": "2.78B XRP in 153 publicly attributed wallets; includes 327.4M known non-customer reserves/funds",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "E160137-4",
+      "source": "COINBASE",
+      "target": "XRP",
+      "relationship": "5.85B XRP in 358 publicly attributed wallets; includes 150.2M cbXRP reserve; >99% cold-labelled",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "E160137-5",
+      "source": "UPBIT",
+      "target": "XRP",
+      "relationship": "6.43B XRP in 13 publicly attributed wallets",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "E160137-6",
+      "source": "SOUTH_KOREAN_EXCHANGES",
+      "target": "XRP",
+      "relationship": "8.59B XRP across tracked South Korean exchange wallets, 38.2% of tracked total",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "E160137-7",
+      "source": "SBI_VC_TRADE",
+      "target": "XRP",
+      "relationship": "59.5M XRP in two publicly attributed wallets; >99% cold-labelled; 7d -899K and 30d -10.5M",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "E160137-8",
+      "source": "XRP_INSIGHTS",
+      "target": "XRP",
+      "relationship": "22.48B XRP across 701 wallets and 24 exchanges; includes cold storage, unclassified wallets and known non-customer reserves",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "E160137-9",
+      "source": "BINANCE_RECOVERY_UPDATE3",
+      "target": "BINANCE_POR_20261031",
+      "relationship": "company says top-ten assets including XRP are at least 1:1 backed at 00:00 UTC; full proof pending",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT_PLUS_REUTERS_REPORT",
+      "source_ids": [
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-202610311448Z-BINANCE-POR-METHODOLOGY",
+        "SRC-20261031T160137Z-REUTERS-BINANCE-RECOVERY-UPDATE3"
+      ]
+    },
+    {
+      "id": "E160137-10",
+      "source": "XRP_INSIGHTS",
+      "target": "BINANCE",
+      "relationship": "same-wallet Binance balance change +17.6M XRP over 7d and +30.3M over 30d; not per-wallet flow",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "E160137-11",
+      "source": "AVIVA",
+      "target": "XRPL",
+      "relationship": "£50M investment in a tokenized GBP liquidity-fund share class issued on XRPL; underlying fund assets remain off-chain",
+      "evidence_class": "PRIMARY_ISSUER_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T152000Z-AVIVA-XRPL"
+      ]
+    },
+    {
+      "id": "E160137-12",
+      "source": "BNY",
+      "target": "XRP",
+      "relationship": "supports XRP custody on Digital Asset Custody platform; primary RLUSD reserve custodian; direct RLUSD mint/redeem intended subject to approvals",
+      "evidence_class": "PRIMARY_CUSTODIAN_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T152000Z-BNY-RIPPLE"
+      ]
+    },
+    {
+      "id": "E160137-13",
+      "source": "C2FO",
+      "target": "XRPL",
+      "relationship": "Instant Pay initiative plans RLUSD settlement on XRPL, funded by participating capital providers; waitlist/rollout, not measured production volume",
+      "evidence_class": "PRIMARY_PARTNER_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T152000Z-C2FO"
+      ]
+    },
+    {
+      "id": "E160137-14",
+      "source": "COINBASE",
+      "target": "RIPPLE",
+      "relationship": "RLUSD live on Coinbase Prime, Exchange and Retail app across XRPL/Base/Ethereum; Global Exchange collateral is planned, not live",
+      "evidence_class": "PRIMARY_PARTNER_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T152000Z-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "E160137-15",
+      "source": "RNTB",
+      "target": "RIPPLE",
+      "relationship": "final OCC approval for RLUSD reserve management, collateral trustee and fiduciary custody scope; RLUSD issuer remains Standard Custody & Trust Company",
+      "evidence_class": "PRIMARY_REGULATORY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T152000Z-OCC-RIPPLE-NTB"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-XRP-EXCHANGE-BALANCE-IS-NOT-FLOAT",
+      "claim": "22.48B XRP in publicly attributed exchange wallets is not tradable float.",
+      "status": "SUPPORTED_BY_SOURCE_METHODOLOGY",
+      "support": [
+        "48.4% cold-labelled; 14% hot-labelled; 37.8% unclassified",
+        "487.2M known non-customer reserves/funds",
+        "Omnibus custody can include balances not for sale"
+      ],
+      "counter": [
+        "Hot/cold labels are incomplete and not equivalent to order-book availability"
+      ],
+      "next_test": "Obtain venue-level order-book depth and official custody/liability disclosures."
+    },
+    {
+      "id": "HYP-BINANCE-THEFT-CAUSED-RESERVE-DECLINE",
+      "claim": "The 2026-10-29 theft explains the approximately 220M CryptoQuant Binance reserve decline and XRP Insights Oct30 all-exchange decline.",
+      "status": "WEAKENED_NOT_ESTABLISHED",
+      "support": [
+        "Five XRPL source wallets lost 233.46M XRP",
+        "XRP Insights all-exchange same-wallet Oct30 change was -207.3M"
+      ],
+      "disconfirming": [
+        "XRP Insights same-wallet Binance change is +17.6M over 7d and +30.3M over 30d",
+        "All-exchange same-wallet daily change reversed to +105.9M on Oct31",
+        "XRP Insights has no per-wallet history; source-wallet membership in its 153 Binance wallets is unknown",
+        "CryptoQuant and XRP Insights use different wallet universes"
+      ],
+      "next_test": "Crosswalk all five incident source wallets against the exact XRPSCAN label snapshot and CryptoQuant tracked set."
+    },
+    {
+      "id": "HYP-BINANCE-RESTORATION-CREATED-XRP-BUYING",
+      "claim": "Binance recovery produced material new XRP spot/OTC demand.",
+      "status": "UNPROVEN",
+      "support": [
+        "Binance says 90% of stolen assets replenished and XRP at least 1:1 covered"
+      ],
+      "disconfirming": [
+        "No XRP-specific units or USD execution disclosed",
+        "Funding includes SAFU, futures insurance fund and corporate treasury",
+        "Existing inventory or internal transfers could satisfy coverage"
+      ],
+      "next_test": "Obtain XRP-specific executed trade/OTC and reserve-address deltas."
+    },
+    {
+      "id": "HYP-REGIONAL-LIQUIDITY-CONCENTRATION",
+      "claim": "South Korean venues' 8.59B tracked XRP wallet concentration can influence venue-specific liquidity and price discovery.",
+      "status": "PLAUSIBLE_CONTEXT_NOT_CAUSAL",
+      "support": [
+        "South Korea is 38.2% of tracked exchange wallet total; Upbit alone 6.43B"
+      ],
+      "disconfirming": [
+        "Wallet balances include cold storage and non-tradable custody",
+        "Headquarters geography does not identify beneficial-owner residence or order-book liquidity"
+      ],
+      "next_test": "Compare Korean venue spot volume, depth, spreads, deposits/withdrawals and premium/discounts."
+    },
+    {
+      "id": "HYP-COINBASE-CUSTODY-LEADERSHIP",
+      "claim": "Coinbase's 5.85B attributed XRP wallet footprint indicates a large custody/distribution position.",
+      "status": "SUPPORTED_AS_ATTRIBUTED_WALLET_FOOTPRINT_ONLY",
+      "support": [
+        "358 tracked wallets; >99% cold-labelled; 150.2M cbXRP reserve included"
+      ],
+      "disconfirming": [
+        "Omnibus and cold custody are not proprietary holdings or trading share",
+        "No customer-liability or beneficial-owner breakdown"
+      ],
+      "next_test": "Reconcile official Coinbase reserve addresses, cbXRP reserves and customer liability disclosures."
+    },
+    {
+      "id": "HYP-INSTITUTIONAL-XRPL-ANNOUNCEMENTS-ARE-XRP-DEMAND",
+      "claim": "Aviva tokenized fund shares, BNY custody and C2FO Instant Pay announcements create material XRP demand.",
+      "status": "NOT_ESTABLISHED",
+      "support": [
+        "Live tokenized fund share classes and institutional custody support are documented",
+        "C2FO plans RLUSD settlement on XRPL"
+      ],
+      "disconfirming": [
+        "Aviva underlying fund assets remain off-chain and its GBP50M investment is in fund shares, not XRP",
+        "C2FO settlement asset is RLUSD and rollout remains waitlist/initiative",
+        "No XRP principal, order-book purchases or network fee volumes disclosed"
+      ],
+      "next_test": "Measure actual XRPL transaction flows, XRP fee burn, RLUSD settlement volume and any bridge-asset use."
+    }
+  ]
+}

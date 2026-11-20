@@ -1,0 +1,300 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T024000Z-LEGACY-SIGNAL-EVALUATOR-INTEGRITY",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T024000Z-legacy-signal-evaluator-integrity-audit.json",
+  "created_at_utc": "2026-10-31T02:40:00Z",
+  "captured_at_utc": "2026-10-31T02:40:00Z",
+  "data_cutoff_utc": "2026-10-31T02:40:00Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T022100Z-coinbase-q3-multi-issuer-position-and-xrp-value-capture.json",
+  "source_ids": [
+    "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+    "SRC-GH-SIGNAL-ACCURACY-SUMMARY-20261031T024000Z",
+    "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+    "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z",
+    "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z",
+    "SRC-GH-SIGNAL-ACCURACY-COMMIT-03A867-20261031T024000Z"
+  ],
+  "source_reference_count": 6,
+  "missing_source_references": 0,
+  "event_timeline": [
+    {
+      "date": "2026-07-29",
+      "event": "Legacy signal history begins; signals are emitted approximately hourly.",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "event": "Nineteen fallback signals with price_at_emission=0 begin an unchecked block; the evaluator skips them.",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z"
+      ]
+    },
+    {
+      "date": "2026-10-30T23:59:32Z",
+      "event": "Daily accuracy commit 03a8674 increments checked_count from 1,683 to 1,697, leaves correct_count at 772 and changes accuracy from 45.9% to 45.5%; 14 records are marked incorrect at $1.25.",
+      "source_ids": [
+        "SRC-GH-SIGNAL-ACCURACY-COMMIT-03A867-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SUMMARY-20261031T024000Z"
+      ]
+    },
+    {
+      "date": "2026-10-31T02:40:00Z",
+      "event": "Latest committed XRP signal remains 2026-10-29T13:23:33Z, score 44, confidence 0, provider unavailable.",
+      "source_ids": [
+        "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "F-20261031T024000Z-01",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Main's legacy summary is 1,697 checked, 772 correct and 45.5%. The full history contains 1,716 records, of which 19 are unchecked.",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SUMMARY-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "None for the stored counts; their interpretation as model skill is invalid."
+    },
+    {
+      "finding_id": "F-20261031T024000Z-02",
+      "classification": "CONFIRMED_FACT",
+      "statement": "All 19 unchecked records have price_at_emission=0, confidence 0 and fallback/no-sentiment source strings; the evaluator skips them because it requires a nonzero emission price and current price.",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "The reason the emission price was zero is not recorded and cannot be attributed to a specific price provider failure."
+    },
+    {
+      "finding_id": "F-20261031T024000Z-03",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The evaluator waits for a minimum age of 24 hours but checks all eligible signals against one current CoinGecko price fetched at the daily run. It does not record checked_at or price observation time; therefore the outcome horizon is variable and irrecoverable from the history schema.",
+      "source_ids": [
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "The latest daily commit provides an approximate run-time bracket for 14 records, but not the exact price quote timestamp."
+    },
+    {
+      "finding_id": "F-20261031T024000Z-04",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Among 1,697 checked records, 1,119 fallback/no-sentiment signals have confidence 0 and 556 marked correct (49.69%); 578 Groq-labelled signals average confidence 0.947 and 216 marked correct (37.37%).",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "These are descriptive counts under the flawed legacy scoring rule, not formal calibration or independent out-of-sample accuracy."
+    },
+    {
+      "finding_id": "F-20261031T024000Z-05",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Checked score classes are 578 bullish (216 correct, 37.37%), 67 bearish (27 correct, 40.30%) and 1,052 neutral (529 correct, 50.29%). Neutral correctness means absolute price movement under 2%, not correct direction.",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "No fixed horizon, class-specific baseline or independent sample adjustment exists."
+    },
+    {
+      "finding_id": "F-20261031T024000Z-06",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The median signal emission interval is approximately 0.982 hours and the mean is 1.291 hours; the evaluation windows overlap substantially.",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "The exact effective sample size is not calculated; this is a timestamp-cadence observation."
+    },
+    {
+      "finding_id": "F-20261031T024000Z-07",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The latest committed XRP signal is 2026-10-29T13:23:33Z, score 44, confidence 0, news_score 88 and 11 news entries. Its source explicitly reports missing GitHub model credentials and Groq HTTP 429. It is approximately 37.3 hours old at this audit cutoff.",
+      "source_ids": [
+        "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "The latest committed file may not reveal uncommitted or failed workflow attempts; no newer committed signal exists on main."
+    },
+    {
+      "finding_id": "F-20261031T024000Z-08",
+      "classification": "INFERENCE",
+      "statement": "The legacy 45.5% figure is not a valid estimate of out-of-sample prediction skill because the outcome horizon is variable, the target rule mixes directional and neutral-band tasks, records overlap, provider failures are common and no baseline or calibration is measured.",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SUMMARY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "The descriptive hit counter remains reproducible from stored labels, but reproducibility does not make it a valid skill estimate."
+    }
+  ],
+  "legacy_evaluator": {
+    "status": "NOT_COMPARABLE",
+    "checked_count": 1697,
+    "correct_count": 772,
+    "accuracy_pct": 45.5,
+    "history_record_count": 1716,
+    "unchecked_count": 19,
+    "unchecked_zero_emission_price_count": 19,
+    "checked_at_timestamp_fields": [],
+    "minimum_age_seconds": 86400,
+    "daily_run_cron_utc": "55 23 * * *",
+    "price_provider": "CoinGecko simple/price",
+    "price_snapshot_per_run": true,
+    "evaluation_rules": {
+      "bullish": "score > 60; correct if price_at_check > price_at_emission",
+      "bearish": "score < 40; correct if price_at_check <= price_at_emission",
+      "neutral": "score 40–60; correct if abs(return) < 2%"
+    },
+    "checked_source_breakdown": {
+      "fallback_no_sentiment": {
+        "count": 1119,
+        "correct": 556,
+        "legacy_hit_rate_pct": 49.69,
+        "mean_confidence": 0
+      },
+      "groq": {
+        "count": 578,
+        "correct": 216,
+        "legacy_hit_rate_pct": 37.37,
+        "mean_confidence": 0.947
+      }
+    },
+    "checked_class_breakdown": {
+      "bullish": {
+        "count": 578,
+        "correct": 216,
+        "legacy_hit_rate_pct": 37.37
+      },
+      "bearish": {
+        "count": 67,
+        "correct": 27,
+        "legacy_hit_rate_pct": 40.3
+      },
+      "neutral": {
+        "count": 1052,
+        "correct": 529,
+        "legacy_hit_rate_pct": 50.29,
+        "neutral_rule": "absolute return < 2%"
+      }
+    },
+    "signal_cadence": {
+      "mean_interval_hours": 1.291,
+      "median_interval_hours": 0.982
+    },
+    "latest_accuracy_commit": {
+      "sha": "03a86747680a79033435746c367aa96c6a641c20",
+      "created_at_utc": "2026-10-30T23:59:32Z",
+      "previous_checked_count": 1683,
+      "new_checked_count": 1697,
+      "correct_count": 772,
+      "previous_accuracy_pct": 45.9,
+      "new_accuracy_pct": 45.5,
+      "newly_checked_records": 14,
+      "latest_newly_checked_signal": "2026-10-29T13:23:33Z",
+      "earliest_newly_checked_signal": "2026-10-28T21:21:11Z",
+      "approximate_elapsed_hours_min": 34.6,
+      "approximate_elapsed_hours_max": 50.6,
+      "price_at_check": 1.25,
+      "correct_new_records": 0
+    },
+    "latest_signal": {
+      "timestamp": "2026-10-29T13:23:33.142057Z",
+      "age_hours": 37.3,
+      "score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "price_at_emission": 1.29,
+      "price_at_check": 1.25,
+      "source": "sentiment unavailable; missing GITHUB_TOKEN/GH_MODELS_TOKEN; Groq HTTP 429"
+    }
+  },
+  "causal_hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T024000Z-01",
+      "name": "Legacy 45.5% is not comparable prediction skill",
+      "status": "CONFIRMED_METHODOLOGY_DEFECT",
+      "claim": "The 45.5% hit counter cannot be used as an out-of-sample skill or calibration estimate.",
+      "supporting_source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SUMMARY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "The arithmetic is reproducible; the defect is the target/horizon/evaluation design, not the division."
+    },
+    {
+      "hypothesis_id": "H-20261031T024000Z-02",
+      "name": "High self-reported confidence is not calibrated",
+      "status": "STRONG_DESCRIPTIVE_WARNING_NOT_CALIBRATION_TEST",
+      "claim": "Groq-labelled signals with mean confidence 0.947 have a lower legacy hit rate (37.37%) than zero-confidence fallback signals (49.69%).",
+      "supporting_source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "The groups differ in score class, source availability and outcome mix; the legacy target is invalid and does not establish a statistically valid confidence-performance relationship."
+    },
+    {
+      "hypothesis_id": "H-20261031T024000Z-03",
+      "name": "Provider failure dominates the committed signal history",
+      "status": "CONFIRMED_FOR_CHECKED_RECORDS",
+      "claim": "1,119 of 1,697 checked signals (65.9%) were generated with no sentiment provider result, with missing GitHub model credentials and Groq HTTP 429 recorded in source strings.",
+      "supporting_source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+        "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "The source strings establish reported failures but do not identify every upstream request, retry or provider outage interval."
+    },
+    {
+      "hypothesis_id": "H-20261031T024000Z-04",
+      "name": "Overlapping forecasts inflate apparent sample size",
+      "status": "SUPPORTED_BY_CADENCE",
+      "claim": "Signals emitted at a median 0.982-hour interval have highly overlapping outcome windows and cannot be treated as 1,697 independent observations.",
+      "supporting_source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "The exact overlap-adjusted effective sample size has not been computed."
+    },
+    {
+      "hypothesis_id": "H-20261031T024000Z-05",
+      "name": "The current XRP signal pipeline is not fit to issue a directional forecast",
+      "status": "SUPPORTED_CURRENT_STATE",
+      "claim": "The latest committed signal is stale, confidence 0 and provider-unavailable; no calibrated fixed-horizon evaluation exists.",
+      "supporting_source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z",
+        "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z"
+      ],
+      "disconfirming_evidence": "A newer signal could exist in an uncommitted or failed run, but no newer committed main-branch signal was found."
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "prediction_contract": {
+    "status": "DESIGN_REQUIRED",
+    "fixed_horizons_hours": [
+      1,
+      4,
+      24,
+      72,
+      168
+    ],
+    "exact_prediction_cutoff_required": true,
+    "exact_outcome_timestamp_required": true,
+    "immutable_prediction_event_required": true,
+    "immutable_outcome_event_required": true,
+    "probability_distribution_required": true,
+    "baseline_comparison_required": true,
+    "walk_forward_required": true,
+    "overlap_purge_or_embargo_required": true,
+    "calibration_required": true,
+    "provider_failure_status": "NOT_EVALUATED"
+  }
+}

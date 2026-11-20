@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 99,
+  "chunk_count": 100,
+  "record_count": 7,
+  "records": [
+    {
+      "id": "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+      "source_id": "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+      "publisher": "Binance",
+      "title": "Security Incident Update #2",
+      "url": "https://www.binance.com/en/support/announcement/detail/d3306d9dca5243548c813b605e1d1751",
+      "published_at": "2026-10-30T19:33:00Z",
+      "retrieved_at_utc": "2026-10-31T04:33:33Z",
+      "evidence_class": "PRIMARY_EXCHANGE_ANNOUNCEMENT",
+      "independence_group": "binance_official",
+      "summary": "Binance states unauthorized withdrawals began around 2026-10-29 20:05 UTC and estimates approximately $6.3B in losses. It says more than $6.34B in company funds has been set aside, including $5B in the exact impacted token assets, and that it is buying the remaining relevant token assets through market and OTC channels. It reports approximately $3B frozen on-chain, withdrawals temporarily suspended, an initial post-incident Proof of Reserves snapshot planned within 12 hours, results expected by 2026-11-02, and further technical findings expected within about 48 hours.",
+      "limitations": "Company statement, not an independent audit. The announcement examples list USDC, USDT, BTC, ETH and BNB but do not disclose XRP-specific quantity, acquisition trades, reserve wallet addresses or completed XRP replenishment. Additional breach points remain under investigation."
+    },
+    {
+      "id": "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+      "source_id": "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+      "publisher": "TRM Labs",
+      "title": "North Korea Steals USD 6.36 Billion From Binance in the Largest Hack in History",
+      "url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+      "published_at": "2026-10-30",
+      "retrieved_at_utc": "2026-10-31T04:33:33Z",
+      "evidence_class": "PRIMARY_BLOCKCHAIN_INTELLIGENCE_PROVIDER_REPORT",
+      "independence_group": "trm_labs",
+      "summary": "TRM reports approximately $6.36B transferred from Binance-attributed wallets across ten blockchains, mostly within about 20 minutes beginning 20:05 UTC on Oct 29. Five Binance-labelled XRPL wallets sent 233.46M XRP to one attacker address between 20:05 and 20:09 UTC. TRM reports about $2.67B in stablecoins frozen by Tether, Circle, Ripple and World Liberty Financial, plus about $30M in ETH/ARB moved by Arbitrum Security Council. It confirms 40.5M RLUSD frozen by Ripple on-chain, 825M USDC by Circle and approximately 1.77B USDT by Tether. TRM attributes the attack to TraderTraitor with high confidence, based on on-chain and off-chain intelligence.",
+      "limitations": "TRM's attribution is a high-confidence third-party intelligence assessment, not a public law-enforcement finding. Its fund-location snapshot is as of 2026-10-30 00:30 UTC; the reported 233.46M XRP remaining at the receiver is stale for a 2026-10-31 cutoff. Frozen is not recovered. TRM's USD valuation is transfer-time marked."
+    },
+    {
+      "id": "SRC-20261031-XRPL-FREEZE-DOCS-043333Z",
+      "source_id": "SRC-20261031-XRPL-FREEZE-DOCS-043333Z",
+      "publisher": "XRPL.org",
+      "title": "Freezing Tokens",
+      "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezes",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T04:33:33Z",
+      "evidence_class": "PRIMARY_PROTOCOL_DOCUMENTATION",
+      "independence_group": "xrpl_docs",
+      "summary": "XRPL documentation states issuers can freeze issued trust-line tokens, but this does not apply to native XRP. XRP has no issuer and cannot be frozen by an issuer; native XRP is tracked in accounts rather than issued-token trust lines.",
+      "limitations": "Protocol-level issuer freeze limits do not prevent custodial exchanges from restricting customer accounts, courts or law enforcement from acting against custodians, or a holder from voluntarily transferring assets."
+    },
+    {
+      "id": "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+      "source_id": "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+      "publisher": "Alpha Finance",
+      "title": "XRP Liquidation Heatmap — 2026-10-31 04:24 UTC",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T04:33:33Z",
+      "evidence_class": "AGGREGATED_MARKET_DATA_PROVIDER",
+      "independence_group": "alpha_finance",
+      "summary": "At 04:24 UTC Oct 31, Alpha displayed XRP spot $1.2466, all-venue open interest $2.81B and 24-hour volume $2.20B. It reported $1.7M long and $1.3M short liquidations in 24 hours. Modelled liquidation clusters were $6.2M of shorts near $1.2633 and $4.2M of longs near $1.2255.",
+      "limitations": "Open-interest coverage is not reconciled with Liqwall. Liquidation heatmap levels are modelled from open interest and standard leverage tiers, not confirmed account-level liquidation prices. Aggregated provider values are not admitted as model features."
+    },
+    {
+      "id": "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z",
+      "source_id": "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z",
+      "publisher": "Liqwall",
+      "title": "XRP Liquidations, Funding and Open Interest — 2026-10-31 04:12 UTC",
+      "url": "https://liqwall.com/coins/xrp",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T04:33:33Z",
+      "evidence_class": "AGGREGATED_DERIVATIVES_DATA_PROVIDER",
+      "independence_group": "liqwall",
+      "summary": "At 04:12 UTC Oct 31, Liqwall displayed XRP near $1.25, all-exchange open interest $1.32B (+0.2% over 24h), $3.1M 24-hour liquidations ($1.8M longs, $1.3M shorts), average funding +0.0066% per eight hours, Binance funding +0.0100%, and 72.9% of Binance XRP-position accounts long.",
+      "limitations": "Its open-interest universe differs materially from Alpha's. Account ratios are not notional exposure. Provider methodology and venue coverage must be preserved; no composite OI value is calculated."
+    },
+    {
+      "id": "SRC-20261031-CRYPTOETF-XRP-PARTIAL-043333Z",
+      "source_id": "SRC-20261031-CRYPTOETF-XRP-PARTIAL-043333Z",
+      "publisher": "CryptoETF.today",
+      "title": "XRP ETF flows — Friday October 30, 2026, partial T+1",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "published_at": "2026-10-31",
+      "retrieved_at_utc": "2026-10-31T04:33:33Z",
+      "evidence_class": "SECONDARY_FUND_FLOW_AGGREGATOR",
+      "independence_group": "cryptoetf_today",
+      "summary": "The dashboard reports a preliminary $0.7M net outflow for XRP ETFs on Friday Oct 30, with only two of five funds reported; three funds remained outstanding at capture.",
+      "limitations": "Partial T+1 data. Do not treat -$0.7M as the final daily flow or as a complete five-fund measure."
+    },
+    {
+      "id": "SRC-20261031-BINANCE-POR-PAGE-043333Z",
+      "source_id": "SRC-20261031-BINANCE-POR-PAGE-043333Z",
+      "publisher": "Binance",
+      "title": "Proof of Reserves",
+      "url": "https://www.binance.com/en/proof-of-reserves",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T04:33:33Z",
+      "evidence_class": "PRIMARY_EXCHANGE_RESERVE_DISCLOSURE_PAGE",
+      "independence_group": "binance_official",
+      "summary": "The official page exposes a Download All Address control and describes proof-of-reserves ownership verification for both hot and cold wallets, customer balance snapshots, Merkle-tree liabilities and zk-SNARK verification. Binance's Oct 30 incident update says a new post-incident snapshot is planned, with results expected by Nov 2.",
+      "limitations": "The rendered page extraction does not expose the current address export or a post-incident XRP reserve ratio. PoR is a dated asset/liability snapshot and does not by itself prove intraday liquidity, absence of encumbrances or token-specific replenishment trades."
+    }
+  ]
+}

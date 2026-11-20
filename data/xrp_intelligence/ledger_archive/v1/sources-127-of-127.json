@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 126,
+  "chunk_count": 127,
+  "record_count": 2,
+  "created_at_utc": "2026-10-31T16:50:00Z",
+  "records": [
+    {
+      "id": "SRC-20261031T165000Z-TOKENVIEW-SAFU-BTC-ADDRESS",
+      "url": "https://btc.tokenview.io/en/address/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+      "title": "Bitcoin address balance and transaction history — Binance-designated SAFU wallet",
+      "publisher": "Tokenview",
+      "published_date": null,
+      "retrieved_at_utc": "2026-10-31T16:50:00Z",
+      "evidence_type": "THIRD_PARTY_ONCHAIN_EXPLORER_OBSERVATION",
+      "independence_group": "TOKENVIEW_ONCHAIN",
+      "status": "VERIFIED_PROVIDER_OBSERVATION",
+      "notes": "Displays 15,000.00147092 BTC, 27 transactions, 31,277.00056174 BTC received, 16,276.99909082 BTC sent, latest transaction 2026-08-09. No exact block-height/data-refresh timestamp exposed."
+    },
+    {
+      "id": "SRC-20261031T165000Z-SOCHAIN-SAFU-BTC-ADDRESS",
+      "url": "https://sochain.com/address/BTC/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+      "title": "Bitcoin address transaction history — Binance-designated SAFU wallet",
+      "publisher": "SoChain",
+      "published_date": null,
+      "retrieved_at_utc": "2026-10-31T16:50:00Z",
+      "evidence_type": "THIRD_PARTY_ONCHAIN_EXPLORER_OBSERVATION",
+      "independence_group": "SOCHAIN_ONCHAIN",
+      "status": "VERIFIED_PROVIDER_OBSERVATION",
+      "notes": "Lists 27 transactions and latest transaction 2026-08-09; displayed balance consistent with approximately 15,000.00147092 BTC. No exact block-height/data-refresh timestamp exposed."
+    }
+  ]
+}

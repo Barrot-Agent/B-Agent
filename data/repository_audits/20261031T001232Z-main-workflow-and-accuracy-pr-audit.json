@@ -1,0 +1,236 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261031T001232Z-MAIN-WORKFLOW-AND-ACCURACY-PR-AUDIT",
+  "created_at_utc": "2026-10-31T00:12:32Z",
+  "captured_at_utc": "2026-10-31T00:12:32Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "default_branch": "main",
+  "main": {
+    "previous_head": "86c136be4ea17c2174ebc61482f2656a745d3694",
+    "current_head": "f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9",
+    "commit_message": "chore: Barrot telemetry report",
+    "commit_author": "Barrot-Agent",
+    "commit_timestamp_utc": "2026-10-31T00:05:51Z",
+    "signature_verified": false,
+    "changed_files": [
+      {
+        "path": "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ],
+    "interpretation": "Latest main commit updates the telemetry-only deployment report. Main also contains earlier 86c cross-analysis refresh and 03a daily signal-accuracy mutation; no change was made to main by this run.",
+    "modified_by_this_run": false
+  },
+  "open_pull_request_inventory": {
+    "total_open_prs": 162,
+    "draft": 152,
+    "ready_for_review": 10,
+    "current_main_base": 1,
+    "stale_main_base": 159,
+    "non_main_base": 2,
+    "verified_current_main_base_pr": 1386,
+    "interpretation": "GitHub Search API reports 162 open PRs. Prior complete inventory had 159 stale main-based PRs and two non-main PRs; this run added PR #1386 from exact current main, producing one current-main-base PR. The full 162-item inventory was not re-enumerated row-by-row in this run."
+  },
+  "main_target_prs": [
+    {
+      "number": 1383,
+      "title": "Safety: make scheduled cross-analysis read-only on latest main",
+      "head_sha": "e84b42b398bf16fe12bacdfafba2ef14f51b395f",
+      "base_sha": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run_id": 41142381247,
+      "ci_result": "PASS_348_TESTS_PLUS_8_SUBTESTS",
+      "gate_run_id": 41142381916,
+      "gate_result": "PASS_MERGE_DISABLED",
+      "changed_paths": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/cross-analysis.yml",
+        "tests/test_cross_analysis_workflow_safety.py"
+      ],
+      "current_main_overlap": "NO_OVERLAP_WITH_INSPECTED_MAIN_COMMITS; FRESH_MAIN_CHECK_REQUIRED"
+    },
+    {
+      "number": 1384,
+      "title": "Prediction integrity: quarantine legacy variable-horizon accuracy",
+      "head_sha": "c2127c5e8eff1d089f059a7d6a51add3d6aa289a",
+      "base_sha": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+      "state": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+      "mergeable": true,
+      "ci_run_id": 41142979230,
+      "ci_result": "PASS_348_TESTS_PLUS_8_SUBTESTS",
+      "gate_run_id": 41142979206,
+      "gate_result": "PASS_MERGE_DISABLED",
+      "changed_paths": [
+        ".github/workflows/check-signal-accuracy.yml",
+        ".github/workflows/ci.yml",
+        "scripts/ask_barrot.py",
+        "scripts/check_signal_accuracy.py",
+        "scripts/daily_digest.py",
+        "tests/test_signal_accuracy_fail_closed.py",
+        "web/landing.html",
+        "web/signal_accuracy.json"
+      ],
+      "superseded_by_fresh_main_pr": 1386
+    },
+    {
+      "number": 1386,
+      "title": "Prediction integrity: stop mutable legacy XRP accuracy scoring on exact current main",
+      "head_sha": "632be52cbad010a7d20f6a6706d08a6424e2f170",
+      "base_sha": "f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run_id": 41148613399,
+      "ci_result": "PASS_348_TESTS_PLUS_8_SUBTESTS",
+      "gate_run_id": 41148613324,
+      "gate_result": "PASS_MERGE_DISABLED",
+      "changed_paths": [
+        ".github/workflows/check-signal-accuracy.yml",
+        ".github/workflows/ci.yml",
+        "scripts/check_signal_accuracy.py",
+        "scripts/daily_digest.py",
+        "scripts/ask_barrot.py",
+        "tests/test_signal_accuracy_fail_closed.py",
+        "web/signal_accuracy.json",
+        "web/landing.html"
+      ],
+      "summary": "Fresh-main read-only accuracy fix preserves latest legacy 1,697/772/45.5% as NOT_COMPARABLE, publishes NOT_EVALUATED, disables checkout credential persistence and removes scheduled main writes. Exact-head CI and gate passed; not merged."
+    }
+  ],
+  "research_pr": {
+    "number": 1353,
+    "head_sha": "38f26d45817d75935e6b94cbc2421a7a6c13844f",
+    "base_ref": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "mergeable": true,
+    "previous_verified_head_sha": "69f26c425bc21b75d25deef2293672dfd2675216",
+    "previous_validator_run_id": 41146889880,
+    "previous_validator_tests_passed": 20,
+    "previous_gate_run_id": 41146889813,
+    "previous_gate_result": "PASS_MERGE_DISABLED",
+    "new_append_validation": "PENDING"
+  },
+  "dependency_inventory": {
+    "manifests": [
+      "requirements.txt",
+      "requirements-dev.txt",
+      "pyproject.toml",
+      "hf_space/requirements.txt",
+      "a2a/package.json"
+    ],
+    "lockfiles_found": [],
+    "finding": "Primary manifests overlap and use lower-bound-only dependencies; no lockfile found. Dependency drift and reproducibility risk remain.",
+    "lockfile_generation": "NOT_EXECUTED_GPU_CUDA_ENVIRONMENT_SPECIFIC"
+  },
+  "security_alert_visibility": {
+    "dependabot": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "code_scanning": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "secret_scanning": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "sbom": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "interpretation": "Alert presence or absence is unknown; no zero-alert conclusion."
+  },
+  "workflow_findings": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "status": "MAIN_WRITE_CAPABLE",
+      "risk": "PR #1383 remains unmerged; generated-file write/commit path remains active."
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "status": "MAIN_WRITE_CAPABLE_LEGACY_EVALUATOR",
+      "risk": "PR #1386 remains unmerged; daily variable-horizon accuracy workflow can still mutate signal history and public accuracy artifact."
+    },
+    {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "status": "MANUAL_WRITE_CAPABLE",
+      "risk": "Manual dispatch remains write-capable; no dispatch occurred."
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "status": "MANUAL_MUTATION_CAPABLE",
+      "risk": "Write/merge/delete capability remains; no queue was dispatched."
+    },
+    {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "status": "UNRESOLVED_PUSH_ZERO_JOB_FAILURE",
+      "risk": "Push-event failures with zero jobs remain unresolved; no job logs were available."
+    },
+    {
+      "path": ".github/workflows/xrp-ledger-validation.yml",
+      "status": "ACTUAL_REPOSITORY_VALIDATOR_PRESENT_ON_RESEARCH_PR",
+      "risk": "Previous exact-head validation passed; this new append is pending its own exact-head run."
+    }
+  ],
+  "prediction_engine": {
+    "latest_main_signal": {
+      "timestamp": "2026-10-29T13:23:33.142057Z",
+      "score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "status": "STALE_NOT_A_FORECAST",
+      "provider_issue": "Missing credential / Groq HTTP 429"
+    },
+    "legacy_accuracy": {
+      "checked_count": 1697,
+      "correct_count": 772,
+      "accuracy_pct": 45.5,
+      "status": "NOT_COMPARABLE_NOT_VALID_OUT_OF_SAMPLE_SKILL",
+      "source_commit": "03a86747680a79033435746c367aa96c6a641c20"
+    },
+    "fresh_main_accuracy_fix": {
+      "pr": 1386,
+      "head_sha": "632be52cbad010a7d20f6a6706d08a6424e2f170",
+      "ci_run_id": 41148613399,
+      "tests_passed": 348,
+      "subtests_passed": 8,
+      "gate_run_id": 41148613324,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "merged": false
+    },
+    "fixed_horizon_model": "NOT_IMPLEMENTED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "autonomous_agent_execution": {
+    "issue_1377": "OPEN_FAIL_CLOSED_AFTER_BUNDLE_QUALITY_GATE",
+    "repair_execution": "NOT_DEMONSTRATED",
+    "candidate_safety_pr": 1385,
+    "ci_and_gate": "PASS_ON_PR_HEAD",
+    "issue_not_rerun": true
+  },
+  "platform_authentication": {
+    "ChatGPT": "ACTIVE_CURRENT_SESSION",
+    "GitHub": "CONNECTED_AND_TESTED",
+    "Claude": "NOT_AUTHENTICATED_OR_TESTED",
+    "Grok": "NOT_AUTHENTICATED_OR_TESTED",
+    "Gemini": "NOT_AUTHENTICATED_OR_TESTED",
+    "Copilot": "NOT_AUTHENTICATED_OR_TESTED",
+    "Codex": "GITHUB_CONNECTOR_TESTED; STANDALONE_PLATFORM_AUTH_NOT_VERIFIED",
+    "HuggingFace": "NOT_AUTHENTICATED_OR_TESTED",
+    "Kaggle": "NOT_AUTHENTICATED_OR_TESTED",
+    "Databricks": "NOT_AUTHENTICATED_OR_TESTED"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merges": 0,
+    "force_pushes": 0,
+    "deployments": 0,
+    "manual_workflow_dispatches": 0,
+    "paper_state_mutations": 0,
+    "real_money_trades": 0,
+    "full_repository_ci": "NOT_RUN",
+    "targeted_ci": "PASS_ON_PR_1386; NEW_RESEARCH_APPEND_PENDING_VALIDATION"
+  },
+  "next_actions": [
+    "Keep PR #1386 open and draft; it passed 348 tests plus 8 subtests and a fail-closed gate but remains unmerged.",
+    "Keep PR #1383 open; main cross-analysis write path remains active until an approved read-only fix is merged.",
+    "Verify the exact actor/process behind the 86c cross-analysis main write and the 03a daily accuracy main write; the f97 commit is telemetry-only.",
+    "Reconcile current main PR inventory and reduce duplicate/stale PR accumulation without closing or merging automatically.",
+    "Complete the official Binance October 1 XRP PoR crosswalk and November 1 asset-level reserve comparison.",
+    "Do not use the legacy 45.5% accuracy figure as skill; fixed-horizon model is not implemented.",
+    "Inspect Dependabot, CodeQL and secret scanning through an authorized security view; status remains unknown."
+  ]
+}

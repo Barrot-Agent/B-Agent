@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T182206Z-BINANCE-POR-WALLET-CROSSWALK",
+  "captured_at_utc": "2026-10-30T18:22:06Z",
+  "source_ids": [
+    "SRC-COINDESK-BINANCE14-POR-20261030",
+    "SRC-BINANCE-POR-OFFICIAL-PAGE-20261030",
+    "SRC-WHALEALERT-XRPL-BINANCE-ROTATIONS-2023-2026",
+    "SRC-BITHOMP-BINANCE-XRPL-ACCOUNTS-20261030",
+    "SRC-RANGE-BINANCE-HACK-TIMELINE-20261030"
+  ],
+  "edges": [
+    {
+      "from": "BINANCE_14_ETHEREUM_WALLET",
+      "to": "BINANCE_OCT1_2026_PROOF_OF_RESERVES",
+      "relationship": "CoinDesk reports the Binance14 EVM hot wallet was included in the Oct1 PoR set with 37 assets, including 89,475 ETH and 1.26B USDT.",
+      "status": "SECONDARY_REVIEW_OF_PRIMARY_POR"
+    },
+    {
+      "from": "BINANCE_14_ETHEREUM_WALLET",
+      "to": "BINANCE_ETH_RESERVE_COVERAGE",
+      "relationship": "CoinDesk estimates the 204,500 ETH theft could reduce ETH coverage from 100% to about 94% if not replenished.",
+      "status": "THIRD_PARTY_ESTIMATE_NOT_BINANCE_CONFIRMED"
+    },
+    {
+      "from": "XRPL_BINANCE_ROOT_rDAE53",
+      "to": "XRPL_BINANCE_CHILD_WALLETS",
+      "relationship": "Historical XRP transfers and explorer activation labels connect rDAE53 with rBtttd, rfQ9, rarG6 and rNU4.",
+      "status": "ON_CHAIN_AND_EXPLORER_ATTRIBUTION"
+    },
+    {
+      "from": "FIVE_XRPL_BINANCE_SOURCE_WALLETS",
+      "to": "BINANCE_HACK_ATTACKER_RECEIVER",
+      "relationship": "233,461,943.1 XRP transferred across five validated XRPL payments during 20:05–20:09 UTC on Oct29.",
+      "status": "ON_CHAIN_TRANSACTION_CONFIRMED"
+    },
+    {
+      "from": "BINANCE_OCT1_2026_PROOF_OF_RESERVES",
+      "to": "FIVE_XRPL_BINANCE_SOURCE_WALLETS",
+      "relationship": "Membership of the five XRPL addresses in the Oct1 PoR set remains unresolved because the official downloadable address file was not retrieved.",
+      "status": "UNKNOWN_NO_CROSSWALK"
+    },
+    {
+      "from": "BINANCE_XRPL_DRAIN",
+      "to": "BINANCE_MULTI_CHAIN_INCIDENT_TIMELINE",
+      "relationship": "Range reports XRP as the earliest identified chain outflow at 20:05 UTC, before Solana, Bitcoin and the Binance14 EVM sweep.",
+      "status": "SECONDARY_TIMELINE"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T182206Z-XRPL-WALLETS-IN-POR",
+      "claim": "All five Binance-labelled XRPL source wallets were included in the October 1 Binance PoR address set.",
+      "status": "UNKNOWN",
+      "support": [
+        "Bithomp labels accounts Binance",
+        "historical internal wallet rotations connect the accounts"
+      ],
+      "counter_evidence": [
+        "Official downloadable PoR address file was not retrieved",
+        "CoinDesk's confirmed Binance14 finding is an Ethereum wallet, not an XRPL wallet"
+      ],
+      "required_test": "Obtain October 1 PoR address file and exact-match all five XRPL addresses."
+    },
+    {
+      "id": "HYP-20261030T182206Z-SOME-XRPL-WALLETS-IN-POR",
+      "claim": "Some, but not all, of the five XRPL source wallets were included in the October 1 PoR address set.",
+      "status": "UNKNOWN",
+      "support": [
+        "They are exchange-attributed operational accounts with historical balances and transfers"
+      ],
+      "counter_evidence": [
+        "No address-level PoR list available"
+      ],
+      "required_test": "Same authoritative address crosswalk; then reconstruct XRP balances at snapshot time."
+    },
+    {
+      "id": "HYP-20261030T182206Z-XRP-RESERVE-SHORTFALL",
+      "claim": "The 233.46M XRP drain caused a customer-backed XRP reserve shortfall at Binance.",
+      "status": "CONDITIONAL_UNPROVEN",
+      "support": [
+        "Five exchange-attributed XRP source wallets were drained"
+      ],
+      "counter_evidence": [
+        "PoR membership unknown",
+        "Other Binance XRP reserves may offset the outflow",
+        "Customer XRP liabilities at the relevant snapshot not yet reconciled",
+        "No post-incident XRP reserve snapshot available"
+      ],
+      "required_test": "Address-level PoR crosswalk plus October 1 XRP liabilities, reserve balances and November 1 replenishment snapshot."
+    },
+    {
+      "id": "HYP-20261030T182206Z-BINANCE-MULTICHAIN-HOT-WALLET",
+      "claim": "The XRP drain was part of a broader multi-chain compromise of Binance hot-wallet signing infrastructure.",
+      "status": "STRONGLY_SUPPORTED_BY_TIMELINE_AND_ANALYTICS_NOT_FULLY_PUBLICLY_FORENSICALLY_PROVEN",
+      "support": [
+        "XRP first outflow at 20:05, followed by Solana, Bitcoin and EVM",
+        "TRM/Range describe ten-chain activity"
+      ],
+      "counter_evidence": [
+        "Binance's full technical post-mortem is pending",
+        "Attribution and cross-chain actor linkage are analytics assessments"
+      ],
+      "required_test": "Binance incident post-mortem, signing-service audit summary and chain-by-chain transaction reconciliation."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_snapshot",
+  "audit_id": "BAGENT-20261031T170700Z-MAIN-193-PR-WORKFLOW-SAFETY",
+  "captured_at_utc": "2026-10-31T17:07:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "9a25f4c05983c93c2fb572f7c2ff0f6c5006a999",
+  "main_latest_commit": {
+    "sha": "9a25f4c05983c93c2fb572f7c2ff0f6c5006a999",
+    "message": "Cross-analysis refresh [skip ci]",
+    "observed_change": "Only ping-pongings/knowledge-base/sentiment_shift.json changed in the last inspected main commit.",
+    "associated_actions_run_count_returned": 0,
+    "cause_status": "Cross-analysis workflow is a plausible source because its main-branch write path is confirmed; exact trigger/run remains unverified."
+  },
+  "open_pr_inventory": {
+    "total": 193,
+    "drafts": 183,
+    "ready_for_review": 10,
+    "main_based": 191,
+    "stale_main_based": 189,
+    "current_main_based": [
+      1419,
+      1420
+    ],
+    "non_main_based": 2
+  },
+  "main_write_risks": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "contents:write with persisted checkout credentials and Git add/commit/push",
+      "status": "ACTIVE_ON_MAIN",
+      "proposal": 1419
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "contents:write and actions:write; scheduled scheduler tick can dispatch queued workflows and commit queue state",
+      "status": "ACTIVE_ON_MAIN",
+      "proposal": 1420
+    },
+    {
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "risk": "workflow input new_token is interpolated into shell command for gh secret set, followed by deployment dispatch; successful mutation not established",
+      "status": "ACTIVE_ON_MAIN",
+      "proposal": 1420
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "risk": "Previously observed scheduled main writer; not re-read in this run",
+      "status": "PREVIOUSLY_OBSERVED_REQUIRES_REFRESH"
+    },
+    {
+      "path": ".github/workflows/autonomous_self_deployment.yml",
+      "risk": "Previously observed scheduled telemetry/main writer; not re-read in this run",
+      "status": "PREVIOUSLY_OBSERVED_REQUIRES_REFRESH"
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "risk": "Manual merge-capable path; not dispatched",
+      "status": "PREVIOUSLY_OBSERVED_REQUIRES_REFRESH"
+    }
+  ],
+  "remediation_prs": [
+    {
+      "number": 1419,
+      "title": "Safety: stop scheduled Cross Analysis writes on current main",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1419",
+      "base_sha": "9a25f4c05983c93c2fb572f7c2ff0f6c5006a999",
+      "head_sha": "4fd68e3b0a00868e52ae10aa9369372b9df12df4",
+      "open": true,
+      "draft": true,
+      "merged": false,
+      "mergeable": true,
+      "ci_run_id": 41222623134,
+      "tests_passed": 345,
+      "subtests_passed": 8,
+      "gate_run_id": 41222623112,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "tradeoff": "Generated outputs become bounded artifacts; tracked web files and automatic Pages refresh from these commits pause."
+    },
+    {
+      "number": 1420,
+      "title": "Security: quarantine scheduler dispatch and unsafe token input on current main",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1420",
+      "base_sha": "9a25f4c05983c93c2fb572f7c2ff0f6c5006a999",
+      "head_sha": "9950a00fae54afed0c84db2e1946f6c6f1f9fa15",
+      "open": true,
+      "draft": true,
+      "merged": false,
+      "mergeable": true,
+      "ci_run_id": 41222627119,
+      "tests_passed": 346,
+      "subtests_passed": 8,
+      "gate_run_id": 41222627169,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "tradeoff": "Automatic scheduler execution pauses; token rotation must use authorized secret management and a separate read-only check."
+    }
+  ],
+  "implementation_notes": [
+    "PR #1419's first CI attempt failed because the newly inserted test-list continuation contained a literal backslash-n argument; a subsequent commit corrected the CI list and the final exact head passed.",
+    "Both PRs are based on current main and have exact-head CI and fail-closed gates passing.",
+    "The main-branch workflows remain unchanged until approved review and merge."
+  ],
+  "blockers": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "dependency_lockfile_inventory": "PARTIAL; zero lockfiles found in the inspected manifest inventory",
+    "security_alerts": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "branch_protection_details": "403_FROM_AVAILABLE_READ_ACTION",
+    "required_status_check_contexts": "EMPTY_IN_RETURNED_READ_RESPONSE; full protection configuration not verified",
+    "approval_workflow_zero_job_anomaly": "ROOT_CAUSE_UNKNOWN"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "pr_merged": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "deployment": false,
+    "secret_access": false,
+    "queue_mutation": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false
+  },
+  "source_ids": [
+    "SRC-20261031T170700Z-GITHUB-MAIN-REF-PR-INVENTORY",
+    "SRC-20261031T170700Z-GITHUB-PR-1419",
+    "SRC-20261031T170700Z-GITHUB-PR-1420",
+    "SRC-20261031T170700Z-GITHUB-CI-GATES-1419-1420"
+  ]
+}

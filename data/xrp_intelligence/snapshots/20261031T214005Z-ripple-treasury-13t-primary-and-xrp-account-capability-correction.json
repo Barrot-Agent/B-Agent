@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T214005Z-RIPPLE-TREASURY-13T-PRIMARY-AND-XRP-ACCOUNT-CAPABILITY",
+  "captured_at_utc": "2026-10-31T21:40:05Z",
+  "data_cutoff_utc": "2026-10-31T21:40:05Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T214005Z-ripple-treasury-13t-primary-and-xrp-account-capability-correction.json",
+  "supersedes_snapshot_id": "XRP-20261031T213618Z-ESCROW-TWO-BILLION-AND-ACTUAL-CAPITAL",
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T210244Z-TRADRADAR-XRP",
+    "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-10Q",
+    "SRC-20261031T211452Z-SEC-21SHARES-XRP-ETF-10Q"
+  ],
+  "source_revision_ids": [
+    "SRC-20261031T212655Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T212655Z-TOKENPOST-RIPPLE-ACCOUNTS",
+    "SRC-20261031T212655Z-RIPPLE-16T-PRODUCT-VOLUME",
+    "SRC-20261031T212655Z-BNY-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T212655Z-SBI-REMIT-XRP-BRIDGE",
+    "SRC-20261031T212655Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+    "SRC-20261031T212655Z-RIPPLE-COINBASE-RLUSD",
+    "SRC-20261031T212655Z-TOKENPOST-SOSOVALUE-XRP-ETF",
+    "SRC-20261031T212655Z-ALPHAFINANCE-XRP-ETF",
+    "SRC-20261031T212655Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+    "SRC-20261031T212655Z-GITHUB-BAGENT-AUDIT",
+    "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS"
+  ],
+  "corrections": [
+    "Ripple Treasury's $13T 2025 payment volume is confirmed by its own April1 2026 announcement; it is a PRIMARY_COMPANY_STATEMENT, not merely a secondary claim.",
+    "Ripple Treasury launched native digital-asset capabilities on April1 2026. Its Digital Account Management supports regulated Ripple-native digital asset accounts and displays XRP and RLUSD balances alongside cash.",
+    "The $13T payment volume refers to 2025, before those native digital-asset capabilities were launched. It is not evidence that $13T settled on-chain or in XRP/RLUSD.",
+    "The platform's future expansion into cross-border/intercompany settlement and 24/7 repo was described as forthcoming; actual production status and volume are unknown."
+  ],
+  "executive_findings": [
+    "Ripple Treasury's $13T 2025 payments volume is now verified as a primary company-reported metric from Ripple Treasury's April1 2026 launch announcement.",
+    "Ripple Treasury directly supports institutional management/visibility of XRP and RLUSD balances within a regulated Ripple-native digital-asset account. This is a direct product capability and access pathway, not proof of customer XRP holdings or payment use.",
+    "Because the $13T relates to 2025 and native digital-asset capabilities launched in April2026, the $13T must not be treated as XRP or stablecoin settlement volume.",
+    "Future cross-border/intercompany settlement and 24/7 yield through overnight repo were described as forthcoming, not verified live.",
+    "The prior escrow, SBI Remit, BNY custody, Coinbase RLUSD and ETF-flow findings remain unchanged."
+  ],
+  "escrow": {
+    "scheduled_release_xrp": 1000000000,
+    "scheduled_eligibility_utc": "2026-11-01T00:00:00Z",
+    "objects": 2,
+    "prior_released_balance_reported_xrp": 1000000000,
+    "prior_balance_observation_utc": "2026-10-29",
+    "combined_gross_accessibility_context_xrp": 2000000000,
+    "definition": "1B previously reported in two wallet balances plus 1B still locked pending EscrowFinish; not 2B sold/unlocked.",
+    "trailing_12_month_re_escrow_pct": 70,
+    "current_raw_account_state_verified": false,
+    "escrow_finish_verified": false,
+    "sale_or_exchange_deposit_verified": false
+  },
+  "capital_and_adoption": {
+    "ripple_2025_product_enabled_volume_usd": 16000000000000,
+    "ripple_2025_product_volume_scope": "Portfolio-wide Ripple product-enabled activity; not XRP-specific; exact official decomposition not disclosed.",
+    "ripple_treasury_2025_payment_volume_usd": 13000000000000,
+    "ripple_treasury_2025_volume_evidence": "PRIMARY_COMPANY_STATEMENT",
+    "ripple_treasury_2025_volume_onchain": "NOT_DISCLOSED; 2025 volume predates April2026 native digital-asset capabilities.",
+    "ripple_payments_lifetime_volume_usd": 150000000000,
+    "xrp_specific_ripple_payments_volume": "UNKNOWN",
+    "xrp_routed_share": "UNKNOWN",
+    "ripple_treasury_native_digital_asset_capability": "LAUNCHED_APRIL_1_2026; REGULATED RIPPLE-NATIVE DIGITAL ASSET ACCOUNT",
+    "ripple_treasury_xrp_account_support": "OFFICIALLY_ANNOUNCED; XRP BALANCES CAN BE VIEWED/MANAGED IN PLATFORM",
+    "ripple_treasury_rlusd_account_support": "OFFICIALLY_ANNOUNCED; RLUSD BALANCES CAN BE VIEWED/MANAGED IN PLATFORM",
+    "ripple_treasury_customer_xrp_balances": "UNKNOWN",
+    "ripple_treasury_xrp_purchases": "UNKNOWN",
+    "ripple_treasury_xrp_payment_routing": "UNKNOWN",
+    "ripple_treasury_future_cross_border_settlement": "PLANNED_NOT_VERIFIED_LIVE",
+    "ripple_treasury_future_overnight_repo": "PLANNED_NOT_VERIFIED_LIVE",
+    "sbi_remit_xrp_bridge_use": "DOCUMENTED_2023_COMPANY_ANNOUNCEMENT; CURRENT_VOLUME_UNKNOWN",
+    "bny_xrp_custody": "OFFICIALLY_SUPPORTED; CLIENT_BALANCES_UNKNOWN",
+    "coinbase_rlusd_distribution": "LAUNCHED_OCT28_2026_ACROSS_XRPL_BASE_ETHEREUM; NOT_NATIVE_XRP_DEMAND"
+  },
+  "hypotheses": [
+    {
+      "id": "H-TREASURY-XRP-ACCESS",
+      "status": "PRODUCT_CAPABILITY_CONFIRMED_CUSTOMER_USAGE_UNKNOWN",
+      "statement": "Ripple Treasury's native digital-asset account capability may lower operational friction for corporate customers to hold and manage XRP.",
+      "support": [
+        "Official Apr1 2026 announcement says regulated Ripple-native digital asset accounts can display/manage XRP and RLUSD alongside cash."
+      ],
+      "disconfirming": [
+        "No customer XRP balances, purchases, client adoption counts or usage volumes disclosed."
+      ],
+      "next_test": "Find customer case studies, product terms, custody/issuer entity details and public account/transfer volumes."
+    },
+    {
+      "id": "H-13T-XRP-SETTLEMENT",
+      "status": "NOT_SUPPORTED",
+      "statement": "The $13T 2025 Ripple Treasury payments volume was settled in XRP or RLUSD.",
+      "support": [
+        "Ripple Treasury now offers digital asset account capabilities."
+      ],
+      "disconfirming": [
+        "$13T is a 2025 historical volume; digital asset account capabilities launched Apr1 2026.",
+        "No XRP/RLUSD settlement split or on-chain volume disclosed."
+      ],
+      "next_test": "Obtain post-launch transaction volumes by asset and rail."
+    },
+    {
+      "id": "H-TREASURY-ONCHAIN-EXPANSION",
+      "status": "PLANNED_NOT_VERIFIED",
+      "statement": "Ripple Treasury may later route cross-border/intercompany settlements through Ripple stablecoins or digital assets.",
+      "support": [
+        "Official announcement says framework will soon expand to cross-border/intercompany settlement and overnight repo."
+      ],
+      "disconfirming": [
+        "Announcement describes future expansion; no live production flow or customer commitments disclosed."
+      ],
+      "next_test": "Verify production launch, customer contracts, route metrics and asset mix."
+    }
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "data_quality": {
+    "source_independence": "Primary Ripple Treasury source resolves $13T provenance; customer-level XRP usage remains unknown.",
+    "raw_xrpl_account_state": "NOT_CAPTURED_IN_THIS_RUN",
+    "new_market_feature_admission": false
+  }
+}

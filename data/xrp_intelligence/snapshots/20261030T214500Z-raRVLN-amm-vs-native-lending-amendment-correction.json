@@ -1,0 +1,173 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "index_format_version": "3.0",
+  "snapshot_id": "XRP-20261030T214500Z-RARVLN-AMM-VS-NATIVE-LENDING-AMENDMENT-CORRECTION",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T214500Z-raRVLN-amm-vs-native-lending-amendment-correction.json",
+  "captured_at_utc": "2026-10-30T21:45:00Z",
+  "data_cutoff_utc": "2026-10-30T21:45:00Z",
+  "source_ids": [
+    "SRC-XRPLWIN-LENDINGPROTOCOL-VOTE-20261030T2145Z",
+    "SRC-XRPLWIN-SINGLEASSETVAULT-VOTE-20261030T2145Z",
+    "SRC-XRPLDASHBOARD-NATIVE-LENDING-STATUS-20261030T2112Z",
+    "SRC-XRPL-ORG-AMENDMENT-ACTIVATION-RULE-20261030T2145Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z",
+    "SRC-BITHOMP-RA-RVLN-TO-R39TA-20M-XRP-TX-20261030T2130Z",
+    "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2128Z"
+  ],
+  "sources": [
+    "SRC-XRPLWIN-LENDINGPROTOCOL-VOTE-20261030T2145Z",
+    "SRC-XRPLWIN-SINGLEASSETVAULT-VOTE-20261030T2145Z",
+    "SRC-XRPLDASHBOARD-NATIVE-LENDING-STATUS-20261030T2112Z",
+    "SRC-XRPL-ORG-AMENDMENT-ACTIVATION-RULE-20261030T2145Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z",
+    "SRC-BITHOMP-RA-RVLN-TO-R39TA-20M-XRP-TX-20261030T2130Z",
+    "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2128Z"
+  ],
+  "source_reference_count": 7,
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261030T214500Z-01",
+      "asset": "XRPL",
+      "metric": "LendingProtocol_amendment_votes",
+      "value": {
+        "amendment": "LendingProtocol",
+        "standard": "XLS-66",
+        "status": "Voting",
+        "votes_for": 19,
+        "total_trusted_validators": 35,
+        "percent_for": 54.3,
+        "required_votes": 29,
+        "required_duration_days": 14,
+        "ledger_index": 108009471
+      },
+      "classification": "LIVE_LEDGER_DASHBOARD_OBSERVATION_BELOW_ACTIVATION_THRESHOLD",
+      "source_ids": [
+        "SRC-XRPLWIN-LENDINGPROTOCOL-VOTE-20261030T2145Z",
+        "SRC-XRPL-ORG-AMENDMENT-ACTIVATION-RULE-20261030T2145Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T214500Z-02",
+      "asset": "XRPL",
+      "metric": "SingleAssetVault_amendment_votes",
+      "value": {
+        "amendment": "SingleAssetVault",
+        "standard": "XLS-65",
+        "status": "Voting",
+        "votes_for": 21,
+        "total_trusted_validators": 35,
+        "percent_for": 60,
+        "required_votes": 29,
+        "required_duration_days": 14,
+        "ledger_index": 108009456
+      },
+      "classification": "LIVE_LEDGER_DASHBOARD_OBSERVATION_BELOW_ACTIVATION_THRESHOLD",
+      "source_ids": [
+        "SRC-XRPLWIN-SINGLEASSETVAULT-VOTE-20261030T2145Z",
+        "SRC-XRPL-ORG-AMENDMENT-ACTIVATION-RULE-20261030T2145Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T214500Z-03",
+      "asset": "XRPL",
+      "metric": "raRVLN_account_role_reconciliation",
+      "value": {
+        "amm_pool_classification": "supported_by_XRPLWin",
+        "vault_object_id": null,
+        "loan_broker_object_id": null,
+        "object_reads": "rate_limited_or_unavailable",
+        "native_lending_amendments": "not_activated"
+      },
+      "classification": "AMM_POOL_CONFIRMED_VAULT_LOAN_BROKER_ASSOCIATION_UNVERIFIED",
+      "source_ids": [
+        "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z",
+        "SRC-XRPLWIN-LENDINGPROTOCOL-VOTE-20261030T2145Z",
+        "SRC-XRPLWIN-SINGLEASSETVAULT-VOTE-20261030T2145Z",
+        "SRC-XRPLDASHBOARD-NATIVE-LENDING-STATUS-20261030T2112Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    }
+  ],
+  "findings": [
+    {
+      "classification": "CONFIRMED_LIVE_AMENDMENT_STATUS",
+      "statement": "XRPLWin's live ledger-backed amendment pages show LendingProtocol at 19/35 (54.3%) and SingleAssetVault at 21/35 (60.0%), both below the 29/35 threshold and 14-day activation requirement."
+    },
+    {
+      "classification": "OFFICIAL_PROTOCOL_RULE",
+      "statement": "XRPL.org documents that amendments require more than 80% of trusted validators continuously for two weeks before automatic activation."
+    },
+    {
+      "classification": "SECONDARY_DASHBOARD_STATUS",
+      "statement": "XRPL Dashboard states native lending is still in validator voting and both amendments must activate before it goes live."
+    },
+    {
+      "classification": "CORRECTION_TO_PRIOR_GRAPH",
+      "statement": "raRVLN remains classified as an AMM pool. Its XRPLWin page's Vault and Loan Broker sections did not return ledger objects or object IDs. The earlier assertion that it belongs to a live native vault and loan broker is downgraded to UNVERIFIED; current amendment status does not support treating native lending collateral as active."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261030T214500Z-01",
+      "claim": "raRVLN is an AMM pool only; the vault/loan-broker wording on the explorer page is a placeholder, stale UI or misclassification.",
+      "assessment": "FAVORED_PENDING_OBJECT_READ",
+      "supporting_evidence": [
+        "XRPLWin identifies the account as an AMM pool.",
+        "The page's vault and loan-broker object sections did not load or expose object IDs.",
+        "LendingProtocol and SingleAssetVault amendments remain below activation threshold."
+      ],
+      "disconfirming_evidence": [
+        "A different non-native or external protocol could reference the same account; no such relationship has been established."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T214500Z-02",
+      "claim": "raRVLN is associated with an external or non-native vault/loan-broker system despite native XRPL lending amendments not being active.",
+      "assessment": "POSSIBLE_BUT_UNSUPPORTED",
+      "supporting_evidence": [
+        "XRPLWin's page displays Vault and Loan Broker sections."
+      ],
+      "disconfirming_evidence": [
+        "No object IDs or ledger objects were retrieved; native protocol amendments are not active."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T214500Z-03",
+      "claim": "The 20M XRP transfer from raRVLN to r39TA was a native lending collateral settlement.",
+      "assessment": "NOT_SUPPORTED",
+      "supporting_evidence": [
+        "The source account is an AMM pool and a large XRP transfer occurred."
+      ],
+      "disconfirming_evidence": [
+        "Native LendingProtocol and SingleAssetVault are not activated; no vault, loan, borrower, lender or collateral object was verified."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T214500Z-04",
+      "claim": "The 20M XRP transfer was an AMM liquidity/inventory movement or ordinary account transfer unrelated to native lending.",
+      "assessment": "PLAUSIBLE_ALTERNATIVE",
+      "supporting_evidence": [
+        "raRVLN is classified as an AMM pool.",
+        "The native lending protocol is not active."
+      ],
+      "disconfirming_evidence": [
+        "The exact economic purpose and counterparty remain unknown."
+      ]
+    }
+  ],
+  "limitations": [
+    "LIM-20261030T214500Z-01",
+    "LIM-20261030T214500Z-02",
+    "LIM-20261030T214500Z-03"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Track amendment votes and activation status at each research run.",
+    "Resolve raRVLN's actual AMM pair and pool account object.",
+    "Do not make vault, loan-broker or collateral claims until actual activated protocol objects are found."
+  ]
+}

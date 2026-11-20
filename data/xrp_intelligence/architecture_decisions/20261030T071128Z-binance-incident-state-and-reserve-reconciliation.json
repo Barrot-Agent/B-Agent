@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "XRP-BINANCE-INCIDENT-STATE-AND-RESERVE-RECONCILIATION-20261030T071128Z",
+  "recorded_at_utc": "2026-10-30T07:11:28Z",
+  "status": "DESIGNED_AND_RECORDED; DATA_RECONCILIATION_PENDING",
+  "decision": "Model the Binance incident by asset, chain, wallet, custody/issuer authority, reserve status, transaction disposition and observation cutoff. Never transfer a reserve-wallet finding from one chain/asset to another.",
+  "rationale": "The incident includes native XRP, ETH, BTC, USDT, USDC, RLUSD, USD1 and DeFi collateral. Native XRP cannot be issuer-frozen, while issued stablecoins may be frozen by their issuers. CoinDesk's Binance 14 PoR finding is Ethereum-specific; the five compromised XRPL source wallets remain unidentified. ETF aggregators also mix spot, derivative and index products.",
+  "required_fields": [
+    "asset_symbol",
+    "chain_id",
+    "source_wallet",
+    "destination_wallet",
+    "exchange_attribution_source",
+    "wallet_label_confidence",
+    "transfer_amount",
+    "transfer_time_utc",
+    "observation_cutoff_utc",
+    "freeze_authority",
+    "freeze_status",
+    "custody_status",
+    "proof_of_reserves_snapshot_date",
+    "customer_liability_link",
+    "wrapped_asset_contract",
+    "wrapped_supply",
+    "native_reserve_balance",
+    "reserve_wallet_crosswalk_status",
+    "market_venue",
+    "quote_timestamp_utc",
+    "product_universe",
+    "spot_derivative_index_classification",
+    "source_independence"
+  ],
+  "feature_policy": "Do not admit the 233.46M XRP transfer, Binance PoR ratios, ETF aggregates or stale OKX quote as predictive features until wallet crosswalk, point-in-time timestamps, product universe, synchronized market data and source-quality checks pass. Maintain NOT_ISSUED until a leakage-safe fixed-horizon model is calibrated and shadow-evaluated.",
+  "unresolved": [
+    "Identify all five Binance-compromised XRPL source wallet addresses from permitted public transaction records and compare them with Binance XRP PoR and XRP-BF2 reserve addresses.",
+    "Observe the attacker receiver after 2026-10-30T03:54:00Z and distinguish transfers, swaps, exchange deposits and confirmed sales.",
+    "Resolve Binance's official deposit/withdrawal status discrepancy with timestamped per-network status records.",
+    "Reconcile the 12-product TheXRPInvestor headline against its 11 classified products and issuer-level holdings/creation-redemption records.",
+    "Obtain synchronized multi-venue XRP spot/perpetual order books, trades, open interest, funding and liquidation observations."
+  ]
+}

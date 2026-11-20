@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261101T071609Z-MAIN-PR1449-PR1450-ARCHIVE-REPAIR",
+  "captured_at_utc": "2026-11-01T07:16:09Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "branch": "main",
+    "sha": "760b61e216f1044d4faaa359962939757d9d6adf",
+    "protected": true,
+    "required_status_check_contexts": [],
+    "latest_commit_message": "Cross-analysis refresh [skip ci]",
+    "latest_commit_at_utc": "2026-11-01T06:51:33Z",
+    "main_modified_by_this_run": false
+  },
+  "pr_inventory": {
+    "open": 219,
+    "draft": 209,
+    "ready": 10,
+    "main_based": 213,
+    "current_main_base_count": 1,
+    "current_main_base_pr_numbers": [
+      1449
+    ],
+    "stale_main_based": 212,
+    "non_main_based": 6,
+    "captured_at_utc": "2026-11-01T07:16:09Z"
+  },
+  "safety_prs": {
+    "pr1449": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1449",
+      "base_sha": "760b61e216f1044d4faaa359962939757d9d6adf",
+      "head_sha": "dce8be8e8df59390c7a986c7ff7a2b699cb18593",
+      "changed_files": 28,
+      "additions": 714,
+      "deletions": 517,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run_id": 41283447287,
+      "ci_tests_passed": 367,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41283447301,
+      "gate_status": "PASS_MERGE_DISABLED"
+    },
+    "pr1450": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1450",
+      "base_ref": "research/binance-xrp-hack-graph-20261101T0108Z",
+      "head_sha": "a057de9a35e3a956457c95aeb404d51cfee2d0ca",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "validator_run_id": 41284073355,
+      "validator_status": "FAIL",
+      "gate_run_id": 41284073354,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "root_cause": [
+        "Six latest archive pointer entries used archive_file/blob_sha rather than path/git_blob_sha.",
+        "Six referenced shard wrappers used noncanonical record_type/archive_name metadata and omitted archive_schema_version/array_name.",
+        "archive_policy array totals remained at the prior 2177/367/977 counts and 454 shards.",
+        "latest_snapshot lacked record_type snapshot_reference and index_format_version 3.0, causing legacy inline snapshot comparison."
+      ]
+    },
+    "pr1444": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "stale": true,
+      "source_head": "8d8965eaa72b9402ad1dedec9d752387256a51dd",
+      "ci_run_id": 41279721635,
+      "tests_passed": 363,
+      "subtests_passed": 8,
+      "gate_run_id": 41279721643
+    },
+    "pr1446": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "stale": true,
+      "source_head": "a5f98fa2fc53a8875e45017f5ec4bdcedcead080",
+      "ci_run_id": 41281605535,
+      "tests_passed": 346,
+      "subtests_passed": 8,
+      "gate_run_id": 41281605590
+    },
+    "pr1445": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "stale": true,
+      "source_head": "ac04af6f19db8a1d39eaf1346943628db1acc2cb",
+      "ci_run_id": 41280065967,
+      "tests_passed": 346,
+      "subtests_passed": 8,
+      "gate_run_id": 41280065895
+    }
+  },
+  "workflow_risks": [
+    "cross-analysis.yml: scheduled main write remains active until PR #1449 is merged.",
+    "scheduler-tick.yml: actions:write and workflow_dispatch capability remains active until PR #1449 is merged.",
+    "merge-queue.yml: manual merge capability without explicit approval remains active until PR #1449 is merged.",
+    "check-signal-accuracy.yml and autonomous_self_deployment.yml: scheduled main writes remain active until PR #1449 is merged.",
+    "auto-resolve-issues.yml, barrot-autonomous-resolver.yml, daily-digest.yml, self-schedule.yml and gumroad-metrics.yml: scheduled issue/queue/metrics mutations remain active until PR #1449 is merged.",
+    "rotate-databricks-token.yml: manual token/secret mutation input remains active until PR #1449 is merged."
+  ],
+  "approval_workflow_anomaly": {
+    "path": ".github/workflows/barrot-approve-pr.yml",
+    "main_trigger": "workflow_dispatch only",
+    "verify_branch_trigger": "workflow_dispatch only",
+    "observed_run_id": 41272080914,
+    "event": "push",
+    "jobs": 0,
+    "conclusion": "failure",
+    "root_cause": "UNRESOLVED_TRIGGER_METADATA_OR_WORKFLOW_REGISTRATION_MISMATCH"
+  },
+  "limitations": [
+    "PR #1449 is draft and unmerged; main remediation is not active.",
+    "PR #1450 archive validation failed; repair is not yet verified.",
+    "Full repository CI was not run.",
+    "Dependency vulnerability scan is incomplete; security-alert access is unavailable.",
+    "Complete branch protection settings beyond the exposed protected flag and empty required-context list are not verified."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false,
+  "secret_access": false,
+  "paper_or_real_trade": false,
+  "source_ids": [
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+  ]
+}

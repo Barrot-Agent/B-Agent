@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T151245Z-EXCHANGE-DAILY-MOVEMENT-AND-REGIONAL-CONCENTRATION",
+  "captured_at_utc": "2026-10-30T15:12:45Z",
+  "source_ids": [
+    "SRC-BINANCE-OFFICIAL-IN-KIND-REPLENISHMENT-20261030T150337Z",
+    "SRC-BITQUERY-BINANCE-XRP-POR-LABELS-20261030",
+    "SRC-COINDESK-BINANCE-OCT1-POR-WALLET-CROSSWALK-20261030",
+    "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-20261030T150337Z",
+    "SRC-XRPINSIGHTS-EXCHANGE-DAILY-REGIONAL-20261030T151245Z"
+  ],
+  "edges": [
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "ALL_24_TRACKED_EXCHANGE_WALLETS",
+      "relationship": "22.37B XRP across 701 wallets; 7d same-wallet -234.9M; 30d -146.1M; daily same-wallet -207.3M on Oct30 and -41.2M on Oct29.",
+      "status": "PUBLIC_LABELLED_WALLET_AGGREGATE; COVERAGE_FLAGS_REQUIRED"
+    },
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "SOUTH_KOREA_AND_US_EXCHANGE_CUSTODY",
+      "relationship": "South Korea 8.60B (38.4%) and United States 8.59B (38.4%) of tracked balances; regional classification is exchange HQ/registration, not customer location.",
+      "status": "CUSTODY_CONCENTRATION; NOT_CUSTOMER_GEOGRAPHY"
+    },
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "JAPAN_EXCHANGE_CUSTODY",
+      "relationship": "Japan 1.38B (6.2%) across bitbank, Coincheck, bitFlyer and SBI VC Trade; SBI VC Trade 59.5M with -893K 7d and -10.5M 30d.",
+      "status": "PUBLIC_LABELLED_WALLET_AGGREGATE; NO_RELATION_TO_SBIC_EAST_JAPAN"
+    },
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "BINANCE_INCIDENT_XRP_TRANSFER",
+      "relationship": "Oct30 daily all-exchange same-wallet change -207.3M is 88.8% of the 233.4619M XRP incident transfer; Oct29 daily bar -41.2M. Binance 7d net decline -173.2M.",
+      "status": "TEMPORAL_MAGNITUDE_ALIGNMENT_ONLY; PER_WALLET_DAILY_DATA_UNAVAILABLE"
+    },
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "NON_CUSTOMER_WRAPPED_RESERVES",
+      "relationship": "488.4M XRP identified as Binance-Peg, cbXRP backing, insurance and charity funds; excluded from customer tradable-float interpretation.",
+      "status": "PROVIDER_IDENTIFIED_RESERVES; NOT_CUSTOMER_DEPOSITS"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T151245Z-INCIDENT-DAILY-EXCHANGE-DECLINE",
+      "claim": "The October 30 -207.3M same-wallet aggregate daily decline is substantially explained by the 233.46M XRP Binance incident transfer.",
+      "status": "TEMPORAL_MAGNITUDE_ALIGNMENT_ONLY",
+      "counter_hypothesis": "The daily bar is an all-exchange aggregate that excludes exchanges with wallet-set changes; no per-wallet daily series exists and other exchange flows may contribute."
+    },
+    {
+      "id": "HYP-20261030T151245Z-EXCHANGE-CUSTODY-REGIONAL-CONCENTRATION",
+      "claim": "Tracked XRPL exchange-labelled custody is concentrated in South Korea and the United States, each approximately 38.4% of the provider's tracked total.",
+      "status": "SUPPORTED_AS_WALLET-CUSTODY-DESCRIPTION",
+      "counter_hypothesis": "Exchange HQ is not customer residence, ownership or tradable liquidity; cold storage and omnibus custody distort any retail-flow interpretation."
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

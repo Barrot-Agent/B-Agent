@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 90,
+  "chunk_count": 91,
+  "record_count": 6,
+  "records": [
+    {
+      "id": "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z",
+      "source_id": "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z",
+      "publisher": "Coinbase Help",
+      "title": "Coinbase Wrapped Assets — cbXRP deposit and automatic unwrap process",
+      "url": "https://help.coinbase.com/en/exchange/crypto-transfers/wrapped-assets",
+      "retrieved_at_utc": "2026-10-31T01:21:36Z",
+      "evidence_class": "OFFICIAL_COINBASE_CUSTODY_AND_WRAPPER_TERMS",
+      "independence_group": "COINBASE_OFFICIAL",
+      "summary": "Coinbase states wrapped assets are backed 1:1 by the corresponding native asset held in Coinbase custody. cbXRP is supported on Base. When cbXRP is deposited to a Coinbase Exchange account, it is automatically unwrapped and credited to the user's native XRP balance.",
+      "limitations": "This proves a redemption mechanism, not that any identified Morpho liquidator used it or sold the resulting XRP."
+    },
+    {
+      "id": "SRC-LIQUIDIFY-MORPHO-CBXRP-LIQUIDATOR-0X4C0F-20261031T012136Z",
+      "source_id": "SRC-LIQUIDIFY-MORPHO-CBXRP-LIQUIDATOR-0X4C0F-20261031T012136Z",
+      "publisher": "liquid.ifys",
+      "title": "Base Morpho liquidator activity — address 0x4c0f…19f4",
+      "url": "https://liquid.ifys.fun/address/0x4c0f054ff82accb847d59e3b6b3d46f1ceef19f4",
+      "published_at": "Activity window 2026-09-13 through 2026-10-08T17:27:00Z",
+      "retrieved_at_utc": "2026-10-31T01:21:36Z",
+      "evidence_class": "THIRD_PARTY_ONCHAIN_LIQUIDATION_INDEX",
+      "independence_group": "LIQUID_IFYS_MORPHO_INDEX",
+      "summary": "Provider attributes 431 Morpho liquidations across 111 Base transactions to this address, including 132 cbXRP/USDC liquidations with $1,074,780 USDC debt repaid and $136,240 protocol bonus. Displayed activity ends 2026-10-08T17:27Z. It reports -$2.54 realized take across 45 measured transactions, but does not establish cbXRP disposition for each event.",
+      "limitations": "Third-party index, one liquidator address, not total market activity. Realized-take scope is unclear and does not prove collateral was sold or retained."
+    },
+    {
+      "id": "SRC-LIQUIDIFY-MORPHO-CBXRP-BATCH-0X24BE-20261031T012136Z",
+      "source_id": "SRC-LIQUIDIFY-MORPHO-CBXRP-BATCH-0X24BE-20261031T012136Z",
+      "publisher": "liquid.ifys",
+      "title": "Morpho cbXRP/USDC liquidation — transaction 0x24be…f72",
+      "url": "https://liquid.ifys.fun/liquidations/base/0x24be56203fbee80f63c55b0ec259baa0efec3abd18baf0f82d08b5ea3a9c6f72/574",
+      "published_at": "2026-10-08T17:22:01Z",
+      "retrieved_at_utc": "2026-10-31T01:21:36Z",
+      "evidence_class": "THIRD_PARTY_TRANSACTION_LEVEL_LIQUIDATION_INDEX",
+      "independence_group": "LIQUID_IFYS_MORPHO_INDEX",
+      "summary": "One event (log 574) in a 30-liquidation Base Morpho transaction repaid 829.4 USDC of borrower 0x749b…20cf and seized 701.6 cbXRP, with a $105.09 protocol bonus. Liquidator retained proceeds are explicitly not measured.",
+      "limitations": "701.6 cbXRP is one event, not the batch total. Subsequent swap, hold, Coinbase deposit, unwrap or native XRP sale was not traced."
+    },
+    {
+      "id": "SRC-MORPHO-CLEARSTAR-CBXRP-VAULT-20261031T012136Z",
+      "source_id": "SRC-MORPHO-CLEARSTAR-CBXRP-VAULT-20261031T012136Z",
+      "publisher": "Morpho App — Clearstar",
+      "title": "Clearstar USDC vault allocation to cbXRP/USDC 62.5% LLTV market",
+      "url": "https://app.morpho.org/base/vault/0xE74c499fA461AF1844fCa84204490877787cED56/yield-clearstar-usdc",
+      "retrieved_at_utc": "2026-10-31T01:21:36Z",
+      "evidence_class": "MORPHO_PROTOCOL_VAULT_INTERFACE_DATA",
+      "independence_group": "MORPHO_APP_ONCHAIN_INDEX",
+      "summary": "Morpho Clearstar USDC vault displays $410.85K USDC allocated to cbXRP 62.5% LLTV, $6.47M underlying market liquidity, 90.07% utilization and 5.86% APY. A visible allocator transaction on 2026-10-10 added 14,000.5 USDC to that market.",
+      "limitations": "One curator's vault position, not total market supply or Coinbase loan originations. Vault allocation and underlying market liquidity are distinct."
+    },
+    {
+      "id": "SRC-STEAKHOUSE-CBXRP-USDC-77LLTV-20261031T012136Z",
+      "source_id": "SRC-STEAKHOUSE-CBXRP-USDC-77LLTV-20261031T012136Z",
+      "publisher": "Steakhouse Financial",
+      "title": "Separate cbXRP/USDC Morpho market with 77% LLTV",
+      "url": "https://app.steakhouse.financial/borrow/8453/0xfdfecf85a4dd90a7637ae2aaf28b35061166f0e62bfc714c565eed9f7e959783/cbxrp-usdc",
+      "retrieved_at_utc": "2026-10-31T01:21:36Z",
+      "evidence_class": "THIRD_PARTY_MORPHO_MARKET_INTERFACE",
+      "independence_group": "STEAKHOUSE_MORPHO_MARKET_INTERFACE",
+      "summary": "A distinct Base cbXRP/USDC market has 77% LLTV. The captured page displays $456.95K total supply, $394.46K borrowed, $62.65K available, 86.29% utilization, 7.41% liquidation penalty and 4.94% seven-day borrow rate.",
+      "limitations": "Point-in-time interface snapshot; it does not establish Coinbase product routing or total cbXRP-backed borrowing."
+    },
+    {
+      "id": "SRC-MORPHO-PUBLIC-API-DOCS-20261031T012136Z",
+      "source_id": "SRC-MORPHO-PUBLIC-API-DOCS-20261031T012136Z",
+      "publisher": "Morpho Documentation",
+      "title": "Morpho Blue public REST API and historical market-data capabilities",
+      "url": "https://docs.morpho.org/developers/api/morpho/",
+      "retrieved_at_utc": "2026-10-31T01:21:36Z",
+      "evidence_class": "OFFICIAL_PROTOCOL_API_DOCUMENTATION",
+      "independence_group": "MORPHO_OFFICIAL_DOCS",
+      "summary": "Morpho documents public GET endpoints for Blue market listings, immutable parameters, current market state, APY averages, user positions and historical data. Cross-market aggregate overviews and some aggregate collateral metrics are not available through public REST endpoints.",
+      "limitations": "API endpoints were not called in this run. Pagination, rate limits, historical interval coverage and timestamp semantics require testing."
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 10,
+  "chunk_count": 11,
+  "record_count": 10,
+  "records": [
+    {
+      "id": "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATOR_FAQ_DIRECTLY_REVIEWED",
+      "url": "https://www.cftc.gov/media/13521/Registrant%26RegisteredEntity_FAQs032026/download",
+      "title": "CFTC March 20, 2026 crypto collateral FAQs — direct review",
+      "published_at": "2026-03-20",
+      "accessed_at_utc": "2026-10-30T02:23:00Z",
+      "note": "Directly reviewed official 5-page FAQ. Q7: a DCO may accept crypto, including payment stablecoins, as initial margin if assets meet Regulation 39.13(g)(10) minimal credit, market and liquidity risk. Q8: DCO sets risk/stress haircuts and reviews at least monthly. Q9: FCM must file notice with MPD via WinJammer before relying on Letter 26-05. Q10: during each FCM's first three months from commencement, only payment stablecoins, BTC and ETH may be accepted; event reporting applies; weekly asset-type reports run for three months from the calendar month after notice. Q11: after the initial three months, an FCM may accept other crypto assets if it continues to meet conditions (1)-(3) of Letter 26-05. Q1 permits customer non-security crypto after haircuts to secure debit/deficit balances in futures, foreign futures and cleared swaps accounts. Q3-Q5 prohibit proprietary non-stablecoin crypto as residual interest, do not authorize investment of customer funds in stablecoins, and do not make crypto eligible collateral for uncleared swaps. FAQ expressly says it creates no binding rights/rules and is staff guidance, not Commission action."
+    },
+    {
+      "id": "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+      "evidence_class": "CONFIRMED_PRIMARY_DCO_RULES_PAGE",
+      "url": "https://bitnomial.com/clearinghouse",
+      "title": "Bitnomial Clearinghouse current accepted collateral, haircut and member list",
+      "accessed_at_utc": "2026-10-30T02:23:00Z",
+      "note": "Current official page identifies Bitnomial Clearinghouse LLC as CFTC-registered DCO and lists clearing members including Hidden Road Partners CIV US LLC, Marex, NinjaTrader, R.J. O'Brien, Wedbush and Bitnomial Clearing LLC. Accepted collateral: BTC 15% haircut/$100M limit; ETH 20%/$45M; XRP 40%/$15M. XRP product maintenance-margin entries are 17%; these are separate controls from the 40% collateral haircut. Page does not disclose actual XRP balances/utilization or define the $15M limit basis."
+    },
+    {
+      "id": "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20260717",
+      "evidence_class": "CONFIRMED_PRIMARY_DCO_RISK_METHODOLOGY",
+      "url": "https://bitnomial.com/clearinghouse/margin-methodology",
+      "title": "Bitnomial Clearinghouse margin methodology and default waterfall",
+      "accessed_at_utc": "2026-10-30T02:23:00Z",
+      "note": "Official methodology page dated July 17, 2025 says margins target 99% of expected price movement over a historical period and portfolio margin uses CME SPAN over one day. It lists a $5M clearinghouse guaranty-fund contribution, up to $1M non-defaulting member assessments and contract extinguishment in the default waterfall. This is generic methodology; it does not reveal XRP collateral utilization or asset-specific stress parameters."
+    },
+    {
+      "id": "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0100Z",
+      "evidence_class": "SECONDARY_MULTIEXCHANGE_DERIVATIVES_SNAPSHOT",
+      "url": "https://tradradar.io/markets/xrp",
+      "title": "TradRadar XRP derivatives snapshot — October 30, 2026 01:00 UTC",
+      "published_at": "2026-10-30T01:00:00Z",
+      "accessed_at_utc": "2026-10-30T02:23:00Z",
+      "note": "15-minute delayed snapshot: XRP $1.2231 (-7.35% 24h); open interest $1.82B across seven exchanges (-9.13%); OI-weighted funding +0.0032% per 8h; at least $33.02M liquidations across five exchanges ($31.88M longs, $1.14M shorts); long-account share 79.4% across five venues. Binance OI $442.31M, Bybit $304.63M, Hyperliquid $203.42M, OKX $91.34M; funding differs materially by venue. Secondary source; account ratios are not notional positioning and liquidation totals are minimums."
+    },
+    {
+      "id": "SRC-LIQWALL-XRP-DERIVATIVES-20261029T2222Z",
+      "evidence_class": "SECONDARY_MULTIEXCHANGE_DERIVATIVES_SNAPSHOT",
+      "url": "https://liqwall.com/coins/xrp",
+      "title": "Liqwall XRP derivatives snapshot — October 29, 2026 22:22 UTC",
+      "published_at": "2026-10-29T22:22:00Z",
+      "accessed_at_utc": "2026-10-30T02:23:00Z",
+      "note": "Reports XRP $1.25; $1.35B open interest across exchanges (-0.1% 24h); average funding -0.0007% per 8h while Binance funding is +0.0018%; $23.2M liquidations ($22.5M longs, $779K shorts); 75.4% of Binance accounts long and 68.1% of top-trader accounts long. Coverage/aggregation differs from TradRadar; not directly combinable."
+    },
+    {
+      "id": "SRC-BITCOINLEVERAGE-XRP-DERIVATIVES-20261030T0001Z",
+      "evidence_class": "SECONDARY_PARTIAL_VENUE_DERIVATIVES_SNAPSHOT",
+      "url": "https://bitcoinleverage.com/xrp",
+      "title": "BitcoinLeverage XRP Binance/Bybit partial derivatives snapshot",
+      "published_at": "2026-10-30T00:01:00Z",
+      "accessed_at_utc": "2026-10-30T02:23:00Z",
+      "note": "Coinalyze-attributed partial coverage: Binance XRPUSDT OI $363.37M, 75.44% long accounts, funding +0.01% per 8h and $9.1M reported 24h liquidations; Bybit OI $277.1M, 81.37% long accounts, funding -0.001123% and $5.09M liquidations. Coverage is 22/24 and 21/24 hours respectively. Not a full-market aggregate."
+    },
+    {
+      "id": "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261030T0217Z",
+      "evidence_class": "SECONDARY_ISSUER_HOLDINGS_DERIVED_ETF_FLOW",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "title": "CryptoKeyhole XRP ETF issuer-file flow tracker — October 30, 2026 02:17 UTC",
+      "published_at": "2026-10-30T02:17:00Z",
+      "accessed_at_utc": "2026-10-30T02:23:00Z",
+      "note": "Tracker reports Oct 28 +4,337,696 XRP (+$5.751M) across four daily-reporting funds; Oct 29 is partial at 2/4 funds with +2,232,630 XRP (Bitwise) and zero from 21Shares while Franklin and Canary were pending. It excludes daily GXRP because the issuer site challenges automated reads and excludes REX-Osprey from flows because it is a 1940 Act fund-of-funds. Franklin's file is published on a different date convention, one trading day after the session it represents. This is a different population/timing model from XRP Insights."
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS-ETF-DATA-20261030T0137Z",
+      "evidence_class": "SECONDARY_ISSUER_HOLDINGS_DERIVED_ETF_DATASET",
+      "url": "https://xrp-insights.com/data",
+      "title": "XRP Insights XRP ETF holdings and flow dataset metadata — October 30, 2026 01:37 UTC",
+      "published_at": "2026-10-30T01:37:03Z",
+      "accessed_at_utc": "2026-10-30T02:23:00Z",
+      "note": "Dataset metadata says data_as_of Oct 28, Oct 29 provisional; Oct 26–28 settled net flow -2,958,545 XRP and total holdings 1,190,251,285 XRP on Oct 28. Tracks six US spot funds plus BITW; GXRP holdings remain in totals but flows are excluded due an issuer-page capture gap, and XRPR has look-through limitations. Flows are changes in issuer-reported holdings, which may include fees or BITW index rebalancing, not only creations/redemptions. Asynchronous issuer files can shift a flow by one trading day. Do not reconcile with CryptoKeyhole without a per-fund/date crosswalk."
+    },
+    {
+      "id": "SRC-GITHUB-PR1353-DUPLICATE-SOURCE-ID-20261030T0223Z",
+      "evidence_class": "REPOSITORY_VALIDATION_FINDING",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1353",
+      "title": "PR #1353 archive audit found duplicate CFTC source identifier",
+      "accessed_at_utc": "2026-10-30T02:23:00Z",
+      "note": "Read-only reconstruction of all ten source shards found 1,227 records but only 1,226 unique source IDs. Duplicate was SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT-20251208, appearing in the original Dec 8 pilot source and a later scope-detail record. A replacement shard with a distinct provenance ID was created; the original shard remains preserved and will be left unreferenced after the index pointer update."
+    },
+    {
+      "id": "SRC-GITHUB-PR1353-STRUCTURAL-READBACK-20261030T0223Z",
+      "evidence_class": "REPOSITORY_STRUCTURAL_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1353",
+      "title": "PR #1353 current archive shard readback and validation status",
+      "accessed_at_utc": "2026-10-30T02:23:00Z",
+      "note": "Current research branch head before this update is ff6f9e6dd403ad47c3a45e4356a73c661baf21bd. All 8 run-update shards and 6 limitation shards match pointer Git blob SHA, type, schema, index, generation-count and record-count checks. All 10 source shards match their blob/schema/type/count checks, but a duplicate source ID remains in the current index. The prior Python validator run 40990012521 failed at earlier head a27089 due wrong archive record_type/count; current corrected shards resolve that failure, but exact-head Python regression execution remains unverified. Fail-closed gate on current head 40990370969 passed."
+    }
+  ]
+}

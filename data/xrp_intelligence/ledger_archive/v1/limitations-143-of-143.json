@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 142,
+  "chunk_count": 143,
+  "record_count": 1,
+  "created_at_utc": "2026-10-31T17:14:56Z",
+  "records": [
+    {
+      "id": "LIM-BINANCE-SAFU-TRANSFER-AND-XRP-RESERVE-RECONCILIATION-20261031T171456Z",
+      "recorded_at_utc": "2026-10-31T17:14:56Z",
+      "category": "BINANCE_RECOVERY_SAFU_AND_XRP_EXCHANGE_RESERVE_CAUSALITY",
+      "severity": "HIGH_FOR_FEATURE_ADMISSION",
+      "status": "OPEN_UNKNOWN",
+      "statement": "The 7,500 BTC SAFU transfer has no verified destination/transaction hash in the captured public sources; Binance's 90% replenishment and 100% XRP backing remain company claims until the full zero-knowledge PoR proof is published. Exchange-wallet totals are not tradable float.",
+      "impact": "Misclassifying an internal reserve transfer as a market sale, or broad exchange custody as available selling supply, would contaminate capital-flow and price-prediction features.",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-20261031T171300Z-REUTERS-BINANCE-90PCT",
+        "SRC-20261031T171300Z-LOOKONCHAIN-SAFU-7500",
+        "SRC-20261031T171300Z-ARKHAM-SAFU-BALANCE-7500",
+        "SRC-20261031T171300Z-BITINFOCHARTS-SAFU-STALE-15000",
+        "SRC-20261031T171300Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ],
+      "unresolved": [
+        "SAFU transfer destination and tx hash",
+        "Whether the 7,500 BTC was sold, converted, moved OTC or internally reallocated",
+        "Full Binance ZK PoR proof and same-time XRP customer liabilities",
+        "Exact crosswalk between CryptoQuant and XRP Insights Binance wallet sets",
+        "Customer versus cold/wrapped/operational XRP balance split"
+      ],
+      "disconfirming_evidence": [
+        "Arkham/Lookonchain show 7.5K BTC remaining/moved, while BitInfoCharts still displays 15K BTC with stale transaction timestamps.",
+        "XRP Insights shows Binance +17.6M XRP over seven days and +30.3M over 30 days, weakening a persistent drawdown narrative.",
+        "Binance states XRP is already 100% backed in the top-ten asset set."
+      ],
+      "feature_admission": "RESERVE_EVENT_ONLY; NO_DIRECTIONAL_XRP_FEATURE"
+    }
+  ]
+}

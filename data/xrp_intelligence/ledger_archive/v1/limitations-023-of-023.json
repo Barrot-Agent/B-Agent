@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 22,
+  "chunk_count": 23,
+  "record_count": 8,
+  "created_at_utc": "2026-10-30T08:31:00Z",
+  "records": [
+    "SBI's October 30 official release confirms SMFG's 5% capital participation in SBI Startale Marketing and joint research/PoC work, but does not establish production JPYSC settlement, transaction volume, customer adoption or any XRP role.",
+    "The approximately 24 million SMBC individual-customer figure and approximately JPY20.8B JPYSC issuance figure as of October 30 are secondary reporting citing Nikkei in this capture; the official SBI release confirms the 5% participation but not those two metrics. Customer base is not adoption, and the current supply figure lacks independent on-chain reconciliation here.",
+    "The SBI Shinsei Trust/SBI Clearing Trust merger is planned for December 31, 2026 and is not yet effective. The announcement describes general crypto-asset trust custody and JPYSC issuance, not XRP-specific custody, balances or acceptance.",
+    "bitbank-lab-mcp is an experimental local beta. No Barrot installation, live API call, platform authentication or adapter handoff was executed. Named Claude/Codex/Gemini clients are intended compatibility targets, not proof of live connections.",
+    "bitbank-lab-mcp documentation conflicts on public tool count (32 versus 33), and package.json version 0.0.0-dev differs from gemini-extension.json 0.1.1. Release metadata and tool manifests must be reconciled before a production adapter pins a version.",
+    "bitbank-lab-mcp private account/order tools require an API key and secret; order operations need trade permission. The recommended Barrot design is public-only with no credentials. The optional MCP Apps _meta execution path is default-off and depends on host behavior not guaranteed by the protocol.",
+    "The bitbank XRP/JPY 24-hour volume, spread and depth values are a third-party single snapshot captured around 08:05 UTC without an exact exchange timestamp. They are venue context, not a synchronized multi-venue feature and are not admitted to the prediction engine.",
+    "The SBI stablecoin, custody and XRP distribution relationships do not establish that XRP is used as the bridge in JPYSC/OUSD interoperability, BlackRock tokenized-MMF settlement, SMFG financial services or the planned trust structure."
+  ]
+}

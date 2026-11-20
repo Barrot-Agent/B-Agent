@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 13,
+  "chunk_count": 14,
+  "record_count": 4,
+  "records": [
+    {
+      "id": "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATORY_FINANCIAL_DATA",
+      "url": "https://www.cftc.gov/sites/default/files/2026-09/01%20-%20FCM%20Webpage%20Update%20-%20July%202026.pdf",
+      "title": "CFTC selected FCM financial data as of July 31, 2026",
+      "published_at": "2026-09",
+      "accessed_at_utc": "2026-10-30T03:08:30Z",
+      "note": "CFTC July 31, 2026 report (filed by September 1) lists Hidden Road Partners CIV US LLC as an FCM with adjusted net capital $731,397,154, requirement $21,413,624, excess $709,983,530, customer assets in segregation $642,769,243, required segregation $581,460,604, excess $61,308,639 and target residual interest $27,300,000. Coinbase Financial Markets Inc. is separately listed as an FCM with adjusted net capital $310,422,285, requirement $8,351,941, excess $302,070,344, customer assets in segregation $283,373,035, required $155,332,638, excess $128,040,397 and target residual interest $15,000,000; it also reports $6,009,150 in Part 30 customer assets and $155,749,427 in cleared-swap customer assets. The report's fields are FCM-level customer funds and capital, not asset-specific XRP collateral. The CFTC says these selected reports are not revised after publication; this July snapshot is not current October data."
+    },
+    {
+      "id": "SRC-SEC-HIDDENROAD-SOFC-20251231",
+      "evidence_class": "CONFIRMED_PRIMARY_AUDITED_FINANCIAL_STATEMENT",
+      "url": "https://www.sec.gov/Archives/edgar/data/2029588/000202958826000002/SOFC_Public.pdf",
+      "title": "Hidden Road Partners CIV US LLC audited statement of financial condition at December 31, 2025",
+      "published_at": "2026-02-26",
+      "accessed_at_utc": "2026-10-30T03:08:30Z",
+      "note": "The SEC-public Rule 17a-5 financial statement is audited by RSM. At Dec 31 2025 it reports total assets $39.019B, liabilities $38.499B, member equity $520.401M, cash $17.696M, securities purchased under agreements to resell $38.183B, and securities sold under agreements to repurchase $37.770B. The firm says it runs matched-book repo/reverse-repo financing secured mainly by U.S. Treasuries, MBS and government agencies, with daily valuation/margining, and says those transactions are not used to finance proprietary inventory or cover customer positions. It discloses $100M of U.S. Treasury repo transactions outstanding with ultimate parent Ripple at year-end and $70M of additional parent capital contributions through Feb 26 2026. The statement does not separately identify XRP; customer funds are not broken out by token."
+    },
+    {
+      "id": "SRC-KBRA-RIPPLE-PRIME-BBB-RATING-20260402",
+      "evidence_class": "CONFIRMED_PRIMARY_CREDIT_RATING_AGENCY",
+      "url": "https://www.kbra.com/publications/mGpNdbKv/kbra-assigns-rating-to-ripple-prime-civ-us-bd-holdco-llc",
+      "title": "KBRA assigns BBB issuer ratings to Ripple Prime CIV US BD HoldCo LLC and Hidden Road Partners CIV US LLC",
+      "published_at": "2026-04-02",
+      "accessed_at_utc": "2026-10-30T03:08:30Z",
+      "note": "KBRA assigned BBB issuer ratings to the intermediate holding company and operating subsidiary Hidden Road Partners CIV US LLC. It describes the operating firm as a CFTC-registered FCM, SEC-registered broker-dealer, FINRA/SIPC member, CME Group clearing member and FICC Government Securities Division member. The rating rationale says the business was scaling, focused on exchange-traded derivatives clearing/intermediation and fixed-income repo, with meaningful short-duration U.S. Treasury and agency-security activity, and that the firm achieved profitability in 2025 supported by approximately $500M of Ripple parent capital injections. This is a credit opinion, not a guarantee or proof of XRP collateral utilization."
+    },
+    {
+      "id": "SRC-CFTC-FCM-FINANCIAL-DATA-METHODOLOGY-20261030",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATORY_DATA_DICTIONARY",
+      "url": "https://www.cftc.gov/MarketReports/financialfcmdata/index.htm",
+      "title": "CFTC Financial Data for FCMs — filing cadence and selected-data definitions",
+      "accessed_at_utc": "2026-10-30T03:08:30Z",
+      "note": "CFTC says FCMs file monthly Form 1-FR-FCM reports within 17 business days after month-end; selected information is generally published within 12 business days after filing, may be later, and is not revised after publication for subsequently received amended information. The report defines customer assets in segregation as money, securities and property held in segregated accounts for futures/options customers. These totals do not identify XRP or any other token by asset."
+    }
+  ]
+}

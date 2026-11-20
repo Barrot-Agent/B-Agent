@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261030T233149Z-ACTUAL-CAPITAL-AND-WALLET-IDENTITY-SEPARATION",
+  "created_at_utc": "2026-10-30T23:31:49Z",
+  "status": "ADOPTED_FOR_RESEARCH_AND_FEATURE_GATING",
+  "context": "Bitquery's RLUSD investigation identifies a 110-wallet dust cluster funded from Binance-labelled wallets, including rDAE53. The same exact rDAE53 address is one of five Binance-labelled XRPL sources in the 233.46M XRP incident and later sent XRP and RLUSD to another Binance-labelled account. The investigation also decomposes $7.33B of gross RLUSD movement into issuer plumbing, a matched roundtrip and concentrated high-value transfers.",
+  "decisions": [
+    "Separate stablecoin payment count, gross transfer value, unique senders/receivers, issuer mint/redemption, matched roundtrips, exchange/custody omnibus flows, known bot clusters and net external settlement into distinct metrics.",
+    "Do not use raw RLUSD payment count as organic adoption, XRP demand or a price-prediction feature when a bot cluster accounts for 99.6% of the sample count.",
+    "Treat the $7.33B as gross ledger movement; isolate $1.472B issuer mint/redemption and the $848M matched roundtrip before attempting net-capital estimates.",
+    "A matching XRPL address across separate investigations creates an exact-address relationship edge only. It does not establish common beneficial ownership, common operator, intent or causation.",
+    "Classify post-incident rDAE53-to-rs8Z payments as confirmed ledger transfers between explorer-labelled Binance accounts; do not call them replenishment, recovery or reserve restoration without official evidence.",
+    "Do not treat Bithomp page balances as exact when title and body fields conflict. Require raw validated account_info or an independently reconciled explorer snapshot before admitting balance features.",
+    "Treat Cross River announcement and bot shutdown as a timestamped temporal association only; retain coincidence and off-chain operational change as competing explanations.",
+    "Keep all RLUSD activity out of the XRP price feature store until historical, point-in-time, cross-venue data and a defensible XRP transmission mechanism are established.",
+    "Add an actual-repository validator invocation to the XRP ledger GitHub Actions workflow; isolated fixture tests alone do not prove the checked-out research index and archive pointers are valid."
+  ],
+  "invariants": [
+    "Native XRP, RLUSD, USDC, USDT and other issued assets remain distinct; stablecoin payment activity is not automatically XRP demand.",
+    "Gross transfer volume is never labelled net capital or settlement without beneficial-owner and flow classification.",
+    "Issuer mint/redemption and matched roundtrip flows are separated from external counterparties.",
+    "Provider labels are not official exchange PoR exports and do not prove beneficial ownership.",
+    "An exact address match is not an actor attribution.",
+    "Dynamic account-page balance displays with internal discrepancies are not admitted as exact account balances.",
+    "No prediction is issued until immutable fixed-horizon outcomes, point-in-time features, baseline comparisons, calibration and walk-forward validation are executed and verified."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

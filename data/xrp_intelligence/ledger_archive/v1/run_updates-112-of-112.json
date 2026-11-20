@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 111,
+  "chunk_count": 112,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T022100Z-COINBASE-Q3-MULTI-ISSUER-STRATEGY",
+      "created_at_utc": "2026-10-31T02:21:00Z",
+      "data_cutoff_utc": "2026-10-31T02:21:00Z",
+      "summary": "Appended Coinbase's official Q3 2026 investor-relations release and reconciled it with the Q3 SEC filing and October 28 RLUSD launch. Recorded the $22B average USDC platform balance, market-share and derivatives growth, prediction-market annualized run rate, GAAP versus adjusted earnings, continued Circle agreement on the same terms, and the temporal fact that Q3 ended before RLUSD was listed. Distinguished average balances from net capital and RLUSD/XRPL activity from XRP value capture.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T022100Z-coinbase-q3-multi-issuer-position-and-xrp-value-capture.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T022100Z-coinbase-usdc-rlusd-strategy-and-value-capture.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T022100Z-coinbase-q3-multi-issuer-and-actual-capital-separation.json",
+      "actions": [
+        "Added the official Coinbase Q3 2026 earnings release as a company-reported source; did not treat it as independent of Coinbase's SEC filing.",
+        "Recorded average USDC held in Coinbase products at $22B and the company's 10.7% trading-volume market-share claim.",
+        "Separated prediction-market annualized revenue from recognized quarterly revenue and GAAP net income from adjusted net income.",
+        "Confirmed the Q3 SEC filing says Coinbase renewed its Circle arrangement on the same terms.",
+        "Placed the Q3 period end (September 30) before the October 28 RLUSD listing to prevent a false pre/post causal inference.",
+        "Kept average USDC platform balances separate from net external capital, XRP purchases, and XRP-specific demand."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "No post-2026-10-28 Coinbase RLUSD balance, market share or Global Exchange collateral usage disclosed.",
+        "No Circle Q3 2026 filing available at this cutoff; previously announced results date is November 4.",
+        "No XRP-specific Coinbase purchase, collateral balance or net external capital measure is disclosed."
+      ],
+      "next_actions": [
+        "Compare Coinbase USDC and RLUSD balances after the October 28 launch when comparable post-launch data become available.",
+        "Reconcile Circle Q3 distribution economics and Coinbase's same-terms renewal after Circle's Q3 release.",
+        "Measure XRPL RLUSD transfers, XRP bridge/AMM execution, fees and reserve changes separately before assessing XRP value capture.",
+        "Keep company-reported metrics out of short-horizon price features unless point-in-time out-of-sample tests show incremental predictive value."
+      ],
+      "source_reference_count": 2,
+      "missing_source_references": 0
+    }
+  ]
+}

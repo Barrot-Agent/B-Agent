@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T010800Z-SEPARATE-STOLEN-XRP-COVERAGE-FREEZES-AND-MARKET-FLOWS",
+  "created_at_utc": "2026-11-01T01:08:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_AND_FEATURE_GATING",
+  "context": "The Binance hot-wallet incident moved 233.46M XRP from five Binance XRPL wallets to one attacker-controlled account. Independent analytics report the balance unmoved through 2026-10-31 16:51 UTC. Binance separately says XRP customer assets are 100% backed after reserve replenishment. Circle and Ripple froze issuer-controlled stablecoins, but native XRP cannot be frozen.",
+  "decisions": [
+    "Separate Binance customer-asset coverage, replacement acquisitions and recovery of the stolen coins into distinct accounting states.",
+    "Do not infer Binance purchased 233.46M XRP. Record XRP-specific purchases, existing reserve inventory, OTC acquisition and internal transfers as separate unknowns until disclosed or observed.",
+    "Track the attacker XRP account as a conditional supply-overhang event. Require a new validated ledger, account sequence/balance, outgoing transaction hash and destination classification before recording movement.",
+    "Treat a first outgoing attacker-wallet transaction as an alert trigger, not proof of sale. Follow onward payments, bridges, DEX routes and exchange deposits separately.",
+    "Keep native XRP non-freezability distinct from issuer controls over USDC, USDT and RLUSD.",
+    "Record Circle's CCTP use in the attacker's AVAX-to-USDC-to-Ethereum path as a rail observation, not evidence of Circle's intent or compromise.",
+    "Keep FBI's TraderTraitor attribution scoped to the overall Binance incident; the FBI alert's published address list does not name the XRPL attacker address.",
+    "Preserve provider-specific theft totals, freeze totals, timestamps and market metrics; do not average incompatible datasets.",
+    "Do not admit CoinGecko market values into the feature store without exact quote timestamps, source coverage and point-in-time snapshots.",
+    "Do not issue a directional forecast from the incident alone."
+  ],
+  "feature_gate": {
+    "attacker_wallet_monitoring": "DESIGNED; requires validated public ledger feed",
+    "xrp_specific_binance_replenishment": "NOT_ADMITTED; quantity and acquisition route unknown",
+    "stablecoin_freeze_events": "EVENT_CONTEXT_ONLY; not an XRP directional feature by itself",
+    "exchange_migration": "NOT_ADMITTED; no verified customer-flow evidence",
+    "spot_depth_and_volume": "INDICATIVE_ONLY; exact quote timestamp and venue methodology require reconciliation",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "next_action": "Obtain current public XRPL account state for rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx; verify Binance PoR proof when published; monitor withdrawals reopening; keep PR #1435 unmerged pending approval."
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T165000Z-YOUTUBE-KAMILAH-CANDIDATE-EXPANDED-INVENTORY",
+  "captured_at_utc": "2026-10-30T16:50:00Z",
+  "source_ids": [
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-PAYCHECK-20260417",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-NEED-20260319",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-RIPPLE-BANK-20251214",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-ETF-PRICE-20260113",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-CRYPTO-WEALTH-20260115",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-BTC-DISTINCTION-20251224",
+    "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE-20261030"
+  ],
+  "edges": [
+    {
+      "from": "KAMILAH_STEVENSON_CANDIDATE",
+      "to": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-PAYCHECK-20260417",
+      "relationship": "Public video metadata indexed under Kamilah Stevenson; title: Why XRP Matters More Than Your Paycheck; creator identity relative to requested Camilla Stephenson remains unverified.",
+      "status": "CANDIDATE_PUBLIC_COMMENTARY_NOT_PRIMARY_MARKET_EVIDENCE"
+    },
+    {
+      "from": "KAMILAH_STEVENSON_CANDIDATE",
+      "to": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-NEED-20260319",
+      "relationship": "Public video metadata indexed under Kamilah Stevenson; title: How Much XRP Do You ACTUALLY Need?; creator identity relative to requested Camilla Stephenson remains unverified.",
+      "status": "CANDIDATE_PUBLIC_COMMENTARY_NOT_PRIMARY_MARKET_EVIDENCE"
+    },
+    {
+      "from": "KAMILAH_STEVENSON_CANDIDATE",
+      "to": "SRC-YOUTUBE-KAMILAH-STEVENSON-RIPPLE-BANK-20251214",
+      "relationship": "Public video metadata indexed under Kamilah Stevenson; title: Ripple Just Became a BANK — And XRP Holders Need to Understand This; creator identity relative to requested Camilla Stephenson remains unverified.",
+      "status": "CANDIDATE_PUBLIC_COMMENTARY_NOT_PRIMARY_MARKET_EVIDENCE"
+    },
+    {
+      "from": "KAMILAH_STEVENSON_CANDIDATE",
+      "to": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-ETF-PRICE-20260113",
+      "relationship": "Public video metadata indexed under Kamilah Stevenson; title: XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.; creator identity relative to requested Camilla Stephenson remains unverified.",
+      "status": "CANDIDATE_PUBLIC_COMMENTARY_NOT_PRIMARY_MARKET_EVIDENCE"
+    },
+    {
+      "from": "KAMILAH_STEVENSON_CANDIDATE",
+      "to": "SRC-YOUTUBE-KAMILAH-STEVENSON-CRYPTO-WEALTH-20260115",
+      "relationship": "Public video metadata indexed under Kamilah Stevenson; title: Why Most People Will Lose Their Crypto Wealth (Even If They're Right); creator identity relative to requested Camilla Stephenson remains unverified.",
+      "status": "CANDIDATE_PUBLIC_COMMENTARY_NOT_PRIMARY_MARKET_EVIDENCE"
+    },
+    {
+      "from": "KAMILAH_STEVENSON_CANDIDATE",
+      "to": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-BTC-DISTINCTION-20251224",
+      "relationship": "Public video metadata indexed under Kamilah Stevenson; title: XRP Is Not Bitcoin. And That's Exactly Why It Matters; creator identity relative to requested Camilla Stephenson remains unverified.",
+      "status": "CANDIDATE_PUBLIC_COMMENTARY_NOT_PRIMARY_MARKET_EVIDENCE"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T165000Z-CAMILLA-KAMILAH-IDENTITY",
+      "claim": "The Kamilah Stevenson channel/video cluster may be the content creator intended by the request for Camilla Stephenson.",
+      "status": "UNVERIFIED",
+      "support": [
+        "Similar surname and first-name resemblance",
+        "XRP and macro-liquidity subject matter overlaps the requested research thread",
+        "Some indexed transcripts introduce the speaker as Camila Stevenson"
+      ],
+      "counter_hypothesis": [
+        "Exact Camilla Stephenson channel match not found",
+        "Kamilah is a distinct spelling and no public identity cross-link proves equivalence",
+        "Third-party channel metadata conflicts and may represent duplicate or stale profiles"
+      ],
+      "resolution_rule": "Keep entities separate until a direct public identity cross-link or user confirmation is obtained."
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

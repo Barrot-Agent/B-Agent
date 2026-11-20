@@ -1,0 +1,321 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "GRAPH-20261030T182947Z-ASK-SBIC-MARKET-BINANCE-JAPAN",
+  "created_at_utc": "2026-10-30T18:29:47Z",
+  "source_ids": [
+    "SRC-LIQWALL-XRP-PERPETUAL-SNAPSHOT-20261030T1402Z",
+    "SRC-ALPHA-XRP-ETF-FLOWS-20261029-R11-182947Z",
+    "SRC-CRYPTOETF-XRP-ETF-PARTIAL-20261029",
+    "SRC-XRPINSIGHTS-XRP-ETF-FLOWS-20261029",
+    "SRC-BINANCE-GLOBAL-SECURITY-UPDATE-20261030T0223Z",
+    "SRC-BINANCE-JAPAN-SECURITY-UPDATE-20261030T0906",
+    "SRC-SAP-ACL2020-SBIC-FOUNDATION",
+    "SRC-ZIEMS-CL2024-SBIC-GENERATION-EVAL",
+    "SRC-PERMISSION-ASK-CONTRACTS-BASE-POLYGON",
+    "SRC-PERMISSION-COINBASE-ASK-WALLET-20260922",
+    "SRC-PERMISSION-ASK-TOKENOMICS-2026",
+    "SRC-COINGECKO-ASK-CIRCULATING-20261030",
+    "SRC-CMC-ASK-CIRCULATING-20261030",
+    "SRC-RANGE-BINANCE-HACK-TIMELINE-20261030",
+    "SRC-GITHUB-BAGENT-REPO-AUDIT-20261030T182947Z"
+  ],
+  "new_edges": [
+    {
+      "edge_id": "E-20261030-ASK-COINBASE-EMBEDDED-WALLET",
+      "from": "Permission",
+      "to": "Coinbase Embedded Wallet",
+      "relation": "Permission states it migrated ASK wallet infrastructure to Coinbase Embedded Wallet; Coinbase secures users' private keys under their authority",
+      "evidence_status": "CONFIRMED_ISSUER_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-PERMISSION-COINBASE-ASK-WALLET-20260922"
+      ],
+      "caveat": "Does not establish Coinbase proprietary ASK inventory or exchange listing."
+    },
+    {
+      "edge_id": "E-20261030-ASK-BASE-CONTRACT",
+      "from": "ASK token",
+      "to": "Base",
+      "relation": "Official LayerZero OFT-20 contract deployed",
+      "evidence_status": "CONFIRMED_OFFICIAL_CONTRACT",
+      "source_ids": [
+        "SRC-PERMISSION-ASK-CONTRACTS-BASE-POLYGON"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-ASK-POLYGON-CONTRACT",
+      "from": "ASK token",
+      "to": "Polygon",
+      "relation": "Official LayerZero OFT-20 contract deployed",
+      "evidence_status": "CONFIRMED_OFFICIAL_CONTRACT",
+      "source_ids": [
+        "SRC-PERMISSION-ASK-CONTRACTS-BASE-POLYGON"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-ASK-XRPL-NO-OFFICIAL-CONTRACT",
+      "from": "ASK token",
+      "to": "XRPL",
+      "relation": "No XRPL contract appears in Permission's list of only official ASK contracts",
+      "evidence_status": "NEGATIVE_EVIDENCE_BOUNDED_TO_REVIEWED_OFFICIAL_DOCS",
+      "source_ids": [
+        "SRC-PERMISSION-ASK-CONTRACTS-BASE-POLYGON"
+      ],
+      "caveat": "Does not rule out unofficial representations or future deployment."
+    },
+    {
+      "edge_id": "E-20261030-ASK-SUBSCRIPTION-BUYBACK-CLAIM",
+      "from": "Permission subscriptions",
+      "to": "ASK token",
+      "relation": "Permission says a portion of family-product subscription revenue buys ASK on the open market for rewards",
+      "evidence_status": "ISSUER_CLAIM_EXECUTION_UNVERIFIED",
+      "source_ids": [
+        "SRC-PERMISSION-ASK-TOKENOMICS-2026"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-ASK-CMC-SUPPLY",
+      "from": "CoinMarketCap",
+      "to": "ASK circulating-supply estimate",
+      "relation": "Reports approximately 16.16B circulating ASK",
+      "evidence_status": "SECONDARY_DATA_CLAIM",
+      "source_ids": [
+        "SRC-CMC-ASK-CIRCULATING-20261030"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-ASK-COINGECKO-SUPPLY",
+      "from": "CoinGecko",
+      "to": "ASK circulating-supply estimate",
+      "relation": "Reports approximately 23.107B circulating ASK",
+      "evidence_status": "SECONDARY_DATA_CLAIM",
+      "source_ids": [
+        "SRC-COINGECKO-ASK-CIRCULATING-20261030"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-BINANCE-GLOBAL-INCIDENT",
+      "from": "Binance Global",
+      "to": "October 29 security incident",
+      "relation": "Binance reports estimated impact and frozen assets; no wallet private-key leakage evidence found at statement time",
+      "evidence_status": "PRIMARY_PRELIMINARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-BINANCE-GLOBAL-SECURITY-UPDATE-20261030T0223Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-BINANCE-JAPAN-COLD-WALLETS",
+      "from": "Binance Japan",
+      "to": "Japanese customer asset custody",
+      "relation": "Binance Japan states customer assets are in cold wallets separate from Global hot wallets and no impact was confirmed",
+      "evidence_status": "PRIMARY_COMPANY_STATEMENT_NOT_INDEPENDENTLY_AUDITED",
+      "source_ids": [
+        "SRC-BINANCE-JAPAN-SECURITY-UPDATE-20261030T0906"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-LIQWALL-XRP-DERIVATIVES",
+      "from": "Liqwall",
+      "to": "XRP perpetual market",
+      "relation": "Publishes a 14:02 UTC snapshot with falling open interest, long-dominated liquidations and funding divergence",
+      "evidence_status": "SINGLE_PROVIDER_OBSERVATION",
+      "source_ids": [
+        "SRC-LIQWALL-XRP-PERPETUAL-SNAPSHOT-20261030T1402Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-ALPHA-XRP-ETF-FLOW",
+      "from": "Alpha Finance",
+      "to": "XRP spot ETF flows",
+      "relation": "Reports +$8.4M on October 29 with 5-of-5 fund coverage",
+      "evidence_status": "SECONDARY_AGGREGATOR_FULL_COVERAGE",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029-R11-182947Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-CRYPTOETF-XRP-ETF-PARTIAL",
+      "from": "CryptoETF.today",
+      "to": "XRP spot ETF flows",
+      "relation": "Reports +$7.1M on October 29 from only 2-of-5 funds",
+      "evidence_status": "SECONDARY_AGGREGATOR_PARTIAL_COVERAGE",
+      "source_ids": [
+        "SRC-CRYPTOETF-XRP-ETF-PARTIAL-20261029"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-XRPINSIGHTS-ETF-FLOW",
+      "from": "XRP Insights",
+      "to": "XRP spot ETF flows",
+      "relation": "Reports +6.40M XRP across six spot funds plus BITW, excluding GXRP from flow due to data gap",
+      "evidence_status": "SECONDARY_RECONSTRUCTION_DIFFERENT_UNIVERSE",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-XRP-ETF-FLOWS-20261029"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-GPT35-SBIC-PREFERENCE",
+      "from": "GPT-3.5 Turbo",
+      "to": "Social Bias Inference Corpus",
+      "relation": "Authors' two-rater unanimous pairwise preference metric is 65.9% for generated SBIC explanations over gold references",
+      "evidence_status": "PRIMARY_PAPER_TABLE_7",
+      "source_ids": [
+        "SRC-ZIEMS-CL2024-SBIC-GENERATION-EVAL"
+      ],
+      "caveat": "Preference rate, not accuracy."
+    },
+    {
+      "edge_id": "E-20261030-GPT4-SBIC-PREFERENCE",
+      "from": "GPT-4",
+      "to": "Social Bias Inference Corpus",
+      "relation": "Authors' two-rater unanimous pairwise preference metric is 60.6% for generated SBIC explanations over gold references",
+      "evidence_status": "PRIMARY_PAPER_TABLE_7",
+      "source_ids": [
+        "SRC-ZIEMS-CL2024-SBIC-GENERATION-EVAL"
+      ],
+      "caveat": "Preference rate, not accuracy."
+    },
+    {
+      "edge_id": "E-20261030-SBIC-ACRONYM-DISAMBIGUATION",
+      "from": "Social Bias Inference Corpus",
+      "to": "SBIC East Japan",
+      "relation": "Same acronym, separate dataset and Japanese investment corporation; no organizational relationship established",
+      "evidence_status": "ENTITY_DISAMBIGUATION_NO_RELATIONSHIP",
+      "source_ids": [
+        "SRC-SAP-ACL2020-SBIC-FOUNDATION",
+        "SRC-ZIEMS-CL2024-SBIC-GENERATION-EVAL"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-ETF-CLOSE-PRECEDES-XRP-DRAIN",
+      "from": "October 29 US ETF session",
+      "to": "Binance-labelled XRP transfers",
+      "relation": "ETF session close at 20:00 UTC preceded first identified XRP transfer at 20:05 UTC",
+      "evidence_status": "TEMPORAL_ORDERING_NOT_CAUSATION",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029-R11-182947Z",
+        "SRC-RANGE-BINANCE-HACK-TIMELINE-20261030"
+      ]
+    },
+    {
+      "edge_id": "E-20261030-COINBASE-ASK-NOT-XRP",
+      "from": "Coinbase ASK wallet infrastructure",
+      "to": "XRP/XRPL",
+      "relation": "The Permission wallet partnership documents Base/Polygon ASK infrastructure, not an XRP or XRPL integration",
+      "evidence_status": "NO_DIRECT_XRP_LINK_IN_REVIEWED_PRIMARY_DOCS",
+      "source_ids": [
+        "SRC-PERMISSION-ASK-CONTRACTS-BASE-POLYGON",
+        "SRC-PERMISSION-COINBASE-ASK-WALLET-20260922"
+      ]
+    }
+  ],
+  "new_hypotheses": [
+    {
+      "hypothesis_id": "HYP-20261030-XRP-LIQUIDATION-DELEVERAGING",
+      "claim": "Long-dominated liquidations plus falling open interest are consistent with leveraged-long deleveraging, but do not by themselves forecast direction.",
+      "support": [
+        "SRC-LIQWALL-XRP-PERPETUAL-SNAPSHOT-20261030T1402Z"
+      ],
+      "counter_evidence": [
+        "Funding is negative in aggregate but positive on Binance, indicating venue divergence.",
+        "One provider's contract universe is not independently reconciled."
+      ],
+      "test": "Build venue-normalized OI, funding, liquidation and spot-depth panel; test event-time lead/lag and out-of-sample predictive lift."
+    },
+    {
+      "hypothesis_id": "HYP-20261030-XRP-ETF-FLOW-RESILIENCE",
+      "claim": "Positive October 29 ETF-flow estimates may indicate persistent institutional demand despite price weakness, but do not prove equivalent same-day spot buying.",
+      "support": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029-R11-182947Z",
+        "SRC-CRYPTOETF-XRP-ETF-PARTIAL-20261029",
+        "SRC-XRPINSIGHTS-XRP-ETF-FLOWS-20261029"
+      ],
+      "counter_evidence": [
+        "Fund universes differ and one tracker is partial.",
+        "ETF flows are creations/redemptions or tracker estimates, not necessarily same-window spot executions."
+      ],
+      "test": "Reconcile administrator shares outstanding, NAV, holdings and primary-market creations/redemptions by fund."
+    },
+    {
+      "hypothesis_id": "HYP-20261030-BINANCE-XRP-OVERHANG",
+      "claim": "The previously reconciled 233.46M XRP transfer from five Binance-labelled wallets is a potential future supply overhang only if moved or sold.",
+      "support": [
+        "SRC-RANGE-BINANCE-HACK-TIMELINE-20261030",
+        "SRC-BINANCE-GLOBAL-SECURITY-UPDATE-20261030T0223Z"
+      ],
+      "counter_evidence": [
+        "Prior receiver capture showed no outgoing XRP payment; no sale is established.",
+        "Binance has not published an XRP-specific reserve replenishment amount or official five-wallet PoR membership."
+      ],
+      "test": "Monitor receiver and downstream addresses; crosswalk source wallets against official PoR export; distinguish transfers, swaps and executed exchange deposits."
+    },
+    {
+      "hypothesis_id": "HYP-20261030-BINANCE-JAPAN-CUSTODY-SEGREGATION",
+      "claim": "Binance Japan's stated cold-wallet separation may reduce direct contagion to Japanese customer assets from the Global hot-wallet incident.",
+      "support": [
+        "SRC-BINANCE-JAPAN-SECURITY-UPDATE-20261030T0906"
+      ],
+      "counter_evidence": [
+        "Statement is from the company, not an independent audit.",
+        "It does not establish the status of Global customer reserves or the five XRPL wallets."
+      ],
+      "test": "Obtain Japan entity regulatory disclosures and independent custody/reserve confirmation."
+    },
+    {
+      "hypothesis_id": "HYP-20261030-ASK-COINBASE-WALLET-INFRA",
+      "claim": "Coinbase's relationship with Permission is a wallet-infrastructure and private-key custody relationship for ASK users, not evidence of Coinbase proprietary ASK exposure or an XRP integration.",
+      "support": [
+        "SRC-PERMISSION-ASK-CONTRACTS-BASE-POLYGON",
+        "SRC-PERMISSION-COINBASE-ASK-WALLET-20260922"
+      ],
+      "counter_evidence": [
+        "Future Coinbase exchange listing or new chain deployment could change the relationship; none is evidenced here."
+      ],
+      "test": "Monitor official Coinbase asset listings, Permission wallet documentation and verified on-chain ASK contract activity."
+    },
+    {
+      "hypothesis_id": "HYP-20261030-ASK-SUBSCRIPTION-BUYBACK",
+      "claim": "Permission's stated subscription-funded ASK buyback mechanism could create token demand if executed at scale.",
+      "support": [
+        "SRC-PERMISSION-ASK-TOKENOMICS-2026"
+      ],
+      "counter_evidence": [
+        "No buyback transactions, treasury addresses, executed volumes or independent revenue reconciliation were established."
+      ],
+      "test": "Identify disclosed buyback addresses and reconcile token transfers against subscription revenue and public financial reporting."
+    },
+    {
+      "hypothesis_id": "HYP-20261030-SBIC-DUAL-REFERENT",
+      "claim": "The user's phrase 'SBIC, ChatGPT SBIC' may refer to the Social Bias Inference Corpus evaluated with GPT-3.5/GPT-4 or to the Japanese SBIC East Japan ChatGPT seminar; the exact intended referent remains unresolved.",
+      "support": [
+        "SRC-SAP-ACL2020-SBIC-FOUNDATION",
+        "SRC-ZIEMS-CL2024-SBIC-GENERATION-EVAL"
+      ],
+      "counter_evidence": [
+        "No surrounding original phrase context establishes which meaning was intended."
+      ],
+      "test": "Preserve both namespace entities; resolve only from additional contextual evidence."
+    },
+    {
+      "hypothesis_id": "HYP-20261030-ETF-FLOW-NOT-INCIDENT-RESPONSE",
+      "claim": "October 29 ETF flows cannot be a reaction to the identified Binance XRP drain because the US ETF session closed five minutes before the first transfer.",
+      "support": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029-R11-182947Z",
+        "SRC-RANGE-BINANCE-HACK-TIMELINE-20261030"
+      ],
+      "counter_evidence": [
+        "Earlier information or pre-positioning could theoretically precede the public transfer, but no evidence establishes that."
+      ],
+      "test": "Keep the event ordering in the timeline and exclude post-event causal attribution for those completed session flows."
+    }
+  ],
+  "disconfirming_evidence": [
+    "October 29 US ETF session close at 20:00 UTC preceded the first identified Binance-labelled XRP transfer at 20:05 UTC; those completed flows cannot be a reaction to the transfer.",
+    "Binance Japan's stated cold-wallet separation is specific to the Japan entity and cannot be generalized to Global reserve or hot-wallet status.",
+    "The 65.9% GPT-3.5 and 60.6% GPT-4 SBIC figures are human preference rates, not predictive accuracy or model reliability for finance.",
+    "Permission's official ASK contract list identifies Base and Polygon; no official XRPL contract is listed.",
+    "Coinbase's Permission wallet role is infrastructure and user-key custody; no proprietary ASK inventory or XRP exposure is established by that agreement."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261031T164500Z-SAFU-FUTURES-ADGM",
+  "captured_at_utc": "2026-10-31T16:45:00Z",
+  "source_ids": [
+    "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ",
+    "SRC-20261031T164500Z-BITINFOCHARTS-SAFU-BTC-ADDRESS",
+    "SRC-20261031T164500Z-SWOLECHARTS-BINANCE-FUTURES-INSURANCE",
+    "SRC-20261031T164500Z-ADGM-NEST-CLEARING-REGISTER",
+    "SRC-20261031T164500Z-BINANCE-ADGM-LEGAL-ENTITY-STRUCTURE"
+  ],
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "EXCHANGE_GROUP"
+    },
+    {
+      "id": "SAFU",
+      "label": "Secure Asset Fund for Users",
+      "kind": "USER_PROTECTION_RESERVE"
+    },
+    {
+      "id": "SAFU_BTC_WALLET",
+      "label": "Public SAFU BTC wallet",
+      "kind": "BITCOIN_ADDRESS"
+    },
+    {
+      "id": "NEST_CLEARING",
+      "label": "Nest Clearing and Custody Limited",
+      "kind": "ADGM_RECOGNISED_CLEARING_HOUSE_AND_CUSTODIAN"
+    },
+    {
+      "id": "ADGM_FSRA",
+      "label": "ADGM Financial Services Regulatory Authority",
+      "kind": "FINANCIAL_REGULATOR"
+    },
+    {
+      "id": "NEST_EXCHANGE",
+      "label": "Nest Exchange Limited",
+      "kind": "RECOGNISED_INVESTMENT_EXCHANGE"
+    },
+    {
+      "id": "NEST_TRADING",
+      "label": "Nest Trading Limited",
+      "kind": "BROKER_DEALER"
+    },
+    {
+      "id": "BINANCE_FUTURES_INSURANCE",
+      "label": "Binance Futures Insurance Funds",
+      "kind": "EXCHANGE_RISK_BACKSTOP"
+    },
+    {
+      "id": "BINANCE_XRPUSDT_SHARED_POOL",
+      "label": "Binance XRPUSDT shared insurance pool",
+      "kind": "MULTI_SYMBOL_INSURANCE_POOL"
+    },
+    {
+      "id": "BYBIT_XRPUSD_POOL",
+      "label": "Bybit XRPUSD isolated insurance pool",
+      "kind": "XRP_SPECIFIC_INSURANCE_POOL"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-BINANCE-SAFU-MANAGER",
+      "source": "NEST_CLEARING",
+      "target": "SAFU",
+      "relationship": "HOLDS_AND_MANAGES",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "claim": "Binance says SAFU is held and managed by Nest Clearing and Custody Limited; a portion serves ADGM regulatory capital reserves.",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ"
+      ]
+    },
+    {
+      "id": "EDGE-SAFU-PUBLIC-BTC-WALLET",
+      "source": "SAFU",
+      "target": "SAFU_BTC_WALLET",
+      "relationship": "PUBLICLY_IDENTIFIED_BTC_WALLET",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT_PLUS_PROVIDER_OBSERVATION",
+      "claim": "Binance identifies the BTC address; BitInfoCharts displays approximately 15,000.00147 BTC and no outgoing transaction after April 18, 2024 in its summary.",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ",
+        "SRC-20261031T164500Z-BITINFOCHARTS-SAFU-BTC-ADDRESS"
+      ]
+    },
+    {
+      "id": "EDGE-NEST-CLEARING-ADGM",
+      "source": "ADGM_FSRA",
+      "target": "NEST_CLEARING",
+      "relationship": "ACTIVE_RECOGNISED_CLEARING_HOUSE_0070",
+      "evidence_class": "CONFIRMED_REGULATORY_RECORD",
+      "claim": "ADGM's public register lists the entity as active Recognised Clearing House 0070 with custody and CSD activities; previous name Binance (AD) Limited.",
+      "source_ids": [
+        "SRC-20261031T164500Z-ADGM-NEST-CLEARING-REGISTER"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-NEST-EXCHANGE",
+      "source": "BINANCE",
+      "target": "NEST_EXCHANGE",
+      "relationship": "ADGM_ON_EXCHANGE_TRADING_ENTITY",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "claim": "Nest Exchange is responsible for on-exchange spot and derivatives trading under the ADGM structure.",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-ADGM-LEGAL-ENTITY-STRUCTURE"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-NEST-TRADING",
+      "source": "BINANCE",
+      "target": "NEST_TRADING",
+      "relationship": "ADGM_OFF_EXCHANGE_OTC_ENTITY",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "claim": "Nest Trading is responsible for off-exchange principal/agency and OTC services.",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-ADGM-LEGAL-ENTITY-STRUCTURE"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-FUTURES-INSURANCE",
+      "source": "BINANCE",
+      "target": "BINANCE_FUTURES_INSURANCE",
+      "relationship": "REBALANCED_FOR_INCIDENT_COVERAGE",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "claim": "Binance says a portion of the Futures Insurance Fund was reallocated from excess above its required minimum; the fund is not user assets and reduces ADL/deficit risk.",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRPUSDT-SHARED-POOL",
+      "source": "BINANCE_FUTURES_INSURANCE",
+      "target": "BINANCE_XRPUSDT_SHARED_POOL",
+      "relationship": "MULTI_SYMBOL_POOL_INCLUDES_XRPUSDT",
+      "evidence_class": "THIRD_PARTY_PROVIDER_OBSERVATION",
+      "claim": "SwoleCharts lists approximately USD 65.83M USDT in a Binance pool covering ten symbols including XRPUSDT; this is not XRP-specific.",
+      "source_ids": [
+        "SRC-20261031T164500Z-SWOLECHARTS-BINANCE-FUTURES-INSURANCE"
+      ]
+    },
+    {
+      "id": "EDGE-BYBIT-XRPUSD-POOL",
+      "source": "BYBIT_XRPUSD_POOL",
+      "target": "XRP",
+      "relationship": "XRP_DENOMINATED_ISOLATED_INSURANCE_POOL",
+      "evidence_class": "THIRD_PARTY_PROVIDER_OBSERVATION",
+      "claim": "SwoleCharts lists approximately 55.58M XRP in Bybit's XRPUSD isolated pool.",
+      "source_ids": [
+        "SRC-20261031T164500Z-SWOLECHARTS-BINANCE-FUTURES-INSURANCE"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-SAFU-WALLET-DEPLOYMENT-TIMING",
+      "statement": "The announced SAFU deployment had not yet been executed from the publicly identified BTC wallet by 16:45 UTC; the official 24-hour window remained open until November 1 14:24 UTC.",
+      "status": "TIME_BOUNDED_OBSERVATION; RECHECK_REQUIRED",
+      "support": [
+        "Official FAQ says deployment is expected over the next 24 hours and identifies the BTC address.",
+        "BitInfoCharts displays 15,000.00147092 BTC and no outgoing transaction after April 18, 2024."
+      ],
+      "disconfirming": [
+        "The 24-hour window had not expired.",
+        "The address may not represent every SAFU asset/account; deployment may occur through another address, OTC or an off-chain arrangement.",
+        "BitInfoCharts is one third-party explorer."
+      ],
+      "next_test": "Recheck the exact address and all outgoing transactions after 2026-11-01T14:24Z; compare with the official updated balance link and any Binance transaction disclosure."
+    },
+    {
+      "id": "HYP-FUTURES-FUND-REALLOCATION-MASKED",
+      "statement": "A portion of Binance's Futures Insurance Fund may have been reallocated even though the third-party aggregate remained near USD 2.46B and rose over the observed 7-day window.",
+      "status": "PLAUSIBLE; NOT_QUANTIFIED",
+      "support": [
+        "Binance explicitly says excess above the required minimum was reallocated.",
+        "SwoleCharts shows multiple pools and a large aggregate fund."
+      ],
+      "disconfirming": [
+        "SwoleCharts aggregate was +0.14% 24h and +0.62% 7d; no visible aggregate drawdown.",
+        "Fees, prices and transfers among pools can offset the effect; no official pre/post amount was captured."
+      ],
+      "next_test": "Compare Binance's official 00:00 UTC insurance-fund snapshots and pool-level balances before and after the reallocation; reconcile against public API history."
+    },
+    {
+      "id": "HYP-ADGM-CUSTODY-CAPITAL-CONSTRAINT",
+      "statement": "The legal custodian and regulatory-capital role of Nest Clearing and Custody may constrain the portion of SAFU that can be deployed without breaching ADGM requirements.",
+      "status": "INFERENCE_FROM_CONFIRMED_REGULATORY_AND_COMPANY_STATEMENTS",
+      "support": [
+        "ADGM register confirms Nest Clearing and Custody is an active Recognised Clearing House with custody and CSD activities.",
+        "Binance says a portion of SAFU serves ADGM regulatory capital reserves."
+      ],
+      "disconfirming": [
+        "No public capital requirement amount, segregated balance or deployable excess was disclosed."
+      ],
+      "next_test": "Review public FSRA filings, audited financial statements and subsequent Binance disclosures for reserve segregation and minimum capital requirements."
+    },
+    {
+      "id": "HYP-XRP-DERIVATIVES-INSURANCE-COVERAGE",
+      "statement": "Bybit's XRPUSD isolated insurance pool may provide a measurable XRP-specific derivatives backstop; Binance's XRPUSDT pool is shared across ten symbols and cannot be treated as XRP-only coverage.",
+      "status": "PROVIDER_OBSERVATION; COVERAGE_RATIO_NOT_COMPUTED",
+      "support": [
+        "SwoleCharts lists 55.58M XRP in Bybit XRPUSD isolated and 65.83M USDT in Binance XRPUSDT shared across ten symbols."
+      ],
+      "disconfirming": [
+        "No synchronized contract OI, pool loss history or official methodology was reconciled."
+      ],
+      "next_test": "Obtain Bybit XRPUSD OI and Binance XRPUSDT contract-level OI, then compute pool coverage with time-aligned values and source methodology."
+    }
+  ],
+  "policy": "Keep SAFU, Futures Insurance Funds and corporate treasury as separate funding sources. Distinguish legal custodian from exchange operator and broker-dealer. Do not treat shared multi-symbol pool balance as XRP-specific collateral."
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T102200Z-CIRCLE-MINT-FIAT-FLOWS-AND-COINBASE-DISTRIBUTION",
+  "captured_at_utc": "2026-10-30T10:22:00Z",
+  "previous_addendum": "XRP-GRAPH-20261030T101500Z-CIRCLE-COINBASE-PLATFORM-METRIC-CORRECTION",
+  "market_observations": [
+    {
+      "id": "MOBS-CIRCLE-MINT-REDEMPTION-FLOWS-Q2-H1-2026",
+      "entity": "CIRCLE",
+      "asset": "USDC",
+      "measurement_type": "PRIMARY_MARKET_FIAT_MINT_REDEMPTION",
+      "period_metrics": {
+        "2026-Q2": {
+          "minted_usd": 83004000000,
+          "redeemed_usd": 86784000000,
+          "net_mint_minus_redeem_usd": -3780000000,
+          "redemption_to_mint_ratio": 1.04553997
+        },
+        "2026-H1": {
+          "minted_usd": 156543000000,
+          "redeemed_usd": 158540000000,
+          "net_mint_minus_redeem_usd": -1997000000,
+          "redemption_to_mint_ratio": 1.01275688
+        },
+        "2025-Q2": {
+          "minted_usd": 42174000000,
+          "redeemed_usd": 40817000000,
+          "net_mint_minus_redeem_usd": 1357000000,
+          "redemption_to_mint_ratio": 0.96782378
+        },
+        "2025-H1": {
+          "minted_usd": 95396000000,
+          "redeemed_usd": 77920000000,
+          "net_mint_minus_redeem_usd": 17476000000,
+          "redemption_to_mint_ratio": 0.81680574
+        }
+      },
+      "source_definition": "Circle's Q2 2026 10-Q defines USDC minted as USD fiat converted to USDC and USDC redeemed as USDC converted to USD, in each case initiated by Circle Mint customers.",
+      "scope_limit": "These are primary-market flows initiated by Circle Mint customers, not all secondary-market trades, all on-chain USDC transfers, every third-party distribution route, or XRP capital flows.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "id": "MOBS-CIRCLE-COINBASE-DISTRIBUTION-COST-CONCENTRATION-Q2-H1-2026",
+      "entity": "CIRCLE",
+      "counterparty": "COINBASE",
+      "measurement_type": "DISTRIBUTION_ECONOMICS",
+      "period_metrics": {
+        "2026-Q2": {
+          "coinbase_agreement_distribution_cost_usd": 324600000,
+          "total_distribution_transaction_other_costs_usd": 412470000,
+          "derived_ratio_percent": 78.6966
+        },
+        "2026-H1": {
+          "coinbase_agreement_distribution_cost_usd": 655300000,
+          "total_distribution_transaction_other_costs_usd": 819251000,
+          "derived_ratio_percent": 79.9877
+        }
+      },
+      "source_definition": "Circle reports these Coinbase-agreement distribution costs separately and includes them within total distribution, transaction and other costs.",
+      "interpretation_limit": "The derived ratio is Coinbase-agreement distribution cost divided by Circle's total distribution, transaction and other costs. It is not Coinbase's share of USDC circulation, not its share of all distributor payouts, and not an independently disclosed contract percentage.",
+      "contract_mechanics": "Circle says Coinbase allocations are based partly on USDC held on Coinbase's platform after issuer retention and partly on broader ecosystem growth after approved third-party participant payments. Circle says payments to key distributors such as Coinbase and Binance are affected by the amount of USDC held on their respective platforms and by platform actions/policies.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    }
+  ],
+  "hypothesis_additions": [
+    {
+      "id": "HYP-CIRCLE-MINT-REDEMPTION-AS-ACTUAL-FIAT-FLOW-20261030",
+      "claim": "Circle Mint gross mint/redemption is a more direct primary-market fiat-conversion measure than generic on-chain transfer volume, but only for Circle Mint customers.",
+      "support": [
+        "The SEC filing defines minted and redeemed amounts as fiat-to-USDC and USDC-to-fiat conversions initiated by Circle Mint customers."
+      ],
+      "counter_evidence": [
+        "The series excludes secondary-market transfers and does not cover all possible distribution routes; it is not total USDC market-wide net capital flow."
+      ],
+      "status": "SUPPORTED_MEASUREMENT_DEFINITION; PARTIAL_SCOPE"
+    },
+    {
+      "id": "HYP-CIRCLE-COINBASE-DISTRIBUTION-ECONOMIC-DEPENDENCE-20261030",
+      "claim": "Coinbase is economically important to Circle's USDC distribution economics because Coinbase-agreement distribution costs were approximately 78.7% of Circle's total distribution, transaction and other costs in Q2 and 80.0% in H1 2026.",
+      "support": [
+        "Circle's Q2 10-Q reports USD324.6M Q2 and USD655.3M H1 Coinbase-agreement distribution costs; total costs were USD412.47M Q2 and USD819.251M H1; Circle describes the platform-balance-based allocation formula."
+      ],
+      "counter_evidence": [
+        "The ratios compare one agreement's distribution cost with a broader expense denominator that includes transaction and other costs; they do not disclose Coinbase's share of USDC balances or all distributor payments."
+      ],
+      "status": "SUPPORTED_ECONOMIC_SIGNIFICANCE; EXACT_BALANCE_SHARE_UNKNOWN"
+    }
+  ],
+  "source_ids": [
+    "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030",
+    "SRC-COINBASE-Q3-2026-10Q-SEC-20261030",
+    "SRC-COINBASE-Q3-2026-IR-RELEASE-USDC-20261030",
+    "SRC-CIRCLE-Q2-2026-PLATFORM-METRIC-ATTRIBUTION-CORRECTION-20261030",
+    "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

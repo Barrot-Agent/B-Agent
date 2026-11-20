@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T180231Z-FOMC-MACRO-ETF-MARKET-REPO-AUDIT",
+  "captured_at_utc": "2026-10-30T18:02:31Z",
+  "source_ids": [
+    "SRC-FED-FOMC-OCT28-OFFICIAL-RUN11",
+    "SRC-ALPHA-XRP-ETF-OCT29-RUN11",
+    "SRC-SOSOVALUE-XRP-ETF-OCT29-RUN11",
+    "SRC-CMC-XRP-MARKET-180231Z-RUN11",
+    "SRC-REUTERS-US-FUND-FLOWS-OCT30-RUN11",
+    "SRC-AP-BINANCE-INCIDENT-OCT30-RUN11",
+    "SRC-BINANCE-SECURITY-UPDATE-OCT30-RUN11",
+    "SRC-BITQUERY-BINANCE-INCIDENT-OCT30-RUN11"
+  ],
+  "edges": [
+    {
+      "from": "FEDERAL_RESERVE_FOMC",
+      "to": "US_MONETARY_POLICY_REGIME",
+      "relationship": "October 28 hold at 3.75–4.00% with two dissents preferring a 25bp hike; primary confirmed.",
+      "status": "PRIMARY_CONFIRMED"
+    },
+    {
+      "from": "US_FUND_FLOWS",
+      "to": "BROAD_RISK_ALLOCATION",
+      "relationship": "Week ended October 28: US equity funds -USD6.65B, money-market funds -USD47.66B, bond funds +USD2.04B; broad allocation context, not XRP-specific capital.",
+      "status": "SECONDARY_REPORTED"
+    },
+    {
+      "from": "US_SPOT_XRP_ETFS",
+      "to": "XRP_SPOT_INVESTMENT_PRODUCT_FLOWS",
+      "relationship": "October 29 reported net inflow approximately USD8.4M; providers differ on cumulative totals and coverage.",
+      "status": "SECONDARY_PROVIDER_REPORTED"
+    },
+    {
+      "from": "BINANCE_SECURITY_INCIDENT",
+      "to": "XRP_NATIVE_ASSET_CUSTODY",
+      "relationship": "Five Binance-labelled XRPL wallets transferred 233,461,943.1 XRP to one receiver; prior receiver observation showed no outgoing payment through 07:23 UTC, but no 18:02 UTC refresh was obtained.",
+      "status": "ON_CHAIN_TRANSACTION_CONFIRMED_WITH_STALE_RECEIVER_OBSERVATION"
+    },
+    {
+      "from": "XRP_ETF_SESSION_OCT29",
+      "to": "BINANCE_XRPL_INCIDENT_OCT29",
+      "relationship": "ETF session closed at 20:00 UTC; first identified XRP transfer began at 20:05 UTC. The ETF flow cannot be a response to the later incident.",
+      "status": "TIMESTAMP_ORDERING_CONFIRMED"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T180231Z-MACRO-RISK-OFF-XRP",
+      "claim": "Hawkish policy expectations and broad risk reallocation contributed to XRP weakness on October 30.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "support": [
+        "Fed held rates but two voters preferred a hike",
+        "Reuters reported equity and money-market fund outflows",
+        "AP reported broad crypto weakness around Binance incident"
+      ],
+      "counter_evidence": [
+        "No synchronized event study or regression",
+        "ETF inflows remained positive on October 29",
+        "No XRP-specific institutional redemption series"
+      ],
+      "required_test": "Point-in-time panel with BTC/ETH controls, DXY, Treasury yields, oil, equities, XRP spot/derivatives and event windows."
+    },
+    {
+      "id": "HYP-20261030T180231Z-ETF-ABSORPTION",
+      "claim": "Positive XRP ETF flows may have provided spot demand but were insufficient to offset contemporaneous selling and deleveraging.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "support": [
+        "Alpha Finance reports +USD8.4M across five funds on Oct29",
+        "CMC snapshot shows XRP down 2.89% over 24h"
+      ],
+      "counter_evidence": [
+        "Different ETF flow universes and cumulative totals",
+        "No synchronized CEX order-book or net spot execution data",
+        "One price-provider snapshot cannot isolate flow impact"
+      ],
+      "required_test": "Reconcile creations/redemptions and settlement times with venue-level signed spot volume and market depth."
+    },
+    {
+      "id": "HYP-20261030T180231Z-BINANCE-SHOCK",
+      "claim": "The Binance security incident amplified crypto-wide risk aversion and may have added a temporary XRP custody/supply overhang.",
+      "status": "SUPPORTED_AS_RISK_SCENARIO_NOT_CAUSAL_FINDING",
+      "support": [
+        "233,461,943.1 XRP transfer reconciled across five Binance-labelled wallets",
+        "AP reports broad crypto market reaction and exchange withdrawal pause"
+      ],
+      "counter_evidence": [
+        "Macro/equity selloff and Fed context are confounders",
+        "No sale or exchange deposit is established for the stolen XRP",
+        "No event-study estimate of XRP-specific abnormal return"
+      ],
+      "required_test": "Compare synchronized XRP/BTC/ETH returns, order books, venue flows and incident timestamps; monitor attacker address."
+    },
+    {
+      "id": "HYP-20261030T180231Z-ETF-PREINCIDENT",
+      "claim": "October 29 ETF inflows were not a reaction to the Binance XRPL drain.",
+      "status": "TEMPORAL_EXCLUSION_CONFIRMED",
+      "support": [
+        "US ETF session close 20:00 UTC",
+        "First identified Binance XRP transfer 20:05 UTC"
+      ],
+      "counter_evidence": [
+        "None for the stated event ordering; later after-hours private flows would require separate evidence"
+      ],
+      "required_test": "Preserve exchange-local and fund settlement timestamps in the event store."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

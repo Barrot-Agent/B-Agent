@@ -1,0 +1,290 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "snapshot_id": "XRP-20261031T091333Z-BNY-ROBINHOOD-COINBASE-INSTITUTIONAL-RAILS-CORRECTED",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T091333Z-bny-robinhood-coinbase-institutional-rails-corrected-source-crosswalk.json",
+  "captured_at_utc": "2026-10-31T09:13:33Z",
+  "data_cutoff_utc": "2026-10-31T09:13:33Z",
+  "source_reference_count": 22,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+    "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+    "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+    "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+    "SRC-20261031T090517Z-GH-MAIN-CROSS-ANALYSIS-COMMIT",
+    "SRC-20261031T090517Z-GH-OPEN-PR-INVENTORY",
+    "SRC-20261031T090517Z-GH-PR1400-FIXED-HORIZON-LOCKED-HEAD",
+    "SRC-20261031T090517Z-GH-PR1400-EXACT-HEAD-CI",
+    "SRC-20261031T090517Z-GH-PR1400-FAIL-CLOSED-GATE",
+    "SRC-20261031T090517Z-GH-PR1401-READONLY-CROSS-ANALYSIS",
+    "SRC-20261031T090517Z-GH-PR1402-APPROVAL-PUSH-NOOP",
+    "SRC-20261031T090517Z-GH-PR1398-DATABRICKS-TOKEN-SAFETY",
+    "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+    "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+    "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+    "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805",
+    "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+    "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+    "SRC-CIRCLE-ARC-MAINNET-20260916",
+    "SRC-SBIC-EAST-JAPAN-PROFILE-20261030T162330Z"
+  ],
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T090517Z-bny-robinhood-coinbase-institutional-rails.json",
+  "institutional_findings": {
+    "bny_ripple": {
+      "status": "OFFICIAL_CUSTODY_CAPABILITY_ANNOUNCED",
+      "announcement_date": "2026-10-27",
+      "current_capabilities": [
+        "BNY Digital Asset Custody platform supports native XRP",
+        "BNY Digital Asset Custody platform supports RLUSD",
+        "BNY is primary reserve custodian for RLUSD",
+        "BNY has an existing custody relationship with Ripple Prime"
+      ],
+      "future_conditional": [
+        "Broaden support for tokenized assets and investment products issued on XRPL",
+        "Enable BNY clients to mint and redeem RLUSD directly through BNY",
+        "Advance tokenized trade finance on XRPL with C2FO"
+      ],
+      "approval_condition": "All intended future product plans subject to final BNY and regulatory approvals",
+      "bny_scale_context": {
+        "assets_under_custody_or_administration_usd": 63400000000000,
+        "assets_under_management_usd": 2200000000000,
+        "as_of": "2026-09-30",
+        "evidence_class": "BNY_COMPANY_REPORTED"
+      },
+      "unknowns": [
+        "XRP assets under custody",
+        "RLUSD assets under custody",
+        "BNY proprietary XRP holdings",
+        "client-level custody balances",
+        "actual RLUSD mint/redeem throughput",
+        "production tokenized trade-finance volume"
+      ]
+    },
+    "ripple_robinhood": {
+      "announcement_date": "2026-10-27",
+      "rlUSD_distribution": [
+        "Live on Robinhood Chain",
+        "Live on Bitstamp by Robinhood",
+        "Expected later in 2026 in Robinhood app"
+      ],
+      "xrpl_use": "Robinhood says it will use RLUSD on XRPL for institutional settlement",
+      "treasury": "Robinhood plans to integrate Ripple Treasury for cash/liquidity management, forecasting, payments, risk management and intercompany netting",
+      "prime": "Ripple Prime provides Bitstamp by Robinhood lending and margin financing across roughly 20 digital assets; Ripple Prime clients can access Bitstamp spot; Bitstamp perpetual-futures support was planned later in 2026",
+      "unknowns": [
+        "XRPL settlement transaction counts and value",
+        "XRP used as a bridge asset or held as inventory",
+        "XRP included in the roughly 20 financed assets",
+        "actual lending and margin balances",
+        "Robinhood app launch completion"
+      ]
+    },
+    "coinbase_ripple_rlusd": {
+      "announcement_date": "2026-10-28",
+      "launch_platforms": [
+        "Coinbase Prime",
+        "Coinbase Exchange",
+        "Coinbase retail app"
+      ],
+      "launch_networks": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "launch_functions": [
+        "Deposit RLUSD",
+        "Withdraw RLUSD",
+        "Trade and manage RLUSD",
+        "Convert USD to RLUSD at 1:1 in supported regions"
+      ],
+      "future_not_live_at_launch": "Coinbase Global Exchange availability, including using RLUSD as collateral, was stated as a later follow-on",
+      "base_liquidity": "Ripple said it would provide liquidity on Base",
+      "unknowns": [
+        "RLUSD net inflows and trading volumes",
+        "market-maker inventory",
+        "network-level deposit/withdrawal volume",
+        "Global Exchange collateral activation date"
+      ]
+    },
+    "coinbase_strategy": {
+      "q3_2026_company_reported": {
+        "crypto_trading_volume_market_share_pct": 10.7,
+        "consecutive_quarters_market_share_gains": 4,
+        "assets_on_platform_share_of_total_crypto_market_cap_pct": 12.5,
+        "average_usdc_held_in_coinbase_products_usd": 22000000000,
+        "usdc_average_share_of_market_cap_pct": 30,
+        "usdc_economics_captured_over_prior_year_pct_approx": 50,
+        "subscription_and_services_share_of_net_revenue_pct": 49,
+        "derivatives_trading_volume_two_year_cagr_pct": 179,
+        "prediction_markets_annualized_revenue_usd": 200000000,
+        "prediction_markets_revenue_is_above_threshold": true
+      },
+      "interpretation": "Coinbase is positioning as a multi-product distribution, custody, spot/derivatives, stablecoin, lending, payments and prediction-markets platform. RLUSD listing expands its stablecoin slate; the material USDC economics show that this is not evidence Circle was displaced.",
+      "evidence_class": "COMPANY_REPORTED_Q3_RESULTS_PLUS_OFFICIAL_PRODUCT_ANNOUNCEMENT"
+    },
+    "circle_and_sbi_context": {
+      "circle_usdc_xrpl": "Native USDC support on XRPL is an existing direct Circle/XRPL relationship.",
+      "circle_coinbase": "Circle's Q2 2026 filing and Coinbase's Q3 2026 filing document material USDC distribution economics; Coinbase reported $22B average USDC held in products during Q3 and said its Circle arrangement renewed on the same terms.",
+      "circle_arc": "Circle's Arc launch identifies SBI Group as a founding validator, Coinbase as an exchange-access partner and Morpho as a credit-layer participant. Arc is a distinct network, not XRPL.",
+      "sbi": "SBI has separate XRP/XRPL, Circle SBI Japan, Arc and JPYSC relationships. No direct BNY-SBI or Robinhood-SBI contract is established by this snapshot.",
+      "sbic": "Tokyo SBIC is a separate SME investment corporation, not SBI Holdings; no XRP relationship is inferred."
+    }
+  },
+  "relationship_hypotheses": [
+    {
+      "id": "H-BNY-XRP-CUSTODY-ADOPTION",
+      "statement": "BNY's support for XRP custody increases institutional access and lowers custody friction.",
+      "classification": "SERVICE_CAPABILITY_CONFIRMED; ADOPTION_IMPACT_UNMEASURED",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY"
+      ],
+      "disconfirming_or_alternative": [
+        "No XRP AUC or client balance disclosed.",
+        "A custody capability can exist with low or zero client utilization."
+      ],
+      "status": "CONFIRMED_SERVICE_NOT_CONFIRMED_BALANCE"
+    },
+    {
+      "id": "H-ROBINHOOD-RLUSD-XRPL-SETTLEMENT",
+      "statement": "Robinhood's announced RLUSD institutional settlement on XRPL may expand XRPL stablecoin settlement activity.",
+      "classification": "ANNOUNCED_USE_CASE_CONFIRMED; VOLUME_AND_XRP_DEMAND_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL"
+      ],
+      "disconfirming_or_alternative": [
+        "RLUSD settlement may occur without XRP as bridge asset.",
+        "No volume, counterparty or XRP inventory disclosure."
+      ],
+      "status": "ADOPTION_HYPOTHESIS_NOT_PRICE_FEATURE"
+    },
+    {
+      "id": "H-COINBASE-MULTI-STABLECOIN-DISTRIBUTION",
+      "statement": "Coinbase is expanding as a multi-stablecoin distribution platform rather than replacing Circle USDC with RLUSD.",
+      "classification": "STRONGLY_SUPPORTED_COMPANY_POSITIONING",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+        "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+        "SRC-20261031-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION",
+        "SRC-20261031-COINBASE-Q3-2026-10Q-CIRCLE-RENEWAL",
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+        "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805"
+      ],
+      "disconfirming_or_alternative": [
+        "Future changes to distribution economics or product allocation could alter the mix.",
+        "No current RLUSD versus USDC net-flow split disclosed."
+      ],
+      "status": "COEXISTENCE_BETTER_SUPPORTED_THAN_REPLACEMENT"
+    },
+    {
+      "id": "H-INSTITUTIONAL-STACK-COMPLEMENTARITY",
+      "statement": "BNY custody, Robinhood settlement/treasury and Coinbase distribution form complementary institutional rails around Ripple assets.",
+      "classification": "CROSS_ANNOUNCEMENT_INFERENCE_NOT_COORDINATED_PLAN",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "disconfirming_or_alternative": [
+        "Announcements are separate bilateral relationships.",
+        "No joint operating agreement or shared capital plan disclosed.",
+        "BNY future capabilities remain approval-dependent."
+      ],
+      "status": "PLAUSIBLE_COMPLEMENTARITY_COORDINATION_UNPROVEN"
+    },
+    {
+      "id": "H-XRP-COLLATERAL-AND-CUSTODY-DEMAND",
+      "statement": "BNY XRP custody and Coinbase/Morpho collateral channels could improve institutional XRP utility.",
+      "classification": "MECHANISM_AND_SERVICE_CAPABILITIES_DOCUMENTED; ACTUAL_DEMAND_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0916",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "disconfirming_or_alternative": [
+        "No XRP collateral balances, borrowing utilization or custody AUC disclosed.",
+        "Coinbase Global Exchange RLUSD collateral support is not live at launch and is not XRP collateral.",
+        "Morpho cbXRP and Coinbase derivatives collateral are separate systems."
+      ],
+      "status": "NO_FEATURE_ADMISSION"
+    },
+    {
+      "id": "H-RLUSD-SETTLEMENT-VS-XRP-DEMAND",
+      "statement": "Growth in RLUSD settlement on XRPL may increase ledger use without materially increasing XRP demand.",
+      "classification": "COUNTER_HYPOTHESIS_AND_ECONOMIC_MECHANISM",
+      "supporting_source_ids": [
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031-CIRCLE-USDC-XRPL-0612-2025",
+        "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+        "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612"
+      ],
+      "disconfirming_or_alternative": [
+        "If actual settlement requires substantial XRP bridge inventory or creates material liquidity demand, the effect could be larger.",
+        "No bridge-asset or XRP inventory data disclosed."
+      ],
+      "status": "RETAIN_AS_PRIMARY_COUNTER_HYPOTHESIS"
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "actual_capital_status": "NO_XRP_PURCHASE_OR_NET_EXTERNAL_CAPITAL_FLOW_INFERRED_FROM_CUSTODY_OR_PARTNERSHIP_ANNOUNCEMENTS",
+  "supersedes_snapshot_path": "data/xrp_intelligence/snapshots/20261031T090517Z-bny-robinhood-coinbase-institutional-rails.json",
+  "source_id_corrections": [
+    {
+      "invalid_id": "SRC-20261031-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION",
+      "canonical_id": "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805",
+      "reason": "The earlier append used a guessed source identifier; this corrected copy references the exact canonical archive ID. The earlier snapshot remains preserved."
+    },
+    {
+      "invalid_id": "SRC-20261031-COINBASE-Q3-2026-10Q-CIRCLE-RENEWAL",
+      "canonical_id": "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+      "reason": "The earlier append used a guessed source identifier; this corrected copy references the exact canonical archive ID. The earlier snapshot remains preserved."
+    },
+    {
+      "invalid_id": "SRC-20261031-CIRCLE-USDC-XRPL-0612-2025",
+      "canonical_id": "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+      "reason": "The earlier append used a guessed source identifier; this corrected copy references the exact canonical archive ID. The earlier snapshot remains preserved."
+    },
+    {
+      "invalid_id": "SRC-20261031-CIRCLE-ARC-MAINNET-0916",
+      "canonical_id": "SRC-CIRCLE-ARC-MAINNET-20260916",
+      "reason": "The earlier append used a guessed source identifier; this corrected copy references the exact canonical archive ID. The earlier snapshot remains preserved."
+    },
+    {
+      "invalid_id": "SRC-20261031-SBIC-TOKYO-EAST-COMPANY-PROFILE",
+      "canonical_id": "SRC-SBIC-EAST-JAPAN-PROFILE-20261030T162330Z",
+      "reason": "The earlier append used a guessed source identifier; this corrected copy references the exact canonical archive ID. The earlier snapshot remains preserved."
+    }
+  ],
+  "retrieval_aliases": [
+    {
+      "retrieval_source_id": "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+      "canonical_document_source_id": "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+      "independent_evidence": false
+    },
+    {
+      "retrieval_source_id": "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+      "canonical_document_source_id": "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+      "independent_evidence": false
+    },
+    {
+      "retrieval_source_id": "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+      "canonical_document_source_id": "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+      "independent_evidence": false
+    },
+    {
+      "retrieval_source_id": "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+      "canonical_document_source_id": "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+      "independent_evidence": false
+    }
+  ]
+}

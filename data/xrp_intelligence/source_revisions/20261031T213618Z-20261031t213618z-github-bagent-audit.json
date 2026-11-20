@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T213618Z-GITHUB-BAGENT-AUDIT",
+  "source_id": "SRC-20261031T213618Z-GITHUB-BAGENT-AUDIT",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "created_at_utc": "2026-10-31T21:36:18Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T213618Z-GITHUB-BAGENT-AUDIT"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T213618Z-GITHUB-BAGENT-AUDIT",
+      "publisher": "GitHub — Barrot-Agent/B-Agent live repository audit",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-31T21:36:18Z",
+      "evidence_class": "AUTHORIZED_REPOSITORY_API_OBSERVATION",
+      "claims": [
+        "Main is c4d24176169ea1307b0eada82a6cbc62ca96e029.",
+        "GitHub REST search reports 202 open PRs.",
+        "PR #1429 is open/draft/unmerged on current main; exact-head CI 345 tests plus 8 subtests and fail-closed gate passed.",
+        "PR #1430 is open/draft/unmerged on current main; exact-head CI 346 tests plus 8 subtests and fail-closed gate passed; PR description updated with verification.",
+        "PR #1427 is open/draft/unmerged on stale main base 97546c3f47bf64cb52956fab306f0a2d6fe473ce.",
+        "Main Cross Analysis retains write permission and last wrote timestamp-only sentiment with zero XRP/BTC samples; Knowledge Signal Cycle remains manual-only and writes to main.",
+        "Full repository CI and dependency vulnerability scan remain unexecuted."
+      ],
+      "limitations": [
+        "Full base-SHA classification was not re-enumerated for all 202 PRs.",
+        "PR CI is not full repository CI or security clearance.",
+        "Proposals remain unmerged; main permissions are unchanged.",
+        "Security alerts and full branch-protection details are unavailable through current integration."
+      ]
+    }
+  ],
+  "findings": [
+    "Main is c4d24176169ea1307b0eada82a6cbc62ca96e029.",
+    "GitHub REST search reports 202 open PRs.",
+    "PR #1429 is open/draft/unmerged on current main; exact-head CI 345 tests plus 8 subtests and fail-closed gate passed.",
+    "PR #1430 is open/draft/unmerged on current main; exact-head CI 346 tests plus 8 subtests and fail-closed gate passed; PR description updated with verification.",
+    "PR #1427 is open/draft/unmerged on stale main base 97546c3f47bf64cb52956fab306f0a2d6fe473ce.",
+    "Main Cross Analysis retains write permission and last wrote timestamp-only sentiment with zero XRP/BTC samples; Knowledge Signal Cycle remains manual-only and writes to main.",
+    "Full repository CI and dependency vulnerability scan remain unexecuted."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "Full base-SHA classification was not re-enumerated for all 202 PRs.",
+    "PR CI is not full repository CI or security clearance.",
+    "Proposals remain unmerged; main permissions are unchanged.",
+    "Security alerts and full branch-protection details are unavailable through current integration."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T200209Z-PRE-ESCROW-AND-INGESTION-FRESHNESS",
+  "captured_at_utc": "2026-10-31T20:02:09Z",
+  "data_cutoff_utc": "2026-10-31T20:02:09Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T200209Z-pre-escrow-derivatives-and-ingestion-freshness.json",
+  "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "main_sha": "004d8b92c755dc96a9653e1d5979e18765a55d37",
+  "escrow": {
+    "status": "SCHEDULED_NOT_YET_ELIGIBLE",
+    "finish_after_utc": "2026-11-01T00:00:00Z",
+    "seconds_until": 14271,
+    "amount_xrp": 1000000000,
+    "objects": 2,
+    "ledger_index": 108028336,
+    "ledger_closed_at_utc": "2026-10-31T18:05:00Z",
+    "total_ripple_escrow_xrp": 31400000000,
+    "objects_total": 98,
+    "owner_accounts": 8,
+    "remaining_unlocks": 32,
+    "last_scheduled_unlock": "2029-06-01",
+    "prior_12_months": {
+      "released_xrp": 12000000000,
+      "re_escrowed_xrp": 8400000000,
+      "re_escrowed_pct": 70,
+      "net_outside_escrow_xrp": 3600000000,
+      "pattern": "12/12 re-escrowed 700M"
+    },
+    "finish_timing": {
+      "median_seconds": 11,
+      "max_delay_days": 2.3
+    },
+    "protocol_note": "Any account may submit EscrowFinish after validated-ledger close passes FinishAfter; destination is predetermined.",
+    "unknowns": [
+      "EscrowFinish hashes",
+      "Destination accounts",
+      "Actual destination balances",
+      "Subsequent transfers/re-escrow",
+      "Exchange/OTC disposition"
+    ]
+  },
+  "market": {
+    "provider": "TradRadar",
+    "observed_at_utc": "2026-10-31T19:05:00Z",
+    "delay_minutes": 15,
+    "price_usd": 1.2557,
+    "price_change_24h_pct": 1.1,
+    "oi_7_exchanges_usd": 1870000000,
+    "oi_change_24h_pct": 1.7,
+    "funding_oi_weighted_8h_pct": 0.005,
+    "funding_8h_pct": {
+      "Binance": 0.01,
+      "Bybit": -0.0073,
+      "MEXC": 0.01,
+      "Gate": 0.0027,
+      "Bitget": 0.01,
+      "Hyperliquid": 0.01,
+      "OKX": -0.0021
+    },
+    "liquidations_24h_lower_bound_usd": 418860,
+    "long_liquidations_usd": 129720,
+    "short_liquidations_usd": 289140,
+    "long_accounts_pct": 75.3,
+    "long_short_ratio": 3.05,
+    "coverage": {
+      "oi": 7,
+      "liquidations": 5,
+      "long_short": 4
+    },
+    "interpretation": "Positive aggregate funding but negative Bybit/OKX funding; account ratio is not notional; no directional inference."
+  },
+  "ingestion": {
+    "status": "STALE_NO_QUALIFYING_ENTRIES_LAST_48H",
+    "xrp_entries": 1208,
+    "xrp_newest_utc": "2026-10-29T13:23:01.047Z",
+    "xrp_age_hours": 54.6522,
+    "xrp_recent_24h": 0,
+    "xrp_prior_24h": 0,
+    "btc_entries": 1245,
+    "btc_newest_utc": "2026-10-29T13:38:11.448Z",
+    "btc_age_hours": 54.3993,
+    "btc_recent_24h": 0,
+    "btc_prior_24h": 0,
+    "knowledge_signal_cycle": "workflow_dispatch only; no schedule",
+    "cross_analysis": "hourly scheduled; contents:write; zero sentiment-shift samples; timestamp-only main commit",
+    "entity_profile": "full-history aggregate, not current sentiment"
+  },
+  "repository": {
+    "main_sha": "004d8b92c755dc96a9653e1d5979e18765a55d37",
+    "main_commit_utc": "2026-10-31T19:52:13Z",
+    "main_commit_message": "Cross-analysis refresh [skip ci]",
+    "changed_path": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "cross_analysis_run": 41236207642,
+    "pages_run": 41236219853,
+    "open_prs": 200,
+    "drafts": 190,
+    "ready": 10,
+    "main_based": 198,
+    "current_main_base": 0,
+    "stale_main_based": 198,
+    "non_main": 2,
+    "branch_protection": true,
+    "required_status_contexts": []
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "source_ids": [
+    "SRC-20261031T200209Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T200209Z-TRADRADAR-XRP",
+    "SRC-20261031T200209Z-GITHUB-WORKFLOW-PR-AUDIT",
+    "SRC-20261031T200209Z-KB-FRESHNESS",
+    "SRC-20261031T200209Z-XRPL-ESCROW-DOCS"
+  ],
+  "source_reference_count": 5,
+  "missing_source_references": 0,
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_dispatch": false,
+  "secret_access": false,
+  "trade": false
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T001510Z-PR1433-CI-PASS-ESCROW-UNVERIFIED",
+  "captured_at_utc": "2026-11-01T00:15:10Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution and verification foundation.",
+  "verified": {
+    "pr1433_ci": "354 tests + 8 subtests passed on exact head a246a55743b50e9c089dec9a3c1ca0763ca2ff99",
+    "pr1433_gate": "PASS; merging disabled",
+    "pr1433_base": "Current main a989ae6ee81106e5a3521d89883c59e263d6d305",
+    "ledger_readback": "Research ledger pointer and 36 source-revision addenda read back successfully; 30 remain pending archive append."
+  },
+  "not_verified": {
+    "escrow_execution": "Eligibility time passed, but no raw post-eligibility validated ledger response or EscrowFinish hash obtained.",
+    "archive_validation": "Validator run 41255857106 cancelled; gate success alone does not validate archive contents.",
+    "metadata_successor": "No workflow run returned for metadata successor 5c49a29694f89dc030ff85c197523392b94d72fe.",
+    "full_repo_ci": "NOT_RUN",
+    "dependency_security_scan": "NOT_RUN"
+  },
+  "next_actions": [
+    "Obtain raw account_objects and account_tx responses for both escrow owner accounts at one pinned validated ledger after 00:00 UTC.",
+    "Verify EscrowFinish transaction hashes, tesSUCCESS results, affected Escrow nodes, delivered amounts and Destination accounts.",
+    "Trace follow-on payments and EscrowCreate re-locks before measuring net outside-escrow supply.",
+    "Re-run exact-head archive validation only through the normal configured workflow trigger; do not manually dispatch without approval.",
+    "Keep PR #1433 draft/unmerged; review its diff and exact-head CI result, then await user approval for any merge.",
+    "Keep the manual-only workflow until durable deduplication, historical feature storage, provenance and promotion gates exist.",
+    "Continue Coinbase/Circle/SBI collateral and actual-capital research; preserve SBIC, ASK Coin and Camilla/Kamilah identity uncertainty."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "external_platforms": {
+    "designed": 9,
+    "authenticated": 0,
+    "verified_live_collaborators": 0
+  },
+  "safety": {
+    "main_changed_by_this_run": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "workflow_dispatch_performed": false,
+    "real_money_trade_performed": false
+  }
+}

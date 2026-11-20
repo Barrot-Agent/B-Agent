@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 48,
+  "chunk_count": 49,
+  "record_count": 3,
+  "created_at_utc": "2026-10-30T15:03:37Z",
+  "records": [
+    {
+      "id": "SRC-BINANCE-OFFICIAL-IN-KIND-REPLENISHMENT-20261030T150337Z",
+      "evidence_class": "OFFICIAL_VERIFIED_ACCOUNT_ANNOUNCEMENT",
+      "urls": [
+        "https://www.binance.com/en-IN/square/post/10-30-2026-binance-news-update-binance-reserves-6-34-billion-to-cover-security-incident-with-5-billion-already-held-in-the-affected-tokens-and-3-billion-frozen-382841282807553"
+      ],
+      "title": "Binance News — $6.34B company reserve, $5B in affected token assets, remaining purchases via market and OTC",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T15:03:37Z",
+      "note": "Verified Binance News account states restoration has begun; >$6.34B company funds allocated; $5B already held in exact affected token assets; approximately $1.34B being acquired through market and OTC channels; approximately $3B frozen and excluded from reserve figures. No XRP-specific token allocation or execution quantity disclosed."
+    },
+    {
+      "id": "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-20261030T150337Z",
+      "evidence_class": "PUBLIC_XRPL_EXCHANGE_WALLET_BALANCE_DATA",
+      "urls": [
+        "https://xrp-insights.com/exchange-balances"
+      ],
+      "title": "XRP Insights — October 30 exchange-wallet balances and same-wallet changes",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T15:03:37Z",
+      "note": "Page states latest read 2026-10-30 08:00 UTC: 22.37B XRP in 701 wallets attributed to 24 exchanges; same-wallet changes -234.9M over 7d and -146.1M over 30d. Binance 2.58B, -173.2M 7d and -164.5M 30d; Coinbase 5.84B, +1.1M 7d and +12.5M 30d; SBI VC Trade 59.5M, -893K 7d and -10.5M 30d. Includes cold storage and identified non-customer reserves; not tradable float or customer flows."
+    },
+    {
+      "id": "SRC-REPO-PR-WORKFLOW-AUDIT-20261030T150337Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "urls": [
+        "https://github.com/Barrot-Agent/B-Agent/commit/541520d7e96b5b86109d5cb6f1549c75fc0262ea",
+        "https://github.com/Barrot-Agent/B-Agent/pull/1353",
+        "https://github.com/Barrot-Agent/B-Agent/pull/1373",
+        "https://github.com/Barrot-Agent/B-Agent/pull/1374"
+      ],
+      "title": "Barrot-Agent/B-Agent — current main workflow, research ledger validation and open safety PRs",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T15:03:37Z",
+      "note": "Main SHA 541520...; cross-analysis still has contents:write and automatic commit/push. PR #1353 exact-head archive validator 18/18 and fail-closed gate passed. PR #1373 and #1374 remain draft/unmerged; both have passing recorded CI/gates but overlap in ci.yml and are based on earlier main commits."
+    }
+  ]
+}

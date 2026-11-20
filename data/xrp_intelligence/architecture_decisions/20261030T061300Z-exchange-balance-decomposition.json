@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "XRP-EXCHANGE-BALANCE-DECOMPOSITION-20261030T061300Z",
+  "recorded_at_utc": "2026-10-30T06:13:00Z",
+  "status": "EXECUTED_AS_RESEARCH_SCHEMA_DECISION; MODEL_FEATURE_ADMISSION_BLOCKED",
+  "decision": "Separate exchange-labeled XRP balances into native customer custody, cold storage, wrapped-token backing reserves, insurance/charity funds, operational reserves and unknown/unclassified wallets before estimating float or venue liquidity.",
+  "rationale": "The 22.58B XRP public exchange-wallet total includes at least 488.4M XRP identified as wrapped-asset backing or insurance/charity funds. Coinbase's official cbXRP reserve/supply dashboard independently confirms approximately 151.4M XRP backing Base cbXRP; Binance's historical XRP-BF2 announcement confirms 1:1 native backing but current reserve quantity remains secondary.",
+  "required_fields": [
+    "chain",
+    "ledger_account",
+    "exchange_attribution_source",
+    "hot_cold_classification",
+    "customer_liability_link",
+    "wrapped_asset_contract",
+    "wrapped_supply",
+    "native_reserve_balance",
+    "reserve_snapshot_time",
+    "source_independence",
+    "wallet_label_confidence",
+    "tradable_availability_status"
+  ],
+  "feature_policy": "Do not use broad exchange-labeled balances as tradable float. Exclude known wrapped reserves from customer-deposit estimates, but retain them as custodial/bridge collateral and as potential redemption/operational flows. Keep cold storage and customer liabilities separate. No XRP price feature admitted.",
+  "unresolved": "Crosswalk five Binance compromised XRPL source wallets to the XRP-BF2 reserve address and Coinbase cbXRP reserve wallet set; obtain current official Binance XRP-BF2 balance and refreshed Coinbase cbXRP snapshot after the incident."
+}

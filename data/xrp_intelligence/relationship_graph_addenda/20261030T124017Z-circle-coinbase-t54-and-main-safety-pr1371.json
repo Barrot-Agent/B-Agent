@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-2026-10-30T124017Z-CIRCLE-COINBASE-T54-AND-REPOSITORY-SAFETY",
+  "captured_at_utc": "2026-10-30T12:40:17Z",
+  "previous_addendum": "data/xrp_intelligence/relationship_graph_addenda/20261030T122940Z-t54-x402-mastercard-evernorth-relationship-graph.json",
+  "edges": [
+    {
+      "from": "BINANCE",
+      "to": "XRPL_ATTACKER_ADDRESS_rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "relationship": "Five Binance-attributed XRPL wallets transferred 233.46M native XRP to one attacker-controlled address",
+      "status": "TRM_PRIMARY_BLOCKCHAIN_INTELLIGENCE_REPORT; DISPOSITION_ONLY_CONFIRMED_TO_00:30_UTC_CUTOFF",
+      "source_ids": [
+        "SRC-TRM-BINANCE-XRP-INCIDENT-20261030T1235Z"
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "UNDISCLOSED_REVENUE_COUNTERPARTY",
+      "relationship": "One counterparty accounted for 27% of Q3 revenue and 25% of nine-month revenue",
+      "status": "PRIMARY_SEC_FACT; COUNTERPARTY_IDENTITY_UNKNOWN",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-10Q-COLLATERAL-DETAIL-20261030"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "CIRCLE_RESERVE_FUND",
+      "relationship": "Approximately 84% of USDC reserves held in Circle Reserve Fund managed by BlackRock",
+      "status": "PRIMARY_SEC_FILING",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-COLLABORATION-AND-MINT-FLOWS-20261030"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "RESERVE_BANKS",
+      "relationship": "Approximately 16% of USDC reserves held as cash across banks; aggregate FDIC coverage approximately USD1.8M across seven institutions",
+      "status": "PRIMARY_SEC_FILING; HOLDER_LIABILITIES_NOT_FDIC_INSURED",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-COLLABORATION-AND-MINT-FLOWS-20261030"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "COINBASE",
+      "relationship": "USDC distribution collaboration; Circle disclosed Coinbase-related distribution costs and allocation mechanics",
+      "status": "PRIMARY_SEC_FILING; NOT_COINBASE_SHARE_OF_CIRCLE_PLATFORM_METRIC",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-COLLABORATION-AND-MINT-FLOWS-20261030"
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "XRPL",
+      "relationship": "Coinbase Q3 recognized collateral tables name BTC and ETH, but no XRP amount; unrecognized customer collateral lacks token-level breakdown",
+      "status": "PRIMARY_SEC_FILING; XRP_EXPOSURE_NOT_ESTABLISHED",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-10Q-COLLATERAL-DETAIL-20261030"
+      ]
+    },
+    {
+      "from": "T54_LABS",
+      "to": "XRPL_X402_AI_HUB",
+      "relationship": "Operates a multi-asset x402 facilitator and service directory; operator reports 14.7M service payments and USD42,048.63 settled",
+      "status": "OPERATOR_REPORTED; NOT_INDEPENDENTLY_AUDITED; ASSET_MIX_UNKNOWN",
+      "source_ids": [
+        "SRC-T54-XRPL-AI-HUB-LIVE-DASHBOARD-20261030"
+      ]
+    },
+    {
+      "from": "T54_LABS",
+      "to": "MASTERCARD_AGENT_PAY_FOR_MACHINES",
+      "relationship": "Named initial participant/supporter in Mastercard multi-rail agent-payment ecosystem",
+      "status": "PARTNER_LIST_CONFIRMED; XRP_SETTLEMENT_NOT_DISCLOSED",
+      "source_ids": [
+        "SRC-MASTERCARD-AGENT-PAY-FOR-MACHINES-20260610"
+      ]
+    },
+    {
+      "from": "RIPPLE",
+      "to": "T54_LABS",
+      "relationship": "Strategic participant in t54's USD5M seed round",
+      "status": "COMPANY_CONFIRMED; INVESTMENT_AMOUNT_UNDISCLOSED",
+      "source_ids": [
+        "SRC-THEBLOCK-T54-5M-RIPPLE-SEED-20260225"
+      ]
+    },
+    {
+      "from": "T54_LABS",
+      "to": "EVERNORTH",
+      "relationship": "Intended integration of agentic-finance trust infrastructure into autonomous XRP treasury operations",
+      "status": "INTENDED_INTEGRATION_NOT_PRODUCTION_VERIFIED",
+      "source_ids": [
+        "SRC-THEBLOCK-EVERNORTH-473M-XRP-PARTNERS-20261014"
+      ]
+    },
+    {
+      "from": "B_AGENT_MAIN",
+      "to": "CROSS_ANALYSIS_WORKFLOW",
+      "relationship": "Current main workflow grants contents:write and automatically commits/pushes generated outputs",
+      "status": "PRIMARY_REPOSITORY_READBACK_CONFIRMED",
+      "source_ids": [
+        "SRC-GITHUB-MAIN-CROSS-ANALYSIS-WORKFLOW-20261030T1235Z"
+      ]
+    },
+    {
+      "from": "PR_1371",
+      "to": "B_AGENT_MAIN_CROSS_ANALYSIS_WORKFLOW",
+      "relationship": "Draft proposal removes repository write path and retains generated outputs as 30-day artifacts",
+      "status": "BRANCH_AND_PR_CREATED; EXACT_HEAD_CI_AND_GATE_PASSED; NOT_MERGED",
+      "source_ids": [
+        "SRC-GITHUB-PR1371-CROSS-ANALYSIS-SAFETY-20261030T1239Z",
+        "SRC-GITHUB-PR1371-CI-GATE-20261030T1239Z"
+      ]
+    }
+  ],
+  "hypothesis_additions": [
+    {
+      "hypothesis_id": "HYP-COINBASE-UNNAMED-COUNTERPARTY-CONCENTRATION-20261030",
+      "claim": "Coinbase's 27% Q3 revenue concentration creates a material counterparty dependency risk.",
+      "supporting_source_ids": [
+        "SRC-COINBASE-Q3-2026-10Q-COLLATERAL-DETAIL-20261030"
+      ],
+      "counterevidence": "The counterparty is unnamed; the filing does not identify its business line, contract terms, credit risk or connection to Circle/Ripple.",
+      "status": "CONCENTRATION_CONFIRMED_IDENTITY_AND_RISK_CHANNEL_UNKNOWN"
+    },
+    {
+      "hypothesis_id": "HYP-CIRCLE-RESERVE-STRUCTURE-LIQUIDITY-RISK-20261030",
+      "claim": "Circle's reserve composition creates exposure to government money-market-fund liquidity and bank counterparties.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-COLLABORATION-AND-MINT-FLOWS-20261030"
+      ],
+      "counterevidence": "The reserve fund holds short-duration U.S. Treasuries, overnight Treasury repos and cash; no reserve impairment, redemption failure or loss is reported.",
+      "status": "STRUCTURE_CONFIRMED_STRESS_BEHAVIOR_UNTESTED"
+    },
+    {
+      "hypothesis_id": "HYP-T54-X402-MATERIAL-NATIVE-XRP-DEMAND-20261030",
+      "claim": "T54's reported x402 payment growth creates material native-XRP demand.",
+      "supporting_source_ids": [
+        "SRC-T54-XRPL-AI-HUB-LIVE-DASHBOARD-20261030",
+        "SRC-THEBLOCK-T54-5M-RIPPLE-SEED-20260225",
+        "SRC-MASTERCARD-AGENT-PAY-FOR-MACHINES-20260610"
+      ],
+      "counterevidence": "Dashboard average is about USD0.00285 if scopes match; XRP/RLUSD/USDC asset mix is undisclosed; some entries are Unverified; batch Checks aggregate many service payments; Mastercard AP4M is multi-rail and does not specify XRP settlement.",
+      "status": "NOT_ESTABLISHED_MULTI_ASSET_MICROPAYMENT_ACTIVITY_ONLY"
+    },
+    {
+      "hypothesis_id": "HYP-BINANCE-STOLEN-XRP-FUTURE-SUPPLY-OVERHANG-20261030",
+      "claim": "The 233.46M XRP held at the attacker address could create future sell-side supply pressure.",
+      "supporting_source_ids": [
+        "SRC-TRM-BINANCE-XRP-INCIDENT-20261030T1235Z"
+      ],
+      "counterevidence": "TRM's 00:30 UTC cutoff reported the XRP remained at the receiver; no sale, exchange deposit or executed market order is established.",
+      "status": "RISK_SCENARIO_NOT_CONFIRMED_SELLING"
+    },
+    {
+      "hypothesis_id": "HYP-T54-MASTERCARD-XRPL-SETTLEMENT-20261030",
+      "claim": "Coinbase, Ripple and t54's inclusion in Mastercard AP4M proves Mastercard is settling XRP on XRPL.",
+      "supporting_source_ids": [
+        "SRC-MASTERCARD-AGENT-PAY-FOR-MACHINES-20260610"
+      ],
+      "counterevidence": "The partner list establishes participation only; AP4M supports cards, accounts and stablecoins and does not disclose an XRP/XRPL production settlement route.",
+      "status": "NOT_ESTABLISHED_PARTNER_ECOSYSTEM_ONLY"
+    }
+  ],
+  "source_ids": [
+    "SRC-TRM-BINANCE-XRP-INCIDENT-20261030T1235Z",
+    "SRC-GITHUB-MAIN-CROSS-ANALYSIS-WORKFLOW-20261030T1235Z",
+    "SRC-GITHUB-PR1371-CROSS-ANALYSIS-SAFETY-20261030T1239Z",
+    "SRC-GITHUB-PR1371-CI-GATE-20261030T1239Z",
+    "SRC-COINBASE-Q3-2026-10Q-COLLATERAL-DETAIL-20261030",
+    "SRC-CIRCLE-Q2-2026-10Q-SEC-COLLABORATION-AND-MINT-FLOWS-20261030",
+    "SRC-T54-XRPL-AI-HUB-LIVE-DASHBOARD-20261030",
+    "SRC-MASTERCARD-AGENT-PAY-FOR-MACHINES-20260610",
+    "SRC-THEBLOCK-T54-5M-RIPPLE-SEED-20260225",
+    "SRC-THEBLOCK-EVERNORTH-473M-XRP-PARTNERS-20261014"
+  ]
+}

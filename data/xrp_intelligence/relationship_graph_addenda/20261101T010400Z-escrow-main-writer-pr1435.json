@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261101T010400Z-ESCROW-AND-MAIN-WRITER",
+  "captured_at_utc": "2026-11-01T01:04:00Z",
+  "data_cutoff_utc": "2026-11-01T01:03:55Z",
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "source_revision_ids": [
+    "REV-20261101T010400Z-XRP-ESCROW-STALE-LEDGER-AND-OWNER-CACHE",
+    "REV-20261101T010400Z-GITHUB-CROSS-ANALYSIS-MAIN-WRITER-AND-PR1435"
+  ],
+  "nodes": [
+    {
+      "id": "RIPPLE_ESCROW_R9",
+      "type": "xrpl_account",
+      "label": "r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp"
+    },
+    {
+      "id": "RIPPLE_ESCROW_RB3",
+      "type": "xrpl_account",
+      "label": "rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn"
+    },
+    {
+      "id": "NOV1_ESCROW",
+      "type": "scheduled_event",
+      "label": "1B XRP; 2 escrow objects; FinishAfter 2026-11-01T00:00:00Z"
+    },
+    {
+      "id": "XRPL_VALIDATED_LEDGER",
+      "type": "protocol_evidence",
+      "label": "Pinned validated ledger and transaction metadata"
+    },
+    {
+      "id": "ESCROW_FINISH",
+      "type": "transaction_type",
+      "label": "EscrowFinish"
+    },
+    {
+      "id": "DESTINATION",
+      "type": "account_role",
+      "label": "Escrow destination"
+    },
+    {
+      "id": "FOLLOW_ON",
+      "type": "transaction_type",
+      "label": "Subsequent XRP Payment"
+    },
+    {
+      "id": "ESCROW_CREATE",
+      "type": "transaction_type",
+      "label": "EscrowCreate re-lock"
+    },
+    {
+      "id": "EXCHANGE_DEPOSIT",
+      "type": "market_event",
+      "label": "Exchange deposit; not proof of sale"
+    },
+    {
+      "id": "XRP_INSIGHTS",
+      "type": "data_provider",
+      "label": "XRP Insights pinned ledger 108033174 at 23:22 UTC"
+    },
+    {
+      "id": "BITHOMP_CACHE",
+      "type": "data_provider",
+      "label": "Bithomp owner pages showing stale last activity"
+    },
+    {
+      "id": "MAIN_CROSS_ANALYSIS",
+      "type": "github_workflow",
+      "label": "main .github/workflows/cross-analysis.yml"
+    },
+    {
+      "id": "SENTIMENT_SHIFT",
+      "type": "generated_artifact",
+      "label": "sentiment_shift.json; XRP/BTC windows have zero entries"
+    },
+    {
+      "id": "PR1435",
+      "type": "github_pull_request",
+      "label": "Read-only Cross Analysis successor; open draft"
+    },
+    {
+      "id": "PR1435_CI",
+      "type": "verification",
+      "label": "345 tests + 8 subtests; fail-closed gate passed"
+    }
+  ],
+  "edges": [
+    {
+      "from": "RIPPLE_ESCROW_R9",
+      "to": "NOV1_ESCROW",
+      "relation": "reported_owner_of_500m",
+      "evidence_class": "SOURCED_CLAIM",
+      "confidence": "MEDIUM",
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
+    },
+    {
+      "from": "RIPPLE_ESCROW_RB3",
+      "to": "NOV1_ESCROW",
+      "relation": "reported_owner_of_500m",
+      "evidence_class": "SOURCED_CLAIM",
+      "confidence": "MEDIUM",
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
+    },
+    {
+      "from": "NOV1_ESCROW",
+      "to": "ESCROW_FINISH",
+      "relation": "requires_successful_transaction_for_release",
+      "evidence_class": "CONFIRMED_PROTOCOL_RULE",
+      "confidence": "HIGH"
+    },
+    {
+      "from": "ESCROW_FINISH",
+      "to": "XRPL_VALIDATED_LEDGER",
+      "relation": "must_be_validated_and_metadata_inspected",
+      "evidence_class": "CONFIRMED_PROTOCOL_RULE",
+      "confidence": "HIGH"
+    },
+    {
+      "from": "ESCROW_FINISH",
+      "to": "DESTINATION",
+      "relation": "delivers_if_successful",
+      "evidence_class": "CONFIRMED_PROTOCOL_RULE",
+      "confidence": "HIGH"
+    },
+    {
+      "from": "DESTINATION",
+      "to": "FOLLOW_ON",
+      "relation": "possible_later_transfer",
+      "evidence_class": "CONDITIONAL",
+      "confidence": "UNKNOWN"
+    },
+    {
+      "from": "FOLLOW_ON",
+      "to": "ESCROW_CREATE",
+      "relation": "possible_relock",
+      "evidence_class": "CONDITIONAL",
+      "confidence": "UNKNOWN"
+    },
+    {
+      "from": "FOLLOW_ON",
+      "to": "EXCHANGE_DEPOSIT",
+      "relation": "possible_exchange_route",
+      "evidence_class": "CONDITIONAL",
+      "confidence": "UNKNOWN"
+    },
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "NOV1_ESCROW",
+      "relation": "reports_schedule_from_pre_event_ledger",
+      "evidence_class": "SOURCED_CLAIM",
+      "confidence": "MEDIUM"
+    },
+    {
+      "from": "BITHOMP_CACHE",
+      "to": "NOV1_ESCROW",
+      "relation": "owner_pages_conflict_but_are_stale",
+      "evidence_class": "DISCONFIRMING_EVIDENCE_LOW_QUALITY",
+      "confidence": "LOW"
+    },
+    {
+      "from": "MAIN_CROSS_ANALYSIS",
+      "to": "SENTIMENT_SHIFT",
+      "relation": "generates_output_and_commits_to_main",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "confidence": "HIGH"
+    },
+    {
+      "from": "PR1435",
+      "to": "MAIN_CROSS_ANALYSIS",
+      "relation": "proposes_read_only_artifact_only_replacement",
+      "evidence_class": "PROPOSED_CHANGE_NOT_ACTIVE",
+      "confidence": "HIGH"
+    },
+    {
+      "from": "PR1435",
+      "to": "PR1435_CI",
+      "relation": "exact_head_verification",
+      "evidence_class": "VERIFIED_CI",
+      "confidence": "HIGH"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1-ESCROW-EXECUTED-TRACKER-LAG",
+      "claim": "EscrowFinish executed after eligibility, but available trackers and browser surfaces have not exposed the validated transaction.",
+      "status": "PLAUSIBLE_UNVERIFIED",
+      "support": [
+        "The event time has passed.",
+        "The latest available tracker snapshot is stale."
+      ],
+      "disconfirming_or_missing": [
+        "No validated transaction hash or post-event account state."
+      ],
+      "test": "Query account_objects and account_tx for both accounts at the same validated ledger."
+    },
+    {
+      "id": "H2-ESCROW-STILL-PENDING",
+      "claim": "The escrows remain on-ledger because no successful EscrowFinish has yet been submitted.",
+      "status": "PLAUSIBLE_UNVERIFIED",
+      "support": [
+        "XRPL requires an EscrowFinish transaction; eligibility is not automatic movement."
+      ],
+      "disconfirming_or_missing": [
+        "No raw post-eligibility account_objects response."
+      ],
+      "test": "Inspect escrow objects at a post-eligibility validated ledger."
+    },
+    {
+      "id": "H3-BITHOMP-STALE-CACHE",
+      "claim": "Bithomp's empty transaction/escrow panels reflect stale or incomplete page data rather than the authoritative ledger.",
+      "status": "PLAUSIBLE",
+      "support": [
+        "Pages display last activity six months ago despite known earlier escrow activity."
+      ],
+      "disconfirming_or_missing": [
+        "No same-ledger independent raw node comparison."
+      ],
+      "test": "Compare two public nodes at one pinned ledger and inspect transaction metadata."
+    },
+    {
+      "id": "H4-MAIN-WRITER-FRESHNESS-ILLUSION",
+      "claim": "The scheduled Cross Analysis workflow can make stale or empty sentiment output appear fresh by updating only generated_at and committing to main.",
+      "status": "CONFIRMED_REPOSITORY_BEHAVIOR",
+      "support": [
+        "Main commit 93d990 changes only generated_at while XRP/BTC recent and prior counts are zero.",
+        "Current main workflow grants contents:write and runs git commit/push."
+      ],
+      "disconfirming_or_missing": [
+        "None for the observed commit; broader workflow effects require full CI/security review."
+      ],
+      "test": "PR #1435 removes writes and uploads bounded artifacts; exact-head CI passed."
+    }
+  ],
+  "excluded_inferences": [
+    "No inference that the November 1 1B XRP was executed, sold, or entered circulating supply.",
+    "No inference that an exchange deposit occurred.",
+    "No directional price signal from escrow eligibility.",
+    "A zero-sample sentiment timestamp is not a current sentiment observation.",
+    "PR #1435 is not active on main until approved and merged."
+  ]
+}

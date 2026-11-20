@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 137,
+  "chunk_count": 138,
+  "record_count": 3,
+  "created_at_utc": "2026-10-31T16:20:02Z",
+  "records": [
+    "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. is officially branded SBIC East Japan; do not confuse it with SBI Holdings or SBI VC Trade. The official profile lists Nagoya and Osaka as sister companies but does not establish a parent/subsidiary relationship with SBI Holdings.",
+    "No direct XRP, Ripple, Circle, stablecoin issuance, custody or payment-rail relationship has been identified for Tokyo SBIC East Japan in the reviewed public sources; its documented role is SME equity investment and long-term management support.",
+    "The 2026-10-31 exact-head XRP ledger validator failure was caused by one missing source record, SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE. The validator otherwise checked 408 shards and matched the snapshot blob SHA; the new source shard is a repair, not yet verified until the next exact-head run."
+  ]
+}
