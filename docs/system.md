@@ -434,6 +434,11 @@ The system operates across a multi-node matrix. This configuration must be ackno
 ## Merge Conflict Resolution Guide
 *Source: `MERGE_CONFLICT_RESOLUTION_GUIDE.md`*
 
+> **Superseded legacy material.** Do not follow historical accept-both guidance
+> or unverified success-rate rankings here. The authoritative policy is
+> `docs/AUTONOMOUS_CONFLICT_RESOLUTION_POLICY.md`; missing semantic evidence
+> requires manual review.
+
 # 🔀 Merge Conflict Resolution Guide
 
 **Version**: 1.0  

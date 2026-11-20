@@ -10,6 +10,7 @@ class ConflictResolutionPolicyTests(unittest.TestCase):
         decision = recommend_resolution(ConflictEvidence())
         self.assertEqual(decision.choice, ResolutionChoice.MANUAL)
         self.assertFalse(decision.auto_apply)
+        self.assertEqual(decision.confidence, 0.0)
 
     def test_validated_incoming_is_recommended_but_never_auto_applied(self):
         decision = recommend_resolution(ConflictEvidence(
@@ -105,5 +106,7 @@ class ConflictResolutionPolicyTests(unittest.TestCase):
         self.assertFalse(payload["auto_apply"])
         self.assertIn("evidence", payload)
         self.assertIn("required_checks", payload)
+        self.assertFalse(payload["auto_apply"])
+        self.assertEqual(payload["confidence"], 0.0)
 
 
