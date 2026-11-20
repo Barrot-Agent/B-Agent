@@ -1,3 +1,11 @@
+> **Superseded legacy guide — do not use as operational instructions.**
+> This document contains historical strategy rankings and success percentages
+> that were not established by real-world outcome data. In particular, do not
+> treat “accept both,” whitespace heuristics, or static success rates as
+> permission to resolve conflicts. The authoritative rules are in
+> [docs/AUTONOMOUS_CONFLICT_RESOLUTION_POLICY.md](docs/AUTONOMOUS_CONFLICT_RESOLUTION_POLICY.md).
+> Barrot now defaults to manual review when semantic evidence is missing.
+>
 # 🔀 Merge Conflict Resolution Guide
 
 **Version**: 1.0  
