@@ -81,10 +81,10 @@ Generated: 2026-01-02T13:04:31.914037
 - **Strategy**: semantic_merge
 
 ### Accept Both Changes with Manual Review (RT001)
-- **Success Rate**: 85.0%
-- **Risk Level**: Medium
-- **Automation**: Semi-Automated
-- **Strategy**: accept_both
+- **Success Rate**: UNVERIFIED (not measured)
+- **Risk Level**: High
+- **Automation**: Manual only; explicit authorization required
+- **Strategy**: accept_both — advisory only after evidence gate
 
 ### Recursive Strategy with Patience (RT006)
 - **Success Rate**: 80.0%
