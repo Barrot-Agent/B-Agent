@@ -1,9 +1,18 @@
 {
   "name": "B-Agent-Runtime",
   "build": { "dockerfile": "Dockerfile" },
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    }
+  },
+  "postCreateCommand": "npm install --global @google/gemini-cli",
   "customizations": {
     "vscode": {
-      "extensions": ["ms-python.python", "rust-lang.rust-analyzer"]
+      "extensions": [
+        "ms-python.python",
+        "rust-lang.rust-analyzer"
+      ]
     }
   }
 }
