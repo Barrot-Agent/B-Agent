@@ -13,7 +13,7 @@ This file is now the compact current-state handoff. The complete prior handoff, 
 ## Repository state
 
 - **Current main SHA:** 7f8e3626c355bb3d89afdff56aeed5e056cb88f4. Main tree: 1,751 entries.
-- **Latest exact-head CI-tested code head:** fc61430d301f368432d49b2ead013294d3a490cb. Integration tree: 3,040 entries. Later map/handoff commits are documentation-only; see the superseding current-state section below.
+- **Latest exact-head CI-tested integration head:** 251682e1023afe3029c4fa7a87cecf09e59f8acf. Integration tree: 3,040 entries. Later map/handoff commits are documentation-only; see the superseding current-state section below.
 - **Active integration PR:** [#1673](https://github.com/Barrot-Agent/B-Agent/pull/1673), base SHA 7f8e3626c355bb3d89afdff56aeed5e056cb88f4, 522 commits ahead / 0 behind, 1,494 changed files, 535,051 additions and 7,024 deletions. Changed-file inventory: 69 workflows, 422 test paths and 74 barrot_agent paths; 1,130 paths contain XRP-related identifiers.
 - PR #1673 is open, draft and reported mergeable. It has no independent approving review. No merge was attempted.
 - **Mainline merges:** PR #1672 and PR #1674 are already merged. PR #1674's merge commit is 33d02d3b3251350aaede9df04fcb701f2398d016. Main subsequently advanced to 7f8e362 through the existing paid-issue publisher workflow, not through this integration.
@@ -876,3 +876,88 @@ No PR is ready to merge solely on the basis of an older head's checks. No source
 **Forecast status: `NOT_ISSUED`.** No directional forecast, paper trade, real-money action, deployment, publication, secret rotation, Space restart, Kaggle submission, Databricks write or external model dispatch occurred.
 
 Next concrete action: finish file-level workflow/security review and obtain independently verifiable review plus branch-protection evidence for #1673; keep it draft and do not merge or publish while those gates remain unresolved. In parallel, preserve the read-only XRP ingestion implementation and close the WORM/historical-data gaps without fabricating depth, flows or forecasts.
+
+---
+
+## Post-handoff collateral and exact-head verification update — 2026-11-20T09:46:34Z
+
+This update adds new public collateral evidence and records a newer exact-head verification. All newly viewed market/dashboard data below is research-only: no raw response bytes or Barrot receipt were captured, so none of it is feature-store or model eligible.
+
+### Exact integration-head verification — VERIFIED
+
+Exact integration head `251682e1023afe3029c4fa7a87cecf09e59f8acf` (523 commits ahead / 0 behind main at verification time):
+
+- [CI / full repository suite 44712782428](https://github.com/Barrot-Agent/B-Agent/actions/runs/44712782428): passed.
+- **4,440 passed, 1 skipped, 11 warnings, 23 subtests passed**; 4,441 collected; 192.72 seconds.
+- Inclusive coverage 73.08%; legacy/core 82%.
+- Mission-critical coverage floors: AGI orchestrator 52%; XRP telemetry 92%; MMI 92%; Barrot integration 62%; feature store 80%; forecast ledger 97%; point-in-time features 89%; source registry 95%; monetization 78%; rendering 71%; SmartAgent 77%; memory palace 100%.
+- [Money audit 44712782393](https://github.com/Barrot-Agent/B-Agent/actions/runs/44712782393): passed.
+- [A2A Worker Tests 44712782375](https://github.com/Barrot-Agent/B-Agent/actions/runs/44712782375): passed.
+- [Dependency Audit 44712782373](https://github.com/Barrot-Agent/B-Agent/actions/runs/44712782373) and [44712772476](https://github.com/Barrot-Agent/B-Agent/actions/runs/44712772476): passed.
+- Pages build was validation-only and passed; no deployment.
+- [Fail-closed gate 44712782385](https://github.com/Barrot-Agent/B-Agent/actions/runs/44712782385): **BLOCKED**, with exact reasons: PR is still draft; no independent approving review exists; branch protection could not be verified, so the workflow refused to infer approval or bypass settings.
+
+After this verified head, map and handoff commits are documentation-only. No runtime code was changed. The next handoff commit will trigger a fresh CI run; results on `251682e` are not silently transferred to that later head.
+
+### Coinbase / Morpho cbXRP collateral channel — current public interface snapshot
+
+Source: [Morpho Base cbXRP/USDC market](https://app.morpho.org/base/variable/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/usdc-cbxrp), retrieved approximately **2026-11-20 09:44 UTC**.
+
+The public market interface showed:
+
+- Outstanding USDC loans: **$48.83M**.
+- Total liquidity: **$20.33M**.
+- Utilization: **90.37%**, versus a 90% target; the interface showed $0 borrow amount to target utilization.
+- Total market size: **$69.16M**.
+- Liquidation LTV: **62.5%**; liquidation penalty: **12.67%**.
+- Realized and unrealized bad debt: **$0**.
+- Instantaneous rate: **8.02%**; displayed 6-hour borrow rate: **9.20%**; 24-hour average: **11.53%**; 7-day average: **7.93%**.
+- The market was created January 15, 2026. The interface displayed a Chainlink XRP/USD oracle with 1-day heartbeat / 0.5% deviation metadata. Its rounded market oracle field showed 0.962 USDC per cbXRP while the linked Chainlink feed row showed 0.966873; retain the field/timestamp distinction rather than forcing them into one price.
+- The latest visible liquidation rows were dated November 17: 250.003 USDC repaid for 295.161 cbXRP seized, and 224.777 USDC repaid for 263.999 cbXRP seized; both showed zero bad debt. Basescan transaction links returned 403 through this research path, so the transaction pages were not independently decoded here.
+
+[CryptoSlate's November 7 analysis](https://cryptoslate.com/morpho-loan-stress-exposes-cbxrp-but-spares-native-xrp/) used Morpho's public GraphQL API and reported that, at a November 6 13:24 UTC snapshot, **$8.8448M** of USDC debt across 1,070 positions was within a further 10% oracle decline of liquidation eligibility; **$3.2296M** across 462 positions was within a further 5% decline (a subset of the 10% bucket). The same snapshot showed about $59.24M debt against 119.87M cbXRP collateral. The article's method paginated three API result pages. This is secondary analysis of Morpho data, not independent corroboration.
+
+[CryptoSlate's November 13 follow-up](https://cryptoslate.com/xrp-loans-trigger-883-liquidations-and-53m-remains-at-risk/) reported 883 Morpho liquidation log events from November 7–13, just over $4M USDC debt repaid, 4.18M cbXRP seized and about $53.5M debt remaining at its November 13 snapshot. One borrower can generate multiple event logs. The current Morpho interface later showed $48.83M outstanding, but that difference cannot be attributed solely to liquidations: subsequent repayments, new borrowing, collateral additions and snapshot timing are not reconciled.
+
+[Coinbase's terms as reported by The Block](https://www.theblock.co/news/business/2026-02-18-coinbase-xrp-dogecoin-cardano-litecoin-loans-morpho-390403): eligible U.S. users (excluding New York) can borrow up to $100,000 USDC against XRP, DOGE, ADA or LTC, with a maximum 49% LTV and liquidation at 62.5%; rates float with Morpho supply/demand, and loan proceeds cannot be used to trade on Coinbase. Morpho is permissionless. Matching parameters and Coinbase's interface do not prove every position in the market belongs to a Coinbase customer.
+
+**Interpretation:** cbXRP collateralized borrowing can lock existing XRP and create a two-sided channel: debt capacity while maintaining exposure, but potential collateral seizure and later sale if positions breach risk thresholds. Seized cbXRP is not itself proof of a native XRP sale. A native-sale claim requires a traceable cbXRP redemption/custody path and subsequent XRPL or exchange trade. No such chain was verified in this run. High utilization is a lending-market liquidity measure, not XRP spot order-book depth.
+
+### Maple institutional XRP collateral — current product disclosures and vintage reconciliation
+
+Primary product pages:
+- [Maple syrupUSDC transparency](https://maple.finance/transparency/products/syrupusdc)
+- [Maple syrupUSDT transparency](https://maple.finance/transparency/products/syrupusdt)
+- [Maple / The Network Firm collateral dashboard](https://dashboard.ledgerlens.io/c/maple)
+- [DefiLlama Maple adapter methodology](https://raw.githubusercontent.com/DefiLlama/DefiLlama-Adapters/main/projects/maple/index.js)
+
+The Maple product pages displayed a collateral verification vintage of **November 17, 2026 at 01:00 UTC**:
+
+**syrupUSDC**
+- XRP collateral: **160,766,086.03 XRP**, displayed value approximately **$153.84M**.
+- Two XRP-backed loan rows: 55.00M USDC principal against $89.63M collateral (163.0%); 41.61M USDC against $64.21M collateral (154.3%).
+- Both rows displayed a May 8, 2027 maturity.
+- The pool page showed 21 loans overall and four collateral assets; the XRP figures refer only to its XRP collateral, not total pool collateral.
+
+**syrupUSDT**
+- XRP collateral: **92,814,668.8 XRP**, displayed value approximately **$88.81M**.
+- One XRP-backed loan row: 55.19M USDT principal against $88.81M collateral (160.9%), with January 15, 2027 maturity.
+- The pool page showed four loans overall and three collateral assets.
+
+Combined product-page figure: approximately **253.58M XRP**, displayed value approximately **$242.65M**, backing three XRP-collateralized positions with approximately **$151.8M nominal USDC/USDT principal**. These are public dashboard values at the stated verification vintage, not a claim that the full amount was newly purchased.
+
+Vintage comparison: CryptoSlate's October 31 article reported 142.766M XRP in syrupUSDC and 82.315M XRP in syrupUSDT (about 225.08M XRP, displayed at $280.2M). The November 17 Maple product pages now display 160.766M and 92.815M XRP. The apparent quantity difference is about **+28.5M XRP** while the dollar value is lower. The USDC maturities shown in the current product pages (May 8, 2027) differ from the December 4 / December 12 maturities reported on October 31. A renewal, extension, additional collateral or a disclosure-universe change is possible; no loan-ID crosswalk was established, so this is **not yet a verified time-series increase or confirmed rollover**. The USDT maturity remains January 15, 2027.
+
+Critical assurance caveat: The dashboard labels amounts “verified,” but its own disclaimer says The Network Firm Tech & Services, LLC provides a **non-attest technology service**, not an audit, review, examination or assurance engagement; it relies on Maple and third-party data and has not independently confirmed accuracy/completeness. It is point-in-time only (Nov 17 01:00 UTC). Do not describe these figures as independently audited.
+
+The DefiLlama adapter explicitly maps Maple collateral by the chain where held (including XRP on XRPL), while loan cash/pools originate on Ethereum. It declares `timetravel: false` because Maple publishes custody addresses only for current loans. This means current collateral metadata must **not** be backfilled into historical dates or used to reconstruct past collateral balances.
+
+**Interpretation:** Maple demonstrates a sizeable institutional stablecoin-credit use of XRP collateral, but not necessarily new XRP purchases. Existing holders may pledge XRP already owned. Repayment, renewal, authorized collateral release, margin calls or liquidation can change the amount encumbered. The three loan positions do not establish three distinct beneficial borrowers. Track token quantity, collateral value, loan principal, maturity, custody chain, pool and release status separately.
+
+### PR overlap content check — correction
+
+Changed-path overlap does not establish byte-identical duplicate content. A blob comparison of the changed paths found zero byte-identical changed files between the integration tree and these source PR heads: #1677 (0/6), #1671 (0/8), #1670 (0/12), #1668 (0/3) and #1541 (0/5). The paths overlap, but the blobs differ; semantic reconciliation remains necessary. #1664 has six changed-path overlaps with #1673 and 126 of its other changed paths are absent from the integration tree; preserve its distinct product work. #1265 has one changed-path overlap and substantial unique research. Do not label these PRs exact duplicates or close them based only on path overlap.
+
+### Disposition
+
+All Morpho and Maple page observations remain **research-only / not feature-store eligible** because raw payload bytes, retrieval receipts and synchronized historical series were not captured in Barrot. Add these sources to the next ingestion validation pass with strict source-vintage and custody semantics. No directional forecast is issued. No deployment, market action, paper trade, real-money action, PR merge or source-PR closure occurred.
