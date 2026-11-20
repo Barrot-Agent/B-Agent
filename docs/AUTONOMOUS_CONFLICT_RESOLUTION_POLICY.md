@@ -49,8 +49,7 @@ The policy never applies a resolution. Even a fully evidenced `incoming` or
 `both` recommendation has `auto_apply=false`; a separate explicit human
 authorization is required before any repository mutation.
 
-The PR workflow performs a real, read-only Git merge-tree check against the
-PR's current base and head. It blocks the check when Git reports conflicts.
+The dedicated `.github/workflows/barrot-conflict-integrity.yml` PR workflow performs a real, read-only Git merge-tree check against the PR's current base and head. It blocks the check when Git reports conflicts. It is separate from the existing merge-gate workflow to avoid overlapping with the active V3 integration PR.
 It does not attempt to resolve, approve, or merge the pull request.
 
 The Git integration tests create temporary repositories and exercise clean
