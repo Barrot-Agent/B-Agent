@@ -808,8 +808,8 @@ def calculate_total(items):
 ### Scenario 2: Import Statement Ordering
 
 **Conflict Type**: Content  
-**Auto-Resolvable**: Yes  
-**Recommended Strategy**: Auto-Merge with Formatting
+**Auto-Resolvable**: No — human review and authorization are required  
+**Recommended Strategy**: Evidence-gated review; manual by default
 
 ```python
 # Conflict Example
@@ -825,10 +825,11 @@ import numpy as np
 ```
 
 **Resolution Steps**:
-1. Accept both imports
-2. Sort alphabetically
-3. Run formatter (isort)
-4. Commit
+1. Inspect both import changes and confirm each is required
+2. Check for duplicates, version conflicts and side effects
+3. Compose only if the changes are compatible
+4. Run tests and review the complete diff
+5. Obtain explicit human authorization before applying the result
 
 **Merged Result**:
 ```python
@@ -842,8 +843,8 @@ import requests
 ### Scenario 3: Configuration Changes
 
 **Conflict Type**: Content  
-**Auto-Resolvable**: Yes  
-**Recommended Strategy**: Semantic Merge
+**Auto-Resolvable**: No — human review and authorization are required  
+**Recommended Strategy**: Evidence-gated review; manual by default
 
 ```yaml
 # Conflict Example
@@ -860,7 +861,7 @@ database:
 >>>>>>> feature/connection-pool
 ```
 
-**Resolution**: Merge all keys
+**Resolution**: Compare the base and both versions; combine keys only when both are required, compatible, tested, and explicitly approved
 ```yaml
 database:
   host: localhost
@@ -882,7 +883,7 @@ database:
    ↓
 3. Get Recommendation
    ↓
-4. Apply Strategy
+4. Obtain Human Authorization and Apply Only the Approved Resolution
    ↓
 5. Record Outcome
    ↓
