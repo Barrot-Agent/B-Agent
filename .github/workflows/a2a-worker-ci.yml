@@ -27,3 +27,5 @@ jobs:
       - name: Test Cloudflare Worker and durable queue
         working-directory: a2a
         run: node --test worker.test.js
+      - name: Validate Wrangler configuration and bundle without deploying
+        run: npx --yes wrangler@4 deploy --dry-run
