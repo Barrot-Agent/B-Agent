@@ -176,6 +176,9 @@ class AudioRenderTests(unittest.TestCase):
             def __iter__(self):
                 return iter(self.values)
 
+            def __len__(self):
+                return self.size
+
         class FakeMidi:
             def __init__(self, path):
                 self.path = path
