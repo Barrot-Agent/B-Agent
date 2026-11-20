@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "run191-supplement",
+  "captured_at_utc": "2026-11-16T15:46:25Z",
+  "sources": {
+    "sec_evernorth_10q_424b3": {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073933/evernorth424stickerposam-1.htm",
+      "filing_date": "2026-11-13",
+      "key_facts": {
+        "gross_cash_at_closing_usd": 272600000,
+        "private_placement_cash_usd": 224600000,
+        "spac_trust_cash_usd": 48000000,
+        "advance_cash_usd": 214049995,
+        "xrp_purchased_with_advance_cash": 84365876,
+        "delayed_cash_commitment_usd": 10500000,
+        "delayed_xrp_commitment": 200000,
+        "in_kind_xrp_reported_at_closing": 388910554,
+        "xrp_held_at_2026_09_30": 346284972,
+        "xrp_transferred_to_pathfinder_after_close": 346484972,
+        "ripple_separate_contribution_to_pathfinder": 126791458,
+        "pathfinder_gross_xrp_from_these_transfers": 473276430,
+        "pubco_ownership_of_pathfinder_percent": 71.5,
+        "convertible_note_principal_usd": 30000000,
+        "convertible_note_net_cash_proceeds_usd": 29000000,
+        "convertible_note_issue_date": "2026-10-13",
+        "convertible_note_pik_rate_percent": 4,
+        "convertible_note_yield_to_put_percent": 8,
+        "warrant_shares_exercised_2026_10_12_to_2026_11_09": 3073366,
+        "warrant_cash_gross_proceeds_usd": 35300000,
+        "warrants_remaining": 8666279,
+        "warrant_exercise_price_usd": 11.5,
+        "eloc_max_shares": 5218935,
+        "eloc_purchase_price_percent_of_vwap": 97,
+        "eloc_draws_or_proceeds_disclosed_in_reviewed_filing": null,
+        "unrestricted_cash_at_2026_09_30_usd": 91397,
+        "net_working_capital_deficit_at_2026_09_30_usd": 10000000,
+        "revenue_generated_as_of_filing": false,
+        "xrp_principal_market_for_accounting": "Coinbase",
+        "initial_post_transaction_custodian": "BitGo Trust"
+      },
+      "interpretation": [
+        "Gross cash proceeds, in-kind XRP, debt and contingent equity facilities are separate categories.",
+        "The $214,049,995 advance cash was used to buy 84,365,876 XRP.",
+        "The 388,910,554 XRP in-kind total includes subscription contributions and Ripple's separate Pathfinder contribution; do not double-count.",
+        "The 473,276,430 XRP Pathfinder-level sum is not fully attributable to Pubco because Pubco disclosed approximately 71.5% ownership of Pathfinder.",
+        "The $35.3M warrant proceeds are actual gross cash but not proof of XRP purchases.",
+        "ELOC capacity is not cash raised; reviewed filing did not quantify draws.",
+        "September 30 cash and working-capital figures are pre-closing historical balances."
+      ]
+    },
+    "ask_coin": {
+      "candidate_identity": "Permission Coin (ASK)",
+      "chain": "Polygon",
+      "contract_address": "0xaa3717090cddc9b227e49d0d84a28ac0a996e6ff",
+      "polygon_scan_label": "Permission: ASK Token",
+      "polygonscan_evidence_url": "https://polygonscan.com/tx/0x077718570383f892c8cf50f6ee483eb855de6210c9fbfabeb164f5d5f333219f",
+      "xrp_or_ripple_relationship": "not established",
+      "confidence": "candidate match; other ASK tokens may exist"
+    },
+    "kamilah_stevenson": {
+      "identity_confidence": "high_but_not_absolute",
+      "channel": "https://www.youtube.com/@drkamilahstevenson",
+      "identity_basis": [
+        "Recorded interview features Dr Kamilah Stevenson self-identifying and stating her YouTube presence is under doctor Camilla Stevenson.",
+        "Public YouTube channel/search results show Kamilah Stevenson / @drkamilahstevenson.",
+        "Creator-uploaded videos are attributed to the same channel handle."
+      ],
+      "videos": [
+        {
+          "type": "creator_upload",
+          "date": "2026-04-07",
+          "url": "https://www.youtube.com/watch?v=Y5rESnxoSIA",
+          "title": "The New XRP Ledger Demand Curve: $24M to $1.8B",
+          "creator_claims": [
+            "RWA growth from $24M to $1.8B",
+            "institutional capital forms a second demand curve"
+          ],
+          "independently_verified": false
+        },
+        {
+          "type": "creator_upload",
+          "date": "2026-05-12",
+          "url": "https://www.youtube.com/watch?v=pFru4idBTMA",
+          "title": "XRPL RWA Settlement Volume Explodes: $3.5B in 30 Days, $900M in One Day",
+          "creator_claims": [
+            "$3.5B 30-day RWA settlement volume",
+            "$900M in one day",
+            "RLUSD above $1B",
+            "daily XRPL payments above 1.7M",
+            "Archax $1B commitment"
+          ],
+          "independently_verified": false
+        },
+        {
+          "type": "guest_appearance",
+          "date": "2026-06-11",
+          "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+          "title": "Paul Barron Podcast interview with Dr Kamilah Stevenson",
+          "creator_channel": "Paul Barron Podcast",
+          "not_her_channel_upload": true
+        }
+      ],
+      "inventory_status": "partial; no claim of exhaustiveness; exclude similarly named channels without cross-verification"
+    },
+    "rwa_xyz_xrp_ledger": {
+      "url": "https://app.rwa-xyz.com/networks",
+      "as_of_date": "2026-11-16",
+      "observation": {
+        "rwa_assets": 456,
+        "distributed_usd": 642837236,
+        "represented_usd": 5208241734,
+        "total_excluding_stablecoins_usd": 5851078970,
+        "distributed_percent": 11,
+        "holders": 2950,
+        "stablecoin_asset_count": 7,
+        "stablecoin_market_cap_usd": 806022011
+      },
+      "interpretation": [
+        "RWA.xyz distinguishes transferable distributed assets from represented assets that cannot move outside issuer platforms.",
+        "The $5.851B balance is not 30-day settlement volume.",
+        "The May 12 creator claim of $3.5B in 30-day settlement volume remains unverified until reconciled to the transfer-volume metric and underlying issuer/ledger data."
+      ]
+    }
+  },
+  "repository": {
+    "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "verified_head_before_supplemental_commit": "55fc66bdf7d8cc376470c964513614f115306c8a",
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "pr": 1663,
+    "commits_ahead": 88,
+    "commits_behind": 0,
+    "changed_files_before_supplemental_commit": 1319,
+    "additions_before_supplemental_commit": 483124,
+    "deletions": 6726,
+    "exact_head_full_suite_run": 43899347417,
+    "exact_head_full_suite": "3830 passed, 1 skipped, 19 subtests passed",
+    "inclusive_coverage_percent": 64.09,
+    "legacy_core_coverage_percent": 77,
+    "dependency_audit_run": 43899347468,
+    "dependency_audit": "passed",
+    "fail_closed_run": 43899347415,
+    "fail_closed": "passed; merge disabled"
+  },
+  "raw_receipts": {
+    "raw_http_bytes_captured": false,
+    "publisher_sha256_receipts_created": false,
+    "model_eligible": false,
+    "note": "This is a research/source ledger with links and structured claims, not a cryptographically verified raw-source receipt set."
+  }
+}

@@ -10,7 +10,9 @@ from .mmi_v1 import (
     ParseState,
     ProvenanceClass,
     SourceRecord,
+    canonical_claim_id,
 )
+from barrot_agent.evolution.source_independence import canonical_publisher_group
 
 
 class MMIExistingSystemsAdapter:
@@ -99,7 +101,17 @@ class MMIExistingSystemsAdapter:
         content: str = "",
         depth: int = 1,
         observed_at: str = "",
+        independence_group: str = "",
     ) -> SourceRecord:
+        resolved_group = canonical_publisher_group(uri)
+        if not resolved_group:
+            raise ValueError("source URI must resolve to an HTTP(S) publisher identity")
+        if (
+            independence_group
+            and independence_group.strip().casefold() != resolved_group.casefold()
+        ):
+            raise ValueError("independence_group must match the URI-derived publisher identity")
+
         content_hash = ""
         if content:
             content_hash = (
@@ -114,6 +126,7 @@ class MMIExistingSystemsAdapter:
             depth=depth,
             content_hash=content_hash,
             observed_at=observed_at,
+            independence_group=resolved_group,
         )
 
     @staticmethod
@@ -126,6 +139,7 @@ class MMIExistingSystemsAdapter:
         independent: bool = False,
         content: str = "",
         observed_at: str = "",
+        claim_id: str = "",
     ) -> EvidenceRecord:
         content_hash = ""
         if content:
@@ -133,6 +147,12 @@ class MMIExistingSystemsAdapter:
                 "sha256:"
                 + sha256(content.encode("utf-8")).hexdigest()
             )
+
+        resolved_claim_id = canonical_claim_id(claim)
+        if not resolved_claim_id:
+            raise ValueError("claim must contain non-empty text")
+        if claim_id and claim_id != resolved_claim_id:
+            raise ValueError("claim_id must match the canonical claim-text fingerprint")
 
         return EvidenceRecord(
             evidence_id=evidence_id,
@@ -142,6 +162,7 @@ class MMIExistingSystemsAdapter:
             independent=independent,
             content_hash=content_hash,
             observed_at=observed_at,
+            claim_id=resolved_claim_id,
         )
 
     def create_record(

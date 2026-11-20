@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "record_id": "nine-platform-capability-authentication-dataflow-map-run126",
+  "observed_at_utc": "2026-11-14T12:06:38Z",
+  "policy": {
+    "no_live_connection_claim_without_tested_authentication_and_data_flow": true,
+    "least_privilege_required": true,
+    "no_external_data_transfer_without_explicit_scope_and_authorization": true,
+    "independent_task_exchange_completed": false,
+    "red_team_quorum_completed": false
+  },
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "GitHub connector authenticated and used in this run",
+      "capabilities_verified": [
+        "read repository metadata and trees",
+        "read PRs and reviews",
+        "read workflows and logs",
+        "commit documentation to existing integration branch"
+      ],
+      "permissions_observed": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": false,
+      "data_flow": "ChatGPT GitHub connector -> GitHub API -> Barrot-Agent/B-Agent; no external model dispatch or third-party data transfer",
+      "status": "AUTHENTICATED_GITHUB_CONNECTOR_OVERPRIVILEGED"
+    },
+    {
+      "name": "Claude",
+      "authentication": "not tested",
+      "capabilities_verified": [],
+      "permissions_observed": [],
+      "data_flow": "none verified",
+      "least_privilege": "unknown",
+      "status": "UNVERIFIED"
+    },
+    {
+      "name": "Grok",
+      "authentication": "not tested",
+      "capabilities_verified": [],
+      "permissions_observed": [],
+      "data_flow": "none verified",
+      "least_privilege": "unknown",
+      "status": "UNVERIFIED"
+    },
+    {
+      "name": "Gemini",
+      "authentication": "not tested",
+      "capabilities_verified": [],
+      "permissions_observed": [],
+      "data_flow": "none verified",
+      "least_privilege": "unknown",
+      "status": "UNVERIFIED"
+    },
+    {
+      "name": "Copilot",
+      "authentication": "no formal PR review or approval observed",
+      "capabilities_verified": [
+        "repository collaboration exists"
+      ],
+      "permissions_observed": [],
+      "data_flow": "no authenticated Copilot-to-Barrot evidence exchange verified",
+      "least_privilege": "unknown",
+      "status": "NO_FORMAL_REVIEW_OBSERVED"
+    },
+    {
+      "name": "Codex",
+      "authentication": "not tested",
+      "capabilities_verified": [],
+      "permissions_observed": [],
+      "data_flow": "none verified",
+      "least_privilege": "unknown",
+      "status": "UNVERIFIED"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "no current authenticated session verified; prior BUILD_ERROR",
+      "capabilities_verified": [],
+      "permissions_observed": [],
+      "data_flow": "no Space deployment or data transfer in this run",
+      "least_privilege": "unknown",
+      "status": "PRIOR_BUILD_ERROR_NO_DEPLOYMENT"
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "not tested",
+      "capabilities_verified": [
+        "integration workflow has per-action download gate"
+      ],
+      "permissions_observed": [],
+      "data_flow": "no Kaggle API submission or dataset download in this run",
+      "least_privilege": "unknown",
+      "status": "UNTESTED_NO_SUBMISSION"
+    },
+    {
+      "name": "Databricks",
+      "authentication": "prior HTTP 403; not retried for writes",
+      "capabilities_verified": [
+        "integration workflow has per-action workspace-import gate"
+      ],
+      "permissions_observed": [],
+      "data_flow": "no workspace write or notebook import in this run",
+      "least_privilege": "unknown",
+      "status": "PRIOR_HTTP_403_NO_WRITE"
+    }
+  ],
+  "coordination": {
+    "independent_task_assignments_executed": [],
+    "structured_evidence_exchange": false,
+    "disagreement_resolution": "evidence-only; aggregator and issuer differences retained",
+    "minority_objections_retained": true,
+    "independent_red_team_review": false,
+    "fallbacks": "Use deterministic local/repository tests and public primary sources when providers are unavailable or unauthenticated."
+  }
+}

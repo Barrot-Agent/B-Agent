@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_kraken_direct_spot_ticker_snapshot",
+  "captured_at_utc": "2026-11-07T03:04:48Z",
+  "asset": "XRP",
+  "venue": "Kraken",
+  "instrument": "XXRPZUSD",
+  "market_type": "spot",
+  "quote_currency": "USD",
+  "source": {
+    "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "source_class": "exchange_primary_public_rest_api",
+    "source_timestamp_utc": null,
+    "retrieved_at_utc": "2026-11-07T03:04:48Z",
+    "exact_response_representation": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.16702000\",\"4085\",\"4085.000\"],\"b\":[\"1.16701000\",\"1557\",\"1557.000\"],\"c\":[\"1.16702000\",\"200.00000000\"],\"v\":[\"1083212.34205451\",\"28038383.03545056\"],\"p\":[\"1.17496945\",\"1.18564059\"],\"t\":[2191,33367],\"l\":[\"1.16599000\",\"1.16599000\"],\"h\":[\"1.18109000\",\"1.21800000\"],\"o\":\"1.17749000\"}}}",
+    "exact_response_representation_sha256": "5276e8e895f29b69a1a1374a931f3bb9798acd1b7028fd5dfb6ed5cf06ee5cb9",
+    "hash_scope": "Exact JSON text returned by the web retrieval result; not independently captured original HTTP wire bytes or headers."
+  },
+  "observation": {
+    "last_usd": 1.16702,
+    "best_bid_usd": 1.16701,
+    "best_ask_usd": 1.16702,
+    "top_of_book_spread_usd": 0.00001,
+    "top_of_book_spread_bps": 0.08568870151492025,
+    "last_trade_volume_xrp": 200,
+    "volume_today_xrp": 1083212.34205451,
+    "volume_24h_xrp": 28038383.03545056,
+    "vwap_today_usd": 1.17496945,
+    "vwap_24h_usd": 1.18564059,
+    "trades_today": 2191,
+    "trades_24h": 33367,
+    "low_today_usd": 1.16599,
+    "low_24h_usd": 1.16599,
+    "high_today_usd": 1.18109,
+    "high_24h_usd": 1.218,
+    "utc_daily_open_usd": 1.17749,
+    "last_vs_24h_vwap_pct": -1.5705088166726857,
+    "last_vs_utc_daily_open_pct": -0.8891795259407707
+  },
+  "field_semantics": {
+    "ticker_field_o": "UTC daily open; not a rolling 24-hour open.",
+    "ticker_field_v_second_element": "rolling 24-hour base-asset volume in XRP.",
+    "ticker_field_p_second_element": "rolling 24-hour VWAP in USD.",
+    "ticker_field_l_second_element": "rolling 24-hour low in USD.",
+    "ticker_field_h_second_element": "rolling 24-hour high in USD."
+  },
+  "limitations": [
+    "No provider event timestamp is present in the response; retrieval time is not event time.",
+    "Only ticker and Level-1 bid/ask are captured; no multi-level order-book depth.",
+    "One venue and one capture cannot establish consolidated liquidity or market direction.",
+    "The quote is not synchronized to the earlier Binance and CoinGecko rendered pages.",
+    "The response hash covers the exact JSON text returned by the retrieval layer, not raw HTTP wire bytes or headers."
+  ],
+  "model_admission": {
+    "eligible": false,
+    "reasons": [
+      "Single-venue snapshot only.",
+      "No provider timestamp.",
+      "No synchronized multi-venue depth.",
+      "No historical point-in-time join or independent source-group corroboration."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": null,
+    "shadow_forecast": null,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  }
+}

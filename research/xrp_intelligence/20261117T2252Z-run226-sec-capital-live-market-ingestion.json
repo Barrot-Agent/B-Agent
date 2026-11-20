@@ -1,0 +1,226 @@
+{
+  "schema_version": "barrot.xrp.research-evidence.v1",
+  "artifact_id": "20261117T2252Z-run226-sec-capital-live-market-ingestion",
+  "created_at_utc": "2026-11-17T23:00:00Z",
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "c54447c320ba2efd783659c7685e969de45e90b0",
+    "tested_integration_code_head": "678b12bb09f0add7a9bedfa65de00d7040b660af",
+    "pr_number": 1663,
+    "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z"
+  },
+  "ingestion": {
+    "run_id": 44194148689,
+    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44194148689",
+    "event": "push",
+    "result": "success",
+    "data_cutoff_utc": "2026-11-17T22:52:25.991475Z",
+    "receipts": {
+      "count": 31,
+      "raw_retained": 19,
+      "digest_only": 12,
+      "unique_capture_timestamps": 31,
+      "capture_window_utc": [
+        "2026-11-17T22:52:15.645636Z",
+        "2026-11-17T22:52:25.991475Z"
+      ]
+    },
+    "chain": {
+      "verification": "PASS",
+      "sequence": 4,
+      "continuity_verified": true,
+      "previous_run_id": 44193292097,
+      "external_anchor": "NOT_ANCHORED",
+      "independent_timestamp_authority": false,
+      "receipt_log_sha256": "3994614438daa56c0cf6215ba9702c3daca2ddfdc609b3f611f7b5b07ab94179",
+      "chain_log_sha256": "e72205cb636cd5aa83a72baea8bb1c402871803da39c989183a0dd538116f4d7",
+      "chain_head_sha256": "084a60b5d11d372fe1bdbcc815b756b5123d33d51292ca786270bacdd54632af",
+      "manifest_sha256": "64e17e65416c30839b00729a7acb60740eb00b40ed6308a2d1e3ff5cd6cba974",
+      "cross_run_chain_sha256": "e3a7b57ace819f6c31a8ff325d75749d2f34a6a52fe151d5dae9153bd6ecca8e"
+    },
+    "feature_store": {
+      "snapshot_id": "8c54929630ec7ef7f292beb80c25859381ad114c4d09b0827a789d8223012109",
+      "cutoff_utc": "2026-11-17T22:52:26.007913Z",
+      "eligible_records": 82,
+      "excluded_records": 378,
+      "sources": 8,
+      "independence_groups": [
+        "bitbank",
+        "coinbase",
+        "kraken",
+        "okx"
+      ],
+      "cumulative_snapshots": 4,
+      "cumulative_feature_records": 2010,
+      "history_note": "The first 1,747 records are Coinbase-only by publisher group; the last three snapshots add four venue groups. Feature records are not independent training samples."
+    },
+    "spot": {
+      "coinbase": {
+        "mid_usd": 0.9707,
+        "last_usd": 0.9708,
+        "volume_24h_xrp": 81237395.442364,
+        "bid_depth_50bps_usd": 1729991.411995,
+        "ask_depth_50bps_usd": 1876614.628285,
+        "imbalance_pct": -4.065407,
+        "book_spread_bps": 1.030025,
+        "receipts": {
+          "ticker": "d9b1fac25dbd77fe1ac88803a459ef081e72bb918fd4882e7f933f81000e51f7",
+          "book": "2ae111e701f150b5ea45a65c316d2346a24f859b0d8273ffe77f8e50d002ff0a"
+        }
+      },
+      "kraken": {
+        "mid_usd": 0.970715,
+        "volume_24h_xrp": 37032134.745656,
+        "bid_depth_50bps_usd": 2709924.066961,
+        "ask_depth_50bps_usd": 2138574.273296,
+        "imbalance_pct": 11.784057,
+        "book_spread_bps": 0.206033,
+        "receipts": {
+          "ticker": "4a4829046615cbbc3e1e85c92339f0b1cbde8196e6427b4875f86490573f1ff5",
+          "depth": "e021d3fbac9962b8dd308a0f98b56a50e253bd34904c0c7d68e3473d7e9a987a"
+        }
+      },
+      "okx": {
+        "mid_usdt": 0.97185,
+        "usd_normalized_mid": 0.9708830095,
+        "usdt_usd_mid": 0.999005,
+        "volume_24h_xrp": 34066650.395538,
+        "bid_depth_50bps_usdt": 992457.930468,
+        "ask_depth_50bps_usdt": 1163955.406516,
+        "imbalance_pct": -7.952904,
+        "receipts": {
+          "ticker": "bef174ca2e3c7ae9ce06c2cfa8c193eb00e1663c922d9529d548f2d206993ab5",
+          "depth": "8002b2ae20f084538a1a4b9f354a15b8ec6ca1bdba0c4a63236599201226108b",
+          "usdt_usd": "0994d4fbce912ca3813c01ff4b9f9ee015f1dc51c8fb2063b126524921b26024"
+        }
+      },
+      "bitbank": {
+        "last_jpy": 154.899,
+        "volume_24h_xrp": 4603418.4564,
+        "fx_normalization": "not performed"
+      },
+      "cross_venue_mid_dispersion_pct": 0.018853,
+      "interpretation": "Coinbase, Kraken and OKX USD-normalized mids converged within 0.019%; depth imbalance was mixed by venue. Do not sum depth or mix USD, USDT and JPY."
+    },
+    "coverage": {
+      "source_failures": 20,
+      "categories": {
+        "http_451": 8,
+        "http_403": 5,
+        "processing": 6,
+        "http_429": 1
+      },
+      "raw_only_sources": 22,
+      "receipt_complete": false,
+      "deribit_raw_only": true,
+      "drift_status": "INSUFFICIENT_DATA",
+      "drift_features": 104,
+      "event_count": 140,
+      "scenario_count": 107,
+      "forecast_status": "NOT_ISSUED",
+      "model_eligible": false,
+      "directional_forecast": false
+    },
+    "retention": {
+      "raw_artifacts_days": 90,
+      "feature_store_checkpoint_days": 7,
+      "worm": false
+    }
+  },
+  "evernorth_sec": {
+    "sources": [
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/xrpn-20261009.htm",
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/evernorth-proforma20260930.htm",
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/pf20260930-8xka.htm"
+    ],
+    "filed_dates": {
+      "form_10q": "2026-11-13",
+      "form_8ka": "2026-11-16"
+    },
+    "closing_date": "2026-10-09",
+    "closing_xrp_price_usd": 1.43069,
+    "xrp_components": {
+      "evernorth_sep30": 346284972,
+      "cash_used_usd": 214049995,
+      "cash_purchased_xrp": 84365876,
+      "advance_funding_xrp": 600000,
+      "rippleworks_arrington_xrp": 211319096,
+      "ripple_affiliated_entity_xrp": 50000000,
+      "ripple_pathfinder_xrp": 126791458,
+      "delayed_funding_xrp": 200000,
+      "derived_post_close_total_xrp": 473276430,
+      "in_kind_total_at_close": 388910554
+    },
+    "no_double_counting": "388.910554M in-kind overlaps the 261.919096M Pubco XRP already inside the 346.284972M September holding, plus 126.791458M Ripple-to-Pathfinder and 0.2M delayed XRP. Do not add the 388.910554M to the 346.284972M.",
+    "financials": {
+      "gross_closing_cash_before_expenses_usd": 272600000,
+      "pro_forma_cash_as_if_sep30_usd": 76026881,
+      "pro_forma_digital_assets_net_usd": 342223364,
+      "pro_forma_total_assets_usd": 418593216,
+      "pro_forma_total_liabilities_usd": 46276445,
+      "spac_redemptions_usd": 195400000,
+      "precombination_cash_sep30_usd": 91397,
+      "current_nov17_cash": "NOT_DISCLOSED",
+      "q3_net_income_usd": 155264700,
+      "nine_month_net_loss_usd": 32870033,
+      "q3_non_cash_fair_value_gain_usd": 162834432,
+      "nine_month_non_cash_fair_value_gain_usd": 240311432,
+      "impairment_2025_usd": 233650642,
+      "impairment_2026_9m_usd": 271037170,
+      "cumulative_impairment_usd": 504687812,
+      "sep30_carrying_value_usd": 341887231,
+      "revenue_generated": false
+    },
+    "financing": {
+      "convertible_note_principal_usd": 30000000,
+      "convertible_note_net_proceeds_usd": 29000000,
+      "warrant_exercise_gross_through_nov9_usd": 35300000,
+      "eloc_max_shares": 5218935,
+      "eloc_price_pct_vwap": 97,
+      "eloc_actual_proceeds": "NOT_QUANTIFIED"
+    },
+    "ownership": {
+      "sbi_class_a_cap_pct": 39.9,
+      "sbi_excess_class_c_shares": 2359038,
+      "sbi_cash_share_of_214m_pool": "NOT_SEPARATELY_ITEMIZED",
+      "ripple_related_class_a_cap_pct": 9.9,
+      "arrington_voting_cap_pct": 19.9
+    },
+    "strategy": "Evernorth disclosed no active XRP trading, but may sell XRP for corporate purposes, use XRP as collateral or deploy yield strategies. Pathfinder can liquidate Ripple's 126.791M XRP contribution for operating costs. No current sale or collateral deployment was established. Initial custodian: BitGo Trust; Coinbase is selected principal market for valuation."
+  },
+  "institutional_updates": {
+    "standard_chartered_rlusd": {
+      "date": "2026-10-12",
+      "url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "status": "RLUSD custody on XRPL live through DFSA-regulated DIFC branch",
+      "lmax_collateral": "Planned; subject to documents, testing, law, internal approval and jurisdictional readiness; not live."
+    },
+    "ripple_prime_rwa_perps": {
+      "date": "2026-10-15",
+      "url": "https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/",
+      "status": "100+ reference markets; institutional RWA perpetual infrastructure, not evidence of XRP-specific demand."
+    },
+    "network": [
+      "Coinbase-Circle: USDC distribution economics; Circle reported $331.3M Q3 and $986.6M nine-month distribution costs to Coinbase.",
+      "Coinbase-Ripple/Evernorth: RLUSD distribution and Coinbase principal-market valuation role.",
+      "SBI-Ripple: Evernorth subscriptions, SBI VC Trade RLUSD distribution, separate XRP remittance corridors.",
+      "SBI-Circle: $50M investment and Japan USDC JV; separate from SBI-Ripple.",
+      "Ripple-BNY: RLUSD reserve custody and institutional XRP/RLUSD custody; not proprietary accumulation."
+    ]
+  },
+  "research_context": {
+    "etf_flows": "November 16 trackers conflict and are incomplete: one reports partial outflow, another zero with only a subset of funds reported; XRP Insights row provisional. No aggregate flow sign admitted.",
+    "macro": "Reuters November 17 reported stronger USD, hawkish rate expectations and technology risk aversion; contextual only, no causal XRP claim.",
+    "exact_phrases": {
+      "ask_coin": "Permission.io ASK token; no verified XRP link.",
+      "actual_capital": "Separate cash, cash-funded XRP, in-kind XRP, noncash gains/impairments, pro-forma cash and optional financing.",
+      "sbic_chatgpt": "SBIC East/Central/West are not SBI Holdings; training is not OpenAI partnership.",
+      "kamilah_stevenson": "No verified official YouTube channel cross-link; no videos attributed."
+    }
+  },
+  "prediction": {
+    "forecast_issued": false,
+    "reason": "Incomplete source receipts, blocked derivatives sources, raw-only Deribit, ETF/Morpho processing errors, digest-only exchange balances, insufficient drift history and no adequate leakage-safe out-of-sample calibration."
+  }
+}

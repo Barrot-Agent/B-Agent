@@ -1,0 +1,567 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot.xrp.research_run",
+  "run_id": "Run45",
+  "capture_window_utc": [
+    "2026-11-12T03:26:00Z",
+    "2026-11-12T03:47:48Z"
+  ],
+  "mission": {
+    "priority": 1,
+    "primary": "XRP intelligence and measured prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository": {
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "integration_head_before_docs_update": "c321c98cfe0a4ff95aa5b29f7fba13d9448030bc",
+    "ahead_by": 2080,
+    "behind_by": 0,
+    "tree_entries": 2302,
+    "tree_files": 2193,
+    "changed_files": 1043,
+    "workflow_files_changed": 49,
+    "non_workflow_paths": 994,
+    "open_prs": 374,
+    "drafts": 360,
+    "non_drafts": 14,
+    "pr": 1661,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_mergeable": true,
+    "pr_mergeable_state": "clean",
+    "formal_reviews": 0,
+    "approvals": 0,
+    "review_threads": 0
+  },
+  "ci": {
+    "failed_intermediate_head": {
+      "sha": "3e5db0041452ef8ffca2778cfcdb53ac29b1b5a2",
+      "run_id": 43149722450,
+      "passed": 3494,
+      "failed": 6,
+      "root_cause": "The hardening tests were included but the intended event_timeline.py blob was not in the tree; corrected without weakening tests."
+    },
+    "corrected_code_head": "c321c98cfe0a4ff95aa5b29f7fba13d9448030bc",
+    "full_suite_run": 43150194765,
+    "full_suite_job": 130957286262,
+    "full_suite": {
+      "passed": 3500,
+      "failed": 0,
+      "subtests": 8,
+      "coverage_percent": 61.31,
+      "coverage_floor_percent": 53,
+      "duration_seconds": 80.87,
+      "wheel_build_verified": true,
+      "installed_mission_verified": true
+    },
+    "core_suite": {
+      "job_id": 130957285970,
+      "passed": 716,
+      "failed": 0,
+      "subtests": 8
+    },
+    "dependency_audit": {
+      "run_id": 43150194806,
+      "job_id": 130957286725,
+      "passed": true,
+      "manifests": 6,
+      "known_vulnerabilities_reported": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43150194908,
+      "job_id": 130957286962,
+      "passed": true,
+      "automatic_merge_enabled": false
+    }
+  },
+  "event_timeline": {
+    "module": "barrot_agent/evolution/event_timeline.py",
+    "exported": true,
+    "tests": 21,
+    "all_tests_passed": true,
+    "point_in_time_safe": true,
+    "excluded_event_provenance_preserved": true,
+    "source_validation_before_cutoff_exclusion": true,
+    "minority_objections_preserved": true,
+    "forecast_status": "NOT_ISSUED",
+    "model_eligible": false,
+    "canonical_event_registry_present": false,
+    "scheduled_collector_wired": false,
+    "worm_anchor_present": false
+  },
+  "research": {
+    "market": {
+      "capture_window_utc": [
+        "2026-11-12T03:26:00Z",
+        "2026-11-12T03:47:48Z"
+      ],
+      "raw_byte_receipt_captured": false,
+      "model_eligible": false,
+      "spot": {
+        "okx": {
+          "last": 1.0465,
+          "bid": 1.0465,
+          "ask": 1.0466,
+          "event_time_utc": "2026-11-12T03:14:49.567Z",
+          "volume_24h_xrp": 39293844.789096,
+          "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+          "group": "exchange:okx"
+        },
+        "kraken": {
+          "last": 1.04543,
+          "bid": 1.04543,
+          "ask": 1.04553,
+          "event_time_utc": null,
+          "volume_24h_xrp": 21692006.30062262,
+          "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+          "group": "exchange:kraken"
+        },
+        "usdt_usd": {
+          "bid": 0.99869,
+          "ask": 0.9987,
+          "mid": 0.998695,
+          "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD"
+        },
+        "normalized_okx_mid_usd": 1.045184,
+        "kraken_mid_usd": 1.04548,
+        "gap_percent": -0.0283,
+        "aggregator_index_usd": 1.0466,
+        "aggregator_index_as_of_utc": "2026-11-12T03:36:00Z",
+        "freshness_warning": "Second retrieval repeated identical OKX/Kraken payloads; OKX event time remained 03:14:49.567Z and Kraken supplies no event timestamp. Treat direct quotes as stale/cached."
+      },
+      "spot_orderbook": {
+        "source": "Fuelmaps",
+        "group": "aggregator:fuelmaps",
+        "url": "https://fuelmaps.io/order-book/",
+        "as_of_utc": "2026-11-12T03:00:00Z",
+        "mid_usd": 1.05,
+        "venues": [
+          "Coinbase",
+          "OKX",
+          "Kraken",
+          "Bitstamp",
+          "Bitfinex",
+          "Gemini"
+        ],
+        "depth_usd": {
+          "0.5%": {
+            "bids": 7100000,
+            "asks": 7200000
+          },
+          "1%": {
+            "bids": 13800000,
+            "asks": 12000000
+          },
+          "2%": {
+            "bids": 19400000,
+            "asks": 13300000
+          },
+          "5%": {
+            "bids": 29700000,
+            "asks": 15800000
+          },
+          "10%": {
+            "bids": 35100000,
+            "asks": 16900000
+          }
+        },
+        "caveats": [
+          "Hourly-averaged resting orders; cancellable.",
+          "Binance and Bitget excluded.",
+          "Spot depth, not futures depth or executed volume."
+        ]
+      },
+      "derivatives": {
+        "coinalyze": {
+          "as_of_utc": "2026-11-12T03:15:00Z",
+          "group": "aggregator:coinalyze",
+          "url": "https://bitcoinleverage.com/xrp",
+          "coverage": "Binance and Bybit XRPUSDT only; 2 of 22 listed contracts",
+          "oi_usd": 576660000,
+          "binance_oi_usd": 315420000,
+          "bybit_oi_usd": 261240000,
+          "funding_8h_percent": {
+            "binance": 0.00446,
+            "bybit": 0.007883
+          },
+          "long_account_percent": {
+            "binance": 75.23,
+            "bybit": 81.45
+          }
+        },
+        "tradradar": {
+          "as_of_utc": "2026-11-11T19:05:00Z",
+          "group": "aggregator:tradradar",
+          "url": "https://tradradar.io/markets/xrp",
+          "coverage": "Seven exchanges",
+          "oi_usd": 1570000000,
+          "funding_8h_percent": 0.0045,
+          "long_account_percent": 79.7,
+          "liquidations_24h_usd_at_least": 2850000
+        },
+        "disagreement": "Different venue coverage and vintages; do not average. Account ratios are not notional exposure."
+      },
+      "options": {
+        "source": "OptimistFi/Deribit",
+        "group": "aggregator:optimistfi",
+        "url": "https://optimistfi.com/perps/options/xrp",
+        "as_of_utc": "2026-11-12T00:00:00Z",
+        "atm_iv_30d_percent": 57.5,
+        "skew_25d_points": -0.1,
+        "put_call_ratio": 0.55,
+        "dec25_oi_usd": 46900000,
+        "interpretation": "Near-expiry puts richer; Dec/Mar modestly call-rich; mixed term structure."
+      },
+      "etf": {
+        "source": "Alpha Finance",
+        "group": "aggregator:alpha-finance",
+        "url": "https://alphafinance.io/etf/xrp/",
+        "completed_day": "2026-11-10",
+        "funds": 5,
+        "nov10_usd": -7600000,
+        "nov9_usd": -10400000,
+        "seven_sessions_usd": -18000000,
+        "thirty_sessions_usd": 1300000,
+        "cumulative_usd": 1710000000,
+        "warning": "Nov11 incomplete; fund universes must not be mixed."
+      },
+      "exchange_balances": {
+        "source": "XRP Insights",
+        "group": "aggregator:xrp-insights",
+        "url": "https://xrp-insights.com/exchange-balances",
+        "as_of_utc": "2026-11-11T08:00:00Z",
+        "xrp": 22330000000,
+        "wallets": 701,
+        "exchanges": 24,
+        "same_wallet_7d_change": 1300000,
+        "same_wallet_30d_change": -155700000,
+        "cold_storage_included": true,
+        "wrapped_backing_included_xrp": 480500000,
+        "warning": "Attributed wallets, not tradable float."
+      },
+      "tracked_flows": {
+        "source": "TrackWhale",
+        "group": "aggregator:trackwhale",
+        "url": "https://trackwhale.io/xrp-whale-tracker",
+        "as_of_utc": "2026-11-12T03:26:00Z",
+        "inflows_7d_xrp": 166830000,
+        "outflows_7d_xrp": 221610000,
+        "net_7d_xrp": -54780000,
+        "largest_transfer_xrp": 168420000,
+        "largest_transfer_attribution": "unknown",
+        "warning": "Tracked large transfers, not comprehensive exchange reserves."
+      },
+      "xrpl_lending": {
+        "source": "xrpldashboard own-node roll call",
+        "group": "independent_node:xrpldashboard",
+        "url": "https://xrpldashboard.com/amendments",
+        "as_of_utc": "2026-11-12T03:31:00Z",
+        "validators_heard": 35,
+        "threshold": 29,
+        "lending_protocol_yes": 22,
+        "single_asset_vault_yes": 23,
+        "lending_v1_1_yes": 22,
+        "activation_countdown": false,
+        "interpretation": "XLS-66 inactive; uncollateralized fixed-term loans with off-chain underwriting. Vault deposits are funding, not borrower collateral."
+      }
+    },
+    "evernorth_sec": {
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "closing_xrp": {
+        "cash_purchased_xrp": 84365876,
+        "average_cost_usd": 2.53657058,
+        "cash_purchase_cost_approx_usd": 214000000,
+        "in_kind_xrp": 388910554,
+        "total_xrp": 473276430,
+        "in_kind_share_percent": 82.17,
+        "cash_purchased_share_percent": 17.83
+      },
+      "gross_cash": {
+        "gross_closing_cash_usd": 272600000,
+        "private_placement_cash_usd": 224600000,
+        "trust_account_release_usd": 48000000,
+        "private_placement_cash_used_to_buy_xrp_usd": 214100000,
+        "advance_pool_usd": 214050000,
+        "sbi_200m_included_not_additive": true
+      },
+      "cash_tranche_sensitivity": {
+        "spot_reference_usd": 1.04548,
+        "implied_value_usd": 88202836,
+        "approx_cost_usd": 214000000,
+        "indicative_gap_usd": 125797163,
+        "percent_below_cost": 58.78,
+        "caveat": "Not realized loss, not whole treasury, not proof of forced sale; accounting is cost less impairment."
+      },
+      "in_kind_sources_xrp": {
+        "rippleworks_via_arrington": 211319096,
+        "ripple_direct_to_pathfinder": 126791458,
+        "larsen_lam_trust": 50000000,
+        "subscriber_in_kind_total": 800000
+      },
+      "financial_entities": {
+        "pubco": {
+          "name": "Evernorth Holdings Inc.",
+          "cash_usd": 97745,
+          "working_capital_deficit_usd": 696100000,
+          "accumulated_deficit_usd": 340900000,
+          "six_month_operating_loss_usd": 265600000,
+          "six_month_net_loss_usd": 188100000,
+          "operating_cash_used_usd": 1330000,
+          "noncash_impairment_usd": 264100000,
+          "fair_value_gain_on_refundable_advances_usd": 77500000
+        },
+        "subsidiary": {
+          "name": "Pathfinder Digital Assets LLC",
+          "cash_usd": 789682,
+          "working_capital_deficit_usd": 3700000,
+          "accumulated_deficit_usd": 3100000,
+          "six_month_operating_loss_usd": 2200000,
+          "operating_cash_used_usd": 2138000
+        }
+      },
+      "facilities": {
+        "pathfinder_limit_usd": 10000000,
+        "pathfinder_drawn_as_of_2026_10_07_usd": 9700000,
+        "pathfinder_rate_percent": 3.81,
+        "pathfinder_repayment_terms": "Within five business days after Closing or earlier on five business days' notice from Ripple; post-close status unknown.",
+        "parent_facility_limit_usd": 1000000,
+        "parent_facility_undrawn_as_of_2026_06_30": true,
+        "pik_note_usd": 30000000,
+        "pik_rate_percent": 4,
+        "pik_maturity_year": 2031,
+        "eloc_max_shares": 5218935,
+        "eloc_price": "97% VWAP subject to conditions",
+        "eloc_proceeds_as_of_prospectus_usd": 0
+      },
+      "resale": {
+        "registered_shares_total": 73688162,
+        "issued_class_a_registered": 19102635,
+        "potential_class_c_conversions": 31392746,
+        "potential_company_unit_redemptions": 22953128,
+        "sponsor_warrant_shares": 239653,
+        "class_a_outstanding_as_of_2026_10_22": 26094680,
+        "sbi_registered_total": 11790952,
+        "sbi_existing_class_a": 9431914,
+        "sbi_potential_class_c": 2359038,
+        "sbi_existing_class_a_percent_of_outstanding": 36.14,
+        "sbi_entities": {
+          "SBI Holdings USA": 8162967,
+          "SBI Venture Fund 2023A": 247603,
+          "SBI Venture Fund 2023B": 357061,
+          "SBI PE Holdings": 3023321
+        },
+        "secondary_resale_proceeds_to_evernorth_usd": 0,
+        "lockup": "Exact SBI lock-up coverage unresolved; do not assume immediate resale or confirmed lock-up."
+      },
+      "coinbase_relationship": {
+        "selected_as_principal_market_for_xrp_financial_reporting": true,
+        "reason": "Management-selected principal market based on market volume/activity/accessibility.",
+        "company_says_it_does_not_actively_trade_xrp": true,
+        "meaning": "Accounting valuation-market designation; not proof of custody or active execution."
+      },
+      "strategy_disclosures": [
+        "May sell XRP for corporate purposes or strategy.",
+        "May consider secured financing using XRP as collateral.",
+        "May explore yield-generating strategies.",
+        "May make additional at-market purchases."
+      ],
+      "filing_discrepancy": {
+        "sec_424b3_delayed_funding_class_a_shares": 1078613,
+        "press_release_shares": 1078614,
+        "difference": 1
+      }
+    },
+    "identity_and_corporate": {
+      "sbic": {
+        "east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "legal_basis": "Japan statute defines three regional SME investment/consultation companies.",
+        "distinct_from_sbi_holdings": true,
+        "tokyo_chatgpt": "Official investee-company training, not an OpenAI partnership."
+      },
+      "softbank_openai": {
+        "entity": "SB OAI Japan GK",
+        "relationship": "Separate SoftBank/OpenAI joint-venture structure; not SBI Holdings and not SBIC East/Central/West.",
+        "softbank_openai_investment": "SoftBank Group disclosed approximately $64.6B cumulative OpenAI investment and approximately 13% ownership as of 2026-10-01.",
+        "inference": "Possible name confusion, not proven origin of the exact phrase."
+      },
+      "ask_coin": {
+        "candidate": "Permission Coin (ASK)",
+        "secondary_listing_ucid": 7105,
+        "reported_networks": [
+          "Base",
+          "Polygon"
+        ],
+        "reported_standard": "LayerZero OFT-20",
+        "xrpl_integration": "Not verified",
+        "separate_askcoin_ucid": 4640
+      },
+      "stevenson_youtube": {
+        "first_party_identity_verified": false,
+        "camilla_and_kamilah_assumed_same": false,
+        "attributed_videos": 0
+      },
+      "actual_capital": "Not a standardized XRP metric; use gross cash, private-placement cash, cash-purchased XRP, in-kind XRP, debt, facilities, ELOC capacity and shareholder resales."
+    }
+  },
+  "source_independence": {
+    "groups": [
+      "exchange:okx",
+      "exchange:kraken",
+      "aggregator:fuelmaps",
+      "aggregator:coinalyze",
+      "aggregator:tradradar",
+      "aggregator:optimistfi",
+      "aggregator:alpha-finance",
+      "aggregator:xrp-insights",
+      "aggregator:trackwhale",
+      "independent_node:xrpldashboard",
+      "primary:sec.gov",
+      "primary:softbank-group",
+      "primary:sbic-tokyo",
+      "primary:sbic-west",
+      "primary:japan-law",
+      "secondary:coinmarketcap"
+    ],
+    "rules": [
+      "Do not average OI across different contract universes.",
+      "Do not equate attributed exchange wallets with tradable float.",
+      "Do not equate tracked large transfers with exchange reserves.",
+      "Do not equate cumulative ETF net flows with current AUM.",
+      "Do not treat XRPN share resales as XRP token sales."
+    ]
+  },
+  "security": {
+    "connector_permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "pull": true,
+      "triage": true,
+      "least_privilege_met": false
+    },
+    "branch_protection_detail": "HTTP 403",
+    "fallback_ruleset": "disabled",
+    "credential_path_absent_from_main_integration_and_17_affected_pr_file_inventories": true,
+    "provider_side_oauth_revocation_verified": false,
+    "pages_publication_authorized": false
+  },
+  "platform_status": {
+    "ChatGPT": "GitHub API verified; connector permissions overprivileged",
+    "Claude": "authentication/data flow unverified",
+    "Grok": "authentication/data flow unverified",
+    "Gemini": "authentication/data flow unverified",
+    "Copilot": "no formal PR approval",
+    "Codex": "authentication/data flow unverified",
+    "HuggingFace": "BUILD_ERROR",
+    "Kaggle": "untested; no submission",
+    "Databricks": "HTTP 403; no write",
+    "LunaRoute": "repository-declared canonical brain; endpoint authentication/data flow unverified"
+  },
+  "sources": [
+    {
+      "publisher": "SEC",
+      "group": "primary:sec.gov",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+      "publication_date": "2026-11-09"
+    },
+    {
+      "publisher": "SoftBank Group",
+      "group": "primary:softbank-group",
+      "reference": "turn125177search0",
+      "publication_date": "2025-02-03"
+    },
+    {
+      "publisher": "SoftBank Group",
+      "group": "primary:softbank-group",
+      "reference": "turn252904search0",
+      "publication_date": "2026-10-01"
+    },
+    {
+      "publisher": "Tokyo SBIC",
+      "group": "primary:sbic-tokyo",
+      "reference": "turn754552search0",
+      "publication_date": "2025-06-12"
+    },
+    {
+      "publisher": "SBIC West",
+      "group": "primary:sbic-west",
+      "reference": "turn754552search6"
+    },
+    {
+      "publisher": "Japan statute",
+      "group": "primary:japan-law",
+      "reference": "turn400358search3"
+    },
+    {
+      "publisher": "CoinMarketCap",
+      "group": "secondary:coinmarketcap",
+      "reference": "turn206857search0"
+    },
+    {
+      "publisher": "OKX",
+      "group": "exchange:okx",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT"
+    },
+    {
+      "publisher": "Kraken",
+      "group": "exchange:kraken",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD"
+    },
+    {
+      "publisher": "Fuelmaps",
+      "group": "aggregator:fuelmaps",
+      "url": "https://fuelmaps.io/order-book/"
+    },
+    {
+      "publisher": "Coinalyze",
+      "group": "aggregator:coinalyze",
+      "url": "https://bitcoinleverage.com/xrp"
+    },
+    {
+      "publisher": "TradRadar",
+      "group": "aggregator:tradradar",
+      "url": "https://tradradar.io/markets/xrp"
+    },
+    {
+      "publisher": "OptimistFi/Deribit",
+      "group": "aggregator:optimistfi",
+      "url": "https://optimistfi.com/perps/options/xrp"
+    },
+    {
+      "publisher": "Alpha Finance",
+      "group": "aggregator:alpha-finance",
+      "url": "https://alphafinance.io/etf/xrp/"
+    },
+    {
+      "publisher": "XRP Insights",
+      "group": "aggregator:xrp-insights",
+      "url": "https://xrp-insights.com/exchange-balances"
+    },
+    {
+      "publisher": "TrackWhale",
+      "group": "aggregator:trackwhale",
+      "url": "https://trackwhale.io/xrp-whale-tracker"
+    },
+    {
+      "publisher": "xrpldashboard",
+      "group": "independent_node:xrpldashboard",
+      "url": "https://xrpldashboard.com/amendments"
+    }
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": false,
+    "paper_trade": false,
+    "real_money_action": false
+  },
+  "next_actions": [
+    "Create a validated primary-source event registry with raw receipts and point-in-time availability/capture times.",
+    "Wire the event registry into scheduled ingestion and emit deterministic event-timeline artifacts.",
+    "Implement independent WORM/timestamp anchoring and replayable feature-store reconstruction.",
+    "Continue semantic review and resolve least-privilege, branch-protection, credential-owner revocation and Pages authorization."
+  ]
+}

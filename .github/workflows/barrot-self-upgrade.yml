@@ -1,63 +1,16 @@
-name: Barrot Self-Upgrade (approved candidate generation)
+name: Barrot Self-Upgrade (quarantined pending integration-first authorization)
 
 on:
-  workflow_dispatch:
-    inputs:
-      confirm_external_change:
-        description: "Set to YES only after explicit approval to create a candidate branch and pull request"
-        required: true
-        type: choice
-        options:
-          - NO
-          - YES
-        default: NO
+  workflow_dispatch: {}
 
-permissions:
-  contents: write
-  pull-requests: write
-
-concurrency:
-  group: barrot-self-upgrade
-  cancel-in-progress: false
+permissions: {}
 
 jobs:
-  audit_and_upgrade:
-    if: ${{ inputs.confirm_external_change == 'YES' }}
+  disabled:
+    if: ${{ false }}
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Checkout the dispatched ref
-        uses: actions/checkout@v7
-        with:
-          ref: ${{ github.ref_name }}
-          fetch-depth: 0
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.11"
-      - name: Configure Git identity
+      - name: Explain quarantine
         run: |
-          git config user.name "Barrot Self-Upgrade"
-          git config user.email "barrot-self-upgrade@users.noreply.github.com"
-      - name: Record origin/main before the run
-        run: echo "MAIN_BEFORE=$(git ls-remote origin refs/heads/main | cut -f1)" >> "$GITHUB_ENV"
-      - name: Capability audit
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python3 scripts/barrot_capability_audit.py
-      - name: Generate and open review-only candidate PR
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python3 scripts/barrot_self_upgrade.py
-      - name: Verify the run did not write main
-        run: |
-          main_after="$(git ls-remote origin refs/heads/main | cut -f1)"
-          echo "origin/main before: ${MAIN_BEFORE}"
-          echo "origin/main after:  ${main_after}"
-          test -n "${MAIN_BEFORE}"
-          test "${main_after}" = "${MAIN_BEFORE}"
-          echo "current branch: $(git branch --show-current)"
-          git status --short
-          echo "origin/main is unchanged: no merge or main-branch write was performed."
+          echo "Autonomous branch/PR generation is disabled until it searches the complete open-PR inventory, reuses the existing integration branch, and enforces one active PR per coherent workstream."
+          echo "No credentials are read, no branch or pull request is created, and no repository or external mutation occurs."

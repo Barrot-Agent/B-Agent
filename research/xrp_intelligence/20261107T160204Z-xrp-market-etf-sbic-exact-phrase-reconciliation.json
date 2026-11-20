@@ -1,0 +1,393 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "20261107T160204Z-xrp-market-etf-sbic-exact-phrase-reconciliation",
+  "artifact_type": "xrp_market_microstructure_etf_flow_methodology_sbi_identity_and_exact_phrase_reconciliation",
+  "captured_at_utc": "2026-11-07T16:02:04Z",
+  "capture_clock_semantics": "Automation reference clock. Web retrieval does not expose exact HTTP arrival timestamps or original response headers.",
+  "observed_main_sha": "9100dbacb5f9f1b973b053a65ef1e91e96b64f72",
+  "observed_v3_integration_head": "9630d6fa68b6c0660582c8d239480c757ad983ff",
+  "observed_xrp_research_head_before_artifact": "e6429a45298acc28db411e0e4f093cf85293aec4",
+  "sources": [
+    {
+      "source_id": "kraken_xrpusd_ticker",
+      "publisher": "Kraken",
+      "independence_group": "kraken_exchange_api",
+      "source_type": "direct_exchange_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "provider_event_time_utc": null,
+      "normalized_excerpt": "Kraken XRP/USD ticker: last 1.15577; bid 1.15568; ask 1.15577; 24h volume 22,599,051.472 XRP; 24h VWAP 1.17100720; 24h open 1.17749; low 1.15046; high 1.19791. Provider event timestamp absent.",
+      "normalized_excerpt_sha256": "9960a57d354a3492852b344ab879ecfa3b6bb87f7ba640eb28ab1588c22142b0",
+      "raw_response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.15577000\",\"1141\",\"1141.000\"],\"b\":[\"1.15568000\",\"2885\",\"2885.000\"],\"c\":[\"1.15577000\",\"432.61202488\"],\"v\":[\"13938546.80697367\",\"22599051.47214827\"],\"p\":[\"1.16439887\",\"1.17100720\"],\"t\":[15301,25644],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.19791000\"],\"o\":\"1.17749000\"}}}",
+      "raw_response_sha256": "5e74b7be28be29ad369e05cd915fe9dedc6670f183ab8361d2ac19a6f10f1109",
+      "hash_scope": "exact JSON text returned by web retrieval; not original HTTP wire bytes or headers",
+      "model_eligible": false,
+      "limitations": [
+        "No provider event timestamp; freshness cannot be certified.",
+        "Level-1 quote only; no full depth ladder."
+      ]
+    },
+    {
+      "source_id": "okx_xrpusdt_ticker",
+      "publisher": "OKX",
+      "independence_group": "okx_exchange_api",
+      "source_type": "direct_exchange_api",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "provider_event_time_utc": "2026-11-07T15:40:59.363Z",
+      "provider_age_seconds_at_capture": 1264.637,
+      "freshness": "stale_over_300_seconds",
+      "normalized_excerpt": "OKX XRP-USDT spot ticker: last 1.1569; bid 1.1569; ask 1.1570; 24h XRP volume 39,028,737.626537; provider timestamp 2026-11-07T15:40:59.363Z.",
+      "normalized_excerpt_sha256": "4597bc7047078bd4f68277420813e0194bd1866cd8c0d1578905baf38f7578f6",
+      "raw_response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1569\",\"lastSz\":\"71.806345\",\"askPx\":\"1.157\",\"askSz\":\"6959.587815\",\"bidPx\":\"1.1569\",\"bidSz\":\"2152.248491\",\"open24h\":\"1.184\",\"high24h\":\"1.1996\",\"low24h\":\"1.1518\",\"volCcy24h\":\"45764625.2731108958\",\"vol24h\":\"39028737.626537\",\"ts\":\"1794066059363\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
+      "raw_response_sha256": "4bd7f241d6f86c8df82cee7bc03ee4e7ed9433d8867d2b33b0ad2d5d4a80234a",
+      "hash_scope": "exact JSON text returned by web retrieval; not original HTTP wire bytes or headers",
+      "model_eligible": false,
+      "limitations": [
+        "Provider timestamp is 21m04.637s older than capture.",
+        "XRP-USDT is not directly normalized to XRP-USD.",
+        "Level-1 quote only; no full depth ladder."
+      ]
+    },
+    {
+      "source_id": "fuelmaps_xrp_spot_depth",
+      "publisher": "Fuelmaps",
+      "independence_group": "fuelmaps_multi_exchange_spot_book",
+      "source_type": "secondary_order_book_aggregator",
+      "url": "https://fuelmaps.io/order-book/",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "page_snapshot_time_utc": "2026-11-07T09:00:00Z",
+      "normalized_excerpt": "Fuelmaps six-venue XRP spot-book snapshot at 09:00 UTC: mid 1.1765; within ±0.5% bids $6.8M/asks $5.3M; ±1% $11.4M/$9.3M; ±2% $16.5M/$10.2M; ±5% $22.4M/$11.5M; ±10% $28.9M/$15.5M. Six of six venues covered within ±5%; five of six within ±10%.",
+      "normalized_excerpt_sha256": "c6f48d68dbe0a4017cd28317204a09a2a9ce1399ddb5578d07793277ef7eeb1a",
+      "model_eligible": false,
+      "limitations": [
+        "Snapshot is 7h02m04s older than capture.",
+        "Page requires JavaScript; raw ladder bytes were not captured.",
+        "Visible orders can be cancelled; not executable consolidated depth."
+      ]
+    },
+    {
+      "source_id": "edgeornot_xrp_depth",
+      "publisher": "Edge or Not",
+      "independence_group": "edgeornot_binance_spot_okx_perp",
+      "source_type": "secondary_order_book_aggregator",
+      "url": "https://edgeornot.com/order-book-heatmap/xrp",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "page_snapshot_time_utc": "2026-11-07T14:30:00Z",
+      "provider_age_seconds_at_capture": 5524,
+      "normalized_excerpt": "Edge or Not snapshot at 14:30 UTC: XRP mid 1.1659; Binance spot plus OKX perpetual books; bids $9.1M and asks $8.9M within 1%; largest asks $1.2M at 1.1694, $1.3M at 1.1683, $2.5M at 1.1671; largest bids $1.3M at 1.1648, $2.3M at 1.1636, $1.1M at 1.1601.",
+      "normalized_excerpt_sha256": "f411b041f890b495fa2453cb79c904e42550fe4e882ccf916afa0a9d1759784a",
+      "model_eligible": false,
+      "limitations": [
+        "Snapshot is 1h32m04s older than capture.",
+        "Combines spot and perpetual books; not spot-only depth.",
+        "Orders can be cancelled or spoofed."
+      ]
+    },
+    {
+      "source_id": "swiftedge_xrp_market_brief",
+      "publisher": "Swiftedge",
+      "independence_group": "swiftedge_market_brief",
+      "source_type": "secondary_market_microstructure_aggregator",
+      "url": "https://swiftedge.uk/markets/today",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "page_updated_at_utc": "2026-11-07T13:07:00Z",
+      "provider_age_seconds_at_capture": 10504,
+      "normalized_excerpt": "Swiftedge brief updated 13:07 UTC: XRP 1.1610, reported 24h change -2.09%; net taker flow -16.6% of volume; volume 1.2x normal; funding +0.0100% per 8h; open interest -2.0%; large-order net flow -$10.9M; value area 1.1652-1.1893; POC 1.1787; displayed bid wall $5.3M at 1.1460 and ask wall $4.2M at 1.1660.",
+      "normalized_excerpt_sha256": "35f30bb63c6b4e8547034c516492b5b40d91ec5a8a0548491450fc44e8efff38",
+      "model_eligible": false,
+      "limitations": [
+        "Snapshot is 2h55m04s older than capture.",
+        "Provider venue/contract coverage and raw trade/book payloads are not exposed.",
+        "Secondary summary, not a direct exchange receipt."
+      ]
+    },
+    {
+      "source_id": "alpha_finance_xrp_etf_flows",
+      "publisher": "Alpha Finance",
+      "independence_group": "alpha_finance_etf_dashboard",
+      "source_type": "secondary_etf_flow_aggregator",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "data_through_date": "2026-11-06",
+      "fund_count": 5,
+      "nov6_flow_usd": 0,
+      "flow_7_sessions_usd": 8400000,
+      "flow_30_sessions_usd": 45900000,
+      "cumulative_net_inflow_usd": 1730000000,
+      "normalized_excerpt": "Alpha Finance through Nov 6: five US spot XRP funds; Nov 6 flow $0; last seven sessions +$8.4M; 30 sessions +$45.9M; cumulative net inflow +$1.73B. Dashboard methodology says it uses Coinglass data; no current AUM or holdings are published.",
+      "normalized_excerpt_sha256": "debb4ecfd04712e379a306b04e54969f05cd6a3f508d7356488d4836e899a1fd",
+      "model_eligible": false,
+      "limitations": [
+        "Secondary aggregator feed attributed to Coinglass; not issuer cash-flow statements.",
+        "Five-fund universe; not comparable to six spot funds plus BITW.",
+        "No current AUM or holdings published."
+      ]
+    },
+    {
+      "source_id": "xrp_insights_etf_totals_metadata",
+      "publisher": "XRP Insights",
+      "independence_group": "xrp_insights_issuer_holdings_scraper",
+      "source_type": "issuer_holdings_derived_aggregator",
+      "url": "https://xrp-insights.com/data/xrp-etf-totals.json",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "generated_at_utc": "2026-11-07T15:38:01.086Z",
+      "data_through_date": "2026-11-06",
+      "spot_funds": 6,
+      "additional_index_fund": "BITW",
+      "trading_days": 231,
+      "normalized_excerpt": "XRP Insights totals metadata generated 15:38:01 UTC, data through Nov 6: 231 trading-day rows; six US spot XRP funds plus BITW XRP sleeve. Holdings/AUM are read from issuer websites; flows are holdings deltas. BITW rebalancing can appear as flow; GXRP flow is excluded due a capture gap; some historical intervals are reconstructed.",
+      "normalized_excerpt_sha256": "4eebe8332356ac4fcc812d7bc47d1f3532eeb29defce1059c5ac2eb58218a762",
+      "model_eligible": false,
+      "limitations": [
+        "BITW rebalancing/fees can appear as XRP flow.",
+        "GXRP holdings remain in totals but flows are excluded due capture gap.",
+        "Reconstructed historical intervals use third-party estimates.",
+        "Holdings-derived change is not an issuer cash creation/redemption statement."
+      ],
+      "flow_method": "issuer-reported XRP holdings delta; not issuer-reported cash creation/redemption"
+    },
+    {
+      "source_id": "crypto_keyhole_xrp_etf_flows",
+      "publisher": "CryptoKeyhole",
+      "independence_group": "cryptokeyhole_issuer_file_aggregator",
+      "source_type": "secondary_issuer_holdings_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "data_through_date": "2026-11-05",
+      "fund_count": 4,
+      "nov5_flow_xrp": -3339,
+      "five_session_flow_xrp": -1137098,
+      "nov6_reporting_funds": 2,
+      "nov6_expected_funds": 4,
+      "normalized_excerpt": "CryptoKeyhole: four funds complete through Nov 5; Nov 5 flow -3,339 XRP; five-session flow -1,137,098 XRP; four-fund holdings 1,076,805,885 XRP. Nov 6 was partial with 2/4 reporting; XRPZ and XRPC were pending.",
+      "normalized_excerpt_sha256": "1cb28cbcd417f08fc68528d8d82fb98945221d17909735f6e03afde78383e2cd",
+      "model_eligible": false,
+      "limitations": [
+        "Four-fund universe; Nov 6 incomplete.",
+        "Fund issuer-file timestamps vary.",
+        "Holdings-derived changes are not necessarily cash creations/redemptions."
+      ]
+    },
+    {
+      "source_id": "phemex_evernorth_actual_capital_phrase",
+      "publisher": "Phemex News",
+      "independence_group": "panewslab_original_syndication_via_phemex",
+      "source_type": "secondary_news_article",
+      "url": "https://phemex.com/news/article/evernorth-plans-807m-equity-financing-with-cantor-affiliate-to-boost-xrp-holdings-101069",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "normalized_excerpt": "Phemex uses the exact phrase 'actual capital raised' for Evernorth's conditional Cantor committed-equity facility; proceeds depend on final transaction volume and pricing, not the headline maximum.",
+      "normalized_excerpt_sha256": "e5272f6a45022631ba31e780ef90fc8f886e79bd1da696db71c4035be17e88d4",
+      "model_eligible": false,
+      "limitations": [
+        "Exact phrase located in secondary commentary, not issuer-primary filing evidence.",
+        "Facility capacity is not a draw, settled cash or XRP purchase."
+      ],
+      "source_attribution": "Phemex page identifies PANews as the original source; count as one syndicated source group, not an independent Phemex confirmation."
+    },
+    {
+      "source_id": "sbic_east_official_profile",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "independence_group": "sbic_east_official",
+      "source_type": "primary_company_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "normalized_excerpt": "Official profile identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. as SBIC East Japan; founded 1963-11-15; lists Nagoya and Osaka as sister companies; shareholders include local governments, chambers of commerce, financial institutions and companies.",
+      "normalized_excerpt_sha256": "e5a4f5492ed0e489437dc31233412eaf7cd12e0b0d647c9410624d67b559b92f",
+      "model_eligible": false,
+      "limitations": [
+        "Primary corporate identity evidence; no SBI Holdings affiliation is stated."
+      ]
+    },
+    {
+      "source_id": "sbic_central_official_profile",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "independence_group": "sbic_central_official",
+      "source_type": "primary_company_profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "normalized_excerpt": "Official profile identifies Nagoya Small and Medium Business Investment & Consultation Co., Ltd. as SBIC Central Japan; founded 1963-11-18; operating area Aichi, Gifu, Mie, Toyama and Ishikawa; lists Tokyo and Osaka as sister companies.",
+      "normalized_excerpt_sha256": "278941311e0a5d32790fdc2e24c37123c82da9ca63faec28df96d15cea46d8c0",
+      "model_eligible": false,
+      "limitations": [
+        "Primary corporate identity evidence; distinct regional investment company, not SBI Holdings."
+      ]
+    },
+    {
+      "source_id": "sbic_west_official_profile",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "independence_group": "sbic_west_official",
+      "source_type": "primary_company_profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "normalized_excerpt": "Official profile identifies Osaka Small and Medium Business Investment & Consultation Co., Ltd. as SBIC West Japan; founded 1963-11-20; operating area Fukui, Shiga, Nara, Wakayama and westward across 24 prefectures; lists Tokyo as sister company.",
+      "normalized_excerpt_sha256": "f3cefa649e1229ee810bb514e922bc192c1a0f3b343c8782ae1419fca318178e",
+      "model_eligible": false,
+      "limitations": [
+        "Primary corporate identity evidence; distinct regional investment company, not SBI Holdings."
+      ]
+    },
+    {
+      "source_id": "sbic_tokyo_chatgpt_seminar",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "independence_group": "sbic_east_official",
+      "source_type": "primary_company_event",
+      "url": "https://www.sbic.co.jp/seminar/20250226ym/",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "event_date": "2025-02-26",
+      "normalized_excerpt": "Tokyo SBIC official page lists a Feb 26, 2025 event titled 'The Present and Future of Generative AI (ChatGPT)', co-hosted with the Taito branch of the Tokyo Chamber of Commerce and Industry; page marks event ended.",
+      "normalized_excerpt_sha256": "98a4bbfdf8a802264b55a099061aeba2650a9bfe3cfd43bc0f7a00bd8b7603e3",
+      "model_eligible": false,
+      "limitations": [
+        "Training event only; not an OpenAI partnership, investment, data-sharing agreement or ChatGPT SBIC entity."
+      ]
+    },
+    {
+      "source_id": "fuelmaps_xrp_spot_depth_1500z",
+      "publisher": "Fuelmaps",
+      "independence_group": "fuelmaps_multi_exchange_spot_book",
+      "source_type": "secondary_order_book_aggregator",
+      "url": "https://fuelmaps.io/order-book/",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "page_snapshot_time_utc": "2026-11-07T15:00:00Z",
+      "provider_age_seconds_at_capture": 3724,
+      "mid_price": 1.1665,
+      "bid_depth_usd_1pct": 11500000,
+      "ask_depth_usd_1pct": 9700000,
+      "bid_share_1pct": 54.4,
+      "venue_coverage_1pct": "6 of 6",
+      "spot_venues": [
+        "Coinbase",
+        "OKX",
+        "Kraken",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini"
+      ],
+      "normalized_excerpt": "Fuelmaps XRP spot-book hourly snapshot as of 2026-11-07 15:00 UTC: mid 1.1665 across 6 of 6 spot venues. Within ±0.5% bids $7.4M/asks $6.0M; ±1% $11.5M/$9.7M; ±2% $17.2M/$11.1M; ±5% $23.1M/$12.4M; ±10% $34.4M/$16.0M. Bid share 54.4% within 1%, 60.8% within 2%, 65.1% within 5%, 68.2% within 10%. Largest listed bids: $4.0M at 1.050, $3.1M at 1.120, $2.6M at 1.100, $1.8M at 1.051 and $1.8M at 1.160. Spot venues: Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini; Binance/Bitget excluded.",
+      "normalized_excerpt_sha256": "d871790fb8fc1d15a701143ae607415a058ddae3a45d735281610051866567fa",
+      "model_eligible": false,
+      "limitations": [
+        "Hourly snapshot is 1h02m04s older than capture.",
+        "Spot-only six-venue map; Binance and Bitget are excluded because their public data cannot be read by this map.",
+        "Visible orders can be cancelled at any time; this is not an execution guarantee or validated trading signal.",
+        "Raw ladder bytes were not captured."
+      ]
+    },
+    {
+      "source_id": "swiftedge_xrp_live_dashboard_1602z",
+      "publisher": "Swiftedge",
+      "independence_group": "swiftedge_market_brief",
+      "source_type": "secondary_market_microstructure_aggregator",
+      "url": "https://swiftedge.uk/markets/today",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "provider_event_time_utc": null,
+      "normalized_excerpt": "Swiftedge XRP live dashboard at retrieval 2026-11-07 16:02:04 UTC (no per-metric provider timestamp): price 1.1641, reported 24h change -1.49%; value area 1.1581-1.1812; volume POC 1.1767; net taker flow -20.8%; volume vs normal 1.0x; funding +0.0100% per 8h; open interest -2.8%; large-order net flow -$11.4M; largest resting bid $6.7M at 1.1450 (-1.64%) and ask $4.5M at 1.1870 (+1.96%).",
+      "normalized_excerpt_sha256": "00b66240d6ea0d6bed9dbedc399cecd1104b3c79edeef97e81946ca6092570fc",
+      "model_eligible": false,
+      "limitations": [
+        "No per-metric provider timestamp; capture time is retrieval reference, not verified event time.",
+        "Provider venue/contract coverage and raw trades/order-book payloads are not exposed.",
+        "Its displayed 1.1641 price differs from contemporaneous direct exchange retrievals; do not treat as synchronized cross-venue price or return.",
+        "Secondary dashboard, not direct exchange receipt."
+      ]
+    },
+    {
+      "source_id": "sbic_law_101_1963_article_2",
+      "publisher": "House of Representatives of Japan",
+      "independence_group": "japan_house_of_representatives_official_law",
+      "source_type": "primary_statutory_text",
+      "url": "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/houritsu/04319630610101.htm",
+      "captured_at_utc": "2026-11-07T16:02:04Z",
+      "law_number": 101,
+      "law_date": "1963-06-10",
+      "article": 2,
+      "companies": [
+        "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+      ],
+      "head_offices": [
+        "Tokyo",
+        "Nagoya City",
+        "Osaka City"
+      ],
+      "normalized_excerpt": "House of Representatives official text of Act No. 101 of 1963, Small and Medium-Sized Enterprise Investment & Consultation Company Act, Article 2: the companies are Tokyo Small and Medium Business Investment & Consultation Co., Ltd., Nagoya Small and Medium Business Investment & Consultation Co., Ltd., and Osaka Small and Medium Business Investment & Consultation Co., Ltd., with head offices in Tokyo, Nagoya City and Osaka City respectively.",
+      "normalized_excerpt_sha256": "1a46184f5706e63a67c76cc7b8f752f1b485606896f9a96b87660eba66ac9cc4",
+      "model_eligible": false,
+      "limitations": [
+        "Primary statutory identity evidence; it does not identify these companies as SBI Holdings subsidiaries."
+      ]
+    }
+  ],
+  "calculations": {
+    "kraken_level1_spread_bps": 0.778731964783348,
+    "okx_level1_spread_bps": 0.8643415877954015,
+    "kraken_last_vs_24h_open_pct": -1.8446016526679654,
+    "kraken_last_vs_24h_vwap_pct": -1.3012046381952302,
+    "okx_provider_age_seconds_at_capture": 1264.637,
+    "okx_raw_cross_venue_last_difference_pct": 0.09777031762374655,
+    "fuelmaps_snapshot_age_seconds": 25324,
+    "edgeornot_snapshot_age_seconds": 5524,
+    "swiftedge_snapshot_age_seconds": 10504,
+    "fuelmaps_1500_snapshot_age_seconds": 3724
+  },
+  "reconciliations": {
+    "spot": "At 16:02:04 UTC, Kraken XRP/USD last 1.15577, bid 1.15568, ask 1.15577, 24h open 1.17749 and VWAP 1.17100720; provider event time absent. OKX XRP-USDT last 1.1569, bid 1.1569, ask 1.1570; its timestamp is 1,264.637 seconds old. Raw 0.09777% cross-venue gap is not comparable or arbitrage because USD/USDT normalization, synchronized depth and execution costs are missing.",
+    "depth": "Fuelmaps' 15:00 UTC hourly spot-only snapshot is the latest visible multi-venue depth: mid 1.1665, $11.5M bids versus $9.7M asks within 1%, six spot venues, 54.4% bid share. It is 1h02m old at capture and visible orders can be cancelled. The 09:00 Fuelmaps snapshot is retained as historical. Edge or Not's 14:30 snapshot combines Binance spot and OKX perpetual books; Swiftedge's current dashboard lacks a per-metric timestamp and reports different price/flow readings. These distinct scopes and vintages are context only, not synchronized model features.",
+    "etf_flows": "Alpha Finance covers five funds and uses a Coinglass feed; XRP Insights covers six spot funds plus BITW and computes holdings deltas, with BITW rebalance/fee effects, GXRP excluded flows and reconstructed historical intervals; CryptoKeyhole covers four funds and had only 2/4 reporting for Nov 6. Universes and methods differ; do not average and do not treat partial/missing as zero.",
+    "actual_capital": "The exact phrase 'actual capital raised' appears in Phemex's English article about Evernorth's conditional Cantor equity facility. Phemex identifies PANews as the original source, so this is one syndicated secondary source group, not independent confirmation. The phrase describes contingent proceeds, not a completed draw, settled cash or XRP purchase. No issuer-primary exact-phrase match was established in this search.",
+    "sbic_identity": "The House of Representatives' official 1963 Act No. 101, Article 2, legally names exactly three companies: Tokyo, Nagoya and Osaka, with their respective head offices in Tokyo, Nagoya City and Osaka City. Their official profiles identify them as SBIC East/Central/West sister companies. They are not SBI Holdings. Tokyo SBIC's 2025 ChatGPT seminar is a training event, not an OpenAI partnership.",
+    "ask_coin": "Permission Coin's ASK token is distinct from the earlier inactive/untracked Ask Coin listing in the research archive. No XRP relationship is established."
+  },
+  "hypotheses": [
+    {
+      "id": "H1_short_term_sell_pressure",
+      "statement": "Recent context is consistent with short-term sell pressure: Kraken last is below its 24h open and VWAP; Swiftedge's lagged brief reports negative taker flow and OI change.",
+      "counterevidence": [
+        "Swiftedge is secondary and nearly three hours old.",
+        "No synchronized multi-venue trade/taker series was captured.",
+        "No current full-depth snapshot is available."
+      ],
+      "status": "context_only_not_forecast"
+    },
+    {
+      "id": "H2_nearby_bid_absorption",
+      "statement": "Earlier visible spot books showed bid-side depth above asks near price, which could absorb selling if levels persist and execute.",
+      "counterevidence": [
+        "Fuelmaps snapshot is over seven hours old.",
+        "Edge or Not mixes spot and perpetual books and is over 90 minutes old.",
+        "Visible orders can be cancelled or spoofed."
+      ],
+      "status": "context_only_not_forecast"
+    },
+    {
+      "id": "H3_measurement_and_venue_mismatch",
+      "statement": "Apparent disagreement is materially explained by asynchronous timestamps, USD versus USDT pairs, differing depth venue/product coverage and different ETF flow methods/universes.",
+      "counterevidence": [
+        "This explains comparability limits but does not establish true market direction."
+      ],
+      "status": "preferred_data_quality_explanation"
+    }
+  ],
+  "model_admission": {
+    "all_new_observations_eligible": false,
+    "reasons": [
+      "Kraken provider event time absent.",
+      "OKX provider timestamp exceeds 300-second freshness threshold.",
+      "Depth snapshots are stale and/or mix spot and perpetual products.",
+      "Secondary derivatives brief lacks raw venue-level receipts.",
+      "ETF datasets have incompatible universes and flow definitions.",
+      "SBIC and exact-phrase research are non-market contextual evidence."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_probabilities": null,
+    "target": null,
+    "horizon": null,
+    "data_cutoff_utc": "2026-11-07T16:02:04Z",
+    "real_money_actions": false,
+    "paper_trade": false
+  }
+}

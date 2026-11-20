@@ -1,0 +1,472 @@
+{
+  "artifact_type": "barrot_xrp_run82_point_in_time_market_macro_cftc_security_ci_audit",
+  "schema_version": "1.0.0",
+  "run_id": 82,
+  "captured_at_utc": "2026-11-13T07:30:19Z",
+  "data_cutoff_utc": "2026-11-13T07:30:19Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head": "6bd5e7fd064010846b29da259ccab701df843856",
+    "integration_ahead_by": 2223,
+    "integration_behind_by": 0,
+    "main_tree_entries": 1381,
+    "integration_tree_entries": 2337,
+    "pr_number": 1662,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_mergeable": true,
+    "pr_changed_files": 1091,
+    "pr_additions": 312866,
+    "pr_deletions": 5136,
+    "open_prs": 375,
+    "draft_prs": 361,
+    "non_draft_prs": 14,
+    "open_pr_base_main": 367,
+    "open_pr_base_other": 8
+  },
+  "ci": {
+    "current_head_sha": "6bd5e7fd064010846b29da259ccab701df843856",
+    "pr_associated_runs": [
+      {
+        "name": "CI",
+        "run_id": 43385397180,
+        "event": "pull_request",
+        "head_sha": "6bd5e7fd064010846b29da259ccab701df843856",
+        "conclusion": "success",
+        "synthetic_merge_commit": "b98c6165c07a2ecd614945ac9d1423978a3402cc",
+        "full_suite": {
+          "passed": 3553,
+          "failed": 0,
+          "subtests_passed": 8,
+          "coverage_percent": 61.68,
+          "duration_seconds": 95.25
+        },
+        "core_suite": {
+          "passed": 725,
+          "failed": 0,
+          "subtests_passed": 8,
+          "coverage_percent": 76
+        },
+        "wheel_build": "passed",
+        "installed_primary_mission_verification": "passed",
+        "checkout_ref": "refs/remotes/pull/1662/merge"
+      },
+      {
+        "name": "Dependency Audit",
+        "run_id": 43385397162,
+        "event": "pull_request",
+        "head_sha": "6bd5e7fd064010846b29da259ccab701df843856",
+        "conclusion": "success",
+        "audited_groups": [
+          "requirements.txt",
+          "requirements-dev.txt",
+          "hf_space/requirements.txt",
+          "legacy/requirements_legacy.txt",
+          "pyproject.toml PEP 621"
+        ],
+        "known_vulnerabilities": 0
+      },
+      {
+        "name": "Barrot Gated Merge (fail-closed)",
+        "run_id": 43385397171,
+        "event": "pull_request",
+        "head_sha": "6bd5e7fd064010846b29da259ccab701df843856",
+        "conclusion": "success",
+        "behavior": "automatic merge explicitly disabled"
+      }
+    ],
+    "exact_branch_commit_direct_checkout": "NOT_VERIFIED",
+    "interpretation": "All current branch content was included in the successful synthetic PR merge ref. The runner checked out the synthetic merge commit, not the branch commit SHA directly. The current PR head is associated with successful checks, but direct branch-commit execution is not claimed.",
+    "main_ci": {
+      "run_id": 43343513172,
+      "head_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+      "conclusion": "success",
+      "full_suite_passed": 747,
+      "core_suite_passed": 485,
+      "subtests_passed": 8
+    },
+    "main_side_effects": {
+      "barrot_sync_run_id": 43343513347,
+      "barrot_sync_job_conclusion": "success",
+      "sync_success_proven": false,
+      "reason": "workflow suppresses sync and git-push failures; logs were not inspected for secrets",
+      "pages_run_id": 43343511839,
+      "pages_build_and_deploy": "success",
+      "pages_publication_authorization": "unresolved"
+    }
+  },
+  "market_observations": [
+    {
+      "source_id": "okx_xrp_usdt_ticker",
+      "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "source_group": "exchange_direct_api_okx",
+      "source_event_time_utc": "2026-11-13T07:12:44.073Z",
+      "retrieved_at_utc": "2026-11-13T07:30:19Z",
+      "last_usdt": 1.0273,
+      "bid_usdt": 1.0272,
+      "ask_usdt": 1.0273,
+      "open_24h_usdt": 1.0424,
+      "high_24h_usdt": 1.0569,
+      "low_24h_usdt": 0.9974,
+      "volume_24h_xrp": 45495205.919,
+      "quote_volume_24h_usdt": 46614393.932,
+      "age_seconds_at_cutoff": 1054.927,
+      "model_eligible": false,
+      "reason": "provider quote older than 5-minute freshness gate"
+    },
+    {
+      "source_id": "kraken_xrp_usd_ticker",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_group": "exchange_direct_api_kraken",
+      "retrieved_at_utc": "2026-11-13T07:30:19Z",
+      "provider_event_time_utc": null,
+      "last_usd": 1.02912,
+      "bid_usd": 1.02913,
+      "ask_usd": 1.02921,
+      "open_24h_usd": 1.04003,
+      "high_24h_usd": 1.05548,
+      "low_24h_usd": 0.99672,
+      "volume_24h_xrp": 35172487.76674984,
+      "model_eligible": false,
+      "reason": "provider event timestamp absent"
+    },
+    {
+      "source_id": "kraken_usdt_usd_ticker",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "source_group": "exchange_direct_api_kraken",
+      "retrieved_at_utc": "2026-11-13T07:30:19Z",
+      "provider_event_time_utc": null,
+      "bid_usd": 0.99894,
+      "ask_usd": 0.99895,
+      "mid_usd": 0.998945,
+      "model_eligible": false,
+      "reason": "provider event timestamp absent"
+    },
+    {
+      "source_id": "cross_venue_normalized_midpoint_comparison",
+      "source_group": "derived_from_unsynchronized_exchange_quotes",
+      "okx_mid_usdt": 1.02725,
+      "usdt_usd_mid": 0.998945,
+      "okx_normalized_mid_usd": 1.02616625125,
+      "kraken_mid_usd": 1.02917,
+      "difference_percent": -0.2918612814,
+      "model_eligible": false,
+      "reason": "OKX quote age 17m35s; Kraken event timestamp absent; not executable arbitrage evidence"
+    }
+  ],
+  "order_book": {
+    "status": "NO_SYNCHRONIZED_L2_ADMITTED",
+    "attempted_sources": [
+      "https://www.okx.com/api/v5/market/books?instId=XRP-USDT&sz=100",
+      "https://api.kraken.com/0/public/Depth?pair=XRPUSD&count=100"
+    ],
+    "reason": "direct depth responses were unavailable in this run; older depth snapshots are outside freshness gates"
+  },
+  "derivatives": [
+    {
+      "source_id": "liqwall_xrp_aggregated_derivatives",
+      "source_url": "https://liqwall.com/coins/xrp",
+      "source_group": "third_party_multi_exchange_aggregator",
+      "data_as_of_utc": "2026-11-13T07:02:00Z",
+      "capture_method": "pre-cutoff web search snapshot; later 07:32 page refresh excluded as after the run cutoff",
+      "open_interest_usd": 1120000000,
+      "open_interest_change_24h_percent": -0.8,
+      "average_funding_8h_percent": -0.0025,
+      "binance_funding_8h_percent": 0.0026,
+      "binance_long_account_share_percent": 75.2,
+      "liquidations_24h_usd": 19300000,
+      "long_liquidations_usd": 18400000,
+      "short_liquidations_usd": 906000,
+      "model_eligible": false,
+      "limitations": [
+        "aggregated venue coverage and timestamp",
+        "account ratio is not notional position share",
+        "long liquidations indicate leverage reduction, not a reliable price forecast"
+      ]
+    }
+  ],
+  "etf_flows": [
+    {
+      "source_id": "xrp_insights_etf_aggregator",
+      "source_url": "https://xrp-insights.com/data",
+      "source_group": "us_xrp_etf_issuer_files_derived",
+      "data_as_of_date": "2026-11-11",
+      "settled_window": "2026-11-09/2026-11-11",
+      "net_flow_xrp": -9213260,
+      "total_holdings_xrp": 1185967427,
+      "nov_12_status": "provisional until next-morning re-settle",
+      "coverage": "six US spot XRP ETFs plus BITW; flow-excluded funds count as zero",
+      "model_eligible": false
+    },
+    {
+      "source_id": "cryptokeyhole_etf_aggregator",
+      "source_url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_group": "us_xrp_etf_issuer_files_derived",
+      "data_as_of_date": "2026-11-12",
+      "nov_12_partial_flow_xrp": -3322,
+      "nov_12_reporting_funds": "3 of 4 daily-tracked funds; waiting for Franklin XRPZ",
+      "nov_11_complete_flow_xrp": -3322,
+      "nov_05_to_11_complete_five_day_flow_xrp": -10005584,
+      "model_eligible": false,
+      "coverage": "four funds read daily out of six listed; not the same fund universe as XRP Insights"
+    },
+    {
+      "source_disagreement": {
+        "cryptokeyhole_nov_09_to_11_computed_flow_xrp": -9250197,
+        "xrp_insights_nov_09_to_11_flow_xrp": -9213260,
+        "difference_xrp": -36937,
+        "interpretation": "different issuer coverage and flow-exclusion rules; same underlying issuer-file family, not independent corroboration; do not average"
+      }
+    }
+  ],
+  "exchange_wallet_balances": {
+    "source_url": "https://xrp-insights.com/exchange-balances",
+    "source_group": "third_party_xrpl_wallet_label_aggregator",
+    "data_as_of_utc": "2026-11-12T08:00:00Z",
+    "total_xrp": 22340000000,
+    "attributed_wallets": 706,
+    "exchanges": 24,
+    "share_circulating_supply_percent": 32.4,
+    "share_total_supply_percent": 22.3,
+    "same_wallet_change_7d_xrp": 45800000,
+    "same_wallet_change_30d_xrp": -180900000,
+    "naive_change_7d_xrp": 61400000,
+    "new_wallets_7d": 5,
+    "new_wallet_balance_7d_xrp": 15600000,
+    "naive_change_30d_xrp": 346700000,
+    "new_wallets_30d": 7,
+    "new_wallet_balance_30d_xrp": 527600000,
+    "notable_scope": {
+      "coinbase_tracked_xrp": 5810000000,
+      "coinbase_includes_non_customer_cbxrp_base_reserve_xrp": 150600000,
+      "binance_tracked_xrp": 2690000000,
+      "binance_includes_binance_peg_bnb_chain_reserve_xrp": 327400000
+    },
+    "daily_nov_12_note": "same-wallet +5.3M but excludes Binance because its wallet set changed; do not treat as complete market-wide flow",
+    "limitations": [
+      "cold storage included",
+      "non-customer wrapped-token reserves included",
+      "wallet labels are provider-attributed",
+      "same-wallet change cannot distinguish customer withdrawal from exchange wallet migration",
+      "coverage changes must not be treated as inflow/outflow"
+    ],
+    "model_eligible": false
+  },
+  "cftc": {
+    "legacy_futures_only": {
+      "source_url": "https://www.cftc.gov/dea/futures/deacmelf.htm",
+      "source_group": "cftc_primary",
+      "positions_as_of_date": "2026-11-03",
+      "contract_code": "176740",
+      "contract_multiplier_xrp": 50000,
+      "open_interest_contracts": 7216,
+      "open_interest_xrp_equivalent": 360800000,
+      "open_interest_change_contracts": -845,
+      "open_interest_change_xrp_equivalent": -42250000,
+      "change_from_date": "2026-10-27",
+      "non_commercial": {
+        "long_contracts": 7011,
+        "short_contracts": 5546,
+        "spreading_contracts": 60,
+        "net_contracts": 1465,
+        "long_change_contracts": -281,
+        "short_change_contracts": -466,
+        "net_change_contracts": 185
+      },
+      "commercial": {
+        "long_contracts": 61,
+        "short_contracts": 1383,
+        "net_contracts": -1322
+      },
+      "nonreportable": {
+        "long_contracts": 84,
+        "short_contracts": 227,
+        "net_contracts": -143
+      },
+      "reportable_total": {
+        "long_contracts": 7132,
+        "short_contracts": 6989
+      },
+      "traders": 29,
+      "concentration_percent": {
+        "gross_4_or_less_long": 81,
+        "gross_4_or_less_short": 67.4,
+        "gross_8_or_less_long": 95.1,
+        "gross_8_or_less_short": 87.7,
+        "net_8_or_less_long": 95.1,
+        "net_8_or_less_short": 87.5
+      },
+      "interpretation": "non-commercial net long rose by 185 contracts because shorts fell 466 while longs fell 281; this is more consistent with short covering than fresh long accumulation",
+      "limitations": [
+        "futures-only, not spot holdings or offshore perpetuals",
+        "contract-equivalent is not cash capital",
+        "29 reporting traders; concentrated positions",
+        "positions are date-only and publication-lagged"
+      ],
+      "model_eligible": false
+    },
+    "release_schedule": {
+      "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm",
+      "latest_report_date": "2026-11-03",
+      "next_release_date": "2026-11-16",
+      "next_release_delayed_for_federal_holiday": true,
+      "release_time": "3:30 p.m. Eastern",
+      "following_release_dates": [
+        "2026-11-20",
+        "2026-11-30",
+        "2026-12-04",
+        "2026-12-11",
+        "2026-12-18",
+        "2026-12-28"
+      ]
+    },
+    "semiweekly_plan": {
+      "source_url": "https://www.cftc.gov/PressRoom/PressReleases/9316-26",
+      "announcement_date": "2026-10-27",
+      "planned_frequency": "twice weekly by end of 2026",
+      "monday_data_published_wednesday": true,
+      "wednesday_data_published_friday": true,
+      "publication_time": "3:30 p.m. Eastern",
+      "effective_date": null,
+      "correction": "Run81B cited 9201-26, an unrelated March 2026 innovation-task-force release; the correct semiweekly announcement is 9316-26."
+    }
+  },
+  "institutional": {
+    "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+    "source_group": "bny_primary",
+    "announcement_date": "2026-10-27",
+    "verified": [
+      "BNY is primary reserve custodian for RLUSD",
+      "BNY has a custody relationship with Ripple Prime",
+      "BNY now supports XRP and RLUSD on its Digital Asset Custody platform"
+    ],
+    "planned_or_exploratory": [
+      "broader support for XRPL tokenized assets and investment products",
+      "direct RLUSD mint/redeem for BNY clients",
+      "tokenized trade-finance exploration with C2FO"
+    ],
+    "limitations": [
+      "custody availability does not prove client balances or utilization",
+      "future plans are not completed transactions",
+      "does not establish BNY proprietary XRP purchases or XRP collateral deployed"
+    ]
+  },
+  "macro": {
+    "source_url": "https://www.reuters.com/world/africa/dollar-near-19-month-high-fed-hike-bets-yen-tests-160-2026-11-13/",
+    "source_group": "reuters_independent_news",
+    "published_at_utc": "2026-11-13T01:58:00Z",
+    "observations": {
+      "dollar_index": 103.18,
+      "us_2y_treasury_yield_percent": 4.8602,
+      "us_2y_change_two_sessions_basis_points": 34,
+      "market_implied_probability_50bp_fed_hike_next_month_percent": 14.5,
+      "usd_jpy": 159.89,
+      "brent_usd_per_barrel": 95.79,
+      "wti_usd_per_barrel": 88.38,
+      "bitcoin_usd": 68587,
+      "bitcoin_change_24h_percent": -4
+    },
+    "geopolitical_context": "US-Iran comments raised Middle East supply concerns and oil/inflation expectations.",
+    "limitations": [
+      "macro risk context, not XRP-specific causal estimate",
+      "no directional forecast"
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H82-long-deleveraging",
+      "claim": "XRP derivatives show long-side deleveraging and crowded-account risk.",
+      "support": [
+        "negative average funding in the 07:02 snapshot",
+        "long liquidations dominated",
+        "open interest fell"
+      ],
+      "counter": [
+        "venue aggregation differs",
+        "account long/short ratios are not notional positioning",
+        "liquidation does not determine subsequent direction"
+      ],
+      "status": "plausible_not_model_eligible"
+    },
+    {
+      "id": "H82-etf-redemptions",
+      "claim": "US XRP ETF issuer holdings show recent net redemptions.",
+      "support": [
+        "XRP Insights settled Nov9-Nov11 net outflow",
+        "CryptoKeyhole reports Nov9 large outflow"
+      ],
+      "counter": [
+        "fund universes and excluded-flow rules differ",
+        "Nov12 is partial/provisional",
+        "issuer holdings changes are not a direct measure of all spot demand"
+      ],
+      "status": "plausible_not_model_eligible"
+    },
+    {
+      "id": "H82-exchange-supply",
+      "claim": "Tracked exchange-labeled XRP balances rose over seven days but fell over 30 days on a same-wallet basis.",
+      "support": [
+        "same-wallet +45.8M 7d",
+        "same-wallet -180.9M 30d"
+      ],
+      "counter": [
+        "new-wallet coverage changes are large",
+        "cold storage and non-customer wrapped reserves included",
+        "wallet migrations can mimic exchange flows"
+      ],
+      "status": "descriptive_only"
+    },
+    {
+      "id": "H82-institutional-custody",
+      "claim": "Institutional custody infrastructure for XRP and RLUSD is expanding.",
+      "support": [
+        "BNY custody platform support and Ripple collaboration"
+      ],
+      "counter": [
+        "custody availability is not use, volume, collateral or new XRP capital"
+      ],
+      "status": "verified_infrastructure_not_verified_demand"
+    },
+    {
+      "id": "H82-macro-risk",
+      "claim": "Dollar strength, rising US yields, yen intervention risk and Middle East oil concerns create a broad risk-sensitive macro backdrop.",
+      "support": [
+        "Reuters Nov13 market observations"
+      ],
+      "counter": [
+        "correlation is not XRP-specific causation",
+        "risk assets can diverge on idiosyncratic flows"
+      ],
+      "status": "context_only"
+    }
+  ],
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "event_registry": {
+      "version": "run71c-2026-11-12",
+      "captured_at_utc": "2026-11-12T23:31:57.440Z",
+      "curated_events": 73,
+      "raw_source_sha256_receipts": 0,
+      "model_eligible_events": 0
+    },
+    "reasons": [
+      "web observations are not byte-exact RawReceiptArchive captures",
+      "spot quotes are stale/asynchronous",
+      "no synchronized L2 depth",
+      "derivatives and flow sources are vendor aggregates",
+      "no independent shadow cohort or measured out-of-sample superiority"
+    ],
+    "no_real_money": true,
+    "no_paper_trading": true
+  },
+  "source_integrity": {
+    "raw_http_bytes_captured": false,
+    "raw_source_sha256": null,
+    "raw_receipt_chain_id": null,
+    "normalized_web_excerpts_only": true,
+    "all_observations_model_eligible": false,
+    "provenance_and_capture_cutoff_preserved": true
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "schema_version": "barrot.xrp.research.v1",
+  "artifact_id": "xrp_c2fo_instant_pay_rollout_and_actual_capital_status_20261105T071229Z",
+  "artifact_type": "institutional_trade_finance_product_rollout_and_capital_flow_reconciliation",
+  "repository": "Barrot-Agent/B-Agent",
+  "recorded_at_utc": "2026-11-05T07:12:29Z",
+  "research_cutoff_utc": "2026-11-05T07:12:29Z",
+  "mission": {
+    "priority": 1,
+    "name": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "model_eligible": false,
+  "source_capture_policy": {
+    "raw_http_bytes_captured": false,
+    "raw_content_sha256": null,
+    "timestamp_anchor": "web retrieval time from current session; no independent external timestamp anchor",
+    "admission_rule": "Keep this qualitative institutional event outside the prediction feature store until byte-complete source captures, hashes, publication vintages and independent timestamps are stored."
+  },
+  "source_registry": [
+    {
+      "id": "bny_ripple_xrp_rlusd_custody_20261027",
+      "publisher": "BNY",
+      "source_type": "primary_joint_transaction_announcement",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "publication_date": "2026-10-27",
+      "retrieved_at_utc": "2026-11-05T07:12:29Z",
+      "raw_capture_status": "web_page_extract_only",
+      "raw_content_sha256": null,
+      "independence_group": "bny_ripple_joint_announcement",
+      "claims_supported": [
+        "BNY states that its Digital Asset Custody platform now supports native XRP and RLUSD for eligible institutional clients.",
+        "BNY describes eligible-client safekeeping, holding and transfer capability.",
+        "BNY intends to broaden XRPL tokenized-asset support and enable direct RLUSD mint/redeem through BNY, subject to final BNY and regulatory approvals.",
+        "BNY and Ripple describe exploring tokenized trade finance on XRPL with C2FO, subject to client requirements."
+      ],
+      "limitations": [
+        "BNY reports capability, not asset-specific XRP or RLUSD assets under custody, client counts, account openings or incremental purchases.",
+        "Direct RLUSD mint/redeem is an intended future product plan, not verified production service.",
+        "Tokenized trade finance is exploratory; no funded receivables, investor allocations or production settlement volumes are disclosed."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "c2fo_ripple_instant_pay_joint_release_20261027",
+      "publisher": "C2FO and Ripple",
+      "source_type": "joint_primary_counterparty_announcement",
+      "url": "https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "publication_date": "2026-10-27",
+      "retrieved_at_utc": "2026-11-05T07:12:29Z",
+      "raw_capture_status": "web_page_extract_only",
+      "raw_content_sha256": null,
+      "independence_group": "c2fo_ripple_joint_announcement",
+      "claims_supported": [
+        "C2FO Instant Pay financing and settlement activity is intended to use XRPL.",
+        "The named settlement asset is RLUSD.",
+        "The announced funding model uses participating capital providers to fund accelerated supplier payments against approved invoices.",
+        "Suppliers are described as receiving funds in seconds rather than days, while invoice terms and due dates remain unchanged.",
+        "The announcement directs interested businesses to a waitlist."
+      ],
+      "limitations": [
+        "The release announces an initiative; it does not identify the participating capital providers or disclose funded amounts, supplier counts or production throughput.",
+        "It does not state that native XRP is the bridge asset, settlement principal, collateral or the asset purchased by the participating capital providers.",
+        "C2FO and Ripple are counterparties to the same joint announcement; their releases are not independent measurements of production activity."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "c2fo_instant_pay_product_page_20261105",
+      "publisher": "C2FO",
+      "source_type": "official_product_page",
+      "url": "https://c2fo.com/instant-pay/",
+      "retrieved_at_utc": "2026-11-05T07:12:29Z",
+      "raw_capture_status": "web_page_extract_only",
+      "raw_content_sha256": null,
+      "independence_group": "c2fo_ripple_joint_announcement",
+      "claims_supported": [
+        "The current product page still presents a Join Waitlist call to action.",
+        "The page says Instant Pay will launch with a limited rollout over the coming months.",
+        "The page says availability will be limited to the United States at launch.",
+        "The page describes payment within minutes after an approved invoice is confirmed for early payment."
+      ],
+      "limitations": [
+        "A product page description and waitlist are not evidence of production deployment, funded transactions or XRPL settlement volume.",
+        "The page does not identify capital providers or disclose transaction-level settlement data.",
+        "The public page does not establish that every waitlisted supplier has access."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "ripple_c2fo_early_pay_historical_volume_20261027",
+      "publisher": "Ripple",
+      "source_type": "primary_counterparty_press_release",
+      "url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "publication_date": "2026-10-27",
+      "retrieved_at_utc": "2026-11-05T07:12:29Z",
+      "raw_capture_status": "web_page_extract_only",
+      "raw_content_sha256": null,
+      "independence_group": "c2fo_ripple_joint_announcement",
+      "claims_supported": [
+        "Ripple's version reports more than $520 billion of working capital accessed through existing C2FO Early Pay programs."
+      ],
+      "limitations": [
+        "The figure describes pre-existing Early Pay programs, not new Instant Pay funding or XRPL/RLUSD settlement volume.",
+        "C2FO's own release says more than $525 billion; the two rounded statements are preserved as a $5 billion source discrepancy and are not averaged.",
+        "The difference may reflect rounding or differing reporting cutoffs; the public extracts do not resolve the methodology."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "relationships": [
+    {
+      "id": "bny_native_xrp_custody_capability",
+      "from": "BNY Digital Asset Custody",
+      "to": "Native XRP",
+      "status": "LIVE_REPORTED_CAPABILITY_FOR_ELIGIBLE_CLIENTS",
+      "quantified_assets_under_custody": null,
+      "new_xrp_purchases_established": false,
+      "collateral_acceptance_established": false
+    },
+    {
+      "id": "c2fo_instant_pay_xrpl_rlusd",
+      "from": "C2FO and Ripple",
+      "to": "C2FO Instant Pay",
+      "status": "ANNOUNCED_WAITLIST_LIMITED_ROLLOUT_PLANNED",
+      "network": "XRPL",
+      "settlement_asset": "RLUSD",
+      "funding_source": "Participating capital providers",
+      "funded_amount_usd": null,
+      "production_volume": null,
+      "supplier_count": null,
+      "xrp_bridge_asset_established": false,
+      "xrp_collateral_established": false
+    },
+    {
+      "id": "c2fo_instant_pay_launch_scope",
+      "from": "C2FO",
+      "to": "C2FO Instant Pay",
+      "status": "PUBLIC_PRODUCT_PAGE_WAITLIST_LIMITED_ROLLOUT",
+      "launch_scope": "United States only at launch",
+      "rollout_statement": "Limited rollout over the coming months",
+      "production_access_for_general_customers": "not established"
+    }
+  ],
+  "actual_capital_classification": {
+    "instant_pay_funded_amount_usd": null,
+    "participating_capital_provider_identities": [],
+    "cash_disbursed": "not established",
+    "historical_early_pay_volume_c2fo_usd": ">525000000000",
+    "historical_early_pay_volume_ripple_usd": ">520000000000",
+    "historical_early_pay_scope": "Existing Early Pay programs; not Instant Pay and not XRPL/RLUSD settlement volume.",
+    "discrepancy_usd": "5000000000 between the rounded lower-bound claims; methodology unresolved.",
+    "rule": "Do not classify a waitlist, announced funding model, historical program volume, or unquantified custody capability as new actual capital deployed."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1-rlusd-xrpl-utility-without-material-xrp-demand",
+      "claim": "C2FO Instant Pay could increase XRPL/RLUSD activity without generating material incremental native XRP spot demand.",
+      "support": [
+        "RLUSD is the named settlement asset.",
+        "The product page describes a limited rollout and waitlist."
+      ],
+      "disconfirming_or_missing": [
+        "No production XRPL transaction or fee attribution is published.",
+        "Any incremental XRP acquired for reserves or fees is unquantified."
+      ]
+    },
+    {
+      "id": "H2-native-xrp-institutional-friction-reduction",
+      "claim": "BNY's XRP custody capability could reduce institutional custody friction and enable future holdings.",
+      "support": [
+        "BNY explicitly states that its Digital Asset Custody platform supports native XRP for eligible clients."
+      ],
+      "disconfirming_or_missing": [
+        "No XRP assets under custody, client count, account openings or purchases are disclosed.",
+        "Custody can support existing holdings without changing net demand."
+      ]
+    },
+    {
+      "id": "H3-actual-capital-deployment-after-rollout",
+      "claim": "Participating capital providers may deploy actual cash when Instant Pay access expands.",
+      "support": [
+        "C2FO and Ripple describe a funding model using participating capital providers."
+      ],
+      "disconfirming_or_missing": [
+        "The product page still shows a waitlist and limited rollout over coming months.",
+        "Provider identities, funded amounts and settlement receipts are absent."
+      ]
+    }
+  ],
+  "disconfirming_evidence": [
+    "The C2FO product page still presents a waitlist and a limited rollout rather than broad general availability.",
+    "The release names RLUSD, not XRP, as the settlement asset.",
+    "No funded amount, provider identity, supplier count or transaction volume is disclosed.",
+    "BNY's XRP custody capability is not quantified by asset-specific AUC.",
+    "The $520B and $525B historical Early Pay figures are not Instant Pay volume."
+  ],
+  "next_actions": [
+    "Monitor the C2FO Instant Pay page for a change from waitlist/limited rollout to generally available service.",
+    "Seek primary evidence identifying participating capital providers and actual funded invoices.",
+    "Verify production XRPL transactions and RLUSD settlement volumes separately from XRP bridge usage.",
+    "Seek BNY asset-specific XRP custody balances or other independently quantified institutional holdings.",
+    "Preserve the $520B/$525B Early Pay source difference until methodology and cutoff are reconciled.",
+    "Capture original source bytes, SHA-256 receipts and independent timestamps before model admission."
+  ]
+}

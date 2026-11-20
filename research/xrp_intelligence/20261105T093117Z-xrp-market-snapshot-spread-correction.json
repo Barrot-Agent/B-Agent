@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "artifact_id": "20261105T093117Z-xrp-market-snapshot-spread-correction",
+  "artifact_type": "append_only_research_correction",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission": {
+    "priority": 1,
+    "title": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 remains the execution, orchestration, safety and verification foundation."
+  },
+  "correction_recorded_at_utc": "2026-11-05T09:31:17Z",
+  "source_data_cutoff_utc": "2026-11-05T09:16:47Z",
+  "applies_to": {
+    "artifact_id": "20261105T090232Z-xrp-market-derivatives-etf-circle-macro-reconciliation",
+    "path": "research/xrp_intelligence/20261105T090232Z-xrp-market-derivatives-etf-circle-macro-reconciliation.json",
+    "field_path": "market_snapshot.spot.latest_recheck.displayed_spread_bps",
+    "original_artifact_modified": false
+  },
+  "correction": {
+    "original_value_bps": 0.076106,
+    "bid_usd": 1.31397,
+    "ask_usd": 1.31398,
+    "midpoint_usd": 1.313975,
+    "spread_usd": 0.00001,
+    "formula": "((ask_usd - bid_usd) / ((ask_usd + bid_usd) / 2)) * 10000",
+    "recomputed_exact_bps": 0.07610494872429081,
+    "corrected_value_rounded_6dp": 0.076105,
+    "reason": "The previously recorded derived spread does not reproduce from the bid, ask and midpoint preserved in the same observation. This correction supersedes only the derived spread value; the original artifact and all captured quote fields remain unchanged."
+  },
+  "source_capture": {
+    "source": "Kraken public XRP/USD ticker",
+    "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "provider_event_timestamp": "not returned in ticker payload",
+    "captured_at_utc": "2026-11-05T09:16:47Z",
+    "raw_http_bytes_captured": false,
+    "original_raw_content_sha256": null,
+    "independent_timestamp_anchor": false,
+    "basis": "Arithmetic recomputation from the rendered bid/ask values in the referenced artifact; not a new exchange observation."
+  },
+  "scope_limits": [
+    "Do not rewrite the original snapshot.",
+    "Do not alter last trade, bid, ask, sizes, 24-hour statistics, event timestamp or capture timestamp.",
+    "Do not interpret the spread correction as a trading signal or market-direction evidence.",
+    "Do not promote the rendered observation into the point-in-time feature store."
+  ],
+  "model_eligible": false,
+  "forecast_issued": false,
+  "paper_trade_executed": false,
+  "real_money_actions": false
+}

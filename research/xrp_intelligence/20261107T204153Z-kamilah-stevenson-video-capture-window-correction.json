@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "20261107T204153Z-kamilah-stevenson-video-capture-window-correction",
+  "artifact_type": "append_only_capture_timestamp_correction",
+  "created_at_utc": "2026-11-07T20:41:53Z",
+  "supersedes_artifact": "research/xrp_intelligence/20261107T203431Z-kamilah-stevenson-public-video-identity-reconciliation.json",
+  "superseded_artifact_git_blob_sha": "24bff929a7ce94c28351d9d7f3e1b695e18f2f1f",
+  "supersession_scope": "TIMESTAMP_ONLY",
+  "correction": {
+    "previous_captured_at_utc": "2026-11-07T20:34:31Z",
+    "previous_field_status": "INCORRECT_AS_EXACT_CAPTURE_TIME",
+    "capture_window_start_exclusive_utc": "2026-11-07T20:34:31Z",
+    "capture_window_end_inclusive_utc": "2026-11-07T20:41:53Z",
+    "corrected_exact_capture_at_utc": null,
+    "exact_fetch_arrival_timestamp_exposed": false,
+    "semantics": "The Kamilah/All Nations/YouTube search and page inspections occurred after the 20:34:31Z reference-clock call and before the 20:41:53Z reference-clock call. The exact retrieval arrival timestamp was not exposed. Treat 20:34:31Z only as a lower bound and 20:41:53Z as a post-capture reference; do not treat either as an exact provider event time."
+  },
+  "evidence_content_changed": false,
+  "identity_and_video_decisions_unchanged": true,
+  "raw_source_excerpt_hashes_unchanged": true,
+  "model_admission": false,
+  "forecast_status": "NOT_ISSUED"
+}

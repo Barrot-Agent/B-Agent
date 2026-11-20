@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "correction_id": "xrp_bls_event_duplicate_capture_supersession_20261106",
+  "observation_date": "2026-11-06",
+  "research_status": "APPEND_ONLY_DUPLICATE_SUPERSESSION",
+  "source_artifacts": [
+    {
+      "path": "research/xrp_intelligence/20261106T1342Z-bls-october-employment-xrp-event-window.json",
+      "git_blob_sha1": "3496978c90ef5656d5927a2056d4625265b0d2cb",
+      "role": "duplicate supplemental capture created in this run",
+      "treatment": "Preserve unchanged for audit/history; do not count as a separate BLS event or separate Kraken market observation."
+    },
+    {
+      "path": "research/xrp_intelligence/20261106T134313Z-bls-october-employment-and-xrp-post-release-market-reconciliation.json",
+      "git_blob_sha1": "4b1bccaccb4c4b24fbd9df3b5be7c87a02b0433f",
+      "role": "canonical event-window artifact already present in the active XRP research PR",
+      "treatment": "Use as the sole canonical BLS/XRP event observation. It includes the same official release, same Kraken rendered-response digest, and additional derivatives/ETF context."
+    }
+  ],
+  "duplicate_comparison": {
+    "bls_release_id": "USDL-26-1632",
+    "event_time_utc": "2026-11-06T13:30:00Z",
+    "kraken_rendered_response_sha256": "695d5dabf4e4f3607c536586e0996ac712c77b13ab26607457ba191d2051d7cc",
+    "duplicate_and_canonical_market_response_digest_matches": true,
+    "canonical_additional_coverage": [
+      "venue-scoped derivatives observations",
+      "ETF holdings-delta reconciliation",
+      "five competing hypotheses",
+      "explicit event cutoff and retrieval upper bound"
+    ],
+    "finding": "The new supplemental artifact repeated the same BLS event and exact Kraken ticker response already recorded by the canonical artifact. It adds no independent observation."
+  },
+  "application_contract": {
+    "original_artifacts_mutated": false,
+    "duplicate_artifact_deleted": false,
+    "archive_view_rule": "Treat the two artifacts as one event. Count only the canonical artifact in research summaries, event features and source/observation totals. Retain the duplicate solely as an audit trail for the redundant capture.",
+    "model_eligible": false,
+    "reason": "Duplicate source content is not independent corroboration and must not increase sample counts, source independence counts or feature-store observations."
+  },
+  "forecast_status": "NOT_ISSUED"
+}

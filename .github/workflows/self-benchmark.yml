@@ -1,40 +1,19 @@
-name: Self Benchmark
+name: Self Benchmark (quarantined pending isolated execution)
 
 on:
-  workflow_dispatch:
-    inputs:
-      confirm_external_research:
-        description: "Explicitly authorize the Groq-backed self-benchmark run"
-        required: true
-        type: choice
-        options:
-          - NO
-          - YES
-        default: NO
+  workflow_dispatch: {}
 
-permissions:
-  contents: read
+# QUARANTINED: self_benchmark.py executes model-generated Python in a subprocess.
+# Do not re-enable until execution is secret-free, network-disabled, filesystem-restricted,
+# and bounded by CPU, memory, and wall-clock limits.
+permissions: {}
 
 jobs:
   benchmark:
-    if: ${{ inputs.confirm_external_research == 'YES' }}
+    if: ${{ false }}
     runs-on: ubuntu-latest
-    env:
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
+    permissions: {}
     steps:
-      - uses: actions/checkout@v7
-        with:
-          persist-credentials: false
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.11"
-      - name: Run self-benchmark tasks
-        run: python3 scripts/self_benchmark.py
-      - name: Preserve benchmark log as an artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: barrot-self-benchmark-${{ github.run_number }}
-          path: ping-pongings/knowledge-base/benchmark_log.jsonl
-          if-no-files-found: warn
-          retention-days: 90
+      - name: Explain quarantine
+        run: |
+          echo "Self-benchmark is quarantined. Generated Python is not executed until an isolated sandbox is verified."

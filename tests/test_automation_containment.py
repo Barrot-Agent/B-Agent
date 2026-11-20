@@ -1,3 +1,8 @@
+import json
+import os
+import re
+import subprocess
+import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -14,6 +19,28 @@ QUARANTINED_WORKFLOWS = (
     ".github/workflows/check-signal-accuracy.yml",
     ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
     ".github/workflows/autonomous_self_deployment.yml",
+    ".github/workflows/subagent-spawn.yml",
+    ".github/workflows/subagent-matrix.yml",
+    ".github/workflows/capability-1-market-analysis.yml",
+    ".github/workflows/capability-9-data-resolver.yml",
+    ".github/workflows/pingpong.yml",
+    ".github/workflows/task-allocator.yml",
+    ".github/workflows/ask-barrot.yml",
+    ".github/workflows/write-lyrics.yml",
+    ".github/workflows/barrot-agent.yml",
+    ".github/workflows/barrot-sync.yml",
+    ".github/workflows/barrot-self-upgrade.yml",
+    ".github/workflows/signal_ledger.yml",
+    ".github/workflows/knowledge-signal-cycle.yml",
+    ".github/workflows/test-groq-chain.yml",
+    ".github/workflows/webmcp-live-sandbox.yml",
+    ".github/workflows/databricks-bundle.yml",
+    ".github/workflows/sync-huggingface.yml",
+    ".github/workflows/test-semantic-memory.yml",
+    ".github/workflows/ibm-bob-barrot-audit.yml",
+    ".github/workflows/diag-cf.yml",
+    ".github/workflows/diag-cf2.yml",
+    ".github/workflows/table-freshness-check.yml",
 )
 
 
@@ -46,6 +73,32 @@ def test_high_risk_automation_workflows_are_quarantined() -> None:
             assert token not in lowered, f"{relative} still contains {token!r}"
 
 
+def test_barrot_auto_pr_is_a_read_only_notice() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "barrot-auto-pr.yml"
+    ).read_text(encoding="utf-8")
+    lowered = workflow.lower()
+
+    assert "push:" in lowered
+    assert "branches: [main]" in lowered
+    assert "workflow_dispatch:" in lowered
+    assert "permissions:\n  contents: read" in lowered
+    assert "persist-credentials: false" in lowered
+    assert "barrot-auto-pr workflow is configured correctly" in lowered
+
+    for forbidden in (
+        "contents: write",
+        "pull-requests: write",
+        "issues: write",
+        "secrets.",
+        "gh pr create",
+        "gh pr merge",
+        "git commit",
+        "git push",
+    ):
+        assert forbidden not in lowered, forbidden
+
+
 def test_cross_analysis_remains_available_but_is_read_only() -> None:
     workflow = (
         REPO_ROOT / ".github" / "workflows" / "cross-analysis.yml"
@@ -54,10 +107,13 @@ def test_cross_analysis_remains_available_but_is_read_only() -> None:
 
     assert "contents: read" in lowered
     assert "persist-credentials: false" in lowered
-    assert "actions/upload-artifact@v7" in lowered
+    assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in lowered
     assert "retention-days: 30" in lowered
     assert "if-no-files-found: error" in lowered
-    assert "conclusion == 'success'" in lowered
+    assert "schedule:" in lowered
+    assert "workflow_dispatch:" in lowered
+    assert "workflow_run:" not in lowered
+    assert "actions/download-artifact" not in lowered
 
     for token in (
         "contents: write",
@@ -80,3 +136,180 @@ def test_public_brain_corpus_exporter_is_inert() -> None:
     assert "return 2" in script
     assert "requests.post(" not in script
     assert "os.environ[" not in script
+
+
+ARTIFACT_ONLY_WORKFLOWS = (
+    ".github/workflows/capability-discovery.yml",
+    ".github/workflows/capability-10-design.yml",
+    ".github/workflows/data-value-triage.yml",
+    ".github/workflows/signal-summary.yml",
+)
+
+
+def test_coinbase_paper_trader_remains_disabled_until_shadow_evaluation_is_approved() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "coinbase-paper-trader.yml"
+    ).read_text(encoding="utf-8")
+    lowered = workflow.lower()
+    assert "workflow_dispatch:" in lowered
+    assert "permissions: {}" in lowered
+    assert ("if: $" + "{{ false }}") in lowered
+    assert "secrets." not in lowered
+    assert "schedule:" not in lowered
+    assert "push:" not in lowered
+    assert "workflow_run:" not in lowered
+    assert "git push" not in lowered
+    assert "git commit" not in lowered
+    assert "actions/upload-artifact" not in lowered
+    assert "no credentials are read" in lowered
+
+def test_legacy_market_analysis_is_permanently_retired_even_with_opt_in(
+    tmp_path: Path,
+) -> None:
+    script = REPO_ROOT / "scripts" / "market_analysis_engine.py"
+    env = os.environ.copy()
+    env["BARROT_ENABLE_LEGACY_MARKET_ANALYSIS"] = "YES"
+    env.pop("DATABRICKS_HOST", None)
+    env.pop("DATABRICKS_TOKEN", None)
+    env.pop("DATABRICKS_WAREHOUSE_ID", None)
+    env.pop("GROQ_API_KEY", None)
+
+    result = subprocess.run(
+        [sys.executable, str(script)],
+        cwd=tmp_path,
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=10,
+    )
+
+    assert result.returncode == 0, result.stderr
+    status = json.loads(result.stdout)
+    assert status["status"] == "NOT_ISSUED"
+    assert status["forecast_issued"] is False
+    assert status["reason_code"] == "LEGACY_SIGNAL_HISTORY_ANALYSIS_RETIRED"
+    assert status["trade_recommendations"] == []
+    assert not list(tmp_path.glob("market_analysis_*.json"))
+
+
+
+def test_capability_workflows_are_manual_exact_sha_and_artifact_only() -> None:
+    for relative in ARTIFACT_ONLY_WORKFLOWS:
+        workflow = (REPO_ROOT / relative).read_text(encoding="utf-8")
+        lowered = workflow.lower()
+        assert "workflow_dispatch:" in lowered, relative
+        assert "permissions:\n  contents: read" in lowered, relative
+        assert "contents: write" not in lowered, relative
+        assert "actions: write" not in lowered, relative
+        assert "inputs.confirm == 'yes'" in lowered, relative
+        assert "inputs.expected_main_sha" in lowered, relative
+        assert "persist-credentials: false" in lowered, relative
+        assert "git ls-remote origin refs/heads/main" in lowered, relative
+        assert "git push" not in lowered, relative
+        assert "git commit" not in lowered, relative
+        assert "uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7" in lowered, relative
+        assert "retention-days: 7" in lowered, relative
+        assert "public/authorized" in lowered, relative
+        assert "unverified" in lowered, relative
+
+
+def test_contradiction_resolver_preserves_conflicts_without_llm_adjudication(
+    tmp_path: Path,
+) -> None:
+    records = [
+        {
+            "id": "xrp_spot_midpoint",
+            "value": "1.20658",
+            "source_id": "kraken",
+            "source_url": "https://example.invalid/kraken",
+            "source_independence_group": "kraken_spot",
+            "evidence_receipt_id": "receipt-kraken",
+            "source_event_time_utc": "2026-11-06T00:00:00Z",
+        },
+        {
+            "id": "xrp_spot_midpoint",
+            "value": "1.20710",
+            "source_id": "coinbase",
+            "source_url": "https://example.invalid/coinbase",
+            "source_independence_group": "coinbase_spot",
+            "evidence_receipt_id": "receipt-coinbase",
+            "source_event_time_utc": "2026-11-06T00:00:02Z",
+        },
+    ]
+    env = os.environ.copy()
+    env["TEST_DATA"] = json.dumps(records)
+    env.pop("GROQ_API_KEY", None)
+    result = subprocess.run(
+        [sys.executable, str(REPO_ROOT / "scripts" / "data_contradiction_resolver.py")],
+        cwd=tmp_path,
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=10,
+    )
+    assert result.returncode == 0, result.stderr
+    output = next(tmp_path.glob("contradiction_review_*.json"))
+    report = json.loads(output.read_text(encoding="utf-8"))
+    conflict = report["conflicts"][0]
+    assert report["conflict_count"] == 1
+    assert conflict["resolution_status"] == "UNRESOLVED_PRIMARY_EVIDENCE_REQUIRED"
+    assert conflict["observations"] == records
+    assert conflict["minority_objections"] == records
+    assert conflict["winner"] is None
+    assert conflict["adjudication"] is None
+    assert report["model_eligible"] is False
+    assert report["forecast_status"] == "NOT_ISSUED"
+
+
+def test_contradiction_resolver_reports_provenance_gaps_without_dropping_records(
+    tmp_path: Path,
+) -> None:
+    records = [
+        {"id": "xrp_flow", "value": 10, "source_id": "source-a"},
+        {"value": 12, "source_id": "source-b"},
+    ]
+    env = os.environ.copy()
+    env["TEST_DATA"] = json.dumps(records)
+    env.pop("GROQ_API_KEY", None)
+    result = subprocess.run(
+        [sys.executable, str(REPO_ROOT / "scripts" / "data_contradiction_resolver.py")],
+        cwd=tmp_path,
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=10,
+    )
+    assert result.returncode == 0, result.stderr
+    report = json.loads(next(tmp_path.glob("contradiction_review_*.json")).read_text(encoding="utf-8"))
+    assert report["source_record_count"] == 2
+    assert report["provenance_gap_count"] == 2
+    assert report["unresolved_record_count"] == 1
+    assert report["unresolved_records"][0]["record"] == records[1]
+    assert report["provenance_gaps"][0]["record"] == records[0]
+    assert report["model_eligible"] is False
+
+def test_table_freshness_diagnostic_cannot_publish_private_brain_rows() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "table-freshness-check.yml"
+    ).read_text(encoding="utf-8")
+    lowered = workflow.lower()
+
+    assert "workflow_dispatch: {}" in lowered
+    assert "permissions: {}" in lowered
+    assert "if: ${{ false }}" in lowered
+    for forbidden in (
+        "secrets.",
+        "databricks_token",
+        "workspace.barrot.brain",
+        "select ",
+        "random",
+        "insight",
+        "session",
+        "requests.post(",
+        "uses:",
+    ):
+        assert forbidden not in lowered, forbidden
+    assert "no private rows are emitted" in lowered

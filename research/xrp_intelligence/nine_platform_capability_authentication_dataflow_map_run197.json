@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.8.0",
+  "snapshot_id": "run197-final-verification-20261116T204200Z",
+  "captured_at_utc": "2026-11-16T20:42:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+  "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+  "integration_head_before_run": "6e6d4f8e716ca1669479c2cb189b11bcafd9e275",
+  "integration_pr": 1663,
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "verified",
+      "data_flow": "ChatGPT GitHub connector -> GitHub REST API -> Barrot-Agent/B-Agent integration branch",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": false,
+      "evidence": "Run195 re-fetched main/integration trees, open PR inventory, ancestry, exact-head CI logs, critical workflows, XRP source code and current public market sources."
+    },
+    {
+      "name": "Claude",
+      "authentication": "unverified",
+      "data_flow": "none verified",
+      "permissions": [],
+      "least_privilege": null
+    },
+    {
+      "name": "Grok",
+      "authentication": "unverified",
+      "data_flow": "none verified",
+      "permissions": [],
+      "least_privilege": null,
+      "notes": "Groq is separate; no Grok connection tested."
+    },
+    {
+      "name": "Gemini",
+      "authentication": "unverified",
+      "data_flow": "none verified",
+      "permissions": [],
+      "least_privilege": null
+    },
+    {
+      "name": "Copilot",
+      "authentication": "historical_one_off_activity",
+      "data_flow": "no current authenticated data flow or formal review verified",
+      "permissions": [],
+      "least_privilege": null
+    },
+    {
+      "name": "Codex",
+      "authentication": "unverified",
+      "data_flow": "none verified",
+      "permissions": [],
+      "least_privilege": null
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "unverified",
+      "data_flow": "no current successful authenticated request or deployment verified",
+      "permissions": [],
+      "least_privilege": null
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "untested",
+      "data_flow": "none verified",
+      "permissions": [],
+      "least_privilege": null
+    },
+    {
+      "name": "Databricks",
+      "authentication": "unverified",
+      "data_flow": "no current successful authenticated request or write verified",
+      "permissions": [],
+      "least_privilege": null,
+      "notes": "Configured secrets are not proof of live authentication."
+    }
+  ],
+  "adjacent_integrations": [
+    {
+      "name": "Groq",
+      "authentication": "workflow_secret_configured_but_not_tested",
+      "data_flow": "no external request dispatched",
+      "notes": "Not Grok."
+    },
+    {
+      "name": "OpenCode GitHub MCP",
+      "authentication": "unverified",
+      "data_flow": "no authenticated health check verified",
+      "permissions": []
+    }
+  ],
+  "coordination": {
+    "independent_tasks_dispatched": false,
+    "structured_evidence_exchange": false,
+    "disagreement_resolution": "Retain source scope, timestamps, independence groups, competing hypotheses and minority objections; no external-model quorum.",
+    "minority_objections_preserved": true,
+    "independent_red_team_quorum": false,
+    "live_connections_claimed": false,
+    "fallback": "Deterministic repository inspection and lawful public read-only research."
+  },
+  "governance": {
+    "main_protected_flag": true,
+    "branch_protection_detail": "HTTP 403",
+    "visible_ruleset_id": 10863829,
+    "visible_ruleset_enforcement": "disabled",
+    "codeowners": "* @Barrot-Agent",
+    "connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "least_privilege": false
+  },
+  "execution_evidence": {
+    "main_sha": "1f30e5c18f151f75ad5d157ddde175723584ec69",
+    "integration_head_before_run": "6e6d4f8e716ca1669479c2cb189b11bcafd9e275",
+    "pr1663_head_exact_suite_run": 43951326643,
+    "full_suite": "3844 passed, 1 skipped, 11 warnings, 19 subtests in 178.89 seconds",
+    "coverage_percent": 66.9,
+    "legacy_core_coverage_percent": 77,
+    "dependency_audit": "6 manifests; zero known vulnerabilities",
+    "fail_closed_gate": "passed",
+    "workflow_side_effect_review": "49 changed workflow files scanned; full script/action semantic review remains incomplete",
+    "live_trading_safety_finding": "pre-existing dormant Coinbase live-order path requires explicit second authorization before any future use",
+    "creator_identity": "person identity high confidence; exact YouTube channel handle unverified",
+    "addendum_commit_ci": "passed on 6e6d4f8; final handoff-only commit pending its own exact-head CI"
+  },
+  "no_external_actions": {
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "databricks_write": false,
+    "kaggle_submission": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false
+  },
+  "run197_observation": {
+    "captured_at_utc": "2026-11-16T20:42:00Z",
+    "verified_platform": "ChatGPT GitHub connector",
+    "verified_data_flow": "ChatGPT GitHub connector -> GitHub REST API -> Barrot-Agent/B-Agent integration branch",
+    "verified_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "least_privilege": false,
+    "other_eight_platforms": "Unverified or untested; no current authenticated data flow claimed.",
+    "note": "No external model task, Kaggle submission or Databricks write was performed.",
+    "verified_integration_head": "6e6d4f8e716ca1669479c2cb189b11bcafd9e275",
+    "exact_head_ci_passed": true,
+    "external_model_tasks_dispatched": false,
+    "external_actions_executed": false,
+    "current_xrp_quote_usd": 0.9558,
+    "current_xrp_open_interest_usd": 973000000,
+    "current_xrp_open_interest_change_24h_pct": -3.9,
+    "source_receipts_added": 0
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "schema_version": "barrot.xrp-research.v1",
+  "artifact_type": "xrpl_lending_amendment_vote_denominator_reconciliation",
+  "artifact_id": "xrpl-lending-amendment-vote-denominator-reconciliation-20261108T000206Z",
+  "recorded_at_utc": "2026-11-08T00:02:06Z",
+  "mission_priority": 1,
+  "mission": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "status": "RESEARCH_ONLY_MODEL_INELIGIBLE",
+  "capture": {
+    "capture_time_utc": "2026-11-08T00:02:06Z",
+    "exact_http_retrieval_times_utc": null,
+    "raw_http_bytes_captured": false,
+    "normalized_excerpt_hashes": "SHA-256 over the exact visible excerpt strings recorded below; these are not raw-response hashes.",
+    "limitation": "Browser-rendered source text was available, but raw HTTP bodies and exact per-request retrieval timestamps were not. The vote pages are time-bounded snapshots, not a synchronized forecast feature.",
+    "copyright_note": "Source preservation uses short identifying excerpts (within quotation limits) plus original paraphrased summaries; hashes cover the short excerpts, not raw HTTP bytes."
+  },
+  "executive_findings": [
+    "XRPLWin's current pages show LendingProtocol 21/35, SingleAssetVault 23/35 and LendingProtocolV1_1 21/35; each remains below the 29-vote threshold and has not entered a majority countdown.",
+    "A separate xrpl.to page snapshot dated 2026-11-07 reports 36 trusted validators with the same yes-vote counts and 29 required. The denominator conflict is unresolved; neither tracker is treated as a canonical global trusted set.",
+    "The 2026-11-06 XRPLWin snapshot also showed 21/35, 23/35 and 21/35. The current XRPLWin counts therefore do not demonstrate an increase in yes votes.",
+    "fixCleanup3_4_0 was enabled on 2026-11-04 at 14:52 UTC, ledger 108112129. It repairs safety/correctness behavior in lending/vault code but does not activate LendingProtocol, SingleAssetVault or LendingProtocolV1_1.",
+    "XLS-66 lending is explicitly uncollateralized and funded from pooled Single Asset Vault assets, with off-chain underwriting. Vault deposits are funder capital, not borrower collateral.",
+    "No actual vault capital, loan origination, borrower repayment/default, XRP collateral balance or XRP settlement volume was verified."
+  ],
+  "amendment_snapshots": {
+    "xrplwin": {
+      "trusted_validator_count_reported": 35,
+      "threshold_yes_votes": 29,
+      "required_support": "More than 80% for 14 uninterrupted days",
+      "voting_ledger": 108184575,
+      "observations": [
+        {
+          "amendment": "LendingProtocol",
+          "standard": "XLS-66",
+          "yes_votes": 21,
+          "total_reported": 35,
+          "yes_pct": 60,
+          "state_ledger": 108184783,
+          "voting_ledger": 108184575,
+          "status": "VOTING_NO_MAJORITY",
+          "source_id": "xrplwin_lendingprotocol_current"
+        },
+        {
+          "amendment": "SingleAssetVault",
+          "standard": "XLS-65",
+          "yes_votes": 23,
+          "total_reported": 35,
+          "yes_pct": 65.7142857143,
+          "state_ledger": 108184574,
+          "voting_ledger": 108184575,
+          "status": "VOTING_NO_MAJORITY",
+          "source_id": "xrplwin_single_asset_vault_current"
+        },
+        {
+          "amendment": "LendingProtocolV1_1",
+          "standard": "",
+          "yes_votes": 21,
+          "total_reported": 35,
+          "yes_pct": 60,
+          "state_ledger": 108184574,
+          "voting_ledger": 108184575,
+          "status": "VOTING_NO_MAJORITY",
+          "source_id": "xrplwin_lending_v11_current"
+        }
+      ]
+    },
+    "xrpl_to_alternative_snapshot": {
+      "source_date": "2026-11-07",
+      "trusted_validator_count_reported": 36,
+      "threshold_yes_votes": 29,
+      "observations": [
+        {
+          "amendment": "LendingProtocol",
+          "yes_votes": 21,
+          "total_reported": 36,
+          "yes_pct": 58.3333333333
+        },
+        {
+          "amendment": "SingleAssetVault",
+          "yes_votes": 23,
+          "total_reported": 36,
+          "yes_pct": 63.8888888889
+        },
+        {
+          "amendment": "LendingProtocolV1_1",
+          "yes_votes": 21,
+          "total_reported": 36,
+          "yes_pct": 58.3333333333
+        }
+      ],
+      "status": "SECONDARY_DENOMINATOR_DISAGREEMENT_NOT_CANONICAL",
+      "limitation": "The page instructs automated clients to use its documented API. No API session was tested. This snapshot is retained only to record the denominator disagreement and is not admitted as a model feature or independent confirmation."
+    },
+    "prior_xrplwin_snapshot": {
+      "source_artifact": "research/xrp_intelligence/20261106T151624Z-xrp-collateral-and-xrpl-lending-vote-reconciliation.json",
+      "recorded_at_utc": "2026-11-06T15:16:24Z",
+      "observations": [
+        {
+          "amendment": "LendingProtocol",
+          "yes_votes": 21,
+          "total_reported": 35,
+          "state_ledger": 108155386
+        },
+        {
+          "amendment": "SingleAssetVault",
+          "yes_votes": 23,
+          "total_reported": 35,
+          "state_ledger": 108154942
+        },
+        {
+          "amendment": "LendingProtocolV1_1",
+          "yes_votes": 21,
+          "total_reported": 35,
+          "state_ledger": 108155080
+        }
+      ],
+      "interpretation": "XRPLWin's later ledger-indexed snapshot retains the same yes counts and denominator; do not infer an increase in validator support."
+    }
+  },
+  "protocol_design": {
+    "lending_protocol": {
+      "standard": "XLS-66",
+      "loan_type": "UNCOLLATERALIZED_FIXED_TERM",
+      "funding_source": "Pooled funds from a Single Asset Vault",
+      "underwriting": "Off-chain underwriting and risk management assess borrower creditworthiness.",
+      "specification_url": "https://xrpl.org/resources/known-amendments",
+      "excerpt_sha256": "29c09ce8af6f5f5f7430e5683f2b3a527c77d9e80de049c4298b81cc2d7dbb35"
+    },
+    "single_asset_vault": {
+      "standard": "XLS-65",
+      "purpose": "Aggregates assets from multiple depositors for use with the on-chain Lending Protocol.",
+      "interpretation": "Vault deposits fund loans; they are not borrower collateral."
+    },
+    "lending_protocol_v1_1": {
+      "introduced_in": "xrpld 3.4.0",
+      "changes": [
+        "Closed-ended vault with subscription, investment and redemption phases.",
+        "Cash-basis accounting recognizes interest as income when payments are actually made."
+      ],
+      "excerpt_sha256": "1ed8dc296270a18e46137cd2b6a40d4f13cc697fd0b98f7020494318bcc93240",
+      "status": "OPEN_FOR_VOTING_BELOW_SUPERMAJORITY"
+    },
+    "fix_cleanup_3_4_0": {
+      "status": "ENABLED",
+      "enabled_at_utc": "2026-11-04T14:52:00Z",
+      "enabled_ledger": 108112129,
+      "amendment_id": "98433DD001A5737F773D74F8CA2A25A065089C73B2E611C760BAF369E4FECA76",
+      "scope": "Vault/lending rounding and due-date checks, permission-delegation safety, AMM, trust-line, NFT, MPT, escrow, sponsorship and signing fixes.",
+      "distinction": "A correctness/security amendment, not activation of the lending/vault product amendments.",
+      "source_id": "xrplwin_fixcleanup_activation",
+      "excerpt_sha256": "fdf279f408cb7d343cb890b968634359a41a22110f7831880b62741cdad51f29"
+    }
+  },
+  "capital_collateral_reconciliation": {
+    "borrower_collateral_required_by_xls66": false,
+    "vault_deposits_are_borrower_collateral": false,
+    "actual_vault_capital_verified": false,
+    "actual_loan_origination_volume_verified": false,
+    "actual_xrp_collateral_balance_verified": false,
+    "actual_xrp_settlement_volume_verified": false,
+    "separate_context": "Coinbase Global Exchange XRP collateral eligibility is a different product and does not establish XRPL Lending Protocol activation or actual collateral utilization."
+  },
+  "source_registry": [
+    {
+      "source_id": "xrpl_official_known_amendments",
+      "publisher": "XRPL.org",
+      "source_type": "official_protocol_documentation",
+      "url": "https://xrpl.org/resources/known-amendments",
+      "independence_group": "xrpl_official_docs",
+      "normalized_excerpt": "uncollateralized loans",
+      "normalized_excerpt_sha256": "29c09ce8af6f5f5f7430e5683f2b3a527c77d9e80de049c4298b81cc2d7dbb35",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null,
+      "summary": "The official protocol description characterizes XLS-66 loans as fixed-term and uncollateralized, funded from pooled Single Asset Vault assets with off-chain underwriting."
+    },
+    {
+      "source_id": "xrpl_official_lending_v11",
+      "publisher": "XRPL.org",
+      "source_type": "official_protocol_documentation",
+      "url": "https://xrpl.org/resources/known-amendments",
+      "independence_group": "xrpl_official_docs",
+      "normalized_excerpt": "closed-ended vault",
+      "normalized_excerpt_sha256": "1ed8dc296270a18e46137cd2b6a40d4f13cc697fd0b98f7020494318bcc93240",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null,
+      "summary": "LendingProtocolV1_1 adds closed-ended vault phases and cash-basis accounting; it remains a separate amendment requiring activation."
+    },
+    {
+      "source_id": "xrpl_official_amendment_mechanics",
+      "publisher": "XRPL.org",
+      "source_type": "official_protocol_documentation",
+      "url": "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
+      "independence_group": "xrpl_official_docs",
+      "normalized_excerpt": "more than 80%",
+      "normalized_excerpt_sha256": "5fba94e6ab245cec9259389f778e95f2b6d4c4ed25d3475a0a78b1d8e3fadf26",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null,
+      "summary": "The official amendment process requires more than 80% trusted-validator support to remain uninterrupted for two weeks."
+    },
+    {
+      "source_id": "xrplwin_lendingprotocol_current",
+      "publisher": "XRPLWin",
+      "source_type": "ledger_amendment_state_tracker",
+      "url": "https://xrplwin.com/amendment/LendingProtocol",
+      "independence_group": "xrplwin_ledger_reader",
+      "state_ledger": 108184783,
+      "voting_ledger": 108184575,
+      "normalized_excerpt": "21 of 35 trusted validators",
+      "normalized_excerpt_sha256": "5747f379b057e556d5edf1ff6dbc6e7b04635f324b3221ee486979c21ac27f6e",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null,
+      "summary": "XRPLWin's ledger-indexed page reports 21 affirmative votes out of its 35-validator denominator."
+    },
+    {
+      "source_id": "xrplwin_single_asset_vault_current",
+      "publisher": "XRPLWin",
+      "source_type": "ledger_amendment_state_tracker",
+      "url": "https://xrplwin.com/amendment/SingleAssetVault",
+      "independence_group": "xrplwin_ledger_reader",
+      "state_ledger": 108184574,
+      "voting_ledger": 108184575,
+      "normalized_excerpt": "23 of 35 trusted validators",
+      "normalized_excerpt_sha256": "c170beaf0bd422083bddc607cd942e471f784c9b92264ddb26d264e7c831c085",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null,
+      "summary": "XRPLWin's ledger-indexed page reports 23 affirmative votes out of its 35-validator denominator."
+    },
+    {
+      "source_id": "xrplwin_lending_v11_current",
+      "publisher": "XRPLWin",
+      "source_type": "ledger_amendment_state_tracker",
+      "url": "https://xrplwin.com/amendment/LendingProtocolV1_1",
+      "independence_group": "xrplwin_ledger_reader",
+      "state_ledger": 108184574,
+      "voting_ledger": 108184575,
+      "normalized_excerpt": "21 of 35 trusted validators",
+      "normalized_excerpt_sha256": "5747f379b057e556d5edf1ff6dbc6e7b04635f324b3221ee486979c21ac27f6e",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null,
+      "summary": "XRPLWin's ledger-indexed page reports 21 affirmative votes out of its 35-validator denominator."
+    },
+    {
+      "source_id": "xrplwin_fixcleanup_activation",
+      "publisher": "XRPLWin",
+      "source_type": "ledger_amendment_state_tracker",
+      "url": "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "independence_group": "xrplwin_ledger_reader",
+      "state_ledger": 108184517,
+      "normalized_excerpt": "enabled on the XRP Ledger",
+      "normalized_excerpt_sha256": "86e017cb462110b92693eacacbe9f23675d07dfcaad4abfb83df37dce97e868f",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null,
+      "summary": "XRPLWin records fixCleanup3_4_0 as enabled on Nov 4 at ledger 108112129."
+    },
+    {
+      "source_id": "xrpl_to_denominator_snapshot",
+      "publisher": "XRPL.to",
+      "source_type": "secondary_dashboard_snapshot",
+      "url": "https://xrpl.to/insights/xrpl-amendments-explained",
+      "independence_group": "xrpl_to_dashboard",
+      "page_as_of_date": "2026-11-07",
+      "normalized_excerpt": "36 trusted",
+      "normalized_excerpt_sha256": "bf7e68f77d0e6b72775a58b1ebf855d7d65702486d3e9c08582171a0e29d2800",
+      "raw_http_bytes_captured": false,
+      "exact_retrieval_time_utc": null,
+      "limitation": "The page directs automated clients to its API. No API access was attempted or verified; retained only as a reported denominator discrepancy.",
+      "summary": "The alternative dashboard reports a 36-validator denominator; retained only as an unresolved discrepancy because its API was not tested."
+    },
+    {
+      "source_id": "crypto_basic_nov6",
+      "publisher": "The Crypto Basic",
+      "source_type": "secondary_reporting",
+      "url": "https://thecryptobasic.com/2026/11/06/xrp-lending-protocol-gains-two-more-validator-votes-now-eight-away-from-activation-countdown/",
+      "independence_group": "xrplwin_ledger_reader",
+      "publication_date": "2026-11-06",
+      "claims_supported": [
+        "21/35 LendingProtocol and 23/35 SingleAssetVault; 29 required; XLS-66 is uncollateralized."
+      ],
+      "limitation": "Article points to XRPLWin for vote state; not independent confirmation of the underlying vote counts."
+    },
+    {
+      "source_id": "coindesk_fixcleanup_nov5",
+      "publisher": "CoinDesk",
+      "source_type": "secondary_reporting",
+      "url": "https://www.coindesk.com/markets/2026/11/05/xrp-ledger-closes-bug-that-let-approved-token-burners-create-new-tokens",
+      "independence_group": "xrplwin_ledger_reader",
+      "publication_date": "2026-11-05",
+      "claims_supported": [
+        "fixCleanup3_4_0 enabled on Nov 4 at 14:52 UTC, ledger 108112129; XRP itself unaffected; no public exploitation confirmed."
+      ],
+      "limitation": "Activation ledger attribution references XRPLWin; not an independent ledger reader."
+    }
+  ],
+  "source_independence_and_disagreement": {
+    "denominator_disagreement": "XRPLWin reports 35 trusted validators; XRPL.to reports 36. Both show the same yes counts and 29 required. The trusted-set difference is unresolved.",
+    "independence": "XRPLWin and secondary articles that cite XRPLWin are not counted as independent confirmations. XRPL.to is kept as a separate dashboard source, but its API was not tested and its 36-validator denominator is not promoted to canonical.",
+    "robust_conclusion": "All reported vote counts are below the 29-vote supermajority threshold; the exact denominator does not change that conclusion."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "The XRPL native lending stack may eventually create a new market for fixed-term credit funded by pooled vault assets.",
+      "supporting": [
+        "Official XLS-66/XLS-65 design and the continuing validator vote process."
+      ],
+      "disconfirming": [
+        "All three required amendments remain below supermajority.",
+        "Loans are uncollateralized and depend on off-chain underwriting.",
+        "No live vault balances, originations, repayments or defaults are verified."
+      ]
+    },
+    {
+      "id": "H2",
+      "statement": "Protocol-safety progress may be mistaken for immediate lending activation or XRP collateral demand.",
+      "supporting": [
+        "fixCleanup3_4_0 is enabled and repairs vault/lending code paths.",
+        "LendingProtocol, SingleAssetVault and LendingProtocolV1_1 remain open for voting below threshold."
+      ],
+      "disconfirming": [
+        "Future validator support may change; this is a time-bounded state assessment."
+      ]
+    },
+    {
+      "id": "H3",
+      "statement": "The 35-versus-36 validator denominator discrepancy reflects differing trusted-validator sets or tracker methodology rather than a change in yes votes.",
+      "supporting": [
+        "XRPLWin and XRPL.to show identical yes counts but different denominators."
+      ],
+      "disconfirming": [
+        "No common canonical validator-set manifest was retrieved to reconcile the discrepancy."
+      ]
+    }
+  ],
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "model_ineligibility_reasons": [
+    "Vote snapshots are not price features and do not measure capital, collateral or market demand.",
+    "Exact retrieval timestamps/raw response bytes were unavailable.",
+    "Trusted-validator denominator disagreement is unresolved.",
+    "No historical point-in-time vote series was collected.",
+    "No out-of-sample price test establishes predictive value."
+  ],
+  "next_tests": [
+    "Obtain a documented, validated-ledger source for the active trusted validator set and count rules used by each tracker.",
+    "Track each amendment's yes count, denominator, voting ledger, state ledger and continuous majority timer independently.",
+    "After activation only, query validated ledger Vault and LoanBroker entries and preserve ledger hash/index, asset, issuer, balance, broker and transaction lineage.",
+    "Separate depositor capital, borrower liabilities, repayments, defaults, fees, XRP conversion and settlement legs."
+  ]
+}

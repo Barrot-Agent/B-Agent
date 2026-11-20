@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "xrp_etf_issuer_date_alignment_and_market_retrieval_cache_correction",
+  "artifact_id": "20261107T131719Z-canary-xrp-etf-date-alignment-and-spot-cache-check",
+  "reviewed_at_utc": "2026-11-07T13:20:02.294Z",
+  "prior_artifacts": [
+    "research/xrp_intelligence/20261107T130152Z-xrp-spot-etf-custody-jpysc-reconciliation.json",
+    "research/xrp_intelligence/20261107T130152Z-japan-sbic-east-central-west-primary-identity.json"
+  ],
+  "issuer_date_alignment": {
+    "canary_xrpc": {
+      "issuer_page": "https://canaryetfs.com/xrpc/",
+      "nov6_market_price_as_of": "2026-11-06",
+      "nov6_net_assets_usd": 286858926.41,
+      "nov6_shares_outstanding": 22990000,
+      "nov6_daily_volume_shares": 265891,
+      "historical_daily_rows": {
+        "2026-11-04": 317162340.48,
+        "2026-11-05": 301805946.4,
+        "2026-11-06": 286858926.41
+      },
+      "accessible_holdings_section_as_of": "2026-11-09",
+      "nov6_xrp_holdings_quantity": null,
+      "evidence": "The official page exposes Nov 6 net assets and fund details, and its historical daily table gives Nov 4/5/6 net assets. Its current holdings section is dated Nov 9, after the Nov 7 cutoff, so no Nov 6 XRP quantity is admitted from that section.",
+      "primary_source_lines": {
+        "current_metrics": "23-56",
+        "daily_history": "403-405",
+        "future_holdings_date": "1404-1408"
+      },
+      "admission": "NOV6_NET_ASSETS_AND_SHARES_ADMITTED_AS_ISSUER_CONTEXT; NOV6_XRP_QUANTITY_NOT_ADMITTED"
+    },
+    "hold_hub_secondary_table": {
+      "source": "https://hold-hub.com/xrp-etf-inflows-check-real-numbers/",
+      "publication_date": "2026-11-06",
+      "reported_canary_xrp_held_as_of": "2026-11-06",
+      "reported_canary_xrp_held": 243714802,
+      "reported_canary_net_assets_usd": 301805946.4,
+      "source_date_note": "The article states its fund table is dated Nov 5 except Canary XRP held, which is dated Nov 6.",
+      "reconciliation": "The reported $301,805,946.40 matches the Canary issuer page's Nov 5 net-assets row, not its Nov 6 row. The Nov 6 issuer value is $286,858,926.41. Therefore the secondary table mixes a Nov 6 XRP quantity with Nov 5 net assets as disclosed in its own date note.",
+      "xrp_quantity_status": "SECONDARY_ONLY_NOT_VALIDATED_AGAINST_PRIMARY_NOV6_HOLDINGS",
+      "treatment": "Keep the 243,714,802 XRP figure as a secondary candidate with its stated date; do not use it in the primary verified holdings subtotal."
+    },
+    "bitwise_field_alignment": {
+      "issuer_page": "https://bitxrpetf.com/",
+      "holdings_as_of": "2026-11-05",
+      "xrp_in_trust": 415365129.04,
+      "xrp_market_value_usd": 488726918.14,
+      "fund_details_as_of": "2026-11-05",
+      "net_assets_aum_usd": 488684299,
+      "distinction": "The issuer page exposes XRP market value in the holdings section and Net Assets (AUM) in Fund Details. Preserve the two field definitions and do not overwrite one with the other.",
+      "primary_source_lines": {
+        "holdings": "29-63",
+        "fund_details_and_custodians": "228-299"
+      }
+    },
+    "franklin_xrpz": {
+      "issuer_page": "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/47318/SINGLCLASS/franklin-xrp-etf/XRPZ",
+      "as_of_date": "2026-11-04",
+      "xrp_in_fund": 310430333.34,
+      "total_net_assets_usd": 403940000,
+      "shares_outstanding": 28600000,
+      "digital_asset_custodian": "Coinbase Custody Trust Company, LLC",
+      "primary_source_lines": "23-39, 122-158"
+    },
+    "grayscale_gxrp": {
+      "issuer_page": "https://etfs.grayscale.com/gxrp",
+      "as_of_date": "2026-11-06",
+      "xrp_in_fund": 64838291.2993,
+      "aum_non_gaap_usd": 75953260,
+      "shares_outstanding": 3350100,
+      "fund_administrator": "BNY",
+      "digital_asset_custodian": "Coinbase Custody Trust Company, LLC",
+      "primary_source_lines": "79-127"
+    },
+    "twentyone_shares_toxr": {
+      "issuer_page": "https://www.21shares.com/en-us/products-us/toxr",
+      "as_of_date": "2026-11-06",
+      "aum_usd": 126271816.14,
+      "shares_outstanding": 11020000,
+      "xrp_holdings_quantity": null,
+      "holdings_table_as_of": null,
+      "custodians": [
+        "Anchorage Digital Bank N.A.",
+        "BitGo Bank & Trust, N.A.",
+        "Coinbase Custody International, Ltd"
+      ],
+      "primary_source_lines": "27-47, 266-326, 359-390, 452-476"
+    }
+  },
+  "market_retrieval_recheck": {
+    "reviewed_at_utc": "2026-11-07T13:20:02.294Z",
+    "original_artifact": "research/xrp_intelligence/20261107T130152Z-xrp-spot-etf-custody-jpysc-reconciliation.json",
+    "original_run_reference_utc": "2026-11-07T13:01:52Z",
+    "kraken_payload_sha256": "3728a4a1aa7f1e6686d2cb3d8fc278bfc4d8030252352de9ea5cc323baabf89e",
+    "recheck_payload_sha256": "3728a4a1aa7f1e6686d2cb3d8fc278bfc4d8030252352de9ea5cc323baabf89e",
+    "okx_payload_sha256": "374020feb38426718c49e2fe64b4c1521cc120f911aa9e57967325a18803f4cc",
+    "recheck_okx_provider_timestamp_utc": "2026-11-07T12:53:58.767Z",
+    "result": "Both public ticker URLs returned byte-identical JSON payloads on recheck, including the same OKX provider timestamp. The retrieval interface supplied no per-request timestamp; the identical payload may reflect retrieval-layer caching or an unchanged source response.",
+    "treatment": "Do not treat the recheck as a fresh independent market observation. The original OKX event timestamp was already older than the 300-second threshold at the original run reference and is older still at recheck. Kraken still supplies no provider event timestamp."
+  },
+  "aggregation_rules": {
+    "primary_verified_xrp_subtotal": 790633753.6793,
+    "subtotal_members": [
+      "Bitwise XRP",
+      "Franklin XRPZ",
+      "Grayscale GXRP"
+    ],
+    "subtotal_status": "INCOMPLETE_NON_SYNCHRONIZED_NOT_TOTAL",
+    "excluded_secondary_canary_quantity": 243714802,
+    "excluded_reasons": [
+      "Secondary-only quantity; no accessible primary Nov 6 holdings snapshot.",
+      "Do not mix a reported Nov 6 quantity with Nov 5 net assets."
+    ],
+    "daily_flow": "NOT_VERIFIED_FROM_ISSUER_PAGES",
+    "so_sovalue_zero": "A $0.00 accompanied by 'Not updated' is missing/incomplete data, not confirmed zero creations/redemptions."
+  },
+  "model_admission": {
+    "admitted_to_price_or_flow_features": false,
+    "reason": "Issuer holdings, AUM, shares and custodial relationships are event/context records with differing cutoffs. The rechecked market ticker payloads were unchanged and stale/untimestamped. No synchronized flow or depth feature is available."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED"
+  }
+}

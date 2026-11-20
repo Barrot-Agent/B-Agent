@@ -1,0 +1,318 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "binance-xrp-tracing-and-evernorth-capital-20261118T103734Z",
+  "captured_at_utc": "2026-11-18T10:37:34Z",
+  "repository_context": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "e204c21100f3d059e2ba633d041fe8927b61ccaf",
+    "verified_parent_integration_sha": "b910eb94ce606e1c12a7f1aa135d832c5ca06128",
+    "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "pr_number": 1663,
+    "exact_parent_head_ci": {
+      "run_id": 44286284457,
+      "conclusion": "success",
+      "tests_passed": 4273,
+      "tests_failed": 0,
+      "tests_skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 19,
+      "test_execution_seconds": 132.56,
+      "inclusive_coverage_percent": 68.14,
+      "legacy_core_coverage_percent": 77,
+      "wheel_build": "passed",
+      "installed_wheel": "verified Barrot V3, XRP mission and canonical data assets"
+    },
+    "note": "This artifact and handoff update form a new commit. The parent-head results are not evidence of exact-head CI on the new commit."
+  },
+  "binance_xrp_flow_trace": {
+    "incident": {
+      "date": "2026-10-29",
+      "first_wallet": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "initial_xrp_outflow": 233461943.1,
+      "source": "Five Binance hot wallets",
+      "classification": "security-incident transfer; not an ordinary exchange withdrawal or proof of market execution"
+    },
+    "xrpl_utilities_case_file": {
+      "publisher": "XRPL-Utilities LLC; independent project, not affiliated with Ripple",
+      "case_published": "2026-11-13",
+      "data_as_of_utc": "2026-11-12T23:30:00Z",
+      "reported_xrp_to_exchange_deposit_accounts": 216400000,
+      "reported_share_of_initial_outflow_percent": 93,
+      "reported_venues": 10,
+      "route": "Initial attacker wallet -> six split wallets -> one collection wallet -> 98 short-lived wallets -> six pre-existing hub wallets -> 58 payout wallets -> labeled exchange/swap deposit accounts",
+      "collection_wallet": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+      "collection_payments": 1289,
+      "payout_wallet_count": 58,
+      "exchange_breakdown_xrp": {
+        "OKX": {
+          "amount": 75430000,
+          "attribution": "analyst attribution, not a public wallet label"
+        },
+        "Binance": {
+          "amount": 65360000,
+          "attribution": "public wallet label"
+        },
+        "Coinbase": {
+          "amount": 31500000,
+          "attribution": "public wallet label"
+        },
+        "Kraken": {
+          "amount": 23490000,
+          "attribution": "public wallet label"
+        },
+        "Bybit": {
+          "amount": 13920000,
+          "attribution": "public wallet label"
+        },
+        "Bitget": {
+          "amount": 2790000,
+          "attribution": "public wallet label"
+        },
+        "ChangeNOW": {
+          "amount": 1540000,
+          "attribution": "public wallet label"
+        },
+        "Others_and_unlabelled": {
+          "amount": 2370000,
+          "attribution": "MEXC, KuCoin, FixedFloat and unlabeled accounts"
+        }
+      },
+      "critical_limitations": [
+        "The six hub wallets were created on Oct 11, before the Oct 29 breach, and had handled smaller flows for months; their controllers are unknown.",
+        "About 85% of what the hubs took in from Nov 5 could be traced back to the initial breach wallet; the remainder came from other wallets. The 216.4M XRP total is an upper bound on breach-attributable exchange deposits, not an exact amount.",
+        "OKX is explicitly marked as the analyst's attribution, not a public label.",
+        "Once XRP is deposited at an exchange, internal exchange books are not public; the report does not prove that the XRP was sold."
+      ],
+      "integrity_claim": {
+        "mechanism": "The publisher says it writes a daily SHA3-512 Merkle-root fingerprint of its published data to the XRP Ledger.",
+        "verification_page": "https://xrpl-utilities.com/verify/",
+        "independently_verified_in_this_run": false,
+        "reason": "The published page describes the verification method, but this run did not independently retrieve and recompute the exact dated record fingerprint against the ledger."
+      }
+    },
+    "santala_research_v1_1": {
+      "publisher": "Santala Research",
+      "updated": "2026-11-17",
+      "on_chain_read_window_utc": "2026-11-17 11:10–12:15",
+      "reported_sequence": "233.46M XRP moved to six accounts on Nov 2; five of six transferred their balances to the collection wallet between Nov 6 and Nov 11; the collection wallet sent more than 233M XRP in about 1,300 payments to roughly 100 accounts by Nov 12.",
+      "collection_wallet": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+      "residual_xrp": 4.5,
+      "observation": "The approximately 1,300 payments to the roughly 100 accounts carried no destination tags. Santala examined the five largest recipients and did not identify where the XRP left that downstream wallet network.",
+      "method": "The report says it queried the attacker's account (47 transactions), six split accounts and the collection account (about 3,700 transactions), then sampled the five largest recipients.",
+      "limitation": "Its stated sampling boundary may not cover the later hub and payout-wallet path described by XRPL-Utilities; this is a difference in tracing scope, not a resolved contradiction."
+    },
+    "xrpsonar_cross_check": {
+      "publisher": "XRPSONAR",
+      "collection_wallet": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+      "observed_transaction": "2.408405M XRP sent to rJjhYGYZ7Hr3N78bcNCAYd2ebXyotLSTiN on 2026-11-12",
+      "reported_collection_wallet_balance_on_2026_11_17": 5,
+      "conclusion": "Corroborates that the collection wallet was nearly emptied; does not independently identify the recipient as an exchange deposit."
+    },
+    "reconciliation": {
+      "conclusion": "The initial transfer, six-way split, collection-wallet distribution and near-empty collection balance are supported by multiple public-ledger analyses. XRPL-Utilities adds a later tracing layer and estimates up to 216.4M XRP reached exchange/swap deposit accounts. Santala's report stops at the roughly 100 first-hop recipients and says it did not find where the funds leave that network. These findings can coexist if the later hub/payout-wallet path is outside Santala's sampled scope.",
+      "unresolved": "The exact amount of breach-origin XRP that reached each named exchange, the validity of every exchange wallet label, whether deposits were sold or held, and the ultimate beneficial controllers remain unverified.",
+      "model_use": "Candidate event: potential exchange-deposit supply from a security incident. Store the upper bound, attribution confidence, source scope and unknown contamination separately. Do not encode 216.4M as confirmed net selling."
+    }
+  },
+  "evernorth_sec_capital_audit": {
+    "company": "Evernorth Holdings Inc. (Nasdaq: XRPN)",
+    "primary_filings": [
+      {
+        "form": "10-Q",
+        "accession": "0001628280-26-073871",
+        "filed": "2026-11-13",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm"
+      },
+      {
+        "form": "8-K/A",
+        "accession": "0001628280-26-074319",
+        "filed": "2026-11-17",
+        "accepted_utc": "2026-11-16T19:54:22Z",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/0001628280-26-074319-index.html"
+      },
+      {
+        "document": "Unaudited pro forma condensed combined financial information",
+        "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/evernorth-proforma20260930.htm"
+      }
+    ],
+    "xrp_holdings_and_accounting": {
+      "xrp_units_as_of_2026_09_30": 346284972,
+      "historical_cost_usd": 846575043,
+      "impairment_2025_usd": 233650642,
+      "impairment_2026_ytd_usd": 271037170,
+      "cumulative_impairment_usd": 504687812,
+      "carrying_value_2026_09_30_usd": 341887231,
+      "accounting_method": "Historical cost less accumulated impairment; indefinite-lived intangible asset under ASC 350-30.",
+      "related_party_reason": "The 8-K/A states that Evernorth remained a related party to Ripple after the Oct 9 business combination and its XRP holdings did not meet the ASU 2023-08 fair-value scoping criteria.",
+      "interpretation": "Approximately $505M of cumulative non-cash accounting impairment, not $505M of cash spent or XRP sold. Later price recovery does not reverse prior impairment under the stated method."
+    },
+    "contributed_and_transferred_xrp": {
+      "evernorth_to_pathfinder_on_closing": 346484972,
+      "ripple_contribution_to_pathfinder": 126791458,
+      "combined_reported_xrp_at_nasdaq_debut": 473276430,
+      "ripple_contribution_form": "In-kind XRP contribution under the contribution agreement in exchange for Pathfinder units; not cash and not a spot-market purchase.",
+      "double_count_warning": "The 50,000,001 XRP lot from a Ripple-affiliated investor appears in Evernorth's 346,284,972 XRP cost-basis table. Do not add it again on top of the 473,276,430 combined total."
+    },
+    "cash_and_financing": {
+      "public_spac_redemptions_shares": 18463753,
+      "public_spac_redemptions_cash_usd": 195400000,
+      "public_shares_remaining": 4536247,
+      "trust_cash_released_to_pubco_usd": 48000000,
+      "convertible_note_principal_usd": 30000000,
+      "convertible_note_net_proceeds_usd": 29000000,
+      "convertible_note_fee_usd": 1000000,
+      "convertible_note_yield_to_put_percent": 8,
+      "warrant_exercises_shares": 3073366,
+      "warrant_exercise_gross_proceeds_usd": 35300000,
+      "warrants_remaining": 8666279,
+      "optional_equity_line": {
+        "counterparty": "CF Principal Investments LLC, a Cantor Fitzgerald affiliate",
+        "maximum_shares": 5218935,
+        "purchase_price_percent_of_vwap": 97,
+        "registration_effective_date": "2026-10-30",
+        "actual_drawdown_disclosed": false,
+        "classification": "Optional financing capacity, not cash already raised."
+      }
+    },
+    "pro_forma_combined_balance_sheet_as_if_2026_09_30": {
+      "cash_usd": 76026881,
+      "digital_assets_net_usd": 342223364,
+      "total_assets_usd": 418593216,
+      "total_liabilities_usd": 46276445,
+      "redeemable_noncontrolling_interest_usd": 229531280,
+      "stockholders_equity_usd": 142785491,
+      "warning": "Unaudited pro forma transaction presentation, not a current actual balance sheet or cash balance."
+    },
+    "standalone_pre_merger_2026_09_30": {
+      "cash_usd": 91397,
+      "restricted_cash_usd": 49995,
+      "total_assets_usd": 348889833,
+      "total_liabilities_usd": 534477268,
+      "warning": "Historical Evernorth standalone figures before the Oct 9 business combination; do not substitute for the post-transaction pro forma or current balance sheet."
+    },
+    "commercial_relationships": {
+      "institutional_execution_partners_named": "Ripple, Kraken, Coinbase and BitGo",
+      "announcement_date": "2026-10-14",
+      "executed_xrp_purchase_amounts_disclosed": false,
+      "yield_strategy": "Company says it may use a portion of XRP for yield generation; actual deployed amount not disclosed.",
+      "xrp_ledger_lending": "Direct lending on XRPL deferred until native credit features are activated and proven in production.",
+      "revenue_status_in_10q": "No revenue generated as of the reporting period; management says future profitability depends on raising capital to acquire additional XRP."
+    },
+    "capital_classification": {
+      "actual_cash_equity": "$35.3M gross warrant proceeds; $48.0M trust-account cash released to Pubco; exact current cash requires later filings.",
+      "actual_debt": "$30M note principal, $29M net cash proceeds after fee.",
+      "in_kind_xrp": "126.791M XRP Ripple contribution; not cash or market buy.",
+      "noncash_accounting": "$504.688M cumulative XRP impairment; not realized loss or cash outflow.",
+      "optional_capacity": "5.219M-share ELOC; no drawdown disclosed.",
+      "market_execution": "No amount of post-listing XRP spot purchases verified in these filings."
+    }
+  },
+  "hypotheses": {
+    "exchange_deposit_supply": {
+      "status": "material_but_unconfirmed_upper_bound",
+      "supporting": "XRPL-Utilities traces up to 216.4M XRP to labeled exchange/swap deposit accounts by Nov12; multiple trackers corroborate the initial theft and distribution path.",
+      "counterevidence": "Only 85% of hub inflows trace to the breach wallet; OKX label is analyst attribution; Santala's independent trace stops before identifying the final exchange layer; internal exchange books are unavailable.",
+      "do_not_infer": "Do not equate deposits with executed sales, net exchange inflows, or price impact."
+    },
+    "evernorth_demand": {
+      "status": "capital_structure_documented_execution_unverified",
+      "supporting": "473.276M XRP reported at Nasdaq debut; $35.3M gross warrant cash and $29M net note financing; execution partners named.",
+      "counterevidence": "126.791M XRP is an in-kind Ripple contribution; 50M XRP investor-affiliate lot is already in the 346.285M holdings; ELOC is optional; no purchase amount or order-level execution is disclosed.",
+      "do_not_infer": "Do not treat all treasury XRP as new spot demand or the $505M impairment as cash loss."
+    }
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_probability": null,
+    "no_paper_trade": true,
+    "no_real_money_action": true
+  },
+  "data_quality": {
+    "raw_http_bytes_retained": false,
+    "immutable_sha256_receipts_created": false,
+    "external_timestamp_anchor_verified": false,
+    "on_chain_tx_hashes_included": false,
+    "model_eligible": false,
+    "reason": "This research artifact records rendered public pages and SEC text, not raw RPC responses or complete transaction-level captures. The XRPL-Utilities daily fingerprint was not independently recomputed."
+  },
+  "sources": [
+    {
+      "id": "xrpl_utilities_case",
+      "publisher": "XRPL-Utilities",
+      "url": "https://xrpl-utilities.com/cases/binance-breach-xrp/",
+      "source_time": "published 2026-11-13; as of 2026-11-12T23:30Z",
+      "independence_group": "xrpl_utilities_ledger_analysis"
+    },
+    {
+      "id": "xrpl_utilities_data",
+      "publisher": "XRPL-Utilities",
+      "url": "https://xrpl-utilities.com/cases/binance-breach-xrp/data.json",
+      "source_time": "as_of 2026-11-12T23:30Z",
+      "independence_group": "xrpl_utilities_ledger_analysis"
+    },
+    {
+      "id": "xrpl_utilities_verification",
+      "publisher": "XRPL-Utilities",
+      "url": "https://xrpl-utilities.com/verify/",
+      "source_time": "retrieved 2026-11-18",
+      "independence_group": "xrpl_utilities_ledger_analysis"
+    },
+    {
+      "id": "santala_trace",
+      "publisher": "Santala Research",
+      "url": "https://santala-research.com/en/research/binance-hack-2026.html",
+      "source_time": "version 1.1; on-chain reads 2026-11-17 11:10–12:15 UTC",
+      "independence_group": "santala_ledger_analysis"
+    },
+    {
+      "id": "xrpsonar_wallet",
+      "publisher": "XRPSONAR",
+      "url": "https://xrpsonar.com/de/wallet/ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+      "source_time": "snapshot through 2026-11-17",
+      "independence_group": "xrpsonar_ledger_tracker"
+    },
+    {
+      "id": "xrpsonar_transaction",
+      "publisher": "XRPSONAR",
+      "url": "https://xrpsonar.com/de/transaction/2C0F5BC71588F446917D32617B99DE941E3593C9A6C0CA0A50001CDD2998933D",
+      "source_time": "2026-11-12",
+      "independence_group": "xrpsonar_ledger_tracker"
+    },
+    {
+      "id": "evernorth_10q",
+      "publisher": "SEC EDGAR / Evernorth Holdings",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "source_time": "filed 2026-11-13; period ended 2026-09-30",
+      "independence_group": "sec_primary"
+    },
+    {
+      "id": "evernorth_8ka_index",
+      "publisher": "SEC EDGAR / Evernorth Holdings",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/0001628280-26-074319-index.html",
+      "source_time": "accepted 2026-11-16T19:54:22Z; filed 2026-11-17",
+      "independence_group": "sec_primary"
+    },
+    {
+      "id": "evernorth_proforma",
+      "publisher": "SEC EDGAR / Evernorth Holdings",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/evernorth-proforma20260930.htm",
+      "source_time": "8-K/A exhibit 99.3 filed 2026-11-17",
+      "independence_group": "sec_primary"
+    },
+    {
+      "id": "evernorth_secondary_summary",
+      "publisher": "Bitcoin.com News",
+      "url": "https://news.bitcoin.com/market-updates/evernorths-xrp-write-downs-505-million-before-nasdaq-debut/",
+      "source_time": "published 2026-11-17 22:30 EST",
+      "independence_group": "bitcoin_com_secondary"
+    }
+  ],
+  "next_actions": [
+    "Obtain the XRPL-Utilities Nov12 raw case file and verify its SHA3-512/Merkle fingerprint against the XRP Ledger memo when the full dated record is available.",
+    "Independently replay all transaction IDs from the breach wallet through six split wallets, collection wallet, 98 short-lived wallets, six hubs and 58 payout wallets; preserve source and contamination fractions.",
+    "Validate each exchange deposit label from primary exchange wallet-label evidence or direct exchange confirmation; separately flag the analyst-attributed OKX route.",
+    "Never infer internal exchange sale execution from a public deposit alone; record the downstream exchange ledger as unobservable.",
+    "Ingest Evernorth 10-Q and 8-K/A as point-in-time SEC events; classify cash, debt, in-kind XRP, noncash impairment, optional ELOC and actual market execution separately.",
+    "Keep the directional forecast gate closed until raw receipts, point-in-time feature reconstruction and chronological out-of-sample validation pass."
+  ]
+}

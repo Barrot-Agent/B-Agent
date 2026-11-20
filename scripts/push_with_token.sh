@@ -5,13 +5,14 @@
 # House rules honored (BARROT_SYNC.md):
 #   - No password auth, no SSH key requirement: fine-grained PAT over HTTPS
 #     with username "x-access-token" only.
-#   - The token is read from the GH_TOKEN env var, NEVER written to disk,
-#     never echoed, never stored in .git/config or remote URLs. The git
-#     credential helper below is passed via `git -c`, which does place it in
-#     the short-lived git process argv (visible to same-user local processes
-#     only); if that matters in your threat model, run this on a single-user
-#     box. Alternatives (askpass scripts, credential store) all require
-#     writing the token to disk, which this script refuses to do.
+#   - Direct pushes to main are disabled. Push only the current non-main branch;
+#     use a reviewed pull request and the fail-closed merge gate for main.
+#   - The token is read from GH_TOKEN, never written to disk, echoed, or
+#     stored in .git/config or remote URLs. Validation sends it to curl through
+#     config stdin and to the Python fallback through stdin, not process argv.
+#     The single-quoted git credential-helper string contains the literal
+#     ${GH_TOKEN}; only the helper shell expands it from its environment, so
+#     the parent shell does not interpolate the token into git's argv.
 #
 # One-time token setup (do this in your browser, NOT in chat):
 #   1. Open https://github.com/settings/personal-access-tokens/new
@@ -24,14 +25,33 @@
 #        GH_TOKEN=github_pat_xxxxxxxxxxxx bash scripts/push_with_token.sh
 #
 # Usage:
-#   GH_TOKEN=... bash scripts/push_with_token.sh                # verify + push
-#   GH_TOKEN=... bash scripts/push_with_token.sh --verify-only  # no push
-#   BRANCH=main GH_TOKEN=... bash scripts/push_with_token.sh    # explicit branch
+#   GH_TOKEN=... bash scripts/push_with_token.sh                         # current non-main branch
+#   GH_TOKEN=... bash scripts/push_with_token.sh --verify-only           # no push
+#   BRANCH=integration/my-task GH_TOKEN=... bash scripts/push_with_token.sh
+#   BRANCH=main is rejected; use a pull request for main.
 # ============================================================================
 set -euo pipefail
 
 REPO_SLUG="${REPO_SLUG:-Barrot-Agent/B-Agent}"
-BRANCH="${BRANCH:-main}"
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "${repo_root}"
+
+CURRENT_BRANCH="$(git branch --show-current)"
+BRANCH="${BRANCH:-${CURRENT_BRANCH}}"
+
+if [[ -z "${BRANCH}" ]]; then
+  echo "ERROR: no current branch is available (detached HEAD); set BRANCH to a non-main branch." >&2
+  exit 5
+fi
+if [[ "${BRANCH}" == "main" ]]; then
+  echo "ERROR: direct pushes to main are disabled. Use a pull request and the verified merge gate." >&2
+  exit 6
+fi
+if ! git check-ref-format --branch "${BRANCH}" >/dev/null 2>&1; then
+  echo "ERROR: BRANCH is not a valid Git branch name." >&2
+  exit 7
+fi
 
 if [[ -z "${GH_TOKEN:-}" ]]; then
   echo "ERROR: GH_TOKEN is not set." >&2
@@ -45,23 +65,23 @@ fi
 
 # Defuse accidental whitespace/newlines from copy-paste.
 GH_TOKEN="${GH_TOKEN//[[:space:]]/}"
-
-repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-cd "${repo_root}"
+# Keep the token as a shell variable during validation; do not export it to curl/Python.
+export -n GH_TOKEN
 
 # ---------------------------------------------------------------------------
 # 1. Validate the token against the GitHub API (never prints the token).
 # ---------------------------------------------------------------------------
 check_token() {
   if command -v curl >/dev/null 2>&1; then
-    curl -s -o /dev/null -w '%{http_code}' \
-      -H "Authorization: Bearer ${GH_TOKEN}" \
-      -H "X-GitHub-Api-Version: 2022-11-28" \
-      "https://api.github.com/repos/${REPO_SLUG}"
+    {
+      printf 'url = "https://api.github.com/repos/%s"\n' "${REPO_SLUG}"
+      printf 'header = "Authorization: Bearer %s"\n' "${GH_TOKEN}"
+      printf 'header = "X-GitHub-Api-Version: 2022-11-28"\n'
+    } | curl --config - -s -o /dev/null -w '%{http_code}'
   else
-    python3 - "$GH_TOKEN" "$REPO_SLUG" <<'PY'
+    printf '%s\n%s\n' "${GH_TOKEN}" "${REPO_SLUG}" | python3 -c '
 import sys, urllib.request, urllib.error
-token, slug = sys.argv[1], sys.argv[2]
+token, slug = sys.stdin.read().splitlines()
 req = urllib.request.Request(
     f"https://api.github.com/repos/{slug}",
     headers={"Authorization": f"Bearer {token}",
@@ -75,7 +95,7 @@ except urllib.error.HTTPError as e:
     print(e.code)
 except Exception:
     print("000")
-PY
+'
   fi
 }
 
@@ -110,6 +130,7 @@ fi
 # 3. Push over HTTPS using a credential helper so the token never appears
 #    in argv, remote URLs, or any file.
 # ---------------------------------------------------------------------------
+export GH_TOKEN
 git -c credential.helper='!f() { echo "username=x-access-token"; echo "password=${GH_TOKEN}"; }; f' \
   push "https://github.com/${REPO_SLUG}.git" "${BRANCH}"
 

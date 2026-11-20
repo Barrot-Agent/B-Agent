@@ -1,0 +1,256 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_etf_and_derivatives_cross_provider_refresh",
+  "artifact_id": "xrp-etf-derivatives-refresh-20261106T051458Z",
+  "subject": "November 6 XRP perpetual positioning and issuer-file-derived ETF holdings refresh",
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification"
+  },
+  "capture": {
+    "retrieval_interval_start_utc": "2026-11-06T05:12:27Z",
+    "retrieval_interval_end_utc": "2026-11-06T05:14:58Z",
+    "exact_per_source_retrieval_timestamp_utc": null,
+    "synchronized_model_cutoff_utc": null,
+    "raw_http_wire_bytes_captured": false,
+    "note": "Rendered public pages were opened during the bounded interval. Publisher update times, issuer-file publication times and retrieval interval are distinct. Original HTTP bodies and headers were not captured. No synchronized point-in-time market cutoff is asserted."
+  },
+  "source_registry": [
+    {
+      "id": "TRADRADAR_XRP_PERPETUALS_20261106T0355Z",
+      "publisher": "TradRadar",
+      "source_type": "multi_exchange_derivatives_aggregator",
+      "url": "https://tradradar.io/markets/xrp",
+      "provider_updated_at_utc": "2026-11-06T03:55:00Z",
+      "displayed_delay_minutes": 15,
+      "venue_scope": {
+        "open_interest": 7,
+        "liquidations": 5,
+        "long_short_accounts": 5,
+        "venues": [
+          "Binance",
+          "Bybit",
+          "Gate",
+          "Bitget",
+          "MEXC",
+          "Hyperliquid",
+          "OKX"
+        ]
+      },
+      "independence_group": "aggregator_tradradar",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "Aggregated publisher data is derived from underlying exchange feeds and is not independent of those feeds.",
+        "Liquidations are lower bounds because exchanges publish only part of their real-time liquidations.",
+        "Long/short ratio is account count, not notional exposure.",
+        "USD-notional open interest can decline with mark price even without equivalent position closures."
+      ]
+    },
+    {
+      "id": "CRYPTOKEYHOLE_XRP_ETF_20261106T0443Z",
+      "publisher": "CryptoKeyhole",
+      "source_type": "issuer_reported_fund_holdings_aggregator",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "page_updated_at_utc": "2026-11-06T04:43:00Z",
+      "latest_issuer_files_checked_at_utc": "2026-11-06T04:43:00Z",
+      "latest_complete_day": "2026-11-04",
+      "partial_day": "2026-11-05",
+      "independence_group": "issuer_reported_fund_holdings",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "Four-fund daily series includes XRP, XRPZ, XRPC and TOXR.",
+        "GXRP is excluded from daily collection because its issuer site blocks automated reads; XRPR is not counted because its daily direct-holdings file omits indirect ETP exposure.",
+        "Nov 5 is partial at 2 of 4 funds; no complete Nov 5 total is asserted.",
+        "Holdings changes may include staking rewards, fees and cash payouts, not only creations/redemptions.",
+        "USD values use the publisher's own XRP/USD close."
+      ]
+    },
+    {
+      "id": "XRP_INSIGHTS_XRP_ETF_20261106T040632Z",
+      "publisher": "XRP Insights",
+      "source_type": "issuer_reported_fund_holdings_aggregator",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "generated_at_utc": "2026-11-06T04:06:32.843Z",
+      "data_as_of": "2026-11-04",
+      "latest_row_date": "2026-11-05",
+      "latest_row_status": "provisional",
+      "fund_universe": [
+        "XRPC",
+        "XRP",
+        "XRPR",
+        "XRPZ",
+        "GXRP",
+        "TOXR",
+        "BITW"
+      ],
+      "independence_group": "issuer_reported_fund_holdings",
+      "raw_source_bytes_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "Flows are day-over-day changes in issuer-reported XRP holdings, not direct AP cash creations/redemptions.",
+        "GXRP flow is excluded because of a historical issuer-page capture gap, while its holdings remain in totals.",
+        "XRPR includes some indirect XRP exposure through another ETP.",
+        "BITW is a multi-asset index fund whose XRP sleeve can change through index rebalancing.",
+        "Latest Nov 5 row is provisional and may be rewritten on issuer settlement."
+      ]
+    }
+  ],
+  "derivatives": {
+    "publisher": "TradRadar",
+    "provider_updated_at_utc": "2026-11-06T03:55:00Z",
+    "displayed_delay_minutes": 15,
+    "mark_price_usd": 1.2043,
+    "change_24h_percent": -8.04,
+    "open_interest_usd": 1910000000,
+    "open_interest_change_24h_percent": -6.74,
+    "open_interest_venue_rows_usd": {
+      "Binance": 500130000,
+      "Bybit": 327770000,
+      "Gate": 281370000,
+      "Bitget": 251820000,
+      "MEXC": 236460000,
+      "Hyperliquid": 204290000,
+      "OKX": 105470000
+    },
+    "open_interest_venue_row_sum_usd": 1907310000,
+    "funding_oi_weighted_percent_per_8h": 0.0064,
+    "funding_by_venue_percent_per_8h": {
+      "Binance": 0.01,
+      "Bybit": -0.0051,
+      "Gate": 0.0095,
+      "Bitget": 0.0033,
+      "MEXC": 0.01,
+      "Hyperliquid": 0.01,
+      "OKX": 0.01
+    },
+    "long_liquidations_24h_usd": 14600000,
+    "short_liquidations_24h_usd": 440580,
+    "long_short_account_ratio": 4.08,
+    "long_account_share_percent": 80.3,
+    "limitations": [
+      "Open interest is USD-notional and can fall partly because mark price falls.",
+      "Liquidations are a lower bound over five exchanges.",
+      "Long/short ratio is account count, not notional exposure.",
+      "Funding remains positive on an OI-weighted basis despite the long-liquidation imbalance."
+    ],
+    "liquidations_24h_usd_headline_rounded": 15040000,
+    "liquidations_24h_displayed_comparator": ">=",
+    "liquidation_rounding_note": "TradRadar displays the headline as >= $15.04M (rounded to two decimal millions), while the long and short components are displayed with finer precision and sum to $15,040,580. These are consistent when rounded to two decimal millions; the displayed headline is not an exact component total."
+  },
+  "etf_flows": {
+    "cryptokeyhole": {
+      "page_updated_at_utc": "2026-11-06T04:43:00Z",
+      "latest_complete_day": "2026-11-04",
+      "latest_complete_day_net_flow_xrp": -3339,
+      "last_five_complete_days_net_flow_xrp": 1837670,
+      "cumulative_net_flow_xrp_as_of_2026_11_04": 3377846,
+      "total_reported_xrp_holdings_as_of_2026_11_04": 1076809224,
+      "nov5_partial_funds_reporting": 2,
+      "nov5_partial_funds_total": 4,
+      "nov5_reported_zero_funds": [
+        "XRP",
+        "TOXR"
+      ],
+      "nov5_waiting_funds": [
+        "XRPZ",
+        "XRPC"
+      ],
+      "latest_issuer_file_read_at_utc": "2026-11-06T04:43:00Z",
+      "methodology": "Per-fund changes in issuer-reported holdings; not direct AP cash flow."
+    },
+    "xrp_insights": {
+      "generated_at_utc": "2026-11-06T04:06:32.843Z",
+      "data_as_of": "2026-11-04",
+      "latest_row_date": "2026-11-05",
+      "latest_row_status": "provisional",
+      "fund_universe_count": 7,
+      "nov4_daily_holdings_change_xrp": -64826,
+      "nov2_to_nov4_holdings_change_xrp": -259701,
+      "methodology": "Per-fund change in issuer-reported holdings; not direct AP cash flow."
+    },
+    "comparison": {
+      "nov4_daily_difference_xrp": -61487,
+      "status": "UNRECONCILED_DIFFERENT_FUND_UNIVERSES_AND_METHODS",
+      "explanation": "XRP Insights tracks six spot funds plus BITW, with GXRP flow excluded but holdings retained and XRPR indirect exposure included. CryptoKeyhole's daily series covers four funds and excludes GXRP and XRPR for stated methodology reasons. Both use overlapping issuer files; they are not independent primary cash-flow sources.",
+      "cash_flow_boundary": "Neither holdings-derived series is direct AP cash creation/redemption. Do not call the difference a publisher error or actual capital without a matched fund/date/issuer-file matrix."
+    }
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1-leveraged-long-unwind",
+      "proposition": "The observed short-horizon XRP repricing is materially associated with a leveraged-long unwind.",
+      "supporting_evidence": [
+        "TradRadar reports an 8.04% 24-hour mark-price decline.",
+        "Seven-exchange USD open interest is down 6.74%.",
+        "Long liquidations are at least $14.60M versus $440,580 short liquidations.",
+        "Long accounts are 80.3% of the five-exchange sample."
+      ],
+      "disconfirming_evidence": [
+        "USD-notional OI is price-sensitive.",
+        "Liquidation totals are lower bounds.",
+        "OI-weighted funding remains positive at +0.0064% per eight hours.",
+        "Account counts do not measure notional exposure."
+      ],
+      "tests": [
+        "Reconcile exchange-native contract counts and USD-notional OI at common event timestamps.",
+        "Compare position changes and liquidations by venue and contract type."
+      ]
+    },
+    {
+      "id": "H2-etf-holdings-deltas-are-not-cash-flows",
+      "proposition": "ETF holdings changes are being mistaken for direct institutional cash creations/redemptions.",
+      "supporting_evidence": [
+        "XRP Insights reports -64,826 XRP for Nov 4 while CryptoKeyhole reports -3,339 XRP for its four-fund Nov 4 series.",
+        "CryptoKeyhole reports +1,837,670 XRP over its last five complete days while Nov 5 remains partial at 2 of 4 funds."
+      ],
+      "disconfirming_evidence": [
+        "Both publishers source issuer files and calculate holdings deltas, so a matched issuer-file reconciliation could narrow the difference.",
+        "A completed AP cash creation/redemption file could independently validate cash flow."
+      ],
+      "tests": [
+        "Build a matched fund/date/issuer-file vintage matrix.",
+        "Separate cash creations/redemptions from holdings changes, fees, index rebalancing and indirect ETP exposure."
+      ]
+    },
+    {
+      "id": "H3-source-vintage-and-universe-differences",
+      "proposition": "The apparent ETF flow disagreement is primarily caused by different fund universes, file vintages and settlement timing.",
+      "supporting_evidence": [
+        "CryptoKeyhole includes four funds and reports Nov 5 partial at 2 of 4.",
+        "XRP Insights includes seven tickers with GXRP flow excluded, XRPR indirect exposure and BITW index-sleeve effects.",
+        "XRP Insights labels Nov 5 provisional and data_as_of Nov 4."
+      ],
+      "disconfirming_evidence": [
+        "The Nov 4 difference persists even when both publishers report a complete day; fund-level matching is still required."
+      ],
+      "tests": [
+        "Compare only matched funds with the same issuer file and trading-date convention.",
+        "Preserve every publisher vintage and correction."
+      ]
+    }
+  ],
+  "model_admission": {
+    "eligible": false,
+    "status": "RESEARCH_ONLY",
+    "reasons": [
+      "Exact per-request retrieval timestamps and raw HTTP bytes are absent.",
+      "Derivative data is delayed and aggregator-derived.",
+      "ETF sources share underlying issuer files and use different fund universes.",
+      "Holdings-derived ETF changes are not direct AP cash flow.",
+      "No synchronized multi-source cutoff or evaluator-attested predictive lift is established."
+    ]
+  },
+  "forecast": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "The evidence is useful for research and hypothesis testing but does not satisfy the point-in-time, source-independence and out-of-sample forecast requirements."
+  },
+  "next_actions": [
+    "Preserve the issuer-file vintages and build a matched four-fund/expanded-universe ETF reconciliation.",
+    "Acquire direct AP cash creation/redemption evidence where publicly available; do not infer it from holdings deltas.",
+    "Capture exchange-native derivatives event times, contract-level OI and liquidation records.",
+    "Keep all observations research-only until raw receipts, point-in-time cutoffs and evaluator gates pass."
+  ]
+}

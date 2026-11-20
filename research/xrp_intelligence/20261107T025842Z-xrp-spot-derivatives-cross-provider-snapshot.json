@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_spot_derivatives_cross_provider_snapshot",
+  "captured_at_utc": "2026-11-07T02:58:42Z",
+  "asset": "XRP",
+  "quote_context": "USD and USDT venue instruments are not normalized in this artifact.",
+  "source_records": [
+    {
+      "source_id": "binance_xrp_price_page_20261107_0233",
+      "publisher": "Binance",
+      "url": "https://www.binance.com/en/price/xrp",
+      "source_class": "exchange_operator_market_information_page",
+      "independence_group": "binance_market_information",
+      "retrieved_at_utc": "2026-11-07T02:58:42Z",
+      "publisher_updated_at_utc": "2026-11-07T02:33:00Z",
+      "timestamp_precision": "minute_from_rendered_page",
+      "normalized_excerpt": "XRP $1.17; -3.67% in the past 24 hours; page last updated 2026-11-07 02:33 UTC; 1 XRP ≈ USD 1.1730575; 24-hour volume $2.3B; market cap $74.5B; 24-hour high $1.22; 24-hour low $1.17.",
+      "normalized_excerpt_sha256": "72589f71f7936c1343a567ddc5bbe571d57bdd18a693ac3ae7a3180ab9c58b61",
+      "limitations": [
+        "Rendered price page, not an exchange-native XRP order book or pair-specific ticker.",
+        "24-hour volume and market cap are rounded on the page.",
+        "No raw HTTP response bytes or response headers retained."
+      ]
+    },
+    {
+      "source_id": "coingecko_xrp_spot_page_20261107",
+      "publisher": "CoinGecko",
+      "url": "https://www.coingecko.com/en/coins/xrp",
+      "source_class": "market_data_aggregator_page",
+      "independence_group": "coingecko_market_data",
+      "retrieved_at_utc": "2026-11-07T02:58:42Z",
+      "publisher_updated_at_utc": null,
+      "timestamp_precision": "page_shows_live_data_no_exact_data_timestamp",
+      "normalized_excerpt": "XRP $1.17; 24-hour change -4.20%; 7-day change -6.40%; 24-hour range $1.16-$1.22; 24-hour trading volume $2,108,187,790.27; market capitalization $73,982,233,313.",
+      "normalized_excerpt_sha256": "751a62d69f4185b83b7d58bcefa064eb1789e9a84fe601420866848d14535c03",
+      "limitations": [
+        "Page has no exact market-data cutoff in the rendered text.",
+        "Aggregate market data is not a consolidated executable quote.",
+        "No raw HTTP response bytes or response headers retained."
+      ]
+    },
+    {
+      "source_id": "coingecko_xrp_futures_venue_table_20261107",
+      "publisher": "CoinGecko",
+      "url": "https://www.coingecko.com/en/coins/xrp",
+      "source_class": "market_data_aggregator_derivatives_table",
+      "independence_group": "coingecko_market_data",
+      "retrieved_at_utc": "2026-11-07T02:58:42Z",
+      "publisher_updated_at_utc": null,
+      "timestamp_precision": "venue_rows_labeled_recently_no_exact_timestamps",
+      "normalized_excerpt": "Binance OI $391,084,090 funding 0.005%; CoinW OI $331,982,236 funding 0.005%; MEXC OI $249,341,457 funding 0.005%; Bybit OI $278,808,815 funding 0.003%; Toobit OI $192,433,078 funding 0.005%; Hyperliquid OI $201,517,831 funding 0.001%; WEEX OI $176,637,360 funding 0.000%; Gate OI $282,309,170 funding 0.003%; Bitget OI $223,397,900 funding 0.002%; OKX OI $93,450,245 funding 0.004%. Last updated label: Recently.",
+      "normalized_excerpt_sha256": "efc0789246b29ff091c0ed613d0718ed7d4e9282beb31e7175e8056b49f17de0",
+      "limitations": [
+        "No exact per-venue timestamp is displayed; rows say Recently.",
+        "Funding interval is not specified in the rendered table.",
+        "The sum of rows is a derived reconciliation, not a provider-published consolidated OI total.",
+        "No depth, liquidation or position-level account data is supplied."
+      ]
+    },
+    {
+      "source_id": "reuters_binance_xrp_incident_20261103",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/binance-says-hackers-used-fake-job-interview-compromise-computer-before-63-2026-11-03/",
+      "source_class": "independent_media_reporting_relaying_binance_attribution",
+      "independence_group": "reuters_reporting",
+      "published_at_utc": "2026-11-03",
+      "retrieved_at_utc": "2026-11-07T02:58:42Z",
+      "normalized_excerpt": "Reuters reports that on October 29 attackers moved 233.46 million XRP from five internet-connected Binance wallets in four minutes.",
+      "normalized_excerpt_sha256": "cd00e19b0ed8d149fabcc93b0ce661e34d71b622c25083cd226164c9563872c5",
+      "limitations": [
+        "Reuters relays Binance's incident attribution; this is not an independently reconstructed on-chain transfer list.",
+        "The incident transfer is not equivalent to subsequent exchange outflow metrics.",
+        "No causal price impact is established."
+      ]
+    }
+  ],
+  "spot_observations": {
+    "binance_page": {
+      "price_usd": 1.1730575,
+      "change_24h_pct": -3.67,
+      "volume_24h_usd_rounded": 2300000000,
+      "market_cap_usd_rounded": 74500000000,
+      "high_24h_usd": 1.22,
+      "low_24h_usd": 1.17,
+      "publisher_updated_at_utc": "2026-11-07T02:33:00Z"
+    },
+    "coingecko_page": {
+      "price_usd_rounded": 1.17,
+      "change_24h_pct": -4.2,
+      "change_7d_pct": -6.4,
+      "range_24h_usd": {
+        "low": 1.16,
+        "high": 1.22
+      },
+      "volume_24h_usd": 2108187790.27,
+      "market_cap_usd": 73982233313,
+      "publisher_updated_at_utc": null
+    }
+  },
+  "spot_provider_disagreement": {
+    "price_display": "Both round to $1.17; Binance page gives $1.1730575.",
+    "change_24h_difference_percentage_points": 0.53,
+    "volume_difference_usd_using_rounded_binance_value": 191812209.73,
+    "treatment": "Preserve provider values separately. Do not average or interpret the difference as executable arbitrage."
+  },
+  "derivatives": {
+    "provider": "CoinGecko rendered XRP futures venue table",
+    "provider_timestamp": null,
+    "provider_freshness_label": "Recently",
+    "venue_rows": [
+      {
+        "venue": "Binance Futures",
+        "open_interest_usd": 391084090,
+        "funding_rate_pct": 0.005,
+        "displayed_funding_direction": "longs_pay_shorts"
+      },
+      {
+        "venue": "CoinW Futures",
+        "open_interest_usd": 331982236,
+        "funding_rate_pct": 0.005,
+        "displayed_funding_direction": "longs_pay_shorts"
+      },
+      {
+        "venue": "MEXC Futures",
+        "open_interest_usd": 249341457,
+        "funding_rate_pct": 0.005,
+        "displayed_funding_direction": "longs_pay_shorts"
+      },
+      {
+        "venue": "Bybit Futures",
+        "open_interest_usd": 278808815,
+        "funding_rate_pct": 0.003,
+        "displayed_funding_direction": "longs_pay_shorts"
+      },
+      {
+        "venue": "Toobit Futures",
+        "open_interest_usd": 192433078,
+        "funding_rate_pct": 0.005,
+        "displayed_funding_direction": "longs_pay_shorts"
+      },
+      {
+        "venue": "Hyperliquid Futures",
+        "open_interest_usd": 201517831,
+        "funding_rate_pct": 0.001,
+        "displayed_funding_direction": "longs_pay_shorts"
+      },
+      {
+        "venue": "WEEX Futures",
+        "open_interest_usd": 176637360,
+        "funding_rate_pct": 0,
+        "displayed_funding_direction": "neutral_or_rounded_zero"
+      },
+      {
+        "venue": "Gate Futures",
+        "open_interest_usd": 282309170,
+        "funding_rate_pct": 0.003,
+        "displayed_funding_direction": "longs_pay_shorts"
+      },
+      {
+        "venue": "Bitget Futures",
+        "open_interest_usd": 223397900,
+        "funding_rate_pct": 0.002,
+        "displayed_funding_direction": "longs_pay_shorts"
+      },
+      {
+        "venue": "OKX Futures",
+        "open_interest_usd": 93450245,
+        "funding_rate_pct": 0.004,
+        "displayed_funding_direction": "longs_pay_shorts"
+      }
+    ],
+    "displayed_venue_row_count": 10,
+    "sum_of_displayed_open_interest_rows_usd": 2420962182,
+    "positive_funding_rows": 9,
+    "zero_or_rounded_zero_funding_rows": 1,
+    "funding_interval": "NOT_SPECIFIED_IN_RENDERED_TABLE",
+    "treatment": "Derived row sum only; not a provider-published consolidated total and not synchronized to the spot page."
+  },
+  "event_context": {
+    "event": "2026-10-29 Binance security incident",
+    "reported_xrp_transfer": 233460000,
+    "transfer_window_minutes": 4,
+    "source_count": 1,
+    "treatment": "Potential exchange-flow attribution contamination and market-confidence context; not proof of customer net withdrawals, current reserve change or price causality."
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Broad risk-off and cross-asset beta contributed to XRP weakness.",
+      "supporting_evidence": [
+        "Contemporaneous market coverage describes a technology-led equity and crypto selloff."
+      ],
+      "disconfirming_evidence": [
+        "This artifact does not include synchronized BTC, equity-index or volatility-index returns."
+      ],
+      "status": "PLAUSIBLE_NOT_TESTED"
+    },
+    {
+      "id": "H2",
+      "claim": "The Binance security incident and subsequent wallet attribution changes may contaminate exchange-flow measurements and affect confidence.",
+      "supporting_evidence": [
+        "Reuters relays a 233.46M XRP transfer from five Binance hot wallets on 2026-10-29."
+      ],
+      "disconfirming_evidence": [
+        "No wallet-level reconciliation links that transfer to the later 418.5M XRP analyst-reported outflow metric."
+      ],
+      "status": "PLAUSIBLE_DATA_QUALITY_RISK_NOT_CAUSAL"
+    },
+    {
+      "id": "H3",
+      "claim": "ETF demand stagnation may have reduced incremental spot demand.",
+      "supporting_evidence": [
+        "Earlier archived provider snapshots report subdued or negative holdings-derived flows."
+      ],
+      "disconfirming_evidence": [
+        "ETF providers disagree on fund universe, completeness and calculation; holdings deltas are not direct cash creations/redemptions."
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "H4",
+      "claim": "Perpetual positioning may amplify spot moves.",
+      "supporting_evidence": [
+        "Nine of ten displayed funding rows are positive, indicating longs pay shorts in the displayed convention."
+      ],
+      "disconfirming_evidence": [
+        "No exact venue timestamps, position-level data, liquidation sequence or synchronized spot basis are supplied."
+      ],
+      "status": "CONTEXT_ONLY"
+    }
+  ],
+  "model_admission": {
+    "eligible": false,
+    "reasons": [
+      "Spot providers disagree on 24-hour change and volume.",
+      "CoinGecko derivative rows have no exact provider timestamps.",
+      "No synchronized exchange-native multi-level depth snapshot.",
+      "No point-in-time historical join or independent source-group validation.",
+      "The Binance incident is context, not a quantified causal feature."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": null,
+    "shadow_forecast": null,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  },
+  "provenance": {
+    "hash_algorithm": "SHA-256",
+    "hash_scope": "Normalized excerpts reproduced in source_records; not original HTTP response bytes, page HTML or headers.",
+    "raw_wire_bytes_retained": false,
+    "independent_timestamp_anchoring": false
+  }
+}

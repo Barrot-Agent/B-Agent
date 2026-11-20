@@ -1,0 +1,496 @@
+{
+  "schema_version": "barrot.xrp.institutional-etf-exposure-and-market-snapshot.v1",
+  "recorded_at": "2026-11-19T05:20:27Z",
+  "run_id": "run37",
+  "research_only": true,
+  "no_forecast_issued": true,
+  "model_eligibility": {
+    "eligible": false,
+    "reason": "13F positions are ETF shares rather than XRP token balances, are quarterly and lagged, and cannot establish net creation/redemption, spot exchange flows, beneficial ownership, or unhedged directional exposure. Market snapshots are stale/possibly cached and have no full-depth capture."
+  },
+  "institutional_13f": {
+    "reporting_period_end": "2026-09-30",
+    "sources": [
+      {
+        "filer": "Susquehanna International Group, LLP",
+        "cik": "0001446194",
+        "accession": "0001446194-26-000009",
+        "filed_at": "2026-11-16T15:02:25Z",
+        "period_of_report": "2026-09-30",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1446194/000144619426000009/0001446194-26-000009-index.htm",
+        "information_table_url": "https://www.sec.gov/Archives/edgar/data/1446194/000144619426000009/xslForm13F_X02/file.XML",
+        "table_lines": [
+          34,
+          1863,
+          1864,
+          1865,
+          2428,
+          2429,
+          5631,
+          5632,
+          6300,
+          6301
+        ],
+        "rendered_source_warning": "SEC table states the Commission has not necessarily reviewed the filing and readers should not assume it is accurate or complete.",
+        "raw_bytes_captured": false,
+        "normalized_rows_sha256": "6a7f4861bb5c0b2d677dafa569cbe8cfaf0ebc016752037fe2a42539d3605f31",
+        "hash_scope": "SHA-256 of the canonical normalized row strings stored in this artifact; not a hash of raw SEC response bytes.",
+        "normalized_rows": [
+          "21SHARES XRP ETF | BENEFICIAL INT | 90137T103 | 182168 | 12572 | SH | common",
+          "BITWISE XRP ETF | BENEFICIAL INT | 09174F107 | 14614211 | 878786 | SH | common",
+          "BITWISE XRP ETF | BENEFICIAL INT | 09174F107 | 3465692 | 208400 | SH | Put",
+          "BITWISE XRP ETF | BENEFICIAL INT | 09174F107 | 3395846 | 204200 | SH | Call",
+          "CANARY XRP ETF | SHS | 13723M100 | 4743947 | 300821 | SH | common",
+          "CANARY XRP ETF | SHS | 13723M100 | 2780251 | 176300 | SH | Call",
+          "FRANKLIN XRP TRUST | FRANKLIN XRP ETF | 355233107 | 6823106 | 421700 | SH | common",
+          "FRANKLIN XRP TRUST | FRANKLIN XRP ETF | 355233107 | 902844 | 55800 | SH | Call",
+          "GRAYSCALE XRP TR ETF | SHS | 38965L106 | 5741971 | 199374 | SH | common",
+          "GRAYSCALE XRP TR ETF | SHS | 38965L106 | 201600 | 7000 | SH | Call"
+        ]
+      },
+      {
+        "filer": "Jane Street Group, LLC",
+        "cik": "0001595888",
+        "accession": "0001595888-26-000162",
+        "filed_at": "2026-11-12T16:04:21Z",
+        "period_of_report": "2026-09-30",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1595888/000159588826000162/0001595888-26-000162-index.htm",
+        "information_table_url": "https://www.sec.gov/Archives/edgar/data/1595888/000159588826000162/xslForm13F_X02/q3-2026-13f-hr.xml",
+        "table_lines": [
+          1753,
+          1754,
+          1755,
+          1756,
+          2337,
+          2338,
+          2339,
+          5238,
+          10614,
+          14178,
+          14184,
+          14185,
+          14192
+        ],
+        "raw_bytes_captured": false,
+        "normalized_rows_sha256": "e2ab6677f0d34eab1f9592bfe3b310f04ad87d491831b696ec3737278fc43348",
+        "hash_scope": "SHA-256 of the canonical normalized row strings stored in this artifact; not a hash of raw SEC response bytes.",
+        "normalized_rows": [
+          "BITWISE XRP ETF | 09174F107 | 12096978 | 727419 | SH | common manager 1",
+          "BITWISE XRP ETF | 09174F107 | 100661 | 6053 | SH | common manager 3",
+          "BITWISE XRP ETF | 09174F107 | 640255 | 38500 | SH | Call",
+          "BITWISE XRP ETF | 09174F107 | 227831 | 13700 | SH | Put",
+          "CANARY XRP ETF | 13723M100 | 3126655 | 198266 | SH | common",
+          "CANARY XRP ETF | 13723M100 | 12966094 | 822200 | SH | Call",
+          "CANARY XRP ETF | 13723M100 | 12653848 | 802400 | SH | Put",
+          "FRANKLIN XRP TRUST | 355233107 | 5003730 | 309254 | SH | common",
+          "PROSHARES TR ULTRA XRP ETF | 74350P410 | 306045 | 17866 | SH | leveraged ETF",
+          "VOLATILITY SHS TR XRP ETF | 92864M780 | 1832871 | 227969 | SH | linked ETF manager 1",
+          "VOLATILITY SHS TR XRP ETF | 92864M780 | 13998 | 1741 | SH | linked ETF manager 3",
+          "VOLATILITY SHS TR 2X XRP ETF | 92865J729 | 272658 | 7267 | SH | 2x ETF",
+          "VOLATILITY SHS TR 2X XRP ETF | 92865J729 | 615328 | 16400 | SH | Call"
+        ]
+      },
+      {
+        "filer": "Jane Street Group, LLC",
+        "cik": "0001595888",
+        "accession": "0001595888-26-000108",
+        "filed_at": "2026-08-14T16:18:51Z",
+        "period_of_report": "2026-06-30",
+        "index_url": "https://www.sec.gov/Archives/edgar/data/1595888/000159588826000108/0001595888-26-000108-index.htm",
+        "information_table_url": "https://www.sec.gov/Archives/edgar/data/1595888/000159588826000108/xslForm13F_X02/q2-2026-13f-hr.xml",
+        "table_lines": [
+          35,
+          1773,
+          1774,
+          1775,
+          2353,
+          2354,
+          2355,
+          5224,
+          5225,
+          14116,
+          14121
+        ],
+        "raw_bytes_captured": false,
+        "normalized_rows_sha256": "9f30b92b27d7e16c5fb502b738d5a5f218d65e097f5cc31c326e06df3306cdb8",
+        "hash_scope": "SHA-256 of the canonical normalized row strings stored in this artifact; not a hash of raw SEC response bytes.",
+        "normalized_rows": [
+          "21SHARES XRP ETF | 90137T103 | 656905 | 64529 | SH | common",
+          "BITWISE XRP ETF | 09174F107 | 14050300 | 1205000 | SH | common manager 1",
+          "BITWISE XRP ETF | 09174F107 | 781 | 67 | SH | common manager 3",
+          "CANARY XRP ETF | 13723M100 | 334671 | 30205 | SH | common",
+          "FRANKLIN XRP TRUST | 355233107 | 456100 | 40185 | SH | common",
+          "VOLATILITY SHS TR XRP ETF | 92864M780 | 81979 | 14282 | SH | linked ETF",
+          "VOLATILITY SHS TR 2X XRP ETF | 92865J729 | 232375 | 10679 | SH | 2x ETF"
+        ]
+      }
+    ],
+    "susquehanna_q3": {
+      "common_etf_share_positions": [
+        {
+          "issuer": "21Shares XRP ETF",
+          "cusip": "90137T103",
+          "shares": 12572,
+          "reported_value_usd": 182168,
+          "table_line": 34,
+          "investment_discretion": "OTR",
+          "other_manager_code": "2",
+          "unit": "ETF_SHARES"
+        },
+        {
+          "issuer": "Bitwise XRP ETF",
+          "cusip": "09174F107",
+          "shares": 878786,
+          "reported_value_usd": 14614211,
+          "table_line": 1863,
+          "investment_discretion": "OTR",
+          "other_manager_code": "2",
+          "unit": "ETF_SHARES"
+        },
+        {
+          "issuer": "Canary XRP ETF",
+          "cusip": "13723M100",
+          "shares": 300821,
+          "reported_value_usd": 4743947,
+          "table_line": 2428,
+          "investment_discretion": "OTR",
+          "other_manager_code": "2",
+          "unit": "ETF_SHARES"
+        },
+        {
+          "issuer": "Franklin XRP Trust",
+          "cusip": "355233107",
+          "shares": 421700,
+          "reported_value_usd": 6823106,
+          "table_line": 5631,
+          "investment_discretion": "OTR",
+          "other_manager_code": "2",
+          "unit": "ETF_SHARES"
+        },
+        {
+          "issuer": "Grayscale XRP Trust ETF",
+          "cusip": "38965L106",
+          "shares": 199374,
+          "reported_value_usd": 5741971,
+          "table_line": 6300,
+          "investment_discretion": "OTR",
+          "other_manager_code": "2",
+          "unit": "ETF_SHARES"
+        }
+      ],
+      "common_share_total": {
+        "shares": 1813253,
+        "reported_value_usd": 32105403,
+        "unit": "ETF_SHARES",
+        "aggregation_warning": "Sum across different ETF share classes; this is not XRP token quantity, not a purchase total, and not a net flow."
+      },
+      "separately_reported_options": [
+        {
+          "issuer": "Bitwise XRP ETF",
+          "side": "Put",
+          "underlying_shares": 208400,
+          "reported_value_usd": 3465692,
+          "table_line": 1864
+        },
+        {
+          "issuer": "Bitwise XRP ETF",
+          "side": "Call",
+          "underlying_shares": 204200,
+          "reported_value_usd": 3395846,
+          "table_line": 1865
+        },
+        {
+          "issuer": "Canary XRP ETF",
+          "side": "Call",
+          "underlying_shares": 176300,
+          "reported_value_usd": 2780251,
+          "table_line": 2429
+        },
+        {
+          "issuer": "Franklin XRP Trust",
+          "side": "Call",
+          "underlying_shares": 55800,
+          "reported_value_usd": 902844,
+          "table_line": 5632
+        },
+        {
+          "issuer": "Grayscale XRP Trust ETF",
+          "side": "Call",
+          "underlying_shares": 7000,
+          "reported_value_usd": 201600,
+          "table_line": 6301
+        }
+      ]
+    },
+    "jane_street": {
+      "q2_2026": {
+        "period_end": "2026-06-30",
+        "common_positions": [
+          {
+            "issuer": "21Shares XRP ETF",
+            "shares": 64529,
+            "reported_value_usd": 656905,
+            "unit": "ETF_SHARES"
+          },
+          {
+            "issuer": "Bitwise XRP ETF",
+            "shares": 1205067,
+            "reported_value_usd": 14051081,
+            "unit": "ETF_SHARES",
+            "manager_code_components": [
+              1205000,
+              67
+            ]
+          },
+          {
+            "issuer": "Canary XRP ETF",
+            "shares": 30205,
+            "reported_value_usd": 334671,
+            "unit": "ETF_SHARES"
+          },
+          {
+            "issuer": "Franklin XRP Trust",
+            "shares": 40185,
+            "reported_value_usd": 456100,
+            "unit": "ETF_SHARES"
+          },
+          {
+            "issuer": "Volatility Shares XRP ETF",
+            "shares": 14282,
+            "reported_value_usd": 81979,
+            "unit": "ETF_SHARES",
+            "structure": "linked ETF; structure not normalized as spot"
+          },
+          {
+            "issuer": "Volatility Shares 2X XRP ETF",
+            "shares": 10679,
+            "reported_value_usd": 232375,
+            "unit": "ETF_SHARES",
+            "structure": "2x leveraged ETF"
+          }
+        ],
+        "separately_reported_options": [
+          {
+            "issuer": "Bitwise XRP ETF",
+            "side": "Call",
+            "underlying_shares": 15100,
+            "reported_value_usd": 176066
+          },
+          {
+            "issuer": "Canary XRP ETF",
+            "side": "Call",
+            "underlying_shares": 732500,
+            "reported_value_usd": 8116100
+          },
+          {
+            "issuer": "Canary XRP ETF",
+            "side": "Put",
+            "underlying_shares": 732700,
+            "reported_value_usd": 8118316
+          },
+          {
+            "issuer": "Franklin XRP Trust",
+            "side": "Call",
+            "underlying_shares": 11000,
+            "reported_value_usd": 124850
+          }
+        ]
+      },
+      "q3_2026": {
+        "period_end": "2026-09-30",
+        "common_spot_etf_share_positions": [
+          {
+            "issuer": "Bitwise XRP ETF",
+            "shares": 733472,
+            "reported_value_usd": 12197639,
+            "unit": "ETF_SHARES",
+            "manager_code_components": [
+              727419,
+              6053
+            ]
+          },
+          {
+            "issuer": "Canary XRP ETF",
+            "shares": 198266,
+            "reported_value_usd": 3126655,
+            "unit": "ETF_SHARES"
+          },
+          {
+            "issuer": "Franklin XRP Trust",
+            "shares": 309254,
+            "reported_value_usd": 5003730,
+            "unit": "ETF_SHARES"
+          }
+        ],
+        "other_xrp_linked_etf_share_positions": [
+          {
+            "issuer": "ProShares Ultra XRP ETF",
+            "shares": 17866,
+            "reported_value_usd": 306045,
+            "unit": "ETF_SHARES",
+            "structure": "leveraged product"
+          },
+          {
+            "issuer": "Volatility Shares XRP ETF",
+            "shares": 229710,
+            "reported_value_usd": 1846869,
+            "unit": "ETF_SHARES",
+            "manager_code_components": [
+              227969,
+              1741
+            ],
+            "structure": "linked ETF; underlying structure requires separate prospectus verification"
+          },
+          {
+            "issuer": "Volatility Shares 2X XRP ETF",
+            "shares": 7267,
+            "reported_value_usd": 272658,
+            "unit": "ETF_SHARES",
+            "structure": "2x leveraged ETF"
+          }
+        ],
+        "separately_reported_options": [
+          {
+            "issuer": "Bitwise XRP ETF",
+            "side": "Call",
+            "underlying_shares": 38500,
+            "reported_value_usd": 640255
+          },
+          {
+            "issuer": "Bitwise XRP ETF",
+            "side": "Put",
+            "underlying_shares": 13700,
+            "reported_value_usd": 227831
+          },
+          {
+            "issuer": "Canary XRP ETF",
+            "side": "Call",
+            "underlying_shares": 822200,
+            "reported_value_usd": 12966094
+          },
+          {
+            "issuer": "Canary XRP ETF",
+            "side": "Put",
+            "underlying_shares": 802400,
+            "reported_value_usd": 12653848
+          },
+          {
+            "issuer": "Volatility Shares 2X XRP ETF",
+            "side": "Call",
+            "underlying_shares": 16400,
+            "reported_value_usd": 615328
+          }
+        ]
+      },
+      "same_fund_share_count_changes": [
+        {
+          "issuer": "Bitwise XRP ETF",
+          "q2_shares": 1205067,
+          "q3_shares": 733472,
+          "delta_shares": -471595,
+          "pct_change": -39.13433858864279
+        },
+        {
+          "issuer": "Canary XRP ETF",
+          "q2_shares": 30205,
+          "q3_shares": 198266,
+          "delta_shares": 168061
+        },
+        {
+          "issuer": "Franklin XRP Trust",
+          "q2_shares": 40185,
+          "q3_shares": 309254,
+          "delta_shares": 269069
+        }
+      ],
+      "interpretation": "Jane Street's Bitwise share count declined while Canary and Franklin share counts rose. Large listed call/put positions and separate linked/leveraged ETF holdings make simple directional interpretation invalid. The filings do not identify the ultimate beneficial owner or trading motive."
+    },
+    "limitations": [
+      "13F is quarterly and lagged: Q3 holdings are as of 2026-09-30 and were filed 2026-11-12 or 2026-11-16.",
+      "ETF share counts are not XRP token units and reported market values are quarter-end valuations, not actual cash purchases.",
+      "13F does not disclose short positions and does not provide option strike/expiry or complete delta-adjusted exposure in these rows.",
+      "The filings do not distinguish proprietary holdings from customer, market-making, arbitrage, custody, or hedged inventory.",
+      "No direct XRP token balance, on-chain holding, spot exchange purchase, ETF creation/redemption, or daily flow is established.",
+      "SEC information tables themselves warn that the Commission has not necessarily reviewed accuracy or completeness.",
+      "Raw SEC response bytes were not captured in this run; hashes cover normalized extracted row strings only."
+    ],
+    "competing_hypotheses": [
+      "Reported ETF shares may represent institutional investment exposure, customer positions, market-making inventory, arbitrage, or collateral/hedging activity.",
+      "Jane Street's issuer-level changes may reflect rotation between ETF issuers or market-making inventory changes rather than net XRP accumulation or distribution.",
+      "The leveraged and option positions may be hedges or structured trading exposures; their presence is not a bullish or bearish directional signal."
+    ],
+    "disconfirming_evidence": [
+      "Jane Street's Bitwise XRP ETF common share count fell 39.13% from Q2 to Q3.",
+      "Jane Street reported large Canary call and put positions, which cannot be netted from the 13F data alone.",
+      "Susquehanna reported both Bitwise calls and puts alongside common ETF shares.",
+      "No direct XRP token position or on-chain balance is identified by these filings."
+    ]
+  },
+  "market_snapshot": {
+    "first_observed_at": "2026-11-19T05:03:28Z",
+    "rechecked_at": "2026-11-19T05:20:27Z",
+    "raw_bytes_captured": false,
+    "capture_scope": "Exact JSON text rendered by the web retrieval layer; not HTTP wire bytes or a durable exchange receipt.",
+    "depth_capture": {
+      "full_order_book_captured": false,
+      "available": "top-of-book ticker fields only",
+      "reason": "Public depth endpoints did not return usable responses through the current retrieval path."
+    },
+    "venues": [
+      {
+        "venue": "Kraken",
+        "instrument": "XRP/USD",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "provider_timestamp": null,
+        "cache_warning": "The exact payload was unchanged on the 05:20:27Z recheck after first observation at 05:03:28Z. Kraken's ticker response exposes no provider timestamp; freshness is uncertain and possible retrieval-layer caching cannot be excluded.",
+        "last": 0.97426,
+        "bid": 0.97407,
+        "bid_size_xrp": 347,
+        "ask": 0.9742,
+        "ask_size_xrp": 1725,
+        "spread_bps": 1.334517289697665,
+        "volume_24h_xrp": 53164245.00216549,
+        "vwap_24h": 0.9789231,
+        "high_24h": 1.00677,
+        "low_24h": 0.95363,
+        "open_24h": 0.96637,
+        "last_vs_vwap_pct": -0.47634998091270475,
+        "last_vs_open_pct": 0.8164574645322276,
+        "range_24h_pct": 5.5723918081436175,
+        "rendered_response": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"0.97420000\",\"1725\",\"1725.000\"],\"b\":[\"0.97407000\",\"347\",\"347.000\"],\"c\":[\"0.97426000\",\"10.26420052\"],\"v\":[\"12041864.99463118\",\"53164245.00216549\"],\"p\":[\"0.96737262\",\"0.97892310\"],\"t\":[7128,36620],\"l\":[\"0.95363000\",\"0.95363000\"],\"h\":[\"0.97809000\",\"1.00677000\"],\"o\":\"0.96637000\"}}}",
+        "rendered_response_sha256": "2027622f8e17e298768ddbf63a8f66aec7e09b39f9ec973163243f1c1b83e9a0",
+        "hash_scope": "SHA-256 of rendered response text only; not raw transport bytes.",
+        "model_eligible": false
+      },
+      {
+        "venue": "OKX",
+        "instrument": "XRP-USDT",
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "provider_timestamp": "2026-11-19T04:42:13.964Z",
+        "age_seconds_at_retrieval": 2293.036,
+        "last": 0.9752,
+        "bid": 0.9751,
+        "bid_size_xrp": 3352.312434,
+        "ask": 0.9752,
+        "ask_size_xrp": 306.949627,
+        "spread_bps": 1.025483258985684,
+        "volume_24h_xrp": 33324708.946498,
+        "quote_volume_24h_usdt": 32669616.264859617,
+        "high_24h": 1.0079,
+        "low_24h": 0.9546,
+        "open_24h": 0.9789,
+        "rendered_response": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"0.9752\",\"lastSz\":\"11.601697\",\"askPx\":\"0.9752\",\"askSz\":\"306.949627\",\"bidPx\":\"0.9751\",\"bidSz\":\"3352.312434\",\"open24h\":\"0.9789\",\"high24h\":\"1.0079\",\"low24h\":\"0.9546\",\"volCcy24h\":\"32669616.2648596165\",\"vol24h\":\"33324708.946498\",\"ts\":\"1795064533964\",\"sodUtc0\":\"0.9676\",\"sodUtc8\":\"0.9765\"}],\"msg\":\"\"}",
+        "rendered_response_sha256": "d71268418bb09cfe3adb93ab2a5b6641b22ee53fbad5ab93af6e0cd389b38490",
+        "hash_scope": "SHA-256 of rendered response text only; not raw transport bytes.",
+        "model_eligible": false
+      }
+    ],
+    "cross_venue_comparison": "Not admitted: Kraken is XRP/USD with uncertain timestamp; OKX is XRP/USDT and its provider timestamp is 38m13s old. No synchronized USDT/USD conversion or depth snapshot."
+  },
+  "source_integrity": {
+    "raw_source_hashes_available": false,
+    "normalized_extraction_hashes_available": true,
+    "immutable_worm_anchor": false,
+    "note": "This artifact preserves normalized row excerpts and rendered response hashes, but it is not a substitute for the ingestion pipeline's raw-body SHA-256 receipts and immutable external anchor."
+  }
+}

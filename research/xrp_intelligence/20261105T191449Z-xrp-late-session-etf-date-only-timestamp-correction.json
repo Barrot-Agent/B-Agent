@@ -1,0 +1,108 @@
+{
+  "schema_version": "barrot.xrp.research-correction.v1",
+  "artifact_id": "xrp_late_session_etf_date_only_timestamp_correction_20261105T191449Z",
+  "artifact_type": "append_only_source_timestamp_semantics_correction",
+  "captured_at_utc": "2026-11-05T19:14:49Z",
+  "research_cutoff_utc": "2026-11-05T19:14:49Z",
+  "target_artifact": "research/xrp_intelligence/20261105T190803Z-xrp-late-session-spot-derivatives-etf-macro-snapshot.json",
+  "preservation": {
+    "target_artifact_modified": false,
+    "raw_source_text_hashes_modified": false,
+    "correction_mode": "append_only_field_overlay",
+    "forecast_issued": false,
+    "model_eligible": false
+  },
+  "correction_scope": "Remove synthetic 21:00 UTC event times assigned to daily ETF holdings rows. The source pages identify trading dates, not exact event timestamps. Separate issuer-file timestamps from page retrieval time.",
+  "field_corrections": [
+    {
+      "target_field": "$.source_registry[5].source_event_time_utc",
+      "original_value": "2026-11-04T21:00:00Z",
+      "canonical_value": null,
+      "canonical_field": "source_event_date",
+      "canonical_date": "2026-11-04",
+      "reason": "XRP Insights reports the November 4 trading-day holdings row; the page does not expose an exact event timestamp for the row."
+    },
+    {
+      "target_field": "$.source_registry[6].source_event_time_utc",
+      "original_value": "2026-11-03T21:00:00Z",
+      "canonical_value": null,
+      "canonical_field": "source_event_date",
+      "canonical_date": "2026-11-03",
+      "reason": "CryptoKeyhole identifies the November 3 trading day; 21:00 UTC was a synthetic session-close timestamp, not a source-provided event time."
+    },
+    {
+      "target_field": "$.source_registry[6].page_checked_at_utc",
+      "original_value": "2026-11-05T03:04:00Z",
+      "canonical_value": null,
+      "canonical_field": "issuer_file_timestamps_utc",
+      "canonical_value_by_fund": {
+        "XRP": "2026-11-05T03:04:00Z",
+        "XRPZ": {
+          "start": "2026-11-04T23:42:00Z",
+          "end": "2026-11-04T23:47:00Z"
+        },
+        "XRPC": {
+          "start": "2026-11-04T05:17:00Z",
+          "end": "2026-11-04T05:22:00Z"
+        },
+        "TOXR": "2026-11-05T03:00:00Z"
+      },
+      "reason": "03:04 UTC is the Bitwise issuer-file stamp shown by CryptoKeyhole, not the time the page was checked. The other displayed issuer-file stamps belong to separate funds."
+    },
+    {
+      "target_field": "$.source_registry[7].source_event_time_utc",
+      "original_value": "2026-11-03T21:00:00Z",
+      "canonical_value": null,
+      "canonical_field": "source_event_date",
+      "canonical_date": "2026-11-03",
+      "reason": "Alpha Finance reports a November 3 daily row; it does not expose an exact row event timestamp."
+    }
+  ],
+  "source_timestamp_policy": {
+    "daily_holdings_rows": "Store the issuer/trading date as a date. Do not synthesize 21:00 UTC or another close time unless the source explicitly provides it.",
+    "issuer_file_timestamps": "Store per-fund publication/issuer-stamp times separately from page retrieval time.",
+    "retrieval_time": "Unknown unless the retrieval system records a per-request timestamp. A page crawl or issuer file stamp is not a substitute.",
+    "model_eligibility": false
+  },
+  "source_registry": [
+    {
+      "source_id": "xrp_insights_etf_20261104",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/",
+      "source_event_date": "2026-11-04",
+      "source_event_time_utc": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "cryptokeyhole_etf_20261103_partial_20261105",
+      "publisher": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_event_date": "2026-11-03",
+      "source_event_time_utc": null,
+      "issuer_file_timestamps_utc": {
+        "XRP": "2026-11-05T03:04:00Z",
+        "XRPZ": {
+          "start": "2026-11-04T23:42:00Z",
+          "end": "2026-11-04T23:47:00Z"
+        },
+        "XRPC": {
+          "start": "2026-11-04T05:17:00Z",
+          "end": "2026-11-04T05:22:00Z"
+        },
+        "TOXR": "2026-11-05T03:00:00Z"
+      },
+      "page_retrieved_at_utc": null,
+      "model_eligible": false
+    },
+    {
+      "source_id": "alpha_finance_etf_20261103",
+      "publisher": "Alpha Finance",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "source_event_date": "2026-11-03",
+      "source_event_time_utc": null,
+      "model_eligible": false
+    }
+  ],
+  "interpretation": "The holdings values and flow calculations are not changed. Only unsupported timestamp precision is removed. The original snapshot remains preserved; a canonical consumer must apply these exact field corrections before any point-in-time use.",
+  "next_action": "Extend the correction-overlay admission adapter to apply date-only event-time corrections and reject synthetic timestamps."
+}

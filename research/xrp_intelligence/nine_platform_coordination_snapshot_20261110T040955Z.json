@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "barrot-nine-platform-run114-20261110T040955Z",
+  "captured_at_utc": "2026-11-10T04:09:55Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "integration_code_test_head_before_handoff": "c028c31bb4410fa913a17959bec1755bbedae039",
+  "active_pr": 1640,
+  "current_map_path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "status": "VERIFIED",
+      "authentication": "current session",
+      "capabilities": [
+        "GitHub read",
+        "GitHub API fetch",
+        "existing-branch evidence commit",
+        "public web research"
+      ],
+      "data_flow": "repo and public evidence into this session; no onward transfer"
+    },
+    {
+      "name": "Claude",
+      "status": "UNVERIFIED",
+      "authentication": "not tested",
+      "data_flow": "none"
+    },
+    {
+      "name": "Grok",
+      "status": "UNVERIFIED",
+      "authentication": "not tested",
+      "data_flow": "none"
+    },
+    {
+      "name": "Gemini",
+      "status": "UNVERIFIED",
+      "authentication": "not tested",
+      "data_flow": "none"
+    },
+    {
+      "name": "Copilot",
+      "status": "COMMENT_ONLY_NOT_CONNECTED",
+      "authentication": "no separate auth verified",
+      "evidence": "GitHub PR review comments only; zero approvals",
+      "data_flow": "no persistent external pipeline verified"
+    },
+    {
+      "name": "Codex",
+      "status": "UNVERIFIED",
+      "authentication": "not tested",
+      "data_flow": "none"
+    },
+    {
+      "name": "Hugging Face",
+      "status": "BLOCKED_UNVERIFIED",
+      "authentication": "prior BUILD_ERROR; not revalidated",
+      "data_flow": "no upload or Space deployment"
+    },
+    {
+      "name": "Kaggle",
+      "status": "UNVERIFIED",
+      "authentication": "not tested",
+      "data_flow": "no upload or competition submission"
+    },
+    {
+      "name": "Databricks",
+      "status": "BLOCKED_UNVERIFIED",
+      "authentication": "prior HTTP 403; not revalidated",
+      "data_flow": "no workspace write"
+    }
+  ],
+  "independent_assignments": [
+    {
+      "platform": "Claude",
+      "task": "forecast leakage and counter-hypothesis red-team",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Grok",
+      "task": "independent event/entity public-source search",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Gemini",
+      "task": "regulatory/custody/payment-rail cross-check",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Copilot",
+      "task": "PR review feedback only",
+      "status": "COMMENT_ONLY"
+    },
+    {
+      "platform": "Codex",
+      "task": "code and test-gap audit",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Hugging Face",
+      "task": "offline model evaluation after authentication and approval",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Kaggle",
+      "task": "reproducible public-data benchmark research; no submission",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "platform": "Databricks",
+      "task": "historical feature-store evaluation after authentication and approval",
+      "status": "DESIGNED_NOT_EXECUTED"
+    }
+  ],
+  "coordination_policy": {
+    "evidence_exchange": "none with external platforms",
+    "disagreement": "primary-source quality and timestamp outrank aggregator count; retain minority objections",
+    "red_team": "required before forecast",
+    "least_privilege": "no secrets or repo contents sent to unverified platforms",
+    "fallback": "deterministic local/repository work"
+  }
+}

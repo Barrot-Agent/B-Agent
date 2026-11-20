@@ -153,3 +153,82 @@ def test_stored_claims_files_are_clean_against_the_denylist():
 
     for path in sorted((ROOT / "data").rglob("claims/*.json")):
         assert validate(path) == [], path
+
+
+
+def _write_claims_for_retraction_validation(tmp_path, identifier: str) -> Path:
+    claims = {
+        "records": [
+            {
+                "id": "retraction-validation-case",
+                "status": "Q",
+                "affirmed": True,
+                "excluded_from_evidence": False,
+                "exclusion_reason": "",
+                "quotes": ["a quote"],
+                "evidence": {
+                    "identifier": identifier,
+                    "abstract": "a quote inside this abstract",
+                    "http_status": 200,
+                },
+            }
+        ]
+    }
+    path = tmp_path / "claims.json"
+    path.write_text(json.dumps(claims), encoding="utf-8")
+    return path
+
+
+def test_validation_fails_closed_when_retraction_denylist_is_missing(tmp_path, monkeypatch):
+    import scripts.re_v2 as re_v2
+
+    path = _write_claims_for_retraction_validation(tmp_path, "10.1137/0204037")
+    monkeypatch.setattr(re_v2, "DENYLIST", tmp_path / "retracted_dois.json")
+    problems = re_v2.validate(path)
+    assert any("retraction denylist unavailable" in item for item in problems)
+    assert any("missing retracted_dois.json" in item for item in problems)
+
+
+def test_validation_fails_closed_when_retraction_denylist_is_malformed(tmp_path, monkeypatch):
+    import scripts.re_v2 as re_v2
+
+    path = _write_claims_for_retraction_validation(tmp_path, "10.1137/0204037")
+    denylist = tmp_path / "retracted_dois.json"
+    denylist.write_text("{", encoding="utf-8")
+    monkeypatch.setattr(re_v2, "DENYLIST", denylist)
+    problems = re_v2.validate(path)
+    assert any("retraction denylist unavailable" in item for item in problems)
+    assert any("cannot read retracted_dois.json" in item for item in problems)
+
+
+def test_validation_fails_closed_when_retraction_denylist_omits_verified_fixture_doi(tmp_path, monkeypatch):
+    import scripts.re_v2 as re_v2
+
+    path = _write_claims_for_retraction_validation(tmp_path, "10.1137/0204037")
+    denylist = tmp_path / "retracted_dois.json"
+    denylist.write_text(
+        json.dumps(
+            {
+                "retracted": [
+                    {
+                        "doi": "10.1177/1758835919874651",
+                        "notices": ["10.1177/17588359211061903"],
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(re_v2, "DENYLIST", denylist)
+    problems = re_v2.validate(path)
+    assert any("does not cover verified fixture DOIs" in item for item in problems)
+
+
+def test_validation_normalizes_doi_urls_before_retraction_comparison(tmp_path):
+    import scripts.re_v2 as re_v2
+
+    path = _write_claims_for_retraction_validation(
+        tmp_path, "https://doi.org/10.1177/1758835919874651"
+    )
+    problems = re_v2.validate(path)
+    assert any("retracted source" in item for item in problems), problems

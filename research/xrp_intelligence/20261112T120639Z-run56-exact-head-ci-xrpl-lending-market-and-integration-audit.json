@@ -1,0 +1,858 @@
+{
+  "schema_version": "barrot.xrp.run-evidence.v1",
+  "run_id": "run56",
+  "capture_window_start_utc": "2026-11-12T12:06:39Z",
+  "latest_publisher_snapshot_utc": "2026-11-12T11:50:00Z",
+  "mission": {
+    "priority": 1,
+    "primary": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 execution, orchestration, safety and verification"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "84f28ee7755607236231545a14f3d093c1baaa85",
+    "integration_branch": "integration/xrp-v3-unified-main-20261111",
+    "verified_pre_update_head": "28fbdcfe276b825c7de83df5bba2cc017c0d26ea",
+    "commits_ahead": 2100,
+    "behind_main": 0,
+    "main_tree": {
+      "entries": 1388,
+      "blobs": 1288,
+      "workflow_files": 86,
+      "truncated": false
+    },
+    "integration_tree": {
+      "entries": 2315,
+      "blobs": 2206,
+      "workflow_files": 87,
+      "truncated": false
+    },
+    "pr_1661": {
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "changed_files": 1056,
+      "additions": 288608,
+      "deletions": 4392,
+      "commits_ahead": 2100,
+      "behind_main": 0,
+      "workflow_files": 49,
+      "other_paths": 1007,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    }
+  },
+  "ci_verified_on_pre_run56_head": {
+    "head_sha": "28fbdcfe276b825c7de83df5bba2cc017c0d26ea",
+    "full_ci_run": 43209033106,
+    "full_suite_job_id": 131151485326,
+    "tests_passed": 3507,
+    "tests_failed": 0,
+    "subtests_passed": 8,
+    "coverage_percent": 61.35,
+    "duration_seconds": 94.53,
+    "wheel_build": "passed",
+    "installed_barrot_v3_xrp_mission_verification": "passed",
+    "dependency_audit_run": 43209033225,
+    "dependency_audit_groups": 6,
+    "known_vulnerabilities_reported": 0,
+    "fail_closed_gate_run": 43209033094,
+    "fail_closed_gate": "passed; automatic merge disabled",
+    "exact_head_status": "verified on 28fbdcfe; not transferable to this Run56 docs-only successor"
+  },
+  "repository_review": {
+    "open_pr_count": 374,
+    "draft_count": 360,
+    "non_draft_count": 14,
+    "main_target_count": 366,
+    "other_base_count": 8,
+    "title_triage": {
+      "xrp_prediction_research": 133,
+      "security": 110,
+      "architecture_graph": 10,
+      "dependencies": 10,
+      "other": 111,
+      "classification_method": "title keywords only; not semantic classification"
+    },
+    "source_prs": [
+      {
+        "number": 1660,
+        "classification": "superseded-source candidate; keep open until successor merge",
+        "shared_paths": 972,
+        "source_only_paths": 0,
+        "previous_blob_comparison": {
+          "identical": 940,
+          "different": 32
+        },
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1643,
+        "classification": "overlap; preserve differing evidence",
+        "shared_paths": 670,
+        "source_only_paths": 0,
+        "previous_blob_comparison": {
+          "identical": 661,
+          "different": 9
+        },
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1640,
+        "classification": "overlap; preserve differing integration work",
+        "shared_paths": 280,
+        "source_only_paths": 0,
+        "previous_blob_comparison": {
+          "identical": 234,
+          "different": 46
+        },
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1642,
+        "classification": "unique prediction work; do not mark duplicate",
+        "shared_paths": 7,
+        "source_only_paths": 0,
+        "previous_blob_comparison": {
+          "identical": 0,
+          "different": 7
+        },
+        "draft": true,
+        "mergeable": true
+      },
+      {
+        "number": 1655,
+        "classification": "unique/unreviewed",
+        "files": 8,
+        "shared_paths": 5,
+        "source_only_paths": 3,
+        "draft": true,
+        "mergeable": true
+      },
+      {
+        "number": 1641,
+        "classification": "unique/unreviewed",
+        "files": 3,
+        "source_only_paths": 3,
+        "draft": true,
+        "mergeable": true
+      },
+      {
+        "number": 1615,
+        "classification": "unique/unreviewed security work",
+        "files": 14,
+        "source_only_paths": 13,
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1614,
+        "classification": "unique/unreviewed prediction and research work",
+        "files": 57,
+        "source_only_paths": 27,
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1610,
+        "classification": "unique/unreviewed security work",
+        "files": 14,
+        "source_only_paths": 7,
+        "draft": true,
+        "mergeable": false
+      },
+      {
+        "number": 1653,
+        "classification": "blocked",
+        "ahead": 18,
+        "behind": 8,
+        "files": 7,
+        "draft": false,
+        "mergeable": true,
+        "unresolved_copilot_high_findings": 6,
+        "unresolved_coderabbit_findings": 2
+      }
+    ]
+  },
+  "ingestion_workflow": {
+    "path": ".github/workflows/xrp-public-ingestion.yml",
+    "present_on_main": false,
+    "present_on_integration": true,
+    "job_main_only": true,
+    "schedules": [
+      "hourly at minute 3 UTC",
+      "daily at 00:15 UTC"
+    ],
+    "permissions": {
+      "actions": "read",
+      "contents": "read"
+    },
+    "raw_event_daily_artifact_retention_days": 90,
+    "per_run_feature_store_retention_days": 7,
+    "external_worm": false,
+    "main_scheduled_ingestion_verified": false
+  },
+  "market": {
+    "spot_observations": [
+      {
+        "source": "xrpldashboard",
+        "price_usd": 1.0384,
+        "as_of_utc": "2026-11-12T11:50:00Z",
+        "kind": "third-party dashboard"
+      },
+      {
+        "source": "liqwall",
+        "price_usd": 1.04,
+        "as_of_utc": "2026-11-12T11:42:00Z",
+        "kind": "aggregated derivatives page"
+      },
+      {
+        "source": "alpha_finance",
+        "price_usd": 1.045,
+        "as_of_utc": "2026-11-12T08:06:00Z",
+        "kind": "aggregated liquidation heatmap"
+      }
+    ],
+    "derivatives": {
+      "liqwall": {
+        "as_of_utc": "2026-11-12T11:42:00Z",
+        "open_interest_usd": 1150000000,
+        "open_interest_change_24h_percent": 1,
+        "funding_8h_percent": 0.0098,
+        "binance_accounts_long_percent": 75.1,
+        "binance_top_traders_long_percent": 67.5,
+        "rolling_24h_liquidations_usd": 4800000,
+        "rolling_24h_long_liquidations_usd": 3700000,
+        "rolling_24h_short_liquidations_usd": 1100000,
+        "nov11_utc_day_liquidations_usd": 4100000,
+        "nov11_long_liquidations_usd": 3000000,
+        "nov11_short_liquidations_usd": 1100000
+      },
+      "alpha_finance": {
+        "as_of_utc": "2026-11-12T08:06:00Z",
+        "open_interest_usd": 2280000000,
+        "volume_24h_usd": 2030000000,
+        "modelled_short_cluster_usd": 4100000,
+        "modelled_short_cluster_price": 1.0516,
+        "modelled_long_cluster_usd": 2900000,
+        "modelled_long_cluster_price": 1.0305,
+        "limitations": [
+          "different venue/contract universe from Liqwall",
+          "clusters are modelled pressure zones, not guaranteed liquidation levels"
+        ]
+      }
+    },
+    "etf_flows": {
+      "source": "Alpha Finance",
+      "cohort": "five US spot XRP funds",
+      "through_session": "2026-11-11",
+      "nov11_net_flow_usd": 0,
+      "nov10_net_flow_usd": -7600000,
+      "nov9_net_flow_usd": -10400000,
+      "seven_session_net_flow_usd": -18000000,
+      "thirty_session_net_flow_usd": 1300000,
+      "cumulative_net_inflow_usd": 1710000000,
+      "net_flow_xrp": 972800000,
+      "supply_share_percent": 1.532,
+      "limitations": [
+        "not current AUM",
+        "not current holdings",
+        "do not combine with broader fund cohorts"
+      ]
+    },
+    "orderbook": {
+      "latest_available_prior_snapshot_utc": "2026-11-12T10:00:00Z",
+      "provider": "Fuelmaps",
+      "mid_usd": 1.0512,
+      "one_percent_bids_usd_m": 12.2,
+      "one_percent_asks_usd_m": 11.3,
+      "five_percent_bids_usd_m": 27.7,
+      "five_percent_asks_usd_m": 15.6,
+      "ten_percent_bids_usd_m": 33.5,
+      "ten_percent_asks_usd_m": 17.1,
+      "ten_percent_venue_count": 5,
+      "venues_total": 6,
+      "excluded": [
+        "Binance",
+        "Bitget"
+      ],
+      "limitations": [
+        "not refreshed in Run56",
+        "resting orders can be cancelled"
+      ]
+    },
+    "exchange_flows": {
+      "latest_prior_observation_utc": "2026-11-12T11:13:00Z",
+      "source": "TrackWhale",
+      "seven_day_net_xrp": -54780000,
+      "limitations": [
+        "large-transfer tracker, not comprehensive exchange reserves",
+        "not refreshed in Run56"
+      ]
+    }
+  },
+  "xrpl_governance": {
+    "as_of_utc": "2026-11-12T11:44:00Z",
+    "ledger": 108281343,
+    "heard_validators": 35,
+    "required_yes": 29,
+    "activation_rule": "more than 80% for 14 consecutive days",
+    "votes": {
+      "SingleAssetVault": 23,
+      "LendingProtocol": 22,
+      "LendingProtocolV1_1": 22
+    },
+    "in_activation_countdown": false,
+    "lending_design": {
+      "borrower_collateral_required": false,
+      "loan_term": "fixed term",
+      "risk_controls": [
+        "off-chain underwriting",
+        "broker risk management",
+        "broker first-loss capital"
+      ],
+      "deposit_assets": [
+        "XRP",
+        "other tokens"
+      ],
+      "activation_status": "not active"
+    }
+  },
+  "institutional": {
+    "pnc_coinbase_usdc_pilot": {
+      "announced": "2026-11-09",
+      "asset": "USDC",
+      "settlement": "automatically converted to USD",
+      "scope": "limited corporate/institutional pilot",
+      "xrp_settlement": false
+    },
+    "coinbase_rlusd_distribution": {
+      "announced": "2026-10-28",
+      "platforms": [
+        "retail",
+        "institutional"
+      ],
+      "asset": "RLUSD",
+      "xrp_purchase_evidence": false
+    },
+    "coinbase_trust_charter": {
+      "public_announcement": "2026-11-09",
+      "charter_type": "national trust company",
+      "full_service_deposit_bank": false,
+      "source": "CoinDesk report of Coinbase announcement"
+    },
+    "ripple_sbi_rlusd_japan": {
+      "announced": "2026-06-24",
+      "distributor": "SBI VC Trade",
+      "regulator": "Japan FSA",
+      "asset": "RLUSD",
+      "xrp_adoption_inference": false
+    }
+  },
+  "macro": {
+    "japan_usdjpy_reference": 159.94,
+    "as_of_date": "2026-11-12",
+    "japan_yen_import_price_yoy_percent": 24.8,
+    "interpretation": "yen/intervention and import-inflation risk; not an XRP-specific signal"
+  },
+  "identity_research": {
+    "sbic_east_central_west": "resolved as Tokyo, Nagoya and Osaka regional statutory SME investment companies, distinct from SBI Holdings",
+    "sbic_chatgpt": "training is educational activity; no OpenAI partnership verified",
+    "ask_coin": "no verified XRPL deployment",
+    "actual_capital": "not a standardized XRP metric; keep cash, in-kind XRP, debt, facilities, collateral and resale separate",
+    "stevenson_youtube": "Camilla/Camila/Kamilah identity not verified to a first-party channel; no videos attributed"
+  },
+  "prediction_engine": {
+    "implemented": [
+      "47 public source definitions, 45 scheduled",
+      "read-only public collector",
+      "SHA-256 raw receipts and per-run hash chain",
+      "point-in-time SQLite feature store",
+      "four deterministic baselines",
+      "chronological walk-forward purge/embargo",
+      "temporal calibration diagnostics",
+      "PSI drift diagnostics",
+      "event timeline/counter-hypothesis assembly",
+      "fail-closed Ed25519-attested forecast ledger"
+    ],
+    "critical_gap": "walk_forward.py evaluates only the four deterministic baselines; forecast ledger requires a distinct candidate model and barrot.xrp.model-readiness.v4 attested report; no candidate-model readiness report verified",
+    "missing": [
+      "independent WORM and trusted timestamp anchor",
+      "replayable historical feature-store reconstruction",
+      "synchronized spot/L2/derivatives/flow/collateral history",
+      "candidate model and independent chronological holdout",
+      "independent shadow outcomes and adequate effective sample size",
+      "demonstrated lift over all four baselines",
+      "successful main-branch scheduled ingestion"
+    ],
+    "forecast_status": "NOT_ISSUED",
+    "run56_web_observations_model_eligible": false,
+    "reason": "not captured through byte-exact RawReceiptArchive; no verified raw SHA-256 receipts"
+  },
+  "nine_platforms": {
+    "ChatGPT": "GitHub authentication and data flow verified; connector permissions overprivileged",
+    "Claude": "authentication/data flow unverified",
+    "Grok": "authentication/data flow unverified",
+    "Gemini": "authentication/data flow unverified",
+    "Copilot": "review comments exist on #1653; no formal approval on #1661",
+    "Codex": "authentication/data flow unverified",
+    "HuggingFace": "last verified BUILD_ERROR",
+    "Kaggle": "untested; no submission",
+    "Databricks": "last verified HTTP 403",
+    "LunaRoute": "repository-declared canonical brain; endpoint auth/data flow unverified",
+    "external_model_data_transfer": false
+  },
+  "security": {
+    "connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "branch_protection_endpoint": "HTTP 403",
+    "fallback_ruleset_id": 10863829,
+    "fallback_ruleset_enabled": false,
+    "security_alert_endpoints": "not accessible through current connector",
+    "github_pages_auto_publication": true,
+    "pages_authorization": "unresolved",
+    "credential_path_audit": "17 previously affected PR branch tips; not re-audited in Run56",
+    "provider_side_oauth_revocation": "unverified"
+  },
+  "decision": {
+    "merge": false,
+    "reason": "PR #1661 remains draft with no approvals; branch protection inaccessible, connector overprivileged, Pages side effect unauthorized, semantic review incomplete, no main ingestion"
+  },
+  "sources": [
+    {
+      "id": "liqwall_xrp",
+      "url": "https://liqwall.com/coins/xrp",
+      "as_of_utc": "2026-11-12T11:42:00Z",
+      "independence_group": "liqwall_aggregator"
+    },
+    {
+      "id": "alpha_finance_xrp_etf",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "as_of_utc": "2026-11-11",
+      "independence_group": "alpha_finance_tracker"
+    },
+    {
+      "id": "alpha_finance_xrp_heatmap",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "as_of_utc": "2026-11-12T08:06:00Z",
+      "independence_group": "alpha_finance_tracker"
+    },
+    {
+      "id": "xrpl_dashboard_amendments",
+      "url": "https://xrpldashboard.com/amendments",
+      "as_of_utc": "2026-11-12T11:44:00Z",
+      "independence_group": "xrpldashboard_own_node"
+    },
+    {
+      "id": "coindesk_xrpl_lending",
+      "url": "https://www.coindesk.com/tech/2026/11/12/ripple-s-bank-lending-system-moves-closer-to-launch-on-the-xrp-ledger",
+      "published": "2026-11-12T05:18:00Z",
+      "independence_group": "coindesk_reporting"
+    },
+    {
+      "id": "reuters_pnc_coinbase_usdc",
+      "url": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+      "published": "2026-11-09T14:06:00Z",
+      "independence_group": "reuters_reporting"
+    },
+    {
+      "id": "reuters_coinbase_rlusd",
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "published": "2026-10-28T12:02:00Z",
+      "independence_group": "reuters_reporting"
+    },
+    {
+      "id": "coindesk_coinbase_trust",
+      "url": "https://www.coindesk.com/policy/2026/11/09/coinbase-gets-full-u-s-trust-charter-from-federal-banking-regulator",
+      "published": "2026-11-09T10:00:00Z",
+      "independence_group": "coindesk_reporting"
+    },
+    {
+      "id": "ripple_sbi_rlusd_japan",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "published": "2026-06-24",
+      "independence_group": "ripple_primary"
+    },
+    {
+      "id": "reuters_japan_yen",
+      "url": "https://www.reuters.com/world/asia-pacific/japans-top-currency-diplomat-renews-volatility-warning-yen-nears-key-160-level-2026-11-12/",
+      "published": "2026-11-12",
+      "independence_group": "reuters_reporting"
+    },
+    {
+      "id": "sbi_arc_presale_notice",
+      "url": "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+      "published": "2026-05-12",
+      "independence_group": "sbi_primary",
+      "notes": "SBI participation through unnamed consolidated subsidiary; $222M consortium total; SBI amount undisclosed"
+    },
+    {
+      "id": "circle_arc_founder_validators",
+      "url": "https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch",
+      "published": "2026-08-05",
+      "independence_group": "circle_primary"
+    },
+    {
+      "id": "circle_arc_mainnet_launch",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "published": "2026-09-16",
+      "independence_group": "circle_primary"
+    },
+    {
+      "id": "circle_q3_2026_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "published": "2026-11",
+      "independence_group": "sec_filing_primary"
+    },
+    {
+      "id": "ripple_sbi_rlusd_japan_primary",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "published": "2026-06-24",
+      "independence_group": "ripple_primary"
+    },
+    {
+      "id": "coinbase_rlusd_reuters",
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "published": "2026-10-28",
+      "independence_group": "reuters_reporting"
+    },
+    {
+      "id": "pnc_coinbase_usdc_reuters",
+      "url": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+      "published": "2026-11-09",
+      "independence_group": "reuters_reporting"
+    },
+    {
+      "id": "permission_ask_token_docs",
+      "publisher": "Permission",
+      "source_type": "official token documentation",
+      "url": "https://docs.permission.ai/ask-token",
+      "source_independence_group": "permission_issuer",
+      "claims_supported": [
+        "100B fixed supply",
+        "LayerZero OFT",
+        "Base and Polygon contract addresses",
+        "Stargate availability",
+        "future governance/staking"
+      ]
+    },
+    {
+      "id": "permission_coinbase_wallet_update",
+      "publisher": "Permission",
+      "source_type": "official issuer product announcement",
+      "url": "https://www.permission.ai/blog/ask-wallet-update",
+      "publication_date": "2026-09-22",
+      "source_independence_group": "permission_issuer",
+      "claims_supported": [
+        "Coinbase Embedded Wallet integration",
+        "Coinbase secures private keys",
+        "Permission login authorizes transactions",
+        "Permission no longer holds keys",
+        "email/account/wallet data shared"
+      ],
+      "raw_http_bytes_captured": false
+    },
+    {
+      "id": "evernorth_oct23_s1_eloc",
+      "publisher": "Evernorth / SEC EDGAR",
+      "source_type": "issuer-filed SEC Form S-1",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "filed_date": "2026-10-23",
+      "source_independence_group": "issuer_sec_filing",
+      "claims_supported": [
+        "5,218,935 max new shares",
+        "97% VWAP purchase price",
+        "4.99% beneficial ownership cap",
+        "$521,893.50 upfront fee",
+        "no proceeds without actual share sales"
+      ]
+    },
+    {
+      "id": "evernorth_oct23_8k_eloc",
+      "publisher": "Evernorth / SEC EDGAR",
+      "source_type": "issuer-filed SEC Form 8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067062/a424b3sticker8-k.htm",
+      "filed_date": "2026-10-23",
+      "source_independence_group": "issuer_sec_filing",
+      "claims_supported": [
+        "Cantor ELOC agreement and share cap"
+      ]
+    },
+    {
+      "id": "evernorth_eloc_effect",
+      "publisher": "SEC EDGAR",
+      "source_type": "SEC effectiveness notice",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/9999999995-26-003391-index.htm",
+      "effective_date": "2026-10-30",
+      "source_independence_group": "sec_regulatory_record",
+      "claims_supported": [
+        "ELOC registration effectiveness date"
+      ]
+    },
+    {
+      "id": "cbc_actual_capital_phrase",
+      "publisher": "CBC Globe",
+      "source_type": "secondary media commentary",
+      "url": "https://cbcglobe.com/en/articles/2026/10/12/breaking-ripple-xrp-in-the-1-35-range-evernorth-nasdaq-listi-def18f6b",
+      "published_date": "2026-10-12",
+      "source_independence_group": "cbcglobe_media",
+      "claims_supported": [
+        "secondary use of exact phrase actual capital; not a primary capital record"
+      ]
+    },
+    {
+      "id": "iheart_kamilah_stevenson_20260611",
+      "publisher": "iHeart / The XRPTracer Podcast",
+      "source_type": "podcast episode and autogenerated transcript",
+      "url": "https://www.iheart.com/podcast/1333-the-xrptracer-podcast-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "published_date": "2026-06-11",
+      "source_independence_group": "iheart_media",
+      "claims_supported": [
+        "episode title and public guest attribution",
+        "transcript uses Camila/Camilla spellings",
+        "not legal identity or channel ownership proof"
+      ]
+    }
+  ],
+  "next_actions": [
+    "Run exact-head CI on the Run56 documentation/evidence successor; do not transfer parent results.",
+    "Continue existing PR #1661; create no new integration branch or PR.",
+    "Resolve branch-protection visibility, least-privilege connector permissions, credential-owner revocation and Pages authorization.",
+    "Complete semantic review of 49 workflow diffs and 1,007 non-workflow paths.",
+    "After compliant main integration, verify scheduled ingestion and independent immutable anchoring.",
+    "Implement a genuine candidate model and evaluate it against the four baselines on replayable point-in-time data.",
+    "Keep forecast issuance disabled until independent shadow and out-of-sample gates pass."
+  ],
+  "ci_verified_on_run56_evidence_head": {
+    "head_sha": "e8627cafaf4c68008a5067901272c025dfed3ebf",
+    "full_ci_run": 43216618308,
+    "full_suite_job_id": 131177365201,
+    "tests_passed": 3507,
+    "tests_failed": 0,
+    "subtests_passed": 8,
+    "coverage_percent": 61.35,
+    "test_duration_seconds": 54.8,
+    "wheel_build": "passed",
+    "installed_barrot_v3_xrp_mission_verification": "passed",
+    "dependency_audit_run": 43216618668,
+    "dependency_audit_groups": 6,
+    "known_vulnerabilities_reported": 0,
+    "fail_closed_gate_run": 43216618752,
+    "fail_closed_gate": "passed; automatic merge disabled",
+    "exact_head_status": "verified"
+  },
+  "institutional_network_addendum": {
+    "source_date": "2026-11-12",
+    "sbi_circle_arc": {
+      "sbi_presale_notice_date": "2026-05-12",
+      "participation": "SBI Holdings says a consolidated subsidiary participated in Circle's ARC token presale",
+      "sbi_specific_amount_usd": null,
+      "subsidiary_legal_name": null,
+      "consortium_total_usd": 222000000,
+      "circle_founder_validator_announcement_date": "2026-08-05",
+      "sbi_group_founding_validator": true,
+      "arc_public_mainnet_date": "2026-09-16",
+      "validator_role": "SBI Group said it would participate in Arc operation and governance",
+      "arc_network": {
+        "type": "open L1 blockchain",
+        "validator_model": "permissioned validator set",
+        "network_fee_asset": "USDC",
+        "regulatory_approval": "Circle says Arc has not been reviewed or approved by NYDFS or another regulator",
+        "genesis_arc_supply": 10000000000,
+        "public_arc_token_launch_committed": false
+      },
+      "sbi_apac_digital_economic_zone": true,
+      "interpretation": "SBI has exposure to Circle/USDC/Arc in addition to Ripple/RLUSD/XRP-related infrastructure; multi-rail diversification is a hypothesis, not proof of divestment or XRP demand"
+    },
+    "circle_q3_2026": {
+      "average_usdc_circulation_usd": 73300000000,
+      "average_usdc_circulation_yoy_percent": 8,
+      "usdc_onchain_transaction_volume_usd": 13900000000000,
+      "usdc_onchain_transaction_volume_yoy_percent": 49,
+      "total_revenue_and_reserve_income_usd": 865000000,
+      "total_revenue_and_reserve_income_yoy_percent": 17,
+      "coinbase_distribution_costs_q3_2026_usd": 331300000,
+      "coinbase_distribution_costs_nine_months_2026_usd": 986600000,
+      "coinbase_distribution_costs_q3_yoy_change_usd": -30000000,
+      "coinbase_distribution_costs_nine_months_yoy_change_usd": -10200000,
+      "agreement_economics": "Coinbase receives allocations tied to USDC held on its platform after issuer retention plus half of the remaining broader ecosystem-growth amount after approved third-party participants",
+      "arc_token_presale_revenue_recognized_q3_and_nine_months_usd": 181800000,
+      "limitations": [
+        "Circle issuer-reported metrics",
+        "on-chain transaction volume is not unique payments",
+        "distribution costs are not separately disclosed Coinbase segment profit",
+        "ARC presale revenue is not SBI's investment or the total consortium capital"
+      ]
+    },
+    "sbi_multi_rail": {
+      "usdc_distribution_since": "2025-03",
+      "rlusd_distribution_since": "2026-06-24",
+      "rlusd_japan_regulator": "JFSA",
+      "jpy_sc_issuer": "SBI Shinsei Trust",
+      "assets": "USDC, RLUSD and JPYSC",
+      "interpretation": "SBI is involved with Circle and Ripple rails; no exclusive XRP commitment inferred"
+    },
+    "coinbase_circle_ripple_pnc": {
+      "coinbase_usdc_distribution": "Circle collaboration agreement with balance- and ecosystem-growth-linked distribution economics",
+      "coinbase_arc_access": "Circle lists Coinbase among Arc exchange access providers",
+      "coinbase_rlusd_listing_date": "2026-10-28",
+      "pnc_pilot_asset": "USDC",
+      "pnc_pilot_settlement": "automatically converted to USD",
+      "pnc_pilot_scope": "limited corporate/institutional pilot",
+      "xrp_settlement_evidence": false
+    },
+    "capital_taxonomy": {
+      "arc_presale_consortium_total_usd": 222000000,
+      "circle_arc_presale_revenue_recognized_usd": 181800000,
+      "sbi_arc_presale_allocation_usd": null,
+      "warning": "These figures are not additive and none is an XRP purchase or SBI-specific capital amount"
+    }
+  },
+  "source_independence_notes": [
+    "CoinDesk's Nov 12 XRPL lending article cites XRPL Dashboard for validator votes; those vote counts are one underlying publisher lineage, not two independent confirmations.",
+    "Liqwall and Alpha Finance have different reported OI universes; underlying venue coverage may overlap and their totals are not averaged.",
+    "Circle, SBI and Ripple press releases are primary for their own announcements but are interested-party sources; SEC filings provide the stronger financial accounting record.",
+    "Reuters reports the PNC pilot and Coinbase RLUSD listing; the PNC pilot is a limited test and USDC is converted to USD, not XRP.",
+    "Permission's ASK token documentation and Coinbase-wallet announcement are issuer self-published; they establish Permission's statements, not independent Coinbase confirmation.",
+    "The Evernorth ELOC terms and effectiveness are primary SEC issuer/regulatory records. The $80.685M estimate is a derived illustrative gross amount, not actual proceeds.",
+    "The exact phrase 'actual capital' is found in secondary CBC Globe commentary; it is not a primary capital disclosure.",
+    "The iHeart episode is an automatically transcribed podcast; transcript spellings do not establish legal identity or YouTube channel ownership."
+  ],
+  "ci_verified_on_run56A_evidence_head": {
+    "head_sha": "1cbdb12d0d9f93ae335b907049f6bee6fd609e75",
+    "full_ci_run": 43217621166,
+    "full_suite_job_id": 131180770391,
+    "tests_passed": 3507,
+    "tests_failed": 0,
+    "subtests_passed": 8,
+    "coverage_percent": 61.35,
+    "test_duration_seconds": 60.04,
+    "wheel_build": "passed",
+    "installed_barrot_v3_xrp_mission_verification": "passed",
+    "dependency_audit_run": 43217621119,
+    "dependency_audit_groups": 6,
+    "known_vulnerabilities_reported": 0,
+    "fail_closed_gate_run": 43217621138,
+    "fail_closed_gate": "passed; automatic merge disabled",
+    "exact_head_status": "verified"
+  },
+  "ask_coin": {
+    "exact_phrase_candidates": [
+      "ASK Coin",
+      "ASK token",
+      "Permission Coin"
+    ],
+    "strongest_candidate": {
+      "project": "Permission",
+      "token_name": "ASK",
+      "issuer_claim": "Native token of the Permission ecosystem",
+      "fixed_supply": 100000000000,
+      "token_standard": "LayerZero Omnichain Fungible Token (OFT)",
+      "official_contracts": {
+        "Base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+        "Polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+      },
+      "official_docs_utility": [
+        "rewards and incentives",
+        "agent-to-agent value exchange",
+        "governance and staking are future capabilities, not established live features"
+      ],
+      "bridge": "Stargate",
+      "xrp_relationship_status": "NO_DIRECT_XRP_OR_XRPL_RELATIONSHIP_ESTABLISHED",
+      "coinbase_wallet_relationship": {
+        "provider": "Coinbase",
+        "service": "Coinbase Embedded Wallet",
+        "announced_date": "2026-09-22",
+        "key_control": "Coinbase secures private keys; Permission login authorizes transactions; Permission says it no longer holds wallet keys; key export supported",
+        "data_flow": [
+          "email address",
+          "account identifier",
+          "wallet information"
+        ],
+        "classification": "wallet infrastructure/data-flow relationship only; not token issuance, market-making or XRP counterparty"
+      },
+      "limitations": [
+        "Permission is the strongest candidate, not an exhaustive universe of all ASK assets",
+        "issuer documentation is self-published",
+        "no XRPL-native ASK contract verified"
+      ]
+    },
+    "raw_http_bytes_captured": false,
+    "model_eligible": false
+  },
+  "actual_capital": {
+    "exact_phrase_search": {
+      "phrase": "actual capital",
+      "secondary_usage_source": "CBC Globe",
+      "published_date": "2026-10-12",
+      "url": "https://cbcglobe.com/en/articles/2026/10/12/breaking-ripple-xrp-in-the-1-35-range-evernorth-nasdaq-listi-def18f6b",
+      "evidentiary_status": "SECONDARY_COMMENTARY_NOT_A_PRIMARY_CAPITAL_RECORD"
+    },
+    "evernorth_cantor_equity_line": {
+      "issuer": "Evernorth Holdings Inc.",
+      "counterparty": "CF Principal Investments LLC (Cantor affiliate)",
+      "agreement_date": "2026-10-23",
+      "facility_type": "committed equity line of credit; not a funded loan or cash balance",
+      "maximum_new_shares": 5218935,
+      "reference_stock_price_usd": 15.46,
+      "reference_stock_price_date": "2026-10-22",
+      "illustrative_gross_proceeds_usd": 80684735.1,
+      "illustrative_rounded_usd": 80700000,
+      "purchase_price": "generally 97% of applicable VWAP, subject to threshold and volume conditions",
+      "beneficial_ownership_limit_percent": 4.99,
+      "registration_effective_date": "2026-10-30",
+      "upfront_commitment_fee_usd": 521893.5,
+      "fee_payer": "Evernorth",
+      "fee_timing": "within five business days after the Upfront Determination Date",
+      "cash_received_from_facility_verified": false,
+      "shares_sold_under_facility_verified": false,
+      "xrp_purchases_funded_by_facility_verified": false,
+      "status_note": "No drawdown, sale, proceeds or XRP purchase funded by the facility was verified in the reviewed filings; this is not proof none occurred.",
+      "interpretation": [
+        "$80.685M is an illustrative maximum using full share count and Oct 22 reference price, before VWAP discount and volume constraints; not cash received.",
+        "The $521,893.50 commitment fee is payable by Evernorth and is not capital inflow.",
+        "Any proceeds must be traced separately before classifying them as XRP purchases."
+      ]
+    },
+    "prior_primary_capital_rule": "Separate cash purchases, in-kind XRP, subscriptions, debt, undrawn facilities, ELOC capacity, fees, collateral and shareholder resales."
+  },
+  "sbic_chatgpt": {
+    "exact_phrase": "SBIC, ChatGPT SBIC",
+    "search_status": "NO_EXACT_INDEXED_MATCH_RETURNED_IN_THIS_RUN",
+    "limitation": "Search non-return is not proof of nonexistence in private, deleted, unindexed or differently punctuated sources.",
+    "preserved_disambiguations": [
+      "Japanese SBIC East, SBIC Central and SBIC West are separate regional statutory SME investment companies.",
+      "SBI Holdings is a separate corporate group.",
+      "In ChatGPT academic-benchmark literature, SBIC means Social Bias Inference Corpus."
+    ],
+    "inference_permitted": false
+  },
+  "camilla_kamilah_stevenson": {
+    "public_media_corroboration": {
+      "publisher": "iHeart / The XRPTracer Podcast",
+      "episode_title": "Crypto Panics! with Dr. Kamilah Stevenson",
+      "episode_date": "2026-06-11",
+      "duration_minutes": 42,
+      "url": "https://www.iheart.com/podcast/1333-the-xrptracer-podcast-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "transcript_note": "Automatically generated; host calls guest Camila/Camilla and says viewers have seen her on YouTube discussing XRP.",
+      "source_caveat": "iHeart states transcript accuracy is not guaranteed."
+    },
+    "public_channel_match": "@drkamilahstevenson",
+    "channel_attribution_assessment": "HIGH_CONFIDENCE_PUBLIC_CHANNEL_MATCH_RETAINED_FROM_PRIOR_RESEARCH",
+    "legal_identity_verified": false,
+    "external_social_account_ownership_verified": false,
+    "prior_youtube_video_inventory_count": 3,
+    "new_youtube_videos_added": [],
+    "inventory_exhaustive": false,
+    "classification": "Podcast is not a YouTube video; public attribution is corroborated, legal identity and account ownership remain unverified. Do not add new videos until identity is verified."
+  }
+}

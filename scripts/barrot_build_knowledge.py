@@ -2,18 +2,59 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+import argparse
+import sys
 
 from barrot_agent.barrot_brain import BarrotBrain
 from barrot_agent.orchestration.autonomous_actions import BarrotActionLoop
+from barrot_agent.orchestration.repository_repair_loop import assert_clean_feature_worktree
 
 
-def main() -> None:
-    brain = BarrotBrain()
+def _confirm(prompt: str, expected: str) -> None:
+    answer = input(prompt).strip()
+    if answer != expected:
+        raise SystemExit("Operator confirmation did not match; no learning action was started.")
 
+
+def main(argv=None) -> None:
+    parser = argparse.ArgumentParser(description="Build Barrot's local repository knowledge bundle")
+    parser.add_argument(
+        "--allow-external-inference",
+        action="store_true",
+        help="Authorize repository context to be sent to GitHub Models or Groq.",
+    )
+    parser.add_argument(
+        "--allow-local-mutations",
+        action="store_true",
+        help="Authorize verified file creation/patches in a clean non-default feature worktree.",
+    )
+    args = parser.parse_args(argv)
+
+    if not args.allow_external_inference:
+        raise SystemExit("External inference is disabled; pass --allow-external-inference only after reviewing the provider/data-transfer scope.")
+    if not args.allow_local_mutations:
+        raise SystemExit("Local repository mutations are disabled; pass --allow-local-mutations only when a clean feature worktree is ready.")
+    if not sys.stdin.isatty():
+        raise SystemExit("Knowledge building requires an interactive terminal; unattended external inference and local mutation are disabled.")
+
+    _confirm(
+        "Type SEND REPOSITORY CONTEXT TO GITHUB MODELS OR GROQ to authorize external inference: ",
+        "SEND REPOSITORY CONTEXT TO GITHUB MODELS OR GROQ",
+    )
+    _confirm(
+        "Type ALLOW BARROT TO MODIFY THIS CLEAN FEATURE WORKTREE to authorize local changes: ",
+        "ALLOW BARROT TO MODIFY THIS CLEAN FEATURE WORKTREE",
+    )
+
+    try:
+        workspace = assert_clean_feature_worktree(".", default_branch="main")
+    except ValueError as exc:
+        raise SystemExit(f"Knowledge build blocked: {exc}") from exc
+
+    brain = BarrotBrain(allow_external_inference=True)
     loop = BarrotActionLoop(
         brain=brain,
-        workspace=".",
+        workspace=str(workspace),
         max_attempts=3,
     )
 
@@ -26,7 +67,6 @@ You MUST inspect relevant existing files using READ_FILE or SEARCH_TEXT
 before deciding what to modify.
 You MUST create the required knowledge files using WRITE_FILE or APPLY_PATCH.
 You MUST verify the created files.
-
 
 Required work:
 1. Inspect the existing repository before modifying anything.
@@ -63,7 +103,6 @@ Rules:
 
     for attempt in result.history:
         print("\nATTEMPT:", attempt.get("attempt"))
-
         for item in attempt.get("results", []):
             print(
                 "ACTION:",
@@ -71,35 +110,22 @@ Rules:
                 "SUCCESS:",
                 item.get("success"),
             )
-
         print("OUTCOME:", attempt.get("outcome"))
         print("LEARNING:", attempt.get("learning"))
 
     if not result.success:
-        raise SystemExit(
-            "BARROT_KNOWLEDGE_BUILD_FAILED"
-        )
+        raise SystemExit("BARROT_KNOWLEDGE_BUILD_FAILED")
 
-    
     knowledge_files = [
-        Path("barrot_agent/knowledge/__init__.py"),
-        Path("barrot_agent/knowledge/knowledge_store.py"),
+        workspace / "barrot_agent/knowledge/__init__.py",
+        workspace / "barrot_agent/knowledge/knowledge_store.py",
     ]
-
-    missing = [
-        str(item)
-        for item in knowledge_files
-        if not item.exists()
-    ]
-
+    missing = [str(item) for item in knowledge_files if not item.exists()]
     if missing:
-        raise SystemExit(
-            "BARROT_KNOWLEDGE_BUILD_INCOMPLETE: "
-            + ", ".join(missing)
-        )
+        raise SystemExit("BARROT_KNOWLEDGE_BUILD_INCOMPLETE: " + ", ".join(missing))
 
     print("\nBARROT_KNOWLEDGE_BUILD_OK")
-
+    print("REMOTE_PUBLISH: disabled; the primary mission does not authorize external publication.")
 
 
 if __name__ == "__main__":

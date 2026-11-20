@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.1",
+  "snapshot_id": "Run106",
+  "captured_at_utc": "2026-11-13T22:04:37Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "branch": "integration/xrp-v3-unified-main-20261112",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "GitHub connector tested against repository, branches, pull requests, workflows and integration-branch commits",
+      "data_flow": "ChatGPT GitHub connector -> GitHub REST -> Barrot-Agent/B-Agent",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "least_privilege": "FAIL",
+      "note": "Current connection is real and tested, but permissions exceed least privilege."
+    },
+    {
+      "name": "Claude",
+      "authentication": "UNVERIFIED",
+      "data_flow": "NONE",
+      "note": "No Barrot authentication or evidence exchange tested."
+    },
+    {
+      "name": "Grok",
+      "authentication": "UNVERIFIED",
+      "data_flow": "NONE",
+      "note": "No Barrot authentication or evidence exchange tested."
+    },
+    {
+      "name": "Gemini",
+      "authentication": "UNVERIFIED",
+      "data_flow": "NONE",
+      "note": "No Barrot authentication or evidence exchange tested."
+    },
+    {
+      "name": "Copilot",
+      "authentication": "REVIEW_ARTIFACTS_ONLY",
+      "data_flow": "No formal approval on PR #1662",
+      "note": "No verified structured evidence exchange."
+    },
+    {
+      "name": "Codex",
+      "authentication": "UNVERIFIED",
+      "data_flow": "NONE",
+      "note": "No Barrot authentication or evidence exchange tested."
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "PRIOR_MAIN_WORKFLOW_BUILD_ERROR",
+      "data_flow": "No deployment in this run",
+      "note": "No verified Barrot dispatch."
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "UNTESTED",
+      "data_flow": "NONE",
+      "note": "No submission or dataset action."
+    },
+    {
+      "name": "Databricks",
+      "authentication": "MAIN_PILLARS_HTTP_403",
+      "data_flow": "No write",
+      "note": "No workspace import, job run or data transfer."
+    }
+  ],
+  "separate_internal_provider": {
+    "name": "LunaRoute",
+    "main_configuration": "Remote MCP enabled with write-capable permissions",
+    "integration_configuration": "Remote MCP disabled; mutation permissions require approval",
+    "endpoint_authentication": "UNVERIFIED",
+    "dispatch": "NOT_EXECUTED"
+  },
+  "repository_security": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "main_branch_protected": true,
+    "main_status_check_enforcement": "non_admins",
+    "main_required_status_contexts": [],
+    "main_branch_protection_details": "HTTP 403; full rules not independently inspectable",
+    "fallback_ruleset_10863829": "disabled",
+    "integration_branch_protected": false,
+    "github_connector_least_privilege": "FAIL"
+  },
+  "coordination": {
+    "independent_task_dispatch": "NOT_EXECUTED",
+    "structured_evidence_exchange": "NOT_EXECUTED",
+    "disagreement_resolution": "NOT_EXECUTED",
+    "minority_objections": "PRESERVED_IN_CANONICAL_HANDOFF",
+    "red_team_review": "NOT_EXECUTED",
+    "external_data_transfer": "NONE"
+  },
+  "policy": [
+    "Do not claim a live connection without tested authentication and data-flow evidence.",
+    "Use least privilege and read-only fallbacks.",
+    "Do not dispatch external models or transfer evidence without explicit action authorization.",
+    "Use lawful public or authorized sources only.",
+    "No deployment, secret rotation, Kaggle submission, Databricks write, paper trade or real-money action."
+  ]
+}

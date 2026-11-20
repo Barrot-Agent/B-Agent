@@ -1,0 +1,160 @@
+{
+  "schema_version": "xrp-research-evidence.v2",
+  "artifact_type": "xrp_current_market_and_institutional_relationship_graph",
+  "run_started_at_utc": "2026-11-18T13:32:40Z",
+  "repo": "Barrot-Agent/B-Agent",
+  "main_sha": "13c60af7079700a38b4226b9110d9c9377af7695",
+  "integration_pr": 1663,
+  "integration_head_at_snapshot": "b1f90a4d92bf3c0e773de452efc9a47127063e05",
+  "capture_integrity": {
+    "raw_source_bytes_captured": false,
+    "raw_sha256_receipts": null,
+    "per_source_retrieval_timestamps_returned": false,
+    "note": "Rendered public source pages only; no byte-exact source hashes are claimed."
+  },
+  "market": {
+    "provider": "CoinGecko",
+    "source_url": "https://www.coingecko.com/en/coins/xrp",
+    "price_usd": 0.9854,
+    "change_24h_percent": 1.1,
+    "change_7d_percent": -7.1,
+    "range_24h_usd": [
+      0.9468,
+      1.01
+    ],
+    "volume_24h_usd": 1798214424.41,
+    "perpetual_open_interest_usd": 1856000000,
+    "funding_8h_percent": -0.004,
+    "perps_to_spot_volume_ratio": 19.5,
+    "treasury_xrp": 473276430,
+    "treasury_value_usd": 466360370,
+    "model_eligible": false,
+    "limitations": [
+      "Dynamic page; venue timestamps asynchronous.",
+      "Separate 11:08 UTC snapshot showed $0.9923; do not average vintages.",
+      "Negative funding and elevated derivatives turnover are not directional evidence."
+    ]
+  },
+  "capital_and_ownership": {
+    "evernorth_xrp_preclose": 346284972,
+    "original_cost_usd": 846575043,
+    "carrying_value_usd": 341887231,
+    "cumulative_non_cash_impairment_usd": 504687812,
+    "q3_2026_impairment_usd": 6891073,
+    "cash_used_to_purchase_xrp_usd": 214049995,
+    "xrp_purchased_with_cash": 84365876,
+    "in_kind_xrp_private_placement": 261919096,
+    "ripple_direct_in_kind_xrp": 126791458,
+    "ripple_direct_contribution_book_basis_usd": 0,
+    "evernorth_to_pathfinder_transfer_xrp": 346484972,
+    "combined_pathfinder_xrp": 473276430,
+    "sbi_holdings_class_a_shares": 9431914,
+    "sbi_holdings_class_c_shares": 2359038,
+    "sbi_holdings_voting_percent": 39.9,
+    "sbi_holdings_common_ownership_percent": 21.4,
+    "sbi_stockholder_entities": [
+      "SBI Venture Fund 2023A Investment LPS",
+      "SBI Venture Fund 2023B Investment LPS",
+      "SBI PE Holdings Co., Ltd.",
+      "SBI Holdings USA, Inc."
+    ],
+    "attribution_limit": "Exact SBI-specific cash and XRP allocations within pooled subscription amounts are not disclosed."
+  },
+  "institutional_relationships": {
+    "coinbase_circle": "Coinbase exchanged 50% Centre JV interest for 3.5% fully diluted Circle equity; USDC reserve-interest sharing continues.",
+    "ripple_coinbase": "RLUSD launched on Coinbase Prime, Exchange and Retail 2026-10-28; Coinbase Global Exchange collateral support was announced as forthcoming.",
+    "coinbase_evernorth": "Coinbase is principal accounting market for Evernorth XRP impairment, not proven purchase venue.",
+    "sbi_circle": "Circle/SBI Group USDC Japan JV and SBI VC Trade distribution.",
+    "sbi_ripple": "RLUSD Japan distribution through SBI VC Trade after JFSA approval 2026-06-24.",
+    "ripple_pathfinder": "Ripple in-kind contribution of 126,791,458 XRP; Evernorth later became parent after business combination.",
+    "circle_ripple": "No direct corporate relationship established in this source set."
+  },
+  "sbic": {
+    "east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. — SBIC East Japan",
+    "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. — SBIC Central Japan",
+    "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. — SBIC West Japan",
+    "distinction": "Separate regional statutory companies; not SBI Holdings; no XRP/Ripple relationship found."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "sources": [
+    {
+      "id": "coinbase_circle",
+      "url": "https://www.coinbase.com/en-gb/blog/ushering-in-the-next-chapter-for-usdc",
+      "publisher": "Coinbase",
+      "date": "2023-08",
+      "type": "primary"
+    },
+    {
+      "id": "ripple_coinbase",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "publisher": "Ripple",
+      "date": "2026-10-28",
+      "type": "primary"
+    },
+    {
+      "id": "sbi_circle",
+      "url": "https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access",
+      "publisher": "Circle",
+      "date": "2025-03-25",
+      "type": "primary"
+    },
+    {
+      "id": "sbi_ripple",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "publisher": "Ripple",
+      "date": "2026-06-24",
+      "type": "primary"
+    },
+    {
+      "id": "evernorth_prospectus",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+      "publisher": "SEC",
+      "date": "2026-10-19",
+      "type": "primary"
+    },
+    {
+      "id": "evernorth_10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "publisher": "SEC",
+      "date": "2026-11-13",
+      "type": "primary"
+    },
+    {
+      "id": "pathfinder_8ka",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/pf20260930-8xka.htm",
+      "publisher": "SEC",
+      "date": "2026-11-17",
+      "type": "primary"
+    },
+    {
+      "id": "sbic_east",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "publisher": "SBIC East",
+      "type": "primary"
+    },
+    {
+      "id": "sbic_central",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "publisher": "SBIC Central",
+      "type": "primary"
+    },
+    {
+      "id": "sbic_west",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "publisher": "SBIC West",
+      "type": "primary"
+    },
+    {
+      "id": "coingecko_xrp",
+      "url": "https://www.coingecko.com/en/coins/xrp",
+      "publisher": "CoinGecko",
+      "type": "secondary"
+    }
+  ],
+  "source_independence": {
+    "sec_filings": "same issuer source family; primary but not independent third-party corroboration",
+    "company_releases": "issuer-authored primary claims; each confirms its own relationship",
+    "sbic_pages": "three distinct legal entities and company websites",
+    "market_data": "one secondary aggregator; no independent venue-level synchronization"
+  }
+}

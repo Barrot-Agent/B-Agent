@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "append_only_raw_source_hash_correction",
+  "artifact_id": "xrp-kraken-okx-binance-freshness-snapshot-hash-correction-20261107T224900Z",
+  "captured_at_utc": "2026-11-07T22:49:00Z",
+  "source_artifact_path": "research/xrp_intelligence/20261107T224221Z-xrp-kraken-okx-binance-freshness-snapshot.json",
+  "source_artifact_blob_sha": "ef81a2c0c50c3f3976cc664e1087154f4421ead1",
+  "source_id": "okx_xrpusdt_ticker",
+  "corrected_field": "sources[].raw_response_sha256",
+  "previous_recorded_sha256": "c72441760c3472505c7c7507589ee7ad5af1cf4aab170c3d6e90e8a94ccc388b",
+  "corrected_sha256": "8ab1c2caba750b59700b524549e2c8184b5808ab58176d4592ca8d2c065dddde",
+  "recomputation_method": "SHA-256 over the exact UTF-8 raw_response_text stored in the source artifact, without JSON reserialization.",
+  "reason": "The initial digest was computed from an abbreviated OKX body that omitted the trailing sodUtc0 and sodUtc8 fields. The preserved raw_response_text contains both fields; hashing the complete stored response yields the corrected digest.",
+  "source_text_unchanged": true,
+  "supersedes_only": "The prior raw_response_sha256 value for the OKX source record.",
+  "does_not_change": [
+    "Raw response text",
+    "Provider timestamp",
+    "Reference clock",
+    "Price, volume, spread or basis observations",
+    "Freshness classification",
+    "Model-ineligible status",
+    "Forecast status"
+  ],
+  "model_admission": "NOT_ADMITTED",
+  "forecast_status": "NOT_ISSUED"
+}

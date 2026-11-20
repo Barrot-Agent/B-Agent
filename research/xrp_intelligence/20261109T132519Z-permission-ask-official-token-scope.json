@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "permission_ask_token_official_scope_disambiguation",
+  "artifact_id": "20261109T132519Z-permission-ask-official-token-scope",
+  "captured_at_utc": "2026-11-09T13:25:19Z",
+  "source_capture_method": "Public official Permission homepage and official GitBook token documentation rendered as text. Raw HTTP bytes and response headers were not captured; no raw-source SHA-256 is claimed.",
+  "candidate_status": "SUPPORTED_CANDIDATE_NOT_CONFIRMED_USER_REFERENT",
+  "official_entity": "Permission",
+  "current_official_brand_positioning": "Family-friendly AI and family digital-wellbeing product.",
+  "official_token_documentation": {
+    "token_name": "ASK",
+    "role": "Native token of the Permission ecosystem.",
+    "stated_uses": [
+      "incentives and rewards",
+      "agent-to-agent coordination",
+      "ecosystem alignment",
+      "governance and staking described as future"
+    ],
+    "fixed_supply": 100000000000,
+    "token_standard": "LayerZero OFT (Omnichain Fungible Token)",
+    "active_networks": [
+      {
+        "network": "Base",
+        "contract": "0xBB146326778227A8498b105a18f84E0987A684b4"
+      },
+      {
+        "network": "Polygon",
+        "contract": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+      }
+    ],
+    "official_docs_url": "https://docs.permission.ai/ask-token",
+    "official_homepage_url": "https://www.permission.ai/"
+  },
+  "homepage_observations": {
+    "product_positioning": "Family-friendly AI; digital-wellbeing insights, boundaries and rewards.",
+    "ask_description": "Family-friendly crypto designed to reward positive behavior; children can earn ASK and redeem it for gift cards.",
+    "rewards_partner": "Tremendous",
+    "homepage_source_url": "https://www.permission.ai/"
+  },
+  "xrp_relationship": {
+    "xrpl_listed_as_active_network": false,
+    "official_docs_listed_networks": [
+      "Base",
+      "Polygon"
+    ],
+    "direct_xrp_or_xrpl_integration_verified": false,
+    "classification": "NO_DIRECT_XRP_RELATIONSHIP_ESTABLISHED_IN_REVIEWED_OFFICIAL_DOCUMENTATION",
+    "limitation": "The documentation's active-network list is not proof that no private, future or unlisted integration exists. It is sufficient to reject treating ASK as an XRP/XRPL feature without separate evidence."
+  },
+  "exact_phrase_resolution": {
+    "phrase": "ASK Coin",
+    "finding": "Permission's official documentation identifies an ASK native token, making Permission ASK a well-supported candidate for the phrase.",
+    "uncertainty": "The user's intended referent remains unconfirmed because ASK is a ticker/name that can be reused by unrelated assets and contexts."
+  },
+  "actual_capital": {
+    "finding": "The reviewed official ASK pages describe token supply and utility, not cash inflows, net capital raised, XRP purchases or XRP collateral.",
+    "model_feature_eligible": false,
+    "reason": "No independently verifiable cash/settlement measure or XRP linkage is supplied."
+  },
+  "source_independence": {
+    "publishers": [
+      "Permission official homepage",
+      "Permission official token documentation"
+    ],
+    "independent_publishers": 1,
+    "note": "The homepage and token docs belong to the same publisher and count as one source-independence group."
+  },
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Keep Permission ASK as a candidate, not a confirmed intended referent.",
+    "Verify current token contracts and chain state independently before any supply or activity analysis.",
+    "Do not add ASK to XRP features unless a primary source establishes an XRP/XRPL integration and timestamped economic activity.",
+    "Search for other assets and public references using the exact phrase ASK Coin without conflating ticker matches."
+  ]
+}

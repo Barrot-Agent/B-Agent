@@ -1,0 +1,308 @@
+{
+  "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-19T20:04:28Z",
+  "mission": "XRP intelligence and measured prediction-engine mastery are Priority 1; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
+  "repository_state": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "e1c3634df28f488819185b7d5697d474bc0bcb9e",
+    "integration": {
+      "branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+      "code_head_sha": "e91cfc704031933004115d9f5cf9ed9006018c13",
+      "pr_number": 1663,
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "ahead_by": 466,
+      "behind_by": 0,
+      "changed_files": 1462,
+      "changed_workflow_files": 68,
+      "formal_reviews": 0,
+      "review_threads": 0,
+      "requested_reviewers": 0,
+      "base_sha": "e1c3634df28f488819185b7d5697d474bc0bcb9e",
+      "classification": "BLOCKED_ACTIVE_INTEGRATION_DRAFT"
+    },
+    "tree_counts": {
+      "main": {
+        "entries": 1739,
+        "truncated": false
+      },
+      "integration": {
+        "entries": 3004,
+        "truncated": false
+      }
+    },
+    "main_paths_missing_from_integration": 0
+  },
+  "platforms": {
+    "ChatGPT": {
+      "capability_status": "current_runtime_available",
+      "authentication_status": "verified",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "data_flow": {
+        "status": "verified",
+        "path": "ChatGPT session -> GitHub repository connector -> Barrot-Agent/B-Agent"
+      },
+      "least_privilege": "Not verified; token scopes were not introspected.",
+      "task_assignment": {
+        "status": "EXECUTED",
+        "task": "Repository inspection, evidence reconciliation and durable research update."
+      }
+    },
+    "Claude": {
+      "capability_status": "public_product_category_only",
+      "authentication_status": "unverified",
+      "permissions": [],
+      "data_flow": "not_verified",
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED"
+      }
+    },
+    "Grok": {
+      "capability_status": "public_product_category_only",
+      "authentication_status": "unverified",
+      "permissions": [],
+      "data_flow": "not_verified",
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED"
+      }
+    },
+    "Gemini": {
+      "capability_status": "public_product_category_only",
+      "authentication_status": "unverified",
+      "permissions": [],
+      "data_flow": "not_verified",
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED"
+      }
+    },
+    "Copilot": {
+      "capability_status": "GitHub review events observed; no persistent authenticated data flow",
+      "authentication_status": "unverified",
+      "permissions": [],
+      "data_flow": "not_verified",
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED"
+      }
+    },
+    "Codex": {
+      "capability_status": "public_product_category_only",
+      "authentication_status": "unverified",
+      "permissions": [],
+      "data_flow": "not_verified",
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED"
+      }
+    },
+    "Hugging Face": {
+      "capability_status": "public product and repository integration definitions only",
+      "authentication_status": "unverified",
+      "permissions": [],
+      "data_flow": "not_verified",
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED"
+      }
+    },
+    "Kaggle": {
+      "capability_status": "public product and repository workflow definitions only",
+      "authentication_status": "unverified",
+      "permissions": [],
+      "data_flow": "not_verified",
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED"
+      }
+    },
+    "Databricks": {
+      "capability_status": "public product and repository workflow definitions only",
+      "authentication_status": "unverified",
+      "permissions": [],
+      "data_flow": "not_verified",
+      "task_assignment": {
+        "status": "PROPOSED_NOT_DISPATCHED"
+      }
+    }
+  },
+  "coordination": {
+    "external_dispatch_performed": false,
+    "external_data_transfer_performed": false,
+    "independent_task_exchange": "PROPOSED_NOT_DISPATCHED",
+    "evidence_packet_schema": "claim, source_id, source_uri, source_event_time_utc, captured_at_utc, raw_sha256, independence_group, counter_hypothesis, disconfirming_evidence",
+    "minority_objections": "Retained in the XRP research artifact's competing_hypotheses; no external red-team review executed.",
+    "red_team_status": "NOT_EXECUTED"
+  },
+  "ci_evidence": {
+    "exact_head": "e91cfc704031933004115d9f5cf9ed9006018c13",
+    "full_suite": {
+      "run_id": 44595135674,
+      "conclusion": "success",
+      "passed": 4357,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 19,
+      "inclusive_coverage_percent": 71.34,
+      "legacy_core_coverage_percent": 81
+    },
+    "dependency_audit": {
+      "run_id": 44595135895,
+      "conclusion": "success"
+    },
+    "money_audit": {
+      "run_id": 44595135831,
+      "conclusion": "success"
+    },
+    "pages_validation": {
+      "run_id": 44595135674,
+      "conclusion": "success"
+    },
+    "fail_closed_gate": {
+      "run_id": 44595135845,
+      "conclusion": "failure",
+      "blockers": [
+        "PR remains draft",
+        "No independent approving review",
+        "Detailed branch protection endpoint returned HTTP 403"
+      ]
+    }
+  },
+  "security_and_governance": {
+    "main_branch_protected": true,
+    "branch_protection_summary": {
+      "enforcement_level": "non_admins",
+      "required_status_check_contexts": [],
+      "required_status_checks": []
+    },
+    "detailed_branch_protection": "HTTP 403 Resource not accessible by integration; required review/check settings not independently verified.",
+    "fallback_ruleset": {
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    },
+    "main_pages_deployment": {
+      "run_id": 44587757885,
+      "conclusion": "success",
+      "created_at": "2026-11-19T18:26:08Z",
+      "effect": "Public Pages deployment; PR #1663 changes public site files, so merge may publish."
+    },
+    "integration_pages_job": "Validation-only; no deploy.",
+    "workflow_security_audit": {
+      "changed_workflow_files": 68,
+      "definitions_manually_inspected": 33,
+      "definitions_remaining": 35,
+      "transitive_scripts_and_actions": "INCOMPLETE"
+    },
+    "high_risk_main_to_integration_differences": [
+      "Main paid-issue publisher writes PAID-ISSUES.md and data/money/paid_issues.json to main; integration publisher is disabled.",
+      "Main Coinbase paper trader can call Groq and push simulated state without typed per-run confirmation; integration workflow is disabled.",
+      "Main self-hosted-brain workflow deploys to Hugging Face and can propagate a shared secret on main pushes; integration workflow is quarantined.",
+      "Main A2A worker deploys on push to a2a and uploads secrets; integration requires manual YES, separate secret-rotation YES and exact current main SHA.",
+      "Main Databricks deployment path can overwrite workspace content; integration legacy workflow is disabled and the create-only operations path checks target absence.",
+      "Main release workflow is tag-triggered with contents:write; integration pins third-party actions but retains tag-triggered release behavior.",
+      "Kaggle submission is manual, allowlisted and exact-SHA gated; no submission occurred."
+    ],
+    "no_external_actions_performed": true
+  },
+  "open_pr_backlog_summary": {
+    "total_open": 14,
+    "ready": 0,
+    "blocked": 4,
+    "unique_unreviewed": 9,
+    "duplicate": 1,
+    "superseded": 0
+  },
+  "open_pr_backlog": [
+    {
+      "number": 1670,
+      "classification": "unique/unreviewed",
+      "note": "Musical DNA feature; 12 changed files, 2 overlaps with #1663 (docs/INDEX.md and pyproject.toml); base SHA stale."
+    },
+    {
+      "number": 1668,
+      "classification": "blocked",
+      "note": "Inference failover; all 3 changed files overlap #1663; draft; base stale; proposed provider credential/data-flow changes not independently approved."
+    },
+    {
+      "number": 1666,
+      "classification": "blocked",
+      "note": "Kaggle dependency range conflicts with current integration constraint; overlaps pyproject.toml; base stale."
+    },
+    {
+      "number": 1665,
+      "classification": "duplicate",
+      "note": "Pylint >=4.1.4 already present in integration requirements-dev; one overlapping file."
+    },
+    {
+      "number": 1664,
+      "classification": "unique/unreviewed",
+      "note": "Paid-issue PR template pack; 127 files, 3 documentation overlaps; draft and base stale."
+    },
+    {
+      "number": 1663,
+      "classification": "blocked",
+      "note": "Sole consolidated V3/XRP integration; draft, zero reviews, zero review threads; exact-head CI passed but fail-closed gate blocks."
+    },
+    {
+      "number": 1541,
+      "classification": "blocked",
+      "note": "MMI claim fingerprint; all 5 changed files overlap #1663; stacked base; draft."
+    },
+    {
+      "number": 1460,
+      "classification": "unique/unreviewed",
+      "note": "XRP institutional/multirail research; no changed-path overlap with #1663; stacked branch."
+    },
+    {
+      "number": 1450,
+      "classification": "unique/unreviewed",
+      "note": "XRP ledger research successor; 64-path overlap with #1440; stacked branch."
+    },
+    {
+      "number": 1440,
+      "classification": "unique/unreviewed",
+      "note": "XRP ledger validation repair; 64-path overlap with #1450; stacked branch."
+    },
+    {
+      "number": 1437,
+      "classification": "unique/unreviewed",
+      "note": "XRP ledger source addenda repair; five-path overlap with #1353."
+    },
+    {
+      "number": 1436,
+      "classification": "unique/unreviewed",
+      "note": "Binance XRP theft/issuer freeze research; preserve as unique research."
+    },
+    {
+      "number": 1353,
+      "classification": "unique/unreviewed",
+      "note": "XRP ledger sharding research; overlaps #1437 and #1265; stacked branch."
+    },
+    {
+      "number": 1265,
+      "classification": "unique/unreviewed",
+      "note": "XRP ledger index research; overlaps #1353 and #1663 CI workflow; stacked branch."
+    }
+  ],
+  "prediction_engine": {
+    "source_receipts_for_run45": 0,
+    "model_eligible_observations": 0,
+    "scheduled_ingestion_present_on_integration": true,
+    "scheduled_ingestion_present_on_main": false,
+    "forecast_issuance": "disabled",
+    "directional_forecasts_issued": 0,
+    "out_of_sample_advantage": "not_established"
+  },
+  "merge_decision": "NO_MERGE",
+  "blockers": [
+    "PR #1663 remains draft",
+    "No independent approving review",
+    "Branch-protection requirements cannot be fully verified",
+    "Public Pages deployment may occur on merge",
+    "Transitive workflow/script/action audit incomplete"
+  ]
+}

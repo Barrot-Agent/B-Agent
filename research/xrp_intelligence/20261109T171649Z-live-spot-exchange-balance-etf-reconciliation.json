@@ -1,0 +1,202 @@
+{
+  "artifact_type": "xrp_live_spot_exchange_balance_etf_reconciliation",
+  "schema_version": "1.0.0",
+  "capture_id": "20261109T171649Z",
+  "capture_reference_time_utc": "2026-11-09T17:16:49Z",
+  "capture_time_precision": "Automation run start; web retrieval completion time was not separately exposed.",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "observed_integration_parent_sha": "466030952fb1a4e2b3d4e6b4ee9c87677b64ee34",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "spot_receipts": [
+    {
+      "source_id": "kraken_xrp_usd",
+      "publisher": "Kraken",
+      "source_independence_group": "kraken_public_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "capture_method": "Public JSON response text surfaced by web retrieval",
+      "response_text": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.09940000\",\"228\",\"228.000\"],\"b\":[\"1.09939000\",\"6201\",\"6201.000\"],\"c\":[\"1.09955000\",\"859.44301885\"],\"v\":[\"22943041.27310149\",\"46185515.45187335\"],\"p\":[\"1.09897323\",\"1.11176840\"],\"t\":[28063,45182],\"l\":[\"1.07502000\",\"1.07502000\"],\"h\":[\"1.12503000\",\"1.16065000\"],\"o\":\"1.11203000\"}}}",
+      "response_text_sha256": "58e8ad61b054062b03e3dcb622d24d997b55e879a8178347d4d6cfa2b195726f",
+      "sha256_scope": "Exact UTF-8 JSON text surfaced by retrieval; not original HTTP wire bytes, headers or transport framing.",
+      "wire_bytes_preserved": false,
+      "response_headers_preserved": false,
+      "provider_event_time_utc": null,
+      "provider_event_time_status": "Not exposed by this ticker response",
+      "observations": {
+        "last_usd": 1.09955,
+        "bid_usd": 1.09939,
+        "ask_usd": 1.0994,
+        "top_bid_size_xrp": 6201,
+        "top_ask_size_xrp": 228,
+        "top_spread_bps": 0.0909591184,
+        "rolling_24h_volume_xrp": 46185515.45187335,
+        "rolling_24h_vwap_usd": 1.1117684,
+        "rolling_24h_high_usd": 1.16065,
+        "rolling_24h_low_usd": 1.07502,
+        "utc_day_open_usd": 1.11203,
+        "rolling_24h_trade_count": 45182
+      },
+      "model_eligible": false,
+      "exclusion_reasons": [
+        "No provider event timestamp",
+        "Wire bytes and response headers were not preserved",
+        "Top-of-book only; not a depth or executable-slippage series"
+      ]
+    },
+    {
+      "source_id": "okx_xrp_usdt",
+      "publisher": "OKX",
+      "source_independence_group": "okx_public_api",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "capture_method": "Public JSON response text surfaced by web retrieval",
+      "response_text": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.0992\",\"lastSz\":\"1.5\",\"askPx\":\"1.0993\",\"askSz\":\"22208.894103\",\"bidPx\":\"1.0992\",\"bidSz\":\"948\",\"open24h\":\"1.1536\",\"high24h\":\"1.1622\",\"low24h\":\"1.0764\",\"volCcy24h\":\"98172278.2817383784\",\"vol24h\":\"88588927.11779\",\"ts\":\"1794243259463\",\"sodUtc0\":\"1.1132\",\"sodUtc8\":\"1.1144\"}],\"msg\":\"\"}",
+      "response_text_sha256": "e92072e2840f5431950e60b372351ddd074915866bdf957b4c03b9bf1e474f18",
+      "sha256_scope": "Exact UTF-8 JSON text surfaced by retrieval; not original HTTP wire bytes, headers or transport framing.",
+      "wire_bytes_preserved": false,
+      "response_headers_preserved": false,
+      "provider_event_time_utc": "2026-11-09T16:54:19.463Z",
+      "age_at_capture_reference_seconds": 1349.537,
+      "observations": {
+        "last_usdt": 1.0992,
+        "bid_usdt": 1.0992,
+        "ask_usdt": 1.0993,
+        "top_bid_size_xrp": 948,
+        "top_ask_size_xrp": 22208.894103,
+        "top_spread_bps": 0.9097111667,
+        "rolling_24h_volume_xrp": 88588927.11779,
+        "rolling_24h_volume_usdt": 98172278.28173839,
+        "rolling_24h_high_usdt": 1.1622,
+        "rolling_24h_low_usdt": 1.0764,
+        "rolling_24h_open_usdt": 1.1536
+      },
+      "model_eligible": false,
+      "exclusion_reasons": [
+        "Provider event time was approximately 22.5 minutes old at the run-start reference",
+        "USDT normalization quote has no event timestamp",
+        "Wire bytes and response headers were not preserved",
+        "Ticker is top-of-book only"
+      ]
+    },
+    {
+      "source_id": "kraken_usdt_usd",
+      "publisher": "Kraken",
+      "source_independence_group": "kraken_public_api",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+      "capture_method": "Public JSON response text surfaced by web retrieval",
+      "response_text": "{\"error\":[],\"result\":{\"USDTZUSD\":{\"a\":[\"0.99897000\",\"20037\",\"20037.000\"],\"b\":[\"0.99894000\",\"27\",\"27.000\"],\"c\":[\"0.99893000\",\"27.83036574\"],\"v\":[\"198368766.41860630\",\"210645046.59857007\"],\"p\":[\"0.99878124\",\"0.99878244\"],\"t\":[36033,41400],\"l\":[\"0.99850000\",\"0.99850000\"],\"h\":[\"0.99906000\",\"0.99906000\"],\"o\":\"0.99877000\"}}}",
+      "response_text_sha256": "43d646562f95827d347d911f758df2cb893ed2e64bb7ad66fbe83fdae354ddc6",
+      "sha256_scope": "Exact UTF-8 JSON text surfaced by retrieval; not original HTTP wire bytes, headers or transport framing.",
+      "wire_bytes_preserved": false,
+      "response_headers_preserved": false,
+      "provider_event_time_utc": null,
+      "provider_event_time_status": "Not exposed by this ticker response",
+      "observations": {
+        "last_usd": 0.99893,
+        "bid_usd": 0.99894,
+        "ask_usd": 0.99897,
+        "top_bid_size_usdt": 27,
+        "top_ask_size_usdt": 20037,
+        "rolling_24h_volume_usdt": 210645046.59857008,
+        "rolling_24h_vwap_usd": 0.99878244,
+        "rolling_24h_high_usd": 0.99906,
+        "rolling_24h_low_usd": 0.9985
+      },
+      "model_eligible": false,
+      "exclusion_reasons": [
+        "No provider event timestamp",
+        "Same venue as Kraken XRP/USD; not an independent source group",
+        "Wire bytes and response headers were not preserved"
+      ]
+    }
+  ],
+  "normalized_cross_venue_comparison": {
+    "method": "OKX XRP-USDT quote multiplied by Kraken USDT-USD last trade",
+    "okx_last_normalized_usd": 1.098023856,
+    "okx_bid_normalized_usd": 1.098023856,
+    "okx_ask_normalized_usd": 1.098123749,
+    "okx_mid_normalized_usd": 1.0980738025,
+    "kraken_xrp_usd_mid": 1.099395,
+    "mid_gap_bps_okx_vs_kraken": -12.0174959864,
+    "last_gap_bps_okx_vs_kraken": -13.8797144286,
+    "model_eligible": false,
+    "interpretation": "Asynchronous descriptive cross-check only. Kraken XRP/USD and USDT/USD event timestamps are absent; OKX event time is stale relative to the capture reference. Not an executable arbitrage, spread or slippage signal."
+  },
+  "exchange_wallet_balance_observation": {
+    "publisher": "XRP Insights",
+    "source_independence_group": "xrp-insights-publisher",
+    "url": "https://xrp-insights.com/exchange-balances",
+    "source_as_of_utc": "2026-11-09T08:01:00Z",
+    "captured_at_utc": "2026-11-09T17:16:49Z",
+    "capture_method": "Rendered public webpage observation; original page bytes and response headers not preserved.",
+    "tracked_xrp": 22350000000,
+    "tracked_wallets": 701,
+    "tracked_exchanges": 24,
+    "circulating_supply_reference_xrp": 68890000000,
+    "share_of_circulating_supply_pct": 32.5,
+    "share_of_total_supply_pct": 22.4,
+    "same_wallet_change_7d_xrp": -25800000,
+    "same_wallet_change_7d_pct": -0.12,
+    "same_wallet_change_30d_xrp": -138100000,
+    "same_wallet_change_30d_pct": -0.63,
+    "naive_total_change_xrp": 373900000,
+    "newly_tracked_wallets": 2,
+    "newly_tracked_wallet_balance_xrp": 512000000,
+    "coinbase_attributed_total_xrp": 5800000000,
+    "coinbase_cbXRP_base_reserve_xrp": 152000000,
+    "binance_attributed_total_xrp": 2730000000,
+    "binance_peg_xrp_bnb_chain_reserve_xrp": 327400000,
+    "cold_storage_included": true,
+    "methodology": "Daily balances read from XRPL through rippled account_info; exchange attribution uses XRPSCAN public labels. Same-wallet deltas exclude wallets newly added to the tracked set.",
+    "limitations": [
+      "Includes cold storage and exchange-controlled wrapped-asset backing reserves; not tradable float or customer deposits alone.",
+      "Same-wallet decreases cannot distinguish customer withdrawals from internal exchange rebalancing or transfers to currently unlabeled wallets.",
+      "Naive aggregate change is distorted by two newly tracked wallets holding 512.0M XRP.",
+      "The publisher is one derived aggregator; the individual wallet list and raw ledger responses were not captured in this run."
+    ],
+    "model_eligible": false
+  },
+  "etf_flow_observation": {
+    "publisher": "XRP Insights",
+    "source_independence_group": "xrp-insights-publisher",
+    "url": "https://xrp-insights.com/data",
+    "source_as_of_date": "2026-11-06",
+    "flow_period_start": "2026-11-02",
+    "flow_period_end": "2026-11-06",
+    "settled_trading_sessions": 5,
+    "universe": "Six US spot XRP ETFs plus the XRP sleeve of BITW",
+    "total_xrp_holdings_as_of_2026_11_06": 1195182552,
+    "computed_net_flow_xrp": -812529,
+    "approximate_net_flow_usd": -939000,
+    "dataset_rows": 1597,
+    "first_date": "2025-12-01",
+    "last_date": "2026-11-06",
+    "underlying_holdings_source": "Each fund issuer's published holdings page, as described by the aggregator.",
+    "flow_method": "Day-over-day change in issuer-reported XRP holdings; not a direct transfer-agent or authorized-participant creation/redemption feed.",
+    "flow_excluded_funds_count_as_zero": true,
+    "possible_row_statuses": [
+      "settled",
+      "provisional",
+      "reconstructed"
+    ],
+    "possible_flow_statuses": [
+      "computed",
+      "initial",
+      "excluded"
+    ],
+    "limitations": [
+      "Funds with flow-excluded observations contribute zero to the aggregate, so this is not a complete all-fund flow reconciliation.",
+      "Reconstructed daily rows are estimates between issuer-reported anchor days.",
+      "Holdings changes may include fees and other adjustments and are not automatically equivalent to net primary-market cash creations/redemptions.",
+      "The capture is one aggregator page; issuer pages were not independently retrieved in this run."
+    ],
+    "model_eligible": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "forecast_reason": "No synchronized point-in-time history, independently captured raw receipts, validated source independence or out-of-sample predictive lift was established by these observations.",
+  "source_independence_summary": {
+    "kraken_xrp_usd_and_kraken_usdt_usd": "Same provider group; do not count as independent corroboration.",
+    "okx_xrp_usdt": "Separate venue/provider, but timestamp is stale relative to the capture reference.",
+    "exchange_wallet_and_etf_pages": "Same XRP Insights publisher; different underlying source methods, but not independent aggregator confirmations."
+  }
+}

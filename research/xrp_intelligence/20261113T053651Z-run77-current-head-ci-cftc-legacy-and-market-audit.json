@@ -1,0 +1,329 @@
+{
+  "schema_version": "barrot.xrp.run77.v1",
+  "run_id": "run77",
+  "captured_at_utc": "2026-11-13T05:41:39.615Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "eligibility": {
+    "status": "RESEARCH_ONLY_NO_BARROT_RAW_RECEIPTS",
+    "raw_source_bytes_captured": false,
+    "raw_source_sha256": null,
+    "model_eligible": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository_snapshot": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_at_audit_start": "7a06099b185aa69d7b96d61cbba2df2310c9635f",
+    "ahead_by": 2214,
+    "behind_by": 0,
+    "main_tree_entries": 1381,
+    "main_tree_files": 1277,
+    "integration_tree_entries": 2336,
+    "integration_tree_files": 2222,
+    "pr_1662": {
+      "state": "open",
+      "draft": true,
+      "changed_files": 1090,
+      "additions": 308697,
+      "deletions": 5136,
+      "commits": 2214,
+      "formal_reviews": 0,
+      "approvals": 0,
+      "review_threads": 0
+    },
+    "open_prs": {
+      "total": 375,
+      "drafts": 361,
+      "non_drafts": 14,
+      "base_main": 367,
+      "other_base": 8
+    }
+  },
+  "ci": {
+    "parent_head": "7a06099b185aa69d7b96d61cbba2df2310c9635f",
+    "full_run": 43371990278,
+    "full_job": 131709630358,
+    "full_conclusion": "failure",
+    "full_passed": 3550,
+    "full_failed": 3,
+    "subtests": 8,
+    "coverage_percent": 62,
+    "duration_seconds": 95.51,
+    "core_job": 131709629938,
+    "core_passed": 725,
+    "core_failed": 0,
+    "core_subtests": 8,
+    "dependency_run": 43371990217,
+    "dependency_job": 131709629649,
+    "dependency_conclusion": "success",
+    "dependency_manifests": 5,
+    "known_vulnerabilities_reported": 0,
+    "fail_closed_run": 43371990201,
+    "fail_closed_job": 131709629479,
+    "fail_closed_conclusion": "success",
+    "automatic_merge_enabled": false,
+    "corrective_commit_ci": "PENDING"
+  },
+  "ci_failures": [
+    {
+      "test": "tests/test_xrp_mission_handoff_run58.py::test_current_endpoint_registry_matches_v1_1_map_and_preserves_historical_run58_archive",
+      "cause": "Current capability map had 47 definitions while registry and feature-store contract had 48."
+    },
+    {
+      "test": "tests/test_xrp_public_ingestion.py::test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_backfill_receipt",
+      "cause": "Skipped weekly source assertion used a noncanonical order."
+    },
+    {
+      "test": "tests/test_xrp_public_ingestion.py::test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_daily_run",
+      "cause": "Weekly capture order was TFF before Legacy, contrary to the canonical test/policy order."
+    }
+  ],
+  "code_corrections": [
+    {
+      "path": "barrot_agent/evolution/xrp_public_ingestion.py",
+      "change": "Order weekly sources as contract-status index, Legacy Futures-Only, then TFF; clarify separate CFTC taxonomies."
+    },
+    {
+      "path": "tests/test_xrp_public_ingestion.py",
+      "change": "Align skipped-source assertion with sorted canonical source IDs."
+    },
+    {
+      "path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+      "change": "Update 48/43/3/46 current source totals."
+    },
+    {
+      "path": "research/xrp_intelligence/feature-store-contract.md",
+      "change": "Document the Legacy Futures-Only parser separately from TFF and COT index."
+    }
+  ],
+  "market": {
+    "spot": {
+      "okx": {
+        "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "provider_timestamp_utc": "2026-11-13T05:35:07.568Z",
+        "last": 1.0115,
+        "bid": 1.0114,
+        "ask": 1.0115,
+        "open24h": 1.0415,
+        "high24h": 1.0569,
+        "low24h": 0.9974,
+        "volume_xrp": 40561625.788803,
+        "quote_volume_usdt": 41627378.77392804,
+        "age_seconds": 104,
+        "provider_freshness_limit_seconds": 300,
+        "raw_receipt": false,
+        "model_eligible": false
+      },
+      "kraken": {
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "retrieved_at_utc": "2026-11-13T05:41:39.615Z",
+        "last": 1.01214,
+        "bid": 1.01193,
+        "ask": 1.01196,
+        "open24h": 1.04003,
+        "high24h": 1.05548,
+        "low24h": 0.99672,
+        "volume_xrp_24h": 32310923.48075173,
+        "provider_timestamp": null,
+        "model_eligible": false
+      },
+      "kraken_usdtusd": {
+        "url": "https://api.kraken.com/0/public/Ticker?pair=USDTUSD",
+        "retrieved_at_utc": "2026-11-13T05:41:39.615Z",
+        "last": 0.99895,
+        "bid": 0.99895,
+        "ask": 0.99896,
+        "provider_timestamp": null,
+        "model_eligible": false
+      },
+      "normalized_asynchronous_midpoint_gap_percent": -0.153364585,
+      "okx_24h_change_percent": -2.880460874,
+      "kraken_24h_change_percent": -2.681653414,
+      "interpretation": "Near-$1.01 spot after a 2.7%-2.9% 24-hour decline. OKX passes the provider-age gate but lacks a Barrot raw receipt. Kraken and USDT/USD lack provider event timestamps. Not executable arbitrage."
+    },
+    "order_book": {
+      "status": "NO_NEW_SYNCHRONIZED_L2_SNAPSHOT",
+      "reason": "Current OKX books and Kraken depth endpoints were inaccessible through the public research path."
+    },
+    "derivatives": {
+      "url": "https://tradradar.io/markets/xrp",
+      "updated_at_utc": "2026-11-12T23:55:00Z",
+      "open_interest_usd": 1550000000,
+      "open_interest_24h_change_percent": 0.57,
+      "weighted_funding_percent_per_8h": 0.0098,
+      "long_short_account_ratio": 3.91,
+      "long_account_share_percent": 79.6,
+      "liquidations_24h_usd": 9010000,
+      "long_liquidations_usd": 8470000,
+      "short_liquidations_usd": 544650,
+      "venue_count": 7,
+      "age_hours_at_capture": 5.7,
+      "source_class": "SECONDARY_AGGREGATOR",
+      "model_eligible": false
+    },
+    "etf_flows": [
+      {
+        "publisher": "Maketo",
+        "url": "https://maketo.com/etf/xrp/flows",
+        "updated_at_utc": "2026-11-13T02:28:00Z",
+        "last_session": "2026-11-12",
+        "displayed_flow_usd": 0,
+        "seven_day_net_usd": -18000000,
+        "thirty_day_net_usd": -12000000,
+        "cumulative_net_usd": 1790000000
+      },
+      {
+        "publisher": "Alpha Finance",
+        "url": "https://alphafinance.io/etf/xrp/",
+        "last_session": "2026-11-12",
+        "displayed_flow_usd": 0,
+        "thirty_session_net_usd": -2800000,
+        "cumulative_net_usd": 1710000000,
+        "fund_count": 5
+      },
+      {
+        "publisher": "CryptoKeyhole",
+        "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+        "last_complete_session": "2026-11-11",
+        "funds_reporting": 4,
+        "funds_listed": 6,
+        "net_flow_xrp": -3322,
+        "nov12_reporting_funds": 0,
+        "five_session_net_flow_xrp": -10005584
+      },
+      {
+        "publisher": "Crypto ETF Today",
+        "url": "https://cryptoetf.today/en/xrp-etf-flows",
+        "last_session": "2026-11-12",
+        "funds_reporting": 0,
+        "funds_covered": 5,
+        "displayed_net_flow_usd": 0,
+        "report_status": "PARTIAL_NO_FUNDS_REPORTED"
+      }
+    ],
+    "etf_disagreement": "A displayed zero with zero issuer files is missing data, not confirmed zero. Cohorts and time windows differ; no averaging."
+  },
+  "cftc_legacy": {
+    "url": "https://www.cftc.gov/dea/futures/deacmelf.htm",
+    "report_type": "Legacy Futures-Only",
+    "as_of": "2026-11-03",
+    "contract": "XRP - CME",
+    "code": "176740",
+    "contract_multiplier_xrp": 50000,
+    "open_interest_contracts": 7216,
+    "contract_equivalent_xrp": 360800000,
+    "traders": 29,
+    "noncommercial": {
+      "long": 7011,
+      "short": 5546,
+      "spreading": 60,
+      "net": 1465,
+      "weekly_change": {
+        "long": -281,
+        "short": -466,
+        "spreading": -481,
+        "net": 185
+      }
+    },
+    "commercial": {
+      "long": 61,
+      "short": 1383,
+      "net": -1322,
+      "weekly_change": {
+        "long": -19,
+        "short": 34,
+        "net": -53
+      }
+    },
+    "nonreportable": {
+      "long": 84,
+      "short": 227,
+      "net": -143,
+      "weekly_change": {
+        "long": -64,
+        "short": 68,
+        "net": -132
+      }
+    },
+    "oi_change_contracts": -845,
+    "concentration": {
+      "top4_gross_long_percent": 81,
+      "top4_gross_short_percent": 67.4,
+      "top8_gross_long_percent": 95.1,
+      "top8_gross_short_percent": 87.7
+    },
+    "source_class": "PRIMARY_CFTC",
+    "model_eligible": false,
+    "interpretation": "Non-commercial net-long rose by 185 contracts because shorts fell more than longs; short covering is plausible, not proof of fresh capital. Contract-equivalent XRP is not spot holdings, custody or delivered tokens."
+  },
+  "cftc_release_schedule": {
+    "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm",
+    "next_scheduled_release": "2026-11-16",
+    "notes": "CFTC lists November 16 as delayed; regular release is 3:30 p.m. Eastern, usually Friday, with federal holidays able to delay one or two days."
+  },
+  "institutional": {
+    "sbi_jpysc": {
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "published": "2026-11-02",
+      "handling_balance_jpy": "over 30 billion",
+      "lending_balance_jpy": "over 10 billion",
+      "issuer": "SBI Shinsei Trust Bank",
+      "distributor": "SBI VC Trade",
+      "co_developer": "Startale Group",
+      "not_xrp_demand": true
+    },
+    "coinbase_occ": {
+      "url": "https://www.coindesk.com/policy/2026/11/09/coinbase-gets-full-u-s-trust-charter-from-federal-banking-regulator",
+      "published": "2026-11-09",
+      "status": "full national trust charter reported"
+    },
+    "ripple_occ": {
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank",
+      "published": "2026-10-27",
+      "status": "final national trust bank approval reported"
+    },
+    "coinbase_pnc_usdc": {
+      "url": "https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/",
+      "published": "2026-11-09",
+      "status": "limited USDC pilot with automatic USD conversion; not XRP"
+    },
+    "evernorth": {
+      "url": "https://www.theblock.co/news/deals/2026-10-14-evernorth-taps-ripple-kraken-coinbase-bitgo-xrp-treasury-work-418503",
+      "reported_treasury_xrp": 473000000,
+      "partners": [
+        "Ripple",
+        "Kraken",
+        "Coinbase",
+        "BitGo"
+      ],
+      "deployment_amount_disclosed": false
+    }
+  },
+  "identity": {
+    "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate regional SME investment companies, not SBI Holdings.",
+    "ask_coin": "No canonical XRPL issuer or deployment verified.",
+    "actual_capital": "Cash, in-kind XRP, debt, conditional ELOC capacity, warrants and secondary resale supply are distinct.",
+    "camilla_kamilah_stevenson": "No first-party YouTube channel ownership proof captured; no own-channel videos attributed."
+  },
+  "platform_coordination": {
+    "ChatGPT": "GitHub connector verified; overprivileged",
+    "Claude": "unverified",
+    "Grok": "unverified",
+    "Gemini": "unverified",
+    "Copilot": "one-off review only",
+    "Codex": "unverified",
+    "HuggingFace": "prior BUILD_ERROR",
+    "Kaggle": "untested",
+    "Databricks": "prior HTTP 403",
+    "external_model_transfer": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Run exact-head CI after the Run77 corrections.",
+    "Reconcile all source PR differing blobs before any source closure.",
+    "Resolve least-privilege permissions, branch-protection visibility, Pages publication authorization, and credential-owner revocation evidence.",
+    "Build synchronized historical L2/derivatives/flows/collateral data and independent WORM anchoring before forecast issuance."
+  ]
+}

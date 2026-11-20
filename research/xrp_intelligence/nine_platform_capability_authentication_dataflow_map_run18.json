@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.4.0",
+  "snapshot_id": "run12",
+  "captured_at_utc": "2026-11-18T10:49:16Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "e204c21100f3d059e2ba633d041fe8927b61ccaf",
+  "integration_head_at_capture": "11bdb4847b6bf775e24c726f7a27b6c5712fd221",
+  "integration_pr": 1663,
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "authentication": "verified_for_this_session",
+      "permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "data_flow": "ChatGPT GitHub connector -> GitHub API -> Barrot-Agent/B-Agent; this run read repository metadata, recursive trees, main SHA, open PR inventory, PR changed paths, file contents, CI/workflow runs and performed branch-scoped research/handoff file updates.",
+      "least_privilege": false,
+      "notes": "Observed GitHub operations succeeded on the integration branch. Detailed main branch-protection read returned HTTP 403. Exact OAuth/token scopes were not introspected in this run; the previously reported admin/maintain/push/pull/triage permission set remains a least-privilege concern."
+    },
+    {
+      "name": "Claude",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified"
+    },
+    {
+      "name": "Grok",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified",
+      "notes": "No current authenticated data flow verified. Groq is not Grok."
+    },
+    {
+      "name": "Gemini",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified"
+    },
+    {
+      "name": "Copilot",
+      "authentication": "historical_one_off_activity_only",
+      "permissions": [],
+      "data_flow": "no current authenticated data flow verified"
+    },
+    {
+      "name": "Codex",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified"
+    },
+    {
+      "name": "Hugging Face",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified",
+      "notes": "No current Space deployment or write verified."
+    },
+    {
+      "name": "Kaggle",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified",
+      "notes": "No submission or authenticated API operation."
+    },
+    {
+      "name": "Databricks",
+      "authentication": "unverified",
+      "permissions": [],
+      "data_flow": "none verified",
+      "notes": "No current authenticated read/write verified."
+    }
+  ],
+  "coordination": {
+    "independent_tasks_dispatched": false,
+    "structured_evidence_exchange": false,
+    "disagreement_resolution": false,
+    "minority_objections_preserved": true,
+    "independent_red_team_quorum": false,
+    "external_dispatches": 0,
+    "external_data_transfers": 0,
+    "fallback": "deterministic repository work and lawful public read-only sources"
+  },
+  "governance": {
+    "repository_connector_permissions": [
+      "admin",
+      "maintain",
+      "push",
+      "pull",
+      "triage"
+    ],
+    "least_privilege_satisfied": false,
+    "detailed_branch_protection": "HTTP 403",
+    "fallback_ruleset_id": 10863829,
+    "fallback_ruleset_enforcement": "disabled",
+    "codeowners": "* @Barrot-Agent",
+    "pr1663_draft": true,
+    "pr1663_formal_reviews": 0,
+    "pr1663_review_threads": 0
+  },
+  "next_permission_action": "Use a read-only credential for routine research/inspection where possible and a narrowly scoped branch-write credential only for explicitly authorized integration updates. No permission change was made in this run."
+}

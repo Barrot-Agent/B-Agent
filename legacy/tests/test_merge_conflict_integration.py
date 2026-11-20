@@ -11,7 +11,7 @@ Demonstrates the complete integration workflow:
 6. Improve future recommendations
 """
 
-from merge_conflict_micro_ingestion import (
+from barrot_agent.ingestion.merge_conflict_micro_ingestion import (
     MergeConflictMicroIngestion,
     LearningOutcome,
     ConflictType,

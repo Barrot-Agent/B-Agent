@@ -1,0 +1,703 @@
+{
+  "artifact_type": "BARROT_XRP_MISSION_RUN_AUDIT",
+  "schema_version": 1,
+  "run": 131,
+  "captured_at_utc": "2026-11-14T15:07:00.423Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission_priority": "XRP_INTELLIGENCE_AND_PREDICTION_ENGINE_MASTERY",
+  "foundation": "Barrot V3 execution, orchestration, safety and verification",
+  "repository_state": {
+    "main_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "main_tree_entries": 1381,
+    "main_workflow_files": 87,
+    "main_xrp_paths": 44,
+    "integration_branch": "integration/xrp-v3-unified-main-20261112",
+    "integration_head_before_run131_commit": "847a20732032ed6fc62e3689a41eb1f129f64904",
+    "integration_tree_entries": 2441,
+    "integration_workflow_files": 88,
+    "integration_xrp_paths": 977,
+    "integration_ahead_by": 2397,
+    "integration_behind_by": 0,
+    "integration_changed_files": 1200,
+    "changed_workflow_files": 50,
+    "changed_python_files": 455,
+    "changed_test_files": 385,
+    "changed_research_files": 662,
+    "changed_public_web_files": 7,
+    "open_pull_requests_total": 375,
+    "open_pull_requests_draft": 361,
+    "open_pull_requests_non_draft": 14,
+    "credential_file_path_absent_from_current_trees": true,
+    "credential_file_contents_inspected": false
+  },
+  "integration_pr": {
+    "number": 1662,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1662",
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "head_sha": "847a20732032ed6fc62e3689a41eb1f129f64904",
+    "base_sha": "fb272b40966834754ec686f9ed3ab94123f09306",
+    "changed_files": 1200,
+    "ahead_by": 2397,
+    "behind_by": 0,
+    "formal_reviews": 0,
+    "approvals": 0,
+    "review_threads": 0,
+    "requested_reviewers": 0,
+    "decision": "DO_NOT_MERGE"
+  },
+  "ci": {
+    "exact_head": "847a20732032ed6fc62e3689a41eb1f129f64904",
+    "full_suite": {
+      "run_id": 43607313752,
+      "job_id": 132484645380,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/43607313752",
+      "conclusion": "success",
+      "tests_passed": 3641,
+      "subtests_passed": 8,
+      "inclusive_coverage_percent": 62.47
+    },
+    "core_suite": {
+      "run_id": 43607313752,
+      "job_id": 132484645582,
+      "conclusion": "success",
+      "tests_passed": 742,
+      "subtests_passed": 8
+    },
+    "wheel": {
+      "conclusion": "success",
+      "artifact": "b_agent-0.1.0-py3-none-any.whl",
+      "installed": true,
+      "nonfatal_warnings": [
+        "project.license table deprecated",
+        "barrot_agent.data.missions absent from explicit packages configuration",
+        "data.research absent from explicit packages configuration"
+      ]
+    },
+    "dependency_audit": {
+      "run_id": 43607313757,
+      "job_id": 132484645756,
+      "conclusion": "success",
+      "manifest_groups": 5,
+      "known_vulnerabilities": 0
+    },
+    "fail_closed_gate": {
+      "run_id": 43607313798,
+      "job_id": 132484645696,
+      "conclusion": "success",
+      "merge_enabled": false
+    },
+    "pull_request_ci": "SKIPPED_BY_WORKFLOW_CONDITION",
+    "full_suite_execution": "PUSH_EVENT_ON_EXACT_HEAD"
+  },
+  "main_workflow_health": {
+    "cross_analysis": "SUCCESS",
+    "pillars_consistency": "FAILED",
+    "pillars_run_id": 43597665120,
+    "blockers": [
+      "GitHub App workflow credentials missing",
+      "Databricks HTTP 403",
+      "Hugging Face Space BUILD_ERROR"
+    ]
+  },
+  "security_and_authorization": {
+    "branch_protection_read": "HTTP_403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
+    "repository_rulesets": [
+      {
+        "name": "Fall Back",
+        "enforcement": "disabled"
+      }
+    ],
+    "effective_classic_branch_protection": "UNKNOWN",
+    "codeowners": "* @Barrot-Agent; no independent human reviewer configured",
+    "pages_publication_authorized": false,
+    "pages_side_effect": "Previous main push triggered public Pages publication; merge would publish changed XRP landing pages.",
+    "main_barrot_sync": "Unsafe false-green workflow on main; integration branch quarantines it with permissions none and disabled job.",
+    "main_paper_trader": "Main workflow has a persisted open BTC position with position_product null; integration branch adds explicit YES, exact-main-SHA pinning, product-identity preflight and artifact-only output.",
+    "main_paper_state": {
+      "position_size": 0.012445,
+      "position_product": null,
+      "avg_entry_price": 80436.84,
+      "trade_count": 126
+    },
+    "xrp_ingestion_main": "Workflow absent from main; integration branch defines hourly/daily public ingestion but job is gated to refs/heads/main.",
+    "raw_artifact_retention_days": 90,
+    "immutable_worm_storage": false,
+    "secret_values_read": false,
+    "secret_rotation": false,
+    "deployment": false,
+    "paper_trading": false,
+    "real_money_actions": false,
+    "force_push": false,
+    "branch_reset_or_cleanup": false
+  },
+  "market_snapshot": {
+    "retrieved_at_utc": "2026-11-14T15:00:15.260Z",
+    "observations": [
+      {
+        "venue": "Bybit",
+        "pair": "XRPUSDT",
+        "last": 0.9827,
+        "bid": 0.9825,
+        "ask": 0.9826,
+        "bid_size": 759.3,
+        "ask_size": 786.1,
+        "volume_24h_xrp": 41726500,
+        "turnover_24h_usdt": 41764000,
+        "change_24h_percent": -4.75,
+        "event_timestamp_utc": "2026-11-14T14:25:30.285Z",
+        "staleness_seconds": 2084.975,
+        "source_url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+        "web_ref": "turn562677view0",
+        "eligible": false,
+        "reason": "Ticker response 34m45s old; no synchronized L2 response."
+      },
+      {
+        "venue": "OKX",
+        "pair": "XRP-USDT",
+        "last": 0.9811,
+        "bid": 0.981,
+        "ask": 0.9811,
+        "bid_size": 927.975931,
+        "ask_size": 4573.661421,
+        "volume_24h_xrp": 42955000,
+        "turnover_24h_usdt": 42894600,
+        "change_24h_percent": -4.83,
+        "event_timestamp_utc": "2026-11-14T14:55:34.067Z",
+        "staleness_seconds": 281.193,
+        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+        "web_ref": "turn552022view3",
+        "eligible": false,
+        "reason": "Recent ticker but no synchronized order-book depth; USDT quote."
+      },
+      {
+        "venue": "Kraken",
+        "pair": "XRPUSD",
+        "last": 0.98019,
+        "bid": 0.97962,
+        "ask": 0.9806,
+        "bid_size": 4,
+        "ask_size": 1126,
+        "volume_24h_xrp": 38820000,
+        "event_timestamp_utc": null,
+        "staleness_seconds": null,
+        "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+        "web_ref": "turn552022view2",
+        "eligible": false,
+        "reason": "No exchange event timestamp; USD quote and top quote sizes are not full depth."
+      }
+    ],
+    "cross_venue_last_price_gap_percent": 0.256,
+    "interpretation": "Asynchronous USD/USDT quotes with different 24h cutoffs; not an arbitrage signal and not a directional signal.",
+    "depth_status": "NOT_CAPTURED",
+    "derivatives_oi_funding_status": "NOT_CAPTURED",
+    "raw_source_bytes_captured": false,
+    "raw_sha256": null,
+    "feature_store_admission": false
+  },
+  "research_findings": {
+    "evernorth_sbi_ownership": {
+      "closing_date": "2026-10-09",
+      "closing_common_ownership_percent": 21.4,
+      "closing_voting_power_percent": 39.9,
+      "october_22_share_snapshot": {
+        "sbi_class_a_shares": 9431914,
+        "sbi_class_c_shares": 2359038,
+        "class_a_outstanding": 26094680,
+        "class_c_outstanding": 31392746,
+        "class_a_voting_percent": 36.1,
+        "class_c_non_voting_percent": 7.5,
+        "combined_common_ownership_percent": 20.51
+      },
+      "interpretation": "39.9% was actual disclosed voting power at closing and also the threshold that caused excess shares to be issued as Class C. It is not the Oct 22 voting percentage. Class C is non-voting.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm"
+      ],
+      "web_refs": [
+        "turn142583view0",
+        "turn142583view1",
+        "turn789364view0",
+        "turn437677view0"
+      ]
+    },
+    "evernorth_capital": {
+      "sec_10q_filed": "2026-11-13",
+      "advance_delayed_funding_aggregate_usd": 214050000,
+      "sbi_200m_commitment_subscriber_split": "NOT_DISCLOSED; do not assert that the full SBI commitment is included in the aggregate advance funding pool.",
+      "xrp_transferred_to_pathfinder": 346484972,
+      "convertible_note_net_proceeds_usd": 29000000,
+      "eloc": {
+        "maximum_shares": 5218935,
+        "price_percent_vwap": 97,
+        "ownership_cap_percent": 4.99,
+        "drawn_amount": "NOT_ESTABLISHED"
+      },
+      "interpretation": "Separate cash, equity, in-kind XRP and potential ELOC capacity; do not add or net them as equivalent capital."
+    },
+    "circle_sbi": {
+      "english_legal_name": "Circle SBI Japan K.K.",
+      "japanese_name": "SBI Circle Holdings K.K.",
+      "ownership_percent_each": 50,
+      "initial_contribution_usd_equivalent_each": 1500000,
+      "circle_consolidates_vie": true,
+      "reason": "Circle has power over significant activities and exposure to potentially significant losses/benefits.",
+      "operating_results_through_2026_09_30": "No significant operating results to date.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "web_refs": [
+        "turn294403view4",
+        "turn700436view3"
+      ]
+    },
+    "circle_arc_presale": {
+      "gross_proceeds_usd": 242200000,
+      "revenue_recognized_usd": 181800000,
+      "deferred_revenue_usd": 60400000,
+      "idg_capital_usd": 25000000,
+      "idg_included_in_gross_proceeds": true,
+      "sbi_allocation": "NOT_DISCLOSED",
+      "interpretation": "ARC-specific gross proceeds were approximately $242.2M and recognized revenue was $181.8M, leaving $60.4M of ARC consideration unrecognized. The $61.4M in the deferred-revenue rollforward is total deferred-revenue additions net of revenue recognized across contracts, not ARC-only; total ending deferred revenue was $61.794M. IDG's $25M is included in the $242.2M gross amount. SBI's allocation is undisclosed.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "web_refs": [
+        "turn789364view3",
+        "turn683915view0"
+      ],
+      "total_deferred_revenue_additions_all_contracts_usd": 61400000,
+      "ending_total_deferred_revenue_balance_usd": 61794000,
+      "opening_total_deferred_revenue_balance_usd": 11512000,
+      "revenue_recognized_from_opening_deferred_balance_usd": 11118000
+    },
+    "circle_coinbase": {
+      "circle_usdc_end_2026_09_30_usd": 73879000000,
+      "circle_usdc_average_q3_usd": 73264000000,
+      "circle_reserve_return_rate_percent": 3.5,
+      "circle_distribution_cost_to_coinbase_q3_usd": 331300000,
+      "circle_distribution_cost_to_coinbase_9m_usd": 986600000,
+      "coinbase_arrangement_renewed_on_same_terms": true,
+      "coinbase_usdc_rewards_expense_q3_usd": 129245000,
+      "coinbase_usdc_rewards_expense_9m_usd": 361780000,
+      "coinbase_table_delta_q3_usd": 17675000,
+      "coinbase_table_delta_9m_usd": 47655000,
+      "coinbase_narrative_delta_q3_usd": 71600000,
+      "coinbase_narrative_delta_9m_usd": 175700000,
+      "discrepancy": "Coinbase's table deltas conflict with its narrative deltas. Preserve the mismatch; do not reconcile without issuer clarification.",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+      ],
+      "web_refs": [
+        "turn255841view2",
+        "turn683915view0",
+        "turn227826view0",
+        "turn683915view1"
+      ]
+    },
+    "sbic_identity": {
+      "east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo SBIC / SBIC East Japan)",
+      "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan)",
+      "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan)",
+      "legal_status": "Three distinct statutory corporations, each identifying the others as sister companies; none is SBI Holdings.",
+      "sources": [
+        "https://www.sbic.co.jp/company/profile/",
+        "https://www.sbic-cj.co.jp/company/about/",
+        "https://www.sbic-wj.co.jp/profiles/profile/"
+      ],
+      "web_refs": [
+        "turn491471search0",
+        "turn491471search2",
+        "turn491471search3"
+      ],
+      "chatgpt_relationship": "Training/seminar references do not establish OpenAI commercial partnership or direct XRP relationship."
+    },
+    "phrase_research": {
+      "ask_coin": "No new primary-source match establishing a canonical XRP/XRPL asset or issuer.",
+      "actual_capital": "Not a standardized XRP market metric; use distinct accounting categories: cash subscriptions, equity issuance, in-kind XRP, token-sale gross proceeds, revenue recognized, deferred revenue and potential credit facilities.",
+      "sbic_chatgpt_sibc": "No primary evidence of an OpenAI/SBIC commercial partnership; SBIC training references are educational."
+    },
+    "kamilah_stevenson": {
+      "person_identity": "First-party site identifies Dr. Kamilah Stevenson.",
+      "first_party_youtube_link": "NOT_FOUND",
+      "candidate_channel_ids": [
+        "UCXm6KAr1WHF6UN7g5b2W7wg",
+        "UCqUPJMQdkCN6lsLVDnichPA"
+      ],
+      "ownership_status": "UNVERIFIED; do not combine channel identities or inventory videos as hers.",
+      "verified_video_inventory": "No new inventory; prior TEDxWillowCreek video remains a TEDx-published attribution, not proof of personal channel ownership."
+    }
+  },
+  "prediction_engine": {
+    "designed": [
+      "SHA-256 source receipts",
+      "SQLite point-in-time feature store",
+      "event timeline",
+      "four deterministic baselines",
+      "chronological walk-forward",
+      "purge and embargo",
+      "probability calibration",
+      "drift diagnostics",
+      "forecast ledger"
+    ],
+    "executed": [
+      "Mocked Bybit adapter tests",
+      "Exact-head repository full suite",
+      "One-off read-only direct ticker observations"
+    ],
+    "verified": [
+      "3641 full-suite tests and 62.47% inclusive coverage on exact head 847a",
+      "Dependency audit and fail-closed gate on exact head"
+    ],
+    "not_verified": [
+      "Scheduled ingestion on main",
+      "Long-term immutable/WORM raw storage",
+      "Synchronized multi-venue L2 and derivatives history",
+      "Real-data out-of-sample predictive lift",
+      "Sufficient shadow outcomes"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "nine_platform_map": {
+    "current_file_before_run131": "EMPTY_0_BYTES",
+    "run130_map_file": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_run130.json",
+    "action": "Populate current map from Run130 schema and append Run131 verification.",
+    "live_authenticated_platforms": [
+      "ChatGPT GitHub connector only"
+    ],
+    "not_authenticated": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "external_task_dispatches": 0,
+    "evidence_exchange": false
+  },
+  "backlog_classification": {
+    "active_integration": {
+      "pr": 1662,
+      "status": "BLOCKED_DRAFT_NO_APPROVALS_BRANCH_PROTECTION_UNKNOWN_PAGES_AUTHORIZATION_UNRESOLVED"
+    },
+    "superseded_candidates": [
+      {
+        "pr": 1660,
+        "behind_main": 12,
+        "content_equivalence": "NOT_VERIFIED"
+      },
+      {
+        "pr": 1661,
+        "behind_main": 9,
+        "content_equivalence": "NOT_VERIFIED; unique historical BARROT_SYNC.md content remains only on source branch"
+      },
+      {
+        "pr": 1640,
+        "behind_main": 16,
+        "content_equivalence": "NOT_VERIFIED"
+      },
+      {
+        "pr": 1642,
+        "behind_main": 17,
+        "content_equivalence": "NOT_VERIFIED"
+      },
+      {
+        "pr": 1643,
+        "behind_main": 17,
+        "content_equivalence": "NOT_VERIFIED"
+      }
+    ],
+    "unique_or_unreviewed": [
+      {
+        "pr": 1611,
+        "source_only_paths": 1
+      },
+      {
+        "pr": 1614,
+        "source_only_paths": 27
+      },
+      {
+        "pr": 1615,
+        "source_only_paths": 13
+      },
+      {
+        "pr": 1655,
+        "source_only_paths": 3
+      },
+      {
+        "pr": 1659,
+        "source_only_paths": 4
+      },
+      {
+        "pr": 1269,
+        "classification": "UNIQUE_TOPOLOGY_WORK"
+      }
+    ],
+    "blocked_unique": [
+      {
+        "pr": 1653,
+        "behind_main": 17,
+        "unresolved_review_threads": 8,
+        "critical_review_findings": 6
+      }
+    ],
+    "dependency_candidates": [
+      1644,
+      1645,
+      1646,
+      1647,
+      1648,
+      1649,
+      1650
+    ],
+    "older_dependency_candidates": [
+      1254,
+      1255
+    ],
+    "source_prs_to_close_now": [],
+    "source_pr_closures_performed": 0
+  },
+  "source_receipt_policy": {
+    "web_tool_text_only": true,
+    "raw_source_bytes_captured": false,
+    "raw_sha256_receipts": [],
+    "normalized_excerpt_hashes": [],
+    "feature_store_admission": false,
+    "reason": "Do not mislabel rendered search/open excerpts as byte-exact source captures."
+  },
+  "sources": [
+    {
+      "type": "SEC primary filing",
+      "name": "Evernorth 424B3",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "web_refs": [
+        "turn142583view0",
+        "turn789364view0"
+      ]
+    },
+    {
+      "type": "SEC primary filing",
+      "name": "Evernorth Q3 2026 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
+      "web_refs": [
+        "turn142583view1",
+        "turn437677view0"
+      ]
+    },
+    {
+      "type": "SEC primary filing",
+      "name": "Circle Q3 2026 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "web_refs": [
+        "turn294403view4",
+        "turn683915view0",
+        "turn255841view2"
+      ]
+    },
+    {
+      "type": "SEC primary filing",
+      "name": "Coinbase Q3 2026 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "web_refs": [
+        "turn142583view3",
+        "turn227826view0",
+        "turn683915view1"
+      ]
+    },
+    {
+      "type": "Official company profile",
+      "name": "Tokyo SBIC East",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "web_refs": [
+        "turn491471search0"
+      ]
+    },
+    {
+      "type": "Official company profile",
+      "name": "Nagoya SBIC Central",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "web_refs": [
+        "turn491471search2"
+      ]
+    },
+    {
+      "type": "Official company profile",
+      "name": "Osaka SBIC West",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "web_refs": [
+        "turn491471search3"
+      ]
+    },
+    {
+      "type": "Public exchange API",
+      "name": "Bybit XRPUSDT ticker",
+      "url": "https://api.bybit.com/v5/market/tickers?category=spot&symbol=XRPUSDT",
+      "web_refs": [
+        "turn562677view0"
+      ]
+    },
+    {
+      "type": "Public exchange API",
+      "name": "OKX XRP-USDT ticker",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "web_refs": [
+        "turn552022view3"
+      ]
+    },
+    {
+      "type": "Public exchange API",
+      "name": "Kraken XRPUSD ticker",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "web_refs": [
+        "turn552022view2"
+      ]
+    }
+  ],
+  "authorization": {
+    "merge": false,
+    "deploy": false,
+    "secret_rotation": false,
+    "paper_trade": false,
+    "real_money": false,
+    "external_model_dispatch": false,
+    "branch_rewrite": false,
+    "pr_closure": false
+  },
+  "next_actions": [
+    "Re-run exact-head full-suite CI after the Run131 evidence-only commit.",
+    "Obtain independent human review and resolve PR #1662 draft status.",
+    "Resolve GitHub Pages publication authorization and branch-protection visibility before merge.",
+    "Archive or reconcile unique historical BARROT_SYNC.md content from #1661 before any superseded-source closure.",
+    "Keep unique research and security PRs open; do not bulk-close.",
+    "After an authorized merge, fetch main, verify merge SHA and files, run main CI and check automatic workflows.",
+    "Only after scheduled ingestion is active, build synchronized spot/L2/derivatives history and validate real-data out-of-sample lift."
+  ],
+  "run131_follow_up_correction": {
+    "captured_at_utc": "2026-11-14T15:11:56Z",
+    "exact_head_ci": {
+      "tested_head": "8f29a62e8c48c419c529f764c82f9727f924d2a0",
+      "full_suite_run_id": 43608442148,
+      "full_suite_job_id": 132488004562,
+      "conclusion": "failure",
+      "tests_passed": 3599,
+      "tests_failed": 42,
+      "subtests_passed": 8,
+      "inclusive_coverage_percent": 62.47,
+      "core_suite": "passed",
+      "failure_scope": "All 42 failures are in tests/test_nine_platform_capability_authentication_dataflow_map.py and tests/test_xrp_nine_platform_current_map_run73.py.",
+      "root_cause": "The current nine-platform map was replaced with a compact schema 1.0.0 snapshot. Historical compatibility tests require schema 1.1.0, a mapping keyed by platform name, and preserved mission, safety, coordination, market, prediction-engine and historical run snapshot sections. No runtime-code failure was observed.",
+      "dependency_audit_run_ids": [
+        43608442127,
+        43608446687
+      ],
+      "fail_closed_gate_run_ids": [
+        43608442123,
+        43608446775
+      ],
+      "gate_results": "Both push and PR dependency audits and both push and PR fail-closed gates passed. PR-event CI was skipped by the integration-branch condition."
+    },
+    "canonical_map_restoration": {
+      "path": "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json",
+      "last_known_good_blob_sha": "710d5cbe1991b68939a6a9ef50a4d3483f78b1b8",
+      "last_known_good_commit": "847a20732032ed6fc62e3689a41eb1f129f64904",
+      "known_good_exact_head_full_suite": "3641 passed, 8 subtests passed, 62.47% inclusive coverage",
+      "replaced_compact_blob_sha": "33416a58ee17c48af2bb9d6014fb59704c3011d9",
+      "action": "Restore the exact last-known-good blob without editing or weakening tests; keep the compact Run131 schema 1.0.0 snapshot in its separate run131 file.",
+      "fetch_read_limitation": "A zero-length content response from fetch_file for the large historical blob was incorrectly interpreted as a zero-byte file. Its Git blob SHA was present and the preceding exact-head suite had passed."
+    },
+    "circle_arc_presale_accounting": {
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "gross_proceeds_usd": 242200000,
+      "revenue_recognized_usd": 181800000,
+      "arc_specific_unrecognized_consideration_usd": 60400000,
+      "total_deferred_revenue_additions_all_contracts_usd": 61400000,
+      "ending_total_deferred_revenue_balance_usd": 61794000,
+      "opening_total_deferred_revenue_balance_usd": 11512000,
+      "revenue_recognized_from_opening_deferred_balance_usd": 11118000,
+      "idg_capital_usd": 25000000,
+      "idg_included_in_gross_proceeds": true,
+      "sbi_allocation": "NOT_DISCLOSED",
+      "interpretation": "The 61.4M deferred-revenue additions line is not an ARC-only balance. The ARC-specific residual from 242.2M gross less 181.8M recognized is 60.4M. The ending 61.794M is the total deferred-revenue balance."
+    },
+    "current_market_refresh": {
+      "retrieved_at_utc": "2026-11-14T15:00:15.260Z",
+      "spot_observations": [
+        {
+          "venue": "OKX",
+          "pair": "XRP-USDT",
+          "last": 0.9811,
+          "bid": 0.981,
+          "ask": 0.9811,
+          "event_timestamp_utc": "2026-11-14T14:55:34.067Z",
+          "staleness_seconds_at_retrieval": 281.193,
+          "model_eligible": false,
+          "reason": "No synchronized multi-venue L2; quote is now stale."
+        },
+        {
+          "venue": "Kraken",
+          "pair": "XRPUSD",
+          "last": 0.97969,
+          "bid": 0.97929,
+          "ask": 0.97947,
+          "event_timestamp_utc": null,
+          "model_eligible": false,
+          "reason": "No exchange event timestamp."
+        },
+        {
+          "venue": "CoinMarketCap",
+          "last": 0.9899,
+          "event_timestamp_utc": null,
+          "model_eligible": false,
+          "reason": "Aggregator snapshot lacks a comparable exchange event timestamp."
+        },
+        {
+          "venue": "CoinGlass daily",
+          "date_utc": "2026-11-14",
+          "open": 1.011,
+          "high": 1.013,
+          "low": 0.9789,
+          "last_or_intraday": 0.989,
+          "event_timestamp_utc": null,
+          "model_eligible": false,
+          "reason": "Current daily aggregate is not a synchronized executable venue quote."
+        }
+      ],
+      "derivatives_disagreement": [
+        {
+          "provider": "Kodexius",
+          "open_interest_usd": 593890000,
+          "contracts": 7,
+          "funding_8h_percent": -0.0004,
+          "updated_at_utc": "2026-11-14T13:34:00Z"
+        },
+        {
+          "provider": "Alpha Finance",
+          "open_interest_usd": 2180000000,
+          "updated_at_utc": "2026-11-14T09:04:00Z",
+          "long_liquidations_usd": 12800000,
+          "short_liquidations_usd": 1200000
+        },
+        {
+          "provider": "TradRadar",
+          "open_interest_usd": 1520000000,
+          "updated_at_utc": "2026-11-14T01:10:00Z"
+        },
+        {
+          "provider": "Coinperps",
+          "open_interest_usd": 2210000000,
+          "updated_at_utc": "2026-11-14T03:11:00Z",
+          "liquidations_24h_usd": 20500000,
+          "long_liquidation_share_percent": 91
+        },
+        {
+          "provider": "CoinGlass",
+          "open_interest_usd": 2190000000,
+          "updated_at_utc": "2026-11-14T10:08:00Z"
+        }
+      ],
+      "admission": "RESEARCH_ONLY",
+      "reason": "Provider coverage and timestamps differ materially; no averaging, no synchronized L2, no raw response hashes and no feature-store admission."
+    }
+  }
+}

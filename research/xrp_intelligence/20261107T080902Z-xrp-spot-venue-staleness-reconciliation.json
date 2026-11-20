@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "xrp-spot-venue-staleness-reconciliation-20261107T080902Z",
+  "artifact_type": "direct_exchange_spot_snapshot_and_freshness_reconciliation",
+  "captured_at_utc": "2026-11-07T08:09:02.210Z",
+  "data_cutoff_utc": "2026-11-07T08:09:02.210Z",
+  "capture_method": "Public direct-exchange ticker JSON retrieved through the web retrieval layer.",
+  "source_receipt_contract": {
+    "hash_algorithm": "SHA-256",
+    "hash_scope": "Exact compact JSON text exposed by the retrieval layer and stored below; original HTTP wire bytes, response headers and transport-level cache metadata were not exposed.",
+    "source_timestamp_policy": "Use exchange-provided event timestamps where present. Retrieval time does not substitute for a missing provider event timestamp."
+  },
+  "sources": [
+    {
+      "id": "kraken_xrp_usd_ticker_20261107T080902Z",
+      "publisher": "Kraken",
+      "source_type": "direct_exchange_public_api",
+      "instrument": "XRP/USD",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-07T08:09:02.210Z",
+      "provider_event_timestamp_utc": null,
+      "freshness_status": "UNVERIFIABLE_PROVIDER_TIMESTAMP_MISSING",
+      "independence_group": "kraken_exchange",
+      "raw_response_exact_json": "{\"error\":[],\"result\":{\"XXRPZUSD\":{\"a\":[\"1.17205000\",\"4267\",\"4267.000\"],\"b\":[\"1.17200000\",\"3794\",\"3794.000\"],\"c\":[\"1.17206000\",\"2.09392010\"],\"v\":[\"6629276.11032081\",\"28419126.91590397\"],\"p\":[\"1.16191626\",\"1.17885963\"],\"t\":[7979,31886],\"l\":[\"1.15046000\",\"1.15046000\"],\"h\":[\"1.18109000\",\"1.20135000\"],\"o\":\"1.17749000\"}}}",
+      "raw_response_bytes": 317,
+      "raw_response_sha256": "662dc12b4ecbb3c9da9947aa8ccd729f6b7f16cb9877ae7da1193f4aa264d622",
+      "normalized_metrics": {
+        "last_usd": 1.17206,
+        "best_bid_usd": 1.172,
+        "best_ask_usd": 1.17205,
+        "level1_spread_bps": 0.4266120603,
+        "volume_24h_xrp": 28419126.91590397,
+        "vwap_24h_usd": 1.17885963,
+        "low_24h_usd": 1.15046,
+        "high_24h_usd": 1.20135,
+        "open_24h_usd": 1.17749
+      },
+      "limitations": [
+        "Kraken returned no provider event timestamp; retrieval time cannot prove source freshness.",
+        "The endpoint provides a ticker and Level-1 quote, not a multi-level depth ladder.",
+        "The ticker's rolling-24-hour fields are not synchronized with OKX's event-time window."
+      ]
+    },
+    {
+      "id": "okx_xrp_usdt_ticker_20261107T080902Z",
+      "publisher": "OKX",
+      "source_type": "direct_exchange_public_api",
+      "instrument": "XRP-USDT",
+      "url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
+      "retrieved_at_utc": "2026-11-07T08:09:02.210Z",
+      "provider_event_timestamp_utc": "2026-11-07T07:58:31.768Z",
+      "provider_event_timestamp_epoch_ms": 1794038311768,
+      "provider_event_age_seconds_at_capture": 630.442,
+      "freshness_limit_seconds": 300,
+      "freshness_status": "STALE_EXCEEDS_300_SECOND_LIMIT",
+      "independence_group": "okx_exchange",
+      "raw_response_exact_json": "{\"code\":\"0\",\"data\":[{\"instType\":\"SPOT\",\"instId\":\"XRP-USDT\",\"last\":\"1.1756\",\"lastSz\":\"10.207502\",\"askPx\":\"1.1757\",\"askSz\":\"2952.436776\",\"bidPx\":\"1.1756\",\"bidSz\":\"2933.092498\",\"open24h\":\"1.1858\",\"high24h\":\"1.2031\",\"low24h\":\"1.1518\",\"volCcy24h\":\"61164542.020208193\",\"vol24h\":\"51822992.684651\",\"ts\":\"1794038311768\",\"sodUtc0\":\"1.1791\",\"sodUtc8\":\"1.1877\"}],\"msg\":\"\"}",
+      "raw_response_bytes": 360,
+      "raw_response_sha256": "9e62ee63d6d4aaf99e271fa6b7ce9f7c0e56094124c0dd20a3bb5feb2a2a4328",
+      "normalized_metrics": {
+        "last_usdt": 1.1756,
+        "best_bid_usdt": 1.1756,
+        "best_ask_usdt": 1.1757,
+        "level1_spread_bps": 0.8505932888,
+        "volume_24h_xrp": 51822992.684651,
+        "quote_volume_24h_usdt": 61164542.020208195,
+        "open_24h_usdt": 1.1858,
+        "low_24h_usdt": 1.1518,
+        "high_24h_usdt": 1.2031
+      },
+      "limitations": [
+        "The provider timestamp is 630.442 seconds old at capture, above the 300-second feature freshness limit.",
+        "The endpoint provides a ticker and Level-1 quote, not a multi-level depth ladder.",
+        "USDT is not silently treated as USD."
+      ]
+    }
+  ],
+  "derived_reconciliation": {
+    "raw_cross_venue_last_price_gap_pct": 0.3020323192,
+    "kraken_level1_spread_bps": 0.4266120603,
+    "okx_level1_spread_bps": 0.8505932888,
+    "previous_okx_snapshot": {
+      "artifact": "research/xrp_intelligence/20261107T070318Z-xrp-spot-cross-venue-timestamp-reconciliation.json",
+      "provider_event_timestamp_utc": "2026-11-07T06:57:23.768Z",
+      "last_usdt": 1.169
+    },
+    "current_okx_snapshot": {
+      "provider_event_timestamp_utc": "2026-11-07T07:58:31.768Z",
+      "last_usdt": 1.1756
+    },
+    "okx_snapshot_to_snapshot_change_pct": 0.5645851155,
+    "okx_snapshot_interval_seconds": 3668,
+    "interpretation": "The OKX last-price change is a comparison of two provider-timestamped snapshots 61 minutes 8 seconds apart. It is not a continuous candle return or proof of a sustained trend. The raw Kraken/OKX last-price gap is not an executable arbitrage observation because quote currencies are unnormalized, timestamps are asynchronous, and multi-level executable depth, fees and conversion costs are unavailable."
+  },
+  "model_admission": {
+    "eligible": false,
+    "reasons": [
+      "Kraken provider timestamp is missing.",
+      "OKX provider timestamp exceeds the 300-second freshness limit.",
+      "USD and USDT are not normalized.",
+      "No synchronized multi-level depth or executable-cost data was captured.",
+      "The two exchange ticker windows are not a synchronized historical feature series."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "directional_forecast": null,
+    "shadow_forecast": null,
+    "paper_trade_executed": false,
+    "real_money_action": false
+  },
+  "external_actions": {
+    "orders_sent": false,
+    "exchange_account_accessed": false,
+    "funds_transferred": false,
+    "paper_trade_created": false,
+    "real_money_used": false
+  }
+}

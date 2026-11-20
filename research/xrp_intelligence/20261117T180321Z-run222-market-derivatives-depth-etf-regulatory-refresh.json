@@ -1,0 +1,1107 @@
+{
+  "artifact_type": "barrot.xrp.research_run",
+  "schema_version": "1.0.0",
+  "run_id": "run222",
+  "captured_at_utc": "2026-11-17T18:03:21Z",
+  "data_cutoff_utc": "2026-11-17T17:22:00Z",
+  "observed_main_sha": "d28e03e7e519523c77f943984b11e78277299337",
+  "integration_head_at_capture": "5ff60f97f6447521e72d18f369f42d989a89a10d",
+  "mission": {
+    "priority": 1,
+    "objective": "XRP intelligence and measured prediction-engine performance",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, safety and verification foundation",
+    "forecast_rule": "No directional forecast before byte-complete point-in-time data and leakage-safe out-of-sample evaluation support it."
+  },
+  "repository_state": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "d28e03e7e519523c77f943984b11e78277299337",
+    "integration_branch": "integration/xrp-v3-mainline-successor-20261115T2101Z",
+    "integration_head": "5ff60f97f6447521e72d18f369f42d989a89a10d",
+    "pull_request": 1663,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_mergeable": true,
+    "commits_ahead": 207,
+    "commits_behind": 0,
+    "main_paths_missing_from_integration": 0,
+    "main_reconciliation": {
+      "merge_commit": "5ff60f97f6447521e72d18f369f42d989a89a10d",
+      "first_parent": "db6b37c3609e896cf9ad3637dc97f983d6974aa1",
+      "second_parent": "d28e03e7e519523c77f943984b11e78277299337",
+      "main_changed_paths_integrated": 20,
+      "overlapping_paths_three_way_reconciled": [
+        "BARROT_SYNC.md",
+        "b_agent.py"
+      ],
+      "additional_main_files_preserved": 18,
+      "main_branch_modified": false
+    }
+  },
+  "provenance_policy": {
+    "allowed_sources": "Lawful public and authorized sources only",
+    "raw_capture": "No original publisher HTTP response bytes were retained in this run.",
+    "hash_policy": "No rendered text, search snippet, browser output, GitHub blob SHA or repository commit SHA is represented as a raw publisher-byte SHA-256 receipt.",
+    "model_eligibility": "All observations in this artifact are research-only and model-ineligible.",
+    "disagreement": "Retain source universe, venue scope, timestamps, missing reports, counter-hypotheses and provider disagreement. Do not average incompatible aggregates.",
+    "point_in_time": "Only source timestamps explicitly stated in UTC are assigned source_as_of_utc. Ambiguous page clocks remain labels, not UTC timestamps."
+  },
+  "market_snapshot": {
+    "spot": {
+      "investing_com": {
+        "price_usd": 0.9556,
+        "open_usd": 0.9552,
+        "high_usd": 0.9788,
+        "low_usd": 0.9469,
+        "displayed_volume_24h_usd": 347170000,
+        "change_pct": 0.04,
+        "source_time_label": "12:35:26; page timezone not stated",
+        "limitations": [
+          "Rendered historical/daily page; aggregation and venue mix not established.",
+          "Clock timezone not stated."
+        ]
+      },
+      "coinglass": {
+        "displayed_price_usd": 0.9473,
+        "change_24h_pct": -0.62,
+        "high_24h_usd": 0.9791,
+        "low_24h_usd": 0.9459,
+        "spot_volume_24h_usd": 446030000,
+        "limitations": [
+          "Dynamic aggregate page; exact as-of timestamp and venue universe not fully established."
+        ]
+      },
+      "hyperliquid": {
+        "mark_price_usd": 0.96149,
+        "source_as_of_utc": "2026-11-17T17:22:00Z",
+        "limitations": [
+          "Single venue/perpetual mark, not consolidated spot."
+        ]
+      },
+      "drawdown_from_october_21_displayed_high_pct": -31.67,
+      "drawdown_from_november_1_close_pct": -23.59,
+      "model_eligible": false
+    },
+    "order_book": {
+      "provider": "Fuelmaps",
+      "source_as_of_utc": "2026-11-17T11:00:00Z",
+      "venue_count": 6,
+      "mid_usd": 0.9562,
+      "venues": [
+        "Coinbase",
+        "Bitstamp",
+        "Bitfinex",
+        "Gemini",
+        "OKX",
+        "Kraken"
+      ],
+      "depth_bands_usd": [
+        {
+          "band_pct": 0.5,
+          "bids_usd": 7900000,
+          "asks_usd": 5700000,
+          "bid_share_pct": 58.2
+        },
+        {
+          "band_pct": 1,
+          "bids_usd": 11600000,
+          "asks_usd": 7800000,
+          "bid_share_pct": 59.8
+        },
+        {
+          "band_pct": 2,
+          "bids_usd": 14000000,
+          "asks_usd": 11100000,
+          "bid_share_pct": 55.8
+        },
+        {
+          "band_pct": 5,
+          "bids_usd": 16800000,
+          "asks_usd": 14300000,
+          "bid_share_pct": 54
+        },
+        {
+          "band_pct": 10,
+          "bids_usd": 22600000,
+          "asks_usd": 15500000,
+          "bid_share_pct": 59.3
+        }
+      ],
+      "limitations": [
+        "Snapshot is 7h22m older than the data cutoff.",
+        "Near-price depth is not executed flow and can change or be spoofed.",
+        "Venue composition differs from the spot and derivatives aggregators."
+      ],
+      "model_eligible": false
+    },
+    "derivatives": {
+      "open_interest": [
+        {
+          "provider": "CoinGlass",
+          "open_interest_usd": 1940000000,
+          "change_24h_pct": -1.11,
+          "source_as_of_utc": null,
+          "scope": "Provider-wide dynamic aggregate; exact venue list not captured."
+        },
+        {
+          "provider": "Sharpe Terminal",
+          "open_interest_usd": 1030000000,
+          "source_as_of_utc": "2026-11-17T08:00:00Z",
+          "scope": "23 tracked venues; MEXC 199.58M excluded as unverified."
+        }
+      ],
+      "futures_volume_24h_usd": 2130000000,
+      "spot_volume_24h_usd": 446030000,
+      "futures_to_spot_volume_ratio": 4.78,
+      "liquidations_24h_usd": 3310000,
+      "liquidation_long_share_pct": 72,
+      "limitations": [
+        "Open-interest totals have materially different venue universes and cannot be averaged.",
+        "The CoinGlass timestamp is not explicit in the retrieved page."
+      ]
+    },
+    "funding": {
+      "observations": [
+        {
+          "provider": "CoinGlass",
+          "rate_pct_per_8h": 0.0007,
+          "source_as_of_utc": null,
+          "scope": "Provider-wide weighted display."
+        },
+        {
+          "provider": "FundingRates.app",
+          "rate_pct_per_8h": 0.0029,
+          "source_as_of_utc": "2026-11-17T14:30:54Z",
+          "scope": "Displayed median across nine venues; seven positive, two zero."
+        },
+        {
+          "provider": "Fensory / Hyperliquid",
+          "rate_pct_per_hour": -0.0014,
+          "source_as_of_utc": "2026-11-17T17:22:00Z",
+          "scope": "Single venue; displayed XRP perpetual market."
+        }
+      ],
+      "limitations": [
+        "Different units, venue scopes and observation times; do not annualize or average without normalization."
+      ]
+    },
+    "etf_flows": [
+      {
+        "provider": "CryptoKeyhole",
+        "date": "2026-11-16",
+        "net_flow_xrp": -5196983,
+        "approx_net_flow_usd": -5000000,
+        "reported_funds": 2,
+        "expected_daily_reporters": 4,
+        "status": "partial",
+        "source_time_label": "updated 07:25 UTC"
+      },
+      {
+        "provider": "ByKaranteli",
+        "date": "2026-11-16",
+        "net_flow_usd": 0,
+        "tracked_funds": 5,
+        "status": "provisional_until_settled",
+        "five_day_net_flow_usd": -8700000,
+        "total_net_assets_usd": 1080000000,
+        "cumulative_net_inflow_usd": 1790000000,
+        "source_time_label": "updated 09:09 UTC"
+      }
+    ],
+    "xrpl_activity": {
+      "source_as_of_date": "2026-11-13",
+      "total_stablecoin_market_cap_usd": 908210000,
+      "stablecoin_market_cap_change_7d_pct": -8.01,
+      "rlusd_market_cap_usd": 818560000,
+      "rlusd_share_pct": 90.13,
+      "weekly_dex_volume_usd": 35140000,
+      "weekly_dex_volume_change_pct": 28.87,
+      "limitations": [
+        "Secondary data report; underlying endpoint and wallet/venue definitions not independently reconciled.",
+        "DEX volume growth is not proof of net XRP demand or fiat redemption."
+      ]
+    }
+  },
+  "source_registry": [
+    {
+      "id": "investing_xrp_daily_20261117",
+      "publisher": "Investing.com",
+      "url": "https://www.investing.com/crypto/xrp/historical-data",
+      "source_date": "2026-11-17",
+      "source_time_label": "12:35:26; timezone not stated",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "investing-market-data",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original HTTP bytes not retained.",
+      "model_eligible": false,
+      "limitations": [
+        "Venue universe and aggregation methodology not established.",
+        "Timezone of displayed clock not stated."
+      ]
+    },
+    {
+      "id": "fuelmaps_xrp_depth_20261117_1100z",
+      "publisher": "Fuelmaps",
+      "url": "https://fuelmaps.io/order-book",
+      "source_as_of_utc": "2026-11-17T11:00:00Z",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "fuelmaps-orderbook-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original HTTP bytes not retained.",
+      "model_eligible": false,
+      "limitations": [
+        "Six-venue composition; snapshot older than current cutoff.",
+        "Displayed depth is not execution or queue-position evidence."
+      ]
+    },
+    {
+      "id": "coinglass_xrp_futures_20261117_dynamic",
+      "publisher": "CoinGlass",
+      "url": "https://www.coinglass.com/currencies/XRP",
+      "source_as_of_utc": null,
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "coinglass-derivatives-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered dynamic public page; original HTTP bytes not retained.",
+      "model_eligible": false,
+      "limitations": [
+        "Exact page as-of time and venue universe not captured."
+      ]
+    },
+    {
+      "id": "sharpe_xrp_futures_20261117_0800z",
+      "publisher": "Sharpe Terminal",
+      "url": "https://www.sharpe.ai/terminal/futures/xrp",
+      "source_as_of_utc": "2026-11-17T08:00:00Z",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "sharpe-derivatives-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original HTTP bytes not retained.",
+      "model_eligible": false,
+      "limitations": [
+        "23 venues included; MEXC 199.58M excluded as unverified."
+      ]
+    },
+    {
+      "id": "fundingrates_xrp_20261117_143054z",
+      "publisher": "FundingRates.app",
+      "url": "https://fundingrates.app/coins/XRP",
+      "source_as_of_utc": "2026-11-17T14:30:54Z",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "fundingrates-perpetual-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original HTTP bytes not retained.",
+      "model_eligible": false,
+      "limitations": [
+        "Displayed median across nine venues; venue inclusion and normalization require independent capture."
+      ]
+    },
+    {
+      "id": "fensory_hyperliquid_xrp_20261117_1722z",
+      "publisher": "Fensory",
+      "url": "https://fensory.com/hyperliquid/xrp",
+      "source_as_of_utc": "2026-11-17T17:22:00Z",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "hyperliquid-single-venue-market-data",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original HTTP bytes not retained.",
+      "model_eligible": false,
+      "limitations": [
+        "Single-venue perpetual mark, funding and open interest."
+      ]
+    },
+    {
+      "id": "cryptokeyhole_xrp_etf_20261117_0725z",
+      "publisher": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf/xrp",
+      "source_time_label": "updated 07:25 UTC on 2026-11-17",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "cryptokeyhole-etf-flow-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original HTTP bytes not retained.",
+      "model_eligible": false,
+      "limitations": [
+        "November 16 reported as partial: two of four daily reporters.",
+        "Not a complete fund-universe settlement."
+      ]
+    },
+    {
+      "id": "bykaranteli_xrp_etf_20261117_0909z",
+      "publisher": "ByKaranteli",
+      "url": "https://bykaranteli.com/etf/spot/xrp",
+      "source_time_label": "updated 09:09 UTC on 2026-11-17",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "bykaranteli-etf-flow-aggregator",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public page; original HTTP bytes not retained.",
+      "model_eligible": false,
+      "limitations": [
+        "November 16 zero is provisional until issuer data settles.",
+        "Five-fund coverage differs from CryptoKeyhole."
+      ]
+    },
+    {
+      "id": "tokenpost_xrpl_stablecoin_dex_20261115",
+      "publisher": "TokenPost",
+      "url": "https://tokenpost.com/",
+      "source_published_at_utc": "2026-11-15T13:18:00Z",
+      "source_as_of_date": "2026-11-13",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "tokenpost-onchain-data-secondary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public article; original HTTP bytes not retained.",
+      "model_eligible": false,
+      "limitations": [
+        "Secondary report; underlying DeFi analytics endpoint and wallet scope not independently archived."
+      ]
+    },
+    {
+      "id": "sec_crypto_asset_interpretation_20260317",
+      "publisher": "U.S. Securities and Exchange Commission / CFTC",
+      "url": "https://www.sec.gov/files/rules/interp/2026/33-11412.pdf",
+      "source_published_at_utc": "2026-03-17T00:00:00Z",
+      "source_effective_date": "2026-03-23",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "sec-cftc-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Official PDF viewed; original response bytes not archived.",
+      "model_eligible": false,
+      "limitations": [
+        "Interpretation states Commission views and preserves Howey analysis of transactions; not a blanket transaction-level exemption."
+      ]
+    },
+    {
+      "id": "sec_regulation_crypto_assets_proposal_20260818",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "url": "https://www.sec.gov/newsroom/press-releases/2026-76-sec-proposes-new-regulation-crypto-assets",
+      "source_published_at_utc": "2026-08-18T00:00:00Z",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "sec-official-proposal",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Official SEC release and Federal Register listing viewed; original response bytes not archived.",
+      "model_eligible": false,
+      "limitations": [
+        "Proposed rule, not final; public comment deadline was 2026-10-20.",
+        "Does not itself decide XRP's transaction-specific status."
+      ]
+    },
+    {
+      "id": "stark_reiners_sec_comment_20261016",
+      "publisher": "John Reed Stark and Lee Reiners",
+      "url": "https://www.sec.gov/comments/S7-2026-27/s7202627-1096499-3852606.pdf",
+      "source_published_at_utc": "2026-10-16T00:00:00Z",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "sec-commenter-stark-reiners",
+      "raw_source_sha256": null,
+      "raw_capture_status": "SEC-hosted public comment PDF viewed; original response bytes not archived.",
+      "model_eligible": false,
+      "limitations": [
+        "Advocacy/comment submission, not an SEC finding or final judicial determination."
+      ]
+    },
+    {
+      "id": "senate_hr3633_cloture_20260915",
+      "publisher": "United States Senate",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm",
+      "source_published_at_utc": "2026-09-15T19:19:00Z",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "us-senate-primary",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Official roll-call page viewed; original response bytes not archived.",
+      "model_eligible": false,
+      "limitations": [
+        "Vote rejected cloture on motion to proceed; not a final vote on the bill's substantive provisions."
+      ]
+    },
+    {
+      "id": "bny_ripple_custody_20261027",
+      "publisher": "BNY",
+      "url": "https://www.bny.com/corporate/global/en.html",
+      "source_published_at_utc": "2026-10-27T00:00:00Z",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "bny-official-corporate",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Official corporate announcement viewed; original response bytes not archived.",
+      "model_eligible": false,
+      "limitations": [
+        "Custody support and reserve-custody role do not establish client balances, collateral usage or net XRP purchases."
+      ]
+    },
+    {
+      "id": "coinbase_rlusd_20261028",
+      "publisher": "Coinbase",
+      "url": "https://www.coinbase.com/blog",
+      "source_published_at_utc": "2026-10-28T00:00:00Z",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "coinbase-official-corporate",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Official corporate announcement viewed; original response bytes not archived.",
+      "model_eligible": false,
+      "limitations": [
+        "Global Exchange collateral availability was described as a future rollout, not a live launch feature."
+      ]
+    },
+    {
+      "id": "sbi_circle_arc_20260512",
+      "publisher": "SBI Holdings",
+      "url": "https://www.sbigroup.co.jp/english/news/",
+      "source_published_at_utc": "2026-05-12T00:00:00Z",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "sbi-official-corporate",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Official SBI corporate announcements viewed; original response bytes not archived.",
+      "model_eligible": false,
+      "limitations": [
+        "Circle equity investment and JV are separate from SBI's Arc presale participation; none alone proves XRP demand."
+      ]
+    },
+    {
+      "id": "marketwatch_treasury_yields_20261117",
+      "publisher": "MarketWatch",
+      "url": "https://www.marketwatch.com/",
+      "source_date": "2026-11-17",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "marketwatch-macro-reporting",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered live-market report; original HTTP bytes not retained.",
+      "model_eligible": false,
+      "limitations": [
+        "Displayed Treasury yields are market snapshots; timestamp and curve source not independently archived."
+      ]
+    },
+    {
+      "id": "reuters_india_fx_capital_flows_20261117",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/markets/asia/",
+      "source_date": "2026-11-17",
+      "retrieved_at_utc": "2026-11-17T18:03:21Z",
+      "independence_group": "reuters-macro-reporting",
+      "raw_source_sha256": null,
+      "raw_capture_status": "Rendered public news report; original HTTP bytes not retained.",
+      "model_eligible": false,
+      "limitations": [
+        "India FX/equity flows and dollar strength are broad macro context, not direct XRP flow evidence."
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "spot-range-and-drawdown-20261117",
+      "domain": "spot_structure",
+      "claim": "The displayed XRP daily row was approximately $0.9556 with a $0.9469-$0.9788 range; the price was about 31.68% below the displayed October 21 high of $1.3986 and 23.59% below the November 1 close of $1.2506.",
+      "evidence": [
+        "investing_xrp_daily_20261117"
+      ],
+      "stance": "context",
+      "status": "observed",
+      "counter_evidence": [
+        "Investing page timezone is unstated; CoinGlass and Hyperliquid displayed different price/mark snapshots."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "spot-provider-price-dispersion-20261117",
+      "domain": "spot_structure",
+      "claim": "Investing.com displayed $0.9556, CoinGlass $0.9473 and Hyperliquid mark $0.96149; these are not a consolidated synchronized spot price.",
+      "evidence": [
+        "investing_xrp_daily_20261117",
+        "coinglass_xrp_futures_20261117_dynamic",
+        "fensory_hyperliquid_xrp_20261117_1722z"
+      ],
+      "stance": "context",
+      "status": "observed",
+      "counter_evidence": [
+        "Different products, venues, time labels and mark/spot definitions explain some dispersion."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "near-price-depth-bid-skew-20261117",
+      "domain": "spot_liquidity",
+      "claim": "Fuelmaps' six-venue snapshot showed more displayed bids than asks within 0.5%, 1%, 2%, 5% and 10% bands around its $0.9562 mid.",
+      "evidence": [
+        "fuelmaps_xrp_depth_20261117_1100z"
+      ],
+      "stance": "supports",
+      "status": "observed",
+      "counter_evidence": [
+        "Snapshot was 7h22m old at the cutoff; order-book depth can be canceled, spoofed or consumed and does not prove executed buying."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "oi-aggregate-dispersion-20261117",
+      "domain": "derivatives",
+      "claim": "CoinGlass displayed approximately $1.94B XRP open interest while Sharpe Terminal summed approximately $1.03B across 23 tracked venues and excluded an unverified MEXC figure of $199.58M.",
+      "evidence": [
+        "coinglass_xrp_futures_20261117_dynamic",
+        "sharpe_xrp_futures_20261117_0800z"
+      ],
+      "stance": "context",
+      "status": "disagreement",
+      "counter_evidence": [
+        "Venue coverage, contract units, quote conversion, timestamps and inclusion rules are not reconciled; neither total is accepted as canonical."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "funding-cross-venue-divergence-20261117",
+      "domain": "derivatives",
+      "claim": "Broad provider displays were positive (+0.0007%/8h CoinGlass; +0.0029%/8h FundingRates median) while Hyperliquid's single-venue hourly funding was negative (-0.0014%/h).",
+      "evidence": [
+        "coinglass_xrp_futures_20261117_dynamic",
+        "fundingrates_xrp_20261117_143054z",
+        "fensory_hyperliquid_xrp_20261117_1722z"
+      ],
+      "stance": "context",
+      "status": "disagreement",
+      "counter_evidence": [
+        "Different units, venue scopes and timestamps; a single venue cannot establish market-wide positioning."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "futures-spot-turnover-and-liquidations-20261117",
+      "domain": "derivatives",
+      "claim": "CoinGlass displayed approximately $2.13B futures volume versus $446.03M spot volume (4.78x) and $3.31M liquidations with 72% attributed to longs.",
+      "evidence": [
+        "coinglass_xrp_futures_20261117_dynamic"
+      ],
+      "stance": "context",
+      "status": "observed",
+      "counter_evidence": [
+        "Provider-wide volume definitions and liquidation coverage are not independently verified; not a complete exchange-wide trade tape."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "etf-flow-partial-vs-provisional-20261116",
+      "domain": "capital_flows",
+      "claim": "CryptoKeyhole showed a partial -5.197M XRP estimate with two of four daily reporters; ByKaranteli showed $0 across five funds but explicitly marked the row provisional until settled.",
+      "evidence": [
+        "cryptokeyhole_xrp_etf_20261117_0725z",
+        "bykaranteli_xrp_etf_20261117_0909z"
+      ],
+      "stance": "disagreement",
+      "status": "partial_and_provisional",
+      "counter_evidence": [
+        "Issuer files may settle or revise the daily rows; fund universes and conversion methods differ."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "xrpl-stablecoin-stock-vs-dex-turnover-20261113",
+      "domain": "xrpl_stablecoins_and_payments",
+      "claim": "A secondary report showed XRPL stablecoin market cap of $908.21M (-8.01% week), RLUSD at $818.56M (90.13% share), while weekly DEX volume rose to $35.14M (+28.87%).",
+      "evidence": [
+        "tokenpost_xrpl_stablecoin_dex_20261115"
+      ],
+      "stance": "context",
+      "status": "observed",
+      "counter_evidence": [
+        "Different stock and flow measures; DEX turnover does not establish net capital inflow, fiat redemption or XRP bridge-asset usage."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "sec-xrp-digital-commodity-interpretation-20260317",
+      "domain": "regulation",
+      "claim": "The SEC/CFTC March 17, 2026 interpretive release lists XRP among examples of digital commodities as of the release date; the same release states a non-security crypto asset may still be offered or sold subject to an investment contract.",
+      "evidence": [
+        "sec_crypto_asset_interpretation_20260317"
+      ],
+      "stance": "supports",
+      "status": "official_interpretation",
+      "counter_evidence": [
+        "The release expressly states that a non-security crypto asset may still be offered or sold subject to an investment contract. The Howey analysis, transaction structure and issuer promises remain relevant to the particular transaction; this interpretation is not a blanket exemption for every XRP-related offering or transaction."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "sec-regulation-crypto-assets-proposal-pending-20261117",
+      "domain": "regulation",
+      "claim": "The SEC's August 18, 2026 Regulation Crypto Assets proposal contemplated $5M/4-year startup and $75M/12-month fundraising exemptions plus a conditional investment-contract safe harbor; the public comment deadline was October 20 and no final adoption was verified in this run.",
+      "evidence": [
+        "sec_regulation_crypto_assets_proposal_20260818"
+      ],
+      "stance": "context",
+      "status": "proposed_not_final",
+      "counter_evidence": [
+        "A proposal can be materially revised or not adopted; it does not itself change current legal obligations."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "clarity-act-cloture-failed-20260915",
+      "domain": "regulation_and_politics",
+      "claim": "The Senate rejected cloture on the motion to proceed to H.R. 3633, the CLARITY Act, 49-50 on September 15, 2026.",
+      "evidence": [
+        "senate_hr3633_cloture_20260915"
+      ],
+      "stance": "context",
+      "status": "legislative_delay",
+      "counter_evidence": [
+        "This was a procedural cloture vote on the motion to proceed, not a final merits vote; reconsideration or later legislative action remained possible."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "regulation-proposal-public-dissent-20261016",
+      "domain": "regulation_and_politics",
+      "claim": "John Reed Stark and Lee Reiners filed an October 16 comment opposing the SEC's Regulation Crypto Assets proposal and challenging its statutory and economic rationale.",
+      "evidence": [
+        "stark_reiners_sec_comment_20261016"
+      ],
+      "stance": "contradicts",
+      "status": "public_comment_opposition",
+      "counter_evidence": [
+        "The letter is advocacy submitted during notice-and-comment, not an SEC finding or court decision; other commenters support tailored exemptions."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "bny-ripple-custody-rails-20261027",
+      "domain": "custody_and_institutional_adoption",
+      "claim": "BNY announced custody support for XRP and RLUSD, a primary RLUSD reserve-custody role and a custody relationship with Ripple Prime.",
+      "evidence": [
+        "bny_ripple_custody_20261027"
+      ],
+      "stance": "supports",
+      "status": "official_corporate_announcement",
+      "counter_evidence": [
+        "Custody availability does not disclose client balances, lending collateral use, net deposits or actual XRP purchases."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "coinbase-rlusd-multichain-distribution-20261028",
+      "domain": "exchange_and_stablecoin_rails",
+      "claim": "Coinbase announced RLUSD availability across Prime, Exchange and its retail app with XRPL, Base and Ethereum deposits/withdrawals; Coinbase Global Exchange collateral support was described as a future rollout.",
+      "evidence": [
+        "coinbase_rlusd_20261028"
+      ],
+      "stance": "supports",
+      "status": "official_corporate_announcement",
+      "counter_evidence": [
+        "Distribution and deposit support are not proof of active Global Exchange collateral use or XRP demand."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "sbi-circle-arc-strategy-20260512",
+      "domain": "institutional_capital_and_payment_rails",
+      "claim": "SBI's public disclosures describe a $50M Circle equity investment split between SBI Holdings and SBI Shinsei Bank, a Circle-related Japan venture, and SBI participation in the Arc token presale; these are distinct corporate actions and not evidence of XRP purchases.",
+      "evidence": [
+        "sbi_circle_arc_20260512"
+      ],
+      "stance": "context",
+      "status": "official_corporate_announcements",
+      "counter_evidence": [
+        "The SBI-Circle/Arc relationships are stablecoin and tokenized-finance strategy, not direct evidence of XRP collateral, bridge volume or net XRP demand."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "macro-yields-and-fx-context-20261117",
+      "domain": "macro_and_geopolitics",
+      "claim": "Market reporting showed U.S. 10-year Treasury yields around 5.14% and 2-year yields around 4.849%; Reuters reported a strong dollar backdrop and India FX/equity-flow dynamics. These are cross-asset context, not XRP-specific causal evidence.",
+      "evidence": [
+        "marketwatch_treasury_yields_20261117",
+        "reuters_india_fx_capital_flows_20261117"
+      ],
+      "stance": "context",
+      "status": "observed",
+      "counter_evidence": [
+        "The market reports have imperfect timestamps and cannot establish XRP sensitivity without a tested time-series design."
+      ],
+      "model_eligible": false
+    }
+  ],
+  "institutional_relationships": [
+    {
+      "from": "BNY",
+      "to": "Ripple / Ripple Prime",
+      "relationship": "custody and reserve-custody relationship",
+      "status": "officially_announced",
+      "details": [
+        "BNY announced custody support for XRP and RLUSD.",
+        "BNY described itself as primary reserve custodian for RLUSD."
+      ],
+      "not_established": [
+        "No public client-level XRP balances or net XRP purchases established.",
+        "No evidence in this source that XRP is used as collateral for BNY credit."
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD / Ripple",
+      "relationship": "multichain listing and distribution",
+      "status": "officially_announced",
+      "details": [
+        "RLUSD available on Coinbase Prime, Exchange and retail app.",
+        "XRPL, Base and Ethereum deposits/withdrawals supported."
+      ],
+      "not_established": [
+        "Coinbase Global Exchange collateral support was future rollout at announcement.",
+        "No automatic XRP demand follows from RLUSD distribution."
+      ]
+    },
+    {
+      "from": "SBI Holdings and SBI Shinsei Bank",
+      "to": "Circle",
+      "relationship": "equity investment and Japan venture",
+      "status": "officially_announced",
+      "details": [
+        "Combined $50M Circle equity investment; $25M attributed to each SBI entity.",
+        "SBI and Circle established a Japan-focused venture for USDC distribution."
+      ],
+      "not_established": [
+        "Equity and distribution relationships do not prove XRP treasury allocation or XRP collateral use."
+      ]
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Arc",
+      "relationship": "token presale participation",
+      "status": "officially_announced",
+      "details": [
+        "SBI disclosed participation in the Arc token presale consortium."
+      ],
+      "not_established": [
+        "Arc participation is not an XRP purchase or XRPL transaction-flow measure."
+      ]
+    }
+  ],
+  "regulatory_timeline": [
+    {
+      "date": "2026-03-17",
+      "event": "SEC/CFTC interpretive release lists XRP as a digital commodity example; effective 2026-03-23.",
+      "source_ids": [
+        "sec_crypto_asset_interpretation_20260317"
+      ],
+      "qualification": "A non-security asset may still be sold subject to an investment contract; Howey transaction analysis remains."
+    },
+    {
+      "date": "2026-08-18",
+      "event": "SEC proposes Regulation Crypto Assets; Federal Register publication 2026-08-21; comment deadline 2026-10-20.",
+      "source_ids": [
+        "sec_regulation_crypto_assets_proposal_20260818"
+      ],
+      "qualification": "Proposal only; no final adoption verified in this run."
+    },
+    {
+      "date": "2026-09-15",
+      "event": "Senate rejects cloture on motion to proceed to H.R.3633 by 49-50.",
+      "source_ids": [
+        "senate_hr3633_cloture_20260915"
+      ],
+      "qualification": "Procedural vote, not final merits vote."
+    },
+    {
+      "date": "2026-10-16",
+      "event": "Stark/Reiners opposition comment submitted to SEC proposal file.",
+      "source_ids": [
+        "stark_reiners_sec_comment_20261016"
+      ],
+      "qualification": "Commenter position, not agency or court determination."
+    }
+  ],
+  "disagreement_register": [
+    {
+      "id": "oi-universe",
+      "issue": "XRP open interest",
+      "values": [
+        "CoinGlass approximately $1.94B",
+        "Sharpe Terminal approximately $1.03B across 23 tracked venues"
+      ],
+      "resolution": "UNRESOLVED; venue coverage, contract units, quote conversion and timestamps differ. Do not average."
+    },
+    {
+      "id": "funding-sign",
+      "issue": "Perpetual funding",
+      "values": [
+        "CoinGlass +0.0007%/8h",
+        "FundingRates +0.0029%/8h median",
+        "Hyperliquid -0.0014%/h"
+      ],
+      "resolution": "UNRESOLVED; retain per-venue values and original units."
+    },
+    {
+      "id": "etf-flow",
+      "issue": "November 16 spot ETF flow",
+      "values": [
+        "CryptoKeyhole partial -5.197M XRP (2/4 reporters)",
+        "ByKaranteli $0 provisional across five funds"
+      ],
+      "resolution": "UNRESOLVED; issuer settlement and universe coverage required."
+    },
+    {
+      "id": "spot-price",
+      "issue": "Spot/mark price",
+      "values": [
+        "Investing.com $0.9556",
+        "CoinGlass $0.9473",
+        "Hyperliquid mark $0.96149"
+      ],
+      "resolution": "Different venues, product definitions and timestamps; no synthetic composite."
+    },
+    {
+      "id": "xrpl-stock-flow",
+      "issue": "XRPL stablecoin stock versus DEX turnover",
+      "values": [
+        "Stablecoin cap -8.01% week",
+        "Weekly DEX volume +28.87%"
+      ],
+      "resolution": "Different stock/flow measures; cannot infer net capital inflow or XRP bridge usage."
+    },
+    {
+      "id": "regulatory-interpretation",
+      "issue": "SEC proposal effects",
+      "values": [
+        "SEC proposes tailored exemptions and safe harbor",
+        "Public commenters oppose statutory/economic basis; Senate CLARITY motion to proceed failed"
+      ],
+      "resolution": "Interpretation is effective; proposal is not final; legislative and notice-and-comment processes remain distinct."
+    }
+  ],
+  "hypothesis_register": [
+    {
+      "id": "H1-leverage-unwind",
+      "claim": "Recent price weakness is partly associated with a leveraged long unwind.",
+      "support": [
+        "Price weakness in the daily snapshot",
+        "CoinGlass open interest down 1.11%",
+        "CoinGlass liquidations 72% long"
+      ],
+      "counter_hypothesis": "Open-interest totals are disputed; the price and liquidation feeds are not synchronized or complete.",
+      "tests": [
+        "Normalize venue contract units and timestamp",
+        "Rebuild liquidations from venue public feeds",
+        "Compare spot net taker flow and OI change on synchronized bars"
+      ],
+      "status": "research_only"
+    },
+    {
+      "id": "H2-bid-depth-absorption",
+      "claim": "Near-price bid depth may be absorbing sell pressure.",
+      "support": [
+        "Fuelmaps showed higher displayed bids than asks across depth bands."
+      ],
+      "counter_hypothesis": "Depth can be canceled/spoofed and the snapshot is older than the price observations.",
+      "tests": [
+        "Capture raw order-book snapshots across venues",
+        "Measure depth survival and realized execution",
+        "Compare signed trade flow to depth changes"
+      ],
+      "status": "research_only"
+    },
+    {
+      "id": "H3-venue-specific-short-pressure",
+      "claim": "Some venues may have short-side pressure while broad aggregates remain net positive funding.",
+      "support": [
+        "Hyperliquid hourly funding negative while two broad displays were positive."
+      ],
+      "counter_hypothesis": "Units, venue universes and timestamps differ; no market-wide positioning inference is justified.",
+      "tests": [
+        "Capture synchronized funding and OI from each venue",
+        "Normalize funding intervals and contract type",
+        "Track cross-venue basis and dispersion"
+      ],
+      "status": "research_only"
+    },
+    {
+      "id": "H4-institutional-rails-not-demand",
+      "claim": "Custody, stablecoin distribution and SBI/Circle relationships expand institutional rails without proving direct XRP demand.",
+      "support": [
+        "BNY custody support",
+        "Coinbase RLUSD distribution",
+        "SBI-Circle equity/JV and Arc participation"
+      ],
+      "counter_hypothesis": "These rails may later create indirect XRP liquidity or collateral demand, but that transmission is unmeasured.",
+      "tests": [
+        "Find public collateral schedules and eligibility changes",
+        "Measure XRP-specific settlement and inventory changes",
+        "Separate RLUSD/USDC/JPYSC volumes from XRP bridge flows"
+      ],
+      "status": "research_only"
+    },
+    {
+      "id": "H5-stablecoin-velocity-vs-stock",
+      "claim": "XRPL DEX turnover can rise while the stablecoin stock contracts, indicating activity and capital stock are not the same variable.",
+      "support": [
+        "Reported DEX volume rose while total stablecoin market cap fell."
+      ],
+      "counter_hypothesis": "Provider scope, wallet attribution and reporting windows may not align.",
+      "tests": [
+        "Capture ledger-indexed DEX executions and trust-line balances",
+        "Reconcile RLUSD issuer supply and redemptions",
+        "Separate gross volume, unique counterparties and net flows"
+      ],
+      "status": "research_only"
+    },
+    {
+      "id": "H6-regulatory-clarity-vs-implementation-delay",
+      "claim": "SEC's XRP digital-commodity interpretation reduces one classification uncertainty while pending proposal and legislative delay leave other market-structure questions unresolved.",
+      "support": [
+        "SEC/CFTC interpretation explicitly lists XRP",
+        "Regulation Crypto Assets remains a proposal",
+        "H.R.3633 cloture failed"
+      ],
+      "counter_hypothesis": "Subsequent agency actions, court decisions or reconsideration may change the implementation path.",
+      "tests": [
+        "Monitor SEC final-rule docket S7-2026-27",
+        "Monitor Senate reconsideration and later bill text",
+        "Track custody, broker-dealer, venue and ETP rulemaking separately"
+      ],
+      "status": "research_only"
+    },
+    {
+      "id": "H7-macro-hurdle",
+      "claim": "High Treasury yields and a strong-dollar backdrop may raise the opportunity cost of speculative risk exposure.",
+      "support": [
+        "Market reports showed 10-year yield near 5.14%, 2-year near 4.849%, and a strong dollar context."
+      ],
+      "counter_hypothesis": "Cross-asset correlation is unstable and does not establish causal XRP sensitivity.",
+      "tests": [
+        "Build point-in-time macro feature series",
+        "Use chronological walk-forward tests with regime splits",
+        "Compare to price-only and volatility baselines"
+      ],
+      "status": "research_only"
+    }
+  ],
+  "prediction_status": {
+    "issued": false,
+    "status": "NOT_ISSUED",
+    "reason": "This run contains rendered public pages and secondary market snapshots without original publisher-byte receipts. Provider universes, timestamps and definitions remain disputed. No directional forecast is justified.",
+    "current_registry": {
+      "event_count": 140,
+      "exact_publisher_timestamps": 54,
+      "missing_exact_publisher_timestamps": 86,
+      "byte_exact_raw_source_receipts": 0,
+      "model_eligible_events": 0,
+      "forecast_status": "NOT_ISSUED",
+      "registry_version": "run220",
+      "captured_at_utc": "2026-11-17T16:29:24Z"
+    },
+    "this_run": {
+      "observations": 16,
+      "raw_source_receipts": 0,
+      "model_eligible_observations": 0,
+      "walk_forward_evaluation_run": false,
+      "probability_calibration_run": false,
+      "drift_evaluation_run": false,
+      "shadow_or_paper_trade_run": false
+    },
+    "baseline_policy": [
+      "naive",
+      "momentum",
+      "mean_reversion",
+      "volatility"
+    ],
+    "evaluation_requirements": [
+      "point-in-time raw receipts",
+      "chronological train/validation/test split",
+      "purged/embargoed leakage checks where labels overlap",
+      "baseline comparison",
+      "calibration and reliability assessment",
+      "regime/drift monitoring",
+      "forecast ledger with eventual outcomes"
+    ]
+  },
+  "nine_platform_map": {
+    "coordination_status": "NO_NINE_PLATFORM_LIVE_QUORUM",
+    "rule": "Mark a platform connected only after current authentication, permission scope and end-to-end data flow are tested.",
+    "platforms": [
+      {
+        "platform": "ChatGPT",
+        "status": "tested_current_runtime",
+        "authentication": "Current session active; GitHub connector read and branch-write verified in this run.",
+        "permissions": "Effective token scopes and main branch protection are not independently exposed; write was confined to the integration branch with expected-SHA guard.",
+        "data_flow": "Repository metadata, trees, PRs, CI, branch update and public web evidence read into this session; no external model dispatch.",
+        "least_privilege": "No secrets accessed; no main write; no deployment."
+      },
+      {
+        "platform": "Claude",
+        "status": "not_tested",
+        "authentication": "NOT_TESTED",
+        "permissions": "NOT_VERIFIED",
+        "data_flow": "NO_LIVE_DATA_FLOW_VERIFIED"
+      },
+      {
+        "platform": "Grok",
+        "status": "not_tested",
+        "authentication": "NOT_TESTED",
+        "permissions": "NOT_VERIFIED",
+        "data_flow": "NO_LIVE_DATA_FLOW_VERIFIED"
+      },
+      {
+        "platform": "Gemini",
+        "status": "not_tested",
+        "authentication": "NOT_TESTED",
+        "permissions": "NOT_VERIFIED",
+        "data_flow": "NO_LIVE_DATA_FLOW_VERIFIED"
+      },
+      {
+        "platform": "Copilot",
+        "status": "not_tested",
+        "authentication": "NOT_TESTED",
+        "permissions": "NOT_VERIFIED",
+        "data_flow": "NO_LIVE_DATA_FLOW_VERIFIED"
+      },
+      {
+        "platform": "Codex",
+        "status": "not_tested",
+        "authentication": "NOT_TESTED",
+        "permissions": "NOT_VERIFIED",
+        "data_flow": "NO_LIVE_DATA_FLOW_VERIFIED"
+      },
+      {
+        "platform": "Hugging Face",
+        "status": "workflow_reference_only",
+        "authentication": "NOT_TESTED; HF_TOKEN scope not verified.",
+        "permissions": "Workflow references only; no upload performed.",
+        "data_flow": "NO_LIVE_SYNC_VERIFIED"
+      },
+      {
+        "platform": "Kaggle",
+        "status": "workflow_reference_only",
+        "authentication": "NOT_TESTED; credentials not verified.",
+        "permissions": "No dataset write or submission.",
+        "data_flow": "NO_LIVE_DATA_FLOW_VERIFIED"
+      },
+      {
+        "platform": "Databricks",
+        "status": "workflow_reference_only",
+        "authentication": "NOT_TESTED; workspace credentials/scopes not verified.",
+        "permissions": "Token rotation and deployment not performed.",
+        "data_flow": "NO_WORKSPACE_READ_OR_WRITE_VERIFIED"
+      }
+    ],
+    "external_provider_dispatch": false,
+    "minority_objections": "Provider disagreements remain in the disagreement register; no model vote or consensus was manufactured."
+  },
+  "repository_ci_status_at_capture": {
+    "full_suite_on_5ff60f9": "FAILED",
+    "full_suite_run_id": 44144881384,
+    "failure": "1 failed, 4113 passed, 1 skipped, 11 warnings, 19 subtests passed; tests/test_cross_domain_audit.py failed because docs/INDEX.md omitted two existing integration docs.",
+    "pages_validation": "PASSED",
+    "dependency_audit": "PASSED",
+    "fail_closed_gate": "PASSED",
+    "main_ci_run_id": 44141992996,
+    "main_ci_failure": "Main's dev requirements omitted SciPy; tests/test_cymatics_modes.py failed import. Integration requirements-dev includes scipy>=1.13.0.",
+    "main_pages_run_id": 44141991421,
+    "main_pages_failure": "GitHub Pages Liquid build failed; deploy job was skipped.",
+    "main_sync_run_id": 44141992900,
+    "main_sync_caveat": "Workflow reported success despite a missing rich dependency and masked fallback/push errors; integration branch quarantines automatic sync."
+  },
+  "next_actions": [
+    "Add the two existing Barrot V3/RSI documents to docs/INDEX.md and rerun the full repository suite.",
+    "Capture exact-head CI after the docs-index repair and research artifact commit.",
+    "Obtain independent review of PR #1663 and verify required checks/branch protection.",
+    "Do not merge while the main-branch Pages workflow could automatically publish; no deployment authorization exists.",
+    "Continue direct public exchange ingestion with raw-byte receipts and synchronized venue timestamps.",
+    "Reconcile OI, funding and ETF flow only from matching venue/issuer scopes; preserve current disagreements.",
+    "Keep the current event registry at 140 events until evidence is properly admitted; do not fabricate raw receipts.",
+    "No directional forecast until the point-in-time dataset and out-of-sample evaluation pass."
+  ]
+}

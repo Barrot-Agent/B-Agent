@@ -1,28 +1,18 @@
-name: Barrot Sync
+name: Barrot Sync (disabled pending PR-only replacement)
+
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+
+permissions: {}
+
 jobs:
-  barrot:
+  disabled:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.11'
-      - name: Run Barrot on OpenCode
-        env:
-          OPENCODE_API_KEY: public
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Explain quarantine
+        shell: bash
         run: |
-          echo "Barrot running on OpenCode free models"
-          python b_agent.py --sync || echo "b_agent.py sync skipped - manual sync"
-      - name: Commit sync update if changed
-        run: |
-          git config user.name "Barrot"
-          git config user.email "barrot@opencode.local"
-          git add BARROT_SYNC.md || true
-          git diff --cached --quiet || git commit -m "Barrot Sync: update BARROT_SYNC.md via OpenCode"
-          git push || true
+          set -euo pipefail
+          echo "Disabled: the legacy workflow attempted to run an unsupported --sync CLI flag and could push generated content directly to main. Replace only with a reviewed PR-only flow."
+          echo "No credentials are read and no external or repository mutation is performed."

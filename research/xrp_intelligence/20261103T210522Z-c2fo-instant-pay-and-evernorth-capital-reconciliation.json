@@ -1,0 +1,317 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_institutional_capital_and_settlement_evidence",
+  "captured_at_utc": "2026-11-03T21:05:22.521Z",
+  "capture_method": "official C2FO and Ripple releases; SEC EDGAR filings; arithmetic independently recomputed",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution and verification foundation",
+  "sources": [
+    {
+      "id": "C1",
+      "publisher": "C2FO",
+      "url": "https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "source_type": "official_joint_press_release",
+      "published_at": "2026-10-27",
+      "retrieved_at_utc": "2026-11-03T21:05:22.521Z",
+      "claims": [
+        "C2FO Instant Pay financing and settlement activity is intended to use XRPL with RLUSD settlement.",
+        "Participating capital providers fund instant supplier payments; supplier receives funds in seconds against unchanged invoice terms.",
+        "C2FO says its existing Early Pay programs have helped businesses access more than $525 billion in working capital.",
+        "Instant Pay interested businesses can join a waitlist."
+      ],
+      "limitations": [
+        "Announcement and waitlist are not evidence of production throughput or committed funding capacity.",
+        "The $525B figure describes existing Early Pay programs, not Instant Pay, XRPL volume, RLUSD volume, or XRP purchases.",
+        "The press release does not identify participating capital providers, funding limits, settlement volumes, bridge-asset use, XRP collateral, or XRP acquisition requirements."
+      ]
+    },
+    {
+      "id": "C2",
+      "publisher": "Ripple",
+      "url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "source_type": "official_joint_press_release",
+      "published_at": "2026-10-27",
+      "retrieved_at_utc": "2026-11-03T21:05:22.521Z",
+      "claims": [
+        "Same C2FO Instant Pay/XRPL/RLUSD arrangement.",
+        "Ripple version describes historical Early Pay working-capital access as more than $520 billion, versus C2FO page's more than $525 billion.",
+        "RLUSD market capitalization stated as more than $2.5 billion, with more than $1 billion issued on XRPL."
+      ],
+      "limitations": [
+        "Same joint announcement, not an independent corroborating source.",
+        "$520B versus $525B wording discrepancy requires clarification; neither number is an XRP or Instant Pay flow measure.",
+        "RLUSD market capitalization and XRPL issuance are issuer/partner-reported snapshots, not audited settlement throughput."
+      ]
+    },
+    {
+      "id": "E1",
+      "publisher": "U.S. Securities and Exchange Commission / Evernorth Holdings",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm",
+      "source_type": "SEC_Form_8-K",
+      "published_at": "2026-10-23",
+      "retrieved_at_utc": "2026-11-03T21:05:22.521Z",
+      "claims": [
+        "Evernorth entered a common stock purchase agreement with CF Principal Investments LLC (Cantor) for up to 5,218,935 newly issued Class A shares.",
+        "Purchase price is 97% of applicable VWAP, subject to terms and conditions.",
+        "Evernorth may elect whether and when to direct purchases; proceeds are intended for general corporate purposes including XRP and XRP-ecosystem activity."
+      ],
+      "limitations": [
+        "Agreement capacity is not proceeds received.",
+        "Purchases are conditional; actual issuance, cash receipt and XRP acquisition require separate evidence."
+      ]
+    },
+    {
+      "id": "E2",
+      "publisher": "U.S. Securities and Exchange Commission / Evernorth Holdings",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "source_type": "SEC_Form_424B3",
+      "published_at": "2026-10-30",
+      "retrieved_at_utc": "2026-11-03T21:05:22.521Z",
+      "claims": [
+        "Final prospectus for registration statement 333-299620 covers up to 5,218,935 shares for the Cantor ELOC.",
+        "October 29 XRPN closing price shown as $14.71.",
+        "Prospectus states 97% of VWAP purchase price; 20% daily-volume limit in ordinary purchases; 4.99% Cantor beneficial-ownership cap; other commencement and purchase conditions.",
+        "Upfront commitment fee is $521,893.50, payable within five business days after the ELOC registration statement becomes effective; fee is non-refundable and can be subject to a true-up, with total commitment fees capped at $1 million.",
+        "Evernorth reports $214.1M cash and 261,919,096 XRP from private-placement subscription agreements; $214.1M cash was used to purchase 84,365,876 XRP; approximately 473M XRP held as of October 9.",
+        "Evernorth reports $30M net proceeds before expenses from 4.00% convertible senior PIK notes issued October 12, intended for general corporate purposes including XRP and ecosystem activity.",
+        "Evernorth reports $9.7M borrowed under the related Company Facility by October 7; this is intercompany borrowing, not proof of XRP purchases."
+      ],
+      "limitations": [
+        "Prospectus maximums and intentions are not actual ELOC draws or subsequent XRP purchases.",
+        "The fee payment itself was not verified in this review.",
+        "The 424B3's illustrative table reports $76.8M at a $14.71 assumed share price while its footnote says the purchase price assumes 97% of that price; independent arithmetic gives $74,467,417.83, a $2,303,116.02 difference from the unrounded full-price value. This is an unresolved internal arithmetic/description discrepancy, not a conclusion about intent.",
+        "The 473M XRP holding is a reported October 9 balance and does not establish current freely available float, custody location or deployment."
+      ]
+    },
+    {
+      "id": "E3",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/999999999526003391/xslEFFECTX01/primary_doc.xml",
+      "source_type": "SEC_Notice_of_Effectiveness",
+      "published_at": "2026-10-30",
+      "retrieved_at_utc": "2026-11-03T21:05:22.521Z",
+      "claims": [
+        "Form S-1 registration statement 333-299620 for Evernorth Holdings Inc. became effective October 30, 2026 at 4:00 p.m. ET."
+      ],
+      "limitations": [
+        "Effectiveness clears the registration-statement condition; it does not alone prove all other commencement conditions were met, that a VWAP purchase notice was sent, that shares were issued, or that proceeds were received."
+      ]
+    },
+    {
+      "id": "E4",
+      "publisher": "U.S. Securities and Exchange Commission / Evernorth Holdings",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "source_type": "SEC_preliminary_Form_S-1",
+      "published_at": "2026-10-23",
+      "retrieved_at_utc": "2026-11-03T21:05:22.521Z",
+      "claims": [
+        "Preliminary cover used an October 22 XRPN share price of $15.46 and described approximately $80.7M at full share capacity."
+      ],
+      "limitations": [
+        "The $80.7M headline equals the undiscounted share-price multiplication; at 97% of $15.46, the arithmetic is $78,264,193.05. The later October 30 prospectus uses a different $14.71 reference price. Neither is actual capital received."
+      ]
+    },
+    {
+      "id": "E5",
+      "publisher": "U.S. Securities and Exchange Commission / Evernorth Holdings",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067062/a424b3sticker8-k.htm",
+      "source_type": "SEC_filing_amendment",
+      "published_at": "2026-10-23",
+      "retrieved_at_utc": "2026-11-03T21:05:22.521Z",
+      "claims": [
+        "Confirms the October 23 ELOC agreement and its optional purchase mechanics."
+      ],
+      "limitations": [
+        "Does not independently establish subsequent draws or XRP purchases."
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "C-OBS1",
+      "classification": "confirmed_announcement",
+      "claim": "C2FO and Ripple announced C2FO Instant Pay, with financing and settlement activity supporting the service intended to run on XRPL and settle in RLUSD.",
+      "confidence": "high",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The service was still presented with a waitlist; no production transaction count, value, funding capacity or capital-provider identities were disclosed."
+      ]
+    },
+    {
+      "id": "C-OBS2",
+      "classification": "historical_operating_volume_not_xrp_flow",
+      "claim": "C2FO reports more than $525B of working-capital access through existing Early Pay programs; Ripple's copy says more than $520B.",
+      "confidence": "high_for_wording_discrepancy",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The metric is not attributed to Instant Pay, XRPL, RLUSD, XRP, or an identifiable capital pool."
+      ]
+    },
+    {
+      "id": "C-OBS3",
+      "classification": "unknown_xrp_token_role",
+      "claim": "The announced Instant Pay settlement asset is RLUSD; the release does not say XRP is the bridge asset, collateral, or a required inventory asset for the participating capital providers.",
+      "confidence": "high_for_absence_in_release",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "XRP may still be used for ledger fees or in undisclosed liquidity arrangements; actual transaction architecture and provider contracts are not public in the announcement."
+      ]
+    },
+    {
+      "id": "E-OBS1",
+      "classification": "confirmed_effective_registration_not_realized_draw",
+      "claim": "Evernorth's Cantor ELOC S-1, file 333-299620, became effective October 30 at 4:00 p.m. ET. The facility permits optional issuance/sale of up to 5,218,935 shares at 97% of applicable VWAP, subject to other conditions and caps.",
+      "confidence": "high",
+      "source_ids": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Effectiveness alone does not prove commencement conditions, a purchase notice, shares issued, cash received, or XRP acquired. No public drawdown or specific XRP purchase was located in this review through the capture time."
+      ]
+    },
+    {
+      "id": "E-OBS2",
+      "classification": "illustrative_capacity_with_arithmetic_discrepancy",
+      "claim": "The October 30 prospectus's $76.8M illustrative table amount at $14.71 corresponds to undiscounted share-price multiplication; applying the stated 97% purchase price yields $74,467,417.83.",
+      "confidence": "high_for_arithmetic",
+      "source_ids": [
+        "E2"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The issuer may have intended a different interpretation of the table; no correction or clarification was located. Treat the discrepancy as unresolved."
+      ]
+    },
+    {
+      "id": "E-OBS3",
+      "classification": "actual_historical_financing_and_asset_acquisition",
+      "claim": "Evernorth reports $214.1M of private-placement cash used to purchase 84,365,876 XRP, plus approximately 261,919,096 XRP from private-placement subscriptions, and approximately 473M XRP held at October 9. It separately reports $30M net proceeds before expenses from convertible notes issued October 12.",
+      "confidence": "high_as_issuer_filing_claim",
+      "source_ids": [
+        "E2"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "These are issuer-reported historical transactions and balances; they do not prove subsequent purchases from the ELOC or current wallet-level custody/deployment."
+      ]
+    },
+    {
+      "id": "E-OBS4",
+      "classification": "capital_outflow_not_inflow",
+      "claim": "The $521,893.50 Cantor upfront commitment fee is payable within five business days after the October 30 effectiveness date (calendar deadline approximately November 6, 2026), regardless of whether VWAP purchases occur; payment has not been verified.",
+      "confidence": "high_for_contract_term",
+      "source_ids": [
+        "E2",
+        "E3"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Payment evidence may appear in a later filing or accounting record; absence from this review is not proof of nonpayment."
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-C2FO-1",
+      "statement": "C2FO Instant Pay will create material XRPL/RLUSD settlement activity through real commercial invoice financing.",
+      "status": "plausible_but_unverified",
+      "supporting_evidence": [
+        "Joint announcement identifies a concrete trade-finance workflow and participating capital providers.",
+        "C2FO says existing Early Pay programs have substantial historical working-capital activity."
+      ],
+      "disconfirming_evidence": [
+        "Waitlist stage; no transaction volumes, launch date, providers, committed capital or adoption metrics disclosed."
+      ],
+      "xrp_price_implication": "No direct XRP demand inference until token-level liquidity/bridge use is evidenced."
+    },
+    {
+      "id": "H-C2FO-2",
+      "statement": "Instant Pay could materially increase XRP token demand through bridge liquidity or collateral.",
+      "status": "speculative",
+      "supporting_evidence": [
+        "The workflow is on XRPL, where XRP is the native asset."
+      ],
+      "disconfirming_evidence": [
+        "The release explicitly identifies RLUSD as settlement asset and does not identify XRP as bridge, collateral or working capital inventory."
+      ],
+      "xrp_price_implication": "Do not encode as a positive XRP demand feature without wallet, order-flow or contractual evidence."
+    },
+    {
+      "id": "H-ELOC-1",
+      "statement": "Evernorth's effective Cantor ELOC will lead to new XRP purchases.",
+      "status": "plausible_but_unverified",
+      "supporting_evidence": [
+        "Evernorth says a substantial portion of proceeds is intended for XRP and ecosystem activity.",
+        "The registration statement became effective."
+      ],
+      "disconfirming_evidence": [
+        "Evernorth controls whether and when to issue; purchase conditions, 20% volume cap, 4.99% ownership cap, price thresholds and potential dilution constrain activity; no draw or XRP purchase was located."
+      ],
+      "xrp_price_implication": "Treat capacity as an event/option, not realized demand."
+    },
+    {
+      "id": "H-ELOC-2",
+      "statement": "The ELOC primarily provides financing optionality and may not produce material XRP buying.",
+      "status": "plausible",
+      "supporting_evidence": [
+        "Use of proceeds includes general corporate purposes and working capital.",
+        "Evernorth has other capital sources and operating needs; actual sales are discretionary."
+      ],
+      "disconfirming_evidence": [
+        "The issuer states it expects a substantial portion of any facility proceeds to acquire additional XRP."
+      ],
+      "xrp_price_implication": "Monitor actual notices, shares, cash and on-chain acquisitions separately."
+    },
+    {
+      "id": "H-CAPITAL-1",
+      "statement": "Institutional ecosystem announcements may outpace realized token-level capital flows.",
+      "status": "plausible",
+      "supporting_evidence": [
+        "C2FO's $520B-$525B historical Early Pay figure is not Instant Pay volume.",
+        "ELOC capacity is conditional and optional; the table has an unresolved arithmetic discrepancy."
+      ],
+      "disconfirming_evidence": [
+        "Subsequent production throughput, verified financing receipts, XRP purchases and bridge-liquidity usage could demonstrate actual conversion."
+      ],
+      "xrp_price_implication": "Forecast features must use realized flows, not announcement headlines."
+    }
+  ],
+  "model_feature_policy": [
+    "Never treat C2FO's $520B-$525B legacy Early Pay figure as Instant Pay, XRPL, RLUSD or XRP flow.",
+    "Represent C2FO Instant Pay as an announcement/waitlist event until production volume, participating providers and actual settlement records are available.",
+    "Treat RLUSD issuance/circulation on XRPL separately from XRP demand; require explicit bridge-liquidity or XRP inventory evidence before adding XRP-flow features.",
+    "Do not enter the ELOC's $76.8M table amount, $80.7M preliminary headline or corrected arithmetic as realized capital. Record registration effectiveness, purchase notices, issued shares, cash receipts and XRP purchases as separate events.",
+    "Treat the $521,893.50 commitment fee as a potential/contractual cash outflow, not an inflow; verify payment independently.",
+    "Separate historical private-placement cash, XRP in-kind contributions, convertible-note proceeds, intercompany borrowing and new ELOC capacity.",
+    "Use point-in-time timestamps and preserve filing versions; do not backfill later disclosures into earlier feature windows."
+  ],
+  "next_actions": [
+    "Check whether the $521,893.50 upfront commitment fee was paid by the contractual deadline and whether Evernorth disclosed commencement or any VWAP purchase notices.",
+    "Monitor subsequent Evernorth share issuances, proceeds, XRP wallet movements and treasury-per-share changes.",
+    "Track C2FO Instant Pay waitlist-to-production conversion, named capital providers, transaction counts/value, RLUSD settlement, and any explicit XRP bridge/collateral use.",
+    "Reconcile C2FO's $520B versus $525B historical Early Pay wording discrepancy.",
+    "Reconcile the ELOC prospectus illustrative table's 97% arithmetic discrepancy with any amendment or issuer clarification.",
+    "Continue Coinbase collateral utilization and Circle Q3 analysis; do not conflate RLUSD/USDC settlement with XRP bridge demand.",
+    "Build these distinctions into the point-in-time XRP feature store and walk-forward evaluation."
+  ],
+  "safety": {
+    "lawful_public_sources_only": true,
+    "private_data_accessed": false,
+    "credentials_accessed": false,
+    "unauthorized_access": false,
+    "market_manipulation": false,
+    "real_money_actions": false,
+    "paper_trading": false
+  },
+  "forecast_status": {
+    "directional_forecast_issued": false,
+    "reason": "Announcement/financing capacity is not realized XRP flow; the historical feature store and leakage-safe walk-forward evaluation are not complete."
+  }
+}

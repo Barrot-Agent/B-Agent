@@ -1,0 +1,263 @@
+{
+  "run_id": "Run123B",
+  "checked_at_utc": "2026-11-10T07:37:00Z",
+  "parent_integration_sha": "ddf3a2c1ca45c41acbacb9836f2c3978e8d55d58",
+  "main_sha": "d4d43be3427375cf79d190e768976de062e20287",
+  "exact_head_verification": {
+    "tested_sha": "ddf3a2c1ca45c41acbacb9836f2c3978e8d55d58",
+    "ci_run": 42776159334,
+    "ci_conclusion": "success",
+    "full_suite_passed": 1347,
+    "failed": 0,
+    "subtests_passed": 8,
+    "inclusive_coverage_pct": 59.48,
+    "core_suite_passed": 677,
+    "core_subtests_passed": 8,
+    "wheel_build_install_and_primary_mission_verification": "passed",
+    "dependency_audit_run": 42776159082,
+    "dependency_audit_conclusion": "success",
+    "manifests_audited": 6,
+    "known_vulnerabilities": 0,
+    "fail_closed_gate_run": 42776159073,
+    "fail_closed_gate_conclusion": "success",
+    "coderabbit": "skipped",
+    "cache_warning": "Actions cache budget is read-only; cache save failed after all tests and wheel verification passed."
+  },
+  "correction_to_prior_artifact": {
+    "prior_artifact": "research/xrp_intelligence/20261110T071743Z-run123-spot-depth-etf-flow-source-reconciliation.json",
+    "incorrect_field": "etf_flow_reconciliation.cryptokeyhole.nov_9_status",
+    "prior_claim": "none of four daily-tracked funds had published a 9 Nov file",
+    "corrected_claim": "as of 2026-11-10 07:12 UTC, three of four daily-tracked funds had published 9 Nov holdings; Franklin Templeton XRPZ remained outstanding",
+    "reason": "The CryptoKeyhole page had refreshed after the earlier capture. Preserve the earlier artifact as a point-in-time retrieval but do not use its stale status as current."
+  },
+  "cryptokeyhole_issuer_holdings_snapshot": {
+    "source": "https://cryptokeyhole.com/etf-flows/xrp/",
+    "page_updated_utc": "2026-11-10T07:12:00Z",
+    "listed_us_spot_funds": 6,
+    "daily_tracked_funds": 4,
+    "nov_9_status": "partial 3 of 4 daily-tracked funds; waiting for Franklin Templeton XRPZ",
+    "nov_9_partial_flow_xrp": -9216553,
+    "nov_9_partial_flow_usd": -10100000,
+    "nov_9_partial_funds": {
+      "Bitwise_XRP": {
+        "holdings_xrp": 406770578,
+        "net_flow_xrp": -8594551.4,
+        "issuer_file_observed_utc_window": [
+          "2026-11-10T01:37:00Z",
+          "2026-11-10T01:42:00Z"
+        ]
+      },
+      "Canary_XRPC": {
+        "holdings_xrp": 242535412,
+        "net_flow_xrp": -427341.2,
+        "issuer_file_observed_utc_window": [
+          "2026-11-10T05:22:00Z",
+          "2026-11-10T05:27:00Z"
+        ]
+      },
+      "TwentyOneShares_TOXR": {
+        "holdings_xrp": 107100961,
+        "net_flow_xrp": -194660.1,
+        "issuer_file_stamp_utc": "2026-11-10T06:01:00Z"
+      }
+    },
+    "missing_fund": {
+      "Franklin_XRPZ": {
+        "latest_holdings_xrp": 310430333,
+        "latest_holdings_date": "2026-11-06",
+        "latest_file_publication_utc_window": [
+          "2026-11-09T23:47:00Z",
+          "2026-11-09T23:52:00Z"
+        ],
+        "nov_9_file": "not yet published as of 2026-11-10T07:12:00Z"
+      }
+    },
+    "excluded_funds": {
+      "Grayscale_GXRP": "Not collected daily; automated access refused by issuer site. Latest displayed holding is from the 30 June 2026 SEC 10-Q.",
+      "REX_Osprey_XRPR": "Excluded from daily total because it is a 1940 Act fund with exposure partly through other ETPs and its direct-only file does not represent total holdings."
+    },
+    "latest_complete_day": {
+      "date": "2026-11-06",
+      "funds_reported": "4 of 4 daily-tracked funds",
+      "flow_xrp": -752048,
+      "flow_usd": -887000,
+      "five_complete_sessions_xrp": -765403,
+      "cumulative_from_2026_10_23_to_2026_11_06_xrp": 2622459,
+      "cumulative_from_2026_10_23_to_2026_11_06_usd": 3450000,
+      "sessions": 11,
+      "inflow_days": 2,
+      "outflow_days": 8,
+      "nov_9_partial_excluded_from_cumulative": true
+    },
+    "method": "Each fund's XRP flow is the change in its issuer-reported holdings between US trading days. USD values use CryptoKeyhole's own XRP/USD close for the UTC day. Missing funds are not filled or estimated; a daily total is partial until all four daily-tracked issuers publish.",
+    "source_independence": "CryptoKeyhole says it reads issuer files every five minutes and does not work around issuer sites that refuse automated access. It is a distinct collector, but underlying files are the same issuer records used by other trackers."
+  },
+  "issuer_page_cross_checks": {
+    "Bitwise": {
+      "source": "https://bitxrpetf.com/",
+      "official_page_holdings_xrp": 406770577.61,
+      "official_page_data_as_of": "2026-11-08",
+      "official_page_net_assets_usd": 444762949.56,
+      "shares_outstanding": 36440000,
+      "digital_asset_custodian": "Coinbase Custody Trust Co., LLC",
+      "trust_custodian": "BNY Mellon",
+      "discrepancy": "CryptoKeyhole labels essentially the same balance as 9 Nov. The issuer page displays 11/08. The amount agrees to rounding; the date label differs."
+    },
+    "Canary": {
+      "source": "https://canaryetfs.com/xrpc/",
+      "official_page_data_as_of": "2026-11-06",
+      "official_page_net_assets_usd": 286858926.41,
+      "custodians": [
+        "BitGo Bank & Trust, N.A.",
+        "Gemini Trust Company LLC"
+      ],
+      "discrepancy": "Issuer summary page remained at 6 Nov while CryptoKeyhole reported a 9 Nov holdings file observed 10 Nov 05:22-05:27 UTC. The newer holdings were not independently displayed on the issuer summary page."
+    },
+    "TwentyOneShares": {
+      "source": "https://www.21shares.com/en-us/products-us/toxr",
+      "official_page_data_as_of": "2026-11-09",
+      "official_page_aum_usd": 117095818.31,
+      "shares_outstanding": 11000000,
+      "nav_per_share_usd": 10.65,
+      "cross_check": "Official AUM and share count are consistent with the 9 Nov TOXR issuer-file date, but the public summary page does not itself expose the XRP holding amount in the reviewed view."
+    },
+    "Franklin": {
+      "source": "https://cryptokeyhole.com/xrpz-xrp-holdings/",
+      "latest_file_date": "2026-11-06",
+      "holdings_xrp": 310430333,
+      "shares_outstanding": 28600000,
+      "status": "No 9 Nov holdings file verified."
+    }
+  },
+  "independent_aggregator_reconciliation": {
+    "Alpha_Coinglass": {
+      "source": "https://alphafinance.io/etf/xrp/",
+      "method": "Coinglass commercial API feed; Alpha displays the provider's published figures.",
+      "reported_nov_9_total_usd": -10400000,
+      "funds_reported": "5 of 5",
+      "components_usd": {
+        "Bitwise": -9400000,
+        "Canary": -811400,
+        "TOXR": -212900,
+        "Franklin": 0,
+        "Grayscale": 0
+      },
+      "rolling_30_session_usd": 8900000,
+      "cumulative_usd": 1720000000,
+      "limitation": "Franklin and Grayscale zeroes are not independently confirmed by issuer daily holdings files in this run."
+    },
+    "CryptoETF_today": {
+      "source": "https://cryptoetf.today/en/xrp-etf-flows",
+      "methodology": "https://cryptoetf.today/en/methodology",
+      "method": "(shares(T+1)-shares(T))*NAV(T), generally T+1, with source-specific same-day timing exceptions.",
+      "reported_nov_9_total_usd": -10300000,
+      "funds_reported": "3 of 5",
+      "components_usd": {
+        "Bitwise": -9400000,
+        "Canary": -700000,
+        "TOXR": -200000
+      },
+      "missing": [
+        "XRPZ Franklin",
+        "GXRP Grayscale"
+      ],
+      "rolling_30_session_usd": 115000000,
+      "cumulative_usd": 1800000000,
+      "internal_inconsistency": "Detailed table and top summary say 3/5, but a lower summary line says 5/5. Use the detailed 3/5 status."
+    },
+    "comparison": {
+      "CryptoKeyhole_nov_9_partial_usd": -10100000,
+      "CryptoETF_nov_9_partial_usd": -10300000,
+      "Alpha_Coinglass_nov_9_usd": -10400000,
+      "spread_usd": 300000,
+      "canary_component": {
+        "CryptoKeyhole_xrp": -427341.2,
+        "CryptoKeyhole_implied_usd_approx": -468304,
+        "CryptoETF_usd": -700000,
+        "Alpha_Coinglass_usd": -811400
+      },
+      "conclusion": "All three report a broadly similar partial outflow, but Canary's component differs materially. The sources use holdings-change, share-count/NAV and Coinglass-feed methods, with different fund coverage and timing. Do not average."
+    },
+    "period_warning": "Alpha's 30-session +$8.9M, CryptoETF's +$115M and CryptoKeyhole's 11-complete-session +$3.45M are not like-for-like because periods, fund universes and methods differ."
+  },
+  "model_eligibility": {
+    "nov_9_etf_flow": "NOT_ADMITTED",
+    "reason": "Partial coverage, source-method disagreement, issuer publication timing differences and unresolved Canary component discrepancy.",
+    "missing_values": "null, never zero-filled",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "source_register": [
+    {
+      "id": "cryptokeyhole_xrp_flows",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "retrieved_page_update_utc": "2026-11-10T07:12:00Z",
+      "type": "issuer-file holdings-change collector"
+    },
+    {
+      "id": "cryptokeyhole_bitwise_holdings",
+      "url": "https://cryptokeyhole.com/xrp-xrp-holdings/",
+      "issuer": "Bitwise",
+      "file_observed_utc_window": [
+        "2026-11-10T01:37:00Z",
+        "2026-11-10T01:42:00Z"
+      ]
+    },
+    {
+      "id": "cryptokeyhole_canary_holdings",
+      "url": "https://cryptokeyhole.com/xrpc-xrp-holdings/",
+      "issuer": "Canary",
+      "file_observed_utc_window": [
+        "2026-11-10T05:22:00Z",
+        "2026-11-10T05:27:00Z"
+      ]
+    },
+    {
+      "id": "cryptokeyhole_toxr_holdings",
+      "url": "https://cryptokeyhole.com/toxr-xrp-holdings/",
+      "issuer": "21Shares",
+      "file_issuer_stamp_utc": "2026-11-10T06:01:00Z"
+    },
+    {
+      "id": "cryptokeyhole_franklin_holdings",
+      "url": "https://cryptokeyhole.com/xrpz-xrp-holdings/",
+      "issuer": "Franklin Templeton",
+      "latest_file_date": "2026-11-06"
+    },
+    {
+      "id": "bitwise_official",
+      "url": "https://bitxrpetf.com/"
+    },
+    {
+      "id": "canary_official",
+      "url": "https://canaryetfs.com/xrpc/"
+    },
+    {
+      "id": "21shares_official",
+      "url": "https://www.21shares.com/en-us/products-us/toxr"
+    },
+    {
+      "id": "alpha_coinglass",
+      "url": "https://alphafinance.io/etf/xrp/"
+    },
+    {
+      "id": "cryptoetf_methodology",
+      "url": "https://cryptoetf.today/en/methodology"
+    }
+  ],
+  "actions": {
+    "new_branch": false,
+    "new_pr": false,
+    "code_changes": false,
+    "research_artifact_created": true,
+    "durable_handoff_correction": true,
+    "merged_prs": [],
+    "closed_prs": [],
+    "deployment": false,
+    "secret_rotation": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money_action": false,
+    "force_push": false,
+    "destructive_worktree_operation": false
+  }
+}
