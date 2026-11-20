@@ -10,7 +10,7 @@ const MAX_ATTEMPTS = 3;
 const AGENT_CARD = {
   name: "Barrot V3",
   description: "Authenticated task gateway to the existing Barrot OpenCode runtime. Tasks are queued durably and executed by the connected Barrot worker.",
-  url: "https://barrot-a2a.amazonprostarelite.workers.dev/",
+  url: "https://barrot-a2a-worker.amazonprostarelite.workers.dev/",
   version: "2.0.0",
   capabilities: {
     streaming: false,
@@ -48,7 +48,7 @@ const OPENAPI = {
     version: "2.0.0",
     description: "Durable task submission and result retrieval for the existing Barrot OpenCode runtime."
   },
-  servers: [{ url: "https://barrot-a2a.amazonprostarelite.workers.dev" }],
+  servers: [{ url: "https://barrot-a2a-worker.amazonprostarelite.workers.dev" }],
   security: [{ BarrotAuth: [] }],
   components: {
     securitySchemes: {
