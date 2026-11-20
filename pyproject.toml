@@ -42,6 +42,15 @@ integrations = [
     "cdp-sdk>=1.0.0",
 ]
 
+# Optional audio analysis, MIDI export, and SoundFont-backed WAV rendering.
+# FluidSynth also requires a native system library and a user-provided SF2 file.
+music = [
+    "librosa>=0.10.2",
+    "pretty_midi>=0.2.10",
+    "pyfluidsynth>=1.3.3",
+    "scipy>=1.13.0",
+]
+
 [tool.setuptools.packages.find]
 # Explicit scope: the repo root is a flat layout holding several __init__.py
 # directories (tests, data, examples, ...). Without this, setuptools

@@ -5,6 +5,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 
 ## docs
 
+- docs/MUSICAL_DNA_ENGINE.md - Musical DNA transmutation and recursive creative learning
 - docs/A2A_OPENCODE_TASK_BRIDGE.md - Barrot A2A → OpenCode Task Bridge
 - docs/ADVANCED_ENERGY_INGESTION.md - 🔬 Advanced Energy Systems Data Ingestion Manifest
 - docs/ADVANCED_MONETIZATION_PROTOCOLS.md - 💰 Barrot Advanced Monetization Protocols
