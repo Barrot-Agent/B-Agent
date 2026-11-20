@@ -9,6 +9,7 @@ from scripts.barrot_a2a_runner import (
     WorkerClient,
     build_prompt,
     execute_task,
+    fit_result_payload,
     redact,
     run_once,
 )
@@ -128,6 +129,24 @@ class RunnerQueueTests(unittest.TestCase):
                 finally:
                     lock.close()
                 self.assertFalse(runner_is_active())
+
+
+    def test_completion_result_stays_under_encoded_payload_limit(self) -> None:
+        import json
+        result = {
+            "stdout": ('"\\n😀' * 30_000),
+            "stderr": ('\\t\\\\' * 10_000),
+            "exit_code": 0,
+        }
+        bounded = fit_result_payload(result)
+        envelope = {
+            "worker_id": "worker",
+            "success": True,
+            "error": None,
+            "result": bounded,
+        }
+        self.assertLess(len(json.dumps(envelope, ensure_ascii=False).encode("utf-8")), 96_000)
+        self.assertIn("[truncated]", bounded["stdout"] + bounded["stderr"])
 
 
 if __name__ == "__main__":
