@@ -83,7 +83,7 @@ def recommend_resolution(evidence: ConflictEvidence) -> ResolutionDecision:
 
     if evidence.current_is_authoritative and evidence.incoming_is_superseded_or_invalid:
         return ResolutionDecision(
-            ResolutionChoice.CURRENT, False, 0.95,
+            ResolutionChoice.CURRENT, False, 0.0,
             "Evidence identifies the current version as authoritative and the incoming change as superseded or invalid.",
             checks, asdict(evidence),
         )
@@ -96,7 +96,7 @@ def recommend_resolution(evidence: ConflictEvidence) -> ResolutionDecision:
         and evidence.protected_area_reviewed
     ):
         return ResolutionDecision(
-            ResolutionChoice.BOTH, False, 0.90,
+            ResolutionChoice.BOTH, False, 0.0,
             "Both changes are required and validated; this is a recommendation only. Explicit human authorization is required before applying it.",
             checks, asdict(evidence),
         )
@@ -109,14 +109,14 @@ def recommend_resolution(evidence: ConflictEvidence) -> ResolutionDecision:
         and evidence.protected_area_reviewed
     ):
         return ResolutionDecision(
-            ResolutionChoice.INCOMING, False, 0.90,
+            ResolutionChoice.INCOMING, False, 0.0,
             "Incoming is the intended PR improvement and passed validation; this is a recommendation only. Explicit human authorization is required before applying it.",
             checks, asdict(evidence),
         )
 
     if evidence.current_is_authoritative:
         return ResolutionDecision(
-            ResolutionChoice.CURRENT, False, 0.75,
+            ResolutionChoice.CURRENT, False, 0.0,
             "Current is marked authoritative, but the evidence is insufficient for automatic application.",
             checks, asdict(evidence),
         )
