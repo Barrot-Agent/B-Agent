@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T071609Z-REUTERS-BINANCE-PHASE1-PR1450-REPAIR",
+  "captured_at_utc": "2026-11-01T07:16:09Z",
+  "branch": "verify/xrp-ledger-archive-20261101T070712Z",
+  "verified_this_run": [
+    "Reuters reports the first Binance withdrawal phase began after 06:00 GMT, BTC withdrawals resumed, and XRP is included among 15 phase-one assets.",
+    "Reuters reports Binance says it bought approximately $6B of replacement tokens using company funds; funding sources named are SAFU/bitcoin reserve, Futures Insurance Fund and corporate treasury; Yi He said 50% of SAFU funds would be used and replenished toward $1B.",
+    "The approximately $6B purchase figure is aggregate across assets; XRP-specific quantity, venue and timing remain undisclosed.",
+    "PR #1450 exact-head validator failure root cause was isolated to six malformed shard wrappers, six pointer path/git_blob_sha omissions, stale archive_policy totals and latest_snapshot missing snapshot_reference/index_format_version metadata."
+  ],
+  "unresolved": [
+    "XRP-specific successful withdrawal transaction and asset-level status.",
+    "XRP-specific share of Binance aggregate replacement purchases.",
+    "Raw escrow Destination fields and post-release disposition.",
+    "Current Binance attacker-wallet balance.",
+    "PR #1450 archive repair and exact-head revalidation.",
+    "Approval workflow zero-job anomaly root cause.",
+    "Full repository CI, complete dependency scan and security-alert review."
+  ],
+  "next_actions": [
+    "Append corrected copies of the six malformed shard wrappers and repair all six pointer entries with path/git_blob_sha.",
+    "Reconcile archive_policy array totals, ledger_metrics and latest_snapshot snapshot_reference pointer to immutable snapshot file.",
+    "Append Reuters phase-one update as a source revision under the existing Reuters source ID, plus one run update and one limitation.",
+    "Run exact-head archive validator and fail-closed gate on the repaired PR #1450 head; record actual results only.",
+    "Verify XRP-specific withdrawal success and raw escrow Destination/follow-on transactions.",
+    "Keep PR #1449 and #1450 draft/unmerged; no merge without explicit authorization.",
+    "Continue institutional capital/collateral analysis and leakage-safe prediction evaluation."
+  ],
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "manual_workflow_dispatch_performed": false,
+    "secret_access": false,
+    "paper_position_mutated": false,
+    "real_money_trade_performed": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

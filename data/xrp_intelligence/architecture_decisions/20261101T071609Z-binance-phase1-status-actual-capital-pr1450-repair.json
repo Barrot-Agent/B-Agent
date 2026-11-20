@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T071609Z-BINANCE-PHASE1-STATUS-ACTUAL-CAPITAL-PR1450-REPAIR",
+  "captured_at_utc": "2026-11-01T07:16:09Z",
+  "title": "Separate reported Binance phase-one start from XRP-specific withdrawal success; keep aggregate replacement capital separate from XRP demand; repair archive schema and pointers",
+  "status": "DECIDED_NOT_EXECUTED",
+  "context": [
+    "Reuters reports phase one began after 06:00 GMT, BTC withdrawals resumed, and XRP is among 15 phase-one assets. Binance Update #4 lists XRP for progressive availability.",
+    "Reuters reports Binance bought approximately $6B of replacement tokens using company funds; funding sources include SAFU/bitcoin reserve, Futures Insurance Fund and treasury. The XRP-specific component is undisclosed.",
+    "The Binance status page rendered no records at the 07:07 capture; no XRP-specific successful withdrawal was independently observed.",
+    "PR #1450 exact-head archive validation failed because six latest shard pointer entries lacked path/git_blob_sha, the referenced shard wrappers used incorrect record_type/archive_schema_version/array_name metadata, archive_policy counts remained stale, and latest_snapshot omitted record_type snapshot_reference/index_format_version."
+  ],
+  "decisions": [
+    "Classify Binance phase-one start as Reuters-reported and company-announced; BTC withdrawals are reported resumed; XRP is included in the first phase but XRP-specific successful withdrawal remains unverified.",
+    "Record approximately $6B replacement-token purchases as aggregate company-reported capital, not XRP-specific buying or proof of XRP market demand.",
+    "Preserve Binance's 95% aggregate recovery and top-ten 100% backing claims as company-reported; do not infer XRP-specific acquisitions.",
+    "Keep the 1B XRP escrow event tracker-reported; Destination and subsequent disposition remain unknown.",
+    "Repair the six malformed archive shard wrappers using the required xrp_research_ledger_archive_shard schema; add path/git_blob_sha to pointer entries; reconcile archive_policy arrays and make latest_snapshot a valid snapshot_reference.",
+    "Keep PR #1450 draft/unmerged until exact-head archive validation and fail-closed gate pass. No merge or manual dispatch."
+  ],
+  "ingestion_contract": [
+    "Record Reuters publication time 06:49 UTC separately from retrieval time; classify its operational status details as reporting of Binance statements/status page.",
+    "Capture successful XRP withdrawal transaction evidence or asset-specific Binance status; do not equate BTC resumption with XRP availability.",
+    "Separate aggregate replacement purchases, SAFU drawdown, company reserves and any XRP-specific purchases in the capital-flow ledger.",
+    "Require archive shard record_type xrp_research_ledger_archive_shard, archive_schema_version 1.0, array_name, chunk_index/count, record_count and records; require pointer path and git_blob_sha.",
+    "Require archive_policy arrays, ledger_metrics, latest_snapshot pointer and immutable snapshot file to reconcile before validation."
+  ],
+  "repository_safety": {
+    "main_sha": "760b61e216f1044d4faaa359962939757d9d6adf",
+    "pr1449": 1449,
+    "pr1449_head_sha": "dce8be8e8df59390c7a986c7ff7a2b699cb18593",
+    "pr1449_ci_run_id": 41283447287,
+    "pr1449_tests_passed": 367,
+    "pr1449_subtests_passed": 8,
+    "pr1449_gate_run_id": 41283447301,
+    "pr1449_gate_status": "PASS_MERGE_DISABLED",
+    "pr1450": 1450,
+    "pr1450_head_sha": "a057de9a35e3a956457c95aeb404d51cfee2d0ca",
+    "pr1450_validator_run_id": 41284073355,
+    "pr1450_validator_status": "FAIL_ARCHIVE_SCHEMA_AND_POINTER_RECONCILIATION",
+    "pr1450_gate_run_id": 41284073354,
+    "pr1450_gate_status": "PASS_MERGE_DISABLED",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "explicit_user_approval_required": true
+  },
+  "unresolved": [
+    "XRP-specific successful withdrawal and current asset-level status.",
+    "XRP-specific component of Binance's approximately $6B aggregate replacement purchases.",
+    "Raw escrow Destination fields and subsequent disposition.",
+    "Current attacker-wallet balance.",
+    "Approval workflow push-event/zero-job root cause.",
+    "Full repository CI, dependency scan and security-alert review.",
+    "Archive exact-head revalidation after schema/pointer repair."
+  ],
+  "source_ids": [
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+  ],
+  "feature_admission": {
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED",
+    "reason": "The Reuters phase-one report and aggregate replacement purchases do not establish XRP-specific transactions or capital flows."
+  }
+}

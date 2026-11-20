@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "BUNDLE-20261101T081500Z-COINBASE-XRP-COLLATERAL-SBI-CIRCLE",
+  "captured_at_utc": "2026-11-01T08:15:00Z",
+  "source_count": 2,
+  "new_source_ids": [
+    "SRC-20261101T081500Z-COINBASE-INTX-XRP-COLLATERAL-ELIGIBILITY",
+    "SRC-20261101T081500Z-COINBASE-MORPHO-CBXRP-USDC-LOANS"
+  ],
+  "existing_source_references": [
+    "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+    "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+    "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+    "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+    "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q",
+    "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+    "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION",
+    "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE",
+    "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+    "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+    "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+    "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS",
+    "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT",
+    "SRC-20261101T064027Z-CIRCLE-USDC-TRANSPARENCY",
+    "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+    "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261101T081500Z-COINBASE-INTX-XRP-COLLATERAL-ELIGIBILITY",
+      "publisher": "Coinbase International Exchange",
+      "title": "Cross collateral: eligible collateral assets for perpetual futures",
+      "url": "https://help.coinbase.com/en/international-exchange/collateral-management/cross-collateral",
+      "retrieved_at_utc": "2026-11-01T08:15:00Z",
+      "evidence_class": "PRIMARY_PRODUCT_DOCUMENTATION",
+      "claim": "XRP is listed as an eligible cross-collateral asset for Coinbase International Exchange perpetual futures; collateral weights, asset limits, maintenance margin and automatic liquidation apply.",
+      "limitation": "Eligibility does not disclose actual XRP collateral balances or utilization."
+    },
+    {
+      "id": "SRC-20261101T081500Z-COINBASE-MORPHO-CBXRP-USDC-LOANS",
+      "publisher": "Coinbase",
+      "title": "Borrow USDC against crypto including XRP through Morpho on Base",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/borrow/borrow-crypto",
+      "retrieved_at_utc": "2026-11-01T08:15:00Z",
+      "evidence_class": "PRIMARY_PRODUCT_DOCUMENTATION",
+      "claim": "Eligible US users can borrow up to $100,000 USDC against XRP through a Morpho-backed onchain loan on Base using Coinbase's interface; collateral is represented as cbXRP and subject to asset-specific LTV/liquidation rules.",
+      "limitation": "Morpho onchain loan, not Coinbase balance-sheet lending; aggregate XRP collateral and utilization undisclosed."
+    }
+  ],
+  "existing_claim_crosswalk": [
+    {
+      "source_id": "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q",
+      "claim": "Q3 2026 10-Q does not separately name XRP in recognized collateral tables. Lending collateral includes BTC, ETH and $9.903M aggregate other crypto; no individual other asset exceeded 5% of total crypto collateral. Recognized derivatives collateral lists BTC and ETH at September 30. This is actual recognized collateral, not the full eligibility universe."
+    },
+    {
+      "source_id": "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+      "claim": "Circle Q2 2026 10-Q reports $655.3M H1 distribution costs to Coinbase; USDC circulation $73.3B, onchain volume $14.8T and 27% market share. The 19.5% platform statistic is Circle's platform, not Coinbase's."
+    },
+    {
+      "source_id": "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+      "claim": "SBI disclosed approximately 9% Ripple shareholding as of 2025 and SBI Remit XRP bridge use since 2021; current ownership percentage not refreshed."
+    },
+    {
+      "source_id": "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+      "claim": "SBI Ripple Asia is a 60% SBI / 40% Ripple JV; XRPL tokenized-deposit and cross-border research POCs do not establish native XRP use in those POCs."
+    },
+    {
+      "source_id": "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+      "claim": "SBI and Circle formed a Japan JV; SBI Holdings and SBI Shinsei Bank announced a combined $50M investment in Circle's 2025 IPO."
+    },
+    {
+      "source_id": "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+      "claim": "SBI VC Trade RLUSD service launched June 24, 2026; current network support Ethereum, with XRPL planned, not verified live."
+    },
+    {
+      "source_id": "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+      "claim": "JPYSC is trust-issued and initially distributed through SBI VC Trade accounts; public-chain circulation not established."
+    },
+    {
+      "source_id": "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+      "claim": "SBI/Startale joined Open Standard with Coinbase among founding partners; JPYSC/OUSD interoperability is a PoC under consideration, not a live XRP route."
+    },
+    {
+      "source_id": "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+      "claim": "Tokyo SBIC is a regional SME investment/consultation company, distinct from SBI Holdings and the SBI-Circle Japan JV; ChatGPT seminars are educational."
+    }
+  ],
+  "notes": [
+    "New Coinbase documents establish eligibility, not actual collateral utilization.",
+    "The Q3 10-Q collateral tables report recognized balances at September 30, not the full eligibility universe.",
+    "The cbXRP/Morpho USDC route is on Base, not a direct Circle loan or Coinbase balance-sheet loan.",
+    "No new market feature admitted; forecast NOT_ISSUED."
+  ]
+}

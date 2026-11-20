@@ -1,0 +1,288 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T010800Z-BINANCE-XRP-ATTACKER-ADDRESS-ISSUER-FREEZES",
+  "source_id": "SRC-20261031T175218Z-BINANCE-RECOVERY-UPDATE3-RECONCILIATION",
+  "captured_at_utc": "2026-11-01T01:08:00Z",
+  "data_cutoff_utc": "2026-10-31T16:51:00Z",
+  "title": "Binance cross-chain theft: 233.46M XRP isolated in attacker account; Circle/Ripple issuer freezes; FBI TraderTraitor attribution",
+  "classification": "CROSS_CHAIN_SECURITY_INCIDENT; XRP_NONFREEZABLE_OVERHANG; ISSUER_FREEZE_ASYMMETRY; DPRK_ATTRIBUTION_OFFICIAL",
+  "observations": {
+    "incident": {
+      "first_xrpl_outflows_utc": "2026-10-29T20:05:00Z",
+      "last_large_xrpl_outflow_utc": "2026-10-29T20:09:20Z",
+      "source_binance_hot_wallets": 5,
+      "xrpl_stolen_xrp": 233461943.1,
+      "attacker_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "transactions": [
+        {
+          "ctid": "C66FBF0500670000",
+          "time_utc": "2026-10-29T20:05:00Z",
+          "amount_xrp": 185017485.5,
+          "from": "rDAE53…"
+        },
+        {
+          "ctid": "C66FBF2100960000",
+          "time_utc": "2026-10-29T20:07:00Z",
+          "amount_xrp": 14693052.5,
+          "from": "rBtttd…"
+        },
+        {
+          "ctid": "C66FBF3400010000",
+          "time_utc": "2026-10-29T20:08:20Z",
+          "amount_xrp": 13140680.4,
+          "from": "rfQ9Ec…"
+        },
+        {
+          "ctid": "C66FBF3C01AA0000",
+          "time_utc": "2026-10-29T20:08:50Z",
+          "amount_xrp": 11955157.6,
+          "from": "rarG6F…"
+        },
+        {
+          "ctid": "C66FBF4200120000",
+          "time_utc": "2026-10-29T20:09:20Z",
+          "amount_xrp": 8655567.1,
+          "from": "rNU4eA…"
+        }
+      ],
+      "failed_retries": [
+        {
+          "ctid": "C66FBFBB00470000",
+          "time_utc": "2026-10-29T20:17:00Z",
+          "result": "tecUNFUNDED_PAYMENT"
+        },
+        {
+          "ctid": "C66FBFC800510000",
+          "time_utc": "2026-10-29T20:18:00Z",
+          "result": "tecUNFUNDED_PAYMENT"
+        },
+        {
+          "ctid": "C66FBFD101ED0000",
+          "time_utc": "2026-10-29T20:18:00Z",
+          "result": "tecUNFUNDED_PAYMENT"
+        },
+        {
+          "ctid": "C66FBFD800310000",
+          "time_utc": "2026-10-29T20:19:00Z",
+          "result": "tecUNFUNDED_PAYMENT"
+        },
+        {
+          "ctid": "C66FBFDF02F40000",
+          "time_utc": "2026-10-29T20:19:00Z",
+          "result": "tecUNFUNDED_PAYMENT"
+        }
+      ],
+      "last_check_ctid": "C66FC7BD003E0000",
+      "last_check_time_utc": "2026-10-29T22:35:00Z",
+      "bitquery_latest_balance_xrp": 233461943.10005,
+      "bitquery_latest_balance_time_utc": "2026-10-31T16:51:00Z",
+      "bitquery_outgoing_transactions_since_drain": 0,
+      "bitquery_observation_age_at_capture_hours": 8.28,
+      "current_balance_after_2026_10_31T16_51Z": "UNKNOWN",
+      "current_outgoing_activity_after_2026_10_31T16_51Z": "UNKNOWN",
+      "current_recovery_status": "NO_RECOVERY_OF_THE_XRP_CONFIRMED_IN_THE_REVIEWED_SNAPSHOTS"
+    },
+    "valuation_and_scale": {
+      "value_at_theft_usd": 296000000,
+      "illustrative_xrp_price_usd": 1.25,
+      "illustrative_notional_usd": 291827428.875,
+      "circulating_supply_xrp": 63351000000,
+      "circulating_supply_share_pct": 0.3685,
+      "coingecko_24h_volume_usd": 746633504.83,
+      "share_of_provider_24h_volume_pct": 39.1,
+      "interpretation": "Stress-scale comparison only. The wallet was not observed selling in the latest cited on-chain snapshot; volume and depth are provider-scoped."
+    },
+    "issuer_actions": {
+      "circle_usdc_frozen": 823000000,
+      "circle_freeze_time_utc": "2026-10-29T21:04:00Z",
+      "circle_later_usdc_freeze": 1560000,
+      "ripple_erc20_rlusd_stolen": 88500000,
+      "ripple_erc20_rlusd_frozen": 40500000,
+      "ripple_freeze_time_utc": "2026-10-29T22:01:00Z",
+      "rlusd_sold_before_freeze_approx": 48000000,
+      "tether_usdt_frozen_approx": 1770000000,
+      "cctp_path": {
+        "occurred": true,
+        "asset_origin": "AVAX sold for USDC",
+        "bridge": "Circle CCTP",
+        "route": "Avalanche to Ethereum",
+        "time_window_utc": "2026-10-30T11:38:00Z/2026-10-30T12:29:00Z",
+        "subsequent_action": "USDC swapped for approximately 7,242.8 ETH",
+        "interpretation": "CCTP was used as a public transfer rail in the laundering path. No evidence indicates Circle intentionally facilitated the activity; Circle separately froze identified USDC balances."
+      },
+      "xrp_freeze_capability": "No issuer can freeze native XRP at the protocol level.",
+      "rlusd_freeze_capability": "Ripple can freeze issuer-controlled RLUSD; the cited incident freeze was on Ethereum ERC-20 RLUSD."
+    },
+    "law_enforcement": {
+      "agency": "FBI",
+      "attribution_date": "2026-10-31",
+      "attribution": "North Korea / TraderTraitor",
+      "scope": "Overall Binance theft exceeding $6B, not a separately named XRP account attribution",
+      "fbi_published_xrpl_address_match": false,
+      "note": "The FBI alert's published address list contains Ethereum addresses; it does not list the XRPL attacker account. The official attribution applies to the incident as a whole."
+    },
+    "binance_recovery": {
+      "official_update": "Security Incident | Recovery Update #3",
+      "publication_time_utc": "2026-10-31T14:24:00Z",
+      "company_reported_total_loss_usd": 6340000000,
+      "company_reported_replenishment_pct": 90,
+      "top_ten_tokens_reported_100pct_backed": [
+        "BTC",
+        "ETH",
+        "USDT",
+        "BNB",
+        "SOL",
+        "USDC",
+        "XRP",
+        "USD1",
+        "RLUSD",
+        "ZEC"
+      ],
+      "remaining_10pct": "Less-liquid tokens outside the top ten",
+      "stated_funding_sources": [
+        "Partial SAFU deployment",
+        "Portion of Futures Insurance Fund",
+        "Corporate treasury"
+      ],
+      "stated_safu_replenishment_target_usd": 1000000000,
+      "proof_of_reserves_snapshot_utc": "2026-10-31T00:00:00Z",
+      "full_zero_knowledge_proof_estimate_utc": "2026-11-03",
+      "withdrawal_reopening": "Company said on track for Sunday 2026-11-01; this notice did not confirm that withdrawals had reopened.",
+      "xrp_specific_replenishment_quantity": "UNDISCLOSED",
+      "xrp_specific_market_or_otc_purchase": "NOT_ESTABLISHED",
+      "interpretation": "100% customer-asset coverage is not recovery of the stolen XRP. It does not prove Binance bought 233.46M XRP in spot markets."
+    },
+    "market_snapshot": {
+      "provider": "CoinGecko",
+      "retrieval_time_utc": "2026-11-01T01:08:00Z",
+      "quote_timestamp_exposed": false,
+      "xrp_usd": 1.25,
+      "market_cap_usd": 79376677561,
+      "circulating_supply_xrp": 63351000000,
+      "reported_24h_volume_usd": 746633504.83,
+      "reported_24h_open_interest_usd": 3460000000,
+      "open_interest_to_market_cap_pct": 4.36,
+      "funding_per_8h_pct": 0.006,
+      "perpetual_to_spot_volume_ratio": 11.1,
+      "seven_day_price_change_pct": -3.2,
+      "exchange_pairs": [
+        {
+          "venue": "Coinbase Exchange",
+          "pair": "XRP/USD",
+          "volume_24h_usd": 25778164,
+          "plus_2pct_depth_usd": 4961858,
+          "minus_2pct_depth_usd": 8261085
+        },
+        {
+          "venue": "Binance",
+          "pair": "XRP/USDC",
+          "volume_24h_usd": 42843780,
+          "plus_2pct_depth_usd": 387078,
+          "minus_2pct_depth_usd": 797682
+        },
+        {
+          "venue": "Binance",
+          "pair": "XRP/USDT",
+          "volume_24h_usd": 27665134,
+          "plus_2pct_depth_usd": 1664306,
+          "minus_2pct_depth_usd": 2588531
+        },
+        {
+          "venue": "Kraken",
+          "pair": "XRP/USD",
+          "volume_24h_usd": 7546627,
+          "plus_2pct_depth_usd": 4894751,
+          "minus_2pct_depth_usd": 5988798
+        }
+      ],
+      "comparison_warning": "CoinGecko's $3.46B open interest differs materially from the earlier TradRadar $1.87B snapshot. Provider coverage and timestamps differ; do not average. Other historical volume aggregators also diverge substantially."
+    },
+    "source_discrepancies": {
+      "total_theft_estimates_usd": {
+        "trm": 6360000000,
+        "bitquery": 6300000000,
+        "elliptic": 6430000000,
+        "chainalysis": 5900000000
+      },
+      "frozen_or_rescued_estimates_usd": {
+        "trm": 2700000000,
+        "bitquery": 2700000000,
+        "elliptic": 2850000000
+      },
+      "resolution": "Different chain coverage, cutoffs, valuation times and categories; preserve provider-specific values."
+    }
+  },
+  "source_evidence": [
+    {
+      "source_id": "SRC-20261031T175218Z-BINANCE-RECOVERY-UPDATE3-RECONCILIATION",
+      "url": "https://www.binance.bh/en-KZ/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "source_type": "official_exchange_statement",
+      "supports": "90% replenishment; XRP and RLUSD in top ten reported 100% backed; funding sources; 31 Oct PoR snapshot; full proof estimated Nov 3; withdrawals still only targeted for Sunday."
+    },
+    {
+      "source_id": "SRC-CANDIDATE-TRM-BINANCE-HACK-20261029",
+      "url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+      "source_type": "blockchain_intelligence",
+      "publication_date": "2026-10-29",
+      "data_cutoff_utc": "2026-10-30T00:30:00Z",
+      "supports": "233.46M XRP theft; five Binance XRPL wallets; North Korean TraderTraitor assessment; 40.5M RLUSD frozen; 48M sold before freeze; 823M USDC frozen."
+    },
+    {
+      "source_id": "SRC-CANDIDATE-BITQUERY-BINANCE-HACK-20261031",
+      "url": "https://www.bitquery.io/investigations/binance-hack",
+      "source_type": "independent_onchain_analytics",
+      "publication_date": "2026-10-31",
+      "data_cutoff_utc": "2026-10-31T16:51:00Z",
+      "supports": "Five XRPL transfers; attacker address; 233.5M XRP balance; no outgoing transactions as of 16:51 UTC; $2.7B freeze estimate; chain-by-chain tracing."
+    },
+    {
+      "source_id": "SRC-CANDIDATE-ELLIPTIC-BINANCE-HACK-20261031",
+      "url": "https://www.elliptic.co/insights/binance-largest-hack-in-history/",
+      "source_type": "independent_blockchain_intelligence",
+      "publication_date": "2026-10-31",
+      "data_cutoff_utc": "2026-10-31T04:30:00Z",
+      "supports": "233M XRP remains unmoved in the reviewed snapshot; 48M RLUSD sold; 40.5M RLUSD frozen; 823M USDC frozen; CCTP route; FBI attribution."
+    },
+    {
+      "source_id": "SRC-CANDIDATE-FBI-TRADERTRAITOR-BINANCE-20261031",
+      "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
+      "source_type": "official_law_enforcement_attribution",
+      "publication_date": "2026-10-31",
+      "supports": "FBI attributes the overall >$6B Binance theft to North Korea and names the activity TraderTraitor; publishes associated ETH addresses but not the XRPL attacker address."
+    },
+    {
+      "source_id": "SRC-CANDIDATE-XRPLWIN-BINANCE-XRP-20261030",
+      "url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+      "source_type": "XRPL_onchain_research",
+      "publication_date": "2026-10-30",
+      "supports": "Exact five CTIDs, source amounts, attacker address, failed retries, Check transaction, 233,461,943.10005 XRP balance, and non-freezability distinction."
+    },
+    {
+      "source_id": "SRC-CANDIDATE-COINGECKO-XRP-MARKET-20261101",
+      "url": "https://www.coingecko.com/tr/coins/xrp",
+      "source_type": "market_aggregator",
+      "publication_date": "2026-11-01",
+      "data_cutoff_utc": "UNKNOWN; page retrieved at 2026-11-01T01:04Z",
+      "supports": "Indicative XRP price, market cap, 24h volume, open interest, funding, perp/spot ratio and pair-level spot depth."
+    }
+  ],
+  "source_independence": {
+    "TRM_Bitquery_Elliptic": "Separate analytics providers using public chain data; not fully independent in all methods and may share underlying public data or corroborating sources.",
+    "FBI": "Independent official attribution for the overall incident.",
+    "Binance": "Primary source for its own recovery and reserve claims; company-reported, pending full PoR proof.",
+    "CoinGecko": "Aggregated market data; venue scope and quote timestamp are not fully exposed in this capture."
+  },
+  "limitations": [
+    "No direct raw XRPL RPC response was retrieved in this run.",
+    "The latest independent attacker-account balance observation is Bitquery at 2026-10-31 16:51 UTC, 8.28 hours before this capture; current balance after that is unknown.",
+    "The FBI alert attributes the overall incident but does not list the XRPL attacker address.",
+    "Binance's 100% XRP customer-coverage statement is not proof that the stolen XRP was recovered or that an equal amount was bought in spot markets.",
+    "CoinGecko quote timestamp is not exposed; current market metrics are indicative and not admitted to the historical feature store.",
+    "The $28M Crypto Times headline conflicts with its own body and with independent sources; exclude that headline value.",
+    "The incident's total-loss and freeze totals differ across providers; preserve each provider's scope and cutoff."
+  ],
+  "prediction_admission": "NOT_ADMITTED",
+  "forecast_status": "NOT_ISSUED",
+  "pending_archive_append": true
+}

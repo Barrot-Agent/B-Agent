@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 165,
+  "chunk_count": 166,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261101T071609Z-REUTERS-BINANCE-PHASE1-XRP-RESUMPTION",
+      "captured_at_utc": "2026-11-01T07:16:09Z",
+      "summary": "Reuters reports Binance's first withdrawal phase began after 06:00 GMT, BTC withdrawals resumed, and XRP is among 15 phase-one assets. Binance reports approximately $6B of aggregate replacement-token purchases and 95% recovery. XRP-specific withdrawal success and XRP-specific acquisition quantities remain unverified.",
+      "verified": [
+        "Reuters article published 2026-11-01 06:49 UTC reports Binance's status page shortly after 06:00 GMT said planned withdrawals had begun; phase one covers 15 cryptoassets including BTC, ETH, XRP and DOGE.",
+        "Reuters reports Binance says it covered $6B of stolen cryptocurrencies by using company money to buy replacement tokens; remaining 5% are less-liquid assets.",
+        "Reuters reports funding sources named by Binance: SAFU (including a bitcoin reserve), Futures Insurance Fund and corporate treasury; co-CEO Yi He said 50% of SAFU funds would be used and replenished toward $1B.",
+        "The public Binance network page at the earlier 07:07:12 UTC capture displayed 06:53:22 AM with timezone undisclosed and a 'No records' table; it exposed no XRP-specific status.",
+        "XRP Insights reports 1B XRP released at 00:00:02 UTC, no re-escrow by ledger 108038942 at 05:39 UTC, 30.4B XRP remaining; raw Destination fields remain unverified.",
+        "PR #1449 exact-head CI passed 367 tests plus eight subtests and its fail-closed gate passed; PR remains open/draft/unmerged.",
+        "PR #1450 archive validator failed on malformed latest archive shard metadata and stale index pointers; its fail-closed gate passed with merging disabled."
+      ],
+      "unresolved": [
+        "No successful XRP withdrawal transaction or asset-specific XRP availability row independently observed.",
+        "Reuters' $6B replacement-token purchases are aggregate; XRP-specific amount, venue and timing are undisclosed.",
+        "Current Binance attacker-wallet balance and post-October 31 outflows remain unknown.",
+        "Raw November 1 EscrowFinish Destination fields and subsequent XRP disposition remain unknown.",
+        "PR #1450 archive correction has not yet passed exact-head revalidation.",
+        "Full repository CI, complete dependency scan and security-alert review remain incomplete."
+      ],
+      "next_actions": [
+        "Repair the six malformed referenced shard copies using the required xrp_research_ledger_archive_shard schema and add path/git_blob_sha to their index pointers.",
+        "Correct archive_policy array totals and make latest_snapshot a snapshot_reference with the required index_format_version.",
+        "Append corrected snapshot and source-revision addendum for the Reuters phase-one report; preserve all malformed first-attempt files unreferenced.",
+        "Run exact-head archive validator and fail-closed gate on the repaired PR #1450 head; record only actual results.",
+        "Verify XRP-specific withdrawal availability and actual successful public transactions.",
+        "Decode raw EscrowFinish destinations and trace subsequent transfers and EscrowCreate.",
+        "Do not infer XRP purchases from Binance's aggregate $6B replacement-token report; no forecast or market feature admission."
+      ],
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "source_ids": [
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+        "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+      ],
+      "status": "COMPLETED_PARTIAL_VERIFIED"
+    }
+  ]
+}

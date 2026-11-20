@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T040000Z-ESCROW-EVENT-AND-MAIN-WRITER-SAFETY",
+  "captured_at_utc": "2026-11-01T04:00:00Z",
+  "title": "Treat the November escrow release as a disposition event, preserve provider timebases, and quarantine privileged main writers through a fresh-main PR",
+  "status": "ACCEPTED_FOR_RESEARCH_AND_PR_PROPOSAL; MAIN_REMEDIATION_NOT_APPLIED",
+  "context": [
+    "XRP Insights reports two EscrowFinish transactions at 00:00:02 UTC and 1B XRP net outside escrow by validated ledger 108036051 at 02:31 UTC.",
+    "Destination fields and subsequent economic disposition remain unverified.",
+    "Liqwall and OKX report close but provider-scoped XRP price observations at different times; derivatives universes must remain separate.",
+    "Binance's official Recovery Update #3 reports 90% aggregate replenishment and 100% XRP/RLUSD customer-asset backing, but the full ZK PoR proof is estimated for November 3 and XRP-specific purchases are undisclosed.",
+    "Current main retains write-capable Cross Analysis, Scheduler Tick and Merge Queue workflows.",
+    "PR #1439 is now diverged 1 ahead/1 behind current main. A fresh-main successor #1441 was created and its CI and fail-closed gate passed."
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Do not infer sell pressure, exchange deposits, OTC sale or beneficial ownership from the 1B XRP gross release.",
+      "reason": "Destination and follow-on transaction evidence are missing."
+    },
+    {
+      "id": "D2",
+      "decision": "Store tracker ledger time, market provider observation time, publication time and research capture time as separate fields.",
+      "reason": "A fresh page retrieval can expose a stale pinned ledger or stale rolling market window."
+    },
+    {
+      "id": "D3",
+      "decision": "Keep Liqwall and OKX observations provider-scoped and pending source-registry ingestion; do not average open interest or funding across incompatible provider universes.",
+      "reason": "Coverage and methodology are not yet reconciled."
+    },
+    {
+      "id": "D4",
+      "decision": "Treat Binance's XRP/RLUSD 100% backing as a company claim pending full cryptographic PoR and asset/liability reconciliation.",
+      "reason": "Aggregate coverage and XRP-specific market purchases are different quantities."
+    },
+    {
+      "id": "D5",
+      "decision": "Keep forecast_status NOT_ISSUED and market_features_admitted false until raw escrow transaction metadata, destination, subsequent disposition and synchronized market data are verified.",
+      "reason": "No validated predictive signal or event-study design is yet available."
+    },
+    {
+      "id": "D6",
+      "decision": "Use PR #1441 as the fresh-main safety candidate; keep #1439 and #1441 unmerged pending explicit approval.",
+      "reason": "PR #1439 diverged after main advanced; #1441 is based on current main and exact-head CI/gate passed."
+    },
+    {
+      "id": "D7",
+      "decision": "Do not enable scheduled knowledge ingestion or promote generated artifacts directly to main until durable deduplication, freshness guards, source provenance and a least-privilege publisher are implemented.",
+      "reason": "Main currently has zero-sample sentiment output with a new generated_at timestamp."
+    }
+  ],
+  "ingestion_contract": {
+    "required_timestamps": [
+      "retrieved_at_utc",
+      "source_publication_time_utc",
+      "source_data_cutoff_utc",
+      "validated_ledger_time_utc",
+      "captured_at_utc"
+    ],
+    "freshness_rule": "Freshness is computed from source_data_cutoff_utc or validated_ledger_time_utc, never from generated_at alone.",
+    "source_independence": "Publisher, underlying exchange/chain dataset, collection method and common upstream dependency must be recorded; syndicated copies are not independent corroboration.",
+    "market_feature_admission": "Require immutable source registry membership, non-null observation timestamp, provider scope, units, quality checks, point-in-time cutoff and explicit missingness handling.",
+    "event_study": "Use event-time windows around EscrowFinish; separate release, destination receipt, transfers, exchange deposits, sales and re-escrow; include BTC/ETH controls and market-wide covariates; avoid overlapping future data.",
+    "prediction_contract": "Every forecast requires target, horizon, data cutoff, assumptions, probability/confidence, alternatives, baseline, model version, calibration state and later outcome.",
+    "live_trading": "Shadow/paper evaluation only until walk-forward performance, calibration, drift and execution controls are independently reviewed."
+  },
+  "platform_coordination": {
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "design_status": "DESIGNED",
+    "live_external_authentication_count": 0,
+    "live_external_collaborator_count": 0,
+    "verified_handoffs": 0,
+    "current_chatgpt_session": "ACTIVE_CONVERSATION_CONTEXT; not a separate external connector authentication",
+    "github_repository_access": "VERIFIED_READ_AND_BRANCH_PR_ACTIONS",
+    "other_platforms": "UNAUTHENTICATED_AND_UNVERIFIED",
+    "rule": "Use independent task assignments, structured evidence packets, provenance, disagreement retention and red-team review; no live collaboration claim without successful authenticated test."
+  },
+  "repository_safety": {
+    "current_main_sha": "9226a7c40d06b0c59cf914190cc35ca99bd377ba",
+    "current_main_modified_by_this_run": false,
+    "fresh_main_pr": 1441,
+    "pr1441_head_sha": "c7751f83437456b10a68587f4f7fc8ae3dfa29c3",
+    "pr1441_ci_run_id": 41271720986,
+    "pr1441_gate_run_id": 41271720993,
+    "pr1441_ci_status": "PASS",
+    "pr1441_gate_status": "PASS_MERGE_DISABLED",
+    "pr1441_state": "OPEN_DRAFT_UNMERGED",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_scan": "NOT_RUN",
+    "security_alert_access": "NOT_ACCESSIBLE"
+  },
+  "unresolved": {
+    "raw_xrpl_transaction_json_and_destination_fields": true,
+    "subsequent_escrow_disposition": true,
+    "attacker_wallet_current_balance": true,
+    "binance_withdrawal_reopening_confirmation": true,
+    "binance_november3_full_zk_por": true,
+    "xrp_specific_binance_replenishment_quantity": true,
+    "liqwall_and_okx_source_registry_ingestion": true,
+    "branch_protection_full_settings": true,
+    "repository_full_ci_and_dependency_scan": true,
+    "sbic_ask_coin_actual_capital_camilla_identity_threads": true
+  },
+  "supersedes_decision": "Earlier pre-release and post-eligibility status decisions remain preserved; this decision updates the evidence cutoff and fresh-main PR status without rewriting historical records."
+}
