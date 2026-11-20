@@ -292,3 +292,13 @@ def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() ->
         assert dependency in requirements
         assert dependency in pyproject
 
+def test_a2a_worker_deployment_uploads_only_its_required_authentication_secret() -> None:
+    content = _read("deploy-a2a-worker.yml")
+    assert "workflow_dispatch:" in content
+    assert "confirm_secret_rotation" in content
+    assert "expected_main_sha" in content
+    assert "github.ref == 'refs/heads/main'" in content
+    assert "contents: read" in content
+    assert "contents: write" not in content
+    assert "GROQ_API_KEY" not in content
+    assert content.count("BRAIN_SHARED_SECRET") == 2

@@ -41,6 +41,7 @@ print("200")
         {
             "GH_TOKEN": TOKEN,
             "REPO_SLUG": "Barrot-Agent/B-Agent",
+            "BRANCH": "integration/test",
             "PATH": str(bin_dir) + os.pathsep + env.get("PATH", ""),
             "CAPTURE_ARGS_PATH": str(args_path),
             "CAPTURE_STDIN_PATH": str(stdin_path),
@@ -98,6 +99,7 @@ print("200")
         {
             "GH_TOKEN": TOKEN,
             "REPO_SLUG": "Barrot-Agent/B-Agent",
+            "BRANCH": "integration/test",
             "PATH": str(bin_dir),
             "CAPTURE_ARGS_PATH": str(args_path),
             "CAPTURE_STDIN_PATH": str(stdin_path),
@@ -132,3 +134,19 @@ def test_git_credential_helper_keeps_token_as_literal_environment_expansion() ->
     assert 'password=${GH_TOKEN}' in content
     assert 'python3 - "${GH_TOKEN}"' not in content
     assert 'Authorization: Bearer %s' in content
+
+def test_direct_main_push_is_refused_before_token_validation() -> None:
+    env = os.environ.copy()
+    env.pop("GH_TOKEN", None)
+    env["BRANCH"] = "main"
+    result = subprocess.run(
+        ["bash", str(PUSH_SCRIPT), "--verify-only"],
+        capture_output=True,
+        text=True,
+        env=env,
+        timeout=30,
+        check=False,
+    )
+    assert result.returncode == 6
+    assert "direct pushes to main are disabled" in result.stderr.lower()
+    assert "gh_token is not set" not in result.stderr.lower()

@@ -5,6 +5,8 @@
 # House rules honored (BARROT_SYNC.md):
 #   - No password auth, no SSH key requirement: fine-grained PAT over HTTPS
 #     with username "x-access-token" only.
+#   - Direct pushes to main are disabled. Push only the current non-main branch;
+#     use a reviewed pull request and the fail-closed merge gate for main.
 #   - The token is read from GH_TOKEN, never written to disk, echoed, or
 #     stored in .git/config or remote URLs. Validation sends it to curl through
 #     config stdin and to the Python fallback through stdin, not process argv.
@@ -23,14 +25,33 @@
 #        GH_TOKEN=github_pat_xxxxxxxxxxxx bash scripts/push_with_token.sh
 #
 # Usage:
-#   GH_TOKEN=... bash scripts/push_with_token.sh                # verify + push
-#   GH_TOKEN=... bash scripts/push_with_token.sh --verify-only  # no push
-#   BRANCH=main GH_TOKEN=... bash scripts/push_with_token.sh    # explicit branch
+#   GH_TOKEN=... bash scripts/push_with_token.sh                         # current non-main branch
+#   GH_TOKEN=... bash scripts/push_with_token.sh --verify-only           # no push
+#   BRANCH=integration/my-task GH_TOKEN=... bash scripts/push_with_token.sh
+#   BRANCH=main is rejected; use a pull request for main.
 # ============================================================================
 set -euo pipefail
 
 REPO_SLUG="${REPO_SLUG:-Barrot-Agent/B-Agent}"
-BRANCH="${BRANCH:-main}"
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "${repo_root}"
+
+CURRENT_BRANCH="$(git branch --show-current)"
+BRANCH="${BRANCH:-${CURRENT_BRANCH}}"
+
+if [[ -z "${BRANCH}" ]]; then
+  echo "ERROR: no current branch is available (detached HEAD); set BRANCH to a non-main branch." >&2
+  exit 5
+fi
+if [[ "${BRANCH}" == "main" ]]; then
+  echo "ERROR: direct pushes to main are disabled. Use a pull request and the verified merge gate." >&2
+  exit 6
+fi
+if ! git check-ref-format --branch "${BRANCH}" >/dev/null 2>&1; then
+  echo "ERROR: BRANCH is not a valid Git branch name." >&2
+  exit 7
+fi
 
 if [[ -z "${GH_TOKEN:-}" ]]; then
   echo "ERROR: GH_TOKEN is not set." >&2
@@ -46,9 +67,6 @@ fi
 GH_TOKEN="${GH_TOKEN//[[:space:]]/}"
 # Keep the token as a shell variable during validation; do not export it to curl/Python.
 export -n GH_TOKEN
-
-repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-cd "${repo_root}"
 
 # ---------------------------------------------------------------------------
 # 1. Validate the token against the GitHub API (never prints the token).
