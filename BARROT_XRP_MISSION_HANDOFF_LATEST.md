@@ -2275,3 +2275,196 @@ Two trackers report different 19 November XRP ETF results because their definiti
 - x402 remains a real but early, low-value, multi-asset XRPL use case. Its current evidence does not justify a material XRP-demand uplift or directional forecast.
 - Forecast issuance remains **false / NOT_SATISFIED**. No paper trade or real-money action.
 - Main remains unchanged. The findings are appended to the existing durable handoff on the existing integration branch.
+
+
+## Run 240 — XRP ingestion artifact audit, exact-head verification, market repricing and publication boundary
+**Captured:** 2026-11-20 16:08 UTC  
+**Status:** EXECUTED / VERIFIED as detailed below. No merge, deployment, secret rotation, external account write, paper trade or real-money action was performed.
+
+### Repository state and integration protocol
+
+- Main: c599419c284ed5c3e21c44c91d5d4229191dced8
+- Consolidated integration branch: c96ca8e038747096bb21601f546e0235933406af
+- PR #1673 remains the single active consolidated integration candidate. Its current tree comparison is 540 commits ahead, 0 behind; 1,494 changed files; 69 changed workflow files.
+- Recursive tree inventory: main 1,751 entries and 93 workflow files; integration 3,040 entries and 94 workflow files. The additional workflow is .github/workflows/xrp-public-ingestion.yml, which exists on the integration branch but not on main.
+- Main was not modified by this run. The current main SHA c599419c284ed5c3e21c44c91d5d4229191dced8 was created by an earlier scheduled repository workflow, not by this run.
+- No branch was force-pushed, rewritten, reset, cleaned or discarded. No new PR was created.
+
+### Exact-head CI — VERIFIED on c96ca8e038747096bb21601f546e0235933406af
+
+Two independent executions completed on the same integration head:
+
+- PR CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/44761404788
+- Push CI: https://github.com/Barrot-Agent/B-Agent/actions/runs/44761390550
+
+The full repository test job passed on the exact head: **4,440 passed, 1 skipped, 0 failed, 11 warnings, 23 subtests passed**. Total coverage was 73.08%; the legacy core-only report was 82%. The expanded coverage gates also passed for the XRP telemetry matrix (92%), MMI contract/execution/ledger (92%), integration orchestration (62%), feature store (80%), forecast ledger (97%), point-in-time features (89%), source registry (95%), monetization (78%), rendering (77%), smart_agent (100%) and mem_palace (100%). The 11 warnings are legacy pytest functions returning booleans rather than None.
+
+Additional exact-head checks passed:
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/44761404985
+- Money audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/44761404865
+- A2A Worker tests: https://github.com/Barrot-Agent/B-Agent/actions/runs/44761405061
+- GitHub Pages validation-only build: passed in both PR and push CI. This is validation, not a Pages deployment.
+
+The fail-closed gate did not pass:
+https://github.com/Barrot-Agent/B-Agent/actions/runs/44761405035
+
+Its recorded blockers are: PR #1673 is still draft; no independent approving review exists; the branch-protection API returned HTTP 403. GET /branches/main/protection returned “Resource not accessible by integration.” The visible fallback ruleset named “Fall Back” is disabled. This does not prove that effective branch protection is absent; the effective required checks, review policy and bypass settings remain unverified. Do not merge.
+
+### A2A security overlap — PR #1677 is not an exact patch duplicate
+
+PR #1677 is non-draft, has six changed paths, a clean mergeability state and successful checks on head 0d4b3484c95a46ff9f61417f94c97a391d0fefff. It has no independent approving review.
+
+All six paths also change in #1673:
+- .github/workflows/deploy-a2a-worker.yml
+- docs/A2A_OPENCODE_TASK_BRIDGE.md
+- opencode.json
+- scripts/barrot_mcp_server.py
+- tests/test_external_action_gates.py
+- tests/test_mcp_server.py
+
+The file contents are not byte-identical. The integration version retains the same core protections—manual-only Cloudflare deployment, separate explicit deployment/secret-rotation confirmation, exact main-SHA verification, no A2A URL or runner secret in the default OpenCode configuration, ask-before-action permissions, and BARROT_A2A_AUTO_RUNNER=YES—but carries a more complete incident record and broader workflow-quarantine tests. Treat #1677 as an overlapping parallel extraction whose intent is represented more comprehensively in #1673, not as an exact duplicate. Preserve it until #1673 is legitimately merged and its content verified; only then reconcile and close it if the final diff is fully superseded.
+
+Important gate correction: #1677’s successful “merge gate” came from the older main-branch placeholder workflow. Its log only states that automatic merge is intentionally disabled; it does not establish review approval or effective branch protection. That success is not a readiness attestation. The newer gate included in #1673 checks these conditions and fails closed.
+
+### XRP public-data ingestion — one real execution, not yet scheduled production
+
+The integration-only workflow executed once on a push:
+https://github.com/Barrot-Agent/B-Agent/actions/runs/44654352643
+
+- Captured at 2026-11-20 01:32:54 UTC on code SHA 4cf4039771450b13469b96ecec52ad06d124a602.
+- Raw-source artifact: 90-day retention.
+- Feature-store checkpoint: 7-day retention.
+- Event/receipt artifacts: 90-day retention.
+- The workflow file is absent from main. Its schedule therefore is not active on the default branch. The branch run inventory contains this single XRP ingestion execution; no repeated scheduled series has been established.
+
+Downloaded and inspected the actual run artifacts, not just the workflow summary:
+
+**Receipts and provenance**
+- 34 source receipts.
+- 22 raw payloads retained; 12 digest-only receipts.
+- Per-run receipt-chain verification: PASS.
+- Cross-run chain sequence: 1 / BOOTSTRAP; no predecessor run was linked.
+- External anchor: NOT_ANCHORED.
+- Per-source independent timestamp anchor: false.
+- The chain is tamper-evident relative to its recorded head, but GitHub Actions retention and run identity are not independent WORM storage or an independent trusted timestamp authority.
+
+**Point-in-time feature store**
+- One SQLite snapshot: 892e1f3b6a064149c2fcdd7fac33a57df28a280368b4aa02202a99629d3f82a8.
+- 1,863 eligible feature records; 367 records excluded; 12 source snapshots across 5 publisher-independence groups; 123 feature IDs.
+- The 1,863 records include 349 hourly Coinbase candles per OHLCV field. These are historical observations ingested at the current capture time, not records proven to have been known at each historical candle time.
+- The collector explicitly records historical Coinbase/Binance candles as known only at capture time. They cannot be backdated into earlier historical cutoffs for a leakage-safe walk-forward test. A historical API series is not a point-in-time archive merely because its event timestamps are old.
+- Automatic reconstruction of the cumulative feature store from raw receipts is not implemented. The feature store currently relies on an exact cache key, a 7-day per-run checkpoint, or a 90-day archive; cache is evictable and derived.
+
+**Evaluation and forecast gates**
+- Walk-forward status: PARTIAL_OR_BLOCKED.
+- Executed horizon: 1h only.
+- Walk-forward forecast count: 0.
+- Forecast status: NOT_ISSUED; forecast-model eligibility: false.
+- Drift report: 123 features, 0 evaluated, INSUFFICIENT_DATA; there is no prior reference window and repeated current-window history.
+- Event timeline: 150 events and 117 scenarios, but receipt_complete=false and model_eligible=false. Directional forecast=false.
+- The baseline evaluator is designed for naive, momentum, mean-reversion and volatility baselines, with horizon embargoes and temporal/source-clustered bootstrap diagnostics. The stricter candidate-readiness policy requires at least 100 paired origins, five receipt-backed source clusters, five origins per cluster and a later independent shadow cohort. Those candidate/shadow conditions have not been demonstrated on real XRP data.
+- No trained XRP-specific candidate, calibrated candidate probabilities or independent shadow cohort exists. No forecast is justified.
+
+**Source coverage and failures**
+- 21 source failures: Binance spot/futures endpoints returned HTTP 451; Bybit spot/linear endpoints returned HTTP 403; Grayscale issuer page returned retryable HTTP 429; Franklin issuer-page processing failed; six SEC endpoints were blocked by configuration.
+- The run log explicitly showed BARROT_SEC_USER_AGENT empty. SEC capture status was BLOCKED_CONFIGURATION: contact_identity_configured=false, zero submissions, zero companyfacts sources, zero filing events and zero capital facts. Do not invent a contact identity; configure a legitimate repository variable before rerunning.
+- 23 sources remain raw-only or digest-only pending unit, timestamp, licensing or parser validation. Examples: Deribit XRP-USDC perpetual ticker/L2 contract semantics; XRP Insights exchange-wallet balances and ETF CSV (hash-only under publisher terms); ETF issuer HTML; RLUSD/USDC reserve/supply pages; SBI VC trade-lending terms and actual outstanding balances; Morpho cbXRP market/oracle state; Coinbase cbXRP proof-of-reserves.
+- The XRP Insights ETF observation was a holdings-delta aggregate, not issuer-authorized- participant cash flow. The CSV payload was not retained because of publisher terms. It remains research-only/model-ineligible.
+- Bitbank’s latest-60-trade sample covered a variable 343.5-second interval, not a fixed-duration flow window; it remains model-ineligible.
+- The synchronized OKX XRP-USDT/USDT-USD top-of-book conversion produced four verified USD quote features with 0.002-second snapshot skew, but both components share one OKX independence group. It is not independent corroboration, full-depth USD liquidity or a cross-venue market snapshot.
+- Free InFTF and Honeycluster XRPL nodes are excluded from scheduled collection because the official directory classifies them as non-commercial. Sustained collection requires a self-hosted or contracted commercial endpoint; no terms circumvention was attempted.
+- CFTC weekly positioning sources were not captured because this run was outside the official release window.
+
+### Current spot repricing — direct exchange observations
+
+Retrieved during this run; these are venue snapshots, not a directional forecast.
+
+**Kraken XRP/USD public ticker**
+- Last: $0.90934; bid $0.90923; ask $0.90934.
+- Indicative top-of-book spread: approximately 1.21 bps.
+- 24-hour open $0.95925; high $0.97973; low $0.90302.
+- 24-hour volume 45.423M XRP; 24-hour VWAP $0.94938.
+- The payload has no exchange event timestamp; retrieval time is the observation time.
+
+**OKX XRP-USDT public ticker**
+- Exchange timestamp: 2026-11-20 15:50:29.065 UTC.
+- Last 0.9083 USDT; bid 0.9082; ask 0.9083.
+- Indicative top-of-book spread: approximately 1.10 bps.
+- 24-hour open 0.9656; high 0.9805; low 0.9041.
+- 24-hour volume 53.892M XRP.
+
+The two venues imply approximately 5.2%–5.9% declines from their own 24-hour opens. Do not add their volumes, treat them as total-market volume, or infer full depth from top-of-book. Price is below Kraken's 24-hour VWAP and close to both venues' reported 24-hour lows.
+
+Direct endpoints:
+- https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+- https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT
+
+**Derivatives versus actual spot capital**
+- CME's official Q3 2026 crypto report lists $10.1B XRP-suite notional volume for Q3 and 12.2K average daily contracts.
+- Coinpedia reported $216M daily XRP futures volume and $81.2B cumulative notional since launch. The cumulative figure may be a different time scope; the daily figure was not independently confirmed by the CME Q3 table.
+- CME XRP futures are cash-settled. Futures notional turnover, open interest and institutional access do not establish net cash inflows into spot XRP or physical XRP purchases.
+- Secondary ETF trackers report approximately $6.1M XRP ETF net outflow on November 17 and zero on November 18. SoSoValue documents T+1 flow settlement and one-minute API refresh. These are aggregator flow measures, not issuer AP cash receipts; they require issuer holdings/shares reconciliation before model admission.
+- A current secondary page claiming XRP around $1.30 conflicts with the direct Kraken and OKX snapshots near $0.91 and is excluded as stale/mismatched until reconciled.
+
+Sources:
+- CME Q3 2026: https://www.cmegroup.com/newsletters/quarterly-cryptocurrencies-report/2026-q3-cryptocurrency-highlights.html
+- CME cash-settled contract announcement: https://investor.cmegroup.com/news-releases/news-release-details/cme-group-announces-first-trades-xrp-futures
+- Secondary CME activity report: https://coinpedia.org/news/xrp-institutional-demand-is-exploding-cme-futures-hit-216m-daily-volume/
+- SoSoValue API scope/method: https://sosovalue.com/developer/data/etf
+- Secondary November flow detail: https://pre-tick.live/blog/solana-xrp-etf-flows-this-week
+
+### Mainline automation and publication side effects
+
+The main branch has active automatic side effects that must be included in merge readiness:
+
+- Paid-issue hunter run 44735899857 fed publisher run 44735968108. The publisher reported zero paid-issue rows but still committed two repository data/report files and pushed a commit to main. This is a real automated main-branch write even though no paid issue was published.
+- That main push triggered GitHub Pages build/deploy run 44736047089. Its deploy job created a Pages deployment for SHA c599419c284ed5c3e21c44c91d5d4229191dced8 and reported success at https://barrot-agent.github.io/B-Agent/. The Pages token had Pages: write. A future merge to main is therefore expected to trigger another public Pages deployment unless the Pages source/automation boundary is changed.
+- The user has not separately authorized a public Pages deployment. Do not merge while this side effect remains implicit. The PR's Pages validation-only job is not a deployment and does not remove the main-branch deployment side effect.
+- Main Pillars Consistency Check run 44740697804 failed: GitHub App credentials were absent, Databricks returned HTTP 403, and the Hugging Face Space runtime reported BUILD_ERROR; repository source checks passed. The integration version changes this workflow to keep the scheduled checks read-only, require separate manual YES confirmations for GitHub App and Databricks probes, pin checkout/setup-python actions to full SHAs, and set persist-credentials=false. This is a safer design, but requests is still installed without an exact version/hash pin and the live Space build issue remains unverified.
+
+### Open PR backlog — 17 preserved
+
+| PR | Classification | Current disposition |
+|---|---|---|
+| #1673 | Active consolidated integration | Draft; exact-head full suite passed; blocked by approval, branch-protection evidence and Pages deployment boundary |
+| #1677 | Overlapping security extraction | Non-draft; checks pass but no independent review; same six paths as #1673 with narrower/older content; preserve until #1673 is merged and reconciled |
+| #1663 | Superseded source branch | #1673 is the current consolidated successor; keep open until successor merge and verification |
+| #1671 | Unique security work | Inbound GitHub Actions authority gate; draft/unreviewed |
+| #1668 | Unique engineering work | Worker inference failover; draft/unreviewed |
+| #1664 | Unique monetization work | Paid-issue pack/template; draft/unreviewed |
+| #1670 | Unique creative work | Musical DNA feature; non-draft but mergeability not clean; blocked |
+| #1665 | Unique dependency update | Non-draft/mergeable; exact required-check and approval reconciliation remains |
+| #1666 | Unique dependency update | Non-draft/mergeable; exact required-check and approval reconciliation remains |
+| #1541 | Unique/stacked MMI security work | Draft; parent/stacked ancestry requires reconciliation |
+| #1265 | Unique XRP engineering/research | Compact XRP ledger index; draft/unreviewed |
+| #1450 | Unique XRP market research | Binance phase-one ingestion/research; draft/unreviewed |
+| #1460 | Unique XRP institutional research | Multi-rail institutional research stacked on #1450; preserve |
+| #1440 | Stacked XRP archive repair | Validation-trigger repair related to #1436/#1437; draft/blocked |
+| #1436 | Unique XRP research | Binance theft/attacker-wallet graph; draft/unreviewed |
+| #1437 | Unique XRP engineering/research | Ledger source addenda and snapshot-pointer repair; draft/unreviewed |
+| #1353 | Unique XRP data engineering | Large XRP ledger archive/sharding work; draft/unreviewed |
+
+No PR was closed. Do not bulk-close unique research or feature work. Reclassify only after exact diff/ancestry review and a verified successor merge.
+
+### Nine-platform coordination map
+
+- GitHub: authenticated repository connector access was tested; repository fetches, tree inspection, PR inventory, CI logs and a branch handoff update are available. The connector cannot read effective branch protection (403).
+- ChatGPT: used as the orchestration/review surface; this is not proof of a separate ChatGPT API integration with the other platforms.
+- Claude, Grok, Gemini, Copilot and Codex: no live authentication/data flow verified in this run.
+- Hugging Face: public Space runtime was checked by the repository workflow; this is not an authenticated control-plane integration. Last main check reported BUILD_ERROR.
+- Kaggle: no live authentication verified; no submission made.
+- Databricks: the main read-only probe returned 403; no live data flow verified.
+- No cross-platform model exchange is claimed. Preserve least privilege and provider-specific fallbacks.
+
+### Next concrete actions
+
+1. Keep #1673 unmerged until an independent approval exists, effective branch protection/required checks are verifiable, and the public Pages deployment side effect is explicitly authorized or removed from the merge path.
+2. Reconcile the six overlapping A2A paths between #1677 and #1673; after a legitimate successor merge, verify main and close only the exact superseded extraction.
+3. Configure a legitimate SEC contact identity through BARROT_SEC_USER_AGENT; do not invent an email or contact.
+4. After the integration is legitimately merged, activate the hourly/daily public ingestion on main and verify multiple successive runs, not one bootstrap capture.
+5. Add independent WORM raw retention and an external timestamp/hash anchor; implement deterministic feature-store rebuild from raw receipts.
+6. Acquire point-in-time candle vintages and synchronized multi-venue depth/derivatives history; historical candles fetched today must not be treated as known at their old event times.
+7. Reconcile ETF shares/holdings with issuer filings, validate derivatives contract units, and resolve provider terms before promoting raw-only sources.
+8. Accumulate enough independent snapshots and non-overlapping labeled horizons to evaluate all four baselines, calibration, drift, candidate readiness and a later independent shadow cohort.
+9. Keep forecast issuance NOT_ISSUED until those gates pass. No real-money or paper-trading actions.
+
