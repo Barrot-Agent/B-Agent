@@ -85,7 +85,7 @@ test("HTTP task gateway authenticates submit and returns task status", async () 
   const { queue } = makeQueue();
   const namespace = {
     idFromName: () => "primary",
-    get: () => ({ fetch: (request) => queue.fetch(request) }),
+    get: () => ({ fetch: (input, init) => queue.fetch(new Request(input, init)) }),
   };
   const env = { BRAIN_SHARED_SECRET: "shared-test-secret", BARROT_TASKS: namespace };
   const denied = await worker.fetch(new Request("https://worker.test/v1/tasks", {
