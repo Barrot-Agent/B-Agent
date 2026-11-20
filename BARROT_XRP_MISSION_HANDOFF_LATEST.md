@@ -2143,3 +2143,45 @@ Two trackers report different 19 November XRP ETF results because their definiti
 - No new evidence changes the mission priority: XRP intelligence remains priority 1; Barrot V3 remains the execution, orchestration, safety and verification foundation.
 - Forecast issuance remains **false / NOT_SATISFIED**. No directional forecast, model-superiority claim, paper trade or real-money action.
 - No PR, branch or mainline code was created or modified. This section updates only the existing durable handoff on the existing integration branch.
+
+
+---
+
+## Run 237 — macro, rates, yen and geopolitical risk context
+**Capture window:** 2026-11-20, approximately 15:08 UTC. Macro observations are contextual features only; none is admitted to the point-in-time feature store in this run.
+
+### United States rates and Fed reaction function
+- U.S. Treasury's official daily par curve for 2026-11-19: 3-month 4.34%, 2-year 4.76%, 10-year 5.04%, 30-year 5.40%. Source: https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve
+- WSJ market update on 2026-11-20 around 09:13 ET reports the 10-year yield at 4.972% and the 2-year at 4.675% as investors rotated into Treasuries amid an equity/AI-valuation selloff; the dollar weakened 0.7% against the yen and Brent was around $91. This is an intraday market snapshot, not the Treasury's official close. Source: https://www.wsj.com/finance/jgbs-edge-higher-tracking-gains-in-u-s-treasurys-d38f2bdb
+- Federal Reserve's October 27–28 FOMC minutes: target range held at 3.75%–4.00% by 10–2 vote; two members preferred a 25 bp increase. Almost all participants judged further increases would likely be appropriate under their baseline inflation/labor outlook, but future actions remain data-dependent. The minutes are not a promise of a December hike. Primary source: https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm
+- The same Fed minutes identify systemic-risk channels relevant to high-beta assets: asset-price declines can force return-sensitive vehicles to sell to deleverage or meet redemptions; AI-buildout debt, off-balance-sheet leasing commitments and circular financing could amplify losses if expected returns disappoint. Staff saw inflation risks skewed upward partly from AI investment and geopolitical turmoil.
+- Reuters reports J.P. Morgan expects 25 bp Fed increases in December 2026, January 2027 and March 2027; it reports markets as pricing a near-certain December 25 bp move and an 8% chance of 50 bp. This is an analyst/market-implied path, not FOMC guidance. Source: https://www.investing.com/news/economy-news/jp-morgan-sees-fed-rate-hikes-at-next-three-meetings-as-inflation-persists-5039090
+
+### Japan rates, yen and cross-border liquidity
+- BOJ Governor Kazuo Ueda said on November 19 that the BOJ intends to keep raising rates because financial conditions remain loose; he said weak yen and higher crude prices could damage real household income and push inflation above target.
+- Reuters reports the BOJ policy rate at 1.25% after the September increase, with the BOJ holding in October. The yen was near 160 per dollar and down 1.8% year-to-date; most Reuters-polled analysts expected another BOJ hike in December and another by end-March.
+- Source: https://www.reuters.com/markets/us/boj-governor-ueda-says-financial-conditions-loose-despite-rate-hikes-2026-11-19/
+- For XRP research, USD/JPY, JGB yields, BOJ decisions and yen-funded carry positioning are macro/liquidity context. They are not direct XRP flows and must not be substituted for exchange-specific XRP demand.
+
+### Geopolitical and energy risk
+- WSJ reports a Houthi projectile struck a tower in Riyadh on November 19, while the group controls territory near the Red Sea, Bab al-Mandeb and Gulf of Aden. WTI front-month was reported at $83.76, up 0.7% in that snapshot; a separate same-day WSJ rates report put Brent near $91.
+- Source: https://www.wsj.com/finance/commodities-futures/oil-rises-amid-middle-east-tensions-cdf9de83
+- This is a reported geopolitical risk premium, not an independently verified change in oil supply or a measured disruption to payment rails. Keep the event timestamp and source confidence explicit.
+
+### Competing macro scenarios — no XRP forecast
+1. **Higher-for-longer / inflation shock:** persistent oil and tariff/geopolitical pressure keeps expected policy rates and real yields elevated; dollar funding conditions tighten and high-beta assets face valuation/liquidity pressure.
+2. **Risk-off duration bid:** equity/AI repricing triggers Treasury demand and falling yields; a weaker dollar can offset some risk-asset pressure, while volatility and deleveraging can still dominate.
+3. **Yen carry unwind:** BOJ tightening expectations plus yen strength can force position reductions across global risk assets; effect on XRP is indirect and depends on funding/cross-asset positioning.
+4. **Energy/geopolitical escalation:** oil and shipping risk premiums raise inflation expectations, potentially limiting the duration bid and delaying monetary easing.
+5. **AI-credit repricing:** Fed-identified leverage, leasing and circular-financing exposures could transmit an AI-equity correction into broader credit and liquidity conditions.
+
+### Feature and evidence admission
+- Candidate macro fields: Treasury curve by tenor/date, real yields, DXY and USD/JPY, Fed funds futures probabilities, BOJ policy/communications, Brent/WTI, VIX, global equity indices, geopolitical event timestamps and source confidence.
+- Keep official Treasury/Fed/BOJ records separate from Reuters reporting, WSJ market snapshots, broker forecasts and market-implied probabilities. Do not count a wire story repeating a Fed statement as a second independent source.
+- No synchronized raw-source receipt, point-in-time macro feature row, source hash or walk-forward result was created in this run. These observations remain research notes, not model-eligible features.
+- Counterevidence is retained: falling Treasury yields and a weaker dollar during the November 20 risk-off session may offset some tightening pressure; the Fed minutes describe future policy as data-dependent; the reported geopolitical strike does not by itself prove a sustained supply interruption.
+
+### Run 237 disposition
+- No directional XRP forecast or scenario probability was issued.
+- No model training, paper trading or real-money action occurred.
+- Main remains unchanged; all macro findings are recorded in this single durable handoff on the existing integration branch.
