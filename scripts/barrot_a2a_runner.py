@@ -31,7 +31,7 @@ DEFAULT_LEASE = 3600
 _SECRET_PATTERN = re.compile(
     r"(?i)((?:authorization\s*[:=]\s*bearer\s+)|"
     r"(?:(?:api[_-]?key|token|secret|password)\s*[:=]\s*))"
-    r"([^\s,;\\"']+)"
+    r"([^\s,;]+)"
 )
 
 
