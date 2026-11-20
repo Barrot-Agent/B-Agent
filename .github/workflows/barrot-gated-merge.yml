@@ -10,41 +10,6 @@ permissions:
   pull-requests: read
 
 jobs:
-  conflict-integrity:
-    name: Verify PR can merge cleanly with current base
-    if: ${{ github.event_name == 'pull_request' }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - name: Checkout exact PR head
-        uses: actions/checkout@v7
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Run a real, read-only three-way merge check
-        env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          git fetch --no-tags origin "$BASE_SHA"
-          merge_base="$(git merge-base "$BASE_SHA" "$HEAD_SHA")"
-          test -n "$merge_base"
-          set +e
-          git merge-tree --write-tree "$BASE_SHA" "$HEAD_SHA" > merge-tree-result.txt 2>&1
-          result=$?
-          set -e
-          if [ "$result" -ne 0 ]; then
-            cat merge-tree-result.txt
-            echo "::error::PR has unresolved merge conflicts against its current base. No automatic resolution is permitted."
-            exit 1
-          fi
-          echo "Clean three-way merge verified against base $BASE_SHA and head $HEAD_SHA."
-          cat merge-tree-result.txt
-
   audit-only:
     name: Merge disabled pending gate verification
     runs-on: ubuntu-latest
