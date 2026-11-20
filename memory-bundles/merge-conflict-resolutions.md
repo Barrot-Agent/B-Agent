@@ -31,13 +31,8 @@
 - ✅ Encoding conflicts
 
 ### Resolution Strategies
-- ✅ Rerere (Reuse Recorded Resolution) - 99% success rate
-- ✅ Whitespace Normalization - 98% success rate
-- ✅ Import Statement Smart Merge - 95% success rate
-- ✅ Configuration Key Merge - 90% success rate
-- ✅ Accept Both Changes with Review - 85% success rate
-- ✅ Recursive Strategy with Patience - 80% success rate
-- ✅ Three-Way Merge - 75% success rate
+- Rerere, whitespace, import, configuration, accept-both, recursive and three-way strategies: historical estimates only; no validated success rates are established.
+- Accept-both is never a default. It requires proof that both changes are required, compatible, validated and explicitly authorized.
 
 ### Available Tools
 - ✅ Git Rerere (built-in)
@@ -138,7 +133,7 @@
 ### Next Update Schedule
 - **Frequency**: After every 10 resolutions
 - **Next Review**: After first 10 conflicts
-- **Continuous**: Success rates updated after each resolution
+- **Continuous**: Outcomes are recorded after review; success rates are published only after independently validated samples
 
 ---
 
@@ -163,15 +158,15 @@
 
 | Strategy | Attempts | Successes | Success Rate | Avg Time |
 |----------|----------|-----------|--------------|----------|
-| Rerere | 0 | 0 | 99% (expected) | TBD |
-| Whitespace Normalization | 0 | 0 | 98% (expected) | TBD |
-| Import Smart Merge | 0 | 0 | 95% (expected) | TBD |
-| Config Key Merge | 0 | 0 | 90% (expected) | TBD |
-| Manual Review | 0 | 0 | 85% (expected) | TBD |
-| Recursive Patience | 0 | 0 | 80% (expected) | TBD |
-| Three-Way Merge | 0 | 0 | 75% (expected) | TBD |
+| Rerere | 0 | 0 | UNVERIFIED | TBD |
+| Whitespace Normalization | 0 | 0 | UNVERIFIED | TBD |
+| Import Smart Merge | 0 | 0 | UNVERIFIED | TBD |
+| Config Key Merge | 0 | 0 | UNVERIFIED | TBD |
+| Manual Review | 0 | 0 | UNVERIFIED | TBD |
+| Recursive Patience | 0 | 0 | UNVERIFIED | TBD |
+| Three-Way Merge | 0 | 0 | UNVERIFIED | TBD |
 
-*Expected rates are from initial knowledge base. Actual rates will be tracked.*
+*There are zero recorded attempts in this ledger. Historical expected percentages are unverified and are not performance evidence.*
 
 ---
 
@@ -229,7 +224,7 @@
 
 ### Medium-term (3-6 months)
 - [ ] Resolve 500+ conflicts
-- [ ] Achieve 85%+ auto-resolution rate
+- [ ] Maintain zero unauthorized automatic resolutions; measure outcomes only from reviewed, reproducible evidence
 - [ ] Average resolution time <3 minutes
 - [ ] Prevent 50+ conflicts through early detection
 - [ ] Contribute conflict resolution improvements to tools
@@ -246,7 +241,7 @@
 ## 🚨 Alert Thresholds
 
 ### Performance Alerts
-- **Success Rate** drops below 90%: Review and improve
+- **Verified outcome quality** declines: pause recommendations and investigate the evidence
 - **Auto-Resolution Rate** drops below 70%: Enhance automation
 - **Average Resolution Time** exceeds 10 minutes: Optimize strategies
 - **Manual Intervention** exceeds 30%: Improve auto-resolution

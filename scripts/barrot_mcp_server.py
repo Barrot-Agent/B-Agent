@@ -21,6 +21,8 @@ recorded spec in docs/barrot-status.md.
 from __future__ import annotations
 
 import json
+import os
+import subprocess
 import sys
 from pathlib import Path
 
@@ -31,6 +33,46 @@ VALIDATOR = ROOT / "scripts" / "re_v2.py"
 
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+
+
+def start_background_a2a_runner() -> bool:
+    """Start one outbound queue consumer only after explicit opt-in."""
+    if os.getenv("BARROT_A2A_AUTO_RUNNER", "").strip().upper() != "YES":
+        print(
+            "[barrot] A2A runner is disabled by default; "
+            "set BARROT_A2A_AUTO_RUNNER=YES only after approval and sandbox review",
+            file=sys.stderr,
+        )
+        return False
+    if not os.getenv("BARROT_A2A_URL"):
+        return False
+    if not (os.getenv("BARROT_AGENT_SECRET") or os.getenv("BRAIN_SHARED_SECRET")):
+        print("[barrot] A2A runner not started: runner authentication secret is not available in the OpenCode environment", file=sys.stderr)
+        return False
+    try:
+        from scripts.barrot_a2a_runner import runner_is_active
+
+        if runner_is_active():
+            return False
+        log_dir = Path.home() / ".barrot"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_path = log_dir / "a2a-runner.log"
+        with log_path.open("a", encoding="utf-8") as log_handle:
+            subprocess.Popen(
+                [sys.executable, str(ROOT / "scripts" / "barrot_a2a_runner.py")],
+                cwd=str(ROOT),
+                env=os.environ.copy(),
+                stdin=subprocess.DEVNULL,
+                stdout=log_handle,
+                stderr=subprocess.STDOUT,
+                start_new_session=True,
+                close_fds=True,
+            )
+        return True
+    except OSError as exc:
+        print(f"[barrot] A2A runner launch failed: {type(exc).__name__}", file=sys.stderr)
+        return False
+
 
 PROTOCOL = "2025-06-18"
 
@@ -306,6 +348,7 @@ def handle(request: dict) -> dict | None:
 
 
 def main() -> int:
+    start_background_a2a_runner()
     for line in sys.stdin:
         line = line.strip()
         if not line:

@@ -2,7 +2,7 @@
   {
     "technique_id": "RT001",
     "name": "Accept Both Changes with Manual Review",
-    "description": "Merge both changes and manually review for correctness",
+    "description": "Historical accept-both pattern; outcome rate is unverified. Use only when both changes are independently required, compatible, and validated.",
     "applicable_types": [
       "content"
     ],
@@ -16,9 +16,9 @@
       "Understanding of code context",
       "Review capability"
     ],
-    "success_rate": 0.85,
-    "risk_level": "Medium",
-    "automation_level": "Semi-Automated"
+    "success_rate": null,
+    "risk_level": "High",
+    "automation_level": "Manual only; explicit authorization required"
   },
   {
     "technique_id": "RT002",

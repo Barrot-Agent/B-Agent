@@ -6,6 +6,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -39,6 +40,10 @@ def test_registered_in_opencode_config():
     assert server["type"] == "local"
     assert server["command"] == ["python3", "scripts/barrot_mcp_server.py"]
     assert (ROOT / server["command"][1]).exists()
+    assert "environment" not in server
+    assert config["permission"]["external_directory"] == "ask"
+    assert config["permission"]["edit"] == "ask"
+    assert config["permission"]["bash"] == "ask"
 
 
 def test_tools_list_contains_the_original_five():
@@ -160,3 +165,40 @@ def test_repo_guard_flags_both_failure_classes_in_a_fixture_root():
     assert result["unguarded_optional_imports"] == [
         {"file": "tests/fixtures/guard/root/tests/test_bad_import.py", "module": "scipy"}
     ]
+
+
+def test_mcp_startup_launches_one_outbound_runner_when_credentials_exist(tmp_path, monkeypatch):
+    import scripts.barrot_mcp_server as server
+
+    monkeypatch.setenv("BARROT_A2A_URL", "https://barrot-a2a-worker.amazonprostarelite.workers.dev")
+    monkeypatch.setenv("BRAIN_SHARED_SECRET", "test-only-secret")
+    monkeypatch.setenv("BARROT_A2A_AUTO_RUNNER", "YES")
+    monkeypatch.setattr(server.Path, "home", lambda: tmp_path)
+    monkeypatch.setattr("scripts.barrot_a2a_runner.runner_is_active", lambda: False)
+    with patch.object(server.subprocess, "Popen") as launch:
+        assert server.start_background_a2a_runner() is True
+    launch.assert_called_once()
+    args, kwargs = launch.call_args
+    assert args[0][-1].endswith("scripts/barrot_a2a_runner.py")
+    assert kwargs["start_new_session"] is True
+    assert kwargs["stdin"] == subprocess.DEVNULL
+
+
+def test_mcp_startup_does_not_launch_runner_without_gateway_secret(monkeypatch):
+    import scripts.barrot_mcp_server as server
+
+    monkeypatch.delenv("BARROT_A2A_URL", raising=False)
+    monkeypatch.delenv("BRAIN_SHARED_SECRET", raising=False)
+    monkeypatch.delenv("BARROT_AGENT_SECRET", raising=False)
+    assert server.start_background_a2a_runner() is False
+
+
+def test_mcp_startup_does_not_launch_runner_with_credentials_without_explicit_opt_in(monkeypatch):
+    import scripts.barrot_mcp_server as server
+
+    monkeypatch.setenv("BARROT_A2A_URL", "https://barrot-a2a-worker.amazonprostarelite.workers.dev")
+    monkeypatch.setenv("BRAIN_SHARED_SECRET", "test-only-secret")
+    monkeypatch.delenv("BARROT_A2A_AUTO_RUNNER", raising=False)
+    with patch.object(server.subprocess, "Popen") as launch:
+        assert server.start_background_a2a_runner() is False
+    launch.assert_not_called()

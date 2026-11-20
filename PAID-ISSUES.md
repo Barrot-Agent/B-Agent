@@ -1,6 +1,6 @@
 # Paid issues: READY, never claimed
 
-Last run: 2026-11-19 00:41 UTC. Schedule: every 6 hours, indefinitely, plus manual dispatch.
+Last run: 2026-11-20 12:27 UTC. Schedule: every 6 hours, indefinitely, plus manual dispatch.
 
 Rules enforced by `scripts/paid_issue_hunter.py`:
 

@@ -61,8 +61,9 @@
     }
   },
   "permission": {
-    "external_directory": "allow",
-    "edit": "allow",
-    "bash": "allow"
+    "external_directory": "ask",
+    "edit": "ask",
+    "bash": "ask",
+    "webfetch": "ask"
   }
 }
