@@ -5,6 +5,7 @@ on:
     branches:
       - research/xrp-ledger-shard-migration-20261029T2210Z
       - verify/xrp-ledger-archive-20261101T031615Z
+      - verify/xrp-ledger-archive-20261101T070712Z
       - verify/xrp-ledger-coinbase-circle-sbi-kamilah-binance-20261101T101003Z
   pull_request:
     branches:
