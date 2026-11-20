@@ -14,6 +14,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/agi.md - AGI Architecture & Implementation
 - docs/API.md - API Reference
 - docs/ARCHITECTURE.md - Architecture
+- docs/AUTONOMOUS_CONFLICT_RESOLUTION_POLICY.md - Autonomous conflict-choice policy
 - docs/AUTONOMOUS_DEPLOYMENT_REPORT.md - BARROT AUTONOMOUS DEPLOYMENT
 - docs/BARROT_BUILD_REPORT.md - Barrot Build Report
 - docs/BARROT_V3_STRUCTURAL_CORE_AND_FOUNDATION_SOURCES.md - Barrot V3 Structural Analysis Core v1.1
@@ -95,15 +96,15 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/millennium/RE-V2.md - Reverse-engineering v2: what v1 actually did, and what replaced it
 
 ## docs/money
-- docs/money/BOUNTY-APIS.md - Bounty platform APIs: what answers without an account
 
+- docs/money/BOUNTY-APIS.md - Bounty platform APIs: what answers without an account
 - docs/money/PRODUCTS.md - Money cycle: products, bounties, listing
 - docs/money/TRANSMUTE.md - Transmuting harvested workflows into money
 
 ## docs/ops
 
-- docs/ops/CI-FIX-2026-11-17.md - CI failure: fixture collected as a test
 - docs/ops/BLOCKERS.md - Blocker re-audit
+- docs/ops/CI-FIX-2026-11-17.md - CI failure: fixture collected as a test
 - docs/ops/FIX-CYCLE.md - Fix cycle: workflows, server, go audit
 - docs/ops/MCP-SERVER.md - MCP server: spec fetched, five tools, three real
 
@@ -121,4 +122,3 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/synthesis/cross-domain-audit.md - Cross-domain audit
 - docs/synthesis/cross-domain-convergence.md - Cross-domain synthesis and convergence
 - docs/synthesis/paradigm-cycle-01.md - Paradigm cycle 01: cross-analysis, bounded
-
