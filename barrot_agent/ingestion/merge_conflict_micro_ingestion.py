@@ -16,11 +16,15 @@ Key Features:
 
 import json
 import re
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from datetime import datetime
 from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
+
+from barrot_agent.ingestion.conflict_resolution_policy import (
+    ConflictEvidence, ResolutionChoice, decision_as_dict, recommend_resolution,
+)
 
 
 class ConflictType(Enum):
@@ -75,7 +79,7 @@ class ResolutionTechnique:
     strategy: str
     commands: List[str]
     prerequisites: List[str]
-    success_rate: float
+    success_rate: Optional[float]
     risk_level: str
     automation_level: str
 
@@ -180,7 +184,7 @@ class MergeConflictMicroIngestion:
                 indicators=["import", "from", "require"],
                 file_patterns=["*.py", "*.js", "*.ts"],
                 frequency="High",
-                auto_resolvable=True,
+                auto_resolvable=False,
             ),
             ConflictPattern(
                 pattern_id="CP003",
@@ -190,7 +194,7 @@ class MergeConflictMicroIngestion:
                 indicators=["config", "settings", "properties"],
                 file_patterns=["*.json", "*.yaml", "*.yml", "*.toml", "*.ini"],
                 frequency="Medium",
-                auto_resolvable=True,
+                auto_resolvable=False,
             ),
             ConflictPattern(
                 pattern_id="CP004",
@@ -200,7 +204,7 @@ class MergeConflictMicroIngestion:
                 indicators=["# ", "## ", "/**", "<!--"],
                 file_patterns=["*.md", "*.rst", "*.txt"],
                 frequency="Medium",
-                auto_resolvable=True,
+                auto_resolvable=False,
             ),
             ConflictPattern(
                 pattern_id="CP005",
@@ -210,7 +214,7 @@ class MergeConflictMicroIngestion:
                 indicators=["spaces", "tabs", "indentation"],
                 file_patterns=["*"],
                 frequency="Low",
-                auto_resolvable=True,
+                auto_resolvable=False,
             ),
             ConflictPattern(
                 pattern_id="CP006",
@@ -240,7 +244,7 @@ class MergeConflictMicroIngestion:
             ResolutionTechnique(
                 technique_id="RT001",
                 name="Accept Both Changes with Manual Review",
-                description="Merge both changes and manually review for correctness",
+                description="Historical accept-both pattern; outcome rate is unverified. Use only when both changes are independently required, compatible, and validated.",
                 applicable_types=[ConflictType.CONTENT.value],
                 strategy=ResolutionStrategy.ACCEPT_BOTH.value,
                 commands=[
@@ -249,9 +253,9 @@ class MergeConflictMicroIngestion:
                     "git commit -m 'Resolved conflict by merging both changes'",
                 ],
                 prerequisites=["Understanding of code context", "Review capability"],
-                success_rate=0.85,
-                risk_level="Medium",
-                automation_level="Semi-Automated",
+                success_rate=None,
+                risk_level="High",
+                automation_level="Manual only; explicit authorization required",
             ),
             ResolutionTechnique(
                 technique_id="RT002",
@@ -682,54 +686,87 @@ import numpy as np
         self.strategy_success_rates[strategy].append(1.0 if outcome.success else 0.0)
 
     def get_recommended_strategy(
-        self, conflict_type: str, file_path: str
+        self,
+        conflict_type: str,
+        file_path: str,
+        evidence: Optional[ConflictEvidence] = None,
     ) -> Optional[ResolutionTechnique]:
-        """Get recommended resolution strategy based on conflict type and context"""
-        applicable_techniques = [
-            tech for tech in self.resolution_techniques if conflict_type in tech.applicable_types
-        ]
+        """Return a legacy technique only when the evidence policy supports it.
 
-        if not applicable_techniques:
+        With no explicit evidence this method fails closed. It never authorizes
+        applying a technique; callers must obtain human authorization.
+        """
+        facts = evidence or ConflictEvidence(conflict_type=conflict_type, file_path=file_path)
+        facts = replace(facts, conflict_type=conflict_type, file_path=file_path)
+        decision = recommend_resolution(facts)
+        if decision.choice == ResolutionChoice.MANUAL:
             return None
+        strategy_by_choice = {
+            ResolutionChoice.CURRENT: ResolutionStrategy.ACCEPT_CURRENT.value,
+            ResolutionChoice.INCOMING: ResolutionStrategy.ACCEPT_INCOMING.value,
+            ResolutionChoice.BOTH: ResolutionStrategy.ACCEPT_BOTH.value,
+        }
+        selected = strategy_by_choice.get(decision.choice)
+        if selected is None:
+            return None
+        candidates = [
+            tech for tech in self.resolution_techniques
+            if tech.strategy == selected and conflict_type in tech.applicable_types
+        ]
+        return candidates[0] if len(candidates) == 1 else None
 
-        # Sort by success rate
-        applicable_techniques.sort(key=lambda x: x.success_rate, reverse=True)
-        return applicable_techniques[0]
-
-    def analyze_conflict(self, conflict_content: str, file_path: str) -> Dict[str, Any]:
-        """Analyze a conflict and provide recommendations"""
+    def analyze_conflict(
+        self,
+        conflict_content: str,
+        file_path: str,
+        evidence: Optional[ConflictEvidence] = None,
+    ) -> Dict[str, Any]:
+        """Analyze through the evidence gate; this analyzer never auto-resolves."""
         analysis = {
             "conflict_detected": True,
             "file_path": file_path,
             "conflict_type": None,
             "patterns_matched": [],
             "recommended_technique": None,
+            "recommended_choice": ResolutionChoice.MANUAL.value,
+            "resolution_decision": None,
             "auto_resolvable": False,
-            "risk_assessment": "Unknown",
+            "requires_human_review": True,
+            "risk_assessment": "High until reviewed",
         }
-
-        # Detect conflict type
         for pattern in self.conflict_patterns:
-            for indicator in pattern.indicators:
-                if indicator in conflict_content:
-                    analysis["patterns_matched"].append(pattern.name)
-                    analysis["conflict_type"] = pattern.conflict_type
-                    analysis["auto_resolvable"] = pattern.auto_resolvable
-                    break
+            if any(indicator in conflict_content for indicator in pattern.indicators):
+                analysis["patterns_matched"].append(pattern.name)
+                analysis["conflict_type"] = pattern.conflict_type
+                break
 
-        # Get recommended technique
-        if analysis["conflict_type"]:
-            technique = self.get_recommended_strategy(analysis["conflict_type"], file_path)
-            if technique:
-                analysis["recommended_technique"] = {
-                    "name": technique.name,
-                    "description": technique.description,
-                    "commands": technique.commands,
-                    "success_rate": technique.success_rate,
-                    "automation_level": technique.automation_level,
-                }
-                analysis["risk_assessment"] = technique.risk_level
+        detected_type = analysis["conflict_type"] or (
+            evidence.conflict_type if evidence is not None else ConflictType.CONTENT.value
+        )
+        facts = evidence or ConflictEvidence(conflict_type=detected_type, file_path=file_path)
+        facts = replace(facts, conflict_type=detected_type, file_path=file_path)
+        decision = recommend_resolution(facts)
+        analysis["resolution_decision"] = decision_as_dict(facts)
+        analysis["recommended_choice"] = decision.choice.value
+        analysis["auto_resolvable"] = False
+        analysis["requires_human_review"] = True
+        if decision.choice == ResolutionChoice.MANUAL:
+            analysis["risk_assessment"] = "Manual review required"
+            return analysis
 
+        technique = self.get_recommended_strategy(detected_type, file_path, facts)
+        if technique is not None:
+            analysis["recommended_technique"] = {
+                "name": technique.name,
+                "description": technique.description,
+                "commands": technique.commands,
+                "success_rate": technique.success_rate,
+                "success_rate_status": (
+                    "UNVERIFIED" if technique.success_rate is None else "HISTORICAL_ESTIMATE"
+                ),
+                "automation_level": technique.automation_level,
+            }
+        analysis["risk_assessment"] = "Human authorization required"
         return analysis
 
     def export_to_json(self, output_dir: str = ".") -> Dict[str, str]:
@@ -819,9 +856,10 @@ import numpy as np
             report.append(f"- **Description**: {pattern.description}")
 
         report.append("\n## Resolution Techniques")
-        for tech in sorted(self.resolution_techniques, key=lambda x: x.success_rate, reverse=True):
+        for tech in sorted(self.resolution_techniques, key=lambda x: x.success_rate if x.success_rate is not None else -1.0, reverse=True):
             report.append(f"\n### {tech.name} ({tech.technique_id})")
-            report.append(f"- **Success Rate**: {tech.success_rate * 100:.1f}%")
+            rate = "UNVERIFIED" if tech.success_rate is None else f"{tech.success_rate * 100:.1f}%"
+            report.append(f"- **Success Rate**: {rate}")
             report.append(f"- **Risk Level**: {tech.risk_level}")
             report.append(f"- **Automation**: {tech.automation_level}")
             report.append(f"- **Strategy**: {tech.strategy}")
@@ -891,7 +929,8 @@ def calculate_total(items):
     print(f"  Risk Assessment: {analysis['risk_assessment']}")
     if analysis["recommended_technique"]:
         print(f"  Recommended: {analysis['recommended_technique']['name']}")
-        print(f"  Success Rate: {analysis['recommended_technique']['success_rate'] * 100:.1f}%")
+        rate = analysis["recommended_technique"]["success_rate"]
+        print(f"  Success Rate: {'UNVERIFIED' if rate is None else f'{rate * 100:.1f}%'}")
 
     print("\n✨ Merge Conflict Micro-Ingestion System ready!")
     print("🦜 Knowledge base continuously learning and improving...")

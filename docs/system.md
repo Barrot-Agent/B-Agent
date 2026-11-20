@@ -579,17 +579,15 @@ eslint --fix <file>
 jq -s 'reduce .[] as $item ({}; . * $item)' file1.json file2.json
 ```
 
-#### 5. **Accept Both Changes with Review**
-- **Success Rate**: 85%
-- **Risk Level**: Medium
-- **Automation**: Semi-Automated
-- **Best For**: Complex logic conflicts
+#### 5. **Evidence-Gated Semantic Integration**
+- **Success Rate**: UNVERIFIED — no measured outcome rate is available
+- **Risk Level**: High until independently reviewed
+- **Automation**: Manual only; explicit authorization required
+- **Best For**: Cases where both changes are independently required and proven compatible
 
-```bash
-# Manual editing required
-git add <file>
-git commit -m "Resolved conflict by merging both changes"
-```
+Never accept both merely to clear conflict markers. Inspect the merge base and
+both versions, validate the composed result, run relevant tests, and obtain
+explicit human authorization before applying it.
 
 #### 6. **Recursive Strategy with Patience**
 - **Success Rate**: 80%
@@ -810,8 +808,8 @@ def calculate_total(items):
 ### Scenario 2: Import Statement Ordering
 
 **Conflict Type**: Content  
-**Auto-Resolvable**: Yes  
-**Recommended Strategy**: Auto-Merge with Formatting
+**Auto-Resolvable**: No — human review and authorization are required  
+**Recommended Strategy**: Evidence-gated review; manual by default
 
 ```python
 # Conflict Example
@@ -827,10 +825,11 @@ import numpy as np
 ```
 
 **Resolution Steps**:
-1. Accept both imports
-2. Sort alphabetically
-3. Run formatter (isort)
-4. Commit
+1. Inspect both import changes and confirm each is required
+2. Check for duplicates, version conflicts and side effects
+3. Compose only if the changes are compatible
+4. Run tests and review the complete diff
+5. Obtain explicit human authorization before applying the result
 
 **Merged Result**:
 ```python
@@ -844,8 +843,8 @@ import requests
 ### Scenario 3: Configuration Changes
 
 **Conflict Type**: Content  
-**Auto-Resolvable**: Yes  
-**Recommended Strategy**: Semantic Merge
+**Auto-Resolvable**: No — human review and authorization are required  
+**Recommended Strategy**: Evidence-gated review; manual by default
 
 ```yaml
 # Conflict Example
@@ -862,7 +861,7 @@ database:
 >>>>>>> feature/connection-pool
 ```
 
-**Resolution**: Merge all keys
+**Resolution**: Compare the base and both versions; combine keys only when both are required, compatible, tested, and explicitly approved
 ```yaml
 database:
   host: localhost
@@ -884,7 +883,7 @@ database:
    ↓
 3. Get Recommendation
    ↓
-4. Apply Strategy
+4. Obtain Human Authorization and Apply Only the Approved Resolution
    ↓
 5. Record Outcome
    ↓
@@ -920,17 +919,13 @@ outcome = LearningOutcome(
 mcmi.record_learning_outcome(outcome)
 ```
 
-### Success Rate Tracking
+### Outcome Measurement
 
-The system automatically tracks success rates for each strategy:
-
-- **Rerere**: 99% (fully automated, very reliable)
-- **Whitespace**: 98% (automated, minimal risk)
-- **Import Merge**: 95% (automated with formatting)
-- **Config Merge**: 90% (semantic understanding)
-- **Manual Review**: 85% (depends on reviewer)
-- **Recursive**: 80% (good for large changes)
-- **Three-Way**: 75% (requires analysis)
+No validated strategy success rates are currently established. Historical
+percentages in the original knowledge base are unverified estimates, not
+measured outcomes, and must not be used as confidence scores or authorization
+to automate a resolution. Track only outcomes backed by reviewed diffs,
+test results, and an auditable record of the exact base and head revisions.
 
 ---
 
@@ -941,12 +936,13 @@ The system automatically tracks success rates for each strategy:
 1. **PR Monitoring**
    - Detect conflicts in open PRs
    - Analyze conflict patterns
-   - Apply appropriate strategies
+   - Produce evidence-gated recommendations only; do not apply a resolution automatically
 
-2. **Automatic Resolution**
-   - Auto-resolve safe conflicts
-   - Flag manual review needs
-   - Document resolutions
+2. **Resolution Recommendation (fail-closed)**
+   - Run the evidence-gated conflict policy
+   - Default to manual review when evidence is missing or ambiguous
+   - Never auto-apply a recommended choice; require explicit human authorization
+   - Keep the autonomous resolver quarantined until separately reviewed and authorized
 
 3. **Communication Filtering**
    - Prevent unresolved conflicts in messages
@@ -962,17 +958,14 @@ The system automatically tracks success rates for each strategy:
 ### Configuration
 
 ```python
-# Enable automated conflict resolution
+# Conflict analysis is advisory and fail-closed.
 barrot_config = {
     "merge_conflict_resolution": {
         "enabled": True,
-        "auto_resolve_safe_conflicts": True,
-        "require_manual_review_for": [
-            "delete_modify",
-            "complex_content"
-        ],
-        "notify_on_resolution": True,
-        "track_metrics": True
+        "auto_resolve_safe_conflicts": False,
+        "require_human_authorization": True,
+        "manual_review_on_missing_evidence": True,
+        "track_verified_outcomes_only": True
     }
 }
 ```
@@ -1135,25 +1128,25 @@ Generated: 2026-01-02T13:04:31.914037
 ### Import Statement Conflict (CP002)
 - **Type**: content
 - **Frequency**: High
-- **Auto-Resolvable**: True
+- **Auto-Resolvable**: False
 - **Description**: Different imports added to the same location
 
 ### Configuration Merge (CP003)
 - **Type**: content
 - **Frequency**: Medium
-- **Auto-Resolvable**: True
+- **Auto-Resolvable**: False
 - **Description**: Configuration files modified in both branches
 
 ### Documentation Conflict (CP004)
 - **Type**: content
 - **Frequency**: Medium
-- **Auto-Resolvable**: True
+- **Auto-Resolvable**: False
 - **Description**: Documentation updates conflict between branches
 
 ### Whitespace Only (CP005)
 - **Type**: whitespace
 - **Frequency**: Low
-- **Auto-Resolvable**: True
+- **Auto-Resolvable**: False
 - **Description**: Conflict caused only by whitespace differences
 
 ### File Rename Collision (CP006)
@@ -1195,10 +1188,10 @@ Generated: 2026-01-02T13:04:31.914037
 - **Strategy**: semantic_merge
 
 ### Accept Both Changes with Manual Review (RT001)
-- **Success Rate**: 85.0%
-- **Risk Level**: Medium
-- **Automation**: Semi-Automated
-- **Strategy**: accept_both
+- **Success Rate**: UNVERIFIED (not measured)
+- **Risk Level**: High
+- **Automation**: Manual only; explicit authorization required
+- **Strategy**: accept_both — advisory only after evidence gate
 
 ### Recursive Strategy with Patience (RT006)
 - **Success Rate**: 80.0%
