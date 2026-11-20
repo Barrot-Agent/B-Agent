@@ -143,17 +143,15 @@ eslint --fix <file>
 jq -s 'reduce .[] as $item ({}; . * $item)' file1.json file2.json
 ```
 
-#### 5. **Accept Both Changes with Review**
-- **Success Rate**: 85%
-- **Risk Level**: Medium
-- **Automation**: Semi-Automated
-- **Best For**: Complex logic conflicts
+#### 5. **Evidence-Gated Semantic Integration**
+- **Success Rate**: UNVERIFIED — no measured outcome rate is available
+- **Risk Level**: High until independently reviewed
+- **Automation**: Manual only; explicit human authorization required
+- **Best For**: Cases where both changes are independently required and proven compatible
 
-```bash
-# Manual editing required
-git add <file>
-git commit -m "Resolved conflict by merging both changes"
-```
+Never accept both merely to clear conflict markers. Inspect the merge base and both
+versions, validate the composed result, run relevant tests, and obtain explicit
+human authorization before applying it.
 
 #### 6. **Recursive Strategy with Patience**
 - **Success Rate**: 80%
@@ -374,8 +372,8 @@ def calculate_total(items):
 ### Scenario 2: Import Statement Ordering
 
 **Conflict Type**: Content  
-**Auto-Resolvable**: Yes  
-**Recommended Strategy**: Auto-Merge with Formatting
+**Auto-Resolvable**: No — evidence and review required  
+**Recommended Strategy**: Manual review unless compatibility is established and validated
 
 ```python
 # Conflict Example
@@ -391,10 +389,11 @@ import numpy as np
 ```
 
 **Resolution Steps**:
-1. Accept both imports
-2. Sort alphabetically
-3. Run formatter (isort)
-4. Commit
+1. Inspect both import changes and confirm each is required
+2. Check for duplicates, version conflicts and side effects
+3. Compose only if the changes are compatible
+4. Run tests and review the complete diff
+5. Obtain explicit human authorization before applying the result
 
 **Merged Result**:
 ```python
@@ -426,7 +425,7 @@ database:
 >>>>>>> feature/connection-pool
 ```
 
-**Resolution**: Merge all keys
+**Resolution**: Compare the base and both versions; combine keys only when both are required, compatible, tested, and explicitly approved
 ```yaml
 database:
   host: localhost
@@ -484,17 +483,13 @@ outcome = LearningOutcome(
 mcmi.record_learning_outcome(outcome)
 ```
 
-### Success Rate Tracking
+### Outcome Measurement
 
-The system automatically tracks success rates for each strategy:
-
-- **Rerere**: 99% (fully automated, very reliable)
-- **Whitespace**: 98% (automated, minimal risk)
-- **Import Merge**: 95% (automated with formatting)
-- **Config Merge**: 90% (semantic understanding)
-- **Manual Review**: 85% (depends on reviewer)
-- **Recursive**: 80% (good for large changes)
-- **Three-Way**: 75% (requires analysis)
+No validated strategy success rates are currently established. Historical
+percentages in the original knowledge base are unverified estimates, not
+measured outcomes, and must not be used as confidence scores or authorization
+to automate a resolution. Track only outcomes backed by reviewed diffs,
+test results, and an auditable record of the exact base and head revisions.
 
 ---
 
@@ -507,10 +502,11 @@ The system automatically tracks success rates for each strategy:
    - Analyze conflict patterns
    - Apply appropriate strategies
 
-2. **Automatic Resolution**
-   - Auto-resolve safe conflicts
-   - Flag manual review needs
-   - Document resolutions
+2. **Resolution Recommendation (fail-closed)**
+   - Run the evidence-gated policy
+   - Default to manual review when evidence is missing or ambiguous
+   - Never auto-apply a recommendation
+   - Require explicit human authorization before any repository mutation
 
 3. **Communication Filtering**
    - Prevent unresolved conflicts in messages
@@ -530,7 +526,8 @@ The system automatically tracks success rates for each strategy:
 barrot_config = {
     "merge_conflict_resolution": {
         "enabled": True,
-        "auto_resolve_safe_conflicts": True,
+        "auto_resolve_safe_conflicts": False,
+        "require_human_authorization": True,
         "require_manual_review_for": [
             "delete_modify",
             "complex_content"
