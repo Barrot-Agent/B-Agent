@@ -7482,3 +7482,115 @@ On exact head `bb5fbc01dec6f80f2f33112850c66bf76850c5ad`:
 This update is documentation-only. The next combined handoff/map commit must run its own exact-head full suite, dependency audit, money audit and fail-closed gate; do not transfer the bb5fbc result to the new commit.
 
 **Forecast status remains NOT_ISSUED.** No XRP-specific learned candidate has demonstrated out-of-sample superiority; drift evaluated zero features; no independent shadow cohort exists. No merge, deployment, secret rotation, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 230 — exact-head regression, SEC XRP ETF flow reconciliation and integration audit — 2026-11-20T02:31:22Z
+
+### 1. Repository and branch state
+
+- Current main: `73e4dfa1ce4f21a8d419ef7e2e90d402b28d577f`, the verified merge commit for PR #1672.
+- Active consolidated integration PR: [#1673](https://github.com/Barrot-Agent/B-Agent/pull/1673), branch `integration/xrp-v3-mainline-successor-20261120T0135Z`.
+- At the pre-update snapshot, #1673 was 492 commits ahead and zero behind main, with 1,474 changed files and 69 changed workflow YAML files.
+- Recursive trees: main 1,744 entries / 1,572 blobs; integration 3,017 entries / 2,832 blobs; zero main paths missing from integration.
+- The branch contains the current A2A merge and its overlap resolutions. No new branch or PR was created.
+- All 16 open PRs were re-read. Pairwise changed-path overlap with #1673: #1663 1,470/1,470; #1671 4/8; #1664 4/134; #1670 2/12; #1668 3/3; #1666 1/2; #1665 1/1; #1541 5/5; #1265 1/144; #1450, #1460, #1440, #1437, #1436 and #1353 have zero overlap.
+- #1663 is the superseded predecessor, not a second integration candidate. Keep it open until #1673 is merged and verified on main. #1665 is a duplicate candidate but remains open until that same verification. Do not close unique research/repair branches.
+
+### 2. Exact-head CI — failure diagnosed
+
+On exact head `19f09eb74869851377ce1d28af282c03ee560c79`:
+
+- Push CI [44659491151](https://github.com/Barrot-Agent/B-Agent/actions/runs/44659491151) and PR CI [44659499431](https://github.com/Barrot-Agent/B-Agent/actions/runs/44659499431) both ran the expanded full repository suite.
+- Full suite: **4,383 passed, 5 failed, 1 skipped, 11 warnings, 19 subtests**, 176.21 seconds, 71.34% inclusive coverage.
+- The core test job passed; Pages build validation passed without deployment.
+- All five failures are stale assertions in `tests/test_xrp_nine_platform_map_latest.py`, not evidence of XRP runtime or model defects:
+  1. The map correctly names successor PR #1673 while the test still expected #1663.
+  2. The security status is uppercase `INCOMPLETE`, while the test required lowercase.
+  3. The map labels the current observation as a five-venue synchronized REST snapshot, while the test expected the older Kraken-only label.
+  4. The ASK Coin record described no verified Ripple/XRPL relationship but did not literally say unresolved.
+  5. The run-227 publisher commit is a historical main SHA; the test incorrectly compared it with today's main SHA.
+- The atomic evidence update corrects these contracts, preserves the historical publisher SHA, and adds a regression test for cash/in-kind ETF flow reconciliation. The new commit must receive its own exact-head full suite, dependency audit, money audit, A2A tests and fail-closed run. No predecessor result is transferred.
+- Dependency audits [44659491088](https://github.com/Barrot-Agent/B-Agent/actions/runs/44659491088) and [44659499710](https://github.com/Barrot-Agent/B-Agent/actions/runs/44659499710) passed all six manifests. Money audit [44659499464](https://github.com/Barrot-Agent/B-Agent/actions/runs/44659499464) passed 14 tests. A2A Worker tests [44659499468](https://github.com/Barrot-Agent/B-Agent/actions/runs/44659499468) passed.
+- Fail-closed runs [44659491168](https://github.com/Barrot-Agent/B-Agent/actions/runs/44659491168) and [44659499587](https://github.com/Barrot-Agent/B-Agent/actions/runs/44659499587) blocked on draft status, no independent approving review, branch-protection HTTP 403 and the failed full-suite check.
+
+### 3. New primary evidence — Franklin XRP ETF cash and in-kind flows
+
+SEC Form 10-Q for the Franklin XRP Trust / Franklin XRP ETF (XRPZ), period ended 2026-09-30:
+https://www.sec.gov/Archives/edgar/data/2059438/000114036126043720/ef20083832_10q.htm
+
+The filing materially improves the distinction between actual fund-level cash purchases and in-kind XRP transfers:
+
+| Six months ended 2026-09-30 | XRP | USD |
+|---|---:|---:|
+| XRP purchased for share creations | 62,439,066.2461 | $83,835,501 |
+| XRP contributed in-kind | 71,122,292.9683 | $95,638,129 |
+| XRP sold for fund expenses | 108,833.83 | $125,113 proceeds |
+| XRP sold/distributed for redemptions | 0 | 0 |
+
+Holdings rose from 159,659,740.0158 XRP on March 31 to 293,112,265.4002 XRP on September 30, a net increase of 133,452,525.3844 XRP. The bridge reconciles exactly: cash-purchased XRP + in-kind contributions - expense sales = net holdings increase.
+
+The filing also reports $83,835,512 of cash proceeds from share issuance versus $83,835,501 of XRP purchase cost, an $11 residual. Preserve the reported difference; do not force it to zero. Six-month total share-issuance contributions were $179,473,641, including $95,638,129 in-kind. Thus the $179.47M capital-share figure is not all cash and is not all open-market XRP demand.
+
+For the three months ended September 30, the filing reports $35,793,329 of XRP purchases (26,597,902.988 XRP) and $54,857,966 of in-kind contributions (41,254,375.5108 XRP). Total share-issuance contributions were $90,651,306. No XRP redemptions were reported.
+
+September 30 holdings were valued at $439,668,398 against $501,430,187 cost; the $61,761,789 difference is unrealized valuation depreciation, not a realized sale or redemption. The fund held 27M shares at September 30 and reported 28.6M outstanding as of November 2.
+
+**Custody and prime-broker boundary from the same SEC filing:**
+- Coinbase Custody Trust Company, LLC is the XRP custodian.
+- Coinbase Inc., an affiliate of the XRP custodian, is the prime broker.
+- BNY Mellon Asset Servicing is administrator, transfer agent and cash custodian — not the XRP custodian for XRPZ.
+
+This is a direct, primary-source Coinbase institutional custody/prime-broker relationship. It must not be conflated with BNY's separate Ripple/RLUSD custody relationship. The filing says the fund's Creation Units are 50,000 shares and eligible Authorized Participants can create/redeem in XRP and/or cash. The fund is passive, unleveraged, does not use derivatives, and explicitly says ETF shares are not a proxy for direct XRP ownership.
+
+**Interpretation:** the $83.8355M cash purchase figure is verified fund-level cash-funded XRP acquisition during the six-month period. The additional 71.1223M XRP was transferred in-kind. This is stronger evidence than AUM changes alone, but it does not reveal execution venue, market impact, whether purchases were OTC or exchange, or the downstream source of contributed XRP. It is not a current market signal and remains model-ineligible until raw SEC response bytes and a source receipt are captured.
+
+The detailed evidence is stored in `research/xrp_intelligence/20261120T023122Z-run230-franklin-xrp-etf-sec-flow-reconciliation.json` and referenced by the latest nine-platform/institutional map.
+
+### 4. Workflow and external-action audit
+
+- Main's `.github/workflows/paid-issue-publish.yml` remains active: `workflow_run`, `contents: write`, downloads the paid-issue hunter artifact, copies two files and pushes directly to main. The integration version disables the publisher. This is an automatic main writer and a merge side-effect that must be reconciled.
+- Main's `.github/workflows/coinbase-paper-trader.yml` remains a manual workflow that reads Groq credentials and pushes simulated state to main without a typed confirmation or expected-SHA gate. The integration version is disabled with `permissions: {}`. It was not run.
+- Main's A2A deployment workflow is push-triggered on main and deploys a Cloudflare Worker then uploads `BRAIN_SHARED_SECRET`; the action is mutable `cloudflare/wrangler-action@v4`. The integration version is manual-only, uses pinned action SHA, requires explicit deployment YES, secret-rotation YES and exact current main SHA. No deployment or secret rotation occurred. Main run [44653118169](https://github.com/Barrot-Agent/B-Agent/actions/runs/44653118169) failed Cloudflare authentication 10000/9109; successful deployment and secret upload are not verified.
+- Main Pages deployment [44653117146](https://github.com/Barrot-Agent/B-Agent/actions/runs/44653117146) succeeded automatically after #1672 merged. Pages publication is not authorized for #1673.
+- Main self-upgrade is manually confirmed but has contents/pull-request write access and Groq secret access; integration version is quarantined with no permissions.
+- The integration A2A runner has explicit opt-in but still inherits the host environment. OS sandbox, egress restriction and task-level authorization are not verified. Keep quarantined.
+- Main branch metadata reports protected=true, required contexts empty and enforcement `non_admins`; detailed protection endpoint returns HTTP 403. The only repository ruleset returned is `Fall Back`, enforcement disabled. CODEOWNERS is `* @Barrot-Agent`; #1673 has zero independent reviews. Token scopes were not introspected.
+- Transitive workflow/script/action dependency review remains INCOMPLETE. Static action-pin scan found zero mutable third-party action references among the 69 changed workflow files; that does not clear every invoked script, downloaded artifact or transitive action dependency.
+
+### 5. Prediction-engine state
+
+Latest available ingestion remains run 44654352643 (2026-11-20T01:32:54Z), not refreshed in this run:
+
+- 34 receipts: 22 raw retained, 12 digest-only; 21 source failures.
+- 128 eligible and 367 excluded features; 1,863 feature-history records; 17 snapshots; 161 source-snapshot links; 12 source IDs across five independence groups.
+- Zero point-in-time timestamp violations; SQLite integrity OK.
+- 150 events and 117 scenarios.
+- Within-run receipt chain PASS; cross-run continuity BOOTSTRAP; no external WORM/timestamp anchor.
+- Walk-forward forecasts 0; drift INSUFFICIENT_DATA (123 considered, 0 evaluated); forecast issuance NOT_ISSUED.
+- Five-venue REST market snapshots do not reconstruct continuous WebSocket depth. Raw HTTP wire bytes and independent timestamp anchoring are still missing.
+
+The SEC filing is historical institutional-flow evidence, not a forecast feature. No directional XRP forecast was issued.
+
+### 6. Backlog and disposition
+
+Sixteen open PRs remain: blocked #1673, #1671, #1668, #1666, #1541 and #1265; superseded #1663; duplicate candidate #1665; unique/unreviewed #1664, #1670, #1450, #1460, #1440, #1437, #1436 and #1353. No PR was merged or closed. The older research-ledger branches retain unique archive/research content.
+
+### 7. Next actions
+
+1. Verify the exact-head CI generated by this atomic test/evidence update; fix any remaining test or runtime failures.
+2. Reconcile exact changed-file/commit counts after the new commit without rewriting the branch.
+3. Continue transitive workflow/script review, prioritizing main's automatic writers and deployment/secret paths.
+4. Resolve independent review, branch-protection visibility and Pages publication authorization.
+5. Capture raw SEC filing bytes with immutable receipt and trusted timestamp anchoring; do not admit the rendered-web observation to the feature store.
+6. Continue synchronized historical XRP spot, Level-2, derivatives, ETF, exchange-flow and collateral datasets, then run leakage-safe walk-forward tests against all four baselines.
+7. Keep forecast issuance disabled until calibrated out-of-sample and independent shadow gates pass.
+
+**DESIGNED:** receipt-backed ingestion, point-in-time features, four baselines, chronological evaluation, calibration, drift and forecast ledger.
+
+**EXECUTED:** repository/PR/tree/overlap audit, exact-head CI diagnosis, workflow-side-effect review, SEC XRPZ flow/custody reconciliation, regression-contract update and durable handoff update.
+
+**VERIFIED:** current main SHA and recursive tree ancestry; all 16 open PRs and pairwise changed-path overlaps; exact-head CI failure causes; dependency, money and A2A Worker checks passed; SEC filing content and arithmetic reconciled. The new atomic update commit's CI remains pending. Branch-protection requirements, independent review, Pages authorization, full transitive security review, external WORM anchoring and predictive superiority remain unverified.
+
+No merge, source-PR closure, force-push, deployment, Pages publication initiated by this run, secret read/rotation, Space restart, external model dispatch, external data transfer, Databricks write, Kaggle submission, paper trade, funds transfer or real-money action occurred.

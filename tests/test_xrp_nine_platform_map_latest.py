@@ -59,7 +59,7 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert repo["repository"] == "Barrot-Agent/B-Agent"
     assert is_sha(repo["main_sha"])
     integration = repo["integration"]
-    assert integration["pr_number"] == 1663
+    assert integration["pr_number"] == 1673
     assert integration["state"] == "open"
     assert integration["draft"] is True
     assert is_sha(integration["snapshot_head_sha"])
@@ -117,9 +117,9 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert security["protection_details_verified"] is False
     assert "403" in security["protection_details_api"]
     assert security["fallback_ruleset"]["enforcement"] == "disabled"
-    assert security["pr_1663"]["draft"] is True
-    assert security["pr_1663"]["formal_reviews"] == 0
-    assert security["transitive_script_security_review"] == "incomplete"
+    assert security["pr_1673"]["draft"] is True
+    assert security["pr_1673"]["formal_reviews"] == 0
+    assert security["transitive_script_security_review"].lower() == "incomplete"
     assert security["transitive_script_review"] == security["transitive_script_security_review"]
     assert security["sensitive_branch_path"]["content_read"] is False
     assert security["automatic_main_writer"]["active"] is True
@@ -137,7 +137,8 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert counts.get("ready", 0) == summary["ready"]
     assert counts.get("duplicate", 0) == summary["duplicate"]
     assert counts.get("superseded", 0) == summary["superseded"]
-    assert next(item for item in backlog if item["number"] == 1663)["classification"] == "blocked"
+    assert next(item for item in backlog if item["number"] == 1673)["classification"] == "blocked"
+    assert next(item for item in backlog if item["number"] == 1663)["classification"] == "superseded"
     assert next(item for item in backlog if item["number"] == 1665)["classification"] == "duplicate"
     assert next(item for item in backlog if item["number"] == 1666)["classification"] == "blocked"
     assert next(item for item in backlog if item["number"] == 1668)["classification"] == "blocked"
@@ -173,7 +174,8 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert kraken_receipt["raw_wire_bytes_captured"] is False
     assert "not raw HTTP wire bytes" in kraken_receipt["raw_sha256_scope"]
     assert market["price_usd"] == kraken_receipt["last_trade_usd"]
-    assert market["source"] == "Kraken public ticker API — XRP/USD"
+    assert market["source"] == "Five-venue synchronized REST snapshot"
+    assert market["source_url"] == kraken_receipt["source_url"]
     assert market["model_eligible"] is False
     assert market["raw_sha256"] == kraken_receipt["raw_sha256"]
 
@@ -352,7 +354,8 @@ def test_run227_main_workflow_differential_and_publication_gate_are_preserved():
     diff = data["run227_workflow_differential"]
     assert diff["main_paid_issue_hunter_run"] == 44523988640
     assert diff["main_paid_issue_publisher_run"] == 44524050218
-    assert diff["publisher_commit_main_sha"] == data["repository_state"]["main_sha"]
+    assert is_sha(diff["publisher_commit_main_sha"])
+    assert diff["publisher_commit_main_sha"] != data["repository_state"]["main_sha"]
     assert diff["main_paid_issue_publisher"]["active"] is True
     assert diff["main_paid_issue_publisher"]["integration_disabled"] is True
     assert diff["pages"]["run_id"] == 44524140421
@@ -379,3 +382,38 @@ def test_run227_nine_platform_map_does_not_invent_external_connections():
     assert state["external_dispatches"] == 0
     assert state["external_data_transfers"] == 0
     assert state["independent_red_team_quorum"] is False
+
+
+def test_run230_franklin_xrp_etf_cash_and_in_kind_flows_reconcile():
+    root = Path(__file__).resolve().parents[1]
+    evidence_path = (
+        root
+        / "research"
+        / "xrp_intelligence"
+        / "20261120T023122Z-run230-franklin-xrp-etf-sec-flow-reconciliation.json"
+    )
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+    assert evidence["model_eligible"] is False
+    assert evidence["source_capture"]["raw_http_bytes_captured"] is False
+    assert evidence["source_capture"]["raw_sha256_receipt"] == "NOT_CAPTURED"
+
+    flows = evidence["six_months_ended_2026_09_30"]
+    holdings = evidence["holdings_reconciliation"]
+    assert flows["cash_xrp_purchases_usd"] == 83835501
+    assert flows["cash_xrp_purchases_xrp"] == 62439066.2461
+    assert flows["in_kind_contributions_usd"] == 95638129
+    assert flows["in_kind_contributions_xrp"] == 71122292.9683
+    assert flows["xrp_sold_for_fund_expenses"] == 108833.83
+    assert flows["xrp_redemptions"] == 0
+    assert flows["in_kind_xrp_redemptions"] == 0
+    assert holdings["net_increase_xrp"] == 133452525.3844
+    assert (
+        holdings["cash_purchased_xrp"]
+        + holdings["in_kind_contributed_xrp"]
+        - holdings["xrp_sold_for_expenses"]
+        == holdings["net_increase_xrp"]
+    )
+    roles = evidence["custody_and_prime_broker_roles"]
+    assert roles["xrp_custodian"] == "Coinbase Custody Trust Company, LLC"
+    assert roles["prime_broker"] == "Coinbase Inc. (affiliate of XRP custodian)"
+    assert roles["cash_custodian"] == "BNY Mellon Asset Servicing"

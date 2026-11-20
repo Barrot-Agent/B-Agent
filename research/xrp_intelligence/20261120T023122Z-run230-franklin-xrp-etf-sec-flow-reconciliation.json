@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_institutional_etf_cash_and_in_kind_flow_reconciliation",
+  "captured_at_utc": "2026-11-20T02:31:22Z",
+  "mission_priority": "XRP intelligence and measured prediction-engine mastery; preserve Barrot V3 as execution, orchestration, safety and verification foundation.",
+  "issuer_and_fund": {
+    "registrant": "Franklin XRP Trust",
+    "fund": "Franklin XRP ETF",
+    "ticker": "XRPZ",
+    "exchange": "NYSE Arca",
+    "reporting_form": "10-Q",
+    "reporting_period_end": "2026-09-30",
+    "sec_accession": "000114036126043720",
+    "sec_filing_url": "https://www.sec.gov/Archives/edgar/data/2059438/000114036126043720/ef20083832_10q.htm"
+  },
+  "source_capture": {
+    "publisher": "U.S. Securities and Exchange Commission EDGAR",
+    "source_type": "primary issuer-filed regulatory disclosure",
+    "source_independence_group": "franklin_xrp_trust_issuer_filing",
+    "retrieved_at_utc": "2026-11-20T02:31:22Z",
+    "raw_http_bytes_captured": false,
+    "raw_sha256_receipt": "NOT_CAPTURED",
+    "external_timestamp_anchor": "NOT_ANCHORED",
+    "raw_source_status": "WEB_RENDERED_TEXT_ONLY",
+    "model_eligible": false,
+    "limitation": "The SEC filing was inspected through rendered web content; exact raw HTTP response bytes and a SHA-256 receipt were not captured by Barrot ingestion."
+  },
+  "holdings_reconciliation": {
+    "beginning_date": "2026-03-31",
+    "beginning_xrp": 159659740.0158,
+    "beginning_fair_value_usd": 215061670,
+    "beginning_cost_usd": 322149692,
+    "ending_date": "2026-09-30",
+    "ending_xrp": 293112265.4002,
+    "ending_fair_value_usd": 439668398,
+    "ending_cost_usd": 501430187,
+    "ending_net_assets_usd": 439606153,
+    "ending_nav_per_share_usd": 16.28,
+    "shares_outstanding_at_2026_09_30": 27000000,
+    "shares_outstanding_at_2026_11_02": 28600000,
+    "net_increase_xrp": 133452525.3844,
+    "cash_purchased_xrp": 62439066.2461,
+    "in_kind_contributed_xrp": 71122292.9683,
+    "xrp_sold_for_fund_expenses": 108833.83,
+    "redemption_xrp": 0,
+    "in_kind_redemption_xrp": 0,
+    "reconciliation": "62,439,066.2461 cash-purchased XRP + 71,122,292.9683 in-kind XRP - 108,833.83 XRP sold for expenses = 133,452,525.3844 net XRP increase."
+  },
+  "six_months_ended_2026_09_30": {
+    "cash_xrp_purchases_usd": 83835501,
+    "cash_xrp_purchases_xrp": 62439066.2461,
+    "in_kind_contributions_usd": 95638129,
+    "in_kind_contributions_xrp": 71122292.9683,
+    "xrp_sold_for_fund_expenses": 108833.83,
+    "expense_sale_proceeds_usd": 125113,
+    "xrp_redemptions": 0,
+    "in_kind_xrp_redemptions": 0,
+    "cash_proceeds_from_share_issuance_usd": 83835512,
+    "total_share_issuance_contributions_usd": 179473641,
+    "reported_cash_purchase_cost_difference_usd": 11,
+    "note": "The filing's share-issuance cash proceeds differ from reported XRP purchase cost by USD 11. Preserve the reported figures and residual; do not force them to equality."
+  },
+  "three_months_ended_2026_09_30": {
+    "cash_xrp_purchases_usd": 35793329,
+    "cash_xrp_purchases_xrp": 26597902.988,
+    "in_kind_contributions_usd": 54857966,
+    "in_kind_contributions_xrp": 41254375.5108,
+    "total_share_issuance_contributions_usd": 90651306,
+    "xrp_redemptions": 0,
+    "in_kind_xrp_redemptions": 0,
+    "reported_cash_purchase_cost_difference_usd": 11
+  },
+  "valuation_interpretation": {
+    "cost_minus_fair_value_usd": 61761789,
+    "fair_value_discount_to_cost_percent": 12.315,
+    "status": "unrealized valuation difference at 2026-09-30; not a realized loss and not evidence of redemptions"
+  },
+  "custody_and_prime_broker_roles": {
+    "xrp_custodian": "Coinbase Custody Trust Company, LLC",
+    "prime_broker": "Coinbase Inc. (affiliate of XRP custodian)",
+    "cash_custodian": "BNY Mellon Asset Servicing",
+    "administrator_and_transfer_agent": "BNY Mellon Asset Servicing",
+    "creation_redemption": "Eligible Authorized Participants transact in 50,000-share Creation Units; creations and redemptions may be in XRP and/or cash.",
+    "caveat": "BNY's role as cash custodian/administrator for XRPZ is distinct from BNY's separate Ripple/RLUSD and XRP custody relationship. Coinbase's role as XRPZ custodian/prime broker does not establish the venue or execution method for each XRP purchase."
+  },
+  "hypotheses_and_counterevidence": [
+    {
+      "hypothesis": "Franklin XRPZ generated direct fund-level XRP buying through cash-funded share creations during the six months ended 2026-09-30.",
+      "supporting_evidence": "The 10-Q reports USD 83,835,501 of XRP purchases for share creation, representing 62,439,066.2461 XRP.",
+      "counterevidence_and_limits": "The filing does not identify execution venues or market impact; the fund also received 71,122,292.9683 XRP in-kind, so the total holdings increase is not all open-market buying."
+    },
+    {
+      "hypothesis": "ETF holdings growth is a direct measure of net cash capital inflow into XRP.",
+      "supporting_evidence": "XRP holdings rose by 133,452,525.3844 XRP between March 31 and September 30.",
+      "counterevidence_and_limits": "Cash purchases, in-kind contributions, expense sales, share issuance proceeds and unrealized price changes are distinct. The filing reports USD 95,638,129 of in-kind XRP contributions and zero redemptions."
+    },
+    {
+      "hypothesis": "BNY and Coinbase both act as XRP custodians for the Franklin fund.",
+      "supporting_evidence": "Both institutions are prominent in digital-asset custody relationships.",
+      "counterevidence_and_limits": "The XRPZ filing explicitly identifies Coinbase Custody as XRP custodian and BNY Mellon as administrator, transfer agent and cash custodian."
+    }
+  ],
+  "source_line_references": {
+    "cover_and_shares": "SEC filing lines 18-34 and 82",
+    "holdings_and_cost": "SEC filing lines 228-250 and 270-289",
+    "cash_and_in_kind_flows": "SEC filing lines 343-375 and 394-414",
+    "custody_and_creation_units": "SEC filing lines 442-452"
+  },
+  "prediction_admission": {
+    "feature_store_eligible": false,
+    "directional_forecast_issued": false,
+    "reason": "Primary filing evidence is not yet captured as raw-byte receipt-backed input; it is a historical institutional-flow research record, not a current price signal."
+  },
+  "sources": [
+    {
+      "source_id": "SEC-FRANKLIN-XRP-10Q-2026-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2059438/000114036126043720/ef20083832_10q.htm",
+      "publisher": "SEC EDGAR / Franklin XRP Trust",
+      "source_type": "primary",
+      "event_period_end": "2026-09-30",
+      "retrieved_at_utc": "2026-11-20T02:31:22Z",
+      "source_independence_group": "franklin_xrp_trust_issuer_filing"
+    }
+  ]
+}
