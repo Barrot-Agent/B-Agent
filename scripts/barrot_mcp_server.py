@@ -36,10 +36,10 @@ if str(ROOT) not in sys.path:
 
 
 def start_background_a2a_runner() -> bool:
+    """Start one outbound queue consumer only after explicit opt-in."""
     if os.getenv("BARROT_A2A_AUTO_RUNNER", "").strip().upper() != "YES":
         print("[barrot] A2A runner is disabled by default; explicit BARROT_A2A_AUTO_RUNNER=YES is required after approval and sandbox review", file=sys.stderr)
         return False
-    """Start one outbound queue consumer from the existing OpenCode MCP host."""
     if not os.getenv("BARROT_A2A_URL"):
         return False
     if not (os.getenv("BARROT_AGENT_SECRET") or os.getenv("BRAIN_SHARED_SECRET")):
