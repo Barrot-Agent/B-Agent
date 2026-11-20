@@ -50,7 +50,8 @@ class ConflictResolutionPolicyTests(unittest.TestCase):
     def test_high_risk_paths_always_escalate(self):
         for path in (".github/workflows/ci.yml", ".github/CODEOWNERS",
                      "secrets/provider.json", "migrations/001.sql",
-                     "package-lock.json", ".env.production"):
+                     "package-lock.json", ".env.production", "src/auth.py",
+                     "config/permissions.json"):
             with self.subTest(path=path):
                 decision = recommend_resolution(ConflictEvidence(
                     file_path=path,
