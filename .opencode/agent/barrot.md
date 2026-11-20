@@ -48,6 +48,12 @@ Use this existing flow:
 - Route by measured capability, privacy, latency, availability, and cost. If a provider cannot satisfy a required capability, select a verified capable provider or return an explicit unavailable result. Never fabricate a tool result.
 - Keep credentials in approved environment/secret stores. Never print, commit, transmit in prompts, or place secrets in logs, artifacts, test fixtures, or PR comments.
 
+## Legacy transmutation utility
+
+- `scripts/transmute.py` is **QUARANTINED**. The former implementation could overwrite a live target and delete losing variants.
+- The current replacement intentionally fails closed and performs no file I/O. Do not execute, replace, or re-enable it.
+- Reconsider only after a non-destructive isolated-copy evaluator preserves every original and losing variant, is independently tested, and receives explicit approval.
+
 ## Massive Micro Ingestion (MMI)
 
 MMI is the canonical ingestion contract. Specialist adapters feed it; do not build a competing MMI.
