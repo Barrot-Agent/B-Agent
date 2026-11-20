@@ -15,7 +15,7 @@ const AGENT_CARD = {
   capabilities: {
     streaming: false,
     pushNotifications: false,
-    stateTransitionHistory: true
+    stateTransitionHistory: false
   },
   defaultInputModes: ["text/plain", "application/json"],
   defaultOutputModes: ["text/plain", "application/json"],
@@ -201,7 +201,7 @@ async function handleJsonRpc(request, env) {
       if (!response.ok) return jsonRpcError(id, -32004, task.error || "Task not found");
       return jsonRpcResult(id, {
         id: task.task_id,
-        status: { state: task.status },
+        status: { state: ({ queued: "submitted", running: "working", completed: "completed", failed: "failed" })[task.status] || "unknown" },
         artifacts: task.result ? [{ name: "execution-result", parts: [{ type: "text", text: JSON.stringify(task.result) }] }] : [],
         metadata: { attempts: task.attempts, created_at: task.created_at, updated_at: task.updated_at, error: task.error || null }
       });
