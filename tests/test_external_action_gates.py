@@ -276,3 +276,16 @@ def test_dependency_audit_covers_all_declared_manifests_and_runtime_imports() ->
     for dependency in ("numpy", "PyJWT", "cryptography", "websockets"):
         assert dependency in requirements
         assert dependency in pyproject
+
+
+def test_cloudflare_a2a_deploy_is_manual_and_sha_pinned() -> None:
+    content = _read("deploy-a2a-worker.yml")
+    assert "push:" not in content
+    assert "workflow_dispatch:" in content
+    assert "confirm_secret_rotation" in content
+    assert "inputs.confirm == 'YES'" in content
+    assert "inputs.confirm_secret_rotation == 'YES'" in content
+    assert "expected_main_sha" in content
+    assert "EXPECTED_MAIN_SHA" in content
+    assert "git rev-parse origin/main" in content
+    assert "persist-credentials: false" in content
