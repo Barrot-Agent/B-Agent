@@ -1,0 +1,6 @@
+decision,score,effective_hourly_usd,effective_payout_usd,amount_usd,effort_hours,repo,issue_id,url,escrow_verified,reasons
+GO,250.0,250.0,500.0,500.0,2.0,example/cli,ex-101,https://github.com/example/cli/issues/101,True,
+NO-GO,106.67,133.33,800.0,800.0,6.0,example/legacy,ex-103,https://github.com/example/legacy/issues/44,False,repository idle for more than 120 days; effort above 3 hour cap
+NO-GO,24.0,30.0,300.0,300.0,10.0,example/parser,ex-105,https://github.com/example/parser/issues/88,False,effort above 3 hour cap
+NO-GO,10.0,12.5,25.0,25.0,2.0,example/docs,ex-102,https://github.com/example/docs/issues/7,False,amount below 50 USD; effective rate below 30 USD/hour
+NO-GO,0.0,0.0,0.0,,3.0,example/api,ex-104,https://github.com/example/api/issues/19,False,no stated amount; effective rate below 30 USD/hour
