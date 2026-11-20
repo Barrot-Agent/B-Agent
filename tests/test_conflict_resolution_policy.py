@@ -24,7 +24,7 @@ class ConflictResolutionPolicyTests(unittest.TestCase):
         )
         decision = recommend_resolution(evidence)
         self.assertEqual(decision.choice, ResolutionChoice.INCOMING)
-        self.assertTrue(decision.auto_apply)
+        self.assertFalse(decision.auto_apply)
 
     def test_both_requires_compatibility_and_validation(self):
         evidence = ConflictEvidence(
@@ -34,7 +34,9 @@ class ConflictResolutionPolicyTests(unittest.TestCase):
             tests_pass=True,
             protected_area_reviewed=True,
         )
-        self.assertEqual(recommend_resolution(evidence).choice, ResolutionChoice.BOTH)
+        decision = recommend_resolution(evidence)
+        self.assertEqual(decision.choice, ResolutionChoice.BOTH)
+        self.assertFalse(decision.auto_apply)
 
     def test_security_and_delete_modify_always_escalate(self):
         for kind in ("security", "delete_modify", "workflow", "binary"):
@@ -72,6 +74,7 @@ class ConflictResolutionPolicyTests(unittest.TestCase):
         self.assertEqual(payload["choice"], "manual")
         self.assertIn("evidence", payload)
         self.assertIn("required_checks", payload)
+        self.assertFalse(payload["auto_apply"])
 
 
 if __name__ == "__main__":
