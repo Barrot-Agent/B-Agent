@@ -13,6 +13,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/AGI_IMPLEMENTATION_SUMMARY.md - 🎯 AGI Development - Implementation Summary
 - docs/API.md - API Reference
 - docs/ARCHITECTURE.md - Architecture
+- docs/AUTONOMOUS_CONFLICT_RESOLUTION_POLICY.md - Autonomous conflict-choice policy
 - docs/AUTONOMOUS_DEPLOYMENT_REPORT.md - BARROT AUTONOMOUS DEPLOYMENT
 - docs/BARROT_BUILD_REPORT.md - Barrot Build Report
 - docs/CHAMELEON_README.md - Chameleon Chain - Presale & Blockchain Infrastructure
