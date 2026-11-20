@@ -190,3 +190,9 @@ jobs:
           python -m coverage report --include='barrot_agent/evolution/forecast_ledger.py' --fail-under=90
           python -m coverage report --include='barrot_agent/evolution/point_in_time_features.py' --fail-under=85
           python -m coverage report --include='barrot_agent/sources/source_registry.py' --fail-under=90
+          # Extend coverage gates to major packages excluded from the legacy/core floor.
+          python -m coverage report --include='barrot_agent/monetization/*' --fail-under=60
+          python -m coverage report --include='barrot_agent/rendering/*' --fail-under=63
+          python -m coverage report --include='barrot_agent/smart_agent.py' --fail-under=70
+          python -m coverage report --include='barrot_agent/mem_palace.py' --fail-under=80
+
