@@ -2982,3 +2982,89 @@ No merge, new branch, new PR, PR closure, deployment, secret read/rotation, Spac
 ### Next concrete action
 
 Wait for the corrected backlog map and handoff commit to receive exact-head CI. If the full suite passes, keep #1673 blocked until independent approval, branch-protection visibility, Pages publication authorization, the A2A isolation boundary and transitive workflow/script review are resolved. Do not merge on parent-head test evidence.
+
+
+---
+
+## Run244 — 2026-11-20 19:10 UTC — exact-head workflow pin repair, full-suite pass, and backlog reconciliation
+
+### Repository and ancestry
+
+- Current main: `b87582fef2229f4fb00418251119815c93fc235c`, including merged PR #1678 (evidence-gated Git conflict handling).
+- Integration branch: `integration/xrp-v3-mainline-successor-20261120T0135Z`; tested code head: `7cdc349e72edc1242c6ff50a2e3129092a3d1fb9`.
+- PR #1673 remains open, draft, and GitHub-reported mergeable: 554 commits, 1,511 changed paths, 70 changed workflow files.
+- Current-main-to-integration compare: **546 ahead / 0 behind**. Current main is an ancestor of the integration head.
+- PR metadata still reports base SHA `c599419c284ed5c3e21c44c91d5d4229191dced8`, not current main `b87582f`. The fail-closed gate flags this discrepancy. Do not bypass it.
+- Complete recursive trees: main **1,759 entries / 1585 blobs**, integration **3,044 entries / 2857 blobs**; neither response truncated; **zero main paths missing** from integration.
+- No main write, branch rewrite, force-push, new branch, or new PR occurred.
+
+### Exact-head CI — VERIFIED on `7cdc349e72edc1242c6ff50a2e3129092a3d1fb9`
+
+The parent head `67e9ba58184522cb57fea0db303bf0f19091d69a` failed one full-suite test: `tests/test_workflow_action_pinning.py::test_active_workflow_actions_use_immutable_references`. The sole mutable reference was `.github/workflows/barrot-conflict-integrity.yml:17` — `actions/checkout@v7`.
+
+Corrective change: pin that action to `3d3c42e5aac5ba805825da76410c181273ba90b1`, the immutable SHA already used by integration CI. Commit: `7cdc349e72edc1242c6ff50a2e3129092a3d1fb9`. This corrective commit changes only that workflow file.
+
+- Push CI [44798591725](https://github.com/Barrot-Agent/B-Agent/actions/runs/44798591725): **PASS** — full suite **4,457 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests; 167.60 seconds; 73.22% coverage**.
+- PR CI [44798602692](https://github.com/Barrot-Agent/B-Agent/actions/runs/44798602692): **PASS on the same exact head** — full suite **4,457 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests; 213.07 seconds; 73.22% coverage**.
+- Core Tests and Pages validation-only build passed.
+- Dependency Audit push [44798591743](https://github.com/Barrot-Agent/B-Agent/actions/runs/44798591743) and PR [44798602739](https://github.com/Barrot-Agent/B-Agent/actions/runs/44798602739): **PASS**.
+- Money audit [44798602698](https://github.com/Barrot-Agent/B-Agent/actions/runs/44798602698): **PASS**.
+- A2A Worker Tests [44798602615](https://github.com/Barrot-Agent/B-Agent/actions/runs/44798602615): **PASS**.
+- Conflict Integrity [44798602730](https://github.com/Barrot-Agent/B-Agent/actions/runs/44798602730): **PASS**.
+- Fail-closed gate [44798603085](https://github.com/Barrot-Agent/B-Agent/actions/runs/44798603085): **BLOCKED as designed** — PR is draft; PR base SHA differs from current main; no independent approval; branch-protection endpoint HTTP 403. Gate is read-only and did not approve, bypass, or merge.
+- Main CI [44793753474](https://github.com/Barrot-Agent/B-Agent/actions/runs/44793753474) on `b87582f`: full suite **1,252 passed, 2 skipped, 21 subtests; 78.87% coverage**. Integration suite is materially broader and includes workflow-action pinning.
+
+### Security and publication boundary
+
+- Main branch reports `protected=true`; detailed branch-protection API returns HTTP 403. Visible “Fall Back” ruleset is disabled. Effective required contexts/admin enforcement remain unverified.
+- `.github/CODEOWNERS` assigns all paths only to `@Barrot-Agent`; PR #1673 has zero formal reviews/approvals, zero review threads and no requested reviewers.
+- Main Pages deployment is automatic on push; latest main Pages run [44793752670](https://github.com/Barrot-Agent/B-Agent/actions/runs/44793752670) succeeded. Integration Pages build is validation-only and passed; merge would still publish through main's configured Pages path. Explicit publication authorization remains unresolved.
+- Main paid-issue publisher has `contents:write` and pushes generated files to main; integration disables it.
+- Main Coinbase paper-trader can commit simulated state; integration quarantines it.
+- Main Hugging Face sync can upload Space files and propagate secrets; integration quarantines it.
+- Main A2A deployment can deploy a Worker and upload an authentication secret. No deployment/secret upload occurred. Integration keeps the path manual-only; OS sandbox, credential isolation, egress restrictions and task-level authorization remain unverified.
+- Databricks deployment remains manual and unexecuted. Transitive workflow-to-script/dependency security review remains incomplete.
+- No merge, publication, deployment, secret operation, Space restart, Databricks write, Kaggle submission, external-model dispatch, paper trade, funds transfer or real-money action occurred.
+
+### Open PR inventory — 12 preserved
+
+| PR | Classification | Paths | Overlap with #1673 | Disposition |
+|---|---|---:|---:|---|
+| #1673 | blocked | 1,511 | — | Sole active V3/XRP integration draft |
+| #1663 | superseded | 1,470 | 1,470 | Predecessor; retain until successor is merged and verified |
+| #1670 | duplicate candidate | 12 | 12 | 10 blobs identical; `docs/INDEX.md` and `pyproject.toml` differ due integrated union; confirm after merge |
+| #1664 | unique/unreviewed | 133 | 4 | 129 paths unique; preserve |
+| #1541 | unique/unreviewed | 5 | 5 | 2 blobs identical, 3 differ; content-level reconciliation required |
+| #1460 | unique/unreviewed | 8 | 0 | Preserve unique research |
+| #1450 | unique/unreviewed | 116 | 0 | Preserve unique research/ledger work |
+| #1440 | unique/unreviewed | 64 | 0 | Preserve archive-trigger repair |
+| #1437 | unique/unreviewed | 5 | 0 | Preserve source-ledger correction |
+| #1436 | unique/unreviewed | 24 | 0 | Preserve Binance theft/freeze graph |
+| #1353 | unique/unreviewed | 1,084 | 0 | Preserve lossless ledger-sharding work |
+| #1265 | unique/unreviewed | 144 | 1 | 143 paths unique; preserve |
+
+Backlog totals: **0 ready, 1 blocked, 1 superseded, 1 duplicate candidate, 9 unique/unreviewed**. No PR was closed. Do not close #1663 or #1670 until #1673 has merged and their content is verified on main. Do not bulk-close unique research.
+
+### XRP intelligence and prediction readiness
+
+- No fresh market capture or new model-eligible XRP receipt was admitted in Run244. Run243 remains the latest market snapshot and is explicitly research-only.
+- Last ingestion remains run [44654352643](https://github.com/Barrot-Agent/B-Agent/actions/runs/44654352643), captured 2026-11-20 01:32:54 UTC: 34 receipts (22 raw, 12 digest-only), 21 source failures, 128 eligible features, 367 excluded features, 1,863 feature-history records, 150 events and 117 scenarios.
+- Cross-run continuity remains bootstrap/null; event raw-hash coverage incomplete; external anchor not established; raw-receipt-to-feature-store rebuild not verified; production schedule not active on main.
+- Walk-forward forecast origins: **0**. Drift: **INSUFFICIENT_DATA**. Forecast issuance: **DISABLED**. No directional forecast or model-superiority claim is made.
+
+### Nine-platform coordination
+
+- ChatGPT → GitHub connector → Barrot-Agent/B-Agent verified for this run. Visible repository permissions: admin, maintain, push, pull and triage; token scopes and least-privilege status were not introspected.
+- Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain **unverified** for live authentication and data flow.
+- No external model dispatch, cross-platform data transfer or independent red-team review occurred. Proposed task assignments remain proposals.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** Barrot V3 execution/orchestration/safety foundation; XRP source registry, immutable-receipt architecture, point-in-time features, event timeline, scenario/counter-hypothesis generation, four baselines, walk-forward evaluation, calibration, drift monitoring and forecast ledger.
+- **EXECUTED:** Fetched current main and complete recursive trees; inspected all 12 open PRs and path overlaps; checked ancestry, exact-head CI, reviews, workflow permissions, dependencies and security settings; fixed the sole mutable action reference on the existing integration branch; refreshed this handoff and the platform map.
+- **VERIFIED:** Main SHA `b87582f`; complete tree counts and zero missing main paths; integration head `7cdc349`; 546-ahead/0-behind ancestry; exact-head push and PR full-suite passes; dependency, money, A2A and conflict-integrity checks; 12 open PRs and path-overlap counts; protected flag, HTTP 403 limitation and disabled fallback ruleset.
+- **NOT VERIFIED:** PR base metadata reconciliation; independent approval; effective required checks/admin enforcement; Pages publication authorization; full transitive workflow/script review; A2A OS sandbox/credential/egress/task authorization; external platform authentication/data flows; continuous raw-byte retention/external anchoring; repeated production ingestion; walk-forward predictive superiority, calibration and drift.
+
+### Next concrete action
+
+Keep #1673 draft and unmerged. Resolve the stale PR base SHA versus current-main discrepancy without weakening the gate; obtain genuine independent review and authorized branch-protection visibility; resolve Pages publication authorization; complete A2A isolation and transitive workflow/script review. Exact-head code tests now pass. Remaining blockers are governance, publication and security.
