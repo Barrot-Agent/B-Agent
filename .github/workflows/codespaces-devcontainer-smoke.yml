@@ -1,0 +1,32 @@
+name: Codespaces Dev Container Smoke
+
+on:
+  push:
+    branches:
+      - integration/free-gemini-codespaces-2026-11-20
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".devcontainer/**"
+      - "GEMINI.md"
+      - ".github/workflows/codespaces-devcontainer-smoke.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  devcontainer-smoke:
+    name: Build Codespaces container and verify Gemini CLI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Build dev container and run smoke checks
+        uses: devcontainers/ci@v0.3
+        with:
+          runCmd: |
+            node --version
+            npm --version
+            gemini --version
