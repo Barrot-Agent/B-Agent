@@ -6,6 +6,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -170,8 +171,7 @@ def test_mcp_startup_launches_one_outbound_runner_when_credentials_exist(tmp_pat
     monkeypatch.setenv("BRAIN_SHARED_SECRET", "test-only-secret")
     monkeypatch.setattr(server.Path, "home", lambda: tmp_path)
     monkeypatch.setattr("scripts.barrot_a2a_runner.runner_is_active", lambda: False)
-    popen = __import__("unittest.mock", fromlist=["patch"]).patch.object(server.subprocess, "Popen")
-    with popen as launch:
+    with patch.object(server.subprocess, "Popen") as launch:
         assert server.start_background_a2a_runner() is True
     launch.assert_called_once()
     args, kwargs = launch.call_args
