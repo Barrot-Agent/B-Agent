@@ -37,22 +37,33 @@ Use `barrot_agent.ingestion.conflict_resolution_policy.recommend_resolution`
 with a `ConflictEvidence` instance. Missing evidence defaults to manual review.
 
 
-## Runtime enforcement and verification boundary
+## Live legacy-analyzer integration
 
-The legacy `MergeConflictMicroIngestion.analyze_conflict` path now delegates to
-this policy and returns **manual review** when it has only conflict-marker and
-file-path evidence. Its historical technique catalog is reference material,
-not an authority to select or apply a resolution. Historical percentage values
-are not measured success rates and are no longer used for ranking.
+The legacy `MergeConflictMicroIngestion` analyzer now calls this policy before
+returning a recommendation. With no explicit evidence it returns `manual`,
+emits no technique recommendation, and keeps `auto_resolvable` false. A
+validated recommendation remains advisory only; `auto_apply` is always false.
 
-The policy never applies a resolution. Even a fully evidenced `incoming` or
-`both` recommendation has `auto_apply=false`; a separate explicit human
-authorization is required before any repository mutation.
+High-risk paths include GitHub workflows/actions, CODEOWNERS, credentials,
+secrets, environment files, migrations, infrastructure/deployment files,
+database SQL, and lockfiles. These paths require human review even when the
+incoming change otherwise satisfies the evidence fields.
 
-The dedicated `.github/workflows/barrot-conflict-integrity.yml` PR workflow performs a real, read-only Git merge-tree check against the PR's current base and head. It blocks the check when Git reports conflicts. It is separate from the existing merge-gate workflow to avoid overlapping with the active V3 integration PR.
-It does not attempt to resolve, approve, or merge the pull request.
+The old RT001 85% accept-both success figure was not supported by measured
+outcomes. It is now recorded as `UNVERIFIED`, not as a success rate. Historical
+examples and learning records are not proof of resolution quality.
 
-The Git integration tests create temporary repositories and exercise clean
-three-way merges, conflicting edits, conflict-marker preservation, and the
-non-mutating merge-tree check. These tests validate Git behavior and Barrot's
-fail-closed decision boundary; they do not claim an autonomous resolver exists.
+## Real-Git verification
+
+Tests create temporary Git repositories and invoke actual branches and merges.
+They cover conflicting edits, compatible disjoint edits, duplicate function
+conflicts, high-risk workflow/secret paths, outdated incoming changes, and
+failed validation. These tests verify the recommendation boundary; they do
+not enable a live GitHub resolver.
+
+## Execution boundary
+
+Every recommended choice requires explicit human authorization before any
+repository mutation. The autonomous resolver workflow remains quarantined and
+the gated-merge workflow remains read-only. This change does not activate
+automatic conflict resolution, PR approval, merge, push, or deployment.

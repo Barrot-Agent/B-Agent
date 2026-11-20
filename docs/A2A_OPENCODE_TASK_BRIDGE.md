@@ -1,5 +1,7 @@
 # Barrot A2A → OpenCode Task Bridge
 
+> **Activation status: QUARANTINED / NOT ACTIVATED.** The local consumer must remain off until the Cloudflare Worker is deployed, sandboxing/credential isolation/egress restrictions/task authorization are reviewed, and an explicit operator opt-in is supplied. Credentials alone must never start the runner.
+
 ## Purpose
 
 The Cloudflare Worker is a durable ingress and task-status gateway. It is not a second Barrot brain and does not call Groq to answer assignments.
@@ -19,17 +21,18 @@ A2A JSON-RPC compatibility is retained at `POST /`: `message/send` queues work a
 
 ## Cloudflare configuration
 
-`a2a/wrangler.toml` binds a SQLite-backed Durable Object named `BARROT_TASKS`. The deployment workflow deploys the Worker and uploads `BRAIN_SHARED_SECRET` from the existing GitHub Actions secret. Existing Cloudflare account/token and GitHub secret values must never be copied into source or logs.
+`a2a/wrangler.toml` binds a SQLite-backed Durable Object named `BARROT_TASKS`. The deployment workflow is manual-only. It requires explicit `YES` approval for deployment and secret upload, plus the exact current 40-character `main` SHA. A push to `main` must never deploy the Worker automatically. Existing Cloudflare account/token and GitHub secret values must never be copied into source or logs.
 
 The same `BRAIN_SHARED_SECRET` authenticates the OpenCode runner by default. A separate `BARROT_AGENT_SECRET` may be configured as a Cloudflare Worker secret for the runner; when present, it overrides the shared secret for agent-only claim/completion routes. Do not put either secret in repository files.
 
 ## Existing OpenCode host configuration
 
-Run the queue consumer as the same OS user and from the repository checkout used by the existing OpenCode service. `opencode.json` passes the Worker URL to the existing `barrot` MCP server. When that MCP server starts, it launches the outbound consumer automatically if `BARROT_AGENT_SECRET` or `BRAIN_SHARED_SECRET` is present. A file lock ensures only one consumer runs, even when multiple OpenCode sessions load the MCP server. The consumer logs to `~/.barrot/a2a-runner.log`.
+Run the queue consumer as the same OS user and from the repository checkout used by the existing OpenCode service. The default `opencode.json` does not pass the Worker URL or runner credentials to the MCP server. The consumer is disabled by default and requires `BARROT_A2A_AUTO_RUNNER=YES` as a separate explicit opt-in, in addition to the URL and runner credential. A file lock ensures only one consumer runs, even when multiple OpenCode sessions load the MCP server. The consumer logs to `~/.barrot/a2a-runner.log`.
 
 Environment contract:
 
-- `BARROT_A2A_URL` — `https://barrot-a2a-worker.amazonprostarelite.workers.dev` after the Worker is deployed.
+- `BARROT_A2A_AUTO_RUNNER` — must equal `YES`; unset by default and only enabled after explicit approval and sandbox review.
+- `BARROT_A2A_URL` — `https://barrot-a2a-worker.amazonprostarelite.workers.dev` after the Worker is deployed and the host is explicitly configured.
 - `BARROT_AGENT_SECRET` — optional dedicated runner credential, supplied through the host's secret/environment manager.
 - `BRAIN_SHARED_SECRET` — fallback runner credential when `BARROT_AGENT_SECRET` is not set.
 - `BARROT_WORKDIR` — absolute path to the existing B-Agent checkout.
@@ -37,7 +40,7 @@ Environment contract:
 - `BARROT_TASK_TIMEOUT_SECONDS` — optional; defaults to 1800 seconds, maximum 1800.
 - `BARROT_A2A_POLL_SECONDS` — optional; defaults to 5 seconds.
 
-The runner is a queue consumer, not an HTTP server. It does not expose the host or OpenCode API publicly, and it does not start another OpenCode server. The existing OpenCode MCP lifecycle starts it; a singleton lock prevents duplicate consumers. For a manual diagnostic or one-task smoke test, use `python3 scripts/barrot_a2a_runner.py --once`. The runner's 3600-second task lease exceeds its 1800-second execution timeout; an abandoned lease is recoverable and claims are bounded to three attempts.
+The runner is a queue consumer, not an HTTP server. It does not expose the host or OpenCode API publicly, and it does not start another OpenCode server. The existing OpenCode MCP lifecycle may start it only after the explicit opt-in gate passes; a singleton lock prevents duplicate consumers. For a manual diagnostic or one-task smoke test, use `python3 scripts/barrot_a2a_runner.py --once`. The runner's 3600-second task lease exceeds its 1800-second execution timeout; an abandoned lease is recoverable and claims are bounded to three attempts.
 
 ## Safety and execution semantics
 

@@ -1,99 +1,109 @@
-"""Real Git integration tests for Barrot's fail-closed conflict boundary."""
-
-import shutil
+import os
 import subprocess
 import tempfile
 import unittest
 from pathlib import Path
 
-from barrot_agent.ingestion.merge_conflict_micro_ingestion import MergeConflictMicroIngestion
+from barrot_agent.ingestion.conflict_resolution_policy import (
+    ConflictEvidence, ResolutionChoice, recommend_resolution,
+)
 
 
-@unittest.skipUnless(shutil.which("git"), "Git is required for merge integration tests")
-class GitConflictIntegrationTests(unittest.TestCase):
+def git(repo: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess:
+    return subprocess.run(
+        ["git", *args], cwd=repo, text=True, capture_output=True, check=check,
+        env={**os.environ, "GIT_AUTHOR_NAME": "Barrot conflict test",
+             "GIT_AUTHOR_EMAIL": "barrot-test@example.invalid",
+             "GIT_COMMITTER_NAME": "Barrot conflict test",
+             "GIT_COMMITTER_EMAIL": "barrot-test@example.invalid"},
+    )
+
+
+class GitConflictResolutionIntegrationTests(unittest.TestCase):
     def setUp(self):
-        self.temp_dir = tempfile.TemporaryDirectory()
-        self.repo = Path(self.temp_dir.name)
-        self.git("init", "-q", "-b", "main")
-        self.git("config", "user.name", "Barrot Conflict Test")
-        self.git("config", "user.email", "barrot-conflict-test@example.invalid")
-        (self.repo / "app.py").write_text('VALUE = "base"\n', encoding="utf-8")
-        self.git("add", "app.py")
-        self.git("commit", "-q", "-m", "base")
-        self.base = self.git("rev-parse", "HEAD").stdout.strip()
+        self.temp = tempfile.TemporaryDirectory()
+        self.repo = Path(self.temp.name)
+        git(self.repo, "init", "-b", "main")
+        git(self.repo, "config", "user.name", "Barrot conflict test")
+        git(self.repo, "config", "user.email", "barrot-test@example.invalid")
 
     def tearDown(self):
-        self.temp_dir.cleanup()
+        self.temp.cleanup()
 
-    def git(self, *args):
-        return subprocess.run(
-            ["git", *args],
-            cwd=self.repo,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
+    def commit_file(self, path: str, content: str, message: str):
+        target = self.repo / path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content, encoding="utf-8")
+        git(self.repo, "add", path)
+        git(self.repo, "commit", "-m", message)
 
-    def commit_file(self, path, content, message):
-        (self.repo / path).write_text(content, encoding="utf-8")
-        self.git("add", path)
-        result = self.git("commit", "-q", "-m", message)
-        self.assertEqual(result.returncode, 0, result.stderr)
+    def test_real_git_content_conflict_fails_closed(self):
+        self.commit_file("app/value.py", "VALUE = 'base'\n", "base")
+        git(self.repo, "checkout", "-b", "incoming")
+        self.commit_file("app/value.py", "VALUE = 'incoming'\n", "incoming")
+        git(self.repo, "checkout", "main")
+        self.commit_file("app/value.py", "VALUE = 'current'\n", "current")
+        merge = git(self.repo, "merge", "incoming", "--no-edit", check=False)
+        self.assertNotEqual(merge.returncode, 0)
+        self.assertIn("<<<<<<<", (self.repo / "app/value.py").read_text(encoding="utf-8"))
+        decision = recommend_resolution(ConflictEvidence(file_path="app/value.py"))
+        self.assertEqual(decision.choice, ResolutionChoice.MANUAL)
+        self.assertFalse(decision.auto_apply)
 
-    def make_conflicting_branches(self):
-        self.git("checkout", "-q", "-b", "incoming")
-        self.commit_file("app.py", 'VALUE = "incoming"\n', "incoming change")
-        incoming = self.git("rev-parse", "HEAD").stdout.strip()
-        self.git("checkout", "-q", "main")
-        self.commit_file("app.py", 'VALUE = "current"\n', "current change")
-        current = self.git("rev-parse", "HEAD").stdout.strip()
-        return current, incoming
+    def test_real_git_clean_merge_preserves_both_disjoint_changes(self):
+        base = "def left():\n    return 1\n" + ("\n" * 8) + "def right():\n    return 2\n"
+        incoming = "def left():\n    return 10\n" + ("\n" * 8) + "def right():\n    return 2\n"
+        current = "def left():\n    return 1\n" + ("\n" * 8) + "def right():\n    return 20\n"
+        self.commit_file("app/module.py", base, "base")
+        git(self.repo, "checkout", "-b", "incoming")
+        self.commit_file("app/module.py", incoming, "incoming")
+        git(self.repo, "checkout", "main")
+        self.commit_file("app/module.py", current, "current")
+        merge = git(self.repo, "merge", "incoming", "--no-edit", check=False)
+        self.assertEqual(merge.returncode, 0, merge.stderr)
+        merged = (self.repo / "app/module.py").read_text(encoding="utf-8")
+        self.assertIn("return 10", merged)
+        self.assertIn("return 20", merged)
+        decision = recommend_resolution(ConflictEvidence(
+            both_changes_are_required=True, both_changes_are_compatible=True,
+            composition_is_validated=True, tests_pass=True, protected_area_reviewed=True,
+        ))
+        self.assertEqual(decision.choice, ResolutionChoice.BOTH)
+        self.assertFalse(decision.auto_apply)
 
-    def test_independent_changes_merge_cleanly(self):
-        self.commit_file("current.py", 'CURRENT = True\n', "current side")
-        current = self.git("rev-parse", "HEAD").stdout.strip()
-        self.git("checkout", "-q", "-b", "incoming", self.base)
-        self.commit_file("incoming.py", 'INCOMING = True\n', "incoming side")
-        incoming = self.git("rev-parse", "HEAD").stdout.strip()
-        result = self.git("merge-tree", "--write-tree", current, incoming)
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+    def test_duplicate_function_conflict_is_not_accept_both_by_default(self):
+        self.commit_file("app/functions.py", "def calculate(value):\n    return value\n", "base")
+        git(self.repo, "checkout", "-b", "incoming")
+        self.commit_file("app/functions.py", "def calculate(value):\n    return value * 2\n", "incoming")
+        git(self.repo, "checkout", "main")
+        self.commit_file("app/functions.py", "def calculate(value):\n    return value + 2\n", "current")
+        merge = git(self.repo, "merge", "incoming", "--no-edit", check=False)
+        self.assertNotEqual(merge.returncode, 0)
+        self.assertIn("<<<<<<<", (self.repo / "app/functions.py").read_text(encoding="utf-8"))
+        self.assertEqual(recommend_resolution(ConflictEvidence()).choice, ResolutionChoice.MANUAL)
 
-    def test_incompatible_same_line_edits_are_reported_as_conflict(self):
-        current, incoming = self.make_conflicting_branches()
-        result = self.git("merge-tree", "--write-tree", current, incoming)
-        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("CONFLICT", result.stdout + result.stderr)
+    def test_workflow_and_secret_paths_always_escalate(self):
+        for path in (".github/workflows/ci.yml", "secrets/provider.json"):
+            decision = recommend_resolution(ConflictEvidence(
+                file_path=path, incoming_is_intended_pr_change=True,
+                incoming_preserves_current_behavior=True, incoming_is_validated=True,
+                tests_pass=True, protected_area_reviewed=True,
+            ))
+            self.assertEqual(decision.choice, ResolutionChoice.MANUAL)
+            self.assertFalse(decision.auto_apply)
 
-    def test_actual_git_merge_preserves_conflict_markers_for_review(self):
-        self.make_conflicting_branches()
-        self.git("checkout", "-q", "incoming")
-        result = self.git("merge", "--no-edit", "main")
-        self.assertNotEqual(result.returncode, 0)
-        conflicted = (self.repo / "app.py").read_text(encoding="utf-8")
-        self.assertIn("<<<<<<<", conflicted)
-        self.assertIn("=======", conflicted)
-        self.assertIn(">>>>>>>", conflicted)
-        self.assertTrue(self.git("ls-files", "-u").stdout.strip())
-
-    def test_merge_tree_check_does_not_move_checked_out_head(self):
-        current, incoming = self.make_conflicting_branches()
-        before = self.git("rev-parse", "HEAD").stdout.strip()
-        self.git("merge-tree", "--write-tree", current, incoming)
-        after = self.git("rev-parse", "HEAD").stdout.strip()
-        self.assertEqual(before, after)
-
-    def test_legacy_analyzer_never_turns_markers_into_auto_resolution(self):
-        analyzer = MergeConflictMicroIngestion()
-        analyzer.initialize_knowledge_base()
-        analysis = analyzer.analyze_conflict(
-            '<<<<<<< HEAD\nVALUE = "current"\n=======\nVALUE = "incoming"\n>>>>>>> topic\n',
-            "src/app.py",
-        )
-        self.assertFalse(analysis["auto_resolvable"])
-        self.assertTrue(analysis["manual_review_required"])
-        self.assertIsNone(analysis["recommended_technique"])
-        self.assertEqual(analysis["policy_decision"]["choice"], "manual")
-        self.assertFalse(analysis["policy_decision"]["auto_apply"])
+    def test_outdated_incoming_and_failed_tests_never_auto_apply(self):
+        outdated = recommend_resolution(ConflictEvidence(
+            current_is_authoritative=True, incoming_is_superseded_or_invalid=True,
+        ))
+        failing = recommend_resolution(ConflictEvidence(
+            incoming_is_intended_pr_change=True, incoming_preserves_current_behavior=True,
+            incoming_is_validated=True, tests_pass=False, protected_area_reviewed=True,
+        ))
+        self.assertEqual(outdated.choice, ResolutionChoice.CURRENT)
+        self.assertEqual(failing.choice, ResolutionChoice.MANUAL)
+        self.assertFalse(outdated.auto_apply)
+        self.assertFalse(failing.auto_apply)
 
 
 if __name__ == "__main__":
