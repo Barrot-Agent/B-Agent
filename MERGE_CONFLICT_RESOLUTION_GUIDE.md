@@ -407,8 +407,8 @@ import requests
 ### Scenario 3: Configuration Changes
 
 **Conflict Type**: Content  
-**Auto-Resolvable**: Yes  
-**Recommended Strategy**: Semantic Merge
+**Auto-Resolvable**: No — human review and authorization are required  
+**Recommended Strategy**: Evidence-gated review; manual by default
 
 ```yaml
 # Conflict Example
@@ -500,7 +500,7 @@ test results, and an auditable record of the exact base and head revisions.
 1. **PR Monitoring**
    - Detect conflicts in open PRs
    - Analyze conflict patterns
-   - Apply appropriate strategies
+   - Produce evidence-gated recommendations only; do not apply a resolution automatically
 
 2. **Resolution Recommendation (fail-closed)**
    - Run the evidence-gated policy
