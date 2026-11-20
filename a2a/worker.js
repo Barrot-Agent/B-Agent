@@ -370,10 +370,17 @@ export class BarrotTaskQueue {
     const now = Date.now();
     const taskId = typeof input.task_id === "string" && /^[A-Za-z0-9._:-]{8,100}$/.test(input.task_id)
       ? input.task_id : crypto.randomUUID();
-    return this.storage.transaction(async txn => {
-      const existing = await txn.get("task:" + taskId);
+    return this.storage.transaction(async () => {
+      const existing = await this.storage.get("task:" + taskId);
       if (existing) return json({ task_id: taskId, status: existing.status, created_at: existing.created_at, idempotent_replay: true });
-      const entries = await txn.list({ prefix: "task:" });
+      const entries = await this.storage.list({ prefix: "task:" });
+      const cutoff = now - 30 * 24 * 60 * 60 * 1000;
+      for (const [key, oldTask] of entries.entries()) {
+        if ((oldTask.status === "completed" || oldTask.status === "failed") &&
+            Date.parse(oldTask.updated_at || oldTask.created_at) < cutoff) {
+          await this.storage.delete(key);
+        }
+      }
       const outstanding = [...entries.values()].filter(task => task.status === "queued" || task.status === "running").length;
       if (outstanding >= MAX_OUTSTANDING_TASKS) return json({ error: "queue_full" }, 429);
       const task = {
@@ -401,8 +408,8 @@ export class BarrotTaskQueue {
     const workerId = String(input.worker_id || "").slice(0, 128);
     const leaseSeconds = Math.max(60, Math.min(Number(input.lease_seconds) || DEFAULT_LEASE_SECONDS, 3600));
     if (!workerId) return json({ error: "worker_id_required" }, 400);
-    return this.storage.transaction(async txn => {
-      const entries = await txn.list({ prefix: "task:" });
+    return this.storage.transaction(async () => {
+      const entries = await this.storage.list({ prefix: "task:" });
       const tasks = [...entries.entries()].map(([key, value]) => ({ key, value }))
         .sort((a, b) => a.value.created_at.localeCompare(b.value.created_at));
       for (const entry of tasks) {
@@ -436,9 +443,9 @@ export class BarrotTaskQueue {
 
   async complete(taskId, input) {
     const now = Date.now();
-    return this.storage.transaction(async txn => {
+    return this.storage.transaction(async () => {
       const key = "task:" + taskId;
-      const task = await txn.get(key);
+      const task = await this.storage.get(key);
       if (!task) return json({ error: "task_not_found" }, 404);
       if (task.status !== "running" || task.assigned_worker !== input.worker_id) {
         return json({ error: "task_lease_mismatch" }, 409);
