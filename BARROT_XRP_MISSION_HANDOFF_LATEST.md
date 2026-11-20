@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
-Updated: 2026-11-20 (Run 232 superseding section at the end)
+Updated: 2026-11-20 (Run 232 and primary-source capital/SBIC reconciliation appended at the end)
 
 ## Mission priority
 
@@ -1773,3 +1773,78 @@ No PR was merged or closed. No branch was rewritten or force-pushed.
 7. After an authorized merge, activate and verify scheduled XRP ingestion, independent raw-byte retention and synchronized historical market data. Keep forecasts disabled until every admission criterion passes.
 
 No merge, Pages publication, deployment, secret rotation/upload, Space restart, Databricks write, Kaggle submission, external model dispatch, paper trade, funds transfer, real-money action, force-push or destructive worktree operation occurred in this run.
+
+
+---
+
+## Run 232A — primary-source institutional capital and SBIC/ChatGPT reconciliation
+**Research capture:** 2026-11-20. **Primary SEC document:** Evernorth Form 424B3 dated October 30, 2026. Underlying event dates are preserved separately from the filing/known-at date.
+
+### Evernorth: actual cash, XRP in-kind, debt and optional financing are separate
+Primary source: [Evernorth Form 424B3, filed October 30, 2026](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm), especially “Liquidity and Capital Resources” (prospectus pp. 119–123), “Principal Securityholders” (pp. 134–136), “Advance Funding Subscription Agreements” (pp. 84–85), and the financial-statement notes.
+
+- The filing states that Pubco raised **$214.1 million cash and 261,919,096 XRP** under the private-placement subscription agreements. The Company then used **$214.1 million of cash to purchase 84,365,876 XRP**. The 84.366 million is a cash-funded XRP acquisition, not an in-kind contribution.
+- At closing, aggregate gross cash proceeds were approximately **$272.6 million**: approximately **$224.6 million from private-placement investments plus $48.0 million released from the SPAC trust after redemptions**, before transaction expenses.
+- Investors separately contributed approximately **388,910,554 XRP in kind**. The filing reports approximately **473 million XRP held as of October 9, 2026**. Do not add the cash-purchased 84.366 million twice to the 473 million figure; it is already included in the treasury total.
+- The aggregate $214.1 million advance-funding cash is not itemized by each subscriber in this prospectus. SBI-affiliated entities are among the advance-funding subscribers, but the filing does not establish that all $214.1 million was paid by SBI. Do not attribute the pooled cash or the full 84.366 million XRP purchase to SBI.
+- Ripple separately contributed **126,791,458 XRP to Pathfinder** in exchange for Pathfinder units. The filing says this XRP can be liquidated to fund operating costs. That is a potential supply/treasury-management channel, not evidence that the XRP was sold.
+- The prospectus says Evernorth **does not actively trade XRP on digital-asset markets**. It selected Coinbase as the principal market for XRP financial-reporting/impairment purposes. That designation is not evidence Coinbase executed the acquisition, holds the assets in custody, or is a current trading counterparty.
+- Following the transaction, the initial custodian was BitGo Trust. This does not establish the current custodian or current wallet balances.
+
+### SBI ownership: voting power is not total economic ownership
+The prospectus identifies four SBI-controlled stockholders: SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. Each is a subsidiary of or partnership directly or indirectly managed by SBI Holdings, Inc.
+
+As of the prospectus ownership table:
+- SBI stockholders held **9,431,914 Class A shares** (36.1% of Class A) and **2,359,038 Class C shares** (7.5% of Class C).
+- The filing reports approximately **21.4% of total common economic ownership** and **39.9% of voting power** for SBI.
+- Class C has economic/distribution rights but is non-voting except where required by law. The 39.9% voting figure must not be described as 39.9% total economic ownership.
+- Voting/dispositive decisions are made by SBI's board on management recommendation; no individual board member alone controls those decisions.
+
+The aggregate subscription agreement price and the SBI stockholder share allocation are disclosed, but this filing does not isolate each SBI entity's cash paid. The exact SBI cash contribution remains **unresolved at subscriber level**.
+
+### Liquidity and financing: capacity is not cash received
+- As of June 30, 2026, Evernorth reported approximately **$0.1 million unrestricted cash**, a **$696.1 million net working-capital deficit**, and a **$340.9 million accumulated deficit**. These are historical reporting-date balances, not current November 20 balances.
+- The operating Company (Pathfinder) reported approximately **$0.8 million unrestricted cash**, a **$3.7 million net working-capital deficit**, and a **$3.1 million accumulated deficit** as of June 30, 2026.
+- Ripple provided the Company a revolving facility initially set at $7.0 million and increased to **$10.0 million on October 7, 2026**; the filing reports **$9.7 million borrowed as of October 7**. A separate **$1.0 million Evernorth facility** had not been drawn as of June 30. These are related-party credit/liquidity support, not equity subscriptions or XRP purchases.
+- Pubco issued **$30.0 million principal** of 4.00% convertible senior PIK notes on October 12, 2026. The filing reports approximately $30.0 million net proceeds before transaction expenses. The notes accrue PIK interest, mature in 2031 and may convert after one year. This is debt financing; the stated use includes general corporate purposes and possible XRP acquisition, but no specific XRP purchase from these proceeds is established.
+- The Cantor committed equity facility permits Evernorth, at its discretion and subject to conditions, to sell up to **5,218,935 Class A shares**. At the October 29, 2026 reference price of $14.71, the prospectus illustrates approximately **$76.8 million gross** and up to approximately **$74.4 million net** over the facility term after estimated fees/expenses. The company must elect purchases, registration must become effective, Cantor's beneficial ownership is capped at 4.99%, and the issuance could represent 16.7% of then-outstanding Class A shares. This is optional financing capacity, not cash already received and not proof of an XRP purchase. The company also agreed to an upfront commitment fee of $521,893.50.
+- The prospectus says Evernorth may acquire additional XRP, sell XRP for general corporate purposes, consider secured financing using XRP as collateral, and deploy a portion into yield strategies. These are stated options/strategy, not proof that a sale, collateral pledge or yield deployment occurred.
+
+**Modeling implication:** represent cash subscriptions, cash actually used to buy XRP, XRP contributed in kind, trust cash, Ripple-related debt, convertible debt and undrawn equity capacity as separate event types. Store event time, public-known-at time, legal entity, beneficial owner, custody location, amount, consideration, restrictions and confidence independently. Do not transform a financing announcement or unused facility into spot demand.
+
+### Japan SBIC identity and ChatGPT references
+Primary legal source: [Japan's Small and Medium Business Investment & Consultation Company Act, Article 2](https://laws.e-gov.go.jp/law/338AC0000000101/20220617_504AC0000000068). It names exactly three statutory companies: Tokyo, Nagoya and Osaka. Article 3 restricts use of the statutory corporate-name phrase by other entities.
+
+Official corporate sources:
+- **SBIC East Japan:** [Tokyo Small and Medium Business Investment & Consultation Co., Ltd.](https://www.sbic.co.jp/company/profile/); the official profile explicitly uses “SBIC East Japan.”
+- **SBIC Central Japan:** [Nagoya Small and Medium Business Investment & Consultation Co., Ltd.](https://www.sbic-cj.co.jp/company/about/); the official profile explicitly uses “SBIC Central Japan.”
+- **SBIC West Japan:** [Osaka Small and Medium Business Investment & Consultation Co., Ltd.](https://www.sbic-wj.co.jp/profiles/guide/); the official site identifies the Osaka entity as SBIC West Japan and describes the three regional companies as covering Japan together.
+
+These are three distinct statutory companies/sister entities, not SBI Holdings, Inc. No corporate identity equivalence with SBI Holdings is supported.
+
+Primary ChatGPT/generative-AI training evidence:
+- Tokyo SBIC held a “Generative AI (ChatGPT): Present and Future” seminar on March 5, 2024: [official event page](https://www.sbic.co.jp/seminar/20240305js/).
+- Tokyo SBIC published another “Current and Future of Generative AI (ChatGPT)” seminar for February 26, 2025: [official event PDF](https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf).
+- Tokyo SBIC also offered a June 12–13, 2025 manufacturing-focused generative-AI/machine-learning course for investee companies, including ChatGPT, Copilot, API/RAG and information-leakage topics: [official training page](https://www.sbic.co.jp/training/20250612co/).
+- Osaka SBIC West Japan hosted a generative-AI basics seminar for accounting firms and support institutions on October 23, 2024; the official PDF explicitly asks what ChatGPT can do and identifies a STORIA law-firm partner as instructor: [official SBIC West Japan PDF](https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf).
+- Targeted official-domain searching did not locate a Central/Nagoya ChatGPT seminar in this pass; that is not evidence none exists.
+
+These are regional SBIC training events with outside instructors, including Microsoft and a law firm. They establish educational exposure to ChatGPT, not an OpenAI partnership, product deployment contract, investment, joint venture or formal SBIC–OpenAI relationship. Exact phrase references to “SBIC” and “ChatGPT” should be matched to the relevant regional entity and event before drawing any relationship inference.
+
+### ASK Coin exact-phrase candidate
+The phrase “ASK Coin” remains ambiguous. One verifiable candidate is **Permission's ASK token**:
+- [Permission's official ASK token documentation](https://docs.permission.ai/ask-token) calls ASK the native token of the Permission ecosystem and describes reward/participation and agent-to-agent coordination utilities. It lists LayerZero OFT deployment on Base and Polygon.
+- [Permission's official April 2, 2025 bridge notice](https://www.permission.ai/blog/bridging-your-ask-tokens-to-base-via-layerzero) documents migration from Wormhole-bridged ASK on Base to LayerZero.
+- CoinGecko's [Permission Coin page](https://www.coingecko.com/en/coins/permission-coin) identifies the ASK ticker and current contract/market listings, but is secondary market metadata.
+
+No XRP-ledger integration, Ripple relationship or XRP utility was established in these sources. Treat Permission ASK as one candidate, not a definitive resolution of the user's intended “ASK Coin” reference.
+
+### Camilla/Kamilah Stevenson video attribution
+The official web presence and podcast references found in this pass do not directly link a YouTube channel. A third-party people/social directory lists many similarly named YouTube accounts, including a large `@drkamilahstevenson` candidate and numerous lookalikes. That directory is not identity proof. No channel ownership or canonical YouTube identity was established, so **no videos are attributed or inventoried** in this addendum. Do not merge videos from similarly named channels or treat a guest appearance as proof of channel ownership.
+
+### Research classification and prediction impact
+- **VERIFIED:** statutory East/Central/West SBIC entities; regional ChatGPT training events; Permission ASK token's documented ecosystem/network; Evernorth's filed cash/XRP/in-kind/debt/credit/ELOC categories; SBI stockholder entity names and share/vote split; Evernorth's stated no-active-trading policy and Coinbase accounting-market designation.
+- **UNRESOLVED:** individual SBI subscriber cash paid; current Evernorth cash/XRP/custody balances after the filing dates; whether any optional ELOC shares were sold; whether contributed XRP has been liquidated or pledged; any formal OpenAI relationship; the user's intended ASK Coin referent; canonical Kamilah Stevenson YouTube channel.
+- **NOT INFERRED:** that SBI alone funded the entire $214.1 million cash pool; that Coinbase executed the XRP purchase; that Evernorth sold or pledged XRP; that the ELOC is already funded; that SBIC's training events constitute an OpenAI partnership; or that Permission ASK is the intended “ASK Coin” without contextual confirmation.
+- Add each SEC event with its original event date and the October 30, 2026 filing/known-at date. Do not backdate public knowledge to the 2025 acquisition date.
+- Forecast status remains `NOT_ISSUED`; these filings improve entity/capital-flow event labels but do not provide synchronized market observations or out-of-sample predictive evidence.
