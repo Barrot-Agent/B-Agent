@@ -1194,3 +1194,135 @@ No unique research or creative PR was bulk-closed. #1663 is not to be closed unt
 8. Refresh the nine-platform capability/authentication/permission/data-flow map only with tested evidence.
 
 This checkpoint is a research and documentation update on the existing integration branch. Main remains at `7f8e3626c355bb3d89afdff56aeed5e056cb88f4`; no merge or mainline code change was made by this run.
+
+
+---
+
+## Current-state addendum — 2026-11-20 11:51 UTC
+
+This addendum supersedes earlier repository-state, exact-head CI, branch-overlap and current-market observations above. It is append-only; no prior research or branch history was rewritten.
+
+### 1. Repository and integration state — VERIFIED
+
+- Default branch main: 7f8e3626c355bb3d89afdff56aeed5e056cb88f4.
+- Main tree: 1,751 entries / 1,578 blobs; recursive tree response was not truncated.
+- Active integration PR: https://github.com/Barrot-Agent/B-Agent/pull/1673, branch integration/xrp-v3-mainline-successor-20261120T0135Z.
+- Exact integration head: f690bc7aaf5a7d4a36471e378874fb2a607c35fa.
+- PR #1673 is 526 commits ahead / 0 behind current main; 1,494 changed files, 535,403 additions and 7,024 deletions.
+- Integration tree: 3,040 entries / 2,853 blobs; no truncation.
+- PR scope: 69 workflow files, 426 test paths, 74 barrot_agent paths and 1,133 XRP/forecast/feature-store-related paths.
+- Open PR inventory: 17. No new branch or PR was created.
+
+Main's current head advanced through an automated paid-issue scan. The commit changed only PAID-ISSUES.md and data/money/paid_issues.json; it did not modify runtime or XRP code. The latest main-branch Cross Analysis run 44730978197 succeeded, but it is a read-only entity/news sentiment analysis, not the XRP spot/depth/derivatives ingestion pipeline.
+
+### 2. Exact-head verification — VERIFIED
+
+All results below are tied to integration head f690bc7, not an earlier branch head:
+
+- Full repository suite 44718257764: **4,440 passed, 1 skipped, 0 failed**, 11 warnings, 23 subtests; 161.85 seconds.
+- Inclusive coverage: **73.08%**; legacy/core coverage: **82%**.
+- Mission package coverage: XRP telemetry 92%; MMI 92%; feature store 80%; forecast ledger 97%; point-in-time features 89%; source registry 95%; Barrot integration 62%; AGI orchestrator 52%.
+- Additional package coverage: monetization 78%; rendering 71%; smart agent 77%; memory palace 100%.
+- Dependency audit 44718257853: passed six manifests.
+- Money audit 44718257785: passed.
+- A2A Worker tests 44718258144: passed.
+- Pages build: validation-only passed; no deployment.
+
+The direct-main push guard is now present in scripts/push_with_token.sh. It refuses a default direct push to main unless a deliberate override is supplied. The branch adds tests/test_push_with_token_security.py; it passed within the exact-head full suite. This corrects the older handoff statement that the guard was still missing. No direct push to main occurred.
+
+### 3. Merge gate — BLOCKED, fail-closed
+
+The exact-head fail-closed gate 44718257941 failed for the following independently observed conditions:
+
+1. PR #1673 remains draft.
+2. No independent approving review exists.
+3. The main branch-protection endpoint returns HTTP 403. The branch metadata says protected, but effective required checks and administrator enforcement cannot be independently read.
+4. The only returned repository ruleset, Fall Back, has enforcement disabled.
+5. A merge would trigger GitHub Pages publication. Pages validation is not deployment authorization.
+6. A2A sandboxing, credential isolation, egress restrictions and task-level authorization remain incomplete; the 69-workflow/transitive script review is not complete.
+
+No merge, deployment, publication, force-push, branch-protection bypass or source-PR closure occurred. The prior merge authorization applies only when every stated readiness and safety condition is actually satisfied.
+
+### 4. Branch ancestry and overlap audit — EXECUTED
+
+Current ancestry against main:
+
+| PR | Ahead / behind main | Current disposition |
+|---|---:|---|
+| #1673 | 526 / 0 | Active consolidated integration; blocked |
+| #1677 | 6 / 2 | Security overlap; blocked pending semantic review |
+| #1671 | 9 / 10 | Partially superseded; workflow differences remain |
+| #1670 | 47 / 13 | Mostly integrated; three changed paths remain |
+| #1668 | 5 / 14 | Unique provider-failover work; not integrated |
+| #1666 | 1 / 17 | Dependency change; stale and unverified on current main |
+| #1665 | 1 / 17 | Dependency change; stale and unverified on current main |
+| #1664 | 17 / 0 | Separate paid-issue product; draft and unpublished |
+| #1663 | 486 / 9 | Superseded predecessor candidate; preserve until successor verification |
+| #1541, #1460, #1450, #1440, #1437, #1436, #1353, #1265 | No common ancestor with current main | Preserve as unique/stacked research or repair work; no bulk action |
+
+Path-level and blob-level comparison against #1673:
+
+- #1677: all 6 changed paths overlap; 0 identical blobs. The successor and source branch both retain manual-only deployment, explicit runner opt-in and ask-before-action controls, but their files differ. The successor documentation still records sandbox/egress/task-authorization gaps. Treat as security reconciliation, not a proven byte-identical duplicate.
+- #1671: all 8 changed paths overlap; 4 identical blobs and 4 different. The gate module and some API tests match; workflow and regression-test versions differ. Do not import the source workflows wholesale.
+- #1670: all 12 paths overlap; 9 identical blobs and 3 different (docs/INDEX.md, pyproject.toml, tests/test_musical_adapters.py). The core Musical DNA package is present; reconcile the remaining three files before classifying the source PR as fully superseded.
+- #1668: all 3 paths overlap but 0 blobs are identical. Provider failover is not verified as integrated.
+- #1664: 6 paths overlap; 1 blob is identical and 5 differ. The remaining product work is separate and unpublished.
+- #1666: its pyproject.toml overlap differs.
+- #1665: its requirements-dev.txt overlap differs.
+- #1541: 5 paths overlap; 2 blobs are identical and 3 differ, including the canonical-claim record and MMI implementation/test files. Do not call it a complete duplicate.
+- #1265: 1 path overlaps and differs; 143 of its changed paths are outside the successor's changed-path set.
+
+No source PR was closed. #1673 remains the single active XRP/V3 integration workstream. The older branches with no common ancestor remain preserved; they are not safe candidates for direct merge without a lossless, current-main successor and explicit source disposition.
+
+### 5. Current XRP market snapshot — RESEARCH ONLY, NOT MODEL-ELIGIBLE
+
+Kraken XRP/USD public ticker, retrieved approximately 2026-11-20 11:51 UTC:
+
+- Last trade: $0.95329.
+- Best bid: $0.95359; best ask: $0.95368.
+- Indicative top-of-book spread: approximately 0.944 basis points.
+- Displayed best bid/ask size: approximately 332 XRP per side.
+- 24-hour volume: approximately 39.17 million XRP.
+- 24-hour range: $0.94679–$0.99680.
+- 24-hour VWAP: approximately $0.970307.
+
+Quality flags: Kraken supplied no exchange event timestamp in the rendered response; last trade was below the displayed best bid at capture. Only one venue was successfully retrieved. A narrow top-of-book spread and 332 XRP at each best quote do not establish executable depth. The Level-2 depth endpoints did not return usable payloads in this research capture. No depth, cross-venue basis or slippage feature was admitted.
+
+ETF-flow tracker, data through 2026-11-19: it displayed zero XRP-product net flow for November 19, approximately -$19 million over 30 days, approximately -$25.7 million month-to-date, $1.08 billion AUM and $1.79 billion cumulative net inflows. The provider marks November 16–19 rows provisional. Its November 17 table row shows -$6.0 million while its summary identifies a -$4.9 million XRPC move; the month-to-date summary also differs from the rounded daily-row sum. Preserve this provider-internal disagreement. These are secondary aggregated figures, not issuer-level cash receipts.
+
+The same tracker reported broad U.S. crypto ETF outflows of approximately $718.7 million on November 19 and a CEFI fear reading of 9. Treat these as secondary broad-market context, not XRP-specific flows or a directional signal.
+
+Sources: https://api.kraken.com/0/public/Ticker?pair=XRPUSD and https://cryptofundflows.com/xrp-etf/.
+
+All observations in this section are research-only. Browser-rendered responses were not captured as exact raw HTTP bytes; no SHA-256 receipt or independent timestamp anchor exists. They are excluded from the point-in-time feature store and all model evaluation.
+
+### 6. Institutional network, exact phrases and identity — NO NEW VERIFIED EDGE
+
+The latest durable research artifacts already contain the current primary-source reconciliation for Coinbase/Circle Q3 distribution economics, Ripple/Coinbase RLUSD distribution, BNY custody, SBI/Ripple, SBI/Circle/USDC and the SBI multi-rail strategy:
+
+- research/xrp_intelligence/20261120T025053Z-run230-circle-coinbase-usdc-distribution-economics.json
+- research/xrp_intelligence/20261119T220358Z-run47-sbi-circle-market-reconciliation.json
+- research/xrp_intelligence/20261120T000414Z-run48-dbs-circle-usdc-and-market-cutoff.json
+
+No new direct Coinbase–Circle–Ripple–SBI relationship edge was established in this run. USDC distribution, RLUSD distribution, XRP custody, tokenized deposits and XRPL remittance research remain separate activities; none by itself proves incremental XRP bridge-asset demand or net XRP capital inflow.
+
+Japan's SBIC East/Central/West identity remains resolved as three regional SME investment-development companies, distinct from SBI Holdings. The exact phrases ASK Coin, actual capital and SBIC, ChatGPT SBIC remain unresolved as a single attributable XRP-related claim. The Kamilah/Camilla Stevenson XRP channel candidate remains unlinked to a verified real-world identity; do not attribute its videos to Dr. Kamilah Stevenson without a cross-link from an authenticated channel or primary profile.
+
+### 7. Prediction and platform status
+
+- Forecast status: **NOT_ISSUED**.
+- No synchronized receipt-backed historical market dataset, validated learned-model lift over the four baselines, stable probability calibration, completed shadow evaluation or independent attestation has been established.
+- The branch contains the scheduled public-data ingestion workflow, but it is not on main. No hourly/daily XRP ingestion schedule is active on the default branch. Its GitHub artifacts/cache are not independent WORM retention.
+- Only GitHub authentication and repository access were tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified live connections. No external model dispatch or data transfer occurred.
+
+### 8. Next concrete actions
+
+1. Keep #1673 as the only active XRP/V3 integration workstream; do not create another integration PR.
+2. Finish the transitive review of all 69 changed workflows and scripts, including A2A sandboxing, credential isolation, egress and task authorization.
+3. Obtain verifiable branch-protection/required-check evidence and an independent approving review; keep the PR draft until then.
+4. Resolve the GitHub Pages publication boundary before any merge because merge automatically publishes the site.
+5. Establish independent immutable raw-source retention and activate the read-only ingestion schedule only after safe integration on main.
+6. Capture synchronized venue L2 depth, historical spot, derivatives, issuer-level ETF holdings, exchange flows and institutional collateral with byte-exact receipts before model admission.
+7. Continue leakage-safe walk-forward comparisons and shadow evaluation. Keep forecasts disabled until all prediction gates pass.
+
+No mainline code change, merge, deployment, publication, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer or real-money action occurred in this run.
