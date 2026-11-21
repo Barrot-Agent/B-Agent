@@ -432,6 +432,7 @@ def test_real_artifact_replay_targets_latest_successful_main_checkpoint():
     assert "GH_TOKEN: ${{ github.token }}" in execute_step[:300]
     backfill_source = (ROOT / "barrot_agent" / "evolution" / "xrp_feature_store_backfill.py").read_text(encoding="utf-8")
     assert "clock=_github_api_server_clock" in backfill_source
+    assert '"Cache-Control": "no-cache"' in backfill_source
     assert 'receipt_clock_source="github_api_run_date_header"' in backfill_source
     assert "after['snapshot_count'] == before['snapshot_count'] + expected_snapshot_delta" in text
     assert "after['record_count'] == before['record_count'] + expected_record_delta" in text
