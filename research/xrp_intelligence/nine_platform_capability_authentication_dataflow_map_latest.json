@@ -454,8 +454,8 @@
       "data_flow": {
         "status": "verified",
         "path": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
-        "last_verified_at_utc": "2026-11-21T13:53:01Z",
-        "observed_flow": "Run263: fetched current main ref and complete recursive trees, open PR inventory, #1684/#1685 metadata, changed paths, branch ancestry, workflow files, full-suite CI, dependency/money/conflict gates, branch protection/rulesets, CODEOWNERS and durable handoff; updated only the existing #1684 integration branch. No main write, external model dispatch or data transfer."
+        "last_verified_at_utc": "2026-11-21T14:55:41Z",
+        "observed_flow": "Run13: verified current main SHA and complete recursive trees, open PR inventory (#1684/#1685), PR #1684 exact-head push/PR full-suite CI, dependency/money/conflict checks, isolated historical XRP backfill replay, mission configuration, scheduled ingestion workflow, branch protection/rulesets and CODEOWNERS. Corrected the historical backfill receipt clock to use the current GitHub Actions run API Date header at the append boundary. Updated only the existing #1684 integration branch. No main write, external model dispatch or data transfer."
       },
       "permissions": [
         "admin",
@@ -477,11 +477,11 @@
       ],
       "task_assignment": {
         "status": "EXECUTED_IN_CURRENT_SESSION",
-        "task": "Completed Run250 integration-first repository audit, XRP scheduled-ingestion artifact verification, cross-run fork diagnosis, and corrective change on existing PR #1684.",
-        "expected_output": "Current main/PR/CI/security state, provenance-verified ingestion findings, fork-safe workflow change and durable handoff."
+        "task": "Run13: integration-first repository audit, exact-head CI verification, and point-in-time-safe XRP historical backfill receipt-clock correction.",
+        "expected_output": "Verified main/PR/CI/security state, artifact-backed 118-record recovery with GitHub-server receipt time, and current durable handoff."
       },
       "task_assignment_status": "EXECUTED_IN_CURRENT_SESSION",
-      "last_verified_at_utc": "2026-11-21T13:53:01Z"
+      "last_verified_at_utc": "2026-11-21T14:55:41Z"
     },
     "Claude": {
       "authentication_status": "unverified",
