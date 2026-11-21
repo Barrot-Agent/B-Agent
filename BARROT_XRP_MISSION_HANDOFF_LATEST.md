@@ -15,7 +15,7 @@ Historical run records remain in this file and Git history. This update changes 
 - **Merge commit:** [`550a647ee7269a704d4600ff337b2145acc90473`](https://github.com/Barrot-Agent/B-Agent/commit/550a647ee7269a704d4600ff337b2145acc90473); signed commit verification is valid. Parents: base `52c01ab4dbd989be2ed3210165562ffb11e52a22` and integration head `2e6b0786cb4320facdf4827cb43d6f070d144e2e`.
 - **PR #1673:** [merged](https://github.com/Barrot-Agent/B-Agent/pull/1673) at 2026-11-20 23:45:44 UTC by `Barrot-Agent`; 556 commits, 1,492 changed files. The integration branch head is the second parent of the merge commit.
 - Main tree: **3,115 entries**, not truncated. The merged tree contains the XRP mission configuration, XRP ingestion code, scheduled workflow, relationship research and Barrot V3 changes.
-- Open PR inventory: **0** at capture. No new feature PRs were open. This run creates one documentation-only post-merge verification PR to correct this durable handoff and the nine-platform map.
+- Open PR inventory after this handoff update: **1** — [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), a two-file documentation-only draft for this post-merge handoff/map correction. No feature PR is open.
 - The main branch metadata reports `protected=true`; the branch-protection endpoint returns HTTP 403 to the available integration. The only visible repository ruleset, “Fall Back,” is disabled. Effective required checks and administrator enforcement remain unverified.
 
 ## Governance exception — merge occurred after the fail-closed gate blocked
@@ -3483,3 +3483,10 @@ These are public web/API observations, not Barrot raw-byte receipts. They are **
 
 No directional forecast is issued. These observations have no canonical raw receipts, no synchronized multi-venue L2 sequence and no walk-forward admission.
 
+
+
+## Run248 follow-up — documentation PR inventory
+
+- The post-merge handoff and nine-platform map are carried in [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch `integration/xrp-post-merge-verification-20261121T0002Z`, based on main `550a647ee7269a704d4600ff337b2145acc90473`.
+- PR #1684 is draft, two files only, and exists solely to preserve the post-merge verification and governance exception in the canonical durable records. It is the only open PR; classification: **blocked** pending exact-head CI and independent governance review.
+- Its current head changes when this append-only documentation commit lands. The CI runs must be read against the final head, not an earlier PR head. No merge is authorized by this documentation update.
