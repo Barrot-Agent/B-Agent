@@ -5271,3 +5271,53 @@ Volatility-only diagnostic: correlation of trailing-24h realized-volatility esti
 5. Keep forecast issuance disabled until the production PIT dataset, chronological out-of-sample comparison, probability calibration, drift checks and shadow evaluation support admission.
 
 No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer, or real-money action occurred.
+
+
+### Run 40 main-ingestion and timestamp-correction addendum — 2026-11-21 13:12 UTC
+
+Main advanced one scheduled ingestion without a source-code or main-branch change:
+
+- Main run [44907618235](https://github.com/Barrot-Agent/B-Agent/actions/runs/44907618235), completed successfully on unchanged main SHA `550a647ee7269a704d4600ff337b2145acc90473`.
+- Snapshot `ca5206fdaf6c8be229fb5d0877fa8ad24b938e603c45003131f6377adea65316`; data cutoff 13:11:58.271044 UTC; 123 eligible records; 12 source IDs.
+- Cumulative feature store: **16,570 records / 14 snapshots**. Run processed 490 records (123 eligible, 367 excluded). The isolated 118-record backfill from Run 264 remains separate and has not been adopted into main.
+- Receipts remain 34 (22 retained payloads, 12 digest-only), source failures 18, raw-only sources 23. Receipt chain sequence 14 continues run 39 (44903099892): continuity verified; chain head `fb44c5f15cf257b50b34043d28da194184b26a5bad555bb8cf85ab95f5e07992`; receipt-log SHA-256 `7a64ebb25ddeeac72f500c8251fc24a46cadf48d23d795c78300ac03a81d4fee`; cross-run chain SHA-256 `d5830a4ce78f8b97e4f5a81963aecf4e0ae818e2220d88f53f40be926ab7f7c3`.
+- Downloaded bytes matched GitHub artifact digests:
+  - Correction audit 14708196869: `63efc8ee7cb1f81785a5b694958f9442cdc01bda4da0440b7a3290824637d32b`.
+  - Feature store 14708995354: `c95086070db99799c4876f712c92c0be9dff353f94e5442a9b9d286c9ea613dc`.
+  - Raw receipts 14708635952: `06c741c1a82073f874af3df72c240faeb924c639d57759f2b9f3da96a4b15620`.
+  - Receipt index 14708202014: `e86dcff280bd00071f988aebf3972fb06f1ae8511434d862a7885f8aaabc9d9e`.
+  - Event timeline 14709040234: `458a575ffd52d56a2511ab73148b95b933932280056add5184796780576d8832`.
+- Research timestamp audit: capture-window corrections 1; legacy untyped corrections 2; overlay count 2; source artifacts modified **false**; numeric market values changed **false**; forecast issued **false**; model eligible **false**. The corrections apply only to the in-memory research view. ETF date-only observations are no longer assigned synthetic 21:00 UTC event times when no exact row timestamp exists; issuer-file stamps are retained separately from page retrieval time.
+- The Kamilah Stevenson video capture-window correction preserves the prior identity/video decisions and raw excerpt hashes. The exact YouTube retrieval-arrival timestamp was not exposed; the only supported interval is after 2026-11-07 20:34:31 UTC and before 20:41:53 UTC. Neither endpoint is represented as an exact provider event time. The verified inventory remains one TEDx Talks appearance; personal-channel and namesake candidates remain unverified. No Camilla/Kamilah identity merge is made.
+- SEC remains blocked by the missing legitimate monitored contact in `BARROT_SEC_USER_AGENT`: zero SEC receipts. Drift evaluated 0/204; event-timeline receipt completeness remains false; walk-forward forecast count 0; forecast status `NOT_ISSUED`.
+
+### Run 40 market microstructure snapshot
+
+The new synchronized snapshot is around 2026-11-21 13:11:48–13:11:58 UTC:
+
+| Venue | Mid |
+|---|---:|
+| Coinbase XRP-USD | $0.907100 |
+| Kraken XRP/USD | $0.906955 |
+| Bitstamp XRP/USD | $0.907095 |
+| OKX XRP-USDT normalized using same-venue USDT/USD | $0.907255 |
+
+USD-comparable mid range: **3.31 bps**. The OKX normalized mid is approximately **0.564%** above the previous run-39 OKX normalized mid, about 55 minutes earlier. This is a two-snapshot comparison, not a validated return signal.
+
+50-bps displayed quote-notional depth:
+- Coinbase: bid $1.578M / ask $1.047M; imbalance +20.21%.
+- Bitstamp: bid $0.820M / ask $0.732M; imbalance +5.68%.
+- OKX: bid 1.112M USDT / ask 1.059M USDT; imbalance +2.42%. OKX depth remains USDT; only top-of-book prices are USD-normalized.
+- Bitbank remains a separate JPY market without a synchronized FX conversion.
+- The stronger Coinbase bid-side imbalance is one REST snapshot without a continuous sequence bridge. It is not persistent-book evidence, consolidated liquidity, or a directional forecast.
+
+### Exact-head CI result for the preceding Run 11 handoff commit
+
+The previous handoff append at `ee6270d22b6133cfb7ff5f89788a768085ed4b51` completed its exact-head workflows:
+
+- PR CI [44907826620](https://github.com/Barrot-Agent/B-Agent/actions/runs/44907826620): success. Full repository suite **4,545 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests, **73.20%** coverage; core tests, Pages build validation-only, and real-artifact backfill replay all passed.
+- Push CI [44907821808](https://github.com/Barrot-Agent/B-Agent/actions/runs/44907821808): success; full suite and Pages validation passed. Backfill replay was correctly skipped on push and passed on the PR workflow.
+- Dependency audit [44907826568](https://github.com/Barrot-Agent/B-Agent/actions/runs/44907826568), Money audit [44907826557](https://github.com/Barrot-Agent/B-Agent/actions/runs/44907826557), and Conflict Integrity [44907826618](https://github.com/Barrot-Agent/B-Agent/actions/runs/44907826618): success.
+- Fail-closed gate [44907826553](https://github.com/Barrot-Agent/B-Agent/actions/runs/44907826553): failed closed for the exact stated reasons: PR remains draft; no independent approving review exists; branch protection could not be verified (HTTP 403). No merge was attempted.
+
+This Run 40 handoff append creates a new documentation-only commit. Its own exact-head CI and gate must be checked separately; the results above are for `ee6270d`, not the new head.
