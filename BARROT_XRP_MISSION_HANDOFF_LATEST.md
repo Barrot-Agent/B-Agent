@@ -4699,3 +4699,97 @@ The nine-platform map is being refreshed to record the verified code head, exact
 ### Documentation/test-data successor and next action
 
 This Run255 map/handoff/test update is a documentation and regression-test-data change on top of code head `4103ced`; it does not change application logic, ingestion workflows, dependencies or V3 execution/safety code. It will receive its own exact-head CI before this run is considered fully verified. The PR remains draft and blocked. Next action is independent review plus verifiable branch-protection evidence; after any permitted merge, verify main, run main CI, then apply and verify the recovered feature-store snapshot on main. No unique research or A2A PR is to be closed.
+
+
+## Run 261 — 2026-11-21 10:42 UTC
+
+### Repository and integration state
+
+- **Current main:** `550a647ee7269a704d4600ff337b2145acc90473` — 3,115 complete tree entries; no main changes made.
+- **Existing XRP integration PR:** [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch `integration/xrp-post-merge-verification-20261121T0002Z`, CI-verified head before this handoff update `0a9ae5998f945c65b014019057d2bfb78c6d3f42`; 60 commits ahead, 0 behind, 10 changed files, draft.
+- **Separate A2A security PR:** [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685), no overlapping changed paths with #1684.
+- No new PRs, no force-push, no branch rewrite, no changes to main.
+
+### Exact-head CI on 0a9ae599
+
+[PR CI run 44895052050](https://github.com/Barrot-Agent/B-Agent/actions/runs/44895052050) passed:
+
+- Full repository suite: **4,544 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests; 195.37 seconds.
+- Inclusive coverage 73.20%; critical core coverage 81%; configured coverage floors passed.
+- XRP historical backfill replay passed against the latest successful main ingestion checkpoint, not a stale hard-coded checkpoint.
+- Dependency audit run 44895052051 passed.
+- Audit run 44895052247 passed.
+- Merge-tree verification run 44895052333 passed.
+
+The fail-closed gate [run 44895052014](https://github.com/Barrot-Agent/B-Agent/actions/runs/44895052014) correctly rejected merge readiness: #1684 is still draft, there is no independent approval, and branch protection could not be verified (API returned HTTP 403). The fallback ruleset is disabled; CODEOWNERS assigns all paths to `@Barrot-Agent`. **Do not merge.**
+
+### Historical XRP feature-store backfill — now executed against current main
+
+The actual branch module `xrp_feature_store_backfill.py` executed in CI against main ingestion run **44893151950**, main SHA `550a647`.
+
+- Source snapshot: run 25, `44844953105`.
+- Fork snapshot: run 26, `44848909814`.
+- Common predecessor: `44844499889`.
+- Verified the complete main receipt-index lineage through run 37: 10 main index artifacts, all artifact ZIP digests matched GitHub metadata.
+- Current main checkpoint before replay: **11 snapshots / 16,200 records**.
+- Isolated replay after recovery: **12 snapshots / 16,318 records**.
+- Recovered contribution: **118 records from 11 source lineages**.
+- SQLite integrity: `ok`; all snapshot manifests, feature rows and source-lineage rows verified.
+- Point-in-time test passed: the recovered snapshot is invisible one microsecond before its actual recovery receipt and visible one microsecond after.
+- Reconciliation artifact: [CI run 44895052050](https://github.com/Barrot-Agent/B-Agent/actions/runs/44895052050), artifact ID `14703234352`, digest `sha256:28deeb4fbb0a66426d3b7b5a9cb62b4451bd0c9c6417b92c045e2bfc3bb3dfff`; reconciliation receipt SHA-256 `93e093d034a3c33f84cbbdd19f8f3c11e2c69aab3eb62a7e67f4d30f9fbe6a83`.
+
+**This is verified only in the CI runner's isolated copy. Main's feature-store database remains unchanged.** The PR replay workflow has now been hardened to discover the latest successful ingestion run on the current main SHA and walk the receipt-index ancestry. This handoff commit also removes the stale receipt-based skip path so a previously committed receipt cannot suppress verification against a newer main checkpoint. The new commit's exact-head CI must complete before merge readiness is reconsidered.
+
+### Latest main ingestion and market diagnostics
+
+Main ingestion run [44893151950](https://github.com/Barrot-Agent/B-Agent/actions/runs/44893151950), run 37, data cutoff `2026-11-21T10:12:00.440078Z`:
+
+- 34 receipts: 22 retained payloads, 12 digest-only; all 22 retained payload hashes verified, 0 mismatches.
+- Cross-run receipt sequence 11 continues the run-26 lineage; no external timestamp/WORM anchor.
+- 18 source failures: Binance 451 (8), Bybit 403 (5), Grayscale 429 (1), Franklin parser (1), SEC contact configuration (3).
+- 23 raw-only sources.
+- Feature store: 11 snapshots, 16,200 historical records; 106 eligible feature records and 384 excluded in this snapshot.
+- Event timeline: 150 curated events, 50 publisher-independence groups, 117 scenarios, **0 event raw hashes**, receipt completeness false, model eligibility false.
+- Drift: 204 features considered, 0 evaluated. Walk-forward forecast origins: 0. Forecast issuance remains **NOT_ISSUED**.
+- GitHub Actions cache budget is exhausted/read-only; the per-run feature-store checkpoint and raw artifacts still uploaded successfully. Rebuild of the feature store from raw receipts is not yet implemented.
+
+Four-venue book mids clustered from **$0.890585 to $0.890882** in the 10:11:49–10:11:53 UTC capture window. Depth was mixed, not directional: Coinbase and Bitstamp were ask-heavy at 10 bps, Kraken bid-heavy, and OKX slightly ask-heavy in USDT. OKX USD normalization is top-of-book only and uses the same OKX publisher group; depth is not USD-normalized. Binance and Bybit books were unavailable. Venue 24-hour reference fields disagree and are not averaged. These REST snapshots are diagnostics, not a consolidated executable book or forecast signal.
+
+### Institutional capital and regulatory research update
+
+The direct SEC Form 10-Q for Evernorth, accession `000162828026073871`, filed 2026-11-13 for the quarter ended 2026-09-30, reconciles the previously ambiguous “actual capital” question. [Primary filing](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm)
+
+- $214.05M cash was received under 2025 advance subscriptions and used to purchase 84.366M XRP; 600,000 XRP was contributed in kind.
+- The company reported 261.919M XRP in private-placement in-kind subscriptions and a separate 126.791M XRP contribution from Ripple to Pathfinder. Total in-kind XRP at closing was approximately 388.911M.
+- Gross cash proceeds at closing were approximately $272.6M ($224.6M private placements plus $48M trust-account release), before transaction expenses.
+- Evernorth reported 346.285M XRP at 2026-09-30, historical cost $846.575M and carrying value $341.887M after impairment. It later transferred 346.485M XRP to Pathfinder; combined with Ripple's separate 126.791M contribution, the filing supports a derived 473.276M XRP delivered to Pathfinder. This is not 473.276M of open-market buying.
+- The $30M convertible note produced $29M net cash on 2026-10-13. Holders exercised 3,073,366 warrants for $35.3M gross cash between 2026-10-12 and 2026-11-09; 8,666,279 remained. These are actual company cash proceeds, **not evidence of post-close XRP purchases**.
+- The ELOC facility permits up to 5,218,935 shares at 97% of VWAP; registration became effective 2026-10-30. The $0.5M commitment fee is an expense; no ELOC share-sale drawdown was disclosed.
+- SBI Holdings beneficial ownership: 9,431,914 Class A shares and 2,359,038 Class C shares (39.9% of Class A, 7.5% of Class C, 21.4% combined common ownership). Class C is non-voting. The announced $200M SBI PIPE is not allocated to the pooled $214.05M cash purchase at investor level.
+- Coinbase is Evernorth's selected principal market for XRP impairment accounting. Evernorth says it does not actively trade XRP on digital-asset markets; this is an accounting reference, not proof of Coinbase execution or custody.
+- Ripple was the pre-close parent, contributed XRP to Pathfinder and provided a $1M revolving facility that was undrawn at 2026-09-30. The filing does not establish post-close XRP purchases with the note or warrant proceeds.
+- Yield generation and XRP-secured financing are future plans, not verified revenue or collateral transactions. Circle's Coinbase USDC distribution economics remain a separate relationship; no new direct Circle-Ripple XRP purchase or collateral link was established.
+
+OCC primary records also show:
+- Ripple National Trust Bank charter 25364: approved 2025-12-12, consummated/effective 2026-10-26; included in OCC's active national-bank list as of 2026-10-31.
+- Coinbase National Trust Company charter 25390: approved 2026-04-02, consummated/effective 2026-11-06.
+
+These are separate national trust-bank charters. Do not infer FDIC deposit insurance, full-service banking, live custody services, XRP purchases, or a Ripple-Coinbase partnership from charter status alone.
+
+Exact-phrase status: “ASK Coin” remains unlinked to XRP/XRPL; “actual capital” is now reconciled from primary SEC cash-flow disclosures, while the literal phrase is not an accounting term; “SBIC, ChatGPT SBIC” has no exact-phrase corroboration, although SBIC East Japan remains distinguished from SBI Holdings. A second Kamilah Stevenson YouTube channel/video candidate surfaced, but ownership is unverified; **no channel-wide video inventory was created**.
+
+### Nine-platform coordination
+
+ChatGPT/GitHub authentication and repository data flow were tested. The observed GitHub repository permission metadata is broad (admin/maintain/push/pull/triage); least-privilege scope is not verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified. No external model dispatch occurred.
+
+### Disposition and next action
+
+- **DESIGNED:** current-main-SHA discovery and receipt-index ancestry replay; no stale receipt skip.
+- **EXECUTED:** exact branch backfill replay against main run 37; full repository suite on head `0a9ae599`; primary SEC/OCC research reconciliation.
+- **VERIFIED:** 4,544-test full suite and isolated 118-record backfill replay on head `0a9ae599`; no merge or main mutation.
+- **NOT VERIFIED:** the new handoff/skip-hardening commit's exact-head CI; adoption of the backfill on main; SEC adapter capture; event raw-hash completeness; drift evaluation; walk-forward prediction performance.
+- PR #1684: **blocked** pending independent review and verifiable branch protection.
+- PR #1685: **blocked** separate A2A security workstream; no overlapping paths.
+- No forecast issued. No paper trade, real-money action, deployment, secret rotation or external model dispatch.
+
+Next concrete action: verify exact-head CI after this commit, then obtain independent review/branch-protection evidence. Continue SEC capture only after an approved monitored `BARROT_SEC_USER_AGENT` contact identity is configured. Keep forecasts disabled until raw provenance, drift, leakage-safe walk-forward tests, baselines and calibration pass.

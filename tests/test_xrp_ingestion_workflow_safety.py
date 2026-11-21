@@ -77,10 +77,12 @@ def test_ingestion_workflow_cannot_write_to_repository_or_external_services():
     assert "actions: write" not in text
 
 
-def test_backfill_replay_skip_is_bound_to_exact_script_and_workflow_blobs():
+def test_backfill_replay_always_checks_latest_main_checkpoint():
     ci_workflow = ROOT / ".github" / "workflows" / "ci.yml"
     text = ci_workflow.read_text(encoding="utf-8")
-    assert "HEAD:barrot_agent/evolution/xrp_feature_store_backfill.py" in text
-    assert "HEAD:.github/workflows/ci.yml" in text
-    assert ".verification_workflow_blob_sha == $workflow_sha" in text
-    assert ".backfill_script_blob_sha == $script_sha" in text
+    assert "Check whether this exact backfill implementation already has a committed real-artifact receipt" not in text
+    assert "steps.receipt.outputs.skip" not in text
+    assert "if: github.event_name == 'pull_request' && github.event.pull_request.number == 1684" in text
+    assert "Discover and verify the latest successful main checkpoint" in text
+    assert "git/ref/heads/main" in text
+

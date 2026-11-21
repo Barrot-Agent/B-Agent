@@ -210,31 +210,14 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
-      - name: Check whether this exact backfill implementation already has a committed real-artifact receipt
-        id: receipt
-        shell: bash
-        run: |
-          set -euo pipefail
-          receipt='research/xrp_intelligence/xrp_feature_store_backfill_real_artifact_verification.json'
-          script_sha="$(git rev-parse HEAD:barrot_agent/evolution/xrp_feature_store_backfill.py)"
-          workflow_sha="$(git rev-parse HEAD:.github/workflows/ci.yml)"
-          if [[ -f "$receipt" ]] && jq -e --arg script_sha "$script_sha" --arg workflow_sha "$workflow_sha" '.backfill_script_blob_sha == $script_sha and .verification_workflow_blob_sha == $workflow_sha and .status == "VERIFIED"' "$receipt" >/dev/null; then
-            echo 'skip=true' >> "$GITHUB_OUTPUT"
-            echo 'A committed real-artifact verification receipt matches the backfill implementation and its artifact-verification workflow.'
-          else
-            echo 'skip=false' >> "$GITHUB_OUTPUT"
-          fi
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
-        if: steps.receipt.outputs.skip != 'true'
         with:
           python-version: '3.11'
       - name: Install the repository runtime/test dependencies
-        if: steps.receipt.outputs.skip != 'true'
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
       - name: Discover and verify the latest successful main checkpoint and preserved XRP artifacts
-        if: steps.receipt.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -377,7 +360,6 @@ jobs:
           [[ -s "$ROOT/ancestry-indexes/44848909814.json" ]]
           echo "Selected current main ingestion run $latest_run_id on $current_main_sha ($latest_run_created_at); verified $ancestry_steps intermediate receipt-index artifacts."
       - name: Execute the exact branch backfill module against preserved real artifacts
-        if: steps.receipt.outputs.skip != 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -501,7 +483,6 @@ jobs:
           print(json.dumps(summary, indent=2, sort_keys=True))
           PY
       - name: Preserve the real-artifact reconciliation receipt
-        if: steps.receipt.outputs.skip != 'true'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: xrp-historical-backfill-reconciliation-${{ github.run_id }}
