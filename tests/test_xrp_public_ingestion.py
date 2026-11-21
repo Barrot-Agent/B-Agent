@@ -1329,14 +1329,16 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
         "      - name: Save cumulative feature-store cache after successful artifact publication", 1
     )[1].split("\n      - name:", 1)[0]
     assert "continue-on-error: true" in cache_save_step
-    assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&status=completed&per_page=100&page=1" in workflow
+    assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&per_page=100&page=1" in workflow
+    assert "&status=completed" not in workflow
+    assert workflow.count('select(.status == "completed" and .conclusion == "success"') == 2
     assert "per_page=100&page=${page}" in workflow
     assert 'while [[ "$page" -le 30 && "$restored" != "1" ]]' in workflow
     assert "page_run_count=\"$(jq '.workflow_runs | length' <<< \"$run_page\")\"" in workflow
     assert '[[ "$page_run_count" -gt 0 ]] || break' in workflow
     assert 'if [[ -n "$run_ids" ]]; then' in workflow
     assert "page=$((page+1))" in workflow
-    assert "select(.conclusion == \"success\"" in workflow
+    assert \"select(.status == \\\"completed\\\" and .conclusion == \\\"success\\\"\") in workflow
     assert '.head_branch == $branch' in workflow
     assert ".head_repository.full_name == $repository" in workflow
     assert '(.event == "schedule" or .event == "workflow_dispatch" or .event == "push")' in workflow
