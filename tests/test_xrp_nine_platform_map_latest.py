@@ -90,28 +90,39 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
         "scheduled_sources": 51,
     }
     ingestion = data["prediction_engine"]["latest_ingestion"]
-    assert ingestion["run_id"] == 44869770831
+    assert ingestion["run_id"] == 44893151950
+    assert ingestion["run_number"] == 37
+    assert ingestion["code_head_sha"] == repo["main_sha"]
     assert ingestion["receipt_count"] == 34
-    assert ingestion["receipts"] == ingestion["receipt_count"]
     assert ingestion["raw_retained"] == 22
     assert ingestion["digest_only"] == 12
     assert ingestion["raw_payload_hashes_verified"] == 22
     assert ingestion["raw_payload_hash_mismatches"] == 0
-    assert ingestion["source_failures"] == 18
-    assert ingestion["eligible_features"] == 123
-    assert ingestion["excluded_features"] == 367
-    assert ingestion["feature_history_records"] == 2446
-    assert ingestion["snapshots"] == 6
-    assert ingestion["continuity"] == "FORKED"
-    assert ingestion["artifact_reported_continuity"] == "CONTINUED"
-    assert ingestion["cross_run_sequence"] == 6
-    assert ingestion["prior_run_id"] == 44865104098
-    assert ingestion["skipped_successful_run_id"] == 44844953105
-    assert ingestion["receipt_chain"] == "PASS"
-    assert ingestion["walk_forward_forecasts"] == 0
-    assert ingestion["forecast_issuance"] == "NOT_ISSUED"
+    assert ingestion["receipt_chain_verified"] is True
+    assert ingestion["receipt_chain_sequence"] == 11
+    assert ingestion["previous_run_id"] == 44888553926
     assert ingestion["external_anchor"] == "NOT_ANCHORED"
-    assert ingestion["drift_status"] == "INSUFFICIENT_DATA"
+    assert ingestion["source_failures"] == 18
+    assert ingestion["raw_only_sources"] == 23
+    assert ingestion["feature_store_history_record_count"] == 16200
+    assert ingestion["feature_store_snapshot_count"] == 11
+    assert ingestion["eligible_feature_record_count"] == 106
+    assert ingestion["excluded_feature_record_count"] == 384
+    assert ingestion["sqlite_integrity"] == "ok"
+    assert ingestion["event_count"] == 150
+    assert ingestion["event_independent_source_groups"] == 50
+    assert ingestion["event_raw_hash_present_count"] == 0
+    assert ingestion["event_receipt_complete"] is False
+    assert ingestion["event_model_eligible"] is False
+    assert ingestion["scenario_count"] == 117
+    assert ingestion["drift_feature_count"] == 204
+    assert ingestion["drift_evaluated_feature_count"] == 0
+    assert ingestion["walk_forward_forecast_count"] == 0
+    assert ingestion["forecast_status"] == "NOT_ISSUED"
+    assert ingestion["sec_edgar"]["status"] == "BLOCKED_CONFIGURATION"
+    assert ingestion["sec_edgar"]["contact_identity_configured"] is False
+    assert ingestion["feature_store_rebuild_from_raw_artifacts_implemented"] is False
+
 
     current_ci = data["ci_evidence"]["current_head_full_suite"]
     assert is_sha(current_ci["head_sha"])
@@ -214,25 +225,52 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert capital["post_close_pathfinder"]["combined_xrp"] == 473276430
     assert capital["sbi_holdings_ownership"]["class_a_shares"] == 9431914
     assert capital["sbi_holdings_ownership"]["class_c_shares"] == 2359038
+
+    # Run254 preserves the newer SEC reconciliation without treating in-kind XRP,
+    # debt, warrant proceeds, or optional equity-line capacity as spot purchases.
+    run254 = data["run254_primary_source_reconciliation"]
+    assert run254["artifact_path"] == (
+        "research/xrp_intelligence/20261121T100955Z-run254-evernorth-q3-capital-and-institutional-network-reconciliation.json"
+    )
+    assert run254["source_count"] == 19
+    assert run254["model_eligible"] is False
+    assert run254["raw_http_bytes_captured"] is False
+    assert run254["evernorth"]["cash_used_to_buy_xrp_usd"] == 214050000
+    assert run254["evernorth"]["xrp_purchased_with_cash"] == 84365876
+    assert run254["evernorth"]["investor_in_kind_xrp"] == 261919096
+    assert run254["evernorth"]["in_kind_xrp_at_close"] == 388910554
+    assert run254["evernorth"]["pathfinder_combined_xrp_derived"] == 473276430
+    assert run254["sbi_holdings_ownership"]["class_a_shares"] == 9431914
+    assert run254["sbi_holdings_ownership"]["class_c_shares"] == 2359038
+    assert "not 473.276M of open-market buying" in run254["caveat"]
+
     sbic = data["sbic_identity_reconciliation"]
     assert sbic["entities"]["east"]["alias"] == "SBIC East Japan"
     assert sbic["entities"]["central"]["alias"] == "SBIC Central Japan"
     assert sbic["entities"]["west"]["alias"] == "SBIC West Japan"
     assert sbic["xrp_or_ripple_relationship"] == "No verified relationship found."
+
+    # The current main ingestion contains the market snapshot inline, with
+    # per-venue payload hashes. It is diagnostic only, not forecast-eligible.
     market = data["prediction_engine"]["latest_market_snapshot"]
-    evidence_path = Path(__file__).resolve().parents[1] / market["artifact_path"]
-    assert market["artifact_path"] == (
-        "research/xrp_intelligence/20261119T004611Z-run32-market-custody-binance-institutional-reconciliation.json"
-    )
-    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
-    kraken_receipt = evidence["market_snapshot"]["kraken_xrpusd"]
-    assert kraken_receipt["raw_wire_bytes_captured"] is False
-    assert "not raw HTTP wire bytes" in kraken_receipt["raw_sha256_scope"]
-    assert market["price_usd"] == kraken_receipt["last_trade_usd"]
-    assert market["source"] == "Five-venue synchronized REST snapshot"
-    assert market["source_url"] == kraken_receipt["source_url"]
-    assert market["model_eligible"] is False
-    assert market["raw_sha256"] == kraken_receipt["raw_sha256"]
+    assert market["source"].startswith("Barrot main scheduled ingestion run 37")
+    assert market["data_cutoff_utc"] == data["prediction_engine"]["latest_ingestion"]["data_cutoff_utc"]
+    assert market["model_eligible_for_directional_forecast"] is False
+    assert market["price_cluster_usd"]["low"] == 0.890585
+    assert market["price_cluster_usd"]["high"] == 0.8908820845
+    assert {item["venue"] for item in market["venue_books"]} == {
+        "Coinbase", "Bitstamp", "Kraken", "OKX"
+    }
+    for venue in market["venue_books"]:
+        digest = venue["raw_sha256"]
+        assert len(digest) == 64
+        assert all(character in "0123456789abcdef" for character in digest)
+        assert venue["levels"]["bids"] > 0
+        assert venue["levels"]["asks"] > 0
+    assert market["quote_basis"]["status"] == "VERIFIED"
+    assert market["quote_basis"]["publisher_independence_groups"] == 1
+    assert "Top-of-book only" in market["quote_basis"]["limitation"]
+    assert "not a consolidated executable book" in market["interpretation"]
 
 
 def test_latest_map_preserves_bny_custody_without_overclaiming_xrp_demand():
@@ -247,10 +285,13 @@ def test_latest_map_preserves_bny_custody_without_overclaiming_xrp_demand():
 def test_latest_map_preserves_unresolved_phrase_and_creator_identity_controls():
     phrases = load_map()["research_phrase_status"]
     assert "unresolved" in phrases["ASK Coin"].lower()
-    assert "unresolved" in phrases["actual capital"].lower()
-    assert "unresolved" in phrases["SBIC, ChatGPT SBIC"].lower()
+    assert "literal phrase is not established as a formal accounting term" in phrases["actual capital"].lower()
+    assert "not evidence of xrp purchases" in phrases["actual capital"].lower()
+    assert "sbic east japan" in phrases["SBIC, ChatGPT SBIC"].lower()
+    assert "no formal openai partnership" in phrases["SBIC, ChatGPT SBIC"].lower()
+    assert "no exact-phrase corroboration" in phrases["SBIC, ChatGPT SBIC"].lower()
     assert "channel" in phrases["Camilla/Kamilah Stevenson"].lower()
-    assert "ownership" in phrases["Camilla/Kamilah Stevenson"].lower()
+    assert "ownership unverified" in phrases["Camilla/Kamilah Stevenson"].lower()
 
 
 
