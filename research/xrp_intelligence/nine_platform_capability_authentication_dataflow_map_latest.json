@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-21T00:08:52.717Z",
+  "captured_at_utc": "2026-11-21T00:09:24.143Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -4857,9 +4857,9 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-21T00:08:52.717Z",
+  "last_verified_at_utc": "2026-11-21T00:09:24.143Z",
   "latest_run_id": 248,
-  "latest_run_captured_at_utc": "2026-11-21T00:08:52.717Z",
+  "latest_run_captured_at_utc": "2026-11-21T00:09:24.143Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
   "current_successor_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z (merged)",
   "observed_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7429,7 +7429,7 @@
   },
   "run248_no_source_pr_closures": true,
   "latest_run_248": {
-    "captured_at_utc": "2026-11-21T00:08:52.717Z",
+    "captured_at_utc": "2026-11-21T00:09:24.143Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "merged_pr": 1673,
     "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7459,10 +7459,12 @@
     "documentation_followup_state": "OPEN_DRAFT",
     "documentation_followup_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
     "documentation_followup_changed_files": 2,
-    "exact_head_ci_status": "PENDING"
+    "exact_head_ci_status": "RUNNING_ON_PREVIOUS_HEAD; FINAL_METADATA_COMMIT_REQUIRES_FRESH_CI",
+    "documentation_followup_previous_head_sha": "559f22d5af1ecc0b3e084cda3d6f050c5647aa38",
+    "documentation_followup_head_sha": "PENDING_THIS_COMMIT"
   },
   "run248_evidence_record": {
-    "captured_at_utc": "2026-11-21T00:08:52.717Z",
+    "captured_at_utc": "2026-11-21T00:09:24.143Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "merged_pr": 1673,
     "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7492,7 +7494,9 @@
     "documentation_followup_state": "OPEN_DRAFT",
     "documentation_followup_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
     "documentation_followup_changed_files": 2,
-    "exact_head_ci_status": "PENDING"
+    "exact_head_ci_status": "RUNNING_ON_PREVIOUS_HEAD; FINAL_METADATA_COMMIT_REQUIRES_FRESH_CI",
+    "documentation_followup_previous_head_sha": "559f22d5af1ecc0b3e084cda3d6f050c5647aa38",
+    "documentation_followup_head_sha": "PENDING_THIS_COMMIT"
   },
   "current_handoff_branch": "integration/xrp-post-merge-verification-20261121T0002Z"
 }
