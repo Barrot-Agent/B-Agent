@@ -5112,3 +5112,32 @@ No directional forecast was issued.
 Next action: inspect exact-head CI and fail-closed gate for the Run 264 artifact/handoff head. Keep #1684 blocked until an independent review and verifiable branch protection exist. Then prioritize issuer-file raw capture and ETF-flow reconciliation, refresh stale sentiment, repair event-to-raw-receipt linkage, and only then start leakage-safe walk-forward baselines and calibration. Preserve V3 and all existing branch history.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, external model dispatch, paper trade, funds transfer or real-money action occurred.
+
+
+### Run 264 execution addendum — latest main checkpoint and real backfill replay
+
+The main ingestion completed again after the first Run 264 handoff entry:
+
+- Latest main ingestion is now **run 39**, [44903099892](https://github.com/Barrot-Agent/B-Agent/actions/runs/44903099892), event `schedule`, completed 2026-11-21 12:17:26 UTC on unchanged main SHA `550a647ee7269a704d4600ff337b2145acc90473`.
+- Snapshot `efd6f0b64f5b2fa63a1eb759169b59cac240e0b1e730963e16bfb8330f86f476` is verified. The cumulative feature store contains 16,447 records across 13 snapshots; this run added 490 records, of which 123 were eligible and 367 excluded.
+- Run 39 captured 34 receipts (22 retained raw payloads, 12 digest-only), 18 source failures, 23 raw-only sources, 150 events and 117 scenarios. Receipt-chain verification passed; chain head SHA-256 `118054d669c4ef1e8f52f4c2a5abdf65411f8018fe03c02c8e7faebbba5b6efc`; receipt-log SHA-256 `3c9b732617da709b03d7e83647f657e8a4ae02a205ee765a663161a67cfc6372`. No independent external timestamp anchor or WORM storage exists.
+- Four same-venue OKX top-of-book normalized quote-basis features passed freshness/skew validation (maximum component age 11.119 seconds; snapshot skew 0.301 seconds). They share one publisher-independence group and are not independent corroboration or full-depth liquidity.
+- SEC EDGAR remains `BLOCKED_CONFIGURATION`: contact identity not configured, three source failures, zero raw SEC receipts, zero filing events, and no Companyfacts capture. Drift considered 204 features and evaluated zero. Walk-forward forecast count remains zero and status `PARTIAL_OR_BLOCKED`.
+
+The actual branch backfill module was then executed by CI against the preserved artifacts for current main run 39, not merely reconstructed manually:
+
+- Exact branch workflow run: [44903197108](https://github.com/Barrot-Agent/B-Agent/actions/runs/44903197108), workflow head `6e0e19e781f9b266ca3a58bdd85926f7c8e21a85`.
+- Real-artifact replay job completed **success** at 12:20:20 UTC.
+- Input history: 16,447 records / 13 snapshots. Isolated replay output: **16,565 records / 14 snapshots**, adding exactly 118 records from 11 source lineages.
+- Point-in-time boundary: 16,447 records visible one microsecond before the actual recovery receipt; 16,565 visible one microsecond after. The recovered snapshot's stored receipt time is 2026-11-21 12:20:03.898483 UTC; it is not backdated to the original observation.
+- Recovered snapshot ID: `0d5af2b3fdffb6ddb397579413c33218ed174f8e61969910adaef654ae9212aa`; manifest SHA-256 `e19be22480a27170dc597835bfe8d9a3b1f9c61c3df03b33fa1ffbc5122d589c`; reconciliation SHA-256 `0e544df9eaf16e7d4dfe680768fe97c5afcfb809df2a4916d8fa177631e8f649`.
+- All 12 downloaded historical artifact ZIP digests matched their GitHub artifact digests. Current run-39 raw artifact tree SHA-256: `c3cfe0094a208ba331640e83cbf5a0d0da27aeda4331dbc209e3c8574426f509`.
+- Reconciliation artifact: [CI artifact 14707365277](https://github.com/Barrot-Agent/B-Agent/actions/runs/44903197108/artifacts/14707365277), 90-day retention.
+
+This is **EXECUTED and VERIFIED in an isolated CI database** using the actual branch backfill module and current main's preserved run-39 artifacts. It does **not** modify main's SQLite database, merge the branch, or authorize adoption. The run explicitly records that GitHub Actions artifacts are retention-limited and not externally timestamp-anchored, and that this test verifies provenance/point-in-time semantics rather than predictive performance.
+
+Exact-head test status at this addendum:
+- On `6e0e19e`, backfill replay succeeded; core tests and Pages validation succeeded; full repository suite was still running. Dependency audit, money audit and conflict-integrity checks succeeded.
+- Current branch head at the start of this addendum is `7daf9ead65057b1c57733fe9ce4a5e3d83eb4a65` (71 commits ahead, 0 behind main; 3,121-entry complete tree). Its own exact-head CI and fail-closed gate are still running. Dependency audit succeeded on that head. The earlier 4,545-pass result remains attributable only to `88cb458`, not to these later heads.
+
+Next action: obtain completed full-suite results on the latest branch head and inspect its fail-closed gate. Keep #1684 blocked while it remains draft and lacks independent approval/verified branch protection. Do not merge or adopt the isolated backfill until every exact-head and governance condition is satisfied.
