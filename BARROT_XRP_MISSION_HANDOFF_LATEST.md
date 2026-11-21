@@ -3822,3 +3822,98 @@ Wait for exact-head CI on #1684 head `d8f23b0`. Keep #1684 and #1685 draft until
 - Main reports protected=true, but detailed protection remains HTTP 403; the visible fallback ruleset is disabled and CODEOWNERS assigns all paths to `@Barrot-Agent`. Formal independent reviews remain zero.
 - PR #1684 and #1685 remain draft/blocked. No merge is permitted until exact-head full suite, dependency/security checks, independent approval and effective branch protection are verifiable.
 - Next: finish exact-head CI on the latest PR head; then implement a controlled, tested recovery path for the preserved run-25 feature delta and explicit multi-branch receipt-chain reconciliation. After any approved merge, verify the next main scheduled capture selects the immediately preceding successful run and restores the reconciled feature store. Keep forecast issuance disabled until the full walk-forward, calibration, drift and shadow gates pass.
+
+
+---
+
+## Run252 — 2026-11-21 02:04 UTC — exact-head validation and primary capital / charter evidence
+
+### Repository and integration state
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; recursive tree remains 3,115 entries, untruncated. No main commit or merge occurred in this run.
+- The main-branch handoff is still stale relative to current main: its header reports main `7f8e3626c355bb3d89afdff56aeed5e056cb88f4`. The current-state successor is maintained in the existing PR #1684 branch; it is not yet on main.
+- Open PR inventory: #1684 (XRP ingestion/handoff) and #1685 (A2A credential separation). No other open PR was returned.
+- #1684: base `550a647`, head `1c4739e857ea4c9a007e057dfdbe8f17e5b273a6`, 26 commits ahead / 0 behind, six changed files, draft, mergeable. Paths are the XRP workflow, canonical handoff, nine-platform map and three XRP tests.
+- #1685: base `550a647`, head `e512f4e6d66c1575186d00b60852c93caba687e0`, five commits ahead / 0 behind, nine changed files, draft, mergeable. Paths are A2A Worker, runner/MCP credential handling, deployment gates and associated tests. No changed-path overlap with #1684; this is a separate coherent security workstream.
+- No branch was created, no existing branch was rewritten, no user work was discarded, and no PR was merged or closed.
+
+### Exact-head CI and governance
+
+**PR #1684 exact head `1c4739e`:**
+- Push CI [44852998266](https://github.com/Barrot-Agent/B-Agent/actions/runs/44852998266): Full repository test suite, Tests and Pages validation all passed.
+- Pull-request CI [44853004450](https://github.com/Barrot-Agent/B-Agent/actions/runs/44853004450): Full repository test suite, Tests and Pages validation all passed.
+- Dependency Audit [44853004446](https://github.com/Barrot-Agent/B-Agent/actions/runs/44853004446): passed.
+- Money audit [44853004559](https://github.com/Barrot-Agent/B-Agent/actions/runs/44853004559): passed.
+- Conflict Integrity [44853057234](https://github.com/Barrot-Agent/B-Agent/actions/runs/44853057234): passed.
+- Fail-closed gate [44853057300](https://github.com/Barrot-Agent/B-Agent/actions/runs/44853057300): failed as designed. Its job log names exactly three blockers: PR remains draft; no independent approving review exists; branch protection could not be verified. The gate is read-only and did not approve, label, bypass or merge.
+
+**PR #1685 exact head `e512f4e`:**
+- CI [44848528169](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528169): Full repository test suite, Tests and Pages validation passed.
+- Dependency Audit [44848528067](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528067), Money audit [44848528115](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528115), Conflict Integrity [44848528083](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528083), and A2A Worker Tests [44848528089](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528089): passed.
+- Fail-closed gate [44848528093](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528093): failed because the PR is draft, has no independent approval, and effective branch protection cannot be verified.
+
+GitHub reports main as protected in branch metadata, but the branch-protection endpoint still returns HTTP 403. The only visible repository ruleset, “Fall Back,” is disabled. Required status contexts are empty in the branch metadata. Do not infer enforceable protection. Both PRs remain draft/blocked; neither is eligible to merge. No independent reviewer was available in the returned review inventory.
+
+### Ingestion-chain correction: still not on main
+
+- Main's current `.github/workflows/xrp-public-ingestion.yml` still passes `status=completed` to the GitHub Actions workflow-run collection endpoint. The fix exists only on #1684.
+- #1684 removes that server-side filter and filters completed/successful runs locally in jq for both receipt-chain predecessor selection and feature-store checkpoint restoration.
+- The last directly verified main scheduled ingestion record remains run 26, [44848909814](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848909814), captured at 2026-11-21 01:14:19.819701 UTC. The Actions run-collection endpoint was not exposed by the current GitHub read connector in this run, so no claim is made about a later scheduled run.
+- Run 25 [44844953105](https://github.com/Barrot-Agent/B-Agent/actions/runs/44844953105) and run 26 share run 24 [44844499889](https://github.com/Barrot-Agent/B-Agent/actions/runs/44844499889) as predecessor. Run 26 omitted run 25's 118-record feature snapshot. The preserved raw artifacts permit local reconciliation, but main's feature-store checkpoint remains incomplete until a controlled recovery is merged and verified.
+- The local recovery proof remains local-only: three snapshots, 2,087 feature records, 34 source-snapshot rows, five independence groups; SQLite integrity and all manifest hashes/counts passed. Candidate SHA-256: `fadf111d9b695c56be273a5ffb4bd96bb306da7052f1782c2859f651b8a64efe`. It was not uploaded, committed or adopted by main.
+- Run 26's per-run receipt checks passed (37 receipts; 25 raw payloads; 12 digest-only; 25/25 raw hashes verified), but cross-run continuity is forked. Its event timeline has zero raw-payload hash links and `receipt_complete=false`; 150 events and 117 scenarios are research outputs, not model-eligible observations. Walk-forward origins remain zero; drift remains `INSUFFICIENT_DATA`. Forecast issuance remains disabled.
+
+### New primary-source capital accounting: Evernorth
+
+SEC Form 424B3 dated November 9, 2026, filed by Evernorth, is now the controlling source for capital classification:
+
+- Since inception, Pubco reported $214.1 million in cash and 261,919,096 XRP associated with private-placement subscription agreements. It states that the $214.1 million cash was used to purchase 84,365,876 XRP. As of October 9, 2026, Evernorth held approximately 473 million XRP.
+- At closing, Evernorth reported approximately $272.6 million gross cash: $224.6 million from private-placement investments plus approximately $48.0 million released from the SPAC trust account after redemptions, before transaction expenses. Investors also contributed approximately 388,910,554 XRP in kind.
+- The advance funding agreements specified $214.05 million cash plus 600,000 XRP. The filing separately specifies delayed funding of $10.5 million cash plus 200,000 XRP. The $214.05 million cash-funded purchases total 84,365,876.3625 XRP.
+- The sponsor's Series C subscription was for 211,319,096.061435 XRP, not cash. Ripple-affiliated subscribers separately agreed to contribute 50 million XRP. These in-kind transfers must not be counted as new spot-market purchases.
+- On October 12, 2026, Evernorth received approximately $30 million before transaction expenses from 4.00% convertible senior PIK notes due 2031. The filing says proceeds may be used for general corporate purposes, including XRP acquisition; that financing is not proof that the proceeds were subsequently used to buy XRP.
+- The filing identifies four SBI-controlled stockholders: SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. It records 9,431,914 Class A shares and 2,359,038 Class C shares for SBI-related holders under a 39.9% voting-power cap. It does not separately itemize the SBI entities' cash amount in the cited disclosure. Do not attribute the entire $214.05 million advance-funding pool to SBI.
+- Therefore, the approximately 473 million XRP treasury is a mixture of cash-funded acquisition and large in-kind contributions. Only the disclosed 84.366 million cash-funded purchase is directly evidenced here as acquisition using cash proceeds. Total XRP holdings are not a proxy for fresh market demand.
+
+Primary filing: https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm
+Supporting November 4, 2025 Evernorth communication: https://www.sec.gov/Archives/edgar/data/2092592/000095010325014249/dp236946_425-revan.htm
+
+### Ripple, BNY, Coinbase and SBI: relationship boundaries
+
+- OCC's Corporate Applications Search records Ripple National Trust Bank as approved December 12, 2025 and consummated/effective October 26, 2026. The OCC's original conditional-approval letter was preliminary; final commencement required pre-opening conditions. Ripple's October 28, 2026 announcement states final approval. This is a national trust bank subsidiary, not evidence that Ripple became a general retail deposit bank. Ripple's public charter application describes a wholly owned subsidiary intended to complement its stablecoin reserve-management and fiduciary activities.
+  - OCC record: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+  - OCC conditional letter: https://occ.treas.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf
+  - Ripple announcement: https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/
+- BNY's October 27, 2026 announcement says it is the primary reserve custodian for RLUSD, has a custody relationship with Ripple Prime, and now supports both XRP and RLUSD on its Digital Asset Custody platform. Proposed direct mint/redemption and tokenized trade-finance use cases remain subject to approvals and implementation. Custody availability is not proof of net XRP purchases or transaction volume.
+  - https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+- Coinbase's October 28, 2026 notice says RLUSD is available on Coinbase Prime, Coinbase Exchange and the retail app, with deposits/withdrawals on XRPL, Base and Ethereum and 1:1 USD conversion. Global Exchange collateral support was described as a later rollout. This establishes RLUSD distribution and XRPL rail availability, not direct XRP buying or XRP-as-bridge usage.
+  - https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+- SBI Holdings' June 9, 2025 primary release documents a $50 million Circle equity purchase split $25 million from SBI Holdings and $25 million from SBI Shinsei Bank. SBI's May 12, 2026 release documents participation by a consolidated subsidiary in Circle's ARC token presale; the disclosed consortium raise was $222 million, not an itemized SBI allocation. SBI and SMBC's October 30, 2026 capital/business alliance to study stablecoin and tokenized-asset services is a separate institutional rail and competitive development, not evidence of XRP demand.
+  - https://www.sbigroup.co.jp/news/2025/0609_15491.html
+  - https://www.sbigroup.co.jp/news/2026/0512_16310.html
+  - https://www.sbigroup.co.jp/news/2026/1030_16698.html
+- Ripple's October 28 release claims approximately $900 million annualized product-revenue run rate, more than $16 trillion in transactions enabled across its products in 2025, 85+ licenses and 1,700+ institutions/corporates/enterprises. These are Ripple-reported company/product metrics; they are not XRP-ledger volume or XRP demand. Keep company-wide product throughput separate from XRP-specific settlement.
+
+### SBIC identity and exact-phrase / creator checks
+
+- Primary company profiles identify three separate statutory regional SME investment/consultation companies: Tokyo SBIC East Japan, Nagoya SBIC Central Japan and Osaka SBIC West Japan. Their official profiles identify separate legal names, locations, establishment dates and sister-company relationships. They are not SBI Holdings, Inc.
+  - East: https://www.sbic.co.jp/company/profile/
+  - Central: https://www.sbic-cj.co.jp/company/about/
+  - West: https://www.sbic-wj.co.jp/profiles/profile/
+  - SBI Holdings corporate profile: https://www.sbigroup.co.jp/english/company/information/profile.html
+- Exact-phrase search for “ASK Coin” returned Permission Coin (ASK) as a lexical candidate on Base/Polygon, but no primary evidence links it to XRP or identifies it as the intended ASK Coin. Status remains UNRESOLVED.
+- “Actual capital” remains a research label, not a defined accounting category. Use SEC-reported cash, in-kind XRP, SPAC trust proceeds, debt and realized XRP purchases as separate fields.
+- Exact phrase “SBIC, ChatGPT SBIC” returned no reliable indexed primary source. No SBIC/OpenAI/ChatGPT partnership is established.
+- A YouTube channel titled “Kamilah Stevenson | XRP & Stocks” and videos attributed to that channel are discoverable, but no authoritative cross-link establishes the channel's owner as the person intended by the research. Search also returns many same-name social accounts. Identity remains UNVERIFIED; no video inventory or personal attribution is made.
+- ChatGPT/GitHub remains the only verified external platform connection in the nine-platform map. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks authentication and data flows remain unverified. No external model dispatch or data transfer occurred.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** Priority-one XRP intelligence and prediction architecture with Barrot V3 retained as execution/orchestration/safety/verification foundation; no forecast without point-in-time data, walk-forward baseline comparison, calibration, drift and independent shadow evidence.
+- **EXECUTED:** Refetched main metadata, complete recursive tree, main handoff/workflow, open PR inventory, both PRs, branch ancestry, changed paths, exact-head CI jobs, gate logs, reviews, branch protection and ruleset visibility. Researched primary OCC, SEC, BNY, Coinbase, SBI and regional SBIC disclosures.
+- **VERIFIED:** Main SHA/tree; disjoint #1684/#1685 paths; exact-head full-suite pass on #1684; exact-head full-suite and A2A tests on #1685; dependency, money and conflict checks; gate failure reasons; Evernorth capital categories; OCC effective date; BNY custody scope; Coinbase RLUSD distribution scope; official SBIC regional identities.
+- **NOT VERIFIED:** Newer main scheduled ingestion after run 26; linear cross-run chain on main; recovered feature-store checkpoint on main; WORM-grade external retention; raw-hash-complete event timeline; nonzero leakage-safe walk-forward origins; baseline superiority; probability calibration; stable drift; independent shadow evaluation; independent PR approval; effective protected-branch enforcement; any of the eight other platform connections.
+
+### Next concrete action
+
+Keep #1684 and #1685 draft. Obtain an independent approving review and verifiable protected-branch settings before changing either PR to ready or merging. After an approved merge of #1684, verify that the next main scheduled ingestion chooses the immediately preceding successful run (including run 26 if still the latest), restores the expected feature-store checkpoint, increments the cross-run sequence exactly once and preserves both forked historical branch hashes. Keep forecast issuance disabled. Do not activate the A2A runner or deploy/rotate credentials.
