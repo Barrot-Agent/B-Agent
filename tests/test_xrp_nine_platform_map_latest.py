@@ -199,7 +199,7 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert writer["permission"] == "permissions: {}"
     assert writer["direct_push_to_main"] is False
     assert writer["latest_run_id"] == 44903860656
-    assert writer["latest_run_result"] == "skipped"
+    assert writer["latest_run_conclusion"] == "skipped"
     assert security["pages_publication_authorization"] == "NOT_GRANTED"
     backlog = data["open_pr_backlog"]
     summary = data["open_pr_backlog_summary"]
@@ -259,8 +259,8 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert sbic["entities"]["west"]["alias"] == "SBIC West Japan"
     assert sbic["xrp_or_ripple_relationship"] == "No verified relationship found."
 
-    # The current main ingestion contains the market snapshot inline, with
-    # per-venue payload hashes. It is diagnostic only, not forecast-eligible.
+    # The market summary is diagnostic only. Raw payload hashes live in the
+    # separate receipt artifacts; this summary must not imply per-book receipts.
     market = data["prediction_engine"]["latest_market_snapshot"]
     ingestion = data["prediction_engine"]["latest_ingestion"]
     assert market["source"].startswith(
@@ -276,17 +276,17 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert market["price_cluster_usd"]["low"] == min(normalized_prices)
     assert market["price_cluster_usd"]["high"] == max(normalized_prices)
     assert {item["venue"] for item in market["venue_books"]} == {
-        "Coinbase", "Bitstamp", "Kraken", "OKX"
+        "Coinbase", "Bitstamp", "Kraken", "OKX", "Bitbank"
     }
-    for venue in market["venue_books"]:
-        digest = venue["raw_sha256"]
-        assert len(digest) == 64
-        assert all(character in "0123456789abcdef" for character in digest)
-        assert venue["levels"]["bids"] > 0
-        assert venue["levels"]["asks"] > 0
+    bitbank = next(item for item in market["venue_books"] if item["venue"] == "Bitbank")
+    assert bitbank["usd_normalized"] is False
+    assert all("raw_sha256" not in item for item in market["venue_books"])
+    assert ingestion["raw_payload_hashes_verified"] == 22
+    assert ingestion["raw_payload_hash_mismatches"] == 0
     assert market["quote_basis"]["status"] == "VERIFIED"
-    assert market["quote_basis"]["publisher_independence_groups"] == 1
-    assert "Top-of-book only" in market["quote_basis"]["limitation"]
+    assert market["quote_basis"]["method"] == "same_venue_synchronized_top_of_book_product"
+    assert market["quote_basis"]["usdt_usd_mid"] == 0.998465
+    assert market["quote_basis"]["normalization_overstatement_if_usdt_assumed_usd_bps"] == 16.48
     assert "not a consolidated executable book" in market["interpretation"]
 
 
