@@ -310,6 +310,20 @@
       "limitations": [
         "Uploaded by Sean Croxton, not by Kamilah's own channel; this is a third-party repost/feature, not an official upload from her channel."
       ]
+    },
+    {
+      "id": "permission_ask_base_launch_globenewswire",
+      "publisher": "Permission via GlobeNewswire",
+      "authority": "Issuer press release distributed by GlobeNewswire",
+      "source_independence_group": "PERMISSION_PRIMARY",
+      "publication_date": "2025-01-15",
+      "url": "https://www.globenewswire.com/news-release/2025/01/15/3009989/0/en/Permission-Launches-ASK-on-Base-Ushering-in-the-Next-Era-of-Data-Ownership-and-Rewards.html",
+      "claims_supported": [
+        "Permission announced ASK on Base and listed Base contract 0x79322cee6c90735b967d2396b9adc392915aebb6."
+      ],
+      "limitations": [
+        "This conflicts with Permission's January 10, 2025 blog and current documentation, both of which list 0xBB146326778227A8498b105a18f84E0987A684b4. The 0x793 address is not treated as canonical without explicit issuer migration/retirement confirmation."
+      ]
     }
   ],
   "capital_reconciliation": {
@@ -569,7 +583,7 @@
   "source_independence_and_disagreement": {
     "evernorth_sec_documents": "The 10-Q, 8-K/A, prospectus and exhibits are one issuer filing family; count them as one source-independence group, not several independent confirmations.",
     "sbic": "East, Central and West official company pages are separate issuer sources and mutually describe sister-company status.",
-    "ask_contracts": "Permission's official January 2025 announcement, current docs and a separate January 15, 2025 press release contain a Base-address discrepancy; CoinGecko reports a Wormhole-to-LayerZero migration. Keep the old address unresolved rather than silently rewriting history.",
+    "ask_contracts": "Permission's January 10, 2025 blog and current docs list Base 0xBB146..., while its January 15, 2025 issuer press release lists 0x79322...; current docs also list Polygon 0xaA371.... CoinGecko reports a Wormhole-to-LayerZero migration, but the exact status of 0x79322... remains unresolved. Count all Permission pages as one issuer source group and do not silently rewrite the older address.",
     "youtube": "The official site, iHeart transcript, channel metadata and third-party video are separate publishers. Multiple lookalike handles exist; only the triangulated handle is included."
   },
   "forecast_policy": {
