@@ -284,9 +284,24 @@
     "per_run_receipt_chain_verified": true,
     "sequence": 18,
     "previous_run_id": 44923300352,
-    "cross_run_chain_sha256": "db278839c2a45d5d11e2b3a5c17b1f9f9c9f7a9f9e8c4a1f8a2a7f7b5e3a1b2c",
+    "cross_run_chain_sha256": "db278839e9f44c32a7c0203ea8ef447efef2a15f852b28324953210b46dddaa8",
     "external_anchor_status": "NOT_ANCHORED",
-    "github_actions_artifacts_are_retention_limited_not_worm": true
+    "github_actions_artifacts_are_retention_limited_not_worm": true,
+    "current_receipt_chain": {
+      "chain_head_sha256": "bac4e2ab3b0329eaa13d8a37f16145801650a8409517115774199ac4d57b9f1a",
+      "chain_log_sha256": "9e37268e1352276cbb91229f11d37a5e282d7328c03bf4f818a5e44a8a7740cb",
+      "manifest_sha256": "e89ca07a685777ed3d4c9710bb53752e10c57ddea546c138a0723647a76f4559",
+      "receipt_count": 34,
+      "receipt_log_sha256": "d0edcb307b54b5d1422964cf687003bce6e15226747d4501eed63f19cc9e974d"
+    },
+    "previous": {
+      "run_id": "44923300352",
+      "sequence": 17,
+      "cross_run_chain_sha256": "917be03168323fec8cdbdec4c82d234af59fc8b36e3c82eb5af62f100b4c1628",
+      "manifest_sha256": "cea1f2f7e260fa63a1f1941736acf8ac2c86bac8206b72f25eed5b903ea8b708"
+    },
+    "continuity_status": "CONTINUED",
+    "continuity_verified": true
   },
   "market_snapshot": {
     "captured_at_utc": {

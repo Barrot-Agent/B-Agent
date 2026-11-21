@@ -822,3 +822,8 @@ def test_run269_binds_main_run46_microstructure_and_prediction_gates():
     assert artifact["backfill_replay"]["receipt_clock"]["store_receipt_time_is_actual_recovery_time"] is False
     assert artifact["backfill_replay"]["receipt_clock"]["store_receipt_time_is_post_append_availability_bound"] is True
     assert artifact["institutional_and_collateral_data"]["model_eligible_features"] == 0
+
+    assert artifact["receipt_chain"]["cross_run_chain_sha256"] == "db278839e9f44c32a7c0203ea8ef447efef2a15f852b28324953210b46dddaa8"
+    assert artifact["receipt_chain"]["current_receipt_chain"]["chain_head_sha256"] == "bac4e2ab3b0329eaa13d8a37f16145801650a8409517115774199ac4d57b9f1a"
+    assert run["main_ingestion"]["cross_run_chain_sha256"] == "db278839e9f44c32a7c0203ea8ef447efef2a15f852b28324953210b46dddaa8"
+    assert run["main_ingestion"]["receipt_chain_head_sha256"] == "bac4e2ab3b0329eaa13d8a37f16145801650a8409517115774199ac4d57b9f1a"

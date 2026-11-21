@@ -6030,3 +6030,15 @@ Next concrete actions:
 4. Normalize ETF issuer holdings, RLUSD/USDC supply, SBI VC Trade and Morpho CBXRP units/timestamps before feature admission.
 5. Implement deterministic feature-store rebuild from raw artifacts and an external immutable timestamp anchor.
 6. Accumulate sequential post-capture observations before leakage-safe walk-forward tests, naive/momentum/mean-reversion/volatility baselines, calibration and shadow evaluation. No directional forecast until those tests support it.
+
+
+### Run269 post-commit correction — 2026-11-21T18:23:08Z
+
+- The first Run269 evidence commit was `14805e0dac11eff1807f1d26b5d2a42df905f150`, parent `0bd03db10a7efe62c35c59d194fe2dc3e1b52616`. It added the market/provenance artifact, map update and contract test; its exact-head CI began but is superseded by this correction.
+- During artifact review, a copied cross-run digest in the first Run269 artifact/map was found to be mistyped, and the receipt-chain-head field was truncated. The correction uses the exact values from the downloaded run46 `cross_run_receipt_chain.json` and `receipt_chain_manifest.json`:
+  - Cross-run chain SHA-256: `db278839e9f44c32a7c0203ea8ef447efef2a15f852b28324953210b46dddaa8`
+  - Per-run chain-head SHA-256: `bac4e2ab3b0329eaa13d8a37f16145801650a8409517115774199ac4d57b9f1a`
+  - Cross-run chain file SHA-256: `348822222f48fa1fc28ccb20088d9c249ed39e25cbc5cdf8fa017fe8affb25c0`
+- The receipt chain itself remains sequence 18, continued from run43, and externally unanchored. The correction changes only the copied evidence fields; it does not alter main, raw source bytes, the feature store, or the ingestion workflow.
+- The new hash-correction commit is documentation/map/test/artifact-only. Its exact-head CI is pending; the prior 4,556-test result belongs only to code parent `0bd03db`.
+
