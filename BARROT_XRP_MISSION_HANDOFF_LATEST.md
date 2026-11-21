@@ -3930,3 +3930,16 @@ Repository-wide validation details:
 - Dependency Audit checks root runtime, development, supplemental integrations, Hugging Face Space, legacy requirements and PEP 621 dependencies. Dependabot is configured for weekly pip and GitHub Actions updates, with a five-open-PR limit per ecosystem.
 - The complete main tree contains no Python/Node dependency lockfile. Most Python requirements use minimum-version bounds rather than exact pins; optional Hugging Face and Kaggle integrations have upper bounds. The audit passed on #1684's prior exact head and the new head's Dependency Audit run 44854263266 also passed. This is vulnerability-audit evidence, not deterministic dependency-lock/reproducible-build evidence.
 - `.github/CODEOWNERS` assigns every path to `@Barrot-Agent`; no independent code-owner review is configured. This reinforces the independent-review blocker rather than satisfying it.
+
+
+### Evernorth XRP contribution reconciliation — anti-double-counting correction
+
+The 261,919,096 XRP associated with private-placement subscription agreements is a subset of, not additive to, the 388,910,554 XRP in-kind total reported at closing. The filing's component disclosures reconcile exactly:
+
+- 211,319,096.061435 XRP Series C sponsor contribution;
+- 50,000,000 XRP Ripple-affiliated subscription;
+- 600,000 XRP advance-funding contribution;
+- 126,791,458 XRP contribution-agreement contribution; and
+- 200,000 XRP delayed-funding contribution.
+
+The first three sum to 261,919,096.061435 XRP (rounded in the filing to 261,919,096). Adding the 126,791,458 XRP contribution-agreement amount and 200,000 XRP delayed contribution yields 388,910,554.061435 XRP (reported as approximately 388,910,554). Do not sum the 261.919 million subset again with the 388.911 million aggregate. The separate $214.05 million cash-funded purchase of 84,365,876.3625 XRP remains the documented cash-acquisition amount; in-kind transfers are not new spot-market purchases.
