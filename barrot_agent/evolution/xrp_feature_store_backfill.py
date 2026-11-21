@@ -166,6 +166,8 @@ def _github_api_server_clock() -> datetime:
             "Authorization": f"Bearer {token}",
             "Accept": "application/vnd.github+json",
             "X-GitHub-Api-Version": "2022-11-28",
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache",
         },
     )
     try:
