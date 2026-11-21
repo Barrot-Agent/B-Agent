@@ -63,11 +63,11 @@ The scheduled Cross Analysis workflow [44839818764](https://github.com/Barrot-Ag
 These are public web/API observations, not Barrot raw-byte receipts. They are **not model eligible**.
 
 **Kraken XRP/USD public ticker:**
-- Last: **$0.91024**; 24-hour open: **$0.95925**; high: **$0.97224**; low: **$0.88259**.
-- Approximate last-vs-open change: **-5.11%**.
-- 24-hour VWAP: **$0.918123**; last is **-0.86%** below that VWAP.
+- Last: **$0.91024**; UTC-day open: **$0.95925** (Kraken's `o` field is UTC-day open, not rolling 24-hour open); 24-hour high: **$0.97224**; 24-hour low: **$0.88259**.
+- Approximate last-vs-UTC-day-open change: **-5.11%** (not a 24-hour return).
+- 24-hour VWAP: **$0.91812466** (Kraken's second `p` value); last is **-0.86%** below that VWAP.
 - Best bid/ask: **$0.91014 / $0.91019**; displayed top sizes: 1,008 XRP bid / 5,494 XRP ask; quoted spread approximately **0.55 bps**.
-- 24-hour volume: **71.62M XRP**. Kraken ticker does not provide an exchange event timestamp in this response. Retrieval time is not equivalent to event time; no raw HTTP bytes or SHA-256 receipt were captured.
+- 24-hour volume: **71.62M XRP** (Kraken's second `v` value; the first is UTC-day volume). Kraken ticker does not provide an exchange event timestamp in this response. Retrieval time is not equivalent to event time; no raw HTTP bytes or SHA-256 receipt were captured.
 
 **Derivatives deleveraging evidence and caveats:**
 - Kriptofoni's Nov 20 report summarizes CryptoQuant analyst CryptoOnchain: Binance XRP open interest fell 33.5%, from $451.28M on Nov 6 to $300.04M on Nov 19; Nov 19 average was $314.75M, described as the bottom 1% of the prior-year distribution (Z = -2.91). Binance long liquidations reached $21.45M on Nov 14. Binance XRP reserves were reported around 2.50B; all-exchange reserves around 11.54B.
@@ -3509,3 +3509,8 @@ The merged PR #1673 changed **71** workflow files. All 71 current-main files wer
 Limitations: this was a workflow-definition scan, not a complete transitive audit of every script, package install, runtime dependency, repository default token permission or external service. Several workflows without explicit `permissions` blocks may inherit repository defaults; those defaults were not independently readable. Full transitive review remains incomplete.
 
 The superseded source PR #1663 now has a cross-reference comment [7053832128](https://github.com/Barrot-Agent/B-Agent/pull/1663#issuecomment-7053832128) pointing to merged successor #1673. No source branch was deleted or rewritten.
+
+
+### Run248 reserve-flow counterevidence
+
+CryptoQuant's November 17 analyst report describes exchange-specific divergence: Binance XRP reserves fell from 2.63B to 2.48B between Nov 9 and Nov 17 (−150M XRP), while Upbit reserves rose from 6.41B to 6.46B between Nov 5 and Nov 17 (+50M); Bithumb fell from 1.84B to 1.78B over its stated Oct 21–Nov 17 window (−60M). This does not establish a net ecosystem-wide withdrawal or long-term accumulation. CryptoQuant's November 5 report also says Binance reserves had risen 280M XRP from Nov 3 to Nov 5 following the Oct 29 hot-wallet incident, while Binance reported 98% of affected assets replenished by Nov 4. Post-incident reserve replenishment and subsequent normalization are material confounders. Preserve exchange-level wallet universes and event windows; do not aggregate these figures into a single bullish supply signal.
