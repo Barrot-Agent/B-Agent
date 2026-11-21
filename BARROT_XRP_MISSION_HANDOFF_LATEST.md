@@ -3691,3 +3691,82 @@ The distinction is especially important because Evernorth's SEC prospectus uses 
 - [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684): the last tested head `b1da283` failed one repository-map regression assertion because the map omitted the `tests_failed` alias. Run249 adds that alias and the research evidence above. The final map/handoff commit still requires exact-head full-suite and fail-closed CI.
 - [PR #1685](https://github.com/Barrot-Agent/B-Agent/pull/1685): exact-head full suite passed on `e512f4e`: 4,536 passed, 1 skipped, 0 failed; dependency audit, Money audit, A2A Worker Tests and Conflict Integrity passed. Fail-closed gate remains failed because the PR is draft, has zero formal reviews, and effective branch protection is not verifiable. Keep it draft; no Worker deployment, secret rotation or runner activation.
 - Two open PRs remain, each for a distinct workstream; changed paths do not overlap. No merge, new PR, deployment, secret change, Space restart, Databricks write, Kaggle submission, paper trade or financial transaction occurred in this run.
+
+
+---
+
+## Run250 — 2026-11-21 01:34 UTC — ingestion checkpoint fork found; predecessor selection corrected on existing XRP PR
+
+### Repository and integration-first state
+
+- Current main: `550a647ee7269a704d4600ff337b2145acc90473`.
+- Complete recursive main tree: **3,115 entries**, untruncated. The tree contains the XRP public-ingestion workflow, ingestion/feature-store/forecast code, canonical handoff, relationship research and the nine-platform map.
+- Open PRs: **#1684** and **#1685** only. Both target main and remain draft. Their changed paths are disjoint; #1684 is the XRP research/ingestion/handoff workstream and #1685 is the A2A credential-separation workstream.
+- #1684 base is the current main SHA. Its branch was 18 commits ahead before this run's two corrective commits; the current head is `d8f23b013e95c82cdb48d6a3284049b65bfa9e54`. The branch now changes five paths: the XRP workflow, its workflow-safety test, the handoff, the nine-platform map and the map regression test.
+- #1685 head remains `e512f4e6d66c1575186d00b60852c93caba687e0`, five commits ahead of main, with nine changed paths.
+- Neither PR has an independent formal review. Main branch metadata reports protected=true, but the detailed branch-protection endpoint remains HTTP 403; required status contexts are empty in the readable metadata and the only visible repository ruleset ("Fall Back") is disabled. Effective required checks and administrator enforcement are not verified. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`.
+- No new branch or PR was created. No existing branch was rewritten, force-pushed, reset, cleaned, stashed or discarded.
+
+### Scheduled ingestion — per-run integrity passed; cross-run continuity did not
+
+Three successful scheduled captures exist on main SHA `550a647ee7269a704d4600ff337b2145acc90473`:
+
+- Run [44844499889](https://github.com/Barrot-Agent/B-Agent/actions/runs/44844499889), workflow run 24, 2026-11-21 00:32:27 UTC.
+- Run [44844953105](https://github.com/Barrot-Agent/B-Agent/actions/runs/44844953105), workflow run 25, 2026-11-21 00:36:33 UTC.
+- Run [44848909814](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848909814), workflow run 26, 2026-11-21 01:13:56 UTC.
+
+Run 26's raw artifact `14684666742`, receipt-index artifact `14684038115` and feature-store artifact `14684736628` were downloaded and inspected.
+
+**Per-run raw integrity — VERIFIED:**
+
+- 37 source receipts: 25 retained raw payloads and 12 digest-only receipts.
+- Recomputed SHA-256 for all 25 retained raw payloads: **25/25 matched** the receipt hashes and hash-derived paths; no missing payloads or mismatches.
+- Receipt-log SHA-256 and receipt-chain-log SHA-256 matched the chain manifest.
+- The 37-entry receipt chain had contiguous sequence numbers, valid previous-hash links, matching receipt IDs and a final chain head matching the manifest.
+- Feature-store SQLite `PRAGMA integrity_check` returned `ok`. The artifact contains two snapshots and five source-independence groups.
+
+**Cross-run continuity — FAILED / FORKED:**
+
+- Run 25's cross-run index has sequence **2**, predecessor run **44844499889**, predecessor chain hash `63471284a73b268295000c37b5ff71b85ae0912f340f13904a3c09548002a61a`, and current cross-run hash `5d6c10ea46f9b2e4523b68733869c2b653c496f9a7d50f2c51f5c4fa7b2ac758`.
+- Run 26 also has sequence **2**, the same predecessor run **44844499889** and the same predecessor chain hash, but a different current cross-run hash `feaf48e2ca9234306ab3b1925752ffce222e03f2c0762ca884b56217d1a80bc5`.
+- Run 26 therefore forked from run 24 instead of continuing run 25. Its job log confirms that it restored both the receipt-chain index and feature-store checkpoint from run 24.
+- The resulting run-26 feature store has **1,969** cumulative records: the run-24 base of 1,863 plus run 26's 106 new eligible records. Run 25's 118-record snapshot is absent. Run 25's cumulative store had 1,981 records. Do not treat run 26 as a continuous append to run 25.
+- Root cause identified: both predecessor-list queries supplied GitHub's server-side `status=completed` filter. The live collection endpoint omitted run 25 even though its direct run endpoint reports `status=completed`, `conclusion=success`, branch main, and the repository-wide unfiltered run list includes it. The branch-only collection query without the status parameter includes run 25. The same server-side filter affected receipt-index selection and feature-store checkpoint recovery.
+
+### Corrective change — EXECUTED on existing PR #1684
+
+- Commit `137fa2800c3258f16e669bac935b0c382dbf1704` removes `status=completed` from both workflow-run collection queries and moves the completed/success test into the local `jq` selection.
+- Commit `d8f23b013e95c82cdb48d6a3284049b65bfa9e54` adds a regression test asserting that server-side status filtering is absent and both predecessor-selection paths filter completed successful runs locally.
+- Integration-branch push run [44851458150](https://github.com/Barrot-Agent/B-Agent/actions/runs/44851458150) (workflow run 27) completed successfully, exercising the modified workflow on the existing integration branch. This is an integration smoke capture, not a main scheduled capture and not proof of main cross-run continuity.
+- Exact-head CI for `d8f23b0` was still running at capture: PR CI [44851473357](https://github.com/Barrot-Agent/B-Agent/actions/runs/44851473357), push CI [44851467865](https://github.com/Barrot-Agent/B-Agent/actions/runs/44851467865), dependency audit [44851473338](https://github.com/Barrot-Agent/B-Agent/actions/runs/44851473338), Money audit [44851473352](https://github.com/Barrot-Agent/B-Agent/actions/runs/44851473352), and fail-closed gate [44851473387](https://github.com/Barrot-Agent/B-Agent/actions/runs/44851473387). Conflict Integrity [44851473359](https://github.com/Barrot-Agent/B-Agent/actions/runs/44851473359) passed. No result from a prior head is transferred to `d8f23b0`.
+
+### Run-26 market and quality observations — not a forecast
+
+Capture cutoff: **2026-11-21 01:14:19.819701 UTC**.
+
+- New snapshot: **106 eligible records**, 450 excluded records, 11 source snapshots and five source-independence groups. Source failures: 18; raw-only sources: 24.
+- Spot mids clustered near $0.9084–$0.9087 on the USD-normalized Coinbase, Bitstamp, Kraken and OKX observations. OKX normalization used its own contemporaneous USDT/USD quote; the normalized mid was $0.9084161645. Bitbank remains JPY-denominated and is not folded into a USD aggregate.
+- 10 bp order-book imbalances were mixed: Bitstamp −47.30%, Coinbase +12.03%, Kraken −14.73%, OKX −23.33% (USDT-denominated depth). This is a set of venue-specific REST snapshots, not consolidated executable liquidity or a continuous L2 tape.
+- Binance returned HTTP 451; Bybit returned HTTP 403; a Grayscale issuer page was rate-limited (429); a Franklin source had a parser/processing error. These sources were excluded rather than bypassing access restrictions or converting failures into data.
+- Drift remains `INSUFFICIENT_DATA`; zero features were evaluated by the drift monitor. No directional forecast, paper trade or real-money action was issued.
+
+### Other open workstreams and research status
+
+- **PR #1684 — XRP ingestion/handoff:** blocked/draft pending exact-head full suite, dependency/security checks, independent approval and verifiable branch protection. The latest workflow fix is not on main yet; the next scheduled main run can still fork until an approved successor is merged.
+- **PR #1685 — A2A credential separation:** blocked/draft. Exact head `e512f4e` full suite passed **4,536 passed, 1 skipped, 0 failed**; Dependency Audit, Money audit, A2A Worker Tests and Conflict Integrity passed. Its fail-closed gate failed as designed because the PR is draft, has zero formal reviews and effective branch protection cannot be verified. OS sandboxing, provider-credential isolation and egress restrictions remain absent; keep the runner quarantined. No Worker deployment or secret upload/rotation occurred.
+- Japan's SBIC identity remains resolved as three separate statutory regional SME investment/consultation companies—East/Tokyo, Central/Nagoya and West/Osaka—not SBI Holdings. ChatGPT training events do not establish an OpenAI partnership.
+- Coinbase/Circle/Ripple/SBI evidence distinguishes direct equity, joint ventures, distribution, custody, stablecoin rails, XRP bridge usage and actual cash capital. Stablecoin distribution or XRPL support is not itself proof of XRP demand.
+- "ASK Coin" remains unresolved; Permission Coin ASK is only a lexical candidate without a verified XRP relationship. "Actual capital" is separated from survey intent, holdings changes, in-kind XRP and conditional financing. The exact phrase "SBIC, ChatGPT SBIC" does not establish a partnership.
+- Person identity and candidate public references for Camilla/Kamilah Stevenson remain separate from canonical YouTube channel ownership. No video is attributed to an unverified channel; no exhaustive inventory is claimed.
+- ChatGPT/GitHub repository access is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks authentication/data flows remain unverified; no external model dispatch occurred.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** XRP priority-one research and prediction architecture; Barrot V3 remains the execution, orchestration, safety and verification foundation; point-in-time features, receipt integrity, event/scenario tracking, baselines, leakage-safe walk-forward evaluation, calibration, drift and strict forecast admission.
+- **EXECUTED:** inspected current main, complete tree, open PRs, branch ancestry and path overlaps; inspected current code, workflow runs, branch-protection/ruleset visibility, dependency manifests and the latest handoff; downloaded and independently checked run-25/run-26 raw and feature-store artifacts; identified the cross-run fork; fixed both server-filter queries and added a regression test on the existing #1684 branch.
+- **VERIFIED:** main SHA/tree; three scheduled run IDs and their conclusions; run-26 raw payload hashes and per-run chain; run-26 SQLite integrity; run-25/run-26 sibling-chain relationship; feature-store checkpoint omission; current open PR inventory and disjoint workstream paths; integration smoke run 44851458150.
+- **NOT VERIFIED:** exact-head full suite and security checks on `d8f23b0`; independent review; effective branch-protection enforcement; WORM-grade external anchoring and non-expiring retention; successful linear chain after the fix on main; complete synchronized multi-venue L2 history; walk-forward predictive superiority, probability calibration, stable drift and independent shadow evaluation.
+
+### Next concrete action
+
+Wait for exact-head CI on #1684 head `d8f23b0`. Keep #1684 and #1685 draft until independent review and verifiable protected-branch requirements exist. After an approved merge of the XRP fix, verify the next main scheduled capture selects the immediately preceding successful run and restores its feature-store checkpoint; verify that the chain sequence increments and that no run is skipped. Keep forecast issuance disabled until receipt-backed history, walk-forward origins, baseline comparison, calibration, drift and independent shadow evidence all pass.
