@@ -139,7 +139,7 @@ def _verify_index(path: Path, expected_run_id: str | None = None) -> dict[str, A
         previous = payload.get("previous")
         if not isinstance(previous, Mapping):
             raise XRPFeatureStoreBackfillError("continued receipt index has no predecessor")
-        if previous.get("run_id") != payload.get("previous", {}).get("run_id"):
+        if not isinstance(previous.get("run_id"), str) or not previous.get("run_id"):
             raise XRPFeatureStoreBackfillError("receipt index predecessor identity is invalid")
         if previous.get("sequence") != sequence - 1:
             raise XRPFeatureStoreBackfillError("receipt index sequence does not follow its predecessor")
@@ -226,7 +226,10 @@ def _verify_raw_artifact(
     receipt_manifest_path = artifact_root / "receipt_manifest.json"
     receipt_manifest = _read_json(receipt_manifest_path)
     manifest_bytes = receipt_manifest_path.read_bytes()
-    verification = RawReceiptArchive(raw_root).verify()
+    try:
+        verification = RawReceiptArchive(raw_root).verify()
+    except XRPIngestionError as exc:
+        raise XRPFeatureStoreBackfillError(f"raw receipt artifact verification failed: {exc}") from exc
     if receipt_manifest.get("verification_status") != "PASS":
         raise XRPFeatureStoreBackfillError("raw receipt manifest does not report PASS")
     for field, value in verification.items():
@@ -414,6 +417,7 @@ def verify_existing_reconciliation(
         _sha256_bytes(_canonical(manifest).encode("utf-8")) != snapshot.get("manifest_sha256")
         or exact["stored_at_utc"] != snapshot.get("stored_at_utc")
         or len(manifest.get("records", [])) != snapshot.get("record_count")
+        or len(store.source_lineage(exact["snapshot_id"])) != snapshot.get("source_count")
     ):
         raise XRPFeatureStoreBackfillError("existing reconciliation receipt does not match the restored feature store")
     visibility = _verify_visibility(store, manifest, exact["stored_at_utc"])
@@ -486,6 +490,8 @@ def reconcile_historical_snapshot(
     )
     if not lineage or lineage[0]["current_run"]["run_id"] != str(fork_run_id):
         raise XRPFeatureStoreBackfillError("main receipt chain does not begin at the expected fork head")
+    if _canonical(lineage[0]) != _canonical(fork_index):
+        raise XRPFeatureStoreBackfillError("main receipt ancestry fork head differs from the verified sibling index")
     current_index = _verify_index(Path(current_index_path))
     if lineage[-1]["current_run"]["run_id"] != current_index["current_run"]["run_id"]:
         raise XRPFeatureStoreBackfillError("main receipt chain does not terminate at the supplied current index")
