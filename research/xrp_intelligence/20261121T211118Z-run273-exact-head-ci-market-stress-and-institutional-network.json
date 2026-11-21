@@ -1,0 +1,209 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot.xrp.run273_exact_head_ci_market_stress_and_institutional_network",
+  "run_id": 273,
+  "captured_at_utc": "2026-11-21T21:11:18Z",
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "repository": {
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "main_tree_entries": 3115,
+    "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "branch_head_at_capture": "9e5be0f526ae05bed5ae4c186c526804d8c19f3e",
+    "branch_tree_entries": 3125,
+    "pr_number": 1684,
+    "draft": true,
+    "ahead_by": 113,
+    "behind_by": 0,
+    "changed_files": 21
+  },
+  "exact_head_ci": {
+    "suite": {
+      "head_sha": "9e5be0f526ae05bed5ae4c186c526804d8c19f3e",
+      "run_id": 44948747306,
+      "status": "completed",
+      "conclusion": "failure",
+      "passed": 4558,
+      "tests_failed": 3,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 32,
+      "inclusive_coverage_percent": 73.2,
+      "duration_seconds": 160.3,
+      "failure_classification": "STALE_CURRENT_EVIDENCE_MAP_ASSERTIONS",
+      "failing_tests": [
+        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_matches_repository_and_forecast_admission_state",
+        "tests/test_xrp_nine_platform_map_latest.py::test_run250_records_per_run_integrity_but_rejects_forked_cross_run_continuity",
+        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity"
+      ]
+    },
+    "dependency_audit": "PASS",
+    "money_audit": "PASS",
+    "conflict_integrity": "PASS",
+    "pages_validation": "PASS_VALIDATION_ONLY",
+    "fail_closed": "BLOCKED_AS_DESIGNED"
+  },
+  "run49_backfill": {
+    "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
+    "workflow_run_id": 44948747306,
+    "job_id": 136981771779,
+    "workflow_head_sha": "9e5be0f526ae05bed5ae4c186c526804d8c19f3e",
+    "current_main_run_id": 44944994673,
+    "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "source_run_id": 44844953105,
+    "fork_run_id": 44848909814,
+    "common_parent_run_id": 44844499889,
+    "records_before": 17397,
+    "records_after": 17515,
+    "recovered_records": 118,
+    "snapshots_before": 21,
+    "snapshots_after": 22,
+    "verified_snapshots": 22,
+    "recovered_source_lineages": 11,
+    "sqlite_integrity": "ok",
+    "reconciliation_sha256": "bed87fc02eb5c489c0cf1d1220ad13d73a64f8425b40747d621258614089657f",
+    "reconciliation_artifact_id": 14725335605,
+    "reconciliation_artifact_zip_sha256": "38ee2af3439dbc98d1c8538fe792c229d11e1525894c39d13cd2c5e63763b295",
+    "artifact_inventory_verified_count": 23,
+    "artifact_inventory_digest_mismatches": 0,
+    "visible_before_receipt": false,
+    "visible_after_receipt": true,
+    "receipt_clock_source": "github_api_run_date_header",
+    "physical_commit_time_verified": false,
+    "store_receipt_time_is_actual_recovery_time": false,
+    "store_receipt_time_is_post_append_availability_bound": true,
+    "independent_trusted_timestamp_anchor": false,
+    "main_modified": false
+  },
+  "market_stress": {
+    "captured_at_utc": "2026-11-21T21:11:18Z",
+    "model_eligible": false,
+    "forecast_status": "NOT_ISSUED",
+    "barrot_run49_cutoff_utc": "2026-11-21T20:12:25.779681Z",
+    "barrot_price_cluster_usd": {
+      "low": 0.93455,
+      "high": 0.9350184585,
+      "range_bps": 5.011868
+    },
+    "barrot_depth_10bps": {
+      "coinbase": 0.4462389019,
+      "kraken": 0.2598278105,
+      "bitstamp": 0.1270944374,
+      "okx": 0.0241801113
+    },
+    "depth_limit": "Asynchronous REST snapshots; OKX depth USDT-denominated, Bitbank JPY-denominated; not a consolidated executable book.",
+    "liquidations": {
+      "coindesk_usd": 18000000,
+      "coinpaper_usd": 31450000,
+      "long_share_coindesk_percent": 94,
+      "long_share_coinpaper_percent": 93.39,
+      "upstream": "Both cite CoinGlass; capture windows/venue coverage unresolved; not independent confirmations."
+    },
+    "etf_flows": {
+      "coindesk_sosovalue_single_day_usd": -4970000,
+      "xrp_insights_holdings_delta_usd": -7452638,
+      "xrp_insights_xrp_delta": -8242683.02,
+      "dmarketforces_november_mtd_usd": -30760000,
+      "comparability": "Different periods/methods; holdings delta is not issuer AP cash flow; no aggregation."
+    },
+    "external_prices": {
+      "coindesk_approx": 0.87,
+      "dmarketforces_approx": 0.888,
+      "barrot_run49_low": 0.93455,
+      "barrot_run49_high": 0.9350184585,
+      "timing": "Not time-aligned; no intraday reconstruction."
+    },
+    "sources": [
+      "https://www.coindesk.com/markets/2026/11/21/xrp-falls-10-as-long-bets-unwind-and-etf-assets-slip-below-usd1-billion",
+      "https://coinpaper.com/39166/xrp-price-prediction-xrp-crashes-to-0-86-as-etf-outflows-and-liquidations-accelerate",
+      "https://dmarketforces.com/xrp-drops-8-in-24-hours-as-bitcoin-leads-crypto-market-sell-off/",
+      "https://xrp-insights.com/data/xrp-etf-flows.csv"
+    ]
+  },
+  "institutional_relationships": {
+    "model_eligible": false,
+    "coinbase_ripple": {
+      "status": "RLUSD live on Coinbase Prime/Exchange/retail from 2026-10-28; Coinbase Global Exchange collateral was future functionality at launch.",
+      "source": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase"
+    },
+    "sbi_vctrade_ripple": {
+      "status": "RLUSD handling in Japan live from 2026-06-24; Type 4 electronic payment instrument treatment.",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+    },
+    "sbi_circle": {
+      "status": "50/50 USDC-focused JV; SBI Holdings and SBI Shinsei Bank disclosed $50M combined Circle investment ($25M each).",
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+        "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+        "https://www.sbigroup.co.jp/news/2026/0512_16310.html"
+      ]
+    },
+    "coinbase_circle": {
+      "status": "Circle remains USDC issuer; Coinbase holds equity and receives contractual distribution economics; not 50% of gross reserve income.",
+      "source": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx"
+    },
+    "sbi_ripple_asia": {
+      "status": "SBI Ripple Asia/dsrv labs feasibility research for Japan-Korea remittance/payment services with XRPL contemplated; not production XRP bridge volume.",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html"
+    },
+    "ripple_bny": {
+      "status": "BNY supports XRP/RLUSD custody and is RLUSD primary reserve custodian; tokenized trade-finance exploration is not proof of XRP purchases or settlement.",
+      "source": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+    },
+    "circle_ripple": {
+      "status": "No direct Circle-Ripple partnership or ownership established by reviewed evidence."
+    },
+    "sbic_identity": "SBIC East/Central/West are separate regional investment/consultation companies, not SBI Holdings."
+  },
+  "identity_controls": {
+    "sbic": "SBIC East/Central/West distinct from SBI Holdings",
+    "ask_coin": "UNRESOLVED",
+    "actual_capital": "not a formal accounting term",
+    "sbic_chatgpt": "no OpenAI partnership established",
+    "kamilah": "person identity verified; channel ownership unverified"
+  },
+  "prediction_readiness": {
+    "event_receipt_complete": false,
+    "drift_evaluated": 0,
+    "drift_candidates": 204,
+    "walk_forward_origins": 0,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "nine_platforms": {
+    "verified": [
+      "ChatGPT -> GitHub connector -> Barrot-Agent/B-Agent"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "external_web_raw_bytes_captured": false,
+  "main_modified": false,
+  "merge_decision": "DO_NOT_MERGE",
+  "main_run50": {
+    "run_id": 44950217750,
+    "run_number": 50,
+    "status": "in_progress",
+    "head_sha": "550a647ee7269a704d4600ff337b2145acc90473"
+  },
+  "sources": [
+    "https://www.coindesk.com/markets/2026/11/21/xrp-falls-10-as-long-bets-unwind-and-etf-assets-slip-below-usd1-billion",
+    "https://coinpaper.com/39166/xrp-price-prediction-xrp-crashes-to-0-86-as-etf-outflows-and-liquidations-accelerate",
+    "https://dmarketforces.com/xrp-drops-8-in-24-hours-as-bitcoin-leads-crypto-market-sell-off/",
+    "https://xrp-insights.com/data/xrp-etf-flows.csv",
+    "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+    "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+    "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+    "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+    "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+    "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+    "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+  ]
+}
