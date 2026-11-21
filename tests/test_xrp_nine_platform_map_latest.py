@@ -90,17 +90,17 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
         "scheduled_sources": 51,
     }
     ingestion = data["prediction_engine"]["latest_ingestion"]
-    assert ingestion["run_id"] == 44844953105
+    assert ingestion["run_id"] == 44848909814
     assert ingestion["receipt_count"] == 37
     assert ingestion["receipts"] == ingestion["receipt_count"]
     assert ingestion["raw_retained"] == 25
     assert ingestion["digest_only"] == 12
-    assert ingestion["source_failures"] == 21
-    assert ingestion["eligible_features"] == 118
-    assert ingestion["excluded_features"] == 433
-    assert ingestion["feature_history_records"] == 1981
+    assert ingestion["source_failures"] == 18
+    assert ingestion["eligible_features"] == 106
+    assert ingestion["excluded_features"] == 450
+    assert ingestion["feature_history_records"] == 1969
     assert ingestion["snapshots"] == 2
-    assert ingestion["continuity"] == "CONTINUED"
+    assert ingestion["continuity"] == "FORKED"
     assert ingestion["cross_run_sequence"] == 2
     assert ingestion["receipt_chain"] == "PASS"
     assert ingestion["walk_forward_forecasts"] == 0
@@ -127,6 +127,38 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert data["prediction_engine"]["walk_forward_forecasts"] == 0
     assert data["prediction_engine"]["forecast_issuance"] == "NOT_ISSUED"
 
+
+
+
+def test_run250_records_per_run_integrity_but_rejects_forked_cross_run_continuity():
+    data = load_map()
+    run = data["latest_run_250"]
+    ingestion = data["prediction_engine"]["latest_ingestion"]
+    assert run["main_sha"] == data["repository_state"]["main_sha"]
+    assert run["main_tree_entries"] == 3115
+    assert ingestion["run_id"] == 44848909814
+    assert ingestion["receipt_chain"] == "PASS"
+    assert ingestion["raw_payload_hashes_verified"] == 25
+    assert ingestion["raw_payload_hash_mismatches"] == 0
+    assert ingestion["continuity"] == "FORKED"
+    assert ingestion["artifact_reported_continuity"] == "CONTINUED"
+    fork = ingestion["cross_run_fork_audit"]
+    assert fork["status"] == "FORKED"
+    assert fork["run25"]["previous_run_id"] == 44844499889
+    assert fork["run26"]["previous_run_id"] == 44844499889
+    assert fork["skipped_successful_run_id"] == 44844953105
+    gap = ingestion["feature_store_gap"]
+    assert gap["status"] == "REPAIR_REQUIRED"
+    assert gap["omitted_snapshot_eligible_records"] == 118
+    assert gap["run25_cumulative_records"] == 1981
+    assert gap["run26_cumulative_records"] == 1969
+    assert ingestion["walk_forward_forecasts"] == 0
+    assert ingestion["drift_status"] == "INSUFFICIENT_DATA"
+    assert ingestion["forecast_issuance"] == "NOT_ISSUED"
+    assert data["run250_merge_decision"] == "NO_MERGE"
+    assert data["run250_no_external_actions"] is True
+    assert data["open_pr_backlog_summary"]["blocked"] == 2
+    assert data["current_pr_head_sha"] == data["open_pr_backlog"][0]["head_sha"]
 
 def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     data = load_map()
