@@ -90,18 +90,23 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
         "scheduled_sources": 51,
     }
     ingestion = data["prediction_engine"]["latest_ingestion"]
-    assert ingestion["run_id"] == 44848909814
-    assert ingestion["receipt_count"] == 37
+    assert ingestion["run_id"] == 44869770831
+    assert ingestion["receipt_count"] == 34
     assert ingestion["receipts"] == ingestion["receipt_count"]
-    assert ingestion["raw_retained"] == 25
+    assert ingestion["raw_retained"] == 22
     assert ingestion["digest_only"] == 12
+    assert ingestion["raw_payload_hashes_verified"] == 22
+    assert ingestion["raw_payload_hash_mismatches"] == 0
     assert ingestion["source_failures"] == 18
-    assert ingestion["eligible_features"] == 106
-    assert ingestion["excluded_features"] == 450
-    assert ingestion["feature_history_records"] == 1969
-    assert ingestion["snapshots"] == 2
+    assert ingestion["eligible_features"] == 123
+    assert ingestion["excluded_features"] == 367
+    assert ingestion["feature_history_records"] == 2446
+    assert ingestion["snapshots"] == 6
     assert ingestion["continuity"] == "FORKED"
-    assert ingestion["cross_run_sequence"] == 2
+    assert ingestion["artifact_reported_continuity"] == "CONTINUED"
+    assert ingestion["cross_run_sequence"] == 6
+    assert ingestion["prior_run_id"] == 44865104098
+    assert ingestion["skipped_successful_run_id"] == 44844953105
     assert ingestion["receipt_chain"] == "PASS"
     assert ingestion["walk_forward_forecasts"] == 0
     assert ingestion["forecast_issuance"] == "NOT_ISSUED"
@@ -133,7 +138,7 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
 def test_run250_records_per_run_integrity_but_rejects_forked_cross_run_continuity():
     data = load_map()
     run = data["latest_run_250"]
-    ingestion = data["prediction_engine"]["latest_ingestion"]
+    ingestion = data["latest_run_250"]["latest_ingestion"]
     assert run["main_sha"] == data["repository_state"]["main_sha"]
     assert run["main_tree_entries"] == 3115
     assert ingestion["run_id"] == 44848909814
@@ -501,3 +506,62 @@ def test_run230_circle_coinbase_distribution_economics_keep_accounting_boundarie
     assert coinbase["lower_interest_rate_effect_usd"]["nine_months"] == 166200000
     assert evidence["interpretation"]["circle_distribution_costs_equal_coinbase_revenue"] is False
     assert evidence["interpretation"]["xrp_as_required_bridge_evidenced"] is False
+
+
+def test_run258_records_current_ingestion_and_local_only_feature_store_recovery():
+    data = load_map()
+    run = data["latest_run_258"]
+    assert run["main_sha"] == data["repository_state"]["main_sha"]
+    assert run["main_tree_entries"] == 3115
+    assert run["integration_tree_entries"] == 3115
+    assert run["main_paths_missing_from_integration"] == 0
+    assert run["ingestion_run_id"] == 44869770831
+
+    ingestion = run["latest_ingestion"]
+    assert ingestion["receipt_count"] == 34
+    assert ingestion["raw_retained"] == 22
+    assert ingestion["digest_only"] == 12
+    assert ingestion["raw_payload_hashes_verified"] == 22
+    assert ingestion["raw_payload_hash_mismatches"] == 0
+    assert ingestion["feature_history_records"] == 2446
+    assert ingestion["snapshots"] == 6
+    assert ingestion["eligible_features"] == 123
+    assert ingestion["excluded_features"] == 367
+    assert ingestion["cross_run_fork_audit"]["status"] == "FORKED"
+    assert ingestion["cross_run_fork_audit"]["skipped_successful_run_id"] == 44844953105
+    assert ingestion["artifact_reported_continuity"] == "CONTINUED"
+    assert ingestion["event_receipt_complete"] is False
+    assert ingestion["walk_forward_forecasts"] == 0
+    assert ingestion["forecast_issuance"] == "NOT_ISSUED"
+
+    recovery = run["local_feature_store_reconciliation"]
+    assert recovery["status"] == "LOCAL_ONLY_VERIFIED_NOT_COMMITTED"
+    assert recovery["recovered_records"] == 118
+    assert recovery["pre_recovery_main_records"] == 2446
+    assert recovery["reconciled_local_records"] == 2564
+    assert recovery["reconciled_local_snapshots"] == 7
+    assert recovery["reconciled_local_source_snapshot_rows"] == 81
+    assert recovery["sqlite_integrity"] == "ok"
+    assert recovery["all_snapshot_manifests_verified"] is True
+    assert recovery["all_feature_record_rows_verified"] is True
+    assert recovery["all_source_lineage_rows_verified"] is True
+    assert recovery["backfill_hidden_before_store_receipt"] is True
+    assert recovery["backfill_visible_at_store_receipt"] is True
+    assert recovery["not_committed_to_repository"] is True
+
+    market = run["market_snapshot"]
+    assert market["research_only"] is True
+    assert market["bitstamp_24h_change_percent"] == -8.98
+    assert market["price_cluster_usd"]["low"] == 0.874585
+    assert market["price_cluster_usd"]["high"] == 0.8749190095
+    assert run["research_only_observations"]["bitbank_latest_60_trade_sample"]["model_eligible"] is False
+    assert run["research_only_observations"]["xrp_etf_flows"]["model_eligible"] is False
+    assert run["forecast"]["status"] == "NOT_ISSUED"
+    assert run["no_external_actions"] is True
+
+    pr = next(item for item in data["open_pr_backlog"] if item["number"] == 1684)
+    assert pr["head_sha"] == data["current_pr_head_sha"]
+    assert pr["full_suite"]["passed"] == 4536
+    assert pr["full_suite"]["failed"] == 0
+    assert pr["fail_closed"]["conclusion"] == "failure"
+    assert data["run258_merge_decision"] == "NO_MERGE"
