@@ -54,14 +54,19 @@ def test_receipt_and_feature_restoration_is_same_branch_only():
     assert 'head_branch == "main"' not in text
 
 
-def test_completed_run_selection_filters_status_locally_to_preserve_receipt_chain():
+def test_completed_run_selection_filters_status_locally_paginates_and_fails_closed():
     text = WORKFLOW.read_text(encoding="utf-8")
     # GitHub's server-side status=completed collection filter omitted a successful
     # scheduled predecessor in production, creating sibling receipt-chain branches.
     assert "&status=completed" not in text
     assert text.count('.status == "completed" and .conclusion == "success"') == 2
-    assert text.count("branch=\u0024{GITHUB_REF_NAME}") == 2
-
+    assert text.count("branch=\\u0024{GITHUB_REF_NAME}") == 2
+    assert "page=1" in text
+    assert "page=$((page + 1))" in text
+    assert "total_prior_runs=$((total_prior_runs + page_run_count))" in text
+    assert 'if [[ "$total_prior_runs" -eq 0 ]]; then' in text
+    assert "No prior ingestion runs exist" in text
+    assert "refusing to bootstrap a new chain" in text
 
 def test_ingestion_workflow_cannot_write_to_repository_or_external_services():
     text = WORKFLOW.read_text(encoding="utf-8").lower()
@@ -70,3 +75,12 @@ def test_ingestion_workflow_cannot_write_to_repository_or_external_services():
     assert "gh pr merge" not in text
     assert "persist-credentials: true" not in text
     assert "actions: write" not in text
+
+
+def test_backfill_replay_skip_is_bound_to_exact_script_and_workflow_blobs():
+    ci_workflow = ROOT / ".github" / "workflows" / "ci.yml"
+    text = ci_workflow.read_text(encoding="utf-8")
+    assert "HEAD:barrot_agent/evolution/xrp_feature_store_backfill.py" in text
+    assert "HEAD:.github/workflows/ci.yml" in text
+    assert ".verification_workflow_blob_sha == $workflow_sha" in text
+    assert ".backfill_script_blob_sha == $script_sha" in text

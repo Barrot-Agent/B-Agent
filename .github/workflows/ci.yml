@@ -217,9 +217,10 @@ jobs:
           set -euo pipefail
           receipt='research/xrp_intelligence/xrp_feature_store_backfill_real_artifact_verification.json'
           script_sha="$(git rev-parse HEAD:barrot_agent/evolution/xrp_feature_store_backfill.py)"
-          if [[ -f "$receipt" ]] && jq -e --arg sha "$script_sha" '.backfill_script_blob_sha == $sha and .status == "VERIFIED"' "$receipt" >/dev/null; then
+          workflow_sha="$(git rev-parse HEAD:.github/workflows/ci.yml)"
+          if [[ -f "$receipt" ]] && jq -e --arg script_sha "$script_sha" --arg workflow_sha "$workflow_sha" '.backfill_script_blob_sha == $script_sha and .verification_workflow_blob_sha == $workflow_sha and .status == "VERIFIED"' "$receipt" >/dev/null; then
             echo 'skip=true' >> "$GITHUB_OUTPUT"
-            echo 'A committed real-artifact verification receipt matches the current backfill implementation.'
+            echo 'A committed real-artifact verification receipt matches the backfill implementation and its artifact-verification workflow.'
           else
             echo 'skip=false' >> "$GITHUB_OUTPUT"
           fi
@@ -349,7 +350,8 @@ jobs:
               'status': 'VERIFIED',
               'workflow_run_id': os.environ['GITHUB_RUN_ID'],
               'workflow_head_sha': __import__('subprocess').check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
-              'backfill_script_blob_sha': os.popen('git rev-parse HEAD:barrot_agent/evolution/xrp_feature_store_backfill.py').read().strip(),
+              'backfill_script_blob_sha': __import__('subprocess').check_output(['git', 'rev-parse', 'HEAD:barrot_agent/evolution/xrp_feature_store_backfill.py'], text=True).strip(),
+              'verification_workflow_blob_sha': __import__('subprocess').check_output(['git', 'rev-parse', 'HEAD:.github/workflows/ci.yml'], text=True).strip(),
               'reconciliation_sha256': receipt['reconciliation_sha256'],
               'source_run_id': '44844953105',
               'fork_run_id': '44848909814',
