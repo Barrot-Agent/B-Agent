@@ -4610,3 +4610,58 @@ These are timestamped observations, not forecasts. Exchange-specific open-intere
 **NOT VERIFIED / NOT COMPLETE:** the branch backfill module has not yet run against the real artifact bundle; main has not adopted the 118-record snapshot; event receipt completeness remains false; SEC capital-event ingestion is blocked; drift and walk-forward evaluation remain insufficient/zero; no calibrated out-of-sample forecast exists; independent review and branch-protection enforcement remain unverified.
 
 Next concrete action: execute the exact branch backfill module against the same preserved artifact bundle in a controlled offline runner, compare its reconciliation receipt to the independent local receipt above, and attach the compact verified receipt to this existing #1684 workstream. Then obtain independent review and verifiable branch protection. Only after exact-head checks and governance requirements pass may merge be reconsidered. Keep forecast issuance disabled.
+
+
+---
+
+## Run254 — exact-head backfill execution and primary-source capital reconciliation — 2026-11-21 10:09 UTC
+
+### Repository and integration state
+
+- Current main remains `550a647ee7269a704d4600ff337b2145acc90473`; complete recursive tree: 3,115 entries, untruncated.
+- Existing XRP integration PR [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684) is still the sole active XRP workstream: head `108da79b749c4c4d3e0c482befe77bf10fe15803`, 57 commits ahead / 0 behind, nine changed files, conflict-free according to GitHub. No new branch or PR was created.
+- Separate A2A security PR [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685) remains draft, five commits ahead / 0 behind. Its nine changed paths do not overlap #1684. Both PRs remain classified **blocked**; no duplicate or superseded PR was closed.
+
+### EXECUTED — exact-head CI and real-artifact backfill
+
+- Exact PR-head CI [44892402707](https://github.com/Barrot-Agent/B-Agent/actions/runs/44892402707) passed on `108da79`. The full repository job ran every tracked active test: **4,542 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests passed; 73.20% total coverage**. Mission-critical package coverage floors passed. Core Tests also passed.
+- Push CI [44892398796](https://github.com/Barrot-Agent/B-Agent/actions/runs/44892398796) independently passed on the same SHA with the same full-suite result.
+- Dependency Audit [44892402653](https://github.com/Barrot-Agent/B-Agent/actions/runs/44892402653), Money audit [44892402691](https://github.com/Barrot-Agent/B-Agent/actions/runs/44892402691), and Conflict Integrity [44892402705](https://github.com/Barrot-Agent/B-Agent/actions/runs/44892402705) passed on the exact PR head.
+- The PR CI job **executed the actual** `xrp_feature_store_backfill.py` module against preserved GitHub artifacts from source run 25, fork run 26, the verified ancestry indexes and current main ingestion run 35. It did not merely run unit tests or the independent local reproduction.
+- Verified before-state: 10 snapshots / 16,094 feature records. Verified after-state: 11 snapshots / 16,212 records. The recovered snapshot contains 118 records and 11 source lineages. SQLite integrity was `ok`; all 11 snapshot manifests and record counts verified.
+- Point-in-time semantics passed: the 118 records were invisible one microsecond before the actual recovery receipt and visible one microsecond after it. Store receipt time: `2026-11-21T10:04:37.534966Z`. Original source snapshot capture time remains `2026-11-21T00:36:59.587037Z`.
+- Reconciliation receipt SHA-256: `a9f6f3f532fd64b674f78e7d47b2e7106d242b8787cab248ab1fdafe94eb188b`. The GitHub artifact is [xrp-historical-backfill-reconciliation-44892402707](https://github.com/Barrot-Agent/B-Agent/actions/runs/44892402707), artifact ID `14702213877`, ZIP digest `sha256:4f7e793005e11daa2112d7f2c8d8f129a9a289269bc32a92bbaec2e55222a0e2`, expires 2027-02-19.
+- This execution verified the branch module against real artifacts in a temporary CI runner. It did **not** mutate main, commit a database, or persist the recovered snapshot to the main feature store. The backfill remains unadopted by main until a governed post-merge application and verification.
+
+### VERIFIED — fail-closed merge decision
+
+- Fail-closed gate [44892402665](https://github.com/Barrot-Agent/B-Agent/actions/runs/44892402665) returned **READINESS=BLOCKED** for three explicit reasons: #1684 is still draft; no independent approving review exists; branch protection could not be verified through the available GitHub API (403). GitHub reports the PR conflict-free, but that does not waive the other gates.
+- No merge, force-push, branch rewrite, deployment, secret change, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+- The three stale assertions that failed on the previous head `b7d1f622` were corrected in one commit: define the test repository root, assert literal shell branch interpolation, and assert the paginated `page=${page}` query rather than hard-coded page 1. These are test-contract corrections; no user work was discarded.
+
+### Main ingestion and prediction readiness
+
+- Latest verified main ingestion is run [44888553926](https://github.com/Barrot-Agent/B-Agent/actions/runs/44888553926). Its current main feature store contained 10 snapshots / 16,094 records; raw capture had 34 receipts (22 retained payloads, 12 digest-only). It reported 124 eligible feature records and 204 candidate drift features, but zero drift features evaluated, zero walk-forward forecast origins, and incomplete event-to-raw-receipt links. Event receipt completeness remains false and model eligibility remains false.
+- SEC companyfacts/submission capture is still blocked by missing configured contact identity. The current main workflow has not yet adopted the branch's corrected predecessor-pagination logic or the recovered 118-record snapshot.
+- Forecast issuance remains `NOT_ISSUED`. No directional forecast is supported by a completed leakage-safe out-of-sample evaluation, calibration and shadow assessment.
+
+### Primary-source research update
+
+The new append-only evidence record is [20261121T100955Z-run254-evernorth-q3-capital-and-institutional-network-reconciliation.json](research/xrp_intelligence/20261121T100955Z-run254-evernorth-q3-capital-and-institutional-network-reconciliation.json). It is research-only: rendered sources were reviewed, but raw HTTP bytes and trusted capture receipts were not captured, so it is excluded from model features.
+
+- Evernorth's SEC Q3 filing distinguishes the pre-close 346.285M XRP holding from its funding sources: $214.05M historical cash used to buy 84.366M XRP, plus 261.919M investor XRP contributions in kind. At the October 9 close, gross cash proceeds were approximately $272.6M before expenses and in-kind XRP contributions were approximately 388.911M, including Ripple's 126.791M XRP contribution. The reconciled Pathfinder total is approximately 473.276M XRP; this is not 473M of open-market buying.
+- The October 12 SEC 8-K corrects the earlier clerical share-count error: SBI Holdings beneficially owned 9,431,914 Class A and 2,359,038 Class C shares, equal to 39.9% of Class A and 7.5% of Class C at closing. These are class-specific percentages, not 39.9% of the entire company. This supersedes the older research figures of 8,885,293 Class A and 2,905,659 Class C.
+- The SEC filing reports approximately $35.3M gross cash from 3,073,366 warrant exercises through November 9. The $30M PIK note is debt. The Cantor facility for up to 5,218,935 shares is optional capacity, not cash raised absent a verified draw. The $504.688M impairment is accounting, not proof of an equivalent XRP sale or cash outflow. SBI's earlier $200M PIPE announcement is not separately reconciled to an investor-level cash amount in the reviewed closing/Q3 filings.
+- Ripple/Coinbase RLUSD distribution became available through Coinbase Prime, Exchange and Retail on October 28. The same release described Coinbase Global Exchange collateral support as future. BNY's October 27 announcement covers RLUSD reserve custody and XRP/RLUSD custody support; Circle separately identifies BNY as custodian of the Circle Reserve Fund portfolio, managed by BlackRock. This is a shared institutional custody node, not evidence of a Ripple-Circle partnership.
+- Circle says USDC is native on XRPL and 38 networks. Circle remains USDC issuer; its 2023 agreement describes Coinbase's equity stake and distribution/revenue-sharing relationship. SBI VC Trade's RLUSD Japan launch is a Ripple/SBI Holdings relationship, not a regional SBIC relationship.
+- SBIC East/Central/West remain three distinct Japanese statutory regional investment companies, separate from SBI Holdings. SBIC East's ChatGPT seminars establish educational activity, not an OpenAI partnership. ASK Coin remains ambiguous between the inactive Ask Coin exchange listing and Permission Coin ticker ASK; no XRP link is established. Dr. Kamilah Stevenson is verified as the interview guest, but the candidate YouTube channel remains unverified; no new videos were attributed.
+- Ripple's October 28 announcement says it received final OCC approval for a National Trust Bank charter. No OCC primary confirmation was captured in this run; retain that as an issuer statement until a regulator source is verified.
+
+### Backlog and next concrete action
+
+| PR | Workstream | Classification | Reason |
+|---|---|---|---|
+| #1684 | XRP ingestion integrity / historical backfill | blocked | Exact-head CI and artifact replay pass; draft, independent approval and branch-protection verification remain outstanding; main has not adopted the fix. |
+| #1685 | A2A credential separation | blocked | Separate security workstream; do not merge while its runner sandbox and credential/egress gates remain unresolved. |
+
+Next action: obtain an independent review and verifiable main branch-protection evidence for #1684. Keep it draft until that review is available. After any permitted merge, fetch main, verify the merge commit and merged files, run main CI, then execute and verify the backfill against the current main feature-store checkpoint before classifying any source PR as superseded. Do not close #1685 or any unique research work.
