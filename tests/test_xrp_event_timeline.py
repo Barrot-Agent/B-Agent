@@ -43,6 +43,19 @@ def event(event_id: str, **overrides):
     return record
 
 
+def canonical_receipt(item, **overrides):
+    receipt = {
+        "receipt_id": f"receipt-{item['event_id']}",
+        "source_id": item["source_id"],
+        "source_uri": item["source_url"],
+        "captured_at_utc": item["captured_at_utc"],
+        "raw_content_sha256": item["raw_source_sha256"] or "a" * 64,
+        "raw_bytes_retained": True,
+    }
+    receipt.update(overrides)
+    return receipt
+
+
 def build(records, **overrides):
     args = {
         "asset": "XRP",
@@ -296,3 +309,91 @@ def test_invalid_raw_hash_is_rejected_even_when_record_is_excluded():
 def test_source_name_must_be_text():
     with pytest.raises(EventTimelineError, match="source_name"):
         build([event("bad-source-name", source_name=17)])
+
+
+def test_exact_canonical_receipt_link_requires_url_time_and_hash_match():
+    item = event("verified")
+    result = build([item], raw_receipts=[canonical_receipt(item)])
+    linked = result["event_timeline"][0]
+
+    assert result["receipt_complete"] is True
+    assert result["receipt_linkage"]["status"] == "COMPLETE"
+    assert result["receipt_linkage"]["verified_receipt_count"] == 1
+    assert linked["receipt_status"] == "VERIFIED_CANONICAL_RECEIPT"
+    assert linked["canonical_receipt_id"] == "receipt-verified"
+    assert linked["receipt_raw_bytes_retained"] is True
+    assert linked["receipt_source_id_match"] is True
+
+
+def test_digest_only_receipt_verifies_hash_link_without_claiming_retained_bytes():
+    item = event("digest-only")
+    result = build(
+        [item],
+        raw_receipts=[canonical_receipt(item, raw_bytes_retained=False)],
+    )
+    linked = result["event_timeline"][0]
+
+    assert result["receipt_complete"] is True
+    assert result["receipt_linkage"]["digest_only_verified_count"] == 1
+    assert result["receipt_linkage"]["raw_bytes_retained_verified_count"] == 0
+    assert linked["receipt_status"] == "VERIFIED_CANONICAL_RECEIPT"
+    assert linked["receipt_raw_bytes_retained"] is False
+
+
+def test_url_match_without_exact_capture_time_is_not_linked():
+    item = event("stale-url-match")
+    receipt = canonical_receipt(item, captured_at_utc="2026-11-11T20:03:01Z")
+    result = build([item], raw_receipts=[receipt])
+    linked = result["event_timeline"][0]
+
+    assert result["receipt_complete"] is False
+    assert result["receipt_linkage"]["url_match_count"] == 1
+    assert result["receipt_linkage"]["url_capture_time_match_count"] == 0
+    assert result["receipt_linkage"]["verified_receipt_count"] == 0
+    assert linked["receipt_status"] == "URL_MATCH_CAPTURE_TIME_MISMATCH"
+    assert linked["canonical_receipt_id"] is None
+
+
+def test_url_and_capture_time_match_with_different_hash_is_not_linked():
+    item = event("hash-mismatch")
+    receipt = canonical_receipt(item, raw_content_sha256="b" * 64)
+    result = build([item], raw_receipts=[receipt])
+    linked = result["event_timeline"][0]
+
+    assert result["receipt_complete"] is False
+    assert linked["receipt_status"] == "URL_AND_TIME_MATCH_HASH_MISMATCH"
+    assert linked["canonical_receipt_id"] is None
+
+
+def test_missing_event_hash_is_not_linked_even_when_url_and_time_match():
+    item = event("missing-event-hash", raw_source_sha256=None)
+    result = build([item], raw_receipts=[canonical_receipt(item)])
+    linked = result["event_timeline"][0]
+
+    assert result["receipt_complete"] is False
+    assert result["receipt_linkage"]["url_match_count"] == 1
+    assert result["receipt_linkage"]["url_capture_time_match_count"] == 1
+    assert result["receipt_linkage"]["verified_receipt_count"] == 0
+    assert linked["receipt_status"] == "MISSING_RAW_RECEIPT_HASH"
+
+
+def test_duplicate_exact_receipts_are_ambiguous_and_fail_closed():
+    item = event("ambiguous")
+    receipts = [
+        canonical_receipt(item, receipt_id="receipt-a"),
+        canonical_receipt(item, receipt_id="receipt-b"),
+    ]
+    result = build([item], raw_receipts=receipts)
+    linked = result["event_timeline"][0]
+
+    assert result["receipt_complete"] is False
+    assert result["receipt_linkage"]["ambiguous_match_count"] == 1
+    assert linked["receipt_status"] == "AMBIGUOUS_MULTIPLE_CANONICAL_RECEIPTS"
+    assert linked["canonical_receipt_id"] is None
+
+
+def test_invalid_canonical_receipt_hash_is_rejected():
+    item = event("invalid-receipt")
+    receipt = canonical_receipt(item, raw_content_sha256="not-a-hash")
+    with pytest.raises(EventTimelineError, match="64-character SHA-256"):
+        build([item], raw_receipts=[receipt])
