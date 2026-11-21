@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-21T10:42:11Z",
+  "captured_at_utc": "2026-11-21T11:17:36.997Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -4659,10 +4659,10 @@
     }
   },
   "research_phrase_status": {
-    "ASK Coin": "UNRESOLVED XRP ATTRIBUTION; exact searches surfaced Permission Coin (ASK) and an inactive Ask Coin listing, with no verified XRP Ledger, Ripple, SBI or institutional relationship.",
-    "actual capital": "PRIMARY SEC RECONCILIATION COMPLETE FOR DISCLOSED FLOWS; the literal phrase is not established as a formal accounting term. The 2025 $214.05M cash-funded purchase of 84.366M XRP is distinct from in-kind contributions; post-close $29M net note proceeds and $35.3M gross warrant proceeds are actual cash proceeds but not evidence of XRP purchases; ELOC is optional capacity. Research-only until raw SEC receipts are captured.",
-    "SBIC, ChatGPT SBIC": "SBIC East Japan is resolved as the entity behind the ChatGPT/generative-AI seminars; it is distinct from SBI Holdings and the SBIC East/Central/West regional entities. No formal OpenAI partnership or exact-phrase corroboration is established.",
-    "Camilla/Kamilah Stevenson": "GUEST IDENTITY VERIFIED; CHANNEL OWNERSHIP UNVERIFIED — Dr. Kamilah Stevenson appears as a guest in a June 11, 2026 Paul Barron episode; transcript spelling varies. She warns of fake pages. No channel-wide video inventory is attributed."
+    "ASK Coin": "UNRESOLVED: exact-phrase public searches did not establish a verified XRP, XRPL or Ripple entity, token or relationship.",
+    "actual capital": "The SEC filing reconciles cash and in-kind flows; the literal phrase is not established as a formal accounting term. $214,049,995 cash was used to buy 84,365,876 XRP; investor and Ripple in-kind contributions are separate. The 473.276M combined XRP figure is not evidence of 473.276M XRP purchases.",
+    "SBIC, ChatGPT SBIC": "SBIC East, Central and West are separate regional Small and Medium Business Investment & Consultation companies, distinct from SBI Holdings. SBIC East's 2025 investee-company ChatGPT/AI training was delivered by VOST; no formal OpenAI partnership or exact-phrase corroboration is established.",
+    "Camilla/Kamilah Stevenson": "Dr Kamilah Stevenson is verified at person level through the wellness profile, Healthy and Better show notes and the iHeart XRP episode metadata. The guest warns of fake pages; the auto-generated transcript's 'doctor Camilla Stevenson' YouTube display name is not enough to identify a channel. Channel ownership unverified."
   },
   "open_pr_backlog_summary": {
     "total_open": 2,
@@ -6546,7 +6546,7 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-21T10:42:11Z",
+  "last_verified_at_utc": "2026-11-21T11:17:36.997Z",
   "latest_run_id": 260,
   "latest_run_captured_at_utc": "2026-11-21T10:19:02Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -11535,8 +11535,8 @@
     "current_pr_head_sha": "65b42e65ad3bf5a469cfe3d8cf8a5d5d538d2103",
     "current_pr_head_ci": "IN_PROGRESS"
   },
-  "latest_mission_run_id": 260,
-  "latest_mission_run_captured_at_utc": "2026-11-21T10:19:02Z",
+  "latest_mission_run_id": 262,
+  "latest_mission_run_captured_at_utc": "2026-11-21T11:17:36.997Z",
   "open_pr_count": 2,
   "run258_evidence_record": {
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -12479,5 +12479,343 @@
     "Link every event to immutable raw-source hashes/receipts before model admission.",
     "Build drift evaluation and chronological walk-forward cohorts; no directional forecast until baselines, calibration and out-of-sample evidence pass."
   ],
-  "run261_no_external_actions": true
+  "run261_no_external_actions": true,
+  "run262_repository_snapshot": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "main_tree_entries": 3115,
+    "main_tree_truncated": false,
+    "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "tested_code_head_sha": "373721be6bc00c81ae25e8ea7c7be21abdde7992",
+    "branch_tree_entries_before_evidence_commit": 3118,
+    "branch_tree_truncated": false,
+    "ahead_by_before_evidence_commit": 63,
+    "behind_by": 0,
+    "changed_files_before_evidence_commit": 10,
+    "commits_before_evidence_commit": 63,
+    "main_paths_missing_from_branch": 0,
+    "branch_protection_api": "HTTP 403; effective classic branch-protection settings not independently readable",
+    "visible_ruleset": {
+      "name": "Fall Back",
+      "enforcement": "disabled"
+    },
+    "codeowners": "* @Barrot-Agent",
+    "independent_approvals": 0
+  },
+  "run262_exact_head_ci": {
+    "tested_code_head_sha": "373721be6bc00c81ae25e8ea7c7be21abdde7992",
+    "pr_ci_run_id": 44897424185,
+    "push_ci_run_id": 44897417418,
+    "full_repository_suite": {
+      "passed": 4544,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests_passed": 32,
+      "duration_seconds": 123.09,
+      "coverage_percent": 73.2,
+      "conclusion": "success"
+    },
+    "core_and_package_coverage_gates": {
+      "core_subset_percent": 81,
+      "xrp_telemetry_percent": 92,
+      "mmi_percent": 92,
+      "barrot_integration_percent": 62,
+      "feature_store_percent": 80,
+      "forecast_ledger_percent": 97,
+      "point_in_time_features_percent": 89,
+      "source_registry_percent": 95,
+      "monetization_percent": 78,
+      "rendering_percent": 71,
+      "smart_agent_percent": 77,
+      "mem_palace_percent": 100,
+      "conclusion": "success"
+    },
+    "dependency_audit": {
+      "run_id": 44897424180,
+      "conclusion": "success"
+    },
+    "money_audit": {
+      "run_id": 44897424137,
+      "conclusion": "success"
+    },
+    "conflict_integrity": {
+      "run_id": 44897424157,
+      "conclusion": "success"
+    },
+    "pages_validation": {
+      "run_id": 44897424185,
+      "job_id": 136825951190,
+      "conclusion": "success"
+    },
+    "backfill_replay": {
+      "run_id": 44897424185,
+      "job_id": 136825951425,
+      "conclusion": "success"
+    },
+    "fail_closed_gate": {
+      "run_id": 44897424216,
+      "conclusion": "failure",
+      "blockers": [
+        "PR remains draft",
+        "no independent approving review exists",
+        "branch protection could not be verified; refusing to infer approval or bypass settings"
+      ]
+    },
+    "exact_head_ci_conclusion": "success",
+    "merge_readiness": "BLOCKED"
+  },
+  "latest_backfill_verification": {
+    "artifact_path": "research/xrp_intelligence/20261121T110738Z-run262-backfill-verification-summary.json",
+    "workflow_run_id": 44897424185,
+    "workflow_head_sha": "373721be6bc00c81ae25e8ea7c7be21abdde7992",
+    "status": "VERIFIED_IN_CI_ISOLATED_COPY_NOT_APPLIED_TO_MAIN",
+    "records_before": 16200,
+    "records_after": 16318,
+    "recovered_records": 118,
+    "snapshots_before": 11,
+    "snapshots_after": 12,
+    "source_count": 11,
+    "sqlite_integrity": "ok",
+    "visible_before_receipt": false,
+    "visible_after_receipt": true,
+    "reconciliation_sha256": "a1cf1c53605942f419b5a8db65431e3ae5ae931d51a1c7ccf126ad4d9706373d",
+    "artifact_id": 14704787080,
+    "artifact_digest": "sha256:c343c40b306073ddb9f3e0e64f5218eee49c1fab6b38811c62c7c08f7b870c28",
+    "artifact_expires_at": "2027-02-19T11:05:29Z",
+    "external_anchor_status": "NOT_ANCHORED",
+    "applied_to_main": false
+  },
+  "run262_institutional_network_reconciliation": {
+    "artifact_path": "research/xrp_intelligence/20261121T111736Z-run262-institutional-network-identity-reconciliation.json",
+    "source_count": 21,
+    "independent_source_group_count": 14,
+    "model_eligible": false,
+    "direct_ripple_coinbase_collateral_status": "FUTURE_NOT_LIVE_AT_2026-10-28_ANNOUNCEMENT",
+    "bny_rlusd_mint_redeem_status": "INTENDED_SUBJECT_TO_FINAL_BNY_AND_REGULATORY_APPROVALS",
+    "circle_ripple_direct_relationship_status": "NO_VERIFIED_DIRECT_RELATIONSHIP",
+    "sbi_vc_trade_rlusd_status": "LIVE_LISTING_2026-06-24",
+    "sbic_east_central_west_status": "THREE_SEPARATE_REGIONAL_ENTITIES_DISTINCT_FROM_SBI_HOLDINGS",
+    "actual_capital_status": "SEC_CASH_AND_IN_KIND_FLOWS_RECONCILED_NOT_A_SINGLE_NUMBER"
+  },
+  "run262_cross_analysis_quality": {
+    "workflow_run_id": 44896330448,
+    "generated_at_utc": "2026-11-21T10:51:52.625534Z",
+    "generated_from": {
+      "xrp_entries": 1208,
+      "btc_entries": 1245
+    },
+    "entity_cooccurrence": {
+      "unique_pairs_found": 3217,
+      "per_asset_separation": false,
+      "freshness_metadata_present": false,
+      "example_bucket_confusion": "A Bitcoin headline (Empery Digital selling 1,635 BTC) appears in an example whose asset field is XRP; that field is the source-log bucket, not verified asset relevance.",
+      "forecast_eligible": false
+    },
+    "sentiment_profile": {
+      "unique_entities_profiled": 990,
+      "XRP": {
+        "latest_sentiment_ingested_at_utc": "2026-10-29T12:39:22.915636Z",
+        "latest_sentiment_age_hours": 550.208,
+        "recent_24h_entries": 0,
+        "recent_48h_entries": 0,
+        "recent_7d_entries": 0,
+        "invalid_timestamp_entries": 11,
+        "forecast_eligible": false
+      },
+      "BTC": {
+        "latest_sentiment_ingested_at_utc": "2026-10-27T03:49:16.554499Z",
+        "latest_sentiment_age_hours": 607.043,
+        "recent_24h_entries": 0,
+        "recent_48h_entries": 0,
+        "recent_7d_entries": 0,
+        "forecast_eligible": false
+      }
+    },
+    "interpretation": "The hourly cross-analysis job analyzed a checked-in historical corpus; it did not refresh the sentiment inputs. These outputs are historical/descriptive only, not current sentiment features or forecasts.",
+    "next_action": "Refresh authorized public sentiment sources, retain publisher/time provenance, separate per-asset relevance from source-log labels, and add freshness/per-asset tests before any model use."
+  },
+  "run262_creator_identity_review": {
+    "person_identity_status": "VERIFIED_WITH_HIGH_CONFIDENCE",
+    "identity_basis": [
+      "Your Health Magazine profile",
+      "Healthy and Better show notes linking the person's site and TEDx talk",
+      "iHeart episode metadata naming Dr Kamilah Stevenson"
+    ],
+    "verified_xrp_guest_appearance": {
+      "title": "Crypto Panics! with Dr Kamilah Stevenson",
+      "date": "2026-06-11",
+      "url": "https://www.iheart.com/podcast/1333-the-xrptracer-podcast-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "platform": "iHeart, not verified as a YouTube upload"
+    },
+    "transcript_caveat": "Transcript is auto-generated; it spells the guest's name Camila/Camilla and transcribes a self-reported YouTube display name as 'doctor Camilla Stevenson'. The guest warns about fake pages, so the transcript is not sufficient to identify a channel.",
+    "channel_ownership_status": "UNVERIFIED",
+    "verified_youtube_videos": [
+      {
+        "title": "Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek",
+        "url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
+        "attribution_basis": "Linked from Healthy and Better show notes; public TEDx speaker video",
+        "topic": "Health/wellness, not XRP"
+      }
+    ],
+    "candidate_channels_not_attributed": [
+      {
+        "handle": "@drkamilahstevenson",
+        "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+        "status": "UNVERIFIED_NO_OFFICIAL_CROSSLINK"
+      },
+      {
+        "handle": "@KamilahStevenson-e7b",
+        "url": "https://www.youtube.com/channel/UCYFaD0cVIxjtxIW053EgZpA",
+        "status": "UNVERIFIED_NO_OFFICIAL_CROSSLINK"
+      }
+    ],
+    "xrp_youtube_video_inventory_status": "NONE_VERIFIED",
+    "rule": "Do not attribute the candidate crypto/XRP channels or their videos to the verified person until an authoritative cross-link is found."
+  },
+  "run262_exact_phrase_research": {
+    "ASK Coin": {
+      "status": "UNRESOLVED",
+      "finding": "Exact-phrase public searches did not establish a verified XRP, XRPL or Ripple entity, token or relationship.",
+      "next_action": "Continue only with exact primary-source matches; do not infer a token identity from ticker/name similarity."
+    },
+    "actual capital": {
+      "status": "ACCOUNTING_FLOWS_RECONCILED_PHRASE_NOT_FORMAL_TERM",
+      "finding": "The SEC filing supplies separate cash and in-kind flows; 'actual capital' is not a formal accounting term and no single total should combine cash, in-kind XRP, debt, warrants and optional ELOC capacity.",
+      "next_action": "Preserve cash-vs-in-kind distinctions and avoid double counting."
+    },
+    "SBIC, ChatGPT SBIC": {
+      "status": "NO_FORMAL_PARTNERSHIP_CORROBORATION",
+      "finding": "SBIC East ran a ChatGPT/AI training course for investee companies; no formal OpenAI partnership or exact-phrase corroboration is established.",
+      "next_action": "Keep SBIC regional entities distinct from SBI Holdings."
+    }
+  },
+  "run262_open_pr_inventory": [
+    {
+      "number": 1684,
+      "classification": "blocked",
+      "workstream": "XRP ingestion continuity / historical feature-store backfill / provenance",
+      "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+      "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "head_sha": "373721be6bc00c81ae25e8ea7c7be21abdde7992",
+      "commits": 63,
+      "ahead_by": 63,
+      "behind_by": 0,
+      "changed_files": 10,
+      "draft": true,
+      "mergeable": true,
+      "formal_reviews": 0,
+      "exact_head_ci_run": 44897424185,
+      "full_suite_passed": 4544,
+      "full_suite_failed": 0,
+      "dependency_audit": "success",
+      "money_audit": "success",
+      "conflict_integrity": "success",
+      "backfill_replay": "success",
+      "fail_closed": "blocked",
+      "overlap_with_pr1685": 0
+    },
+    {
+      "number": 1685,
+      "classification": "blocked",
+      "workstream": "A2A credential separation / V3 execution safety",
+      "branch": "security/a2a-secret-separation-20261121",
+      "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+      "commits": 5,
+      "ahead_by": 5,
+      "behind_by": 0,
+      "changed_files": 9,
+      "draft": true,
+      "formal_reviews": 0,
+      "full_suite_run": 44848528169,
+      "full_suite_passed": 4536,
+      "full_suite_failed": 0,
+      "dependency_audit": "success",
+      "money_audit": "success",
+      "deploy_workflow": "workflow_dispatch only; dual explicit confirmation and current-main-SHA input required; not dispatched",
+      "overlap_with_pr1684": 0,
+      "workstream_type": "unique"
+    }
+  ],
+  "run262_backlog_summary": {
+    "total_open": 2,
+    "ready": 0,
+    "blocked": 2,
+    "superseded": 0,
+    "duplicate": 0,
+    "unique_unreviewed": 0,
+    "unique_workstreams_blocked": 1,
+    "overlapping_paths": 0
+  },
+  "run262_merge_decision": {
+    "decision": "DO_NOT_MERGE",
+    "pr1684": "BLOCKED",
+    "pr1685": "BLOCKED",
+    "reasons": [
+      "#1684 is draft",
+      "no independent approving review exists",
+      "branch protection could not be verified (HTTP 403)",
+      "fail-closed gate rejects readiness"
+    ],
+    "no_bypass": true
+  },
+  "run262_no_external_actions": {
+    "merge_performed": false,
+    "main_modified": false,
+    "deployments": false,
+    "secret_rotations": false,
+    "spaces_restarted": false,
+    "external_model_dispatch": false,
+    "external_data_transfer": false,
+    "paper_trading": false,
+    "real_money_actions": false,
+    "source_prs_closed": []
+  },
+  "run262_next_actions": [
+    "Verify exact-head CI for the Run262 documentation/research/test-data commit.",
+    "Obtain independent review and verifiable main branch-protection evidence; do not bypass the fail-closed gate.",
+    "After a permitted merge, fetch main, verify the merge commit and files, rerun main CI, then apply the backfill only to the verified main feature-store copy.",
+    "Add a trusted external timestamp/WORM anchor for raw receipts; GitHub Actions artifacts are retention-limited.",
+    "Refresh public sentiment ingestion and fix per-asset co-occurrence provenance/freshness.",
+    "Complete SEC capture only with an approved monitored contact identity; preserve issuer-hosted primary filing fallbacks.",
+    "Complete event raw-hash/receipt links, drift evaluation, chronological walk-forward tests, baselines and calibration before any forecast."
+  ],
+  "run262_evidence_record": {
+    "captured_at_utc": "2026-11-21T11:17:36.997Z",
+    "status": "EXECUTED_AND_VERIFIED_WITH_GOVERNANCE_BLOCK",
+    "tested_code_head_sha": "373721be6bc00c81ae25e8ea7c7be21abdde7992",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "backfill_artifact_path": "research/xrp_intelligence/20261121T110738Z-run262-backfill-verification-summary.json",
+    "institutional_network_artifact_path": "research/xrp_intelligence/20261121T111736Z-run262-institutional-network-identity-reconciliation.json",
+    "cross_analysis_workflow_run_id": 44896330448,
+    "forecast_status": "NOT_ISSUED",
+    "external_actions": "NONE"
+  },
+  "run262_handoff_commit_parent_sha": "373721be6bc00c81ae25e8ea7c7be21abdde7992",
+  "run262_documentation_commit_exact_head_ci_status": "PENDING_AFTER_THIS_EVIDENCE_COMMIT",
+  "run262_youtube_inventory": {
+    "verified_video_count": 1,
+    "verified_videos": [
+      {
+        "title": "Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek",
+        "url": "https://www.youtube.com/watch?v=VSgeDgOCexs",
+        "attribution_basis": "Linked from Healthy and Better show notes; public TEDx speaker video",
+        "topic": "Health/wellness, not XRP"
+      }
+    ],
+    "candidate_channels_not_attributed": [
+      {
+        "handle": "@drkamilahstevenson",
+        "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+        "status": "UNVERIFIED_NO_OFFICIAL_CROSSLINK"
+      },
+      {
+        "handle": "@KamilahStevenson-e7b",
+        "url": "https://www.youtube.com/channel/UCYFaD0cVIxjtxIW053EgZpA",
+        "status": "UNVERIFIED_NO_OFFICIAL_CROSSLINK"
+      }
+    ],
+    "xrp_youtube_video_inventory_status": "NONE_VERIFIED"
+  }
 }

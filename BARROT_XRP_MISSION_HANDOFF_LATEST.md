@@ -4793,3 +4793,121 @@ ChatGPT/GitHub authentication and repository data flow were tested. The observed
 - No forecast issued. No paper trade, real-money action, deployment, secret rotation or external model dispatch.
 
 Next concrete action: verify exact-head CI after this commit, then obtain independent review/branch-protection evidence. Continue SEC capture only after an approved monitored `BARROT_SEC_USER_AGENT` contact identity is configured. Keep forecasts disabled until raw provenance, drift, leakage-safe walk-forward tests, baselines and calibration pass.
+
+
+## Run 262 — 2026-11-21 11:17:36 UTC
+
+### Repository and integration snapshot
+
+- **Current main:** `550a647ee7269a704d4600ff337b2145acc90473`; complete main tree has 3,115 entries, not truncated. No changes were made to main.
+- **XRP integration PR:** [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch `integration/xrp-post-merge-verification-20261121T0002Z`. The last code/test head before this handoff/research/test-data commit was `373721be6bc00c81ae25e8ea7c7be21abdde7992`; it was 63 commits ahead of main, 0 behind, with 10 changed files. The branch tree had 3,118 entries and no main paths were missing.
+- **Separate V3 security PR:** [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685), 5 commits ahead, 0 behind, 9 changed files, no overlapping paths with #1684. It remains a unique A2A credential-separation workstream.
+- No new PR, no force-push, no branch rewrite, no source PR closure. The Run262 metadata/research/test-data commit is a fast-forward child of `373721be6bc00c81ae25e8ea7c7be21abdde7992`; it must receive its own exact-head CI before any merge decision.
+
+### Exact-head full-suite and safety evidence on `373721be6bc00c81ae25e8ea7c7be21abdde7992`
+
+[PR CI run 44897424185](https://github.com/Barrot-Agent/B-Agent/actions/runs/44897424185) passed on exact head `373721be6bc00c81ae25e8ea7c7be21abdde7992`:
+
+- Full repository suite: **4,544 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests; 123.09 seconds.
+- Inclusive coverage: **73.20%**. The legacy/core subset measured 81%; expanded package gates passed for XRP telemetry 92%, MMI 92%, Barrot integration 62%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, monetization 78%, rendering 71%, smart_agent 77% and mem_palace 100%.
+- Dependency audit [44897424180](https://github.com/Barrot-Agent/B-Agent/actions/runs/44897424180), money audit [44897424137](https://github.com/Barrot-Agent/B-Agent/actions/runs/44897424137), conflict integrity [44897424157](https://github.com/Barrot-Agent/B-Agent/actions/runs/44897424157), GitHub Pages validation and the full-suite job all passed.
+- The same PR run executed the real-artifact backfill replay successfully; see below.
+- The prior push run on the same code head also passed full-suite CI. An earlier run failed one stale exact-phrase assertion; that assertion was corrected before `373721be6bc00c81ae25e8ea7c7be21abdde7992`.
+
+The fail-closed gate [44897424216](https://github.com/Barrot-Agent/B-Agent/actions/runs/44897424216) correctly returned **READINESS=BLOCKED**:
+1. PR #1684 is still draft.
+2. No independent approving review exists.
+3. Branch-protection details could not be verified (HTTP 403). The visible fallback ruleset is disabled; CODEOWNERS is `* @Barrot-Agent`.
+
+The PR is conflict-free/mergeable according to GitHub, but the governance gate blocks merge. **Do not merge or bypass the gate.** PR #1685 is also draft and has no independent approval; its full suite and dependency audit passed on its own head, but its fail-closed gate remains blocked.
+
+### Historical feature-store backfill — actual module executed
+
+The branch's actual `xrp_feature_store_backfill.py` executed in PR CI against downloaded real artifacts from main and the historical sibling runs. This was not a synthetic fixture.
+
+- Source sibling: run `44844953105`; competing sibling/main fork: `44848909814`; common parent: `44844499889`.
+- The module verified both sibling raw-artifact/index digests and the main receipt-index lineage through run 37 (`44893151950`). No prior receipt was rewritten.
+- Isolated database before: **11 snapshots / 16,200 records**.
+- Isolated database after: **12 snapshots / 16,318 records**.
+- Recovered: **118 records from 11 source lineages**.
+- SQLite integrity: `ok`; all 12 snapshot manifests and source/feature lineage checks passed.
+- Point-in-time boundary: 16,200 records one microsecond before the actual recovery receipt; 16,318 one microsecond after. The recovered snapshot is invisible before its receipt and visible after it.
+- Reconciliation SHA-256: `a1cf1c53605942f419b5a8db65431e3ae5ae931d51a1c7ccf126ad4d9706373d`.
+- [CI reconciliation artifact](https://github.com/Barrot-Agent/B-Agent/actions/runs/44897424185/artifacts/14704787080), ID `14704787080`, digest `sha256:c343c40b306073ddb9f3e0e64f5218eee49c1fab6b38811c62c7c08f7b870c28`, retention until 2027-02-19.
+
+**This recovery is verified only in the CI runner's isolated copy. Main's feature-store database remains at 11 snapshots / 16,200 records.** GitHub Actions artifacts are retention-limited, not WORM and not independently timestamp-anchored. No directional forecast or trading action follows from this recovery.
+
+The durable receipt summary is `research/xrp_intelligence/20261121T110738Z-run262-backfill-verification-summary.json`.
+
+### Institutional network and regulatory reconciliation
+
+The new public-source evidence record is `research/xrp_intelligence/20261121T111736Z-run262-institutional-network-identity-reconciliation.json`. It separates direct partnerships from shared infrastructure and distinguishes live capabilities from announced future plans.
+
+- **Ripple ↔ Coinbase:** RLUSD trading/management is live on Coinbase Prime, Exchange and Retail, with XRPL, Base and Ethereum deposit/withdrawal support and 1:1 conversion. Coinbase Global Exchange collateral support was explicitly future at the October 28 announcement; do not model it as live.
+- **Ripple ↔ BNY:** BNY says it now supports XRP and RLUSD custody and is primary RLUSD reserve custodian; it also has a Ripple Prime custody relationship. Direct RLUSD mint/redeem through BNY remains an intended future feature subject to final approvals. Tokenized trade finance is subject to client requirements; C2FO supply-chain finance is exploratory.
+- **Circle ↔ BNY:** BNY clients can already store, transfer, mint and burn USDC through BNY custody; BNY is primary USDC reserve custodian.
+- **Circle ↔ Coinbase:** Circle remains USDC issuer; Coinbase took an equity stake and shares reserve-interest economics under the 2023 agreement.
+- **Circle ↔ Ripple:** no direct partnership was verified. BNY is a shared institutional custody/settlement node, not evidence of direct Circle-Ripple coordination.
+- **SBI ↔ Ripple:** SBI VC Trade began RLUSD handling on June 24, 2026, and had handled USDC since March 2025. SBI describes group collaboration with Ripple dating to 2016. The Japanese Type-4 electronic-payment classification is SBI VC Trade's Japanese-law treatment, not a U.S.-law trust-beneficial-interest classification.
+- **Evernorth ↔ Coinbase:** Coinbase is the principal market used for XRP impairment accounting; Evernorth's initial post-close custodian was BitGo Trust. Principal-market selection is not evidence of Coinbase execution or custody.
+- **OCC:** Ripple National Trust Bank charter 25364 became consummated/effective October 26, 2026; Coinbase National Trust Company charter 25390 became consummated/effective November 6, 2026. Both are national trust-bank charters, not FDIC-insured deposit banks. Charter status alone does not prove all proposed services are live.
+
+#### Evernorth “actual capital” distinction
+
+The November 13 SEC Form 10-Q separates the flows:
+
+- $214,049,995 cash under advance subscriptions purchased 84,365,876 XRP.
+- 261,919,096 XRP was contributed in kind by investors; Ripple separately contributed 126,791,458 XRP to Pathfinder; 200,000 XRP was delayed funding. The combined in-kind closing amount was 388,910,554 XRP.
+- Gross cash at close was approximately $272.6M ($224.6M private-placement cash plus $48M trust-account release). The earlier $214.05M is included in the private-placement cash component; do not double count it.
+- The $30M convertible note produced $29M net cash; $35.3M gross warrant exercise proceeds were received post-close. The filing does not establish those proceeds were used to buy XRP.
+- The ELOC's maximum 5,218,935 shares are optional capacity, not cash raised without a disclosed draw.
+- Evernorth reported 346,284,972 XRP at September 30 and later transferred 346,484,972 XRP to Pathfinder; combined with Ripple's separate 126,791,458 XRP contribution, the derived Pathfinder total is 473,276,430 XRP. This is not 473.276M of open-market purchases.
+- Evernorth reported no revenue at September 30. Coinbase is the accounting principal market; BitGo Trust was the initial post-close custodian.
+
+“Actual capital” is not a formal accounting term or one defensible total. Keep cash, in-kind XRP, trust proceeds, debt, warrants and optional equity-line capacity separate.
+
+### SBIC identity and exact-phrase findings
+
+- SBIC East, Central and West are three separate regional Small and Medium Business Investment & Consultation companies under Japan's 1963 framework. They are distinct from SBI Holdings; SBI VC Trade is the SBI Holdings subsidiary involved in the RLUSD listing.
+- SBIC East's June 2025 investee-company AI/ChatGPT training course was delivered by VOST. It is not evidence of an OpenAI partnership.
+- “ASK Coin” remains unresolved; no verified XRP/XRPL/Ripple entity or relationship was established.
+- “actual capital” is reconciled through SEC cash/in-kind disclosures, but the phrase itself is not a formal accounting term.
+- “SBIC, ChatGPT SBIC” has no formal OpenAI partnership or exact-phrase corroboration.
+
+### Camilla/Kamilah Stevenson identity and YouTube inventory
+
+The person Dr Kamilah Stevenson is verified at high confidence through the wellness profile, Healthy and Better show notes and the iHeart XRP episode metadata. The June 11, 2026 iHeart episode is a verified public XRP-focused guest appearance, but it is not a verified YouTube upload. Its transcript is auto-generated, spells the name Camila/Camilla, and transcribes the guest's self-reported YouTube display name as “doctor Camilla Stevenson”; the guest warns about fake pages.
+
+One YouTube video is verified as a speaker appearance through the Healthy and Better show notes: [Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek](https://www.youtube.com/watch?v=VSgeDgOCexs). It is not XRP-related.
+
+Two crypto/XRP-looking channels with similar names/descriptions surfaced, but neither is cross-linked from the verified person's official site or verified social accounts. Their ownership is **unverified**. No XRP channel video inventory is attributed to her.
+
+### Cross-analysis freshness failure
+
+Main cross-analysis run [44896330448](https://github.com/Barrot-Agent/B-Agent/actions/runs/44896330448) at 10:51 UTC used a checked-in historical corpus rather than refreshed sentiment data.
+
+- XRP sentiment was 550.208 hours old; BTC sentiment was 607.043 hours old.
+- Neither had sentiment entries in the previous 7 days; both are explicitly forecast-ineligible.
+- Entity co-occurrence produced 3,217 global pairs from 1,208 XRP-log and 1,245 BTC-log entries, but it does not separate counts per asset or provide freshness metadata. A Bitcoin headline appeared under an example labelled XRP because that field represents the source-log bucket, not verified asset relevance.
+
+Do not use these co-occurrence or sentiment outputs as current XRP features. Next step is fresh public-source ingestion with per-asset relevance, source provenance and freshness gates.
+
+### Prediction and platform status
+
+- Main ingestion run 37 remains the latest verified market snapshot: 34 receipts (22 retained payloads, 12 digest-only), 18 source failures, 23 raw-only sources, 16,200 feature records/11 snapshots, 106 eligible and 384 excluded feature records.
+- The four-venue price cluster was $0.890585–$0.890882, but the snapshot is top-of-book diagnostic data from one publisher-independence group, not a consolidated executable book.
+- Event timeline: 150 events, zero event raw hashes, receipt completeness false; 117 scenarios.
+- Drift: 204 features considered, zero evaluated. Walk-forward origins: zero. Forecast issuance remains **NOT_ISSUED**.
+- ChatGPT-to-GitHub connector data flow is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified; no external dispatch or data transfer occurred.
+
+### Disposition and next concrete action
+
+**DESIGNED:** evidence-preserving historical fork recovery, point-in-time visibility checks, institutional relationship graph and identity verification.
+
+**EXECUTED:** actual backfill module against real artifacts in isolated PR CI; primary-source reconciliation for OCC, SEC, Ripple, Coinbase, Circle, BNY, SBI and the three regional SBIC entities; YouTube person/channel attribution review; cross-analysis freshness audit.
+
+**VERIFIED:** exact-head full repository suite and real-artifact replay on `373721be6bc00c81ae25e8ea7c7be21abdde7992`; no merge or main mutation.
+
+**NOT VERIFIED / BLOCKED:** exact-head CI for this Run262 metadata/research/test-data commit; independent PR approval; branch protection; applying the recovered snapshot to main; immutable external timestamp anchoring; SEC API capture; event raw-hash completeness; sentiment refresh; drift evaluation; walk-forward performance and calibration.
+
+Next action: run exact-head CI on this handoff commit, preserve the fail-closed gate, obtain independent review and verifiable branch-protection evidence, then merge only if every condition is satisfied. After any permitted merge, fetch main again, verify the merge commit/files, run main CI, and only then apply the isolated backfill to the verified main feature-store copy. No forecast, paper trade, real-money action, deployment, secret rotation or external model dispatch.

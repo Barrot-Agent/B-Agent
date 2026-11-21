@@ -686,3 +686,54 @@ def test_run254_evernorth_capital_and_sbi_ownership_are_typed_and_model_ineligib
     assert any(x["from"] == "Circle" and x["to"] == "BNY" for x in relationships)
     assert any(x["from"] == "SBIC East/Central/West" and x["to"] == "SBI Holdings" for x in relationships)
     assert evidence["model_admission"]["forecast_status"] == "NOT_ISSUED"
+
+
+def test_run262_backfill_network_and_freshness_evidence_remain_non_forecast_eligible():
+    data = load_map()
+    root = Path(__file__).resolve().parents[1]
+
+    backfill = data["latest_backfill_verification"]
+    assert backfill["workflow_run_id"] == 44897424185
+    assert backfill["workflow_head_sha"] == "373721be6bc00c81ae25e8ea7c7be21abdde7992"
+    assert backfill["status"] == "VERIFIED_IN_CI_ISOLATED_COPY_NOT_APPLIED_TO_MAIN"
+    assert backfill["records_before"] == 16200
+    assert backfill["records_after"] == 16318
+    assert backfill["recovered_records"] == 118
+    assert backfill["snapshots_before"] == 11
+    assert backfill["snapshots_after"] == 12
+    assert backfill["sqlite_integrity"] == "ok"
+    assert backfill["visible_before_receipt"] is False
+    assert backfill["visible_after_receipt"] is True
+    assert backfill["external_anchor_status"] == "NOT_ANCHORED"
+    backfill_artifact = json.loads((root / backfill["artifact_path"]).read_text(encoding="utf-8"))
+    assert backfill_artifact["reconciliation_sha256"] == backfill["reconciliation_sha256"]
+    assert backfill_artifact["backfill_applied_to_main"] is False
+
+    network = data["run262_institutional_network_reconciliation"]
+    assert network["model_eligible"] is False
+    network_artifact = json.loads((root / network["artifact_path"]).read_text(encoding="utf-8"))
+    assert network_artifact["model_eligible"] is False
+    assert network_artifact["source_capture"]["raw_http_bytes_captured"] is False
+    ripple_coinbase = next(edge for edge in network_artifact["network_edges"] if edge["edge_id"] == "ripple_coinbase_rlusd")
+    assert ripple_coinbase["collateral_support_status"] == "FUTURE_NOT_LIVE_AT_ANNOUNCEMENT"
+    circle_ripple = next(edge for edge in network_artifact["network_edges"] if edge["edge_id"] == "bny_shared_node")
+    assert "No direct Circle-Ripple partnership" in circle_ripple["details"][0] or circle_ripple["status"] == "INDIRECT_COMMON_NODE"
+
+    freshness = data["run262_cross_analysis_quality"]["sentiment_profile"]
+    assert freshness["XRP"]["forecast_eligible"] is False
+    assert freshness["XRP"]["latest_sentiment_age_hours"] > 48
+    assert freshness["BTC"]["forecast_eligible"] is False
+    assert data["run262_cross_analysis_quality"]["entity_cooccurrence"]["per_asset_separation"] is False
+
+    creator = data["run262_creator_identity_review"]
+    assert creator["person_identity_status"] == "VERIFIED_WITH_HIGH_CONFIDENCE"
+    assert creator["channel_ownership_status"] == "UNVERIFIED"
+    assert len(creator["verified_youtube_videos"]) == 1
+    assert creator["xrp_youtube_video_inventory_status"] == "NONE_VERIFIED"
+
+    assert data["run262_exact_head_ci"]["full_repository_suite"]["passed"] == 4544
+    assert data["run262_exact_head_ci"]["full_repository_suite"]["failed"] == 0
+    assert data["run262_exact_head_ci"]["full_repository_suite"]["skipped"] == 1
+    assert data["run262_merge_decision"]["decision"] == "DO_NOT_MERGE"
+    assert data["run262_no_external_actions"]["merge_performed"] is False
+
