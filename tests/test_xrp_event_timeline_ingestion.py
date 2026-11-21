@@ -328,3 +328,46 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
     assert timeline["forecast_status"] == "NOT_ISSUED"
     assert timeline["directional_forecast"] is False
     assert timeline["scenario_count"] > 0
+
+
+def test_registry_verifies_exact_canonical_receipt_metadata(tmp_path):
+    path = tmp_path / "events.json"
+    item = _event("verified")
+    item["raw_source_sha256"] = "a" * 64
+    _write_registry(path, [item])
+    receipt = {
+        "receipt_id": "receipt-verified",
+        "source_id": item["source_id"],
+        "source_uri": item["source_url"],
+        "captured_at_utc": item["captured_at_utc"],
+        "raw_content_sha256": item["raw_source_sha256"],
+        "raw_bytes_retained": True,
+    }
+
+    result = _capture_event_timeline_registry(path, CUTOFF, raw_receipts=[receipt])
+
+    assert result["receipt_complete"] is True
+    assert result["receipt_linkage"]["verified_receipt_count"] == 1
+    assert result["timeline"]["event_timeline"][0]["canonical_receipt_id"] == "receipt-verified"
+
+
+def test_registry_does_not_link_url_only_match_from_another_capture_time(tmp_path):
+    path = tmp_path / "events.json"
+    item = _event("url-only")
+    _write_registry(path, [item])
+    receipt = {
+        "receipt_id": "receipt-later",
+        "source_id": item["source_id"],
+        "source_uri": item["source_url"],
+        "captured_at_utc": "2026-11-12T04:00:01Z",
+        "raw_content_sha256": "a" * 64,
+        "raw_bytes_retained": True,
+    }
+
+    result = _capture_event_timeline_registry(path, CUTOFF, raw_receipts=[receipt])
+
+    assert result["receipt_complete"] is False
+    assert result["receipt_linkage"]["url_match_count"] == 1
+    assert result["receipt_linkage"]["url_capture_time_match_count"] == 0
+    assert result["receipt_linkage"]["verified_receipt_count"] == 0
+    assert result["timeline"]["event_timeline"][0]["receipt_status"] == "MISSING_RAW_RECEIPT_HASH"

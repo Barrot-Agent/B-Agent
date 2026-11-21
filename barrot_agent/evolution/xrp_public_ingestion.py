@@ -154,6 +154,12 @@ ENDPOINTS = (
 
 
 DIGEST_ONLY_RAW_SOURCE_REASONS = {
+    "xrp_etf_flows_aggregator": (
+        "Publisher terms permit use and citation with attribution but require written permission "
+        "for commercial redistribution; this JSON contains the same row-level dataset as the CSV, "
+        "so retain its SHA-256 receipt only in public artifacts. Its metadata remains available "
+        "in memory to validate the separately hash-only CSV."
+    ),
     "xrp_etf_flows_csv": (
         "Publisher terms allow use and citation with attribution but require written permission "
         "for commercial redistribution; full CSV bytes are not retained in public artifacts."
@@ -5432,6 +5438,7 @@ def _run_coinbase_candle_backfill(
 def _capture_event_timeline_registry(
     registry_path: str | Path | None,
     data_cutoff_utc: str,
+    raw_receipts: Sequence[Mapping[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Build a cutoff-safe research-only timeline from a curated event registry."""
     default_path = Path(__file__).resolve().parents[2] / "research" / "xrp_intelligence" / "event_registry_current.json"
@@ -5448,6 +5455,7 @@ def _capture_event_timeline_registry(
             data_cutoff_utc=data_cutoff_utc,
             horizon_seconds=30 * 24 * 60 * 60,
             event_records=[],
+            raw_receipts=raw_receipts,
         )
         payload = {
             "schema_version": "1.0.0",
@@ -5458,7 +5466,8 @@ def _capture_event_timeline_registry(
             "data_cutoff_utc": data_cutoff_utc,
             "event_count": 0,
             "scenario_count": 0,
-            "receipt_complete": False,
+            "receipt_complete": timeline["receipt_complete"],
+            "receipt_linkage": timeline["receipt_linkage"],
             "forecast_status": "NOT_ISSUED",
             "directional_forecast": False,
             "probabilities": None,
@@ -5487,6 +5496,7 @@ def _capture_event_timeline_registry(
                 data_cutoff_utc=data_cutoff_utc,
                 horizon_seconds=30 * 24 * 60 * 60,
                 event_records=records,
+                raw_receipts=raw_receipts,
             )
         except EventTimelineError as exc:
             raise XRPIngestionError(f"XRP event registry failed validation: {exc}") from exc
@@ -5503,6 +5513,7 @@ def _capture_event_timeline_registry(
             "excluded_event_count": len(timeline["excluded_events"]),
             "scenario_count": timeline["scenario_set"]["scenario_count"],
             "receipt_complete": timeline["receipt_complete"],
+            "receipt_linkage": timeline["receipt_linkage"],
             "forecast_status": "NOT_ISSUED",
             "directional_forecast": False,
             "probabilities": None,
@@ -6180,7 +6191,11 @@ def run_ingestion(
             "This collector does not issue directional forecasts, trading signals, recommendations or paper trades.",
         ],
     }
-    event_timeline_capture = _capture_event_timeline_registry(event_registry_path, captured_s)
+    event_timeline_capture = _capture_event_timeline_registry(
+        event_registry_path,
+        captured_s,
+        raw_receipts=receipts,
+    )
     _write_json(output / "event_timeline.json", event_timeline_capture)
     summary.update({
         "event_timeline_path": "event_timeline.json",
@@ -6191,6 +6206,7 @@ def run_ingestion(
         "event_excluded_count": event_timeline_capture.get("excluded_event_count", 0),
         "scenario_count": event_timeline_capture["scenario_count"],
         "event_timeline_receipt_complete": event_timeline_capture["receipt_complete"],
+        "event_receipt_linkage": event_timeline_capture.get("receipt_linkage"),
         "event_timeline_model_eligible": False,
         "event_timeline_forecast_status": "NOT_ISSUED",
     })

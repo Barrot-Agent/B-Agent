@@ -9,9 +9,10 @@ create market features, or issue forecasts.
 available_at_utc is when the evidence became available to Barrot.
 captured_at_utc is the actual capture/ingestion time. A historical event
 captured after a historical cutoff is excluded even if its publisher timestamp
-is old. A raw-source hash alone does not establish receipt completeness. This module cannot
-verify canonical receipt metadata, retained bytes, or an independent timestamp anchor;
-a local hash chain is not an independent WORM anchor.
+is old. A raw-source hash alone does not establish receipt completeness. When canonical raw
+receipts are supplied, this module requires an exact source URL, capture timestamp, and
+SHA-256 match. The archive layer verifies retained bytes; this module does not create an
+independent timestamp anchor. A local hash chain is not an independent WORM anchor.
 """
 from __future__ import annotations
 
@@ -95,6 +96,179 @@ def _canonical_hash(value: Any) -> str:
     )
     return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
 
+
+
+
+def _normalize_receipt_url(value: Any, field: str) -> tuple[str, str, str, str]:
+    raw = _text(value, field)
+    try:
+        parsed = urlsplit(raw)
+        port = parsed.port
+    except ValueError as exc:
+        raise EventTimelineError(f"{field} must be a valid HTTP(S) URL") from exc
+    scheme = parsed.scheme.lower()
+    if scheme not in {"http", "https"} or not parsed.hostname:
+        raise EventTimelineError(f"{field} must be a valid HTTP(S) URL")
+    if parsed.username or parsed.password:
+        raise EventTimelineError(f"{field} must not contain embedded credentials")
+    host = parsed.hostname.lower()
+    if port is not None and not (
+        (scheme == "https" and port == 443)
+        or (scheme == "http" and port == 80)
+    ):
+        host = f"{host}:{port}"
+    return scheme, host, parsed.path or "/", parsed.query
+
+
+def _audit_receipt_linkage(
+    timeline: list[dict[str, Any]],
+    raw_receipts: Sequence[Mapping[str, Any]] | None,
+) -> dict[str, Any]:
+    """Link events only to canonical receipts matching URL, capture time, and hash."""
+    if raw_receipts is None:
+        return {
+            "status": "NOT_PROVIDED",
+            "receipt_count": 0,
+            "event_count": len(timeline),
+            "raw_hash_present_count": sum(
+                item.get("raw_source_sha256") is not None for item in timeline
+            ),
+            "url_match_count": 0,
+            "url_capture_time_match_count": 0,
+            "verified_receipt_count": 0,
+            "raw_bytes_retained_verified_count": 0,
+            "digest_only_verified_count": 0,
+            "ambiguous_match_count": 0,
+            "status_counts": {},
+            "receipt_complete": False,
+        }
+    if not isinstance(raw_receipts, Sequence) or isinstance(raw_receipts, (str, bytes)):
+        raise EventTimelineError("raw_receipts must be a sequence of canonical receipt mappings")
+
+    receipt_index: dict[tuple[str, str, str, str], list[dict[str, Any]]] = {}
+    seen_receipt_ids: set[str] = set()
+    for index, receipt in enumerate(raw_receipts):
+        prefix = f"raw_receipts[{index}]"
+        if not isinstance(receipt, Mapping):
+            raise EventTimelineError(f"{prefix} must be a mapping")
+        receipt_id = _text(receipt.get("receipt_id"), f"{prefix}.receipt_id")
+        if receipt_id in seen_receipt_ids:
+            raise EventTimelineError(f"duplicate canonical receipt_id: {receipt_id}")
+        seen_receipt_ids.add(receipt_id)
+        url_key = _normalize_receipt_url(receipt.get("source_uri"), f"{prefix}.source_uri")
+        captured_at, captured_at_text = _utc(
+            receipt.get("captured_at_utc"),
+            f"{prefix}.captured_at_utc",
+        )
+        raw_hash = _text(
+            receipt.get("raw_content_sha256"),
+            f"{prefix}.raw_content_sha256",
+        ).lower()
+        if not _SHA256_RE.fullmatch(raw_hash):
+            raise EventTimelineError(
+                f"{prefix}.raw_content_sha256 must be a 64-character SHA-256 hex digest"
+            )
+        raw_bytes_retained = receipt.get("raw_bytes_retained")
+        if not isinstance(raw_bytes_retained, bool):
+            raise EventTimelineError(f"{prefix}.raw_bytes_retained must be a boolean")
+        normalized = {
+            "receipt_id": receipt_id,
+            "source_id": receipt.get("source_id"),
+            "captured_at": captured_at,
+            "captured_at_utc": captured_at_text,
+            "raw_content_sha256": raw_hash,
+            "raw_bytes_retained": raw_bytes_retained,
+        }
+        receipt_index.setdefault(url_key, []).append(normalized)
+
+    status_counts: dict[str, int] = {}
+    url_match_count = 0
+    url_capture_time_match_count = 0
+    verified_receipt_count = 0
+    raw_bytes_retained_verified_count = 0
+    digest_only_verified_count = 0
+    ambiguous_match_count = 0
+
+    for event in timeline:
+        url_key = _normalize_receipt_url(event["source_url"], "event.source_url")
+        url_matches = receipt_index.get(url_key, [])
+        time_matches = [
+            receipt
+            for receipt in url_matches
+            if receipt["captured_at_utc"] == event["captured_at_utc"]
+        ]
+        if url_matches:
+            url_match_count += 1
+        if time_matches:
+            url_capture_time_match_count += 1
+
+        event_hash = event.get("raw_source_sha256")
+        exact_matches = [
+            receipt
+            for receipt in time_matches
+            if event_hash is not None and receipt["raw_content_sha256"] == event_hash
+        ]
+        canonical_receipt_id = None
+        raw_bytes_retained = None
+        receipt_source_id_match = None
+
+        if event_hash is None:
+            status = "MISSING_RAW_RECEIPT_HASH"
+        elif len(exact_matches) == 1:
+            status = "VERIFIED_CANONICAL_RECEIPT"
+            match = exact_matches[0]
+            canonical_receipt_id = match["receipt_id"]
+            raw_bytes_retained = match["raw_bytes_retained"]
+            receipt_source_id_match = match["source_id"] == event["source_id"]
+            verified_receipt_count += 1
+            if raw_bytes_retained:
+                raw_bytes_retained_verified_count += 1
+            else:
+                digest_only_verified_count += 1
+        elif len(exact_matches) > 1:
+            status = "AMBIGUOUS_MULTIPLE_CANONICAL_RECEIPTS"
+            ambiguous_match_count += 1
+        elif not url_matches:
+            status = "NO_CANONICAL_RECEIPT_URL_MATCH"
+        elif not time_matches:
+            status = "URL_MATCH_CAPTURE_TIME_MISMATCH"
+        else:
+            status = "URL_AND_TIME_MATCH_HASH_MISMATCH"
+
+        event["receipt_status"] = status
+        event["canonical_receipt_id"] = canonical_receipt_id
+        event["receipt_raw_bytes_retained"] = raw_bytes_retained
+        event["receipt_source_id_match"] = receipt_source_id_match
+        event["receipt_url_match_count"] = len(url_matches)
+        event["receipt_capture_time_match_count"] = len(time_matches)
+        status_counts[status] = status_counts.get(status, 0) + 1
+
+    receipt_complete = bool(timeline) and verified_receipt_count == len(timeline)
+    if not timeline:
+        overall_status = "NO_EVENTS"
+    elif receipt_complete:
+        overall_status = "COMPLETE"
+    elif not raw_receipts:
+        overall_status = "EMPTY_MANIFEST"
+    else:
+        overall_status = "INCOMPLETE"
+
+    return {
+        "status": overall_status,
+        "receipt_count": len(raw_receipts),
+        "event_count": len(timeline),
+        "raw_hash_present_count": sum(
+            item.get("raw_source_sha256") is not None for item in timeline
+        ),
+        "url_match_count": url_match_count,
+        "url_capture_time_match_count": url_capture_time_match_count,
+        "verified_receipt_count": verified_receipt_count,
+        "raw_bytes_retained_verified_count": raw_bytes_retained_verified_count,
+        "digest_only_verified_count": digest_only_verified_count,
+        "ambiguous_match_count": ambiguous_match_count,
+        "status_counts": dict(sorted(status_counts.items())),
+        "receipt_complete": receipt_complete,
+    }
 
 
 def _normalize_event(
@@ -337,6 +511,7 @@ def build_event_timeline(
     data_cutoff_utc: str,
     horizon_seconds: int,
     event_records: Sequence[Mapping[str, Any]],
+    raw_receipts: Sequence[Mapping[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Build a deterministic event timeline and research-only scenario set.
 
@@ -399,6 +574,7 @@ def build_event_timeline(
     )
     excluded.sort(key=lambda item: (item["event_id"], item["reason"]))
     evidence.sort(key=lambda item: item["evidence_id"])
+    receipt_linkage = _audit_receipt_linkage(timeline, raw_receipts)
 
     try:
         scenarios = build_scenario_hypotheses(
@@ -420,8 +596,7 @@ def build_event_timeline(
         raise EventTimelineError(str(exc)) from exc
 
     raw_hash_present_count = sum(1 for item in timeline if item["raw_hash_present"])
-    # Timeline inputs carry hashes but not independently verified canonical receipts.
-    receipt_complete = False
+    receipt_complete = receipt_linkage["receipt_complete"]
     payload: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
         "artifact_type": "barrot.xrp.point_in_time_event_timeline",
@@ -436,6 +611,7 @@ def build_event_timeline(
         "independent_source_group_count": len(independence_groups),
         "scenario_set": scenarios,
         "raw_hash_present_count": raw_hash_present_count,
+        "receipt_linkage": receipt_linkage,
         "receipt_complete": receipt_complete,
         "forecast_status": "NOT_ISSUED",
         "directional_forecast": False,
@@ -444,7 +620,8 @@ def build_event_timeline(
         "research_only": True,
         "warnings": [
             "Event records are explicit inputs; this module does not discover or verify external events.",
-            "A publisher SHA-256 digest is not a verified canonical receipt; raw bytes and receipt metadata are not validated here.",
+            "A canonical receipt link requires exact source URL, capture timestamp, and raw SHA-256 equality; URL-only matches are not links.",
+            "Digest-only receipts verify provenance hashes but do not retain the original payload bytes.",
             "A local SHA-256 chain is not an independent WORM or trusted timestamp anchor.",
             "Publisher independence is a conservative lineage heuristic, not proof of independent reporting.",
             "Scenario hypotheses are authored inputs; this module does not infer causality or forecast probabilities.",

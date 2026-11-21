@@ -1,0 +1,559 @@
+{
+  "schema_version": "barrot.xrp.research-evidence.v1",
+  "record_id": "run254-evernorth-q3-capital-sbi-ripple-coinbase-circle-reconciliation",
+  "captured_at_utc": "2026-11-21T10:09:55Z",
+  "data_cutoff_utc": "2026-11-21T10:09:55Z",
+  "mission": {
+    "priority": 1,
+    "objective": "XRP intelligence and measured prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, safety and verification foundation"
+  },
+  "evidence_status": "PRIMARY_SOURCE_RECONCILIATION_RESEARCH_ONLY",
+  "model_eligible": false,
+  "raw_capture": {
+    "raw_http_bytes_captured": false,
+    "raw_response_sha256": null,
+    "immutable_receipt_id": null,
+    "external_timestamp_anchor": null,
+    "limitation": "Sources were inspected through rendered public pages and SEC HTML. No byte-complete HTTP bodies, headers or trusted external timestamp receipts were captured in this research record. It is excluded from the point-in-time feature store, training and forecast evaluation."
+  },
+  "source_registry": [
+    {
+      "id": "evernorth_q3_2026_10q",
+      "publisher": "Evernorth Holdings Inc. via SEC EDGAR",
+      "authority": "Issuer Form 10-Q attached to Form 424B3 prospectus supplement",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+      "filed_date": "2026-11-13",
+      "source_independence_group": "evernorth_issuer_filings",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "As of 2026-09-30, Evernorth held 346,284,972 XRP with historical cost of approximately $846.575 million.",
+        "The filing reports $214.05 million of advance-funding cash used to purchase 84,365,876 XRP and 261,919,096 XRP contributed under private-placement subscriptions.",
+        "Unrestricted cash was $91,397 at 2026-09-30; Evernorth's $1.0 million revolving facility was undrawn; $3.6 million was payable to Pathfinder for operating costs paid on Evernorth's behalf.",
+        "Cumulative impairment was approximately $504.688 million and accounting carrying value approximately $341.887 million.",
+        "Evernorth had not generated revenue as of 2026-09-30; nine-month net loss was approximately $32.9 million, while Q3 reported net income was primarily affected by accounting movements including changes in fair value of refundable investor advances.",
+        "At the October 9 close, aggregate gross cash proceeds were approximately $272.6 million before transaction expenses and investors contributed approximately 388,910,554 XRP in kind.",
+        "Between October 12 and November 9, holders exercised 3,073,366 warrants for cash and Evernorth received approximately $35.3 million gross; 8,666,279 warrants remained outstanding."
+      ]
+    },
+    {
+      "id": "evernorth_oct12_2026_corrected_ownership_8k",
+      "publisher": "Evernorth Holdings Inc. via SEC EDGAR",
+      "authority": "Primary issuer Form 8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/d118629d8k.htm",
+      "event_date": "2026-10-12",
+      "signed_date": "2026-10-13",
+      "source_independence_group": "evernorth_issuer_filings",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "The filing corrects a clerical error in the prior closing report's share count.",
+        "Evernorth reported SBI Holdings, Inc. beneficial ownership of 9,431,914 Class A shares and 2,359,038 Class C shares.",
+        "Total shares outstanding at closing were 23,638,882 Class A and 31,392,746 Class C; the SBI figures equal 39.9% of Class A and 7.5% of Class C respectively.",
+        "The 39.9% figure is a Class A ownership percentage, not 39.9% of the entire company."
+      ]
+    },
+    {
+      "id": "evernorth_nov17_2026_8ka",
+      "publisher": "Evernorth Holdings Inc. via SEC EDGAR",
+      "authority": "Primary issuer Form 8-K/A and SEC filing index",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/0001628280-26-074319-index.htm",
+      "filed_date": "2026-11-17",
+      "source_independence_group": "evernorth_issuer_filings",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "The amendment adds Pathfinder's September 30, 2026 financial statements and MD&A plus updated pro forma financial information.",
+        "The amendment states that its updated pro forma information supersedes the prior pro forma information; it does not itself establish new XRP purchases or ELOC proceeds."
+      ]
+    },
+    {
+      "id": "evernorth_nov17_eloc_supplement",
+      "publisher": "Evernorth Holdings Inc. via SEC EDGAR",
+      "authority": "Primary issuer Form 424B3 prospectus supplement",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074355/evernorth-424stickerelocsxa.htm",
+      "filed_date": "2026-11-17",
+      "source_independence_group": "evernorth_issuer_filings",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "The optional committed equity facility covers up to 5,218,935 Class A shares.",
+        "Purchases are made at 97% of applicable VWAP subject to contractual conditions and issuer purchase notices.",
+        "The company may receive proceeds from shares sold to Cantor under the Purchase Agreement; the prospectus does not establish that the full facility or any specific amount has been drawn."
+      ]
+    },
+    {
+      "id": "sbi_evernorth_200m_announcement",
+      "publisher": "SBI Holdings, Inc.",
+      "authority": "Primary issuer announcement",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+      "published_date": "2025-10-21",
+      "source_independence_group": "sbi_holdings_issuer",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "SBI announced a $200 million cash contribution to Evernorth's PIPE, primarily intended for XRP purchases.",
+        "The later SEC closing disclosures confirm SBI Holdings beneficial ownership but do not provide a separate investor-level cash reconciliation for SBI's exact funded amount."
+      ]
+    },
+    {
+      "id": "sbi_ripple_equity_presentation",
+      "publisher": "SBI Holdings, Inc.",
+      "authority": "Primary corporate presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+      "published_date": "2026-05-01",
+      "source_independence_group": "sbi_holdings_issuer",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "SBI Holdings' FY2025 presentation describes Ripple as an SBI Group investee and reports an approximately 9% equity stake as of the presentation date."
+      ]
+    },
+    {
+      "id": "ripple_sbi_rlusd_japan",
+      "publisher": "Ripple",
+      "authority": "Primary issuer announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "published_date": "2026-06-24",
+      "source_independence_group": "ripple_issuer",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Ripple and SBI Holdings, through SBI VC Trade, announced RLUSD availability in Japan after JFSA approval.",
+        "The distribution channel is SBI VC Trade, a subsidiary of SBI Holdings; this is not a relationship with the separate regional SBIC companies."
+      ]
+    },
+    {
+      "id": "ripple_coinbase_rlusd",
+      "publisher": "Ripple",
+      "authority": "Primary issuer partnership announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "published_date": "2026-10-28",
+      "source_independence_group": "ripple_coinbase_joint_announcement",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "RLUSD became available through Coinbase Prime, Coinbase Exchange and Coinbase Retail, with support across XRPL, Base and Ethereum.",
+        "Ripple's announcement says Coinbase Global Exchange collateral support would follow; the release does not establish that RLUSD collateral was already active there on October 28.",
+        "Ripple reported RLUSD market capitalization of approximately $2.4 billion in this release; this is issuer-reported and time-specific."
+      ]
+    },
+    {
+      "id": "bny_ripple_custody",
+      "publisher": "BNY and Ripple",
+      "authority": "Joint primary institutional announcement",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "published_date": "2026-10-27",
+      "source_independence_group": "bny_ripple_joint_announcement",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "BNY is primary reserve custodian for RLUSD and has a custody relationship with Ripple Prime.",
+        "BNY announced support for XRP and RLUSD on its Digital Asset Custody platform.",
+        "Tokenized trade-finance exploration is a future intention subject to final BNY and regulatory approvals, not proof of a live XRPL trade-finance product."
+      ]
+    },
+    {
+      "id": "circle_usdc_network_and_reserves",
+      "publisher": "Circle",
+      "authority": "Primary issuer product/reserve page",
+      "url": "https://www.circle.com/usdc",
+      "observation_date": "2026-11-19",
+      "source_independence_group": "circle_issuer",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Circle states USDC is natively supported on 38 blockchain networks as of September 16, 2026, including XRPL.",
+        "Circle states the Circle Reserve Fund portfolio is custodied at BNY and managed by BlackRock; this does not mean BNY holds every USDC reserve asset."
+      ]
+    },
+    {
+      "id": "circle_coinbase_usdc_agreement",
+      "publisher": "Circle Internet Group, Inc.",
+      "authority": "Primary issuer/investor announcement",
+      "url": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "published_date": "2023",
+      "source_independence_group": "circle_coinbase_joint_announcement",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Circle remains the issuer of USDC after the Centre governance structure ended.",
+        "Circle announced that Coinbase took an equity stake in Circle and that both parties continue to share USDC reserve interest income under their agreement."
+      ]
+    },
+    {
+      "id": "circle_usdc_xrpl_launch",
+      "publisher": "Circle",
+      "authority": "Primary issuer announcement",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "published_date": "2025-06-12",
+      "source_independence_group": "circle_issuer",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Circle announced native USDC availability on XRPL mainnet through Circle Mint and Circle APIs.",
+        "This establishes Circle-issued USDC on XRPL, not a direct Ripple-Circle corporate partnership."
+      ]
+    },
+    {
+      "id": "japan_sbic_statute",
+      "publisher": "Digital Agency / e-Gov Japan",
+      "authority": "Official Japanese law database",
+      "url": "https://laws.e-gov.go.jp/law/338AC0000000101",
+      "law_number": "Showa 38, Law No. 101",
+      "promulgated_date": "1963-06-10",
+      "source_independence_group": "japan_government_law",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "Article 2 names three distinct companies: Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; and Osaka Small and Medium Business Investment & Consultation Co., Ltd."
+      ]
+    },
+    {
+      "id": "sbic_east_profile",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "First-party corporate profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "official_english_alias": "SBIC East Japan",
+      "source_independence_group": "sbic_east_issuer",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "The company identifies itself as SBIC East Japan and lists Nagoya and Osaka as sister companies."
+      ]
+    },
+    {
+      "id": "sbic_central_profile",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "First-party corporate profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "official_english_alias": "SBIC Central Japan",
+      "source_independence_group": "sbic_central_issuer",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "The company identifies itself as SBIC Central Japan and lists Tokyo and Osaka as sister companies."
+      ]
+    },
+    {
+      "id": "sbic_west_profile",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "First-party corporate profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "official_english_alias": "SBIC West Japan",
+      "source_independence_group": "sbic_west_issuer",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "The company identifies itself as SBIC West Japan and lists Tokyo and Nagoya as sister companies."
+      ]
+    },
+    {
+      "id": "sbic_chatgpt_event",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "First-party event notice",
+      "url": "https://www.sbic.co.jp/seminar/20260305js/",
+      "event_date": "2026-03-05",
+      "source_independence_group": "sbic_east_issuer",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "SBIC East hosted a generative-AI/ChatGPT seminar with a Microsoft Japan speaker.",
+        "The event is educational activity, not evidence of an OpenAI partnership, ChatGPT resale agreement or XRP strategy."
+      ]
+    },
+    {
+      "id": "iheart_kamilah_first_person_interview",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "authority": "Primary interview transcript with first-person guest statements",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "event_date": "2026-06-11",
+      "source_independence_group": "iheart_interview_primary",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "The guest is introduced as Dr. Kamilah Stevenson; the transcript records her spoken social-channel references and her warning that fake pages exist.",
+        "The auto-generated transcript may mis-transcribe Camilla/Kamilla/Kamilah spelling and does not authenticate a particular YouTube channel."
+      ]
+    },
+    {
+      "id": "kamilah_linktree_candidate",
+      "publisher": "Linktree profile DrKamilahstevenson1",
+      "authority": "Self-described social-link profile; ownership not independently verified",
+      "url": "https://linktr.ee/DrKamilahstevenson1",
+      "observation_date": "2026-10",
+      "source_independence_group": "linktree_candidate_account",
+      "raw_response_sha256": null,
+      "model_eligible": false,
+      "claims_supported": [
+        "The profile links to https://www.youtube.com/@drkamilahstevenson.",
+        "The recent profile does not independently prove that the interviewed guest controls the account."
+      ]
+    }
+  ],
+  "capital_reconciliation": {
+    "as_of_2026_09_30": {
+      "xrp_held": 346284972,
+      "historical_cost_usd": 846575043,
+      "advance_funding_cash_received_usd": 214050000,
+      "xrp_purchased_with_that_cash": 84365876,
+      "investor_in_kind_xrp_subscriptions": 261919096,
+      "unrestricted_cash_usd": 91397,
+      "cumulative_impairment_usd": 504687812,
+      "accounting_carrying_value_usd": 341887231,
+      "ripple_revolving_facility_limit_usd": 1000000,
+      "ripple_facility_drawn_usd": 0,
+      "pathfinder_related_party_payable_usd": 3600000,
+      "no_revenue_reported": true,
+      "nine_month_net_loss_usd_approx": 32900000,
+      "q3_net_income_usd_approx": 155300000,
+      "accounting_caveat": "Q3 net income was primarily affected by accounting movements, including changes in fair value of refundable investor advances. It is not operating revenue; the filing says Evernorth had not generated revenue."
+    },
+    "at_2026_10_09_close": {
+      "gross_cash_proceeds_usd_approx": 272600000,
+      "gross_cash_components_usd": {
+        "private_placement": 224600000,
+        "spac_trust_after_redemptions": 48000000
+      },
+      "transaction_expenses_deducted_from_gross_proceeds": true,
+      "cash_already_deployed_before_close_usd": 214050000,
+      "delayed_funding_cash_usd": 10500000,
+      "in_kind_xrp_total": 388910554,
+      "in_kind_xrp_components": {
+        "advance_subscription_xrp": 261919096,
+        "delayed_funding_xrp": 200000,
+        "ripple_contribution_to_pathfinder": 126791458
+      },
+      "pubco_xrp_transferred_to_pathfinder": 346484972,
+      "ripple_xrp_contribution_to_pathfinder": 126791458,
+      "combined_pathfinder_xrp_derived": 473276430,
+      "derivation": "346,484,972 Pubco XRP transferred to Pathfinder plus 126,791,458 XRP separately contributed by Ripple. This is an approximate treasury reconciliation, not proof all tokens remained in custody or were never sold."
+    },
+    "subsequent_financing": {
+      "convertible_notes": {
+        "principal_usd": 30000000,
+        "issue_date": "2026-10-13",
+        "interest": "4.00% PIK",
+        "maturity_year": 2031,
+        "classification": "debt; not equity and not proof of XRP purchases",
+        "net_proceeds_estimate_usd": 29000000,
+        "net_estimate_caveat": "The approximately $29 million net figure reflects a separately disclosed $1 million issuance cost; the Q3 filing reports approximately $30 million before transaction expenses. Do not treat either as current cash."
+      },
+      "public_warrant_exercises": {
+        "exercise_period_start": "2026-10-12",
+        "exercise_period_end": "2026-11-09",
+        "warrants_exercised": 3073366,
+        "exercise_price_usd": 11.5,
+        "gross_proceeds_usd_issuer_reported": 35300000,
+        "gross_proceeds_arithmetic_usd": 35343709,
+        "warrants_remaining": 8666279,
+        "classification": "actual gross cash proceeds reported by issuer; subsequent use not established"
+      },
+      "cantor_eloc": {
+        "agreement_date": "2026-10-23",
+        "maximum_new_shares": 5218935,
+        "purchase_price": "97% of applicable VWAP subject to contractual rules",
+        "issuer_discretion": true,
+        "registration_effective_date": "2026-10-30",
+        "actual_draw_proceeds_usd": null,
+        "draw_verified": false,
+        "commitment_fee_usd": 500000,
+        "fee_remittance_verified": false,
+        "classification": "potential equity facility, not actual capital until shares are sold to Cantor and proceeds received"
+      }
+    },
+    "capital_interpretation": [
+      "$214.05 million was actual historical cash received and used to acquire 84,365,876 XRP; it is not current free cash.",
+      "The 261.919 million investor XRP subscription amount and Ripple's 126.791 million XRP contribution were in-kind, not contemporaneous open-market purchases.",
+      "The approximately 388.911 million XRP in-kind closing amount includes investor contributions, delayed-funding XRP and Ripple's contribution.",
+      "The approximately $272.6 million closing cash figure is gross proceeds before transaction expenses; it is not a current cash balance.",
+      "The $30 million PIK note is debt. Warrant exercises produced approximately $35.3 million gross cash through November 9. Neither proves that proceeds were spent on XRP.",
+      "The Cantor ELOC is optional share-issuance capacity. The reviewed November 17 prospectus does not establish a draw or actual proceeds.",
+      "The $504.688 million impairment is an accounting write-down, not proof of an XRP sale or an equivalent cash outflow."
+    ]
+  },
+  "ownership_and_control": {
+    "sbi_holdings_evernorth_beneficial_ownership": {
+      "class_a_shares": 9431914,
+      "class_c_shares": 2359038,
+      "total_class_a_shares_at_close": 23638882,
+      "total_class_c_shares_at_close": 31392746,
+      "class_a_percentage_derived": 39.9,
+      "class_c_percentage_derived": 7.5,
+      "basis": "Evernorth October 12, 2026 Form 8-K expressly reports SBI Holdings, Inc. beneficial ownership and corrects a prior closing-report clerical error.",
+      "correction": "Use 9,431,914 Class A and 2,359,038 Class C. This supersedes earlier research values of 8,885,293 Class A and 2,905,659 Class C."
+    },
+    "sbi_cash_amount": {
+      "announced_pipe_contribution_usd": 200000000,
+      "announcement_date": "2025-10-21",
+      "exact_sbi_cash_funded_at_close": null,
+      "caveat": "SBI's own release announced the $200 million contribution. The reviewed SEC closing/Q3 filings do not separately reconcile the investor-level cash amount attributable to SBI Holdings. Do not equate the announced amount with an independently verified exact cash receipt."
+    },
+    "ripple_control": {
+      "wholly_owned_by_ripple_as_of": "2026-09-30",
+      "wholly_owned_after_2026_10_09_close": false,
+      "post_close_related_party": true,
+      "ripple_xrp_contributed_to_pathfinder": 126791458,
+      "contribution_type": "in-kind XRP for Pathfinder units",
+      "liquidity_caveat": "The filing describes contributed XRP as available to fund operating costs; no specific sale of these tokens is established by this evidence."
+    }
+  },
+  "institutional_relationship_graph": [
+    {
+      "from": "Ripple",
+      "to": "Coinbase",
+      "relationship": "RLUSD listing/distribution partnership",
+      "status": "announced and live for Prime, Exchange and Retail on 2026-10-28",
+      "caveat": "Coinbase Global Exchange collateral support was described as future; not admitted as live collateral use."
+    },
+    {
+      "from": "Ripple",
+      "to": "BNY",
+      "relationship": "RLUSD primary reserve custody; Ripple Prime custody relationship; XRP/RLUSD digital-asset custody support",
+      "status": "announced 2026-10-27",
+      "caveat": "Tokenized trade-finance exploration remains subject to approvals."
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relationship": "USDC issuance/distribution economics and Coinbase equity stake",
+      "status": "ongoing agreement described by Circle",
+      "caveat": "Circle remains the issuer; partner revenue is shared and should not be assigned entirely to Coinbase."
+    },
+    {
+      "from": "Circle",
+      "to": "BNY",
+      "relationship": "Custody of Circle Reserve Fund portfolio",
+      "status": "Circle issuer page",
+      "caveat": "This is not a statement that BNY holds every USDC reserve asset; BlackRock manages the fund."
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relationship": "Native USDC issuance on XRPL",
+      "status": "live since 2025-06-12",
+      "caveat": "No direct Circle-Ripple corporate partnership established by this evidence."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relationship": "Approximately 9% equity stake per SBI FY2025 presentation; RLUSD distribution through SBI VC Trade in Japan",
+      "status": "issuer-reported primary evidence",
+      "caveat": "Equity percentage is date-specific; no claim that SBIC regional entities are involved."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Evernorth",
+      "relationship": "Beneficial ownership of 9,431,914 Class A and 2,359,038 Class C shares",
+      "status": "Evernorth October 12 Form 8-K",
+      "caveat": "39.9% applies to Class A, not total company ownership; exact cash funded by SBI is not separately reconciled."
+    },
+    {
+      "from": "SBIC East/Central/West",
+      "to": "SBI Holdings",
+      "relationship": "No corporate affiliation established; separate statutory regional SME investment companies",
+      "status": "Japanese statute and first-party corporate profiles",
+      "caveat": "Do not collapse SBIC and SBI Group entities."
+    }
+  ],
+  "exact_phrase_and_identity_followups": {
+    "actual_capital": {
+      "literal_phrase_found_in_reviewed_sec_filings": false,
+      "interpretation": "Classify actual cash received, in-kind XRP, debt proceeds, warrant exercise proceeds, optional equity-facility capacity and fees as separate types."
+    },
+    "ask_coin": {
+      "prior_artifact": "research/xrp_intelligence/20261105T044552Z-ask-coin-entity-disambiguation.json",
+      "status": "AMBIGUOUS_EXACT_PHRASE",
+      "candidates": [
+        "Ask Coin exchange listing associated with askcoin.net",
+        "Permission Coin token with ticker ASK"
+      ],
+      "xrp_relationship": "NOT_ESTABLISHED",
+      "action": "Keep candidates separate and outside XRP features until a primary entity/contract link is verified."
+    },
+    "sbic_chatgpt": {
+      "status": "RESOLVED_AS_EDUCATIONAL_CONTEXT",
+      "entity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. / SBIC East Japan",
+      "evidence": "Official SBIC East seminars and training pages cover ChatGPT/generative AI.",
+      "openai_partnership": "NOT_ESTABLISHED"
+    },
+    "camilla_kamilah_stevenson": {
+      "person_identity": "VERIFIED_BY_FIRST_PERSON_INTERVIEW",
+      "channel": "@drkamilahstevenson remains an unverified candidate linked by a recent self-described Linktree profile",
+      "warning": "The interview guest warned that fake pages exist; transcript spelling may vary.",
+      "video_inventory": "NO_NEW_VIDEOS_ATTRIBUTED; do not expand inventory until an authoritative cross-link from the guest's established account or official site is obtained."
+    }
+  },
+  "source_disagreements_and_limits": [
+    "The October 12 Evernorth 8-K corrects a clerical share-count error in the prior closing report; use the corrected SBI Holdings beneficial-ownership figures.",
+    "SBI's $200 million PIPE announcement and the SEC's aggregate private-placement cash are not an investor-level cash reconciliation; exact SBI cash funded remains unresolved.",
+    "BNY's October 27 RLUSD market-cap statement (~$2.5 billion) and Ripple's October 28 statement (~$2.6 billion) are issuer-reported, date-specific rounded values; do not treat the difference as a contradiction or precise market feed.",
+    "Evernorth's September 30 cash balance predates the October 9 business-combination close and later note/warrant proceeds; it is not the current post-close cash balance.",
+    "The SEC 10-Q and 8-K are filings by the same issuer and are not independent issuer corroboration, even though they are separate filings.",
+    "Ripple's October 28 announcement reports final OCC approval for a National Trust Bank charter; no OCC primary confirmation was captured in this research run, so retain it as an issuer statement pending regulator-source verification."
+  ],
+  "hypotheses_and_counterevidence": [
+    {
+      "id": "H1-treasury-demand",
+      "hypothesis": "Evernorth's approximately 473.3 million XRP treasury demonstrates institutional XRP demand.",
+      "support": [
+        "The combined Pathfinder reconciliation is approximately 473.276 million XRP.",
+        "The company reported $214.05 million cash used to purchase 84.366 million XRP."
+      ],
+      "counterevidence": [
+        "Approximately 388.911 million XRP was contributed in kind at closing, including investor and Ripple contributions.",
+        "The exact exchange venues and execution timestamps for the $214.05 million XRP purchases were not disclosed in the reviewed filing.",
+        "The full treasury amount is not equivalent to contemporaneous open-market buy pressure."
+      ],
+      "status": "PARTIALLY_SUPPORTED_WITH_MAJOR_QUALIFICATION"
+    },
+    {
+      "id": "H2-ripple-contributed-xrp-sale",
+      "hypothesis": "Ripple's 126.791 million XRP contribution could create operating-liquidity supply if liquidated.",
+      "support": [
+        "The filing says the XRP contributed to Pathfinder is available to fund operating costs."
+      ],
+      "counterevidence": [
+        "No specific sale or exchange deposit is established by this evidence."
+      ],
+      "status": "POTENTIAL_SUPPLY_CHANNEL_NOT_OBSERVED"
+    },
+    {
+      "id": "H3-stablecoin-adoption-xrp-demand",
+      "hypothesis": "RLUSD and USDC distribution growth could increase XRP demand.",
+      "support": [
+        "RLUSD distribution is expanding through Coinbase and SBI VC Trade; USDC is native on XRPL; BNY supports XRP and RLUSD custody."
+      ],
+      "counterevidence": [
+        "Stablecoin growth and custody availability do not require XRP as a bridge asset or collateral.",
+        "Coinbase RLUSD collateral support was announced as future, not active in the October 28 release.",
+        "No direct Circle-Ripple partnership is established."
+      ],
+      "status": "PLAUSIBLE_BUT_UNPROVEN"
+    },
+    {
+      "id": "H4-accounting-impairment",
+      "hypothesis": "Evernorth's $504.688 million impairment indicates equivalent realized XRP selling pressure.",
+      "support": [],
+      "counterevidence": [
+        "The filing reports impairment accounting and does not establish a corresponding XRP sale or cash outflow."
+      ],
+      "status": "NOT_SUPPORTED_BY_REVIEWED_EVIDENCE"
+    }
+  ],
+  "model_admission": {
+    "status": "EXCLUDED",
+    "reason": "Rendered public-source research lacks byte-complete raw-source receipts and trusted capture timestamps. Capital/ownership facts are not market features until linked to verified transaction or wallet flows.",
+    "forecast_status": "NOT_ISSUED",
+    "directional_forecast_authorized": false
+  },
+  "next_actions": [
+    "Capture the SEC 10-Q, corrected October 12 8-K, November 17 8-K/A and ELOC supplement as raw bytes with SHA-256 receipts and source timestamps through the configured SEC adapter.",
+    "Reconcile the corrected SBI Holdings share counts into the institutional relationship graph without treating the Class A percentage as total-company ownership.",
+    "Monitor later SEC filings for actual ELOC draws, proceeds, warrant exercises, cash balance and XRP purchases/sales; do not infer from capacity.",
+    "Verify Ripple's OCC trust-bank approval against an OCC primary record before promoting the issuer statement.",
+    "Keep stablecoin distribution, custody availability and actual XRP bridge/collateral usage as separate features and hypotheses.",
+    "Keep ASK Coin candidates separate and maintain the YouTube channel quarantine until authoritative identity cross-linking is obtained."
+  ]
+}
