@@ -6688,3 +6688,55 @@ Primary relationship sources: [Circle/Coinbase 2023 agreement](https://investor.
 #### Next concrete action
 
 Complete exact-head CI for this gate-correction commit, including the new jq regression test, full repository suite, dependency audit, fail-closed gate and preserved-artifact backfill. The gate must still block PR #1684 because it remains draft and lacks independent approval/protection evidence. Then prioritize the allowlisted publisher-capture queue for the 150-event registry and legitimate SEC contact configuration. Keep directional forecasts disabled until receipt completeness, sequential history, chronological baseline comparisons, calibration and drift gates pass.
+
+
+### Run278 — 2026-11-21 23:58 UTC — gate regression, Run52 replay, and structured institutional research
+
+This addendum supersedes any older research-status wording above where it conflicts with the structured Run277 evidence file.
+
+#### Exact-head verification — parent head d3adb95 VERIFIED
+
+PR CI [44963857523](https://github.com/Barrot-Agent/B-Agent/actions/runs/44963857523) completed successfully on exact head **d3adb95d1e1eda41825a2663aca578e3ac72157c**:
+
+- Full repository suite: **4,562 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests, **73.20% coverage**, 162.11 seconds.
+- The new jq draft-state regression test passed. It verifies explicit false, true, missing and null; missing/null remain fail-closed.
+- Dependency audit [44963857529](https://github.com/Barrot-Agent/B-Agent/actions/runs/44963857529) passed across six manifests with no known vulnerabilities.
+- Money audit [44963857556](https://github.com/Barrot-Agent/B-Agent/actions/runs/44963857556) passed; conflict-integrity [44963875260](https://github.com/Barrot-Agent/B-Agent/actions/runs/44963875260) passed; Pages build was validation-only.
+- Fail-closed gate [44963875281](https://github.com/Barrot-Agent/B-Agent/actions/runs/44963875281) correctly returned **READINESS=BLOCKED** for PR #1684 because it remains draft, has no independent approving review, and branch protection could not be verified. It no longer reports a false draft state for a non-draft value in the tested jq expression.
+
+#### Run52 backfill replay — VERIFIED again on d3adb95
+
+The actual branch backfill module replayed main Run52 [44960557644](https://github.com/Barrot-Agent/B-Agent/actions/runs/44960557644):
+
+- 17,766 records / 24 snapshots before.
+- 17,884 records / 25 snapshots after.
+- 118 records restored across 11 source lineages.
+- All 26 artifact ZIP digests matched GitHub's recorded digests; zero mismatches.
+- SQLite integrity was OK; point-in-time visibility passed.
+- Reconciliation SHA-256: **b6a4afe39704f8b2b94d4afc7e79beb9a7c1264f8ae231bfc6a2ff955c6b15ca**.
+- Artifact [14730319623](https://github.com/Barrot-Agent/B-Agent/actions/runs/44963857523/artifacts/14730319623); ZIP SHA-256 **f4d0048e515e3f89d759f61afbf0da750decb39e66a63bb0a4cf11901b56f66e**, verified against the upload digest.
+- This is an isolated CI database. Main's database was not modified. Reconciliation hashes vary by replay because the availability-bound receipt is run-specific; preserve each replay receipt rather than treating repeated outputs as one immutable commit timestamp.
+
+#### Structured research artifact added
+
+New file: **research/xrp_intelligence/20261121T235326Z-run277-institutional-identity-capital-flow-reconciliation.json**
+
+It records source URLs, authority, source-independence groups, relationship edges, capital-flow categories, exact-phrase results, identity resolutions, video inventory, disagreements and model-admission limits. It explicitly sets raw_capture=false and model_eligible=false because web pages were reviewed but raw bytes/per-source hashes were not ingested into the receipt chain.
+
+New SBIC/ChatGPT evidence: SBIC East's official June 12–13, 2025 generative-AI course included ChatGPT usage and listed a VOST Education Division instructor; its official March 5, 2024 ChatGPT seminar listed a Microsoft presenter. These establish training events, not an OpenAI partnership. The 2025 course venue was VOST's Tokyo office, not the SBIC building.
+
+New RLUSD chain caveat: SBI VC Trade's June 24, 2026 RLUSD announcement states that initial VCTRADE deposits/withdrawals were Ethereum-chain only. Coinbase's October 28 announcement supports RLUSD on XRPL, Base and Ethereum, but says Coinbase Global Exchange collateral availability would follow later. SBI's XRPL tokenized-deposit PoC is a separate initiative and does not prove XRP token collateral or settlement use.
+
+#### Research disposition
+
+- ASK Coin: best-supported identity is Permission Coin (ASK); no XRP/XRPL link established. The January 10 official blog/current docs and January 15 distributed release disagree on the Base contract address; the older address remains a preserved conflict.
+- Kamilah Stevenson: official site, iHeart interview and channel metadata triangulate Dr. Kamilah Stevenson and @drkamilahstevenson. Two third-party public video appearances are catalogued; inventory is partial. “Camilla” in the auto transcript remains a spelling discrepancy.
+- “Actual capital”: not a formal accounting term. Cash, in-kind XRP, debt, exercised warrants, undrawn ELOC capacity and theoretical warrant proceeds remain separate. Evernorth's pre-close and post-close figures are not additive.
+- Circle-Coinbase, Circle-SBI, SBI-Ripple, Coinbase-Ripple and Ripple-BNY relationships are documented. No direct Circle-Ripple partnership is established; shared BNY custody and SBI's separate relationships are indirect links.
+- SBIC East/Central/West remain distinct regional legal entities, not SBI Holdings divisions. SBI VC Trade is a separate SBI Group subsidiary.
+
+#### Remaining governance and next action
+
+The gate correction is on the integration branch, not main. PR #1684 remains draft; PR #1685 remains a separate security workstream with no independent review. Main branch-protection enforcement remains unverified (HTTP 403). Do not merge either PR.
+
+This commit adds only the portability import for the jq regression test, the structured research artifact and this handoff update. Re-run exact-head full suite, dependency/security, fail-closed and Run52 backfill on the new commit. Then prioritize raw publisher capture for the 150-event registry and legitimate SEC contact configuration. Keep forecast issuance disabled.

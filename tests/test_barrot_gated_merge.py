@@ -56,6 +56,7 @@ def test_merge_gate_preserves_explicit_false_draft_state_and_fails_closed() -> N
     import json
     import shutil
     import subprocess
+    import pytest
 
     source = WORKFLOW.read_text(encoding="utf-8")
     expression = 'if has("draft") then (.draft|tostring) else "unknown" end'
