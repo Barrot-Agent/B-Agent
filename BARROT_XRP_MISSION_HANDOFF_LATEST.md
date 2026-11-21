@@ -1,5 +1,20 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
+
+## Run272 follow-up — historical test contract and CI efficiency correction
+
+**Current evidence head before this correction:** `460561ba6091d407c6ff3d10eb69145445c7e997`, 111 commits ahead of main, zero behind, 21 changed files. Main remains `550a647ee7269a704d4600ff337b2145acc90473`. The Run272 market/research artifact and nine-platform map are committed on the existing #1684 branch; no new PR was created.
+
+**Exact-head failure diagnosis.** Push CI `44947633404` completed with 4,558 passed, one failed, one skipped, 11 warnings, 32 subtests and 73.20% coverage. The sole failure was `tests/test_xrp_nine_platform_map_latest.py::test_run271_binds_current_main_run48_market_flow_backfill_and_pr_head`: the map correctly advanced `latest_run_id` to 272, while the Run271 historical test incorrectly required the root latest-run field to remain 271. This was a stale historical evidence assertion, not a market-data, backfill or production-code failure. The PR-event run `44947638474` was still executing at correction time; its real-artifact backfill job passed. Dependency audit `44947638489`, money audit `44947638500` and conflict-integrity `44947638493` passed. The historical Run271 test now binds to its own artifact; a separate Run272 test verifies run49, the 118-record isolated backfill and the current evidence snapshot.
+
+**CI duplication correction.** The same integration head launched full-suite jobs on both push and pull_request events. The full-suite job now runs for pull_request, main push and workflow_dispatch, and is skipped for integration-branch push. Core tests and validation remain on integration push. This preserves the full repository suite on the PR head and after main merges while avoiding duplicate full-suite compute. A regression test enforces the condition. The remediation commit requires fresh exact-head CI; no prior-head result is inherited.
+
+**Historical governance exception, explicitly preserved.** PR #1673 was merged by Barrot-Agent at 23:45:44 UTC on November 20, 2026, 22 seconds after fail-closed run `44838493851` failed at 23:45:22. It contained 556 commits and 1,492 changed files and had zero formal reviews. The gate explicitly reported that the PR remained draft and branch protection could not be verified. The merge is therefore a governance exception, not a gate-approved merge. Main CI `44839159044` subsequently passed on exact main SHA `550a647`: 4,534 passed, one skipped, zero failed, 73.22% coverage. The merge also triggered GitHub Pages deployment `44839139424`; the deploy job succeeded and published a 62.3 MB Pages artifact, while deployment authorization was NOT_GRANTED. This run did not initiate that deployment, did not revert the merge and will not repeat the exception.
+
+**Current merge decision remains BLOCKED.** PR #1684 remains draft, has no independent approving review, branch protection remains unreadable (HTTP 403), the visible fallback ruleset is disabled, and CODEOWNERS assigns all paths to Barrot-Agent. A merge to main would again trigger automatic Pages deployment; specific authorization is absent. No merge or deployment was performed in this correction.
+
+**Next actions:** finish exact-head full-suite and fail-closed verification on the remediation commit; preserve #1684 draft; repair event-to-receipt provenance and SEC capture configuration; then begin walk-forward baselines only after point-in-time data gates pass.
+
 ## Run272 checkpoint — 2026-11-21T20:34:14Z
 
 **Repository audit.** Main remains `550a647ee7269a704d4600ff337b2145acc90473` with 3,115 recursive tree entries and no truncation. The existing XRP integration branch was `45c166c310c9f32de82da1997a33d9d3e248b59f`, 110 commits ahead of main, zero behind, with 3,124 tree entries and 20 changed files. PR #1684 remains open/draft; PR #1685 remains a separate open A2A-security workstream, five commits ahead and zero behind. No changed-path overlap was found. No new branch or PR was created.

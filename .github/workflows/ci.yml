@@ -121,6 +121,10 @@ jobs:
 
   full-suite:
     name: Full repository test suite
+    # The PR event is the authoritative full-suite gate for integration branches.
+    # Main pushes and manual dispatches still run the full suite; integration pushes
+    # keep core tests and validation without launching a duplicate full-suite job.
+    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:

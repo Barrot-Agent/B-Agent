@@ -889,15 +889,15 @@ def test_run270_binds_main_run47_and_current_pr_head_evidence():
     assert run["no_external_actions"] is True
 
 
-def test_run271_binds_current_main_run48_market_flow_backfill_and_pr_head():
+def test_run271_historical_record_binds_main_run48_market_flow_backfill_and_historical_pr_head():
     data = load_map()
     run = data["run271_evidence_record"]
     root = Path(__file__).resolve().parents[1]
     artifact = json.loads((root / run["artifact_path"]).read_text(encoding="utf-8"))
 
-    assert data["latest_run_id"] == 271
+    assert artifact["run_id"] == 271
     assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
-    assert run["head_sha"] == data["current_pr_head_sha"] == "d82b9127472efc96008cd3269de198e1611eefca"
+    assert run["head_sha"] == "d82b9127472efc96008cd3269de198e1611eefca"
     assert run["integration_ahead_by"] == 109
     assert run["integration_behind_by"] == 0
     assert run["changed_files"] == 19
@@ -976,3 +976,69 @@ def test_run271_binds_current_main_run48_market_flow_backfill_and_pr_head():
     assert artifact["backfill_replay"]["reconciliation_sha256"] == backfill["reconciliation_sha256"]
     assert artifact["forecast_status"] == "NOT_ISSUED"
     assert artifact["model_eligible"] is False
+
+def test_run272_binds_current_main_run49_market_flow_backfill_and_pr_snapshot():
+    data = load_map()
+    run = data["run272_evidence_record"]
+    root = Path(__file__).resolve().parents[1]
+    artifact = json.loads((root / run["artifact_path"]).read_text(encoding="utf-8"))
+
+    assert data["latest_run_id"] == 272
+    assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
+    assert run["head_sha"] == data["current_pr_head_sha"] == "460561ba6091d407c6ff3d10eb69145445c7e997"
+    assert run["integration_ahead_by"] == 111
+    assert run["integration_behind_by"] == 0
+    assert run["changed_files"] == 21
+    assert run["main_tree_entries"] == 3115
+    assert run["integration_tree_entries"] == 3124
+
+    assert artifact["run_id"] == 272
+    assert artifact["model_eligible"] is False
+    assert artifact["forecast_status"] == "NOT_ISSUED"
+    ingestion = artifact["main_ingestion"]
+    assert ingestion["run_id"] == 44944994673
+    assert ingestion["receipts"] == 34
+    assert ingestion["retained_raw_payloads"] == 22
+    assert ingestion["digest_only_receipts"] == 12
+    assert ingestion["retained_payload_hashes_verified"] == 22
+    assert ingestion["retained_payload_hash_mismatches"] == 0
+    assert ingestion["feature_store"]["history_records"] == 17397
+    assert ingestion["feature_store"]["snapshots"] == 21
+    assert ingestion["feature_store"]["latest_snapshot_records"] == 106
+    assert ingestion["source_failures"]["total"] == 18
+    assert ingestion["raw_only_sources"] == 23
+
+    backfill = data["run272_backfill_verification"]
+    assert backfill["records_before"] == 17397
+    assert backfill["records_after"] == 17515
+    assert backfill["recovered_records"] == 118
+    assert backfill["snapshots_before"] == 21
+    assert backfill["snapshots_after"] == 22
+    assert backfill["artifact_zip_digests_verified"] == 24
+    assert backfill["main_modified"] is False
+
+    quality = data["run272_event_and_drift_quality"]
+    assert quality["events"] == 150
+    assert quality["scenarios"] == 117
+    assert quality["raw_source_hash_present"] == 0
+    assert quality["receipt_link_present"] == 0
+    assert quality["receipt_complete"] is False
+    assert quality["drift_features_considered"] == 204
+    assert quality["drift_features_evaluated"] == 0
+    assert quality["walk_forward_origins"] == 0
+    assert quality["forecast_status"] == "NOT_ISSUED"
+    assert data["run272_merge_decision"]["status"] == "BLOCKED"
+    assert data["run272_no_external_actions"] is True
+
+
+def test_full_repository_suite_is_not_duplicated_on_integration_push():
+    workflow = (
+        Path(__file__).resolve().parents[1] / ".github" / "workflows" / "ci.yml"
+    ).read_text(encoding="utf-8")
+    expected_job_header = """  full-suite:
+    name: Full repository test suite
+    if: github.event_name != 'push' || github.ref == 'refs/heads/main'"""
+    assert expected_job_header in workflow
+    assert "  pull_request:" in workflow
+    assert "  workflow_dispatch:" in workflow
+
