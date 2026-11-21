@@ -6329,3 +6329,71 @@ Verified: ChatGPT session → GitHub connector → Barrot-Agent/B-Agent. Unverif
 - **VERIFIED:** main SHA/tree; branch ancestry/tree; 4,558 passing tests on audited parent with three evidence-map failures; dependency, money, conflict and Pages validation-only jobs; Run49 backfill 118-record/11-lineage replay and point-in-time boundary; 22 retained raw payload hashes in Run49 artifact audit; no main modification.
 - **BLOCKED:** new addendum exact-head CI; independent PR approval; effective branch-protection evidence; Pages authorization; event-to-raw-receipt completeness; external immutable timestamp anchoring; SEC contact configuration; drift evaluation; walk-forward origins; baseline comparison, calibration and shadow evaluation; eight external platform authentications/data flows.
 - **Next action:** verify the new addendum commit's exact-head full repository suite and all security/verification gates. Fix any remaining evidence-contract failures without changing main or rewriting the branch. Keep PR #1684 draft and forecasts disabled until the full admission standard passes.
+
+
+### Run274 — Run50 ingestion, event-provenance audit, and full-suite evidence-contract repair
+
+Inspection window: 2026-11-21T22:05:12Z onward. This section supersedes older Run273 statements that Run50 was still in progress.
+
+#### Repository snapshot before this handoff update
+
+- Main SHA: `550a647ee7269a704d4600ff337b2145acc90473`; complete recursive tree: 3,115 entries, not truncated.
+- Existing XRP branch: `integration/xrp-post-merge-verification-20261121T0002Z`; pre-handoff head `a0d0dd49b009ae6d60a59597f696f7caa56b7d7c`; complete recursive tree: 3,126 entries, not truncated.
+- Compare: 116 commits ahead, 0 behind; all 3,115 main paths are present; 11 branch-only paths, all XRP backfill/evidence/test files. No main path is missing from the branch.
+- PR #1684: draft, mergeable metadata true, 116 commits ahead, 0 behind, 22 changed files, zero formal reviews. This remains the sole XRP integration PR.
+- PR #1685: separate A2A credential-separation workstream, draft, 5 commits, 9 changed files, zero reviews and no overlapping paths. Keep its runner quarantined.
+- Open PR inventory remains exactly #1684 and #1685. No new branch/PR and no PR closure.
+
+#### Full-suite failure diagnosis and correction
+
+On parent head `e69af29b4760fbbbc8fbdba16117ddac3370cf4f`, PR CI [44950545780](https://github.com/Barrot-Agent/B-Agent/actions/runs/44950545780) ran the full tracked-active repository suite:
+
+- 4,559 passed, 2 failed, 1 skipped.
+- 11 warnings, 32 subtests.
+- 73.20% coverage; 129.95 seconds.
+- Both failures were stale test-to-evidence-map contracts, not demonstrated production runtime failures:
+  1. `test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity` looked for `quote_basis` under `prediction_engine.latest_market_snapshot`. The map's contract stores it separately at `prediction_engine.quote_basis`. The test also carried an older USDT/USD value. The correction binds the actual current map object: `VERIFIED_TOP_OF_BOOK_ONLY`, same-venue synchronized top-of-book method, USDT/USD mid 0.998045, normalization overstatement 19.58829243797089 bps, one OKX publisher-independence group, and no depth normalization.
+  2. `test_run272_binds_current_main_run49_market_flow_backfill_and_pr_snapshot` treated Run272 as the latest global run and compared a historical snapshot to a mutable global PR-head field. Run272 is immutable historical evidence; the latest map is Run273. The test now preserves the Run272 historical main/head identity while allowing later mission runs and no longer compares that historical record with the mutable current PR head.
+- Test corrections were committed only to the existing integration branch: `6467116cf3cbd9da5c5f6d8bba0e6f2afc928349`, followed by `a0d0dd49b009ae6d60a59597f696f7caa56b7d7c`. No reset, force-push, or main modification.
+- Exact-head PR CI for `a0d0dd49`: [44954872369](https://github.com/Barrot-Agent/B-Agent/actions/runs/44954872369). At last inspection, the full repository suite and preserved-real-artifact backfill replay were still running; core CI, Pages validation-only, Money audit, and conflict-integrity had passed; dependency audit was pending; fail-closed gate was still running. **No exact-head full-suite pass is claimed yet.** The successful push CI [44954865907](https://github.com/Barrot-Agent/B-Agent/actions/runs/44954865907) is not a substitute for the PR full-suite job.
+- The earlier failed full-suite result is not carried forward to `a0d0dd49`. The handoff commit created by this Run274 update will itself require fresh exact-head CI.
+
+#### Main ingestion Run50 — completed successfully
+
+- Workflow: [XRP Public Market Ingestion run 44950217750](https://github.com/Barrot-Agent/B-Agent/actions/runs/44950217750), main SHA `550a647`, completed successfully at 2026-11-21T21:11:53Z.
+- Data cutoff: `2026-11-21T21:11:38.238751Z`; capture time: `2026-11-21T21:11:38.238751Z`.
+- Feature store: 17,520 history records, 22 snapshots, 123 eligible features, 367 excluded features, 2,230 input feature records; SQLite checkpoint integrity `ok`.
+- Receipts: 34 total; 22 retained raw payloads and 12 digest-only receipts. All retained-payload hashes are verified in the run artifact. Cross-run receipt continuity `CONTINUED`, verified, sequence 22. Cross-run chain SHA-256: `cdbfad30f361cd69b7d945229eebd9c1ddd4ee133c46448810f002167a489232`. Receipt-chain head SHA-256: `1d35911a4603d3fcf9d36851ec0d57d600b6f783ccbef06e5c791fe234a19bc7`. Receipt-log SHA-256: `3446c94c2f7e4ed5aaf93e4c1fe7bd1af0b5453da514ccb9e9d303d95a5eb963`.
+- External immutable anchor remains `NOT_ANCHORED`; GitHub Actions artifacts remain retention-bounded, not WORM.
+- OKX same-venue quote-basis calculation: normalized best bid USD 0.930073476; best ask USD 0.9301826000000001; mid USD 0.9301280380000001; spread 1.1732148214208709 bps. Snapshot skew 0.201 seconds; maximum component age 8.676751 seconds. The XRP-USDT and USDT-USD components share one OKX publisher-independence group. Only top-of-book prices are normalized; depth is not converted and there is no independent cross-venue corroboration from this pair.
+- Event timeline: 150 events, 117 scenarios, loaded, but receipt completeness false; model eligibility false. Drift: 0/204 features evaluated, `INSUFFICIENT_DATA`. Forecast status `NOT_ISSUED`.
+- SEC EDGAR capture remains `BLOCKED_CONFIGURATION`: monitored contact identity absent; zero submissions sources, zero filing events and zero raw SEC receipts; three SEC source failures. Do not invent `BARROT_SEC_USER_AGENT`.
+- Scheduled Cross Analysis [44953697314](https://github.com/Barrot-Agent/B-Agent/actions/runs/44953697314) also completed successfully on main.
+
+#### Event registry audit — concrete provenance gap
+
+A fresh read of main's `research/xrp_intelligence/event_registry_current.json` confirms:
+
+- 150 curated events; 109 unique source URLs across 58 hostnames; 147 source IDs; 112 declared independence groups. Canonical publisher-lineage group count remains uncomputed.
+- Source status: 79 verified, 67 provisional, 4 disputed.
+- Stance: 33 supports, 11 contradicts, 106 context.
+- 91 events have no exact publisher timestamp.
+- All 150 events have `raw_source_sha256 = null`.
+- The largest declared URL concentrations include SBI Group (23), SEC EDGAR (10), XRP Insights (10), OKX (8), and Kraken (8).
+- The integration branch's `event_timeline.py` now requires exact normalized source URL, exact capture timestamp, and matching SHA-256 before it links an event to a canonical raw receipt. URL-only or timestamp-only matching is deliberately insufficient.
+- Main's scheduled collector currently captures market/API sources but does not capture the 109 event-registry URLs as a versioned publisher-source batch. A valid next implementation is a bounded, allowlisted, rate-limited event-source capture queue that records the actual response bytes/hash and capture time, preserves the original `available_at_utc` and publisher timestamp, and links only after the event record is reconciled to that exact captured version. Do not backfill hashes from current page content while pretending they represent historical page versions. Do not manufacture publisher timestamps or independence groups.
+
+#### Governance and merge disposition
+
+- Main branch metadata reports `protected=true`; accessible metadata shows empty required status-check contexts. The detailed branch-protection endpoint still returns HTTP 403, so effective required-review/check/admin enforcement is not fully inspectable.
+- Main `.github/CODEOWNERS` is `* @Barrot-Agent`; this is not an independent reviewer.
+- PR #1684 remains draft with zero reviews. PR #1685 remains a separate draft security workstream with zero reviews.
+- **DO NOT MERGE.** The corrected exact-head full suite is still pending, independent approval is absent, and effective protection cannot be fully verified. No Pages deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, transfer, or real-money action occurred.
+
+#### DESIGNED / EXECUTED / VERIFIED / PENDING / NEXT
+
+- **DESIGNED:** Barrot V3 remains the execution/orchestration/safety/verification base; XRP-first scheduled ingestion, point-in-time features, raw receipts, event/counter-hypothesis ledger and fail-closed forecast admission.
+- **EXECUTED:** fresh main/tree/open-PR/branch/CI/dependency/security/handoff audit; Run50 main ingestion and Cross Analysis review; complete main and integration recursive tree comparison; event-registry provenance inventory; diagnosis of two full-suite evidence-contract failures; minimal test corrections on the existing XRP branch.
+- **VERIFIED:** main SHA/tree; branch SHA/tree and ancestry; no missing main paths; Run50 success and receipt-chain continuation; Run50 feature-store/quote-basis/event/drift/SEC status; event registry counts; parent-head full-suite failure details; core CI, Pages validation-only, Money audit and conflict-integrity success on `a0d0dd49`.
+- **PENDING:** PR full-suite and backfill replay on `a0d0dd49`; dependency audit; fail-closed result; exact-head CI for the forthcoming handoff commit; independent review; effective branch-protection evidence; event-source raw capture; external immutable timestamp anchor; SEC contact configuration; walk-forward origins, baseline comparison, calibration, drift evaluation and shadow cohort.
+- **Next concrete action:** finish the current exact-head PR CI on `a0d0dd49`; inspect the full-suite result and backfill replay artifact; correct any remaining evidence-contract failure on the same branch; then rerun the full suite and all gates on the final handoff commit. Keep PR #1684 draft and directional forecasts disabled until every admission and governance requirement is satisfied.
