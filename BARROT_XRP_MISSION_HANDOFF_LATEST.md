@@ -1,8 +1,8 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
-Updated: 2026-11-21 (Automation run 11: PR #1684 exact head 062bac08 passed the full repository suite and preserved-artifact backfill replay; main 550a647 unchanged; merge remains blocked by draft status and unverifiable branch protection).
+Updated: 2026-11-21 (Automation run 11 final checkpoint: PR #1684 exact head d073190 passed full-suite CI, dependency/security checks, and preserved-artifact replay; new multi-venue spot-depth and ETF-flow reconciliation recorded; main 550a647 unchanged; merge remains blocked by draft status, missing independent approval, and unreadable branch protection).
 
-## Current checkpoint — 2026-11-21T14:29:55Z (automation run 11)
+## Prior checkpoint — 2026-11-21T14:29:55Z (automation run 11; superseded by final checkpoint above)
 
 ### Repository and integration state
 
@@ -55,6 +55,76 @@ Updated: 2026-11-21 (Automation run 11: PR #1684 exact head 062bac08 passed the 
 4. Resolve SEC capture only with a legitimate monitored contact; retain missing/blocked filings as missing, never zero.
 5. Continue synchronized spot/depth, exchange-flow, derivatives, ETF, collateral, stablecoin and institutional-capital capture with point-in-time source-vintage controls.
 6. Keep forecasts disabled until leakage-safe chronological walk-forward evaluation, naive/momentum/mean-reversion/volatility baselines, calibration, drift and shadow outcomes are supported.
+
+
+
+## Final checkpoint — 2026-11-21T14:42Z (automation run 11; supersedes the 14:29Z checkpoint below)
+
+### Current repository state and exact-head CI
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; complete recursive main tree remains 3,115 entries.
+- The sole XRP integration PR remains [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch `integration/xrp-post-merge-verification-20261121T0002Z`, current head `d073190a131133c80b47bbfb5d451989a3abca7a`, 80 commits ahead / zero behind main, 13 changed files. PR metadata reports 81 total commits. It remains draft.
+- [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685) remains a separate A2A credential-separation workstream; it is not an XRP duplicate. Open PR inventory remains exactly #1684 and #1685. No new branch or PR was created; no overlapping changed paths were found.
+- Exact-head CI on `d073190`: [PR CI 44914667146](https://github.com/Barrot-Agent/B-Agent/actions/runs/44914667146) and push CI [44914662250](https://github.com/Barrot-Agent/B-Agent/actions/runs/44914662250) succeeded.
+- Full repository suite: **4,546 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests; 73.20% coverage; 148.26 seconds**. All tracked active repository tests were discovered; the configured coverage floors passed.
+- Exact-head dependency audit [44914667171](https://github.com/Barrot-Agent/B-Agent/actions/runs/44914667171), Money audit [44914667152](https://github.com/Barrot-Agent/B-Agent/actions/runs/44914667152), conflict-integrity [44914667153](https://github.com/Barrot-Agent/B-Agent/actions/runs/44914667153), and Pages validation-only all passed.
+- The real-artifact replay on the same head passed in job [136877595898](https://github.com/Barrot-Agent/B-Agent/actions/runs/44914667146/job/136877595898). It verified preserved main artifacts and their ZIP digests before executing the existing backfill module.
+- Exact-head fail-closed gate [44914667215](https://github.com/Barrot-Agent/B-Agent/actions/runs/44914667215) failed closed, as required: PR is draft, no independent approving review exists, and branch protection could not be read (HTTP 403). **Do not merge.** Tests passing do not waive governance requirements.
+
+### Latest preserved-artifact backfill replay
+
+- Main checkpoint run [44912673505](https://github.com/Barrot-Agent/B-Agent/actions/runs/44912673505) had 16,693 feature records / 15 snapshots.
+- Isolated replay added 118 historical records from 11 source lineages: 16,693 → 16,811 records; 15 → 16 snapshots.
+- Actual receipt time: `2026-11-21T14:37:06.107437Z`. Visibility boundary: 16,693 records immediately before the receipt; 16,811 immediately after. SQLite integrity and all snapshot manifests passed.
+- Reconciliation SHA-256: `6fe0da68c8f179a5722bf1ae6ce17bc9a1823bcaf6a7f1e1c5f4c256efbf7ffe`. Artifact [14711530461](https://github.com/Barrot-Agent/B-Agent/actions/runs/44914667146/artifacts/14711530461), ZIP SHA-256 `753006a768c9a59002256e1adad4e14725c0c9783ecbe8eb820e04f0415a7737`.
+- This is isolated verification only. Main's feature store was not modified; no adoption or merge occurred.
+
+### Verified primary-exchange spot and order-book snapshot
+
+- Downloaded the main raw artifact [14710004854](https://github.com/Barrot-Agent/B-Agent/actions/runs/44912673505/artifacts/14710004854). Its ZIP SHA-256 independently recomputed as `190df659ff935e43d888217b3b6312afe098064c6c57434528a3b0af5bb2fb73`, matching GitHub artifact metadata.
+- Independently recomputed every retained raw payload hash: **22/22 matched** the receipt manifest. Receipt chain: 34 entries, 22 retained payloads, 12 digest-only receipts; chain verification PASS. Cross-run continuity is sequence 15, linked to run 44907618235. Chain head `c54d5f4707bd8ca5975d7b14e98b109ccda3744945e59417d99db8b34519c1d5`; receipt-log SHA-256 `1a0c02425358c378f725d5d377fe3923c4fc3de9a918f7b8866405f77cece499`.
+- The synchronized primary-exchange capture spans 2026-11-21 14:12:08–14:12:14 UTC. USD mids: Coinbase `0.925550`; Kraken `0.925325`; Bitstamp `0.925325`; OKX `0.92555494` after same-venue USDT/USD normalization. Cross-venue range is approximately **2.485 bps** of the median. Top-of-book spreads: Coinbase 1.080 bps; Kraken 0.540 bps; Bitstamp 0.973 bps; OKX 1.079 bps.
+- OKX normalization uses its observed XRP-USDT mid `0.92695` and USDT-USD mid `0.998495`, producing USD mid `0.92555494`. The XRP and USDT/USD observations were 2 milliseconds apart and less than nine seconds old. No fixed 1:1 USDT assumption was used. Both inputs share one OKX publisher-independence group; they are not independent corroboration.
+- USD-notional depth, calculated from raw books:
+  - **10 bps:** Coinbase bids/asks $175.9K/$220.5K (imbalance −11.2%); Kraken $491.0K/$378.8K (+12.9%); Bitstamp $311.3K/$286.9K (+4.1%); OKX $119.9K/$190.6K (−22.8%).
+  - **50 bps:** Coinbase $1.830M/$1.165M (+22.2%); Bitstamp $810.2K/$645.2K (+11.3%); OKX $1.078M/$944.95K (+6.6%). Kraken omitted: its 100-level book reached only 37.0 bps on bids and 43.0 bps on asks, so 50/100-bps depth would be truncated.
+  - **100 bps:** Coinbase $4.103M/$2.425M (+25.7%); Bitstamp $860.7K/$768.5K (+5.7%); OKX $1.467M/$1.386M (+2.8%). OKX's 100-level book reached 110.6 bps on each side. Coinbase and Bitstamp payloads contained broader books.
+- The depth imbalance differs by venue and distance from mid. These are snapshots, not continuous sequence-reconstructed books or consolidated executable liquidity. They are research calculations from preserved raw bytes, not an admitted cross-venue prediction feature.
+- A later direct API check at 2026-11-21 14:41:04.745 UTC showed Kraken bid/ask `0.92707/0.92717`; OKX XRP-USDT `0.9275/0.9276`; OKX USDT-USD `0.99849/0.99850`, implying normalized OKX mid approximately `0.926154`. This corroborates a modest move from the 14:12 snapshot; it does not validate the external derivatives aggregators.
+- Raw receipt limitations remain: GitHub Actions retention is 90 days, not WORM; there is no independent trusted timestamp anchor. The cross-run hash chain is tamper-evident relative to its recorded head, not proof against wholesale rewriting.
+
+### ETF flow disagreement — preserve, do not average
+
+- The main run retained the XRP Insights JSON aggregator payload raw-only, SHA-256 `12f3e3bd83b42fef615a849b3a812a77a7377203f439e6ada865e5464742e07f`, captured 14:12:14 UTC; its embedded metadata says generated 13:37:37 UTC and data-as-of 2026-11-20.
+- XRP Insights reports a seven-fund universe and computes daily “flow” as change in issuer-reported holdings, not transfer-agent/AP cash creation/redemption. Its 20 Nov computed holdings deltas sum to approximately **−8.021M XRP / −$7.252M** across rows it marks computed. That includes Bitwise XRP at −5.580M XRP, XRPC at −2.663M XRP, XRPR at +221.7K XRP, and zero deltas for XRPZ, TOXR and BITW; GXRP is excluded.
+- Its own methodology warns that BITW is a multi-asset index sleeve whose holdings move with index rebalancing, XRPR has indirect exposure through another XRP ETP (double-count risk if aggregated with the underlying), GXRP had a capture gap, some historical rows are reconstructed, and fees paid in XRP can affect holdings deltas. This is **not verified net institutional cash flow** and remains model-ineligible.
+- CryptoKeyhole's page updated 2026-11-21 13:57 UTC reports 20 Nov as partial: 2 of 3 funds it reads daily, net outflow 2,659,361 XRP (about $2.4M), waiting for Franklin XRPZ; its last complete day, 19 Nov, is −3,251 XRP. It tracks only 3 daily-read funds out of 6 listed and does not include the same universe as XRP Insights. The page also displays an issuer-file date of 23 Nov while saying it was read on 21 Nov; preserve this future-date anomaly rather than silently correcting it.
+- InflowScan reports no settled 20 Nov total for its nine-fund universe. Its policy is to withhold the total until all active funds have reported.
+- Main-run issuer evidence is still not parser/model eligible: Bitwise and REX-Osprey HTML are retained raw-only pending parser/vintage verification; Canary and 21Shares are hash-only; Franklin XRPZ parsing failed; Grayscale returned HTTP 429. The CSV aggregator receipt is digest-only under its terms; no row-level CSV was persisted.
+- Therefore the competing values (−2.659M XRP partial vs −8.021M XRP holdings-delta aggregate vs no settled all-fund total) are coverage/methodology disagreements, not numbers to average or convert into a directional signal. Primary issuer/AP reconciliation remains blocked.
+
+### Derivatives and provider coverage
+
+- Third-party snapshots disagree and cover different universes: TradRadar reported $1.09B OI across seven exchanges at 09:25 UTC; Liqwall reported $859M at 12:22 UTC; OptimistFi reported $1.5B across 38 venues at 13:05 UTC, with CME listed as 22%. The timestamps, venue sets and contract coverage differ; Liqwall's current $859M also falls below the same page's stated 30-day low of $872M. These are research-only observations, not a consolidated OI series.
+- Main ingestion has eight Binance endpoint failures (HTTP 451) and five Bybit failures (HTTP 403). Bybit's documentation describes U.S. and Mainland China access restrictions; runner region is unverified. No proxy or bypass was attempted. Grayscale returned 429; Franklin XRPZ parsing failed; three SEC submissions are blocked because the required monitored project contact is not configured. Total source failures: 18.
+- Deribit XRP-USDC perpetual ticker and L2 remain raw-only until contract amount units, OI/funding semantics and sequence continuity are independently validated. Morpho CBXRP market parameters/state/liquidity/oracle and Coinbase CBXRP proof-of-reserves are also raw-only pending token-decimal, block-time, quote-scale and locale/cache normalization.
+
+### Institutional rails and entity relationships — new primary evidence
+
+- **DBS–Circle, 18 Nov 2026:** eligible institutional clients can directly mint and redeem USDC through DBS, with 24/7 USD-USDC settlement. This is a bank-led USDC distribution/redemption rail, not evidence of XRP or Ripple integration. Primary source: [DBS announcement](https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia).
+- **PNC–Coinbase, 9 Nov 2026:** eligible PNC Corporate & Institutional Banking clients can receive USDC through Coinbase Payment APIs in a limited pilot; incoming USDC is converted 1:1 into dollars deposited at PNC. PNC's announcement names Ethereum; Coinbase's blog does not name the chain. USDC is issued by Circle. The release describes an incoming-only pilot, not general USDC custody or an XRP/Ripple rail. Primary sources: [PNC](https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients) and [Coinbase](https://www.coinbase.com/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance).
+- **DBS–Kinexys by J.P. Morgan, 16 Nov 2026:** a separate 24/7 USD interoperability solution links permissioned tokenized-deposit networks between U.S. and Singapore accounts; Ant International is the first client. It is a competing bank-deposit rail, not an XRP announcement. [DBS primary announcement](https://www.dbs.com/newsroom/DBS_and_Kinexys_by_JP_Morgan_launch_industry_first_247_interoperability_solution_for_cross_border_tokenised_deposit_transfers).
+- **Ripple–BNY, 27 Oct 2026:** BNY's Digital Asset Custody platform supports XRP and RLUSD, expanding the custody collaboration. This establishes custody capability, not payment volume or XRP settlement adoption. [Ripple primary announcement](https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/).
+- **Circle–SBI:** Circle's 2025 Japan announcement describes its joint venture with SBI Holdings and SBI VC Trade's USDC launch. The newer DBS partnership shows Circle's institutional distribution is not limited to SBI. This does not make Japan's regional SBIC East/Central/West companies part of SBI Holdings. [Circle primary announcement](https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access).
+- **Relationship graph:** Circle → USDC issuance; SBI VC Trade and DBS → institutional distribution/mint-redemption channels; Coinbase → PNC payment API and conversion infrastructure; Ripple → RLUSD and XRPL; BNY → custody services for both Circle and Ripple products. BNY is a shared institutional node; no direct Circle–Ripple partnership is established by these sources.
+- Coinbase's own blog states final OCC approval for Coinbase National Trust Company on 9 Nov 2026. Treat that as a custody-regulatory development, not proof of XRP-specific flows.
+
+### Prediction status and next actions
+
+- Current main ingestion remains 16,693 history records / 15 snapshots; 123 eligible and 367 excluded latest feature records; 150 events; 117 scenarios.
+- Drift remains 0/204 evaluated; walk-forward forecast count remains zero; event-to-raw-receipt completeness remains false; external receipt anchoring remains `NOT_ANCHORED`; SEC institutional capture remains blocked.
+- **No directional XRP forecast is issued.** The spot/depth snapshot is descriptive and the ETF/derivatives aggregates remain non-model-eligible.
+- Next actions: preserve #1684 as the single XRP integration PR; obtain an independent reviewer and readable branch-protection evidence; resolve the Pages publication authorization exception; repair event-to-raw-receipt binding and external anchoring; fix SEC capture only with a legitimate monitored contact; reconcile issuer ETF/AP flows; restore lawful derivatives-source coverage; normalize CBXRP collateral units and indexer times; then run leakage-safe chronological baselines, calibration, drift and shadow evaluation.
 
 
 ## Mission priority
