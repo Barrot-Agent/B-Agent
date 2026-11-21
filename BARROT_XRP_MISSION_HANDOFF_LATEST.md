@@ -4911,3 +4911,99 @@ Do not use these co-occurrence or sentiment outputs as current XRP features. Nex
 **NOT VERIFIED / BLOCKED:** exact-head CI for this Run262 metadata/research/test-data commit; independent PR approval; branch protection; applying the recovered snapshot to main; immutable external timestamp anchoring; SEC API capture; event raw-hash completeness; sentiment refresh; drift evaluation; walk-forward performance and calibration.
 
 Next action: run exact-head CI on this handoff commit, preserve the fail-closed gate, obtain independent review and verifiable branch-protection evidence, then merge only if every condition is satisfied. After any permitted merge, fetch main again, verify the merge commit/files, run main CI, and only then apply the isolated backfill to the verified main feature-store copy. No forecast, paper trade, real-money action, deployment, secret rotation or external model dispatch.
+
+
+---
+
+## Run 263 — 2026-11-21 UTC — current integration checkpoint
+
+### Repository and integration state
+
+- Current `main`: `550a647ee7269a704d4600ff337b2145acc90473`.
+- Main tree: 3,115 entries, recursive tree complete and not truncated.
+- Main exact-head CI: run [44839159044](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159044), success; 4,534 passed, 1 skipped, 0 failed. Main dependency audit [44839159165](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159165) and money audit [44839159146](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159146) succeeded.
+- Main scheduled XRP ingestion run [44897904107](https://github.com/Barrot-Agent/B-Agent/actions/runs/44897904107), run 38, completed successfully on the exact main SHA.
+- Existing XRP workstream PR [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684) remains the sole active XRP integration PR. Branch: `integration/xrp-post-merge-verification-20261121T0002Z`. Current code head at this checkpoint: `fa7a400f4d921653867d376abfb91409a6b210f9`; 67 commits ahead, 0 behind; 12 changed files. Three-way mergeability is true. Recursive integration tree has 3,120 entries versus main's 3,115; all main paths are retained and the five additional paths are the new backfill module, its tests and three research artifacts. No force-push or history rewrite occurred.
+- Open PR inventory remains exactly #1684 (XRP integration) and [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685) (A2A credential separation). Their changed-file sets do not overlap. No new PR was created.
+- PR #1684 remains draft with zero independent approvals. PR #1685 remains draft with zero reviews. Both are **blocked**, not ready. #1685 is a separate security workstream, not a duplicate of the XRP integration.
+
+### Run 38 — current main ingestion
+
+Run 38 captured 34 receipts: 22 retained raw payloads and 12 digest-only receipts. The cross-run receipt chain reached sequence 12 and was continued from run 37. The feature-store checkpoint contains 16,324 historical records across 12 snapshots, with 124 eligible and 366 excluded feature records. SQLite integrity passed.
+
+The same run recorded 18 source failures and 23 raw-only sources. The event timeline contains 150 events and 117 scenarios, but event receipt completeness is false and event evidence is not forecast-eligible. Drift coverage includes 204 features but 0 evaluated features. Walk-forward origins and issued forecasts remain 0. Forecast status remains `NOT_ISSUED`.
+
+SEC EDGAR capture remains blocked: three SEC source failures, zero submissions/companyfacts captures and zero SEC raw receipts. No SEC-derived capital observation was promoted into market features.
+
+### Historical feature-store fork repair — executed and verified in an isolated CI copy
+
+The existing backfill module was executed by the PR workflow against preserved real artifacts and the latest successful main checkpoint, run 38. This is no longer only a manual reproduction.
+
+- Current-main checkpoint: 16,324 records / 12 snapshots.
+- Reconciled isolated copy: 16,442 records / 13 snapshots.
+- Recovered: 118 records from the omitted successful sibling run, with 11 source lineages.
+- Common parent: run 24 (`44844499889`); omitted sibling: run 25 (`44844953105`); forked descendant: run 26 (`44848909814`).
+- Main lineage was verified through run 38 (`44897904107`); downloaded artifact ZIP digests matched GitHub artifact digests.
+- SQLite integrity: `ok`; snapshot manifests, feature rows and source-lineage rows verified.
+- Point-in-time boundary: 16,324 records one microsecond before the actual recovery receipt; 16,442 one microsecond after it. The 118 records are not visible before their recovery receipt time.
+- Reconciliation SHA-256: `4386574aaf0ecaec5737a88d70099568650afb9634cd04aa64ad36719d8fd4c6`.
+- Exact code head tested by the replay: `fa7a400f4d921653867d376abfb91409a6b210f9`.
+- CI run: [44900076196](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900076196), backfill job succeeded. Artifact [14705562824](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900076196/artifacts/14705562824), SHA-256 `565976d833d0c4563a5a6c8ca8fcc56610c26e218fce89c0e02dd1c7ce412199`, 90-day retention.
+
+**The backfill has not been applied to main.** The successful replay verifies the exact branch module against the current main artifact lineage in an isolated CI database only. It does not establish predictive performance.
+
+### Corrections made during this run
+
+1. On the prior head `f3e097f`, exact-head CI found two evidence-contract failures: the Run 262 identity artifact lacked an explicit top-level `model_eligible` field, and the phrase assertion did not match the wording used for cash versus in-kind XRP.
+2. Added `model_eligible: false` and an explicit reason to the Run 262 institutional-network artifact. This accurately records that public-page research did not capture raw HTTP bytes or immutable source receipts and is not prediction-eligible.
+3. The next exact-head run found one remaining phrase assertion: the text used “SBIC East” rather than the full regional identity “SBIC East Japan.” Corrected the phrase record to name SBIC East Japan, SBIC Central Japan and SBIC West Japan explicitly.
+4. These are evidence/schema corrections; no market feature was made eligible and no forecast gate was relaxed.
+
+### Exact-head CI and security status at handoff time
+
+On current head `fa7a400f`:
+
+- PR CI run [44900076196](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900076196): core Tests passed; Pages build validation passed; real-artifact backfill replay passed; full repository test suite was still running at handoff capture.
+- Push CI run [44900072766](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900072766): full repository suite still running.
+- PR dependency audit [44900076172](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900076172): success across all six manifests, no known vulnerabilities reported.
+- PR money audit [44900076249](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900076249): success.
+- PR conflict-integrity check [44900076201](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900076201): success.
+- PR fail-closed gate [44900076179](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900076179): still running at handoff capture. The prior exact-head gate correctly blocked on draft status, no independent approving review, and branch-protection HTTP 403. The current full-suite result must be read from the final exact-head run; no earlier-head result is substituted.
+
+Security/governance remains unresolved. The main branch metadata reports protected, but the effective branch-protection endpoint returns HTTP 403 to this integration. The only visible repository ruleset, “Fall Back,” is disabled. CODEOWNERS assigns `* @Barrot-Agent`; this is not independent review. No branch-protection bypass, approval fabrication or merge was attempted.
+
+### Institutional and ecosystem research — executed, research-only
+
+Run 262's institutional reconciliation contains 21 public-source records across 14 publisher/independence groups. It is explicitly not model-eligible because raw HTTP bytes and immutable receipts were not captured.
+
+- **SBIC identity:** SBIC East Japan, SBIC Central Japan and SBIC West Japan are three separate regional Small and Medium Business Investment & Consultation companies under Japan's 1963 framework. They are distinct from SBI Holdings. The reviewed official profiles establish no SBI Holdings group affiliation and no verified XRP/Ripple relationship. SBIC East's 2025 ChatGPT/AI training for investee companies was delivered by VOST; this is not evidence of an OpenAI partnership.
+- **Ripple / Coinbase:** Ripple's October 28 RLUSD access announcement establishes the announced trading/distribution relationship. Coinbase collateral support was future availability at announcement, not live collateral at that date.
+- **Ripple / BNY:** BNY's October 27 release establishes an institutional custody relationship supporting XRP and RLUSD. BNY is also the primary RLUSD reserve custodian. The announced direct mint/redeem capability remained subject to final BNY and regulatory approvals.
+- **Circle / Coinbase / BNY:** Circle is the USDC issuer; Coinbase has an equity relationship with Circle and a USDC distribution/economics relationship. BNY is a common custody node for USDC and RLUSD. The reviewed evidence does not establish a direct Circle-Ripple partnership.
+- **SBI:** SBI VC Trade began handling RLUSD on June 24, 2026 and had previously handled USDC. SBI-affiliated Evernorth investors' disclosed share positions are not automatically attributable in full to SBI Holdings.
+- **Evernorth capital:** The SEC filing separates $214,049,995 in cash used to purchase 84,365,876 XRP from 261,919,096 investor in-kind XRP subscriptions and Ripple's 126,791,458 XRP in-kind contribution. The combined 473,276,430 XRP figure is not evidence of 473.276M open-market purchases. Do not double-count the $214.05M advance inside the $224.6M private-placement cash component. Coinbase is identified as the principal market for accounting valuation; BitGo Trust was the initial post-close custodian.
+- **Exact phrases:** “ASK Coin” remains unresolved as an XRP/XRPL/Ripple entity. “Actual capital” is not a formal accounting term; cash, in-kind XRP, debt, warrant proceeds and optional equity-line capacity remain distinct. “SBIC, ChatGPT SBIC” does not establish an OpenAI partnership.
+- **Creator identity:** Dr Kamilah Stevenson is verified with high confidence as a person. One TEDx YouTube video is verified, but channel ownership is not. The XRPTracer appearance is an iHeart episode, not a verified YouTube upload. No XRP-related YouTube video has been attributed to her; candidate channels remain unverified.
+
+Primary source register is in `research/xrp_intelligence/20261121T111736Z-run262-institutional-network-identity-reconciliation.json`, including OCC, Ripple, BNY, Circle, SBI, SEC and the three regional SBIC company profiles.
+
+### Nine-platform coordination
+
+Only the ChatGPT session → GitHub connector → Barrot repository data flow is verified. The connected GitHub permissions are broad (admin/maintain/push/pull/triage); token scopes were not introspected, so least privilege is not yet demonstrated. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified. No external task dispatch or data transfer was performed.
+
+### Forecasts and outcomes
+
+No directional XRP forecast has been issued. There are 0 walk-forward origins, 0 evaluated drift features and incomplete event-to-raw-receipt linkage. No calibrated out-of-sample candidate or shadow cohort exists. The recovered feature-store records are now reproducible in an isolated copy, but they do not establish predictive edge. No paper trading or real-money action occurred.
+
+### Backlog classification and next action
+
+| PR | Classification | Reason |
+|---|---|---|
+| #1684 — XRP integration | blocked | Draft; full-suite exact-head result pending; no independent approval; effective branch protection unverifiable |
+| #1685 — A2A credential separation | blocked | Draft; no independent approval; gate failed on governance; deployment/security isolation remains unverified |
+
+No PR is classified duplicate or superseded. Do not close either.
+
+**Next concrete action:** finish and inspect exact-head full-suite CI and the fail-closed gate for `fa7a400f`; if tests pass, update this handoff with the final run IDs, then re-run exact-head checks on the handoff commit. Keep #1684 blocked until an independent review and verifiable branch-protection requirements exist. Only after those conditions pass may the user-authorized merge proceed. After any future merge, fetch main again, verify the merge commit and files, run main CI, and revalidate the backfill against an isolated copy of the new main checkpoint before any adoption.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, external model dispatch, paper trade, funds transfer or real-money action occurred in this run.
