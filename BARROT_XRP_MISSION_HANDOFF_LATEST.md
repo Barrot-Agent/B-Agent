@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
-Updated: 2026-11-21 (Run248: PR #1673 merged; post-merge main CI verified; automatic Pages publication recorded; XRP public-ingestion workflow is now on main; first post-merge ingestion run not yet observed at capture).
+Updated: 2026-11-21 (Run249: two schedule-triggered XRP ingestion captures verified on main; cross-run receipt chain continued; forecast issuance remains disabled; PRs #1684 and #1685 remain blocked pending exact-head CI and independent review).
 
 ## Mission priority
 
@@ -15,7 +15,7 @@ Historical run records remain in this file and Git history. This update changes 
 - **Merge commit:** [`550a647ee7269a704d4600ff337b2145acc90473`](https://github.com/Barrot-Agent/B-Agent/commit/550a647ee7269a704d4600ff337b2145acc90473); signed commit verification is valid. Parents: base `52c01ab4dbd989be2ed3210165562ffb11e52a22` and integration head `2e6b0786cb4320facdf4827cb43d6f070d144e2e`.
 - **PR #1673:** [merged](https://github.com/Barrot-Agent/B-Agent/pull/1673) at 2026-11-20 23:45:44 UTC by `Barrot-Agent`; 556 commits, 1,492 changed files. The integration branch head is the second parent of the merge commit.
 - Main tree: **3,115 entries**, not truncated. The merged tree contains the XRP mission configuration, XRP ingestion code, scheduled workflow, relationship research and Barrot V3 changes.
-- Open PR inventory after this handoff update: **1** — [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), a two-file documentation-only draft for this post-merge handoff/map correction. No feature PR is open.
+- Open PR inventory at Run249: **2** — [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), the XRP handoff/map and regression-test correction; and [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685), a separate A2A credential-separation security workstream. Both remain draft and blocked; neither has an independent formal review.
 - The main branch metadata reports `protected=true`; the branch-protection endpoint returns HTTP 403 to the available integration. The only visible repository ruleset, “Fall Back,” is disabled. Effective required checks and administrator enforcement remain unverified.
 
 ## Governance exception — merge occurred after the fail-closed gate blocked
@@ -52,9 +52,9 @@ Barrot V3 remains the execution, orchestration, safety and verification foundati
 - Forecast ledger with explicit cutoff, horizon, target, assumptions, probabilities, alternatives and outcomes.
 - Fail-closed forecast issuance controls.
 
-**Scheduled ingestion activation:** `.github/workflows/xrp-public-ingestion.yml` is now present on main. It declares hourly capture at minute 03 and a daily extended capture at 00:15 UTC. The job has `actions:read` and `contents:read`, checks out the exact triggering SHA, and sets `persist-credentials:false`. The workflow is designed for read-only public-data collection and artifact uploads. No post-merge XRP ingestion run was observed in the main-branch run inventory at this capture; the schedule is present, but successful recurring production capture is not yet verified.
+**Scheduled ingestion activation:** `.github/workflows/xrp-public-ingestion.yml` is now present on main. It declares hourly capture at minute 03 and a daily extended capture at 00:15 UTC. The job has `actions:read` and `contents:read`, checks out the exact triggering SHA, and sets `persist-credentials:false`. The workflow is designed for read-only public-data collection and artifact uploads. Two successful schedule-triggered captures are now verified on main: run [44844499889](https://github.com/Barrot-Agent/B-Agent/actions/runs/44844499889) bootstrapped the feature store, and run [44844953105](https://github.com/Barrot-Agent/B-Agent/actions/runs/44844953105) continued the cross-run receipt chain at sequence 2. The workflow is therefore executing on main; recurring reliability, independent immutable retention, and forecast readiness remain separate gates.
 
-The last confirmed ingestion remains pre-merge run [44654352643](https://github.com/Barrot-Agent/B-Agent/actions/runs/44654352643), captured 2026-11-20 01:32:54 UTC: 34 receipts, 22 raw payloads, 12 digest-only, 21 source failures, 128 eligible features, 367 excluded features, 150 events, 117 scenarios and **zero walk-forward origins**. Drift remains `INSUFFICIENT_DATA`; forecast issuance remains disabled. GitHub artifacts are finite-retention and mutable, not independent WORM-grade storage or trusted timestamp anchoring.
+Latest confirmed main ingestion is [44844953105](https://github.com/Barrot-Agent/B-Agent/actions/runs/44844953105), captured 2026-11-21 00:36:59.566600 UTC: **37 receipts** (25 raw payloads, 12 digest-only), **21 source failures**, 118 eligible and 433 excluded feature records, 551 delta records, 1,981 cumulative feature-history records across two snapshots, 150 events, 117 scenarios, and **zero walk-forward origins**. The store verification passed (`sqlite_integrity=ok`, manifest/digest/lineage/count checks true). Cross-run continuity is verified as sequence 2 from run 44844499889. The receipt-chain head is `6d468312…3043d1`; receipt-log hash is `3bcbc571…66f5d`; cross-run chain hash is `5d6c10ea…ac758`. The raw ZIP artifact is [14682676364](https://github.com/Barrot-Agent/B-Agent/actions/runs/44844953105) (GitHub artifact digest `bba6ad96…616c30`); the feature-store checkpoint artifact is 14682841240 (digest `c2c7e7b2…df3a01`); receipt-index artifact is 14682417161 (digest `3bbd6521…5c013b`). These archive digests do not replace per-payload receipts or an independent timestamp anchor. Drift remains `INSUFFICIENT_DATA`; forecast issuance remains disabled. Raw artifacts expire after 90 days, feature-store checkpoints after seven days, and the Actions cache was read-only due budget exhaustion. No automatic rebuild from raw artifacts or independent WORM storage is implemented.
 
 The scheduled Cross Analysis workflow [44839818764](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839818764) succeeded after the merge, but it is not XRP market ingestion. Its log reports `STALE_INPUT`: sentiment-shift input exceeds the 48-hour freshness limit and the latest XRP sentiment entry is 2026-10-29 (age 539.205 hours). It is descriptive/stale, not a current signal or model feature.
 
@@ -3514,3 +3514,46 @@ The superseded source PR #1663 now has a cross-reference comment [7053832128](ht
 ### Run248 reserve-flow counterevidence
 
 CryptoQuant's November 17 analyst report describes exchange-specific divergence: Binance XRP reserves fell from 2.63B to 2.48B between Nov 9 and Nov 17 (−150M XRP), while Upbit reserves rose from 6.41B to 6.46B between Nov 5 and Nov 17 (+50M); Bithumb fell from 1.84B to 1.78B over its stated Oct 21–Nov 17 window (−60M). This does not establish a net ecosystem-wide withdrawal or long-term accumulation. CryptoQuant's November 5 report also says Binance reserves had risen 280M XRP from Nov 3 to Nov 5 following the Oct 29 hot-wallet incident, while Binance reported 98% of affected assets replenished by Nov 4. Post-incident reserve replenishment and subsequent normalization are material confounders. Preserve exchange-level wallet universes and event windows; do not aggregate these figures into a single bullish supply signal.
+
+
+## Run249 — scheduled XRP ingestion verified; PR remediation status
+
+Capture: 2026-11-21T00:37:12Z. Main remained `550a647ee7269a704d4600ff337b2145acc90473`; no main commit, new branch, or new PR was created.
+
+### Scheduled ingestion — EXECUTED and VERIFIED
+
+- [Run 44844499889](https://github.com/Barrot-Agent/B-Agent/actions/runs/44844499889): schedule event, successful bootstrap; 37 receipts, 25 raw payloads, 12 digest-only, 18 source failures; feature-store history 1,863 records.
+- [Run 44844953105](https://github.com/Barrot-Agent/B-Agent/actions/runs/44844953105): schedule event, successful continuation; sequence 2; restored the trusted per-run feature-store checkpoint from 44844499889.
+- Latest capture time/data cutoff: 2026-11-21T00:36:59.566600Z. Adapter: `xrp-public-market-v3.32`. Exact workflow ref points to main SHA `550a647ee7269a704d4600ff337b2145acc90473`.
+- Receipt-chain verification: **PASS**; 37 receipts, 25 retained raw payloads, 12 digest-only; chain head `6d468312b3651ad00a918dc2fb2bdf3b42c75b4b86ce988ecaff69bb883043d1`; receipt log SHA-256 `3bcbc57151c71c3110dbca547b45316fe10ac15f5a1a9e6b96104ae9d0b66f5d`; cross-run chain SHA-256 `5d6c10ea46f9b2e4523b68733869c2b653c496f9a7d50f2c51f5c4fa7b2ac758`.
+- Feature-store snapshot verification: 118 new eligible records, 433 excluded, 551 delta records, 1,981 cumulative history records, two snapshots; 11 source groups in the verified snapshot; SQLite integrity and manifest, digest, lineage, record-count checks passed.
+- Event/scenario outputs: 150 events and 117 scenarios. The event timeline remains model-ineligible; no event raw hashes were present in this capture.
+- Source quality: 21 failures. Bybit remains HTTP 403; SEC EDGAR remains blocked by missing monitored contact identity; Binance historical/derivatives sources continue to have provider client errors. No regional restrictions were bypassed.
+- Market coverage includes Binance, Bitstamp, Coinbase, Kraken, Bitbank and OKX spot observations. Deribit XRP-USDC perpetual ticker/L2, attributed exchange-wallet balances, ETF issuer holdings, stablecoin dashboards, lending/collateral and selected proof-of-reserves feeds remain raw-only pending semantic validation. Order books are REST snapshots, not a continuous synchronized L2 tape.
+- Cache persistence is read-only because the GitHub Actions cache budget is exhausted. The per-run checkpoint and receipt/event/raw artifacts uploaded successfully. GitHub artifact retention is finite (90 days for raw receipts; seven days for feature-store checkpoints); no independent WORM store, trusted external timestamp anchor, or raw-artifact rebuild path exists.
+
+### Prediction admission — NOT READY
+
+- `walk_forward_forecast_count=0`; `walk_forward_status=PARTIAL_OR_BLOCKED`.
+- `drift_status=INSUFFICIENT_DATA` (123 candidate features considered, zero evaluated).
+- `forecast_model_eligible=false`; `forecast_status=NOT_ISSUED`.
+- Baseline and calibration machinery is present, but there is no mature independent XRP candidate/shadow cohort or demonstrated out-of-sample superiority. No directional forecast or paper trade was issued.
+
+### Open PR backlog — two coherent workstreams
+
+1. [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), `integration/xrp-post-merge-verification-20261121T0002Z`: **blocked / draft**. The last completed exact-head full suite on `8e573f3` failed three stale repository-map assertions (PR #1673 state, obsolete 12-PR inventory, and obsolete pre-merge decision). Those assertions were corrected in commits `63bcde09` and `e8139c56`. The subsequent map/handoff update on this branch still requires its own exact-head CI. No independent review is present.
+2. [PR #1685](https://github.com/Barrot-Agent/B-Agent/pull/1685), `security/a2a-secret-separation-20261121`: **blocked / draft**. The last completed full suite on `92a7b1a` failed one stale test that expected the gateway secret to start the runner. Commit `e512f4e` updates the positive startup test to require `BARROT_AGENT_SECRET` and adds a gateway-only negative case. New exact-head CI is pending. The PR does not deploy the Worker, upload/rotate secrets, or activate the runner. OS sandboxing, provider-credential isolation and egress controls remain absent; the runner must stay quarantined.
+- Changed paths are disjoint: #1684 updates XRP handoff/map/tests; #1685 updates A2A Worker auth, deployment workflow, runner and A2A tests. No duplicate integration PR was opened.
+- Both PRs remain draft, have zero formal reviews, and fail-closed gates remain non-passing. Main branch metadata says protected, but the detailed protection endpoint is HTTP 403; the visible “Fall Back” ruleset is disabled. Effective required checks and administrator enforcement remain unverified.
+- PR #1673 remains merged at `550a647ee7269a704d4600ff337b2145acc90473` with the previously documented governance exception. Automatic Pages publication occurred without prior authorization. No revert, additional merge, deployment, secret rotation, Space restart, Databricks write, Kaggle submission, external model dispatch, paper trade, funds transfer or real-money action occurred in Run249.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** existing point-in-time ingestion, receipt-chain, feature-store, event/scenario, four-baseline, walk-forward, calibration, drift and forecast-ledger architecture.
+- **EXECUTED:** two scheduled public-data captures on main; receipt-chain continuation; store restore/checkpoint; current repository tree, open PRs, branch ancestry, changed paths, workflow runs, dependency manifests, CODEOWNERS, CI, dependency audit and governance settings inspected; stale PR tests corrected on the two existing branches.
+- **VERIFIED:** main SHA `550a647ee7269a704d4600ff337b2145acc90473`; main full suite 4,534 passed / 1 skipped / 0 failed; six-manifest dependency audit, Money audit and A2A Worker tests passed; ingestion runs 44844499889 and 44844953105 succeeded; latest receipt chain and feature-store snapshot verified.
+- **NOT VERIFIED:** exact-head CI after the Run249 documentation/map update; independent review; effective branch-protection enforcement; Pages publication authorization; independent WORM/timestamp anchoring; complete transitive workflow/script audit; stable drift; walk-forward origins; calibrated candidate superiority; independent shadow evaluation; eight external platform connections; A2A OS sandbox/egress/task-level controls; YouTube creator identity.
+
+### Next concrete action
+
+Verify the final exact-head CI results for #1684 and #1685. Keep both drafts until the full suite, dependency/security checks, independent approval and effective branch protection are verifiable. Preserve forecast issuance disabled until a receipt-backed historical dataset produces leakage-safe walk-forward origins, baseline comparisons, calibration, drift stability and independent shadow evidence.
