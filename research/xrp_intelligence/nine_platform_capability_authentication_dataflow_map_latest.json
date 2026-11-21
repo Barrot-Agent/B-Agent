@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-21T20:06:14Z",
+  "captured_at_utc": "2026-11-21T20:34:14Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -470,9 +470,9 @@
       "data_flow": {
         "status": "verified",
         "path": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
-        "last_verified_at_utc": "2026-11-21T18:23:08Z",
+        "last_verified_at_utc": "2026-11-21T20:34:14Z",
         "observed_flow": "Run267: fetched current main SHA and complete recursive main/integration trees; inspected the two open PRs, ancestry, changed paths and overlap; verified exact-head push/PR full-suite, dependency audit, money audit, Pages validation-only, merge-tree check and isolated real-artifact backfill; downloaded and independently inspected main run-42 raw receipts, feature-store SQLite, event timeline and drift report; verified main ingestion receipt-chain sequence 16. No main write, external model dispatch or data transfer.",
-        "last_verified_evidence": "Run269 verified GitHub repository reads, complete recursive trees, PR inventory, exact-head CI, main run46 artifacts, 22/22 retained payload hashes, feature-store SQLite and cross-run receipt chain. No main write or external provider dispatch."
+        "last_verified_evidence": "Run272: fetched complete current main/integration trees; inspected all open PRs and exact changed-path overlap; verified current exact-head CI, full repository suite, dependency/money/conflict checks, fail-closed blockers, main run49 raw/feature/event/receipt artifacts and all 22 retained payload hashes; executed isolated 118-record backfill against run49; no main write or external model dispatch."
       },
       "permissions": [
         "admin",
@@ -499,7 +499,7 @@
         "task": "Inspect current main, complete trees, open PRs, diffs, CI, dependencies, security settings and handoff; verify main run46 raw artifacts and SQLite feature store; analyze current XRP microstructure, quote basis, historical known_at leakage, event receipt gaps and nine-platform status; update the existing XRP integration workstream without merging."
       },
       "task_assignment_status": "EXECUTED_IN_RUN269",
-      "last_verified_at_utc": "2026-11-21T18:23:08Z"
+      "last_verified_at_utc": "2026-11-21T20:34:14Z"
     },
     "Claude": {
       "authentication_status": "unverified",
@@ -6649,9 +6649,9 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-21T18:23:08Z",
-  "latest_run_id": 271,
-  "latest_run_captured_at_utc": "2026-11-21T19:02:47Z",
+  "last_verified_at_utc": "2026-11-21T20:34:14Z",
+  "latest_run_id": 272,
+  "latest_run_captured_at_utc": "2026-11-21T20:34:14Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
   "current_successor_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
   "observed_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -17866,5 +17866,131 @@
       "Captured exact-head suite on d82b failed two stale evidence-contract assertions; this checkpoint commit requires a fresh exact-head full-suite run."
     ]
   },
-  "run271_no_external_actions": true
+  "run271_no_external_actions": true,
+  "run272_repository_snapshot": {
+    "captured_at_utc": "2026-11-21T20:34:14Z",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "main_tree_entries": 3115,
+    "main_tree_truncated": false,
+    "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "integration_head_before_run272_commit": "45c166c310c9f32de82da1997a33d9d3e248b59f",
+    "integration_tree_entries": 3124,
+    "integration_tree_truncated": false,
+    "pr_1684": {
+      "state": "open",
+      "draft": true,
+      "head_sha": "45c166c310c9f32de82da1997a33d9d3e248b59f",
+      "ahead_by": 110,
+      "behind_by": 0,
+      "changed_files": 20,
+      "formal_approvals": 0,
+      "mergeable": true,
+      "classification": "BLOCKED"
+    },
+    "pr_1685": {
+      "state": "open",
+      "draft": true,
+      "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+      "ahead_by": 5,
+      "behind_by": 0,
+      "changed_files": 9,
+      "overlap_with_pr_1684": 0,
+      "classification": "BLOCKED"
+    },
+    "open_pr_count": 2,
+    "duplicate_prs_created": 0
+  },
+  "run272_exact_head_ci": {
+    "head_sha": "45c166c310c9f32de82da1997a33d9d3e248b59f",
+    "run_id": 44945617541,
+    "status": "PASS",
+    "passed": 4559,
+    "skipped": 1,
+    "failed": 0,
+    "warnings": 11,
+    "subtests": 32,
+    "coverage_percent": 73.2,
+    "duration_seconds": 177.49,
+    "dependency_audit_run": 44945617531,
+    "money_audit_run": 44945617585,
+    "conflict_integrity_run": 44945617521,
+    "fail_closed_run": 44945617596,
+    "fail_closed_status": "BLOCKED: PR draft; no independent approval; branch protection unreadable (HTTP 403)",
+    "next_head_ci_required": true
+  },
+  "run272_main_ingestion": {
+    "run_id": 44944994673,
+    "run_number": 49,
+    "code_head_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "data_cutoff_utc": "2026-11-21T20:12:25.779681Z",
+    "receipts": 34,
+    "retained_raw_payloads": 22,
+    "digest_only_receipts": 12,
+    "retained_hashes_verified": 22,
+    "hash_mismatches": 0,
+    "feature_records": 17397,
+    "snapshots": 21,
+    "latest_snapshot_records": 106,
+    "latest_snapshot_sources": 11,
+    "source_failures": 18,
+    "raw_only_sources": 23,
+    "receipt_chain_sequence": 21,
+    "cross_run_continuity": "CONTINUED_VERIFIED",
+    "external_anchor": "NOT_ANCHORED"
+  },
+  "run272_backfill_verification": {
+    "workflow_run_id": 44945617541,
+    "status": "VERIFIED_IN_ISOLATED_CI_DATABASE",
+    "records_before": 17397,
+    "records_after": 17515,
+    "recovered_records": 118,
+    "recovered_source_lineages": 11,
+    "snapshots_before": 21,
+    "snapshots_after": 22,
+    "artifact_zip_digests_verified": 24,
+    "reconciliation_sha256": "8e22aac4b5010cdf00e4eaea6a3f0ad3dbd3d3b1d98a4c5966a04b0541f11903",
+    "main_modified": false
+  },
+  "run272_event_and_drift_quality": {
+    "events": 150,
+    "scenarios": 117,
+    "event_raw_hashes": 0,
+    "event_receipt_links": 0,
+    "event_receipt_complete": false,
+    "exact_publisher_timestamps": 59,
+    "missing_publisher_timestamps": 91,
+    "drift_features_considered": 204,
+    "drift_features_evaluated": 0,
+    "walk_forward_origins": 0,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "run272_nine_platform_coordination": {
+    "ChatGPT": "VERIFIED_GITHUB_CONNECTOR",
+    "Claude": "UNVERIFIED",
+    "Grok": "UNVERIFIED",
+    "Gemini": "UNVERIFIED",
+    "Copilot": "UNVERIFIED",
+    "Codex": "UNVERIFIED",
+    "Hugging_Face": "UNVERIFIED",
+    "Kaggle": "UNVERIFIED",
+    "Databricks": "UNVERIFIED",
+    "external_dispatch": false
+  },
+  "run272_merge_decision": {
+    "status": "BLOCKED",
+    "blockers": [
+      "PR #1684 remains draft",
+      "No independent approving review",
+      "Branch protection cannot be verified through available GitHub access"
+    ],
+    "merge_performed": false
+  },
+  "run272_no_external_actions": true,
+  "run272_next_actions": [
+    "Run exact-head CI on the Run272 evidence commit.",
+    "Preserve #1684 draft until independent approval and branch-protection verification.",
+    "Repair event-to-raw-receipt provenance and lawful SEC capture configuration.",
+    "Reconcile primary issuer ETF holdings and AP cash flows plus stablecoin/collateral units.",
+    "Start chronological walk-forward evaluation only after data-quality gates pass."
+  ]
 }
