@@ -988,13 +988,11 @@ def test_run272_binds_current_main_run49_market_flow_backfill_and_pr_snapshot():
     root = Path(__file__).resolve().parents[1]
     artifact = json.loads((root / run["artifact_path"]).read_text(encoding="utf-8"))
 
-    # This test binds the immutable historical Run272 record; the map itself
-    # may already contain later mission runs.
+    # This test binds immutable Run272 evidence. Global PR-head fields are
+    # mutable and are validated by the latest-run test, not this historical one.
     assert data["latest_run_id"] >= 273
-    assert run["head_sha"] == "460561ba6091d407c6ff3d10eb69145445c7e997"
     assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
     assert run["head_sha"] == "460561ba6091d407c6ff3d10eb69145445c7e997"
-    assert data["current_pr_head_sha"] == "4e2979a21c2866de06b432b1b6b9d626c3401487"
     assert run["integration_ahead_by"] == 111
     assert run["integration_behind_by"] == 0
     assert run["changed_files"] == 21
