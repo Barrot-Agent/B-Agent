@@ -5321,3 +5321,97 @@ The previous handoff append at `ee6270d22b6133cfb7ff5f89788a768085ed4b51` comple
 - Fail-closed gate [44907826553](https://github.com/Barrot-Agent/B-Agent/actions/runs/44907826553): failed closed for the exact stated reasons: PR remains draft; no independent approving review exists; branch protection could not be verified (HTTP 403). No merge was attempted.
 
 This Run 40 handoff append creates a new documentation-only commit. Its own exact-head CI and gate must be checked separately; the results above are for `ee6270d`, not the new head.
+
+
+### Run 11 — exact-head CI, artifact-backed recovery, and current microstructure audit — 2026-11-21 13:25 UTC
+
+#### Repository and PR state
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; its recursive Git tree contains 3,115 entries and is not truncated. The repository metadata reports `main.protected=true`, but the detailed branch-protection endpoint returns HTTP 403 to this integration. The only repository ruleset visible to the integration is fallback ruleset 10863829, currently disabled. Do not infer required contexts, strict-up-to-date checks, administrator enforcement, or required independent approval from the protected boolean alone.
+- PR #1684 head at the time of this verification: `6eb092a79399b6cbc38b1de60462d9f60c4f6b3c`, base SHA equals current main, 74 commits ahead / 0 behind, 13 changed files. The current branch is the sole open XRP integration workstream. The PR description still contains an older Run252 status and old commit/file counts; this handoff is the current source of truth.
+- PR #1685 remains a separate A2A credential-separation workstream: 5 commits ahead / 0 behind, 9 changed files, draft, no reviews. Its CI, A2A Worker Tests, money audit, dependency audit, and conflict-integrity checks passed on `e512f4e6d66c1575186d00b60852c93caba687e0`; its fail-closed gate failed. No changed paths overlap #1684.
+- The only other relevant prior PRs found in targeted history search were #1661 (closed unmerged, handoff-only), #1640 (closed unmerged, operations-safety paths), and #1673 (merged). No exact duplicate active PR was found. No historic branch was rewritten or deleted.
+
+#### Exact-head validation — PR #1684 head 6eb092a
+
+- PR CI [44908449690](https://github.com/Barrot-Agent/B-Agent/actions/runs/44908449690): success.
+- Full repository test suite: **4,545 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests passed in 132.95 seconds. Overall reported coverage: 73%.
+- Mission-critical package coverage in the same exact-head job: XRP telemetry matrix 92%; MMI contract/execution/ledger 92%; Barrot integration 62%; feature store 80%; forecast ledger 97%; point-in-time features 89%; source registry 95%; AGI orchestrator 52%.
+- Pages build validation-only passed; no deployment occurred. Real-artifact XRP historical backfill replay passed.
+- Dependency Audit [44908449793](https://github.com/Barrot-Agent/B-Agent/actions/runs/44908449793), Money audit [44908449733](https://github.com/Barrot-Agent/B-Agent/actions/runs/44908449733), and read-only Conflict Integrity [44908449703](https://github.com/Barrot-Agent/B-Agent/actions/runs/44908449703): success.
+- Fail-closed gate [44908449677](https://github.com/Barrot-Agent/B-Agent/actions/runs/44908449677): correctly failed with three blockers: PR still draft; no independent approving review; detailed branch protection could not be verified (HTTP 403). The workflow is read-only and did not approve, bypass, or merge. CODEOWNERS on main is `* @Barrot-Agent`, so it does not supply an independent reviewer.
+- No merge was attempted.
+
+#### Real-artifact historical feature-store replay
+
+The PR CI replay used preserved main-branch artifacts from ingestion run [44907618235](https://github.com/Barrot-Agent/B-Agent/actions/runs/44907618235), not a synthetic fixture:
+
+- Main checkpoint before recovery: 16,570 records / 14 snapshots.
+- Isolated replay after recovery: **16,688 records / 15 snapshots**.
+- Recovered snapshot: 118 records from 11 source lineages; snapshot ID `0d5af2b3fdffb6ddb397579413c33218ed174f8e61969910adaef654ae9212aa`.
+- Actual recovery receipt time: `2026-11-21T13:23:24.391831Z`.
+- Point-in-time boundary: one microsecond before receipt, 16,570 records visible; one microsecond after receipt, 16,688 visible.
+- SQLite integrity: `ok`; all 15 snapshots verified; prior receipt chains were not rewritten.
+- Reconciliation SHA-256: `cc7519ba0f4d7c608ce9cdf2f4719b91906ff8033b90231d31b8e008503680bb`.
+- CI artifact 14708871886 digest: `ee6ab4b2befa413f19e3ce85acb6d74dacfe8fcc667b6bac7d42de0fb5399066`.
+- The 118-record snapshot remains isolated in CI. Main's feature store remains 16,570 records / 14 snapshots; no adoption or main-branch write occurred.
+
+#### Run 40 raw-source and receipt-chain audit
+
+Downloaded artifact bytes were independently SHA-256 checked against GitHub artifact metadata:
+
+| Artifact | SHA-256 |
+|---|---|
+| Feature store 14708995354 | `c95086070db99799c4876f712c92c0be9dff353f94e5442a9b9d286c9ea613dc` |
+| Raw receipts 14708635952 | `06c741c1a82073f874af3df72c240faeb924c639d57759f2b9f3da96a4b15620` |
+| Receipt index 14708202014 | `e86dcff280bd00071f988aebf3972fb06f1ae8511434d862a7885f8aaabc9d9e` |
+| Event timeline 14709040234 | `458a575ffd52d56a2511ab73148b95b933932280056add5184796780576d8832` |
+| Timestamp correction audit 14708196869 | `63efc8ee7cb1f81785a5b694958f9442cdc01bda4da0440b7a3290824637d32b` |
+
+- Main ingestion run 44907618235, data cutoff `2026-11-21T13:11:58.271044Z`, stored 123 eligible records from 12 source IDs; cumulative main feature store remains 16,570 records / 14 snapshots.
+- Receipt manifest: 34 receipts, 22 retained raw payloads, 12 digest-only receipts. Source failures: 18. Raw-only sources: 23.
+- Receipt-chain sequence 14 continued run 44903099892; continuity verified. Chain head `fb44c5f15cf257b50b34043d28da194184b26a5bad555bb8cf85ab95f5e07992`; receipt-log SHA-256 `7a64ebb25ddeeac72f500c8251fc24a46cadf48d23d795c78300ac03a81d4fee`; cross-run chain SHA-256 `d5830a4ce78f8b97e4f5a81963aecf4e0ae818e2220d88f53f40be926ab7f7c3`.
+- External anchor status remains `NOT_ANCHORED`; no independent per-source trusted timestamp anchor exists. GitHub Actions artifact retention is not WORM storage. Hash-chain continuity is not a market-data quality or prediction-readiness certificate.
+
+#### Current synchronized spot / order-book snapshot
+
+Provider event times are approximately 2026-11-21 13:11:46–13:11:50 UTC; normalized quote-basis receipt was stored by 13:11:58 UTC.
+
+| Venue | USD-comparable mid |
+|---|---:|
+| Coinbase XRP-USD | $0.907100 |
+| Kraken XRP/USD | $0.906955 |
+| Bitstamp XRP/USD | $0.907095 |
+| OKX XRP-USDT, normalized using same-venue USDT/USD | $0.907255 |
+
+- Cross-venue USD-comparable mid range: **3.31 bps**. This is one synchronized snapshot, not an executable arbitrage observation or time-series signal.
+- OKX USDT/USD mid was 0.998465, a 15.35-bps discount to one dollar. Raw XRP-USDT order-book mid was 0.90875; the validated same-venue normalized mid was 0.907255. Assuming USDT = USD would overstate the normalized XRP price by approximately 16.48 bps in this snapshot. The conversion uses observed bid/ask, not a fixed peg.
+- 50-bps displayed quote-notional depth: Coinbase bid $1.578M / ask $1.047M, imbalance +20.21%; Bitstamp bid $0.820M / ask $0.732M, +5.68%; OKX bid 1.112M / ask 1.059M USDT, +2.42%. Kraken's latest eligible depth was only available at 10 bps, with imbalance −11.31%. Bitbank's 50-bps imbalance was +67.26% in JPY and is not USD-normalized.
+- The venue imbalances disagree in magnitude and, at Kraken's available band, sign. These are single REST snapshots without a continuous sequence bridge; they are not consolidated global depth, persistent liquidity, or directional evidence. Quote-notional depth is not an execution guarantee.
+
+#### Source and model-readiness blockers
+
+- Latest event timeline: 150 events, 117 scenarios, **0/150 event records with raw-source SHA-256**, `receipt_complete=false`, `model_eligible=false`. The curated registry hash authenticates the registry file, not the publisher payloads. Event-to-receipt binding remains the highest-priority provenance repair.
+- Drift report: 204 candidate features, **0 evaluated**; reference sample count is zero. Status remains insufficient data. Historical derivative candidates do not establish current usable derivatives capture or drift skill.
+- Failure breakdown: eight Binance endpoints returned HTTP 451 (provider reason not supplied; no cause inferred); five Bybit endpoints returned HTTP 403 (Bybit documentation notes U.S. and Mainland China IP restrictions; runner region is unverified, so no proxy or bypass); three SEC submission endpoints rejected the missing `BARROT_SEC_USER_AGENT` monitored project contact; Grayscale issuer page returned 429; Franklin XRPZ page failed identity/holdings-marker parsing.
+- Do not invent a monitored contact or change the SEC variable without an authorized, legitimate project contact. Do not bypass Binance/Bybit access restrictions.
+- The 23 raw-only sources include derivatives whose contract quantity/depth/sequence semantics remain unverified; ETF aggregators and issuer pages awaiting row-vintage/holdings normalization; exchange-wallet attribution awaiting same-wallet schema validation; RLUSD/USDC transparency pages; SBI lending terms; Morpho cbXRP market data; and Coinbase cbXRP proof-of-reserves. Keep them out of numeric forecast inputs until their stated gates pass.
+- The main ingestion workflow still uses the server-side `status=completed` run-list filter that caused the historical sibling-chain omission. PR #1684 removes that filter, filters `.status == "completed" && .conclusion == "success"` locally, paginates predecessor discovery, and adds regression tests. The branch fix passed the exact-head full suite; it is not yet on main.
+
+#### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** preserve Barrot V3; one XRP integration PR; append-only feature-store recovery; actual recovery-time point-in-time visibility; source receipts and independence; strict forecast admission.
+- **EXECUTED:** fetched main metadata, full recursive tree, current open PRs, relevant closed PR history, PR diffs/paths, branch ancestry, CI/workflow runs and logs, dependency audit, branch protection/rulesets, CODEOWNERS and current durable handoff; downloaded and SHA-256 checked five main-run artifacts; inspected SQLite snapshots/records, raw receipts, source failures, raw-only inventory, quote basis, event timeline and drift report; executed the branch backfill against preserved real artifacts.
+- **VERIFIED:** exact-head full repository suite; Pages validation-only; dependency, money and conflict checks; real-artifact backfill replay; SQLite integrity and PIT boundary; five downloaded artifact digests; receipt-chain continuity for run 40; main/PR ancestry and non-overlapping open PR paths.
+- **NOT VERIFIED / BLOCKED:** independent approval; detailed protected-branch requirements (403); WORM/external timestamp anchoring; event-to-raw-receipt completeness; SEC contact configuration; lawful provider access for blocked sources; derivative/ETF/collateral normalization; drift evaluation; production walk-forward origins; baseline superiority; calibration; shadow evaluation; eight external platform authentications/data flows. No directional forecast was issued.
+
+#### Next concrete action
+
+1. Complete the exact-head CI and fail-closed gate for the documentation-only handoff commit created by this append; do not transfer the prior-head test result.
+2. Keep #1684 draft and unmerged until independent review and protected-branch requirements are verifiable. Preserve the isolated 118-record recovery until merge conditions pass.
+3. Fix event-to-raw-receipt binding and source-vintage semantics before drift or model training.
+4. Restore SEC filing capture only after an authorized monitored contact is available; respect provider access restrictions.
+5. Continue normalized spot/depth capture and validate derivative, ETF, exchange-balance, collateral and stablecoin source semantics.
+6. Keep directional forecast issuance disabled until chronological out-of-sample evaluation, baselines, calibration, drift and shadow evaluation satisfy the admission gate.
+
+No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer, or real-money action occurred.
