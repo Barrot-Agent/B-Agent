@@ -3489,4 +3489,4 @@ No directional forecast is issued. These observations have no canonical raw rece
 
 - The post-merge handoff and nine-platform map are carried in [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch `integration/xrp-post-merge-verification-20261121T0002Z`, based on main `550a647ee7269a704d4600ff337b2145acc90473`.
 - PR #1684 is draft, two files only, and exists solely to preserve the post-merge verification and governance exception in the canonical durable records. It is the only open PR; classification: **blocked** pending exact-head CI and independent governance review.
-- Its current head changes when this append-only documentation commit lands. The CI runs must be read against the final head, not an earlier PR head. No merge is authorized by this documentation update.
+- Latest observed PR #1684 head before this final metadata note: `559f22d5af1ecc0b3e084cda3d6f050c5647aa38`. The push and PR full-suite jobs on that head are still running; no earlier-head result is transferred. No merge is authorized by this documentation update.
