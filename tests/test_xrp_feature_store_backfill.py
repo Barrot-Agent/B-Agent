@@ -390,14 +390,19 @@ def test_historical_backfill_rejects_receipt_list_manifest_mismatch_before_targe
     assert HistoricalFeatureStore(case["target_db"]).snapshot_count() == before
 
 
-def test_real_artifact_replay_targets_latest_verified_main_checkpoint():
+def test_real_artifact_replay_targets_latest_successful_main_checkpoint():
     ci_workflow = ROOT / ".github" / "workflows" / "ci.yml"
     text = ci_workflow.read_text(encoding="utf-8")
-    assert "44888553926" in text
-    assert "xrp-public-receipt-index-44884065576" in text
-    assert text.count('fetch_artifact 44888553926 xrp-public-raw-44888553926 "$ROOT/current-raw"') == 1
-    assert text.count('fetch_artifact 44888553926 xrp-public-feature-store-44888553926 "$ROOT/current-store"') == 1
-    assert text.count('fetch_artifact 44888553926 xrp-public-receipt-index-44888553926 "$ROOT/current-index"') == 1
-    assert 'assert before == {"snapshot_count": 10, "record_count": 16094}' not in text
-    assert "snapshot_count': 10, 'record_count': 16094" in text
-    assert "snapshot_count'] == 11 and after['record_count'] == 16212" in text
+    assert "git/ref/heads/main" in text
+    assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=main&per_page=100&page=" in text
+    assert '.head_sha == $main_sha' in text
+    assert '.status == "completed"' in text
+    assert '.conclusion == "success"' in text
+    assert 'fetch_artifact "$latest_run_id" "xrp-public-raw-${latest_run_id}" "$ROOT/current-raw"' in text
+    assert 'fetch_artifact "$latest_run_id" "xrp-public-feature-store-${latest_run_id}" "$ROOT/current-store"' in text
+    assert 'fetch_artifact "$latest_run_id" "xrp-public-receipt-index-${latest_run_id}" "$ROOT/current-index"' in text
+    assert "44888553926" not in text
+    assert "expected_snapshot_delta = 0 if before['backfill_snapshot_present'] else 1" in text
+    assert "expected_record_delta = 0 if before['backfill_snapshot_present'] else 118" in text
+    assert "after['snapshot_count'] == before['snapshot_count'] + expected_snapshot_delta" in text
+    assert "after['record_count'] == before['record_count'] + expected_record_delta" in text

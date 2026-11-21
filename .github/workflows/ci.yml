@@ -233,7 +233,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
-      - name: Download and verify preserved XRP run artifacts
+      - name: Discover and verify the latest successful main checkpoint and preserved XRP artifacts
         if: steps.receipt.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -244,15 +244,43 @@ jobs:
           INVENTORY="$ROOT/artifact_inventory.json"
           mkdir -p "$ROOT"
           printf '{"artifacts":[]}\n' > "$INVENTORY"
+
+          declare -A verified_runs=()
+          verify_main_run() {
+            local run_id="$1"
+            [[ -n "${verified_runs[$run_id]:-}" ]] && return 0
+            local run_json
+            run_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${run_id}")"
+            jq -e --arg repository "$GITHUB_REPOSITORY" '
+              .status == "completed"
+              and .conclusion == "success"
+              and .head_branch == "main"
+              and .head_repository.full_name == $repository
+            ' <<< "$run_json" >/dev/null || {
+              echo "Run $run_id is not a successful run from this repository's main branch." >&2
+              return 1
+            }
+            verified_runs["$run_id"]=1
+          }
+
           fetch_artifact() {
-            local run_id="$1" artifact_name="$2" destination="$3" metadata row artifact_id expected_digest actual_digest zip_path
-            metadata="$(curl -fsSL -H "Authorization: Bearer ${GH_TOKEN}" -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${run_id}/artifacts?per_page=100")"
-            row="$(jq -ce --arg name "$artifact_name" '[.artifacts[] | select(.name == $name and .expired == false)] | if length == 1 then .[0] else error("expected exactly one non-expired artifact") end' <<< "$metadata")"
+            local run_id="$1" artifact_name="$2" destination="$3"
+            local metadata row artifact_id expected_digest actual_digest zip_path
+            verify_main_run "$run_id"
+            metadata="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${run_id}/artifacts?per_page=100")"
+            row="$(jq -ce --arg name "$artifact_name" '
+              [.artifacts[] | select(.name == $name and .expired == false)]
+              | if length == 1 then .[0] else error("expected exactly one non-expired artifact") end
+            ' <<< "$metadata")"
             artifact_id="$(jq -r '.id' <<< "$row")"
             expected_digest="$(jq -r '.digest' <<< "$row")"
             [[ "$expected_digest" == sha256:* ]]
             zip_path="$ROOT/${artifact_name}.zip"
-            curl -fL --retry 3 --retry-delay 2 -H "Authorization: Bearer ${GH_TOKEN}" -H 'Accept: application/vnd.github+json' "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${artifact_id}/zip" -o "$zip_path"
+            curl -fL --retry 3 --retry-delay 2 \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H 'Accept: application/vnd.github+json' \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${artifact_id}/zip" \
+              -o "$zip_path"
             actual_digest="sha256:$(sha256sum "$zip_path" | awk '{print $1}')"
             if [[ "$actual_digest" != "$expected_digest" ]]; then
               echo "Artifact digest mismatch for ${artifact_name}: expected ${expected_digest}, received ${actual_digest}" >&2
@@ -260,29 +288,94 @@ jobs:
             fi
             mkdir -p "$destination"
             unzip -q "$zip_path" -d "$destination"
-            jq --arg run "$run_id" --arg name "$artifact_name" --arg id "$artifact_id" --arg expected "$expected_digest" --arg actual "$actual_digest" '.artifacts += [{run_id:$run,name:$name,artifact_id:($id|tonumber),github_digest:$expected,downloaded_zip_digest:$actual}]' "$INVENTORY" > "$INVENTORY.tmp"
+            jq --arg run "$run_id" --arg name "$artifact_name" --arg id "$artifact_id" \
+              --arg expected "$expected_digest" --arg actual "$actual_digest" \
+              '.artifacts += [{run_id:$run,name:$name,artifact_id:($id|tonumber),github_digest:$expected,downloaded_zip_digest:$actual}]' \
+              "$INVENTORY" > "$INVENTORY.tmp"
             mv "$INVENTORY.tmp" "$INVENTORY"
           }
+
+          current_main_sha="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" --jq '.object.sha')"
+          latest_run_json=""
+          page=1
+          while [[ "$page" -le 30 ]]; do
+            runs_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=main&per_page=100&page=${page}")"
+            page_run_count="$(jq '.workflow_runs | length' <<< "$runs_json")"
+            [[ "$page_run_count" -gt 0 ]] || break
+            latest_run_json="$(jq -c --arg repository "$GITHUB_REPOSITORY" --arg main_sha "$current_main_sha" '
+              .workflow_runs
+              | map(select(
+                  .status == "completed"
+                  and .conclusion == "success"
+                  and .head_branch == "main"
+                  and .head_repository.full_name == $repository
+                  and .head_sha == $main_sha
+                  and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push")
+                ))
+              | sort_by(.created_at)
+              | last // empty
+            ' <<< "$runs_json")"
+            [[ -z "$latest_run_json" ]] || break
+            page=$((page + 1))
+          done
+          [[ -n "$latest_run_json" ]] || {
+            echo "No successful XRP ingestion run was found on the current main SHA $current_main_sha." >&2
+            exit 1
+          }
+
+          latest_run_id="$(jq -er '.id | tostring' <<< "$latest_run_json")"
+          latest_run_sha="$(jq -er '.head_sha' <<< "$latest_run_json")"
+          latest_run_created_at="$(jq -er '.created_at' <<< "$latest_run_json")"
+          latest_run_url="$(jq -er '.html_url' <<< "$latest_run_json")"
+          [[ "$latest_run_sha" == "$current_main_sha" ]]
+          verify_main_run "$latest_run_id"
+          {
+            echo "BARROT_XRP_BACKFILL_CURRENT_MAIN_RUN_ID=$latest_run_id"
+            echo "BARROT_XRP_BACKFILL_CURRENT_MAIN_SHA=$current_main_sha"
+            echo "BARROT_XRP_BACKFILL_CURRENT_MAIN_CREATED_AT=$latest_run_created_at"
+            echo "BARROT_XRP_BACKFILL_CURRENT_MAIN_URL=$latest_run_url"
+          } >> "$GITHUB_ENV"
+
           fetch_artifact 44844953105 xrp-public-raw-44844953105 "$ROOT/source-raw"
           fetch_artifact 44844953105 xrp-public-feature-store-44844953105 "$ROOT/source-store"
           fetch_artifact 44848909814 xrp-public-raw-44848909814 "$ROOT/fork-raw"
-          fetch_artifact 44855063970 xrp-public-receipt-index-44855063970 "$ROOT/index-44855063970"
-          fetch_artifact 44860165888 xrp-public-receipt-index-44860165888 "$ROOT/index-44860165888"
-          fetch_artifact 44865104098 xrp-public-receipt-index-44865104098 "$ROOT/index-44865104098"
-          fetch_artifact 44869770831 xrp-public-receipt-index-44869770831 "$ROOT/index-44869770831"
-          fetch_artifact 44875059754 xrp-public-receipt-index-44875059754 "$ROOT/index-44875059754"
-          fetch_artifact 44879233062 xrp-public-receipt-index-44879233062 "$ROOT/index-44879233062"
-          fetch_artifact 44888553926 xrp-public-raw-44888553926 "$ROOT/current-raw"
-          fetch_artifact 44888553926 xrp-public-feature-store-44888553926 "$ROOT/current-store"
-          fetch_artifact 44884065576 xrp-public-receipt-index-44884065576 "$ROOT/index-44884065576"
-          fetch_artifact 44888553926 xrp-public-receipt-index-44888553926 "$ROOT/current-index"
+          fetch_artifact "$latest_run_id" "xrp-public-raw-${latest_run_id}" "$ROOT/current-raw"
+          fetch_artifact "$latest_run_id" "xrp-public-feature-store-${latest_run_id}" "$ROOT/current-store"
+          fetch_artifact "$latest_run_id" "xrp-public-receipt-index-${latest_run_id}" "$ROOT/current-index"
+
+          CURRENT_INDEX="$ROOT/current-index/cross_run_receipt_chain.json"
+          [[ "$(jq -er '.current_run.run_id' "$CURRENT_INDEX")" == "$latest_run_id" ]]
+          current_sequence="$(jq -er '.sequence' "$CURRENT_INDEX")"
+          [[ "$current_sequence" -ge 3 ]]
           mkdir -p "$ROOT/ancestry-indexes"
-          cp "$ROOT/fork-raw/cross_run_receipt_chain.json" "$ROOT/ancestry-indexes/44848909814.json"
-          cp "$ROOT/index-44879233062/cross_run_receipt_chain.json" "$ROOT/ancestry-indexes/44879233062.json"
-          cp "$ROOT/index-44884065576/cross_run_receipt_chain.json" "$ROOT/ancestry-indexes/44884065576.json"
-          for run_id in 44855063970 44860165888 44865104098 44869770831 44875059754; do
-            cp "$ROOT/index-${run_id}/cross_run_receipt_chain.json" "$ROOT/ancestry-indexes/${run_id}.json"
+          cp "$ROOT/fork-raw/cross_run_receipt_chain.json" \
+            "$ROOT/ancestry-indexes/44848909814.json"
+
+          cursor="$(jq -er '.previous.run_id' "$CURRENT_INDEX")"
+          expected_sequence=$((current_sequence - 1))
+          ancestry_steps=0
+          while [[ "$cursor" != "44848909814" ]]; do
+            ancestry_steps=$((ancestry_steps + 1))
+            [[ "$ancestry_steps" -le 100 ]] || {
+              echo "Main receipt ancestry exceeded 100 links before reaching the verified fork head." >&2
+              exit 1
+            }
+            index_dir="$ROOT/index-${cursor}"
+            fetch_artifact "$cursor" "xrp-public-receipt-index-${cursor}" "$index_dir"
+            index_path="$index_dir/cross_run_receipt_chain.json"
+            index_run_id="$(jq -er '.current_run.run_id' "$index_path")"
+            index_sequence="$(jq -er '.sequence' "$index_path")"
+            [[ "$index_run_id" == "$cursor" ]]
+            [[ "$index_sequence" -eq "$expected_sequence" ]] || {
+              echo "Receipt ancestry sequence mismatch at run $cursor: expected $expected_sequence, got $index_sequence." >&2
+              exit 1
+            }
+            cp "$index_path" "$ROOT/ancestry-indexes/${cursor}.json"
+            cursor="$(jq -er '.previous.run_id' "$index_path")"
+            expected_sequence=$((expected_sequence - 1))
           done
+          [[ -s "$ROOT/ancestry-indexes/44848909814.json" ]]
+          echo "Selected current main ingestion run $latest_run_id on $current_main_sha ($latest_run_created_at); verified $ancestry_steps intermediate receipt-index artifacts."
       - name: Execute the exact branch backfill module against preserved real artifacts
         if: steps.receipt.outputs.skip != 'true'
         shell: bash
@@ -306,6 +399,10 @@ jobs:
           value = {
               'snapshot_count': connection.execute('SELECT COUNT(*) FROM snapshots').fetchone()[0],
               'record_count': connection.execute('SELECT COUNT(*) FROM feature_records').fetchone()[0],
+              'backfill_snapshot_present': connection.execute(
+                  "SELECT COUNT(*) FROM snapshots WHERE snapshot_id = ?",
+                  ('0d5af2b3fdffb6ddb397579413c33218ed174f8e61969910adaef654ae9212aa',),
+              ).fetchone()[0] > 0,
           }
           print(json.dumps(value, sort_keys=True))
           connection.close()
@@ -329,25 +426,30 @@ jobs:
           root = Path(sys.argv[1])
           receipt = json.loads((root / 'reconciliation.json').read_text())
           before = json.loads((root / 'before.json').read_text())
-          assert before == {'snapshot_count': 10, 'record_count': 16094}, before
+          assert before['snapshot_count'] >= 2, before
+          assert before['record_count'] >= 118, before
           assert receipt['status'] == 'RECONCILED', receipt.get('status')
           snapshot = receipt['backfill_snapshot']
           assert snapshot['snapshot_id'] == '0d5af2b3fdffb6ddb397579413c33218ed174f8e61969910adaef654ae9212aa'
           assert snapshot['manifest_sha256'] == 'e19be22480a27170dc597835bfe8d9a3b1f9c61c3df03b33fa1ffbc5122d589c'
           assert snapshot['record_count'] == 118 and snapshot['source_count'] == 11
           after = receipt['feature_store_after']
-          assert after['snapshot_count'] == 11 and after['record_count'] == 16212, after
+          expected_snapshot_delta = 0 if before['backfill_snapshot_present'] else 1
+          expected_record_delta = 0 if before['backfill_snapshot_present'] else 118
+          assert after['snapshot_count'] == before['snapshot_count'] + expected_snapshot_delta, after
+          assert after['record_count'] == before['record_count'] + expected_record_delta, after
           visibility = receipt['point_in_time_visibility']
           assert visibility['visible_before_receipt'] is False
           assert visibility['visible_after_receipt'] is True
           current_verification, _, current_tree_sha = _verify_raw_artifact(
-              root / 'current-raw', root / 'current-index' / 'cross_run_receipt_chain.json', '44888553926'
+              root / 'current-raw', root / 'current-index' / 'cross_run_receipt_chain.json', os.environ['BARROT_XRP_BACKFILL_CURRENT_MAIN_RUN_ID']
           )
-          assert current_verification['receipt_count'] == 34
-          assert current_verification['retained_raw_payload_count'] == 22
+          assert current_verification['receipt_count'] > 0
+          assert 0 < current_verification['retained_raw_payload_count'] <= current_verification['receipt_count']
           store = HistoricalFeatureStore(root / 'current-store' / 'feature_store.sqlite3')
           store_verification = store.verify_all_snapshots()
-          assert store_verification['valid'] is True and store_verification['snapshot_count'] == 11
+          assert store_verification['valid'] is True
+          assert store_verification['snapshot_count'] == after['snapshot_count']
           summary = {
               'status': 'VERIFIED',
               'workflow_run_id': os.environ['GITHUB_RUN_ID'],
@@ -358,14 +460,21 @@ jobs:
               'source_run_id': '44844953105',
               'fork_run_id': '44848909814',
               'common_parent_run_id': '44844499889',
-              'current_main_run_id': '44888553926',
+              'current_main_run': {
+                  'run_id': os.environ['BARROT_XRP_BACKFILL_CURRENT_MAIN_RUN_ID'],
+                  'head_sha': os.environ['BARROT_XRP_BACKFILL_CURRENT_MAIN_SHA'],
+                  'created_at': os.environ['BARROT_XRP_BACKFILL_CURRENT_MAIN_CREATED_AT'],
+                  'url': os.environ['BARROT_XRP_BACKFILL_CURRENT_MAIN_URL'],
+              },
               'records_before': before['record_count'],
               'records_after': after['record_count'],
+              'backfill_snapshot_previously_present': before['backfill_snapshot_present'],
               'snapshots_before': before['snapshot_count'],
               'snapshots_after': after['snapshot_count'],
               'backfill_snapshot': snapshot,
               'point_in_time_visibility': visibility,
               'current_raw_artifact': {
+                  'run_id': os.environ['BARROT_XRP_BACKFILL_CURRENT_MAIN_RUN_ID'],
                   'receipt_count': current_verification['receipt_count'],
                   'retained_raw_payload_count': current_verification['retained_raw_payload_count'],
                   'raw_artifact_tree_sha256': current_tree_sha,
@@ -386,7 +495,8 @@ jobs:
               handle.write(f"- Records: {summary['records_before']} → {summary['records_after']}\n")
               handle.write(f"- Snapshots: {summary['snapshots_before']} → {summary['snapshots_after']}\n")
               handle.write('- Point-in-time visibility: excluded before receipt; visible after receipt.\n')
-              handle.write('- Current main raw artifact: 34 receipts / 22 retained payloads; verified against the separate current index.\n')
+              handle.write(f"- Current main ingestion run: {os.environ['BARROT_XRP_BACKFILL_CURRENT_MAIN_RUN_ID']} on {os.environ['BARROT_XRP_BACKFILL_CURRENT_MAIN_SHA']} ({os.environ['BARROT_XRP_BACKFILL_CURRENT_MAIN_CREATED_AT']}).\n")
+              handle.write(f"- Current main raw artifact: {current_verification['receipt_count']} receipts / {current_verification['retained_raw_payload_count']} retained payloads; verified against the separate current index.\n")
               handle.write('- No repository branch or main database was modified by this job.\n')
           print(json.dumps(summary, indent=2, sort_keys=True))
           PY
