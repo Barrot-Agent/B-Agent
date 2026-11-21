@@ -5906,3 +5906,26 @@ A structured research-only artifact was added and its contract-address disagreem
 2. Repair event-to-raw-receipt links for all 150 events and capture SEC primary filings through the legitimate monitored-contact configuration.
 3. Continue collecting sequential point-in-time candles and synchronized spot/depth/derivatives/ETF/collateral/stablecoin/custody data; do not use historical batch backfills as synthetic sequential observations.
 4. Only after data-quality gates pass, run chronological walk-forward baselines, overlap-adjusted effective sample sizes, calibration, drift and shadow evaluation. Forecast issuance stays disabled until the main mission manifest's full independent admission criteria pass.
+
+
+### Run268 main-ingestion follow-through — run 43
+
+The next scheduled main ingestion completed after the first Run268 handoff snapshot:
+
+- [XRP Public Market Ingestion run 44923300352](https://github.com/Barrot-Agent/B-Agent/actions/runs/44923300352) completed successfully on main SHA `550a647ee7269a704d4600ff337b2145acc90473`. Run started 2026-11-21 16:12:49 UTC; data cutoff was 2026-11-21 16:13:00.791589 UTC; snapshot stored at 16:13:03.705176 UTC.
+- Cross-run receipt continuity: **CONTINUED / verified**. Chain SHA-256 `917be03168323fec8cdbdec4c82d234af59fc8b36e3c82eb5af62f100b4c1628`; chain head `771a079eb52576b39005e3f12170aa1a2c492037c4ac6546a17b3b80c87ab22c`; receipt log `c840b411f923751e601c389f80e5df30a890af7638a806fadfd2af254c050782`. No external immutable timestamp anchor exists; GitHub artifact retention remains 90 days.
+- Main feature-store history is **16,939 records across 17 snapshots**; latest snapshot `b4a69cef4ce3eee118a35c4c18be8e367db78d42619373370c01b83a52fe4705` contains 123 records from 12 sources. The run restored the previous main checkpoint `44917841719` and appended this run's observations. This count is 16,816 + 123; it does **not** include the separate 118-record backfill replay. Therefore the historical recovery remains isolated and has not been adopted into main.
+- Receipts: 34 total, 22 retained raw payloads, 12 digest-only. Source failures: 18. Raw-only sources: 23. Event records: 150; event-to-receipt completeness remains false. Scenarios: 117. Drift: 0 of 204 features evaluated, status `INSUFFICIENT_DATA`. Walk-forward forecasts: 0, status `PARTIAL_OR_BLOCKED`. Forecast status: `NOT_ISSUED`.
+- A fresh same-venue OKX quote-basis observation used XRP-USDT and USDT-USD snapshots only 0.149 seconds apart, each about 8.3 seconds old. Normalized top-of-book: bid **$0.923726990**, ask **$0.923836074**, mid **$0.923781532**, spread **1.18084 bps**. The derivation is marked verified and model-eligible as a single-venue top-of-book feature; both components belong to one OKX independence group. It is not independent cross-venue corroboration. Only top-of-book was converted; depth remains in USDT and is not normalized by this derivation.
+- SEC ingestion remains `BLOCKED_CONFIGURATION`: no monitored contact identity, zero submission receipts, zero filing events and three source failures for Evernorth, Coinbase and Circle. No SEC feature was admitted.
+- The official XRPL public-server directory classifies the free InFTF and Honeycluster endpoints as non-commercial. Scheduled collection excludes them under provider terms; sustained collection requires a self-hosted or contracted commercial endpoint. No terms restriction was bypassed.
+- Store durability remains incomplete: per-run checkpoint retention is seven days; daily/manual archive retention is 90 days; `feature_store_rebuild_from_raw_artifacts_implemented=false`. The SQLite cache is derived/evictable, not an immutable source of truth.
+
+### Exact-head CI snapshot after Run268 metadata commits
+
+At 2026-11-21 16:14:32 UTC, branch head `e7dc8f7d58dfc144fb79d905f6c18502bd6d58e1` had a new exact-head CI cycle:
+
+- PR CI [44923475080](https://github.com/Barrot-Agent/B-Agent/actions/runs/44923475080): running; test preflight passed; full repository suite and real-artifact backfill replay still running; Pages validation passed.
+- Push CI [44923470687](https://github.com/Barrot-Agent/B-Agent/actions/runs/44923470687): running; test preflight passed; full repository suite still running; Pages validation passed; backfill replay was skipped on the push event as configured.
+- Money audit [44923475053](https://github.com/Barrot-Agent/B-Agent/actions/runs/44923475053) passed; conflict integrity [44923475011](https://github.com/Barrot-Agent/B-Agent/actions/runs/44923475011) passed. Dependency audits [44923475034](https://github.com/Barrot-Agent/B-Agent/actions/runs/44923475034) and [44923470650](https://github.com/Barrot-Agent/B-Agent/actions/runs/44923470650) were still running. Fail-closed gate [44923475003](https://github.com/Barrot-Agent/B-Agent/actions/runs/44923475003) was still running.
+- This additional handoff append creates another documentation-only commit. Its resulting head must receive its own exact-head CI; the `e7dc8f7` results must not be transferred to that new head.
