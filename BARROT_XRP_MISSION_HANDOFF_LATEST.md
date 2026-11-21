@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
-Updated: 2026-11-21 (Automation run 11 final checkpoint: PR #1684 exact head d073190 passed full-suite CI, dependency/security checks, and preserved-artifact replay; new multi-venue spot-depth and ETF-flow reconciliation recorded; main 550a647 unchanged; merge remains blocked by draft status, missing independent approval, and unreadable branch protection).
+Updated: 2026-11-21T19:02:47Z (Run 270: main 550a647; main XRP ingestion run 47 succeeded; PR #1684 audit head 4b5b5d9 had 4,555 passed / 2 stale evidence-test failures / 1 skipped; exact-head real-artifact replay recovered 118 records from current main run 47 in an isolated copy; two test-contract fixes are committed in this child update; no merge).
 
 ## Prior checkpoint — 2026-11-21T14:29:55Z (automation run 11; superseded by final checkpoint above)
 
@@ -6041,4 +6041,71 @@ Next concrete actions:
   - Cross-run chain file SHA-256: `348822222f48fa1fc28ccb20088d9c249ed39e25cbc5cdf8fa017fe8affb25c0`
 - The receipt chain itself remains sequence 18, continued from run43, and externally unanchored. The correction changes only the copied evidence fields; it does not alter main, raw source bytes, the feature store, or the ingestion workflow.
 - The new hash-correction commit is documentation/map/test/artifact-only. Its exact-head CI is pending; the prior 4,556-test result belongs only to code parent `0bd03db`.
+
+
+
+## Run 270 — current main ingestion, exact-head test repair, and real-artifact replay
+
+Captured: 2026-11-21T19:02:47Z
+
+### Repository and integration state
+
+- Current main: `550a647ee7269a704d4600ff337b2145acc90473`; the main commit is unchanged.
+- Complete recursive main tree: 3,115 entries, `truncated=false`.
+- Audited PR #1684 parent head: `4b5b5d9aa32259914ebc45a79fc2ea59368af29f`; complete recursive branch tree: 3,123 entries, `truncated=false`; 108 commits ahead / 0 behind; 19 changed paths; no main paths are missing from the branch; eight branch-only paths are the XRP backfill, evidence and test additions.
+- PR #1685 remains a separate A2A credential-separation workstream: five commits ahead / zero behind, nine changed paths, zero overlap with #1684. Both PRs remain draft and have zero formal reviews.
+- No branch was created, no duplicate PR was opened, and no source PR was closed.
+
+### Current main CI and scheduled XRP ingestion
+
+- Main CI [44839159044](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159044) ran on exact main SHA `550a647ee7269a704d4600ff337b2145acc90473`: **4,534 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests; 73.22% coverage; 202.35 seconds**.
+- Correction to earlier stale handoff language: `.github/workflows/xrp-public-ingestion.yml` is present on main and the scheduled workflow is active. Main run [44934364490](https://github.com/Barrot-Agent/B-Agent/actions/runs/44934364490), run number 47, completed successfully on the exact main SHA. The workflow has hourly and daily schedules and read-only Actions/Contents permissions.
+- Run47 data cutoff: 2026-11-21T18:14:22.220144Z. Adapter `xrp-public-market-v3.32`; parser `xrp-public-market-v3.31`.
+- Feature store: 17,168 historical records / 19 snapshots; latest snapshot 106 records from 11 sources; 2,230 input records, 490 delta records, 106 eligible and 384 excluded; SQLite integrity `ok`.
+- Receipts: 34 total, 22 retained raw payloads, 12 digest-only. Cross-run continuity verified as `CONTINUED`, sequence 19. Cross-run chain SHA-256: `b0a2d90623a1914fcd5c6e0f3d524f834b8cbdcda45b79e563de3359351b2caa`; chain head SHA-256: `b163d62a609cb34d0b31d38fc3820330dd5d5698c475abf901daa85cdfdc5ed4`. External immutable anchoring remains `NOT_ANCHORED`.
+- Source failures: 18; raw-only sources: 23. SEC submissions remain blocked by missing approved `BARROT_SEC_USER_AGENT` configuration. XRPL node collection remains excluded under the current provider-terms policy.
+- Events: 150; event-to-receipt completeness is false; 117 scenarios. Drift: 204 candidate features / 0 evaluated. Walk-forward forecasts: 0. Forecast status: `NOT_ISSUED`.
+- The same-venue OKX top-of-book quote-basis derivation is verified: normalized mid USD 0.9298898215, spread 1.1737627 bps, 0.001-second snapshot skew and maximum component age 8.242908 seconds. Only four top-of-book features are admitted; depth is not USD-normalized, and the two receipts share one OKX publisher group. This is not a directional signal.
+- Run47 artifact digests: raw `f8b9ee80bea0ed6abc58a3d15b08be08bb0ce98f42d0598e37727d848c853185`; events `e09a3f7b017c5c840d77787ac0c0081d1757efd631c0d9f6f37a5f0d9583085e`; receipt index `a93224a58f761f8b90fc5274adefd086d39ed756d5137a1ee17f699922bd7bb4`; feature-store checkpoint `7193f588243b4b759a520a8dd41e83260d9293c633cfb667ac649ccf43de0c13`. Raw/event/index artifacts retain for 90 days; the per-run feature-store checkpoint retains for seven days. These are not WORM storage.
+
+### Real-artifact historical backfill — executed and verified in isolated CI
+
+- PR #1684 backfill job [44935321192](https://github.com/Barrot-Agent/B-Agent/actions/runs/44935321192), job `136940556646`, selected the latest successful main ingestion run 47 (`44934364490`) and verified its preserved raw, feature-store and receipt-index artifacts.
+- Isolated feature store: 17,168 records / 19 snapshots before; 17,286 records / 20 snapshots after. **118 records from 11 source lineages recovered.**
+- SQLite integrity `ok`; all 20 snapshots verified.
+- Point-in-time boundary: 17,168 records one microsecond before the store-receipt availability bound; 17,286 one microsecond after. The recovered records were invisible before and visible after.
+- Reconciliation SHA-256: `0ef48bcea7541895733ab74dbf33a6b85b71cdca96aad877696dc3f44b99deee`.
+- Receipt clock source: GitHub API run Date header. This is a post-append availability bound, **not** the actual time the historical source data was first observed.
+- Status: **VERIFIED in an isolated CI copy only.** Main's production feature store was not modified; no recovered records were committed to main. This verifies provenance and temporal visibility, not predictive performance.
+
+### Exact-head CI diagnosis and correction
+
+- PR #1684 exact-head CI [44935321192](https://github.com/Barrot-Agent/B-Agent/actions/runs/44935321192) on parent head `4b5b5d9aa32259914ebc45a79fc2ea59368af29f`: **4,555 passed, 2 failed, 1 skipped; 11 warnings; 32 subtests; 73.20% coverage; 211.36 seconds**.
+- Both failures are stale evidence assertions, not demonstrated product-runtime failures:
+  1. Run265 is a historical capture at `85ebfb943edd19999331c1890ced02767d134a6a`; the test incorrectly compared that historical head to the later current PR head. The current inventory must be compared with `current_pr_head_sha`, while Run265 remains historical.
+  2. Run269's artifact schema stores `forecast_status` at the artifact top level and `directional_forecast` inside `prediction_readiness`; the test referenced a nonexistent nested `prediction_readiness.forecast_status`.
+- This child update corrects those assertions, binds the current PR inventory to the current captured head, and adds a Run270 regression test. The new commit's exact-head full suite and all gates are **PENDING**; the parent-head result is not being carried forward.
+- On the parent head, dependency audit [44935321313](https://github.com/Barrot-Agent/B-Agent/actions/runs/44935321313), Money audit [44935321235](https://github.com/Barrot-Agent/B-Agent/actions/runs/44935321235), conflict integrity [44935321172](https://github.com/Barrot-Agent/B-Agent/actions/runs/44935321172), Pages validation-only and the preserved-artifact replay passed.
+- Fail-closed gate [44935361059](https://github.com/Barrot-Agent/B-Agent/actions/runs/44935361059) correctly blocked: PR remains draft; no independent approving review exists; branch-protection details return HTTP 403. The branch is marked protected in metadata, but required status contexts and administrator enforcement cannot be verified. `.github/CODEOWNERS` assigns all paths to `@Barrot-Agent`, not an independent reviewer.
+
+### Backlog and authorization
+
+| PR | Workstream | Classification | Disposition |
+|---|---|---|---|
+| [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684) | XRP scheduled-ingestion continuity, historical backfill and event provenance | blocked | Keep the single XRP integration PR; wait for child-head CI and independent review |
+| [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685) | A2A gateway/runner credential separation | blocked; unique workstream | Keep runner quarantined; no deployment, secret upload/rotation or activation |
+
+No duplicate or superseded PRs were identified. No merge was attempted. Barrot V3 and main were preserved. No deployment, secret rotation, Space restart, external model dispatch, external data transfer, Kaggle submission, Databricks write, paper trade, transfer or real-money action occurred.
+
+### Nine-platform coordination
+
+Verified: ChatGPT session → GitHub connector → `Barrot-Agent/B-Agent`. Unverified: Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks. No external dispatch, data transfer or red-team review was performed. GitHub metadata exposes broad repository permissions; connector token scopes were not introspected, so least-privilege status is not verified.
+
+### DESIGNED / EXECUTED / VERIFIED / NEXT
+
+- **DESIGNED:** integrated V3 execution/safety foundation; scheduled XRP public-data ingestion; receipt-chain and point-in-time feature-store design; isolated historical backfill replay; fail-closed forecast admission.
+- **EXECUTED:** complete-tree and PR audit; main CI review; main run47 ingestion audit; parent-head full-suite diagnosis; current-main real-artifact replay; test-contract corrections in this child commit.
+- **VERIFIED:** main SHA/tree; run47 ingestion and receipt-chain continuity; 118-record isolated replay and before/after visibility; parent-head dependency, money and conflict checks; zero directional forecasts.
+- **PENDING:** exact-head full suite and gates on this child commit; independent review; readable effective branch protection; event-to-raw-receipt completeness; external WORM/time anchor; SEC contact configuration; walk-forward origins, baseline comparison, calibration, drift evaluation and shadow evaluation.
+- **Next concrete action:** let exact-head CI run on the child commit. Fix any remaining failures without touching main or rewriting the branch. Keep PR #1684 draft and do not merge until the full user-defined gate is satisfied. No directional XRP forecast until leakage-safe out-of-sample evidence supports it.
 

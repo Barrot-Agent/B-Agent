@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-21T18:23:08Z",
+  "captured_at_utc": "2026-11-21T19:02:47Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -6546,8 +6546,8 @@
     "merge_decision": "NO_MERGE"
   },
   "last_verified_at_utc": "2026-11-21T18:23:08Z",
-  "latest_run_id": 269,
-  "latest_run_captured_at_utc": "2026-11-21T18:23:08Z",
+  "latest_run_id": 270,
+  "latest_run_captured_at_utc": "2026-11-21T19:02:47Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
   "current_successor_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
   "observed_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -6954,107 +6954,114 @@
       "workstream": "XRP scheduled-ingestion continuity / historical feature-store recovery / event receipt provenance",
       "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "head_sha": "14805e0dac11eff1807f1d26b5d2a42df905f150",
-      "ahead_by": 107,
+      "head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+      "ahead_by": 108,
       "behind_by": 0,
-      "commits": 107,
+      "commits": 108,
       "changed_files": 19,
       "main_tree_entries": 3115,
-      "integration_tree_entries": 3122,
+      "integration_tree_entries": 3123,
       "main_paths_missing_from_integration": 0,
-      "integration_only_paths": 7,
+      "integration_only_paths": 8,
       "draft": true,
       "formal_reviews": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
       "mergeable": true,
       "mergeable_state": "unstable",
-      "exact_code_head_ci": "PASS on exact parent code head 0bd03db; Run269 evidence commit requires its own exact-head CI.",
+      "exact_code_head_ci": "FAIL on exact evidence head; 4,555 passed, 2 failed, 1 skipped. Two failures are stale evidence assertions; fixes are included in the child commit and require fresh exact-head CI.",
       "push_ci_run": 44926483142,
       "pr_ci_run": 44926486835,
       "full_suite": {
-        "head_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
-        "passed": 4556,
-        "failed": 0,
+        "head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+        "passed": 4555,
+        "failed": 2,
         "skipped": 1,
         "warnings": 11,
         "subtests_passed": 32,
         "coverage_percent": 73.2,
-        "legacy_core_coverage_percent": 81,
-        "duration_seconds": 132.5,
-        "conclusion": "success"
+        "duration_seconds": 211.36,
+        "conclusion": "failure",
+        "failing_tests": [
+          "tests/test_xrp_nine_platform_map_latest.py::test_run265_binds_current_pr_ci_backfill_and_forecast_gate",
+          "tests/test_xrp_nine_platform_map_latest.py::test_run269_binds_main_run46_microstructure_and_prediction_gates"
+        ]
       },
       "dependency_audits": {
-        "push_run": 44926483120,
-        "pr_run": 44926486885,
+        "push_run": 44935316062,
+        "pr_run": 44935321313,
         "conclusion": "success",
         "manifests": 6,
         "known_vulnerabilities_reported": 0
       },
       "money_audit": {
-        "run_id": 44926486900,
+        "run_id": 44935321235,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 44926486905,
+        "run_id": 44935321172,
         "conclusion": "success"
       },
       "pages_validation": {
-        "push_run": 44926483149,
-        "pr_run": 44926486857,
+        "run_id": 44935321192,
+        "job_id": 136940556740,
         "conclusion": "success_validation_only"
       },
       "backfill_replay": {
-        "run_id": 44926486835,
-        "job_id": 136913593883,
+        "run_id": 44935321192,
+        "job_id": 136940556646,
         "conclusion": "success",
         "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
-        "source_main_run_id": 44923300352,
-        "records_before": 16939,
-        "records_after": 17057,
+        "source_run_id": 44844953105,
+        "fork_run_id": 44848909814,
+        "current_main_run_id": 44934364490,
+        "records_before": 17168,
+        "records_after": 17286,
         "recovered_records": 118,
         "recovered_source_lineages": 11,
-        "snapshots_before": 17,
-        "snapshots_after": 18,
+        "snapshots_before": 19,
+        "snapshots_after": 20,
         "sqlite_integrity": "ok",
-        "reconciliation_sha256": "7ae2e100a120ab52a7ab55bf36fa54a0b00d9a801d01e347de8bea0cb0010158",
-        "artifact_id": 14715109254,
-        "artifact_digest": "sha256:00096cff28d5cee8f667edf5b8afbefb60e9e2970751bd8947f5ac90745ba56e",
+        "verified_snapshots": 20,
+        "reconciliation_sha256": "0ef48bcea7541895733ab74dbf33a6b85b71cdca96aad877696dc3f44b99deee",
+        "artifact_id": 14719736675,
         "receipt_clock_source": "github_api_run_date_header",
         "store_receipt_time_is_actual_recovery_time": false,
         "store_receipt_time_is_post_append_availability_bound": true,
         "main_modified": false,
-        "limitation": "Used run43; newer main run46 exists and requires a fresh replay."
+        "limitation": "Current main run47 was replayed in an isolated CI copy. The 118 recovered records are not in main's production feature store."
       },
       "fail_closed": {
-        "push_run": 44926483154,
-        "pr_run": 44926486928,
+        "push_run": 44935316010,
+        "pr_run": 44935361059,
         "conclusion": "failure_by_design"
       },
       "gate_blockers": [
-        "PR remains draft",
-        "zero independent approving reviews",
-        "branch protection details return HTTP 403; visible fallback ruleset is disabled",
-        "automatic Pages publication on main is enabled but authorization is NOT_GRANTED"
+        "PR #1684 remains draft.",
+        "Zero independent approving reviews exist.",
+        "Direct main branch-protection inspection returns HTTP 403; required checks and administrator enforcement cannot be verified.",
+        "CODEOWNERS assigns all paths to @Barrot-Agent; no independent code owner is configured."
       ],
       "current_evidence_commit_ci": {
-        "head_sha": "14805e0dac11eff1807f1d26b5d2a42df905f150",
-        "push_ci_run": 44935151777,
-        "pr_ci_run": 44935157332,
-        "ci_status": "in_progress",
+        "head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+        "push_ci_run": 44935316044,
+        "pr_ci_run": 44935321192,
+        "ci_status": "failure",
         "dependency_audit_runs": [
-          44935151776,
-          44935157344
+          44935316062,
+          44935321313
         ],
-        "money_audit_run": 44935157357,
-        "conflict_integrity_run": 44935157294,
+        "money_audit_run": 44935321235,
+        "conflict_integrity_run": 44935321172,
         "fail_closed_runs": [
-          44935151825,
-          44935157257
+          44935316010,
+          44935361059
         ],
-        "superseded_by_hash_correction_commit": true
+        "backfill_replay_job": 136940556646,
+        "backfill_replay_conclusion": "success",
+        "supersedes_prior_run269_pending_status": true
       },
-      "note": "The exact code parent 0bd03db passed the full suite. First Run269 evidence commit 14805e0 triggered CI but a copied receipt-chain digest was found and corrected before relying on those checks; the correction commit requires fresh exact-head CI."
+      "note": "Run270 found two stale assertions in the evidence contract. The child commit corrects the test schema and historical/current PR boundary; its exact-head suite is pending. No product behavior or main data was changed."
     },
     {
       "number": 1685,
@@ -7092,7 +7099,8 @@
         "egress restrictions",
         "task-level authorization"
       ],
-      "disposition": "Keep runner quarantined. No deployment, secret upload/rotation or runner activation."
+      "disposition": "Keep runner quarantined. No deployment, secret upload/rotation or runner activation.",
+      "unique_workstream": true
     }
   ],
   "run229_evidence_record": {
@@ -9052,17 +9060,17 @@
   "current_pr_head_snapshot": {
     "verified_code_parent_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
     "first_run269_evidence_commit_sha": "14805e0dac11eff1807f1d26b5d2a42df905f150",
-    "current_head_sha": "14805e0dac11eff1807f1d26b5d2a42df905f150",
-    "handoff_map_commit_parent_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
-    "new_head_exact_ci_status": "IN_PROGRESS on the first evidence commit; superseded by the hash-correction commit being created now.",
+    "current_head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+    "handoff_map_commit_parent_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+    "new_head_exact_ci_status": "FAIL on parent head for two stale evidence assertions; corrected in this child commit, whose exact-head CI is pending.",
     "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-    "ahead_by": 107,
+    "ahead_by": 108,
     "behind_by": 0,
     "changed_files": 19,
-    "commits": 107
+    "commits": 108
   },
   "current_pr_changed_files": 19,
-  "current_pr_commit_count": 107,
+  "current_pr_commit_count": 108,
   "latest_run_246": {
     "run_id": 246,
     "captured_at_utc": "2026-11-20T20:29:30Z",
@@ -11130,7 +11138,7 @@
       "raw_http_bytes_captured": false
     }
   },
-  "current_pr_head_sha": "14805e0dac11eff1807f1d26b5d2a42df905f150",
+  "current_pr_head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
   "run250_no_external_actions": true,
   "run250_merge_decision": "NO_MERGE",
   "prediction_readiness": {
@@ -11524,8 +11532,8 @@
     "current_pr_head_sha": "65b42e65ad3bf5a469cfe3d8cf8a5d5d538d2103",
     "current_pr_head_ci": "IN_PROGRESS"
   },
-  "latest_mission_run_id": 269,
-  "latest_mission_run_captured_at_utc": "2026-11-21T18:23:08Z",
+  "latest_mission_run_id": 270,
+  "latest_mission_run_captured_at_utc": "2026-11-21T19:02:47Z",
   "open_pr_count": 2,
   "run258_evidence_record": {
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -12356,9 +12364,9 @@
     "forecast_status": "NOT_ISSUED",
     "merge_performed": false
   },
-  "latest_ingestion_run_id": 44928553996,
-  "latest_ingestion_run_captured_at_utc": "2026-11-21T17:10:09Z",
-  "production_schedule_status": "ACTIVE_ON_MAIN; xrp-public-ingestion.yml is present on main with hourly and daily schedules. Latest successful run46 is 44928553996; receipt-chain sequence18 continues run43. Main still uses the server-side status=completed filter; PR #1684 removes it, paginates, filters successful runs locally and fails closed when no valid predecessor exists.",
+  "latest_ingestion_run_id": 44934364490,
+  "latest_ingestion_run_captured_at_utc": "2026-11-21T18:14:22.205908Z",
+  "production_schedule_status": "ACTIVE_ON_MAIN; hourly and daily scheduled workflow; latest hourly run 47 completed successfully",
   "run261_open_pr_inventory": [
     {
       "number": 1684,
@@ -14595,7 +14603,7 @@
     "iHeart_kamilah_episode": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
     "youtube_kamilah_guest_appearance": "https://www.youtube.com/watch?v=Sulo54IlQ60"
   },
-  "current_branch_head_sha": "14805e0dac11eff1807f1d26b5d2a42df905f150",
+  "current_branch_head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
   "current_pr_branch_head_sha": "14805e0dac11eff1807f1d26b5d2a42df905f150",
   "latest_verified_code_head_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
   "run266_documentation_commit_ci": {
@@ -14961,17 +14969,17 @@
     "model_eligible_for_historical_asof_before_2026_11_21T003241Z": false
   },
   "latest_verified_full_suite_head_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
-  "latest_exact_head_full_suite_run": 44926486835,
-  "latest_exact_head_full_suite_result": "PASS on exact code head 0bd03db10a7efe62c35c59d194fe2dc3e1b52616: 4,556 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests; 73.2% inclusive coverage; 81% legacy/core coverage; 132.5 seconds.",
-  "latest_exact_head_full_suite_passed": 4556,
-  "latest_exact_head_full_suite_failed": 0,
+  "latest_exact_head_full_suite_run": 44935321192,
+  "latest_exact_head_full_suite_result": "FAIL on exact PR head 4b5b5d9aa32259914ebc45a79fc2ea59368af29f: 4,555 passed, 2 failed, 1 skipped; 11 warnings; 32 subtests; 73.20% inclusive coverage; 211.36 seconds. Both failures are stale evidence assertions; no product-runtime failure was demonstrated.",
+  "latest_exact_head_full_suite_passed": 4555,
+  "latest_exact_head_full_suite_failed": 2,
   "latest_exact_head_full_suite_skipped": 1,
   "latest_exact_head_subtests": 32,
   "latest_exact_head_full_suite_coverage_percent": 73.2,
-  "latest_exact_head_full_suite_duration_seconds": 132.5,
-  "latest_exact_head_ci_run": 44926486835,
-  "latest_exact_head_ci_conclusion": "success",
-  "integration_ahead_by": 107,
+  "latest_exact_head_full_suite_duration_seconds": 211.36,
+  "latest_exact_head_ci_run": 44935321192,
+  "latest_exact_head_ci_conclusion": "failure",
+  "integration_ahead_by": 108,
   "integration_behind_by": 0,
   "changed_files": 19,
   "workflow_files_changed": 2,
@@ -16226,5 +16234,481 @@
     "push_ci_run": 44935151777,
     "pr_ci_run": 44935157332,
     "status": "in_progress_superseded_by_hash_correction_commit"
+  },
+  "run270_handoff_commit_parent_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+  "run270_documentation_commit_ci_status": "PENDING exact-head CI on this child commit",
+  "run270_evidence_record": {
+    "captured_at_utc": "2026-11-21T19:02:47Z",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "main_tree_entries": 3115,
+    "main_tree_truncated": false,
+    "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+    "integration_tree_entries": 3123,
+    "integration_tree_truncated": false,
+    "main_paths_missing_from_integration": 0,
+    "integration_only_paths": 8,
+    "integration_ahead_by": 108,
+    "integration_behind_by": 0,
+    "changed_files": 19,
+    "commits": 108,
+    "open_pr_count": 2,
+    "main_ci": {
+      "run_id": 44839159044,
+      "head_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "conclusion": "success",
+      "full_suite": {
+        "passed": 4534,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 32,
+        "coverage_percent": 73.22,
+        "duration_seconds": 202.35
+      }
+    },
+    "pr_exact_head_ci": {
+      "run_id": 44935321192,
+      "head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+      "conclusion": "failure",
+      "full_suite": {
+        "head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+        "passed": 4555,
+        "failed": 2,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.2,
+        "duration_seconds": 211.36,
+        "conclusion": "failure",
+        "failing_tests": [
+          "tests/test_xrp_nine_platform_map_latest.py::test_run265_binds_current_pr_ci_backfill_and_forecast_gate",
+          "tests/test_xrp_nine_platform_map_latest.py::test_run269_binds_main_run46_microstructure_and_prediction_gates"
+        ]
+      },
+      "dependency_audit": {
+        "run_id": 44935321313,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities_reported": 0
+      },
+      "money_audit": {
+        "run_id": 44935321235,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 44935321172,
+        "conclusion": "success"
+      },
+      "pages_validation": "success_validation_only",
+      "backfill_replay": {
+        "job_id": 136940556646,
+        "conclusion": "success"
+      }
+    },
+    "main_ingestion": {
+      "run_id": 44934364490,
+      "run_number": 47,
+      "captured_at_utc": "2026-11-21T18:14:22.205908Z",
+      "data_cutoff_utc": "2026-11-21T18:14:22.220144Z",
+      "code_head_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "adapter_version": "xrp-public-market-v3.32",
+      "parser_version": "xrp-public-market-v3.31",
+      "receipt_count": 34,
+      "retained_raw_payload_count": 22,
+      "digest_only_receipt_count": 12,
+      "receipt_chain_verification": "PASS",
+      "cross_run_continuity_status": "CONTINUED",
+      "cross_run_continuity_verified": true,
+      "cross_run_sequence": 19,
+      "cross_run_chain_sha256": "b0a2d90623a1914fcd5c6e0f3d524f834b8cbdcda45b79e563de3359351b2caa",
+      "receipt_chain_head_sha256": "b163d62a609cb34d0b31d38fc3820330dd5d5698c475abf901daa85cdfdc5ed4",
+      "external_anchor": "NOT_ANCHORED",
+      "source_failures": 18,
+      "raw_only_sources": 23,
+      "feature_store_history_record_count": 17168,
+      "feature_store_snapshot_count": 19,
+      "latest_snapshot_record_count": 106,
+      "latest_snapshot_source_count": 11,
+      "delta_feature_record_count": 490,
+      "input_feature_record_count": 2230,
+      "eligible_feature_record_count": 106,
+      "excluded_feature_record_count": 384,
+      "sqlite_integrity": "ok",
+      "feature_store_checkpoint_valid": true,
+      "feature_store_restore_source": "trusted_ingestion_workflow_run:44928553996:per_run_checkpoint",
+      "event_count": 150,
+      "event_receipt_complete": false,
+      "event_timeline_model_eligible": false,
+      "scenario_count": 117,
+      "drift_feature_count": 204,
+      "drift_evaluated_feature_count": 0,
+      "walk_forward_forecast_count": 0,
+      "walk_forward_status": "PARTIAL_OR_BLOCKED",
+      "forecast_status": "NOT_ISSUED",
+      "sec_edgar": {
+        "status": "BLOCKED_CONFIGURATION",
+        "contact_identity_configured": false,
+        "filing_event_count": 0,
+        "raw_receipt_count": 0,
+        "source_failure_count": 3,
+        "required_variable": "BARROT_SEC_USER_AGENT"
+      },
+      "quote_basis": {
+        "status": "VERIFIED",
+        "venue": "OKX",
+        "normalized_mid_price_usd": 0.9298898215,
+        "spread_bps": 1.1737627133505208,
+        "snapshot_skew_seconds": 0.001,
+        "max_component_age_seconds": 8.242908,
+        "model_eligible_top_of_book_features": 4,
+        "publisher_independence_groups": 1,
+        "depth_levels_normalized": false
+      },
+      "artifact_digests": {
+        "raw": "f8b9ee80bea0ed6abc58a3d15b08be08bb0ce98f42d0598e37727d848c853185",
+        "events": "e09a3f7b017c5c840d77787ac0c0081d1757efd631c0d9f6f37a5f0d9583085e",
+        "receipt_index": "a93224a58f761f8b90fc5274adefd086d39ed756d5137a1ee17f699922bd7bb4",
+        "feature_store": "7193f588243b4b759a520a8dd41e83260d9293c633cfb667ac649ccf43de0c13"
+      },
+      "artifact_retention_days": {
+        "raw": 90,
+        "events": 90,
+        "receipt_index": 90,
+        "feature_store": 7
+      },
+      "xrpl_node_reconciliation": "NOT_COLLECTED_PROVIDER_TERMS_POLICY"
+    },
+    "backfill_replay": {
+      "workflow_run_id": 44935321192,
+      "job_id": 136940556646,
+      "artifact_id": 14719736675,
+      "workflow_head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+      "current_main_run_id": 44934364490,
+      "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "records_before": 17168,
+      "records_after": 17286,
+      "recovered_records": 118,
+      "snapshots_before": 19,
+      "snapshots_after": 20,
+      "recovered_source_lineages": 11,
+      "sqlite_integrity": "ok",
+      "verified_snapshots": 20,
+      "visible_before_receipt": false,
+      "visible_after_receipt": true,
+      "before_as_of_utc": "2026-11-21T18:26:55.999999Z",
+      "after_as_of_utc": "2026-11-21T18:26:56.000001Z",
+      "reconciliation_sha256": "0ef48bcea7541895733ab74dbf33a6b85b71cdca96aad877696dc3f44b99deee",
+      "receipt_clock_source": "github_api_run_date_header",
+      "store_receipt_time_is_actual_recovery_time": false,
+      "store_receipt_time_is_post_append_availability_bound": true,
+      "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
+      "main_modified": false,
+      "limitations": [
+        "GitHub Actions artifacts are retention-limited and are not WORM or externally timestamp-anchored.",
+        "The replay verifies historical feature-store provenance and point-in-time visibility, not XRP predictive performance.",
+        "The backfilled records were not committed to main's feature store."
+      ]
+    },
+    "test_failure_diagnosis": [
+      "Run265 is a historical capture at head 85ebfb9; the test incorrectly compared that historical head to the later current PR head. The current inventory must be compared to current_pr_head_sha, while Run265 remains historical.",
+      "Run269's artifact schema stores forecast_status at the artifact top level and directional_forecast inside prediction_readiness; the test referenced a nonexistent nested prediction_readiness.forecast_status key."
+    ],
+    "test_corrections_in_this_commit": [
+      "Bind historical Run265 to its captured head and keep it distinct from the current PR head.",
+      "Bind the current open-PR inventory to current_pr_head_sha and the actual two-failure parent-head result.",
+      "Bind Run269's artifact forecast status to its actual schema.",
+      "Add a Run270 regression test for current main ingestion, exact-head CI, isolated backfill, and forecast fail-closed state."
+    ],
+    "nine_platform_status": {
+      "verified": [
+        "ChatGPT -> GitHub connector -> Barrot-Agent/B-Agent"
+      ],
+      "unverified": [
+        "Claude",
+        "Grok",
+        "Gemini",
+        "Copilot",
+        "Codex",
+        "Hugging Face",
+        "Kaggle",
+        "Databricks"
+      ],
+      "external_dispatch_performed": false,
+      "external_data_transfer_performed": false,
+      "red_team_review": "NOT_EXECUTED",
+      "least_privilege": "Not verified; repository metadata exposes broad permissions and connector token scopes were not introspected."
+    },
+    "merge_decision": "DO_NOT_MERGE",
+    "merge_blockers": [
+      "PR #1684 remains draft.",
+      "Zero independent approving reviews exist.",
+      "Direct main branch-protection inspection returns HTTP 403; required checks and administrator enforcement cannot be verified.",
+      "CODEOWNERS assigns all paths to @Barrot-Agent; no independent code owner is configured."
+    ],
+    "main_unchanged": true,
+    "no_external_actions": true
+  },
+  "latest_run_270": {
+    "captured_at_utc": "2026-11-21T19:02:47Z",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "main_tree_entries": 3115,
+    "main_tree_truncated": false,
+    "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+    "integration_tree_entries": 3123,
+    "integration_tree_truncated": false,
+    "main_paths_missing_from_integration": 0,
+    "integration_only_paths": 8,
+    "integration_ahead_by": 108,
+    "integration_behind_by": 0,
+    "changed_files": 19,
+    "commits": 108,
+    "open_pr_count": 2,
+    "main_ci": {
+      "run_id": 44839159044,
+      "head_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "conclusion": "success",
+      "full_suite": {
+        "passed": 4534,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 32,
+        "coverage_percent": 73.22,
+        "duration_seconds": 202.35
+      }
+    },
+    "pr_exact_head_ci": {
+      "run_id": 44935321192,
+      "head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+      "conclusion": "failure",
+      "full_suite": {
+        "head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+        "passed": 4555,
+        "failed": 2,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.2,
+        "duration_seconds": 211.36,
+        "conclusion": "failure",
+        "failing_tests": [
+          "tests/test_xrp_nine_platform_map_latest.py::test_run265_binds_current_pr_ci_backfill_and_forecast_gate",
+          "tests/test_xrp_nine_platform_map_latest.py::test_run269_binds_main_run46_microstructure_and_prediction_gates"
+        ]
+      },
+      "dependency_audit": {
+        "run_id": 44935321313,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities_reported": 0
+      },
+      "money_audit": {
+        "run_id": 44935321235,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 44935321172,
+        "conclusion": "success"
+      },
+      "pages_validation": "success_validation_only",
+      "backfill_replay": {
+        "job_id": 136940556646,
+        "conclusion": "success"
+      }
+    },
+    "main_ingestion": {
+      "run_id": 44934364490,
+      "run_number": 47,
+      "captured_at_utc": "2026-11-21T18:14:22.205908Z",
+      "data_cutoff_utc": "2026-11-21T18:14:22.220144Z",
+      "code_head_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "adapter_version": "xrp-public-market-v3.32",
+      "parser_version": "xrp-public-market-v3.31",
+      "receipt_count": 34,
+      "retained_raw_payload_count": 22,
+      "digest_only_receipt_count": 12,
+      "receipt_chain_verification": "PASS",
+      "cross_run_continuity_status": "CONTINUED",
+      "cross_run_continuity_verified": true,
+      "cross_run_sequence": 19,
+      "cross_run_chain_sha256": "b0a2d90623a1914fcd5c6e0f3d524f834b8cbdcda45b79e563de3359351b2caa",
+      "receipt_chain_head_sha256": "b163d62a609cb34d0b31d38fc3820330dd5d5698c475abf901daa85cdfdc5ed4",
+      "external_anchor": "NOT_ANCHORED",
+      "source_failures": 18,
+      "raw_only_sources": 23,
+      "feature_store_history_record_count": 17168,
+      "feature_store_snapshot_count": 19,
+      "latest_snapshot_record_count": 106,
+      "latest_snapshot_source_count": 11,
+      "delta_feature_record_count": 490,
+      "input_feature_record_count": 2230,
+      "eligible_feature_record_count": 106,
+      "excluded_feature_record_count": 384,
+      "sqlite_integrity": "ok",
+      "feature_store_checkpoint_valid": true,
+      "feature_store_restore_source": "trusted_ingestion_workflow_run:44928553996:per_run_checkpoint",
+      "event_count": 150,
+      "event_receipt_complete": false,
+      "event_timeline_model_eligible": false,
+      "scenario_count": 117,
+      "drift_feature_count": 204,
+      "drift_evaluated_feature_count": 0,
+      "walk_forward_forecast_count": 0,
+      "walk_forward_status": "PARTIAL_OR_BLOCKED",
+      "forecast_status": "NOT_ISSUED",
+      "sec_edgar": {
+        "status": "BLOCKED_CONFIGURATION",
+        "contact_identity_configured": false,
+        "filing_event_count": 0,
+        "raw_receipt_count": 0,
+        "source_failure_count": 3,
+        "required_variable": "BARROT_SEC_USER_AGENT"
+      },
+      "quote_basis": {
+        "status": "VERIFIED",
+        "venue": "OKX",
+        "normalized_mid_price_usd": 0.9298898215,
+        "spread_bps": 1.1737627133505208,
+        "snapshot_skew_seconds": 0.001,
+        "max_component_age_seconds": 8.242908,
+        "model_eligible_top_of_book_features": 4,
+        "publisher_independence_groups": 1,
+        "depth_levels_normalized": false
+      },
+      "artifact_digests": {
+        "raw": "f8b9ee80bea0ed6abc58a3d15b08be08bb0ce98f42d0598e37727d848c853185",
+        "events": "e09a3f7b017c5c840d77787ac0c0081d1757efd631c0d9f6f37a5f0d9583085e",
+        "receipt_index": "a93224a58f761f8b90fc5274adefd086d39ed756d5137a1ee17f699922bd7bb4",
+        "feature_store": "7193f588243b4b759a520a8dd41e83260d9293c633cfb667ac649ccf43de0c13"
+      },
+      "artifact_retention_days": {
+        "raw": 90,
+        "events": 90,
+        "receipt_index": 90,
+        "feature_store": 7
+      },
+      "xrpl_node_reconciliation": "NOT_COLLECTED_PROVIDER_TERMS_POLICY"
+    },
+    "backfill_replay": {
+      "workflow_run_id": 44935321192,
+      "job_id": 136940556646,
+      "artifact_id": 14719736675,
+      "workflow_head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+      "current_main_run_id": 44934364490,
+      "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "records_before": 17168,
+      "records_after": 17286,
+      "recovered_records": 118,
+      "snapshots_before": 19,
+      "snapshots_after": 20,
+      "recovered_source_lineages": 11,
+      "sqlite_integrity": "ok",
+      "verified_snapshots": 20,
+      "visible_before_receipt": false,
+      "visible_after_receipt": true,
+      "before_as_of_utc": "2026-11-21T18:26:55.999999Z",
+      "after_as_of_utc": "2026-11-21T18:26:56.000001Z",
+      "reconciliation_sha256": "0ef48bcea7541895733ab74dbf33a6b85b71cdca96aad877696dc3f44b99deee",
+      "receipt_clock_source": "github_api_run_date_header",
+      "store_receipt_time_is_actual_recovery_time": false,
+      "store_receipt_time_is_post_append_availability_bound": true,
+      "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
+      "main_modified": false,
+      "limitations": [
+        "GitHub Actions artifacts are retention-limited and are not WORM or externally timestamp-anchored.",
+        "The replay verifies historical feature-store provenance and point-in-time visibility, not XRP predictive performance.",
+        "The backfilled records were not committed to main's feature store."
+      ]
+    },
+    "test_failure_diagnosis": [
+      "Run265 is a historical capture at head 85ebfb9; the test incorrectly compared that historical head to the later current PR head. The current inventory must be compared to current_pr_head_sha, while Run265 remains historical.",
+      "Run269's artifact schema stores forecast_status at the artifact top level and directional_forecast inside prediction_readiness; the test referenced a nonexistent nested prediction_readiness.forecast_status key."
+    ],
+    "test_corrections_in_this_commit": [
+      "Bind historical Run265 to its captured head and keep it distinct from the current PR head.",
+      "Bind the current open-PR inventory to current_pr_head_sha and the actual two-failure parent-head result.",
+      "Bind Run269's artifact forecast status to its actual schema.",
+      "Add a Run270 regression test for current main ingestion, exact-head CI, isolated backfill, and forecast fail-closed state."
+    ],
+    "nine_platform_status": {
+      "verified": [
+        "ChatGPT -> GitHub connector -> Barrot-Agent/B-Agent"
+      ],
+      "unverified": [
+        "Claude",
+        "Grok",
+        "Gemini",
+        "Copilot",
+        "Codex",
+        "Hugging Face",
+        "Kaggle",
+        "Databricks"
+      ],
+      "external_dispatch_performed": false,
+      "external_data_transfer_performed": false,
+      "red_team_review": "NOT_EXECUTED",
+      "least_privilege": "Not verified; repository metadata exposes broad permissions and connector token scopes were not introspected."
+    },
+    "merge_decision": "DO_NOT_MERGE",
+    "merge_blockers": [
+      "PR #1684 remains draft.",
+      "Zero independent approving reviews exist.",
+      "Direct main branch-protection inspection returns HTTP 403; required checks and administrator enforcement cannot be verified.",
+      "CODEOWNERS assigns all paths to @Barrot-Agent; no independent code owner is configured."
+    ],
+    "main_unchanged": true,
+    "no_external_actions": true
+  },
+  "run270_merge_decision": {
+    "decision": "DO_NOT_MERGE",
+    "blockers": [
+      "PR #1684 remains draft.",
+      "Zero independent approving reviews exist.",
+      "Direct main branch-protection inspection returns HTTP 403; required checks and administrator enforcement cannot be verified.",
+      "CODEOWNERS assigns all paths to @Barrot-Agent; no independent code owner is configured."
+    ]
+  },
+  "run270_no_external_actions": {
+    "main_modified": false,
+    "merge_performed": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "paper_trade": false,
+    "real_money": false,
+    "external_model_dispatch": false,
+    "external_data_transfer": false
+  },
+  "run270_main_unchanged": true,
+  "run270_external_dispatch_performed": false,
+  "run270_no_source_pr_closures": true,
+  "run270_next_actions": [
+    "Run the entire repository suite, dependency/security checks, and fail-closed gate on the child commit created by this evidence/test correction.",
+    "Keep PR #1684 as the only XRP integration workstream; do not create a successor PR.",
+    "Complete event-to-raw-receipt matching for the 150-event registry before admitting event features.",
+    "Resolve SEC capture only after an approved monitored project contact is configured; do not invent a contact identity.",
+    "Add independent immutable retention and timestamp anchoring; GitHub Actions artifacts remain retention-limited.",
+    "Accumulate sufficient point-in-time sequential observations before walk-forward baselines, calibration, drift evaluation, and shadow testing.",
+    "Do not issue a directional forecast until out-of-sample evaluation supports it."
+  ],
+  "current_successor": {
+    "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "head_sha": "4b5b5d9aa32259914ebc45a79fc2ea59368af29f",
+    "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "ahead_by": 108,
+    "behind_by": 0,
+    "draft": true,
+    "changed_files": 19,
+    "commits": 108,
+    "pr_number": 1684,
+    "formal_reviews": 0,
+    "mergeable": true,
+    "mergeable_state": "unstable",
+    "verified_code_parent_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
+    "current_head_ci_status": "FAIL_TWO_STALE_EVIDENCE_ASSERTIONS; corrected in child commit; exact-head CI pending"
   }
 }

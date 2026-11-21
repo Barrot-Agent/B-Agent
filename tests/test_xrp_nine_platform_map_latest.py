@@ -761,16 +761,18 @@ def test_run265_binds_current_pr_ci_backfill_and_forecast_gate():
     data = load_map()
     run = data["run265_evidence_record"]
     assert run["main_sha"] == data["current_main_sha"]
-    assert run["head_sha"] == data["current_pr_head_sha"]
+    # Run265 is a historical capture. Its head must not be compared with the later current PR head.
+    assert run["head_sha"] == "85ebfb943edd19999331c1890ced02767d134a6a"
+    assert run["head_sha"] != data["current_pr_head_sha"]
     assert run["full_suite_passed"] == 4539
     assert run["full_suite_failed"] == 6
     assert run["full_suite_skipped"] == 1
     assert run["forecast_status"] == "NOT_ISSUED"
 
     current_pr = next(item for item in data["open_pr_inventory"] if item["number"] == 1684)
-    assert current_pr["head_sha"] == run["head_sha"]
+    assert current_pr["head_sha"] == data["current_pr_head_sha"]
     assert current_pr["draft"] is True
-    assert current_pr["full_suite"]["failed"] == 6
+    assert current_pr["full_suite"]["failed"] == 2
     assert current_pr["backfill_replay"]["conclusion"] == "success"
     assert current_pr["backfill_replay"]["recovered_records"] == 118
     assert current_pr["backfill_replay"]["main_modified"] is False
@@ -815,7 +817,8 @@ def test_run269_binds_main_run46_microstructure_and_prediction_gates():
     assert artifact["raw_payload_integrity"]["raw_payload_hashes_verified"] == 22
     assert artifact["raw_payload_integrity"]["raw_payload_hash_mismatches"] == 0
     assert artifact["event_timeline"]["raw_hash_present_count"] == 0
-    assert artifact["prediction_readiness"]["forecast_status"] == "NOT_ISSUED"
+    assert artifact["forecast_status"] == "NOT_ISSUED"
+    assert artifact["prediction_readiness"]["directional_forecast"] == "NOT_ISSUED"
     assert artifact["prediction_readiness"]["walk_forward_origins"] == 0
     assert artifact["historical_batch"]["binance_hourly_close"]["known_at_utc"] == "2026-11-21T07:13:43.810048Z"
     assert artifact["historical_batch"]["binance_hourly_close"]["historical_values_available_before_known_at"] is False
@@ -827,3 +830,60 @@ def test_run269_binds_main_run46_microstructure_and_prediction_gates():
     assert artifact["receipt_chain"]["current_receipt_chain"]["chain_head_sha256"] == "bac4e2ab3b0329eaa13d8a37f16145801650a8409517115774199ac4d57b9f1a"
     assert run["main_ingestion"]["cross_run_chain_sha256"] == "db278839e9f44c32a7c0203ea8ef447efef2a15f852b28324953210b46dddaa8"
     assert run["main_ingestion"]["receipt_chain_head_sha256"] == "bac4e2ab3b0329eaa13d8a37f16145801650a8409517115774199ac4d57b9f1a"
+
+
+
+def test_run270_binds_main_run47_and_current_pr_head_evidence():
+    data = load_map()
+    run = data["run270_evidence_record"]
+
+    assert data["latest_run_id"] == 270
+    assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
+    assert run["head_sha"] == data["current_pr_head_sha"] == "4b5b5d9aa32259914ebc45a79fc2ea59368af29f"
+    assert run["main_tree_entries"] == 3115
+    assert run["integration_tree_entries"] == 3123
+    assert run["main_paths_missing_from_integration"] == 0
+    assert run["integration_ahead_by"] == 108
+    assert run["integration_behind_by"] == 0
+
+    ci = run["pr_exact_head_ci"]
+    assert ci["run_id"] == 44935321192
+    assert ci["conclusion"] == "failure"
+    assert ci["full_suite"]["passed"] == 4555
+    assert ci["full_suite"]["failed"] == 2
+    assert ci["full_suite"]["skipped"] == 1
+    assert ci["full_suite"]["failing_tests"] == [
+        "tests/test_xrp_nine_platform_map_latest.py::test_run265_binds_current_pr_ci_backfill_and_forecast_gate",
+        "tests/test_xrp_nine_platform_map_latest.py::test_run269_binds_main_run46_microstructure_and_prediction_gates",
+    ]
+
+    ingestion = run["main_ingestion"]
+    assert ingestion["run_id"] == 44934364490
+    assert ingestion["run_number"] == 47
+    assert ingestion["feature_store_history_record_count"] == 17168
+    assert ingestion["feature_store_snapshot_count"] == 19
+    assert ingestion["receipt_count"] == 34
+    assert ingestion["retained_raw_payload_count"] == 22
+    assert ingestion["digest_only_receipt_count"] == 12
+    assert ingestion["cross_run_continuity_status"] == "CONTINUED"
+    assert ingestion["cross_run_continuity_verified"] is True
+    assert ingestion["cross_run_sequence"] == 19
+    assert ingestion["event_receipt_complete"] is False
+    assert ingestion["walk_forward_forecast_count"] == 0
+    assert ingestion["forecast_status"] == "NOT_ISSUED"
+
+    backfill = run["backfill_replay"]
+    assert backfill["status"] == "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN"
+    assert backfill["records_before"] == 17168
+    assert backfill["records_after"] == 17286
+    assert backfill["snapshots_before"] == 19
+    assert backfill["snapshots_after"] == 20
+    assert backfill["recovered_records"] == 118
+    assert backfill["recovered_source_lineages"] == 11
+    assert backfill["visible_before_receipt"] is False
+    assert backfill["visible_after_receipt"] is True
+    assert backfill["reconciliation_sha256"] == "0ef48bcea7541895733ab74dbf33a6b85b71cdca96aad877696dc3f44b99deee"
+
+    assert run["merge_decision"] == "DO_NOT_MERGE"
+    assert run["main_unchanged"] is True
+    assert run["no_external_actions"] is True
