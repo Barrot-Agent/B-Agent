@@ -60,17 +60,21 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert is_sha(repo["main_sha"])
     integration = repo["integration"]
     assert integration["pr_number"] == 1673
-    assert integration["state"] == "open"
-    assert integration["draft"] is True
+    assert integration["state"] == "closed"
+    assert integration["draft"] is False
+    assert integration["merged"] is True
+    assert integration["classification"] == "MERGED_WITH_GOVERNANCE_EXCEPTION"
+    assert integration["merge_commit_sha"] == repo["main_sha"]
     assert is_sha(integration["snapshot_head_sha"])
     assert is_sha(integration["code_head_sha"])
     assert is_sha(integration["current_pr_head_sha"])
-    assert integration["ahead_by"] == integration["commits"] > 0
-    assert integration["pr_commit_count"] == 549
-    assert integration["changed_files"] == 1490
+    assert integration["ahead_by"] == 0
+    assert integration["commits"] == 556
+    assert integration["pr_commit_count"] == 556
+    assert integration["changed_files"] == 1492
     assert integration["current_main_sha"] == repo["main_sha"]
-    assert integration["base_sha_matches_current_main"] is True
-    assert integration["base_sha"] == repo["main_sha"]
+    assert integration["base_sha_matches_current_main"] is False
+    assert integration["base_sha"] != repo["main_sha"]
     assert integration["behind_by"] == 0
     assert integration["changed_files"] >= 1
     assert 0 <= integration["changed_workflow_files"] <= integration["changed_files"]
@@ -86,10 +90,19 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
         "scheduled_sources": 51,
     }
     ingestion = data["prediction_engine"]["latest_ingestion"]
-    assert ingestion["run_id"] == 44654352643
-    assert ingestion["receipt_count"] == 34
+    assert ingestion["run_id"] == 44844953105
+    assert ingestion["receipt_count"] == 37
     assert ingestion["receipts"] == ingestion["receipt_count"]
+    assert ingestion["raw_retained"] == 25
+    assert ingestion["digest_only"] == 12
     assert ingestion["source_failures"] == 21
+    assert ingestion["eligible_features"] == 118
+    assert ingestion["excluded_features"] == 433
+    assert ingestion["feature_history_records"] == 1981
+    assert ingestion["snapshots"] == 2
+    assert ingestion["continuity"] == "CONTINUED"
+    assert ingestion["cross_run_sequence"] == 2
+    assert ingestion["receipt_chain"] == "PASS"
     assert ingestion["walk_forward_forecasts"] == 0
     assert ingestion["forecast_issuance"] == "NOT_ISSUED"
     assert ingestion["external_anchor"] == "NOT_ANCHORED"
@@ -142,15 +155,11 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert counts.get("ready", 0) == summary["ready"]
     assert counts.get("duplicate", 0) == summary["duplicate"]
     assert counts.get("superseded", 0) == summary["superseded"]
-    expected_open_prs = {1673, 1670, 1664, 1265, 1663, 1541, 1450, 1460, 1440, 1436, 1437, 1353}
+    expected_open_prs = {1684, 1685}
     assert {item["number"] for item in backlog} == expected_open_prs
-    assert next(item for item in backlog if item["number"] == 1673)["classification"] == "blocked"
-    assert next(item for item in backlog if item["number"] == 1663)["classification"] == "superseded"
-    assert next(item for item in backlog if item["number"] == 1670)["classification"] == "blocked"
-    assert next(item for item in backlog if item["number"] == 1541)["classification"] == "blocked"
-    assert next(item for item in backlog if item["number"] == 1664)["classification"] == "unique/unreviewed"
-    assert next(item for item in backlog if item["number"] == 1265)["classification"] == "unique/unreviewed"
-    assert data["merge_decision"] == "NO_MERGE"
+    assert next(item for item in backlog if item["number"] == 1684)["classification"] == "blocked"
+    assert next(item for item in backlog if item["number"] == 1685)["classification"] == "blocked"
+    assert data["merge_decision"] == "POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION"
     prior_ci = data["ci_evidence"]["pre_fix_pr_head_ci"]
     assert prior_ci["head_sha"] == "bdc77944fb6de3b2ce036a5cc26d0af2538ddb92"
     assert prior_ci["result"] == "failure"
@@ -373,7 +382,7 @@ def test_run227_main_workflow_differential_and_publication_gate_are_preserved():
     assert diff["main_coinbase_paper_trader"]["run_performed"] is False
     assert diff["main_barrot_sync"]["push_result"] == "Everything up-to-date"
     assert diff["pillars_check"]["conclusion"] == "failure"
-    assert data["merge_decision"] == "NO_MERGE"
+    assert data["merge_decision"] == "POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION"
     assert data["run227_no_external_actions"] is True
 
 
