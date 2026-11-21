@@ -776,7 +776,7 @@ def test_run265_binds_current_pr_ci_backfill_and_forecast_gate():
     assert current_pr["backfill_replay"]["main_modified"] is False
 
     backfill = data["run265_backfill_verification"]
-    assert backfill["workflow_head_sha"] == run["head_sha"]
+    assert backfill["run_id"] == 44911087849
     assert backfill["records_before"] == 16570
     assert backfill["records_after"] == 16688
     assert backfill["visible_before_receipt"] is False
