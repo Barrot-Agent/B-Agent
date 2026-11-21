@@ -52,6 +52,10 @@ class RunnerExecutionTests(unittest.TestCase):
         self.assertEqual(args[0][5], "json")
         self.assertEqual(kwargs["cwd"], "/tmp")
         self.assertEqual(kwargs["timeout"], 1800)
+        self.assertNotIn("BARROT_AGENT_SECRET", kwargs["env"])
+        self.assertNotIn("BRAIN_SHARED_SECRET", kwargs["env"])
+        self.assertNotIn("CLOUDFLARE_API_TOKEN", kwargs["env"])
+        self.assertNotIn("CLOUDFLARE_ACCOUNT_ID", kwargs["env"])
 
     @patch("scripts.barrot_a2a_runner.subprocess.run")
     def test_nonzero_exit_is_failed(self, run_mock: Mock) -> None:

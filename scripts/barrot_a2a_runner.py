@@ -202,6 +202,11 @@ def execute_task(
     command = [opencode_bin, "run", "--agent", agent, "--format", "json", prompt]
     started = utc_now()
     try:
+        child_env = os.environ.copy()
+        # Queue credentials belong only to this supervisor process. Never pass
+        # them into OpenCode, its shell tools, or task-controlled subprocesses.
+        for secret_name in ("BARROT_AGENT_SECRET", "BRAIN_SHARED_SECRET", "CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID"):
+            child_env.pop(secret_name, None)
         completed = subprocess.run(
             command,
             cwd=str(workdir),
@@ -211,6 +216,7 @@ def execute_task(
             errors="replace",
             timeout=timeout_seconds,
             check=False,
+            env=child_env,
         )
         result = {
             "runtime": "existing-opencode-shared-service",
@@ -286,9 +292,9 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     base_url = os.getenv("BARROT_A2A_URL", "").strip()
-    secret = os.getenv("BARROT_AGENT_SECRET") or os.getenv("BRAIN_SHARED_SECRET", "")
+    secret = os.getenv("BARROT_AGENT_SECRET", "").strip()
     if not base_url or not secret:
-        LOG.error("BARROT_A2A_URL and BARROT_AGENT_SECRET or BRAIN_SHARED_SECRET must be configured; values are never logged")
+        LOG.error("BARROT_A2A_URL and the dedicated BARROT_AGENT_SECRET must be configured; values are never logged")
         return 2
     workdir = Path(args.workdir).expanduser().resolve()
     if not workdir.is_dir():

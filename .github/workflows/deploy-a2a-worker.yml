@@ -61,5 +61,7 @@ jobs:
           workingDirectory: a2a
           secrets: |
             BRAIN_SHARED_SECRET
+            BARROT_AGENT_SECRET
         env:
           BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}
+          BARROT_AGENT_SECRET: ${{ secrets.BARROT_AGENT_SECRET }}

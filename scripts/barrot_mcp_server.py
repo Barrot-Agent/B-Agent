@@ -46,8 +46,8 @@ def start_background_a2a_runner() -> bool:
         return False
     if not os.getenv("BARROT_A2A_URL"):
         return False
-    if not (os.getenv("BARROT_AGENT_SECRET") or os.getenv("BRAIN_SHARED_SECRET")):
-        print("[barrot] A2A runner not started: runner authentication secret is not available in the OpenCode environment", file=sys.stderr)
+    if not os.getenv("BARROT_AGENT_SECRET", "").strip():
+        print("[barrot] A2A runner not started: dedicated BARROT_AGENT_SECRET is not available in the OpenCode environment", file=sys.stderr)
         return False
     try:
         from scripts.barrot_a2a_runner import runner_is_active
