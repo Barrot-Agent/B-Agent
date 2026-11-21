@@ -5007,3 +5007,108 @@ No PR is classified duplicate or superseded. Do not close either.
 **Next concrete action:** finish and inspect exact-head full-suite CI and the fail-closed gate for `fa7a400f`; if tests pass, update this handoff with the final run IDs, then re-run exact-head checks on the handoff commit. Keep #1684 blocked until an independent review and verifiable branch-protection requirements exist. Only after those conditions pass may the user-authorized merge proceed. After any future merge, fetch main again, verify the merge commit and files, run main CI, and revalidate the backfill against an isolated copy of the new main checkpoint before any adoption.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, external model dispatch, paper trade, funds transfer or real-money action occurred in this run.
+
+
+---
+
+## Run 264 — 2026-11-21 UTC — current integration, CI and market-flow disagreement
+
+### Repository state and integration-first inspection
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`.
+- Main recursive tree: 3,115 entries, complete and untruncated.
+- XRP integration branch before this handoff update: `b91a67332d9595f66fd95e186ae236203c491f4c`; 68 commits ahead, 0 behind main. The recursive branch tree is complete; the branch contains the main tree plus the existing five integration paths and the new Run 264 research artifact.
+- Existing XRP PR [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684) remains the sole XRP integration PR. It is draft, 12 prior changed paths plus the new Run 264 research artifact, and has no independent reviews.
+- Existing A2A credential-separation PR [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685) remains a separate draft security workstream with nine changed files. Its changed-file set does not overlap #1684. No new PR or branch was created.
+- Open PR inventory remains exactly #1684 and #1685. Classifications: both blocked; neither is duplicate or superseded.
+- The repository integration reports admin/maintain/push/pull/triage permissions for the connected identity. Token scopes were not introspected; least privilege is not demonstrated.
+- Branch-protection endpoint remains HTTP 403. The only visible ruleset, “Fall Back,” is disabled. No protection bypass or merge was attempted.
+
+### Exact-head CI — prior handoff head, not the new Run 264 head
+
+For `88cb458603ee62eb0c3d7176e78b8bb360f3d5b5`, PR CI [44900396181](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900396181) completed successfully:
+
+- Core Tests: success.
+- Full repository test suite: **4,545 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests passed; 73.20% total coverage**.
+- The full-suite job discovered every tracked active test module, retained required legacy and hidden active test paths, excluded only disabled/quarantined/fixture paths, and passed the 70% legacy core floor plus the extended package-specific coverage floors.
+- GitHub Pages build validation only: success; no deployment.
+- XRP historical backfill replay against preserved real artifacts and the latest successful main checkpoint: success.
+- Dependency audit [44900396118](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900396118): success.
+- Money audit [44900396164](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900396164): success.
+- Conflict integrity [44900396107](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900396107): success.
+
+Fail-closed gate [44900396116](https://github.com/Barrot-Agent/B-Agent/actions/runs/44900396116) failed for the correct reasons: PR #1684 is still draft; no independent approving review exists; branch protection could not be verified. Its log confirms that the workflow is read-only and does not approve, bypass, or merge.
+
+**Head discipline:** Run 264 then added the research artifact in commit `b91a6733`. That new commit and the following handoff-document commit are not covered by the 4,545-test result above. Their own exact-head CI must be checked separately. No result from `88cb458` is being represented as a test of `b91a6733` or the subsequent handoff commit.
+
+### Main scheduled ingestion and cross-analysis freshness
+
+- Latest successful main XRP ingestion: run 38, [44897904107](https://github.com/Barrot-Agent/B-Agent/actions/runs/44897904107), completed on main SHA `550a647` at 11:11:22 UTC.
+- Run 38 captured 34 receipts (22 retained raw payloads, 12 digest-only), receipt-chain sequence 12, and 16,324 historical feature records across 12 snapshots (124 eligible, 366 excluded). It recorded 18 source failures and 23 raw-only sources.
+- Event timeline: 150 events; scenarios: 117; event receipt completeness false. Drift: 204 features considered, 0 evaluated. Walk-forward origins: 0; forecast count: 0; forecast status remains `NOT_ISSUED`.
+- SEC EDGAR capture remains blocked: three SEC source failures and zero SEC submissions/companyfacts raw receipts.
+- Latest main Cross Analysis run [44901084379](https://github.com/Barrot-Agent/B-Agent/actions/runs/44901084379) succeeded, but it used the checked-in historical corpus. XRP sentiment was 551.206 hours old and BTC sentiment 608.041 hours old; both were marked stale and forecast-ineligible. Entity co-occurrence counts are global, not reliably separated by asset. Do not use these outputs as current XRP features.
+
+### Run 264 market stress and source disagreement research
+
+New research-only artifact:
+`research/xrp_intelligence/20261121T1213Z-run264-market-stress-flow-disagreement.json`
+
+The artifact is explicitly `model_eligible: false`. It records public page/search observations, source URLs, observed timestamps where exposed, disagreement, source-independence groups and counter-hypotheses. Raw HTTP response bodies, exact issuer-file bytes and immutable raw-source receipts were not captured in this run; therefore none of these observations may enter the point-in-time feature store or a forecast.
+
+#### Spot and derivatives snapshot
+
+CoinGlass's dynamic dashboard showed an XRP spot snapshot near $0.9018, 24-hour change -5.39%, 24-hour range $0.8591–$0.9539, approximately $1.03B spot volume and $3.85B futures volume. Open interest was about $1.73B, down 9.04%; funding was slightly positive at 0.0028% per 8h in that page render. The page's values changed across reads; these are not a consolidated executable market tape.
+
+#### Liquidation disagreement
+
+- CoinGlass liquidation view reported $31.425M total, $29.349M long and $2.077M short (93.39% long).
+- CoinGlass overview renders varied around $31.4M–$31.7M and 92%–93% long across separate page reads.
+- ArbitrageX showed $17.9M at 02:12 UTC and $27.4M at 08:36 UTC on November 21, with a disclosed 1h44m gap and one exchange missing.
+- CoinPaper's 11:20 UTC story repeats approximately $31.45M from CoinGlass; it is not an independent liquidation measurement.
+
+The robust qualitative observation is that long liquidations dominated the captured windows. The exact total is not reconciled because time windows and exchange coverage differ.
+
+#### ETF flow and issuer-file disagreement
+
+- Crypto ETF.today reported November 20 net outflow of approximately $5.3M: Bitwise -$5.2M, Canary -$0.1M, 21Shares zero; Franklin and Grayscale were marked not reported. It reported about $990M net assets and +$1.78B cumulative net flows.
+- CryptoKeyhole reported a partial November 20 outflow of 2,659,361 XRP (about $2.4M), with only two of its daily-read funds reporting and Franklin still pending. Its Canary XRPC row reported 234,649,382 XRP and a -2,659,361 XRP daily change.
+- Canary's own issuer page for November 20 reported market price $9.40, NAV $9.44, net assets $211,322,498.44 and 22,390,000 shares outstanding. The CryptoKeyhole XRPC page reported $209.0M net assets, $10.20 NAV and 22,140,000 shares for the same stated date. This is a material mismatch requiring raw issuer-file reconciliation.
+- CoinGlass's rounded -$5.0M ETF figure is broadly aligned with Crypto ETF.today, but it is not an independent issuer confirmation.
+- Crypto ETF.today's 127 institutional managers / $179M figure is based on Q2 2026 Form 13F positions as of June 30, not current November flows. 13F does not reveal shorts, futures or retail exposure.
+
+Do not promote a daily ETF flow into a feature until each issuer's dated file is captured as raw bytes, SHA-256 hashed, and reconciled to prior-day units, shares, NAV, SEC periodic filings and publication time. Missing issuer reports remain missing; never zero-fill.
+
+#### Exchange-balance counterevidence
+
+A CoinGlass search-result snippet reported about 5.10B XRP in labelled exchange public wallets, with a 7-day decline of 131.73M XRP and a 30-day decline of 205.31M XRP. The opened on-chain page rendered the numeric balance fields blank, so this remains a weak, search-snippet-only observation. Public-wallet coverage is not a complete exchange-liability ledger. If confirmed, falling exchange balances would counter a simple exchange-inflow selling explanation.
+
+#### Payment-rail context
+
+SWIFT's July 9, 2026 primary announcement says 17 banks from six continents were preparing live pilots of tokenized bank deposits on their own ledgers, with SWIFT providing an orchestration layer and final settlement through existing systems. The announcement does not identify XRP or Ripple. Classify this as an adjacent/competing tokenized-deposit rail and interoperability context, not XRP adoption or a Ripple partnership.
+
+#### Competing hypotheses retained
+
+1. **Leverage unwind:** heavy long liquidations and falling open interest plausibly amplified the spot decline. A reduction in open interest can also represent a completed leverage reset, not a continuing directional signal.
+2. **Institutional spot redemptions:** several aggregators indicate ETF outflows, but exact XRPC and fund-level flows disagree and cumulative flows remain positive. No current institutional-flow forecast feature is justified.
+3. **Exchange supply:** the weak public-wallet snippet suggests exchange balances declined, which is counterevidence to a simple exchange-inflow narrative; it is not sufficiently verified to settle the question.
+
+No directional forecast was issued.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** issuer-level ETF flow reconciliation with explicit provisional/complete states; aligned liquidation windows; per-asset sentiment freshness gates; source-independence and counter-hypothesis retention.
+- **EXECUTED:** fetched current repository/PR/tree/CI/handoff state; inspected exact-head test and gate logs; reviewed current main ingestion and cross-analysis runs; created the Run 264 research-only artifact on the existing #1684 branch; reviewed primary Canary and SWIFT pages and independent market/ETF aggregators.
+- **VERIFIED:** repository tree completeness; main and PR ancestry (68 ahead, 0 behind); exact 88cb458 CI, full suite, dependency/money/conflict checks; fail-closed blocker reasons; the source disagreements and the fact that the new artifact is marked model-ineligible.
+- **NOT VERIFIED / BLOCKED:** exact-head CI on the new Run 264 artifact commit and this handoff update; independent PR approval; effective branch protection; adoption of backfill into main; raw issuer ETF files; SEC capture; event raw-hash completeness; fresh sentiment; drift evaluation; walk-forward performance; probability calibration.
+
+### Backlog and next concrete action
+
+| PR | Classification | Reason |
+|---|---|---|
+| #1684 — XRP integration | blocked | Draft; no independent approval; branch protection unverifiable; latest artifact/handoff commits require their own exact-head CI |
+| #1685 — A2A credential separation | blocked | Draft; no independent approval; runner remains quarantined; OS sandbox/provider isolation/egress controls not verified |
+
+Next action: inspect exact-head CI and fail-closed gate for the Run 264 artifact/handoff head. Keep #1684 blocked until an independent review and verifiable branch protection exist. Then prioritize issuer-file raw capture and ETF-flow reconciliation, refresh stale sentiment, repair event-to-raw-receipt linkage, and only then start leakage-safe walk-forward baselines and calibration. Preserve V3 and all existing branch history.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, external model dispatch, paper trade, funds transfer or real-money action occurred.
