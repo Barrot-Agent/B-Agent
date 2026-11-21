@@ -5017,7 +5017,7 @@ No merge, deployment, secret rotation, Space restart, Kaggle submission, externa
 
 - Main remains `550a647ee7269a704d4600ff337b2145acc90473`.
 - Main recursive tree: 3,115 entries, complete and untruncated.
-- XRP integration branch before this handoff update: `b91a67332d9595f66fd95e186ae236203c491f4c`; 68 commits ahead, 0 behind main. The recursive branch tree is complete; the branch contains the main tree plus the existing five integration paths and the new Run 264 research artifact.
+- XRP integration branch before the first Run 264 handoff update: `b91a67332d9595f66fd95e186ae236203c491f4c`; 69 commits ahead, 0 behind main. The subsequent handoff commit `6e0e19e781f9b266ca3a58bdd85926f7c8e21a85` was 70 ahead, 0 behind. The recursive branch tree is complete; the branch contains the main tree plus the existing five integration paths and the new Run 264 research artifact.
 - Existing XRP PR [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684) remains the sole XRP integration PR. It is draft, 12 prior changed paths plus the new Run 264 research artifact, and has no independent reviews.
 - Existing A2A credential-separation PR [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685) remains a separate draft security workstream with nine changed files. Its changed-file set does not overlap #1684. No new PR or branch was created.
 - Open PR inventory remains exactly #1684 and #1685. Classifications: both blocked; neither is duplicate or superseded.
@@ -5099,8 +5099,8 @@ No directional forecast was issued.
 
 - **DESIGNED:** issuer-level ETF flow reconciliation with explicit provisional/complete states; aligned liquidation windows; per-asset sentiment freshness gates; source-independence and counter-hypothesis retention.
 - **EXECUTED:** fetched current repository/PR/tree/CI/handoff state; inspected exact-head test and gate logs; reviewed current main ingestion and cross-analysis runs; created the Run 264 research-only artifact on the existing #1684 branch; reviewed primary Canary and SWIFT pages and independent market/ETF aggregators.
-- **VERIFIED:** repository tree completeness; main and PR ancestry (68 ahead, 0 behind); exact 88cb458 CI, full suite, dependency/money/conflict checks; fail-closed blocker reasons; the source disagreements and the fact that the new artifact is marked model-ineligible.
-- **NOT VERIFIED / BLOCKED:** exact-head CI on the new Run 264 artifact commit and this handoff update; independent PR approval; effective branch protection; adoption of backfill into main; raw issuer ETF files; SEC capture; event raw-hash completeness; fresh sentiment; drift evaluation; walk-forward performance; probability calibration.
+- **VERIFIED:** repository tree completeness; main and PR ancestry through handoff head `6e0e19e781f9b266ca3a58bdd85926f7c8e21a85` (70 ahead, 0 behind); exact 88cb458 CI, full suite, dependency/money/conflict checks; fail-closed blocker reasons; the source disagreements and the fact that the new artifact is marked model-ineligible.
+- **NOT VERIFIED / BLOCKED:** exact-head CI on handoff head `6e0e19e781f9b266ca3a58bdd85926f7c8e21a85` was still running at capture (PR CI `44903197108`, push CI `44903192345`; full-suite and real-artifact replay pending; dependency audit pending; money audit `44903197159` and conflict-integrity `44903197121` passed; fail-closed gate `44903197080` still running). The following handoff-only correction commit requires its own exact-head CI check. Independent PR approval; effective branch protection; adoption of backfill into main; raw issuer ETF files; SEC capture; event raw-hash completeness; fresh sentiment; drift evaluation; walk-forward performance; probability calibration also remain blocked.
 
 ### Backlog and next concrete action
 
