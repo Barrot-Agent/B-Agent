@@ -3490,3 +3490,22 @@ No directional forecast is issued. These observations have no canonical raw rece
 - The post-merge handoff and nine-platform map are carried in [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch `integration/xrp-post-merge-verification-20261121T0002Z`, based on main `550a647ee7269a704d4600ff337b2145acc90473`.
 - PR #1684 is draft, two files only, and exists solely to preserve the post-merge verification and governance exception in the canonical durable records. It is the only open PR; classification: **blocked** pending exact-head CI and independent governance review.
 - Latest observed PR #1684 head before this final metadata note: `559f22d5af1ecc0b3e084cda3d6f050c5647aa38`. The push and PR full-suite jobs on that head are still running; no earlier-head result is transferred. No merge is authorized by this documentation update.
+
+
+## Run248 workflow security scan supplement
+
+The merged PR #1673 changed **71** workflow files. All 71 current-main files were fetched and statically scanned in this audit:
+
+- **0 unpinned third-party action references** were found in the 71 changed workflows; every external `uses:` reference found was pinned to a full 40-character commit SHA.
+- **0 `pull_request_target` triggers** were found.
+- The only explicit write permission found in the changed workflow set was `contents: write` in `.github/workflows/release.yml`, which is restricted to version-tag pushes matching `v*.*.*`. No release tag was pushed.
+- The following high-risk workflows are quarantined with `permissions: {}` and `if: false`: Barrot Agent dispatch, model merge/manual merge, self-upgrade, Coinbase paper trader, Databricks bundle/legacy deploy, Hugging Face sync, and WebMCP live sandbox.
+- Kaggle submission is manual-only and requires an explicit YES, an exact current-main SHA and a competition allowlist; it was not dispatched.
+- A2A deployment is manual-only, main-only, and requires separate YES confirmations for deployment and secret rotation; it was not dispatched.
+- `sync-self-hosted-brain.yml` has an `if: false` job guard but retains dormant code that creates a private Space and uploads a secret. Keep it quarantined; this scan did not authorize or execute it.
+- `paid-issue-publish.yml` is disabled with `permissions: {}`; no direct-main publication was executed.
+- The XRP public-ingestion workflow is read-only (`actions: read`, `contents: read`), checks out the exact triggering SHA and disables persisted checkout credentials.
+
+Limitations: this was a workflow-definition scan, not a complete transitive audit of every script, package install, runtime dependency, repository default token permission or external service. Several workflows without explicit `permissions` blocks may inherit repository defaults; those defaults were not independently readable. Full transitive review remains incomplete.
+
+The superseded source PR #1663 now has a cross-reference comment [7053832128](https://github.com/Barrot-Agent/B-Agent/pull/1663#issuecomment-7053832128) pointing to merged successor #1673. No source branch was deleted or rewritten.
