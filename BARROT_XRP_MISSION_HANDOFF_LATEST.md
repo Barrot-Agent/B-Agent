@@ -4022,3 +4022,105 @@ Near-touch depth is ask-heavy on three venues, while deeper 100-bps depth is bid
 3. After the workflow correction is merged under the governance gate, verify the next scheduled main run selects the immediately preceding successful main run and that the recovered feature-store checkpoint contains runs 24, 25, 26 and 28 without duplication.
 4. Resolve the SEC contact configuration only with an approved monitored project identity; until then leave SEC capital-event ingestion blocked.
 5. Keep forecast issuance disabled. No directional forecast until point-in-time dataset coverage and leakage-safe out-of-sample evaluation support it.
+
+
+## Run254 — 2026-11-21, main ingestion run 29 and primary derivatives/collateral research
+
+### Repository and exact-head CI refresh
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; tree 3,115 entries, untruncated. Open PRs remain exactly #1684 and #1685, both draft; no new branch/PR and no merge.
+- #1684 before this handoff update: head `598cf789a8154227c4bc4a7702173af405a8b734`, 30 commits ahead / 0 behind, six changed files. Exact-head CI run [44859850090](https://github.com/Barrot-Agent/B-Agent/actions/runs/44859850090) passed the full repository suite: 4,536 passed, 1 skipped, 11 warnings, 32 subtests passed; 532 tracked active test modules; 205.33 seconds; overall coverage 73% (31,389 statements, 8,407 missed). Legacy/core coverage 82%; all mission-critical coverage floors passed. Duplicate push-triggered CI run [44859843451](https://github.com/Barrot-Agent/B-Agent/actions/runs/44859843451) also passed.
+- Exact-head dependency audit [44859849966](https://github.com/Barrot-Agent/B-Agent/actions/runs/44859849966), conflict integrity [44859850013](https://github.com/Barrot-Agent/B-Agent/actions/runs/44859850013), money audit [44859850015](https://github.com/Barrot-Agent/B-Agent/actions/runs/44859850015), and Pages validation passed.
+- Fail-closed gate [44859850040](https://github.com/Barrot-Agent/B-Agent/actions/runs/44859850040) failed for the correct reasons: PR remains draft; no independent approving review exists; branch protection could not be verified. No merge was attempted.
+- Full-suite job emitted a non-failing GitHub Actions cache warning: configured cache budget is exhausted and cache is read-only. Test execution and coverage checks passed; subsequent runs may reinstall dependencies rather than save cache.
+- #1685 remains unchanged at `e512f4e6d66c1575186d00b60852c93caba687e0`, five commits ahead / 0 behind, nine changed files, draft, separate non-overlapping A2A credential workstream. Its prior exact-head full suite and security checks passed; no independent review or verifiable protection.
+- Governance remains blocked: branch metadata says protected, but detailed protection endpoint returns 403; visible required contexts empty; visible fallback ruleset disabled; CODEOWNERS assigns all paths to `@Barrot-Agent`. Backlog remains #1684 blocked, #1685 blocked; no ready/duplicate/superseded PR.
+
+### Latest main ingestion run 29
+
+- [XRP Public Market Ingestion run 44860165888](https://github.com/Barrot-Agent/B-Agent/actions/runs/44860165888) succeeded on main SHA `550a647`; run number 29; capture cutoff `2026-11-21T03:15:52.018918Z`.
+- Raw artifact 14689183340: 34 receipts, 22 retained payloads, 12 digest-only. Recomputed all 22 retained payload SHA-256 values from downloaded bytes: 22/22 match; zero mismatch and zero missing payload. Receipt chain manifest PASS/verified=true, 34 entries; chain head `a0ef15c0a085c04f2ba15de4d5f2d19b2ffcbade2726477b97f683c03e709865`; receipt log SHA-256 `72297654723dfc7616bd7f5db45321657b1f38fd95a95ae85a65eae023ac4d8e`; chain log SHA-256 `0cdffb6da50cd730459c37ab7bf28527e0682cddd487526b2b484037f6f9c362`.
+- Cross-run index artifact 14689661972: sequence 4, predecessor run 28 [44855063970](https://github.com/Barrot-Agent/B-Agent/actions/runs/44855063970), continuity verified, external anchor NOT_ANCHORED. This proves only that run 29 continued run 28's branch. It does not include run 25: run 25 and run 26 were sibling sequence-2 branches from run 24. Main still runs the old server-side completed-status filter; #1684's local-filter correction is not on main.
+- Feature-store artifact 14689612208: four snapshots, 2,199 records, 2,199 model-eligible feature records, 46 source-snapshot rows, five independence groups. Snapshots are run 24 (1,863), run 26 (106), run 28 (106), run 29 (124). The preserved run-25 snapshot (118 records) remains omitted.
+- Event artifact 14689716699: 150 events, 117 scenarios; 79 verified, 67 provisional, four disputed source statuses. All 150 events still have MISSING_RAW_RECEIPT_HASH; zero event raw hashes and zero model-eligible events; receipt_complete=false; forecast_status=NOT_ISSUED.
+- SEC capture remains BLOCKED_CONFIGURATION: three issuer records (Evernorth, Coinbase, Circle), zero submissions/companyfacts/filings/capital facts, zero raw receipts, three source failures; no approved monitored contact is configured. Do not guess or insert a placeholder.
+- Run-29 artifact ZIP hashes (downloaded ZIP bytes): raw `9ca93ba1fbcf9f711661e0ab25b54ede167d0993c196779032554a5e65b66b179`; chain `c59e5c18abfc3b837cb5187dac6de6e5394ba6475f6ee572a1b94b9a4427fc4b`; events `4b9c5a80397be7726c3159402d09367a8cba8b2d41bb73e7f2b230886d1b34b4`; feature store `a0ed44edd45b21d1ff9c2e1ab8d3943819b031695bfc004730df06288d5f3175`; correction audit `ff2ee851e0639df04597f6280c26cec2f7a33aaabd75854a07228c3bc740decc`. Artifact retention remains 90 days for raw/events/index and seven days for feature checkpoint; no WORM/external timestamp anchor.
+
+### Run-25 recovery proof refreshed against run 29
+
+- Revalidated run-25 raw artifact 14682676364: 37 receipts, 25 retained raw payloads plus 12 digest-only, 25/25 payload hashes match, zero missing/mismatches.
+- In a disposable copy of run-29's SQLite checkpoint, inserted only run-25 snapshot `0d5af2b3fdffb6ddb397579413c33218ed174f8e61969910adaef654ae9212aa` (118 records, 11 source rows). Result: five snapshots, 2,317 records, 2,317 model-eligible records, 57 source-snapshot rows, five independence groups, zero duplicate (snapshot_id, record_id) keys, SQLite integrity_check=ok, and all five snapshot manifest hashes still match. No historical receipt or chain hash was rewritten.
+- This remains a local `/tmp` reconstruction only. It is not a committed checkpoint, uploaded artifact, executed workflow recovery or main verification. Production recovery needs an idempotent import step and explicit reconciliation record preserving both sibling chain hashes.
+
+### Run-29 spot and order-book snapshot
+
+Capture window approximately 03:15:38–03:15:42 UTC. Four USD-normalized ticker mids cluster between $0.895231 and $0.895790. OKX XRP/USDT was normalized with same-venue USDT/USD midpoint 0.998195; quote-basis snapshot skew 1.104 seconds, maximum component age 12.952 seconds, one publisher group. It is a top-of-book derivation only.
+
+| Venue | Midpoint (USD) | Spread |
+|---|---:|---:|
+| Coinbase | 0.895550 | 1.117 bps |
+| Kraken | 0.895790 | 0.893 bps |
+| Bitstamp | 0.895415 | 0.335 bps |
+| OKX normalized | 0.895231 | 1.115 bps |
+
+Depth imbalance, computed per venue around its own book midpoint using bid/ask notional:
+
+| Venue | 10 bps | 50 bps | 100 bps |
+|---|---:|---:|---:|
+| Coinbase | −9.34% | +7.70% | +28.10% |
+| Kraken | −26.95% | +37.15% | +11.24% |
+| Bitstamp | −9.70% | −0.53% | −6.81% |
+| OKX | −1.34% | −3.59% | −10.13% |
+
+All four are ask-heavy within 10 bps; deeper depth is mixed by venue. This is not a directional signal or a consolidated executable book. Run-28 OKX normalized midpoint was $0.909314; run-29 was $0.895231, approximately −1.55% over 58 minutes. Venue 24-hour volumes were Coinbase 147.46M, Kraken 71.43M, Bitstamp 25.33M, OKX 59.21M XRP; do not sum as global volume. Run-29's separate OKX quote-basis feature is marked eligible for four top-of-book fields only; it does not make depth or the rest of the event timeline eligible.
+
+### Primary derivatives evidence: CFTC weekly positions, report date November 17
+
+Sources:
+- CFTC delta-adjusted options/futures combined: https://www.cftc.gov/dea/options/deacmelof.htm
+- CFTC Traders in Financial Futures, futures only: https://www.cftc.gov/dea/futures/financial_lf.htm
+- CFTC CME futures-only report: https://www.cftc.gov/dea/futures/deacmesof.htm
+
+CFTC pages updated November 20, 2026; positions are as of Tuesday November 17, so they are lagged weekly observations, not live positioning.
+
+**CME XRP futures, code 176740, 50,000 XRP per contract**
+- Futures-only open interest: 6,870 contracts (+20 week over week), approximately 343.5M XRP contract units.
+- Delta-adjusted options/futures combined open interest: 6,873 contracts (+19); the +3 contract-equivalent difference is not raw options open interest.
+- Combined COT: non-commercial 6,596 long / 5,060 short / 49 spreading, net +1,536 contracts; commercial 0 long / 1,554 short, net −1,554; nonreportable 228 long / 210 short, net +18. Net exposures offset; do not call this a one-sided institutional long.
+- 31 traders. Largest four held 77.6% of gross long and 65.1% of gross short; largest eight held 91.8% of long and 84.3% of short. High concentration.
+- TFF category net positions: dealer/intermediary −121 contracts (3,638 long / 3,759 short); asset manager/institutional −276 (592 / 868); leveraged funds +408 (2,366 / 1,958); other reportables −29 (0 / 29); nonreportable +18 (225 / 207). These are trader-type classifications, not named beneficial owners.
+
+**Coinbase Derivatives NANO XRP, code 176LM1, 500 XRP per contract**
+- Open interest 35,169 contracts (+3,928); 42 traders.
+- Leveraged funds 31,257 long / 33,589 short / 1,099 spreading, net −2,332; other reportables 2,208 / 353, net +1,855; nonreportable 605 / 128, net +477.
+- Net changes from November 10: leveraged funds +657 contracts; other reportables −708; nonreportable +51. Net categories offset.
+
+**Coinbase Derivatives NANO XRP PERP STYLE, code 176LM3, 500 XRP per contract**
+- Open interest 31,557 contracts (−8,234); 280 traders.
+- Leveraged funds 560 long / 23,240 short, net −22,680; other reportables 24,269 / 2,363, net +21,906; nonreportable 6,728 / 5,954, net +774.
+- Net changes from November 10: leveraged funds +7,860 contracts (short covering); other reportables −4,960; nonreportable −2,900. Open interest contracted materially while category positions rotated.
+- These Coinbase contracts are separate from CME XRP futures. Contract counts and XRP units are not cash collateral, spot purchases or beneficial-owner identities.
+
+This is now a high-value weekly point-in-time source candidate for Barrot's derivatives feature store. It is not yet ingested into the repository pipeline. Any feature must be timestamped by publication availability (November 20), not backdated to the November 17 position date.
+
+### Collateral, wrapped XRP and stablecoin evidence
+
+- Run 29 captured Morpho cbXRP market parameters, current state, liquidity, 30-day history and oracle endpoints for Base chain 8453 market `0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109`. All five are hash-only and model-ineligible until token decimals, market lineage, indexer block times, LLTV and oracle scaling are normalized. Coinbase cbXRP proof-of-reserves page is also hash-only pending locale/timezone/cache semantics.
+- Secondary historical analysis (CleanSky, August 26) reported 91.62M of 117.29M cbXRP (78.1%) held in Morpho, with 90.78M cbXRP and $41.0M USDC debt in a January 15 market using a 62.5% LLTV. Attribution of that market to Coinbase's loan product is an inference based on matching terms and timing, not a Morpho-labeled fact.
+  - https://cleansky.io/blog/coinbase-wrappers-manufactured-demand-2026/
+- CryptoSlate's November 13 analysis of Morpho Base logs reported 883 liquidation events from November 7–13, about 4.016M USDC debt repaid and 4.182M cbXRP seized, with about $53.53M USDC debt remaining on November 13. The reviewed transactions trace cbXRP transfers on Base; they do not establish native XRP redemption or spot sales. Do not treat seized cbXRP as native XRP sold.
+  - https://cryptoslate.com/xrp-loans-trigger-883-liquidations-and-53m-remains-at-risk/
+- Ripple's issuer transparency page, captured in run 29, states circulating RLUSD of $2,689.9M and reserve funds of $2,826.5M as of November 12, 2026 (about 105.08% by simple ratio). The page is stale relative to capture time and reports monthly attestations.
+- XRPLDashboard's secondary cross-chain page displayed about $2.86B RLUSD circulating and a 24-hour net-change cross-check against an independent RPC dated November 20; it also stated its live feed was unavailable and supply could be a few minutes stale. The $170.1M / 6.32% difference from Ripple's November 12 issuer-page figure is an unresolved vintage/methodology difference, not a verified issuance discrepancy. Preserve both observations and seek the next issuer attestation plus chain-level primary supply receipts.
+  - https://ripple.com/products/stablecoin/transparency/
+  - https://xrpldashboard.com/rlusd
+- Circle's USDC transparency page was captured, but its dynamic page did not expose normalized reserve balances in the extracted source. Weekly reserve report and issuance/redemption records remain unparsed.
+- Reuters reported November 18 that DBS partnered with Circle to expand institutional USDC access in Asia. This is a parallel stablecoin/payment rail, not an XRP partnership.
+  - https://www.reuters.com/world/asia-pacific/dbs-partners-with-circle-expand-institutional-access-usdc-asia-2026-11-18/
+
+### Prediction readiness and next action
+
+- Run 29's daily point-in-time backup/walk-forward report step was skipped. No walk-forward origins, baseline superiority, probability calibration, drift evaluation or shadow samples were established. No directional forecast was issued.
+- Cross-analysis sentiment remains stale: last XRP sentiment input October 29, 2026, age 541.479 hours at the prior run; do not treat the historical 286-mention profile as current sentiment.
+- **Next:** keep #1684 draft/blocked; implement the tested, idempotent run-25 snapshot recovery on the existing branch, preserving both sibling chain hashes; add the CFTC weekly positions and cbXRP/Morpho as research-only, publication-time-stamped sources with raw receipts and unit/market-lineage controls; fix the event timeline's 150 missing raw-hash links; obtain an approved SEC monitored contact; retain fail-closed forecast issuance until chronological OOS and shadow requirements pass.
+- **No merge, force-push, branch rewrite, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer or real-money action occurred.**
