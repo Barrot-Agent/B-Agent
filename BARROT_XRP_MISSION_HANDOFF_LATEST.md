@@ -3557,3 +3557,137 @@ Capture: 2026-11-21T00:37:12Z. Main remained `550a647ee7269a704d4600ff337b2145ac
 ### Next concrete action
 
 Verify the final exact-head CI results for #1684 and #1685. Keep both drafts until the full suite, dependency/security checks, independent approval and effective branch protection are verifiable. Preserve forecast issuance disabled until a receipt-backed historical dataset produces leakage-safe walk-forward origins, baseline comparisons, calibration, drift stability and independent shadow evidence.
+
+
+## Run249 research supplement — spot microstructure, CFTC positioning, actual capital and institutional relationships
+
+Capture: 2026-11-21T01:22:00Z. The following evidence is additive to the earlier Run249 ingestion verification. Main remains `550a647ee7269a704d4600ff337b2145acc90473`; these updates are confined to the existing documentation PR #1684.
+
+### 1. Raw-source and feature-store integrity — independently rechecked
+
+The downloaded raw artifact from [main ingestion run 44844953105](https://github.com/Barrot-Agent/B-Agent/actions/runs/44844953105) was inspected locally:
+
+- 37 receipts; 25 retained raw payloads; 12 digest-only receipts.
+- Recomputed SHA-256 for all 25 retained raw payload files: **25/25 match** the `raw_content_sha256` recorded in their receipts; zero mismatches. Each retained payload path also matches its hash-derived filename.
+- The receipt-log SHA-256 matches the value in the receipt-chain manifest; the chain-log SHA-256 matches its manifest; the chain head matches the final chain entry.
+- The SQLite feature-store snapshot manifest hash matches the stored manifest digest. The latest snapshot has 118 feature records, 118 marked model-eligible, 11 source snapshots and five independent exchange-source groups.
+- This is internal integrity verification. It is not an external trusted timestamp, WORM-grade retention, or an independent immutable anchor. GitHub Actions artifacts remain mutable and expire after finite retention.
+
+### 2. Spot market structure — snapshot, not forecast
+
+The five-venue snapshot was captured over approximately six seconds (2026-11-21 00:36:47–00:36:53 UTC). USD-normalized top-of-book mids clustered from **$0.909315 to $0.909823**.
+
+| Venue / pair | Mid | Spread | 10 bp bid / ask depth | 10 bp imbalance |
+|---|---:|---:|---:|---:|
+| Coinbase XRP/USD | $0.909350 | 1.10 bp | $120.4k / $252.2k | −35.35% |
+| Bitstamp XRP/USD | $0.909315 | 0.11 bp | $233.9k / $266.9k | −6.59% |
+| Kraken XRP/USD | $0.909355 | 0.11 bp | $322.7k / $336.1k | −2.03% |
+| OKX XRP/USDT | 0.911550 USDT | 1.10 bp | 176.8k / 205.6k USDT | −7.53% |
+| Bitbank XRP/JPY | ¥144.7645 | 0.069 bp | ¥12.75m / ¥10.30m | +10.65% |
+
+Deeper book observations were mixed:
+
+- Coinbase: 50 bp imbalance −2.78%; 100 bp +2.29% (deeper bids modestly stronger).
+- Bitstamp: 50 bp +4.33%; 100 bp −0.73%.
+- OKX: 50 bp −1.71%; 100 bp −2.55% (depth remains USDT-denominated).
+- Bitbank: 50 bp +61.03%; 100 bp +60.04%, but the JPY book is not USD-comparable.
+- Kraken's validated depth features in this snapshot extend only to 10 bp.
+
+Bitstamp's mid was approximately 5.25% below its reported 24-hour open of $0.95967. Venue-specific 24-hour XRP volumes were Coinbase 150.88m, Kraken 70.71m, Bitstamp 24.97m, OKX 65.79m and Bitbank 11.35m. These volumes must not be summed as global volume. The near-touch books lean ask-heavy on four USD/USDT venues, but deeper liquidity is mixed; this is not a directional signal.
+
+Limitations: REST snapshots, no continuous synchronized L2 tape; OKX depth remains USDT; Bitbank depth remains JPY; timestamps span seconds; no consolidated executable order book or fee-adjusted arbitrage analysis.
+
+### 3. Derivatives and regulated positioning
+
+The CFTC report dated 2026-11-17 and captured in the same run reports:
+
+- CME XRP futures open interest: **6,870 contracts**, up 20 week over week.
+- Legacy futures-only: noncommercial long 6,596 vs short 5,060; commercial long 0 vs short 1,554; reportable long 6,645 vs short 6,663.
+- TFF: dealer/intermediary long 3,638 vs short 3,759; asset managers 592 vs 868; leveraged funds 2,366 vs 1,958.
+- Coinbase Derivatives Nano XRP open interest: 35,169 contracts, up 3,928 week over week. Nano XRP Perp Style open interest: 31,557, down 8,234.
+
+The CME and Coinbase futures positioning is mixed, not a single directional consensus. Contract counts are not converted into spot XRP or USD exposure. These are delayed, date-only research observations and remain model-ineligible.
+
+Deribit XRP-USDC perpetual ticker/L2 was captured raw-only: open-interest field 8,045,949 contract units, 8-hour funding 0.000001, mark/index 0.90964, best bid 0.90964 size 2, best ask 0.90965 size 549, L2 change ID 227828275165. Contract-unit semantics, sequence continuity and depth normalization are not yet validated; do not use it as a feature.
+
+### 4. ETF holdings delta — provisional, not actual capital
+
+The XRP Insights aggregator's latest row is dated 2026-11-20, provisional; settled data through 2026-11-19. It computes approximately **+218,464.99 XRP / +$199,423** from holdings deltas: XRPR +221,715.84 XRP / +$202,391; XRPC −3,250.85 XRP / −$2,968; other reported products zero; Grayscale was withheld.
+
+This is not issuer creation/redemption cash data. XRPR reports some XRP exposure through another XRP ETP, creating look-through/double-counting risk. The latest row is provisional and revisable. Do not call this actual net capital deployed or a confirmed spot purchase.
+
+### 5. Actual capital versus survey intent
+
+The EY-Parthenon/Coinbase January 2026 institutional survey covered 351 respondents; 96% reported AUM above $1bn. For the XRP chart, 18% of respondents to the current-allocation question (`n=310`) reported current XRP allocation, while 25% of respondents to the 2026 plans question (`n=343`) planned to add XRP. These are survey responses, not dollar weights, verified holdings or capital flows. The report is [EY's institutional digital-assets survey](https://www.ey.com/content/dam/ey-unified-site/ey-com/en-us/campaigns/financial-services/documents/ey-volatility-drives-discipline-not-retreat.pdf).
+
+The primary SEC Evernorth prospectus and related SEC transaction filing provide a much stronger distinction:
+
+- Advance funding recorded **$214,049,995 cash** and 600,000 XRP. The company used the advance cash to purchase **84,365,876 XRP** at an average price of approximately $2.53657.
+- Delayed funding added $10.5m cash and 200,000 XRP.
+- In-kind contributions include 211,319,096 XRP from the sponsor, 126,791,458 XRP from Ripple, and 50m XRP from a related-party trust.
+- The combined total was **473,276,430 XRP purchased and committed**. Only about 84.37m XRP (17.82% of that total) is explicitly identified as purchased with advance cash; the balance is largely contributed XRP. It is incorrect to describe all 473.276m as fresh open-market demand.
+- SBI announced a $200m cash commitment. The SEC summary records $214.05m aggregate advance cash but does not separately itemize the exact dollar amount contributed by each SBI subscriber. Do not attribute the entire $214.05m to SBI.
+- At the 2026-10-09 business-combination close, SBI-controlled stockholders collectively held 9,431,914 Class A shares (36.1% of that class) and 2,359,038 Class C shares (7.5% of that class). Class C is non-voting; the prospectus describes a 39.9% SBI ownership cap. These are equity positions, not XRP balances.
+- The prospectus identifies BitGo Bank & Trust as custodian, with 100% cold storage. The $250m insurance pool is shared across clients and represented approximately 36.9% of Evernorth's XRP value at the referenced date; it is not dedicated full-value coverage. Coinbase is not identified as the custodian in this filing.
+- The SEC prospectus defines “SBI” as SBI Holdings, Inc. and names four SBI-controlled stockholders. It does not identify SBIC East/Central/West as subscribers.
+
+Primary sources: [Evernorth SEC 424B3 prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm), [SEC transaction filing](https://www.sec.gov/Archives/edgar/data/2092592/000095010325014249/dp236946_425-revan.htm), and [SBI's $200m Evernorth announcement](https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf).
+
+### 6. Japan SBIC identity — resolved from primary evidence
+
+Japan's Small and Medium Business Investment & Consultation Companies Act (Act No. 101 of 1963) identifies three regional statutory companies:
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. — [official profile](https://www.sbic.co.jp/company/profile/)
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. — [official profile](https://www.sbic-cj.co.jp/company/about/)
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. — [official profile](https://www.sbic-wj.co.jp/profiles/profile/)
+
+The statute is [here](https://laws.e-gov.go.jp/law/338AC0000000101). These are statutory SME investment/consultation institutions, not regional subsidiaries of **SBI Holdings, Inc.** SBI Holdings is a separate corporation founded in 1999; its [official profile](https://www.sbigroup.co.jp/english/company/information/profile.html) describes the financial holding company. No primary evidence reviewed establishes that the three SBIC companies are part of SBI Holdings.
+
+The distinction is especially important because Evernorth's SEC prospectus uses “SBI” to mean SBI Holdings, Inc., and names four SBI-controlled stockholders. It does not name SBIC East, Central or West.
+
+### 7. Coinbase, Circle, Ripple and SBI — relationship graph update
+
+**SBI ↔ Ripple**
+- SBI's official disclosure says it held approximately 9% of Ripple as the largest external shareholder (2025 disclosure).
+- SBI Ripple Asia is a joint venture; SBI Group holds 60% of its voting rights.
+- SBI Remit/SBI VC Trade/SBI Ripple Asia/Ripple announced XRP-bridge remittances to the Philippines, Vietnam and Indonesia in 2023. This is a real operational use case; corridor-specific current volume is not disclosed.
+- [SBI Ripple Asia profile](https://www.sbigroup.co.jp/company/group/sbirippleasia.html), [SBI's 9% Ripple and Circle investment release](https://www.sbigroup.co.jp/news/2025/0609_15491.html), [2023 XRP remittance announcement](https://www.sbigroup.co.jp/english/news/pdf/2023/0906_c_en.pdf).
+
+**SBI ↔ Circle**
+- SBI Circle Holdings is a 50/50 SBI–Circle joint venture; SBI's 2025 presentation shows the equal ownership ratio and the company was subsequently established.
+- SBI Holdings and SBI Shinsei Bank invested $25m each in Circle's IPO ($50m combined).
+- SBI VC Trade began offering USDC to the general public in March 2025 and RLUSD on 2026-06-24.
+- SBI joined Circle's ARC token presale through a subsidiary; SBI's own release does not disclose its allocation.
+- Sources: [SBI's 50/50 JV presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf), [SBI's $50m Circle investment](https://www.sbigroup.co.jp/news/2025/0609_15491.html), [SBI Circle JV establishment](https://www.sbigroup.co.jp/news/2025/0822_15679.html), [USDC general launch](https://www.sbigroup.co.jp/news/pdf/group/2025/0325_d.pdf), [RLUSD listing](https://www.sbivc.co.jp/newsview/bsqs09vn_yzv), [ARC presale participation](https://www.sbigroup.co.jp/news/2026/0512_16310.html).
+
+**SBI's parallel JPYSC rail**
+- JPYSC was launched on 2026-06-24 by SBI Shinsei Trust Bank, distributed by SBI VC Trade, with Startale as technology partner. Initial availability was account-contained; public-chain migration was conditional on legal/tax readiness.
+- SBI reported a JPYSC lending balance above ¥10bn and handling balance above ¥30bn on 2026-11-02. This is JPYSC lending, not XRP lending.
+- SBI reported ¥10bn of short-term Japanese government bonds in the JPYSC trust assets as of 2026-09-07.
+- On 2026-11-13 SBI and the National Bank of Cambodia signed an MOU for a stablecoin remittance PoC using JPYSC and Cambodia's Bakong. The MOU does not specify XRP. This is a PoC, not proof of a production corridor.
+- Sources: [JPYSC launch](https://www.sbigroup.co.jp/news/2026/0624_16425.html), [lending balance](https://www.sbigroup.co.jp/news/2026/1102_16704.html), [short-term JGB backing](https://www.sbigroup.co.jp/news/2026/0907_16567.html), [Cambodia MOU](https://www.sbigroup.co.jp/news/2026/1113_16737.html).
+
+**Coinbase ↔ Circle**
+- Coinbase exchanged its 50% Centre Consortium interest for approximately 3.5% of Circle's fully diluted equity in 2023; Circle took sole USDC issuance/governance responsibility, while the parties retained a commercial revenue-sharing relationship.
+- Circle's SEC filing records $330.6m of distribution costs in connection with Coinbase agreements in Q1 2026 and $324.6m in Q2 2026. The agreement pays Coinbase based on USDC held on its platform and broader ecosystem distribution. This is a material commercial dependency, not merely a historical co-founder relationship.
+- Sources: [Circle/Coinbase 2023 restructuring](https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx), [Circle Q1 2026 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000150/crcl-20260331.htm), [Circle Q2 2026 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm).
+
+**Coinbase ↔ Ripple; Circle ↔ XRPL**
+- Coinbase announced RLUSD on Prime, Exchange and retail on 2026-10-28, with XRPL, Base and Ethereum support; Ripple provides liquidity on Base. Coinbase Global Exchange collateral was described as coming later, and no live confirmation was found in this run.
+- Circle's USDC has been native on XRPL since 2025-06-12. USDC on XRPL is not XRP; network support does not establish material XRP acquisition or bridge demand.
+- Sources: [Coinbase RLUSD launch](https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase-prime-exchange-and-retail), [Circle USDC on XRPL](https://www.circle.com/fr/blog/now-available-usdc-on-the-xrpl).
+
+**Strategic interpretation:** SBI is not an XRP-only strategy. It has simultaneous direct equity, JV, distribution and operational relationships with Ripple and Circle, plus JPYSC/Bakong and Circle Arc initiatives. These can complement or compete at different layers. Ledger usage, stablecoin distribution and XRP bridge demand must be measured separately.
+
+### 8. Exact-phrase and creator identity research
+
+- **“ASK Coin”:** search surfaced Permission Coin (ASK) as one ticker candidate, but no primary evidence ties that token to XRP or confirms it is the intended “ASK Coin.” Keep unresolved.
+- **“actual capital”:** not a standardized metric. Separate survey intent, issuer-reported holdings deltas, actual cash received, cash-funded XRP purchases, in-kind XRP contributions and secondary-market volume.
+- **“SBIC, ChatGPT SBIC”:** no reliable indexed primary source found for the exact phrase; no ChatGPT/SBIC relationship inferred.
+- **Camilla/Kamilah Stevenson:** multiple same-name channels and a public personal website were found, but no authoritative cross-link verifies that the XRP/Stocks channel belongs to that individual. No video inventory or attribution was performed.
+
+### 9. Current PR and CI disposition
+
+- [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684): the last tested head `b1da283` failed one repository-map regression assertion because the map omitted the `tests_failed` alias. Run249 adds that alias and the research evidence above. The final map/handoff commit still requires exact-head full-suite and fail-closed CI.
+- [PR #1685](https://github.com/Barrot-Agent/B-Agent/pull/1685): exact-head full suite passed on `e512f4e`: 4,536 passed, 1 skipped, 0 failed; dependency audit, Money audit, A2A Worker Tests and Conflict Integrity passed. Fail-closed gate remains failed because the PR is draft, has zero formal reviews, and effective branch protection is not verifiable. Keep it draft; no Worker deployment, secret rotation or runner activation.
+- Two open PRs remain, each for a distinct workstream; changed paths do not overlap. No merge, new PR, deployment, secret change, Space restart, Databricks write, Kaggle submission, paper trade or financial transaction occurred in this run.
