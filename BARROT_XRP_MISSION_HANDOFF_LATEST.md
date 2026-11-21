@@ -5765,3 +5765,77 @@ No main write, merge, deployment, secret rotation, Space restart, Kaggle submiss
 - Cause: the Run266 map update overwrote root `current_pr_head_sha` and `open_pr_inventory` fields that the test uses as the historical Run265 evidence contract. The Run265 evidence record correctly still references `85ebfb943edd19999331c1890ced02767d134a6a`; the root fields were incorrectly changed to the newer code head. This was a documentation-state consistency failure, not an application runtime failure.
 - Correction: restore the Run265 root snapshot from the parent map at `d553c5535256363bed2870f65b60918bc5a19ed9`; preserve current Run266 branch/PR state under Run266-specific fields. No application code or test files were changed. The correction is committed separately and requires a fresh exact-head full-suite run.
 - On the failed documentation head, dependency audit, money audit, conflict integrity, historical backfill replay and Pages validation-only all passed. The fail-closed gate remained blocked. Main and its feature store were untouched.
+
+
+## Run 267 — 2026-11-21T15:32:50Z
+
+### Mission and repository state
+
+- **VERIFIED:** Main remains `550a647ee7269a704d4600ff337b2145acc90473`. The main mission manifest `data/missions/primary_mission.json` sets `xrp_intelligence_prediction_engine` to priority 1 and preserves Barrot V3 as the execution, orchestration, safety and verification foundation.
+- **VERIFIED:** Complete recursive main tree: 3,115 entries. Current integration branch `integration/xrp-post-merge-verification-20261121T0002Z`, code head `7bbf5b7d9eb148bcd45ecebee0ad52c4d2e5b4ec`, is 86 commits ahead and zero behind main. Integration tree: 3,121 entries; zero main paths missing; six integration-only paths.
+- **VERIFIED:** Open PR inventory contains exactly two PRs. #1684 is the XRP scheduled-ingestion / historical backfill / provenance integration (13 changed files, 13,932 additions, 1,027 deletions). #1685 is the separate A2A credential-separation workstream (9 files, 160 additions, 20 deletions). Their changed paths do not overlap. No new branch or PR was created.
+- **VERIFIED:** Main CI after the prior #1673 merge succeeded on exact main SHA `550a647` in run [44839159044](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159044). No new merge occurred in Run267.
+
+### Exact-head CI and security evidence
+
+- **VERIFIED on exact PR head `7bbf5b7d9eb148bcd45ecebee0ad52c4d2e5b4ec`:** PR CI [44918745636](https://github.com/Barrot-Agent/B-Agent/actions/runs/44918745636) and push CI [44918740944](https://github.com/Barrot-Agent/B-Agent/actions/runs/44918740944) both passed.
+- Full repository suite on the PR event: **4,547 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests, 73.15% inclusive coverage, 155.88 seconds. The workflow discovers every tracked active test module; it excludes only `.barrot/disabled_tests/`, `archive/quarantined/` and `tests/fixtures/`, and explicitly requires the active legacy email, transformative-insights and autonomous math tests.
+- Exact-head checks: `Tests` passed; `Full repository test suite` passed; `pip-audit` [44918745652](https://github.com/Barrot-Agent/B-Agent/actions/runs/44918745652) passed; `Money audit` [44918745627](https://github.com/Barrot-Agent/B-Agent/actions/runs/44918745627) passed; PR merge-tree verification [44918745651](https://github.com/Barrot-Agent/B-Agent/actions/runs/44918745651) passed; GitHub Pages validation-only passed. The validation job did not deploy.
+- GitHub Actions cache budget is exhausted/read-only. Cache-save warnings were non-blocking; the run still uploaded its raw, feature-store, event and receipt-index artifacts.
+- The fail-closed gate [44918745664](https://github.com/Barrot-Agent/B-Agent/actions/runs/44918745664) failed by design with three blockers: PR #1684 is still draft; no independent approving review exists; branch protection cannot be verified because the endpoint returns HTTP 403. No merge was attempted.
+
+### Main ingestion run 42 — preserved artifacts inspected directly
+
+- **VERIFIED:** Main ingestion [44917841719](https://github.com/Barrot-Agent/B-Agent/actions/runs/44917841719) completed successfully on main SHA `550a647` at 2026-11-21 15:11:20–15:12:06 UTC. It restored the previous successful feature-store checkpoint from run `44912673505` because the exact cache key was unavailable, continued the receipt chain, and published the new artifacts.
+- Raw-source archive: **34 receipts**, **22 retained raw payloads**, **12 digest-only receipts**, **18 source failures**, and **23 raw-only sources**. Receipt-chain sequence 16 is structurally continued from run `44912673505`; chain SHA-256: `99d5fb4b4a607496fcaa27343b8cc69f6540dcef385e7f15bc255d1572d52bc9`. External/WORM anchor remains `NOT_ANCHORED`.
+- Feature store: **16,816 records across 16 snapshots**; latest snapshot has 123 records from 12 source IDs (119 spot features and four same-venue OKX quote-basis features). These ingestion-level eligibility flags do not establish predictive readiness.
+- Event timeline: **150 events, 117 scenarios, zero event records linked to raw-source SHA-256**. Receipt completeness remains false and event-derived model admission remains blocked.
+- Drift: **0 of 204** candidate features evaluated; report status is `INSUFFICIENT_DATA`, not `STABLE`. The reference-window audit excluded 9,515 late-known/backfilled records. Walk-forward origins remain **zero**.
+- SEC institutional capture remains `BLOCKED_CONFIGURATION`, with zero SEC raw receipts. The 18 source failures comprise eight Binance HTTP 451 responses, five Bybit HTTP 403 responses, one Grayscale HTTP 429, one Franklin XRPZ parser failure, and three SEC configuration failures. No regional restrictions were bypassed.
+- Retention: raw receipts, event artifacts and receipt-index artifacts are retained for 90 days; the per-run feature-store checkpoint is retained for seven days. The 90-day daily/manual feature-store backup was not emitted by this hourly run. The cache is derived/evictable, and rebuilding the feature store from raw artifacts is not implemented. Verify the daily backup path and add durable reconstruction before relying on long-term retention.
+
+### Real-artifact historical backfill replay
+
+- **EXECUTED and VERIFIED in isolated CI only:** Job `136889909800` in PR run [44918745636](https://github.com/Barrot-Agent/B-Agent/actions/runs/44918745636) used the actual current-main ingestion run `44917841719` checkpoint and its preserved artifacts.
+- The isolated copy increased from **16,816 records / 16 snapshots** to **16,934 records / 17 snapshots**, restoring **118 records from 11 source lineages**. SQLite integrity: `ok`. Prior receipt chains were not rewritten. Main and its feature-store database were not modified.
+- Reconciliation SHA-256: `9a2aeafb7d64cb7dc58c67d73583d19007b7c66e2e0ff52bb618c6c21b7f00d2`. Uploaded reconciliation artifact: [14713051760](https://github.com/Barrot-Agent/B-Agent/actions/runs/44918745636/artifacts/14713051760), digest `sha256:9031f658f7b740f462dcdb638bb7bb3e6b36c5a3670bb9e7137f578b9b9cd8b4`.
+- **Timestamp limitation:** `stored_at_utc=2026-11-21T15:23:52.000000Z` was derived from a GitHub Actions API `Date` header sampled before the SQLite append. That header is second-resolution, not an independent post-commit/WORM timestamp. The one-microsecond-before/after test verifies query visibility around the recorded timestamp; it does not establish the physical SQLite commit instant to microsecond precision. Treat this as a verified store-semantic boundary with a pre-append clock limitation, not a subsecond trusted timestamp. Add a post-write availability receipt/finalization design before describing this as an exact commit-time anchor.
+
+### Point-in-time market microstructure — descriptive only
+
+- Main run 42 data cutoff: `2026-11-21T15:11:48.136762Z`; synchronized order-book snapshots were captured approximately 15:11:35–15:11:39 UTC. These observations are not live at Run267 time.
+- USD-comparable order-book mids: Bitstamp **$0.929035**, Coinbase **$0.928550**, Kraken **$0.928355**, and OKX **$0.928650275** after same-venue XRP-USDT / USDT-USD top-of-book normalization. Median: **$0.9286001375**; max/min dispersion: **7.32 bps**.
+- OKX USDT/USD mid was **0.998495**; raw XRP-USDT order-book mid was **0.92995**. Assuming a fixed 1:1 USDT peg would misstate the normalized XRP/USD mid. Only top-of-book prices were normalized; OKX depth remains in USDT.
+- Depth imbalance is `(bid_depth - ask_depth) / (bid_depth + ask_depth)`; positive values mean more displayed bid notional inside the band. At 10 bps: Coinbase **+1.10%**, Bitstamp **+33.14%**, Kraken **+35.69%**, OKX **+40.04%**, Bitbank **+47.41%** (JPY). At 50 bps: Coinbase **+23.39%**, Bitstamp **+17.79%**, OKX **+1.12%**, Bitbank **+58.20%** (JPY). At 100 bps: Coinbase **+23.62%**, Bitstamp **+13.32%**, OKX **−2.11%**, Bitbank **+50.11%** (JPY). Kraken 50/100-bps depth was not available in this snapshot.
+- These are separate venue snapshots, not a consolidated executable book, sequence-reconstructed liquidity, independent economic confirmation or a directional signal. Bitbank depth is JPY-denominated; OKX depth is USDT-denominated. No forecast is admitted.
+
+### Prediction readiness and research status
+
+- **NOT READY:** no walk-forward origins, no drift evaluation, incomplete event-to-receipt provenance, SEC raw capture blocked, no independent WORM timestamp anchor, and historical records arriving after the reference window remain excluded from earlier as-of views.
+- Forecast issuance remains **`NOT_ISSUED`**. No directional XRP forecast, probability-superiority claim, paper trade or real-money action was made.
+- Prior institutional and identity research remains preserved: SBIC East/Central/West are distinct Japanese regional investment companies, not SBI Holdings divisions; prior Coinbase/Circle/Ripple/SBI relationship and Evernorth capital distinctions remain evidence-qualified. Run267 did not claim a new primary-source corporate relationship or a fresh external-model review.
+
+### Nine-platform coordination
+
+- ChatGPT-to-GitHub authentication and data flow were verified in Run267. Repository metadata reports admin/maintain/push/pull/triage permissions; connector token scopes were not introspected, so least privilege is not verified.
+- Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified for Barrot authentication and data flow. No external model dispatch or data transfer occurred.
+
+### Open PR backlog and merge decision
+
+- **#1684 — blocked active integration:** 86 commits ahead, zero behind, 13 changed files, zero independent approvals, draft. GitHub reports mergeable, but it is not governance-ready.
+- **#1685 — unique/unreviewed A2A security work:** five commits ahead, zero behind, nine changed files, draft, zero independent approvals; no path overlap with #1684. Keep runner quarantined and do not treat it as duplicate or superseded.
+- `.github/CODEOWNERS` assigns `* @Barrot-Agent`; it does not provide independent review. Repository metadata marks main protected but reports zero required status-check contexts. The branch-protection endpoint remains HTTP 403. The only visible ruleset, `Fall Back`, is disabled.
+- GitHub Pages automatic publication was previously observed after a main push: run [44839139424](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839139424) succeeded on main SHA `550a647`. The PR Pages job is validation-only; it does not neutralize the automatic main-push publication. The user has not authorized deployment. **Do not merge #1684 while this external side effect remains unresolved.**
+- No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer, real-money action or source-PR closure occurred.
+
+### Next concrete actions
+
+1. Keep #1684 draft and unmerged until an independent reviewer, effective branch protection/required checks and the GitHub Pages publication authorization issue are resolved.
+2. Add raw-source receipt/hash links to all 150 event records; keep event-derived model admission blocked until complete.
+3. Resolve legitimate SEC contact configuration and provider failures without bypassing regional restrictions or rate limits.
+4. Verify the daily 90-day feature-store backup and implement deterministic feature-store reconstruction from raw artifacts; per-run checkpoint retention is only seven days.
+5. Improve the backfill receipt clock so point-in-time availability is anchored after writes and the precision/commit boundary is stated honestly.
+6. Accumulate synchronized, point-in-time history; then run leakage-safe chronological walk-forward baselines, probability calibration, drift monitoring and shadow evaluation.
+7. Continue raw-source reconciliation for ETF issuer files, derivatives, collateral, RLUSD/USDC supply and flows, custody, exchange balances, regulation and macro. Keep unvalidated sources model-ineligible.
+
+No main write, merge, deployment, secret operation, Space restart, Kaggle submission, Databricks write, external model dispatch, external data transfer, paper trade, funds transfer or real-money action occurred.
