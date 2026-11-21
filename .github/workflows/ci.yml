@@ -270,11 +270,13 @@ jobs:
           fetch_artifact 44865104098 xrp-public-receipt-index-44865104098 "$ROOT/index-44865104098"
           fetch_artifact 44869770831 xrp-public-receipt-index-44869770831 "$ROOT/index-44869770831"
           fetch_artifact 44875059754 xrp-public-receipt-index-44875059754 "$ROOT/index-44875059754"
-          fetch_artifact 44879233062 xrp-public-raw-44879233062 "$ROOT/current-raw"
-          fetch_artifact 44879233062 xrp-public-feature-store-44879233062 "$ROOT/current-store"
-          fetch_artifact 44879233062 xrp-public-receipt-index-44879233062 "$ROOT/current-index"
+          fetch_artifact 44879233062 xrp-public-receipt-index-44879233062 "$ROOT/index-44879233062"
+          fetch_artifact 44884065576 xrp-public-raw-44884065576 "$ROOT/current-raw"
+          fetch_artifact 44884065576 xrp-public-feature-store-44884065576 "$ROOT/current-store"
+          fetch_artifact 44884065576 xrp-public-receipt-index-44884065576 "$ROOT/current-index"
           mkdir -p "$ROOT/ancestry-indexes"
           cp "$ROOT/fork-raw/cross_run_receipt_chain.json" "$ROOT/ancestry-indexes/44848909814.json"
+          cp "$ROOT/index-44879233062/cross_run_receipt_chain.json" "$ROOT/ancestry-indexes/44879233062.json"
           for run_id in 44855063970 44860165888 44865104098 44869770831 44875059754; do
             cp "$ROOT/index-${run_id}/cross_run_receipt_chain.json" "$ROOT/ancestry-indexes/${run_id}.json"
           done
@@ -324,35 +326,35 @@ jobs:
           root = Path(sys.argv[1])
           receipt = json.loads((root / 'reconciliation.json').read_text())
           before = json.loads((root / 'before.json').read_text())
-          assert before == {'snapshot_count': 8, 'record_count': 15846}, before
+          assert before == {'snapshot_count': 9, 'record_count': 15970}, before
           assert receipt['status'] == 'RECONCILED', receipt.get('status')
           snapshot = receipt['backfill_snapshot']
           assert snapshot['snapshot_id'] == '0d5af2b3fdffb6ddb397579413c33218ed174f8e61969910adaef654ae9212aa'
           assert snapshot['manifest_sha256'] == 'e19be22480a27170dc597835bfe8d9a3b1f9c61c3df03b33fa1ffbc5122d589c'
           assert snapshot['record_count'] == 118 and snapshot['source_count'] == 11
           after = receipt['feature_store_after']
-          assert after['snapshot_count'] == 9 and after['record_count'] == 15964, after
+          assert after['snapshot_count'] == 10 and after['record_count'] == 16088, after
           visibility = receipt['point_in_time_visibility']
           assert visibility['visible_before_receipt'] is False
           assert visibility['visible_after_receipt'] is True
           current_verification, _, current_tree_sha = _verify_raw_artifact(
-              root / 'current-raw', root / 'current-index' / 'cross_run_receipt_chain.json', '44879233062'
+              root / 'current-raw', root / 'current-index' / 'cross_run_receipt_chain.json', '44884065576'
           )
-          assert current_verification['receipt_count'] == 47
-          assert current_verification['retained_raw_payload_count'] == 35
+          assert current_verification['receipt_count'] == 34
+          assert current_verification['retained_raw_payload_count'] == 22
           store = HistoricalFeatureStore(root / 'current-store' / 'feature_store.sqlite3')
           store_verification = store.verify_all_snapshots()
           assert store_verification['valid'] is True and store_verification['snapshot_count'] == 9
           summary = {
               'status': 'VERIFIED',
               'workflow_run_id': os.environ['GITHUB_RUN_ID'],
-              'workflow_head_sha': os.environ['GITHUB_SHA'],
+              'workflow_head_sha': __import__('subprocess').check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
               'backfill_script_blob_sha': os.popen('git rev-parse HEAD:barrot_agent/evolution/xrp_feature_store_backfill.py').read().strip(),
               'reconciliation_sha256': receipt['reconciliation_sha256'],
               'source_run_id': '44844953105',
               'fork_run_id': '44848909814',
               'common_parent_run_id': '44844499889',
-              'current_main_run_id': '44879233062',
+              'current_main_run_id': '44884065576',
               'records_before': before['record_count'],
               'records_after': after['record_count'],
               'snapshots_before': before['snapshot_count'],
@@ -380,7 +382,7 @@ jobs:
               handle.write(f"- Records: {summary['records_before']} → {summary['records_after']}\n")
               handle.write(f"- Snapshots: {summary['snapshots_before']} → {summary['snapshots_after']}\n")
               handle.write('- Point-in-time visibility: excluded before receipt; visible after receipt.\n')
-              handle.write('- Current main raw artifact: 47 receipts / 35 retained payloads; verified against the separate current index.\n')
+              handle.write('- Current main raw artifact: 34 receipts / 22 retained payloads; verified against the separate current index.\n')
               handle.write('- No repository branch or main database was modified by this job.\n')
           print(json.dumps(summary, indent=2, sort_keys=True))
           PY
