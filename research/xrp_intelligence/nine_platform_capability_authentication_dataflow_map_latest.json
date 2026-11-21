@@ -454,8 +454,8 @@
       "data_flow": {
         "status": "verified",
         "path": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
-        "last_verified_at_utc": "2026-11-21T15:18:40Z",
-        "observed_flow": "Run266: fetched current main SHA and complete recursive main/integration trees; inspected all open PRs, branch ancestry and non-overlapping diffs; verified exact-head push/PR full-suite CI, dependency/money/conflict checks and real-artifact backfill replay; downloaded and inspected main raw-source, feature-store, event and cross-analysis artifacts; verified the current mission configuration and main branch metadata. Updated only the existing XRP integration branch. No main write, external model dispatch or data transfer. Run266 correction: identified a documentation-only full-suite failure caused by overwriting the historical Run265 root evidence pointers; restored the prior snapshot and separated current Run266 inventory."
+        "last_verified_at_utc": "2026-11-21T15:32:50Z",
+        "observed_flow": "Run267: fetched current main SHA and complete recursive main/integration trees; inspected the two open PRs, ancestry, changed paths and overlap; verified exact-head push/PR full-suite, dependency audit, money audit, Pages validation-only, merge-tree check and isolated real-artifact backfill; downloaded and independently inspected main run-42 raw receipts, feature-store SQLite, event timeline and drift report; verified main ingestion receipt-chain sequence 16. No main write, external model dispatch or data transfer."
       },
       "permissions": [
         "admin",
@@ -477,11 +477,11 @@
       ],
       "task_assignment": {
         "status": "EXECUTED_IN_CURRENT_SESSION",
-        "task": "Run266: integration-first repository audit, exact-head CI verification, real-artifact backfill replay, point-in-time market-data inspection, event/receipt quality audit, ETF/creator identity reconciliation.",
-        "expected_output": "Current main/PR/CI/governance state, verified isolated 118-record recovery, source-quality blockers, current spot microstructure snapshot and updated durable handoff."
+        "task": "Run267: integration-first repository audit, exact-head CI verification, real-artifact historical backfill replay, direct inspection of main run-42 artifacts, point-in-time market microstructure reconciliation and forecast-readiness audit.",
+        "expected_output": "Verified repository and PR state; exact-head full-suite and security evidence; 118-record isolated recovery; 34 raw receipts; current feature-store/event/drift limitations; synchronized spot/depth snapshot; governance blockers and next actions."
       },
       "task_assignment_status": "EXECUTED_IN_CURRENT_SESSION",
-      "last_verified_at_utc": "2026-11-21T15:10:07Z"
+      "last_verified_at_utc": "2026-11-21T15:32:50Z"
     },
     "Claude": {
       "authentication_status": "unverified",
@@ -14387,5 +14387,273 @@
     "failing_test": "tests/test_xrp_nine_platform_map_latest.py::test_run265_binds_current_pr_ci_backfill_and_forecast_gate",
     "cause": "Run266 update overwrote root current_pr_head_sha/open_pr_inventory fields that are part of the historical Run265 evidence contract. The Run265 record still correctly references head 85ebfb943edd19999331c1890ced02767d134a6a; the root fields were incorrectly changed to the newer code head.",
     "correction": "Restore Run265 root snapshot from parent map; keep current branch head and Run266 inventory in Run266-specific fields. No application code or tests changed."
+  },
+  "latest_run_267": {
+    "captured_at_utc": "2026-11-21T15:32:50Z",
+    "repository_state": {
+      "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "main_tree_entries": 3115,
+      "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+      "integration_head_sha": "7bbf5b7d9eb148bcd45ecebee0ad52c4d2e5b4ec",
+      "integration_commits_ahead": 86,
+      "integration_commits_behind": 0,
+      "integration_tree_entries": 3121,
+      "main_paths_missing_from_integration": 0,
+      "integration_only_paths": 6,
+      "open_pr_count": 2,
+      "pr_1684": {
+        "classification": "blocked",
+        "state": "open",
+        "draft": true,
+        "head_sha": "7bbf5b7d9eb148bcd45ecebee0ad52c4d2e5b4ec",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "commits_ahead": 86,
+        "commits_behind": 0,
+        "changed_files": 13,
+        "additions": 13932,
+        "deletions": 1027,
+        "mergeable": true,
+        "formal_reviews": 0,
+        "review_threads": 0
+      },
+      "pr_1685": {
+        "classification": "unique/unreviewed",
+        "state": "open",
+        "draft": true,
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "commits_ahead": 5,
+        "commits_behind": 0,
+        "changed_files": 9,
+        "additions": 160,
+        "deletions": 20,
+        "formal_reviews": 0,
+        "review_threads": 0
+      },
+      "overlapping_changed_paths_between_open_prs": 0
+    },
+    "exact_head_ci": {
+      "head_sha": "7bbf5b7d9eb148bcd45ecebee0ad52c4d2e5b4ec",
+      "push_run_id": 44918740944,
+      "pr_run_id": 44918745636,
+      "full_suite": {
+        "passed": 4547,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "inclusive_coverage_percent": 73.15,
+        "duration_seconds": 155.88,
+        "conclusion": "success"
+      },
+      "dependency_audit_run_id": 44918745652,
+      "dependency_audit_conclusion": "success",
+      "money_audit_run_id": 44918745627,
+      "money_audit_conclusion": "success",
+      "merge_tree_check_run_id": 44918745651,
+      "merge_tree_check_conclusion": "success",
+      "pages_validation": "success_validation_only",
+      "cache_budget_warning": "GitHub Actions cache budget is exhausted/read-only; cache-save warning was non-blocking and artifacts were uploaded.",
+      "fail_closed_run_id": 44918745664,
+      "fail_closed_conclusion": "blocked_by_design",
+      "fail_closed_blockers": [
+        "PR remains draft",
+        "No independent approving review exists",
+        "Branch protection endpoint returned HTTP 403; effective rules and required checks cannot be verified"
+      ]
+    },
+    "main_ingestion": {
+      "run_id": 44917841719,
+      "run_number": 42,
+      "head_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "status": "success",
+      "captured_at_utc": "2026-11-21T15:11:20Z",
+      "receipt_count": 34,
+      "retained_raw_payloads": 22,
+      "digest_only_receipts": 12,
+      "source_failures": 18,
+      "raw_only_sources": 23,
+      "feature_store_record_count": 16816,
+      "feature_store_snapshot_count": 16,
+      "latest_snapshot_record_count": 123,
+      "latest_snapshot_source_count": 12,
+      "latest_snapshot_feature_types": {
+        "spot": 119,
+        "quote_basis": 4
+      },
+      "receipt_chain_sequence": 16,
+      "receipt_chain_continuity": "CONTINUED",
+      "cross_run_chain_sha256": "99d5fb4b4a607496fcaa27343b8cc69f6540dcef385e7f15bc255d1572d52bc9",
+      "event_count": 150,
+      "event_raw_sha_linked_count": 0,
+      "scenario_count": 117,
+      "drift_candidate_features": 204,
+      "drift_evaluated_features": 0,
+      "late_reference_record_exclusions": 9515,
+      "walk_forward_origins": 0,
+      "sec_capture_status": "BLOCKED_CONFIGURATION",
+      "sec_raw_receipts": 0,
+      "external_anchor": "NOT_ANCHORED",
+      "feature_store_rebuild_from_raw_artifacts_implemented": false,
+      "feature_store_checkpoint_retention_days": 7,
+      "raw_and_event_artifact_retention_days": 90,
+      "daily_90_day_feature_backup": "not uploaded by hourly run; daily/manual schedule only"
+    },
+    "backfill_verification": {
+      "workflow_run_id": 44918745636,
+      "job_id": 136889909800,
+      "source_main_ingestion_run_id": 44917841719,
+      "historical_source_run_id": 44844953105,
+      "historical_fork_run_id": 44848909814,
+      "common_parent_run_id": 44844499889,
+      "records_before": 16816,
+      "records_after": 16934,
+      "recovered_records": 118,
+      "recovered_source_lineages": 11,
+      "snapshots_before": 16,
+      "snapshots_after": 17,
+      "stored_at_utc": "2026-11-21T15:23:52.000000Z",
+      "receipt_clock_source": "GitHub Actions API Date header sampled before append; second-resolution and not an independent post-commit/WORM timestamp. The +/-1 microsecond test verifies query semantics around the recorded boundary, not the physical SQLite commit instant.",
+      "visible_before_receipt": false,
+      "visible_after_receipt": true,
+      "sqlite_integrity": "ok",
+      "reconciliation_sha256": "9a2aeafb7d64cb7dc58c67d73583d19007b7c66e2e0ff52bb618c6c21b7f00d2",
+      "artifact_id": 14713051760,
+      "artifact_sha256": "9031f658f7b740f462dcdb638bb7bb3e6b36c5a3670bb9e7137f578b9b9cd8b4",
+      "main_database_modified": false
+    },
+    "market_snapshot": {
+      "data_cutoff_utc": "2026-11-21T15:11:48.136762Z",
+      "venue_orderbook_mids_usd": {
+        "Bitstamp": 0.929035,
+        "Coinbase": 0.92855,
+        "Kraken": 0.928355,
+        "OKX_USD_normalized": 0.928650275
+      },
+      "median_mid_usd": 0.9286001375,
+      "min_mid_usd": 0.928355,
+      "max_mid_usd": 0.929035,
+      "max_min_dispersion_bps": 7.322850520254354,
+      "okx_usdt_usd_mid": 0.998495,
+      "okx_xrp_usdt_orderbook_mid": 0.92995,
+      "okx_usd_normalized_mid": 0.928650275,
+      "depth_imbalance_10bps": {
+        "Coinbase": 0.01101380458888359,
+        "Bitstamp": 0.3313959100886444,
+        "Kraken": 0.3568637161099684,
+        "OKX": 0.40037791219799723,
+        "Bitbank_JPY": 0.4740971977058966
+      },
+      "depth_imbalance_50bps": {
+        "Coinbase": 0.23390953941075446,
+        "Bitstamp": 0.17786333763770917,
+        "OKX": 0.011233028660342367,
+        "Bitbank_JPY": 0.5819715869858787
+      },
+      "depth_imbalance_100bps": {
+        "Coinbase": 0.23624898024294375,
+        "Bitstamp": 0.13324039431468718,
+        "OKX": -0.021108483431831148,
+        "Bitbank_JPY": 0.5011324007765302
+      },
+      "sign_definition": "(bid_depth - ask_depth) / (bid_depth + ask_depth); positive means more displayed bid notional within the band.",
+      "limitations": [
+        "Venue snapshots are not a consolidated executable book or continuous sequence reconstruction.",
+        "OKX USD normalization applies only to top-of-book prices; OKX depth remains in USDT.",
+        "Bitbank depth is denominated in JPY and is not dollar-comparable.",
+        "Snapshots are captured at 15:11:35–39 UTC and are not live at Run267 time."
+      ]
+    },
+    "prediction_readiness": {
+      "walk_forward_origins": 0,
+      "drift_status": "INSUFFICIENT_DATA",
+      "drift_evaluated_features": 0,
+      "event_receipt_complete": false,
+      "event_raw_hash_linked_count": 0,
+      "sec_capture": "BLOCKED_CONFIGURATION",
+      "forecast_status": "NOT_ISSUED"
+    },
+    "nine_platform_status": {
+      "ChatGPT_GitHub_authentication_and_data_flow": "verified",
+      "other_eight": "unverified",
+      "connector_token_scopes_introspected": false,
+      "least_privilege_verified": false,
+      "external_dispatch": false,
+      "external_data_transfer": false
+    },
+    "governance": {
+      "merge_decision": "DO_NOT_MERGE",
+      "codeowners": "* @Barrot-Agent",
+      "independent_approvals": 0,
+      "branch_protection_endpoint": "HTTP 403",
+      "visible_ruleset": "Fall Back",
+      "visible_ruleset_enforcement": "disabled",
+      "main_branch_metadata_protected": true,
+      "required_status_check_contexts_reported_by_metadata": 0,
+      "pages_main_push_publication_observed_run_id": 44839139424,
+      "pages_publication_authorized": false
+    },
+    "source_failure_breakdown": {
+      "Binance_HTTP_451": 8,
+      "Bybit_HTTP_403": 5,
+      "Grayscale_HTTP_429": 1,
+      "Franklin_XRPZ_parser_failure": 1,
+      "SEC_submissions_blocked_configuration": 3
+    },
+    "external_actions": {
+      "main_write": false,
+      "merge": false,
+      "deployment": false,
+      "secret_rotation": false,
+      "space_restart": false,
+      "external_model_dispatch": false,
+      "external_data_transfer": false,
+      "kaggle_submission": false,
+      "databricks_write": false,
+      "paper_trade": false,
+      "funds_transfer": false,
+      "real_money": false
+    },
+    "sources": {
+      "main_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44917841719",
+      "exact_head_pr_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44918745636",
+      "exact_head_push_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44918740944",
+      "exact_head_backfill_artifact": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44918745636/artifacts/14713051760",
+      "prior_main_ci_after_merge_1673": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159044",
+      "prior_pages_publication": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44839139424"
+    }
+  },
+  "run267_evidence_record": {
+    "status": "EXECUTED_AND_VERIFIED_WITH_EXPLICIT_LIMITATIONS",
+    "code_head_sha": "7bbf5b7d9eb148bcd45ecebee0ad52c4d2e5b4ec",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "ci_run_id": 44918745636,
+    "backfill_reconciliation_sha256": "9a2aeafb7d64cb7dc58c67d73583d19007b7c66e2e0ff52bb618c6c21b7f00d2",
+    "market_data_cutoff_utc": "2026-11-21T15:11:48.136762Z",
+    "forecast_status": "NOT_ISSUED",
+    "main_modified": false
+  },
+  "run267_next_actions": [
+    "Keep PR #1684 draft and unmerged until independent review, effective branch protection and publication authorization are verifiable.",
+    "Add event-to-raw-receipt hash binding for all timeline events before event-derived model admission.",
+    "Resolve SEC capture configuration and provider errors without bypassing regional restrictions or rate limits.",
+    "Establish durable feature-store retention/rebuild beyond the seven-day per-run checkpoint; verify daily 90-day backup execution.",
+    "Reconcile the pre-append, second-resolution GitHub Date receipt clock with a post-write availability boundary; do not overstate microsecond physical commit accuracy.",
+    "Build a valid point-in-time reference window and synchronized history before drift evaluation and walk-forward baselines.",
+    "Preserve ETF issuer, derivatives, collateral, RLUSD/USDC and exchange-flow raw-only states until unit, vintage, source and receipt checks pass."
+  ],
+  "run267_no_external_actions": {
+    "main_write": false,
+    "merge": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "external_model_dispatch": false,
+    "external_data_transfer": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false
   }
 }
