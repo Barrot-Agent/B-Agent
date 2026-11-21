@@ -478,7 +478,7 @@ jobs:
               handle.write('## XRP historical feature-store backfill replay\n\n')
               handle.write(f"- Status: **{summary['status']}**\n")
               handle.write(f"- Reconciliation SHA-256: `{summary['reconciliation_sha256']}`\n")
-              handle.write(f"- Receipt clock source: `{summary['receipt_clock_source']}` (GitHub API Date header at append boundary).\n")
+              handle.write(f"- Receipt clock source: `{summary['receipt_clock_source']}` (pre-append server time + 10s; post-append check confirms the bound remained in the future).\n")
               handle.write(f"- Records: {summary['records_before']} → {summary['records_after']}\n")
               handle.write(f"- Snapshots: {summary['snapshots_before']} → {summary['snapshots_after']}\n")
               handle.write('- Point-in-time visibility: excluded before receipt; visible after receipt.\n')
