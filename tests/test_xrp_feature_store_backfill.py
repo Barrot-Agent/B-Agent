@@ -112,10 +112,14 @@ def _create_raw_run(
     )
     _set_run_context(monkeypatch, run_id)
     archive.write_manifest(
-        root / "receipt_manifest.json",
+        root / "receipt_chain_manifest.json",
         previous_manifest_path=previous_index,
         continuity_status="CONTINUED",
         cross_run_path=root / "cross_run_receipt_chain.json",
+    )
+    (root / "receipt_manifest.json").write_text(
+        json.dumps(archive.receipts, sort_keys=True, indent=2) + "\\n",
+        encoding="utf-8",
     )
     return receipt, root / "cross_run_receipt_chain.json", source_id, source_uri
 
@@ -323,6 +327,43 @@ def test_historical_backfill_rejects_raw_payload_tampering_before_target_mutatio
 
     before = HistoricalFeatureStore(case["target_db"]).snapshot_count()
     with pytest.raises(XRPFeatureStoreBackfillError, match="raw receipt"):
+        reconcile_historical_snapshot(
+            target_database=case["target_db"],
+            source_database=case["source_db"],
+            source_raw_artifact_root=case["source_root"],
+            source_index_path=case["source_index"],
+            fork_raw_artifact_root=case["fork_root"],
+            fork_index_path=case["fork_index"],
+            ancestry_index_dir=case["ancestry"],
+            current_index_path=case["current_index"],
+            output_path=case["output"],
+            source_run_id=SOURCE_RUN,
+            fork_run_id=FORK_RUN,
+            common_parent_run_id=PARENT_RUN,
+            common_snapshot_id=case["common_id"],
+            fork_snapshot_id=case["fork_id"],
+            fork_snapshot_manifest_sha256=case["fork_manifest_sha"],
+            backfill_snapshot_id=case["source_id"],
+            backfill_manifest_sha256=case["source_manifest_sha"],
+            expected_record_count=1,
+            expected_source_count=1,
+            clock=lambda: datetime(2026, 11, 21, 1, 0, tzinfo=timezone.utc),
+        )
+    assert HistoricalFeatureStore(case["target_db"]).snapshot_count() == before
+
+
+
+def test_historical_backfill_rejects_receipt_list_manifest_mismatch_before_target_mutation(
+    tmp_path, monkeypatch
+):
+    case = _build_case(tmp_path, monkeypatch)
+    manifest_path = case["source_root"] / "receipt_manifest.json"
+    receipt_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    receipt_manifest[0]["source_uri"] = "https://example.com/forged-receipt"
+    manifest_path.write_text(json.dumps(receipt_manifest, sort_keys=True, indent=2) + "\\n", encoding="utf-8")
+
+    before = HistoricalFeatureStore(case["target_db"]).snapshot_count()
+    with pytest.raises(XRPFeatureStoreBackfillError, match="receipt-list manifest differs"):
         reconcile_historical_snapshot(
             target_database=case["target_db"],
             source_database=case["source_db"],
