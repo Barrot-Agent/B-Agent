@@ -394,6 +394,9 @@ def test_real_artifact_replay_targets_latest_verified_main_checkpoint():
     text = ci_workflow.read_text(encoding="utf-8")
     assert "44888553926" in text
     assert "xrp-public-receipt-index-44884065576" in text
+    assert text.count('fetch_artifact 44888553926 xrp-public-raw-44888553926 "$ROOT/current-raw"') == 1
+    assert text.count('fetch_artifact 44888553926 xrp-public-feature-store-44888553926 "$ROOT/current-store"') == 1
+    assert text.count('fetch_artifact 44888553926 xrp-public-receipt-index-44888553926 "$ROOT/current-index"') == 1
     assert 'assert before == {"snapshot_count": 10, "record_count": 16094}' not in text
     assert "snapshot_count': 10, 'record_count': 16094" in text
     assert "snapshot_count'] == 11 and after['record_count'] == 16212" in text

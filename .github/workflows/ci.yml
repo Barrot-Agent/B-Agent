@@ -275,8 +275,6 @@ jobs:
           fetch_artifact 44888553926 xrp-public-raw-44888553926 "$ROOT/current-raw"
           fetch_artifact 44888553926 xrp-public-feature-store-44888553926 "$ROOT/current-store"
           fetch_artifact 44884065576 xrp-public-receipt-index-44884065576 "$ROOT/index-44884065576"
-          fetch_artifact 44888553926 xrp-public-raw-44888553926 "$ROOT/current-raw"
-          fetch_artifact 44888553926 xrp-public-feature-store-44888553926 "$ROOT/current-store"
           fetch_artifact 44888553926 xrp-public-receipt-index-44888553926 "$ROOT/current-index"
           mkdir -p "$ROOT/ancestry-indexes"
           cp "$ROOT/fork-raw/cross_run_receipt_chain.json" "$ROOT/ancestry-indexes/44848909814.json"
