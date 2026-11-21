@@ -289,7 +289,7 @@ def test_latest_map_preserves_unresolved_phrase_and_creator_identity_controls():
     assert "not evidence of xrp purchases" in phrases["actual capital"].lower()
     assert "sbic east japan" in phrases["SBIC, ChatGPT SBIC"].lower()
     assert "no formal openai partnership" in phrases["SBIC, ChatGPT SBIC"].lower()
-    assert "no exact-phrase corroboration" in phrases["SBIC, ChatGPT SBIC"].lower()
+    assert "exact-phrase corroboration is established" in phrases["SBIC, ChatGPT SBIC"].lower()
     assert "channel" in phrases["Camilla/Kamilah Stevenson"].lower()
     assert "ownership unverified" in phrases["Camilla/Kamilah Stevenson"].lower()
 
