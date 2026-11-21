@@ -3770,3 +3770,55 @@ Capture cutoff: **2026-11-21 01:14:19.819701 UTC**.
 ### Next concrete action
 
 Wait for exact-head CI on #1684 head `d8f23b0`. Keep #1684 and #1685 draft until independent review and verifiable protected-branch requirements exist. After an approved merge of the XRP fix, verify the next main scheduled capture selects the immediately preceding successful run and restores its feature-store checkpoint; verify that the chain sequence increments and that no run is skipped. Keep forecast issuance disabled until receipt-backed history, walk-forward origins, baseline comparison, calibration, drift and independent shadow evidence all pass.
+
+
+---
+
+## Run251 — 2026-11-21 01:56 UTC — regression corrected; local feature-store recovery proven
+
+### Current repository and PR state
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; complete recursive tree remains 3,115 entries, untruncated.
+- No main commit, merge, force-push, branch rewrite or source-PR closure occurred.
+- PR #1684 remains the single XRP ingestion/handoff workstream. Current head: `26ce267d982b56181629d3ca302db8f983687f4f`, 25 commits ahead of main, zero behind, six changed files, draft. No file overlap with PR #1685.
+- PR #1685 remains the separate A2A credential-separation workstream, head `e512f4e6d66c1575186d00b60852c93caba687e0`, five commits ahead, nine files, draft.
+- PR #1663 is already closed; PR #1673 remains merged on main with its earlier fail-closed governance exception recorded.
+
+### Full-suite failure diagnosis and correction
+
+- The full suite on prior head `f5e595c` failed exactly one test: `tests/test_xrp_public_ingestion.py::test_scheduled_ingestion_workflow_persists_history_without_repository_writes`. The assertion still required the removed server-side `status=completed` query parameter.
+- Prior-head result: **4,535 passed, 1 failed, 1 skipped**, 11 warnings, 32 subtests; coverage 73.22%. Failure run: [44852122937](https://github.com/Barrot-Agent/B-Agent/actions/runs/44852122937).
+- Corrected the stale assertion in commit `26ce267d982b56181629d3ca302db8f983687f4f`. The test now requires no server-side status filter and two local completed/success filters.
+- On exact head `26ce267`, the core test job and Pages validation passed; Money audit, Dependency Audit and Conflict Integrity passed. The full repository test suite remains **in progress** at [44852563508](https://github.com/Barrot-Agent/B-Agent/actions/runs/44852563508); push full-suite run [44852557831](https://github.com/Barrot-Agent/B-Agent/actions/runs/44852557831) is also in progress. Fail-closed gate [44852794136](https://github.com/Barrot-Agent/B-Agent/actions/runs/44852794136) remains in progress. No result from `f5e595c` is transferred to `26ce267`.
+- Integration workflow smoke capture [44851458150](https://github.com/Barrot-Agent/B-Agent/actions/runs/44851458150) succeeded on the workflow-fix commit. It bootstrapped on the new integration branch, so it validates workflow execution but not predecessor selection across two integration runs.
+
+### Feature-store recovery proof — local only, not adopted
+
+- The preserved run-25 and run-26 feature-store artifacts were merged locally using append-only inserts: run-25 database as base, then only the missing run-26 snapshot, feature records and source snapshots. No source artifact or main checkpoint was modified.
+- Reconciled result: **3 snapshots, 2,087 feature records, 34 source-snapshot rows, five independence groups**.
+- SQLite integrity returned `ok`; all three snapshot manifest hashes matched; every snapshot's feature-record count and source-snapshot count matched its manifest. No verification failures.
+- Local candidate SHA-256: `fadf111d9b695c56be273a5ffb4bd96bb306da7052f1782c2859f651b8a64efe`; size 8,454,144 bytes.
+- This proves the missing run-25 feature delta can be reconciled without rewriting existing rows. The candidate was **not uploaded, committed or adopted by main**. The receipt-chain history remains forked; a recovery record must preserve both run-25 and run-26 branch hashes and must not rewrite either history.
+
+### Prediction-readiness and retention blockers
+
+- Run 26 remains the latest confirmed main ingestion at 2026-11-21 01:14:19.819701 UTC. No later main scheduled capture was observed at this handoff boundary.
+- Run-26 raw receipt integrity remains PASS: 37 receipts, 25 raw payloads, 12 digest-only receipts; 25/25 payload hashes match; receipt log, per-run chain and feature-store manifest checks pass. Cross-run continuity is FORKED because runs 25 and 26 share run 24 as predecessor.
+- The feature-store artifact on main contains 1,969 records and omits run 25's 118-record delta. GitHub Actions cache is read-only after the configured cache budget was reached. Per-run feature-store artifacts expire after seven days; raw artifacts expire after 90 days. No external WORM or trusted timestamp anchor exists.
+- Run 26 generated 150 events and 117 scenarios, but the event timeline has zero raw-payload hash links and `receipt_complete=false`; it is not model-eligible.
+- Drift: `INSUFFICIENT_DATA`, 123 candidate features, zero evaluated, 915 late-reference exclusions, minimum 30 samples per window. Walk-forward origins: zero. No directional forecast or shadow/paper trade was issued.
+- Four deterministic baseline implementations and temporal calibration code are present. The forecast-admission gate requires at least 100 training, 100 out-of-sample and 100 shadow samples, effective sample size 10, five independent source groups, ten-horizon coverage, calibration error at or below 0.05, stable drift, and performance better than all four baselines on Brier score and log loss. These conditions have not been demonstrated.
+
+### Research and coordination status
+
+- Japan's SBIC East/Tokyo, Central/Nagoya and West/Osaka remain resolved as separate statutory regional entities, distinct from SBI Holdings. The corporate relationship map separates SBI/Ripple equity and remittance relationships, SBI/Circle joint-venture and investment relationships, Coinbase/Circle distribution economics, and stablecoin rails from actual XRP demand.
+- Evernorth capital accounting distinguishes cash-funded XRP purchases from in-kind XRP contributions; headline XRP holdings are not treated as equivalent to new market demand.
+- ASK Coin remains unresolved. "Actual capital" is not treated as a verified formal term; cash, in-kind XRP, conditional commitments and survey intent remain separate. "SBIC, ChatGPT SBIC" has no verified primary-source partnership evidence.
+- A guest-level Kamilah Stevenson reference is not treated as proof of ownership of similarly named YouTube channels. No channel-wide video inventory is claimed.
+- ChatGPT/GitHub access is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks authentication and data flows remain unverified. No external model dispatch or data transfer occurred.
+
+### Governance and next action
+
+- Main reports protected=true, but detailed protection remains HTTP 403; the visible fallback ruleset is disabled and CODEOWNERS assigns all paths to `@Barrot-Agent`. Formal independent reviews remain zero.
+- PR #1684 and #1685 remain draft/blocked. No merge is permitted until exact-head full suite, dependency/security checks, independent approval and effective branch protection are verifiable.
+- Next: finish exact-head CI on the latest PR head; then implement a controlled, tested recovery path for the preserved run-25 feature delta and explicit multi-branch receipt-chain reconciliation. After any approved merge, verify the next main scheduled capture selects the immediately preceding successful run and restores the reconciled feature store. Keep forecast issuance disabled until the full walk-forward, calibration, drift and shadow gates pass.
