@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-21T00:14:50.529Z",
+  "captured_at_utc": "2026-11-21T00:15:05.719Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -951,7 +951,7 @@
     },
     "current_forecast_status": "NOT_ISSUED",
     "latest_market_snapshot_research_only": {
-      "captured_at_utc": "2026-11-21T00:14:50.529Z",
+      "captured_at_utc": "2026-11-21T00:08:16.722Z",
       "source": "Kraken public XRP/USD ticker via web retrieval",
       "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
       "model_eligible": false,
@@ -974,7 +974,8 @@
       "utc_day_open_usd": 0.95925,
       "last_vs_utc_day_open_percent": -5.1092,
       "last_vs_vwap_24h_percent": -0.8586,
-      "field_semantics": "Kraken ticker o and first p/v values are UTC-day values; second p/v values are rolling 24h. No rolling 24h open is supplied by this response."
+      "field_semantics": "Kraken ticker o and first p/v values are UTC-day values; second p/v values are rolling 24h. No rolling 24h open is supplied by this response.",
+      "map_updated_at_utc": "2026-11-21T00:15:05.719Z"
     },
     "latest_market_research_web_crosscheck": {
       "captured_at_utc": "2026-11-20T03:40:32.475Z",
@@ -1257,7 +1258,7 @@
     "latest_ingestion_run_id": 44654352643,
     "latest_ingestion_run_captured_at_utc": "2026-11-20T01:32:54.379952Z",
     "run248_market_snapshot_research_only": {
-      "captured_at_utc": "2026-11-21T00:14:50.529Z",
+      "captured_at_utc": "2026-11-21T00:08:16.722Z",
       "source": "Kraken public XRP/USD ticker via web retrieval",
       "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
       "model_eligible": false,
@@ -1280,7 +1281,8 @@
       "utc_day_open_usd": 0.95925,
       "last_vs_utc_day_open_percent": -5.1092,
       "last_vs_vwap_24h_percent": -0.8586,
-      "field_semantics": "Kraken ticker o and first p/v values are UTC-day values; second p/v values are rolling 24h. No rolling 24h open is supplied by this response."
+      "field_semantics": "Kraken ticker o and first p/v values are UTC-day values; second p/v values are rolling 24h. No rolling 24h open is supplied by this response.",
+      "map_updated_at_utc": "2026-11-21T00:15:05.719Z"
     },
     "run248_derivatives_and_etf_research": {
       "binance_open_interest_reported_usd_nov6": 451280000,
@@ -4916,7 +4918,7 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-21T00:14:50.529Z",
+  "last_verified_at_utc": "2026-11-21T00:15:05.719Z",
   "latest_run_id": 248,
   "latest_run_captured_at_utc": "2026-11-21T00:14:50.529Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7488,7 +7490,7 @@
   },
   "run248_no_source_pr_closures": true,
   "latest_run_248": {
-    "captured_at_utc": "2026-11-21T00:14:50.529Z",
+    "captured_at_utc": "2026-11-21T00:15:05.719Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "merged_pr": 1673,
     "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7528,10 +7530,11 @@
     "source_pr_1663_cross_reference_comment_id": 7053832128,
     "workflow_transitive_review": "INCOMPLETE",
     "market_snapshot_field_semantics_corrected": true,
-    "reserve_flow_counterevidence_added": true
+    "reserve_flow_counterevidence_added": true,
+    "market_snapshot_captured_at_utc": "2026-11-21T00:08:16.722Z"
   },
   "run248_evidence_record": {
-    "captured_at_utc": "2026-11-21T00:14:50.529Z",
+    "captured_at_utc": "2026-11-21T00:15:05.719Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "merged_pr": 1673,
     "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7571,7 +7574,8 @@
     "source_pr_1663_cross_reference_comment_id": 7053832128,
     "workflow_transitive_review": "INCOMPLETE",
     "market_snapshot_field_semantics_corrected": true,
-    "reserve_flow_counterevidence_added": true
+    "reserve_flow_counterevidence_added": true,
+    "market_snapshot_captured_at_utc": "2026-11-21T00:08:16.722Z"
   },
   "current_handoff_branch": "integration/xrp-post-merge-verification-20261121T0002Z"
 }
