@@ -1,6 +1,86 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
-Updated: 2026-11-21T19:02:47Z (Run 270: main 550a647; main XRP ingestion run 47 succeeded; PR #1684 audit head 4b5b5d9 had 4,555 passed / 2 stale evidence-test failures / 1 skipped; exact-head real-artifact replay recovered 118 records from current main run 47 in an isolated copy; two test-contract fixes are committed in this child update; no merge).
+Updated: 2026-11-21T20:06:14Z (Run271: main 550a647; main XRP ingestion run48 succeeded; 34 receipts/22 retained payloads/12 digest-only; all 22 retained payload hashes verified; event registry 150 records with 112 declared groups but no canonical lineage count; exact-head backfill replay against run48 recovered 118 records from 11 source lineages in an isolated CI database; no merge).
+
+## Run271 checkpoint — current verified state
+
+### Repository and integration snapshot
+- Main SHA: `550a647ee7269a704d4600ff337b2145acc90473`; complete recursive main tree: 3,115 entries, not truncated.
+- PR #1684 remains the sole XRP integration workstream. At capture its head was `d82b9127472efc96008cd3269de198e1611eefca`, 109 commits ahead / zero behind main, 19 changed files; branch tree 3,123 entries, not truncated, with no main paths missing. The evidence/test/handoff checkpoint in this commit advances that branch and requires its own exact-head CI.
+- PR #1685 remains a separate A2A credential-separation workstream: five commits ahead, zero behind, nine changed files, zero path overlap with #1684.
+- Only two open PRs exist. Both are draft and blocked. No new PR or branch was created.
+- PR #1684 and #1685 each have zero formal approving reviews. CODEOWNERS is `* @Barrot-Agent`; it does not provide independent review.
+
+### Main XRP ingestion run48 — executed and verified
+- Main ingestion [run 44939486791](https://github.com/Barrot-Agent/B-Agent/actions/runs/44939486791) completed successfully on main SHA `550a647` at 2026-11-21 19:10:19 UTC; data cutoff `2026-11-21T19:10:41.144579Z`.
+- 34 source receipts: 22 retained raw payloads and 12 digest-only receipts. All 22 retained payload SHA-256 values were independently recomputed against downloaded raw bytes with zero mismatches.
+- Receipt chain: sequence 20, predecessor run 44934364490, continuity `CONTINUED`, chain verification `PASS`; external immutable/WORM anchor remains absent.
+- Raw artifact ZIP SHA-256: `95f802ea6f4a25a1ccdb092fb77d89ab01077b8509ad9cb16b4deff7cd2f1a4d`. Receipt index ZIP SHA-256: `671559312dcb6c928d6934999ce1ed95cf36798a89c4c576d233232ed60db126`. Event artifact ZIP SHA-256: `8e4092136d16c204923b9416d716ec029160f26dbfd7f16d224bb42efc37c82c`. Feature-store ZIP SHA-256: `a76b8a60a279eba300c71e794a719577c11c2bd248ed2c3f810f2894d869f42c`.
+- Feature store: 17,291 historical records, 20 snapshots; latest snapshot 123 verified/eligible records from 12 sources; 367 excluded input records; 490 delta records; 2,230 total input feature records; SQLite integrity `ok`. The workflow restores run47's per-run checkpoint because the Actions cache is read-only after budget exhaustion. Automatic rebuild from raw receipts is not implemented.
+- Source failures: 18; raw-only sources: 23. SEC EDGAR remains blocked by missing approved monitored-contact configuration (`BARROT_SEC_USER_AGENT`); three issuer submission captures failed, with zero SEC raw receipts.
+
+### Historical fork recovery — actual module executed
+- Exact-head PR CI [44939719403](https://github.com/Barrot-Agent/B-Agent/actions/runs/44939719403), job [XRP historical backfill replay](https://github.com/Barrot-Agent/B-Agent/actions/runs/44939719403/job/136954025928), executed the branch's actual `xrp_feature_store_backfill.py` against preserved main run48 artifacts in an isolated database.
+- Recovery: 17,291 → 17,409 records; 20 → 21 snapshots; 118 records from 11 source lineages. All 21 snapshots verified; SQLite integrity `ok`.
+- Reconciliation SHA-256: `50e83694ab7e3cee9507a56aaf5fcd419001fc6115785ce85c3332d75194a36a`. Artifact [14721430527](https://github.com/Barrot-Agent/B-Agent/actions/runs/44939719403/artifacts/14721430527), ZIP digest `sha256:0fbf55054b2036c30f123408413d67aa96799047d74969ed98d66bf66e6f60f9`.
+- The replay verified 23 historical/current artifact ZIP digests with zero mismatches, including the two fork siblings and current main run48.
+- Point-in-time visibility: false at `2026-11-21T19:15:33.999999Z`; true at `2026-11-21T19:15:34.000001Z`.
+- Critical limitation: the receipt time is a GitHub API Date-header post-append availability bound, not a measured physical SQLite commit timestamp. No independent trusted timestamp or WORM anchor exists. Main's production feature store remains unchanged; recovered records are not adopted into main.
+
+### Market structure and capital-flow observations
+- Run48 USD-comparable best-book mids: Coinbase `0.934850`, Kraken `0.934720`, Bitstamp `0.934765`, OKX normalized `0.9350966365`; cluster width 4.03 bps.
+- OKX USDT/USD mid: `0.998235` (17.65 bps below USD). Assuming a 1:1 peg would overstate normalized XRP/USD by 17.68 bps. Only OKX top-of-book prices are USD-normalized; its depth remains USDT.
+- Depth is venue-dependent: Coinbase/Kraken/Bitstamp are mixed near-touch and bid-heavier at wider bands; OKX USDT depth is ask-heavy. Bitbank XRP/JPY is strongly bid-heavy but not USD-normalized. REST snapshots are not a consolidated executable book or a directional signal.
+- XRP Insights' 2026-11-20 attributed ETF holdings-delta aggregate: direct-spot `-$7.453M` / `-8.243M XRP` across four included funds, one direct-spot fund excluded; mixed-indirect `+$200,465`. This is holdings delta, not issuer AP cash flow or verified net cash subscriptions/redemptions. The CSV is hash-only under its terms and remains model-ineligible.
+- Bitbank's latest-60-trade sample showed net taker flow `-12,212.32 XRP` over 418.818 seconds; variable window, not a fixed-duration or 24-hour flow feature, so model-ineligible.
+- Deribit XRP-USDC perpetual ticker/L2 remains raw-only pending contract-unit, depth and sequence validation. RLUSD/USDC pages are raw-only; SBI VC Trade lending, Morpho CBXRP and Coinbase CBXRP reserve material remain digest-only/model-ineligible.
+
+### Event provenance correction
+- The event registry has 150 curated records and 112 **declared** independence-group labels; canonical publisher-lineage groups are not computed. This is not 112 independent confirmations.
+- Zero of 150 events has a raw-source SHA-256 or receipt link. Only 59 events have exact publisher timestamps; 91 do not. Registry capture time is `2026-11-19T15:16:42Z`, approximately 51.90 hours before run48's cutoff. Event receipt completeness and model eligibility remain false.
+- Earlier map snapshots used a value of 50 for event source groups. Run271 corrects the current field semantics to 112 declared labels and leaves canonical lineage count null rather than implying independence.
+
+### Prediction readiness — no forecast
+- Drift: 0 of 204 features evaluated; status `INSUFFICIENT_DATA`.
+- Walk-forward origins/forecasts: zero. Historical evaluator and baseline paths exist, but no XRP candidate and independent shadow cohort have demonstrated out-of-sample performance.
+- XRP sentiment remains stale: latest input 2026-10-29 12:39:22 UTC, approximately 559.21 hours old at cross-analysis run 44943182954. No recent 24-hour entries; forecast-ineligible.
+- Directional forecast: `NOT_ISSUED`. No paper trade.
+
+### Exact-head CI and merge governance
+- Captured parent head `d82b9127472efc96008cd3269de198e1611eefca`: full repository suite [44939719403](https://github.com/Barrot-Agent/B-Agent/actions/runs/44939719403) had 4,556 passed, 2 failed, 1 skipped; 11 warnings; 32 subtests; 73.20% coverage; 206.28 seconds. Both failures were stale evidence-contract assertions in the latest-map ingestion comparison and historical Run269 test.
+- On that same head: core tests passed; dependency audit passed across six manifests with zero known vulnerabilities; money audit passed; conflict-integrity passed; Pages validation-only passed; actual run48 backfill replay passed.
+- Fail-closed gate blocked by design: PR draft, zero independent approvals, main branch-protection details HTTP 403, fallback ruleset disabled, automatic Pages publication enabled but authorization NOT_GRANTED.
+- Main CI remains green on main SHA `550a647`: run 44839159044, 4,534 passed, 1 skipped, zero failed; six dependency manifests, zero known vulnerabilities.
+- Merge decision: **DO NOT MERGE**. The checkpoint commit updates evidence/test contracts; exact-head full-suite and gate results for the new commit are pending.
+
+### Durable backlog
+| PR | Workstream | Classification | Disposition |
+|---|---|---|---|
+| #1684 | XRP ingestion continuity, historical feature-store recovery, event receipt provenance | blocked | Keep the single existing integration PR; complete exact-head CI and independent governance gates |
+| #1685 | A2A gateway/runner credential separation | blocked | Keep separate; OS sandbox, credential isolation, egress restrictions and task authorization remain incomplete |
+
+No PR was merged or closed. Previously merged #1673 remains on main; no new merge occurred in Run271.
+
+### DESIGNED / EXECUTED / VERIFIED
+- **DESIGNED:** deterministic rebuild from raw receipts, event-to-receipt capture, independent immutable timestamp anchoring, full chronological evaluation and shadow validation.
+- **EXECUTED:** current main run48 raw artifact capture/hash audit; actual branch backfill module against run48; 23 artifact ZIP digest comparisons; market/ETF/Bitbank observation reconciliation; map/test/handoff correction in the existing PR.
+- **VERIFIED:** 22/22 retained raw payload hashes; receipt chain continuity; 23/23 artifact ZIP digests; 118-record recovery in isolation; 21 snapshot manifests; SQLite integrity; one-microsecond point-in-time boundary.
+- **NOT VERIFIED:** production adoption of backfill, WORM/timestamp anchoring, complete event provenance, SEC institutional filing ingestion, walk-forward performance, probability calibration on an XRP candidate, shadow evaluation, external nine-platform connections.
+
+### Next concrete actions
+1. Complete exact-head full repository CI on the checkpoint commit; fix any remaining failures without weakening evidence assertions.
+2. Reconcile all 150 events to exact raw source bytes/receipt IDs and resolve the declared-vs-canonical publisher lineage gap.
+3. Obtain an approved monitored SEC contact identity before enabling SEC capture.
+4. Normalize ETF issuer holdings, RLUSD/USDC supply, SBI VC Trade lending and Morpho CBXRP data before feature admission.
+5. Implement deterministic feature-store rebuild from retained raw artifacts and independently anchored receipts.
+6. Only after these gates pass, run chronological naive/momentum/mean-reversion/volatility baselines, leakage-safe evaluation, calibration, drift checks and shadow assessment.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer or real-money action was performed.
+
+---
+
+## Previous checkpoint — Run270 (2026-11-21T19:02:47Z)
+Main run47 was captured; its 118-record backfill replay passed in isolation. The Run270 exact-head suite had two stale evidence assertions. This Run271 checkpoint supersedes that snapshot.
 
 ## Prior checkpoint — 2026-11-21T14:29:55Z (automation run 11; superseded by final checkpoint above)
 

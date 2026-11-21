@@ -110,11 +110,15 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert (
         ingestion["eligible_feature_record_count"]
         + ingestion["excluded_feature_record_count"]
-        == ingestion["input_feature_record_count"]
+        == ingestion["delta_feature_record_count"]
     )
+    assert ingestion["input_feature_record_count"] >= ingestion["delta_feature_record_count"]
     assert ingestion["sqlite_integrity"] == "ok"
     assert ingestion["event_count"] == 150
-    assert ingestion["event_independent_source_groups"] == 50
+    assert ingestion["event_declared_independence_group_count"] == 112
+    assert ingestion["event_canonical_publisher_lineage_group_count"] is None
+    assert ingestion["event_exact_publisher_timestamp_count"] == 59
+    assert ingestion["event_missing_exact_publisher_timestamp_count"] == 91
     assert ingestion["event_raw_hash_present_count"] == 0
     assert ingestion["event_receipt_complete"] is False
     assert ingestion["event_model_eligible"] is False
@@ -285,8 +289,8 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert ingestion["raw_payload_hash_mismatches"] == 0
     assert market["quote_basis"]["status"] == "VERIFIED"
     assert market["quote_basis"]["method"] == "same_venue_synchronized_top_of_book_product"
-    assert market["quote_basis"]["usdt_usd_mid"] == 0.998275
-    assert market["quote_basis"]["normalization_overstatement_if_usdt_assumed_usd_bps"] == 17.2798049764
+    assert market["quote_basis"]["usdt_usd_mid"] == 0.998235
+    assert market["quote_basis"]["normalization_overstatement_if_usdt_assumed_usd_bps"] == 17.681207330939106
     assert "not a consolidated executable book" in market["interpretation"]
 
 
@@ -769,13 +773,8 @@ def test_run265_binds_current_pr_ci_backfill_and_forecast_gate():
     assert run["full_suite_skipped"] == 1
     assert run["forecast_status"] == "NOT_ISSUED"
 
-    current_pr = next(item for item in data["open_pr_inventory"] if item["number"] == 1684)
-    assert current_pr["head_sha"] == data["current_pr_head_sha"]
-    assert current_pr["draft"] is True
-    assert current_pr["full_suite"]["failed"] == 2
-    assert current_pr["backfill_replay"]["conclusion"] == "success"
-    assert current_pr["backfill_replay"]["recovered_records"] == 118
-    assert current_pr["backfill_replay"]["main_modified"] is False
+    # Current PR state is validated in Run271. This historical Run265 test
+    # must not bind itself to whichever PR head happens to be open later.
 
     backfill = data["run265_backfill_verification"]
     assert backfill["run_id"] == 44911087849
@@ -795,7 +794,7 @@ def test_run269_binds_main_run46_microstructure_and_prediction_gates():
     root = Path(__file__).resolve().parents[1]
     artifact = json.loads((root / run["artifact_path"]).read_text(encoding="utf-8"))
 
-    assert data["latest_run_id"] == 269
+    assert artifact["run_id"] == 269
     assert data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
     assert run["main_ingestion_run_id"] == 44928553996
     assert run["pr_exact_head_ci_run_id"] == 44926486835
@@ -837,9 +836,10 @@ def test_run270_binds_main_run47_and_current_pr_head_evidence():
     data = load_map()
     run = data["run270_evidence_record"]
 
-    assert data["latest_run_id"] == 270
+    assert run["captured_at_utc"] == "2026-11-21T19:02:47Z"
     assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
-    assert run["head_sha"] == data["current_pr_head_sha"] == "4b5b5d9aa32259914ebc45a79fc2ea59368af29f"
+    assert run["head_sha"] == "4b5b5d9aa32259914ebc45a79fc2ea59368af29f"
+    assert run["head_sha"] != data["current_pr_head_sha"]
     assert run["main_tree_entries"] == 3115
     assert run["integration_tree_entries"] == 3123
     assert run["main_paths_missing_from_integration"] == 0
@@ -887,3 +887,92 @@ def test_run270_binds_main_run47_and_current_pr_head_evidence():
     assert run["merge_decision"] == "DO_NOT_MERGE"
     assert run["main_unchanged"] is True
     assert run["no_external_actions"] is True
+
+
+def test_run271_binds_current_main_run48_market_flow_backfill_and_pr_head():
+    data = load_map()
+    run = data["run271_evidence_record"]
+    root = Path(__file__).resolve().parents[1]
+    artifact = json.loads((root / run["artifact_path"]).read_text(encoding="utf-8"))
+
+    assert data["latest_run_id"] == 271
+    assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
+    assert run["head_sha"] == data["current_pr_head_sha"] == "d82b9127472efc96008cd3269de198e1611eefca"
+    assert run["integration_ahead_by"] == 109
+    assert run["integration_behind_by"] == 0
+    assert run["changed_files"] == 19
+    assert run["main_tree_entries"] == 3115
+    assert run["integration_tree_entries"] == 3123
+
+    ingestion = run["main_ingestion"]
+    assert ingestion["run_id"] == 44939486791
+    assert ingestion["run_number"] == 48
+    assert ingestion["receipt_count"] == 34
+    assert ingestion["raw_retained"] == 22
+    assert ingestion["digest_only"] == 12
+    assert ingestion["raw_payload_hashes_verified"] == 22
+    assert ingestion["raw_payload_hash_mismatches"] == 0
+    assert ingestion["receipt_chain_verified"] is True
+    assert ingestion["receipt_chain_sequence"] == 20
+    assert ingestion["feature_store_history_record_count"] == 17291
+    assert ingestion["feature_store_snapshot_count"] == 20
+    assert ingestion["eligible_feature_record_count"] == 123
+    assert ingestion["excluded_feature_record_count"] == 367
+    assert ingestion["delta_feature_record_count"] == 490
+    assert ingestion["input_feature_record_count"] == 2230
+    assert ingestion["event_count"] == 150
+    assert ingestion["event_declared_independence_group_count"] == 112
+    assert ingestion["event_canonical_publisher_lineage_group_count"] is None
+    assert ingestion["event_raw_hash_present_count"] == 0
+    assert ingestion["event_exact_publisher_timestamp_count"] == 59
+    assert ingestion["event_missing_exact_publisher_timestamp_count"] == 91
+    assert ingestion["drift_evaluated_feature_count"] == 0
+    assert ingestion["walk_forward_forecast_count"] == 0
+    assert ingestion["forecast_status"] == "NOT_ISSUED"
+
+    market = run["market_snapshot"]
+    assert market["price_cluster_usd"]["low"] == 0.93472
+    assert market["price_cluster_usd"]["high"] == 0.9350966365
+    assert market["quote_basis"]["usdt_usd_mid"] == 0.998235
+    assert market["quote_basis"]["normalization_overstatement_if_usdt_assumed_usd_bps"] == 17.681207330939106
+    assert market["model_eligible_for_directional_forecast"] is False
+
+    etf = run["research_only_observations"]["xrp_etf_flows"]
+    assert etf["data_as_of"] == "2026-11-20"
+    assert etf["latest_date_direct_spot_flow_usd"] == -7452638
+    assert etf["flow_method"] == "holdings_delta_not_issuer_ap_cash_flow"
+    assert etf["model_eligible"] is False
+    bitbank = run["research_only_observations"]["bitbank_latest_60_trade_sample"]
+    assert bitbank["net_taker_flow_xrp"] < 0
+    assert bitbank["sample_window_seconds"] == 418.818
+    assert bitbank["model_eligible"] is False
+
+    backfill = run["backfill_replay"]
+    assert backfill["status"] == "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN"
+    assert backfill["records_before"] == 17291
+    assert backfill["records_after"] == 17409
+    assert backfill["recovered_records"] == 118
+    assert backfill["recovered_source_lineages"] == 11
+    assert backfill["sqlite_integrity"] == "ok"
+    assert backfill["visible_before_receipt"] is False
+    assert backfill["visible_after_receipt"] is True
+    assert backfill["artifact_inventory_verified_count"] == 23
+    assert backfill["artifact_inventory_digest_mismatches"] == 0
+    assert backfill["store_receipt_time_is_actual_recovery_time"] is False
+
+    ci = run["pr_head_ci"]
+    assert ci["full_suite"]["passed"] == 4556
+    assert ci["full_suite"]["failed"] == 2
+    assert ci["full_suite"]["skipped"] == 1
+    assert ci["backfill_replay"]["conclusion"] == "success"
+    assert ci["dependency_audit"]["conclusion"] == "success"
+    assert ci["fail_closed"]["conclusion"] == "failure_by_design"
+    assert run["merge_decision"] == "DO_NOT_MERGE"
+    assert run["main_unchanged"] is True
+    assert run["no_external_actions"] is True
+
+    assert artifact["run_id"] == 271
+    assert artifact["main_ingestion"]["run_id"] == 44939486791
+    assert artifact["backfill_replay"]["reconciliation_sha256"] == backfill["reconciliation_sha256"]
+    assert artifact["forecast_status"] == "NOT_ISSUED"
+    assert artifact["model_eligible"] is False
