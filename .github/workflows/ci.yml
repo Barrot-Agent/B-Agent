@@ -360,6 +360,8 @@ jobs:
           [[ -s "$ROOT/ancestry-indexes/44848909814.json" ]]
           echo "Selected current main ingestion run $latest_run_id on $current_main_sha ($latest_run_created_at); verified $ancestry_steps intermediate receipt-index artifacts."
       - name: Execute the exact branch backfill module against preserved real artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
@@ -408,6 +410,7 @@ jobs:
           root = Path(sys.argv[1])
           receipt = json.loads((root / 'reconciliation.json').read_text())
           before = json.loads((root / 'before.json').read_text())
+          assert receipt['store_receipt_clock_source'] == 'github_api_run_date_header', receipt.get('store_receipt_clock_source')
           assert before['snapshot_count'] >= 2, before
           assert before['record_count'] >= 118, before
           assert receipt['status'] == 'RECONCILED', receipt.get('status')
@@ -439,6 +442,7 @@ jobs:
               'backfill_script_blob_sha': __import__('subprocess').check_output(['git', 'rev-parse', 'HEAD:barrot_agent/evolution/xrp_feature_store_backfill.py'], text=True).strip(),
               'verification_workflow_blob_sha': __import__('subprocess').check_output(['git', 'rev-parse', 'HEAD:.github/workflows/ci.yml'], text=True).strip(),
               'reconciliation_sha256': receipt['reconciliation_sha256'],
+              'receipt_clock_source': receipt['store_receipt_clock_source'],
               'source_run_id': '44844953105',
               'fork_run_id': '44848909814',
               'common_parent_run_id': '44844499889',
@@ -474,6 +478,7 @@ jobs:
               handle.write('## XRP historical feature-store backfill replay\n\n')
               handle.write(f"- Status: **{summary['status']}**\n")
               handle.write(f"- Reconciliation SHA-256: `{summary['reconciliation_sha256']}`\n")
+              handle.write(f"- Receipt clock source: `{summary['receipt_clock_source']}` (GitHub API Date header at append boundary).\n")
               handle.write(f"- Records: {summary['records_before']} → {summary['records_after']}\n")
               handle.write(f"- Snapshots: {summary['snapshots_before']} → {summary['snapshots_after']}\n")
               handle.write('- Point-in-time visibility: excluded before receipt; visible after receipt.\n')

@@ -12,6 +12,7 @@ from barrot_agent.evolution.feature_store import HistoricalFeatureStore
 from barrot_agent.evolution.point_in_time_features import build_feature_snapshot
 from barrot_agent.evolution.xrp_feature_store_backfill import (
     XRPFeatureStoreBackfillError,
+    _validate_server_receipt_time,
     reconcile_historical_snapshot,
     verify_existing_reconciliation,
 )
@@ -32,6 +33,19 @@ class MutableClock:
 
     def __call__(self) -> datetime:
         return self.value
+
+
+def test_github_server_receipt_time_must_be_aware_and_after_run_start():
+    run_started = datetime(2026, 11, 21, 14, 34, 55, tzinfo=timezone.utc)
+    server_time = datetime(2026, 11, 21, 14, 37, 6, tzinfo=timezone.utc)
+    assert _validate_server_receipt_time(server_time, run_started) == server_time
+    with pytest.raises(XRPFeatureStoreBackfillError, match="predates"):
+        _validate_server_receipt_time(
+            datetime(2026, 11, 21, 14, 34, 54, tzinfo=timezone.utc),
+            run_started,
+        )
+    with pytest.raises(XRPFeatureStoreBackfillError, match="timezone-aware"):
+        _validate_server_receipt_time(datetime(2026, 11, 21, 14, 37, 6), run_started)
 
 
 def _canonical(value):
@@ -298,6 +312,7 @@ def test_historical_backfill_verifies_both_fork_heads_and_actual_receipt_time(tm
         expected_record_count=1,
         expected_source_count=1,
         clock=lambda: recovery_time,
+        receipt_clock_source="test_injected_clock",
     )
 
     assert result["status"] == "RECONCILED"
@@ -314,6 +329,7 @@ def test_historical_backfill_verifies_both_fork_heads_and_actual_receipt_time(tm
         FORK_RUN,
     ]
     assert receipt["backfill_snapshot"]["manifest_sha256"] == case["source_manifest_sha"]
+    assert receipt["store_receipt_clock_source"] == "test_injected_clock"
 
     verified = verify_existing_reconciliation(case["target_db"], case["output"])
     assert verified["status"] == "VERIFIED_EXISTING"
@@ -404,5 +420,10 @@ def test_real_artifact_replay_targets_latest_successful_main_checkpoint():
     assert "44888553926" not in text
     assert "expected_snapshot_delta = 0 if before['backfill_snapshot_present'] else 1" in text
     assert "expected_record_delta = 0 if before['backfill_snapshot_present'] else 118" in text
+    execute_step = text.split("- name: Execute the exact branch backfill module against preserved real artifacts", 1)[1]
+    assert "GH_TOKEN: ${{ github.token }}" in execute_step[:300]
+    backfill_source = (ROOT / "barrot_agent" / "evolution" / "xrp_feature_store_backfill.py").read_text(encoding="utf-8")
+    assert "clock=_github_api_server_clock" in backfill_source
+    assert 'receipt_clock_source="github_api_run_date_header"' in backfill_source
     assert "after['snapshot_count'] == before['snapshot_count'] + expected_snapshot_delta" in text
     assert "after['record_count'] == before['record_count'] + expected_record_delta" in text

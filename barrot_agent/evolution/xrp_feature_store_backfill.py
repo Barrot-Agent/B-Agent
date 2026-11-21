@@ -10,12 +10,16 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import sqlite3
 import sys
 import tempfile
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any, Callable, Mapping
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 from .feature_store import FeatureStoreError, HistoricalFeatureStore
 from .xrp_public_ingestion import RawReceiptArchive, XRPIngestionError
@@ -89,6 +93,54 @@ def _iso(value: datetime) -> str:
     if value.tzinfo is None or value.utcoffset() is None:
         raise XRPFeatureStoreBackfillError("reconciliation clock must be timezone-aware")
     return value.astimezone(timezone.utc).isoformat(timespec="microseconds").replace("+00:00", "Z")
+
+
+def _validate_server_receipt_time(server_time: datetime, run_started_at: datetime) -> datetime:
+    """Reject naive timestamps and GitHub server times predating this workflow run."""
+    if server_time.tzinfo is None or server_time.utcoffset() is None:
+        raise XRPFeatureStoreBackfillError("GitHub API Date header must be timezone-aware")
+    if run_started_at.tzinfo is None or run_started_at.utcoffset() is None:
+        raise XRPFeatureStoreBackfillError("GitHub workflow run_started_at must be timezone-aware")
+    normalized_server_time = server_time.astimezone(timezone.utc)
+    normalized_run_start = run_started_at.astimezone(timezone.utc)
+    if normalized_server_time < normalized_run_start:
+        raise XRPFeatureStoreBackfillError("GitHub API server time predates the current workflow run")
+    return normalized_server_time
+
+
+def _github_api_server_clock() -> datetime:
+    """Use GitHub's response Date header at the append boundary, not the runner clock."""
+    token = os.environ.get("GH_TOKEN")
+    repository = os.environ.get("GITHUB_REPOSITORY")
+    run_id = os.environ.get("GITHUB_RUN_ID")
+    if not token or not repository or not run_id:
+        raise XRPFeatureStoreBackfillError("GitHub API receipt clock requires GH_TOKEN, repository and run ID")
+    request = Request(
+        f"https://api.github.com/repos/{repository}/actions/runs/{run_id}",
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        },
+    )
+    try:
+        with urlopen(request, timeout=15) as response:
+            date_header = response.headers.get("Date")
+            payload = json.loads(response.read().decode("utf-8"))
+    except (HTTPError, URLError, OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise XRPFeatureStoreBackfillError("could not obtain the current GitHub Actions run and server Date header") from exc
+    if not date_header:
+        raise XRPFeatureStoreBackfillError("GitHub Actions API response omitted its Date header")
+    if str(payload.get("id")) != str(run_id):
+        raise XRPFeatureStoreBackfillError("GitHub Actions API returned a different workflow run")
+    if payload.get("repository", {}).get("full_name") != repository:
+        raise XRPFeatureStoreBackfillError("GitHub Actions API returned a different repository")
+    try:
+        server_time = parsedate_to_datetime(date_header)
+        run_started_at = datetime.fromisoformat(str(payload["run_started_at"]).replace("Z", "+00:00"))
+    except (TypeError, KeyError, ValueError, OverflowError) as exc:
+        raise XRPFeatureStoreBackfillError("GitHub Actions API returned an invalid server or run-start timestamp") from exc
+    return _validate_server_receipt_time(server_time, run_started_at)
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -500,6 +552,7 @@ def reconcile_historical_snapshot(
     expected_record_count: int = BACKFILL_RECORD_COUNT,
     expected_source_count: int = BACKFILL_SOURCE_COUNT,
     clock: Callable[[], datetime] | None = None,
+    receipt_clock_source: str = "runtime_clock",
 ) -> dict[str, Any]:
     output_file = Path(output_path)
     if output_file.exists():
@@ -654,6 +707,7 @@ def reconcile_historical_snapshot(
             "raw_receipt_log_sha256": source_raw_verification["receipt_log_sha256"],
             "raw_chain_log_sha256": source_raw_verification["chain_log_sha256"],
         },
+        "store_receipt_clock_source": receipt_clock_source,
         "backfill_snapshot": {
             "snapshot_id": existing_snapshot["snapshot_id"],
             "manifest_sha256": backfill_manifest_sha256,
@@ -693,6 +747,7 @@ def reconcile_historical_snapshot(
         "reconciliation_sha256": receipt["reconciliation_sha256"],
         "receipt_path": str(output_file),
         "backfill_snapshot": receipt["backfill_snapshot"],
+        "store_receipt_clock_source": receipt.get("store_receipt_clock_source"),
         "feature_store_after": receipt["feature_store_after"],
         "point_in_time_visibility": visibility,
         "main_lineage_run_ids": [item["current_run"]["run_id"] for item in lineage],
@@ -739,6 +794,8 @@ def main() -> None:
                 current_index_path=args.current_index,
                 output_path=args.output,
                 artifact_inventory_path=args.artifact_inventory,
+                clock=_github_api_server_clock,
+                receipt_clock_source="github_api_run_date_header",
             )
         print(json.dumps(result, indent=2, sort_keys=True))
     except (XRPFeatureStoreBackfillError, FeatureStoreError, XRPIngestionError, OSError, ValueError) as exc:
