@@ -242,7 +242,7 @@ jobs:
           ROOT="$RUNNER_TEMP/xrp-backfill"
           INVENTORY="$ROOT/artifact_inventory.json"
           mkdir -p "$ROOT"
-          printf '[]\n' > "$INVENTORY"
+          printf '{"artifacts":[]}\n' > "$INVENTORY"
           fetch_artifact() {
             local run_id="$1" artifact_name="$2" destination="$3" metadata row artifact_id expected_digest actual_digest zip_path
             metadata="$(curl -fsSL -H "Authorization: Bearer ${GH_TOKEN}" -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${run_id}/artifacts?per_page=100")"
@@ -259,7 +259,7 @@ jobs:
             fi
             mkdir -p "$destination"
             unzip -q "$zip_path" -d "$destination"
-            jq --arg run "$run_id" --arg name "$artifact_name" --arg id "$artifact_id" --arg expected "$expected_digest" --arg actual "$actual_digest" '. + [{run_id:$run,name:$name,artifact_id:($id|tonumber),github_digest:$expected,downloaded_zip_digest:$actual}]' "$INVENTORY" > "$INVENTORY.tmp"
+            jq --arg run "$run_id" --arg name "$artifact_name" --arg id "$artifact_id" --arg expected "$expected_digest" --arg actual "$actual_digest" '.artifacts += [{run_id:$run,name:$name,artifact_id:($id|tonumber),github_digest:$expected,downloaded_zip_digest:$actual}]' "$INVENTORY" > "$INVENTORY.tmp"
             mv "$INVENTORY.tmp" "$INVENTORY"
           }
           fetch_artifact 44844953105 xrp-public-raw-44844953105 "$ROOT/source-raw"
