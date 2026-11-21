@@ -10,7 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import shutil
+import sqlite3
 import sys
 import tempfile
 from datetime import datetime, timedelta, timezone
@@ -53,6 +53,36 @@ def _sha256_file(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+def _copy_sqlite_database(source_database: Path, destination_database: Path) -> None:
+    """Create a transactionally consistent copy, including committed WAL pages.
+
+    A byte-for-byte copy of only the main SQLite file can omit committed rows
+    still present in the source database's WAL. SQLite's backup API reads the
+    database through SQLite itself and produces a self-contained destination
+    without modifying the source artifact.
+    """
+    source_connection = None
+    destination_connection = None
+    try:
+        source_uri = f"{source_database.resolve().as_uri()}?mode=ro"
+        source_connection = sqlite3.connect(source_uri, uri=True, timeout=30)
+        destination_connection = sqlite3.connect(str(destination_database), timeout=30)
+        source_connection.backup(destination_connection)
+        integrity = destination_connection.execute("PRAGMA integrity_check").fetchone()
+        if integrity is None or integrity[0] != "ok":
+            raise XRPFeatureStoreBackfillError(
+                "SQLite backup of the source feature store failed its integrity check"
+            )
+    except sqlite3.Error as exc:
+        raise XRPFeatureStoreBackfillError(
+            "could not create a consistent SQLite backup of the source feature store"
+        ) from exc
+    finally:
+        if destination_connection is not None:
+            destination_connection.close()
+        if source_connection is not None:
+            source_connection.close()
 
 
 def _iso(value: datetime) -> str:
@@ -274,7 +304,7 @@ def _verified_source_snapshot(
         raise XRPFeatureStoreBackfillError("source feature-store database is missing or unsafe")
     with tempfile.TemporaryDirectory(prefix="xrp-backfill-source-") as temp:
         copy_path = Path(temp) / "source.sqlite3"
-        shutil.copy2(source_database, copy_path)
+        _copy_sqlite_database(source_database, copy_path)
         source_store = HistoricalFeatureStore(copy_path)
         verification = source_store.verify_all_snapshots()
         if verification.get("valid") is not True:
