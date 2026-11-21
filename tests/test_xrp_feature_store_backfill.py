@@ -288,9 +288,11 @@ def _build_case(tmp_path: Path, monkeypatch):
     }
 
 
-def test_historical_backfill_verifies_both_fork_heads_and_actual_receipt_time(tmp_path, monkeypatch):
+def test_historical_backfill_verifies_both_fork_heads_and_post_append_availability_bound(tmp_path, monkeypatch):
     case = _build_case(tmp_path, monkeypatch)
     recovery_time = datetime(2026, 11, 21, 1, 0, tzinfo=timezone.utc)
+    post_append_time = datetime(2026, 11, 21, 1, 0, 5, tzinfo=timezone.utc)
+    clock_values = iter([recovery_time, post_append_time])
     result = reconcile_historical_snapshot(
         target_database=case["target_db"],
         source_database=case["source_db"],
@@ -311,12 +313,12 @@ def test_historical_backfill_verifies_both_fork_heads_and_actual_receipt_time(tm
         backfill_manifest_sha256=case["source_manifest_sha"],
         expected_record_count=1,
         expected_source_count=1,
-        clock=lambda: recovery_time,
+        clock=lambda: next(clock_values),
         receipt_clock_source="test_injected_clock",
     )
 
     assert result["status"] == "RECONCILED"
-    assert result["backfill_snapshot"]["stored_at_utc"] == "2026-11-21T01:00:00.000000Z"
+    assert result["backfill_snapshot"]["stored_at_utc"] == "2026-11-21T01:00:06.000000Z"
     assert result["main_lineage_run_ids"] == [FORK_RUN, CHILD_RUN]
     assert result["point_in_time_visibility"]["visible_before_receipt"] is False
     assert result["point_in_time_visibility"]["visible_after_receipt"] is True
@@ -329,7 +331,13 @@ def test_historical_backfill_verifies_both_fork_heads_and_actual_receipt_time(tm
         FORK_RUN,
     ]
     assert receipt["backfill_snapshot"]["manifest_sha256"] == case["source_manifest_sha"]
+    assert receipt["backfill_snapshot"]["store_receipt_time_is_actual_recovery_time"] is False
+    assert receipt["backfill_snapshot"]["store_receipt_time_is_post_append_availability_bound"] is True
     assert receipt["store_receipt_clock_source"] == "test_injected_clock"
+    assert receipt["receipt_clock"]["sampled_before_append_at_utc"] == "2026-11-21T01:00:00.000000Z"
+    assert receipt["receipt_clock"]["sampled_after_append_at_utc"] == "2026-11-21T01:00:05.000000Z"
+    assert receipt["receipt_clock"]["availability_bound_utc"] == "2026-11-21T01:00:06.000000Z"
+    assert receipt["receipt_clock"]["safety_margin_seconds"] == 1
 
     verified = verify_existing_reconciliation(case["target_db"], case["output"])
     assert verified["status"] == "VERIFIED_EXISTING"
