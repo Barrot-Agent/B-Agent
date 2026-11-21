@@ -154,6 +154,12 @@ ENDPOINTS = (
 
 
 DIGEST_ONLY_RAW_SOURCE_REASONS = {
+    "xrp_etf_flows_aggregator": (
+        "Publisher terms permit use and citation with attribution but require written permission "
+        "for commercial redistribution; this JSON contains the same row-level dataset as the CSV, "
+        "so retain its SHA-256 receipt only in public artifacts. Its metadata remains available "
+        "in memory to validate the separately hash-only CSV."
+    ),
     "xrp_etf_flows_csv": (
         "Publisher terms allow use and citation with attribution but require written permission "
         "for commercial redistribution; full CSV bytes are not retained in public artifacts."
