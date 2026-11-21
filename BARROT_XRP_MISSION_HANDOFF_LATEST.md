@@ -4394,3 +4394,90 @@ These short-window bid-depth and taker-flow observations do not offset the 24-ho
 ### Next concrete action
 
 Use the existing #1684 workstream—not a new PR—to add a guarded artifact-backed one-time backfill for run 44844953105 and a multi-parent reconciliation receipt referencing both historical fork heads without rewriting prior receipts. The backfill must preserve the original manifest and record JSON, set the actual store-receipt time to the recovery time, and prove it cannot leak into earlier as-of queries. Then rerun the entire repository suite, dependency/security audits, money audit, conflict integrity and fail-closed gate on the exact new head. Keep #1684 draft until independent approval and effective branch-protection requirements are verified.
+
+
+---
+
+## Run259 — 2026-11-21 06:09 UTC
+
+### Repository and integration state
+
+- Current main remains `550a647ee7269a704d4600ff337b2145acc90473`; recursive tree has 3,115 entries and is not truncated.
+- Two open PRs remain. #1684 is the single XRP integration workstream; #1685 is the separate A2A credential-separation workstream. Their changed paths do not overlap.
+- #1684 is based directly on main, 43 commits ahead / 0 behind, 8 changed files, code head `bd4e197311f1c14a2f56868164adbd6fd327c27e`. It remains draft and has no independent approving review.
+- No new PR was created, no PR was closed, and main was not modified.
+
+### Code defect fixed on the existing #1684 branch
+
+The exact-head full suite exposed a SQLite WAL-copy defect in the historical feature-store backfill test. The code copied only the main SQLite file with `shutil.copy2`; committed rows still in the WAL were omitted, so the copied database could not find the source snapshot ID.
+
+The existing #1684 branch now uses SQLite's online backup API (`sqlite3.Connection.backup()`) from a read-only source connection and verifies the destination with `PRAGMA integrity_check`. The source artifact is not modified. This fixes the WAL-consistency defect; it does **not** yet repair the historical run25/run26 cross-run fork or commit the recovered 118-record snapshot to main.
+
+### Exact-head CI evidence on code head `bd4e197311f1c14a2f56868164adbd6fd327c27e`
+
+- PR CI [44873770480](https://github.com/Barrot-Agent/B-Agent/actions/runs/44873770480): passed; full repository suite **4,539 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests passed; coverage **73.20%**.
+- Push CI [44873765838](https://github.com/Barrot-Agent/B-Agent/actions/runs/44873765838): passed; same full-suite result.
+- Dependency audits: PR [44873770529](https://github.com/Barrot-Agent/B-Agent/actions/runs/44873770529) and push [44873765802](https://github.com/Barrot-Agent/B-Agent/actions/runs/44873765802) passed.
+- Money audit [44873770492](https://github.com/Barrot-Agent/B-Agent/actions/runs/44873770492) passed.
+- Conflict-integrity check [44873770508](https://github.com/Barrot-Agent/B-Agent/actions/runs/44873770508) passed.
+- GitHub Pages validation passed as part of CI.
+- Fail-closed gate [44873770505](https://github.com/Barrot-Agent/B-Agent/actions/runs/44873770505) and push gate [44873765796](https://github.com/Barrot-Agent/B-Agent/actions/runs/44873765796) correctly blocked merge: PR is draft, no independent approving review exists, and branch-protection details could not be verified (HTTP 403). Main branch metadata says `protected=true`; the visible fallback ruleset reports enforcement disabled. No bypass was attempted.
+- This Run259 handoff/map/test commit creates a new PR head. Its own exact-head CI must complete before any merge-readiness claim. The test results above are evidence for code head `bd4e197311f1c14a2f56868164adbd6fd327c27e`, not a substitute for checks on the documentation/test successor.
+
+### Main ingestion and prediction readiness
+
+- Latest observed scheduled main ingestion remains [44869770831](https://github.com/Barrot-Agent/B-Agent/actions/runs/44869770831), captured at 05:12:48 UTC. No newer scheduled ingestion run was visible by 06:09 UTC; treat this as an observation, not proof that the schedule failed.
+- Run31 retained 22 raw payloads and verified all 22 hashes; 12 receipts were digest-only. It recorded 2,446 feature-history rows, 6 snapshots and 70 source-lineage rows, with 18 source failures.
+- Historical continuity remains **FORKED**: run25 and run26 share predecessor 44844499889. The local 118-record recovery is not on main.
+- Event timeline: 150 events / 117 scenarios, but no complete raw receipts. Drift remains insufficient; walk-forward origins remain zero. **No directional XRP forecast was issued.**
+
+### New institutional and capital evidence
+
+**Evernorth actual cash receipts — SEC Form 10-Q filed November 13, 2026**
+
+- Between October 12 and November 9, holders exercised **3,073,366 warrants for cash** at an $11.50 exercise price. Evernorth issued the same number of shares and reported **$35.3 million gross cash proceeds**; **8,666,279 warrants remained**.
+- Separately, the October 13 convertible note generated **$29.0 million net cash** from $30.0 million principal after a $1.0 million advisor fee.
+- The Cantor ELOC permits up to 5,218,935 shares at 97% of applicable VWAP and is discretionary. The filing does not establish an actual ELOC drawdown.
+- Evernorth transferred 346,484,972 XRP to Pathfinder in the business combination. That is a transaction transfer, not evidence of a new market purchase. The filing does not establish that warrant or note proceeds were subsequently used to buy XRP.
+- SBI-affiliated investors' Class C share issuance and Ripple's Pathfinder units are equity/capital-structure facts, not direct XRP purchases. Preserve their separate denominators and ownership limits.
+- Primary filing: [Evernorth SEC 424B3 / attached 10-Q](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm).
+
+### Custody, stablecoin collateral and payment rails
+
+- **BNY / Ripple (October 27):** BNY announced live custody support for XRP and RLUSD on its Digital Asset Custody platform and is RLUSD's primary reserve custodian. Direct RLUSD mint/redeem through BNY and tokenized trade-finance use cases are future intentions subject to approvals/client requirements. This is custody/infrastructure evidence, not evidence of BNY XRP purchases. [Ripple primary announcement](https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/).
+- **Standard Chartered / Ripple / LMAX (October 12):** Standard Chartered's RLUSD custody on XRPL is live for eligible clients through its DIFC branch. RLUSD collateral mirroring for LMAX is planned and remains subject to documentation, testing, law, internal approvals and jurisdictional readiness. The announcement does not establish XRP collateral. [Standard Chartered primary announcement](https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/).
+- **Ripple / LMAX (January 15):** LMAX announced RLUSD as a core collateral and settlement asset across its institutional marketplace; Ripple announced $150 million in financing for LMAX. The announcement does not establish full drawdown or an XRP-directed capital flow. [LMAX primary announcement](https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility/).
+- **Ripple / Coinbase (October 28):** RLUSD launched on Coinbase Prime, Coinbase Exchange and retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral support was announced as a future step, not verified live. [Ripple primary announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+
+These developments increase RLUSD distribution, custody and collateral optionality. They must not be counted as XRP collateral demand or XRP spot purchases without evidence of an XRP leg.
+
+### Market-data disagreements and source controls
+
+- XRP Insights showed approximately $0.87 and −3.95% over 24 hours near this run's retrieval, with about 1.17878B XRP in ETF-related holdings and a week-47 holdings-delta estimate of −4.74M XRP.
+- CryptoKeyhole's November 20 observation was partial (2 of 3 funds; Franklin pending): approximately −2.659M XRP / −$2.4M. Alpha Finance reported approximately −$5M for November 20. The coverage, unit, fund universe and calculation windows are not reconciled.
+- Main ingestion run31's Bitstamp 24-hour change was −8.98% at 05:12 UTC, unlike XRP Insights' −3.95% near 06:09 UTC. These are distinct publisher/window observations; do not average them.
+- ETF trackers largely derive from overlapping issuer holdings disclosures, so multiple dashboards are not independent confirmations. Retain source family and methodology, and do not treat holdings deltas as issuer/AP cash settlement.
+
+### Exact-phrase and identity research
+
+- **ASK Coin:** Permission Coin (ASK) is the strongest exact-name candidate. Permission's own documentation lists LayerZero OFT-20 contracts on Base and Polygon. No XRP/XRPL relationship or match to the user's intended ASK Coin has been established. [Official contract documentation](https://docs.permission.ai/ask-token/contract-addresses).
+- **“actual capital”:** now disambiguated for Evernorth by the SEC filing above. Distinguish cash actually received from optional financing capacity, in-kind XRP, equity issuance and subsequent XRP purchases.
+- **“SBIC, ChatGPT SBIC”:** no relevant exact-phrase primary-source partnership record was found. SBIC's published ChatGPT training for investee companies is not evidence of an OpenAI partnership or XRP relationship. SBIC East/Central/West remain distinct from SBI Holdings.
+- **Camilla/Kamilah Stevenson:** Dr. Kamilah Stevenson is verified as a guest on the June 11, 2026 Paul Barron / XRPTracer podcast. The auto-generated transcript uses Camila/Camilla variants and the guest warns that fake pages exist. Candidate YouTube channel `@drkamilahstevenson` surfaced, but no first-party cross-link to its exact channel ID was verified. Therefore no channel-wide YouTube inventory is attributed. [iHeart episode and transcript](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/).
+
+### Nine-platform permissions and least privilege
+
+- Verified data path remains ChatGPT session → GitHub connector → Barrot-Agent/B-Agent. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified; no external dispatch or cross-platform data transfer occurred.
+- Authenticated GitHub repository metadata reports connector permissions `admin`, `maintain`, `push`, `pull` and `triage`. This is broader than least privilege. No permission change was attempted because that would alter authorization and could break the active integration path.
+- CODEOWNERS assigns `* @Barrot-Agent`; no independent approval exists. The red-team quorum remains absent.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** SQLite online backup is the correct transactionally consistent copy mechanism for WAL-backed source databases; the next artifact-backed reconciliation must preserve original capture/cutoff and record a new actual store-receipt time.
+- **EXECUTED:** fixed the SQLite WAL copy defect on existing #1684; fetched current main/tree/open PR inventory; compared both open PRs; inspected workflow, dependencies, security metadata and exact-head gate logs; reviewed current SEC and institutional primary sources; updated this handoff and the nine-platform/research map.
+- **VERIFIED:** code head `bd4e197311f1c14a2f56868164adbd6fd327c27e` passed exact-head PR and push full suites (4,539 passed, 1 skipped, 0 failed, 73.20% coverage); dependency audits, money audit and conflict integrity passed; fail-closed gate blocked merge for the stated reasons.
+- **NOT VERIFIED:** exact-head CI for the documentation/test successor until its workflows finish; effective branch-protection rules; independent review; mainline historical backfill; multi-parent receipt-chain reconciliation; immutable external/WORM anchor; complete event receipts; SEC EDGAR source capture; model-eligible drift; nonzero walk-forward origins; calibrated candidate superiority; shadow evaluation; external platform authentication.
+
+### Next concrete action
+
+Continue in the existing #1684 branch. Implement a guarded artifact-backed one-time backfill of the preserved run25 118-record snapshot into the run31 checkpoint, then emit a multi-parent reconciliation receipt that references both historical fork heads without rewriting prior receipts. Preserve the actual recovery store-receipt time and prove that as-of queries before it exclude the backfill. Run the entire repository suite and all audits on the exact new head. Keep #1684 draft and do not merge until an independent approval and effective branch-protection requirements are verified.

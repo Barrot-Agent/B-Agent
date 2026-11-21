@@ -508,7 +508,7 @@ def test_run230_circle_coinbase_distribution_economics_keep_accounting_boundarie
     assert evidence["interpretation"]["xrp_as_required_bridge_evidenced"] is False
 
 
-def test_run258_records_current_ingestion_and_local_only_feature_store_recovery():
+def test_run258_records_ingestion_recovery_and_run259_exact_head_state():
     data = load_map()
     run = data["latest_run_258"]
     assert run["main_sha"] == data["repository_state"]["main_sha"]
@@ -561,7 +561,12 @@ def test_run258_records_current_ingestion_and_local_only_feature_store_recovery(
 
     pr = next(item for item in data["open_pr_backlog"] if item["number"] == 1684)
     assert pr["head_sha"] == data["current_pr_head_sha"]
-    assert pr["full_suite"]["passed"] == 4536
+    assert pr["full_suite"]["passed"] == 4539
     assert pr["full_suite"]["failed"] == 0
     assert pr["fail_closed"]["conclusion"] == "failure"
     assert data["run258_merge_decision"] == "NO_MERGE"
+    assert data["run259_evidence_record"]["full_suite_passed"] == 4539
+    assert data["run259_evidence_record"]["full_suite_failed"] == 0
+    assert data["run259_evidence_record"]["full_suite_skipped"] == 1
+    assert data["run259_merge_decision"] == "NO_MERGE"
+    assert data["run259_no_external_actions"] is True

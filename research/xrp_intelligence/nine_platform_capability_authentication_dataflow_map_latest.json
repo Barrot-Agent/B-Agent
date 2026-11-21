@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-21T05:19:09.463411Z",
+  "captured_at_utc": "2026-11-21T06:09:27Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -286,8 +286,8 @@
       "data_flow": {
         "status": "verified",
         "path": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
-        "last_verified_at_utc": "2026-11-21T05:19:09.463411Z",
-        "observed_flow": "Run250: read current main tree, open PR inventory, exact-head CI, security settings and dependency manifests; downloaded and verified run-25/run-26 XRP raw artifacts and feature-store checkpoints; updated the existing #1684 branch with the workflow predecessor-selection fix, regression test and durable handoff. No main write or external model dispatch."
+        "last_verified_at_utc": "2026-11-21T06:09:27Z",
+        "observed_flow": "Run259: audited main/tree/open PRs/branch ancestry/CI/dependencies/security; fixed SQLite WAL-safe source snapshot copy on existing #1684; verified exact-head full suite and audits; researched primary institutional and market evidence. No main write or external model dispatch."
       },
       "permissions": [
         "admin",
@@ -435,7 +435,7 @@
     "external_dispatch_performed": false,
     "external_data_transfer_performed": false,
     "task_assignments_status": "PROPOSED_NOT_DISPATCHED_FOR_EIGHT_EXTERNAL_PLATFORMS",
-    "chatgpt_task_status": "EXECUTED in Run250: post-merge repository/tree/PR/CI/security/dependency audit; run-26 artifact hash and feature-store verification; receipt-chain fork diagnosis; existing PR #1684 workflow fix and regression test. No external platform dispatch.",
+    "chatgpt_task_status": "EXECUTED in Run259: integration-first repository audit; SQLite WAL-copy correction on #1684; exact-head full suite and audits; updated durable research handoff. No external dispatch or data transfer.",
     "evidence_packet_schema": [
       "claim_id",
       "claim",
@@ -465,7 +465,7 @@
       "branch protection and approval enforcement",
       "forecast admission and calibration"
     ],
-    "red_team_status": "NOT_EXECUTED — no independent external red-team review or authenticated external platform dispatch.",
+    "red_team_status": "NOT_EXECUTED — no independent external red-team reviewer or authenticated external platform dispatch.",
     "provider_failover_review": {
       "pr_number": 1668,
       "status": "BLOCKED_NOT_MERGED",
@@ -492,7 +492,7 @@
       "disposition": "Do not merge independently. Current integration branch quarantines this worker and has newer token-budget, local-provider and TPM-specific controls in scripts/barrot_agent.py. Reconcile only after security review and data-egress authorization."
     },
     "sbi_claude_context": "SBI's public November 2026 presentation reports Claude Mythos/Claude Security use within SBI Group. This is corporate adoption evidence only; it does not verify a Barrot connection or authorize external dispatch.",
-    "last_verified_at_utc": "2026-11-21T05:19:09.463411Z",
+    "last_verified_at_utc": "2026-11-21T06:09:27Z",
     "run245_status": "ChatGPT/GitHub connector verified; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified.",
     "run246_status": "ChatGPT/GitHub connector verified; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified."
   },
@@ -2445,6 +2445,43 @@
       "merge_decision": "NO_MERGE",
       "no_external_actions": true,
       "next_action": "Use the existing #1684 workstream to add an artifact-backed one-time feature-store backfill for run44844953105 and a multi-parent reconciliation receipt that references both historical fork heads without rewriting prior receipts. Preserve the recovery store receipt time to prevent look-ahead; add tests, then rerun the full suite and fail-closed gate on the exact new head."
+    },
+    "latest_run_259": {
+      "captured_at_utc": "2026-11-21T06:09:27Z",
+      "latest_main_ingestion_run_id": 44869770831,
+      "newer_scheduled_run_observed": false,
+      "walk_forward_origins": 0,
+      "forecast_issuance": "NOT_ISSUED",
+      "drift_status": "INSUFFICIENT_DATA",
+      "external_market_crosscheck": {
+        "publisher": "XRP Insights",
+        "spot_usd_approx": 0.87,
+        "reported_24h_change_percent": -3.95,
+        "total_etf_holdings_xrp": 1178780000,
+        "week47_net_holdings_delta_xrp": -4740000,
+        "model_eligible": false
+      },
+      "etf_flow_disagreement": [
+        {
+          "publisher": "CryptoKeyhole",
+          "date": "2026-11-20",
+          "coverage": "2/3 funds; Franklin pending",
+          "net_flow_xrp": -2659361,
+          "net_flow_usd_approx": -2400000
+        },
+        {
+          "publisher": "Alpha Finance",
+          "date": "2026-11-20",
+          "reported_net_flow_usd": -5000000,
+          "methodology_not_reconciled": true
+        },
+        {
+          "publisher": "XRP Insights",
+          "period": "week 47 through 2026-11-19",
+          "net_holdings_delta_xrp": -4740000
+        }
+      ],
+      "spot_change_disagreement": "Main run31 Bitstamp -8.98% at 05:12 UTC vs XRP Insights -3.95% near 06:09 UTC; do not average."
     }
   },
   "ci_evidence": {
@@ -2509,15 +2546,15 @@
     },
     "current_head_dependency_audits": [
       {
-        "run_id": 44810934918,
-        "head_sha": "3d61669f7440e1a537fe42919a61748b8862aec4",
+        "run_id": 44873765802,
+        "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
         "event": "push",
         "conclusion": "success",
         "manifests": 6
       },
       {
-        "run_id": 44810946006,
-        "head_sha": "3d61669f7440e1a537fe42919a61748b8862aec4",
+        "run_id": 44873770529,
+        "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
         "event": "pull_request",
         "conclusion": "success",
         "manifests": 6
@@ -2525,46 +2562,44 @@
     ],
     "current_head_fail_closed_runs": [
       {
-        "run_id": 44810934947,
-        "head_sha": "3d61669f7440e1a537fe42919a61748b8862aec4",
+        "run_id": 44873765796,
+        "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
         "event": "push",
         "conclusion": "failure",
         "blockers": [
-          "PR was draft",
-          "gate captured base SHA c599419 before the base metadata refresh",
-          "branch protection HTTP 403"
+          "draft PR",
+          "zero independent approvals",
+          "branch-protection HTTP 403"
         ]
       },
       {
-        "run_id": 44810946240,
-        "head_sha": "3d61669f7440e1a537fe42919a61748b8862aec4",
+        "run_id": 44873770505,
+        "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
         "event": "pull_request",
         "conclusion": "failure",
         "blockers": [
-          "PR was draft",
-          "gate captured base SHA c599419 before the base metadata refresh",
-          "branch protection HTTP 403"
+          "draft PR",
+          "zero independent approvals",
+          "branch-protection HTTP 403"
         ]
       }
     ],
     "current_head_money_audit": {
-      "run_id": 44810946677,
-      "head_sha": "3d61669f7440e1a537fe42919a61748b8862aec4",
+      "run_id": 44873770492,
+      "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
       "event": "pull_request",
       "conclusion": "success"
     },
     "current_head_pages_validation": {
       "push": {
-        "run_id": 44810934927,
-        "job_id": 136546981237,
-        "head_sha": "3d61669f7440e1a537fe42919a61748b8862aec4",
+        "run_id": 44873765838,
+        "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
         "conclusion": "success",
         "validation_only": true
       },
       "pull_request": {
-        "run_id": 44810946092,
-        "job_id": 136547016568,
-        "head_sha": "3d61669f7440e1a537fe42919a61748b8862aec4",
+        "run_id": 44873770480,
+        "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
         "conclusion": "success",
         "validation_only": true
       }
@@ -2582,20 +2617,20 @@
       "last_code_ci_result": "success"
     },
     "current_head_full_suite": {
-      "head_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "run_id": 44839159044,
+      "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
+      "run_id": 44873765838,
+      "pr_run_id": 44873770480,
       "status": "completed",
       "conclusion": "success",
-      "passed": 4534,
-      "tests_passed": 4534,
+      "passed": 4539,
+      "tests_passed": 4539,
       "failed": 0,
       "tests_failed": 0,
       "skipped": 1,
       "tests_skipped": 1,
       "warnings": 11,
       "subtests": 32,
-      "inclusive_coverage_percent": 73.22,
-      "duration_seconds": 202.35
+      "inclusive_coverage_percent": 73.2
     },
     "previous_verified_full_suite": {
       "run_id": 44322684443,
@@ -2719,28 +2754,28 @@
       "note": "The exact-head push full suite remains the controlling test evidence; no merge until it and all required checks finish."
     },
     "current_pr_head_ci": {
-      "head_sha": "b49c10f1869f41dca3e749842ec346a207c0a020",
-      "push_ci_run_id": 44864220940,
+      "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
+      "push_ci_run_id": 44873765838,
       "push_ci_conclusion": "success",
-      "pr_event_run_id": 44864226487,
+      "pr_event_run_id": 44873770480,
       "pr_event_conclusion": "success",
       "pr_event_full_suite_status": "success",
-      "dependency_audit_run_id": 44864226542,
+      "dependency_audit_run_id": 44873770529,
       "dependency_audit_conclusion": "success",
-      "push_dependency_audit_run_id": 44864220914,
+      "push_dependency_audit_run_id": 44873765802,
       "push_dependency_audit_conclusion": "success",
-      "money_audit_run_id": 44864226510,
+      "money_audit_run_id": 44873770492,
       "money_audit_conclusion": "success",
-      "conflict_integrity_run_id": 44864226455,
+      "conflict_integrity_run_id": 44873770508,
       "conflict_integrity_conclusion": "success",
-      "fail_closed_run_id": 44864226586,
+      "fail_closed_run_id": 44873770505,
       "fail_closed_conclusion": "failure",
       "full_suite": {
-        "run_id": 44864226487,
-        "passed": 4536,
+        "run_id": 44873770480,
+        "passed": 4539,
         "failed": 0,
         "skipped": 1,
-        "coverage_percent": 73.22,
+        "coverage_percent": 73.2,
         "status": "success"
       }
     },
@@ -2761,7 +2796,7 @@
       "legacy_core_coverage_percent": 81,
       "result": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%."
     },
-    "latest_full_suite_tested_head_sha": "3d61669f7440e1a537fe42919a61748b8862aec4",
+    "latest_full_suite_tested_head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
     "remediation_commit_test": "80507968e59d9a2e3f99801734d258e8f2dc1819",
     "current_branch_head_ci_pending": null,
     "cache_warning": "GitHub Actions cache reservation failed; configured cache is read-only. The workflow used per-run feature-store artifact fallback.",
@@ -2795,11 +2830,11 @@
     "post_sync_exact_head_full_suite": "FAIL on bd0f564: 4,282 passed, 4 failed, 1 skipped. All four failures are stale/mismatched Run32 evidence/test assertions; exact-head correction and full-suite rerun required.",
     "latest_exact_head_ci_run": 44851621193,
     "latest_exact_head_ci_conclusion": "success",
-    "latest_exact_head_full_suite_passed": 4457,
+    "latest_exact_head_full_suite_passed": 4539,
     "latest_exact_head_full_suite_failed": 0,
     "latest_exact_head_full_suite_skipped": 1,
     "latest_exact_head_subtests": 32,
-    "latest_exact_head_full_suite_coverage_percent": 73.22,
+    "latest_exact_head_full_suite_coverage_percent": 73.2,
     "latest_exact_head_full_suite_duration_seconds": 199.46,
     "last_fully_passing_full_suite_head": "3d61669f7440e1a537fe42919a61748b8862aec4",
     "last_fully_passing_full_suite_run_id": 44810934927,
@@ -2826,15 +2861,15 @@
       "reason": "Cloudflare authentication error 10000/9109; secret-upload step skipped; no successful deployment verified."
     },
     "next_documentation_commit_exact_head_ci": "PENDING; map/handoff documentation-only commit must be tested on its own exact head.",
-    "latest_exact_head_push_ci_run": 44851615169,
-    "latest_exact_head_pr_ci_run": 44851621193,
+    "latest_exact_head_push_ci_run": 44873765838,
+    "latest_exact_head_pr_ci_run": 44873770480,
     "latest_exact_head_full_suite_run": 44851621193,
     "latest_exact_head_full_suite_result": "PENDING",
     "latest_exact_head_full_suite": "IN_PROGRESS on exact head 65b42e65ad3bf5a469cfe3d8cf8a5d5d538d2103; no prior-head result transferred.",
-    "latest_exact_head_dependency_audit_run": 44851621152,
-    "latest_exact_head_pr_dependency_audit_run": 44810946006,
+    "latest_exact_head_dependency_audit_run": 44873765802,
+    "latest_exact_head_pr_dependency_audit_run": 44873770529,
     "latest_exact_head_pr_money_audit_run": 44810946677,
-    "latest_exact_head_fail_closed_run": 44851633228,
+    "latest_exact_head_fail_closed_run": 44873770505,
     "latest_exact_head_a2a_worker_tests_run": 44810946216,
     "current_head_a2a_worker_tests": {
       "run_id": 44810946216,
@@ -2871,16 +2906,16 @@
       }
     },
     "latest_attempt": {
-      "head_sha": "a96dbcd07c290e63f4f5ebbbc5351094cae0ee50",
-      "push_ci_run": 44668095924,
-      "pr_ci_run": 44668101674,
+      "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
+      "push_ci_run": 44873765838,
+      "pr_ci_run": 44873770480,
       "full_suite": "PASS",
-      "dependency_push_run": 44668096070,
-      "dependency_pr_run": 44668101701,
-      "money_audit_run": 44668101743,
-      "a2a_worker_tests_run": 44668101689,
-      "fail_closed_push_run": 44668095922,
-      "fail_closed_pr_run": 44668101736
+      "dependency_push_run": 44873765802,
+      "dependency_pr_run": 44873770529,
+      "money_audit_run": 44873770492,
+      "conflict_integrity_run": 44873770508,
+      "fail_closed_pr_run": 44873770505,
+      "fail_closed_push_run": 44873765796
     },
     "last_completed_head_5199": {
       "head_sha": "5199cf68f2603f68158702cf3828b43c729c9e2b",
@@ -2915,10 +2950,10 @@
       "failure": "test_run230_franklin_xrp_etf_cash_and_in_kind_flows_reconcile: test used xrp_sold_for_expenses; canonical artifact field is xrp_sold_for_fund_expenses. Assertion corrected in this update."
     },
     "latest_exact_head_pr_fail_closed_run": 44810946240,
-    "latest_exact_head_conflict_integrity_run": 44851633220,
+    "latest_exact_head_conflict_integrity_run": 44873770508,
     "current_head_conflict_integrity": {
-      "run_id": 44810945859,
-      "head_sha": "3d61669f7440e1a537fe42919a61748b8862aec4",
+      "run_id": 44873770508,
+      "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
       "conclusion": "success"
     },
     "post_merge_main": {
@@ -3001,7 +3036,7 @@
     "latest_exact_head_dependency_audit_push_run": 44851615311,
     "latest_exact_head_money_audit_run": 44851621139,
     "latest_exact_head_fail_closed_result": "IN_PROGRESS",
-    "current_head_full_suite_status": "IN_PROGRESS",
+    "current_head_full_suite_status": "PASS on exact code head bd4e197: 4,539 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests; 73.20% coverage.",
     "post_run258_handoff_head": {
       "parent_head_sha": "b49c10f1869f41dca3e749842ec346a207c0a020",
       "status": "pending_exact_head_CI_after_Run258_map_test_handoff_commit"
@@ -3019,8 +3054,8 @@
     "connector_permissions": [
       "admin",
       "maintain",
-      "push",
       "pull",
+      "push",
       "triage"
     ],
     "pr_1663": {
@@ -3208,7 +3243,7 @@
     "transitive_script_review_detail": "Reviewed all 69 changed workflow definitions for triggers, permissions, secrets, action refs and side-effect paths. Semantically reviewed barrot_agent.py, barrot_mcp_server.py, barrot_a2a_runner.py, a2a_server.py, deploy_databricks.py, paid_issue_hunter.py, pillars_check.py and push_with_token.sh. A2A runner remains quarantined: opt-in required, but subprocess inherits host environment and no OS sandbox, egress restriction or task-level authorization is verified. push_with_token.sh defaults BRANCH=main and needs a direct-main guard. Full transitive script/action review remains incomplete.",
     "required_status_check_contexts_status": "UNVERIFIED_HTTP_403",
     "integration_branch_protected": false,
-    "least_privilege_status": "NOT_VERIFIED — token scopes were not introspected; repository permission includes admin/maintain/push/pull/triage, broader than read-only research.",
+    "least_privilege_status": "GAP — authenticated repository metadata reports broad admin/maintain/push permissions; no permission change was made.",
     "open_pr_backlog_count": 2,
     "provider_failover_pr_1668": {
       "state": "open",
@@ -3334,7 +3369,7 @@
     "pages_deployment_authorized": false,
     "workflow_definition_scan_count": 69,
     "no_external_actions_performed": true,
-    "main_current_sha": "b87582fef2229f4fb00418251119815c93fc235c",
+    "main_current_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "current_main_workflow_writer": "Paid issue publisher remains active on main with contents:write and direct push; integration successor disables it.",
     "pr_1673": {
       "draft": false,
@@ -3740,21 +3775,38 @@
     "pr_1684": {
       "state": "open",
       "draft": true,
-      "head_sha": "65b42e65ad3bf5a469cfe3d8cf8a5d5d538d2103",
+      "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "changed_files": 5,
-      "commits": 21,
+      "changed_files": 8,
+      "commits": 43,
       "formal_reviews": 0,
-      "full_suite_run_id": 44851621193,
-      "full_suite_conclusion": "in_progress",
-      "dependency_audit_run_id": 44851621152,
-      "dependency_audit_conclusion": "success",
-      "money_audit_run_id": 44851621139,
+      "full_suite_run_id": 44873770480,
+      "full_suite_conclusion": "success",
+      "full_suite": {
+        "passed": 4539,
+        "failed": 0,
+        "skipped": 1,
+        "coverage_percent": 73.2
+      },
+      "push_ci_run_id": 44873765838,
+      "push_ci_conclusion": "success",
+      "dependency_audit_pr_run_id": 44873770529,
+      "dependency_audit_pr_conclusion": "success",
+      "dependency_audit_push_run_id": 44873765802,
+      "dependency_audit_push_conclusion": "success",
+      "money_audit_run_id": 44873770492,
       "money_audit_conclusion": "success",
-      "conflict_integrity_run_id": 44851633220,
+      "conflict_integrity_run_id": 44873770508,
       "conflict_integrity_conclusion": "success",
-      "fail_closed_run_id": 44851633228,
-      "fail_closed_conclusion": "in_progress",
+      "fail_closed_pr_run_id": 44873770505,
+      "fail_closed_pr_conclusion": "failure",
+      "fail_closed_push_run_id": 44873765796,
+      "fail_closed_push_conclusion": "failure",
+      "gate_blockers": [
+        "draft PR",
+        "zero independent approvals",
+        "branch-protection details unavailable (HTTP 403)"
+      ],
       "classification": "blocked"
     },
     "pr_1685": {
@@ -3813,60 +3865,62 @@
       "full_suite_conclusion": "success",
       "fail_closed_run_id": 44848528093,
       "fail_closed_conclusion": "failure"
-    }
+    },
+    "run259_no_external_actions": true,
+    "run259_merge_decision": "NO_MERGE"
   },
   "open_pr_backlog": [
     {
       "number": 1684,
       "classification": "blocked",
       "workstream": "XRP ingestion continuity / durable handoff / nine-platform map",
-      "changed_files": 6,
-      "commits": 35,
-      "head_sha": "b49c10f1869f41dca3e749842ec346a207c0a020",
+      "changed_files": 8,
+      "commits": 43,
+      "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "ahead_by": 35,
+      "ahead_by": 43,
       "behind_by": 0,
       "draft": true,
       "formal_reviews": 0,
       "mergeable": true,
       "mergeable_state": "unstable",
       "exact_head_ci_status": "success",
-      "full_suite_run_id": 44864226487,
+      "full_suite_run_id": 44873770480,
       "full_suite": {
-        "passed": 4536,
+        "passed": 4539,
         "failed": 0,
         "skipped": 1,
-        "coverage_percent": 73.22,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.2,
         "conclusion": "success"
       },
-      "push_ci_run_id": 44864220940,
+      "push_ci_run_id": 44873765838,
       "push_ci_conclusion": "success",
       "dependency_audit": {
-        "run_id": 44864226542,
-        "conclusion": "success"
-      },
-      "push_dependency_audit": {
-        "run_id": 44864220914,
+        "pr_run_id": 44873770529,
+        "push_run_id": 44873765802,
         "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 44864226510,
+        "run_id": 44873770492,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 44864226455,
+        "run_id": 44873770508,
         "conclusion": "success"
       },
       "fail_closed": {
-        "run_id": 44864226586,
+        "pr_run_id": 44873770505,
+        "push_run_id": 44873765796,
         "conclusion": "failure"
       },
       "gate_blockers": [
         "PR remains draft",
         "no independent approving review",
-        "branch-protection details unavailable (HTTP 403)"
+        "branch-protection details unavailable (HTTP 403); main branch metadata reports protected=true"
       ],
-      "note": "One active XRP integration PR; exact-head full suite, dependency audit, money audit, conflict integrity and Pages validation passed on b49c10f. Fail-closed gate correctly blocks merge. The Run258 map/test/handoff append will create a new head; all checks must rerun on that new exact head."
+      "note": "SQLite WAL-copy defect fixed with sqlite3.Connection.backup() and PRAGMA integrity_check; full suite passes on code head. Fail-closed gate correctly blocks merge."
     },
     {
       "number": 1685,
@@ -3922,7 +3976,7 @@
         "egress restrictions",
         "task-level authorization"
       ],
-      "note": "Unique security workstream; keep runner quarantined. No Worker deployment, secret upload/rotation or runner activation."
+      "note": "Unique security workstream; no worker deployment, secret upload/rotation or runner activation."
     }
   ],
   "merge_decision": "POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION",
@@ -3937,7 +3991,8 @@
     "external_data_transfer": false,
     "paper_trade": false,
     "funds_transfer": false,
-    "real_money": false
+    "real_money": false,
+    "run259": false
   },
   "institutional_capital_reconciliation": {
     "entity": "Evernorth Holdings Inc. / Pathfinder Digital Assets LLC",
@@ -4032,6 +4087,32 @@
       "coinbase_9m_2025_stablecoin_revenue_usd": 907485000,
       "model_eligible": false,
       "caveat": "Circle distribution costs and Coinbase stablecoin revenue are separate accounting measures, not directly reconcilable. No XRP bridge requirement is established."
+    },
+    "warrant_exercise_detail": {
+      "filing_date": "2026-11-13",
+      "period": "2026-10-12 through 2026-11-09",
+      "warrants_assumed": 11739645,
+      "warrants_exercised_for_cash": 3073366,
+      "gross_cash_proceeds_usd": 35300000,
+      "exercise_price_usd": 11.5,
+      "warrants_remaining": 8666279,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+      "interpretation": "Actual gross cash proceeds to Evernorth; not proof of XRP purchases with proceeds."
+    },
+    "convertible_note_post_close": {
+      "issue_date": "2026-10-13",
+      "gross_principal_usd": 30000000,
+      "net_cash_proceeds_usd": 29000000,
+      "advisor_fee_usd": 1000000,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+      "interpretation": "Actual net cash proceeds from note issuance; not proof of XRP purchases with proceeds."
+    },
+    "equity_line_status": {
+      "maximum_shares": 5218935,
+      "price_formula": "97% of applicable VWAP",
+      "registration_effective_date": "2026-10-30",
+      "drawdown_disclosed": false,
+      "interpretation": "Optional capacity; not cash received."
     }
   },
   "institutional_relationship_graph": {
@@ -4442,24 +4523,10 @@
     }
   },
   "research_phrase_status": {
-    "ASK Coin": "UNRESOLVED — no new attributable primary-source exact-phrase match surfaced in Run243.",
-    "actual capital": "UNRESOLVED — no new attributable primary-source exact-phrase match surfaced in Run243; retain the separate Evernorth capital reconciliation.",
-    "SBIC, ChatGPT SBIC": "UNRESOLVED as a partnership claim — official SBIC page documents a 2025 ChatGPT training course for investee companies, but no OpenAI partnership or XRP relationship.",
-    "Camilla/Kamilah Stevenson": "CHANNEL OWNERSHIP UNVERIFIED — two public YouTube channel candidates use similar wealth-education descriptions; no first-party cross-link or video-level identity match was found, so no video inventory is attributed.",
-    "run32": {
-      "sbic": "SBIC East, Central and West remain distinct Japanese regional small-business investment/consultation companies; not SBI Holdings. No new primary evidence of an XRP/Ripple relationship.",
-      "ask_coin": "Permission Coin (ASK) is the strongest exact-name match; no Ripple/XRPL relationship established.",
-      "actual_capital": "A secondary AI-generated AInvest article uses the phrase in RLUSD commentary; no primary capital-flow evidence established.",
-      "kamilah_camilla_stevenson": {
-        "verified_video": "https://www.youtube.com/watch?v=Sulo54IlQ60",
-        "title": "Crypto Panics! W/ @drkamilahstevenson",
-        "publisher": "Paul Barron Podcast",
-        "publication_date": "2026-06-11",
-        "cross_check": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
-        "channel_wide_inventory": "INCOMPLETE; no first-party ownership cross-link; do not attribute similarly named channels."
-      }
-    },
-    "MAS BLOOM / XRP": "Ripple, Circle and Coinbase are listed as BLOOM industry members; the MAS page has no XRP/XRPL mention. No XRP settlement role inferred."
+    "ASK Coin": "UNRESOLVED as to the user's intended asset. Permission Coin (ASK) is the strongest exact-name candidate with official Base and Polygon LayerZero OFT-20 contracts; no XRP/XRPL relationship established.",
+    "actual capital": "PARTIALLY DISAMBIGUATED — Evernorth SEC filing documents $35.3M gross cash from warrant exercises and $29.0M net note proceeds. The broader phrase remains unresolved as an attribution; neither receipt proves the funds bought XRP.",
+    "SBIC, ChatGPT SBIC": "UNRESOLVED as a partnership claim — official SBIC material references a ChatGPT training course for investee companies, but no OpenAI partnership or XRP relationship is established.",
+    "Camilla/Kamilah Stevenson": "GUEST IDENTITY VERIFIED; CHANNEL OWNERSHIP UNVERIFIED — Dr. Kamilah Stevenson appears as a guest in a June 11, 2026 Paul Barron episode; transcript spelling varies. She warns of fake pages. No channel-wide video inventory is attributed."
   },
   "open_pr_backlog_summary": {
     "total_open": 2,
@@ -4688,7 +4755,61 @@
           "issuer/counterparty filings"
         ]
       }
-    ]
+    ],
+    "run33": {
+      "captured_at_utc": "2026-11-21T06:09:27Z",
+      "evernorth_actual_capital": {
+        "source": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+        "filing_date": "2026-11-13",
+        "warrants_assumed": 11739645,
+        "warrants_exercised_for_cash": 3073366,
+        "gross_cash_proceeds_usd": 35300000,
+        "warrants_remaining": 8666279,
+        "exercise_price_usd": 11.5,
+        "convertible_note_net_cash_usd": 29000000,
+        "convertible_note_gross_principal_usd": 30000000,
+        "fee_usd": 1000000,
+        "eloc_max_shares": 5218935,
+        "eloc_price": "97% VWAP",
+        "eloc_actual_drawdown": "not disclosed",
+        "xrp_transfer_to_pathfinder": 346484972,
+        "transfer_interpretation": "business-combination transfer, not a new market purchase",
+        "proceeds_deployment_to_xrp": "not evidenced"
+      },
+      "institutional_custody_and_collateral": {
+        "bny": {
+          "date": "2026-10-27",
+          "live": "XRP and RLUSD custody support",
+          "planned": "RLUSD mint/redeem and tokenized trade finance subject to approvals",
+          "source": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+        },
+        "standard_chartered": {
+          "date": "2026-10-12",
+          "live": "RLUSD custody on XRPL for eligible clients via DIFC branch",
+          "planned": "RLUSD collateral mirroring with LMAX; not verified live",
+          "source": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/"
+        },
+        "lmax": {
+          "date": "2026-01-15",
+          "rlusd": "announced core collateral/settlement currency",
+          "ripple_financing_usd": 150000000,
+          "financing_drawdown": "not established",
+          "source": "https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility/"
+        },
+        "coinbase": {
+          "date": "2026-10-28",
+          "rlusd": "live on Prime, Exchange and retail",
+          "global_exchange_collateral": "announced to follow; not live-verified",
+          "source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+        }
+      },
+      "exact_phrase_and_identity": {
+        "ask_coin": "Permission Coin (ASK) is a candidate match; no XRP link established.",
+        "actual_capital": "Evernorth gross warrant cash and net convertible-note cash documented; no evidence of deployment to XRP.",
+        "sbic_chatgpt": "No partnership evidence; SBIC training mention only.",
+        "kamilah": "Verified podcast guest; candidate YouTube channel owner unverified; no channel-wide inventory."
+      }
+    }
   },
   "run27_evidence_record": "research/xrp_intelligence/20261118T220754Z-run27-market-institutional-reconciliation.json",
   "run27_handoff_addendum": "Run 27 addendum appended; repository snapshot head e100ae1; remediation commit is the latest child of that head.",
@@ -6285,9 +6406,9 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-21T05:19:09.463411Z",
-  "latest_run_id": 44848909814,
-  "latest_run_captured_at_utc": "2026-11-21T01:14:19.819701Z",
+  "last_verified_at_utc": "2026-11-21T06:09:27Z",
+  "latest_run_id": 259,
+  "latest_run_captured_at_utc": "2026-11-21T06:09:27Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
   "current_successor_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
   "observed_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -6675,9 +6796,9 @@
   "no_merge_performed": true,
   "no_source_pr_closures": true,
   "backlog_classification": {
-    "total_open": 1,
+    "total_open": 2,
     "ready": 0,
-    "blocked": 1,
+    "blocked": 2,
     "unique_unreviewed": 0,
     "duplicate": 0,
     "superseded": 0,
@@ -6705,7 +6826,8 @@
     ],
     "note": "No open PRs at Run248 capture. Closed-unmerged source branches are retained; do not treat them as exact duplicates without path-level verification.",
     "current_open_prs": [
-      1684
+      1684,
+      1685
     ]
   },
   "open_pr_inventory": [
@@ -6713,53 +6835,53 @@
       "number": 1684,
       "classification": "blocked",
       "workstream": "XRP ingestion continuity / durable handoff / nine-platform map",
-      "changed_files": 6,
-      "commits": 35,
-      "head_sha": "b49c10f1869f41dca3e749842ec346a207c0a020",
+      "changed_files": 8,
+      "commits": 43,
+      "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "ahead_by": 35,
+      "ahead_by": 43,
       "behind_by": 0,
       "draft": true,
       "formal_reviews": 0,
       "mergeable": true,
       "mergeable_state": "unstable",
       "exact_head_ci_status": "success",
-      "full_suite_run_id": 44864226487,
+      "full_suite_run_id": 44873770480,
       "full_suite": {
-        "passed": 4536,
+        "passed": 4539,
         "failed": 0,
         "skipped": 1,
-        "coverage_percent": 73.22,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.2,
         "conclusion": "success"
       },
-      "push_ci_run_id": 44864220940,
+      "push_ci_run_id": 44873765838,
       "push_ci_conclusion": "success",
       "dependency_audit": {
-        "run_id": 44864226542,
-        "conclusion": "success"
-      },
-      "push_dependency_audit": {
-        "run_id": 44864220914,
+        "pr_run_id": 44873770529,
+        "push_run_id": 44873765802,
         "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 44864226510,
+        "run_id": 44873770492,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 44864226455,
+        "run_id": 44873770508,
         "conclusion": "success"
       },
       "fail_closed": {
-        "run_id": 44864226586,
+        "pr_run_id": 44873770505,
+        "push_run_id": 44873765796,
         "conclusion": "failure"
       },
       "gate_blockers": [
         "PR remains draft",
         "no independent approving review",
-        "branch-protection details unavailable (HTTP 403)"
+        "branch-protection details unavailable (HTTP 403); main branch metadata reports protected=true"
       ],
-      "note": "One active XRP integration PR; exact-head full suite, dependency audit, money audit, conflict integrity and Pages validation passed on b49c10f. Fail-closed gate correctly blocks merge. The Run258 map/test/handoff append will create a new head; all checks must rerun on that new exact head."
+      "note": "SQLite WAL-copy defect fixed with sqlite3.Connection.backup() and PRAGMA integrity_check; full suite passes on code head. Fail-closed gate correctly blocks merge."
     },
     {
       "number": 1685,
@@ -6815,7 +6937,7 @@
         "egress restrictions",
         "task-level authorization"
       ],
-      "note": "Unique security workstream; keep runner quarantined. No Worker deployment, secret upload/rotation or runner activation."
+      "note": "Unique security workstream; no worker deployment, secret upload/rotation or runner activation."
     }
   ],
   "run229_evidence_record": {
@@ -8773,22 +8895,23 @@
   "run246_no_external_actions": true,
   "current_pr_base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
   "current_pr_head_snapshot": {
-    "head_sha": "b49c10f1869f41dca3e749842ec346a207c0a020",
+    "head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
     "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-    "ahead_by": 35,
+    "ahead_by": 43,
     "behind_by": 0,
     "draft": true,
     "mergeable": true,
     "mergeable_state": "unstable",
-    "changed_files": 6,
-    "commits": 35,
+    "changed_files": 8,
+    "commits": 43,
     "formal_reviews": 0,
     "tree_entries": 3115,
     "tree_truncated": false,
-    "post_handoff_update_head": "PENDING_GITHUB_REF_CONFIRMATION"
+    "snapshot_semantics": "last code-bearing head verified before the documentation-only Run259 successor",
+    "post_handoff_update_head": "PENDING_EXACT_HEAD_CI"
   },
-  "current_pr_changed_files": 6,
-  "current_pr_commit_count": 35,
+  "current_pr_changed_files": 8,
+  "current_pr_commit_count": 43,
   "latest_run_246": {
     "run_id": 246,
     "captured_at_utc": "2026-11-20T20:29:30Z",
@@ -10429,8 +10552,10 @@
         "Coinbase retail"
       ],
       "ripple_liquidity_on_base": true,
-      "global_exchange_collateral_status": "ANNOUNCED_TO_FOLLOW; no live confirmation found in this run",
-      "source": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase-prime-exchange-and-retail"
+      "global_exchange_collateral_status": "ANNOUNCED_TO_FOLLOW; no live confirmation found",
+      "source": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase-prime-exchange-and-retail",
+      "rlusd_listing_date": "2026-10-28",
+      "ripple_primary_source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
     },
     "circle_xrpl": {
       "usdc_native_on_xrpl_since": "2025-06-12",
@@ -10445,6 +10570,30 @@
       "sbi_role": "founding validator and ARC presale participant; SBI presale allocation not disclosed",
       "interpretation": "A parallel institutional stablecoin settlement rail, not proof of XRP demand.",
       "source": "https://www.circle.com/pressroom/circle-launches-arc-public-mainnet"
+    },
+    "ripple_bny": {
+      "date": "2026-10-27",
+      "bny_role": "Primary RLUSD reserve custodian; BNY Digital Asset Custody supports XRP and RLUSD for eligible clients.",
+      "future_plans": "Direct RLUSD mint/redeem through BNY and tokenized trade-finance use cases are intended, subject to approvals/client requirements.",
+      "xrp_purchase_inference": "not established",
+      "source": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+    },
+    "ripple_standard_chartered_lmax": {
+      "date": "2026-10-12",
+      "standard_chartered_rlusd_custody": "Live for eligible clients on XRPL via DIFC branch.",
+      "lmax_collateral": "Planned RLUSD eligibility and collateral mirroring; not verified live and subject to final documentation, testing, law, internal approvals and jurisdictional readiness.",
+      "xrp_collateral": "not established",
+      "sources": [
+        "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+        "https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/"
+      ]
+    },
+    "ripple_lmax_2026": {
+      "date": "2026-01-15",
+      "rlusd_role": "Announced as core collateral and settlement currency across LMAX institutional infrastructure.",
+      "ripple_financing_to_lmax_usd": 150000000,
+      "financing_drawdown": "not independently established by announcement; do not count as XRP capital flow.",
+      "source": "https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility/"
     }
   },
   "exact_phrase_research": {
@@ -10462,10 +10611,24 @@
     }
   },
   "creator_identity_review": {
-    "camilla_stevenson": "UNVERIFIED",
-    "kamilah_stevenson": "UNVERIFIED",
-    "reason": "Multiple same-name YouTube channels and a public personal website were found, but no authoritative cross-link establishes that the XRP/Stocks channel belongs to that individual. No videos were attributed or inventoried.",
-    "inventory_performed": false
+    "camilla_stevenson": "TRANSCRIPT_VARIANT_OF_KAMILAH_IN_THE_VERIFIED_GUEST_APPEARANCE; no separate Camilla identity established.",
+    "kamilah_stevenson": "VERIFIED_AS_PUBLIC_PODCAST_GUEST; YouTube channel ownership remains unverified.",
+    "verified_guest_appearance": {
+      "title": "Crypto Panics! with Dr. Kamilah Stevenson",
+      "publisher": "Paul Barron / XRPTracer Podcast",
+      "date": "2026-06-11",
+      "source": "https://www.iheart.com/podcast/1333-the-xrptracer-podcast-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/"
+    },
+    "candidate_youtube_channel": {
+      "handle": "@drkamilahstevenson",
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "status": "OWNER_UNVERIFIED",
+      "reason": "Guest says her YouTube name aloud and the channel description matches her first-party wealth-education site, but no first-party cross-link to this exact channel ID was found; she explicitly warns about fake pages."
+    },
+    "other_same_name_channels": "Multiple near-duplicate channels surfaced; all remain unverified candidates.",
+    "channel_wide_inventory_performed": false,
+    "inventory_performed": false,
+    "reason": "Verified guest appearance does not authenticate channel ownership; do not attribute channel videos until a first-party link is established."
   },
   "research_evidence": {
     "sbic_identity_resolution": {
@@ -10524,7 +10687,33 @@
           "shared_insurance_usd": 250000000,
           "insurance_to_holding_value_pct_at_2026_10_09": 36.9,
           "coinbase_custody_role_identified": false,
-          "interpretation": "The 473.276M XRP total is not 473.276M XRP of new open-market demand. The SEC filing identifies 84.366M XRP bought with $214.05M advance cash; the balance is largely contributed XRP. SBI announced a $200M cash commitment, but the SEC summary reviewed does not allocate the aggregate $214.05M by subscriber. SBI-related share ownership is separate from XRP holdings."
+          "interpretation": "The 473.276M XRP total is not 473.276M XRP of new open-market demand. The SEC filing identifies 84.366M XRP bought with $214.05M advance cash; the balance is largely contributed XRP. SBI announced a $200M cash commitment, but the SEC summary reviewed does not allocate the aggregate $214.05M by subscriber. SBI-related share ownership is separate from XRP holdings.",
+          "warrant_exercise_detail": {
+            "filing_date": "2026-11-13",
+            "period": "2026-10-12 through 2026-11-09",
+            "warrants_assumed": 11739645,
+            "warrants_exercised_for_cash": 3073366,
+            "gross_cash_proceeds_usd": 35300000,
+            "exercise_price_usd": 11.5,
+            "warrants_remaining": 8666279,
+            "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+            "interpretation": "Actual gross cash proceeds to Evernorth; not proof of XRP purchases with proceeds."
+          },
+          "convertible_note_post_close": {
+            "issue_date": "2026-10-13",
+            "gross_principal_usd": 30000000,
+            "net_cash_proceeds_usd": 29000000,
+            "advisor_fee_usd": 1000000,
+            "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+            "interpretation": "Actual net cash proceeds from note issuance; not proof of XRP purchases with proceeds."
+          },
+          "equity_line_status": {
+            "maximum_shares": 5218935,
+            "price_formula": "97% of applicable VWAP",
+            "registration_effective_date": "2026-10-30",
+            "drawdown_disclosed": false,
+            "interpretation": "Optional capacity; not cash received."
+          }
         },
         "ey_institutional_survey": {
           "survey_period": "2026-01-13 to 2026-01-30",
@@ -10657,6 +10846,48 @@
           "sbi_role": "founding validator and ARC presale participant; SBI presale allocation not disclosed",
           "interpretation": "A parallel institutional stablecoin settlement rail, not proof of XRP demand.",
           "source": "https://www.circle.com/pressroom/circle-launches-arc-public-mainnet"
+        },
+        "ripple_bny": {
+          "date": "2026-10-27",
+          "bny_role": "Primary RLUSD reserve custodian; BNY Digital Asset Custody supports XRP and RLUSD for eligible clients.",
+          "future_plans": "Direct RLUSD mint/redeem through BNY and tokenized trade-finance use cases are intended, subject to approvals/client requirements.",
+          "xrp_purchase_inference": "not established",
+          "source": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+        },
+        "ripple_standard_chartered_lmax": {
+          "date": "2026-10-12",
+          "standard_chartered_rlusd_custody": "Live for eligible clients on XRPL via DIFC branch.",
+          "lmax_collateral": "Planned RLUSD eligibility and collateral mirroring; not verified live and subject to final documentation, testing, law, internal approvals and jurisdictional readiness.",
+          "xrp_collateral": "not established",
+          "sources": [
+            "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+            "https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/"
+          ]
+        },
+        "ripple_lmax_2026": {
+          "date": "2026-01-15",
+          "rlusd_role": "Announced as core collateral and settlement currency across LMAX institutional infrastructure.",
+          "ripple_financing_to_lmax_usd": 150000000,
+          "financing_drawdown": "not independently established by announcement; do not count as XRP capital flow.",
+          "source": "https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility/"
+        },
+        "ripple_coinbase": {
+          "rlUSD_listing_date": "2026-10-28",
+          "supported_networks": [
+            "XRPL",
+            "Base",
+            "Ethereum"
+          ],
+          "distribution_channels": [
+            "Coinbase Prime",
+            "Coinbase Exchange",
+            "Coinbase retail"
+          ],
+          "ripple_liquidity_on_base": true,
+          "global_exchange_collateral_status": "ANNOUNCED_TO_FOLLOW; no live confirmation found",
+          "source": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase-prime-exchange-and-retail",
+          "rlusd_listing_date": "2026-10-28",
+          "ripple_primary_source": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
         }
       }
     },
@@ -10672,13 +10903,21 @@
       "SBIC, ChatGPT SBIC": {
         "status": "NO_INDEXED_PRIMARY_SOURCE_FOUND",
         "finding": "Exact-phrase searches did not identify a reliable public primary source. Do not infer a connection to ChatGPT or SBI Holdings."
-      }
+      },
+      "ask_coin": "Permission Coin (ASK) is the strongest candidate exact-name match; official Base and Polygon OFT-20 contracts; no XRP/XRPL relation.",
+      "actual_capital": "Evernorth actual receipts documented; $35.3M gross warrant exercise cash and $29M net note proceeds. Not proof of XRP purchase.",
+      "sbic_chatgpt": "No primary-source partnership evidence; SBIC ChatGPT training reference is not an OpenAI partnership.",
+      "creator": "Verified Kamilah guest appearance; channel owner not verified due fake-page warning and no first-party channel link."
     },
     "creator_identity_review": {
       "camilla_stevenson": "UNVERIFIED",
       "kamilah_stevenson": "UNVERIFIED",
       "reason": "Multiple same-name YouTube channels and a public personal website were found, but no authoritative cross-link establishes that the XRP/Stocks channel belongs to that individual. No videos were attributed or inventoried.",
-      "inventory_performed": false
+      "inventory_performed": false,
+      "status": "GUEST_IDENTITY_VERIFIED_CHANNEL_OWNER_UNVERIFIED",
+      "verified_guest_appearance": "https://www.iheart.com/podcast/1333-the-xrptracer-podcast-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "candidate_channel": "@drkamilahstevenson / UCqUPJMQdkCN6lsLVDnichPA",
+      "channel_wide_inventory_performed": false
     },
     "source_urls": [
       "https://laws.e-gov.go.jp/law/338AC0000000101",
@@ -10700,10 +10939,18 @@
       "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
       "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000150/crcl-20260331.htm",
       "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
-      "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase-prime-exchange-and-retail"
+      "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase-prime-exchange-and-retail",
+      "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+      "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility/",
+      "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "https://docs.permission.ai/ask-token/contract-addresses",
+      "https://www.iheart.com/podcast/1333-the-xrptracer-podcast-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "https://learn.kamilahstevenson.com/"
     ]
   },
-  "current_pr_head_sha": "b49c10f1869f41dca3e749842ec346a207c0a020",
+  "current_pr_head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
   "run250_no_external_actions": true,
   "run250_merge_decision": "NO_MERGE",
   "prediction_readiness": {
@@ -10720,8 +10967,8 @@
     "raw_artifact_retention_days": 90,
     "feature_checkpoint_retention_days": 7,
     "immutable_external_worm_anchor": false,
-    "last_ingestion_run_id": 44848909814,
-    "last_ingestion_captured_at_utc": "2026-11-21T01:14:19.819701Z",
+    "last_ingestion_run_id": 44869770831,
+    "last_ingestion_captured_at_utc": "2026-11-21T05:12:48.504310Z",
     "receipts": 37,
     "raw_retained": 25,
     "digest_only": 12,
@@ -10742,7 +10989,11 @@
     "feature_store_restore_source": "trusted_ingestion_workflow_run:44844499889:per_run_checkpoint",
     "feature_store_gap": "Run 26 omitted run 25's 118-record snapshot; raw artifacts are preserved; repair required.",
     "cache_budget_status": "GitHub Actions cache is read-only after configured budget reached.",
-    "no_directional_forecast": true
+    "no_directional_forecast": true,
+    "last_observed_at_utc": "2026-11-21T06:09:27Z",
+    "newer_scheduled_run_observed_by_utc": "2026-11-21T06:09:27Z",
+    "no_newer_scheduled_run_observed": true,
+    "walk_forward_origins": 0
   },
   "latest_run_250": {
     "captured_at_utc": "2026-11-21T01:42:50Z",
@@ -11093,8 +11344,8 @@
     "current_pr_head_sha": "65b42e65ad3bf5a469cfe3d8cf8a5d5d538d2103",
     "current_pr_head_ci": "IN_PROGRESS"
   },
-  "latest_mission_run_id": 258,
-  "latest_mission_run_captured_at_utc": "2026-11-21T05:19:09.463411Z",
+  "latest_mission_run_id": 259,
+  "latest_mission_run_captured_at_utc": "2026-11-21T06:09:27Z",
   "open_pr_count": 2,
   "run258_evidence_record": {
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -11734,5 +11985,26 @@
   },
   "run258_no_external_actions": true,
   "run258_merge_decision": "NO_MERGE",
-  "run258_next_action": "Use the existing #1684 workstream to add an artifact-backed one-time feature-store backfill for run44844953105 and a multi-parent reconciliation receipt that references both historical fork heads without rewriting prior receipts. Preserve the recovery store receipt time to prevent look-ahead; add tests, then rerun the full suite and fail-closed gate on the exact new head."
+  "run258_next_action": "Use the existing #1684 workstream to add an artifact-backed one-time feature-store backfill for run44844953105 and a multi-parent reconciliation receipt that references both historical fork heads without rewriting prior receipts. Preserve the recovery store receipt time to prevent look-ahead; add tests, then rerun the full suite and fail-closed gate on the exact new head.",
+  "run259_no_external_actions": true,
+  "run259_merge_decision": "NO_MERGE",
+  "run259_next_action": "Continue in existing #1684: implement guarded artifact-backed one-time backfill of run44844953105's preserved 118-record snapshot into run31, then issue a multi-parent reconciliation receipt for both historical fork heads without rewriting prior receipts; preserve actual store-receipt time and prove as-of exclusion before it.",
+  "run259_evidence_record": {
+    "code_head_sha": "bd4e197311f1c14a2f56868164adbd6fd327c27e",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "full_suite_passed": 4539,
+    "full_suite_failed": 0,
+    "full_suite_skipped": 1,
+    "coverage_percent": 73.2,
+    "pr_ci_run_id": 44873770480,
+    "push_ci_run_id": 44873765838,
+    "dependency_pr_run_id": 44873770529,
+    "dependency_push_run_id": 44873765802,
+    "money_audit_run_id": 44873770492,
+    "conflict_integrity_run_id": 44873770508,
+    "fail_closed_pr_run_id": 44873770505,
+    "fail_closed_push_run_id": 44873765796,
+    "merge_decision": "NO_MERGE",
+    "forecast_status": "NOT_ISSUED"
+  }
 }
