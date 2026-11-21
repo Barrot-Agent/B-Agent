@@ -5839,3 +5839,15 @@ No main write, merge, deployment, secret rotation, Space restart, Kaggle submiss
 7. Continue raw-source reconciliation for ETF issuer files, derivatives, collateral, RLUSD/USDC supply and flows, custody, exchange balances, regulation and macro. Keep unvalidated sources model-ineligible.
 
 No main write, merge, deployment, secret operation, Space restart, Kaggle submission, Databricks write, external model dispatch, external data transfer, paper trade, funds transfer or real-money action occurred.
+
+
+### Run267 point-in-time candle availability clarification
+
+A direct SQLite audit of main run 42's Coinbase 1-hour close-price feature series found **364 records across 16 snapshots**, but these are not 364 sequential point-in-time observations:
+
+- **349 historical candles** span event times 2026-11-06 11:00 UTC through 2026-11-20 23:00 UTC. All 349 share one `known_at_utc` of `2026-11-21T00:32:41.879993Z` and one `ingested_at_utc` of `2026-11-21T00:32:49.586702Z`. They were retrieved together. They must not be backdated into earlier training cutoffs or counted as 349 independent walk-forward origins.
+- Only **15 incremental hourly captures** followed. Their event times span 2026-11-21 00:00–14:00 UTC. Their `known_at` lag after candle close ranged from **697 to 1,247 seconds** (median 831 seconds); this is a point-in-time availability delay, not a source-event timestamp.
+- The historical candles remain useful as archived context from their actual retrieval time onward. They are not evidence that Barrot knew those values at the original candle times. The 15 sequential observations are far too few for reliable walk-forward evaluation.
+- This confirms why the drift reference window has no eligible observations and why walk-forward origins remain zero. Preserve the current fail-closed forecast state. Accumulate sequential observations with explicit source-as-of, known-at and ingestion times; do not use historical backfill as synthetic out-of-sample history.
+
+The nine-platform map now records this audit under `run267_point_in_time_candle_audit`. No code, main-branch data or prior snapshot was changed by this clarification.
