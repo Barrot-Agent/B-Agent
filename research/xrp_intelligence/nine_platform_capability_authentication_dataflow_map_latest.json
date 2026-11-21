@@ -14571,7 +14571,13 @@
       "event_receipt_complete": false,
       "event_raw_hash_linked_count": 0,
       "sec_capture": "BLOCKED_CONFIGURATION",
-      "forecast_status": "NOT_ISSUED"
+      "forecast_status": "NOT_ISSUED",
+      "candle_history": {
+        "total_1h_records": 364,
+        "sequential_point_in_time_captures": 15,
+        "historical_backfill_records_not_retroactively_available": 349,
+        "walk_forward_origins": 0
+      }
     },
     "nine_platform_status": {
       "ChatGPT_GitHub_authentication_and_data_flow": "verified",
@@ -14621,6 +14627,41 @@
       "exact_head_backfill_artifact": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44918745636/artifacts/14713051760",
       "prior_main_ci_after_merge_1673": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159044",
       "prior_pages_publication": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44839139424"
+    },
+    "point_in_time_candle_audit": {
+      "feature_id": "xrp.spot.coinbase.1h.close_price",
+      "total_records": 364,
+      "snapshot_count": 16,
+      "historical_backfill": {
+        "records": 349,
+        "event_time_start_utc": "2026-11-06T11:00:00Z",
+        "event_time_end_utc": "2026-11-20T23:00:00Z",
+        "single_known_at_utc": "2026-11-21T00:32:41.879993Z",
+        "single_ingested_at_utc": "2026-11-21T00:32:49.586702Z",
+        "interpretation": "Historical candle values were retrieved together in one later capture. They are not available to earlier point-in-time cutoffs and cannot be treated as 349 sequential historical predictions."
+      },
+      "incremental_captures": {
+        "records": 15,
+        "event_time_start_utc": "2026-11-21T00:00:00Z",
+        "event_time_end_utc": "2026-11-21T14:00:00Z",
+        "known_at_lag_after_candle_open_seconds": {
+          "min": 4297.431356,
+          "max": 4847.148183,
+          "median": 4430.569171
+        },
+        "known_at_lag_after_candle_close_seconds": {
+          "min": 697.431356,
+          "max": 1247.148183,
+          "median": 830.569171
+        },
+        "ingested_at_lag_after_candle_open_seconds": {
+          "min": 4304.391862,
+          "max": 4854.5164,
+          "median": 4439.369138
+        }
+      },
+      "conclusion": "Only 15 sequential hourly captures followed the historical backfill. The 349 backfilled candles became known at the same later retrieval time. No leakage-safe historical walk-forward origins are established by this series.",
+      "model_eligible_for_historical_asof_before_2026_11_21T003241Z": false
     }
   },
   "run267_evidence_record": {
@@ -14655,5 +14696,40 @@
     "paper_trade": false,
     "funds_transfer": false,
     "real_money": false
+  },
+  "run267_point_in_time_candle_audit": {
+    "feature_id": "xrp.spot.coinbase.1h.close_price",
+    "total_records": 364,
+    "snapshot_count": 16,
+    "historical_backfill": {
+      "records": 349,
+      "event_time_start_utc": "2026-11-06T11:00:00Z",
+      "event_time_end_utc": "2026-11-20T23:00:00Z",
+      "single_known_at_utc": "2026-11-21T00:32:41.879993Z",
+      "single_ingested_at_utc": "2026-11-21T00:32:49.586702Z",
+      "interpretation": "Historical candle values were retrieved together in one later capture. They are not available to earlier point-in-time cutoffs and cannot be treated as 349 sequential historical predictions."
+    },
+    "incremental_captures": {
+      "records": 15,
+      "event_time_start_utc": "2026-11-21T00:00:00Z",
+      "event_time_end_utc": "2026-11-21T14:00:00Z",
+      "known_at_lag_after_candle_open_seconds": {
+        "min": 4297.431356,
+        "max": 4847.148183,
+        "median": 4430.569171
+      },
+      "known_at_lag_after_candle_close_seconds": {
+        "min": 697.431356,
+        "max": 1247.148183,
+        "median": 830.569171
+      },
+      "ingested_at_lag_after_candle_open_seconds": {
+        "min": 4304.391862,
+        "max": 4854.5164,
+        "median": 4439.369138
+      }
+    },
+    "conclusion": "Only 15 sequential hourly captures followed the historical backfill. The 349 backfilled candles became known at the same later retrieval time. No leakage-safe historical walk-forward origins are established by this series.",
+    "model_eligible_for_historical_asof_before_2026_11_21T003241Z": false
   }
 }
