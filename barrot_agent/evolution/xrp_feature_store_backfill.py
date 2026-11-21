@@ -469,7 +469,7 @@ def reconcile_historical_snapshot(
     fork_raw_verification, _, fork_raw_tree_sha = _verify_raw_artifact(
         Path(fork_raw_artifact_root), fork_index_file, fork_run_id
     )
-    source_snapshot, source_lineage, source_database_sha = _verified_source_snapshot(
+    source_snapshot, source_lineage, source_database_sha, source_common_manifest_sha = _verified_source_snapshot(
         Path(source_database),
         backfill_snapshot_id,
         backfill_manifest_sha256,
