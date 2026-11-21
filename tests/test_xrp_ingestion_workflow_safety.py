@@ -54,6 +54,15 @@ def test_receipt_and_feature_restoration_is_same_branch_only():
     assert 'head_branch == "main"' not in text
 
 
+def test_completed_run_selection_filters_status_locally_to_preserve_receipt_chain():
+    text = WORKFLOW.read_text(encoding="utf-8")
+    # GitHub's server-side status=completed collection filter omitted a successful
+    # scheduled predecessor in production, creating sibling receipt-chain branches.
+    assert "&status=completed" not in text
+    assert text.count('.status == "completed" and .conclusion == "success"') == 2
+    assert text.count("branch=\u0024{GITHUB_REF_NAME}") == 2
+
+
 def test_ingestion_workflow_cannot_write_to_repository_or_external_services():
     text = WORKFLOW.read_text(encoding="utf-8").lower()
     assert "contents: write" not in text
