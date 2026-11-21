@@ -53,7 +53,8 @@ jobs:
 
             actual_head="$(jq -r '.head.sha // empty' <<< "$pr_json")"
             author="$(jq -r '.user.login // empty' <<< "$pr_json")"
-            draft="$(jq -r '.draft // true' <<< "$pr_json")"
+            # jq's // operator treats false as absent; preserve explicit false and fail closed when missing.
+            draft="$(jq -r 'if has("draft") then (.draft|tostring) else "unknown" end' <<< "$pr_json")"
             state="$(jq -r '.state // empty' <<< "$pr_json")"
             base_ref="$(jq -r '.base.ref // empty' <<< "$pr_json")"
             base_sha="$(jq -r '.base.sha // empty' <<< "$pr_json")"
@@ -61,7 +62,11 @@ jobs:
             mergeable_state="$(jq -r '.mergeable_state // empty' <<< "$pr_json")"
 
             [[ "$actual_head" == "$EXPECTED_HEAD_SHA" ]] || add_blocker "PR head is not the exact event SHA"
-            [[ "$draft" == "false" ]] || add_blocker "PR is still draft"
+            if [[ "$draft" == "true" ]]; then
+              add_blocker "PR is still draft"
+            elif [[ "$draft" != "false" ]]; then
+              add_blocker "PR draft state could not be verified"
+            fi
             [[ "$state" == "open" ]] || add_blocker "PR is not open"
             [[ "$base_ref" == "main" ]] || add_blocker "PR base is not main"
             [[ "$mergeable" == "true" ]] || add_blocker "PR has merge conflicts or GitHub has not confirmed mergeability"

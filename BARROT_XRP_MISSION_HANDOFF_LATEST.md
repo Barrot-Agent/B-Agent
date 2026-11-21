@@ -6583,3 +6583,108 @@ These are asynchronous single-venue snapshots with different book coverage, not 
 #### Next concrete action
 
 This handoff update will trigger fresh exact-head PR CI on the new documentation commit. Its preserved-artifact backfill job must now select main Run52 (44960557644), not Run51. Inspect the new full-suite, dependency, fail-closed and backfill results on that exact commit. Then prioritize a bounded, allowlisted publisher-source capture queue for the 150-event registry and legitimate SEC contact configuration. Keep forecast issuance disabled until receipt completeness, sequential history, chronological out-of-sample baselines, calibration and drift gates are demonstrated.
+
+
+### Run277 — 2026-11-21 23:50 UTC — Run52 backfill verification, fail-closed gate correction, and institutional identity reconciliation
+
+This addendum supersedes the Run276 wording that ASK Coin was wholly unresolved and that Kamilah Stevenson channel ownership was unverified. The supporting structured research artifact is research-only: `research/xrp_intelligence/20261121T160445Z-run268-sec-capital-sbic-ask-kamilah-reconciliation.json` has raw_capture=false and model_eligible=false. The source URLs and independence groups are preserved there; this run did not convert those web pages into immutable raw-source receipts.
+
+#### Exact-head verification and Run52 backfill — VERIFIED on parent head 87c3c45
+
+PR CI [44963149977](https://github.com/Barrot-Agent/B-Agent/actions/runs/44963149977) completed successfully on exact head **87c3c451e4a122dd34e5ab0a3f193a7ec7b4e22b**:
+
+- Full repository suite: **4,561 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests, **73.20% coverage**, 165.37 seconds.
+- The full tracked-active-repository suite and all mission-critical package coverage floors passed.
+- Dependency audit [44963149996](https://github.com/Barrot-Agent/B-Agent/actions/runs/44963149996) passed across six manifests; no known vulnerabilities reported.
+- Money audit and conflict-integrity checks passed; Pages build remained validation-only.
+- The fail-closed gate [44963150035](https://github.com/Barrot-Agent/B-Agent/actions/runs/44963150035) blocked the draft XRP PR, with no independent approving review and branch protection unavailable. No merge occurred.
+
+The actual branch backfill module replayed the newest main checkpoint, **Run52 / 44960557644**, not Run51:
+
+- Before: **17,766 records / 24 snapshots**.
+- After: **17,884 records / 25 snapshots**.
+- Recovered: **118 records from 11 source lineages**.
+- All **26** historical/current artifact ZIP digests matched GitHub's recorded digests; zero mismatches.
+- SQLite integrity: **ok**; all 25 snapshots verified.
+- Point-in-time visibility: 17,766 records one microsecond before the availability bound; 17,884 one microsecond after.
+- Reconciliation SHA-256: **1865277740b59ecddcca7670c20b212bf98276e03b45ab6361b0a37d628fb0dc**.
+- Artifact [14730462528](https://github.com/Barrot-Agent/B-Agent/actions/runs/44963149977/artifacts/14730462528); downloaded ZIP SHA-256 **6e49ecb6af8665ca4d191d61fdaa36a9c0022c2ba8e479e19ddc541f80a8ac0d**, matching GitHub's upload digest.
+- Main's feature-store database remains unchanged. The availability bound is not the physical SQLite commit timestamp and is not independently WORM-anchored.
+
+#### Fail-closed gate defect found and corrected in the existing XRP integration workstream
+
+A real gate defect was identified in main's .github/workflows/barrot-gated-merge.yml:
+
+- The old expression used jq's `.draft // true`. In jq, the alternative operator treats both false and null as absent, so an explicit `"draft": false` is converted to true.
+- The live GitHub API reports PR #1685 as non-draft, but its gate run [44955747971](https://github.com/Barrot-Agent/B-Agent/actions/runs/44955747971) reported “PR is still draft.” The source expression explains the discrepancy.
+- The gate now uses an explicit field-presence/type expression: preserve false, preserve true, and return “unknown” when absent. Unknown/null remains blocked with a distinct “PR draft state could not be verified” reason.
+- Added a regression test that evaluates jq behavior for false, true, missing and null; it also asserts the unsafe expression is absent.
+- This is a cross-cutting Barrot V3 safety/verification correction included in the existing PR #1684 integration branch. **No new PR or branch was created.** It does not relax any gate, grant write permissions, approve a PR, or merge anything.
+- PR #1684 remains draft and must still be blocked. PR #1685 has zero independent reviews and branch protection remains unverifiable; correcting its false draft classification does not make it merge-ready.
+- The gate fix and regression test are included in this commit; their exact-head CI and gate result must be checked independently. The 4,561-test result above belongs to parent head 87c3c45, not the new commit.
+
+#### ASK Coin — best-supported identity is Permission Coin (ASK), not an XRP asset
+
+The exact-phrase investigation now has a best-supported identity:
+
+- Permission's official January 10, 2025 announcement describes ASK as its data-ownership, consent and rewards token and lists Base contract **0xBB146326778227A8498b105a18f84E0987A684b4**.
+- Permission's current official contract documentation lists that Base address and Polygon **0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff**, identifies ASK as a LayerZero OFT, and says these are the only official contracts.
+- A separate January 15, 2025 Permission/GlobeNewswire release lists a different Base address, **0x79322cee6c90735b967d2396b9adc392915aebb6**. Preserve this as a conflicting historical issuer publication; do not treat it as canonical without explicit migration/retirement confirmation.
+- Permission's September 22, 2026 wallet update says the ASK wallet is powered by Coinbase embedded-wallet infrastructure; Coinbase holds keys on the user's behalf under user authority, and Permission no longer holds them. This is a Permission-Coinbase wallet-infrastructure relationship, not an XRP/Ripple relationship.
+- No direct XRP Ledger, Ripple, or XRP utility relationship was established for Permission's ASK. “ASK Coin” remains unresolved only as an ambiguous phrase across unrelated tokens; the best-supported ASK token in this research is Permission Coin.
+
+Primary sources: [Permission ASK launch](https://www.permission.ai/blog/ask-is-now-live-on-base-eeaba), [official ASK contracts](https://docs.permission.ai/ask-token/contract-addresses), [Permission wallet update](https://www.permission.ai/blog/ask-wallet-update), [conflicting January 15 issuer release](https://www.globenewswire.com/news-release/2025/01/15/3009989/0/en/Permission-Launches-ASK-on-Base-Ushering-in-the-Next-Era-of-Data-Ownership-and-Rewards.html).
+
+#### Camilla / Kamilah Stevenson — identity triangulated; two public video appearances inventoried
+
+The best-supported identity is **Dr. Kamilah Stevenson / The Wealth Doctor**:
+
+- Her official professional site identifies Dr. Kamilah Stevenson.
+- The June 11, 2026 iHeart episode with Paul Barron identifies Dr. Kamilah Stevenson as its guest. Its auto-generated transcript uses the spelling “Camilla” in one self-identification passage and warns about fake pages; treat that spelling as a transcript discrepancy, not a separate person.
+- YouTube channel metadata identifies channel ID **UCqUPJMQdkCN6lsLVDnichPA**, title Kamilah Stevenson, handle **@drkamilahstevenson**. The channel identity is triangulated with the official site and interview. Similar handles such as @drkamilahstevenson-j9r and @KamilahStevensonXrpStocks are excluded as unverified lookalikes.
+- Verified public appearances found so far:
+  1. [Crypto Panics! W/ @drkamilahstevenson](https://www.youtube.com/watch?v=Sulo54IlQ60), June 11, 2026, uploaded by Paul Barron Podcast. This is a third-party guest appearance, not an upload to her own channel. The iHeart interview page and transcript independently support the guest identity; direct YouTube page retrieval was throttled during this run.
+  2. [Dr. Kamilah Stevenson | Generational Health Starts With You](https://www.youtube.com/watch?v=TS7nhMTgd2Y), August 6, 2025, uploaded by Sean Croxton. This is also a third-party appearance, not an official channel upload.
+- This is a verified partial inventory, not a complete list of every public video or channel upload. Do not attribute videos from namesakes or lookalike accounts.
+
+Identity sources: [official Kamilah Stevenson site](https://learn.kamilahstevenson.com/), [iHeart interview](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/), [YouTube channel metadata](https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA).
+
+#### “Actual capital” — use transaction categories, not a single headline number
+
+“Actual capital” is not a formal accounting term. The Evernorth issuer filings require separate treatment of cash received, gross versus net proceeds, XRP contributed in kind, debt, exercised warrants, optional facilities, and theoretical warrant proceeds:
+
+- The September 30, 2026 pre-close filing reports approximately **$214.1 million cash** under advance-funding subscriptions and **261,919,096 XRP** associated with private-placement agreements; the cash was used to acquire **84,365,876 XRP**. The same pre-close statements report approximately 346,284,972 XRP, $91,397 unrestricted cash, $341.9 million digital assets at carrying value, $524.3 million refundable investor advances, and a $32.87 million nine-month net loss. These are pre-close figures, not post-close consolidated balances.
+- At the October 9, 2026 business-combination closing, the issuer reported approximately **$272.6 million gross cash** before transaction expenses ($224.6 million private-placement cash plus $48.0 million SPAC trust release) and **388,910,554 XRP contributed in kind**. Do not add the earlier $214.1 million advance-funding cash to the $272.6 million closing gross amount as if they were independent capital raises.
+- The filing separately describes Ripple's **126,791,458 XRP** contribution to Pathfinder; RippleWorks' **211,319,096 XRP** contribution to Arrington XRP Capital Fund, LP, followed by the sponsor's subscription; and a Ripple-affiliated contributor entity's **50,000,000 XRP** transfer to Pubco. These are distinct legal contributors and transaction routes; do not add them to the 388.91 million aggregate without a transaction-level bridge.
+- The issuer reports a **$30.0 million principal** convertible PIK note with $1.0 million issuance costs; do not call the $30.0 million gross principal net cash available.
+- From October 12 through November 9, holders exercised **3,073,366 warrants** for **$35.3 million gross cash**, leaving **8,666,279 warrants** from the 11,739,645 assumed at closing.
+- The optional Cantor equity line permits up to **5,218,935 shares** at 97% of applicable VWAP, subject to issuer notices and conditions. This is capacity, not cash received or proof of a draw.
+- The separate public-warrant prospectus registers up to **11,499,992 shares** at $11.50. The theoretical maximum arithmetic proceeds are not actual proceeds and must not be added to exercised-warrant cash or to the total warrant count.
+- Certain SBI-affiliated investors are subject to a **39.9% Class A ownership cap**; excess shares were issued as Class C. This is not 39.9% total economic ownership and does not mean SBI Holdings supplied the entire capital stack.
+- Pathfinder's identification of Coinbase as its principal accounting market for XRP is not proof Coinbase holds or custodies the XRP. BNY custody and Ripple-related facilities are separately documented.
+
+Primary SEC sources: [Evernorth 10-Q / 424B3 supplement](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm), [November 17 8-K/A supplement](https://www.sec.gov/Archives/edgar/data/2092592/000162828026074357/evernorth-424stickerposam8a.htm), [Pathfinder MD&A](https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/pf20260930-mda.htm), [RippleWorks and related-party contribution exhibit](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/R7.htm), [Ripple and sponsor contribution exhibit](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/R26.htm), [ELOC and warrant exercise exhibit](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/R70.htm), [warrant exercise reconciliation](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/R71.htm), [public-warrant prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm).
+
+#### Coinbase, Circle, Ripple, SBI and BNY — relationship graph updated
+
+- **Circle ↔ Coinbase:** Circle and Coinbase jointly launched USDC. Their August 2023 restructuring gave Circle sole USDC issuance/governance and gave Coinbase a minority equity stake plus a commercial revenue-sharing agreement. The agreement shares reserve income based on balances and also shares interest income from broader USDC distribution/usage. Circle's 2025 SEC S-1 reports Coinbase-held USDC at about 20% of circulation at December 31, 2024 and 25% at March 31, 2025; these are Circle-provided platform figures, not an independent wallet census. Circle describes Coinbase as its largest/longest-standing distribution partner.
+- **Circle ↔ SBI Group:** Circle's September 16, 2026 Arc launch announcement identifies SBI Group as a founding validator and says SBI VC Trade was the first and only Japanese company to distribute USDC, beginning March 2025. This is a direct Circle-SBI relationship separate from Ripple.
+- **SBI Holdings ↔ Ripple:** SBI Holdings and Ripple established SBI Ripple Asia as a joint venture in 2016; SBI also announced an additional investment in Ripple in 2016. SBI VC Trade is a wholly owned voting subsidiary of SBI Group and began listing RLUSD on June 24, 2026. SBI Ripple Asia's February 26, 2026 proof of concept uses XRPL for tokenized deposits and deposit-based digital money; it does not establish that the XRP token itself is the deposit collateral or settlement asset in that PoC.
+- **Coinbase ↔ Ripple:** Coinbase announced RLUSD availability on October 28, 2026 across Coinbase Prime, Coinbase Exchange and the retail app, with deposits/withdrawals on XRPL, Base and Ethereum. Coinbase said global-exchange collateral availability would follow; Ripple said it would provide liquidity on Base. This is a direct RLUSD distribution/liquidity relationship, not proof of Coinbase custody of Evernorth XRP.
+- **Ripple ↔ BNY:** BNY's October 27, 2026 release says it is the primary reserve custodian for RLUSD, has a custody relationship with Ripple Prime, and now supports XRP and RLUSD on its Digital Asset Custody platform. Further tokenized asset/collateral and mint/redeem workflows are stated as future/intended capabilities subject to approvals.
+- **Circle ↔ Ripple:** No direct Circle-Ripple partnership was established by the reviewed primary sources. BNY is a shared custody node, and SBI Group has separate relationships with Circle and Ripple; neither fact proves a bilateral Circle-Ripple agreement.
+- **SBIC East / Central / West:** Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies are three distinct regional legal entities, list one another as sister companies, and are not SBI Holdings divisions. SBI VC Trade is an SBI Group subsidiary; it is not one of these SBIC companies.
+
+Primary relationship sources: [Circle/Coinbase 2023 agreement](https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx), [Circle 2025 SEC S-1](https://www.sec.gov/Archives/edgar/data/1876042/000119312525132755/d737521ds1a.htm), [Circle Arc launch / SBI founding validator](https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/), [SBI Ripple Asia 2016 investment/JV notice](https://www.sbigroup.co.jp/news/2016/0916_10407.html), [SBI Ripple Asia XRPL tokenized-deposit PoC](https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html), [SBI VC Trade RLUSD listing](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html), [Coinbase RLUSD listing](https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase), [BNY/Ripple custody announcement](https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html), [SBIC East](https://www.sbic.co.jp/company/profile/), [SBIC Central](https://www.sbic-cj.co.jp/company/about/), [SBIC West](https://www.sbic-wj.co.jp/profiles/profile/), [SBI VC Trade group profile](https://www.sbigroup.co.jp/english/company/group/sbivc.html).
+
+#### Source independence and model admission
+
+- Evernorth's 10-Q, 8-K/A, MD&A and exhibits are one issuer-source group, not multiple independent confirmations.
+- Permission's ASK blog, token docs and wallet update are one issuer-source group; the older conflicting contract address remains preserved.
+- Circle's investor releases and SEC filings are one issuer-source group; SBI's releases are another. YouTube channel metadata, iHeart transcript, Paul Barron and Sean Croxton are separate source groups.
+- The Run268 research record has **raw_capture=false**. It is a provenance-linked research index, not a raw-byte capture. These institutional/identity claims remain **research-only and model-ineligible** until the exact publisher payloads, retrieval timestamps, hashes and source-independence metadata are ingested into the receipt chain.
+- The exact phrase “SBIC, ChatGPT SBIC” remains unresolved as a formal partnership claim. The reviewed evidence supports an SBIC-hosted training event delivered by VOST, not an OpenAI partnership.
+
+#### Next concrete action
+
+Complete exact-head CI for this gate-correction commit, including the new jq regression test, full repository suite, dependency audit, fail-closed gate and preserved-artifact backfill. The gate must still block PR #1684 because it remains draft and lacks independent approval/protection evidence. Then prioritize the allowlisted publisher-capture queue for the 150-event registry and legitimate SEC contact configuration. Keep directional forecasts disabled until receipt completeness, sequential history, chronological baseline comparisons, calibration and drift gates pass.
