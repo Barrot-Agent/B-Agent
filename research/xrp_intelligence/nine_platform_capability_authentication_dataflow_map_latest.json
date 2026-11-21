@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-21T00:09:24.143Z",
+  "captured_at_utc": "2026-11-21T00:12:23.704Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -1907,7 +1907,7 @@
       "trigger": "tag push v*.*.*",
       "release_tag_pushed_this_run": false
     },
-    "transitive_workflow_script_security_review": "INCOMPLETE; prior review covered 69 workflow definitions; current added XRP ingestion workflow and high-risk main workflows were spot-inspected, but every transitive script/action dependency is not cleared.",
+    "transitive_workflow_script_security_review": "INCOMPLETE; 71 workflow definitions statically scanned, but every invoked script, package, runtime and inherited token permission has not been cleared.",
     "release_workflow": {
       "workflow": ".github/workflows/release.yml",
       "permission": "contents: write",
@@ -2481,7 +2481,67 @@
       "branch_protection_endpoint": "HTTP 403",
       "fallback_ruleset_enforcement": "disabled",
       "pages_authorization": "NOT_GRANTED"
-    }
+    },
+    "run248_workflow_scan": {
+      "captured_at_utc": "2026-11-21T00:12:23.704Z",
+      "changed_workflows": 71,
+      "fetched_and_scanned": 71,
+      "unpinned_external_action_refs": 0,
+      "pull_request_target_triggers": 0,
+      "explicit_write_permission_workflows": [
+        {
+          "path": ".github/workflows/release.yml",
+          "permission": "contents:write",
+          "trigger": "push tags v*.*.*"
+        }
+      ],
+      "quarantined_workflows": [
+        "barrot-agent.yml",
+        "barrot-merge.yml",
+        "barrot-merge-manual.yml",
+        "barrot-self-upgrade.yml",
+        "coinbase-paper-trader.yml",
+        "databricks-bundle.yml",
+        "deploy-databricks.yml",
+        "sync-huggingface.yml",
+        "webmcp-live-sandbox.yml"
+      ],
+      "gated_workflows": {
+        "kaggle_competitions": {
+          "manual_only": true,
+          "explicit_yes": true,
+          "exact_main_sha": true,
+          "competition_allowlist": true,
+          "dispatched": false
+        },
+        "deploy_a2a_worker": {
+          "manual_only": true,
+          "main_only": true,
+          "separate_deployment_yes": true,
+          "separate_secret_rotation_yes": true,
+          "dispatched": false
+        },
+        "sync_self_hosted_brain": {
+          "job_guard": "if:false",
+          "dormant_secret_upload_code_present": true,
+          "dispatched": false
+        },
+        "xrp_public_ingestion": {
+          "permissions": [
+            "actions:read",
+            "contents:read"
+          ],
+          "exact_trigger_sha_checkout": true,
+          "persist_credentials": false,
+          "post_merge_run_observed": false
+        }
+      },
+      "limitations": [
+        "Transitive scripts/dependencies not fully audited",
+        "Repository default token permissions for workflows without explicit permissions blocks not independently readable"
+      ]
+    },
+    "source_pr_1663_cross_reference_comment_id": 7053832128
   },
   "open_pr_backlog": [
     {
@@ -4857,9 +4917,9 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-21T00:09:24.143Z",
+  "last_verified_at_utc": "2026-11-21T00:12:23.704Z",
   "latest_run_id": 248,
-  "latest_run_captured_at_utc": "2026-11-21T00:09:24.143Z",
+  "latest_run_captured_at_utc": "2026-11-21T00:12:23.704Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
   "current_successor_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z (merged)",
   "observed_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7429,7 +7489,7 @@
   },
   "run248_no_source_pr_closures": true,
   "latest_run_248": {
-    "captured_at_utc": "2026-11-21T00:09:24.143Z",
+    "captured_at_utc": "2026-11-21T00:12:23.704Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "merged_pr": 1673,
     "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7461,10 +7521,16 @@
     "documentation_followup_changed_files": 2,
     "exact_head_ci_status": "RUNNING_ON_PREVIOUS_HEAD; FINAL_METADATA_COMMIT_REQUIRES_FRESH_CI",
     "documentation_followup_previous_head_sha": "559f22d5af1ecc0b3e084cda3d6f050c5647aa38",
-    "documentation_followup_head_sha": "PENDING_THIS_COMMIT"
+    "documentation_followup_head_sha": "PENDING_THIS_COMMIT",
+    "changed_workflows_scanned": 71,
+    "unpinned_action_refs": 0,
+    "pull_request_target_triggers": 0,
+    "explicit_write_permission_workflow": "release.yml only; contents:write; version-tag push only",
+    "source_pr_1663_cross_reference_comment_id": 7053832128,
+    "workflow_transitive_review": "INCOMPLETE"
   },
   "run248_evidence_record": {
-    "captured_at_utc": "2026-11-21T00:09:24.143Z",
+    "captured_at_utc": "2026-11-21T00:12:23.704Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "merged_pr": 1673,
     "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7496,7 +7562,13 @@
     "documentation_followup_changed_files": 2,
     "exact_head_ci_status": "RUNNING_ON_PREVIOUS_HEAD; FINAL_METADATA_COMMIT_REQUIRES_FRESH_CI",
     "documentation_followup_previous_head_sha": "559f22d5af1ecc0b3e084cda3d6f050c5647aa38",
-    "documentation_followup_head_sha": "PENDING_THIS_COMMIT"
+    "documentation_followup_head_sha": "PENDING_THIS_COMMIT",
+    "changed_workflows_scanned": 71,
+    "unpinned_action_refs": 0,
+    "pull_request_target_triggers": 0,
+    "explicit_write_permission_workflow": "release.yml only; contents:write; version-tag push only",
+    "source_pr_1663_cross_reference_comment_id": 7053832128,
+    "workflow_transitive_review": "INCOMPLETE"
   },
   "current_handoff_branch": "integration/xrp-post-merge-verification-20261121T0002Z"
 }
