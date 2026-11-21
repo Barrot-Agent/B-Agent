@@ -387,3 +387,13 @@ def test_historical_backfill_rejects_receipt_list_manifest_mismatch_before_targe
             clock=lambda: datetime(2026, 11, 21, 1, 0, tzinfo=timezone.utc),
         )
     assert HistoricalFeatureStore(case["target_db"]).snapshot_count() == before
+
+
+def test_real_artifact_replay_targets_latest_verified_main_checkpoint():
+    ci_workflow = ROOT / ".github" / "workflows" / "ci.yml"
+    text = ci_workflow.read_text(encoding="utf-8")
+    assert "44888553926" in text
+    assert "xrp-public-receipt-index-44884065576" in text
+    assert 'assert before == {"snapshot_count": 10, "record_count": 16094}' not in text
+    assert "snapshot_count': 10, 'record_count': 16094" in text
+    assert "snapshot_count'] == 11 and after['record_count'] == 16212" in text
