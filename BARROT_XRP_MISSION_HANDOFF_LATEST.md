@@ -4124,3 +4124,63 @@ This is now a high-value weekly point-in-time source candidate for Barrot's deri
 - Cross-analysis sentiment remains stale: last XRP sentiment input October 29, 2026, age 541.479 hours at the prior run; do not treat the historical 286-mention profile as current sentiment.
 - **Next:** keep #1684 draft/blocked; implement the tested, idempotent run-25 snapshot recovery on the existing branch, preserving both sibling chain hashes; add the CFTC weekly positions and cbXRP/Morpho as research-only, publication-time-stamped sources with raw receipts and unit/market-lineage controls; fix the event timeline's 150 missing raw-hash links; obtain an approved SEC monitored contact; retain fail-closed forecast issuance until chronological OOS and shadow requirements pass.
 - **No merge, force-push, branch rewrite, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer or real-money action occurred.**
+
+
+## Run255 — 2026-11-21 03:30 UTC — exact-head governance and independent receipt-recovery verification
+
+### Repository and PR inventory
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; recursive tree is 3,115 entries and untruncated.
+- Exactly two open PRs remain. No new branch or PR was created.
+- PR #1684: `integration/xrp-post-merge-verification-20261121T0002Z`, head `d2b675f28521531c1846576971a53b08f5960ce3`, 31 commits ahead / 0 behind, six changed files, draft, mergeable=true. Changed paths: XRP ingestion workflow, this handoff, latest nine-platform map, and three regression-test files.
+- PR #1685: `security/a2a-secret-separation-20261121`, head `e512f4e6d66c1575186d00b60852c93caba687e0`, five commits ahead / 0 behind, nine changed files, draft, mergeable=true. Its paths are the A2A deployment workflow, Worker, Worker tests, bridge documentation, runner/MCP scripts and their tests. It does not overlap #1684.
+- No formal review submissions exist on either PR. Both PR authors are `Barrot-Agent`; no independent approving review is recorded.
+
+### PR #1684 exact-head verification — head d2b675f
+
+- Push CI [44860691842](https://github.com/Barrot-Agent/B-Agent/actions/runs/44860691842) and PR CI [44860696465](https://github.com/Barrot-Agent/B-Agent/actions/runs/44860696465) both passed on the exact head.
+- Full repository suite: **4,536 passed, 1 skipped, 11 warnings, 32 subtests passed**, 209.81 seconds, 73.22% overall coverage. All existing mission-critical and expanded package coverage floors passed.
+- Dependency audit [44860696471](https://github.com/Barrot-Agent/B-Agent/actions/runs/44860696471) passed all six manifests (runtime, development, integrations, Hugging Face Space, legacy and PEP 621). The pip-audit step reported no known vulnerabilities.
+- Money audit [44860696455](https://github.com/Barrot-Agent/B-Agent/actions/runs/44860696455) passed. Conflict integrity [44860696486](https://github.com/Barrot-Agent/B-Agent/actions/runs/44860696486) passed.
+- Fail-closed gate [44860696441](https://github.com/Barrot-Agent/B-Agent/actions/runs/44860696441) failed, correctly and read-only: PR is still draft; no independent approving review exists; branch protection could not be verified. No merge occurred.
+- Main branch metadata reports `protected=true`, but the branch-protection endpoint returns HTTP 403. The only visible repository ruleset, “Fall Back,” is disabled. `.github/CODEOWNERS` assigns all paths only to `@Barrot-Agent`, the PR author. Effective required contexts and administrator enforcement remain unverified. Do not infer that the branch is unprotected, and do not infer that required protection is satisfied.
+
+### PR #1685 current status
+
+- Exact head `e512f4e6d66c1575186d00b60852c93caba687e0` has successful full-suite, dependency, Worker, Pages and conflict-integrity checks. Its fail-closed gate failed; no review exists.
+- The runner remains quarantined. OS sandboxing, provider-credential isolation and egress controls are still absent. No deployment, secret rotation or runner activation occurred.
+
+### Main XRP ingestion run 29 — independent artifact verification
+
+- Main run [44860165888](https://github.com/Barrot-Agent/B-Agent/actions/runs/44860165888) succeeded on main SHA `550a647`; capture cutoff `2026-11-21T03:15:52.018918Z`.
+- Raw artifact 14689183340 contains 34 receipts: 22 retained payloads and 12 digest-only receipts. Independently recomputed all 22 retained payload SHA-256 values: **22/22 matched**, zero missing or mismatched. Receipt-log SHA-256 and chain-log SHA-256 both match the chain manifest; the final chain line matches the declared chain head.
+- Receipt-index artifact 14689661972 is sequence 4, with run 44855063970 as predecessor. Its cross-run continuity is verified, but its external anchor is `NOT_ANCHORED`. The raw/event/index artifacts have 90-day retention; the feature-store checkpoint has seven-day retention. GitHub Actions cache saving remains read-only because the configured cache budget is exhausted.
+- The current run-29 feature-store artifact 14689612208 contains four snapshots: run 24 (1,863 records), run 26 (106), run 28 (106) and run 29 (124). Total: 2,199 records, 46 source-snapshot rows, five independence groups. Run 25's 118-record snapshot is absent.
+- Independently downloaded and compared run-24, run-25 and run-26 receipt indexes. Run 25 (44844953105) and run 26 (44848909814) both claim sequence 2 and both point to run 24 (44844499889), with the same predecessor chain hash `63471284a73b268295000c37b5ff71b85ae0912f340f13904a3c09548002a61a`, but different chain heads: run 25 `5d6c10ea46f9b2e4523b68733869c2b653c496f9a7d50f2c51f5c4fa7b2ac758`; run 26 `feaf48e2ca9234306ab3b1925752ffce222e03f2c0762ca884b56217d1a80bc5`. This confirms a fork, not a linear sequence. Main still has the server-side `status=completed` collection filter; the local-filter correction exists only on #1684.
+- Revalidated run-25 raw artifact 14682676364: 37 receipts, 25 retained payloads, all 25 payload hashes match, and both receipt/chain log hashes match their manifest.
+- Reproduced the run-25 recovery in a **disposable local copy** of the run-29 SQLite checkpoint by importing only the missing snapshot `0d5af2b3fdffb6ddb397579413c33218ed174f8e61969910adaef654ae9212aa`: 118 feature records and 11 source rows. Result: five snapshots, 2,317 records, 57 source-snapshot rows, five independence groups, zero duplicate (snapshot_id, record_id) keys, SQLite integrity `ok`, and all five snapshot manifest hashes verified. No source artifact, receipt or chain hash was rewritten.
+- This recovery is **local validation only**. It was not uploaded, committed, run in GitHub Actions or adopted by main. Production recovery still requires an idempotent importer and an explicit reconciliation record that preserves both sibling chain hashes.
+
+### Model/data-quality blockers remain
+
+- Run 29 event artifact: 150 events and 117 scenarios, but zero event raw-source hash links; `receipt_complete=false`, `model_eligible=false`, `forecast_status=NOT_ISSUED`. These are curated hypotheses, not a raw-receipt-backed event feed.
+- Drift report: 124 candidate features, zero evaluated, status `INSUFFICIENT_DATA`; forecast issuance false. No new walk-forward origins, baseline superiority, probability calibration or shadow evaluation was established.
+- SEC capture remains `BLOCKED_CONFIGURATION`: no approved monitored contact identity, zero submissions/companyfacts/filings/capital facts and zero SEC raw receipts. Do not invent a contact identity.
+- Provider failures remain explicit: Binance HTTP 451, Bybit HTTP 403, Grayscale HTTP 429, Franklin issuer-page processing failure. XRPL public-node sources remain excluded from scheduled collection under the recorded provider-terms policy. Do not proxy around these restrictions.
+- Latest captured four-venue USD-normalized mids (03:15:38–03:15:42 UTC) clustered from $0.895231 to $0.895790. Near-touch 10-bps depth was ask-heavy on all four venues, while 50/100-bps depth was mixed. This is one synchronized snapshot, not a consolidated executable book or a directional signal.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** idempotent missing-snapshot recovery with no rewriting of historical receipts or sibling chain heads.
+- **EXECUTED:** read-only GitHub inspection; downloaded run-24/25/26/28/29 artifacts; independently checked 47 retained raw payloads across runs 25 and 29; reproduced the 118-record run-25 feature-store recovery in a disposable local copy.
+- **VERIFIED:** run-29 artifact hashes and receipt-chain internals; run-25/run-26 fork; local five-snapshot recovery integrity and manifests; exact-head d2b675f full-suite, dependency, money and conflict checks.
+- **NOT VERIFIED:** production recovery, linear receipt-chain reconciliation, immutable external anchoring, forecast readiness, independent PR approval, effective branch-protection requirements or merge readiness.
+
+### Next concrete action
+
+1. Implement and test the idempotent run-25 snapshot importer on the existing #1684 branch; preserve both sequence-2 chain hashes and record a reconciliation link rather than rewriting either chain.
+2. Re-run the entire repository suite and all exact-head security/conflict/gate checks after that code change.
+3. Keep #1684 and #1685 draft/blocked until independent review and effective branch-protection requirements are verifiable. Do not merge either PR on the strength of prior-head checks.
+4. Keep directional forecast issuance disabled until event raw receipts, adequate point-in-time history, nonzero chronological walk-forward origins, baseline comparison, calibration, drift and shadow evaluation meet the existing admission contract.
+
+No merge, force-push, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer or real-money action occurred in this run.
