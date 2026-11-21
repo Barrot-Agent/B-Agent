@@ -768,5 +768,7 @@
     "Add event raw hashes and receipt links before event features become eligible.",
     "Implement an independent immutable/WORM or trusted timestamp anchor for raw receipts.",
     "Run chronological walk-forward tests, baselines, calibration and drift only after point-in-time data gates pass."
-  ]
+  ],
+  "model_eligible": false,
+  "model_eligibility_reason": "Research-only public-page and platform-metadata reconciliation; raw HTTP bytes and immutable source receipts were not captured, and no prediction evaluation was performed."
 }
