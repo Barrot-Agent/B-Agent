@@ -344,7 +344,7 @@ jobs:
           assert current_verification['retained_raw_payload_count'] == 22
           store = HistoricalFeatureStore(root / 'current-store' / 'feature_store.sqlite3')
           store_verification = store.verify_all_snapshots()
-          assert store_verification['valid'] is True and store_verification['snapshot_count'] == 9
+          assert store_verification['valid'] is True and store_verification['snapshot_count'] == 10
           summary = {
               'status': 'VERIFIED',
               'workflow_run_id': os.environ['GITHUB_RUN_ID'],
