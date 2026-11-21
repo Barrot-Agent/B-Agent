@@ -287,10 +287,15 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert all("raw_sha256" not in item for item in market["venue_books"])
     assert ingestion["raw_payload_hashes_verified"] == 22
     assert ingestion["raw_payload_hash_mismatches"] == 0
-    assert market["quote_basis"]["status"] == "VERIFIED"
-    assert market["quote_basis"]["method"] == "same_venue_synchronized_top_of_book_product"
-    assert market["quote_basis"]["usdt_usd_mid"] == 0.998235
-    assert market["quote_basis"]["normalization_overstatement_if_usdt_assumed_usd_bps"] == 17.681207330939106
+    # Quote-basis evidence is stored separately from the market display summary.
+    # It is top-of-book-only and shares one OKX publisher-independence group.
+    quote_basis = data["prediction_engine"]["quote_basis"]
+    assert quote_basis["status"] == "VERIFIED_TOP_OF_BOOK_ONLY"
+    assert quote_basis["method"] == "same_venue_synchronized_top_of_book_product"
+    assert quote_basis["usdt_usd_mid"] == 0.998045
+    assert quote_basis["normalization_overstatement_if_usdt_assumed_usd_bps"] == 19.58829243797089
+    assert quote_basis["depth_levels_normalized"] is False
+    assert quote_basis["publisher_independence_group_count"] == 1
     assert "not a consolidated executable book" in market["interpretation"]
 
 
@@ -983,7 +988,10 @@ def test_run272_binds_current_main_run49_market_flow_backfill_and_pr_snapshot():
     root = Path(__file__).resolve().parents[1]
     artifact = json.loads((root / run["artifact_path"]).read_text(encoding="utf-8"))
 
-    assert data["latest_run_id"] == 272
+    # This test binds the immutable historical Run272 record; the map itself
+    # may already contain later mission runs.
+    assert data["latest_run_id"] >= 273
+    assert run["head_sha"] == "460561ba6091d407c6ff3d10eb69145445c7e997"
     assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
     assert run["head_sha"] == "460561ba6091d407c6ff3d10eb69145445c7e997"
     assert data["current_pr_head_sha"] == "4e2979a21c2866de06b432b1b6b9d626c3401487"
