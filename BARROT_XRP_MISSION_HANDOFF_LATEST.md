@@ -4665,3 +4665,37 @@ The new append-only evidence record is [20261121T100955Z-run254-evernorth-q3-cap
 | #1685 | A2A credential separation | blocked | Separate security workstream; do not merge while its runner sandbox and credential/egress gates remain unresolved. |
 
 Next action: obtain an independent review and verifiable main branch-protection evidence for #1684. Keep it draft until that review is available. After any permitted merge, fetch main, verify the merge commit and merged files, run main CI, then execute and verify the backfill against the current main feature-store checkpoint before classifying any source PR as superseded. Do not close #1685 or any unique research work.
+
+
+---
+
+## Run255 — current exact-head verification and map refresh — 2026-11-21 10:19 UTC
+
+### EXECUTED and VERIFIED on code head `4103ced2eecc58a3279caf9a8bb9ca8cadf3ad53`
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`. The complete main tree has 3,115 entries; the integration branch has 3,118 entries, no main paths missing, and three branch-only additions. The existing #1684 branch is 58 commits ahead / 0 behind, ten changed files, and GitHub reports it conflict-free.
+- Exact PR CI [44893394926](https://github.com/Barrot-Agent/B-Agent/actions/runs/44893394926) and push CI [44893391085](https://github.com/Barrot-Agent/B-Agent/actions/runs/44893391085) passed on the same code head. Full suite: **4,542 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests; 73.20% coverage**. Core tests and GitHub Pages validation-only build passed.
+- Dependency Audit [44893394988](https://github.com/Barrot-Agent/B-Agent/actions/runs/44893394988), push dependency audit [44893391080](https://github.com/Barrot-Agent/B-Agent/actions/runs/44893391080), Money audit [44893394885](https://github.com/Barrot-Agent/B-Agent/actions/runs/44893394885), and Conflict Integrity [44893394884](https://github.com/Barrot-Agent/B-Agent/actions/runs/44893394884) passed.
+- The actual historical backfill module executed successfully again in the PR CI job. Before: 10 snapshots / 16,094 records. After: 11 snapshots / 16,212 records. It restored 118 records from 11 source lineages. SQLite integrity was `ok`; manifests, records and lineage rows verified; the records were hidden one microsecond before the recovery receipt and visible one microsecond after.
+- Current replay receipt SHA-256: `9f1c73684f548bfb07893cb57f5d3603bb61b6b83246ed903e2a85674aeeec2e`. Artifact [xrp-historical-backfill-reconciliation-44893394926](https://github.com/Barrot-Agent/B-Agent/actions/runs/44893394926), ID `14703032640`, ZIP digest `sha256:3be413b37011061c0986c917cd60cfd06ed0b6d1ff98404838b6561dbf063516`, expires 2027-02-19. Store receipt time `2026-11-21T10:16:39.607293Z`.
+- This is still a CI artifact replay only. The recovered 118 records have **not** been applied to main or persisted to main's feature-store artifact.
+
+### VERIFIED — merge gate remains blocked
+
+Fail-closed PR gate [44893394915](https://github.com/Barrot-Agent/B-Agent/actions/runs/44893394915) returned **READINESS=BLOCKED** for exactly three reasons: PR #1684 remains draft; no independent approving review exists; branch-protection details could not be verified. The push gate also failed closed. No merge was attempted.
+
+PR #1685 remains a separate, unique A2A security workstream, five commits ahead / 0 behind and nine changed files. It is not a duplicate of #1684 and remains blocked by the runner sandbox, provider-credential isolation, egress restrictions and task-level authorization requirements.
+
+### Main prediction-readiness state
+
+Main ingestion run [44888553926](https://github.com/Barrot-Agent/B-Agent/actions/runs/44888553926) remains the latest verified main snapshot: 34 raw receipts (22 retained payloads, 12 digest-only), 10 feature-store snapshots / 16,094 records, 124 eligible features, 204 candidate drift features, zero drift features evaluated, incomplete event-to-receipt links and zero walk-forward origins. Forecast issuance remains `NOT_ISSUED`.
+
+### Research and map correction
+
+The append-only Evernorth research record from Run254 is now covered by regression tests. It distinguishes the $214.05M historical cash used to buy 84.366M XRP from investor/Ripple in-kind contributions, and it corrects SBI Holdings' closing beneficial ownership to 9,431,914 Class A and 2,359,038 Class C shares. The 39.9% and 7.5% percentages apply to their respective classes, not the entire company. The earlier $200M SBI PIPE announcement is not separately reconciled to an investor-level cash amount in the reviewed SEC filings.
+
+The nine-platform map is being refreshed to record the verified code head, exact-head CI, artifact replay, main data-quality blockers and current PR classifications. The refresh also preserves the nine-platform status: only the ChatGPT session-to-GitHub connector path is verified; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified, with zero external dispatches or data transfers.
+
+### Documentation/test-data successor and next action
+
+This Run255 map/handoff/test update is a documentation and regression-test-data change on top of code head `4103ced`; it does not change application logic, ingestion workflows, dependencies or V3 execution/safety code. It will receive its own exact-head CI before this run is considered fully verified. The PR remains draft and blocked. Next action is independent review plus verifiable branch-protection evidence; after any permitted merge, verify main, run main CI, then apply and verify the recovered feature-store snapshot on main. No unique research or A2A PR is to be closed.

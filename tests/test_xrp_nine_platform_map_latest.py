@@ -561,7 +561,7 @@ def test_run258_records_ingestion_recovery_and_run259_exact_head_state():
 
     pr = next(item for item in data["open_pr_backlog"] if item["number"] == 1684)
     assert pr["head_sha"] == data["current_pr_head_sha"]
-    assert pr["full_suite"]["passed"] == 4539
+    assert pr["full_suite"]["passed"] == 4542
     assert pr["full_suite"]["failed"] == 0
     assert pr["fail_closed"]["conclusion"] == "failure"
     assert data["run258_merge_decision"] == "NO_MERGE"
@@ -570,3 +570,78 @@ def test_run258_records_ingestion_recovery_and_run259_exact_head_state():
     assert data["run259_evidence_record"]["full_suite_skipped"] == 1
     assert data["run259_merge_decision"] == "NO_MERGE"
     assert data["run259_no_external_actions"] is True
+
+
+def test_run260_records_latest_main_ingestion_and_real_artifact_backfill():
+    data = load_map()
+    run = data["latest_run_260"]
+    assert run["main_sha"] == data["repository_state"]["main_sha"]
+    assert run["current_pr"]["head_sha"] == data["current_pr_head_sha"]
+    assert run["current_pr_ci"]["full_suite"]["passed"] == 4542
+    assert run["current_pr_ci"]["full_suite"]["failed"] == 0
+    assert run["current_pr_ci"]["full_suite"]["skipped"] == 1
+    assert run["current_pr_ci"]["backfill_replay_conclusion"] == "success"
+
+    ingestion = run["latest_ingestion"]
+    assert ingestion["run_id"] == 44888553926
+    assert ingestion["receipt_count"] == 34
+    assert ingestion["raw_retained"] == 22
+    assert ingestion["digest_only"] == 12
+    assert ingestion["feature_store_snapshots"] == 10
+    assert ingestion["feature_store_records"] == 16094
+    assert ingestion["event_receipt_complete"] is False
+    assert ingestion["walk_forward_forecasts"] == 0
+    assert ingestion["forecast_issuance"] == "NOT_ISSUED"
+
+    backfill = run["backfill_replay"]
+    assert backfill["status"] == "CI_REAL_ARTIFACT_REPLAY_VERIFIED_NOT_APPLIED_TO_MAIN"
+    assert backfill["recovered_records"] == 118
+    assert backfill["recovered_source_count"] == 11
+    assert backfill["after_snapshot_count"] == 11
+    assert backfill["after_record_count"] == 16212
+    assert backfill["sqlite_integrity"] == "ok"
+    assert backfill["all_snapshot_manifests_verified"] is True
+    assert backfill["all_feature_record_rows_verified"] is True
+    assert backfill["all_source_lineage_rows_verified"] is True
+    assert backfill["visible_before_receipt"] is False
+    assert backfill["visible_after_receipt"] is True
+    assert backfill["not_committed_to_main"] is True
+    assert backfill["receipt_sha256"] == "9f1c73684f548bfb07893cb57f5d3603bb61b6b83246ed903e2a85674aeeec2e"
+    assert run["forecast"]["status"] == "NOT_ISSUED"
+    assert run["no_external_actions"] is True
+
+
+def test_run254_evernorth_capital_and_sbi_ownership_are_typed_and_model_ineligible():
+    root = Path(__file__).resolve().parents[1]
+    evidence_path = (
+        root
+        / "research"
+        / "xrp_intelligence"
+        / "20261121T100955Z-run254-evernorth-q3-capital-and-institutional-network-reconciliation.json"
+    )
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+    assert evidence["model_eligible"] is False
+    assert evidence["raw_capture"]["raw_http_bytes_captured"] is False
+
+    capital = evidence["capital_reconciliation"]
+    preclose = capital["as_of_2026_09_30"]
+    assert preclose["xrp_held"] == 346284972
+    assert preclose["advance_funding_cash_received_usd"] == 214050000
+    assert preclose["xrp_purchased_with_that_cash"] == 84365876
+    assert preclose["investor_in_kind_xrp_subscriptions"] == 261919096
+    close = capital["at_2026_10_09_close"]
+    assert close["in_kind_xrp_total"] == 388910554
+    assert close["combined_pathfinder_xrp_derived"] == 473276430
+
+    sbi = evidence["ownership_and_control"]["sbi_holdings_evernorth_beneficial_ownership"]
+    assert sbi["class_a_shares"] == 9431914
+    assert sbi["class_c_shares"] == 2359038
+    assert sbi["class_a_percentage_derived"] == 39.9
+    assert sbi["class_c_percentage_derived"] == 7.5
+    assert "not separately reconcile" in evidence["ownership_and_control"]["sbi_cash_amount"]["caveat"].lower()
+
+    relationships = evidence["institutional_relationship_graph"]
+    assert any(x["from"] == "Ripple" and x["to"] == "Coinbase" for x in relationships)
+    assert any(x["from"] == "Circle" and x["to"] == "BNY" for x in relationships)
+    assert any(x["from"] == "SBIC East/Central/West" and x["to"] == "SBI Holdings" for x in relationships)
+    assert evidence["model_admission"]["forecast_status"] == "NOT_ISSUED"
