@@ -135,7 +135,8 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert security["protection_details_verified"] is False
     assert "403" in security["protection_details_api"]
     assert security["fallback_ruleset"]["enforcement"] == "disabled"
-    assert security["pr_1673"]["draft"] is True
+    assert security["pr_1673"]["draft"] is False
+    assert security["pr_1673"]["merged"] is True
     assert security["pr_1673"]["formal_reviews"] == 0
     assert security["transitive_script_security_review"].lower() == "incomplete"
     assert security["transitive_script_review"] == security["transitive_script_security_review"]
