@@ -18,6 +18,7 @@ from barrot_agent.evolution.xrp_feature_store_backfill import (
 from barrot_agent.evolution.xrp_public_ingestion import RawReceiptArchive, _feature_record
 
 
+ROOT = Path(__file__).resolve().parents[1]
 MAIN_SHA = "a" * 40
 PARENT_RUN = "44844499889"
 SOURCE_RUN = "44844953105"

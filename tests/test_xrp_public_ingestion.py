@@ -1329,7 +1329,7 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
         "      - name: Save cumulative feature-store cache after successful artifact publication", 1
     )[1].split("\n      - name:", 1)[0]
     assert "continue-on-error: true" in cache_save_step
-    assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&per_page=100&page=1" in workflow
+    assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&per_page=100&page=${page}" in workflow
     assert "&status=completed" not in workflow
     assert workflow.count('select(.status == "completed" and .conclusion == "success"') == 2
     assert "per_page=100&page=${page}" in workflow

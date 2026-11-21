@@ -60,7 +60,7 @@ def test_completed_run_selection_filters_status_locally_paginates_and_fails_clos
     # scheduled predecessor in production, creating sibling receipt-chain branches.
     assert "&status=completed" not in text
     assert text.count('.status == "completed" and .conclusion == "success"') == 2
-    assert text.count("branch=\\u0024{GITHUB_REF_NAME}") == 2
+    assert text.count("branch=${GITHUB_REF_NAME}") == 2
     assert "page=1" in text
     assert "page=$((page + 1))" in text
     assert "total_prior_runs=$((total_prior_runs + page_run_count))" in text
