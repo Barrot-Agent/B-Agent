@@ -265,7 +265,8 @@ def _verified_source_snapshot(
     expected_manifest_sha256: str,
     expected_record_count: int,
     expected_source_count: int,
-) -> tuple[dict[str, Any], list[dict[str, str]], str]:
+    common_snapshot_id: str,
+) -> tuple[dict[str, Any], list[dict[str, str]], str, str]:
     if source_database.is_symlink() or not source_database.is_file():
         raise XRPFeatureStoreBackfillError("source feature-store database is missing or unsafe")
     with tempfile.TemporaryDirectory(prefix="xrp-backfill-source-") as temp:
@@ -287,6 +288,8 @@ def _verified_source_snapshot(
         lineage = source_store.source_lineage(snapshot_id)
         if len(lineage) != expected_source_count:
             raise XRPFeatureStoreBackfillError("source snapshot source count does not match the pinned value")
+        common = source_store.verified_snapshot(common_snapshot_id)
+        common_manifest_sha = _sha256_bytes(_canonical(common["manifest"]).encode("utf-8"))
         if any(record.get("model_eligible") is not True for record in manifest["records"]):
             raise XRPFeatureStoreBackfillError("source snapshot contains a non-eligible model record")
         return (
@@ -303,6 +306,7 @@ def _verified_source_snapshot(
             },
             lineage,
             _sha256_file(source_database),
+            common_manifest_sha,
         )
 
 
@@ -471,6 +475,7 @@ def reconcile_historical_snapshot(
         backfill_manifest_sha256,
         expected_record_count,
         expected_source_count,
+        common_snapshot_id,
     )
     _verify_source_lineage(source_lineage, source_receipts)
 
@@ -481,7 +486,8 @@ def reconcile_historical_snapshot(
     )
     if not lineage or lineage[0]["current_run"]["run_id"] != str(fork_run_id):
         raise XRPFeatureStoreBackfillError("main receipt chain does not begin at the expected fork head")
-    if lineage[-1]["current_run"]["run_id"] != _verify_index(Path(current_index_path)["current_run"]["run_id"] if False else Path(current_index_path))["current_run"]["run_id"]:
+    current_index = _verify_index(Path(current_index_path))
+    if lineage[-1]["current_run"]["run_id"] != current_index["current_run"]["run_id"]:
         raise XRPFeatureStoreBackfillError("main receipt chain does not terminate at the supplied current index")
     if any(item["current_run"]["run_id"] == str(source_run_id) for item in lineage):
         raise XRPFeatureStoreBackfillError("the source sibling fork was incorrectly included in the main lineage")
@@ -494,14 +500,19 @@ def reconcile_historical_snapshot(
     if target_path.is_symlink() or not target_path.is_file():
         raise XRPFeatureStoreBackfillError("cumulative target feature-store checkpoint is missing or unsafe")
     store_receipt_clock = clock or (lambda: datetime.now(timezone.utc))
-    target_store = HistoricalFeatureStore(target_path, clock=store_receipt_clock)
+    recovery_clock_value = store_receipt_clock()
+    if not isinstance(recovery_clock_value, datetime) or recovery_clock_value.tzinfo is None or recovery_clock_value.utcoffset() is None:
+        raise XRPFeatureStoreBackfillError("feature-store recovery clock must be timezone-aware")
+    recovery_clock_value = recovery_clock_value.astimezone(timezone.utc)
+    target_store = HistoricalFeatureStore(target_path, clock=lambda: recovery_clock_value)
     before_verification = target_store.verify_all_snapshots()
     if before_verification.get("valid") is not True:
         raise XRPFeatureStoreBackfillError("cumulative target feature store failed pre-backfill verification")
 
     common = target_store.verified_snapshot(common_snapshot_id)
-    if _sha256_bytes(_canonical(common["manifest"]).encode("utf-8")) != source_snapshot["manifest"].get("common_parent_manifest_sha256", _sha256_bytes(_canonical(common["manifest"]).encode("utf-8"))):
-        raise XRPFeatureStoreBackfillError("common ancestor snapshot manifest does not verify")
+    common_manifest_sha = _sha256_bytes(_canonical(common["manifest"]).encode("utf-8"))
+    if common_manifest_sha != source_common_manifest_sha:
+        raise XRPFeatureStoreBackfillError("source and target common-ancestor snapshot manifests differ")
     fork_snapshot = target_store.verified_snapshot(fork_snapshot_id)
     fork_manifest_sha = _sha256_bytes(_canonical(fork_snapshot["manifest"]).encode("utf-8"))
     if fork_manifest_sha != fork_snapshot_manifest_sha256:
@@ -515,10 +526,7 @@ def reconcile_historical_snapshot(
             raise XRPFeatureStoreBackfillError("existing backfill snapshot failed verification") from exc
 
     if existing_snapshot is None:
-        receipt_time = store_receipt_clock()
-        if not isinstance(receipt_time, datetime) or receipt_time.tzinfo is None or receipt_time.utcoffset() is None:
-            raise XRPFeatureStoreBackfillError("feature-store recovery clock must be timezone-aware")
-        receipt_time = receipt_time.astimezone(timezone.utc)
+        receipt_time = recovery_clock_value
         receipt_time_s = _iso(receipt_time)
         stored = target_store.append_snapshot(source_snapshot["manifest"])
         if stored.get("created") is not True or stored.get("stored_at_utc") != receipt_time_s:
@@ -608,7 +616,7 @@ def reconcile_historical_snapshot(
         "feature_store_after": {
             "snapshot_count": after_verification["snapshot_count"],
             "verified_snapshot_count": after_verification["verified_count"],
-            "record_count": target_store.record_count() if hasattr(target_store, "record_count") else None,
+            "record_count": visibility["after_record_count"],
             "database_sha256_after_checkpoint": target_database_sha,
             "checkpoint": checkpoint,
         },
