@@ -1,11 +1,10 @@
 """Artifact-backed, append-only recovery of the known XRP feature-store fork.
 
 This module imports one verified historical snapshot into an isolated cumulative
-checkpoint and never rewrites prior snapshots or receipt chains. It records a
-pre-append server-time sample plus a ten-second future availability bound, then
-confirms after append that the bound is still in the future. This prevents
-premature as-of visibility without claiming a physical commit time or trusted
-external timestamp anchor.
+checkpoint. It never rewrites prior snapshots or receipt chains. A post-append
+server-time sample plus a one-second safety margin finalizes the new snapshot's
+availability boundary. This is conservative and prevents early as-of visibility;
+it is not a physical SQLite commit timestamp or an independent trusted anchor.
 """
 from __future__ import annotations
 
@@ -111,7 +110,7 @@ def _validate_server_receipt_time(server_time: datetime, run_started_at: datetim
 
 
 def _github_api_server_clock() -> datetime:
-    """Return a fresh GitHub server Date header for the pre/post append clock checks."""
+    """Return GitHub server time; callers sample again after append before finalizing availability."""
     token = os.environ.get("GH_TOKEN")
     repository = os.environ.get("GITHUB_REPOSITORY")
     run_id = os.environ.get("GITHUB_RUN_ID")
@@ -498,6 +497,142 @@ def verify_existing_reconciliation(
     target_database: str | Path,
     receipt_path: str | Path,
 ) -> dict[str, Any]:
+    target_path = Path(target_database)
+    receipt_file = Path(receipt_path)
+    receipt = _read_json(receipt_file)
+    if receipt.get("schema_version") != SCHEMA_VERSION or receipt.get("status") != "RECONCILED":
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt has an unsupported schema or status")
+    stored_hash = receipt.get("reconciliation_sha256")
+    without_hash = {key: value for key, value in receipt.items() if key != "reconciliation_sha256"}
+    if stored_hash != _sha256_bytes(_canonical(without_hash).encode("utf-8")):
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt hash mismatch")
+    snapshot = receipt.get("backfill_snapshot")
+    if not isinstance(snapshot, Mapping):
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt has no backfill snapshot")
+    receipt_clock = receipt.get("receipt_clock")
+    if not isinstance(receipt_clock, Mapping):
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt has no future-bound clock evidence")
+    if (
+        receipt_clock.get("sampling_phase") != "pre_append_future_bound"
+        or receipt_clock.get("post_append_confirmed_before_bound") is not True
+        or receipt_clock.get("physical_commit_time") is not False
+        or receipt_clock.get("safety_margin_seconds") != 10
+        or snapshot.get("store_receipt_time_is_post_append_availability_bound") is not True
+        or snapshot.get("store_receipt_time_is_actual_recovery_time") is not False
+    ):
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt overstates or lacks future-bound clock quality")
+    try:
+        sampled_before = datetime.fromisoformat(
+            str(receipt_clock["sampled_before_append_at_utc"]).replace("Z", "+00:00")
+        )
+        sampled_after = datetime.fromisoformat(
+            str(receipt_clock["sampled_after_append_at_utc"]).replace("Z", "+00:00")
+        )
+        availability_bound = datetime.fromisoformat(
+            str(receipt_clock["availability_bound_utc"]).replace("Z", "+00:00")
+        )
+    except (KeyError, TypeError, ValueError) as exc:
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt has invalid clock timestamps") from exc
+    if (
+        sampled_after < sampled_before
+        or sampled_after >= availability_bound
+        or availability_bound != sampled_before + timedelta(seconds=10)
+        or snapshot.get("stored_at_utc") != receipt_clock.get("availability_bound_utc")
+    ):
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt future clock bounds are inconsistent")
+    store = HistoricalFeatureStore(target_path)
+    exact = store.verified_snapshot(str(snapshot.get("snapshot_id") or ""))
+    manifest = exact["manifest"]
+    if (
+        _sha256_bytes(_canonical(manifest).encode("utf-8")) != snapshot.get("manifest_sha256")
+        or exact["stored_at_utc"] != snapshot.get("stored_at_utc")
+        or len(manifest.get("records", [])) != snapshot.get("record_count")
+        or len(store.source_lineage(exact["snapshot_id"])) != snapshot.get("source_count")
+    ):
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt does not match the restored feature store")
+    visibility = _verify_visibility(store, manifest, exact["stored_at_utc"])
+    if receipt.get("point_in_time_visibility") != visibility:
+        raise XRPFeatureStoreBackfillError("existing reconciliation point-in-time visibility evidence has changed")
+    return {
+        "status": "VERIFIED_EXISTING",
+        "snapshot_id": exact["snapshot_id"],
+        "stored_at_utc": exact["stored_at_utc"],
+        "reconciliation_sha256": stored_hash,
+        "feature_store": store.verify_all_snapshots(),
+        "point_in_time_visibility": visibility,
+    }
+
+
+def reconcile_historical_snapshot(
+    *,
+    target_database: str | Path,
+    source_database: str | Path,
+    source_raw_artifact_root: str | Path,
+    source_index_path: str | Path,
+    fork_raw_artifact_root: str | Path,
+    fork_index_path: str | Path,
+    ancestry_index_dir: str | Path,
+    current_index_path: str | Path,
+    output_path: str | Path,
+    artifact_inventory_path: str | Path | None = None,
+    source_run_id: str = SOURCE_RUN_ID,
+    fork_run_id: str = FORK_RUN_ID,
+    common_parent_run_id: str = COMMON_PARENT_RUN_ID,
+    common_snapshot_id: str = COMMON_SNAPSHOT_ID,
+    fork_snapshot_id: str = FORK_SNAPSHOT_ID,
+    fork_snapshot_manifest_sha256: str = FORK_SNAPSHOT_MANIFEST_SHA256,
+    backfill_snapshot_id: str = BACKFILL_SNAPSHOT_ID,
+    backfill_manifest_sha256: str = BACKFILL_MANIFEST_SHA256,
+    expected_record_count: int = BACKFILL_RECORD_COUNT,
+    expected_source_count: int = BACKFILL_SOURCE_COUNT,
+    clock: Callable[[], datetime] | None = None,
+    receipt_clock_source: str = "runtime_clock",
+) -> dict[str, Any]:
+    output_file = Path(output_path)
+    if output_file.exists():
+        return verify_existing_reconciliation(target_database, output_file)
+
+    source_index_file = Path(source_index_path)
+    fork_index_file = Path(fork_index_path)
+    source_index = _verify_index(source_index_file, source_run_id)
+    fork_index = _verify_index(fork_index_file, fork_run_id)
+    _verify_sibling_fork(source_index, fork_index, common_parent_run_id)
+
+    source_raw_verification, source_receipts, source_raw_tree_sha = _verify_raw_artifact(
+        Path(source_raw_artifact_root), source_index_file, source_run_id
+    )
+    fork_raw_verification, _, fork_raw_tree_sha = _verify_raw_artifact(
+        Path(fork_raw_artifact_root), fork_index_file, fork_run_id
+    )
+    source_snapshot, source_lineage, source_database_sha, source_common_manifest_sha = _verified_source_snapshot(
+        Path(source_database),
+        backfill_snapshot_id,
+        backfill_manifest_sha256,
+        expected_record_count,
+        expected_source_count,
+        common_snapshot_id,
+    )
+    _verify_source_lineage(source_lineage, source_receipts)
+
+    lineage = _verify_index_chain(
+        Path(current_index_path),
+        Path(ancestry_index_dir),
+        fork_run_id,
+    )
+    if not lineage or lineage[0]["current_run"]["run_id"] != str(fork_run_id):
+        raise XRPFeatureStoreBackfillError("main receipt chain does not begin at the expected fork head")
+    if _canonical(lineage[0]) != _canonical(fork_index):
+        raise XRPFeatureStoreBackfillError("main receipt ancestry fork head differs from the verified sibling index")
+    current_index = _verify_index(Path(current_index_path))
+    if lineage[-1]["current_run"]["run_id"] != current_index["current_run"]["run_id"]:
+        raise XRPFeatureStoreBackfillError("main receipt chain does not terminate at the supplied current index")
+    if any(item["current_run"]["run_id"] == str(source_run_id) for item in lineage):
+        raise XRPFeatureStoreBackfillError("the source sibling fork was incorrectly included in the main lineage")
+
+    artifact_inventory: dict[str, Any] = {}
+    if artifact_inventory_path is not None:
+        artifact_inventory = _read_json(Path(artifact_inventory_path))
+
     target_path = Path(target_database)
     source_database_path = Path(source_database)
     if target_path.is_symlink() or not target_path.is_file():
