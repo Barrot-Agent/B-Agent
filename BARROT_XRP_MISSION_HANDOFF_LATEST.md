@@ -1,6 +1,61 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
-Updated: 2026-11-21 (Run249: two schedule-triggered XRP ingestion captures verified on main; cross-run receipt chain continued; forecast issuance remains disabled; PRs #1684 and #1685 remain blocked pending exact-head CI and independent review).
+Updated: 2026-11-21 (Automation run 11: PR #1684 exact head 062bac08 passed the full repository suite and preserved-artifact backfill replay; main 550a647 unchanged; merge remains blocked by draft status and unverifiable branch protection).
+
+## Current checkpoint — 2026-11-21T14:29:55Z (automation run 11)
+
+### Repository and integration state
+
+- Repository: `Barrot-Agent/B-Agent`; default branch `main`.
+- Main SHA remains `550a647ee7269a704d4600ff337b2145acc90473`; complete recursive main tree: 3,115 entries, not truncated.
+- Existing XRP integration PR [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684) is the only XRP workstream. Branch `integration/xrp-post-merge-verification-20261121T0002Z`, exact head `062bac08a7b2cd6956cc3b97353dd3d5880b1a26`, 80 commits ahead / zero behind main, 13 changed files. Its complete recursive tree contains 3,121 entries, not truncated.
+- The only other open PR is [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685), a separate A2A gateway/runner credential-separation workstream with nine changed files. No duplicate XRP PR or new branch was created.
+- PR #1684 has zero formal reviews and zero inline review comments. PR #1685 also has zero formal reviews. Both remain draft. Changed paths between the two workstreams are separate.
+
+### Exact-head verification — PR #1684 head 062bac08
+
+- Push CI [44913075574](https://github.com/Barrot-Agent/B-Agent/actions/runs/44913075574) and PR CI [44913079255](https://github.com/Barrot-Agent/B-Agent/actions/runs/44913079255) completed successfully on exact head `062bac08a7b2cd6956cc3b97353dd3d5880b1a26`.
+- Full repository suite: **4,546 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests; 73.20% inclusive coverage; 201.52 seconds**. Every tracked active test module was discovered; the configured core and mission-critical package coverage floors passed.
+- The separate core Tests job passed. Dependency audit [44913079261](https://github.com/Barrot-Agent/B-Agent/actions/runs/44913079261), Money audit [44913079265](https://github.com/Barrot-Agent/B-Agent/actions/runs/44913079265), conflict-integrity [44913079280](https://github.com/Barrot-Agent/B-Agent/actions/runs/44913079280), and Pages validation-only passed.
+- The PR-specific real-artifact replay job [44913079255](https://github.com/Barrot-Agent/B-Agent/actions/runs/44913079255/job/136872817320) completed successfully on the same exact head. It downloaded preserved main-branch artifacts and verified the GitHub ZIP digests against downloaded bytes.
+- Isolated backfill: 16,693 records / 15 snapshots before; 16,811 records / 16 snapshots after; 118 recovered historical records from 11 source lineages. Actual recovery receipt time: `2026-11-21T14:18:44.558564Z`. Point-in-time visibility was false before the receipt and true after. SQLite integrity passed. Reconciliation SHA-256: `9fdb8bfe1857b3cce88d8022e706cfd5d0ec8297bb72b8e10b2183b2cadced3e`. Reconciliation artifact [14711130394](https://github.com/Barrot-Agent/B-Agent/actions/runs/44913079255/artifacts/14711130394), ZIP digest `sha256:ca5311799900495c9d0eb451c3eb2157864fd86a110e4119a5a8138ffb106182`.
+- The isolated recovery did not modify main's feature store. It verifies provenance and point-in-time semantics, not predictive performance.
+
+### Latest main ingestion — run 44912673505
+
+- Successful scheduled capture on main SHA `550a647`, started 2026-11-21 14:11:53 UTC: [run 44912673505](https://github.com/Barrot-Agent/B-Agent/actions/runs/44912673505).
+- 34 source receipts: 22 retained raw payloads and 12 digest-only receipts; 18 source failures; 23 raw-only sources.
+- Cumulative feature history: 16,693 records across 15 snapshots. Latest snapshot: 123 eligible and 367 excluded feature records. Event timeline: 150 events; scenarios: 117.
+- Cross-run receipt continuity: `CONTINUED`, verified true. Receipt-chain verification passed; receipt-log SHA-256: `1a0c02425358c378f725d5d377fe3923c4fc3de9a918f7b8866405f77cece499`.
+- Drift: 0 of 204 candidate features evaluated; status `INSUFFICIENT_DATA`. Walk-forward forecast count: zero; status `PARTIAL_OR_BLOCKED`. Forecast issuance: `NOT_ISSUED`.
+- SEC Companyfacts capture: `BLOCKED_CONFIGURATION`; three source failures, zero raw receipts, zero captured primary documents, and no model-eligible SEC data.
+- Event timeline receipt completeness remains false. External receipt anchoring remains `NOT_ANCHORED`.
+- Main raw artifact [14710004854](https://github.com/Barrot-Agent/B-Agent/actions/runs/44912673505/artifacts/14710004854), ZIP SHA-256 `190df659ff935e43d888217b3b6312afe098064c6c57434528a3b0af5bb2fb73`; receipt index [14710980176](https://github.com/Barrot-Agent/B-Agent/actions/runs/44912673505/artifacts/14710980176), ZIP SHA-256 `9a4c83a11b92db86e17764b796ce1aefffc70d7a8201c15e455e71b1a48f5e38`; feature-store checkpoint [14710830647](https://github.com/Barrot-Agent/B-Agent/actions/runs/44912673505/artifacts/14710830647), ZIP SHA-256 `6ad4bb4cc600f9e8666aab184c0a334f1452865b92672931b8215924386896ac`; event artifact [14710860581](https://github.com/Barrot-Agent/B-Agent/actions/runs/44912673505/artifacts/14710860581), ZIP SHA-256 `458153a30af7d59cf7cc63e15e625336344e6f317f8a9081db1305623fc08d0a`.
+- GitHub Actions artifacts remain retention-limited (90 days for raw receipts) and are not WORM or an independent timestamp authority. The Actions cache is read-only because the configured cache budget is exhausted; the cache is derived/evictable and is not treated as source of truth.
+
+### Merge gate and external-action safety
+
+- Fail-closed PR gate [44913079247](https://github.com/Barrot-Agent/B-Agent/actions/runs/44913079247) failed closed on exact head `062bac08`: PR is still draft; effective branch protection cannot be verified because the branch-protection endpoint returns HTTP 403. No independent approving review exists. CODEOWNERS assigns all paths to `@Barrot-Agent`, the PR author.
+- **Do not merge.** Passing tests do not satisfy the draft, independent-review, or branch-protection requirements. Do not convert to ready merely to make the gate pass.
+- Pages build on this PR is validation-only. The previously documented automatic Pages publication after the earlier main merge remains an unresolved authorization exception; no Pages deployment was triggered by this run.
+- No main write, merge, deployment, secret change, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, transfer of funds, or real-money action occurred.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** XRP priority-one mission; preserve Barrot V3; one active XRP integration PR; append-only point-in-time store; raw receipts and provenance; chronological prediction evaluation; fail-closed forecast and execution gates.
+- **EXECUTED:** fetched main ref and full recursive trees; enumerated open PRs; compared ancestry and changed paths; read exact-head checks and workflow logs; inspected latest main ingestion; replayed the historical recovery against preserved artifacts; reviewed the durable handoff, CI workflow and ingestion workflow.
+- **VERIFIED:** main SHA/tree; PR #1684 ancestry and exact head; full-suite and package coverage gates on `062bac08`; dependency, money, conflict and Pages validation checks; real-artifact recovery and receipt-time point-in-time boundary; latest main ingestion receipt-chain continuity.
+- **NOT VERIFIED / BLOCKED:** independent PR approval; effective branch-protection rules; authorization/containment of automatic Pages publication; independent WORM/timestamp anchor; complete event-to-raw-receipt binding; SEC capture configuration; drift evaluation; nonzero walk-forward origins; baseline superiority; probability calibration; shadow outcomes; authentication/data flow for the eight external platforms.
+
+### Next concrete actions
+
+1. Keep #1684 as the sole XRP integration PR; obtain a genuinely independent review and verify effective branch-protection requirements before considering merge.
+2. Resolve the Pages publication authorization exception before any main merge.
+3. Repair event-to-raw-source receipt links and establish independent immutable retention/timestamp anchoring.
+4. Resolve SEC capture only with a legitimate monitored contact; retain missing/blocked filings as missing, never zero.
+5. Continue synchronized spot/depth, exchange-flow, derivatives, ETF, collateral, stablecoin and institutional-capital capture with point-in-time source-vintage controls.
+6. Keep forecasts disabled until leakage-safe chronological walk-forward evaluation, naive/momentum/mean-reversion/volatility baselines, calibration, drift and shadow outcomes are supported.
+
 
 ## Mission priority
 
