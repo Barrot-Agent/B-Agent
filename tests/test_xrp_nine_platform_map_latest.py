@@ -296,7 +296,7 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert quote_basis["normalization_overstatement_if_usdt_assumed_usd_bps"] == 19.58829243797089
     assert quote_basis["depth_levels_normalized"] is False
     assert quote_basis["publisher_independence_group_count"] == 1
-    assert "not a consolidated executable book" in market["interpretation"]
+    assert "not consolidated executable liquidity" in market["interpretation"]
 
 
 def test_latest_map_preserves_bny_custody_without_overclaiming_xrp_demand():
