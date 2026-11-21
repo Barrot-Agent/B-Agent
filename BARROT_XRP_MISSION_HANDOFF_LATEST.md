@@ -3917,3 +3917,16 @@ Supporting November 4, 2025 Evernorth communication: https://www.sec.gov/Archive
 ### Next concrete action
 
 Keep #1684 and #1685 draft. Obtain an independent approving review and verifiable protected-branch settings before changing either PR to ready or merging. After an approved merge of #1684, verify that the next main scheduled ingestion chooses the immediately preceding successful run (including run 26 if still the latest), restores the expected feature-store checkpoint, increments the cross-run sequence exactly once and preserves both forked historical branch hashes. Keep forecast issuance disabled. Do not activate the A2A runner or deploy/rotate credentials.
+
+
+### Live spot cross-check and repository reproducibility notes — 2026-11-21 02:10 UTC
+
+- Kraken public XRP/USD ticker was retrieved at 2026-11-21 02:10:24 UTC: last $0.90797; best bid $0.90778 for 2,656 XRP; best ask $0.90790 for 141 XRP; midpoint $0.90784; quoted spread $0.00012 (about 1.32 bps). Reported 24-hour volume was 71.861 million XRP and 24-hour VWAP $0.915281; 24-hour high/low $0.97224/$0.88259. The last price was approximately 0.80% below 24-hour VWAP and 0.08% below the reported daily open of $0.90871.
+- This is one venue's ticker/top-of-book observation, not a consolidated book, executable depth curve or forecast. Its best-level size asymmetry does not override the earlier Kraken 10 bp ask-heavy snapshot; they are different timestamps and depth measures. The public depth endpoint was not available through this research interface, so no Level-2 claim is made.
+- Source: https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+
+Repository-wide validation details:
+- The current full-suite workflow discovers all tracked active test modules using `git ls-files` and runs them; it excludes only disabled tests, archived/quarantined paths and fixtures. It has explicit discovery checks for required legacy and autonomous-task test modules, a 62% aggregate coverage floor, a 70% legacy core floor and additional mission-critical package floors including XRP telemetry, feature store, forecast ledger and point-in-time features.
+- Dependency Audit checks root runtime, development, supplemental integrations, Hugging Face Space, legacy requirements and PEP 621 dependencies. Dependabot is configured for weekly pip and GitHub Actions updates, with a five-open-PR limit per ecosystem.
+- The complete main tree contains no Python/Node dependency lockfile. Most Python requirements use minimum-version bounds rather than exact pins; optional Hugging Face and Kaggle integrations have upper bounds. The audit passed on #1684's prior exact head and the new head's Dependency Audit run 44854263266 also passed. This is vulnerability-audit evidence, not deterministic dependency-lock/reproducible-build evidence.
+- `.github/CODEOWNERS` assigns every path to `@Barrot-Agent`; no independent code-owner review is configured. This reinforces the independent-review blocker rather than satisfying it.
