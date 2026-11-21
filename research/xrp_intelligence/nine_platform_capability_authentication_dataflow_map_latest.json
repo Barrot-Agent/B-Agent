@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-21T00:08:16.722Z",
+  "captured_at_utc": "2026-11-21T00:08:52.717Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -101,17 +101,30 @@
       "independent_reviews": 0
     },
     "open_pr_backlog_summary": {
-      "total_open": 0,
+      "total_open": 1,
       "ready": 0,
-      "blocked": 0,
+      "blocked": 1,
       "unique_unreviewed": 0,
       "duplicate": 0,
       "superseded": 0
     },
     "integration_branch_protected": false,
-    "open_pr_inventory": [],
+    "open_pr_inventory": [
+      {
+        "number": 1684,
+        "classification": "blocked",
+        "changed_files": 2,
+        "overlap_with_main": 0,
+        "head_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "draft": true,
+        "note": "Documentation-only post-merge handoff and nine-platform map correction. Exact-head CI pending; do not merge until tests and independent governance review."
+      }
+    ],
     "last_audited_at_utc": "2026-11-21T00:08:16.722Z",
-    "open_prs": [],
+    "open_prs": [
+      1684
+    ],
     "integration_ahead_by": 0,
     "integration_behind_by": 0,
     "changed_files": 1492,
@@ -2470,7 +2483,15 @@
       "pages_authorization": "NOT_GRANTED"
     }
   },
-  "open_pr_backlog": [],
+  "open_pr_backlog": [
+    {
+      "number": 1684,
+      "classification": "blocked",
+      "changed_files": 2,
+      "overlap_with_1673": 0,
+      "note": "Documentation-only post-merge handoff/map correction. Draft; exact-head CI pending; independent review and branch-protection evidence remain unavailable."
+    }
+  ],
   "merge_decision": "POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION",
   "external_actions_this_run": [
     {
@@ -3013,9 +3034,9 @@
     "MAS BLOOM / XRP": "Ripple, Circle and Coinbase are listed as BLOOM industry members; the MAS page has no XRP/XRPL mention. No XRP settlement role inferred."
   },
   "open_pr_backlog_summary": {
-    "total_open": 0,
+    "total_open": 1,
     "ready": 0,
-    "blocked": 0,
+    "blocked": 1,
     "unique_unreviewed": 0,
     "duplicate": 0,
     "superseded": 0
@@ -4836,9 +4857,9 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-21T00:08:16.722Z",
+  "last_verified_at_utc": "2026-11-21T00:08:52.717Z",
   "latest_run_id": 248,
-  "latest_run_captured_at_utc": "2026-11-21T00:08:16.722Z",
+  "latest_run_captured_at_utc": "2026-11-21T00:08:52.717Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
   "current_successor_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z (merged)",
   "observed_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -5226,9 +5247,9 @@
   "no_merge_performed": false,
   "no_source_pr_closures": true,
   "backlog_classification": {
-    "total_open": 0,
+    "total_open": 1,
     "ready": 0,
-    "blocked": 0,
+    "blocked": 1,
     "unique_unreviewed": 0,
     "duplicate": 0,
     "superseded": 0,
@@ -5254,9 +5275,20 @@
       1664,
       1437
     ],
-    "note": "No open PRs at Run248 capture. Closed-unmerged source branches are retained; do not treat them as exact duplicates without path-level verification."
+    "note": "No open PRs at Run248 capture. Closed-unmerged source branches are retained; do not treat them as exact duplicates without path-level verification.",
+    "current_open_prs": [
+      1684
+    ]
   },
-  "open_pr_inventory": [],
+  "open_pr_inventory": [
+    {
+      "number": 1684,
+      "classification": "blocked",
+      "changed_files": 2,
+      "overlap_with_1673": 0,
+      "note": "Documentation-only post-merge handoff/map correction. Draft; exact-head CI pending; independent review and branch-protection evidence remain unavailable."
+    }
+  ],
   "run229_evidence_record": {
     "captured_at_utc": "2026-11-20T02:15:29.318Z",
     "repository": {
@@ -6512,7 +6544,7 @@
       "superseded": 1
     }
   },
-  "open_prs": 0,
+  "open_prs": 1,
   "latest_run_243": {
     "captured_at_utc": "2026-11-20T18:03:23Z",
     "repository": {
@@ -7397,7 +7429,7 @@
   },
   "run248_no_source_pr_closures": true,
   "latest_run_248": {
-    "captured_at_utc": "2026-11-21T00:08:16.722Z",
+    "captured_at_utc": "2026-11-21T00:08:52.717Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "merged_pr": 1673,
     "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7421,11 +7453,16 @@
     "walk_forward_origins": 0,
     "drift_status": "INSUFFICIENT_DATA",
     "forecast_issuance": "NOT_ISSUED",
-    "open_pr_count": 0,
-    "governance_exception": "PR #1673 merged after fail-closed gate failure; zero formal reviews; branch protection unverifiable; Pages publication authorization not granted."
+    "open_pr_count": 1,
+    "governance_exception": "PR #1673 merged after fail-closed gate failure; zero formal reviews; branch protection unverifiable; Pages publication authorization not granted.",
+    "documentation_followup_pr": 1684,
+    "documentation_followup_state": "OPEN_DRAFT",
+    "documentation_followup_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "documentation_followup_changed_files": 2,
+    "exact_head_ci_status": "PENDING"
   },
   "run248_evidence_record": {
-    "captured_at_utc": "2026-11-21T00:08:16.722Z",
+    "captured_at_utc": "2026-11-21T00:08:52.717Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "merged_pr": 1673,
     "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7449,7 +7486,13 @@
     "walk_forward_origins": 0,
     "drift_status": "INSUFFICIENT_DATA",
     "forecast_issuance": "NOT_ISSUED",
-    "open_pr_count": 0,
-    "governance_exception": "PR #1673 merged after fail-closed gate failure; zero formal reviews; branch protection unverifiable; Pages publication authorization not granted."
-  }
+    "open_pr_count": 1,
+    "governance_exception": "PR #1673 merged after fail-closed gate failure; zero formal reviews; branch protection unverifiable; Pages publication authorization not granted.",
+    "documentation_followup_pr": 1684,
+    "documentation_followup_state": "OPEN_DRAFT",
+    "documentation_followup_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "documentation_followup_changed_files": 2,
+    "exact_head_ci_status": "PENDING"
+  },
+  "current_handoff_branch": "integration/xrp-post-merge-verification-20261121T0002Z"
 }
