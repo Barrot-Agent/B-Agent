@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import shutil
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -89,10 +89,17 @@ def _set_run_context(monkeypatch, run_id: str) -> None:
     monkeypatch.setenv("GITHUB_EVENT_NAME", "schedule")
 
 
-def _create_raw_run(root: Path, run_id: str, previous_index: Path, monkeypatch, payload: bytes):
+def _create_raw_run(
+    root: Path,
+    run_id: str,
+    previous_index: Path,
+    monkeypatch,
+    payload: bytes,
+    captured: str,
+    source_data_as_of: str,
+):
     raw_root = root / "raw"
     archive = RawReceiptArchive(raw_root)
-    captured = "2026-11-21T00:00:02.000000Z"
     source_id = f"exchange_{run_id}"
     source_uri = f"https://example.com/{source_id}"
     receipt = archive.store(
@@ -100,7 +107,7 @@ def _create_raw_run(root: Path, run_id: str, previous_index: Path, monkeypatch, 
         source_uri=source_uri,
         captured_at_utc=captured,
         raw_bytes=payload,
-        source_data_as_of_utc="2026-11-21T00:00:01.000000Z",
+        source_data_as_of_utc=source_data_as_of,
         model_eligible=True,
     )
     _set_run_context(monkeypatch, run_id)
@@ -114,7 +121,9 @@ def _create_raw_run(root: Path, run_id: str, previous_index: Path, monkeypatch, 
 
 
 def _snapshot(tag: str, captured: str, source_id: str, source_uri: str, digest: str):
-    event_time = "2026-11-21T00:00:01.000000Z"
+    event_time = (
+        datetime.fromisoformat(captured.replace("Z", "+00:00")) - timedelta(seconds=1)
+    ).isoformat(timespec="microseconds").replace("+00:00", "Z")
     record = _feature_record(
         feature_id=f"xrp.spot.test.{tag}",
         value=0.5 + len(tag) / 100,
@@ -146,7 +155,13 @@ def _build_case(tmp_path: Path, monkeypatch):
     source_root = tmp_path / "source-artifact"
     source_root.mkdir()
     source_receipt, source_index, source_id, source_uri = _create_raw_run(
-        source_root, SOURCE_RUN, parent, monkeypatch, b'{"source":"source-run"}'
+        source_root,
+        SOURCE_RUN,
+        parent,
+        monkeypatch,
+        b'{"source":"source-run"}',
+        "2026-11-21T00:10:00.000000Z",
+        "2026-11-21T00:09:59.000000Z",
     )
     source_snapshot = _snapshot(
         "source",
@@ -159,7 +174,13 @@ def _build_case(tmp_path: Path, monkeypatch):
     fork_root = tmp_path / "fork-artifact"
     fork_root.mkdir()
     fork_receipt, fork_index, fork_source_id, fork_source_uri = _create_raw_run(
-        fork_root, FORK_RUN, parent, monkeypatch, b'{"source":"fork-run"}'
+        fork_root,
+        FORK_RUN,
+        parent,
+        monkeypatch,
+        b'{"source":"fork-run"}',
+        "2026-11-21T00:20:00.000000Z",
+        "2026-11-21T00:19:59.000000Z",
     )
     fork_snapshot = _snapshot(
         "fork",
@@ -172,7 +193,13 @@ def _build_case(tmp_path: Path, monkeypatch):
     child_root = tmp_path / "child-artifact"
     child_root.mkdir()
     child_receipt, child_index, child_source_id, child_source_uri = _create_raw_run(
-        child_root, CHILD_RUN, fork_index, monkeypatch, b'{"source":"main-descendant"}'
+        child_root,
+        CHILD_RUN,
+        fork_index,
+        monkeypatch,
+        b'{"source":"main-descendant"}',
+        "2026-11-21T00:30:00.000000Z",
+        "2026-11-21T00:29:59.000000Z",
     )
     child_snapshot = _snapshot(
         "child",
