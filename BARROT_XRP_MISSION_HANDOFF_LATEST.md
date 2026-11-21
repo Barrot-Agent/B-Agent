@@ -4184,3 +4184,67 @@ This is now a high-value weekly point-in-time source candidate for Barrot's deri
 4. Keep directional forecast issuance disabled until event raw receipts, adequate point-in-time history, nonzero chronological walk-forward origins, baseline comparison, calibration, drift and shadow evaluation meet the existing admission contract.
 
 No merge, force-push, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer or real-money action occurred in this run.
+
+
+## Run256 — 2026-11-21 03:44 UTC — collateral, derivatives, Japan-law and identity research
+
+### Institutional collateral: eligibility is verified; deployed balances are not
+
+- **Ripple Prime:** Ripple's current official product page explicitly says institutional clients may post **RLUSD, XRP, tokenized real-world assets or traditional collateral** into its cross-asset collateral pool. Ripple Prime is described by Ripple as a **non-bank prime broker**, not a retail exchange or bank. The page describes cross-margining across digital assets, FX, listed derivatives, swaps, fixed income and DeFi, but publishes no XRP collateral balances, client-level usage, haircut schedule, asset limits or net spot-purchase data. Source: https://ripple.com/products/prime-brokerage/
+- Ripple's October 15, 2026 announcement says Ripple Prime launched 24/7 RWA perpetual swaps referencing more than 100 markets, with institutional clients including Virtu. RLUSD is explicitly accepted as collateral for those swaps. This is a real institutional product, but RLUSD collateral acceptance does not prove XRP was posted or purchased. Source: https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/
+- **Coinbase Global Derivatives:** Coinbase's official cross-collateral specification lists XRP as an eligible cross-collateral currency for eligible customers in supported regions outside the United States. For most customers the terms apply from October 1, 2026. The table shows a 15% haircut in X:SM (cross standard margin) and no listed haircut in X:PM (cross portfolio margin). A haircut reserves part of collateral for initial margin; it is not a reduction in the account's nominal balance. This is a product eligibility/valuation rule, not evidence of how much XRP is posted. Source: https://help.coinbase.com/en/coinbase/derivatives/global-derivatives-cross-collateral
+- Coinbase International Exchange separately states it is available only to non-U.S. institutions in selected jurisdictions and that U.S. institutions are prohibited from access. Do not generalize this collateral facility to U.S. retail accounts. Source: https://www.coinbase.com/international-exchange
+- **Interpretation:** XRP collateral acceptance is now documented at both Ripple Prime and Coinbase Global Derivatives. That creates a potential non-spot utility channel. It must be modeled separately from (1) collateral eligibility, (2) collateral actually posted, (3) margin exposure supported, (4) credit/financing actually extended, and (5) net spot acquisition. Only the first category is publicly verified here; the amounts in categories 2–5 remain undisclosed or unverified.
+
+### Ripple supply disclosure — issuer-reported, quarter-end
+
+Ripple's official XRP page reports, as of September 30, 2026:
+- Total XRP held by Ripple: 36,809,481,946
+- Total XRP placed in escrow: 31,700,000,000
+- Total XRP distributed: 63,176,123,712
+
+The escrow amount is a subset of Ripple-held XRP, not an additional supply category. Arithmetic implies approximately 5.109B XRP held outside escrow by Ripple. This is a derived figure, not a separate Ripple disclosure. Escrowed XRP is not equivalent to immediately available exchange supply; monthly releases, re-locking and actual distributions must be tracked separately. Source: https://ripple.com/xrp/
+
+### CME and CFTC derivatives — turnover is not accumulation
+
+- CME-reported cumulative XRP futures activity through November 16, 2026 was reported as approximately **$81.2B notional volume across 1.9M contracts**, averaging roughly $216M per day. The $81.2B figure was relayed by secondary coverage from a CME social post; treat the social post as the originating claim and the media reports as non-independent relays, not multiple confirmations. CME's product specification independently confirms standard XRP futures are 50,000 XRP per contract and micro contracts are 2,500 XRP, with cash settlement. The cumulative turnover is not net long exposure, XRP delivered, spot purchases or capital permanently committed.
+- CFTC futures-only COT, as of November 17, 2026: open interest 6,870 contracts; non-commercial positions 6,596 long / 5,060 short (net +1,536); commercial positions 0 long / 1,554 short (net -1,554); nonreportable 225 long / 207 short (net +18).
+- CFTC Traders in Financial Futures categories: dealers net -121 (3,638 long / 3,759 short); asset managers net -276 (592 / 868); leveraged funds net +408 (2,366 / 1,958); other reportables net -29 (0 / 29); nonreportable net +18. Positioning is mixed, with only leveraged funds net long among the named reportable categories. COT positions are futures exposures, not spot holdings, and may hedge OTC or portfolio risks.
+- Primary references: CME XRP futures product page https://www.cmegroup.com/markets/cryptocurrencies/xrp/xrp.html ; CME contract specifications https://www.cmegroup.com/content/dam/cmegroup/market-regulation/rule-filings/2025/12/25-XXXXX.pdf ; CFTC weekly report https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm
+- **Model rule:** separate turnover, open interest, trader positioning, collateral eligibility, actual collateral balances and spot net flows. Never turn gross futures volume into an XRP demand feature.
+
+### Japan regulatory claim: enacted framework, not proof XRP was already reclassified
+
+- Japan's FSA official legislative index records the Financial Instruments and Exchange Act / Payment Services Act amendment as submitted April 10, 2026 and passed July 15, 2026. The official bill text's supplementary provision says the main Act enters into force on a date set by Cabinet Order within one year of promulgation; selected provisions have separate commencement dates. The amendment therefore should not be described as an already-effective blanket reclassification of XRP as of November 20, 2026.
+- The official text establishes a specified-cryptoasset framework. No primary list naming XRP individually or substantiating a blanket “XRP and 100+ tokens are already financial instruments” claim was located in this search. Treat the individual-token scope and effective date as unresolved until the Cabinet Order and implementing rules are checked.
+- Primary sources: FSA legislative index https://www.fsa.go.jp/common/diet/221/index.html ; FSA bill text PDF https://www.fsa.go.jp/common/diet/221/02/01.pdf ; FSA crypto-asset working-group report https://www.fsa.go.jp/en/news/2026/20260216/20260216.html
+
+### SBI Shinsei deposit-interest claim: not corroborated
+
+- Official SBI Shinsei Bank materials surfaced a deposit promotion with a stated deposit rate and a separate XRP voucher/reward. Separate SBI materials describe BTC/ETH/XRP accumulation through a credit-card reward programme. These are not evidence that a portion of ordinary deposit interest is converted into BTC, ETH and XRP.
+- The claim attributed to a Kamilah Stevenson interview/video that SBI Shinsei was piloting deposit-interest conversion remains unverified. Keep it out of the capital-flow ledger unless a primary SBI product disclosure identifies the conversion mechanism, start date, eligible deposit base and actual token settlement.
+
+### Exact-phrase research and ASK disambiguation
+
+- **“ASK Coin”:** the strongest lexical candidate is Permission Coin (ASK), not an XRP/Ripple token. Permission's own September 22, 2026 blog says its ASK wallet moved to Coinbase embedded-wallet infrastructure; Permission states Coinbase secures the key on the user's behalf and account/wallet identifiers are shared for wallet operation. Permission's official docs describe ASK as its own AI/data-consent and agentic-web utility token deployed on Base and Polygon via LayerZero OFT. No XRP, Ripple or SBI relationship was established. This is a Coinbase wallet-infrastructure relationship, not a Coinbase exchange listing or an XRP integration. Sources: https://www.permission.ai/blog/ask-wallet-update ; https://docs.permission.ai/ask-token
+- **“actual capital”:** exact-phrase searches did not produce a reliable primary-source match tying the phrase to XRP, Ripple, SBI or an identified person. Continue as unresolved; use the capital-flow taxonomy above rather than infer a special term.
+- **“SBIC, ChatGPT SBIC”:** no reliable primary-source match. Keep unresolved; do not conflate the Japanese regional SBIC companies with SBI Holdings or U.S. Small Business Investment Companies.
+- **Kamilah/Camilla Stevenson identity:** the first-party site identifies Dr. Kamilah Stevenson as “The Wealth Doctor”; an independently hosted June 11, 2026 iHeart interview identifies the guest as Dr. Kamilah Stevenson, and the guest transcript refers to a YouTube presence as “doctor Camilla Stevenson.” Video bylines/descriptions match the same public educator persona. Identity confidence is high for the public educator, but the exact canonical YouTube handle is not linked from the first-party site in the material inspected. Avoid merging same-name/clone accounts.
+- Public XRP-related video byline inventory located (counts are search snapshots, not independently audited metrics):
+  - “Ripple Just Became a BANK — And XRP Holders Need to Understand This” — Dec. 14, 2025; approximately 76K views. The title is imprecise: a national trust bank is not a general retail/commercial bank.
+  - “XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.” — Jan. 13, 2026; approximately 20.4K views.
+  - “Why Most People Will Lose Their Crypto Wealth (Even If They’re Right)” — Jan. 15, 2026; approximately 23.1K views.
+  - “Why XRP Matters More Than Your Paycheck” — Apr. 17, 2026; approximately 30K views.
+  - April 19, 2026 video (search result ID `YJdK1LvmJSo`; title not preserved in the returned extract) — approximately 38.6K views; description claims 4.09B XRP whale accumulation and 7.03B XRP exchange outflows. Those figures were not independently verified here and are not model features.
+  - “I Moved My XRP Off The Exchanges” — May 20, 2026; approximately 8.2K views.
+  - “The Wealthy Never Sell… Soon XRP Holders Won’t Have To Either” — Aug. 1, 2026; approximately 13.4K views. Its description itself says the referenced XRPL lending proposals were not live; do not infer activation.
+- Video claims about Japanese reclassification and SBI Shinsei deposit-interest conversion are contradicted or materially qualified by the official sources above. Treat creator commentary as a research lead, not a primary data source.
+
+### Run256 disposition
+
+- **VERIFIED:** official Ripple and Coinbase XRP collateral eligibility; Coinbase's published 15% X:SM haircut; Ripple quarter-end holdings/escrow disclosure; CFTC COT figures; FSA law passage and commencement clause; Permission ASK wallet integration.
+- **PARTIALLY VERIFIED:** CME cumulative $81.2B volume headline (originating CME social post relayed by secondary outlets); Kamilah Stevenson public-persona identity and video-level bylines.
+- **UNVERIFIED:** actual XRP collateral balances at Ripple Prime or Coinbase; actual net spot demand from collateral acceptance; XRP-specific inclusion in Japan's future specified-cryptoasset list; SBI Shinsei deposit-interest conversion; “actual capital” and “SBIC, ChatGPT SBIC” exact phrase identities; whale/exchange-flow figures in the April 19 video.
+- **Forecast status:** unchanged — no directional forecast. These institutional announcements and derivative statistics are explanatory features only after dated, independently sourced, point-in-time capture and out-of-sample validation.
+
+No new PR was created. No mainline code was changed. No forecast, funds movement or trading action was taken.
