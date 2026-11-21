@@ -985,7 +985,8 @@ def test_run272_binds_current_main_run49_market_flow_backfill_and_pr_snapshot():
 
     assert data["latest_run_id"] == 272
     assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
-    assert run["head_sha"] == data["current_pr_head_sha"] == "460561ba6091d407c6ff3d10eb69145445c7e997"
+    assert run["head_sha"] == "460561ba6091d407c6ff3d10eb69145445c7e997"
+    assert data["current_pr_head_sha"] == "4e2979a21c2866de06b432b1b6b9d626c3401487"
     assert run["integration_ahead_by"] == 111
     assert run["integration_behind_by"] == 0
     assert run["changed_files"] == 21
@@ -1035,10 +1036,14 @@ def test_full_repository_suite_is_not_duplicated_on_integration_push():
     workflow = (
         Path(__file__).resolve().parents[1] / ".github" / "workflows" / "ci.yml"
     ).read_text(encoding="utf-8")
-    expected_job_header = """  full-suite:
-    name: Full repository test suite
-    if: github.event_name != 'push' || github.ref == 'refs/heads/main'"""
-    assert expected_job_header in workflow
-    assert "  pull_request:" in workflow
-    assert "  workflow_dispatch:" in workflow
+    lines = workflow.splitlines()
+    full_suite_start = lines.index("  full-suite:")
+    full_suite_block = []
+    for line in lines[full_suite_start + 1 :]:
+        if line.startswith("  ") and not line.startswith("    "):
+            break
+        full_suite_block.append(line)
+    assert "    if: github.event_name != 'push' || github.ref == 'refs/heads/main'" in full_suite_block
+    assert "  pull_request:" in lines
+    assert "  workflow_dispatch:" in lines
 

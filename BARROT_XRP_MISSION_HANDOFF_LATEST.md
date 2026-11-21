@@ -1,6 +1,11 @@
 # Barrot XRP Intelligence Mission — Current Durable Handoff
 
 
+
+## Run272 CI follow-up — static workflow assertion correction
+
+The first remediation commit `4e2979a` added the Run272 test and restricted the full-suite job to PR events, main pushes and manual dispatches. Verification confirmed the integration-push run `44948607238` skipped the duplicate full-suite job while retaining core tests and Pages validation; the PR-event full suite `44948611864` was running. The newly added static regression test was overly strict about the `if` line being adjacent to the job name; the workflow intentionally has explanatory comments between them. The test now parses the full-suite job block by indentation and verifies that the condition is inside that block. This is a test-harness-only correction. The new head requires fresh exact-head CI; no previous result is inherited.
+
 ## Run272 follow-up — historical test contract and CI efficiency correction
 
 **Current evidence head before this correction:** `460561ba6091d407c6ff3d10eb69145445c7e997`, 111 commits ahead of main, zero behind, 21 changed files. Main remains `550a647ee7269a704d4600ff337b2145acc90473`. The Run272 market/research artifact and nine-platform map are committed on the existing #1684 branch; no new PR was created.
