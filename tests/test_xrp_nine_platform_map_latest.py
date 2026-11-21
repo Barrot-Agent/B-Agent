@@ -285,8 +285,8 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert ingestion["raw_payload_hash_mismatches"] == 0
     assert market["quote_basis"]["status"] == "VERIFIED"
     assert market["quote_basis"]["method"] == "same_venue_synchronized_top_of_book_product"
-    assert market["quote_basis"]["usdt_usd_mid"] == 0.998465
-    assert market["quote_basis"]["normalization_overstatement_if_usdt_assumed_usd_bps"] == 16.48
+    assert market["quote_basis"]["usdt_usd_mid"] == 0.998275
+    assert market["quote_basis"]["normalization_overstatement_if_usdt_assumed_usd_bps"] == 17.2798049764
     assert "not a consolidated executable book" in market["interpretation"]
 
 
@@ -785,3 +785,40 @@ def test_run265_binds_current_pr_ci_backfill_and_forecast_gate():
     assert data["run265_merge_decision"]["decision"] == "DO_NOT_MERGE"
     assert data["run265_no_external_actions"]["main_modified"] is False
     assert data["run265_no_external_actions"]["merge_performed"] is False
+
+
+def test_run269_binds_main_run46_microstructure_and_prediction_gates():
+    data = load_map()
+    run = data["latest_run_269"]
+    root = Path(__file__).resolve().parents[1]
+    artifact = json.loads((root / run["artifact_path"]).read_text(encoding="utf-8"))
+
+    assert data["latest_run_id"] == 269
+    assert data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
+    assert run["main_ingestion_run_id"] == 44928553996
+    assert run["pr_exact_head_ci_run_id"] == 44926486835
+    assert run["pr_exact_head_full_suite"]["passed"] == 4556
+    assert run["pr_exact_head_full_suite"]["failed"] == 0
+    assert run["main_ingestion"]["feature_store_history_record_count"] == 17062
+    assert run["main_ingestion"]["receipt_count"] == 34
+    assert run["main_ingestion"]["raw_payload_hashes_verified"] == 22
+    assert run["main_ingestion"]["raw_payload_hash_mismatches"] == 0
+    assert run["market_snapshot"]["price_cluster_usd"]["low"] == 0.930215
+    assert run["market_snapshot"]["quote_basis"]["usdt_usd_mid"] == 0.998275
+    assert run["market_snapshot"]["model_eligible_for_directional_forecast"] is False
+    assert run["event_and_drift_quality"]["raw_hash_present"] == 0
+    assert run["event_and_drift_quality"]["walk_forward_origins"] == 0
+    assert run["merge_decision"] == "DO_NOT_MERGE"
+    assert run["post_evidence_commit_ci_pending"] is True
+
+    assert artifact["model_eligible"] is False
+    assert artifact["raw_payload_integrity"]["raw_payload_hashes_verified"] == 22
+    assert artifact["raw_payload_integrity"]["raw_payload_hash_mismatches"] == 0
+    assert artifact["event_timeline"]["raw_hash_present_count"] == 0
+    assert artifact["prediction_readiness"]["forecast_status"] == "NOT_ISSUED"
+    assert artifact["prediction_readiness"]["walk_forward_origins"] == 0
+    assert artifact["historical_batch"]["binance_hourly_close"]["known_at_utc"] == "2026-11-21T07:13:43.810048Z"
+    assert artifact["historical_batch"]["binance_hourly_close"]["historical_values_available_before_known_at"] is False
+    assert artifact["backfill_replay"]["receipt_clock"]["store_receipt_time_is_actual_recovery_time"] is False
+    assert artifact["backfill_replay"]["receipt_clock"]["store_receipt_time_is_post_append_availability_bound"] is True
+    assert artifact["institutional_and_collateral_data"]["model_eligible_features"] == 0
