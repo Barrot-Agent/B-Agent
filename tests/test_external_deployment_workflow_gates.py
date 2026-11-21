@@ -69,3 +69,15 @@ def test_a2a_worker_deployment_requires_both_separate_worker_secrets():
     assert "inputs.confirm == 'YES'" in content
     assert "inputs.confirm_secret_rotation == 'YES'" in content
 
+
+def test_a2a_deploy_preflights_secrets_and_cloudflare_token_without_logging_values():
+    content = (ROOT / ".github" / "workflows" / "deploy-a2a-worker.yml").read_text(encoding="utf-8")
+    assert "Verify required Cloudflare and Worker secrets" in content
+    assert "CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}" in content
+    assert "CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" in content
+    assert "BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}" in content
+    assert "BARROT_AGENT_SECRET: ${{ secrets.BARROT_AGENT_SECRET }}" in content
+    assert "/user/tokens/verify" in content
+    assert "result.status == \"active\"" in content
+    assert "the token value was not logged" in content
+    assert content.index("Verify required Cloudflare and Worker secrets") < content.index("Deploy Worker (creates the script first)")

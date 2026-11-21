@@ -45,6 +45,28 @@ jobs:
           [[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]] || { echo "::error::Checked-out SHA differs from approval"; exit 1; }
           [[ "$(git rev-parse origin/main)" == "$EXPECTED_MAIN_SHA" ]] || { echo "::error::main advanced after approval"; exit 1; }
 
+      - name: Verify required Cloudflare and Worker secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}
+          BARROT_AGENT_SECRET: ${{ secrets.BARROT_AGENT_SECRET }}
+        run: |
+          set -euo pipefail
+          [[ -n "$CLOUDFLARE_API_TOKEN" ]] || { echo "::error::CLOUDFLARE_API_TOKEN is not configured"; exit 1; }
+          [[ "$CLOUDFLARE_ACCOUNT_ID" =~ ^[0-9a-fA-F]{32}$ ]] || { echo "::error::CLOUDFLARE_ACCOUNT_ID must be a 32-character account ID"; exit 1; }
+          [[ -n "$BRAIN_SHARED_SECRET" ]] || { echo "::error::BRAIN_SHARED_SECRET is not configured"; exit 1; }
+          [[ -n "$BARROT_AGENT_SECRET" ]] || { echo "::error::BARROT_AGENT_SECRET is not configured"; exit 1; }
+          status="$(curl -sS -o "$RUNNER_TEMP/cloudflare-token-verify.json" -w "%{http_code}" \
+            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            https://api.cloudflare.com/client/v4/user/tokens/verify)"
+          if [[ "$status" != "200" ]] || ! jq -e '.success == true and .result.status == "active"' "$RUNNER_TEMP/cloudflare-token-verify.json" >/dev/null; then
+            echo "::error::Cloudflare API token verification failed (HTTP $status). Check token validity and account scope; the token value was not logged."
+            jq -r '.errors[]? | "Cloudflare error " + (.code|tostring) + ": " + .message' "$RUNNER_TEMP/cloudflare-token-verify.json" || true
+            exit 1
+          fi
+          echo "Cloudflare API token is active. Secret values were not displayed."
+
       - name: Deploy Worker (creates the script first)
         uses: cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0 # v4.1.3 official release commit
         with:
