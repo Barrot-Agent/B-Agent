@@ -812,6 +812,10 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert not set(XRPL_NODE_SOURCES).intersection(manifest)
     assert manifest["xrp_etf_flows_aggregator"]["model_eligible_source"] is False
     assert manifest["xrp_etf_flows_aggregator"]["source_data_as_of_utc"] is None
+    assert len(manifest["xrp_etf_flows_aggregator"]["raw_content_sha256"]) == 64
+    assert manifest["xrp_etf_flows_aggregator"]["raw_bytes_retained"] is False
+    assert manifest["xrp_etf_flows_aggregator"]["raw_payload_path"] is None
+    assert "commercial redistribution" in manifest["xrp_etf_flows_aggregator"]["raw_retention_reason"]
     assert manifest["xrp_exchange_balances_json"]["model_eligible_source"] is False
     assert manifest["xrp_exchange_balances_json"]["source_data_as_of_utc"] is None
 
