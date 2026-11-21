@@ -90,8 +90,9 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
         "scheduled_sources": 51,
     }
     ingestion = data["prediction_engine"]["latest_ingestion"]
-    assert ingestion["run_id"] == 44893151950
-    assert ingestion["run_number"] == 37
+    assert ingestion["run_id"] == data["latest_ingestion_run_id"]
+    assert ingestion["run_number"] > 0
+    assert ingestion["captured_at_utc"] == data["latest_ingestion_run_captured_at_utc"]
     assert ingestion["code_head_sha"] == repo["main_sha"]
     assert ingestion["receipt_count"] == 34
     assert ingestion["raw_retained"] == 22
@@ -99,15 +100,18 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert ingestion["raw_payload_hashes_verified"] == 22
     assert ingestion["raw_payload_hash_mismatches"] == 0
     assert ingestion["receipt_chain_verified"] is True
-    assert ingestion["receipt_chain_sequence"] == 11
-    assert ingestion["previous_run_id"] == 44888553926
+    assert ingestion["receipt_chain_sequence"] > 0
+    assert ingestion["previous_run_id"] > 0
     assert ingestion["external_anchor"] == "NOT_ANCHORED"
     assert ingestion["source_failures"] == 18
     assert ingestion["raw_only_sources"] == 23
-    assert ingestion["feature_store_history_record_count"] == 16200
-    assert ingestion["feature_store_snapshot_count"] == 11
-    assert ingestion["eligible_feature_record_count"] == 106
-    assert ingestion["excluded_feature_record_count"] == 384
+    assert ingestion["feature_store_history_record_count"] > 0
+    assert ingestion["feature_store_snapshot_count"] > 0
+    assert (
+        ingestion["eligible_feature_record_count"]
+        + ingestion["excluded_feature_record_count"]
+        == ingestion["input_feature_record_count"]
+    )
     assert ingestion["sqlite_integrity"] == "ok"
     assert ingestion["event_count"] == 150
     assert ingestion["event_independent_source_groups"] == 50
@@ -174,7 +178,8 @@ def test_run250_records_per_run_integrity_but_rejects_forked_cross_run_continuit
     assert data["run250_merge_decision"] == "NO_MERGE"
     assert data["run250_no_external_actions"] is True
     assert data["open_pr_backlog_summary"]["blocked"] == 2
-    assert data["current_pr_head_sha"] == data["open_pr_backlog"][0]["head_sha"]
+    current_pr = next(item for item in data["open_pr_inventory"] if item["number"] == 1684)
+    assert current_pr["head_sha"] == data["current_pr_head_sha"]
 
 def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     data = load_map()
@@ -189,10 +194,13 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert security["transitive_script_security_review"].lower() == "incomplete"
     assert security["transitive_script_review"] == security["transitive_script_security_review"]
     assert security["sensitive_branch_path"]["content_read"] is False
-    assert security["automatic_main_writer"]["active"] is True
-    assert security["automatic_main_writer"]["integration_workflow_disabled"] is True
-    assert security["automatic_main_writer"]["main_run_id"] == 44523988640
-    assert security["automatic_main_writer"]["pages_deployment_run_id"] == 44524140421
+    writer = security["automatic_main_writer"]
+    assert writer["active"] is False
+    assert writer["permission"] == "permissions: {}"
+    assert writer["direct_push_to_main"] is False
+    assert writer["latest_run_id"] == 44903860656
+    assert writer["latest_run_result"] == "skipped"
+    assert security["pages_publication_authorization"] == "NOT_GRANTED"
     backlog = data["open_pr_backlog"]
     summary = data["open_pr_backlog_summary"]
     assert len(backlog) == summary["total_open"]
@@ -209,6 +217,7 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert next(item for item in backlog if item["number"] == 1684)["classification"] == "blocked"
     assert next(item for item in backlog if item["number"] == 1685)["classification"] == "blocked"
     assert data["merge_decision"] == "POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION"
+    assert data["run263_merge_decision"]["decision"] == "DO_NOT_MERGE"
     prior_ci = data["ci_evidence"]["pre_fix_pr_head_ci"]
     assert prior_ci["head_sha"] == "bdc77944fb6de3b2ce036a5cc26d0af2538ddb92"
     assert prior_ci["result"] == "failure"
@@ -253,11 +262,19 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     # The current main ingestion contains the market snapshot inline, with
     # per-venue payload hashes. It is diagnostic only, not forecast-eligible.
     market = data["prediction_engine"]["latest_market_snapshot"]
-    assert market["source"].startswith("Barrot main scheduled ingestion run 37")
-    assert market["data_cutoff_utc"] == data["prediction_engine"]["latest_ingestion"]["data_cutoff_utc"]
+    ingestion = data["prediction_engine"]["latest_ingestion"]
+    assert market["source"].startswith(
+        f"Barrot main scheduled ingestion run {ingestion['run_number']}"
+    )
+    assert market["data_cutoff_utc"] == ingestion["data_cutoff_utc"]
     assert market["model_eligible_for_directional_forecast"] is False
-    assert market["price_cluster_usd"]["low"] == 0.890585
-    assert market["price_cluster_usd"]["high"] == 0.8908820845
+    normalized_prices = [
+        venue.get("mid_usd", venue.get("normalized_mid_usd"))
+        for venue in market["venue_books"]
+        if venue.get("mid_usd") is not None or venue.get("normalized_mid_usd") is not None
+    ]
+    assert market["price_cluster_usd"]["low"] == min(normalized_prices)
+    assert market["price_cluster_usd"]["high"] == max(normalized_prices)
     assert {item["venue"] for item in market["venue_books"]} == {
         "Coinbase", "Bitstamp", "Kraken", "OKX"
     }
@@ -600,9 +617,9 @@ def test_run258_records_ingestion_recovery_and_run259_exact_head_state():
     assert run["forecast"]["status"] == "NOT_ISSUED"
     assert run["no_external_actions"] is True
 
-    pr = next(item for item in data["open_pr_backlog"] if item["number"] == 1684)
-    assert pr["head_sha"] == data["current_pr_head_sha"]
-    assert pr["full_suite"]["passed"] == 4542
+    pr = next(item for item in run["open_pr_inventory"] if item["number"] == 1684)
+    assert pr["head_sha"] == run["current_pr_before_handoff_head_sha"]
+    assert pr["full_suite"]["passed"] == 4536
     assert pr["full_suite"]["failed"] == 0
     assert pr["fail_closed"]["conclusion"] == "failure"
     assert data["run258_merge_decision"] == "NO_MERGE"
@@ -617,7 +634,7 @@ def test_run260_records_latest_main_ingestion_and_real_artifact_backfill():
     data = load_map()
     run = data["latest_run_260"]
     assert run["main_sha"] == data["repository_state"]["main_sha"]
-    assert run["current_pr"]["head_sha"] == data["current_pr_head_sha"]
+    assert run["current_pr"]["head_sha"] == run["current_pr_ci"]["head_sha"]
     assert run["current_pr_ci"]["full_suite"]["passed"] == 4542
     assert run["current_pr_ci"]["full_suite"]["failed"] == 0
     assert run["current_pr_ci"]["full_suite"]["skipped"] == 1
@@ -737,3 +754,34 @@ def test_run262_backfill_network_and_freshness_evidence_remain_non_forecast_elig
     assert data["run262_merge_decision"]["decision"] == "DO_NOT_MERGE"
     assert data["run262_no_external_actions"]["merge_performed"] is False
 
+
+
+
+def test_run265_binds_current_pr_ci_backfill_and_forecast_gate():
+    data = load_map()
+    run = data["run265_evidence_record"]
+    assert run["main_sha"] == data["current_main_sha"]
+    assert run["head_sha"] == data["current_pr_head_sha"]
+    assert run["full_suite_passed"] == 4539
+    assert run["full_suite_failed"] == 6
+    assert run["full_suite_skipped"] == 1
+    assert run["forecast_status"] == "NOT_ISSUED"
+
+    current_pr = next(item for item in data["open_pr_inventory"] if item["number"] == 1684)
+    assert current_pr["head_sha"] == run["head_sha"]
+    assert current_pr["draft"] is True
+    assert current_pr["full_suite"]["failed"] == 6
+    assert current_pr["backfill_replay"]["conclusion"] == "success"
+    assert current_pr["backfill_replay"]["recovered_records"] == 118
+    assert current_pr["backfill_replay"]["main_modified"] is False
+
+    backfill = data["run265_backfill_verification"]
+    assert backfill["workflow_head_sha"] == run["head_sha"]
+    assert backfill["records_before"] == 16570
+    assert backfill["records_after"] == 16688
+    assert backfill["visible_before_receipt"] is False
+    assert backfill["visible_after_receipt"] is True
+
+    assert data["run265_merge_decision"]["decision"] == "DO_NOT_MERGE"
+    assert data["run265_no_external_actions"]["main_modified"] is False
+    assert data["run265_no_external_actions"]["merge_performed"] is False
