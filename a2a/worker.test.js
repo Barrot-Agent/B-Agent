@@ -122,6 +122,74 @@ test("Agent Card and OpenAPI are public metadata only", async () => {
 });
 
 
+
+test("gateway and agent routes require separate credentials", async () => {
+  const { queue } = makeQueue();
+  const namespace = {
+    idFromName: () => "primary",
+    get: () => ({ fetch: (input, init) => queue.fetch(new Request(input, init)) }),
+  };
+  const env = {
+    BRAIN_SHARED_SECRET: "gateway-only-secret",
+    BARROT_AGENT_SECRET: "agent-only-secret",
+    BARROT_TASKS: namespace,
+  };
+  const submitted = await worker.fetch(new Request("https://worker.test/v1/tasks", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-only-secret" },
+    body: JSON.stringify({ title: "Separate auth", instructions: "Verify route separation." }),
+  }), env);
+  assert.equal(submitted.status, 202);
+  const task = await submitted.json();
+
+  const gatewayCannotClaim = await worker.fetch(new Request("https://worker.test/v1/agent/claim", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-only-secret" },
+    body: JSON.stringify({ worker_id: "worker-a" }),
+  }), env);
+  assert.equal(gatewayCannotClaim.status, 401);
+
+  const claimed = await worker.fetch(new Request("https://worker.test/v1/agent/claim", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "agent-only-secret" },
+    body: JSON.stringify({ worker_id: "worker-a" }),
+  }), env);
+  assert.equal(claimed.status, 200);
+  assert.equal((await claimed.json()).task.task_id, task.task_id);
+
+  const gatewayCannotComplete = await worker.fetch(new Request(
+    "https://worker.test/v1/agent/tasks/" + task.task_id + "/complete", {
+      method: "POST",
+      headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-only-secret" },
+      body: JSON.stringify({ worker_id: "worker-a", success: true, result: { output: "forged" } }),
+    }), env);
+  assert.equal(gatewayCannotComplete.status, 401);
+
+  const completed = await worker.fetch(new Request(
+    "https://worker.test/v1/agent/tasks/" + task.task_id + "/complete", {
+      method: "POST",
+      headers: { "content-type": "application/json", "X-Barrot-Auth": "agent-only-secret" },
+      body: JSON.stringify({ worker_id: "worker-a", success: true, result: { output: "verified" } }),
+    }), env);
+  assert.equal(completed.status, 200);
+  assert.equal((await completed.json()).status, "completed");
+});
+
+test("agent routes fail closed when the dedicated agent secret is absent", async () => {
+  const { queue } = makeQueue();
+  const namespace = {
+    idFromName: () => "primary",
+    get: () => ({ fetch: (input, init) => queue.fetch(new Request(input, init)) }),
+  };
+  const env = { BRAIN_SHARED_SECRET: "gateway-only-secret", BARROT_TASKS: namespace };
+  const response = await worker.fetch(new Request("https://worker.test/v1/agent/claim", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-only-secret" },
+    body: JSON.stringify({ worker_id: "worker-a" }),
+  }), env);
+  assert.equal(response.status, 401);
+});
+
 test("task submission enforces the per-client rate limit", async () => {
   const { queue } = makeQueue();
   const namespace = {

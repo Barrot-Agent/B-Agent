@@ -40,10 +40,16 @@ class RunnerExecutionTests(unittest.TestCase):
         run_mock.return_value = subprocess.CompletedProcess(
             args=["opencode"], returncode=0, stdout='{"type":"text"}', stderr=""
         )
-        result, success, error = execute_task(
-            {"task_id": "task-12345678", "title": "Test", "instructions": "Do work."},
-            Path("/tmp"),
-        )
+        with patch.dict("os.environ", {
+            "BARROT_AGENT_SECRET": "agent-secret-test",
+            "BRAIN_SHARED_SECRET": "gateway-secret-test",
+            "CLOUDFLARE_API_TOKEN": "cloudflare-token-test",
+            "CLOUDFLARE_ACCOUNT_ID": "cloudflare-account-test",
+        }, clear=False):
+            result, success, error = execute_task(
+                {"task_id": "task-12345678", "title": "Test", "instructions": "Do work."},
+                Path("/tmp"),
+            )
         self.assertTrue(success)
         self.assertIsNone(error)
         self.assertEqual(result["runtime"], "existing-opencode-shared-service")
@@ -52,6 +58,10 @@ class RunnerExecutionTests(unittest.TestCase):
         self.assertEqual(args[0][5], "json")
         self.assertEqual(kwargs["cwd"], "/tmp")
         self.assertEqual(kwargs["timeout"], 1800)
+        self.assertNotIn("BARROT_AGENT_SECRET", kwargs["env"])
+        self.assertNotIn("BRAIN_SHARED_SECRET", kwargs["env"])
+        self.assertNotIn("CLOUDFLARE_API_TOKEN", kwargs["env"])
+        self.assertNotIn("CLOUDFLARE_ACCOUNT_ID", kwargs["env"])
 
     @patch("scripts.barrot_a2a_runner.subprocess.run")
     def test_nonzero_exit_is_failed(self, run_mock: Mock) -> None:
