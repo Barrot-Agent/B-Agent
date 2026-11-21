@@ -176,7 +176,8 @@ def test_mcp_startup_launches_one_outbound_runner_when_credentials_exist(tmp_pat
     import scripts.barrot_mcp_server as server
 
     monkeypatch.setenv("BARROT_A2A_URL", "https://barrot-a2a-worker.amazonprostarelite.workers.dev")
-    monkeypatch.setenv("BRAIN_SHARED_SECRET", "test-only-secret")
+    monkeypatch.setenv("BRAIN_SHARED_SECRET", "gateway-test-secret")
+    monkeypatch.setenv("BARROT_AGENT_SECRET", "agent-test-secret")
     monkeypatch.setenv("BARROT_A2A_AUTO_RUNNER", "YES")
     monkeypatch.setattr(server.Path, "home", lambda: tmp_path)
     monkeypatch.setattr("scripts.barrot_a2a_runner.runner_is_active", lambda: False)
@@ -194,7 +195,8 @@ def test_mcp_startup_requires_explicit_opt_in_even_when_credentials_exist(tmp_pa
     import scripts.barrot_mcp_server as server
 
     monkeypatch.setenv("BARROT_A2A_URL", "https://barrot-a2a-worker.amazonprostarelite.workers.dev")
-    monkeypatch.setenv("BRAIN_SHARED_SECRET", "test-only-secret")
+    monkeypatch.setenv("BRAIN_SHARED_SECRET", "gateway-test-secret")
+    monkeypatch.setenv("BARROT_AGENT_SECRET", "agent-test-secret")
     monkeypatch.delenv("BARROT_A2A_AUTO_RUNNER", raising=False)
     monkeypatch.setattr(server.Path, "home", lambda: tmp_path)
     monkeypatch.setattr("scripts.barrot_a2a_runner.runner_is_active", lambda: False)
@@ -203,10 +205,15 @@ def test_mcp_startup_requires_explicit_opt_in_even_when_credentials_exist(tmp_pa
     launch.assert_not_called()
 
 
-def test_mcp_startup_does_not_launch_runner_without_gateway_secret(monkeypatch):
+def test_mcp_startup_does_not_launch_runner_with_gateway_secret_only(tmp_path, monkeypatch):
     import scripts.barrot_mcp_server as server
 
-    monkeypatch.delenv("BARROT_A2A_URL", raising=False)
-    monkeypatch.delenv("BRAIN_SHARED_SECRET", raising=False)
+    monkeypatch.setenv("BARROT_A2A_URL", "https://barrot-a2a-worker.amazonprostarelite.workers.dev")
+    monkeypatch.setenv("BRAIN_SHARED_SECRET", "gateway-only-secret")
     monkeypatch.delenv("BARROT_AGENT_SECRET", raising=False)
-    assert server.start_background_a2a_runner() is False
+    monkeypatch.setenv("BARROT_A2A_AUTO_RUNNER", "YES")
+    monkeypatch.setattr(server.Path, "home", lambda: tmp_path)
+    monkeypatch.setattr("scripts.barrot_a2a_runner.runner_is_active", lambda: False)
+    with patch.object(server.subprocess, "Popen") as launch:
+        assert server.start_background_a2a_runner() is False
+    launch.assert_not_called()
