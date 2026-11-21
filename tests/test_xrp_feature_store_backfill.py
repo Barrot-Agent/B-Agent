@@ -118,7 +118,7 @@ def _create_raw_run(
         cross_run_path=root / "cross_run_receipt_chain.json",
     )
     (root / "receipt_manifest.json").write_text(
-        json.dumps(archive.receipts, sort_keys=True, indent=2) + "\\n",
+        json.dumps(archive.receipts, sort_keys=True, indent=2) + "\n",
         encoding="utf-8",
     )
     return receipt, root / "cross_run_receipt_chain.json", source_id, source_uri
@@ -360,7 +360,7 @@ def test_historical_backfill_rejects_receipt_list_manifest_mismatch_before_targe
     manifest_path = case["source_root"] / "receipt_manifest.json"
     receipt_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     receipt_manifest[0]["source_uri"] = "https://example.com/forged-receipt"
-    manifest_path.write_text(json.dumps(receipt_manifest, sort_keys=True, indent=2) + "\\n", encoding="utf-8")
+    manifest_path.write_text(json.dumps(receipt_manifest, sort_keys=True, indent=2) + "\n", encoding="utf-8")
 
     before = HistoricalFeatureStore(case["target_db"]).snapshot_count()
     with pytest.raises(XRPFeatureStoreBackfillError, match="receipt-list manifest differs"):
