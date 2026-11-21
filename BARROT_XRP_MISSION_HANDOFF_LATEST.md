@@ -5757,3 +5757,11 @@ No main write, merge, deployment, secret rotation, Space restart, Kaggle submiss
 4. Resolve legitimate SEC capture configuration and provider failures without bypassing regional restrictions or rate limits.
 5. Reconcile primary ETF issuer files and future-dated aggregator metadata; refresh stale sentiment; establish a valid drift reference window.
 6. Build synchronized point-in-time history and then run leakage-safe chronological walk-forward baselines, calibration and shadow evaluation. Keep directional forecasts disabled.
+
+
+### Run 266 documentation-commit CI correction — 2026-11-21T15:18:40Z
+
+- Documentation-only commit `f2722d29f79ab9f3ee2bd5e761260e31bdf7582a` triggered exact-head PR and push CI. The full suite reported 4,546 passed, 1 failed, 1 skipped, 11 warnings, 32 subtests and 73.15% coverage. The sole failure was `tests/test_xrp_nine_platform_map_latest.py::test_run265_binds_current_pr_ci_backfill_and_forecast_gate`.
+- Cause: the Run266 map update overwrote root `current_pr_head_sha` and `open_pr_inventory` fields that the test uses as the historical Run265 evidence contract. The Run265 evidence record correctly still references `85ebfb943edd19999331c1890ced02767d134a6a`; the root fields were incorrectly changed to the newer code head. This was a documentation-state consistency failure, not an application runtime failure.
+- Correction: restore the Run265 root snapshot from the parent map at `d553c5535256363bed2870f65b60918bc5a19ed9`; preserve current Run266 branch/PR state under Run266-specific fields. No application code or test files were changed. The correction is committed separately and requires a fresh exact-head full-suite run.
+- On the failed documentation head, dependency audit, money audit, conflict integrity, historical backfill replay and Pages validation-only all passed. The fail-closed gate remained blocked. Main and its feature store were untouched.
