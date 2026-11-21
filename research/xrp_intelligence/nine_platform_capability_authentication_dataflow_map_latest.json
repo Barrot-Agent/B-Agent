@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-21T00:12:23.704Z",
+  "captured_at_utc": "2026-11-21T00:14:50.529Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -951,64 +951,30 @@
     },
     "current_forecast_status": "NOT_ISSUED",
     "latest_market_snapshot_research_only": {
-      "captured_at_utc": "2026-11-20T18:03:23Z",
-      "capture_method": "Public exchange API responses and publisher pages rendered through web retrieval",
+      "captured_at_utc": "2026-11-21T00:14:50.529Z",
+      "source": "Kraken public XRP/USD ticker via web retrieval",
+      "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
       "model_eligible": false,
       "raw_http_bytes_captured": false,
       "raw_sha256_receipt": "NOT_CAPTURED",
-      "external_timestamp_anchor": "NOT_ANCHORED",
-      "kraken_xrpusd": {
-        "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
-        "retrieved_at_utc": "2026-11-20T18:03:23Z",
-        "exchange_event_timestamp_utc": null,
-        "last_usd": 0.90579,
-        "bid_usd": 0.90586,
-        "ask_usd": 0.90609,
-        "spread_bps": 2.5387,
-        "volume_24h_xrp": 48116802.1939816,
-        "vwap_24h_usd": 0.9399686,
-        "last_vs_vwap_percent": -3.6361,
-        "low_24h_usd": 0.89873,
-        "high_24h_usd": 0.97973,
-        "utc_day_open_usd": 0.95925,
-        "last_vs_low_percent": 0.7856
-      },
-      "okx_xrp_usdt": {
-        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=XRP-USDT",
-        "event_timestamp_utc": "2026-11-20T17:45:00.655Z",
-        "age_at_capture_seconds": 1102.345,
-        "last_usdt": 0.9023,
-        "bid_usdt": 0.9023,
-        "ask_usdt": 0.9024,
-        "spread_bps": 1.1082,
-        "bid_size_xrp": 4035.5,
-        "ask_size_xrp": 8201.454169,
-        "volume_24h_xrp": 57541168.564459,
-        "open_24h_usdt": 0.972,
-        "low_24h_usdt": 0.9003,
-        "high_24h_usdt": 0.9805,
-        "last_vs_open_percent": -7.1708
-      },
-      "okx_usdt_usd": {
-        "source_url": "https://www.okx.com/api/v5/market/ticker?instId=USDT-USD",
-        "event_timestamp_utc": "2026-11-20T18:00:35.363Z",
-        "last_usd": 0.99894,
-        "bid_usd": 0.99893,
-        "ask_usd": 0.99894,
-        "skew_from_xrp_usdt_quote_seconds": 934.708
-      },
-      "cross_venue_normalization": {
-        "indicative_last_price_difference_bps": 38.6789,
-        "disposition": "REJECTED",
-        "reason": "Kraken ticker has no exchange event timestamp; OKX XRP-USDT quote is about 18m22s old at capture; the OKX USDT-USD conversion leg is about 15m35s newer than the XRP-USDT quote. Not a synchronized USD basis, arbitrage or executable price comparison."
-      },
-      "orderbook_depth": {
-        "kraken_depth_100": "INACCESSIBLE_THROUGH_CURRENT_RETRIEVAL",
-        "okx_books_100": "INACCESSIBLE_THROUGH_CURRENT_RETRIEVAL",
-        "coinbase_level2": "INACCESSIBLE_THROUGH_CURRENT_RETRIEVAL",
-        "bitstamp_order_book": "INACCESSIBLE_THROUGH_CURRENT_RETRIEVAL",
-        "conclusion": "No new synchronized Level-2 depth, sequence or imbalance conclusion admitted."
-      }
+      "exchange_event_timestamp_utc": null,
+      "last_usd": 0.91024,
+      "open_24h_usd": 0.95925,
+      "high_24h_usd": 0.97224,
+      "low_24h_usd": 0.88259,
+      "vwap_24h_usd": 0.91812466,
+      "volume_24h_xrp": 71619991.07483172,
+      "bid_usd": 0.91014,
+      "ask_usd": 0.91019,
+      "bid_size_xrp": 1008,
+      "ask_size_xrp": 5494,
+      "spread_bps": 0.5494,
+      "last_vs_open_percent": -5.1092,
+      "limitation": "Single venue, no exchange event timestamp, web-rendered response, not a Barrot receipt or model-eligible feature.",
+      "utc_day_open_usd": 0.95925,
+      "last_vs_utc_day_open_percent": -5.1092,
+      "last_vs_vwap_24h_percent": -0.8586,
+      "field_semantics": "Kraken ticker o and first p/v values are UTC-day values; second p/v values are rolling 24h. No rolling 24h open is supplied by this response."
     },
     "latest_market_research_web_crosscheck": {
       "captured_at_utc": "2026-11-20T03:40:32.475Z",
@@ -1291,7 +1257,7 @@
     "latest_ingestion_run_id": 44654352643,
     "latest_ingestion_run_captured_at_utc": "2026-11-20T01:32:54.379952Z",
     "run248_market_snapshot_research_only": {
-      "captured_at_utc": "2026-11-21T00:08:16.722Z",
+      "captured_at_utc": "2026-11-21T00:14:50.529Z",
       "source": "Kraken public XRP/USD ticker via web retrieval",
       "source_url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
       "model_eligible": false,
@@ -1302,15 +1268,19 @@
       "open_24h_usd": 0.95925,
       "high_24h_usd": 0.97224,
       "low_24h_usd": 0.88259,
-      "vwap_24h_usd": 0.918123,
-      "volume_24h_xrp": 71617097.88478594,
+      "vwap_24h_usd": 0.91812466,
+      "volume_24h_xrp": 71619991.07483172,
       "bid_usd": 0.91014,
       "ask_usd": 0.91019,
       "bid_size_xrp": 1008,
       "ask_size_xrp": 5494,
       "spread_bps": 0.5494,
       "last_vs_open_percent": -5.1092,
-      "limitation": "Single venue, no exchange event timestamp, web-rendered response, not a Barrot receipt or model-eligible feature."
+      "limitation": "Single venue, no exchange event timestamp, web-rendered response, not a Barrot receipt or model-eligible feature.",
+      "utc_day_open_usd": 0.95925,
+      "last_vs_utc_day_open_percent": -5.1092,
+      "last_vs_vwap_24h_percent": -0.8586,
+      "field_semantics": "Kraken ticker o and first p/v values are UTC-day values; second p/v values are rolling 24h. No rolling 24h open is supplied by this response."
     },
     "run248_derivatives_and_etf_research": {
       "binance_open_interest_reported_usd_nov6": 451280000,
@@ -1323,7 +1293,36 @@
       "etf_outflows_nov17_usd": -6140000,
       "etf_flow_source_url": "https://www.tradingnews.com/news/xrpr-hit-a-52-week-low-at-7-23-usd-xrpi-drops-to-4-71-usd",
       "evidence_grade_etf": "SECONDARY_REPORT_NOT_ISSUER_RECEIPT",
-      "forecast_eligible": false
+      "forecast_eligible": false,
+      "reserve_flow_counterevidence": {
+        "source_url": "https://cryptoquant.com/insights/quicktake/6afc9368d38bc874c0606c1a-XRP-Whale-Retail-Gap-Narrows-by-267-Points-Amid-150M-Drop-in-Binance-Reserves",
+        "event_windows": {
+          "binance": {
+            "from": "2026-11-09",
+            "to": "2026-11-17",
+            "reserve_start_xrp": 2630000000,
+            "reserve_end_xrp": 2480000000,
+            "change_xrp": -150000000
+          },
+          "upbit": {
+            "from": "2026-11-05",
+            "to": "2026-11-17",
+            "reserve_start_xrp": 6410000000,
+            "reserve_end_xrp": 6460000000,
+            "change_xrp": 50000000
+          },
+          "bithumb": {
+            "from": "2026-10-21",
+            "to": "2026-11-17",
+            "reserve_start_xrp": 1840000000,
+            "reserve_end_xrp": 1780000000,
+            "change_xrp": -60000000
+          }
+        },
+        "post_hack_replenishment_source_url": "https://cryptoquant.com/insights/quicktake/6aebfff6d730cb7df44c09e3-Binance-XRP-Reserves-Surge-280-Million-in-Two-Days-Following-634-Billion-Hack",
+        "post_hack_binance_reserve_change_nov3_to_nov5_xrp": 280000000,
+        "disposition": "EXCHANGE_SPECIFIC_RESEARCH_ONLY; reserve changes do not establish ecosystem-wide withdrawals, beneficial ownership or accumulation."
+      }
     }
   },
   "ci_evidence": {
@@ -4917,9 +4916,9 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-21T00:12:23.704Z",
+  "last_verified_at_utc": "2026-11-21T00:14:50.529Z",
   "latest_run_id": 248,
-  "latest_run_captured_at_utc": "2026-11-21T00:12:23.704Z",
+  "latest_run_captured_at_utc": "2026-11-21T00:14:50.529Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
   "current_successor_branch": "integration/xrp-v3-mainline-successor-20261120T0135Z (merged)",
   "observed_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7489,7 +7488,7 @@
   },
   "run248_no_source_pr_closures": true,
   "latest_run_248": {
-    "captured_at_utc": "2026-11-21T00:12:23.704Z",
+    "captured_at_utc": "2026-11-21T00:14:50.529Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "merged_pr": 1673,
     "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7527,10 +7526,12 @@
     "pull_request_target_triggers": 0,
     "explicit_write_permission_workflow": "release.yml only; contents:write; version-tag push only",
     "source_pr_1663_cross_reference_comment_id": 7053832128,
-    "workflow_transitive_review": "INCOMPLETE"
+    "workflow_transitive_review": "INCOMPLETE",
+    "market_snapshot_field_semantics_corrected": true,
+    "reserve_flow_counterevidence_added": true
   },
   "run248_evidence_record": {
-    "captured_at_utc": "2026-11-21T00:12:23.704Z",
+    "captured_at_utc": "2026-11-21T00:14:50.529Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "merged_pr": 1673,
     "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7568,7 +7569,9 @@
     "pull_request_target_triggers": 0,
     "explicit_write_permission_workflow": "release.yml only; contents:write; version-tag push only",
     "source_pr_1663_cross_reference_comment_id": 7053832128,
-    "workflow_transitive_review": "INCOMPLETE"
+    "workflow_transitive_review": "INCOMPLETE",
+    "market_snapshot_field_semantics_corrected": true,
+    "reserve_flow_counterevidence_added": true
   },
   "current_handoff_branch": "integration/xrp-post-merge-verification-20261121T0002Z"
 }
