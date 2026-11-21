@@ -4257,3 +4257,69 @@ No new PR was created. No mainline code was changed. No forecast, funds movement
 - The July 29 notice states that only specified penalty/investigative provisions took effect August 12, 2026. The November 13 update schedules the sustainability/startup provisions for April 1, 2027; it does not establish commencement of the crypto-asset provisions. The Act's general commencement clause allows a Cabinet Order to set the date within one year of promulgation. No Cabinet Order setting the main crypto provisions was located in this run. Keep the conclusion as **not verified in force by November 20, 2026**, not a categorical assertion about every provision.
 - The $81.2B CME cumulative-volume figure is sourced to the November 19 CME Active Trader social recap as relayed by Bitcoin.com News; it is not an independent CME filing. CME's own product page/filing verifies contract size and financial settlement, not the $81.2B turnover figure.
 - Added direct YouTube IDs where search results preserved them: `QslbjGQD0MU`, `CR680fV7bcY`, `cxeX_eu_2H0`, `Us_FIT4RByY`, `TfFx0g2IgGg`, and `NChkamwOUEk`. The April 19 candidate `YJdK1LvmJSo` remains title-unresolved. Do not infer that a same-name channel is canonical solely from its display name.
+
+
+## Run257 — 2026-11-21 03:59 UTC — latest scheduled ingestion, exact-head CI and repository governance refresh
+
+### Repository and integration state
+
+- **Main SHA:** `550a647ee7269a704d4600ff337b2145acc90473`; the recursive main tree is 3,115 entries and `truncated=false`.
+- **Main CI:** run [44839159044](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159044) passed on that exact main SHA: 4,534 passed, 1 skipped, 0 failed, 11 warnings, 32 subtests, 73.22% coverage. Main dependency audit [44839159165](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159165), money audit [44839159146](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159146), and A2A Worker tests [44839159029](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159029) passed.
+- Only two PRs are open: #1684 and #1685. Their changed-file sets are disjoint. No duplicate or superseded PR was identified.
+- **#1684:** current pre-handoff-update head `3a017f0920d083b265598ec0d5579d6aae8e84e4`, 34 commits ahead / 0 behind main, six changed files, mergeable=true, draft=true, no formal reviews. It remains the one active XRP ingestion/handoff integration PR.
+- **#1685:** head `e512f4e6d66c1575186d00b60852c93caba687e0`, five commits ahead / 0 behind, nine changed files, draft=true, no formal reviews. It remains a separate A2A credential-separation workstream. No changed paths overlap #1684.
+
+### #1684 exact-head verification — 3a017f0
+
+- Push CI [44862800755](https://github.com/Barrot-Agent/B-Agent/actions/runs/44862800755): success.
+- PR CI [44862804522](https://github.com/Barrot-Agent/B-Agent/actions/runs/44862804522): success. The full repository suite discovered every tracked active test module and passed **4,536 tests, 1 skipped, 0 failed**, 11 warnings, 32 subtests, 73.22% inclusive coverage. All legacy and mission-critical package coverage floors passed.
+- Dependency audit [44862804528](https://github.com/Barrot-Agent/B-Agent/actions/runs/44862804528): success across root runtime, development, integrations, Hugging Face Space, legacy and PEP 621 manifests; no audit step failed.
+- Money audit [44862804500](https://github.com/Barrot-Agent/B-Agent/actions/runs/44862804500): success.
+- Conflict-integrity check [44862804526](https://github.com/Barrot-Agent/B-Agent/actions/runs/44862804526): success; read-only three-way merge check passed.
+- Fail-closed gate [44862804503](https://github.com/Barrot-Agent/B-Agent/actions/runs/44862804503): **failure by design**. Its explicit blockers are: PR still draft; no independent approving review; branch-protection details could not be verified. Do not treat successful CI as merge authorization.
+- This handoff append is documentation-only and will create a new PR head. The 3a017f0 CI results above do **not** transfer to the new head. Exact-head CI and gate must run again after this append; status remains pending until directly observed.
+
+### #1685 exact evidence and remaining security blockers
+
+- Exact-head full suite [44848528169](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528169): 4,536 passed, 1 skipped, 0 failed, 11 warnings, 32 subtests, 73.22% coverage.
+- Dependency audit [44848528067](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528067), money audit [44848528115](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528115), A2A Worker tests [44848528089](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528089), and conflict integrity [44848528083](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528083) passed.
+- Gate [44848528093](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528093) failed closed on draft/no independent approval/unverifiable branch protection.
+- The PR separates gateway and agent credentials and strips those credentials plus Cloudflare deployment credentials from the OpenCode child environment. This is not an OS sandbox. OS sandboxing, provider-credential isolation, egress restrictions and task-level authorization remain unimplemented. Runner stays quarantined. No deployment or secret rotation.
+
+### Main XRP scheduled ingestion — run 44860165888
+
+- Main run [44860165888](https://github.com/Barrot-Agent/B-Agent/actions/runs/44860165888) completed successfully at 2026-11-21 03:16 UTC on main SHA `550a647ee7269a704d4600ff337b2145acc90473`. All capture and artifact-publication steps succeeded.
+- The run restored the receipt-chain index from run `44855063970` and the feature-store checkpoint from that same run. Run `44855063970` had restored from `44848909814`; run `44848909814` had restored from `44844499889`.
+- **Important historical gap:** successful run `44844953105` is still absent from that ancestry. It and `44848909814` both recorded run `44844499889` as predecessor. Run `44855063970` and the latest run `44860165888` continue the latter branch. The latest artifact reports cross-run sequence 4 and `CONTINUED`, but that does not retroactively include run 44844953105 or repair the historical fork.
+- Run 448601 summary: 34 source receipts; 22 retained raw payloads; 12 digest-only receipts; 18 source failures; 124 eligible feature records; 366 excluded feature records; 2,199 cumulative feature-history records across four snapshots; 150 events; 117 scenarios; zero walk-forward forecasts.
+- The event timeline remains `receipt_complete=false` and `model_eligible=false`. Drift evaluated 0 of 124 candidate features and remains `INSUFFICIENT_DATA`. Forecast status is `NOT_ISSUED`; external receipt anchoring is `NOT_ANCHORED`. SEC EDGAR still has no raw filing receipts and remains configuration-blocked.
+- The feature store restored from run 448550's per-run checkpoint. The GitHub Actions cache is read-only because its budget is exhausted; per-run feature checkpoints expire after seven days, raw/event/index artifacts after 90 days. Automatic feature-store rebuild from raw receipts is not implemented. The hash chain is tamper-evident relative to its current head, not a WORM or independently timestamp-anchored record.
+- The run's same-venue OKX XRP-USDT / USDT-USD top-of-book derivation passed its freshness/skew checks (1.104-second snapshot skew; maximum component age 12.952 seconds) and produced four normalized top-of-book features. Both inputs share one OKX publisher group; this is not independent corroboration, full-depth USD liquidity or a consolidated executable book.
+- Cross Analysis [44863247930](https://github.com/Barrot-Agent/B-Agent/actions/runs/44863247930) completed successfully at 03:51 UTC. Its success does not change forecast-admission status.
+
+### Repository security, dependencies and nine-platform coordination
+
+- Main branch metadata reports `protected=true`, but its branch object exposes empty required-status contexts/checks. The detailed branch-protection endpoint returns HTTP 403. The only visible repository ruleset, “Fall Back,” is disabled. Effective review/check/admin/force-push requirements therefore remain **not independently verified**; do not infer that the branch is adequately protected.
+- `.github/CODEOWNERS` is `* @Barrot-Agent`; it does not provide an independent reviewer.
+- Six dependency manifests are covered by the exact-head dependency audit. `requirements.txt`, `pyproject.toml` and related manifests use minimum-version ranges; no Python lockfile was found in the recursive tree. Dependabot runs weekly for pip and GitHub Actions.
+- ChatGPT-to-GitHub connector authentication and data flow were exercised in this run. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified. No external model dispatch or cross-platform data transfer occurred. Retain least privilege; repository metadata permissions do not reveal connector-token scopes.
+
+### Backlog and decision
+
+| PR | Classification | Current disposition |
+|---|---|---|
+| #1684 | blocked | Exact-head tests/audit/money/conflict pass on 3a017f0; keep draft until independent review and branch-protection evidence exist; rerun all checks on the new handoff head |
+| #1685 | blocked | Unique security workstream; keep draft and runner quarantined pending independent review and missing runtime controls |
+
+No PR is ready to merge. No source PR was closed. No new branch or PR was created. Main was not changed. No deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer or real-money action occurred.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** XRP-first mission, V3 execution/safety foundation, point-in-time feature contract, source-independence policy, four-baseline chronological evaluation, strict forecast admission, and the existing PR's local completed-run filtering fix.
+- **EXECUTED:** fetched current main metadata and complete recursive tree; enumerated all open PRs; compared both PR heads to main; inspected changed paths, PR reviews, CI, dependency/security workflows, branch protection visibility, CODEOWNERS, dependency manifests, latest handoff, and scheduled ingestion/cross-analysis jobs and logs.
+- **VERIFIED:** main SHA/tree; exact-head #1684 full suite, dependency audit, money audit and conflict-integrity checks on 3a017f0; latest main ingestion run 44860165888 and its published artifacts; latest cross-analysis run 44863247930; persistent omission of successful run 44844953105 from the receipt-chain ancestry.
+- **NOT VERIFIED:** CI on the new handoff-only head until its own runs complete; effective branch-protection requirements; independent review; raw-receipt WORM/external anchoring; reconstruction of the 118-record run-44844953105 feature-store contribution; SEC EDGAR capture; model-eligible event timeline; nonzero walk-forward cohort; calibrated candidate superiority; shadow evaluation; external platform authentication; independent red-team review.
+
+### Next concrete action
+
+First verify the new #1684 handoff commit's exact-head full suite, dependency audit, money audit, conflict-integrity check and fail-closed gate. Keep the PR draft if the gate still reports missing independent review or unverifiable protection. Then use the existing branch to repair the historical receipt/feature-store gap by validating and incorporating run 44844953105's preserved raw/index artifacts without rewriting old receipts. Only after the repaired chain is independently verified should the next model-eligible historical evaluation be considered. Directional forecasts remain disabled.
