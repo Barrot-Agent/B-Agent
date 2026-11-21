@@ -1,9 +1,10 @@
 """Artifact-backed, append-only recovery of the known XRP feature-store fork.
 
-This module imports one verified historical snapshot into a later cumulative
-checkpoint. It never rewrites prior snapshots or receipt chains. The new store
-receipt time is the actual recovery time, so point-in-time queries cannot see
-the recovered data before the recovery was performed.
+This module imports one verified historical snapshot into an isolated cumulative
+checkpoint. It never rewrites prior snapshots or receipt chains. A post-append
+server-time sample plus a one-second safety margin finalizes the new snapshot's
+availability boundary. This is conservative and prevents early as-of visibility;
+it is not a physical SQLite commit timestamp or an independent trusted anchor.
 """
 from __future__ import annotations
 
@@ -25,7 +26,7 @@ from .feature_store import FeatureStoreError, HistoricalFeatureStore
 from .xrp_public_ingestion import RawReceiptArchive, XRPIngestionError
 
 
-SCHEMA_VERSION = "barrot.xrp.historical-feature-store-reconciliation.v1"
+SCHEMA_VERSION = "barrot.xrp.historical-feature-store-reconciliation.v2"
 SOURCE_RUN_ID = "44844953105"
 FORK_RUN_ID = "44848909814"
 COMMON_PARENT_RUN_ID = "44844499889"
@@ -108,8 +109,52 @@ def _validate_server_receipt_time(server_time: datetime, run_started_at: datetim
     return normalized_server_time
 
 
+def _finalize_snapshot_stored_at(
+    database_path: Path,
+    snapshot_id: str,
+    expected_stored_at_utc: str,
+    availability_bound_utc: str,
+) -> None:
+    """Finalize only the just-created snapshot after append, before artifact publication.
+
+    The target is an isolated working copy. Its provisional pre-append receipt is
+    never published. The post-append server-time bound is committed before the
+    reconciliation artifact is emitted; no prior snapshot or source database is
+    modified.
+    """
+    if database_path.is_symlink() or not database_path.is_file():
+        raise XRPFeatureStoreBackfillError("isolated feature-store target is missing or unsafe")
+    try:
+        with sqlite3.connect(str(database_path), timeout=30) as connection:
+            connection.execute("BEGIN IMMEDIATE")
+            cursor = connection.execute(
+                """
+                UPDATE snapshots
+                SET stored_at_utc = ?
+                WHERE snapshot_id = ? AND stored_at_utc = ?
+                """,
+                (availability_bound_utc, snapshot_id, expected_stored_at_utc),
+            )
+            if cursor.rowcount != 1:
+                raise XRPFeatureStoreBackfillError(
+                    "could not finalize the new snapshot's post-append availability boundary"
+                )
+            row = connection.execute(
+                "SELECT stored_at_utc FROM snapshots WHERE snapshot_id = ?",
+                (snapshot_id,),
+            ).fetchone()
+            if row is None or row[0] != availability_bound_utc:
+                raise XRPFeatureStoreBackfillError(
+                    "finalized snapshot availability boundary did not persist"
+                )
+    except sqlite3.Error as exc:
+        raise XRPFeatureStoreBackfillError(
+            "could not finalize the isolated snapshot's post-append availability boundary"
+        ) from exc
+
+
 def _github_api_server_clock() -> datetime:
-    """Use GitHub's response Date header at the append boundary, not the runner clock."""
+    """Return GitHub server time; callers sample again after append before finalizing availability."""
     token = os.environ.get("GH_TOKEN")
     repository = os.environ.get("GITHUB_REPOSITORY")
     run_id = os.environ.get("GITHUB_RUN_ID")
@@ -473,7 +518,7 @@ def _verify_visibility(
     before_ids = _record_ids(before_records)
     after_ids = _record_ids(after_records)
     if expected_ids & before_ids:
-        raise XRPFeatureStoreBackfillError("backfilled records are visible before their actual store receipt time")
+        raise XRPFeatureStoreBackfillError("backfilled records are visible before their post-append availability bound")
     missing_after = sorted(expected_ids - after_ids)
     if missing_after:
         raise XRPFeatureStoreBackfillError(
@@ -506,6 +551,36 @@ def verify_existing_reconciliation(
     snapshot = receipt.get("backfill_snapshot")
     if not isinstance(snapshot, Mapping):
         raise XRPFeatureStoreBackfillError("existing reconciliation receipt has no backfill snapshot")
+    receipt_clock = receipt.get("receipt_clock")
+    if not isinstance(receipt_clock, Mapping):
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt has no post-append clock evidence")
+    if (
+        receipt_clock.get("sampling_phase") != "post_append"
+        or receipt_clock.get("post_append_availability_bound") is not True
+        or receipt_clock.get("physical_commit_time") is not False
+        or receipt_clock.get("safety_margin_seconds") != 1
+        or snapshot.get("store_receipt_time_is_post_append_availability_bound") is not True
+        or snapshot.get("store_receipt_time_is_actual_recovery_time") is not False
+    ):
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt overstates or lacks post-append clock quality")
+    try:
+        sampled_before = datetime.fromisoformat(
+            str(receipt_clock["sampled_before_append_at_utc"]).replace("Z", "+00:00")
+        )
+        sampled_after = datetime.fromisoformat(
+            str(receipt_clock["sampled_after_append_at_utc"]).replace("Z", "+00:00")
+        )
+        availability_bound = datetime.fromisoformat(
+            str(receipt_clock["availability_bound_utc"]).replace("Z", "+00:00")
+        )
+    except (KeyError, TypeError, ValueError) as exc:
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt has invalid clock timestamps") from exc
+    if (
+        sampled_after < sampled_before
+        or availability_bound != sampled_after + timedelta(seconds=1)
+        or snapshot.get("stored_at_utc") != receipt_clock.get("availability_bound_utc")
+    ):
+        raise XRPFeatureStoreBackfillError("existing reconciliation receipt clock bounds are inconsistent")
     store = HistoricalFeatureStore(target_path)
     exact = store.verified_snapshot(str(snapshot.get("snapshot_id") or ""))
     manifest = exact["manifest"]
@@ -600,14 +675,18 @@ def reconcile_historical_snapshot(
         artifact_inventory = _read_json(Path(artifact_inventory_path))
 
     target_path = Path(target_database)
+    source_database_path = Path(source_database)
     if target_path.is_symlink() or not target_path.is_file():
         raise XRPFeatureStoreBackfillError("cumulative target feature-store checkpoint is missing or unsafe")
+    if target_path.resolve() == source_database_path.resolve():
+        raise XRPFeatureStoreBackfillError("isolated target must not be the historical source database")
     store_receipt_clock = clock or (lambda: datetime.now(timezone.utc))
-    recovery_clock_value = store_receipt_clock()
-    if not isinstance(recovery_clock_value, datetime) or recovery_clock_value.tzinfo is None or recovery_clock_value.utcoffset() is None:
-        raise XRPFeatureStoreBackfillError("feature-store recovery clock must be timezone-aware")
-    recovery_clock_value = recovery_clock_value.astimezone(timezone.utc)
-    target_store = HistoricalFeatureStore(target_path, clock=lambda: recovery_clock_value)
+    pre_append_clock_value = store_receipt_clock()
+    if not isinstance(pre_append_clock_value, datetime) or pre_append_clock_value.tzinfo is None or pre_append_clock_value.utcoffset() is None:
+        raise XRPFeatureStoreBackfillError("pre-append feature-store clock must be timezone-aware")
+    pre_append_clock_value = pre_append_clock_value.astimezone(timezone.utc)
+    pre_append_clock_s = _iso(pre_append_clock_value)
+    target_store = HistoricalFeatureStore(target_path, clock=lambda: pre_append_clock_value)
     before_verification = target_store.verify_all_snapshots()
     if before_verification.get("valid") is not True:
         raise XRPFeatureStoreBackfillError("cumulative target feature store failed pre-backfill verification")
@@ -627,20 +706,36 @@ def reconcile_historical_snapshot(
     except FeatureStoreError as exc:
         if "unknown snapshot_id" not in str(exc):
             raise XRPFeatureStoreBackfillError("existing backfill snapshot failed verification") from exc
+    if existing_snapshot is not None:
+        raise XRPFeatureStoreBackfillError(
+            "backfill snapshot exists without its reconciliation receipt; rebuild the isolated target from the latest main checkpoint"
+        )
 
-    if existing_snapshot is None:
-        receipt_time = recovery_clock_value
-        receipt_time_s = _iso(receipt_time)
-        stored = target_store.append_snapshot(source_snapshot["manifest"])
-        if stored.get("created") is not True or stored.get("stored_at_utc") != receipt_time_s:
-            raise XRPFeatureStoreBackfillError("append-only feature-store backfill did not create the expected store receipt")
-        existing_snapshot = target_store.verified_snapshot(backfill_snapshot_id)
-    else:
-        receipt_time_s = existing_snapshot["stored_at_utc"]
-        if datetime.fromisoformat(receipt_time_s.replace("Z", "+00:00")) <= datetime.fromisoformat(
-            existing_snapshot["captured_at_utc"].replace("Z", "+00:00")
-        ):
-            raise XRPFeatureStoreBackfillError("existing backfill snapshot was stored at or before its source capture")
+    stored = target_store.append_snapshot(source_snapshot["manifest"])
+    if stored.get("created") is not True or stored.get("stored_at_utc") != pre_append_clock_s:
+        raise XRPFeatureStoreBackfillError("append-only feature-store backfill did not create the expected provisional snapshot")
+
+    post_append_clock_value = store_receipt_clock()
+    if (
+        not isinstance(post_append_clock_value, datetime)
+        or post_append_clock_value.tzinfo is None
+        or post_append_clock_value.utcoffset() is None
+    ):
+        raise XRPFeatureStoreBackfillError("post-append feature-store clock must be timezone-aware")
+    post_append_clock_value = post_append_clock_value.astimezone(timezone.utc)
+    if post_append_clock_value < pre_append_clock_value:
+        raise XRPFeatureStoreBackfillError("post-append server time predates the pre-append clock")
+    receipt_time = post_append_clock_value + timedelta(seconds=1)
+    receipt_time_s = _iso(receipt_time)
+    _finalize_snapshot_stored_at(
+        target_path,
+        backfill_snapshot_id,
+        pre_append_clock_s,
+        receipt_time_s,
+    )
+    existing_snapshot = target_store.verified_snapshot(backfill_snapshot_id)
+    if existing_snapshot.get("stored_at_utc") != receipt_time_s:
+        raise XRPFeatureStoreBackfillError("verified snapshot does not use the post-append availability bound")
 
     if _sha256_bytes(_canonical(existing_snapshot["manifest"]).encode("utf-8")) != backfill_manifest_sha256:
         raise XRPFeatureStoreBackfillError("target backfill snapshot manifest differs from the verified source")
@@ -651,10 +746,20 @@ def reconcile_historical_snapshot(
     checkpoint = target_store.checkpoint()
     target_database_sha = _sha256_file(target_path)
 
+    receipt_clock = {
+        "sampling_phase": "post_append",
+        "sampled_before_append_at_utc": pre_append_clock_s,
+        "sampled_after_append_at_utc": _iso(post_append_clock_value),
+        "safety_margin_seconds": 1,
+        "availability_bound_utc": receipt_time_s,
+        "post_append_availability_bound": True,
+        "physical_commit_time": False,
+        "independent_trusted_timestamp_anchor": False,
+    }
     receipt: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
         "status": "RECONCILED",
-        "reconciliation_created_at_utc": _iso(store_receipt_clock()),
+        "reconciliation_created_at_utc": _iso(post_append_clock_value),
         "repository": "Barrot-Agent/B-Agent",
         "main_index": {
             "run_id": lineage[-1]["current_run"]["run_id"],
@@ -708,6 +813,7 @@ def reconcile_historical_snapshot(
             "raw_chain_log_sha256": source_raw_verification["chain_log_sha256"],
         },
         "store_receipt_clock_source": receipt_clock_source,
+        "receipt_clock": receipt_clock,
         "backfill_snapshot": {
             "snapshot_id": existing_snapshot["snapshot_id"],
             "manifest_sha256": backfill_manifest_sha256,
@@ -715,7 +821,8 @@ def reconcile_historical_snapshot(
             "stored_at_utc": existing_snapshot["stored_at_utc"],
             "record_count": expected_record_count,
             "source_count": expected_source_count,
-            "store_receipt_time_is_actual_recovery_time": True,
+            "store_receipt_time_is_actual_recovery_time": False,
+            "store_receipt_time_is_post_append_availability_bound": True,
         },
         "feature_store_after": {
             "snapshot_count": after_verification["snapshot_count"],
@@ -730,7 +837,9 @@ def reconcile_historical_snapshot(
         "limitations": [
             "This reconciliation links both historical sibling receipt-chain heads and verifies the current main lineage; it does not rewrite either prior chain.",
             "GitHub Actions artifacts are retention-limited and are not independent WORM storage or a trusted timestamp authority.",
-            "The actual feature-store receipt time prevents this recovered snapshot from appearing in earlier as-of views; it does not change the source capture time.",
+            "The stored_at_utc value is sampled after append from the configured server clock and advanced by a one-second safety margin; it is a conservative availability bound, not the physical SQLite commit timestamp.",
+            "The GitHub API Date header is second-resolution and is not an independent WORM store or trusted timestamp authority.",
+            "The post-append availability bound does not change the original source capture time.",
             "A verified historical feature-store backfill is not a market-data quality certificate, a walk-forward result, or permission to issue forecasts.",
         ],
     }
@@ -748,6 +857,7 @@ def reconcile_historical_snapshot(
         "receipt_path": str(output_file),
         "backfill_snapshot": receipt["backfill_snapshot"],
         "store_receipt_clock_source": receipt.get("store_receipt_clock_source"),
+        "receipt_clock": receipt.get("receipt_clock"),
         "feature_store_after": receipt["feature_store_after"],
         "point_in_time_visibility": visibility,
         "main_lineage_run_ids": [item["current_run"]["run_id"] for item in lineage],
