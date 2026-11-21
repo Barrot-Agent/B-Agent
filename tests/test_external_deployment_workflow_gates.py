@@ -58,3 +58,14 @@ def test_self_hosted_brain_secret_is_only_mapped_in_confirmed_deploy_step():
     assert deploy.index("api.create_repo") < deploy.index("api.repo_info") < deploy.index("if not bool(getattr(space_info, \"private\", False)):")
     assert deploy.index('api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)') < deploy.index("api.upload_folder")
     assert content.index("Verify explicit approval and exact main revision") < content.index("Deploy self_hosted_brain/")
+
+def test_a2a_worker_deployment_requires_both_separate_worker_secrets():
+    content = (ROOT / ".github" / "workflows" / "deploy-a2a-worker.yml").read_text(encoding="utf-8")
+    assert "BRAIN_SHARED_SECRET" in content
+    assert "BARROT_AGENT_SECRET" in content
+    assert "BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}" in content
+    assert "BARROT_AGENT_SECRET: ${{ secrets.BARROT_AGENT_SECRET }}" in content
+    assert content.index("Verify explicit approval and exact main revision") < content.index("Deploy Worker")
+    assert "inputs.confirm == 'YES'" in content
+    assert "inputs.confirm_secret_rotation == 'YES'" in content
+
