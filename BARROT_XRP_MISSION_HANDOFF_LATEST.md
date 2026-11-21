@@ -5700,3 +5700,60 @@ No merge, main write, deployment, secret rotation, Space restart, external model
 6. Repair event-to-raw receipt binding, add independent WORM/timestamp anchoring, fetch issuer/exchange raw data, and establish chronological walk-forward baselines before forecasts.
 
 No main write, merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer or real-money action occurred.
+
+
+## Run 266 — 2026-11-21T15:10:07Z
+
+### Mission and repository state
+
+- **VERIFIED:** Main remains `550a647ee7269a704d4600ff337b2145acc90473`. The main mission manifest at `data/missions/primary_mission.json` sets `xrp_intelligence_prediction_engine` to priority 1 and preserves Barrot V3 as the execution, orchestration, safety and verification foundation.
+- **VERIFIED:** Current XRP integration branch is `integration/xrp-post-merge-verification-20261121T0002Z`, head `d553c5535256363bed2870f65b60918bc5a19ed9`, 84 commits ahead and zero behind main. Complete recursive trees: main 3,115 entries; integration 3,121; zero main paths missing; six integration-only paths.
+- **VERIFIED:** Two open PRs, with no changed-path overlap: #1684 XRP ingestion/backfill/provenance (13 files) and #1685 A2A credential separation (9 files). No new branch or PR was created.
+
+### Exact-head CI and backfill
+
+- **VERIFIED on exact head `d553c5535256363bed2870f65b60918bc5a19ed9`:** PR CI `44916711411` and push CI `44916707132` passed. Full repository suite: **4,547 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests, 73.15% inclusive coverage; legacy/core coverage 82%. Mission-critical coverage gates passed: XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%. Monetization 78%, rendering 71%, smart_agent 77%, mem_palace 100%.
+- Dependency audit PR/push `44916711377` / `44916707126`, money audit `44916711367`, conflict integrity `44916892421`, core tests and Pages validation-only all passed. GitHub Actions cache budget is exhausted and cache is read-only; this is a non-blocking warning, not a test failure.
+- **VERIFIED in isolated CI only:** Backfill job `136883794400` in run `44916711411` replayed against the preserved latest-main checkpoint from ingestion run `44912673505`. It increased the temporary database from 16,693 records / 15 snapshots to 16,811 / 16, recovering 118 records across 11 source lineages. Receipt time `2026-11-21T15:01:09.000000Z` came from the GitHub Actions run API Date header. Records were invisible at `15:01:08.999999Z` and visible at `15:01:09.000001Z`. Reconciliation SHA-256: `424b1738bcf488619ee4eeb5082dd350fd70370e418bd8c9bb017432f36910b4`; artifact 14711229315, digest `5abf344bb89be3db0b29706c9913df79cfb7bc48566c6cc2eac93188687d8f6a`. Main and its feature store were not modified.
+
+### Current main ingestion and market snapshot
+
+- Main ingestion run `44912673505` succeeded on main SHA `550a647`; cross-analysis run `44916083567` succeeded. The latest feature store has 16,693 records across 15 snapshots; its latest snapshot has 123 verified/model-eligible features from 12 source IDs and five publisher-independence groups.
+- Raw-source archive: 34 receipts, 22 retained raw payloads, 12 digest-only receipts, 12 source receipts marked model-eligible, 18 source failures and 23 raw-only sources. Receipt-chain sequence 15 is structurally continuous, but its external anchor is `NOT_ANCHORED`; GitHub Actions artifacts are retention-limited and are not WORM or an independent trusted timestamp authority.
+- **DESCRIPTIVE ONLY, cutoff 2026-11-21T14:12:21.271077Z:** USD-equivalent venue mids were Coinbase $0.925550, Kraken $0.925325, Bitstamp $0.925325 and OKX $0.92555494 (OKX top-of-book normalized using observed USDT/USD mid $0.998495). Max/min dispersion was approximately 2.48 bps. Ten-basis-point book imbalances were Coinbase +20.75%, Bitstamp +4.09%, Kraken +12.83% and OKX −6.31% in USDT. These are venue-specific snapshots, not a consolidated book; OKX depth remains in USDT, Bitbank's JPY pair is excluded from USD comparison, and no cross-venue sequence bridge exists. No directional inference is admitted.
+- Binance market endpoints returned HTTP 451; Bybit returned HTTP 403; Grayscale was rate-limited; Franklin XRPZ parsing failed; three SEC submissions lacked raw receipts while legitimate monitored-contact configuration remained unresolved. Deribit XRP-USDC perpetual payloads remain raw-only pending contract-unit, funding and order-book semantics validation.
+
+### Event, drift and prediction readiness
+
+- The event timeline contains 150 events: 79 source-status verified, 67 provisional and four disputed. **Zero of 150** have raw-source SHA-256 links; receipt completeness is false and the timeline is model-ineligible. The artifact reports 117 scenarios, but authored scenarios are not causal evidence or calibrated probabilities.
+- Drift evaluated **0 of 204** candidate features because the reference window has zero eligible samples. This is `INSUFFICIENT_DATA`, not `STABLE`.
+- Cross-analysis sentiment's newest input is 2026-10-29T13:23:01Z, approximately 553.475 hours old versus a 48-hour freshness threshold; sentiment is stale and forecast-ineligible. Walk-forward origins remain zero. **No directional XRP forecast was issued.**
+
+### Research updates
+
+- **ASK Coin:** CoinGecko identifies Permission Coin (ticker ASK), but no XRP/XRPL/Ripple relationship or identity match to the intended ASK Coin has been established. Keep unresolved.
+- **Actual capital:** Preserve the SEC/Evernorth distinction between cash actually received and used to buy XRP versus investor/Ripple in-kind contributions. The literal phrase is not a formal accounting term.
+- **SBIC / ChatGPT:** No new primary exact-phrase corroboration. SBIC East/Central/West remain distinct regional Japanese SME investment companies; the cited ChatGPT/AI training was delivered by VOST and does not establish an OpenAI partnership.
+- **Kamilah Stevenson:** Person identity is verified. One XRP-related YouTube appearance is verified: “Crypto Panics! W/ @drkamilahstevenson,” hosted by Paul Barron Podcast on 2026-06-11. It is a guest appearance, not an upload authored on her own channel. She warns about fake pages; channel ownership remains unverified. Do not attribute candidate channels or their videos to her without a first-party cross-link.
+- **ETF disagreement:** CryptoKeyhole reports a partial 20 Nov outflow of 2,659,361 XRP / about $2.4M from two of three funds it reads daily, waiting Franklin XRPZ. The same page says its latest issuer file was dated 23 Nov 2026 but read at 05:40 UTC on 21 Nov, an impossible future-dated claim. XRP Insights reports a different seven-product scope and week-47 net flow of −12.98M XRP. No aggregator total is admitted; reconcile dated issuer files, fund scope, AP creations/redemptions, in-kind flows and raw receipts first.
+
+### Nine-platform coordination
+
+- ChatGPT-to-GitHub connector authentication and data flow are verified. Repository metadata reports admin/maintain/push/pull/triage permissions; least privilege is not verified and connector token scopes were not introspected.
+- Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified. No external model dispatch occurred.
+
+### Open PR backlog and merge decision
+
+- **#1684 — blocked:** 84 commits ahead, zero behind, 13 files; exact-head full suite and security checks passed, but the PR remains draft with zero independent approvals. The fail-closed gate runs `44916746505` / `44916892466` correctly block it. Main branch metadata says protected, but the protection endpoint returns HTTP 403; visible fallback ruleset is disabled, and CODEOWNERS assigns all paths to `@Barrot-Agent`.
+- **#1685 — blocked:** A2A credential separation, five commits ahead, zero behind, nine files; exact-head suite on `e512f4e` passed 4,536 tests, one skipped, zero failed. It remains draft with no independent review; OS sandbox, provider credential isolation, egress restrictions and task-level authorization remain incomplete. Runner stays quarantined.
+- **Additional side-effect blocker:** GitHub Pages is enabled and the automatic Pages build/deployment run `44839139424` succeeded after a prior main push. The user has not authorized deployment. The current PR gate checks a validation-only Pages build but does not establish authorization for the automatic main-push publication. **Do not merge #1684 until this side effect is neutralized or specifically authorized.**
+- No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer, real-money action or source-PR closure occurred.
+
+### Next concrete actions
+
+1. Keep #1684 draft and unmerged; resolve the automatic Pages publication side effect or obtain specific deployment authorization.
+2. Obtain independent review and verifiable branch-protection/required-check evidence.
+3. Link all 150 event records to raw-source receipt hashes before model admission.
+4. Resolve legitimate SEC capture configuration and provider failures without bypassing regional restrictions or rate limits.
+5. Reconcile primary ETF issuer files and future-dated aggregator metadata; refresh stale sentiment; establish a valid drift reference window.
+6. Build synchronized point-in-time history and then run leakage-safe chronological walk-forward baselines, calibration and shadow evaluation. Keep directional forecasts disabled.
