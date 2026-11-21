@@ -254,20 +254,30 @@ def _verify_raw_artifact(
     if _canonical(embedded_index) != _canonical(index):
         raise XRPFeatureStoreBackfillError("separate receipt-index artifact differs from raw-artifact index")
     receipt_manifest_path = artifact_root / "receipt_manifest.json"
-    receipt_manifest = _read_json(receipt_manifest_path)
-    manifest_bytes = receipt_manifest_path.read_bytes()
+    if receipt_manifest_path.is_symlink() or not receipt_manifest_path.is_file():
+        raise XRPFeatureStoreBackfillError("raw artifact is missing its receipt-list manifest")
+    try:
+        receipt_manifest = json.loads(receipt_manifest_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise XRPFeatureStoreBackfillError("raw receipt-list manifest is invalid JSON") from exc
+    if not isinstance(receipt_manifest, list) or any(not isinstance(item, dict) for item in receipt_manifest):
+        raise XRPFeatureStoreBackfillError("raw receipt-list manifest must be a list of receipt objects")
+
+    receipt_chain_manifest_path = artifact_root / "receipt_chain_manifest.json"
+    receipt_chain_manifest = _read_json(receipt_chain_manifest_path)
+    manifest_bytes = receipt_chain_manifest_path.read_bytes()
     try:
         verification = RawReceiptArchive(raw_root).verify()
     except XRPIngestionError as exc:
         raise XRPFeatureStoreBackfillError(f"raw receipt artifact verification failed: {exc}") from exc
-    if receipt_manifest.get("verification_status") != "PASS":
-        raise XRPFeatureStoreBackfillError("raw receipt manifest does not report PASS")
+    if receipt_chain_manifest.get("verification_status") != "PASS":
+        raise XRPFeatureStoreBackfillError("raw receipt-chain manifest does not report PASS")
     for field, value in verification.items():
-        if receipt_manifest.get(field) != value:
-            raise XRPFeatureStoreBackfillError(f"raw receipt manifest disagrees on {field}")
+        if receipt_chain_manifest.get(field) != value:
+            raise XRPFeatureStoreBackfillError(f"raw receipt-chain manifest disagrees on {field}")
     chain = index["current_receipt_chain"]
     if _sha256_bytes(manifest_bytes) != chain.get("manifest_sha256"):
-        raise XRPFeatureStoreBackfillError("raw receipt-manifest bytes do not match the cross-run index")
+        raise XRPFeatureStoreBackfillError("raw receipt-chain manifest bytes do not match the cross-run index")
     for field in (
         "chain_head_sha256",
         "receipt_log_sha256",
@@ -276,11 +286,12 @@ def _verify_raw_artifact(
     ):
         if verification.get(field) != chain.get(field):
             raise XRPFeatureStoreBackfillError(f"raw receipt chain does not match index field {field}")
-    context = receipt_manifest.get("github_actions_context")
+    context = receipt_chain_manifest.get("github_actions_context")
     if not isinstance(context, Mapping) or str(context.get("run_id")) != str(expected_run_id):
-        raise XRPFeatureStoreBackfillError("raw receipt manifest run identity does not match its artifact")
+        raise XRPFeatureStoreBackfillError("raw receipt-chain manifest run identity does not match its artifact")
     receipt_by_hash: dict[str, dict[str, Any]] = {}
     receipts_path = raw_root / "receipts.jsonl"
+    raw_receipts: list[dict[str, Any]] = []
     for line_number, line in enumerate(receipts_path.read_text(encoding="utf-8").splitlines(), start=1):
         if not line.strip():
             raise XRPFeatureStoreBackfillError(f"raw receipt log has an empty line at {line_number}")
@@ -289,6 +300,9 @@ def _verify_raw_artifact(
         if not isinstance(digest, str) or digest in receipt_by_hash:
             raise XRPFeatureStoreBackfillError("raw receipt log has an invalid or duplicate content hash")
         receipt_by_hash[digest] = receipt
+        raw_receipts.append(receipt)
+    if _canonical(receipt_manifest) != _canonical(raw_receipts):
+        raise XRPFeatureStoreBackfillError("raw receipt-list manifest differs from the canonical receipt log")
     return verification, receipt_by_hash, _artifact_tree_sha256(artifact_root)
 
 
