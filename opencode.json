@@ -58,15 +58,6 @@
         "timeout": {
           "startup": 30000
         }
-      },
-      "lunaroute": {
-        "type": "remote",
-        "url": "https://mcp.lunaroute.com/mcp",
-        "disabled": true,
-        "oauth": false,
-        "headers": {
-          "Authorization": "Bearer {env:LUNAROUTE_API_KEY}"
-        }
       }
     }
   },
@@ -76,32 +67,11 @@
     "bash": "ask",
     "webfetch": "ask"
   },
-  "provider": {
-    "lunaroute": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "LunaRoute",
-      "options": {
-        "baseURL": "https://gw.lunaroute.com/v1",
-        "apiKey": "{env:LUNAROUTE_API_KEY}"
-      },
-      "models": {
-        "glm-5.3-flash": {
-          "name": "GLM 5.3 Flash"
-        },
-        "deepseek-4.1-flash": {
-          "name": "DeepSeek 4.1 Flash"
-        },
-        "muse-spark-open": {
-          "name": "Muse Spark Open"
-        }
-      }
-    }
-  },
   "agent": {
     "barrot": {
       "description": "Barrot - main agent",
       "model": "opencode/deepseek-v4.1-flash-free",
-      "prompt": "Use only providers with tested authentication and data-flow. The default OpenCode free model is the verified configuration. LunaRoute remains optional/unverified and its MCP server is disabled; do not claim a live connection or send data through it until explicitly authorized and verified. Preserve Barrot V3 and follow the XRP mission readiness gates.",
+      "prompt": "Use the configured OpenCode model only. No LunaRoute provider, MCP server, endpoint, credential, or fallback is supported. Preserve Barrot V3 and follow the XRP mission readiness gates.",
       "permission": {
         "*": "ask",
         "edit": "ask",
