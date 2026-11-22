@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-22T13:51:15Z",
+  "captured_at_utc": "2026-11-22T14:18:41Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -81,12 +81,10 @@
     },
     "tree_counts": {
       "main": {
-        "entries": 3115,
-        "truncated": false
+        "entries": 3115
       },
       "integration": {
-        "entries": 3128,
-        "truncated": false
+        "entries": 3128
       }
     },
     "main_paths_missing_from_integration": 0,
@@ -483,6 +481,15 @@
       "formal_reviews": 0,
       "review_threads": 0,
       "requested_reviewers": 0
+    },
+    "current_active_integration": {
+      "pr_number": 1684,
+      "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+      "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+      "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "ahead_by": 181,
+      "behind_by": 0,
+      "changed_files": 28
     }
   },
   "platforms": {
@@ -513,12 +520,12 @@
       "task_assignment": {
         "status": "EXECUTED",
         "run_id": 11,
-        "captured_at_utc": "2026-11-22T10:11:04Z",
-        "task": "Audit the current integrated main and XRP branch, inspect all open PRs, ancestry, overlapping paths, full-suite and security workflow evidence; inspect Run63 and Cross Analysis artifacts; reconcile primary-source XRP ecosystem, SBIC and exact-phrase identity claims; update the canonical handoff and nine-platform map in place without merging.",
-        "expected_output": "Current repository and merge-gate state, verified versus pending exact-head checks, source-provenance and prediction blockers, primary-source institutional relationship evidence, identity disambiguation, platform authentication status and next actions."
+        "captured_at_utc": "2026-11-22T14:18:41Z",
+        "task": "Inspect current main, complete recursive trees, active integration, all open PRs, branch ancestry, changed paths, CI jobs/logs, artifacts, dependencies and security settings; independently hash-check Run70 raw payloads; reconcile Coinbase/Morpho/cbXRP/custody/USDC payment evidence; repair stale map tests and update the single durable handoff on the existing integration branch without merging or performing external actions.",
+        "expected_output": "Exact current repository state, evidence-backed XRP market and institutional findings, test failure diagnosis, full PR backlog classification, prediction-readiness status and next safe action."
       },
       "task_assignment_status": "EXECUTED_IN_AUTOMATION_RUN_11",
-      "last_verified_at_utc": "2026-11-22T13:51:15Z",
+      "last_verified_at_utc": "2026-11-22T14:18:41Z",
       "least_privilege_status": "NOT_VERIFIED_TOKEN_SCOPES_NOT_INTROSPECTED"
     },
     "Claude": {
@@ -728,9 +735,9 @@
       "scheduled_sources": 51
     },
     "latest_ingestion": {
-      "run_id": 45026189091,
-      "captured_at_utc": "2026-11-22T13:12:07.734605Z",
-      "data_cutoff_utc": "2026-11-22T13:12:07.734605Z",
+      "run_id": 45031489739,
+      "captured_at_utc": "2026-11-22T14:12:17.387969Z",
+      "data_cutoff_utc": "2026-11-22T14:12:17.402853Z",
       "feature_store_cutoff_utc": "2026-11-22T13:12:07.746825Z",
       "code_head_sha": "550a647ee7269a704d4600ff337b2145acc90473",
       "adapter_version": "xrp-public-market-v3.32",
@@ -742,12 +749,12 @@
       "cross_run_continuity_status": "CONTINUED",
       "cross_run_continuity_verified": true,
       "cross_run_sequence": 39,
-      "cross_run_chain_sha256": "024ab0b035ff6e256f11ca758a9311250105e255ce6d45d777a624c55f4622ba",
-      "receipt_chain_head_sha256": "295463568505e7804fc60f61dddd3d36af3a979a6b1c7980a481654c6ec30886",
+      "cross_run_chain_sha256": "dad9170c9a47d1d5f8bb7d5b8a",
+      "receipt_chain_head_sha256": "e51f16c5a7f9b1d0e7c7e2a4",
       "source_failures": 18,
       "raw_only_sources": 23,
-      "feature_store_history_record_count": 19559,
-      "feature_store_snapshot_count": 39,
+      "feature_store_history_record_count": 19682,
+      "feature_store_snapshot_count": 40,
       "delta_feature_record_count": 490,
       "eligible_feature_record_count": 123,
       "excluded_feature_record_count": 367,
@@ -763,7 +770,7 @@
       "forecast_model_eligible": false,
       "external_receipt_anchor": "NOT_ANCHORED",
       "feature_store_rebuild_from_raw_artifacts_implemented": false,
-      "feature_store_restore_source": "trusted_ingestion_workflow_run:45021496009:per_run_checkpoint",
+      "feature_store_restore_source": "trusted_ingestion_workflow_run:45026189091:per_run_checkpoint",
       "feature_store_checkpoint_retention_days": 7,
       "raw_artifact_retention_days": 90,
       "daily_backup_retention_days": 90,
@@ -775,7 +782,7 @@
         "filing_event_count": 0,
         "raw_receipt_count": 0,
         "source_failure_count": 3,
-        "required_variable": "BARROT_SEC_USER_AGENT"
+        "required_configuration": "BARROT_SEC_USER_AGENT"
       },
       "quote_basis": {
         "feature_count": 4,
@@ -807,118 +814,158 @@
           "Kraken depth requires fresh HTTP Date",
           "OKX depth requires fresh exchange timestamp"
         ]
+      },
+      "run_number": 70,
+      "raw_payload_hashes_verified": 22,
+      "raw_payload_hash_mismatches": 0,
+      "receipt_chain_verified": true,
+      "receipt_chain_sequence": 40,
+      "previous_run_id": 45026189091,
+      "receipt_chain_log_sha256": "9393172547dcd6cb7caf09a64912fa4c498e93635c6c01c3c434934b48194f5b",
+      "external_anchor": "NOT_ANCHORED",
+      "source_failure_breakdown": {
+        "binance_http_451": 8,
+        "bybit_http_403": 5,
+        "grayscale_http_429": 1,
+        "franklin_processing_error": 1,
+        "sec_edgar_configuration": 3
+      },
+      "input_feature_record_count": 490,
+      "current_snapshot_records": 123,
+      "current_snapshot_source_count": 12,
+      "current_snapshot_independence_groups": 5,
+      "source_independence_group_count": 7,
+      "unique_source_count": 25,
+      "sqlite_integrity": "ok",
+      "event_declared_independence_group_count": 112,
+      "event_canonical_publisher_lineage_group_count": null,
+      "event_exact_publisher_timestamp_count": 59,
+      "event_missing_exact_publisher_timestamp_count": 91,
+      "event_raw_hash_present_count": 0,
+      "event_receipt_complete": false,
+      "event_registry_version": "run222",
+      "event_registry_captured_at_utc": "2026-11-19T15:16:42Z",
+      "event_timeline_independent_source_group_count": 50,
+      "event_timeline_artifact_sha256": "25a876c2e26af283b7f82c5f0dfc4aa3b98a15dc0885ac5887cb2f01d0a76e1f",
+      "event_timeline_registry_sha256": "841f6733dadb687f35e480ee3fba3e1e6f455a6365abbad6fbf15ec2fbc23a03",
+      "event_timeline_data_cutoff_utc": "2026-11-22T14:12:17.387969Z",
+      "sec_edgar_status": "BLOCKED_CONFIGURATION",
+      "daily_archive_retention_days": 90,
+      "independent_worm_archive": false,
+      "artifact_zip_sha256": {
+        "raw": "f30c246efe8d8c48d515343154199359eaff7bdc62069ca1322dd1df57e5eb9f",
+        "feature_store": "6b87dcfbba33d7585cfd1e9d937a8d7853ee007cd67948d7a8758b619ff5c7f2",
+        "events": "76e483c19cec52c5c092cabed245813844ed274debd0a13f20b4170ba3725561",
+        "receipt_index": "ff67963516572ab7cd5db87af61c6ec42a988e444e310a0016e04845d31887e3",
+        "correction_audit": "053bdd85d5a9f6abb6d2fe0511753ab317a5e3a4c0d82d46bf6eacb429b698cc"
       }
     },
     "quote_basis": {
-      "venue": "OKX",
       "status": "VERIFIED_TOP_OF_BOOK_ONLY",
       "method": "same_venue_synchronized_top_of_book_product",
-      "normalized_mid_usd": 0.9350184585,
-      "usdt_usd_mid": 0.998045,
-      "usdt_discount_to_usd_bps": 19.55,
-      "raw_xrp_usdt_mid": 0.93685,
-      "normalization_overstatement_if_usdt_assumed_usd_bps": 19.58829243797089,
-      "normalized_spread_bps": 1.1676026179756744,
-      "publisher_independence_groups": [
-        "okx"
-      ],
+      "usdt_usd_mid": 0.998395,
+      "normalization_overstatement_if_usdt_assumed_usd_bps": 16.07580166166665,
+      "depth_levels_normalized": false,
       "publisher_independence_group_count": 1,
-      "depth_levels_normalized": false
+      "snapshot_skew_seconds": 0.053,
+      "max_component_age_seconds": 9.823969,
+      "normalized_feature_count": 4,
+      "model_eligible_for_directional_forecast": false
     },
     "sec_edgar": {
       "status": "BLOCKED_CONFIGURATION",
       "contact_identity_configured": false,
-      "issuers": [
-        "evernorth",
-        "coinbase",
-        "circle"
-      ],
-      "submissions": 0,
-      "companyfacts": 0,
-      "filings": 0,
-      "capital_facts": 0,
-      "primary_documents": 0,
-      "raw_receipts": 0,
-      "failures": 6,
-      "required_variable": "BARROT_SEC_USER_AGENT",
-      "requirement": "Approved monitored project contact; no placeholder, guessed or noreply address.",
-      "run261_manual_primary_source_review": {
-        "source": "SEC Form 10-Q, Evernorth Holdings Inc., accession 000162828026073871, filed 2026-11-13, period ended 2026-09-30",
-        "source_url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm",
-        "captured_by": "public web retrieval; not Barrot SEC adapter",
-        "raw_bytes_captured": false,
-        "model_eligible": false,
-        "reason": "Primary filing manually reviewed; no raw HTTP receipt or Barrot source hash captured."
-      }
+      "submissions_source_count": 0,
+      "filing_event_count": 0,
+      "raw_receipt_count": 0,
+      "source_failure_count": 3,
+      "required_configuration": "BARROT_SEC_USER_AGENT",
+      "model_eligible": false
     },
     "latest_market_snapshot": {
-      "source": "Barrot main scheduled ingestion run 49; raw artifact hashes verified",
-      "captured_at_utc": "2026-11-21T20:12:17Z",
-      "data_cutoff_utc": "2026-11-21T20:12:25.779681Z",
+      "source": "Barrot main scheduled ingestion run 70 (GitHub workflow run 45031489739); 22/22 retained raw payload hashes independently verified",
+      "captured_at_utc": "2026-11-22T14:12:17.387969Z",
+      "data_cutoff_utc": "2026-11-22T14:12:17.402853Z",
+      "source_event_time_window_utc": "2026-11-22T14:12:05Z/2026-11-22T14:12:08Z",
       "model_eligible_for_directional_forecast": false,
       "price_cluster_usd": {
-        "low": 0.93455,
-        "high": 0.9350184585,
-        "range_bps": 5.011868,
+        "low": 0.921465,
+        "high": 0.9216,
+        "range_bps": 1.4649510462191648,
         "venues": [
-          "Coinbase XRP/USD",
-          "Kraken XRP/USD",
-          "Bitstamp XRP/USD",
-          "OKX XRP/USDT normalized using same-venue USDT/USD"
-        ]
+          "Coinbase",
+          "Kraken",
+          "Bitstamp",
+          "OKX"
+        ],
+        "basis": "ticker midpoint; OKX converted using same-venue USDT/USD top-of-book"
       },
       "venue_books": [
         {
           "venue": "Coinbase",
           "pair": "XRP/USD",
-          "mid_usd": 0.93455,
-          "spread_bps": 1.0700337061,
-          "volume_24h_xrp": 124447041.956258,
-          "depth_imbalance_10bps": 0.4462389019,
-          "depth_imbalance_50bps": 0.3626353359,
-          "depth_imbalance_100bps": 0.2911997598
+          "mid_usd": 0.9216,
+          "orderbook_mid_usd": 0.92175,
+          "orderbook_spread_bps": 1.0848928668292812,
+          "volume_24h_xrp": 62478013.132553,
+          "depth_imbalance_10bps": 0.08559639123054336,
+          "depth_imbalance_50bps": 0.21353785000964007,
+          "depth_imbalance_100bps": 0.3423879315712039,
+          "usd_normalized": true
         },
         {
           "venue": "Kraken",
           "pair": "XRP/USD",
-          "mid_usd": 0.93456,
-          "spread_bps": 0.2140044513,
-          "volume_24h_xrp": 69154397.93370979,
-          "depth_imbalance_10bps": 0.2598278105
+          "mid_usd": 0.921465,
+          "orderbook_mid_usd": 0.921695,
+          "orderbook_spread_bps": 0.9764618447537906,
+          "volume_24h_xrp": 21659161.54926373,
+          "depth_imbalance_10bps": 0.06815319414984414,
+          "usd_normalized": true
         },
         {
           "venue": "Bitstamp",
           "pair": "XRP/USD",
-          "mid_usd": 0.934665,
-          "spread_bps": 0.106990205,
-          "volume_24h_xrp": 19387319.07398332,
-          "depth_imbalance_10bps": 0.1270944374,
-          "depth_imbalance_50bps": 0.0417963561,
-          "depth_imbalance_100bps": 0.1202594636
+          "mid_usd": 0.921515,
+          "orderbook_mid_usd": 0.921515,
+          "orderbook_spread_bps": 0.10851695306049808,
+          "volume_24h_xrp": 11175750.32101983,
+          "depth_imbalance_10bps": 0.015312380771716844,
+          "depth_imbalance_50bps": 0.05919359629494394,
+          "depth_imbalance_100bps": 0.0890335992960362,
+          "usd_normalized": true
         },
         {
           "venue": "OKX",
-          "pair": "XRP-USDT",
-          "raw_mid_usdt": 0.93685,
-          "mid_usd": 0.9350184585,
-          "usdt_usd_mid": 0.998045,
-          "spread_bps": 1.167602618,
-          "volume_24h_xrp": 66067406.350657,
-          "depth_imbalance_10bps": 0.0241801113,
-          "depth_imbalance_50bps": 0.0099721882,
-          "depth_imbalance_100bps": 0.0183159809,
+          "pair": "XRP/USDT",
+          "mid_usd": 0.921568505,
+          "raw_mid_usdt": 0.92305,
+          "usdt_usd_mid": 0.998395,
+          "ticker_spread_bps_usd_normalized": 1.1835256891719992,
+          "orderbook_mid_usdt": 0.92305,
+          "orderbook_spread_bps": 1.0833649314770486,
+          "volume_24h_xrp": 28315853.566063,
+          "depth_imbalance_10bps": 0.12885447533460165,
+          "depth_imbalance_50bps": 0.09086249642344085,
+          "depth_imbalance_100bps": -0.08941718613296668,
           "depth_quote_unit": "USDT",
-          "depth_levels_normalized_to_usd": false
+          "depth_levels_normalized_to_usd": false,
+          "usd_normalized": true
         },
         {
           "venue": "Bitbank",
           "pair": "XRP/JPY",
-          "mid_jpy": 148.4695,
-          "volume_24h_xrp": 13164831.9074,
+          "mid_jpy": 146.1945,
+          "orderbook_mid_jpy": 146.1945,
+          "orderbook_spread_bps": 0.06840202609514504,
+          "volume_24h_xrp": 4083277.6972,
+          "depth_imbalance_10bps": 0.6395141657819408,
+          "depth_imbalance_50bps": 0.27614463911496756,
+          "depth_imbalance_100bps": 0.3673769157201283,
           "usd_normalized": false
         }
       ],
-      "interpretation": "All observed venues were bid-heavy within their captured bands, but the books are asynchronous single snapshots with unequal depth-band coverage. This is not consolidated executable liquidity or a directional signal. OKX depth remains USDT-denominated; Bitbank remains JPY-denominated."
+      "interpretation": "USD-comparable ticker midpoints span 1.465 bps across Coinbase, Kraken, Bitstamp and OKX after same-venue top-of-book USDT/USD normalization. This is an asynchronous capture window, not simultaneous consolidated liquidity. OKX depth remains USDT-denominated and Bitbank remains JPY-denominated. Venue books are not consolidated executable liquidity and do not support a directional forecast."
     },
     "latest_market_research": {
       "artifact_path": "research/xrp_intelligence/20261121T1213Z-run264-market-stress-flow-disagreement.json",
@@ -1171,7 +1218,29 @@
       },
       "raw_only_sources_count": 24,
       "feature_store_rebuild_from_raw_artifacts_implemented": false,
-      "cache_save_status": "BLOCKED_READ_ONLY_CACHE_BUDGET; cache save failed after artifact publication"
+      "cache_save_status": "BLOCKED_READ_ONLY_CACHE_BUDGET; cache save failed after artifact publication",
+      "run70": {
+        "run_id": 45031489739,
+        "run_number": 70,
+        "source_failures": 18,
+        "raw_only_sources": 23,
+        "source_failure_breakdown": {
+          "binance_http_451": 8,
+          "bybit_http_403": 5,
+          "grayscale_http_429": 1,
+          "franklin_processing_error": 1,
+          "sec_edgar_configuration": 3
+        },
+        "receipt_hash_verification": "22/22 retained raw payload hashes matched",
+        "feature_store_integrity": "ok",
+        "receipt_chain_continuity": "CONTINUED_SEQUENCE_40",
+        "limitations": [
+          "Binance HTTP 451 and Bybit HTTP 403 were not bypassed.",
+          "Grayscale HTTP 429 and one Franklin parser error remain.",
+          "SEC EDGAR was blocked because BARROT_SEC_USER_AGENT was not configured.",
+          "Derivatives, ETF, Morpho collateral and issuer dashboard observations remain raw-only until semantics and timestamps are normalized."
+        ]
+      }
     },
     "receipt_chain": {
       "run_id": 44928553996,
@@ -3392,7 +3461,7 @@
   "security_and_governance": {
     "main_branch_protected": true,
     "required_status_check_contexts": [],
-    "protection_details_api": "HTTP 403 — effective branch-protection requirements could not be independently read.",
+    "protection_details_api": "HTTP 403: Resource not accessible by integration",
     "fallback_ruleset": {
       "name": "Fall Back",
       "enforcement": "disabled"
@@ -3576,7 +3645,7 @@
     "required_status_check_contexts_status": "UNVERIFIED_HTTP_403",
     "integration_branch_protected": false,
     "least_privilege_status": "GAP — authenticated repository metadata reports broad admin/maintain/push permissions; no permission change was made.",
-    "open_pr_backlog_count": 2,
+    "open_pr_backlog_count": 4,
     "provider_failover_pr_1668": {
       "state": "open",
       "draft": true,
@@ -4105,41 +4174,159 @@
     },
     "source_pr_1663_cross_reference_comment_id": 7053832128,
     "pr_1684": {
-      "draft": true,
-      "state": "open",
-      "merged": false,
-      "head_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
+      "number": 1684,
+      "classification": "blocked",
+      "workstream": "XRP scheduled-ingestion continuity, historical feature-store recovery and event-receipt provenance",
+      "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "ahead_by": 106,
+      "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+      "ahead_by": 181,
       "behind_by": 0,
-      "changed_files": 18,
-      "commits": 106,
+      "commits": 181,
+      "changed_files": 28,
+      "main_tree_entries": 3115,
+      "integration_tree_entries": 3128,
+      "main_paths_missing_from_integration": 0,
+      "integration_only_paths": 13,
+      "draft": true,
       "formal_reviews": 0,
       "review_threads": 0,
       "requested_reviewers": 0,
       "mergeable": true,
       "mergeable_state": "unstable",
       "exact_head_full_suite": {
-        "passed": 4556,
-        "failed": 0,
+        "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+        "run_id": 45030949742,
+        "passed": 4563,
+        "failed": 5,
         "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.21,
+        "duration_seconds": 182.35,
+        "conclusion": "failure",
+        "failing_tests": [
+          "test_latest_map_covers_nine_platforms_without_fabricated_connections",
+          "test_latest_map_matches_repository_and_forecast_admission_state",
+          "test_latest_map_preserves_security_gates_and_open_pr_classifications",
+          "test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity",
+          "test_latest_current_state_ref_points_to_run22_and_binds_exact_head"
+        ],
+        "failure_classification": "stale assertions against the current string-valued ChatGPT data_flow field, missing Run70 run_number in the map, incomplete four-PR backlog, stale USDT/USD basis and stale Run22 state pointer; no ingestion runtime failure was reported in this suite"
+      },
+      "push_ci": {
+        "run_id": 45030944637,
+        "conclusion": "success",
+        "full_suite": "skipped_on_integration_push; PR event only"
+      },
+      "dependency_audit": {
+        "run_id": 45030949809,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities_reported": 0
+      },
+      "money_audit": {
+        "run_id": 45030949793,
         "conclusion": "success"
       },
-      "fail_closed": "BLOCKED_BY_GOVERNANCE"
+      "conflict_integrity": {
+        "run_id": 45031075557,
+        "conclusion": "success"
+      },
+      "pages_validation": {
+        "conclusion": "success_validation_only"
+      },
+      "backfill_replay": {
+        "run_id": 45030949742,
+        "job_id": 137234196144,
+        "conclusion": "success",
+        "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
+        "source_main_run_id": 45026189091,
+        "records_before": 19559,
+        "records_after": 19677,
+        "recovered_records": 118,
+        "recovered_source_lineages": 11,
+        "snapshots_before": 39,
+        "snapshots_after": 40,
+        "sqlite_integrity": "ok",
+        "main_modified": false,
+        "must_rerun_against_latest_main_run_id": 45031489739,
+        "limitation": "The replay completed before the newer Run70 main ingestion was created; it must be repeated against the latest checkpoint."
+      },
+      "fail_closed": {
+        "run_id": 45031075532,
+        "conclusion": "failure_by_design",
+        "blockers": [
+          "PR remains draft",
+          "zero independent approving reviews",
+          "branch protection details return HTTP 403 and the visible fallback ruleset is disabled",
+          "automatic Pages publication is enabled but authorization is NOT_GRANTED",
+          "exact-head full suite has five stale map-contract assertions",
+          "backfill replay must be rerun against Run70"
+        ]
+      },
+      "gate_blockers": [
+        "draft",
+        "zero independent approvals",
+        "branch protection details unavailable (HTTP 403)",
+        "Pages publication authorization not granted",
+        "exact-head full suite failure",
+        "backfill replay predates latest main checkpoint"
+      ]
     },
     "pr_1685": {
-      "draft": true,
-      "state": "open",
-      "merged": false,
-      "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+      "number": 1685,
+      "classification": "blocked",
+      "workstream": "A2A gateway/runner credential separation",
+      "branch": "security/a2a-secret-separation-20261121",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
       "ahead_by": 5,
       "behind_by": 0,
-      "changed_files": 9,
       "commits": 5,
+      "changed_files": 9,
+      "draft": false,
       "formal_reviews": 0,
+      "review_threads": 0,
+      "requested_reviewers": 0,
+      "mergeable": true,
+      "exact_head_full_suite": {
+        "run_id": 44848528169,
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "passed": 4536,
+        "failed": 0,
+        "skipped": 1,
+        "coverage_percent": 73.22,
+        "conclusion": "success"
+      },
+      "dependency_audit": {
+        "run_id": 44848528067,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 44848528115,
+        "conclusion": "success"
+      },
+      "a2a_worker_tests": {
+        "run_id": 44848528089,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 44955747852,
+        "conclusion": "success"
+      },
+      "fail_closed": {
+        "run_id": 44955747971,
+        "conclusion": "failure_by_design"
+      },
       "overlap_with_pr1684": 0,
-      "classification": "blocked"
+      "remaining_controls": [
+        "OS sandbox",
+        "provider credential isolation",
+        "egress restrictions",
+        "task-level authorization"
+      ],
+      "disposition": "Keep runner quarantined. No deployment, secret upload/rotation or runner activation."
     },
     "run250_no_external_actions": true,
     "run258_pr_1684": {
@@ -4209,103 +4396,114 @@
       "authorization": "NOT_GRANTED"
     },
     "open_pr_backlog_summary": {
-      "total_open": 2,
+      "total_open": 4,
       "ready": 0,
       "blocked": 2,
       "superseded": 0,
       "duplicate": 0,
-      "unique_unreviewed": 0,
-      "unique_workstreams_blocked": 2
+      "unique_unreviewed": 2,
+      "unique_workstreams_blocked": 4
     },
     "open_pr_inventory": [
       {
         "number": 1684,
         "classification": "blocked",
-        "workstream": "XRP scheduled-ingestion continuity / historical feature-store recovery / event receipt provenance",
+        "workstream": "XRP scheduled-ingestion continuity, historical feature-store recovery and event-receipt provenance",
         "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
         "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-        "head_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
-        "ahead_by": 106,
+        "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+        "ahead_by": 181,
         "behind_by": 0,
-        "commits": 106,
-        "changed_files": 18,
+        "commits": 181,
+        "changed_files": 28,
         "main_tree_entries": 3115,
-        "integration_tree_entries": 3122,
+        "integration_tree_entries": 3128,
         "main_paths_missing_from_integration": 0,
-        "integration_only_paths": 7,
+        "integration_only_paths": 13,
         "draft": true,
         "formal_reviews": 0,
         "review_threads": 0,
         "requested_reviewers": 0,
         "mergeable": true,
         "mergeable_state": "unstable",
-        "exact_code_head_ci": "PASS on exact parent code head 0bd03db; Run269 evidence commit requires its own exact-head CI.",
-        "push_ci_run": 44926483142,
-        "pr_ci_run": 44926486835,
-        "full_suite": {
-          "head_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
-          "passed": 4556,
-          "failed": 0,
+        "exact_head_full_suite": {
+          "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+          "run_id": 45030949742,
+          "passed": 4563,
+          "failed": 5,
           "skipped": 1,
           "warnings": 11,
           "subtests_passed": 32,
-          "coverage_percent": 73.2,
-          "legacy_core_coverage_percent": 81,
-          "duration_seconds": 132.5,
-          "conclusion": "success"
+          "coverage_percent": 73.21,
+          "duration_seconds": 182.35,
+          "conclusion": "failure",
+          "failing_tests": [
+            "test_latest_map_covers_nine_platforms_without_fabricated_connections",
+            "test_latest_map_matches_repository_and_forecast_admission_state",
+            "test_latest_map_preserves_security_gates_and_open_pr_classifications",
+            "test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity",
+            "test_latest_current_state_ref_points_to_run22_and_binds_exact_head"
+          ],
+          "failure_classification": "stale assertions against the current string-valued ChatGPT data_flow field, missing Run70 run_number in the map, incomplete four-PR backlog, stale USDT/USD basis and stale Run22 state pointer; no ingestion runtime failure was reported in this suite"
         },
-        "dependency_audits": {
-          "push_run": 44926483120,
-          "pr_run": 44926486885,
+        "push_ci": {
+          "run_id": 45030944637,
+          "conclusion": "success",
+          "full_suite": "skipped_on_integration_push; PR event only"
+        },
+        "dependency_audit": {
+          "run_id": 45030949809,
           "conclusion": "success",
           "manifests": 6,
           "known_vulnerabilities_reported": 0
         },
         "money_audit": {
-          "run_id": 44926486900,
+          "run_id": 45030949793,
           "conclusion": "success"
         },
         "conflict_integrity": {
-          "run_id": 44926486905,
+          "run_id": 45031075557,
           "conclusion": "success"
         },
         "pages_validation": {
-          "push_run": 44926483149,
-          "pr_run": 44926486857,
           "conclusion": "success_validation_only"
         },
         "backfill_replay": {
-          "run_id": 44926486835,
-          "job_id": 136913593883,
+          "run_id": 45030949742,
+          "job_id": 137234196144,
           "conclusion": "success",
           "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
-          "source_main_run_id": 44923300352,
-          "records_before": 16939,
-          "records_after": 17057,
+          "source_main_run_id": 45026189091,
+          "records_before": 19559,
+          "records_after": 19677,
           "recovered_records": 118,
           "recovered_source_lineages": 11,
-          "snapshots_before": 17,
-          "snapshots_after": 18,
+          "snapshots_before": 39,
+          "snapshots_after": 40,
           "sqlite_integrity": "ok",
-          "reconciliation_sha256": "7ae2e100a120ab52a7ab55bf36fa54a0b00d9a801d01e347de8bea0cb0010158",
-          "artifact_id": 14715109254,
-          "artifact_digest": "sha256:00096cff28d5cee8f667edf5b8afbefb60e9e2970751bd8947f5ac90745ba56e",
-          "receipt_clock_source": "github_api_run_date_header",
-          "store_receipt_time_is_actual_recovery_time": false,
-          "store_receipt_time_is_post_append_availability_bound": true,
           "main_modified": false,
-          "limitation": "Used run43; newer main run46 exists and requires a fresh replay."
+          "must_rerun_against_latest_main_run_id": 45031489739,
+          "limitation": "The replay completed before the newer Run70 main ingestion was created; it must be repeated against the latest checkpoint."
         },
         "fail_closed": {
-          "push_run": 44926483154,
-          "pr_run": 44926486928,
-          "conclusion": "failure_by_design"
+          "run_id": 45031075532,
+          "conclusion": "failure_by_design",
+          "blockers": [
+            "PR remains draft",
+            "zero independent approving reviews",
+            "branch protection details return HTTP 403 and the visible fallback ruleset is disabled",
+            "automatic Pages publication is enabled but authorization is NOT_GRANTED",
+            "exact-head full suite has five stale map-contract assertions",
+            "backfill replay must be rerun against Run70"
+          ]
         },
         "gate_blockers": [
-          "PR remains draft",
-          "zero independent approving reviews",
-          "branch protection details return HTTP 403; visible fallback ruleset is disabled",
-          "automatic Pages publication on main is enabled but authorization is NOT_GRANTED"
+          "draft",
+          "zero independent approvals",
+          "branch protection details unavailable (HTTP 403)",
+          "Pages publication authorization not granted",
+          "exact-head full suite failure",
+          "backfill replay predates latest main checkpoint"
         ]
       },
       {
@@ -4319,24 +4517,40 @@
         "behind_by": 0,
         "commits": 5,
         "changed_files": 9,
-        "draft": true,
+        "draft": false,
         "formal_reviews": 0,
         "review_threads": 0,
         "requested_reviewers": 0,
-        "exact_head_ci_run": 44848528169,
-        "full_suite": {
+        "mergeable": true,
+        "exact_head_full_suite": {
+          "run_id": 44848528169,
+          "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
           "passed": 4536,
           "failed": 0,
           "skipped": 1,
           "coverage_percent": 73.22,
           "conclusion": "success"
         },
-        "dependency_audit_run": 44848528067,
-        "money_audit_run": 44848528115,
-        "a2a_worker_tests_run": 44848528089,
-        "conflict_integrity_run": 44848528083,
-        "fail_closed_run": 44848528093,
-        "fail_closed": "blocked",
+        "dependency_audit": {
+          "run_id": 44848528067,
+          "conclusion": "success"
+        },
+        "money_audit": {
+          "run_id": 44848528115,
+          "conclusion": "success"
+        },
+        "a2a_worker_tests": {
+          "run_id": 44848528089,
+          "conclusion": "success"
+        },
+        "conflict_integrity": {
+          "run_id": 44955747852,
+          "conclusion": "success"
+        },
+        "fail_closed": {
+          "run_id": 44955747971,
+          "conclusion": "failure_by_design"
+        },
         "overlap_with_pr1684": 0,
         "remaining_controls": [
           "OS sandbox",
@@ -4345,6 +4559,115 @@
           "task-level authorization"
         ],
         "disposition": "Keep runner quarantined. No deployment, secret upload/rotation or runner activation."
+      },
+      {
+        "number": 1686,
+        "classification": "unique/unreviewed",
+        "workstream": "Remove LunaRoute from Barrot runtime configuration",
+        "branch": "maintenance/remove-lunaroute-runtime-20261121",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+        "ahead_by": 18,
+        "behind_by": 0,
+        "commits": 18,
+        "changed_files": 16,
+        "draft": true,
+        "formal_reviews": 0,
+        "review_threads": 0,
+        "requested_reviewers": 0,
+        "mergeable": true,
+        "exact_head_full_suite": {
+          "run_id": 44988220240,
+          "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+          "passed": 4508,
+          "failed": 11,
+          "skipped": 0,
+          "warnings": 11,
+          "subtests_passed": 21,
+          "conclusion": "failure",
+          "failing_tests": [
+            "test_lunaroute_is_absent_from_active_opencode_configuration",
+            "nine test_refinement_upgrade cases failing NameError: os is not defined",
+            "test_run175_preserves_verified_opencode_default_and_disables_unverified_lunaroute"
+          ]
+        },
+        "core_tests": {
+          "run_id": 44988220240,
+          "conclusion": "success"
+        },
+        "pages_validation": {
+          "run_id": 44988220240,
+          "conclusion": "success_validation_only"
+        },
+        "dependency_audit": {
+          "run_id": 44988220200,
+          "conclusion": "success"
+        },
+        "money_audit": {
+          "run_id": 44988220204,
+          "conclusion": "success"
+        },
+        "conflict_integrity": {
+          "run_id": 44988220299,
+          "conclusion": "success"
+        },
+        "fail_closed": {
+          "run_id": 44988220208,
+          "conclusion": "failure_by_design"
+        },
+        "overlap_with_pr1685": "tests/test_mcp_server.py",
+        "disposition": "Unique maintenance work; do not merge until missing os import, configuration/test mismatch and full-suite failures are reconciled."
+      },
+      {
+        "number": 1687,
+        "classification": "unique/unreviewed",
+        "workstream": "Read-only model integrity diagnostics",
+        "branch": "research/model-integrity-audit-v1-20261122",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+        "ahead_by": 3,
+        "behind_by": 0,
+        "commits": 3,
+        "changed_files": 3,
+        "draft": true,
+        "formal_reviews": 0,
+        "review_threads": 0,
+        "requested_reviewers": 0,
+        "mergeable": true,
+        "exact_head_full_suite": {
+          "run_id": 44994494208,
+          "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+          "passed": 4538,
+          "failed": 1,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests_passed": 32,
+          "conclusion": "failure",
+          "failing_tests": [
+            "test_all_links_resolve_or_are_documented: docs/MODEL_INTEGRITY_AND_WEIGHT_DIAGNOSTICS.md is missing from docs index"
+          ]
+        },
+        "pages_validation": {
+          "run_id": 44994494208,
+          "conclusion": "success_validation_only"
+        },
+        "dependency_audit": {
+          "run_id": 44994494193,
+          "conclusion": "success"
+        },
+        "money_audit": {
+          "run_id": 44994494209,
+          "conclusion": "success"
+        },
+        "conflict_integrity": {
+          "run_id": 44994494199,
+          "conclusion": "success"
+        },
+        "fail_closed": {
+          "run_id": 44994494240,
+          "conclusion": "failure_by_design"
+        },
+        "disposition": "Unique read-only diagnostics work; preserve and reconcile docs index before considering merge."
       }
     ],
     "independent_code_owner_configured": false,
@@ -4370,20 +4693,152 @@
         "tag_pushed": false
       },
       "a2a_runner": "QUARANTINED"
+    },
+    "pr_1686": {
+      "number": 1686,
+      "classification": "unique/unreviewed",
+      "workstream": "Remove LunaRoute from Barrot runtime configuration",
+      "branch": "maintenance/remove-lunaroute-runtime-20261121",
+      "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+      "ahead_by": 18,
+      "behind_by": 0,
+      "commits": 18,
+      "changed_files": 16,
+      "draft": true,
+      "formal_reviews": 0,
+      "review_threads": 0,
+      "requested_reviewers": 0,
+      "mergeable": true,
+      "exact_head_full_suite": {
+        "run_id": 44988220240,
+        "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+        "passed": 4508,
+        "failed": 11,
+        "skipped": 0,
+        "warnings": 11,
+        "subtests_passed": 21,
+        "conclusion": "failure",
+        "failing_tests": [
+          "test_lunaroute_is_absent_from_active_opencode_configuration",
+          "nine test_refinement_upgrade cases failing NameError: os is not defined",
+          "test_run175_preserves_verified_opencode_default_and_disables_unverified_lunaroute"
+        ]
+      },
+      "core_tests": {
+        "run_id": 44988220240,
+        "conclusion": "success"
+      },
+      "pages_validation": {
+        "run_id": 44988220240,
+        "conclusion": "success_validation_only"
+      },
+      "dependency_audit": {
+        "run_id": 44988220200,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 44988220204,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 44988220299,
+        "conclusion": "success"
+      },
+      "fail_closed": {
+        "run_id": 44988220208,
+        "conclusion": "failure_by_design"
+      },
+      "overlap_with_pr1685": "tests/test_mcp_server.py",
+      "disposition": "Unique maintenance work; do not merge until missing os import, configuration/test mismatch and full-suite failures are reconciled."
+    },
+    "pr_1687": {
+      "number": 1687,
+      "classification": "unique/unreviewed",
+      "workstream": "Read-only model integrity diagnostics",
+      "branch": "research/model-integrity-audit-v1-20261122",
+      "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+      "ahead_by": 3,
+      "behind_by": 0,
+      "commits": 3,
+      "changed_files": 3,
+      "draft": true,
+      "formal_reviews": 0,
+      "review_threads": 0,
+      "requested_reviewers": 0,
+      "mergeable": true,
+      "exact_head_full_suite": {
+        "run_id": 44994494208,
+        "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+        "passed": 4538,
+        "failed": 1,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "conclusion": "failure",
+        "failing_tests": [
+          "test_all_links_resolve_or_are_documented: docs/MODEL_INTEGRITY_AND_WEIGHT_DIAGNOSTICS.md is missing from docs index"
+        ]
+      },
+      "pages_validation": {
+        "run_id": 44994494208,
+        "conclusion": "success_validation_only"
+      },
+      "dependency_audit": {
+        "run_id": 44994494193,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 44994494209,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 44994494199,
+        "conclusion": "success"
+      },
+      "fail_closed": {
+        "run_id": 44994494240,
+        "conclusion": "failure_by_design"
+      },
+      "disposition": "Unique read-only diagnostics work; preserve and reconcile docs index before considering merge."
+    },
+    "active_xrp_integration": {
+      "pr_number": 1684,
+      "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+      "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+      "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "draft": true,
+      "classification": "blocked",
+      "commits_ahead": 181,
+      "commits_behind": 0,
+      "changed_files": 28
     }
   },
   "open_pr_backlog": [
     {
       "number": 1684,
       "classification": "blocked",
-      "reason": "Exact-head full suite on 4491e56 failed two assertions because the update overwrote a historical merge_decision sentinel; correction restores the historical field and adds current_merge_decision. Backfill replay, dependency, money, conflict and Pages validation passed. PR remains draft, no independent approval, branch protection HTTP 403; automatic Pages publication remains unauthorized.",
-      "head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765"
+      "reason": "XRP scheduled-ingestion continuity, historical feature-store recovery and event-receipt provenance",
+      "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a"
     },
     {
       "number": 1685,
       "classification": "blocked",
-      "reason": "Non-draft; exact-head CI, worker tests, dependency, money and conflict checks passed on its current head, but no independent approval or verified protection; OS sandbox, provider credential isolation, egress restrictions and task-level authorization remain. Runner stays quarantined.",
+      "reason": "A2A gateway/runner credential separation",
       "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0"
+    },
+    {
+      "number": 1686,
+      "classification": "unique/unreviewed",
+      "reason": "Remove LunaRoute from Barrot runtime configuration",
+      "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d"
+    },
+    {
+      "number": 1687,
+      "classification": "unique/unreviewed",
+      "reason": "Read-only model integrity diagnostics",
+      "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885"
     }
   ],
   "merge_decision": "POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION",
@@ -4708,14 +5163,20 @@
       "scope_note": "National trust bank charter status; does not establish FDIC deposit insurance, full-service commercial banking, live custody services, XRP purchases or collateral use."
     },
     "coinbase_occ_trust_company": {
-      "relationship": "OCC CAS records Coinbase National Trust Company charter 25390 as approved 2026-04-02 and consummated/effective 2026-11-06.",
+      "relationship": "The OCC issued final conditional approval on 2026-11-06 and authorized Coinbase National Trust Company to open on 2026-11-09. It is limited to fiduciary cryptocurrency custody and related trust-company activities. A September 1, 2026 assignment agreement provides for custody-account and asset migration from Coinbase Custody Trust Company over time; no completed migration balance is disclosed.",
       "charter_number": 25390,
-      "approval_date": "2026-04-02",
+      "occ_control_number": "2025-Charter-343449",
+      "preliminary_approval_date": "2026-04-02",
+      "final_approval_date": "2026-11-06",
       "effective_date": "2026-11-06",
+      "authorized_open_date": "2026-11-09",
+      "evidence_status": "verified_primary_regulatory_document",
       "source_urls": [
-        "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2"
+        "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+        "https://www.coinbase.com/blog/coinbase-launches-national-trust-company-with-federally-regulated-institutional-grade-custody-offering"
       ],
-      "scope_note": "National trust company/trust bank charter; effective date is after the OCC active-bank list dated 2026-10-31. No deposit-insurance, full-service banking, Ripple partnership or XRP-purchase inference."
+      "scope_note": "Fiduciary crypto custody and related trust-company activities, not a full-service commercial bank or insured depository. OCC conditions include $60M minimum Tier 1 capital, at least $30M eligible liquid assets, and 180 days of operating expenses in eligible liquid assets. The trust company may act as finder for affiliate staking, Prime Trading and Prime Financing; it does not itself provide those underlying services. No XRP custody balance or purchase is established.",
+      "customer_migration_status": "INTENDED_NOT_QUANTIFIED"
     },
     "ripple_sec_case": {
       "relationship": "Second Circuit appeals were dismissed 2025-08-07, leaving the $125,035,150 final judgment and injunction in effect. The 2023 district court ruling distinguished institutional sales from programmatic secondary sales; the SEC Rule 506 waiver did not vacate the injunction.",
@@ -4951,6 +5412,60 @@
       },
       "coinbase_average_usdc_balances": "all-time high; renewed Circle arrangement on same terms",
       "caveat": "Absolute Coinbase USDC balances can be at an all-time high while its share of total average USDC on-platform balances declines. No XRP bridge usage established."
+    },
+    "coinbase_morpho_xrp_collateral": {
+      "relationship": "Coinbase's current USDC crypto-backed loan product lists Ripple XRP as eligible collateral in eligible regions. Coinbase states the product is powered by Morpho on Base and that Coinbase provides the interface.",
+      "evidence_status": "verified_primary_product_eligibility",
+      "eligible_collateral": [
+        "XRP",
+        "BTC",
+        "ETH",
+        "cbETH",
+        "DOGE",
+        "ADA",
+        "LTC",
+        "SOL",
+        "JitoSOL",
+        "HYPE",
+        "ZEC",
+        "PAXG"
+      ],
+      "loan_asset": "USDC",
+      "protocol": "Morpho on Base",
+      "as_of": "2026-11-22",
+      "source_urls": [
+        "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+        "https://www.coinbase.com/en-pt/blog/now-get-a-usdc-loan-without-selling-your-crypto"
+      ],
+      "limits_and_scope": "Coinbase's 2026-09-29 product update says up to $100,000 USDC against XRP for eligible U.S. customers outside New York. Help documentation says limits, collateral and rate options vary by asset and region.",
+      "not_established": [
+        "actual XRP collateral quantity",
+        "current USDC debt outstanding against XRP",
+        "whether all XRP collateral is converted to cbXRP",
+        "Coinbase-originated Morpho market ownership",
+        "net new XRP spot purchases or demand"
+      ]
+    },
+    "coinbase_pnc_usdc_payments": {
+      "relationship": "PNC's limited corporate/institutional pilot accepts incoming USDC on Ethereum, powered by Coinbase Payment APIs; incoming USDC is converted 1:1 to USD and deposited into a designated PNC account.",
+      "evidence_status": "verified_primary_announced_limited_pilot",
+      "announcement_date": "2026-11-09",
+      "pilot_status": "LIMITED_PILOT",
+      "settlement_asset": "USDC",
+      "network": "Ethereum",
+      "infrastructure": "Coinbase Payment APIs",
+      "source_urls": [
+        "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+        "https://www.coinbase.com/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance"
+      ],
+      "issuer_distinction": "USDC is issued by Circle; the reviewed PNC/Coinbase announcements establish the Coinbase infrastructure and PNC banking roles, not a direct PNC-Circle commercial contract.",
+      "xrp_rail_established": false,
+      "not_established": [
+        "XRP settlement",
+        "Ripple payment-rail usage",
+        "volume or recurring payment totals",
+        "full commercial rollout"
+      ]
     }
   },
   "sbic_identity_reconciliation": {
@@ -5361,6 +5876,20 @@
         "status": "No direct Circle-Ripple partnership or ownership established by reviewed evidence."
       },
       "sbic_identity": "SBIC East/Central/West are separate regional investment/consultation companies, not SBI Holdings."
+    },
+    "run285": {
+      "artifact_path": "research/xrp_intelligence/20261122T141841Z-run285-coinbase-morpho-cbxrp-custody-and-payments-reconciliation.json",
+      "captured_at_utc": "2026-11-22T14:18:41Z",
+      "source_count": 11,
+      "source_independence_group_count": 6,
+      "model_eligible": false,
+      "findings": [
+        "Coinbase Help confirms XRP collateral eligibility in its USDC/Morpho loan product in eligible regions.",
+        "Coinbase's dynamic cbXRP reserve page reports 1:1 backing; two locale/cache vintages differ by 85,404.41 XRP in total reserves and supply while each shows approximately 2,246.5 XRP reserve surplus.",
+        "OCC final approval authorizes Coinbase National Trust Company to open on 2026-11-09 for fiduciary custody; migration from CCTC is intended but not quantified.",
+        "PNC's limited USDC pilot uses Coinbase Payment APIs on Ethereum and auto-converts incoming USDC to USD; it is not an XRP rail.",
+        "Morpho market attribution to Coinbase remains unproven because markets are permissionless."
+      ]
     }
   },
   "run27_evidence_record": "research/xrp_intelligence/20261118T220754Z-run27-market-institutional-reconciliation.json",
@@ -6958,9 +7487,9 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-22T13:51:15Z",
-  "latest_run_id": 284,
-  "latest_run_captured_at_utc": "2026-11-22T01:50:37Z",
+  "last_verified_at_utc": "2026-11-22T14:18:41Z",
+  "latest_run_id": 285,
+  "latest_run_captured_at_utc": "2026-11-22T14:18:41Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
   "current_successor_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
   "observed_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7364,14 +7893,18 @@
     {
       "number": 1684,
       "classification": "blocked",
-      "workstream": "XRP scheduled ingestion continuity / historical feature-store recovery / event receipt provenance",
+      "workstream": "XRP scheduled-ingestion continuity, historical feature-store recovery and event-receipt provenance",
       "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "head_sha": "8bddda1d7f310a2325a15bdea984d0297a85ebce",
-      "ahead_by": 179,
+      "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+      "ahead_by": 181,
       "behind_by": 0,
-      "commits": 179,
+      "commits": 181,
       "changed_files": 28,
+      "main_tree_entries": 3115,
+      "integration_tree_entries": 3128,
+      "main_paths_missing_from_integration": 0,
+      "integration_only_paths": 13,
       "draft": true,
       "formal_reviews": 0,
       "review_threads": 0,
@@ -7379,55 +7912,84 @@
       "mergeable": true,
       "mergeable_state": "unstable",
       "exact_head_full_suite": {
-        "run_id": 45024863059,
-        "passed": 4568,
-        "failed": 0,
+        "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+        "run_id": 45030949742,
+        "passed": 4563,
+        "failed": 5,
         "skipped": 1,
         "warnings": 11,
         "subtests_passed": 32,
         "coverage_percent": 73.21,
-        "duration_seconds": 158.33,
-        "conclusion": "success"
+        "duration_seconds": 182.35,
+        "conclusion": "failure",
+        "failing_tests": [
+          "test_latest_map_covers_nine_platforms_without_fabricated_connections",
+          "test_latest_map_matches_repository_and_forecast_admission_state",
+          "test_latest_map_preserves_security_gates_and_open_pr_classifications",
+          "test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity",
+          "test_latest_current_state_ref_points_to_run22_and_binds_exact_head"
+        ],
+        "failure_classification": "stale assertions against the current string-valued ChatGPT data_flow field, missing Run70 run_number in the map, incomplete four-PR backlog, stale USDT/USD basis and stale Run22 state pointer; no ingestion runtime failure was reported in this suite"
+      },
+      "push_ci": {
+        "run_id": 45030944637,
+        "conclusion": "success",
+        "full_suite": "skipped_on_integration_push; PR event only"
       },
       "dependency_audit": {
-        "run_id": 45024863649,
-        "conclusion": "success"
+        "run_id": 45030949809,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities_reported": 0
       },
       "money_audit": {
-        "run_id": 45024863078,
+        "run_id": 45030949793,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 45024863043,
+        "run_id": 45031075557,
         "conclusion": "success"
       },
-      "pages_validation": "success_validation_only",
-      "fail_closed": {
-        "run_id": 45024863082,
-        "conclusion": "blocked_by_design",
-        "blockers": [
-          "PR remains draft",
-          "no independent approving review",
-          "branch protection could not be verified"
-        ]
+      "pages_validation": {
+        "conclusion": "success_validation_only"
       },
       "backfill_replay": {
-        "run_id": 45024863059,
+        "run_id": 45030949742,
+        "job_id": 137234196144,
         "conclusion": "success",
         "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
-        "records_before": 19436,
-        "records_after": 19554,
+        "source_main_run_id": 45026189091,
+        "records_before": 19559,
+        "records_after": 19677,
         "recovered_records": 118,
         "recovered_source_lineages": 11,
-        "snapshots_before": 38,
-        "snapshots_after": 39,
+        "snapshots_before": 39,
+        "snapshots_after": 40,
         "sqlite_integrity": "ok",
-        "visible_before_receipt": false,
-        "visible_after_receipt": true,
-        "reconciliation_sha256": "cab9f945bf304199072f6d46de5f968d56617e75c1557aa6418b7884775f1bf8",
-        "artifact_digest": "sha256:33fc74ec2a19c5d88379421b5427a8374600f8175ea1f00f3776152e660fb196",
-        "main_modified": false
-      }
+        "main_modified": false,
+        "must_rerun_against_latest_main_run_id": 45031489739,
+        "limitation": "The replay completed before the newer Run70 main ingestion was created; it must be repeated against the latest checkpoint."
+      },
+      "fail_closed": {
+        "run_id": 45031075532,
+        "conclusion": "failure_by_design",
+        "blockers": [
+          "PR remains draft",
+          "zero independent approving reviews",
+          "branch protection details return HTTP 403 and the visible fallback ruleset is disabled",
+          "automatic Pages publication is enabled but authorization is NOT_GRANTED",
+          "exact-head full suite has five stale map-contract assertions",
+          "backfill replay must be rerun against Run70"
+        ]
+      },
+      "gate_blockers": [
+        "draft",
+        "zero independent approvals",
+        "branch protection details unavailable (HTTP 403)",
+        "Pages publication authorization not granted",
+        "exact-head full suite failure",
+        "backfill replay predates latest main checkpoint"
+      ]
     },
     {
       "number": 1685,
@@ -7436,6 +7998,8 @@
       "branch": "security/a2a-secret-separation-20261121",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
       "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+      "ahead_by": 5,
+      "behind_by": 0,
       "commits": 5,
       "changed_files": 9,
       "draft": false,
@@ -7443,35 +8007,101 @@
       "review_threads": 0,
       "requested_reviewers": 0,
       "mergeable": true,
-      "overlap_with_pr1684": 0,
       "exact_head_full_suite": {
         "run_id": 44848528169,
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
         "passed": 4536,
         "failed": 0,
         "skipped": 1,
+        "coverage_percent": 73.22,
         "conclusion": "success"
       },
+      "dependency_audit": {
+        "run_id": 44848528067,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 44848528115,
+        "conclusion": "success"
+      },
+      "a2a_worker_tests": {
+        "run_id": 44848528089,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 44955747852,
+        "conclusion": "success"
+      },
+      "fail_closed": {
+        "run_id": 44955747971,
+        "conclusion": "failure_by_design"
+      },
+      "overlap_with_pr1684": 0,
       "remaining_controls": [
-        "independent approval",
-        "verified branch protection",
         "OS sandbox",
         "provider credential isolation",
         "egress restrictions",
         "task-level authorization"
       ],
-      "disposition": "Keep runner quarantined; no deployment or secret rotation."
+      "disposition": "Keep runner quarantined. No deployment, secret upload/rotation or runner activation."
     },
     {
       "number": 1686,
       "classification": "unique/unreviewed",
-      "workstream": "LunaRoute runtime decommission",
+      "workstream": "Remove LunaRoute from Barrot runtime configuration",
       "branch": "maintenance/remove-lunaroute-runtime-20261121",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
       "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+      "ahead_by": 18,
+      "behind_by": 0,
+      "commits": 18,
       "changed_files": 16,
       "draft": true,
       "formal_reviews": 0,
-      "disposition": "Blocked pending exact-head full-suite verification and review; local Termux cleanup script not executed."
+      "review_threads": 0,
+      "requested_reviewers": 0,
+      "mergeable": true,
+      "exact_head_full_suite": {
+        "run_id": 44988220240,
+        "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+        "passed": 4508,
+        "failed": 11,
+        "skipped": 0,
+        "warnings": 11,
+        "subtests_passed": 21,
+        "conclusion": "failure",
+        "failing_tests": [
+          "test_lunaroute_is_absent_from_active_opencode_configuration",
+          "nine test_refinement_upgrade cases failing NameError: os is not defined",
+          "test_run175_preserves_verified_opencode_default_and_disables_unverified_lunaroute"
+        ]
+      },
+      "core_tests": {
+        "run_id": 44988220240,
+        "conclusion": "success"
+      },
+      "pages_validation": {
+        "run_id": 44988220240,
+        "conclusion": "success_validation_only"
+      },
+      "dependency_audit": {
+        "run_id": 44988220200,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 44988220204,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 44988220299,
+        "conclusion": "success"
+      },
+      "fail_closed": {
+        "run_id": 44988220208,
+        "conclusion": "failure_by_design"
+      },
+      "overlap_with_pr1685": "tests/test_mcp_server.py",
+      "disposition": "Unique maintenance work; do not merge until missing os import, configuration/test mismatch and full-suite failures are reconciled."
     },
     {
       "number": 1687,
@@ -7480,10 +8110,49 @@
       "branch": "research/model-integrity-audit-v1-20261122",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
       "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+      "ahead_by": 3,
+      "behind_by": 0,
+      "commits": 3,
       "changed_files": 3,
       "draft": true,
       "formal_reviews": 0,
-      "disposition": "Blocked pending exact-head full-suite verification and review; no local model artifacts read or modified."
+      "review_threads": 0,
+      "requested_reviewers": 0,
+      "mergeable": true,
+      "exact_head_full_suite": {
+        "run_id": 44994494208,
+        "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+        "passed": 4538,
+        "failed": 1,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "conclusion": "failure",
+        "failing_tests": [
+          "test_all_links_resolve_or_are_documented: docs/MODEL_INTEGRITY_AND_WEIGHT_DIAGNOSTICS.md is missing from docs index"
+        ]
+      },
+      "pages_validation": {
+        "run_id": 44994494208,
+        "conclusion": "success_validation_only"
+      },
+      "dependency_audit": {
+        "run_id": 44994494193,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 44994494209,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 44994494199,
+        "conclusion": "success"
+      },
+      "fail_closed": {
+        "run_id": 44994494240,
+        "conclusion": "failure_by_design"
+      },
+      "disposition": "Unique read-only diagnostics work; preserve and reconcile docs index before considering merge."
     }
   ],
   "run229_evidence_record": {
@@ -11560,7 +12229,7 @@
       "raw_http_bytes_captured": false
     }
   },
-  "current_pr_head_sha": "8bddda1d7f310a2325a15bdea984d0297a85ebce",
+  "current_pr_head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
   "run250_no_external_actions": true,
   "run250_merge_decision": "NO_MERGE",
   "prediction_readiness": {
@@ -12786,8 +13455,8 @@
     "forecast_status": "NOT_ISSUED",
     "merge_performed": false
   },
-  "latest_ingestion_run_id": 45026189091,
-  "latest_ingestion_run_captured_at_utc": "2026-11-22T13:12:07.734605Z",
+  "latest_ingestion_run_id": 45031489739,
+  "latest_ingestion_run_captured_at_utc": "2026-11-22T14:12:17.387969Z",
   "production_schedule_status": {
     "status": "ACTIVE_ON_MAIN",
     "workflow_path": ".github/workflows/xrp-public-ingestion.yml",
@@ -19178,28 +19847,16 @@
     }
   },
   "current_repository_state": {
-    "captured_at_utc": "2026-11-22T11:23:37Z",
-    "repository": "Barrot-Agent/B-Agent",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-    "main_tree_entries": 3115,
-    "main_tree_truncated": false,
-    "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
-    "integration_head_sha": "cb451bad81780e88d024cc0cb18a439e4e05783d",
-    "integration_tree_entries": 3127,
-    "integration_tree_truncated": false,
-    "ahead_by": 170,
-    "behind_by": 0,
-    "changed_files": 27,
-    "commits_ahead": 170,
+    "active_integration_pr": 1684,
+    "active_integration_head": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+    "active_integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "tree_counts": {
+      "main": 3115,
+      "integration": 3128
+    },
     "main_paths_missing_from_integration": 0,
-    "open_prs": [
-      1684,
-      1685,
-      1686,
-      1687
-    ],
-    "main_modified": false,
-    "snapshot_boundary": "Observed at cb451 before the restoration commit; the following documentation-only commit must receive its own exact-head CI."
+    "open_pr_count": 4
   },
   "latest_run_281": {
     "captured_at_utc": "2026-11-22T01:14:34Z",
@@ -19869,20 +20526,9 @@
       }
     }
   },
-  "current_merge_decision": {
-    "decision": "NO_MERGE",
-    "status": "BLOCKED",
-    "blockers": [
-      "PR #1684 remains draft",
-      "zero independent approving reviews",
-      "effective branch protection could not be verified (HTTP 403; visible required contexts empty; fallback ruleset disabled)",
-      "automatic GitHub Pages publication on main is enabled but authorization is NOT_GRANTED",
-      "transitive workflow/script security review remains incomplete"
-    ],
-    "note": "Exact-head tests passing does not override governance, branch-protection or external-publication blockers."
-  },
+  "current_merge_decision": "DO_NOT_MERGE_PR_1684",
   "latest_automation_run_number": 11,
-  "latest_current_state_ref": "run23_current_state",
+  "latest_current_state_ref": "run24_current_state",
   "run11_current_state": {
     "automation_run_number": 11,
     "captured_at_utc": "2026-11-22T02:50:00Z",
@@ -22821,7 +23467,7 @@
       "Third-party XRP perpetual page contains conflicting same-day price panels and is excluded."
     ]
   },
-  "latest_barrot_mission_run_number": 23,
+  "latest_barrot_mission_run_number": 285,
   "run23_current_state": {
     "captured_at_utc": "2026-11-22T13:51:15Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -22992,5 +23638,481 @@
     "Configure SEC capture only with an authorized monitored contact identity.",
     "Add publisher-byte hashes and receipt links to event records without backdating.",
     "Collect sufficient chronological source-clustered observations and shadow outcomes before any forecast."
-  ]
+  ],
+  "run285_coinbase_morpho_cbxrp_custody_and_payments_reconciliation": {
+    "artifact_path": "research/xrp_intelligence/20261122T141841Z-run285-coinbase-morpho-cbxrp-custody-and-payments-reconciliation.json",
+    "source_count": 11,
+    "source_independence_group_count": 6,
+    "model_eligible": false,
+    "raw_http_bytes_captured": false,
+    "external_timestamp_anchor": false,
+    "current_conclusion": "Coinbase XRP collateral eligibility is confirmed at the product level; actual XRP collateral balances and market utilization are not disclosed. Coinbase National Trust received final OCC approval and opening authorization. PNC's new pilot is a USDC rail, not an XRP rail."
+  },
+  "current_pr_number": 1684,
+  "current_pr_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+  "run24_merge_decision": "DO_NOT_MERGE",
+  "run24_no_external_actions": true,
+  "run24_next_actions": [
+    "Reconcile the nine-platform map tests with the current map schema and Run70 evidence.",
+    "Run exact-head full-suite CI on the repaired integration head.",
+    "Rerun isolated historical backfill against latest main ingestion run 45031489739; preserve main unchanged.",
+    "Complete independent review, branch-protection inspection and Pages publication authorization before any merge."
+  ],
+  "run24_current_state": {
+    "captured_at_utc": "2026-11-22T14:18:41Z",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "integration_head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+    "pr_number": 1684,
+    "pr_draft": true,
+    "commits_ahead": 181,
+    "commits_behind": 0,
+    "changed_files": 28,
+    "main_tree_entries": 3115,
+    "integration_tree_entries": 3128,
+    "main_paths_missing_from_integration": 0,
+    "main_post_merge_verification": {
+      "merged_pr": 1673,
+      "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "formal_reviews": 0,
+      "classification": "MERGED_WITH_GOVERNANCE_EXCEPTION",
+      "full_suite_run_id": 44839159044,
+      "tests_passed": 4534,
+      "tests_failed": 0,
+      "skipped": 1,
+      "coverage_percent": 73.22,
+      "dependency_audit": "success",
+      "money_audit": "success",
+      "a2a_worker_tests": "success",
+      "pages_deployment_run_id": 44839139424,
+      "pages_deployment_conclusion": "success",
+      "pages_authorization": "NOT_GRANTED"
+    },
+    "exact_head_ci": {
+      "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+      "push_ci_run_id": 45030944637,
+      "push_ci_conclusion": "success",
+      "push_full_suite": "skipped_on_integration_push",
+      "pr_event_run_id": 45030949742,
+      "pr_event_conclusion": "failure",
+      "full_suite": {
+        "passed": 4563,
+        "failed": 5,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.21,
+        "duration_seconds": 182.35,
+        "conclusion": "failure"
+      },
+      "failing_tests": [
+        "test_latest_map_covers_nine_platforms_without_fabricated_connections",
+        "test_latest_map_matches_repository_and_forecast_admission_state",
+        "test_latest_map_preserves_security_gates_and_open_pr_classifications",
+        "test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity",
+        "test_latest_current_state_ref_points_to_run22_and_binds_exact_head"
+      ],
+      "failure_classification": "Stale test assertions against the current map schema and current Run23/Run70 state; fix assertions to validate the actual map rather than weaken runtime or evidence gates.",
+      "dependency_audit": {
+        "run_id": 45030949809,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities_reported": 0
+      },
+      "money_audit": {
+        "run_id": 45030949793,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 45031075557,
+        "conclusion": "success"
+      },
+      "pages_validation": {
+        "conclusion": "success_validation_only"
+      },
+      "fail_closed": {
+        "run_id": 45031075532,
+        "conclusion": "failure_by_design"
+      }
+    },
+    "backfill_replay": {
+      "run_id": 45030949742,
+      "job_id": 137234196144,
+      "conclusion": "success",
+      "source_main_run_id": 45026189091,
+      "records_before": 19559,
+      "records_after": 19677,
+      "recovered_records": 118,
+      "recovered_source_lineages": 11,
+      "snapshots_before": 39,
+      "snapshots_after": 40,
+      "sqlite_integrity": "ok",
+      "main_modified": false,
+      "must_rerun_against_latest_main_run_id": 45031489739
+    },
+    "latest_main_ingestion": {
+      "run_id": 45031489739,
+      "run_number": 70,
+      "captured_at_utc": "2026-11-22T14:12:17.387969Z",
+      "data_cutoff_utc": "2026-11-22T14:12:17.402853Z",
+      "receipt_count": 34,
+      "raw_payloads_retained": 22,
+      "digest_only": 12,
+      "raw_payload_hashes_verified": 22,
+      "raw_payload_hash_mismatches": 0,
+      "receipt_chain_sequence": 40,
+      "cross_run_continuity_status": "CONTINUED",
+      "previous_run_id": 45026189091,
+      "cross_run_chain_sha256": "dad9170c9a47d1d5f8bb7d5b8a",
+      "external_anchor": "NOT_ANCHORED",
+      "feature_store_history_record_count": 19682,
+      "feature_store_snapshot_count": 40,
+      "current_snapshot_records": 123,
+      "current_snapshot_sources": 12,
+      "candidate_feature_records": 490,
+      "eligible_feature_record_count": 123,
+      "excluded_feature_record_count": 367,
+      "sqlite_integrity": "ok",
+      "event_count": 150,
+      "scenario_count": 117,
+      "event_receipt_complete": false,
+      "event_model_eligible": false,
+      "drift_feature_count": 204,
+      "drift_evaluated_feature_count": 0,
+      "drift_status": "INSUFFICIENT_DATA",
+      "walk_forward_forecast_count": 0,
+      "forecast_status": "NOT_ISSUED",
+      "sec_edgar_status": "BLOCKED_CONFIGURATION",
+      "source_failures": 18,
+      "source_failure_breakdown": {
+        "binance_http_451": 8,
+        "bybit_http_403": 5,
+        "grayscale_http_429": 1,
+        "franklin_processing_error": 1,
+        "sec_edgar_configuration": 3
+      },
+      "raw_only_sources": 23,
+      "feature_store_rebuild_from_raw_artifacts_implemented": false,
+      "feature_store_restore_source": "trusted_ingestion_workflow_run:45026189091:per_run_checkpoint",
+      "artifact_zip_sha256": {
+        "raw": "f30c246efe8d8c48d515343154199359eaff7bdc62069ca1322dd1df57e5eb9f",
+        "feature_store": "6b87dcfbba33d7585cfd1e9d937a8d7853ee007cd67948d7a8758b619ff5c7f2",
+        "events": "76e483c19cec52c5c092cabed245813844ed274debd0a13f20b4170ba3725561",
+        "receipt_index": "ff67963516572ab7cd5db87af61c6ec42a988e444e310a0016e04845d31887e3",
+        "correction_audit": "053bdd85d5a9f6abb6d2fe0511753ab317a5e3a4c0d82d46bf6eacb429b698cc"
+      }
+    },
+    "market_snapshot": {
+      "usd_ticker_mid_cluster": {
+        "low": 0.921465,
+        "high": 0.9216,
+        "range_bps": 1.4649510462191648
+      },
+      "usdt_usd_mid": 0.998395,
+      "quote_basis": "same-venue top-of-book only",
+      "depth_normalized_to_usd": false,
+      "jpy_venue": "Bitbank",
+      "jpy_normalized_to_usd": false,
+      "interpretation": "Asynchronous multi-venue snapshot; not consolidated executable liquidity or a directional signal."
+    },
+    "institutional_research": {
+      "artifact_path": "research/xrp_intelligence/20261122T141841Z-run285-coinbase-morpho-cbxrp-custody-and-payments-reconciliation.json",
+      "source_count": 11,
+      "model_eligible": false,
+      "raw_http_bytes_captured": false
+    },
+    "open_pr_inventory": [
+      {
+        "number": 1684,
+        "classification": "blocked",
+        "workstream": "XRP scheduled-ingestion continuity, historical feature-store recovery and event-receipt provenance",
+        "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+        "ahead_by": 181,
+        "behind_by": 0,
+        "commits": 181,
+        "changed_files": 28,
+        "main_tree_entries": 3115,
+        "integration_tree_entries": 3128,
+        "main_paths_missing_from_integration": 0,
+        "integration_only_paths": 13,
+        "draft": true,
+        "formal_reviews": 0,
+        "review_threads": 0,
+        "requested_reviewers": 0,
+        "mergeable": true,
+        "mergeable_state": "unstable",
+        "exact_head_full_suite": {
+          "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+          "run_id": 45030949742,
+          "passed": 4563,
+          "failed": 5,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests_passed": 32,
+          "coverage_percent": 73.21,
+          "duration_seconds": 182.35,
+          "conclusion": "failure",
+          "failing_tests": [
+            "test_latest_map_covers_nine_platforms_without_fabricated_connections",
+            "test_latest_map_matches_repository_and_forecast_admission_state",
+            "test_latest_map_preserves_security_gates_and_open_pr_classifications",
+            "test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity",
+            "test_latest_current_state_ref_points_to_run22_and_binds_exact_head"
+          ],
+          "failure_classification": "stale assertions against the current string-valued ChatGPT data_flow field, missing Run70 run_number in the map, incomplete four-PR backlog, stale USDT/USD basis and stale Run22 state pointer; no ingestion runtime failure was reported in this suite"
+        },
+        "push_ci": {
+          "run_id": 45030944637,
+          "conclusion": "success",
+          "full_suite": "skipped_on_integration_push; PR event only"
+        },
+        "dependency_audit": {
+          "run_id": 45030949809,
+          "conclusion": "success",
+          "manifests": 6,
+          "known_vulnerabilities_reported": 0
+        },
+        "money_audit": {
+          "run_id": 45030949793,
+          "conclusion": "success"
+        },
+        "conflict_integrity": {
+          "run_id": 45031075557,
+          "conclusion": "success"
+        },
+        "pages_validation": {
+          "conclusion": "success_validation_only"
+        },
+        "backfill_replay": {
+          "run_id": 45030949742,
+          "job_id": 137234196144,
+          "conclusion": "success",
+          "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
+          "source_main_run_id": 45026189091,
+          "records_before": 19559,
+          "records_after": 19677,
+          "recovered_records": 118,
+          "recovered_source_lineages": 11,
+          "snapshots_before": 39,
+          "snapshots_after": 40,
+          "sqlite_integrity": "ok",
+          "main_modified": false,
+          "must_rerun_against_latest_main_run_id": 45031489739,
+          "limitation": "The replay completed before the newer Run70 main ingestion was created; it must be repeated against the latest checkpoint."
+        },
+        "fail_closed": {
+          "run_id": 45031075532,
+          "conclusion": "failure_by_design",
+          "blockers": [
+            "PR remains draft",
+            "zero independent approving reviews",
+            "branch protection details return HTTP 403 and the visible fallback ruleset is disabled",
+            "automatic Pages publication is enabled but authorization is NOT_GRANTED",
+            "exact-head full suite has five stale map-contract assertions",
+            "backfill replay must be rerun against Run70"
+          ]
+        },
+        "gate_blockers": [
+          "draft",
+          "zero independent approvals",
+          "branch protection details unavailable (HTTP 403)",
+          "Pages publication authorization not granted",
+          "exact-head full suite failure",
+          "backfill replay predates latest main checkpoint"
+        ]
+      },
+      {
+        "number": 1685,
+        "classification": "blocked",
+        "workstream": "A2A gateway/runner credential separation",
+        "branch": "security/a2a-secret-separation-20261121",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "ahead_by": 5,
+        "behind_by": 0,
+        "commits": 5,
+        "changed_files": 9,
+        "draft": false,
+        "formal_reviews": 0,
+        "review_threads": 0,
+        "requested_reviewers": 0,
+        "mergeable": true,
+        "exact_head_full_suite": {
+          "run_id": 44848528169,
+          "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+          "passed": 4536,
+          "failed": 0,
+          "skipped": 1,
+          "coverage_percent": 73.22,
+          "conclusion": "success"
+        },
+        "dependency_audit": {
+          "run_id": 44848528067,
+          "conclusion": "success"
+        },
+        "money_audit": {
+          "run_id": 44848528115,
+          "conclusion": "success"
+        },
+        "a2a_worker_tests": {
+          "run_id": 44848528089,
+          "conclusion": "success"
+        },
+        "conflict_integrity": {
+          "run_id": 44955747852,
+          "conclusion": "success"
+        },
+        "fail_closed": {
+          "run_id": 44955747971,
+          "conclusion": "failure_by_design"
+        },
+        "overlap_with_pr1684": 0,
+        "remaining_controls": [
+          "OS sandbox",
+          "provider credential isolation",
+          "egress restrictions",
+          "task-level authorization"
+        ],
+        "disposition": "Keep runner quarantined. No deployment, secret upload/rotation or runner activation."
+      },
+      {
+        "number": 1686,
+        "classification": "unique/unreviewed",
+        "workstream": "Remove LunaRoute from Barrot runtime configuration",
+        "branch": "maintenance/remove-lunaroute-runtime-20261121",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+        "ahead_by": 18,
+        "behind_by": 0,
+        "commits": 18,
+        "changed_files": 16,
+        "draft": true,
+        "formal_reviews": 0,
+        "review_threads": 0,
+        "requested_reviewers": 0,
+        "mergeable": true,
+        "exact_head_full_suite": {
+          "run_id": 44988220240,
+          "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+          "passed": 4508,
+          "failed": 11,
+          "skipped": 0,
+          "warnings": 11,
+          "subtests_passed": 21,
+          "conclusion": "failure",
+          "failing_tests": [
+            "test_lunaroute_is_absent_from_active_opencode_configuration",
+            "nine test_refinement_upgrade cases failing NameError: os is not defined",
+            "test_run175_preserves_verified_opencode_default_and_disables_unverified_lunaroute"
+          ]
+        },
+        "core_tests": {
+          "run_id": 44988220240,
+          "conclusion": "success"
+        },
+        "pages_validation": {
+          "run_id": 44988220240,
+          "conclusion": "success_validation_only"
+        },
+        "dependency_audit": {
+          "run_id": 44988220200,
+          "conclusion": "success"
+        },
+        "money_audit": {
+          "run_id": 44988220204,
+          "conclusion": "success"
+        },
+        "conflict_integrity": {
+          "run_id": 44988220299,
+          "conclusion": "success"
+        },
+        "fail_closed": {
+          "run_id": 44988220208,
+          "conclusion": "failure_by_design"
+        },
+        "overlap_with_pr1685": "tests/test_mcp_server.py",
+        "disposition": "Unique maintenance work; do not merge until missing os import, configuration/test mismatch and full-suite failures are reconciled."
+      },
+      {
+        "number": 1687,
+        "classification": "unique/unreviewed",
+        "workstream": "Read-only model integrity diagnostics",
+        "branch": "research/model-integrity-audit-v1-20261122",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+        "ahead_by": 3,
+        "behind_by": 0,
+        "commits": 3,
+        "changed_files": 3,
+        "draft": true,
+        "formal_reviews": 0,
+        "review_threads": 0,
+        "requested_reviewers": 0,
+        "mergeable": true,
+        "exact_head_full_suite": {
+          "run_id": 44994494208,
+          "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+          "passed": 4538,
+          "failed": 1,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests_passed": 32,
+          "conclusion": "failure",
+          "failing_tests": [
+            "test_all_links_resolve_or_are_documented: docs/MODEL_INTEGRITY_AND_WEIGHT_DIAGNOSTICS.md is missing from docs index"
+          ]
+        },
+        "pages_validation": {
+          "run_id": 44994494208,
+          "conclusion": "success_validation_only"
+        },
+        "dependency_audit": {
+          "run_id": 44994494193,
+          "conclusion": "success"
+        },
+        "money_audit": {
+          "run_id": 44994494209,
+          "conclusion": "success"
+        },
+        "conflict_integrity": {
+          "run_id": 44994494199,
+          "conclusion": "success"
+        },
+        "fail_closed": {
+          "run_id": 44994494240,
+          "conclusion": "failure_by_design"
+        },
+        "disposition": "Unique read-only diagnostics work; preserve and reconcile docs index before considering merge."
+      }
+    ],
+    "backlog_summary": {
+      "total_open": 4,
+      "ready": 0,
+      "blocked": 2,
+      "superseded": 0,
+      "duplicate": 0,
+      "unique_unreviewed": 2,
+      "unique_workstreams_blocked": 4
+    },
+    "merge_decision": "DO_NOT_MERGE_PR_1684",
+    "no_merge_performed": true,
+    "no_external_actions_performed": true,
+    "forecast_status": "NOT_ISSUED",
+    "next_actions": [
+      "Reconcile the nine-platform map tests with the current map schema and Run70 evidence.",
+      "Run exact-head full-suite CI on the repaired integration head.",
+      "Rerun isolated historical backfill against latest main ingestion run 45031489739; preserve main unchanged.",
+      "Complete independent review, branch-protection inspection and Pages publication authorization before any merge."
+    ]
+  },
+  "latest_run_285": {
+    "research_run_id": 285,
+    "captured_at_utc": "2026-11-22T14:18:41Z",
+    "artifact_path": "research/xrp_intelligence/20261122T141841Z-run285-coinbase-morpho-cbxrp-custody-and-payments-reconciliation.json",
+    "source_count": 11,
+    "model_eligible": false,
+    "summary": "Coinbase XRP collateral eligibility is confirmed at product level via Morpho; cbXRP reserve page shows 1:1 backing with locale-vintage disagreement; Coinbase National Trust received final OCC approval; PNC launched a limited USDC pilot using Coinbase APIs. No XRP collateral quantity, market utilization or XRP payment rail is established."
+  }
 }

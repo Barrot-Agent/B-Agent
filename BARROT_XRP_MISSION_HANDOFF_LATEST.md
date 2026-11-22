@@ -3107,3 +3107,73 @@ Primary announcement: https://www.coinbase.com/blog/rlusd-is-now-available-on-co
 - The 39.9% SBI group threshold is a governance/ownership mechanism; it is not evidence that SBIC East/Central/West are SBI Holdings affiliates.
 
 All new SEC and corporate disclosures are research-only until captured into immutable raw receipts with exact retrieval times and hashes in the Barrot ingestion pipeline. They are not backdated into Run68 and are not model-eligible merely because they are primary-source filings.
+
+## Run24 — 2026-11-22T14:18:41Z: mainline verification, Run70 ingestion, current PR repair and Coinbase collateral/custody research
+
+### Repository state and integration
+
+- Current main SHA: `550a647ee7269a704d4600ff337b2145acc90473` (PR #1673 merge commit; main remains unchanged in this run).
+- Current consolidated XRP integration: [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch `integration/xrp-post-merge-verification-20261121T0002Z`.
+- Audited head before this Run24 evidence/test correction: `d68605f5790b9ed4969bcd95e01a6acaea364b7a`; 181 commits ahead, 0 behind; 28 changed files.
+- Complete recursive trees: main 3,115 entries; integration 3,128 entries; zero main paths missing. The 13 integration-only entries are not a substitute for reviewing the 28 changed paths.
+- PR #1673 is already merged and main post-merge CI passed on the merge SHA: full suite 4,534 passed, 0 failed, 1 skipped, 73.22% coverage; dependency audit, money audit and A2A worker tests passed. The merge was recorded as `MERGED_WITH_GOVERNANCE_EXCEPTION`: zero formal reviews, branch-protection details unavailable (HTTP 403), and Pages publication authorization was not granted. Its automatic Pages deployment ran successfully. No further merge is permitted until governance and publication controls are resolved.
+
+### Exact-head CI and repair
+
+- PR event run [#45030949742](https://github.com/Barrot-Agent/B-Agent/actions/runs/45030949742) on `d68605f5790b9ed4969bcd95e01a6acaea364b7a`: 4,563 passed, 5 failed, 1 skipped, 11 warnings, 32 subtests passed, 73.21% coverage.
+- All five failures are in `tests/test_xrp_nine_platform_map_latest.py`: the test expected an object where ChatGPT `data_flow` is now the string `verified`; it expected a missing Run70 `run_number`; it expected only two PRs despite a four-PR summary; it expected the old USDT/USD quote basis; and it expected Run22 rather than the current state pointer. These are stale map-contract assertions, not evidence that the ingestion adapter or feature-store code failed. The tests are being updated to validate the current schema and evidence, not to relax readiness gates.
+- Push CI [#45030944637](https://github.com/Barrot-Agent/B-Agent/actions/runs/45030944637) passed core tests and validation, but its full repository suite was skipped because the workflow runs that suite on the PR event. The PR event failure is therefore authoritative for the current head.
+- Dependency audit (six manifests, zero known vulnerabilities reported), money audit, conflict-integrity check and Pages validation-only job passed. The fail-closed gate remains blocked by design.
+- The historical backfill replay passed in an isolated CI copy: 118 records recovered across 11 source lineages; snapshots 39 to 40; SQLite integrity `ok`; main was not modified. It used main ingestion run `45026189091` and predates the newer Run70 ingestion `45031489739`; replay must be rerun against Run70 before merge consideration.
+
+### Main scheduled ingestion Run70 — 2026-11-22
+
+- GitHub run [#45031489739](https://github.com/Barrot-Agent/B-Agent/actions/runs/45031489739), run number 70, main SHA `550a647ee7269a704d4600ff337b2145acc90473`, completed successfully.
+- Data/feature-store cutoff: `2026-11-22T14:12:17.402853Z`; event-timeline cutoff: `2026-11-22T14:12:17.387969Z`.
+- 34 raw-source receipts: 22 retained raw payloads and 12 digest-only receipts. The 22 retained payloads were downloaded from the run artifact and independently SHA-256 checked against their receipt entries: 22/22 matched, 0 mismatches. The downloaded raw-artifact ZIP SHA-256 is `f30c246efe8d8c48d515343154199359eaff7bdc62069ca1322dd1df57e5eb9f`; feature-store ZIP `6b87dcfbba33d7585cfd1e9d937a8d7853ee007cd67948d7a8758b619ff5c7f2`; event ZIP `76e483c19cec52c5c092cabed245813844ed274debd0a13f20b4170ba3725561`; receipt-index ZIP `ff67963516572ab7cd5db87af61c6ec42a988e444e310a0016e04845d31887e3`; correction-audit ZIP `053bdd85d5a9f6abb6d2fe0511753ab317a5e3a4c0d82d46bf6eacb429b698cc`.
+- Cross-run receipt chain continued at sequence 40 from run `45026189091`; no independent external timestamp anchor or WORM archive exists.
+- Cumulative feature store: 19,682 records, 40 snapshots; current snapshot contains 123 verified records from 12 sources. Run70 produced 490 candidate feature records: 123 eligible and 367 excluded. SQLite integrity check passed. The current snapshot spans five publisher-independence groups; historical feature store contains seven.
+- Event timeline: 150 events, 117 scenarios, registry version Run222; zero raw event hashes, receipt completeness false, model eligibility false. Drift monitor: 204 features declared, zero evaluated; status `INSUFFICIENT_DATA`. Walk-forward forecast count remains zero; forecast status `NOT_ISSUED`.
+- SEC EDGAR capture is `BLOCKED_CONFIGURATION`: `BARROT_SEC_USER_AGENT` is not configured; zero submissions, zero filings and zero raw receipts; three source failures. No contact identity was invented.
+- 18 source failures: Binance HTTP 451 (8), Bybit HTTP 403 (5), Grayscale HTTP 429 (1), Franklin processing error (1), SEC EDGAR configuration (3). These restrictions were not bypassed. Twenty-three additional observations remain raw-only, including derivatives, ETF, Morpho collateral, issuer dashboard and lending-page data whose units, timestamps or semantics are not normalized.
+
+### Run70 spot microstructure snapshot — diagnostic only
+
+- USD-comparable ticker midpoints: Coinbase 0.921600, Kraken 0.921465, Bitstamp 0.921515, and OKX 0.921568505 after same-venue USDT/USD top-of-book normalization. Range: 1.465 bps.
+- Observed same-venue USDT/USD midpoint: 0.998395. Only OKX top-of-book prices are normalized; OKX depth remains USDT-denominated. Bitbank remains JPY-denominated at 146.1945 JPY and is not USD-normalized.
+- Order-book depth imbalances at 10 bps: Coinbase +0.0856, Kraken +0.0682, Bitstamp +0.0153, OKX +0.1289. OKX 100-bps imbalance is -0.0894; Bitbank JPY 10-bps imbalance is +0.6395. These are venue-local asynchronous snapshots, not a consolidated executable book. No directional interpretation is authorized.
+
+### New institutional research — Run285
+
+Artifact: `research/xrp_intelligence/20261122T141841Z-run285-coinbase-morpho-cbxrp-custody-and-payments-reconciliation.json` (11 public sources, six publisher-independence groups; rendered/indexed content reviewed, raw HTTP bytes not retained; research-only and model-ineligible).
+
+1. Coinbase's current Help page lists Ripple XRP as eligible collateral for USDC-backed loans in eligible regions and says the product is enabled by Morpho on Base, with Coinbase providing the interface. Coinbase's September 29, 2026 update says up to $100,000 USDC against XRP for eligible U.S. customers outside New York. This confirms product eligibility, not actual customer collateral or debt balances.
+2. Coinbase's cbXRP proof-of-reserves page states cbXRP is backed 1:1 by XRP held by Coinbase. The 10:03 AM display showed 159,472,641.13 XRP reserve against 159,470,394.59 cbXRP supply (2,246.54 XRP surplus). A separate locale/search vintage at 12:28 PM showed 159,387,236.72 XRP against 159,384,990.19 cbXRP (2,246.53 surplus). The totals differ by 85,404.41 XRP; both are the same publisher and are not independent corroboration. Refresh time zone is not specified. Preserve both vintages; do not combine them or infer spot purchases.
+3. Morpho's primary documentation describes isolated, immutable, permissionless Blue markets with collateral token, loan token, LLTV, oracle and IRM. A position is liquidatable when LTV exceeds LLTV. A third-party CleanSky analysis reports 90.78M cbXRP and $41M USDC borrowed in a 62.5% LLTV market, but market attribution to Coinbase is an inference: Morpho markets are permissionless and the API does not identify the originator. This remains a hypothesis, not a verified Coinbase balance.
+4. The OCC's November 6, 2026 final letter authorizes Coinbase National Trust Company to open November 9 for fiduciary cryptocurrency custody. Conditions include $60M minimum Tier 1 capital, at least $30M eligible liquid assets and 180 days of operating expenses in eligible liquid assets. A September 1 assignment agreement provides for gradual custody-account and asset migration from Coinbase Custody Trust Company; the OCC says migration is intended to commence, but no completed migration total is disclosed. This is not a full-service commercial bank or an insured depository. No XRP-specific custody balance is established.
+5. PNC's November 9 limited pilot allows eligible corporate/institutional clients to receive USDC on Ethereum; Coinbase Payment APIs power the rail, and PNC converts incoming USDC 1:1 to USD for deposit. This is a USDC banking rail, not an XRP or Ripple rail. Circle is the USDC issuer, but the announcements reviewed do not establish a direct PNC-Circle commercial contract.
+6. SBI VC Trade's April 2 special-rate lending campaign listed CANTON, USDC and ZPG, not XRP. Its June 22–July 3 XRP/JPY leverage spread promotion is expired. Neither announcement establishes current XRP lending balances or trading volume.
+
+### Open PR backlog — 2026-11-22
+
+| PR | Classification | Exact-head status / blocker |
+|---|---|---|
+| #1684 | blocked | Draft; full suite 4,563/5 failed on stale map assertions; replay must be refreshed against Run70; no independent approval; Pages authorization unresolved. |
+| #1685 | blocked | Non-draft; exact-head full suite 4,536 passed, 0 failed, 1 skipped; no independent approval; OS sandbox, provider credential isolation, egress restrictions and task-level authorization remain. Runner stays quarantined. |
+| #1686 | unique/unreviewed | Draft; full suite 4,508 passed, 11 failed. Failures include missing `os` import in refinement tests, stale OpenCode/LunaRoute assertions and a Run175 assertion. |
+| #1687 | unique/unreviewed | Draft; full suite 4,538 passed, 1 failed, 1 skipped. Docs index omits `docs/MODEL_INTEGRITY_AND_WEIGHT_DIAGNOSTICS.md`. |
+
+No source PR was closed. No new PR was created.
+
+### Nine-platform status
+
+ChatGPT GitHub access is verified for repository/tree/PR/workflow/artifact reads and integration-branch commits. Repository metadata reports admin/maintain/push/pull/triage; token scopes were not introspected, so least privilege is not verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified; no external dispatch or data transfer occurred.
+
+### Decision and next action
+
+- `DESIGNED`: XRP-first mission, V3 foundation, scheduled ingestion, receipt chain, point-in-time store, baselines, walk-forward, calibration, drift and forecast ledger remain specified in the repository.
+- `EXECUTED`: Run70 ingestion and independent raw-payload hash verification; Run285 public institutional research; PR #1684 test/map/handoff repair prepared on the existing branch only.
+- `VERIFIED`: Main post-merge CI; Run70 receipt-chain continuation; 22/22 retained raw payload hashes; SQLite integrity; PR #1684's current failing test list and all four open PRs.
+- `NOT VERIFIED`: Independent WORM anchoring, complete event receipts, SEC EDGAR ingestion, production-grade derivatives/collateral normalization, nine-platform external authentication, independent review, enforceable branch protection and public Pages authorization.
+- Decision: `DO_NOT_MERGE_PR_1684`. No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer, real-money action, force-push or source-PR closure occurred in this run.
+- Next: run the full suite on the repaired exact head; rerun historical backfill against main Run70; then obtain independent review and resolve branch protection and Pages authorization before any merge consideration.

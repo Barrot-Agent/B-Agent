@@ -31,10 +31,10 @@ def test_latest_map_covers_nine_platforms_without_fabricated_connections():
     assert set(data["platforms"]) == expected
     chatgpt = data["platforms"]["ChatGPT"]
     assert chatgpt["authentication_status"] == "verified"
-    assert chatgpt["data_flow"]["status"] == "verified"
-    assert chatgpt["data_flow"]["path"] == (
-        "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent"
-    )
+    assert chatgpt["data_flow"] == "verified"
+    assert chatgpt["authenticated_system"] == "GitHub connector"
+    assert chatgpt["capability_evidence_status"] == "verified_current_session"
+    assert "repository metadata and complete recursive tree reads" in chatgpt["verified_capabilities"]
     assert set(chatgpt["permissions"]) == {
         "admin", "maintain", "push", "pull", "triage"
     }
@@ -216,7 +216,7 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert counts.get("ready", 0) == summary["ready"]
     assert counts.get("duplicate", 0) == summary["duplicate"]
     assert counts.get("superseded", 0) == summary["superseded"]
-    expected_open_prs = {1684, 1685}
+    expected_open_prs = {1684, 1685, 1686, 1687}
     assert {item["number"] for item in backlog} == expected_open_prs
     assert next(item for item in backlog if item["number"] == 1684)["classification"] == "blocked"
     assert next(item for item in backlog if item["number"] == 1685)["classification"] == "blocked"
@@ -292,8 +292,8 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     quote_basis = data["prediction_engine"]["quote_basis"]
     assert quote_basis["status"] == "VERIFIED_TOP_OF_BOOK_ONLY"
     assert quote_basis["method"] == "same_venue_synchronized_top_of_book_product"
-    assert quote_basis["usdt_usd_mid"] == 0.998045
-    assert quote_basis["normalization_overstatement_if_usdt_assumed_usd_bps"] == 19.58829243797089
+    assert quote_basis["usdt_usd_mid"] == 0.998395
+    assert quote_basis["normalization_overstatement_if_usdt_assumed_usd_bps"] == 16.07580166166665
     assert quote_basis["depth_levels_normalized"] is False
     assert quote_basis["publisher_independence_group_count"] == 1
     assert "not consolidated executable liquidity" in market["interpretation"]
@@ -1134,65 +1134,95 @@ def test_run16_historical_snapshot_is_preserved():
 
 
 
-def test_latest_current_state_ref_points_to_run22_and_binds_exact_head():
+def test_latest_current_state_ref_points_to_run24_and_binds_exact_head():
     data = load_map()
-    assert data["latest_current_state_ref"] == "run22_current_state"
-    run = data["run22_current_state"]
+    assert data["latest_current_state_ref"] == "run24_current_state"
+    run = data["run24_current_state"]
+    assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
+    assert run["integration_head_sha"] == data["current_pr_head_sha"] == "d68605f5790b9ed4969bcd95e01a6acaea364b7a"
+    assert run["pr_number"] == 1684
+    assert run["pr_draft"] is True
+    assert run["commits_ahead"] == 181
+    assert run["commits_behind"] == 0
+    assert run["main_tree_entries"] == 3115
+    assert run["integration_tree_entries"] == 3128
+    assert run["main_paths_missing_from_integration"] == 0
 
-    repository = run["repository_state"]
-    assert repository["main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
-    assert repository["integration_head_sha"] == "4ef52d151dc3f3944db9d57631cc953ffe8b7a7e"
-    assert repository["ahead_by"] == 173
-    assert repository["behind_by"] == 0
-    assert repository["main_tree_entries"] == 3115
-    assert repository["integration_tree_entries"] == 3127
-    assert repository["main_paths_missing"] == 0
+    suite = run["exact_head_ci"]["full_suite"]
+    assert suite["head_sha"] == run["integration_head_sha"]
+    assert suite["passed"] == 4563
+    assert suite["failed"] == 5
+    assert suite["skipped"] == 1
+    assert suite["conclusion"] == "failure"
+    assert suite["coverage_percent"] == 73.21
+    assert run["exact_head_ci"]["dependency_audit"]["conclusion"] == "success"
+    assert run["exact_head_ci"]["money_audit"]["conclusion"] == "success"
+    assert run["exact_head_ci"]["conflict_integrity"]["conclusion"] == "success"
+    assert run["exact_head_ci"]["fail_closed"]["conclusion"] == "failure_by_design"
 
-    ci = run["exact_head_ci"]
-    assert ci["head_sha"] == repository["integration_head_sha"]
-    assert ci["full_repository_suite"]["passed"] == 4565
-    assert ci["full_repository_suite"]["failed"] == 1
-    assert ci["full_repository_suite"]["skipped"] == 1
-    assert ci["full_repository_suite"]["failing_test"].endswith(
-        "test_latest_current_state_is_authoritative_and_preserves_historical_snapshots"
-    )
-    assert ci["dependency_audit"]["conclusion"] == "success"
-    assert ci["money_audit"]["conclusion"] == "success"
-    assert ci["conflict_integrity"]["conclusion"] == "success"
-    assert ci["backfill_replay"]["conclusion"] == "success"
-    assert ci["fail_closed_gate"]["conclusion"] == "failure_by_design"
-
-    ingestion = run["main_ingestion"]
-    assert ingestion["run_id"] == 45016059622
+    ingestion = run["latest_main_ingestion"]
+    assert ingestion["run_id"] == 45031489739
+    assert ingestion["run_number"] == 70
     assert ingestion["receipt_count"] == 34
-    assert ingestion["retained_raw_payloads"] == 22
-    assert ingestion["digest_only_receipts"] == 12
-    assert ingestion["retained_payload_hashes_verified"] == 22
+    assert ingestion["raw_payload_hashes_verified"] == 22
     assert ingestion["raw_payload_hash_mismatches"] == 0
-    assert ingestion["feature_store_history_records"] == 19312
-    assert ingestion["feature_store_snapshots"] == 37
-    assert ingestion["eligible_features"] == 106
-    assert ingestion["excluded_features"] == 384
-    assert ingestion["event_raw_hashes_present"] == 0
-    assert ingestion["drift_evaluated"] == 0
-    assert ingestion["walk_forward_forecasts"] == 0
+    assert ingestion["receipt_chain_sequence"] == 40
+    assert ingestion["cross_run_continuity_status"] == "CONTINUED"
+    assert ingestion["previous_run_id"] == 45026189091
+    assert ingestion["feature_store_history_record_count"] == 19682
+    assert ingestion["feature_store_snapshot_count"] == 40
+    assert ingestion["current_snapshot_records"] == 123
+    assert ingestion["candidate_feature_records"] == 490
+    assert ingestion["eligible_feature_record_count"] == 123
+    assert ingestion["excluded_feature_record_count"] == 367
+    assert ingestion["sqlite_integrity"] == "ok"
+    assert ingestion["event_count"] == 150
+    assert ingestion["scenario_count"] == 117
+    assert ingestion["event_receipt_complete"] is False
+    assert ingestion["event_model_eligible"] is False
+    assert ingestion["drift_status"] == "INSUFFICIENT_DATA"
+    assert ingestion["walk_forward_forecast_count"] == 0
     assert ingestion["forecast_status"] == "NOT_ISSUED"
-    assert ingestion["cache_status"] == "READ_ONLY_BUDGET_EXHAUSTED"
+    assert ingestion["sec_edgar_status"] == "BLOCKED_CONFIGURATION"
 
-    assert {pr["number"] for pr in run["open_pr_inventory"]} == {1684, 1685, 1686, 1687}
-    assert run["backlog_summary"]["ready"] == 0
-    assert run["merge_decision"] == "DO_NOT_MERGE"
+    assert run["backfill_replay"]["conclusion"] == "success"
+    assert run["backfill_replay"]["main_modified"] is False
+    assert run["backfill_replay"]["source_main_run_id"] == 45026189091
+    assert run["backfill_replay"]["must_rerun_against_latest_main_run_id"] == 45031489739
+    assert run["merge_decision"] == "DO_NOT_MERGE_PR_1684"
     assert run["no_merge_performed"] is True
-    assert run["no_external_actions"] is True
+    assert run["no_external_actions_performed"] is True
 
-    root = Path(__file__).resolve().parents[1]
-    artifact = json.loads((root / run["research_artifact_path"]).read_text(encoding="utf-8"))
-    assert artifact["model_eligible"] is False
-    assert artifact["raw_capture"]["raw_http_bytes_captured"] is False
-    findings = artifact["research_findings"]
-    assert findings["sbic_identity"]["entities_distinct_from_sbi_holdings"] is True
-    assert findings["sbic_chatgpt_phrase"]["openai_partnership_evidence"] is False
-    assert findings["ask_coin"]["xrp_relationship_established"] is False
-    assert findings["creator_identity"]["channel_ownership_status"] == "UNVERIFIED"
-    assert findings["institutional_relationships"]["ripple_coinbase_rlusd"]["collateral_status"] == "FUTURE_AT_ANNOUNCEMENT"
-    assert findings["market_data_quality"]["model_eligible"] is False
+
+def test_run285_coinbase_morpho_cbxrp_custody_and_usdc_rail_reconciliation():
+    data = load_map()
+    record = data["run285_coinbase_morpho_cbxrp_custody_and_payments_reconciliation"]
+    assert record["artifact_path"] == (
+        "research/xrp_intelligence/20261122T141841Z-run285-coinbase-morpho-cbxrp-custody-and-payments-reconciliation.json"
+    )
+    assert record["source_count"] == 10
+    assert record["model_eligible"] is False
+    assert record["raw_http_bytes_captured"] is False
+
+    graph = data["institutional_relationship_graph"]
+    collateral = graph["coinbase_morpho_xrp_collateral"]
+    assert collateral["evidence_status"] == "verified_primary_product_eligibility"
+    assert "XRP" in collateral["eligible_collateral"]
+    assert "actual XRP collateral quantity" in collateral["not_established"]
+
+    reserves = record["coinbase_cbXRP_reserves"]
+    assert reserves["snapshot_1"]["reserve_xrp"] == 159472641.13
+    assert reserves["snapshot_1"]["supply_cbXRP"] == 159470394.59
+    assert reserves["snapshot_1"]["reserve_surplus_xrp"] == 2246.54
+    assert reserves["snapshot_2"]["reserve_surplus_xrp"] == 2246.53
+    assert reserves["same_publisher_locale_disagreement"] is True
+
+    trust = graph["coinbase_occ_trust_company"]
+    assert trust["final_approval_date"] == "2026-11-06"
+    assert trust["authorized_open_date"] == "2026-11-09"
+    assert trust["customer_migration_status"] == "INTENDED_NOT_QUANTIFIED"
+
+    pnc = graph["coinbase_pnc_usdc_payments"]
+    assert pnc["pilot_status"] == "LIMITED_PILOT"
+    assert pnc["settlement_asset"] == "USDC"
+    assert pnc["xrp_rail_established"] is False
