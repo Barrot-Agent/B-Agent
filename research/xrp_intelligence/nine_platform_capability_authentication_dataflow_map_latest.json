@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-22T01:34:53Z",
+  "captured_at_utc": "2026-11-22T01:50:37Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -470,9 +470,9 @@
       "data_flow": {
         "status": "verified",
         "path": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
-        "last_verified_at_utc": "2026-11-22T01:34:53Z",
-        "observed_flow": "Run284: inspected current main SHA and complete recursive trees; verified all 3,115 main paths are present in the 3,127-entry integration tree; inspected both open PRs, ancestry, changed paths, reviews, exact-head CI, dependencies, workflow gates and security settings; prepared a branch-only Git Data update to the existing XRP integration branch. No main write, external model dispatch or data transfer.",
-        "last_verified_evidence": "Run284: main 550a647; parent code head d055f7; 131 ahead/0 behind; 27 changed files; exact-head full suite 4,563 passed/1 skipped/0 failed; isolated 118-record backfill verified against main ingestion 44970457568; branch protection endpoint 403; no independent reviews."
+        "last_verified_at_utc": "2026-11-22T01:50:37Z",
+        "observed_flow": "Run284: inspected current main SHA and complete recursive trees; verified all 3,115 main paths are present in the 3,127-entry integration tree; inspected both open PRs, ancestry, changed paths, reviews, exact-head CI, dependencies, workflow gates and security settings; committed a branch-only Git Data update to the existing XRP integration branch. No main write, external model dispatch or data transfer.",
+        "last_verified_evidence": "Run284: main 550a647; metadata head 4491e56; 132 ahead/0 behind; 27 changed files; full suite 4,561 passed/2 failed/1 skipped due historical merge_decision sentinel regression; isolated 118-record backfill passed against main ingestion 44970457568; branch protection endpoint 403; no independent reviews."
       },
       "permissions": [
         "admin",
@@ -4214,8 +4214,8 @@
     {
       "number": 1684,
       "classification": "blocked",
-      "reason": "Draft; no independent approval; branch-protection details HTTP 403; automatic Pages publication on main push remains unauthorized. Parent code head d055f7 passes full-suite CI and isolated backfill; the metadata update commit requires its own exact-head CI.",
-      "head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6"
+      "reason": "Exact-head full suite on 4491e56 failed two assertions because the update overwrote a historical merge_decision sentinel; correction restores the historical field and adds current_merge_decision. Backfill replay, dependency, money, conflict and Pages validation passed. PR remains draft, no independent approval, branch protection HTTP 403; automatic Pages publication remains unauthorized.",
+      "head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765"
     },
     {
       "number": 1685,
@@ -4224,7 +4224,7 @@
       "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0"
     }
   ],
-  "merge_decision": "NO_MERGE: PR #1684 is draft and lacks independent approval; branch protection is unreadable; automatic Pages publication is unauthorized. PR #1685 lacks independent approval and has outstanding runner security controls.",
+  "merge_decision": "POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION",
   "external_actions_this_run": {
     "external_model_dispatch": false,
     "external_data_transfer": false,
@@ -6796,9 +6796,9 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-22T01:34:53Z",
+  "last_verified_at_utc": "2026-11-22T01:50:37Z",
   "latest_run_id": 284,
-  "latest_run_captured_at_utc": "2026-11-22T01:34:53Z",
+  "latest_run_captured_at_utc": "2026-11-22T01:50:37Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
   "current_successor_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
   "observed_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7205,13 +7205,13 @@
       "workstream": "XRP scheduled ingestion, historical feature-store recovery, event provenance and prediction readiness",
       "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
-      "ahead_by": 131,
+      "head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+      "ahead_by": 132,
       "behind_by": 0,
-      "commits": 131,
+      "commits": 132,
       "changed_files": 27,
-      "additions": 24534,
-      "deletions": 1068,
+      "additions": 25092,
+      "deletions": 1070,
       "main_tree_entries": 3115,
       "integration_tree_entries": 3127,
       "main_paths_missing_from_integration": 0,
@@ -7222,40 +7222,45 @@
       "requested_reviewers": 0,
       "mergeable": true,
       "overlap_with_pr1685": 0,
-      "exact_head_ci_status": "PASS_ON_PARENT_CODE_HEAD; METADATA_UPDATE_COMMIT_REQUIRES_ITS_OWN_CI",
+      "exact_head_ci_status": "FAIL_ON_METADATA_HEAD; TWO_ASSERTIONS_ON_HISTORICAL_MERGE_DECISION_FIELD; CORRECTION_COMMITTED_SEPARATELY",
       "full_suite": {
-        "head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
-        "run_id": 44971537062,
-        "passed": 4563,
-        "failed": 0,
+        "head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+        "run_id": 44972927710,
+        "passed": 4561,
+        "failed": 2,
         "skipped": 1,
         "warnings": 11,
         "subtests_passed": 32,
         "coverage_percent": 73.2,
-        "duration_seconds": 174.95,
-        "conclusion": "success"
+        "duration_seconds": 197.38,
+        "conclusion": "failure"
       },
+      "failure_details": [
+        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_security_gates_and_open_pr_classifications",
+        "tests/test_xrp_nine_platform_map_latest.py::test_run227_main_workflow_differential_and_publication_gate_are_preserved"
+      ],
+      "failure_root_cause": "The map update overwrote the historical merge_decision sentinel POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION with a current operational no-merge message. The tests correctly protect that historical field. Fix: restore the historical sentinel and place the current decision in current_merge_decision. No test expectations are weakened.",
       "dependency_audit": {
-        "run_id": 44971537042,
+        "run_id": 44972927740,
         "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 44971537045,
+        "run_id": 44972927741,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 44971537109,
+        "run_id": 44972927799,
         "conclusion": "success"
       },
       "pages_validation": {
-        "run_id": 44971537062,
+        "run_id": 44972927710,
         "conclusion": "success_validation_only",
         "deployment_executed": false
       },
       "backfill_replay": {
-        "run_id": 44971537062,
-        "job_id": 137052190257,
-        "artifact_id": 14734250393,
+        "run_id": 44972927710,
+        "job_id": 137056418831,
+        "artifact_id": 14733973319,
         "conclusion": "success",
         "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
         "current_main_run_id": 44970457568,
@@ -7274,12 +7279,12 @@
         "visible_after_receipt": true,
         "receipt_clock_source": "github_api_run_date_header",
         "store_receipt_time_is_actual_recovery_time": false,
-        "reconciliation_sha256": "b69552f5d4d289234841b5eea681c28383ffd261917929b24ec9bce0874f2d50",
-        "artifact_zip_sha256": "b55fda8d68610abd3d62f483ec53e755e3a89602cb8767f56a1068548d4a5ae7",
+        "reconciliation_sha256": "4c8ed58d7fe4679051eae58ed08851afffa94e326016edfe15128a2f587ea6ec",
+        "artifact_zip_sha256": "636ca0a4e32617304372bec810e2fdd3b7cae62ae24ab7fff3f4f4c5a94a4136",
         "main_modified": false
       },
       "fail_closed": {
-        "run_id": 44971537038,
+        "run_id": 44972927817,
         "conclusion": "failure_by_design",
         "blockers": [
           "PR is still draft",
@@ -7780,7 +7785,7 @@
       "real_money_actions": 0
     }
   },
-  "snapshot_boundary": "Run284 repository/CI snapshot captured on parent code head d055f7. This commit updates only the durable handoff and capability/evidence map; its new exact head requires its own CI.",
+  "snapshot_boundary": "Run284 correction snapshot captured on parent metadata head 4491e56. Historical merge_decision is preserved; current_merge_decision records the present no-merge state. The correction commit requires its own exact-head CI.",
   "latest_run_230": {
     "captured_at_utc": "2026-11-20T02:31:22Z",
     "repository": {
@@ -9301,14 +9306,16 @@
   "run246_no_external_actions": true,
   "current_pr_base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
   "current_pr_head_snapshot": {
-    "captured_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
-    "current_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
-    "captured_at_utc": "2026-11-22T01:34:53Z",
+    "captured_head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+    "current_head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+    "captured_at_utc": "2026-11-22T01:50:37Z",
     "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-    "ahead_by": 131,
+    "ahead_by": 132,
     "behind_by": 0,
     "changed_files": 27,
-    "commits": 131,
+    "commits": 132,
+    "additions": 25092,
+    "deletions": 1070,
     "main_tree_entries": 3115,
     "integration_tree_entries": 3127,
     "integration_tree_truncated": false,
@@ -9319,31 +9326,36 @@
     "review_threads": 0,
     "requested_reviewers": 0,
     "mergeable": true,
-    "exact_head_ci_status": "PASS",
-    "pr_event_ci_run_id": 44971537062,
-    "pr_event_full_suite_status": "SUCCESS",
+    "exact_head_ci_status": "FAIL",
+    "pr_event_ci_run_id": 44972927710,
+    "pr_event_full_suite_status": "FAIL",
     "full_suite": {
-      "head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
-      "run_id": 44971537062,
-      "passed": 4563,
-      "failed": 0,
+      "head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+      "run_id": 44972927710,
+      "passed": 4561,
+      "failed": 2,
       "skipped": 1,
       "warnings": 11,
       "subtests_passed": 32,
       "coverage_percent": 73.2,
-      "duration_seconds": 174.95,
-      "conclusion": "success"
+      "duration_seconds": 197.38,
+      "conclusion": "failure"
     },
+    "failure_details": [
+      "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_security_gates_and_open_pr_classifications",
+      "tests/test_xrp_nine_platform_map_latest.py::test_run227_main_workflow_differential_and_publication_gate_are_preserved"
+    ],
     "backfill_replay_status": "SUCCESS_ISOLATED_COPY_ONLY",
-    "dependency_audit_run_id": 44971537042,
-    "money_audit_run_id": 44971537045,
-    "conflict_integrity_run_id": 44971537109,
-    "fail_closed_gate_run_id": 44971537038,
-    "status": "BLOCKED_BY_GOVERNANCE",
-    "snapshot_boundary": "Last verified code head before this documentation-only map/handoff update commit; new commit requires its own exact-head CI."
+    "backfill_replay_run_id": 44972927710,
+    "dependency_audit_run_id": 44972927740,
+    "money_audit_run_id": 44972927741,
+    "conflict_integrity_run_id": 44972927799,
+    "fail_closed_gate_run_id": 44972927817,
+    "status": "BLOCKED_BY_TEST_REGRESSION_AND_GOVERNANCE",
+    "snapshot_boundary": "Captured on metadata head 4491e56 before the correction commit that restores the historical merge_decision sentinel and adds current_merge_decision. Correction head requires its own exact-head CI."
   },
   "current_pr_changed_files": 27,
-  "current_pr_commit_count": 131,
+  "current_pr_commit_count": 132,
   "latest_run_246": {
     "run_id": 246,
     "captured_at_utc": "2026-11-20T20:29:30Z",
@@ -11411,7 +11423,7 @@
       "raw_http_bytes_captured": false
     }
   },
-  "current_pr_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
+  "current_pr_head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
   "run250_no_external_actions": true,
   "run250_merge_decision": "NO_MERGE",
   "prediction_readiness": {
@@ -11806,7 +11818,7 @@
     "current_pr_head_ci": "IN_PROGRESS"
   },
   "latest_mission_run_id": 284,
-  "latest_mission_run_captured_at_utc": "2026-11-22T01:34:53Z",
+  "latest_mission_run_captured_at_utc": "2026-11-22T01:50:37Z",
   "open_pr_count": 2,
   "run258_evidence_record": {
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -14876,8 +14888,8 @@
     "iHeart_kamilah_episode": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
     "youtube_kamilah_guest_appearance": "https://www.youtube.com/watch?v=Sulo54IlQ60"
   },
-  "current_branch_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
-  "current_pr_branch_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
+  "current_branch_head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+  "current_pr_branch_head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
   "latest_verified_code_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
   "run266_documentation_commit_ci": {
     "head_sha": "f2722d29f79ab9f3ee2bd5e761260e31bdf7582a",
@@ -15242,17 +15254,17 @@
     "model_eligible_for_historical_asof_before_2026_11_21T003241Z": false
   },
   "latest_verified_full_suite_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
-  "latest_exact_head_full_suite_run": 44971537062,
-  "latest_exact_head_full_suite_result": "PASS on exact parent code head d055f7: 4,563 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests; 73.20% coverage; 174.95 seconds. The following metadata-only map/handoff commit requires its own exact-head CI.",
-  "latest_exact_head_full_suite_passed": 4563,
-  "latest_exact_head_full_suite_failed": 0,
+  "latest_exact_head_full_suite_run": 44972927710,
+  "latest_exact_head_full_suite_result": "FAIL on metadata head 4491e56: 4,561 passed, 2 failed, 1 skipped; 11 warnings; 32 subtests; 73.20% coverage; 197.38 seconds. Both failures expected the preserved historical merge_decision sentinel; correction restores that field and adds current_merge_decision.",
+  "latest_exact_head_full_suite_passed": 4561,
+  "latest_exact_head_full_suite_failed": 2,
   "latest_exact_head_full_suite_skipped": 1,
   "latest_exact_head_subtests": 32,
   "latest_exact_head_full_suite_coverage_percent": 73.2,
-  "latest_exact_head_full_suite_duration_seconds": 174.95,
-  "latest_exact_head_ci_run": 44971537062,
-  "latest_exact_head_ci_conclusion": "success",
-  "integration_ahead_by": 131,
+  "latest_exact_head_full_suite_duration_seconds": 197.38,
+  "latest_exact_head_ci_run": 44972927710,
+  "latest_exact_head_ci_conclusion": "failure",
+  "integration_ahead_by": 132,
   "integration_behind_by": 0,
   "changed_files": 27,
   "workflow_files_changed": 3,
@@ -18325,15 +18337,15 @@
     "note": "Latest completed main scheduled XRP public-ingestion run at capture time."
   },
   "latest_exact_head_push_ci_run": 44948742558,
-  "latest_exact_head_pr_ci_run": 44971537062,
+  "latest_exact_head_pr_ci_run": 44972927710,
   "latest_exact_head_full_suite_head_sha": "cd25580f183455e556535f9aa6ea7d7957da4246",
-  "latest_exact_head_dependency_audit_run": 44971537042,
-  "latest_exact_head_pr_dependency_audit_run": 44971537042,
+  "latest_exact_head_dependency_audit_run": 44972927740,
+  "latest_exact_head_pr_dependency_audit_run": 44972927740,
   "latest_exact_head_dependency_audit_push_run": 44948742619,
-  "latest_exact_head_money_audit_run": 44971537045,
-  "latest_exact_head_conflict_integrity_run": 44971537109,
-  "latest_exact_head_fail_closed_run": 44971537038,
-  "latest_exact_head_backfill_replay_run": 44971537062,
+  "latest_exact_head_money_audit_run": 44972927741,
+  "latest_exact_head_conflict_integrity_run": 44972927799,
+  "latest_exact_head_fail_closed_run": 44972927817,
+  "latest_exact_head_backfill_replay_run": 44972927710,
   "latest_exact_head_fail_closed_result": "BLOCKED: draft PR; no independent approving review; branch-protection endpoint HTTP 403. No bypass or merge.",
   "latest_exact_head_full_suite": "FAIL on exact head 9e5be0; three stale evidence-map assertions; next addendum head pending.",
   "run273_evidence_record": {
@@ -18661,13 +18673,13 @@
         "workstream": "XRP scheduled ingestion, historical feature-store recovery, event provenance and prediction readiness",
         "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
         "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-        "head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
-        "ahead_by": 131,
+        "head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+        "ahead_by": 132,
         "behind_by": 0,
-        "commits": 131,
+        "commits": 132,
         "changed_files": 27,
-        "additions": 24534,
-        "deletions": 1068,
+        "additions": 25092,
+        "deletions": 1070,
         "main_tree_entries": 3115,
         "integration_tree_entries": 3127,
         "main_paths_missing_from_integration": 0,
@@ -18678,40 +18690,45 @@
         "requested_reviewers": 0,
         "mergeable": true,
         "overlap_with_pr1685": 0,
-        "exact_head_ci_status": "PASS_ON_PARENT_CODE_HEAD; METADATA_UPDATE_COMMIT_REQUIRES_ITS_OWN_CI",
+        "exact_head_ci_status": "FAIL_ON_METADATA_HEAD; TWO_ASSERTIONS_ON_HISTORICAL_MERGE_DECISION_FIELD; CORRECTION_COMMITTED_SEPARATELY",
         "full_suite": {
-          "head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
-          "run_id": 44971537062,
-          "passed": 4563,
-          "failed": 0,
+          "head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+          "run_id": 44972927710,
+          "passed": 4561,
+          "failed": 2,
           "skipped": 1,
           "warnings": 11,
           "subtests_passed": 32,
           "coverage_percent": 73.2,
-          "duration_seconds": 174.95,
-          "conclusion": "success"
+          "duration_seconds": 197.38,
+          "conclusion": "failure"
         },
+        "failure_details": [
+          "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_security_gates_and_open_pr_classifications",
+          "tests/test_xrp_nine_platform_map_latest.py::test_run227_main_workflow_differential_and_publication_gate_are_preserved"
+        ],
+        "failure_root_cause": "The map update overwrote the historical merge_decision sentinel POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION with a current operational no-merge message. The tests correctly protect that historical field. Fix: restore the historical sentinel and place the current decision in current_merge_decision. No test expectations are weakened.",
         "dependency_audit": {
-          "run_id": 44971537042,
+          "run_id": 44972927740,
           "conclusion": "success"
         },
         "money_audit": {
-          "run_id": 44971537045,
+          "run_id": 44972927741,
           "conclusion": "success"
         },
         "conflict_integrity": {
-          "run_id": 44971537109,
+          "run_id": 44972927799,
           "conclusion": "success"
         },
         "pages_validation": {
-          "run_id": 44971537062,
+          "run_id": 44972927710,
           "conclusion": "success_validation_only",
           "deployment_executed": false
         },
         "backfill_replay": {
-          "run_id": 44971537062,
-          "job_id": 137052190257,
-          "artifact_id": 14734250393,
+          "run_id": 44972927710,
+          "job_id": 137056418831,
+          "artifact_id": 14733973319,
           "conclusion": "success",
           "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
           "current_main_run_id": 44970457568,
@@ -18730,12 +18747,12 @@
           "visible_after_receipt": true,
           "receipt_clock_source": "github_api_run_date_header",
           "store_receipt_time_is_actual_recovery_time": false,
-          "reconciliation_sha256": "b69552f5d4d289234841b5eea681c28383ffd261917929b24ec9bce0874f2d50",
-          "artifact_zip_sha256": "b55fda8d68610abd3d62f483ec53e755e3a89602cb8767f56a1068548d4a5ae7",
+          "reconciliation_sha256": "4c8ed58d7fe4679051eae58ed08851afffa94e326016edfe15128a2f587ea6ec",
+          "artifact_zip_sha256": "636ca0a4e32617304372bec810e2fdd3b7cae62ae24ab7fff3f4f4c5a94a4136",
           "main_modified": false
         },
         "fail_closed": {
-          "run_id": 44971537038,
+          "run_id": 44972927817,
           "conclusion": "failure_by_design",
           "blockers": [
             "PR is still draft",
@@ -18803,7 +18820,7 @@
       }
     ],
     "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-    "current_pr_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
+    "current_pr_head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
     "independent_code_owner_configured": false,
     "pages_settings_rechecked_this_run": false,
     "pages_publication_authorized": false
@@ -19013,19 +19030,19 @@
     }
   },
   "current_repository_state": {
-    "captured_at_utc": "2026-11-22T01:34:53Z",
+    "captured_at_utc": "2026-11-22T01:50:37Z",
     "repository": "Barrot-Agent/B-Agent",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "main_tree_entries": 3115,
     "main_tree_truncated": false,
     "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
-    "integration_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
+    "integration_head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
     "integration_tree_entries": 3127,
     "integration_tree_truncated": false,
-    "ahead_by": 131,
+    "ahead_by": 132,
     "behind_by": 0,
     "changed_files": 27,
-    "commits": 131,
+    "commits": 132,
     "open_prs": [
       1684,
       1685
@@ -19033,7 +19050,7 @@
     "main_paths_missing_from_integration": 0,
     "integration_only_paths": 12,
     "main_modified": false,
-    "snapshot_boundary": "Captured on verified parent code head d055f7 immediately before this documentation-only map/handoff update commit."
+    "snapshot_boundary": "Captured on metadata head 4491e56 immediately before the correction commit."
   },
   "latest_run_281": {
     "captured_at_utc": "2026-11-22T01:14:34Z",
@@ -19164,26 +19181,26 @@
     "merge_decision": "NO_MERGE"
   },
   "latest_run_284": {
-    "captured_at_utc": "2026-11-22T01:34:53Z",
+    "captured_at_utc": "2026-11-22T01:50:37Z",
     "run_number": 284,
-    "head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
-    "head_sha_role": "last_verified_code_head_before_metadata_update",
+    "head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+    "head_sha_role": "current PR metadata head at capture; historical merge-decision sentinel regression identified and corrected in the next commit",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
     "repository_snapshot": {
-      "captured_at_utc": "2026-11-22T01:34:53Z",
+      "captured_at_utc": "2026-11-22T01:50:37Z",
       "repository": "Barrot-Agent/B-Agent",
       "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
       "main_tree_entries": 3115,
       "main_tree_truncated": false,
       "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
-      "integration_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
+      "integration_head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
       "integration_tree_entries": 3127,
       "integration_tree_truncated": false,
-      "ahead_by": 131,
+      "ahead_by": 132,
       "behind_by": 0,
       "changed_files": 27,
-      "commits": 131,
+      "commits": 132,
       "open_prs": [
         1684,
         1685
@@ -19191,7 +19208,7 @@
       "main_paths_missing_from_integration": 0,
       "integration_only_paths": 12,
       "main_modified": false,
-      "snapshot_boundary": "Captured on verified parent code head d055f7 immediately before this documentation-only map/handoff update commit."
+      "snapshot_boundary": "Captured on metadata head 4491e56 immediately before the correction commit."
     },
     "exact_head_ci": {
       "workflow_run_id": 44971537062,
@@ -19558,6 +19575,150 @@
       "Normalize ETF issuer holdings, derivatives, collateral, stablecoin and exchange-flow units before model admission.",
       "Accumulate sufficient point-in-time data for leakage-safe chronological walk-forward baseline evaluation and calibration; keep directional forecasts disabled."
     ],
-    "snapshot_boundary": "This record describes the verified parent code head d055f7 before the map/handoff-only commit that adds this Run284 record. The new commit must receive its own exact-head CI and replay; no result is inherited."
-  }
+    "snapshot_boundary": "This correction commit follows metadata head 4491e56. The correction commit itself requires new exact-head CI; the 4,563-pass parent result and the 4,561/2-failure metadata-head result are not transferable.",
+    "parent_code_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
+    "metadata_update_commit_ci": {
+      "workflow_run_id": 44972927710,
+      "head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+      "conclusion": "failure",
+      "full_suite": {
+        "passed": 4561,
+        "failed": 2,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.2,
+        "duration_seconds": 197.38
+      },
+      "failures": [
+        "tests/test_xrp_nine_platform_map_latest.py::test_latest_map_preserves_security_gates_and_open_pr_classifications",
+        "tests/test_xrp_nine_platform_map_latest.py::test_run227_main_workflow_differential_and_publication_gate_are_preserved"
+      ],
+      "root_cause": "Historical merge_decision sentinel was overwritten with a current operational no-merge string.",
+      "correction": "Restore merge_decision to POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION and add current_merge_decision for current run status. No tests changed or weakened."
+    },
+    "metadata_update_backfill_replay": {
+      "run_id": 44972927710,
+      "job_id": 137056418831,
+      "artifact_id": 14733973319,
+      "conclusion": "success",
+      "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
+      "current_main_run_id": 44970457568,
+      "source_run_id": "44844953105",
+      "records_before": 18113,
+      "records_after": 18231,
+      "recovered_records": 118,
+      "recovered_source_lineages": 11,
+      "snapshots_before": 27,
+      "snapshots_after": 28,
+      "artifact_zip_digests_verified": 30,
+      "artifact_zip_digest_mismatches": 0,
+      "intermediate_receipt_index_artifacts_verified": 24,
+      "sqlite_integrity": "ok",
+      "visible_before_receipt": false,
+      "visible_after_receipt": true,
+      "receipt_clock_source": "github_api_run_date_header",
+      "store_receipt_time_is_actual_recovery_time": false,
+      "reconciliation_sha256": "4c8ed58d7fe4679051eae58ed08851afffa94e326016edfe15128a2f587ea6ec",
+      "artifact_zip_sha256": "636ca0a4e32617304372bec810e2fdd3b7cae62ae24ab7fff3f4f4c5a94a4136",
+      "main_modified": false
+    },
+    "metadata_update_other_checks": {
+      "dependency_audit": {
+        "run_id": 44972927740,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 44972927741,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 44972927799,
+        "conclusion": "success"
+      },
+      "pages_validation": {
+        "conclusion": "success_validation_only",
+        "deployment_executed": false
+      },
+      "fail_closed_gate": {
+        "run_id": 44972927817,
+        "conclusion": "failure_by_design"
+      }
+    },
+    "artifact_level_diagnostics": {
+      "main_feature_store_artifact_id": 14733710904,
+      "main_feature_store_artifact_bytes": 3882907,
+      "raw_artifact_id": 14733581251,
+      "raw_artifact_bytes": 463127,
+      "event_artifact_id": 14733660993,
+      "event_artifact_bytes": 154229,
+      "receipt_index_artifact_id": 14733710887,
+      "receipt_index_artifact_bytes": 1132,
+      "research_correction_audit_artifact_id": 14733451671,
+      "sqlite_feature_records": 18113,
+      "sqlite_snapshots": 27,
+      "binance_1h_close": {
+        "records": 999,
+        "distinct_known_at_count": 1,
+        "known_at_utc": "2026-11-21T07:13:43.810048Z",
+        "event_time_start_utc": "2026-10-10T16:00:00Z",
+        "event_time_end_utc": "2026-11-21T06:00:00Z"
+      },
+      "coinbase_1h_close": {
+        "records": 374,
+        "distinct_known_at_count": 26,
+        "initial_backfill_records": 349,
+        "initial_backfill_known_at_utc": "2026-11-21T00:32:41.879993Z",
+        "latest_known_at_utc": "2026-11-22T01:14:07.783946Z",
+        "event_time_start_utc": "2026-11-06T11:00:00Z",
+        "event_time_end_utc": "2026-11-22T00:00:00Z"
+      },
+      "point_in_time_interpretation": "Historical event_time is not historical known_at. Binance bars were captured in one backfill batch and cannot create 999 historical forecast origins. Coinbase's 349-row initial backfill likewise shares one availability time; subsequent hourly captures provide only 25 additional availability points.",
+      "walk_forward_configuration": {
+        "hourly_horizon_seconds": 3600,
+        "embargo_seconds": 3600,
+        "min_train_samples": 100,
+        "min_out_of_sample_samples": 100,
+        "target_tolerance_seconds": 300,
+        "max_origin_age_seconds": 3600,
+        "expected_cadence_seconds": 3600
+      },
+      "walk_forward_blocker": "Hourly capture arrives roughly 13-17 minutes after the :00 event-time bar; 1h max origin age is exceeded and cutoff+1h target timestamps are misaligned with :00 hourly bars under a 300-second target tolerance. Do not relax gates merely to manufacture scores; use lower-latency/finer bars or explicit target-window semantics and record realized horizon.",
+      "event_timeline": {
+        "event_count": 150,
+        "scenario_count": 117,
+        "independent_source_group_count": 50,
+        "raw_hash_present_count": 0,
+        "receipt_complete": false,
+        "all_events_model_eligible": false,
+        "registry_sha256": "841f6733dadb687f35e480ee3fba3e1e6f455a6365abbad6fbf15ec2fbc23a03"
+      },
+      "sec_capture": {
+        "status": "BLOCKED_CONFIGURATION",
+        "source_failure_count": 3,
+        "contact_identity_configured": false,
+        "submissions_source_count": 0,
+        "companyfacts_source_count": 0,
+        "primary_document_candidate_count": 0,
+        "raw_receipt_count": 0
+      },
+      "evaluation_artifact_retention": {
+        "walk_forward_json_retained": false,
+        "drift_report_json_retained": false,
+        "available_only_as_run_summary": true
+      },
+      "quote_basis": {
+        "venue": "OKX",
+        "model_eligible": true,
+        "normalized_feature_count": 4,
+        "mid_usd": 0.9308639755,
+        "spread_bps": 1.1724054520571834,
+        "max_component_age_seconds": 11.324184,
+        "snapshot_skew_seconds": 1.399,
+        "publisher_independence_group_count": 1,
+        "depth_levels_normalized": false
+      }
+    }
+  },
+  "current_merge_decision": "NO_MERGE: PR #1684 has a metadata-test regression on head 4491e56; the correction is in progress. It remains draft and lacks independent approval; branch protection is unreadable; automatic Pages publication is unauthorized. PR #1685 lacks independent approval and has outstanding runner security controls."
 }

@@ -7127,3 +7127,48 @@ Only ChatGPT-to-GitHub authentication/data flow is verified. The observed reposi
 6. Begin leakage-safe chronological walk-forward evaluation only after point-in-time data and event provenance are sufficient. Directional forecast issuance remains disabled.
 
 **Snapshot boundary:** this Run284 evidence is captured on parent code head `d055f7ce7ab68b7608fa4de80db496958856c8c6`. The commit that adds this handoff and the updated nine-platform map is documentation-only; its new head requires its own exact-head CI. No parent-head result is inherited.
+
+
+## Run284 correction — 2026-11-22 01:50 UTC — exact-head regression and artifact-level diagnosis
+
+### Exact-head CI on metadata head `4491e56202c6de77ad2d84f609befc0f10e70765`
+
+[CI run 44972927710](https://github.com/Barrot-Agent/B-Agent/actions/runs/44972927710) completed with **4,561 passed, 2 failed, 1 skipped**, 11 warnings, 32 subtests, 73.20% coverage, 197.38 seconds. Both failures were in `tests/test_xrp_nine_platform_map_latest.py`: `test_latest_map_preserves_security_gates_and_open_pr_classifications` and `test_run227_main_workflow_differential_and_publication_gate_are_preserved`.
+
+Root cause: the map update overwrote the historical `merge_decision` sentinel `POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION` with a current operational no-merge message. The tests correctly protect that historical field. Correction: restore the historical sentinel and place the current state in a separate `current_merge_decision` field. No tests were weakened or changed.
+
+The same head's preserved-artifact backfill replay passed: [artifact 14733973319](https://github.com/Barrot-Agent/B-Agent/actions/runs/44972927710/artifacts/14733973319). It again recovered 118 records across 11 source lineages, 18,113 to 18,231 records and 27 to 28 snapshots, with 30 artifact ZIP digest matches, zero mismatches, SQLite integrity `ok`, and the point-in-time visibility boundary passing. Reconciliation SHA-256: `4c8ed58d7fe4679051eae58ed08851afffa94e326016edfe15128a2f587ea6ec`.
+
+Other checks on the same head: dependency audit [44972927740](https://github.com/Barrot-Agent/B-Agent/actions/runs/44972927740) passed; money audit [44972927741](https://github.com/Barrot-Agent/B-Agent/actions/runs/44972927741) passed; conflict integrity [44972927799](https://github.com/Barrot-Agent/B-Agent/actions/runs/44972927799) passed; Pages build validation passed without deployment. The fail-closed gate [44972927817](https://github.com/Barrot-Agent/B-Agent/actions/runs/44972927817) blocked merge as expected. The correction commit that follows this snapshot requires its own exact-head CI.
+
+### Point-in-time feature-store diagnosis
+
+Downloaded and inspected the actual main-run artifacts from [ingestion 44970457568](https://github.com/Barrot-Agent/B-Agent/actions/runs/44970457568): feature-store ZIP 14733710904 (3,882,907 bytes), raw ZIP 14733581251 (463,127 bytes), event ZIP 14733660993 (154,229 bytes), receipt index 14733710887 (1,132 bytes), and research-correction audit 14733451671.
+
+The SQLite feature store contains 18,113 records across 27 snapshots. The Binance 1h close series has 999 historical bars but all 999 share one `known_at_utc`: `2026-11-21T07:13:43.810048Z`. Those event times are historical; their availability time is the single backfill capture. They cannot be treated as 999 historical forecast origins.
+
+The Coinbase 1h close series has 374 bars and 26 distinct availability timestamps. Its first batch contains 349 historical bars all captured at `2026-11-21T00:32:41.879993Z`; the remaining 25 records arrive as later hourly captures. This is genuine prospective availability history only from the capture sequence onward.
+
+The walk-forward caller uses horizon-specific embargo, 100 minimum training samples, 100 minimum out-of-sample origins, 300-second target tolerance and 3,600-second maximum origin age for the hourly horizon. Scheduled ingestion arrives roughly 13–17 minutes after the :00 hourly event-time bar. The 1h origin-age gate is therefore exceeded, and cutoff-plus-one-hour targets are misaligned with :00 bars under the 300-second tolerance. The evaluator is correctly refusing to manufacture historical origins. Do not loosen these gates just to obtain a score. Use lower-latency/finer bars or explicit target-window semantics and record the realized horizon.
+
+### Event, SEC and evaluation-artifact gaps
+
+The retained event artifact has 150 events, 117 scenarios and 50 declared independence groups. All 150 have zero raw publisher hashes; receipt completeness is false and all remain model-ineligible. The registry includes source URLs, source names, canonical publisher groups, independence groups, known/available timestamps, counter-hypotheses and falsification conditions. Its registry SHA-256 authenticates the curated registry, not publisher bytes.
+
+SEC capture remains `BLOCKED_CONFIGURATION`: three source failures; no contact identity; zero submissions sources, companyfacts sources, primary-document candidates or raw receipts.
+
+The feature-store artifact retains `feature_store.sqlite3` and `quote_basis.json`, but not `walk_forward.json` or `drift_report.json`. The ingestion code writes those reports, yet the retained artifact set does not preserve them. Add both to a durable evaluation artifact so per-horizon skip reasons, calibration and drift can be independently audited.
+
+The OKX quote-basis artifact is model-eligible only for four normalized same-venue top-of-book features: mid `$0.9308639755`, spread `1.172405452` bps, maximum component age 11.324 seconds, snapshot skew 1.399 seconds, one publisher-independence group. Depth is not USD-normalized; this is not consolidated market liquidity.
+
+### Correction and next actions
+
+- The map restores `merge_decision` to its historical sentinel and adds `current_merge_decision` for the present no-merge state.
+- Re-run exact-head full suite and preserved-artifact replay on the correction commit. Do not inherit either parent-head or failed metadata-head results.
+- Add `walk_forward.json` and `drift_report.json` to retained artifacts.
+- Address hourly data latency and target alignment without lowering leakage controls; distinguish historical event time from actual availability time.
+- Capture raw publisher bytes and SHA-256 receipts for the 150 events; preserve their declared source-independence groups and disagreement.
+- Resolve SEC contact configuration only with an approved monitored project identity; implement deterministic feature-store rebuild from raw artifacts and external immutable timestamp anchoring.
+- Keep directional forecast issuance disabled until point-in-time origins, sufficient effective OOS sample, calibration and source-independence gates pass.
+
+**No merge, main write, deployment, secret rotation, runner activation, external model dispatch, Kaggle submission, Databricks write, paper trade, transfer of funds or real-money action occurred.**
