@@ -84,3 +84,13 @@ def test_merge_gate_preserves_explicit_false_draft_state_and_fails_closed() -> N
             check=True,
         )
         assert result.stdout.strip() == expected
+
+
+
+def test_skipped_integration_push_full_suite_has_a_distinct_check_name() -> None:
+    ci_source = (REPO_ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
+    # The integration push intentionally skips the expensive full suite; its skipped
+    # check must not collide with the authoritative pull_request full-suite check.
+    assert "Full repository test suite (PR event only)" in ci_source
+    assert "name: Full repository test suite" not in ci_source
+    assert "if: github.event_name != 'push' || github.ref == 'refs/heads/main'" in ci_source
