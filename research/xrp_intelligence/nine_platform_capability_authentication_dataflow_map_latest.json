@@ -470,9 +470,9 @@
       "data_flow": {
         "status": "verified",
         "path": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
-        "last_verified_at_utc": "2026-11-22T02:50:00Z",
-        "observed_flow": "Automation run 11: inspected current main SHA and complete recursive trees; verified all main paths are present in the integration tree; inspected open PRs #1684/#1685, ancestry, changed paths, reviews, exact-head CI, dependency manifests, workflow permissions and security settings; verified full-suite CI and preserved-artifact replay on parent head 2e32d875; updated only the existing XRP integration branch. No main write, external model dispatch or data transfer.",
-        "last_verified_evidence": "Run11: main 550a647; integration parent 2e32d875; 138 ahead/0 behind; 27 changed files; full suite 4,564 passed/0 failed/1 skipped, 73.20% coverage; isolated 118-record backfill passed against main ingestion Run56; branch protection details HTTP 403; no independent reviews."
+        "last_verified_at_utc": "2026-11-22T06:57:20Z",
+        "observed_flow": "Run14: fetched current main metadata and complete recursive tree; fetched current integration branch tree; compared all four open PRs against main; inspected changed paths, same-file overlaps, reviews, exact-head CI, full-suite logs, dependency audits, workflow permissions, rulesets and branch-protection visibility; downloaded and independently inspected Run60 feature-store, raw-receipt, event and cross-analysis artifacts; verified the 90-day daily feature-store archive fallback; updated the existing canonical XRP handoff and this capability map on the existing integration branch. No main write, merge, deployment, external model dispatch or external data transfer.",
+        "last_verified_evidence": "Run14: main 550a647; integration pre-map-update head 5df09a4, 151 ahead/0 behind, 27 changed files, complete 3,127-entry tree; prior exact code head e7561d3 full suite 4,565 passed/0 failed/1 skipped and 118-record preserved-artifact replay passed; new documentation head CI remains in progress; four open PRs; branch protection details HTTP 403; no independent approvals."
       },
       "permissions": [
         "admin",
@@ -494,12 +494,13 @@
       ],
       "task_assignment": {
         "status": "EXECUTED",
-        "run_id": 269,
-        "captured_at_utc": "2026-11-21T18:05:13Z",
-        "task": "Inspect current main, complete trees, open PRs, diffs, CI, dependencies, security settings and handoff; verify main run46 raw artifacts and SQLite feature store; analyze current XRP microstructure, quote basis, historical known_at leakage, event receipt gaps and nine-platform status; update the existing XRP integration workstream without merging."
+        "run_id": 11,
+        "captured_at_utc": "2026-11-22T06:57:20Z",
+        "task": "Inspect current main and integration trees, all open PRs and overlapping diffs, exact-head CI and security settings; inspect Run60 raw, event, feature-store and cross-analysis artifacts; compute venue-specific order-book depth diagnostics; update the canonical handoff and nine-platform map on the existing XRP integration branch without merging.",
+        "expected_output": "Evidence-qualified repository state, exact-head test status, source-provenance and prediction blockers, market microstructure diagnostics, PR classifications and next actions."
       },
       "task_assignment_status": "EXECUTED_IN_RUN269",
-      "last_verified_at_utc": "2026-11-22T02:50:00Z"
+      "last_verified_at_utc": "2026-11-22T06:57:20Z"
     },
     "Claude": {
       "authentication_status": "unverified",
@@ -16996,7 +16997,7 @@
     "verified_code_parent_sha": "45c166c310c9f32de82da1997a33d9d3e248b59f",
     "current_head_ci_status": "Full suite failed three stale evidence-map assertions on 9e5be0; dependency, money, conflict, Pages validation-only and Run49 backfill replay passed. Run273 corrects evidence map; next commit requires exact-head CI."
   },
-  "last_audited_at_utc": "2026-11-22T01:14:10Z",
+  "last_audited_at_utc": "2026-11-22T06:57:20Z",
   "run271_evidence_record": {
     "captured_at_utc": "2026-11-21T20:06:14Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -19722,7 +19723,7 @@
   },
   "current_merge_decision": "NO_MERGE: PR #1684 remains draft and has no independent approval; branch-protection details are unreadable and the visible fallback ruleset is disabled. Exact-head full suite and preserved-artifact replay passed on 2e32d875. PR #1685 has no independent approval and its runner-isolation controls remain incomplete.",
   "latest_automation_run_number": 11,
-  "latest_current_state_ref": "run12_current_state",
+  "latest_current_state_ref": "run14_current_state",
   "run11_current_state": {
     "automation_run_number": 11,
     "captured_at_utc": "2026-11-22T02:50:00Z",
@@ -20466,5 +20467,263 @@
     "no_space_restart": true,
     "no_paper_trade": true,
     "no_real_money": true
+  },
+  "run14_current_state": {
+    "automation_run_number": 11,
+    "captured_at_utc": "2026-11-22T06:57:20Z",
+    "snapshot_boundary": "Repository audit was completed on pre-map-update integration head 5df09a41148500f15d52d325b2efa15032ab8956. This map-only update advances the same branch; the resulting commit requires a fresh exact-head CI run. The handoff-only predecessor results are not inherited.",
+    "repository": {
+      "name": "Barrot-Agent/B-Agent",
+      "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "main_tree_entries": 3115,
+      "main_tree_truncated": false,
+      "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+      "pre_map_update_head_sha": "5df09a41148500f15d52d325b2efa15032ab8956",
+      "integration_tree_entries": 3127,
+      "integration_tree_truncated": false,
+      "ahead_by": 151,
+      "behind_by": 0,
+      "changed_files": 27,
+      "main_paths_missing_from_integration": 0,
+      "open_pr_count": 4,
+      "main_modified": false
+    },
+    "exact_head_ci": {
+      "head_sha": "5df09a41148500f15d52d325b2efa15032ab8956",
+      "ci_run_id": 44997440254,
+      "core_tests": "success",
+      "pages_validation": "success_validation_only",
+      "full_suite": "in_progress",
+      "backfill_replay": "in_progress",
+      "dependency_audit_run_id": 44997440214,
+      "dependency_audit": "in_progress",
+      "money_audit_run_id": 44997440186,
+      "money_audit": "success",
+      "conflict_integrity_run_id": 44997440180,
+      "conflict_integrity": "success",
+      "fail_closed_run_id": 44997440194,
+      "fail_closed": "in_progress",
+      "prior_code_head": "e7561d333d4f82519234d819d0a2e5e1cc1c3444",
+      "prior_code_head_full_suite": {
+        "passed": 4565,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.2,
+        "duration_seconds": 173.28
+      },
+      "prior_code_head_backfill_replay": "success",
+      "new_head_results_inherited": false
+    },
+    "latest_main_ingestion": {
+      "run_id": 44993265727,
+      "captured_at_utc": "2026-11-22T06:20:42.012236Z",
+      "receipts": 34,
+      "retained_raw_payloads": 22,
+      "digest_only_receipts": 12,
+      "source_failures": 18,
+      "raw_only_sources": 23,
+      "feature_store_records": 18712,
+      "feature_store_snapshots": 32,
+      "source_snapshot_lineage_rows": 389,
+      "latest_snapshot_records": 106,
+      "latest_snapshot_sources": 11,
+      "receipt_chain_sequence": 32,
+      "receipt_chain_continuity": "CONTINUED",
+      "receipt_chain_verified": true,
+      "external_timestamp_anchor": "NOT_ANCHORED",
+      "cache_status": "READ_ONLY_BUDGET_EXHAUSTED",
+      "restore_source": "trusted_ingestion_workflow_run:44988443368:per_run_checkpoint",
+      "daily_archive_run_id": 44967713690,
+      "daily_archive_artifact": "xrp-public-feature-44967713690",
+      "daily_archive_retention_days": 90,
+      "raw_artifact_rebuild_implemented": false
+    },
+    "market_microstructure": {
+      "data_cutoff_utc": "2026-11-22T06:20:42.012236Z",
+      "okx_normalized_top_of_book_mid_usd": 0.915320286,
+      "okx_top_of_book_spread_bps": 1.190534,
+      "okx_snapshot_skew_seconds": 0.047,
+      "okx_max_component_age_seconds": 7.79,
+      "venue_books": [
+        {
+          "venue": "Coinbase",
+          "mid_usd": 0.9151,
+          "spread_bps": 2.186,
+          "imbalance_10bp": -0.077,
+          "imbalance_50bp": 0.133,
+          "imbalance_100bp": 0.173
+        },
+        {
+          "venue": "Kraken",
+          "mid_usd": 0.915055,
+          "spread_bps": 0.109,
+          "imbalance_10bp": -0.026,
+          "imbalance_50bp": 0.081,
+          "imbalance_100bp": 0.081
+        },
+        {
+          "venue": "Bitstamp",
+          "mid_usd": 0.914965,
+          "spread_bps": 0.109,
+          "imbalance_10bp": 0.25,
+          "imbalance_50bp": 0.195,
+          "imbalance_100bp": 0.23
+        },
+        {
+          "venue": "OKX",
+          "mid_usd": 0.91522049,
+          "spread_bps": 1.09,
+          "imbalance_10bp": -0.103,
+          "imbalance_50bp": 0.053,
+          "imbalance_100bp": 0.039
+        }
+      ],
+      "interpretation": "One-time venue-specific book snapshots only; mixed near-touch imbalance and bid-heavy wider bands. Not a consolidated book, not a sequence-continuous market, and not a directional signal. OKX depth remains native USDT while its separate top-of-book quote basis is USD-normalized."
+    },
+    "event_and_drift_quality": {
+      "events": 150,
+      "scenarios": 117,
+      "event_registry_captured_at_utc": "2026-11-19T15:16:42Z",
+      "event_raw_hashes_present": 0,
+      "event_receipt_complete": false,
+      "exact_event_url_matches_against_run60_receipts": 11,
+      "exact_url_and_capture_time_matches": 0,
+      "exact_hash_matches": 0,
+      "drift_features": 204,
+      "drift_evaluated": 0,
+      "late_reference_record_exclusions": 9695,
+      "reference_window_days": 30,
+      "current_window_days": 7,
+      "explanation": "Backfilled Binance hourly bars were first captured on 2026-11-21; point-in-time rules correctly prevent their use as earlier reference-window observations."
+    },
+    "walk_forward": {
+      "forecast_count": 0,
+      "model_eligible": false,
+      "main_daily_evaluation_pairs": 10,
+      "main_daily_pairs_blocked_by_case_sensitive_venue_filter": true,
+      "integration_branch_casefold_fix_present": true,
+      "live_integration_evaluation_verified": false,
+      "forecast_issuance": "NOT_ISSUED"
+    },
+    "open_pr_inventory": [
+      {
+        "number": 1684,
+        "classification": "blocked",
+        "workstream": "XRP integration",
+        "head_sha": "5df09a41148500f15d52d325b2efa15032ab8956",
+        "draft": true,
+        "ahead_by": 151,
+        "behind_by": 0,
+        "changed_files": 27,
+        "formal_reviews": 0,
+        "exact_head_ci": "in_progress"
+      },
+      {
+        "number": 1685,
+        "classification": "blocked",
+        "workstream": "A2A credential separation",
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "draft": false,
+        "ahead_by": 5,
+        "behind_by": 0,
+        "changed_files": 9,
+        "formal_reviews": 0,
+        "runner": "QUARANTINED",
+        "missing_controls": [
+          "OS sandbox",
+          "provider credential isolation",
+          "egress restrictions",
+          "independent approval"
+        ]
+      },
+      {
+        "number": 1686,
+        "classification": "blocked",
+        "workstream": "LunaRoute decommission",
+        "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+        "draft": true,
+        "ahead_by": 18,
+        "behind_by": 0,
+        "changed_files": 16,
+        "full_suite": {
+          "passed": 4508,
+          "failed": 11,
+          "skipped": 1
+        },
+        "failure_groups": [
+          "9 NameError os is not defined",
+          "active OpenCode prompt still contains lunaroute",
+          "authentication wording assertion fails"
+        ],
+        "local_cleanup_script_executed": false
+      },
+      {
+        "number": 1687,
+        "classification": "blocked",
+        "workstream": "model integrity diagnostics",
+        "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+        "draft": true,
+        "ahead_by": 3,
+        "behind_by": 0,
+        "changed_files": 3,
+        "full_suite": {
+          "passed": 4538,
+          "failed": 1,
+          "skipped": 1
+        },
+        "failure": "docs/MODEL_INTEGRITY_AND_WEIGHT_DIAGNOSTICS.md missing from docs index"
+      }
+    ],
+    "same_file_overlap": {
+      "prs": [
+        1685,
+        1686
+      ],
+      "path": "tests/test_mcp_server.py",
+      "hunks": "disjoint; PR #1685 changes A2A startup credential tests around lines 176–213; PR #1686 changes OpenCode registration test near line 37",
+      "duplicate_objective": false
+    },
+    "security": {
+      "main_branch_metadata_protected": true,
+      "required_status_check_contexts": [],
+      "branch_protection_endpoint": "HTTP 403",
+      "visible_fallback_ruleset": "Fall Back",
+      "fallback_ruleset_enforcement": "disabled",
+      "independent_reviews": 0,
+      "merge_decision": "DO_NOT_MERGE"
+    },
+    "platforms": {
+      "ChatGPT": "authenticated; GitHub read and existing integration-branch handoff/map writes verified; repository metadata reports admin/maintain/push/pull/triage; token scopes not introspected",
+      "Claude": "unverified",
+      "Grok": "unverified",
+      "Gemini": "unverified",
+      "Copilot": "unverified",
+      "Codex": "unverified",
+      "Hugging Face": "unverified",
+      "Kaggle": "unverified",
+      "Databricks": "unverified",
+      "external_dispatch_performed": false,
+      "external_data_transfer_performed": false,
+      "red_team_status": "NOT_EXECUTED"
+    },
+    "no_merge_performed": true,
+    "no_external_actions": true,
+    "no_deployment": true,
+    "no_secret_rotation": true,
+    "no_space_restart": true,
+    "no_kaggle_submission": true,
+    "no_databricks_write": true,
+    "no_paper_trade": true,
+    "no_real_money": true,
+    "next_actions": [
+      "Verify exact-head CI on the new handoff/map documentation commit.",
+      "Run the integration-branch evaluator against preserved Run60 feature-store data to validate venue casefolding and remaining chronological training/embargo constraints.",
+      "Capture exact publisher bytes, timestamps and SHA-256 receipts for the 150 curated events.",
+      "Accumulate a genuine 30-day point-in-time reference window before drift evaluation.",
+      "Keep the 90-day daily feature-store archive; implement and test raw-artifact reconstruction before claiming cache-independent recovery.",
+      "Resolve SEC capture configuration, derivatives contract units, Morpho collateral/oracle semantics, ETF issuer flows and exchange-wallet attribution."
+    ]
   }
 }
