@@ -68,7 +68,7 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert is_sha(integration["code_head_sha"])
     assert is_sha(integration["current_pr_head_sha"])
     assert integration["current_pr_head_sha"] == data["current_pr_head_sha"]
-    assert integration["ahead_by"] == 193
+    assert integration["ahead_by"] == 194
     assert integration["commits"] == 193
     assert integration["pr_commit_count"] == 193
     assert integration["changed_files"] == 29
@@ -148,9 +148,9 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert current_ci["inclusive_coverage_percent"] >= 0
     current_pr_ci = data["ci_evidence"]["current_pr_head_ci"]
     assert is_sha(current_pr_ci["head_sha"])
-    assert current_pr_ci["push_ci_run_id"] is None
-    assert current_pr_ci["push_ci_conclusion"] is None
-    assert current_pr_ci["push_ci_status"] == "NOT_RETRIEVED_BY_PR_FILTERED_WORKFLOW_QUERY"
+    assert current_pr_ci["push_ci_run_id"] == 45065937431
+    assert current_pr_ci["push_ci_conclusion"] == "success"
+    assert current_pr_ci["push_ci_status"] == "success"
     assert current_pr_ci["pr_event_run_id"] > 0
     assert current_pr_ci["pr_event_conclusion"] in {"success", "failure", "cancelled", None}
     assert current_pr_ci["pr_event_full_suite_status"] in {"success", "failure", "skipped", "in_progress", "queued"}
@@ -280,9 +280,9 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     assert market["data_cutoff_utc"] == ingestion["data_cutoff_utc"]
     assert market["model_eligible_for_directional_forecast"] is False
     normalized_prices = [
-        venue.get("mid_usd", venue.get("normalized_mid_usd"))
+        venue.get("mid_usd", venue.get("mid_usd_normalized", venue.get("normalized_mid_usd")))
         for venue in market["venue_books"]
-        if venue.get("mid_usd") is not None or venue.get("normalized_mid_usd") is not None
+        if venue.get("mid_usd") is not None or venue.get("mid_usd_normalized") is not None or venue.get("normalized_mid_usd") is not None
     ]
     assert market["price_cluster_usd"]["low"] == min(normalized_prices)
     assert market["price_cluster_usd"]["high"] == max(normalized_prices)
@@ -299,8 +299,8 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     quote_basis = data["prediction_engine"]["quote_basis"]
     assert quote_basis["status"] == "VERIFIED_TOP_OF_BOOK_ONLY"
     assert quote_basis["method"] == "same_venue_synchronized_top_of_book_product"
-    assert quote_basis["usdt_usd_mid"] == 0.998395
-    assert quote_basis["normalization_overstatement_if_usdt_assumed_usd_bps"] == 16.07580166166665
+    assert quote_basis["usdt_usd_mid"] == 0.998525
+    assert quote_basis["normalization_overstatement_if_usdt_assumed_usd_bps"] == 14.771788387872853
     assert quote_basis["depth_levels_normalized"] is False
     assert quote_basis["publisher_independence_group_count"] == 1
     assert "not consolidated executable liquidity" in market["interpretation"]
@@ -1252,16 +1252,16 @@ def test_run25_parent_snapshot_remains_historical():
     assert run["merge_decision"] == "DO_NOT_MERGE_PR_1684"
 
 
-def test_latest_current_state_ref_points_to_automation_run_5_and_binds_exact_head():
+def test_latest_current_state_ref_points_to_automation_run_5_and_binds_audited_code_parent():
     data = load_map()
     assert data["latest_current_state_ref"] == "automation_run_5_current_state"
     run = data["automation_run_5_current_state"]
     assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
     assert run["integration_head_sha"] == data["current_pr_head_sha"]
-    assert run["integration_head_sha"] == "781e5ff2f6e785d82740962375b23a97fbac4e56"
+    assert run["integration_head_sha"] == "6e20ef87f7c3ab850f59204c1de374448e97e1c5"
     assert run["pr_number"] == 1684
     assert run["pr_draft"] is True
-    assert run["commits_ahead"] == 193
+    assert run["commits_ahead"] == 194
     assert run["commits_behind"] == 0
     assert run["changed_files"] == 29
     assert run["main_tree_entries"] == 3115
@@ -1269,10 +1269,10 @@ def test_latest_current_state_ref_points_to_automation_run_5_and_binds_exact_hea
     assert run["main_paths_missing_from_integration"] == 0
 
     ci = run["exact_head_ci"]
-    assert ci["run_id"] == 45056180621
+    assert ci["run_id"] == 45065942935
     assert ci["head_sha"] == run["integration_head_sha"]
-    assert ci["passed"] == 4567
-    assert ci["failed"] == 4
+    assert ci["passed"] == 4568
+    assert ci["failed"] == 3
     assert ci["skipped"] == 1
     assert ci["conclusion"] == "failure"
     assert ci["coverage_percent"] == 73.21
@@ -1284,14 +1284,14 @@ def test_latest_current_state_ref_points_to_automation_run_5_and_binds_exact_hea
 
     replay = run["backfill_replay"]
     assert replay["conclusion"] == "success"
-    assert replay["source_main_run_id"] == 45053918500
+    assert replay["source_main_run_id"] == 45065117078
     assert replay["intermediate_receipt_indexes_verified"] == 43
-    assert replay["records_before"] == 20158
-    assert replay["records_after"] == 20276
+    assert replay["records_before"] == 20370
+    assert replay["records_after"] == 20488
     assert replay["recovered_records"] == 118
     assert replay["source_lineages"] == 11
-    assert replay["snapshots_before"] == 44
-    assert replay["snapshots_after"] == 45
+    assert replay["snapshots_before"] == 46
+    assert replay["snapshots_after"] == 47
     assert replay["sqlite_integrity"] == "ok"
     assert replay["visible_before_receipt"] is False
     assert replay["visible_after_receipt"] is True
@@ -1300,7 +1300,7 @@ def test_latest_current_state_ref_points_to_automation_run_5_and_binds_exact_hea
     assert replay["independent_trusted_timestamp_anchor"] is False
     assert replay["main_modified"] is False
 
-    assert run["latest_main_ingestion"]["run_id"] == 45053918500
+    assert run["latest_main_ingestion"]["run_id"] == 45065117078
     assert run["latest_main_ingestion"]["raw_payload_hashes_verified"] == 22
     assert run["latest_main_ingestion"]["event_raw_hashes"] == 0
     assert run["institutional_research"]["source_count"] == 11
@@ -1308,4 +1308,7 @@ def test_latest_current_state_ref_points_to_automation_run_5_and_binds_exact_hea
     assert run["no_merge_performed"] is True
     assert run["no_external_actions_performed"] is True
     assert run["no_forecast_issued"] is True
+    assert run["handoff_commit_parent_sha"] == run["integration_head_sha"]
+    assert run["handoff_commit_exact_head_ci_status"] == "PENDING_AFTER_HANDOFF_CORRECTION"
+    assert run["capability_cycle_review"]["head_sha"] == "b94342507a3d853b512a913aea546f9131a961df"
 
