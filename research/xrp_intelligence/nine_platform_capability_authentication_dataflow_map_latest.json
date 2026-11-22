@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-22T01:50:37Z",
+  "captured_at_utc": "2026-11-22T02:50:00Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -470,9 +470,9 @@
       "data_flow": {
         "status": "verified",
         "path": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
-        "last_verified_at_utc": "2026-11-22T01:50:37Z",
-        "observed_flow": "Run284: inspected current main SHA and complete recursive trees; verified all 3,115 main paths are present in the 3,127-entry integration tree; inspected both open PRs, ancestry, changed paths, reviews, exact-head CI, dependencies, workflow gates and security settings; committed a branch-only Git Data update to the existing XRP integration branch. No main write, external model dispatch or data transfer.",
-        "last_verified_evidence": "Run284: main 550a647; metadata head 4491e56; 132 ahead/0 behind; 27 changed files; full suite 4,561 passed/2 failed/1 skipped due historical merge_decision sentinel regression; isolated 118-record backfill passed against main ingestion 44970457568; branch protection endpoint 403; no independent reviews."
+        "last_verified_at_utc": "2026-11-22T02:50:00Z",
+        "observed_flow": "Automation run 11: inspected current main SHA and complete recursive trees; verified all main paths are present in the integration tree; inspected open PRs #1684/#1685, ancestry, changed paths, reviews, exact-head CI, dependency manifests, workflow permissions and security settings; verified full-suite CI and preserved-artifact replay on parent head 2e32d875; updated only the existing XRP integration branch. No main write, external model dispatch or data transfer.",
+        "last_verified_evidence": "Run11: main 550a647; integration parent 2e32d875; 138 ahead/0 behind; 27 changed files; full suite 4,564 passed/0 failed/1 skipped, 73.20% coverage; isolated 118-record backfill passed against main ingestion Run56; branch protection details HTTP 403; no independent reviews."
       },
       "permissions": [
         "admin",
@@ -499,7 +499,7 @@
         "task": "Inspect current main, complete trees, open PRs, diffs, CI, dependencies, security settings and handoff; verify main run46 raw artifacts and SQLite feature store; analyze current XRP microstructure, quote basis, historical known_at leakage, event receipt gaps and nine-platform status; update the existing XRP integration workstream without merging."
       },
       "task_assignment_status": "EXECUTED_IN_RUN269",
-      "last_verified_at_utc": "2026-11-22T01:14:10Z"
+      "last_verified_at_utc": "2026-11-22T02:50:00Z"
     },
     "Claude": {
       "authentication_status": "unverified",
@@ -6796,7 +6796,7 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-22T01:50:37Z",
+  "last_verified_at_utc": "2026-11-22T02:50:00Z",
   "latest_run_id": 284,
   "latest_run_captured_at_utc": "2026-11-22T01:50:37Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -19720,5 +19720,293 @@
       }
     }
   },
-  "current_merge_decision": "NO_MERGE: PR #1684 has a metadata-test regression on head 4491e56; the correction is in progress. It remains draft and lacks independent approval; branch protection is unreadable; automatic Pages publication is unauthorized. PR #1685 lacks independent approval and has outstanding runner security controls."
+  "current_merge_decision": "NO_MERGE: PR #1684 remains draft and has no independent approval; branch-protection details are unreadable and the visible fallback ruleset is disabled. Exact-head full suite and preserved-artifact replay passed on 2e32d875. PR #1685 has no independent approval and its runner-isolation controls remain incomplete.",
+  "latest_automation_run_number": 11,
+  "latest_current_state_ref": "run11_current_state",
+  "run11_current_state": {
+    "automation_run_number": 11,
+    "captured_at_utc": "2026-11-22T02:50:00Z",
+    "repository": {
+      "name": "Barrot-Agent/B-Agent",
+      "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "main_tree_entries": 3115,
+      "main_tree_truncated": false,
+      "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+      "parent_head_sha": "2e32d8756645199bfecbb790def7750e2ce6faaa",
+      "integration_tree_entries": 3127,
+      "integration_tree_truncated": false,
+      "ahead_by": 138,
+      "behind_by": 0,
+      "changed_files_before_this_snapshot": 27,
+      "main_paths_missing_from_integration": 0,
+      "main_modified": false
+    },
+    "exact_head_ci": {
+      "head_sha": "2e32d8756645199bfecbb790def7750e2ce6faaa",
+      "workflow_run_id": 44977413192,
+      "conclusion": "success",
+      "full_suite": {
+        "passed": 4564,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.2,
+        "duration_seconds": 119.3
+      },
+      "dependency_audit": {
+        "run_id": 44977413249,
+        "conclusion": "success",
+        "sources_checked": 6,
+        "known_vulnerabilities": 0
+      },
+      "money_audit": {
+        "run_id": 44977413185,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 44977413236,
+        "conclusion": "success"
+      },
+      "pages_validation": {
+        "conclusion": "success_validation_only",
+        "deployment_executed": false
+      },
+      "backfill_replay": {
+        "run_id": 44977413192,
+        "job_id": 137070292411,
+        "conclusion": "success"
+      }
+    },
+    "latest_main_ingestion": {
+      "run_id": 44975469065,
+      "run_number": 56,
+      "created_at_utc": "2026-11-22T02:18:26Z",
+      "adapter_version": "xrp-public-market-v3.32",
+      "parser_version": "xrp-public-market-v3.31",
+      "receipts": 34,
+      "retained_raw_payloads": 22,
+      "digest_only_receipts": 12,
+      "source_failures": 18,
+      "raw_only_sources": 23,
+      "feature_store_records": 18236,
+      "feature_store_snapshots": 28,
+      "latest_snapshot_eligible": 123,
+      "latest_snapshot_excluded": 367,
+      "events": 150,
+      "scenarios": 117,
+      "drift_features": 204,
+      "drift_evaluated": 0,
+      "walk_forward_forecasts": 0,
+      "forecast_status": "NOT_ISSUED",
+      "sec_raw_receipts": 0,
+      "sec_failures": 3,
+      "quote_basis": {
+        "venue": "OKX",
+        "mid_usd": 0.9276701035,
+        "spread_bps": 1.1761,
+        "snapshot_skew_seconds": 0.195,
+        "max_component_age_seconds": 9.615262,
+        "publisher_groups": 1,
+        "depth_levels_normalized": false
+      }
+    },
+    "backfill": {
+      "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
+      "recovered_records": 118,
+      "source_lineages": 11,
+      "records_before": 18236,
+      "records_after": 18354,
+      "snapshots_before": 28,
+      "snapshots_after": 29,
+      "sqlite_integrity": "ok",
+      "visible_before_receipt": false,
+      "visible_after_receipt": true,
+      "artifact_zip_digest_mismatches": 0,
+      "reconciliation_sha256": "0a8a9858ce6733d183c5031b31574c9f92850dd5a2e458176c7cc9ed5eed24a4",
+      "main_modified": false
+    },
+    "open_prs": [
+      {
+        "number": 1684,
+        "classification": "blocked",
+        "workstream": "XRP scheduled ingestion, historical feature-store recovery, event provenance and prediction readiness",
+        "head_sha": "2e32d8756645199bfecbb790def7750e2ce6faaa",
+        "draft": true,
+        "ahead_by": 138,
+        "behind_by": 0,
+        "changed_files": 27,
+        "formal_reviews": 0,
+        "requested_reviewers": 0,
+        "exact_head_full_suite": "PASS",
+        "mergeable": true
+      },
+      {
+        "number": 1685,
+        "classification": "blocked",
+        "workstream": "A2A gateway/runner credential separation",
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "draft": false,
+        "ahead_by": 5,
+        "behind_by": 0,
+        "changed_files": 9,
+        "formal_reviews": 0,
+        "exact_head_full_suite": {
+          "run_id": 44848528169,
+          "passed": 4536,
+          "failed": 0,
+          "skipped": 1,
+          "conclusion": "success"
+        },
+        "worker_tests": {
+          "run_id": 44848528089,
+          "conclusion": "success"
+        },
+        "runner": "QUARANTINED"
+      }
+    ],
+    "security": {
+      "main_branch_protected": true,
+      "protection_details_verified": false,
+      "protection_endpoint": "HTTP 403",
+      "required_status_check_contexts": [],
+      "visible_fallback_ruleset": "Fall Back",
+      "fallback_ruleset_enforcement": "disabled",
+      "codeowners": "* @Barrot-Agent",
+      "independent_reviews": 0,
+      "automatic_pages_publication_previously_observed_enabled": true,
+      "pages_authorization": "NOT_GRANTED",
+      "token_scopes_introspected": false
+    },
+    "platform_status": {
+      "ChatGPT": {
+        "authentication": "verified",
+        "data_flow": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
+        "permissions": [
+          "admin",
+          "maintain",
+          "push",
+          "pull",
+          "triage"
+        ],
+        "least_privilege": "token scopes not introspected"
+      },
+      "Claude": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Grok": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Gemini": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Copilot": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Codex": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Hugging Face": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Kaggle": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Databricks": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      }
+    },
+    "research_updates": {
+      "market_sources_model_eligible": false,
+      "derivatives_oi_disagreement": {
+        "coinglass_usd": 1780000000,
+        "liqwall_usd": 865000000,
+        "ratio": 2.06,
+        "resolution": "UNRESOLVED_DO_NOT_AVERAGE"
+      },
+      "exchange_wallet_balance": {
+        "provider_reported_xrp": 21960000000,
+        "wallets": 707,
+        "exchanges": 24,
+        "includes_cold_wallets": true,
+        "tradable_float": false,
+        "model_eligible": false
+      },
+      "evernorth": {
+        "gross_cash_at_close_usd": 272600000,
+        "investor_in_kind_xrp": 388910554,
+        "cash_used_to_buy_xrp_usd": 214050000,
+        "xrp_purchased_with_cash": 84365876,
+        "convertible_note_principal_usd": 30000000,
+        "net_note_cash_usd": 29000000,
+        "warrant_exercise_gross_usd": 35300000,
+        "eloc_share_capacity": 5218935,
+        "eloc_cash_received": "not established",
+        "ripple_company_facility_borrowed_usd": 9700000,
+        "classification": "cash, in-kind, debt, warrant proceeds and optional equity capacity kept separate"
+      },
+      "institutional_network": "SBI participates in both Ripple/RLUSD and Circle/USDC/Arc ecosystems; not an exclusive XRP rail. Coinbase distributes USDC and RLUSD and is an Arc ecosystem exchange. Ripple-BNY custody does not prove XRP purchases.",
+      "sbic": "SBIC East/Tokyo, Central/Nagoya and West/Osaka are separate Japanese entities; not SBI Holdings. SBIC East ChatGPT seminar used a Microsoft speaker; no OpenAI partnership established.",
+      "ask_coin": "Permission Coin ASK is a candidate, not confirmed as the intended ASK; official current Base/Polygon addresses conflict with an older Base launch address; no XRP relationship verified.",
+      "creator_identity": "iHeart/XRPTracer guest Dr. Kamilah Stevenson self-identifies as Camila/Camilla and verbally names YouTube as doctor Camilla Stevenson while warning of fake pages; candidate @KamilahStevensonXrpStocks remains unlinked; no channel inventory."
+    },
+    "prediction": {
+      "status": "NOT_ISSUED",
+      "walk_forward_origins": 0,
+      "drift_evaluated_features": 0,
+      "event_count": 150,
+      "event_raw_hash_present": 0,
+      "event_receipt_complete": false,
+      "external_timestamp_anchor": "NOT_ANCHORED",
+      "web_research_raw_bytes_captured": false,
+      "directional_forecast_enabled": false
+    },
+    "merge_decision": "DO_NOT_MERGE",
+    "blockers": [
+      "PR #1684 is draft",
+      "no independent approval",
+      "branch protection details HTTP 403 and required contexts not exposed",
+      "PR #1685 has no independent approval and runner isolation controls remain incomplete"
+    ],
+    "next_actions": [
+      "Verify exact-head CI on the new handoff/map commit",
+      "capture event-source bytes and SHA-256 receipts for the 150 curated events",
+      "resolve SEC contact configuration using an approved monitored project identity",
+      "reconcile CoinGlass/Liqwall OI coverage and exchange-wallet address attribution",
+      "accumulate true point-in-time origins for leakage-safe walk-forward baselines and calibration"
+    ],
+    "no_external_actions": true,
+    "no_merge_performed": true,
+    "no_deployment": true,
+    "no_secret_rotation": true,
+    "no_external_model_dispatch": true,
+    "no_kaggle_submission": true,
+    "no_databricks_write": true,
+    "no_paper_trade": true,
+    "no_real_money": true
+  }
 }

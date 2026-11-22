@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence — Canonical Durable Handoff
 
-**Updated:** 2026-11-22 02:44 UTC  
+**Updated:** 2026-11-22 02:50 UTC  
 **Mission priority:** XRP intelligence and measured prediction-engine capability. Preserve Barrot V3 as execution, orchestration, safety and verification foundation.  
 **Record policy:** This is the rolling current-state handoff, not an append-only run diary. Prior run-by-run detail remains in the previous Git revisions of this file and the linked GitHub Actions artifacts. No branch history is rewritten.
 
@@ -286,3 +286,28 @@ The combined evidence supports a **multi-rail SBI strategy**: SBI has strategic/
 - No new branch/PR was created. No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
 
 **Next concrete action:** keep the existing XRP branch; prioritize event-source capture and exact raw-receipt linkage, legitimate SEC capture configuration, and accumulation of sequential point-in-time market origins. Reconcile the CoinGlass/Liqwall OI coverage and exchange-wallet attribution before model admission. Do not loosen the 100-origin gates or issue a directional forecast.
+
+
+## Run11 follow-up — exact-head verification on 2e32d875 / 2026-11-22 02:50 UTC
+
+The prior section's pending exact-head statement is now resolved for commit `2e32d8756645199bfecbb790def7750e2ce6faaa`:
+
+- [PR CI run 44977413192](https://github.com/Barrot-Agent/B-Agent/actions/runs/44977413192): **4,564 passed, 0 failed, 1 skipped**, 11 warnings, 32 subtests, 73.20% inclusive coverage, 119.30 seconds. Exact head `2e32d875`.
+- [Dependency audit 44977413249](https://github.com/Barrot-Agent/B-Agent/actions/runs/44977413249): passed all six dependency sources; no known vulnerabilities reported.
+- [Money audit 44977413185](https://github.com/Barrot-Agent/B-Agent/actions/runs/44977413185): passed.
+- [Conflict-integrity check 44977413236](https://github.com/Barrot-Agent/B-Agent/actions/runs/44977413236): passed.
+- Pages build validation passed; deployment was not run.
+- Preserved Run56 artifact replay passed (job 137070292411): 118 records/11 lineages recovered in an isolated copy; 18,236 to 18,354 records; 28 to 29 snapshots; SQLite and point-in-time visibility passed. Main database unchanged.
+- [Fail-closed gate 44977413191](https://github.com/Barrot-Agent/B-Agent/actions/runs/44977413191) correctly returned BLOCKED: PR #1684 is draft, no independent approving review exists, and branch-protection details could not be verified. It did not approve or merge.
+
+The current exact-head state is now recorded in the latest nine-platform map at [research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_latest.json](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-post-merge-verification-20261121T0002Z/research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_latest.json). Its `run11_current_state` entry supersedes older current-state snapshots without rewriting historical run records or the historical `merge_decision` sentinel.
+
+### Creator identity red-team update
+
+The June 11, 2026 [XRPTracer/iHeart episode with Dr. Kamilah Stevenson](https://www.iheart.com/podcast/1333-the-xrptracer-podcast-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/) is a first-party guest appearance. In the transcript, the guest introduces herself as Camila/Camilla and verbally identifies her YouTube presence as “doctor Camilla Stevenson”; she also explicitly warns that fake pages exist. The candidate channel `@KamilahStevensonXrpStocks` has not been cross-linked to that stated handle through primary evidence. Similar names and video introductions are insufficient to establish channel ownership. **Keep the guest identity separate from the candidate channel; do not inventory or attribute that channel's videos.**
+
+### Current disposition
+
+PR #1684 remains draft and blocked despite the exact-head full-suite pass. PR #1685 remains a separate, non-draft A2A security workstream; its exact-head full suite and A2A Worker Tests passed on `e512f4e6`, but it has no independent approval and the runner-isolation controls remain incomplete. No PR is ready to merge.
+
+This handoff/map refresh is documentation/evidence-only. Its new commit must receive its own exact-head CI and artifact replay; results from parent `2e32d875` are not transferable to the new commit. No main write, merge, deployment, secret change, external model dispatch, Kaggle submission, Databricks write, paper trade or real-money action occurred.
