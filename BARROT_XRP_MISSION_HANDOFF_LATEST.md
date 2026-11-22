@@ -1186,3 +1186,147 @@ No PRs were created, closed, marked ready or merged by this run. No branch was c
 - The last fully verified XRP integration code/documentation head is `a06defcd027461b093cab41198a48b3813792c75`; this addendum is a documentation-only update and requires its own exact-head CI.
 - The XRP event registry remains stale and receipt-incomplete; the feature store has historical backfill continuity but not independent external WORM anchoring.
 - No directional forecast issued. No real-money or paper-trading action occurred.
+
+
+---
+
+## RUN14 ADDENDUM — 2026-11-22T06:57Z UTC
+
+### 1. Integration-first repository audit
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`.
+- Main recursive tree: 3,115 entries; `truncated=false`.
+- XRP integration branch: `integration/xrp-post-merge-verification-20261121T0002Z`.
+- Pre-addendum integration head: `e7561d333d4f82519234d819d0a2e5e1cc1c3444`.
+- Pre-addendum branch ancestry: 150 commits ahead, zero behind main.
+- Integration recursive tree: 3,127 entries; `truncated=false`; no main paths are missing.
+- PR #1684 contains 27 changed paths. It remains the only active XRP integration PR. No duplicate XRP objective was found.
+- Four PRs are open. No branch was created, no PR was created or closed, and no force-push occurred.
+
+### 2. Exact-head verification on e7561d3
+
+Authoritative CI run: https://github.com/Barrot-Agent/B-Agent/actions/runs/44995354241
+
+- Full repository suite: **4,565 passed, 1 skipped, 0 failed**; 11 warnings; 32 subtests; 73.20% coverage; 173.28 seconds.
+- Core test job: passed.
+- GitHub Pages validation-only: passed; no deployment.
+- Preserved-artifact backfill replay: passed on the same exact head.
+- Dependency audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/44995354285 — passed.
+- Money audit: https://github.com/Barrot-Agent/B-Agent/actions/runs/44995354195 — passed.
+- Conflict-integrity check: https://github.com/Barrot-Agent/B-Agent/actions/runs/44995390772 — passed.
+- Fail-closed gate: https://github.com/Barrot-Agent/B-Agent/actions/runs/44995390666 — blocked as intended; see merge disposition below.
+
+**Real-artifact replay**
+
+The PR's backfill job used current main ingestion Run60, `44993265727`, on main SHA `550a647ee7269a704d4600ff337b2145acc90473`.
+
+- Source feature store: 18,712 records / 32 snapshots.
+- Recovered: 118 records from 11 source lineages.
+- Result: 18,830 records / 33 snapshots.
+- SQLite integrity: `ok`.
+- Point-in-time visibility: the 118 recovered records were absent immediately before the post-append availability bound and visible immediately after it.
+- 26 preserved raw-artifact ZIPs were downloaded and digest-checked in the replay inventory; the replay job completed successfully.
+- Reconciliation SHA-256: `97e9f1349a0b96c60aee918797005fb96f5fb3b3408f24344b9909c4ddd68027`.
+- Artifact: https://github.com/Barrot-Agent/B-Agent/actions/runs/44995354241/artifacts/14743731823
+
+The receipt clock is a GitHub API run-date availability bound, not an independently trusted physical database commit timestamp. This validates historical feature-store lineage and point-in-time semantics, not XRP predictive performance.
+
+These checks apply to `e7561d3`. The handoff-only update appended below advances the branch again; none of these results are transferred to the resulting new head. Exact-head CI must run again.
+
+### 3. Latest main XRP ingestion — Run60
+
+Main ingestion: https://github.com/Barrot-Agent/B-Agent/actions/runs/44993265727
+
+- Cutoff: `2026-11-22T06:20:42.012236Z`.
+- Receipts: 34; retained raw payloads: 22; digest-only receipts: 12.
+- Source failures: 18; raw-only source records: 23.
+- Feature store: 18,712 records, 32 snapshots and 389 source-snapshot lineage rows.
+- Latest snapshot delta: 106 records from 11 sources.
+- Receipt chain: sequence 32, continuity `CONTINUED`, local verification `PASS`.
+- External receipt anchor: `NOT_ANCHORED`; GitHub artifact retention is not WORM storage or an independent timestamp authority.
+
+The feature-store cache write budget is exhausted/read-only. Run60 restored its database from successful main checkpoint Run `44988443368`; it did not bootstrap. The scheduled daily backup path was also independently verified: Run `44967713690` uploaded `xrp-public-feature-44967713690` with 90-day retention. Run60's hourly checkpoint is seven-day retention. The workflow's fallback order remains exact cache key, latest per-run checkpoint, then daily archive. Automatic rebuild from raw artifacts remains `false`; if all checkpoints and the daily archive disappear, raw-only reconstruction is not yet available.
+
+### 4. Event provenance — 150 curated events remain unreceipted
+
+Run60 loaded registry version `run222`, captured at `2026-11-19T15:16:42Z`, approximately 63 hours and 4 minutes before the Run60 cutoff.
+
+- Events: 150; scenarios: 117; excluded events: 0.
+- Event raw-source SHA-256 values: 0 of 150.
+- `receipt_complete=false`; `model_eligible=false`; `forecast_status=NOT_ISSUED`.
+- Event artifact SHA-256: `dc301e82083146244baf44ba7b4c0bd12ed6e77c2da30d7f2afda6e827af4d18`.
+- Curated registry SHA-256: `841f6733dadb687f35e480ee3fba3e1e6f455a6365abbad6fbf15ec2fbc23a03`.
+
+An independent audit compared all 150 event source URLs with Run60's 34 canonical raw receipts. Eleven URLs matched, but zero matched the event's capture timestamp and zero matched an event raw hash. URL-only equality is not a receipt. The branch's new event-to-receipt linker requires exact URL, capture timestamp and SHA-256 equality; it cannot manufacture the missing publisher capture.
+
+Next action is to capture the actual event publisher pages/documents lawfully, retain their exact bytes where terms allow, and link each event to its own receipt. Do not refresh the registry timestamp to disguise stale source capture.
+
+### 5. Feature-store, drift and walk-forward diagnosis
+
+Run60's SQLite database was independently inspected read-only:
+
+- 18,712 feature records, 32 snapshots, 389 source-snapshot lineage rows.
+- 204 candidate drift features; zero evaluated; drift status `INSUFFICIENT_DATA`.
+- All 204 feature comparisons lack a valid 30-day point-in-time reference sample. The report excluded 9,695 late-reference records.
+- The 999 Binance hourly candles spanning October 10–November 21 were first captured at approximately `2026-11-21T07:13:43Z`. They are now available to Barrot, but cannot be backdated into the earlier reference window. This is correct leakage prevention, not a missing historical price-bar count. A full reference window must accumulate from actual capture times.
+
+The daily main artifact from Run `44967713690` contains ten walk-forward venue/horizon evaluations and zero forecasts. Each was blocked because no records remained after venue filtering. Root cause: main's evaluator compared provider labels case-sensitively (`Binance` versus configured `binance`, and `Coinbase` versus `coinbase`). PR #1684 normalizes venue labels with case-folding. That is a code-level correction, not yet a live-evaluation verification: no XRP ingestion run has executed from the integration branch at this head. The next validation must replay the real feature-store artifact through the branch evaluator and confirm the remaining chronological training/embargo/target requirements. Forecast issuance remains disabled.
+
+### 6. Run60 market microstructure — research-only one-time snapshot
+
+At approximately 06:20:34–06:20:35 UTC:
+
+- OKX synchronized XRP-USDT / USDT-USD top-of-book quote basis: normalized USD mid **$0.915320286**, spread **1.1905 bps**, maximum component age 7.79 seconds, snapshot skew 0.047 seconds.
+- The two OKX components share one publisher group; this is not independent cross-venue corroboration.
+- Separate raw order-book snapshots produced venue mids: Coinbase $0.915100 (2.186 bps spread), Kraken $0.915055 (0.109 bps), Bitstamp $0.914965 (0.109 bps), and OKX $0.915220 (1.09 bps). Their mids were within approximately 2.8 bps of one another at capture.
+- Derived bid-minus-ask notional imbalance within 10 / 50 / 100 bps: Coinbase **-7.7% / +13.3% / +17.3%**; Kraken **-2.6% / +8.1% / +8.1%**; Bitstamp **+25.0% / +19.5% / +23.0%**; OKX **-10.3% / +5.3% / +3.9%**.
+
+Interpretation: near-touch depth was mixed/ask-heavy on Coinbase, Kraken and OKX but bid-heavy on Bitstamp; the wider sampled bands were bid-heavy on all four. These are venue-specific, one-time raw-book calculations, not a consolidated order book or a stable directional signal. Book sizes/level limits differ; Kraken and other books may be truncated at the requested depth; sequence continuity is not maintained. OKX depth is not USD-normalized by the top-of-book conversion, so its depth calculation remains in native USDT quote terms before comparison.
+
+### 7. Provider and institutional-data exclusions
+
+Run60 retained the following sources as raw-only or digest-only rather than promoting them to model features:
+
+- Binance: eight spot/derivatives endpoints returned HTTP 451.
+- Bybit: five endpoints returned HTTP 403.
+- Deribit XRP-USDC perpetual ticker and L2: raw-only pending contract amount, open-interest, funding, depth and sequence semantics.
+- ETF holdings/flow aggregator and exchange-wallet balances: not admitted without primary issuer reconciliation, same-wallet coverage and lawful row-level access.
+- Morpho cbXRP market parameters, state, liquidity and oracle: raw-only pending token decimals, market lineage, block-time and quote-scale normalization.
+- SEC capture: three monitored submissions endpoints failed; zero raw SEC receipts and zero filing events in this run.
+- Grayscale issuer page: HTTP 429; Franklin XRPZ parser failed.
+
+The daily Cross Analysis run `44995594645` completed, but its 990-entity sentiment profiles aggregate historical labels, not current-window sentiment; `forecast_eligible=false`. No sentiment score was admitted as a current model feature.
+
+### 8. Open PR inventory and overlap audit
+
+| PR | Classification | Current state |
+|---|---|---|
+| #1684 XRP integration | Active integration workstream; blocked | Draft; pre-update head `e7561d3`; 150 ahead / 0 behind; 27 files. Exact-head full suite, dependency audit, Money audit, conflict integrity, Pages validation and preserved-artifact replay passed on that head. No independent review. |
+| #1685 A2A credential separation | Unique security work; blocked | Non-draft; 5 ahead / 0 behind; 9 files; no review. CI run `44848528169` passed, but the runner still lacks OS sandboxing, provider-credential isolation and egress controls and must remain quarantined. Its latest gate run `44955747971` falsely reported draft because main's `jq -r '.draft // true'` treats explicit JSON false as absent. PR #1684 contains the correction; it is not yet on main or #1685. |
+| #1686 LunaRoute decommission | Unique maintenance work; blocked | Draft; 18 ahead / 0 behind; 16 files. Full suite `44988220240`: 4,508 passed, 11 failed, 11 warnings, 21 subtests. Failures include nine `NameError: os is not defined` errors in `barrot_agent/refinement/pipeline.py`, an active OpenCode prompt/config test that still finds the string `lunaroute`, and a stale prompt assertion. Its local cleanup script, which deletes a local key and edits shell startup files, was not executed. |
+| #1687 read-only model integrity diagnostics | Unique model-integrity work; blocked | Draft; 3 ahead / 0 behind; 3 files. Full suite `44994494208`: 4,538 passed, 1 failed, 1 skipped, 11 warnings, 32 subtests. Failure: new `docs/MODEL_INTEGRITY_AND_WEIGHT_DIAGNOSTICS.md` is missing from the docs index. No independent review. |
+
+Path-overlap audit: #1684 has no changed-path overlap with #1685, #1686 or #1687. #1685 and #1686 both modify `tests/test_mcp_server.py`, but their current hunks are disjoint: #1685 changes A2A startup credential tests around lines 176–213; #1686 changes the OpenCode registration test near line 37. This is a real same-file integration dependency, not a duplicate objective. Preserve both unique workstreams and reconcile the combined file before any future merge.
+
+### 9. Merge and security disposition
+
+- PR #1684 remains draft; review list is empty. Fail-closed gate run `44995390666` blocked on draft state, no independent approving review and inability to verify branch protection.
+- PR #1685 has no independent review; OS sandbox, provider-credential isolation and egress controls are not implemented. Its old gate has the `jq // true` draft-state bug.
+- PR #1686 and #1687 fail exact-head full-suite checks as listed above.
+- Main branch metadata reports `protected=true` but empty required-status-check contexts. The dedicated branch-protection endpoint returns HTTP 403. The only visible repository ruleset, `Fall Back`, is disabled. These observations do not establish the complete branch-protection or approval policy; do not infer or bypass it.
+
+No PR was ready to merge. No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+### 10. Nine-platform coordination and next concrete actions
+
+Only ChatGPT-to-GitHub authentication and repository data flow are verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified; no external model dispatch occurred.
+
+1. Re-run exact-head full-suite, dependency/security, fail-closed and preserved-artifact replay after this handoff-only commit; do not inherit the e7561d3 results.
+2. Execute the integration-branch walk-forward evaluator against the preserved Run60 feature-store artifact; verify that venue normalization removes the case-only block and report the actual remaining training, embargo and target blockers.
+3. Keep collecting hourly point-in-time records until drift has a genuine reference window; do not backdate historical backfills.
+4. Capture publisher-level bytes/receipts for the 150-event registry, then verify exact URL/time/hash linkage.
+5. Keep the 90-day daily feature-store archive as the current continuity fallback; design and test deterministic raw-artifact reconstruction before claiming cache-independent recovery.
+6. Resolve SEC capture contact configuration, Deribit contract units, Morpho cbXRP decimals/oracle semantics, ETF issuer-level flow reconciliation and exchange-wallet attribution before model admission.
+7. Keep the single XRP integration PR as the only XRP integration workstream. Do not create another XRP PR.
+
+No directional XRP forecast was issued. No probabilities or performance claims were fabricated. Barrot V3 remains the execution, orchestration, safety and verification foundation.
