@@ -542,7 +542,7 @@ def evaluate_chronological_walk_forward(
         # The shorter/variable lead from the actual availability cutoff is recorded separately.
         target_time = current_event + timedelta(seconds=horizon_seconds)
         target = _nearest_record(
-            [item for item in evaluation_series if _utc(item["event_time_utc"], "event_time_utc") > cutoff],
+            [item for item in evaluation_series if _bar_event_time(item) > cutoff],
             target_time,
             target_tolerance_seconds,
         )
