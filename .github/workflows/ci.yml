@@ -120,7 +120,7 @@ jobs:
           test ! -e ./_site/GLOBAL_STATE_MANIFEST.md
 
   full-suite:
-    name: Full repository test suite
+    name: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/') && 'Full repository test suite (PR event only)' || 'Full repository test suite' }}
     # The PR event is the authoritative full-suite gate for integration branches.
     # Main pushes and manual dispatches still run the full suite; integration pushes
     # keep core tests and validation without launching a duplicate full-suite job.
