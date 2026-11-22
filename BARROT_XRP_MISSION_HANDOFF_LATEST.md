@@ -7172,3 +7172,93 @@ The OKX quote-basis artifact is model-eligible only for four normalized same-ven
 - Keep directional forecast issuance disabled until point-in-time origins, sufficient effective OOS sample, calibration and source-independence gates pass.
 
 **No merge, main write, deployment, secret rotation, runner activation, external model dispatch, Kaggle submission, Databricks write, paper trade, transfer of funds or real-money action occurred.**
+
+
+## Run285 — 2026-11-22 02:06 UTC — exact-head CI, Run52 replay, primary-identity refresh
+
+### Repository and integration state
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; recursive main tree has 3,115 entries and is not truncated.
+- Existing XRP integration branch `integration/xrp-post-merge-verification-20261121T0002Z` is at `10f039068e06e25c8f465cd035f04e9e3f02285c`: 133 commits ahead, zero behind; 27 changed files, 25,299 additions and 1,071 deletions. Its recursive tree has 3,127 entries, is not truncated, contains every main path, and has 12 integration-only paths.
+- No branch or PR was created. Open PR inventory remains #1684 (XRP integration) and #1685 (A2A credential security); their changed paths do not overlap.
+- PR #1684 remains draft, mergeable=true but mergeable_state=unstable, with zero independent reviews. PR #1685 is non-draft but also has zero independent reviews. Neither is ready to merge.
+
+### Exact-head verification — `10f039068e06e25c8f465cd035f04e9e3f02285c`
+
+- Full repository suite [44973528255](https://github.com/Barrot-Agent/B-Agent/actions/runs/44973528255): **4,563 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests, 73.20% inclusive coverage, 148.44 seconds. The full-suite job and XRP preserved-artifact replay both ran on this exact head.
+- Dependency audit [44973528223](https://github.com/Barrot-Agent/B-Agent/actions/runs/44973528223): passed.
+- Money audit [44973528229](https://github.com/Barrot-Agent/B-Agent/actions/runs/44973528229): passed.
+- Conflict integrity [44973528306](https://github.com/Barrot-Agent/B-Agent/actions/runs/44973528306): passed.
+- Pages build [44973528255](https://github.com/Barrot-Agent/B-Agent/actions/runs/44973528255): validation-only success; no Pages deployment occurred.
+- Fail-closed gate [44973528240](https://github.com/Barrot-Agent/B-Agent/actions/runs/44973528240): **blocked by design**. Its log confirms three blockers: PR #1684 is draft, no independent approving review exists, and the branch-protection endpoint is inaccessible to the workflow token (HTTP 403). The workflow is read-only and did not merge.
+
+### Historical backfill — executed and verified in isolated CI
+
+[Run artifact 14734098606](https://github.com/Barrot-Agent/B-Agent/actions/runs/44973528255/artifacts/14734098606) used main ingestion run [44970457568](https://github.com/Barrot-Agent/B-Agent/actions/runs/44970457568). The branch's actual backfill module recovered 118 records across 11 source lineages: 18,113 to 18,231 records and 27 to 28 snapshots. **31 downloaded artifact ZIP digests matched GitHub's recorded digests; zero mismatches.** The source run's 34 receipts (22 retained payloads, 12 digest-only) and current receipt index were reconciled; SQLite integrity passed; the one-microsecond point-in-time visibility boundary passed.
+
+Reconciliation SHA-256: `c172130198549293ac39b4886f9026599e992587a38724d1d9476d3217a3313b`.
+
+This recovery is isolated CI evidence. It did not modify main's database. Its receipt timestamp is a post-append availability bound, not a physical SQLite commit timestamp or independent trusted timestamp.
+
+### Latest main ingestion and prediction readiness
+
+Latest visible successful main ingestion at audit time: [44970457568](https://github.com/Barrot-Agent/B-Agent/actions/runs/44970457568), created 2026-11-22 01:13:48 UTC. Latest visible Cross Analysis: [44973386575](https://github.com/Barrot-Agent/B-Agent/actions/runs/44973386575), created 01:51:24 UTC. No newer main ingestion run was visible by 02:06 UTC; the expected 02:03 UTC hourly schedule run had not yet appeared in the run inventory.
+
+Run449704 metrics:
+- 34 raw-source receipts: 22 retained payloads, 12 digest-only.
+- 18 source failures; 23 raw-only sources.
+- 18,113 feature records in 27 snapshots; latest snapshot: 106 eligible and 384 excluded features.
+- 150 event records and 117 scenarios.
+- SEC capture: 3 failures, zero raw SEC receipts, zero filing events.
+- Drift report was generated with SHA-256 `57e7e2b1c5aad1007a35011edec5d80492901deeddaed05d361832e30463cd91`; the raw artifact retains it.
+- Walk-forward forecast count remains zero; status `PARTIAL_OR_BLOCKED`.
+- OKX same-venue USD-normalized top-of-book mid was `$0.9308639755` at 2026-11-22 01:14:05.070 UTC, with 1.1724 bps spread, 11.324-second maximum component age and 1.399-second component skew. Four top-of-book features only; one OKX publisher-independence group; not consolidated depth or independent venue confirmation.
+- Feature-store cache save hit the configured GitHub cache read-only budget and failed non-fatally. The per-run artifact was successfully published. The cache is derived/evictable; automatic rebuild from raw receipts remains unimplemented.
+
+### Walk-forward blocker — preserve leakage controls
+
+The active 1h evaluator requires 100 training samples and 100 out-of-sample origins, uses a 300-second target tolerance and a 3,600-second maximum origin age. Historical event time is not historical availability:
+- Binance's 999 hourly bars share one `known_at_utc` from a single historical backfill capture; they do not represent 999 historical forecast origins.
+- Coinbase has 374 hourly bars, but the first 349 share one capture/availability timestamp; only 25 later records arrived as sequential hourly captures.
+- The cutoff-plus-one-hour target is misaligned with the next completed hourly close under the current 300-second tolerance when collection occurs after the bar boundary.
+
+Do not loosen the availability, embargo, minimum-sample or target-tolerance gates to force forecasts. Next engineering step: define an explicit next-completed-bar target window (recording the realized horizon) or collect finer, lower-latency bars, then accumulate at least 100 genuine point-in-time out-of-sample origins. Preserve `walk_forward.json` and `drift_report.json` in a durable per-run evaluation artifact; the hourly checkpoint artifact currently contains only the SQLite store and quote basis, while the daily archive step is the only configured 90-day archive for the walk-forward report.
+
+### New primary-source identity and institutional-network refresh
+
+- **SBIC identity resolved from the companies' own profiles:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. explicitly identifies itself as “SBIC East Japan”; Nagoya Small and Medium Business Investment & Consultation Co., Ltd. identifies as “SBIC Central Japan”; Osaka Small and Medium Business Investment & Consultation Co., Ltd. identifies as “SBIC West Japan.” They are three distinct companies established in 1963 under Japan's Small and Medium Business Investment & Consultation Co. Act, not divisions or subsidiaries of SBI Holdings. Tokyo's official profile lists 18 prefectures and shareholders including local governments, chambers of commerce, financial institutions and operating companies. Primary pages: https://www.sbic.co.jp/company/profile/ ; https://www.sbic-cj.co.jp/company/about/ ; https://www.sbic-wj.co.jp/profiles/profile/ ; https://www.sbic.co.jp/about/.
+- **SBI VC Trade / Ripple:** SBI Holdings' official June 24, 2026 release says SBI VC Trade began RLUSD handling as a Japanese “Type IV electronic payment instrument” under its Japanese-law classification; the issuer is Standard Custody & Trust Company, a Ripple subsidiary. SBI VC Trade had already handled USDC since March 2025. This is a direct distribution relationship between Ripple's RLUSD issuer and SBI VC Trade; it is not evidence that all SBI payment flows use XRP. Primary source: https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html.
+- **Coinbase / Ripple:** Ripple's October 28, 2026 announcement says RLUSD became available on Coinbase Prime, Coinbase Exchange and Coinbase Retail, on XRPL, Base and Ethereum. It says Coinbase Global Exchange collateral availability would follow; do not record it as live collateral at launch. Primary source: https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/.
+- **BNY / Ripple:** BNY's October 27, 2026 release says it already served as primary reserve custodian for RLUSD and had a custody relationship with Ripple Prime; the expanded service supports XRP and RLUSD on BNY's Digital Asset Custody platform. Tokenized trade finance is described as an exploration, not completed production volume. Primary source: https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html.
+- Counter-hypothesis retained: regulated stablecoin distribution and institutional custody can grow without proportional XRP-token demand. RLUSD is multi-chain; Coinbase's RLUSD collateral phase was future at launch; BNY's trade-finance work is exploratory. Do not convert partnership announcements into XRP settlement volume or market-buy features.
+
+### Dynamic market disagreement — research only, not model eligible
+
+Web pages observed on 2026-11-22, without retained publisher bytes or raw-source hashes:
+- CoinGlass XRP spot page displayed about $0.9302, 24h spot volume $688.75M, futures volume $2.75B, OI $1.78B, funding 0.0054%, liquidations $17.26M (80% longs), and November 20 ETF net outflow $5.0M: https://www.coinglass.com/currencies/XRP/spot.
+- Liqwall reported all-exchange OI $865M at 00:32 UTC, down 2.9% over 24h; its 30-day range was $863M–$1.49B: https://liqwall.com/open-interest/xrp. This materially disagrees with CoinGlass's $1.78B. Preserve as a coverage/contract/quote-unit disagreement; do not average or treat as independent confirmation until exchange-level contracts and multipliers are reconciled.
+- CryptoKeyhole reported a partial November 20 outflow of 2,659,361 XRP (about $2.4M) from 2 of 3 daily-reporting funds, still awaiting Franklin: https://cryptokeyhole.com/etf-flows/xrp/.
+- Alpha Finance, ByKaranteli and CoinGlass displayed about $5.0M outflow for November 20 across broader five-fund coverage: https://alphafinance.io/etf/xrp/ ; https://bykaranteli.com/etf/xrp. These dashboards may share issuer files and are not automatically independent sources. Preserve partial-versus-complete fund coverage; no issuer raw files were captured in this run.
+- These dynamic dashboard observations are research-only and model-ineligible. They do not establish a directional signal.
+
+### Exact-phrase and creator-identity status
+
+- “ASK Coin”: Permission Coin (ticker ASK) remains the best-supported candidate, but the phrase is ambiguous and no XRP relationship is verified. CoinGecko and DeFiLlama show differing shortened contract representations; retain the contract discrepancy and do not attach it to XRP. https://www.coingecko.com/en/coins/permission-coin ; https://defillama.com/token/ASK.
+- “actual capital”: retain transaction-level separation of cash received, cash-funded XRP purchase, in-kind XRP, debt, exercised warrants and undrawn facilities. A registration statement, authorization or facility capacity is not cash received.
+- “SBIC, ChatGPT SBIC”: the Tokyo SBIC/VOST training evidence does not establish an OpenAI partnership.
+- Camilla/Kamilah Stevenson: public search exposes multiple same-name YouTube channels and third-party channel aggregators, but no first-party identity-to-channel ownership evidence was verified in this run. Do not attribute videos to the person or merge namesakes; creator inventory remains blocked.
+
+### Nine-platform map, security and side-effect review
+
+- Only ChatGPT-to-GitHub authentication/data flow is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified; no external model dispatch or data transfer occurred.
+- Main is marked protected. The branch endpoint reports required status contexts empty and enforcement level `non_admins`; the detailed branch-protection endpoint returns HTTP 403. The only visible repository ruleset (“Fall Back”) is disabled. CODEOWNERS is `* @Barrot-Agent`, not an independent reviewer.
+- Main workflows reviewed: Space restart, A2A Worker deploy/secret upload, and Kaggle submissions are `workflow_dispatch` only and require explicit YES plus exact-main-SHA/allowlist inputs. Databricks deploy/token-rotation and self-deployment workflows are disabled/quarantined. Release workflow triggers only on `v*.*.*` tags. CI Pages workflow is validation-only. GitHub Pages repository settings could not be read; do not assume an automatic Pages side effect is absent.
+- No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, transfer of funds or real-money action occurred.
+
+### Backlog classification and next concrete actions
+
+- **#1684 XRP integration — blocked:** draft; no independent approval; branch protection unverifiable; exact-head CI/backfill pass but gate correctly blocks. Continue the existing branch only.
+- **#1685 A2A credential separation — blocked:** no independent approval; OS sandbox, provider-credential isolation, egress controls and task-level authorization remain outstanding; runner remains quarantined.
+- No new PRs, branches or merges. Last mainline integration merge remains PR #1673 (main commit `550a647`).
+- Next: (1) inspect the delayed 02:03 UTC main ingestion when it appears; (2) preserve hourly walk-forward and drift reports with the same raw receipt chain; (3) correct target-window semantics or add lower-latency bars without relaxing point-in-time gates; (4) capture exact publisher bytes and SHA-256 receipts for event registry entries; (5) configure SEC capture only with an approved monitored identity; (6) start candidate evaluation only after 100 genuine chronological origins, independent source clusters, baselines and calibration evidence exist.
+- Directional XRP forecast: **NOT ISSUED**. No forecast outcome exists to score.
