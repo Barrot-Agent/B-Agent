@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence — Canonical Durable Handoff
 
-**Updated:** 2026-11-22 02:50 UTC  
+**Updated:** 2026-11-22 03:06 UTC  
 **Mission priority:** XRP intelligence and measured prediction-engine capability. Preserve Barrot V3 as execution, orchestration, safety and verification foundation.  
 **Record policy:** This is the rolling current-state handoff, not an append-only run diary. Prior run-by-run detail remains in the previous Git revisions of this file and the linked GitHub Actions artifacts. No branch history is rewritten.
 
@@ -311,3 +311,71 @@ The June 11, 2026 [XRPTracer/iHeart episode with Dr. Kamilah Stevenson](https://
 PR #1684 remains draft and blocked despite the exact-head full-suite pass. PR #1685 remains a separate, non-draft A2A security workstream; its exact-head full suite and A2A Worker Tests passed on `e512f4e6`, but it has no independent approval and the runner-isolation controls remain incomplete. No PR is ready to merge.
 
 This handoff/map refresh is documentation/evidence-only. Its new commit must receive its own exact-head CI and artifact replay; results from parent `2e32d875` are not transferable to the new commit. No main write, merge, deployment, secret change, external model dispatch, Kaggle submission, Databricks write, paper trade or real-money action occurred.
+
+
+## Run11 continuation — 2026-11-22 03:06 UTC
+
+This current-state section supersedes earlier repository, exact-head, ingestion-cache and merge-gate snapshots in this handoff. It does not rewrite prior run history.
+
+### Repository recheck
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`.
+- Main recursive tree: **3,115 entries**, not truncated. Integration tree at `c61c43c95c768dd60632a0e5cd201902f2a973d4`: **3,127 entries**, not truncated; zero main paths are missing.
+- Existing XRP branch: **139 commits ahead, zero behind**, 27 changed files. PR #1684 is the sole XRP integration PR. No new branch or PR was created.
+- Open PR inventory remains exactly #1684 and #1685. Their changed-path sets do not overlap.
+- Main is unchanged. The existing V3 architecture and branch history are preserved.
+
+### Exact-head verification — c61c43c95c768dd60632a0e5cd201902f2a973d4
+
+- [PR CI 44977982045](https://github.com/Barrot-Agent/B-Agent/actions/runs/44977982045): **4,564 passed, 0 failed, 1 skipped**, 11 warnings, 32 subtests, 73.20% coverage, 119.28 seconds. Full-suite job completed successfully on this exact head.
+- The exact-head historical replay job **137072032833** passed using preserved Run56 artifacts: 118 records across 11 source lineages; 18,236 to 18,354 records; 28 to 29 snapshots; SQLite integrity and the point-in-time visibility boundary passed. Artifact ZIP digests matched GitHub's recorded digests. Reconciliation SHA-256: `95de7453fea5d55bd54564210738beedc7729171203ab82f778cc93c7b4f0eb4`. The main feature store was not modified.
+- [Dependency audit 44977982030](https://github.com/Barrot-Agent/B-Agent/actions/runs/44977982030): all six sources passed (runtime, development, integrations, Hugging Face Space, legacy and PEP 621); no known vulnerabilities found.
+- [Money audit 44977982061](https://github.com/Barrot-Agent/B-Agent/actions/runs/44977982061): passed.
+- [Conflict integrity 44977982078](https://github.com/Barrot-Agent/B-Agent/actions/runs/44977982078): passed.
+- [Pages validation](https://github.com/Barrot-Agent/B-Agent/actions/runs/44977982045): passed in validation-only mode; no deployment.
+- [Fail-closed gate 44978466149](https://github.com/Barrot-Agent/B-Agent/actions/runs/44978466149): failed as designed. PR #1684 is draft and the branch-protection endpoint returned HTTP 403. No merge was attempted. GitHub's PR review endpoint returned no formal review records at inspection.
+
+These results apply to `c61c43c`, not to any subsequent documentation commit created by this handoff refresh. The new handoff commit must receive its own exact-head checks.
+
+### Latest verified main ingestion — Run56
+
+[Scheduled ingestion run 44975469065](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975469065) completed successfully at 2026-11-22 02:18:26 UTC on main. The workflow's hourly cron is minute 03; the 03:03 UTC scheduled run was not yet visible in the workflow inventory at this 03:06 UTC inspection.
+
+- 34 source receipts: 22 retained raw payloads and 12 digest-only receipts.
+- 18 source failures; 23 raw-only sources.
+- Feature-store history: 18,236 records, 28 snapshots; 490 delta records. Latest snapshot: `6f96f891d0d295045ec27063d65457003d3b56b92ebedafe4939d4925c4e0455`, status verified, 123 eligible records and 367 excluded.
+- Event timeline: 150 events and 117 scenarios, but `event_timeline_receipt_complete=false`; no event-to-raw-source hash linkage is verified. External receipt anchoring remains `NOT_ANCHORED`.
+- Drift: 204 candidate features, zero evaluated; status `INSUFFICIENT_DATA`.
+- Walk-forward forecast count: zero. Forecast status: `NOT_ISSUED`. No directional forecast was issued.
+- SEC capture: zero raw receipts, three source failures; no filing events were promoted.
+- OKX USD-normalized top-of-book snapshot at 02:18:51.066 UTC: mid **$0.9276701035**, spread **1.1761 bps**, component skew **0.195 s**, maximum component age **9.615 s**. One publisher group; depth levels were not normalized. This is a timestamped historical snapshot, not a live quote or consolidated depth.
+- The run summary reports `raw_only_source_count=23` while its inline `raw_only_source_ids` array is empty. Inspect the separately retained raw-only artifact before treating source identities as resolved.
+- The feature-store restore used trusted prior per-run checkpoint `44970457568`. The new per-run checkpoint artifact was uploaded with seven-day retention; the daily/manual archive path is configured for 90 days.
+
+**New storage blocker:** the GitHub Actions cache-save step reported that the configured cache budget was exhausted and the cache had become read-only. The step is `continue-on-error`, so Run56 still completed and its per-run feature-store artifact was uploaded (artifact ZIP SHA-256 `013add7ebd73132e6b21aa9802b84df7049be1a04d6abe91ade27e16c18aee87`). No cache deletion, retention increase, billing change or other storage mutation was attempted. The fallback checkpoint path currently prevents immediate data loss, but raw-artifact-to-feature-store rebuild remains unimplemented and the seven-day per-run retention is a continuity risk if cache writes remain unavailable.
+
+Artifact receipts:
+- Raw-source bundle: [artifact 14735970629](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975469065/artifacts/14735970629), SHA-256 `3e0d078ea7cc32524bab55f40ae1af40b314b3d2774dca6b9f7da0a041d5a738`.
+- Cross-run receipt index: [artifact 14736100197](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975469065/artifacts/14736100197), SHA-256 `6a9d1a6b2ba0cf67ed9e0cc44f08820baf9ca4b9a9e7a1357b63c35c47a43066`.
+- Event bundle: [artifact 14735357388](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975469065/artifacts/14735357388), SHA-256 `5a9944c4978ff9b15cc5db6d577b212a9d65e87561e8ee2a63313e2232b1579c`.
+- Feature-store checkpoint: [artifact 14735163274](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975469065/artifacts/14735163274), SHA-256 `013add7ebd73132e6b21aa9802b84df7049be1a04d6abe91ade27e16c18aee87`.
+
+### Merge-gate defect and PR backlog
+
+- **PR #1684 — XRP integration: BLOCKED.** Draft; 139 ahead/0 behind; 27 changed files; zero formal review records; exact-head full suite, dependency audit, Money audit, conflict integrity and preserved-artifact replay passed on `c61c43c`. It remains unmergeable under the user's stated governance because it is draft, independent approval is absent, and effective branch-protection settings cannot be verified.
+- **PR #1685 — A2A credential separation: BLOCKED.** Non-draft according to the current PR API; head `e512f4e6d66c1575186d00b60852c93caba687e0`; five commits ahead/zero behind; nine changed files; no overlap with #1684; zero formal review records. Its prior exact-head full suite and worker tests passed, but the runner remains quarantined pending independent security review, OS sandboxing, provider-credential isolation, egress controls and task-level action restrictions.
+- **Confirmed fail-closed false-positive on #1685:** current GitHub PR metadata says `draft=false`, but its latest gate rerun [44955747971, attempt 5](https://github.com/Barrot-Agent/B-Agent/actions/runs/44955747971) reports “PR is still draft.” The main-branch `.github/workflows/barrot-gated-merge.yml` still uses `jq -r '.draft // true'`; jq's `//` operator treats explicit Boolean `false` as absent and substitutes `true`. The existing #1684 integration branch contains the explicit-presence fix (`if has("draft") then (.draft|tostring) else "unknown" end`) and regression tests. This is a confirmed false positive in main's current gate implementation, not evidence that #1685 is actually draft. The gate also independently reports **no independent approving review** and **branch protection could not be verified**; those remain genuine blockers. Do not alter #1685 or create a duplicate PR to carry this fix.
+- Main branch protection is marked protected, but the protection endpoint returns HTTP 403. The visible fallback ruleset remains disabled. Main CODEOWNERS is `* @Barrot-Agent`, not independent review. Do not infer required checks or bypass protection.
+- No PR is ready to merge. No source PR is superseded or duplicate; neither should be closed.
+
+### Next concrete actions
+
+1. Keep the existing XRP integration PR; obtain independent review and verifiable branch-protection settings before any merge consideration.
+2. Verify the next scheduled main ingestion and confirm the checkpoint restore still works with cache writes unavailable.
+3. Inspect the raw-only artifact and reconcile the 23-source count versus empty inline ID array.
+4. Implement/verify a reproducible raw-artifact-to-feature-store rebuild or another retention-safe checkpoint path without increasing storage spend or deleting user data.
+5. Link each curated event to exact raw source URL, capture timestamp and SHA-256; resolve approved SEC contact configuration.
+6. Reconcile CoinGlass/Liqwall OI methodology and exchange-wallet attribution before feature admission.
+7. Accumulate true point-in-time origins, then run leakage-safe naive/momentum/mean-reversion/volatility baselines, calibration and drift evaluation. Keep the minimum-origin gates unchanged.
+
+**Forecasts:** none issued; no outcome exists to score. No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
