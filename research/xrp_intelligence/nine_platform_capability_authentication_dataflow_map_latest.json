@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-22T14:57:08Z",
+  "captured_at_utc": "2026-11-22T15:05:32Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -520,9 +520,9 @@
       "task_assignment": {
         "status": "EXECUTED",
         "run_id": 11,
-        "captured_at_utc": "2026-11-22T14:57:08Z",
-        "task": "Inspect current main/integration trees, PR inventory, ancestry, exact-head CI/logs, dependencies, security and latest ingestion; verify Run70 replay; correct Run285 test to use the referenced full artifact; update current map and durable handoff on the existing branch.",
-        "expected_output": "Exact repository snapshot, XRP backfill evidence, current CI diagnosis, PR backlog and governance/forecast blockers."
+        "captured_at_utc": "2026-11-22T15:05:32Z",
+        "task": "Verify the corrected Run285 artifact test and exact-head full suite; inspect CI, dependency, Money, conflict and fail-closed gates; verify Run70 replay; reconcile current PR/governance status; update canonical map and handoff on the existing branch.",
+        "expected_output": "Exact-head verification, historical backfill evidence, current PR backlog, governance blockers and forecast readiness."
       },
       "task_assignment_status": "EXECUTED_IN_AUTOMATION_RUN_11",
       "last_verified_at_utc": "2026-11-22T14:18:41Z",
@@ -4836,8 +4836,8 @@
       "number": 1684,
       "classification": "blocked",
       "reason": "Exact-head suite on 5fb6a6e has two remaining latest-map contract failures: missing head_sha in the preserved d686 Run24 snapshot, and a Run285 test expecting 10 sources while the evidence artifact has 11. The isolated backfill replay against current main Run70 succeeded. PR remains draft, has zero independent approvals, branch protection cannot be fully verified, and Pages publication authorization is NOT_GRANTED.",
-      "head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
-      "ahead_by": 183,
+      "head_sha": "68bfd782abb04a18ab195741a53f5f77bdb0eaff",
+      "ahead_by": 184,
       "behind_by": 0,
       "changed_files": 29,
       "draft": true
@@ -7507,7 +7507,7 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-22T14:57:08Z",
+  "last_verified_at_utc": "2026-11-22T15:05:32Z",
   "latest_run_id": 286,
   "latest_run_captured_at_utc": "2026-11-22T14:18:41Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7916,8 +7916,8 @@
       "workstream": "XRP scheduled-ingestion continuity, historical feature-store recovery and event-receipt provenance",
       "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
-      "ahead_by": 183,
+      "head_sha": "68bfd782abb04a18ab195741a53f5f77bdb0eaff",
+      "ahead_by": 184,
       "behind_by": 0,
       "commits": 182,
       "changed_files": 29,
@@ -12237,7 +12237,7 @@
       "raw_http_bytes_captured": false
     }
   },
-  "current_pr_head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
+  "current_pr_head_sha": "68bfd782abb04a18ab195741a53f5f77bdb0eaff",
   "run250_no_external_actions": true,
   "run250_merge_decision": "NO_MERGE",
   "prediction_readiness": {
@@ -15713,9 +15713,9 @@
     "iHeart_kamilah_episode": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
     "youtube_kamilah_guest_appearance": "https://www.youtube.com/watch?v=Sulo54IlQ60"
   },
-  "current_branch_head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
-  "current_pr_branch_head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
-  "latest_verified_code_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
+  "current_branch_head_sha": "68bfd782abb04a18ab195741a53f5f77bdb0eaff",
+  "current_pr_branch_head_sha": "68bfd782abb04a18ab195741a53f5f77bdb0eaff",
+  "latest_verified_code_head_sha": "68bfd782abb04a18ab195741a53f5f77bdb0eaff",
   "run266_documentation_commit_ci": {
     "head_sha": "f2722d29f79ab9f3ee2bd5e761260e31bdf7582a",
     "pr_ci_run": 44918052478,
@@ -20549,7 +20549,7 @@
     "note": "The Run70 backfill replay passed against the current main artifact in an isolated CI copy, but this does not resolve merge governance or the two latest-map test failures."
   },
   "latest_automation_run_number": 11,
-  "latest_current_state_ref": "run25_current_state",
+  "latest_current_state_ref": "run25_1_current_state",
   "run11_current_state": {
     "automation_run_number": 11,
     "captured_at_utc": "2026-11-22T02:50:00Z",
@@ -25026,5 +25026,258 @@
     "Complete independent review and verify effective branch protection.",
     "Resolve automatic Pages publication authorization before any merge.",
     "Keep forecasts disabled until raw receipts, event completeness, drift evaluation and out-of-sample superiority are demonstrated."
+  ],
+  "run25_1_current_state": {
+    "captured_at_utc": "2026-11-22T15:05:32Z",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "integration_head_sha": "68bfd782abb04a18ab195741a53f5f77bdb0eaff",
+    "pr_number": 1684,
+    "pr_state": "open",
+    "pr_draft": true,
+    "mergeable": true,
+    "commits_ahead": 184,
+    "commits_behind": 0,
+    "changed_files": 29,
+    "main_tree_entries": 3115,
+    "integration_tree_entries": 3129,
+    "main_paths_missing_from_integration": 0,
+    "formal_reviews": 0,
+    "review_threads": 0,
+    "requested_reviewers": 0,
+    "exact_head_ci": {
+      "head_sha": "68bfd782abb04a18ab195741a53f5f77bdb0eaff",
+      "push_ci": {
+        "run_id": 45035905588,
+        "conclusion": "failure_by_design_gate_only",
+        "full_suite": "skipped_on_integration_push"
+      },
+      "pr_ci": {
+        "run_id": 45035905636,
+        "conclusion": "success"
+      },
+      "full_suite": {
+        "head_sha": "68bfd782abb04a18ab195741a53f5f77bdb0eaff",
+        "run_id": 45035905636,
+        "passed": 4570,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.21,
+        "duration_seconds": 133.2,
+        "tracked_active_test_modules": 533,
+        "conclusion": "success"
+      },
+      "dependency_audit": {
+        "run_id": 45035905803,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities_reported": 0
+      },
+      "money_audit": {
+        "run_id": 45035905684,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 45035948580,
+        "conclusion": "success"
+      },
+      "pages_validation": {
+        "conclusion": "success_validation_only",
+        "deployment_executed": false
+      },
+      "backfill_replay": {
+        "run_id": 45035905636,
+        "job_id": 137249492051,
+        "conclusion": "success"
+      },
+      "fail_closed": {
+        "run_id": 45035948694,
+        "conclusion": "failure_by_design",
+        "blockers": [
+          "PR is still draft",
+          "no independent approving review exists",
+          "branch protection could not be verified (HTTP 403)"
+        ]
+      }
+    },
+    "latest_main_ingestion": {
+      "run_id": 45031489739,
+      "run_number": 70,
+      "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "captured_at_utc": "2026-11-22T14:12:17.387969Z",
+      "receipt_count": 34,
+      "raw_payloads_retained": 22,
+      "digest_only": 12,
+      "raw_payload_hashes_verified": 22,
+      "raw_payload_hash_mismatches": 0,
+      "receipt_chain_sequence": 40,
+      "continuity": "CONTINUED",
+      "previous_run_id": 45026189091,
+      "feature_store_history_records": 19682,
+      "feature_store_snapshots": 40,
+      "current_snapshot_records": 123,
+      "candidate_feature_records": 490,
+      "eligible_features": 123,
+      "excluded_features": 367,
+      "sqlite_integrity": "ok",
+      "event_count": 150,
+      "scenario_count": 117,
+      "event_receipt_complete": false,
+      "event_model_eligible": false,
+      "drift_features": 204,
+      "drift_evaluated": 0,
+      "drift_status": "INSUFFICIENT_DATA",
+      "walk_forward_forecasts": 0,
+      "forecast_status": "NOT_ISSUED",
+      "sec_edgar_status": "BLOCKED_CONFIGURATION",
+      "source_failures": 18,
+      "raw_only_sources": 23,
+      "external_anchor": "NOT_ANCHORED"
+    },
+    "backfill_replay": {
+      "workflow_run_id": 45035905636,
+      "job_id": 137249492051,
+      "conclusion": "success",
+      "source_main_run_id": 45031489739,
+      "source_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "intermediate_receipt_indexes_verified": 37,
+      "records_before": 19682,
+      "records_after": 19800,
+      "recovered_records": 118,
+      "source_lineages": 11,
+      "snapshots_before": 40,
+      "snapshots_after": 41,
+      "verified_snapshots": 41,
+      "sqlite_integrity": "ok",
+      "reconciliation_sha256": "e59e3eea2e008b9c1140708c995f2d047c57a96134cb8476d448d765a48d55e0",
+      "main_modified": false,
+      "limitation": "Isolated CI copy; GitHub Actions artifacts are retention-limited, not WORM or externally timestamp-anchored."
+    },
+    "market_snapshot": {
+      "usd_ticker_mid_cluster": {
+        "low": 0.921465,
+        "high": 0.9216,
+        "range_bps": 1.4649510462191648
+      },
+      "usdt_usd_mid": 0.998395,
+      "quote_basis": "same-venue top-of-book only",
+      "depth_normalized_to_usd": false,
+      "jpy_normalized_to_usd": false,
+      "interpretation": "Asynchronous multi-venue snapshot; not consolidated executable liquidity or a directional signal."
+    },
+    "institutional_research": {
+      "artifact_path": "research/xrp_intelligence/20261122T141841Z-run285-coinbase-morpho-cbxrp-custody-and-payments-reconciliation.json",
+      "source_count": 11,
+      "source_independence_groups": 6,
+      "model_eligible": false,
+      "raw_http_bytes_captured": false,
+      "external_timestamp_anchor": false
+    },
+    "open_pr_inventory": [
+      {
+        "number": 1684,
+        "classification": "blocked",
+        "head_sha": "68bfd782abb04a18ab195741a53f5f77bdb0eaff",
+        "draft": true,
+        "ahead_by": 184,
+        "behind_by": 0,
+        "changed_files": 29,
+        "formal_reviews": 0,
+        "review_threads": 0
+      },
+      {
+        "number": 1685,
+        "classification": "blocked",
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "draft": false,
+        "ahead_by": 5,
+        "behind_by": 0,
+        "changed_files": 9,
+        "remaining_controls": [
+          "OS sandbox",
+          "provider credential isolation",
+          "egress restrictions",
+          "task-level authorization"
+        ],
+        "runner_quarantined": true
+      },
+      {
+        "number": 1686,
+        "classification": "unique/unreviewed",
+        "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+        "draft": true,
+        "ahead_by": 18,
+        "behind_by": 0,
+        "changed_files": 16,
+        "known_full_suite_failures": 11
+      },
+      {
+        "number": 1687,
+        "classification": "unique/unreviewed",
+        "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+        "draft": true,
+        "ahead_by": 3,
+        "behind_by": 0,
+        "changed_files": 3,
+        "known_full_suite_failures": 1
+      }
+    ],
+    "backlog_summary": {
+      "total_open": 4,
+      "ready": 0,
+      "blocked": 2,
+      "superseded": 0,
+      "duplicate": 0,
+      "unique_unreviewed": 2
+    },
+    "governance": {
+      "main_branch_metadata_protected": true,
+      "required_status_contexts": [],
+      "detailed_branch_protection": "HTTP_403_NOT_VERIFIED",
+      "fallback_ruleset_enforcement": "disabled",
+      "independent_approval": false,
+      "pages_publication_authorization": "NOT_GRANTED",
+      "automatic_pages_publication_on_main": true,
+      "transitive_workflow_script_review": "INCOMPLETE",
+      "codeowners": "* @Barrot-Agent"
+    },
+    "nine_platforms": {
+      "verified": [
+        "ChatGPT -> GitHub connector"
+      ],
+      "unverified": [
+        "Claude",
+        "Grok",
+        "Gemini",
+        "Copilot",
+        "Codex",
+        "Hugging Face",
+        "Kaggle",
+        "Databricks"
+      ],
+      "token_scopes_introspected": false,
+      "external_dispatch_performed": false,
+      "external_data_transfer_performed": false
+    },
+    "merge_decision": "DO_NOT_MERGE_PR_1684",
+    "forecast_status": "NOT_ISSUED",
+    "no_merge_performed": true,
+    "no_external_actions_performed": true,
+    "next_actions": [
+      "Complete independent review and verify effective branch protection.",
+      "Resolve automatic Pages publication authorization before any merge.",
+      "Complete transitive workflow/script security review.",
+      "Keep forecasts disabled until event receipts, drift evaluation and out-of-sample superiority are demonstrated."
+    ]
+  },
+  "run25_1_merge_decision": "DO_NOT_MERGE_PR_1684",
+  "run25_1_no_external_actions": true,
+  "run25_1_next_actions": [
+    "Complete independent review and verify effective branch protection.",
+    "Resolve automatic Pages publication authorization before any merge.",
+    "Complete transitive workflow/script security review.",
+    "Keep forecasts disabled until event receipts, drift evaluation and out-of-sample superiority are demonstrated."
   ]
 }
