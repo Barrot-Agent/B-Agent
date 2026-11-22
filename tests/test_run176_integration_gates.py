@@ -35,9 +35,9 @@ def test_opencode_mcp_configuration_preserves_least_privilege() -> None:
     config = json.loads((ROOT / "opencode.json").read_text(encoding="utf-8"))
     servers = config["mcp"]["servers"]
     assert config["default_agent"] == "barrot"
-    assert {"github", "docling", "searxng", "lunaroute"} <= set(servers)
+    assert {"github", "docling", "searxng", "barrot"} <= set(servers)
+    assert "lunaroute" not in servers
     assert "GITHUB_MCP_TOKEN" in servers["github"]["headers"]["Authorization"]
-    assert servers["lunaroute"]["disabled"] is True
     assert config["permission"]["edit"] == "ask"
     assert config["permission"]["bash"] == "ask"
     assert config["agent"]["barrot"]["permission"]["*"] == "ask"
