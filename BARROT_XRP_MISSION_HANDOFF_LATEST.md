@@ -150,7 +150,7 @@ A new exact-phrase search surfaced a separate U.S. entity using the SBIC America
 
 - Its LinkedIn company page self-identifies the business as Safecon Bureau of Inspection & Certification USA Inc., headquartered in Albany, New York, privately held, founded in 2016, with `safecon.us` as its listed website. It describes inspection, occupational-safety training, OSHA/NFPA/ISO certification and HSE training.
 - A 2025 post by an OSHA-authorized trainer associated with the brand promoted an AI Safety Professional video contest and offered the winner one month of ChatGPT Plus plus training. The post says SBIC would provide AI-video training.
-- This is evidence of a third-party promotional offer mentioning ChatGPT Plus, not an OpenAI partnership, endorsement, integration or evidence that OpenAI supplied the subscription. The company's LinkedIn self-description is not a substitute for an independently verified corporate-registry record; `safecon.us` could not be fetched in this pass.
+- This is evidence of a third-party promotional offer mentioning ChatGPT Plus, not an OpenAI partnership, endorsement, integration or evidence that OpenAI supplied the subscription. The company-controlled `safecon.us` history page says SafeCon began in Pakistan in 2012, was incorporated in the United States in 2019, and was renamed SafeCon Bureau of Inspection & Certification USA Inc. in 2020; it says the U.S. entity was incorporated with New York State. This remains a company self-report, not an independently retrieved New York Department of State registry record. LinkedIn lists Albany as headquarters and Brooklyn as another location; the company site lists its Brooklyn office.
 - No connection to XRP, Ripple, SBI Holdings or Japan's SBIC East/Central/West was established.
 
 Source pages:
@@ -222,7 +222,7 @@ No merge, deployment, secret rotation, Space restart, external model dispatch, K
 
 
 
-**Updated:** 2026-11-22 10:07 UTC  
+**Updated:** 2026-11-22 10:10 UTC  
 **Mission priority:** XRP intelligence and measured prediction-engine capability. Preserve Barrot V3 as the execution, orchestration, safety and verification foundation.  
 **Record policy:** The Current State — Run 17 section immediately below is authoritative. Run 16 and earlier sections remain preserved historical evidence; no branch history is rewritten.
 
