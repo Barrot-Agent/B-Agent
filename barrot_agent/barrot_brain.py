@@ -94,8 +94,6 @@ class BarrotBrain:
 
     GITHUB_ENDPOINT = "https://models.inference.ai.azure.com/chat/completions"
     GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
-    FIREWORKS_ENDPOINT = "https://api.fireworks.ai/inference/v1/chat/completions"
-    FIREWORKS_MODEL = "accounts/fireworks/models/llama-v3p3-70b-instruct"
     GITHUB_MODEL = "gpt-4o"
     GROQ_MODEL = "openai/gpt-oss-120b"
 
@@ -105,8 +103,6 @@ class BarrotBrain:
         self.allow_external_inference = allow_external_inference
         self.auth = GitHubAppAuth()
         self.groq_key = os.getenv("GROQ_API_KEY", "")
-        self.fireworks_key = os.getenv("FIREWORKS_API_KEY", "")
-        self.allow_fireworks_fallback = os.getenv("BARROT_ALLOW_FIREWORKS_FALLBACK", "").strip().lower() in {"1", "true", "yes"}
         self.integrity = CognitiveIntegrityLoop()
         self.event_bus = CognitiveEventBus()
         self.reactive_observer = ReactiveCorroborationObserver()
@@ -234,43 +230,10 @@ class BarrotBrain:
                 groq_error = str(e)
                 logger.warning("Groq backend unavailable; automatic retry is disabled: %s", e)
 
-        # Fireworks is outside the nine-platform coordination map. It is never
-        # used unless an operator explicitly opts in through configuration.
-        if self.fireworks_key and self.allow_fireworks_fallback:
-            try:
-                r = requests.post(
-                    self.FIREWORKS_ENDPOINT,
-                    headers={
-                        "Authorization": f"Bearer {self.fireworks_key}",
-                        "Content-Type": "application/json",
-                    },
-                    json={
-                        "model": self.FIREWORKS_MODEL,
-                        "messages": messages,
-                        "max_tokens": 1024,
-                    },
-                    timeout=20,
-                )
-                if r.status_code == 429:
-                    try:
-                        detail = str(r.json().get("error", r.json()))[:1000]
-                    except Exception:
-                        detail = str(getattr(r, "text", "HTTP 429"))[:1000]
-                    return (
-                        "[BARROT_RATE_LIMITED] provider=Fireworks; status=429; "
-                        f"detail={detail}; no retry was attempted."
-                    )
-                r.raise_for_status()
-                return self._record_reasoning(
-                    "fireworks", message, r.json()["choices"][0]["message"]["content"]
-                )
-            except Exception as e:
-                logger.error("Explicitly enabled Fireworks fallback failed: %s", e)
-
         return (
             "[BARROT_PROVIDER_UNAVAILABLE] "
             f"GitHub Models/Groq unavailable: {groq_error} "
-            "Fireworks fallback is disabled unless BARROT_ALLOW_FIREWORKS_FALLBACK=true."
+            "No unconfigured or unapproved provider fallback was attempted."
         )
 
     @property
@@ -281,8 +244,6 @@ class BarrotBrain:
             return "GitHub Models"
         if self.groq_key:
             return f"Groq {self.GROQ_MODEL}"
-        if self.fireworks_key and self.allow_fireworks_fallback:
-            return f"Fireworks {self.FIREWORKS_MODEL}"
         return "None"
 
 
