@@ -646,3 +646,94 @@ Required follow-on features: cbXRP total supply and reserve ratio; Morpho market
 **Next concrete action:** verify CI on this new handoff commit; then add lawful, receipt-backed Morpho liquidation and cbXRP redemption/market-flow capture to the existing XRP integration workstream, preserving digest-only receipts until raw-response terms are reviewed. Accumulate genuine point-in-time origins before re-running multi-horizon evaluation. Keep directional forecasts disabled. Do not relax sample gates, create another PR, bypass protection, or infer native XRP selling from cbXRP liquidation alone.
 
 No merge, deployment, cache deletion, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Post-update verification and Run58 supplemental audit — 2026-11-22 04:45 UTC
+
+### Exact-head result for handoff commit 7f4b051
+
+[CI 44985891309](https://github.com/Barrot-Agent/B-Agent/actions/runs/44985891309) completed successfully on exact head `7f4b051a25288997ba4d618c2252b81cb90a23c0`:
+
+- Full repository suite: **4,564 passed, 0 failed, 1 skipped**, 11 warnings, 32 subtests; 73.20% coverage; 214.49 seconds.
+- Core test job: passed.
+- Full repository test job: passed.
+- GitHub Pages validation-only build: passed.
+- Preserved-artifact historical backfill replay: passed.
+- Exact-head dependency audit [44985891262](https://github.com/Barrot-Agent/B-Agent/actions/runs/44985891262): passed.
+- Exact-head Money audit [44985891273](https://github.com/Barrot-Agent/B-Agent/actions/runs/44985891273): passed.
+- Exact-head conflict-integrity check [44985891248](https://github.com/Barrot-Agent/B-Agent/actions/runs/44985891248): passed.
+
+The exact-head backfill artifact [14739926702](https://github.com/Barrot-Agent/B-Agent/actions/runs/44985891309/artifacts/14739926702) was downloaded and inspected:
+
+- 118 records recovered from 11 source lineages.
+- 18,483 to 18,601 records; 30 to 31 snapshots.
+- SQLite integrity `ok`.
+- All 33 historical artifact ZIP digests matched their GitHub artifact digests.
+- One-microsecond point-in-time visibility boundary verified.
+- Reconciliation SHA-256: `6316dcb3606351056c2d26e9806f18011c696468e4fa057f70792c0bc9973f33`.
+- Reconciliation ZIP SHA-256: `a25c335f7f1387ac93d9790026b42d0b89fb243356cf08e98708d6341639551b`.
+- External trusted timestamp/WORM anchor remains `NOT_ANCHORED`.
+
+The fail-closed gate [44985891288](https://github.com/Barrot-Agent/B-Agent/actions/runs/44985891288) completed with **READINESS=BLOCKED** for three explicit reasons: PR is still draft; no independent approving review exists; branch protection could not be verified because the detail endpoint returned HTTP 403. No merge was attempted.
+
+### Current open PR inventory — three distinct workstreams
+
+The latest open-PR search returned exactly three PRs:
+
+| PR | Workstream | Classification | Current disposition |
+|---|---|---|---|
+| [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684) | XRP ingestion, research and prediction readiness | Blocked | Draft; exact-head suite passed; no independent approval; protection details unavailable |
+| [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685) | A2A gateway/runner credential separation | Blocked | Non-draft; separate security workstream; runner quarantined; no independent approval or completed OS sandbox/egress controls |
+| [#1686](https://github.com/Barrot-Agent/B-Agent/pull/1686) | LunaRoute runtime decommission | Unique/unreviewed; blocked | Draft; four commits, four files; no exact-head CI or reviews; not an XRP objective |
+
+PR #1686 changes `.env.example`, `b_agent.py`, `opencode.json` and adds `scripts/decommission_lunaroute_local.sh`. Its path set has zero overlap with #1684 and #1685. It is not a duplicate or superseded XRP PR. The script would remove local shell startup lines and `~/.lunaroute_key`; **it was not executed**. No local device cleanup or runtime-provider removal was performed. This change remains unreviewed and must not be merged or run as a side effect of the XRP mission.
+
+The XRP branch at the time of this audit was 143 commits ahead of main and zero behind, with 27 changed paths. No new branch or PR was created by this run.
+
+### Repository governance note
+
+The repository metadata reports `web_commit_signoff_required=true`. GitHub reports the handoff commit `7f4b051` as unsigned (`verification.reason=unsigned`). No sign-off was fabricated. Verify the applicable sign-off policy and obtain any required authorized sign-off before merge. This is separate from the already-failing fail-closed gate; it does not justify bypassing review or branch protection.
+
+### Run58 event timeline and research-only observations
+
+The Run58 event artifact reports:
+
+- 150 curated events across 50 declared independence groups.
+- Zero event raw-source hashes; receipt completeness false; model eligibility false.
+- 117 structured scenario hypotheses; probabilities are null; forecast status `NOT_ISSUED`.
+- Only 19 scenarios contain supporting evidence, six contain contrary evidence, and six contain minority objections. The registry is useful hypothesis scaffolding, not an evidence-complete causal model.
+- SEC capital-event capture: zero filing events, zero primary-document captures, zero capital facts; the three SEC failures are configuration/contact-identity failures. No issuer cash-flow claim is derived from SEC data in this run.
+
+Two separate research-only observations were recorded:
+
+1. **Bitbank XRP/JPY latest-60-trade sample**, captured 2026-11-22 04:14:44.617 UTC: 60 trades from 04:02:23.224 to 04:13:38.659 UTC (675.435 seconds); buy taker 8,601.6061 XRP; sell taker 41,044.968 XRP; net taker flow **-32,443.3619 XRP**. Sell/buy taker ratio is 4.77. Raw bytes were retained with SHA-256 `075c32f488f5893bf33bfe7ec652f9073d67edeede7b3654a41c53cd7fe1f3fb`. This variable-duration latest-60-trade sample is not a fixed-duration or 24-hour flow metric and remains model-ineligible.
+
+2. **XRP Insights ETF holdings-delta CSV**, data as of 2026-11-20, captured 2026-11-22 04:14:47.269 UTC. Seven fund rows: four direct-spot flow funds, one excluded direct-spot flow fund, and two mixed-indirect funds. The four direct-spot funds showed a holdings delta of **-$7,452,638 / -8,242,683.02 XRP**; the two mixed-indirect funds showed **+$200,465 / +221,715.84 XRP**; the index sleeve showed zero flow. Direct-spot holdings were 1,122,521,062.26 XRP; index-sleeve holdings 20,872,764 XRP; mixed-indirect holdings 32,728,671.98 XRP. The CSV contains 1,667 rows (1,478 settled, 189 reconstructed, seven initial). Receipt SHA-256: `a200eab17109c4a878af34e051c6d072f2c197672dc46530a1682a1034c66a97`. Source: https://xrp-insights.com/data/xrp-etf-flows.csv . Its terms permit attributed citation but require written permission for commercial redistribution: https://xrp-insights.com/terms . The full CSV was not retained. The source explicitly classifies this as **holdings delta, not issuer AP cash flow**; it is research-eligible but model-ineligible pending primary issuer reconciliation.
+
+Other public ETF dashboards disagree on the same Nov. 20 date: one five-fund dashboard reports about -$5.0m; another partial dashboard reports -$2.4m from two of three reported funds; a broader six-spot-plus-BITW dashboard reports about -$8.02m. These differ in fund coverage, inclusion of index/indirect products, missing issuer rows and flow methodology. Do not average them. Issuer creations/redemptions and AP cash activity remain the required primary evidence for “actual capital.”
+
+### Cache continuity remains degraded
+
+The Run58 ingestion and the exact-head full-suite job both reported GitHub Actions cache reservation failures because the configured cache budget is exhausted and cache writes are read-only. This was nonfatal: the previous trusted checkpoint restored, Run58 per-run artifacts and receipt indexes uploaded, and the 118-record isolated backfill replay succeeded. No cache was deleted and no billing/retention setting was changed. Rebuilding the feature store from retained raw artifacts is still not implemented; seven-day checkpoint expiry remains a continuity risk.
+
+### Corrections and interpretation boundaries
+
+- Correction to the preceding cbXRP section: there are **five Morpho receipts plus one Coinbase proof-of-reserves receipt (six total)**, not six Morpho receipts plus Coinbase.
+- Coinbase's cbXRP supply growth, Morpho collateral, liquidation logs, USDC repayments and native XRP exchange sales remain distinct measures. No direct native-XRP sale was traced from the liquidation data.
+- The Nov. 20 ETF holdings delta is not AP cash flow and is not proof of spot purchases/redemptions.
+- The Bitbank latest-60-trade sample is not a 24-hour flow measure.
+- The event/scenario registry has no event raw hashes or probabilities; it cannot support directional forecasts.
+
+### Current execution state
+
+**VERIFIED:** exact-head full suite on `7f4b051`; dependency, Money, conflict-integrity and Pages checks; exact-head historical replay; 33 artifact digest matches; current three-PR inventory and non-overlapping paths; Run58 raw receipt inventory; event/scenario quality status; Bitbank sample; ETF holdings-delta observation; Coinbase cbXRP/ Morphо collateral evidence.
+
+**EXECUTED:** updated the existing canonical handoff in PR #1684; re-read current repository and PR state; downloaded and hashed Run58 raw, feature-store, event and exact-head backfill artifacts; inspected SQLite feature-store origins; reconciled order-book depth, ETF holdings-delta definitions and cbXRP/Morpho source relationships.
+
+**BLOCKED / NOT VERIFIED:** independent review and branch-protection configuration; PR #1684 draft status; PR #1685 sandbox/egress/security review; PR #1686 provider-removal scope and local cleanup authorization; SEC contact identity; cache reconstruction fallback; direct retained Morpho payloads and current collateral/debt/liquidity; native XRP redemption-to-sale linkage; 100 genuine chronological out-of-sample origins; event raw-source hashes; external WORM anchor; nine-platform external authentication.
+
+**Next concrete action:** preserve the existing XRP integration branch; obtain independent review and verifiable protection before any merge; implement authorized, receipt-backed Morpho liquidation/redemption and Coinbase custody-flow capture; accumulate at least 100 true point-in-time OOS origins without treating historical bulk capture as availability; build raw-artifact cache reconstruction; configure SEC capture only with an approved monitored identity. Keep directional forecasts disabled.
+
+No merge, deployment, local cleanup, secret rotation, cache deletion, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
