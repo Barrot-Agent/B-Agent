@@ -1615,3 +1615,121 @@ Only ChatGPT-to-GitHub authentication and repository data flow are verified. Cla
 7. Keep the single XRP integration PR as the only XRP integration workstream. Do not create another XRP PR.
 
 No directional XRP forecast was issued. No probabilities or performance claims were fabricated. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+
+## Execution update — 2026-11-22 09:18 UTC
+
+This update supersedes stale Run60/Run62 statements above where they conflict. It records the current repository audit, exact-head CI, a verified Run62 artifact inspection, and a correction to the prior raw-only summary interpretation.
+
+### Repository and integration state
+
+- Main SHA: `550a647ee7269a704d4600ff337b2145acc90473`.
+- Main recursive tree: 3,115 entries; not truncated.
+- Integration branch: `integration/xrp-post-merge-verification-20261121T0002Z`.
+- Code head at this audit: `ecc8731985cd1e8dbf6a546bdcb98e6652c2fec9`.
+- Compare against main: 154 commits ahead, zero behind; 27 changed paths; no main-tree paths missing.
+- Integration tree: 3,127 entries; not truncated.
+- PR #1684 is the only active XRP integration workstream. No duplicate XRP integration PR was found.
+- Current open PR inventory: #1684 XRP integration; #1685 A2A credential separation; #1686 LunaRoute decommission; #1687 read-only model integrity diagnostics.
+
+### Exact-head CI — VERIFIED on ecc8731
+
+PR CI run: [45002612330](https://github.com/Barrot-Agent/B-Agent/actions/runs/45002612330)
+
+- Full repository suite: **4,565 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests; 73.20% total coverage; 210.14 seconds.
+- Core tests: passed.
+- Dependency audit / pip-audit: [45002612502](https://github.com/Barrot-Agent/B-Agent/actions/runs/45002612502), passed.
+- Money audit: [45002612342](https://github.com/Barrot-Agent/B-Agent/actions/runs/45002612342), passed.
+- Conflict-integrity check: [45002612327](https://github.com/Barrot-Agent/B-Agent/actions/runs/45002612327), passed.
+- GitHub Pages validation-only: passed; no publication/deployment.
+- Preserved-artifact replay job: [45002612330](https://github.com/Barrot-Agent/B-Agent/actions/runs/45002612330), passed.
+- Fail-closed merge gate: [45002612333](https://github.com/Barrot-Agent/B-Agent/actions/runs/45002612333), blocked by design because #1684 is draft, has zero independent approving reviews, and branch protection cannot be verified. This is not a test failure and is not permission to bypass governance.
+
+The full-suite workflow discovers repository test files rather than running only the hand-selected core list. It explicitly excludes `.barrot/disabled_tests/`, `archive/quarantined/`, `tests/fixtures/`, and the two legacy integration files `legacy/tests/test_email_integration.py` and `legacy/tests/test_transformative_insights.py`. Those excluded tests remain outside the active suite; do not describe the 4,565 count as literally every file in the repository.
+
+### Historical feature-store recovery — VERIFIED in isolated CI
+
+The exact-head replay used the actual Run62 main artifacts and the integration branch's `xrp_feature_store_backfill.py`.
+
+- Records before: 18,959; after: 19,077; recovered: 118.
+- Snapshots before: 34; after: 35.
+- Recovered source lineages: 11.
+- 37 downloaded artifact ZIP digests matched their GitHub artifact digests; zero mismatches.
+- SQLite integrity: `ok`; 35/35 snapshots verified.
+- Point-in-time boundary: 18,959 records immediately before the post-append availability bound; 19,077 immediately after.
+- Reconciliation SHA-256: `1ada5f4985cd103a6d6620c52474c08d3ae21e4356a9a495be8133897a5df131`.
+- Snapshot receipt time is a post-append availability bound derived from GitHub's API Date header, **not** an independently trusted physical commit timestamp.
+- Recovery ran on an isolated CI copy; main's database was not modified.
+- Reconciliation artifact: [14746577610](https://github.com/Barrot-Agent/B-Agent/actions/runs/45002612330/artifacts/14746577610).
+
+### Main XRP ingestion — Run62
+
+[Run 45002042015](https://github.com/Barrot-Agent/B-Agent/actions/runs/45002042015), main SHA `550a647`, data cutoff `2026-11-22T08:17:00.980498Z`.
+
+- Raw receipts: 34; retained raw payloads: 22; digest-only receipts: 12.
+- All 22 retained payload hashes verified; zero mismatches.
+- Raw-only source count: 23.
+- Source failures: 18 (Binance HTTP 451: 8; Bybit HTTP 403: 5; Grayscale HTTP 429: 1; Franklin issuer marker error: 1; SEC user-agent configuration: 3).
+- Feature store: 18,959 records, 34 snapshots, 413 source-snapshot lineage rows; SQLite integrity `ok`.
+- Workflow summary: 124 eligible feature records and 366 excluded feature records.
+- Event timeline: 150 events, 117 scenarios, 50 declared source-independence groups, zero raw-source hashes, receipt completeness false, model eligibility false.
+- Drift: 0/204 features evaluated; `INSUFFICIENT_DATA`.
+- Walk-forward: zero forecasts; `PARTIAL_OR_BLOCKED`.
+- SEC: zero raw receipts; blocked because a monitored contact identity is not configured.
+- Receipt chain: sequence 34, continuity verified, cross-run chain SHA-256 `42342be6daf46a7dbb2bb75870088dee666f89711abf88621ed47ae450f7e181`.
+- Cache: read-only after budget exhaustion; Run61 checkpoint restored. Raw-artifact reconstruction of the SQLite store is not implemented.
+
+**Correction to the previous Run62 audit note:** the claim that the global raw-only source IDs were missing from the summary was a field-scope misread. The workflow summary explicitly reports `raw_only_source_count=23`, and `raw_only_sources.json` contains 23 entries. The separate `weekly_source_policy.raw_only_source_ids=[]` field is scoped only to the scheduled weekly/CFTC source subset; it is not the global raw-only inventory. No serializer defect is established by this evidence. Preserve the 23-entry raw-only artifact and do not open a fix PR for this false positive.
+
+### Run62 market microstructure — artifact-recomputed
+
+The raw order-book payloads were downloaded and the notional calculations were independently recomputed from price × XRP size. Capture window: `2026-11-22T08:16:46.536379Z` to `08:16:50.061878Z`.
+
+- OKX same-venue XRP-USDT / USDT-USD top-of-book normalization: USD mid **$0.9158927005**, spread **1.18993 bps**, snapshot skew **0.995 seconds**, maximum component age **13.5125 seconds**. This is a top-of-book USD conversion only; OKX depth remains USDT-denominated.
+- Bitstamp 10/50/100 bp bid-minus-ask notional imbalance: **+36.49% / +27.33% / +28.17%**.
+- Coinbase: **+36.87% / +5.31% / +21.79%**.
+- Kraken: **+2.07% / +33.02% / +13.72%**.
+- OKX (USDT quote): **−8.36% / +6.73% / +6.58%**.
+- All four snapshots were bid-heavy at 50/100 bp; the 10 bp near-touch reading was ask-heavy on OKX and bid-heavy on the three USD venues.
+- These are single snapshots, not a continuous sequence or consolidated book. They do not measure cancellations, executions or replenishment and are not a directional signal.
+
+### External public cross-check — research-only, not model-eligible
+
+- Liqwall reported XRP aggregate futures open interest of **$865M** at **00:32 UTC on Nov 22**, down 2.9% over 24 hours; its stated 30-day range was $863M–$1.49B. Its exchange universe and contract methodology were not reconciled to Barrot's source universe; retain as a separate vendor observation, not an average or model feature. [Liqwall](https://liqwall.com/open-interest/xrp).
+- Reuters reported on Nov 9 that PNC and Coinbase were piloting USDC payment services for corporate/institutional clients, with USDC converted to dollars. This is stablecoin-rail adoption, not XRP use. [Reuters](https://www.reuters.com/legal/transactional/pnc-offer-stablecoin-payments-clients-coinbase-partnership-2026-11-09/).
+- Reuters reported on Nov 18 that DBS and Circle would expand institutional USDC access in Asia. This likewise does not establish XRP settlement or demand. [Reuters](https://www.reuters.com/world/asia-pacific/dbs-partners-with-circle-expand-institutional-access-usdc-asia-2026-11-18/).
+- BNY's Oct 27 primary release confirms it supports XRP and RLUSD custody on its Digital Asset Custody platform, building on BNY's RLUSD reserve-custody and Ripple Prime relationship. Shared custody does not establish a direct Circle–Ripple partnership or XRP collateral use. [BNY](https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+- Ripple's Oct 28 announcement claims a $900M annualized product-revenue run rate and more than $16T in 2025 transactions enabled across its products. These are issuer-level product claims, not XRP settlement volume or token demand. [Ripple](https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/).
+- These web observations were not captured as raw publisher bytes in Run62; they remain research-only and must not be promoted to point-in-time model features.
+
+### Open PR and overlap classifications
+
+| PR | Classification | Verified disposition |
+|---|---|---|
+| #1684 | Blocked — sole XRP integration | Draft; 154 ahead / 0 behind; 27 changed files; zero formal reviews. Exact-head CI and backfill passed on `ecc8731`. |
+| #1685 | Blocked — unique A2A security | Non-draft; 5 ahead / 0 behind; 9 files; zero formal reviews. Runner remains quarantined pending OS sandbox, provider-credential isolation and egress controls. |
+| #1686 | Blocked — unique maintenance | Draft; 18 ahead / 0 behind; 16 files. Latest full suite `44988220240` failed with 11 failures. Local cleanup script was not executed. |
+| #1687 | Blocked — unique model-integrity diagnostics | Draft; 3 ahead / 0 behind; 3 files. Latest full suite `44994494208` failed on the docs-index assertion. |
+
+#1685 and #1686 both touch `tests/test_mcp_server.py`, but their patch hunks are disjoint: #1685 changes A2A credential-startup tests around lines 176–213; #1686 changes the OpenCode registration assertion near line 37. This is a same-file integration dependency, not a duplicate objective. #1684 has no changed-path overlap with the other three PRs. No PR was closed or merged.
+
+### Security and merge decision
+
+- Main reports `protected=true`; the branch-protection endpoint returns HTTP 403.
+- The only visible repository ruleset, `Fall Back`, is disabled.
+- CODEOWNERS assigns `* @Barrot-Agent`, not an independent reviewer.
+- Formal review lists are empty for all four open PRs.
+- The fail-closed gate correctly blocked #1684 because it is draft, lacks an independent approval, and effective branch protection cannot be verified.
+- **DO NOT MERGE** until the PR is non-draft, independent approval and required checks are satisfied, branch protection is verifiable, and exact-head gates pass. Never bypass controls.
+
+### Next concrete actions
+
+1. Verify the next scheduled main XRP ingestion. At the latest inventory check, Run62 remained the latest visible main ingestion; the next expected hourly run was not yet listed. Treat this as a possible schedule delay/missed run, not a proven workflow failure.
+2. Implement and test feature-store reconstruction from retained raw artifacts before relying on cache checkpoints.
+3. Capture current publisher bytes with real capture timestamps and hashes, then link new event-evidence versions; do not backdate old events to create receipts.
+4. Resolve SEC contact configuration using an authorized monitored project address; do not invent one.
+5. Keep Binance/Bybit endpoints blocked where provider restrictions apply; no proxy or bypass.
+6. Continue accumulating true point-in-time history until the drift reference window is valid; then run chronological baselines and calibration. No directional forecast until out-of-sample gates pass.
+7. Preserve the existing #1684 workstream. Do not create another XRP PR.
+
+No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred. Barrot V3 remains the execution, orchestration, safety and verification foundation.
