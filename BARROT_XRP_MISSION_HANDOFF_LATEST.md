@@ -7066,3 +7066,64 @@ The exact phrase “actual capital” remains semantically ambiguous. The underl
 - Counter-hypothesis: institutional custody, RLUSD distribution and stablecoin rails can expand without proportional XRP demand because RLUSD also runs on Ethereum/Base, Coinbase's RLUSD collateral phase was future at announcement, and BNY's mint/redeem/trade-finance plans are future/approval-dependent. SBI's specific XRP-bridge remittance use does not imply all SBI flows use XRP.
 - All institutional relationship and capital-flow claims in this addendum are RESEARCH_ONLY and MODEL_INELIGIBLE until captured with exact publisher bytes, event/publication/known-at/capture timestamps, raw SHA-256 receipt and independent-source clustering. They do not authorize a directional forecast.
 
+
+
+## Run284 — 2026-11-22 01:34 UTC — exact-head integration, backfill and market refresh
+
+### Repository snapshot (verified on parent code head `d055f7ce7ab68b7608fa4de80db496958856c8c6`)
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`.
+- Complete recursive trees: main 3,115 entries; integration 3,127 entries; neither truncated; zero main paths missing from integration; 12 integration-only paths.
+- Existing XRP integration branch is 131 commits ahead, zero behind; 27 changed files; 24,534 additions and 1,068 deletions. No new branch or PR was created.
+- Open PR inventory: [#1684 XRP integration](https://github.com/Barrot-Agent/B-Agent/pull/1684) and [#1685 A2A credential separation](https://github.com/Barrot-Agent/B-Agent/pull/1685). Their changed paths do not overlap.
+
+### Exact-head CI — parent code head `d055f7ce7ab68b7608fa4de80db496958856c8c6`
+
+[PR CI run 44971537062](https://github.com/Barrot-Agent/B-Agent/actions/runs/44971537062) passed the full tracked active repository suite: **4,563 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests, 73.20% coverage, 174.95 seconds. The suite discovered every tracked active test module, including the required legacy and autonomous-task tests, and enforced additional coverage floors for XRP telemetry, MMI, orchestration, monetization, rendering, SmartAgent and MemPalace.
+
+- Dependency audit [44971537042](https://github.com/Barrot-Agent/B-Agent/actions/runs/44971537042): passed.
+- Money audit [44971537045](https://github.com/Barrot-Agent/B-Agent/actions/runs/44971537045): passed.
+- Conflict-integrity check [44971537109](https://github.com/Barrot-Agent/B-Agent/actions/runs/44971537109): passed.
+- GitHub Pages build: validation-only success; no deployment.
+- Fail-closed gate [44971537038](https://github.com/Barrot-Agent/B-Agent/actions/runs/44971537038): blocked by design because PR #1684 remains draft, has no independent approving review, and branch-protection details return HTTP 403.
+
+### Historical feature-store backfill — executed and verified in isolated CI
+
+[Backfill replay artifact](https://github.com/Barrot-Agent/B-Agent/actions/runs/44971537062/artifacts/14734250393) used the latest successful main ingestion checkpoint [44970457568](https://github.com/Barrot-Agent/B-Agent/actions/runs/44970457568). The actual branch module recovered 118 historical records across 11 source lineages: 18,113 to 18,231 records and 27 to 28 snapshots. Thirty downloaded artifact ZIP digests matched GitHub's recorded digests; 24 intermediate receipt-index artifacts were verified; no digest mismatches; SQLite integrity `ok`; one-microsecond point-in-time visibility boundary passed.
+
+Reconciliation SHA-256: `b69552f5d4d289234841b5eea681c28383ffd261917929b24ec9bce0874f2d50`. Receipt clock source is GitHub's API Date header; this is a post-append availability bound, **not** a measured physical database commit timestamp. Main's database was not modified.
+
+### Latest main ingestion
+
+Main ingestion run 44970457568 succeeded with 34 receipts (22 retained raw payloads, 12 digest-only), 18 source failures, 23 raw-only sources, 18,113 historical feature records across 27 snapshots, 106 eligible and 384 excluded latest feature records, 150 events and 117 scenarios. Event-to-receipt completeness remains false. Drift is 0/204; walk-forward forecast count is zero; SEC capture remains blocked by contact configuration; external receipt anchoring remains `NOT_ANCHORED`. The feature-store cache save hit the configured read-only budget; this run restored the prior per-run checkpoint. Rebuild from raw artifacts is not implemented.
+
+OKX same-venue synchronized top-of-book quote basis at 01:14:05.070 UTC: bid `$0.930809408`, ask `$0.930918543`, mid `$0.9308639755`, spread about 1.172 bps. This is one publisher group, top-of-book only; depth is not USD-normalized.
+
+### Independent dynamic market observation
+
+CoinGlass's [XRP futures dashboard](https://www.coinglass.com/currencies/XRP/futures), observed during this run, displayed XRP `$0.9301` (+2.23%/24h), 24h range `$0.8591–$0.9386`, spot volume `$678.42M`, futures volume `$2.72B`, open interest `$1.78B` (-0.11%), funding `0.0059%` per 8h, 24h liquidations `$17.22M` (80% long liquidations), and a reported November 20 ETF net outflow of `$5.0M`. The dashboard places OI/market cap at 3.01%, 35th percentile. Its FAQ interprets price rising while OI falls as short covering, while the same rolling window shows predominantly long liquidations. Preserve the temporal/methodological tension; do not infer one causal sequence. This is a dynamic dashboard observation with no retained raw bytes and is **not model eligible**.
+
+### Institutional research and nine-platform coordination
+
+No new primary institutional filing or corporate announcement was captured in this run. Existing distinctions remain: SBIC East/Central/West are separate Japanese statutory regional investment companies; the Tokyo SBIC ChatGPT course was delivered by VOST and does not establish an OpenAI partnership; Permission Coin is the best-supported ASK candidate but has a contract-address discrepancy and no XRP link; Evernorth cash-funded XRP, in-kind XRP, debt, exercised warrants and undrawn facilities remain separate; Circle-Coinbase, SBI-Circle, SBI-Ripple, Coinbase-Ripple RLUSD and Ripple-BNY are distinct relationships, with no direct Circle-Ripple partnership established. Kamilah Stevenson identity is triangulated, but channel ownership is unverified; third-party guest appearances are not owned-channel attribution.
+
+Only ChatGPT-to-GitHub authentication/data flow is verified. The observed repository role includes admin/maintain/push/pull/triage; token scopes were not introspected and least privilege remains a concern. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified. No external model dispatch or data transfer occurred.
+
+### Open PR classification and merge decision
+
+- **#1684 — blocked:** draft; zero independent reviews; branch protection endpoint HTTP 403; visible fallback ruleset disabled. Parent code head `d055f7ce7ab68b7608fa4de80db496958856c8c6` passes exact-head CI and isolated backfill, but the metadata-only commit containing this handoff/map update requires its own exact-head CI.
+- **#1685 — blocked:** non-draft; exact-head CI and A2A worker/dependency/money/conflict checks passed on its current head, but zero independent reviews and branch protection remains unverifiable. OS sandbox, provider credential isolation, egress restrictions and task-level authorization remain outstanding; runner stays quarantined.
+- Automatic GitHub Pages publication on a main push was previously observed enabled and unauthorized; settings were not re-read in this run. No Pages deployment occurred.
+
+**NO MERGE.** No main write, deployment, secret upload/rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+### Next actions
+
+1. Verify exact-head CI and preserved-artifact replay on the new metadata-only commit; do not transfer the parent-head result.
+2. Capture exact publisher bytes and SHA-256 receipts for the 150 curated events; link only by canonical URL, capture timestamp and hash.
+3. Resolve SEC adapter contact configuration only with an approved monitored project identity.
+4. Implement deterministic feature-store rebuild from raw artifacts and independent external immutable timestamp anchoring.
+5. Reconcile issuer-level ETF files, derivatives, collateral, stablecoin and exchange-flow units before model admission.
+6. Begin leakage-safe chronological walk-forward evaluation only after point-in-time data and event provenance are sufficient. Directional forecast issuance remains disabled.
+
+**Snapshot boundary:** this Run284 evidence is captured on parent code head `d055f7ce7ab68b7608fa4de80db496958856c8c6`. The commit that adds this handoff and the updated nine-platform map is documentation-only; its new head requires its own exact-head CI. No parent-head result is inherited.
