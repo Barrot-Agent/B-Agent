@@ -114,7 +114,7 @@ def test_walk_forward_emits_only_chronological_backtest_baselines_with_metrics()
         assert forecast["live_forecast_issued"] is False
         assert forecast["paper_trade_executed"] is False
         assert forecast["data_cutoff_utc"] < forecast["target_time_utc"]
-        assert forecast["target_anchor"] == "latest_available_bar_event_time"
+        assert forecast["target_anchor"] == "latest_available_completed_bar_close_time"
         assert forecast["realized_event_horizon_seconds"] > 0
         assert forecast["realized_availability_lead_seconds"] > 0
         assert set(forecast["probabilities"]) == {"down", "flat", "up"}
@@ -182,7 +182,7 @@ def test_delayed_capture_anchors_target_to_bar_event_and_records_realized_lead_t
     )
 
     assert result["status"] == "SCORED"
-    assert result["target_anchor"] == "latest_available_bar_event_time"
+    assert result["target_anchor"] == "latest_available_completed_bar_close_time"
     assert result["out_of_sample_origin_count"] >= 10
     forecasts = [item for item in result["forecasts"] if item["model_id"] == "naive_class_prior"]
     assert forecasts
@@ -192,6 +192,64 @@ def test_delayed_capture_anchors_target_to_bar_event_and_records_realized_lead_t
         assert forecast["realized_availability_lead_seconds"] == pytest.approx(47 * 60)
         assert forecast["target_time_utc"] == forecast["observed_target_event_time_utc"]
         assert forecast["data_cutoff_utc"] < forecast["target_time_utc"]
+
+
+def test_coinbase_hourly_close_price_uses_bar_close_not_candle_open_for_walk_forward():
+    records = _series(40)
+    for index, record in enumerate(records):
+        open_time = datetime.fromisoformat(record["event_time_utc"].replace("Z", "+00:00"))
+        close_time = open_time + timedelta(hours=1)
+        capture = close_time + timedelta(minutes=13)
+        record.update({
+            "record_id": f"xrp:coinbase:1h:{index}:v1",
+            "feature_id": "xrp.spot.coinbase.1h.close_price",
+            "feature_name": "close_price",
+            "event_time_utc": _stamp(open_time),
+            "source_data_as_of_utc": _stamp(close_time),
+            "known_at_utc": _stamp(capture - timedelta(seconds=2)),
+            "ingested_at_utc": _stamp(capture),
+            "revision_available_at_utc": _stamp(capture - timedelta(seconds=1)),
+            "venue": "Coinbase",
+            "instrument": "XRP-USD spot",
+            "currency_pair": "XRP/USD",
+            "unit": "USD/XRP",
+            "aggregation_window": "1h",
+            "sources": [{
+                "source_id": "coinbase-spot-candles",
+                "independence_group": "coinbase",
+                "source_uri": "https://api.exchange.coinbase.com/products/XRP-USD/candles?granularity=3600",
+                "raw_content_sha256": f"{index + 1:064x}",
+            }],
+        })
+
+    result = evaluate_chronological_walk_forward(
+        records,
+        feature_id="xrp.spot.coinbase.1h.close_price",
+        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=40, minutes=13)),
+        horizon_seconds=3600,
+        min_train_samples=5,
+        min_out_of_sample_samples=1,
+        min_effective_out_of_sample_samples=1,
+        target_tolerance_seconds=5,
+        max_origin_age_seconds=3600,
+        venue="coinbase",
+        currency_pair="XRP/USD",
+    )
+
+    assert result["status"] == "SCORED"
+    assert result["target_anchor"] == "latest_available_completed_bar_close_time"
+    forecasts = [item for item in result["forecasts"] if item["model_id"] == "naive_class_prior"]
+    assert forecasts
+    for forecast in forecasts:
+        origin_open = datetime.fromisoformat(forecast["origin_bar_open_time_utc"].replace("Z", "+00:00"))
+        origin_close = datetime.fromisoformat(forecast["origin_bar_close_time_utc"].replace("Z", "+00:00"))
+        cutoff = datetime.fromisoformat(forecast["data_cutoff_utc"].replace("Z", "+00:00"))
+        assert origin_close == origin_open + timedelta(hours=1)
+        assert forecast["origin_event_time_utc"] == forecast["origin_bar_close_time_utc"]
+        assert forecast["origin_bar_age_seconds"] == pytest.approx(13 * 60)
+        assert forecast["realized_event_horizon_seconds"] == pytest.approx(3600)
+        assert forecast["realized_availability_lead_seconds"] == pytest.approx(47 * 60)
+        assert cutoff < datetime.fromisoformat(forecast["target_time_utc"].replace("Z", "+00:00"))
 
 
 def test_walk_forward_requires_minimum_distinct_out_of_sample_origins():

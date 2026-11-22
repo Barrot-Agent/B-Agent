@@ -69,8 +69,8 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert is_sha(integration["current_pr_head_sha"])
     assert integration["current_pr_head_sha"] == data["current_pr_head_sha"]
     assert integration["ahead_by"] == 194
-    assert integration["commits"] == 193
-    assert integration["pr_commit_count"] == 193
+    assert integration["commits"] == 194
+    assert integration["pr_commit_count"] == 194
     assert integration["changed_files"] == 29
     assert integration["current_main_sha"] == repo["main_sha"]
     assert integration["base_sha_matches_current_main"] is True
@@ -1272,7 +1272,7 @@ def test_latest_current_state_ref_points_to_automation_run_5_and_binds_audited_c
     assert ci["run_id"] == 45065942935
     assert ci["head_sha"] == run["integration_head_sha"]
     assert ci["passed"] == 4568
-    assert ci["failed"] == 3
+    assert ci["tests_failed"] == 3
     assert ci["skipped"] == 1
     assert ci["conclusion"] == "failure"
     assert ci["coverage_percent"] == 73.21

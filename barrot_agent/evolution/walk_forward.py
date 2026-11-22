@@ -138,24 +138,48 @@ def _normal_probabilities(
     )
 
 
+def _bar_event_time(record: Mapping[str, Any]) -> datetime:
+    """Use completed-bar close time for hourly close-price features.
+
+    Coinbase/Binance candle adapters preserve the exchange candle-open time in
+    event_time_utc and the completed candle close in source_data_as_of_utc.
+    Walk-forward origins and labels must use the close, while availability
+    remains independently bounded by known/ingested/revision timestamps.
+    """
+    feature_id = record.get("feature_id")
+    if (
+        isinstance(feature_id, str)
+        and feature_id.endswith(".1h.close_price")
+        and record.get("aggregation_window") == "1h"
+    ):
+        open_time = _utc(record.get("event_time_utc"), "event_time_utc")
+        close_time = _utc(record.get("source_data_as_of_utc"), "source_data_as_of_utc")
+        if close_time <= open_time:
+            raise WalkForwardEvaluationError(
+                "hourly close-price source_data_as_of_utc must follow the candle open time"
+            )
+        return close_time
+    return _utc(record.get("event_time_utc"), "event_time_utc")
+
+
 def _nearest_record(
     records: list[dict[str, Any]],
     target_time: datetime,
     tolerance_seconds: int,
 ) -> dict[str, Any] | None:
-    """Find the nearest event in a list already sorted by event_time_utc."""
+    """Find the nearest completed-bar event in a list sorted by _bar_event_time."""
     if not records:
         return None
     index = bisect_left(
         records,
         target_time,
-        key=lambda item: _utc(item["event_time_utc"], "event_time_utc"),
+        key=_bar_event_time
     )
     candidates = []
     for candidate_index in (index - 1, index):
         if 0 <= candidate_index < len(records):
             record = records[candidate_index]
-            event_time = _utc(record["event_time_utc"], "event_time_utc")
+            event_time = _bar_event_time(record)
             difference = abs((event_time - target_time).total_seconds())
             if difference <= tolerance_seconds:
                 candidates.append((difference, event_time, record))
@@ -459,10 +483,10 @@ def evaluate_chronological_walk_forward(
         max_source_age_seconds=max_source_age_seconds,
     )
     evaluation_series = list(evaluation_snapshot["records"])
-    evaluation_series.sort(key=lambda item: _utc(item["event_time_utc"], "event_time_utc"))
+    evaluation_series.sort(key=_bar_event_time)
     event_times = set()
     for item in evaluation_series:
-        event_time = _utc(item["event_time_utc"], "event_time_utc")
+        event_time = _bar_event_time(item)
         available = _available_at(item)
         if available < event_time:
             raise WalkForwardEvaluationError("spot price bar is available before its event time")
@@ -500,14 +524,14 @@ def evaluate_chronological_walk_forward(
             continue
         series = [
             item for item in snapshot["records"]
-            if _utc(item["event_time_utc"], "event_time_utc") <= cutoff
+            if _bar_event_time(item) <= cutoff
         ]
-        series.sort(key=lambda item: _utc(item["event_time_utc"], "event_time_utc"))
+        series.sort(key=_bar_event_time)
         if not series:
             skipped.append({"data_cutoff_utc": cutoff_s, "reason": "no_price_bar_available_by_cutoff"})
             continue
         current = series[-1]
-        current_event = _utc(current["event_time_utc"], "event_time_utc")
+        current_event = _bar_event_time(current)
         origin_age = (cutoff - current_event).total_seconds()
         if origin_age < 0 or origin_age > max_age:
             skipped.append({"data_cutoff_utc": cutoff_s, "reason": "latest_price_bar_is_stale_at_cutoff"})
@@ -528,7 +552,7 @@ def evaluate_chronological_walk_forward(
         training_returns: list[float] = []
         training_pairs: list[tuple[float, dict[str, Any], dict[str, Any]]] = []
         for start in series:
-            start_event = _utc(start["event_time_utc"], "event_time_utc")
+            start_event = _bar_event_time(start)
             if start_event >= current_event:
                 continue
             start_available = _available_at(start)
@@ -545,7 +569,7 @@ def evaluate_chronological_walk_forward(
             )
             if outcome is None or outcome["record_id"] == start["record_id"]:
                 continue
-            outcome_event = _utc(outcome["event_time_utc"], "event_time_utc")
+            outcome_event = _bar_event_time(outcome)
             if outcome_event <= start_event or outcome_event > training_cutoff or _available_at(outcome) > training_cutoff:
                 continue
             realized = _price(outcome) / _price(start) - 1.0
@@ -600,7 +624,7 @@ def evaluate_chronological_walk_forward(
 
         actual_return = _price(target) / _price(current) - 1.0
         actual_class = _classify(actual_return, flat_band)
-        target_event = _utc(target["event_time_utc"], "event_time_utc")
+        target_event = _bar_event_time(target)
         target_available = _available_at(target)
         origin_bar_age_seconds = (cutoff - current_event).total_seconds()
         realized_event_horizon_seconds = (target_event - current_event).total_seconds()
@@ -699,13 +723,16 @@ def evaluate_chronological_walk_forward(
                     "training_cutoff_utc": training_cutoff_s,
                     "embargo_seconds": embargo_seconds,
                     "horizon_seconds": horizon_seconds,
-                    "target_anchor": "latest_available_bar_event_time",
-                    "origin_event_time_utc": current["event_time_utc"],
+                    "target_anchor": "latest_available_completed_bar_close_time",
+                    "origin_event_time_utc": _format(current_event),
+                    "origin_bar_open_time_utc": current["event_time_utc"],
+                    "origin_bar_close_time_utc": _format(current_event),
                     "origin_bar_age_seconds": origin_bar_age_seconds,
                     "realized_event_horizon_seconds": realized_event_horizon_seconds,
                     "realized_availability_lead_seconds": realized_availability_lead_seconds,
                     "target_time_utc": _format(target_time),
-                    "observed_target_event_time_utc": target["event_time_utc"],
+                    "observed_target_event_time_utc": _format(target_event),
+                    "observed_target_bar_open_time_utc": target["event_time_utc"],
                     "origin_record_id": current["record_id"],
                     "target_record_id": target["record_id"],
                     "raw_probabilities": raw_probabilities,
@@ -725,7 +752,7 @@ def evaluate_chronological_walk_forward(
                         "training_example_count": len(training_returns),
                         "embargo_seconds": embargo_seconds,
                         "training_cutoff_utc": training_cutoff_s,
-                        "training_latest_outcome_event_time_utc": max(_utc(pair[2]["event_time_utc"], "event_time_utc") for pair in training_pairs).isoformat(timespec="microseconds").replace("+00:00", "Z"),
+                        "training_latest_outcome_event_time_utc": max(_bar_event_time(pair[2]) for pair in training_pairs).isoformat(timespec="microseconds").replace("+00:00", "Z"),
                         "training_latest_outcome_available_at_utc": _format(max(_available_at(pair[2]) for pair in training_pairs)),
                         "trailing_return": trailing_return,
                         "flat_band_bps": float(flat_band_bps),
@@ -748,7 +775,8 @@ def evaluate_chronological_walk_forward(
                         "realized_return": actual_return,
                         "target_price": _price(target),
                         "target_unit": unit,
-                        "outcome_event_time_utc": target["event_time_utc"],
+                        "outcome_event_time_utc": _format(target_event),
+                        "outcome_bar_open_time_utc": target["event_time_utc"],
                         "outcome_available_at_utc": _format(target_available),
                     },
                     "scoring": scoring,
@@ -813,8 +841,8 @@ def evaluate_chronological_walk_forward(
         "unit": unit,
         "evaluation_as_of_utc": _format(evaluation_cutoff),
         "horizon_seconds": horizon_seconds,
-        "target_anchor": "latest_available_bar_event_time",
-        "horizon_semantics": "event-time interval from latest available completed bar; realized availability lead is recorded per forecast",
+        "target_anchor": "latest_available_completed_bar_close_time",
+        "horizon_semantics": "event-time interval from the latest available completed bar close; realized availability lead from the actual data cutoff is recorded per forecast",
         "embargo_seconds": embargo_seconds,
         "purge_policy": "training_start_and_outcome_available_by_cutoff_minus_embargo",
         "flat_band_bps": float(flat_band_bps),

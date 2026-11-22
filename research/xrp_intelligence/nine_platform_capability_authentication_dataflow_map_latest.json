@@ -2855,6 +2855,15 @@
         "actual_posted_collateral": "NOT_VERIFIED",
         "outstanding_debt": "NOT_VERIFIED"
       }
+    },
+    "timestamp_semantics": {
+      "status": "FIX_COMMITTED_AWAITING_EXACT_HEAD_CI",
+      "issue": "Hourly Coinbase and Binance candle records preserve candle-open time in event_time_utc and completed candle close in source_data_as_of_utc; the walk-forward evaluator previously treated the open as the completed-bar event.",
+      "resolution": "For verified 1h close_price features, walk-forward origins, training labels and target labels now use source_data_as_of_utc as the completed-bar close. The original candle-open timestamp remains recorded separately.",
+      "regression_test": "test_coinbase_hourly_close_price_uses_bar_close_not_candle_open_for_walk_forward",
+      "forecast_policy": "Historical backtest only; minimum out-of-sample and effective-sample gates remain enforced; no live forecast or paper trade.",
+      "source_record_semantics": "Coinbase public candles endpoint returns candle-open timestamps; source_data_as_of_utc is candle open plus 3600 seconds.",
+      "verified_from_main_run_id": 45065117078
     }
   },
   "ci_evidence": {
@@ -5528,7 +5537,7 @@
     "ASK Coin": "UNRESOLVED_UNQUALIFIED: Permission Coin (ticker ASK) is the strongest candidate, but the intended ASK Coin identity is not established and no XRP/XRPL/Ripple relationship is verified.",
     "actual capital": "The literal phrase is not established as a formal accounting term in the reviewed SEC filings. Actual cash, in-kind XRP, debt, warrant proceeds and optional ELOC capacity are reconciled separately; these categories are not evidence of XRP purchases unless the filing explicitly records the purchase.",
     "SBIC, ChatGPT SBIC": "SBIC East Japan (Tokyo), SBIC Central Japan (Nagoya), and SBIC West Japan (Osaka) are distinct regional Small and Medium Business Investment & Consultation companies under Japan's 1963 law, not SBI Holdings. Tokyo SBIC's 2025 ChatGPT/AI seminar was VOST-delivered with a Microsoft Japan speaker; no formal OpenAI partnership, investment, product integration, or XRP relationship is established. Exact-phrase corroboration is established for the SBIC-hosted ChatGPT/AI seminar, not for an OpenAI partnership.",
-    "Camilla/Kamilah Stevenson": "Person-level guest identity verified. Video-level bylines/self-introductions are provisional; conflicting candidate channel IDs remain unresolved. No channel-wide attribution or inventory."
+    "Camilla/Kamilah Stevenson": "Person-level guest identity verified. Candidate channel ownership unverified; video-level bylines/self-introductions are provisional; conflicting candidate channel IDs remain unresolved. No channel-wide attribution or inventory."
   },
   "open_pr_backlog_summary": {
     "total_open": 5,
