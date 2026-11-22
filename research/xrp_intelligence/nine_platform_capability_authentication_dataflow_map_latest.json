@@ -470,9 +470,9 @@
       "data_flow": {
         "status": "verified",
         "path": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
-        "last_verified_at_utc": "2026-11-22T06:57:20Z",
-        "observed_flow": "Run14: fetched current main metadata and complete recursive tree; fetched current integration branch tree; compared all four open PRs against main; inspected changed paths, same-file overlaps, reviews, exact-head CI, full-suite logs, dependency audits, workflow permissions, rulesets and branch-protection visibility; downloaded and independently inspected Run60 feature-store, raw-receipt, event and cross-analysis artifacts; verified the 90-day daily feature-store archive fallback; updated the existing canonical XRP handoff and this capability map on the existing integration branch. No main write, merge, deployment, external model dispatch or external data transfer.",
-        "last_verified_evidence": "Run14: main 550a647; integration pre-map-update head 5df09a4, 151 ahead/0 behind, 27 changed files, complete 3,127-entry tree; prior exact code head e7561d3 full suite 4,565 passed/0 failed/1 skipped and 118-record preserved-artifact replay passed; new documentation head CI remains in progress; four open PRs; branch protection details HTTP 403; no independent approvals."
+        "last_verified_at_utc": "2026-11-22T10:11:04Z",
+        "observed_flow": "Automation run 11: fetched repository metadata, complete main and integration recursive trees, all open PRs and changed paths, branch ancestry, exact-head CI/workflow jobs, dependency/security configuration and the latest durable handoff; downloaded and inspected the latest Cross Analysis artifact; performed primary-source XRP ecosystem and SBIC research; updated the canonical handoff and this capability map on the existing integration branch. No main write, merge, deployment, external model dispatch or external data transfer.",
+        "last_verified_evidence": "Main 550a647; integration head 2d5dcf3 at audit start, 168 commits ahead/0 behind, complete 3,127-entry tree and 27 changed paths; four open PRs; PR #1684 remains draft; prior code head 0bc7e45 full suite 4,566 passed/0 failed/1 skipped and preserved-artifact replay passed; new documentation-only exact-head CI is in progress; branch-protection details endpoint HTTP 403; no independent approvals."
       },
       "permissions": [
         "admin",
@@ -486,20 +486,22 @@
       "capability_class": "General-purpose AI assistant; GitHub connector access verified in this session",
       "capability_evidence_status": "verified_current_session",
       "verified_capabilities": [
-        "repository metadata and tree reads",
-        "open PR and diff metadata reads",
-        "workflow/check-run reads",
-        "repository file reads",
+        "repository metadata and complete recursive tree reads",
+        "open PR inventory, review and changed-path reads",
+        "branch ancestry and compare-diff reads",
+        "workflow run, job and job-log reads",
+        "workflow artifact listing and download",
+        "repository source and configuration file reads",
         "integration-branch commit through GitHub connector"
       ],
       "task_assignment": {
         "status": "EXECUTED",
         "run_id": 11,
-        "captured_at_utc": "2026-11-22T06:57:20Z",
-        "task": "Inspect current main and integration trees, all open PRs and overlapping diffs, exact-head CI and security settings; inspect Run60 raw, event, feature-store and cross-analysis artifacts; compute venue-specific order-book depth diagnostics; update the canonical handoff and nine-platform map on the existing XRP integration branch without merging.",
-        "expected_output": "Evidence-qualified repository state, exact-head test status, source-provenance and prediction blockers, market microstructure diagnostics, PR classifications and next actions."
+        "captured_at_utc": "2026-11-22T10:11:04Z",
+        "task": "Audit the current integrated main and XRP branch, inspect all open PRs, ancestry, overlapping paths, full-suite and security workflow evidence; inspect Run63 and Cross Analysis artifacts; reconcile primary-source XRP ecosystem, SBIC and exact-phrase identity claims; update the canonical handoff and nine-platform map in place without merging.",
+        "expected_output": "Current repository and merge-gate state, verified versus pending exact-head checks, source-provenance and prediction blockers, primary-source institutional relationship evidence, identity disambiguation, platform authentication status and next actions."
       },
-      "task_assignment_status": "EXECUTED_IN_RUN269",
+      "task_assignment_status": "EXECUTED_IN_AUTOMATION_RUN_11",
       "last_verified_at_utc": "2026-11-22T06:57:20Z"
     },
     "Claude": {
