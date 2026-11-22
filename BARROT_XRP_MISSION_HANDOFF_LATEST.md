@@ -1,5 +1,84 @@
 # Barrot XRP Intelligence — Canonical Durable Handoff
 
+## Current State — Run 19 — 2026-11-22 10:13 UTC
+
+### Main ingestion Run66 — EXECUTED and independently inspected
+
+[Run 45011220111](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011220111) ran on main SHA `550a647ee7269a704d4600ff337b2145acc90473`. The scheduled 10:03 UTC ingestion started at 10:11:38 UTC (about 8m38s late) and completed successfully at 10:12:25 UTC. This is Run66, not a branch PR run.
+
+Artifact inventory:
+- Raw source receipts: [14748974781](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011220111/artifacts/14748974781), 90-day retention; uploaded ZIP SHA-256 `01f49ea78bfa2221d681fa8823a93ef3ab665613e5b8624ed3d285213417c881`.
+- Receipt-chain index: [14749213754](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011220111/artifacts/14749213754), 90-day retention; ZIP SHA-256 `4b329c44d24860bd2dc2db828a6e123f6f23dee04ca0063b436ab5fa78967276`.
+- Event timeline and research-only observations: [14750066017](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011220111/artifacts/14750066017), 90-day retention; ZIP SHA-256 `7703c5f942c573dee2db073b547f68989c4058f5b9fbef9ac405609036feba9a`.
+- Feature-store SQLite and quote-basis snapshot: [14748874988](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011220111/artifacts/14748874988), seven-day retention; ZIP SHA-256 `1be21280740dc9ceb4dd51202547b33837a0be86b41ee240f2db09d36f4b0e00`.
+- Research-correction audit: [14749333465](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011220111/artifacts/14749333465), 90-day retention.
+
+### Receipt chain, feature store and data quality — VERIFIED
+
+- Cross-run receipt sequence: **36**, continued from Run63 sequence 35.
+- Receipts: 34; retained raw payloads: 22; digest-only receipts: 12; 22 retained payload objects are content-addressed under SHA-256 paths.
+- Receipt chain verification: PASS; previous chain hash matched. Current chain head SHA-256: `9a8826ed28c301a2cf57e96b1f8309a69998a0bc8984888106ee1ba2c6a63e0c`; chain-log SHA-256: `9d0972c23578995f1e5e1f38031b79ca72ad3b4fbddabceb8b7af394ea5adf90`; manifest SHA-256: `eee20728e96c77b59b1b15a819bf5ed44ca4c9497aaf7f08abf2d7e0f2b82f4e`.
+- External anchor: NOT_ANCHORED. Per-source independent timestamp anchor: false. The chain is tamper-evident relative to its final head, not immutable external WORM or an independent time authority.
+- Feature store: **19,206 records, 36 snapshots, 437 source-snapshot lineage rows**. Latest snapshot `74af0e4dc0f9ffc844c199f5a344fb7fcbeca28bab1f9c41fdc48a70ca321d7a` contains 123 verified eligible features from 12 sources and 367 excluded candidate features. SQLite `integrity_check=ok`; record, count, lineage and manifest-hash checks passed.
+- The store restored from Run63's seven-day per-run checkpoint. `feature_store_rebuild_from_raw_artifacts_implemented=false` remains explicit.
+- Cache save again failed because the GitHub Actions cache budget is exhausted and cache writes are read-only. The per-run checkpoint and raw artifacts uploaded successfully; cache failure did not fail ingestion.
+- Raw-only source IDs: 23. Source failures: 18 — eight Binance HTTP 451, five Bybit HTTP 403, one Grayscale HTTP 429, one Franklin XRPZ parser/marker failure and three SEC requests blocked by missing authorized contact identity.
+- Important raw-only sources include Deribit XRP-USDC perpetual ticker/L2, ETF issuer pages with unverified parser/vintage, RLUSD and USDC transparency dashboards, SBI VC Trade lending terms, Morpho cbXRP market parameters/state/liquidity/oracle, and Coinbase cbXRP proof-of-reserves. These are not promoted to model features until units, timestamps, supply/contract semantics and source lineage are verified.
+- No proxy or access-restriction bypass was used.
+
+### Spot structure and order-book depth — Run66 snapshot
+
+Data cutoff: `2026-11-22T10:12:04.604723Z`; exchange quote snapshots were captured around 10:11:53–10:11:56 UTC.
+
+**Cross-venue spot agreement**
+- Coinbase XRP-USD last: `$0.9334`.
+- Kraken XRP-USD mid: approximately `$0.933325`.
+- Bitstamp XRP-USD last: `$0.93302`.
+- OKX same-venue XRP-USDT/USDT-USD normalized USD mid: `$0.933053429`.
+- These four publisher groups were within approximately 4.07 bps of one another at the snapshot. This is cross-venue quote agreement, not proof of executable consolidated liquidity.
+- OKX normalized best bid/ask: `$0.932998846 / $0.933108012`; mid `$0.933053429`; spread `1.16999 bps`. Component age was 8.736 seconds and timestamp skew 0.061 seconds. Both component receipts belong to the same OKX publisher group; the derived USD feature is model-eligible as a single-venue quote basis, not independent confirmation.
+- The normalized OKX mid was about **0.984% above** Run63's `$0.923960689` snapshot approximately 58 minutes earlier. This is a descriptive comparison, not a forecast.
+- Bitstamp reported a 24-hour change of +4.76%, high `$0.93725`, low `$0.88918`; Kraken reported high `$0.93723`, low `$0.88905`, 24-hour VWAP `$0.92253471`; OKX reported high `$0.9389`, low `$0.8906` and 24-hour volume `33.402m XRP`. Venue-specific volumes are not added into a single market total.
+
+**Depth imbalance — venue-specific, not consolidated**
+- 10 bps: Coinbase +0.412; Bitstamp +0.459; Kraken +0.137; OKX +0.278 (USDT depth); Bitbank +0.566 (JPY depth).
+- 50 bps: Coinbase +0.148; Bitstamp +0.310; OKX -0.471 (USDT); Bitbank +0.503 (JPY).
+- 100 bps: Coinbase +0.203; Bitstamp +0.244; OKX -0.413 (USDT); Bitbank +0.140 (JPY).
+- Near-touch depth was bid-heavy on all five sampled venues, but OKX's 50/100-bps book was ask-heavy while the other available deeper books remained bid-heavy. Kraken's captured depth only supports the 10-bps comparison. Bitbank is denominated in JPY and OKX in USDT; neither is converted to USD for depth comparison. Do not sum the books or treat a single snapshot as persistent support.
+- Order-book snapshot spreads: Bitstamp 0.107 bps, Coinbase 1.072 bps, Kraken 1.500 bps, OKX 1.070 bps, Bitbank 0.0675 bps in JPY. These are different venue books and sampling conditions.
+
+**Counterevidence and capital-flow context**
+- Bitbank's latest-60-trade sample captured 60 trades over 282.429 seconds: buy taker 4,482.633 XRP; sell taker 11,986.031 XRP; net taker flow **-7,503.398 XRP**. It is raw-retained but model-ineligible because it is a variable latest-60-trade window, not a fixed-duration or 24-hour flow series.
+- ETF aggregate latest date remains 2026-11-20: seven funds in the reported universe; four direct-spot flow rows, one excluded row; holdings-delta estimate **-$7.452638m / -8.242683m XRP**, with direct-spot holdings 1.122521bn XRP. This is holdings-delta attribution, not issuer/AP cash-flow evidence. Publisher terms permit only a hash-only receipt for the aggregate CSV; no row-level payload is retained. It remains research-only and model-ineligible.
+- Thus the positive cross-venue spot snapshot and bid-heavy near-touch books coexist with short-window Bitbank net selling, deeper OKX ask-side imbalance and the prior-date ETF holdings outflow. These observations have different windows, units and evidence grades; they are not collapsed into a directional signal.
+
+### Event, derivatives, collateral, stablecoin and regulatory blockers
+
+- Event timeline: 150 curated events and 117 scenarios; registry captured `2026-11-19T15:16:42Z`, about 66.9 hours before Run66. All 150 remain receipt-incomplete because publisher raw hashes are absent. `receipt_complete=false`; no probabilities; `forecast_status=NOT_ISSUED`; registry is curated, not an automatically discovered event feed.
+- Derivatives: Binance endpoints remain HTTP 451 and Bybit endpoints HTTP 403; Deribit XRP-USDC perpetual ticker/L2 are raw-only until contract units, OI/funding semantics and sequence behavior are validated. Derivatives coverage remains incomplete.
+- Collateral: Morpho cbXRP parameters, market state, liquidity, history and oracle are retained raw-only until token decimals, units and indexer block timestamps are reconciled. Coinbase cbXRP proof-of-reserves is also raw-only pending locale/refresh/timezone semantics. No eligible cbXRP collateral value is admitted.
+- Stablecoins: Ripple RLUSD, XRPL cross-chain RLUSD and Circle USDC transparency pages remain raw-only until supply, reserve and timestamp vintages are normalized. SBI VC Trade lending page is digest-only; offer terms and actual lending balances are not established.
+- SEC: `BLOCKED_CONFIGURATION`; three issuer submission requests (Evernorth, Coinbase, Circle) failed because `BARROT_SEC_USER_AGENT` lacks an authorized monitored project contact. Zero SEC raw receipts, zero companyfacts captures, zero primary document candidates and zero capital facts. No contact was invented or configured.
+- Drift: `INSUFFICIENT_DATA`, zero features evaluated. Walk-forward: zero forecasts; status `PARTIAL_OR_BLOCKED`. No directional forecast.
+
+### Exact-head CI and current integration state
+
+At the start of Run19 audit, integration head was `fe295cc36c244f3c7d0623203bcf2573c6111dfb`, 169 commits ahead / zero behind main, complete 3,127-entry tree, 27 changed paths. Main remained `550a647`. The handoff and capability map are updated in place on the same existing integration PR; no new branch or PR was created.
+
+For exact head `fe295cc`:
+- Core tests: passed.
+- Preserved-artifact historical backfill replay: passed.
+- Pages validation-only: passed.
+- Dependency audit: passed.
+- Conflict integrity: passed.
+- Money audit: passed.
+- Full repository test suite: still in progress.
+- Fail-closed gate: still in progress.
+
+These are not results for any later documentation commit. The next handoff update commit will require its own exact-head CI; do not transfer the `fe295cc` result.
+
+
+
 ## Current State — Run 18 — 2026-11-22 09:58 UTC
 
 ### Repository, integrated build and merge governance
@@ -222,7 +301,7 @@ No merge, deployment, secret rotation, Space restart, external model dispatch, K
 
 
 
-**Updated:** 2026-11-22 10:10 UTC  
+**Updated:** 2026-11-22 10:13 UTC  
 **Mission priority:** XRP intelligence and measured prediction-engine capability. Preserve Barrot V3 as the execution, orchestration, safety and verification foundation.  
 **Record policy:** The Current State — Run 17 section immediately below is authoritative. Run 16 and earlier sections remain preserved historical evidence; no branch history is rewritten.
 
