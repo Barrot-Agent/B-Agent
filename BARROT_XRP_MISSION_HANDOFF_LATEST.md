@@ -1,5 +1,117 @@
 # Barrot XRP Intelligence — Canonical Durable Handoff
 
+
+## Current State — Run20 — 2026-11-22 11:07 UTC
+
+This section supersedes Run19 for current repository, ingestion and CI status. Earlier sections remain preserved as historical evidence.
+
+### Integrated repository state — VERIFIED
+
+- Repository: `Barrot-Agent/B-Agent`; main SHA `550a647ee7269a704d4600ff337b2145acc90473`.
+- Main recursive tree: 3,115 entries, complete and not truncated.
+- Sole XRP integration branch: `integration/xrp-post-merge-verification-20261121T0002Z`.
+- Current PR #1684 head: `3773a4466915cbbfb48a2e59295726e8e04f070e`; 170 commits ahead, zero behind main; integration tree 3,127 entries, complete; 27 changed paths; all 3,115 main paths are present.
+- Exactly four open PRs. #1684 is the only XRP integration PR; no duplicate XRP workstream was found. No new branch or PR was created.
+- The large `nine_platform_capability_authentication_dataflow_map_latest.json` is preserved as a historical snapshot captured at 06:00:13 UTC. A previously empty `nine_platform_capability_authentication_dataflow_map_current.json` has now been populated as the authoritative current nine-platform map. No historical map data was deleted.
+
+### Exact-head CI on 3773a44 — VERIFIED
+
+- PR CI: [45011673066](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011673066), exact head `3773a4466915cbbfb48a2e59295726e8e04f070e`, success.
+- Push CI: [45011668691](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011668691), success.
+- Full repository test suite job 137175142067: **4,566 passed, 0 failed, 1 skipped**, 11 warnings, 32 subtests; 73.21% coverage; 212.27 seconds. The job ran every tracked active repository test and passed the legacy/core and mission-critical coverage floors.
+- Core test job: passed.
+- Pages validation-only: passed; no deployment.
+- Dependency audit [45011673094](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011673094): passed.
+- Money audit [45011673096](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011673096): passed.
+- Conflict integrity [45011673120](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011673120): passed.
+- Preserved-artifact backfill job 137175141749: passed against Run66 and the exact integration code. It recovered 118 records across 11 source lineages, from 19,206 to 19,324 records and 36 to 37 snapshots. All 37 snapshots passed verification; SQLite integrity was `ok`; point-in-time visibility was false immediately before and true immediately after the post-append availability bound. Reconciliation SHA-256: `e0d04fec4b8ac732c7b2342a3f79e4deaf4cb9a639bd73fd3efab2b8f66731de`. Replay artifact ZIP SHA-256: `444c05a7c194aff7369302f616591b7846c7c7bf6e2d971134088f08278ac89d`. Main's database was not modified. The GitHub API Date header is only a post-append availability bound, not an independent trusted timestamp or physical SQLite commit time.
+- Fail-closed gate [45011673086](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011673086): **BLOCKED_BY_DESIGN**, with exact blockers: PR #1684 is draft; no independent approving review exists; branch-protection details return HTTP 403. No bypass or merge was attempted.
+
+These results are exact for `3773a4466915cbbfb48a2e59295726e8e04f070e`. They must not be transferred to a later commit.
+
+### Main XRP ingestion — Run66 — EXECUTED and independently inspected
+
+[Run 45011220111](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011220111) ran on main at 10:11:38–10:12:25 UTC; data cutoff `2026-11-22T10:12:04.604723Z`.
+
+| Measurement | Result |
+|---|---:|
+| Receipts | 34 |
+| Retained raw payloads / digest-only | 22 / 12 |
+| Retained payload hashes verified | 22/22 |
+| Raw-only sources / source failures | 23 / 18 |
+| Receipt-chain sequence | 36 |
+| Feature-store records / snapshots | 19,206 / 36 |
+| Source-snapshot lineage rows | 437 |
+| Eligible / excluded candidate features | 123 / 367 |
+| Curated events / scenarios | 150 / 117 |
+
+Receipt-chain continuity passed. Chain-head SHA-256: `9a8826ed28c301a2cf57e96b1f8309a69998a0bc8984888106ee1ba2c6a63e0c`. External WORM/time anchoring remains absent. The feature store restored from Run63's seven-day per-run checkpoint; cache writes remain read-only after budget exhaustion. Full reconstruction from retained raw artifacts is not implemented.
+
+### Run66 spot and liquidity — descriptive only
+
+Capture window: approximately 10:11:53–10:11:56 UTC.
+
+- Coinbase XRP-USD last: $0.93340; Kraken mid: approximately $0.933325; Bitstamp last: $0.93302; OKX same-venue XRP-USDT/USDT-USD normalized USD mid: $0.933053429. Four publisher groups were within approximately 4.07 bps; this is quote agreement, not executable consolidated liquidity.
+- OKX normalized bid/ask: $0.932998846 / $0.933108012; spread 1.16999 bps; component maximum age 8.736 seconds; timestamp skew 0.061 seconds. The derived USD quote remains one OKX independence group.
+- Five sampled venues were bid-heavy at 10 bps, but OKX's 50/100-bps book was ask-heavy while other available deeper books remained bid-heavy. OKX depth is USDT-denominated and Bitbank depth is JPY-denominated; do not sum or normalize without validated quote conversion.
+- Bitbank's latest-60-trade sample showed net taker selling of approximately 7,503 XRP over 282.429 seconds. It is a variable trade-count window, not a fixed-duration flow feature.
+- November 20 ETF holdings-delta estimate was approximately -$7.45M / -8.24M XRP across a partial direct-spot reporting universe. It is not issuer/AP cash-flow or verified exchange buying/selling.
+
+The spot rise, bid-heavy near-touch depth, deeper OKX ask-side imbalance, short-window Bitbank selling and prior-date ETF holdings outflow remain competing observations with different windows and evidence grades. No directional conclusion follows.
+
+### Prediction readiness — NOT VERIFIED / forecast disabled
+
+- 150 events and 117 scenarios remain in the curated registry; 0/150 event publisher raw hashes and complete receipt links.
+- Registry age was approximately 66.9 hours at Run66 cutoff; declared independence groups are lineage labels, not proof of independent reporting.
+- Drift: 0/204 features evaluated; insufficient reference data.
+- Walk-forward: zero completed forecasts; no calibrated probabilities.
+- Sentiment input: approximately 572.5 hours stale; not current or forecast-eligible.
+- SEC capture: blocked by missing authorized monitored contact; zero raw receipts.
+- Binance: eight HTTP 451 failures; Bybit: five HTTP 403 failures; no proxy/bypass.
+- Deribit XRP-USDC derivatives, Morpho/Coinbase cbXRP collateral and RLUSD/USDC supply remain raw-only pending unit, contract, timestamp and source-vintage validation.
+- No directional forecast was issued.
+
+### Workflow and governance defect
+
+Main's `.github/workflows/barrot-gated-merge.yml` still uses `jq -r '.draft // true'`. In jq, explicit Boolean `false` triggers the fallback, so a non-draft PR can be misclassified as draft. PR #1684 contains the corrected presence-aware expression:
+
+`if has("draft") then (.draft|tostring) else "unknown" end`
+
+The corrected expression was exercised on the integration branch. The Run20 gate still correctly blocked #1684 for its real draft state, missing independent approval and unverified branch protection. The main-branch copy remains unfixed until a reviewed merge; do not treat this workflow fix as a reason to merge prematurely.
+
+Main branch metadata reports `protected=true`, but the effective branch-protection endpoint returns HTTP 403. The only visible ruleset, `Fall Back`, is disabled. CODEOWNERS assigns `* @Barrot-Agent`, not an independent reviewer. No formal review exists on any open PR.
+
+### Open PR backlog — current inventory
+
+| PR | Classification | Current evidence / blocker |
+|---|---|---|
+| [#1684 XRP integration](https://github.com/Barrot-Agent/B-Agent/pull/1684) | Blocked; sole XRP workstream | Draft; 170 ahead / 0 behind; 27 paths; exact-head full suite and replay passed; no independent approval; branch protection not verifiable. |
+| [#1685 A2A security](https://github.com/Barrot-Agent/B-Agent/pull/1685) | Blocked; unique workstream | Non-draft; 5 ahead / 0 behind; 9 paths; no review; runner remains quarantined pending OS sandbox, provider-credential isolation and egress controls. Earlier CI passed, but that does not satisfy security/review gates. |
+| [#1686 LunaRoute decommission](https://github.com/Barrot-Agent/B-Agent/pull/1686) | Unique/unreviewed; blocked | Draft; 18 ahead / 0 behind; 16 paths; last full suite 4,508 passed / 11 failed / 1 skipped. Shares `tests/test_mcp_server.py` with #1685 in disjoint hunks. Its local cleanup script was not executed and would remove local shell startup entries and a local key file. |
+| [#1687 model integrity diagnostics](https://github.com/Barrot-Agent/B-Agent/pull/1687) | Unique/unreviewed; blocked | Draft; 3 ahead / 0 behind; 3 paths; last full suite 4,538 passed / 1 failed / 1 skipped; docs-index assertion missing the new diagnostics document. |
+
+The shared #1685/#1686 test file is a path overlap, not a duplicate objective; the reviewed hunks are disjoint and must be reconciled if either workstream advances. No PR was closed, no duplicate successor was created, and no main content was changed.
+
+### Nine-platform coordination — current map populated
+
+[Current nine-platform capability/authentication/permission/data-flow map](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-post-merge-verification-20261121T0002Z/research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json)
+
+Only ChatGPT-to-GitHub authentication and repository data flow are verified. Repository metadata exposes admin/maintain/push/pull/triage permissions; connector token scopes were not introspected, so least privilege is not verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified and were not dispatched. No external data transfer occurred.
+
+Institutional and identity reconciliations from Run19 remain in force: SBIC East/Central/West are distinct regional entities, not SBI Holdings divisions; ASK Coin's best-supported candidate remains Permission Coin with no XRP link and a historical contract-address conflict; “actual capital” is not one formal scalar; no primary evidence establishes an SBIC/OpenAI partnership; Dr. Kamilah Stevenson is cross-source identity-verified but her complete own-channel upload inventory remains incomplete. The Circle-Coinbase, Circle-SBI, SBI-Ripple, Coinbase-Ripple and Ripple-BNY edges remain qualified as documented in the preceding research sections; no direct Circle-Ripple partnership or XRP collateral relationship is established.
+
+### Next actions
+
+1. Check the 11:03 UTC scheduled ingestion after the normal startup-delay window; Run66 is the latest visible ingestion at this cutoff, not a proven missed run.
+2. Implement deterministic feature-store reconstruction from retained raw artifacts so the pipeline no longer depends on exhausted Actions cache writes.
+3. Capture current publisher bytes, exact URLs, actual capture timestamps and SHA-256 receipts for event evidence; do not backdate the 150 historical events.
+4. Configure SEC capture only with an authorized monitored project contact.
+5. Normalize derivatives contract units, cbXRP token decimals/block timestamps, stablecoin supply vintages and issuer-level ETF cash flows.
+6. Accumulate chronological origins, then run naive, momentum, mean-reversion and volatility baselines, calibration and drift evaluation.
+7. Preserve #1684 as the only XRP integration PR. Keep all merge, deployment, secret, external dispatch, Kaggle, Databricks, paper-trading and real-money gates closed.
+
+No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
 ## Current State — Run 19 — 2026-11-22 10:13 UTC
 
 ### Main ingestion Run66 — EXECUTED and independently inspected
