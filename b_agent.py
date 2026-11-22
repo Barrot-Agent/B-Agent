@@ -84,6 +84,52 @@ class OpenCodeLLM:
         return None
 
 
+class GroqLLM:
+    """Explicit Groq adapter; it is never selected as an automatic fallback."""
+
+    def __init__(self, model=None, temperature=0.2):
+        api_key = os.getenv("GROQ_API_KEY", "").strip()
+        if not api_key:
+            raise RuntimeError("GROQ_API_KEY is required when BARROT_LLM_PROVIDER=groq.")
+        self.model = model or os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+        self.client = httpx.Client(
+            base_url="https://api.groq.com/openai/v1",
+            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+            timeout=1800.0,
+        )
+        self.temperature = temperature
+
+    def chat(self, messages):
+        response = self.client.post(
+            "/chat/completions",
+            json={"model": self.model, "messages": messages, "temperature": self.temperature},
+        )
+        response.raise_for_status()
+        payload = response.json()
+        try:
+            output = payload["choices"][0]["message"]["content"]
+        except (KeyError, IndexError, TypeError) as exc:
+            raise RuntimeError("Groq returned an invalid chat-completion payload.") from exc
+        if not isinstance(output, str) or not output.strip():
+            raise RuntimeError("Groq returned an empty response.")
+        return output.strip()
+
+    def close(self):
+        self.client.close()
+
+
+def build_llm(provider, model=None):
+    selected = (provider or "").strip().lower()
+    if selected == "groq":
+        return GroqLLM(model)
+    if selected == "opencode":
+        return OpenCodeLLM(model)
+    raise RuntimeError(
+        "Select an inference provider explicitly with --llm-provider or "
+        "BARROT_LLM_PROVIDER=groq|opencode; no provider is selected automatically."
+    )
+
+
 class GitHubRepo:
     def __init__(
         self,
@@ -177,8 +223,7 @@ class GitHubRepo:
         response = self.client.get(
             f"/repos/{self.full_name}"
             f"/contents/{path}",
-            params={
-                "ref": self.default_branch,
+            params={                "ref": self.default_branch,
             },
         )
 
@@ -358,7 +403,6 @@ C. NEXT FIVE FILE GROUPS TO INSPECT
 Repository file tree:
 
 """ + tree_listing[:12000]
-
     return llm.chat(
         [
             {
@@ -391,13 +435,9 @@ def main():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument(
-        "--model",
-        default=os.getenv(
-            "BARROT_MODEL",
-            "opencode/deepseek-v4.1-flash-free",
-        ),
-    )
+    parser.add_argument("--llm-provider", choices=("groq", "opencode"),
+                        default=os.getenv("BARROT_LLM_PROVIDER"))
+    parser.add_argument("--model", default=os.getenv("BARROT_MODEL"))
 
     parser.add_argument(
         "--write-local-audit",
@@ -417,7 +457,7 @@ def main():
         TARGET_REPO,
     )
 
-    llm = OpenCodeLLM(args.model)
+    llm = build_llm(args.llm_provider, args.model)
 
     console.print(
         f"[green]Connected to "
@@ -537,8 +577,7 @@ def main():
             console.print(Markdown(answer))
             continue
 
-        if not all(
-            isinstance(path, str)
+        if not all(            isinstance(path, str)
             and isinstance(content, str)
             for path, content in changes.items()
         ):
