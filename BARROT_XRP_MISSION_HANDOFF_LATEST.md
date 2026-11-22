@@ -1,5 +1,15 @@
 # Barrot XRP Intelligence — Canonical Durable Handoff
 
+## Follow-up validation — 2026-11-22 15:45 UTC
+
+This follow-up supersedes the PR-head and check-status lines in the immediately following 15:31 audit section. Main remains 550a647ee7269a704d4600ff337b2145acc90473. The live integration head and commit count are tracked by [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684); do not use the older 5c5feff SHA in the historical section as the current branch head.
+
+- The previous documentation-only head 39d6c38db253e575f732d7b2add4f3d9da9e0158 passed exact-head validation: [CI run 45039459987](https://github.com/Barrot-Agent/B-Agent/actions/runs/45039459987), full suite 4,571 passed, 0 failed, 1 skipped, 11 warnings, 32 subtests, 4,572 collected, 73% inclusive coverage, 207.69 seconds.
+- On that same head, the core test job, GitHub Pages validation-only build, preserved-real-artifact XRP backfill replay, six-manifest dependency audit, Money audit and conflict-integrity check all passed.
+- The exact-head fail-closed gate [45039487457](https://github.com/Barrot-Agent/B-Agent/actions/runs/45039487457) correctly blocked readiness: PR remains draft, no independent approving review exists, and detailed branch protection could not be verified. No merge occurred.
+- This follow-up handoff-only commit is itself a new PR head. Its own exact-head full-suite, dependency, Money, conflict and gate results must be read from PR #1684 before any merge decision. Parent-head checks must not be inherited.
+- No code, workflow, dependency or main-branch files were changed by the 39d6c38 documentation commit. This follow-up changes only the canonical handoff.
+
 ## Current Audit Update — 2026-11-22 15:31 UTC
 
 This update supersedes the earlier Run23 snapshot for current repository state, exact-head CI, mainline ingestion, market microstructure and identity review. All historical sections remain below, unchanged.
@@ -10,7 +20,7 @@ This update supersedes the earlier Run23 snapshot for current repository state, 
 - Main remains 550a647ee7269a704d4600ff337b2145acc90473.
 - The scheduled XRP Public Market Ingestion workflow is present and active on main. Latest successful capture: [run 45036915985](https://github.com/Barrot-Agent/B-Agent/actions/runs/45036915985), on the exact main SHA above.
 - The only active XRP integration workstream remains [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch integration/xrp-post-merge-verification-20261121T0002Z.
-- Current PR head is 5c5feffd3291f92c50367866d79d2802b02d9c65, not the older 97d4719 SHA still stated in the PR description. The branch is 186 commits ahead and 0 behind main, with 29 changed paths, 30,667 additions and 3,709 deletions.
+- Historical code/test head at this audit point: 5c5feffd3291f92c50367866d79d2802b02d9c65. The later documentation-only heads and their exact-head checks are recorded in the follow-up section above and in PR #1684. The branch is 186 commits ahead and 0 behind main, with 29 changed paths, 30,667 additions and 3,709 deletions.
 - Complete recursive trees: main 3,115 entries; integration 3,129 entries; zero main paths are missing from the integration tree. The integration tree adds 14 paths, principally the backfill module/tests and research records.
 - No new branch or PR was created. Main was not modified. No source PR was closed.
 
