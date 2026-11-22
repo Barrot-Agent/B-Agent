@@ -16,7 +16,9 @@ def test_b_agent_requires_github_credentials_without_provider_key():
     assert 'GH_TOKEN = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN")' in source
     assert "LUNAROUTE_API_KEY" not in source
     assert "class OpenCodeLLM:" in source
-    assert "locally authenticated OpenCode CLI" in source
+    assert "class GroqLLM:" in source
+    assert "def build_llm(provider, model=None):" in source
+    assert "no provider is selected automatically" in source
 
 
 def test_b_agent_has_no_unverified_auto_merge_cli_or_call():
@@ -99,7 +101,9 @@ def test_b_agent_has_no_lunaroute_transfer_cli_or_provider_path():
     assert "lunaroute" not in source.lower()
     assert "LUNAROUTE_API_KEY" not in source
     assert "--allow-lunaroute-data-transfer" not in main
-    assert "OpenCodeLLM(args.model)" in main
+    assert "build_llm(args.llm_provider, args.model)" in main
+    assert '"--llm-provider"' in main
+    assert 'choices=("groq", "opencode")' in main
 
 
 def test_b_agent_local_repair_checks_clean_feature_worktree_before_loop():
