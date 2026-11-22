@@ -6056,6 +6056,20 @@ def run_ingestion(
             "observations": research_only_observations,
         },
     )
+    raw_only_source_ids = sorted({
+        item["source_id"]
+        for item in raw_only
+        if isinstance(item, Mapping)
+        and isinstance(item.get("source_id"), str)
+        and item["source_id"].strip()
+    })
+    raw_only_entries_without_source_id_count = sum(
+        1
+        for item in raw_only
+        if not isinstance(item, Mapping)
+        or not isinstance(item.get("source_id"), str)
+        or not item["source_id"].strip()
+    )
     summary = {
         "schema_version": 1,
         "artifact_type": "xrp_public_market_ingestion_run",
@@ -6081,6 +6095,9 @@ def run_ingestion(
         "external_receipt_anchor_status": cross_run_receipt_chain.get("external_anchor_status", "NOT_ANCHORED"),
         "source_failure_count": len(failures),
         "raw_only_source_count": len(raw_only),
+        "raw_only_unique_source_count": len(raw_only_source_ids),
+        "raw_only_source_ids": raw_only_source_ids,
+        "raw_only_entries_without_source_id_count": raw_only_entries_without_source_id_count,
         "sec_edgar": sec_capture["summary"],
         "sec_capital_events_path": "sec_capital_events.json",
         "research_only_observation_count": len(research_only_observations),
