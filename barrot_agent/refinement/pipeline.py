@@ -31,10 +31,7 @@ from typing import Any
 
 from . import paths, scoring, segmentation, patches, semantics
 from .engine import DEFAULT_EPSILON, REFINABLE_DATA_CLASSES, refine_data
-from .refiners import (
-    EXTERNAL_REFINEMENT_ALLOWED_CLASSES, HeuristicRefiner, LunaRouteRefiner,
-    Refiner, make_model_refiners,
-)
+from .refiners import HeuristicRefiner, Refiner
 from .segmentation import Slot
 
 IMPLEMENTATION_VERSION = "pp-refine/1.1.0"
@@ -113,26 +110,11 @@ def _validate_run_id(run_id: str) -> str:
 
 
 def _validate_refinement_access(refiners, data_classification: str,
-                                allow_external: bool, judge=None) -> None:
+                                allow_external: bool = False, judge=None) -> None:
     if data_classification not in REFINABLE_DATA_CLASSES:
         raise ValueError("unknown or immutable data classification cannot be refined")
-    live = [r for r in refiners if isinstance(r, LunaRouteRefiner)]
-    judge_refiner = getattr(judge, "refiner", None)
-    if isinstance(judge_refiner, LunaRouteRefiner):
-        live.append(judge_refiner)
-    if not live:
-        return
-    if not allow_external:
-        raise PermissionError("external refinement requires allow_external=True")
-    if os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT") != "1":
-        raise PermissionError("BARROT_ALLOW_EXTERNAL_REFINEMENT=1 is required")
-    if os.environ.get("BARROT_LIVE_REFINEMENT_APPROVED") != "1":
-        raise PermissionError("BARROT_LIVE_REFINEMENT_APPROVED=1 is required for this external dispatch")
-    if data_classification not in EXTERNAL_REFINEMENT_ALLOWED_CLASSES:
-        raise PermissionError("data classification is not eligible for external transfer")
-    if any(not r.allow_external or r.data_classification != data_classification
-           or not r.available for r in live):
-        raise PermissionError("external refiner/judge authorization is incomplete")
+    if allow_external:
+        raise PermissionError("external refinement providers are decommissioned")
 
 
 def load_run(run_id: str, runs_dir: Path | str = DEFAULT_RUNS_DIR) -> RunState:
@@ -186,7 +168,6 @@ class RefinementPipeline:
         _validate_refinement_access(self.refiners, data_classification,
                                     allow_external, judge)
         self.data_classification = data_classification
-        self.allow_external = bool(allow_external)
         self.judge = judge
         self.max_slot_chars = max_slot_chars
         self.max_section_attempts = max_section_attempts
@@ -551,27 +532,18 @@ def refine_document(data: Any, objective: str = "",
                     data_classification: str = "unknown",
                     allow_external: bool = False) -> dict:
     """Refine explicitly classified derived data; canonical evidence is rejected."""
+    if allow_external:
+        raise PermissionError("external refinement providers are decommissioned")
     if refiners is None:
-        if allow_external:
-            refiners = make_model_refiners(
-                allow_external=True, data_classification=data_classification)
-            if not refiners:
-                raise PermissionError("no authorized external refinement pool is available")
-        else:
-            refiners = [HeuristicRefiner(), HeuristicRefiner("heuristic-2")]
+        refiners = [HeuristicRefiner(), HeuristicRefiner("heuristic-2")]
     refiners = list(refiners)
     _validate_refinement_access(refiners, data_classification,
                                 allow_external, judge)
     audit = segmentation.audit_document(data)
-    if judge is None and len(refiners) > 1 and isinstance(refiners[1], LunaRouteRefiner):
-        judge = semantics.LLMSemanticJudge(refiners[1])
-        _validate_refinement_access(refiners, data_classification,
-                                    allow_external, judge)
     if not audit.needs_segmentation:
         kwargs = {
             "refiners": refiners, "ledger": ledger,
             "data_classification": data_classification,
-            "allow_external": allow_external,
         }
         if max_rounds is not None:
             kwargs["max_rounds"] = max_rounds
@@ -581,6 +553,6 @@ def refine_document(data: Any, objective: str = "",
     pipe = RefinementPipeline(
         refiners, judge=judge, ledger=ledger,
         data_classification=data_classification,
-        allow_external=allow_external)
+        allow_external=False)
     return pipe.run(data, objective=objective,
                     source_identity=source_identity, force=force)
