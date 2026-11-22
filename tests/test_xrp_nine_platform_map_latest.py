@@ -1055,14 +1055,14 @@ def test_full_repository_suite_is_not_duplicated_on_integration_push():
 
 
 
-def test_run12_current_state_is_authoritative_and_preserves_historical_snapshots():
+def test_latest_current_state_is_authoritative_and_preserves_historical_snapshots():
     data = load_map()
-    assert data["latest_current_state_ref"] == "run12_current_state"
-    run = data["run12_current_state"]
+    assert data["latest_current_state_ref"] == "run15_current_state"
+    run = data["run15_current_state"]
     repo = run["repository"]
     assert repo["main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
-    assert repo["integration_head_sha"] == "c8917c4f5fcf6743334143b0cf34080dddc95018"
-    assert repo["ahead_by"] == 145
+    assert repo["integration_head_sha"] == "67f92442ab70ddf762bea845d7d6e073c5cef93a"
+    assert repo["ahead_by"] == 152
     assert repo["behind_by"] == 0
     assert repo["main_tree_entries"] == 3115
     assert repo["integration_tree_entries"] == 3127
@@ -1071,48 +1071,61 @@ def test_run12_current_state_is_authoritative_and_preserves_historical_snapshots
     ci = run["exact_head_ci"]
     assert ci["head_sha"] == repo["integration_head_sha"]
     assert ci["full_suite"]["passed"] == 4564
-    assert ci["full_suite"]["failed"] == 0
+    assert ci["full_suite"]["failed"] == 1
     assert ci["full_suite"]["skipped"] == 1
+    assert ci["full_suite"]["failure_test"].endswith(
+        "test_run12_current_state_is_authoritative_and_preserves_historical_snapshots"
+    )
     assert ci["backfill_replay"]["recovered_records"] == 118
     assert ci["backfill_replay"]["recovered_source_lineages"] == 11
+    assert ci["backfill_replay"]["artifact_zip_digests_verified"] == 36
+    assert ci["backfill_replay"]["artifact_zip_digest_mismatches"] == 0
     assert ci["backfill_replay"]["main_modified"] is False
-    assert ci["fail_closed_gate"]["conclusion"] == "failure_by_design"
 
     ingestion = run["main_ingestion"]
-    assert ingestion["run_id"] == 44988443368
-    assert ingestion["feature_store_history_records"] == 18606
-    assert ingestion["feature_store_snapshots"] == 31
-    assert ingestion["receipts"]["count"] == 34
-    assert ingestion["receipts"]["retained_raw_payloads"] == 22
-    assert ingestion["receipts"]["digest_only"] == 12
-    assert ingestion["receipts"]["cross_run_sequence"] == 31
-    assert ingestion["event_timeline"]["events"] == 150
-    assert ingestion["event_timeline"]["raw_source_hashes_present"] == 0
-    assert ingestion["event_timeline"]["receipt_complete"] is False
-    assert ingestion["drift"]["features"] == 204
-    assert ingestion["drift"]["evaluated"] == 0
-    assert ingestion["walk_forward"]["forecast_count"] == 0
-    assert ingestion["walk_forward"]["forecast_status"] == "NOT_ISSUED"
-    assert ingestion["sec_edgar"]["status"] == "BLOCKED_CONFIGURATION"
+    assert ingestion["run_id"] == 44997250968
+    assert ingestion["feature_store_history_records"] == 18835
+    assert ingestion["feature_store_snapshots"] == 33
+    assert ingestion["receipts"] == 34
+    assert ingestion["retained_raw_payloads"] == 22
+    assert ingestion["digest_only_receipts"] == 12
+    assert ingestion["raw_payloads_sha256_verified"] == 22
+    assert ingestion["raw_payload_sha256_mismatches"] == 0
+    assert ingestion["cross_run_sequence"] == 33
+    assert ingestion["events"] == 150
+    assert ingestion["event_raw_hashes_present"] == 0
+    assert ingestion["event_receipt_complete"] is False
+    assert ingestion["drift_features"] == 204
+    assert ingestion["drift_evaluated"] == 0
+    assert ingestion["walk_forward_forecasts"] == 0
+    assert ingestion["forecast_status"] == "NOT_ISSUED"
+    assert ingestion["sec_edgar_status"] == "BLOCKED_CONFIGURATION"
 
     prs = run["open_pr_inventory"]
-    assert {pr["number"] for pr in prs} == {1684, 1685, 1686}
+    assert {pr["number"] for pr in prs} == {1684, 1685, 1686, 1687}
     pr1684 = next(pr for pr in prs if pr["number"] == 1684)
     pr1685 = next(pr for pr in prs if pr["number"] == 1685)
     pr1686 = next(pr for pr in prs if pr["number"] == 1686)
+    pr1687 = next(pr for pr in prs if pr["number"] == 1687)
     assert pr1684["classification"] == "blocked"
     assert pr1685["classification"] == "blocked"
     assert pr1686["classification"] == "unique/unreviewed"
+    assert pr1687["classification"] == "unique/unreviewed"
     assert pr1686["full_suite"]["failed"] == 11
+    assert pr1687["full_suite"]["failed"] == 1
     assert pr1686["overlap_with_pr1685"] == ["tests/test_mcp_server.py"]
     assert run["backlog_summary"] == {
-        "total_open": 3, "ready": 0, "blocked": 2,
-        "superseded": 0, "duplicate": 0, "unique_unreviewed": 1,
+        "total_open": 4, "ready": 0, "blocked": 2,
+        "superseded": 0, "duplicate": 0, "unique_unreviewed": 2,
     }
     assert run["platforms"]["ChatGPT"]["authentication"] == "verified"
     for name in ("Claude", "Grok", "Gemini", "Copilot", "Codex",
                  "Hugging Face", "Kaggle", "Databricks"):
         assert run["platforms"][name]["authentication"] == "unverified"
     assert run["prediction"]["directional_forecast_enabled"] is False
-    assert run["no_merge"] is True
+    assert run["no_merge_performed"] is True
     assert run["no_external_actions"] is True
+    assert data["run12_current_state"]["repository"]["integration_head_sha"] == (
+        "c8917c4f5fcf6743334143b0cf34080dddc95018"
+    )
+
