@@ -6914,3 +6914,39 @@ The fix does **not** relax the 100-example training minimum, 100 out-of-sample-o
 - The map's capture snapshot was taken at integration code head `8a64d6f9acda5781e81abc597679c188c5e2d0d4`; the map update itself advanced the branch to `407338274b0d435dbad17452e91b8fe57b968644` (127 commits ahead, 0 behind; 27 changed files). This handoff note is the next documentation-only commit.
 - CI for the newer map/handoff head must be checked independently. Earlier-head results remain historical evidence only.
 
+
+
+### Run281 — 2026-11-22T01:16Z — Main scheduled ingestion Run55
+
+#### Run55 — VERIFIED
+
+Main [XRP Public Market Ingestion Run55](https://github.com/Barrot-Agent/B-Agent/actions/runs/44970457568) completed successfully at 2026-11-22T01:14:34Z on main SHA `550a647`.
+
+- Feature store: 18,113 records across 27 snapshots. Latest snapshot `ab4194b17b04c962ca093949df38e3113aae948bb7da1bd02ebbdbe93e573387`: 490 delta candidates, 106 eligible and 384 excluded. SQLite integrity is `ok`.
+- 34 receipts: 22 raw payloads retained, 12 digest-only. All 22 retained payloads re-hashed to their manifest SHA-256 values; zero mismatches. Receipt chain verified at sequence 27, continuing Run54 `44967713690` sequence 26. External anchor remains NOT_ANCHORED; per-source independent timestamp anchoring remains false.
+- Raw artifact [14733581251](https://github.com/Barrot-Agent/B-Agent/actions/runs/44970457568/artifacts/14733581251), digest `sha256:1ea51dbe59765be124052f4dad2941f3e4b4d78edd9217dbd3b62d76e0fc8abc`; feature-store checkpoint [14733710904](https://github.com/Barrot-Agent/B-Agent/actions/runs/44970457568/artifacts/14733710904); event artifact [14733660993](https://github.com/Barrot-Agent/B-Agent/actions/runs/44970457568/artifacts/14733660993); receipt index [14733710887](https://github.com/Barrot-Agent/B-Agent/actions/runs/44970457568/artifacts/14733710887).
+- 18 source failures: eight Binance HTTP 451, five Bybit HTTP 403, three SEC submissions blocked by missing approved contact identity, one Grayscale HTTP 429 and one Franklin XRPZ parser failure. Raw-only sources: 23. No access restriction was bypassed.
+- Feature-store restore used Run54's trusted per-run checkpoint. Cache writes remain read-only because the configured Actions cache budget is exhausted; artifact fallback preserved continuity.
+- Event registry: 150 curated events and 117 scenarios, still receipt-incomplete and model-ineligible. Drift: 0/204 evaluated. Walk-forward forecast count: 0; status PARTIAL_OR_BLOCKED. SEC capture: BLOCKED_CONFIGURATION, zero filing events, zero raw receipts and no approved contact identity. No forecast issued.
+
+#### Run55 spot and book snapshot — descriptive only
+
+Capture window 2026-11-22T01:14:04–01:14:08Z:
+
+- USD-comparable mids: Bitstamp $0.930655; Coinbase $0.930600; Kraken $0.930705; OKX same-venue USD-normalized $0.930863976. Four-venue range approximately 2.84 bps.
+- OKX USDT/USD mid: 0.998085. XRP/USD normalization used synchronized same-venue top-of-book quotes with 1.399-second skew; normalized OKX spread 1.1724 bps. No fixed USDT peg was assumed. OKX depth remains USDT-denominated.
+- 10-bps USD depth imbalance: Bitstamp +7.73%, Coinbase −0.29%, Kraken −1.67%. Bid/ask depth: approximately $334.4k/$286.4k, $207.9k/$209.1k and $423.1k/$437.5k respectively. OKX 10-bps imbalance was −22.43% in USDT and is not added to USD depth.
+- Venue-level depth signals disagree. The snapshot is not a consolidated book, and no directional inference is warranted.
+
+#### Prediction-engine fix remains branch-only
+
+Run55 executed on main SHA `550a647`, which does not contain the case-insensitive venue-filter fix. Its zero-forecast status is therefore not a post-fix evaluation. The fix remains on PR #1684 at code/test commits `ec65787` and `94bfd3f`; latest handoff/map commits follow them. No threshold was relaxed.
+
+#### Current integration CI boundary
+
+Before this Run55 handoff append, integration head was `9a4055dbd1ce4f46bd931f39b4ba0f0e5ebace42`, 128 commits ahead and 0 behind main, 27 changed files. Exact-head CI was still running: focused tests 738 passed/8 subtests; Pages validation, Money audit and conflict-integrity passed; full repository suite, dependency audit and preserved-artifact replay were still in progress. This append advances the branch and requires a new exact-head CI cycle; do not transfer those partial results.
+
+PR #1684 remains draft with zero independent approvals. PR #1685 remains a separate non-draft A2A security workstream with zero independent approvals. Both remain blocked. No merge, deployment, secret rotation, external dispatch, Kaggle submission, Databricks write, paper trade, transfer or real-money action occurred.
+
+Next action: finish exact-head CI after this handoff update; verify the venue-normalization regression and the post-fix 10-pair walk-forward report. Preserve any insufficient-history result rather than lowering the 100/100 sample gates. Continue event receipt linking and external timestamp anchoring before forecast admission.
+
