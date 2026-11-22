@@ -70,6 +70,78 @@ The main ingestion workflow schedule on main is `3 * * * *` hourly and `15 0 * *
 
 The raw-only summary correction remains verified: the integration smoke artifact reconciled 23 raw-only source IDs against `raw_only_sources.json` and included `summary.json` in the 90-day raw-receipt artifact. The latest exact-head suite passed the corrected weekly-vs-general fixture assertions.
 
+### Fresh primary-source and market-data reconciliation — 2026-11-22 10:04 UTC
+
+All web-derived material below is research-only. The publisher pages were read at this capture time, but raw publisher bytes and per-page SHA-256 receipts were not added to the ingestion archive. These claims remain `raw_capture=false`, `model_eligible=false`; retrieval time is not a publisher timestamp or trusted external clock.
+
+#### SBIC identity — primary-source cross-check
+
+- Tokyo Small and Medium Business Investment & Consultation Co., Ltd. identifies itself as “SBIC East Japan,” corporate number `9011001030621`, established 1963. Its official profile names Nagoya Small and Medium Business Investment & Consultation Co., Ltd. and Osaka Small and Medium Business Investment & Consultation Co., Ltd. as sister companies.
+- The linked Nagoya and Osaka official sites identify separate regional investment-development companies operating under Japan's Small and Medium Business Investment & Consultation Company Act / public-policy framework.
+- SBI Holdings' own corporate profile describes SBI Holdings, Inc. as the holding company controlling the SBI Group through share ownership. It is a separate corporate identity from the three regional SBIC entities. No XRP, Ripple, Circle or SBI Holdings ownership link to the three regional SBIC entities was established by these profiles.
+
+Primary pages:
+- Tokyo SBIC East profile: https://www.sbic.co.jp/company/profile/
+- Nagoya SBIC Central: https://www.sbic-cj.co.jp/
+- Osaka SBIC West: https://www.sbic-wj.co.jp/
+- SBI Holdings corporate profile: https://www.sbigroup.co.jp/english/company/information/profile.html
+
+#### SBI / Circle / USDC / Arc — confirmed corporate edges, separate from XRP
+
+- SBI Holdings and SBI Shinsei Bank disclosed a combined `$50 million` strategic investment in Circle at its June 2025 NYSE listing, split `$25 million` from each entity.
+- SBI Holdings later disclosed that a consolidated subsidiary participated in the Circle-developed Arc L1's ARC Token presale. Arc/ARC is a Circle ecosystem capital and network relationship, not XRP, XRPL or an XRP purchase.
+- SBI VC Trade and Aplus described a May 25–29, 2026 USDC point-of-sale pilot at selected Osaka merchants. The disclosed flow was customer USDC QR payment → SBI VC Trade converts USDC to JPY → JPY sent to Aplus → Aplus pays merchant. This is a concrete USDC/JPY payment-rail experiment, not XRP settlement.
+- Circle's August 2023 investor release says Circle became the USDC issuer and took governance responsibilities in-house; Coinbase took an equity stake and the companies retained a commercial arrangement sharing reserve interest by platform balances and equally sharing interest income from broader distribution/use. This is an issuer/distribution/economic alignment, not common ownership of all USDC reserves.
+
+Official sources:
+- SBI Circle/ARC announcement: https://www.sbigroup.co.jp/news/2026/0512_16310.html
+- SBI/SBI Shinsei Circle investment: https://www.sbigroup.co.jp/news/2025/0609_15491.html
+- SBI VC Trade/Aplus USDC pilot: https://www.sbigroup.co.jp/news/pr/2026/0430_16290.html
+- Circle investor release: https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx
+
+#### Coinbase / Ripple / RLUSD — launch scope versus collateral scope
+
+Coinbase's October 28, 2026 release says RLUSD was added to Coinbase Prime, Coinbase Exchange and the Coinbase app. At launch, deposits and withdrawals were supported across XRPL, Base and Ethereum, and USD-to-RLUSD conversion was offered at 1:1. Coinbase explicitly said Coinbase Global Exchange availability, including use of RLUSD as collateral, would follow. Therefore:
+- RLUSD listing and multi-chain transfer support are disclosed live launch features.
+- RLUSD collateral on Coinbase Global Exchange was not a launch feature in that announcement.
+- This does not establish XRP as collateral on Coinbase or elsewhere.
+- Ripple said it would provide Base liquidity for RLUSD; that is not evidence of XRP spot purchases.
+
+Source: https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+
+#### Ripple / BNY / Ripple National Trust Bank — role separation and regulatory record
+
+- Ripple and BNY's October 27 announcement, corroborated by BNY's own release, says BNY already served as primary reserve custodian for RLUSD and now supports XRP and RLUSD custody for eligible institutional clients. Custody availability is not evidence of new XRP acquisitions or net market buying.
+- BNY describes direct RLUSD mint/redeem through BNY, broader XRPL tokenized-asset support and tokenized trade-finance work as intended future initiatives subject to final BNY and regulatory approvals. Do not treat those future plans as live rails.
+- Ripple's October 26 release says Ripple National Trust Bank (RNTB) received final OCC approval. It describes RNTB's approved role as managing segregated RLUSD reserves, acting as collateral trustee for RLUSD holders and providing fiduciary digital-asset custody. The same release says RLUSD continues to be issued by Standard Custody & Trust Company (SCTC), Ripple's NYDFS-regulated limited-purpose trust company. RNTB is not described as replacing SCTC as issuer.
+- OCC Corporate Applications Search for control `2025-Charter-342347` lists `Consummated/Effective 10/26/2026`, corroborating the effective date. The OCC Interpretations & Decisions index still displays Ripple as Conditional Approval 1359 (December 12, 2025) and does not show a separate final-approval letter in its public list. This is a regulator-index/document-publication gap; it does not negate the CAS consummated/effective entry. RNTB's actual operational opening was not independently verified.
+- BNY's October 27 page repeats Ripple's approximately `$2.5 billion` RLUSD market-cap figure and XRPL transaction count in the same joint announcement. Treat these as issuer/counterparty-reported figures from one announcement lineage, not independent market measurement.
+
+Primary sources:
+- Ripple final-approval announcement: https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/
+- OCC Corporate Applications Search: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+- OCC Interpretations & Decisions index: https://www.occ.treas.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html
+- BNY's own collaboration release: https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+
+#### Cross Analysis artifact 45009562589 — sentiment remains unusable
+
+Artifact 14749590578 was downloaded and inspected. It was generated at `2026-11-22T09:51:36Z`.
+
+- XRP sentiment-shift input latest ingested: `2026-10-29T13:23:01.047283Z`; age 572.476 hours; zero entries in the recent 24-hour window; status `STALE_INPUT`; `forecast_eligible=false`.
+- XRP entity-sentiment profile's latest sentiment-bearing item: `2026-10-29T12:39:22.915636Z`; age 573.204 hours; zero entries in the last 24h, 48h and 7d; 11 invalid timestamp entries.
+- The historical XRP profile contains 286 mentions (186 bullish, 44 neutral, 56 bearish; net score 0.455), but the artifact explicitly scopes this to all available historical entries and marks it not forecast-eligible. It is not current sentiment and must not be interpreted as a live bullish signal.
+- The successful Cross Analysis workflow status does not mean its sentiment inputs are fresh.
+
+#### Conflicting third-party spot quotes — excluded
+
+The November 22 search surfaced a market brief near `$0.9148` and a separate article claiming approximately `$1.30`. They do not expose matching venue/timestamp methodology and conflict materially with Run63's internally captured OKX USD-normalized mid of `$0.923960689` at `2026-11-22T09:14:08Z`. The `$1.30` quote differs by roughly 40.7% from that Run63 mid. Neither third-party quote is promoted to a feature; the discrepancy is a source-quality warning, not a signal to average or choose the preferred number.
+
+Secondary pages checked:
+- https://swiftedge.uk/markets/today
+- https://www.ebtcnews.com/xrp-holds-above-1-29-as-futures-leverage-gets-flushed-out/
+
+No new exact-phrase result changed the existing ASK Coin / “actual capital” / “SBIC, ChatGPT SBIC” dispositions. No additional Camilla/Kamilah channel identity or exhaustive own-channel upload inventory was established in this pass.
+
 ### Current code inspection and architecture status
 
 The relevant integration code and workflows were fetched at `0bc7e45`, not inferred from the handoff:
@@ -118,7 +190,7 @@ No merge, deployment, secret rotation, Space restart, external model dispatch, K
 
 
 
-**Updated:** 2026-11-22 09:58 UTC  
+**Updated:** 2026-11-22 10:04 UTC  
 **Mission priority:** XRP intelligence and measured prediction-engine capability. Preserve Barrot V3 as the execution, orchestration, safety and verification foundation.  
 **Record policy:** The Current State — Run 17 section immediately below is authoritative. Run 16 and earlier sections remain preserved historical evidence; no branch history is rewritten.
 
