@@ -972,7 +972,7 @@ Run: https://github.com/Barrot-Agent/B-Agent/actions/runs/44993265727
 - Ingestion completed successfully at approximately 06:20 UTC.
 - Data cutoff: `2026-11-22T06:20:42.012Z`.
 - Raw artifact ID: `14741754935`.
-- Downloaded raw ZIP SHA-256 independently recomputed in the working container: `84a5d6945bbd7d8c2e8d3a4a7b25a22a9e2a1b2e9a2d9e0d` (retain the full digest in the artifact receipt; do not use this abbreviated display as a verification value).
+- Downloaded raw ZIP SHA-256 independently recomputed in the working container: `84a5d6940ec20143134939f53a0279171289be16e43c9d7523582d75000d4d7a`.
 - 34 source receipts; 22 retained raw payloads; 12 digest-only receipts; 18 provider failures; 23 raw-only sources.
 - New feature-store snapshot: 106 eligible records; 2,230 input features; 490 delta candidates; 32 snapshots reported by the run.
 - Event timeline: 150 events; scenario set: 117.
