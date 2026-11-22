@@ -35,19 +35,9 @@ def get_provider() -> dict[str, str]:
             "default_model": _env("GROQ_MODEL") or "openai/gpt-oss-120b",
         }
 
-    fireworks_key = _env("FIREWORKS_API_KEY")
-    if fireworks_key:
-        return {
-            "name": "fireworks",
-            "api_key": fireworks_key,
-            "base_url": _env("FIREWORKS_BASE_URL")
-            or "https://api.fireworks.ai/inference/v1",
-            "default_model": _env("FIREWORKS_MODEL"),
-        }
-
     raise InferenceError(
-        "No inference provider configured. "
-        "Set GROQ_API_KEY or FIREWORKS_API_KEY."
+        "No supported inference provider configured. "
+        "Set GROQ_API_KEY or use the deterministic offline path."
     )
 
 
