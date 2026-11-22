@@ -114,6 +114,9 @@ def test_walk_forward_emits_only_chronological_backtest_baselines_with_metrics()
         assert forecast["live_forecast_issued"] is False
         assert forecast["paper_trade_executed"] is False
         assert forecast["data_cutoff_utc"] < forecast["target_time_utc"]
+        assert forecast["target_anchor"] == "latest_available_bar_event_time"
+        assert forecast["realized_event_horizon_seconds"] > 0
+        assert forecast["realized_availability_lead_seconds"] > 0
         assert set(forecast["probabilities"]) == {"down", "flat", "up"}
         assert sum(forecast["probabilities"].values()) == pytest.approx(1.0)
         assert len(forecast["alternative_scenarios"]) == 3
@@ -153,6 +156,42 @@ def test_backfilled_history_supports_training_only_at_or_after_its_capture_time(
     }
     assert parsed_outcomes == {BASE + timedelta(hours=24)}
     assert all(item["live_forecast_issued"] is False for item in result["forecasts"])
+
+
+def test_delayed_capture_anchors_target_to_bar_event_and_records_realized_lead_time():
+    records = _series(30)
+    for record in records:
+        event = datetime.fromisoformat(record["event_time_utc"].replace("Z", "+00:00"))
+        capture = event + timedelta(minutes=13)
+        record["known_at_utc"] = _stamp(capture - timedelta(seconds=2))
+        record["ingested_at_utc"] = _stamp(capture)
+        record["revision_available_at_utc"] = _stamp(capture - timedelta(seconds=1))
+
+    result = evaluate_chronological_walk_forward(
+        records,
+        feature_id=FEATURE_ID,
+        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=29, minutes=13)),
+        horizon_seconds=3600,
+        min_train_samples=5,
+        min_out_of_sample_samples=1,
+        min_effective_out_of_sample_samples=10,
+        target_tolerance_seconds=5,
+        max_origin_age_seconds=3600,
+        venue="kraken",
+        currency_pair="XRP/USD",
+    )
+
+    assert result["status"] == "SCORED"
+    assert result["target_anchor"] == "latest_available_bar_event_time"
+    assert result["out_of_sample_origin_count"] >= 10
+    forecasts = [item for item in result["forecasts"] if item["model_id"] == "naive_class_prior"]
+    assert forecasts
+    for forecast in forecasts:
+        assert forecast["origin_bar_age_seconds"] == pytest.approx(13 * 60)
+        assert forecast["realized_event_horizon_seconds"] == pytest.approx(3600)
+        assert forecast["realized_availability_lead_seconds"] == pytest.approx(47 * 60)
+        assert forecast["target_time_utc"] == forecast["observed_target_event_time_utc"]
+        assert forecast["data_cutoff_utc"] < forecast["target_time_utc"]
 
 
 def test_walk_forward_requires_minimum_distinct_out_of_sample_origins():

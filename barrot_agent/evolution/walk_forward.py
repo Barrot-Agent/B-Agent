@@ -513,7 +513,9 @@ def evaluate_chronological_walk_forward(
             skipped.append({"data_cutoff_utc": cutoff_s, "reason": "latest_price_bar_is_stale_at_cutoff"})
             continue
 
-        target_time = cutoff + timedelta(seconds=horizon_seconds)
+        # The label horizon is measured from the latest completed bar event, not the later capture time.
+        # The shorter/variable lead from the actual availability cutoff is recorded separately.
+        target_time = current_event + timedelta(seconds=horizon_seconds)
         target = _nearest_record(
             [item for item in evaluation_series if _utc(item["event_time_utc"], "event_time_utc") > cutoff],
             target_time,
@@ -600,6 +602,9 @@ def evaluate_chronological_walk_forward(
         actual_class = _classify(actual_return, flat_band)
         target_event = _utc(target["event_time_utc"], "event_time_utc")
         target_available = _available_at(target)
+        origin_bar_age_seconds = (cutoff - current_event).total_seconds()
+        realized_event_horizon_seconds = (target_event - current_event).total_seconds()
+        realized_availability_lead_seconds = (target_event - cutoff).total_seconds()
         source_records = [
             source
             for record in [*series, target]
@@ -694,6 +699,11 @@ def evaluate_chronological_walk_forward(
                     "training_cutoff_utc": training_cutoff_s,
                     "embargo_seconds": embargo_seconds,
                     "horizon_seconds": horizon_seconds,
+                    "target_anchor": "latest_available_bar_event_time",
+                    "origin_event_time_utc": current["event_time_utc"],
+                    "origin_bar_age_seconds": origin_bar_age_seconds,
+                    "realized_event_horizon_seconds": realized_event_horizon_seconds,
+                    "realized_availability_lead_seconds": realized_availability_lead_seconds,
                     "target_time_utc": _format(target_time),
                     "observed_target_event_time_utc": target["event_time_utc"],
                     "origin_record_id": current["record_id"],
@@ -803,6 +813,8 @@ def evaluate_chronological_walk_forward(
         "unit": unit,
         "evaluation_as_of_utc": _format(evaluation_cutoff),
         "horizon_seconds": horizon_seconds,
+        "target_anchor": "latest_available_bar_event_time",
+        "horizon_semantics": "event-time interval from latest available completed bar; realized availability lead is recorded per forecast",
         "embargo_seconds": embargo_seconds,
         "purge_policy": "training_start_and_outcome_available_by_cutoff_minus_embargo",
         "flat_band_bps": float(flat_band_bps),
