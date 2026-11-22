@@ -1,6 +1,124 @@
 # Barrot XRP Intelligence — Canonical Durable Handoff
 
-**Updated:** 2026-11-22 09:43 UTC  
+## Current State — Run 18 — 2026-11-22 09:58 UTC
+
+### Repository, integrated build and merge governance
+
+- Main SHA: `550a647ee7269a704d4600ff337b2145acc90473`; recursive tree: 3,115 entries; tree response complete and not truncated.
+- Sole XRP integration branch: `integration/xrp-post-merge-verification-20261121T0002Z`.
+- Current integration head: `0bc7e45719d298ee258176def0777bc60d6c69d2`; 164 commits ahead of main, zero behind; recursive tree: 3,127 entries; 27 changed paths; complete and not truncated. All 3,115 main paths are present. The integration tree adds 12 paths, including the historical backfill module, its tests and research records.
+- The current head is the latest commit `test(xrp): compare weekly raw-only identities to artifact`. No main commit was changed.
+- Main branch object reports `protected=true`; integration branch reports `protected=false`. The detailed branch-protection endpoint returns HTTP 403. The readable branch summary exposes no required status-check contexts, which is not enough to infer the complete effective policy. The only visible repository ruleset, `Fall Back`, is disabled. Main CODEOWNERS assigns all paths to `@Barrot-Agent`, not an independent reviewer.
+- The nine-platform map and canonical handoff remain in the existing XRP PR. No new branch or PR was created.
+
+### Exact-head verification — VERIFIED on 0bc7e45
+
+PR CI run [45009064721](https://github.com/Barrot-Agent/B-Agent/actions/runs/45009064721) completed against the exact current head:
+
+- Full repository suite: **4,566 passed, 1 skipped, 0 failed**, 11 warnings and 32 subtests; 73.21% total coverage; 208.72 seconds.
+- Core test job: passed.
+- Dependency audit [45009064729](https://github.com/Barrot-Agent/B-Agent/actions/runs/45009064729): passed across root runtime, development, supplemental integrations, Hugging Face Space, legacy and PEP 621 dependency declarations.
+- Money audit [45009064662](https://github.com/Barrot-Agent/B-Agent/actions/runs/45009064662): passed.
+- Conflict integrity [45009064668](https://github.com/Barrot-Agent/B-Agent/actions/runs/45009064668): passed.
+- GitHub Pages validation-only: passed; no deployment.
+- Preserved-real-artifact XRP backfill replay: passed.
+- The full-suite run again could not save the pip cache because the configured GitHub Actions cache budget is exhausted. The job passed using the available environment; cache writes remain read-only.
+
+The exact-head fail-closed gate [45009064714](https://github.com/Barrot-Agent/B-Agent/actions/runs/45009064714) correctly returned `READINESS=BLOCKED` because PR #1684 is still draft, no independent approving review exists, and branch-protection details cannot be fully verified. This is a governance block, not a test failure. No bypass or merge was attempted.
+
+### Preserved-artifact replay — VERIFIED
+
+The replay job selected current main ingestion Run63, `45006501541`, on main SHA `550a647`. It verified 32 intermediate receipt-index artifacts before applying the exact branch backfill module in an isolated workspace.
+
+- 38 downloaded artifact ZIP digests matched GitHub's recorded digests; zero mismatches.
+- 118 historical feature records recovered across 11 source lineages.
+- Feature records: **19,083 → 19,201**.
+- Snapshots: **35 → 36**.
+- SQLite integrity: `ok`.
+- Point-in-time visibility: false immediately before the receipt availability bound; true immediately after.
+- Reconciliation SHA-256: `b792edef22e6b60d811e99b44588d789fb024112e5ba6f0bd79d9615b50b3551`.
+- Manifest SHA-256: `e19be22480a27170dc597835bfe8d9a3b1f9c61c3df03b33fa1ffbc5122d589c`.
+- Raw artifact tree SHA-256: `9dd2d6ed344d9db42e75700e0e0f224913b70ecce6175b0ca3ed991b2893b115`.
+- Replay receipt clock is a post-append availability bound, not a physical SQLite commit time or independent trusted timestamp. GitHub Actions artifacts are retention-limited, not WORM. Main's feature-store database was not modified.
+
+Artifact: [reconciliation 14748977026](https://github.com/Barrot-Agent/B-Agent/actions/runs/45009064721/artifacts/14748977026).
+
+This verifies the pinned historical fork reconciliation. It does not implement a complete deterministic reconstruction of every feature-store record from all retained raw receipts.
+
+### Current main XRP ingestion — Run63 remains latest
+
+[Run 45006501541](https://github.com/Barrot-Agent/B-Agent/actions/runs/45006501541), created 2026-11-22 09:13:42 UTC; data cutoff 2026-11-22T09:14:08.043719Z.
+
+| Measure | Result |
+|---|---:|
+| Source receipts | 34 |
+| Retained raw payloads / digest-only receipts | 22 / 12 |
+| Retained payload hashes verified | 22 / 22 |
+| Payload digest mismatches | 0 |
+| Source failures | 18 |
+| Raw-only entries / unique source IDs | 23 / 23 |
+| Feature-store records / snapshots | 19,083 / 35 |
+| Eligible / excluded latest-snapshot records | 124 / 366 |
+| Event timeline / scenarios | 150 / 117 |
+| Event raw-source hashes / complete receipt links | 0 / 0 |
+| Drift features evaluated | 0 / 204 |
+| Completed walk-forward forecasts | 0 |
+
+Cross-run receipt sequence 35 continued from Run62; chain SHA-256 `f15c10bf91c971dbd1e50252d40850f1a0a29e772c5163615f9e18d61bc5164b`. The raw, feature-store, receipt-index and event artifacts are preserved with their individual digests in the Run17 record.
+
+The main ingestion workflow schedule on main is `3 * * * *` hourly and `15 0 * * *` daily. At this audit time, no newer main XRP ingestion run was visible; the next hourly scheduled tick is 10:03 UTC. The latest Cross Analysis run, [45009562589](https://github.com/Barrot-Agent/B-Agent/actions/runs/45009562589), completed successfully at 09:51:39 UTC and produced artifact 14749590578. Its contents were not decoded in this run; no new sentiment or event claim is inferred from its successful status alone.
+
+The raw-only summary correction remains verified: the integration smoke artifact reconciled 23 raw-only source IDs against `raw_only_sources.json` and included `summary.json` in the 90-day raw-receipt artifact. The latest exact-head suite passed the corrected weekly-vs-general fixture assertions.
+
+### Current code inspection and architecture status
+
+The relevant integration code and workflows were fetched at `0bc7e45`, not inferred from the handoff:
+
+- `xrp-public-ingestion.yml`: scheduled hourly and daily ingestion; receipt-chain continuity; exact-cache restore; fallback to the latest trusted per-run feature-store checkpoint; 90-day raw/receipt/event artifacts; seven-day per-run feature-store checkpoint; daily feature backup; cache save attempt.
+- `xrp_public_ingestion.py`: ingestion-only; raw receipt archive and cross-run chain; source-specific parsers; point-in-time historical backfills become known only at actual capture time; no directional forecast or trade signal.
+- `point_in_time_features.py`: requires canonical raw SHA-256, source identity and independence group; validates quality and point-in-time availability before model eligibility.
+- `feature_store.py`: append-only SQLite snapshots, manifest and record hashes, point-in-time retrieval, lineage and integrity checks.
+- `event_timeline.py`: event/scenario and counter-hypothesis handling is present, but current event records still lack raw publisher hashes and complete receipt links.
+- `walk_forward.py`: chronological horizon evaluation and leakage controls are implemented, but no completed forecast is present in Run63.
+- `forecast_ledger.py`: records only after a verified chronological out-of-sample readiness report and trusted independent Ed25519 evaluator attestation. If trusted evaluator keys are absent, forecast issuance remains disabled.
+- `xrp_feature_store_backfill.py`: verifies and repairs the known historical fork segment; it is not yet a full raw-archive-to-feature-store rebuild.
+
+The code supports a strict prediction gate, but the present data do not satisfy it. No directional XRP forecast is issued.
+
+### Open PR inventory and classifications
+
+All four PRs were re-fetched. All four formal review lists are empty. Changed-path overlap exists only between #1685 and #1686 at `tests/test_mcp_server.py`; prior patch inspection found their hunks disjoint, so this is an integration dependency, not a duplicate objective.
+
+| PR | Classification | Current disposition |
+|---|---|---|
+| [#1684 XRP integration](https://github.com/Barrot-Agent/B-Agent/pull/1684) | Blocked — sole XRP integration workstream | Draft; 164 ahead / 0 behind; 27 changed files; exact-head suite, dependency audit, Money audit, conflict integrity, Pages validation and backfill replay passed; gate blocked for draft/no independent approval/protection uncertainty |
+| [#1685 A2A credential security](https://github.com/Barrot-Agent/B-Agent/pull/1685) | Blocked — unique security work | Non-draft; 5 commits ahead; 9 files; no independent review; runner remains quarantined pending OS sandbox, provider-credential isolation and egress controls; prior explicit-draft parser false-positive remains a mainline gate defect |
+| [#1686 LunaRoute removal](https://github.com/Barrot-Agent/B-Agent/pull/1686) | Blocked — unique maintenance work | Draft; 18 commits; 16 files; latest exact-head full suite failed 11 tests; overlaps #1685 only in the same test file |
+| [#1687 model-integrity diagnostics](https://github.com/Barrot-Agent/B-Agent/pull/1687) | Blocked — unique diagnostics work | Draft; 3 commits; 3 files; latest exact-head full suite failed one docs-index assertion |
+
+No duplicate or superseded PR was identified. No PR was closed or merged. Do not mark #1684 ready while draft and independent-review conditions remain unsatisfied.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** scheduled public-data ingestion, content-addressed receipts, point-in-time feature store, event and counter-hypothesis timeline, chronological walk-forward evaluation, probability-calibration and drift controls, forecast ledger and nine-platform capability map.
+- **EXECUTED:** Run63 public ingestion; raw-only summary reconciliation; exact-head CI on `0bc7e45`; 38-artifact preserved-history replay; dependency/security-related audits; internal source-disagreement review.
+- **VERIFIED:** exact-head full suite and all listed non-governance CI jobs; 22/22 retained raw payload hashes; Run63 receipt-chain continuity; 118-record/11-lineage historical recovery; point-in-time visibility boundary; repository tree completeness and PR path overlap inventory.
+- **NOT VERIFIED:** external WORM/time anchoring; complete feature-store rebuild from all raw artifacts; raw publisher hashes for the 150 event records; valid 30-day drift reference; calibrated out-of-sample forecast performance; SEC raw capture; eight external platform authentications/data flows; independent PR approval and full branch-protection policy.
+
+### Next concrete actions
+
+1. Inspect the next scheduled main XRP ingestion after 10:03 UTC; compare its receipt-chain predecessor, hashes, source failures, raw-only identity summary, feature-store counts and artifact retention.
+2. Implement and test deterministic full feature-store reconstruction from retained raw receipts before depending on the exhausted Actions cache or seven-day per-run checkpoints.
+3. Capture current publisher bytes with actual capture timestamps and SHA-256 receipts, then append new event-evidence versions; never backdate historical events.
+4. Configure SEC capture only with an authorized monitored project contact identity.
+5. Accumulate a real chronological reference window; then evaluate naive, momentum, mean-reversion and volatility baselines before calibration.
+6. Preserve the single XRP integration PR. Do not create another XRP branch or PR. Do not merge while draft, without independent approval, or without verified protection requirements.
+
+No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+
+
+**Updated:** 2026-11-22 09:58 UTC  
 **Mission priority:** XRP intelligence and measured prediction-engine capability. Preserve Barrot V3 as the execution, orchestration, safety and verification foundation.  
 **Record policy:** The Current State — Run 17 section immediately below is authoritative. Run 16 and earlier sections remain preserved historical evidence; no branch history is rewritten.
 
