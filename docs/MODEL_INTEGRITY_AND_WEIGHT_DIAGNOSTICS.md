@@ -33,6 +33,26 @@ python scripts/model_integrity_audit.py /path/to/model-directory --output model-
 
 The output report is intended to be retained as an MMI evidence artifact with the source path, exact artifact hashes, and execution context.
 
+## Stage 2 — runtime inference inventory
+
+`scripts/model_runtime_inventory.py` adds a read-only inventory of the repository's actual inference entry points:
+
+- Repository repair worker: `BARROT_LLM_PROVIDER` selects Groq or a loopback-only local endpoint; model and endpoint overrides are recorded without credential values.
+- Shared inference helper: Groq and Fireworks are separate text-only paths, with credential-presence precedence.
+- `BarrotBrain`: GitHub Models, Groq, and explicitly enabled Fireworks fallback.
+- Hugging Face Space: one explicit `BRAIN_PRIMARY`, operator opt-in, and per-session user consent; tool capability differs by provider.
+- OpenCode: reads the checked-in default model and MCP declarations, but does not treat configuration as proof of authentication or execution.
+
+Run from the repository root:
+
+```sh
+python scripts/model_runtime_inventory.py .
+```
+
+The inventory reports only whether known environment variables are present; it never prints their values. Its environment view applies only to the process in which it runs. Run it separately inside Termux, OpenCode, a GitHub Actions job, or the deployed Space to inspect that environment. It makes no network requests and does not run inference.
+
+The current repository snapshot therefore identifies multiple distinct inference surfaces, not one unified runtime router. In particular, the checked-in OpenCode model identifier is `opencode/deepseek-v4.1-flash-free`; the LunaRoute MCP server is declared disabled. This is configuration evidence only, not a live authentication or model-execution test.
+
 ## Diagnostic sequence
 
 The audit deliberately separates four possible failure layers:
@@ -72,7 +92,7 @@ No model-weight update is justified by a model's self-report, a single successfu
 
 ## Acceptance tests
 
-`tests/test_model_integrity_audit.py` covers file hashing, model metadata extraction, size-limit behavior, malformed metadata, missing shards, symlink exclusion, and symlink-root rejection.
+`tests/test_model_integrity_audit.py` covers file hashing, model metadata extraction, size-limit behavior, malformed metadata, missing shards, symlink exclusion, and symlink-root rejection.\n\n`tests/test_model_runtime_inventory.py` covers provider-surface inventory, secret-value exclusion, local loopback validation, and environment-scope limitations.
 
 The tests must run in CI on this exact branch before the change is considered validated. Until then, implementation status is **committed, not yet test-verified**.
 
