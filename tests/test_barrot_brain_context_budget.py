@@ -122,6 +122,30 @@ def test_groq_429_fails_fast_without_retry_or_fireworks_fallback(monkeypatch):
     assert calls == [brain.GROQ_ENDPOINT]
 
 
+def test_shared_inference_refuses_fireworks_only_configuration(monkeypatch):
+    from barrot_agent.orchestration.shared_inference import (
+        InferenceError,
+        get_provider,
+    )
+
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    monkeypatch.setenv("FIREWORKS_API_KEY", "test-fireworks-key")
+    with pytest.raises(InferenceError, match="No supported inference provider"):
+        get_provider()
+
+
+def test_shared_inference_selects_groq_when_configured(monkeypatch):
+    from barrot_agent.orchestration.shared_inference import get_provider
+
+    monkeypatch.setenv("GROQ_API_KEY", "test-groq-key")
+    monkeypatch.setenv("GROQ_MODEL", "test-model")
+    monkeypatch.setenv("FIREWORKS_API_KEY", "test-fireworks-key")
+    provider = get_provider()
+    assert provider["name"] == "groq"
+    assert provider["default_model"] == "test-model"
+    assert provider["base_url"] == "https://api.groq.com/openai/v1"
+
+
 def test_fireworks_environment_cannot_enable_a_provider_fallback(monkeypatch):
     monkeypatch.setenv("FIREWORKS_API_KEY", "test-fireworks-key")
     monkeypatch.setenv("BARROT_ALLOW_FIREWORKS_FALLBACK", "true")
