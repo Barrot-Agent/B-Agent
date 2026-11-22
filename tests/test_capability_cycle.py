@@ -142,6 +142,35 @@ def test_ledger_detects_tampering(tmp_path):
         ledger.read_events()
 
 
+
+@pytest.mark.parametrize("budget", [float("nan"), float("inf"), float("-inf")])
+def test_nonfinite_max_cost_budget_is_rejected(tmp_path, budget):
+    _, mmi, analyze, plan, run, verify, authorize, promote = adapters()
+    with pytest.raises(ValueError, match="finite positive"):
+        CapabilityCycleController(
+            workspace=tmp_path,
+            mmi_ingest=mmi,
+            gap_analyzer=analyze,
+            experiment_planner=plan,
+            sandbox_runner=run,
+            verifier=verify,
+            promoter=promote,
+            authorizer=authorize,
+            max_cost_units=budget,
+        )
+
+
+@pytest.mark.parametrize("cost", [float("nan"), float("inf"), float("-inf")])
+def test_nonfinite_experiment_cost_is_rejected(tmp_path, cost):
+    controller, _ = build(tmp_path)
+    controller.experiment_planner = lambda gap, ingestion: {
+        "hypothesis": "the candidate improves the measured baseline",
+        "acceptance_criteria": ["all regression tests pass"],
+        "estimated_cost_units": cost,
+    }
+    with pytest.raises(CapabilityCycleError, match="finite non-negative"):
+        controller.run("reject non-finite cost", cycle_id="cycle-nonfinite-cost")
+
 def test_no_gap_is_a_valid_terminal_outcome(tmp_path):
     controller, calls = build(tmp_path, gaps=[])
     result = controller.run("audit current capability", cycle_id="cycle-010")

@@ -12,6 +12,7 @@ except ImportError:  # pragma: no cover - non-POSIX fallback is single-writer on
     fcntl = None
 import hashlib
 import json
+import math
 import os
 import re
 import tempfile
@@ -31,6 +32,16 @@ def _canonical(value: Any) -> str:
 
 def _sha256(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
+def _finite_number(value: Any) -> float | None:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return None
+    try:
+        number = float(value)
+    except (OverflowError, ValueError):
+        return None
+    return number if math.isfinite(number) else None
 
 
 @dataclass(frozen=True)
@@ -154,8 +165,9 @@ class CapabilityCycleController:
     ):
         if isinstance(max_experiments, bool) or not isinstance(max_experiments, int) or max_experiments < 1:
             raise ValueError("max_experiments must be a positive integer")
-        if isinstance(max_cost_units, bool) or not isinstance(max_cost_units, (int, float)) or max_cost_units <= 0:
-            raise ValueError("max_cost_units must be positive")
+        budget = _finite_number(max_cost_units)
+        if budget is None or budget <= 0:
+            raise ValueError("max_cost_units must be a finite positive number")
         self.workspace = Path(workspace).resolve()
         self.ledger = CapabilityCycleLedger(self.workspace)
         self.mmi_ingest = mmi_ingest
@@ -166,7 +178,7 @@ class CapabilityCycleController:
         self.promoter = promoter
         self.authorizer = authorizer
         self.max_experiments = max_experiments
-        self.max_cost_units = float(max_cost_units)
+        self.max_cost_units = budget
 
     @staticmethod
     def _require_mapping(value: Any, label: str) -> dict[str, Any]:
@@ -227,12 +239,13 @@ class CapabilityCycleController:
                     continue
                 plan = self._require_mapping(self.experiment_planner(gap, ingestion), "experiment planner")
                 cost = plan.get("estimated_cost_units")
-                if isinstance(cost, bool) or not isinstance(cost, (int, float)) or cost < 0:
-                    raise CapabilityCycleError("experiment plan must declare non-negative estimated_cost_units")
-                if spent + float(cost) > self.max_cost_units:
+                cost_value = _finite_number(cost)
+                if cost_value is None or cost_value < 0:
+                    raise CapabilityCycleError("experiment plan must declare finite non-negative estimated_cost_units")
+                if spent + cost_value > self.max_cost_units:
                     unresolved.append(str(gap["gap_id"]) + ": resource_budget_exhausted")
                     self.ledger.append(cycle_id, "experiment_skipped_budget", {
-                        "gap_id": gap["gap_id"], "estimated_cost_units": cost,
+                        "gap_id": gap["gap_id"], "estimated_cost_units": cost_value,
                         "remaining_cost_units": self.max_cost_units - spent,
                     })
                     continue
@@ -246,10 +259,10 @@ class CapabilityCycleController:
                 if not execution.get("baseline_hash") or not execution.get("artifact_refs"):
                     raise CapabilityCycleError("sandbox execution must identify immutable baseline and output artifacts")
                 experiments_run += 1
-                spent += float(cost)
+                spent += cost_value
                 self.ledger.append(cycle_id, "experiment_executed", {
                     "gap_id": gap["gap_id"], "plan": plan, "execution": execution,
-                    "cost_units": float(cost), "cumulative_cost_units": spent,
+                    "cost_units": cost_value, "cumulative_cost_units": spent,
                 })
 
                 result = self._require_mapping(self.verifier(plan, execution), "verifier")
