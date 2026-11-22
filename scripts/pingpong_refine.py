@@ -9,28 +9,19 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 from barrot_agent.refinement import (
-    EXTERNAL_REFINEMENT_ALLOWED_CLASSES, REFINABLE_DATA_CLASSES,
-    HeuristicRefiner, RefinementPipeline, load_run, make_model_refiners,
+    REFINABLE_DATA_CLASSES, HeuristicRefiner, RefinementPipeline, load_run,
     refine_document,
 )
 
 def _build_refiners(args):
     if args.live:
-        if not args.allow_external_data:
-            raise PermissionError("--live also requires --allow-external-data")
-        if os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT") != "1":
-            raise PermissionError("BARROT_ALLOW_EXTERNAL_REFINEMENT=1 is required")
-        if os.environ.get("BARROT_LIVE_REFINEMENT_APPROVED") != "1":
-            raise PermissionError("BARROT_LIVE_REFINEMENT_APPROVED=1 is required")
-        if args.classification not in EXTERNAL_REFINEMENT_ALLOWED_CLASSES:
-            raise PermissionError("classification is not eligible for external transfer")
-        refiners = make_model_refiners(
-            allow_external=True, data_classification=args.classification)
-        if not refiners:
-            raise PermissionError("no authorized LunaRoute model/key is available")
-        return refiners
+        raise PermissionError(
+            "live external refinement has been decommissioned; use deterministic offline mode"
+        )
     if args.allow_external_data:
-        raise PermissionError("--allow-external-data requires --live")
+        raise PermissionError(
+            "--allow-external-data is unsupported because external refinement is decommissioned"
+        )
     return [HeuristicRefiner(), HeuristicRefiner("heuristic-2")]
 
 def _write_or_print(document, args, input_path=None):
@@ -73,7 +64,7 @@ def main(argv=None) -> int:
                 raise PermissionError("resume classification does not match saved run")
             pipe = RefinementPipeline(
                 refiners, ledger=ledger, data_classification=args.classification,
-                allow_external=args.live)
+                allow_external=False)
             outcome = pipe.resume(args.resume)
             state = load_run(args.resume)
             if outcome.get("disposition") not in (
@@ -93,7 +84,7 @@ def main(argv=None) -> int:
             data, objective=args.objective, refiners=refiners,
             source_identity=str(args.input), force=args.force, ledger=ledger,
             max_rounds=args.max_rounds, data_classification=args.classification,
-            allow_external=args.live)
+            allow_external=False)
         if outcome.get("mode") == "classic":
             document = outcome["report"].data
             disposition = outcome["disposition"]
