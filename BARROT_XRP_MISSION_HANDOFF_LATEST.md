@@ -7,7 +7,7 @@ This is the newest audit snapshot and supersedes older current-state claims belo
 - Repository: `Barrot-Agent/B-Agent`; default branch `main`.
 - Current main SHA: `550a647ee7269a704d4600ff337b2145acc90473`; unchanged in this run.
 - Complete recursive tree: main 3,115 entries; XRP integration 3,129 entries; no main paths are missing from the integration tree.
-- Sole XRP integration workstream: [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch `integration/xrp-post-merge-verification-20261121T0002Z`, exact current head `6ca5a73dab37b9a7ac72b6b43872fa6f5e19836e`; 189 commits ahead, 0 behind, 29 changed paths. GitHub reports mergeable at the metadata layer, but this is not merge authorization.
+- Sole XRP integration workstream: [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch `integration/xrp-post-merge-verification-20261121T0002Z`. The exact live head and checks are linked from PR metadata. Parent code head immediately before this handoff-only update was `6ca5a73dab37b9a7ac72b6b43872fa6f5e19836e` (189 commits ahead, 0 behind, 29 changed paths). This handoff update itself advances the PR head; never inherit parent checks as exact-head evidence.
 - No new branch or PR was created. No main files or refs were changed.
 
 ## Mainline CI and ingestion — VERIFIED
@@ -19,14 +19,14 @@ This is the newest audit snapshot and supersedes older current-state claims belo
 - Latest store: 19,906 feature records after the preserved replay; 42 snapshots. Run72's new snapshot contains 123 eligible feature records and excludes 367 candidates. Source failures: 18.
 - Latest event timeline: 150 events and 117 scenarios. SEC EDGAR remains `BLOCKED_CONFIGURATION` with zero captured SEC raw receipts. The scheduled workflow does not bypass Binance HTTP 451 or Bybit HTTP 403 restrictions; Deribit XRP-USDC perpetual data remains raw-only pending contract-unit, depth and sequence validation.
 
-## Exact-head validation — PR #1684 — VERIFIED
+## Parent-head validation — PR #1684 — VERIFIED; handoff head checks are separate
 
-Exact current head: `6ca5a73dab37b9a7ac72b6b43872fa6f5e19836e`.
+The full-suite and audit evidence below is bound to parent code head `6ca5a73dab37b9a7ac72b6b43872fa6f5e19836e`. The handoff-only update creates a new PR head. Read the latest exact-head CI, audit and fail-closed results from [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684); do not transfer parent-head results to the new head.
 
 - [PR CI 45042243939](https://github.com/Barrot-Agent/B-Agent/actions/runs/45042243939): full repository suite 4,571 passed, 0 failed, 1 skipped, 11 warnings, 32 subtests; 4,572 collected; 73.21% coverage; 161.01 seconds.
 - On the same exact head: [dependency audit 45042244032](https://github.com/Barrot-Agent/B-Agent/actions/runs/45042244032) passed; [Money audit 45042244009](https://github.com/Barrot-Agent/B-Agent/actions/runs/45042244009) passed; [conflict integrity 45042243844](https://github.com/Barrot-Agent/B-Agent/actions/runs/45042243844) passed; core Tests and Pages validation-only build passed.
 - Preserved-real-artifact replay job [137269047373](https://github.com/Barrot-Agent/B-Agent/actions/runs/45042243939/job/137269047373) passed. It verified 38 intermediate receipt-index artifacts, replayed the known historical fork in an isolated CI copy, added 118 records across 11 source lineages (19,788 to 19,906), and advanced the store from 41 to 42 snapshots. All 42 snapshots verified. Point-in-time visibility was false before the post-append receipt bound and true after it. The stored timestamp is explicitly a post-append availability bound, not the original recovery time. Reconciliation SHA-256: `158d8c6086458ed463ae6b5872e4bf5d7adb3ca5a989a186ae4df58446b9ce9f`. This is a targeted historical-fork replay, not a general rebuild from every raw artifact.
-- [Fail-closed gate 45042244055](https://github.com/Barrot-Agent/B-Agent/actions/runs/45042244055) correctly returned BLOCKED: PR is draft; no independent approving review exists; effective branch protection cannot be verified (HTTP 403). Do not merge.
+- Parent-head [fail-closed gate 45042244055](https://github.com/Barrot-Agent/B-Agent/actions/runs/45042244055) correctly returned BLOCKED: PR is draft; no independent approving review exists; effective branch protection cannot be verified (HTTP 403). The gate reruns on the handoff head; do not merge unless that exact head and all governance requirements are verified.
 
 ## Latest market observation and prediction readiness
 
@@ -56,7 +56,7 @@ Exact current head: `6ca5a73dab37b9a7ac72b6b43872fa6f5e19836e`.
 
 ## Open PR inventory — CURRENT
 
-- **#1684 — blocked / sole XRP integration.** Draft; exact-head full suite, backfill, dependency, Money and conflict checks pass. No independent approval; branch-protection settings unreadable; Pages publication authorization unresolved.
+- **#1684 — blocked / sole XRP integration.** Draft. Parent code head passed full suite, backfill and audits; the latest handoff-only commit creates a new head whose own checks must be read from PR metadata. No independent approval; branch-protection settings unreadable; Pages publication authorization unresolved.
 - **#1685 — blocked / unique A2A security work.** Head `e512f4e6d66c1575186d00b60852c93caba687e0`; non-draft; 9 changed paths. Exact-head CI [44848528169](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528169): 4,536 passed, 0 failed, 1 skipped, 11 warnings, 32 subtests, 73.22% coverage, 195.62 seconds. A2A Worker Tests, dependency, Money and conflict checks passed. No independent approval. OS sandboxing, provider-credential isolation, egress restrictions and task-level authorization remain incomplete; runner stays quarantined.
 - **#1686 — unique/unreviewed LunaRoute maintenance.** Head `485cbfb8773201c40385e9c369e53deeea0e5b1b`; draft; 21 changed paths. Exact-head CI [45047356948](https://github.com/Barrot-Agent/B-Agent/actions/runs/45047356948): 4,521 passed, 0 failed, 0 skipped, 11 warnings, 21 subtests, 73.30% coverage, 124.51 seconds. Money, dependency and conflict checks passed. Gate [45047357014](https://github.com/Barrot-Agent/B-Agent/actions/runs/45047357014) blocked because the PR is draft, has no independent approval, and branch protection is unreadable.
 - **#1687 — unique/unreviewed model-integrity diagnostics.** Head `674f28c67478fd60f23d2dbcd69e39f41c6cf6c2`; draft; 6 changed paths. Exact-head CI [45037680974](https://github.com/Barrot-Agent/B-Agent/actions/runs/45037680974): 4,543 passed, 0 failed, 1 skipped, 11 warnings, 32 subtests, 73.22% coverage, 207.52 seconds. Dependency, Money and conflict checks passed; no independent review.
