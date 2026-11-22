@@ -19726,7 +19726,7 @@
   },
   "current_merge_decision": "DO_NOT_MERGE",
   "latest_automation_run_number": 11,
-  "latest_current_state_ref": "run21_current_state",
+  "latest_current_state_ref": "run22_current_state",
   "run11_current_state": {
     "automation_run_number": 11,
     "captured_at_utc": "2026-11-22T02:50:00Z",
@@ -22361,5 +22361,309 @@
     "Reconcile ETF holdings and net assets from each issuer's own dated files; resolve the Bitwise AUM arithmetic discrepancy before admission.",
     "Resolve SEC user-agent configuration only with an authorized monitored project contact.",
     "Build enough genuine sequential point-in-time origins before baseline, calibration or directional forecast work."
-  ]
+  ],
+  "run22_current_state": {
+    "automation_run_number": 11,
+    "captured_at_utc": "2026-11-22T11:37:03Z",
+    "snapshot_boundary": "Repository, main ingestion, exact-head CI, PR inventory and web research were observed on integration code head 4ef52d151dc3f3944db9d57631cc953ffe8b7a7e before this atomic research/test/handoff update. This update is a fast-forward child and must receive its own exact-head CI; no parent-head result transfers.",
+    "repository_state": {
+      "repository": "Barrot-Agent/B-Agent",
+      "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "main_tree_entries": 3115,
+      "main_tree_truncated": false,
+      "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+      "integration_head_sha": "4ef52d151dc3f3944db9d57631cc953ffe8b7a7e",
+      "integration_tree_entries": 3127,
+      "integration_tree_truncated": false,
+      "ahead_by": 173,
+      "behind_by": 0,
+      "changed_files": 27,
+      "main_paths_missing": 0,
+      "open_pr_count": 4,
+      "open_prs": [
+        1684,
+        1685,
+        1686,
+        1687
+      ],
+      "main_modified": false
+    },
+    "exact_head_ci": {
+      "head_sha": "4ef52d151dc3f3944db9d57631cc953ffe8b7a7e",
+      "pr_run_id": 45017836198,
+      "push_run_id": 45017831957,
+      "conclusion": "failure",
+      "full_repository_suite": {
+        "passed": 4565,
+        "failed": 1,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.21,
+        "duration_seconds": 136.73,
+        "conclusion": "failure",
+        "failing_test": "tests/test_xrp_nine_platform_map_latest.py::test_latest_current_state_is_authoritative_and_preserves_historical_snapshots",
+        "failure_reason": "Stale assertion expected latest_current_state_ref=run16_current_state while the active cumulative map correctly points to run21_current_state. Run16 is a historical snapshot. No application runtime failure was identified."
+      },
+      "core_tests": "success",
+      "dependency_audit": {
+        "run_id": 45017836174,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 45017836232,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 45017836221,
+        "conclusion": "success"
+      },
+      "pages_validation": {
+        "conclusion": "success_validation_only",
+        "deployment_executed": false
+      },
+      "backfill_replay": {
+        "run_id": 45017836198,
+        "job_id": 137193888774,
+        "conclusion": "success"
+      },
+      "fail_closed_gate": {
+        "run_id": 45017836164,
+        "conclusion": "failure_by_design",
+        "blockers": [
+          "PR #1684 remains draft",
+          "No independent approving review",
+          "Branch-protection endpoint returns HTTP 403",
+          "Exact-head full repository suite failed one stale map-pointer assertion"
+        ]
+      },
+      "new_head_results_inherited": false
+    },
+    "main_ingestion": {
+      "run_id": 45016059622,
+      "run_number": 67,
+      "conclusion": "success",
+      "data_cutoff_utc": "2026-11-22T11:11:39.950695Z",
+      "receipt_count": 34,
+      "retained_raw_payloads": 22,
+      "digest_only_receipts": 12,
+      "retained_payload_hashes_verified": 22,
+      "raw_payload_hash_mismatches": 0,
+      "receipt_chain_sequence": 37,
+      "cross_run_chain_sha256": "a6f9155f8f3d5b2ddcae3dfd25d2b7f68a0b4df4c6f50e2bbf6c48c1dcb2e6f2",
+      "receipt_chain_head_sha256": "35406d9e70cac162e4df8b321b0297c340c01ddb3f6667416e9858b2cd9f3e85",
+      "feature_store_history_records": 19312,
+      "feature_store_snapshots": 37,
+      "latest_snapshot_candidate_features": 490,
+      "eligible_features": 106,
+      "excluded_features": 384,
+      "raw_only_sources": 23,
+      "source_failures": 18,
+      "source_failure_breakdown": {
+        "binance_http_451": 8,
+        "bybit_http_403": 5,
+        "sec_configuration_failures": 3,
+        "grayscale_http_429": 1,
+        "franklin_parser_failure": 1
+      },
+      "events": 150,
+      "scenarios": 117,
+      "event_raw_hashes_present": 0,
+      "event_receipt_complete": false,
+      "drift_features": 204,
+      "drift_evaluated": 0,
+      "walk_forward_forecasts": 0,
+      "forecast_status": "NOT_ISSUED",
+      "quote_basis": {
+        "venue": "OKX",
+        "mid_usd": 0.932563679,
+        "best_bid_usd": 0.932509098,
+        "best_ask_usd": 0.93261826,
+        "spread_bps": 1.170558134078863,
+        "snapshot_skew_seconds": 0.18,
+        "max_component_age_seconds": 7.881695,
+        "publisher_independence_groups": [
+          "okx"
+        ],
+        "publisher_independence_group_count": 1,
+        "model_eligible_for_quote_features": true,
+        "consolidated_depth": false
+      },
+      "cache_status": "READ_ONLY_BUDGET_EXHAUSTED",
+      "restore_source": "Run66 per-run checkpoint",
+      "per_run_checkpoint_retention_days": 7,
+      "raw_receipt_artifact_retention_days": 90,
+      "full_rebuild_from_retained_raw_artifacts_implemented": false,
+      "external_timestamp_anchor": "NOT_ANCHORED"
+    },
+    "open_pr_inventory": [
+      {
+        "number": 1684,
+        "classification": "blocked",
+        "workstream": "XRP ingestion, feature-store recovery, event provenance and prediction readiness",
+        "head_sha": "4ef52d151dc3f3944db9d57631cc953ffe8b7a7e",
+        "draft": true,
+        "ahead_by": 173,
+        "behind_by": 0,
+        "changed_files": 27,
+        "formal_reviews": 0,
+        "exact_head_full_suite": {
+          "passed": 4565,
+          "failed": 1,
+          "skipped": 1
+        },
+        "blockers": [
+          "Draft",
+          "No independent approval",
+          "Branch protection cannot be verified",
+          "Exact-head suite failure pending correction"
+        ]
+      },
+      {
+        "number": 1685,
+        "classification": "blocked",
+        "workstream": "A2A gateway/runner credential separation",
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "draft": false,
+        "ahead_by": 5,
+        "behind_by": 0,
+        "changed_files": 9,
+        "formal_reviews": 0,
+        "runner": "QUARANTINED",
+        "blockers": [
+          "No independent approval",
+          "Branch protection cannot be verified",
+          "OS sandbox absent",
+          "Provider credential isolation absent",
+          "Egress restrictions absent",
+          "Task-level authorization absent"
+        ]
+      },
+      {
+        "number": 1686,
+        "classification": "unique/unreviewed; blocked",
+        "workstream": "LunaRoute runtime decommission",
+        "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+        "draft": true,
+        "ahead_by": 18,
+        "behind_by": 0,
+        "changed_files": 16,
+        "formal_reviews": 0,
+        "last_full_suite": {
+          "passed": 4508,
+          "failed": 11,
+          "skipped": 1
+        },
+        "overlap_with_pr1685": [
+          "tests/test_mcp_server.py"
+        ],
+        "local_cleanup_script_executed": false
+      },
+      {
+        "number": 1687,
+        "classification": "unique/unreviewed; blocked",
+        "workstream": "Read-only model-integrity diagnostics",
+        "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+        "draft": true,
+        "ahead_by": 3,
+        "behind_by": 0,
+        "changed_files": 3,
+        "formal_reviews": 0,
+        "last_full_suite": {
+          "passed": 4538,
+          "failed": 1,
+          "skipped": 1
+        },
+        "failure": "docs-index assertion"
+      }
+    ],
+    "backlog_summary": {
+      "total_open": 4,
+      "ready": 0,
+      "blocked": 4,
+      "superseded": 0,
+      "duplicate": 0,
+      "unique_unreviewed": 2
+    },
+    "security": {
+      "branch_metadata_protected": true,
+      "branch_protection_endpoint": "HTTP 403 — effective classic protection settings not independently readable",
+      "visible_fallback_ruleset": "Fall Back — disabled",
+      "codeowners": "* @Barrot-Agent",
+      "independent_reviews": 0,
+      "required_status_checks_verified": false
+    },
+    "platforms": {
+      "ChatGPT": {
+        "authentication": "verified",
+        "data_flow": "GitHub repository read/write tested"
+      },
+      "Claude": {
+        "authentication": "unverified"
+      },
+      "Grok": {
+        "authentication": "unverified"
+      },
+      "Gemini": {
+        "authentication": "unverified"
+      },
+      "Copilot": {
+        "authentication": "unverified"
+      },
+      "Codex": {
+        "authentication": "unverified"
+      },
+      "Hugging Face": {
+        "authentication": "unverified"
+      },
+      "Kaggle": {
+        "authentication": "unverified"
+      },
+      "Databricks": {
+        "authentication": "unverified"
+      }
+    },
+    "prediction": {
+      "directional_forecast_enabled": false,
+      "event_count": 150,
+      "event_raw_hashes_present": 0,
+      "complete_event_receipts": 0,
+      "drift_evaluated": 0,
+      "drift_features": 204,
+      "walk_forward_origins": 0,
+      "forecasts_issued": 0,
+      "sec_capture_status": "BLOCKED_CONFIGURATION",
+      "model_eligible": false
+    },
+    "research_artifact_path": "research/xrp_intelligence/20261122T113703Z-run22-identity-phrase-ask-market-institutional-addendum.json",
+    "research_artifact_raw_http_bytes_captured": false,
+    "merge_decision": "DO_NOT_MERGE",
+    "no_merge_performed": true,
+    "no_source_pr_closures": true,
+    "no_external_actions": true,
+    "next_actions": [
+      "Correct the stale regression contract: preserve Run16 as a historical snapshot and bind latest_current_state_ref to Run22.",
+      "Run exact-head full repository suite, dependency audit, Money audit, conflict integrity, backfill replay and fail-closed gate on the new commit.",
+      "Implement deterministic feature-store reconstruction from retained raw artifacts to remove the exhausted Actions-cache dependency.",
+      "Capture exact publisher bytes, URLs, timestamps and SHA-256 receipts for the 150 curated events; do not backdate them.",
+      "Reconcile issuer ETF holdings and net assets; resolve the Bitwise aggregate discrepancy before model admission.",
+      "Resolve SEC user-agent configuration only with an authorized monitored project contact.",
+      "Build enough genuine chronological point-in-time origins before baseline, calibration or directional forecasting."
+    ]
+  },
+  "run22_web_research": {
+    "captured_at_utc": "2026-11-22T11:37:03Z",
+    "artifact_path": "research/xrp_intelligence/20261122T113703Z-run22-identity-phrase-ask-market-institutional-addendum.json",
+    "model_eligible": false,
+    "raw_http_bytes_captured": false,
+    "key_findings": [
+      "Japanese SBIC East/Central/West are distinct regional companies, not SBI Holdings.",
+      "The ChatGPT SBIC phrase most plausibly refers to a 2025 Tokyo SBIC ChatGPT seminar; no OpenAI partnership evidence.",
+      "Permission Coin is a supported ASK candidate with current LayerZero Base/Polygon contracts; no XRP relationship established.",
+      "Ripple-Coinbase RLUSD distribution is direct; RLUSD collateral was future at announcement.",
+      "BNY custody and SBI VC Trade RLUSD distribution are not proof of XRP demand.",
+      "Third-party XRP perpetual page contains conflicting same-day price panels and is excluded."
+    ]
+  }
+
 }

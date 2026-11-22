@@ -1,5 +1,105 @@
 # Barrot XRP Intelligence — Canonical Durable Handoff
 
+## Current State — Run22 — 2026-11-22 11:37 UTC
+
+This section supersedes Run21 for the current audit boundary. The exact-head evidence below belongs to code head `4ef52d151dc3f3944db9d57631cc953ffe8b7a7e`; the test/map/research/handoff update is a fast-forward child and must receive its own exact-head CI. Parent results do not transfer.
+
+### Integrated repository state — VERIFIED
+
+- Repository: `Barrot-Agent/B-Agent`; main SHA `550a647ee7269a704d4600ff337b2145acc90473`.
+- Main recursive tree: 3,115 entries, complete. XRP integration tree: 3,127 entries, complete; 173 commits ahead, zero behind, 27 changed files, zero missing main paths.
+- Sole XRP integration branch: `integration/xrp-post-merge-verification-20261121T0002Z`; PR #1684 is its only XRP workstream.
+- Four open PRs remain: #1684, #1685, #1686 and #1687. No new branch or PR was created. Main was not modified.
+- PR #1684 and #1685 have no overlapping paths. PR #1686 overlaps #1685 only in `tests/test_mcp_server.py` (disjoint hunks). PR #1687 is a separate model-integrity workstream.
+- The 2.75MB historical `nine_platform_capability_authentication_dataflow_map_current.json` remains preserved byte-for-byte at its recovered original Git blob. The active cumulative map is `nine_platform_capability_authentication_dataflow_map_latest.json`; this update advances its pointer to `run22_current_state` without rewriting historical snapshots.
+
+### Exact-head CI on 4ef52d1 — VERIFIED FAILURE, ROOT CAUSE ISOLATED
+
+[PR exact-head CI 45017836198](https://github.com/Barrot-Agent/B-Agent/actions/runs/45017836198) ran on exact head `4ef52d151dc3f3944db9d57631cc953ffe8b7a7e`.
+
+- Full repository suite: **4,565 passed, 1 failed, 1 skipped**, 11 warnings, 32 subtests, 73.21% coverage; 136.73 seconds.
+- The sole failure is a stale regression assertion in `tests/test_xrp_nine_platform_map_latest.py::test_latest_current_state_is_authoritative_and_preserves_historical_snapshots`. It expects the active map pointer to remain `run16_current_state`, while the active cumulative map correctly points to `run21_current_state`. Run16 is a historical snapshot and should remain immutable. No application runtime failure was identified.
+- Core tests passed. Dependency audit [45017836174](https://github.com/Barrot-Agent/B-Agent/actions/runs/45017836174), Money audit [45017836232](https://github.com/Barrot-Agent/B-Agent/actions/runs/45017836232), conflict integrity [45017836221](https://github.com/Barrot-Agent/B-Agent/actions/runs/45017836221), Pages validation-only and preserved-artifact backfill replay all passed on this parent head.
+- Fail-closed gate [45017836164](https://github.com/Barrot-Agent/B-Agent/actions/runs/45017836164) remains blocked: #1684 is draft, no independent approving review exists, branch-protection details return HTTP 403, and the exact-head full suite failed.
+- The correction in this update renames the Run16 assertion as a historical-snapshot test, removes its stale claim to be the latest pointer, and adds a new test that binds the Run22 active pointer to the exact Run22 snapshot and research artifact. No application code or workflow is changed. The new commit must pass its own full suite and all gates.
+
+### Main XRP ingestion Run67 — VERIFIED
+
+[Main ingestion Run 45016059622](https://github.com/Barrot-Agent/B-Agent/actions/runs/45016059622) completed successfully. Data cutoff: `2026-11-22T11:11:39.950695Z`.
+
+| Measurement | Result |
+|---|---:|
+| Receipts | 34 |
+| Retained raw payloads / digest-only | 22 / 12 |
+| Retained payload hashes verified / mismatches | 22 / 0 |
+| Receipt-chain sequence | 37 |
+| Feature-store records / snapshots | 19,312 / 37 |
+| Latest candidate features | 490 |
+| Eligible / excluded | 106 / 384 |
+| Raw-only sources / source failures | 23 / 18 |
+| Events / scenarios | 150 / 117 |
+| Event raw hashes present | 0 |
+| Drift evaluated | 0 / 204 |
+| Walk-forward forecasts | 0 |
+
+The receipt chain continued. Cross-run chain SHA-256: `a6f9155f8f3d5b2ddcae3dfd25d2b7f68a0b4df4c6f50e2bbf6c48c1dcb2e6f2`; chain-head SHA-256: `35406d9e70cac162e4df8b321b0297c340c01ddb3f6667416e9858b2cd9f3e85`.
+
+OKX same-venue normalized top-of-book: mid **$0.932563679**, bid **$0.932509098**, ask **$0.932618260**, spread **1.170558 bps**, actual snapshot skew **0.18 seconds**, maximum component age **7.881695 seconds**. The XRP-USDT and USDT-USD receipts share one OKX publisher group. This is a valid quote-basis feature, not independent cross-venue corroboration or consolidated depth.
+
+Provider failures: Binance HTTP 451 (8), Bybit HTTP 403 (5), SEC configuration (3), Grayscale HTTP 429 (1), Franklin parser (1). No access restriction was bypassed. The feature store restored from Run66's per-run checkpoint because Actions cache writes remain read-only after budget exhaustion. Per-run checkpoint retention is seven days; raw receipts are retained for 90 days. Rebuild from raw artifacts is not implemented. External trusted timestamp/WORM anchoring is absent.
+
+### New institutional and identity research — EXECUTED, RAW BYTES NOT CAPTURED
+
+A structured research addendum was added at `research/xrp_intelligence/20261122T113703Z-run22-identity-phrase-ask-market-institutional-addendum.json`. All web observations remain `model_eligible=false`; no raw HTTP bytes or new raw SHA-256 receipts were captured.
+
+**SBIC resolution.** Official profiles identify Tokyo as SBIC East Japan, Nagoya as SBIC Central Japan and Osaka as SBIC West Japan. They are three separate sister companies/policy investment-development institutions, not SBI Holdings divisions. The exact literal string “SBIC, ChatGPT SBIC” was not found. The closest primary evidence is Tokyo SBIC's 2025-02-26 seminar “生成AI（チャットGPT）の現在と未来,” co-hosted with the Taito branch of the Tokyo Chamber of Commerce and Industry and listing a Microsoft Japan executive as speaker. This does not establish an OpenAI partnership.
+
+**ASK Coin.** The best-supported “ASK Coin” candidate is Permission Coin. Its current official docs list LayerZero OFT contracts on Base (`0xBB146326778227A8498b105a18f84E0987A684b4`) and Polygon (`0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff`), fixed 100B supply and stated agent-to-agent coordination utility. Permission's tokenomics page says a portion of subscription revenue is used for ASK buybacks; this remains an issuer claim, not independently verified execution. Its January 2025 Base launch announcement lists a different historical contract (`0x79322cee6c90735b967d2396b9adc392915aebb6`); the current docs and migration notice require chain-level contract separation. No XRP relationship is established.
+
+**“Actual capital.”** No new primary exact-phrase match was found. Financing capacity, registration effectiveness, in-kind XRP, gross proceeds and cash actually received remain separate fields.
+
+**Kamilah Stevenson.** A public channel titled “Kamilah Stevenson | XRP & Stocks” was found, but channel ownership remains unverified. No video inventory was performed. Prior person-level identity work does not authenticate channel ownership.
+
+**Ripple/Coinbase/BNY/SBI.** Ripple's October 28 Coinbase announcement confirms RLUSD distribution through Coinbase Prime, Exchange and retail, with XRPL, Base and Ethereum support. The same announcement says Global Exchange collateral support would follow, so collateral was future at announcement—not verified live. BNY's October 27 announcement confirms primary RLUSD reserve custody and XRP/RLUSD custody support; direct mint/redeem and wider tokenized-finance workflows are future/conditional. Ripple and SBI's June 24 announcement confirms RLUSD availability through SBI VC Trade in Japan following JFSA approval. These relationships do not establish that XRP is used in every payment, custody or collateral workflow.
+
+**Issuer disagreement.** Ripple's October 28 Coinbase announcement says RLUSD exceeded $2.4B market capitalization; another Ripple October 28 banner page says $2.6B. Same-publisher, same-date values are not reconciled. Ripple's $900M annualized product-revenue run rate, $16T 2025 transactions enabled, 85+ licenses and 1,700+ institutions are issuer claims, not audited XRP-specific settlement volume or token demand.
+
+**Market-source red team.** Swiftedge's November 22 XRP perpetual page displayed approximately $0.9156/-1.73% in its live header while a separately timestamped 08:40 UTC panel showed $0.9283/-0.4%. The page is third-party derivatives data with conflicting refresh states; it is excluded from features.
+
+### Prediction readiness
+
+- 150 events; zero publisher raw hashes and zero complete event-to-receipt links.
+- Drift: zero of 204 features evaluated.
+- Walk-forward origins: zero; forecasts issued: zero.
+- SEC capture remains blocked by missing authorized monitored contact configuration.
+- Forecast issuance remains `NOT_ISSUED`.
+- The nine-platform map has verified ChatGPT-to-GitHub access only. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified.
+- Internal red-team objections retained: Ripple product adoption is not XRP demand; custody is not purchase; future collateral is not live collateral; issuer revenue/volume claims are not XRP-specific; stale/inconsistent third-party panels are not point-in-time evidence.
+
+### PR backlog and merge disposition
+
+| PR | Classification | Status |
+|---|---|---|
+| #1684 XRP integration | Blocked | Draft; one stale map-pointer test failure being corrected; no independent approval; protection unverified |
+| #1685 A2A credential security | Blocked | Non-draft; no independent approval; runner quarantined; sandbox, credential isolation and egress controls missing |
+| #1686 LunaRoute decommission | Unique/unreviewed; blocked | Draft; last full suite 4,508 passed / 11 failed / 1 skipped; overlaps #1685 only in `tests/test_mcp_server.py` |
+| #1687 model-integrity diagnostics | Unique/unreviewed; blocked | Draft; last full suite 4,538 passed / 1 failed / 1 skipped; docs-index assertion unresolved |
+
+Main branch metadata reports protected=true, but the effective branch-protection endpoint returns HTTP 403. The visible fallback ruleset is disabled; CODEOWNERS is `* @Barrot-Agent`; no independent approvals exist. No merge is permitted on this evidence.
+
+No merge, deployment, secret rotation, Space restart, external model dispatch, external data transfer, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred. Barrot V3 remains preserved.
+
+### Next actions
+
+1. Complete exact-head full-suite, dependency, Money, conflict-integrity, Pages, backfill and fail-closed verification on the new test/map/research/handoff commit.
+2. Preserve Run67 artifacts and verify the next main ingestion without relying on parent-head CI.
+3. Implement deterministic feature-store reconstruction from retained raw artifacts and pinned parser versions.
+4. Capture publisher bytes, exact timestamps and SHA-256 receipts for the 150 events; do not backdate.
+5. Reconcile ETF holdings and net assets from issuer files; resolve the Bitwise AUM discrepancy.
+6. Resolve SEC capture only with an authorized monitored project contact.
+7. Build chronological point-in-time origins, then compare naive, momentum, mean-reversion and volatility baselines before calibration or forecast issuance.
+
+
 ## Current State — Run21 — 2026-11-22 11:23 UTC
 
 This section supersedes Run20 for current ingestion, repository and CI status. Earlier run records remain preserved.

@@ -1055,9 +1055,8 @@ def test_full_repository_suite_is_not_duplicated_on_integration_push():
 
 
 
-def test_latest_current_state_is_authoritative_and_preserves_historical_snapshots():
+def test_run16_historical_snapshot_is_preserved():
     data = load_map()
-    assert data["latest_current_state_ref"] == "run16_current_state"
     run = data["run16_current_state"]
     repo = run["repository"]
     assert repo["main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
@@ -1132,3 +1131,68 @@ def test_latest_current_state_is_authoritative_and_preserves_historical_snapshot
     assert data["run15_current_state"]["repository"]["integration_head_sha"] == (
         "67f92442ab70ddf762bea845d7d6e073c5cef93a"
     )
+
+
+
+def test_latest_current_state_ref_points_to_run22_and_binds_exact_head():
+    data = load_map()
+    assert data["latest_current_state_ref"] == "run22_current_state"
+    run = data["run22_current_state"]
+
+    repository = run["repository_state"]
+    assert repository["main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
+    assert repository["integration_head_sha"] == "4ef52d151dc3f3944db9d57631cc953ffe8b7a7e"
+    assert repository["ahead_by"] == 173
+    assert repository["behind_by"] == 0
+    assert repository["main_tree_entries"] == 3115
+    assert repository["integration_tree_entries"] == 3127
+    assert repository["main_paths_missing"] == 0
+
+    ci = run["exact_head_ci"]
+    assert ci["head_sha"] == repository["integration_head_sha"]
+    assert ci["full_repository_suite"]["passed"] == 4565
+    assert ci["full_repository_suite"]["failed"] == 1
+    assert ci["full_repository_suite"]["skipped"] == 1
+    assert ci["full_repository_suite"]["failing_test"].endswith(
+        "test_latest_current_state_is_authoritative_and_preserves_historical_snapshots"
+    )
+    assert ci["dependency_audit"]["conclusion"] == "success"
+    assert ci["money_audit"]["conclusion"] == "success"
+    assert ci["conflict_integrity"]["conclusion"] == "success"
+    assert ci["backfill_replay"]["conclusion"] == "success"
+    assert ci["fail_closed_gate"]["conclusion"] == "failure_by_design"
+
+    ingestion = run["main_ingestion"]
+    assert ingestion["run_id"] == 45016059622
+    assert ingestion["receipt_count"] == 34
+    assert ingestion["retained_raw_payloads"] == 22
+    assert ingestion["digest_only_receipts"] == 12
+    assert ingestion["retained_payload_hashes_verified"] == 22
+    assert ingestion["raw_payload_hash_mismatches"] == 0
+    assert ingestion["feature_store_history_records"] == 19312
+    assert ingestion["feature_store_snapshots"] == 37
+    assert ingestion["eligible_features"] == 106
+    assert ingestion["excluded_features"] == 384
+    assert ingestion["event_raw_hashes_present"] == 0
+    assert ingestion["drift_evaluated"] == 0
+    assert ingestion["walk_forward_forecasts"] == 0
+    assert ingestion["forecast_status"] == "NOT_ISSUED"
+    assert ingestion["cache_status"] == "READ_ONLY_BUDGET_EXHAUSTED"
+
+    assert {pr["number"] for pr in run["open_pr_inventory"]} == {1684, 1685, 1686, 1687}
+    assert run["backlog_summary"]["ready"] == 0
+    assert run["merge_decision"] == "DO_NOT_MERGE"
+    assert run["no_merge_performed"] is True
+    assert run["no_external_actions"] is True
+
+    root = Path(__file__).resolve().parents[1]
+    artifact = json.loads((root / run["research_artifact_path"]).read_text(encoding="utf-8"))
+    assert artifact["model_eligible"] is False
+    assert artifact["raw_capture"]["raw_http_bytes_captured"] is False
+    findings = artifact["research_findings"]
+    assert findings["sbic_identity"]["entities_distinct_from_sbi_holdings"] is True
+    assert findings["sbic_chatgpt_phrase"]["openai_partnership_evidence"] is False
+    assert findings["ask_coin"]["xrp_relationship_established"] is False
+    assert findings["creator_identity"]["channel_ownership_status"] == "UNVERIFIED"
+    assert findings["institutional_relationships"]["ripple_coinbase_rlusd"]["collateral_status"] == "FUTURE_AT_ANNOUNCEMENT"
+    assert findings["market_data_quality"]["model_eligible"] is False

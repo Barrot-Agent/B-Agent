@@ -1,0 +1,239 @@
+{
+  "artifact_type": "barrot_xrp_run22_identity_phrase_ask_market_institutional_research_addendum",
+  "schema_version": "1.0.0",
+  "captured_at_utc": "2026-11-22T11:37:03Z",
+  "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
+  "raw_capture": {
+    "raw_http_bytes_captured": false,
+    "raw_source_sha256_receipts_created": false,
+    "reason": "Public web pages were reviewed through search/open results only; no raw HTTP body bytes were persisted in this run."
+  },
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "research_findings": {
+    "sbic_identity": {
+      "resolution": "Three separate Japanese regional Small and Medium Business Investment & Consultation companies: Tokyo (SBIC East Japan), Nagoya (SBIC Central Japan), and Osaka (SBIC West Japan). Official company profiles identify them as sister companies and public policy investment-development institutions established under Japan's Small and Medium Business Investment & Consultation Companies Act. They are not SBI Holdings subsidiaries or divisions.",
+      "entities_distinct_from_sbi_holdings": true,
+      "regional_entities": [
+        {
+          "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "label": "SBIC East Japan",
+          "official_url": "https://www.sbic.co.jp/company/profile/"
+        },
+        {
+          "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "label": "SBIC Central Japan",
+          "official_url": "https://www.sbic-cj.co.jp/company/about/"
+        },
+        {
+          "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+          "label": "SBIC West Japan",
+          "official_url": "https://www.sbic-wj.co.jp/profiles/profile/"
+        }
+      ],
+      "xrp_or_sbi_holdings_relationship_established": false,
+      "evidence_class": "PRIMARY_OFFICIAL_COMPANY_PROFILES"
+    },
+    "sbic_chatgpt_phrase": {
+      "exact_literal_phrase_found": false,
+      "closest_primary_context": "Tokyo SBIC's official 2025-02-26 seminar titled '生成AI（チャットGPT）の現在と未来' (The Present and Future of Generative AI/ChatGPT), co-hosted with the Taito branch of the Tokyo Chamber of Commerce and Industry. The listed speaker was a Microsoft Japan executive/evangelist.",
+      "openai_partnership_evidence": false,
+      "interpretation": "A ChatGPT-related seminar hosted by the Tokyo SBIC regional investment-development company is not evidence of an OpenAI partnership or a relationship with SBI Holdings.",
+      "official_document_url": "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E6%88%90%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf",
+      "evidence_class": "PRIMARY_OFFICIAL_EVENT_DOCUMENT"
+    },
+    "ask_coin": {
+      "best_supported_candidate": "Permission Coin (ticker ASK)",
+      "identity_confidence": "HIGH_FOR_PERMISSION_COIN; LOW_FOR_UNQUALIFIED_PHRASE_ASK_COIN",
+      "current_official_token_standard": "LayerZero OFT; official Permission documentation lists Base and Polygon as active networks.",
+      "current_official_contracts": {
+        "base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+        "polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+      },
+      "fixed_total_supply": 100000000000,
+      "stated_utility": [
+        "Permissioned participation and rewards",
+        "Agent-to-agent coordination and value exchange",
+        "Future governance and staking"
+      ],
+      "issuer_buyback_claim": "Permission's tokenomics documentation says a portion of subscription revenue from family-focused products is used to buy ASK on the open market and fund ecosystem rewards. This is an issuer statement, not independently verified execution or realized buyback volume.",
+      "historical_contract_discrepancy": "Permission's January 2025 Base launch release listed 0x79322cee6c90735b967d2396b9adc392915aebb6. Current official docs list a different Base OFT contract and the Polygon contract. CoinGecko says the older Wormhole-bridged Base ASK must be repatriated through Polygon before bridging back via LayerZero. Treat the 2025 address as historical pending chain-level verification; do not merge balances across contracts.",
+      "xrp_relationship_established": false,
+      "evidence_class": "PRIMARY_ISSUER_DOCS_WITH_SECONDARY_MIGRATION_CORROBORATION"
+    },
+    "actual_capital": {
+      "exact_phrase_primary_match_found": false,
+      "status": "UNRESOLVED",
+      "control_rule": "Do not equate announced financing capacity, effective registration, in-kind XRP, gross proceeds, exercised warrants, or committed facilities with cash actually received. Reconcile issuer filings, settlement dates, bank/custody evidence where public, and use-of-proceeds disclosures separately."
+    },
+    "creator_identity": {
+      "person_identity_status": "PREVIOUSLY_VERIFIED_WITH_HIGH_CONFIDENCE",
+      "public_channel_found": "Kamilah Stevenson | XRP & Stocks",
+      "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+      "channel_url": "https://www.youtube.com/@KamilahStevensonXrpStocks",
+      "channel_ownership_status": "UNVERIFIED",
+      "video_inventory_status": "NOT_PERFORMED_PENDING_CHANNEL_OWNERSHIP_VERIFICATION"
+    },
+    "institutional_relationships": {
+      "ripple_coinbase_rlusd": {
+        "status": "DIRECT_RLUSD_DISTRIBUTION_PARTNERSHIP",
+        "availability_at_2026_10_28": "Coinbase Prime, Coinbase Exchange and Coinbase retail; RLUSD deposits/withdrawals on XRPL, Base and Ethereum.",
+        "collateral_status": "FUTURE_AT_ANNOUNCEMENT",
+        "caveat": "Ripple's October 28 Coinbase announcement said Global Exchange collateral support would follow; it did not say RLUSD collateral was live at launch. This is not proof of XRP collateral or spot XRP buying."
+      },
+      "ripple_bny": {
+        "status": "DIRECT_CUSTODY_AND_RESERVE_CUSTODY_RELATIONSHIP",
+        "verified_roles": [
+          "BNY described itself as primary reserve custodian for RLUSD",
+          "BNY announced custody support for XRP and RLUSD",
+          "BNY described its custody relationship with Ripple Prime"
+        ],
+        "future_or_conditional": [
+          "Direct RLUSD mint/redeem through BNY",
+          "Broader tokenized-asset and trade-finance use cases"
+        ],
+        "caveat": "Custody support is not proof of BNY proprietary XRP purchases, XRP collateral deployment, or executed tokenized trade-finance volume."
+      },
+      "ripple_sbi": {
+        "status": "DIRECT_RLUSD_DISTRIBUTION_VIA_SBI_VC_TRADE",
+        "jurisdiction": "Japan",
+        "launch_date": "2026-06-24",
+        "regulatory_context": "Ripple and SBI said launch followed Japan FSA approval and classification under the Payment Services Act.",
+        "caveat": "RLUSD distribution through SBI VC Trade is not evidence that XRP is the settlement asset or collateral for every related payment."
+      },
+      "ripple_issuer_claims": {
+        "annualized_product_revenue_run_rate_usd": 900000000,
+        "transactions_enabled_2025_usd": 16000000000000,
+        "licenses_claimed": 85,
+        "institutions_corporates_enterprises_claimed": 1700,
+        "evidence_class": "ISSUER_CLAIMS_NOT_XRP_SPECIFIC_AUDITED_VOLUME"
+      },
+      "rlUSD_market_cap_disagreement": {
+        "date": "2026-10-28",
+        "ripple_coinbase_announcement_lower_bound_usd": 2400000000,
+        "ripple_banner_page_usd": 2600000000,
+        "status": "UNRECONCILED_SAME_PUBLISHER_SAME_DATE_DIFFERENT_PRESENTATIONS",
+        "model_eligible": false
+      }
+    },
+    "market_data_quality": {
+      "third_party_page": "https://swiftedge.uk/xrp/today",
+      "capture_date": "2026-11-22",
+      "inconsistency": "The page's live headline displayed approximately $0.9156 and -1.73% on the day, while a separately timestamped 08:40 UTC panel displayed $0.9283 and -0.4%.",
+      "evidence_class": "THIRD_PARTY_DERIVATIVES_MARKET_PAGE",
+      "model_eligible": false,
+      "treatment": "Exclude from point-in-time features until the page's update timestamps, market universe and panel refresh semantics are reconciled."
+    }
+  },
+  "source_inventory": [
+    {
+      "title": "Tokyo SBIC company profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "evidence_class": "PRIMARY"
+    },
+    {
+      "title": "Nagoya SBIC company profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "evidence_class": "PRIMARY"
+    },
+    {
+      "title": "Osaka SBIC company profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "evidence_class": "PRIMARY"
+    },
+    {
+      "title": "Tokyo SBIC ChatGPT seminar PDF",
+      "url": "https://www.sbic.co.jp/wordpress/file/20250226_%E7%94%9F%E6%88%90AI%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%A8%E6%9C%AA%E6%9D%A5%E3%80%90%E6%8A%95%E8%B3%87%E8%82%B2%E8%AA%AC%E6%98%8E%E3%81%82%E3%82%8A%E3%80%91.pdf",
+      "publisher": "Tokyo SBIC",
+      "evidence_class": "PRIMARY"
+    },
+    {
+      "title": "Permission ASK token documentation",
+      "url": "https://docs.permission.ai/ask-token",
+      "publisher": "Permission",
+      "evidence_class": "PRIMARY_ISSUER"
+    },
+    {
+      "title": "Permission ASK tokenomics",
+      "url": "https://docs.permission.ai/ask-token/ask-tokenomics",
+      "publisher": "Permission",
+      "evidence_class": "PRIMARY_ISSUER"
+    },
+    {
+      "title": "Permission ASK bridge and Polygon migration",
+      "url": "https://www.permission.ai/blog/ask-bridge-now-live-polygon-network",
+      "publisher": "Permission",
+      "evidence_class": "PRIMARY_ISSUER"
+    },
+    {
+      "title": "Permission ASK on Base launch announcement",
+      "url": "https://www.globenewswire.com/news-release/2025/01/15/3009989/0/en/Permission-Launches-ASK-on-Base-Ushering-in-the-Next-Era-of-Data-Ownership-and-Rewards.html",
+      "publisher": "Permission via GlobeNewswire",
+      "evidence_class": "ISSUER_ANNOUNCEMENT"
+    },
+    {
+      "title": "CoinGecko Permission Coin page and migration notice",
+      "url": "https://www.coingecko.com/en/coins/permission-coin",
+      "publisher": "CoinGecko",
+      "evidence_class": "SECONDARY"
+    },
+    {
+      "title": "Ripple and Coinbase RLUSD announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "publisher": "Ripple",
+      "published": "2026-10-28",
+      "evidence_class": "PRIMARY_ISSUER"
+    },
+    {
+      "title": "Ripple and BNY custody/tokenized trade-finance announcement",
+      "url": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "publisher": "BNY",
+      "published": "2026-10-27",
+      "evidence_class": "PRIMARY_COUNTERPARTY"
+    },
+    {
+      "title": "Ripple and SBI RLUSD Japan launch",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "publisher": "Ripple",
+      "published": "2026-06-24",
+      "evidence_class": "PRIMARY_ISSUER"
+    },
+    {
+      "title": "Ripple October 28 corporate results and OCC announcement",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "publisher": "Ripple",
+      "published": "2026-10-28",
+      "evidence_class": "PRIMARY_ISSUER"
+    },
+    {
+      "title": "Kamilah Stevenson XRP & Stocks YouTube channel search result",
+      "url": "https://www.youtube.com/@KamilahStevensonXrpStocks",
+      "publisher": "YouTube channel metadata",
+      "evidence_class": "IDENTITY_LEAD_CHANNEL_OWNERSHIP_UNVERIFIED"
+    },
+    {
+      "title": "Swiftedge XRP daily market structure page",
+      "url": "https://swiftedge.uk/xrp/today",
+      "publisher": "Swiftedge",
+      "published": "2026-11-22",
+      "evidence_class": "THIRD_PARTY_DERIVATIVES_PAGE"
+    }
+  ],
+  "disconfirming_evidence": [
+    "A Ripple product partnership does not by itself establish XRP token demand.",
+    "RLUSD collateral on Coinbase Global Exchange was described as future at the October 28 announcement.",
+    "BNY custody does not establish proprietary XRP purchases or deployed XRP collateral.",
+    "The SBIC ChatGPT seminar is an event hosted by a Japanese regional investment-development company, not evidence of OpenAI affiliation.",
+    "Permission Coin ASK has no established XRP relationship.",
+    "The Kamilah Stevenson YouTube channel was found, but channel ownership was not verified; no video inventory was performed."
+  ],
+  "next_research_actions": [
+    "Continue primary-source reconciliation of Evernorth actual cash receipts, financing capacity, in-kind XRP, gross/net proceeds and use of proceeds.",
+    "Verify Permission ASK Base/Polygon contracts directly against chain explorers and official LayerZero OFT metadata; retain the 2025 Base address as historical until its deprecation status is proven.",
+    "Verify Kamilah Stevenson channel ownership before enumerating uploads.",
+    "Continue exact-literal searches for 'actual capital' and 'SBIC, ChatGPT SBIC'; do not treat semantic proximity as an exact phrase match."
+  ]
+}
