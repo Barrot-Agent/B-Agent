@@ -71,7 +71,7 @@
     "barrot": {
       "description": "Barrot - main agent",
       "model": "opencode/deepseek-v4.1-flash-free",
-      "prompt": "Use the configured OpenCode model only. No LunaRoute provider, MCP server, endpoint, credential, or fallback is supported. Preserve Barrot V3 and follow the XRP mission readiness gates.",
+      "prompt": "Use only the configured OpenCode model. Provider authentication and data-flow for alternative providers have not been verified; do not use an alternate provider, endpoint, credential, or fallback. Preserve Barrot V3 and follow the XRP mission readiness gates.",
       "permission": {
         "*": "ask",
         "edit": "ask",
