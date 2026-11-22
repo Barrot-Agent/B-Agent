@@ -4,9 +4,10 @@ Model management for B-Agent (IBM Granite 4.0-3B Vision).
 
 from __future__ import annotations
 
+import os
 from typing import Any, Optional
 
-from barrot_agent.config import ModelConfig
+from barrot_agent.config import ModelConfig, config as app_config
 from barrot_agent.logger import get_logger
 
 logger = get_logger(__name__)
@@ -70,6 +71,10 @@ class ModelManager:
             load_kwargs: dict[str, Any] = {
                 "trust_remote_code": self.config.trust_remote_code,
             }
+            # HF_TOKEN is optional for public models, but must be passed to
+            # both processor and model loaders when configured (e.g. gated models).
+            hf_token = os.environ.get("HF_TOKEN") or app_config.hf_token
+            auth_kwargs = {"token": hf_token} if hf_token else {}
 
             if self.config.load_in_8bit:
                 load_kwargs["load_in_8bit"] = True
@@ -87,11 +92,13 @@ class ModelManager:
                 self.config.model_id,
                 trust_remote_code=self.config.trust_remote_code,
                 revision=self.config.model_revision,
+                **auth_kwargs,
             )
             self._model = AutoModelForVision2Seq.from_pretrained(
                 self.config.model_id,
                 revision=self.config.model_revision,
                 **load_kwargs,
+                **auth_kwargs,
             )
             logger.info("Model loaded successfully.")
         except ImportError as exc:
