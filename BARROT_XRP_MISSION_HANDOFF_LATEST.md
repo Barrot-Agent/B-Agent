@@ -6950,3 +6950,119 @@ PR #1684 remains draft with zero independent approvals. PR #1685 remains a separ
 
 Next action: finish exact-head CI after this handoff update; verify the venue-normalization regression and the post-fix 10-pair walk-forward report. Preserve any insufficient-history result rather than lowering the 100/100 sample gates. Continue event receipt linking and external timestamp anchoring before forecast admission.
 
+
+
+## Run282 — 2026-11-22T01:19Z — Primary-source institutional, SBIC and capital-flow reconciliation
+
+### SBIC legal identity — RESOLVED FROM PRIMARY LAW AND COMPANY PROFILES
+
+The 1963 Small and Medium Business Investment & Consultation Companies Act (Law No. 101 of 1963), Article 2, names exactly three corporations: Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; and Osaka Small and Medium Business Investment & Consultation Co., Ltd., with their respective Tokyo, Nagoya and Osaka headquarters. The act's purpose is SME equity-capital support, not SBI Holdings group management.
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; corporate number 9011001030621; established 1963-11-15; Tokyo headquarters. Its official profile identifies Nagoya and Osaka as sister companies and describes shareholders as local governments, chambers of commerce, financial institutions and operating companies.
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established 1963-11-18; Nagoya headquarters; capital ¥4.380 billion; operating area Aichi, Gifu, Mie, Toyama and Ishikawa. Its profile identifies Tokyo and Osaka as sister companies.
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established 1963-11-20; Osaka headquarters; capital ¥6.822 billion; operating area 24 prefectures west of Fukui, Shiga, Nara and Wakayama. Its profile says it operates under the 1963 Act and identifies Tokyo and Nagoya as sister companies.
+
+**Conclusion:** East/Central/West are three separate statutory corporations, not SBI Holdings divisions or SBI Group subsidiaries. “SBIC” is the English acronym for Small and Medium Business Investment & Consultation. No XRP/Ripple/SBI Holdings ownership link is established by these SBIC identity records.
+
+Primary sources:
+- e-Gov Act: https://laws.e-gov.go.jp/law/338AC0000000101?occasion_date=20260101
+- East profile: https://www.sbic.co.jp/company/profile/
+- Central profile: https://www.sbic-cj.co.jp/company/about/
+- West profile: https://www.sbic-wj.co.jp/profiles/profile/
+
+### “SBIC, ChatGPT SBIC” — training event identified, partnership not established
+
+Tokyo SBIC's official archived training page lists a two-day “Introduction to Generative AI and Machine Learning for Manufacturing” course on 2025-06-12 and 2025-06-13. The syllabus explicitly includes ChatGPT, Copilot, generative-AI tools, machine learning, API implementation and information-leakage risks. The named lecturer is Takashi Otsuka of VOST. The course was restricted to SBIC investee companies.
+
+Source: https://www.sbic.co.jp/training/20250612co/
+
+Interpretation: this explains a genuine SBIC/ChatGPT training reference. It does not establish an OpenAI-SBIC commercial partnership, a ChatGPT deployment by SBI Holdings, or an XRP connection.
+
+### Ripple–Coinbase — RLUSD distribution is live; XRP collateral is not established
+
+Ripple's 2026-10-28 announcement says RLUSD became available to retail and institutional customers on Coinbase Prime, Coinbase Exchange and Coinbase Retail, with XRPL, Base and Ethereum support. Coinbase Global Exchange collateral support was described as a later phase (“will follow”), not as live at the announcement. Reuters independently reported the listing on the same date.
+
+Primary: https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/
+Independent reporting: https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/
+
+This is a direct Ripple–Coinbase RLUSD distribution relationship. It is not evidence that Coinbase bought XRP, that RLUSD collateral was already active on Coinbase Global Exchange, or that all RLUSD activity uses XRP. RLUSD is available on multiple chains.
+
+### Ripple–BNY custody and trade finance
+
+BNY's 2026-10-27 primary announcement states that BNY now supports XRP and RLUSD on its Digital Asset Custody platform. BNY already served as RLUSD's primary reserve custodian and had a custody relationship with Ripple Prime. BNY and Ripple intend to enable direct RLUSD mint/redeem through BNY and are exploring tokenized trade-finance use cases with C2FO; the future initiatives remain subject to final BNY and regulatory approvals.
+
+Primary: https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+Ripple copy: https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/
+
+Custody support is a real institutional service relationship; the future mint/redeem and trade-finance plans are not yet evidence of executed settlement volume or XRP purchases.
+
+### Ripple National Trust Bank — regulatory status distinguished from operating status
+
+OCC Corporate Applications Search records Ripple National Trust Bank, application 2025-Charter-342347, proposed national trust charter 25364, trust powers requested, approved 2025-12-12 and consummated/effective 2026-10-26.
+
+Regulator source: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+
+Ripple's 2026-10-26 announcement says the trust bank's approved activities include managing segregated RLUSD reserves, acting as collateral trustee for those reserves and providing fiduciary digital-asset custody. The announcement says those services are authorized “upon opening”; operating commencement was not independently established here. RLUSD continues to be issued by Standard Custody & Trust Company, Ripple's NYDFS-regulated limited-purpose trust company. Do not classify the new trust bank as a retail/commercial deposit bank.
+
+Ripple announcement: https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/
+
+### Circle–Coinbase economics and Open USD — direct relationship plus multi-stablecoin competition
+
+Circle's SEC Form 10-Q for 2026-09-30 reports that, under the Coinbase Collaboration Agreement, Coinbase receives allocations tied to USDC held on its platform after issuer retention and half of the remaining broader-ecosystem payment base after approved third-party participants. Circle reported distribution costs associated with Coinbase of **$331.3 million in Q3 2026** and **$986.6 million for the first nine months of 2026**.
+
+SEC primary filing: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm (distribution-cost discussion around page 48)
+
+Coinbase's SEC-filed Q2 2026 earnings presentation says the auto-renewal conditions for the Circle partnership had been met and the agreement would renew on the same terms; it also describes Coinbase as a multi-stablecoin platform and an initial member of the Open Standard Consortium. Coinbase reported an all-time high of $20 billion average USDC held in its products in Q2 2026.
+
+SEC-filed Coinbase presentation: https://www.sec.gov/Archives/edgar/data/1679788/000167978826000087/q226earningsdeck_sec.htm
+
+Circle's 2025 IPO prospectus says the 2023 Collaboration Agreement gave Coinbase a minority equity stake in Circle while Circle retained sole governance of its stablecoin network. The 2026 10-Q does not quantify Coinbase's current equity percentage; do not invent one.
+
+Open USD's official site lists Coinbase, Visa, Mastercard, Shopify and Stripe among its founding partners and SBI Holdings among selected network partners. It says OUSD launched on 2026-11-12 and is issued by Bridge for Open Standard. This is a second stablecoin network, not proof that Coinbase or SBI abandoned USDC or RLUSD.
+
+Open USD primary source: https://openusd.inc/
+
+**Interpretation:** Coinbase has economically material USDC distribution ties to Circle while also pursuing a multi-stablecoin strategy that includes Open USD and now RLUSD. This is diversification and competition across rails, not exclusivity. Circle's distribution payments are costs to Circle and revenue to Coinbase; they are not XRP capital flows.
+
+### SBI Holdings–Ripple relationships — separate from SBIC
+
+- SBI's FY2025 results presentation (published 2026-05-01) reports SBI Group's 2016 investment in Ripple Labs and describes an approximately 9% Ripple stake as the largest external shareholder. Treat approximately 9% as SBI's disclosed May 2026 figure, not a live share-register verification.
+- SBI's current SBI Ripple Asia group page reports SBI Group voting rights of 60% as of 2026-09-30. The 2025 presentation showed a 60% SBI Group / 40% Ripple split; the current page confirms the 60% SBI side but does not restate the remaining 40% breakdown.
+- SBI VC Trade, a consolidated SBI Holdings subsidiary, began RLUSD handling on 2026-06-24 in its VCTRADE service as Japan's first “Type 4 electronic payment instrument” (SBI's regulatory classification). BITPOINT service was explicitly excluded. RLUSD is issued by Ripple subsidiary Standard Custody & Trust Company.
+- SBI's 2025 presentation says SBI Remit began an XRP-bridge-currency international remittance service in 2021. That is a specific product path, not evidence that every SBI remittance or Ripple Payments transaction uses XRP.
+- SBI Ripple Asia's 2026-02-26 proof of concept explored tokenized deposits and deposit-type digital money using SBI's MoneyTap and an issuance platform with XRPL. It is a PoC, not a production launch.
+- SBI Holdings announced investment alongside Ripple and others in Evernorth's 2025 PIPE. This is an issuer/investor relationship, separate from the three SBIC statutory corporations.
+
+Primary sources:
+- SBI FY2025 results presentation, 2026-05-01: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf
+- SBI Ripple Asia ownership page (voting-rights date 2026-09-30): https://www.sbigroup.co.jp/company/group/sbirippleasia.html
+- SBI VC Trade RLUSD launch, 2026-06-24: https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
+- SBI Ripple Asia tokenized-deposit PoC, 2026-02-26: https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
+- SBI Evernorth PIPE investment, 2025-10-21: https://www.sbigroup.co.jp/news/2025/1021_15831.html
+
+### Evernorth “actual capital” — cash, debt and in-kind flows separated
+
+The SEC-filed Evernorth/Armada transaction report dated 2026-10-30 distinguishes three different events:
+
+1. **Cash-funded XRP purchase:** On 2025-11-04, Pubco purchased 84,365,876.3625 XRP using aggregate cash proceeds from Advance Funding Subscription Agreements at an average $2.53657058 per XRP. The arithmetic is approximately **$214 million**. This is a cash-funded XRP purchase, but not a 2026 open-market purchase.
+2. **In-kind contribution:** On 2026-10-09, Pathfinder issued 16,461,545 Company Units to Ripple in exchange for Ripple's contribution of 126,791,458 XRP. This is an XRP contribution for units, not cash raised and not an exchange purchase.
+3. **Debt financing:** On 2026-10-12, Evernorth issued $30 million aggregate principal of 4.00% Convertible Senior PIK Notes due 2031 to NH Investment & Securities as trustee for Kyobo AIM Corporate Finance General Private Investment Trust No. 3, for **$30 million cash consideration**. This is debt financing with payment-in-kind interest, not an XRP purchase.
+
+SEC primary filing: https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/xrpn-20261030.htm
+
+The exact phrase “actual capital” remains semantically ambiguous. The underlying filing now supports a precise cash / in-kind / debt ledger. Do not combine these three flows into one “institutional XRP buying” feature.
+
+### Exact-phrase and creator inventory status
+
+- **ASK Coin:** Search results identify Permission Coin (ticker ASK) as one possible unrelated token; no primary evidence connects it to XRP. “ASK Coin” remains ambiguous and is not promoted to an XRP entity.
+- **“actual capital”:** Reconciled above at the transaction level; the exact phrase is not treated as an accounting category.
+- **“SBIC, ChatGPT SBIC”:** The Tokyo SBIC/VOST 2025 training event is verified; no OpenAI partnership is established.
+- **Camilla/Kamilah Stevenson YouTube:** identity-to-channel ownership remains unverified; no videos are attributed to the person. Do not merge namesakes or inventory videos until identity evidence is established.
+
+### Evidence independence, counter-hypotheses and model admission
+
+- Primary evidence groups: Japanese statute/e-Gov; each SBIC company's own profile; SEC filings (Circle and Evernorth); OCC Corporate Applications Search; SBI Holdings/VC Trade; Ripple; BNY; Coinbase's SEC-filed earnings deck; Open USD. Independent corroboration: Reuters for the Coinbase RLUSD launch and The Block for the BNY custody expansion.
+- Issuer and corporate claims remain attributed to their publisher. A company press release is not independent confirmation of its own market impact.
+- Counter-hypothesis: institutional custody, RLUSD distribution and stablecoin rails can expand without proportional XRP demand because RLUSD also runs on Ethereum/Base, Coinbase's RLUSD collateral phase was future at announcement, and BNY's mint/redeem/trade-finance plans are future/approval-dependent. SBI's specific XRP-bridge remittance use does not imply all SBI flows use XRP.
+- All institutional relationship and capital-flow claims in this addendum are RESEARCH_ONLY and MODEL_INELIGIBLE until captured with exact publisher bytes, event/publication/known-at/capture timestamps, raw SHA-256 receipt and independent-source clustering. They do not authorize a directional forecast.
+
