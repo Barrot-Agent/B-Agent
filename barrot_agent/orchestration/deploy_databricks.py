@@ -121,6 +121,8 @@ def _ensure_folder(client: WorkspaceClient, path: str) -> None:
 
 def _upload_files(client: WorkspaceClient) -> int:
     """Upload only into a new workspace root; never overwrite an existing deployment."""
+    from databricks.sdk.service.workspace import ImportFormat
+
     _preflight_workspace_target_absent(client, WS_PATH)
     _ensure_folder(client, WS_PATH)
     uploaded = 0
