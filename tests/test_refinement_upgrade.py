@@ -4,9 +4,7 @@ refinement + semantic evaluation.
 Test tiers (explicitly distinguished):
 - MOCKED (default): every test here is offline/deterministic — scripted
   refiners/judges, temp dirs, no network.
-- REAL RUNTIME: tests marked with @skipUnless(BARROT_LIVE_REFINEMENT) hit
-  the live LunaRoute API with a real document slice; they never run in the
-  default suite.
+- All refinement verification is deterministic and offline.
 """
 from __future__ import annotations
 
@@ -24,7 +22,6 @@ sys.path.insert(0, str(REPO_ROOT))
 from barrot_agent.refinement import (          # noqa: E402
     CALIBRATION_CASES,
     HeuristicRefiner,
-    LunaRouteRefiner,
     LLMSemanticJudge,
     Patch,
     Refiner,
@@ -50,10 +47,6 @@ from barrot_agent.refinement import (          # noqa: E402
     segment_document,
     verify_against_original,
 )
-
-LIVE = (os.environ.get("BARROT_LIVE_REFINEMENT") == "1" and
-        os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT") == "1" and
-        os.environ.get("BARROT_LIVE_REFINEMENT_APPROVED") == "1")
 
 
 def _big_document(sections: int = 60) -> dict:
@@ -571,37 +564,11 @@ class TestPipeline(unittest.TestCase):
                             refiners=[HeuristicRefiner()],
                             data_classification="forecast_ledger")
 
-    def test_external_refinement_requires_explicit_opt_in(self):
-        refiner = LunaRouteRefiner(
-            "test-model", api_key="not-a-real-key",
-            allow_external=False, data_classification="public_documentation")
+    def test_external_refinement_is_decommissioned(self):
         with self.assertRaises(PermissionError):
-            RefinementPipeline([refiner],
+            RefinementPipeline([HeuristicRefiner()],
                                data_classification="public_documentation",
-                               allow_external=False)
-
-    def test_external_run_approval_is_required(self):
-        previous_allow = os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT")
-        previous_approval = os.environ.get("BARROT_LIVE_REFINEMENT_APPROVED")
-        try:
-            os.environ["BARROT_ALLOW_EXTERNAL_REFINEMENT"] = "1"
-            os.environ.pop("BARROT_LIVE_REFINEMENT_APPROVED", None)
-            refiner = LunaRouteRefiner(
-                "test-model", api_key="not-a-real-key",
-                allow_external=True, data_classification="public_documentation")
-            with self.assertRaises(PermissionError):
-                RefinementPipeline([refiner],
-                                   data_classification="public_documentation",
-                                   allow_external=True)
-        finally:
-            if previous_allow is None:
-                os.environ.pop("BARROT_ALLOW_EXTERNAL_REFINEMENT", None)
-            else:
-                os.environ["BARROT_ALLOW_EXTERNAL_REFINEMENT"] = previous_allow
-            if previous_approval is None:
-                os.environ.pop("BARROT_LIVE_REFINEMENT_APPROVED", None)
-            else:
-                os.environ["BARROT_LIVE_REFINEMENT_APPROVED"] = previous_approval
+                               allow_external=True)
 
     def test_run_id_path_traversal_is_rejected(self):
         with tempfile.TemporaryDirectory() as td:
@@ -626,39 +593,6 @@ class TestPipeline(unittest.TestCase):
                 data_classification="public_documentation")
             with self.assertRaises(PermissionError):
                 other.resume(result["run_id"])
-
-
-class TestRealRuntime(unittest.TestCase):
-    """REAL RUNTIME TIER — hits the live LunaRoute API. Opt-in via
-    BARROT_LIVE_REFINEMENT=1; never runs in the default suite."""
-
-    @unittest.skipUnless(LIVE, "real-runtime tier requires three explicit opt-in variables")
-    def test_live_section_refine_and_judge(self):
-        from barrot_agent.refinement import make_model_refiners
-        refiners = make_model_refiners(allow_external=True,
-                                       data_classification="public_documentation")
-        if len(refiners) < 2:
-            self.skipTest("no live pool")
-        source = json.loads(
-            (REPO_ROOT / "barrot_capability_audit.json").read_text())
-        audit = audit_document(source)
-        self.assertGreater(audit.total_chars, 24000)
-        slots = segment_document(source)
-        slot = slots[1]
-        out = refiners[0].refine(slot.value, None)
-        self.assertIn(out.verdict, ("REFINED", "CONVERGED"))
-        if out.data is not None and out.data != slot.value:
-            gen = __import__("barrot_agent.refinement.patches",
-                             fromlist=["diff_values"]).diff_values(
-                slot.value, out.data, "", refiners[0].name)
-            for g in gen:
-                g.path = slot.absolute_leaf_path(g.path)
-            res = apply_patches(copy.deepcopy(source), gen)
-            self.assertTrue(res.applied)
-        judge = LLMSemanticJudge(refiners[1])
-        verdict = judge.evaluate(source, source, objective="identity check")
-        self.assertIn(verdict.status, ("improved", "unchanged", "regressed"))
-        self.assertNotEqual(judge.name, refiners[0].name)
 
 
 if __name__ == "__main__":
