@@ -6834,3 +6834,74 @@ PR #1685 head `e512f4e6d66c1575186d00b60852c93caba687e0` is non-draft and has 9 
 - Next concrete action: preserve #1684 as the single XRP integration PR; obtain a genuinely independent review and verifiable branch-protection requirements; reconcile event-to-raw-receipt capture and external timestamp anchoring; verify the expected daily 00:15 UTC extended SEC/horizon ingestion run when it appears; then expand synchronized historical data and compare chronological walk-forward candidates against naive, momentum, mean-reversion and volatility baselines. No directional forecast until the evidence gates pass.
 
 No merge, deployment, secret rotation, Space/Worker restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money operation occurred.
+
+
+---
+
+### Run280 — 2026-11-22T01:07Z — Run54 receipt audit and walk-forward venue-filter defect
+
+#### Repository state and integration-first review
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; recursive main tree is complete at 3,115 entries (`truncated=false`).
+- Existing XRP branch: `integration/xrp-post-merge-verification-20261121T0002Z`. Before this addendum, branch head was `94bfd3fdb024c658364ccce6d80f5a78d9f8167a`, 125 commits ahead and 0 behind main, with 27 changed files after the two prediction-engine changes below. The handoff update is committed as the immediate successor to that head.
+- Open PR inventory remains exactly #1684 (XRP integration, draft) and #1685 (A2A credential separation, non-draft). No same-objective duplicate was found; their changed paths do not overlap.
+- Main CODEOWNERS remains `* @Barrot-Agent`; the only visible repository ruleset is the disabled fallback. Main branch metadata reports protected=true, but the branch-protection endpoint returns HTTP 403, so effective required-review/check settings remain unverifiable.
+
+#### Run54 main ingestion — VERIFIED
+
+Main workflow [Run54, 44967713690](https://github.com/Barrot-Agent/B-Agent/actions/runs/44967713690) completed successfully on main SHA `550a647` at 2026-11-22T00:40Z.
+
+- 34 source receipts: 22 retained raw payloads and 12 digest-only receipts. All 22 retained payloads independently re-hashed to the manifest SHA-256 values; zero mismatches.
+- Receipt chain verified, sequence 26, predecessor Run53 `44967394043` sequence 25. External anchor remains NOT_ANCHORED; per-source independent timestamp anchoring is false. GitHub Actions artifacts are retention-limited, not WORM.
+- Raw artifact [14732356608](https://github.com/Barrot-Agent/B-Agent/actions/runs/44967713690/artifacts/14732356608), uploaded ZIP SHA-256 `b7dfdd23cabfd8ecc0c75ccde1cd2e5c148f9df67ee012b448bd2bad8f8a5fc3`. Event artifact [14732640915](https://github.com/Barrot-Agent/B-Agent/actions/runs/44967713690/artifacts/14732640915); feature/snapshot artifact [14731698821](https://github.com/Barrot-Agent/B-Agent/actions/runs/44967713690/artifacts/14731698821).
+- Feature-store history: 18,007 records across 26 snapshots. Latest snapshot: 485 inputs, 118 eligible records and 367 excluded as quality-unverified. Five publisher-independence groups are represented: Bitbank, Bitstamp, Coinbase, Kraken and OKX.
+- 21 source failures: eight Binance HTTP 451, five Bybit HTTP 403, one Grayscale HTTP 429, one Franklin XRPZ parser failure and six SEC submissions/companyfacts contact-configuration failures. No access restriction was bypassed. Raw-only sources: 23.
+- GitHub Actions cache writes are currently read-only after the configured cache budget was reached. Run54 restored the feature store from the trusted Run53 per-run checkpoint artifact instead; the per-run artifact fallback preserved continuity. The cache is derived/evictable and is not the source of truth.
+
+#### Run54 market microstructure — descriptive, not a signal
+
+Capture window 2026-11-22T00:40:05–00:40:10Z:
+
+- USD-comparable mids: Bitstamp $0.928805; Coinbase $0.929050; Kraken $0.928935; OKX same-venue USD-normalized $0.929167231. The four-venue range is approximately 3.90 bps. These are four publisher groups, not one consolidated executable market.
+- OKX USDT/USD mid was 0.998085; normalized XRP/USD mid was derived from same-venue synchronized top-of-book quotes, with 0.797-second component skew. No 1:1 USDT assumption was used. Only top-of-book prices were normalized; OKX depth remains USDT-denominated.
+- 10-bps USD depth imbalance: Bitstamp −8.12%, Coinbase +9.42%, Kraken −0.42%. Their bid/ask notional depth was respectively about $286.6k/$337.2k, $442.6k/$366.4k and $340.1k/$343.0k. Venue disagreement remains; depth is not a directional feature.
+- Bitbank remains JPY-denominated; its price and depth are not mixed into USD totals. Kraken 50/100-bps depth was unavailable in this capture. OKX 50/100-bps depth remains USDT-denominated.
+
+#### Prediction-engine defect found and corrected on the existing XRP branch
+
+Run54's historical evaluator emitted 10 venue/horizon evaluations, all BLOCKED with `no records remain after venue filtering`. Investigation of the actual Run54 SQLite checkpoint showed that the underlying hourly close records do exist:
+
+- Binance: 999 distinct hourly close records, venue label `Binance`, pair `XRP/USDT`; all 999 historical bars share one initial known-at time, 2026-11-21T07:13:43.810048Z, because they were backfilled together.
+- Coinbase: 373 distinct hourly close records, venue label `Coinbase`, pair `XRP/USD`; their known/ingested times span the scheduled captures from 2026-11-21T00:32Z through 2026-11-22T00:36Z.
+- The evaluator configuration passed lowercase `binance`/`coinbase`, while persisted records use title-case `Binance`/`Coinbase`. The exact case-sensitive equality filter therefore discarded all records. This was a code defect, not proof that the historical candles were absent.
+
+Executed on the existing PR #1684 branch; no new branch or PR:
+
+1. Commit `ec65787f17fa4d6fc9d086867f4b973d41afc60a` adds whitespace-trimmed, Unicode-safe casefolded venue matching and rejects empty explicit venue labels. Inferred venue scope still rejects mixed/missing venues.
+2. Commit `94bfd3fdb024c658364ccce6d80f5a78d9f8167a` adds a regression test proving stored `Coinbase` records are selected by the evaluator's configured `coinbase` label.
+
+The fix does **not** relax the 100-example training minimum, 100 out-of-sample-origin minimum, horizon-sized embargo, 1-hour origin-age guard, target tolerance, publisher-clustering rules or policy-v6 requirements. It has not yet been verified by CI on the new head. The Binance backfill's 999 bars are not 999 independent forecast origins: they were all first known at one capture time. After the filter fix, the evaluator may still correctly report insufficient point-in-time origins/effective samples. No directional forecast is authorized.
+
+#### Run54 event, drift and walk-forward readiness
+
+- Event registry: 150 curated events, 117 scenarios; raw-source receipt completeness remains false. The 150 event entries have no raw-source SHA-256 links. The registry hash authenticates the curated registry file only, not publisher payload bytes.
+- Drift: 0/204 features evaluated; status INSUFFICIENT_DATA. PSI is univariate and provisional, not label/concept-drift evidence.
+- Before the venue fix, all 10 walk-forward venue/horizon pairs were blocked at venue filtering; forecast count 0. No live forecast or paper trade was issued.
+- Shadow evaluation remains unimplemented. The evaluator's single-venue histories yield one source cluster each and cannot satisfy the five independently receipted source-cluster requirement. A separate trained XRP candidate and independent shadow cohort do not exist.
+
+#### Exact-head verification and governance
+
+- On previous exact head `8072034147ec9392113e88480ebbe68b11765db4`, PR CI [44965357163](https://github.com/Barrot-Agent/B-Agent/actions/runs/44965357163) passed the full repository suite: 4,562 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests; 73.20% coverage. Dependency audit [44965357157](https://github.com/Barrot-Agent/B-Agent/actions/runs/44965357157), Money audit [44965357144](https://github.com/Barrot-Agent/B-Agent/actions/runs/44965357144), conflict integrity [44965357111](https://github.com/Barrot-Agent/B-Agent/actions/runs/44965357111), Pages validation-only and preserved Run52 backfill replay all passed on that exact head.
+- The same head's read-only fail-closed gate [44965357121](https://github.com/Barrot-Agent/B-Agent/actions/runs/44965357121) correctly returned BLOCKED: PR #1684 is draft, no independent approving review exists, and branch protection could not be verified.
+- The new code/test commits `ec65787` and `94bfd3f`, plus this handoff append, require their own exact-head CI, full-suite, dependency/security, fail-closed and preserved-artifact verification. Do not transfer prior-head results.
+- PR #1685 remains a separate non-draft A2A security workstream. Its exact-head full suite previously passed 4,536 tests, one skipped and zero failed, but it has no independent approval and remains blocked. No runner activation or deployment.
+- No merge, deployment, secret rotation, Space/Worker restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+#### Next concrete actions
+
+1. Finish exact-head CI on the new integration head; confirm the venue regression test passes and inspect the resulting 10 walk-forward evaluations without relaxing sample gates.
+2. If evaluations advance beyond venue filtering, preserve any insufficient-history/effective-sample result; build sequential point-in-time origins and independently receipted source clusters rather than lowering thresholds.
+3. Link the 150-event registry to raw publisher receipts by exact URL, capture time and payload hash; establish independent external timestamp anchoring.
+4. Resolve SEC contact configuration only with an approved monitored identity; normalize issuer ETF holdings and collateral/stablecoin observations with units, chain and as-of times.
+5. Keep #1684 as the single XRP integration PR. Do not merge until exact-head full suite/security gates pass, an independent review exists, and effective branch-protection requirements and workflow side effects are verified.
+
