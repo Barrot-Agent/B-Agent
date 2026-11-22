@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from concurrent.futures import ThreadPoolExecutor
 
 import pytest
 
@@ -177,3 +178,24 @@ def test_no_gap_is_a_valid_terminal_outcome(tmp_path):
     assert result.status == "no_gap_found"
     assert result.experiments_run == 0
     assert calls["run"] == 0
+
+
+
+def test_concurrent_duplicate_cycle_id_is_reserved_exactly_once(tmp_path):
+    controller, calls = build(tmp_path)
+
+    def invoke():
+        try:
+            return controller.run("same concurrent objective", cycle_id="cycle-race").status
+        except CapabilityCycleError as exc:
+            return str(exc)
+
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        outcomes = list(pool.map(lambda _: invoke(), range(2)))
+
+    assert sum(outcome == "verified_pending_promotion" for outcome in outcomes) == 1
+    assert sum("cycle_id already exists" in outcome for outcome in outcomes) == 1
+    assert calls["mmi"] == 1
+    assert calls["run"] == 1
+    events = CapabilityCycleLedger(tmp_path).read_events()
+    assert sum(event["event_type"] == "cycle_started" for event in events) == 1
