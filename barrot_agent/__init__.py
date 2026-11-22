@@ -136,11 +136,13 @@ if _creative_available:
     __all__ += ["ProductionDirector", "CreativeProductionRecord"]
 
 # Optional derived-data refinement. External-provider dispatch is decommissioned.
+# Keep the failure reason visible instead of silently disabling the whole API.
+_refinement_error = None
 try:
     from .refinement import (
         IMMUTABLE_DATA_CLASSES, REFINABLE_DATA_CLASSES, HeuristicRefiner,
         PingPongRefiner, Refiner, RefinementOutput, RefinementReport,
-        RoundRecord, make_model_refiners, refine_data, refine_json_file,
+        RoundRecord, refine_data, refine_json_file,
         scoring, ref_paths, DocumentAudit, Slot, audit_document,
         segment_document, BatchResult, Patch, VerificationReport,
         apply_patches, detect_conflicts, make_delete, make_replace,
@@ -151,14 +153,15 @@ try:
         load_run, refine_document,
     )
     _refinement_available = True
-except Exception:
+except Exception as exc:
     _refinement_available = False
+    _refinement_error = exc
 
 if _refinement_available:
     __all__ += [
         "IMMUTABLE_DATA_CLASSES", "REFINABLE_DATA_CLASSES", "HeuristicRefiner",
         "PingPongRefiner", "Refiner", "RefinementOutput",
-        "RefinementReport", "RoundRecord", "make_model_refiners",
+        "RefinementReport", "RoundRecord",
         "refine_data", "refine_json_file", "scoring", "ref_paths",
         "DocumentAudit", "Slot", "audit_document", "segment_document",
         "BatchResult", "Patch", "VerificationReport", "apply_patches",

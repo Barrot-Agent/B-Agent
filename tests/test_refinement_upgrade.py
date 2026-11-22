@@ -11,6 +11,7 @@ from __future__ import annotations
 import copy
 import json
 import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -593,6 +594,33 @@ class TestPipeline(unittest.TestCase):
                 data_classification="public_documentation")
             with self.assertRaises(PermissionError):
                 other.resume(result["run_id"])
+
+
+class TestLunaRouteDecommissionIntegrity(unittest.TestCase):
+    """The decommission must not silently disable the offline refinement API."""
+
+    def test_top_level_package_exposes_offline_refinement_api(self):
+        import barrot_agent
+        self.assertTrue(
+            barrot_agent._refinement_available,
+            getattr(barrot_agent, "_refinement_error", None))
+        for name in ("refine_data", "refine_document", "HeuristicRefiner",
+                     "RefinementPipeline", "load_run"):
+            self.assertTrue(hasattr(barrot_agent, name), name)
+        self.assertFalse(hasattr(barrot_agent, "LunaRouteRefiner"))
+
+    def test_pingpong_cli_imports_and_external_modes_fail_closed(self):
+        cli = REPO_ROOT / "scripts" / "pingpong_refine.py"
+        help_run = subprocess.run(
+            [sys.executable, str(cli), "--help"],
+            capture_output=True, text=True)
+        self.assertEqual(help_run.returncode, 0, help_run.stderr)
+        live = subprocess.run(
+            [sys.executable, str(cli), "-", "--classification",
+             "derived_summary", "--live", "--allow-external-data"],
+            input='{"safe": true}', capture_output=True, text=True)
+        self.assertEqual(live.returncode, 2, live.stderr)
+        self.assertIn("decommissioned", live.stderr)
 
 
 if __name__ == "__main__":
