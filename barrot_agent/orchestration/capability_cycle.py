@@ -6,7 +6,10 @@ All side-effecting behavior is supplied explicitly by the caller.
 """
 from __future__ import annotations
 
-import fcntl
+try:
+    import fcntl
+except ImportError:  # pragma: no cover - non-POSIX fallback is single-writer only
+    fcntl = None
 import hashlib
 import json
 import os
@@ -85,11 +88,13 @@ class CapabilityCycleLedger:
 
     def read_events(self) -> list[dict[str, Any]]:
         with self.lock_path.open("a+", encoding="utf-8") as lock:
-            fcntl.flock(lock.fileno(), fcntl.LOCK_SH)
+            if fcntl is not None:
+                fcntl.flock(lock.fileno(), fcntl.LOCK_SH)
             try:
                 return self._read_unlocked()
             finally:
-                fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
+                if fcntl is not None:
+                    fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
 
     def append(self, cycle_id: str, event_type: str, payload: dict[str, Any]) -> dict[str, Any]:
         if not isinstance(cycle_id, str) or not self.CYCLE_ID.fullmatch(cycle_id):
@@ -99,7 +104,8 @@ class CapabilityCycleLedger:
         if not isinstance(payload, dict):
             raise TypeError("event payload must be an object")
         with self.lock_path.open("a+", encoding="utf-8") as lock:
-            fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+            if fcntl is not None:
+                fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
             try:
                 events = self._read_unlocked()
                 previous = events[-1]["event_hash"] if events else "0" * 64
@@ -120,7 +126,8 @@ class CapabilityCycleLedger:
                     os.fsync(stream.fileno())
                 return event
             finally:
-                fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
+                if fcntl is not None:
+                    fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
 
 
 class CapabilityCycleController:
