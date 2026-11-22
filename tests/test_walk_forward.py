@@ -508,3 +508,38 @@ def test_walk_forward_reports_paired_bootstrap_and_fails_closed_on_one_source_gr
         item["assumptions"]["source_independence_groups"] == ["kraken"]
         for item in result["forecasts"]
     )
+
+def test_walk_forward_venue_filter_matches_exchange_labels_case_insensitively():
+    records = _series(40)
+    for index, record in enumerate(records):
+        record["record_id"] = f"xrp:coinbase:1h:{index}:v1"
+        record["feature_id"] = "xrp.spot.coinbase.1h.close_price"
+        record["venue"] = "Coinbase"
+        record["currency_pair"] = "XRP/USD"
+        record["instrument"] = "XRP-USD spot"
+        record["sources"] = [
+            {
+                **record["sources"][0],
+                "source_id": "coinbase-public-api",
+                "independence_group": "coinbase",
+                "source_uri": "https://api.exchange.coinbase.com/products/XRP-USD/candles?granularity=3600",
+            }
+        ]
+
+    result = evaluate_chronological_walk_forward(
+        records,
+        feature_id="xrp.spot.coinbase.1h.close_price",
+        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=39, seconds=3)),
+        horizon_seconds=3600,
+        min_train_samples=5,
+        min_out_of_sample_samples=1,
+        target_tolerance_seconds=5,
+        venue="coinbase",
+        currency_pair="XRP/USD",
+    )
+
+    assert result["status"] == "SCORED"
+    assert result["forecast_count"] > 0
+    assert result["venue"] == "coinbase"
+    assert result["live_forecast_issued"] is False
+    assert result["paper_trade_executed"] is False
