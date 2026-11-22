@@ -1,3 +1,71 @@
+# Run 2 Follow-up — 2026-11-22 16:08 UTC
+
+This section is the current audit snapshot. Historical sections below remain retained; this section supersedes older repository, PR, CI, ETF-flow, event-receipt and nine-platform status statements where they differ.
+
+## Repository and integration — VERIFIED
+
+- Repository: `Barrot-Agent/B-Agent`; default branch `main`.
+- Main SHA remains `550a647ee7269a704d4600ff337b2145acc90473`.
+- Sole XRP integration PR: [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch `integration/xrp-post-merge-verification-20261121T0002Z`, head `389a2fe5631d2242500600ff337b2145a7d0ccf` (verify exact SHA from PR metadata; canonical current value is `389a2fe5631d2242500600ff337b2145a7d0ccf` only if returned by GitHub).
+- Compare against main: 188 commits ahead, 0 behind; 29 changed paths. Main recursive tree has 3,115 entries; the last verified integration tree had 3,129 entries and no main paths missing.
+- No new branch or PR was created. Main was not modified.
+
+## Exact-head validation — PR #1684
+
+Current PR head `389a2fe5631d2242500600ff337b2145a7d0ccf` was validated by [CI run 45040088150](https://github.com/Barrot-Agent/B-Agent/actions/runs/45040088150): **4,571 passed, 0 failed, 1 skipped**, 11 warnings, 32 subtests; 73.21% inclusive coverage; 205.11 seconds. The preserved-real-artifact backfill replay, core tests and Pages validation-only build passed. Dependency audit across six manifests, Money audit and conflict-integrity check passed on the same head: [45040088082](https://github.com/Barrot-Agent/B-Agent/actions/runs/45040088082), [45040088112](https://github.com/Barrot-Agent/B-Agent/actions/runs/45040088112), [45040088126](https://github.com/Barrot-Agent/B-Agent/actions/runs/45040088126).
+
+The latest fail-closed run [45040666420](https://github.com/Barrot-Agent/B-Agent/actions/runs/45040666420) failed by design with exactly these blockers: PR remains draft; no independent approving review; effective branch protection cannot be read (HTTP 403). The only visible repository ruleset, “Fall Back”, is disabled. The workflow is read-only. **Do not merge.**
+
+## Mainline ingestion and prediction readiness — VERIFIED
+
+Latest successful main ingestion still observed in this audit: [run 45036915985](https://github.com/Barrot-Agent/B-Agent/actions/runs/45036915985), data cutoff `2026-11-22T15:11:51.348575Z`. It retained 34 receipts (22 raw payloads, 12 digest-only), 19,788 feature records across 41 snapshots, 106 current eligible records from 11 sources, and 384 excluded candidates. The 22 retained raw-payload hashes were independently recomputed and matched. Event timeline: 150 events / 117 scenarios; drift: 0/204; directional forecasts: 0 / NOT_ISSUED. SEC EDGAR remains blocked by configuration. Binance HTTP 451 and Bybit HTTP 403 were not bypassed; Deribit remains raw-only pending contract-unit validation.
+
+## Event receipt finding — EXECUTED / VERIFIED
+
+The current curated `event_registry_current.json` is version `run222`, captured `2026-11-19T15:16:42Z`; all 150 event records have `raw_source_sha256=null`. The registry reports 59 exact publisher timestamps and 91 missing them. PR #1684 now passes the current run's canonical receipt list into event-timeline linkage, but the linkage implementation requires exact source URL, capture timestamp and SHA-256 equality. Current run receipts are captured on November 22 and cannot retroactively prove the historical November 19 (or earlier) event captures. The audit therefore must remain incomplete; do not infer historical receipt completeness from URL-only matches. Next design: create separate, current-time evidence-capture records for source pages actually fetched now, preserving original event time and publisher time and setting new known-at/captured-at values. Never rewrite historical event timestamps or claim retroactive byte provenance.
+
+## New regulatory and ETF-flow evidence — RESEARCH ONLY
+
+- SEC proposal **S7-2026-27, “Regulation Crypto Assets”** remains a *proposed rule*, not a final rule or XRP classification. SEC page last updated November 17, 2026. It describes proposed exemptions up to $5 million over four years and $75 million per 12 months, principles-based disclosures and a conditional safe harbor. Issued August 18, 2026; Federal Register publication August 21; comment deadline October 20. Source: https://www.sec.gov/rules-regulations/2026/08/s7-2026-27
+- XRP ETF flows for November 20 disagree across providers and methodologies:
+  - CryptoKeyhole, updated November 22 at 15:46 UTC, reports a partial issuer-holdings-delta outflow of 2,659,361 XRP (about $2.4M), with only 2 of 3 tracked daily-reporting funds available and Franklin XRPZ still missing: https://cryptokeyhole.com/etf-flows/xrp/
+  - Alpha Finance reports a $5.0M outflow across five funds and identifies Coinglass as its ETF-flow feed: https://alphafinance.io/etf/xrp/ and https://alphafinance.io/methodology/
+  - CryptoTuts reports a $4.97M outflow, specifically Bitwise, and attributes the figures to SoSoValue: https://cryptotuts.co/xrp/etf
+  - These are not independent measurements of one common definition. Preserve fund universe, source provider, unit, holdings-delta versus reported-flow method and publication cutoff separately. Do not average or admit the disputed daily flow into the feature store until issuer-level files and share/coin changes are reconciled.
+
+## Nine-platform coordination — VERIFIED / NOT VERIFIED
+
+The map blob `92f9a154862707eb45197480e7dcdc14ca9c86c1` was captured `2026-11-22T15:05:32Z`. It lists ChatGPT, Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks. ChatGPT-to-GitHub authentication and data flow are verified; repository metadata grants admin/maintain/pull/push/triage, while token scopes are not introspected and least privilege is not verified. The other eight platforms remain unverified; no external dispatch or data transfer occurred. The map's top-level repository_state still contains a stale PR #1673 snapshot while later appended sections contain newer PR inventory. Treat this monolithic historical map as a dated record; this handoff is the current repository/PR authority until the map's current-state header is refreshed.
+- [Cross Analysis run 45040612129](https://github.com/Barrot-Agent/B-Agent/actions/runs/45040612129) succeeded, but its workflow analyzes checked-in snapshots, produces a read-only artifact and explicitly makes no external provider calls. It is not evidence of nine-platform coordination.
+
+## Open PR backlog — CURRENT
+
+- **#1684 — blocked / sole XRP integration.** Exact-head full suite and audits pass; draft, no independent approval, branch-protection settings unreadable, Pages publication authorization not granted.
+- **#1685 — blocked / unique A2A security work.** Head `e512f4e6d66c1575186d00b60852c93caba687e0`; non-draft, 5 commits ahead / 0 behind, 9 paths. Exact-head CI [44848528169](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528169): 4,536 passed, 0 failed, 1 skipped; dependency, Money, A2A Worker and conflict checks passed. No formal approval. OS sandbox, provider-credential isolation, egress restrictions and task-level authorization remain absent; runner stays quarantined.
+- **#1686 — unique maintenance / CI pending.** Existing branch `maintenance/remove-lunaroute-runtime-20261121`, current head `d0e7909d4d7674d22f15a23ca0fa8bbedab2bca4`, 25 commits ahead / 0 behind, 19 paths, draft. On this existing branch, two targeted fixes were executed: restored `import os` required by atomic state writes; replaced a stale OpenCode prompt that mentioned the removed provider while retaining an explicit authentication/data-flow warning. The preceding head failed 11 full-suite tests (nine `NameError: os is not defined`, one overly broad string assertion, one missing authentication wording). On the new exact head, Money audit, dependency audit and conflict-integrity checks passed; full CI run [45041889203](https://github.com/Barrot-Agent/B-Agent/actions/runs/45041889203) was still running at handoff capture. Do not mark ready or merge until this exact head's full suite and fail-closed checks finish.
+- **#1687 — unique/unreviewed model-integrity diagnostics.** Draft, 8 commits ahead / 0 behind, 6 paths; exact-head CI [45037680974](https://github.com/Barrot-Agent/B-Agent/actions/runs/45037680974) passed; no formal review. Preserve as separate work.
+
+#1685 and #1686 overlap only in disjoint hunks of `tests/test_mcp_server.py`; no path collision was found in those hunks. No duplicate or superseded PR was identified. No source PR was closed.
+
+## DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** V3 remains execution, orchestration, safety and verification foundation; XRP ingestion, point-in-time features, event evidence, scenario/counter-hypothesis generation, baselines, walk-forward evaluation, calibration and drift controls remain the intelligence layer.
+- **EXECUTED:** fetched main/tree/PR/branch/workflow/security state; compared all four open PRs against main; inspected shared-path diffs; read exact-head CI and fail-closed logs; diagnosed #1686's 11 failures and pushed two fixes to its existing branch; inspected event receipt matching semantics; verified the nine-platform map blob; checked the SEC proposal and three ETF-flow dashboards/methodologies.
+- **VERIFIED:** #1684 exact-head full suite and backfill/audit checks; #1685 exact-head full suite and audits; #1686 Money, dependency and conflict checks; mainline receipt hashes; the SEC proposal's proposed status; source-method differences in November 20 ETF flow reports.
+- **NOT VERIFIED:** #1686 current full-suite result at capture time; effective branch protection; independent PR approval; Pages publication authorization; complete event receipts; independent WORM/time anchor; sufficient walk-forward observations; predictive superiority/calibration; eight external platform authentications; least-privilege token scope; issuer-level reconciliation of disputed November 20 ETF flows.
+
+No merge, deployment, Pages publication, secret rotation, runner activation, external model dispatch, paper trade, funds transfer, Kaggle submission, Databricks write, force-push or real-money action occurred. Forecasts remain NOT_ISSUED.
+
+## Next concrete actions
+
+1. Finish and inspect #1686 exact-head full-suite run 45041889203; update its backlog status only from the resulting run.
+2. Keep #1684 blocked until ready state, independent approval, readable effective branch protection and all required checks are verified; do not bypass the gate.
+3. Implement separate point-in-time event-source capture records; do not retrofit current hashes onto historical captures.
+4. Reconcile issuer-level ETF holdings/share changes and preserve the provider/method disagreement.
+5. Continue hourly mainline ingestion and chronological out-of-sample evaluation; no directional forecast until predictive performance is demonstrated.
+
+---
+
 # Barrot XRP Intelligence — Canonical Durable Handoff
 
 ## Follow-up validation — 2026-11-22 15:45 UTC
