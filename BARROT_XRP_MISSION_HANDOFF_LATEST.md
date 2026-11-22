@@ -4197,3 +4197,74 @@ ChatGPT/GitHub connector access is tested and working for repository read/write.
 ### Next concrete action
 
 Keep #1684 as the sole XRP integration PR. First verify its current handoff-append head CI and fail-closed gate. Keep forecast issuance disabled. Next implement event-level receipt reconstruction and an independently anchored raw-source log; repair the Actions cache-capacity dependency or make artifact-only recovery demonstrably durable; restore authorized SEC user-agent configuration; reconcile ETF issuer files and derivatives contract units; then build real receipt-backed walk-forward and shadow cohorts. Separately, #1688 needs an atomic cycle-ID reservation and provenance-bound evidence before independent review. Resolve the automatic Pages deployment side effect, effective branch protection and independent CODEOWNERS/review before any merge.
+
+
+---
+
+## Run 7 supplemental — latest mainline capture, V3 runtime and primary relationship evidence
+
+### Exact-head verification after the Run 7 handoff commit
+
+The prior Run 7 handoff commit was \`d77cfeb4da260eed5a53217a2678d2faad79b0ce\`.
+
+- [PR CI 45076312245](https://github.com/Barrot-Agent/B-Agent/actions/runs/45076312245): exact-head full repository suite passed — 4,571 passed, 1 skipped, 11 warnings, 32 subtests, 73.21% total coverage, 131.72 seconds.
+- Preserved-artifact historical backfill replay job 137374193740 passed.
+- Pages validation-only job 137374193446 passed; this was not a deployment.
+- Dependency audit 45076312291, Money audit 45076312199 and conflict-integrity check 45076312229 passed.
+- Push-triggered CI 45076307076 passed its core tests and intentionally skipped the separate PR full-suite job.
+- PR gate 45076312165 and push gate 45076307006 both failed closed: PR remains draft, no independent approving review exists, and branch protection cannot be verified. The explicit jq draft-state fix was exercised; no false/unknown state was treated as ready.
+- The documentation-only supplement below creates a newer head. The d77 result is not to be represented as a test on that later documentation commit; re-run exact-head CI before any merge.
+
+### Latest mainline XRP capture — 22 November 2026
+
+[Scheduled mainline ingestion run 45076310351](https://github.com/Barrot-Agent/B-Agent/actions/runs/45076310351) completed successfully at 22:12:10 UTC on main SHA \`550a647ee7269a704d4600ff337b2145acc90473\`.
+
+- Feature-store cutoff: 2026-11-22T22:11:57.869710Z.
+- Snapshot ID: \`8bfd8950128506fe781d9c12b5fe66adcee6f60a991f87aee6d69f66eca1fee3\`.
+- History: 20,616 records and 48 snapshots; latest snapshot 123 eligible records and 367 excluded candidates.
+- Event timeline: 150 events; scenario set: 117.
+- Receipts: 34 total, 22 retained raw payloads, 12 digest-only; 23 raw-only sources and 18 source failures.
+- Latest same-venue OKX USD-normalized top-of-book: bid $0.92342016, ask $0.92352925, midpoint $0.923474705, spread 1.1812993 bps; quote components captured at 22:11:50.562Z.
+- The midpoint is approximately 0.259% below the prior 21:11 capture. This is a difference between two single-venue snapshots, not a consolidated return, depth signal or forecast.
+- Feature-store restore succeeded from the preceding trusted per-run artifact checkpoint, run 45070683145. The Actions cache reservation still fails because the configured cache budget is exhausted; cache is read-only, while artifact restore and per-run checkpoint upload continue to work.
+- SEC remains \`BLOCKED_CONFIGURATION\`: \`BARROT_SEC_USER_AGENT\` is empty, companyfacts/filing capture is disabled, and SEC source failures remain 3. Do not invent a contact identity or bypass SEC fair-access requirements.
+- \`drift_status=INSUFFICIENT_DATA\`; \`walk_forward_forecast_count=0\`; \`forecast_model_eligible=false\`; \`forecast_status=NOT_ISSUED\`; \`walk_forward_status=PARTIAL_OR_BLOCKED\`.
+- Event receipt completeness remains false and external receipt anchoring remains \`NOT_ANCHORED\`. Feature-store reconstruction from raw artifacts remains unimplemented. No directional forecast was issued.
+
+### Barrot V3 external runtime blocker
+
+Main scheduled [Pillars Consistency Check run 45025283761](https://github.com/Barrot-Agent/B-Agent/actions/runs/45025283761) failed on 22 Nov. Its read-only Hugging Face runtime probe returned \`BUILD_ERROR\` for Space \`Scribedpengenius/Barrot-Omega\`. The repository source-marker and fiction-scan checks passed; the workflow did not establish deployed-revision parity. GitHub App and Databricks probes are skipped unless manually opted in.
+
+The checked-in Space frontmatter uses the built-in Streamlit SDK at version 1.35.0. Current Hugging Face documentation says the built-in Streamlit SDK is deprecated and recommends the Docker SDK/template. That is a plausible compatibility risk, not a confirmed root cause; the public runtime probe did not expose build logs. The Space requirements include NumPy 2.2.6+, PyJWT 2.15.1+ and cryptography 50.0.2+. No package incompatibility has been proven.
+
+- Do not restart, modify secrets, change hardware, migrate SDK or deploy the Space without the required specific authorization.
+- Obtain authorized build logs and establish the failure cause first.
+- Public runtime status is not authenticated Hugging Face integration or a verified data flow.
+
+### Japan SBIC identity — primary-source resolution
+
+These are three distinct legal companies established under Japan's SME Investment & Consultation Company Act, not business units of SBI Holdings:
+
+- [Tokyo Small and Medium Business Investment & Consultation Co., Ltd. — SBIC East Japan](https://www.sbic.co.jp/company/profile/): corporate number 9011001030621; established 15 Nov 1963; Tokyo; shareholders include local governments, chambers of commerce, financial institutions and operating companies; eastern 18-prefecture coverage.
+- [Nagoya Small and Medium Business Investment & Consultation Co., Ltd. — SBIC Central Japan](https://www.sbic-cj.co.jp/company/about/): established 18 Nov 1963; Nagoya; separate capital and central five-prefecture coverage.
+- [Osaka Small and Medium Business Investment & Consultation Co., Ltd. — SBIC West Japan](https://www.sbic-wj.co.jp/profiles/profile/): established 20 Nov 1963; Osaka; separate capital and western 24-prefecture coverage.
+
+The official company profiles identify the other two as sister companies. [SBI Holdings' own corporate profile](https://www.sbigroup.co.jp/english/company/information/profile.html) identifies a separate holding company established 8 July 1999, whose principal business is management of the SBI Group through share ownership. The shared letters “SBI” do not establish common ownership or a ChatGPT/OpenAI relationship. The U.S. Small Business Investment Company (SBIC) program is a separate acronym collision.
+
+### Coinbase, Circle, Ripple, SBI and BNY — relationship graph update
+
+- Coinbase's 2026 Q1 official asset disclosure lists XRP as held and as having commercial engagement as of 31 Mar 2026. It does not publish the XRP amount or identify the counterparty or type of engagement; do not infer a Ripple equity stake from that row.
+- Coinbase and Ripple announced RLUSD availability across Coinbase Prime, Exchange and retail, with deposits/withdrawals on XRPL, Base and Ethereum. Global Exchange collateral support was described as a later rollout, not necessarily live at initial listing. RLUSD distribution is not proof of XRP being used for settlement.
+- Circle's 16 Oct 2026 commercial disclosure says Coinbase is its largest and longest-standing USDC partner; Coinbase reported average USDC balances of $20B in its products in Q2 2026, up 44% year over year. Circle reports H1 2026 USDC onchain transaction volume of $36T, mint/redemption volume of $315B and $819M in distribution-partner/transaction costs. These are Circle-reported gross network metrics, not $36T of independently verified real-world payments. Circle describes partner economics as reserve-income sharing tied to USDC balances and use.
+- SBI Holdings' official history records its June 2025 investment in Circle. SBI Holdings and SBI Shinsei Bank each committed $25M in the Circle investment, total $50M. SBI VC Trade distributes USDC in Japan. The Circle/SBI Japan joint-venture initiative is a separate commercial channel from Ripple.
+- SBI Holdings/SBI VC Trade and Ripple signed an RLUSD Japan issuance/distribution MoU in Aug 2025; SBI VC Trade began RLUSD handling in June 2026. SBI Ripple Asia also conducts separate XRPL tokenized-deposit and cross-border-payment research. SBI's USDC investment/distribution and RLUSD distribution show a multi-network strategy, not exclusive XRP alignment.
+- BNY is a shared institutional infrastructure node: Circle states its BlackRock-managed USDC reserve fund is custodied at BNY; Ripple separately announced BNY custody support for XRP and RLUSD and RLUSD reserve custody. This does not establish a direct Circle–Ripple partnership.
+- Primary source links: [Circle USDC economics, 16 Oct 2026](https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win); [SBI investment in Circle, 9 Jun 2025](https://www.sbigroup.co.jp/news/2025/0609_15491.html); [SBI/Ripple RLUSD MoU, 22 Aug 2025](https://www.sbigroup.co.jp/news/2025/0822_15680.html); [SBI VC Trade RLUSD launch, 24 Jun 2026](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html); [Ripple/BNY custody and tokenized trade-finance update](https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/).
+
+### Kamilah/Camilla Stevenson identity gate
+
+The 11 Jun 2026 Paul Barron interview identifies the guest as Camilla/Kamilah Stevenson; she self-reports X as “cam i am cam Stevenson,” Instagram as “Kamilla Stevenson,” and YouTube as “doctor Camilla Stevenson,” and explicitly warns that fake pages exist. Search results now show multiple lookalike YouTube accounts, including a small \`@KamilahStevensonXrpStocks\` channel and a separate roughly 144K-subscriber channel referenced by third-party directories. No first-party cross-link from the guest's self-identified accounts to a specific YouTube channel has been established. A third-party mirror lists an 18 Nov 2026 “XRP DEEP DIVE with Apex Crypto” video attributed to Kamilah, but channel ownership is still unverified. Do not inventory or attribute any channel's videos until the cross-link is established.
+
+### Updated execution boundary
+
+No merge, deployment, Space restart, secret rotation, external model dispatch, Kaggle submission, Databricks write, paper trade or real-money action occurred. Keep the forecast gate closed. The next actions are: verify CI on the newest handoff-only head; preserve #1684 as the single XRP integration PR; fix cache-budget dependence and raw-artifact rebuild; add event-level receipts and external timestamp anchoring; resolve SEC configuration lawfully; reconcile ETF issuer files and derivatives units; and obtain authorized Hugging Face build logs before any Space repair.
