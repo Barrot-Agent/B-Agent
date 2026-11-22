@@ -1,8 +1,80 @@
 # Barrot XRP Intelligence — Canonical Durable Handoff
 
-**Updated:** 2026-11-22 04:54 UTC  
+**Updated:** 2026-11-22 06:00 UTC  
 **Mission priority:** XRP intelligence and measured prediction-engine capability. Preserve Barrot V3 as execution, orchestration, safety and verification foundation.  
-**Record policy:** The Current State — Run 11 section immediately below is authoritative for this update. Earlier run-specific sections are preserved historical evidence; prior run detail remains in Git revisions and linked GitHub Actions artifacts. No branch history is rewritten.
+**Record policy:** The Current State — Run 12 section immediately below is authoritative for this update. Run 11 and earlier run-specific sections are preserved historical evidence; prior run detail remains in Git revisions and linked GitHub Actions artifacts. No branch history is rewritten.
+
+
+## Current State — Run 12 — 2026-11-22 06:00 UTC
+
+This section is authoritative for the current snapshot. Run 11 and all earlier sections remain preserved historical evidence. The repository was inspected as one integrated product before any write. The audited code head was `c8917c4f5fcf6743334143b0cf34080dddc95018`; this atomic handoff/map/test refresh is parented to that exact head and must receive its own exact-head CI. No application runtime or workflow code is changed by this refresh.
+
+### Repository and integration
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; its complete recursive tree has 3,115 entries.
+- Existing XRP integration branch `integration/xrp-post-merge-verification-20261121T0002Z` is at `c8917c4f5fcf6743334143b0cf34080dddc95018`: 145 commits ahead, 0 behind main; 27 changed files; 3 changed workflow files; 3,127 complete tree entries; zero main paths missing.
+- No new branch or PR was created. Main was not modified.
+- Current integration objective remains consolidated in [PR #1684](https://github.com/Barrot-Agent/B-Agent/pull/1684).
+
+### Exact-head CI on `c8917c4`
+
+- [PR CI 44987836051](https://github.com/Barrot-Agent/B-Agent/actions/runs/44987836051): full repository suite **4,564 passed, 0 failed, 1 skipped**, 11 warnings and 32 subtests; 180.15 seconds.
+- [Push CI 44987832154](https://github.com/Barrot-Agent/B-Agent/actions/runs/44987832154): successful; its duplicate full-suite job was skipped by the integration-push guard. The PR-event full-suite job above is the controlling full-suite evidence.
+- [Dependency audit 44987836044](https://github.com/Barrot-Agent/B-Agent/actions/runs/44987836044): passed.
+- [Money audit 44987836128](https://github.com/Barrot-Agent/B-Agent/actions/runs/44987836128): passed.
+- [Conflict integrity 44987836078](https://github.com/Barrot-Agent/B-Agent/actions/runs/44987836078): passed.
+- GitHub Pages validation passed in validation-only mode; no deployment.
+- [Historical backfill replay](https://github.com/Barrot-Agent/B-Agent/actions/runs/44987836051): 118 records recovered across 11 source lineages; isolated store grew from 18,483 to 18,601 records and 30 to 31 snapshots. SQLite integrity passed; 33 historical artifact ZIP digests matched, zero mismatches. Point-in-time visibility was false immediately before and true immediately after the availability bound. Reconciliation SHA-256: `dd1be5b3c55afa3f3ba13715b50f6804fe07c976a40939be813b13b84a8afa24`. This was an isolated CI copy, not a main database write. The GitHub API run-date clock is a post-append availability bound, not verified physical commit time or an external trusted timestamp.
+- [Fail-closed gate 44987836136](https://github.com/Barrot-Agent/B-Agent/actions/runs/44987836136) correctly refused readiness because the PR is draft, there is no independent approval and branch protection cannot be inspected. No merge was attempted.
+
+### Latest successful main ingestion — Run 59
+
+[Ingestion run 44988443368](https://github.com/Barrot-Agent/B-Agent/actions/runs/44988443368) completed successfully on main SHA `550a647ee7269a704d4600ff337b2145acc90473`; data cutoff `2026-11-22T05:13:39.556002Z`.
+
+- Feature store: 18,606 historical records across 31 snapshots; 490 delta candidates; 123 eligible and 367 excluded; SQLite integrity `ok`.
+- Receipts: 34 total; 22 retained payloads and 12 digest-only; 18 source failures; 23 raw-only sources. Cross-run sequence 31 continued from run 44984161724 and verified. The cache reservation failed because the GitHub Actions cache budget is exhausted/read-only; the workflow restored the Run58 per-run feature-store checkpoint. Feature-store checkpoint retention is 7 days; raw, event and receipt-index artifacts retain 90 days. Reconstruction from retained raw artifacts is not implemented.
+- Receipt-chain head SHA-256: `fb2fa68d25fbd075660011f6e4870ee71dadfdf5cf64a5bfc158dad5fbd54f58`. Chain-log SHA-256: `9687a745436e316d71614299361c110b5069a4313cd195f4eb59c1f2866e92f3`. Receipt-log SHA-256: `b971a60a172a5c0f083e1170d64904299af1acfd97e754ca91e9687dd9c8b16a`. External trusted/WORM anchor remains absent.
+- Event timeline: 150 events, 112 declared independence groups, 59 exact publisher timestamps and 91 missing publisher timestamps. Zero raw-source hashes and zero event-to-receipt links; receipt completeness and model eligibility remain false. Scenario registry: 117 hypotheses, probabilities null.
+- Drift: 0 of 204 features evaluated; status `INSUFFICIENT_DATA`. Walk-forward: zero forecasts; one-hour label only; status `PARTIAL_OR_BLOCKED`. Forecast issuance remains `NOT_ISSUED`.
+- SEC capture remains `BLOCKED_CONFIGURATION`: no approved contact identity, zero raw receipts and three source failures. No SEC data is promoted to XRP market features.
+- OKX same-venue XRP-USDT / USDT-USD top-of-book normalization at 05:13:29 UTC: bid $0.9152658, ask $0.915374772, mid $0.915320286, spread 1.1905 bps, component skew 0.096 seconds. Both receipts share one OKX publisher group. This is top-of-book only, not consolidated depth or independent confirmation.
+- Artifacts: feature-store checkpoint 14740881478 (7-day retention); raw payloads 14740811755, events 14740404906, receipt index 14740782043 and correction audit 14741125026 (90-day retention for the latter four).
+
+[Cross Analysis run 44991201670](https://github.com/Barrot-Agent/B-Agent/actions/runs/44991201670) succeeded at 05:51:42 UTC. XRP sentiment input remains stale: newest entry 2026-10-29 12:39:22 UTC, age 569.208 hours; forecast eligibility false.
+
+### Current open-PR inventory and overlap audit
+
+| PR | Classification | Current evidence | Disposition |
+|---|---|---|---|
+| [#1684 XRP integration](https://github.com/Barrot-Agent/B-Agent/pull/1684) | Blocked | Draft; 145 ahead/0 behind; 27 files; zero formal reviews. Exact-head full suite and isolated backfill replay passed on `c8917c4`. | Keep draft. Gate blocks for draft/no independent approval/protection visibility. |
+| [#1685 A2A credential separation](https://github.com/Barrot-Agent/B-Agent/pull/1685) | Blocked | Non-draft; 5 commits ahead/0 behind; 9 files; zero formal reviews. Its current head `e512f4e` has prior exact-head suite 4,536 passed, 0 failed, 1 skipped. | Keep runner quarantined until independent review, OS sandbox, provider-credential isolation, egress controls and task-level authorization are verified. No deployment or secret action. |
+| [#1686 LunaRoute runtime decommission](https://github.com/Barrot-Agent/B-Agent/pull/1686) | Unique/unreviewed; CI-blocked | Draft; 18 commits; 16 files; zero formal reviews. Exact head `ded2546`; full suite run 44988220240: 4,508 passed, **11 failed**, 1 skipped, 11 warnings, 21 subtests. | Do not merge or run its local cleanup script. It removes provider/refinement code and changes OpenCode configuration; Barrot V3 compatibility requires review. |
+
+PR #1686's 11 failures are concrete: nine tests hit `NameError: os is not defined` in `barrot_agent/refinement/pipeline.py`; one configuration test fails because the string `lunaroute` remains in the agent prompt; one state test fails because the prompt no longer contains required authentication wording. Dependency audit 44988220200, Money audit 44988220204, conflict integrity 44988235542 and Pages validation passed; the fail-closed gate 44988235544 failed.
+
+PR #1685 and #1686 both modify `tests/test_mcp_server.py`. The inspected patches touch different hunks, but the shared path must be reconciled before either PR can be merged. PR #1686 has no path overlap with XRP PR #1684. Its added `scripts/decommission_lunaroute_local.sh` edits shell profiles and deletes `~/.lunaroute_key` if present. The script was not executed. No source PR was closed; #1686 is unique, not a duplicate.
+
+### Governance, dependencies and platform map
+
+- Repository metadata reports admin/maintain/push/pull/triage permissions; connector token scopes were not introspected.
+- Main branch-protection metadata says protected, but the protection endpoint returns HTTP 403. The visible `Fall Back` ruleset is disabled. CODEOWNERS is `* @Barrot-Agent`, not an independent reviewer. All three open PRs have zero formal reviews. Repository metadata also reports `web_commit_signoff_required=true`; its effect on the applicable merge path remains unverified.
+- Automatic Pages publication on main was previously observed enabled; authorization remains NOT_GRANTED. No deployment occurred.
+- Main dependency configuration was inspected: core project dependencies and optional integrations are declared in `pyproject.toml`; development/test tooling is in `requirements-dev.txt`; Dependabot weekly checks pip and GitHub Actions. The exact-head dependency audit on #1684 passed.
+- Nine-platform map is refreshed append-only. ChatGPT-to-GitHub authentication/data flow is verified for this session; repository permissions are broad and token scopes are unknown. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified. No dispatch, evidence transfer or red-team quorum occurred.
+
+### Prediction readiness and next actions
+
+No directional forecast was issued. No paper trade or real-money action occurred. The 150-event receipt gap, absent external timestamp anchor, 0/204 drift evaluations, zero walk-forward origins, stale sentiment and incomplete SEC configuration prevent model admission.
+
+1. Run exact-head CI on this documentation/test refresh commit; do not transfer `c8917c4` results to the new commit.
+2. Capture lawful raw event-source bytes and bind each event to publisher URL, publication/event/capture times, SHA-256 receipt and independence lineage.
+3. Implement deterministic feature-store reconstruction from retained raw artifacts before relying on seven-day checkpoints; cache is read-only and the rebuild path is absent.
+4. Configure SEC capture only with an approved monitored project identity.
+5. Accumulate genuine sequential point-in-time origins; backfilled rows sharing one recovery availability bound are not independent forecast origins. Evaluate naive, momentum, mean-reversion and volatility baselines before calibration.
+6. Reconcile the shared `tests/test_mcp_server.py` path before considering PR #1685 or #1686.
+7. Keep PR #1686 draft until its full-suite failures and provider-removal impact are reviewed. Do not run its local cleanup script.
+
+**Run 12 disposition:** no merge; no new PR or branch; no main write; no deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action.
 
 
 ## Current State — Run 11 — 2026-11-22 04:54 UTC

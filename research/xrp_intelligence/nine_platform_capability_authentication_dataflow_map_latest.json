@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-22T02:50:00Z",
+  "captured_at_utc": "2026-11-22T06:00:13Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -6796,7 +6796,7 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-22T02:50:00Z",
+  "last_verified_at_utc": "2026-11-22T06:00:13Z",
   "latest_run_id": 284,
   "latest_run_captured_at_utc": "2026-11-22T01:50:37Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -19722,7 +19722,7 @@
   },
   "current_merge_decision": "NO_MERGE: PR #1684 remains draft and has no independent approval; branch-protection details are unreadable and the visible fallback ruleset is disabled. Exact-head full suite and preserved-artifact replay passed on 2e32d875. PR #1685 has no independent approval and its runner-isolation controls remain incomplete.",
   "latest_automation_run_number": 11,
-  "latest_current_state_ref": "run11_current_state",
+  "latest_current_state_ref": "run12_current_state",
   "run11_current_state": {
     "automation_run_number": 11,
     "captured_at_utc": "2026-11-22T02:50:00Z",
@@ -20006,6 +20006,464 @@
     "no_external_model_dispatch": true,
     "no_kaggle_submission": true,
     "no_databricks_write": true,
+    "no_paper_trade": true,
+    "no_real_money": true
+  },
+  "run12_current_state": {
+    "automation_run_number": 11,
+    "captured_at_utc": "2026-11-22T06:00:13Z",
+    "snapshot_boundary": "Repository and market-ingestion evidence were fetched on code head c8917c4f5fcf6743334143b0cf34080dddc95018. This atomic documentation/test refresh is parented directly to that head; the refresh commit itself requires a new exact-head PR CI run. No application runtime or workflow code is changed by this refresh.",
+    "repository": {
+      "name": "Barrot-Agent/B-Agent",
+      "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "main_tree_entries": 3115,
+      "main_tree_truncated": false,
+      "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+      "integration_head_sha": "c8917c4f5fcf6743334143b0cf34080dddc95018",
+      "integration_tree_entries": 3127,
+      "integration_tree_truncated": false,
+      "ahead_by": 145,
+      "behind_by": 0,
+      "changed_files": 27,
+      "changed_workflow_files": 3,
+      "main_paths_missing_from_integration": 0,
+      "open_pr_count": 3,
+      "main_modified": false
+    },
+    "exact_head_ci": {
+      "head_sha": "c8917c4f5fcf6743334143b0cf34080dddc95018",
+      "push_ci_run": 44987832154,
+      "push_ci_conclusion": "success",
+      "pr_ci_run": 44987836051,
+      "pr_ci_conclusion": "success",
+      "full_suite": {
+        "job_id": 137102194225,
+        "passed": 4564,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "duration_seconds": 180.15,
+        "conclusion": "success"
+      },
+      "dependency_audit": {
+        "push_run": 44987832150,
+        "pr_run": 44987836044,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 44987836128,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 44987836078,
+        "conclusion": "success"
+      },
+      "pages_validation": {
+        "conclusion": "success_validation_only",
+        "deployment_executed": false
+      },
+      "backfill_replay": {
+        "run_id": 44987836051,
+        "job_id": 137102194522,
+        "conclusion": "success",
+        "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
+        "recovered_records": 118,
+        "recovered_source_lineages": 11,
+        "records_before": 18483,
+        "records_after": 18601,
+        "snapshots_before": 30,
+        "snapshots_after": 31,
+        "artifact_zip_digests_verified": 33,
+        "artifact_zip_digest_mismatches": 0,
+        "sqlite_integrity": "ok",
+        "visible_before_receipt": false,
+        "visible_after_receipt": true,
+        "receipt_clock_source": "github_api_run_date_header",
+        "physical_commit_time_verified": false,
+        "store_receipt_time_is_post_append_availability_bound": true,
+        "reconciliation_sha256": "dd1be5b3c55afa3f3ba13715b50f6804fe07c976a40939be813b13b84a8afa24",
+        "main_modified": false
+      },
+      "fail_closed_gate": {
+        "push_run": 44987832151,
+        "pr_run": 44987836136,
+        "conclusion": "failure_by_design",
+        "blockers": [
+          "PR #1684 remains draft",
+          "zero independent approving reviews",
+          "branch-protection details are not readable through the current integration (HTTP 403)"
+        ],
+        "merge_performed": false
+      }
+    },
+    "main_ci": {
+      "head_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "latest_verified_full_suite_run": 44839159044,
+      "conclusion": "success",
+      "full_suite": {
+        "passed": 4534,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "duration_seconds": 202.35
+      },
+      "note": "Main has not advanced from 550a647; no new main code push occurred in this run."
+    },
+    "main_ingestion": {
+      "run_id": 44988443368,
+      "created_at_utc": "2026-11-22T05:13:14Z",
+      "data_cutoff_utc": "2026-11-22T05:13:39.556002Z",
+      "feature_store_cutoff_utc": "2026-11-22T05:13:39.567997Z",
+      "snapshot_id": "1788306ed9e5ed5522d71b1cdb77ebf069c25f7aa83e0ad9057aff63741ea22f",
+      "feature_store_history_records": 18606,
+      "feature_store_snapshots": 31,
+      "input_feature_records": 2230,
+      "delta_feature_records": 490,
+      "eligible_feature_records": 123,
+      "excluded_feature_records": 367,
+      "sqlite_integrity": "ok",
+      "receipts": {
+        "count": 34,
+        "retained_raw_payloads": 22,
+        "digest_only": 12,
+        "raw_payload_hashes_verified": 22,
+        "raw_payload_hash_mismatches": 0,
+        "source_failures": 18,
+        "raw_only_sources": 23,
+        "cross_run_sequence": 31,
+        "previous_run_id": 44984161724,
+        "continuity_status": "CONTINUED",
+        "continuity_verified": true,
+        "chain_head_sha256": "fb2fa68d25fbd075660011f6e4870ee71dadfdf5cf64a5bfc158dad5fbd54f58",
+        "chain_log_sha256": "9687a745436e316d71614299361c110b5069a4313cd195f4eb59c1f2866e92f3",
+        "receipt_log_sha256": "b971a60a172a5c0f083e1170d64904299af1acfd97e754ca91e9687dd9c8b16a",
+        "external_trusted_anchor": "NOT_ANCHORED",
+        "cache_status": "READ_ONLY_BUDGET_EXHAUSTED",
+        "restore_source": "trusted_ingestion_workflow_run:44984161724:per_run_checkpoint",
+        "feature_store_checkpoint_retention_days": 7,
+        "raw_event_receipt_index_retention_days": 90,
+        "raw_artifact_rebuild_implemented": false
+      },
+      "event_timeline": {
+        "events": 150,
+        "registry_sha256": "841f6733dadb687f35e480ee3fba3e1e6f455a6365abbad6fbf15ec2fbc23a03",
+        "timeline_sha256": "1fcd5e28b604f938501868084a21cd85af1ba58b3bb652333026a1ea40578ca3",
+        "declared_independence_groups": 112,
+        "exact_publisher_timestamps": 59,
+        "missing_publisher_timestamps": 91,
+        "raw_source_hashes_present": 0,
+        "receipt_links_present": 0,
+        "receipt_complete": false,
+        "model_eligible": false
+      },
+      "scenarios": {
+        "count": 117,
+        "probabilities": "null; hypotheses are not calibrated forecasts"
+      },
+      "drift": {
+        "features": 204,
+        "evaluated": 0,
+        "status": "INSUFFICIENT_DATA",
+        "forecast_issuance_allowed": false
+      },
+      "walk_forward": {
+        "forecast_count": 0,
+        "horizon_labels": [
+          "1h"
+        ],
+        "status": "PARTIAL_OR_BLOCKED",
+        "forecast_status": "NOT_ISSUED"
+      },
+      "sec_edgar": {
+        "status": "BLOCKED_CONFIGURATION",
+        "contact_identity_configured": false,
+        "raw_receipts": 0,
+        "source_failures": 3,
+        "issuer_ids": [
+          "evernorth",
+          "coinbase",
+          "circle"
+        ],
+        "companyfacts_requested": false
+      },
+      "quote_basis": {
+        "venue": "OKX",
+        "event_times_utc": [
+          "2026-11-22T05:13:29.267Z",
+          "2026-11-22T05:13:29.363Z"
+        ],
+        "best_bid_usd": 0.9152658,
+        "best_ask_usd": 0.915374772,
+        "mid_price_usd": 0.915320286,
+        "spread_bps": 1.1905340859006095,
+        "snapshot_skew_seconds": 0.096,
+        "publisher_independence_groups": 1,
+        "component_ages_seconds": {
+          "basis": 10.289002,
+          "xrp": 10.193002
+        },
+        "scope": "Same-venue XRP-USDT and USDT-USD top-of-book normalization; top-of-book only, no consolidated depth; both receipts share one OKX publisher group."
+      },
+      "artifacts": {
+        "correction_audit": {
+          "id": 14741125026,
+          "retention_days": 90
+        },
+        "feature_store": {
+          "id": 14740881478,
+          "retention_days": 7
+        },
+        "raw_payloads": {
+          "id": 14740811755,
+          "retention_days": 90
+        },
+        "receipt_index": {
+          "id": 14740782043,
+          "retention_days": 90
+        },
+        "events": {
+          "id": 14740404906,
+          "retention_days": 90
+        }
+      }
+    },
+    "cross_analysis": {
+      "run_id": 44991201670,
+      "created_at_utc": "2026-11-22T05:51:42Z",
+      "conclusion": "success",
+      "sentiment_status": "STALE_INPUT",
+      "newest_xrp_sentiment_entry_utc": "2026-10-29T12:39:22.915636Z",
+      "sentiment_age_hours": 569.208,
+      "forecast_eligible": false
+    },
+    "open_pr_inventory": [
+      {
+        "number": 1684,
+        "title": "fix(xrp): prevent scheduled ingestion checkpoint forks",
+        "classification": "blocked",
+        "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+        "head_sha": "c8917c4f5fcf6743334143b0cf34080dddc95018",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "draft": true,
+        "commits": 145,
+        "changed_files": 27,
+        "ahead_by": 145,
+        "behind_by": 0,
+        "formal_reviews": 0,
+        "requested_reviewers": 0,
+        "exact_head_full_suite": {
+          "run_id": 44987836051,
+          "passed": 4564,
+          "failed": 0,
+          "skipped": 1,
+          "conclusion": "success"
+        },
+        "dependency_audit": "success",
+        "money_audit": "success",
+        "conflict_integrity": "success",
+        "backfill_replay": "success",
+        "fail_closed": "blocked_by_draft_approval_and_protection_visibility"
+      },
+      {
+        "number": 1685,
+        "title": "security(a2a): separate gateway and runner credentials",
+        "classification": "blocked",
+        "branch": "security/a2a-secret-separation-20261121",
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "draft": false,
+        "commits": 5,
+        "changed_files": 9,
+        "formal_reviews": 0,
+        "requested_reviewers": 0,
+        "exact_head_full_suite": {
+          "run_id": 44848528169,
+          "passed": 4536,
+          "failed": 0,
+          "skipped": 1,
+          "conclusion": "success"
+        },
+        "dependency_audit_run": 44848528067,
+        "money_audit_run": 44848528115,
+        "worker_tests_run": 44848528089,
+        "conflict_integrity_run": 44848528083,
+        "latest_fail_closed_run": 44955747971,
+        "remaining_controls": [
+          "independent approval",
+          "verified branch protection",
+          "OS sandbox",
+          "provider credential isolation",
+          "egress restrictions",
+          "task-level authorization"
+        ],
+        "runner_status": "QUARANTINED"
+      },
+      {
+        "number": 1686,
+        "title": "Remove LunaRoute from Barrot runtime configuration",
+        "classification": "unique/unreviewed",
+        "ci_status": "blocked_by_full_suite_failures",
+        "branch": "maintenance/remove-lunaroute-runtime-20261121",
+        "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "draft": true,
+        "commits": 18,
+        "changed_files": 16,
+        "additions": 151,
+        "deletions": 808,
+        "formal_reviews": 0,
+        "requested_reviewers": 0,
+        "full_suite": {
+          "run_id": 44988220240,
+          "passed": 4508,
+          "failed": 11,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests_passed": 21,
+          "conclusion": "failure",
+          "failure_groups": [
+            "9 tests fail with NameError: os is not defined in barrot_agent/refinement/pipeline.py",
+            "1 configuration test finds the word lunaroute still present in opencode.json's agent prompt",
+            "1 state test finds the required authentication wording absent from the agent prompt"
+          ]
+        },
+        "dependency_audit_run": 44988220200,
+        "money_audit_run": 44988220204,
+        "conflict_integrity_run": 44988235542,
+        "fail_closed_run": 44988235544,
+        "pages_validation": "success_validation_only",
+        "overlap_with_pr1685": [
+          "tests/test_mcp_server.py"
+        ],
+        "overlap_with_pr1684": [],
+        "shared_path_hunks_distinct": true,
+        "local_cleanup_script": "scripts/decommission_lunaroute_local.sh",
+        "local_cleanup_script_effect": "Edits .bashrc/.zshrc/.profile and deletes ~/.lunaroute_key if present; script was not executed.",
+        "runtime_scope_risk": "Removes LunaRoute provider/refinement code and OpenCode provider configuration; compatibility and Barrot V3 impact require explicit review.",
+        "disposition": "Keep draft; do not merge or run local cleanup script."
+      }
+    ],
+    "backlog_summary": {
+      "total_open": 3,
+      "ready": 0,
+      "blocked": 2,
+      "superseded": 0,
+      "duplicate": 0,
+      "unique_unreviewed": 1
+    },
+    "security": {
+      "repository_permissions_reported": [
+        "admin",
+        "maintain",
+        "pull",
+        "push",
+        "triage"
+      ],
+      "token_scopes_introspected": false,
+      "main_branch_metadata_protected": true,
+      "branch_protection_endpoint": "HTTP 403 — effective requirements not readable through current integration",
+      "visible_ruleset": {
+        "name": "Fall Back",
+        "enforcement": "disabled"
+      },
+      "codeowners": "* @Barrot-Agent",
+      "independent_code_owner_configured": false,
+      "formal_reviews_on_open_prs": 0,
+      "web_commit_signoff_required_metadata": true,
+      "automatic_pages_publication": "Previously observed enabled on main; authorization remains NOT_GRANTED."
+    },
+    "platforms": {
+      "ChatGPT": {
+        "authentication": "verified",
+        "data_flow": "ChatGPT session -> GitHub connector -> Barrot-Agent/B-Agent",
+        "repository_permissions": [
+          "admin",
+          "maintain",
+          "pull",
+          "push",
+          "triage"
+        ],
+        "token_scopes_introspected": false
+      },
+      "Claude": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Grok": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Gemini": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Copilot": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Codex": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Hugging Face": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Kaggle": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      },
+      "Databricks": {
+        "authentication": "unverified",
+        "data_flow": "not_verified",
+        "permissions": [],
+        "task_assignment": "PROPOSED_NOT_DISPATCHED"
+      }
+    },
+    "prediction": {
+      "event_receipt_complete": false,
+      "event_raw_hashes_present": 0,
+      "drift_features_considered": 204,
+      "drift_features_evaluated": 0,
+      "walk_forward_forecasts": 0,
+      "directional_forecast_enabled": false,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "merge_decision": "DO_NOT_MERGE",
+    "next_actions": [
+      "Run exact-head CI on the documentation/test refresh commit; do not transfer c8917c4 results to the new commit.",
+      "Capture lawful raw bytes, publisher timestamps, capture timestamps, SHA-256 receipts and source-independence lineage for the 150 curated events.",
+      "Implement deterministic feature-store reconstruction from retained raw artifacts before the seven-day feature-store checkpoint expires; the Actions cache remains read-only and reconstruction is not implemented.",
+      "Resolve SEC contact configuration only with an approved monitored project identity; no placeholder identity.",
+      "Accumulate genuine chronological point-in-time origins and evaluate naive, momentum, mean-reversion and volatility baselines before calibration; historical backfill rows sharing a recovery timestamp are not independent forecast origins.",
+      "Reconcile the shared tests/test_mcp_server.py path between PR #1685 and #1686 before either workstream is considered mergeable.",
+      "Keep PR #1686 draft until its 11 full-suite failures and Barrot V3 provider-removal impact are reviewed; do not run its local cleanup script."
+    ],
+    "no_merge": true,
+    "no_source_pr_closures": true,
+    "no_external_actions": true,
+    "no_external_model_dispatch": true,
+    "no_kaggle_submission": true,
+    "no_databricks_write": true,
+    "no_deployment": true,
+    "no_secret_rotation": true,
+    "no_space_restart": true,
     "no_paper_trade": true,
     "no_real_money": true
   }
