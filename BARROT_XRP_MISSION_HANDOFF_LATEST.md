@@ -1088,3 +1088,101 @@ The nine-platform map is unchanged. Only the ChatGPT-to-GitHub path is verified.
 6. Re-run exact-head CI on the new handoff commit; do not transfer the 10707e1 test results to the new commit.
 
 **No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred. Barrot V3 remains the execution, orchestration, safety and verification foundation.**
+
+
+---
+
+## RUN13 ADDENDUM — 2026-11-22T06:50Z UTC
+
+### A. Exact-head verification after Run13 handoff update
+
+Pre-addendum integration head: `a06defcd027461b093cab41198a48b3813792c75`.
+
+Run: https://github.com/Barrot-Agent/B-Agent/actions/runs/44994849953
+
+- Full repository suite: **4,565 passed, 1 skipped, 0 failed; 11 warnings; 32 subtests passed**.
+- Coverage: 73.20%; runtime 136.60 seconds.
+- Core tests: passed.
+- Dependency audit: passed across all configured manifests.
+- GitHub Pages: validation-only passed; no deployment.
+- Preserved-artifact historical backfill replay: passed.
+- Replay source checkpoint: 18,712 records / 32 snapshots.
+- Replay result: 18,830 records / 33 snapshots; 118 records recovered.
+- SQLite integrity: `ok`.
+- Point-in-time receipt visibility: excluded before availability bound, visible after.
+- Replay reconciliation SHA-256: `e8c21a1360e0fc916834b9c934c03f60e15d07120a3b92cfdd5315f2719c58d5`.
+- Dependency audit run: https://github.com/Barrot-Agent/B-Agent/actions/runs/44994849963
+- Fail-closed gate run: https://github.com/Barrot-Agent/B-Agent/actions/runs/44994850030
+- Gate correctly remains blocked: PR #1684 is draft, has no independent approving review, and branch protection could not be verified. No merge attempted.
+
+### B. Event-timeline audit — receipt blocker confirmed
+
+Run60 event artifact: https://github.com/Barrot-Agent/B-Agent/actions/runs/44993265727/artifacts/14742696211
+
+- 150 events; zero excluded.
+- 50 independent source groups.
+- Zero of 150 events has a raw-source SHA-256.
+- `receipt_complete=false`; `model_eligible=false`; `forecast_status=NOT_ISSUED`.
+- Event registry version Run222 was captured at `2026-11-19T15:16:42Z`, 63 hours and 4 minutes before Run60's `2026-11-22T06:20:42.012236Z` cutoff. The current 150-event timeline is therefore a stale registry replay, not a fresh 150-event capture.
+- Event artifact SHA-256: `dc301e82083146244baf44ba7b4c0bd12ed6e77c2da30d7f2afda6e827af4d18`.
+- Registry SHA-256: `841f6733dadb687f35e480ee3fba3e1e6f455a6365abbad6fbf15ec2fbc23a03`.
+- This confirms the next priority is event-source capture and exact event-to-receipt linking, not additional scenario generation.
+
+### C. Run60 research-only flow observations
+
+The Run60 research-only artifact contains two observations; neither is admitted to the point-in-time feature store.
+
+**Bitbank latest-60-trade sample**
+- 60 trades over 720.377 seconds, 06:06:35–06:18:35 UTC.
+- Buy taker volume: 4,477.704 XRP.
+- Sell taker volume: 6,324.0807 XRP.
+- Net taker flow: -1,846.3767 XRP; -268,012.55 JPY.
+- Receipt SHA-256: `69f6c8c065d25a0b518b26d09d8389f3336f9841fdd55491bebc50cd4598a3b2`.
+- Excluded from model features because a rolling latest-60-trade window is variable-duration, not a fixed-time or complete 24-hour flow metric.
+
+**ETF holdings-delta aggregate**
+- Data vintage: November 20, 2026; seven funds; 1,667 rows, 1,478 settled and 189 reconstructed.
+- Four direct-spot-flow funds reported a combined holdings-delta estimate of -$7,452,638 / -8,242,683.02 XRP; associated direct-spot holdings were 1,122,521,062.26 XRP.
+- One fund was excluded from the direct-spot flow sleeve; index sleeve flow was zero; mixed-indirect sleeve was +$200,465.
+- This is an attributed holdings-delta aggregate, not issuer-authorized cash creations/redemptions or proof of exchange purchases. The CSV bytes were not retained because the source terms permit attribution/citation but restrict commercial redistribution; only a hash receipt was retained.
+- CSV SHA-256: `a200eab17109c4a878af34e051c6d072f2c197672dc46530a1682a1034c66a97`.
+- Model eligibility remains false pending issuer-level reconciliation and lawful row-level access.
+
+### D. Direct ownership and relationship evidence strengthened
+
+- SBI Holdings' June 9, 2025 primary release states that SBI Holdings and SBI Shinsei Bank each invested $25 million in Circle at its IPO. The same release says SBI Holdings held approximately 9% of Ripple as its largest external shareholder and identifies SBI Ripple Asia as its Ripple joint venture.
+- SBI and Circle established SBI Circle Holdings in August 2025; SBI VC Trade began public USDC distribution in March 2025.
+- SBI VC Trade listed RLUSD on June 24, 2026, alongside its existing USDC distribution. SBI Group was named by Circle as an Arc founding validator; SBI's ARC token presale participation is a separate capital event.
+- SBI Ripple Asia's February 2026 proof of concept and Japan-Korea research describe XRPL as the intended ledger infrastructure. These are XRPL use cases, not proof that XRP is the bridge asset in every tokenized-deposit or stablecoin transaction.
+- SBI Holdings, Circle, Ripple, Coinbase and SBI Ripple Asia therefore have several direct equity, JV, distribution and infrastructure relationships. Common membership in Open Standard does not prove a direct SBI-Coinbase commercial contract.
+- Primary references: https://www.sbigroup.co.jp/news/2025/0609_15491.html ; https://www.sbigroup.co.jp/news/2025/0822_15679.html ; https://www.sbigroup.co.jp/news/2026/0624_16424.html ; https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch
+
+### E. Creator identity gate — no video inventory admitted
+
+- A first-party institutional profile identifies a Dr. Kamilah Stevenson as a health/wellness professional and co-leader of All Nations Chicago. No first-party cross-link was found connecting that person to the XRP/Stocks YouTube channel surfaced in this run.
+- The channel candidate `UCXm6KAr1WHF6UN7g5b2W7wg` / `@KamilahStevensonXrpStocks` remains unverified. The candidate channel and video title are not added to the verified-person inventory.
+- The existing `UCqUPJMQdkCN6lsLVDnichPA` candidate remains probable but not platform-side verified; 21 candidate references, zero verified video inventory.
+- Name similarity, XRP subject matter, channel descriptions and subscriber counts are not identity proof.
+- Public identity references: https://allnationschicago.com/leadership ; https://www.linkedin.com/in/kamilahstevenson
+
+### F. Open PR inventory update — four open PRs
+
+A fourth PR appeared after the initial Run13 inventory. It was not created by this run.
+
+| PR | Classification | Exact status |
+|---|---|---|
+| #1684 XRP integration | Blocked / active XRP integration | Draft; pre-addendum head `a06defc`; 149 commits ahead, zero behind, 27 changed files. Full suite, dependency audit, Pages validation and real-artifact replay passed on that exact head. Gate blocks draft, missing independent approval and unverifiable branch protection. |
+| #1685 A2A credential security | Blocked / unique security work | Non-draft; 5 commits ahead, 9 files; no independent approval. Runner remains quarantined; OS sandbox, provider-credential isolation and egress controls remain absent. |
+| #1686 LunaRoute decommission | Unique/unreviewed / blocked | Draft; 18 commits ahead, 16 files; 11 full-suite failures. Local cleanup script was not executed; it deletes a local key and edits shell startup files. |
+| #1687 Read-only model integrity diagnostics | Unique/unreviewed / blocked | Draft; 3 commits ahead, 3 files; no changed-path overlap with #1684, #1685 or #1686; no independent review. Full suite failed one docs-index assertion because `docs/MODEL_INTEGRITY_AND_WEIGHT_DIAGNOSTICS.md` is not listed in the docs index; 4,538 passed, 1 failed, 1 skipped. Dependency audit, Money audit, conflict integrity and Pages validation passed. |
+
+PR #1687 adds a read-only metadata/hash audit, but does not discover Barrot's live model configuration or integrate a pinned inference evaluator. It is a separate model-integrity workstream, not a duplicate XRP PR. Keep it draft and unmerged until the docs-index failure is corrected, exact-head full suite passes and independent review exists.
+
+No PRs were created, closed, marked ready or merged by this run. No branch was created or rewritten. No force-push occurred.
+
+### G. Status after this addendum
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`.
+- The last fully verified XRP integration code/documentation head is `a06defcd027461b093cab41198a48b3813792c75`; this addendum is a documentation-only update and requires its own exact-head CI.
+- The XRP event registry remains stale and receipt-incomplete; the feature store has historical backfill continuity but not independent external WORM anchoring.
+- No directional forecast issued. No real-money or paper-trading action occurred.
