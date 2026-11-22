@@ -1,8 +1,13 @@
 # Barrot XRP Intelligence — Canonical Durable Handoff
 
-**Updated:** 2026-11-22 02:20 UTC  
+**Updated:** 2026-11-22 02:26 UTC  
 **Mission priority:** XRP intelligence and measured prediction-engine capability. Preserve Barrot V3 as execution, orchestration, safety and verification foundation.  
 **Record policy:** This is the rolling current-state handoff, not an append-only run diary. Prior run-by-run detail remains in the previous Git revisions of this file and the linked GitHub Actions artifacts. No branch history is rewritten.
+
+## Historical compatibility anchor
+
+The preserved **Run174** mainline-successor audit remains at [research/xrp_intelligence/20261115T210147Z-run174-mainline-successor-recovery-audit.json](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-post-merge-verification-20261121T0002Z/research/xrp_intelligence/20261115T210147Z-run174-mainline-successor-recovery-audit.json). Its contemporaneous main SHA was `5b2a9c46eb878250dfec99190e294909cd5835bf`; this is a historical audit anchor, not the current main SHA. The full earlier handoff history remains available in Git revisions.
+
 
 ## 1. Repository and integration state
 
@@ -139,3 +144,66 @@ Each was established in 1963 under Japan's Small and Medium Business Investment 
 6. Keep forecast issuance disabled until chronological evaluation, all four baseline comparisons, calibration, independent source clusters and drift checks support it.
 
 **Forecasts:** none issued. No outcome exists to score.
+
+## Superseding current-state verification — Run56 / 2026-11-22 02:26 UTC
+
+This section supersedes older repository, CI and ingestion snapshots elsewhere in this rolling handoff. Historical details remain in prior Git revisions. No branch history is rewritten.
+
+### Repository and PR inventory
+
+- Current main: `550a647ee7269a704d4600ff337b2145acc90473`; recursive tree: 3,115 entries, not truncated.
+- Existing XRP integration branch: `integration/xrp-post-merge-verification-20261121T0002Z`; immediately preceding handoff head: `14429a848cdc98b1c6378b1b5ecd384285b14b74`; 136 commits ahead, zero behind main; 27 changed files; integration tree: 3,127 entries, not truncated. Compare confirms no main paths are missing.
+- PR #1684 remains the one XRP integration workstream, draft, mergeable, no independent reviews. PR #1685 remains the separate A2A credential-security workstream, non-draft, no independent reviews. Their changed-path sets do not overlap. No new PR or branch was created.
+- Main is marked protected in repository metadata, but branch-protection details return HTTP 403. The only visible repository ruleset, “Fall Back,” is disabled. Effective required checks and administrator enforcement remain unverified.
+
+### Main ingestion Run56 — EXECUTED and VERIFIED
+
+Main workflow run [44975469065](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975469065) completed successfully on main SHA `550a647`, created 2026-11-22 02:18:26 UTC. Adapter version `xrp-public-market-v3.32`; parser `xrp-public-market-v3.31`.
+
+- 34 source receipts: 22 retained raw payloads, 12 digest-only.
+- 18 source failures and 23 raw-only sources.
+- Feature-store checkpoint: 18,236 records across 28 snapshots; latest snapshot 123 eligible feature records and 367 excluded records.
+- Event timeline: 150 events; scenario set: 117.
+- Drift: 0 of 204 candidate features evaluated; status `INSUFFICIENT_DATA`.
+- Walk-forward forecasts: 0; status `PARTIAL_OR_BLOCKED`; `forecast_model_eligible=false` and forecast issuance remains disabled.
+- SEC capture: three configuration/provider failures, zero raw SEC receipts and zero filing events.
+- Same-venue OKX USD-normalized top-of-book mid: `$0.9276701035`; bid `$0.927615552`; ask `$0.927724655`; spread `1.1761 bps`; component skew `0.195 s`; maximum component age `9.615 s`. This is one OKX publisher-independence group and top-of-book only, not consolidated depth or independent cross-venue corroboration.
+
+Run56 artifacts and publisher hashes:
+- Raw archive artifact [14735970629](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975469065/artifacts/14735970629), GitHub artifact digest `sha256:3e0d078ea7cc32524bab55f40ae1af40b314b3d2774dca6b9f7da0a041d5a738`; raw artifact tree SHA-256 `73ef1f853deb07fd0f07eeb07ce623bc17c9d1f78654e697ef4ceae4eba63c74`.
+- Event artifact [14735357388](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975469065/artifacts/14735357388), digest `sha256:5a9944c4978ff9b15cc5db6d577b212a9d65e87561e8ee2a63313e2232b1579c`.
+- Feature-store artifact [14735163274](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975469065/artifacts/14735163274), digest `sha256:013add7ebd73132e6b21aa9802b84df7049be1a04d6abe91ade27e16c18aee87`; seven-day retention.
+- Receipt-index artifact [14736100197](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975469065/artifacts/14736100197), digest `sha256:6a9d1a6b2ba0cf67ed9e0cc44f08820baf9ca4b9a9e7a1357b63c35c47a43066`.
+- GitHub Actions artifacts are retention-limited, not WORM or independently timestamp-anchored.
+
+### Historical backfill — EXECUTED and VERIFIED in isolated CI
+
+The exact-head PR CI run [44975408837](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975408837) included a successful preserved-real-artifact replay (job 137064077498) using main Run56:
+- 118 records recovered across 11 source lineages.
+- Isolated database: 18,236 to 18,354 records; 28 to 29 snapshots.
+- SQLite integrity passed; one-microsecond point-in-time boundary passed (invisible at 2026-11-22 02:20:57.999999 UTC; visible at 02:20:58.000001 UTC).
+- All downloaded historical artifact ZIP digests checked in this replay matched GitHub's recorded digests; zero mismatches.
+- Reconciliation SHA-256: `0a8a9858ce6733d183c5031b31574c9f92850dd5a2e458176c7cc9ed5eed24a4`.
+- Replay artifact [14735710929](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975408837/artifacts/14735710929), ZIP digest `sha256:ec3c50af84db04f94a3569e9f59be69efce614c180a4c3f9a3d1cb201c6b7e65`.
+
+This is isolated CI evidence; main's database was not modified. The recovery receipt clock is the GitHub API run Date header and represents a post-append availability bound, not a measured physical SQLite commit timestamp or an independent trusted timestamp.
+
+### Exact-head CI on 14429a848 — BLOCKED by one stale handoff assertion
+
+- Full repository suite [44975408837](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975408837): **4,563 passed, 1 failed, 1 skipped**; 11 warnings; 32 subtests; 73.20% coverage; 212.83 seconds.
+- The sole failure is `tests/test_run174_mainline_successor_preservation.py::test_run174_mainline_successor_preserves_mainline_and_xrp_mission`. The test's historical audit JSON assertions pass, but its final handoff assertion expects the rolling current-state file to retain the literal `Run174` and the historical main SHA. The prior compaction removed that anchor while preserving earlier detail in Git history. This handoff update restores an explicit, accurate historical anchor; it does not change the historical SHA or claim it is current.
+- Pages build passed in validation-only mode.
+- Dependency audit [44975408903](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975408903), Money audit [44975408897](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975408897), and conflict integrity [44975408945](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975408945) passed.
+- Fail-closed gate [44975408881](https://github.com/Barrot-Agent/B-Agent/actions/runs/44975408881) correctly blocked: PR #1684 is draft; no independent approving review exists; branch protection could not be verified; the exact-head full suite had one failure. No merge was attempted.
+
+The current handoff-only update must receive a new exact-head full-suite run. No prior-head test result is transferable to it.
+
+### Backlog and next action
+
+- **PR #1684 — BLOCKED:** unique, single XRP integration workstream; draft; no independent approval; current exact-head suite has one stale handoff-compatibility failure. Continue the existing branch; do not create a successor or duplicate.
+- **PR #1685 — BLOCKED:** unique A2A credential-security workstream; no independent approval; OS sandbox, provider-credential isolation, egress controls and task-level authorization remain outstanding; runner remains quarantined.
+- **No PR is ready to merge.** Never bypass required checks or infer branch protection. Re-evaluate exact-head CI, full-suite tests, dependency/security checks, independent approval and workflow side effects before any merge.
+
+**Next concrete action:** verify this handoff update landed on the existing branch, then rerun the full repository suite and fail-closed gate on the resulting exact head. If the historical anchor resolves the sole test failure, proceed to the next evidence blocker: event-to-raw-receipt linkage, followed by genuine chronological out-of-sample accumulation. Keep directional forecast issuance disabled.
+
+**Forecasts:** none issued; no outcome exists to score. No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
