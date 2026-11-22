@@ -1275,7 +1275,7 @@ def test_latest_current_state_ref_points_to_automation_run_5_and_binds_audited_c
     assert ci["tests_failed"] == 3
     assert ci["skipped"] == 1
     assert ci["conclusion"] == "failure"
-    assert ci["coverage_percent"] == 73.21
+    assert ci["inclusive_coverage_percent"] == 73.21
     assert ci["tracked_active_test_modules"] == 533
     assert ci["dependency_audit"]["conclusion"] == "success"
     assert ci["money_audit"]["conclusion"] == "success"

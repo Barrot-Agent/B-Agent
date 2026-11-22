@@ -225,7 +225,7 @@ def test_coinbase_hourly_close_price_uses_bar_close_not_candle_open_for_walk_for
     result = evaluate_chronological_walk_forward(
         records,
         feature_id="xrp.spot.coinbase.1h.close_price",
-        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=40, minutes=13)),
+        evaluation_as_of_utc=_stamp(BASE + timedelta(hours=41)),
         horizon_seconds=3600,
         min_train_samples=5,
         min_out_of_sample_samples=1,

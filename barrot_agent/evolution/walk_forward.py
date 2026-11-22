@@ -154,11 +154,12 @@ def _bar_event_time(record: Mapping[str, Any]) -> datetime:
     ):
         open_time = _utc(record.get("event_time_utc"), "event_time_utc")
         close_time = _utc(record.get("source_data_as_of_utc"), "source_data_as_of_utc")
-        if close_time <= open_time:
+        if close_time < open_time:
             raise WalkForwardEvaluationError(
-                "hourly close-price source_data_as_of_utc must follow the candle open time"
+                "hourly close-price source_data_as_of_utc cannot precede the candle open time"
             )
-        return close_time
+        # Synthetic/legacy records may already encode bar-close time in event_time.
+        return close_time if close_time > open_time else open_time
     return _utc(record.get("event_time_utc"), "event_time_utc")
 
 
