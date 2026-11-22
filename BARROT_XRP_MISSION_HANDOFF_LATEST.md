@@ -6905,3 +6905,12 @@ The fix does **not** relax the 100-example training minimum, 100 out-of-sample-o
 4. Resolve SEC contact configuration only with an approved monitored identity; normalize issuer ETF holdings and collateral/stablecoin observations with units, chain and as-of times.
 5. Keep #1684 as the single XRP integration PR. Do not merge until exact-head full suite/security gates pass, an independent review exists, and effective branch-protection requirements and workflow side effects are verified.
 
+
+
+#### Run280 map synchronization — 2026-11-22T01:14Z
+
+- The nine-platform capability/authentication/data-flow map was refreshed in commit `407338274b0d435dbad17452e91b8fe57b968644` at the existing path `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_latest.json`. It now records Run54 receipt/hash verification, feature-store and market snapshot, the venue-filter defect/fix, current PR inventory, security gates and prediction-readiness blockers.
+- ChatGPT-to-GitHub remains the only verified live platform data flow. The other eight providers remain explicitly unverified and undispatched. Repository metadata reports broad GitHub permissions; connector token scopes have not been introspected, so least privilege is not verified.
+- The map's capture snapshot was taken at integration code head `8a64d6f9acda5781e81abc597679c188c5e2d0d4`; the map update itself advanced the branch to `407338274b0d435dbad17452e91b8fe57b968644` (127 commits ahead, 0 behind; 27 changed files). This handoff note is the next documentation-only commit.
+- CI for the newer map/handoff head must be checked independently. Earlier-head results remain historical evidence only.
+
