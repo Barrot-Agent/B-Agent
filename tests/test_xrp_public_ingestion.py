@@ -727,8 +727,16 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
     )
     assert summary["source_failure_count"] == 0
-    assert summary["raw_only_source_ids"] == ["cftc_contract_status_index"]
-    assert summary["raw_only_unique_source_count"] == 1
+    raw_only_artifact = json.loads(
+        (tmp_path / "run" / "raw_only_sources.json").read_text(encoding="utf-8")
+    )
+    expected_raw_only_source_ids = sorted({
+        item["source_id"] for item in raw_only_artifact
+        if isinstance(item.get("source_id"), str) and item["source_id"].strip()
+    })
+    assert summary["raw_only_source_ids"] == expected_raw_only_source_ids
+    assert summary["raw_only_unique_source_count"] == len(expected_raw_only_source_ids)
+    assert summary["raw_only_entries_without_source_id_count"] == 0
     assert summary["eligible_feature_record_count"] > 0
     assert summary["store_verification"]["valid"] is True
     assert summary["feature_store_backup_retention_days"] == 90
@@ -3176,6 +3184,8 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
 
     assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + 3
     assert summary["source_failure_count"] == 0
+    assert summary["raw_only_source_ids"] == ["cftc_contract_status_index"]
+    assert summary["raw_only_unique_source_count"] == 1
     assert summary["weekly_source_policy"]["captured_source_ids"] == [
         "cftc_contract_status_index",
         "cftc_legacy_futures_only",
