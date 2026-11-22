@@ -502,3 +502,147 @@ The following sources were reviewed in this run. They are **web-research-only**:
 **DESIGNED / NOT YET EXECUTED:** reconstruct the feature store from retained raw artifacts when Actions cache writes are unavailable; capture every event source with URL, capture timestamp and raw SHA-256; add trusted external timestamp anchoring; ingest the SEC/Circle/SBI/Coinbase primary filings as raw receipts before feature promotion; restore derivatives/ETF/SEC coverage through lawful public endpoints; build sufficient chronological target origins and evaluate naive, momentum, mean-reversion and volatility baselines with calibration and drift gates.
 
 **Next action:** verify the CI and fail-closed gate triggered by this handoff commit; then inspect the next main hourly ingestion, address the cache reconstruction fallback and event-to-receipt completeness, and only then advance walk-forward evaluation. Directional forecasts remain disabled. No merge, deployment, cache deletion, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run11 continuation — 2026-11-22 04:25 UTC
+
+### Repository, branch and PR audit
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`.
+- Main recursive tree: 3,115 entries, `truncated=false`.
+- Existing XRP integration branch: `integration/xrp-post-merge-verification-20261121T0002Z`.
+- Integration head at this audit: `5b0ae38470f334b3e08e231a8daf87b3dca95992`.
+- Integration recursive tree: 3,127 entries, `truncated=false`.
+- Ancestry: 142 commits ahead of main, zero behind; 27 changed files. The integration tree contains all current main paths.
+- Open PR inventory remains exactly #1684 (XRP integration) and #1685 (A2A credential security). Their changed-file sets have zero overlap. No branch or PR was created.
+- #1684 remains draft. No independent review is visible. #1685 remains a separate non-draft security workstream, five commits ahead with nine changed files; no independent review is visible.
+- Main reports `protected=true`, but the branch-protection detail endpoint returns HTTP 403. The visible fallback ruleset is disabled. CODEOWNERS assigns all paths to `@Barrot-Agent`, not an independent reviewer. Repository `security_and_analysis` settings were not exposed by the available metadata response.
+- The combined-status endpoint returned no status records for main SHA. The latest scheduled main ingestion completed successfully; no merge occurred, so no post-merge main CI was required.
+
+### Exact-head CI — verified on the existing integration head
+
+On `5b0ae38470f334b3e08e231a8daf87b3dca95992`:
+
+- Full repository suite: **4,564 passed, 0 failed, 1 skipped**, 11 warnings, 32 subtests; 73.20% coverage; 167.41 seconds.
+- Core tests and the expanded full-suite job both passed.
+- Preserved-artifact historical backfill replay passed.
+- Dependency audit [44984089336](https://github.com/Barrot-Agent/B-Agent/actions/runs/44984089336) passed all six dependency manifests: root runtime, development, supplemental integrations, Hugging Face Space, legacy requirements and PEP 621 project dependencies.
+- Money audit [44984089303](https://github.com/Barrot-Agent/B-Agent/actions/runs/44984089303) passed.
+- Conflict-integrity check [44984089307](https://github.com/Barrot-Agent/B-Agent/actions/runs/44984089307) passed.
+- Pages validation passed.
+- Fail-closed gate [44984089286](https://github.com/Barrot-Agent/B-Agent/actions/runs/44984089286) remained blocked: draft status is true and branch-protection details could not be verified. No bypass was attempted.
+
+### Main ingestion Run58 — 2026-11-22 04:14 UTC
+
+[Run58](https://github.com/Barrot-Agent/B-Agent/actions/runs/44984161724) completed successfully on main SHA `550a647`.
+
+- 34 source receipts; 22 retained raw payloads; 12 digest-only receipts.
+- 23 sources classified raw-only: 11 with retained payload bytes and 12 digest-only.
+- Every raw-only source ID is present in the receipt manifest. The earlier apparent empty `raw_only_source_ids` field was a scope misunderstanding: it belongs to the CFTC weekly-source policy subset, not the global raw-only inventory. The global `raw_only_source_count` is 23.
+- 18 source failures: eight HTTP 451 responses (Binance), five HTTP 403 responses (Bybit), three SEC contact-identity/configuration failures, one HTTP 429 (Grayscale), and one Franklin issuer-page parse failure. No proxy, alternate identity or access-control workaround was used.
+- 2,230 input feature records; 485 delta records; 124 eligible feature records; 367 excluded feature records.
+- Main feature-store checkpoint before isolated recovery: 18,483 records across 30 snapshots.
+- Drift: zero of 204 candidate features evaluated. Walk-forward forecast count: zero. SEC capture remains configuration-blocked with zero raw receipts.
+- The cross-run receipt chain reached sequence 30.
+
+Raw artifact ZIP SHA-256: `438f60a3d5e05ff8192551c2c9e7caefeb627519519e37f913b7889054cb1b02`. Feature-store artifact ZIP SHA-256: `22afecaffb3ff9d42b1fb3596c36a3e4178dccf07e91a49cf936100130824c8a`. Both were downloaded and hashed locally against the published artifact digests.
+
+### Run58 spot and order-book structure
+
+The synchronized OKX XRP-USDT / USDT-USD top-of-book calculation produced a USD-normalized mid of `0.9196117075`, spread `1.18545 bps`, component maximum age `11.000429 seconds`, and snapshot skew `0.797 seconds`. This is one OKX publisher group; only top-of-book prices were normalized. OKX depth remains in USDT.
+
+The near-synchronous USD-quoted books (approximately 04:14:42–04:14:46 UTC) were:
+
+| Venue | Mid USD | Spread | 10 bps bid / ask depth | 50 bps bid / ask depth | 100 bps bid / ask depth |
+|---|---:|---:|---:|---:|---:|
+| Coinbase | 0.919450 | 1.0876 bps | $470.1k / $326.3k | $1.960m / $1.495m | $4.488m / $2.838m |
+| Bitstamp | 0.919305 | 0.1088 bps | $374.2k / $321.3k | $748.0k / $730.2k | $861.9k / $840.9k |
+| Kraken | 0.919320 | 0.6527 bps | $327.8k / $355.0k | bid $2.819m; ask unavailable | 100 bps pair unavailable |
+
+OKX showed 10 bps bid/ask depth of 168.9k / 160.1k USDT, 50 bps 862.4k / 885.4k USDT, and 100 bps 1.159m / 1.195m USDT. Bitbank showed 10 bps 16.397m / 9.348m JPY, 50 bps 58.118m / 24.464m JPY, and 100 bps 63.804m / 37.548m JPY. Neither quote currency is converted into USD depth in this snapshot.
+
+Coinbase and Bitstamp showed positive displayed bid-side imbalance; Kraken showed slight ask-side imbalance at 10 bps; OKX was near balanced with slight ask-side imbalance beyond 10 bps. This is mixed venue-specific book state, not a consolidated directional signal. Do not sum the venues or call the displayed amounts executable global liquidity. Coinbase sequence is retained but there is no WebSocket sequence bridge; Kraken and Bitstamp are point-in-time snapshots without a continuity bridge; OKX sequence is retained without a sequence bridge.
+
+### Historical backfill — Run58 artifact reconciliation
+
+The isolated replay [from the exact-head CI artifact](https://github.com/Barrot-Agent/B-Agent/actions/runs/44984089338/artifacts/14738942253) restored 118 records from 11 source lineages:
+
+- Before: 18,483 records, 30 snapshots.
+- After: 18,601 records, 31 verified snapshots.
+- SQLite integrity: `ok`.
+- 33 downloaded historical artifact ZIP digests matched their GitHub artifact digests.
+- Point-in-time boundary: 18,483 records visible one microsecond before the recovery receipt bound; 18,601 visible one microsecond after.
+- Reconciliation SHA-256: `d81f7a76f0b29f740dfb76cb438d91beb230ac57dd345cc2c322ad9a976c7d0c`.
+- External trusted timestamp/WORM anchor: **not anchored**.
+- Recovery receipt time is a post-append availability bound, not a claim about the historical database commit time.
+
+### Walk-forward blocker corrected at code level; data sufficiency still fails
+
+Main's daily Run54 [walk-forward report](https://github.com/Barrot-Agent/B-Agent/actions/runs/44967713690) evaluated ten venue/horizon combinations (1h, 4h, 24h, 7d and 30d) but produced zero forecasts. All ten were marked blocked with `no records remain after venue filtering`.
+
+Inspection of the Run54 feature-store database found:
+- Binance: 999 eligible hourly close records but only one distinct `known_at_utc` capture origin.
+- Coinbase: 373 eligible hourly close records but only 25 distinct `known_at_utc` capture origins.
+
+The existing integration branch contains the case-insensitive `_venue_key` normalization and regression test in `walk_forward.py`; that test passed on the exact head. This corrects the venue-label mismatch. It does **not** manufacture chronological origins. The evaluator still requires at least 100 training examples and 100 out-of-sample origins per evaluation, with an embargo equal to the target horizon. After the venue filter correction, the observed one/25 availability origins remain insufficient. The next daily evaluation must confirm the new blocker; do not relax the 100-origin gate or treat a bulk historical backfill's shared capture timestamp as historical availability.
+
+### New Coinbase / cbXRP / Morpho collateral intelligence
+
+**Primary Coinbase evidence**
+
+1. Coinbase's [cbXRP proof-of-reserves page](https://www.coinbase.com/cbxrp/proof-of-reserves) reported a displayed refresh time of 2026-11-22 02:03 AM (page timezone not specified), total reserves of **158,565,196.07 XRP** and total supply of **158,562,949.53 cbXRP**, all shown on Base. The issuer-reported reserve excess is **2,246.54 XRP**, about **0.00142%** of supply. This is Coinbase-published proof-of-reserves data, not an independent audit.
+2. Coinbase Help's [loan introduction](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro) says eligible customers can borrow USDC against XRP using the Morpho protocol on Base, with regional/asset restrictions. New York's eligible list is narrower and does not include XRP.
+3. Coinbase Help's [backup collateral instructions](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup) explicitly maps loan asset XRP to collateral asset **cbXRP**, network **Base**, contract `0xcb585250f852c6c6bf90434ab21a00f02833a4af`.
+4. Coinbase's [loan-health guide](https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-health) says each Morpho market has a predetermined, market-specific LLTV; the public guide does not assign one universal threshold to XRP. Do not apply the generic 86% figure on the [borrow landing page](https://www.coinbase.com/borrow) to every collateral asset.
+5. Coinbase's [November 6, 2026 blog update](https://www.coinbase.com/blog/protecting-our-customers-standing-up-extortionists%29) says eligible customers can borrow up to $100,000 USDC against XRP, LTC, DOGE, ZEC, HYPE or PAXG; the product is powered by Morpho. The interface provides access; collateral moves onchain.
+
+**Morpho market identity**
+
+- Run58 captured the public Morpho market-parameter endpoint for Base market ID `0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109`, its state, liquidity and 30-day state history, plus oracle state `0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde`.
+- These six Morpho/cbXRP receipts and Coinbase's proof-of-reserves receipt are digest-only and model-ineligible pending raw-response retention terms, token-decimal normalization and lineage validation. Their hashes are preserved:
+  - Market parameters: `675a6d3711533831266991a632135ceb70e3c7ec33dbb7292b40919e9a351b52`
+  - Market state: `ca240338e012af2f0c15b4a01e3a885cc0ae85e55dc4e9ed465fc086d0a76fd7`
+  - Market liquidity: `3c54540e8576d8ad624a81792a8f7f8189c1c2fc8778eafa58369e5db6372d47`
+  - 30-day market state history: `fcab52b15d8eaf4f6cb8a5c66871e55fc9e41ab88ec224ef636d1a52e998ca7e`
+  - Oracle state: `8e4fd2b72d7fcb3a07892adef830f57cb9d14aabd6c0a8e9fcbf0cf4a75e794b`
+  - Coinbase cbXRP proof-of-reserves: `6fb8eda3ca291dec280b7eea444ed8ea76920ab04507ce28dd75fc2916072aab`
+- Morpho's own [Dune query, “Coinbase Borrow Markets”](https://dune.com/queries/7437221), lists this exact market ID as Base cbXRP/USDC with **62.5% LLTV**. This identifies the market as part of the Coinbase Borrow market set. Morpho's [API documentation](https://docs.morpho.org/api/) describes the market parameters as immutable and provides public read endpoints for market state, history and liquidity.
+
+**Independent analysis and limitations**
+
+- CleanSky's 2026-08-26 analysis, using an 2026-08-24 snapshot, reported 117.288m cbXRP supply, 91.619m cbXRP in Morpho (78.1%), 90.78m cbXRP in the 62.5% market and $41.0m live USDC debt. The article itself labels the Coinbase-product attribution as an inference from market parameters and timing. Morpho's Dune market list now independently supports the market identity, but the August balances remain dated: https://cleansky.io/blog/coinbase-wrappers-manufactured-demand-2026/
+- Comparing that August supply with Coinbase's 2026-11-22 proof-of-reserves display gives a cross-source increase of about **41.275m cbXRP / 35.19%**. This indicates more XRP represented by the Coinbase wrapper/custody rail; it does **not** prove those units were bought on the open market. Existing holders can wrap/pledge XRP without selling it.
+- CryptoSlate's 2026-11-13 analysis of Morpho-indexed events reported 883 liquidation logs from Nov 7 to Nov 13, about 4.182m cbXRP seized and 4.016m USDC repaid, with about $53.53m USDC debt at its Nov 13 state snapshot: https://cryptoslate.com/xrp-loans-trigger-883-liquidations-and-53m-remains-at-risk/
+- A separate ODEI dashboard read on 2026-11-21 19:29 UTC reported 880 liquidations over seven days, about $2.969m liquidated in seven days, $891k in 24 hours and zero bad debt. The dashboard labels the source as public Base RPC data but says it has not been independently checked. Treat it as an unverified monitoring lead, not a model feature: https://network.odei.ai/research/wallet-activity/mr_3tyeasjgos4644q3
+- The liquidation counts and amounts above use different windows and indexers and are not directly comparable. A liquidation log is not a unique borrower. USDC debt repaid is not borrower economic loss. cbXRP seized on Base is not proof of native XRP sold on a centralized exchange.
+
+**Causal hypotheses to test**
+
+1. Existing XRP holders wrap/pledge native XRP as cbXRP, borrow USDC and retain XRP price exposure. This can increase custody/wrapper supply without creating a spot buy.
+2. Falling XRP prices increase LTV and can trigger cbXRP collateral liquidations. Liquidators may retain, swap or redeem cbXRP; only a traced redemption/custody transfer followed by native XRP sale establishes direct spot-supply pressure.
+3. Arbitrageurs may buy discounted cbXRP and redeem it, absorbing onchain liquidation supply without an immediate broad native-XRP sell. This counter-hypothesis remains open.
+4. The wrapper/collateral rail may deepen institutional utility while simultaneously adding leverage and liquidation feedback. Measure these separately; do not collapse custody growth, loan originations, current debt, collateral seizures and native exchange flows into one “capital inflow” metric.
+
+Required follow-on features: cbXRP total supply and reserve ratio; Morpho market total supply, borrow, collateral and liquidity; oracle price/time; LLTV; liquidation events; cbXRP/USDC pool depth and swaps; cbXRP redemption/unwrap flows; Coinbase custody movements; native XRP exchange deposits/withdrawals and executed trades. Keep these model-ineligible until payload terms, token decimals, market identity and event-to-receipt linkage are verified.
+
+### Exact-phrase and identity research
+
+- Exact phrase `"ASK Coin"` returned Permission Coin (ticker ASK) on CoinGecko/CoinMarketCap, but no verified XRP relationship. Treat this as a likely false-positive candidate, not the user's intended entity: https://www.coingecko.com/en/coins/permission-coin
+- Exact phrase `"actual capital"` produced no new attributable primary-source match in this run. The earlier Evernorth cash/in-kind/debt reconciliation remains the relevant primary-source capital analysis.
+- Exact phrase `"SBIC, ChatGPT SBIC"` produced no corroborating result in this run. Keep SBIC East/Central/West distinct from SBI Holdings and the Circle–SBI Japan JV.
+- Search surfaced two public YouTube channel candidates named Kamilah Stevenson: `UCqUPJMQdkCN6lsLVDnichPA` (`@drkamilahstevenson`) and `UCGZz6xGqdQDk9wNul__VQbg` (`@drkamilahstevenson-j9r`). Their descriptions are similar, but no reliable person-to-channel identity match was established. One candidate page showed a video attributed to Honeybeardtraining; it is not attributed to the named person without verification. No video inventory was produced. No Camilla Stevenson identity match was established.
+- Nine-platform status unchanged: only ChatGPT-to-GitHub authentication and data flow are verified. The other eight platforms remain unverified; no external dispatch occurred.
+
+### Durable status and next action
+
+**VERIFIED:** complete main/integration trees; branch ancestry and PR inventory; no PR path overlap; exact-head full suite and dependency/security checks listed above; Run58 raw artifact digests; 33-artifact historical replay; SQLite and point-in-time recovery boundary; USD venue depth snapshot; Coinbase cbXRP reserve/supply display; Coinbase collateral eligibility and cbXRP Base contract; Morpho market ID/62.5% LLTV identification.
+
+**EXECUTED:** inspected Run58 raw and feature-store artifacts; queried the feature-store SQLite database; reconciled the daily Run54 walk-forward block to venue-label casing and actual availability-origin counts; searched exact phrases and YouTube identity candidates; reviewed Coinbase, Morpho, CleanSky, CryptoSlate and ODEI collateral evidence; appended this canonical handoff.
+
+**NOT YET VERIFIED / BLOCKED:** exact-head CI triggered by this new handoff commit; direct payload inspection for digest-only Morpho/cbXRP receipts; current Morpho market debt/collateral/liquidity from retained raw bytes; current native XRP redemption/sale linkage; 100 chronological OOS origins; SEC monitored contact identity; external WORM timestamp anchor; branch-protection details and independent review.
+
+**Next concrete action:** verify CI on this new handoff commit; then add lawful, receipt-backed Morpho liquidation and cbXRP redemption/market-flow capture to the existing XRP integration workstream, preserving digest-only receipts until raw-response terms are reviewed. Accumulate genuine point-in-time origins before re-running multi-horizon evaluation. Keep directional forecasts disabled. Do not relax sample gates, create another PR, bypass protection, or infer native XRP selling from cbXRP liquidation alone.
+
+No merge, deployment, cache deletion, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
