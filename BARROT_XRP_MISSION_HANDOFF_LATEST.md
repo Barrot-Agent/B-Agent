@@ -142,6 +142,38 @@ Secondary pages checked:
 
 No new exact-phrase result changed the existing ASK Coin / “actual capital” / “SBIC, ChatGPT SBIC” dispositions. No additional Camilla/Kamilah channel identity or exhaustive own-channel upload inventory was established in this pass.
 
+### Exact-phrase disambiguation and scheduled-ingestion check — 2026-11-22 10:07 UTC
+
+#### SBIC / ChatGPT phrase lead
+
+A new exact-phrase search surfaced a separate U.S. entity using the SBIC America brand:
+
+- Its LinkedIn company page self-identifies the business as Safecon Bureau of Inspection & Certification USA Inc., headquartered in Albany, New York, privately held, founded in 2016, with `safecon.us` as its listed website. It describes inspection, occupational-safety training, OSHA/NFPA/ISO certification and HSE training.
+- A 2025 post by an OSHA-authorized trainer associated with the brand promoted an AI Safety Professional video contest and offered the winner one month of ChatGPT Plus plus training. The post says SBIC would provide AI-video training.
+- This is evidence of a third-party promotional offer mentioning ChatGPT Plus, not an OpenAI partnership, endorsement, integration or evidence that OpenAI supplied the subscription. The company's LinkedIn self-description is not a substitute for an independently verified corporate-registry record; `safecon.us` could not be fetched in this pass.
+- No connection to XRP, Ripple, SBI Holdings or Japan's SBIC East/Central/West was established.
+
+Source pages:
+- SBIC America company page: https://www.linkedin.com/company/safecon-training-consulting-pvt-ltd-/
+- Trainer's 2025 ChatGPT Plus/AISP contest post: https://www.linkedin.com/posts/oshaauthorizedtrainer_aisafetyprofessional-aisp-ai-activity-7298219144028504068-93D8
+
+A separate U.S. usage also appears in SEC filings: “SBIC I / II / III” can refer to SBA-licensed Small Business Investment Company subsidiaries. This is yet another acronym expansion, distinct from both the Japanese regional investment-development companies and SBI Holdings. The phrase “SBIC, ChatGPT SBIC” is therefore not a unique legal-entity identifier without the originating context.
+
+#### ASK Coin and “actual capital”
+
+- Search results surfaced both Permission Coin (ASK) and a separate Askcoin entry in a secondary token catalog. That does not establish either as the intended “ASK Coin”; contract address, chain, issuer and date are still required. Neither candidate has a verified XRP relationship.
+- Exact-phrase searches for “actual capital” did not produce a primary XRP-specific definition or transaction record that resolves the phrase. Keep the lead open; do not convert it into a claim about cash purchases, in-kind contributions or financing capacity.
+- No additional identity-verified Camilla/Kamilah Stevenson channel or exhaustive own-channel YouTube inventory was established in this pass.
+
+#### Scheduled ingestion check
+
+The main-branch scheduled-run inventory still showed Run63 `45006501541` (created 09:13:42 UTC, data cutoff 09:14:08 UTC) as the latest XRP Public Market Ingestion at 10:07 UTC. The workflow's hourly cron is minute 3; the expected 10:03 run was not yet visible. Treat this as delayed/missing-run monitoring, not a failed workflow, until the Actions queue is checked again.
+
+#### Handoff commit verification
+
+- The public-source and exact-phrase addenda are documentation-only changes to `BARROT_XRP_MISSION_HANDOFF_LATEST.md`; no XRP source code or V3 code was changed by these documentation commits.
+- The latest branch head at the start of this addendum was `05ed61169faeb523fd7c37c2179117e71ac87895`, 166 commits ahead of main and zero behind. The new exact-head CI on that documentation commit was still running: PR CI `45010811211`, dependency audit `45010811273`, fail-closed gate `45010811182`; Money audit and conflict-integrity had passed. Do not transfer the earlier `0bc7e45` test result to the newer documentation head.
+
 ### Current code inspection and architecture status
 
 The relevant integration code and workflows were fetched at `0bc7e45`, not inferred from the handoff:
@@ -190,7 +222,7 @@ No merge, deployment, secret rotation, Space restart, external model dispatch, K
 
 
 
-**Updated:** 2026-11-22 10:04 UTC  
+**Updated:** 2026-11-22 10:07 UTC  
 **Mission priority:** XRP intelligence and measured prediction-engine capability. Preserve Barrot V3 as the execution, orchestration, safety and verification foundation.  
 **Record policy:** The Current State — Run 17 section immediately below is authoritative. Run 16 and earlier sections remain preserved historical evidence; no branch history is rewritten.
 
