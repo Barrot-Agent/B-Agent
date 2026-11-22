@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-22T06:00:13Z",
+  "captured_at_utc": "2026-11-22T11:23:37Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -6799,7 +6799,7 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-22T06:00:13Z",
+  "last_verified_at_utc": "2026-11-22T11:23:37Z",
   "latest_run_id": 284,
   "latest_run_captured_at_utc": "2026-11-22T01:50:37Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -11820,8 +11820,8 @@
     "current_pr_head_sha": "65b42e65ad3bf5a469cfe3d8cf8a5d5d538d2103",
     "current_pr_head_ci": "IN_PROGRESS"
   },
-  "latest_mission_run_id": 284,
-  "latest_mission_run_captured_at_utc": "2026-11-22T01:50:37Z",
+  "latest_mission_run_id": "Run21",
+  "latest_mission_run_captured_at_utc": "2026-11-22T11:23:37Z",
   "open_pr_count": 2,
   "run258_evidence_record": {
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -16999,7 +16999,7 @@
     "verified_code_parent_sha": "45c166c310c9f32de82da1997a33d9d3e248b59f",
     "current_head_ci_status": "Full suite failed three stale evidence-map assertions on 9e5be0; dependency, money, conflict, Pages validation-only and Run49 backfill replay passed. Run273 corrects evidence map; next commit requires exact-head CI."
   },
-  "last_audited_at_utc": "2026-11-22T08:20:32Z",
+  "last_audited_at_utc": "2026-11-22T11:23:37Z",
   "run271_evidence_record": {
     "captured_at_utc": "2026-11-21T20:06:14Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -19033,27 +19033,28 @@
     }
   },
   "current_repository_state": {
-    "captured_at_utc": "2026-11-22T01:50:37Z",
+    "captured_at_utc": "2026-11-22T11:23:37Z",
     "repository": "Barrot-Agent/B-Agent",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "main_tree_entries": 3115,
     "main_tree_truncated": false,
     "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
-    "integration_head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+    "integration_head_sha": "cb451bad81780e88d024cc0cb18a439e4e05783d",
     "integration_tree_entries": 3127,
     "integration_tree_truncated": false,
-    "ahead_by": 132,
+    "ahead_by": 170,
     "behind_by": 0,
     "changed_files": 27,
-    "commits": 132,
+    "commits_ahead": 170,
+    "main_paths_missing_from_integration": 0,
     "open_prs": [
       1684,
-      1685
+      1685,
+      1686,
+      1687
     ],
-    "main_paths_missing_from_integration": 0,
-    "integration_only_paths": 12,
     "main_modified": false,
-    "snapshot_boundary": "Captured on metadata head 4491e56 immediately before the correction commit."
+    "snapshot_boundary": "Observed at cb451 before the restoration commit; the following documentation-only commit must receive its own exact-head CI."
   },
   "latest_run_281": {
     "captured_at_utc": "2026-11-22T01:14:34Z",
@@ -19723,9 +19724,9 @@
       }
     }
   },
-  "current_merge_decision": "DO_NOT_MERGE: exact-head full suite and security/dependency checks passed on 0abe8c, but PR #1684 remains draft, has no independent approval, and branch protection is HTTP 403. The gate correctly fails closed. Main is unchanged.",
+  "current_merge_decision": "DO_NOT_MERGE",
   "latest_automation_run_number": 11,
-  "latest_current_state_ref": "run16_current_state",
+  "latest_current_state_ref": "run21_current_state",
   "run11_current_state": {
     "automation_run_number": 11,
     "captured_at_utc": "2026-11-22T02:50:00Z",
@@ -21957,5 +21958,408 @@
     "no_databricks_write": true,
     "no_paper_trade": true,
     "no_real_money": true
-  }
+  },
+  "run21_current_state": {
+    "captured_at_utc": "2026-11-22T11:23:37Z",
+    "snapshot_boundary": "Repository and main ingestion state observed with integration head cb451bad81780e88d024cc0cb18a439e4e05783d. This documentation-only restoration commit follows; it must receive its own exact-head CI.",
+    "repository_state": {
+      "repository": "Barrot-Agent/B-Agent",
+      "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "main_tree_entries": 3115,
+      "main_tree_truncated": false,
+      "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+      "integration_head_sha": "cb451bad81780e88d024cc0cb18a439e4e05783d",
+      "integration_tree_entries": 3127,
+      "integration_tree_truncated": false,
+      "ahead_by": 170,
+      "behind_by": 0,
+      "changed_files": 27,
+      "main_paths_missing": 0,
+      "open_pr_count": 4,
+      "open_prs": [
+        1684,
+        1685,
+        1686,
+        1687
+      ],
+      "main_modified": false
+    },
+    "exact_head_ci": {
+      "last_verified_code_head": {
+        "sha": "3773a4466915cbbfb48a2e59295726e8e04f070e",
+        "pr_run": 45011673066,
+        "push_run": 45011668691,
+        "full_repository_suite": {
+          "passed": 4566,
+          "failed": 0,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests_passed": 32,
+          "coverage_percent": 73.21,
+          "duration_seconds": 212.27,
+          "conclusion": "success"
+        },
+        "dependency_audit_run": 45011673094,
+        "money_audit_run": 45011673096,
+        "conflict_integrity_run": 45011673120,
+        "backfill_replay_job": 137175141749,
+        "backfill_replay_conclusion": "success"
+      },
+      "documentation_commit_cb451": {
+        "sha": "cb451bad81780e88d024cc0cb18a439e4e05783d",
+        "ci_run": 45016618634,
+        "conclusion": "failure",
+        "full_repository_suite": {
+          "passed": 4500,
+          "failed": 66,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests_passed": 32,
+          "coverage_percent": 73.21,
+          "duration_seconds": 214.17
+        },
+        "failure_classification": "All 66 failures are map/history contract failures across four map-preservation test files. The current.json historical map was mistakenly treated as empty after fetch_file returned no text for a 2.75MB blob, then replaced with an incompatible new schema. The original blob was recovered by Git blob SHA and is being restored byte-for-byte. No test was weakened and no application code changed.",
+        "other_checks": {
+          "dependency_audit": "success",
+          "money_audit": "success",
+          "conflict_integrity": "success",
+          "backfill_replay": "success",
+          "pages_validation_only": "success"
+        },
+        "fail_closed_gate": {
+          "run_id": 45016618652,
+          "conclusion": "blocked_by_design",
+          "blockers": [
+            "PR #1684 remains draft",
+            "No independent approving review",
+            "Branch-protection details return HTTP 403"
+          ]
+        }
+      },
+      "restoration_commit_ci": "PENDING — must be checked on the new exact head; no parent-head results transfer."
+    },
+    "main_ingestion": {
+      "run_id": 45016059622,
+      "run_number": 67,
+      "conclusion": "success",
+      "started_at_utc": "2026-11-22T11:11:06Z",
+      "data_cutoff_utc": "2026-11-22T11:11:39.950695Z",
+      "receipt_count": 34,
+      "retained_raw_payloads": 22,
+      "digest_only_receipts": 12,
+      "retained_payload_hashes_verified": 22,
+      "raw_payload_hash_mismatches": 0,
+      "raw_only_sources": 23,
+      "source_failures": 18,
+      "source_failure_breakdown": {
+        "binance_http_451": 8,
+        "bybit_http_403": 5,
+        "sec_configuration_failures": 3,
+        "grayscale_http_429": 1,
+        "franklin_parser_failure": 1
+      },
+      "receipt_chain_sequence": 37,
+      "cross_run_chain_sha256": "a6f9155f8f3d5b2ddcae3dfd25d2b7f68a0b4df4c6f50e2bbf6c48c1dcb2e6f2",
+      "receipt_chain_head_sha256": "35406d9d6e38c56c8d47e09f3dfc66a0e5e0c3f3f6c8c4bde9b2a6a3a9c8d1f4",
+      "feature_store_history_records": 19312,
+      "feature_store_snapshots": 37,
+      "latest_snapshot_candidate_features": 490,
+      "eligible_features": 106,
+      "excluded_features": 384,
+      "sqlite_integrity": "ok",
+      "events": 150,
+      "scenarios": 117,
+      "event_raw_hashes_present": 0,
+      "drift_features": 204,
+      "drift_evaluated": 0,
+      "walk_forward_forecasts": 0,
+      "forecast_status": "NOT_ISSUED",
+      "cache_status": "READ_ONLY_BUDGET_EXHAUSTED",
+      "restore_source": "Run66 per-run checkpoint",
+      "per_run_feature_store_artifact_retention_days": 7,
+      "raw_receipt_artifact_retention_days": 90,
+      "full_rebuild_from_retained_raw_artifacts_implemented": false,
+      "external_timestamp_anchor": "NOT_ANCHORED"
+    },
+    "market_snapshot": {
+      "data_cutoff_utc": "2026-11-22T11:11:39.950695Z",
+      "venue": "OKX",
+      "pair": "XRP-USDT",
+      "usd_normalization": "same-venue XRP-USDT and USDT-USD top-of-book product",
+      "normalized_mid_usd": 0.932563679,
+      "normalized_best_bid_usd": 0.932509098,
+      "spread_bps": 1.170558,
+      "component_max_age_seconds": 7.879,
+      "depth_levels_normalized_to_usd": false,
+      "publisher_independence_groups": 1,
+      "interpretation": "Single synchronized top-of-book snapshot; not consolidated executable liquidity or a directional signal."
+    },
+    "prediction_readiness": {
+      "event_count": 150,
+      "event_raw_hashes_present": 0,
+      "event_receipt_complete": false,
+      "event_registry_age_hours": 67.9,
+      "drift_features": 204,
+      "drift_evaluated": 0,
+      "walk_forward_forecasts": 0,
+      "calibration_status": "NOT_EVALUATED",
+      "sentiment_age_hours_approx": 574,
+      "sec_edgar": "BLOCKED_CONFIGURATION",
+      "derivatives": "PARTIAL_OR_RAW_ONLY",
+      "forecast_status": "NOT_ISSUED"
+    },
+    "market_research": {
+      "coindesk": {
+        "source_ref": "turn107837view0",
+        "source_type": "secondary reporting",
+        "publication_date": "2026-11-21",
+        "reported": "XRP near $0.87 after an approximately 9% 24-hour fall; about $18M XRP futures liquidations, 94% long liquidations, OI around $1.77B, negative funding, and about $4.97M U.S. spot ETF outflows.",
+        "limitations": "CoinDesk attributes derivatives and ETF figures to external trackers; not raw venue or issuer captures. Five-fund net-asset universe and cumulative-flow definition differ from other trackers."
+      },
+      "xrp_insights_weekly": {
+        "source_ref": "turn557290view0",
+        "url": "https://xrp-insights.com/news/xrp-supply-report-2026-11-21",
+        "source_type": "secondary derived tracker; claims issuer-page and XRPL on-chain inputs",
+        "publication_date": "2026-11-21",
+        "reported": "Nov 13–20 net ETF holdings delta -12.98M XRP; Nov 20 -8.02M XRP; 1.176B XRP in six spot funds plus BITW; 31.10B escrow; 21.96B attributed exchange wallets; RLUSD $2.86B; distributed XRPL RWA $266M versus $4.06B platform-locked registry notionals.",
+        "coverage_limit": "GXRP flow excluded because of a stated scrape gap; attributed exchange wallets are a tracked floor, not total exchange reserves."
+      },
+      "xrp_insights_aum_arithmetic_audit": {
+        "source_ref": "turn186799view0",
+        "observed": "Tracker top-level total AUM $708.10M; six spot funds $686.6M plus BITW XRP AUM $21.5M. Its per-fund rows show Bitwise XRP AUM $391.31M, Franklin $280.2M, Canary $209.0M, 21Shares $95.3M, Grayscale $70.9M, REX-Osprey $31.2M, plus BITW $21.5M.",
+        "arithmetic": "The five non-Bitwise spot rows sum to $686.6M exactly; adding BITW gives $708.1M. Including the Bitwise spot ETF row makes six-spot AUM about $1.0779B and about $1.0994B with BITW. The aggregate therefore appears to omit Bitwise XRP ETF AUM while the 1.176B XRP holdings total includes its 401.2M XRP.",
+        "admission": "UNRESOLVED_SOURCE_ARITHMETIC_DISCREPANCY; do not use tracker aggregate AUM or flows as model-eligible until each issuer's dated holdings and net-assets files are independently reconciled."
+      },
+      "internal_run67": "OKX normalized mid $0.932563679 at 11:11:39.950695 UTC on Nov 22. Compared with CoinDesk's approximate $0.87 during the prior day's selloff, this is a cross-source/time-window rebound observation, not a clean matched return or directional signal.",
+      "competing_evidence": "Internal Run66 four-fund Nov 20 holdings-derived estimate was approximately -8.24M XRP; XRP Insights reports -8.02M XRP across a different fund universe but excludes GXRP flows; CoinDesk reports approximately -$4.97M using five funds. Do not average these unlike measures."
+    },
+    "institutional_updates": {
+      "ripple_bny": {
+        "source_ref": "turn944110search1",
+        "evidence": "Ripple says BNY is RLUSD's primary reserve custodian and supports XRP/RLUSD custody. Direct mint/redeem and broader tokenized-asset services are future plans, not proof of XRP purchases."
+      },
+      "ripple_revenue": {
+        "source_ref": "turn944110search2",
+        "evidence": "Ripple's $900M annualized product-revenue run rate, $16T enabled transactions in 2025, 85+ licenses and 1,700+ institutions are issuer claims; not audited XRP-specific settlement volume or token demand."
+      },
+      "sbi_ripple_rlusd": {
+        "source_ref": "turn944110search4",
+        "evidence": "SBI VC Trade's Japan RLUSD distribution is a direct Ripple-SBI stablecoin distribution relationship; it does not establish XRP collateral or settlement."
+      },
+      "coinbase_circle_pnc": {
+        "source_ref": "turn944110news37",
+        "evidence": "Reuters reports PNC's limited pilot to receive USDC using Coinbase payment products and convert it one-to-one into U.S. dollars. This is a Circle/Coinbase stablecoin bank rail, not XRP settlement."
+      }
+    },
+    "nine_platforms": {
+      "verified": [
+        "ChatGPT-to-GitHub connector current-session authentication and repository data flow"
+      ],
+      "unverified": [
+        "Claude",
+        "Grok",
+        "Gemini",
+        "Copilot",
+        "Codex",
+        "Hugging Face",
+        "Kaggle",
+        "Databricks"
+      ],
+      "connector_permissions": [
+        "admin",
+        "maintain",
+        "push",
+        "pull",
+        "triage"
+      ],
+      "token_scopes_introspected": false,
+      "least_privilege_verified": false,
+      "external_dispatch": false,
+      "external_data_transfer": false,
+      "structured_evidence_exchange": false,
+      "external_red_team": "NOT_EXECUTED"
+    },
+    "governance": {
+      "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "main_protected_metadata": true,
+      "branch_protection_endpoint": "HTTP 403 — effective required checks/approval rules not visible",
+      "visible_ruleset": "Fall Back",
+      "visible_ruleset_enforcement": "disabled",
+      "codeowners": "* @Barrot-Agent",
+      "independent_approvals": 0,
+      "main_gate_draft_expression": "jq -r '.draft // true' — explicit false is incorrectly treated as fallback",
+      "integration_gate_fix": "if has(\"draft\") then (.draft|tostring) else \"unknown\" end",
+      "merge_decision": "DO_NOT_MERGE"
+    },
+    "open_pr_inventory": [
+      {
+        "number": 1684,
+        "classification": "blocked",
+        "workstream": "XRP ingestion, feature-store recovery, event provenance and prediction readiness",
+        "head_sha": "cb451bad81780e88d024cc0cb18a439e4e05783d",
+        "draft": true,
+        "ahead_by": 170,
+        "behind_by": 0,
+        "changed_files": 27,
+        "formal_reviews": 0,
+        "exact_parent_head_ci": "PASS on 3773a; subsequent cb451 documentation commit failed due map-schema overwrite; restoration CI pending."
+      },
+      {
+        "number": 1685,
+        "classification": "blocked",
+        "workstream": "A2A gateway/runner credential separation",
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "draft": false,
+        "ahead_by": 5,
+        "behind_by": 0,
+        "changed_files": 9,
+        "formal_reviews": 0,
+        "runner": "QUARANTINED",
+        "missing_controls": [
+          "OS sandbox",
+          "provider credential isolation",
+          "egress restrictions",
+          "task-level authorization",
+          "independent approval"
+        ]
+      },
+      {
+        "number": 1686,
+        "classification": "unique/unreviewed; blocked",
+        "workstream": "LunaRoute runtime decommission",
+        "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+        "draft": true,
+        "ahead_by": 18,
+        "behind_by": 0,
+        "changed_files": 16,
+        "last_full_suite": {
+          "passed": 4508,
+          "failed": 11,
+          "skipped": 1
+        },
+        "overlap_with_1685": "tests/test_mcp_server.py, disjoint hunks",
+        "local_cleanup_script_executed": false
+      },
+      {
+        "number": 1687,
+        "classification": "unique/unreviewed; blocked",
+        "workstream": "Read-only model integrity diagnostics",
+        "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+        "draft": true,
+        "ahead_by": 3,
+        "behind_by": 0,
+        "changed_files": 3,
+        "last_full_suite": {
+          "passed": 4538,
+          "failed": 1,
+          "skipped": 1
+        },
+        "failure": "docs-index assertion"
+      }
+    ],
+    "backlog_summary": {
+      "open": 4,
+      "ready": 0,
+      "blocked": 4,
+      "superseded": 0,
+      "duplicate": 0,
+      "unique_unreviewed": 2
+    },
+    "next_actions": [
+      "Restore current.json byte-for-byte from its original Git blob and keep its Nov 15 historical schema immutable.",
+      "Use latest.json as the active current nine-platform map and point latest_current_state_ref to run21_current_state.",
+      "Verify the restoration commit's exact-head full suite, dependency audit, money audit, conflict integrity, backfill replay and fail-closed gate.",
+      "Implement deterministic feature-store reconstruction from retained raw receipts to remove the exhausted Actions-cache dependency.",
+      "Capture exact publisher bytes, URLs, timestamps and SHA-256 receipts for the 150 curated events; do not backdate them.",
+      "Reconcile ETF holdings and net assets from each issuer's own dated files; resolve the Bitwise AUM arithmetic discrepancy before admission.",
+      "Resolve SEC user-agent configuration only with an authorized monitored project contact.",
+      "Build enough genuine sequential point-in-time origins before baseline, calibration or directional forecast work."
+    ],
+    "merge_decision": "DO_NOT_MERGE",
+    "external_actions": {
+      "merge": false,
+      "main_write": false,
+      "deployment": false,
+      "secret_rotation": false,
+      "space_restart": false,
+      "external_model_dispatch": false,
+      "external_data_transfer": false,
+      "kaggle_submission": false,
+      "databricks_write": false,
+      "paper_trade": false,
+      "funds_transfer": false,
+      "real_money": false
+    }
+  },
+  "latest_web_research_run21": {
+    "captured_at_utc": "2026-11-22T11:23:37Z",
+    "sources": [
+      {
+        "source_ref": "turn107837view0",
+        "publisher": "CoinDesk",
+        "published": "2026-11-21",
+        "evidence_class": "secondary reporting"
+      },
+      {
+        "source_ref": "turn557290view0",
+        "publisher": "XRP Insights",
+        "published": "2026-11-21",
+        "evidence_class": "secondary derived tracker",
+        "url": "https://xrp-insights.com/news/xrp-supply-report-2026-11-21"
+      },
+      {
+        "source_ref": "turn186799view0",
+        "publisher": "XRP Insights",
+        "evidence_class": "secondary live dashboard; internal AUM arithmetic inconsistency identified"
+      },
+      {
+        "source_ref": "turn944110search1",
+        "publisher": "Ripple",
+        "evidence_class": "primary issuer announcement"
+      },
+      {
+        "source_ref": "turn944110search2",
+        "publisher": "Ripple",
+        "evidence_class": "primary issuer claims"
+      },
+      {
+        "source_ref": "turn944110search4",
+        "publisher": "Ripple",
+        "evidence_class": "primary issuer announcement"
+      },
+      {
+        "source_ref": "turn944110news37",
+        "publisher": "Reuters",
+        "published": "2026-11-09",
+        "evidence_class": "independent reporting"
+      }
+    ],
+    "model_eligible": false,
+    "no_raw_http_bytes_captured": true
+  },
+  "run21_no_external_actions": {
+    "merge": false,
+    "main_write": false,
+    "deployment": false,
+    "secret_rotation": false,
+    "space_restart": false,
+    "external_model_dispatch": false,
+    "external_data_transfer": false,
+    "kaggle_submission": false,
+    "databricks_write": false,
+    "paper_trade": false,
+    "funds_transfer": false,
+    "real_money": false
+  },
+  "run21_merge_decision": "DO_NOT_MERGE",
+  "run21_next_actions": [
+    "Restore current.json byte-for-byte from its original Git blob and keep its Nov 15 historical schema immutable.",
+    "Use latest.json as the active current nine-platform map and point latest_current_state_ref to run21_current_state.",
+    "Verify the restoration commit's exact-head full suite, dependency audit, money audit, conflict integrity, backfill replay and fail-closed gate.",
+    "Implement deterministic feature-store reconstruction from retained raw receipts to remove the exhausted Actions-cache dependency.",
+    "Capture exact publisher bytes, URLs, timestamps and SHA-256 receipts for the 150 curated events; do not backdate them.",
+    "Reconcile ETF holdings and net assets from each issuer's own dated files; resolve the Bitwise AUM arithmetic discrepancy before admission.",
+    "Resolve SEC user-agent configuration only with an authorized monitored project contact.",
+    "Build enough genuine sequential point-in-time origins before baseline, calibration or directional forecast work."
+  ]
 }

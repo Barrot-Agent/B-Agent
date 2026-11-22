@@ -1,5 +1,94 @@
 # Barrot XRP Intelligence — Canonical Durable Handoff
 
+## Current State — Run21 — 2026-11-22 11:23 UTC
+
+This section supersedes Run20 for current ingestion, repository and CI status. Earlier run records remain preserved.
+
+### Repository and preservation correction
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; its complete recursive tree has 3,115 entries.
+- XRP integration branch remains `integration/xrp-post-merge-verification-20261121T0002Z`; at the audit boundary its head was `cb451bad81780e88d024cc0cb18a439e4e05783d`, 170 commits ahead and zero behind main, with 3,127 tree entries, 27 changed paths and no missing main paths.
+- Four PRs remain open: #1684–#1687. #1684 remains the sole XRP integration workstream. No new branch or PR was created.
+- **Correction:** the Run20 documentation commit `cb451bad81780e88d024cc0cb18a439e4e05783d` caused a 66-test regression because a 2.75MB historical `current.json` map was incorrectly treated as empty after a file-read call returned no text for the oversized blob. Git tree metadata showed the file was 2,748,047 bytes. Its original blob was recovered directly by SHA `1a4310a29b1b16640f8841410708ec1403c16141`. The original historical map is being restored byte-for-byte. No test was weakened and no application code was changed.
+- The failed exact-head run on `cb451` was [45016618634](https://github.com/Barrot-Agent/B-Agent/actions/runs/45016618634): 4,500 passed, 66 failed, 1 skipped, 11 warnings, 32 subtests, 73.21% coverage. All 66 failures were map/history contract failures in four test files; the other 4,500 tests passed. This is a real exact-head failure and is not being hidden.
+- The preceding code/evidence head `3773a446` passed exact-head CI [45011673066](https://github.com/Barrot-Agent/B-Agent/actions/runs/45011673066): 4,566 passed, zero failed, one skipped; dependency, Money, conflict-integrity, Pages validation and preserved-artifact replay passed. Those results do not transfer to `cb451` or to the restoration commit.
+- The new restoration commit must receive its own exact-head full suite, dependency audit, Money audit, conflict integrity, preserved-artifact replay and fail-closed gate. Until those results complete, its status is pending.
+
+### Historical map versus active map
+
+- `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json` is an immutable historical snapshot captured 2026-11-15 21:29:23 UTC. It contains Run173/Run175 history and is restored exactly.
+- `research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_latest.json` is the active cumulative map. It now includes `run21_current_state`, the current repository/PR snapshot, Run67 ingestion, the current CI failure/correction boundary, the new ETF-source arithmetic discrepancy and the current nine-platform verification status.
+- [Open the active nine-platform map](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-post-merge-verification-20261121T0002Z/research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_latest.json).
+
+### Main ingestion Run67 — VERIFIED
+
+[Run 45016059622](https://github.com/Barrot-Agent/B-Agent/actions/runs/45016059622) completed successfully on main. Data cutoff: `2026-11-22T11:11:39.950695Z`.
+
+| Measurement | Result |
+|---|---:|
+| Receipts | 34 |
+| Retained payloads / digest-only | 22 / 12 |
+| Raw-only sources / source failures | 23 / 18 |
+| Receipt-chain sequence | 37 |
+| Feature-store records / snapshots | 19,312 / 37 |
+| Latest candidate features | 490 |
+| Eligible / excluded | 106 / 384 |
+| Events / scenarios | 150 / 117 |
+| Drift evaluated | 0 / 204 |
+| Walk-forward forecasts | 0 |
+
+The cross-run receipt chain continued. Run67 quote-basis snapshot: OKX same-venue USD-normalized mid **$0.932563679**, spread **1.170558 bps**, maximum component age **7.879 seconds**. This is one publisher group and top-of-book only; it is not consolidated executable liquidity. The latest snapshot's eligible feature count fell from 123 to 106 while historical feature-store records increased from 19,206 to 19,312. This is a change in latest-snapshot admission, not deletion of historical records.
+
+The workflow restored the Run66 per-run checkpoint because Actions cache writes remain read-only after budget exhaustion. Full reconstruction from the retained 90-day raw artifacts is still not implemented; the per-run feature-store checkpoint retention is seven days. External timestamp/WORM anchoring remains absent.
+
+### Market and capital-flow research — source disagreement preserved
+
+**November 21 selloff and November 22 rebound:** CoinDesk reported XRP near $0.87 during a roughly 9% 24-hour decline on November 21, with about $18M in XRP futures liquidations, 94% long liquidations, open interest around $1.77B, negative funding and about $4.97M of U.S. spot ETF outflows. Run67's normalized OKX snapshot was about $0.93256 on November 22. These are different source/time windows; the rebound does not establish a trend reversal or a forecast.
+
+**ETF flow disagreement:** the internal Run66 four-fund holdings-derived estimate for November 20 was approximately -8.24M XRP. XRP Insights' November 21 weekly report calculated -8.02M XRP on November 20 and -12.98M XRP for November 13–20, but excludes Grayscale flows because of a stated scrape gap. CoinDesk reported approximately -$4.97M for November 20 using a five-fund universe. Do not average these different fund universes and units.
+
+**XRP Insights AUM arithmetic defect:** its dashboard reports $708.10M total AUM, $686.6M for six spot ETFs and $21.5M for BITW. Yet its per-fund rows list Bitwise's spot XRP ETF at $391.31M, Franklin at $280.2M, Canary at $209.0M, 21Shares at $95.3M, Grayscale at $70.9M and REX-Osprey at $31.2M. The five non-Bitwise spot rows sum to $686.6M exactly; adding BITW gives $708.1M. Including Bitwise's spot ETF instead yields about $1.0779B for the six spot funds and about $1.0994B with BITW. The aggregate appears to omit Bitwise's $391.31M spot ETF AUM while its 401.2M XRP is included in the holdings total. This is an arithmetic/source-vintage discrepancy, not a corrected AUM value. The tracker is not model-eligible until each issuer's dated holdings and net-assets files are reconciled.
+
+The same XRP Insights report gives 1.176B XRP held across six spot funds plus BITW, 31.10B XRP in escrow, 21.96B XRP in publicly attributed exchange wallets, RLUSD supply of $2.86B, $266M distributed transferable XRPL RWA float and $4.06B platform-locked registry notionals. These are tracker-derived figures; attributed exchange wallets are a tracked floor, not total exchange reserves, and locked registry notional is not circulating transferable value.
+
+### Institutional rails — distinctions retained
+
+- Ripple's BNY announcement describes BNY as RLUSD's primary reserve custodian and supports XRP/RLUSD custody; future direct mint/redeem and broader tokenized-asset services are not evidence of XRP purchases.
+- Ripple's $900M annualized product-revenue run rate, $16T enabled transactions in 2025, 85+ licenses and 1,700+ institutions are issuer claims, not audited XRP-specific settlement volume or token demand.
+- SBI VC Trade's RLUSD distribution in Japan is a direct Ripple-SBI stablecoin distribution relationship, not proof that XRP is collateral or settlement.
+- Reuters' November 9 report describes PNC's limited pilot to receive USDC using Coinbase payment products and convert it into U.S. dollars. This is a Circle/Coinbase stablecoin rail, not XRP settlement.
+- No direct Circle-Ripple partnership or XRP collateral relationship is established by these sources.
+
+### Prediction readiness and governance
+
+- Event registry: 150 records; zero publisher raw hashes and complete receipt links. Registry is approximately 68 hours old at Run67.
+- Drift: zero of 204 features evaluated. Walk-forward: zero forecasts. Probability calibration not evaluated. Sentiment is approximately 574 hours stale. SEC capture remains blocked by missing authorized monitored contact; Binance/Bybit remain restricted (HTTP 451/403) and were not bypassed.
+- Forecast issuance remains `NOT_ISSUED`.
+- Main metadata reports protected=true, but branch-protection details return HTTP 403. The visible fallback ruleset is disabled; CODEOWNERS is `* @Barrot-Agent`; no independent approvals exist.
+- Main's merge gate still uses `jq -r '.draft // true'`, which can misclassify explicit `draft=false`. PR #1684 contains the presence-aware fix; its gate correctly blocks #1684 for the actual draft state, missing independent approval and unverified protection.
+- PR #1685 is non-draft, but its previous gate run also hit the main-branch draft-expression false positive. It still lacks independent approval, verified branch protection, OS sandbox, credential isolation and egress controls; runner remains quarantined.
+
+### PR backlog
+
+| PR | Classification | Current blocker |
+|---|---|---|
+| #1684 XRP integration | Blocked | Draft; exact code parent passed, documentation head failed due historical map overwrite; restoration commit CI pending; no independent approval; protection unverified. |
+| #1685 A2A security | Blocked | Non-draft, prior CI passed; no independent approval or verified protection; runner isolation controls incomplete. |
+| #1686 LunaRoute decommission | Unique/unreviewed; blocked | Draft; last full suite 4,508 passed / 11 failed / 1 skipped; local cleanup script not executed. Shares one test path with #1685 in disjoint hunks. |
+| #1687 model-integrity diagnostics | Unique/unreviewed; blocked | Draft; last full suite 4,538 passed / 1 failed / 1 skipped; docs-index assertion unresolved. |
+
+No merge, branch rewrite, force-push, source-PR closure, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred. Barrot V3 remains preserved.
+
+### Next actions
+
+1. Verify the restoration commit's exact-head full suite and all required audits; do not reuse cb451 or 3773 results.
+2. Inspect the next scheduled main ingestion and retain its raw artifact hashes.
+3. Implement deterministic feature-store reconstruction from retained raw receipts, with pinned parser versions and strict source/time/hash verification.
+4. Capture exact publisher bytes, timestamps and SHA-256 receipts for the 150 events; do not backdate.
+5. Reconcile ETF flows/AUM from issuer filings and resolve the Bitwise aggregate omission before model admission.
+6. Restore authorized SEC capture and normalize derivatives, cbXRP collateral, stablecoin supply and exchange-wallet attribution.
+7. Build chronological origins and test naive, momentum, mean-reversion and volatility baselines before calibration.
+
 
 ## Current State — Run20 — 2026-11-22 11:07 UTC
 
@@ -12,7 +101,7 @@ This section supersedes Run19 for current repository, ingestion and CI status. E
 - Sole XRP integration branch: `integration/xrp-post-merge-verification-20261121T0002Z`.
 - Current PR #1684 head: `3773a4466915cbbfb48a2e59295726e8e04f070e`; 170 commits ahead, zero behind main; integration tree 3,127 entries, complete; 27 changed paths; all 3,115 main paths are present.
 - Exactly four open PRs. #1684 is the only XRP integration PR; no duplicate XRP workstream was found. No new branch or PR was created.
-- The large `nine_platform_capability_authentication_dataflow_map_latest.json` is preserved as a historical snapshot captured at 06:00:13 UTC. A previously empty `nine_platform_capability_authentication_dataflow_map_current.json` has now been populated as the authoritative current nine-platform map. No historical map data was deleted.
+- `nine_platform_capability_authentication_dataflow_map_current.json` is a 2.75MB historical Run175/Run173 snapshot. Its original Git blob `1a4310a29b1b16640f8841410708ec1403c16141` has been restored byte-for-byte. The active current map is `nine_platform_capability_authentication_dataflow_map_latest.json`; historical snapshot data is preserved.
 
 ### Exact-head CI on 3773a44 — VERIFIED
 
@@ -94,7 +183,7 @@ The shared #1685/#1686 test file is a path overlap, not a duplicate objective; t
 
 ### Nine-platform coordination — current map populated
 
-[Current nine-platform capability/authentication/permission/data-flow map](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-post-merge-verification-20261121T0002Z/research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_current.json)
+[Current nine-platform capability/authentication/permission/data-flow map](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-post-merge-verification-20261121T0002Z/research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_latest.json)
 
 Only ChatGPT-to-GitHub authentication and repository data flow are verified. Repository metadata exposes admin/maintain/push/pull/triage permissions; connector token scopes were not introspected, so least privilege is not verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified and were not dispatched. No external data transfer occurred.
 
