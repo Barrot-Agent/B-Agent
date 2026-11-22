@@ -59,6 +59,14 @@ def _price(record: Mapping[str, Any]) -> float:
     return float(value)
 
 
+def _venue_key(value: Any) -> str | None:
+    """Normalize exchange labels for stable filtering across producer casing."""
+    if not isinstance(value, str):
+        return None
+    normalized = value.strip().casefold()
+    return normalized or None
+
+
 def _classify(value: float, flat_band: float) -> str:
     if value > flat_band:
         return "up"
@@ -408,13 +416,24 @@ def evaluate_chronological_walk_forward(
     if not selected:
         raise WalkForwardEvaluationError("no records match the requested asset and feature_id")
 
-    venues = {item.get("venue") for item in selected}
+    venue_keys = {_venue_key(item.get("venue")) for item in selected}
     if venue is None:
-        if len(venues) != 1:
+        if len(venue_keys) != 1 or None in venue_keys:
             raise WalkForwardEvaluationError("select one venue; mixed or missing venue scope is not allowed")
-        venue = next(iter(venues))
+        venue_key = next(iter(venue_keys))
+        venue = next(
+            item.get("venue")
+            for item in selected
+            if _venue_key(item.get("venue")) == venue_key
+        )
     else:
-        selected = [item for item in selected if item.get("venue") == venue]
+        venue_key = _venue_key(venue)
+        if venue_key is None:
+            raise WalkForwardEvaluationError("venue must be a non-empty string")
+        selected = [
+            item for item in selected
+            if _venue_key(item.get("venue")) == venue_key
+        ]
     if not selected:
         raise WalkForwardEvaluationError("no records remain after venue filtering")
     pairs = {item.get("currency_pair") for item in selected}
