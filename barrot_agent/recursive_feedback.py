@@ -28,6 +28,12 @@ from .upgrade_flywheel import FlywheelReport, UpgradeFlywheel
 logger = get_logger(__name__)
 
 
+class _UnavailableKimiClient:
+    """Compatibility sentinel; external Kimi dispatch stays disabled."""
+
+    is_available = False
+
+
 @dataclass
 class FeedbackIteration:
     """Single iteration of the feedback loop."""
@@ -96,8 +102,8 @@ class RecursiveFeedbackLoop:
         output_dir: Path | str = "feedback_loops",
     ) -> None:
         self.config = loop_config or config.feedback_loop
-        # Kimi is intentionally not instantiated or called by the active loop.
-        # Keep the argument temporarily for source compatibility; it is ignored.
+        # Preserve the historical public attribute without enabling provider dispatch.
+        self.kimi = kimi_client if kimi_client is not None else _UnavailableKimiClient()
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -148,15 +154,22 @@ class RecursiveFeedbackLoop:
         system_state: Dict[str, Any],
         improvement_goals: List[str],
     ) -> Dict[str, Any]:
-        """Return an explicit disabled status; no external model is called."""
+        """Return an explicit unavailable/disabled status without provider dispatch."""
         del improvement_goals
+        feedback_status = "unavailable" if not getattr(self.kimi, "is_available", False) else "disabled"
+        reason = (
+            "Kimi integration is not configured or authenticated"
+            if feedback_status == "unavailable"
+            else "External Kimi dispatch remains disabled pending verified authorization"
+        )
         logger.info(
-            "External Kimi analysis is disabled (iteration %d)",
+            "External Kimi analysis is %s (iteration %d)",
+            feedback_status,
             system_state["iteration"],
         )
         return {
-            "status": "disabled",
-            "reason": "Kimi is not part of the active recursive-feedback runtime",
+            "status": feedback_status,
+            "reason": reason,
             "paradigm_shifts": [],
             "emergent_patterns": [],
             "meta_optimizations": [],
