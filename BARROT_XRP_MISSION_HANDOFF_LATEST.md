@@ -6740,3 +6740,97 @@ New RLUSD chain caveat: SBI VC Trade's June 24, 2026 RLUSD announcement states t
 The gate correction is on the integration branch, not main. PR #1684 remains draft; PR #1685 remains a separate security workstream with no independent review. Main branch-protection enforcement remains unverified (HTTP 403). Do not merge either PR.
 
 This commit adds only the portability import for the jq regression test, the structured research artifact and this handoff update. Re-run exact-head full suite, dependency/security, fail-closed and Run52 backfill on the new commit. Then prioritize raw publisher capture for the 150-event registry and legitimate SEC contact configuration. Keep forecast issuance disabled.
+
+
+---
+
+### Run279 — 2026-11-22T00:05Z — exact-head verification, Run52 recovery, and market-stress disagreement
+
+This addendum is the current execution record. It supersedes older run-state numbers above only where explicitly stated.
+
+#### Repository snapshot — VERIFIED
+
+- Default branch `main`: `550a647ee7269a704d4600ff337b2145acc90473`.
+- Main recursive tree: 3,115 entries; `truncated=false`.
+- Existing XRP branch: `integration/xrp-post-merge-verification-20261121T0002Z`, head `8f138f0d77b2e0067ce464b8f6764e9186f8ef13`.
+- Integration recursive tree: 3,127 entries; `truncated=false`.
+- Branch ancestry: 122 commits ahead, 0 behind main; 25 changed files. No new branch or PR.
+- Open PR inventory: exactly #1684 and #1685. No duplicate XRP integration PR.
+- PR #1684 is draft, mergeable at the Git level, 122 commits ahead, 0 behind, 25 files. Its changed paths are the existing XRP workflow/feature-store/event-timeline/CI/handoff/research/test workstream.
+- PR #1685 is a separate A2A credential-security workstream, non-draft, 5 commits, 9 files; no changed-path overlap with #1684.
+- Main `.github/CODEOWNERS` is `* @Barrot-Agent`; this is not independent review coverage.
+- Repository rulesets endpoint returned only `Fall Back`, enforcement `disabled`. Direct main branch-protection read remains HTTP 403. Do not infer required checks or administrator enforcement.
+
+#### Exact-head CI on 8f138f0 — VERIFIED
+
+PR CI [44964427911](https://github.com/Barrot-Agent/B-Agent/actions/runs/44964427911) completed on the exact head:
+
+- Full repository suite: **4,562 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests, 204.38 seconds.
+- Inclusive repository coverage: **73%**; legacy/core coverage: **81%**.
+- Mission-critical floors passed: XRP telemetry 92%; MMI 92%; Barrot integration 62%; feature store 80%; forecast ledger 97%; point-in-time features 89%; source registry 95%; monetization 78%; rendering 71%; smart_agent 77%; mem_palace 100%; AGI orchestrator 52%.
+- Core tests and Pages build validation-only job passed. No Pages deployment occurred.
+- Dependency audit [44964427919](https://github.com/Barrot-Agent/B-Agent/actions/runs/44964427919) passed all six manifests with no known vulnerabilities.
+- Money audit [44964427908](https://github.com/Barrot-Agent/B-Agent/actions/runs/44964427908) passed.
+- Conflict-integrity [44964427906](https://github.com/Barrot-Agent/B-Agent/actions/runs/44964427906) passed.
+- Exact-head fail-closed gate [44964468484](https://github.com/Barrot-Agent/B-Agent/actions/runs/44964468484) correctly returned BLOCKED for three reasons: PR #1684 remains draft; no independent approving review; branch protection could not be verified. This workflow is read-only and did not merge.
+
+#### Preserved Run52 main checkpoint and isolated backfill — VERIFIED
+
+Latest observed successful main ingestion remains [Run52, 44960557644](https://github.com/Barrot-Agent/B-Agent/actions/runs/44960557644), created 2026-11-21T23:11:28Z. No later XRP ingestion run appeared in the latest 100 repository workflow runs inspected at 2026-11-22T00:05:35Z; the expected 00:03 UTC hourly run was not yet visible. GitHub schedule delivery can be delayed; do not infer a successful run that is not present.
+
+Run52 main checkpoint:
+- 34 source receipts: 22 retained payloads, 12 digest-only.
+- Cross-run receipt chain continued and verified at sequence 24.
+- 17,766 historical feature records across 24 snapshots; latest snapshot 123 eligible features, 367 excluded input features.
+- SQLite integrity `ok`.
+- 18 source failures; 23 raw-only sources.
+- 150 event records and 117 scenarios; event timeline remains model-ineligible and event-to-raw-receipt completeness is false.
+- Drift: 0/204 features evaluated; walk-forward forecasts: 0; forecast issuance disabled.
+- Capture cutoff: 2026-11-21T23:11:56.046717Z.
+- Feature-store checkpoint restored from Run51 `44955452343` per-run artifact.
+
+The actual branch backfill module ran against preserved Run52 artifacts in job 137030139848 of PR CI [44964427911](https://github.com/Barrot-Agent/B-Agent/actions/runs/44964427911):
+- 17,766 → 17,884 records; 24 → 25 snapshots.
+- 118 records recovered across 11 source lineages.
+- 26 downloaded artifact ZIP digests matched GitHub's recorded digests; zero mismatches.
+- SQLite integrity `ok`; one-microsecond point-in-time visibility boundary passed.
+- Reconciliation SHA-256: `f8a92d6a00b9b6213b7e83f896cb702c60d76fcb5d06a7f18a11aa729355258e`.
+- Raw artifact tree SHA-256: `04711231fae5a6719c2f116bbc627293b2f4edcde9619d48e29f60a933f1ca84`.
+- This is an isolated CI database. Main's feature store was not modified. The receipt's post-append availability bound is not an independent physical-write timestamp; GitHub artifact retention is not WORM.
+
+#### New public XRP stress observation — RESEARCH ONLY; NOT MODEL-ELIGIBLE
+
+Capture/retrieval window: 2026-11-22T00:05Z. Public webpages were reviewed, but their raw bytes were not captured into the canonical XRP receipt chain. Set `raw_capture=false`, `model_eligible=false`; do not use these observations in a forecast or feature store.
+
+1. **CoinDesk, Nov 21 00:59 EST (05:59 UTC):** XRP around $0.87, down about 9% in 24 hours and 11.5% over seven days; BTC down 9.4% and ETH more than 10%. CoinDesk attributes approximately $18M XRP futures liquidations to CoinGlass, about 94% longs; reports OI near $1.77B, futures volume above $3B, and negative funding on major exchanges. It cites SoSoValue for a Nov 20 ETF net outflow of about $4.97M, five-fund net assets near $990M and cumulative net inflows near $1.78B. Source: [CoinDesk, Nov 21](https://www.coindesk.com/markets/2026/11/21/xrp-falls-10-as-long-bets-unwind-and-etf-assets-slip-below-usd1-billion). CoinDesk is one editorial source group; CoinGlass and SoSoValue are the underlying data-provider groups, not additional independent confirmations.
+2. **Liqwall, Nov 21 23:52 UTC:** XRP $0.9345; 24h liquidations $16.3M (longs $13.1M / 81%; shorts $3.2M); average funding +0.0050% per 8h; aggregate OI $865M, down 3.3%; 72.8% of Binance position accounts long. Source: [Liqwall XRP dashboard](https://liqwall.com/coins/xrp). This is Liqwall's exchange coverage and aggregation, not the same OI universe as CoinGlass.
+3. **TradRadar, Nov 21 22:27 UTC (15-minute delayed):** XRP $0.9278; OI $1.13B across seven exchanges, down 1.03%; OI-weighted funding +0.0045% per 8h; at least $13.82M liquidations across five exchanges (longs $10.55M, shorts $3.26M); five-exchange account long/short 3.15 (75.9% long). TradRadar says liquidation coverage is partial because exchanges publish only part of real-time liquidations. Source: [TradRadar XRP futures](https://tradradar.io/markets/xrp).
+4. **ETF-flow distinction:** SoSoValue's Nov 20 daily outflow is about $4.97M, concentrated in Bitwise, against roughly $990M current net assets and $1.78B cumulative net inflows. The below-$1B asset headline is not equivalent to a $790M redemption: asset value changes with XRP price. Cumulative net inflows are not investor cost basis and do not establish all ETF holders' unrealized losses. The available flow report is secondary reporting of SoSoValue, not a direct raw capture: [PANews/insigtX report](https://www.insigtx.com/en/news/us-xrp-spot-etfs-see-single-day-total-net-outflow-of-4-9686-637697/).
+5. **Macro counter-hypothesis:** The Straits Times Nov 21 report describes a broad risk-off selloff tied to the Binance hack, U.S. midterm-election concerns, BTC ETF outflows, weakening AI-trade appetite, a stronger dollar and higher expected Fed rates; it reports roughly $2B of long crypto liquidations. This supports a market-wide deleveraging explanation, not an XRP-only catalyst: [The Straits Times, Nov 21](https://www.straitstimes.com/business/bitcoin-falls-to-more-than-2-year-low-as-global-markets-sink).
+
+**Disagreement and interpretation:** OI snapshots vary materially ($865M Liqwall, $1.13B TradRadar, $1.77B CoinGlass/CoinDesk). Liquidation totals and long shares vary by provider and rolling window ($13.82M minimum / 76% longs on TradRadar; $16.3M / 81% on Liqwall; ~$18M / 94% in CoinDesk's CoinGlass snapshot). Funding was reported negative on major venues in the earlier CoinDesk snapshot but positive in later Liqwall and TradRadar aggregates. These are timestamp/coverage/methodology differences; do not average them, call them a single synchronized observation, or infer that positioning flipped across the entire market.
+
+**Competing hypotheses retained:**
+- H1: broad crypto risk-off plus leveraged long liquidation drove most of the rapid XRP decline.
+- H2: XRP-specific demand weakness and ETF-flow stagnation amplified the market-wide move.
+- H3: the rebound from the reported $0.8591 intraday low to later provider marks near $0.93 reflects short-term dip buying/position reduction, but is not proof of a durable bottom.
+- Disconfirming evidence: the ETF net outflow was small relative to fund assets and cumulative net inflows; later provider marks recovered; funding became positive in some later aggregates. These facts weaken a simple “institutions are exiting” or “all venues remain net short” narrative, but do not prove renewed spot accumulation.
+
+#### Ripple corporate-strategy claims — issuer-attributed, not XRP-demand evidence
+
+Ripple's Oct 28 corporate release says it expects a $900M annualized product-revenue run rate exiting 2026, reports more than $16T of transactions enabled across Ripple products in 2025, 85+ licenses, 1,700+ institutions/corporates/enterprises, 60+ payout markets, and RLUSD market capitalization near $2.6B. These are Ripple's own corporate claims. “Transactions enabled” is not independently verified XRP settlement volume; product revenue is not necessarily XRP-token revenue; RLUSD supply growth does not establish proportional XRP demand. Source: [Ripple Oct 28 corporate release](https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/).
+
+#### Separate A2A security workstream — VERIFIED status, merge still blocked
+
+PR #1685 head `e512f4e6d66c1575186d00b60852c93caba687e0` is non-draft and has 9 changed files. Its exact-head full suite [44848528169](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528169) passed 4,536 tests, 1 skipped, 0 failed, 11 warnings, 32 subtests, 195.62 seconds, 73% inclusive and 82% legacy/core coverage. A2A Worker tests [44848528089](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528089), Money audit [44848528115](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528115), dependency audit [44848528067](https://github.com/Barrot-Agent/B-Agent/actions/runs/44848528067) and conflict-integrity passed. It remains blocked: zero independent approving reviews; branch protection unverified; no Cloudflare deployment, secret rotation, runner activation, OS sandbox or egress isolation. Do not merge or activate the runner.
+
+#### Current dispositions and next action
+
+- #1684 XRP integration: **BLOCKED** (draft; no independent approval; branch-protection settings inaccessible). Exact-head CI and isolated Run52 replay pass; gate correctly refuses readiness.
+- #1685 A2A credential separation: **BLOCKED** (non-draft and exact tests pass, but no independent approval/protection evidence; runner sandbox remains outstanding).
+- No duplicate PRs; no PR closures; no merged PRs in this run. Main's existing merged history remains unchanged.
+- Nine-platform map unchanged: ChatGPT/GitHub repository data flow verified; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified for live authentication/data flow.
+- Forecast: **NOT ISSUED**. Drift remains 0/204; walk-forward origins 0; event receipt completeness false; no calibrated out-of-sample candidate or shadow cohort.
+- Next concrete action: preserve #1684 as the single XRP integration PR; obtain a genuinely independent review and verifiable branch-protection requirements; reconcile event-to-raw-receipt capture and external timestamp anchoring; verify the expected daily 00:15 UTC extended SEC/horizon ingestion run when it appears; then expand synchronized historical data and compare chronological walk-forward candidates against naive, momentum, mean-reversion and volatility baselines. No directional forecast until the evidence gates pass.
+
+No merge, deployment, secret rotation, Space/Worker restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money operation occurred.
