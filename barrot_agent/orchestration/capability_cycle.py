@@ -127,7 +127,7 @@ class CapabilityCycleLedger:
         }
         event = {**body, "event_hash": _sha256(_canonical(body))}
         with self.path.open("a", encoding="utf-8") as stream:
-            stream.write(_canonical(event) + "\\n")
+            stream.write(_canonical(event) + "\n")
             stream.flush()
             os.fsync(stream.fileno())
         return event
