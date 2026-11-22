@@ -379,3 +379,126 @@ Artifact receipts:
 7. Accumulate true point-in-time origins, then run leakage-safe naive/momentum/mean-reversion/volatility baselines, calibration and drift evaluation. Keep the minimum-origin gates unchanged.
 
 **Forecasts:** none issued; no outcome exists to score. No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 11 continuation — 2026-11-22 03:59 UTC
+
+### Repository audit and integration state
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; its complete recursive tree contains 3,115 entries.
+- Existing XRP integration branch `integration/xrp-post-merge-verification-20261121T0002Z` was at `7b9973611ee149b8dcf06ac7d9972dc671b39ec0` before this handoff-only update. It is 140 commits ahead and zero behind main. Its recursive tree contains 3,127 entries; no main-tree path is missing.
+- PR #1684 has 27 changed files and remains draft. PR #1685 has 9 changed files and is non-draft. Their changed-path sets do not overlap. No new branch or PR was created.
+- Main's post-merge CI for `550a647` is verified: run [44839159044](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839159044), 4,534 passed, 1 skipped, 11 warnings, 32 subtests. The main-branch dependency and Money audits passed. The Pages deployment run [44839139424](https://github.com/Barrot-Agent/B-Agent/actions/runs/44839139424) was an automatic workflow side effect of the preceding merge, not a deployment initiated in this run.
+- On exact PR #1684 head `7b99736`, full-suite run [44979537921](https://github.com/Barrot-Agent/B-Agent/actions/runs/44979537921) passed 4,564 tests, 1 skipped, 11 warnings, 32 subtests; inclusive coverage was 73.20%, and the required 62% floor passed. The additional per-package coverage gates for monetization, rendering, smart-agent, memory-palace, orchestration and XRP feature-store components passed.
+- Exact-head dependency audit [44979537982](https://github.com/Barrot-Agent/B-Agent/actions/runs/44979537982) passed all six configured audit sources without reported vulnerabilities. Money audit [44979537910](https://github.com/Barrot-Agent/B-Agent/actions/runs/44979537910), conflict-integrity [44979537936](https://github.com/Barrot-Agent/B-Agent/actions/runs/44979537936), and Pages validation passed.
+- Exact-head preserved-artifact replay restored 118 historical records across 11 source lineages. It reconciled 27 main-ingestion run IDs and verified 31 downloaded ZIP digests. Feature-store history advanced from 18,236 to 18,354 records and from 28 to 29 snapshots in the isolated replay. Reconciliation SHA-256: `896068c10f7f669178a22b87355799784d9ddda4364bb8ccd143e82c0e1bcad8`. Main's database was not modified.
+- PR #1684's fail-closed gate [44979538019](https://github.com/Barrot-Agent/B-Agent/actions/runs/44979538019) remains blocked: the PR is draft and branch protection could not be verified. Its review list is empty. Main still contains the jq `.draft // true` false-value bug; the integration branch contains the explicit-presence correction, but it has not reached main. The visible fallback ruleset is disabled, the protection endpoint remains inaccessible (403), and CODEOWNERS does not provide an independent reviewer. No bypass or merge was attempted.
+- PR #1685 remains blocked despite its prior exact-head test and worker-test successes: no independent approving review, and the main-branch draft-detection defect causes a false-positive gate result for its non-draft metadata. Its nine paths do not overlap #1684. Keep it quarantined pending security review and an independently verifiable merge gate.
+
+### Main XRP ingestion Run57 — executed and artifact-checked
+
+Latest completed main ingestion: [44979814130](https://github.com/Barrot-Agent/B-Agent/actions/runs/44979814130), captured 2026-11-22 around 03:16 UTC.
+
+- 34 source receipts; 22 retained raw payloads; 12 digest-only receipts; 18 source failures; 23 entries in the global raw-only source artifact.
+- The downloaded raw archive SHA-256 is `aa8078...` (full digest recorded in the artifact receipt). All 22 payload filenames matched the SHA-256 of their actual payload bytes. The receipt manifest and receipt chain each contain 34 records; cross-run sequence is 29 and continuity checks passed. There is no independent WORM/external timestamp anchor.
+- Feature-store artifact SHA-256: `8d46f3fd01ed2e43f4641f2d08477c18f5941698877130a824ce0f4363fb23af`. SQLite `integrity_check` returned `ok`. It contains 18,359 feature records across 29 snapshots. The newest snapshot contains 123 eligible records from 12 source IDs and five independent spot publisher groups.
+- Drift: zero of 204 candidate features evaluated. Walk-forward forecast origins: zero. Forecasts issued: zero.
+- Event timeline artifact SHA-256: `62eb3789a6e7805224f2d0f5eea00c22c7e0fc87b1f95e602ea9d02713d9c586`. It contains 150 events and 117 scenarios, but zero event rows have a raw-source SHA-256 or receipt ID. All 150 have a source URL and capture timestamp. The registry's newest capture is 2026-11-19 15:16:42 UTC; it is stale and receipt-incomplete. None of these events is model-eligible.
+- The earlier apparent `raw_only_source_ids: []` discrepancy is resolved: that field is scoped to the weekly-source-policy summary, not the global raw-only registry. The actual `raw_only_sources.json` artifact contains 23 entries. Do not treat this as a missing-ID defect.
+- Cache quota remains exhausted: the run restored the prior trusted checkpoint from main run `44975469065`, but cache save failed. The hourly raw artifact is retained for 90 days; the feature-store artifact is retained for 7 days; the daily archive step did not run in this hourly execution. No cache deletion, billing change or retention mutation was attempted. Rebuilding the feature store from retained raw artifacts is still an unimplemented continuity fallback.
+
+#### Spot and order-book snapshot
+
+The latest eligible spot snapshot is timestamped approximately 2026-11-22 03:16:01 UTC:
+
+- Bitstamp mid: `0.916725 USD`
+- Coinbase mid: `0.916750 USD`
+- Kraken mid: `0.916805 USD`
+- OKX USD-normalized mid: `0.916817 USD`
+- Bitbank mid: `145.6015 JPY`
+
+Across the four USD-convertible venues, observed 24-hour lows were approximately `0.8591–0.8597 USD` and highs `0.9368–0.9389 USD`; venue windows are not perfectly synchronized. This is a descriptive rebound from the low, not a forecast.
+
+Displayed 10-basis-point depth was materially different by venue: Coinbase about `174k bid / 529k ask USD`; Bitstamp `175k / 239k USD`; Kraken `294k / 390k USD`; OKX `131k / 121k USDT`; Bitbank `14.67m / 4.55m JPY`. These figures are not aggregated: quote currencies, endpoint semantics, venue windows and depth construction differ.
+
+Derivatives and flow coverage remain incomplete. Binance returned HTTP 451, Bybit HTTP 403, Deribit data remained raw-only, Grayscale returned HTTP 429, Franklin parsing failed, and three SEC submission captures failed. No current derivatives, ETF-flow or SEC event feature was promoted to the eligible feature store. External open-interest estimates around `1.77bn USD` and `865m USD` have incompatible/unresolved venue coverage and must not be averaged.
+
+### Cross-analysis and sentiment quality
+
+Cross-analysis run [44982502055](https://github.com/Barrot-Agent/B-Agent/actions/runs/44982502055) completed, but its newest XRP sentiment observation is 2026-10-29 13:23:01 UTC, approximately 566.478 hours old at this run. The recent and prior comparison windows are empty. Historical aggregates (XRP: 286 mentions, score +0.455; Ripple: 219 mentions, score +0.484) are not current sentiment and are not model-eligible. Cross-analysis artifact SHA-256: `f740a08a5a92566bddb8bdcfa5749752c09498cf3275c5dec159b5969bc31ba9`.
+
+### New primary-source institutional and capital-flow research
+
+The following sources were reviewed in this run. They are **web-research-only**: the ingestion pipeline did not capture their raw bytes or receipt hashes, so they are not model-eligible. Source publication/data dates are preserved separately from this retrieval time.
+
+1. **Evernorth Q3 2026 Form 10-Q**, filed 2026-11-13, period ended 2026-09-30:  
+   https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm  
+   Before the October business-combination close, the filing reports only `$91,397` unrestricted cash, a roughly `$10m` working-capital deficit, and a nine-month operating loss of about `$273.2m`, largely driven by approximately `$271.0m` of digital-asset impairment. Nine-month operating cash use was about `$1.722m`. A `$1m` Ripple-related revolving facility was undrawn as of September 30; Pathfinder had paid approximately `$3.6m` of operating costs. These are pre-close figures and must not be described as the post-close company's current cash balance.
+
+2. **Evernorth pro forma transaction filing**, filed 2026-11-13, illustrative balance sheet as if the combination occurred on September 30:  
+   https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/evernorth-proforma20260930.htm  
+   It reports pro forma cash of approximately `$76.027m`, digital assets net of approximately `$342.223m`, total assets of `$418.593m`, total liabilities of `$46.276m`, redeemable non-controlling interest of `$229.531m`, and stockholders' equity of `$142.785m`. These are pro forma values, not a live November balance sheet.
+
+3. **Evernorth XRP capital reconciliation — avoid double counting**:
+   - `$214.05m` of advance cash subscriptions funded the purchase of `84.365876m XRP`.
+   - `261.919096m XRP` of in-kind private-placement contributions comprised `0.6m` from investors, `211.319096m` routed from RippleWorks through Arrington XRP Capital Fund, and `50m` from a Ripple-affiliated entity.
+   - Ripple separately contributed `126.791458m XRP`; delayed funding added `$10.5m` cash and `0.2m XRP`.
+   - Total in-kind XRP was `388.910554m`; adding the `84.365876m` cash-purchased XRP yields `473.276430m XRP` at the close.
+   - The `346.284972m XRP` reported as held at September 30 already includes the `84.365876m` cash-purchased amount plus the `261.919096m` in-kind private-placement amount. Do **not** add that September 30 balance to the full `388.910554m` in-kind total; that would double-count `261.919096m XRP`.
+   - The `$272.6m` gross cash proceeds at closing comprise approximately `$224.6m` of private-placement cash plus `$48m` released from the SPAC trust, before transaction expenses. The `$214.05m` already used to buy XRP is not retained cash.
+   - A later `$30m` principal convertible PIK note produced about `$29m` net proceeds after a `$1m` fee; it bears 4% PIK interest and matures in 2031. This is debt financing, not an XRP purchase.
+   - The filing identifies SBI Holdings-affiliated subscribers as subject to a 39.9% ownership cap and Class C share arrangements. This is evidence of an SBI Holdings-linked Evernorth investment, not evidence that SBIC East/Central/West are SBI Holdings subsidiaries.
+
+4. **Circle Q2 2026 Form 10-Q**, period ended 2026-06-30:  
+   https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm  
+   It states that Circle SBI Japan K.K. (also presented by SBI as SBI Circle Holdings K.K.) is a 50/50 Circle–SBI Holdings venture. In November 2025, each party contributed approximately `$1.5m` equivalent in yen. Circle consolidates the entity as a VIE; SBI's interest is shown as non-controlling interest. The filing says there had been no significant operating results to date as of June 30, 2026. SBI's own investor deck explicitly maps “Circle SBI Japan KK” as the English name and “SBI Circle Holdings K.K.” as the Japanese name. This JV is separate from the regional SBIC entities.
+
+5. **SBI–Circle capital and infrastructure links**:
+   - SBI Holdings and SBI Shinsei Bank invested `$25m` each (total `$50m`) in Circle shares around Circle's June 2025 IPO: https://www.sbigroup.co.jp/news/2025/0609_15491.html
+   - SBI Holdings said a consolidated subsidiary participated in Circle's ARC token presale in May 2026; SBI's amount was not disclosed: https://www.sbigroup.co.jp/news/2026/0512_16310.html
+   - Circle named SBI Group among Arc's founding validators on 2026-08-05: https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch
+   - Circle's 10-Q confirms the 50/50 Circle SBI Japan K.K. ownership and the absence of significant operating results as of June 30, 2026. Do not convert the JV or validator relationship into an unsupported claim of large Japanese USDC flows.
+
+6. **SBI–Ripple and the XRPL stablecoin rail**:
+   - SBI VC Trade, a subsidiary of SBI Holdings, launched RLUSD in Japan on 2026-06-24 after JFSA approval: https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
+   - Circle's USDC has been natively available on XRPL since 2025-06-12, with Circle Mint and API support and no bridge required: https://www.circle.com/blog/now-available-usdc-on-the-xrpl
+   - Circle's current USDC page reports `$67.3bn` in global circulation as of 2026-11-19; Circle's Q2 10-Q reported `$73.269bn` at 2026-06-30. The roughly 8.1% difference is a global supply comparison, not XRPL-specific supply and not evidence of XRP demand.
+   - These facts show SBI's multi-rail position across Ripple/RLUSD and Circle/USDC. They do not establish a direct Circle–Ripple corporate partnership. USDC and RLUSD coexist on XRPL; shared network presence and a common SBI partner are not proof of a three-way agreement.
+
+7. **Coinbase–Circle economics and Coinbase's XRP exposure**:
+   - Circle's Q2 2026 SEC filing reports `$655.3m` of distribution costs in the first half of 2026 in connection with its agreements with Coinbase. Coinbase allocations depend on USDC held on its platform and a share of remaining ecosystem-growth economics after approved third-party payments. Circle did not disclose a current Coinbase-held percentage in this filing. The same filing reports Circle's own on-platform share separately; do not confuse it with Coinbase's share.
+   - Circle's SEC filing: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm
+   - Coinbase's disclosure page lists XRP as “Coinbase Holding: Yes” and “Commercial Engagement: Yes” for U.S. trading assets, and also lists XRP under Coinbase Custody Trust Company. Holdings are dated 2026-03-31; no quantity is disclosed. Its broad “commercial engagement” definition includes financial or business relationships and does not identify a specific XRP contract: https://www.coinbase.com/legal/digital-asset-disclosures
+   - Coinbase and Ripple announced RLUSD on Coinbase Prime, Exchange and retail on 2026-10-28. The launch announcement said Global Exchange collateral eligibility would follow; this run found no primary evidence that XRP or RLUSD collateral eligibility had since become active: https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+   - The Evernorth 10-Q uses Coinbase as the principal market for XRP valuation. This is a valuation input, not proof of Evernorth execution volume or a custody balance.
+
+8. **Ripple regulatory and custody structure**:
+   - OCC Corporate Applications Search lists Ripple National Trust Bank, charter `25364`, as approved on 2025-12-12 and consummated/effective on 2026-10-26: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+   - The OCC conditional approval describes Ripple Labs as the direct holding company and the proposed bank's activities as managing segregated RLUSD reserves, acting as collateral trustee for RLUSD holders, and providing fiduciary digital-asset custody. The charter is a regulatory/custody development; it does not itself prove XRP market purchases, settlement volume or XRP collateral demand: https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf
+
+### Entity-relationship conclusions and counter-hypotheses
+
+- SBI Holdings is a common institutional node across Circle equity/JV/Arc, Ripple RLUSD distribution, and SBI-affiliated Evernorth subscriptions. This supports a multi-rail strategic relationship, not exclusivity to Ripple or Circle.
+- Circle–Coinbase has a direct and material revenue-sharing/distribution relationship. Ripple–Coinbase has a direct RLUSD listing relationship and Coinbase's disclosed XRP holding/commercial engagement, but these do not prove Coinbase's XRP trading volume or XRP collateral use.
+- Circle USDC is native on XRPL; Ripple's RLUSD also operates on XRPL. Their coexistence does not establish a direct corporate partnership.
+- Ripple's OCC trust-bank status strengthens the regulated custody/reserve framework for RLUSD; it does not create an automatic causal link to XRP token demand.
+- Evernorth's cash, debt, XRP purchases and in-kind contributions must remain separate. The in-kind XRP is not open-market buying; the convertible note is debt; gross transaction proceeds are not retained cash.
+
+### Remaining research identity gates
+
+- Japan's SBIC East/Central/West remain distinct from SBI Holdings and the Circle/SBI JV. Keep separate legal-entity records.
+- Exact-phrase work for “ASK Coin” and “SBIC, ChatGPT SBIC” remains unresolved. The “actual capital” question now has a primary-source Evernorth capital reconciliation, but no unverified phrase or allegation is treated as fact.
+- No YouTube inventory was attributed to Camilla/Kamilah Stevenson because a channel-to-person identity match has not met the verification threshold. Do not publish or merge video attributions until identity is verified.
+- Nine-platform map is unchanged: ChatGPT-to-GitHub is the only verified authenticated data path. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified. No external model dispatch occurred.
+
+### Execution state and next concrete actions
+
+**VERIFIED:** main and integration trees; branch ancestry; PR inventory and non-overlapping path sets; main post-merge full suite; PR #1684 exact-head full suite and security checks; isolated historical backfill; raw payload hashes; receipt-chain continuity; feature-store SQLite integrity; SEC/Circle/SBI/Coinbase/OCC source facts listed above.
+
+**EXECUTED:** downloaded and inspected Run57 raw, feature-store, event and receipt-chain artifacts; downloaded and inspected Run279 cross-analysis artifact; performed the Evernorth capital reconciliation; updated this canonical handoff. Web-retrieved institutional sources remain outside Barrot's raw-receipt store.
+
+**DESIGNED / NOT YET EXECUTED:** reconstruct the feature store from retained raw artifacts when Actions cache writes are unavailable; capture every event source with URL, capture timestamp and raw SHA-256; add trusted external timestamp anchoring; ingest the SEC/Circle/SBI/Coinbase primary filings as raw receipts before feature promotion; restore derivatives/ETF/SEC coverage through lawful public endpoints; build sufficient chronological target origins and evaluate naive, momentum, mean-reversion and volatility baselines with calibration and drift gates.
+
+**Next action:** verify the CI and fail-closed gate triggered by this handoff commit; then inspect the next main hourly ingestion, address the cache reconstruction fallback and event-to-receipt completeness, and only then advance walk-forward evaluation. Directional forecasts remain disabled. No merge, deployment, cache deletion, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
