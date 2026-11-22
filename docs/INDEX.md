@@ -58,7 +58,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/millennium_problems.md - Millennium Problems Research & Status
 - docs/MMI_ANALYSIS_REPORT.md - 🧠 Barrot MMI (Massive Micro Ingestion) Analysis Report
 - docs/MMI_IMPLEMENTATION.md - 🚀 Barrot MMI (Massive Micro Ingestion) Implementation Guide
-- docs/MODEL_INTEGRITY_AND_WEIGHT_DIAGNOSTICS.md - Model Integrity and Weight Diagnostics — Stage 1
+- docs/MODEL_INTEGRITY_AND_WEIGHT_DIAGNOSTICS.md - Model Integrity and Weight Diagnostics — Stages 1–2
 - docs/MONETIZATION_FRAMEWORK.md - Barrot-Agent Monetization Framework
 - docs/monetization.md - MMI, Monetization & Web3
 - docs/PINGPONG_USAGE.md - Ping-Pong Request System
