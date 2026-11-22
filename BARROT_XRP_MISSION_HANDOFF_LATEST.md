@@ -3177,3 +3177,67 @@ ChatGPT GitHub access is verified for repository/tree/PR/workflow/artifact reads
 - `NOT VERIFIED`: Independent WORM anchoring, complete event receipts, SEC EDGAR ingestion, production-grade derivatives/collateral normalization, nine-platform external authentication, independent review, enforceable branch protection and public Pages authorization.
 - Decision: `DO_NOT_MERGE_PR_1684`. No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, paper trade, funds transfer, real-money action, force-push or source-PR closure occurred in this run.
 - Next: run the full suite on the repaired exact head; rerun historical backfill against main Run70; then obtain independent review and resolve branch protection and Pages authorization before any merge consideration.
+
+
+---
+
+## Run24.1 — 2026-11-22 14:45 UTC: Run70 backfill replay verified; two map-contract assertions remain
+
+### Exact repository boundary
+
+- Main remains `550a647ee7269a704d4600ff337b2145acc90473`; no main changes.
+- Existing XRP integration PR #1684 remains the only XRP workstream.
+- Current head: `5fb6a6e99767a55830d42ae31bd5f1bf574dfa89`; 182 commits ahead, zero behind.
+- Complete recursive trees: main 3,115 entries, integration 3,129 entries; zero main paths missing; 29 changed paths.
+- No new branch or PR was created. No merge or source-PR closure occurred.
+
+### Exact-head CI on 5fb6a6e
+
+[PR CI run 45034201395](https://github.com/Barrot-Agent/B-Agent/actions/runs/45034201395) completed with **4,567 passed, 2 failed, 1 skipped**, 11 warnings, 32 subtests, 73.21% coverage, 128.64 seconds.
+
+Both failures are map/test-contract mismatches:
+1. The preserved Run24 snapshot's `exact_head_ci.full_suite` omitted `head_sha`. The snapshot belongs to predecessor head `d68605f`; the test must retain that historical head identity.
+2. The Run285 reconciliation artifact contains 11 public sources, while one assertion expected 10. The test expectation is corrected to 11.
+
+The other 4,567 tests passed. Core tests and Pages validation passed. Dependency audit [45034201405](https://github.com/Barrot-Agent/B-Agent/actions/runs/45034201405), Money audit [45034201430](https://github.com/Barrot-Agent/B-Agent/actions/runs/45034201430), and conflict integrity [45034201499](https://github.com/Barrot-Agent/B-Agent/actions/runs/45034201499) passed. The fail-closed gate [45034201375](https://github.com/Barrot-Agent/B-Agent/actions/runs/45034201375) remains blocked by design.
+
+### Important new verification — historical backfill against Run70
+
+The preserved-artifact replay in job 137244197647 of CI run 45034201395 **selected current main ingestion Run70** (`45031489739`, main SHA `550a647ee7269a704d4600ff337b2145acc90473`) and verified the historical fork against that current main lineage.
+
+- Records: 19,682 → 19,800; 118 recovered.
+- Source lineages: 11.
+- Snapshots: 40 → 41.
+- SQLite integrity: `ok`.
+- Point-in-time visibility: backfilled records were not visible before the GitHub API receipt time and were visible after it.
+- Reconciliation SHA-256: `19d95dd4335e1a3b3d692f3267ce6a86a70762df437dfd3bd9eaa40d3cc6784a`.
+- Receipt clock: GitHub API Date header.
+- Main database: **not modified**; replay was performed on an isolated CI copy.
+
+This resolves the earlier requirement to rerun the known-fork recovery against Run70 rather than Run69. It does not yet implement general feature-store reconstruction from all retained raw artifacts, and it does not measure market-prediction performance.
+
+### Run285 Coinbase collateral, cbXRP and USDC research
+
+The research artifact contains 11 public sources across six publisher-independence groups. It is research-only; raw HTTP bytes were not retained and the record is not model-eligible.
+
+- Coinbase documents XRP as eligible collateral for USDC-backed Morpho loans in eligible regions. This verifies product eligibility, not actual customer XRP collateral or debt balances.
+- Coinbase's cbXRP proof-of-reserves page states 1:1 XRP backing. Two same-publisher locale snapshots differ materially in total reserve/supply; both vintages are preserved and not combined. Neither proves net XRP purchases.
+- A third-party Morpho report of cbXRP collateral and USDC borrowing is not verified as a Coinbase-originated position.
+- Coinbase National Trust Company approval/opening status is verified, but no completed XRP-specific custody migration quantity is established.
+- PNC's limited pilot receives USDC and converts it to USD for deposit; this is not an XRP rail.
+- SBI VC Trade's reviewed lending campaign listed CANTON, USDC and ZPG; the separate XRP/JPY leverage promotion is expired. No current XRP lending balance was established.
+
+### Backlog and governance
+
+- #1684: blocked, draft, zero independent reviews; current exact-head full suite has two map assertions.
+- #1685: blocked, non-draft; its latest gate false-positive draft blocker is explained by main's `.draft // true` jq expression; the correction is on #1684, not main. A2A runner remains quarantined.
+- #1686: unique/unreviewed, draft; 11 full-suite failures; overlaps #1685 only in `tests/test_mcp_server.py`.
+- #1687: unique/unreviewed, draft; one docs-index failure.
+
+Main branch metadata reports protected=true, but detailed branch protection returns HTTP 403; visible required status contexts are empty, fallback ruleset is disabled, and CODEOWNERS assigns all paths to `@Barrot-Agent`. Automatic Pages publication is enabled but authorization is NOT_GRANTED. No merge is allowed.
+
+### Next
+
+The map now records Run24 as a historical pre-correction snapshot and Run24.1 as the current 5fb6a6e snapshot. The two test assertions are corrected in this same existing branch. The resulting documentation/test commit requires its own exact-head full-suite, dependency, Money, conflict-integrity, backfill and fail-closed verification. No predecessor result transfers.
+
+No directional forecast, merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.

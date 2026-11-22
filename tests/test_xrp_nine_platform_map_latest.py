@@ -1134,12 +1134,11 @@ def test_run16_historical_snapshot_is_preserved():
 
 
 
-def test_latest_current_state_ref_points_to_run24_and_binds_exact_head():
+def test_run24_pre_correction_state_is_preserved():
     data = load_map()
-    assert data["latest_current_state_ref"] == "run24_current_state"
     run = data["run24_current_state"]
     assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
-    assert run["integration_head_sha"] == data["current_pr_head_sha"] == "d68605f5790b9ed4969bcd95e01a6acaea364b7a"
+    assert run["integration_head_sha"] == "d68605f5790b9ed4969bcd95e01a6acaea364b7a"
     assert run["pr_number"] == 1684
     assert run["pr_draft"] is True
     assert run["commits_ahead"] == 181
@@ -1200,7 +1199,7 @@ def test_run285_coinbase_morpho_cbxrp_custody_and_usdc_rail_reconciliation():
     assert record["artifact_path"] == (
         "research/xrp_intelligence/20261122T141841Z-run285-coinbase-morpho-cbxrp-custody-and-payments-reconciliation.json"
     )
-    assert record["source_count"] == 10
+    assert record["source_count"] == 11
     assert record["model_eligible"] is False
     assert record["raw_http_bytes_captured"] is False
 
@@ -1226,3 +1225,48 @@ def test_run285_coinbase_morpho_cbxrp_custody_and_usdc_rail_reconciliation():
     assert pnc["pilot_status"] == "LIMITED_PILOT"
     assert pnc["settlement_asset"] == "USDC"
     assert pnc["xrp_rail_established"] is False
+
+
+
+def test_latest_current_state_ref_points_to_run24_1_and_binds_exact_head():
+    data = load_map()
+    assert data["latest_current_state_ref"] == "run24_1_current_state"
+    run = data["run24_1_current_state"]
+    assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
+    assert run["integration_head_sha"] == data["current_pr_head_sha"] == "5fb6a6e99767a55830d42ae31bd5f1bf574dfa89"
+    assert run["commits_ahead"] == 182
+    assert run["commits_behind"] == 0
+    assert run["changed_files"] == 29
+    assert run["main_tree_entries"] == 3115
+    assert run["integration_tree_entries"] == 3129
+    assert run["main_paths_missing_from_integration"] == 0
+
+    suite = run["exact_head_ci"]["full_suite"]
+    assert suite["head_sha"] == run["integration_head_sha"]
+    assert suite["passed"] == 4567
+    assert suite["failed"] == 2
+    assert suite["skipped"] == 1
+    assert suite["conclusion"] == "failure"
+    assert suite["coverage_percent"] == 73.21
+    assert run["exact_head_ci"]["dependency_audit"]["conclusion"] == "success"
+    assert run["exact_head_ci"]["money_audit"]["conclusion"] == "success"
+    assert run["exact_head_ci"]["conflict_integrity"]["conclusion"] == "success"
+    assert run["exact_head_ci"]["backfill_replay"]["conclusion"] == "success"
+
+    replay = run["backfill_replay"]
+    assert replay["source_main_run_id"] == 45031489739
+    assert replay["records_before"] == 19682
+    assert replay["records_after"] == 19800
+    assert replay["recovered_records"] == 118
+    assert replay["source_lineages"] == 11
+    assert replay["snapshots_before"] == 40
+    assert replay["snapshots_after"] == 41
+    assert replay["sqlite_integrity"] == "ok"
+    assert replay["visible_before_receipt"] is False
+    assert replay["visible_after_receipt"] is True
+    assert replay["main_modified"] is False
+
+    assert run["run285_research"]["source_count"] == 11
+    assert run["merge_decision"] == "NO_MERGE_BLOCKED"
+    assert run["no_merge_performed"] is True
+    assert run["no_external_actions"] is True
