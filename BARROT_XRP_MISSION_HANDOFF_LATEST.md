@@ -3241,3 +3241,76 @@ Main branch metadata reports protected=true, but detailed branch protection retu
 The map now records Run24 as a historical pre-correction snapshot and Run24.1 as the current 5fb6a6e snapshot. The two test assertions are corrected in this same existing branch. The resulting documentation/test commit requires its own exact-head full-suite, dependency, Money, conflict-integrity, backfill and fail-closed verification. No predecessor result transfers.
 
 No directional forecast, merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+
+## Run25 — 2026-11-22T14:57:08Z: Run285 artifact-path correction and Run70 replay verification
+
+### Repository and integration state
+
+- Main remains unchanged at `550a647ee7269a704d4600ff337b2145acc90473`.
+- PR #1684 remains the only active XRP integration: [open PR](https://github.com/Barrot-Agent/B-Agent/pull/1684), branch `integration/xrp-post-merge-verification-20261121T0002Z`, exact head `39b67d14b0b6f5b8b19fe062735ddac89cd9fd39`.
+- Recursive trees: main 3,115 entries; integration 3,129; zero main paths missing; 14 integration-only entries.
+- PR #1684 is 183 commits ahead, 0 behind, 29 changed paths; draft; zero formal reviews, zero inline review threads and zero requested reviewers.
+- Run24.1 remains the preserved prior snapshot on `5fb6a6e`; Run25 records the current pre-correction head `39b67d14b0b6f5b8b19fe062735ddac89cd9fd39`.
+
+### Exact-head verification on `39b67d14b0b6f5b8b19fe062735ddac89cd9fd39`
+
+- [PR full-suite CI #45035150414](https://github.com/Barrot-Agent/B-Agent/actions/runs/45035150414): **4,569 passed, 1 failed, 1 skipped**, 11 warnings, 32 subtests, 73.21% coverage; 163.57 seconds.
+- The sole failure was `test_run285_coinbase_morpho_cbxrp_custody_and_usdc_rail_reconciliation`. It treated the compact top-level map summary as though it contained the full `coinbase_cbXRP_reserves` object. The canonical 13.8 KB Run285 artifact contains the full detail under `findings.coinbase_cbXRP_reserves`. The test is being corrected to load the exact referenced artifact and validate its findings; no research claim or forecast gate is being weakened.
+- Push CI #45035144393 passed its push job; the PR event is authoritative for the full suite.
+- Dependency audit #45035150435 passed (six manifests; zero known vulnerabilities reported); Money audit #45035150404 passed; conflict-integrity #45035150417 passed; Pages validation-only passed. Fail-closed #45035150501 blocked as designed.
+
+### Run70 backfill — exact PR replay
+
+- Main ingestion [#45031489739](https://github.com/Barrot-Agent/B-Agent/actions/runs/45031489739) succeeded on `550a647ee7269a704d4600ff337b2145acc90473`.
+- Run70: 34 receipts, 22 retained raw payloads, 12 digest-only, 22/22 retained raw payload hashes matched, zero mismatches; receipt chain sequence 40 continued from #45026189091.
+- Current PR replay job #137247135226 in [CI #45035150414](https://github.com/Barrot-Agent/B-Agent/actions/runs/45035150414) selected the latest Run70 checkpoint after verifying 37 intermediate receipt-index artifacts.
+- Isolated replay: 19,682 to 19,800 records (+118 across 11 lineages); 40 to 41 snapshots; 41 snapshots verified; SQLite integrity `ok`; reconciliation SHA-256 `0a7853ef90f89e8e96863718d1480e19f3c1fac917ca58047a996682a093c65f`.
+- Main was not modified. GitHub Actions artifact retention remains non-WORM and has no independent trusted timestamp anchor.
+
+### Run70 model/data readiness
+
+- 123 eligible and 367 excluded candidate feature records; 150 events and 117 scenarios.
+- Event receipt completeness false; zero event raw hashes; model eligibility false.
+- Drift 0/204, `INSUFFICIENT_DATA`; walk-forward forecasts zero; forecast status `NOT_ISSUED`.
+- SEC EDGAR remains `BLOCKED_CONFIGURATION`. Binance 451, Bybit 403 and Grayscale 429 restrictions were not bypassed.
+
+### Run285 institutional reconciliation
+
+- 11 public sources across six publisher-independence groups; raw HTTP bytes not retained; no external timestamp anchor; research-only/model-ineligible.
+- Coinbase XRP collateral eligibility is product-level evidence, not actual collateral quantity or debt outstanding.
+- cbXRP proof-of-reserves contains two same-publisher locale/cache vintages differing by 85,404.41 XRP; preserve both without averaging or independent-source claims.
+- Coinbase National Trust's OCC approval does not establish completed XRP-specific custody migration.
+- PNC's pilot is a USDC-to-USD banking rail using Coinbase APIs, not an XRP payment rail.
+- SBI's Arc/USDC/JPYSC and SBI Ripple Asia XRPL work remain distinct; XRPL usage does not prove XRP settlement or spot buying.
+
+### Open PR backlog
+
+| PR | Classification | Status |
+|---|---|---|
+| #1684 | blocked | Sole XRP integration; one stale test assertion remains; draft/no independent approval |
+| #1685 | blocked | A2A credentials separated; runner quarantined pending OS sandbox, provider credential isolation, egress restrictions and task-level authorization |
+| #1686 | unique/unreviewed | LunaRoute decommission; previous full suite had 11 failures; local cleanup not executed |
+| #1687 | unique/unreviewed | Read-only model integrity diagnostics; previous full suite had one docs-index failure |
+
+No source PR closed; no new PR created.
+
+### Governance and platform status
+
+- Main metadata says protected, but detailed branch-protection reads return HTTP 403; required status contexts are empty; fallback ruleset enforcement is disabled.
+- No independent approving review exists; CODEOWNERS assigns ownership only to `@Barrot-Agent`.
+- Automatic Pages publication remains enabled on main; authorization is `NOT_GRANTED`.
+- ChatGPT-to-GitHub is the only verified platform data flow. Token scopes were not introspected. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified; no external dispatch or transfer occurred.
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** XRP-first mission, Barrot V3 foundation, scheduled ingestion, raw receipts, point-in-time features, four baselines, walk-forward, calibration, drift and strict forecast ledger.
+- **EXECUTED:** current main/tree/PR/ancestry/workflow audit; Run70 exact backfill replay; Run285 artifact inspection; corrected the test to read the referenced research artifact's nested findings; updated current-state map and handoff on the existing branch.
+- **VERIFIED:** Run70 raw receipt hashes 22/22; 37 intermediate receipt indexes; replay 118 records/11 lineages; 41/41 snapshots; SQLite integrity; current exact-head failure cause; dependency, Money and conflict checks.
+- **NOT VERIFIED:** WORM anchor, complete event receipts, SEC capture, drift evaluation, walk-forward superiority, external platform authentication, least privilege, branch protection, independent review, Pages authorization, A2A runtime isolation.
+
+**Decision: DO_NOT_MERGE_PR_1684.** No merge, deployment, Pages publication, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paper trade, funds transfer, real-money action, force-push or source-PR closure occurred.
+
+### Next concrete action
+
+Verify the next exact-head full suite and all security/fail-closed checks. Keep #1684 draft. Even after tests pass, independent approval, effective branch-protection verification, Pages authorization and full workflow/script review remain mandatory. Keep directional forecasts disabled.

@@ -1,7 +1,7 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-22T14:18:41Z",
+  "captured_at_utc": "2026-11-22T14:57:08Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
@@ -520,9 +520,9 @@
       "task_assignment": {
         "status": "EXECUTED",
         "run_id": 11,
-        "captured_at_utc": "2026-11-22T14:18:41Z",
-        "task": "Inspect current main, complete recursive trees, active integration, all open PRs, branch ancestry, changed paths, CI jobs/logs, artifacts, dependencies and security settings; independently hash-check Run70 raw payloads; reconcile Coinbase/Morpho/cbXRP/custody/USDC payment evidence; repair stale map tests and update the single durable handoff on the existing integration branch without merging or performing external actions.",
-        "expected_output": "Exact current repository state, evidence-backed XRP market and institutional findings, test failure diagnosis, full PR backlog classification, prediction-readiness status and next safe action."
+        "captured_at_utc": "2026-11-22T14:57:08Z",
+        "task": "Inspect current main/integration trees, PR inventory, ancestry, exact-head CI/logs, dependencies, security and latest ingestion; verify Run70 replay; correct Run285 test to use the referenced full artifact; update current map and durable handoff on the existing branch.",
+        "expected_output": "Exact repository snapshot, XRP backfill evidence, current CI diagnosis, PR backlog and governance/forecast blockers."
       },
       "task_assignment_status": "EXECUTED_IN_AUTOMATION_RUN_11",
       "last_verified_at_utc": "2026-11-22T14:18:41Z",
@@ -4836,7 +4836,11 @@
       "number": 1684,
       "classification": "blocked",
       "reason": "Exact-head suite on 5fb6a6e has two remaining latest-map contract failures: missing head_sha in the preserved d686 Run24 snapshot, and a Run285 test expecting 10 sources while the evidence artifact has 11. The isolated backfill replay against current main Run70 succeeded. PR remains draft, has zero independent approvals, branch protection cannot be fully verified, and Pages publication authorization is NOT_GRANTED.",
-      "head_sha": "5fb6a6e99767a55830d42ae31bd5f1bf574dfa89"
+      "head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
+      "ahead_by": 183,
+      "behind_by": 0,
+      "changed_files": 29,
+      "draft": true
     },
     {
       "number": 1685,
@@ -7503,7 +7507,7 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-22T14:18:41Z",
+  "last_verified_at_utc": "2026-11-22T14:57:08Z",
   "latest_run_id": 286,
   "latest_run_captured_at_utc": "2026-11-22T14:18:41Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7912,8 +7916,8 @@
       "workstream": "XRP scheduled-ingestion continuity, historical feature-store recovery and event-receipt provenance",
       "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "head_sha": "5fb6a6e99767a55830d42ae31bd5f1bf574dfa89",
-      "ahead_by": 182,
+      "head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
+      "ahead_by": 183,
       "behind_by": 0,
       "commits": 182,
       "changed_files": 29,
@@ -12233,7 +12237,7 @@
       "raw_http_bytes_captured": false
     }
   },
-  "current_pr_head_sha": "5fb6a6e99767a55830d42ae31bd5f1bf574dfa89",
+  "current_pr_head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
   "run250_no_external_actions": true,
   "run250_merge_decision": "NO_MERGE",
   "prediction_readiness": {
@@ -15709,8 +15713,8 @@
     "iHeart_kamilah_episode": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
     "youtube_kamilah_guest_appearance": "https://www.youtube.com/watch?v=Sulo54IlQ60"
   },
-  "current_branch_head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
-  "current_pr_branch_head_sha": "4491e56202c6de77ad2d84f609befc0f10e70765",
+  "current_branch_head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
+  "current_pr_branch_head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
   "latest_verified_code_head_sha": "d055f7ce7ab68b7608fa4de80db496958856c8c6",
   "run266_documentation_commit_ci": {
     "head_sha": "f2722d29f79ab9f3ee2bd5e761260e31bdf7582a",
@@ -20545,7 +20549,7 @@
     "note": "The Run70 backfill replay passed against the current main artifact in an isolated CI copy, but this does not resolve merge governance or the two latest-map test failures."
   },
   "latest_automation_run_number": 11,
-  "latest_current_state_ref": "run24_1_current_state",
+  "latest_current_state_ref": "run25_current_state",
   "run11_current_state": {
     "automation_run_number": 11,
     "captured_at_utc": "2026-11-22T02:50:00Z",
@@ -24771,5 +24775,256 @@
     "Rerun exact-head full suite, dependency audit, Money audit, conflict integrity, backfill replay and fail-closed gate on the correction commit.",
     "Keep PR #1684 draft and blocked until independent approval, effective branch protection and authorized Pages publication are established.",
     "Continue raw-artifact reconstruction, event receipt linkage and SEC configuration work; no directional forecast until valid chronological evaluation supports it."
+  ],
+  "run25_current_state": {
+    "captured_at_utc": "2026-11-22T14:57:08Z",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "integration_head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
+    "pr_number": 1684,
+    "pr_state": "open",
+    "pr_draft": true,
+    "mergeable": true,
+    "commits_ahead": 183,
+    "commits_behind": 0,
+    "changed_files": 29,
+    "main_tree_entries": 3115,
+    "integration_tree_entries": 3129,
+    "main_paths_missing_from_integration": 0,
+    "formal_reviews": 0,
+    "review_threads": 0,
+    "requested_reviewers": 0,
+    "exact_head_ci": {
+      "head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
+      "push_ci_run_id": 45035144393,
+      "push_ci_conclusion": "success",
+      "push_full_suite": "SKIPPED_ON_INTEGRATION_PUSH_PR_EVENT_AUTHORITATIVE",
+      "pr_event_run_id": 45035150414,
+      "pr_event_conclusion": "failure",
+      "full_suite": {
+        "head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
+        "run_id": 45035150414,
+        "passed": 4569,
+        "failed": 1,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests_passed": 32,
+        "coverage_percent": 73.21,
+        "duration_seconds": 163.57,
+        "conclusion": "failure",
+        "failing_tests": [
+          "test_run285_coinbase_morpho_cbxrp_custody_and_usdc_rail_reconciliation: KeyError because the test expected coinbase_cbXRP_reserves on the compact map summary instead of the referenced artifact's findings object."
+        ]
+      },
+      "dependency_audit": {
+        "run_id": 45035150435,
+        "conclusion": "success",
+        "manifests": 6,
+        "known_vulnerabilities_reported": 0
+      },
+      "money_audit": {
+        "run_id": 45035150404,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 45035150417,
+        "conclusion": "success"
+      },
+      "pages_validation": {
+        "conclusion": "success_validation_only",
+        "deployment_executed": false
+      },
+      "fail_closed": {
+        "run_id": 45035150501,
+        "conclusion": "failure_by_design",
+        "blockers": [
+          "PR remains draft",
+          "zero independent approving reviews",
+          "branch protection details unavailable (HTTP 403)",
+          "fallback ruleset disabled",
+          "automatic Pages publication authorization NOT_GRANTED",
+          "one exact-head full-suite assertion failure"
+        ]
+      }
+    },
+    "latest_main_ingestion": {
+      "run_id": 45031489739,
+      "run_number": 70,
+      "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "captured_at_utc": "2026-11-22T14:12:17.387969Z",
+      "data_cutoff_utc": "2026-11-22T14:12:17.402853Z",
+      "receipt_count": 34,
+      "raw_payloads_retained": 22,
+      "digest_only": 12,
+      "raw_payload_hashes_verified": 22,
+      "raw_payload_hash_mismatches": 0,
+      "receipt_chain_sequence": 40,
+      "continuity": "CONTINUED",
+      "previous_run_id": 45026189091,
+      "feature_store_history_records": 19682,
+      "feature_store_snapshots": 40,
+      "current_snapshot_records": 123,
+      "candidate_feature_records": 490,
+      "eligible_features": 123,
+      "excluded_features": 367,
+      "sqlite_integrity": "ok",
+      "event_count": 150,
+      "scenario_count": 117,
+      "event_receipt_complete": false,
+      "event_model_eligible": false,
+      "drift_features": 204,
+      "drift_evaluated": 0,
+      "drift_status": "INSUFFICIENT_DATA",
+      "walk_forward_forecasts": 0,
+      "forecast_status": "NOT_ISSUED",
+      "sec_edgar_status": "BLOCKED_CONFIGURATION",
+      "source_failures": 18,
+      "raw_only_sources": 23,
+      "external_anchor": "NOT_ANCHORED"
+    },
+    "backfill_replay": {
+      "workflow_run_id": 45035150414,
+      "job_id": 137247135226,
+      "conclusion": "success",
+      "source_main_run_id": 45031489739,
+      "source_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "intermediate_receipt_indexes_verified": 37,
+      "records_before": 19682,
+      "records_after": 19800,
+      "recovered_records": 118,
+      "source_lineages": 11,
+      "snapshots_before": 40,
+      "snapshots_after": 41,
+      "verified_snapshots": 41,
+      "sqlite_integrity": "ok",
+      "reconciliation_sha256": "0a7853ef90f89e8e96863718d1480e19f3c1fac917ca58047a996682a093c65f",
+      "main_modified": false,
+      "limitation": "Isolated CI copy; GitHub Actions artifacts are retention-limited, not WORM or externally timestamp-anchored."
+    },
+    "market_snapshot": {
+      "usd_ticker_mid_cluster": {
+        "low": 0.921465,
+        "high": 0.9216,
+        "range_bps": 1.4649510462191648
+      },
+      "usdt_usd_mid": 0.998395,
+      "quote_basis": "same-venue top-of-book only",
+      "depth_normalized_to_usd": false,
+      "jpy_normalized_to_usd": false,
+      "interpretation": "Asynchronous multi-venue snapshot; not consolidated executable liquidity or a directional signal."
+    },
+    "institutional_research": {
+      "artifact_path": "research/xrp_intelligence/20261122T141841Z-run285-coinbase-morpho-cbxrp-custody-and-payments-reconciliation.json",
+      "source_count": 11,
+      "source_independence_groups": 6,
+      "model_eligible": false,
+      "raw_http_bytes_captured": false,
+      "external_timestamp_anchor": false
+    },
+    "open_pr_inventory": [
+      {
+        "number": 1684,
+        "classification": "blocked",
+        "head_sha": "39b67d14b0b6f5b8b19fe062735ddac89cd9fd39",
+        "draft": true,
+        "ahead_by": 183,
+        "behind_by": 0,
+        "changed_files": 29,
+        "formal_reviews": 0,
+        "review_threads": 0
+      },
+      {
+        "number": 1685,
+        "classification": "blocked",
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "draft": false,
+        "ahead_by": 5,
+        "behind_by": 0,
+        "changed_files": 9,
+        "remaining_controls": [
+          "OS sandbox",
+          "provider credential isolation",
+          "egress restrictions",
+          "task-level authorization"
+        ],
+        "runner_quarantined": true
+      },
+      {
+        "number": 1686,
+        "classification": "unique/unreviewed",
+        "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d",
+        "draft": true,
+        "ahead_by": 18,
+        "behind_by": 0,
+        "changed_files": 16,
+        "known_full_suite_failures": 11
+      },
+      {
+        "number": 1687,
+        "classification": "unique/unreviewed",
+        "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885",
+        "draft": true,
+        "ahead_by": 3,
+        "behind_by": 0,
+        "changed_files": 3,
+        "known_full_suite_failures": 1
+      }
+    ],
+    "backlog_summary": {
+      "total_open": 4,
+      "ready": 0,
+      "blocked": 2,
+      "superseded": 0,
+      "duplicate": 0,
+      "unique_unreviewed": 2
+    },
+    "governance": {
+      "main_branch_metadata_protected": true,
+      "required_status_contexts": [],
+      "detailed_branch_protection": "HTTP_403_NOT_VERIFIED",
+      "fallback_ruleset_enforcement": "disabled",
+      "independent_approval": false,
+      "pages_publication_authorization": "NOT_GRANTED",
+      "automatic_pages_publication_on_main": true,
+      "transitive_workflow_script_review": "INCOMPLETE"
+    },
+    "nine_platforms": {
+      "verified": [
+        "ChatGPT -> GitHub connector"
+      ],
+      "unverified": [
+        "Claude",
+        "Grok",
+        "Gemini",
+        "Copilot",
+        "Codex",
+        "Hugging Face",
+        "Kaggle",
+        "Databricks"
+      ],
+      "token_scopes_introspected": false,
+      "external_dispatch_performed": false,
+      "external_data_transfer_performed": false
+    },
+    "merge_decision": "DO_NOT_MERGE_PR_1684",
+    "forecast_status": "NOT_ISSUED",
+    "no_merge_performed": true,
+    "no_external_actions_performed": true,
+    "next_actions": [
+      "Correct the single stale Run285 test to read the full referenced artifact and its findings object.",
+      "Run the full repository suite and all exact-head security checks on the next commit.",
+      "Complete independent review and verify effective branch protection.",
+      "Resolve automatic Pages publication authorization before any merge.",
+      "Keep forecasts disabled until raw receipts, event completeness, drift evaluation and out-of-sample superiority are demonstrated."
+    ]
+  },
+  "run25_merge_decision": "DO_NOT_MERGE_PR_1684",
+  "run25_no_external_actions": true,
+  "run25_next_actions": [
+    "Correct the single stale Run285 test to read the full referenced artifact and its findings object.",
+    "Run the full repository suite and all exact-head security checks on the next commit.",
+    "Complete independent review and verify effective branch protection.",
+    "Resolve automatic Pages publication authorization before any merge.",
+    "Keep forecasts disabled until raw receipts, event completeness, drift evaluation and out-of-sample superiority are demonstrated."
   ]
 }
