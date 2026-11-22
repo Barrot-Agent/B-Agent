@@ -1733,3 +1733,111 @@ The raw order-book payloads were downloaded and the notional calculations were i
 7. Preserve the existing #1684 workstream. Do not create another XRP PR.
 
 No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred. Barrot V3 remains the execution, orchestration, safety and verification foundation.
+
+
+## Execution update — 2026-11-22 09:28 UTC
+
+This section supersedes the Run62-only latest-state and “next ingestion not visible” statements above.
+
+### Exact-head verification — VERIFIED on 0380516
+
+[PR CI run 45006787445](https://github.com/Barrot-Agent/B-Agent/actions/runs/45006787445)
+
+- Full repository suite: **4,565 passed, 1 skipped, 0 failed**, 11 warnings, 32 subtests; 73.20% coverage; 166.86 seconds.
+- Core tests: passed.
+- Dependency audit: [45006786384](https://github.com/Barrot-Agent/B-Agent/actions/runs/45006786384), passed.
+- Money audit: [45006786434](https://github.com/Barrot-Agent/B-Agent/actions/runs/45006786434), passed.
+- Conflict integrity: [45006786426](https://github.com/Barrot-Agent/B-Agent/actions/runs/45006786426), passed.
+- Pages validation-only: passed; no deployment.
+- Preserved-artifact replay: passed against the latest main ingestion Run63, not stale Run62.
+- Fail-closed merge gate: [45006786386](https://github.com/Barrot-Agent/B-Agent/actions/runs/45006786386), blocked because #1684 remains draft and branch protection cannot be verified. PR review inventory is empty. No bypass or merge was attempted.
+
+### Main XRP ingestion — Run63
+
+[Run 45006501541](https://github.com/Barrot-Agent/B-Agent/actions/runs/45006501541), main SHA `550a647`, data cutoff `2026-11-22T09:14:08.043719Z`.
+
+- 34 raw receipts; 22 retained payloads; 12 digest-only receipts.
+- 23 raw-only sources; 18 source failures.
+- 22/22 retained raw payloads verified; no digest mismatch.
+- Feature store: **19,083 records**, 35 snapshots, 425 source-snapshot lineage rows; SQLite `PRAGMA integrity_check=ok`.
+- Eligible/excluded feature records: 124 / 366.
+- Cross-run receipt sequence 35; continuity verified; chain SHA-256 `f15c10bf91c971dbd1e50252d40850f1a0a29e772c5163615f9e18d61bc5164b`.
+- Cache was not found and remains read-only after budget exhaustion. Run63 restored Run62's trusted per-run feature-store checkpoint. Cache save failed. The 90-day raw artifact remains the source receipt archive; deterministic rebuild of the full feature store from raw receipts is not implemented.
+- Run63 artifact ZIP hashes independently recomputed against GitHub artifact metadata: raw `77288a2ada1428cb454e870069ec238afbce1efe07ed598e57ce62e304db410f`, feature store `063fc4485cc416bed4ba34671002ef311fd9cc5f05d188dcac193bfc445498bf`, events `57ee41a3133d9ad4063aaf954908e167ce2325d91043241239184f403bf7de6b`; all match.
+
+The earlier Run62 field-scope correction remains valid: global `raw_only_source_count=23` matches the 23-entry artifact. The separate empty `weekly_source_policy.raw_only_source_ids` list is scoped to the weekly/CFTC source subset.
+
+### Run63 market structure — raw artifacts recomputed
+
+Capture window for four order books: `2026-11-22T09:13:57.175585Z`–`09:14:00.437882Z`.
+
+- OKX same-venue XRP-USDT / USDT-USD top-of-book normalized mid: **$0.923960689**; spread **1.18050 bps**; component skew **0.201 seconds**; maximum component age **9.4827 seconds**.
+- Change from Run62's normalized OKX mid of $0.9158927005: **+0.8809% over 57.12 minutes**. This is a one-venue descriptive price change, not a forecast.
+- Independently recomputed bid-minus-ask notional imbalance at 10 / 50 / 100 bps:
+  - Bitstamp: **−3.14% / +14.29% / +17.21%**.
+  - Coinbase: **+28.09% / +14.08% / +22.31%**.
+  - Kraken: **−2.24% / +15.74% / +3.35%**.
+  - OKX (USDT quote): **+11.98% / +5.54% / +2.07%**.
+- At 50/100 bps all four snapshots were bid-heavy; near-touch depth was mixed. OKX depth remains in USDT and was not USD-normalized. These are single snapshots, not a continuous or consolidated book; no cancellation/replenishment or executed-trade reconstruction exists.
+
+### Latest preserved-artifact backfill — VERIFIED against Run63
+
+The replay workflow selected current main ingestion `45006501541` and verified 32 intermediate receipt-index artifacts before replay.
+
+- Main checkpoint before: 19,083 records, 35 snapshots.
+- Isolated integration result: **19,201 records, 36 snapshots**.
+- Recovered: 118 historical records from 11 source lineages.
+- 38 artifact ZIP digests verified; zero mismatches.
+- SQLite integrity: `ok`; 36/36 snapshots verified.
+- Point-in-time visibility: 19,083 immediately before the post-append availability bound and 19,201 immediately after.
+- Reconciliation SHA-256: `574c058b97d3d7624aec64d6bd89bae1d21b53225d7d69d78ae0192cd1ccc9b4`.
+- Artifact: [14747378932](https://github.com/Barrot-Agent/B-Agent/actions/runs/45006787445/artifacts/14747378932).
+- Receipt clock uses the GitHub API Date header as a post-append availability bound, not an independent trusted timestamp or physical SQLite commit time. Main's database was not modified.
+
+This verifies the specific historical fork reconciliation against Run63. It does **not** implement a general rebuild of the entire feature store from every retained raw artifact.
+
+### Event and forecast readiness
+
+Run63 event artifact remains unchanged in the material dimensions:
+
+- 150 events; 117 scenarios; 50 declared publisher-independence groups.
+- Zero event raw-source hashes; receipt completeness false.
+- No directional forecast; probabilities null; model eligibility false.
+- Drift: 0/204 candidate features evaluated.
+- Walk-forward forecasts: zero.
+- SEC: zero raw receipts; contact identity still unconfigured.
+- External timestamp anchoring remains absent.
+
+### Institutional identity and capital research reconciliation
+
+The existing Run277 and Run268 research artifacts were re-read. Their findings remain research-only because the bundle lacks raw publisher bytes, per-source retrieval receipts and trusted external timestamps.
+
+- SBIC East, Central and West are distinct Tokyo, Nagoya and Osaka regional legal entities; official profiles describe them as sister companies. No SBI Holdings ownership/division relationship was established. SBI VC Trade is separately reported as 100% SBI Group-owned.
+- Best-supported ASK Coin identity is Permission Coin (ASK), on Base and Polygon. No XRP/XRPL/Ripple relationship was established. Permission's current docs and Jan 10, 2025 blog list Base contract `0xBB146326778227A8498b105a18f84E0987A684b4`; its Jan 15, 2025 issuer release lists a conflicting historical address `0x79322cee6c90735b967d2396b9adc392915aebb6`. The old address's migration/retirement state remains unresolved.
+- Exact phrase “actual capital” is not a formal accounting term in the reviewed filings. Keep gross/net cash, cash used to purchase XRP, in-kind XRP, debt, exercised warrant cash, undrawn ELOC capacity and unexercised warrant capacity in separate ledger categories. Do not add the $214.1M pre-close cash to the $272.6M closing gross cash; do not sum nested in-kind XRP contribution paths.
+- Exact phrase “SBIC, ChatGPT SBIC” remains unresolved as a partnership claim. Official SBIC East course/seminar pages mention ChatGPT but list VOST and Microsoft presenters respectively; no OpenAI sponsorship or formal partnership was established.
+- Dr. Kamilah Stevenson / The Wealth Doctor is identity-triangulated to channel `@drkamilahstevenson`, channel ID `UCqUPJMQdkCN6lsLVDnichPA`. Two verified third-party appearances were inventoried: Paul Barron Podcast's “Crypto Panics!” (June 11, 2026) and Sean Croxton's “Generational Health Starts With You” (Aug 6, 2025). These are guest appearances, not her own uploads; the public channel upload inventory was not exhaustive.
+- Confirmed ecosystem edges: Circle–Coinbase USDC issuance/distribution/equity/revenue sharing; Circle–SBI Group USDC distribution and Arc validator relationship; SBI Holdings/SBI Ripple Asia–Ripple JV, RLUSD distribution and XRPL deposit PoC; Coinbase–Ripple RLUSD listing and multichain access; Ripple–BNY RLUSD reserve custody and XRP/RLUSD custody; Circle–BNY Circle Reserve Fund custody. No direct Circle–Ripple partnership was established. XRPL ledger use in SBI's deposit PoC does not establish XRP token collateral/settlement.
+- Coinbase as Pathfinder's principal accounting market does not establish custody or actual execution volume. SBI-affiliated investor participation with a 39.9% Class A cap does not establish that SBI Holdings supplied the entire capital stack.
+
+### PR state and governance
+
+| PR | Classification | Current disposition |
+|---|---|---|
+| #1684 | Blocked — sole XRP integration | Draft; 155 commits ahead / 0 behind after this handoff-only update; 27 changed paths; no formal reviews. Exact-head suite and Run63 replay passed on parent head `0380516`. |
+| #1685 | Blocked — unique A2A security | Non-draft; 5 ahead / 0 behind; 9 files; no formal review. Runner remains quarantined pending OS sandbox, provider-credential isolation and egress controls. |
+| #1686 | Blocked — unique maintenance | Draft; 18 ahead / 0 behind; 16 files; latest full suite failed with 11 failures. Its hunk in `tests/test_mcp_server.py` is disjoint from #1685's hunk. |
+| #1687 | Blocked — unique model-integrity diagnostics | Draft; 3 ahead / 0 behind; 3 files; latest full suite failed on docs-index assertion. |
+
+Main reports `protected=true`, but the branch-protection API returns HTTP 403. The visible fallback ruleset is disabled and CODEOWNERS does not provide independent review. No PR was merged or closed.
+
+### Next concrete actions
+
+1. Re-run exact-head CI after this handoff-only commit; do not transfer parent-head results.
+2. Implement/test deterministic feature-store reconstruction from retained raw receipts, not merely one pinned fork backfill.
+3. Capture publisher bytes for current event evidence with actual capture times and hashes; do not backdate historical events.
+4. Configure SEC capture only with an authorized monitored contact identity.
+5. Continue point-in-time accumulation until the 30-day drift reference window is real; then execute chronological baselines and calibration.
+6. Preserve the one XRP integration PR. No new branch or PR.
+
+No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred. Barrot V3 remains the execution, orchestration, safety and verification foundation.
