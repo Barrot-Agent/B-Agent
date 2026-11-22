@@ -15,7 +15,6 @@ import json
 import math
 import os
 import re
-import tempfile
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -107,6 +106,32 @@ class CapabilityCycleLedger:
                 if fcntl is not None:
                     fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
 
+    def _append_unlocked(
+        self,
+        cycle_id: str,
+        event_type: str,
+        payload: dict[str, Any],
+        *,
+        events: list[dict[str, Any]] | None = None,
+    ) -> dict[str, Any]:
+        existing = self._read_unlocked() if events is None else events
+        previous = existing[-1]["event_hash"] if existing else "0" * 64
+        body = {
+            "schema": self.SCHEMA,
+            "sequence": len(existing) + 1,
+            "cycle_id": cycle_id,
+            "event_type": event_type,
+            "recorded_at": datetime.now(timezone.utc).isoformat(),
+            "previous_hash": previous,
+            "payload": payload,
+        }
+        event = {**body, "event_hash": _sha256(_canonical(body))}
+        with self.path.open("a", encoding="utf-8") as stream:
+            stream.write(_canonical(event) + "\\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+        return event
+
     def append(self, cycle_id: str, event_type: str, payload: dict[str, Any]) -> dict[str, Any]:
         if not isinstance(cycle_id, str) or not self.CYCLE_ID.fullmatch(cycle_id):
             raise ValueError("cycle_id must contain 1-96 safe filename characters")
@@ -118,27 +143,37 @@ class CapabilityCycleLedger:
             if fcntl is not None:
                 fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
             try:
-                events = self._read_unlocked()
-                previous = events[-1]["event_hash"] if events else "0" * 64
-                sequence = len(events) + 1
-                body = {
-                    "schema": self.SCHEMA,
-                    "sequence": sequence,
-                    "cycle_id": cycle_id,
-                    "event_type": event_type,
-                    "recorded_at": datetime.now(timezone.utc).isoformat(),
-                    "previous_hash": previous,
-                    "payload": payload,
-                }
-                event = {**body, "event_hash": _sha256(_canonical(body))}
-                with self.path.open("a", encoding="utf-8") as stream:
-                    stream.write(_canonical(event) + "\n")
-                    stream.flush()
-                    os.fsync(stream.fileno())
-                return event
+                return self._append_unlocked(cycle_id, event_type, payload)
             finally:
                 if fcntl is not None:
                     fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
+
+    def start_cycle(self, cycle_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+        """Atomically reserve a cycle ID and append its first event.
+
+        The duplicate check and reservation share one exclusive ledger lock so
+        concurrent workers cannot both pass a read-then-append check.
+        """
+        if not isinstance(cycle_id, str) or not self.CYCLE_ID.fullmatch(cycle_id):
+            raise ValueError("cycle_id must contain 1-96 safe filename characters")
+        if not isinstance(payload, dict):
+            raise TypeError("event payload must be an object")
+        with self.lock_path.open("a+", encoding="utf-8") as lock:
+            if fcntl is not None:
+                fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+            try:
+                events = self._read_unlocked()
+                if any(event.get("cycle_id") == cycle_id for event in events):
+                    raise CapabilityCycleError(
+                        "cycle_id already exists; use the existing task/checkpoint recovery path rather than replaying side effects"
+                    )
+                return self._append_unlocked(
+                    cycle_id, "cycle_started", payload, events=events
+                )
+            finally:
+                if fcntl is not None:
+                    fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
+
 
 
 class CapabilityCycleController:
@@ -189,14 +224,8 @@ class CapabilityCycleController:
     def run(self, request: str, *, cycle_id: str) -> CapabilityCycleResult:
         if not isinstance(request, str) or not request.strip():
             raise ValueError("request must be non-empty")
-        prior = [event for event in self.ledger.read_events() if event["cycle_id"] == cycle_id]
-        if prior:
-            raise CapabilityCycleError(
-                "cycle_id already exists; use the existing task/checkpoint recovery path rather than replaying side effects"
-            )
-
         request_hash = _sha256(request)
-        self.ledger.append(cycle_id, "cycle_started", {
+        self.ledger.start_cycle(cycle_id, {
             "request_sha256": request_hash,
             "request_storage": "hash_only; canonical request remains in the MMI source record",
             "workspace": str(self.workspace),
