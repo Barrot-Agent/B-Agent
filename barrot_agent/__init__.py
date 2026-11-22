@@ -135,11 +135,10 @@ if _research_available:
 if _creative_available:
     __all__ += ["ProductionDirector", "CreativeProductionRecord"]
 
-# Optional derived-data refinement. External LunaRoute use is default-deny.
+# Optional derived-data refinement. External-provider dispatch is decommissioned.
 try:
     from .refinement import (
-        EXTERNAL_REFINEMENT_ALLOWED_CLASSES, IMMUTABLE_DATA_CLASSES,
-        REFINABLE_DATA_CLASSES, HeuristicRefiner, LunaRouteRefiner,
+        IMMUTABLE_DATA_CLASSES, REFINABLE_DATA_CLASSES, HeuristicRefiner,
         PingPongRefiner, Refiner, RefinementOutput, RefinementReport,
         RoundRecord, make_model_refiners, refine_data, refine_json_file,
         scoring, ref_paths, DocumentAudit, Slot, audit_document,
@@ -157,8 +156,7 @@ except Exception:
 
 if _refinement_available:
     __all__ += [
-        "EXTERNAL_REFINEMENT_ALLOWED_CLASSES", "IMMUTABLE_DATA_CLASSES",
-        "REFINABLE_DATA_CLASSES", "HeuristicRefiner", "LunaRouteRefiner",
+        "IMMUTABLE_DATA_CLASSES", "REFINABLE_DATA_CLASSES", "HeuristicRefiner",
         "PingPongRefiner", "Refiner", "RefinementOutput",
         "RefinementReport", "RoundRecord", "make_model_refiners",
         "refine_data", "refine_json_file", "scoring", "ref_paths",
