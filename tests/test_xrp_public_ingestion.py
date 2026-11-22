@@ -727,6 +727,8 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
     )
     assert summary["source_failure_count"] == 0
+    assert summary["raw_only_source_ids"] == ["cftc_contract_status_index"]
+    assert summary["raw_only_unique_source_count"] == 1
     assert summary["eligible_feature_record_count"] > 0
     assert summary["store_verification"]["valid"] is True
     assert summary["feature_store_backup_retention_days"] == 90
@@ -2169,6 +2171,9 @@ def test_parser_failure_preserves_exact_raw_bytes_as_ineligible_receipt(tmp_path
     assert summary["source_receipt_count"] == 1
     assert summary["source_failure_count"] == 1
     assert summary["raw_only_source_count"] == 1
+    assert summary["raw_only_unique_source_count"] == 1
+    assert summary["raw_only_source_ids"] == [source_id]
+    assert summary["raw_only_entries_without_source_id_count"] == 0
     assert summary["snapshot_status"] == "no_new_eligible_features"
     assert len(receipts) == 1
     receipt = receipts[0]
