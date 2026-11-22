@@ -2862,3 +2862,120 @@ Only ChatGPT-to-GitHub authentication and repository data flow are verified. Cla
 7. Build sufficient chronological market origins, then evaluate naive, momentum, mean-reversion and volatility baselines, calibration and drift before any forecast admission.
 
 No merge, deployment, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred. Barrot V3 remains the execution, orchestration, safety, authorization and verification foundation.
+## Research update — 2026-11-22 12:56 UTC
+
+This appendix adds primary-source identity, capital-flow and stablecoin-economics evidence. It supersedes older provisional classifications where the filing record is more specific. All amounts below retain their reporting dates and legal-entity boundaries.
+
+### SBIC identity resolved from primary company records
+
+- SBIC East Japan is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., corporate number 9011001030621; Tokyo; founded 1963-11-15; capital JPY 6.6734 billion; shareholder categories include local governments across 18 prefectures, chambers of commerce, financial institutions and operating companies. Its stated operating area is Shizuoka, Nagano, Niigata and eastward.
+- SBIC Central Japan is Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; founded 1963-11-18; capital JPY 4.3808 billion; stated area Aichi, Gifu, Mie, Toyama and Ishikawa.
+- SBIC West Japan is Osaka Small and Medium Business Investment & Consultation Co., Ltd.; founded 1963-11-20; capital JPY 6.822 billion; stated area 24 prefectures west of Fukui, Shiga, Nara and Wakayama.
+- The three official profiles identify the entities as sister companies and statutory policy institutions under Japan's Small and Medium Enterprise Investment & Consultation Companies Act. They are separate legal companies, not divisions of SBI Holdings. Do not collapse the SBIC acronym into SBI.
+- Official SBIC East training records show a June 12–13, 2025 manufacturing-oriented generative-AI/machine-learning course that included ChatGPT usage and Copilot. This establishes ChatGPT as a training subject, not an OpenAI partnership, product integration or SBI Holdings relationship.
+- Exact search for the literal phrase SBIC, ChatGPT SBIC returned no attributable primary result. The official training record is the strongest verified contextual connection found.
+
+Primary company records:
+- East: https://www.sbic.co.jp/company/profile/
+- Central: https://www.sbic-cj.co.jp/company/about/
+- West: https://www.sbic-wj.co.jp/profiles/profile/
+- East ChatGPT course: https://www.sbic.co.jp/training/20250612co/
+
+### SBI Holdings is a separate institution and has direct Evernorth ownership
+
+The Evernorth SEC prospectus defines SBI as SBI Holdings, Inc. and identifies four SBI Stockholders controlled by it: SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. These are not the three Japanese SBIC regional companies.
+
+- The SBI Entity Amendments imposed a 39.9% group ownership threshold for Pubco Class A voting shares. Shares above that threshold were issued as Class C, convertible into Class A subject to the governing ownership restrictions. This is an ownership/voting structure, not proof that SBI itself owns 39.9% of all economic interests without qualification.
+- The principal-securityholder footnote lists 9,431,914 Class A shares collectively held by the four SBI-controlled entities. The closing disclosure separately reports 2,359,038 Class C shares issued to certain SBI-affiliated investors under the 39.9% threshold.
+- SBI Holdings USA, Inc.'s SEC Form 3 reports direct holdings as of October 9, 2026 of 6,529,787 Class A shares and 1,633,180 Class C shares. The Class C shares convert one-for-one only subject to the 39.9% group restriction. This is direct issuer ownership evidence, not merely a partnership announcement.
+- The same closing disclosure says Ripple received 1,678,382 Class A shares and 16,461,545 Pathfinder Units under a 9.9% ownership threshold. The Arrington XRP Capital Fund sponsor received 30,233,211 Series C shares under a 19.9% voting threshold. These are separate investor/ownership lanes.
+
+Primary filings:
+- Evernorth 424B3 / incorporated 10-Q: https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm
+- SBI Holdings USA Form 3: https://www.sec.gov/Archives/edgar/data/2092592/000114036126040302/xslF345X06/form3.xml
+- SBI's Evernorth PIPE announcement: https://www.sbigroup.co.jp/news/2025/1021_15831.html
+
+### Evernorth capital ledger — cash, XRP in-kind, debt, warrants and optional equity kept separate
+
+The literal phrase actual capital did not produce a unique primary-source match. The correct operational method is a transaction ledger that distinguishes cash received, cash spent to buy XRP, XRP contributed in kind, debt, warrant exercises, trust-account cash and optional facilities.
+
+| Transaction | Disclosed amount | Classification / treatment |
+|---|---:|---|
+| Advance funding received by Oct. 23, 2025 | $214,049,995 cash + 600,000 XRP | Cash was used to buy 84,365,876 XRP, received by Nov. 6, 2025. Do not add the purchase cash and the resulting XRP as two separate capital inflows. |
+| Delayed funding at closing | $10.5M cash + 200,000 XRP | Separate delayed subscription; cash and in-kind token legs must remain separate. |
+| Series C sponsor contribution | 211,319,096 XRP | In-kind XRP from RippleWorks to Arrington XRP Capital Fund LP; not cash. |
+| Contributor Related Party Entity | 50,000,000 XRP | In-kind XRP from Larsen Lam Children's Remainder Trust, a Ripple-affiliated contributor; not cash. |
+| Ripple Contribution Agreement | 126,791,458 XRP | In-kind Ripple contribution to Pathfinder; not cash. |
+| Total disclosed in-kind XRP tranches | 388,910,554 XRP | Sum of 600,000 + 200,000 + 211,319,096 + 50,000,000 + 126,791,458. |
+| Cash-purchased XRP tranche | 84,365,876 XRP | Result of the $214.05M advance cash purchase; separate from the in-kind total. |
+| Combined disclosed XRP tranches | 473,276,430 XRP | Reconciliation of 346,484,972 XRP transferred from Evernorth to Pathfinder plus 126,791,458 XRP contributed by Ripple. This is a transaction/closing reconciliation, not a claim that every token remains unencumbered or unchanged today. |
+| Gross cash at business-combination closing | About $272.6M | Filing describes about $224.6M of private-placement cash plus about $48M released from the SPAC trust after redemptions, before expenses. The $214.05M advance cash was already deployed to acquire XRP; do not treat it as unspent cash. |
+| Convertible senior PIK note, Oct. 13, 2026 | $30.0M principal; $29.0M net cash | Debt, not equity. $1.0M advisor fee deducted; 4% PIK interest; 2031 maturity; conversion after first anniversary at initial $10.20 conversion price, subject to a 4x conversion-value cap; 8% yield-to-put on specified default/fundamental-transaction events. |
+| Warrant exercises, Oct. 12–Nov. 9, 2026 | 3,073,366 warrants; $35.3M gross cash | Actual cash proceeds disclosed. 8,666,279 warrants remained at $11.50. Their theoretical maximum gross cash exercise proceeds are $99,662,208.50 only if every remaining warrant is exercised for cash; this is contingent capacity, not actual capital. |
+| Cantor committed equity facility | Up to 5,218,935 shares | Optional issuer-directed equity line, not cash received. 97% of applicable VWAP, purchase/volume and 4.99% beneficial-ownership limits, threshold-price conditions. Resale registration effective Oct. 30. No purchase proceeds were disclosed in the Nov. 13 filing; no later purchase notice/draw was verified in this pass. |
+| Cantor fees | $521,893.50 upfront; total commitment fee capped at $1.0M; expenses capped at $0.5M | Financing costs, not capital raised. |
+| Ripple-related Company Facility | $10M limit; $9.7M drawn as of Oct. 7 | Related-party debt with repayment due shortly after closing or earlier demand. Do not classify as new third-party equity capital. A separate $1M Evernorth facility was undrawn as of Sept. 30. |
+
+Critical anti-double-counting rules:
+- $214.05M advance cash became 84.365876M XRP; it is not simultaneously $214.05M of free cash plus 84.365876M XRP purchased with that cash.
+- The $48M trust-account release is SPAC trust cash after redemptions, not a new private placement subscription.
+- XRP contributions in kind are not cash subscriptions, AP creations, exchange purchases or market-buy volume.
+- Convertible notes and related-party credit facilities are debt, not equity.
+- Warrants only create cash when exercised for cash. Remaining warrant capacity is not proceeds.
+- The Cantor ELOC is a right, not an obligation, to issue shares. Cantor resales do not pay proceeds to Evernorth; only issuer sales to Cantor do.
+
+### SBI, Circle, Ripple and XRPL: distinct rails and capital relationships
+
+- SBI Holdings and SBI Shinsei disclosed a combined $50M strategic investment in Circle at its IPO, $25M each. SBI also disclosed the SBI Circle Holdings joint venture and participation by an SBI subsidiary in Circle's ARC token presale. ARC is Circle's Arc network, not XRPL.
+- SBI VC Trade's USDC service and its Aplus merchant-payment pilot are USDC/Japanese-yen payment initiatives. The pilot's disclosed customer flow converts USDC into JPY for merchant payment; it is not evidence of XRP settlement.
+- SBI Ripple Asia's February 2026 concept proof examines tokenized deposits and deposit-type digital money using existing infrastructure and XRPL. It establishes XRPL experimentation, not XRP-token collateral, XRP settlement or market purchases.
+- SBI Ripple Asia's separate Korea/Japan remittance research with dsrv labs also considers XRPL. It remains research/implementation exploration, not evidence of production XRP liquidity demand.
+- SBI's Evernorth ownership, SBI Ripple Asia's XRPL work, SBI VC Trade's USDC business and the three SBIC regional investment companies are separate entity/relationship edges. They must not be merged into one generic SBIC/SBI node.
+
+Primary SBI records:
+- Circle investment / SBI-SBI Shinsei: https://www.sbigroup.co.jp/news/2025/0609_15491.html
+- SBI Circle Holdings and ARC: https://www.sbigroup.co.jp/news/2026/0512_16310.html
+- SBI VC Trade × Aplus USDC pilot: https://www.sbigroup.co.jp/news/2025/1225_15995.html
+- SBI Ripple Asia tokenized-deposit XRPL PoC: https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
+- SBI Ripple Asia / dsrv remittance research: https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html
+
+### Coinbase and Circle economics — Q3 2026 SEC evidence
+
+Circle's Sept. 30, 2026 Form 10-Q reports:
+- USDC in circulation at period end: $73.879B; Q3 average: $73.264B; nine-month average: $74.983B.
+- Q3 average USDC in circulation grew 8% year-over-year; issuer-reported on-chain transaction volume was $13.9T, up 49%.
+- Circle's own USDC-on-platform balance was $13.868B at quarter end; its daily weighted-average platform share was 18.1% in Q3 and 18.3% for the first nine months. This is Circle's platform share, not Coinbase's.
+- Circle reported $986.6M of distribution costs connected with Coinbase for the first nine months of 2026 ($331.3M in Q3), versus $996.8M and $361.3M in the corresponding 2025 periods.
+- Circle says Coinbase receives allocations tied to USDC held on Coinbase's platform after issuer retention and half of the remaining broader-ecosystem payment base after approved third-party participants.
+- Nine-month reserve income increased $74.4M (3.9%): a $401.2M contribution from 22.8% higher average daily USDC was largely offset by a $326.8M reduction associated with a 64-basis-point decline in average yield.
+
+Coinbase's Sept. 30, 2026 Form 10-Q reports stablecoin revenue effects for the first nine months of 2026: +$201.6M from higher average USDC balances held in Coinbase products, partly offset by -$166.2M from lower average interest rates. This is direct evidence that Coinbase's USDC economics are sensitive to both balances and reserve yields.
+
+Primary filings:
+- Circle Q3 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+- Coinbase Q3 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+- Circle's explanation of the Coinbase collaboration: https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx
+
+### Coinbase–Ripple RLUSD integration: collateral distinction preserved
+
+Coinbase's Oct. 28, 2026 launch announcement says RLUSD was available through Coinbase Prime, Coinbase Exchange and the retail app, with deposits/withdrawals on XRPL, Base and Ethereum and 1:1 USD conversion. Coinbase explicitly said Global Exchange availability, including use of RLUSD as collateral, would follow. Therefore the launch proves listing and network support, not that RLUSD collateral was live at launch, and not that XRP was collateral.
+
+Primary announcement: https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+
+### Exact-phrase and Kamilah/Camilla identity status
+
+- ASK Coin: no new primary-source result established a unique XRP-linked ASK Coin. Permission Coin (ASK) and other Askcoin/ASK references remain distinct candidates; no XRP relationship is verified.
+- actual capital: the literal phrase did not produce a unique primary-source match. The Evernorth SEC ledger above is the stronger evidence and separates cash, in-kind XRP, debt, warrant proceeds and optional financing capacity.
+- SBIC, ChatGPT SBIC: no exact-phrase match. The official SBIC East course includes ChatGPT as training content, but does not establish an OpenAI partnership.
+- Dr. Kamilah Stevenson / The Wealth Doctor's person/brand identity is corroborated by her own wealthwithconfidence.com presence and independent public references. However, the candidate YouTube channels surfaced under similar names have conflicting channel IDs/handles and no verified first-party cross-link from the official site. The candidate video I Moved My XRP Off The Exchanges is therefore not admitted to the verified official-channel inventory. No Camilla Stevenson identity or official upload inventory was verified in this pass.
+
+### Counter-hypotheses and model-admission rules
+
+- SBI's USDC investment and merchant pilot can increase stablecoin activity without increasing XRP demand.
+- XRPL tokenized deposits can use the ledger while the deposit liability, settlement asset and collateral remain fiat/deposit tokens rather than XRP.
+- Circle's ARC presale and SBI's ARC participation do not establish an XRPL or XRP transaction.
+- Coinbase's RLUSD listing supports XRPL access, but collateral was explicitly future at launch; neither XRP collateral nor XRP buying is established.
+- Evernorth's gross funding headlines overstate deployable cash if in-kind XRP, trust releases, cash already spent on XRP, debt, warrants and optional equity lines are added together.
+- The 39.9% SBI group threshold is a governance/ownership mechanism; it is not evidence that SBIC East/Central/West are SBI Holdings affiliates.
+
+All new SEC and corporate disclosures are research-only until captured into immutable raw receipts with exact retrieval times and hashes in the Barrot ingestion pipeline. They are not backdated into Run68 and are not model-eligible merely because they are primary-source filings.
