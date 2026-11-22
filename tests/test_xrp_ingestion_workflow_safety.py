@@ -86,3 +86,14 @@ def test_backfill_replay_always_checks_latest_main_checkpoint():
     assert "Discover and verify the latest successful main checkpoint" in text
     assert "git/ref/heads/main" in text
 
+
+
+def test_raw_receipt_artifact_includes_run_summary_and_raw_only_identity_index():
+    payload = yaml.load(WORKFLOW.read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
+    upload = next(
+        step for step in payload["jobs"]["capture"]["steps"]
+        if step.get("name") == "Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)"
+    )
+    paths = upload["with"]["path"].splitlines()
+    assert "artifacts/xrp_ingestion/raw_only_sources.json" in paths
+    assert "artifacts/xrp_ingestion/summary.json" in paths
