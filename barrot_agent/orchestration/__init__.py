@@ -1,6 +1,12 @@
 """Barrot orchestration components."""
 
 from .autonomous_state import AutonomousTaskStore
+from .capability_cycle import (
+    CapabilityCycleController,
+    CapabilityCycleError,
+    CapabilityCycleLedger,
+    CapabilityCycleResult,
+)
 from .autonomous_loop import AutonomousResult, BarrotAutonomousLoop
 from .executor import BarrotExecutor, ExecutionError, ExecutionResult
 from .verifier import BarrotVerifier, VerificationResult
@@ -74,6 +80,10 @@ from .repository_repair import (
 
 __all__ = [
     "AutonomousTaskStore",
+    "CapabilityCycleController",
+    "CapabilityCycleError",
+    "CapabilityCycleLedger",
+    "CapabilityCycleResult",
     "AutonomousResult",
     "BarrotAutonomousLoop",
     "BarrotExecutor",
