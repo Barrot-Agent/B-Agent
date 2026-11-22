@@ -185,8 +185,8 @@ class CapabilityCycleController:
 
         request_hash = _sha256(request)
         self.ledger.append(cycle_id, "cycle_started", {
-            "request": request,
             "request_sha256": request_hash,
+            "request_storage": "hash_only; canonical request remains in the MMI source record",
             "workspace": str(self.workspace),
             "limits": {
                 "max_experiments": self.max_experiments,
@@ -201,8 +201,7 @@ class CapabilityCycleController:
         try:
             ingestion = self._require_mapping(self.mmi_ingest(request), "MMI adapter")
             source_refs = ingestion.get("source_refs")
-            if not isinstance(source_refs, list) or not source_refs:
-                raise CapabilityCycleError("MMI must return at least one canonical source reference")
+            if (\n                not isinstance(source_refs, list)\n                or not source_refs\n                or not all(isinstance(ref, str) and ref.strip() for ref in source_refs)\n            ):\n                raise CapabilityCycleError("MMI must return non-empty canonical source-reference strings")
             if ingestion.get("complete") is not True:
                 raise CapabilityCycleError("MMI ingestion is partial or unverified; capability promotion is blocked")
             self.ledger.append(cycle_id, "mmi_ingested", ingestion)
