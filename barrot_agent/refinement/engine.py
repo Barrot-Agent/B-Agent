@@ -1,7 +1,7 @@
 """Optional ping-pong refinement for explicitly classified derived data.
 
-The default is deterministic and offline. Canonical evidence is immutable;
-external providers require explicit public-data classification and opt-in.
+Refinement is deterministic and offline. Canonical evidence is immutable;
+external-provider dispatch has been removed.
 
 Semantics (Barrot standing orders): refinement efforts ping-pong dynamically
 between models until the data can be refined NO FURTHER — a measured fixed
@@ -281,6 +281,8 @@ def refine_json_file(
     data_classification: str = "unknown", allow_external: bool = False,
 ) -> RefinementReport:
     """Refine a classified derived-data JSON document, never canonical evidence."""
+    if allow_external:
+        raise PermissionError("external refinement providers are decommissioned")
     path = Path(path)
     data = json.loads(path.read_text(encoding="utf-8"))
     report = refine_data(data, refiners=refiners, context=f"file:{path}", ledger=ledger,
