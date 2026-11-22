@@ -59,25 +59,30 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert repo["repository"] == "Barrot-Agent/B-Agent"
     assert is_sha(repo["main_sha"])
     integration = repo["integration"]
-    assert integration["pr_number"] == 1673
-    assert integration["state"] == "closed"
-    assert integration["draft"] is False
-    assert integration["merged"] is True
-    assert integration["classification"] == "MERGED_WITH_GOVERNANCE_EXCEPTION"
-    assert integration["merge_commit_sha"] == repo["main_sha"]
+    assert integration["pr_number"] == 1684
+    assert integration["state"] == "open"
+    assert integration["draft"] is True
+    assert integration["merged"] is False
+    assert integration["classification"] == "BLOCKED"
     assert is_sha(integration["snapshot_head_sha"])
     assert is_sha(integration["code_head_sha"])
     assert is_sha(integration["current_pr_head_sha"])
-    assert integration["ahead_by"] == 0
-    assert integration["commits"] == 556
-    assert integration["pr_commit_count"] == 556
-    assert integration["changed_files"] == 1492
+    assert integration["current_pr_head_sha"] == data["current_pr_head_sha"]
+    assert integration["ahead_by"] == 193
+    assert integration["commits"] == 193
+    assert integration["pr_commit_count"] == 193
+    assert integration["changed_files"] == 29
     assert integration["current_main_sha"] == repo["main_sha"]
-    assert integration["base_sha_matches_current_main"] is False
-    assert integration["base_sha"] != repo["main_sha"]
+    assert integration["base_sha_matches_current_main"] is True
+    assert integration["base_sha"] == repo["main_sha"]
     assert integration["behind_by"] == 0
-    assert integration["changed_files"] >= 1
-    assert 0 <= integration["changed_workflow_files"] <= integration["changed_files"]
+    assert integration["formal_reviews"] == 0
+    assert 1 <= integration["changed_workflow_files"] <= integration["changed_files"]
+    previous = repo["previous_merged_integration"]
+    assert previous["pr_number"] == 1673
+    assert previous["state"] == "closed"
+    assert previous["merged"] is True
+    assert previous["merge_commit_sha"] == repo["main_sha"]
     assert repo["main_paths_missing_from_integration"] == 0
     assert repo["tree_counts"]["integration"]["entries"] >= repo["tree_counts"]["main"]["entries"]
 
@@ -143,8 +148,9 @@ def test_latest_map_matches_repository_and_forecast_admission_state():
     assert current_ci["inclusive_coverage_percent"] >= 0
     current_pr_ci = data["ci_evidence"]["current_pr_head_ci"]
     assert is_sha(current_pr_ci["head_sha"])
-    assert current_pr_ci["push_ci_run_id"] > 0
-    assert current_pr_ci["push_ci_conclusion"] in {"success", "failure", "cancelled", None}
+    assert current_pr_ci["push_ci_run_id"] is None
+    assert current_pr_ci["push_ci_conclusion"] is None
+    assert current_pr_ci["push_ci_status"] == "NOT_RETRIEVED_BY_PR_FILTERED_WORKFLOW_QUERY"
     assert current_pr_ci["pr_event_run_id"] > 0
     assert current_pr_ci["pr_event_conclusion"] in {"success", "failure", "cancelled", None}
     assert current_pr_ci["pr_event_full_suite_status"] in {"success", "failure", "skipped", "in_progress", "queued"}
@@ -216,10 +222,11 @@ def test_latest_map_preserves_security_gates_and_open_pr_classifications():
     assert counts.get("ready", 0) == summary["ready"]
     assert counts.get("duplicate", 0) == summary["duplicate"]
     assert counts.get("superseded", 0) == summary["superseded"]
-    expected_open_prs = {1684, 1685, 1686, 1687}
+    expected_open_prs = {1684, 1685, 1686, 1687, 1688}
     assert {item["number"] for item in backlog} == expected_open_prs
     assert next(item for item in backlog if item["number"] == 1684)["classification"] == "blocked"
     assert next(item for item in backlog if item["number"] == 1685)["classification"] == "blocked"
+    assert next(item for item in backlog if item["number"] == 1688)["classification"] == "unique/unreviewed"
     assert data["merge_decision"] == "POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION"
     assert data["run263_merge_decision"]["decision"] == "DO_NOT_MERGE"
     prior_ci = data["ci_evidence"]["pre_fix_pr_head_ci"]
@@ -268,7 +275,7 @@ def test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity():
     market = data["prediction_engine"]["latest_market_snapshot"]
     ingestion = data["prediction_engine"]["latest_ingestion"]
     assert market["source"].startswith(
-        f"Barrot main scheduled ingestion run {ingestion['run_number']}"
+        f"Barrot main scheduled ingestion run {ingestion['run_id']}"
     )
     assert market["data_cutoff_utc"] == ingestion["data_cutoff_utc"]
     assert market["model_eligible_for_directional_forecast"] is False
@@ -1245,16 +1252,16 @@ def test_run25_parent_snapshot_remains_historical():
     assert run["merge_decision"] == "DO_NOT_MERGE_PR_1684"
 
 
-def test_latest_current_state_ref_points_to_run25_1_and_binds_exact_head():
+def test_latest_current_state_ref_points_to_automation_run_5_and_binds_exact_head():
     data = load_map()
-    assert data["latest_current_state_ref"] == "run25_1_current_state"
-    run = data["run25_1_current_state"]
+    assert data["latest_current_state_ref"] == "automation_run_5_current_state"
+    run = data["automation_run_5_current_state"]
     assert run["main_sha"] == data["current_main_sha"] == "550a647ee7269a704d4600ff337b2145acc90473"
     assert run["integration_head_sha"] == data["current_pr_head_sha"]
-    assert run["integration_head_sha"] == "68bfd782abb04a18ab195741a53f5f77bdb0eaff"
+    assert run["integration_head_sha"] == "781e5ff2f6e785d82740962375b23a97fbac4e56"
     assert run["pr_number"] == 1684
     assert run["pr_draft"] is True
-    assert run["commits_ahead"] == 184
+    assert run["commits_ahead"] == 193
     assert run["commits_behind"] == 0
     assert run["changed_files"] == 29
     assert run["main_tree_entries"] == 3115
@@ -1262,43 +1269,43 @@ def test_latest_current_state_ref_points_to_run25_1_and_binds_exact_head():
     assert run["main_paths_missing_from_integration"] == 0
 
     ci = run["exact_head_ci"]
+    assert ci["run_id"] == 45056180621
     assert ci["head_sha"] == run["integration_head_sha"]
-    suite = ci["full_suite"]
-    assert suite["head_sha"] == run["integration_head_sha"]
-    assert suite["passed"] == 4570
-    assert suite["failed"] == 0
-    assert suite["skipped"] == 1
-    assert suite["conclusion"] == "success"
-    assert suite["coverage_percent"] == 73.21
-    assert suite["tracked_active_test_modules"] == 533
+    assert ci["passed"] == 4567
+    assert ci["failed"] == 4
+    assert ci["skipped"] == 1
+    assert ci["conclusion"] == "failure"
+    assert ci["coverage_percent"] == 73.21
+    assert ci["tracked_active_test_modules"] == 533
     assert ci["dependency_audit"]["conclusion"] == "success"
     assert ci["money_audit"]["conclusion"] == "success"
     assert ci["conflict_integrity"]["conclusion"] == "success"
     assert ci["fail_closed"]["conclusion"] == "failure_by_design"
 
-    ingestion = run["latest_main_ingestion"]
-    assert ingestion["run_id"] == 45031489739
-    assert ingestion["run_number"] == 70
-    assert ingestion["raw_payload_hashes_verified"] == 22
-    assert ingestion["raw_payload_hash_mismatches"] == 0
-    assert ingestion["event_receipt_complete"] is False
-    assert ingestion["drift_status"] == "INSUFFICIENT_DATA"
-    assert ingestion["walk_forward_forecasts"] == 0
-    assert ingestion["forecast_status"] == "NOT_ISSUED"
-
     replay = run["backfill_replay"]
     assert replay["conclusion"] == "success"
-    assert replay["source_main_run_id"] == 45031489739
-    assert replay["intermediate_receipt_indexes_verified"] == 37
-    assert replay["records_before"] == 19682
-    assert replay["records_after"] == 19800
+    assert replay["source_main_run_id"] == 45053918500
+    assert replay["intermediate_receipt_indexes_verified"] == 43
+    assert replay["records_before"] == 20158
+    assert replay["records_after"] == 20276
     assert replay["recovered_records"] == 118
-    assert replay["snapshots_before"] == 40
-    assert replay["snapshots_after"] == 41
+    assert replay["source_lineages"] == 11
+    assert replay["snapshots_before"] == 44
+    assert replay["snapshots_after"] == 45
     assert replay["sqlite_integrity"] == "ok"
+    assert replay["visible_before_receipt"] is False
+    assert replay["visible_after_receipt"] is True
+    assert replay["receipt_clock_source"] == "github_api_run_date_header"
+    assert replay["physical_commit_time_verified"] is False
+    assert replay["independent_trusted_timestamp_anchor"] is False
     assert replay["main_modified"] is False
 
+    assert run["latest_main_ingestion"]["run_id"] == 45053918500
+    assert run["latest_main_ingestion"]["raw_payload_hashes_verified"] == 22
+    assert run["latest_main_ingestion"]["event_raw_hashes"] == 0
     assert run["institutional_research"]["source_count"] == 11
     assert run["merge_decision"] == "DO_NOT_MERGE_PR_1684"
     assert run["no_merge_performed"] is True
     assert run["no_external_actions_performed"] is True
+    assert run["no_forecast_issued"] is True
+

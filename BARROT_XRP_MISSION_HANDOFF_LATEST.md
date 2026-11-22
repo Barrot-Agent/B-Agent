@@ -3914,3 +3914,94 @@ No merge, deployment, Pages publication, secret rotation, Space restart, Kaggle 
 - [SBIC East Japan](https://www.sbic.co.jp/company/profile/), [SBIC Central Japan](https://www.sbic-cj.co.jp/company/about/), [SBIC West Japan](https://www.sbic-wj.co.jp/profiles/profile/)
 - [SEC Regulation Crypto Assets proposal S7-2026-27](https://www.sec.gov/rules-regulations/2026/08/s7-2026-27)
 - [XRP Insights exchange balances](https://xrp-insights.com/exchange-balances), [XRPSONAR](https://xrpsonar.com/xrp-today), [CryptoKeyhole ETF flows](https://cryptokeyhole.com/etf-flows/xrp/)
+
+---
+
+## Automation Run 5 — 2026-11-22 20:08:29 UTC
+
+### Repository and integration audit
+
+- Main remains 550a647ee7269a704d4600ff337b2145acc90473; no main write or merge occurred.
+- Existing XRP branch at audit start: 781e5ff2f6e785d82740962375b23a97fbac4e56, PR #1684, 193 commits ahead, zero behind, 29 changed paths including three workflow files.
+- Complete recursive trees: main 3,115 entries; integration 3,129; no main paths missing.
+- No new branch or PR was created. Existing branch history and main were preserved.
+- Main CI runs the complete tracked active repository suite and package coverage gates. The XRP workflow is main-scheduled, uses read-only Actions/Contents permissions and checks out the exact triggering SHA.
+- Main CODEOWNERS is * @Barrot-Agent; no independent code owner is configured. Dependabot is weekly for pip and GitHub Actions. Branch metadata says protected, but detailed protection returns HTTP 403; the visible fallback ruleset is disabled. Automatic Pages publication was previously observed on main and remains unauthorized.
+
+### Exact-head CI on audit-start head 781e5ff
+
+- CI 45056180621: core tests passed; full repository suite 4,567 passed, 4 failed, 1 skipped, 11 warnings, 32 subtests, 73.21% coverage, 197.13 seconds; 4,572 tests collected across 533 active test modules.
+- All four failures are stale evidence-map/test assertions in tests/test_xrp_nine_platform_map_latest.py, not runtime failures:
+  - current PR identity expected 1673 instead of 1684;
+  - market snapshot test used run number while the artifact source identifies the run ID;
+  - “actual capital” wording drifted from the test contract;
+  - latest-current-state pointer still referenced Run25_1.
+- Dependency audit 45056180615 passed across six manifests with no known vulnerabilities reported.
+- Money audit 45056180689 passed.
+- Conflict integrity 45056180610 passed.
+- Pages build passed in validation-only mode; no publication occurred.
+- Fail-closed gate 45056180648 blocked as designed because the PR remains draft, there are no independent approvals, and branch protection/Pages authorization are unresolved.
+
+### Historical feature-store replay
+
+Backfill replay job 137311804649 in CI 45056180621 passed against the latest successful main checkpoint available to that job, ingestion run 45053918500, on main SHA 550a647ee7269a704d4600ff337b2145acc90473.
+
+- Verified 43 intermediate receipt-index links from the preserved historical fork to the current main checkpoint.
+- Recovered 118 feature records from 11 source lineages.
+- Isolated database: 20,158 to 20,276 records; 44 to 45 snapshots; all 45 snapshots verified; SQLite integrity ok.
+- Point-in-time visibility test: records were absent immediately before the receipt boundary and visible immediately after.
+- Reconciliation SHA-256: def0f9d20c76a9f27c3ebaab5e99cf8035074ba571457f117499eab737d06dab.
+- Receipt clock used a GitHub API Date-header availability bound. It is not a measured physical SQLite commit timestamp, external trusted timestamp or WORM anchor. Replay modified neither main nor its production feature store.
+
+### Latest mainline XRP ingestion observed by the replay
+
+Run 71, captured 2026-11-22 18:14:50.258 UTC; data cutoff 18:14:48.208 UTC; adapter v3.32 / parser v3.31.
+
+- 34 receipts: 22 retained raw payloads, 12 digest-only; all 22 retained payload hashes matched.
+- Receipt-chain sequence 44 continued successfully; no independent external timestamp anchor.
+- Feature store: 20,158 records / 44 snapshots; 123 eligible and 367 excluded candidate records.
+- Event timeline: 150 events / 117 scenarios, zero event-level raw-source hashes; receipt completeness false.
+- Drift: 0/204 features evaluated; INSUFFICIENT_DATA. Walk-forward forecasts: zero; NOT_ISSUED.
+- SEC EDGAR remains blocked by missing BARROT_SEC_USER_AGENT.
+- Source failures: Binance HTTP 451 (8), Bybit HTTP 403 (5), Grayscale HTTP 429 (1), Franklin parser failure (1), SEC configuration failures (3). No restrictions were bypassed.
+
+The 18:14 UTC four-venue USD-comparable midpoint cluster was $0.928065–$0.928250877 (2.002 bps). Coinbase, Bitstamp and Kraken depth is USD-denominated; OKX depth remains USDT-denominated despite same-venue top-of-book normalization; Bitbank depth remains JPY-denominated. These are asynchronous venue snapshots, not a consolidated executable book or directional signal.
+
+### Derivatives and ETF disagreement
+
+No validated current derivatives snapshot exists. Binance returned HTTP 451, Bybit HTTP 403, and Deribit remains raw-only pending contract-unit and book-sequence validation. Secondary open-interest dashboards reported $1.15B and $865M at different timestamps/coverage; they were not averaged or admitted.
+
+For the November 20 ETF session, XRP Insights reported approximately $7.45M direct-spot holdings-delta outflows across four reporting funds with one excluded; CryptoKeyhole reported approximately 2.659M XRP outflows for two of three funds; Alpha Finance reported about $5M across five funds. Other provider aggregates use different windows. These are not issuer/AP cash-flow reconciliations and were not averaged or admitted as model features.
+
+### Institutional and identity reconciliation retained
+
+- Circle/Coinbase: Q3 2026 Circle distribution costs were $331.3M for the quarter and $986.6M for nine months. The contract is not a simple 50% share of gross reserve income; these figures are not XRP flows.
+- Ripple/Coinbase: RLUSD launched on Coinbase Prime, Exchange and Retail on October 28, 2026. Global Exchange collateral support was described as forthcoming in that announcement.
+- SBI/Circle: 50/50 Japan JV, disclosed $50M strategic investment in Circle, SBI VC Trade USDC distribution and SBI Group participation in Arc's founding-validator ecosystem. None establishes XRP purchases.
+- SBI/Ripple: SBI materials report an approximately 9% Ripple stake; RLUSD Japan distribution and SBI Ripple Asia XRPL research are separate relationships. SBIC East/Central/West remain distinct regional Japanese SME investment companies, not SBI Holdings.
+- BNY supports XRP and RLUSD custody and is RLUSD's primary reserve custodian; this does not prove net XRP purchases, collateral use or XRP settlement volume.
+- World Bank/Citi/Circle USDC work is exploratory. DBS/Circle direct USDC mint/redeem is a separate institutional access route. Neither establishes an XRP leg.
+- MAS BLOOM lists Ripple, Circle, Coinbase and other institutions; membership is not a bilateral partnership or evidence of XRP use. Project Guardian's SBI participant is SBI Digital Asset Holdings, not SBIC or SBI Ripple Asia.
+- Coinbase lists XRP as eligible collateral for Morpho-backed USDC loans in eligible regions; actual XRP collateral quantity and debt outstanding are not disclosed.
+- Evernorth cash-funded XRP, in-kind XRP, debt, exercised warrant proceeds and optional ELOC capacity remain separate. The approximately $76.8M ELOC amount is capacity, not cash received; the $200M SBI PIPE is not the entire pooled XRP purchase.
+
+Exact-phrase status remains: ASK Coin unresolved; “actual capital” is not a formal SEC accounting term; “SBIC, ChatGPT SBIC” does not establish an OpenAI partnership. Kamilah/Camilla Stevenson person-level identity remains distinct from unverified candidate channel ownership; no channel-wide YouTube inventory is attributed.
+
+### Nine-platform coordination
+
+ChatGPT-to-GitHub authentication and repository data flow were verified in this session. Connector token scopes were not introspected; repository metadata reports admin/maintain/push/pull/triage. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified. No external dispatch, data transfer or red-team quorum occurred.
+
+### Open PR inventory and classification
+
+- #1684 — blocked; sole XRP integration; exact-head full suite has four stale map/test failures; backfill replay passed; draft, no independent approval, branch protection HTTP 403, Pages authorization not granted.
+- #1685 — blocked; A2A credential separation; full suite passed 4,536 with one skip, but OS sandbox, provider-credential isolation, egress restrictions and task-level authorization remain incomplete.
+- #1686 — unique/unreviewed; LunaRoute decommission; current exact-head full suite passed 4,526 with zero skips; still draft and unreviewed.
+- #1687 — unique/unreviewed; read-only model-integrity diagnostics; exact-head full suite passed 4,543 with one skip; still draft and unreviewed.
+- #1688 — unique/unreviewed; capability-cycle controller; exact-head full suite passed 4,544 with one skip. Source review found no proof of wiring to existing MMI/sandbox adapters; NaN/infinity cost inputs can bypass budget comparisons; sandbox, baseline, artifact and authorization claims are not independently cryptographically bound; the hash-linked ledger has no external/WORM anchor and non-POSIX locking is single-writer only. Do not merge or activate.
+- #1685 and #1686 share tests/test_mcp_server.py only in disjoint hunks. No other changed-path overlap was found. No PR was closed.
+
+### Decision and next action
+
+No merge. No deployment, Pages publication, secret rotation, Space restart, external model dispatch, Kaggle submission, Databricks write, paper trade, transfer or real-money action. No directional forecast was issued.
+
+The map/test/handoff correction is being committed to the existing #1684 branch with parent 781e5ff2f6e785d82740962375b23a97fbac4e56; this advances the branch and requires a new exact-head full-suite run. Keep #1684 draft and blocked. Next: verify the correction on the new exact head, then continue event-level raw-source receipts, SEC configuration, issuer-level ETF reconciliation, derivatives/collateral normalization, drift evaluation and leakage-safe walk-forward baselines.

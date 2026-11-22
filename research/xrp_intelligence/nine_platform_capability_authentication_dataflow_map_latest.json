@@ -1,91 +1,62 @@
 {
   "artifact_type": "barrot_nine_platform_capability_authentication_permission_dataflow_map",
   "schema_version": "1.0.0",
-  "captured_at_utc": "2026-11-22T18:20:00Z",
+  "captured_at_utc": "2026-11-22T20:08:29Z",
   "mission": "XRP intelligence and measured prediction-engine mastery are the highest-priority Barrot mission; Barrot V3 remains the execution, orchestration, safety and verification foundation.",
   "repository_state": {
     "repository": "Barrot-Agent/B-Agent",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "integration": {
       "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
-      "code_head_sha": "cebc21a449e51ff5168a5da76adb8fbd056a8381",
+      "code_head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
       "pr_number": 1684,
       "state": "open",
       "draft": true,
+      "merged": false,
+      "classification": "BLOCKED",
       "mergeable": true,
-      "ahead_by": 191,
-      "behind_by": 0,
-      "changed_files": 29,
-      "changed_workflow_files": 71,
-      "formal_reviews": 0,
-      "snapshot_head_sha": "3d61669f7440e1a537fe42919a61748b8862aec4",
-      "commits": 191,
-      "additions": 538210,
-      "deletions": 7104,
       "mergeable_state": "unstable",
+      "base_ref": "main",
+      "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "base_sha_matches_current_main": true,
+      "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "current_pr_head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
+      "ahead_by": 193,
+      "behind_by": 0,
+      "commits": 193,
+      "pr_commit_count": 193,
+      "changed_files": 29,
+      "changed_workflow_files": 3,
+      "additions": 31280,
+      "deletions": 3748,
+      "formal_reviews": 0,
+      "formal_approvals": 0,
+      "requested_reviewers": 0,
       "review_comments": 0,
       "review_threads": 0,
-      "requested_reviewers": 0,
-      "current_pr_head_sha": "2e6b0786cb4320facdf4827cb43d6f070d144e2e",
-      "snapshot_ahead_by": 549,
-      "snapshot_changed_files": 1490,
-      "handoff_update_commit_sha": "9c71af0b4d0c63af574c6395c20ca1c8468e8011",
-      "research_record_commit_sha": "a4186aa70fa0b3685c74a9018c3152d7a4be835d",
-      "branch_sync_commit": "dbc6b327a56dc66493fb06cc32164a2043509280",
-      "latest_research_artifact_commit": "6b9c73ca3589f55afe70abfc2d3c687da16ac863",
-      "latest_exact_head_push_ci_run": 44810934927,
-      "latest_exact_head_full_suite": "PASS on exact snapshot head 3d61669: 4,457 passed, 1 skipped, 0 failed, 11 warnings, 32 subtests; 73.22% coverage.",
-      "latest_exact_head_dependency_audit_run": 44810934918,
-      "latest_exact_head_fail_closed_run": 44810934947,
-      "latest_exact_head_pr_ci_run": 44810946092,
-      "latest_exact_head_pr_money_audit_run": 44810946677,
-      "latest_exact_head_pr_dependency_audit_run": 44810946006,
-      "latest_exact_head_pr_fail_closed_run": 44810946240,
-      "last_audited_at_utc": "2026-11-22T18:20:00Z",
-      "latest_verified_full_suite_head_sha": "7cdc349e72edc1242c6ff50a2e3129092a3d1fb9",
-      "latest_verified_full_suite_run": 44668101674,
-      "current_branch_head_full_suite_status": "PASS on exact head 7cdc349: 4,457 passed, 1 skipped, 0 failed, 11 warnings, 32 subtests; 73.22% coverage.",
-      "latest_exact_head_full_suite_run": 44810934927,
-      "latest_exact_head_full_suite_result": "PASS: exact-head push and PR full-suite jobs passed; map/backlog regression assertions are corrected.",
-      "main_sync_merge_commit": "2d876d5e823ace0025d19d7a2bfd9bc713db05c7",
-      "main_sync_source_sha": "82c23e219553164c24073784c529aad75acacd66",
-      "post_sync_exact_head_full_suite": "PASS on exact head a96dbcd: 4,390 passed, 1 skipped, 0 failed, 11 warnings, 19 subtests; 187.14 seconds; 71.34% inclusive coverage; 81% legacy/core coverage. XRP telemetry 92%, MMI 92%, feature store 80%, forecast ledger 97%, point-in-time features 89%, source registry 95%, Barrot integration 62%, AGI orchestrator 52%.",
-      "title": "Barrot V3 + XRP Intelligence — consolidated mainline successor",
-      "base_ref": "main",
-      "base_sha": "52c01ab4dbd989be2ed3210165562ffb11e52a22",
-      "formal_approvals": 0,
       "unresolved_review_threads": 0,
-      "classification": "MERGED_WITH_GOVERNANCE_EXCEPTION",
-      "updated_at": "2026-11-20T20:29:30Z",
-      "snapshot_commit_boundary": "Run243 repository and exact-head CI state captured at 0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40 before this documentation-only schema correction. The correction triggers a new exact-head CI run; no application code, workflow or dependency changes are included.",
-      "current_head_full_suite_status": "FAIL on exact head 0bc98530a7f614ab6f9b6f4bd27e1e1f972a5b40: 4,439 passed, 1 failed, 1 skipped, 11 warnings, 23 subtests; root cause is open_pr_backlog numeric-key object instead of array.",
-      "latest_exact_head_dependency_pr_run": 44775926966,
-      "latest_exact_head_dependency_push_run": 44775912191,
-      "latest_exact_head_money_audit_run": 44798602698,
-      "latest_exact_head_a2a_worker_tests_run": 44810946216,
-      "latest_exact_head_fail_closed_pr_run": 44775926864,
-      "latest_exact_head_fail_closed_push_run": 44775912148,
-      "snapshot_boundary": "Repository and exact-head CI observed at a71cb725 before this single-commit handoff/platform-map update. The new metadata commit must receive its own exact-head CI; no code/workflow/dependency files change.",
-      "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "latest_exact_head_dependency_audit_push_run": 44798591743,
-      "latest_exact_head_dependency_audit_pr_run": 44798602739,
-      "latest_exact_head_conflict_integrity_run": 44810945859,
-      "latest_exact_head_fail_closed_result": "BLOCKED: draft; PR base SHA differs from current main; no independent approving review; branch-protection HTTP 403.",
-      "pr_commit_count": 556,
-      "base_sha_matches_current_main": false,
-      "post_update_exact_head_ci": "PENDING_AFTER_RUN246_STATUS_REFRESH_COMMIT",
-      "merged": true,
-      "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "merged_at": "2026-11-20T23:45:44Z",
-      "merged_by": "Barrot-Agent"
+      "snapshot_head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
+      "title": "fix(xrp): prevent scheduled ingestion checkpoint forks",
+      "last_audited_at_utc": "2026-11-22T20:08:29Z",
+      "latest_exact_head_full_suite_run": 45056180621,
+      "latest_exact_head_full_suite_result": "FAIL: 4,567 passed, 4 failed, 1 skipped; four failures are stale latest-map assertions.",
+      "latest_exact_head_dependency_audit_run": 45056180615,
+      "latest_exact_head_money_audit_run": 45056180689,
+      "latest_exact_head_conflict_integrity_run": 45056180610,
+      "latest_exact_head_fail_closed_run": 45056180648,
+      "latest_exact_head_backfill_replay_run": 45056180621,
+      "latest_exact_head_fail_closed_result": "BLOCKED_BY_DESIGN: draft, zero independent approvals, branch protection HTTP 403, Pages authorization NOT_GRANTED.",
+      "snapshot_commit_boundary": "Run 5 audit snapshot at 781e5ff before the map/test/handoff correction commit; new exact-head CI required."
     },
     "tree_counts": {
-      "main": 3115,
-      "integration": 3129,
-      "main_entries": 3115,
-      "integration_entries": 3129,
-      "main_paths_missing": 0,
-      "integration_only": 14
+      "main": {
+        "entries": 3115,
+        "tree_sha": "a13a261de075909ac6678ff7b3894188fb07760f"
+      },
+      "integration": {
+        "entries": 3129,
+        "tree_sha": "dc447c1af7fbfa86f3195916b67daca47e9b055a"
+      }
     },
     "main_paths_missing_from_integration": 0,
     "security_snapshot": {
@@ -413,7 +384,7 @@
         ]
       }
     ],
-    "last_audited_at_utc": "2026-11-22T18:20:00Z",
+    "last_audited_at_utc": "2026-11-22T20:08:29Z",
     "open_prs": [
       1684,
       1685,
@@ -452,6 +423,20 @@
       "state": "open",
       "draft": true,
       "classification": "blocked"
+    },
+    "previous_merged_integration": {
+      "pr_number": 1673,
+      "state": "closed",
+      "draft": false,
+      "merged": true,
+      "classification": "MERGED_WITH_GOVERNANCE_EXCEPTION",
+      "merge_commit_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "merged_at": "2026-11-20T23:45:44Z",
+      "merged_by": "Barrot-Agent",
+      "formal_approvals": 0,
+      "branch_protection_details_verified": false,
+      "pages_publication_authorization": "NOT_GRANTED",
+      "note": "Historical merge; distinct from current open PR #1684."
     }
   },
   "platforms": {
@@ -482,12 +467,12 @@
       "task_assignment": {
         "status": "EXECUTED",
         "run_id": 11,
-        "captured_at_utc": "2026-11-22T15:05:32Z",
-        "task": "Verify the corrected Run285 artifact test and exact-head full suite; inspect CI, dependency, Money, conflict and fail-closed gates; verify Run70 replay; reconcile current PR/governance status; update canonical map and handoff on the existing branch.",
+        "captured_at_utc": "2026-11-22T20:08:29Z",
+        "task": "Audit current main and complete integration tree; reconcile five open PRs and overlaps; diagnose exact-head CI; verify backfill; review capability-cycle safety; update canonical handoff and nine-platform map.",
         "expected_output": "Exact-head verification, historical backfill evidence, current PR backlog, governance blockers and forecast readiness."
       },
-      "task_assignment_status": "EXECUTED_IN_AUTOMATION_RUN_4",
-      "last_verified_at_utc": "2026-11-22T14:18:41Z",
+      "task_assignment_status": "EXECUTED_IN_AUTOMATION_RUN_5",
+      "last_verified_at_utc": "2026-11-22T20:08:29Z",
       "least_privilege_status": "NOT_ESTABLISHED_ADMIN_LEVEL",
       "data_flow_detail": "GitHub repository API read/write and public web research; no external provider dispatch or data transfer."
     },
@@ -628,7 +613,7 @@
     "external_dispatch_performed": false,
     "external_data_transfer_performed": false,
     "task_assignments_status": "PROPOSED_NOT_DISPATCHED_FOR_EIGHT_EXTERNAL_PLATFORMS",
-    "chatgpt_task_status": "EXECUTED_IN_AUTOMATION_RUN_4: GitHub repository audit, exact-head CI review, independent raw/feature artifact integrity checks, current market and institutional research, durable handoff and platform-map update.",
+    "chatgpt_task_status": "EXECUTED_IN_AUTOMATION_RUN_5: main/tree and PR audit, exact-head CI diagnosis, historical backfill replay verification, institutional research reconciliation and capability-cycle safety review.",
     "evidence_packet_schema": [
       "claim_id",
       "claim",
@@ -685,7 +670,7 @@
       "disposition": "Do not merge independently. Current integration branch quarantines this worker and has newer token-budget, local-provider and TPM-specific controls in scripts/barrot_agent.py. Reconcile only after security review and data-egress authorization."
     },
     "sbi_claude_context": "SBI's public November 2026 presentation reports Claude Mythos/Claude Security use within SBI Group. This is corporate adoption evidence only; it does not verify a Barrot connection or authorize external dispatch.",
-    "last_verified_at_utc": "2026-11-22T18:20:00Z",
+    "last_verified_at_utc": "2026-11-22T20:08:29Z",
     "run245_status": "ChatGPT/GitHub connector verified; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified.",
     "run246_status": "ChatGPT/GitHub connector verified; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified.",
     "run4_status": {
@@ -2979,18 +2964,20 @@
       "last_code_ci_result": "success"
     },
     "current_head_full_suite": {
-      "head_sha": "5fb6a6e99767a55830d42ae31bd5f1bf574dfa89",
-      "run_id": 45034201395,
+      "head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
+      "run_id": 45056180621,
       "status": "completed",
       "conclusion": "failure",
       "passed": 4567,
-      "tests_failed": 2,
+      "tests_failed": 4,
       "skipped": 1,
       "warnings": 11,
       "subtests": 32,
       "inclusive_coverage_percent": 73.21,
-      "duration_seconds": 128.64,
-      "failure_classification": "Two latest-map contract assertions only: missing head_sha in historical Run24 full-suite snapshot and incorrect expected Run285 source_count."
+      "duration_seconds": 197.13,
+      "collected": 4572,
+      "tracked_active_test_modules": 533,
+      "failure_classification": "STALE_LATEST_MAP_ASSERTIONS_ONLY"
     },
     "previous_verified_full_suite": {
       "run_id": 44322684443,
@@ -3116,17 +3103,18 @@
       "note": "The exact-head push full suite remains the controlling test evidence; no merge until it and all required checks finish."
     },
     "current_pr_head_ci": {
-      "head_sha": "5fb6a6e99767a55830d42ae31bd5f1bf574dfa89",
-      "push_ci_run_id": 45034195609,
-      "push_ci_conclusion": "success",
-      "pr_event_run_id": 45034201395,
+      "head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
+      "push_ci_run_id": null,
+      "push_ci_conclusion": null,
+      "push_ci_status": "NOT_RETRIEVED_BY_PR_FILTERED_WORKFLOW_QUERY",
+      "pr_event_run_id": 45056180621,
       "pr_event_conclusion": "failure",
       "pr_event_full_suite_status": "failure",
-      "backfill_replay_status": "success_against_main_run70",
-      "dependency_audit_run_id": 45034201405,
-      "money_audit_run_id": 45034201430,
-      "conflict_integrity_run_id": 45034201499,
-      "fail_closed_run_id": 45034201375,
+      "backfill_replay_status": "success_against_main_run_45053918500",
+      "dependency_audit_run_id": 45056180615,
+      "money_audit_run_id": 45056180689,
+      "conflict_integrity_run_id": 45056180610,
+      "fail_closed_run_id": 45056180648,
       "fail_closed_conclusion": "failure_by_design"
     },
     "last_verified_code_head_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
@@ -4434,13 +4422,12 @@
     "branch_protection_endpoint": "HTTP 403: detailed protection resource not accessible through current GitHub integration",
     "automatic_pages_publication": true,
     "open_pr_backlog_summary": {
-      "total_open": 4,
+      "total_open": 5,
       "ready": 0,
       "blocked": 2,
       "superseded": 0,
       "duplicate": 0,
-      "unique_unreviewed": 2,
-      "unique_workstreams_blocked": 4
+      "unique_unreviewed": 3
     },
     "open_pr_inventory": [
       {
@@ -4449,37 +4436,50 @@
         "state": "open",
         "draft": true,
         "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
-        "head_sha": "cebc21a449e51ff5168a5da76adb8fbd056a8381",
+        "head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
         "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-        "ahead_by": 191,
+        "ahead_by": 193,
         "behind_by": 0,
+        "commits": 193,
         "changed_files": 29,
+        "changed_workflow_files": 3,
         "formal_reviews": 0,
         "classification": "blocked",
         "full_suite": {
-          "run_id": 45048742047,
-          "conclusion": "success",
-          "passed": 4571,
-          "failed": 0,
+          "run_id": 45056180621,
+          "passed": 4567,
+          "failed": 4,
           "skipped": 1,
-          "coverage_percent": 73.21,
           "warnings": 11,
           "subtests": 32,
-          "duration_seconds": 205.11
+          "coverage_percent": 73.21,
+          "duration_seconds": 197.13,
+          "conclusion": "failure"
         },
-        "dependency_audit_run": 45048742081,
-        "money_audit_run": 45048742070,
-        "conflict_integrity_run": 45048742040,
-        "fail_closed_run": 45048742059,
-        "backfill_replay": "PASS on prior checkpoint; rerun required against latest main ingestion run 45053918500",
+        "dependency_audit_run": 45056180615,
+        "money_audit_run": 45056180689,
+        "conflict_integrity_run": 45056180610,
+        "fail_closed_run": 45056180648,
+        "backfill_replay": {
+          "status": "success",
+          "source_main_run_id": 45053918500,
+          "recovered_records": 118,
+          "source_lineages": 11,
+          "records_before": 20158,
+          "records_after": 20276,
+          "snapshots_before": 44,
+          "snapshots_after": 45,
+          "intermediate_receipt_indexes_verified": 43,
+          "sqlite_integrity": "ok",
+          "reconciliation_sha256": "def0f9d20c76a9f27c3ebaab5e99cf8035074ba571457f117499eab737d06dab"
+        },
         "blockers": [
           "draft",
-          "zero independent reviews",
-          "main branch protection details return HTTP 403",
-          "visible fallback ruleset is disabled",
-          "automatic Pages publication authorization not granted"
-        ],
-        "overlap": "No changed-path overlap with #1685, #1686 or #1687"
+          "zero independent approvals",
+          "branch protection HTTP 403",
+          "Pages publication authorization NOT_GRANTED",
+          "four stale latest-map assertions"
+        ]
       },
       {
         "number": 1685,
@@ -4490,83 +4490,90 @@
         "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
         "ahead_by": 5,
         "behind_by": 0,
+        "commits": 5,
         "changed_files": 9,
         "formal_reviews": 0,
         "classification": "blocked",
         "full_suite": {
           "run_id": 44848528169,
-          "conclusion": "success",
           "passed": 4536,
           "failed": 0,
           "skipped": 1,
-          "coverage_percent": 73.22
+          "coverage_percent": 73.22,
+          "conclusion": "success"
         },
-        "dependency_audit_run": 44848528067,
-        "money_audit_run": 44848528115,
-        "a2a_worker_tests_run": 44848528089,
-        "conflict_integrity_run": 44955747852,
-        "fail_closed_run": 44955747971,
         "blockers": [
           "no independent approval",
-          "OS sandboxing, credential isolation, egress restrictions and task-level authorization incomplete"
+          "OS sandboxing, credential isolation, egress controls and task-level authorization incomplete"
         ]
       },
       {
         "number": 1686,
-        "title": "LunaRoute maintenance",
+        "title": "LunaRoute decommission",
         "state": "open",
         "draft": true,
-        "head_sha": "3fe21ce9bdbf8cf6deb6fa0eb5088a2ab1a09c24",
+        "head_sha": "951707e870a5fb060f0d47f7b2f0a4a9cbae5ca9",
         "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-        "ahead_by": 40,
+        "ahead_by": 41,
         "behind_by": 0,
-        "changed_files": 28,
+        "commits": 41,
+        "changed_files": 31,
         "formal_reviews": 0,
         "classification": "unique/unreviewed",
         "full_suite": {
-          "run_id": 45053206857,
-          "conclusion": "success",
-          "passed": 4524,
+          "run_id": 45059137193,
+          "passed": 4526,
           "failed": 0,
           "skipped": 0,
-          "coverage_percent": 73.33,
-          "warnings": 11,
-          "subtests": 21,
-          "duration_seconds": 124.51
-        },
-        "dependency_audit_run": 45053207003,
-        "money_audit_run": 45053206840,
-        "conflict_integrity_run": 45053206838,
-        "fail_closed_run": 45053206866,
-        "blockers": [
-          "draft",
-          "no independent review",
-          "branch protection details not verifiable"
-        ]
+          "conclusion": "success"
+        }
       },
       {
         "number": 1687,
-        "title": "Model-integrity diagnostics",
+        "title": "Read-only model-integrity diagnostics",
         "state": "open",
         "draft": true,
         "head_sha": "674f28c67478fd60f23d2dbcd69e39f41c6cf6c2",
         "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-        "ahead_by": 7,
+        "ahead_by": 8,
         "behind_by": 0,
-        "changed_files": 4,
+        "commits": 8,
+        "changed_files": 6,
         "formal_reviews": 0,
         "classification": "unique/unreviewed",
         "full_suite": {
           "run_id": 45037680974,
-          "conclusion": "success",
           "passed": 4543,
           "failed": 0,
           "skipped": 1,
-          "coverage_percent": 73.22
+          "conclusion": "success"
+        }
+      },
+      {
+        "number": 1688,
+        "title": "Evidence-gated autonomous capability cycle",
+        "state": "open",
+        "draft": false,
+        "head_sha": "1cb9b3849bc8166708558c42c5516f5bf58ea295",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "ahead_by": 7,
+        "behind_by": 0,
+        "commits": 7,
+        "changed_files": 3,
+        "formal_reviews": 0,
+        "classification": "unique/unreviewed",
+        "full_suite": {
+          "run_id": 45057126838,
+          "passed": 4544,
+          "failed": 0,
+          "skipped": 1,
+          "conclusion": "success"
         },
         "blockers": [
-          "draft",
-          "no independent review"
+          "existing MMI/sandbox adapters not proven wired",
+          "NaN/infinity cost bypasses budget comparisons",
+          "sandbox/baseline/artifact/approval claims lack independent cryptographic binding",
+          "no external/WORM ledger anchor"
         ]
       }
     ],
@@ -4706,43 +4713,88 @@
     "active_xrp_integration": {
       "pr_number": 1684,
       "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
-      "head_sha": "d68605f5790b9ed4969bcd95e01a6acaea364b7a",
+      "head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
       "draft": true,
       "classification": "blocked",
-      "commits_ahead": 181,
-      "commits_behind": 0,
-      "changed_files": 28
-    }
+      "ahead_by": 193,
+      "behind_by": 0,
+      "changed_files": 29
+    },
+    "open_pr_backlog": [
+      {
+        "number": 1684,
+        "classification": "blocked",
+        "reason": "Four stale latest-map test assertions fail on exact head 781e5ff; backfill replay passed. Draft, no independent approvals, branch protection HTTP 403 and Pages authorization not granted.",
+        "head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
+        "draft": true
+      },
+      {
+        "number": 1685,
+        "classification": "blocked",
+        "reason": "A2A credential separation; full suite passed, but OS sandbox, provider credential isolation, egress restrictions and task authorization remain incomplete.",
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "draft": false
+      },
+      {
+        "number": 1686,
+        "classification": "unique/unreviewed",
+        "reason": "LunaRoute decommission; exact-head full suite passed 4,526 with zero skips; draft and unreviewed.",
+        "head_sha": "951707e870a5fb060f0d47f7b2f0a4a9cbae5ca9",
+        "draft": true
+      },
+      {
+        "number": 1687,
+        "classification": "unique/unreviewed",
+        "reason": "Read-only model-integrity diagnostics; exact-head full suite passed 4,543 with one skip; draft and unreviewed.",
+        "head_sha": "674f28c67478fd60f23d2dbcd69e39f41c6cf6c2",
+        "draft": true
+      },
+      {
+        "number": 1688,
+        "classification": "unique/unreviewed",
+        "reason": "Capability-cycle controller; full suite passed 4,544 with one skip, but adapter wiring, finite-budget checks and cryptographic sandbox/artifact/approval attestations are incomplete.",
+        "head_sha": "1cb9b3849bc8166708558c42c5516f5bf58ea295",
+        "draft": false
+      }
+    ],
+    "last_audited_at_utc": "2026-11-22T20:08:29Z"
   },
   "open_pr_backlog": [
     {
       "number": 1684,
       "classification": "blocked",
-      "reason": "Exact-head suite on 5fb6a6e has two remaining latest-map contract failures: missing head_sha in the preserved d686 Run24 snapshot, and a Run285 test expecting 10 sources while the evidence artifact has 11. The isolated backfill replay against current main Run70 succeeded. PR remains draft, has zero independent approvals, branch protection cannot be fully verified, and Pages publication authorization is NOT_GRANTED.",
-      "head_sha": "68bfd782abb04a18ab195741a53f5f77bdb0eaff",
-      "ahead_by": 184,
-      "behind_by": 0,
-      "changed_files": 29,
+      "reason": "Four stale latest-map test assertions fail on exact head 781e5ff; backfill replay passed. Draft, no independent approvals, branch protection HTTP 403 and Pages authorization not granted.",
+      "head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
       "draft": true
     },
     {
       "number": 1685,
       "classification": "blocked",
-      "reason": "A2A gateway/runner credential separation",
-      "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0"
+      "reason": "A2A credential separation; full suite passed, but OS sandbox, provider credential isolation, egress restrictions and task authorization remain incomplete.",
+      "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+      "draft": false
     },
     {
       "number": 1686,
       "classification": "unique/unreviewed",
-      "reason": "Remove LunaRoute from Barrot runtime configuration",
-      "head_sha": "ded25462ffd929afb3cd6e7fe0caf15a1691706d"
+      "reason": "LunaRoute decommission; exact-head full suite passed 4,526 with zero skips; draft and unreviewed.",
+      "head_sha": "951707e870a5fb060f0d47f7b2f0a4a9cbae5ca9",
+      "draft": true
     },
     {
       "number": 1687,
       "classification": "unique/unreviewed",
-      "reason": "Read-only model integrity diagnostics",
-      "head_sha": "e4994991ed831a5dc786ab109a90e13adbde4885"
+      "reason": "Read-only model-integrity diagnostics; exact-head full suite passed 4,543 with one skip; draft and unreviewed.",
+      "head_sha": "674f28c67478fd60f23d2dbcd69e39f41c6cf6c2",
+      "draft": true
+    },
+    {
+      "number": 1688,
+      "classification": "unique/unreviewed",
+      "reason": "Capability-cycle controller; full suite passed 4,544 with one skip, but adapter wiring, finite-budget checks and cryptographic sandbox/artifact/approval attestations are incomplete.",
+      "head_sha": "1cb9b3849bc8166708558c42c5516f5bf58ea295",
+      "draft": false
     }
   ],
   "merge_decision": "POST_MERGE_VERIFIED_WITH_GOVERNANCE_EXCEPTION",
@@ -5463,18 +5515,17 @@
   },
   "research_phrase_status": {
     "ASK Coin": "UNRESOLVED_UNQUALIFIED: Permission Coin (ticker ASK) is the strongest candidate, but the intended ASK Coin identity is not established and no XRP/XRPL/Ripple relationship is verified.",
-    "actual capital": "Literal phrase not found as a formal SEC accounting term. Actual cash and in-kind amounts are reconciled in run4_actual_capital_reconciliation; $76.8M ELOC potential is capacity, not actual proceeds.",
+    "actual capital": "The literal phrase is not established as a formal accounting term in the reviewed SEC filings. Actual cash, in-kind XRP, debt, warrant proceeds and optional ELOC capacity are reconciled separately; these categories are not evidence of XRP purchases unless the filing explicitly records the purchase.",
     "SBIC, ChatGPT SBIC": "Tokyo SBIC East, Nagoya SBIC Central and Osaka SBIC West are separate regional entities under the 1963 law, not SBI Holdings. Tokyo SBIC's 2025 ChatGPT/AI seminar was VOST-delivered with a Microsoft Japan speaker; no OpenAI partnership or XRP relationship established.",
     "Camilla/Kamilah Stevenson": "Person-level guest identity verified. Video-level bylines/self-introductions are provisional; conflicting candidate channel IDs remain unresolved. No channel-wide attribution or inventory."
   },
   "open_pr_backlog_summary": {
-    "total_open": 4,
+    "total_open": 5,
     "ready": 0,
     "blocked": 2,
     "superseded": 0,
     "duplicate": 0,
-    "unique_unreviewed": 2,
-    "unique_workstreams_blocked": 4
+    "unique_unreviewed": 3
   },
   "snapshot_id": "xrp-intelligence-map-run263-20261121T135301Z",
   "run25_evidence_record": "research/xrp_intelligence/20261118T202745Z-run25-market-ingestion-ci-security-reconciliation.json",
@@ -7494,7 +7545,7 @@
     },
     "merge_decision": "NO_MERGE"
   },
-  "last_verified_at_utc": "2026-11-22T18:20:00Z",
+  "last_verified_at_utc": "2026-11-22T20:08:29Z",
   "latest_run_id": 286,
   "latest_run_captured_at_utc": "2026-11-22T14:18:41Z",
   "current_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -7903,37 +7954,50 @@
       "state": "open",
       "draft": true,
       "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
-      "head_sha": "cebc21a449e51ff5168a5da76adb8fbd056a8381",
+      "head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "ahead_by": 191,
+      "ahead_by": 193,
       "behind_by": 0,
+      "commits": 193,
       "changed_files": 29,
+      "changed_workflow_files": 3,
       "formal_reviews": 0,
       "classification": "blocked",
       "full_suite": {
-        "run_id": 45048742047,
-        "conclusion": "success",
-        "passed": 4571,
-        "failed": 0,
+        "run_id": 45056180621,
+        "passed": 4567,
+        "failed": 4,
         "skipped": 1,
-        "coverage_percent": 73.21,
         "warnings": 11,
         "subtests": 32,
-        "duration_seconds": 205.11
+        "coverage_percent": 73.21,
+        "duration_seconds": 197.13,
+        "conclusion": "failure"
       },
-      "dependency_audit_run": 45048742081,
-      "money_audit_run": 45048742070,
-      "conflict_integrity_run": 45048742040,
-      "fail_closed_run": 45048742059,
-      "backfill_replay": "PASS on prior checkpoint; rerun required against latest main ingestion run 45053918500",
+      "dependency_audit_run": 45056180615,
+      "money_audit_run": 45056180689,
+      "conflict_integrity_run": 45056180610,
+      "fail_closed_run": 45056180648,
+      "backfill_replay": {
+        "status": "success",
+        "source_main_run_id": 45053918500,
+        "recovered_records": 118,
+        "source_lineages": 11,
+        "records_before": 20158,
+        "records_after": 20276,
+        "snapshots_before": 44,
+        "snapshots_after": 45,
+        "intermediate_receipt_indexes_verified": 43,
+        "sqlite_integrity": "ok",
+        "reconciliation_sha256": "def0f9d20c76a9f27c3ebaab5e99cf8035074ba571457f117499eab737d06dab"
+      },
       "blockers": [
         "draft",
-        "zero independent reviews",
-        "main branch protection details return HTTP 403",
-        "visible fallback ruleset is disabled",
-        "automatic Pages publication authorization not granted"
-      ],
-      "overlap": "No changed-path overlap with #1685, #1686 or #1687"
+        "zero independent approvals",
+        "branch protection HTTP 403",
+        "Pages publication authorization NOT_GRANTED",
+        "four stale latest-map assertions"
+      ]
     },
     {
       "number": 1685,
@@ -7944,83 +8008,90 @@
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
       "ahead_by": 5,
       "behind_by": 0,
+      "commits": 5,
       "changed_files": 9,
       "formal_reviews": 0,
       "classification": "blocked",
       "full_suite": {
         "run_id": 44848528169,
-        "conclusion": "success",
         "passed": 4536,
         "failed": 0,
         "skipped": 1,
-        "coverage_percent": 73.22
+        "coverage_percent": 73.22,
+        "conclusion": "success"
       },
-      "dependency_audit_run": 44848528067,
-      "money_audit_run": 44848528115,
-      "a2a_worker_tests_run": 44848528089,
-      "conflict_integrity_run": 44955747852,
-      "fail_closed_run": 44955747971,
       "blockers": [
         "no independent approval",
-        "OS sandboxing, credential isolation, egress restrictions and task-level authorization incomplete"
+        "OS sandboxing, credential isolation, egress controls and task-level authorization incomplete"
       ]
     },
     {
       "number": 1686,
-      "title": "LunaRoute maintenance",
+      "title": "LunaRoute decommission",
       "state": "open",
       "draft": true,
-      "head_sha": "3fe21ce9bdbf8cf6deb6fa0eb5088a2ab1a09c24",
+      "head_sha": "951707e870a5fb060f0d47f7b2f0a4a9cbae5ca9",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "ahead_by": 40,
+      "ahead_by": 41,
       "behind_by": 0,
-      "changed_files": 28,
+      "commits": 41,
+      "changed_files": 31,
       "formal_reviews": 0,
       "classification": "unique/unreviewed",
       "full_suite": {
-        "run_id": 45053206857,
-        "conclusion": "success",
-        "passed": 4524,
+        "run_id": 45059137193,
+        "passed": 4526,
         "failed": 0,
         "skipped": 0,
-        "coverage_percent": 73.33,
-        "warnings": 11,
-        "subtests": 21,
-        "duration_seconds": 124.51
-      },
-      "dependency_audit_run": 45053207003,
-      "money_audit_run": 45053206840,
-      "conflict_integrity_run": 45053206838,
-      "fail_closed_run": 45053206866,
-      "blockers": [
-        "draft",
-        "no independent review",
-        "branch protection details not verifiable"
-      ]
+        "conclusion": "success"
+      }
     },
     {
       "number": 1687,
-      "title": "Model-integrity diagnostics",
+      "title": "Read-only model-integrity diagnostics",
       "state": "open",
       "draft": true,
       "head_sha": "674f28c67478fd60f23d2dbcd69e39f41c6cf6c2",
       "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-      "ahead_by": 7,
+      "ahead_by": 8,
       "behind_by": 0,
-      "changed_files": 4,
+      "commits": 8,
+      "changed_files": 6,
       "formal_reviews": 0,
       "classification": "unique/unreviewed",
       "full_suite": {
         "run_id": 45037680974,
-        "conclusion": "success",
         "passed": 4543,
         "failed": 0,
         "skipped": 1,
-        "coverage_percent": 73.22
+        "conclusion": "success"
+      }
+    },
+    {
+      "number": 1688,
+      "title": "Evidence-gated autonomous capability cycle",
+      "state": "open",
+      "draft": false,
+      "head_sha": "1cb9b3849bc8166708558c42c5516f5bf58ea295",
+      "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "ahead_by": 7,
+      "behind_by": 0,
+      "commits": 7,
+      "changed_files": 3,
+      "formal_reviews": 0,
+      "classification": "unique/unreviewed",
+      "full_suite": {
+        "run_id": 45057126838,
+        "passed": 4544,
+        "failed": 0,
+        "skipped": 1,
+        "conclusion": "success"
       },
       "blockers": [
-        "draft",
-        "no independent review"
+        "existing MMI/sandbox adapters not proven wired",
+        "NaN/infinity cost bypasses budget comparisons",
+        "sandbox/baseline/artifact/approval claims lack independent cryptographic binding",
+        "no external/WORM ledger anchor"
       ]
     }
   ],
@@ -9283,7 +9354,8 @@
     1684,
     1685,
     1686,
-    1687
+    1687,
+    1688
   ],
   "latest_run_243": {
     "captured_at_utc": "2026-11-20T18:03:23Z",
@@ -12093,7 +12165,7 @@
       "raw_http_bytes_captured": false
     }
   },
-  "current_pr_head_sha": "cebc21a449e51ff5168a5da76adb8fbd056a8381",
+  "current_pr_head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
   "run250_no_external_actions": true,
   "run250_merge_decision": "NO_MERGE",
   "prediction_readiness": {
@@ -12507,7 +12579,7 @@
   },
   "latest_mission_run_id": "Run21",
   "latest_mission_run_captured_at_utc": "2026-11-22T11:23:37Z",
-  "open_pr_count": 4,
+  "open_pr_count": 5,
   "run258_evidence_record": {
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
     "ingestion_run_id": 44869770831,
@@ -15953,16 +16025,16 @@
     "model_eligible_for_historical_asof_before_2026_11_21T003241Z": false
   },
   "latest_verified_full_suite_head_sha": "cebc21a449e51ff5168a5da76adb8fbd056a8381",
-  "latest_exact_head_full_suite_run": 45048742047,
-  "latest_exact_head_full_suite_result": "FAIL on metadata head 4491e56: 4,561 passed, 2 failed, 1 skipped; 11 warnings; 32 subtests; 73.20% coverage; 197.38 seconds. Both failures expected the preserved historical merge_decision sentinel; correction restores that field and adds current_merge_decision.",
-  "latest_exact_head_full_suite_passed": 4571,
-  "latest_exact_head_full_suite_failed": 0,
+  "latest_exact_head_full_suite_run": 45056180621,
+  "latest_exact_head_full_suite_result": "4,567 passed, 4 failed, 1 skipped; 11 warnings; 32 subtests; 73.21% coverage; 197.13 seconds. Four failures are stale map/test assertions only.",
+  "latest_exact_head_full_suite_passed": 4567,
+  "latest_exact_head_full_suite_failed": 4,
   "latest_exact_head_full_suite_skipped": 1,
   "latest_exact_head_subtests": 32,
   "latest_exact_head_full_suite_coverage_percent": 73.21,
-  "latest_exact_head_full_suite_duration_seconds": 205.11,
-  "latest_exact_head_ci_run": 45048742047,
-  "latest_exact_head_ci_conclusion": "success",
+  "latest_exact_head_full_suite_duration_seconds": 197.13,
+  "latest_exact_head_ci_run": 45056180621,
+  "latest_exact_head_ci_conclusion": "failure",
   "integration_ahead_by": 182,
   "integration_behind_by": 0,
   "changed_files": 29,
@@ -17683,19 +17755,18 @@
     "pr_number": 1684,
     "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
     "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
-    "head_sha": "8bddda1d7f310a2325a15bdea984d0297a85ebce",
-    "ahead_by": 179,
+    "head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
+    "ahead_by": 193,
     "behind_by": 0,
     "draft": true,
-    "changed_files": 28,
-    "commits": 179,
+    "changed_files": 29,
+    "commits": 193,
     "formal_reviews": 0,
-    "requested_reviewers": 0,
     "mergeable": true,
     "mergeable_state": "unstable",
     "classification": "BLOCKED"
   },
-  "last_audited_at_utc": "2026-11-22T18:20:00Z",
+  "last_audited_at_utc": "2026-11-22T20:08:29Z",
   "run271_evidence_record": {
     "captured_at_utc": "2026-11-21T20:06:14Z",
     "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
@@ -18999,7 +19070,7 @@
     "exact_head_full_suite_before_run272_commit": "PASS 4,559 passed, 1 skipped, 0 failed",
     "merge_decision": "BLOCKED"
   },
-  "current_head_full_suite_status": "PENDING_AFTER_AUTOMATION_RUN_4_DOCUMENTATION_COMMIT",
+  "current_head_full_suite_status": "FAIL_ON_781E5FF_STALE_LATEST_MAP_ASSERTIONS_ONLY",
   "current_head_pending_after_run272": false,
   "current_head_backfill_replay": {
     "run_id": 44947638474,
@@ -19030,15 +19101,15 @@
   "latest_scheduled_ingestion_attempt": 45053918500,
   "latest_exact_head_push_ci_run": 44948742558,
   "latest_exact_head_pr_ci_run": 44972927710,
-  "latest_exact_head_full_suite_head_sha": "cebc21a449e51ff5168a5da76adb8fbd056a8381",
-  "latest_exact_head_dependency_audit_run": 45048742081,
+  "latest_exact_head_full_suite_head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
+  "latest_exact_head_dependency_audit_run": 45056180615,
   "latest_exact_head_pr_dependency_audit_run": 44972927740,
   "latest_exact_head_dependency_audit_push_run": 44948742619,
-  "latest_exact_head_money_audit_run": 45048742070,
-  "latest_exact_head_conflict_integrity_run": 45048742040,
-  "latest_exact_head_fail_closed_run": 45048742059,
-  "latest_exact_head_backfill_replay_run": 45048742047,
-  "latest_exact_head_fail_closed_result": "BLOCKED: PR is draft; zero formal reviews; detailed branch protection returns HTTP 403; visible fallback ruleset disabled; Pages publication authorization not granted.",
+  "latest_exact_head_money_audit_run": 45056180689,
+  "latest_exact_head_conflict_integrity_run": 45056180610,
+  "latest_exact_head_fail_closed_run": 45056180648,
+  "latest_exact_head_backfill_replay_run": 45056180621,
+  "latest_exact_head_fail_closed_result": "BLOCKED_BY_DESIGN: draft, no independent approval, branch protection HTTP 403, fallback ruleset disabled and Pages publication authorization NOT_GRANTED.",
   "latest_exact_head_full_suite": "PASS on parent code head cebc21a: 4,571 passed, 1 skipped, 0 failed; 73.21% coverage; not evidence for the subsequent documentation commit.",
   "run273_evidence_record": {
     "captured_at_utc": "2026-11-21T21:11:18Z",
@@ -20416,7 +20487,7 @@
     "note": "The Run70 backfill replay passed against the current main artifact in an isolated CI copy, but this does not resolve merge governance or the two latest-map test failures."
   },
   "latest_automation_run_number": 11,
-  "latest_current_state_ref": "run25_1_current_state",
+  "latest_current_state_ref": "automation_run_5_current_state",
   "run11_current_state": {
     "automation_run_number": 11,
     "captured_at_utc": "2026-11-22T02:50:00Z",
@@ -25147,7 +25218,7 @@
     "Complete transitive workflow/script security review.",
     "Keep forecasts disabled until event receipts, drift evaluation and out-of-sample superiority are demonstrated."
   ],
-  "current_pr_head_sha_status": "CODE_HEAD_AT_AUDIT_START; Run 4 documentation commit advances PR head and requires fresh exact-head CI",
+  "current_pr_head_sha_status": "AUDIT_START_HEAD; four stale map/test assertions failed; backfill replay passed; documentation correction commit will require fresh exact-head CI.",
   "latest_exact_head_backfill_replay": "PASS on an earlier checkpoint (118 records across 11 lineages); must rerun against latest main checkpoint from run 45053918500.",
   "automation_run_4_current_state": {
     "captured_at_utc": "2026-11-22T18:20:00Z",
@@ -25397,5 +25468,277 @@
   "automation_run_4_no_source_pr_closures": true,
   "automation_run_4_merge_decision": "NO_MERGE",
   "automation_run_4_handoff_parent_sha": "cebc21a449e51ff5168a5da76adb8fbd056a8381",
-  "automation_run_4_exact_head_ci_status": "PENDING_AFTER_DOCUMENTATION_COMMIT"
+  "automation_run_4_exact_head_ci_status": "PENDING_AFTER_DOCUMENTATION_COMMIT",
+  "latest_exact_head_full_suite_status": "FAILURE",
+  "latest_verified_full_suite_run": 45048742047,
+  "automation_run_5_current_state": {
+    "captured_at_utc": "2026-11-22T20:08:29Z",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "integration_head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
+    "pr_number": 1684,
+    "pr_draft": true,
+    "commits_ahead": 193,
+    "commits_behind": 0,
+    "changed_files": 29,
+    "main_tree_entries": 3115,
+    "integration_tree_entries": 3129,
+    "main_paths_missing_from_integration": 0,
+    "exact_head_ci": {
+      "run_id": 45056180621,
+      "head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
+      "conclusion": "failure",
+      "passed": 4567,
+      "failed": 4,
+      "skipped": 1,
+      "coverage_percent": 73.21,
+      "tracked_active_test_modules": 533,
+      "failing_tests": [
+        "test_latest_map_matches_repository_and_forecast_admission_state",
+        "test_latest_map_preserves_evidence_qualified_capital_and_sbic_identity",
+        "test_latest_map_preserves_unresolved_phrase_and_creator_identity_controls",
+        "test_latest_current_state_ref_points_to_run25_1_and_binds_exact_head"
+      ],
+      "dependency_audit": {
+        "run_id": 45056180615,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 45056180689,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 45056180610,
+        "conclusion": "success"
+      },
+      "fail_closed": {
+        "run_id": 45056180648,
+        "conclusion": "failure_by_design"
+      }
+    },
+    "backfill_replay": {
+      "run_id": 45056180621,
+      "job_id": 137311804649,
+      "conclusion": "success",
+      "source_main_run_id": 45053918500,
+      "intermediate_receipt_indexes_verified": 43,
+      "source_lineages": 11,
+      "recovered_records": 118,
+      "records_before": 20158,
+      "records_after": 20276,
+      "snapshots_before": 44,
+      "snapshots_after": 45,
+      "sqlite_integrity": "ok",
+      "reconciliation_sha256": "def0f9d20c76a9f27c3ebaab5e99cf8035074ba571457f117499eab737d06dab",
+      "visible_before_receipt": false,
+      "visible_after_receipt": true,
+      "receipt_clock_source": "github_api_run_date_header",
+      "physical_commit_time_verified": false,
+      "independent_trusted_timestamp_anchor": false,
+      "main_modified": false
+    },
+    "latest_main_ingestion": {
+      "run_id": 45053918500,
+      "run_number": 71,
+      "captured_at_utc": "2026-11-22T18:14:50.258Z",
+      "data_cutoff_utc": "2026-11-22T18:14:48.208Z",
+      "records": 20158,
+      "snapshots": 44,
+      "receipts": 34,
+      "raw_retained": 22,
+      "digest_only": 12,
+      "event_count": 150,
+      "scenarios": 117,
+      "event_raw_hashes": 0,
+      "drift_features": 204,
+      "drift_evaluated": 0,
+      "forecasts": 0,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "open_pr_inventory": [
+      {
+        "number": 1684,
+        "title": "XRP intelligence integration",
+        "state": "open",
+        "draft": true,
+        "branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+        "head_sha": "781e5ff2f6e785d82740962375b23a97fbac4e56",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "ahead_by": 193,
+        "behind_by": 0,
+        "commits": 193,
+        "changed_files": 29,
+        "changed_workflow_files": 3,
+        "formal_reviews": 0,
+        "classification": "blocked",
+        "full_suite": {
+          "run_id": 45056180621,
+          "passed": 4567,
+          "failed": 4,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests": 32,
+          "coverage_percent": 73.21,
+          "duration_seconds": 197.13,
+          "conclusion": "failure"
+        },
+        "dependency_audit_run": 45056180615,
+        "money_audit_run": 45056180689,
+        "conflict_integrity_run": 45056180610,
+        "fail_closed_run": 45056180648,
+        "backfill_replay": {
+          "status": "success",
+          "source_main_run_id": 45053918500,
+          "recovered_records": 118,
+          "source_lineages": 11,
+          "records_before": 20158,
+          "records_after": 20276,
+          "snapshots_before": 44,
+          "snapshots_after": 45,
+          "intermediate_receipt_indexes_verified": 43,
+          "sqlite_integrity": "ok",
+          "reconciliation_sha256": "def0f9d20c76a9f27c3ebaab5e99cf8035074ba571457f117499eab737d06dab"
+        },
+        "blockers": [
+          "draft",
+          "zero independent approvals",
+          "branch protection HTTP 403",
+          "Pages publication authorization NOT_GRANTED",
+          "four stale latest-map assertions"
+        ]
+      },
+      {
+        "number": 1685,
+        "title": "A2A credential separation",
+        "state": "open",
+        "draft": false,
+        "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "ahead_by": 5,
+        "behind_by": 0,
+        "commits": 5,
+        "changed_files": 9,
+        "formal_reviews": 0,
+        "classification": "blocked",
+        "full_suite": {
+          "run_id": 44848528169,
+          "passed": 4536,
+          "failed": 0,
+          "skipped": 1,
+          "coverage_percent": 73.22,
+          "conclusion": "success"
+        },
+        "blockers": [
+          "no independent approval",
+          "OS sandboxing, credential isolation, egress controls and task-level authorization incomplete"
+        ]
+      },
+      {
+        "number": 1686,
+        "title": "LunaRoute decommission",
+        "state": "open",
+        "draft": true,
+        "head_sha": "951707e870a5fb060f0d47f7b2f0a4a9cbae5ca9",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "ahead_by": 41,
+        "behind_by": 0,
+        "commits": 41,
+        "changed_files": 31,
+        "formal_reviews": 0,
+        "classification": "unique/unreviewed",
+        "full_suite": {
+          "run_id": 45059137193,
+          "passed": 4526,
+          "failed": 0,
+          "skipped": 0,
+          "conclusion": "success"
+        }
+      },
+      {
+        "number": 1687,
+        "title": "Read-only model-integrity diagnostics",
+        "state": "open",
+        "draft": true,
+        "head_sha": "674f28c67478fd60f23d2dbcd69e39f41c6cf6c2",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "ahead_by": 8,
+        "behind_by": 0,
+        "commits": 8,
+        "changed_files": 6,
+        "formal_reviews": 0,
+        "classification": "unique/unreviewed",
+        "full_suite": {
+          "run_id": 45037680974,
+          "passed": 4543,
+          "failed": 0,
+          "skipped": 1,
+          "conclusion": "success"
+        }
+      },
+      {
+        "number": 1688,
+        "title": "Evidence-gated autonomous capability cycle",
+        "state": "open",
+        "draft": false,
+        "head_sha": "1cb9b3849bc8166708558c42c5516f5bf58ea295",
+        "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+        "ahead_by": 7,
+        "behind_by": 0,
+        "commits": 7,
+        "changed_files": 3,
+        "formal_reviews": 0,
+        "classification": "unique/unreviewed",
+        "full_suite": {
+          "run_id": 45057126838,
+          "passed": 4544,
+          "failed": 0,
+          "skipped": 1,
+          "conclusion": "success"
+        },
+        "blockers": [
+          "existing MMI/sandbox adapters not proven wired",
+          "NaN/infinity cost bypasses budget comparisons",
+          "sandbox/baseline/artifact/approval claims lack independent cryptographic binding",
+          "no external/WORM ledger anchor"
+        ]
+      }
+    ],
+    "open_pr_backlog_summary": {
+      "total_open": 5,
+      "ready": 0,
+      "blocked": 2,
+      "superseded": 0,
+      "duplicate": 0,
+      "unique_unreviewed": 3
+    },
+    "institutional_research": {
+      "source_count": 11,
+      "model_eligible": false,
+      "summary": "Circle/Coinbase distribution economics; Ripple/Coinbase RLUSD; SBI/Circle USDC and Arc; SBI/Ripple RLUSD and XRPL research; BNY custody; World Bank/Citi/Circle USDC exploration; DBS/Circle USDC access; MAS BLOOM/Guardian distinctions; Coinbase/Morpho XRP collateral eligibility; Evernorth cash/in-kind/debt/warrants/ELOC separation."
+    },
+    "capability_cycle_review": {
+      "pr_number": 1688,
+      "head_sha": "1cb9b3849bc8166708558c42c5516f5bf58ea295",
+      "full_suite_passed": 4544,
+      "full_suite_skipped": 1,
+      "adapter_wiring_verified": false,
+      "nonfinite_budget_validation_missing": true,
+      "cryptographic_attestations_missing": true,
+      "external_worm_anchor": false,
+      "classification": "unique/unreviewed"
+    },
+    "prediction_readiness": {
+      "event_receipts_complete": false,
+      "drift_evaluated": 0,
+      "walk_forward_forecasts": 0,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "merge_decision": "DO_NOT_MERGE_PR_1684",
+    "no_merge_performed": true,
+    "no_external_actions_performed": true,
+    "no_forecast_issued": true
+  },
+  "automation_run_5_no_external_actions": true,
+  "automation_run_5_no_forecast_issued": true,
+  "automation_run_5_merge_decision": "DO_NOT_MERGE"
 }
