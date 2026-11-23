@@ -2376,3 +2376,39 @@ There is one active integration PR for each of the three mission workstreams. No
 4. Address XRP feature-store recovery risk with a tested rebuild-from-raw-artifacts path or equivalent durable archive strategy; do not assume the exhausted Actions cache is a durable store.
 5. Revalidate Barrot-only account hypotheses from official evidence. Keep Sellbird sending paused until the audience, offer, message, mailbox and compliance controls are explicitly approved.
 
+
+
+---
+
+## Post-verification update — 2026-11-23T18:44Z
+
+### Exact-head audio verification completed
+
+- PR #1690 head `066f707cd5256cfeea92d647540b04d48987502e` is 51 commits ahead of current main and 0 behind at this check.
+- Full repository CI [45240608827](https://github.com/Barrot-Agent/B-Agent/actions/runs/45240608827) passed on that exact head: **4,611 passed, 2 skipped, 11 warnings, 32 subtests; 73.08% coverage**.
+- Audio Render Integration [45240608848](https://github.com/Barrot-Agent/B-Agent/actions/runs/45240608848), Dependency Audit [45240608805](https://github.com/Barrot-Agent/B-Agent/actions/runs/45240608805), Money audit [45240608813](https://github.com/Barrot-Agent/B-Agent/actions/runs/45240608813), and Conflict Integrity [45240608988](https://github.com/Barrot-Agent/B-Agent/actions/runs/45240608988) all passed on the exact same head.
+- Fail-closed gate [45240608852](https://github.com/Barrot-Agent/B-Agent/actions/runs/45240608852) correctly blocked promotion: PR remains draft, no independent approving review exists, and branch-protection settings could not be verified. No merge.
+- This handoff follow-up changes the audio PR head again; exact-head checks must be repeated for the resulting commit before any promotion. No audio artifact or user listening acceptance is implied by CI.
+
+### XRP PR #1692 follow-up
+
+- The corrected #1692 head `76a7c584f2030e14c6c50665321111ceb0444fcd` passed the core CI, ingestion workflow, dependency audit, Money audit and conflict-integrity check, but its full suite exposed one remaining failure: `_SHA256_RE` was referenced but undefined. Result: **1 failed, 4,605 passed, 1 skipped, 11 warnings, 32 subtests**.
+- Fixed on the same existing branch in commit `d7bd11db90b0e7b34afe5d7976a45e36fb4b4191` by defining the lowercase 64-hex SHA-256 matcher. New exact-head CI [45241434898](https://github.com/Barrot-Agent/B-Agent/actions/runs/45241434898), ingestion [45241422890](https://github.com/Barrot-Agent/B-Agent/actions/runs/45241422890), dependency [45241422906](https://github.com/Barrot-Agent/B-Agent/actions/runs/45241422906), Money [45241434985](https://github.com/Barrot-Agent/B-Agent/actions/runs/45241434985), Conflict Integrity [45241434927](https://github.com/Barrot-Agent/B-Agent/actions/runs/45241434927), and gate [45241435032](https://github.com/Barrot-Agent/B-Agent/actions/runs/45241435032) were queued/in progress at the time of this update. Exact-head full-suite verification remains pending.
+- The branch's public ingestion run [45240317387](https://github.com/Barrot-Agent/B-Agent/actions/runs/45240317387) succeeded but SEC collection reported `BLOCKED_CONFIGURATION`: `BARROT_SEC_USER_AGENT` was empty, no filing events were captured, and six SEC source failures were recorded. Do not invent or silently configure an identifying contact string. Until an authorized, valid SEC User-Agent is supplied through the existing configuration, the new relinking logic is fixture-tested only; no live SEC receipt linkage is demonstrated.
+
+### Fresh external XRP market cross-check — research only, not a model feature
+
+- Fuelmaps' hourly six-venue spot snapshot at **17:00 UTC, 23 Nov 2026** showed XRP mid **$0.9702**; within ±1%, displayed bids were **$12.3M** versus **$8.5M** asks (59.1% bid share), and within ±5%, **$20.3M** bids versus **$11.6M** asks (63.7%). The largest listed near-price bids were $0.968 ($2.4M), $0.963 ($2.2M), and $0.966 ($1.6M). Fuelmaps covers Coinbase, OKX, Kraken, Bitstamp, Bitfinex and Gemini, but excludes Binance and Bitget; it is hourly, spot-only, averaged from one-minute snapshots, can be up to about 65 minutes old, and resting orders can be cancelled. These figures are not executable liquidity or a directional signal. Source: https://fuelmaps.io/order-book/
+- Barrot's separate main-run same-venue OKX XRP/USDT × USDT/USD top-of-book snapshot at cutoff **18:15:56.964823Z** normalized to midpoint **$0.9519823915** and spread **1.1493 bps**. This is a later, single-venue observation, not a synchronized cross-venue return calculation. It is not promoted as a forecast feature.
+- XRP Insights reports **−12,979,583 XRP** of combined holdings-change flow over 16–20 Nov (about **−$12.4M**) and **1,176,122,498 XRP** held across its six spot ETF universe plus BITW. Its methodology defines flow as the change in issuer-reported holdings, not a direct issuer cash-creation report; BITW rebalancing and fund fees can affect holdings, GXRP flows are excluded, and some historical daily rows are reconstructed estimates. Source: https://xrp-insights.com/data
+- Coverage disagreement is material: CryptoKeyhole's 20 Nov figure was a **partial −2,659,361 XRP** with only 2 of 3 daily-reporting funds received; its latest complete day was 19 Nov. Alpha Finance reports a **−$5.0M** 20 Nov flow and **−$13.3M** for 13–20 Nov. These aggregators use different fund coverage and settlement states; they are not independent evidence of actual cash flows. Sources: https://cryptokeyhole.com/etf-flows/xrp/ and https://alphafinance.io/etf/xrp/
+- Kodexius' **16:57 UTC, 23 Nov** snapshot reported **$479.19M** open interest across six XRP perpetual contracts, **$1.62B** 24-hour volume and **+0.0025%** OI-weighted funding per 8h. Hyperliquid funding was negative while the listed Binance, Bybit and OKX contracts were positive. AlertaChart's earlier **04:27 UTC** five-exchange snapshot reported $576.65M OI and +0.0019% per 8h, with Bybit and Coinbase negative. Different timestamps, contract universes and settlement intervals prevent treating these totals as a single consistent series. Sources: https://kodexius.com/data/crypto-derivatives/XRP and https://www.alertachart.com/data/funding-rates/xrp
+- Interpretation: the sampled spot book was bid-heavy while issuer-holdings-derived ETF flows were negative over the prior five settled sessions; derivatives funding was mildly positive on one later aggregate but mixed by venue. These are distinct time scales and datasets, not a coherent directional edge. No forecast was issued. No external dataset was ingested into the point-in-time feature store, and none of these third-party aggregates is admitted as a model feature.
+
+### Next actions after this update
+
+1. Verify exact-head full-suite and all required checks on #1692 head `d7bd11db90b0e7b34afe5d7976a45e36fb4b4191`; resolve any further failure on the same branch.
+2. Verify exact-head CI after this follow-up handoff commit on #1690. Keep it draft until independent approval and branch-protection evidence are available.
+3. Obtain the authorized SEC User-Agent configuration before expecting live SEC receipt recapture; keep the forecast gate closed.
+4. Preserve the XRP cache-budget warning and implement a tested rebuild-from-raw-artifacts or durable archive recovery path before relying on cache continuity.
+5. Continue audio toward a full-length rights-cleared track, inspectable WAV/stems/MIDI/project artifacts and level-matched listening acceptance; current FluidSynth CI is only a reproducibility/QC proof.
