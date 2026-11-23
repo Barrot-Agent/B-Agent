@@ -54,6 +54,20 @@ def test_receipt_and_feature_restoration_is_same_branch_only():
     assert 'head_branch == "main"' not in text
 
 
+def test_completed_run_selection_filters_status_locally_paginates_and_fails_closed():
+    text = WORKFLOW.read_text(encoding="utf-8")
+    # GitHub's server-side status=completed collection filter omitted a successful
+    # scheduled predecessor in production, creating sibling receipt-chain branches.
+    assert "&status=completed" not in text
+    assert text.count('.status == "completed" and .conclusion == "success"') == 2
+    assert text.count("branch=${GITHUB_REF_NAME}") == 2
+    assert "page=1" in text
+    assert "page=$((page + 1))" in text
+    assert "total_prior_runs=$((total_prior_runs + page_run_count))" in text
+    assert 'if [[ "$total_prior_runs" -eq 0 ]]; then' in text
+    assert "No prior ingestion runs exist" in text
+    assert "refusing to bootstrap a new chain" in text
+
 def test_ingestion_workflow_cannot_write_to_repository_or_external_services():
     text = WORKFLOW.read_text(encoding="utf-8").lower()
     assert "contents: write" not in text
@@ -61,3 +75,25 @@ def test_ingestion_workflow_cannot_write_to_repository_or_external_services():
     assert "gh pr merge" not in text
     assert "persist-credentials: true" not in text
     assert "actions: write" not in text
+
+
+def test_backfill_replay_always_checks_latest_main_checkpoint():
+    ci_workflow = ROOT / ".github" / "workflows" / "ci.yml"
+    text = ci_workflow.read_text(encoding="utf-8")
+    assert "Check whether this exact backfill implementation already has a committed real-artifact receipt" not in text
+    assert "steps.receipt.outputs.skip" not in text
+    assert "if: github.event_name == 'pull_request' && github.event.pull_request.number == 1684" in text
+    assert "Discover and verify the latest successful main checkpoint" in text
+    assert "git/ref/heads/main" in text
+
+
+
+def test_raw_receipt_artifact_includes_run_summary_and_raw_only_identity_index():
+    payload = yaml.load(WORKFLOW.read_text(encoding="utf-8"), Loader=yaml.BaseLoader)
+    upload = next(
+        step for step in payload["jobs"]["capture"]["steps"]
+        if step.get("name") == "Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)"
+    )
+    paths = upload["with"]["path"].splitlines()
+    assert "artifacts/xrp_ingestion/raw_only_sources.json" in paths
+    assert "artifacts/xrp_ingestion/summary.json" in paths

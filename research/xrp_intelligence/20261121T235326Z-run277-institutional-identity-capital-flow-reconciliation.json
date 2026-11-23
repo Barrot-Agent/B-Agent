@@ -1,0 +1,1187 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "run277-institutional-identity-capital-flow-reconciliation",
+  "captured_at_utc": "2026-11-21T23:53:26Z",
+  "repository_context": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "branch_parent_sha": "d3adb95d1e1eda41825a2663aca578e3ac72157c",
+    "workstream": "PR #1684 XRP integration"
+  },
+  "research_scope": [
+    "XRP institutional adoption and custody",
+    "stablecoin issuance/distribution and payment rails",
+    "SBI/SBIC entity identity",
+    "Coinbase/Circle/Ripple/SBI/BNY relationship graph",
+    "capital-flow and in-kind XRP reconciliation",
+    "ASK Coin exact-phrase identity",
+    "Camilla/Kamilah Stevenson identity and public video attribution",
+    "SBIC/ChatGPT exact-phrase research"
+  ],
+  "source_capture": {
+    "method": "public web search and public-page opening",
+    "run_level_retrieved_at_utc": "2026-11-21T23:53:26Z",
+    "per_source_retrieval_timestamp_available": false,
+    "raw_capture": false,
+    "raw_bytes_persisted": false,
+    "raw_content_hashes_persisted": false,
+    "immutable_receipt_ids": [],
+    "model_eligible": false,
+    "reason": "This is a research index with source URLs and independence groups. No raw HTTP bodies or per-source SHA-256 receipts were persisted in the Barrot raw-source chain."
+  },
+  "source_independence_groups": [
+    {
+      "id": "EVERNORTH_SEC_ISSUER",
+      "source_ids": [
+        "evernorth_10q",
+        "evernorth_8ka",
+        "pathfinder_mda",
+        "rippleworks_contribution_exhibit",
+        "ripple_pathfinder_contribution_exhibit",
+        "eloc_warrant_exhibit",
+        "warrant_exercise_exhibit",
+        "public_warrant_prospectus"
+      ],
+      "note": "All Evernorth issuer filings/exhibits belong to one issuer evidence group; repeated exhibits are not independent confirmation."
+    },
+    {
+      "id": "SBIC_EAST_PRIMARY",
+      "source_ids": [
+        "sbic_east_profile",
+        "sbic_east_ai_training_2025",
+        "sbic_east_chatgpt_seminar_2024"
+      ],
+      "note": "Official Tokyo SBIC East company and event pages."
+    },
+    {
+      "id": "SBIC_CENTRAL_PRIMARY",
+      "source_ids": [
+        "sbic_central_profile"
+      ],
+      "note": "Official Nagoya SBIC Central company profile."
+    },
+    {
+      "id": "SBIC_WEST_PRIMARY",
+      "source_ids": [
+        "sbic_west_profile"
+      ],
+      "note": "Official Osaka SBIC West company profile."
+    },
+    {
+      "id": "SBI_HOLDINGS_PRIMARY",
+      "source_ids": [
+        "sbi_vc_trade_profile",
+        "sbi_ripple_asia_2016",
+        "sbi_ripple_asia_xrpl_poc_2026",
+        "sbi_vc_trade_rlusd_2026"
+      ],
+      "note": "SBI Group/SBI Holdings primary releases and subsidiary profiles; not independent publishers."
+    },
+    {
+      "id": "CIRCLE_PRIMARY",
+      "source_ids": [
+        "circle_coinbase_2023",
+        "circle_usdc_economics_2026",
+        "circle_arc_sbi_2026"
+      ],
+      "note": "Circle official releases and blog are one issuer group."
+    },
+    {
+      "id": "CIRCLE_ISSUER_FILINGS",
+      "source_ids": [
+        "circle_s1_2025"
+      ],
+      "note": "Circle SEC filing is primary issuer disclosure, not independent of Circle."
+    },
+    {
+      "id": "COINBASE_PRIMARY",
+      "source_ids": [
+        "coinbase_rlusd_2026"
+      ],
+      "note": "Coinbase official product announcement."
+    },
+    {
+      "id": "BNY_PRIMARY",
+      "source_ids": [
+        "bny_ripple_custody_2026"
+      ],
+      "note": "BNY official custody announcement."
+    },
+    {
+      "id": "PERMISSION_PRIMARY",
+      "source_ids": [
+        "permission_ask_launch",
+        "permission_contract_docs",
+        "permission_wallet_update",
+        "permission_jan15_release"
+      ],
+      "note": "Permission blog, docs and distributed press release are one issuer group; address conflict is preserved."
+    },
+    {
+      "id": "KAMILAH_OFFICIAL_SITE",
+      "source_ids": [
+        "kamilah_official_site"
+      ],
+      "note": "Official professional site."
+    },
+    {
+      "id": "IHEART_INTERVIEW",
+      "source_ids": [
+        "iheart_kamilah_interview"
+      ],
+      "note": "Interview publisher and auto-generated transcript."
+    },
+    {
+      "id": "YOUTUBE_CHANNEL_METADATA",
+      "source_ids": [
+        "kamilah_youtube_channel"
+      ],
+      "note": "YouTube channel metadata."
+    },
+    {
+      "id": "PAUL_BARRON_YOUTUBE",
+      "source_ids": [
+        "paul_barron_kamilah_video"
+      ],
+      "note": "Third-party YouTube uploader."
+    },
+    {
+      "id": "SEAN_CROXTON_YOUTUBE",
+      "source_ids": [
+        "sean_croxton_kamilah_video"
+      ],
+      "note": "Third-party YouTube uploader."
+    },
+    {
+      "id": "VOST_PRIMARY",
+      "source_ids": [
+        "vost_company_profile"
+      ],
+      "note": "Official VOST company profile."
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "evernorth_10q",
+      "publisher": "Evernorth / SEC EDGAR",
+      "authority": "Issuer SEC filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER",
+      "claims_supported": [
+        "Pre-close September 30, 2026 financial position and XRP acquisition/contribution disclosures.",
+        "Cash, refundable advances, digital-asset carrying value and warrant/advance-funding context."
+      ],
+      "limitations": [
+        "Issuer source group; figures are pre-close and must not be treated as post-close consolidated balances."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "evernorth_8ka",
+      "publisher": "Evernorth / SEC EDGAR",
+      "authority": "Issuer SEC filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074357/evernorth-424stickerposam8a.htm",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER",
+      "claims_supported": [
+        "October 9, 2026 business-combination close and post-close structure.",
+        "Closing gross cash and aggregate in-kind XRP contributions."
+      ],
+      "limitations": [
+        "Same issuer group as the 10-Q and exhibits; do not count as independent confirmation."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "pathfinder_mda",
+      "publisher": "Pathfinder / SEC EDGAR",
+      "authority": "Issuer SEC exhibit",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/pf20260930-mda.htm",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER",
+      "claims_supported": [
+        "Pathfinder pre-close ownership and accounting-market disclosures.",
+        "Coinbase identified as principal accounting market for XRP."
+      ],
+      "limitations": [
+        "Accounting-market designation is not evidence of custody or beneficial ownership."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "rippleworks_contribution_exhibit",
+      "publisher": "Evernorth / SEC EDGAR",
+      "authority": "Issuer SEC exhibit",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/R7.htm",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER",
+      "claims_supported": [
+        "RippleWorks-to-Arrington sponsor XRP contribution path."
+      ],
+      "limitations": [
+        "Do not add component contributions to aggregate closing in-kind XRP without a transaction-level bridge."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "ripple_pathfinder_contribution_exhibit",
+      "publisher": "Evernorth / SEC EDGAR",
+      "authority": "Issuer SEC exhibit",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/R26.htm",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER",
+      "claims_supported": [
+        "Ripple-to-Pathfinder contribution and related sponsor subscription paths."
+      ],
+      "limitations": [
+        "Same issuer group; in-kind XRP is not cash raised."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "eloc_warrant_exhibit",
+      "publisher": "Evernorth / SEC EDGAR",
+      "authority": "Issuer SEC exhibit",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/R70.htm",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER",
+      "claims_supported": [
+        "Equity-line capacity and warrant terms."
+      ],
+      "limitations": [
+        "Capacity and theoretical proceeds are not actual capital received."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "warrant_exercise_exhibit",
+      "publisher": "Evernorth / SEC EDGAR",
+      "authority": "Issuer SEC exhibit",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/R71.htm",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER",
+      "claims_supported": [
+        "Warrant exercise reconciliation and gross cash received."
+      ],
+      "limitations": [
+        "Issuer-reported figures; distinguish exercised warrants from remaining warrants."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "public_warrant_prospectus",
+      "publisher": "Evernorth / SEC EDGAR",
+      "authority": "Issuer prospectus",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER",
+      "claims_supported": [
+        "Public warrant share ceiling and exercise price."
+      ],
+      "limitations": [
+        "Maximum theoretical proceeds are not actual proceeds."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "sbic_east_profile",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "Official company profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "source_independence_group": "SBIC_EAST_PRIMARY",
+      "claims_supported": [
+        "Legal identity SBIC East Japan; shareholder composition; sister-company references to Central and West."
+      ],
+      "limitations": [
+        "Does not establish ownership or affiliation with SBI Holdings."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "sbic_central_profile",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "Official company profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "source_independence_group": "SBIC_CENTRAL_PRIMARY",
+      "claims_supported": [
+        "Legal identity SBIC Central Japan; independent profile; sister-company references to East and West."
+      ],
+      "limitations": [
+        "Does not establish ownership or affiliation with SBI Holdings."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "sbic_west_profile",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "Official company profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "source_independence_group": "SBIC_WEST_PRIMARY",
+      "claims_supported": [
+        "Legal identity SBIC West Japan; independent profile; sister-company references to East and Central."
+      ],
+      "limitations": [
+        "Does not establish ownership or affiliation with SBI Holdings."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "sbic_east_ai_training_2025",
+      "publisher": "Tokyo SBIC East",
+      "authority": "Official training event page",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "source_independence_group": "SBIC_EAST_PRIMARY",
+      "claims_supported": [
+        "June 12–13, 2025 generative-AI and machine-learning training; ChatGPT usage included; instructor listed from VOST Education Division."
+      ],
+      "limitations": [
+        "Event page says the venue was VOST's Tokyo office, not the SBIC building; does not establish an OpenAI partnership."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "sbic_east_chatgpt_seminar_2024",
+      "publisher": "Tokyo SBIC East",
+      "authority": "Official seminar page",
+      "url": "https://www.sbic.co.jp/seminar/20240305js/",
+      "source_independence_group": "SBIC_EAST_PRIMARY",
+      "claims_supported": [
+        "March 5, 2024 seminar on generative AI (ChatGPT); speaker identified as a Microsoft representative."
+      ],
+      "limitations": [
+        "A training/seminar event is not a partnership or endorsement by OpenAI."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "sbi_vc_trade_profile",
+      "publisher": "SBI Holdings",
+      "authority": "Official group-company profile",
+      "url": "https://www.sbigroup.co.jp/english/company/group/sbivc.html",
+      "source_independence_group": "SBI_HOLDINGS_PRIMARY",
+      "claims_supported": [
+        "SBI VC Trade is an SBI Group company with 100% voting-right ownership attributed to SBI Group."
+      ],
+      "limitations": [
+        "SBI VC Trade is distinct from the three regional SBIC companies."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "sbi_ripple_asia_2016",
+      "publisher": "SBI Holdings",
+      "authority": "Official press release",
+      "url": "https://www.sbigroup.co.jp/news/2016/0916_10407.html",
+      "source_independence_group": "SBI_HOLDINGS_PRIMARY",
+      "claims_supported": [
+        "SBI Holdings and SBI Investment announced additional investment in Ripple; SBI Ripple Asia was jointly established in May 2016."
+      ],
+      "limitations": [
+        "Historical investment/JV evidence does not establish current equity percentage or current XRP-token use."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "sbi_ripple_asia_xrpl_poc_2026",
+      "publisher": "SBI Holdings / SBI Ripple Asia",
+      "authority": "Official press release",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "source_independence_group": "SBI_HOLDINGS_PRIMARY",
+      "claims_supported": [
+        "XRPL-based proof of concept for tokenized bank deposits and deposit-based digital money."
+      ],
+      "limitations": [
+        "Use of XRPL does not establish XRP token as the deposit collateral or settlement asset; page body retrieval was limited."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "sbi_vc_trade_rlusd_2026",
+      "publisher": "SBI VC Trade / Ripple",
+      "authority": "Joint official press release",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "source_independence_group": "SBI_HOLDINGS_PRIMARY",
+      "claims_supported": [
+        "RLUSD listing began June 24, 2026; SBI VC Trade is a consolidated subsidiary of SBI Holdings; first Japanese Type 4 electronic payment instrument designation."
+      ],
+      "limitations": [
+        "Initial VCTRADE service supports Ethereum-chain RLUSD only; do not imply XRPL deposits/withdrawals were live there."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "circle_coinbase_2023",
+      "publisher": "Circle",
+      "authority": "Official investor release",
+      "url": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "source_independence_group": "CIRCLE_PRIMARY",
+      "claims_supported": [
+        "Circle became sole USDC issuer/governance operator; Coinbase acquired a minority equity stake; commercial revenue-sharing agreement covers platform balances and broader distribution/usage."
+      ],
+      "limitations": [
+        "Issuer statements describe the relationship; revenue economics are contractual and not fully reducible to a single public percentage."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "circle_s1_2025",
+      "publisher": "Circle / SEC EDGAR",
+      "authority": "Issuer SEC registration statement",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000119312525132755/d737521ds1a.htm",
+      "source_independence_group": "CIRCLE_ISSUER_FILINGS",
+      "claims_supported": [
+        "Coinbase-held USDC share of circulation reported at 20% on Dec. 31, 2024 and 25% on Mar. 31, 2025; distribution payment-base mechanics."
+      ],
+      "limitations": [
+        "Platform-balance figures are based on information provided by Coinbase to Circle, not an independent wallet census."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "circle_usdc_economics_2026",
+      "publisher": "Circle",
+      "authority": "Official company blog",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "source_independence_group": "CIRCLE_PRIMARY",
+      "claims_supported": [
+        "Circle describes Coinbase as its largest/longest-standing distribution partner; reports approximately $20B average USDC balances on Coinbase in Q2 2026, up 44% year over year."
+      ],
+      "limitations": [
+        "Company-reported figures; the aggregate distribution-cost percentage includes partners and transaction costs, not Coinbase alone."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "circle_arc_sbi_2026",
+      "publisher": "Circle",
+      "authority": "Official investor release",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "source_independence_group": "CIRCLE_PRIMARY",
+      "claims_supported": [
+        "SBI Group named in Arc founding validator cohort; Circle says SBI VC Trade was the first and only Japanese company to distribute USDC beginning March 2025."
+      ],
+      "limitations": [
+        "Arc is Circle's separate L1, not XRPL; this does not establish a Circle-Ripple partnership."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "coinbase_rlusd_2026",
+      "publisher": "Coinbase",
+      "authority": "Official product announcement",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "source_independence_group": "COINBASE_PRIMARY",
+      "claims_supported": [
+        "RLUSD available on Coinbase Prime, Exchange and app from Oct. 28, 2026; deposits/withdrawals across XRPL, Base and Ethereum; Ripple to provide liquidity on Base."
+      ],
+      "limitations": [
+        "Coinbase Global Exchange collateral availability was stated as following later, not live at launch."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "bny_ripple_custody_2026",
+      "publisher": "BNY",
+      "authority": "Official press release",
+      "url": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "source_independence_group": "BNY_PRIMARY",
+      "claims_supported": [
+        "BNY supports XRP and RLUSD on its Digital Asset Custody platform; BNY is primary RLUSD reserve custodian and has a Ripple Prime custody relationship."
+      ],
+      "limitations": [
+        "Additional mint/redeem and tokenized-trade-finance workflows are stated as intended/future and remain subject to approvals."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "permission_ask_launch",
+      "publisher": "Permission",
+      "authority": "Official token launch blog",
+      "url": "https://www.permission.ai/blog/ask-is-now-live-on-base-eeaba",
+      "source_independence_group": "PERMISSION_PRIMARY",
+      "claims_supported": [
+        "ASK described as Permission's data-ownership, consent and rewards token; Base contract address 0xBB146326778227A8498b105a18f84E0987A684b4."
+      ],
+      "limitations": [
+        "Issuer source; not evidence of an XRP/XRPL relationship."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "permission_contract_docs",
+      "publisher": "Permission",
+      "authority": "Official token documentation",
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "source_independence_group": "PERMISSION_PRIMARY",
+      "claims_supported": [
+        "Current official ASK contracts listed on Base and Polygon; ASK identified as LayerZero OFT."
+      ],
+      "limitations": [
+        "Documentation is issuer-controlled; historical migration status for conflicting old address needs explicit confirmation."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "permission_wallet_update",
+      "publisher": "Permission",
+      "authority": "Official wallet update",
+      "url": "https://www.permission.ai/blog/ask-wallet-update",
+      "source_independence_group": "PERMISSION_PRIMARY",
+      "claims_supported": [
+        "ASK wallet uses Coinbase embedded-wallet infrastructure; Coinbase holds keys on users' behalf; Permission says it no longer holds keys."
+      ],
+      "limitations": [
+        "Wallet infrastructure relationship is not a Ripple/XRP partnership."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "permission_jan15_release",
+      "publisher": "Permission / GlobeNewswire",
+      "authority": "Issuer-distributed press release",
+      "url": "https://www.globenewswire.com/news-release/2025/01/15/3009989/0/en/Permission-Launches-ASK-on-Base-Ushering-in-the-Next-Era-of-Data-Ownership-and-Rewards.html",
+      "source_independence_group": "PERMISSION_PRIMARY",
+      "claims_supported": [
+        "January 15, 2025 release lists Base address 0x79322cee6c90735b967d2396b9adc392915aebb6."
+      ],
+      "limitations": [
+        "Conflicts with January 10 official blog and current docs; preserve as a historical discrepancy, not canonical current contract."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "kamilah_official_site",
+      "publisher": "Dr. Kamilah Stevenson",
+      "authority": "Official professional site",
+      "url": "https://learn.kamilahstevenson.com/",
+      "source_independence_group": "KAMILAH_OFFICIAL_SITE",
+      "claims_supported": [
+        "Official identity is Dr. Kamilah Stevenson, also known as The Wealth Doctor."
+      ],
+      "limitations": [
+        "Does not independently enumerate all public videos."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "iheart_kamilah_interview",
+      "publisher": "iHeart / Paul Barron Network",
+      "authority": "Public interview and auto-generated transcript",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "source_independence_group": "IHEART_INTERVIEW",
+      "claims_supported": [
+        "June 11, 2026 interview guest is Dr. Kamilah Stevenson; transcript contains a Camilla spelling variant and a warning about fake pages."
+      ],
+      "limitations": [
+        "Transcript is auto-generated; treat Camilla/Kamilah spelling as a transcription discrepancy."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "kamilah_youtube_channel",
+      "publisher": "YouTube",
+      "authority": "Public channel metadata",
+      "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "source_independence_group": "YOUTUBE_CHANNEL_METADATA",
+      "claims_supported": [
+        "Channel ID UCqUPJMQdkCN6lsLVDnichPA, handle @drkamilahstevenson, title Kamilah Stevenson."
+      ],
+      "limitations": [
+        "Similar handles exist; exclude lookalikes without identity corroboration."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "paul_barron_kamilah_video",
+      "publisher": "Paul Barron Podcast",
+      "authority": "Public YouTube video metadata",
+      "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "source_independence_group": "PAUL_BARRON_YOUTUBE",
+      "claims_supported": [
+        "Crypto Panics! W/ @drkamilahstevenson, June 11, 2026; third-party guest appearance."
+      ],
+      "limitations": [
+        "Direct YouTube page retrieval was throttled this run; iHeart episode/transcript corroborates the guest identity."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "sean_croxton_kamilah_video",
+      "publisher": "Sean Croxton",
+      "authority": "Public YouTube video metadata",
+      "url": "https://www.youtube.com/watch?v=TS7nhMTgd2Y",
+      "source_independence_group": "SEAN_CROXTON_YOUTUBE",
+      "claims_supported": [
+        "Dr. Kamilah Stevenson | Generational Health Starts With You, August 6, 2025; third-party guest appearance."
+      ],
+      "limitations": [
+        "Not an upload to Kamilah's own channel; inventory is partial."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    },
+    {
+      "id": "vost_company_profile",
+      "publisher": "VOST",
+      "authority": "Official company profile",
+      "url": "https://vost.co.jp/company/",
+      "source_independence_group": "VOST_PRIMARY",
+      "claims_supported": [
+        "VOST has an Education Division and provides training services; supports attribution of the SBIC East 2025 instructor to VOST."
+      ],
+      "limitations": [
+        "VOST profile does not establish any OpenAI partnership."
+      ],
+      "raw_content_sha256": null,
+      "raw_receipt_id": null
+    }
+  ],
+  "identity_resolutions": [
+    {
+      "entity": "SBIC East Japan",
+      "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "status": "RESOLVED",
+      "confidence": "HIGH",
+      "relationship_to_other_SBICs": "Sister company to Central and West; separate legal entity.",
+      "relationship_to_SBI_Holdings": "No ownership/division relationship established by the reviewed official profile."
+    },
+    {
+      "entity": "SBIC Central Japan",
+      "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "status": "RESOLVED",
+      "confidence": "HIGH",
+      "relationship_to_other_SBICs": "Sister company to East and West; separate legal entity.",
+      "relationship_to_SBI_Holdings": "No ownership/division relationship established by the reviewed official profile."
+    },
+    {
+      "entity": "SBIC West Japan",
+      "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "status": "RESOLVED",
+      "confidence": "HIGH",
+      "relationship_to_other_SBICs": "Sister company to East and Central; separate legal entity.",
+      "relationship_to_SBI_Holdings": "No ownership/division relationship established by the reviewed official profile."
+    },
+    {
+      "entity": "SBI VC Trade",
+      "status": "RESOLVED",
+      "confidence": "HIGH",
+      "relationship_to_SBI_Holdings": "SBI Group reports 100% voting-right ownership; this is a separate company from the regional SBIC entities."
+    },
+    {
+      "entity": "ASK token",
+      "best_supported_identity": "Permission Coin (ASK)",
+      "status": "PARTIAL_IDENTITY_RESOLVED_NO_XRP_LINK",
+      "confidence": "HIGH",
+      "xrp_relationship": "No XRP/XRPL/Ripple relationship established."
+    },
+    {
+      "entity": "Dr. Kamilah Stevenson",
+      "status": "IDENTITY_TRIANGULATED",
+      "confidence": "HIGH",
+      "official_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "official_channel_handle": "@drkamilahstevenson",
+      "name_discrepancy": "The iHeart auto-generated transcript uses Camilla in one passage; official site and channel use Kamilah. Treat as a transcript spelling discrepancy, not a second person."
+    },
+    {
+      "entity": "SBIC / ChatGPT",
+      "status": "NO_OPENAI_PARTNERSHIP_EVIDENCE",
+      "confidence": "HIGH",
+      "context": "Official SBIC East training pages mention ChatGPT; one 2025 course lists a VOST instructor, and a 2024 seminar lists a Microsoft presenter. Neither establishes an OpenAI partnership."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relation": "USDC issuance, distribution, equity and revenue-sharing relationship",
+      "status": "CONFIRMED",
+      "details": [
+        "Circle's 2023 restructuring made Circle the sole USDC issuer/governance operator and gave Coinbase a minority equity stake plus commercial revenue-sharing.",
+        "Circle's 2025 S-1 reports Coinbase-held USDC at about 20% of circulation at 2024-12-31 and 25% at 2025-03-31, based on information provided by Coinbase.",
+        "The S-1 describes Coinbase's share of the remaining payment base after issuer retention and approved participants; platform-balance economics are distinct from broader distribution economics.",
+        "Circle's 2026 blog describes Coinbase as its largest/longest-standing partner and reports roughly $20B average USDC balances on Coinbase in Q2 2026, up 44% year over year."
+      ],
+      "source_ids": [
+        "circle_coinbase_2023",
+        "circle_s1_2025",
+        "circle_usdc_economics_2026"
+      ],
+      "caveats": [
+        "Platform balance figures are issuer/partner-reported, not an independent wallet census.",
+        "Circle's aggregate distribution/transaction costs are not all paid to Coinbase."
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "SBI Group",
+      "relation": "USDC distribution and Arc validator relationship",
+      "status": "CONFIRMED",
+      "details": [
+        "SBI VC Trade was the first and only Japanese company Circle identifies as distributing USDC from March 2025.",
+        "SBI Group is in Arc's founding validator cohort announced September 16, 2026."
+      ],
+      "source_ids": [
+        "circle_arc_sbi_2026"
+      ],
+      "caveats": [
+        "Arc is Circle's separate Layer-1 network, not XRPL."
+      ]
+    },
+    {
+      "from": "SBI Holdings / SBI Ripple Asia",
+      "to": "Ripple",
+      "relation": "Joint venture, historical investment, RLUSD distribution and XRPL proof of concept",
+      "status": "CONFIRMED",
+      "details": [
+        "SBI Holdings and Ripple jointly established SBI Ripple Asia in 2016; SBI announced additional investment in Ripple.",
+        "SBI VC Trade began RLUSD listing June 24, 2026.",
+        "SBI Ripple Asia's 2026 PoC uses XRPL for tokenized deposits and deposit-based digital money."
+      ],
+      "source_ids": [
+        "sbi_ripple_asia_2016",
+        "sbi_ripple_asia_xrpl_poc_2026",
+        "sbi_vc_trade_rlusd_2026"
+      ],
+      "caveats": [
+        "SBI VC Trade's initial VCTRADE RLUSD support was Ethereum-chain only.",
+        "XRPL use in a deposit PoC does not establish XRP token as collateral or settlement asset."
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "relation": "RLUSD listing, multichain access and Base liquidity",
+      "status": "CONFIRMED",
+      "details": [
+        "RLUSD became available on Coinbase Prime, Exchange and retail app on October 28, 2026.",
+        "Coinbase announced deposits/withdrawals across XRPL, Base and Ethereum.",
+        "Ripple said it would provide liquidity on Base."
+      ],
+      "source_ids": [
+        "coinbase_rlusd_2026"
+      ],
+      "caveats": [
+        "Coinbase Global Exchange collateral availability was stated as a future follow-up, not live at launch."
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "BNY",
+      "relation": "RLUSD reserve custody and institutional digital-asset custody",
+      "status": "CONFIRMED",
+      "details": [
+        "BNY identifies itself as primary RLUSD reserve custodian and has a custody relationship with Ripple Prime.",
+        "BNY's Digital Asset Custody platform now supports XRP and RLUSD."
+      ],
+      "source_ids": [
+        "bny_ripple_custody_2026"
+      ],
+      "caveats": [
+        "Additional mint/redeem and tokenized trade-finance workflows are future/intended and subject to approvals."
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "BNY",
+      "relation": "Circle Reserve Fund custody infrastructure",
+      "status": "CONFIRMED",
+      "details": [
+        "Circle describes the Circle Reserve Fund as managed by BlackRock and custodied at BNY."
+      ],
+      "source_ids": [
+        "circle_usdc_economics_2026"
+      ],
+      "caveats": [
+        "A shared BNY custody node does not establish a direct Circle-Ripple partnership."
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "Ripple",
+      "relation": "Direct partnership",
+      "status": "NOT_ESTABLISHED",
+      "details": [
+        "No direct Circle-Ripple partnership was established by the reviewed primary sources."
+      ],
+      "source_ids": [
+        "circle_coinbase_2023",
+        "circle_arc_sbi_2026",
+        "bny_ripple_custody_2026"
+      ],
+      "caveats": [
+        "BNY is a shared custody node; SBI has separate relationships with both ecosystems."
+      ]
+    },
+    {
+      "from": "SBI-affiliated investors",
+      "to": "Evernorth",
+      "relation": "Investment/advance-funding participation",
+      "status": "CONFIRMED_WITH_OWNERSHIP_LIMIT",
+      "details": [
+        "Certain SBI-affiliated investors are subject to a 39.9% Class A ownership cap; excess shares are Class C."
+      ],
+      "source_ids": [
+        "evernorth_10q",
+        "evernorth_8ka"
+      ],
+      "caveats": [
+        "Not 39.9% total economic ownership and not evidence SBI Holdings supplied the entire capital stack."
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Pathfinder / Evernorth",
+      "relation": "Principal accounting market for XRP",
+      "status": "CONFIRMED",
+      "details": [
+        "Pathfinder filing identifies Coinbase as the principal market for XRP accounting."
+      ],
+      "source_ids": [
+        "pathfinder_mda"
+      ],
+      "caveats": [
+        "Accounting-market designation is not proof of custody, beneficial ownership or execution volume."
+      ]
+    },
+    {
+      "from": "Permission",
+      "to": "Coinbase",
+      "relation": "Embedded wallet infrastructure",
+      "status": "CONFIRMED",
+      "details": [
+        "Permission says its ASK wallet uses Coinbase embedded-wallet infrastructure and Coinbase holds keys on users' behalf."
+      ],
+      "source_ids": [
+        "permission_wallet_update"
+      ],
+      "caveats": [
+        "No XRP/Ripple relationship established."
+      ]
+    },
+    {
+      "from": "SBIC East/Central/West",
+      "to": "SBI Holdings",
+      "relation": "Corporate ownership/division relationship",
+      "status": "NOT_ESTABLISHED",
+      "details": [
+        "Regional profiles identify separate legal entities and list each other as sister companies."
+      ],
+      "source_ids": [
+        "sbic_east_profile",
+        "sbic_central_profile",
+        "sbic_west_profile"
+      ],
+      "caveats": [
+        "Do not conflate the regional SBIC companies with SBI Group or SBI VC Trade."
+      ]
+    }
+  ],
+  "capital_flow_ledger": [
+    {
+      "id": "preclose_private_placement_cash",
+      "category": "cash_advance_and_purchase",
+      "amount_usd_approx": 214100000,
+      "asset": "USD",
+      "status": "REPORTED_PRE_CLOSE",
+      "date_scope": "2025/2026 private-placement advance funding",
+      "notes": "Cash was used to purchase 84,365,876 XRP. Do not add this pre-close amount to the later $272.6M closing gross cash as a separate raise.",
+      "source_ids": [
+        "evernorth_10q",
+        "evernorth_8ka"
+      ]
+    },
+    {
+      "id": "preclose_private_placement_xrp",
+      "category": "in_kind_xrp",
+      "amount_xrp": 261919096,
+      "status": "REPORTED_PRIVATE_PLACEMENT_ASSOCIATION",
+      "notes": "XRP associated with private-placement agreements; distinguish from cash used to acquire 84,365,876 XRP.",
+      "source_ids": [
+        "evernorth_10q"
+      ]
+    },
+    {
+      "id": "cash_purchased_xrp",
+      "category": "market_acquired_xrp",
+      "amount_xrp": 84365876,
+      "status": "REPORTED_PURCHASED_WITH_CASH",
+      "notes": "Do not classify this as an in-kind contribution.",
+      "source_ids": [
+        "evernorth_10q"
+      ]
+    },
+    {
+      "id": "closing_gross_cash",
+      "category": "gross_cash_at_close",
+      "amount_usd_approx": 272600000,
+      "status": "REPORTED_GROSS_BEFORE_EXPENSES",
+      "date": "2026-10-09",
+      "notes": "Composed of approximately $224.6M private-placement cash and $48.0M SPAC trust release; not net proceeds.",
+      "source_ids": [
+        "evernorth_8ka"
+      ]
+    },
+    {
+      "id": "closing_aggregate_in_kind_xrp",
+      "category": "in_kind_xrp",
+      "amount_xrp": 388910554,
+      "status": "REPORTED_AGGREGATE_AT_CLOSE",
+      "date": "2026-10-09",
+      "notes": "Do not add underlying Ripple, RippleWorks or affiliate contributor paths without a transaction-level bridge.",
+      "source_ids": [
+        "evernorth_8ka"
+      ]
+    },
+    {
+      "id": "ripple_pathfinder_xrp",
+      "category": "in_kind_xrp",
+      "amount_xrp": 126791458,
+      "status": "REPORTED_CONTRIBUTION",
+      "notes": "Ripple-to-Pathfinder contribution; not cash.",
+      "source_ids": [
+        "ripple_pathfinder_contribution_exhibit"
+      ]
+    },
+    {
+      "id": "rippleworks_arrington_xrp",
+      "category": "in_kind_xrp",
+      "amount_xrp": 211319096,
+      "status": "REPORTED_CONTRIBUTION",
+      "notes": "RippleWorks-to-Arrington sponsor contribution followed by sponsor subscription; not a cash purchase.",
+      "source_ids": [
+        "rippleworks_contribution_exhibit"
+      ]
+    },
+    {
+      "id": "ripple_affiliate_pubco_xrp",
+      "category": "in_kind_xrp",
+      "amount_xrp": 50000000,
+      "status": "REPORTED_AFFILIATE_CONTRIBUTION",
+      "notes": "Contributor is a Ripple-affiliated entity; do not attribute automatically to Ripple Labs itself.",
+      "source_ids": [
+        "ripple_pathfinder_contribution_exhibit"
+      ]
+    },
+    {
+      "id": "convertible_pik_note",
+      "category": "debt",
+      "amount_usd_gross": 30000000,
+      "status": "REPORTED_PRINCIPAL",
+      "notes": "$1.0M issuance costs reported; do not call gross principal net cash available.",
+      "source_ids": [
+        "evernorth_8ka"
+      ]
+    },
+    {
+      "id": "warrants_exercised",
+      "category": "warrant_exercise_cash",
+      "amount_xrp_related_shares": 3073366,
+      "amount_usd_gross": 35300000,
+      "status": "REPORTED_EXERCISED",
+      "date_scope": "2026-10-12 through 2026-11-09",
+      "notes": "Gross cash from exercised warrants; separate from unexercised warrant capacity.",
+      "source_ids": [
+        "warrant_exercise_exhibit"
+      ]
+    },
+    {
+      "id": "warrants_remaining",
+      "category": "unexercised_warrants",
+      "amount_shares": 8666279,
+      "status": "REPORTED_REMAINING",
+      "notes": "Not actual capital received.",
+      "source_ids": [
+        "warrant_exercise_exhibit"
+      ]
+    },
+    {
+      "id": "cantor_eloc_capacity",
+      "category": "optional_equity_line_capacity",
+      "amount_shares_max": 5218935,
+      "pricing": "97% of applicable VWAP",
+      "status": "CAPACITY_NOT_DRAWN",
+      "notes": "Subject to issuer notices and conditions; not cash received.",
+      "source_ids": [
+        "eloc_warrant_exhibit"
+      ]
+    },
+    {
+      "id": "public_warrant_ceiling",
+      "category": "theoretical_warrant_proceeds",
+      "amount_shares_max": 11499992,
+      "exercise_price_usd": 11.5,
+      "theoretical_gross_usd": 132249908,
+      "status": "THEORETICAL_ONLY",
+      "notes": "Not actual proceeds; do not add to exercised-warrant cash or total warrant count.",
+      "source_ids": [
+        "public_warrant_prospectus"
+      ]
+    },
+    {
+      "id": "sbi_class_a_cap",
+      "category": "ownership_cap",
+      "percentage": 39.9,
+      "status": "REPORTED_CLASS_A_CAP",
+      "notes": "Excess shares are Class C; not total economic ownership and not evidence of all capital originating from SBI Holdings.",
+      "source_ids": [
+        "evernorth_8ka"
+      ]
+    },
+    {
+      "id": "preclose_balance_sheet",
+      "category": "preclose_liquidity_context",
+      "unrestricted_cash_usd": 91397,
+      "digital_assets_carrying_value_usd_approx": 341887000,
+      "refundable_investor_advances_usd_approx": 524260000,
+      "nine_month_net_loss_usd_approx": 32870000,
+      "status": "PRE_CLOSE_2026_09_30",
+      "notes": "Do not compare directly with post-close capital as if same reporting perimeter.",
+      "source_ids": [
+        "evernorth_10q"
+      ]
+    }
+  ],
+  "youtube_inventory": [
+    {
+      "video_id": "Sulo54IlQ60",
+      "title": "Crypto Panics! W/ @drkamilahstevenson",
+      "published_at": "2026-06-11",
+      "uploader": "Paul Barron Podcast",
+      "relationship": "third-party guest appearance",
+      "identity_status": "IDENTITY_VERIFIED_GUEST",
+      "direct_youtube_page_status": "throttled_this_run",
+      "corroboration": [
+        "iheart_kamilah_interview",
+        "kamilah_official_site",
+        "kamilah_youtube_channel"
+      ],
+      "inventory_status": "verified appearance; not an upload to Kamilah's own channel"
+    },
+    {
+      "video_id": "TS7nhMTgd2Y",
+      "title": "Dr. Kamilah Stevenson | Generational Health Starts With You",
+      "published_at": "2025-08-06",
+      "uploader": "Sean Croxton",
+      "relationship": "third-party guest appearance",
+      "identity_status": "IDENTITY_VERIFIED_SUBJECT",
+      "corroboration": [
+        "kamilah_official_site",
+        "kamilah_youtube_channel"
+      ],
+      "inventory_status": "verified appearance; not an upload to Kamilah's own channel"
+    }
+  ],
+  "exact_phrase_research": {
+    "ASK Coin": {
+      "status": "PARTIAL_IDENTITY_RESOLVED_NO_XRP_LINK",
+      "best_supported_identity": "Permission Coin (ASK)",
+      "xrp_link": "not established",
+      "disagreement": "Permission Jan 10 blog/current docs list Base 0xBB146326778227A8498b105a18f84E0987A684b4; Jan 15 issuer-distributed release lists 0x79322cee6c90735b967d2396b9adc392915aebb6.",
+      "next_action": "Capture current docs and migration/retirement evidence as raw receipts."
+    },
+    "actual capital": {
+      "status": "CONCEPT_RECONCILED_PRIMARY_FILINGS",
+      "definition": "Not a formal accounting term; maintain separate categories for cash actually received, gross/net proceeds, in-kind XRP, debt, exercised warrants, undrawn equity lines, optional facilities and theoretical warrant proceeds.",
+      "next_action": "Reconcile each amount to transaction date, legal contributor, cash ledger and XRP quantity; avoid summing overlapping stages."
+    },
+    "SBIC, ChatGPT SBIC": {
+      "status": "EXACT_PHRASE_UNRESOLVED_NO_OPENAI_PARTNERSHIP_EVIDENCE",
+      "evidence": [
+        "SBIC East official 2025 course taught by a VOST Education Division instructor included ChatGPT usage.",
+        "SBIC East official 2024 seminar on generative AI/ChatGPT listed a Microsoft presenter."
+      ],
+      "conclusion": "Training events do not establish OpenAI sponsorship, endorsement or formal partnership."
+    }
+  },
+  "disagreements": [
+    {
+      "topic": "ASK Base contract",
+      "positions": [
+        "Jan 10, 2025 Permission blog/current docs: 0xBB146326778227A8498b105a18f84E0987A684b4",
+        "Jan 15, 2025 Permission/GlobeNewswire release: 0x79322cee6c90735b967d2396b9adc392915aebb6"
+      ],
+      "resolution": "Current official docs and Jan 10 blog align; Jan 15 conflicting historical address remains unresolved."
+    },
+    {
+      "topic": "Kamilah/Camilla spelling",
+      "positions": [
+        "Official site/channel: Kamilah",
+        "Auto-generated iHeart transcript: Camilla in one passage"
+      ],
+      "resolution": "Treat as transcript spelling discrepancy; do not create a second identity."
+    },
+    {
+      "topic": "Circle-Ripple relationship",
+      "positions": [
+        "Shared BNY custody infrastructure and separate SBI relationships",
+        "No direct bilateral Circle-Ripple partnership source"
+      ],
+      "resolution": "Direct partnership not established."
+    },
+    {
+      "topic": "XRPL vs XRP token",
+      "positions": [
+        "SBI Ripple Asia PoC uses XRPL for tokenized deposits",
+        "No evidence XRP token is the deposit collateral/settlement asset"
+      ],
+      "resolution": "Ledger use is not token use."
+    },
+    {
+      "topic": "RLUSD collateral availability",
+      "positions": [
+        "Coinbase listing supports RLUSD deposits/trading at launch",
+        "Coinbase Global Exchange collateral availability stated as following later"
+      ],
+      "resolution": "Treat collateral support as future at launch, not live."
+    },
+    {
+      "topic": "Actual capital",
+      "positions": [
+        "Cash, in-kind XRP, debt, warrant exercise, ELOC capacity, unexercised warrants"
+      ],
+      "resolution": "Keep separate ledger categories; do not sum overlapping or theoretical amounts."
+    }
+  ],
+  "model_admission": {
+    "eligible": false,
+    "reason": "No raw source bytes, per-source retrieval timestamps or immutable receipts were stored for this research bundle. Keep all relationship/capital/identity claims research-only until exact publisher payloads are captured and hashed."
+  },
+  "forecast": {
+    "issued": false,
+    "directional": false,
+    "reason": "Institutional research does not satisfy point-in-time feature, chronological out-of-sample, calibration or drift gates."
+  },
+  "limitations": [
+    "Source pages were reviewed through public search/open; some SBI official pages render through iframes and require raw capture for full text.",
+    "The YouTube video inventory is partial, not exhaustive.",
+    "Evernorth SEC filings are one issuer evidence group; do not count repeated exhibits as independent confirmations.",
+    "Circle, Permission and SBI official releases are issuer-group evidence, not independent corroboration.",
+    "No on-chain transaction-level wallet reconciliation was performed in this research bundle.",
+    "No direct Circle-Ripple agreement was established.",
+    "No forecast or trading action was issued."
+  ]
+}

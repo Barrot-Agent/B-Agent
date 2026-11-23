@@ -1,0 +1,116 @@
+{
+  "schema_version": "barrot.xrp.backfill-verification-summary.v1",
+  "status": "VERIFIED_IN_CI_ISOLATED_COPY_NOT_APPLIED_TO_MAIN",
+  "repository": "Barrot-Agent/B-Agent",
+  "workflow_run_id": 44897424185,
+  "workflow_event": "pull_request",
+  "workflow_head_sha": "373721be6bc00c81ae25e8ea7c7be21abdde7992",
+  "pr_number": 1684,
+  "source_run_id": "44844953105",
+  "fork_run_id": "44848909814",
+  "common_parent_run_id": "44844499889",
+  "current_main_run": {
+    "run_id": "44893151950",
+    "head_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "created_at": "2026-11-21T10:11:35Z"
+  },
+  "main_lineage_run_ids": [
+    "44848909814",
+    "44855063970",
+    "44860165888",
+    "44865104098",
+    "44869770831",
+    "44875059754",
+    "44879233062",
+    "44884065576",
+    "44888553926",
+    "44893151950"
+  ],
+  "sibling_heads": [
+    {
+      "run_id": "44844953105",
+      "sequence": 2,
+      "raw_receipt_count": 37,
+      "retained_raw_payload_count": 25,
+      "raw_artifact_tree_sha256": "f6285a5d444e8f2e79639cd2fa5911c7c798f98040fba4f1255db36cae001f10",
+      "index_file_sha256": "9629828353087d365748e3ded1a3e4b60ab80e577cb03420a8681e4eb8779d76"
+    },
+    {
+      "run_id": "44848909814",
+      "sequence": 2,
+      "raw_receipt_count": 37,
+      "retained_raw_payload_count": 25,
+      "raw_artifact_tree_sha256": "a64531d1e029da8f2a59736e6588c6b04a2fe6f723c8d17b1e66422b6001baa2",
+      "index_file_sha256": "3fc869bcb86479b760fa7a62744391a971a624452db631446829b86b2453589a"
+    }
+  ],
+  "common_parent_chain_sha256": "63471284a73b268295000c37b5ff71b85ae0912f340f13904a3c09548002a61a",
+  "source_feature_store": {
+    "run_id": "44844953105",
+    "database_sha256": "fadf111d9b695c56be273a5ffb4bd96bb306da7052f1782c2859f651b8a64efe",
+    "raw_chain_log_sha256": "f0952bf2a750dcfc3df7c1340824829a42df730ab517b8b5d7c0d2c57eee5dde",
+    "raw_receipt_log_sha256": "3bcbc57151c71c3110dbca547b45316fe10ac15f5a1a9e6b96104ae9d0b66f5d",
+    "snapshot_id": "0d5af2b3fdffb6ddb397579413c33218ed174f8e61969910adaef654ae9212aa",
+    "source_count": 11,
+    "record_count": 118,
+    "manifest_sha256": "e19be22480a27170dc597835bfe8d9a3b1f9c61c3df03b33fa1ffbc5122d589c"
+  },
+  "backfill_snapshot": {
+    "snapshot_id": "0d5af2b3fdffb6ddb397579413c33218ed174f8e61969910adaef654ae9212aa",
+    "record_count": 118,
+    "source_count": 11,
+    "captured_at_utc": "2026-11-21T00:36:59.587037Z",
+    "stored_at_utc": "2026-11-21T11:07:25.334349Z",
+    "manifest_sha256": "e19be22480a27170dc597835bfe8d9a3b1f9c61c3df03b33fa1ffbc5122d589c",
+    "store_receipt_time_is_actual_recovery_time": true
+  },
+  "records_before": 16200,
+  "records_after": 16318,
+  "recovered_records": 118,
+  "snapshots_before": 11,
+  "snapshots_after": 12,
+  "verified_snapshot_count": 12,
+  "sqlite_integrity": "ok",
+  "database_sha256_after_checkpoint": "7acd15df24c7a0b72e5065502f2f0dab0db2c84bb00bc93f80d50cdf6bb9a323",
+  "point_in_time_visibility": {
+    "before_as_of_utc": "2026-11-21T11:07:25.334348Z",
+    "before_record_count": 16200,
+    "visible_before_receipt": false,
+    "after_as_of_utc": "2026-11-21T11:07:25.334350Z",
+    "after_record_count": 16318,
+    "visible_after_receipt": true
+  },
+  "current_main_raw_artifact": {
+    "run_id": "44893151950",
+    "raw_artifact_tree_sha256": "2e6bc34124261f4eea5e3e3d225f91e34627ef6e3556237203da0c9cdb5067d3",
+    "receipt_count": 34,
+    "retained_raw_payload_count": 22
+  },
+  "main_index": {
+    "run_id": "44893151950",
+    "sequence": 11,
+    "cross_run_chain_sha256": "fe59e81d1023f96bd33e737574ba044499544449f21c457990bac616269aeedb",
+    "index_file_sha256": "b28acb4c1ffdb55b1313481449819e6caf6bc93e038cf67097de824769945def"
+  },
+  "prior_receipts_rewritten": false,
+  "external_anchor_status": "NOT_ANCHORED",
+  "workflow_artifact": {
+    "artifact_id": 14704787080,
+    "name": "xrp-historical-backfill-reconciliation-44897424185",
+    "digest": "sha256:c343c40b306073ddb9f3e0e64f5218eee49c1fab6b38811c62c7c08f7b870c28",
+    "size_bytes": 6492,
+    "expires_at": "2027-02-19T11:05:29Z",
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/44897424185/artifacts/14704787080"
+  },
+  "reconciliation_sha256": "a1cf1c53605942f419b5a8db65431e3ae5ae931d51a1c7ccf126ad4d9706373d",
+  "downloaded_reconciliation_json_sha256": "95ab385887a77fc7dc8bb2a0a9e0271a35577fc7f8d6fabf29207d7fcd9e5aee",
+  "downloaded_verification_summary_sha256": "1f175a4b543aa1991d8fa4ccad2aeb0e2e55c3a774a9f8604a4cc35f18da2614",
+  "downloaded_artifact_inventory_sha256": "b43d63b16a38f7a2427f878368395fc974f0ccefff72af38f5a0f553677cc478",
+  "backfill_applied_to_main": false,
+  "interpretation": "The actual xrp_feature_store_backfill.py module executed against real downloaded main/sibling artifacts in the PR CI runner's isolated copy. It restored 118 missing records and preserved point-in-time receipt semantics. Main's feature-store artifact and database were not changed.",
+  "limitations": [
+    "GitHub Actions artifact is retention-limited and not WORM or externally timestamp-anchored.",
+    "This verifies historical provenance and point-in-time visibility, not market-data quality or predictive performance.",
+    "No directional forecast or trading action is authorized."
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "artifact_type": "barrot.xrp.institutional_collateral_and_custody_reconciliation",
+  "schema_version": "1.0.0",
+  "research_run_id": 285,
+  "captured_at_utc": "2026-11-22T14:18:41Z",
+  "data_cutoff_utc": "2026-11-22T14:18:41Z",
+  "research_question": "Reconcile Coinbase XRP collateral eligibility, cbXRP backing, Morpho market structure, Coinbase National Trust custody, and the new PNC USDC payment rail without inferring undisclosed XRP balances or purchases.",
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "raw_http_bytes_captured": false,
+  "external_timestamp_anchor": false,
+  "findings": {
+    "coinbase_xrp_collateral": {
+      "status": "CONFIRMED_PRODUCT_ELIGIBILITY",
+      "product": "Coinbase USDC crypto-backed loans",
+      "eligible_asset": "XRP",
+      "loan_asset": "USDC",
+      "protocol": "Morpho on Base",
+      "interface_provider": "Coinbase",
+      "as_of": "2026-11-22",
+      "limits": "Coinbase's 2026-09-29 product update says up to $100,000 USDC against XRP and other listed assets for eligible U.S. customers outside New York; Coinbase Help says asset limits and collateral options vary by asset, rate type and region.",
+      "operational_terms": "Variable rates depend on lending-market supply and demand; fixed-rate terms and collateral availability vary. Coinbase provides an interface to Morpho.",
+      "not_established": [
+        "actual XRP collateral quantity",
+        "current USDC debt outstanding against XRP",
+        "whether all XRP collateral is wrapped as cbXRP",
+        "Coinbase execution of customer XRP purchases",
+        "net new XRP spot demand",
+        "Coinbase-originated market ownership on Morpho"
+      ]
+    },
+    "coinbase_cbXRP_reserves": {
+      "status": "PRIMARY_SOURCE_DYNAMIC_SNAPSHOT_WITH_LOCALE_VINTAGE_DISAGREEMENT",
+      "issuer_statement": "Coinbase states cbXRP is a wrapped token backed 1:1 by XRP held by Coinbase.",
+      "snapshot_1": {
+        "source_url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+        "page_data_refreshed_display": "2026-11-22 10:03 AM",
+        "timezone": "not specified by page",
+        "reserve_xrp": 159472641.13,
+        "reserve_usd": 148293608.98,
+        "supply_cbXRP": 159470394.59,
+        "supply_usd": 148291519.93,
+        "reserve_surplus_xrp": 2246.54
+      },
+      "snapshot_2": {
+        "source_url": "https://www.coinbase.com/en-nl/cbxrp/proof-of-reserves",
+        "page_data_refreshed_display": "2026-11-22 12:28 PM",
+        "timezone": "not specified by search result",
+        "reserve_xrp": 159387236.72,
+        "reserve_usd": 133901217.57,
+        "supply_cbXRP": 159384990.19,
+        "supply_usd": 133899330.26,
+        "reserve_surplus_xrp": 2246.53
+      },
+      "same_publisher_locale_disagreement": true,
+      "total_reserve_difference_xrp": 85404.41,
+      "interpretation": "Both displayed snapshots show a small reserve surplus of approximately 2,246.5 XRP, but total reserve and supply differ by 85,404.41 XRP across locale/cache vintages. They are Coinbase views, not independent corroboration; preserve each refresh vintage and do not combine them.",
+      "not_established": [
+        "on-chain market utilization",
+        "current collateral posted to Morpho",
+        "customer-level positions",
+        "new spot purchases",
+        "whether the displayed reserve balance is entirely unencumbered"
+      ]
+    },
+    "morpho_market_structure": {
+      "status": "PRIMARY_PROTOCOL_DOCUMENTATION",
+      "protocol": "Morpho Blue",
+      "properties": [
+        "isolated markets",
+        "immutable market parameters after creation",
+        "permissionless market creation"
+      ],
+      "parameters": [
+        "collateral token",
+        "loan token",
+        "liquidation loan-to-value (LLTV)",
+        "oracle",
+        "interest-rate model"
+      ],
+      "liquidation_rule": "A position becomes eligible for liquidation when its LTV exceeds the market's immutable LLTV.",
+      "modeling_implication": "Store each market ID, chain, collateral token, loan token, LLTV, oracle, IRM, block height and timestamp separately. Never infer Coinbase ownership from a matching permissionless market configuration."
+    },
+    "third_party_morpho_market_claim": {
+      "status": "HYPOTHESIS_NOT_PRIMARY",
+      "source_url": "https://cleansky.io/blog/coinbase-wrappers-manufactured-demand-2026/",
+      "source_date": "2026-08-24",
+      "reported_claims": {
+        "cbXRP_in_62_5_percent_lltv_market": 90780000,
+        "usdc_borrowed_reported_usd": 41000000,
+        "cbXRP_in_77_percent_lltv_market": 1040000
+      },
+      "attribution_claim": "The article infers that the 62.5% market is Coinbase-linked by matching collateral terms, timing and product magnitudes.",
+      "limitation": "The article itself notes the Morpho API does not identify the originator and Morpho markets are permissionless. The attribution is not proven by a Coinbase or Morpho primary disclosure."
+    },
+    "coinbase_national_trust_company": {
+      "status": "FINAL_OCC_APPROVAL_AND_OPENING_AUTHORIZATION_VERIFIED",
+      "occ_control_number": "2025-Charter-343449",
+      "final_approval_date": "2026-11-06",
+      "authorized_open_date": "2026-11-09",
+      "scope": "Fiduciary cryptocurrency custody and related trust-company activities.",
+      "conditions": {
+        "minimum_tier1_capital_usd": 60000000,
+        "minimum_eligible_liquid_assets_usd": 30000000,
+        "operating_expense_liquidity_days": 180
+      },
+      "custody_migration": "A September 1, 2026 Master Assignment and Assumption Agreement provides for transition over time from Coinbase Custody Trust Company, LLC. The OCC says the national trust company intends to commence migration of client custody accounts and assets; no completed migration amount is disclosed in the reviewed letter.",
+      "regulatory_scope": "Not a full-service commercial bank. The OCC preliminary decision states the institution will not be an insured depository institution. The final approval limits operations to trust-company activities and related services.",
+      "affiliate_services": "The trust company may act as a finder for affiliate staking, Prime Trading and Prime Financing; it does not itself provide those underlying affiliate services.",
+      "not_established": [
+        "completed customer asset migration",
+        "current XRP custody balance",
+        "XRP purchases by the trust company",
+        "stablecoin issuance by the trust company"
+      ]
+    },
+    "pnc_usdc_payments": {
+      "status": "ANNOUNCED_LIMITED_PILOT",
+      "announcement_date": "2026-11-09",
+      "bank": "PNC Bank",
+      "customer_scope": "Eligible corporate and institutional clients in a limited pilot",
+      "stablecoin": "USDC",
+      "network": "Ethereum",
+      "infrastructure": "Coinbase Payment APIs",
+      "settlement": "Incoming USDC is automatically converted 1:1 into U.S. dollars and deposited into a designated PNC account.",
+      "issuer_distinction": "USDC is issued by Circle, but the PNC and Coinbase announcements reviewed here describe the Coinbase infrastructure and PNC banking roles; they do not establish a direct PNC-Circle commercial contract.",
+      "xrp_rail_established": false,
+      "not_established": [
+        "XRP settlement",
+        "Ripple payment-rail usage",
+        "volume or recurring payment totals",
+        "full commercial rollout"
+      ]
+    },
+    "sbi_vc_trade_product_context": {
+      "lending_campaign_2026_04_02": {
+        "assets_and_advertised_rates": [
+          "CANTON 50%",
+          "USDC 10%",
+          "ZPG 10%"
+        ],
+        "xrp_included": false,
+        "interpretation": "This specific special-rate campaign did not list XRP and is not evidence of XRP lending balances."
+      },
+      "xrp_jpy_leverage_campaign_2026_06_22_to_2026_07_03": {
+        "advertised_standard_spread_jpy": 0.5,
+        "status": "EXPIRED_PROMOTION",
+        "interpretation": "Evidence of a temporary XRP/JPY leveraged-trading product offer, not current trading volume, open interest, lending or customer positions."
+      }
+    }
+  },
+  "source_register": [
+    {
+      "id": "coinbase_loan_blog",
+      "url": "https://www.coinbase.com/en-pt/blog/now-get-a-usdc-loan-without-selling-your-crypto",
+      "publisher": "Coinbase",
+      "source_type": "issuer_product_update",
+      "relevant_date": "2026-09-29 update",
+      "independence_group": "coinbase"
+    },
+    {
+      "id": "coinbase_loan_help",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+      "publisher": "Coinbase",
+      "source_type": "issuer_help",
+      "retrieved_at_utc": "2026-11-22T14:18:41Z",
+      "independence_group": "coinbase"
+    },
+    {
+      "id": "coinbase_cbxrp_reserves_us",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "publisher": "Coinbase",
+      "source_type": "issuer_dynamic_reserve_page",
+      "refresh_display": "2026-11-22 10:03 AM",
+      "independence_group": "coinbase"
+    },
+    {
+      "id": "coinbase_cbxrp_reserves_nl",
+      "url": "https://www.coinbase.com/en-nl/cbxrp/proof-of-reserves",
+      "publisher": "Coinbase",
+      "source_type": "issuer_dynamic_reserve_page",
+      "refresh_display": "2026-11-22 12:28 PM",
+      "independence_group": "coinbase"
+    },
+    {
+      "id": "occ_coinbase_cd1370",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+      "publisher": "Office of the Comptroller of the Currency",
+      "source_type": "regulatory_primary_document",
+      "document_date": "2026-11-06",
+      "independence_group": "occ"
+    },
+    {
+      "id": "pnc_usdc_pilot",
+      "url": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+      "publisher": "PNC Bank",
+      "source_type": "bank_primary_announcement",
+      "document_date": "2026-11-09",
+      "independence_group": "pnc"
+    },
+    {
+      "id": "coinbase_pnc_pilot",
+      "url": "https://www.coinbase.com/blog/coinbase-and-pnc-expand-to-stablecoin-payment-acceptance",
+      "publisher": "Coinbase",
+      "source_type": "issuer_primary_announcement",
+      "document_date": "2026-11-09",
+      "independence_group": "coinbase"
+    },
+    {
+      "id": "morpho_blue_docs",
+      "url": "https://docs.morpho.org/learn/concepts/blue/",
+      "publisher": "Morpho",
+      "source_type": "protocol_primary_documentation",
+      "retrieved_at_utc": "2026-11-22T14:18:41Z",
+      "independence_group": "morpho"
+    },
+    {
+      "id": "cleansky_morpho_analysis",
+      "url": "https://cleansky.io/blog/coinbase-wrappers-manufactured-demand-2026/",
+      "publisher": "CleanSky",
+      "source_type": "third_party_onchain_analysis",
+      "document_date": "2026-08-24",
+      "independence_group": "cleansky"
+    },
+    {
+      "id": "sbi_vc_trade_lending_campaign",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0402_16233.html",
+      "publisher": "SBI VC Trade / SBI Holdings",
+      "source_type": "subsidiary_primary_announcement",
+      "document_date": "2026-04-02",
+      "independence_group": "sbi"
+    },
+    {
+      "id": "sbi_vc_trade_xrp_jpy_campaign",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0622_16420.html",
+      "publisher": "SBI VC Trade / SBI Holdings",
+      "source_type": "subsidiary_primary_announcement",
+      "document_date": "2026-06-22",
+      "independence_group": "sbi"
+    }
+  ],
+  "source_independence": {
+    "coinbase": [
+      "coinbase_loan_blog",
+      "coinbase_loan_help",
+      "coinbase_cbxrp_reserves_us",
+      "coinbase_cbxrp_reserves_nl",
+      "coinbase_pnc_pilot"
+    ],
+    "occ": [
+      "occ_coinbase_cd1370"
+    ],
+    "pnc": [
+      "pnc_usdc_pilot"
+    ],
+    "morpho": [
+      "morpho_blue_docs"
+    ],
+    "cleansky": [
+      "cleansky_morpho_analysis"
+    ],
+    "sbi": [
+      "sbi_vc_trade_lending_campaign",
+      "sbi_vc_trade_xrp_jpy_campaign"
+    ]
+  },
+  "counter_hypotheses": [
+    "Product eligibility does not imply any XRP has actually been posted by customers at the current cutoff.",
+    "A matching Morpho LLTV and collateral pair does not prove Coinbase controls or originates a particular permissionless market.",
+    "cbXRP reserve backing establishes wrapper reserve coverage, not the amount of cbXRP deployed as collateral or the amount of USDC borrowed.",
+    "A rise or fall in cbXRP reserves can reflect minting, redemption, transfers or custody movements; it is not equivalent to a spot-market buy flow.",
+    "PNC's USDC pilot is a stablecoin banking rail and does not establish XRP or Ripple payment usage.",
+    "The two Coinbase proof-of-reserves locale snapshots share one publisher and may reflect different refresh vintages; they are not independent observations."
+  ],
+  "evidence_gaps": [
+    "Coinbase customer-level XRP collateral balances and aggregate outstanding USDC debt are not disclosed in the sources reviewed.",
+    "No primary disclosure ties the specific 62.5% cbXRP/USDC Morpho market to Coinbase as originator.",
+    "Coinbase does not state in the reviewed XRP collateral materials that XRP is always converted into cbXRP before being pledged.",
+    "Coinbase National Trust Company client migration completion and XRP-specific custody totals are not disclosed.",
+    "Coinbase proof-of-reserves raw HTTP bytes, response headers and locale/cache metadata were not retained by this research capture.",
+    "No market-level XRP collateral or borrowing series is admitted to the Barrot feature store."
+  ],
+  "source_capture_status": "PUBLIC_WEB_RENDERED_CONTENT_REVIEWED_RAW_HTTP_BYTES_NOT_RETAINED",
+  "source_count": 11,
+  "source_independence_group_count": 6,
+  "evidence_status": "RESEARCH_ONLY"
+}

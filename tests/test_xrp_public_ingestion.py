@@ -727,6 +727,16 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
         (tmp_path / "run" / "source_failures.json").read_text(encoding="utf-8"),
     )
     assert summary["source_failure_count"] == 0
+    raw_only_artifact = json.loads(
+        (tmp_path / "run" / "raw_only_sources.json").read_text(encoding="utf-8")
+    )
+    expected_raw_only_source_ids = sorted({
+        item["source_id"] for item in raw_only_artifact
+        if isinstance(item.get("source_id"), str) and item["source_id"].strip()
+    })
+    assert summary["raw_only_source_ids"] == expected_raw_only_source_ids
+    assert summary["raw_only_unique_source_count"] == len(expected_raw_only_source_ids)
+    assert summary["raw_only_entries_without_source_id_count"] == 0
     assert summary["eligible_feature_record_count"] > 0
     assert summary["store_verification"]["valid"] is True
     assert summary["feature_store_backup_retention_days"] == 90
@@ -812,6 +822,10 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert not set(XRPL_NODE_SOURCES).intersection(manifest)
     assert manifest["xrp_etf_flows_aggregator"]["model_eligible_source"] is False
     assert manifest["xrp_etf_flows_aggregator"]["source_data_as_of_utc"] is None
+    assert len(manifest["xrp_etf_flows_aggregator"]["raw_content_sha256"]) == 64
+    assert manifest["xrp_etf_flows_aggregator"]["raw_bytes_retained"] is False
+    assert manifest["xrp_etf_flows_aggregator"]["raw_payload_path"] is None
+    assert "commercial redistribution" in manifest["xrp_etf_flows_aggregator"]["raw_retention_reason"]
     assert manifest["xrp_exchange_balances_json"]["model_eligible_source"] is False
     assert manifest["xrp_exchange_balances_json"]["source_data_as_of_utc"] is None
 
@@ -1329,14 +1343,16 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
         "      - name: Save cumulative feature-store cache after successful artifact publication", 1
     )[1].split("\n      - name:", 1)[0]
     assert "continue-on-error: true" in cache_save_step
-    assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&status=completed&per_page=100&page=1" in workflow
+    assert "actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&per_page=100&page=${page}" in workflow
+    assert "&status=completed" not in workflow
+    assert workflow.count('select(.status == "completed" and .conclusion == "success"') == 2
     assert "per_page=100&page=${page}" in workflow
     assert 'while [[ "$page" -le 30 && "$restored" != "1" ]]' in workflow
     assert "page_run_count=\"$(jq '.workflow_runs | length' <<< \"$run_page\")\"" in workflow
     assert '[[ "$page_run_count" -gt 0 ]] || break' in workflow
     assert 'if [[ -n "$run_ids" ]]; then' in workflow
     assert "page=$((page+1))" in workflow
-    assert "select(.conclusion == \"success\"" in workflow
+    assert 'select(.status == "completed" and .conclusion == "success"' in workflow
     assert '.head_branch == $branch' in workflow
     assert ".head_repository.full_name == $repository" in workflow
     assert '(.event == "schedule" or .event == "workflow_dispatch" or .event == "push")' in workflow
@@ -2163,6 +2179,9 @@ def test_parser_failure_preserves_exact_raw_bytes_as_ineligible_receipt(tmp_path
     assert summary["source_receipt_count"] == 1
     assert summary["source_failure_count"] == 1
     assert summary["raw_only_source_count"] == 1
+    assert summary["raw_only_unique_source_count"] == 1
+    assert summary["raw_only_source_ids"] == [source_id]
+    assert summary["raw_only_entries_without_source_id_count"] == 0
     assert summary["snapshot_status"] == "no_new_eligible_features"
     assert len(receipts) == 1
     receipt = receipts[0]
@@ -3181,6 +3200,13 @@ def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_dail
     raw_only = json.loads(
         (tmp_path / "weekly" / "raw_only_sources.json").read_text(encoding="utf-8")
     )
+    expected_raw_only_source_ids = sorted({
+        item["source_id"] for item in raw_only
+        if isinstance(item.get("source_id"), str) and item["source_id"].strip()
+    })
+    assert summary["raw_only_source_ids"] == expected_raw_only_source_ids
+    assert summary["raw_only_unique_source_count"] == len(expected_raw_only_source_ids)
+    assert "cftc_contract_status_index" in summary["raw_only_source_ids"]
     assert any(item["source_id"] == "cftc_contract_status_index" for item in raw_only)
     assert not any(item["source_id"] == "cftc_tff_financial_futures" for item in raw_only)
     assert not any(item["source_id"] == "cftc_legacy_futures_only" for item in raw_only)

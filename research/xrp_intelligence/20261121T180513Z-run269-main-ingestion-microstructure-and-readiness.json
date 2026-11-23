@@ -1,0 +1,714 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot.xrp.run269.main_ingestion_microstructure_and_readiness",
+  "run_id": 269,
+  "captured_at_utc": "2026-11-21T18:05:13Z",
+  "model_eligible": false,
+  "forecast_status": "NOT_ISSUED",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+    "main_tree_entries": 3115,
+    "main_tree_truncated": false,
+    "integration_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+    "integration_parent_head_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
+    "integration_tree_entries": 3122,
+    "integration_tree_truncated": false,
+    "main_paths_missing_from_integration": 0,
+    "integration_only_paths": 7,
+    "pr_1684": {
+      "state": "open",
+      "draft": true,
+      "head_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
+      "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "ahead_by": 106,
+      "behind_by": 0,
+      "changed_files": 18,
+      "formal_reviews": 0,
+      "review_threads": 0,
+      "requested_reviewers": 0
+    },
+    "pr_1685": {
+      "state": "open",
+      "draft": true,
+      "head_sha": "e512f4e6d66c1575186d00b60852c93caba687e0",
+      "base_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+      "ahead_by": 5,
+      "behind_by": 0,
+      "changed_files": 9,
+      "formal_reviews": 0,
+      "overlap_with_pr1684": 0
+    }
+  },
+  "main_ingestion": {
+    "workflow": "/.github/workflows/xrp-public-ingestion.yml",
+    "workflow_present_on_main": true,
+    "schedule": [
+      "3 * * * *",
+      "15 0 * * *"
+    ],
+    "run_id": 44928553996,
+    "run_number": 46,
+    "conclusion": "success",
+    "run_created_at_utc": "2026-11-21T17:10:09Z",
+    "data_cutoff_utc": "2026-11-21T17:10:37.708731Z",
+    "snapshot_id": "85dcd1f7d4af08fbee930e6b6ecdb9fe7e3f68de69f94cd303f8b3a7ffa9fabc",
+    "snapshot_captured_at_utc": "2026-11-21T17:10:37.725353Z",
+    "snapshot_stored_at_utc": "2026-11-21T17:10:40.585260Z",
+    "adapter_version": "xrp-public-market-v3.32",
+    "parser_version": "xrp-public-market-v3.31",
+    "receipt_count": 34,
+    "retained_raw_payloads": 22,
+    "digest_only_receipts": 12,
+    "retained_payload_hashes_verified": 22,
+    "retained_payload_hash_mismatches": 0,
+    "raw_only_sources": 23,
+    "source_failures": 18,
+    "feature_store": {
+      "history_records": 17062,
+      "snapshots": 18,
+      "latest_snapshot_records": 123,
+      "latest_snapshot_source_count": 12,
+      "eligible_delta_records": 123,
+      "excluded_input_records": 367,
+      "input_feature_records": 490,
+      "sqlite_integrity": "ok",
+      "rebuild_from_raw_artifacts_implemented": false
+    },
+    "event_timeline": {
+      "events": 150,
+      "independent_source_groups": 50,
+      "raw_hash_present": 0,
+      "receipt_complete": false,
+      "scenario_count": 117,
+      "model_eligible": false,
+      "registry_captured_at_utc": "2026-11-19T15:16:42Z",
+      "registry_age_hours_at_cutoff": 49.898808
+    },
+    "drift": {
+      "features_considered": 204,
+      "features_evaluated": 0,
+      "status": "INSUFFICIENT_DATA"
+    },
+    "walk_forward": {
+      "origins": 0,
+      "forecasts": 0,
+      "status": "NOT_STARTED"
+    },
+    "forecast_status": "NOT_ISSUED",
+    "sec_edgar": {
+      "status": "BLOCKED_CONFIGURATION",
+      "submissions": 0,
+      "raw_receipts": 0,
+      "required_variable": "BARROT_SEC_USER_AGENT",
+      "contact_identity_configured": false
+    },
+    "cache": {
+      "status": "READ_ONLY_BUDGET_EXHAUSTED",
+      "checkpoint_restore": "artifact restore succeeded",
+      "per_run_feature_store_retention_days": 7,
+      "daily_raw_archive_retention_days": 90
+    }
+  },
+  "raw_artifacts": [
+    {
+      "artifact_id": 14717030051,
+      "name": "xrp-public-raw-44928553996",
+      "size_bytes": 463259,
+      "sha256": "f95c363fbc2b7fbceb7daeea0b17404b675fc5e50cd0eb9af62719a9b9a1e2e6",
+      "expires_at_utc": "2027-02-19T17:10:09Z"
+    },
+    {
+      "artifact_id": 14716905842,
+      "name": "xrp-public-feature-store-44928553996",
+      "size_bytes": 3512664,
+      "sha256": "a8dc4c6735b8228c88b86045af26a24fe1834f6c6ea9fa5a61827706d46cf8c0",
+      "expires_at_utc": "2026-11-28T17:10:49Z"
+    },
+    {
+      "artifact_id": 14716554017,
+      "name": "xrp-public-events-44928553996",
+      "size_bytes": 154244,
+      "sha256": "be4fb1c236b087c1a3da17fd557baaa5d0cbc1db8191e014118c68494205f0ed",
+      "expires_at_utc": "2027-02-19T17:10:09Z"
+    },
+    {
+      "artifact_id": 14716528984,
+      "name": "xrp-public-receipt-index-44928553996",
+      "size_bytes": 1133,
+      "sha256": "3d4f3df6c92fed33cdc51ceacede4eb9845a015fa8679914f972acc67fbe3894",
+      "expires_at_utc": "2027-02-19T17:10:09Z"
+    },
+    {
+      "artifact_id": 14716159783,
+      "name": "xrp-research-correction-audit-44928553996",
+      "size_bytes": 11956,
+      "sha256": "980e280c6e7b729f21778caaded21224d68604cbcb37ec72cc5bd0b8904d98c1",
+      "expires_at_utc": "2027-02-19T17:10:09Z"
+    },
+    {
+      "artifact_id": 14716964905,
+      "name": "cross-analysis-44932304750-1",
+      "size_bytes": 245008,
+      "sha256": "e816b78b0ef0211e67be55d15be40a0391b62343a5b2004ac38cee8de15570b2",
+      "expires_at_utc": "2026-12-21T17:51:29Z"
+    },
+    {
+      "artifact_id": 14715109254,
+      "name": "xrp-historical-backfill-reconciliation-44926486835",
+      "size_bytes": 8213,
+      "sha256": "00096cff28d5cee8f667edf5b8afbefb60e9e2970751bd8947f5ac90745ba56e",
+      "expires_at_utc": "2027-02-19T16:47:29Z"
+    }
+  ],
+  "raw_payload_integrity": {
+    "receipt_manifest_sha256": "79c337308140a675e33ee06d5e5018cffa956aa70248cad2c29d4a478e72747e",
+    "receipt_log_sha256": "d0edcb307b54b5d1422964cf687003bce6e15226747d4501eed63f19cc9e974d",
+    "receipt_chain_log_sha256": "9e37268e1352276cbb91229f11d37a5e282d7328c03bf4f818a5e44a8a7740cb",
+    "receipt_chain_manifest_sha256": "e89ca07a685777ed3d4c9710bb53752e10c57ddea546c138a0723647a76f4559",
+    "cross_run_receipt_chain_file_sha256": "348822222f48fa1fc28ccb20088d9c249ed39e25cbc5cdf8fa017fe8affb25c0",
+    "event_timeline_file_sha256": "79759ecdc3f500626901f13c4d91e2153c156fc4aaa5f16270f28e8bfd8b278d",
+    "quote_basis_file_sha256": "2090816eb13234601779c39d894c4896caedc9b4fff8d649627c0a10629824eb",
+    "source_failures_file_sha256": "d1c7aee226150187a8aa02f821aa10c12644596957660d1abab2afa14ba4e49d",
+    "raw_only_sources_file_sha256": "ddf43b539a6cb3f12bb5114a871fea34bd0ad60f369afda44d041d2e185afd34",
+    "raw_payload_hashes_verified": 22,
+    "raw_payload_hash_mismatches": 0,
+    "selected_market_source_receipts": [
+      {
+        "source_id": "coinbase_spot_ticker",
+        "receipt_id": "9f2d299c35e3d5c67ebce43acd18469a54699c4f196aa158615245bde985f2fe",
+        "sha256": "4dcac530992227e1ce15b1919c2ea12cf57c36b2ba4193bac9f8ec428edbc1b1",
+        "captured_at_utc": "2026-11-21T17:10:24.983685Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:24Z",
+        "publisher_group": "coinbase"
+      },
+      {
+        "source_id": "kraken_spot_ticker",
+        "receipt_id": "8b14c8a14bc8ad5756db1e4b8ea8a5bdad39f3dc357f03bd123b9a2309aa60e4",
+        "sha256": "d4b2aea8c7be185b66e54c9490f6be2d6229b061fbb729057007072bfc74da89",
+        "captured_at_utc": "2026-11-21T17:10:25.073127Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:25Z",
+        "publisher_group": "kraken"
+      },
+      {
+        "source_id": "bitstamp_spot_ticker",
+        "receipt_id": "43fd060a7c99ebbb44b4c49542b12474d6fe305ceadf291c1d8f8ae0e1b1f36b",
+        "sha256": "ccddc9d69130218a8e3aed3b04c1e41990a5fd106a7256eb24fa7cc181319dc6",
+        "captured_at_utc": "2026-11-21T17:10:25.778130Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:25Z",
+        "publisher_group": "bitstamp"
+      },
+      {
+        "source_id": "bitstamp_spot_depth",
+        "receipt_id": "1da90c8197ccf523c0dee140cac862d6b0d41ba0ec842c97f7cfee93177f71bd",
+        "sha256": "0de0f5c04c27e437f7248b4c9c77e58a56527f724b798b93c22f4af2f3186b7c",
+        "captured_at_utc": "2026-11-21T17:10:26.754907Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:25.912795Z",
+        "publisher_group": "bitstamp"
+      },
+      {
+        "source_id": "bitbank_spot_ticker",
+        "receipt_id": "8b6e95513fa50a0fea76d08d34a7b1847154eb5083a52d9e32f172f087388409",
+        "sha256": "1b67c1e43c38ec945f77d4d875a5380410b1db0704d8845e3b6f04b92f0410ac",
+        "captured_at_utc": "2026-11-21T17:10:28.097256Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:26.452Z",
+        "publisher_group": "bitbank"
+      },
+      {
+        "source_id": "bitbank_spot_depth",
+        "receipt_id": "9444f056a41a8063ae288f05eb3603d173d0fab25d35babdd17f94e47b13120f",
+        "sha256": "e0e4bb26dfe35761305719da54b55631a3b068a3af8c4d02fde9fdc7c0fc64bf",
+        "captured_at_utc": "2026-11-21T17:10:28.439734Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:27.101Z",
+        "publisher_group": "bitbank"
+      },
+      {
+        "source_id": "bitbank_spot_circuit_break",
+        "receipt_id": "3b1ee97ebef8b48fc4c6eff0efd03a894a2c347742c28455cc230aee6b816738",
+        "sha256": "dcaf5c2e3d6e67fbee0f55e56ca3c7e6c099ee6aac81867332add37069576fe3",
+        "captured_at_utc": "2026-11-21T17:10:27.183173Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:25.327Z",
+        "publisher_group": "bitbank"
+      },
+      {
+        "source_id": "okx_spot_ticker",
+        "receipt_id": "9a42839da7413c0578e018922cbce239c46b74a7376308c8b0b2ff49146e5b26",
+        "sha256": "da590fea4b70919581c1ca61d6f53b22e939a01451bc44fd15c7766ca410c856",
+        "captured_at_utc": "2026-11-21T17:10:28.598214Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:27.862Z",
+        "publisher_group": "okx"
+      },
+      {
+        "source_id": "okx_usdt_usd_ticker",
+        "receipt_id": "22d8d107f897114944d1ffd4f7a6a11a46582f89ee7ff9977386cee0402b218a",
+        "sha256": "20583475111600082a50fadd8c4b4ffbf2291f1a36dc51fbc9639740851311dd",
+        "captured_at_utc": "2026-11-21T17:10:28.679130Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:28.262Z",
+        "publisher_group": "okx"
+      },
+      {
+        "source_id": "okx_spot_depth",
+        "receipt_id": "15865bda50dfe138e86c26d2366985744dd9f0d29c1dd6cbf7eac396d1b830cb",
+        "sha256": "eafbd09d8633e93b890d2ec537888a7d7cab49e84d7956111b51e23128549cd0",
+        "captured_at_utc": "2026-11-21T17:10:28.769642Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:28.700Z",
+        "publisher_group": "okx"
+      },
+      {
+        "source_id": "coinbase_spot_book",
+        "receipt_id": "a209bb0f4b8456ac5ce2e715fa73b33d18eb96b17a5956594befafb84799a791",
+        "sha256": "a1064f4d9b3b7f4daa70e5a55dfcf6d64259eb612b7c586bff3654e5443a65c0",
+        "captured_at_utc": "2026-11-21T17:10:29.468384Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:29Z",
+        "publisher_group": "coinbase"
+      },
+      {
+        "source_id": "kraken_spot_depth",
+        "receipt_id": "6bad89c0e41df7cbbd9705b6707430f12676951812f6456c8dc46c297d0453d9",
+        "sha256": "d772efd368945d6323870a34b38879a150a01fb61f4a7c8a3293efae22622bac",
+        "captured_at_utc": "2026-11-21T17:10:29.552527Z",
+        "source_data_as_of_utc": "2026-11-21T17:10:29Z",
+        "publisher_group": "kraken"
+      },
+      {
+        "source_id": "coinbase_spot_candles",
+        "receipt_id": "6ae01199cebcdcda7e0eba49e32c2ca568074cc486dff3c14be257a45ddafd25",
+        "sha256": "5938f62860428ea9f508cf8b9075cc2e298233de3cb60ade47162cd8b757252c",
+        "captured_at_utc": "2026-11-21T17:10:29.373258Z",
+        "source_data_as_of_utc": "2026-11-21T17:00:00Z",
+        "publisher_group": "coinbase"
+      }
+    ]
+  },
+  "receipt_chain": {
+    "per_run_receipt_chain_verified": true,
+    "sequence": 18,
+    "previous_run_id": 44923300352,
+    "cross_run_chain_sha256": "db278839e9f44c32a7c0203ea8ef447efef2a15f852b28324953210b46dddaa8",
+    "external_anchor_status": "NOT_ANCHORED",
+    "github_actions_artifacts_are_retention_limited_not_worm": true,
+    "current_receipt_chain": {
+      "chain_head_sha256": "bac4e2ab3b0329eaa13d8a37f16145801650a8409517115774199ac4d57b9f1a",
+      "chain_log_sha256": "9e37268e1352276cbb91229f11d37a5e282d7328c03bf4f818a5e44a8a7740cb",
+      "manifest_sha256": "e89ca07a685777ed3d4c9710bb53752e10c57ddea546c138a0723647a76f4559",
+      "receipt_count": 34,
+      "receipt_log_sha256": "d0edcb307b54b5d1422964cf687003bce6e15226747d4501eed63f19cc9e974d"
+    },
+    "previous": {
+      "run_id": "44923300352",
+      "sequence": 17,
+      "cross_run_chain_sha256": "917be03168323fec8cdbdec4c82d234af59fc8b36e3c82eb5af62f100b4c1628",
+      "manifest_sha256": "cea1f2f7e260fa63a1f1941736acf8ac2c86bac8206b72f25eed5b903ea8b708"
+    },
+    "continuity_status": "CONTINUED",
+    "continuity_verified": true
+  },
+  "market_snapshot": {
+    "captured_at_utc": {
+      "start": "2026-11-21T17:10:24.983685Z",
+      "end": "2026-11-21T17:10:29.552527Z"
+    },
+    "data_cutoff_utc": "2026-11-21T17:10:37.708731Z",
+    "price_cluster_usd": {
+      "venues": [
+        "Coinbase",
+        "Kraken",
+        "Bitstamp",
+        "OKX"
+      ],
+      "low": 0.930215,
+      "high": 0.9303423865,
+      "range_bps": 1.3693415205,
+      "method": "Synchronized best-book mids; OKX XRP-USDT top-of-book multiplied by same-venue observed USDT/USD mid."
+    },
+    "venue_books": [
+      {
+        "venue": "Coinbase",
+        "pair": "XRP-USD",
+        "bid": 0.9302,
+        "ask": 0.9303,
+        "mid_usd": 0.93025,
+        "spread_bps": 1.0749798441,
+        "volume_24h_xrp": 152554183.034983,
+        "depth_10bps": {
+          "bid": 392186.61735,
+          "ask": 291588.326627,
+          "unit": "USD",
+          "imbalance": 0.1471219319
+        },
+        "depth_50bps": {
+          "bid": 1563334.784736,
+          "ask": 1351668.433696,
+          "unit": "USD",
+          "imbalance": 0.0726127332
+        },
+        "depth_100bps": {
+          "bid": 4119565.563734,
+          "ask": 2727215.356183,
+          "unit": "USD",
+          "imbalance": 0.20335837
+        }
+      },
+      {
+        "venue": "Kraken",
+        "pair": "XRP/USD",
+        "bid": 0.93016,
+        "ask": 0.93027,
+        "mid_usd": 0.930215,
+        "spread_bps": 1.1825223201,
+        "volume_24h_xrp": 80966038.605646,
+        "depth_10bps": {
+          "bid": 458090.939146,
+          "ask": 348902.239838,
+          "unit": "USD",
+          "imbalance": 0.1353031254
+        },
+        "depth_50bps": null,
+        "depth_100bps": null
+      },
+      {
+        "venue": "Bitstamp",
+        "pair": "XRP/USD",
+        "bid": 0.93029,
+        "ask": 0.9303,
+        "mid_usd": 0.930295,
+        "spread_bps": 0.1074927845,
+        "volume_24h_xrp": 24047958.190095,
+        "depth_10bps": {
+          "bid": 329836.660557,
+          "ask": 292844.161432,
+          "unit": "USD",
+          "imbalance": 0.0594084446
+        },
+        "depth_50bps": {
+          "bid": 679424.617384,
+          "ask": 700059.557399,
+          "unit": "USD",
+          "imbalance": -0.0149584463
+        },
+        "depth_100bps": {
+          "bid": 781716.486004,
+          "ask": 722256.412478,
+          "unit": "USD",
+          "imbalance": 0.0395353358
+        }
+      },
+      {
+        "venue": "OKX",
+        "pair": "XRP-USDT",
+        "bid": 0.9319,
+        "ask": 0.932,
+        "raw_mid_usdt": 0.93195,
+        "mid_usd": 0.9303423865,
+        "spread_bps_usd_normalized": 1.1731917365,
+        "volume_24h_xrp": 74326623.983785,
+        "depth_10bps": {
+          "bid": 167356.486621,
+          "ask": 174427.648309,
+          "unit": "USDT",
+          "imbalance": -0.0206889699
+        },
+        "depth_50bps": {
+          "bid": 1024769.178248,
+          "ask": 1071100.866123,
+          "unit": "USDT",
+          "imbalance": -0.0221061835
+        },
+        "depth_100bps": {
+          "bid": 1370662.682545,
+          "ask": 1368536.98011,
+          "unit": "USDT",
+          "imbalance": 0.0007760305
+        }
+      },
+      {
+        "venue": "Bitbank",
+        "pair": "XRP/JPY",
+        "bid": 147.685,
+        "ask": 147.686,
+        "mid_jpy": 147.6855,
+        "spread_bps": 0.0677114544,
+        "volume_24h_xrp": 14685719.3088,
+        "depth_10bps": {
+          "bid": 34850931.317322,
+          "ask": 5472399.334422,
+          "unit": "JPY",
+          "imbalance": 0.7285740416
+        },
+        "depth_50bps": {
+          "bid": 60547516.434668,
+          "ask": 7874840.848402,
+          "unit": "JPY",
+          "imbalance": 0.7698167336
+        },
+        "depth_100bps": {
+          "bid": 64264267.483898,
+          "ask": 20071806.259648,
+          "unit": "JPY",
+          "imbalance": 0.5240042518
+        },
+        "usd_normalized": false,
+        "circuit_break_mode": "NONE"
+      }
+    ],
+    "quote_basis": {
+      "venue": "OKX",
+      "status": "VERIFIED",
+      "method": "same_venue_synchronized_top_of_book_product",
+      "xrp_usdt_mid": 0.93195,
+      "usdt_usd_bid": 0.99827,
+      "usdt_usd_ask": 0.99828,
+      "usdt_usd_mid": 0.998275,
+      "usdt_discount_to_usd_bps": 17.25,
+      "normalized_mid_usd": 0.9303423865,
+      "normalized_bid_usd": 0.930287813,
+      "normalized_ask_usd": 0.93039696,
+      "normalization_overstatement_if_usdt_assumed_usd_bps": 17.2798049764,
+      "snapshot_skew_seconds": 0.4,
+      "max_component_age_seconds": 9.846731,
+      "depth_levels_normalized": false,
+      "publisher_independence_groups": [
+        "okx"
+      ]
+    },
+    "source_independence_groups": [
+      "coinbase",
+      "kraken",
+      "bitstamp",
+      "okx",
+      "bitbank"
+    ],
+    "interpretation": "Four USD-comparable best-book mids cluster within 1.37 bps. Coinbase, Kraken and Bitstamp show bid-heavy 10-bps depth; OKX's USDT book is slightly ask-heavy; Bitbank's JPY book is strongly bid-heavy but is not USD-normalized. These are separate REST snapshots, not a consolidated executable book or a directional signal."
+  },
+  "historical_batch": {
+    "interpretation": "Historical values become available only at their actual retrieval/known_at time; event_time is not a substitute for known_at.",
+    "coinbase_hourly_candle_batch": {
+      "records": 349,
+      "known_at_utc": "2026-11-21T00:32:41.879993Z",
+      "note": "Earlier Run267 batch; historical candles were first known at this capture time."
+    },
+    "binance_hourly_close": {
+      "records": 999,
+      "known_at_utc": "2026-11-21T07:13:43.810048Z",
+      "event_time_start_utc": "2026-10-10T16:00:00Z",
+      "event_time_end_utc": "2026-11-21T06:00:00Z",
+      "historical_values_available_before_known_at": false
+    },
+    "binance_hourly_open_interest": {
+      "records": 500,
+      "known_at_utc": "2026-11-21T07:13:45.132546Z",
+      "event_time_start_utc": "2026-10-31T12:00:00Z",
+      "event_time_end_utc": "2026-11-21T07:00:00Z",
+      "historical_values_available_before_known_at": false
+    },
+    "bybit_hourly_open_interest": {
+      "records": 200,
+      "known_at_utc": "2026-11-21T07:13:49.937019Z",
+      "event_time_start_utc": "2026-11-13T00:00:00Z",
+      "event_time_end_utc": "2026-11-21T07:00:00Z",
+      "historical_values_available_before_known_at": false
+    },
+    "snapshot_history": {
+      "total_snapshots": 18,
+      "large_batch_snapshots": 2,
+      "smaller_incremental_snapshots": 16,
+      "walk_forward_origins_available": 0
+    }
+  },
+  "event_timeline": {
+    "event_count": 150,
+    "independent_source_groups": 50,
+    "raw_hash_present_count": 0,
+    "verified_canonical_receipt_links": 0,
+    "receipt_complete": false,
+    "scenario_count": 117,
+    "model_eligible": false,
+    "registry_version": "run222",
+    "registry_sha256": "841f6733dadb687f35e480ee3fba3e1e6f455a6365abbad6fb15ec2fbc23a03",
+    "registry_captured_at_utc": "2026-11-19T15:16:42Z",
+    "age_hours_at_data_cutoff": 49.898808,
+    "event_artifact_sha256": "79759ecdc3f500626901f13c4d91e2153c156fc4aaa5f16270f28e8bfd8b278d"
+  },
+  "cross_analysis": {
+    "run_id": 44932304750,
+    "generated_at_utc": "2026-11-21T17:51:29.555674Z",
+    "artifact_id": 14716964905,
+    "artifact_sha256": "e816b78b0ef0211e67be55d15be40a0391b62343a5b2004ac38cee8de15570b2",
+    "xrp_sentiment": {
+      "status": "STALE_INPUT",
+      "latest_ingested_at_utc": "2026-10-29T13:23:01.047283Z",
+      "latest_input_age_hours": 556.475,
+      "recent_24h_entries": 0,
+      "forecast_eligible": false
+    },
+    "btc_sentiment": {
+      "status": "STALE_INPUT",
+      "latest_ingested_at_utc": "2026-10-29T13:38:11.448678Z",
+      "latest_input_age_hours": 556.222,
+      "recent_24h_entries": 0,
+      "forecast_eligible": false
+    },
+    "interpretation": "Cross-analysis job succeeded, but sentiment inputs are older than the 48-hour freshness threshold and are not model-eligible."
+  },
+  "source_failures": {
+    "total": 18,
+    "binance_http_451": {
+      "count": 8,
+      "sources": [
+        "binance_spot_ticker",
+        "binance_spot_klines",
+        "binance_perp_premium",
+        "binance_perp_open_interest",
+        "binance_perp_funding_history",
+        "binance_perp_open_interest_history",
+        "binance_perp_global_long_short_ratio",
+        "binance_spot_depth"
+      ],
+      "retryable": false,
+      "action": "Do not bypass regional restrictions."
+    },
+    "bybit_http_403": {
+      "count": 5,
+      "sources": [
+        "bybit_spot_ticker",
+        "bybit_spot_depth",
+        "bybit_linear_ticker",
+        "bybit_linear_open_interest",
+        "bybit_linear_funding_history"
+      ],
+      "retryable": false,
+      "action": "Runner region is unverified; do not proxy or bypass."
+    },
+    "grayscale_http_429": {
+      "count": 1,
+      "source": "xrp_etf_grayscale_gxrp_issuer_page",
+      "retryable": true
+    },
+    "franklin_parser": {
+      "count": 1,
+      "source": "xrp_etf_franklin_xrpz_issuer_page",
+      "action": "Raw hash captured; parser did not find expected identity/holdings markers."
+    },
+    "sec_user_agent_configuration": {
+      "count": 3,
+      "sources": [
+        "sec_edgar_submissions_evernorth",
+        "sec_edgar_submissions_coinbase",
+        "sec_edgar_submissions_circle"
+      ],
+      "action": "Configure an approved monitored contact identity; no placeholder or invented address."
+    }
+  },
+  "institutional_and_collateral_data": {
+    "model_eligible_features": 0,
+    "etf_flows": "Aggregator/issuer material remains raw-only or digest-only; no reconciled issuer cash-flow feature admitted.",
+    "rlusd": "Ripple transparency and XRPL cross-chain supply pages raw-only; no normalized supply feature admitted.",
+    "usdc": "Circle transparency page raw-only; no normalized supply feature admitted.",
+    "sbi_vc_trade": "Lending terms page digest-only; no verified loan balance or collateral quantity admitted.",
+    "morpho_cbxrp": "Market parameters, state, liquidity, state history and oracle state digest-only until token decimals, quote units and indexer block times are normalized.",
+    "coinbase_cbxrp": "Proof-of-reserves digest-only until locale, timezone and cache semantics are reconciled.",
+    "deribit": "XRP-USDC perpetual ticker and order book raw-only until contract amount units, depth semantics and sequence continuity are validated.",
+    "franklin": "XRPZ issuer parser failed; no holdings feature admitted.",
+    "sec": "Three issuer submissions blocked by missing monitored contact configuration."
+  },
+  "backfill_replay": {
+    "run_id": 44926486835,
+    "job_id": 136913593883,
+    "artifact_id": 14715109254,
+    "artifact_sha256": "00096cff28d5cee8f667edf5b8afbefb60e9e2970751bd8947f5ac90745ba56e",
+    "workflow_head_sha": "0bd03db10a7efe62c35c59d194fe2dc3e1b52616",
+    "source_main_run_id": 44923300352,
+    "records_before": 16939,
+    "records_after": 17057,
+    "recovered_records": 118,
+    "recovered_source_lineages": 11,
+    "snapshots_before": 17,
+    "snapshots_after": 18,
+    "sqlite_integrity": "ok",
+    "reconciliation_sha256": "7ae2e100a120ab52a7ab55bf36fa54a0b00d9a801d01e347de8bea0cb0010158",
+    "point_in_time_visibility": {
+      "before_as_of_utc": "2026-11-21T16:49:50.999999Z",
+      "before_record_count": 16939,
+      "after_as_of_utc": "2026-11-21T16:49:51.000001Z",
+      "after_record_count": 17057,
+      "visible_before_receipt": false,
+      "visible_after_receipt": true
+    },
+    "receipt_clock": {
+      "source": "github_api_run_date_header",
+      "store_receipt_time_is_actual_recovery_time": false,
+      "store_receipt_time_is_post_append_availability_bound": true
+    },
+    "status": "VERIFIED_IN_ISOLATED_CI_COPY_NOT_APPLIED_TO_MAIN",
+    "limitation": "Replay used main run43 because it executed before main run46. A fresh replay against run46 is required; do not project 17,057 onto current main."
+  },
+  "prediction_readiness": {
+    "directional_forecast": "NOT_ISSUED",
+    "walk_forward_origins": 0,
+    "walk_forward_forecasts": 0,
+    "drift_features_considered": 204,
+    "drift_features_evaluated": 0,
+    "probability_calibration": "NOT_STARTED",
+    "shadow_evaluation": "NOT_STARTED",
+    "real_money_actions": 0,
+    "model_eligible_cross_asset_sentiment": false
+  },
+  "nine_platform_status": {
+    "verified": [
+      "ChatGPT -> GitHub connector -> Barrot-Agent/B-Agent"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "external_dispatch_performed": false,
+    "external_data_transfer_performed": false,
+    "red_team_review": "NOT_EXECUTED",
+    "least_privilege": "GitHub repository metadata reports admin/maintain/push/pull/triage; connector token scopes were not introspected."
+  },
+  "competing_hypotheses": [
+    {
+      "hypothesis": "The tight four-venue best-book price cluster reflects no material cross-venue price dislocation at the capture instant.",
+      "support": "Four USD-comparable best-book mids span 1.37 bps.",
+      "counterevidence": "Only four venue snapshots; no consolidated trade tape or full cross-venue depth."
+    },
+    {
+      "hypothesis": "The book-imbalance disagreement is venue-local inventory or participant positioning, not a global directional signal.",
+      "support": "Coinbase/Kraken/Bitstamp are bid-heavy at 10 bps, OKX USDT is slightly ask-heavy, and Bitbank JPY is strongly bid-heavy.",
+      "counterevidence": "REST snapshots are asynchronous and quote units differ."
+    },
+    {
+      "hypothesis": "The raw XRP-USDT premium over USD is partly quote-basis distortion.",
+      "support": "Observed USDT/USD mid is 0.998275; normalized XRP/USD mid is 0.9303423865.",
+      "counterevidence": "This is one synchronized OKX snapshot; it does not establish a persistent USDT discount."
+    },
+    {
+      "hypothesis": "Historical derivatives data can support later model research only after its retrieval time.",
+      "support": "500 Binance OI and 200 Bybit OI observations have explicit first-known timestamps.",
+      "counterevidence": "Current derivatives endpoints are blocked or raw-only; no current cross-venue OI/funding consensus."
+    }
+  ],
+  "disconfirming_evidence": [
+    "OKX 10/50-bps USDT depth is slightly ask-heavy, contrary to the three USD books.",
+    "Bitstamp 50-bps depth is slightly ask-heavy despite its 10-bps bid tilt.",
+    "Bitbank's extreme bid skew is JPY-denominated and not USD-normalized.",
+    "Sentiment is stale by more than 23 days and cannot corroborate the spot snapshot.",
+    "ETF, stablecoin, collateral and exchange-flow observations remain ineligible; no institutional flow confirmation exists."
+  ],
+  "external_actions_performed": false,
+  "next_actions": [
+    "Re-run the isolated backfill against latest main run46 after the Run269 evidence commit triggers exact-head CI.",
+    "Capture publisher payloads for the 150-event registry and link each event by exact source URL, capture timestamp and raw SHA-256.",
+    "Resolve SEC contact configuration with an approved monitored project contact; do not invent a placeholder.",
+    "Keep Binance 451 and Bybit 403 endpoints blocked; use only authorized alternative sources.",
+    "Normalize ETF issuer holdings, RLUSD/USDC supply, SBI VC Trade and Morpho CBXRP units and timestamps before feature admission.",
+    "Implement deterministic feature-store rebuild from raw artifacts and an external immutable timestamp anchor.",
+    "Accumulate sequential post-capture observations before leakage-safe walk-forward, baselines and calibration; issue no directional forecast meanwhile."
+  ]
+}

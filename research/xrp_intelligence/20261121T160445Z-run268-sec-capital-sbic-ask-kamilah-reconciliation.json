@@ -1,0 +1,596 @@
+{
+  "schema_version": "barrot.xrp.research-evidence.v1",
+  "record_id": "run268-sec-capital-sbic-ask-kamilah-reconciliation",
+  "captured_at_utc": "2026-11-21T16:04:45Z",
+  "data_cutoff_utc": "2026-11-21T16:04:45Z",
+  "mission": {
+    "priority": 1,
+    "objective": "XRP intelligence and measured prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 as execution, orchestration, safety and verification foundation"
+  },
+  "evidence_status": "PRIMARY_SOURCE_RECONCILIATION_RESEARCH_ONLY",
+  "model_eligible": false,
+  "raw_capture": {
+    "raw_http_bytes_captured": false,
+    "raw_response_sha256": null,
+    "immutable_receipt_id": null,
+    "external_timestamp_anchor": null,
+    "limitation": "Rendered public web pages and indexed YouTube metadata were inspected. Raw HTTP bodies, response headers, byte-exact hashes and trusted external timestamp receipts were not captured. This record is research-only and excluded from the point-in-time feature store, model training, walk-forward scoring and forecast issuance."
+  },
+  "source_independence_groups": [
+    "EVERNORTH_SEC_ISSUER_FILINGS",
+    "SBIC_EAST_PRIMARY",
+    "SBIC_CENTRAL_PRIMARY",
+    "SBIC_WEST_PRIMARY",
+    "SBI_HOLDINGS_PRIMARY",
+    "PERMISSION_PRIMARY",
+    "COINGECKO_SECONDARY",
+    "KAMILAH_OFFICIAL_SITE",
+    "IHEART_INTERVIEW",
+    "YOUTUBE_CHANNEL_METADATA",
+    "PAUL_BARRON_YOUTUBE",
+    "SEAN_CROXTON_YOUTUBE"
+  ],
+  "source_registry": [
+    {
+      "id": "evernorth_2026q3_10q_sec",
+      "publisher": "Evernorth Holdings Inc. via SEC EDGAR",
+      "authority": "Primary issuer Form 10-Q embedded in 424B3 prospectus supplement",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER_FILINGS",
+      "filed_date": "2026-11-13",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm",
+      "claims_supported": [
+        "Since inception through September 30, 2026, Evernorth reported $214.1 million cash and 261,919,096 XRP relating to private-placement subscription agreements; the $214.1 million cash was used to purchase 84,365,876 XRP.",
+        "As of September 30, 2026, Evernorth reported approximately 346,284,972 XRP, $91,397 unrestricted cash, $341,887,231 digital assets at carrying value, $524,259,563 refundable investor advances, and a $32,870,033 nine-month net loss.",
+        "At the October 9, 2026 business-combination closing, Evernorth reported approximately $272.6 million aggregate gross cash proceeds before transaction expenses, comprising approximately $224.6 million from private-placement investments and $48.0 million released from the SPAC trust account; investors also contributed approximately 388,910,554 XRP in kind.",
+        "On October 13, 2026, Evernorth issued $30.0 million principal amount of convertible notes and received approximately $30.0 million gross proceeds before transaction expenses; a separate filing describes approximately $29.0 million net proceeds after a $1.0 million advisor fee.",
+        "From October 12 through November 9, 2026, holders exercised 3,073,366 warrants for cash; Evernorth issued the same number of Class A shares and received approximately $35.3 million gross. The filing reports 8,666,279 warrants remaining outstanding after those exercises.",
+        "At the October 9 closing, Evernorth assumed 11,739,645 warrants in total, each with an $11.50 exercise price. The 3,073,366 exercised plus 8,666,279 remaining reconcile exactly to this aggregate.",
+        "An optional equity line of credit permitted up to 5,218,935 Class A shares at 97% of applicable VWAP, subject to conditions and issuer purchase notices; the filing does not establish that the full facility, or any particular draw, was funded.",
+        "The filing separately describes 239,653 Sponsor Warrants; the separate November 17 public-warrant supplement registers up to 11,499,992 shares issuable upon exercise of Public Warrants. These are separate warrant classes within the 11,739,645 total assumed at closing."
+      ],
+      "limitations": [
+        "The September 30 financial statements predate the October 9 business-combination closing; do not treat pre-close balance-sheet figures as post-close consolidated cash.",
+        "Gross cash proceeds are not net cash available after transaction costs, advisory/placement fees, debt, working capital and other uses.",
+        "In-kind XRP contributions are not cash proceeds and must not be counted as cash capital.",
+        "The optional equity line is capacity, not evidence of funded proceeds; no draw is established by this filing.",
+        "The filing's XRP holdings and capital statements are issuer-reported, not independently audited on-chain wallet reconciliation in this research record."
+      ]
+    },
+    {
+      "id": "evernorth_2026_11_17_8ka_sec",
+      "publisher": "Evernorth Holdings Inc. via SEC EDGAR",
+      "authority": "Primary issuer Form 8-K/A and attached Pathfinder financial statements",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER_FILINGS",
+      "filed_date": "2026-11-17",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074357/evernorth-424stickerposam8a.htm",
+      "claims_supported": [
+        "The business combination was consummated on October 9, 2026; Pathfinder Digital Assets LLC became a subsidiary of Evernorth.",
+        "Before the transaction, Pathfinder was a wholly owned subsidiary of Ripple.",
+        "Ripple contributed 126,791,458 XRP to Pathfinder under a contribution agreement; the filing describes the contribution as a common-control transaction recorded at Ripple's historical carrying value of zero.",
+        "RippleWorks contributed 211,319,096 XRP to Arrington XRP Capital Fund, LP, which then contributed the XRP as subscription consideration for Evernorth shares.",
+        "A Ripple-affiliated contributor entity transferred 50,000,000 XRP under a separate subscription agreement.",
+        "Certain investors affiliated with SBI Holdings amended their advance-funding subscription agreements so Class A issuance was capped at a 39.9% ownership threshold; excess shares were issued as Class C.",
+        "Pathfinder's September 30, 2026 statements report $1,490,951 cash, $3,732,611 nine-month net loss, $7,000,000 related-party note payable, $3,562,118 related-party receivable and $2,255,857 related-party payable."
+      ],
+      "limitations": [
+        "Pathfinder's September 30 statements are subsidiary-only and pre-close; do not combine them with Evernorth consolidated balances without eliminating intercompany items.",
+        "The 39.9% threshold concerns Class A ownership, not 39.9% of total economic ownership or all share classes.",
+        "RippleWorks, Arrington Capital, SBI-affiliated investors and Ripple are distinct legal persons/entities; do not collapse their contributions into one Ripple cash purchase.",
+        "The XRP contributions are in-kind asset contributions, not cash proceeds."
+      ]
+    },
+    {
+      "id": "pathfinder_2026q3_mdna_sec",
+      "publisher": "Pathfinder Digital Assets LLC via SEC EDGAR",
+      "authority": "Primary issuer MD&A, Exhibit 99.2 to Evernorth Form 8-K/A",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER_FILINGS",
+      "filed_date": "2026-11-17",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074319/pf20260930-mda.htm",
+      "claims_supported": [
+        "Pathfinder's post-close role is the entity through which Evernorth conducts XRP treasury and yield-generating activities.",
+        "Pathfinder reported no revenue before closing and a $3.7 million nine-month net loss; it reported $1.5 million unrestricted cash and a $5.1 million net working-capital deficit at September 30, 2026.",
+        "Pathfinder states Coinbase is its principal market for XRP financial-reporting purposes after assessing trading volume/activity, price consistency and stability, and compliance accessibility.",
+        "Pathfinder's strategy discusses potential at-market XRP purchases, yield strategies, and possible secured financing using XRP as collateral; these are described as plans or possibilities, not proof that such activity is already live.",
+        "The filing says Ripple was the primary liquidity source through contributed XRP and related-party facilities."
+      ],
+      "limitations": [
+        "Coinbase being the principal accounting market does not establish Coinbase custody of Pathfinder or Evernorth XRP.",
+        "Potential collateralized financing and yield strategies are not evidence of an executed loan, encumbrance, deployed position or realized yield.",
+        "Historical financial results predate the business-combination closing."
+      ]
+    },
+    {
+      "id": "evernorth_2026_11_17_public_warrant_424b3",
+      "publisher": "Evernorth Holdings Inc. via SEC EDGAR",
+      "authority": "Primary issuer Form 424B3 prospectus supplement",
+      "source_independence_group": "EVERNORTH_SEC_ISSUER_FILINGS",
+      "filed_date": "2026-11-17",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026074357/evernorth-424stickerposam8a.htm",
+      "claims_supported": [
+        "The prospectus relates to up to 11,499,992 Class A shares issuable upon exercise of Public Warrants at $11.50 per share.",
+        "Evernorth receives no proceeds from sales of shares under the prospectus except amounts received when Public Warrants are exercised.",
+        "On November 16, 2026, the last reported XRPN share price was $7.45 and the last reported XRPNW warrant price was $1.33.",
+        "The maximum arithmetic gross proceeds from exercise of all 11,499,992 registered Public Warrants at $11.50 would be $132,249,908, but this is a theoretical registration ceiling, not actual proceeds and not the number of warrants remaining after prior exercises."
+      ],
+      "limitations": [
+        "The 11,499,992 figure is the registered Public Warrant share ceiling, not proof that this many warrants remained outstanding on November 17.",
+        "Do not add this prospectus ceiling to the 10-Q's warrant totals; they refer to related warrant classes and must be reconciled at the aggregate level.",
+        "November 16 market prices are a dated snapshot, not current prices or evidence of exercise."
+      ]
+    },
+    {
+      "id": "sbic_east_company_profile",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "Official company profile",
+      "source_independence_group": "SBIC_EAST_PRIMARY",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "claims_supported": [
+        "The legal name is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; the company explicitly identifies as SBIC East Japan.",
+        "Founded November 15, 1963; capital JPY 6,673.4 million; shareholders include local governments, chambers of commerce, financial institutions and operating companies.",
+        "The company lists Nagoya SBIC Central Japan and Osaka SBIC West Japan as sister companies."
+      ],
+      "limitations": [
+        "The page establishes the regional SBIC identity and sister-company relationship; it does not establish a relationship with SBI Holdings."
+      ]
+    },
+    {
+      "id": "sbic_central_company_profile",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "Official company profile",
+      "source_independence_group": "SBIC_CENTRAL_PRIMARY",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "claims_supported": [
+        "The legal name is Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; the company explicitly identifies as SBIC Central Japan.",
+        "Founded November 18, 1963; capital JPY 4,380.3 million; service area is Aichi, Gifu, Mie, Toyama and Ishikawa.",
+        "The company lists Tokyo SBIC East Japan and Osaka SBIC West Japan as sister companies."
+      ],
+      "limitations": [
+        "The page establishes the regional SBIC identity and sister-company relationship; it does not establish a relationship with SBI Holdings."
+      ]
+    },
+    {
+      "id": "sbic_west_company_profile",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "authority": "Official company profile",
+      "source_independence_group": "SBIC_WEST_PRIMARY",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "claims_supported": [
+        "The legal name is Osaka Small and Medium Business Investment & Consultation Co., Ltd.; the company explicitly identifies as SBIC West Japan.",
+        "Founded November 20, 1963; capital JPY 6,822 million; service area covers 24 prefectures west of Fukui, Shiga, Nara and Wakayama.",
+        "The company lists Tokyo SBIC East Japan and Nagoya SBIC Central Japan as sister companies."
+      ],
+      "limitations": [
+        "The page establishes the regional SBIC identity and sister-company relationship; it does not establish a relationship with SBI Holdings."
+      ]
+    },
+    {
+      "id": "sbi_vc_trade_group_profile",
+      "publisher": "SBI Holdings, Inc.",
+      "authority": "Official SBI Group company profile",
+      "source_independence_group": "SBI_HOLDINGS_PRIMARY",
+      "url": "https://www.sbigroup.co.jp/english/company/group/sbivc.html",
+      "claims_supported": [
+        "SBI VC Trade Co., Ltd. is an SBI Group company and the profile states SBI Group owns 100% of its voting rights.",
+        "SBI VC Trade is a digital-asset and electronic-payment-instrument exchange provider."
+      ],
+      "limitations": [
+        "This establishes SBI VC Trade's relationship to SBI Group; it does not make the three regional SBIC companies subsidiaries or divisions of SBI Holdings."
+      ]
+    },
+    {
+      "id": "permission_ask_base_launch",
+      "publisher": "Permission",
+      "authority": "Official Permission blog",
+      "source_independence_group": "PERMISSION_PRIMARY",
+      "publication_date": "2025-01-10",
+      "url": "https://www.permission.ai/blog/ask-is-now-live-on-base-eeaba",
+      "claims_supported": [
+        "Permission describes ASK as its token for data ownership, consent and rewards-driven advertising.",
+        "Permission announced ASK on Base and said users could trade it through Coinbase Wallet.",
+        "The blog lists Base contract 0xBB146326778227A8498b105a18f84E0987A684b4."
+      ],
+      "limitations": [
+        "This is a Permission ecosystem token; no direct XRP Ledger, Ripple or XRP utility relationship is established by this source."
+      ]
+    },
+    {
+      "id": "permission_ask_contract_docs",
+      "publisher": "Permission",
+      "authority": "Official token documentation",
+      "source_independence_group": "PERMISSION_PRIMARY",
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "claims_supported": [
+        "The documentation identifies ASK as a LayerZero OFT token and lists Base contract 0xBB146326778227A8498b105a18f84E0987A684b4 and Polygon contract 0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff as official contracts.",
+        "The documentation states that these are the only official ASK contracts authorized by Permission and describes Stargate bridging."
+      ],
+      "limitations": [
+        "Contract-address pages can change; any on-chain ingestion must capture the current page and independently verify chain, code, token metadata and migration status."
+      ]
+    },
+    {
+      "id": "permission_ask_wallet_coinbase",
+      "publisher": "Permission",
+      "authority": "Official Permission blog",
+      "source_independence_group": "PERMISSION_PRIMARY",
+      "publication_date": "2026-09-22",
+      "url": "https://www.permission.ai/blog/ask-wallet-update",
+      "claims_supported": [
+        "Permission announced that its ASK wallet moved to Coinbase embedded-wallet infrastructure.",
+        "Permission states Coinbase holds wallet keys on the user's behalf under user authority and that Permission no longer holds the wallet keys."
+      ],
+      "limitations": [
+        "This is a direct wallet-infrastructure relationship between Permission and Coinbase, not evidence of a Ripple, XRP or XRPL partnership."
+      ]
+    },
+    {
+      "id": "permission_ask_contract_migration_secondary",
+      "publisher": "CoinGecko",
+      "authority": "Independent market-data aggregator",
+      "source_independence_group": "COINGECKO_SECONDARY",
+      "url": "https://www.coingecko.com/en/coins/permission-coin",
+      "data_date": "2026-11-21",
+      "claims_supported": [
+        "CoinGecko reports that Wormhole-bridged ASK on Base migrated to a new LayerZero contract and that users must repatriate to Polygon before bridging back to Base through LayerZero.",
+        "CoinGecko's listed Base and Polygon contracts align with Permission's current contract documentation."
+      ],
+      "limitations": [
+        "Secondary source; use Permission's official contract documentation as canonical and preserve the older 2025 Base contract announcement as historical evidence.",
+        "A separate January 15, 2025 Permission press release listed a different Base address, 0x79322cee6c90735b967d2396b9adc392915aebb6; its current status is unresolved and it must not be treated as canonical without issuer confirmation."
+      ]
+    },
+    {
+      "id": "kamilah_wealth_doctor_official_site",
+      "publisher": "Dr. Kamilah Stevenson / The Wealth Doctor",
+      "authority": "Official professional website",
+      "source_independence_group": "KAMILAH_OFFICIAL_SITE",
+      "url": "https://learn.kamilahstevenson.com/",
+      "claims_supported": [
+        "The site identifies its subject as Dr. Kamilah Stevenson, also known as The Wealth Doctor."
+      ],
+      "limitations": [
+        "The site establishes the professional identity and brand but does not itself list a verified YouTube channel link."
+      ]
+    },
+    {
+      "id": "kamilah_iheart_xrp_podcast_interview",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "authority": "Public interview page with transcript",
+      "source_independence_group": "IHEART_INTERVIEW",
+      "publication_date": "2026-06-11",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "claims_supported": [
+        "The episode identifies Dr. Kamilah Stevenson as the guest and the transcript includes her self-identification of her YouTube presence as 'doctor Camilla Stevenson'.",
+        "The guest explicitly warns that fake pages exist and says she is working against impersonation."
+      ],
+      "limitations": [
+        "The transcript is automatically generated and may contain spelling/transcription errors; it is used only to triangulate the channel identity, not to attribute every similarly named account."
+      ]
+    },
+    {
+      "id": "kamilah_youtube_channel_metadata",
+      "publisher": "YouTube",
+      "authority": "Public channel metadata",
+      "source_independence_group": "YOUTUBE_CHANNEL_METADATA",
+      "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "claims_supported": [
+        "The channel title is Kamilah Stevenson and its handle is @drkamilahstevenson.",
+        "The channel description matches the investing, crypto, macro-awareness and long-term-investing positioning described on the official Kamilah Stevenson website.",
+        "The handle is triangulated by the June 11, 2026 Paul Barron video title, which names the guest as @drkamilahstevenson, and the interview transcript's self-identification."
+      ],
+      "limitations": [
+        "Channel identity is verified by cross-source triangulation, but the public channel page did not expose a complete indexed upload list in this capture.",
+        "Do not merge similar handles such as @drkamilahstevenson-j9r, @KamilahStevensonXrpStocks or other namesakes without direct cross-link evidence."
+      ]
+    },
+    {
+      "id": "kamilah_paul_barron_youtube_video",
+      "publisher": "Paul Barron Podcast",
+      "authority": "Public YouTube guest appearance",
+      "source_independence_group": "PAUL_BARRON_YOUTUBE",
+      "publication_date": "2026-06-11",
+      "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "claims_supported": [
+        "Public video titled 'Crypto Panics! W/ @drkamilahstevenson' identifies Dr. Kamilah Stevenson as a guest; the description covers XRP, institutional adoption, Japan and investing mindset."
+      ],
+      "limitations": [
+        "Uploaded by Paul Barron Podcast, not by Kamilah's own channel; treat as a guest appearance."
+      ]
+    },
+    {
+      "id": "kamilah_sean_croxton_youtube_video",
+      "publisher": "Sean Croxton",
+      "authority": "Public YouTube video featuring Kamilah Stevenson",
+      "source_independence_group": "SEAN_CROXTON_YOUTUBE",
+      "publication_date": "2025-08-06",
+      "url": "https://www.youtube.com/watch?v=TS7nhMTgd2Y",
+      "claims_supported": [
+        "Public video titled 'Dr. Kamilah Stevenson | Generational Health Starts With You' identifies Kamilah Stevenson as the subject and describes it as sourced from her TEDxWillowCreek talk."
+      ],
+      "limitations": [
+        "Uploaded by Sean Croxton, not by Kamilah's own channel; this is a third-party repost/feature, not an official upload from her channel."
+      ]
+    },
+    {
+      "id": "permission_ask_base_launch_globenewswire",
+      "publisher": "Permission via GlobeNewswire",
+      "authority": "Issuer press release distributed by GlobeNewswire",
+      "source_independence_group": "PERMISSION_PRIMARY",
+      "publication_date": "2025-01-15",
+      "url": "https://www.globenewswire.com/news-release/2025/01/15/3009989/0/en/Permission-Launches-ASK-on-Base-Ushering-in-the-Next-Era-of-Data-Ownership-and-Rewards.html",
+      "claims_supported": [
+        "Permission announced ASK on Base and listed Base contract 0x79322cee6c90735b967d2396b9adc392915aebb6."
+      ],
+      "limitations": [
+        "This conflicts with Permission's January 10, 2025 blog and current documentation, both of which list 0xBB146326778227A8498b105a18f84E0987A684b4. The 0x793 address is not treated as canonical without explicit issuer migration/retirement confirmation."
+      ]
+    }
+  ],
+  "capital_reconciliation": {
+    "currency": "USD",
+    "as_of_dates": {
+      "pre_close_financials": "2026-09-30",
+      "business_combination_close": "2026-10-09",
+      "convertible_note_funding": "2026-10-13",
+      "warrant_exercise_cutoff": "2026-11-09",
+      "warrant_prospectus_market_prices": "2026-11-16"
+    },
+    "confirmed_cash_events": [
+      {
+        "amount_gross": 214100000,
+        "date_range": "through 2026-09-30",
+        "event": "Private-placement subscription cash received; issuer says cash was used to purchase 84,365,876 XRP.",
+        "classification": "cash_received_and_deployed",
+        "source_ids": [
+          "evernorth_2026q3_10q_sec"
+        ]
+      },
+      {
+        "amount_gross": 272600000,
+        "date": "2026-10-09",
+        "event": "Aggregate gross cash proceeds at business-combination close: approximately $224.6M private-placement investments plus $48.0M SPAC trust release, before transaction expenses.",
+        "classification": "gross_cash_received",
+        "source_ids": [
+          "evernorth_2026q3_10q_sec"
+        ]
+      },
+      {
+        "amount_gross": 30000000,
+        "amount_net": 29000000,
+        "date": "2026-10-13",
+        "event": "Convertible note proceeds; approximately $30M gross and $29M net after a $1M capital-markets advisor fee.",
+        "classification": "debt_financing_cash_received",
+        "source_ids": [
+          "evernorth_2026q3_10q_sec"
+        ]
+      },
+      {
+        "amount_gross": 35300000,
+        "date_range": "2026-10-12 to 2026-11-09",
+        "event": "Cash proceeds from exercise of 3,073,366 warrants.",
+        "classification": "warrant_exercise_cash_received",
+        "source_ids": [
+          "evernorth_2026q3_10q_sec"
+        ]
+      }
+    ],
+    "in_kind_xrp_events": [
+      {
+        "amount_xrp": 261919096,
+        "event": "Private-placement XRP contributions relating to subscription agreements.",
+        "classification": "in_kind_asset_contribution",
+        "source_ids": [
+          "evernorth_2026q3_10q_sec"
+        ]
+      },
+      {
+        "amount_xrp": 388910554,
+        "date": "2026-10-09",
+        "event": "Aggregate investor XRP contributions in kind at closing.",
+        "classification": "in_kind_asset_contribution",
+        "source_ids": [
+          "evernorth_2026q3_10q_sec"
+        ]
+      },
+      {
+        "amount_xrp": 126791458,
+        "event": "Ripple contribution to Pathfinder under a common-control contribution agreement.",
+        "classification": "related_party_in_kind_contribution",
+        "source_ids": [
+          "evernorth_2026_11_17_8ka_sec"
+        ]
+      },
+      {
+        "amount_xrp": 211319096,
+        "event": "RippleWorks contribution to Arrington XRP Capital Fund, LP, then subscription consideration.",
+        "classification": "in_kind_subscription_contribution",
+        "source_ids": [
+          "evernorth_2026_11_17_8ka_sec"
+        ]
+      },
+      {
+        "amount_xrp": 50000000,
+        "event": "Contribution by a Ripple-affiliated contributor entity under a separate subscription agreement.",
+        "classification": "related_party_in_kind_contribution",
+        "source_ids": [
+          "evernorth_2026_11_17_8ka_sec"
+        ]
+      }
+    ],
+    "contingent_or_optional_capacity": [
+      {
+        "amount_gross": 132249908,
+        "event": "Theoretical maximum gross proceeds if all 11,499,992 registered Public Warrants were exercised at $11.50.",
+        "classification": "theoretical_warrant_capacity_not_actual_cash",
+        "source_ids": [
+          "evernorth_2026_11_17_public_warrant_424b3"
+        ]
+      },
+      {
+        "shares_max": 5218935,
+        "event": "Optional ELOC capacity; 97% of applicable VWAP subject to purchase notices and conditions.",
+        "classification": "optional_equity_capacity_not_proven_draw",
+        "source_ids": [
+          "evernorth_2026q3_10q_sec"
+        ]
+      }
+    ],
+    "reconciliation_notes": [
+      "Do not add the $214.1M pre-close private-placement cash figure to the $272.6M closing gross-cash figure; they describe related stages/aggregates of the same transaction history and may overlap.",
+      "The XRP quantities 261,919,096, 388,910,554, 126,791,458, 211,319,096 and 50,000,000 describe nested or related contribution paths and aggregate closing disclosures. Do not sum them; the 388,910,554 XRP figure is the aggregate in-kind closing amount, while several other figures describe constituent or related-party routes.",
+      "The 10-Q reports 11,739,645 total warrants assumed at closing; 3,073,366 exercised plus 8,666,279 remaining equals that total.",
+      "The 11/17 prospectus separately registers up to 11,499,992 Public Warrant shares; the 11/13 resale prospectus separately identifies 239,653 Sponsor Warrants. Do not treat the 11,499,992 registered ceiling as remaining warrants after prior exercises.",
+      "The 11/16 XRPN share price of $7.45 was below the $11.50 exercise price; this dated observation does not prove future non-exercise.",
+      "The phrase 'actual capital' is not used as a formal accounting classification in the reviewed SEC filings. Barrot should classify cash received, cash net of fees, debt proceeds, in-kind XRP, optional facilities, warrant exercise proceeds and unexercised capacity separately.",
+      "Do not infer that SBI Holdings itself funded the entire $214.1M private-placement cash amount; the filing establishes SBI-affiliated share issuance and the issuer's aggregate cash, but not a complete investor-by-investor cash reconciliation."
+    ]
+  },
+  "relationship_reconciliation": {
+    "verified_edges": [
+      {
+        "from": "Ripple Labs Inc.",
+        "to": "Pathfinder Digital Assets LLC",
+        "relationship": "parent_before_2026-10-09_and_126791458_XRP_contributor",
+        "source_ids": [
+          "evernorth_2026_11_17_8ka_sec"
+        ]
+      },
+      {
+        "from": "Evernorth Holdings Inc.",
+        "to": "Pathfinder Digital Assets LLC",
+        "relationship": "parent_after_2026-10-09_business_combination",
+        "source_ids": [
+          "evernorth_2026_11_17_8ka_sec",
+          "pathfinder_2026q3_mdna_sec"
+        ]
+      },
+      {
+        "from": "RippleWorks Inc.",
+        "to": "Arrington XRP Capital Fund LP",
+        "relationship": "211319096_XRP_contributor_to_sponsor_subscription",
+        "source_ids": [
+          "evernorth_2026_11_17_8ka_sec"
+        ]
+      },
+      {
+        "from": "SBI Holdings affiliated investors",
+        "to": "Evernorth Holdings Inc.",
+        "relationship": "advance_funding_subscription_investors_subject_to_39.9_percent_Class_A_cap",
+        "source_ids": [
+          "evernorth_2026_11_17_8ka_sec"
+        ]
+      },
+      {
+        "from": "Coinbase",
+        "to": "Pathfinder XRP financial reporting",
+        "relationship": "principal_market_selected_for_accounting_not_proven_custodian",
+        "source_ids": [
+          "pathfinder_2026q3_mdna_sec"
+        ]
+      },
+      {
+        "from": "Permission",
+        "to": "Coinbase",
+        "relationship": "ASK_wallet_embedded_wallet_infrastructure_provider",
+        "source_ids": [
+          "permission_ask_wallet_coinbase"
+        ]
+      },
+      {
+        "from": "Permission",
+        "to": "Base",
+        "relationship": "ASK_token_deployed_on_Coinbase_L2",
+        "source_ids": [
+          "permission_ask_base_launch",
+          "permission_ask_contract_docs"
+        ]
+      }
+    ],
+    "not_established": [
+      "No direct Permission/ASK to Ripple/XRP/XRPL relationship established.",
+      "No direct SBIC East/Central/West to SBI Holdings relationship established by reviewed primary company profiles.",
+      "Coinbase principal-market status does not establish Evernorth or Pathfinder XRP custody by Coinbase.",
+      "Potential XRP-secured financing and yield strategies in Evernorth/Pathfinder disclosures do not establish an executed collateral loan or deployed yield position."
+    ]
+  },
+  "sbic_identity": {
+    "east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+    "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan)",
+    "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan)",
+    "relationship": "The three official profiles describe the other two as sister companies. They are separate regional investment-and-consultation legal entities, not divisions of SBI Holdings. The reviewed primary pages do not establish ownership by SBI Holdings.",
+    "distinction_from_sbi_holdings": "SBI Holdings is a separate financial-services group; SBI VC Trade is identified as 100% owned by SBI Group. Do not conflate SBIC with SBI."
+  },
+  "ask_coin_reconciliation": {
+    "candidate_identity": "Permission Coin (ticker ASK)",
+    "status": "IDENTIFIED_AS_A_SEPARATE_PERMISSION_ECOSYSTEM_TOKEN; NO_XRP_RELATIONSHIP_ESTABLISHED",
+    "current_official_contracts": {
+      "base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+      "polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+    },
+    "old_address_conflict": {
+      "address": "0x79322cee6c90735b967d2396b9adc392915aebb6",
+      "source": "Permission's January 15, 2025 GlobeNewswire launch announcement",
+      "status": "HISTORICAL_OR_DEPRECATED_STATUS_UNRESOLVED",
+      "rule": "Use current official Permission documentation as canonical only after a fresh on-chain and issuer verification; retain older announcement as a conflicting historical record."
+    },
+    "coinbase_relationship": "Permission announced ASK on Base/Coinbase Wallet in January 2025 and moved its wallet to Coinbase embedded-wallet infrastructure in September 2026. This is a Permission-Coinbase relationship, not a Ripple/XRP relationship."
+  },
+  "exact_phrase_research": {
+    "ask_coin": {
+      "query": "\"ASK Coin\" XRP",
+      "result": "Permission Coin (ASK) is the best-supported candidate entity for ASK; exact phrase searches do not establish a distinct XRP-linked ASK Coin.",
+      "status": "PARTIAL_IDENTITY_RESOLVED_NO_XRP_LINK"
+    },
+    "actual_capital": {
+      "query": "\"actual capital\" XRP Evernorth",
+      "result": "No formal accounting term or single scalar was established. SEC filings support a structured reconciliation of cash received, net proceeds, debt, warrant exercise cash, in-kind XRP, optional ELOC capacity and unexercised warrants.",
+      "status": "CONCEPT_RECONCILED_PRIMARY_FILINGS"
+    },
+    "sbic_chatgpt_sibc": {
+      "query": "\"SBIC, ChatGPT SBIC\"",
+      "result": "No independently indexed primary evidence for the exact phrase or a formal OpenAI partnership with the regional SBIC companies was found.",
+      "status": "UNRESOLVED_NO_PARTNERSHIP_EVIDENCE"
+    }
+  },
+  "kamilah_stevenson_youtube_inventory": {
+    "identity_status": "CROSS_SOURCE_IDENTITY_VERIFIED_FOR_CHANNEL_HANDLE",
+    "person": "Dr. Kamilah Stevenson, also known as The Wealth Doctor",
+    "verified_channel": {
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "handle": "@drkamilahstevenson",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "verification_basis": "Official professional site identifies Dr. Kamilah Stevenson; June 11, 2026 iHeart interview transcript has the guest self-identify her YouTube presence as 'doctor Camilla Stevenson' and warn of fake pages; Paul Barron video title links the guest to @drkamilahstevenson; YouTube channel metadata matches the same investing/crypto/macro description."
+    },
+    "attributed_public_videos": [
+      {
+        "title": "Crypto Panics! W/ @drkamilahstevenson",
+        "uploader": "Paul Barron Podcast",
+        "publication_date": "2026-06-11",
+        "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+        "attribution": "Verified guest appearance, not an upload on her own channel."
+      },
+      {
+        "title": "Dr. Kamilah Stevenson | Generational Health Starts With You",
+        "uploader": "Sean Croxton",
+        "publication_date": "2025-08-06",
+        "url": "https://www.youtube.com/watch?v=TS7nhMTgd2Y",
+        "attribution": "Verified third-party video featuring her; description attributes source material to her TEDxWillowCreek talk."
+      }
+    ],
+    "exclusions": [
+      "Similar handles and duplicate-looking channels were not attributed without direct cross-link evidence.",
+      "The indexed public channel page did not expose a complete upload inventory during this capture; the two videos above are the verified public appearances found, not a claim that only two exist."
+    ]
+  },
+  "source_independence_and_disagreement": {
+    "evernorth_sec_documents": "The 10-Q, 8-K/A, prospectus and exhibits are one issuer filing family; count them as one source-independence group, not several independent confirmations.",
+    "sbic": "East, Central and West official company pages are separate issuer sources and mutually describe sister-company status.",
+    "ask_contracts": "Permission's January 10, 2025 blog and current docs list Base 0xBB146..., while its January 15, 2025 issuer press release lists 0x79322...; current docs also list Polygon 0xaA371.... CoinGecko reports a Wormhole-to-LayerZero migration, but the exact status of 0x79322... remains unresolved. Count all Permission pages as one issuer source group and do not silently rewrite the older address.",
+    "youtube": "The official site, iHeart transcript, channel metadata and third-party video are separate publishers. Multiple lookalike handles exist; only the triangulated handle is included."
+  },
+  "forecast_policy": {
+    "forecast_issued": false,
+    "directional_forecast_allowed": false,
+    "reason": "This is a public-source research artifact without raw HTTP receipts, trusted external timestamps, a synchronized point-in-time feature-store ingestion or out-of-sample predictive evaluation."
+  }
+}

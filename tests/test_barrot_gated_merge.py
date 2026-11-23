@@ -50,3 +50,47 @@ def test_merge_gate_runs_for_pull_requests_and_integration_pushes() -> None:
     assert "pull_request:" in source
     assert "push:" in source
     assert 'branches: ["integration/**"]' in source
+
+
+def test_merge_gate_preserves_explicit_false_draft_state_and_fails_closed() -> None:
+    import json
+    import shutil
+    import subprocess
+    import pytest
+
+    source = WORKFLOW.read_text(encoding="utf-8")
+    expression = 'if has("draft") then (.draft|tostring) else "unknown" end'
+    expected_assignment = f'draft="$(jq -r \'{expression}\' <<< "$pr_json")"'
+    assert expected_assignment in source
+    assert ".draft // true" not in source
+    assert "PR draft state could not be verified" in source
+
+    jq = shutil.which("jq")
+    if jq is None:
+        pytest.skip("jq is unavailable; GitHub Actions Ubuntu runner includes jq")
+
+    cases = (
+        ({"draft": False}, "false"),
+        ({"draft": True}, "true"),
+        ({}, "unknown"),
+        ({"draft": None}, "null"),
+    )
+    for payload, expected in cases:
+        result = subprocess.run(
+            [jq, "-r", expression],
+            input=json.dumps(payload),
+            text=True,
+            capture_output=True,
+            check=True,
+        )
+        assert result.stdout.strip() == expected
+
+
+
+def test_skipped_integration_push_full_suite_has_a_distinct_check_name() -> None:
+    ci_source = (REPO_ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
+    # The integration push intentionally skips the expensive full suite; its skipped
+    # check must not collide with the authoritative pull_request full-suite check.
+    assert "Full repository test suite (PR event only)" in ci_source
+    assert "name: Full repository test suite" not in ci_source
+    assert "if: github.event_name != 'push' || github.ref == 'refs/heads/main'" in ci_source

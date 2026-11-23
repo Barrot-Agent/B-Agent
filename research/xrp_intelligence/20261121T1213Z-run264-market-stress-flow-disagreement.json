@@ -1,0 +1,272 @@
+{
+  "schema_version": "barrot.xrp.market-stress-flow-disagreement.v1",
+  "run_id": 264,
+  "captured_at_utc": "2026-11-21T12:16:57.634Z",
+  "repository_main_sha": "550a647ee7269a704d4600ff337b2145acc90473",
+  "research_branch": "integration/xrp-post-merge-verification-20261121T0002Z",
+  "branch_head_at_capture": "88cb458603ee62eb0c3d7176e78b8bb360f3d5b5",
+  "research_scope": [
+    "spot_structure",
+    "derivatives",
+    "liquidations",
+    "exchange_balances",
+    "spot_etf_flows",
+    "institutional_positions",
+    "payment_rails"
+  ],
+  "model_eligible": false,
+  "eligibility_reason": "Public page and search-result observations only. Raw HTTP response bodies, issuer-file bytes, immutable source receipts, and exact per-observation capture timestamps were not archived in this run. These observations are research-only and must not enter the point-in-time feature store or forecast inputs.",
+  "summary": {
+    "finding": "A sharp XRP selloff coincided with substantial long-side liquidations, falling open interest, and reported spot ETF redemptions. Counterevidence includes reported net exchange-balance declines and the still-positive cumulative ETF flow base. Exact ETF daily flows and liquidation totals disagree across aggregators and are not resolved to raw issuer/exchange records.",
+    "forecast": "NOT_ISSUED",
+    "directional_claim": false
+  },
+  "market_snapshot": {
+    "provider": "CoinGlass",
+    "retrieved_page": "https://www.coinglass.com/currencies/XRP",
+    "observed_values": {
+      "xrp_usd": 0.9018,
+      "change_24h_pct": -5.39,
+      "low_24h_usd": 0.8591,
+      "high_24h_usd": 0.9539,
+      "spot_volume_24h_usd": 1030000000,
+      "futures_volume_24h_usd": 3850000000,
+      "open_interest_usd": 1730000000,
+      "open_interest_change_24h_pct": -9.04,
+      "funding_rate_8h_pct": 0.0028,
+      "liquidations_24h_usd": 31700000,
+      "long_liquidation_share_pct": 92,
+      "spot_etf_flow_2026_11_20_usd": -5000000
+    },
+    "caveat": "Dynamic page values changed across separate reads during the same research run. Treat as one publisher snapshot, not a consolidated exchange tape. No raw exchange trade/book payload was archived."
+  },
+  "liquidation_reconciliation": {
+    "coin_glass": {
+      "total_usd": 31425483,
+      "longs_usd": 29348927,
+      "shorts_usd": 2076556,
+      "long_share_pct": 93.39,
+      "liquidations_count": 7162,
+      "peak_hour_utc": "15:00-16:00",
+      "page": "https://www.coinglass.com/liquidations/XRP"
+    },
+    "arbitrage_x_page_views": [
+      {
+        "total_usd": 17900000,
+        "longs_usd": 16700000,
+        "shorts_usd": 1100000,
+        "liquidations_count": 4854,
+        "data_as_of_utc": "2026-11-21T02:12:00Z",
+        "delay_minutes": 15,
+        "reported_gap": "1h 44m · 1 exchange",
+        "page": "https://arbitragex.io/liquidations/xrp"
+      },
+      {
+        "total_usd": 27400000,
+        "longs_usd": 25500000,
+        "shorts_usd": 1900000,
+        "liquidations_count": 6561,
+        "data_as_of_utc": "2026-11-21T08:36:00Z",
+        "delay_minutes": 15,
+        "reported_gap": "1h 44m · 1 exchange",
+        "page": "https://arbitragex.io/liquidations/xrp"
+      }
+    ],
+    "interpretation": "The sources agree that long liquidations dominated, but their 24-hour totals differ materially. Different update times, exchange coverage, and missing intervals prevent treating the totals as interchangeable. CoinPaper's 11:20 UTC article repeats approximately $31.45M and appears to rely on CoinGlass; it is not an independent liquidation source.",
+    "independent_source_groups": [
+      "coinglass",
+      "arbitragex",
+      "coinpaper_secondary_republication"
+    ]
+  },
+  "exchange_balance_observation": {
+    "provider": "CoinGlass",
+    "page": "https://www.coinglass.com/currencies/XRP/onchain",
+    "capture_method": "search-result snippet; the opened page rendered the balance fields blank",
+    "observed_values": {
+      "exchange_balance_xrp": 5100000000,
+      "change_24h_xrp": -526400,
+      "change_7d_xrp": -131730000,
+      "change_30d_xrp": -205310000,
+      "largest_exchange_share": "Binance 48.2%"
+    },
+    "caveat": "Public-wallet label coverage only; not a complete exchange-liability ledger. This is an unverified dynamic snippet and is not eligible as a flow feature. If confirmed, declining exchange balances would be counterevidence to a simple exchange-inflow selling narrative."
+  },
+  "etf_flow_reconciliation": {
+    "crypto_etf_today": {
+      "date": "2026-11-20",
+      "net_flow_usd": -5300000,
+      "bitwise_xrp_usd": -5200000,
+      "canary_xrpc_usd": -100000,
+      "twenty_one_shares_toxr_usd": 0,
+      "franklin_xrpz": "not reported",
+      "grayscale_gxrp": "not reported",
+      "assets_usd": 990000000,
+      "cumulative_net_flow_usd": 1780000000,
+      "published_at_utc": "2026-11-21T05:49:00Z",
+      "page": "https://cryptoetf.today/en/xrp-etf-flows",
+      "method_claim": "Issuer-file based; missing funds shown as not reported rather than zero."
+    },
+    "cryptokeyhole": {
+      "date": "2026-11-20",
+      "partial_net_flow_xrp": -2659361,
+      "partial_net_flow_usd": -2400000,
+      "reporting_status": "2 of 3 daily-read funds reported; Franklin XRPZ pending",
+      "canary_xrpc_holdings_xrp": 234649382,
+      "canary_xrpc_flow_xrp": -2659361,
+      "canary_xrpc_shares": 22140000,
+      "canary_xrpc_nav_usd": 10.2,
+      "canary_xrpc_net_assets_usd": 209000000,
+      "last_checked_utc": "2026-11-21T11:47:00Z",
+      "page": "https://cryptokeyhole.com/etf-flows/xrp/"
+    },
+    "canary_primary_page": {
+      "as_of_date": "2026-11-20",
+      "market_price_usd": 9.4,
+      "nav_usd": 9.44,
+      "net_assets_usd": 211322498.44,
+      "shares_outstanding": 22390000,
+      "custodians": [
+        "BitGo Bank & Trust, N.A.",
+        "Gemini Trust Company LLC"
+      ],
+      "page": "https://canaryetfs.com/xrpc/",
+      "limitation": "The issuer page provides NAV, net assets and shares but did not expose XRP units or a machine-readable daily holdings file in the rendered content."
+    },
+    "reconciliation": "The aggregators disagree materially on XRPC's 20-Nov flow: CryptoETF.today reports about -$0.1M, while CryptoKeyhole reports -2.659M XRP (about -$2.4M). Their reported XRPC shares/NAV/net assets also differ from the Canary issuer page. CryptoETF.today's aggregate -$5.3M and CoinGlass's rounded -$5.0M are directionally consistent but are not independent primary confirmations. The daily ETF flow must remain provisional until each issuer's exact dated holdings file is fetched, hashed, and reconciled against shares, NAV and XRP units.",
+    "cumulative_context": "Reported cumulative ETF net flows remain positive at roughly $1.78B, but this is a secondary-provider aggregate and should not be confused with the latest daily flow or with open-market execution evidence.",
+    "stale_institutional_context": "CryptoETF.today reports 127 institutional managers and $179M of XRP ETF holdings from Q2 2026 Form 13F data as of June 30. This is a lagged disclosure snapshot, not current holdings, current flow, or complete exposure; 13F omits shorts, futures and retail."
+  },
+  "payment_rail_event": {
+    "organization": "SWIFT",
+    "announcement_date": "2026-07-09",
+    "page": "https://www.swift.com/about-us/media-centre/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure",
+    "verified_facts": [
+      "17 banks from six continents were preparing to pilot live transactions.",
+      "The ledger orchestrates bank-issued tokenized deposits on participating banks' own ledgers.",
+      "The described design enables 24/7 cross-border payment availability and then final settlement through existing systems."
+    ],
+    "xrp_relationship": "The official announcement does not identify Ripple or XRP. Treat this as an adjacent/competing tokenized-deposit payment rail and a potential interoperability context, not an XRP integration or Ripple partnership."
+  },
+  "counter_hypotheses": [
+    {
+      "id": "H1",
+      "proposition": "Leveraged long unwinding amplified spot downside during the observed selloff.",
+      "supporting_observations": [
+        "Longs were about 92-93% of reported liquidations.",
+        "Open interest was reported down roughly 9-10%.",
+        "Futures turnover was several times spot turnover."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Liquidation totals differ across providers and coverage windows.",
+        "A post-liquidation reduction in open interest can represent leverage reset rather than persistent directional pressure."
+      ]
+    },
+    {
+      "id": "H2",
+      "proposition": "Spot institutional demand weakened during the observed session.",
+      "supporting_observations": [
+        "Several ETF aggregators reported a negative 20-Nov net flow near $5M."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Issuer-file coverage is incomplete and XRPC daily-flow values conflict materially.",
+        "Cumulative ETF flows remain positive in secondary dashboards.",
+        "Q2 13F institutional holdings are lagged and cannot establish November buying or selling."
+      ]
+    },
+    {
+      "id": "H3",
+      "proposition": "A simple exchange-inflow explanation is insufficient.",
+      "supporting_observations": [
+        "CoinGlass search snippet reported declining exchange-wallet balances over 7 and 30 days."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The opened page did not render numeric balances.",
+        "Public wallet labels may be incomplete and transfers between known wallets can distort inferred net flows."
+      ]
+    }
+  ],
+  "source_register": [
+    {
+      "id": "S1",
+      "publisher": "CoinGlass",
+      "independence_group": "coinglass",
+      "url": "https://www.coinglass.com/currencies/XRP",
+      "source_type": "dynamic market dashboard",
+      "model_eligible": false
+    },
+    {
+      "id": "S2",
+      "publisher": "CoinGlass",
+      "independence_group": "coinglass",
+      "url": "https://www.coinglass.com/currencies/XRP/onchain",
+      "source_type": "dynamic on-chain dashboard",
+      "model_eligible": false
+    },
+    {
+      "id": "S3",
+      "publisher": "CoinGlass",
+      "independence_group": "coinglass",
+      "url": "https://www.coinglass.com/liquidations/XRP",
+      "source_type": "dynamic liquidation dashboard",
+      "model_eligible": false
+    },
+    {
+      "id": "S4",
+      "publisher": "ArbitrageX",
+      "independence_group": "arbitragex",
+      "url": "https://arbitragex.io/liquidations/xrp",
+      "source_type": "liquidation aggregator with disclosed coverage gap",
+      "model_eligible": false
+    },
+    {
+      "id": "S5",
+      "publisher": "Crypto ETF.today",
+      "independence_group": "cryptoetf_today",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "source_type": "ETF flow aggregator using issuer holdings data",
+      "model_eligible": false
+    },
+    {
+      "id": "S6",
+      "publisher": "CryptoKeyhole",
+      "independence_group": "cryptokeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "source_type": "ETF holdings/flow aggregator using issuer files",
+      "model_eligible": false
+    },
+    {
+      "id": "S7",
+      "publisher": "Canary Capital",
+      "independence_group": "canary_issuer",
+      "url": "https://canaryetfs.com/xrpc/",
+      "source_type": "primary issuer fund page",
+      "model_eligible": false
+    },
+    {
+      "id": "S8",
+      "publisher": "SWIFT",
+      "independence_group": "swift_primary",
+      "url": "https://www.swift.com/about-us/media-centre/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure",
+      "source_type": "primary payment-rail announcement",
+      "model_eligible": false
+    },
+    {
+      "id": "S9",
+      "publisher": "CoinPaper",
+      "independence_group": "coinpaper_secondary",
+      "url": "https://coinpaper.com/39166/xrp-price-prediction-xrp-crashes-to-0-86-as-etf-outflows-and-liquidations-accelerate",
+      "source_type": "secondary news article repeating third-party liquidation data",
+      "model_eligible": false
+    }
+  ],
+  "next_actions": [
+    "Fetch the dated official Bitwise, Canary, Franklin, 21Shares and Grayscale issuer holdings files as raw bytes; store SHA-256, retrieval timestamp, effective date, shares, XRP units and NAV separately.",
+    "Reconcile each issuer file to its prior business-day file and SEC periodic filings; never zero-fill a missing issuer report.",
+    "Add an issuer-level ETF flow adapter with explicit provisional/complete status and disagreement retention.",
+    "Obtain exchange-level liquidation totals from documented APIs with per-exchange coverage and capture-time metadata; compare only aligned windows.",
+    "Refresh per-asset sentiment from primary/public sources; the latest Cross Analysis run still uses stale checked-in sentiment and marks it forecast-ineligible.",
+    "Keep all observations research-only until raw payload receipts, source independence, point-in-time timestamps and quality checks pass."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

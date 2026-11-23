@@ -58,11 +58,31 @@ jobs:
           set -euo pipefail
           restore_dir="$RUNNER_TEMP/xrp-receipt-chain-restore"
           mkdir -p "$restore_dir"
-          runs_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&status=completed&per_page=100&page=1")"
-          previous_run_id="$(jq -r --arg repository "$GITHUB_REPOSITORY" --arg branch "$GITHUB_REF_NAME" '.workflow_runs | map(select(.conclusion == "success" and .head_branch == $branch and .head_repository.full_name == $repository and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push"))) | sort_by(.created_at) | last | .id // empty' <<< "$runs_json")"
+          # Filter completed status locally and paginate only when the newest page has no successful predecessor.
+          # A non-empty history with no successful predecessor is not a bootstrap; continuity must remain unverified.
+          previous_run_id=""
+          total_prior_runs=0
+          page=1
+          while :; do
+            runs_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&per_page=100&page=${page}")"
+            page_run_count="$(jq '.workflow_runs | length' <<< "$runs_json")"
+            total_prior_runs=$((total_prior_runs + page_run_count))
+            [[ "$page_run_count" -gt 0 ]] || break
+            candidate_run_id="$(jq -r --arg repository "$GITHUB_REPOSITORY" --arg branch "$GITHUB_REF_NAME" '.workflow_runs | map(select(.status == "completed" and .conclusion == "success" and .head_branch == $branch and .head_repository.full_name == $repository and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push"))) | sort_by(.created_at) | last | .id // empty' <<< "$runs_json")"
+            if [[ -n "$candidate_run_id" ]]; then
+              previous_run_id="$candidate_run_id"
+              break
+            fi
+            page=$((page + 1))
+          done
           if [[ -z "$previous_run_id" ]]; then
-            echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=BOOTSTRAP" >> "$GITHUB_ENV"
-            echo "No prior successful same-branch ingestion run; starting the cross-run receipt chain."
+            if [[ "$total_prior_runs" -eq 0 ]]; then
+              echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=BOOTSTRAP" >> "$GITHUB_ENV"
+              echo "No prior ingestion runs exist; starting the initial cross-run receipt chain."
+            else
+              echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=MISSING_PREDECESSOR_ARTIFACT" >> "$GITHUB_ENV"
+              echo "::warning::Prior ingestion runs exist but no successful predecessor could be found; refusing to bootstrap a new chain."
+            fi
           elif gh run download "$previous_run_id" --name "xrp-public-receipt-index-${previous_run_id}" --dir "$restore_dir" >/dev/null 2>&1 && [[ -s "$restore_dir/cross_run_receipt_chain.json" ]]; then
             if ! artifacts_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${previous_run_id}/artifacts?per_page=100" 2>/dev/null)"; then
               echo "BARROT_RECEIPT_CHAIN_CONTINUITY_STATUS=MISSING_PREDECESSOR_ARTIFACT" >> "$GITHUB_ENV"
@@ -118,10 +138,10 @@ jobs:
           page=1
           restored=0
           while [[ "$page" -le 30 && "$restored" != "1" ]]; do
-            run_page="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&status=completed&per_page=100&page=${page}")"
+            run_page="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&per_page=100&page=${page}")"
             page_run_count="$(jq '.workflow_runs | length' <<< "$run_page")"
             [[ "$page_run_count" -gt 0 ]] || break
-            run_ids="$(jq -r --arg branch "$GITHUB_REF_NAME" --arg repository "$GITHUB_REPOSITORY" '.workflow_runs[] | select(.conclusion == "success" and .head_branch == $branch and .head_repository.full_name == $repository and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push")) | [.created_at, (.id | tostring)] | @tsv' <<< "$run_page" | sort -r | cut -f2)"
+            run_ids="$(jq -r --arg branch "$GITHUB_REF_NAME" --arg repository "$GITHUB_REPOSITORY" '.workflow_runs[] | select(.status == "completed" and .conclusion == "success" and .head_branch == $branch and .head_repository.full_name == $repository and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push")) | [.created_at, (.id | tostring)] | @tsv' <<< "$run_page" | sort -r | cut -f2)"
             if [[ -n "$run_ids" ]]; then
               while IFS= read -r previous_run_id; do
                 [[ -n "$previous_run_id" ]] || continue
@@ -182,6 +202,7 @@ jobs:
             artifacts/xrp_ingestion/cross_run_receipt_chain.json
             artifacts/xrp_ingestion/source_failures.json
             artifacts/xrp_ingestion/raw_only_sources.json
+            artifacts/xrp_ingestion/summary.json
             artifacts/xrp_ingestion/quote_basis.json
             artifacts/xrp_ingestion/drift_report.json
           if-no-files-found: error
