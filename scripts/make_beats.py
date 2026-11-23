@@ -6,8 +6,9 @@ DNA cheat sheets in producers/. Technique study, not song copying: every
 pattern below is an original grid derived from each producer's *methods*.
 
 Usage:
-    python3 scripts/make_beats.py            # build all 5 tracks into tracks/
-    python3 scripts/make_beats.py --check    # reload + verify every track
+    python3 scripts/make_beats.py --seed 0   # new build in tracks/builds/seed-0/
+    python3 scripts/make_beats.py --check    # verify the checked-in tracks/
+    python3 scripts/make_beats.py --check --output-dir tracks/builds/seed-0
 """
 from __future__ import annotations
 
