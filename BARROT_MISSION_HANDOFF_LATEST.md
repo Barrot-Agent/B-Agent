@@ -1,3 +1,21 @@
+# Post-update verification and macro correction — 2026-11-23 17:26 UTC
+
+> Pre-update PR #1690 head: `319e6d68cd2f9f276c8ce1e94d23e6e9ca9c4d9f`. This note records checks completed on that exact head. The correction itself advances the existing branch; all exact-head checks must be revalidated on the resulting commit before any merge decision.
+
+## Exact-head verification on pre-update head 319e6d6
+
+- Full repository test suite [#45226425198](https://github.com/Barrot-Agent/B-Agent/actions/runs/45226425198) passed: **4,611 passed, 2 skipped, 11 warnings, 32 subtests**, 73.36% total coverage; Barrot agent package coverage 81%; all package-specific coverage floors passed.
+- Exact-head FluidSynth render [#45226424760](https://github.com/Barrot-Agent/B-Agent/actions/runs/45226424760) passed; its QC artifact was inspected and matches the deterministic 35.909-second render SHA recorded above.
+- Dependency audit [#45226424767](https://github.com/Barrot-Agent/B-Agent/actions/runs/45226424767) passed with no known vulnerabilities across root runtime, development, integrations, Hugging Face Space, legacy requirements and PEP 621 dependencies.
+- Exact-head `Tests`, `audit`, `pip-audit`, `GitHub Pages build (validation only)`, and `Verify PR merge tree against current base` checks all passed.
+- Gated merge [#45226425100](https://github.com/Barrot-Agent/B-Agent/actions/runs/45226425100) failed closed for three explicit reasons: PR remains draft; no independent approving review exists; branch protection could not be verified because the detailed endpoint returned 403. This is an authorization/readiness block, not a test failure. The gate is read-only and did not merge.
+
+## Macro-source correction
+
+The October 27–28 FOMC minutes show a **10–2 hold** at 3.75%–4.00%, with two members preferring a 25-basis-point increase. They discuss AI-related debt/opaque financing, AI-investment sentiment, Middle East conflict, French fiscal concerns, dollar appreciation and wider speculative-grade spreads. They do **not** support the prior wording that almost all participants favored further rate increases. The run-14 macro paragraph has been corrected. [Primary Federal Reserve minutes](https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm).
+
+---
+
 # Latest verified operational snapshot — 2026-11-23 17:22 UTC
 
 > Main remains `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`. This is a new snapshot for XRP ingestion sequence 68. It is being written to the existing PR #1690 branch; the pre-update PR head was `f347d8f3fa19dda37d72c677495b77a7dee9cc8c`. This handoff-only commit will advance that branch. Exact-head CI must be rechecked on the resulting commit; the checks below are evidence for the pre-update head unless stated otherwise. No main ref is changed.
@@ -23,7 +41,7 @@
 
 ### Macro context — evidence, not causal attribution
 
-- The Federal Reserve's October 27–28 minutes, published November 18, describe notable asset-price swings tied to AI-company disclosures, Iran conflict developments and French sovereign-debt repricing; they also say almost all participants viewed further rate increases as likely appropriate under their baseline outlook. The minutes discuss AI-buildout debt/financing risk and a stronger dollar. These are macro risk variables, not proof of the cause of XRP's move. [Federal Reserve minutes](https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm).
+- The Federal Reserve's October 27–28 minutes, published November 18, record a 10–2 vote to hold the federal-funds target at 3.75%–4.00%; two members preferred a 25-basis-point hike. They describe market volatility tied to AI-investment sentiment, Middle East conflict, French fiscal concerns, a stronger dollar and wider speculative-grade spreads, and flag rapid AI-related debt growth and opaque financing structures as vulnerabilities. The minutes do not say almost all participants favored further hikes; that earlier wording was incorrect. These are macro risk variables, not proof of the cause of XRP's move. [Federal Reserve minutes](https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm).
 - CoinDesk reported that the November 21 broad crypto selloff drove XRP down about 9% in 24 hours to roughly $0.87, with about $18m of XRP futures liquidations and roughly 94% of losses from long positions; it also reported a $4.97m Friday spot-ETF outflow and fund net assets around $990m. This is secondary market reporting, not an issuer/AP cash-flow receipt. [CoinDesk, November 21](https://www.coindesk.com/markets/2026/11/21/xrp-falls-10-as-long-bets-unwind-and-etf-assets-slip-below-usd1-billion).
 - A November 23 market recap reports seven consecutive weekly losses, nine daily closes below $1, a weekend low near $0.8664 and a November ETF outflow estimate of $30.8m through November 21. Treat these as secondary reported figures pending primary data receipts. [BlockchainReporter, November 23](https://blockchainreporter.net/xrp-news-today/).
 
