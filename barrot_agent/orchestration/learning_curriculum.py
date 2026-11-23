@@ -1,24 +1,34 @@
-"""Select progressively deeper repository learning goals for Barrot."""
+"""Select verified learning goals across Barrot's co-equal mission portfolio."""
 
 from __future__ import annotations
 
 from pathlib import Path
 
+from .autonomous_state import AutonomousTaskStore
 from .verified_learning_store import VerifiedLearningStore
 from .mission_registry import MissionRegistry
 
 
 class LearningCurriculum:
-    """Choose repository learning goals that require validated learning records."""
+    """Choose validated goals without starving any co-equal mission."""
+
+    CURSOR_TASK_ID = "mission_portfolio"
+    CURSOR_SAVE_RETRIES = 3
 
     def __init__(
         self,
-        workspace: str = ".",
+        workspace: str | Path | None = None,
         learning_store: VerifiedLearningStore | None = None,
         mission_registry: MissionRegistry | None = None,
     ):
-        self.workspace = Path(workspace)
+        supplied_store = learning_store
         self.learning_store = learning_store or VerifiedLearningStore()
+        if workspace is not None:
+            self.workspace = Path(workspace).resolve()
+        elif supplied_store is not None and getattr(supplied_store, "path", None) is not None:
+            self.workspace = Path(supplied_store.path).resolve().parent
+        else:
+            self.workspace = Path(".").resolve()
         self.mission_registry = mission_registry or MissionRegistry()
 
     def _known_text(self) -> str:
@@ -38,9 +48,67 @@ class LearningCurriculum:
             and isinstance(record.get("lesson"), str)
         )
 
+    def _next_portfolio_goal(self, known: str) -> str | None:
+        """Advance a persistent round-robin cursor; corrupt state fails closed."""
+        missions = self.mission_registry.portfolio_missions
+        mission_ids = [mission["mission_id"] for mission in missions]
+        if not mission_ids:
+            return None
+
+        cursor = AutonomousTaskStore(self.workspace)
+        for _ in range(self.CURSOR_SAVE_RETRIES):
+            state = cursor.load(self.CURSOR_TASK_ID) or {"history": []}
+            history = state.get("history")
+            if not isinstance(history, list):
+                raise ValueError("mission portfolio cursor history must be a list")
+
+            last_selected = state.get("last_selected_mission_id")
+            if last_selected is not None and last_selected not in mission_ids:
+                raise ValueError("mission portfolio cursor references an unknown mission")
+            selection_count = state.get("selection_count", 0)
+            if type(selection_count) is not int or selection_count < 0:
+                raise ValueError("mission portfolio cursor selection count is invalid")
+
+            start = (mission_ids.index(last_selected) + 1) % len(mission_ids) if last_selected else 0
+            selected_goal = None
+            selected_mission_id = None
+            for offset in range(len(missions)):
+                mission = missions[(start + offset) % len(missions)]
+                goal = self.mission_registry.goal_for_mission(mission["mission_id"], known)
+                if goal:
+                    selected_goal = goal
+                    selected_mission_id = mission["mission_id"]
+                    break
+
+            if selected_goal is None or selected_mission_id is None:
+                return None
+
+            next_state = dict(state)
+            next_state["history"] = list(history) + [{
+                "mission_id": selected_mission_id,
+                "selection": selection_count + 1,
+            }]
+            next_state["last_selected_mission_id"] = selected_mission_id
+            next_state["selection_count"] = selection_count + 1
+            try:
+                cursor.save(self.CURSOR_TASK_ID, next_state)
+            except RuntimeError:
+                # Another worker advanced the cursor after our read. Reload
+                # and select the next mission; never overwrite its progress.
+                continue
+            return selected_goal
+
+        raise RuntimeError(
+            "mission portfolio cursor changed concurrently; retry the next run"
+        )
+
     def next_goal(self) -> str:
         known = self._known_text().lower()
-        mission_goal = self.mission_registry.next_goal(known)
+        manifest = self.mission_registry.manifest
+        if manifest.get("status") == "active" and manifest.get("mission_portfolio"):
+            mission_goal = self._next_portfolio_goal(known)
+        else:
+            mission_goal = self.mission_registry.next_goal(known)
         if mission_goal:
             return mission_goal
 

@@ -88,6 +88,10 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 
 - docs/fields/track-01-cymatics.md - Track 1 - Cymatics
 
+## docs/governance
+
+- docs/governance/SELLBIRD_BARROT_ONLY_SCOPE.md - Sellbird operating scope: Barrot technology only
+
 ## docs/mcp
 
 - docs/mcp/LISTING.md - Listing Barrot as a server: what WebMCP is, and what to actually publish
