@@ -7,6 +7,12 @@ import re
 import subprocess
 import sys
 
+import pytest
+
+from barrot_agent.orchestration.autonomous_state import AutonomousTaskStore
+from barrot_agent.orchestration.learning_curriculum import LearningCurriculum
+from barrot_agent.orchestration.verified_learning_store import VerifiedLearningStore
+
 ROOT = Path(__file__).resolve().parents[1]
 
 _SELECT_GOAL = """
@@ -80,21 +86,14 @@ def test_mission_round_robin_cursor_recovers_across_fresh_processes(
 
 
 def _mission_cursor_store(workspace: Path) -> AutonomousTaskStore:
-    from barrot_agent.orchestration.autonomous_state import AutonomousTaskStore
-
     return AutonomousTaskStore(workspace)
 
 
 def _curriculum_for_workspace(workspace: Path) -> LearningCurriculum:
-    from barrot_agent.orchestration.verified_learning_store import VerifiedLearningStore
-
     return LearningCurriculum(
         workspace=workspace,
         learning_store=VerifiedLearningStore(workspace / "verified_lessons.jsonl"),
     )
-
-
-import pytest
 
 
 @pytest.mark.parametrize(
