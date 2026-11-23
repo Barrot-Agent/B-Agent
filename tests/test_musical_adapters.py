@@ -1,4 +1,5 @@
 """Tests for original composition and optional audio/MIDI adapters."""
+import pytest
 import tempfile
 import unittest
 from types import ModuleType
@@ -173,7 +174,7 @@ class AudioRenderTests(unittest.TestCase):
 
     def test_audio_render_writes_new_stereo_wav_with_sample_and_true_peak_headroom(self):
         import sys
-        import numpy as np
+        np = pytest.importorskip("numpy")
 
         from barrot_agent.creative.audio_render import render_audio
 
@@ -245,7 +246,7 @@ class AudioRenderTests(unittest.TestCase):
 
     def test_stereo_renderer_schedules_pitched_and_drum_channels(self):
         import sys
-        import numpy as np
+        np = pytest.importorskip("numpy")
         from types import SimpleNamespace
 
         from barrot_agent.creative.audio_render import _render_midi_stereo
