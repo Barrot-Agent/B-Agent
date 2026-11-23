@@ -61,13 +61,47 @@ class LearningCurriculum:
             history = state.get("history")
             if not isinstance(history, list):
                 raise ValueError("mission portfolio cursor history must be a list")
+            if len(history) > AutonomousTaskStore.MAX_HISTORY_ITEMS:
+                raise ValueError("mission portfolio cursor history exceeds its retained limit")
 
-            last_selected = state.get("last_selected_mission_id")
-            if last_selected is not None and last_selected not in mission_ids:
-                raise ValueError("mission portfolio cursor references an unknown mission")
+            archived_count = state.get("history_archived_count", 0)
+            if type(archived_count) is not int or archived_count < 0:
+                raise ValueError("mission portfolio cursor archived history count is invalid")
+            archive_digest = state.get("history_archive_digest")
+            if archived_count:
+                if (
+                    not isinstance(archive_digest, str)
+                    or len(archive_digest) != 64
+                    or any(character not in "0123456789abcdef" for character in archive_digest)
+                ):
+                    raise ValueError("mission portfolio cursor archive digest is invalid")
+                if not history:
+                    raise ValueError("mission portfolio cursor retained history is missing")
+            elif archive_digest not in (None, ""):
+                raise ValueError("mission portfolio cursor has an archive digest without archived history")
+
             selection_count = state.get("selection_count", 0)
             if type(selection_count) is not int or selection_count < 0:
                 raise ValueError("mission portfolio cursor selection count is invalid")
+            if selection_count != archived_count + len(history):
+                raise ValueError("mission portfolio cursor selection count does not match retained history")
+
+            for offset, item in enumerate(history):
+                if not isinstance(item, dict):
+                    raise ValueError("mission portfolio cursor history entry is malformed")
+                history_mission_id = item.get("mission_id")
+                if history_mission_id not in mission_ids:
+                    raise ValueError("mission portfolio cursor history references an unknown mission")
+                expected_selection = archived_count + offset + 1
+                if type(item.get("selection")) is not int or item["selection"] != expected_selection:
+                    raise ValueError("mission portfolio cursor history selection sequence is invalid")
+
+            last_selected = state.get("last_selected_mission_id")
+            if history:
+                if last_selected != history[-1]["mission_id"]:
+                    raise ValueError("mission portfolio cursor last selected mission does not match history")
+            elif last_selected is not None or selection_count != 0:
+                raise ValueError("mission portfolio cursor has selections without retained history")
 
             start = (mission_ids.index(last_selected) + 1) % len(mission_ids) if last_selected else 0
             selected_goal = None
