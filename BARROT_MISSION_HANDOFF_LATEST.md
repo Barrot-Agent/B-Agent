@@ -2499,3 +2499,74 @@ Exactly four PRs were open at inspection. All four are drafts and have zero subm
 5. Commercial: do not deploy the placeholder Sellbird configuration. Complete the Barrot-only ICP and compliance setup on a supported host after deployment approval; keep all outbound sending paused and record no lead/revenue claim without evidence.
 
 No merge, main write, branch creation, force-push, branch rewrite, deployment, Space restart, secret rotation, paid lookup, external model dispatch, Kaggle submission, Databricks write, outbound email, paper trade, funds transfer or real-money action occurred in this run.
+
+
+---
+
+## Run 11 research addendum — 2026-11-23T19:14Z
+
+> This addendum extends the 19:02Z handoff with fresh primary-source research and the post-handoff exact-head CI result. Pre-addendum branch head: 738fad8629fa8d4d29cd85be7906a992816700ad. The evidence below is for that head. This addendum is documentation-only; the resulting branch head must receive its own exact-head checks before promotion.
+
+### Exact-head verification after the first handoff commit
+
+- #1690 head 738fad8629fa8d4d29cd85be7906a992816700ad full CI [45245830190](https://github.com/Barrot-Agent/B-Agent/actions/runs/45245830190) passed: **538 tracked active test modules discovered; 4,611 passed, 2 skipped, 11 warnings, 32 subtests; 73.08% coverage**. Overall 62% coverage floor, 70% legacy/core floor, and all mission-critical package floors passed. Core Tests, Pages validation, Dependency Audit [45245830250](https://github.com/Barrot-Agent/B-Agent/actions/runs/45245830250), Money audit [45245830078](https://github.com/Barrot-Agent/B-Agent/actions/runs/45245830078), and Conflict Integrity [45245830442](https://github.com/Barrot-Agent/B-Agent/actions/runs/45245830442) passed. The PR-number-specific XRP historical replay was skipped by its explicit condition.
+- Audio Render Integration [45245830388](https://github.com/Barrot-Agent/B-Agent/actions/runs/45245830388) passed on the same head. Its downloaded QC artifact [14853377578](https://github.com/Barrot-Agent/B-Agent/actions/runs/45245830388/artifacts/14853377578), archive SHA-256 117de9873f4c311d284e81f291f2c122ccd882904e34a0a7a511bcaa573cd63c, independently repeats the prior technical result: FluidSynth 1.4.0, deterministic seed 20261123, 16 bars/35.909 seconds, 110 BPM, D minor, 4/4, stereo 44.1 kHz, peak −6.0055 dBFS, true peak −6.0000005 dBTP, RMS −23.8708 dBFS, zero clips, four sample-aligned stems and MIDI hashes. Again, the artifact is QC JSON only; no WAV, stems, MIDI or soundfont files are distributed.
+- Fail-closed gate [45245830099](https://github.com/Barrot-Agent/B-Agent/actions/runs/45245830099) completed BLOCKED, with explicit reasons: PR is still draft; no independent approving review exists; branch protection could not be verified. It is read-only and did not merge. PR #1690 remains draft and has no submitted review. No merge is permitted.
+- The addendum commit advances #1690 again. The checks above are not evidence for the new addendum commit; rerun exact-head checks before any future promotion.
+
+### Fresh primary-source research: Japanese SBIC entities and SBI/Ripple separation
+
+Primary company profiles resolve the three regional SBICs as distinct Japanese legal entities under the Small and Medium Business Investment & Consultation Company framework:
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo Chusho Kigyo Toushi Ikusei), founded 1963-11-15; the official profile lists local governments, chambers of commerce, financial institutions and business companies among shareholders, and an East-Japan service area. Source: https://www.sbic.co.jp/company/profile/
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd., founded 1963-11-18; official coverage is Aichi, Gifu, Mie, Toyama and Ishikawa. Source: https://www.sbic-cj.co.jp/company/about/
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd., founded 1963-11-20; official coverage is 24 prefectures west of Fukui, Shiga, Nara and Wakayama. Its profile calls the three regional companies sister companies and describes its role under the dedicated Japanese investment-development company law. Source: https://www.sbic-wj.co.jp/profiles/profile/
+
+These are not SBI Holdings or SBI Group subsidiaries in the corporate identities shown by their official profiles. Do not merge the “SBIC” acronym into SBI Holdings. The profiles establish separate entities, regional mandates and sister-company status; they do not establish an SBI Holdings affiliation.
+
+**SBI Holdings / Ripple is a different relationship:**
+
+- SBI Holdings’ official group-company profile identifies SBI Ripple Asia as a joint venture between SBI Group and Ripple. SBI Group’s aggregate voting-rights share is **60%**; the note aggregates SBI and entities treated as subsidiaries under IFRS. Do not describe this as a proven direct 60% holding by SBI Holdings itself or infer the residual percentage without a separate ownership filing. Source: https://www.sbigroup.co.jp/company/group/sbirippleasia.html
+- Ripple’s official SBI Ripple Asia page explicitly says SBI Ripple Asia **does not handle XRP**. Its described role is selling RippleNet software services to financial institutions and remittance companies. The page separately describes Japan ODL use with XRP by **SBI Remit**, **Coins.ph** and **SBI VC Trade**. These are separate legal entities and operational roles; RippleNet adoption is not automatically XRP usage. Source: https://ripple.com/company/sbi-ripple-asia/
+- SBI Ripple Asia’s 2026-02-26 announcement describes a conceptual proof of concept for low-cost tokenized deposits/deposit-based digital money using SBI’s MoneyTap infrastructure and an issuance platform, with XRPL as the contemplated blockchain. It is a PoC, not evidence that a production deposit token or commercial bank deployment has launched. Source: https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
+- Ripple’s 2026-06-24 announcement says RLUSD became available in Japan through SBI VC Trade after JFSA approval under the Payment Services Act. Ripple reported RLUSD market capitalization of $1.7 billion at that announcement. Treat that capitalization as Ripple’s dated statement, not an independently verified current value. RLUSD is a stablecoin; its Japanese distribution does not itself prove incremental XRP demand. Source: https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/
+
+### Fresh primary-source research: Coinbase / Circle / USDC economics
+
+The SEC-filed Q3 2026 Circle 10-Q and Coinbase 10-Q add material detail:
+
+- Circle reported Q3 2026 USDC Mint customer flows of **$104.304B minted** and **$103.694B redeemed** (net +$610M for that channel); nine-month flows were **$260.847B minted** and **$262.234B redeemed** (net −$1.387B). These are Circle Mint customer fiat-conversion flows, not total global USDC flows and not XRPL transaction volume.
+- Circle reported USDC stablecoin market share of **27%**, versus 29% one year earlier, under its stated comparison universe; meaningful wallets were **7.35M** versus 6.34M. Circle defines meaningful wallets as wallets with more than $10 USDC and explicitly warns they are not unique users.
+- As of 2026-09-30, approximately **84% of USDC reserves** were held in the Circle Reserve Fund, a Rule 2a-7 government money-market fund managed by BlackRock. Circle is the fund’s only shareholder. The fund holds short-dated U.S. Treasuries, overnight Treasury repos and cash. Circle states these reserves are not FDIC/government insured or guaranteed and BlackRock has no obligation to reimburse losses. The remaining reserve portion is held in cash across multiple banks and, starting in 2026, U.S. Treasuries outside the fund.
+- Circle recorded **$331.3M** of Q3 distribution costs and **$986.6M** for the first nine months of 2026 in connection with its agreements with Coinbase. The filing describes Coinbase allocations tied to USDC held on Coinbase and a share of remaining ecosystem economics after approved third-party participant payments. Circle’s Q3 reserve income was **$657.6M**, down 7.5% year over year; Circle attributed approximately $106.5M of the decline to a 61-basis-point fall in average yields. Reserve economics are therefore sensitive to both circulation and interest rates.
+- Coinbase’s Q3 2026 10-Q says it **renewed its arrangement with Circle on the same terms** and that average USDC held in Coinbase products reached an all-time high. This is primary confirmation of the renewal; do not rely on secondary reporting for that point.
+
+Primary SEC sources:
+- Circle Q3 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+- Coinbase Q3 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+- Circle 2025 Form 10-K for the historic Centre 50/50 joint venture, 2023 restructuring, Circle sole stablecoin-network governance, Coinbase minority equity stake and revenue-sharing structure: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000062/crcl-20251231.htm
+
+**Interpretation boundary:** Coinbase–Circle is a USDC distribution/reserve-economics relationship. Ripple–SBI is a separate payments, XRPL and RLUSD relationship. SBI Ripple Asia’s own XRP disclaimer and the separation of SBI Remit/SBI VC Trade prevent attributing every SBI/RippleNet/RLUSD activity to XRP. None of these corporate developments alone establishes a directional XRP price effect. Feed them into the event timeline with source dates, entity distinctions and explicit non-XRP alternatives; do not convert them into a forecast.
+
+### Sellbird technical/readiness audit extension
+
+The exact Sellbird main tree has 295 entries. The inspected source is still commit b212385259da92246a56311d790d936e75dd70dd, version 0.4.0, AGPL-3.0-only, Python 3.11+.
+
+- **Platform:** Dockerfile is Python 3.12 slim and installs the Claude CLI. Docker Compose documentation supports native Linux, keeps the dashboard on loopback port 5555, and mounts the host Claude credential directory. Codex use requires a host install; the Docker image does not include Codex. The documented Docker/headless setup cannot connect additional inboxes through the host keychain. Android/Termux deployment is not verified.
+- **Credentials/security:** .env holds credentials and is gitignored; OAuth tokens for Gmail/Microsoft are held in the local keychain. The security policy describes local-user execution, loopback dashboard authentication, model calls without tools, and Outbox holds. It also states that code already running as the user can read the .env and database. This is not an independent security audit or certification.
+- **Sending:** approval is the default; a deterministic pre-send gate checks merge tags, prohibited phrases, length, links, HTML, deliverability and recipient/database match. Prompt-injection content is fenced and the model has no tools, but the project itself warns this cannot guarantee model compliance. Autopilot is explicitly available by setting require_approval false; do not enable it. Instantly cannot hold individual sends in the local Outbox and is unsuitable for the required manual-approval workflow.
+- **Compliance:** the current template has an empty postal address. Precleared is optional and off by default; without a key the documented limit is 10 checks/day, with a free key 100/day for the first 14 days and 25/day thereafter. Opt-out, suppression, send windows, warmup and a dedicated secondary sending domain are documented, but none has been configured or tested for Barrot.
+- **Discovery/costs:** OSM and TinyFish are documented free discovery options. DataForSEO, Serper and Scavio have paid tiers; no paid lookup was executed. LinkedIn browser automation is explicitly documented as violating LinkedIn’s Terms of Service and remains disabled.
+- **Configuration:** tracked sellbird.yaml still contains placeholder persona, product, generic non-Barrot ICP, placeholder sender identity and empty postal address. It has email enabled but manual approval enabled. Do not deploy this template unchanged. The project is not installed, authenticated or configured for Barrot. No lead, contact, outreach, meeting or revenue counts changed: all remain zero.
+
+No Sellbird deployment, provider credential setup, mailbox connection, paid lookup, LinkedIn automation, campaign creation or outbound sending occurred.
+
+### Updated next actions
+
+1. Keep all four open PRs classified as above. #1690 now has exact-head CI success on pre-addendum head 738fad8; the addendum commit itself requires a fresh exact-head run. It remains draft and fail-closed blocked; no merge.
+2. Keep XRP forecast issuance disabled. Integrate the SBIC/SBI entity distinctions, Circle/Coinbase Q3 2026 filings, Circle reserve concentration, and the dated RLUSD/PoC events into the event ledger with source provenance and non-XRP counter-hypotheses.
+3. For audio, replace test-only GPL-2 sound assets with a rights-cleared production set before publishing audio files; deliver full-length WAV, aligned stems, MIDI, metadata and a DAW project/interchange, then obtain level-matched listening acceptance.
+4. For continuity, continue same-workspace recovery work and separately specify/test cross-host synchronization, stale/conflict handling and rollback.
+5. Keep Sellbird Barrot-only and outbound paused. Configure a verified Barrot-specific offer, dedicated domain, compliance footer, suppression list, Precleared, mailbox authentication and warmup only after the user approves deployment and sending setup.
+
+No merge, main write, branch creation, force-push, branch rewrite, deployment, secret rotation, paid lookup, outbound send, paper trade, funds transfer, Space restart, external model dispatch or Kaggle/Databricks write occurred in this run.
