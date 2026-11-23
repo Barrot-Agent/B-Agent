@@ -76,6 +76,22 @@ def test_build_all_refuses_existing_artifacts_before_starting(tmp_path: Path, mo
     assert preserved.read_bytes() == b"preserve this take"
 
 
+def test_midi_publish_refuses_concurrent_target_without_overwrite(tmp_path: Path) -> None:
+    target = tmp_path / "race.mid"
+
+    class RacingMidi:
+        def write(self, path: str) -> None:
+            Path(path).write_bytes(b"generated MIDI")
+            # Simulate another process creating a user-owned target after preflight.
+            target.write_bytes(b"concurrent user MIDI")
+
+    with pytest.raises(FileExistsError, match="Refusing to overwrite existing MIDI"):
+        make_beats._write_midi_exclusive(RacingMidi(), target)
+
+    assert target.read_bytes() == b"concurrent user MIDI"
+    assert list(tmp_path.glob(f".{target.name}.*.tmp")) == []
+
+
 def test_build_all_uses_distinct_deterministic_seeds_and_versioned_outputs(
     tmp_path: Path,
     monkeypatch,
@@ -85,8 +101,7 @@ def test_build_all_uses_distinct_deterministic_seeds_and_versioned_outputs(
 
     class FakeMidi:
         def write(self, path: str) -> None:
-            with Path(path).open("xb") as handle:
-                handle.write(b"MIDI")
+            Path(path).write_bytes(b"MIDI")
 
     seeds: list[int] = []
 
