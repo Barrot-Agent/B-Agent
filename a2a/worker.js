@@ -325,7 +325,7 @@ export default {
     }
 
     if (path === "/v1/agent/claim" && request.method === "POST") {
-      const agentSecret = env.BARROT_AGENT_SECRET || env.BRAIN_SHARED_SECRET;
+      const agentSecret = env.BARROT_AGENT_SECRET;
       if (!authorized(request, agentSecret)) return json({ error: "unauthorized" }, 401);
       let body;
       try { body = await readJson(request, 4096); } catch { return json({ error: "invalid_json" }, 400); }
@@ -344,7 +344,7 @@ export default {
 
     const completeMatch = path.match(/^\/v1\/agent\/tasks\/([A-Za-z0-9._:-]{8,100})\/complete$/);
     if (completeMatch && request.method === "POST") {
-      const agentSecret = env.BARROT_AGENT_SECRET || env.BRAIN_SHARED_SECRET;
+      const agentSecret = env.BARROT_AGENT_SECRET;
       if (!authorized(request, agentSecret)) return json({ error: "unauthorized" }, 401);
       let body;
       try { body = await readJson(request, MAX_RESULT_BYTES + 4096); }

@@ -58,3 +58,26 @@ def test_self_hosted_brain_secret_is_only_mapped_in_confirmed_deploy_step():
     assert deploy.index("api.create_repo") < deploy.index("api.repo_info") < deploy.index("if not bool(getattr(space_info, \"private\", False)):")
     assert deploy.index('api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)') < deploy.index("api.upload_folder")
     assert content.index("Verify explicit approval and exact main revision") < content.index("Deploy self_hosted_brain/")
+
+def test_a2a_worker_deployment_requires_both_separate_worker_secrets():
+    content = (ROOT / ".github" / "workflows" / "deploy-a2a-worker.yml").read_text(encoding="utf-8")
+    assert "BRAIN_SHARED_SECRET" in content
+    assert "BARROT_AGENT_SECRET" in content
+    assert "BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}" in content
+    assert "BARROT_AGENT_SECRET: ${{ secrets.BARROT_AGENT_SECRET }}" in content
+    assert content.index("Verify explicit approval and exact main revision") < content.index("Deploy Worker")
+    assert "inputs.confirm == 'YES'" in content
+    assert "inputs.confirm_secret_rotation == 'YES'" in content
+
+
+def test_a2a_deploy_preflights_secrets_and_cloudflare_token_without_logging_values():
+    content = (ROOT / ".github" / "workflows" / "deploy-a2a-worker.yml").read_text(encoding="utf-8")
+    assert "Verify required Cloudflare and Worker secrets" in content
+    assert "CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}" in content
+    assert "CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" in content
+    assert "BRAIN_SHARED_SECRET: ${{ secrets.BRAIN_SHARED_SECRET }}" in content
+    assert "BARROT_AGENT_SECRET: ${{ secrets.BARROT_AGENT_SECRET }}" in content
+    assert "/user/tokens/verify" in content
+    assert "result.status == \"active\"" in content
+    assert "the token value was not logged" in content
+    assert content.index("Verify required Cloudflare and Worker secrets") < content.index("Deploy Worker (creates the script first)")

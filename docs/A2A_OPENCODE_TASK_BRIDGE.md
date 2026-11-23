@@ -24,7 +24,7 @@ A2A JSON-RPC compatibility is retained at `POST /`: `message/send` queues work a
 
 `a2a/wrangler.toml` binds a SQLite-backed Durable Object named `BARROT_TASKS`. The deployment workflow is manual-only. It requires explicit `YES` for deployment and secret rotation, the exact current 40-character main SHA, and verification that main has not advanced. It uploads only `BRAIN_SHARED_SECRET` after the Worker script exists. Existing Cloudflare account/token and GitHub secret values must never be copied into source or logs.
 
-The same `BRAIN_SHARED_SECRET` authenticates the OpenCode runner by default. A separate `BARROT_AGENT_SECRET` may be configured as a Cloudflare Worker secret for the runner; when present, it overrides the shared secret for agent-only claim/completion routes. Do not put either secret in repository files.
+`BRAIN_SHARED_SECRET` authenticates GPT Actions task submission and retrieval only. `BARROT_AGENT_SECRET` is a separate, mandatory Cloudflare Worker secret for runner claim/completion routes. The Worker never falls back to the gateway secret for agent routes. Store both as GitHub Actions secrets for deployment, and provide only `BARROT_AGENT_SECRET` to the runner host. Do not put either secret in repository files.
 
 ## Existing OpenCode host configuration
 
@@ -34,8 +34,8 @@ Environment contract:
 
 - `BARROT_A2A_AUTO_RUNNER` — must be set to `YES` as a separate explicit opt-in; absent by default.
 - `BARROT_A2A_URL` — `https://barrot-a2a-worker.amazonprostarelite.workers.dev` after the Worker is deployed.
-- `BARROT_AGENT_SECRET` — optional dedicated runner credential, supplied through the host's secret/environment manager.
-- `BRAIN_SHARED_SECRET` — fallback runner credential when `BARROT_AGENT_SECRET` is not set.
+- `BARROT_AGENT_SECRET` — required dedicated runner credential, supplied through the host's secret/environment manager.
+- `BRAIN_SHARED_SECRET` — gateway credential for GPT Actions only; never use it as the runner credential.
 - `BARROT_WORKDIR` — absolute path to the existing B-Agent checkout.
 - `BARROT_OPENCODE_AGENT` — optional; defaults to `barrot`.
 - `BARROT_TASK_TIMEOUT_SECONDS` — optional; defaults to 1800 seconds, maximum 1800.
@@ -52,7 +52,8 @@ The runner is a queue consumer, not an HTTP server. It does not expose the host 
 - Expired leases can be reclaimed, with a three-attempt ceiling.
 - Task input and result sizes are bounded.
 - The consolidated OpenCode configuration uses ask-before-action permissions; the runner remains disabled by default.
-- The current runner still executes in the host environment and is not OS-sandboxed. Do not activate it until credentials are isolated and task-level actions are technically constrained.
+- The current runner still executes in the host environment and is not OS-sandboxed. Removing gateway/agent credentials from the OpenCode child environment is defense-in-depth, not an OS sandbox. Do not activate it until OS sandboxing, provider-credential isolation, egress restrictions, and task-level action controls are implemented and independently reviewed.
+- Agent claim/completion routes require `BARROT_AGENT_SECRET`; they never accept `BRAIN_SHARED_SECRET`. The runner strips both gateway and agent credentials, plus Cloudflare deployment credentials, from the OpenCode child process environment.
 - The task prompt requires inspection before modification and prohibits commit, push, merge, deployment, credential changes, and external side effects unless that specific action is explicitly authorized in the task.
 - No live trading is enabled by this bridge.
 - Model output is not proof. The runner returns raw execution evidence and exit status; ChatGPT must independently evaluate it.
@@ -80,5 +81,6 @@ Live acceptance is separate from unit tests. It requires:
 5. The task transitions to `completed` or `failed` with the actual process result and evidence.
 6. GPT Actions can retrieve that exact task result.
 7. Unauthorized submit, claim, and completion requests are rejected.
+8. The gateway secret cannot claim or complete tasks; only the dedicated agent secret can.
 
 A passing unit test or a successful Cloudflare deployment alone does not establish end-to-end connectivity.
