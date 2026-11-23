@@ -1,3 +1,56 @@
+# Latest verified operational snapshot — 2026-11-23 14:08 UTC
+
+> This concise snapshot supersedes stale current-state references in the historical detail below. Main remains unchanged. This documentation-only update is committed to the existing audio integration branch; it does not write to main, merge, deploy, or authorize external actions.
+
+## Repository, V3 and PR governance — VERIFIED
+
+- Main: `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`; recursive tree: 3,139 entries, not truncated. The main mission manifest keeps XRP prediction, professional audio and long-horizon continuity active at priority 1 under preserved Barrot V3.
+- Main exact-head CI [45089588979](https://github.com/Barrot-Agent/B-Agent/actions/runs/45089588979): 4,602 passed, 1 skipped, 11 warnings, 32 subtests; 73.33% coverage. Dependency Audit [45089588915](https://github.com/Barrot-Agent/B-Agent/actions/runs/45089588915) and Money audit [45089589026](https://github.com/Barrot-Agent/B-Agent/actions/runs/45089589026) passed.
+- Open PRs: exactly three. [#1690 audio](https://github.com/Barrot-Agent/B-Agent/pull/1690) is the sole audio integration PR, draft, mergeable, 32 commits ahead/0 behind; head `d601138ff92d75bd2beed6962d40b77932938860`. Exact-head CI [45189776417](https://github.com/Barrot-Agent/B-Agent/actions/runs/45189776417) passed: 4,610 passed, 1 skipped, 11 warnings, 32 subtests; 73.34% coverage. Dependency Audit, Money audit, Conflict Integrity and Pages validation passed. Fail-closed gate [45189776450](https://github.com/Barrot-Agent/B-Agent/actions/runs/45189776450) correctly blocked: PR remains draft, no independent approving review exists, and detailed branch-protection rules cannot be read. Do not merge.
+- [#1691 continuity](https://github.com/Barrot-Agent/B-Agent/pull/1691) is the sole continuity integration PR, draft; head `0275df32d1ba15e574cb89ad004988a5a30a51e5`. Its exact-head full-suite run [45148673910](https://github.com/Barrot-Agent/B-Agent/actions/runs/45148673910) passed 4,609 tests, 1 skipped, 11 warnings and 32 subtests; its fail-closed gate [45148673659](https://github.com/Barrot-Agent/B-Agent/actions/runs/45148673659) blocked for draft/no independent approval/unverifiable branch protection. Its tests establish shared-workspace fresh-process recovery, not cross-host synchronization.
+- [#1686](https://github.com/Barrot-Agent/B-Agent/pull/1686) remains unique/unreviewed and blocked: 41 commits ahead, 235 behind, stale base `550a647ee7269a704d4600ff337b2145acc90473`. Preserve it; do not merge, rewrite or close it.
+- Main's branch object reports protected status, but the detailed protection endpoint returns 403. Effective required-review and administrator settings remain unverified. No merge occurred.
+
+## XRP intelligence — EXECUTED / VERIFIED
+
+- Scheduled ingestion [45182039305](https://github.com/Barrot-Agent/B-Agent/actions/runs/45182039305), main SHA `7d7aba8`, cutoff `2026-11-23T13:15:30.724161Z`. Snapshot `3d5fdb9c6250d0dad69e7dd39a9c8ff789f036f73858f2a506b1a8d009a2f76c`. Feature store: 22,530 historical records / 64 snapshots; 2,230 input records; 123 admitted and 367 excluded in the run.
+- Receipt chain verification passed and continued at sequence 64 from run 45173316207: 33 receipts, 20 raw payloads, 13 digest-only receipts. The chain is tamper-evident relative to its head, not externally anchored or WORM; raw artifacts expire after 90 days. Cache budget is read-only/exhausted, but this run's raw and feature artifacts uploaded successfully.
+- Same-venue OKX XRP-USDT × USDT-USD top-of-book produced USD mid `$0.94171945`, bid `$0.94166480`, ask `$0.94177410`, spread `1.1606 bps`, captured around 13:15:20Z. This is a timestamped snapshot, not a live quote or independent cross-venue consensus. Coinbase, Kraken and Bitstamp USD top-of-book snapshots were respectively `0.9417/0.9418`, `0.94164/0.94169` and `0.94166/0.94167`.
+- 10-bp visible depth snapshots: Bitstamp about `$289k bid / $318k ask`; Kraken about `$483k bid / $617k ask`. These are venue-specific snapshots, not consolidated liquidity; the Kraken response is capped at 100 levels and the venues are not normalized to equal coverage.
+- Quality blockers: 19 source failures (Binance HTTP 451; Bybit HTTP 403; three SEC EDGAR calls require a monitored project-contact User-Agent; Grayscale 429; Franklin XRPZ parser markers missing; XRPL Dashboard 502). Do not proxy/bypass geographic restrictions or invent a SEC contact. Twenty-two source identities remain raw-only, including Deribit perpetuals, XRP ETF issuer pages/flows, exchange balances, RLUSD/USDC transparency pages, SBI VC Trade lending and Morpho cbXRP state.
+- Event timeline has 150 events but event-to-raw-receipt completeness is false and model eligibility is false. Walk-forward ledger has 236 records but status `INSUFFICIENT_HISTORY`; drift has zero evaluated features and status `INSUFFICIENT_DATA`. Forecast status remains `NOT_ISSUED`; directional forecast issuance remains disabled. No trading action.
+
+## Audio and continuity — EXECUTED / NOT VERIFIED
+
+- Audio PR #1690 adds deterministic/non-destructive render safeguards and regression tests. Exact-head full-suite evidence is above. No real SoundFont end-to-end render, full-length accepted track, aligned stems, MIDI/DAW project, technical-QC artifact bundle or level-matched listening acceptance was produced. Prior five-beat v1 rejection (3/10) remains the baseline; no improvement claim.
+- Continuity PR #1691 tests fresh-process recovery in a shared workspace. Cross-host synchronization, concurrent-writer conflict retention, remote checkpoint trust and rollback are not verified. The oversized historical handoff remains a compaction debt.
+
+## Commercial support — Sellbird / Barrot only
+
+- Upstream [Sellbird](https://github.com/ethanplusai/sellbird) main `b212385259da92246a56311d790d936e75dd70dd`, release 0.4.0, AGPL-3.0-only, Python >=3.11. No code copied into Barrot; no Sellbird installation, runtime, mailbox authentication, sending-domain validation or prospecting run. Its template defaults to email enabled, approval required and 50/day; approval is not a hard no-send switch. Keep it unconfigured/outbound paused; explicitly disable email before any future setup. Android/Termux compatibility remains unverified.
+- Free public research surfaced three **unqualified candidate organizations**, not sales-qualified leads: Kaiko's AI Business Operations role (published 15 Nov 2026) covers agent/automation pilots, MCP integration, AI Ops and least-privilege governance ([official role](https://jobs.eu.lever.co/kaiko/08c1f591-5bcc-4f1e-b2b6-dddf40a8bdf9)); Jump Crypto's Data Scout role (posted 21 Oct 2026) covers external dataset discovery and quality/coverage vetting ([public role listing](https://jobs.theblockchainassociation.org/companies/jump-crypto/jobs/97659834-data-scout)); Coinbase currently lists a Senior Market Data Engineer role covering feed handlers, normalization and distribution ([official careers listing](https://www.coinbase.com/careers/positions/8180833?gh_jid=8180833)). No verified buyer contacts or decision-maker email addresses were found; no paid lookup, outreach, reply, meeting, proposal or revenue.
+- Fastest plausible offer remains a bounded, manually delivered public-data evidence-integrity audit. It is not a production prediction service or certified platform. Five-day `$350–$500` pricing remains an unvalidated hypothesis. Music, songwriting, vocals, TrekFlex and other separate ventures remain excluded from Sellbird.
+
+## Nine-platform coordination and blockers
+
+- GitHub is the only authenticated platform integration exercised. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks have no tested live authentication/data flow in this run.
+- Hugging Face Space status check [45179979231](https://github.com/Barrot-Agent/B-Agent/actions/runs/45179979231) reported `BUILD_ERROR`; the root-cause build log was not exposed through the available read path. No Space restart or secret operation occurred.
+
+## Next bounded actions — keep all three missions active
+
+1. **XRP:** repair event-to-receipt linkage with regression tests; address SEC User-Agent only after a monitored project contact is established; keep 451/403 sources unavailable rather than bypassing restrictions; continue raw-only parser/normalization gates.
+2. **Audio:** on the existing #1690 branch, complete one real offline SoundFont render, inspect the artifact, then add full-length arrangement/stems/MIDI/DAW export and level-matched listening. Do not claim professional quality before user acceptance.
+3. **Continuity:** on the existing #1691 branch, define a least-privilege cross-host checkpoint adapter with versioning, compare-and-swap, provenance, conflict retention and rollback tests; do not claim cross-host recovery yet.
+4. **Commercial:** keep Sellbird disabled/unconfigured; validate a reproducible Barrot-only demo and free-source prospect list before any campaign. No outbound send without explicit campaign and sending-setup approval.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal priority-1 missions, Barrot V3 shared foundation, fail-closed prediction/audio/continuity gates, Barrot-only commercial scope.
+- **EXECUTED:** current main/tree/open-PR/ancestry/CI inspection; exact-head PR #1690 CI and gate inspection; XRP raw artifact and order-book analysis; Sellbird release/license/config audit; free public prospect research.
+- **VERIFIED:** main SHA and main CI; PR #1690 exact-head full-suite pass and fail-closed block; XRP receipt-chain continuation, snapshot metrics and no-forecast gate; Sellbird identity/version/license/default send settings.
+- **NOT VERIFIED:** directional XRP edge; complete event receipt linkage; external receipt anchor; real professional audio output/listening acceptance; cross-host continuity; live connections for eight external platforms; Sellbird prospecting/authentication, qualified prospects, approved outreach or revenue.
+
+---
 # Current operational update — 2026-11-23 13:49 UTC
 
 > This update supersedes older current-state observations below where they differ. Main remains unchanged at \`7d7aba841cb849e461376a8fcdd4cc4fa10c9af6\`. The update is committed only to the existing audio integration branch; it does not merge or write to main.
