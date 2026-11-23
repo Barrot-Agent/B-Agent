@@ -1,3 +1,85 @@
+# Latest run update — 2026-11-23 11:05 UTC
+
+> This addendum supersedes earlier current-state observations below where they differ. It updates the existing shared handoff on the already-open audio integration branch; main is unchanged. The handoff commit advances PR #1690, so the previously passing exact-head checks below do not certify the new handoff commit. Re-run CI and all gates on the resulting head before any readiness decision.
+
+## Integrated repository state and governance — EXECUTED / VERIFIED
+
+- Repository: `Barrot-Agent/B-Agent`; default branch `main`.
+- Current main SHA: `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`. The complete recursive tree contains 3,139 entries and was not truncated. Main did not move during this run.
+- Main full-suite CI run `45089588979` checked out that exact SHA and passed: 4,602 passed, 1 skipped, 11 warnings, 32 subtests; 73.33% total coverage. The separate full-repository job passed. The run's Pages validation and historical replay jobs were skipped.
+- Exactly three PRs are open. No new branch or PR was created:
+  - **#1690 — active audio integration.** Branch `integration/audio-deterministic-safe-builds-20261123`, pre-handoff-update head `0199452d3e3c003039844c790884b2e7b708115e`, 26 commits ahead of main, six changed files, draft, zero submitted reviews/requested reviewers. Exact-head CI run `45152958304`: 4,608 passed, 1 skipped, 11 warnings, 32 subtests; 73.34% coverage. Dependency Audit `45152958305`, Money audit `45152958306`, and Conflict Integrity `45152958307` passed. Fail-closed gate `45152958376` correctly blocked because the PR is draft, lacks independent approval, and branch-protection requirements cannot be verified. This addendum creates a new head; those checks must rerun.
+  - **#1691 — unique continuity integration.** Branch `integration/continuity-fresh-process-recovery-20261123`, head `0275df32d1ba15e574cb89ad004988a5a30a51e5`, five commits ahead, zero behind, two changed files, draft, zero submitted reviews. Exact-head CI `45148673910`: 4,609 passed, 1 skipped, 11 warnings, 32 subtests; 73.34%. Dependency Audit `45148673615`, Money audit `45148673641`, Conflict Integrity `45148673661`, and Pages validation passed. Fail-closed gate `45149693059` blocked for draft/no independent approval/unverifiable branch protection.
+  - **#1686 — blocked, unique/unreviewed, stale/diverged.** Branch `maintenance/remove-lunaroute-runtime-20261121`, head `951707e870a5fb060f0d47f7b2f0a4a9cbae5ca9`, 41 commits ahead and 235 behind current main, 31 changed files, merge base `550a647ee7269a704d4600ff337b2145acc90473`, draft, zero submitted reviews. Do not merge or close as a duplicate. Any successor must start from current main and reconcile its changed paths.
+- Branch-protection read remains HTTP 403 (“Resource not accessible by integration”); the only visible repository ruleset, “Fall Back,” is disabled. Effective protection remains unverified. Dependabot/code-scanning/secret-scanning alert endpoints were not exposed by the current connector. The PR-head pip-audit checks passed, but that is not proof of repository-wide security configuration.
+- No main merge, deployment, branch rewrite, force-push, secret change, external transaction, or outbound message occurred.
+
+## Mission 1 — XRP intelligence and prediction-engine mastery
+
+Latest scheduled public ingestion: run `45154229725`, checked out main SHA `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`.
+
+- Provider data cutoff: `2026-11-23T10:14:45.170117Z`. Snapshot `e5365d1343f1cf39f408d895380d5ac8df60cf758dbd9a49f82bbdb25997a62d`; snapshot status `verified`; 123 current-snapshot feature records; 61 feature-store snapshots; 2,230 input feature records.
+- Receipt chain: 34 receipts, 21 retained raw payloads and 13 digest-only receipts. Receipt-log SHA-256 `35e7889d708acd9b7f5881be9b35490e1e05329a4e6d2658653c6d525ee35992`; chain-head SHA-256 `7e5ff1640eeaad20b68a76ee0fe3f5de48fd3c9b92e34a501690d76bd2d7471c`. Verification passed. There is still no independent external timestamp anchor or WORM storage; GitHub artifact retention is finite.
+- Source failures: 18. SEC EDGAR remains `BLOCKED_CONFIGURATION` with three failures, no configured SEC contact identity, zero captured submissions/companyfacts and no filing events. Do not silently skip or invent SEC data.
+- Event timeline loaded but `receipt_complete=false`; it remains model-ineligible. The run generated 117 scenarios, but scenarios are not forecasts. The walk-forward matrix contains 224 observations and remains `INSUFFICIENT_HISTORY`; drift is `INSUFFICIENT_DATA`; `forecast_model_eligible=false`; forecast status `NOT_ISSUED`. Directional forecasts issued: zero.
+- Four OKX same-venue XRP-USDT/USDT-USD top-of-book normalized features passed the 60-second skew and 300-second freshness checks. They remain top-of-book only and belong to one publisher-independence group; they do not establish independent corroboration or consolidated full-depth USD liquidity. Deribit XRP-USDC perpetual L2 remains raw-only.
+- The feature-store artifact uploaded successfully, but GitHub Actions cache save reported the cache budget had entered read-only mode to prevent additional charges. The run also reported a cache reservation collision. Per-run checkpoint artifacts remain available as the fallback; do not assume the mutable cache was updated.
+- Latest cross-analysis run `45159903229` completed, but sentiment shifts and historical entity scores remain descriptive-only with `forecast_eligible=false`.
+- Next XRP action: triage the 18 source failures, especially SEC identity configuration and receipt-complete event linkage. Preserve the forecast gate. Investigate cache-budget/read-only behavior without increasing paid usage.
+
+### Primary-source relationship and capital reconciliation — EXECUTED / corroborated against existing repository records
+
+Freshly re-opened issuer/SEC sources were compared with the already-committed research records. No duplicate research file or extra PR was created because the relevant evidence is already represented in main's research ledger.
+
+- **Circle ↔ Coinbase:** Circle's Q3 2026 Form 10-Q (SEC accession `0001876042-26-000311`, filed 2026-11-04) reports average USDC circulation of about $73.264B, period-end circulation about $73.879B, and $13.868B USDC on Circle's platform. It describes Coinbase allocations after issuer retention based on USDC held on Coinbase's platform plus half of the remaining broader-ecosystem allocation after approved third-party participants. Circle recorded $331.3M Q3 and $986.6M nine-month distribution costs under its Coinbase agreements. The Q3 year-over-year Coinbase distribution-cost decrease was $30.0M, driven by lower reserve income, partly offset by a slight increase in Coinbase's share of average USDC on-platform balances. Coinbase's Q3 2026 10-Q (accession `0001679788-26-000122`, filed 2026-10-29) says it renewed the Circle arrangement on the same terms and average USDC held in Coinbase products reached an all-time high. These are issuer-reported commercial/economic links, not XRP purchases or XRP demand.
+- **Coinbase Custody ↔ Bitwise XRP ETF:** Bitwise's Q3 2026 Form 10-Q (period ended 2026-09-30) names Coinbase Custody Trust Company, LLC as custodian and reports 413,140,980.4731 XRP held at quarter end. Q3 share creations added 150,228,577.2385 XRP; redemptions removed 23,684,659.5255 XRP; sponsor-fee dispositions were 241,383.1525 XRP. These are trust creation/redemption and custody disclosures, not Coinbase proprietary XRP inventory and not a direct exchange-net-flow measure.
+- **Ripple ↔ Evernorth:** the existing Evernorth Q3 filing reconciliation records 346,284,972 XRP at 2026-09-30, including private-placement cash/in-kind components, Ripple's 126,791,458 XRP contribution to Pathfinder, and an undrawn $1.0M Ripple revolving facility. The post-quarter 2026-10-09 business-combination closing disclosures (including approximately 388,910,554 XRP in-kind and $272.6M gross cash) must remain a separate subsequent event; do not add it mechanically to the September 30 balance or infer free-float/exchange flow.
+- **Ripple ↔ SBI Group:** Ripple's 2026-06-24 primary release confirms RLUSD's Japan launch through SBI VC Trade following JFSA approval. SBI's release identifies SBI VC Trade as a consolidated SBI Holdings subsidiary. This is an SBI Group relationship, not evidence that SBIC East/Central/West are subsidiaries of SBI Holdings.
+- **SBIC identity and ChatGPT phrase:** existing primary profiles resolve SBIC East, Central and West as separate Japanese SME investment-development companies, distinct from SBI Holdings. SBIC East's 2025-06-12 training and 2026-03-05 seminar pages document ChatGPT/generative-AI education; the latter names a Microsoft Japan speaker. These do not establish an OpenAI/SBIC partnership.
+- **ASK Coin / “actual capital”:** existing research still classifies ASK Coin as ambiguous; Permission Coin (ticker ASK) is a candidate, not a confirmed intended reference, and the reviewed official token documentation does not establish an XRPL deployment. “Actual capital” occurrences remain unverified secondary leveraged-position reports; simplified notional/leverage arithmetic is not verified account equity.
+- **Camilla/Kamilah Stevenson:** the person is identified by first-person interview evidence, but the candidate YouTube handle is not independently verified as her canonical channel. Keep the four prior video attributions quarantined as candidates; do not expand a channel inventory until ownership is verified.
+- Existing research artifacts include `20261107T193218Z-sbi-circle-coinbase-ripple-institutional-relationship-graph.json`, `20261121T100955Z-run254-evernorth-q3-capital-and-institutional-network-reconciliation.json`, `20261104T114254Z-sbic-regional-entities-vs-sbi-holdings-primary-evidence.json`, `20261104T161106Z-ask-coin-actual-capital-kamilah-identity-continuation.json`, and `20261105T011154Z-kamilah-youtube-channel-identity-quarantine.json`. Source independence and page-vintage limits remain in those records.
+
+## Mission 2 — Professional audio production
+
+- PR #1690 remains the sole active audio integration PR. Its deterministic seed path, seed-versioned build directories, exclusive-create/preflight protection and optional SoundFont renderer headroom change passed the pre-update exact-head tests above.
+- The five starter arrangements remain 24–28 bars (approximately 52–64 seconds), not full-length songs. Existing WAVs are 16-bit stereo previews, not stems or editable DAW projects. The preview renderer still uses a tanh soft-limiting stage; the separate optional FluidSynth renderer applies non-boosting scalar gain to -6 dBFS sample-peak headroom and writes float WAV, but requires the native FluidSynth library and a caller-supplied SF2 SoundFont. Its tests mock FluidSynth; no real end-to-end SoundFont render is verified.
+- The user's five-track v1 baseline remains 3/10. No new blind/level-matched listening, full-length render, aligned stems, DAW project or user acceptance was produced. No quality improvement is claimed. Sample-rights provenance remains unresolved for some source-derived 808 material; keep it internal until rights are verified.
+- Next audio action: after independent review and exact-head gate recovery, build one coherent full-length arrangement path with original/licensed sounds, aligned stems, MIDI/section markers and a DAW-editable interchange/project. Require comparative listening and explicit user acceptance.
+
+## Mission 3 — Long-horizon continuity and capability development
+
+- Main already declares the three missions co-equal at priority 1 and retains Barrot V3 as the shared execution/orchestration/safety/provenance/verification foundation.
+- PR #1691 verifies recovery across four fresh Python processes sharing one workspace and rejects malformed or internally inconsistent mission-cursor history. This is local-filesystem process recovery, not cross-host synchronization. The exact-head suite passed as recorded above; the gate remains blocked by draft/no independent review/unverified branch protection.
+- Next continuity action: add concurrent-writer and stale/conflicting-record acceptance tests, then evaluate cross-host persistence only after an authorized shared store and tested authentication/data flow exist. Do not add a second persistence system.
+
+## Commercial support — Barrot technology only
+
+- Sellbird remains the exact repository `https://github.com/ethanplusai/sellbird`, an AGPL-3.0-only AI prospecting/outreach application. It is not a persistence or approval framework.
+- Sellbird remains unauthenticated, uninstalled and unconfigured for Barrot. No mailbox/domain/provider authentication was tested, no paid lookup was run, no code was copied/deployed, and no message was sent. Outbound remains paused pending user approval of audience, offer, copy and sending setup plus mailbox/domain, suppression and opt-out checks.
+- The only currently credible offer hypothesis remains a bounded public-data provenance/integrity audit grounded in verified Barrot capabilities. Public fit signals are not qualified leads. Decision-maker contacts, approved outreach, sent messages, replies, meetings, proposals and collected revenue remain zero. Music and TrekFlex remain excluded from Sellbird.
+
+## Nine-platform coordination
+
+- ChatGPT's GitHub connector was exercised for repository metadata, complete tree, branches, PR inventory, comparisons, workflow runs/logs and file reads. No other platform's live authentication/data flow was tested in this run. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified. Use least privilege and deterministic fallbacks.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal priority-1 missions; Barrot V3 shared foundation; fail-closed XRP forecasting; separate XRP/audio domain pipelines; durable continuity; Barrot-only Sellbird scope.
+- **EXECUTED:** fetched current main/tree, open PRs, branch ancestry/overlap, CI and gate logs; inspected dependency declarations and visible rulesets/protection endpoint; inspected latest XRP ingestion and cross-analysis runs; rechecked primary Circle, Coinbase, Bitwise, Evernorth, Ripple/SBI and SBIC sources against existing research records; updated this single durable handoff on the existing #1690 branch.
+- **VERIFIED:** main SHA/tree and main full-suite run; exact pre-update heads and test/audit/gate outcomes for #1690 and #1691; latest XRP snapshot/receipt/forecast eligibility state; source-level relationship and custody distinctions stated above.
+- **NOT VERIFIED:** branch-protection requirements; merge readiness; exact-head CI after this handoff commit; an XRP-specific predictive model or directional forecast; complete event-level receipt linkage; cache writeability; professional full-length audio, actual SoundFont rendering, stems, DAW project or user acceptance; cross-host continuity; Sellbird deployment/authentication/outreach; live authentication for the eight external platforms.
+
+## Next concrete actions
+
+1. Keep #1690 as the single audio integration PR and #1691 as the single continuity integration PR. Rerun exact-head CI, audits and fail-closed gate after this handoff commit. Do not merge while the gate is blocked.
+2. For XRP, triage the 18 source failures, resolve SEC identity configuration, repair event-level receipt linkage, and investigate cache read-only behavior without paid expansion. Keep directional forecasts closed.
+3. For audio, use the existing branch to progress toward one full-length editable production path; do not market music before finished tracks exist.
+4. For continuity, test concurrent cursor writers and stale/conflicting state before considering any authorized cross-host store.
+5. For revenue, continue free-source Barrot-only prospect qualification; keep all outbound sending paused.
+
+---
+
 # Latest run update — 2026-11-23 10:00 UTC
 
 > This addendum supersedes earlier current-state observations below where they differ; historical evidence is preserved. It is being added to the existing audio integration branch only. Main is not modified. Because this is a new commit, all exact-head checks must rerun on the resulting PR head before any readiness or merge decision.
