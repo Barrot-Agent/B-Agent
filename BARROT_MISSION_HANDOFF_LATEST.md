@@ -2592,7 +2592,7 @@ This is the latest main-branch market-ingestion snapshot and supersedes sequence
 - Snapshot order-book depth, expressed in each venue’s native quote currency (bid-side / ask-side notional):
   - Bitstamp USD: 10 bps **$78.9K / $294.6K**; 50 bps **$587.4K / $584.2K**; 100 bps **$1.109M / $1.087M**.
   - Kraken USD: 10 bps **$258.2K / $353.8K**; 50 bps **$2.147M / $2.030M**; 100 bps **$2.147M / $2.042M** (100-level book).
-  - OKX USDT: 10 bps **104.9K / 172.3K USDT**; 50 bps **1.069M / 741.9K USDT**; 100 bps **1.417M / 1.077M USDT** (100-level book).
+  - OKX USDT: 10 bps **214.9K / 172.3K USDT**; 50 bps **1.069M / 741.9K USDT**; 100 bps **1.417M / 1.077M USDT** (100-level book).
   - Bitbank JPY: 10 bps **13.12M / 10.48M JPY**; 50 bps **32.92M / 24.56M JPY**; 100 bps **66.71M / 25.72M JPY** (200-level book).
 - Interpretation: the 10-bps book is ask-heavy on Bitstamp and Kraken but bid-heavy on OKX and Bitbank; the 50-bps picture is closer to balanced on Bitstamp/Kraken and bid-heavier on OKX/Bitbank. Quote currencies, book depth limits, venue-specific liquidity and publisher groups differ. Do not aggregate these notionals or treat one snapshot’s imbalance as a directional signal.
 - The 150-event registry remains incomplete: 11 URL matches but **0 capture-time matches**, **0 verified receipts**, and all 150 events still report MISSING_RAW_RECEIPT_HASH. The SEC adapter remains BLOCKED_CONFIGURATION: no authorized contact identity, no submissions captured, zero filing events, zero raw SEC receipts and three SEC source failures. Binance requests continue returning HTTP 451; Bybit returns HTTP 403; the Grayscale ETF page returned HTTP 429 and Franklin processing failed. Do not bypass provider or regional restrictions.
