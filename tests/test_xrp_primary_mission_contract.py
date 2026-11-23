@@ -150,3 +150,26 @@ def test_acceptance_criteria_match_minimum_origins_per_source_cluster():
     assert policy["minimum_origins_per_source_cluster"] == 5
     assert "at least five origins per cluster" in cluster_rule.lower()
     assert "at least two origins per cluster" not in cluster_rule.lower()
+
+
+def test_three_missions_are_coequal_and_commercial_support_is_not_a_fourth_mission() -> None:
+    mission = json.loads(
+        (ROOT / "barrot_agent" / "data" / "missions" / "primary_mission.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    portfolio = mission["mission_portfolio"]
+    assert portfolio["scheduling_policy"] == "durable_round_robin_v1"
+    assert portfolio["cursor_store"] == ".barrot/autonomous_tasks/mission_portfolio.json"
+    missions = portfolio["missions"]
+    assert {item["mission_id"] for item in missions} == {
+        "xrp_intelligence_prediction_engine",
+        "professional_audio_production",
+        "long_horizon_continuity_capability_development",
+    }
+    assert all(item["priority"] == 1 and item["status"] == "active" for item in missions)
+    commercial = portfolio["cross_mission_objectives"][0]
+    assert commercial["id"] == "barrot_only_revenue_customer_acquisition"
+    assert commercial["not_a_fourth_mission"] is True
+    assert "Barrot technology only" in commercial["scope"]
+    assert "outbound sending paused" in commercial["state"]

@@ -4,7 +4,7 @@
   "title": "XRP Intelligence and Prediction-Engine Mastery",
   "priority": 1,
   "status": "active",
-  "objective": "Make XRP intelligence and measured prediction-engine mastery Barrot's highest-priority mission while preserving Barrot V3 as the execution, orchestration, safety and verification foundation.",
+  "objective": "Make XRP intelligence and prediction-engine mastery, professional audio production, and long-horizon continuity/capability development three co-equal highest-priority missions while preserving Barrot V3 as the shared execution, orchestration, safety, provenance, authorization and verification foundation.",
   "foundation": {
     "id": "barrot_v3",
     "name": "Barrot V3",
@@ -79,7 +79,7 @@
   ],
   "continuation_goal": {
     "topic_id": "xrp_continuous_mission_review",
-    "goal": "Re-read the latest durable Barrot XRP mission handoff and current repository evidence. Identify the single highest-priority unmet XRP prediction-engine acceptance criterion, inspect current main and all overlapping open PRs before any change, then complete one bounded implementation with tests and provenance. Keep XRP as the primary mission, preserve Barrot V3, and do not create duplicate PRs or perform unapproved external actions."
+    "goal": "Reconcile the latest XRP evidence and current repository state. Select the next highest-priority unmet XRP workstream while preserving XRP's co-equal standing with professional audio production and long-horizon continuity. Inspect current main and all overlapping open PRs before any change; complete one bounded implementation with tests and provenance. Do not create duplicate PRs or perform unapproved external actions."
   },
   "acceptance_criteria": [
     "Scheduled public-data ingestion has verified successful runs and explicit failure/quality records.",
@@ -138,5 +138,144 @@
     ],
     "require_temporal_and_source_clustered_intervals": true,
     "require_upper_confidence_bounds_below_zero": true
+  },
+  "mission_portfolio": {
+    "schema_version": "barrot.mission-portfolio.v1",
+    "scheduling_policy": "durable_round_robin_v1",
+    "cursor_store": ".barrot/autonomous_tasks/mission_portfolio.json",
+    "priority_rule": "All three missions remain active at priority 1. Every curriculum selection advances the persisted round-robin cursor, including when the previous task is blocked or incomplete, so no mission waits for another mission to finish.",
+    "missions": [
+      {
+        "mission_id": "xrp_intelligence_prediction_engine",
+        "title": "XRP Intelligence and Prediction-Engine Mastery",
+        "priority": 1,
+        "status": "active",
+        "objective": "Build evidence-led XRP ecosystem intelligence and a measured, leakage-safe prediction engine. Preserve source provenance, timestamps, source independence, disagreement, competing hypotheses and disconfirming evidence. Keep directional forecasts disabled until the independent readiness gate passes.",
+        "workstream_source": "primary_mission"
+      },
+      {
+        "mission_id": "professional_audio_production",
+        "title": "Professional Audio Production",
+        "priority": 1,
+        "status": "active",
+        "objective": "Build a dependable, reproducible music-production system that creates full-length, coherent, editable tracks with aligned stems, MIDI, technical QC and listening-based acceptance. Prior user rejection of the five v1 starter beats at 3/10 is a quality baseline; predicted v2 scores are not user acceptance.",
+        "workstreams": [
+          {
+            "topic_id": "audio_capability_inventory",
+            "priority": 1,
+            "goal": "Audit the current repository's actual composition, rhythm, harmony, arrangement, synthesis, sampling, MIDI, rendering, DSP, mixing, mastering, stem export and DAW-project capabilities. Separate implemented and tested behavior from stubs, documentation and unverified adapters. Reconcile the v1 3/10 feedback and v2 predicted scores without inventing a new listening result."
+          },
+          {
+            "topic_id": "audio_deterministic_render_and_qc",
+            "priority": 2,
+            "goal": "Make the local render path reproducible by controlling every random source and recording generator/configuration hashes. Add deterministic regression tests, sample-rate/bit-depth checks, peak and clipping checks, headroom reporting, and a non-destructive premaster path. Do not treat a limiter or RMS check as a master-quality verdict."
+          },
+          {
+            "topic_id": "audio_editable_stems_and_daw",
+            "priority": 3,
+            "goal": "Build one end-to-end full-song arrangement path with intentional intro, transitions, builds, breakdowns, drops and outro. Export a full-resolution WAV, sample-aligned named stems, MIDI for musical parts, tempo/key/time-signature and section markers, plus an editable DAW project or supported interchange format. Never label a stereo mix as stems or an audio file as a project."
+          },
+          {
+            "topic_id": "audio_licensed_toolchain",
+            "priority": 4,
+            "goal": "Verify the license and provenance of every sample, preset, SoundFont and model before redistribution or commercial use. Test local/open-source and licensed engines, native dependencies, hardware requirements, resource cost and offline fallbacks. Do not silently install or call paid generation services."
+          },
+          {
+            "topic_id": "audio_quality_benchmark",
+            "priority": 5,
+            "goal": "Create a versioned audio-quality benchmark covering musical coherence, groove, timing, pitch/harmony, arrangement, timbre, transitions, low-end translation, vocal-space compatibility, stereo/phase, noise, clipping, true peak, loudness and dynamics. Pair deterministic signal checks with blind or level-matched listening against baselines and prior Barrot renders."
+          },
+          {
+            "topic_id": "audio_user_feedback_and_revision",
+            "priority": 6,
+            "goal": "Capture explicit per-track user acceptance/rejection, ratings and keep/kill/change notes. Compare each revision with the prior accepted baseline, detect regressions, and update the recursive learning record only after reproducible render, technical QC and listening review."
+          }
+        ],
+        "continuation_goal": {
+          "topic_id": "audio_continuous_quality_improvement",
+          "goal": "Inspect the latest accepted audio artifacts and user feedback. Select the single largest verified quality gap, implement one bounded reversible improvement, render reproducibly, run technical QC and arrange a level-matched listening comparison. Do not claim professional quality without user acceptance."
+        },
+        "acceptance_criteria": [
+          "A full-song arrangement has duration appropriate to the brief, with intentional section development rather than a short repeated demo loop.",
+          "Deliverables include full-resolution WAV, separately named sample-aligned stems, editable MIDI, tempo/key/time-signature metadata and a section/marker map; a reproducible DAW project or interchange format is supplied when supported.",
+          "Premaster exports retain deliberate headroom and are not destructively loudness-processed before mix approval.",
+          "No unintended clipping, channel misalignment, phase defects or unexplained render nondeterminism is present.",
+          "All redistributed samples, presets, SoundFonts and model assets have documented compatible rights and provenance.",
+          "A blind or level-matched listening evaluation and explicit user acceptance are recorded; numeric metrics alone never establish musical quality."
+        ]
+      },
+      {
+        "mission_id": "long_horizon_continuity_capability_development",
+        "title": "Long-Horizon Continuity and Capability Development",
+        "priority": 1,
+        "status": "active",
+        "objective": "Develop reliable cross-run and cross-platform recovery of goals, decisions, evidence, dependencies and progress. Treat continuity as engineered state, planning and recursive learning, not as a reminder or an oversized handoff.",
+        "workstreams": [
+          {
+            "topic_id": "continuity_versioned_state_model",
+            "priority": 1,
+            "goal": "Define a versioned operational state model for objectives, priorities, constraints, decisions and rationale, architecture, dependency graph, completed/open work, blockers, evidence, rejected approaches and unresolved questions. Separate durable facts, hypotheses, stale observations and unverified claims with provenance, timestamps and confidence."
+          },
+          {
+            "topic_id": "continuity_cross_run_recovery",
+            "priority": 2,
+            "goal": "Demonstrate that a fresh process can recover the correct mission state, prior decisions, evidence references and next actions from durable storage without relying on the previous conversation. Preserve state atomically and detect corruption rather than silently resetting it."
+          },
+          {
+            "topic_id": "continuity_dependency_roadmap",
+            "priority": 3,
+            "goal": "Maintain a dependency-aware roadmap with strategic outcomes, milestones, measurable acceptance criteria, risks, resource limits and reversible/irreversible decisions. Select bounded tasks that can be executed and verified in one run."
+          },
+          {
+            "topic_id": "continuity_balanced_mission_scheduler",
+            "priority": 4,
+            "goal": "Persist a fair scheduler for the three co-equal missions. Rotate mission selection across runs even when one mission is blocked; record explicit, time-bounded resource tradeoffs and never silently starve XRP, audio or continuity."
+          },
+          {
+            "topic_id": "continuity_recursive_learning",
+            "priority": 5,
+            "goal": "After meaningful tasks, compare expected and actual outcomes, record why gaps occurred, retain only verified reusable lessons, add regression tests where justified and measure whether improvements generalize."
+          },
+          {
+            "topic_id": "continuity_staleness_and_conflicts",
+            "priority": 6,
+            "goal": "Detect contradictory, superseded and stale records. Preserve unresolved disagreement and source provenance; do not silently overwrite conflicting state. Add expiry/revalidation rules for time-sensitive facts."
+          },
+          {
+            "topic_id": "continuity_handoff_compaction",
+            "priority": 7,
+            "goal": "Maintain concise operational state with links to detailed evidence. Replace oversized narrative-only handoffs with a versioned summary, append-only evidence references and explicit DESIGNED, EXECUTED and VERIFIED statuses."
+          }
+        ],
+        "continuation_goal": {
+          "topic_id": "continuity_cross_mission_review",
+          "goal": "Reload the durable mission state from a fresh process, reconcile it against current main and all open PRs, detect stale/conflicting records, and select the next bounded task using the persisted co-equal round-robin cursor. Record expected versus actual outcomes and preserve unresolved objections."
+        },
+        "acceptance_criteria": [
+          "A fresh process recovers all three mission priorities, current decisions, dependencies, evidence references, blockers and next actions correctly.",
+          "Durable facts, hypotheses, stale observations and unverified claims are distinguishable and carry provenance, timestamps and confidence.",
+          "Contradictory or superseded records are surfaced without silent deletion or overwrite.",
+          "Task selection respects dependencies and the three co-equal mission schedule; blocked work cannot permanently starve another mission.",
+          "Verified outcomes update reusable lessons and regression tests without bypassing review, tests, least privilege or user authorization.",
+          "Operational state stays concise and points to detailed evidence; cross-host synchronization is explicitly tested before being claimed."
+        ]
+      }
+    ],
+    "cross_mission_objectives": [
+      {
+        "id": "barrot_only_revenue_customer_acquisition",
+        "type": "commercial_support",
+        "priority": "immediate_cross_mission",
+        "not_a_fourth_mission": true,
+        "scope": "Use Sellbird exclusively to discover and qualify prospective Barrot technology customers, pilot users, research collaborators, technology partners and potential paying organizations. Barrot technology only; do not market music, background vocals, songwriting, TrekFlex or any separate venture.",
+        "state": "prospect discovery not yet executed; outbound sending paused pending explicit approval of audience, offer, message and sending setup",
+        "requirements": [
+          "Map each offer to an implemented and verified Barrot capability.",
+          "Use free or low-cost discovery first and estimate paid lookup costs before spending.",
+          "Keep prospect research separate from outreach; preserve contact provenance and deduplicate organizations.",
+          "Do not enable unattended sending or claim leads, meetings, revenue or customer results without evidence."
+        ]
+      }
+    ]
   }
 }

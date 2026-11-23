@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 
+from barrot_agent.orchestration.autonomous_state import AutonomousTaskStore
 from barrot_agent.orchestration.learning_curriculum import LearningCurriculum
 from barrot_agent.orchestration.learning_filter import LearningRecord
 from barrot_agent.orchestration.mission_registry import (
@@ -63,15 +64,51 @@ def test_xrp_primary_mission_preempts_generic_learning_curriculum(tmp_path: Path
     assert "No guaranteed returns" in goal
 
 
-def test_structurally_verified_xrp_lesson_advances_to_next_workstream(tmp_path: Path) -> None:
+def test_structurally_verified_xrp_lesson_advances_without_starving_other_missions(tmp_path: Path) -> None:
     store = VerifiedLearningStore(tmp_path / "verified_lessons.jsonl")
     assert store.append(_verified_record("xrp_source_provenance")) is True
 
     curriculum = LearningCurriculum(learning_store=store)
-    goal = curriculum.next_goal()
+    xrp_goal = curriculum.next_goal()
+    audio_goal = curriculum.next_goal()
+    continuity_goal = curriculum.next_goal()
 
-    assert "MISSION_TOPIC_ID: xrp_public_data_ingestion" in goal
-    assert "PRIMARY MISSION — HIGHEST PRIORITY" in goal
+    assert "MISSION_TOPIC_ID: xrp_public_data_ingestion" in xrp_goal
+    assert "MISSION_TOPIC_ID: audio_capability_inventory" in audio_goal
+    assert "MISSION_TOPIC_ID: continuity_versioned_state_model" in continuity_goal
+    assert "co-equal" in audio_goal.lower()
+    assert "Barrot V3" in continuity_goal
+
+
+def test_portfolio_round_robin_cursor_persists_across_curriculum_instances(tmp_path: Path) -> None:
+    store = VerifiedLearningStore(tmp_path / "verified_lessons.jsonl")
+    expected = [
+        ("xrp_intelligence_prediction_engine", "xrp_source_provenance"),
+        ("professional_audio_production", "audio_capability_inventory"),
+        ("long_horizon_continuity_capability_development", "continuity_versioned_state_model"),
+        ("xrp_intelligence_prediction_engine", "xrp_source_provenance"),
+    ]
+
+    goals = [
+        LearningCurriculum(learning_store=store).next_goal()
+        for _ in expected
+    ]
+    for goal, (_, topic_id) in zip(goals, expected):
+        assert f"MISSION_TOPIC_ID: {topic_id}" in goal
+
+    cursor = AutonomousTaskStore(tmp_path).load("mission_portfolio")
+    assert cursor is not None
+    assert cursor["selection_count"] == len(expected)
+    assert [item["mission_id"] for item in cursor["history"][-4:]] == [
+        mission_id for mission_id, _ in expected
+    ]
+
+
+def test_portfolio_manifest_rejects_silent_priority_demotion(tmp_path: Path) -> None:
+    manifest = _manifest()
+    manifest["mission_portfolio"]["missions"][1]["priority"] = 2
+    with pytest.raises(MissionRegistryError, match="co-equal"):
+        MissionRegistry(_write_manifest(tmp_path, manifest))
 
 
 def test_primary_mission_continues_after_initial_workstreams(tmp_path: Path) -> None:
@@ -79,11 +116,12 @@ def test_primary_mission_continues_after_initial_workstreams(tmp_path: Path) -> 
     for item in _manifest()["workstreams"]:
         assert store.append(_verified_record(item["topic_id"])) is True
 
-    curriculum = LearningCurriculum(learning_store=store)
-    goal = curriculum.next_goal()
+    known = "\n".join(item["lesson"] for item in store.read_verified()).lower()
+    goal = MissionRegistry().next_goal(known)
 
     assert "MISSION_TOPIC_ID: xrp_continuous_mission_review" in goal
     assert "highest-priority unmet XRP" in goal
+    assert "co-equal standing" in goal
 
 
 def test_legacy_or_shallow_records_cannot_advance_primary_mission(tmp_path: Path) -> None:
