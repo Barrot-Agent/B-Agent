@@ -5435,6 +5435,175 @@ def _run_coinbase_candle_backfill(
 
 
 
+def _is_immutable_sec_accession_document(source_id: Any, source_uri: Any) -> bool:
+    """Accept only exact SEC accession documents, not mutable issuer pages or search endpoints."""
+    if not isinstance(source_id, str) or not isinstance(source_uri, str):
+        return False
+    match = re.fullmatch(
+        r"sec_edgar_document_([a-z0-9]+)_([0-9]{10}-[0-9]{2}-[0-9]{6})",
+        source_id,
+    )
+    if match is None:
+        return False
+    entity_id, accession = match.groups()
+    issuer = next((item for item in SEC_ISSUERS if item["entity_id"] == entity_id), None)
+    if issuer is None:
+        return False
+    try:
+        parsed = urlsplit(source_uri)
+    except ValueError:
+        return False
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname != "www.sec.gov"
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.port is not None
+        or parsed.query
+        or parsed.fragment
+        or "%" in parsed.path
+    ):
+        return False
+    path_match = re.fullmatch(
+        r"/Archives/edgar/data/([0-9]+)/([0-9]{18})/([^/]+)",
+        parsed.path,
+    )
+    if path_match is None:
+        return False
+    cik, compact_accession, document_name = path_match.groups()
+    return (
+        int(cik) == int(issuer["cik"])
+        and compact_accession == accession.replace("-", "")
+        and document_name not in {"", ".", ".."}
+        and ".." not in document_name
+    )
+
+
+def _attach_immutable_sec_event_receipts(
+    event_records: Sequence[Mapping[str, Any]],
+    raw_receipts: Sequence[Mapping[str, Any]] | None,
+    data_cutoff_utc: str,
+) -> tuple[list[Any], dict[str, Any]]:
+    """Attach only exact, cutoff-visible SEC accession-document receipts to event versions.
+
+    A recapture is a new known-at time. The old unreceipted registry timestamp is
+    preserved as history and is never reused as the receipt capture time.
+    """
+    summary = {
+        "status": "NOT_PROVIDED" if raw_receipts is None else "NO_MATCHING_IMMUTABLE_SEC_RECEIPTS",
+        "candidate_receipt_count": 0,
+        "linked_event_count": 0,
+        "unique_receipt_count": 0,
+        "ambiguous_event_count": 0,
+        "future_receipt_count": 0,
+        "cutoff_utc": data_cutoff_utc,
+    }
+    if raw_receipts is None:
+        return [dict(record) if isinstance(record, Mapping) else record for record in event_records], summary
+    if not isinstance(raw_receipts, Sequence) or isinstance(raw_receipts, (str, bytes)):
+        raise XRPIngestionError("raw_receipts must be a sequence before SEC event receipt linkage")
+    cutoff = _from_iso8601(data_cutoff_utc, "event receipt data cutoff")
+    by_url: dict[str, list[tuple[datetime, Mapping[str, Any]]]] = {}
+    for index, receipt in enumerate(raw_receipts):
+        if not isinstance(receipt, Mapping):
+            continue
+        source_id = receipt.get("source_id")
+        source_uri = receipt.get("source_uri")
+        if not _is_immutable_sec_accession_document(source_id, source_uri):
+            continue
+        summary["candidate_receipt_count"] += 1
+        captured_at = _from_iso8601(
+            receipt.get("captured_at_utc"),
+            f"raw_receipts[{index}].captured_at_utc",
+        )
+        if captured_at > cutoff:
+            summary["future_receipt_count"] += 1
+            continue
+        by_url.setdefault(source_uri, []).append((captured_at, receipt))
+
+    output: list[Any] = []
+    linked_receipt_ids: set[str] = set()
+    for index, record in enumerate(event_records):
+        if not isinstance(record, Mapping):
+            output.append(record)
+            continue
+        item = dict(record)
+        source_url = item.get("source_url")
+        if not isinstance(source_url, str) or not source_url.startswith(
+            "https://www.sec.gov/Archives/edgar/data/"
+        ):
+            output.append(item)
+            continue
+        candidates = by_url.get(source_url, [])
+        if not candidates:
+            output.append(item)
+            continue
+        latest_capture = max(captured_at for captured_at, _ in candidates)
+        latest = [receipt for captured_at, receipt in candidates if captured_at == latest_capture]
+        if len(latest) != 1:
+            summary["ambiguous_event_count"] += 1
+            output.append(item)
+            continue
+        receipt = latest[0]
+        receipt_hash = receipt.get("raw_content_sha256")
+        receipt_id = receipt.get("receipt_id")
+        receipt_source_id = receipt.get("source_id")
+        receipt_capture = receipt.get("captured_at_utc")
+        raw_retained = receipt.get("raw_bytes_retained")
+        if (
+            not isinstance(receipt_hash, str)
+            or not _SHA256_RE.fullmatch(receipt_hash)
+            or not isinstance(receipt_id, str)
+            or not _SHA256_RE.fullmatch(receipt_id)
+            or not isinstance(receipt_capture, str)
+            or not isinstance(receipt_source_id, str)
+            or not isinstance(raw_retained, bool)
+        ):
+            raise XRPIngestionError("SEC event receipt does not match the canonical receipt identity fields")
+        history = item.get("source_capture_history", [])
+        if not isinstance(history, list):
+            raise XRPIngestionError(f"event_records[{index}].source_capture_history must be a list")
+        previous = {
+            "capture_method": "legacy_registry_capture_without_canonical_receipt",
+            "source_id": item.get("source_id"),
+            "captured_at_utc": item.get("captured_at_utc"),
+            "available_at_utc": item.get("available_at_utc"),
+            "raw_source_sha256": item.get("raw_source_sha256"),
+            "receipt_id": None,
+            "raw_bytes_retained": None,
+        }
+        if (
+            isinstance(previous["source_id"], str)
+            and isinstance(previous["captured_at_utc"], str)
+            and isinstance(previous["available_at_utc"], str)
+            and previous not in history
+        ):
+            history = [*history, previous]
+        current = {
+            "capture_method": "immutable_sec_accession_document_recapture",
+            "source_id": receipt_source_id,
+            "captured_at_utc": receipt_capture,
+            "available_at_utc": receipt_capture,
+            "raw_source_sha256": receipt_hash,
+            "receipt_id": receipt_id,
+            "raw_bytes_retained": raw_retained,
+        }
+        history = [entry for entry in history if entry != current]
+        history.append(current)
+        item["source_capture_history"] = history
+        item["receipt_linkage_method"] = "immutable_sec_accession_document_recapture"
+        item["captured_at_utc"] = receipt_capture
+        item["available_at_utc"] = receipt_capture
+        item["raw_source_sha256"] = receipt_hash
+        summary["linked_event_count"] += 1
+        linked_receipt_ids.add(receipt_id)
+        output.append(item)
+    summary["unique_receipt_count"] = len(linked_receipt_ids)
+    if summary["linked_event_count"]:
+        summary["status"] = "LINKED"
+    return output, summary
+
+
 def _capture_event_timeline_registry(
     registry_path: str | Path | None,
     data_cutoff_utc: str,
@@ -5468,6 +5637,7 @@ def _capture_event_timeline_registry(
             "scenario_count": 0,
             "receipt_complete": timeline["receipt_complete"],
             "receipt_linkage": timeline["receipt_linkage"],
+            "receipt_relinkage": receipt_relinkage,
             "forecast_status": "NOT_ISSUED",
             "directional_forecast": False,
             "probabilities": None,
@@ -5490,12 +5660,17 @@ def _capture_event_timeline_registry(
         records = registry.get("events")
         if not isinstance(records, list):
             raise XRPIngestionError("XRP event registry events must be a list")
+        recaptured_records, receipt_relinkage = _attach_immutable_sec_event_receipts(
+            records,
+            raw_receipts,
+            data_cutoff_utc,
+        )
         try:
             timeline = build_event_timeline(
                 asset="XRP",
                 data_cutoff_utc=data_cutoff_utc,
                 horizon_seconds=30 * 24 * 60 * 60,
-                event_records=records,
+                event_records=recaptured_records,
                 raw_receipts=raw_receipts,
             )
         except EventTimelineError as exc:
@@ -5514,6 +5689,7 @@ def _capture_event_timeline_registry(
             "scenario_count": timeline["scenario_set"]["scenario_count"],
             "receipt_complete": timeline["receipt_complete"],
             "receipt_linkage": timeline["receipt_linkage"],
+            "receipt_relinkage": receipt_relinkage,
             "forecast_status": "NOT_ISSUED",
             "directional_forecast": False,
             "probabilities": None,
@@ -5522,6 +5698,8 @@ def _capture_event_timeline_registry(
             "warnings": [
                 "registry_sha256 authenticates only the curated registry file, not publisher payloads.",
                 "Events without raw_source_sha256 remain receipt-incomplete and model-ineligible.",
+                "Only exact SEC accession-document URLs may receive a new capture version; mutable company pages and secondary sources are not relinked automatically.",
+                "A recaptured SEC document becomes known at its new receipt capture time; its legacy unreceipted timestamp is preserved only as history.",
                 "Hypotheses and counter-hypotheses are authored inputs; no causal inference or forecast probabilities are produced.",
                 "The registry is curated, not an automatically discovered event feed.",
             ],
