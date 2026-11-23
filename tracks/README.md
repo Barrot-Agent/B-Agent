@@ -18,7 +18,18 @@ Each track ships as:
   directly, synth fallback only where no sample exists).
 - `_pattern.txt` — 16-step grid chart + v2 patch notes per track.
 
-Rebuild anytime: `python3 scripts/make_beats.py` · verify: `--check`.
+Build reproducibly without replacing checked-in takes:
+
+```bash
+python3 scripts/make_beats.py --seed 0
+python3 scripts/make_beats.py --check --output-dir tracks/builds/seed-0
+```
+
+The default build goes to `tracks/builds/seed-0/`. Use a different integer
+seed or an explicit `--output-dir` for another take. Existing MIDI, WAV and
+pattern files are never overwritten; choose a new output directory for every
+revision. Plain `--check` continues to verify the five checked-in baseline
+tracks in `tracks/`.
 
 Cover: `cover.png` (art via LunaRoute image gen, type set with PIL).
 
