@@ -32,6 +32,7 @@ from .event_timeline import EventTimelineError, build_event_timeline
 from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_document, fetch_sec_json
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
+_SHA256_RE = re.compile(r"[0-9a-f]{64}")
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
 ADAPTER_VERSION = "xrp-public-market-v3.32"
 PARSER_VERSION = "xrp-public-market-v3.31"
