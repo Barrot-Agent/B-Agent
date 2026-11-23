@@ -208,6 +208,34 @@ def test_mutable_or_non_sec_event_source_is_not_relinked(tmp_path):
     assert unlinked["receipt_status"] == "MISSING_RAW_RECEIPT_HASH"
 
 
+
+
+def test_ambiguous_latest_sec_receipts_fail_closed(tmp_path):
+    path = tmp_path / "events.json"
+    source_url = "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    event = _event("sec-ambiguous-event")
+    event["source_id"] = "sec_evernorth_424b3"
+    event["source_url"] = source_url
+    _write_registry(path, [event])
+    receipts = [
+        _canonical_sec_document_receipt(source_url, "2026-11-12T04:30:00Z", "a" * 64),
+        _canonical_sec_document_receipt(source_url, "2026-11-12T04:30:00Z", "b" * 64),
+    ]
+
+    result = _capture_event_timeline_registry(
+        path,
+        "2026-11-12T05:00:00Z",
+        raw_receipts=receipts,
+    )
+    unlinked = result["timeline"]["event_timeline"][0]
+    assert result["receipt_complete"] is False
+    assert result["receipt_relinkage"]["ambiguous_event_count"] == 1
+    assert result["receipt_relinkage"]["linked_event_count"] == 0
+    assert unlinked["raw_source_sha256"] is None
+    assert unlinked["receipt_status"] == "MISSING_RAW_RECEIPT_HASH"
+    assert result["model_eligible"] is False
+
+
 def test_xrp_ingestion_workflow_publishes_the_event_timeline_artifact():
     workflow = Path(".github/workflows/xrp-public-ingestion.yml").read_text(encoding="utf-8")
     assert r"xrp-public-events-${{ github.run_id }}" in workflow
