@@ -160,7 +160,7 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
 
     ceiling = 10 ** (-6.0 / 20.0)
     mix_peak = float(np.max(np.abs(mix_samples)))
-    mix_true_peak = float(np.max(resample_poly(mix_samples, 4, 1, axis=0)))
+    mix_true_peak = float(np.max(np.abs(resample_poly(mix_samples, 4, 1, axis=0))))
     assert first.channels == 2
     assert first.duration_seconds > 30.0
     assert first.peak_level <= ceiling + 1e-4
