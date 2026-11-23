@@ -2909,3 +2909,41 @@ No merge, main write, branch creation, force-push, deployment, secret rotation, 
 3. For audio, extend the composition beyond the 16-bar test, add a rights-cleared redistributable sound source, persist an inspectable example bundle, and run level-matched listening/user acceptance before claiming quality improvement.
 4. For continuity, retain the verified local fresh-process recovery and build a separately tested authenticated cross-host synchronization layer with conflict detection before claiming cross-session/cross-host continuity.
 5. Keep Sellbird uninstalled and sending paused until AGPL review, supported-host setup, Barrot-specific offer/ICP, mailbox/domain readiness, suppression/opt-out checks and explicit campaign approval are complete.
+
+
+---
+
+## Run 11 research correction — exact phrases and creator attribution
+**Recorded:** 2026-11-23 22:07 UTC. This append-only correction refines the earlier run-11 wording; it does not delete the earlier evidence or its caveats.
+
+### “Actual capital”
+The November 21 run-268 reconciliation classifies the phrase as **CONCEPT_RECONCILED_PRIMARY_FILINGS**, not as a formal accounting term or a single scalar. The SEC-filed capital ledger separates:
+- $214.1M private-placement subscription cash received through 2026-09-30; the issuer says this cash was used to purchase 84,365,876 XRP.
+- Approximately $272.6M gross cash at the 2026-10-09 business-combination close ($224.6M private-placement investments plus $48.0M SPAC trust release, before expenses). Do **not** add this to the $214.1M figure; the transaction stages/aggregates overlap.
+- $30.0M gross / $29.0M net convertible-note proceeds on 2026-10-13 after a $1.0M advisor fee.
+- $35.3M warrant-exercise cash received from 2026-10-12 through 2026-11-09.
+- In-kind XRP contributions, including 388,910,554 XRP reported as the aggregate at closing. The 261,919,096, 126,791,458, 211,319,096 and 50,000,000 XRP disclosures describe constituent or related-party routes; do not sum them as independent additions.
+- Up to $132.25M of theoretical public-warrant proceeds if all 11,499,992 registered warrants were exercised at $11.50; this is contingent capacity, not cash received. The optional ELOC is also capacity, not a proven draw.
+
+The original exact phrase was not found as an issuer accounting label. Keep cash, net proceeds, debt, warrant proceeds, in-kind XRP, optional facilities and unexercised warrants separate. The filing does not provide a complete investor-by-investor cash schedule and does not prove that SBI Holdings itself funded the entire $214.1M.
+
+A separate Hyperliquid lead (wallet prefix 0x243) reported by secondary outlets describes a 52.67 BTC deposit (~$3.26M) and a 14.189M XRP position (~$16.3M notional) at 20x. $815,000 is only notional divided by 20 under a simplified isolated-margin assumption; it is not observed account equity or verified cash invested. The original Onchain Lens post was inaccessible (403), and the secondary outlets repeat the same attribution, so this is not an independent resolution of the user's phrase.
+
+### “SBIC, ChatGPT SBIC”
+The exact literal phrase and any formal OpenAI partnership remain unverified. The closest primary context is Tokyo SBIC's official 2025-02-26 seminar, “The Present and Future of Generative AI (ChatGPT),” co-hosted with the Taito branch of the Tokyo Chamber of Commerce and Industry; the listed speaker was a Microsoft Japan executive/evangelist. A regional SBIC-hosted seminar is not evidence of OpenAI affiliation. SBIC East/Central/West remain distinct legal entities from SBI Holdings.
+
+### “ASK Coin”
+The unqualified phrase is non-unique. Permission Coin (ASK) is the best-supported token candidate, but no XRP/XRPL/Ripple relationship is established. A separate Telegram AskCoin bot also appears in the phrase research; do not merge it with Permission. Permission's current issuer documentation lists Base and Polygon OFT contracts, while its January 2025 Base announcement lists a different historical address. Preserve that contract/migration conflict until verified on-chain; do not merge balances or treat the old address as current.
+
+### Camilla / Kamilah Stevenson — safe video-attribution boundary
+The **person** Dr. Kamilah Stevenson is supported by first-party professional/organization sources. The **canonical personal YouTube channel** remains disputed: the November 21 run-268 artifact triangulates `@drkamilahstevenson` / channel ID `UCqUPJMQdkCN6lsLVDnichPA`, while the November 22 run-22 artifact records a different candidate handle/channel ID `@KamilahStevensonXrpStocks` / `UCXm6KAr1WHF6UN7g5b2W7wg`. The November 23 addendum retains multiple candidates and no first-party reciprocal channel link. Therefore, do not attribute personal-channel uploads until the canonical channel ID is resolved.
+
+The following public third-party attributions are supported by their publisher/speaker metadata and the first-party identity evidence; they are not personal-channel uploads:
+1. [Thinking Your Way Into Health | Kamilah Stevenson | TEDxWillowCreek](https://www.youtube.com/watch?v=VSgeDgOCexs) — TEDx Talks, 2018-05-18; verified speaker attribution.
+2. [The Study of Job | Dr. Kamilah Stevenson](https://www.youtube.com/watch?v=E-jdY7gy7mQ) — All Nations Chicago, 2019-09-09; organization-channel attribution.
+3. [Dr. Kamilah Stevenson | Generational Health Starts With You](https://www.youtube.com/watch?v=TS7nhMTgd2Y) — Sean Croxton, 2025-08-06; third-party video attribution.
+4. [Crypto Panics! W/ @drkamilahstevenson](https://www.youtube.com/watch?v=Sulo54IlQ60) — Paul Barron Podcast, 2026-06-11; verified guest appearance.
+
+No full content review was completed; these are metadata/attribution records, not endorsements or confirmation of their market claims. Three personal-channel uploads remain candidate-only: `iwhpNT73zpk` (2026-03-06), `po4bv7889ao` (2025-12-23), and `12HiznN3iLQ` (2025-12-29). The interview transcript's “Camilla/Camila” spellings are transcription/name variants, not independent proof of a separate person.
+
+All run-268 and run-22 web-rendered research remains **model-ineligible** because byte-complete raw source captures and SHA-256 receipts were not created. Keep these as research evidence only; do not promote them into the XRP feature store or forecasts.
