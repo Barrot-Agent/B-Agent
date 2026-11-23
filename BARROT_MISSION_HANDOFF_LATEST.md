@@ -726,3 +726,79 @@ This update supersedes older repository, PR, test, ingestion and mission-status 
 - **Next:** (1) keep #1690 and #1691 draft until independent review and branch-protection evidence are available; rerun exact-head checks after this documentation commit; (2) repair event-to-receipt provenance and obtain adequate drift/walk-forward/shadow evidence without issuing forecasts prematurely; (3) produce and QC a licensed, reproducible audio render and editable multitrack deliverables; (4) design conflict-aware cross-host continuity without replacing the current local store; (5) keep Sellbird discovery limited to verified Barrot capabilities and all sending disabled.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, Databricks write, external model dispatch, paid audio generation, paid prospect lookup, outbound email, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+# Primary-source XRP ecosystem research update — 2026-11-23
+
+This update supersedes the earlier statement that no new primary evidence had resolved the Japanese SBIC identity or expanded the Coinbase/Circle/Ripple/SBI relationship map. It records source-level facts separately from adoption and price hypotheses.
+
+## Japan's SBIC identity — resolved at the corporate-entity level
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社), corporate number **9011001030621**, established November 15, 1963. Its official profile identifies Nagoya and Osaka as sister companies and lists regional governments, chambers of commerce, financial institutions and operating companies among its shareholders. [Official corporate profile](https://www.sbic.co.jp/company/profile/).
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (名古屋中小企業投資育成株式会社), established November 18, 1963, covering Aichi, Gifu, Mie, Toyama and Ishikawa. Its official profile identifies Tokyo and Osaka as sister companies. [Official corporate profile](https://www.sbic-cj.co.jp/company/about/).
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. (大阪中小企業投資育成株式会社), established November 20, 1963, covering 24 prefectures west of its stated regional boundary. Its official profile identifies Tokyo as a sister company. [Official corporate profile](https://www.sbic-wj.co.jp/profiles/profile/).
+- **SBI Holdings is a different company:** SBI Holdings, Inc. was established July 8, 1999; its own corporate profile defines its principal business as controlling and managing the SBI Group through share ownership. [Official corporate profile](https://www.sbigroup.co.jp/english/company/information/profile.html).
+- Conclusion: SBIC East, Central and West are three separately named regional SME investment-and-consultation companies and sister organizations. The primary corporate profiles reviewed do not identify them as SBI Holdings subsidiaries. Do not conflate them with SBI Holdings, SBI VC Trade, or the SBI Group.
+- The exact phrase **“SBIC, ChatGPT SBIC”** remains unresolved. No primary evidence of an OpenAI/SBIC partnership was found. The entity identity is resolved; the phrase's alleged relationship is not.
+
+## Direct and indirect relationships among SBI, Circle, Ripple, Coinbase and BNY
+
+### SBI ↔ Circle
+
+- SBI Holdings and Circle signed a comprehensive business-partnership MOU in November 2023 aimed at USDC distribution and Circle Web3 services in Japan. In 2025 they agreed to establish the joint venture referred to by SBI as **SBI Circle Holdings**; Circle's Q3 2026 Form 10-Q calls the entity **Circle SBI Japan K.K.** and states that Circle and SBI each contributed approximately **¥1.5 million equivalent** in November 2025. Circle owns 50%, consolidates the entity as a variable-interest entity because it controls the activities that most affect it, and reported **no significant operating results to date** as of September 30, 2026. This is a legal/economic relationship, but not evidence of scaled USDC distribution through the JV yet. [SBI May 12, 2026 disclosure](https://www.sbigroup.co.jp/news/2026/0512_16310.html) · [Circle Q3 2026 Form 10-Q](https://d18rn0p25nwr6d.cloudfront.net/CIK-0001876042/e607a289-7db3-44a8-bdf6-c6624a132a27.html).
+- SBI Holdings and SBI Shinsei Bank jointly invested **$50 million** in Circle at its June 2025 IPO, split $25 million each. SBI's release also records the 2023 MOU, the planned JV and SBI VC Trade's USDC rollout. [SBI June 9, 2025 disclosure](https://www.sbigroup.co.jp/news/2025/0609_15491.html).
+- SBI VC Trade received Japan's electronic-payment-instrument exchange registration in March 2025 and began USDC service. SBI and Aplus later ran a five-day, two-store Osaka USDC point-of-sale pilot in May 2026; treat that as a limited pilot, not nationwide production retail acceptance. [SBI registration disclosure](https://www.sbigroup.co.jp/news/2025/0304_15290.html) · [SBI/Aplus pilot disclosure](https://www.sbigroup.co.jp/news/pr/2026/0430_16290.html).
+- SBI announced participation through a consolidated subsidiary in Circle's Arc-token presale in May 2026. This is another capital/strategic link, but the release does not disclose SBI's individual allocation. [SBI May 12, 2026 disclosure](https://www.sbigroup.co.jp/news/2026/0512_16310.html).
+
+### SBI ↔ Ripple
+
+- Ripple and SBI Group announced RLUSD's Japanese launch on June 24, 2026, through SBI VC Trade after Japanese Financial Services Agency approval. SBI VC Trade's own notice classifies it as a Type 4 electronic payment instrument under its Japanese-law analysis and explicitly says the launch applies to its **VCTRADE service**, not the BITPOINT service. Do not infer that every SBI-branded exchange interface or subsidiary offers RLUSD. [SBI VC Trade launch notice](https://www.sbivc.co.jp/newsview/bsqs09vn_yzv) · [Ripple announcement](https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/).
+- SBI Group also launched the yen-denominated trust-type stablecoin **JPYSC** on June 24, 2026. SBI Shinsei Trust Bank is issuer, SBI VC Trade distributes it, and Startale Group co-developed it. Initial availability was limited to SBI VC Trade accounts; public-chain circulation was deferred pending resolution of legal and tax practice. This is a parallel SBI stablecoin rail, not an XRP or RLUSD product. [SBI Group JPYSC disclosure](https://www.sbigroup.co.jp/news/2026/0624_16425.html).
+
+### Coinbase ↔ Circle
+
+- Circle's Q3 2026 Form 10-Q describes the Coinbase Collaboration Agreement: Coinbase receives allocations based on USDC held on its platform after issuer retention, plus half of the remaining broader ecosystem-growth amount after approved third-party participants. Circle reported **$331.3 million** of distribution costs under its Coinbase agreements for Q3 2026 and **$986.6 million** for the first nine months of 2026. These are filed distribution-cost amounts, not XRP capital flows. [Circle Q3 2026 Form 10-Q, Note 15](https://d18rn0p25nwr6d.cloudfront.net/CIK-0001876042/e607a289-7db3-44a8-bdf6-c6624a132a27.html).
+- Coinbase's Q3 2026 Form 10-Q says it renewed its arrangement with Circle on the same terms and that average USDC held in Coinbase products reached an all-time high. This corroborates the ongoing economic/distribution dependency from the other side. [Coinbase Q3 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm).
+- Implication: Coinbase is a material USDC distribution and economics partner, not merely a venue where USDC happens to trade. The filings do not establish exclusivity. The economics remain sensitive to USDC balances, reserve yields, partner allocations and the cost of distribution.
+
+### Ripple ↔ Coinbase
+
+- Ripple and Coinbase announced RLUSD availability on Coinbase Prime, Coinbase Exchange and the Coinbase Retail app on October 28, 2026, with 1:1 conversion from USD and other supported USD-denominated stablecoins. Coinbase Global Exchange collateral support was described as **following later**; do not record it as live collateral functionality on the announcement date. [Ripple's October 28 announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+
+### Ripple ↔ BNY
+
+- BNY's October 27, 2026 announcement says BNY already serves as RLUSD's primary reserve custodian and has a custody relationship with Ripple Prime; BNY now supports **both XRP and RLUSD** on its Digital Asset Custody platform. BNY and Ripple also described intended future direct RLUSD mint/redeem support and tokenized trade-finance exploration with C2FO, subject to client requirements and final approvals. Separate current custody support from proposed future mint/redeem and trade-finance workflows. [BNY's October 27 announcement](https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html).
+
+### Ripple Prime derivatives and corporate claims
+
+- Ripple Prime announced RWA perpetual swaps on October 15, 2026, covering more than 100 reference markets across equities, indices, ETFs, metals, energy and FX, with 24/7 trading/settlement. The announcement says the contracts are listed by Trade.xyz on Hyperliquid; this is not evidence of native XRPL derivatives or XRP-specific open interest. [Ripple announcement](https://ripple.com/ripple-press/ripple-launches-support-for-institutions-to-access-real-world-asset-perpetual-swaps/).
+- Ripple's October 28 corporate release reported an expected $900 million annualized product-revenue run rate exiting 2026, more than $16 trillion in transactions enabled across Ripple products in 2025, 1,700+ institutions/corporates/enterprises and 85+ licenses. These are company-reported product-level claims; they are not independently verified here and must not be treated as XRP trading volume, XRP settlement value, or XRP token demand. [Ripple's October 28 corporate release](https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/).
+
+### Relationship graph and limits
+
+- Verified direct links: **SBI–Circle** (MOU, 50% JV, equity investment, USDC distribution); **SBI–Ripple** (RLUSD Japan launch through SBI VC Trade); **Coinbase–Circle** (USDC distribution/economic agreement); **Coinbase–Ripple** (RLUSD listing/distribution); **Ripple–BNY** (RLUSD reserve custody, XRP/RLUSD custody, proposed future workflows).
+- No direct Circle–Ripple commercial agreement was established by the primary evidence reviewed. Circle's Q3 2026 10-Q does not mention Ripple; Coinbase's Q3 2026 10-Q does not mention SBI. Those filing absences are bounded observations, not proof that no private or unreported relationship exists.
+- These announcements support institutional-infrastructure and stablecoin-distribution hypotheses. They do **not** independently prove incremental XRP demand, net XRP purchases, exchange outflows, collateral usage, or price impact. Admit them as point-in-time event evidence only after receipt-backed capture; keep the market forecast gate closed.
+
+## Kamilah Stevenson — public channel attribution, not legal identity
+
+- Search-visible public channel: [Kamilah Stevenson | XRP & Stocks](https://www.youtube.com/@KamilahStevensonXrpStocks), channel ID `UCXm6KAr1WHF6UN7g5b2W7wg`. The channel self-identifies as Kamilah Stevenson; video bylines are consistent with that channel name. This verifies public channel attribution, not civil/legal identity. No evidence was found that “Camilla Stevenson” is the same person.
+- Three search-visible videos attributed to Kamilah Stevenson:
+  1. [You Can't Outwork Inflation—Why I Own XRP & Bitcoin Instead](https://www.youtube.com/watch?v=tYEC-RYAS7Y) — December 9, 2025; indexed at 18,672 views / 1,400 likes.
+  2. [Why XRP Matters More Than Your Paycheck](https://www.youtube.com/watch?v=Us_FIT4RByY) — April 17, 2026; indexed at 30,004 views / 2,100 likes.
+  3. [I Moved My XRP Off The Exchanges](https://www.youtube.com/watch?v=TfFx0g2IgGg) — May 20, 2026; indexed at 8,234 views / 390 likes.
+- Counts are search-index observations, not live counters; this is a search-visible minimum, not an exhaustive channel archive. Review video claims as attributed commentary, not primary market evidence.
+
+## Exact-phrase research status
+
+- Japan's SBIC corporate identity is resolved from official corporate profiles. The separate phrase **“SBIC, ChatGPT SBIC”** remains unsupported by primary evidence.
+- No new primary source resolved the exact-phrase **“ASK Coin”** candidates or **“actual capital”** wording. Keep candidate identities separate and preserve the accounting distinctions already established: cash paid, debt drawn, in-kind XRP contribution, warrant exercise, facility capacity and proposed/undrawn commitments are not interchangeable.
+- No new video identity evidence links “Camilla” to the Kamilah channel.
+
+## Exact-head status before this research addendum
+
+- The preceding handoff commit `2a611f3f5622cf39c57a99f7feea39b4a3d6c052` passed PR-event full repository CI [45116090567](https://github.com/Barrot-Agent/B-Agent/actions/runs/45116090567): 4,608 passed, 1 skipped, 11 warnings, 32 subtests, 73.34% coverage. Dependency audit [45116090577](https://github.com/Barrot-Agent/B-Agent/actions/runs/45116090577), Money audit [45116090605](https://github.com/Barrot-Agent/B-Agent/actions/runs/45116090605) and Conflict Integrity [45116090656](https://github.com/Barrot-Agent/B-Agent/actions/runs/45116090656) passed on that exact head.
+- Fail-closed gate [45116090587](https://github.com/Barrot-Agent/B-Agent/actions/runs/45116090587) failed as designed: draft PR, no independent approving review, and branch protection unavailable to the integration. No merge was attempted.
+- This research addendum creates a new documentation-only commit on the same existing audio branch. Exact-head CI and audits must run again on the resulting head before merge eligibility can be reconsidered.
