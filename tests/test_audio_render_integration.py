@@ -220,6 +220,9 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
         "distribution": "QC JSON only; GPL-2 SoundFont, WAV mix, stems, and MIDI are not uploaded",
     }
     qc_output = os.environ.get("BARROT_AUDIO_BUNDLE_QC_OUTPUT")
-    if qc_output:
-        Path(qc_output).write_text(json.dumps(qc, indent=2, sort_keys=True) + "\n")
+    assert qc_output, "BARROT_AUDIO_BUNDLE_QC_OUTPUT must be set in the dedicated integration job"
+    qc_path = Path(qc_output)
+    qc_path.write_text(json.dumps(qc, indent=2, sort_keys=True) + "\n")
+    assert qc_path.is_file() and qc_path.stat().st_size > 0
+    print(json.dumps(qc, indent=2, sort_keys=True))
     print(json.dumps(qc, indent=2, sort_keys=True))
