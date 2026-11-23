@@ -541,3 +541,16 @@ The capability/authentication/permission/data-flow map remains in the repository
 3. Audio: run an end-to-end licensed render on a supported host, inspect artifacts, produce aligned stems/MIDI/project where possible, and obtain level-matched blind listening before claiming improvement.
 4. Continuity: design a secure, conflict-aware cross-host checkpoint protocol; preserve local-only behavior until reviewed.
 5. Sellbird: keep sending paused; refine the three Barrot-only account candidates and validate a manual pilot sample before any campaign approval.
+
+
+## Audio exact-head verification addendum — 2026-11-23
+
+This supersedes the earlier #1690 head and audio-status entries above.
+
+- Current audio PR head at verification: `6b5f2947bb7a11e4a49eb0afd1077c63f3e02b86`.
+- `barrot_agent/creative/audio_render.py` no longer hard-clips rendered samples. It applies a non-boosting scalar gain only when needed to keep sample peaks at or below -6 dBFS by default. This preserves relative dynamics and is not limiting, compression, or mastering.
+- Both new headroom tests passed, including an over-range render fixture that verifies attenuation rather than clipping.
+- Exact-head full repository suite: **4,608 passed, 1 skipped, 11 warnings, 32 subtests; 73.34% coverage**. pip-audit, repository audit, merge-tree conflict verification, and GitHub Pages validation passed.
+- The fail-closed gate failed as intended: PR remains draft, no independent review exists, and branch-protection requirements cannot be read through the available GitHub integration. No merge was attempted.
+- No WAV/MIDI assets were regenerated. No new listening evaluation was performed. The 6 dB control is sample-peak only; true-peak oversampling, stereo/phase review, aligned stems, editable DAW project, and blind/level-matched listening remain unverified.
+- This handoff update creates a new documentation-only commit on the existing audio branch. Exact-head CI must run again on that new head before merge eligibility can be reconsidered.
