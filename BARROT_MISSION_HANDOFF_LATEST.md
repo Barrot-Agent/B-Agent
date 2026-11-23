@@ -1,3 +1,167 @@
+# Latest mission state — 2026-11-23 00:53 UTC
+
+> This section supersedes earlier run snapshots below wherever their main SHA, PR state, CI evidence, mission priority, audio readiness, continuity status or commercial status differs. Older sections remain as historical records.
+
+## Current integrated repository state
+
+- **Current main:** `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`.
+- **Complete recursive tree:** 3,139 entries; not truncated.
+- **Mainline post-merge verification:** [CI run 45089588979](https://github.com/Barrot-Agent/B-Agent/actions/runs/45089588979) succeeded on the exact main SHA. Core tests and the full repository suite passed. The full suite recorded **4,602 passed, 1 skipped, 11 warnings, 32 subtests**, 73.33% total coverage, and 81% on the legacy core-package floor. All mission-critical package coverage floors passed. Runtime was 137.88 seconds.
+- **Dependency audit:** [45089588915](https://github.com/Barrot-Agent/B-Agent/actions/runs/45089588915) succeeded on main.
+- **Money audit:** [45089589026](https://github.com/Barrot-Agent/B-Agent/actions/runs/45089589026) succeeded on main.
+- Main's post-merge XRP historical backfill replay and Pages validation-only jobs were skipped in that run; do not represent them as executed.
+- No new scheduled XRP capture was executed after this mainline merge. The latest documented market/data snapshot remains the prior November 22 capture, not a fresh November 23 snapshot.
+
+### Merged PRs now present on main
+
+| PR | Merge commit | Merge time UTC | Purpose |
+|---|---|---|---|
+| [#1685](https://github.com/Barrot-Agent/B-Agent/pull/1685) | `b88e6cab726882b9474a2e047f6fd454ac5dbd4c` | 00:33:31 | A2A gateway/runner credential separation |
+| [#1687](https://github.com/Barrot-Agent/B-Agent/pull/1687) | `a45b34c403940eaf5edcd0c2052c443a6bdcebf7` | 00:33:54 | Read-only model-integrity diagnostics |
+| [#1688](https://github.com/Barrot-Agent/B-Agent/pull/1688) | `3220c8aff954268ad698e4da8373d6635c494507` | 00:33:59 | Evidence-gated autonomous capability cycle |
+| [#1689](https://github.com/Barrot-Agent/B-Agent/pull/1689) | `fa65d3f84db1fd6b5cd057c218993d1462105deb` | 00:34:11 | Three-mission portfolio, Sellbird Barrot-only scope and continuity policy |
+| [#1684](https://github.com/Barrot-Agent/B-Agent/pull/1684) | `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6` | 00:34:39 | XRP intelligence integration |
+
+The current main tree and successful main CI confirm these commits are present. No duplicate source PRs were identified for bulk closure.
+
+## Governance exception — do not repeat
+
+The merge audit found that **all five PRs above were merged even though their fail-closed gate runs failed**:
+
+- #1685: gate run 44955747971 — failure.
+- #1687: gate run 45085681229 — failure.
+- #1688: gate run 45085641960 — failure.
+- #1689: gate run 45088881120 — failure.
+- #1684: gate run 45089560375 — failure.
+
+The review inventory contained no independent APPROVED review for #1684, #1685, #1687 or #1689. #1688 had a COMMENTED review, not an approval. The gate logs explicitly blocked on missing independent approval and inability to verify branch protection; #1684 also had a stale base SHA, and #1689 was still draft when its gate ran. These merges therefore did **not** satisfy the requested fail-closed pre-merge protocol. They are already on main; no automatic rollback was attempted. Main's full suite and security audits are green, but that does not retroactively make the failed gate successful.
+
+Current branch metadata reports `protected=true` and these required status contexts: `Full repository test suite`, `audit`, `pip-audit`, and `Verify PR merge tree against current base`. The fail-closed gate is not among the observed required contexts. The only listed ruleset, `Fall Back`, is disabled. Direct reads of `GET /branches/main/protection` return HTTP 403 `Resource not accessible by integration`; the same read is unavailable to the workflow's GitHub token. Strict up-to-date settings, administrator enforcement, force-push/deletion restrictions and required review count therefore remain unverified.
+
+**Merge policy:** no further PR may be merged until the gate can read and verify the protection configuration, the gate itself is required, exact-head checks pass, and an independent approving review is present. Do not bypass the gate, infer missing settings, or treat a green test suite as a substitute for the gate.
+
+## Open PR inventory and classifications
+
+| PR | Classification | Verified state |
+|---|---|---|
+| [#1686](https://github.com/Barrot-Agent/B-Agent/pull/1686) | Blocked; unique/unreviewed | Draft LunaRoute runtime removal. Head `951707e870a5fb060f0d47f7b2f0a4a9cbae5ca9`, base `550a647ee7269a704d4600ff337b2145acc90473`, 41 commits ahead and 235 behind current main, 29 changed paths. It is stale and overlaps current `AGENTS.md` policy. Preserve the branch; do not merge it or bulk-close it. Any successor must be reconstructed directly from current main and reconcile its unique changes. |
+| [#1690](https://github.com/Barrot-Agent/B-Agent/pull/1690) | Draft; audio workstream; tests passed on current code head, merge blocked | Deterministic/non-destructive beat build. Code-tested head before this handoff update: `3845479f73cdecb5c784c2f34cc01eb1d18bbd48`; base main `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`; 4 commits ahead, 0 behind, 3 files before the handoff addition. |
+
+### PR #1690 exact-head evidence
+
+- [CI 45090778560](https://github.com/Barrot-Agent/B-Agent/actions/runs/45090778560) succeeded on `3845479f73cdecb5c784c2f34cc01eb1d18bbd48`.
+- Core tests: success.
+- Full repository suite: **4,606 passed, 1 skipped, 11 warnings, 32 subtests**, 73.33% total coverage; legacy core and mission-critical package coverage floors passed; runtime 209.45 seconds.
+- Pages validation-only build: success.
+- XRP historical backfill replay: skipped.
+- [Dependency audit 45090778580](https://github.com/Barrot-Agent/B-Agent/actions/runs/45090778580): success.
+- [Money audit 45090778555](https://github.com/Barrot-Agent/B-Agent/actions/runs/45090778555): success.
+- [Conflict integrity 45090778602](https://github.com/Barrot-Agent/B-Agent/actions/runs/45090778602): success.
+- [Fail-closed gate 45090778551](https://github.com/Barrot-Agent/B-Agent/actions/runs/45090778551): failure. Exact blockers: PR still draft, no independent approving review, branch-protection read unavailable.
+- GitHub Actions cache storage is at budget; cache writes are read-only. Tests still passed.
+
+The handoff addition in this commit changes the PR head after the code-tested SHA above. The resulting new head must receive its own exact-head CI before it can be considered verified. PR #1690 remains draft and must not be merged without the independent review and working gate.
+
+## Three co-equal missions — verified mainline policy
+
+`data/missions/primary_mission.json` now lists all three as active at priority 1:
+
+1. `xrp_intelligence_prediction_engine`
+2. `professional_audio_production`
+3. `long_horizon_continuity_capability_development`
+
+The shared Barrot V3 foundation remains execution, orchestration, safety, provenance, authorization and verification. This is **verified policy/configuration**, not proof that all three missions are production-complete.
+
+### XRP intelligence and prediction
+
+- PR #1684's XRP integration is present on main.
+- Preserve the prior source disagreements and eligibility gates. No new post-merge public-data capture was run in this pass.
+- No trained XRP-specific candidate has passed the required leakage-safe out-of-sample and independent shadow admission gates.
+- Directional forecast issuance remains disabled. No paper trade, trade execution or funds movement occurred.
+- Next XRP action: run a fresh read-only public-data capture on current main, reconcile source receipts and source independence, then continue chronological walk-forward evaluation. Do not turn ETF holdings deltas, exchange turnover, gross escrow unlocks, wallet attribution or wrapped-token issuance into net capital-flow claims.
+
+### Professional audio production
+
+**Implemented before this run:**
+- Musical manifests and composition structures, MIDI export, optional SoundFont/FluidSynth WAV rendering, and abstract audio analysis for tempo/onsets/dynamics/chroma.
+- Five checked-in 24–28 bar stereo starter previews with MIDI and pattern charts.
+- The existing render adapters require optional music dependencies and a caller-provided SoundFont. No SoundFont is bundled.
+- Audio ingestion and external track-generation workflows remain quarantined; they previously wrote generated media directly to main or required external credentials.
+
+**Verified gaps:**
+- The current starter renderer used unseeded random noise.
+- The old build path wrote directly into the checked-in `tracks/` directory and could overwrite existing MIDI/WAV/pattern files.
+- No individual aligned audio stems, reproducible DAW project, premaster export, approved mastering chain or full stem-to-mix QC pipeline is implemented.
+- No real SoundFont end-to-end render or blind/level-matched listening comparison was performed in this run.
+- Existing user feedback records all five v1 tracks at 3/10; there is no new user acceptance score for v2.
+- The kit audit still has 15 source-derived 808 samples without verified per-file licensing and 9 synthesized sounds without complete source receipts. Keep those assets internal until rights are established.
+
+**Executed on PR #1690:** seeded NumPy generators, seed-versioned output directories, exclusive-create behavior for WAV/pattern files, preflight overwrite refusal, preserved checked-in baselines, README instructions and regression tests for deterministic WAV bytes, overwrite refusal and per-track seed progression. This is a reproducibility/preservation improvement only; it is not evidence of professional musical quality. No audio files were regenerated or committed.
+
+**Next audio action:** build the first genuinely aligned multitrack stem export from the existing renderer, add a premaster path with deliberate headroom and deterministic technical QC, then run a real licensed-SoundFont render and blind level-matched listening against the current baseline. Do not claim stems or a DAW project until actual artifacts are inspected.
+
+### Long-horizon continuity and capability development
+
+- The mission manifest and curriculum contain the three-way `durable_round_robin_v1` policy.
+- `AutonomousTaskStore` uses workspace-local `.barrot/autonomous_tasks/`, schema version 1, file locking, atomic replacement and optimistic change detection. This is durable within that workspace.
+- The round-robin cursor path is `.barrot/autonomous_tasks/mission_portfolio.json`; it is not committed to main and is not a remote cross-host store.
+- `.github/workflows/scheduler-tick.yml` is disabled. `.github/workflows/task-allocator.yml` is quarantined. Both were disabled because earlier versions could write directly to main or dispatch broad workflows.
+- The committed mission manifest and this handoff are recoverable through GitHub, but automatic cross-host cursor recovery, stale/conflict reconciliation and dependency-aware resumption across independent runners remain unverified.
+
+**Next continuity action:** design a branch-only, least-privilege remote checkpoint adapter with versioned state, compare-and-swap, provenance, conflict retention and read-only recovery first. Add cross-run and concurrent-writer tests. Do not re-enable the scheduler or allocator until their permissions and write paths are independently verified.
+
+## Sellbird and Barrot-only commercial execution
+
+**Repository audit:**
+- Exact repository: [ethanplusai/sellbird](https://github.com/ethanplusai/sellbird).
+- Main SHA: `b212385259da92246a56311d790d936e75dd70dd`, dated 2026-11-18.
+- Version `0.4.0`; license `AGPL-3.0-only`; Python `>=3.11`.
+- `requirements.txt` and PEP 621 dependencies in `pyproject.toml` match. The upstream CI defines Linux/macOS/Windows Python 3.11/3.12 tests and a Codex CLI 0.159.3 localhost-mock test on macOS/Linux. No independent security audit or local Sellbird runtime test was performed.
+- The default configuration has `channels.email.enabled: true` and `require_approval: true`. It does not itself establish a global no-send guarantee. No Sellbird install, mailbox authentication, provider credentials, sending-domain validation, suppression-list import or sending test was performed.
+- **Outbound remains paused.** Before any Barrot profile is installed, explicitly set email sending disabled, keep approval required, and verify mailbox/domain health, compliance, suppression and opt-out processing. Do not use LinkedIn browser automation; upstream documentation itself warns that it violates LinkedIn's terms.
+- Free discovery options documented upstream include OpenStreetMap and TinyFish. Paid examples: DataForSEO listings at about $0.372/1,000 businesses; Serper has 2,500 free queries then a $50 prepaid pack; Scavio offers 50 signup credits then a $30/month plan. No paid lookup was made.
+- No Sellbird code was copied into Barrot. Preserve AGPL notices/source obligations if a modified Sellbird deployment is ever considered.
+- Sellbird is restricted to Barrot technology and Barrot-related services only. Do not prospect for music, tracks, songwriting/background vocals, TrekFlex or other ventures.
+
+**Fastest credible Barrot-only offer hypothesis:** a bounded public-data evidence-integrity audit for digital-asset research teams. Deliverable: source inventory, retrieval/provider timestamps, raw-byte hashes where retained, source-independence map, freshness/quality checks, disagreements, event timeline and prioritized gaps. No directional price forecast, trading, security certification or claim of production readiness. Initial ICP hypothesis: US digital-asset research teams, crypto market-data vendors and fintech research/data groups; buyer roles include Head of Research, Head of Data, CTO, Quant Research Lead and Market Data Director. Public buying signals: hiring for market-data/data-engineering roles, new asset coverage or public research workflows with weak source provenance. A five-day pilot at $350–$500 is an **unvalidated pricing hypothesis**, not a published offer.
+
+Commercial status: Sellbird not installed/configured; prospect discovery not executed; verified prospect count 0; outreach approved 0; messages sent 0; replies 0; meetings 0; proposals 0; collected revenue $0; paid lookup spend $0. No campaign, outbound message or unattended sending is authorized.
+
+## Nine-platform coordination map
+
+| Platform | Current evidence |
+|---|---|
+| ChatGPT | GitHub connector authentication and Barrot repository read/write data flow tested in this run. |
+| Claude | No authenticated external dispatch verified. |
+| Grok | No authenticated external dispatch verified. |
+| Gemini | No authenticated external dispatch verified. |
+| Copilot | No authenticated external dispatch verified. |
+| Codex | No authenticated external CLI session or repository data flow verified. |
+| Hugging Face | Prior public status evidence only; no authenticated build-log or write access verified. |
+| Kaggle | Unverified; no submission. |
+| Databricks | Unverified; no authenticated data flow or write. |
+
+No external model received repository data during this run. Keep least privilege and deterministic local fallbacks.
+
+## DESIGNED / EXECUTED / VERIFIED — current run
+
+- **DESIGNED:** co-equal mission portfolio; shared V3 foundation; audio reproducibility and no-overwrite contract; next continuity checkpoint architecture; Barrot-only Sellbird ICP and no-send policy.
+- **EXECUTED:** current main/tree/open-PR/branch/CI/security audit; verification of five merge commits and their failed gate runs; mission manifest inspection; audio source/rights/workflow audit; implementation and exact-head testing of the deterministic/non-destructive audio build change on PR #1690; Sellbird repository/license/dependency/configuration audit.
+- **VERIFIED:** main SHA `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`; main full suite and audits; PR #1690 code head `3845479f73cdecb5c784c2f34cc01eb1d18bbd48` full suite and dependency/security checks; all three missions priority 1; exact merge commits and governance gate failures; Sellbird version/license/dependency parity and default email-enabled setting.
+- **NOT VERIFIED:** PR #1690's new handoff commit exact-head CI until its new runs finish; independent approval or branch-protection read; post-merge XRP capture; directional XRP prediction; professional-quality audio, real SoundFont rendering, aligned stems, DAW project or listening acceptance; cross-host continuity; Sellbird runtime/authentication, prospects or revenue; external connections to the other eight platforms.
+
+## Next concrete actions
+
+1. Correct GitHub gate observability and branch protection before any further merge; require the fail-closed gate and independent review. Preserve the existing merge history.
+2. Verify exact-head CI after this handoff commit on PR #1690; keep it draft until an independent review and gate readiness are real.
+3. Next mission cycle: implement and test cross-host continuity state recovery without direct main writes or unattended scheduler activation.
+4. Refresh XRP public data on current main and continue source reconciliation and walk-forward evidence; keep forecasts disabled.
+5. Continue the audio stem/premaster/DAW path with licensed sources and real comparative listening.
+6. Prepare a Sellbird Barrot-only, email-disabled profile and free-source prospecting plan only after a supported runtime is selected; keep outbound paused.
+
+No merge, deployment, secret rotation, Space restart, paid prospect lookup, external model dispatch, Kaggle submission, Databricks write, outbound email, paper trade, funds transfer or real-money action occurred in this run.
+
+
 # Barrot Mission Handoff — Latest
 
 **Updated:** 2026-11-23 00:07 UTC  
