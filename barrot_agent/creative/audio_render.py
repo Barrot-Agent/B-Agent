@@ -42,7 +42,7 @@ def _headroom_gain(peak_level: float, ceiling_dbfs: float) -> float:
     return min(1.0, ceiling / peak_level)
 
 
-def _render_midi_stereo(midi, *, soundfont_path: str | Path, sample_rate: int):
+def _render_midi_stereo(midi, *, soundfont_path: str | Path, sample_rate: int, render_duration_seconds: float | None = None):
     """Render MIDI events through one FluidSynth instance into interleaved stereo.
 
     Pitched instruments receive independent MIDI channels; channel 10 (index 9)
@@ -142,6 +142,10 @@ def _render_midi_stereo(midi, *, soundfont_path: str | Path, sample_rate: int):
 
         events.sort(key=lambda event: (event[0], event[1], event[2], event[5]))
         end_time = float(midi.get_end_time())
+        if render_duration_seconds is not None:
+            if not math.isfinite(render_duration_seconds) or render_duration_seconds < 0:
+                raise ValueError("render_duration_seconds must be finite and non-negative.")
+            end_time = max(end_time, float(render_duration_seconds))
         if not math.isfinite(end_time) or end_time <= 0:
             raise ValueError("MIDI has no finite positive render duration.")
         total_samples = max(1, int(math.ceil(end_time * sample_rate)) + sample_rate)
