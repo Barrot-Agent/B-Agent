@@ -1,3 +1,71 @@
+# Current operational update — 2026-11-23 12:40 UTC
+
+> Run 12.2. This update supersedes older current-state observations below where they differ. Main remains unchanged. The audio code/test commit `5af296f45683a5db5d806594ad8abc1da14149df` passed exact-head CI and the full repository suite. This handoff-only commit advances PR #1690; rerun exact-head CI and all gates before any readiness or merge decision.
+
+## Integrated repository and governance — EXECUTED / VERIFIED
+
+- Repository: `Barrot-Agent/B-Agent`; main SHA: `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`. The complete recursive main tree contains 3,139 entries and was not truncated.
+- The three co-equal priority-1 missions are present on main: XRP intelligence/prediction, professional audio production, and long-horizon continuity/capability development. Barrot V3 remains their shared execution, orchestration, safety, provenance, authorization and verification foundation.
+- Main's exact-head full-suite run `45089588979` passed on `7d7aba8`: 4,602 passed, 1 skipped, 11 warnings, 32 subtests; 73.33% coverage. Main Dependency Audit `45089588915` and Money audit `45089589026` passed.
+- Main reports `protected=true`, but the branch-protection API returns 403 to the integration. The visible “Fall Back” ruleset is disabled. Effective required contexts, strict-up-to-date enforcement, approval count and administrator enforcement remain unverified. The fail-closed gate correctly refuses to infer them.
+- No merge, deployment, secret operation, force-push, branch rewrite, destructive workspace operation, paper trade, transfer, real-money action or outbound message occurred.
+
+## Open PR inventory — exactly three
+
+| PR | Classification | Current evidence |
+|---|---|---|
+| [#1690 — deterministic, safer audio rendering](https://github.com/Barrot-Agent/B-Agent/pull/1690) | Active audio integration; draft | Branch `integration/audio-deterministic-safe-builds-20261123`; code/test head `5af296f45683a5db5d806594ad8abc1da14149df`; 29 commits ahead, 0 behind; six changed files. Exact-head PR CI `45175763438` passed: 4,610 passed, 1 skipped, 11 warnings, 32 subtests; 73.34% coverage. Dependency Audit `45175763134`, Money audit `45175763514`, and Conflict Integrity `45175763429` passed. Gate `45175763277` failed closed because the PR remains draft and branch protection could not be verified. No independent approving review was returned. The handoff-only commit in this update advances the branch; the new head requires exact-head CI again. |
+| [#1691 — mission cursor integrity and fresh-process recovery](https://github.com/Barrot-Agent/B-Agent/pull/1691) | Active continuity integration; draft | Branch `integration/continuity-fresh-process-recovery-20261123`; head `0275df32d1ba15e574cb89ad004988a5a30a51e5`; 5 commits ahead, 0 behind; two changed files. Exact-head full suite `45148673910` passed: 4,609 passed, 1 skipped, 11 warnings, 32 subtests; 73.34% coverage. Keep draft pending independent review and gate verification. |
+| [#1686 — remove LunaRoute from runtime configuration](https://github.com/Barrot-Agent/B-Agent/pull/1686) | Blocked; unique/unreviewed; stale/diverged | Branch `maintenance/remove-lunaroute-runtime-20261121`; 41 commits ahead and 235 behind main; 31 changed files. Do not merge or close as a duplicate. If still required, reconcile it in one successor from current main. |
+
+Merged into main: #1684, #1685, #1688 and #1689. No unique PR was bulk-closed. No new branch or PR was created in this run.
+
+## XRP intelligence — EXECUTED / VERIFIED, prediction gate remains closed
+
+- Latest scheduled public-ingestion run `45173316207` captured at `2026-11-23T12:20:41.920738Z` on main `7d7aba8`. Snapshot status is verified. It recorded 34 source receipts, including 13 digest-only receipts; 63 feature-store snapshots; 123 eligible feature records and 367 excluded records; and 18 source failures.
+- The receipt chain continued, but the event-timeline receipt is incomplete and the external receipt anchor is not anchored. The model-eligibility flag is false and forecast status is `NOT_ISSUED`. No directional forecast is justified. Do not interpret the 232 historical walk-forward records as a validated live forecast.
+- Immediate blockers: source-failure triage, incomplete event-timeline receipt linkage, and external anchoring. Descriptive snapshots are not evidence of complete coverage or predictive performance.
+
+### Institutional and “actual capital” reconciliation — primary evidence
+
+- Circle's Q3 2026 Form 10-Q reports USDC circulation of $73.879B at quarter-end and $73.264B on average; $13.868B on Circle's platform and an 18.1% daily weighted-average platform share. Q3 gross minting was $104.304B and redemptions $103.694B (net +$610M); nine-month gross minting was $260.847B and redemptions $262.234B (net -$1.387B). Circle defines minting/redemption as customer-initiated fiat-to-USDC and USDC-to-fiat flows. Gross turnover is not net new capital, and neither figure is XRP demand. Source: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+- The same Circle filing records $331.3M of Coinbase-related distribution costs incurred in Q3 and $986.6M for nine months. These are recognized distribution costs under the commercial arrangement, not evidence of an XRP purchase or a dated cash transfer to Coinbase. Coinbase's Q3 2026 10-Q says the Circle arrangement was renewed on the same terms; higher average USDC balances added $84.6M to Coinbase's Q3 stablecoin revenue and $201.6M for nine months, while lower rates reduced it by $52.8M and $166.2M respectively. Coinbase also reports an investment in Circle. Source: https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+- SBI Shinsei Bank's official June 9, 2025 disclosure says SBI Holdings and SBI Shinsei Bank each invested $25M in Circle, $50M combined. The same SBI disclosure says SBI Holdings invested in Ripple in 2016, holds approximately 9% of Ripple shares as its largest external shareholder, and established SBI Ripple Asia with Ripple. These are corporate-equity/JV exposures, not disclosed XRP token purchases. Source: https://corp.sbishinseibank.co.jp/en/news/news/20250609a.html
+- SBI Holdings and Circle established a USDC-focused joint venture; SBI VC Trade began general USDC distribution in Japan in March 2025. SBI VC Trade also launched Ripple's RLUSD in Japan on June 24, 2026 after JFSA approval. SBI's distribution of both USDC and RLUSD is a multi-issuer strategy, not stablecoin exclusivity. Sources: https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf and https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/
+- Ripple and Coinbase announced direct RLUSD distribution on October 28, 2026. Eligible customers can trade/manage RLUSD through Coinbase Prime, Coinbase Exchange and the retail app; deposits/withdrawals are supported on XRPL, Base and Ethereum. Coinbase Global Exchange access and RLUSD collateral eligibility were explicitly future at launch and remain unverified as live. RLUSD moving on XRPL does not prove XRP is the bridge asset or that Coinbase bought XRP. Sources: https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/ and https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+- Ripple/Bitnomial announced institutional RLUSD and XRP margin deposits for leveraged perpetuals, futures and options. Retail access was described as planned and approval-dependent. Collateral acceptance is not proof of net spot buying. Source: https://bitnomial.com/news/2025-11-03/rlusd-xrp-margin-collateral/
+- Circle/DBS USDC access, SBI/Circle equity and distribution, SBI/Ripple equity and RLUSD distribution, and Coinbase's separate USDC and RLUSD channels form overlapping rails. No evidence in these sources establishes a single coordinated Ripple-Circle alliance. Keep issuer equity, distribution costs, stablecoin mint/redemption, XRP custody, XRP collateral, exchange flows and actual XRP purchases as separate measures.
+
+### Identity and exact-phrase research — current resolution
+
+- Japan's SBIC East, Central and West are three separate regional Small and Medium Business Investment & Consultation companies. Their official profiles identify the other regional companies as sister entities. SBI Holdings, Inc. is a separate financial holding company established in 1999. The reviewed profiles do not establish SBI Holdings as parent/owner of the regional SBIC companies; a definitive negative ownership claim would require shareholder-register/registry evidence. Sources: https://www.sbic.co.jp/company/profile/ ; https://www.sbic-cj.co.jp/company/about/ ; https://www.sbic-wj.co.jp/profiles/profile/ ; https://www.sbigroup.co.jp/english/company/information/profile.html
+- The strongest “SBIC, ChatGPT SBIC” match is an SBIC East 2025 training course that listed ChatGPT and Copilot. It was an external-instructor training event, not evidence of an OpenAI partnership. The SBIC West 2024 PDF is a scheduled seminar notice; actual occurrence was not independently verified. Sources: https://www.sbic.co.jp/training/20250612co/ ; https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf
+- “ASK Coin” remains ambiguous between an inactive Ask Coin exchange listing and Permission Coin's ASK token. Neither has a verified direct XRP/XRPL/Ripple relationship. Do not merge the candidates by ticker or spelling. “Actual capital” remains an unresolved phrase, not a standardized XRP metric; keep fiat cash flows, equity, debt, ELOC capacity/draws, warrants, XRP in-kind contributions and secondary resales separate from market capitalization.
+- Dr. Kamilah Stevenson is identified on her official program site. The verified handle candidate `@drkamilahstevenson` is supported by her first-person appearance on the Paul Barron Podcast on June 11, 2026: https://www.youtube.com/watch?v=Sulo54IlQ60. The separate channel `@KamilahStevensonXrpStocks` is not cross-linked by the verified person and remains excluded. The own-channel upload inventory was not retrieved because YouTube access was throttled and vidIQ returned insufficient credits without charging. “Camilla” as a separate alias/person remains unresolved; do not attribute videos from the unverified channel to her.
+
+## Audio production — EXECUTED / VERIFIED improvement, not professional acceptance
+
+- Commit `5af296f45683a5db5d806594ad8abc1da14149df` removes nonlinear `tanh` soft clipping from new `scripts/make_beats.py` WAV previews. A validated, non-boosting scalar gain now leaves a default -6 dBFS sample-peak ceiling. New tests verify the ceiling and preservation of relative waveform dynamics; those tests passed in the exact-head full suite.
+- The output remains a 16-bit, 44.1 kHz stereo preview. It is not a 24-bit/float master, not aligned stems, not a full-length arrangement, not a DAW project, and not a true-peak/mastering pass. No comparative listening or user acceptance test was performed. Existing sample-rights provenance remains incomplete. Do not claim professional-quality output.
+- Next audio milestone: full-length coherent arrangement with separate sample-aligned stems, MIDI, section markers and a reproducible DAW/interchange project; then level-matched listening and user acceptance.
+
+## Continuity, commercial and platform status
+
+- PR #1691 is a continuity workstream, not proof of cross-host durability. Fresh-process cursor recovery is tested on its branch; cross-machine/model/provider synchronization and long-horizon recovery remain unverified.
+- Sellbird remains restricted to Barrot technology only. Prospect research and outbound sending are separate; sending remains paused pending verified configuration and explicit campaign approval. No outreach, meetings, proposals or revenue were recorded in this run.
+- GitHub was the only platform integration exercised in this run. No live authenticated data flow is claimed for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks.
+
+## Next concrete actions
+
+1. Re-run and verify exact-head CI after this handoff commit; keep PR #1690 draft until an independent review and effective branch-protection settings are verifiable.
+2. Triage the 18 XRP source failures, complete event-timeline receipt linkage and resolve external anchoring. Keep the directional forecast gate closed.
+3. Obtain independent review for PR #1691 and test cross-host persistence before claiming long-horizon continuity.
+4. Continue the audio end-to-end path; do not market music or claim professional output before finished tracks and listening acceptance exist.
+5. Keep Sellbird Barrot-only, discovery separate from outreach, and outbound sending paused.
+
+
+---
+
 # Current operational update — 2026-11-23 12:02 UTC
 
 > This addendum supersedes older current-state observations below where they differ. It is being committed on the existing audio integration branch only; main remains unchanged. This handoff commit advances PR #1690, so the previously passing exact-head checks below do **not** certify the new documentation commit. Re-run exact-head CI and all gates before any readiness decision.
