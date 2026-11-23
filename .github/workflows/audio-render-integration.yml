@@ -39,7 +39,7 @@ jobs:
       - name: Install optional music runtime
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pytest numpy scipy pretty_midi pyfluidsynth
+          python -m pip install pytest pytest-cov numpy scipy pretty_midi pyfluidsynth
 
       - name: Run actual stereo render and technical QC
         env:
