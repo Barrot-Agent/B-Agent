@@ -2570,3 +2570,34 @@ No Sellbird deployment, provider credential setup, mailbox connection, paid look
 5. Keep Sellbird Barrot-only and outbound paused. Configure a verified Barrot-specific offer, dedicated domain, compliance footer, suppression list, Precleared, mailbox authentication and warmup only after the user approves deployment and sending setup.
 
 No merge, main write, branch creation, force-push, branch rewrite, deployment, secret rotation, paid lookup, outbound send, paper trade, funds transfer, Space restart, external model dispatch or Kaggle/Databricks write occurred in this run.
+
+
+---
+
+## XRP sequence-70 refresh — 2026-11-23T19:11Z
+
+This is the latest main-branch market-ingestion snapshot and supersedes sequence 69 as the latest observation. It does not alter the earlier event history or authorize a forecast.
+
+- Main ingestion run [45246152860](https://github.com/Barrot-Agent/B-Agent/actions/runs/45246152860) completed successfully at 2026-11-23 19:11:25 UTC on main SHA 7d7aba841cb849e461376a8fcdd4cc4fa10c9af6. Data cutoff: 19:11:01.423 UTC. Adapter v3.32, parser v3.31. Snapshot ID: 90335fadee5c455d896291c46b14b39428bd8ef01f9ecfa6fee98f5bde099867.
+- Feature store: **23,256** historical records, **70** snapshots, **2,230** input feature records, **124** eligible, **366** excluded and **490** delta records. SQLite integrity and manifest/lineage/digest checks passed.
+- Receipt chain: **34** receipts (**21** raw-payload, **13** digest-only), **18** source failures. Cross-run sequence **70** continues from sequence 69 / run 45236428507. Current cross-run chain hash: d99f01f96f3be28c0b28212a87c3f6d7629eb208ad816efd2e7b7fd5a7aac9c4. External anchor remains NOT_ANCHORED; GitHub artifact retention and the 7-day checkpoint/90-day archive policy remain limitations.
+- Four synchronized same-venue OKX quote-basis features were verified: best bid **$0.949231008**, best ask **$0.94934039**, midpoint **$0.949285699**, spread **1.1523 bps**. The two source receipts are one OKX publisher-independence group; this is not independent cross-venue corroboration. Only top-of-book prices are converted, not depth.
+- Same-window raw spot ticker snapshot (19:10:50–54 UTC):
+  - Coinbase XRP-USD: bid 0.9493, ask 0.9495, midpoint 0.9494, spread 2.1066 bps, reported 24-hour base volume 119.21M XRP.
+  - Kraken XRP-USD: bid 0.94936, ask 0.94938, midpoint 0.9494, spread 0.8426 bps, reported 24-hour base volume 45.39M XRP.
+  - Bitstamp XRP-USD: bid 0.94922, ask 0.94923, midpoint 0.949225, spread 0.1053 bps, reported 24-hour base volume 15.18M XRP.
+  - OKX XRP-USDT: bid 0.9504, ask 0.9505, midpoint 0.95045 USDT, spread 1.0521 bps, reported 24-hour base volume 52.53M XRP. Same-venue USDT/USD conversion places its midpoint at 0.949285699 USD.
+  - Bitbank XRP-JPY: bid 151.162, ask 151.163, midpoint 151.1625 JPY, spread 0.0662 bps. No JPY/USD conversion was admitted.
+  - Coinbase/Kraken/Bitstamp USD midpoints span 0.949225–0.9494, approximately **1.84 bps**. The synchronized OKX USD-normalized midpoint lies within that range. These are exchange-specific observations, not a consolidated executable price.
+- Snapshot order-book depth, expressed in each venue’s native quote currency (bid-side / ask-side notional):
+  - Bitstamp USD: 10 bps **$78.9K / $294.6K**; 50 bps **$587.4K / $584.2K**; 100 bps **$1.109M / $1.087M**.
+  - Kraken USD: 10 bps **$258.2K / $353.8K**; 50 bps **$2.147M / $2.030M**; 100 bps **$2.147M / $2.042M** (100-level book).
+  - OKX USDT: 10 bps **104.9K / 172.3K USDT**; 50 bps **1.069M / 741.9K USDT**; 100 bps **1.417M / 1.077M USDT** (100-level book).
+  - Bitbank JPY: 10 bps **13.12M / 10.48M JPY**; 50 bps **32.92M / 24.56M JPY**; 100 bps **66.71M / 25.72M JPY** (200-level book).
+- Interpretation: the 10-bps book is ask-heavy on Bitstamp and Kraken but bid-heavy on OKX and Bitbank; the 50-bps picture is closer to balanced on Bitstamp/Kraken and bid-heavier on OKX/Bitbank. Quote currencies, book depth limits, venue-specific liquidity and publisher groups differ. Do not aggregate these notionals or treat one snapshot’s imbalance as a directional signal.
+- The 150-event registry remains incomplete: 11 URL matches but **0 capture-time matches**, **0 verified receipts**, and all 150 events still report MISSING_RAW_RECEIPT_HASH. The SEC adapter remains BLOCKED_CONFIGURATION: no authorized contact identity, no submissions captured, zero filing events, zero raw SEC receipts and three SEC source failures. Binance requests continue returning HTTP 451; Bybit returns HTTP 403; the Grayscale ETF page returned HTTP 429 and Franklin processing failed. Do not bypass provider or regional restrictions.
+- Deribit XRP-USDC ticker/order-book data remain raw-only pending contract-unit, depth and timestamp semantics. Coinbase extra historical backfill was not requested. CFTC weekly sources were skipped because the semiweekly effective date remains unconfirmed. Free noncommercial XRPL nodes remain excluded from scheduled collection under provider-terms policy.
+- Walk-forward ledger: **260** rows, 1-hour horizon, still INSUFFICIENT_HISTORY. Drift: 205 features, zero evaluable features, INSUFFICIENT_DATA. Forecast eligibility remains false; forecast status NOT_ISSUED; no paper trade.
+- Correction audit: two overlays, 55 narrative-only corrections, no source artifacts modified, no model eligibility and no forecast.
+
+This snapshot is descriptive and point-in-time. It is not a prediction, investment recommendation, or evidence that the cross-venue order books can be executed as one pool.
