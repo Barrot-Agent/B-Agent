@@ -1,3 +1,63 @@
+# Latest verified operational snapshot — 2026-11-23 17:06 UTC
+
+> Current main: `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`. This portfolio handoff is updated on the existing audio integration branch for PR #1690; it is not yet on main. The previous snapshot and detailed research history are retained below. No branch was created and no main ref was changed.
+
+## Run 13 — integrated execution status
+
+### Repository, CI and integration inventory
+
+- Recursive main tree: 3,139 entries; not truncated. Main exact-SHA CI [#45089588979](https://github.com/Barrot-Agent/B-Agent/actions/runs/45089588979) passed. Its recorded result is 4,602 passed, 1 skipped, 11 warnings, 32 subtests, 73.33% coverage. Main branch metadata reports `protected=true`; visible required contexts are `Full repository test suite`, `audit`, `pip-audit`, and `Verify PR merge tree against current base`. The direct branch-protection endpoint still returns 403, so approval-count/enforcement details remain unavailable.
+- Latest scheduled main Cross Analysis [#45221235502](https://github.com/Barrot-Agent/B-Agent/actions/runs/45221235502) succeeded at 2026-11-23 16:51:42 UTC. Latest XRP ingestion [#45214116770](https://github.com/Barrot-Agent/B-Agent/actions/runs/45214116770) succeeded at 16:13:49 UTC; its market-data cutoff is 16:14:16 UTC.
+- Exactly three PRs remain open:
+  - [#1690 audio deterministic/non-destructive rendering](https://github.com/Barrot-Agent/B-Agent/pull/1690): draft; head `b9d6e2f58d8bec424bd54fd418cea4ef06241ad1`; 43 commits ahead, 0 behind main; 8 changed files. Exact-head full repository test job [#45214866794](https://github.com/Barrot-Agent/B-Agent/actions/runs/45214866794) passed and ran every tracked active repository test plus coverage floors. Exact-head FluidSynth integration [#45214866866](https://github.com/Barrot-Agent/B-Agent/actions/runs/45214866866), Dependency Audit [#45214866878](https://github.com/Barrot-Agent/B-Agent/actions/runs/45214866878), Money audit [#45214866826](https://github.com/Barrot-Agent/B-Agent/actions/runs/45214866826), and Conflict Integrity [#45214867056](https://github.com/Barrot-Agent/B-Agent/actions/runs/45214867056) passed. Fail-closed gate [#45214866949](https://github.com/Barrot-Agent/B-Agent/actions/runs/45214866949) blocked; the PR remains draft, has no independent approving review, and detailed branch-protection verification remains unavailable. Classification: **blocked**; do not merge.
+  - [#1691 continuity fresh-process recovery](https://github.com/Barrot-Agent/B-Agent/pull/1691): draft; head `0275df32d1ba15e574cb89ad004988a5a30a51e5`; 5 commits ahead, 0 behind main; 2 changed files. Exact-head full suite [#45148673910](https://github.com/Barrot-Agent/B-Agent/actions/runs/45148673910) passed: 4,609 passed, 1 skipped, 11 warnings, 32 subtests, 73.34% coverage. No independent approval; fail-closed gate remains blocked. Classification: **blocked**.
+  - [#1686 LunaRoute runtime decommission](https://github.com/Barrot-Agent/B-Agent/pull/1686): draft; head `951707e870a5fb060f0d47f7b2f0a4a9cbae5ca9`; compare is diverged, 41 commits ahead and 235 behind main; 31 changed paths. Classification: **blocked / unique-unreviewed**. Do not merge or close without full reconciliation.
+- #1690 and #1691 have no changed-path overlap. #1686 is path-disjoint from both. No active XRP integration PR exists; #1684's XRP checkpoint fix is already merged on main. Recent main history also confirms merges #1685, #1687, #1688 and #1689. No PR was merged or closed in this run.
+
+### XRP intelligence and prediction
+
+- Sequence 67 has 67 feature-store snapshots, 22,903 historical records and 801 source-snapshot records. Latest snapshot admitted 123 records and excluded 367. The run retained 34 source receipts: 21 raw payloads and 13 digest-only receipts; 18 source failures remain. Cross-run receipt-chain continuity passed, but the external anchor remains `NOT_ANCHORED`.
+- Synchronized venue observations around 16:14 UTC placed XRP near $0.991: Coinbase $0.9912, Bitstamp $0.99081, Kraken midpoint $0.991225, OKX $0.9917 USDT and Bitbank midpoint 158.0325 JPY. These are point-in-time snapshots, not persistent or executable liquidity guarantees.
+- Binance spot/derivatives/depth requests failed; Bybit spot/linear/depth returned HTTP 403; Grayscale was rate-limited; Franklin XRPZ parsing failed; SEC submissions for Evernorth, Coinbase and Circle were not captured by automated ingestion. Manual filings research is not a substitute for successful ingestion receipts.
+- The walk-forward ledger contains 248 forecast rows but remains `INSUFFICIENT_HISTORY`; drift covers 205 features but evaluates zero. `forecast_status=NOT_ISSUED` and `forecast_model_eligible=false`. The 150-event registry still has 0 verified raw-source receipts and null raw hashes. No directional forecast is authorized or issued.
+- ETF figures remain holdings deltas, not issuer/AP cash flows; Deribit is one-venue research-only; CBXRP collateral inputs are digest-only and unparsed. Preserve those eligibility limits.
+
+### Professional audio production
+
+- PR #1690's current exact-head FluidSynth job generated and inspected a deterministic 35.909-second, 16-bar, 110-BPM, D-minor, 4/4 stereo render at 44.1 kHz using pyfluidsynth 1.4.0. QC: sample peak -6.0055 dBFS, 4x true peak -6.0000005 dBTP, RMS -23.8708 dBFS, zero clipped samples. Render SHA-256: `3c5d0fdb2eda200dabe2fe8c15c2b7d43b6944c8e3fcb58d8535bc68eb8732d5`.
+- The test SoundFont was Debian `timgm6mb-soundfont 1.3-5build1`, GPL-2, SHA-256 `c5378b62028c920cb11e4803327983fee2f2cdff5dc89c708e39da417e51c854`; it was test-only. The workflow uploaded a 651-byte QC JSON receipt, not the WAV or SoundFont. This proves a technical integration render, not a deliverable track or commercial sound-library clearance.
+- The branch adds seeded deterministic beat synthesis, non-overwriting versioned output paths, stereo MIDI-to-WAV rendering and non-boosting sample/true-peak headroom. It does not yet deliver aligned stems, a DAW project, full-length song arrangements or production-licensed instrument assets. All five v1 starter tracks were previously rated 3/10; no new v2 listening acceptance is recorded. Professional quality remains **not verified**.
+
+### Long-horizon continuity
+
+- PR #1691 validates mission-cursor recovery across four separate Python processes sharing one workspace: XRP → audio → continuity → XRP. It also rejects malformed or inconsistent cursor history. This is local fresh-process recovery only; synchronization across Termux, desktop, GitHub Actions and external model providers remains unverified.
+- Cross-host state reconstruction, stale/conflict detection across independent sources, dependency-aware roadmap reconciliation and verified learning generalization remain open acceptance gaps.
+
+### Nine-platform coordination and Sellbird
+
+- Only the GitHub repository connector's authenticated data flow was verified in this run. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks have no verified live Barrot data flow. No external model dispatch or cross-model evidence exchange occurred.
+- Sellbird remains the exact `ethanplusai/sellbird` project, previously audited at v0.4.0, AGPL-3.0-only. It has not been installed, authenticated or configured for Barrot. Prior research has two public fit-signal hypotheses but zero qualified prospects and zero verified decision-maker contacts. Sends, replies, meetings, proposals and revenue remain 0; paid lookup spend is $0. Outbound remains paused and scope remains Barrot technology only.
+- A bounded public-data provenance/integrity audit remains a pricing hypothesis, not a marketed or approved offer. Do not claim production-grade prediction, enterprise certification, cross-platform federation or professional audio delivery.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal missions on the shared V3 foundation; evidence-gated XRP prediction; end-to-end audio workflow and quality gates; durable continuity; least-privilege nine-platform coordination; Barrot-only Sellbird acquisition.
+- **EXECUTED:** current main/tree/open-PR/ancestry/CI audit; exact-head #1690 and #1691 status review; sequence-67 ingestion review; FluidSynth QC artifact download and inspection; continuity scope review; Sellbird readiness carried forward from the latest repository audit.
+- **VERIFIED:** current main SHA/tree; main CI and scheduled Cross Analysis; #1690 exact-head full-suite, audio integration, dependency, money and conflict checks; #1690 fail-closed block; sequence-67 chain continuity and forecast suppression; exact FluidSynth render metrics and SoundFont provenance; #1691's local fresh-process test evidence.
+- **NOT VERIFIED:** directional XRP prediction skill; complete event-level source receipts; external immutable anchoring; cross-venue derivatives coverage; issuer AP cash flows; CBXRP collateral balances; professional-quality user-approved audio; full-length stems/DAW deliverables; cross-host continuity; external nine-platform federation; Sellbird deployment, approved outreach, customers or revenue.
+
+## Next concrete actions
+
+1. Keep #1690 and #1691 draft until independent review and all branch-protection requirements are verifiable. Do not treat successful CI as approval to merge.
+2. XRP: recapture the 150-event registry with rights-aware raw receipts and real capture timestamps; resolve Binance/Bybit failures; normalize multi-venue derivatives; source primary issuer/AP ETF flow evidence; implement durable rebuild and external-anchor strategy before forecast eligibility.
+3. Audio: build a full-length, evolving arrangement using production-cleared sounds; export aligned stems and editable MIDI/DAW interchange; perform comparative level-matched listening against the 3/10 baseline and record explicit user acceptance.
+4. Continuity: test cross-host recovery, stale/conflicting record detection, dependency-aware task selection and learning generalization without adding a duplicate persistence system.
+5. Sellbird: keep deployment and sending paused; validate only Barrot-related pilot opportunities and the customer-safe proof sample.
+
+No merge, deployment, secret rotation, Space restart, paid lookup, external model dispatch, Kaggle submission, Databricks write, outbound email, paper trade, funds transfer or real-money action occurred in this run.
+
+---
+
 # Latest verified operational snapshot — 2026-11-23 16:14 UTC
 
 > Current main remains `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`. This handoff is maintained on the existing #1690 audio integration branch, not main. Pre-update #1690 head was `9ea95a0b03bfe5c923ab9a9bafd4f9e78881dec2`. Its exact-head full suite, audio render integration, dependency audit, money audit, and conflict-integrity checks all passed; the fail-closed gate correctly blocked the draft/no-review PR. This handoff-only commit will require those exact-head checks to run again before any merge decision.
