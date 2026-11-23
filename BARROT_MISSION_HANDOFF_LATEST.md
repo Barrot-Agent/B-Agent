@@ -1,4 +1,68 @@
-# Latest mission state — 2026-11-23 00:53 UTC
+# Latest mission state — 2026-11-23 02:00 UTC
+
+> Supersedes earlier snapshots below wherever main SHA, open PRs, current XRP capture, research findings, audio safety or mission readiness differ. Historical records are retained.
+
+## Integrated repository and governance
+
+- **Main:** `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`; complete recursive tree 3,139 entries, not truncated.
+- **Main full suite:** [45089588979](https://github.com/Barrot-Agent/B-Agent/actions/runs/45089588979) passed on that exact SHA: 4,602 passed, 1 skipped, 11 warnings, 32 subtests, 73.33% coverage. Main dependency audit [45089588915](https://github.com/Barrot-Agent/B-Agent/actions/runs/45089588915) and money audit [45089589026](https://github.com/Barrot-Agent/B-Agent/actions/runs/45089589026) passed.
+- **Open PRs:** #1690 (sole active audio workstream) and #1686 (blocked, unique/unreviewed LunaRoute decommission). #1686 is draft, 41 ahead/235 behind main, with 31 changed paths and no independent approval; preserve its history, do not merge or bulk-close.
+- **#1690 before this update:** head `1dfa86ae52ec62aef840710d6f63e817e0b3a492`, 5 ahead/0 behind, draft, no independent approval. Exact-head suite [45091570701](https://github.com/Barrot-Agent/B-Agent/actions/runs/45091570701) passed: 4,606 passed, 1 skipped, 11 warnings, 32 subtests, 73.33% coverage. Dependency [45091570747](https://github.com/Barrot-Agent/B-Agent/actions/runs/45091570747), money [45091570724](https://github.com/Barrot-Agent/B-Agent/actions/runs/45091570724), and conflict-integrity [45091570746](https://github.com/Barrot-Agent/B-Agent/actions/runs/45091570746) passed. Gate [45091570709](https://github.com/Barrot-Agent/B-Agent/actions/runs/45091570709) failed because it was draft, lacked independent approval, and branch protection was unreadable. This update extends the same branch with a race-safe MIDI write, regression test, README note and this handoff; new-head checks are pending.
+- **Merged history:** #1684, #1685, #1687, #1688 and #1689 are on main, but their pre-merge fail-closed gates failed. Main metadata says protected; direct protection detail remains HTTP 403 to the integration. The visible fallback ruleset is disabled and the fail-closed workflow is not among observed required contexts. Do not merge until protection, strict checks, approval count and gate observability are verified.
+
+## XRP intelligence — latest capture
+
+- [Capture 45093545223](https://github.com/Barrot-Agent/B-Agent/actions/runs/45093545223) ran on main SHA `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`; cutoff `2026-11-23T01:16:10.692165Z`. Adapter `v3.32`, parser `v3.31`.
+- Feature history: 21,104 records / 52 snapshots; +490 current records, 123 eligible and 367 excluded. Snapshot integrity, digest, lineage and manifest checks passed. Timeline 150 events; 117 scenarios.
+- Receipts: 34 (21 raw payloads, 13 digest-only); 23 other sources raw-only; 18 provider/source failures. Cross-run receipt sequence 52 continued and verified, but remains unanchored externally, not WORM, and raw artifacts expire after 90 days. Rebuild from raw receipts is not implemented.
+- Synchronized same-venue OKX XRP-USDT and USDT-USD top-of-book yielded a USD mid near `$0.919381` and spread `1.186` bps; max component age 11.93s, skew 0.305s. Same OKX publisher group; top-of-book only, not independent cross-venue confirmation or full-depth USD liquidity.
+- Forecast gate: 188 baseline rows for the scheduled 1h horizon; `INSUFFICIENT_HISTORY`, `NOT_ISSUED`, model-ineligible. Drift `INSUFFICIENT_DATA`; zero of 204 features had enough samples. No directional forecast or paper trade.
+- Failures: Binance HTTP 451; Bybit HTTP 403 with possible U.S.-IP restriction (do not proxy/bypass); Grayscale HTTP 429; Franklin XRPZ parser identity/holdings markers missing; SEC submissions for Evernorth/Coinbase/Circle blocked until a monitored contact is configured in `BARROT_SEC_USER_AGENT`.
+- Actions cache was read-only at budget limit; saving the feature-store cache failed. The per-run checkpoint artifact still uploaded and the next run can use the trusted-checkpoint fallback. Cache remains derived/evictable.
+- [Cross-analysis 45096910107](https://github.com/Barrot-Agent/B-Agent/actions/runs/45096910107) succeeded on main but its log says it analyzed the checked-in snapshot; it is not a new live provider capture.
+
+## XRP research update
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; official profile uses `SBIC East Japan`, corporate number `9011001030621`, established 1963-11-15, and lists Nagoya/Osaka as sister companies ([official profile](https://www.sbic.co.jp/company/profile/)).
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; official profile uses `SBIC Central Japan`, established 1963-11-18, serving Aichi, Gifu, Mie, Toyama and Ishikawa ([official profile](https://www.sbic-cj.co.jp/company/about/)).
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; official profile uses `SBIC West Japan`, established 1963-11-20, serving 24 prefectures west of Fukui, Shiga, Nara and Wakayama ([official profile](https://www.sbic-wj.co.jp/profiles/profile/)). These are three regional SME investment-development corporations, distinct from SBI Holdings; no primary connection to Ripple/XRP/Coinbase/Circle was found.
+- `ASK Coin` remains ambiguous. One plausible candidate is Permission's ASK token; official docs describe ASK as the Permission ecosystem token and its Jan. 15, 2025 release announced the Base launch ([docs](https://docs.permission.ai/ask-token/ask-tokenomics), [release](https://www.globenewswire.com/news-release/2025/01/15/3009989/0/en/Permission-Launches-ASK-on-Base-Ushering-in-the-Next-Era-of-Data-Ownership-and-Rewards.html)). No XRP ecosystem relationship is established.
+- Exact phrase `actual capital` remains unresolved. A separate July 4, 2026 Hyperliquid report described a 14.189m XRP long with `$16.3m` notional at 20x; `$815k` is only notional/20 under a simplified margin assumption. Actual equity/capital is unknown; ChainCatcher and KuCoin reports repeat the same Onchain Lens attribution, not independent corroboration.
+- Exact phrase `SBIC, ChatGPT SBIC` remains unresolved; no primary evidence links ChatGPT to the regional SBIC entities or SBI Holdings.
+- Two YouTube channel IDs surfaced under Kamilah Stevenson: `UCXm6KAr1WHF6UN7g5b2W7wg` (XRP & Stocks) and `UCqUPJMQdkCN6lsLVDnichPA` (Dr. Kamilah Stevenson). Their identity link and any Camilla/Kamilah spelling equivalence remain unverified; no video inventory or transcript ingestion was performed.
+- **SBI/Ripple:** SBI Holdings' June 9, 2025 release states approximately 9% Ripple equity as largest external shareholder; the May 1, 2026 SBI investor presentation repeats ~9%. This is corporate equity, not XRP inventory ([2025 release](https://www.sbigroup.co.jp/news/2025/0609_15491.html), [2026 presentation](https://www.sbigroup.co.jp/investors/library/presentation/pdf/presen260501.pdf)). SBI Group reports 60% of SBI Ripple Asia voting rights as of Sep. 30, 2026 ([profile](https://www.sbigroup.co.jp/company/group/sbirippleasia.html)). Its Feb. 26, 2026 XRPL tokenized-deposit work is a PoC, not disclosed production volume ([release](https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html)).
+- **SBI/Circle:** SBI Holdings and SBI Shinsei Bank each disclosed `$25m` Circle IPO investments in June 2025; SBI VC Trade began USDC distribution in Japan in March 2025 ([SBI release](https://www.sbigroup.co.jp/news/2025/0609_15491.html), [Circle release](https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access)). Separate from XRP demand.
+- **Circle Arc:** public mainnet launched Sep. 16, 2026; SBI Group is a founding validator, Coinbase is among exchanges providing access, Morpho among lending protocols. Arc gas is USDC, not XRP; Circle's 98.8% agent-volume claim is issuer-reported ([Circle release](https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet)).
+- **Ripple/Coinbase:** Oct. 28, 2026 RLUSD partnership put RLUSD on Coinbase Prime/Exchange/Retail and XRPL/Base/Ethereum; Ripple supplies Base liquidity. Global Exchange collateral support was forthcoming at launch, not active ([Ripple](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/), [Coinbase](https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase)).
+- **SBI VC Trade/RLUSD:** Japanese RLUSD trading began June 24, 2026 under SBI VC Trade's fourth-category electronic payment instrument classification ([official notice](https://www.sbivc.co.jp/newsview/bsqs09vn_yzv)); RLUSD is not XRP.
+- **Coinbase cbXRP:** Coinbase's Nov. 22, 2026 02:03 refresh showed 158,565,196.07 XRP reserve vs 158,562,949.53 cbXRP supply, about 2,246.54 XRP surplus ([proof of reserves](https://www.coinbase.com/cbxrp/proof-of-reserves)). Self-published snapshot; not proof of net spot demand or customer encumbrance.
+- **Coinbase XRP collateral:** the USDC loan route is Morpho-mediated on Base; actual XRP collateral and utilization were not established. Third-party attribution of particular Morpho markets to Coinbase remains unproven because Morpho markets are permissionless.
+
+## Audio production and continuity
+
+- Five starter tracks remain 24–28-bar arrangements with editable MIDI, stereo WAV previews and pattern charts; no full-length song, aligned stems, mastered deliverable or DAW project is verified. The v1 user rating remains 3/10; no new listening acceptance was recorded.
+- The engine currently demonstrates deterministic Python/NumPy synthesis and one-shot sample playback. No end-to-end FluidSynth/SoundFont, external licensed engine or DAW export was verified.
+- **Verified race gap in PR #1690:** MIDI was written directly to the final path after preflight. This update stages MIDI in a unique same-directory temp file and publishes with an atomic no-replace hard link. A regression test simulates a concurrent writer and verifies the existing user file is unchanged and the temp file is removed. Unsupported filesystems fail closed.
+- The mission manifest keeps XRP, audio and continuity active at priority 1 with `durable_round_robin_v1`; its cursor remains workspace-local. Local versioned task persistence, verified-learning records and hash-linked capability-cycle events exist, but cross-host recovery, conflict/staleness detection and dependency-aware fresh-process recovery are not verified.
+- The nine-platform capability/authentication/data-flow map exists. Only ChatGPT GitHub access was exercised this run; no live Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks connection was tested.
+
+## Sellbird and commercial state
+
+- Read-only repository: `ethanplusai/sellbird`, main `b212385259da92246a56311d790d936e75dd70dd`, version 0.4.0, Python 3.11+, AGPL-3.0-only. This integration has pull/read permission only.
+- The generic `sellbird.yaml` still has placeholder persona/product/ICP and `channels.email.enabled: true` with `require_approval: true`; it is not a safe Barrot campaign profile. Do not install/configure/send. Barrot-only scope remains; outbound paused.
+- No prospects, paid lookups, emails, replies, meetings, proposals or revenue. The bounded public-data provenance/integrity audit remains an offer hypothesis, not a launched/certified service.
+
+## Run disposition
+
+- **DESIGNED:** three co-equal missions, V3 governance, forecast-admission rules, audio no-overwrite contract, continuity acceptance criteria and Barrot-only Sellbird scope.
+- **EXECUTED:** repository/tree/open-PR/branch/CI/security inspection; XRP artifact inspection; primary-source SBIC and ecosystem research; Sellbird read-only audit; MIDI atomic-publication implementation and race regression test on the existing audio branch.
+- **VERIFIED:** main SHA/full suite; XRP snapshot and receipt-chain integrity; prior #1690 exact-head suite/audits; primary-source SBIC and dated SBI/Circle/Ripple/Coinbase claims; Sellbird identity/license/default configuration.
+- **PENDING:** new #1690 exact-head CI and merge gate, independent review and branch-protection visibility; XRP candidate/shadow history; audio listening acceptance/stems/DAW project; cross-host continuity; Sellbird prospects/outreach.
+- No merge, force-push, deployment, secret rotation, Space restart, external model dispatch, paid lookup, outbound email, Kaggle submission, Databricks write, paper trade or real-money action occurred.
+
+---
+
+# Previous mission state — 2026-11-23 00:53 UTC
 
 > This section supersedes earlier run snapshots below wherever their main SHA, PR state, CI evidence, mission priority, audio readiness, continuity status or commercial status differs. Older sections remain as historical records.
 
