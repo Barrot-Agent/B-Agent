@@ -1242,7 +1242,7 @@ Re-audited the exact public repository https://github.com/ethanplusai/sellbird. 
 
 The shipped template is not a Barrot configuration. It has email enabled, a 50/day ceiling, require_approval=true, LinkedIn disabled, Precleared disabled, a blank postal address, an empty do-not-contact list, no configured warmup start date and no active send window. No mailbox credentials, sender-domain authentication, suppression list, legal configuration or user-approved campaign were configured or tested. The default approval ladder is not equivalent to the user's explicit paused-sending requirement. No deployment, paid lookup, email send or outreach occurred. The repository is read-only to this integration. AGPL-3.0-only obligations require review before modifying, combining, distributing or hosting a modified Sellbird service.
 
-Commercial scope remains Barrot technology only. Candidate first offer: a bounded XRP public-data provenance/market-data integrity audit, limited to source inventory, timestamp/receipt verification and discrepancy reporting; no predictive-performance claim. Candidate buyers: small digital-asset research desks and fintech market-data/data-engineering teams; likely roles are Head of Research, Data Engineering Lead and Market Data Product Lead. This is a pricing hypothesis only, not a validated offer. Qualified prospects: 0; approved campaigns: 0; sends: 0; replies: 0; meetings: 0; proposals: 0; collected revenue: $0; paid lookup cost: $0. No music, clothing or other non-Barrot venture is in Sellbird's active scope.
+Commercial scope remains Barrot technology only. Candidate first offer: a bounded XRP public-data provenance/market-data integrity audit, limited to source inventory, timestamp/receipt verification and discrepancy reporting; no predictive-performance claim. Candidate buyers: small digital-asset research desks and fintech market-data/data-engineering teams; likely roles are Head of Research, Data Engineering Lead and Market Data Product Lead. This is a pricing hypothesis only, not a validated offer. Validated organization candidates: 2 (Digital Asset Research and Galaxy Digital); sales-qualified opportunities: 0; verified decision-maker contacts: 0; approved campaigns: 0; sends: 0; replies: 0; meetings: 0; proposals: 0; collected revenue: $0; paid lookup cost: $0. Prospect research was manual and used public sources; Sellbird itself was not configured or used to send. No music, clothing or other non-Barrot venture is in Sellbird's active scope.
 
 ### Open PR backlog — CLASSIFIED
 
@@ -1265,3 +1265,41 @@ Commercial scope remains Barrot technology only. Candidate first offer: a bounde
 - EXECUTED: current repository/PR/CI/dependency/security audit; current XRP ingestion and artifact review; Franklin primary-page check; continuity cursor-integrity implementation and tests; Sellbird source audit.
 - VERIFIED: main CI; exact-head #1690 and #1691 full-suite CI and dependency/security audit checks; continuity corruption/recovery tests; XRP receipt-chain and SQLite integrity checks.
 - NOT VERIFIED: directional XRP predictive skill, complete event-to-raw-receipt provenance, cross-host continuity, professional audio quality or user acceptance, Sellbird prospecting/authentication/outreach, and any customer/revenue outcome.
+
+
+## Run 12.1 — 2026-11-23 09:54 UTC — Free prospect research addendum
+
+Commercial scope remains Barrot technology only. No outreach or paid lookup was performed. Two organizations now have verified public fit signals, but neither is sales-qualified because no current decision-maker/contact was verified and no buyer intent was expressed.
+
+### Candidate 1: Digital Asset Research (DAR) — research collaborator / data-quality pilot hypothesis
+
+- Official site: https://www.digitalassetresearch.com/
+- Official careers page: https://www.digitalassetresearch.com/careers/
+- Official product description: https://www.digitalassetresearch.com/about-us/
+- Verified fit signal: DAR explicitly serves institutional crypto businesses with clean pricing, market data, exchange vetting and market-structure research. Its current careers page lists Crypto Research and Market Analyst, Data Architect and Operations Specialist roles. The Data Architect role covers data governance, quality, ETL, abstraction and automated testing; the Operations Specialist role covers onboarding exchange sources, reconciliation and anomaly investigation.
+- Barrot-fit hypothesis: a narrow independent XRP source-lineage and discrepancy audit could complement DAR's existing process as a research collaboration or bounded evaluation. DAR already sells overlapping clean-pricing, reference-data and exchange-diligence products, so it is also an adjacent competitor. Do not pitch Barrot as a replacement pricing feed or as production-ready.
+- Buyer roles to investigate: Head of Data / CTO / COO / Research leadership. The open roles are hiring signals, not buyer contacts.
+- Contact status: jobs@digitalassetresearch.com is explicitly for job applications and must not be used for sales. The site's generic info address is displayed with a possible domain typo; do not use without independent verification. A public Institutional Sales contact page for Sam Wright is copyright 2025 and stale; do not treat it as current. No current decision-maker email or direct sales contact verified.
+- Conversion path: prepare a one-page source-provenance proof sample, then use the official Book A Consult route only after the user approves the audience, offer and message.
+
+### Candidate 2: Galaxy Digital — enterprise evaluation hypothesis
+
+- Official careers page: https://www.galaxy.com/careers
+- Official Greenhouse listing: https://job-boards.greenhouse.io/galaxydigitalservices/jobs/6238465004
+- Verified fit signal: Galaxy currently lists a Head of Market Data Development and Engineering role in New York. The official job description calls for unified CEX/DEX/traditional-market data, tick/order-book/on-chain ingestion, build-versus-buy decisions, vendor and licensing management, normalized data quality, integrity/completeness monitoring, audit trails, entitlement controls and considered AI adoption.
+- Barrot-fit hypothesis: a tightly scoped public-XRP data provenance and quality evaluation could demonstrate the existing receipt, timestamp and discrepancy controls. Barrot does not currently have a verified production low-latency Market Data API, Databricks/Kdb+ integration, complete exchange coverage, enterprise security certification or production SLA. Do not claim or market those capabilities.
+- Buyer role: Head of Market Data Development and Engineering; the position is open and no incumbent or purchasing authority was identified.
+- Contact status: no vendor/buyer contact verified. careers@galaxy.com is a recruiting contact, not a sales channel; do not use it for prospecting.
+- Conversion path: build a narrow, evidence-backed XRP source-lineage sample and identify an authorized vendor/partnership channel before any outreach.
+
+### Prospect funnel state
+
+- Organizations with public fit signals: 2.
+- Sales-qualified opportunities: 0.
+- Current decision-maker contacts verified: 0.
+- Campaign/audience/message/sending setup approved: no.
+- Sent / replied / meeting-booked / proposal / revenue-collected: 0 / 0 / 0 / 0 / $0.
+- Paid lookup spend: $0.
+- No outreach, scraping of restricted platforms, LinkedIn automation or unattended sending.
+
+These are prospect hypotheses only. The fastest credible offer remains a bounded public-data provenance and integrity audit, not an XRP price prediction or production trading system.
