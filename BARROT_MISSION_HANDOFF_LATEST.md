@@ -2964,7 +2964,7 @@ All run-268 and run-22 web-rendered research remains **model-ineligible** becaus
 
 | PR | Current head / ancestry | Classification | Exact status |
 |---|---|---|---|
-| #1690 audio | `772147dafb80f14667b2053717a0d04a24f87e08`; 66 commits ahead, 0 behind; 9 changed files | **blocked — active audio integration** | Draft; mergeable/clean; no independent approval. |
+| #1690 audio | PR head `80a722fa66cb88387185c7d0ea8d96b0368dcb19`; 67 commits ahead, 0 behind; 9 changed files. Last code head `772147dafb80f14667b2053717a0d04a24f87e08` | **blocked — active audio integration** | Draft; mergeable/clean; no independent approval. |
 | #1691 continuity | `0275df32d1ba15e574cb89ad004988a5a30a51e5`; 5 ahead, 0 behind; 2 files | **blocked — active continuity integration** | Draft; exact-head full suite and dependency/security checks passed; no independent approval. |
 | #1692 XRP | `7a2296991250ac8d25568fa4a67c62c6884c88c9`; 9 ahead, 0 behind; 5 files | **blocked — active XRP integration** | Draft; exact-head full suite and dependency/security checks passed; no independent approval. |
 | #1686 LunaRoute/runtime maintenance | `951707e870a5fb060f0d47f7b2f0a4a9cbae5ca9`; 41 ahead, 235 behind; 31 files | **blocked — stale/diverged, unique/unreviewed** | Not a safe merge candidate; reconcile against current main before any future promotion. |
@@ -2981,7 +2981,7 @@ The cursor file is runtime state and is not present in the tracked main tree; th
 
 **EXECUTED / VERIFIED:** main ingestion run [45277279590](https://github.com/Barrot-Agent/B-Agent/actions/runs/45277279590), data cutoff `2026-11-23T22:12:08Z`, succeeded at sequence 73. Cross-analysis run [45283609242](https://github.com/Barrot-Agent/B-Agent/actions/runs/45283609242) also succeeded.
 
-- Cross-run receipt-chain continuity verified at sequence 73; chain SHA-256: `3a8c1efa6f7f7e3c0e0e9b79a3bcb02e9f2a02e7fbbafc6f67f9b4c1f4b7c1d8`.
+- Cross-run receipt-chain continuity verified at sequence 73; chain SHA-256: `3a8c1efa86cfbdc256a48ecd4a615e193d6b5118db04735189cfddea7bf9eade`.
 - 34 source receipts: 21 retained raw payloads and 13 digest-only records. A local independent audit recomputed all 21 retained payload hashes and all 34 receipt IDs successfully. Raw archive SHA-256: `70660868760d70b6552472a871099961cbec6a81eea2df1ee60e724fcae32801`.
 - Feature-store SQLite integrity check: `ok`; 73 snapshots and 23,627 historical feature records. Latest run reported 123 eligible and 367 excluded records, 490 delta features and 2,230 input feature records. These counts are preserved as reported by the run; they are not a claim that every input is eligible.
 - The 22:12Z per-venue USD mids were approximately $0.9400 across Coinbase, Kraken, Bitstamp and normalized OKX. OKX normalization uses a same-venue USDT/USD quote. Bitbank's XRP/JPY quote was not converted. These are asynchronous venue observations, not a consolidated executable price.
@@ -3018,7 +3018,7 @@ The prior exact-phrase research remains unresolved where evidence is insufficien
 - The artifact contains **QC JSON only**. The rendered WAV, four stems and MIDI remain in the CI runner's temporary workspace and are not delivered. No native DAW project is produced. Rights metadata is `CALLER_SUPPLIED_UNVERIFIED`. The test-only Debian TimGM6mb SoundFont is GPL-2 and is not bundled or redistributed.
 - This is verified renderer/bundle engineering, **not** verified professional musical quality. It is a 16-bar test pattern, not a full song. No comparative listening or new user acceptance/rejection was performed. The prior five starter-beat rejection at 3/10 remains the quality baseline.
 
-For code head `772147d`, dependency audit, money audit, conflict-integrity check and audio integration passed. The full repository test-suite job was still running at the time of this handoff update; no exact-head full-suite pass is claimed here. The earlier code head `ccdd9baf73adddaefae428ea165f0da5df5841dd` passed 4,611 tests, 2 skipped, 11 warnings, 32 subtests, 73.08% inclusive coverage. The new handoff commit will trigger another exact-head CI run. PR #1690 remains draft and cannot merge without independent approval and verified branch-protection gates.
+For code head `772147d`, dependency audit, money audit, conflict-integrity check and audio integration passed. The full repository test-suite job was still running at the time of this handoff update; no exact-head full-suite pass is claimed here. The earlier code head `ccdd9baf73adddaefae428ea165f0da5df5841dd` passed 4,611 tests, 2 skipped, 11 warnings, 32 subtests, 73.08% inclusive coverage. The handoff commit `80a722fa66cb88387185c7d0ea8d96b0368dcb19` triggered a fresh exact-head CI run [45287065424](https://github.com/Barrot-Agent/B-Agent/actions/runs/45287065424), still in progress at this update; the prior code-head full-suite run [45286422551](https://github.com/Barrot-Agent/B-Agent/actions/runs/45286422551) also remained in progress. No exact-head full-suite pass is claimed for either. PR #1690 remains draft and cannot merge without independent approval and verified branch-protection gates.
 
 ### Nine-platform coordination
 
@@ -3049,3 +3049,8 @@ The example configuration has email enabled but requires manual approval and set
 - **NOT VERIFIED:** exact-head full-suite completion on `772147d`; production-grade/full-length music; native DAW project; audio listening acceptance; cross-host continuity; full SBIC beneficial ownership; raw-byte capture for the 10-source institutional addendum; live authentication to the eight external platforms; Sellbird prospects or revenue.
 
 No changes were made to main. No PR was merged or closed. Preserve all current branches and user work.
+
+
+### Handoff correction — 2026-11-23T23:16Z
+
+The sequence-73 receipt-chain SHA-256 is `3a8c1efa86cfbdc256a48ecd4a615e193d6b5118db04735189cfddea7bf9eade`; the earlier appended value was a transcription error and is corrected above. The current PR #1690 head is `80a722fa66cb88387185c7d0ea8d96b0368dcb19` (67 commits ahead, 0 behind). The code/test head for the audio artifact fix is `772147dafb80f14667b2053717a0d04a24f87e08`. Exact-head full-suite runs 45286422551 and 45287065424 are still in progress; no pass is claimed.
