@@ -42,7 +42,7 @@ def _select_goal_in_fresh_process(workspace: Path) -> str:
 
 
 def _topic_id(goal: str) -> str:
-    match = re.search(r"MISSION_TOPIC_ID:\\s*([A-Za-z0-9_]+)", goal)
+    match = re.search(r"MISSION_TOPIC_ID:\s*([A-Za-z0-9_]+)", goal)
     assert match is not None, goal
     return match.group(1)
 
