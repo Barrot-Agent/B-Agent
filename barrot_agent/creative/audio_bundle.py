@@ -150,7 +150,7 @@ def render_production_bundle(
         stem_path = stems_dir / filename
         if instrument.notes:
             stem_midi = pretty_midi.PrettyMIDI(
-                initial_tempo=midi.initial_tempo,
+                initial_tempo=manifest.bpm,
                 resolution=midi.resolution,
             )
             stem_midi.instruments.append(instrument)
