@@ -192,7 +192,10 @@ class AudioRenderTests(unittest.TestCase):
         written = {}
 
         def resample_poly(samples, up, down, axis=0):
-            return np.repeat(samples, up, axis=axis)
+            expanded = np.repeat(samples, up, axis=axis)
+            expanded[4, 0] = 1.2
+            expanded[4, 1] = -1.2
+            return expanded
 
         def write(handle, sample_rate, samples):
             written["samples"] = np.asarray(samples).copy()

@@ -30,7 +30,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y libfluidsynth3 timgm6mb-soundfont
-          dpkg-query -W -f='\${Package} \${Version}\n' libfluidsynth3 timgm6mb-soundfont
+          dpkg-query -W -f='${Package} ${Version}\n' libfluidsynth3 timgm6mb-soundfont
+          SF2_VERSION="$(dpkg-query -W -f='${Version}' timgm6mb-soundfont)"
+          echo "BARROT_TEST_SF2_SOURCE=Debian timgm6mb-soundfont ${SF2_VERSION}" >> "$GITHUB_ENV"
           sha256sum /usr/share/sounds/sf2/TimGM6mb.sf2
           ldconfig -p | grep -i fluidsynth
 
@@ -43,14 +45,13 @@ jobs:
         env:
           BARROT_TEST_SF2: /usr/share/sounds/sf2/TimGM6mb.sf2
           BARROT_TEST_SF2_LICENSE: "GPL-2 (test-only; not bundled or redistributed)"
-          BARROT_TEST_SF2_SOURCE: "Debian timgm6mb-soundfont package"
-          BARROT_AUDIO_QC_OUTPUT: \${{ runner.temp }}/audio-render-qc.json
+          BARROT_AUDIO_QC_OUTPUT: ${{ runner.temp }}/audio-render-qc.json
         run: python -m pytest tests/test_audio_render_integration.py -v
 
       - name: Upload non-audio QC receipt only
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
-          name: audio-render-qc-\${{ github.run_id }}
-          path: \${{ runner.temp }}/audio-render-qc.json
+          name: audio-render-qc-${{ github.run_id }}
+          path: ${{ runner.temp }}/audio-render-qc.json
           if-no-files-found: error
           retention-days: 30
