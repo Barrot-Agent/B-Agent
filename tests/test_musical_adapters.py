@@ -171,49 +171,15 @@ class AudioRenderTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             _headroom_gain(1.0, 1.0)
 
-    def test_audio_render_writes_new_wav_with_headroom_not_hard_clipping(self):
-        import math
+    def test_audio_render_writes_new_stereo_wav_with_sample_and_true_peak_headroom(self):
         import sys
+        import numpy as np
 
         from barrot_agent.creative.audio_render import render_audio
-
-        class FakeArray:
-            def __init__(self, values):
-                self.values = list(values)
-                self.size = len(self.values)
-                self.ndim = 1
-                self.shape = (self.size,)
-
-            def __iter__(self):
-                return iter(self.values)
-
-            def __len__(self):
-                return self.size
-
-            def __mul__(self, gain):
-                return FakeArray(value * gain for value in self.values)
-
-            __rmul__ = __mul__
 
         class FakeMidi:
             def __init__(self, path):
                 self.path = path
-
-            def fluidsynth(self, *, fs, sf2_path):
-                return [0.0, 1.5, -1.5]
-
-        numpy = ModuleType("numpy")
-        numpy.float32 = "float32"
-        numpy.float64 = "float64"
-        numpy.asarray = lambda values, dtype=None: FakeArray(values)
-        numpy.isfinite = lambda values: type(
-            "FiniteResult", (), {"all": lambda self: all(math.isfinite(x) for x in values)}
-        )()
-        numpy.abs = lambda values: FakeArray(abs(value) for value in values)
-        numpy.max = lambda values: max(values)
-        numpy.square = lambda values, dtype=None: FakeArray(value * value for value in values)
-        numpy.mean = lambda values, dtype=None: sum(values) / len(values)
-        numpy.sqrt = math.sqrt
 
         pretty_midi = ModuleType("pretty_midi")
         pretty_midi.PrettyMIDI = FakeMidi
@@ -221,31 +187,44 @@ class AudioRenderTests(unittest.TestCase):
         scipy.__path__ = []
         scipy_io = ModuleType("scipy.io")
         scipy_io.__path__ = []
+        scipy_signal = ModuleType("scipy.signal")
         wavfile = ModuleType("scipy.io.wavfile")
         written = {}
 
+        def resample_poly(samples, up, down, axis=0):
+            return np.repeat(samples, up, axis=axis)
+
         def write(handle, sample_rate, samples):
-            written["samples"] = list(samples)
+            written["samples"] = np.asarray(samples).copy()
             handle.write(b"RIFF-test-wav")
 
+        scipy_signal.resample_poly = resample_poly
         wavfile.write = write
         scipy_io.wavfile = wavfile
         scipy.io = scipy_io
+        scipy.signal = scipy_signal
+
+        rendered = np.asarray(
+            [[0.0, 0.0], [0.8, -0.8], [0.8, -0.8]], dtype=np.float32
+        )
+        modules = {
+            "pretty_midi": pretty_midi,
+            "scipy": scipy,
+            "scipy.io": scipy_io,
+            "scipy.io.wavfile": wavfile,
+            "scipy.signal": scipy_signal,
+        }
 
         with tempfile.TemporaryDirectory() as directory:
             soundfont = Path(directory) / "test.sf2"
             soundfont.write_bytes(b"placeholder")
             target = Path(directory) / "render.wav"
-            modules = {
-                "numpy": numpy,
-                "pretty_midi": pretty_midi,
-                "scipy": scipy,
-                "scipy.io": scipy_io,
-                "scipy.io.wavfile": wavfile,
-            }
             with patch.dict(sys.modules, modules), patch(
                 "barrot_agent.creative.audio_render.export_midi",
                 side_effect=lambda manifest, path: path.write_bytes(b"midi"),
+            ), patch(
+                "barrot_agent.creative.audio_render._render_midi_stereo",
+                return_value=rendered,
             ):
                 result = render_audio(template(), target, soundfont_path=soundfont)
 
@@ -253,7 +232,84 @@ class AudioRenderTests(unittest.TestCase):
             self.assertEqual(target.read_bytes(), b"RIFF-test-wav")
             self.assertEqual(result.sample_rate, 44100)
             self.assertAlmostEqual(result.duration_seconds, 3 / 44100)
-            self.assertAlmostEqual(result.peak_level, ceiling, places=6)
-            self.assertLessEqual(max(abs(value) for value in written["samples"]), ceiling + 1e-6)
-            self.assertNotEqual(written["samples"][1], 1.0)
-            self.assertEqual(result.channels, 1)
+            self.assertEqual(result.channels, 2)
+            self.assertLess(result.peak_level, ceiling)
+            self.assertAlmostEqual(result.true_peak_level, ceiling, places=6)
+            self.assertLessEqual(
+                float(np.max(np.abs(written["samples"]))), ceiling + 1e-6
+            )
+            self.assertGreater(result.rms_level, 0.0)
+
+    def test_stereo_renderer_schedules_pitched_and_drum_channels(self):
+        import sys
+        import numpy as np
+        from types import SimpleNamespace
+
+        from barrot_agent.creative.audio_render import _render_midi_stereo
+
+        class FakeSynth:
+            def __init__(self, *, samplerate):
+                self.samplerate = samplerate
+                self.calls = []
+                self.deleted = False
+
+            def sfload(self, path):
+                self.calls.append(("sfload", path))
+                return 7
+
+            def program_select(self, channel, soundfont_id, bank, program):
+                self.calls.append(("program_select", channel, soundfont_id, bank, program))
+                return 0
+
+            def get_samples(self, count):
+                self.calls.append(("get_samples", count))
+                return np.tile(np.asarray([0.1, -0.1], dtype=np.float32), count)
+
+            def noteon(self, channel, pitch, velocity):
+                self.calls.append(("noteon", channel, pitch, velocity))
+
+            def noteoff(self, channel, pitch):
+                self.calls.append(("noteoff", channel, pitch))
+
+            def pitch_bend(self, channel, value):
+                self.calls.append(("pitch_bend", channel, value))
+
+            def cc(self, channel, number, value):
+                self.calls.append(("cc", channel, number, value))
+
+            def delete(self):
+                self.deleted = True
+
+        fake_synth = FakeSynth(samplerate=8000)
+        fluidsynth = ModuleType("fluidsynth")
+        fluidsynth.Synth = lambda **kwargs: fake_synth
+
+        note = lambda start, end, pitch, velocity: SimpleNamespace(
+            start=start, end=end, pitch=pitch, velocity=velocity
+        )
+        pitched = SimpleNamespace(
+            is_drum=False, program=10, notes=[note(0.0, 0.5, 60, 90)],
+            pitch_bends=[], control_changes=[],
+        )
+        drums = SimpleNamespace(
+            is_drum=True, program=0, notes=[note(0.25, 0.5, 36, 100)],
+            pitch_bends=[], control_changes=[],
+        )
+        midi = SimpleNamespace(
+            instruments=[pitched, drums],
+            get_end_time=lambda: 1.0,
+        )
+
+        with patch.dict(sys.modules, {"fluidsynth": fluidsynth}):
+            audio = _render_midi_stereo(
+                midi, soundfont_path="test.sf2", sample_rate=8000
+            )
+
+        self.assertEqual(audio.shape, (16000, 2))
+        self.assertIn(("program_select", 0, 7, 0, 10), fake_synth.calls)
+        self.assertIn(("program_select", 9, 7, 128, 0), fake_synth.calls)
+        self.assertIn(("noteon", 0, 60, 90), fake_synth.calls)
+        self.assertIn(("noteon", 9, 36, 100), fake_synth.calls)
+        self.assertIn(("noteoff", 0, 60), fake_synth.calls)
+        self.assertIn(("noteoff", 9, 36), fake_synth.calls)
+        self.assertTrue(fake_synth.deleted)
