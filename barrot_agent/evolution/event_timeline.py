@@ -139,6 +139,8 @@ def _audit_receipt_linkage(
             "raw_bytes_retained_verified_count": 0,
             "digest_only_verified_count": 0,
             "ambiguous_match_count": 0,
+            "source_id_match_count": 0,
+            "source_id_mismatch_count": 0,
             "status_counts": {},
             "receipt_complete": False,
         }
