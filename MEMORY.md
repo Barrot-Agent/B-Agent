@@ -361,3 +361,18 @@ Barrot's long-term memory. Append durable facts here when the user says "remembe
 - Foreword attribution pending; test enforces the ATTRIBUTION PENDING block.
 - INCIDENT 2026-11-17: `git ls-files --others | xargs rm` deleted the untracked
   project. Recovered from dist/book.md. Never bulk-delete untracked files here.
+
+## 2026-11-23 — query transmutation restored and scoped
+- Correction: the 2026-11-17 QUERY TRANSMUTATION section was deleted from
+  `.opencode/agent/barrot.md` by `08ecb81` (2026-11-20) and replaced by one
+  execution-protocol line. The entries above that say it "survives sessions"
+  were stale; the live prompt no longer required it.
+- Restored as an explicit scoped section in `.opencode/agent/barrot.md` and
+  `AGENTS.md`, plus runtime protocol `barrot_agent/inbound/transmutation.py`
+  (composes `inbound/gate.py`). Focused tests:
+  `tests/test_inbound_transmutation.py`.
+- Scope: the `scripts/transmute.py` quarantine covers only the code-variant
+  replacement utility. It does not cover query transmutation.
+- Gap-detector correction: `gate._gaps` treated "improve" as proof of
+  verification because `prove` was unanchored. Anchored the group; the demo
+  request now reports the verification gap.
