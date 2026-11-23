@@ -30,8 +30,11 @@ seed or an explicit `--output-dir` for another take. Existing MIDI, WAV and
 pattern files are never overwritten; choose a new output directory for every
 revision. MIDI is staged in a same-directory temporary file and atomically published
 with a no-replace hard link. Filesystems without hard-link support fail closed rather
-than falling back to an overwrite-capable write. Plain `--check` continues to verify the five checked-in baseline
-tracks in `tracks/`.
+than falling back to an overwrite-capable write. New WAV previews use a non-boosting
+linear gain to leave a default -6 dBFS sample-peak ceiling; the prior nonlinear
+soft-clipping stage is removed. This preserves relative dynamics but is not true-peak
+limiting, mastering, or a substitute for listening review. Plain `--check` continues
+to verify the five checked-in baseline tracks in `tracks/`.
 
 Cover: `cover.png` (art via LunaRoute image gen, type set with PIL).
 

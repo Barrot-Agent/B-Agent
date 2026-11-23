@@ -634,8 +634,31 @@ def sample_mel(kind, pitch, vel, dur):
     return (sig * (vel / 127.0)).astype(np.float32)
 
 
-def render_wav(cfg, path, *, seed: int = 0):
-    """Render a deterministic preview; never overwrite an existing WAV."""
+def _linear_headroom_gain(peak_level: float, ceiling_dbfs: float) -> float:
+    """Return a non-boosting scalar gain that preserves dynamics below a ceiling."""
+    if not math.isfinite(peak_level) or peak_level < 0:
+        raise ValueError("peak_level must be finite and non-negative")
+    if not math.isfinite(ceiling_dbfs) or not -24.0 <= ceiling_dbfs <= 0.0:
+        raise ValueError("headroom_dbfs must be between -24 and 0 dBFS")
+    if peak_level == 0.0:
+        return 1.0
+    ceiling = 10.0 ** (ceiling_dbfs / 20.0)
+    return min(1.0, ceiling / peak_level)
+
+
+def render_wav(
+    cfg,
+    path,
+    *,
+    seed: int = 0,
+    headroom_dbfs: float = -6.0,
+):
+    """Render a deterministic stereo preview with linear sample-peak headroom.
+
+    A single non-boosting gain reduction replaces nonlinear soft clipping.
+    This preserves the mix's relative dynamics; it is not a limiter or master.
+    Existing WAV destinations are never overwritten.
+    """
     rng = np.random.default_rng(seed)
     spb = 60.0 / cfg["bpm"]
     s16 = spb / 4.0
@@ -789,8 +812,12 @@ def render_wav(cfg, path, *, seed: int = 0):
         R += bed
 
     mix = np.stack([L, R], axis=1)
-    mix = np.tanh(mix * 1.15) * 0.92       # gentle glue/limiter
-    data = (mix * 32767).astype("<i2")
+    peak = float(np.max(np.abs(mix)))
+    gain = _linear_headroom_gain(peak, headroom_dbfs)
+    if gain < 1.0:
+        mix = mix * gain
+    # The 16-bit preview remains a stereo mix, not stems or a mastered deliverable.
+    data = np.clip(np.rint(mix * 32767), -32768, 32767).astype("<i2")
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     with Path(path).open("xb") as output:
         with wave.open(output, "wb") as w:

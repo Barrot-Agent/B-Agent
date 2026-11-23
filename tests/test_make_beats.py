@@ -131,3 +131,59 @@ def test_build_all_uses_distinct_deterministic_seeds_and_versioned_outputs(
 
     with pytest.raises(FileExistsError, match="Refusing to overwrite"):
         make_beats.build_all(output_dir=output_dir, seed=17)
+
+
+
+def test_linear_headroom_gain_is_non_boosting_and_validates() -> None:
+    assert make_beats._linear_headroom_gain(0.0, -6.0) == 1.0
+    assert make_beats._linear_headroom_gain(0.25, -6.0) == 1.0
+    assert make_beats._linear_headroom_gain(1.5, -6.0) == pytest.approx(
+        (10 ** (-6.0 / 20.0)) / 1.5
+    )
+    with pytest.raises(ValueError):
+        make_beats._linear_headroom_gain(float("nan"), -6.0)
+    with pytest.raises(ValueError):
+        make_beats._linear_headroom_gain(1.0, 1.0)
+
+
+def test_render_wav_uses_linear_gain_and_leaves_six_db_sample_headroom(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    import wave
+
+    monkeypatch.setattr(make_beats, "kit_drum", lambda *args, **kwargs: None)
+    monkeypatch.setattr(make_beats, "sample_mel", lambda *args, **kwargs: None)
+
+    def test_signal(_gm, _velocity, duration, *, rng=None):
+        signal = make_beats.np.zeros(
+            int(make_beats.SR * duration),
+            dtype=make_beats.np.float32,
+        )
+        signal[0] = 1.0
+        signal[1] = 0.5
+        return signal
+
+    monkeypatch.setattr(make_beats, "synth_drum", test_signal)
+    target = tmp_path / "linear-premaster.wav"
+    make_beats.render_wav(
+        _minimal_config(),
+        target,
+        seed=7,
+        headroom_dbfs=-6.0,
+    )
+
+    with wave.open(str(target), "rb") as rendered:
+        assert rendered.getnchannels() == 2
+        assert rendered.getsampwidth() == 2
+        samples = make_beats.np.frombuffer(
+            rendered.readframes(rendered.getnframes()),
+            dtype="<i2",
+        ).reshape(-1, 2)
+
+    normalized = samples.astype(make_beats.np.float64) / 32767.0
+    ceiling = 10 ** (-6.0 / 20.0)
+    assert make_beats.np.max(make_beats.np.abs(normalized)) <= ceiling + 1 / 32767
+    left = normalized[:2, 0]
+    assert left[1] != 0
+    assert abs(left[0] / left[1]) == pytest.approx(2.0, rel=1e-3)
