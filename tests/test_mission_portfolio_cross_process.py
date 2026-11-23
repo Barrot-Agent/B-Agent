@@ -76,3 +76,110 @@ def test_mission_round_robin_cursor_recovers_across_fresh_processes(
         "long_horizon_continuity_capability_development",
         "xrp_intelligence_prediction_engine",
     ]
+
+
+
+def _mission_cursor_store(workspace: Path) -> AutonomousTaskStore:
+    from barrot_agent.orchestration.autonomous_state import AutonomousTaskStore
+
+    return AutonomousTaskStore(workspace)
+
+
+def _curriculum_for_workspace(workspace: Path) -> LearningCurriculum:
+    from barrot_agent.orchestration.verified_learning_store import VerifiedLearningStore
+
+    return LearningCurriculum(
+        workspace=workspace,
+        learning_store=VerifiedLearningStore(workspace / "verified_lessons.jsonl"),
+    )
+
+
+import pytest
+
+
+@pytest.mark.parametrize(
+    ("history", "overrides", "message"),
+    [
+        (
+            [{"mission_id": "unknown_mission", "selection": 1}],
+            {"last_selected_mission_id": "unknown_mission", "selection_count": 1},
+            "history references an unknown mission",
+        ),
+        (
+            [{"mission_id": "xrp_intelligence_prediction_engine", "selection": 1}],
+            {"last_selected_mission_id": "xrp_intelligence_prediction_engine", "selection_count": 2},
+            "selection count does not match retained history",
+        ),
+        (
+            [{"mission_id": "xrp_intelligence_prediction_engine", "selection": 2}],
+            {"last_selected_mission_id": "xrp_intelligence_prediction_engine", "selection_count": 1},
+            "selection sequence is invalid",
+        ),
+        (
+            [{"mission_id": "xrp_intelligence_prediction_engine", "selection": 1}],
+            {"last_selected_mission_id": "professional_audio_production", "selection_count": 1},
+            "last selected mission does not match history",
+        ),
+    ],
+)
+def test_mission_cursor_rejects_inconsistent_persisted_history(
+    tmp_path: Path,
+    history: list[dict],
+    overrides: dict,
+    message: str,
+) -> None:
+    state = {"history": history, **overrides}
+    _mission_cursor_store(tmp_path).save("mission_portfolio", state)
+
+    with pytest.raises(ValueError, match=message):
+        _curriculum_for_workspace(tmp_path).next_goal()
+
+
+def test_mission_cursor_rejects_malformed_archive_digest(tmp_path: Path) -> None:
+    _mission_cursor_store(tmp_path).save(
+        "mission_portfolio",
+        {
+            "history": [{"mission_id": "xrp_intelligence_prediction_engine", "selection": 6}],
+            "history_archived_count": 5,
+            "history_archive_digest": "not-a-sha256",
+            "last_selected_mission_id": "xrp_intelligence_prediction_engine",
+            "selection_count": 6,
+        },
+    )
+
+    with pytest.raises(ValueError, match="archive digest is invalid"):
+        _curriculum_for_workspace(tmp_path).next_goal()
+
+
+def test_mission_cursor_accepts_valid_compacted_history_and_continues_round_robin(
+    tmp_path: Path,
+) -> None:
+    missions = [
+        "xrp_intelligence_prediction_engine",
+        "professional_audio_production",
+        "long_horizon_continuity_capability_development",
+    ]
+    history = [
+        {"mission_id": mission_id, "selection": selection}
+        for selection, mission_id in zip(range(6, 9), missions)
+    ]
+    _mission_cursor_store(tmp_path).save(
+        "mission_portfolio",
+        {
+            "history": history,
+            "history_archived_count": 5,
+            "history_archive_digest": "a" * 64,
+            "last_selected_mission_id": missions[-1],
+            "selection_count": 8,
+        },
+    )
+
+    goal = _curriculum_for_workspace(tmp_path).next_goal()
+
+    assert "MISSION_TOPIC_ID: xrp_source_provenance" in goal
+    cursor = _mission_cursor_store(tmp_path).load("mission_portfolio")
+    assert cursor["selection_count"] == 9
+    assert cursor["history"][-1] == {
+        "mission_id": "xrp_intelligence_prediction_engine",
+        "selection": 9,
+    }
