@@ -1,3 +1,58 @@
+# Latest verified operational snapshot — 2026-11-23 17:22 UTC
+
+> Main remains `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`. This is a new snapshot for XRP ingestion sequence 68. It is being written to the existing PR #1690 branch; the pre-update PR head was `f347d8f3fa19dda37d72c677495b77a7dee9cc8c`. This handoff-only commit will advance that branch. Exact-head CI must be rechecked on the resulting commit; the checks below are evidence for the pre-update head unless stated otherwise. No main ref is changed.
+
+## Run 14 — new sequence-68 evidence
+
+### XRP spot, order-book and data-quality snapshot
+
+- Main's scheduled XRP ingestion [#45225113680](https://github.com/Barrot-Agent/B-Agent/actions/runs/45225113680) completed successfully at 2026-11-23 17:12:33 UTC on main SHA `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`. Capture cutoff: 17:13:05 UTC. Adapter v3.32 / parser v3.31.
+- Sequence 68 retained 34 source receipts and 18 source failures; 23 sources remained raw-only. Feature store: 68 snapshots, 23,009 historical records, 2,230 input feature records, 106 eligible, 384 excluded, 490 delta records. Event registry: 150 events, 0 excluded, but receipt completeness is false and event model eligibility remains false.
+- Spot tickers captured within roughly five seconds: Coinbase last $0.9693 (bid $0.9692 / ask $0.9693); Kraken last $0.96934 (bid $0.96914 / ask $0.96921); Bitstamp last $0.96931 (bid $0.96914 / ask $0.96915); OKX XRP-USDT last 0.9699, converted with observed USDT/USD 0.99878. Bitbank last was JPY 154.402 and was not converted in this calculation.
+- Independently calculated order-book snapshots at about 17:12:51–55 UTC produced midpoints of $0.96845 Coinbase, $0.96858 Kraken, $0.969145 Bitstamp and $0.968362 OKX after the observed USDT/USD conversion. Top spreads were about 1.03 bps on Coinbase, Kraken and OKX, and 0.10 bps on Bitstamp.
+- Approximate cumulative USD notional within 10 bps (bid / ask): Coinbase $268.8k / $271.8k; Kraken $420.9k / $377.0k; Bitstamp $294.5k / $294.5k; OKX $200.3k / $177.7k. Within 50 bps: Coinbase $1.406m / $1.130m; Kraken $2.545m / $0.771m; Bitstamp $0.846m / $0.752m; OKX $1.005m / $0.783m. The Kraken and OKX 100-level books cap deeper coverage; do not treat their 50/100-bps totals as complete full-depth liquidity. These are single snapshots, not executable size guarantees or persistent support.
+- Bitstamp's 24-hour snapshot showed open $0.92704, high $1.02490, low $0.91170, last $0.96931 (+4.56%). Coinbase had been near $0.9912 in sequence 67 at 16:14 UTC; its 17:12 last was about 2.2% lower over that interval, while the 24-hour return remained positive. This records intraday volatility, not a directional forecast.
+- A synchronized OKX XRP-USDT / USDT-USD quote-basis calculation is marked verified for four features, with a $0.968462 mid and 1.13-bps spread. Both component receipts belong to the same OKX publisher group; this is not independent cross-venue corroboration.
+
+### XRP source failures and prediction admission
+
+- Binance spot, candles, depth and derivatives endpoints returned HTTP 451. Bybit spot and linear endpoints returned HTTP 403; the capture records Bybit's documentation warning that U.S. and Mainland China IP addresses may be restricted. Runner region is not verified. Do not proxy or bypass regional restrictions; use lawful alternatives or leave the adapter unavailable.
+- Grayscale was rate-limited (429); Franklin XRPZ parsing failed. SEC submissions for Evernorth, Coinbase and Circle remain blocked because `BARROT_SEC_USER_AGENT` is not configured with a monitored project contact address. No SEC capital facts or filing events were admitted.
+- Walk-forward ledger: 252 rows, still `INSUFFICIENT_HISTORY`. Drift: 205 features, zero evaluated, `INSUFFICIENT_DATA`. Forecast remains `NOT_ISSUED`, model-ineligible. The 150-event timeline remains incomplete and model-ineligible. No directional forecast is authorized.
+- Cross-run receipt continuity is verified through sequence 68; the hash chain is structurally continuous, but external anchoring remains `NOT_ANCHORED`. GitHub Actions artifacts are retention-limited, not independent WORM storage or a trusted timestamp authority.
+
+### Macro context — evidence, not causal attribution
+
+- The Federal Reserve's October 27–28 minutes, published November 18, describe notable asset-price swings tied to AI-company disclosures, Iran conflict developments and French sovereign-debt repricing; they also say almost all participants viewed further rate increases as likely appropriate under their baseline outlook. The minutes discuss AI-buildout debt/financing risk and a stronger dollar. These are macro risk variables, not proof of the cause of XRP's move. [Federal Reserve minutes](https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm).
+- CoinDesk reported that the November 21 broad crypto selloff drove XRP down about 9% in 24 hours to roughly $0.87, with about $18m of XRP futures liquidations and roughly 94% of losses from long positions; it also reported a $4.97m Friday spot-ETF outflow and fund net assets around $990m. This is secondary market reporting, not an issuer/AP cash-flow receipt. [CoinDesk, November 21](https://www.coindesk.com/markets/2026/11/21/xrp-falls-10-as-long-bets-unwind-and-etf-assets-slip-below-usd1-billion).
+- A November 23 market recap reports seven consecutive weekly losses, nine daily closes below $1, a weekend low near $0.8664 and a November ETF outflow estimate of $30.8m through November 21. Treat these as secondary reported figures pending primary data receipts. [BlockchainReporter, November 23](https://blockchainreporter.net/xrp-news-today/).
+
+### Current integration and CI state before this handoff commit
+
+- Pre-update #1690 head `f347d8f3fa19dda37d72c677495b77a7dee9cc8c` remained draft, with no requested reviewers and no reviews/approvals. Its PR-event full repository suite [#45224840734](https://github.com/Barrot-Agent/B-Agent/actions/runs/45224840734) was still running at the last check; the push-triggered CI's core Tests job passed but its full-suite job was skipped as PR-event-only. The merge gate [#45224840912](https://github.com/Barrot-Agent/B-Agent/actions/runs/45224840912) was waiting.
+- On that pre-update head, FluidSynth render/QC [#45224840934](https://github.com/Barrot-Agent/B-Agent/actions/runs/45224840934) passed. Its exact-head artifact was inspected: 35.909 s, 16 bars, 110 BPM, D minor, 4/4, stereo 44.1 kHz, sample peak -6.0055 dBFS, true peak -6.0000005 dBTP, RMS -23.8708 dBFS, zero clipped samples, render SHA-256 `3c5d0fdb2eda200dabe2fe8c15c2b7d43b6944c8e3fcb58d8535bc68eb8732d5`. Artifact contains QC JSON only; no WAV, stems or DAW project.
+- Pre-update dependency audit [#45224840747](https://github.com/Barrot-Agent/B-Agent/actions/runs/45224840747) passed. Its log explicitly reports no known vulnerabilities across root runtime, development, integrations, Hugging Face Space, legacy requirements and the 17 PEP 621 project dependencies. The `audit` and `Verify PR merge tree against current base` required checks also passed on that head.
+- PR #1691 remains draft, 5 commits ahead / 0 behind main, no reviews. Its exact-head full suite [#45148673910](https://github.com/Barrot-Agent/B-Agent/actions/runs/45148673910) passed previously. PR #1686 remains draft, diverged at 41 ahead / 235 behind main, unique/unreviewed and blocked. No PR was merged or closed.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three active priority-1 missions on the shared V3 foundation; receipt-backed XRP forecasting gates; professional audio workflow and QC; long-horizon continuity; least-privilege platform coordination; Barrot-only Sellbird acquisition.
+- **EXECUTED:** main/tree/open-PR/ancestry/CI/security/dependency/handoff inspection; sequence-68 raw/feature/event artifact inspection; independent four-venue top-of-book and 10/50/100-bps depth calculations from retained raw snapshots; macro-source review; exact-head audio QC artifact inspection; Sellbird repository/config/license review.
+- **VERIFIED:** main SHA and sequence-68 ingestion success; 34-receipt cross-run continuity; source failure classifications; synchronized OKX quote basis; four-venue snapshot prices and calculated depth; forecast suppression; pre-update #1690 audio render and dependency-audit results; branch-protection required-check metadata.
+- **NOT VERIFIED:** external receipt anchoring; full event-source receipts; Binance/Bybit lawful availability; complete derivatives and primary issuer/AP flow coverage; SEC capital events; out-of-sample XRP predictive skill; full-length professional audio, aligned stems, DAW project or user acceptance; cross-host continuity; external nine-platform federation; Sellbird deployment, qualified prospects, outreach or revenue.
+
+## Next concrete actions
+
+1. Recheck exact-head CI on the commit produced by this handoff update. Keep #1690 draft; do not merge without an independent approval and every required check passing on the final head.
+2. XRP: resolve the missing SEC User-Agent contact through an authorized monitored project address; retain Binance/Bybit restrictions without bypass; add lawful alternate venue and derivatives sources; close the 150-event receipt gap; preserve primary issuer/AP flow evidence; keep forecast issuance disabled.
+3. Audio: extend the 35.9-second technical render into a full-length evolving arrangement with production-cleared sounds, aligned stems, MIDI and DAW interchange; compare blindly/level-matched against the 3/10 v1 baseline.
+4. Continuity: validate cross-host recovery and stale/conflict detection without creating a second persistence system.
+5. Sellbird: no deployment or sending until the Barrot-only offer, audience, compliance configuration, mailbox and explicit campaign approval are verified.
+
+No merge, deployment, secret rotation, Space restart, paid lookup, external model dispatch, Kaggle submission, Databricks write, outbound email, paper trade, funds transfer or real-money action occurred in this run.
+
+---
+
 # Latest verified operational snapshot — 2026-11-23 17:06 UTC
 
 > Current main: `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`. This portfolio handoff is updated on the existing audio integration branch for PR #1690; it is not yet on main. The previous snapshot and detailed research history are retained below. No branch was created and no main ref was changed.
