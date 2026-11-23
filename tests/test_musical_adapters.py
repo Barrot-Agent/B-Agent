@@ -160,7 +160,18 @@ class AudioRenderTests(unittest.TestCase):
                     soundfont_path=soundfont,
                     sample_rate=100,
                 )
-    def test_audio_render_writes_new_wav_and_reports_technical_metrics(self):
+    def test_headroom_gain_reduces_only_when_sample_peak_exceeds_ceiling(self):
+        from barrot_agent.creative.audio_render import _headroom_gain
+
+        self.assertEqual(_headroom_gain(0.2, -6.0), 1.0)
+        self.assertEqual(_headroom_gain(0.0, -6.0), 1.0)
+        self.assertAlmostEqual(_headroom_gain(1.5, -6.0), (10 ** (-6.0 / 20.0)) / 1.5)
+        with self.assertRaises(ValueError):
+            _headroom_gain(float("nan"), -6.0)
+        with self.assertRaises(ValueError):
+            _headroom_gain(1.0, 1.0)
+
+    def test_audio_render_writes_new_wav_with_headroom_not_hard_clipping(self):
         import math
         import sys
 
@@ -179,12 +190,17 @@ class AudioRenderTests(unittest.TestCase):
             def __len__(self):
                 return self.size
 
+            def __mul__(self, gain):
+                return FakeArray(value * gain for value in self.values)
+
+            __rmul__ = __mul__
+
         class FakeMidi:
             def __init__(self, path):
                 self.path = path
 
             def fluidsynth(self, *, fs, sf2_path):
-                return [0.0, 0.5, -0.5]
+                return [0.0, 1.5, -1.5]
 
         numpy = ModuleType("numpy")
         numpy.float32 = "float32"
@@ -193,9 +209,6 @@ class AudioRenderTests(unittest.TestCase):
         numpy.isfinite = lambda values: type(
             "FiniteResult", (), {"all": lambda self: all(math.isfinite(x) for x in values)}
         )()
-        numpy.clip = lambda values, low, high: FakeArray(
-            max(low, min(high, value)) for value in values
-        )
         numpy.abs = lambda values: FakeArray(abs(value) for value in values)
         numpy.max = lambda values: max(values)
         numpy.square = lambda values, dtype=None: FakeArray(value * value for value in values)
@@ -209,8 +222,10 @@ class AudioRenderTests(unittest.TestCase):
         scipy_io = ModuleType("scipy.io")
         scipy_io.__path__ = []
         wavfile = ModuleType("scipy.io.wavfile")
+        written = {}
 
         def write(handle, sample_rate, samples):
+            written["samples"] = list(samples)
             handle.write(b"RIFF-test-wav")
 
         wavfile.write = write
@@ -234,8 +249,11 @@ class AudioRenderTests(unittest.TestCase):
             ):
                 result = render_audio(template(), target, soundfont_path=soundfont)
 
+            ceiling = 10 ** (-6.0 / 20.0)
             self.assertEqual(target.read_bytes(), b"RIFF-test-wav")
             self.assertEqual(result.sample_rate, 44100)
             self.assertAlmostEqual(result.duration_seconds, 3 / 44100)
-            self.assertAlmostEqual(result.peak_level, 0.5)
+            self.assertAlmostEqual(result.peak_level, ceiling, places=6)
+            self.assertLessEqual(max(abs(value) for value in written["samples"]), ceiling + 1e-6)
+            self.assertNotEqual(written["samples"][1], 1.0)
             self.assertEqual(result.channels, 1)
