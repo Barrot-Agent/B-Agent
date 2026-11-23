@@ -188,6 +188,8 @@ def _audit_receipt_linkage(
     raw_bytes_retained_verified_count = 0
     digest_only_verified_count = 0
     ambiguous_match_count = 0
+    source_id_match_count = 0
+    source_id_mismatch_count = 0
 
     for event in timeline:
         url_key = _normalize_receipt_url(event["source_url"], "event.source_url")
@@ -221,6 +223,10 @@ def _audit_receipt_linkage(
             raw_bytes_retained = match["raw_bytes_retained"]
             receipt_source_id_match = match["source_id"] == event["source_id"]
             verified_receipt_count += 1
+            if receipt_source_id_match:
+                source_id_match_count += 1
+            else:
+                source_id_mismatch_count += 1
             if raw_bytes_retained:
                 raw_bytes_retained_verified_count += 1
             else:
@@ -266,6 +272,8 @@ def _audit_receipt_linkage(
         "raw_bytes_retained_verified_count": raw_bytes_retained_verified_count,
         "digest_only_verified_count": digest_only_verified_count,
         "ambiguous_match_count": ambiguous_match_count,
+        "source_id_match_count": source_id_match_count,
+        "source_id_mismatch_count": source_id_mismatch_count,
         "status_counts": dict(sorted(status_counts.items())),
         "receipt_complete": receipt_complete,
     }
@@ -395,6 +403,45 @@ def _normalize_event(
         f"{prefix}.related_entities",
     )
     tags = _strings(record.get("tags"), f"{prefix}.tags")
+    raw_capture_history = record.get("source_capture_history", [])
+    if raw_capture_history is None:
+        raw_capture_history = []
+    if not isinstance(raw_capture_history, list):
+        raise EventTimelineError(f"{prefix}.source_capture_history must be a list")
+    capture_history = []
+    for capture_index, capture in enumerate(raw_capture_history):
+        capture_prefix = f"{prefix}.source_capture_history[{capture_index}]"
+        if not isinstance(capture, Mapping):
+            raise EventTimelineError(f"{capture_prefix} must be a mapping")
+        capture_method = _text(capture.get("capture_method"), f"{capture_prefix}.capture_method")
+        capture_source_id = _text(capture.get("source_id"), f"{capture_prefix}.source_id")
+        _, capture_time_text = _utc(capture.get("captured_at_utc"), f"{capture_prefix}.captured_at_utc")
+        _, capture_available_text = _utc(capture.get("available_at_utc"), f"{capture_prefix}.available_at_utc")
+        capture_hash = capture.get("raw_source_sha256")
+        if capture_hash is not None:
+            capture_hash = _text(capture_hash, f"{capture_prefix}.raw_source_sha256").lower()
+            if not _SHA256_RE.fullmatch(capture_hash):
+                raise EventTimelineError(f"{capture_prefix}.raw_source_sha256 must be a SHA-256 digest")
+        capture_receipt_id = capture.get("receipt_id")
+        if capture_receipt_id is not None:
+            capture_receipt_id = _text(capture_receipt_id, f"{capture_prefix}.receipt_id").lower()
+            if not _SHA256_RE.fullmatch(capture_receipt_id):
+                raise EventTimelineError(f"{capture_prefix}.receipt_id must be a SHA-256 digest")
+        capture_raw_retained = capture.get("raw_bytes_retained")
+        if capture_raw_retained is not None and not isinstance(capture_raw_retained, bool):
+            raise EventTimelineError(f"{capture_prefix}.raw_bytes_retained must be a boolean or None")
+        capture_history.append({
+            "capture_method": capture_method,
+            "source_id": capture_source_id,
+            "captured_at_utc": capture_time_text,
+            "available_at_utc": capture_available_text,
+            "raw_source_sha256": capture_hash,
+            "receipt_id": capture_receipt_id,
+            "raw_bytes_retained": capture_raw_retained,
+        })
+    receipt_linkage_method = record.get("receipt_linkage_method")
+    if receipt_linkage_method is not None:
+        receipt_linkage_method = _text(receipt_linkage_method, f"{prefix}.receipt_linkage_method")
 
     known_at = max(available_at, captured_at)
     known_at_text = known_at.isoformat(timespec="microseconds").replace("+00:00", "Z")
@@ -443,6 +490,8 @@ def _normalize_event(
             "raw_source_sha256": raw_hash,
             "raw_hash_present": raw_hash is not None,
             "receipt_status": receipt_status,
+            "source_capture_history": capture_history,
+            "receipt_linkage_method": receipt_linkage_method,
             "assumptions": assumptions,
             "falsification_conditions": falsification,
             "related_entities": related_entities,
@@ -480,6 +529,8 @@ def _normalize_event(
         "raw_source_sha256": raw_hash,
         "raw_hash_present": raw_hash is not None,
         "receipt_status": receipt_status,
+        "source_capture_history": capture_history,
+        "receipt_linkage_method": receipt_linkage_method,
         "model_eligible": False,
         "research_only": True,
     }
@@ -500,6 +551,8 @@ def _normalize_event(
         "event_time_utc": event_time_text,
         "available_at_utc": known_at_text,
         "raw_source_sha256": raw_hash,
+        "source_capture_history": capture_history,
+        "receipt_linkage_method": receipt_linkage_method,
         "assumptions": assumptions,
         "falsification_conditions": falsification,
     }
