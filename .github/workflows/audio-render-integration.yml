@@ -53,8 +53,6 @@ jobs:
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: audio-render-qc-${{ github.run_id }}
-          path: |
-            ${{ runner.temp }}/audio-render-qc.json
-            ${{ runner.temp }}/audio-bundle-qc.json
+          path: ${{ runner.temp }}/audio-*-qc.json
           if-no-files-found: error
           retention-days: 30
