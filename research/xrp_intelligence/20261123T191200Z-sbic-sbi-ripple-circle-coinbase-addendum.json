@@ -1,0 +1,715 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_sbi_sbic_circle_coinbase_relationship_addendum",
+  "artifact_id": "xrp_sbi_sbic_circle_coinbase_20261123T191200Z",
+  "captured_at_utc": "2026-11-23T19:21:51.899Z",
+  "data_cutoff_utc": "2026-11-23T19:12:00Z",
+  "repository_state": {
+    "inspected_main_sha": "7d7aba841cb849e461376a8fcdd4cc4fa10c9af6",
+    "xrp_integration_pr": 1692,
+    "xrp_pr_head_before_addendum": "d7bd11db90b0e7b34afe5d7976a45e36fb4b4191",
+    "changed_path_overlap_with_other_open_prs": false
+  },
+  "mission": {
+    "priority": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Barrot V3 execution, orchestration, safety and verification",
+    "prediction_status": "NOT_ISSUED"
+  },
+  "source_registry": [
+    {
+      "id": "sbic_east_profile_20261123",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "publisher_group": "sbic.co.jp",
+      "source_type": "official regional company profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "retrieved_at_utc": "2026-11-23T19:12:00Z",
+      "retrieval_time_quality": "approximate minute-level run window; web retrieval does not expose per-page fetch timestamps",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Rendered page only; original HTTP bytes and headers not captured.",
+        "Profile supports identity and regional remit, not complete beneficial ownership."
+      ],
+      "founded_date": "1963-11-15"
+    },
+    {
+      "id": "sbic_central_profile_20261123",
+      "publisher": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "publisher_group": "sbic-cj.co.jp",
+      "source_type": "official regional company profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "retrieved_at_utc": "2026-11-23T19:12:00Z",
+      "retrieval_time_quality": "approximate minute-level run window; web retrieval does not expose per-page fetch timestamps",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Rendered page only; original HTTP bytes and headers not captured.",
+        "Profile supports identity and five-prefecture remit, not complete beneficial ownership."
+      ],
+      "founded_date": "1963-11-18"
+    },
+    {
+      "id": "sbic_west_profile_20261123",
+      "publisher": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "publisher_group": "sbic-wj.co.jp",
+      "source_type": "official regional company profile",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "retrieved_at_utc": "2026-11-23T19:12:00Z",
+      "retrieval_time_quality": "approximate minute-level run window; web retrieval does not expose per-page fetch timestamps",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Rendered page only; original HTTP bytes and headers not captured.",
+        "Profile describes sister-company status; not a complete beneficial-ownership search."
+      ],
+      "founded_date": "1963-11-20"
+    },
+    {
+      "id": "sbi_holdings_sbi_ripple_asia_profile_20261123",
+      "publisher": "SBI Holdings / SBI Group",
+      "publisher_group": "sbigroup.co.jp",
+      "source_type": "official group-company profile",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "retrieved_at_utc": "2026-11-23T19:12:00Z",
+      "retrieval_time_quality": "approximate minute-level run window; web retrieval does not expose per-page fetch timestamps",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "60% voting-rights figure is aggregated across SBI and subsidiaries under IFRS; not proof of a direct 60% parent holding.",
+        "No complete shareholder register captured."
+      ]
+    },
+    {
+      "id": "ripple_sbi_ripple_asia_profile_20261123",
+      "publisher": "Ripple",
+      "publisher_group": "ripple.com",
+      "source_type": "official joint-venture and product description",
+      "url": "https://ripple.com/company/sbi-ripple-asia/",
+      "retrieved_at_utc": "2026-11-23T19:12:00Z",
+      "retrieval_time_quality": "approximate minute-level run window; web retrieval does not expose per-page fetch timestamps",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Ripple is an interested JV party; product statements are issuer statements.",
+        "No ODL transaction volumes, XRP inventory or corridor flows disclosed."
+      ]
+    },
+    {
+      "id": "sbi_ripple_asia_tokenized_deposit_poc_20260226",
+      "publisher": "SBI Holdings / SBI Ripple Asia",
+      "publisher_group": "sbigroup.co.jp",
+      "source_type": "official proof-of-concept announcement",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "retrieved_at_utc": "2026-11-23T19:12:00Z",
+      "retrieval_time_quality": "approximate minute-level run window; web retrieval does not expose per-page fetch timestamps",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "PoC announcement, not production deployment or live bank deposit issuance.",
+        "No production volume or XRP use established."
+      ],
+      "publication_date": "2026-02-26"
+    },
+    {
+      "id": "ripple_rlusd_japan_launch_20260624",
+      "publisher": "Ripple",
+      "publisher_group": "ripple.com",
+      "source_type": "official stablecoin distribution announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "retrieved_at_utc": "2026-11-23T19:12:00Z",
+      "retrieval_time_quality": "approximate minute-level run window; web retrieval does not expose per-page fetch timestamps",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "$1.7B market-capitalization figure is Ripple's dated statement at announcement, not current independent measurement.",
+        "RLUSD distribution does not itself establish XRP demand."
+      ],
+      "publication_date": "2026-06-24"
+    },
+    {
+      "id": "circle_q3_2026_10q_20260930",
+      "publisher": "Circle Internet Group",
+      "publisher_group": "sec.gov / Circle issuer filing",
+      "source_type": "SEC-filed Form 10-Q, quarter ended 2026-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+      "retrieved_at_utc": "2026-11-23T19:12:00Z",
+      "retrieval_time_quality": "approximate minute-level run window; web retrieval does not expose per-page fetch timestamps",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Primary issuer disclosure; raw filing bytes and immutable Barrot receipt not captured.",
+        "Circle Mint flows are not global USDC or XRPL-only flows."
+      ],
+      "period_end_date": "2026-09-30"
+    },
+    {
+      "id": "coinbase_q3_2026_10q_20260930",
+      "publisher": "Coinbase Global",
+      "publisher_group": "sec.gov / Coinbase issuer filing",
+      "source_type": "SEC-filed Form 10-Q, quarter ended 2026-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "retrieved_at_utc": "2026-11-23T19:12:00Z",
+      "retrieval_time_quality": "approximate minute-level run window; web retrieval does not expose per-page fetch timestamps",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Primary issuer disclosure; raw filing bytes and immutable Barrot receipt not captured.",
+        "Coinbase USDC balances are not XRP-specific flows."
+      ],
+      "period_end_date": "2026-09-30"
+    },
+    {
+      "id": "circle_2025_10k_20251231",
+      "publisher": "Circle Internet Group",
+      "publisher_group": "sec.gov / Circle issuer filing",
+      "source_type": "SEC-filed Form 10-K, year ended 2025-12-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000062/crcl-20251231.htm",
+      "retrieved_at_utc": "2026-11-23T19:12:00Z",
+      "retrieval_time_quality": "approximate minute-level run window; web retrieval does not expose per-page fetch timestamps",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Primary issuer disclosure about historic Centre and 2023 restructuring.",
+        "Later Coinbase Q3 2026 filing is the primary source for same-terms renewal."
+      ],
+      "period_end_date": "2025-12-31"
+    }
+  ],
+  "market_snapshot": {
+    "xrp_spot_aggregate": {
+      "observed_at_utc": "2026-11-23T19:10:50Z",
+      "venues": [
+        {
+          "venue": "Coinbase",
+          "pair": "XRP-USD",
+          "bid": 0.9493,
+          "ask": 0.9495,
+          "mid": 0.9494,
+          "spread_bps": 2.1066,
+          "volume_24h_xrp": 119208329.940377
+        },
+        {
+          "venue": "Kraken",
+          "pair": "XRP-USD",
+          "bid": 0.94936,
+          "ask": 0.94944,
+          "mid": 0.9494,
+          "spread_bps": 0.8426,
+          "volume_24h_xrp": 45385881.9646725
+        },
+        {
+          "venue": "Bitstamp",
+          "pair": "XRP-USD",
+          "bid": 0.94922,
+          "ask": 0.94923,
+          "mid": 0.949225,
+          "spread_bps": 0.1053,
+          "volume_24h_xrp": 15181471.74606753
+        },
+        {
+          "venue": "OKX",
+          "pair": "XRP-USDT",
+          "bid": 0.9504,
+          "ask": 0.9505,
+          "mid": 0.95045,
+          "quote": "USDT",
+          "spread_bps": 1.0521,
+          "usd_normalized_mid": 0.949285699,
+          "volume_24h_xrp": 52534714.869486
+        },
+        {
+          "venue": "Bitbank",
+          "pair": "XRP-JPY",
+          "bid": 151.162,
+          "ask": 151.163,
+          "mid": 151.1625,
+          "quote": "JPY",
+          "spread_bps": 0.0662
+        }
+      ],
+      "usd_midpoint_dispersion_bps": 1.8434,
+      "model_eligible": false,
+      "exclusion_reason": "Per-venue observations only; not a consolidated executable price and no JPY conversion or cross-venue depth aggregation."
+    },
+    "circle_usdc": {
+      "as_of_date": "2026-09-30",
+      "q3_minted_usd": 104304000000,
+      "q3_redeemed_usd": 103694000000,
+      "q3_circle_mint_net_usd": 610000000,
+      "nine_month_minted_usd": 260847000000,
+      "nine_month_redeemed_usd": 262234000000,
+      "nine_month_circle_mint_net_usd": -1387000000,
+      "market_share_pct": 27,
+      "market_share_prior_year_pct": 29,
+      "meaningful_wallets": 7350000,
+      "meaningful_wallets_prior_year": 6340000,
+      "meaningful_wallet_definition": "Wallets holding more than USD 10 USDC; not unique users.",
+      "reserves_in_circle_reserve_fund_pct": 84,
+      "reserve_fund_manager": "BlackRock",
+      "circle_is_fund_only_shareholder": true,
+      "q3_distribution_costs_usd": 331300000,
+      "nine_month_distribution_costs_usd": 986600000,
+      "q3_reserve_income_usd": 657600000,
+      "prior_year_q3_reserve_income_usd": 711200000,
+      "q3_reserve_income_yoy_change_pct": -7.5,
+      "average_yield_decline_basis_points": 61,
+      "scope": "Global USDC issuer, reserve and Circle Mint customer disclosures; not XRPL-only supply, XRP collateral, exchange flow or XRP capital flow."
+    },
+    "upcoming_events": []
+  },
+  "observations": [
+    {
+      "id": "OBS-SBIC-EAST-20261123",
+      "classification": "primary_company_profile",
+      "claim": "SBIC East is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., founded 1963-11-15; its official profile describes an East-Japan service area and shareholder categories including local governments, chambers of commerce, financial institutions and business companies.",
+      "evidence": [
+        "sbic_east_profile_20261123"
+      ],
+      "limitations": [
+        "No complete beneficial-ownership or ultimate-control analysis."
+      ]
+    },
+    {
+      "id": "OBS-SBIC-CENTRAL-20261123",
+      "classification": "primary_company_profile",
+      "claim": "SBIC Central is Nagoya Small and Medium Business Investment & Consultation Co., Ltd., founded 1963-11-18, with an official service area of Aichi, Gifu, Mie, Toyama and Ishikawa.",
+      "evidence": [
+        "sbic_central_profile_20261123"
+      ],
+      "limitations": [
+        "No complete beneficial-ownership or ultimate-control analysis."
+      ]
+    },
+    {
+      "id": "OBS-SBIC-WEST-20261123",
+      "classification": "primary_company_profile",
+      "claim": "SBIC West is Osaka Small and Medium Business Investment & Consultation Co., Ltd., founded 1963-11-20, with an official 24-prefecture service area; its profile describes the three regional SBIC companies as sister companies.",
+      "evidence": [
+        "sbic_west_profile_20261123"
+      ],
+      "limitations": [
+        "No complete beneficial-ownership or ultimate-control analysis."
+      ]
+    },
+    {
+      "id": "OBS-SBIC-ENTITY-SEPARATION-20261123",
+      "classification": "entity_disambiguation_from_primary_profiles",
+      "claim": "The three regional SBICs are distinct legal companies with separate regional mandates. Their cited official profiles do not identify them as SBI Holdings subsidiaries or affiliates; no SBI Holdings affiliation is established by these sources.",
+      "evidence": [
+        "sbic_east_profile_20261123",
+        "sbic_central_profile_20261123",
+        "sbic_west_profile_20261123",
+        "sbi_holdings_sbi_ripple_asia_profile_20261123"
+      ],
+      "limitations": [
+        "This is not a complete Japanese corporate-registry or beneficial-ownership search; absence from cited profiles is not proof that no indirect relationship could exist."
+      ]
+    },
+    {
+      "id": "OBS-SBI-RIPPLE-ASIA-OWNERSHIP-20261123",
+      "classification": "official_group_company_disclosure",
+      "claim": "SBI Holdings identifies SBI Ripple Asia as a joint venture between SBI Group and Ripple and reports 60% aggregate voting rights for SBI Group; the note aggregates SBI and subsidiaries treated as subsidiaries under IFRS, so it does not prove a direct 60% holding by SBI Holdings parent alone.",
+      "evidence": [
+        "sbi_holdings_sbi_ripple_asia_profile_20261123"
+      ],
+      "limitations": [
+        "No complete shareholder register or direct-versus-indirect ownership schedule captured."
+      ]
+    },
+    {
+      "id": "OBS-SBI-RIPPLE-ASIA-NO-XRP-20261123",
+      "classification": "explicit_issuer_statement",
+      "claim": "Ripple's official SBI Ripple Asia page explicitly says SBI Ripple Asia does not handle cryptoasset XRP; the described role is marketing RippleNet software services to financial institutions and remittance companies.",
+      "evidence": [
+        "ripple_sbi_ripple_asia_profile_20261123"
+      ],
+      "limitations": [
+        "Ripple is an interested JV party; this is an issuer statement, not independent operational audit evidence."
+      ]
+    },
+    {
+      "id": "OBS-SBI-ODL-JAPAN-20261123",
+      "classification": "issuer_partner_service_description",
+      "claim": "Ripple separately describes ODL use with XRP in Japan involving SBI Remit, Coins.ph and SBI VC Trade; these are distinct entities and service roles from SBI Ripple Asia.",
+      "evidence": [
+        "ripple_sbi_ripple_asia_profile_20261123"
+      ],
+      "limitations": [
+        "No corridor-level XRP settlement volume, wallet balance, net flow or collateral amount disclosed."
+      ]
+    },
+    {
+      "id": "OBS-SBI-TOKENIZED-DEPOSIT-POC-20260226",
+      "classification": "confirmed_proof_of_concept_announcement",
+      "claim": "SBI Ripple Asia announced a proof of concept for tokenized deposits/deposit-based digital money using MoneyTap infrastructure and a token-issuance platform with XRPL contemplated as blockchain; this is not evidence of production deployment or live bank deposit issuance.",
+      "evidence": [
+        "sbi_ripple_asia_tokenized_deposit_poc_20260226"
+      ],
+      "limitations": [
+        "No production launch, customer volume, deposits outstanding or XRP usage established."
+      ]
+    },
+    {
+      "id": "OBS-RLUSD-JAPAN-DISTRIBUTION-20260624",
+      "classification": "issuer_announcement",
+      "claim": "Ripple announced RLUSD availability in Japan through SBI VC Trade after JFSA approval under the Payment Services Act; Ripple reported USD 1.7B RLUSD market capitalization at announcement.",
+      "evidence": [
+        "ripple_rlusd_japan_launch_20260624"
+      ],
+      "limitations": [
+        "The capitalization is a dated Ripple statement, not a current independent measurement; RLUSD is a stablecoin and does not itself prove XRP demand."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-MINT-FLOWS-Q3-2026",
+      "classification": "sec_filed_issuer_disclosure",
+      "claim": "Circle reported Q3 2026 Circle Mint customer flows of USD 104.304B minted and USD 103.694B redeemed, net +USD 610M; nine-month flows were USD 260.847B minted and USD 262.234B redeemed, net −USD 1.387B.",
+      "evidence": [
+        "circle_q3_2026_10q_20260930"
+      ],
+      "limitations": [
+        "These are Circle Mint customer conversion flows, not total global USDC circulation changes, XRPL-only flows or XRP purchases."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-SHARE-WALLETS-Q3-2026",
+      "classification": "sec_filed_issuer_disclosure",
+      "claim": "Circle reported USDC market share of 27% versus 29% one year earlier and 7.35M meaningful wallets versus 6.34M; meaningful wallets are wallets holding more than USD 10 USDC and are not unique users.",
+      "evidence": [
+        "circle_q3_2026_10q_20260930"
+      ],
+      "limitations": [
+        "Retain Circle's defined comparison universe; wallet counts do not equal people or active users."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-RESERVE-FUND-CONCENTRATION-2026",
+      "classification": "sec_filed_issuer_disclosure",
+      "claim": "As of 2026-09-30, approximately 84% of USDC reserves were held in the Circle Reserve Fund, a Rule 2a-7 government money-market fund managed by BlackRock, with Circle as its only shareholder; Circle states the fund is not FDIC/government insured or guaranteed and BlackRock has no obligation to reimburse losses.",
+      "evidence": [
+        "circle_q3_2026_10q_20260930"
+      ],
+      "limitations": [
+        "Issuer disclosure does not establish a current reserve stress event or loss; the remaining reserve portion is held across multiple banks and U.S. Treasuries outside the fund."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-COINBASE-DISTRIBUTION-ECONOMICS-2026",
+      "classification": "sec_filed_issuer_disclosure",
+      "claim": "Circle recorded USD 331.3M Q3 and USD 986.6M nine-month 2026 distribution costs in connection with Coinbase agreements; Q3 reserve income was USD 657.6M, down 7.5% year over year, with Circle attributing approximately USD 106.5M of decline to a 61-basis-point fall in average yields.",
+      "evidence": [
+        "circle_q3_2026_10q_20260930"
+      ],
+      "limitations": [
+        "Distribution costs are contractual economics, not direct XRP flows; reserve income depends on circulation and interest rates."
+      ]
+    },
+    {
+      "id": "OBS-COINBASE-CIRCLE-RENEWAL-2026",
+      "classification": "sec_filed_counterparty_disclosure",
+      "claim": "Coinbase's Q3 2026 Form 10-Q says it renewed its arrangement with Circle on the same terms and that average USDC held in Coinbase products reached an all-time high.",
+      "evidence": [
+        "coinbase_q3_2026_10q_20260930"
+      ],
+      "limitations": [
+        "Coinbase product balances and the Circle arrangement are USDC economics, not evidence of XRP collateral or XRP trading demand."
+      ]
+    },
+    {
+      "id": "OBS-CIRCLE-CENTRE-RESTRUCTURE-2023",
+      "classification": "sec_filed_historical_corporate_disclosure",
+      "claim": "Circle's 2025 Form 10-K describes the historic 2018 Centre consortium as a 50/50 joint venture and the 2023 restructuring that gave Circle sole governance of the stablecoin network while Coinbase retained a minority equity interest and contractual revenue-sharing rights.",
+      "evidence": [
+        "circle_2025_10k_20251231"
+      ],
+      "limitations": [
+        "The later Coinbase Q3 2026 filing is the primary source for renewal on the same terms; no exact Coinbase ownership percentage is inferred."
+      ]
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "SBIC East",
+      "to": "SBIC Central",
+      "relation": "sister_company_of",
+      "status": "official_profile_statement",
+      "evidence": [
+        "sbic_west_profile_20261123"
+      ],
+      "scope": "Regional sister companies; separate legal entities and mandates."
+    },
+    {
+      "from": "SBIC East",
+      "to": "SBIC West",
+      "relation": "sister_company_of",
+      "status": "official_profile_statement",
+      "evidence": [
+        "sbic_west_profile_20261123"
+      ],
+      "scope": "Regional sister companies; not an SBI Holdings ownership claim."
+    },
+    {
+      "from": "SBIC East / SBIC Central / SBIC West",
+      "to": "SBI Holdings",
+      "relation": "corporate_affiliation_not_established",
+      "status": "not_shown_in_cited_profiles",
+      "evidence": [
+        "sbic_east_profile_20261123",
+        "sbic_central_profile_20261123",
+        "sbic_west_profile_20261123",
+        "sbi_holdings_sbi_ripple_asia_profile_20261123"
+      ],
+      "scope": "Do not infer affiliation from the acronym; complete registry search remains open."
+    },
+    {
+      "from": "SBI Group",
+      "to": "SBI Ripple Asia",
+      "relation": "aggregate_voting_rights_60_percent",
+      "status": "official_group_company_disclosure",
+      "evidence": [
+        "sbi_holdings_sbi_ripple_asia_profile_20261123"
+      ],
+      "scope": "Aggregate group voting rights; not necessarily direct parent-only ownership."
+    },
+    {
+      "from": "Ripple",
+      "to": "SBI Ripple Asia",
+      "relation": "joint_venture_partner",
+      "status": "official_group_company_disclosure",
+      "evidence": [
+        "sbi_holdings_sbi_ripple_asia_profile_20261123",
+        "ripple_sbi_ripple_asia_profile_20261123"
+      ],
+      "scope": "Both parties' own corporate descriptions; not independent operational verification."
+    },
+    {
+      "from": "SBI Ripple Asia",
+      "to": "RippleNet",
+      "relation": "markets_software_services",
+      "status": "issuer_statement",
+      "evidence": [
+        "ripple_sbi_ripple_asia_profile_20261123"
+      ],
+      "scope": "Software service does not itself establish XRP usage."
+    },
+    {
+      "from": "SBI Ripple Asia",
+      "to": "XRP",
+      "relation": "does_not_handle",
+      "status": "explicit_issuer_statement",
+      "evidence": [
+        "ripple_sbi_ripple_asia_profile_20261123"
+      ],
+      "scope": "Do not generalize this entity statement to other SBI entities."
+    },
+    {
+      "from": "SBI Remit",
+      "to": "ODL using XRP",
+      "relation": "uses_service",
+      "status": "Ripple_partner_service_description",
+      "evidence": [
+        "ripple_sbi_ripple_asia_profile_20261123"
+      ],
+      "scope": "No transaction volume or net XRP balance captured."
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relation": "distributes_in_Japan",
+      "status": "issuer_announcement",
+      "evidence": [
+        "ripple_rlusd_japan_launch_20260624"
+      ],
+      "scope": "Stablecoin distribution, not XRP demand."
+    },
+    {
+      "from": "SBI Ripple Asia",
+      "to": "MoneyTap / XRPL",
+      "relation": "tokenized_deposit_proof_of_concept",
+      "status": "announced_poc",
+      "evidence": [
+        "sbi_ripple_asia_tokenized_deposit_poc_20260226"
+      ],
+      "scope": "PoC only; no production deployment established."
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issues_and_redeems",
+      "status": "sec_filed_issuer_disclosure",
+      "evidence": [
+        "circle_q3_2026_10q_20260930"
+      ],
+      "scope": "Global USDC issuer-level disclosures across supported chains."
+    },
+    {
+      "from": "Circle",
+      "to": "Circle Reserve Fund",
+      "relation": "sole_shareholder",
+      "status": "sec_filed_issuer_disclosure",
+      "evidence": [
+        "circle_q3_2026_10q_20260930"
+      ],
+      "scope": "Reserve structure as of 2026-09-30."
+    },
+    {
+      "from": "BlackRock",
+      "to": "Circle Reserve Fund",
+      "relation": "manages",
+      "status": "sec_filed_issuer_disclosure",
+      "evidence": [
+        "circle_q3_2026_10q_20260930"
+      ],
+      "scope": "No guarantee or reimbursement obligation stated by Circle."
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relation": "USDC_distribution_and_revenue_sharing_arrangement",
+      "status": "counterparty_sec_disclosures",
+      "evidence": [
+        "circle_q3_2026_10q_20260930",
+        "coinbase_q3_2026_10q_20260930",
+        "circle_2025_10k_20251231"
+      ],
+      "scope": "Distribution costs and same-terms renewal; no XRP-specific flow implied."
+    },
+    {
+      "from": "Coinbase",
+      "to": "USDC",
+      "relation": "holds_and_distributes_on_platform",
+      "status": "counterparty_sec_disclosure",
+      "evidence": [
+        "coinbase_q3_2026_10q_20260930"
+      ],
+      "scope": "Average USDC in Coinbase products reached a company-reported all-time high."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "20261123T191200Z::H1-sbi-odl-xrp-demand",
+      "claim": "SBI Remit's ODL use with XRP may create real corridor-level XRP settlement demand.",
+      "support": [
+        "ripple_sbi_ripple_asia_profile_20261123"
+      ],
+      "disconfirming_or_missing": [
+        "No corridor-level ODL volumes, XRP inventory, net settlement flow or collateral balances captured.",
+        "SBI Ripple Asia itself explicitly says it does not handle XRP.",
+        "RLUSD distribution and the tokenized-deposit PoC do not prove XRP use."
+      ],
+      "test": "Acquire authorized corridor-level ODL volume, XRP wallet/inventory and settlement timing data; separate gross throughput, net XRP held, third-party liquidity and market purchases."
+    },
+    {
+      "id": "20261123T191200Z::H2-sbi-multirail-not-xrp",
+      "claim": "SBI's Ripple-related activity is multi-rail: RippleNet software, ODL with XRP through separate entities, RLUSD distribution and a tokenized-deposit XRPL PoC can coexist without all activity creating XRP demand.",
+      "support": [
+        "ripple_sbi_ripple_asia_profile_20261123",
+        "sbi_ripple_asia_tokenized_deposit_poc_20260226",
+        "ripple_rlusd_japan_launch_20260624"
+      ],
+      "disconfirming_or_missing": [
+        "Ripple describes ODL with XRP at SBI Remit and partners, so some genuine XRP use exists.",
+        "No product-level volume breakdown captured."
+      ],
+      "test": "Map each legal entity, product, settlement asset, ledger, corridor, counterparty and volume separately; do not aggregate RippleNet, RLUSD, XRPL and ODL."
+    },
+    {
+      "id": "20261123T191200Z::H3-usdc-distribution-not-xrp-demand",
+      "claim": "Coinbase-Circle USDC distribution growth and reserve economics may affect dollar liquidity and exchange collateral conditions but do not establish direct XRP demand.",
+      "support": [
+        "circle_q3_2026_10q_20260930",
+        "coinbase_q3_2026_10q_20260930"
+      ],
+      "disconfirming_or_missing": [
+        "No XRPL-specific USDC supply, XRP collateral, exchange-wallet flow or matched XRP order-book response captured.",
+        "Circle Mint flows are not total global USDC circulation changes."
+      ],
+      "test": "Build chain-specific USDC supply/mint/burn/bridge flows and exchange collateral balances, then test lagged XRP depth/returns against BTC, rates, USD and broad crypto controls."
+    },
+    {
+      "id": "20261123T191200Z::H4-circle-reserve-concentration",
+      "claim": "Concentration of 84% of USDC reserves in a BlackRock-managed government money-market fund is a material reserve-structure and operational-dependency variable.",
+      "support": [
+        "circle_q3_2026_10q_20260930"
+      ],
+      "disconfirming_or_missing": [
+        "The fund holds short-dated Treasuries, overnight Treasury repos and cash.",
+        "No reserve impairment, redemption stress or operational interruption established."
+      ],
+      "test": "Track fund composition, NAV, redemption liquidity, custody/settlement dependencies, bank cash concentration and stress-period redemption behavior."
+    },
+    {
+      "id": "20261123T191200Z::H5-sbic-acronym-conflation",
+      "claim": "The SBIC East/Central/West acronym can be mistaken for SBI Holdings, creating false corporate relationship edges.",
+      "support": [
+        "sbic_east_profile_20261123",
+        "sbic_central_profile_20261123",
+        "sbic_west_profile_20261123"
+      ],
+      "disconfirming_or_missing": [
+        "Official profiles identify distinct regional legal companies, founding dates and service areas; no SBI Holdings affiliation is shown in the cited profiles."
+      ],
+      "test": "Reconcile Japanese corporate registry identifiers, shareholder registers and official group-company lists before adding any ownership edge."
+    },
+    {
+      "id": "20261123T191200Z::H6-coinbase-circle-economic-interdependence",
+      "claim": "Coinbase and Circle have material USDC distribution and revenue-sharing interdependence that is economically important even without an XRP-specific link.",
+      "support": [
+        "circle_q3_2026_10q_20260930",
+        "coinbase_q3_2026_10q_20260930",
+        "circle_2025_10k_20251231"
+      ],
+      "disconfirming_or_missing": [
+        "The filings do not establish direct Ripple/SBI ownership or an XRP settlement channel.",
+        "Distribution costs and USDC platform balances are not XRP spot demand."
+      ],
+      "test": "Reconcile contract terms, renewal dates, platform balances, distribution-cost sensitivity, reserve yields and counterparty concentration across future SEC filings."
+    }
+  ],
+  "data_quality": {
+    "no_averaging_policy": "Do not aggregate spot depth across venues or quote currencies, do not treat Circle Mint flows as total USDC supply, and do not map global USDC or RLUSD activity directly to XRP demand.",
+    "raw_source_policy": "Public pages and SEC filing text were read as rendered web content. Original HTTP wire bytes, headers, independent timestamps and immutable SHA-256 receipts were not captured in Barrot. All observations remain research-only and model-ineligible.",
+    "source_independence": "The three SBIC profiles are primary but related sister companies; SBI Holdings and Ripple are interested JV parties; SBI PoC and RLUSD announcements are issuer statements; Circle and Coinbase are separate SEC registrants and counterparties; Circle's 10-K and 10-Q are the same issuer, not independent corroboration.",
+    "scope_warnings": [
+      "SBIC is not SBI Holdings based on the cited legal identities and regional profiles; complete beneficial-ownership search remains open.",
+      "SBI Group aggregate voting rights are not the same as direct SBI Holdings parent ownership.",
+      "SBI Ripple Asia's explicit no-XRP statement must not be generalized to SBI Remit or SBI VC Trade.",
+      "RLUSD is a stablecoin and the MoneyTap/XRPL activity is a PoC; neither establishes XRP purchases or net XRP demand.",
+      "Circle Mint customer flows are not global USDC supply flows, XRPL-specific supply or XRP collateral.",
+      "Meaningful-wallet counts are wallets, not unique people.",
+      "Circle's 84% reserve-fund figure is dated 2026-09-30, not an intraday reserve audit."
+    ],
+    "unresolved_or_missing": [
+      "No raw SEC filing bytes or source hashes captured.",
+      "No exact per-page web retrieval timestamp exposed; minute-level run window only.",
+      "No Japanese corporate registry or complete shareholder register captured.",
+      "No SBI Remit ODL transaction or XRP inventory data.",
+      "No chain-specific USDC/RLUSD supply, bridge flow, exchange collateral or XRP-specific capital flow.",
+      "No current reserve audit beyond issuer filing disclosure."
+    ]
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "No synchronized XRP feature panel, matched historical outcome labels, leakage-safe walk-forward evaluation or causal test supports a directional forecast. This is a corporate-relationship research addendum only."
+  },
+  "next_actions": [
+    "Capture referenced SEC filings as immutable raw artifacts with accession, URL, capture time, SHA-256 and receipt-chain linkage before promoting filing facts into the event timeline.",
+    "Resolve SBIC legal identities against Japanese corporate registry identifiers and shareholder records; retain profile-based disambiguation rather than claiming a completed beneficial-ownership audit.",
+    "Obtain authorized SBI Remit ODL corridor volumes, XRP inventory and settlement data; distinguish gross throughput from net market purchases and collateral.",
+    "Capture chain-specific USDC and RLUSD supply, mint, burn, bridge and exchange-collateral observations with issuer and ledger timestamps.",
+    "Track Circle reserve-fund composition, distribution costs, reserve yields and Coinbase platform balances in subsequent SEC filings.",
+    "Test stablecoin or institutional-adoption relationships against synchronized XRP depth, BTC, rates, USD and broad crypto controls; preserve null results and disconfirming evidence.",
+    "Keep all claims research-only until source receipts are captured; keep directional forecast issuance disabled."
+  ],
+  "hypothesis_id_namespace": "20261123T191200Z"
+}
