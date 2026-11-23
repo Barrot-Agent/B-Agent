@@ -33,15 +33,15 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/COUNCIL_REVIEW.md - BARROT-Ω COUNCIL REVIEW
 - docs/DATA_TRANSFORMATION.md - 🔄 Barrot Data Transformation & Resource Discovery Framework
 - docs/DEPENDENCY_MICRO_INGESTION_README.md - 🐍 Dependency Micro-Ingestion System
-- docs/DEVELOPMENT.md - Development Guide
 - docs/DOCS_INGESTION_README.md - 📚 Documentation Ingestion System
+- docs/DEVELOPMENT.md - Development Guide
 - docs/DYNAMIC_CHARACTER_SEARCH_IMPLEMENTATION.md - Dynamic Character Figure Search Implementation Guide
 - docs/EMAIL_FEATURE_SUMMARY.md - Email Intelligence Feature - Implementation Summary
 - docs/EMAIL_PROCESSING_GUIDE.md - 📧 Email Intelligence Processing Guide
 - docs/EMAIL_QUICKSTART.md - Quick Start: Email Intelligence for Barrot
 - docs/email.md - Email Processing & Analysis
 - docs/GETTING_STARTED.md - Getting Started with B-Agent
-- docs/GLOBAL_STATE_MANIFEST.md - Barrot-\Omega State Manifest
+- docs/GLOBAL_STATE_MANIFEST.md - Barrot-Ω State Manifest
 - docs/GRANITE_INTEGRATION.md - IBM Granite 4.0-3b-vision Integration
 - docs/IMPLEMENTATION_SUMMARY.md - Character Capability Expansion - Implementation Summary
 - docs/INFINITE_INGESTION.md - Infinite Ingestion + Transmutation
@@ -58,6 +58,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/millennium_problems.md - Millennium Problems Research & Status
 - docs/MMI_ANALYSIS_REPORT.md - 🧠 Barrot MMI (Massive Micro Ingestion) Analysis Report
 - docs/MMI_IMPLEMENTATION.md - 🚀 Barrot MMI (Massive Micro Ingestion) Implementation Guide
+- docs/MODEL_INTEGRITY_AND_WEIGHT_DIAGNOSTICS.md - Model Integrity and Weight Diagnostics — Stages 1–2
 - docs/MONETIZATION_FRAMEWORK.md - Barrot-Agent Monetization Framework
 - docs/monetization.md - MMI, Monetization & Web3
 - docs/PINGPONG_USAGE.md - Ping-Pong Request System

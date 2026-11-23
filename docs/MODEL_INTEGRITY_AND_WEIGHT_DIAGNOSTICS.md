@@ -1,0 +1,105 @@
+# Model Integrity and Weight Diagnostics — Stage 1
+
+## Purpose
+
+Add a non-destructive diagnostic entry point for determining whether a local model package is structurally identifiable and reproducible before anyone proposes a model, tokenizer, inference, or weight-level correction.
+
+This stage extends the existing RSI/weight-space foundation and its read-only safetensors inventory. It does not replace that foundation and does not modify the model runtime.
+
+## Implemented in this branch
+
+`scripts/model_integrity_audit.py` inventories a supplied local model directory:
+
+- Recognized model metadata: configuration, generation settings, tokenizer metadata, vocabulary/merge files, adapter metadata, quantization metadata, and shard indexes.
+- Recognized weight artifacts: safetensors, PyTorch binary/checkpoint formats, and GGUF.
+- SHA-256 for files under the configured size limit.
+- Explicit size-limit status for files not hashed.
+- JSON parse status for recognized JSON metadata.
+- Missing-shard detection for Hugging Face-style weight indexes.
+- Python/platform and installed package versions for reproducibility.
+- Symlink exclusion and read-only operation.
+
+Run:
+
+```sh
+python scripts/model_integrity_audit.py /path/to/model-directory
+```
+
+Optional report output:
+
+```sh
+python scripts/model_integrity_audit.py /path/to/model-directory --output model-integrity-report.json
+```
+
+The output report is intended to be retained as an MMI evidence artifact with the source path, exact artifact hashes, and execution context.
+
+## Stage 2 — runtime inference inventory
+
+`scripts/model_runtime_inventory.py` adds a read-only inventory of the repository's actual inference entry points:
+
+- Repository repair worker: `BARROT_LLM_PROVIDER` selects Groq or a loopback-only local endpoint; model and endpoint overrides are recorded without credential values.
+- Shared inference helper: Groq and Fireworks are separate text-only paths, with credential-presence precedence.
+- `BarrotBrain`: GitHub Models, Groq, and explicitly enabled Fireworks fallback.
+- Hugging Face Space: one explicit `BRAIN_PRIMARY`, operator opt-in, and per-session user consent; tool capability differs by provider.
+- OpenCode: reads the checked-in default model and MCP declarations, but does not treat configuration as proof of authentication or execution.
+
+Run from the repository root:
+
+```sh
+python scripts/model_runtime_inventory.py .
+```
+
+The inventory reports only whether known environment variables are present; it never prints their values. Its environment view applies only to the process in which it runs. Run it separately inside Termux, OpenCode, a GitHub Actions job, or the deployed Space to inspect that environment. It makes no network requests and does not run inference.
+
+The current repository snapshot therefore identifies multiple distinct inference surfaces, not one unified runtime router. In particular, the checked-in OpenCode model identifier is `opencode/deepseek-v4.1-flash-free`; the LunaRoute MCP server is declared disabled. This is configuration evidence only, not a live authentication or model-execution test.
+
+## Diagnostic sequence
+
+The audit deliberately separates four possible failure layers:
+
+1. **Artifact integrity** — source identity, hashes, missing shards, malformed metadata, unsupported or incomplete package.
+2. **Model/tokenizer/configuration compatibility** — architecture metadata, tokenizer identity, context limits, quantization and adapter configuration. Metadata inspection is only a preliminary check; compatibility requires loading and inference tests in a pinned environment.
+3. **Inference behavior** — deterministic task suite, tool-use tests, output validity, latency, memory/compute use, and safety regressions against a pinned baseline.
+4. **Weight-level hypothesis** — considered only after the first three layers have been investigated and the failure is attributable to trainable parameters rather than data, prompt, routing, tokenizer, quantization, or runtime configuration.
+
+## Weight-change gate
+
+No production checkpoint may be edited in place.
+
+A future weight experiment must use:
+
+- A documented open-weight model and license.
+- Exact model and tokenizer revisions and cryptographic hashes.
+- An immutable baseline checkpoint and baseline evaluation snapshot.
+- A separate copy-on-write candidate artifact.
+- Explicit tensor allowlists and a strict changed-parameter budget.
+- Finite-value, shape, dtype, and artifact-integrity checks.
+- A pinned held-out evaluation suite and independent regression checks.
+- Paired baseline/candidate measurements for task quality, calibration where applicable, latency, memory, and safety.
+- Automatic candidate discard on any invalid artifact, failed test, or regression beyond declared tolerance.
+- Human approval before any candidate is promoted or used by production.
+
+No model-weight update is justified by a model's self-report, a single successful prompt, an unpaired score, or an evaluator generated by the candidate itself.
+
+## Boundaries and current limitations
+
+- This stage is read-only. It does not load tensor values, run inference, repair a model, train, fine-tune, quantize, or alter weights.
+- A hash proves file identity, not correctness, provenance, or trustworthiness.
+- The audit does not infer which model Barrot is currently using. A runtime-specific model registry and evaluator must be connected in a later integration after actual runtime configuration is inspected.
+- The audit does not prove tokenizer compatibility. A pinned tokenizer/model load and behavior suite is required.
+- Files above the configured size limit are reported but not hashed.
+- The report may contain local filesystem paths; do not publish it without reviewing for sensitive path information.
+
+## Acceptance tests
+
+`tests/test_model_integrity_audit.py` covers file hashing, model metadata extraction, size-limit behavior, malformed metadata, missing shards, symlink exclusion, and symlink-root rejection.\n\n`tests/test_model_runtime_inventory.py` covers provider-surface inventory, secret-value exclusion, local loopback validation, and environment-scope limitations.
+
+The tests must run in CI on this exact branch before the change is considered validated. Until then, implementation status is **committed, not yet test-verified**.
+
+## Next stages
+
+1. Connect the audit to Barrot's actual configured model/provider inventory without making OpenCode mandatory.
+2. Add pinned inference benchmarks for each model/runtime Barrot actually uses.
+3. Add tokenizer/configuration compatibility checks based on supported runtime adapters.
+4. Only if measurements isolate a weight-attributable defect, implement the isolated copy-on-write experiment runner described in the RSI weight-space foundation.
+5. Promote nothing without paired evidence, regression checks, and explicit approval.
