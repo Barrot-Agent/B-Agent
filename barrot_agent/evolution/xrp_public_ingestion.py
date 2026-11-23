@@ -5618,6 +5618,15 @@ def _capture_event_timeline_registry(
     except (OSError, ValueError):
         pass
 
+    receipt_relinkage = {
+        "status": "NOT_APPLICABLE",
+        "candidate_receipt_count": 0,
+        "linked_event_count": 0,
+        "unique_receipt_count": 0,
+        "ambiguous_event_count": 0,
+        "future_receipt_count": 0,
+        "cutoff_utc": data_cutoff_utc,
+    }
     if not path.exists():
         timeline = build_event_timeline(
             asset="XRP",
