@@ -14,8 +14,10 @@ from __future__ import annotations
 
 import argparse
 import math
+import os
 import struct
 import sys
+import tempfile
 import wave
 from pathlib import Path
 
@@ -874,6 +876,31 @@ def write_pattern_txt(cfg, path, total_bars):
         handle.write("\n".join(lines))
 
 
+def _write_midi_exclusive(midi, path: str | Path) -> None:
+    """Atomically publish a complete MIDI file without replacing an existing path."""
+    target = Path(path)
+    fd, temporary_name = tempfile.mkstemp(
+        prefix=f".{target.name}.", suffix=".tmp", dir=target.parent
+    )
+    os.close(fd)
+    temporary = Path(temporary_name)
+    try:
+        midi.write(str(temporary))
+        try:
+            # Same-directory hard-link publication is atomic and refuses an existing target.
+            # Unsupported filesystems fail closed; never fall back to an overwrite-capable write.
+            os.link(temporary, target)
+        except FileExistsError:
+            raise FileExistsError(
+                f"Refusing to overwrite existing MIDI: {target}"
+            ) from None
+    finally:
+        try:
+            temporary.unlink()
+        except FileNotFoundError:
+            pass
+
+
 # ------------------------------------------------------------------- runner
 def build_all(output_dir: str | Path | None = None, seed: int = 0):
     """Build into a new versioned directory; refuse to replace any artifact."""
@@ -896,7 +923,7 @@ def build_all(output_dir: str | Path | None = None, seed: int = 0):
         mid = target_dir / f"{cfg['slug']}.mid"
         if mid.exists():
             raise FileExistsError(f"Refusing to overwrite existing MIDI: {mid}")
-        pm.write(str(mid))
+        _write_midi_exclusive(pm, mid)
         wav = target_dir / f"{cfg['slug']}.wav"
         dur = render_wav(cfg, wav, seed=seed + index)
         write_pattern_txt(cfg, target_dir / f"{cfg['slug']}_pattern.txt", bars)
