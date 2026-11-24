@@ -1,11 +1,11 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-24T18:03:00Z",
-  "capture_basis": "Run 12: exact repository metadata, protected-main summary, recursive tree, PR inventory, branch ancestry, changed paths, review inventory, workflow/job logs and existing-branch write were verified through the current ChatGPT-to-GitHub connector session.",
+  "captured_at_utc": "2026-11-24T21:31:37Z",
+  "capture_basis": "Run 11: current main metadata, complete recursive tree, open PR inventory, branch ancestry and changed paths, review inventory, exact-head workflow jobs/logs, current XRP artifact payloads, and main branch protection summary were verified through the ChatGPT-to-GitHub connector. Only this connector path is authenticated; no external model data transfer occurred.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
-    "main_sha": "7d7aba841cb849e461376a8fcdd4cc4fa10c9af6",
+    "main_sha": "84230d970750e3804e934e9207675879b4a266f9",
     "main_branch_protected": true,
     "required_status_checks": [
       "Full repository test suite",
@@ -15,16 +15,21 @@
     ],
     "branch_protection_details_status": "HTTP_403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
     "required_approval_count": null,
-    "required_approval_count_note": "The branch summary confirms protection and four required checks, but the detailed endpoint returns HTTP 403. Required approval count and other detailed settings remain unknown.",
+    "required_approval_count_note": "The branch summary confirms protection and four required checks enforced for non-admins, but the detailed endpoint returns HTTP 403. Required approval count, strict up-to-date setting, administrator enforcement, force-push policy and branch-deletion policy remain unknown.",
     "source_urls": {
       "repository": "https://github.com/Barrot-Agent/B-Agent",
       "repository_metadata": "https://api.github.com/repos/Barrot-Agent/B-Agent",
       "main_branch": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
       "branch_protection": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main/protection",
-      "branch_summary": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main"
+      "branch_summary": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
+      "main_commit": "https://github.com/Barrot-Agent/B-Agent/commit/84230d970750e3804e934e9207675879b4a266f9",
+      "latest_main_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568190",
+      "latest_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568146",
+      "latest_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568152",
+      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45488683332"
     },
     "branch_protection_summary": {
-      "observed_at_utc": "2026-11-24T18:03:00Z",
+      "observed_at_utc": "2026-11-24T21:31:37Z",
       "source": "GET /repos/Barrot-Agent/B-Agent/branches/main",
       "branch_protected": true,
       "protection_enabled": true,
@@ -89,16 +94,18 @@
         "status": "VERIFIED",
         "path": "Current ChatGPT session -> GitHub connector -> GitHub API -> Barrot-Agent/B-Agent",
         "operations_observed": [
-          "read repository metadata and default branch",
-          "read complete recursive main tree (3,139 entries; not truncated)",
-          "read main and existing PR-branch files",
-          "write the canonical handoff to the existing #1690 branch",
-          "read all eight open PRs and their changed paths",
-          "compare all eight PR heads against current main",
-          "read PR review submissions (zero across the eight open PRs)",
-          "read workflow runs, jobs and job logs",
-          "read main protected flag and four required status contexts",
-          "attempt detailed branch-protection read and receive HTTP 403"
+          "read repository metadata and the complete recursive main tree (3,163 entries; not truncated)",
+          "read main mission manifests and verify root/package manifest byte equality",
+          "read the current open PR inventory (#1699 and #1693), reviews, branch ancestry and changed paths",
+          "verify PR #1701 merged as current main 84230d970750e3804e934e9207675879b4a266f9",
+          "read exact-main CI jobs and logs: 4,690 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage",
+          "read exact-main dependency audit, money audit and automatic Pages deployment side effect",
+          "read and download XRP ingestion run #135 raw, event-timeline, receipt-index and feature-store artifacts; verify per-run and cross-run receipt chain",
+          "inspect main audio rendering, continuity and nine-platform map code/tests",
+          "read open PR reviews (zero submitted reviews on #1699 and #1693)",
+          "read protected-main summary and four required checks; detailed branch-protection endpoint returned HTTP 403",
+          "reconcile existing PR #1699 branch with current main using a non-force merge commit that preserves the prior branch head",
+          "update the canonical handoff, current nine-platform map and its stale-SHA test on the existing PR branch"
         ],
         "external_model_data_transfer": false,
         "persistent_agent_connection": false
@@ -106,23 +113,27 @@
       "planned_role": "Primary orchestration, repository reconciliation, evidence synthesis and bounded implementation",
       "task_assignment_status": "EXECUTED_IN_CURRENT_SESSION",
       "limitations": [
-        "The connected GitHub principal is Barrot-Agent, not the user's separate personal account.",
+        "The connected GitHub principal is Barrot-Agent, not the user's separate personal GitHub account.",
         "The connector cannot read the detailed branch-protection endpoint; it returns HTTP 403.",
         "The connected principal cannot provide an independent approval for PRs it authored.",
         "No separate user GitHub account is authenticated through this connector session.",
-        "The read-only branch summary does not expose approval count, strict-up-to-date, administrator enforcement, force-push or branch-deletion settings."
+        "The read-only branch summary does not expose approval count, strict-up-to-date, administrator enforcement, force-push or branch-deletion settings.",
+        "The GitHub Actions cache write budget was exhausted; the main full-suite run still passed and cache writes were read-only."
       ],
       "evidence": [
-        "https://github.com/Barrot-Agent",
+        "https://github.com/Barrot-Agent/B-Agent",
         "https://api.github.com/repos/Barrot-Agent/B-Agent",
         "https://api.github.com/repos/Barrot-Agent/B-Agent/git/trees/main?recursive=1",
         "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
         "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main/protection",
-        "https://github.com/Barrot-Agent/B-Agent/pull/1690",
-        "https://github.com/Barrot-Agent/B-Agent/pull/1691",
-        "https://github.com/Barrot-Agent/B-Agent/pull/1692",
-        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45451900764",
-        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45445821036"
+        "https://github.com/Barrot-Agent/B-Agent/pull/1699",
+        "https://github.com/Barrot-Agent/B-Agent/pull/1693",
+        "https://github.com/Barrot-Agent/B-Agent/pull/1701",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568190",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568146",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568152",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45487455702",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45488683332"
       ]
     },
     "Claude": {
@@ -240,7 +251,8 @@
     "note": "Retain prior observations and run history. This operational map supersedes older permission claims when they conflict with current endpoint tests; it does not delete or rewrite historical evidence."
   },
   "next_actions": [
-    "Resolve read-only GitHub Administration permission or have a repository administrator verify the complete main branch-protection rule.",
+    "Obtain repository-administrator confirmation of the complete main branch-protection rule and required review count; do not bypass the gate.",
+    "Complete exact-head tests and independent review for the existing PR #1699 handoff/map update before any merge.",
     "Authenticate and test Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks individually before recording capabilities, permissions or data flow as verified.",
     "Only after explicit authorization, run bounded independent tasks and exchange redacted, provenance-linked evidence packets; retain minority objections.",
     "Extend continuity beyond the workspace-local cursor with cross-host snapshot reconciliation and explicit conflict/staleness handling.",
