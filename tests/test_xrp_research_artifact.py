@@ -1719,3 +1719,24 @@ def test_institutional_custody_stablecoin_rails_preserve_provenance_and_scope() 
         assert hypothesis["support"] and hypothesis["disconfirming_or_missing"] and hypothesis["test"]
     assert data["predictions"]["issued"] is False
     assert data["research_status"]["model_eligible"] is False
+
+
+def test_macro_regulatory_context_keeps_policy_status_and_xrp_inference_separate() -> None:
+    data = json.loads(INSTITUTIONAL_CUSTODY_RAILS.read_text(encoding="utf-8"))
+    macro = data["macro_regulatory_context"]
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert set(macro["source_ids"]) <= set(sources)
+    assert {"federal_reserve", "bank_of_japan", "us_treasury", "ofac_fincen", "occ_regulator"} <= {sources[item]["source_independence_group"] for item in macro["source_ids"]}
+    policy = {item["jurisdiction"]: item for item in macro["monetary_policy"]}
+    assert policy["United States"]["target_federal_funds_range_pct"] == [3.75, 4.0]
+    assert policy["United States"]["vote"] == "10-2"
+    assert policy["Japan"]["overnight_call_rate_guideline_pct"] == 1.25
+    assert policy["Japan"]["boj_etf_sales_book_value_annual_jpy_billion"] == 860
+    rules = {item["rule"]: item for item in macro["stablecoin_regulation"]}
+    assert rules["GENIUS Act Treasury section 3 proposed implementation"]["status"] == "notice_of_proposed_rulemaking"
+    assert rules["OCC GENIUS Act implementation rule"]["status"] == "final_rule_announcement"
+    assert macro["forecast_eligible"] is False
+    assert macro["directional_forecast_issued"] is False
+    assert all(item["evidence"] for item in macro["competing_hypotheses"])
+    assert all(item["disconfirming_or_missing"] and item["test"] for item in macro["competing_hypotheses"])
+    assert data["predictions"]["issued"] is False
