@@ -13,9 +13,10 @@ def export_midi(manifest: MusicalManifest, destination: str | Path) -> Path:
         raise FileExistsError(path)
     try:
         import pretty_midi
+        import mido
     except ImportError as exc:
         raise RuntimeError(
-            "MIDI export requires the optional dependency: pip install -e '.[music]'"
+            "MIDI export requires the optional music dependencies: pip install -e '.[music]'"
         ) from exc
 
     midi = pretty_midi.PrettyMIDI(initial_tempo=manifest.bpm)
@@ -50,8 +51,36 @@ def export_midi(manifest: MusicalManifest, destination: str | Path) -> Path:
         marker_time = (
             (section.start_bar - 1) * manifest.beats_per_bar * seconds_per_beat
         )
-        midi.add_marker(section.name, marker_time)
+        # Section markers are added as standard MIDI marker meta events below.
 
     path.parent.mkdir(parents=True, exist_ok=True)
     midi.write(str(path))
+
+    if manifest.sections:
+        midi_file = mido.MidiFile(str(path))
+        marker_track = mido.MidiTrack()
+        marker_track.append(
+            mido.MetaMessage("track_name", name="Barrot Sections", time=0)
+        )
+        previous_tick = 0
+        for section in manifest.sections:
+            marker_tick = round(
+                (section.start_bar - 1)
+                * manifest.beats_per_bar
+                * midi_file.ticks_per_beat
+            )
+            if marker_tick < previous_tick:
+                raise ValueError("section markers must be in nondecreasing bar order")
+            marker_track.append(
+                mido.MetaMessage(
+                    "marker",
+                    text=section.name,
+                    time=marker_tick - previous_tick,
+                )
+            )
+            previous_tick = marker_tick
+        marker_track.append(mido.MetaMessage("end_of_track", time=0))
+        midi_file.tracks.append(marker_track)
+        midi_file.save(str(path))
+
     return path
