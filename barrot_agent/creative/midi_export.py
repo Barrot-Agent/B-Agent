@@ -20,7 +20,7 @@ def export_midi(manifest: MusicalManifest, destination: str | Path) -> Path:
 
     midi = pretty_midi.PrettyMIDI(initial_tempo=manifest.bpm)
     instruments = {}
-    programs = {"bass": 33, "keys": 4, "lead": 80}
+    programs = {"bass": 33, "keys": 4, "lead": 80, "pad": 89, "strings": 48}
     drum_pitches = {"kick": 36, "snare": 38, "hihat": 42, "hat": 42, "cymbal": 49, "percussion": 39}
     for name in manifest.instruments:
         is_drum = name.lower() in drum_pitches
@@ -46,6 +46,12 @@ def export_midi(manifest: MusicalManifest, destination: str | Path) -> Path:
                 end=max(start + 0.01, end),
             )
         )
+    for section in manifest.sections:
+        marker_time = (
+            (section.start_bar - 1) * manifest.beats_per_bar * seconds_per_beat
+        )
+        midi.add_marker(section.name, marker_time)
+
     path.parent.mkdir(parents=True, exist_ok=True)
     midi.write(str(path))
     return path

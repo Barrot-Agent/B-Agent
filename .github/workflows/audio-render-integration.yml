@@ -18,7 +18,7 @@ jobs:
   fluidsynth-render:
     name: Real FluidSynth stereo render and QC
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
@@ -41,12 +41,13 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pytest pytest-cov numpy scipy pretty_midi pyfluidsynth
 
-      - name: Run actual stereo render and technical QC
+      - name: Run stereo render, full-song bundle, and technical QC
         env:
           BARROT_TEST_SF2: /usr/share/sounds/sf2/TimGM6mb.sf2
           BARROT_TEST_SF2_LICENSE: "GPL-2 (test-only; not bundled or redistributed)"
           BARROT_AUDIO_QC_OUTPUT: ${{ runner.temp }}/audio-render-qc.json
           BARROT_AUDIO_BUNDLE_QC_OUTPUT: ${{ runner.temp }}/audio-bundle-qc.json
+          BARROT_AUDIO_FULL_SONG_QC_OUTPUT: ${{ runner.temp }}/audio-full-song-qc.json
         run: python -m pytest tests/test_audio_render_integration.py -v
 
       - name: Upload non-audio QC receipt only

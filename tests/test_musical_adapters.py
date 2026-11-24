@@ -317,3 +317,122 @@ class AudioRenderTests(unittest.TestCase):
         self.assertIn(("noteoff", 0, 60), fake_synth.calls)
         self.assertIn(("noteoff", 9, 36), fake_synth.calls)
         self.assertTrue(fake_synth.deleted)
+
+
+class FullSongProductionTests(unittest.TestCase):
+    def test_full_song_form_is_deterministic_section_aware_and_long(self):
+        from barrot_agent.creative.composer import (
+            DEFAULT_FULL_SONG_FORM,
+            DEFAULT_PRODUCTION_INSTRUMENTS,
+            compose_full_song,
+        )
+
+        first = compose_full_song(template(), seed=20261123)
+        second = compose_full_song(template(), seed=20261123)
+        self.assertEqual(first, second)
+        self.assertEqual(first.sections, DEFAULT_FULL_SONG_FORM.sections)
+        self.assertEqual(first.instruments, DEFAULT_PRODUCTION_INSTRUMENTS)
+        self.assertEqual(sum(section.bars for section in first.sections), 80)
+        self.assertEqual(first.sections[0].name, "intro")
+        self.assertEqual(first.sections[-1].name, "outro")
+        self.assertGreater(len(first.events), 1000)
+        roles = {event.role for event in first.events}
+        self.assertTrue(
+            {"harmony", "melody", "low_end", "pulse", "backbeat", "transition_fill"}
+            <= roles
+        )
+        total_beats = DEFAULT_FULL_SONG_FORM.total_bars * first.beats_per_bar
+        self.assertLessEqual(
+            max(event.beat + event.duration for event in first.events),
+            total_beats + 1e-6,
+        )
+        self.assertEqual(first.provenance, "original_full_song_extended_pop_80_seed_20261123")
+
+        def average_velocity(section_name):
+            section = next(item for item in first.sections if item.name == section_name)
+            start = (section.start_bar - 1) * first.beats_per_bar
+            end = start + section.bars * first.beats_per_bar
+            values = [
+                event.velocity for event in first.events if start <= event.beat < end
+            ]
+            return sum(values) / len(values)
+
+        self.assertGreater(average_velocity("final_chorus"), average_velocity("intro"))
+
+    def test_full_song_uses_distinct_bridge_harmony_and_shared_chorus_hook(self):
+        from barrot_agent.creative.composer import compose_full_song
+
+        manifest = compose_full_song(template(), seed=17)
+
+        def first_chord(section_name):
+            section = next(item for item in manifest.sections if item.name == section_name)
+            start = (section.start_bar - 1) * manifest.beats_per_bar
+            return tuple(sorted(
+                event.pitch for event in manifest.events
+                if event.instrument == "keys"
+                and event.role == "harmony"
+                and event.beat == start
+                and event.pitch is not None
+            ))
+
+        self.assertNotEqual(first_chord("verse1"), first_chord("bridge"))
+        self.assertEqual(first_chord("chorus1"), first_chord("chorus2"))
+        self.assertEqual(first_chord("chorus2"), first_chord("final_chorus"))
+
+    def test_midi_export_includes_named_section_markers(self):
+        import sys
+        from types import ModuleType
+        from barrot_agent.creative.composer import compose_full_song
+        from barrot_agent.creative.midi_export import export_midi
+
+        instances = []
+
+        class FakeMidi:
+            def __init__(self, initial_tempo):
+                self.initial_tempo = initial_tempo
+                self.instruments = []
+                self.markers = []
+                instances.append(self)
+
+            def add_marker(self, text, time):
+                self.markers.append((text, time))
+
+            def write(self, path):
+                Path(path).write_bytes(b"midi")
+
+        class FakeInstrument:
+            def __init__(self, program, is_drum, name):
+                self.program = program
+                self.is_drum = is_drum
+                self.name = name
+                self.notes = []
+
+        class FakeNote:
+            def __init__(self, velocity, pitch, start, end):
+                self.velocity = velocity
+                self.pitch = pitch
+                self.start = start
+                self.end = end
+
+        fake = ModuleType("pretty_midi")
+        fake.PrettyMIDI = FakeMidi
+        fake.Instrument = FakeInstrument
+        fake.Note = FakeNote
+        manifest = compose_full_song(template(), seed=9)
+
+        with tempfile.TemporaryDirectory() as directory, patch.dict(
+            sys.modules, {"pretty_midi": fake}
+        ):
+            target = Path(directory) / "full-song.mid"
+            export_midi(manifest, target)
+            self.assertTrue(target.is_file())
+
+        self.assertEqual(
+            [name for name, _ in instances[0].markers],
+            [section.name for section in manifest.sections],
+        )
+        self.assertAlmostEqual(instances[0].markers[0][1], 0.0)
+        self.assertAlmostEqual(
+            instances[0].markers[-1][1],
+            (manifest.sections[-1].start_bar - 1) * 4 * 60.0 / manifest.bpm,
+        )

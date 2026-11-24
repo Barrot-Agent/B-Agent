@@ -229,3 +229,92 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
     assert qc_path.is_file() and qc_path.stat().st_size > 0
     print(json.dumps(qc, indent=2, sort_keys=True))
     print(json.dumps(qc, indent=2, sort_keys=True))
+
+
+def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path):
+    from barrot_agent.creative.audio_bundle import render_production_bundle
+    from barrot_agent.creative.composer import compose_full_song
+    import pretty_midi
+
+    soundfont_value = os.environ.get("BARROT_TEST_SF2")
+    if not soundfont_value:
+        pytest.skip("BARROT_TEST_SF2 is not configured outside the dedicated CI job")
+
+    soundfont = Path(soundfont_value)
+    license_name = os.environ.get("BARROT_TEST_SF2_LICENSE", "")
+    source_name = os.environ.get("BARROT_TEST_SF2_SOURCE", "")
+    assert soundfont.is_file()
+    assert license_name.startswith("GPL-2")
+    assert "timgm6mb-soundfont" in source_name.lower()
+
+    manifest = compose_full_song(_template(), seed=20261123)
+    result = render_production_bundle(
+        manifest,
+        tmp_path / "full-song-bundle",
+        soundfont_path=soundfont,
+        sample_rate=44100,
+        headroom_dbfs=-6.0,
+        soundfont_source=source_name,
+        soundfont_license=license_name,
+    )
+    sample_rate, samples = wavfile.read(result.mix_path)
+    assert sample_rate == 44100
+    assert samples.dtype == np.float32
+    assert samples.ndim == 2 and samples.shape[1] == 2
+    assert 170.0 <= result.duration_seconds <= 180.0
+    assert len(result.stems) == len(manifest.instruments) == 9
+    assert np.isfinite(samples).all()
+    ceiling = 10 ** (-6.0 / 20.0)
+    assert result.peak_level <= ceiling + 1e-4
+    assert result.true_peak_level <= ceiling + 2e-3
+    assert int(np.count_nonzero(np.abs(samples) >= 1.0)) == 0
+
+    midi = pretty_midi.PrettyMIDI(str(result.midi_path))
+    assert [marker.text for marker in midi.markers] == [
+        section.name for section in manifest.sections
+    ]
+    metadata = json.loads(result.metadata_path.read_text(encoding="utf-8"))
+    assert metadata["sections"] == [
+        {
+            "name": section.name,
+            "start_bar": section.start_bar,
+            "bars": section.bars,
+            "energy": section.energy,
+        }
+        for section in manifest.sections
+    ]
+    assert metadata["stem_alignment"]["aligned"] is True
+    assert metadata["stem_alignment"]["sample_count"] == samples.shape[0]
+    assert metadata["native_daw_project_available"] is False
+    assert metadata["rights"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
+
+    qc = {
+        "status": "VERIFIED_FULL_SONG_TECHNICAL_BUNDLE",
+        "renderer": "FluidSynth via pyfluidsynth",
+        "soundfont_source": source_name,
+        "soundfont_license": license_name,
+        "soundfont_sha256": _sha256(result.metadata_path.parent / "missing"),
+        "mix_sha256": _sha256(result.mix_path),
+        "midi_sha256": _sha256(result.midi_path),
+        "stem_count": len(result.stems),
+        "sample_rate_hz": sample_rate,
+        "channels": 2,
+        "duration_seconds": result.duration_seconds,
+        "bars": sum(section.bars for section in manifest.sections),
+        "bpm": manifest.bpm,
+        "key": manifest.scale,
+        "time_signature": "4/4",
+        "section_map": metadata["sections"],
+        "midi_markers": [marker.text for marker in midi.markers],
+        "peak_dbfs": 20.0 * math.log10(max(result.peak_level, 1e-12)),
+        "true_peak_dbtp": 20.0 * math.log10(max(result.true_peak_level, 1e-12)),
+        "clip_sample_count": 0,
+        "stem_alignment": metadata["stem_alignment"],
+        "native_daw_project_available": False,
+        "distribution": "QC JSON only; GPL-2 SoundFont, WAV mix, stems, and MIDI are not uploaded",
+    }
+    qc["soundfont_sha256"] = metadata["rights"]["soundfont_sha256"]
+    qc_output = os.environ.get("BARROT_AUDIO_FULL_SONG_QC_OUTPUT")
+    assert qc_output, "BARROT_AUDIO_FULL_SONG_QC_OUTPUT must be set in the dedicated CI job"
+    Path(qc_output).write_text(json.dumps(qc, indent=2, sort_keys=True) + "\\n")
+    print(json.dumps(qc, indent=2, sort_keys=True))
