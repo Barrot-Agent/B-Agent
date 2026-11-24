@@ -160,6 +160,59 @@ async function queueRequest(env, path, body) {
   });
 }
 
+const TRANSMUTATION_PROTOCOL = "barrot.chatgpt.transmutation.v1";
+const TRANSMUTATION_PHASES = new Set(["interpret", "challenge", "execute", "review", "reconcile"]);
+const TRANSMUTATION_ACTIONS = new Set(["inspect", "analyze", "implement", "test"]);
+
+function validStringList(value, limit = 64) {
+  return Array.isArray(value) && value.length <= limit &&
+    value.every(item => typeof item === "string" && item.trim().length > 0 && item.length <= 1024);
+}
+
+function validSourceRefs(value) {
+  const kinds = new Set(["governing", "supporting", "incoming", "repository", "execution"]);
+  const relations = new Set(["governs", "supports", "contradicts", "implements", "observes", "derived_from"]);
+  return Array.isArray(value) && value.length <= 64 && value.every(item =>
+    item && typeof item === "object" && !Array.isArray(item) &&
+    typeof item.ref === "string" && item.ref.trim().length > 0 && item.ref.length <= 2048 &&
+    kinds.has(item.source_kind) && relations.has(item.relationship) &&
+    (item.version === undefined || (typeof item.version === "string" && item.version.length <= 256)) &&
+    (item.sha256 === undefined || (typeof item.sha256 === "string" && /^[a-f0-9]{64}$/i.test(item.sha256)))
+  );
+}
+
+async function validateTransmutationContext(context) {
+  if (!context || typeof context !== "object" || Array.isArray(context)) return "context_must_be_an_object";
+  const packet = context.transmutation;
+  if (packet === undefined) return null;
+  if (!packet || typeof packet !== "object" || Array.isArray(packet)) return "transmutation_packet_must_be_an_object";
+  if (packet.protocol_version !== TRANSMUTATION_PROTOCOL) return "unsupported_transmutation_protocol";
+  if (typeof packet.packet_id !== "string" || !/^[A-Za-z0-9._:-]{8,128}$/.test(packet.packet_id)) return "invalid_transmutation_packet_id";
+  if (!["chatgpt", "barrot"].includes(packet.sender) || !["chatgpt", "barrot"].includes(packet.recipient)) return "invalid_transmutation_participant";
+  if (!Number.isInteger(packet.round) || packet.round < 0 || packet.round > 8) return "transmutation_round_out_of_bounds";
+  if (!TRANSMUTATION_PHASES.has(packet.phase)) return "invalid_transmutation_phase";
+  if (!TRANSMUTATION_ACTIONS.has(packet.requested_action)) return "invalid_transmutation_action";
+  if (typeof packet.original_request !== "string" || packet.original_request.length < 1 || packet.original_request.length > MAX_TASK_TEXT) return "invalid_original_request";
+  if (typeof packet.original_request_sha256 !== "string" || !/^[a-f0-9]{64}$/i.test(packet.original_request_sha256)) return "invalid_original_request_hash";
+  if (typeof packet.intent !== "string" || !packet.intent.trim() || packet.intent.length > 4096) return "invalid_transmutation_intent";
+  for (const field of ["invariants", "constraints", "evidence_refs", "acceptance_criteria", "stop_conditions"]) {
+    if (!validStringList(packet[field])) return "invalid_transmutation_" + field;
+  }
+  if (!validSourceRefs(packet.source_refs)) return "invalid_transmutation_source_refs";
+  if (packet.parent_packet_id !== undefined && packet.parent_packet_id !== null &&
+      (typeof packet.parent_packet_id !== "string" || !/^[A-Za-z0-9._:-]{8,128}$/.test(packet.parent_packet_id))) {
+    return "invalid_parent_packet_id";
+  }
+  if (!packet.budget || typeof packet.budget !== "object" || Array.isArray(packet.budget) ||
+      !Number.isInteger(packet.budget.max_rounds) || packet.budget.max_rounds < 1 || packet.budget.max_rounds > 8 ||
+      !Number.isInteger(packet.budget.max_execution_seconds) || packet.budget.max_execution_seconds < 1 || packet.budget.max_execution_seconds > 1800 ||
+      packet.round >= packet.budget.max_rounds) return "invalid_transmutation_budget";
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(packet.original_request));
+  const actualHash = [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, "0")).join("");
+  if (actualHash !== packet.original_request_sha256.toLowerCase()) return "original_request_hash_mismatch";
+  return null;
+}
+
 function extractText(message) {
   if (!message || !Array.isArray(message.parts)) return "";
   return message.parts
@@ -195,11 +248,14 @@ async function handleJsonRpc(request, env) {
     if (!instructions || instructions.length > MAX_TASK_TEXT) {
       return jsonRpcError(id, -32602, "message.parts must contain 1-32768 characters of text");
     }
+    const context = params.context && typeof params.context === "object" && !Array.isArray(params.context) ? params.context : {};
+    const packetError = await validateTransmutationContext(context);
+    if (packetError) return jsonRpcError(id, -32602, packetError);
     try {
       const response = await queueRequest(env, "/submit", {
         title: typeof params.title === "string" ? params.title.slice(0, 200) : "A2A task",
         instructions,
-        context: params.context && typeof params.context === "object" ? params.context : {}
+        context
       });
       const task = await response.json();
       if (!response.ok) return jsonRpcError(id, -32000, task.error || "Task submission failed");
@@ -300,12 +356,15 @@ export default {
           body.title.length > 200 || body.instructions.length > MAX_TASK_TEXT) {
         return json({ error: "title and instructions are required and must be within size limits" }, 400);
       }
+      const context = body.context && typeof body.context === "object" && !Array.isArray(body.context) ? body.context : {};
+      const packetError = await validateTransmutationContext(context);
+      if (packetError) return json({ error: packetError }, 400);
       try {
         const response = await queueRequest(env, "/submit", {
           task_id: body.task_id,
           title: body.title.trim(),
           instructions: body.instructions,
-          context: body.context && typeof body.context === "object" && !Array.isArray(body.context) ? body.context : {}
+          context
         });
         return json(await response.json(), response.status === 200 ? 202 : response.status);
       } catch {
