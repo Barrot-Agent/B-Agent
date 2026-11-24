@@ -384,6 +384,37 @@ def _fake_fetcher(captured: datetime):
                 "definition": "XRP held in XRP Ledger wallets publicly attributed to tracked exchanges (hot, deposit and cold wallets). Not an estimate of tradable float.",
                 "methodology": "Balances: rippled account_info on the validated ledger for every tracked wallet, daily at ~08:00 UTC. Attribution: XRPSCAN public labels only (XRPSCAN balances are never used).",
             }
+        elif source_id == "morpho_cbxrp_token_metadata":
+            payload = {
+                "data": {
+                    "chain_id": 8453,
+                    "address": xrp_ingestion.MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS,
+                    "name": "Coinbase Wrapped XRP",
+                    "symbol": "cbXRP",
+                    "decimals": 6,
+                }
+            }
+        elif source_id == "morpho_usdc_token_metadata":
+            payload = {
+                "data": {
+                    "chain_id": 8453,
+                    "address": xrp_ingestion.MORPHO_CBXRP_LOAN_TOKEN_ADDRESS,
+                    "name": "USD Coin",
+                    "symbol": "USDC",
+                    "decimals": 6,
+                }
+            }
+        elif source_id == "morpho_base_chain_indexer_tip":
+            payload = {
+                "data": [
+                    {
+                        "chain_id": 8453,
+                        "name": "Base",
+                        "last_indexed_block": "40855890",
+                        "supported_protocols": ["blue", "vault-v1", "vault-v2"],
+                    }
+                ]
+            }
         elif source_id == "morpho_cbxrp_market_parameters":
             payload = {
                 "data": {
@@ -737,6 +768,36 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert summary["raw_only_source_ids"] == expected_raw_only_source_ids
     assert summary["raw_only_unique_source_count"] == len(expected_raw_only_source_ids)
     assert summary["raw_only_entries_without_source_id_count"] == 0
+    research_only = json.loads(
+        (tmp_path / "run" / "research_only_observations.json").read_text(encoding="utf-8")
+    )
+    morpho_observations = [
+        item for item in research_only["observations"]
+        if item.get("source_id") in {
+            "morpho_cbxrp_token_metadata",
+            "morpho_usdc_token_metadata",
+            "morpho_base_chain_indexer_tip",
+        }
+    ]
+    assert {item["source_id"] for item in morpho_observations} == {
+        "morpho_cbxrp_token_metadata",
+        "morpho_usdc_token_metadata",
+        "morpho_base_chain_indexer_tip",
+    }
+    assert all(item["model_eligible"] is False for item in morpho_observations)
+    assert all(item["raw_bytes_retained"] is False for item in morpho_observations)
+    cbxrp_metadata = next(
+        item for item in morpho_observations
+        if item["source_id"] == "morpho_cbxrp_token_metadata"
+    )
+    assert cbxrp_metadata["address"] == xrp_ingestion.MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS
+    assert cbxrp_metadata["symbol"] == "cbXRP"
+    assert cbxrp_metadata["decimals"] == 6
+    base_tip = next(
+        item for item in morpho_observations
+        if item["source_id"] == "morpho_base_chain_indexer_tip"
+    )
+    assert base_tip["last_indexed_block"] == "40855890"
     assert summary["eligible_feature_record_count"] > 0
     assert summary["store_verification"]["valid"] is True
     assert summary["feature_store_backup_retention_days"] == 90
@@ -1696,8 +1757,8 @@ def test_stablecoin_transparency_pages_are_registered_and_retained_raw_only(sour
     assert host in ALLOWED_HOSTS
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
-    assert len(ENDPOINTS) == 53
-    assert len(SCHEDULED_ENDPOINTS) == 48
+    assert len(ENDPOINTS) == 56
+    assert len(SCHEDULED_ENDPOINTS) == 51
     assert records == []
     assert source_as_of is None
     assert eligible is False
@@ -3330,8 +3391,8 @@ def test_cbxrp_collateral_sources_are_scheduled_digest_only_and_never_model_admi
     assert records == []
     assert eligible is False
     assert "raw_only" in reason
-    assert len(ENDPOINTS) == 53
-    assert len(SCHEDULED_ENDPOINTS) == 48
+    assert len(ENDPOINTS) == 56
+    assert len(SCHEDULED_ENDPOINTS) == 51
 
 
 def test_morpho_market_history_preserves_provider_event_time_and_collateral_total_without_feature_admission():
@@ -3423,8 +3484,8 @@ def test_sbi_vc_trade_lending_page_is_scheduled_digest_only_and_not_a_feature_so
     assert dict(ENDPOINTS)[source_id] == url
     assert source_id in dict(SCHEDULED_ENDPOINTS)
     assert source_id in xrp_ingestion.DIGEST_ONLY_RAW_SOURCE_REASONS
-    assert len(ENDPOINTS) == 53
-    assert len(SCHEDULED_ENDPOINTS) == 48
+    assert len(ENDPOINTS) == 56
+    assert len(SCHEDULED_ENDPOINTS) == 51
 
 
 def test_sbi_vc_trade_lending_page_parser_is_raw_only_and_rejects_wrong_publisher():
@@ -3513,3 +3574,92 @@ def test_ingestion_uses_per_source_response_completion_time_for_known_at_and_rec
     assert summary["data_cutoff_utc"] == _iso(received_at)
     assert all(item["captured_at_utc"] == _iso(received_at) for item in receipts)
     assert all(item["known_at_utc"] == _iso(received_at) for item in snapshot["records"])
+
+
+
+@pytest.mark.parametrize(
+    ("source_id", "expected_address", "expected_symbol"),
+    [
+        (
+            "morpho_cbxrp_token_metadata",
+            xrp_ingestion.MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS,
+            "cbxrp",
+        ),
+        (
+            "morpho_usdc_token_metadata",
+            xrp_ingestion.MORPHO_CBXRP_LOAN_TOKEN_ADDRESS,
+            "usdc",
+        ),
+    ],
+)
+def test_morpho_token_metadata_is_identity_checked_and_research_only(
+    source_id, expected_address, expected_symbol
+):
+    captured = datetime(2026, 11, 24, 5, 30, tzinfo=timezone.utc)
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        response["payload"],
+        source_id=source_id,
+        url=url,
+        digest=hashlib.sha256(response["raw_bytes"]).hexdigest(),
+        captured=captured,
+    )
+    assert url.startswith("https://api.morpho.org/v0/tokens/8453:")
+    assert source_id in dict(SCHEDULED_ENDPOINTS)
+    assert source_id in xrp_ingestion.DIGEST_ONLY_RAW_SOURCE_REASONS
+    assert records == []
+    assert source_as_of is None
+    assert eligible is False
+    assert "research_only" in reason
+
+    invalid = dict(response["payload"])
+    invalid["data"] = dict(invalid["data"], address="0x0000000000000000000000000000000000000001")
+    with pytest.raises(xrp_ingestion.XRPIngestionError):
+        PARSERS[source_id](
+            invalid,
+            source_id=source_id,
+            url=url,
+            digest="a" * 64,
+            captured=captured,
+        )
+
+
+def test_morpho_base_chain_indexer_tip_is_unique_and_research_only():
+    captured = datetime(2026, 11, 24, 5, 30, tzinfo=timezone.utc)
+    source_id = "morpho_base_chain_indexer_tip"
+    url = dict(ENDPOINTS)[source_id]
+    response = _fake_fetcher(captured)(source_id, url)
+    records, source_as_of, eligible, reason = PARSERS[source_id](
+        response["payload"],
+        source_id=source_id,
+        url=url,
+        digest=hashlib.sha256(response["raw_bytes"]).hexdigest(),
+        captured=captured,
+    )
+    assert url == "https://api.morpho.org/v0/chains"
+    assert source_id in dict(SCHEDULED_ENDPOINTS)
+    assert source_id in xrp_ingestion.DIGEST_ONLY_RAW_SOURCE_REASONS
+    assert records == []
+    assert source_as_of is None
+    assert eligible is False
+    assert "research_only" in reason
+
+    missing_blue = {
+        "data": [
+            {
+                "chain_id": 8453,
+                "name": "Base",
+                "last_indexed_block": "40855890",
+                "supported_protocols": ["vault-v1"],
+            }
+        ]
+    }
+    with pytest.raises(xrp_ingestion.XRPIngestionError):
+        PARSERS[source_id](
+            missing_blue,
+            source_id=source_id,
+            url=url,
+            digest="b" * 64,
+            captured=captured,
+        )
