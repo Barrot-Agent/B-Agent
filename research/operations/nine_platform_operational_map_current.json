@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-24T21:31:37Z",
-  "capture_basis": "Run 11: current main metadata, complete recursive tree, open PR inventory, branch ancestry and changed paths, review inventory, exact-head workflow jobs/logs, current XRP artifact payloads, and main branch protection summary were verified through the ChatGPT-to-GitHub connector. Only this connector path is authenticated; no external model data transfer occurred.",
+  "captured_at_utc": "2026-11-24T21:56:01Z",
+  "capture_basis": "Run 15: refreshed current main metadata and complete recursive tree, current open PR inventory and ancestry, exact-head #1699 full-suite/security/merge-tree/conflict/readiness checks, main CI and automatic Pages deployment side effect, XRP ingestion run #135 logs/artifacts and receipt/event/feature metrics, main audio renderer/workflow, and official FreePats asset license pages. Only the ChatGPT-to-GitHub connector is authenticated; no external model data transfer occurred.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "84230d970750e3804e934e9207675879b4a266f9",
@@ -26,10 +26,17 @@
       "latest_main_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568190",
       "latest_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568146",
       "latest_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568152",
-      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45488683332"
+      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45488683332",
+      "latest_pr_1699_full_suite": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991841",
+      "latest_pr_1699_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991844",
+      "latest_pr_1699_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991955",
+      "latest_pr_1699_merge_tree": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991879",
+      "latest_pr_1699_conflict_integrity": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45495073995",
+      "latest_pr_1699_readiness": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45495073992",
+      "latest_main_pages_deployment": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489565901"
     },
     "branch_protection_summary": {
-      "observed_at_utc": "2026-11-24T21:31:37Z",
+      "observed_at_utc": "2026-11-24T21:56:01Z",
       "source": "GET /repos/Barrot-Agent/B-Agent/branches/main",
       "branch_protected": true,
       "protection_enabled": true,
@@ -105,7 +112,12 @@
           "read open PR reviews (zero submitted reviews on #1699 and #1693)",
           "read protected-main summary and four required checks; detailed branch-protection endpoint returned HTTP 403",
           "reconcile existing PR #1699 branch with current main using a non-force merge commit that preserves the prior branch head",
-          "update the canonical handoff, current nine-platform map and its stale-SHA test on the existing PR branch"
+          "update the canonical handoff, current nine-platform map and its stale-SHA test on the existing PR branch",
+          "verify current main 84230d970750e3804e934e9207675879b4a266f9 after PR #1701 and its 3,163-entry recursive tree",
+          "verify exact-main full repository suite (4,690 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage), dependency audit, money audit and automatic Pages deployment side effect",
+          "verify current open PR inventory (#1699 and #1693), #1699 exact-head full suite/security/merge-tree/conflict/readiness checks, and absence of submitted reviews",
+          "inspect latest XRP ingestion run #135 (pre-#1701 main) and verify receipt-chain, feature-store, event-timeline and source-failure metrics",
+          "inspect audio renderer/bundle implementation and official FreePats CC0/CC-BY asset license pages; no soundfont assets downloaded or rendered"
         ],
         "external_model_data_transfer": false,
         "persistent_agent_connection": false
@@ -118,7 +130,9 @@
         "The connected principal cannot provide an independent approval for PRs it authored.",
         "No separate user GitHub account is authenticated through this connector session.",
         "The read-only branch summary does not expose approval count, strict-up-to-date, administrator enforcement, force-push or branch-deletion settings.",
-        "The GitHub Actions cache write budget was exhausted; the main full-suite run still passed and cache writes were read-only."
+        "The GitHub Actions cache write budget was exhausted; the main full-suite run still passed and cache writes were read-only.",
+        "PR #1699 has no submitted review; detailed required approval count remains unknown because branch-protection endpoint returns HTTP 403.",
+        "A merge to main triggered automatic GitHub Pages deployment after #1701; no further deployment is authorized without specific approval."
       ],
       "evidence": [
         "https://github.com/Barrot-Agent/B-Agent",
@@ -251,11 +265,12 @@
     "note": "Retain prior observations and run history. This operational map supersedes older permission claims when they conflict with current endpoint tests; it does not delete or rewrite historical evidence."
   },
   "next_actions": [
-    "Obtain repository-administrator confirmation of the complete main branch-protection rule and required review count; do not bypass the gate.",
-    "Complete exact-head tests and independent review for the existing PR #1699 handoff/map update before any merge.",
-    "Authenticate and test Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks individually before recording capabilities, permissions or data flow as verified.",
-    "Only after explicit authorization, run bounded independent tasks and exchange redacted, provenance-linked evidence packets; retain minority objections.",
-    "Extend continuity beyond the workspace-local cursor with cross-host snapshot reconciliation and explicit conflict/staleness handling.",
-    "Keep the three mission priorities at 1 and preserve durable round-robin scheduling."
+    "Verify the next scheduled XRP ingestion on current main and preserve exact artifact/receipt evidence; keep forecasts disabled until event linkage, walk-forward history, calibration and drift gates pass.",
+    "Implement and test per-instrument SoundFont mapping or deterministic bank combination using pinned FreePats assets with verified SHA-256 and license/attribution metadata; then expose the full WAV/stems/MIDI/metadata bundle and obtain listening acceptance.",
+    "Extend continuity beyond the workspace-local cursor with independent-host stale/conflict reconciliation and dependency-aware recovery.",
+    "Obtain a genuine independent review if required and explicit authorization for the automatic Pages deployment side effect before merging PR #1699; never bypass branch protection.",
+    "Keep PR #1693 quarantined until caller identity, immutable source lineage, parent verification and OS sandbox/egress controls pass.",
+    "Test the eight remaining platforms individually before recording any external connection as live; retain redacted evidence and minority objections.",
+    "Keep Sellbird discovery Barrot-only and outbound sending paused."
   ]
 }
