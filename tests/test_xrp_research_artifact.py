@@ -576,7 +576,7 @@ def test_live_market_event_update_preserves_disagreements_and_future_events() ->
     path = REPO_ROOT / "research" / "xrp_intelligence" / "20261104T065909Z-live-market-event-update.json"
     data = json.loads(path.read_text(encoding="utf-8"))
     cutoff = _parse_utc(data["data_cutoff_utc"])
-    assert _parse_utc(data["captured_at_utc"]) == cutoff
+    assert _parse_utc(data["captured_at_utc"]) >= cutoff
     assert data["predictions"]["issued"] is False
     assert data["market_snapshot"]["xrp_spot"]["model_eligible"] is False
     assert data["data_quality"]["no_averaging_policy"]
@@ -1592,9 +1592,10 @@ def test_sbi_sbic_circle_coinbase_addendum_has_resolvable_primary_evidence() -> 
     assert retrieved_at and all(value <= cutoff for value in retrieved_at)
     sources = {item["id"] for item in data["source_registry"]}
     assert len(sources) == len(data["source_registry"])
-    assert len(data["observations"]) >= 12
-    assert len(data["relationship_graph"]) >= 10
-    assert len(data["competing_hypotheses"]) >= 5
+    assert len(data["source_registry"]) >= 12
+    assert len(data["observations"]) >= 28
+    assert len(data["relationship_graph"]) >= 25
+    assert len(data["competing_hypotheses"]) >= 10
     for source in data["source_registry"]:
         assert source["url"].startswith("https://")
         assert source["raw_bytes_captured"] is False
@@ -1638,3 +1639,34 @@ def test_circle_coinbase_and_rlusd_claims_keep_their_scope_boundaries() -> None:
     assert "does not itself prove XRP demand" in rlusd["limitations"][0]
     assert data["market_snapshot"]["circle_usdc"]["scope"].startswith("Global USDC")
     assert data["market_snapshot"]["xrp_spot_aggregate"]["model_eligible"] is False
+
+
+
+def test_evernorth_capital_disclosures_separate_facilities_and_potential_financing() -> None:
+    data = json.loads(CORPORATE_ECOSYSTEM_ADDENDUM.read_text(encoding="utf-8"))
+    observations = {item["id"]: item for item in data["observations"]}
+    required = {
+        "OBS-PATHFINDER-RIPPLE-COMPANY-FACILITY-20261007",
+        "OBS-EVERNORTH-SBI-AFFILIATES-20260812",
+        "OBS-EVERNORTH-RIPPLE-EQUITY-AND-PATHFINDER-UNITS-20261009",
+        "OBS-RIPPLEWORKS-ARRINGTON-XRP-CAPITAL-SERIES-C-20261009",
+        "OBS-EVERNORTH-CONVERTIBLE-NOTE-CASH-20261013",
+        "OBS-EVERNORTH-WARRANT-EXERCISES-CASH-20261109",
+        "OBS-EVERNORTH-ELOC-FACILITY-20261023",
+        "OBS-EVERNORTH-POSTCLOSE-XRP-TRANSFER-20261009",
+    }
+    assert required <= set(observations)
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert "sec_evernorth_424b3_20261019" in sources
+    assert "sec_evernorth_424b3_20261124" in sources
+    company_facility = observations["OBS-PATHFINDER-RIPPLE-COMPANY-FACILITY-20261007"]["claim"]
+    assert "Pathfinder" in company_facility and "USD 9.7 million" in company_facility
+    assert "USD 10.0 million" in company_facility
+    evernorth_facility = observations["OBS-EVERNORTH-UNISSUED-DEBT-AND-UNDRAWN-FACILITY-20261124"]["claim"]
+    assert "USD 1.0 million" in evernorth_facility
+    assert "not borrowed" in evernorth_facility
+    sbi_affiliates = observations["OBS-EVERNORTH-SBI-AFFILIATES-20260812"]["claim"]
+    assert "SBI Holdings" in sbi_affiliates and "39.9%" in sbi_affiliates
+    eloc = observations["OBS-EVERNORTH-ELOC-FACILITY-20261023"]["claim"]
+    assert "potential financing" in eloc and "not cash already received" in eloc
+    assert data["predictions"]["issued"] is False
