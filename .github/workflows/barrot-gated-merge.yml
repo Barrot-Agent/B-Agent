@@ -25,6 +25,7 @@ jobs:
       EVENT_PR_NUMBER: ${{ github.event.pull_request.number || '' }}
       EXPECTED_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
       REF_NAME: ${{ github.ref_name }}
+      AUTHORIZED_MAINTAINER: ${{ vars.BARROT_MAINTAINER_LOGIN }}
     steps:
       - name: Verify exact-head merge readiness without performing a merge
         shell: bash
@@ -77,9 +78,15 @@ jobs:
               add_blocker "current main SHA could not be verified"
             fi
 
+            if [[ -z "$AUTHORIZED_MAINTAINER" ]]; then
+              add_blocker "BARROT_MAINTAINER_LOGIN repository variable is missing; authorized human reviewer is not configured"
+            elif [[ "$AUTHORIZED_MAINTAINER" == "$author" ]]; then
+              add_blocker "configured human maintainer matches the PR author; self-approval is prohibited"
+            fi
+
             if reviews="$(gh api "repos/${REPOSITORY}/pulls/${pr_number}/reviews?per_page=100" 2>/dev/null)"; then
-              approvals="$(jq --arg author "$author" '[.[] | select(.user.login != $author)] | sort_by(.submitted_at // "") | group_by(.user.login) | map(last) | map(select(.state == "APPROVED")) | length' <<< "$reviews")"
-              [[ "$approvals" -ge 1 ]] || add_blocker "no independent approving review exists"
+              approvals="$(jq --arg author "$author" --arg maintainer "$AUTHORIZED_MAINTAINER" '[.[] | select(.user.login == $maintainer and .user.login != $author)] | sort_by(.submitted_at // "") | group_by(.user.login) | map(last) | map(select(.state == "APPROVED")) | length' <<< "$reviews")"
+              [[ "$approvals" -ge 1 ]] || add_blocker "configured sole human maintainer has not approved this PR"
             else
               add_blocker "PR reviews could not be verified"
             fi
