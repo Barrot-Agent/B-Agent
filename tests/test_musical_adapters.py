@@ -386,19 +386,35 @@ class FullSongProductionTests(unittest.TestCase):
         from barrot_agent.creative.midi_export import export_midi
 
         instances = []
+        midi_files = []
 
         class FakeMidi:
             def __init__(self, initial_tempo):
                 self.initial_tempo = initial_tempo
                 self.instruments = []
-                self.markers = []
                 instances.append(self)
-
-            def add_marker(self, text, time):
-                self.markers.append((text, time))
 
             def write(self, path):
                 Path(path).write_bytes(b"midi")
+
+        class FakeMetaMessage:
+            def __init__(self, message_type, **kwargs):
+                self.type = message_type
+                self.time = kwargs.get("time", 0)
+                self.text = kwargs.get("text")
+                self.name = kwargs.get("name")
+
+        class FakeMidiTrack(list):
+            pass
+
+        class FakeMidiFile:
+            def __init__(self, filename):
+                self.ticks_per_beat = 220
+                self.tracks = [FakeMidiTrack()]
+                midi_files.append(self)
+
+            def save(self, filename):
+                Path(filename).write_bytes(b"midi-with-section-markers")
 
         class FakeInstrument:
             def __init__(self, program, is_drum, name):
@@ -418,21 +434,41 @@ class FullSongProductionTests(unittest.TestCase):
         fake.PrettyMIDI = FakeMidi
         fake.Instrument = FakeInstrument
         fake.Note = FakeNote
+        fake_mido = ModuleType("mido")
+        fake_mido.MidiFile = FakeMidiFile
+        fake_mido.MidiTrack = FakeMidiTrack
+        fake_mido.MetaMessage = FakeMetaMessage
         manifest = compose_full_song(template(), seed=9)
 
         with tempfile.TemporaryDirectory() as directory, patch.dict(
-            sys.modules, {"pretty_midi": fake}
+            sys.modules, {"pretty_midi": fake, "mido": fake_mido}
         ):
             target = Path(directory) / "full-song.mid"
             export_midi(manifest, target)
             self.assertTrue(target.is_file())
 
+        marker_track = next(
+            track for track in midi_files[0].tracks
+            if any(message.type == "marker" for message in track)
+        )
+        marker_messages = []
+        absolute_tick = 0
+        for message in marker_track:
+            absolute_tick += message.time
+            if message.type == "marker":
+                marker_messages.append((message.text, absolute_tick))
         self.assertEqual(
-            [name for name, _ in instances[0].markers],
+            [name for name, _ in marker_messages],
             [section.name for section in manifest.sections],
         )
-        self.assertAlmostEqual(instances[0].markers[0][1], 0.0)
-        self.assertAlmostEqual(
-            instances[0].markers[-1][1],
-            (manifest.sections[-1].start_bar - 1) * 4 * 60.0 / manifest.bpm,
+        self.assertEqual(
+            [tick for _, tick in marker_messages],
+            [
+                round(
+                    (section.start_bar - 1)
+                    * manifest.beats_per_bar
+                    * midi_files[0].ticks_per_beat
+                )
+                for section in manifest.sections
+            ],
         )
