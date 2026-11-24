@@ -86,7 +86,7 @@ jobs:
 
             if reviews="$(gh api "repos/${REPOSITORY}/pulls/${pr_number}/reviews?per_page=100" 2>/dev/null)"; then
               approvals="$(jq --arg author "$author" --arg maintainer "$AUTHORIZED_MAINTAINER" '[.[] | select(.user.login == $maintainer and .user.login != $author)] | sort_by(.submitted_at // "") | group_by(.user.login) | map(last) | map(select(.state == "APPROVED")) | length' <<< "$reviews")"
-              [[ "$approvals" -ge 1 ]] || add_blocker "configured sole human maintainer has not approved this PR"
+              [[ "$approvals" -ge 1 ]] || add_blocker "no independent approving review exists from the configured sole human maintainer"
             else
               add_blocker "PR reviews could not be verified"
             fi
