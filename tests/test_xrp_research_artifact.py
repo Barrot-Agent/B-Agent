@@ -1659,7 +1659,7 @@ def test_evernorth_capital_disclosures_separate_facilities_and_potential_financi
     assert required <= set(observations)
     sources = {item["id"]: item for item in data["source_registry"]}
     assert "sec_evernorth_424b3_20261019" in sources
-    assert "sec_evernorth_424b3_20261124" in sources
+    assert "sec_evernorth_424b3_supplement_20261113" in sources
     company_facility = observations["OBS-PATHFINDER-RIPPLE-COMPANY-FACILITY-20261007"]["claim"]
     assert "Pathfinder" in company_facility and "USD 9.7 million" in company_facility
     assert "USD 10.0 million" in company_facility
@@ -1671,3 +1671,16 @@ def test_evernorth_capital_disclosures_separate_facilities_and_potential_financi
     eloc = observations["OBS-EVERNORTH-ELOC-FACILITY-20261023"]["claim"]
     assert "potential financing" in eloc and "not cash already received" in eloc
     assert data["predictions"]["issued"] is False
+
+def test_ask_ticker_candidate_and_unverified_video_identity_are_not_promoted() -> None:
+    data = json.loads(CORPORATE_ECOSYSTEM_ADDENDUM.read_text(encoding="utf-8"))
+    observations = {item["id"]: item for item in data["observations"]}
+    ask = observations["OBS-ASK-TICKER-COLLISION-20261124"]
+    assert "Permission Coin (ASK)" in ask["claim"]
+    assert "not a resolved identity" in ask["claim"]
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert sources["defillama_permission_coin_ask_20261124"]["model_eligible"] is False
+    queries = {item["query"] for item in data["search_log"]}
+    assert '"SBIC, ChatGPT SBIC"' in queries
+    assert 'site:youtube.com "Camilla Stevenson" OR "Kamilah Stevenson"' in queries
+    assert any("No video inventory performed" in item["result_status"] for item in data["search_log"])
