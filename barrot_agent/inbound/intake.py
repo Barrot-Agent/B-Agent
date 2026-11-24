@@ -113,6 +113,7 @@ def _admission_from_record(
     *,
     record_path: Path,
     duplicate: bool,
+    allow_duplicate: bool,
 ) -> Admission:
     decision = str(record.get("decision", "UNKNOWN"))
     stop_reason = record.get("stop_reason")
@@ -126,7 +127,7 @@ def _admission_from_record(
         and constraints.get("executed") is False
         and record.get("execution_mode") == EXECUTION_MODE
     )
-    if duplicate:
+    if duplicate and not allow_duplicate:
         allowed = False
         outcome = DUPLICATE_SUPPRESSED
         reasons = (
@@ -160,6 +161,7 @@ def admit(
     record_dir: str | Path | None = None,
     repo_root: str | Path | None = None,
     budget: Budget | None = None,
+    allow_duplicate: bool = False,
 ) -> Admission:
     """Transmute one ordinary request and decide whether it may continue.
 
@@ -167,6 +169,11 @@ def admit(
     anything. A preservation or record-integrity failure is converted into a
     refused admission rather than an exception, so a caller cannot accidentally
     treat a broken record as authority to proceed.
+
+    ``allow_duplicate`` is for a caller that owns its own durable resume and
+    deduplication, such as the production task dispatcher. The protocol still
+    detects and journals the duplicate; the caller decides whether its own
+    recovery state makes continuation legitimate.
     """
     directory = resolve_record_dir(record_dir)
     try:
@@ -195,4 +202,5 @@ def admit(
         result.record,
         record_path=result.record_path,
         duplicate=result.duplicate,
+        allow_duplicate=allow_duplicate,
     )

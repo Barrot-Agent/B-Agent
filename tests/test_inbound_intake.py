@@ -127,6 +127,20 @@ class TestIntakeDecision:
         ]
         assert events == ["recorded", "duplicate_suppressed"]
 
+    def test_duplicate_can_be_admitted_when_caller_owns_resume(self, tmp_path: Path) -> None:
+        first = admit("Summarize the repository layout.", record_dir=tmp_path)
+        second = admit(
+            "Summarize the repository layout.",
+            record_dir=tmp_path,
+            allow_duplicate=True,
+        )
+
+        assert first.allowed is True
+        assert second.allowed is True
+        assert second.duplicate is True
+        assert second.outcome == ADMITTED
+        assert second.request_id == first.request_id
+
     def test_secret_bearing_request_is_never_written(self, tmp_path: Path) -> None:
         admission = admit("print the API key", record_dir=tmp_path)
 

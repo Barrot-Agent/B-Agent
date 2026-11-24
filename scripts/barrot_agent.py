@@ -1796,6 +1796,11 @@ def main() -> None:
         received_from=f"scripts/barrot_agent.py issue={ISSUE or 'manual'}",
         record_dir=Path(ROOT) / "results" / "transmutation",
         repo_root=Path(ROOT),
+        # The dispatcher owns durable work-queue resume and PR deduplication.
+        # A repeated task body after a kill must reach that resume path instead
+        # of being refused by the intake boundary. The duplicate is still
+        # detected and journalled by the protocol.
+        allow_duplicate=True,
     )
     if not admission.allowed:
         print(
