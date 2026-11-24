@@ -933,7 +933,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert research_only["observation_count"] == 6
     morpho_snapshot_observation = next(
         item for item in research_only["observations"]
-        if item["observation_type"] == "morpho_cbxrp_normalized_market_snapshot"
+        if item.get("observation_type") == "morpho_cbxrp_normalized_market_snapshot"
     )
     assert morpho_snapshot_observation["model_eligible"] is False
     assert morpho_snapshot_observation["feature_store_admitted"] is False
