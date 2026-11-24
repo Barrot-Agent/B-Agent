@@ -5561,6 +5561,16 @@ def _attach_immutable_sec_event_receipts(
             or not isinstance(raw_retained, bool)
         ):
             raise XRPIngestionError("SEC event receipt does not match the canonical receipt identity fields")
+        canonical_receipt_payload = {
+            key: value for key, value in receipt.items() if key != "receipt_id"
+        }
+        expected_receipt_id = hashlib.sha256(
+            _canonical(canonical_receipt_payload).encode("utf-8")
+        ).hexdigest()
+        if receipt_id != expected_receipt_id:
+            raise XRPIngestionError(
+                "SEC event receipt ID does not match canonical receipt metadata"
+            )
         history = item.get("source_capture_history", [])
         if not isinstance(history, list):
             raise XRPIngestionError(f"event_records[{index}].source_capture_history must be a list")

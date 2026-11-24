@@ -163,6 +163,24 @@ def test_immutable_sec_accession_receipt_relinks_event_at_new_known_at_time(tmp_
     assert result["forecast_status"] == "NOT_ISSUED"
 
 
+def test_sec_event_receipt_with_tampered_canonical_id_fails_closed(tmp_path):
+    path = tmp_path / "events.json"
+    source_url = "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    event = _event("sec-tampered-receipt")
+    event["source_id"] = "sec_evernorth_424b3"
+    event["source_url"] = source_url
+    _write_registry(path, [event])
+    receipt = _canonical_sec_document_receipt(source_url, "2026-11-12T04:30:00Z")
+    receipt["receipt_id"] = "f" * 64
+
+    with pytest.raises(XRPIngestionError, match="receipt ID does not match canonical"):
+        _capture_event_timeline_registry(
+            path,
+            "2026-11-12T05:00:00Z",
+            raw_receipts=[receipt],
+        )
+
+
 def test_immutable_sec_accession_receipt_after_cutoff_is_not_used(tmp_path):
     path = tmp_path / "events.json"
     source_url = "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
