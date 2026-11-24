@@ -1,4 +1,6 @@
-numpy>=2.2.6,<3
+# Keep this list compatible with the Streamlit SDK pinned in README.md.
+# Streamlit 1.35.0 requires numpy>=1.19.3,<2; NumPy 2.x makes the resolver unsatisfiable.
+numpy>=1.26.4,<2
 requests>=2.31.0
 PyJWT>=2.15.1
 cryptography>=50.0.2
