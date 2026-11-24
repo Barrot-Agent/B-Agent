@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 
@@ -58,3 +59,32 @@ def test_sbi_ripple_primary_sources_and_unverified_exact_phrase_queue_are_retain
         "No YouTube inventory was performed",
     ):
         assert phrase in note
+
+
+IDENTITY_RECHECK = ROOT / "research" / "xrp_intelligence" / "20261124T071300Z-kamilah-identity-and-exact-phrase-recheck.json"
+
+
+def test_identity_recheck_preserves_unresolved_channel_identity_and_exact_phrases() -> None:
+    data = json.loads(IDENTITY_RECHECK.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "barrot.xrp.identity_and_exact_phrase_recheck"
+    assert data["predictions"]["issued"] is False
+    sources = [item["id"] for item in data["source_registry"]]
+    assert len(sources) == len(set(sources))
+    known = set(sources)
+    assert data["findings"]["youtube_identity"]["status"] == "UNRESOLVED"
+    assert data["findings"]["youtube_identity"]["inventory_performed"] is False
+    assert data["findings"]["youtube_identity"]["candidate_channel_count"] == 3
+    assert len(data["hypotheses"]) >= 2
+    for hypothesis in data["hypotheses"]:
+        assert hypothesis["support"]
+        assert hypothesis["disconfirming"]
+        assert hypothesis["test"]
+    sbic = data["findings"]["sbic"]["entities"]
+    assert len(sbic) == 3
+    assert {item["region"] for item in sbic} == {
+        "Eastern Japan", "Central Japan", "Western Japan"
+    }
+    assert "SBI Holdings" in data["findings"]["sbic"]["distinction"]
+    assert data["findings"]["exact_phrases"]["actual_capital"]
+    assert data["findings"]["exact_phrases"]["ask_coin"]
+    assert data["findings"]["exact_phrases"]["sbic_chatgpt"]
