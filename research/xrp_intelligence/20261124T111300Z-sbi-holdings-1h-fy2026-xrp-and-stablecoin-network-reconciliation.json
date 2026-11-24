@@ -161,6 +161,53 @@
       "classification": "issuer-reported stablecoin issuance and payment-rail design",
       "interpretation": "JPYSC is a distinct yen-denominated rail. Its growth could complement or compete with XRP-bridged FX depending on actual use, liquidity and settlement design.",
       "model_eligible": false
+    },
+    {
+      "id": "COINBASE-MOOV-STABLECOIN-PARTNERSHIP-2026-09-10",
+      "source_location": "Coinbase official announcement, paragraphs 1-5",
+      "claim": "Coinbase and Moov announced a direct partnership on 2026-09-10 to embed stablecoin payment acceptance, settlement and real-time funding into Moov's existing payments platform for a customer base of more than 1,000 community banks and credit unions. Coinbase supplies CDP Custodial Wallet accounts and the Payments API; Moov integrates them into its financial-institution payment stack.",
+      "classification": "primary_company_partnership_announcement",
+      "evidence": [
+        "COINBASE-MOOV-PARTNERSHIP-20260910"
+      ],
+      "interpretation": "This is a direct Coinbase-Moov infrastructure relationship. The 1,000-plus figure describes Moov's customer base, not confirmed live adoption by all institutions. The announcement does not name supported stablecoins or networks and does not establish XRP usage.",
+      "limitations": [
+        "No public activation count, transaction volume, fee schedule, corridor list or production performance was disclosed.",
+        "Do not infer USDC, RLUSD, XRP or XRPL use without asset/network-specific evidence."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "SBI-CLAUDE-GROUP-ROLLOUT-2026-11-02",
+      "printed_slide": 64,
+      "source_location": "SBI Holdings PDF page 63; lines 1863-1888",
+      "claim": "SBI Holdings states that its group-wide common AI platform is rolling out Claude to 71 SBI Group companies, with API integration into company systems and Microsoft 365 integration being opened in stages from September 2026.",
+      "classification": "issuer_reported_enterprise_ai_platform_deployment",
+      "evidence": [
+        "SBI-HOLDINGS-1H-FY2026-PRESENTATION"
+      ],
+      "interpretation": "This is evidence of SBI Group's stated internal Claude deployment and enterprise integration program. It is not evidence of a connection to Barrot, ChatGPT, or the user's nine-platform environment.",
+      "limitations": [
+        "The presentation does not identify the exact Claude model or the number of production users, API calls or completed workflows.",
+        "No independent Anthropic confirmation or technical integration documentation was captured."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "SBI-CLAUDE-SECURITY-MULTI-AI-2026-10",
+      "printed_slide": 60,
+      "source_location": "SBI Holdings PDF page 59-60; lines 1775-1827",
+      "claim": "SBI Holdings describes use of Anthropic's Claude Mythos and Claude Security for code-vulnerability inspection across the group. It says SBI Securities has used multiple AI tools complementarily for vulnerability diagnosis since October 2026.",
+      "classification": "issuer_reported_enterprise_ai_security_use",
+      "evidence": [
+        "SBI-HOLDINGS-1H-FY2026-PRESENTATION"
+      ],
+      "interpretation": "This is a public example of enterprise multi-model security review. It does not establish a live connection to Barrot or reveal the full model lineup.",
+      "limitations": [
+        "The company does not disclose diagnostic outputs, model-specific task allocation, false-positive rates or remediation metrics.",
+        "The presentation does not name ChatGPT, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks in this security workflow."
+      ],
+      "model_eligible": false
     }
   ],
   "relationship_graph": [
@@ -208,10 +255,11 @@
       "to": "Moov",
       "relation": "third-party stablecoin/payment-rail partnership cited by SBI",
       "source_observation_ids": [
-        "COINBASE-MOOV-STABLECOIN-RAIL-2026-09"
+        "COINBASE-MOOV-STABLECOIN-RAIL-2026-09",
+        "COINBASE-MOOV-STABLECOIN-PARTNERSHIP-2026-09-10"
       ],
-      "confidence": "medium; SBI summarizes a third-party announcement",
-      "limits": "Use Moov/Coinbase's own primary announcement for independent confirmation before model use."
+      "confidence": "high for announced partnership; actual rollout and volume unverified",
+      "limits": "The 1,000-plus figure is Moov's customer base, not live adoption. The announcement does not specify supported stablecoin assets or networks and does not prove XRP usage."
     },
     {
       "from": "SBI Shinsei Trust & Banking",
@@ -232,13 +280,15 @@
   ],
   "exact_phrase_disambiguation": {
     "Actual XRP": "A category label on SBI's slide describing Ripple's reported non-escrow XRP holdings.",
-    "actual capital": "Not established by this document; do not conflate with the 'Actual XRP' label.",
+    "actual capital": "No matching text was found in this 131-page SBI Holdings presentation. This is a document-scoped negative result, not proof of global absence.",
     "ASK Coin": "Not addressed by this document.",
-    "SBIC, ChatGPT SBIC": "Not addressed by this document."
+    "SBIC, ChatGPT SBIC": "Not addressed by this document.",
+    "ChatGPT": "No matching text was found in this SBI Holdings presentation. The document reports a group-wide Claude rollout to 71 companies; this is not evidence of a ChatGPT connection.",
+    "Claude": "SBI Holdings reports a Claude rollout to 71 group companies and Claude Security/Claude Mythos use in cyber defense. This is SBI's internal corporate deployment, not a Barrot connection."
   },
   "research_status": {
     "execution_status": "EXECUTED",
-    "verification_status": "PRIMARY_SOURCE_RENDERED_TEXT_INSPECTED",
+    "verification_status": "PRIMARY_SBI_PRESENTATION_AND_COINBASE_ANNOUNCEMENT_RENDERED_TEXT_INSPECTED",
     "model_eligible": false,
     "forecast_eligible": false,
     "directional_forecast_issued": false,
@@ -250,9 +300,46 @@
     "Reconcile the 2026-10-28 supply categories against XRPL ledger and escrow transaction receipts.",
     "Verify the Open Standard membership and OUSD/JPYSC interoperability plan from the consortium and participating companies; keep contemplated PoCs distinct from live settlement.",
     "Verify the SBI Coinhako, JPYSC, USDC and RLUSD flows from issuer, exchange and ledger-level sources; do not assume XRP is used.",
-    "Find the Moov-Coinbase primary announcement and determine whether any settlement product supports XRP or only stablecoins."
+    "Find the Moov-Coinbase primary announcement and determine whether any settlement product supports XRP or only stablecoins.",
+    "Cross-check SBI's reported Claude rollout and Claude Security use against Anthropic's own enterprise/customer references; keep SBI's statement as issuer-reported until independently corroborated.",
+    "Track Coinbase-Moov activation by named financial institutions and identify supported stablecoin assets/networks before treating the partnership as live XRP-related flow."
   ],
   "hypothesis_id_namespace": "SBI-1H-FY2026-20261124",
   "source_independence_group": "sbi_holdings_issuer",
-  "source_independence_note": "All numerical and relationship claims in this artifact derive from one SBI Holdings investor presentation and are not independent corroborations."
+  "source_independence_note": "All numerical and relationship claims in this artifact derive from one SBI Holdings investor presentation and are not independent corroborations.",
+  "source_registry": [
+    {
+      "id": "SBI-HOLDINGS-1H-FY2026-PRESENTATION",
+      "publisher": "SBI Holdings, Inc.",
+      "source_type": "primary issuer investor presentation",
+      "publication_date": "2026-11-02",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "retrieved_on": "2026-11-24",
+      "exact_retrieval_timestamp_available": false,
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Rendered PDF text inspected; original bytes and headers not retained.",
+        "Issuer-reported figures and relationships are not independent custody, transaction or usage evidence."
+      ]
+    },
+    {
+      "id": "COINBASE-MOOV-PARTNERSHIP-20260910",
+      "publisher": "Coinbase",
+      "source_type": "official partnership announcement",
+      "publication_date": "2026-09-10",
+      "url": "https://www.coinbase.com/blog/coinbase-brings-stablecoin-payments-and-custody-to-community-banks-and-credit-unions",
+      "retrieved_on": "2026-11-24",
+      "exact_retrieval_timestamp_available": false,
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "The announcement describes intended integration and Moov's existing customer base; it does not disclose the number of institutions that have activated the service or transaction volumes.",
+        "The announcement does not specify which stablecoin assets or blockchain networks will be used.",
+        "It does not establish XRP, USDC or RLUSD use in the Moov integration."
+      ]
+    }
+  ]
 }
