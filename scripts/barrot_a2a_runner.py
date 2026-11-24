@@ -184,8 +184,6 @@ def build_prompt(task: dict[str, Any]) -> str:
     instructions = str(task.get("instructions") or "")
     context = task.get("context") if isinstance(task.get("context"), dict) else {}
     context_json = json.dumps(context, ensure_ascii=False, sort_keys=True)
-    packet = context.get("transmutation")
-    packet_budget = packet.get("budget", {}) if isinstance(packet, dict) else {}
     return f"""You are executing a durable task assigned to Barrot through its authenticated task gateway.
 
 Task ID: {task.get('task_id', 'unknown')}
@@ -221,6 +219,12 @@ def execute_task(
     opencode_bin: str = "opencode",
 ) -> tuple[dict[str, Any], bool, str | None]:
     task_id = str(task.get("task_id") or "unknown")
+    context = task.get("context") if isinstance(task.get("context"), dict) else {}
+    packet = context.get("transmutation")
+    budget = packet.get("budget", {}) if isinstance(packet, dict) else {}
+    packet_timeout = budget.get("max_execution_seconds")
+    if isinstance(packet_timeout, int) and not isinstance(packet_timeout, bool) and 1 <= packet_timeout <= 1800:
+        timeout_seconds = min(timeout_seconds, packet_timeout)
     prompt = build_prompt(task)
     command = [opencode_bin, "run", "--agent", agent, "--format", "json", prompt]
     started = utc_now()
