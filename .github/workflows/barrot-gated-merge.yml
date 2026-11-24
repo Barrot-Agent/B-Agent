@@ -111,7 +111,7 @@ jobs:
 
           if [[ "${#blockers[@]}" -gt 0 ]]; then
             echo "::error::READINESS=BLOCKED"
-            printf ' - %s\\n' "${blockers[@]}"
+            printf '%s\n' "${blockers[@]}"
             exit 1
           fi
 
