@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_sbi_holdings_1h_fy2026_primary_source_reconciliation",
+  "artifact_id": "xrp_sbi_1h_fy2026_20261124",
+  "document": {
+    "publisher": "SBI Holdings, Inc.",
+    "title": "Financial Results for the Six-month Period Ended September 30, 2026",
+    "publication_date": "2026-11-02",
+    "reporting_period_start": "2026-04-01",
+    "reporting_period_end": "2026-09-30",
+    "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+    "source_type": "primary issuer investor presentation",
+    "retrieved_on": "2026-11-24",
+    "exact_retrieval_timestamp_available": false,
+    "raw_bytes_captured": false,
+    "raw_content_sha256": null,
+    "original_http_headers_captured": false,
+    "model_eligible": false,
+    "limitations": [
+      "Rendered PDF text was inspected; original response bytes and HTTP headers were not retained.",
+      "The publisher is an interested corporate source. Figures are issuer disclosures, not independent audit evidence.",
+      "The document is a consolidated group presentation and does not disclose every legal-entity, beneficial-owner, custody or transaction detail."
+    ]
+  },
+  "repository_state": {
+    "inspected_main_sha": "7d7aba841cb849e461376a8fcdd4cc4fa10c9af6",
+    "xrp_integration_pr": 1692,
+    "xrp_pr_head_before_artifact": "e586c3f616dac25a73576c7e5eb4c29028cca7d1",
+    "changed_path_overlap_with_other_open_prs": false
+  },
+  "observations": [
+    {
+      "id": "SBI-XRP-DISTRIBUTION-2026-10-28",
+      "printed_slide": 51,
+      "source_location": "PDF page 50; lines 1567-1586",
+      "claim": "SBI Holdings presents Ripple as an investee company and reports an XRP distribution snapshot dated 2026-10-28: approximately 63.35 billion XRP circulated in the market, 5.23 billion XRP held by Ripple as 'Actual XRP', 31.4 billion XRP under escrow, and approximately 0.01 billion XRP burned. The slide reports a market capitalization of approximately JPY 13.3 trillion and values Ripple's non-circulating holdings at approximately JPY 7.6 trillion.",
+      "figures": {
+        "max_supply_xrp": 100000000000,
+        "circulated_xrp_approx": 63350000000,
+        "ripple_actual_xrp_approx": 5230000000,
+        "ripple_escrow_xrp_approx": 31400000000,
+        "burned_xrp_approx": 10000000,
+        "market_cap_jpy_approx": 13300000000000,
+        "ripple_non_circulating_value_jpy_approx": 7600000000000,
+        "as_of_date": "2026-10-28"
+      },
+      "classification": "issuer-reported XRP supply/distribution snapshot",
+      "interpretation": "Useful as a dated corporate disclosure and supply-category reconciliation input. It is not a real-time circulating-supply oracle, independent custody attestation, exchange-flow observation, or proof of XRP purchases.",
+      "limitations": [
+        "The slide does not provide wallet addresses, escrow transaction IDs, custody statements or raw ledger receipts.",
+        "The term 'Actual XRP' is a label for Ripple's reported non-escrow XRP holdings; it is not evidence for the separate exact phrase 'actual capital'.",
+        "The reported 63.35 billion circulating figure should not be substituted for a vendor's circulating-supply definition without reconciling methodology and date."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "SBI-EVERNORTH-XRP-TREASURY-2026-11-02",
+      "printed_slide": 52,
+      "source_location": "PDF page 51; lines 1587-1613",
+      "claim": "SBI Holdings describes Evernorth as an SBI Holdings investee and XRP treasury company. It reports Evernorth listed on Nasdaq on 2026-10-12, held approximately 473 million XRP, and had SBI Group voting rights of 36.1% with 20.5% economic interest.",
+      "figures": {
+        "listing_date": "2026-10-12",
+        "xrp_holdings_approx": 473000000,
+        "market_cap_jpy_approx": 140000000000,
+        "market_cap_usd_approx": 890000000,
+        "sbi_group_voting_rights_pct": 36.1,
+        "sbi_group_economic_interest_pct": 20.5,
+        "share_count_class_a_and_c_approx": 57490000,
+        "market_cap_price_reference_date": "2026-10-22",
+        "ranking_reference_date": "2026-11-02",
+        "fx_assumption_jpy_per_usd": 158
+      },
+      "classification": "issuer-reported investee ownership and treasury holdings",
+      "interpretation": "The 20.5% economic interest is not 100% ownership of Evernorth and does not mean SBI Holdings directly owns all 473 million XRP. Keep Evernorth's treasury inventory separate from SBI's direct holdings, XRP exchange purchases and Ripple escrow.",
+      "limitations": [
+        "The slide does not provide wallet-level proof or independent custody confirmation for the 473 million XRP.",
+        "Market capitalization is calculated by SBI using the October 22 closing price and share count from the October 30 Form S-1, not a November 2 live quote.",
+        "The 36.1% voting-rights ratio and 20.5% economic interest have different denominators and must not be conflated."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "SBI-CRYPTO-ASSET-SEGMENT-1H-FY2026",
+      "printed_slide": 8,
+      "source_location": "PDF page 7; lines 114-157",
+      "claim": "SBI Holdings reports crypto-asset business revenue of JPY 23.1 billion for 1H FY2026, down 30.1% year over year from JPY 33.0 billion. This is a consolidated segment measure, not an XRP-specific result.",
+      "figures": {
+        "revenue_1h_fy2025_jpy": 33000000000,
+        "revenue_1h_fy2026_jpy": 23100000000,
+        "yoy_change_pct": -30.1
+      },
+      "classification": "issuer-reported segment performance",
+      "interpretation": "Counterweight to an overly bullish reading of SBI's expanding digital-asset ecosystem. It does not show XRP revenue or XRP transaction volume.",
+      "model_eligible": false
+    },
+    {
+      "id": "SBI-DIGITAL-ASSET-BLOCKCHAIN-PORTFOLIO-1H-FY2026",
+      "printed_slide": 52,
+      "source_location": "PDF page 51; lines 1614-1644",
+      "claim": "SBI Holdings reports JPY 460.8 billion of operating investment securities in the Digital Asset/Blockchain industry category.",
+      "figures": {
+        "operating_investment_securities_jpy": 460800000000
+      },
+      "classification": "issuer-reported broad portfolio classification",
+      "interpretation": "This is a multi-company, multi-asset portfolio category, not XRP holdings, XRP flow, or capital deployed into Ripple alone.",
+      "model_eligible": false
+    },
+    {
+      "id": "SBI-COINHAKO-STABLECOIN-RAILS-2026-11-02",
+      "printed_slide": 72,
+      "source_location": "PDF page 71; lines 2018-2035",
+      "claim": "SBI Holdings says Coinhako became a consolidated subsidiary renamed SBI Coinhako, with an investment ratio of 51.69%. The presentation describes SBI Coinhako as an exchange distributing JPYSC and other products and combining JPYSC with USD-denominated USDC and RLUSD for yen-dollar cross-border settlement.",
+      "figures": {
+        "sbi_coinhako_investment_ratio_pct": 51.69
+      },
+      "classification": "issuer-reported subsidiary and multi-stablecoin distribution strategy",
+      "interpretation": "This supports SBI's multi-rail stablecoin strategy. The presence of USDC and RLUSD does not prove XRP is used as the settlement asset for those flows.",
+      "limitations": [
+        "The slide describes the strategy and product role but provides no transaction volume, reserve movement, net XRP demand or corridor-level settlement data.",
+        "The presentation does not name Circle in this section; do not use it alone as proof of a new direct SBI-Circle corporate agreement."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "SBI-OPEN-STANDARD-OUSD-COINBASE-COHORT-2026-11-02",
+      "printed_slide": 82,
+      "source_location": "PDF page 81; lines 2233-2252",
+      "claim": "SBI Holdings and Startale joined Open Standard, which the presentation says promotes OUSD and includes more than 140 participating companies, among them Visa, Stripe, Mastercard, BlackRock and Coinbase. SBI describes a possible interoperability proof of concept between JPYSC and OUSD and a goal of faster yen-dollar settlement.",
+      "figures": {
+        "stated_participant_count_over": 140,
+        "stated_participants": [
+          "Visa",
+          "Stripe",
+          "Mastercard",
+          "BlackRock",
+          "Coinbase"
+        ]
+      },
+      "classification": "issuer-reported consortium participation and planned interoperability",
+      "interpretation": "This creates an indirect ecosystem co-membership between SBI/Startale and Coinbase. It does not establish a direct bilateral SBI-Coinbase partnership, executed settlement flow, XRP use or Coinbase ownership in SBI.",
+      "limitations": [
+        "The document describes a contemplated proof of concept, not a completed production integration.",
+        "Membership in the same consortium is not evidence of direct contractual, equity or operational control relationships."
+      ],
+      "model_eligible": false
+    },
+    {
+      "id": "COINBASE-MOOV-STABLECOIN-RAIL-2026-09",
+      "printed_slide": 91,
+      "source_location": "PDF page 90; lines 2396-2403",
+      "claim": "SBI's presentation cites a September 2026 Moov-Coinbase partnership. It describes Moov as payment infrastructure for more than 1,000 U.S. community banks and credit unions, with stablecoin payment acceptance/settlement and real-time funding functions.",
+      "classification": "issuer-reported third-party partnership summary",
+      "interpretation": "Relevant to Coinbase's stablecoin/payment-rail distribution network. It is not XRP-specific and does not prove that the Moov integration uses XRP or Ripple Payments.",
+      "model_eligible": false
+    },
+    {
+      "id": "SBI-JPYSC-ISSUER-2026-06",
+      "printed_slide": 91,
+      "source_location": "PDF page 90; lines 2404-2414",
+      "claim": "The presentation identifies SBI Shinsei Trust & Banking as issuer of JPYSC and states issuance began in June 2026. It describes the structure as suitable for large-value transfers as well as individual and corporate payments.",
+      "classification": "issuer-reported stablecoin issuance and payment-rail design",
+      "interpretation": "JPYSC is a distinct yen-denominated rail. Its growth could complement or compete with XRP-bridged FX depending on actual use, liquidity and settlement design.",
+      "model_eligible": false
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relation": "investee-company relationship",
+      "source_observation_ids": [
+        "SBI-XRP-DISTRIBUTION-2026-10-28"
+      ],
+      "confidence": "high for issuer-reported relationship",
+      "limits": "No new exact equity percentage is given in this 2026-11-02 document; use the separately sourced approximately 9% disclosure only with its own date and provenance."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Evernorth",
+      "relation": "investee and significant voting/economic interest",
+      "source_observation_ids": [
+        "SBI-EVERNORTH-XRP-TREASURY-2026-11-02"
+      ],
+      "confidence": "high for issuer-reported ratios",
+      "limits": "36.1% voting rights and 20.5% economic interest do not mean 100% ownership; Evernorth's XRP should not be attributed wholly to SBI."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SBI Coinhako",
+      "relation": "consolidated subsidiary; 51.69% investment ratio",
+      "source_observation_ids": [
+        "SBI-COINHAKO-STABLECOIN-RAILS-2026-11-02"
+      ],
+      "confidence": "high for issuer-reported ownership"
+    },
+    {
+      "from": "SBI Holdings / Startale",
+      "to": "Open Standard / OUSD",
+      "relation": "consortium participation and contemplated JPYSC-OUSD interoperability",
+      "source_observation_ids": [
+        "SBI-OPEN-STANDARD-OUSD-COINBASE-COHORT-2026-11-02"
+      ],
+      "confidence": "high for stated membership; low for any unexecuted interoperability",
+      "limits": "No executed bilateral Coinbase-SBI contract or XRP use is established."
+    },
+    {
+      "from": "Coinbase",
+      "to": "Moov",
+      "relation": "third-party stablecoin/payment-rail partnership cited by SBI",
+      "source_observation_ids": [
+        "COINBASE-MOOV-STABLECOIN-RAIL-2026-09"
+      ],
+      "confidence": "medium; SBI summarizes a third-party announcement",
+      "limits": "Use Moov/Coinbase's own primary announcement for independent confirmation before model use."
+    },
+    {
+      "from": "SBI Shinsei Trust & Banking",
+      "to": "JPYSC",
+      "relation": "issuer",
+      "source_observation_ids": [
+        "SBI-JPYSC-ISSUER-2026-06"
+      ],
+      "confidence": "high for issuer-reported identity and launch month"
+    }
+  ],
+  "counter_hypotheses_and_disconfirming_evidence": [
+    "SBI's digital-asset strategy is multi-rail rather than XRP-exclusive: JPYSC, USDC, RLUSD and OUSD are all part of its stated network strategy. Stablecoin settlement could bypass XRP in some corridors.",
+    "SBI's crypto-asset business revenue fell 30.1% year over year in 1H FY2026; this is a broad segment metric and cannot be attributed to XRP, but it cautions against equating more partnerships with stronger realized crypto revenue.",
+    "Evernorth's 473 million XRP is a treasury-company holding. SBI's 20.5% economic interest is not a direct claim to the entire inventory.",
+    "The Open Standard participant list includes Coinbase, but common consortium membership does not prove a direct SBI-Coinbase commercial relationship.",
+    "Ripple's XRP supply-distribution slide is an issuer/group estimate, not a verified exchange-flow or custody observation."
+  ],
+  "exact_phrase_disambiguation": {
+    "Actual XRP": "A category label on SBI's slide describing Ripple's reported non-escrow XRP holdings.",
+    "actual capital": "Not established by this document; do not conflate with the 'Actual XRP' label.",
+    "ASK Coin": "Not addressed by this document.",
+    "SBIC, ChatGPT SBIC": "Not addressed by this document."
+  },
+  "research_status": {
+    "execution_status": "EXECUTED",
+    "verification_status": "PRIMARY_SOURCE_RENDERED_TEXT_INSPECTED",
+    "model_eligible": false,
+    "forecast_eligible": false,
+    "directional_forecast_issued": false,
+    "reason": "The SBI presentation is an issuer source rendered through a web viewer. Original PDF bytes, headers, exact retrieval timestamp and independent source receipts were not retained. Its figures are research-only and cannot be admitted as point-in-time market features or forecasts."
+  },
+  "next_actions": [
+    "Capture the original SBI PDF bytes and headers through an authorized retrieval path; compute SHA-256 and bind the document to an immutable receipt and exact capture timestamp.",
+    "Cross-check Evernorth's 473 million XRP holding and SBI voting/economic interest against its own SEC filings and independent custody disclosures without double-counting in-kind XRP or treasury inventory.",
+    "Reconcile the 2026-10-28 supply categories against XRPL ledger and escrow transaction receipts.",
+    "Verify the Open Standard membership and OUSD/JPYSC interoperability plan from the consortium and participating companies; keep contemplated PoCs distinct from live settlement.",
+    "Verify the SBI Coinhako, JPYSC, USDC and RLUSD flows from issuer, exchange and ledger-level sources; do not assume XRP is used.",
+    "Find the Moov-Coinbase primary announcement and determine whether any settlement product supports XRP or only stablecoins."
+  ],
+  "hypothesis_id_namespace": "SBI-1H-FY2026-20261124",
+  "source_independence_group": "sbi_holdings_issuer",
+  "source_independence_note": "All numerical and relationship claims in this artifact derive from one SBI Holdings investor presentation and are not independent corroborations."
+}
