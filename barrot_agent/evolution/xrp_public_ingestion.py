@@ -34,8 +34,8 @@ from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_document, fetch
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 _SHA256_RE = re.compile(r"[0-9a-f]{64}")
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.32"
-PARSER_VERSION = "xrp-public-market-v3.31"
+ADAPTER_VERSION = "xrp-public-market-v3.33"
+PARSER_VERSION = "xrp-public-market-v3.32"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 OKX_QUOTE_BASIS_MAX_SKEW_SECONDS = 60
@@ -70,6 +70,9 @@ LIVE_HTTP_CACHE_AGE_LIMITS = {
     "morpho_cbxrp_market_liquidity": 300,
     "morpho_cbxrp_market_state_history": 3_600,
     "morpho_cbxrp_oracle_state": 300,
+    "morpho_cbxrp_token_metadata": 3_600,
+    "morpho_usdc_token_metadata": 3_600,
+    "morpho_base_chain_indexer_tip": 300,
     "coinbase_cbxrp_proof_of_reserves": 3_600,
 }
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
@@ -84,6 +87,18 @@ MORPHO_CBXRP_MARKET_SELECTOR = f"{MORPHO_CBXRP_CHAIN_ID}:{MORPHO_CBXRP_MARKET_ID
 MORPHO_CBXRP_LOAN_TOKEN_ADDRESS = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
 MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS = "0xcb585250f852c6c6bf90434ab21a00f02833a4af"
 MORPHO_CBXRP_ORACLE_ADDRESS = "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde"
+MORPHO_TOKEN_METADATA_EXPECTED = {
+    "morpho_cbxrp_token_metadata": (
+        MORPHO_CBXRP_CHAIN_ID,
+        MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS,
+        "cbxrp",
+    ),
+    "morpho_usdc_token_metadata": (
+        MORPHO_CBXRP_CHAIN_ID,
+        MORPHO_CBXRP_LOAN_TOKEN_ADDRESS,
+        "usdc",
+    ),
+}
 
 WALK_FORWARD_HORIZON_SECONDS = {
     "1h": 3_600,
@@ -145,6 +160,9 @@ ENDPOINTS = (
     ("morpho_cbxrp_market_liquidity", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/liquidity"),
     ("morpho_cbxrp_market_state_history", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/state/history?lookback=thirty_days"),
     ("morpho_cbxrp_oracle_state", "https://api.morpho.org/v0/oracles/8453:0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde/state"),
+    ("morpho_cbxrp_token_metadata", f"https://api.morpho.org/v0/tokens/{MORPHO_CBXRP_CHAIN_ID}:{MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS}"),
+    ("morpho_usdc_token_metadata", f"https://api.morpho.org/v0/tokens/{MORPHO_CBXRP_CHAIN_ID}:{MORPHO_CBXRP_LOAN_TOKEN_ADDRESS}"),
+    ("morpho_base_chain_indexer_tip", "https://api.morpho.org/v0/chains"),
     ("coinbase_cbxrp_proof_of_reserves", "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves"),
     ("cftc_contract_status_index", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"),
     ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
@@ -200,6 +218,18 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
     "morpho_cbxrp_oracle_state": (
         "Public Morpho API response is used for research; raw-response redistribution terms have not been reviewed, "
         "so retain the SHA-256 receipt only until permission is established."
+    ),
+    "morpho_cbxrp_token_metadata": (
+        "Public Morpho token metadata is used for research; raw-response redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only and publish only the minimal identity/decimals observation."
+    ),
+    "morpho_usdc_token_metadata": (
+        "Public Morpho token metadata is used for research; raw-response redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only and publish only the minimal identity/decimals observation."
+    ),
+    "morpho_base_chain_indexer_tip": (
+        "Public Morpho chain-indexer metadata is used for research; raw-response redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only and publish only the Base indexer-tip observation."
     ),
     "coinbase_cbxrp_proof_of_reserves": (
         "Public issuer page is cited for research; raw HTML redistribution terms have not been reviewed, "
@@ -4484,6 +4514,67 @@ def _raw_only_morpho_cbxrp_market_parameters(
     return [], None, False, "morpho_immutable_market_parameters_raw_only_until_token_decimals_and_market_lineage_are_normalized"
 
 
+def _morpho_token_metadata_data(payload: Any, source_id: str) -> Mapping[str, Any]:
+    """Validate a Morpho token metadata response against the configured Base asset identity."""
+    expected = MORPHO_TOKEN_METADATA_EXPECTED.get(source_id)
+    if expected is None:
+        raise XRPIngestionError("Morpho token metadata source ID is not configured")
+    data = _morpho_data(payload, source_id)
+    chain_id = _morpho_uint(data.get("chain_id"), "token chain_id")
+    address = _morpho_address(data.get("address"), "token address")
+    symbol = data.get("symbol")
+    decimals = _morpho_uint(data.get("decimals"), "token decimals")
+    expected_chain, expected_address, expected_symbol = expected
+    if chain_id != expected_chain:
+        raise XRPIngestionError("Morpho token metadata chain ID mismatch")
+    if address != expected_address:
+        raise XRPIngestionError("Morpho token metadata contract address mismatch")
+    if not isinstance(symbol, str) or symbol.casefold() != expected_symbol:
+        raise XRPIngestionError("Morpho token metadata symbol mismatch")
+    if decimals > 36:
+        raise XRPIngestionError("Morpho token decimals exceed the supported ERC-20 bound")
+    name = data.get("name")
+    if name is not None and (not isinstance(name, str) or not name.strip()):
+        raise XRPIngestionError("Morpho token metadata name must be a non-empty string when present")
+    return data
+
+
+def _morpho_base_chain_tip_data(payload: Any, source_id: str) -> Mapping[str, Any]:
+    """Select and validate the unique Base indexer row from Morpho's chain registry."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("data"), list):
+        raise XRPIngestionError("Morpho chain registry must contain a data array")
+    matches = [
+        row for row in payload["data"]
+        if isinstance(row, Mapping) and row.get("chain_id") == MORPHO_CBXRP_CHAIN_ID
+    ]
+    if len(matches) != 1:
+        raise XRPIngestionError("Morpho chain registry must contain exactly one Base row")
+    row = matches[0]
+    if row.get("name") != "Base":
+        raise XRPIngestionError("Morpho chain registry Base name mismatch")
+    _morpho_uint(row.get("last_indexed_block"), "Base last_indexed_block")
+    protocols = row.get("supported_protocols")
+    if not isinstance(protocols, list) or "blue" not in protocols:
+        raise XRPIngestionError("Morpho Base chain registry does not confirm Blue support")
+    return row
+
+
+def _raw_only_morpho_token_metadata(
+    payload: Any, *, source_id: str, captured: datetime, **_kwargs
+):
+    """Validate token identity/decimals but keep metadata research-only and digest-backed."""
+    _morpho_token_metadata_data(payload, source_id)
+    return [], None, False, "morpho_token_metadata_research_only_until_market_units_and_indexer_freshness_are_reconciled"
+
+
+def _raw_only_morpho_base_chain_indexer_tip(
+    payload: Any, *, source_id: str, captured: datetime, **_kwargs
+):
+    """Validate Base's last fully processed Morpho block without treating it as chain head."""
+    _morpho_base_chain_tip_data(payload, source_id)
+    return [], None, False, "morpho_base_indexer_tip_research_only_until_market_block_lag_is_reconciled"
+
+
 def _raw_only_morpho_cbxrp_market_state(
     payload: Any, *, source_id: str, captured: datetime, **_kwargs
 ):
@@ -5033,6 +5124,9 @@ PARSERS = {
     "morpho_cbxrp_market_liquidity": _raw_only_morpho_cbxrp_market_liquidity,
     "morpho_cbxrp_market_state_history": _raw_only_morpho_cbxrp_market_state_history,
     "morpho_cbxrp_oracle_state": _raw_only_morpho_cbxrp_oracle_state,
+    "morpho_cbxrp_token_metadata": _raw_only_morpho_token_metadata,
+    "morpho_usdc_token_metadata": _raw_only_morpho_token_metadata,
+    "morpho_base_chain_indexer_tip": _raw_only_morpho_base_chain_indexer_tip,
     "coinbase_cbxrp_proof_of_reserves": _raw_only_coinbase_cbxrp_proof_of_reserves,
     "cftc_contract_status_index": _parse_cftc_contract_status_index,
     "cftc_tff_financial_futures": _parse_cftc_tff,
@@ -5897,7 +5991,44 @@ def run_ingestion(
             raw_retention_reason=DIGEST_ONLY_RAW_SOURCE_REASONS.get(source_id, ""),
         )
         receipts.append(receipt)
-        if source_id == "bitbank_spot_transactions":
+        if source_id in MORPHO_TOKEN_METADATA_EXPECTED:
+            token_data = _morpho_token_metadata_data(payload, source_id)
+            research_only_observations.append(
+                {
+                    "observation_type": "morpho_token_metadata",
+                    "source_id": source_id,
+                    "source_uri": url,
+                    "raw_content_sha256": receipt["raw_content_sha256"],
+                    "receipt_id": receipt["receipt_id"],
+                    "raw_bytes_retained": receipt["raw_bytes_retained"],
+                    "captured_at_utc": source_captured_s,
+                    "chain_id": token_data["chain_id"],
+                    "address": token_data["address"],
+                    "name": token_data.get("name"),
+                    "symbol": token_data["symbol"],
+                    "decimals": token_data["decimals"],
+                    "model_eligible": False,
+                }
+            )
+        elif source_id == "morpho_base_chain_indexer_tip":
+            chain_row = _morpho_base_chain_tip_data(payload, source_id)
+            research_only_observations.append(
+                {
+                    "observation_type": "morpho_chain_indexer_tip",
+                    "source_id": source_id,
+                    "source_uri": url,
+                    "raw_content_sha256": receipt["raw_content_sha256"],
+                    "receipt_id": receipt["receipt_id"],
+                    "raw_bytes_retained": receipt["raw_bytes_retained"],
+                    "captured_at_utc": source_captured_s,
+                    "chain_id": chain_row["chain_id"],
+                    "chain_name": chain_row["name"],
+                    "last_indexed_block": chain_row["last_indexed_block"],
+                    "supported_protocols": chain_row["supported_protocols"],
+                    "model_eligible": False,
+                }
+            )
+        elif source_id == "bitbank_spot_transactions":
             observation = _bitbank_transactions_research_summary(payload)
             if observation is not None:
                 research_only_observations.append(
