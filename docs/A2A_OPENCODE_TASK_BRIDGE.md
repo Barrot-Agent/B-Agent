@@ -58,6 +58,29 @@ The runner is a queue consumer, not an HTTP server. It does not expose the host 
 - No live trading is enabled by this bridge.
 - Model output is not proof. The runner returns raw execution evidence and exit status; ChatGPT must independently evaluate it.
 
+## ChatGPT ↔ Barrot transmutation packet
+
+The exchange uses the existing durable task queue and the existing OpenCode-hosted `barrot` agent. OpenCode is Barrot's current reasoning/execution runtime in this deployment; it is not a second participant or a second Barrot brain. ChatGPT is the external interpretation and independent-review participant.
+
+A task may carry an optional `context.transmutation` packet. The Worker validates its protocol version, participant names, bounded round/phase/action, immutable original request, SHA-256, source-reference classifications, evidence references, acceptance criteria, stop conditions, and execution budget before queueing it. The packet remains inside the existing task record; no separate task or memory database is introduced.
+
+Protocol identifier: `barrot.chatgpt.transmutation.v1`.
+
+Required packet fields:
+
+- `packet_id`, optional `parent_packet_id`, `sender`, `recipient`, `round`, `phase`, and `requested_action`.
+- `original_request` and `original_request_sha256`; the hash is checked against the exact UTF-8 request bytes before queue acceptance.
+- `intent`, `invariants`, `constraints`, `source_refs`, `evidence_refs`, `acceptance_criteria`, and `stop_conditions`.
+- `budget.max_rounds` (1–8) and `budget.max_execution_seconds` (1–1800). The runner applies the lower of its configured timeout and the packet limit.
+
+Each source reference records `ref`, `source_kind`, and `relationship`. Source kinds are `governing`, `supporting`, `incoming`, `repository`, and `execution`; relationships are `governs`, `supports`, `contradicts`, `implements`, `observes`, and `derived_from`. This preserves the distinction between governing project sources, contextual material, new inputs, GitHub implementation state, and execution evidence.
+
+The OpenCode runner carries packet identity and lineage into a `transmutation_receipt` in its completion result. Barrot's response must preserve the original request and source references, distinguish observation from interpretation and hypothesis, retain contradictions and unresolved gaps, and route durable evidence through the existing MMI path. ChatGPT independently evaluates the returned execution evidence before issuing a next-round packet or closing the exchange.
+
+A round ends when its acceptance criteria are met, its stop condition fires, its budget is exhausted, required evidence is unavailable, or authorization is needed. A later packet links to the prior packet with `parent_packet_id`; it never replaces the original.
+
+This packet contract does not change the bridge activation gate. The A2A bridge remains quarantined until the separately required sandbox, credential isolation, egress restrictions, task authorization, deployment, and live end-to-end acceptance checks are satisfied.
+
 ## Verification
 
 Worker tests:
