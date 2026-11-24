@@ -269,6 +269,96 @@
         "The PDF text was inspected in the existing #1692 research artifact, but original PDF bytes and HTTP headers were not retained.",
         "The presentation is a consolidated issuer disclosure and does not establish customer-level settlement, custody or XRP purchases."
       ]
+    },
+    {
+      "id": "fed_fomc_statement_20261028",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "source_type": "primary_central_bank_policy_statement",
+      "publication_date": "2026-10-28",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "web_ref": "turn155084view0",
+      "source_independence_group": "federal_reserve",
+      "retrieved_at_utc": "2026-11-24T11:53:12Z",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "http_headers_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "Policy statement is a macro regime observation, not an XRP-specific causal signal.",
+        "The statement does not quantify subsequent FX, crypto or cross-border capital flows."
+      ]
+    },
+    {
+      "id": "boj_statement_20261030",
+      "publisher": "Bank of Japan",
+      "source_type": "primary_central_bank_policy_statement_pdf",
+      "publication_date": "2026-10-30",
+      "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf",
+      "web_ref": "turn324671view0",
+      "source_independence_group": "bank_of_japan",
+      "retrieved_at_utc": "2026-11-24T11:53:12Z",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "http_headers_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "The statement sets the overnight call-rate guideline and ETF-sale pace; it does not identify any XRP or digital-asset flow.",
+        "Potential yen carry-trade and risk-appetite effects are hypotheses requiring FX, rates and flow data."
+      ]
+    },
+    {
+      "id": "treasury_genius_nprm_20260817",
+      "publisher": "U.S. Department of the Treasury",
+      "source_type": "primary_regulatory_notice_of_proposed_rulemaking",
+      "publication_date": "2026-08-17",
+      "url": "https://home.treasury.gov/news/press-releases/sb0605",
+      "web_ref": "turn822147search2",
+      "source_independence_group": "us_treasury",
+      "retrieved_at_utc": "2026-11-24T11:53:12Z",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "http_headers_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "This is a proposed rule, not a final rule; public comments and final rulemaking can change requirements and timing.",
+        "The stated January 18, 2027 expected effective date is contingent on statutory and regulatory implementation."
+      ]
+    },
+    {
+      "id": "ofac_fincen_genius_proposed_rule_20260408",
+      "publisher": "U.S. Treasury OFAC and FinCEN",
+      "source_type": "primary_joint_proposed_rule_announcement",
+      "publication_date": "2026-04-08",
+      "url": "https://ofac.treasury.gov/recent-actions/20260408_33",
+      "web_ref": "turn812350view3",
+      "source_independence_group": "ofac_fincen",
+      "retrieved_at_utc": "2026-11-24T11:53:12Z",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "http_headers_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "The AML/CFT and sanctions-compliance rule was proposed, not final, in this announcement.",
+        "No issuer-specific implementation status or enforcement outcome is disclosed."
+      ]
+    },
+    {
+      "id": "occ_genius_final_rule_20261021",
+      "publisher": "Office of the Comptroller of the Currency",
+      "source_type": "primary_regulatory_final_rule_announcement",
+      "publication_date": "2026-10-21",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+      "web_ref": "turn779162search3",
+      "source_independence_group": "occ_regulator",
+      "retrieved_at_utc": "2026-11-24T11:53:12Z",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "http_headers_captured": false,
+      "model_eligible": false,
+      "limitations": [
+        "The final rule covers the OCC's statutory and supervisory remit; it is not the entirety of all federal and state GENIUS Act rulemaking.",
+        "Rule implementation does not establish XRP market demand or a particular issuer's compliance status."
+      ]
     }
   ],
   "observations": [
@@ -658,7 +748,7 @@
     "forecast_eligible": false,
     "raw_bytes_captured": false,
     "independent_timestamp_anchor": false,
-    "reason": "Public primary pages and regulator records were inspected through search results; original response bytes and HTTP headers were not captured. All observations remain research-only."
+    "reason": "Public primary pages and regulator records were inspected through search results; original response bytes and HTTP headers were not captured. All observations remain research-only. Macro-policy and stablecoin-regulation sources were also inspected; original response bytes and headers remain uncaptured."
   },
   "next_actions": [
     "Capture exact HTML/PDF response bytes and HTTP headers for each primary source through an authorized retrieval path, compute SHA-256, and bind each document to a canonical receipt.",
@@ -667,6 +757,148 @@
     "Check whether Coinbase Global Exchange RLUSD collateral support has actually launched; keep it unverified until a dated product notice or API evidence exists.",
     "Measure PNC pilot activation and payment volumes, and identify asset/network routing before treating the pilot as production-scale.",
     "Compare SBI VC Trade USDC/RLUSD distribution with XRP-JPY spot/derivatives volume and XRPL bridge activity; preserve stablecoin-substitution as a competing hypothesis.",
-    "Keep Ripple's product revenue and USD 16T enabled-transaction claim separate from XRP market turnover and XRPL ledger volume."
-  ]
+    "Keep Ripple's product revenue and USD 16T enabled-transaction claim separate from XRP market turnover and XRPL ledger volume.",
+    "Capture raw bytes and headers for Fed, BOJ, Treasury, FinCEN/OFAC and OCC macro-regulatory sources; bind each to a SHA-256 receipt.",
+    "Add Fed funds, U.S. real yields, USDJPY, JGB yields and policy-event timestamps to the point-in-time feature store only after source-quality and timezone validation.",
+    "Treat the BOJ ETF-sale change as a January 2027 scheduled event; test FX and cross-asset responses rather than assuming an XRP effect.",
+    "Track GENIUS Act proposed versus final rules separately and verify issuer-specific authorization before inferring USDC/RLUSD availability."
+  ],
+  "macro_regulatory_context": {
+    "captured_at_utc": "2026-11-24T11:53:12Z",
+    "data_cutoff_utc": "2026-11-24T11:53:12Z",
+    "source_ids": [
+      "fed_fomc_statement_20261028",
+      "boj_statement_20261030",
+      "treasury_genius_nprm_20260817",
+      "ofac_fincen_genius_proposed_rule_20260408",
+      "occ_genius_final_rule_20261021"
+    ],
+    "monetary_policy": [
+      {
+        "jurisdiction": "United States",
+        "decision_date": "2026-10-28",
+        "target_federal_funds_range_pct": [
+          3.75,
+          4
+        ],
+        "decision": "maintained",
+        "vote": "10-2",
+        "dissent": "Lisa D. Cook and Beth M. Hammack preferred a 25-basis-point increase.",
+        "macro_conditions": [
+          "economic activity expanding at a strong pace",
+          "inflation remains elevated",
+          "geopolitical uncertainty remains elevated",
+          "domestic spending resilient; productivity growth and capital investment robust"
+        ],
+        "evidence": [
+          "fed_fomc_statement_20261028"
+        ],
+        "model_eligible": false
+      },
+      {
+        "jurisdiction": "Japan",
+        "decision_date": "2026-10-30",
+        "overnight_call_rate_guideline_pct": 1.25,
+        "vote": "8-1",
+        "dissent": "Takata Hajime proposed an overnight call-rate guideline around 1.50 percent.",
+        "boj_etf_sales_book_value_annual_jpy_billion": 860,
+        "previous_boj_etf_sales_book_value_annual_jpy_billion": 330,
+        "boj_etf_sales_market_value_equivalent_jpy_billion": 2460,
+        "implementation_month": "2027-01",
+        "evidence": [
+          "boj_statement_20261030"
+        ],
+        "model_eligible": false
+      }
+    ],
+    "stablecoin_regulation": [
+      {
+        "jurisdiction": "United States",
+        "rule": "GENIUS Act Treasury section 3 proposed implementation",
+        "status": "notice_of_proposed_rulemaking",
+        "publication_date": "2026-08-17",
+        "expected_effective_date": "2027-01-18",
+        "key_scope": "Proposed definitions for issuance of payment stablecoins in the United States and offering or selling foreign-issued payment stablecoins to U.S. persons; foreign issuers would need technical capability and willingness to comply with lawful orders and applicable reciprocal arrangements.",
+        "evidence": [
+          "treasury_genius_nprm_20260817"
+        ],
+        "model_eligible": false
+      },
+      {
+        "jurisdiction": "United States",
+        "rule": "GENIUS Act AML/CFT and sanctions-compliance program rule",
+        "status": "joint_proposed_rule",
+        "publication_date": "2026-04-08",
+        "key_scope": "FinCEN and OFAC proposed AML/CFT and sanctions compliance requirements for permitted payment stablecoin issuers.",
+        "evidence": [
+          "ofac_fincen_genius_proposed_rule_20260408"
+        ],
+        "model_eligible": false
+      },
+      {
+        "jurisdiction": "United States",
+        "rule": "OCC GENIUS Act implementation rule",
+        "status": "final_rule_announcement",
+        "publication_date": "2026-10-21",
+        "key_scope": "OCC rulemaking within the OCC's jurisdiction for payment-stablecoin issuance and related activities.",
+        "evidence": [
+          "occ_genius_final_rule_20261021"
+        ],
+        "model_eligible": false
+      },
+      {
+        "jurisdiction": "United States",
+        "rule": "Ripple National Trust Bank charter",
+        "status": "consummated_and_effective",
+        "effective_date": "2026-10-26",
+        "key_scope": "OCC Corporate Applications Search records approval on 2025-12-12 and consummated/effective status on 2026-10-26; trust powers requested.",
+        "evidence": [
+          "occ_ripple_ntb_cas_20261026"
+        ],
+        "model_eligible": false
+      }
+    ],
+    "interpretation": [
+      "The Fed's October hold is not a clean dovish signal: two voting members preferred a hike and the statement says inflation remains elevated. The same statement reports resilient spending and strong investment, so growth and inflation risks point in different directions.",
+      "The BOJ's 1.25% overnight-rate guideline and faster ETF sales from January 2027 are relevant to yen funding, domestic portfolio demand and global risk appetite. A yen-carry unwind or broader risk-asset repricing is a hypothesis, not an observed XRP flow.",
+      "The GENIUS Act implementation is staggered: Treasury and FinCEN/OFAC proposals must remain labeled proposed, while the OCC has issued a final rule within its remit. Compliance and eligibility changes may affect USDC, RLUSD and SBI distribution economics, but do not establish which asset or network will win.",
+      "The Fed, BOJ and U.S. stablecoin rules create a mixed macro-regulatory regime. Do not map policy announcements directly into XRP direction without synchronized USD/JPY, U.S. real yields, JGB yields, stablecoin flows, crypto beta and order-book response data."
+    ],
+    "competing_hypotheses": [
+      {
+        "id": "MACRO-H1-higher-for-longer-risk-off",
+        "claim": "Elevated inflation, two Fed dissents favoring a hike, and BOJ normalization could tighten global liquidity and pressure high-beta digital assets.",
+        "support": [
+          "fed_fomc_statement_20261028",
+          "boj_statement_20261030"
+        ],
+        "disconfirming_or_missing": [
+          "The Fed held its target range and described strong domestic activity, productivity and capital investment.",
+          "The BOJ's ETF-sale pace is phased and begins in January 2027; no immediate crypto flow effect is shown."
+        ],
+        "test": "Evaluate chronological event windows using DXY, USDJPY, U.S. real yields, JGB yields, BTC beta, XRP spot, derivatives funding/open interest and exchange net flows."
+      },
+      {
+        "id": "MACRO-H2-regulated-stablecoin-expansion-risk-on",
+        "claim": "A clearer payment-stablecoin framework and national trust-bank infrastructure may increase institutional participation and digital-asset liquidity.",
+        "support": [
+          "treasury_genius_nprm_20260817",
+          "occ_genius_final_rule_20261021",
+          "occ_ripple_ntb_cas_20261026"
+        ],
+        "disconfirming_or_missing": [
+          "Treasury and AML/sanctions rules remain proposed in the cited notices.",
+          "Compliance costs, foreign-issuer restrictions and eligibility constraints may reduce access or concentrate distribution."
+        ],
+        "test": "Track final rule text, issuer authorizations, exchange support, stablecoin mint/redeem, bank custody balances and asset-specific settlement flows."
+      }
+    ],
+    "forecast_eligible": false,
+    "directional_forecast_issued": false,
+    "limitations": [
+      "No raw response bytes or HTTP headers were retained; all macro/regulatory observations are research-only.",
+      "No event-window statistical test or leakage-safe out-of-sample evaluation was performed.",
+      "No XRP directional forecast is justified by these policy announcements alone."
+    ]
+  }
 }
