@@ -42,6 +42,11 @@ def test_merge_gate_accepts_only_the_configured_sole_human_maintainer() -> None:
     assert "no independent approving review exists from the configured sole human maintainer" in source
 
 
+def test_merge_gate_uses_optional_read_only_branch_protection_token() -> None:
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert "GH_TOKEN: ${{ secrets.BARROT_BRANCH_PROTECTION_READ_TOKEN || github.token }}" in source
+
+
 def test_merge_gate_requires_full_suite_and_security_checks_on_exact_head() -> None:
     source = WORKFLOW.read_text(encoding="utf-8")
     for required in (
