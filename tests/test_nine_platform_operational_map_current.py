@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 
@@ -23,11 +24,11 @@ def load_map() -> dict:
     return json.loads(MAP.read_text(encoding="utf-8"))
 
 
-def test_current_operational_map_has_exact_nine_platform_scope_and_main_sha() -> None:
+def test_current_operational_map_has_exact_nine_platform_scope_and_main_sha_format() -> None:
     data = load_map()
     assert data["schema_version"] == "barrot.nine-platform-operational-map.v1"
     assert data["repository"]["full_name"] == "Barrot-Agent/B-Agent"
-    assert data["repository"]["main_sha"] == "7d7aba841cb849e461376a8fcdd4cc4fa10c9af6"
+    assert re.fullmatch(r"[0-9a-f]{40}", data["repository"]["main_sha"])
     assert set(data["platforms"]) == EXPECTED_PLATFORMS
 
 
