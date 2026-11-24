@@ -1163,3 +1163,11 @@ Governance remains blocked: PR #1663 draft, zero formal reviews, zero review thr
   that head before push. Exact-head CI on the rebased commit is pending.
 - Not verified: independent review, branch protection. PR #1686 remains draft;
   no merge was performed.
+
+
+## 2026-11-24 — Query transmutation ordinary-intake integration candidate
+- Source work: PR #1695, head a67ff4916f268612a4f215ae305eca2cef143617; rebased as a current-main candidate in this PR.
+- One admission boundary preserves the original request and request hash, rejects stop/policy/authorization/duplicate failures before planning or repository mutation, and records a request identifier for downstream traceability.
+- Wired into SmartAgent goal intake and the repository-task dispatcher before branch configuration or checkout.
+- The original source PR passed its recorded CI, full-suite, dependency-audit, and conflict-integrity checks; this rebased candidate must pass fresh exact-head checks before merge.
+- No deployment, secrets, external communication, or financial actions are authorized by this integration.

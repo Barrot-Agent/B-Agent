@@ -1,0 +1,432 @@
+from __future__ import annotations
+
+import hashlib
+import json
+import sys
+from pathlib import Path
+from types import ModuleType, SimpleNamespace
+from unittest.mock import patch
+
+import pytest
+
+from barrot_agent.creative.musical_dna import (
+    MusicalEvent,
+    MusicalManifest,
+    MusicalSection,
+)
+
+
+def _manifest(instruments: tuple[str, ...] = ("keys", "pad")) -> MusicalManifest:
+    events = tuple(
+        MusicalEvent(name, "harmony", 0.0, 1.0, 90, 60)
+        for name in instruments
+    )
+    return MusicalManifest(
+        bpm=120.0,
+        beats_per_bar=4,
+        scale="C minor",
+        instruments=instruments,
+        events=events,
+        sections=(
+            MusicalSection("intro", 1, 1, 0.25),
+            MusicalSection("verse", 2, 1, 0.5),
+        ),
+        provenance="audio_production_quality_gate_test",
+    )
+
+
+def _fake_bundle_modules() -> dict[str, ModuleType]:
+    np = pytest.importorskip("numpy")
+    pretty_midi = ModuleType("pretty_midi")
+
+    class FakeInstrument:
+        def __init__(self, name: str, notes: list[object]) -> None:
+            self.name = name
+            self.notes = notes
+
+    class FakeMidi:
+        def __init__(
+            self,
+            path: str | None = None,
+            *,
+            initial_tempo: float | None = None,
+            resolution: int = 220,
+        ) -> None:
+            self.resolution = resolution
+            self.instruments = (
+                [
+                    FakeInstrument("keys", [object()]),
+                    FakeInstrument("pad", []),
+                ]
+                if isinstance(path, str)
+                else []
+            )
+
+        def get_end_time(self) -> float:
+            return 1.0
+
+    pretty_midi.PrettyMIDI = FakeMidi
+
+    scipy = ModuleType("scipy")
+    scipy.__path__ = []
+    scipy_io = ModuleType("scipy.io")
+    scipy_io.__path__ = []
+    scipy_signal = ModuleType("scipy.signal")
+    wavfile = ModuleType("scipy.io.wavfile")
+
+    def write(handle, sample_rate: int, samples) -> None:
+        array = np.asarray(samples, dtype=np.float32)
+        handle.write(b"RIFF")
+        handle.write(int(sample_rate).to_bytes(4, "little"))
+        handle.write(array.tobytes())
+
+    wavfile.write = write
+    scipy_io.wavfile = wavfile
+    scipy_signal.resample_poly = lambda samples, up, down, axis=0: samples
+    scipy.io = scipy_io
+    scipy.signal = scipy_signal
+
+    return {
+        "pretty_midi": pretty_midi,
+        "scipy": scipy,
+        "scipy.io": scipy_io,
+        "scipy.io.wavfile": wavfile,
+        "scipy.signal": scipy_signal,
+    }
+
+
+def _fake_librosa(
+    signal: np.ndarray,
+    *,
+    onsets: tuple[int, ...] = (0, 1, 2),
+    tempo: float | np.ndarray = 120.0,
+) -> ModuleType:
+    np = pytest.importorskip("numpy")
+    librosa = ModuleType("librosa")
+    librosa.load = lambda *args, **kwargs: (signal, 8000)
+    librosa.beat = SimpleNamespace(
+        beat_track=lambda **kwargs: (tempo, np.asarray([0], dtype=int))
+    )
+    librosa.onset = SimpleNamespace(
+        onset_detect=lambda **kwargs: np.asarray(onsets, dtype=int)
+    )
+    librosa.frames_to_time = lambda frames, sr: (
+        np.asarray(frames, dtype=float) * (512.0 / float(sr))
+    )
+    librosa.feature = SimpleNamespace(
+        rms=lambda y: np.asarray([[0.1, 0.2, 0.3]], dtype=float),
+        chroma_stft=lambda y, sr: np.ones((12, 3), dtype=float),
+    )
+    return librosa
+
+
+def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
+    tmp_path: Path,
+) -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_bundle import render_production_bundle
+
+    soundfont = tmp_path / "caller-supplied.sf2"
+    soundfont.write_bytes(b"test-soundfont")
+    target = tmp_path / "deliverables" / "bundle"
+    sample_rate = 8000
+    frames = sample_rate * 4
+    mix = np.tile(
+        np.asarray([[0.9, -0.9], [0.45, -0.45]], dtype=np.float32),
+        (frames // 2, 1),
+    )
+    keys = np.tile(
+        np.asarray([[0.7, -0.7], [0.3, -0.3]], dtype=np.float32),
+        (frames // 2, 1),
+    )
+    render_calls: list[dict] = []
+
+    def render(midi, **kwargs):
+        render_calls.append(kwargs)
+        if len(render_calls) == 1:
+            return mix.copy()
+        assert midi.instruments[0].name == "keys"
+        return keys.copy()
+
+    def measure(audio, _resample_poly, *, oversample):
+        assert oversample == 4
+        values = np.asarray(audio, dtype=np.float64)
+        peak = float(np.max(np.abs(values)))
+        rms = float(np.sqrt(np.mean(np.square(values))))
+        return peak, peak * 1.05, rms
+
+    def export(manifest, path: Path) -> None:
+        Path(path).write_bytes(b"named-midi-tracks")
+
+    with (
+        patch.dict(sys.modules, _fake_bundle_modules()),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=export),
+        patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=render),
+        patch("barrot_agent.creative.audio_bundle._measure_audio_levels", side_effect=measure),
+    ):
+        result = render_production_bundle(
+            _manifest(),
+            target,
+            soundfont_path=soundfont,
+            sample_rate=sample_rate,
+            headroom_dbfs=-6.0,
+            soundfont_source="caller supplied test fixture",
+            soundfont_license="caller supplied; not independently verified",
+        )
+
+    metadata = json.loads(result.metadata_path.read_text(encoding="utf-8"))
+    ceiling = 10 ** (-6.0 / 20.0)
+
+    assert result.mix_path.is_file()
+    assert result.midi_path.read_bytes() == b"named-midi-tracks"
+    assert len(result.stems) == 2
+    assert all(path.is_file() for path in result.stems)
+    assert all(path.read_bytes().startswith(b"RIFF") for path in (result.mix_path, *result.stems))
+    assert result.sample_rate == sample_rate
+    assert result.channels == 2
+    assert result.duration_seconds == pytest.approx(4.0)
+    assert result.true_peak_level <= ceiling + 1e-6
+    assert result.peak_level <= ceiling + 1e-6
+    assert metadata["stem_alignment"]["aligned"] is True
+    assert metadata["stem_alignment"]["sample_count"] == frames
+    assert [stem["instrument"] for stem in metadata["stems"]] == ["keys", "pad"]
+    assert all(stem["sample_count"] == frames for stem in metadata["stems"])
+    assert metadata["common_gain_linear"] < 1.0
+    assert metadata["rights"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
+    assert metadata["rights"]["soundfont_sha256"] == hashlib.sha256(soundfont.read_bytes()).hexdigest()
+    assert metadata["native_daw_project_available"] is False
+    assert metadata["stem_sum_reconstruction_guaranteed"] is False
+    assert metadata["midi"]["track_names"] == ["keys", "pad"]
+    assert len(render_calls) == 2
+    assert all(call["render_duration_seconds"] == pytest.approx(4.0) for call in render_calls)
+
+
+def test_bundle_requires_explicit_rights_metadata_to_claim_any_status(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_bundle import render_production_bundle
+
+    soundfont = tmp_path / "fixture.sf2"
+    soundfont.write_bytes(b"fixture")
+    target = tmp_path / "bundle"
+
+    def render(midi, **kwargs):
+        return np.zeros((4, 2), dtype=np.float32)
+
+    with (
+        patch.dict(sys.modules, _fake_bundle_modules()),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=render),
+        patch("barrot_agent.creative.audio_bundle._measure_audio_levels", return_value=(0.0, 0.0, 0.0)),
+    ):
+        result = render_production_bundle(_manifest(), target, soundfont_path=soundfont)
+
+    metadata = json.loads(result.metadata_path.read_text(encoding="utf-8"))
+    assert metadata["rights"]["status"] == "MISSING_SOURCE_OR_LICENSE_METADATA"
+    assert metadata["rights"]["soundfont_source"] is None
+    assert metadata["rights"]["soundfont_license"] is None
+
+
+def test_bundle_refuses_existing_directory_without_modifying_user_file(tmp_path: Path) -> None:
+    from barrot_agent.creative.audio_bundle import render_production_bundle
+
+    target = tmp_path / "existing"
+    target.mkdir()
+    preserved = target / "user.wav"
+    preserved.write_bytes(b"user-owned audio")
+
+    with pytest.raises(FileExistsError):
+        render_production_bundle(
+            _manifest(),
+            target,
+            soundfont_path=tmp_path / "missing.sf2",
+        )
+
+    assert preserved.read_bytes() == b"user-owned audio"
+
+
+def test_bundle_rejects_missing_soundfont_and_invalid_configuration_before_output(
+    tmp_path: Path,
+) -> None:
+    from barrot_agent.creative.audio_bundle import render_production_bundle
+
+    soundfont = tmp_path / "fixture.sf2"
+    soundfont.write_bytes(b"fixture")
+
+    with pytest.raises(FileNotFoundError):
+        render_production_bundle(
+            _manifest(), tmp_path / "missing", soundfont_path=tmp_path / "absent.sf2"
+        )
+    with pytest.raises(ValueError, match="sample_rate"):
+        render_production_bundle(
+            _manifest(), tmp_path / "bad-rate", soundfont_path=soundfont, sample_rate=100
+        )
+    with pytest.raises(ValueError, match="unique"):
+        render_production_bundle(
+            _manifest(("keys", "keys")),
+            tmp_path / "duplicate",
+            soundfont_path=soundfont,
+        )
+    with pytest.raises(ValueError):
+        render_production_bundle(
+            _manifest(),
+            tmp_path / "bad-headroom",
+            soundfont_path=soundfont,
+            headroom_dbfs=1.0,
+        )
+    assert not (tmp_path / "missing").exists()
+    assert not (tmp_path / "bad-rate").exists()
+    assert not (tmp_path / "duplicate").exists()
+    assert not (tmp_path / "bad-headroom").exists()
+
+
+def test_bundle_reports_missing_optional_music_dependencies(tmp_path: Path) -> None:
+    from barrot_agent.creative.audio_bundle import render_production_bundle
+
+    soundfont = tmp_path / "fixture.sf2"
+    soundfont.write_bytes(b"fixture")
+    with patch.dict(sys.modules, {"pretty_midi": None}):
+        with pytest.raises(RuntimeError, match="optional music dependencies"):
+            render_production_bundle(
+                _manifest(), tmp_path / "bundle", soundfont_path=soundfont
+            )
+    assert not (tmp_path / "bundle").exists()
+
+
+def test_bundle_rejects_invalid_mix_and_sample_misaligned_stem(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_bundle import render_production_bundle
+
+    soundfont = tmp_path / "fixture.sf2"
+    soundfont.write_bytes(b"fixture")
+
+    with (
+        patch.dict(sys.modules, _fake_bundle_modules()),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch("barrot_agent.creative.audio_bundle._render_midi_stereo", return_value=np.zeros((4, 1), dtype=np.float32)),
+    ):
+        with pytest.raises(ValueError, match="invalid stereo mix"):
+            render_production_bundle(
+                _manifest(), tmp_path / "invalid-mix", soundfont_path=soundfont
+            )
+
+    calls = 0
+
+    def misaligned(midi, **kwargs):
+        nonlocal calls
+        calls += 1
+        return np.zeros((4 if calls == 1 else 3, 2), dtype=np.float32)
+
+    with (
+        patch.dict(sys.modules, _fake_bundle_modules()),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=misaligned),
+    ):
+        with pytest.raises(RuntimeError, match="not sample-aligned"):
+            render_production_bundle(
+                _manifest(), tmp_path / "misaligned", soundfont_path=soundfont
+            )
+
+
+def test_bundle_keeps_new_partial_directory_for_failure_inspection(tmp_path: Path) -> None:
+    from barrot_agent.creative.audio_bundle import render_production_bundle
+
+    soundfont = tmp_path / "fixture.sf2"
+    soundfont.write_bytes(b"fixture")
+    target = tmp_path / "partial"
+
+    with (
+        patch.dict(sys.modules, _fake_bundle_modules()),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=RuntimeError("render failed")),
+    ):
+        with pytest.raises(RuntimeError, match="render failed"):
+            render_production_bundle(
+                _manifest(), target, soundfont_path=soundfont
+            )
+
+    assert (target / "stems").is_dir()
+    assert (target / "composition.mid").read_bytes() == b"midi"
+
+
+def test_float32_wav_writer_rejects_mono_and_non_finite_audio(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_bundle import _write_float32_wav
+
+    writer = SimpleNamespace(write=lambda *args: None)
+    with pytest.raises(ValueError, match="stereo"):
+        _write_float32_wav(tmp_path / "mono.wav", np.zeros((4, 1)), 8000, writer)
+    with pytest.raises(ValueError, match="non-finite"):
+        _write_float32_wav(
+            tmp_path / "nan.wav",
+            np.asarray([[np.nan, 0.0]], dtype=np.float32),
+            8000,
+            writer,
+        )
+    assert not (tmp_path / "mono.wav").exists()
+    assert not (tmp_path / "nan.wav").exists()
+
+
+def test_audio_adapter_extracts_timing_dynamics_scale_and_section_map(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_adapter import analyze_audio
+
+    source = tmp_path / "source.wav"
+    source.write_bytes(b"source")
+    signal = np.ones(8000, dtype=np.float32)
+    with patch.dict(sys.modules, {"librosa": _fake_librosa(signal)}):
+        manifest = analyze_audio(source, instrument_label="reference_audio")
+
+    assert manifest.provenance == "audio_abstract_features_only"
+    assert manifest.instruments == ("reference_audio",)
+    assert len(manifest.events) == 3
+    assert all(event.role == "transient" for event in manifest.events)
+    assert [event.beat for event in manifest.events] == sorted(
+        event.beat for event in manifest.events
+    )
+    assert all(1 <= event.velocity <= 127 for event in manifest.events)
+    assert manifest.sections[0].start_bar == 1
+    assert manifest.sections[0].bars == 1
+    assert manifest.scale.endswith(("major", "minor"))
+
+
+def test_audio_adapter_uses_sustain_fallback_and_default_tempo(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_adapter import analyze_audio
+
+    source = tmp_path / "sustain.wav"
+    source.write_bytes(b"source")
+    signal = np.ones(8000, dtype=np.float32)
+    with patch.dict(
+        sys.modules,
+        {"librosa": _fake_librosa(signal, onsets=(), tempo=np.asarray([np.nan]))},
+    ):
+        manifest = analyze_audio(source)
+
+    assert manifest.bpm == 120.0
+    assert len(manifest.events) == 1
+    assert manifest.events[0].role == "sustain"
+    assert manifest.events[0].velocity == 64
+
+
+def test_audio_adapter_rejects_empty_audio_and_missing_files(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_adapter import analyze_audio
+
+    with pytest.raises(FileNotFoundError):
+        analyze_audio(tmp_path / "absent.wav")
+
+    source = tmp_path / "empty.wav"
+    source.write_bytes(b"empty")
+    with patch.dict(sys.modules, {"librosa": _fake_librosa(np.asarray([], dtype=np.float32))}):
+        with pytest.raises(ValueError, match="no samples"):
+            analyze_audio(source)
+
+
+def test_audio_adapter_reports_missing_optional_dependency(tmp_path: Path) -> None:
+    from barrot_agent.creative.audio_adapter import analyze_audio
+
+    source = tmp_path / "source.wav"
+    source.write_bytes(b"source")
+    with patch.dict(sys.modules, {"librosa": None}):
+        with pytest.raises(RuntimeError, match="optional dependencies"):
+            analyze_audio(source)

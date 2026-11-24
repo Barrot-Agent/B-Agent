@@ -6,15 +6,18 @@ DNA cheat sheets in producers/. Technique study, not song copying: every
 pattern below is an original grid derived from each producer's *methods*.
 
 Usage:
-    python3 scripts/make_beats.py            # build all 5 tracks into tracks/
-    python3 scripts/make_beats.py --check    # reload + verify every track
+    python3 scripts/make_beats.py --seed 0   # new build in tracks/builds/seed-0/
+    python3 scripts/make_beats.py --check    # verify the checked-in tracks/
+    python3 scripts/make_beats.py --check --output-dir tracks/builds/seed-0
 """
 from __future__ import annotations
 
 import argparse
 import math
+import os
 import struct
 import sys
+import tempfile
 import wave
 from pathlib import Path
 
@@ -388,18 +391,20 @@ def _env(n, attack=0.004, decay=0.3):
     return e
 
 
-def synth_drum(gm, vel, dur):
+def synth_drum(gm, vel, dur, *, rng: np.random.Generator | None = None):
+    """Render one synthesized drum hit with an explicit reproducible RNG."""
+    rng = rng if rng is not None else np.random.default_rng(0)
     n = int(SR * dur)
     t = np.arange(n) / SR
     amp = vel / 127.0
     if gm == K:      # warm punchy kick: pitch sweep + click
         f = np.linspace(150, 44, n)
         body = np.sin(2 * np.pi * np.cumsum(f) / SR) * _env(n, 0.002, 0.16)
-        click = np.random.randn(min(n, int(0.004 * SR))) * 0.4 * _env(min(n, int(0.004 * SR)), 0.001, 0.004)
+        click = rng.standard_normal(min(n, int(0.004 * SR))) * 0.4 * _env(min(n, int(0.004 * SR)), 0.001, 0.004)
         out = body * 1.0
         out[:len(click)] += click
     elif gm in (SN,):  # snare: tone + noise
-        noise = np.random.randn(n)
+        noise = rng.standard_normal(n)
         nl = np.convolve(noise, np.ones(6) / 6, "same")     # crude lowpass
         tone = np.sin(2 * np.pi * 190 * t) * _env(n, 0.001, 0.06)
         out = (noise - nl) * 1.1 * _env(n, 0.001, 0.07) + tone * 0.8
@@ -408,18 +413,18 @@ def synth_drum(gm, vel, dur):
         for i, off in enumerate((0.0, 0.011, 0.024)):
             s = int(off * SR)
             m = n - s
-            burst = np.random.randn(m) * _env(m, 0.001, 0.05 if i == 2 else 0.015)
+            burst = rng.standard_normal(m) * _env(m, 0.001, 0.05 if i == 2 else 0.015)
             out[s:] += burst
     elif gm in (CH, PH):   # closed/pedal hat
-        noise = np.random.randn(n)
+        noise = rng.standard_normal(n)
         hp = noise - np.convolve(noise, np.ones(24) / 24, "same")
         out = hp * _env(n, 0.001, 0.02)
     elif gm == OH:
-        noise = np.random.randn(n)
+        noise = rng.standard_normal(n)
         hp = noise - np.convolve(noise, np.ones(24) / 24, "same")
         out = hp * _env(n, 0.001, 0.11)
     elif gm == SH:   # shaker: soft noisy swish
-        noise = np.random.randn(n)
+        noise = rng.standard_normal(n)
         bp = noise - np.convolve(noise, np.ones(16) / 16, "same")
         out = bp * _env(n, 0.008, 0.028) * 0.7
     elif gm in (CG1, CG2):   # conga/log: pitched thonk
@@ -434,7 +439,7 @@ def synth_drum(gm, vel, dur):
         f0 = 2400 if gm == TR_M else 1900
         out = np.sin(2 * np.pi * f0 * t) * _env(n, 0.001, 0.03 if gm == TR_M else 0.14)
     elif gm == TB:   # tambourine
-        noise = np.random.randn(n)
+        noise = rng.standard_normal(n)
         hp = noise - np.convolve(noise, np.ones(10) / 10, "same")
         out = hp * _env(n, 0.002, 0.045)
     elif gm == CB:   # cowbell
@@ -443,7 +448,7 @@ def synth_drum(gm, vel, dur):
     elif gm == KL:   # claves
         out = np.sin(2 * np.pi * 2450 * t) * _env(n, 0.001, 0.014)
     elif gm == RD:   # ride
-        noise = np.random.randn(n)
+        noise = rng.standard_normal(n)
         hp = noise - np.convolve(noise, np.ones(12) / 12, "same")
         out = hp * _env(n, 0.002, 0.16) * 0.5
     else:            # fallback tick
@@ -629,7 +634,32 @@ def sample_mel(kind, pitch, vel, dur):
     return (sig * (vel / 127.0)).astype(np.float32)
 
 
-def render_wav(cfg, path):
+def _linear_headroom_gain(peak_level: float, ceiling_dbfs: float) -> float:
+    """Return a non-boosting scalar gain that preserves dynamics below a ceiling."""
+    if not math.isfinite(peak_level) or peak_level < 0:
+        raise ValueError("peak_level must be finite and non-negative")
+    if not math.isfinite(ceiling_dbfs) or not -24.0 <= ceiling_dbfs <= 0.0:
+        raise ValueError("headroom_dbfs must be between -24 and 0 dBFS")
+    if peak_level == 0.0:
+        return 1.0
+    ceiling = 10.0 ** (ceiling_dbfs / 20.0)
+    return min(1.0, ceiling / peak_level)
+
+
+def render_wav(
+    cfg,
+    path,
+    *,
+    seed: int = 0,
+    headroom_dbfs: float = -6.0,
+):
+    """Render a deterministic stereo preview with linear sample-peak headroom.
+
+    A single non-boosting gain reduction replaces nonlinear soft clipping.
+    This preserves the mix's relative dynamics; it is not a limiter or master.
+    Existing WAV destinations are never overwritten.
+    """
+    rng = np.random.default_rng(seed)
     spb = 60.0 / cfg["bpm"]
     s16 = spb / 4.0
     is_major = cfg["key"][1] == "major"
@@ -674,7 +704,7 @@ def render_wav(cfg, path):
                     dur = 0.35 if gm == K else (0.5 if gm == RD else 0.28)
                     sig = kit_drum(gm, vel)     # v2: real 808 one-shots first
                     if sig is None:
-                        sig = synth_drum(gm, vel, dur)
+                        sig = synth_drum(gm, vel, dur, rng=rng)
                     place((L, R), sig, t_of(bar, step) + off, PAN.get(gm, 0.0))
             sa = cfg.get("strange_accent")
             if sa and bar % sa[3] == sa[3] - 1:      # v2: strange accent, every 4th bar
@@ -682,7 +712,7 @@ def render_wav(cfg, path):
                 off = (cfg.get("offsets_ms") or {}).get(gm_a, 0) / 1000.0
                 sig = kit_drum(gm_a, vel_a)
                 if sig is None:
-                    sig = synth_drum(gm_a, vel_a, 0.28)
+                    sig = synth_drum(gm_a, vel_a, 0.28, rng=rng)
                 place((L, R), sig, t_of(bar, step_a) + off, PAN.get(gm_a, 0.0))
             clave = cfg.get("clave")            # v2: explicit 3-2 son clave, 2-bar cycle
             if clave:
@@ -702,7 +732,7 @@ def render_wav(cfg, path):
                     duck = min(1.0, 0.35 + 0.65 * min(1.0, dist / 0.09))
                     sig = kit_sample("tom_mid_808.wav", hp_hz=80)
                     if sig is None:
-                        sig = synth_drum(45, vel, 0.28)
+                        sig = synth_drum(45, vel, 0.28, rng=rng)
                     else:
                         sig = (sig * (vel / 127.0) * duck).astype(np.float32)
                     place((L, R), sig, t0, 0.0)
@@ -712,10 +742,10 @@ def render_wav(cfg, path):
                     vel_b = 40 + int(50 * i / 15)
                     sig = kit_drum(SH, vel_b)
                     if sig is None:
-                        sig = synth_drum(SH, vel_b, 0.28)
+                        sig = synth_drum(SH, vel_b, 0.28, rng=rng)
                     place((L, R), sig, t_of(bar, i), PAN.get(SH, 0.0))
                 nn = int(16 * s16 * SR)
-                sw = np.random.randn(nn).astype(np.float32)
+                sw = rng.standard_normal(nn).astype(np.float32)
                 sw = np.convolve(sw, np.ones(10) / 10, "same")
                 sw *= np.linspace(0.0, 1.0, nn) ** 2.5
                 place((L, R), sw * 0.5, t_of(bar, 0), 0.0)
@@ -767,8 +797,8 @@ def render_wav(cfg, path):
 
     if cfg.get("ambient_bed"):
         # v2: filtered noise + root-pitched drone, far below the groove
-        rng = np.random.default_rng(4)
-        noise = rng.normal(0, 1, length).astype(np.float32)
+        bed_rng = np.random.default_rng(seed + 1_000_003)
+        noise = bed_rng.standard_normal(length).astype(np.float32)
         noise = np.convolve(noise, np.ones(64) / 64, "same")
         noise /= max(1e-9, np.abs(noise).max())
         rf = 440.0 * 2 ** ((midi_of(cfg["key"][0], 1) - 69) / 12)
@@ -782,13 +812,19 @@ def render_wav(cfg, path):
         R += bed
 
     mix = np.stack([L, R], axis=1)
-    mix = np.tanh(mix * 1.15) * 0.92       # gentle glue/limiter
-    data = (mix * 32767).astype("<i2")
-    with wave.open(str(path), "wb") as w:
-        w.setnchannels(2)
-        w.setsampwidth(2)
-        w.setframerate(SR)
-        w.writeframes(data.tobytes())
+    peak = float(np.max(np.abs(mix)))
+    gain = _linear_headroom_gain(peak, headroom_dbfs)
+    if gain < 1.0:
+        mix = mix * gain
+    # The 16-bit preview remains a stereo mix, not stems or a mastered deliverable.
+    data = np.clip(np.rint(mix * 32767), -32768, 32767).astype("<i2")
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    with Path(path).open("xb") as output:
+        with wave.open(output, "wb") as w:
+            w.setnchannels(2)
+            w.setsampwidth(2)
+            w.setframerate(SR)
+            w.writeframes(data.tobytes())
     return length / SR
 
 
@@ -863,31 +899,73 @@ def write_pattern_txt(cfg, path, total_bars):
         lines.append("== V2 PATCHES ==")
         lines.extend(f"  {x}" for x in v2)
         lines.append("")
-    path.write_text("\n".join(lines), encoding="utf-8")
+    with path.open("x", encoding="utf-8") as handle:
+        handle.write("\n".join(lines))
+
+
+def _write_midi_exclusive(midi, path: str | Path) -> None:
+    """Atomically publish a complete MIDI file without replacing an existing path."""
+    target = Path(path)
+    fd, temporary_name = tempfile.mkstemp(
+        prefix=f".{target.name}.", suffix=".tmp", dir=target.parent
+    )
+    os.close(fd)
+    temporary = Path(temporary_name)
+    try:
+        midi.write(str(temporary))
+        try:
+            # Same-directory hard-link publication is atomic and refuses an existing target.
+            # Unsupported filesystems fail closed; never fall back to an overwrite-capable write.
+            os.link(temporary, target)
+        except FileExistsError:
+            raise FileExistsError(
+                f"Refusing to overwrite existing MIDI: {target}"
+            ) from None
+    finally:
+        try:
+            temporary.unlink()
+        except FileNotFoundError:
+            pass
 
 
 # ------------------------------------------------------------------- runner
-def build_all():
-    OUT.mkdir(exist_ok=True)
+def build_all(output_dir: str | Path | None = None, seed: int = 0):
+    """Build into a new versioned directory; refuse to replace any artifact."""
+    target_dir = Path(output_dir) if output_dir is not None else OUT / "builds" / f"seed-{seed}"
+    targets = [
+        target_dir / f"{cfg['slug']}.{extension}"
+        for cfg in TRACKS
+        for extension in ("mid", "wav")
+    ] + [target_dir / f"{cfg['slug']}_pattern.txt" for cfg in TRACKS]
+    existing = [str(path) for path in targets if path.exists()]
+    if existing:
+        raise FileExistsError(
+            "Refusing to overwrite existing audio build artifacts: " + ", ".join(existing)
+        )
+
+    target_dir.mkdir(parents=True, exist_ok=True)
     report = []
-    for cfg in TRACKS:
+    for index, cfg in enumerate(TRACKS):
         pm, bars = build_midi(cfg)
-        mid = OUT / f"{cfg['slug']}.mid"
-        pm.write(str(mid))
-        wav = OUT / f"{cfg['slug']}.wav"
-        dur = render_wav(cfg, wav)
-        write_pattern_txt(cfg, OUT / f"{cfg['slug']}_pattern.txt", bars)
+        mid = target_dir / f"{cfg['slug']}.mid"
+        if mid.exists():
+            raise FileExistsError(f"Refusing to overwrite existing MIDI: {mid}")
+        _write_midi_exclusive(pm, mid)
+        wav = target_dir / f"{cfg['slug']}.wav"
+        dur = render_wav(cfg, wav, seed=seed + index)
+        write_pattern_txt(cfg, target_dir / f"{cfg['slug']}_pattern.txt", bars)
         report.append((cfg["slug"], cfg["bpm"], f"{cfg['key'][0]} {cfg['key'][1]}",
                        bars, f"{dur:.1f}s", f"{wav.stat().st_size / 1e6:.1f}MB"))
     return report
 
 
-def check_all():
+def check_all(output_dir: str | Path = OUT):
     import pretty_midi
     ok = True
+    root = Path(output_dir)
     for cfg in TRACKS:
-        mid = OUT / f"{cfg['slug']}.mid"
-        wav = OUT / f"{cfg['slug']}.wav"
+        mid = root / f"{cfg['slug']}.mid"
+        wav = root / f"{cfg['slug']}.wav"
         try:
             pm = pretty_midi.PrettyMIDI(str(mid))
             notes = sum(len(i.notes) for i in pm.instruments)
@@ -914,15 +992,21 @@ def check_all():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--check", action="store_true")
+    ap.add_argument("--check", action="store_true", help="verify existing MIDI/WAV artifacts")
+    ap.add_argument("--seed", type=int, default=0, help="deterministic synthesis seed")
+    ap.add_argument("--output-dir", type=Path, default=None,
+                    help="new output directory; existing artifacts are never overwritten")
     args = ap.parse_args()
     if args.check:
-        ok = check_all()
+        ok = check_all(args.output_dir or OUT)
         sys.exit(0 if ok else 1)
-    for row in build_all():
+
+    output_dir = args.output_dir or OUT / "builds" / f"seed-{args.seed}"
+    for row in build_all(output_dir=output_dir, seed=args.seed):
         print(f"built {row[0]}: {row[1]} BPM, {row[2]}, {row[3]} bars, {row[4]}, WAV {row[5]}")
+    print(f"\noutput directory: {output_dir}")
     print("\n-- verification pass --")
-    sys.exit(0 if check_all() else 1)
+    sys.exit(0 if check_all(output_dir) else 1)
 
 
 if __name__ == "__main__":

@@ -88,6 +88,9 @@ data/xrp_intelligence/feature_store.sqlite3-journal
 # MCP sync append-only runtime log (snapshots and last-good cache ARE committed)
 results/mcp_sync/sync_log.jsonl
 
+# Query transmutation runtime records (immutable originals and hash-linked journal)
+results/transmutation/
+
 # HRM sandbox comparison output (scratch, regenerated per run)
 web/hrm_sandbox_signal.json
 .config/gh/hosts.yml
