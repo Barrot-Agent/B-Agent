@@ -7,7 +7,6 @@ from pathlib import Path
 from types import ModuleType, SimpleNamespace
 from unittest.mock import patch
 
-import numpy as np
 import pytest
 
 from barrot_agent.creative.musical_dna import (
@@ -37,6 +36,7 @@ def _manifest(instruments: tuple[str, ...] = ("keys", "pad")) -> MusicalManifest
 
 
 def _fake_bundle_modules() -> dict[str, ModuleType]:
+    np = pytest.importorskip("numpy")
     pretty_midi = ModuleType("pretty_midi")
 
     class FakeInstrument:
@@ -101,6 +101,7 @@ def _fake_librosa(
     onsets: tuple[int, ...] = (0, 1, 2),
     tempo: float | np.ndarray = 120.0,
 ) -> ModuleType:
+    np = pytest.importorskip("numpy")
     librosa = ModuleType("librosa")
     librosa.load = lambda *args, **kwargs: (signal, 8000)
     librosa.beat = SimpleNamespace(
@@ -122,6 +123,7 @@ def _fake_librosa(
 def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
     tmp_path: Path,
 ) -> None:
+    np = pytest.importorskip("numpy")
     from barrot_agent.creative.audio_bundle import render_production_bundle
 
     soundfont = tmp_path / "caller-supplied.sf2"
@@ -200,6 +202,7 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
 
 
 def test_bundle_requires_explicit_rights_metadata_to_claim_any_status(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
     from barrot_agent.creative.audio_bundle import render_production_bundle
 
     soundfont = tmp_path / "fixture.sf2"
@@ -290,6 +293,7 @@ def test_bundle_reports_missing_optional_music_dependencies(tmp_path: Path) -> N
 
 
 def test_bundle_rejects_invalid_mix_and_sample_misaligned_stem(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
     from barrot_agent.creative.audio_bundle import render_production_bundle
 
     soundfont = tmp_path / "fixture.sf2"
@@ -345,6 +349,7 @@ def test_bundle_keeps_new_partial_directory_for_failure_inspection(tmp_path: Pat
 
 
 def test_float32_wav_writer_rejects_mono_and_non_finite_audio(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
     from barrot_agent.creative.audio_bundle import _write_float32_wav
 
     writer = SimpleNamespace(write=lambda *args: None)
@@ -362,6 +367,7 @@ def test_float32_wav_writer_rejects_mono_and_non_finite_audio(tmp_path: Path) ->
 
 
 def test_audio_adapter_extracts_timing_dynamics_scale_and_section_map(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
     from barrot_agent.creative.audio_adapter import analyze_audio
 
     source = tmp_path / "source.wav"
@@ -384,6 +390,7 @@ def test_audio_adapter_extracts_timing_dynamics_scale_and_section_map(tmp_path: 
 
 
 def test_audio_adapter_uses_sustain_fallback_and_default_tempo(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
     from barrot_agent.creative.audio_adapter import analyze_audio
 
     source = tmp_path / "sustain.wav"
@@ -402,6 +409,7 @@ def test_audio_adapter_uses_sustain_fallback_and_default_tempo(tmp_path: Path) -
 
 
 def test_audio_adapter_rejects_empty_audio_and_missing_files(tmp_path: Path) -> None:
+    np = pytest.importorskip("numpy")
     from barrot_agent.creative.audio_adapter import analyze_audio
 
     with pytest.raises(FileNotFoundError):
