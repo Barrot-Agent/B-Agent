@@ -139,6 +139,29 @@ class RunnerExecutionTests(unittest.TestCase):
         self.assertEqual(result["transmutation_receipt"]["packet_id"], "packet-0000001")
 
 
+    @patch("scripts.barrot_a2a_runner.subprocess.run", side_effect=FileNotFoundError)
+    def test_missing_opencode_preserves_transmutation_packet_receipt(self, _run_mock: Mock) -> None:
+        packet = {
+            "protocol_version": "barrot.chatgpt.transmutation.v1",
+            "packet_id": "packet-0000001",
+            "parent_packet_id": None,
+            "round": 0,
+            "phase": "execute",
+            "original_request_sha256": "b" * 64,
+        }
+        result, success, error = execute_task(
+            {
+                "task_id": "packet-0000001",
+                "instructions": "Inspect.",
+                "context": {"transmutation": packet},
+            },
+            Path("/tmp"),
+        )
+        self.assertFalse(success)
+        self.assertEqual(error, "opencode_cli_not_found")
+        self.assertEqual(result["transmutation_receipt"]["packet_id"], "packet-0000001")
+
+
 class RunnerQueueTests(unittest.TestCase):
     def test_claim_executes_and_records_completion(self) -> None:
         client = Mock(spec=WorkerClient)
