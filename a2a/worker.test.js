@@ -154,11 +154,39 @@ test("transmutation packets preserve source lineage and reject altered originals
   }), env);
   assert.equal(submitted.status, 202);
   const accepted = await submitted.json();
+  assert.equal(accepted.task_id, packet.packet_id);
   const stored = await (await queue.fetch(new Request(
     "https://queue.test/get/" + accepted.task_id,
     { method: "GET" },
   ))).json();
   assert.deepEqual(stored.context.transmutation, packet);
+
+  const replay = await worker.fetch(new Request("https://worker.test/v1/tasks", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-secret" },
+    body: JSON.stringify({
+      title: "Transmutation packet replay",
+      instructions: "This must not create a second execution.",
+      context: { transmutation: packet },
+    }),
+  }), env);
+  assert.equal(replay.status, 202);
+  const replayed = await replay.json();
+  assert.equal(replayed.task_id, packet.packet_id);
+  assert.equal(replayed.idempotent_replay, true);
+
+  const wrongTaskId = await worker.fetch(new Request("https://worker.test/v1/tasks", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-secret" },
+    body: JSON.stringify({
+      task_id: "different-task-id",
+      title: "Wrong task identity",
+      instructions: "Reject a task ID that forks packet identity.",
+      context: { transmutation: packet },
+    }),
+  }), env);
+  assert.equal(wrongTaskId.status, 400);
+  assert.equal((await wrongTaskId.json()).error, "task_id_must_match_transmutation_packet_id");
 
   const tampered = { ...packet, original_request: "A changed original request." };
   const rejected = await worker.fetch(new Request("https://worker.test/v1/tasks", {
