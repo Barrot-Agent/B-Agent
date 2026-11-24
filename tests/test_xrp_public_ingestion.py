@@ -930,7 +930,14 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert "commercial redistribution" in manifest["xrp_etf_flows_csv"]["raw_retention_reason"]
     research_only = json.loads((tmp_path / "run" / "research_only_observations.json").read_text(encoding="utf-8"))
     assert research_only["model_eligible"] is False
-    assert research_only["observation_count"] == 5
+    assert research_only["observation_count"] == 6
+    morpho_snapshot_observation = next(
+        item for item in research_only["observations"]
+        if item["observation_type"] == "morpho_cbxrp_normalized_market_snapshot"
+    )
+    assert morpho_snapshot_observation["model_eligible"] is False
+    assert morpho_snapshot_observation["feature_store_admitted"] is False
+    assert morpho_snapshot_observation["status"] == summary["morpho_cbxrp_normalization"]["status"]
     bitbank = next(
         item for item in research_only["observations"]
         if item["source_id"] == "bitbank_spot_transactions"
