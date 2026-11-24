@@ -74,8 +74,6 @@ def test_barrot_brain_blocks_oversized_context_before_any_provider_call(monkeypa
     brain = BarrotBrain()
     brain.auth = SimpleNamespace(ready=False)
     brain.groq_key = "test-groq-key"
-    brain.fireworks_key = "test-fireworks-key"
-    brain.allow_fireworks_fallback = True
     calls = []
 
     def fake_post(*args, **kwargs):
@@ -94,8 +92,6 @@ def test_external_inference_is_disabled_by_default_without_provider_requests(mon
     brain = BarrotBrain()
     brain.auth = SimpleNamespace(ready=False)
     brain.groq_key = "test-groq-key"
-    brain.fireworks_key = "test-fireworks-key"
-    brain.allow_fireworks_fallback = True
     calls = []
 
     def fake_post(*args, **kwargs):
@@ -113,8 +109,6 @@ def test_groq_429_fails_fast_without_retry_or_fireworks_fallback(monkeypatch):
     brain = BarrotBrain(allow_external_inference=True)
     brain.auth = SimpleNamespace(ready=False)
     brain.groq_key = "test-groq-key"
-    brain.fireworks_key = "test-fireworks-key"
-    brain.allow_fireworks_fallback = True
     calls = []
 
     def fake_post(url, **kwargs):
@@ -128,12 +122,36 @@ def test_groq_429_fails_fast_without_retry_or_fireworks_fallback(monkeypatch):
     assert calls == [brain.GROQ_ENDPOINT]
 
 
-def test_fireworks_fallback_is_disabled_without_explicit_opt_in(monkeypatch):
+def test_shared_inference_refuses_fireworks_only_configuration(monkeypatch):
+    from barrot_agent.orchestration.shared_inference import (
+        InferenceError,
+        get_provider,
+    )
+
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    monkeypatch.setenv("FIREWORKS_API_KEY", "test-fireworks-key")
+    with pytest.raises(InferenceError, match="No supported inference provider"):
+        get_provider()
+
+
+def test_shared_inference_selects_groq_when_configured(monkeypatch):
+    from barrot_agent.orchestration.shared_inference import get_provider
+
+    monkeypatch.setenv("GROQ_API_KEY", "test-groq-key")
+    monkeypatch.setenv("GROQ_MODEL", "test-model")
+    monkeypatch.setenv("FIREWORKS_API_KEY", "test-fireworks-key")
+    provider = get_provider()
+    assert provider["name"] == "groq"
+    assert provider["default_model"] == "test-model"
+    assert provider["base_url"] == "https://api.groq.com/openai/v1"
+
+
+def test_fireworks_environment_cannot_enable_a_provider_fallback(monkeypatch):
+    monkeypatch.setenv("FIREWORKS_API_KEY", "test-fireworks-key")
+    monkeypatch.setenv("BARROT_ALLOW_FIREWORKS_FALLBACK", "true")
     brain = BarrotBrain(allow_external_inference=True)
     brain.auth = SimpleNamespace(ready=False)
     brain.groq_key = "test-groq-key"
-    brain.fireworks_key = "test-fireworks-key"
-    brain.allow_fireworks_fallback = False
     calls = []
 
     def fake_post(url, **kwargs):
@@ -143,9 +161,10 @@ def test_fireworks_fallback_is_disabled_without_explicit_opt_in(monkeypatch):
     monkeypatch.setattr("barrot_agent.barrot_brain.requests.post", fake_post)
     result = brain.think("small request", system="short system")
     assert result.startswith("[BARROT_PROVIDER_UNAVAILABLE]")
-    assert "Fireworks fallback is disabled" in result
+    assert not hasattr(brain, "fireworks_key")
+    assert not hasattr(brain, "allow_fireworks_fallback")
     assert calls == [brain.GROQ_ENDPOINT]
-
+    assert all("fireworks.ai" not in url for url in calls)
 
 def test_repair_planner_blocks_oversized_context_before_calling_brain():
     brain = RecordingBrain('{"mode":"report","report":"should not be reached"}')
@@ -182,8 +201,6 @@ def test_repository_repair_records_read_only_snapshot_after_planner_rate_limit(t
     brain = BarrotBrain(allow_external_inference=True)
     brain.auth = SimpleNamespace(ready=False)
     brain.groq_key = "test-groq-key"
-    brain.fireworks_key = "test-fireworks-key"
-    brain.allow_fireworks_fallback = True
     calls = []
 
     def fake_post(url, **kwargs):

@@ -1138,3 +1138,28 @@ Governance remains blocked: PR #1663 draft, zero formal reviews, zero review thr
 - Still open: config drift (needs approval to generate one file), sandbox_passed=0
   (needs MCP_APPROVAL_TOKEN decision), GITHUB_MCP_TOKEN unset in shell.
 - Report: docs/synthesis/cross-domain-audit.md
+
+## 2026-11-22 — PR #1686 remaining decommission regressions
+- Verified base 485cbfb: exact-head CI was green except the fail-closed readiness
+  gate (draft, no independent review, branch protection unverifiable). The
+  concurrent workstream had already fixed the atomic-write import, the OpenCode
+  prompt token, and the pingpong CLI live path.
+- Found what CI still did not catch: barrot_agent/__init__.py imported
+  `make_model_refiners`, which barrot_agent.refinement no longer exports. The
+  broad `except Exception` swallowed the ImportError, so
+  `barrot_agent._refinement_available` was False and the entire top-level
+  refinement API was silently unavailable. AGENTS.md and PINGPONG_USAGE.md also
+  still described a live LunaRoute provider and external refinement path.
+- Repaired: removed the stale export, retained the failure reason in
+  `_refinement_error`, updated both documents, and added regression tests for
+  package availability, absent LunaRoute symbol, CLI import, and fail-closed
+  external mode.
+- Verified on 485cbfb + this change: targeted 103 passed; full tracked active
+  suite 4506 passed, 1 skipped. The 13 failures reproduce identically on
+  unmodified ded2546 in this Termux worktree (git-worktree/shallow-clone
+  environment assumptions), so they are not caused by this change.
+- The branch advanced concurrently to 3fe21ce (Kimi/Hugging Face/Databricks
+  configuration) with no overlap in these paths; this change was rebased onto
+  that head before push. Exact-head CI on the rebased commit is pending.
+- Not verified: independent review, branch protection. PR #1686 remains draft;
+  no merge was performed.

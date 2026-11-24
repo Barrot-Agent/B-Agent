@@ -37,7 +37,7 @@ def test_registered_in_opencode_config():
 
     config = json.loads((ROOT / "opencode.json").read_text(encoding="utf-8"))
     assert config["mcp"]["servers"]["github"]["disabled"] is True
-    assert config["mcp"]["servers"]["lunaroute"]["disabled"] is True
+    assert "lunaroute" not in config["mcp"]["servers"]
     server = config["mcp"]["servers"]["barrot"]
     assert server["type"] == "local"
     assert server["command"] == ["python3", "scripts/barrot_mcp_server.py"]

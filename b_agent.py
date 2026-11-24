@@ -41,94 +41,93 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger("b_agent")
 console = Console()
 
-LUNAROUTE_API_KEY = os.getenv("LUNAROUTE_API_KEY")
 GH_TOKEN = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN")
 TARGET_REPO = os.getenv("TARGET_REPO", "Barrot-Agent/B-Agent")
 
-if not LUNAROUTE_API_KEY or not GH_TOKEN:
-    console.print("[red]Missing LUNAROUTE_API_KEY or GH_TOKEN/GITHUB_TOKEN[/red]")
+if not GH_TOKEN:
+    console.print("[red]Missing GH_TOKEN/GITHUB_TOKEN[/red]")
     sys.exit(1)
 
 
-class GroqLLM:
-    def __init__(
-        self,
-        api_key,
-        model="glm-5.3-flash",
-        temperature=0.2,
-    ):
-        import httpx
+class OpenCodeLLM:
+    """Use the locally authenticated OpenCode CLI; no provider API key is read."""
 
-        self.api_key = api_key
-        self.model = model
-        self.temperature = temperature
-
-        self.client = httpx.Client(
-            base_url="https://gw.lunaroute.com/v1",
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
-            timeout=120.0,
-        )
+    def __init__(self, model=None, temperature=0.2):
+        import shutil
+        import subprocess
+        self.model = model or "opencode/deepseek-v4.1-flash-free"
+        self._subprocess = subprocess
+        self.executable = shutil.which("opencode")
+        if not self.executable:
+            raise RuntimeError("OpenCode CLI is unavailable; install/configure OpenCode or run Barrot inside its environment.")
 
     def chat(self, messages):
-        MAX_MESSAGE_CHARS = 6000
-        MAX_TOTAL_CHARS = 10000
-
-        compact = []
-        remaining = MAX_TOTAL_CHARS
-
-        for message in reversed(messages):
-            role = message.get("role", "user")
-            content = str(
-                message.get("content", "")
+        prompt = "\n\n".join(
+            f"{str(item.get('role', 'user')).upper()}: {str(item.get('content', ''))}"
+            for item in messages
+        )
+        result = self._subprocess.run(
+            [self.executable, "run", "--model", self.model, prompt],
+            capture_output=True, text=True, timeout=1800, check=False,
+        )
+        if result.returncode:
+            raise RuntimeError(
+                f"OpenCode run failed ({result.returncode}): "
+                f"{(result.stderr or result.stdout)[-2000:]}"
             )
+        output = result.stdout.strip()
+        if not output:
+            raise RuntimeError("OpenCode returned an empty response.")
+        return output
 
-            if len(content) > MAX_MESSAGE_CHARS:
-                content = content[-MAX_MESSAGE_CHARS:]
+    def close(self):
+        return None
 
-            if remaining <= 0:
-                break
 
-            if len(content) > remaining:
-                content = content[-remaining:]
+class GroqLLM:
+    """Explicit Groq adapter; it is never selected as an automatic fallback."""
 
-            compact.append(
-                {
-                    "role": role,
-                    "content": content,
-                }
-            )
+    def __init__(self, model=None, temperature=0.2):
+        api_key = os.getenv("GROQ_API_KEY", "").strip()
+        if not api_key:
+            raise RuntimeError("GROQ_API_KEY is required when BARROT_LLM_PROVIDER=groq.")
+        self.model = model or os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+        self.client = httpx.Client(
+            base_url="https://api.groq.com/openai/v1",
+            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+            timeout=1800.0,
+        )
+        self.temperature = temperature
 
-            remaining -= len(content)
-
-        compact.reverse()
-
+    def chat(self, messages):
         response = self.client.post(
             "/chat/completions",
-            json={
-                "model": self.model,
-                "messages": compact,
-                "temperature": self.temperature,
-            },
+            json={"model": self.model, "messages": messages, "temperature": self.temperature},
         )
-
-        if response.is_error:
-            print("\n===== GROQ API ERROR =====")
-            print("STATUS:", response.status_code)
-            print("BODY:", response.text)
-            print("===== END GROQ API ERROR =====\n")
-            response.raise_for_status()
-
+        response.raise_for_status()
         payload = response.json()
-
-        return payload[
-            "choices"
-        ][0]["message"]["content"]
+        try:
+            output = payload["choices"][0]["message"]["content"]
+        except (KeyError, IndexError, TypeError) as exc:
+            raise RuntimeError("Groq returned an invalid chat-completion payload.") from exc
+        if not isinstance(output, str) or not output.strip():
+            raise RuntimeError("Groq returned an empty response.")
+        return output.strip()
 
     def close(self):
         self.client.close()
+
+
+def build_llm(provider, model=None):
+    selected = (provider or "").strip().lower()
+    if selected == "groq":
+        return GroqLLM(model)
+    if selected == "opencode":
+        return OpenCodeLLM(model)
+    raise RuntimeError(
+        "Select an inference provider explicitly with --llm-provider or "
+        "BARROT_LLM_PROVIDER=groq|opencode; no provider is selected automatically."
+    )
 
 
 class GitHubRepo:
@@ -224,8 +223,7 @@ class GitHubRepo:
         response = self.client.get(
             f"/repos/{self.full_name}"
             f"/contents/{path}",
-            params={
-                "ref": self.default_branch,
+            params={                "ref": self.default_branch,
             },
         )
 
@@ -405,7 +403,6 @@ C. NEXT FIVE FILE GROUPS TO INSPECT
 Repository file tree:
 
 """ + tree_listing[:12000]
-
     return llm.chat(
         [
             {
@@ -438,19 +435,10 @@ def main():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument(
-        "--model",
-        default=os.getenv(
-            "LUNAROUTE_MODEL",
-            "glm-5.3-flash",
-        ),
-    )
+    parser.add_argument("--llm-provider", choices=("groq", "opencode"),
+                        default=os.getenv("BARROT_LLM_PROVIDER"))
+    parser.add_argument("--model", default=os.getenv("BARROT_MODEL"))
 
-    parser.add_argument(
-        "--allow-lunaroute-data-transfer",
-        action="store_true",
-        help="Explicitly authorize sending repository context to the external LunaRoute model gateway.",
-    )
     parser.add_argument(
         "--write-local-audit",
         action="store_true",
@@ -469,25 +457,7 @@ def main():
         TARGET_REPO,
     )
 
-    if not args.allow_lunaroute_data_transfer:
-        raise SystemExit(
-            "External repository-context transfer to LunaRoute is disabled by default. "
-            "Use --allow-lunaroute-data-transfer only after authorizing this provider."
-        )
-    if not sys.stdin.isatty():
-        raise SystemExit(
-            "LunaRoute repository-context transfer requires an interactive terminal."
-        )
-    transfer_confirmation = Prompt.ask(
-        "Type SEND REPOSITORY CONTEXT TO LUNAROUTE to authorize this transfer"
-    ).strip()
-    if transfer_confirmation != "SEND REPOSITORY CONTEXT TO LUNAROUTE":
-        raise SystemExit("External model transfer was not authorized.")
-
-    llm = GroqLLM(
-        LUNAROUTE_API_KEY,
-        args.model,
-    )
+    llm = build_llm(args.llm_provider, args.model)
 
     console.print(
         f"[green]Connected to "
@@ -607,8 +577,7 @@ def main():
             console.print(Markdown(answer))
             continue
 
-        if not all(
-            isinstance(path, str)
+        if not all(            isinstance(path, str)
             and isinstance(content, str)
             for path, content in changes.items()
         ):

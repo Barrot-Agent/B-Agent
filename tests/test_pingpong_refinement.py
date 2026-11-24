@@ -20,12 +20,10 @@ sys.path.insert(0, str(REPO_ROOT))
 from barrot_agent.refinement import (          # noqa: E402
     DEFAULT_MAX_ROUNDS,
     HeuristicRefiner,
-    LunaRouteRefiner,
     PingPongRefiner,
     Refiner,
     RefinementOutput,
     refine_data,
-    make_model_refiners,
     scoring,
 )
 
@@ -274,44 +272,9 @@ class TestBaselineAPI(unittest.TestCase):
         r2 = refine_data(["a", "a", "b", "", ""], refiners=[HeuristicRefiner()], ledger=None, data_classification="derived_summary")
         self.assertEqual(r2.data, ["a", "b"])
 
-    def test_default_refinement_is_offline_even_when_lunaroute_key_exists(self):
-        with mock.patch.dict(os.environ, {"LUNAROUTE_API_KEY": "test-key", "BARROT_ALLOW_EXTERNAL_REFINEMENT": "1"}), \
-             mock.patch("urllib.request.urlopen", side_effect=AssertionError("network must stay closed")):
-            report = refine_data(DIRTY, data_classification="derived_summary", ledger=None)
-        self.assertTrue(report.converged)
-
-    def test_unknown_and_immutable_data_classes_are_rejected(self):
-        for classification in ("unknown", "raw_source", "source_receipt", "feature_snapshot",
-                               "feature_store", "event_timeline", "forecast_ledger",
-                               "market_data", "credentials", "secrets", "user_private"):
-            with self.subTest(classification=classification):
-                with self.assertRaises(ValueError):
-                    refine_data({"value": "x"}, data_classification=classification, ledger=None)
-
-    def test_external_refinement_requires_explicit_caller_opt_in(self):
-        refiner = LunaRouteRefiner("glm-5.3-flash", api_key="test-key",
-                                   allow_external=True, data_classification="public_derived_summary")
-        with mock.patch.dict(os.environ, {"BARROT_ALLOW_EXTERNAL_REFINEMENT": "1"}):
-            with self.assertRaises(PermissionError):
-                refine_data({"value": "public"}, refiners=[refiner],
-                            data_classification="public_derived_summary", ledger=None)
-
-    def test_external_refinement_requires_environment_gate(self):
-        refiner = LunaRouteRefiner("glm-5.3-flash", api_key="test-key",
-                                   allow_external=True, data_classification="public_derived_summary")
-        with mock.patch.dict(os.environ, {"BARROT_ALLOW_EXTERNAL_REFINEMENT": "0"}):
-            with self.assertRaises(PermissionError):
-                refine_data({"value": "public"}, refiners=[refiner],
-                            data_classification="public_derived_summary",
-                            allow_external=True, ledger=None)
-
-    def test_model_refiner_factory_is_disabled_by_default(self):
-        with mock.patch.dict(os.environ, {"LUNAROUTE_API_KEY": "test-key", "BARROT_ALLOW_EXTERNAL_REFINEMENT": "1"}):
-            self.assertEqual(make_model_refiners(), [])
-
-    def test_model_refiner_factory_requires_public_classification(self):
-        with mock.patch.dict(os.environ, {"LUNAROUTE_API_KEY": "test-key", "BARROT_ALLOW_EXTERNAL_REFINEMENT": "1"}):
-            self.assertEqual(make_model_refiners(allow_external=True, data_classification="derived_summary"), [])
+    def test_external_provider_factory_is_decommissioned(self):
+        from barrot_agent.refinement.refiners import make_model_refiners
+        self.assertEqual(make_model_refiners(), [])
 
     def test_file_roundtrip(self):
         import tempfile
@@ -323,166 +286,6 @@ class TestBaselineAPI(unittest.TestCase):
             self.assertTrue(report.converged)
             reloaded = json.loads(p.read_text())
             self.assertEqual(reloaded, {"a": "x x", "dup": [1, 2]})
-
-
-class TestLunaRouteAdapterShape(unittest.TestCase):
-    def setUp(self):
-        # These adapter tests mock every HTTP request. Satisfy both explicit external
-        # refinement gates without enabling any real provider call.
-        self._external_gate = mock.patch.dict(os.environ, {
-            "BARROT_ALLOW_EXTERNAL_REFINEMENT": "1",
-            "BARROT_LIVE_REFINEMENT_APPROVED": "1",
-        })
-        self._external_gate.start()
-        self.addCleanup(self._external_gate.stop)
-
-    def test_request_shape_and_parsing(self):
-        captured = {}
-
-        class FakeResp(io.StringIO):
-            def __enter__(self):
-                return self
-
-            def __exit__(self, *a):
-                return False
-
-            status = 200
-
-        payload = {"choices": [{"message": {
-            "content": json.dumps({"data": {"a": 1}, "verdict": "REFINED",
-                                   "notes": "ok"}),
-            "reasoning_content": ""}}]}
-
-        def fake_urlopen(req, timeout=0):
-            captured["url"] = req.full_url
-            captured["headers"] = dict(req.headers)
-            captured["body"] = json.loads(req.data.decode())
-            return FakeResp(json.dumps(payload))
-
-        r = LunaRouteRefiner("glm-5.3-flash", api_key="test-key-123", allow_external=True, data_classification="public_derived_summary")
-        with mock.patch("urllib.request.urlopen", fake_urlopen):
-            out = r.refine({"a": 1}, critique="fix the thing")
-        self.assertEqual(out.verdict, "REFINED")
-        self.assertEqual(out.data, {"a": 1})
-        self.assertIn("/chat/completions", captured["url"])
-        self.assertEqual(captured["body"]["model"], "glm-5.3-flash")
-        # the key must go to the API, never into the URL
-        auth = captured["headers"].get("Authorization", "")
-        self.assertTrue(auth.startswith("Bearer "))
-        self.assertNotIn("test-key-123", captured["url"])
-
-    def test_no_key_means_unavailable(self):
-        r = LunaRouteRefiner("glm-5.3-flash", api_key="")
-        self.assertFalse(r.available)
-
-    def test_garbage_output_is_failed_not_fatal(self):
-        class FakeResp(io.StringIO):
-            def __enter__(self):
-                return self
-
-            def __exit__(self, *a):
-                return False
-
-        payload = {"choices": [{"message": {"content": "I refuse to emit json"}}]}
-
-        def fake_urlopen(req, timeout=0):
-            return FakeResp(json.dumps(payload))
-
-        r = LunaRouteRefiner("glm-5.3-flash", api_key="k", allow_external=True, data_classification="public_derived_summary")
-        with mock.patch("urllib.request.urlopen", fake_urlopen):
-            out = r.refine({"a": 1}, critique=None)
-        self.assertEqual(out.verdict, "FAILED")
-
-    def test_truncated_response_retried_with_doubled_budget(self):
-        calls = []
-
-        class FakeResp(io.StringIO):
-            def __enter__(self):
-                return self
-
-            def __exit__(self, *a):
-                return False
-
-        def truncated_then_ok(req, timeout=0):
-            body = json.loads(req.data.decode())
-            calls.append(body["max_tokens"])
-            if len(calls) == 1:               # cut off mid-JSON
-                return FakeResp(json.dumps({"choices": [{
-                    "message": {"content": '{"data": {"a": 1}, "verdict": "REFI'},
-                    "finish_reason": "length"}]}))
-            return FakeResp(json.dumps({"choices": [{
-                "message": {"content": json.dumps(
-                    {"data": {"a": 2}, "verdict": "REFINED", "notes": "ok"}),
-                    "reasoning_content": ""},
-                "finish_reason": "stop"}]}))
-
-        r = LunaRouteRefiner("deepseek-4.1-flash", api_key="k", allow_external=True, data_classification="public_derived_summary")
-        with mock.patch("urllib.request.urlopen", truncated_then_ok):
-            out = r.refine({"a": 1}, critique=None)
-        self.assertEqual(out.verdict, "REFINED")
-        self.assertEqual(out.data, {"a": 2})
-        self.assertEqual(len(calls), 2)
-        self.assertGreater(calls[1], calls[0])     # doubled budget on retry
-
-    def test_secret_like_payload_is_blocked_before_network(self):
-        r = LunaRouteRefiner("glm-5.3-flash", api_key="test-key",
-                             allow_external=True, data_classification="public_derived_summary")
-        out = r.refine({"token": "ghp_" + "a" * 32}, critique=None)
-        self.assertEqual(out.verdict, "FAILED")
-        self.assertIn("secret-like", out.notes)
-
-    def test_oversized_payload_is_rejected_without_truncation(self):
-        r = LunaRouteRefiner("glm-5.3-flash", api_key="test-key",
-                             allow_external=True, data_classification="public_derived_summary")
-        out = r.refine({"text": "x" * 25_000}, critique=None)
-        self.assertEqual(out.verdict, "FAILED")
-        self.assertIn("without truncation", out.notes)
-
-    def test_extract_json_handles_fences(self):
-        text = 'Sure!\n```json\n{"data": [1], "verdict": "REFINED", "notes": "n"}\n```'
-        self.assertEqual(LunaRouteRefiner._extract_json(text)["data"], [1])
-
-    def test_transient_errors_retried_with_backoff(self):
-        attempts = {"n": 0}
-
-        class FakeResp(io.StringIO):
-            def __enter__(self):
-                return self
-
-            def __exit__(self, *a):
-                return False
-
-        payload = {"choices": [{"message": {
-            "content": json.dumps({"data": {"a": 2}, "verdict": "REFINED",
-                                   "notes": "ok"})}}]}
-
-        def flaky_urlopen(req, timeout=0):
-            attempts["n"] += 1
-            if attempts["n"] <= 2:            # two transient 429s, then success
-                raise urllib.error.HTTPError(req.full_url, 429,
-                                             "slow down", {}, None)
-            return FakeResp(json.dumps(payload))
-
-        r = LunaRouteRefiner("deepseek-4.1-flash", api_key="k", allow_external=True, data_classification="public_derived_summary")
-        with mock.patch("urllib.request.urlopen", flaky_urlopen), \
-                mock.patch("barrot_agent.refinement.refiners.time.sleep") as sleeper:
-            out = r.refine({"a": 1}, critique=None)
-        self.assertEqual(out.verdict, "REFINED")
-        self.assertEqual(out.data, {"a": 2})
-        self.assertEqual(attempts["n"], 3)     # retried up to 3 attempts total
-        self.assertEqual(sleeper.call_count, 2)  # backoff between attempts
-
-    def test_permanent_http_error_not_retried(self):
-        def forbidden_urlopen(req, timeout=0):
-            raise urllib.error.HTTPError(req.full_url, 403,
-                                         "forbidden", {}, None)
-
-        r = LunaRouteRefiner("deepseek-4.1-flash", api_key="k", allow_external=True, data_classification="public_derived_summary")
-        with mock.patch("urllib.request.urlopen", forbidden_urlopen), \
-                mock.patch("barrot_agent.refinement.refiners.time.sleep") as sleeper:
-            out = r.refine({"a": 1}, critique=None)
-        self.assertEqual(out.verdict, "FAILED")   # surfaced, not retried
-        sleeper.assert_not_called()
 
 
 if __name__ == "__main__":

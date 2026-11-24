@@ -20,16 +20,13 @@ Optional:
                             defaults to "/Barrot-Agent/B-Agent"
 """
 
+from __future__ import annotations
+
 import logging
 import os
 import sys
 from pathlib import Path
 
-from databricks.sdk import WorkspaceClient
-from databricks.sdk.errors import ResourceDoesNotExist
-from databricks.sdk.service import jobs as sdk_jobs
-from databricks.sdk.service.compute import Environment
-from databricks.sdk.service.workspace import ImportFormat, Language
 
 logging.basicConfig(
     level=logging.INFO,
@@ -70,6 +67,13 @@ SKIP_DIRS = {
 
 def _build_client() -> WorkspaceClient:
     """Return a WorkspaceClient, preferring env-var auth over cfg file."""
+    try:
+        from databricks.sdk import WorkspaceClient
+    except ImportError as exc:
+        raise RuntimeError(
+            "Databricks deployment requires the optional integrations extra: "
+            'pip install -e ".[integrations]"'
+        ) from exc
     if DATABRICKS_HOST and DATABRICKS_TOKEN:
         return WorkspaceClient(host=DATABRICKS_HOST, token=DATABRICKS_TOKEN)
     # Fall back to profile-based auth (reads ~/.databrickscfg or local file)
@@ -92,6 +96,8 @@ def _validate_connection(client: WorkspaceClient) -> None:
 
 def _preflight_workspace_target_absent(client: WorkspaceClient, path: str) -> None:
     """Refuse an existing or unverifiable workspace target before any writes."""
+    from databricks.sdk.errors import ResourceDoesNotExist
+
     try:
         client.workspace.get_status(path=path)
     except ResourceDoesNotExist:
@@ -115,6 +121,8 @@ def _ensure_folder(client: WorkspaceClient, path: str) -> None:
 
 def _upload_files(client: WorkspaceClient) -> int:
     """Upload only into a new workspace root; never overwrite an existing deployment."""
+    from databricks.sdk.service.workspace import ImportFormat
+
     _preflight_workspace_target_absent(client, WS_PATH)
     _ensure_folder(client, WS_PATH)
     uploaded = 0
@@ -169,6 +177,10 @@ def _get_or_create_cluster_spec() -> dict:
 
 def _deploy_job(client: WorkspaceClient) -> int:
     """Create a new paused job; refuse to modify or start any existing job."""
+    from databricks.sdk.service import jobs as sdk_jobs
+    from databricks.sdk.service.compute import Environment
+    from databricks.sdk.service.workspace import ImportFormat
+
     notebook_path = f"dbfs:{WS_PATH}/app.py"
     cluster_spec = _get_or_create_cluster_spec()
     environments = [
