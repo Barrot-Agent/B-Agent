@@ -287,6 +287,7 @@ def test_protocol_addendum_provenance_graph_and_prediction_boundary() -> None:
         assert set(edge["evidence"]) <= sources
     for hypothesis in data["competing_hypotheses"]:
         assert hypothesis["claim"] and hypothesis["support"]
+        assert set(hypothesis["support"]) <= sources
         assert hypothesis["disconfirming_or_missing"] and hypothesis["test"]
     assert data["predictions"]["issued"] is False
     amendment = data["market_snapshot"]["xrpl_amendment"]
