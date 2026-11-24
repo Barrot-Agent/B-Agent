@@ -38,7 +38,7 @@ def test_merge_gate_requires_only_named_exact_head_validation_checks() -> None:
         '"pip-audit"',
         '"audit"',
         '"Verify PR merge tree against current base"',
-        'commits/\${actual_head}/check-runs',
+        'commits/${actual_head}/check-runs',
     ):
         assert required in source
     assert "GitHub Pages build (validation only)" not in source
