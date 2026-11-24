@@ -1461,7 +1461,7 @@ def test_feature_store_recovery_contract_docs_match_workflow_policy():
         assert "30 pages of 100" in contract
     assert "deletes any restore-key file" in feature_contract.lower()
     assert "external WORM" in feature_contract
-    assert "no scheduled main-branch run is verified" in forecast_contract
+    assert "successful scheduled main-branch runs" in forecast_contract
     assert "daily 00:15 UTC schedule and manual dispatch evaluate" in forecast_contract
     assert "block-bootstrap adjustment" in forecast_contract
 
