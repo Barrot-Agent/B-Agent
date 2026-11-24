@@ -187,7 +187,7 @@ async function validateTransmutationContext(context) {
   if (packet === undefined) return null;
   if (!packet || typeof packet !== "object" || Array.isArray(packet)) return "transmutation_packet_must_be_an_object";
   if (packet.protocol_version !== TRANSMUTATION_PROTOCOL) return "unsupported_transmutation_protocol";
-  if (typeof packet.packet_id !== "string" || !/^[A-Za-z0-9._:-]{8,128}$/.test(packet.packet_id)) return "invalid_transmutation_packet_id";
+  if (typeof packet.packet_id !== "string" || !/^[A-Za-z0-9._:-]{8,100}$/.test(packet.packet_id)) return "invalid_transmutation_packet_id";
   if (!["chatgpt", "barrot"].includes(packet.sender) || !["chatgpt", "barrot"].includes(packet.recipient)) return "invalid_transmutation_participant";
   if (!Number.isInteger(packet.round) || packet.round < 0 || packet.round > 8) return "transmutation_round_out_of_bounds";
   if (!TRANSMUTATION_PHASES.has(packet.phase)) return "invalid_transmutation_phase";
@@ -200,7 +200,7 @@ async function validateTransmutationContext(context) {
   }
   if (!validSourceRefs(packet.source_refs)) return "invalid_transmutation_source_refs";
   if (packet.parent_packet_id !== undefined && packet.parent_packet_id !== null &&
-      (typeof packet.parent_packet_id !== "string" || !/^[A-Za-z0-9._:-]{8,128}$/.test(packet.parent_packet_id))) {
+      (typeof packet.parent_packet_id !== "string" || !/^[A-Za-z0-9._:-]{8,100}$/.test(packet.parent_packet_id))) {
     return "invalid_parent_packet_id";
   }
   if (!packet.budget || typeof packet.budget !== "object" || Array.isArray(packet.budget) ||
