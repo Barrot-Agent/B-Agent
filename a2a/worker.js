@@ -428,6 +428,16 @@ export default {
   }
 };
 
+function canonicalJson(value) {
+  if (Array.isArray(value)) return "[" + value.map(canonicalJson).join(",") + "]";
+  if (value && typeof value === "object") {
+    return "{" + Object.keys(value).sort().map(key =>
+      JSON.stringify(key) + ":" + canonicalJson(value[key])
+    ).join(",") + "}";
+  }
+  return JSON.stringify(value);
+}
+
 export class BarrotTaskQueue {
   constructor(state) {
     this.state = state;
@@ -457,7 +467,18 @@ export class BarrotTaskQueue {
       ? input.task_id : crypto.randomUUID();
     return this.storage.transaction(async () => {
       const existing = await this.storage.get("task:" + taskId);
-      if (existing) return json({ task_id: taskId, status: existing.status, created_at: existing.created_at, idempotent_replay: true });
+      if (existing) {
+        const incomingPacket = input.context && typeof input.context === "object" ? input.context.transmutation : undefined;
+        const existingPacket = existing.context && typeof existing.context === "object" ? existing.context.transmutation : undefined;
+        if (incomingPacket || existingPacket) {
+          const samePacket = incomingPacket && existingPacket &&
+            canonicalJson(incomingPacket) === canonicalJson(existingPacket) &&
+            String(input.title || "Barrot task").slice(0, 200) === existing.title &&
+            String(input.instructions || "").slice(0, MAX_TASK_TEXT) === existing.instructions;
+          if (!samePacket) return json({ error: "transmutation_packet_id_conflict" }, 409);
+        }
+        return json({ task_id: taskId, status: existing.status, created_at: existing.created_at, idempotent_replay: true });
+      }
       const entries = await this.storage.list({ prefix: "task:" });
       const cutoff = now - 30 * 24 * 60 * 60 * 1000;
       for (const [key, oldTask] of entries.entries()) {
