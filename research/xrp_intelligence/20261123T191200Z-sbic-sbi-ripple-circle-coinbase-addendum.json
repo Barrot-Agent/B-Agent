@@ -3,7 +3,7 @@
   "artifact_type": "xrp_sbi_sbic_circle_coinbase_relationship_addendum",
   "artifact_id": "xrp_sbi_sbic_circle_coinbase_20261123T191200Z",
   "captured_at_utc": "2026-11-24T01:02:00Z",
-  "data_cutoff_utc": "2026-11-23T19:12:00Z",
+  "data_cutoff_utc": "2026-11-24T01:02:00Z",
   "repository_state": {
     "inspected_main_sha": "7d7aba841cb849e461376a8fcdd4cc4fa10c9af6",
     "xrp_integration_pr": 1692,
@@ -851,6 +851,11 @@
     {
       "amended_at_utc": "2026-11-24T01:02:00Z",
       "amendment": "Added primary SEC 424B3 disclosures on Evernorth cash liquidity, private-placement proceeds, XRP in-kind contributions, closing gross proceeds, debt/facility status, Coinbase valuation and BitGo custody; retained research-only/model-ineligible status because original bytes and receipts were not captured."
+    },
+    {
+      "amended_at_utc": "2026-11-24T04:03:00Z",
+      "amendment": "Corrected the effective data cutoff to include the Evernorth SEC filing retrieved at 2026-11-24T01:02:00Z. Preserved the original 2026-11-23T19:12:00Z cutoff in initial_data_cutoff_utc; no source bytes or model eligibility were retroactively claimed."
     }
-  ]
+  ],
+  "initial_data_cutoff_utc": "2026-11-23T19:12:00Z"
 }
