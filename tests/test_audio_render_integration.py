@@ -270,8 +270,26 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
     assert int(np.count_nonzero(np.abs(samples) >= 1.0)) == 0
 
     midi = pretty_midi.PrettyMIDI(str(result.midi_path))
-    assert [marker.text for marker in midi.markers] == [
+    import mido
+
+    midi_file = mido.MidiFile(str(result.midi_path))
+    markers = []
+    for track in midi_file.tracks:
+        absolute_tick = 0
+        for message in track:
+            absolute_tick += message.time
+            if message.type == "marker":
+                markers.append((message.text, absolute_tick))
+    assert [name for name, _ in markers] == [
         section.name for section in manifest.sections
+    ]
+    assert [tick for _, tick in markers] == [
+        round(
+            (section.start_bar - 1)
+            * manifest.beats_per_bar
+            * midi_file.ticks_per_beat
+        )
+        for section in manifest.sections
     ]
     metadata = json.loads(result.metadata_path.read_text(encoding="utf-8"))
     assert metadata["sections"] == [
