@@ -1,0 +1,232 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot.xrp.identity_and_exact_phrase_recheck",
+  "artifact_id": "xrp_identity_phrase_recheck_20261124T0713Z",
+  "captured_at_utc": "2026-11-24T07:13:00Z",
+  "repository_state": {
+    "main_sha": "7d7aba841cb849e461376a8fcdd4cc4fa10c9af6",
+    "pr": 1692,
+    "pr_head_before_artifact": "99836a9e99b76d580915a7de203afe92c771fa93"
+  },
+  "scope": "Fresh public-web recheck of exact phrases and possible Kamilah/Camilla Stevenson YouTube identity. No person equivalence or channel ownership is inferred.",
+  "search_log": [
+    {
+      "query": "\"SBIC, ChatGPT SBIC\"",
+      "searched_at_utc": "2026-11-24T07:12:00Z",
+      "result_status": "No exact indexed match surfaced. This is not evidence of global absence."
+    },
+    {
+      "query": "\"ASK Coin\" XRP Ledger OR XRPL",
+      "searched_at_utc": "2026-11-24T07:12:00Z",
+      "result_status": "No exact XRP Ledger ASK Coin identity surfaced. Prior Permission Coin (ASK) Base/Polygon candidate remains a separate ticker-collision candidate; no XRPL link established."
+    },
+    {
+      "query": "\"actual capital\" XRP Ripple",
+      "searched_at_utc": "2026-11-24T07:12:00Z",
+      "result_status": "No exact primary-source match surfaced in this search. Prior SEC filing review found no exact phrase in the two reviewed Evernorth filings; broader communications remain unsearched."
+    },
+    {
+      "query": "site:youtube.com \"Kamilah Stevenson\" XRP OR \"Camilla Stevenson\" XRP",
+      "searched_at_utc": "2026-11-24T07:12:00Z",
+      "result_status": "Multiple YouTube channels and same-name social profiles surfaced. YouTube page fetch was throttled; no official cross-platform ownership link was established. Video inventory intentionally not performed."
+    },
+    {
+      "query": "\"UCXm6KAr1WHF6UN7g5b2W7wg\"",
+      "searched_at_utc": "2026-11-24T07:13:00Z",
+      "result_status": "Search index identifies a YouTube channel titled 'Kamilah Stevenson | Xrp & Stocks' at @KamilahStevensonXrpStocks; direct channel page could not be opened for verification."
+    },
+    {
+      "query": "\"Kamilah Stevenson\" \"Chicago\" finance coach official website",
+      "searched_at_utc": "2026-11-24T07:13:00Z",
+      "result_status": "Third-party indexes surfaced multiple distinct Kamilah/Dr. Kamilah profiles, including finance and health/wellness profiles. No definitive cross-link to the XRP YouTube channel was found."
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "youtube_candidate_ucxm6",
+      "publisher": "YouTube search index",
+      "source_type": "channel search result",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "handle": "@KamilahStevensonXrpStocks",
+      "title": "Kamilah Stevenson | Xrp & Stocks",
+      "web_ref": "turn334427youtube60",
+      "retrieved_at_utc": "2026-11-24T07:12:00Z",
+      "retrieval_quality": "search-index result; direct page fetch throttled",
+      "identity_status": "UNVERIFIED",
+      "limitations": [
+        "Self-authored channel title/description is not independent identity verification.",
+        "No official website or verified social profile link was confirmed.",
+        "No video inventory performed."
+      ]
+    },
+    {
+      "id": "youtube_candidate_drkamilah",
+      "publisher": "YouTube search index",
+      "source_type": "channel search result",
+      "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "handle": "@drkamilahstevenson",
+      "title": "Kamilah Stevenson",
+      "web_ref": "turn384738youtube46",
+      "retrieved_at_utc": "2026-11-24T07:13:00Z",
+      "retrieval_quality": "search-index result; direct page fetch throttled",
+      "identity_status": "UNVERIFIED",
+      "limitations": [
+        "Channel self-description mentions stocks, crypto, macro and long-term investing.",
+        "No independent proof that this is the same person as @KamilahStevensonXrpStocks or the user's intended subject.",
+        "Third-party subscriber/video counts conflict and are not treated as facts."
+      ]
+    },
+    {
+      "id": "youtube_candidate_e7b",
+      "publisher": "YouTube search index",
+      "source_type": "channel search result",
+      "url": "https://www.youtube.com/channel/UCYFaD0cVIxjtxIW053EgZpA",
+      "handle": "@KamilahStevenson-e7b",
+      "title": "Kamilah Stevenson",
+      "web_ref": "turn384738youtube47",
+      "retrieved_at_utc": "2026-11-24T07:13:00Z",
+      "retrieval_quality": "search-index result; direct page fetch throttled",
+      "identity_status": "UNVERIFIED",
+      "limitations": [
+        "Description closely resembles other channels; could be a copy, alternate or unrelated channel.",
+        "No identity or ownership linkage established."
+      ]
+    },
+    {
+      "id": "social_candidate_iamkam",
+      "publisher": "Third-party profile index",
+      "source_type": "social-profile aggregation",
+      "url": "https://teapawt.org/iamkamstevenson",
+      "handle": "@iamkamstevenson",
+      "web_ref": "turn284073search0",
+      "retrieved_at_utc": "2026-11-24T07:13:00Z",
+      "identity_status": "UNVERIFIED",
+      "limitations": [
+        "Aggregator, not the platform's verified profile page.",
+        "Profile location and bio do not prove ownership of any YouTube channel."
+      ]
+    },
+    {
+      "id": "same_name_health_profile",
+      "publisher": "All Nations Chicago",
+      "source_type": "organizational biography",
+      "url": "https://allnationschicago.com/leadership",
+      "web_ref": "turn284073search3",
+      "retrieved_at_utc": "2026-11-24T07:13:00Z",
+      "identity_status": "SEPARATE_NAMESAKE_CANDIDATE",
+      "limitations": [
+        "Describes Dr. Kamilah Stevenson as a health/wellness leader; no XRP YouTube link established.",
+        "Do not merge with crypto-channel candidates based on name alone."
+      ]
+    },
+    {
+      "id": "camilla_linkedin_namesake",
+      "publisher": "LinkedIn search index",
+      "source_type": "professional profile result",
+      "url": "https://uk.linkedin.com/in/camilla-stevenson-239154133",
+      "web_ref": "turn284073search5",
+      "retrieved_at_utc": "2026-11-24T07:13:00Z",
+      "identity_status": "SEPARATE_NAMESAKE_CANDIDATE",
+      "limitations": [
+        "Camilla Stevenson profile lists CFC and London; no XRP/crypto-channel relationship established."
+      ]
+    },
+    {
+      "id": "metis_sme_investment_companies",
+      "publisher": "Japan Ministry of Economy, Trade and Industry",
+      "source_type": "official government PDF",
+      "url": "https://www.meti.go.jp/policy/investment/pdf/02guidline.pdf",
+      "web_ref": "turn334427search61",
+      "retrieved_at_utc": "2026-11-24T07:12:00Z",
+      "identity_status": "PRIMARY_ENTITY_EVIDENCE",
+      "limitations": [
+        "Page 14 lists Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies and regional coverage; it does not establish a relationship with SBI Holdings or XRP."
+      ]
+    },
+    {
+      "id": "jetro_ibsc_acronym_collision",
+      "publisher": "JETRO",
+      "source_type": "official organization description",
+      "url": "https://www.jetro.go.jp/invest/jetros_support/ibsc/",
+      "web_ref": "turn334427search7",
+      "retrieved_at_utc": "2026-11-24T07:12:00Z",
+      "identity_status": "DISTINCT_ACRONYM",
+      "limitations": [
+        "JETRO's IBSC means Invest Japan Business Support Center; it is not SBIC."
+      ]
+    }
+  ],
+  "findings": {
+    "sbic": {
+      "status": "PRIMARY_ENTITY_IDENTIFICATION_RECONFIRMED",
+      "entities": [
+        {
+          "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "region": "Eastern Japan",
+          "coverage_note": "METI PDF lists 18 prefectures including Niigata, Nagano and Shizuoka."
+        },
+        {
+          "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "region": "Central Japan",
+          "coverage_note": "METI PDF lists Aichi, Gifu, Mie, Ishikawa and Toyama."
+        },
+        {
+          "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+          "region": "Western Japan",
+          "coverage_note": "METI PDF lists 24 prefectures including Fukui, Shiga, Nara and Wakayama."
+        }
+      ],
+      "distinction": "These are regional SME investment-development organizations under Japan's policy framework. Do not conflate them with SBI Holdings. JETRO IBSC is a separate acronym/entity.",
+      "ownership_status": "Beneficial-ownership and complete legal-registry checks remain open."
+    },
+    "exact_phrases": {
+      "ask_coin": "No exact XRP-linked ASK Coin identity confirmed; retain the prior Permission Coin ASK ticker candidate separately.",
+      "actual_capital": "No exact primary-source phrase match in this recheck; original context remains unknown.",
+      "sbic_chatgpt": "No exact indexed match; the prior SBIC West ChatGPT training material is a topic mention only, not a partnership."
+    },
+    "youtube_identity": {
+      "status": "UNRESOLVED",
+      "candidate_channel_count": 3,
+      "reason": "Multiple channels with nearly identical investing/crypto descriptions and overlapping Kamilah Stevenson naming surfaced. Search indexes disagree on audience/video counts; direct YouTube page fetch was throttled and no verified cross-platform ownership link was established.",
+      "inventory_performed": false,
+      "inventory_reason": "User's identity-verification gate not satisfied. Do not inventory or attribute videos until a canonical channel is linked by an official website or verified social account."
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "H1-single-xrp-creator",
+      "statement": "The user's intended subject may be one of the Kamilah Stevenson XRP/finance channels.",
+      "status": "UNVERIFIED",
+      "support": [
+        "Multiple channels self-describe as crypto/investing educators."
+      ],
+      "disconfirming": [
+        "At least three distinct channel IDs surfaced with highly similar descriptions; multiple same-name social profiles and a health/wellness namesake exist."
+      ],
+      "test": "Require a canonical channel ID linked from an official website or a verified profile that also links back to the channel."
+    },
+    {
+      "id": "H2-channel-copycats-or-alternates",
+      "statement": "Some similarly named channels may be alternate, copied or impersonating accounts.",
+      "status": "PLAUSIBLE_NOT_PROVEN",
+      "support": [
+        "Multiple channel IDs have near-identical descriptions and branding."
+      ],
+      "disconfirming": [
+        "A creator may legitimately operate multiple channels or regional/secondary channels."
+      ],
+      "test": "Compare channel creation history, original upload dates, official cross-links, and platform verification."
+    }
+  ],
+  "predictions": {
+    "issued": false,
+    "reason": "Identity/phrase research only; no market prediction or model-eligible feature was produced."
+  },
+  "next_actions": [
+    "Keep the three Kamilah channel IDs as separate candidates; do not merge them by name.",
+    "Seek a canonical official site or verified social profile that links to the intended YouTube channel and is reciprocally linked from that channel.",
+    "Only after identity verification, inventory the channel's public uploads using channel ID and publication timestamps; separate original uploads, livestreams, shorts, guest appearances and reuploads.",
+    "Continue exact-phrase searches for ASK Coin, actual capital, and SBIC/ChatGPT in source-specific contexts; preserve null results.",
+    "Keep METI's Tokyo/Nagoya/Osaka SBIC names distinct from SBI Holdings and JETRO IBSC."
+  ]
+}
