@@ -293,7 +293,7 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
         "renderer": "FluidSynth via pyfluidsynth",
         "soundfont_source": source_name,
         "soundfont_license": license_name,
-        "soundfont_sha256": _sha256(result.metadata_path.parent / "missing"),
+        "soundfont_sha256": metadata["rights"]["soundfont_sha256"],
         "mix_sha256": _sha256(result.mix_path),
         "midi_sha256": _sha256(result.midi_path),
         "stem_count": len(result.stems),
@@ -313,8 +313,7 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
         "native_daw_project_available": False,
         "distribution": "QC JSON only; GPL-2 SoundFont, WAV mix, stems, and MIDI are not uploaded",
     }
-    qc["soundfont_sha256"] = metadata["rights"]["soundfont_sha256"]
     qc_output = os.environ.get("BARROT_AUDIO_FULL_SONG_QC_OUTPUT")
     assert qc_output, "BARROT_AUDIO_FULL_SONG_QC_OUTPUT must be set in the dedicated CI job"
-    Path(qc_output).write_text(json.dumps(qc, indent=2, sort_keys=True) + "\\n")
+    Path(qc_output).write_text(json.dumps(qc, indent=2, sort_keys=True) + "\n")
     print(json.dumps(qc, indent=2, sort_keys=True))

@@ -5,7 +5,6 @@ not copy source pitches or reconstruct a reference composition.
 """
 from __future__ import annotations
 
-import math
 import random
 import re
 from dataclasses import dataclass
@@ -294,6 +293,7 @@ def compose_full_song(
                 continue
             if slot == 0 and not motif:
                 degree = 0
+                previous_degree = degree
             else:
                 previous_degree = max(
                     -1, min(len(intervals) + 1, previous_degree + rng.choice((-2, -1, 1, 2)))
@@ -491,7 +491,11 @@ def compose_full_song(
                         )
                     )
 
-    events.sort(key=lambda event: (event.beat, event.instrument, event.pitch or -1, event.role))
+    events.sort(key=lambda event: (
+        event.beat, event.instrument,
+        event.pitch if event.pitch is not None else -1,
+        event.role,
+    ))
     return MusicalManifest(
         bpm=template.bpm,
         beats_per_bar=beats_per_bar,
