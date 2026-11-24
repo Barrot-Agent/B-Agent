@@ -89,6 +89,8 @@ Before creating a skill, search the current skill library, agents, tools, and re
 
 ## Mission track: XRP intelligence and prediction-engine mastery
 
+Highest priority: XRP intelligence, professional audio production, and long-horizon continuity/capability development are co-equal Priority 1 missions; none may be deferred behind the others.
+
 Prioritize evidence-backed XRP/XRPL intelligence while keeping V3 governance intact. Develop and evaluate capabilities for:
 - XRPL ledger, transactions, validators, network health, and ecosystem activity.
 - Exchange spot markets, order books, liquidity, volume, spreads, and market structure.
