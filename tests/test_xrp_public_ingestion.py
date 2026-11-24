@@ -798,6 +798,21 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
         if item["source_id"] == "morpho_base_chain_indexer_tip"
     )
     assert base_tip["last_indexed_block"] == "40855890"
+    morpho_snapshot = summary["morpho_cbxrp_normalization"]
+    assert morpho_snapshot["status"] == "RESEARCH_ONLY_NORMALIZED"
+    assert morpho_snapshot["model_eligible"] is False
+    assert morpho_snapshot["feature_store_admitted"] is False
+    assert morpho_snapshot["block_timestamp_verified"] is False
+    assert morpho_snapshot["block_numbers"]["market_state_lag_to_indexer_tip_blocks"] == 16
+    assert morpho_snapshot["normalized_values"]["total_supply_assets_usdc"] == "66300000"
+    assert morpho_snapshot["normalized_values"]["total_borrow_assets_usdc"] == "58300000"
+    assert morpho_snapshot["normalized_values"]["market_liquidity_usdc"] == "23540000"
+    assert morpho_snapshot["normalized_values"]["reallocatable_liquidity_usdc"] == "5000000"
+    assert morpho_snapshot["normalized_values"]["latest_history_total_collateral_cbxrp"] == "120800000"
+    assert morpho_snapshot["normalized_values"]["utilization_percent"] == "87.9336"
+    assert morpho_snapshot["normalized_values"]["lltv_percent"] == "62.5000"
+    assert len(morpho_snapshot["source_receipts"]) >= 7
+    assert all(item["receipt_id"] and item["raw_content_sha256"] for item in morpho_snapshot["source_receipts"].values())
     assert summary["eligible_feature_record_count"] > 0
     assert summary["store_verification"]["valid"] is True
     assert summary["feature_store_backup_retention_days"] == 90
@@ -3663,3 +3678,27 @@ def test_morpho_base_chain_indexer_tip_is_unique_and_research_only():
             digest="b" * 64,
             captured=captured,
         )
+
+
+def test_morpho_cbxrp_normalizer_blocks_state_ahead_of_indexer_tip(tmp_path):
+    captured = datetime(2026, 11, 4, 12, 30, tzinfo=timezone.utc)
+    base_fetcher = _fake_fetcher(captured)
+
+    def inconsistent_fetcher(source_id, url):
+        response = dict(base_fetcher(source_id, url))
+        if source_id == "morpho_base_chain_indexer_tip":
+            payload = json.loads(json.dumps(response["payload"]))
+            payload["data"][0]["last_indexed_block"] = "40855873"
+            response["payload"] = payload
+            response["raw_bytes"] = json.dumps(payload, sort_keys=True).encode("utf-8")
+        return response
+
+    summary = run_ingestion(
+        tmp_path / "run",
+        fetcher=inconsistent_fetcher,
+        now=captured,
+    )
+    snapshot = summary["morpho_cbxrp_normalization"]
+    assert snapshot["status"] == "BLOCKED_INDEXER_BLOCK_MISMATCH"
+    assert snapshot["model_eligible"] is False
+    assert "normalized_values" not in snapshot

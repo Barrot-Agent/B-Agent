@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+from decimal import Decimal
 import hashlib
 import io
 from email.utils import parsedate_to_datetime
@@ -34,7 +35,7 @@ from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_document, fetch
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 _SHA256_RE = re.compile(r"[0-9a-f]{64}")
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.33"
+ADAPTER_VERSION = "xrp-public-market-v3.34"
 PARSER_VERSION = "xrp-public-market-v3.32"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
@@ -99,6 +100,17 @@ MORPHO_TOKEN_METADATA_EXPECTED = {
         "usdc",
     ),
 }
+MORPHO_CBXRP_NORMALIZER_VERSION = "morpho-cbxrp-research-normalizer-v1"
+MORPHO_CBXRP_SOURCE_IDS = frozenset({
+    "morpho_cbxrp_market_parameters",
+    "morpho_cbxrp_market_state",
+    "morpho_cbxrp_market_liquidity",
+    "morpho_cbxrp_market_state_history",
+    "morpho_cbxrp_oracle_state",
+    "morpho_cbxrp_token_metadata",
+    "morpho_usdc_token_metadata",
+    "morpho_base_chain_indexer_tip",
+})
 
 WALK_FORWARD_HORIZON_SECONDS = {
     "1h": 3_600,
@@ -4693,6 +4705,206 @@ def _raw_only_morpho_cbxrp_oracle_state(
     return [], source_as_of_text, False, "morpho_oracle_state_raw_only_until_quote_scale_and_update_timestamp_semantics_are_normalized"
 
 
+
+def _morpho_scaled_amount(value: Any, decimals: int, field: str) -> str:
+    raw = _morpho_uint(value, field)
+    return format(Decimal(raw) / (Decimal(10) ** decimals), "f")
+
+
+def _build_morpho_cbxrp_research_snapshot(
+    payloads: Mapping[str, Any],
+    receipts: Mapping[str, Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Normalize Morpho token units for research while keeping the snapshot model-ineligible."""
+    required = MORPHO_CBXRP_SOURCE_IDS - {"morpho_cbxrp_oracle_state"}
+    missing = sorted(source_id for source_id in required if source_id not in payloads or source_id not in receipts)
+    source_receipts = {
+        source_id: {
+            "receipt_id": receipt.get("receipt_id"),
+            "raw_content_sha256": receipt.get("raw_content_sha256"),
+            "captured_at_utc": receipt.get("captured_at_utc"),
+            "raw_bytes_retained": receipt.get("raw_bytes_retained", False),
+        }
+        for source_id, receipt in receipts.items()
+        if source_id in MORPHO_CBXRP_SOURCE_IDS
+    }
+    base: dict[str, Any] = {
+        "observation_type": "morpho_cbxrp_normalized_market_snapshot",
+        "normalizer_version": MORPHO_CBXRP_NORMALIZER_VERSION,
+        "source_ids": sorted(source_receipts),
+        "source_receipts": source_receipts,
+        "publisher_independence_group": "morpho_protocol_api",
+        "model_eligible": False,
+        "feature_store_admitted": False,
+        "block_timestamp_verified": False,
+        "limitations": [
+            "All market, token-metadata and indexer observations come from the Morpho API and are one publisher group, not independent corroboration.",
+            "The Base indexer tip is Morpho's last indexed block, not the canonical Base chain head.",
+            "No canonical Base block timestamp is captured for the market-state block; last_accrual_timestamp is not substituted for a block timestamp.",
+            "This normalized snapshot is research-only and is not admitted to the point-in-time feature store or directional forecasts.",
+            "No borrower identity, Coinbase ownership of the permissionless market, native XRP redemption, or native XRP spot flow is inferred.",
+        ],
+    }
+    if missing:
+        return {
+            **base,
+            "status": "INCOMPLETE",
+            "missing_source_ids": missing,
+            "reason": "Required Morpho market, token metadata or indexer-tip receipts are absent; no normalized values emitted.",
+        }
+
+    try:
+        parameters = _morpho_data(payloads["morpho_cbxrp_market_parameters"], "morpho_cbxrp_market_parameters")
+        state = _morpho_data(payloads["morpho_cbxrp_market_state"], "morpho_cbxrp_market_state")
+        liquidity = _morpho_data(payloads["morpho_cbxrp_market_liquidity"], "morpho_cbxrp_market_liquidity")
+        cbxrp = _morpho_token_metadata_data(payloads["morpho_cbxrp_token_metadata"], "morpho_cbxrp_token_metadata")
+        usdc = _morpho_token_metadata_data(payloads["morpho_usdc_token_metadata"], "morpho_usdc_token_metadata")
+        chain_tip = _morpho_base_chain_tip_data(payloads["morpho_base_chain_indexer_tip"], "morpho_base_chain_indexer_tip")
+        history_payload = payloads["morpho_cbxrp_market_state_history"]
+        if not isinstance(history_payload, Mapping) or not isinstance(history_payload.get("data"), list) or not history_payload["data"]:
+            raise XRPIngestionError("Morpho market history is unavailable for collateral normalization")
+        _morpho_market_identity(parameters, "morpho_cbxrp_market_parameters", require=False)
+        _morpho_market_identity(state, "morpho_cbxrp_market_state")
+        _morpho_market_identity(liquidity, "morpho_cbxrp_market_liquidity", require=False)
+
+        state_block = _morpho_uint(state.get("last_indexed_block"), "market state last_indexed_block")
+        liquidity_block = _morpho_uint(liquidity.get("last_indexed_block"), "market liquidity last_indexed_block")
+        history_block = _morpho_uint(history_payload.get("last_indexed_block"), "market history last_indexed_block")
+        tip_block = _morpho_uint(chain_tip.get("last_indexed_block"), "Base indexer last_indexed_block")
+        if state_block > tip_block or liquidity_block > tip_block or history_block > tip_block:
+            return {
+                **base,
+                "status": "BLOCKED_INDEXER_BLOCK_MISMATCH",
+                "reason": "A market observation is ahead of Morpho's Base indexer tip; normalization is withheld.",
+                "block_numbers": {
+                    "market_state": state_block,
+                    "market_liquidity": liquidity_block,
+                    "market_history": history_block,
+                    "indexer_tip": tip_block,
+                },
+            }
+        if state_block != liquidity_block or history_block != state_block:
+            return {
+                **base,
+                "status": "BLOCKED_CROSS_SOURCE_BLOCK_MISMATCH",
+                "reason": "Market state, liquidity and history do not share one indexed block; combined amounts are withheld.",
+                "block_numbers": {
+                    "market_state": state_block,
+                    "market_liquidity": liquidity_block,
+                    "market_history": history_block,
+                    "indexer_tip": tip_block,
+                },
+            }
+
+        state_capture = _from_iso8601(receipts["morpho_cbxrp_market_state"]["captured_at_utc"], "Morpho market-state receipt capture")
+        liquidity_capture = _from_iso8601(receipts["morpho_cbxrp_market_liquidity"]["captured_at_utc"], "Morpho market-liquidity receipt capture")
+        capture_skew = abs((state_capture - liquidity_capture).total_seconds())
+        if capture_skew > MAX_ORDERBOOK_AGE_SECONDS:
+            return {
+                **base,
+                "status": "BLOCKED_CAPTURE_SKEW",
+                "reason": "Market state and liquidity captures are more than 60 seconds apart; combined amounts are withheld.",
+                "market_state_liquidity_capture_skew_seconds": round(capture_skew, 3),
+            }
+
+        last_accrual = _morpho_uint(state.get("last_accrual_timestamp"), "market state last_accrual_timestamp")
+        last_accrual_age = state_capture.timestamp() - last_accrual
+        if last_accrual_age < -60:
+            return {
+                **base,
+                "status": "BLOCKED_FUTURE_ACCRUAL_TIMESTAMP",
+                "reason": "Morpho last_accrual_timestamp is later than the market-state receipt capture.",
+            }
+
+        latest_history = history_payload["data"][-1]
+        if not isinstance(latest_history, Mapping):
+            raise XRPIngestionError("Morpho latest history row is invalid")
+        history_timestamp = _morpho_uint(latest_history.get("timestamp"), "latest history timestamp")
+        history_as_of = datetime.fromtimestamp(history_timestamp, tz=timezone.utc)
+        if history_as_of > state_capture + timedelta(seconds=60):
+            raise XRPIngestionError("Morpho latest history timestamp is later than market-state capture")
+
+        usdc_decimals = _morpho_uint(usdc.get("decimals"), "USDC decimals")
+        cbxrp_decimals = _morpho_uint(cbxrp.get("decimals"), "cbXRP decimals")
+        supply_raw = _morpho_uint(state.get("total_supply_assets"), "total_supply_assets")
+        borrow_raw = _morpho_uint(state.get("total_borrow_assets"), "total_borrow_assets")
+        if supply_raw <= 0:
+            raise XRPIngestionError("Morpho total supply must be positive before utilization is calculated")
+        utilization = Decimal(borrow_raw) / Decimal(supply_raw)
+        lltv_raw = _morpho_uint(parameters.get("lltv_wad", parameters.get("lltvWad")), "LLTV")
+        lltv_percent = (Decimal(lltv_raw) / Decimal(10**18) * Decimal(100)).quantize(Decimal("0.0001"))
+        tip_capture = _from_iso8601(receipts["morpho_base_chain_indexer_tip"]["captured_at_utc"], "Morpho indexer-tip receipt capture")
+        state_to_tip_capture_skew = abs((state_capture - tip_capture).total_seconds())
+        source_cutoff = max(
+            _from_iso8601(receipt["captured_at_utc"], f"{source_id} receipt capture")
+            for source_id, receipt in receipts.items()
+            if source_id in required
+        )
+        return {
+            **base,
+            "status": "RESEARCH_ONLY_NORMALIZED",
+            "reason": "Token decimals and same-provider block numbers are reconciled; exact Base block timestamp and independent source anchoring remain unverified.",
+            "captured_at_utc": _iso(source_cutoff),
+            "data_as_of_utc": _iso(history_as_of),
+            "market_identity": {
+                "chain_id": MORPHO_CBXRP_CHAIN_ID,
+                "chain_name": "Base",
+                "market_id": MORPHO_CBXRP_MARKET_ID,
+                "loan_token_address": MORPHO_CBXRP_LOAN_TOKEN_ADDRESS,
+                "loan_token_symbol": usdc["symbol"],
+                "loan_token_decimals": usdc_decimals,
+                "collateral_token_address": MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS,
+                "collateral_token_symbol": cbxrp["symbol"],
+                "collateral_token_decimals": cbxrp_decimals,
+                "oracle_address": MORPHO_CBXRP_ORACLE_ADDRESS,
+            },
+            "normalized_values": {
+                "total_supply_assets_usdc": _morpho_scaled_amount(supply_raw, usdc_decimals, "total_supply_assets"),
+                "total_borrow_assets_usdc": _morpho_scaled_amount(borrow_raw, usdc_decimals, "total_borrow_assets"),
+                "market_liquidity_usdc": _morpho_scaled_amount(liquidity.get("market_liquidity"), usdc_decimals, "market_liquidity"),
+                "reallocatable_liquidity_usdc": _morpho_scaled_amount(liquidity.get("reallocatable_liquidity"), usdc_decimals, "reallocatable_liquidity"),
+                "borrow_amount_to_target_utilization_usdc": _morpho_scaled_amount(liquidity.get("borrow_amount_to_target_utilization"), usdc_decimals, "borrow_amount_to_target_utilization"),
+                "latest_history_total_collateral_cbxrp": _morpho_scaled_amount(latest_history.get("total_collateral_assets"), cbxrp_decimals, "total_collateral_assets"),
+                "utilization_ratio": format(utilization.quantize(Decimal("0.000001")), "f"),
+                "utilization_percent": format((utilization * Decimal(100)).quantize(Decimal("0.0001")), "f"),
+                "lltv_percent": format(lltv_percent, "f"),
+            },
+            "block_numbers": {
+                "market_state": state_block,
+                "market_liquidity": liquidity_block,
+                "market_history": history_block,
+                "indexer_tip": tip_block,
+                "market_state_lag_to_indexer_tip_blocks": tip_block - state_block,
+            },
+            "timestamp_quality": {
+                "market_state_last_accrual_age_seconds": round(last_accrual_age, 3),
+                "market_state_liquidity_capture_skew_seconds": round(capture_skew, 3),
+                "market_state_to_indexer_tip_capture_skew_seconds": round(state_to_tip_capture_skew, 3),
+                "history_latest_timestamp_utc": _iso(history_as_of),
+                "block_timestamp_verified": False,
+                "external_timestamp_anchor_status": "NOT_ANCHORED",
+            },
+            "market_parameters": {
+                "lltv_wad": str(lltv_raw),
+                "fee_wad": str(_morpho_uint(state.get("fee_wad"), "fee_wad")),
+            },
+            "oracle": {
+                "status": "RAW_ONLY_UNNORMALIZED",
+                "price_raw": (
+                    _morpho_data(payloads["morpho_cbxrp_oracle_state"], "morpho_cbxrp_oracle_state").get("price")
+                    if "morpho_cbxrp_oracle_state" in payloads
+                    else None
+                ),
+                "quote_scale": "UNKNOWN",
+            },
+        }
+    except (KeyError, TypeError, ValueError, XRPIngestionError) as exc:
+        return {
+            **base,
+            "status": "BLOCKED_VALIDATION_ERROR",
+            "reason": f"Morpho research normalization failed closed: {type(exc).__name__}: {exc}",
+        }
+
 def _raw_only_coinbase_cbxrp_proof_of_reserves(
     payload: Any, *, source_id: str, captured: datetime, **_kwargs
 ):
@@ -5874,6 +6086,8 @@ def run_ingestion(
     bitbank_circuit_break_payload: Mapping[str, Any] | None = None
     cftc_contract_status_payload: Mapping[str, Any] | None = None
     xrpl_node_payloads: dict[str, Mapping[str, Any]] = {}
+    morpho_payloads: dict[str, Any] = {}
+    morpho_receipts: dict[str, Mapping[str, Any]] = {}
     sec_capture: dict[str, Any] = {
         "summary": {"status": "NOT_REQUESTED", "issuer_count": len(SEC_ISSUERS),
                     "submissions_source_count": 0, "companyfacts_source_count": 0,
@@ -5991,6 +6205,9 @@ def run_ingestion(
             raw_retention_reason=DIGEST_ONLY_RAW_SOURCE_REASONS.get(source_id, ""),
         )
         receipts.append(receipt)
+        if source_id in MORPHO_CBXRP_SOURCE_IDS:
+            morpho_payloads[source_id] = payload
+            morpho_receipts[source_id] = receipt
         if source_id in MORPHO_TOKEN_METADATA_EXPECTED:
             token_data = _morpho_token_metadata_data(payload, source_id)
             research_only_observations.append(
@@ -6198,6 +6415,12 @@ def run_ingestion(
             latest_source_capture,
             _from_iso8601(sec_capture["latest_source_capture_at_utc"], "SEC latest capture"),
         )
+
+    morpho_cbxrp_normalization = _build_morpho_cbxrp_research_snapshot(
+        morpho_payloads,
+        morpho_receipts,
+    )
+    research_only_observations.append(morpho_cbxrp_normalization)
 
     captured = latest_source_capture
     captured_s = _iso(captured)
@@ -6431,6 +6654,7 @@ def run_ingestion(
         "sec_capital_events_path": "sec_capital_events.json",
         "research_only_observation_count": len(research_only_observations),
         "research_only_observations_path": "research_only_observations.json",
+        "morpho_cbxrp_normalization": morpho_cbxrp_normalization,
         "collection_policy": {
             "noncommercial_xrpl_nodes_included": include_noncommercial_xrpl_nodes,
             "default_scheduled_endpoints_exclude_noncommercial_xrpl_nodes": True,
