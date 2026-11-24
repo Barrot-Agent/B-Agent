@@ -1,12 +1,73 @@
 # Barrot Mission Portfolio — Current Durable Handoff
 
-**Updated:** 2026-11-24 04:54 UTC  
+**Updated:** 2026-11-24 05:15 UTC  
 **Repository:** `Barrot-Agent/B-Agent`  
 **Current main SHA:** `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`  
 **Main tree:** 3,139 entries; recursive tree complete, not truncated.  
 **Priority:** XRP intelligence/prediction, professional audio, and long-horizon continuity/capability development are three co-equal highest-priority missions. Barrot V3 remains their shared execution, orchestration, safety, provenance and verification foundation. Revenue/customer acquisition is a cross-mission objective, not a fourth technical mission.
 
-This checkpoint supersedes older status snapshots in this file where they differ. The exact current PR heads and checks are always available from the linked GitHub PRs. The handoff lives on the existing audio PR branch. At this checkpoint, code and handoff head `a283283b8553a4c640743507438563e647ccae32` passed the full repository suite and audio/security checks. This update is a further documentation-only follow-on; its resulting exact head must receive the same CI before merge.
+This checkpoint supersedes older status snapshots in this file where they differ. The handoff lives on the existing audio PR branch. Immediately before this documentation update, audio PR #1690 head `2e5f8661d2c0753fe97101b8fccf2556c40a0c23` passed its exact-head full suite, FluidSynth integration, dependency audit, money audit and conflict-integrity checks. This update is documentation-only; its resulting new head must receive fresh exact-head CI before merge. XRP PR #1692 received a new research-only cbXRP/Morpho reconciliation artifact at commit `bb991e5a0516e899c465205f8a7db4896abdeb2a`; that new head also requires exact-head checks. No PR was merged.
+
+## Latest checkpoint — 2026-11-24 05:15 UTC
+
+### Repository and merge state
+
+- Current main remains `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`; recursive tree is complete at 3,139 entries.
+- Main full repository suite passed on this exact SHA in run [45089588979](https://github.com/Barrot-Agent/B-Agent/actions/runs/45089588979). Main `pip-audit` and money audit have successful exact-SHA runs [45190557677](https://github.com/Barrot-Agent/B-Agent/actions/runs/45190557677) and [45135278267](https://github.com/Barrot-Agent/B-Agent/actions/runs/45135278267). A later `pip-audit` run was cancelled; do not treat that cancellation as a pass.
+- Main fail-closed gate [45325729577](https://github.com/Barrot-Agent/B-Agent/actions/runs/45325729577) remains failed closed. `GET /branches/main/protection` returns HTTP 403. The only readable repository ruleset is `Fall Back`, enforcement disabled, protecting deletion/non-fast-forward only; it does not establish the actual main branch-protection configuration.
+- Reviews are still empty on #1690, #1691, #1692 and #1693. The PR author is `Barrot-Agent`; the user's separate personal GitHub account can submit the independent approval. Do not set required approvals to zero or bypass the gate.
+- No merge, deployment, secret rotation, force-push, paper trade or real-money action occurred.
+
+### Current PR inventory
+
+| PR | Mission / classification | Current branch state | Exact-head status |
+|---|---|---|---|
+| [#1690 Audio](https://github.com/Barrot-Agent/B-Agent/pull/1690) | Ready; one active audio integration PR | Last tested head `2e5f8661`, 84 ahead / 0 behind; this handoff update creates a new documentation-only head | Full suite [45329542201](https://github.com/Barrot-Agent/B-Agent/actions/runs/45329542201): 4,614 passed, 2 skipped, 11 warnings, 32 subtests, 73.26% coverage. FluidSynth integration [45329542167](https://github.com/Barrot-Agent/B-Agent/actions/runs/45329542167), Dependency Audit [45329542084](https://github.com/Barrot-Agent/B-Agent/actions/runs/45329542084), Money audit [45329542087](https://github.com/Barrot-Agent/B-Agent/actions/runs/45329542087), and Conflict Integrity [45329566748](https://github.com/Barrot-Agent/B-Agent/actions/runs/45329566748) passed on `2e5f8661`. The new handoff commit must rerun them. Gate [45329566699](https://github.com/Barrot-Agent/B-Agent/actions/runs/45329566699) remains blocked by no independent review and branch-protection HTTP 403. |
+| [#1691 Continuity](https://github.com/Barrot-Agent/B-Agent/pull/1691) | Ready; one active continuity integration PR | `0275df32`, 0 behind main | Exact-head full suite [45148673910](https://github.com/Barrot-Agent/B-Agent/actions/runs/45148673910): 4,609 passed, 1 skipped, 11 warnings, 32 subtests, 73.34% coverage; dependency, money and conflict checks passed. Local fresh-process recovery is verified; cross-host synchronization is not. |
+| [#1692 XRP](https://github.com/Barrot-Agent/B-Agent/pull/1692) | Ready; one active XRP integration PR | New head `bb991e5a0516e899c465205f8a7db4896abdeb2a`, 21 ahead / 0 behind; new research artifact is documentation/data only | Prior head `fa1d23c6` full suite [45326396777](https://github.com/Barrot-Agent/B-Agent/actions/runs/45326396777): 4,612 passed, 1 skipped, 11 warnings, 32 subtests, 73.38% coverage; dependency, money and conflict checks passed. The new artifact head needs fresh exact-head checks. |
+| [#1693 A2A foundation](https://github.com/Barrot-Agent/B-Agent/pull/1693) | Draft / quarantined; not merge-ready | `493dc800`, 0 behind main | Full suite [45328114600](https://github.com/Barrot-Agent/B-Agent/actions/runs/45328114600): 4,605 passed, 1 skipped, 11 warnings, 32 subtests, 73.33% coverage. Security gaps remain: authenticated caller is not cryptographically bound to sender/recipient labels, source references are not resolved to immutable bytes, parent lineage is not proven against a durable chain, and the runner is not OS-sandboxed or egress-restricted. |
+| [#1686 Maintenance](https://github.com/Barrot-Agent/B-Agent/pull/1686) | Blocked / stale; preserve for reconciliation | 41 ahead / 235 behind main | Overlaps #1693 on `BARROT_SYNC.md`; do not merge or close until every unique change is classified and reconciled. |
+
+### XRP intelligence and prediction
+
+Latest scheduled ingestion: [45331849962](https://github.com/Barrot-Agent/B-Agent/actions/runs/45331849962), main SHA `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`, cutoff `2026-11-24T05:14:32.208137Z`, cross-run sequence 81.
+
+- Receipt chain: PASS; 34 receipts, 21 retained raw payloads, 13 digest-only receipts. Chain head SHA-256 `72056497f3b03aabedd31cf84cecc7ca6d2c11249b636188980c651115995a81`. No independent external timestamp anchor; GitHub run identity does not independently timestamp each provider observation.
+- Feature store: 24,573 history records, 81 snapshots, 123 eligible records, 367 excluded records.
+- Event timeline: 150 events, 0 verified raw receipt hashes, 0 verified receipts, all 150 classified `MISSING_RAW_RECEIPT_HASH`; receipt linkage incomplete.
+- Scenarios: 117. Drift: 205 features, 0 evaluated, status `INSUFFICIENT_DATA`.
+- Walk-forward: 300 evaluator rows, status `INSUFFICIENT_HISTORY`; these are not directional forecasts. No XRP candidate or independent shadow cohort exists. Forecast status remains `NOT_ISSUED`.
+- Source failures: 18 total, including 3 SEC EDGAR failures. SEC issuer submissions were not captured successfully; no issuer contact identity was fabricated.
+- Quote basis at `2026-11-24T05:14:21.081Z`: OKX XRP-USDT normalized using the OKX USDT-USD quote; bid `0.952222310`, ask `0.952331712`, mid `0.952277011`, spread `1.148846` bps. This is a single-venue top-of-book basis, not a multi-venue consensus or depth measure.
+- The collector captures Coinbase cbXRP proof-of-reserves and Morpho cbXRP/USDC market parameters, state, liquidity, history and oracle endpoints as raw-only evidence. Those sources are not yet normalized into model features.
+
+New research artifact on the existing XRP branch: [`20261124T051500Z-cbxrp-morpho-collateral-reconciliation.json`](https://github.com/Barrot-Agent/B-Agent/blob/integration/xrp-sec-event-receipt-linkage-20261123/research/xrp_intelligence/20261124T051500Z-cbxrp-morpho-collateral-reconciliation.json), commit `bb991e5a0516e899c465205f8a7db4896abdeb2a`.
+
+Key findings, all research-only:
+- Coinbase's dynamic proof page displayed 159,914,497.35 XRP in reserves and 159,912,250.81 cbXRP in supply (159,912,250.811 on Base), with a displayed 2,246.54 XRP surplus. The page refresh label has no timezone and is an issuer statement, not an independent audit. It does not prove new spot purchases or native XRP demand.
+- Coinbase Help currently lists XRP collateral for eligible US customers outside New York; the New York list is BTC, ETH and SOL. Coinbase describes the product as USDC borrowing through Morpho on Base, with Coinbase as the interface. This is consumer DeFi borrowing, not Coinbase Global Exchange institutional collateral. Limits vary by asset.
+- Morpho's public market configuration confirms Base chain 8453, USDC loan token, cbXRP collateral, oracle address and 62.5% LLTV. The permissionless market configuration does not establish Coinbase as market creator or owner.
+- A third-party Spine snapshot dated 2026-11-17 12:50 UTC reported $48.1M borrowed against $56.4M supplied (85.2% borrowed-over-supplied utilization), $117M collateral and 41% book LTV. This is a seven-day-old secondary snapshot, not current state.
+- A secondary report for 2026-11-07 through 2026-11-13 reported 883 liquidation logs, $4.016M USDC repaid and 4.182M cbXRP seized. No native XRP redemption or spot sale was traced. Seized cbXRP must not be equated with native XRP sold.
+- Morpho's API docs define raw amount units, token decimals, Unix timestamps and indexer-block fields. The current collector does not yet fetch Base USDC/cbXRP token metadata or chain indexer tip, so market history remains raw-only. This is a verified normalization gap; do not promote the series to model features until units, indexer vintage, source terms and time semantics are verified.
+
+Latest Cross Analysis [45329263701](https://github.com/Barrot-Agent/B-Agent/actions/runs/45329263701) still used a checked-in snapshot. XRP sentiment input was 615.2 hours old and BTC input 672.0 hours old; both are descriptive-only. The 3,217 entity co-occurrence pairs are corpus counts, not independent evidence of capital flows or causality.
+
+### Audio and continuity
+
+- Audio exact-head run on `2e5f8661` passed the full suite and real FluidSynth integration. The fixture is 80 bars, 110 BPM, D minor, 4/4, 175.545 seconds, 44.1 kHz stereo, 9 aligned stems, 10 MIDI section markers, zero clipped samples, −6.0171 dBFS sample peak and −6.0000 dBTP true peak.
+- The CI artifact is QC JSON only, not the WAV mix, stems or MIDI; no native DAW project exists. No comparative listening review or new user acceptance has occurred. The test SoundFont is GPL-2 and not commercially cleared. No finished music is approved for marketing.
+- Continuity PR #1691 verifies workspace-local fresh-process recovery, not cross-host synchronization. PR #1693 remains quarantined for the A2A identity, lineage, immutable-source and sandboxing gaps described above.
+- Sellbird remains Barrot-technology-only and outbound-paused. No mailbox authentication, campaign approval, verified prospect count, messages sent, meetings or revenue are recorded. Music, songwriting, background-vocal services and TrekFlex remain outside Sellbird scope.
+- No new live authentication/data-flow evidence was recorded for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks. Do not claim those platforms are connected.
+
+### Next concrete actions
+
+1. Obtain the user's independent GitHub approvals on #1690, #1691 and #1692; resolve read-only Administration access for branch-protection verification or have a repository administrator verify the rule. Keep approvals at one.
+2. On existing #1692, add Morpho token-metadata and Base chain-indexer-tip capture, then normalize cbXRP/USDC historical market data into research-only observations with exact receipt/hash linkage. Keep it model-ineligible until licensing and time semantics are verified.
+3. Repair SEC EDGAR source configuration and raw-document receipt linkage; do not infer event timestamps from capture time.
+4. Export user-accessible full-song WAV, stems and MIDI from the audio pipeline using commercially cleared or original instruments; run comparative listening and obtain user acceptance before claiming professional quality.
+5. Keep #1693 quarantined until caller identity, source resolution, lineage and sandbox/egress controls are proven.
 
 ## 1. Repository and governance
 
