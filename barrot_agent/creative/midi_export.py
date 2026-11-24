@@ -47,12 +47,6 @@ def export_midi(manifest: MusicalManifest, destination: str | Path) -> Path:
                 end=max(start + 0.01, end),
             )
         )
-    for section in manifest.sections:
-        marker_time = (
-            (section.start_bar - 1) * manifest.beats_per_bar * seconds_per_beat
-        )
-        # Section markers are added as standard MIDI marker meta events below.
-
     path.parent.mkdir(parents=True, exist_ok=True)
     midi.write(str(path))
 
