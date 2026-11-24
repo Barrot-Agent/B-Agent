@@ -535,3 +535,58 @@ Next actions:
 6. Sellbird: audit the exact ethanplusai/sellbird repository, AGPL-3.0 obligations, dependencies, security, data sources, cost controls and mailbox/compliance safeguards before installation. Keep discovery separate from outbound; do not send without explicit campaign and sending approval.
 
 No merge, deployment, secret/variable change, branch-protection change, external model dispatch, paid lookup, outbound email, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 6 follow-up — post-handoff exact-head verification and Sellbird source audit
+
+### Audio handoff commit verification — VERIFIED
+
+The prior Run 6 handoff commit moved PR #1690 to head e2e13329493b9864a5c8b98601b376b0832fd96d (93 commits ahead of main, 0 behind). This commit changed only BARROT_MISSION_HANDOFF_LATEST.md.
+
+On that exact head:
+- CI run 45362985990 succeeded. Full repository suite: 4,626 passed, 2 skipped, 11 warnings, 32 subtests; 73.76% total coverage. The package-specific coverage floors all passed.
+- Audio Render Integration run 45362985956 succeeded, including the three real FluidSynth render, aligned bundle and full-song tests.
+- Dependency Audit run 45362985944 succeeded.
+- Money audit run 45362985972 succeeded.
+- Conflict Integrity run 45362986251 succeeded.
+- Fail-closed gate run 45362986201 failed closed with exactly two blockers: no independent approving review exists; branch protection could not be verified because the detailed endpoint is inaccessible. It explicitly did not approve, bypass or merge.
+- PR #1690 remains open, non-draft and mergeable against main; no independent review is recorded. Main remains at 7d7aba841cb849e461376a8fcdd4cc4fa10c9af6.
+
+This establishes the Run 6 handoff commit's exact-head verification. Any later documentation commit must receive its own exact-head checks before merge.
+
+### Current main cross-analysis and external workflow findings — VERIFIED
+
+- Cross Analysis run 45359827030 succeeded at 2026-11-24 08:52 UTC, but its XRP output was not fresh: XRP STALE_INPUT because the newest sentiment input exceeded the 48-hour freshness limit. The latest sentiment entry was 2026-10-29T12:39:22.915636Z, reported age 620.211 hours, with forecast_eligible=false. A successful workflow status does not make stale inputs model-eligible.
+- The last observed Pillars Consistency Check on main, run 45179979231 at 2026-11-23 13:02 UTC, failed only its Hugging Face Space runtime probe: stage=BUILD_ERROR. The same check reported the GitHub main source marker present and no fiction terms in the main source, but explicitly did not inspect deployed Space revision parity. GitHub App and Databricks probes were skipped because they require manual workflow_dispatch opt-in. This is a historical runtime observation, not a current live status confirmation. No Space restart or deployment was performed.
+- The repository rulesets API exposed one repository ruleset named “Fall Back” with enforcement disabled. The main branch endpoint still reports protected=true. Classic branch-protection details remain unreadable (HTTP 403), so required reviewers, strict checks, administrator enforcement, force-push and deletion settings remain unverified.
+
+### Sellbird preliminary source audit — READ ONLY, NOT DEPLOYED
+
+Repository: https://github.com/ethanplusai/sellbird, default branch main. The recursive tree contained 295 entries and was not truncated. The project metadata identifies version 0.4.0, Python >=3.11 and AGPL-3.0-only. The README says Harvey releases through 0.3.x retain their earlier MIT notices; current Sellbird code is AGPL-3.0-only. The connected GitHub identity has read-only access to this repository; no installation, fork, code change or authentication was attempted.
+
+Verified from source/configuration:
+- The default config selects Gmail, max_daily_sends=50, require_approval=true and max_bounce_rate=0.05. The approval queue is the default. Autopilot exists but requires an explicit user action or configuration change; it was not enabled.
+- The default prospect source is OpenStreetMap (free). TinyFish is listed as free up to 30 searches/minute and 500/hour. Paid source prices documented by the project include DataForSEO Business Listings at $0.372/1,000, DataForSEO SERP at $0.006 per depth-30 search, DataForSEO Maps at $0.002 per search, Serper at approximately $0.30–$1.00/1,000 and Scavio Maps at $0.01/page. No paid lookup was executed.
+- Company research is based on public company websites and configured discovery sources. Contact email evidence is graded verified/risky/guess/invalid; only deliverable addresses are sendable by default. The repository documents Hunter, Reoon and ZeroBounce integrations; no provider credentials were configured or used.
+- Gmail OAuth uses the Gmail modify scope, not a send-only scope. The refresh-token file is stored locally with owner-only permissions. SMTP credentials can be supplied through the local environment/configuration. The dashboard is designed for loopback-only access with owner-only tokens; Docker guidance says to run as the local user, not root.
+- The documented safeguards include a deterministic pre-send gate, recipient-to-record matching, a permanent opt-out state, a do-not-contact list, bounce handling, recipient-local send windows, daily limits and a pause-all-sending command. Optional Precleared recipient checks are not configured or tested.
+- The documented deliverability baseline is a dedicated secondary sending domain, SPF/DKIM/DMARC, 2–4 weeks of warmup, initial sending around 10–20/day with gradual ramping, and a 5% default bounce kill threshold. This is a prerequisite, not a substitute for legal review or mailbox reputation monitoring.
+- The documented source code contains tests for dashboard authentication, opt-outs, do-not-contact, send holds and SMTP header injection. Those tests were inspected but not executed in this run. No independent vulnerability scan or complete dependency audit of Sellbird was performed.
+- Sellbird's README says it runs through Claude Pro/Max or a ChatGPT plan with the Codex CLI. Codex CLI authentication and this account's plan entitlement were not tested. No live ChatGPT/Codex or Claude connection is claimed.
+- AGPL-3.0-only requires legal review before modifying or integrating Sellbird into a network-accessible Barrot service. A modified network service may trigger source-offer obligations under AGPL-3.0 section 13. Keep it as a separate candidate tool until license compatibility is reviewed.
+- The repository's own documentation says it does not use Apollo, ZoomInfo, Clearbit or Clay. Do not scrape LinkedIn or PitchBook; use lawful public/authorized sources only.
+
+Sellbird readiness remains: source-audited at a preliminary level, not installed, not configured, not authenticated, not prospecting-tested, no verified prospects, no approved campaign, no outbound messages, no replies, no meetings and no revenue. The fastest Barrot offer is not yet accepted as a bounded, reproducible, marketable deliverable. Do not start a campaign until the exact Barrot-only audience, offer, proof, pricing hypothesis, mailbox/domain setup, jurisdiction-specific compliance, suppression list and user approval are established. Do not prospect for music, tracks, songwriting, background vocals, TrekFlex or other separate ventures.
+
+### Run 6.1 next actions
+
+1. Obtain an independent human approval on #1690, #1691, #1692 and #1694 from the user's separate GitHub identity. The connected ChatGPT GitHub principal is Barrot-Agent and cannot approve its own PRs.
+2. Have a repository administrator configure BARROT_MAINTAINER_LOGIN and, if the gate needs to inspect classic branch protection, a least-privilege read-only BARROT_BRANCH_PROTECTION_READ_TOKEN. No variables or secrets were changed.
+3. Keep XRP forecasts disabled until the stale sentiment input is refreshed, event-level raw receipt hashes and external timestamp anchoring exist, feature-store rebuild from raw receipts is implemented, and leakage-safe out-of-sample baselines/calibration/shadow tests meet the admission criteria.
+4. Do not restart the Hugging Face Space without explicit approval. The last observed BUILD_ERROR is a deployment/runtime issue, not evidence that main source is broken.
+5. Keep audio acceptance blocked on commercially cleared/original SoundFonts, user-accessible full-resolution mix/stems/MIDI, editable DAW interchange and comparative listening approval.
+6. Keep Sellbird outbound paused. Complete the full dependency/security/legal audit and establish a verified Barrot-only offer before discovery or sending.
+
+No PR was merged, no deployment or Space restart was performed, no secret or repository variable was changed, no paid lookup or outbound email was sent, and no financial or paper-trading action occurred.
