@@ -53,6 +53,23 @@ Use this existing flow:
 - `scripts/transmute.py` is **QUARANTINED**. The former implementation could overwrite a live target and delete losing variants.
 - The current replacement intentionally fails closed and performs no file I/O. Do not execute, replace, or re-enable it.
 - Reconsider only after a non-destructive isolated-copy evaluator preserves every original and losing variant, is independently tested, and receives explicit approval.
+- This quarantine applies **only** to the code-variant replacement utility. Query transmutation is a separate protocol and is not quarantined.
+
+## Recursive query transmutation
+
+Every incoming request is transmuted before execution. This is not the code-variant utility above.
+
+- Preserve the exact original request, its SHA-256, timestamp, and source reference before analysis.
+- Extract intent, invariants, constraints, and unresolved ambiguity.
+- Expand into causally connected domains and state why each domain is connected.
+- Discover existing capabilities from repository evidence before proposing anything new.
+- Record gaps, rank competing hypotheses with falsifiers, and choose the cheapest discriminating experiment.
+- Produce a bounded ranked plan with depth, iteration, parallelism, question, wall-clock, and retry limits. Record every clamp.
+- Stop only at an explicit state: `SUCCESS_VALIDATED`, `SUCCESS_WITH_LIMITATIONS`, `NO_MEANINGFUL_IMPROVEMENT`, `INCONCLUSIVE`, `BLOCKED_DEPENDENCY`, `BUDGET_EXHAUSTED`, `AUTHORIZATION_REQUIRED`, `SAFETY_ABORT`, `FAILED_REPRODUCIBLY`.
+- Preserve unresolved questions as a resumable checkpoint. Never repeat failed work without a new discriminating hypothesis.
+- The protocol produces a plan only. It never executes a consequential action and never promotes a hypothesis to verified evidence.
+
+Runtime: `barrot_agent/inbound/transmutation.py` composes `barrot_agent/inbound/gate.py`. Records are append-only under `results/transmutation/`.
 
 ## Massive Micro Ingestion (MMI)
 

@@ -278,7 +278,7 @@ def _gaps(text: str, tokens: list[str]) -> tuple[str, ...]:
         gaps.append("cost_or_risk")
     if not re.search(r"\brevert|rollback|git checkout|undo|restore\b", lowered):
         gaps.append("rollback")
-    if not re.search(r"\bcheck|confirm|verify|assert|prove|reproduc|pytest\b", lowered):
+    if not re.search(r"\b(check|confirm|verify|assert|prove|reproduc)|pytest\b", lowered):
         gaps.append("verification")
     if not tokens:
         return GAP_CATEGORIES
