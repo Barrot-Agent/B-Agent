@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-24T05:55:35Z",
+  "captured_at_utc": "2026-11-24T08:31:00Z",
   "capture_basis": "Automation-run start timestamp; repository and connector facts were verified during this run.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
@@ -20,7 +20,30 @@
       "repository": "https://github.com/Barrot-Agent/B-Agent",
       "repository_metadata": "https://api.github.com/repos/Barrot-Agent/B-Agent",
       "main_branch": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
-      "branch_protection": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main/protection"
+      "branch_protection": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main/protection",
+      "branch_summary": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main"
+    },
+    "branch_protection_summary": {
+      "observed_at_utc": "2026-11-24T08:31:00Z",
+      "source": "GET /repos/Barrot-Agent/B-Agent/branches/main",
+      "branch_protected": true,
+      "protection_enabled": true,
+      "required_status_checks_enforcement_level": "non_admins",
+      "required_status_checks": [
+        "Full repository test suite",
+        "audit",
+        "pip-audit",
+        "Verify PR merge tree against current base"
+      ],
+      "detailed_endpoint_status": "HTTP_403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
+      "not_verified": [
+        "required approving review count",
+        "strict up-to-date requirement",
+        "administrator enforcement",
+        "force-push policy",
+        "branch-deletion policy"
+      ],
+      "interpretation": "The branch summary confirms protection is enabled and exposes four required checks. It does not expose the full classic branch-protection document. Do not infer any unreturned settings."
     }
   },
   "mission_portfolio": {
@@ -59,7 +82,8 @@
         "workflow_run_status_read": true,
         "administration_read": false,
         "branch_protection_details_read": false,
-        "independent_approval_of_own_pr": false
+        "independent_approval_of_own_pr": false,
+        "branch_protection_summary_read": true
       },
       "verified_data_flow": {
         "status": "VERIFIED",
@@ -70,7 +94,8 @@
           "read main and PR-branch files",
           "write corrected files to existing PR branches",
           "read PR metadata",
-          "read workflow runs and job logs"
+          "read workflow runs and job logs",
+          "read main branch protected flag and partial required-status-check summary"
         ],
         "external_model_data_transfer": false,
         "persistent_agent_connection": false
