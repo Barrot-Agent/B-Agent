@@ -103,3 +103,135 @@ Next: capture Coinbase proof-of-reserves and Morpho Read API responses as raw by
 8. Japanese e-Gov law record, Act No. 101 of 1963: https://laws.e-gov.go.jp/law/338AC0000000101
 9. SBI Holdings FY2025 financial-results presentation (2026-05-01): https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf
 10. Ripple/SBI RLUSD Japan launch (2026-06-24): https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/
+
+
+---
+
+## 7. 2026-11-24 08:03 UTC follow-up — institutional relationship graph and creator-attributed video inventory
+
+This follow-up adds current primary-source evidence. It does **not** promote the observations into the point-in-time feature store: original HTTP response bytes, response headers, independently anchored capture timestamps and immutable receipt hashes were not captured.
+
+### 7.1 Coinbase ↔ Circle: current distribution economics
+
+- Circle's Q3 2026 Form 10-Q says Coinbase receives an allocation based on USDC held on Coinbase's platform after Circle's issuer retention, plus half of the remaining ecosystem-growth amount after payments to approved third-party participants.
+- Circle reported **$986.6 million** of distribution costs in connection with its Coinbase agreements for the nine months ended 2026-09-30. This is a cost/distribution disclosure, not XRP demand.
+- Coinbase's Q3 2026 Form 10-Q says it renewed its arrangement with Circle on the same terms. Coinbase also reported an all-time high average USDC balance in its products; its Q3 earnings release reported **$22 billion**.
+- The 2023 Circle/Coinbase announcement says Coinbase took an equity stake in Circle and that the parties moved USDC issuance/governance from the former Centre consortium to Circle. Treat the current collaboration agreement and historical Centre governance as separate structures.
+
+### 7.2 Circle ↔ Ripple: direct XRPL stablecoin partnership
+
+- Circle announced USDC live natively on XRPL mainnet on 2025-06-12, with Circle Mint and Circle APIs supporting it; no third-party bridge is required.
+- Ripple's same-day announcement describes a direct partnership with Circle and says Ripple intends to use USDC alongside RLUSD in its payments product.
+- USDC and RLUSD are separate issuer liabilities and separate assets. Their presence on XRPL can increase ledger activity and dollar liquidity, but does not by itself establish material net XRP purchases. XRP may be used for transaction fees, DEX/auto-bridging and other liquidity functions; quantify those separately.
+
+### 7.3 Coinbase ↔ Ripple: new direct RLUSD distribution relationship
+
+- Coinbase and Ripple announced on 2026-10-28 that RLUSD became available through Coinbase Prime, Coinbase Exchange and the Coinbase retail app.
+- The launch announcement supports RLUSD deposits/withdrawals on XRPL, Base and Ethereum. Ripple said it would provide Base liquidity. Coinbase Global Exchange collateral support was described as a later phase, not as already live at launch.
+- Coinbase separately states XRP is supported on Retail, Prime and Custody, subject to jurisdictional restrictions. This is exchange/custody support, not proof of a Coinbase equity stake in Ripple.
+- The new RLUSD relationship is direct commercial distribution. No evidence in the reviewed primary sources establishes Coinbase ownership of Ripple or Ripple ownership of Coinbase.
+
+### 7.4 SBI ↔ Circle: strategic, distribution, banking and network links
+
+- SBI Holdings and Circle signed an MOU on 2023-11-27 covering USDC circulation in Japan, banking relationships and Circle Web3 services.
+- SBI's FY2024 results presentation says a 50/50 Japanese JV agreement was signed on 2025-03-18; the subsequent SBI announcement says the JV was established in 2025.
+- SBI VC Trade obtained Japan's electronic-payment-instrument registration and began USDC services in March 2025. SBI Shinsei Bank was designated to provide banking services to Circle.
+- SBI Holdings and SBI Shinsei Bank disclosed a combined **$50 million** strategic investment in Circle at its 2025 NYSE listing, split **$25 million each**.
+- SBI Holdings disclosed participation by a consolidated subsidiary in Circle's ARC token presale on 2026-05-12. Circle separately named SBI Group in Arc's founding-validator cohort on 2026-08-05.
+- SBI's 2026-05-01 strategy deck labels Circle/USDC and Ripple/RLUSD as USD-stablecoin partners while separately describing a planned JPYSC initiative. This is evidence of a multi-rail strategy; it is not proof that every planned product or partner flow is already live.
+
+### 7.5 SBI ↔ Ripple: equity, JV, remittance and treasury links
+
+- SBI Holdings' FY2025 results presentation describes Ripple as an SBI Group investee company and states that SBI's stake is approximately **9%**. The figure is issuer-reported, not independently valued here.
+- SBI Group's company profile identifies SBI Ripple Asia as a joint venture; SBI Group's voting-rights share is 60%.
+- SBI Remit's 2023-09-06 release is unusually specific about the operating flow: SBI Remit sends the customer payment request; SBI VC Trade sends XRP in response; TRANGLO processes payout to the beneficiary bank account. The release says XRP is used as a bridge between fiat currencies. This is evidence of a real XRP-enabled remittance product, but no corridor-level volume or net XRP inventory is disclosed.
+- SBI Holdings' 2026-05-01 presentation says it invested **$200 million in cash** in Evernorth's PIPE and describes more than $1 billion raised through a combination of spot XRP and cash. This is a capital relationship with an XRP treasury company, not proof that the $200 million was spent on open-market XRP purchases. Keep cash, in-kind XRP, treasury holdings and exchange executions separate.
+
+### 7.6 Relationship graph and disconfirming boundaries
+
+| Pair | Verified relationship | What it does not prove |
+|---|---|---|
+| Coinbase–Circle | USDC founding/strategic relationship, Coinbase equity stake, current distribution-cost collaboration | XRP spot demand or Ripple ownership |
+| Circle–Ripple | Direct USDC-on-XRPL launch partnership | Circle buying XRP or XRP being required for every USDC transfer |
+| Coinbase–Ripple | Direct RLUSD listing/distribution partnership across Coinbase products | Coinbase equity ownership in Ripple or RLUSD collateral support already live at launch |
+| SBI–Circle | 50/50 Japan JV, USDC distribution/banking, $50m combined Circle investment, ARC/Arc participation | XRP demand or an exclusive stablecoin arrangement |
+| SBI–Ripple | Approx. 9% SBI stake in Ripple, SBI Ripple Asia JV, SBI Remit/VC Trade XRP remittance flow, Evernorth PIPE investment | All SBI/Ripple products using XRP or every financing dollar buying XRP |
+| SBI–Coinbase | No direct ownership or bilateral commercial agreement established in this review | Do not draw an edge from common USDC ecosystem participation alone |
+
+**Model treatment:** represent each legal entity, instrument, network, contract, cash flow and XRP flow separately. Circle/Coinbase reserve economics, SBI/Circle USDC distribution, Ripple RLUSD, SBI Remit ODL, Evernorth treasury funding and cbXRP/Morpho collateral are different mechanisms. None may be collapsed into a single "institutional XRP demand" feature.
+
+### 7.7 Kamilah Stevenson public-channel attribution and curated public inventory
+
+**Attribution status:** the main public channel `@drkamilahstevenson` is now linked to the creator's public brand at the channel/brand level. The YouTube channel index identifies the channel as "Kamilah Stevenson", lists the creator-controlled link `go.prescribewealth.com/yt-bio`, and describes a stocks/crypto/macro investing channel. The linked brand domain `prescribewealth.com` identifies MKS Health LLC / The Inner Circle as founded by Dr. Kamilah Stevenson. This is a creator-controlled cross-link, not independent legal-identity or credential verification.
+
+**Do not merge** the channel with the separate London-based Camilla Stevenson LinkedIn profile, or with other low-subscriber YouTube channels using similar names/descriptions. A transcript result for one video renders the spoken name as "Camila"; the channel and brand spell it "Kamilah". The main channel also posted that it created a second channel, `@PrescribeWealth`; that second channel's content was not separately inventoried here.
+
+**Curated public inventory from the main channel index** (displayed view counts and relative ages are a search-index snapshot, not independently audited analytics; individual video IDs were not exposed for most entries):
+
+Recent public uploads:
+1. "This NEW Bank Deal Shows Exactly Where XRP Is Headed" — 29K views, 1 day
+2. "This New SEC Proposal Could Unlock Trillions for XRP (and nobody realizes)" — 28K, 2 days
+3. "Exactly How to Retire With Your XRP Portfolio (Even If You're Cash Poor)" — 41K, 4 days
+4. "XRP vs Banks: Why Your Money Needs Autonomy NOW" — 9.8K, 5 days
+5. "Did SWIFT Just Change XRP Forever? (The Truth)" — 77K, 5 days
+6. "BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention." — 21K, 8 days
+7. "A $119 Billion African Bank Just Put Its License Behind XRP" — 27K, 9 days
+8. "A New XRP Tool Can Buy and Sell for You" — 13K, 11 days
+9. "Invest NOW or Get Left Behind. Institutions Are Already Moving." — 16K, 12 days
+10. "The CFTC Just Said What XRP Holders Waited Years to Hear" — 44K, 12 days
+11. "Wall Street Just Got a Company Built to Keep BUYING XRP" — 16K, 2 weeks
+12. "XRP Ledger Technology Just Reached Europe's Central Bank" — 11K, 2 weeks
+
+Popular public uploads surfaced by the same channel index:
+- "Japan Just Ended 30 Years of ZERO Interest Rates—Why XRP Could Explode" — 253K, 10 months
+- "How the Wealthy Will Use XRP (Most People Won't Understand)" — 151K, 8 months
+- "Flare Is Putting 100 Million XRP to Work. Holders Can Earn From It" — 148K, 1 month
+- "Why XRP Could Be Repriced (Banks Aren't Trading It)" — 143K, 10 months
+- "Banks Just Got the GREEN LIGHT on Crypto—Are You Positioned" — 139K, 7 months
+- "SEC Silent, CFTC Approved: XRP Just Got Treated Like Gold" — 135K, 10 months
+- "The CLARITY Act Just Failed in the Senate. What This Means for XRP" — 129K, 1 month
+- "SWIFT Just Connected 11,000 Banks—and XRP Is at the Center" — 86K, 6 months
+- "Why Banks Need XRP to Be Expensive (Retail Is Thinking About It Wrong)" — 84K, 10 months
+- "Most XRP Holders Don't Understand What They're Actually Holding" — 83K, 7 months
+- "Japan's Top Financial CEO Just Publicly DEMANDED The US Senate Act On XRP" — 82K, 4 months
+
+Public live streams surfaced by the channel index:
+- "XRP Got Everything We Waited For. So Why Isn't It Soaring?" — 19K, 1 day
+- "XRP's Next Big Move Could Come Down to These 4 Days" — 26K, 3 days
+- "Bank Of America's CEO Just ADMITTED What XRP Holders Already Knew" — 20K, 6 days
+- "I Was WRONG About XRP. The Timeline Just Changed." — 35K, 8 days
+- "191,000 Traders Got Wiped Out While XRP Became Wall Street Collateral" — 22K, 2 weeks
+- "Bad Jobs. Higher Rates. Something Just Broke. Watch Your XRP." — 23K, 2 weeks
+- "Your XRP Can Now Trade Without You" — 21K, 2 weeks
+- "America's Biggest Banks Just Picked Quant. XRP Was Never the Competition." — 42K, 3 weeks
+- "The White House Is Done Waiting on Congress. XRP Moves Forward Anyway" — 19K, 3 weeks
+- "The CLARITY Act Exposed the Banks. XRP Just Became More Important" — 23K, 4 weeks
+- "The SEC Just Approved Stocks Onchain. XRP Was Built for What Comes Next" — 11K, 1 month
+- "The CLARITY Act Vote Failed. XRP Ran 580% Without It" — 22K, 1 month
+
+Members-only videos were excluded. The inventory is a curated XRP/Japan/institutional subset, not all 1.2K channel uploads. A separately indexed public video, "Japan's Yen Crisis Put $1 Trillion of U.S. Debt at Risk" (2026-08-07), is directly linked at https://www.youtube.com/watch?v=Qvz-NilZTgo.
+
+### 7.8 Exact-phrase status after follow-up
+
+- `"ASK Coin"`: still no primary-source XRP/XRPL identity. Permission Coin (ASK) remains a separate ticker-collision candidate; no XRPL relationship established.
+- `"actual capital"`: no exact primary-source XRP/SBI/Ripple match established. SBI's slide label "Actual XRP" is a different phrase and category; do not conflate them.
+- `"SBIC, ChatGPT SBIC"`: no official ChatGPT relationship established. The regional SBIC legal identity remains separate from SBI Holdings.
+
+### 7.9 Added source register
+
+11. SBI Holdings FY2024 results / Circle-SBI 50:50 JV slide: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf
+12. SBI Holdings/Circle MOU (2023-11-27): https://www.sbigroup.co.jp/english/news/pdf/2023/1127_a_en.pdf
+13. SBI Holdings/Circle JV announcement (2025-08-22): https://www.sbigroup.co.jp/news/2025/0822_15679.html
+14. SBI Holdings/SBI Shinsei $50m Circle investment (2025-06-09): https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf
+15. SBI VC Trade USDC registration (2025-03-04): https://www.sbigroup.co.jp/news/2025/0304_15290.html
+16. SBI Holdings ARC presale announcement (2026-05-12): https://www.sbigroup.co.jp/news/2026/0512_16310.html
+17. Circle Arc founding validator cohort (2026-08-05): https://www.circle.com/pressroom/circle-announces-founding-validator-cohort-and-major-integrations-for-arc-ahead-of-september-16-mainnet-launch
+18. Circle USDC on XRPL (2025-06-12): https://www.circle.com/blog/now-available-usdc-on-the-xrpl
+19. Ripple/Circle USDC-on-XRPL partnership (2025-06-12): https://ripple.com/ripple-press/ripple-and-circle-launch-usdc-on-the-xrp-ledger/
+20. Coinbase/Ripple RLUSD distribution partnership (2026-10-28): https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+21. Ripple/Coinbase RLUSD announcement (2026-10-28): https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/
+22. Circle Q3 2026 Form 10-Q (2026-09-30): https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
+23. Coinbase Q3 2026 Form 10-Q (2026-09-30): https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
+24. Coinbase Q3 2026 results (2026-10-29): https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx
+25. Prescribewealth official brand site: https://prescribewealth.com/
+26. Main YouTube channel: https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA
