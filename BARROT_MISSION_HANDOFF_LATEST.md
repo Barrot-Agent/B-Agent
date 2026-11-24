@@ -302,3 +302,59 @@ Sellbird remains the separate upstream prospecting/outreach product and is restr
 Keep the three existing mission PRs as the sole active integrations. Do not create replacement PRs or repeat repository audits. The only merge blocker now established for these three heads is governance: a genuine independent human approval and readable branch-protection evidence must exist before promotion. Continue bounded mission work on existing branches: close XRP receipt/freshness gaps before adding more descriptive research; obtain auditable commercially suitable audio assets and perform listening evaluation; implement cross-host continuity with explicit conflict resolution. Keep Sellbird discovery Barrot-only and outbound sending paused.
 
 No merge, force-push, branch rewrite, deployment, Space restart, secret rotation, paid lookup, Kaggle submission, outbound message, paper trade, funds transfer or real-money action occurred.
+
+
+## Run 14 operational checkpoint — 2026-11-24 20:07 UTC
+
+This snapshot is recorded on the existing audio integration branch. Main remains unchanged. The PR heads below are the verified pre-handoff-update heads; this documentation-only commit will trigger fresh exact-head checks for #1690.
+
+### Repository and integration state
+
+- Main SHA: `7d7aba841cb849e461376a8fcdd4cc4fa10c9af6`; recursive tree: 3,139 entries, not truncated.
+- Exactly three priority-1 missions remain active: XRP intelligence/prediction, professional audio, and long-horizon continuity. Barrot V3 remains the shared execution, orchestration, provenance, authorization, safety and verification foundation.
+- Eight PRs remain open. One active mission integration each: #1690 audio, #1691 continuity, #1692 XRP. All three are based on current main and GitHub reports them mergeable.
+- No submitted reviews exist on the three mission PRs. Their fail-closed gates all report **no independent approving review** and **branch protection could not be verified (HTTP 403)**. No merge was attempted.
+
+### Exact-head evidence
+
+| Workstream | Current pre-update head | Full repository suite | Other exact-head checks |
+|---|---|---|---|
+| Audio #1690 | `27dfebfb79c5cca56eb117aa4c63742cbbae8c9b` | 4,626 passed, 2 skipped, 11 warnings, 32 subtests; 73.76% coverage | Core tests, Pages validation, pip-audit, money audit and conflict integrity passed. Real FluidSynth integration passed 3/3 tests. |
+| Continuity #1691 | `eb58afbb32ad8ede7b149815db2629d98fe2f052` | 4,613 passed, 1 skipped, 11 warnings, 32 subtests; 73.34% coverage | Core tests, Pages validation, pip-audit, money audit and conflict integrity passed. |
+| XRP #1692 | `fe9efa0df11f1defc6b1a3c31e17340e13197614` | 4,622 passed, 1 skipped, 11 warnings, 32 subtests; 73.43% coverage | Core tests, Pages validation, pip-audit, money audit and conflict integrity passed. |
+
+The audio QC artifact is [14955855830](https://github.com/Barrot-Agent/B-Agent/actions/runs/45467125151/artifacts/14955855830), 2,682 bytes, SHA-256 `4c80b0a42df0bc68c216c5a600eac64c6dfa88ffb43e27c6277537e56a40c432`. It contains QC JSON only, not downloadable WAV, stems or MIDI. The test SoundFont is Debian TimGM6mb `1.3-5build1`, GPL-2 and test-only; it was not bundled or redistributed. No native DAW project, blind/level-matched listening result or user acceptance is verified. Technical fixture remains 80 bars / 175.545 seconds, 110 BPM, D minor, 4/4, 44.1 kHz, nine aligned stems, ten markers, zero clipped samples, approximately -6.017 dBFS sample peak and -6.000 dBTP true peak.
+
+### XRP ingestion — latest successful capture and current retry
+
+- Latest successful main capture: [run 45457620084](https://github.com/Barrot-Agent/B-Agent/actions/runs/45457620084), data cutoff **2026-11-24 18:16:21 UTC**, snapshot `816efa9a96e0234c5c2b6afca23c6eeebaded11f334f1f8ba3dbca2c99e342bb`.
+- 94 feature-store snapshots; 123 latest eligible records and 367 excluded; 34 receipts (21 retained raw, 13 digest-only); 18 source failures. Receipt-chain verification passed, with chain head `7ecd35bffb4adcb79bf9934bf98fb2a997bc26a1bb9d4d5bcea2848a14dbc6a5`. The chain is not externally anchored and GitHub artifact retention is 90 days.
+- Artifacts: raw archive [14949569842](https://github.com/Barrot-Agent/B-Agent/actions/runs/45457620084/artifacts/14949569842), SHA-256 `7f02d97f5bc19ce240aca4d55fcac8536b6d110f3a2b636e3e5f8e81b935f750`; receipt index [14950123814](https://github.com/Barrot-Agent/B-Agent/actions/runs/45457620084/artifacts/14950123814), SHA-256 `366e50a2ed90838c6e29c849f15d8aa2a966c4651dbe2da6e639243b303bcd8e`; event bundle [14950913383](https://github.com/Barrot-Agent/B-Agent/actions/runs/45457620084/artifacts/14950913383); feature store [14951800957](https://github.com/Barrot-Agent/B-Agent/actions/runs/45457620084/artifacts/14951800957), SHA-256 `d0892c2b6f53b5401aee6783589ab792beecab72eb8fba9ee74399c2cca939da`.
+- Event timeline remains incomplete: zero verified raw-source receipt links. Walk-forward remains `INSUFFICIENT_HISTORY`; drift remains `INSUFFICIENT_DATA`; forecast remains `NOT_ISSUED`. SEC capture remains `BLOCKED_CONFIGURATION` because no authorized contact identity is configured. No directional forecast or paper trade.
+- Scheduled ingestion run [45467484660](https://github.com/Barrot-Agent/B-Agent/actions/runs/45467484660), run 132, failed before data collection at 19:11 UTC with `unexpected end of JSON input` while parsing the GitHub Actions workflow-run response during predecessor-chain restoration. This is a workflow/API-response failure, not a market-source or feature-store validation failure. A single failed-job rerun was requested; at 20:06 UTC the retry was in progress. Do not count it as a new capture until it completes successfully.
+- Cross Analysis [45474669510](https://github.com/Barrot-Agent/B-Agent/actions/runs/45474669510) succeeded at 19:51 UTC, but no newer successful ingestion existed at this checkpoint.
+
+### Continuity, nine platforms and commercial scope
+
+- #1691 verifies mission-cursor integrity and recovery across four fresh Python processes sharing one workspace. Cross-host/device synchronization and conflict reconciliation remain unverified.
+- Only ChatGPT-to-GitHub access has tested authentication/data-flow evidence. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested; no live connection is claimed.
+- Other open PRs remain classified: #1694 maintainer gate — blocked; #1696 Hugging Face dependency fix — blocked pending remote Space verification; #1693 OpenCode bridge and #1695 inbound intake — unique drafts with overlapping prompt/sync paths, not ready for promotion; #1686 LunaRoute removal — stale/diverged draft, preserve history and do not bulk-close.
+- Sellbird remains unconfigured. Prospecting and outbound sending remain paused; Barrot-only scope is unchanged. Pipeline remains 0 discovered, 0 qualified, 0 approved, 0 sent, 0 replies, 0 meetings, 0 proposals and $0 collected. No music, songwriting or TrekFlex marketing.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal priority-1 missions; V3 shared foundation; fail-closed forecast and merge gates; audio deliverable/QC criteria; cross-run continuity acceptance; Barrot-only Sellbird scope.
+- **EXECUTED:** re-fetched main/tree and all open PRs; compared changed paths; checked current mission heads, exact-head full-suite/security/render checks, reviews and fail-closed gate logs; inspected the latest successful XRP ingestion artifacts and the failed scheduled retry.
+- **VERIFIED:** main SHA/tree; eight open PRs and their classifications; full-suite/security/render results on the three listed pre-update heads; XRP receipt-chain verification for run 45457620084; the later ingestion retry was still in progress at the snapshot time.
+- **NOT VERIFIED:** merges or full branch-protection settings; XRP event-timeline receipt linkage, external timestamp anchoring, complete raw rebuild or predictive superiority; commercial-use-cleared audio assets, downloadable production bundle, DAW project or listening acceptance; cross-host continuity; eight external platform connections; Sellbird prospects, outreach or revenue.
+
+### Next bounded actions
+
+1. Confirm the single ingestion retry. If it passes, record its exact cutoff and artifacts; if it fails again, repair the workflow's bounded API-response handling on the existing XRP integration branch and test it.
+2. Keep #1690, #1691 and #1692 as the sole active mission integrations. Do not create replacement PRs or repetitive audits.
+3. Keep forecasts disabled until receipt-backed history, leakage-safe out-of-sample superiority, calibration and drift criteria pass.
+4. Keep audio promotion and marketing blocked until rights-cleared assets, user-accessible editable deliverables and listening acceptance exist.
+5. Extend continuity across independent hosts with explicit conflict/staleness handling; do not claim the nine-platform network is connected.
+6. Do not merge until an independent approval and readable branch-protection evidence satisfy the fail-closed gate.
+
+No merge, force-push, branch rewrite, deployment, Space restart, secret rotation, paid lookup, Kaggle submission, outbound message, paper trade, funds transfer or real-money action occurred.
