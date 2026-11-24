@@ -1,0 +1,59 @@
+name: Audio Render Integration
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "barrot_agent/creative/**"
+      - "tests/test_musical_adapters.py"
+      - "tests/test_audio_render_integration.py"
+      - "pyproject.toml"
+      - ".github/workflows/audio-render-integration.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fluidsynth-render:
+    name: Real FluidSynth stereo render and QC
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.11"
+
+      - name: Install native FluidSynth and test-only SoundFont
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y libfluidsynth3 timgm6mb-soundfont
+          dpkg-query -W -f='${Package} ${Version}\n' libfluidsynth3 timgm6mb-soundfont
+          SF2_VERSION="$(dpkg-query -W -f='${Version}' timgm6mb-soundfont)"
+          echo "BARROT_TEST_SF2_SOURCE=Debian timgm6mb-soundfont ${SF2_VERSION}" >> "$GITHUB_ENV"
+          sha256sum /usr/share/sounds/sf2/TimGM6mb.sf2
+          ldconfig -p | grep -i fluidsynth
+
+      - name: Install optional music runtime
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest pytest-cov numpy scipy pretty_midi pyfluidsynth
+
+      - name: Run stereo render, full-song bundle, and technical QC
+        env:
+          BARROT_TEST_SF2: /usr/share/sounds/sf2/TimGM6mb.sf2
+          BARROT_TEST_SF2_LICENSE: "GPL-2 (test-only; not bundled or redistributed)"
+          BARROT_AUDIO_QC_OUTPUT: ${{ runner.temp }}/audio-render-qc.json
+          BARROT_AUDIO_BUNDLE_QC_OUTPUT: ${{ runner.temp }}/audio-bundle-qc.json
+          BARROT_AUDIO_FULL_SONG_QC_OUTPUT: ${{ runner.temp }}/audio-full-song-qc.json
+        run: python -m pytest tests/test_audio_render_integration.py -v
+
+      - name: Upload non-audio QC receipt only
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: audio-render-qc-${{ github.run_id }}
+          path: ${{ runner.temp }}/audio-*-qc.json
+          if-no-files-found: error
+          retention-days: 30

@@ -5,6 +5,7 @@ Handles multimodal vision-language inference with BF16 precision.
 
 from __future__ import annotations
 
+import os
 from typing import List, Optional, Union
 
 from barrot_agent.tools.granite_model_config import (
@@ -20,9 +21,14 @@ def _load_model_and_processor(model_id: str = MODEL_ID):
     import torch
     from transformers import AutoModelForVision2Seq, AutoProcessor
 
+    from barrot_agent.config import config as app_config
+    hf_token = os.environ.get("HF_TOKEN") or app_config.hf_token
+    auth_kwargs = {"token": hf_token} if hf_token else {}
+
     processor = AutoProcessor.from_pretrained(
         model_id,
         trust_remote_code=LOAD_CONFIG["trust_remote_code"],
+        **auth_kwargs,
     )
 
     dtype = getattr(torch, LOAD_CONFIG["torch_dtype"])
@@ -31,6 +37,7 @@ def _load_model_and_processor(model_id: str = MODEL_ID):
         torch_dtype=dtype,
         device_map=LOAD_CONFIG["device_map"],
         trust_remote_code=LOAD_CONFIG["trust_remote_code"],
+        **auth_kwargs,
     )
     model.eval()
     return model, processor

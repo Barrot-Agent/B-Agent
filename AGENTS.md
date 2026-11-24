@@ -16,7 +16,7 @@ Barrot is the main agent for this repository.
 - `docling` is a local `uvx` server and has not been launched or tested in this run.
 - `searxng` is local, configured for `127.0.0.1`, and has not been launched or tested in this run. `scripts/start_searxng.sh` is an operator-run local setup script, not an automatic workflow.
 - Image generation/editing is not wired into this OpenCode configuration.
-- An optional LunaRoute provider entry exists, but authentication and model data-flow have not been verified. The LunaRoute MCP server is disabled. Do not claim it is connected or send data through it until authentication, permissions, and data-flow are tested.
+- No external inference provider is declared in `opencode.json`. External provider authentication and model data-flow have not been verified; do not add or claim one without authentication, permission, and data-flow tests.
 
 ## Mission priorities
 
@@ -51,6 +51,12 @@ Revenue and customer acquisition are immediate operational objectives that suppo
 - This implementation authorization does not waive independent review, branch protection, exact-head CI, fail-closed gates, or approval for deployment, secret changes, external communication, financial actions, or irreversible side effects.
 - Preserve user work and branch history. Never force-push, reset, clean, stash, overwrite, or discard user changes.
 
+## Query transmutation
+
+- Every incoming request is transmuted before execution: preserve the exact original and its SHA-256, extract intent and constraints, expand connected domains, discover existing capabilities from repository evidence, rank competing hypotheses with falsifiers, and produce a bounded ranked plan with an explicit stop state.
+- Runtime: `barrot_agent/inbound/transmutation.py`, composed through `barrot_agent/inbound/gate.py` and `barrot_agent/inbound/intake.py`. Records are append-only under `results/transmutation/`; the protocol itself does not execute an action.
+- This is distinct from the quarantined code-variant utility in `scripts/transmute.py`.
+
 ## Repository safety
 
 - At the start of each run, inspect current main, complete trees, code, open PRs, branch ancestry, overlapping diffs, CI, dependencies, security settings, and the latest durable handoff.
@@ -58,4 +64,4 @@ Revenue and customer acquisition are immediate operational objectives that suppo
 - Run the entire repository test suite and verify exact-head CI, fail-closed gates, and dependency/security checks before considering a merge.
 - Preserve dirty worktrees and user data. Never reset, clean, stash, restore over, overwrite, move, or delete user work. Never force-push or rewrite branch history.
 - Merge only when branch protection, independent approvals, exact-head checks, and authorization requirements are satisfied.
-- Keep the nine-platform capability/authentication/permission/data-flow map accurate. Never claim a live connection without tested authentication and data-flow evidence. Groq and Grok are different providers; LunaRoute is separate from the nine-platform set and remains unverified.
+- Keep the nine-platform capability/authentication/permission/data-flow map accurate. Never claim a live connection without tested authentication and data-flow evidence. Groq and Grok are different providers.

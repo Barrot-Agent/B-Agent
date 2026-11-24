@@ -1139,14 +1139,35 @@ Governance remains blocked: PR #1663 draft, zero formal reviews, zero review thr
   (needs MCP_APPROVAL_TOKEN decision), GITHUB_MCP_TOKEN unset in shell.
 - Report: docs/synthesis/cross-domain-audit.md
 
+## 2026-11-22 — PR #1686 remaining decommission regressions
+- Verified base 485cbfb: exact-head CI was green except the fail-closed readiness
+  gate (draft, no independent review, branch protection unverifiable). The
+  concurrent workstream had already fixed the atomic-write import, the OpenCode
+  prompt token, and the pingpong CLI live path.
+- Found what CI still did not catch: barrot_agent/__init__.py imported
+  `make_model_refiners`, which barrot_agent.refinement no longer exports. The
+  broad `except Exception` swallowed the ImportError, so
+  `barrot_agent._refinement_available` was False and the entire top-level
+  refinement API was silently unavailable. AGENTS.md and PINGPONG_USAGE.md also
+  still described a live LunaRoute provider and external refinement path.
+- Repaired: removed the stale export, retained the failure reason in
+  `_refinement_error`, updated both documents, and added regression tests for
+  package availability, absent LunaRoute symbol, CLI import, and fail-closed
+  external mode.
+- Verified on 485cbfb + this change: targeted 103 passed; full tracked active
+  suite 4506 passed, 1 skipped. The 13 failures reproduce identically on
+  unmodified ded2546 in this Termux worktree (git-worktree/shallow-clone
+  environment assumptions), so they are not caused by this change.
+- The branch advanced concurrently to 3fe21ce (Kimi/Hugging Face/Databricks
+  configuration) with no overlap in these paths; this change was rebased onto
+  that head before push. Exact-head CI on the rebased commit is pending.
+- Not verified: independent review, branch protection. PR #1686 remains draft;
+  no merge was performed.
 
-## 2026-11-24 — ChatGPT / Barrot transmutation packet integration (branch work; not live-activated)
 
-- Confirmed operating identity: Barrot is the primary agent running through the existing OpenCode runtime. OpenCode is Barrot's current reasoning/execution path, not a separate agent in the exchange. ChatGPT is the external interpretation and independent-review participant.
-- Added optional `context.transmutation` validation to the existing A2A Worker. It validates protocol identity, participant/phase/action, bounded rounds, original-request SHA-256, source-reference kind/relationship, evidence/acceptance/stop lists, parent lineage, and execution budget. The packet is stored in the existing task context, and `packet_id` is bound to the existing queue `task_id`; exact replays are idempotent while altered payloads under a reused ID are rejected.
-- Extended the existing OpenCode runner to preserve packet lineage in a completion receipt and cap execution time to the packet budget.
-- Added Worker and runner regression tests for immutable original-request integrity, source lineage, packet receipts, and execution-budget enforcement.
-- Updated the existing A2A bridge documentation and Barrot agent instructions with the ChatGPT ↔ Barrot exchange contract and source-role semantics; corrected the agent's mission declaration to preserve all three co-equal V3 priorities. No second agent, task store, or MMI path was introduced.
-- Branch: `integration/chatgpt-barrot-transmutation-20261124`. Changes are isolated from main and are not yet merged.
-- Important activation status: the A2A bridge remains QUARANTINED / NOT ACTIVATED. Cloudflare deployment is not verified, and the existing runner is not OS-sandboxed. No task was dispatched to the live OpenCode host; no Cloudflare deployment, secret rotation, credential change, merge, or external side effect occurred.
-- PR #1693 is open as a draft. Run the focused Worker/runner tests and repository checks on its exact head; inspect the complete diff and security boundary; then move it to ready-for-review only after validation. Live activation remains gated by the documented sandbox, credential isolation, egress, authorization, deployment, and end-to-end acceptance requirements.
+## 2026-11-24 — Query transmutation ordinary-intake integration candidate
+- Source work: PR #1695, head a67ff4916f268612a4f215ae305eca2cef143617; rebased as a current-main candidate in this PR.
+- One admission boundary preserves the original request and request hash, rejects stop/policy/authorization/duplicate failures before planning or repository mutation, and records a request identifier for downstream traceability.
+- Wired into SmartAgent goal intake and the repository-task dispatcher before branch configuration or checkout.
+- The original source PR passed its recorded CI, full-suite, dependency-audit, and conflict-integrity checks; this rebased candidate must pass fresh exact-head checks before merge.
+- No deployment, secrets, external communication, or financial actions are authorized by this integration.

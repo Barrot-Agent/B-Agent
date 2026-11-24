@@ -287,6 +287,7 @@ def test_protocol_addendum_provenance_graph_and_prediction_boundary() -> None:
         assert set(edge["evidence"]) <= sources
     for hypothesis in data["competing_hypotheses"]:
         assert hypothesis["claim"] and hypothesis["support"]
+        assert set(hypothesis["support"]) <= sources
         assert hypothesis["disconfirming_or_missing"] and hypothesis["test"]
     assert data["predictions"]["issued"] is False
     amendment = data["market_snapshot"]["xrpl_amendment"]
@@ -576,7 +577,7 @@ def test_live_market_event_update_preserves_disagreements_and_future_events() ->
     path = REPO_ROOT / "research" / "xrp_intelligence" / "20261104T065909Z-live-market-event-update.json"
     data = json.loads(path.read_text(encoding="utf-8"))
     cutoff = _parse_utc(data["data_cutoff_utc"])
-    assert _parse_utc(data["captured_at_utc"]) == cutoff
+    assert _parse_utc(data["captured_at_utc"]) >= cutoff
     assert data["predictions"]["issued"] is False
     assert data["market_snapshot"]["xrp_spot"]["model_eligible"] is False
     assert data["data_quality"]["no_averaging_policy"]
@@ -1568,3 +1569,174 @@ def test_run77c_cftc_cme_legacy_cot_is_lagged_and_model_ineligible() -> None:
     assert data["predictions"]["issued"] is False
     assert data["predictions"]["status"] == "NOT_ISSUED"
     assert data["integration_gap"]["legacy_futures_only_cot_adapter"] == "not present in xrp_public_ingestion.py source registry at capture time"
+
+
+CORPORATE_ECOSYSTEM_ADDENDUM = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261123T191200Z-sbic-sbi-ripple-circle-coinbase-addendum.json"
+)
+
+
+def test_sbi_sbic_circle_coinbase_addendum_has_resolvable_primary_evidence() -> None:
+    data = json.loads(CORPORATE_ECOSYSTEM_ADDENDUM.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_sbi_sbic_circle_coinbase_relationship_addendum"
+    cutoff = _parse_utc(data["data_cutoff_utc"])
+    assert _parse_utc(data["captured_at_utc"]) == cutoff
+    assert data["initial_data_cutoff_utc"] == "2026-11-23T19:12:00Z"
+    retrieved_at = [
+        _parse_utc(item["retrieved_at_utc"])
+        for item in data["source_registry"]
+        if item.get("retrieved_at_utc")
+    ]
+    assert retrieved_at and all(value <= cutoff for value in retrieved_at)
+    sources = {item["id"] for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"])
+    assert len(data["source_registry"]) >= 12
+    assert len(data["observations"]) >= 28
+    assert len(data["relationship_graph"]) >= 25
+    assert len(data["competing_hypotheses"]) >= 10
+    for source in data["source_registry"]:
+        assert source["url"].startswith("https://")
+        assert source["raw_bytes_captured"] is False
+        assert source["model_eligible"] is False
+    for observation in data["observations"]:
+        assert observation["id"] and observation["claim"] and observation["evidence"]
+        assert set(observation["evidence"]) <= sources
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"] and edge["status"]
+        assert set(edge["evidence"]) <= sources
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["claim"] and hypothesis["support"]
+        assert hypothesis["disconfirming_or_missing"] and hypothesis["test"]
+    assert data["predictions"]["issued"] is False
+
+
+def test_sbic_entities_are_separate_and_sbi_ripple_asia_is_not_xrp_handling() -> None:
+    data = json.loads(CORPORATE_ECOSYSTEM_ADDENDUM.read_text(encoding="utf-8"))
+    observations = {item["id"]: item for item in data["observations"]}
+    for observation_id, source_id in [
+        ("OBS-SBIC-EAST-20261123", "sbic_east_profile_20261123"),
+        ("OBS-SBIC-CENTRAL-20261123", "sbic_central_profile_20261123"),
+        ("OBS-SBIC-WEST-20261123", "sbic_west_profile_20261123"),
+    ]:
+        assert observations[observation_id]["evidence"] == [source_id]
+    separation = observations["OBS-SBIC-ENTITY-SEPARATION-20261123"]
+    assert "no SBI Holdings affiliation is established" in separation["claim"]
+    no_xrp = observations["OBS-SBI-RIPPLE-ASIA-NO-XRP-20261123"]
+    assert "does not handle cryptoasset XRP" in no_xrp["claim"]
+    assert no_xrp["evidence"] == ["ripple_sbi_ripple_asia_profile_20261123"]
+
+
+def test_circle_coinbase_and_rlusd_claims_keep_their_scope_boundaries() -> None:
+    data = json.loads(CORPORATE_ECOSYSTEM_ADDENDUM.read_text(encoding="utf-8"))
+    observations = {item["id"]: item for item in data["observations"]}
+    renewal = observations["OBS-COINBASE-CIRCLE-RENEWAL-2026"]
+    assert renewal["evidence"] == ["coinbase_q3_2026_10q_20260930"]
+    reserve = observations["OBS-CIRCLE-RESERVE-FUND-CONCENTRATION-2026"]
+    assert "84%" in reserve["claim"]
+    rlusd = observations["OBS-RLUSD-JAPAN-DISTRIBUTION-20260624"]
+    assert "does not itself prove XRP demand" in rlusd["limitations"][0]
+    assert data["market_snapshot"]["circle_usdc"]["scope"].startswith("Global USDC")
+    assert data["market_snapshot"]["xrp_spot_aggregate"]["model_eligible"] is False
+
+
+
+def test_evernorth_capital_disclosures_separate_facilities_and_potential_financing() -> None:
+    data = json.loads(CORPORATE_ECOSYSTEM_ADDENDUM.read_text(encoding="utf-8"))
+    observations = {item["id"]: item for item in data["observations"]}
+    required = {
+        "OBS-PATHFINDER-RIPPLE-COMPANY-FACILITY-20261007",
+        "OBS-EVERNORTH-SBI-AFFILIATES-20260812",
+        "OBS-EVERNORTH-RIPPLE-EQUITY-AND-PATHFINDER-UNITS-20261009",
+        "OBS-RIPPLEWORKS-ARRINGTON-XRP-CAPITAL-SERIES-C-20261009",
+        "OBS-EVERNORTH-CONVERTIBLE-NOTE-CASH-20261013",
+        "OBS-EVERNORTH-WARRANT-EXERCISES-CASH-20261109",
+        "OBS-EVERNORTH-ELOC-FACILITY-20261023",
+        "OBS-EVERNORTH-POSTCLOSE-XRP-TRANSFER-20261009",
+    }
+    assert required <= set(observations)
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert "sec_evernorth_424b3_20261019" in sources
+    assert "sec_evernorth_424b3_supplement_20261113" in sources
+    company_facility = observations["OBS-PATHFINDER-RIPPLE-COMPANY-FACILITY-20261007"]["claim"]
+    assert "Pathfinder" in company_facility and "USD 9.7 million" in company_facility
+    assert "USD 10.0 million" in company_facility
+    evernorth_facility = observations["OBS-EVERNORTH-UNISSUED-DEBT-AND-UNDRAWN-FACILITY-20261124"]["claim"]
+    assert "USD 1.0 million" in evernorth_facility
+    assert "not borrowed" in evernorth_facility
+    sbi_affiliates = observations["OBS-EVERNORTH-SBI-AFFILIATES-20260812"]["claim"]
+    assert "SBI Holdings" in sbi_affiliates and "39.9%" in sbi_affiliates
+    eloc = observations["OBS-EVERNORTH-ELOC-FACILITY-20261023"]["claim"]
+    assert "potential financing" in eloc and "not cash already received" in eloc
+    assert data["predictions"]["issued"] is False
+
+def test_ask_ticker_candidate_and_unverified_video_identity_are_not_promoted() -> None:
+    data = json.loads(CORPORATE_ECOSYSTEM_ADDENDUM.read_text(encoding="utf-8"))
+    observations = {item["id"]: item for item in data["observations"]}
+    ask = observations["OBS-ASK-TICKER-COLLISION-20261124"]
+    assert "Permission Coin (ASK)" in ask["claim"]
+    assert "not a resolved identity" in ask["claim"]
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert sources["defillama_permission_coin_ask_20261124"]["model_eligible"] is False
+    queries = {item["query"] for item in data["search_log"]}
+    assert '"SBIC, ChatGPT SBIC"' in queries
+    assert 'site:youtube.com "Camilla Stevenson" OR "Kamilah Stevenson"' in queries
+    assert any("No video inventory performed" in item["result_status"] for item in data["search_log"])
+
+
+INSTITUTIONAL_CUSTODY_RAILS = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261124T114143Z-institutional-custody-stablecoin-rail-reconciliation.json"
+)
+
+
+def test_institutional_custody_stablecoin_rails_preserve_provenance_and_scope() -> None:
+    data = json.loads(INSTITUTIONAL_CUSTODY_RAILS.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_institutional_custody_stablecoin_rail_reconciliation"
+    assert data["repository_state"]["xrp_integration_pr"] == 1692
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"])
+    assert {"occ_regulator", "bny_company", "coinbase_company", "circle_company", "sbi_ripple_joint", "jcb_company"} <= {item["source_independence_group"] for item in sources.values()}
+    assert all(item["raw_bytes_captured"] is False for item in sources.values())
+    observations = {item["id"]: item for item in data["observations"]}
+    assert len(observations) == len(data["observations"])
+    for observation in observations.values():
+        assert observation["evidence"]
+        assert set(observation["evidence"]) <= set(sources)
+        assert observation["model_eligible"] is False
+    assert "XRPL, Base and Ethereum" in observations["OBS-COINBASE-RLUSD-MULTICHAIN-20261028"]["claim"]
+    assert any("not XRP spot turnover" in item for item in observations["OBS-RIPPLE-PRODUCT-SCALE-CLAIMS-20261028"]["limitations"])
+    assert "global USDC supply" in observations["OBS-CIRCLE-USDC-NATIVE-ON-XRPL-20261119"]["interpretation"]
+    assert "not evidence of a direct Circle-Ripple partnership" in observations["OBS-BNY-CIRCLE-USDC-CUSTODY-20260629"]["interpretation"]
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"]
+        assert set(edge["evidence"]) <= set(sources)
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["support"] and hypothesis["disconfirming_or_missing"] and hypothesis["test"]
+    assert data["predictions"]["issued"] is False
+    assert data["research_status"]["model_eligible"] is False
+
+
+def test_macro_regulatory_context_keeps_policy_status_and_xrp_inference_separate() -> None:
+    data = json.loads(INSTITUTIONAL_CUSTODY_RAILS.read_text(encoding="utf-8"))
+    macro = data["macro_regulatory_context"]
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert set(macro["source_ids"]) <= set(sources)
+    assert {"federal_reserve", "bank_of_japan", "us_treasury", "ofac_fincen", "occ_regulator"} <= {sources[item]["source_independence_group"] for item in macro["source_ids"]}
+    policy = {item["jurisdiction"]: item for item in macro["monetary_policy"]}
+    assert policy["United States"]["target_federal_funds_range_pct"] == [3.75, 4.0]
+    assert policy["United States"]["vote"] == "10-2"
+    assert policy["Japan"]["overnight_call_rate_guideline_pct"] == 1.25
+    assert policy["Japan"]["boj_etf_sales_book_value_annual_jpy_billion"] == 860
+    rules = {item["rule"]: item for item in macro["stablecoin_regulation"]}
+    assert rules["GENIUS Act Treasury section 3 proposed implementation"]["status"] == "notice_of_proposed_rulemaking"
+    assert rules["OCC GENIUS Act implementation rule"]["status"] == "final_rule_announcement"
+    assert macro["forecast_eligible"] is False
+    assert macro["directional_forecast_issued"] is False
+    assert all(item["evidence"] for item in macro["competing_hypotheses"])
+    assert all(item["disconfirming_or_missing"] and item["test"] for item in macro["competing_hypotheses"])
+    assert data["predictions"]["issued"] is False

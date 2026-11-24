@@ -158,7 +158,10 @@ class UpgradeFlywheel:
         return report
 
     def _observe(self) -> ObservationResult:
-        events = list(self._smart_agent.run(self._goal))
+        # The flywheel re-runs the same observation each cycle. That is an
+        # internal repetition, not a new inbound request, so it must not be
+        # refused as duplicate work by the intake boundary.
+        events = list(self._smart_agent.run(self._goal, admit_request=False))
         infra = build_reconfiguration_report(
             dry_run=self._dry_run,
             registry_path=self._platform_dir / "mcp_registry.json",

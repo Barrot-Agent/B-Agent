@@ -14,7 +14,7 @@ The Ping-Pong refinement engine provides deterministic normalization and a patch
 - data_classification is mandatory. Allowed local classes are derived_summary, public_derived_summary, public_documentation, and public_research_note.
 - Immutable classes include raw_source, source_receipt, feature_snapshot, feature_store, event_timeline, forecast_ledger, market_data, credentials, secrets, and user_private.
 - Immutable evidence must never pass through this component.
-- External LunaRoute calls are disabled unless the caller passes allow_external=True, the environment contains BARROT_ALLOW_EXTERNAL_REFINEMENT=1 and BARROT_LIVE_REFINEMENT_APPROVED=1, the classification is one of public_derived_summary, public_documentation, or public_research_note, the refiner is constructed with the same classification, and the API key is available.
+- External refinement providers are decommissioned. `allow_external=True` fails closed; no provider, key, endpoint, or fallback path remains.
 - Secret-like strings and payloads larger than 24,000 characters are rejected before transfer. Large documents are segmented into bounded sections; each section is independently checked.
 - A classification is an explicit caller assertion, not an automatic content classifier. Do not label a payload public unless its source and rights have been checked.
 - No external call is made by the default CLI, scheduled ingestion or test suite.
@@ -54,7 +54,7 @@ The main-branch upgrade adds a resumable 10-stage process:
         data_classification="public_documentation",
     )
 
-External use additionally requires caller opt-in, both external authorization environment variables, an eligible public classification, matching LunaRoute adapter and valid key. This is a separate explicit action; no model dispatch is performed by this documentation or by the default runtime.
+External use is not available: external refinement providers are decommissioned. The pipeline rejects `allow_external=True` with PermissionError and performs no model dispatch.
 
 ### CLI
 
@@ -64,11 +64,11 @@ The CLI requires --classification. It defaults to offline mode, prints the resul
     python3 scripts/pingpong_refine.py report.json --classification public_documentation --out report.refined.json
     python3 scripts/pingpong_refine.py large.json --classification public_research_note --objective "normalize" --offline
 
-External mode additionally requires --live, --allow-external-data, BARROT_ALLOW_EXTERNAL_REFINEMENT=1, BARROT_LIVE_REFINEMENT_APPROVED=1, an eligible public classification and a valid key. Replacing an existing output requires --force-output.
+`--live` and `--allow-external-data` remain accepted for compatibility but fail closed with exit code 2; external refinement providers are decommissioned. Replacing an existing output requires --force-output.
 
 ### Live verification
 
-scripts/live_refine_verify.py is a manual verification driver for the public repository capability audit. It requires BARROT_LIVE_REFINEMENT=1 and both external authorization variables; it writes to a unique run-specific artifact and refuses to overwrite evidence. It is not called by a workflow.
+scripts/live_refine_verify.py is a manual deterministic offline verification driver for the public repository capability audit. It requires no credentials and performs no network or model dispatch; it writes to a unique run-specific artifact and refuses to overwrite evidence. It is not called by a workflow.
 
 The default GitHub Actions test suite is mocked/offline. The pingpong.yml Groq workflow remains quarantined on integration with no permissions and an always-false job. The Cognitive PingPong Engine workflow remains quarantined as well.
 

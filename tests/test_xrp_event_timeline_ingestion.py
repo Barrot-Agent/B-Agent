@@ -102,6 +102,158 @@ def test_invalid_registry_schema_fails_closed(tmp_path):
         _capture_event_timeline_registry(path, CUTOFF)
 
 
+
+
+def _canonical_sec_document_receipt(source_url: str, captured_at: str, raw_hash: str = "a" * 64):
+    receipt = {
+        "source_id": "sec_edgar_document_evernorth_0001628280-26-072223",
+        "source_uri": source_url,
+        "captured_at_utc": captured_at,
+        "source_data_as_of_utc": None,
+        "source_http_date": None,
+        "raw_content_sha256": raw_hash,
+        "payload_size_bytes": 123,
+        "raw_payload_path": None,
+        "raw_bytes_retained": False,
+        "raw_retention_reason": "SEC source bytes are digest-only in this fixture",
+        "model_eligible_source": False,
+        "raw_only_reason": "sec_edgar_primary_regulatory_data_research_only_not_market_feature",
+        "source_http_headers": {},
+    }
+    canonical = json.dumps(
+        receipt,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    )
+    receipt["receipt_id"] = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+    return receipt
+
+
+def test_immutable_sec_accession_receipt_relinks_event_at_new_known_at_time(tmp_path):
+    path = tmp_path / "events.json"
+    source_url = "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    event = _event("sec-resale-event")
+    event["source_id"] = "sec_evernorth_424b3"
+    event["source_name"] = "SEC Evernorth 424B3"
+    event["source_url"] = source_url
+    _write_registry(path, [event])
+    receipt = _canonical_sec_document_receipt(source_url, "2026-11-12T04:30:00Z")
+
+    result = _capture_event_timeline_registry(
+        path,
+        "2026-11-12T05:00:00Z",
+        raw_receipts=[receipt],
+    )
+    linked = result["timeline"]["event_timeline"][0]
+    assert result["receipt_complete"] is True
+    assert result["receipt_relinkage"]["status"] == "LINKED"
+    assert result["receipt_relinkage"]["linked_event_count"] == 1
+    assert linked["captured_at_utc"] == "2026-11-12T04:30:00Z"
+    assert linked["available_at_utc"] == "2026-11-12T04:30:00Z"
+    assert linked["raw_source_sha256"] == receipt["raw_content_sha256"]
+    assert linked["receipt_status"] == "VERIFIED_CANONICAL_RECEIPT"
+    assert linked["canonical_receipt_id"] == receipt["receipt_id"]
+    assert linked["receipt_source_id_match"] is False
+    assert result["receipt_linkage"]["source_id_mismatch_count"] == 1
+    assert linked["receipt_linkage_method"] == "immutable_sec_accession_document_recapture"
+    assert linked["source_capture_history"][0]["captured_at_utc"] == "2026-11-12T04:00:00Z"
+    assert linked["source_capture_history"][-1]["receipt_id"] == receipt["receipt_id"]
+    assert result["model_eligible"] is False
+    assert result["forecast_status"] == "NOT_ISSUED"
+
+
+def test_sec_event_receipt_with_tampered_canonical_id_fails_closed(tmp_path):
+    path = tmp_path / "events.json"
+    source_url = "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    event = _event("sec-tampered-receipt")
+    event["source_id"] = "sec_evernorth_424b3"
+    event["source_url"] = source_url
+    _write_registry(path, [event])
+    receipt = _canonical_sec_document_receipt(source_url, "2026-11-12T04:30:00Z")
+    receipt["receipt_id"] = "f" * 64
+
+    with pytest.raises(XRPIngestionError, match="receipt ID does not match canonical"):
+        _capture_event_timeline_registry(
+            path,
+            "2026-11-12T05:00:00Z",
+            raw_receipts=[receipt],
+        )
+
+
+def test_immutable_sec_accession_receipt_after_cutoff_is_not_used(tmp_path):
+    path = tmp_path / "events.json"
+    source_url = "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    event = _event("sec-future-receipt")
+    event["source_id"] = "sec_evernorth_424b3"
+    event["source_url"] = source_url
+    _write_registry(path, [event])
+    receipt = _canonical_sec_document_receipt(source_url, "2026-11-12T05:00:01Z")
+
+    result = _capture_event_timeline_registry(
+        path,
+        "2026-11-12T05:00:00Z",
+        raw_receipts=[receipt],
+    )
+    unlinked = result["timeline"]["event_timeline"][0]
+    assert result["receipt_complete"] is False
+    assert result["receipt_relinkage"]["future_receipt_count"] == 1
+    assert unlinked["captured_at_utc"] == "2026-11-12T04:00:00Z"
+    assert unlinked["raw_source_sha256"] is None
+    assert unlinked["receipt_status"] == "MISSING_RAW_RECEIPT_HASH"
+    assert unlinked["source_capture_history"] == []
+    assert result["model_eligible"] is False
+
+
+def test_mutable_or_non_sec_event_source_is_not_relinked(tmp_path):
+    path = tmp_path / "events.json"
+    event = _event("mutable-source")
+    _write_registry(path, [event])
+    receipt = _canonical_sec_document_receipt(
+        "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm",
+        "2026-11-12T04:30:00Z",
+    )
+
+    result = _capture_event_timeline_registry(
+        path,
+        "2026-11-12T05:00:00Z",
+        raw_receipts=[receipt],
+    )
+    unlinked = result["timeline"]["event_timeline"][0]
+    assert result["receipt_complete"] is False
+    assert result["receipt_relinkage"]["linked_event_count"] == 0
+    assert unlinked["raw_source_sha256"] is None
+    assert unlinked["receipt_status"] == "MISSING_RAW_RECEIPT_HASH"
+
+
+
+
+def test_ambiguous_latest_sec_receipts_fail_closed(tmp_path):
+    path = tmp_path / "events.json"
+    source_url = "https://www.sec.gov/Archives/edgar/data/2092592/000162828026072223/evernorth-424b3.htm"
+    event = _event("sec-ambiguous-event")
+    event["source_id"] = "sec_evernorth_424b3"
+    event["source_url"] = source_url
+    _write_registry(path, [event])
+    receipts = [
+        _canonical_sec_document_receipt(source_url, "2026-11-12T04:30:00Z", "a" * 64),
+        _canonical_sec_document_receipt(source_url, "2026-11-12T04:30:00Z", "b" * 64),
+    ]
+
+    result = _capture_event_timeline_registry(
+        path,
+        "2026-11-12T05:00:00Z",
+        raw_receipts=receipts,
+    )
+    unlinked = result["timeline"]["event_timeline"][0]
+    assert result["receipt_complete"] is False
+    assert result["receipt_relinkage"]["ambiguous_event_count"] == 1
+    assert result["receipt_relinkage"]["linked_event_count"] == 0
+    assert unlinked["raw_source_sha256"] is None
+    assert unlinked["receipt_status"] == "MISSING_RAW_RECEIPT_HASH"
+    assert result["model_eligible"] is False
+
+
 def test_xrp_ingestion_workflow_publishes_the_event_timeline_artifact():
     workflow = Path(".github/workflows/xrp-public-ingestion.yml").read_text(encoding="utf-8")
     assert r"xrp-public-events-${{ github.run_id }}" in workflow

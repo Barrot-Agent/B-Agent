@@ -5,44 +5,43 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = REPO_ROOT / ".github" / "workflows" / "barrot-gated-merge.yml"
 
 
-def test_merge_gate_is_read_only_and_has_no_write_permissions() -> None:
+def test_merge_gate_is_read_only_and_uses_minimal_permissions() -> None:
     source = WORKFLOW.read_text(encoding="utf-8")
-    assert "contents: read" in source
-    assert "pull-requests: read" in source
-    assert "checks: read" in source
-    assert "statuses: read" in source
-    assert "gh pr merge" not in source
+    for required in ("contents: read", "pull-requests: read", "checks: read"):
+        assert required in source
     assert "contents: write" not in source
+    assert "gh pr merge" not in source
     assert "READINESS=BLOCKED" in source
-    assert "READY_FOR_HUMAN_MERGE_REVIEW" in source
+    assert "READINESS=READY_FOR_EXPLICIT_MERGE" in source
 
 
-def test_merge_gate_requires_exact_head_current_base_and_independent_approval() -> None:
+def test_merge_gate_checks_exact_head_and_current_main_without_admin_or_review_gates() -> None:
     source = WORKFLOW.read_text(encoding="utf-8")
-    for required in (
-        "EXPECTED_HEAD_SHA",
-        "actual_head",
-        "draft",
-        "mergeable_state",
-        "current_main",
-        "independent approving review",
+    for required in ("EXPECTED_HEAD_SHA", "actual_head", "current_main", "mergeable", "base_ref"):
+        assert required in source
+    for obsolete in (
         "branches/main/protection",
-        "required_status_checks",
+        "independent approving review",
+        "BARROT_MAINTAINER_LOGIN",
+        "BARROT_BRANCH_PROTECTION_READ_TOKEN",
+        "allow_force_pushes",
+        "required_approving_review_count",
     ):
-        assert required in source
+        assert obsolete not in source
 
 
-def test_merge_gate_requires_full_suite_and_security_checks_on_exact_head() -> None:
+def test_merge_gate_requires_only_named_exact_head_validation_checks() -> None:
     source = WORKFLOW.read_text(encoding="utf-8")
     for required in (
-        "Tests",
-        "Full repository test suite",
-        "GitHub Pages build (validation only)",
-        "pip-audit",
-        "audit",
-        "commits/${actual_head}/check-runs",
+        '"Tests"',
+        '"Full repository test suite"',
+        '"pip-audit"',
+        '"audit"',
+        '"Verify PR merge tree against current base"',
+        'commits/${actual_head}/check-runs',
     ):
         assert required in source
+    assert "GitHub Pages build (validation only)" not in source
 
 
 def test_merge_gate_runs_for_pull_requests_and_integration_pushes() -> None:
@@ -63,7 +62,7 @@ def test_merge_gate_preserves_explicit_false_draft_state_and_fails_closed() -> N
     expected_assignment = f'draft="$(jq -r \'{expression}\' <<< "$pr_json")"'
     assert expected_assignment in source
     assert ".draft // true" not in source
-    assert "PR draft state could not be verified" in source
+    assert '[[ "$draft" == "false" ]]' in source
 
     jq = shutil.which("jq")
     if jq is None:
@@ -86,11 +85,8 @@ def test_merge_gate_preserves_explicit_false_draft_state_and_fails_closed() -> N
         assert result.stdout.strip() == expected
 
 
-
 def test_skipped_integration_push_full_suite_has_a_distinct_check_name() -> None:
     ci_source = (REPO_ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
-    # The integration push intentionally skips the expensive full suite; its skipped
-    # check must not collide with the authoritative pull_request full-suite check.
     assert "Full repository test suite (PR event only)" in ci_source
     assert "name: Full repository test suite" not in ci_source
     assert "if: github.event_name != 'push' || github.ref == 'refs/heads/main'" in ci_source

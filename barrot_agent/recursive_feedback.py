@@ -3,7 +3,7 @@ Recursive Feedback Loop Orchestrator for Barrot-Ω.
 
 This module implements a self-improving feedback loop that:
 1. Analyzes current system state
-2. Generates paradigm-shifting insights via Kimi 3
+2. Generates paradigm-shifting insights using the configured local analysis pipeline
 3. Absorbs and applies feedback recursively
 4. Refines infrastructure dynamically
 5. Continues indefinitely with convergence monitoring
@@ -20,13 +20,18 @@ from pathlib import Path
 from typing import Any, Deque, Dict, List, Optional
 
 from .config import FeedbackLoopConfig, config
-from .kimi_integration import KimiClient
 from .logger import get_logger
 from .reconfiguration import build_reconfiguration_report
 from .rsi.evidence import EvaluationSnapshot, assess_improvement
 from .upgrade_flywheel import FlywheelReport, UpgradeFlywheel
 
 logger = get_logger(__name__)
+
+
+class _UnavailableKimiClient:
+    """Compatibility sentinel; external Kimi dispatch stays disabled."""
+
+    is_available = False
 
 
 @dataclass
@@ -83,7 +88,7 @@ class RecursiveFeedbackLoop:
     The loop executes indefinitely (or until max_iterations) with these phases:
 
     1. **Observe** - Capture current system state and metrics
-    2. **Analyze** - Generate paradigm-shifting insights via Kimi 3
+    2. **Analyze** - Record external-model analysis as disabled
     3. **Absorb** - Process and internalize feedback
     4. **Apply** - Execute improvements and refine infrastructure
     5. **Verify** - Measure improvement and check convergence
@@ -93,11 +98,12 @@ class RecursiveFeedbackLoop:
         self,
         *,
         loop_config: FeedbackLoopConfig | None = None,
-        kimi_client: KimiClient | None = None,
+        kimi_client: Any | None = None,
         output_dir: Path | str = "feedback_loops",
     ) -> None:
         self.config = loop_config or config.feedback_loop
-        self.kimi = kimi_client or KimiClient()
+        # Preserve the historical public attribute without enabling provider dispatch.
+        self.kimi = kimi_client if kimi_client is not None else _UnavailableKimiClient()
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -148,49 +154,28 @@ class RecursiveFeedbackLoop:
         system_state: Dict[str, Any],
         improvement_goals: List[str],
     ) -> Dict[str, Any]:
-        """
-        Analyze system state using Kimi 3 for paradigm-shifting insights.
-
-        Args:
-            system_state: Current system state
-            improvement_goals: Target improvement goals
-
-        Returns:
-            Kimi feedback dictionary
-        """
-        logger.info("Analyzing with Kimi 3 (iteration %d)", system_state["iteration"])
-
-        if not self.kimi.is_available:
-            logger.warning("Kimi not available; analysis is unavailable for this iteration")
-            return {
-                "status": "unavailable",
-                "reason": "Kimi integration is not configured",
-                "paradigm_shifts": [],
-                "emergent_patterns": [],
-                "meta_optimizations": [],
-                "infrastructure_gaps": [],
-                "convergence_strategies": [],
-            }
-
-        try:
-            feedback = self.kimi.analyze_feedback(
-                current_state=system_state,
-                previous_outputs=[f["absorbed_insights"] for f in self._feedback_history][-5:],
-                improvement_goals=improvement_goals,
-            )
-            logger.debug("Kimi feedback: %s", feedback)
-            return feedback
-
-        except Exception as e:
-            logger.error("Kimi analysis failed: %s", e)
-            return {
-                "error": str(e),
-                "paradigm_shifts": [],
-                "emergent_patterns": [],
-                "meta_optimizations": [],
-                "infrastructure_gaps": [],
-                "convergence_strategies": [],
-            }
+        """Return an explicit unavailable/disabled status without provider dispatch."""
+        del improvement_goals
+        feedback_status = "unavailable" if not getattr(self.kimi, "is_available", False) else "disabled"
+        reason = (
+            "Kimi integration is not configured or authenticated"
+            if feedback_status == "unavailable"
+            else "External Kimi dispatch remains disabled pending verified authorization"
+        )
+        logger.info(
+            "External Kimi analysis is %s (iteration %d)",
+            feedback_status,
+            system_state["iteration"],
+        )
+        return {
+            "status": feedback_status,
+            "reason": reason,
+            "paradigm_shifts": [],
+            "emergent_patterns": [],
+            "meta_optimizations": [],
+            "infrastructure_gaps": [],
+            "convergence_strategies": [],
+        }
 
     def _absorb_feedback(self, kimi_feedback: Dict[str, Any]) -> List[str]:
         """

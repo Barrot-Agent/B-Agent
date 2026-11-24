@@ -29,7 +29,11 @@ import time
 import uuid
 from dataclasses import dataclass, field
 from enum import Enum
+from pathlib import Path
 from typing import Any, Iterator
+
+from barrot_agent.inbound.gate import Source
+from barrot_agent.inbound.intake import admit
 from barrot_agent.tools.repo_inspect_tool import RepoInspectTool
 from barrot_agent.tools.file_drop_tool import FileDropTool
 from barrot_agent.tools.repo_command_tool import RepoCommandTool
@@ -1029,8 +1033,14 @@ class SmartAgent:
         Display name for this agent instance.
     """
 
-    def __init__(self, name: str = "BarrotSmartAgent") -> None:
+    def __init__(
+        self,
+        name: str = "BarrotSmartAgent",
+        *,
+        transmutation_record_dir: str | Path | None = None,
+    ) -> None:
         self.name = name
+        self._transmutation_record_dir = transmutation_record_dir
         self._tools = _BuiltinTools()
         self._file_drop_tool = FileDropTool(".")
         self._repo_inspect_tool = RepoInspectTool(".")
@@ -1052,12 +1062,18 @@ class SmartAgent:
     # Public API
     # ------------------------------------------------------------------
 
-    def run(self, goal: str) -> Iterator[AgentEvent]:
+    def run(self, goal: str, *, admit_request: bool = True) -> Iterator[AgentEvent]:
         """
         Execute the full plan-act-observe loop for *goal*.
 
         Yields :class:`AgentEvent` objects as work progresses.  The final
-        event has ``type == AgentEventType.ANSWER``.
+        event has ``type == AgentEventType.ANSWER`` for an admitted request or
+        ``type == AgentEventType.ERROR`` when intake refuses it.
+
+        ``admit_request`` is true for an ordinary incoming request. An internal
+        caller that deliberately repeats the same goal (for example an
+        observation loop) must pass ``False``; otherwise the intake boundary
+        correctly treats the repetition as duplicate work and refuses it.
         """
         goal = goal.strip()
         if not goal:
@@ -1073,6 +1089,23 @@ class SmartAgent:
             content=f"**Goal received:** {goal}",
             data={"goal": goal},
         )
+
+        request_id: str | None = None
+        if admit_request:
+            admission = admit(
+                goal,
+                source=Source.OPERATOR,
+                received_from="SmartAgent.run",
+                record_dir=self._transmutation_record_dir,
+            )
+            if not admission.allowed:
+                yield AgentEvent(
+                    type=AgentEventType.ERROR,
+                    content=admission.refusal(),
+                    data=admission.as_dict(),
+                )
+                return
+            request_id = admission.request_id
 
         # 2 — Think / plan
         for i, thinking in enumerate(_THINKING_TEMPLATES, 1):
@@ -1143,7 +1176,11 @@ class SmartAgent:
         yield AgentEvent(
             type=AgentEventType.ANSWER,
             content=answer,
-            data={"goal": goal, "steps_executed": len(plan)},
+            data={
+                "goal": goal,
+                "steps_executed": len(plan),
+                "request_id": request_id,
+            },
         )
 
     # ------------------------------------------------------------------

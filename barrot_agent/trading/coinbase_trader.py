@@ -40,14 +40,20 @@ class CoinbaseTrader:
         api_key = os.getenv("COINBASE_API_KEY")
         api_secret = os.getenv("COINBASE_API_SECRET")
 
-        self.client = (
-            RESTClient(api_key=api_key, api_secret=api_secret)
-            if api_key and api_secret
-            else RESTClient()
-        )
+        # Dry-run trading is an internal simulation and must not require the
+        # optional Coinbase SDK, credentials, or network access.
+        self.client = None
+        if not self.dry_run:
+            if not (api_key and api_secret):
+                raise RuntimeError(
+                    "Live Coinbase trading requires COINBASE_API_KEY and COINBASE_API_SECRET."
+                )
+            self.client = RESTClient(api_key=api_key, api_secret=api_secret)
 
     def price(self, product_id: str = "BTC-USD") -> Any:
         """Get current product information."""
+        if self.client is None:
+            raise RuntimeError("Coinbase price lookup requires live credentials and the optional SDK.")
         return self.client.get_product(product_id)
 
     @staticmethod
@@ -79,6 +85,8 @@ class CoinbaseTrader:
                 },
             )
 
+        if self.client is None:
+            raise RuntimeError("Live Coinbase client is not initialized.")
         response = self.client.market_order_buy(
             client_order_id=order_id,
             product_id=product_id,
@@ -109,6 +117,8 @@ class CoinbaseTrader:
                 },
             )
 
+        if self.client is None:
+            raise RuntimeError("Live Coinbase client is not initialized.")
         response = self.client.market_order_sell(
             client_order_id=order_id,
             product_id=product_id,

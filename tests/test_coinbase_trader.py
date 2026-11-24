@@ -56,3 +56,29 @@ def test_invalid_sell_amount_is_rejected(amount):
 
     with pytest.raises(ValueError):
         trader.sell("BTC-USD", amount)
+
+
+def test_dry_run_does_not_construct_coinbase_client(monkeypatch):
+    monkeypatch.delenv("BARROT_TRADING_DRY_RUN", raising=False)
+    monkeypatch.delenv("COINBASE_API_KEY", raising=False)
+    monkeypatch.delenv("COINBASE_API_SECRET", raising=False)
+
+    def fail_if_constructed(*args, **kwargs):
+        raise AssertionError("dry-run must not construct Coinbase client")
+
+    monkeypatch.setattr(coinbase_trader, "RESTClient", fail_if_constructed)
+    trader = coinbase_trader.CoinbaseTrader(risk_manager=RiskManager())
+    result = trader.buy("BTC-USD", "1")
+
+    assert trader.client is None
+    assert result.executed is False
+    assert result.response["mode"] == "DRY_RUN"
+
+
+def test_live_mode_requires_both_coinbase_credentials(monkeypatch):
+    monkeypatch.setenv("BARROT_TRADING_DRY_RUN", "false")
+    monkeypatch.delenv("COINBASE_API_KEY", raising=False)
+    monkeypatch.delenv("COINBASE_API_SECRET", raising=False)
+
+    with pytest.raises(RuntimeError, match="requires COINBASE_API_KEY"):
+        coinbase_trader.CoinbaseTrader(risk_manager=RiskManager())

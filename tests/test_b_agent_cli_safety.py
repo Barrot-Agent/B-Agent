@@ -11,16 +11,14 @@ def _tree():
     return ast.parse(SOURCE.read_text(encoding="utf-8"), filename=str(SOURCE))
 
 
-def test_b_agent_requires_provider_and_github_credentials():
-    tree = _tree()
-    guards = [node for node in tree.body if isinstance(node, ast.If)]
-    assert any(
-        isinstance(node.test, ast.BoolOp)
-        and isinstance(node.test.op, ast.Or)
-        and {name.id for name in ast.walk(node.test) if isinstance(name, ast.Name)}
-        >= {"LUNAROUTE_API_KEY", "GH_TOKEN"}
-        for node in guards
-    )
+def test_b_agent_requires_github_credentials_without_provider_key():
+    source = SOURCE.read_text(encoding="utf-8")
+    assert 'GH_TOKEN = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN")' in source
+    assert "LUNAROUTE_API_KEY" not in source
+    assert "class OpenCodeLLM:" in source
+    assert "class GroqLLM:" in source
+    assert "def build_llm(provider, model=None):" in source
+    assert "no provider is selected automatically" in source
 
 
 def test_b_agent_has_no_unverified_auto_merge_cli_or_call():
@@ -97,14 +95,15 @@ def test_b_agent_local_mutations_require_explicit_interactive_opt_in():
     assert "APPLY LOCAL REPAIRS" in source
 
 
-def test_b_agent_external_repository_transfer_requires_explicit_confirmation():
+def test_b_agent_has_no_lunaroute_transfer_cli_or_provider_path():
     source = SOURCE.read_text(encoding="utf-8")
     main = source[source.index("def main():"):]
-    assert '"--allow-lunaroute-data-transfer"' in main
-    assert "if not args.allow_lunaroute_data_transfer:" in main
-    assert "SEND REPOSITORY CONTEXT TO LUNAROUTE" in main
-    assert main.index("if not args.allow_lunaroute_data_transfer:") < main.index("llm = GroqLLM(")
-    assert main.index("transfer_confirmation") < main.index("llm = GroqLLM(")
+    assert "lunaroute" not in source.lower()
+    assert "LUNAROUTE_API_KEY" not in source
+    assert "--allow-lunaroute-data-transfer" not in main
+    assert "build_llm(args.llm_provider, args.model)" in main
+    assert '"--llm-provider"' in main
+    assert 'choices=("groq", "opencode")' in main
 
 
 def test_b_agent_local_repair_checks_clean_feature_worktree_before_loop():

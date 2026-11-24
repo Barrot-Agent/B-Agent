@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot.xrp.primary_source_and_identity_recheck",
+  "artifact_id": "sbic_tokyo_chatgpt_and_kamilah_recheck_20261124T170338Z",
+  "captured_at_utc": "2026-11-24T17:03:38Z",
+  "repository_state": {
+    "main_sha": "7d7aba841cb849e461376a8fcdd4cc4fa10c9af6",
+    "integration_pr": 1692,
+    "integration_pr_head_before_artifact": "bb5f42458ccdd73eac76b25e972d20bc34b3cd92"
+  },
+  "search_log": [
+    {
+      "query": "\"ASK Coin\" XRP cryptocurrency; site:youtube.com \"ASK Coin\" XRP",
+      "result_status": "No exact XRP Ledger ASK Coin identity surfaced. Preserve Permission Coin (ASK) as a separate ticker-collision candidate; no XRPL relationship established."
+    },
+    {
+      "query": "\"actual capital\" XRP Ripple; site:youtube.com \"actual capital\" XRP Ripple",
+      "result_status": "No exact primary-source phrase match surfaced in this recheck. Prior review of two Evernorth filings remains limited to those filings; broader communications remain unsearched."
+    },
+    {
+      "query": "\"SBIC, ChatGPT SBIC\" Japan",
+      "result_status": "No exact indexed phrase match surfaced. Related official Tokyo SBIC generative-AI training material was found; it is contextual evidence, not an exact-phrase match."
+    },
+    {
+      "query": "Kamilah Stevenson Prescribe Wealth official about founder",
+      "result_status": "The @drkamilahstevenson YouTube channel links to go.prescribewealth.com/yt-bio. The linked public brand domain identifies MKS Health LLC / The Inner Circle as a financial-education company founded by Dr. Kamilah Stevenson. The official site does not visibly link back to the exact YouTube channel ID in the retrieved page; strict reciprocal-link gate remains unmet."
+    }
+  ],
+  "primary_source": {
+    "source_id": "tokyo_sbic_generational_ai_training_20250612",
+    "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo SBIC)",
+    "publisher_domain": "sbic.co.jp",
+    "source_type": "official regional-company training page",
+    "source_url": "https://www.sbic.co.jp/training/20250612co/",
+    "retrieved_at_utc": "2026-11-24T17:03:38Z",
+    "published_at_utc": null,
+    "event_dates": [
+      "2025-06-12",
+      "2025-06-13"
+    ],
+    "claim": "Tokyo SBIC advertised a two-day introductory generative-AI and machine-learning course for investee companies. The listed curriculum includes ChatGPT usage, Copilot, generative-AI workflows, data-leakage risk, RAG, API-based programming and no-code/low-code implementation.",
+    "source_independence_group": "tokyo_sbic_official",
+    "source_status": "PRIMARY_SOURCE_ADVERTISED_EVENT",
+    "occurrence_status": "ADVERTISED_NOT_INDEPENDENTLY_CONFIRMED",
+    "model_eligible": false,
+    "raw_bytes_retained": false,
+    "raw_content_sha256": null,
+    "reason_raw_bytes_not_retained": "Search-result/source-page evidence was inspected but raw response bytes and headers were not captured into the repository receipt chain.",
+    "assumptions": [
+      "The official Tokyo SBIC page accurately describes the advertised course, eligibility and scheduled dates.",
+      "The page establishes an advertised training program, not attendance or successful completion."
+    ],
+    "disconfirming_and_scope_limits": [
+      "The course was restricted to investee companies; the page says general companies were not eligible.",
+      "A ChatGPT curriculum item does not establish an OpenAI contract, sponsorship, procurement, integration or commercial partnership.",
+      "This Tokyo SBIC course does not establish an XRP, Ripple or SBI Holdings relationship.",
+      "One official publisher is one evidence group; no independent corroborating source was added."
+    ]
+  },
+  "youtube_identity": {
+    "canonical_candidate": {
+      "channel_name": "Kamilah Stevenson",
+      "handle": "@drkamilahstevenson",
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "channel_to_brand_link": "https://go.prescribewealth.com/yt-bio",
+      "brand_url": "https://prescribewealth.com/",
+      "brand_identity_evidence": "The public brand page names Dr. Kamilah Stevenson and identifies MKS Health LLC / The Inner Circle as a financial-education company founded by her.",
+      "attribution_status": "SUPPORTED_AT_PUBLIC_BRAND_LEVEL",
+      "strict_creator_inventory_gate": "NOT_MET",
+      "limitations": [
+        "No reciprocal link from the retrieved official brand page to the exact YouTube channel ID was visible.",
+        "No independent government-ID or credential verification was performed.",
+        "Search-index video titles and relative ages are not direct video-page captures."
+      ]
+    },
+    "excluded_candidates": [
+      {
+        "handle": "@KamilahStevenson-e7b",
+        "channel_id": "UCYFaD0cVIxjtxIW053EgZpA",
+        "status": "UNVERIFIED_SEPARATE_CHANNEL",
+        "reason": "No creator-controlled ownership cross-link found; similar description is insufficient."
+      },
+      {
+        "handle": "@KamilahStevensonXrpStocks",
+        "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+        "status": "UNVERIFIED_SEPARATE_CHANNEL",
+        "reason": "No creator-controlled ownership cross-link found."
+      }
+    ],
+    "inventory_performed": false,
+    "inventory_reason": "The strict identity gate is not met. No videos from any candidate channel are promoted into a verified creator inventory."
+  },
+  "exact_phrase_findings": {
+    "ask_coin": "No exact XRP-linked ASK Coin identity confirmed; Permission Coin (ASK) remains a separate ticker-collision candidate.",
+    "actual_capital": "No exact primary-source phrase match in this recheck; context remains unresolved.",
+    "sbic_chatgpt": "No exact indexed phrase match. Official Tokyo SBIC ChatGPT training is a separate contextual observation only."
+  },
+  "predictions": {
+    "issued": false,
+    "reason": "Identity and primary-source context research only; no market model feature or forecast produced."
+  },
+  "next_actions": [
+    "Preserve Tokyo SBIC training as a contextual primary-source event, not evidence of OpenAI partnership or XRP activity.",
+    "Keep the three Kamilah channel IDs separate and do not inventory candidate videos until the exact channel ID is reciprocally linked by a creator-controlled source or verified platform metadata.",
+    "Continue source-specific exact-phrase searches and preserve null results.",
+    "Capture raw response bytes, headers, URL and retrieval time through the repository receipt pipeline before promoting this source into the event timeline."
+  ]
+}

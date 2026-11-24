@@ -80,7 +80,7 @@ def test_run175_preserves_verified_opencode_default_and_disables_unverified_luna
     assert config["default_agent"] == "barrot"
     assert config["model"] == "opencode/deepseek-v4.1-flash-free"
     assert config["agent"]["barrot"]["model"] == "opencode/deepseek-v4.1-flash-free"
-    assert config["mcp"]["servers"]["lunaroute"]["disabled"] is True
+    assert "lunaroute" not in config["mcp"]["servers"]
     assert "authentication" in config["agent"]["barrot"]["prompt"].lower()
     assert config["permission"]["edit"] == "ask"
     agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")

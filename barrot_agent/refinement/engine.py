@@ -1,7 +1,7 @@
 """Optional ping-pong refinement for explicitly classified derived data.
 
-The default is deterministic and offline. Canonical evidence is immutable;
-external providers require explicit public-data classification and opt-in.
+Refinement is deterministic and offline. Canonical evidence is immutable;
+external-provider dispatch has been removed.
 
 Semantics (Barrot standing orders): refinement efforts ping-pong dynamically
 between models until the data can be refined NO FURTHER — a measured fixed
@@ -40,9 +40,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from . import scoring
-from .refiners import (
-    EXTERNAL_REFINEMENT_ALLOWED_CLASSES, HeuristicRefiner, LunaRouteRefiner, Refiner,
-)
+from .refiners import HeuristicRefiner, Refiner
 
 DEFAULT_EPSILON = 1e-4       # score is rounded to 6dp; below this = no change
 DEFAULT_PATIENCE = 2         # stable half-rounds required before plateau/consensus
@@ -269,16 +267,8 @@ def refine_data(
     refiners = list(refiners)
     if not refiners or not all(isinstance(r, Refiner) for r in refiners):
         raise TypeError("refiners must be a non-empty iterable of Refiner instances")
-    live = [r for r in refiners if isinstance(r, LunaRouteRefiner)]
-    if live:
-        if not allow_external:
-            raise PermissionError("external refinement requires allow_external=True")
-        if os.environ.get("BARROT_ALLOW_EXTERNAL_REFINEMENT") != "1":
-            raise PermissionError("BARROT_ALLOW_EXTERNAL_REFINEMENT=1 is required")
-        if data_classification not in EXTERNAL_REFINEMENT_ALLOWED_CLASSES:
-            raise PermissionError("data classification is not eligible for external transfer")
-        if any(not r.allow_external or r.data_classification != data_classification for r in live):
-            raise PermissionError("LunaRoute refiner classification/opt-in mismatch")
+    if allow_external:
+        raise PermissionError("external refinement providers are decommissioned")
     return PingPongRefiner(
         refiners, ledger=ledger, data_classification=data_classification, **kwargs
     ).run(data, context=context)
@@ -291,10 +281,12 @@ def refine_json_file(
     data_classification: str = "unknown", allow_external: bool = False,
 ) -> RefinementReport:
     """Refine a classified derived-data JSON document, never canonical evidence."""
+    if allow_external:
+        raise PermissionError("external refinement providers are decommissioned")
     path = Path(path)
     data = json.loads(path.read_text(encoding="utf-8"))
     report = refine_data(data, refiners=refiners, context=f"file:{path}", ledger=ledger,
-                         data_classification=data_classification, allow_external=allow_external)
+                         data_classification=data_classification)
     dest = Path(out_path) if out_path else path
     dest.write_text(json.dumps(report.data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return report
