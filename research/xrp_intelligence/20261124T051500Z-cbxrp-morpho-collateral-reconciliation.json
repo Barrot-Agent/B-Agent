@@ -1,0 +1,442 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot.xrp.cbxrp_morpho_collateral_reconciliation",
+  "artifact_id": "xrp_cbxrp_morpho_collateral_20261124T0515Z",
+  "captured_at_utc": "2026-11-24T05:15:00Z",
+  "retrieval_window_utc": {
+    "start": "2026-11-24T05:03:39Z",
+    "end": "2026-11-24T05:14:32Z",
+    "precision": "Approximate run window; web-rendered sources do not expose exact per-page HTTP fetch times."
+  },
+  "data_cutoff_utc": "2026-11-24T05:14:32.208137Z",
+  "repository_state": {
+    "inspected_main_sha": "7d7aba841cb849e461376a8fcdd4cc4fa10c9af6",
+    "xrp_integration_pr": 1692,
+    "xrp_pr_head_before_this_artifact": "fa1d23c6837f55c631f7557a876d930c8f3091ec",
+    "prior_related_artifacts": [
+      "research/xrp_intelligence/20261116T024453Z-run182-cbxrp-morpho-derivatives-collateral-supplement.json",
+      "research/xrp_intelligence/20261122T141841Z-run285-coinbase-morpho-cbxrp-custody-and-payments-reconciliation.json",
+      "research/xrp_intelligence/20261123T191200Z-sbic-sbi-ripple-circle-coinbase-addendum.json"
+    ]
+  },
+  "research_question": "Reconcile Coinbase's current cbXRP reserve/supply snapshot, Coinbase's XRP-backed USDC loan eligibility, the exact Base Morpho cbXRP/USDC market configuration, and secondary market-activity observations without inferring new native XRP purchases, Coinbase market ownership, or spot-price causality.",
+  "source_registry": [
+    {
+      "id": "coinbase_cbxrp_proof_of_reserves_20261124",
+      "publisher": "Coinbase",
+      "publisher_group": "coinbase_issuer",
+      "source_type": "official issuer proof-of-reserves page",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "web_source_ref": "turn312289search9",
+      "page_data_refreshed_display": "2026-11-24 12:16 AM",
+      "page_refresh_timezone": "not specified",
+      "retrieved_at_utc": "2026-11-24T05:03:39Z to 2026-11-24T05:14:32Z",
+      "retrieval_time_quality": "approximate run window; rendered search result; page refresh label has no timezone",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Coinbase's own issuer statement, not an independent third-party audit.",
+        "Page refresh time is locale-rendered and has no stated timezone; do not assign a UTC event time.",
+        "Reserve and supply values are a dynamic page snapshot and must not be merged with other locale/cache vintages.",
+        "A 1:1 wrapped reserve does not establish unencumbered ownership, customer-level positions, new spot purchases, or net XRP demand."
+      ]
+    },
+    {
+      "id": "coinbase_crypto_backed_loan_eligibility_20261124",
+      "publisher": "Coinbase",
+      "publisher_group": "coinbase_issuer",
+      "source_type": "official help-center product and eligibility documentation",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+      "web_source_ref": "turn478754search7",
+      "publication_date": null,
+      "retrieved_at_utc": "2026-11-24T05:03:39Z to 2026-11-24T05:14:32Z",
+      "retrieval_time_quality": "approximate run window; rendered help-center page",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Coinbase says eligible customers in the US outside New York can use XRP as collateral; New York's displayed eligible list is BTC, ETH and SOL.",
+        "This is a consumer USDC crypto-backed loan interface using Morpho on Base, not Coinbase Global Exchange institutional margin collateral.",
+        "The help page says loan limits vary by asset and are shown in the product; older advertised maximums must not be treated as current guaranteed limits.",
+        "No customer-level collateral quantity, loan count, outstanding balance or market impact is disclosed by this help page."
+      ]
+    },
+    {
+      "id": "coinbase_crypto_backed_loan_collateral_20261124",
+      "publisher": "Coinbase",
+      "publisher_group": "coinbase_issuer",
+      "source_type": "official help-center collateral mechanics documentation",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral",
+      "web_source_ref": "turn478754search1",
+      "retrieved_at_utc": "2026-11-24T05:03:39Z to 2026-11-24T05:14:32Z",
+      "retrieval_time_quality": "approximate run window; rendered help-center page",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Coinbase states collateral is held on Morpho and locked on-chain while the loan is open.",
+        "Liquidation thresholds vary by asset; this document does not identify the exact market ID or all token-wrapping mechanics for XRP."
+      ]
+    },
+    {
+      "id": "coinbase_historical_xrp_loan_cap_20260929",
+      "publisher": "Coinbase",
+      "publisher_group": "coinbase_issuer",
+      "source_type": "official product announcement",
+      "url": "https://www.coinbase.com/es-la/blog/now-get-a-usdc-loan-without-selling-your-crypto",
+      "web_source_ref": "turn250019search1",
+      "publication_date": "2026-09-29",
+      "retrieved_at_utc": "2026-11-24T05:03:39Z to 2026-11-24T05:14:32Z",
+      "retrieval_time_quality": "approximate run window; official localized article",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "The article advertised loans up to $100,000 against XRP and other assets at launch.",
+        "The current help-center page now says limits vary by asset and are shown in-product; retain the $100,000 figure as a dated historical announcement, not a current universal limit."
+      ]
+    },
+    {
+      "id": "morpho_blue_api_reference_20261124",
+      "publisher": "Morpho",
+      "publisher_group": "morpho_protocol",
+      "source_type": "official protocol API documentation",
+      "url": "https://docs.morpho.org/api/",
+      "web_source_ref": "turn136749view0",
+      "retrieved_at_utc": "2026-11-24T05:03:39Z to 2026-11-24T05:14:32Z",
+      "retrieval_time_quality": "approximate run window; rendered documentation",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Morpho documentation defines API semantics; it is not independent proof of a particular market's customer activity.",
+        "The public Read API is indexed protocol data; block freshness and token metadata must be captured alongside market state."
+      ]
+    },
+    {
+      "id": "morpho_blue_openapi_20261124",
+      "publisher": "Morpho",
+      "publisher_group": "morpho_protocol",
+      "source_type": "official OpenAPI specification",
+      "url": "https://docs.morpho.org/openapi.json",
+      "web_source_ref": "turn830851view0",
+      "retrieved_at_utc": "2026-11-24T05:03:39Z to 2026-11-24T05:14:32Z",
+      "retrieval_time_quality": "approximate run window; rendered OpenAPI JSON",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "The specification defines field units and timestamps but does not itself supply the current market values.",
+        "API responses remain subject to indexer freshness, endpoint cache behavior and source terms."
+      ]
+    },
+    {
+      "id": "morpho_cbxrp_usdc_market_configuration_20261124",
+      "publisher": "Morpho",
+      "publisher_group": "morpho_protocol",
+      "source_type": "official public Read API market-configuration response",
+      "url": "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "web_source_ref": "turn430079view0",
+      "retrieved_at_utc": "2026-11-24T05:03:39Z to 2026-11-24T05:14:32Z",
+      "retrieval_time_quality": "approximate run window; rendered API response",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "The response verifies market configuration, not market originator, Coinbase ownership, borrower identity or current utilization.",
+        "Morpho Blue markets are permissionless; a matching token pair does not prove Coinbase created or controls this market."
+      ]
+    },
+    {
+      "id": "cbxrp_token_contract_metadata_2026",
+      "publisher": "BaseScan",
+      "publisher_group": "block_explorer_secondary",
+      "source_type": "public Base ERC-20 explorer metadata",
+      "url": "https://basescan.org/token/0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+      "web_source_ref": "turn312289search3",
+      "retrieved_at_utc": "2026-11-24T05:03:39Z to 2026-11-24T05:14:32Z",
+      "retrieval_time_quality": "approximate run window; indexed explorer page",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Explorer metadata reports six decimals for cbXRP but is not the Morpho API token-metadata response.",
+        "The production normalizer must fetch and validate decimals from Morpho's /v0/tokens/{token-selector} endpoint rather than rely only on explorer metadata."
+      ]
+    },
+    {
+      "id": "spine_base_cbXRP_morpho_market_snapshot_20261117",
+      "publisher": "Spine",
+      "publisher_group": "third_party_morpho_analytics",
+      "source_type": "third-party public Morpho/Base market dashboard",
+      "url": "https://spine.network/base/markets",
+      "web_source_ref": "turn653643view0",
+      "source_as_of_utc": "2026-11-17T12:50:00Z",
+      "retrieved_at_utc": "2026-11-24T05:03:39Z to 2026-11-24T05:14:32Z",
+      "retrieval_time_quality": "source-stated snapshot timestamp; page retrieval time approximate",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Secondary dashboard; it reports using Morpho API/public Base data and has not been independently recomputed from raw chain logs in this run.",
+        "The reported utilization is borrowed USDC divided by supplied USDC, not collateral utilization.",
+        "The snapshot is seven days old relative to this research run and is not a current quote."
+      ]
+    },
+    {
+      "id": "cryptoslate_cbxrp_morpho_liquidation_report_20261113",
+      "publisher": "CryptoSlate",
+      "publisher_group": "secondary_media_onchain_analysis",
+      "source_type": "secondary on-chain activity analysis",
+      "url": "https://cryptoslate.com/xrp-loans-trigger-883-liquidations-and-53m-remains-at-risk/",
+      "web_source_ref": "turn653643view1",
+      "source_event_window_utc": {
+        "start": "2026-11-07T10:30:51Z",
+        "end": "2026-11-13T13:00:00Z"
+      },
+      "retrieved_at_utc": "2026-11-24T05:03:39Z to 2026-11-24T05:14:32Z",
+      "retrieval_time_quality": "article-reported event window; underlying transactions not independently replayed in this run",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "The article reports liquidation logs, USDC repaid and cbXRP seized; the report does not establish that seized cbXRP was redeemed into native XRP or sold on spot venues.",
+        "This evidence is already recorded in the 2026-11-16 collateral supplement; it is referenced here for reconciliation, not counted as an independent new source."
+      ]
+    }
+  ],
+  "market_and_custody_observations": {
+    "coinbase_cbxrp_proof_of_reserves": {
+      "status": "PRIMARY_ISSUER_DYNAMIC_SNAPSHOT",
+      "page_data_refreshed_display": "2026-11-24 12:16 AM",
+      "refresh_timezone": "not specified",
+      "xrp_reserve": 159914497.35,
+      "cbxrp_total_supply": 159912250.81,
+      "cbxrp_base_supply": 159912250.811,
+      "displayed_xrp_price_usd": 0.94,
+      "reserve_surplus_xrp": 2246.54,
+      "issuer_statement": "Coinbase states cbXRP is a wrapped token backed 1:1 by XRP held by Coinbase.",
+      "interpretation": "The issuer page displays approximately 159.9 million XRP of reserves and cbXRP supply, with a 2,246.54 XRP displayed reserve surplus. All displayed cbXRP supply is on Base.",
+      "not_established": [
+        "independent audit assurance",
+        "whether every reserve unit is unencumbered",
+        "customer-level beneficial ownership",
+        "new native XRP purchases or net spot demand",
+        "native XRP sales or redemptions caused by Morpho liquidations"
+      ],
+      "model_eligible": false
+    },
+    "coinbase_xrp_usdc_loan_product": {
+      "status": "CONFIRMED_PRODUCT_ELIGIBILITY",
+      "loan_asset": "USDC",
+      "eligible_collateral": "XRP",
+      "protocol": "Morpho Blue on Base",
+      "interface_provider": "Coinbase",
+      "eligible_regions": "Coinbase help documentation lists XRP for eligible US customers outside New York; New York's displayed list is BTC, ETH and SOL.",
+      "collateral_mechanics": "Coinbase says collateral is locked on Morpho while the loan is open.",
+      "current_limit": "Varies by asset and is displayed in-product; no universal current XRP limit established.",
+      "historical_launch_cap_usd": 100000,
+      "historical_launch_cap_date": "2026-09-29",
+      "not_established": [
+        "customer-level XRP collateral quantity",
+        "total outstanding debt specifically backed by XRP",
+        "whether all customer XRP collateral is wrapped into cbXRP",
+        "whether this exact Morpho market is Coinbase-originated",
+        "Coinbase Global Exchange or institutional prime collateral support",
+        "new spot XRP purchases"
+      ],
+      "model_eligible": false
+    },
+    "morpho_market_configuration": {
+      "chain_id": 8453,
+      "chain": "Base",
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "loan_token": "USDC",
+      "loan_token_address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+      "collateral_token": "Coinbase Wrapped XRP (cbXRP)",
+      "collateral_token_address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+      "oracle_address": "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde",
+      "liquidation_ltv_wad": "625000000000000000",
+      "liquidation_ltv_percent": 62.5,
+      "creation_block_number": "40855874",
+      "market_status": "CONFIGURATION_VERIFIED; LIVE_STATE_NOT_NORMALIZED_IN_BARROT",
+      "interpretation": "This is a Base Morpho Blue USDC market using cbXRP collateral with a 62.5% LLTV. It is a permissionless market; configuration does not identify Coinbase as the market creator or owner.",
+      "model_eligible": false
+    },
+    "secondary_morpho_snapshot_20261117": {
+      "status": "SECONDARY_RESEARCH_ONLY",
+      "source_as_of_utc": "2026-11-17T12:50:00Z",
+      "borrowed_usdc_usd": 48100000,
+      "supplied_usdc_usd": 56400000,
+      "borrowed_over_supplied_utilization_percent": 85.2,
+      "collateral_value_usd": 117000000,
+      "reported_book_ltv_percent": 41,
+      "interpretation": "The dashboard's 85.2% is borrowed USDC divided by supplied USDC. It is not the collateral LTV and not the fraction of cbXRP supply used as collateral.",
+      "not_established": [
+        "current 2026-11-24 utilization",
+        "borrower concentration",
+        "market attribution to Coinbase",
+        "native XRP sale or redemption",
+        "spot-price impact"
+      ],
+      "model_eligible": false
+    },
+    "liquidation_activity_cross_reference": {
+      "status": "SECONDARY_REPORT_ALREADY_PRESERVED_IN_RUN182_ARTIFACT",
+      "event_window_start_utc": "2026-11-07T10:30:51Z",
+      "event_window_end_utc": "2026-11-13T13:00:00Z",
+      "liquidation_logs_reported": 883,
+      "usdc_repaid_reported": 4016076.34226,
+      "cbxrp_seized_reported": 4181584.301387,
+      "nov13_outstanding_usdc_reported": 53530000,
+      "nov13_collateral_cbxrp_reported": 121700000,
+      "native_xrp_redemption_or_sale_traced": false,
+      "interpretation": "The reported collateral seized is cbXRP on Base. It is not evidence that the same amount of native XRP was sold or redeemed."
+    }
+  },
+  "api_semantics_and_implementation_gap": {
+    "morpho_documented_units": {
+      "total_supply_assets": "Loan-token units; API returns integer strings in the token's smallest unit.",
+      "total_borrow_assets": "Loan-token units; API returns integer strings in the token's smallest unit.",
+      "total_collateral_assets": "Raw collateral-token units, not decimal-adjusted.",
+      "history_timestamp": "Unix seconds.",
+      "last_indexed_block": "Latest indexed block used to compute the market response.",
+      "last_accrual_timestamp": "Unix seconds.",
+      "lltv_wad": "WAD-scaled; 1e18 equals 100%.",
+      "token_decimals": "Must be fetched from /v0/tokens/{token-selector}; keep raw amounts as integers until scaling."
+    },
+    "documented_endpoints": {
+      "market_configuration": "GET /v0/blue/markets/{market-selector}",
+      "market_state": "GET /v0/blue/markets/{market-selector}/state",
+      "market_state_history": "GET /v0/blue/markets/{market-selector}/state/history",
+      "market_liquidity": "GET /v0/blue/markets/{market-selector}/liquidity",
+      "oracle_state": "GET /v0/oracles/{oracle-selector}/state",
+      "token_metadata": "GET /v0/tokens/{token-selector}",
+      "chain_indexer_tips": "GET /v0/chains",
+      "block_timestamp": "GET /v0/blocks/{block-selector}/timestamp"
+    },
+    "current_barrot_status": {
+      "configured_sources": [
+        "morpho_cbxrp_market_parameters",
+        "morpho_cbxrp_market_state",
+        "morpho_cbxrp_market_liquidity",
+        "morpho_cbxrp_market_state_history",
+        "morpho_cbxrp_oracle_state",
+        "coinbase_cbxrp_proof_of_reserves"
+      ],
+      "collector_treatment": "These Morpho and Coinbase sources are captured as raw-only/digest-only evidence; they are not promoted into normalized market features.",
+      "missing_sources_for_safe_normalization": [
+        "Morpho token metadata for Base USDC",
+        "Morpho token metadata for Base cbXRP",
+        "Morpho Base chain indexer tip or an equivalent block-time cross-check"
+      ],
+      "verified_gap": "The existing parsers validate market identity, raw integer fields and historical timestamps but intentionally return no normalized feature records because token decimals and indexer/block-time alignment are not yet joined.",
+      "implementation_gate": "A research-only normalizer can be built after token metadata and chain-tip sources are captured. Keep model_eligible=false until source terms, indexer vintage and independent timestamp semantics are reviewed.",
+      "current_model_eligibility": false
+    }
+  },
+  "source_independence": {
+    "coinbase_issuer": "Coinbase proof-of-reserves, product eligibility and collateral mechanics are all issuer statements; they are not independent of each other.",
+    "morpho_protocol": "Morpho API docs, market configuration and indexed state are from the same protocol/provider.",
+    "block_explorer_secondary": "BaseScan token metadata is a public explorer view, not a substitute for Morpho token metadata or a third-party audit.",
+    "third_party_morpho_analytics": "Spine and CryptoSlate use public Morpho/Base data; they are not fully independent of the same underlying market/indexer data.",
+    "no_independent_market_replay": "No full raw Base event replay, borrower-position aggregation or native-XRP redemption trace was performed in this run."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1-collateral-utility-complementarity",
+      "statement": "Coinbase's XRP-backed USDC loan eligibility and cbXRP supply provide a concrete collateral-utility path that may complement the wider XRP ecosystem.",
+      "supporting_evidence": [
+        "Coinbase Help lists XRP as eligible collateral in supported regions.",
+        "Coinbase reports 1:1 cbXRP backing.",
+        "Morpho's public market configuration confirms a Base USDC/cbXRP market."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No customer-level XRP collateral totals from Coinbase.",
+        "No verified current Morpho state normalization in Barrot.",
+        "No proof that the exact market is Coinbase-originated.",
+        "No measured effect on native XRP spot demand."
+      ]
+    },
+    {
+      "id": "H2-leverage-and-liquidation-risk",
+      "statement": "High utilization and historical liquidation activity in cbXRP/USDC markets may create forced collateral transfers and liquidity stress.",
+      "supporting_evidence": [
+        "Secondary 2026-11-17 dashboard reports 85.2% borrowed-over-supplied utilization.",
+        "Secondary 2026-11-13 report records 883 liquidation logs and cbXRP seized."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No independent replay of all liquidation transactions in this run.",
+        "No native XRP redemption or sale traced.",
+        "The latest 2026-11-24 Morpho state remains raw-only and unnormalized in Barrot."
+      ]
+    },
+    {
+      "id": "H3-wrapped-supply-is-not-new-spot-demand",
+      "statement": "Changes in cbXRP supply may reflect wrapping, unwrapping, custody transfers or cache-vintage differences rather than net new native XRP purchases.",
+      "supporting_evidence": [
+        "Coinbase's page is an issuer reserve/supply snapshot, not a purchase-flow report.",
+        "Previous Coinbase locale snapshots disagreed materially in the same date window.",
+        "The issuer page has no independent audit or customer-level flow disclosure."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No reconciled XRPL reserve-address transfer history was captured in this run."
+      ]
+    },
+    {
+      "id": "H4-stablecoin-rail-substitution",
+      "statement": "USDC and JPYSC settlement/collateral networks may serve payment and credit use cases without requiring XRP as the bridge asset.",
+      "supporting_evidence": [
+        "Coinbase/Morpho supports USDC borrowing against XRP collateral.",
+        "Circle/DBS, Circle Arc and SBI JPYSC work are separately documented in the prior 2026-11-23 addendum."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No corridor-level payment-flow data proving substitution away from XRP.",
+        "No production volume comparison across rails."
+      ]
+    }
+  ],
+  "ingestion_run_evidence": {
+    "workflow_run_id": 45331849962,
+    "workflow_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45331849962",
+    "main_sha": "7d7aba841cb849e461376a8fcdd4cc4fa10c9af6",
+    "data_cutoff_utc": "2026-11-24T05:14:32.208137Z",
+    "cross_run_sequence": 81,
+    "receipt_chain_verification": "PASS",
+    "receipt_count": 34,
+    "retained_raw_payload_count": 21,
+    "digest_only_receipt_count": 13,
+    "external_timestamp_anchor": false,
+    "raw_only_source_count": 23,
+    "relevant_raw_only_source_ids": [
+      "coinbase_cbxrp_proof_of_reserves",
+      "morpho_cbxrp_market_parameters",
+      "morpho_cbxrp_market_state",
+      "morpho_cbxrp_market_liquidity",
+      "morpho_cbxrp_market_state_history",
+      "morpho_cbxrp_oracle_state"
+    ],
+    "limitation": "The run summary exposes aggregate receipt counts and source IDs, not the individual receipt IDs/hashes for these sources; those are in the receipt-index artifact."
+  },
+  "data_quality": {
+    "raw_http_bytes_captured_for_web_research": false,
+    "independent_timestamp_anchor": false,
+    "web_sources_model_eligible": false,
+    "current_morpho_state_normalized": false,
+    "exact_base_event_replay": false,
+    "native_xrp_redemption_trace": false,
+    "no_directional_forecast_issued": true,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Add Morpho Read API token-metadata capture for Base USDC and cbXRP and capture the Base chain indexer tip.",
+    "Normalize the 30-day Morpho cbXRP/USDC market-state history using integer arithmetic and verified token decimals; preserve each source digest, receipt ID, timestamp and indexer block.",
+    "Keep the normalized series research-only until Morpho source terms, indexer vintage and independent block-time semantics are reviewed; do not promote it to forecast features yet.",
+    "Reconcile the 2026-11-17 secondary utilization snapshot against the scheduled Morpho API raw receipts and a reproducible on-chain event/position replay.",
+    "Trace cbXRP liquidations, transfers, redemptions and Coinbase reserve-address changes separately; do not equate cbXRP seized with native XRP sold.",
+    "Maintain competing hypotheses for collateral utility, liquidation risk, wrapped-supply conversion and stablecoin-rail substitution."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "model_eligible": false
+}

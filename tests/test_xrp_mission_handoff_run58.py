@@ -43,10 +43,10 @@ def test_legacy_handoff_history_and_run112_current_handoff_bind_exact_heads_and_
 
 
 def test_current_endpoint_registry_expands_v1_1_snapshot_and_preserves_historical_run58_archive():
-    assert len(ENDPOINTS) == 53
-    assert len(SCHEDULED_ENDPOINTS) == 48
+    assert len(ENDPOINTS) == 56
+    assert len(SCHEDULED_ENDPOINTS) == 51
     assert len(WEEKLY_ENDPOINTS) == 3
-    assert len({source_id for source_id, _ in ENDPOINTS}) == 53
+    assert len({source_id for source_id, _ in ENDPOINTS}) == 56
     raw_only_deribit = {"deribit_xrp_usdc_perpetual_ticker", "deribit_xrp_usdc_perpetual_order_book"}
     scheduled_source_ids = {source_id for source_id, _ in SCHEDULED_ENDPOINTS}
     assert raw_only_deribit <= scheduled_source_ids
@@ -76,9 +76,9 @@ def test_current_endpoint_registry_expands_v1_1_snapshot_and_preserves_historica
     assert engine["hourly_sources"] == 46
     assert engine["weekly_cftc_sources"] == 3
     assert engine["scheduled_sources"] == 49
-    # The live collector has since added Bitstamp XRP/USD ticker and order-book endpoints.
-    assert len(ENDPOINTS) == 53
-    assert len(SCHEDULED_ENDPOINTS) == 48
+    # The live collector has since added three Morpho token-metadata and Base indexer-tip endpoints.
+    assert len(ENDPOINTS) == 56
+    assert len(SCHEDULED_ENDPOINTS) == 51
     assert len(WEEKLY_ENDPOINTS) == 3
     assert engine["excluded_noncommercial_xrpl_node_sources"] == 2
     assert engine["out_of_sample_lift"] is False

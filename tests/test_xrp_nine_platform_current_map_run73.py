@@ -223,9 +223,9 @@ def test_current_collector_expands_preserved_run175_registry_snapshot():
     assert engine["hourly_sources"] == 46
     assert engine["weekly_cftc_sources"] == 3
     assert engine["scheduled_sources"] == 49
-    # Current registry: 48 hourly + 3 weekly + 2 non-commercial public-node endpoints.
-    assert len(ENDPOINTS) == 53
-    assert len(SCHEDULED_ENDPOINTS) == 48
+    # Current PR #1692 registry: 51 hourly + 3 weekly + 2 non-commercial public-node endpoints.
+    assert len(ENDPOINTS) == 56
+    assert len(SCHEDULED_ENDPOINTS) == 51
     assert len(WEEKLY_ENDPOINTS) == 3
     assert len(ENDPOINTS) == len(SCHEDULED_ENDPOINTS) + len(WEEKLY_ENDPOINTS) + 2
     scheduled_ids = {source_id for source_id, _url in SCHEDULED_ENDPOINTS}

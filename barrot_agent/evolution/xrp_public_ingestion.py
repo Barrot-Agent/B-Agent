@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+from decimal import Decimal
 import hashlib
 import io
 from email.utils import parsedate_to_datetime
@@ -18,7 +19,7 @@ import re
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Callable, Mapping
+from typing import Any, Callable, Mapping, Sequence
 from urllib.parse import urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
@@ -32,9 +33,10 @@ from .event_timeline import EventTimelineError, build_event_timeline
 from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_document, fetch_sec_json
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
+_SHA256_RE = re.compile(r"[0-9a-f]{64}")
 ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.32"
-PARSER_VERSION = "xrp-public-market-v3.31"
+ADAPTER_VERSION = "xrp-public-market-v3.34"
+PARSER_VERSION = "xrp-public-market-v3.32"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
 OKX_QUOTE_BASIS_MAX_SKEW_SECONDS = 60
@@ -69,6 +71,9 @@ LIVE_HTTP_CACHE_AGE_LIMITS = {
     "morpho_cbxrp_market_liquidity": 300,
     "morpho_cbxrp_market_state_history": 3_600,
     "morpho_cbxrp_oracle_state": 300,
+    "morpho_cbxrp_token_metadata": 3_600,
+    "morpho_usdc_token_metadata": 3_600,
+    "morpho_base_chain_indexer_tip": 300,
     "coinbase_cbxrp_proof_of_reserves": 3_600,
 }
 COINBASE_CANDLE_GRANULARITY_SECONDS = 3600
@@ -83,6 +88,29 @@ MORPHO_CBXRP_MARKET_SELECTOR = f"{MORPHO_CBXRP_CHAIN_ID}:{MORPHO_CBXRP_MARKET_ID
 MORPHO_CBXRP_LOAN_TOKEN_ADDRESS = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
 MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS = "0xcb585250f852c6c6bf90434ab21a00f02833a4af"
 MORPHO_CBXRP_ORACLE_ADDRESS = "0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde"
+MORPHO_TOKEN_METADATA_EXPECTED = {
+    "morpho_cbxrp_token_metadata": (
+        MORPHO_CBXRP_CHAIN_ID,
+        MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS,
+        "cbxrp",
+    ),
+    "morpho_usdc_token_metadata": (
+        MORPHO_CBXRP_CHAIN_ID,
+        MORPHO_CBXRP_LOAN_TOKEN_ADDRESS,
+        "usdc",
+    ),
+}
+MORPHO_CBXRP_NORMALIZER_VERSION = "morpho-cbxrp-research-normalizer-v1"
+MORPHO_CBXRP_SOURCE_IDS = frozenset({
+    "morpho_cbxrp_market_parameters",
+    "morpho_cbxrp_market_state",
+    "morpho_cbxrp_market_liquidity",
+    "morpho_cbxrp_market_state_history",
+    "morpho_cbxrp_oracle_state",
+    "morpho_cbxrp_token_metadata",
+    "morpho_usdc_token_metadata",
+    "morpho_base_chain_indexer_tip",
+})
 
 WALK_FORWARD_HORIZON_SECONDS = {
     "1h": 3_600,
@@ -144,6 +172,9 @@ ENDPOINTS = (
     ("morpho_cbxrp_market_liquidity", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/liquidity"),
     ("morpho_cbxrp_market_state_history", "https://api.morpho.org/v0/blue/markets/8453:0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109/state/history?lookback=thirty_days"),
     ("morpho_cbxrp_oracle_state", "https://api.morpho.org/v0/oracles/8453:0x031b2efc8d70042ac8d9f5c793c4149ec4b60fde/state"),
+    ("morpho_cbxrp_token_metadata", f"https://api.morpho.org/v0/tokens/{MORPHO_CBXRP_CHAIN_ID}:{MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS}"),
+    ("morpho_usdc_token_metadata", f"https://api.morpho.org/v0/tokens/{MORPHO_CBXRP_CHAIN_ID}:{MORPHO_CBXRP_LOAN_TOKEN_ADDRESS}"),
+    ("morpho_base_chain_indexer_tip", "https://api.morpho.org/v0/chains"),
     ("coinbase_cbxrp_proof_of_reserves", "https://www.coinbase.com/en-gb/cbxrp/proof-of-reserves"),
     ("cftc_contract_status_index", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"),
     ("cftc_tff_financial_futures", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
@@ -199,6 +230,18 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
     "morpho_cbxrp_oracle_state": (
         "Public Morpho API response is used for research; raw-response redistribution terms have not been reviewed, "
         "so retain the SHA-256 receipt only until permission is established."
+    ),
+    "morpho_cbxrp_token_metadata": (
+        "Public Morpho token metadata is used for research; raw-response redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only and publish only the minimal identity/decimals observation."
+    ),
+    "morpho_usdc_token_metadata": (
+        "Public Morpho token metadata is used for research; raw-response redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only and publish only the minimal identity/decimals observation."
+    ),
+    "morpho_base_chain_indexer_tip": (
+        "Public Morpho chain-indexer metadata is used for research; raw-response redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only and publish only the Base indexer-tip observation."
     ),
     "coinbase_cbxrp_proof_of_reserves": (
         "Public issuer page is cited for research; raw HTML redistribution terms have not been reviewed, "
@@ -4483,6 +4526,67 @@ def _raw_only_morpho_cbxrp_market_parameters(
     return [], None, False, "morpho_immutable_market_parameters_raw_only_until_token_decimals_and_market_lineage_are_normalized"
 
 
+def _morpho_token_metadata_data(payload: Any, source_id: str) -> Mapping[str, Any]:
+    """Validate a Morpho token metadata response against the configured Base asset identity."""
+    expected = MORPHO_TOKEN_METADATA_EXPECTED.get(source_id)
+    if expected is None:
+        raise XRPIngestionError("Morpho token metadata source ID is not configured")
+    data = _morpho_data(payload, source_id)
+    chain_id = _morpho_uint(data.get("chain_id"), "token chain_id")
+    address = _morpho_address(data.get("address"), "token address")
+    symbol = data.get("symbol")
+    decimals = _morpho_uint(data.get("decimals"), "token decimals")
+    expected_chain, expected_address, expected_symbol = expected
+    if chain_id != expected_chain:
+        raise XRPIngestionError("Morpho token metadata chain ID mismatch")
+    if address != expected_address:
+        raise XRPIngestionError("Morpho token metadata contract address mismatch")
+    if not isinstance(symbol, str) or symbol.casefold() != expected_symbol:
+        raise XRPIngestionError("Morpho token metadata symbol mismatch")
+    if decimals > 36:
+        raise XRPIngestionError("Morpho token decimals exceed the supported ERC-20 bound")
+    name = data.get("name")
+    if name is not None and (not isinstance(name, str) or not name.strip()):
+        raise XRPIngestionError("Morpho token metadata name must be a non-empty string when present")
+    return data
+
+
+def _morpho_base_chain_tip_data(payload: Any, source_id: str) -> Mapping[str, Any]:
+    """Select and validate the unique Base indexer row from Morpho's chain registry."""
+    if not isinstance(payload, Mapping) or not isinstance(payload.get("data"), list):
+        raise XRPIngestionError("Morpho chain registry must contain a data array")
+    matches = [
+        row for row in payload["data"]
+        if isinstance(row, Mapping) and row.get("chain_id") == MORPHO_CBXRP_CHAIN_ID
+    ]
+    if len(matches) != 1:
+        raise XRPIngestionError("Morpho chain registry must contain exactly one Base row")
+    row = matches[0]
+    if row.get("name") != "Base":
+        raise XRPIngestionError("Morpho chain registry Base name mismatch")
+    _morpho_uint(row.get("last_indexed_block"), "Base last_indexed_block")
+    protocols = row.get("supported_protocols")
+    if not isinstance(protocols, list) or "blue" not in protocols:
+        raise XRPIngestionError("Morpho Base chain registry does not confirm Blue support")
+    return row
+
+
+def _raw_only_morpho_token_metadata(
+    payload: Any, *, source_id: str, captured: datetime, **_kwargs
+):
+    """Validate token identity/decimals but keep metadata research-only and digest-backed."""
+    _morpho_token_metadata_data(payload, source_id)
+    return [], None, False, "morpho_token_metadata_research_only_until_market_units_and_indexer_freshness_are_reconciled"
+
+
+def _raw_only_morpho_base_chain_indexer_tip(
+    payload: Any, *, source_id: str, captured: datetime, **_kwargs
+):
+    """Validate Base's last fully processed Morpho block without treating it as chain head."""
+    _morpho_base_chain_tip_data(payload, source_id)
+    return [], None, False, "morpho_base_indexer_tip_research_only_until_market_block_lag_is_reconciled"
+
+
 def _raw_only_morpho_cbxrp_market_state(
     payload: Any, *, source_id: str, captured: datetime, **_kwargs
 ):
@@ -4600,6 +4704,206 @@ def _raw_only_morpho_cbxrp_oracle_state(
     source_as_of_text = source_as_of.isoformat().replace("+00:00", "Z") if source_as_of else None
     return [], source_as_of_text, False, "morpho_oracle_state_raw_only_until_quote_scale_and_update_timestamp_semantics_are_normalized"
 
+
+
+def _morpho_scaled_amount(value: Any, decimals: int, field: str) -> str:
+    raw = _morpho_uint(value, field)
+    return format(Decimal(raw) / (Decimal(10) ** decimals), "f")
+
+
+def _build_morpho_cbxrp_research_snapshot(
+    payloads: Mapping[str, Any],
+    receipts: Mapping[str, Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Normalize Morpho token units for research while keeping the snapshot model-ineligible."""
+    required = MORPHO_CBXRP_SOURCE_IDS - {"morpho_cbxrp_oracle_state"}
+    missing = sorted(source_id for source_id in required if source_id not in payloads or source_id not in receipts)
+    source_receipts = {
+        source_id: {
+            "receipt_id": receipt.get("receipt_id"),
+            "raw_content_sha256": receipt.get("raw_content_sha256"),
+            "captured_at_utc": receipt.get("captured_at_utc"),
+            "raw_bytes_retained": receipt.get("raw_bytes_retained", False),
+        }
+        for source_id, receipt in receipts.items()
+        if source_id in MORPHO_CBXRP_SOURCE_IDS
+    }
+    base: dict[str, Any] = {
+        "observation_type": "morpho_cbxrp_normalized_market_snapshot",
+        "normalizer_version": MORPHO_CBXRP_NORMALIZER_VERSION,
+        "source_ids": sorted(source_receipts),
+        "source_receipts": source_receipts,
+        "publisher_independence_group": "morpho_protocol_api",
+        "model_eligible": False,
+        "feature_store_admitted": False,
+        "block_timestamp_verified": False,
+        "limitations": [
+            "All market, token-metadata and indexer observations come from the Morpho API and are one publisher group, not independent corroboration.",
+            "The Base indexer tip is Morpho's last indexed block, not the canonical Base chain head.",
+            "No canonical Base block timestamp is captured for the market-state block; last_accrual_timestamp is not substituted for a block timestamp.",
+            "This normalized snapshot is research-only and is not admitted to the point-in-time feature store or directional forecasts.",
+            "No borrower identity, Coinbase ownership of the permissionless market, native XRP redemption, or native XRP spot flow is inferred.",
+        ],
+    }
+    if missing:
+        return {
+            **base,
+            "status": "INCOMPLETE",
+            "missing_source_ids": missing,
+            "reason": "Required Morpho market, token metadata or indexer-tip receipts are absent; no normalized values emitted.",
+        }
+
+    try:
+        parameters = _morpho_data(payloads["morpho_cbxrp_market_parameters"], "morpho_cbxrp_market_parameters")
+        state = _morpho_data(payloads["morpho_cbxrp_market_state"], "morpho_cbxrp_market_state")
+        liquidity = _morpho_data(payloads["morpho_cbxrp_market_liquidity"], "morpho_cbxrp_market_liquidity")
+        cbxrp = _morpho_token_metadata_data(payloads["morpho_cbxrp_token_metadata"], "morpho_cbxrp_token_metadata")
+        usdc = _morpho_token_metadata_data(payloads["morpho_usdc_token_metadata"], "morpho_usdc_token_metadata")
+        chain_tip = _morpho_base_chain_tip_data(payloads["morpho_base_chain_indexer_tip"], "morpho_base_chain_indexer_tip")
+        history_payload = payloads["morpho_cbxrp_market_state_history"]
+        if not isinstance(history_payload, Mapping) or not isinstance(history_payload.get("data"), list) or not history_payload["data"]:
+            raise XRPIngestionError("Morpho market history is unavailable for collateral normalization")
+        _morpho_market_identity(parameters, "morpho_cbxrp_market_parameters", require=False)
+        _morpho_market_identity(state, "morpho_cbxrp_market_state")
+        _morpho_market_identity(liquidity, "morpho_cbxrp_market_liquidity", require=False)
+
+        state_block = _morpho_uint(state.get("last_indexed_block"), "market state last_indexed_block")
+        liquidity_block = _morpho_uint(liquidity.get("last_indexed_block"), "market liquidity last_indexed_block")
+        history_block = _morpho_uint(history_payload.get("last_indexed_block"), "market history last_indexed_block")
+        tip_block = _morpho_uint(chain_tip.get("last_indexed_block"), "Base indexer last_indexed_block")
+        if state_block > tip_block or liquidity_block > tip_block or history_block > tip_block:
+            return {
+                **base,
+                "status": "BLOCKED_INDEXER_BLOCK_MISMATCH",
+                "reason": "A market observation is ahead of Morpho's Base indexer tip; normalization is withheld.",
+                "block_numbers": {
+                    "market_state": state_block,
+                    "market_liquidity": liquidity_block,
+                    "market_history": history_block,
+                    "indexer_tip": tip_block,
+                },
+            }
+        if state_block != liquidity_block or history_block != state_block:
+            return {
+                **base,
+                "status": "BLOCKED_CROSS_SOURCE_BLOCK_MISMATCH",
+                "reason": "Market state, liquidity and history do not share one indexed block; combined amounts are withheld.",
+                "block_numbers": {
+                    "market_state": state_block,
+                    "market_liquidity": liquidity_block,
+                    "market_history": history_block,
+                    "indexer_tip": tip_block,
+                },
+            }
+
+        state_capture = _from_iso8601(receipts["morpho_cbxrp_market_state"]["captured_at_utc"], "Morpho market-state receipt capture")
+        liquidity_capture = _from_iso8601(receipts["morpho_cbxrp_market_liquidity"]["captured_at_utc"], "Morpho market-liquidity receipt capture")
+        capture_skew = abs((state_capture - liquidity_capture).total_seconds())
+        if capture_skew > MAX_ORDERBOOK_AGE_SECONDS:
+            return {
+                **base,
+                "status": "BLOCKED_CAPTURE_SKEW",
+                "reason": "Market state and liquidity captures are more than 60 seconds apart; combined amounts are withheld.",
+                "market_state_liquidity_capture_skew_seconds": round(capture_skew, 3),
+            }
+
+        last_accrual = _morpho_uint(state.get("last_accrual_timestamp"), "market state last_accrual_timestamp")
+        last_accrual_age = state_capture.timestamp() - last_accrual
+        if last_accrual_age < -60:
+            return {
+                **base,
+                "status": "BLOCKED_FUTURE_ACCRUAL_TIMESTAMP",
+                "reason": "Morpho last_accrual_timestamp is later than the market-state receipt capture.",
+            }
+
+        latest_history = history_payload["data"][-1]
+        if not isinstance(latest_history, Mapping):
+            raise XRPIngestionError("Morpho latest history row is invalid")
+        history_timestamp = _morpho_uint(latest_history.get("timestamp"), "latest history timestamp")
+        history_as_of = datetime.fromtimestamp(history_timestamp, tz=timezone.utc)
+        if history_as_of > state_capture + timedelta(seconds=60):
+            raise XRPIngestionError("Morpho latest history timestamp is later than market-state capture")
+
+        usdc_decimals = _morpho_uint(usdc.get("decimals"), "USDC decimals")
+        cbxrp_decimals = _morpho_uint(cbxrp.get("decimals"), "cbXRP decimals")
+        supply_raw = _morpho_uint(state.get("total_supply_assets"), "total_supply_assets")
+        borrow_raw = _morpho_uint(state.get("total_borrow_assets"), "total_borrow_assets")
+        if supply_raw <= 0:
+            raise XRPIngestionError("Morpho total supply must be positive before utilization is calculated")
+        utilization = Decimal(borrow_raw) / Decimal(supply_raw)
+        lltv_raw = _morpho_uint(parameters.get("lltv_wad", parameters.get("lltvWad")), "LLTV")
+        lltv_percent = (Decimal(lltv_raw) / Decimal(10**18) * Decimal(100)).quantize(Decimal("0.0001"))
+        tip_capture = _from_iso8601(receipts["morpho_base_chain_indexer_tip"]["captured_at_utc"], "Morpho indexer-tip receipt capture")
+        state_to_tip_capture_skew = abs((state_capture - tip_capture).total_seconds())
+        source_cutoff = max(
+            _from_iso8601(receipt["captured_at_utc"], f"{source_id} receipt capture")
+            for source_id, receipt in receipts.items()
+            if source_id in required
+        )
+        return {
+            **base,
+            "status": "RESEARCH_ONLY_NORMALIZED",
+            "reason": "Token decimals and same-provider block numbers are reconciled; exact Base block timestamp and independent source anchoring remain unverified.",
+            "captured_at_utc": _iso(source_cutoff),
+            "data_as_of_utc": _iso(history_as_of),
+            "market_identity": {
+                "chain_id": MORPHO_CBXRP_CHAIN_ID,
+                "chain_name": "Base",
+                "market_id": MORPHO_CBXRP_MARKET_ID,
+                "loan_token_address": MORPHO_CBXRP_LOAN_TOKEN_ADDRESS,
+                "loan_token_symbol": usdc["symbol"],
+                "loan_token_decimals": usdc_decimals,
+                "collateral_token_address": MORPHO_CBXRP_COLLATERAL_TOKEN_ADDRESS,
+                "collateral_token_symbol": cbxrp["symbol"],
+                "collateral_token_decimals": cbxrp_decimals,
+                "oracle_address": MORPHO_CBXRP_ORACLE_ADDRESS,
+            },
+            "normalized_values": {
+                "total_supply_assets_usdc": _morpho_scaled_amount(supply_raw, usdc_decimals, "total_supply_assets"),
+                "total_borrow_assets_usdc": _morpho_scaled_amount(borrow_raw, usdc_decimals, "total_borrow_assets"),
+                "market_liquidity_usdc": _morpho_scaled_amount(liquidity.get("market_liquidity"), usdc_decimals, "market_liquidity"),
+                "reallocatable_liquidity_usdc": _morpho_scaled_amount(liquidity.get("reallocatable_liquidity"), usdc_decimals, "reallocatable_liquidity"),
+                "borrow_amount_to_target_utilization_usdc": _morpho_scaled_amount(liquidity.get("borrow_amount_to_target_utilization"), usdc_decimals, "borrow_amount_to_target_utilization"),
+                "latest_history_total_collateral_cbxrp": _morpho_scaled_amount(latest_history.get("total_collateral_assets"), cbxrp_decimals, "total_collateral_assets"),
+                "utilization_ratio": format(utilization.quantize(Decimal("0.000001")), "f"),
+                "utilization_percent": format((utilization * Decimal(100)).quantize(Decimal("0.0001")), "f"),
+                "lltv_percent": format(lltv_percent, "f"),
+            },
+            "block_numbers": {
+                "market_state": state_block,
+                "market_liquidity": liquidity_block,
+                "market_history": history_block,
+                "indexer_tip": tip_block,
+                "market_state_lag_to_indexer_tip_blocks": tip_block - state_block,
+            },
+            "timestamp_quality": {
+                "market_state_last_accrual_age_seconds": round(last_accrual_age, 3),
+                "market_state_liquidity_capture_skew_seconds": round(capture_skew, 3),
+                "market_state_to_indexer_tip_capture_skew_seconds": round(state_to_tip_capture_skew, 3),
+                "history_latest_timestamp_utc": _iso(history_as_of),
+                "block_timestamp_verified": False,
+                "external_timestamp_anchor_status": "NOT_ANCHORED",
+            },
+            "market_parameters": {
+                "lltv_wad": str(lltv_raw),
+                "fee_wad": str(_morpho_uint(state.get("fee_wad"), "fee_wad")),
+            },
+            "oracle": {
+                "status": "RAW_ONLY_UNNORMALIZED",
+                "price_raw": (
+                    _morpho_data(payloads["morpho_cbxrp_oracle_state"], "morpho_cbxrp_oracle_state").get("price")
+                    if "morpho_cbxrp_oracle_state" in payloads
+                    else None
+                ),
+                "quote_scale": "UNKNOWN",
+            },
+        }
+    except (KeyError, TypeError, ValueError, XRPIngestionError) as exc:
+        return {
+            **base,
+            "status": "BLOCKED_VALIDATION_ERROR",
+            "reason": f"Morpho research normalization failed closed: {type(exc).__name__}: {exc}",
+        }
 
 def _raw_only_coinbase_cbxrp_proof_of_reserves(
     payload: Any, *, source_id: str, captured: datetime, **_kwargs
@@ -5032,6 +5336,9 @@ PARSERS = {
     "morpho_cbxrp_market_liquidity": _raw_only_morpho_cbxrp_market_liquidity,
     "morpho_cbxrp_market_state_history": _raw_only_morpho_cbxrp_market_state_history,
     "morpho_cbxrp_oracle_state": _raw_only_morpho_cbxrp_oracle_state,
+    "morpho_cbxrp_token_metadata": _raw_only_morpho_token_metadata,
+    "morpho_usdc_token_metadata": _raw_only_morpho_token_metadata,
+    "morpho_base_chain_indexer_tip": _raw_only_morpho_base_chain_indexer_tip,
     "coinbase_cbxrp_proof_of_reserves": _raw_only_coinbase_cbxrp_proof_of_reserves,
     "cftc_contract_status_index": _parse_cftc_contract_status_index,
     "cftc_tff_financial_futures": _parse_cftc_tff,
@@ -5435,6 +5742,185 @@ def _run_coinbase_candle_backfill(
 
 
 
+def _is_immutable_sec_accession_document(source_id: Any, source_uri: Any) -> bool:
+    """Accept only exact SEC accession documents, not mutable issuer pages or search endpoints."""
+    if not isinstance(source_id, str) or not isinstance(source_uri, str):
+        return False
+    match = re.fullmatch(
+        r"sec_edgar_document_([a-z0-9]+)_([0-9]{10}-[0-9]{2}-[0-9]{6})",
+        source_id,
+    )
+    if match is None:
+        return False
+    entity_id, accession = match.groups()
+    issuer = next((item for item in SEC_ISSUERS if item["entity_id"] == entity_id), None)
+    if issuer is None:
+        return False
+    try:
+        parsed = urlsplit(source_uri)
+    except ValueError:
+        return False
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname != "www.sec.gov"
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.port is not None
+        or parsed.query
+        or parsed.fragment
+        or "%" in parsed.path
+    ):
+        return False
+    path_match = re.fullmatch(
+        r"/Archives/edgar/data/([0-9]+)/([0-9]{18})/([^/]+)",
+        parsed.path,
+    )
+    if path_match is None:
+        return False
+    cik, compact_accession, document_name = path_match.groups()
+    return (
+        int(cik) == int(issuer["cik"])
+        and compact_accession == accession.replace("-", "")
+        and document_name not in {"", ".", ".."}
+        and ".." not in document_name
+    )
+
+
+def _attach_immutable_sec_event_receipts(
+    event_records: Sequence[Mapping[str, Any]],
+    raw_receipts: Sequence[Mapping[str, Any]] | None,
+    data_cutoff_utc: str,
+) -> tuple[list[Any], dict[str, Any]]:
+    """Attach only exact, cutoff-visible SEC accession-document receipts to event versions.
+
+    A recapture is a new known-at time. The old unreceipted registry timestamp is
+    preserved as history and is never reused as the receipt capture time.
+    """
+    summary = {
+        "status": "NOT_PROVIDED" if raw_receipts is None else "NO_MATCHING_IMMUTABLE_SEC_RECEIPTS",
+        "candidate_receipt_count": 0,
+        "linked_event_count": 0,
+        "unique_receipt_count": 0,
+        "ambiguous_event_count": 0,
+        "future_receipt_count": 0,
+        "cutoff_utc": data_cutoff_utc,
+    }
+    if raw_receipts is None:
+        return [dict(record) if isinstance(record, Mapping) else record for record in event_records], summary
+    if not isinstance(raw_receipts, Sequence) or isinstance(raw_receipts, (str, bytes)):
+        raise XRPIngestionError("raw_receipts must be a sequence before SEC event receipt linkage")
+    cutoff = _from_iso8601(data_cutoff_utc, "event receipt data cutoff")
+    by_url: dict[str, list[tuple[datetime, Mapping[str, Any]]]] = {}
+    for index, receipt in enumerate(raw_receipts):
+        if not isinstance(receipt, Mapping):
+            continue
+        source_id = receipt.get("source_id")
+        source_uri = receipt.get("source_uri")
+        if not _is_immutable_sec_accession_document(source_id, source_uri):
+            continue
+        summary["candidate_receipt_count"] += 1
+        captured_at = _from_iso8601(
+            receipt.get("captured_at_utc"),
+            f"raw_receipts[{index}].captured_at_utc",
+        )
+        if captured_at > cutoff:
+            summary["future_receipt_count"] += 1
+            continue
+        by_url.setdefault(source_uri, []).append((captured_at, receipt))
+
+    output: list[Any] = []
+    linked_receipt_ids: set[str] = set()
+    for index, record in enumerate(event_records):
+        if not isinstance(record, Mapping):
+            output.append(record)
+            continue
+        item = dict(record)
+        source_url = item.get("source_url")
+        if not isinstance(source_url, str) or not source_url.startswith(
+            "https://www.sec.gov/Archives/edgar/data/"
+        ):
+            output.append(item)
+            continue
+        candidates = by_url.get(source_url, [])
+        if not candidates:
+            output.append(item)
+            continue
+        latest_capture = max(captured_at for captured_at, _ in candidates)
+        latest = [receipt for captured_at, receipt in candidates if captured_at == latest_capture]
+        if len(latest) != 1:
+            summary["ambiguous_event_count"] += 1
+            output.append(item)
+            continue
+        receipt = latest[0]
+        receipt_hash = receipt.get("raw_content_sha256")
+        receipt_id = receipt.get("receipt_id")
+        receipt_source_id = receipt.get("source_id")
+        receipt_capture = receipt.get("captured_at_utc")
+        raw_retained = receipt.get("raw_bytes_retained")
+        if (
+            not isinstance(receipt_hash, str)
+            or not _SHA256_RE.fullmatch(receipt_hash)
+            or not isinstance(receipt_id, str)
+            or not _SHA256_RE.fullmatch(receipt_id)
+            or not isinstance(receipt_capture, str)
+            or not isinstance(receipt_source_id, str)
+            or not isinstance(raw_retained, bool)
+        ):
+            raise XRPIngestionError("SEC event receipt does not match the canonical receipt identity fields")
+        canonical_receipt_payload = {
+            key: value for key, value in receipt.items() if key != "receipt_id"
+        }
+        expected_receipt_id = hashlib.sha256(
+            _canonical(canonical_receipt_payload).encode("utf-8")
+        ).hexdigest()
+        if receipt_id != expected_receipt_id:
+            raise XRPIngestionError(
+                "SEC event receipt ID does not match canonical receipt metadata"
+            )
+        history = item.get("source_capture_history", [])
+        if not isinstance(history, list):
+            raise XRPIngestionError(f"event_records[{index}].source_capture_history must be a list")
+        previous = {
+            "capture_method": "legacy_registry_capture_without_canonical_receipt",
+            "source_id": item.get("source_id"),
+            "captured_at_utc": item.get("captured_at_utc"),
+            "available_at_utc": item.get("available_at_utc"),
+            "raw_source_sha256": item.get("raw_source_sha256"),
+            "receipt_id": None,
+            "raw_bytes_retained": None,
+        }
+        if (
+            isinstance(previous["source_id"], str)
+            and isinstance(previous["captured_at_utc"], str)
+            and isinstance(previous["available_at_utc"], str)
+            and previous not in history
+        ):
+            history = [*history, previous]
+        current = {
+            "capture_method": "immutable_sec_accession_document_recapture",
+            "source_id": receipt_source_id,
+            "captured_at_utc": receipt_capture,
+            "available_at_utc": receipt_capture,
+            "raw_source_sha256": receipt_hash,
+            "receipt_id": receipt_id,
+            "raw_bytes_retained": raw_retained,
+        }
+        history = [entry for entry in history if entry != current]
+        history.append(current)
+        item["source_capture_history"] = history
+        item["receipt_linkage_method"] = "immutable_sec_accession_document_recapture"
+        item["captured_at_utc"] = receipt_capture
+        item["available_at_utc"] = receipt_capture
+        item["raw_source_sha256"] = receipt_hash
+        summary["linked_event_count"] += 1
+        linked_receipt_ids.add(receipt_id)
+        output.append(item)
+    summary["unique_receipt_count"] = len(linked_receipt_ids)
+    if summary["linked_event_count"]:
+        summary["status"] = "LINKED"
+    return output, summary
+
+
 def _capture_event_timeline_registry(
     registry_path: str | Path | None,
     data_cutoff_utc: str,
@@ -5449,6 +5935,15 @@ def _capture_event_timeline_registry(
     except (OSError, ValueError):
         pass
 
+    receipt_relinkage = {
+        "status": "NOT_APPLICABLE",
+        "candidate_receipt_count": 0,
+        "linked_event_count": 0,
+        "unique_receipt_count": 0,
+        "ambiguous_event_count": 0,
+        "future_receipt_count": 0,
+        "cutoff_utc": data_cutoff_utc,
+    }
     if not path.exists():
         timeline = build_event_timeline(
             asset="XRP",
@@ -5468,6 +5963,7 @@ def _capture_event_timeline_registry(
             "scenario_count": 0,
             "receipt_complete": timeline["receipt_complete"],
             "receipt_linkage": timeline["receipt_linkage"],
+            "receipt_relinkage": receipt_relinkage,
             "forecast_status": "NOT_ISSUED",
             "directional_forecast": False,
             "probabilities": None,
@@ -5490,12 +5986,17 @@ def _capture_event_timeline_registry(
         records = registry.get("events")
         if not isinstance(records, list):
             raise XRPIngestionError("XRP event registry events must be a list")
+        recaptured_records, receipt_relinkage = _attach_immutable_sec_event_receipts(
+            records,
+            raw_receipts,
+            data_cutoff_utc,
+        )
         try:
             timeline = build_event_timeline(
                 asset="XRP",
                 data_cutoff_utc=data_cutoff_utc,
                 horizon_seconds=30 * 24 * 60 * 60,
-                event_records=records,
+                event_records=recaptured_records,
                 raw_receipts=raw_receipts,
             )
         except EventTimelineError as exc:
@@ -5514,6 +6015,7 @@ def _capture_event_timeline_registry(
             "scenario_count": timeline["scenario_set"]["scenario_count"],
             "receipt_complete": timeline["receipt_complete"],
             "receipt_linkage": timeline["receipt_linkage"],
+            "receipt_relinkage": receipt_relinkage,
             "forecast_status": "NOT_ISSUED",
             "directional_forecast": False,
             "probabilities": None,
@@ -5522,6 +6024,8 @@ def _capture_event_timeline_registry(
             "warnings": [
                 "registry_sha256 authenticates only the curated registry file, not publisher payloads.",
                 "Events without raw_source_sha256 remain receipt-incomplete and model-ineligible.",
+                "Only exact SEC accession-document URLs may receive a new capture version; mutable company pages and secondary sources are not relinked automatically.",
+                "A recaptured SEC document becomes known at its new receipt capture time; its legacy unreceipted timestamp is preserved only as history.",
                 "Hypotheses and counter-hypotheses are authored inputs; no causal inference or forecast probabilities are produced.",
                 "The registry is curated, not an automatically discovered event feed.",
             ],
@@ -5582,6 +6086,8 @@ def run_ingestion(
     bitbank_circuit_break_payload: Mapping[str, Any] | None = None
     cftc_contract_status_payload: Mapping[str, Any] | None = None
     xrpl_node_payloads: dict[str, Mapping[str, Any]] = {}
+    morpho_payloads: dict[str, Any] = {}
+    morpho_receipts: dict[str, Mapping[str, Any]] = {}
     sec_capture: dict[str, Any] = {
         "summary": {"status": "NOT_REQUESTED", "issuer_count": len(SEC_ISSUERS),
                     "submissions_source_count": 0, "companyfacts_source_count": 0,
@@ -5699,7 +6205,47 @@ def run_ingestion(
             raw_retention_reason=DIGEST_ONLY_RAW_SOURCE_REASONS.get(source_id, ""),
         )
         receipts.append(receipt)
-        if source_id == "bitbank_spot_transactions":
+        if source_id in MORPHO_CBXRP_SOURCE_IDS:
+            morpho_payloads[source_id] = payload
+            morpho_receipts[source_id] = receipt
+        if source_id in MORPHO_TOKEN_METADATA_EXPECTED:
+            token_data = _morpho_token_metadata_data(payload, source_id)
+            research_only_observations.append(
+                {
+                    "observation_type": "morpho_token_metadata",
+                    "source_id": source_id,
+                    "source_uri": url,
+                    "raw_content_sha256": receipt["raw_content_sha256"],
+                    "receipt_id": receipt["receipt_id"],
+                    "raw_bytes_retained": receipt["raw_bytes_retained"],
+                    "captured_at_utc": source_captured_s,
+                    "chain_id": token_data["chain_id"],
+                    "address": token_data["address"],
+                    "name": token_data.get("name"),
+                    "symbol": token_data["symbol"],
+                    "decimals": token_data["decimals"],
+                    "model_eligible": False,
+                }
+            )
+        elif source_id == "morpho_base_chain_indexer_tip":
+            chain_row = _morpho_base_chain_tip_data(payload, source_id)
+            research_only_observations.append(
+                {
+                    "observation_type": "morpho_chain_indexer_tip",
+                    "source_id": source_id,
+                    "source_uri": url,
+                    "raw_content_sha256": receipt["raw_content_sha256"],
+                    "receipt_id": receipt["receipt_id"],
+                    "raw_bytes_retained": receipt["raw_bytes_retained"],
+                    "captured_at_utc": source_captured_s,
+                    "chain_id": chain_row["chain_id"],
+                    "chain_name": chain_row["name"],
+                    "last_indexed_block": chain_row["last_indexed_block"],
+                    "supported_protocols": chain_row["supported_protocols"],
+                    "model_eligible": False,
+                }
+            )
+        elif source_id == "bitbank_spot_transactions":
             observation = _bitbank_transactions_research_summary(payload)
             if observation is not None:
                 research_only_observations.append(
@@ -5869,6 +6415,12 @@ def run_ingestion(
             latest_source_capture,
             _from_iso8601(sec_capture["latest_source_capture_at_utc"], "SEC latest capture"),
         )
+
+    morpho_cbxrp_normalization = _build_morpho_cbxrp_research_snapshot(
+        morpho_payloads,
+        morpho_receipts,
+    )
+    research_only_observations.append(morpho_cbxrp_normalization)
 
     captured = latest_source_capture
     captured_s = _iso(captured)
@@ -6102,6 +6654,7 @@ def run_ingestion(
         "sec_capital_events_path": "sec_capital_events.json",
         "research_only_observation_count": len(research_only_observations),
         "research_only_observations_path": "research_only_observations.json",
+        "morpho_cbxrp_normalization": morpho_cbxrp_normalization,
         "collection_policy": {
             "noncommercial_xrpl_nodes_included": include_noncommercial_xrpl_nodes,
             "default_scheduled_endpoints_exclude_noncommercial_xrpl_nodes": True,
