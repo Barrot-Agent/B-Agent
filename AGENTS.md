@@ -51,6 +51,12 @@ Revenue and customer acquisition are immediate operational objectives that suppo
 - This implementation authorization does not waive independent review, branch protection, exact-head CI, fail-closed gates, or approval for deployment, secret changes, external communication, financial actions, or irreversible side effects.
 - Preserve user work and branch history. Never force-push, reset, clean, stash, overwrite, or discard user changes.
 
+## Query transmutation
+
+- Every incoming request is transmuted before execution: preserve the exact original and its SHA-256, extract intent and constraints, expand connected domains, discover existing capabilities from repository evidence, rank competing hypotheses with falsifiers, and produce a bounded ranked plan with an explicit stop state.
+- Runtime: `barrot_agent/inbound/transmutation.py`, composed through `barrot_agent/inbound/gate.py` and `barrot_agent/inbound/intake.py`. Records are append-only under `results/transmutation/`; the protocol itself does not execute an action.
+- This is distinct from the quarantined code-variant utility in `scripts/transmute.py`.
+
 ## Repository safety
 
 - At the start of each run, inspect current main, complete trees, code, open PRs, branch ancestry, overlapping diffs, CI, dependencies, security settings, and the latest durable handoff.
