@@ -915,7 +915,7 @@ def test_public_ingestion_builds_verified_point_in_time_snapshot_and_preserves_b
     assert "commercial redistribution" in manifest["xrp_etf_flows_csv"]["raw_retention_reason"]
     research_only = json.loads((tmp_path / "run" / "research_only_observations.json").read_text(encoding="utf-8"))
     assert research_only["model_eligible"] is False
-    assert research_only["observation_count"] == 2
+    assert research_only["observation_count"] == 5
     bitbank = next(
         item for item in research_only["observations"]
         if item["source_id"] == "bitbank_spot_transactions"
