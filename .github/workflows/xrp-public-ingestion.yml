@@ -63,9 +63,26 @@ jobs:
           previous_run_id=""
           total_prior_runs=0
           page=1
+          fetch_workflow_runs_page() {
+            local url="$1"
+            local response
+            local attempt
+            for attempt in 1 2 3; do
+              if response="$(gh api "$url" 2>/dev/null)" &&
+                jq -e '.workflow_runs | type == "array"' >/dev/null 2>&1 <<< "$response"; then
+                printf '%s' "$response"
+                return 0
+              fi
+              if [[ "$attempt" -lt 3 ]]; then
+                sleep "$attempt"
+              fi
+            done
+            echo "::error::Unable to fetch a valid workflow-run page after 3 attempts; refusing to alter receipt-chain continuity."
+            return 1
+          }
           while :; do
-            runs_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&per_page=100&page=${page}")"
-            page_run_count="$(jq '.workflow_runs | length' <<< "$runs_json")"
+            runs_json="$(fetch_workflow_runs_page "repos/${GITHUB_REPOSITORY}/actions/workflows/xrp-public-ingestion.yml/runs?branch=${GITHUB_REF_NAME}&per_page=100&page=${page}")"
+            page_run_count="$(jq -er '.workflow_runs | length' <<< "$runs_json")"
             total_prior_runs=$((total_prior_runs + page_run_count))
             [[ "$page_run_count" -gt 0 ]] || break
             candidate_run_id="$(jq -r --arg repository "$GITHUB_REPOSITORY" --arg branch "$GITHUB_REF_NAME" '.workflow_runs | map(select(.status == "completed" and .conclusion == "success" and .head_branch == $branch and .head_repository.full_name == $repository and (.event == "schedule" or .event == "workflow_dispatch" or .event == "push"))) | sort_by(.created_at) | last | .id // empty' <<< "$runs_json")"
