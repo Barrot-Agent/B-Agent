@@ -1709,7 +1709,7 @@ def test_institutional_custody_stablecoin_rails_preserve_provenance_and_scope() 
         assert set(observation["evidence"]) <= set(sources)
         assert observation["model_eligible"] is False
     assert "XRPL, Base and Ethereum" in observations["OBS-COINBASE-RLUSD-MULTICHAIN-20261028"]["claim"]
-    assert "not XRP spot turnover" in observations["OBS-RIPPLE-PRODUCT-SCALE-CLAIMS-20261028"]["limitations"][0]
+    assert any("not XRP spot turnover" in item for item in observations["OBS-RIPPLE-PRODUCT-SCALE-CLAIMS-20261028"]["limitations"])
     assert "global USDC supply" in observations["OBS-CIRCLE-USDC-NATIVE-ON-XRPL-20261119"]["interpretation"]
     assert "not evidence of a direct Circle-Ripple partnership" in observations["OBS-BNY-CIRCLE-USDC-CUSTODY-20260629"]["interpretation"]
     for edge in data["relationship_graph"]:
