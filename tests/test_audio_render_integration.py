@@ -179,7 +179,10 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
         assert stem_samples.shape == mix_samples.shape
         assert np.isfinite(stem_samples).all()
         assert float(np.max(np.abs(stem_samples))) <= ceiling + 1e-4
-        assert float(np.max(resample_poly(stem_samples, 4, 1, axis=0))) <= ceiling + 2e-3
+        stem_true_peak = float(
+            np.max(np.abs(resample_poly(stem_samples, 4, 1, axis=0)))
+        )
+        assert stem_true_peak <= ceiling + 2e-3
         assert int(np.count_nonzero(np.abs(stem_samples) >= 1.0)) == 0
 
     metadata = json.loads(first.metadata_path.read_text(encoding="utf-8"))
