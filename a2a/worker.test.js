@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import worker, { BarrotTaskQueue } from "./worker.js";
+import { createHash } from "node:crypto";
 
 class FakeStorage {
   constructor() { this.values = new Map(); }
@@ -109,6 +110,109 @@ test("HTTP task gateway authenticates submit and returns task status", async () 
   ), env);
   assert.equal(status.status, 200);
   assert.equal((await status.json()).status, "queued");
+});
+
+test("transmutation packets preserve source lineage and reject altered originals", async () => {
+  const { queue } = makeQueue();
+  const namespace = {
+    idFromName: () => "primary",
+    get: () => ({ fetch: (input, init) => queue.fetch(new Request(input, init)) }),
+  };
+  const env = { BRAIN_SHARED_SECRET: "gateway-secret", BARROT_TASKS: namespace };
+  const original = "Inspect the existing Barrot/OpenCode transmutation path.";
+  const packet = {
+    protocol_version: "barrot.chatgpt.transmutation.v1",
+    packet_id: "packet-0000001",
+    parent_packet_id: null,
+    sender: "chatgpt",
+    recipient: "barrot",
+    round: 0,
+    phase: "interpret",
+    requested_action: "analyze",
+    original_request: original,
+    original_request_sha256: createHash("sha256").update(original, "utf8").digest("hex"),
+    intent: "Map the existing execution and evidence flow.",
+    invariants: ["Preserve the original request.", "Use the existing MMI evidence path."],
+    constraints: ["Read-only inspection."],
+    source_refs: [
+      { ref: "BARROT_SYNC.md@main", source_kind: "governing", relationship: "governs" },
+      { ref: "Barrot-Agent/B-Agent@main", source_kind: "repository", relationship: "implements" },
+    ],
+    evidence_refs: ["github:main:7d7aba841cb849e461376a8fcdd4cc4fa10c9af6"],
+    acceptance_criteria: ["Return exact paths and evidence."],
+    stop_conditions: ["Stop if the source cannot be verified."],
+    budget: { max_rounds: 4, max_execution_seconds: 600 },
+  };
+  const submitted = await worker.fetch(new Request("https://worker.test/v1/tasks", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-secret" },
+    body: JSON.stringify({
+      title: "Transmutation packet",
+      instructions: "Analyze the supplied packet.",
+      context: { transmutation: packet },
+    }),
+  }), env);
+  assert.equal(submitted.status, 202);
+  const accepted = await submitted.json();
+  assert.equal(accepted.task_id, packet.packet_id);
+  const stored = await (await queue.fetch(new Request(
+    "https://queue.test/get/" + accepted.task_id,
+    { method: "GET" },
+  ))).json();
+  assert.deepEqual(stored.context.transmutation, packet);
+
+  const replay = await worker.fetch(new Request("https://worker.test/v1/tasks", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-secret" },
+    body: JSON.stringify({
+      title: "Transmutation packet",
+      instructions: "Analyze the supplied packet.",
+      context: { transmutation: packet },
+    }),
+  }), env);
+  assert.equal(replay.status, 202);
+  const replayed = await replay.json();
+  assert.equal(replayed.task_id, packet.packet_id);
+  assert.equal(replayed.idempotent_replay, true);
+
+  const alteredPacket = { ...packet, intent: "Change the intent under the same packet identity." };
+  const conflictingReplay = await worker.fetch(new Request("https://worker.test/v1/tasks", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-secret" },
+    body: JSON.stringify({
+      title: "Transmutation packet",
+      instructions: "Analyze the supplied packet.",
+      context: { transmutation: alteredPacket },
+    }),
+  }), env);
+  assert.equal(conflictingReplay.status, 409);
+  assert.equal((await conflictingReplay.json()).error, "transmutation_packet_id_conflict");
+
+  const wrongTaskId = await worker.fetch(new Request("https://worker.test/v1/tasks", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-secret" },
+    body: JSON.stringify({
+      task_id: "different-task-id",
+      title: "Wrong task identity",
+      instructions: "Reject a task ID that forks packet identity.",
+      context: { transmutation: packet },
+    }),
+  }), env);
+  assert.equal(wrongTaskId.status, 400);
+  assert.equal((await wrongTaskId.json()).error, "task_id_must_match_transmutation_packet_id");
+
+  const tampered = { ...packet, original_request: "A changed original request." };
+  const rejected = await worker.fetch(new Request("https://worker.test/v1/tasks", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-secret" },
+    body: JSON.stringify({
+      title: "Tampered packet",
+      instructions: "Analyze.",
+      context: { transmutation: tampered },
+    }),
+  }), env);
+  assert.equal(rejected.status, 400);
+  assert.equal((await rejected.json()).error, "original_request_hash_mismatch");
 });
 
 test("Agent Card and OpenAPI are public metadata only", async () => {
