@@ -46,6 +46,12 @@ def test_chatgpt_connector_scope_is_verified_without_inflating_admin_access() ->
     assert data["repository"]["main_branch_protected"] is True
     assert data["repository"]["required_approval_count"] is None
     assert "HTTP_403" in data["repository"]["branch_protection_details_status"]
+    protection = data["repository"]["branch_protection_summary"]
+    assert protection["branch_protected"] is True
+    assert protection["protection_enabled"] is True
+    assert protection["required_status_checks_enforcement_level"] == "non_admins"
+    assert protection["detailed_endpoint_status"].startswith("HTTP_403")
+    assert "required approving review count" in protection["not_verified"]
     assert set(data["repository"]["required_status_checks"]) == {
         "Full repository test suite",
         "audit",
