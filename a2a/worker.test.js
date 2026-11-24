@@ -165,8 +165,8 @@ test("transmutation packets preserve source lineage and reject altered originals
     method: "POST",
     headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-secret" },
     body: JSON.stringify({
-      title: "Transmutation packet replay",
-      instructions: "This must not create a second execution.",
+      title: "Transmutation packet",
+      instructions: "Analyze the supplied packet.",
       context: { transmutation: packet },
     }),
   }), env);
@@ -174,6 +174,19 @@ test("transmutation packets preserve source lineage and reject altered originals
   const replayed = await replay.json();
   assert.equal(replayed.task_id, packet.packet_id);
   assert.equal(replayed.idempotent_replay, true);
+
+  const alteredPacket = { ...packet, intent: "Change the intent under the same packet identity." };
+  const conflictingReplay = await worker.fetch(new Request("https://worker.test/v1/tasks", {
+    method: "POST",
+    headers: { "content-type": "application/json", "X-Barrot-Auth": "gateway-secret" },
+    body: JSON.stringify({
+      title: "Transmutation packet",
+      instructions: "Analyze the supplied packet.",
+      context: { transmutation: alteredPacket },
+    }),
+  }), env);
+  assert.equal(conflictingReplay.status, 409);
+  assert.equal((await conflictingReplay.json()).error, "transmutation_packet_id_conflict");
 
   const wrongTaskId = await worker.fetch(new Request("https://worker.test/v1/tasks", {
     method: "POST",
