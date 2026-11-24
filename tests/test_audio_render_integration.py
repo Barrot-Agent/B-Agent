@@ -323,7 +323,7 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
         "key": manifest.scale,
         "time_signature": "4/4",
         "section_map": metadata["sections"],
-        "midi_markers": [marker.text for marker in midi.markers],
+        "midi_markers": [name for name, _ in markers],
         "peak_dbfs": 20.0 * math.log10(max(result.peak_level, 1e-12)),
         "true_peak_dbtp": 20.0 * math.log10(max(result.true_peak_level, 1e-12)),
         "clip_sample_count": 0,
