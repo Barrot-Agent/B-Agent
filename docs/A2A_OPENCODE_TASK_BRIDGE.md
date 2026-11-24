@@ -62,7 +62,7 @@ The runner is a queue consumer, not an HTTP server. It does not expose the host 
 
 The exchange uses the existing durable task queue and the existing OpenCode-hosted `barrot` agent. OpenCode is Barrot's current reasoning/execution runtime in this deployment; it is not a second participant or a second Barrot brain. ChatGPT is the external interpretation and independent-review participant.
 
-A task may carry an optional `context.transmutation` packet. The Worker validates its protocol version, participant names, bounded round/phase/action, immutable original request, SHA-256, source-reference classifications, evidence references, acceptance criteria, stop conditions, and execution budget before queueing it. The packet remains inside the existing task record; no separate task or memory database is introduced. Its `packet_id` is also the queue `task_id`, making duplicate submissions idempotent and preventing a caller from forking one packet into multiple queued executions.
+A task may carry an optional `context.transmutation` packet. The Worker validates its protocol version, participant names, bounded round/phase/action, immutable original request, SHA-256, source-reference classifications, evidence references, acceptance criteria, stop conditions, and execution budget before queueing it. The packet remains inside the existing task record; no separate task or memory database is introduced. Its `packet_id` is also the queue `task_id`. Replays are idempotent only when the complete canonical packet, title, and instructions match; reusing the ID with altered content is rejected, preventing a caller from forking one packet into multiple queued executions.
 
 Protocol identifier: `barrot.chatgpt.transmutation.v1`.
 
