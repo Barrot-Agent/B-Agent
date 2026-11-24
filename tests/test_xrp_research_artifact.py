@@ -1271,7 +1271,15 @@ RUN131B = (
 def test_run131b_evidence_graph_and_platform_map_are_resolvable() -> None:
     data = json.loads(RUN131B.read_text(encoding="utf-8"))
     assert data["artifact_type"] == "xrp_coinbase_circle_pnc_occ_cbxrp_market_reconciliation"
-    assert _parse_utc(data["captured_at_utc"]) >= _parse_utc(data["data_cutoff_utc"])
+    cutoff = _parse_utc(data["data_cutoff_utc"])
+    assert _parse_utc(data["captured_at_utc"]) == cutoff
+    assert data["initial_data_cutoff_utc"] == "2026-11-23T19:12:00Z"
+    retrieved_at = [
+        _parse_utc(item["retrieved_at_utc"])
+        for item in data["source_registry"]
+        if item.get("retrieved_at_utc")
+    ]
+    assert retrieved_at and all(value <= cutoff for value in retrieved_at)
     sources = {item["id"] for item in data["source_registry"]}
     assert len(sources) == len(data["source_registry"])
     observation_ids = [item["id"] for item in data["observations"]]
