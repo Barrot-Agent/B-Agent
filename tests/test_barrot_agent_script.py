@@ -446,7 +446,7 @@ def test_post_issue_comment_requires_explicit_approval(monkeypatch) -> None:
     assert calls == []
 
 
-def test_explicit_read_only_audit_bypasses_bundle_and_repair(monkeypatch):
+def test_explicit_read_only_audit_bypasses_bundle_and_repair(monkeypatch, tmp_path):
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("TASK_BODY", "AUDIT AND RECOMMEND ONLY. No implementation changes are authorized by this issue.")
     monkeypatch.setenv("TASK_TITLE", "Repository-wide read-only audit")
@@ -456,6 +456,7 @@ def test_explicit_read_only_audit_bypasses_bundle_and_repair(monkeypatch):
     monkeypatch.setenv("GROQ_API_KEY", "test-key")
 
     module = load_script_module("barrot_agent_read_only_audit_test")
+    monkeypatch.setattr(module, "ROOT", tmp_path)
     calls: dict[str, object] = {}
 
     class FakeBrain:

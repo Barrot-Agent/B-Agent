@@ -2,14 +2,16 @@
 Smoke tests for the existing SmartAgent implementation.
 """
 
+from pathlib import Path
+
 import pytest
 
 from barrot_agent.smart_agent import AgentEventType, SmartAgent, ToolResult, _BuiltinTools
 
 
 class TestSmartAgentSmoke:
-    def test_run_produces_final_answer(self) -> None:
-        agent = SmartAgent()
+    def test_run_produces_final_answer(self, tmp_path: Path) -> None:
+        agent = SmartAgent(transmutation_record_dir=tmp_path)
 
         events = list(agent.run("Summarize how this repository works"))
 
@@ -17,8 +19,8 @@ class TestSmartAgentSmoke:
         assert events[-1].type == AgentEventType.ANSWER
         assert "Task Complete" in events[-1].content
 
-    def test_empty_goal_returns_error(self) -> None:
-        agent = SmartAgent()
+    def test_empty_goal_returns_error(self, tmp_path: Path) -> None:
+        agent = SmartAgent(transmutation_record_dir=tmp_path)
 
         events = list(agent.run("   "))
 
@@ -91,16 +93,16 @@ class TestRepoHuntSmartAgent:
             "github repos to contribute to and integrate with",
         ],
     )
-    def test_repo_hunt_goal_produces_final_answer(self, goal: str) -> None:
-        agent = SmartAgent()
+    def test_repo_hunt_goal_produces_final_answer(self, goal: str, tmp_path: Path) -> None:
+        agent = SmartAgent(transmutation_record_dir=tmp_path)
         events = list(agent.run(goal))
 
         assert events[0].type == AgentEventType.GOAL
         assert events[-1].type == AgentEventType.ANSWER
         assert "Task Complete" in events[-1].content
 
-    def test_repo_hunt_goal_uses_repo_hunt_tool(self) -> None:
-        agent = SmartAgent()
+    def test_repo_hunt_goal_uses_repo_hunt_tool(self, tmp_path: Path) -> None:
+        agent = SmartAgent(transmutation_record_dir=tmp_path)
         events = list(agent.run("repo hunt for potential GitHub integrations"))
 
         tool_result_events = [e for e in events if e.type == AgentEventType.TOOL_RESULT]
@@ -108,8 +110,8 @@ class TestRepoHuntSmartAgent:
 
         assert "repo_hunt" in tool_names
 
-    def test_repo_hunt_tool_result_contains_repo_sections(self) -> None:
-        agent = SmartAgent()
+    def test_repo_hunt_tool_result_contains_repo_sections(self, tmp_path: Path) -> None:
+        agent = SmartAgent(transmutation_record_dir=tmp_path)
         events = list(agent.run("repo hunt for AI agent integrations"))
 
         tool_result_events = [
