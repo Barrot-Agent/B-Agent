@@ -253,6 +253,7 @@ async function handleJsonRpc(request, env) {
     if (packetError) return jsonRpcError(id, -32602, packetError);
     try {
       const response = await queueRequest(env, "/submit", {
+        task_id: context.transmutation ? context.transmutation.packet_id : undefined,
         title: typeof params.title === "string" ? params.title.slice(0, 200) : "A2A task",
         instructions,
         context
@@ -359,9 +360,12 @@ export default {
       const context = body.context && typeof body.context === "object" && !Array.isArray(body.context) ? body.context : {};
       const packetError = await validateTransmutationContext(context);
       if (packetError) return json({ error: packetError }, 400);
+      if (context.transmutation && body.task_id && body.task_id !== context.transmutation.packet_id) {
+        return json({ error: "task_id_must_match_transmutation_packet_id" }, 400);
+      }
       try {
         const response = await queueRequest(env, "/submit", {
-          task_id: body.task_id,
+          task_id: context.transmutation ? context.transmutation.packet_id : body.task_id,
           title: body.title.trim(),
           instructions: body.instructions,
           context
