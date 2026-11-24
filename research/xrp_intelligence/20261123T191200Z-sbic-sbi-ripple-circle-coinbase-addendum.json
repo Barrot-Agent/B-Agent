@@ -2,8 +2,8 @@
   "schema_version": 1,
   "artifact_type": "xrp_sbi_sbic_circle_coinbase_relationship_addendum",
   "artifact_id": "xrp_sbi_sbic_circle_coinbase_20261123T191200Z",
-  "captured_at_utc": "2026-11-24T01:02:00Z",
-  "data_cutoff_utc": "2026-11-24T01:02:00Z",
+  "captured_at_utc": "2026-11-24T04:14:00Z",
+  "data_cutoff_utc": "2026-11-24T04:14:00Z",
   "repository_state": {
     "inspected_main_sha": "7d7aba841cb849e461376a8fcdd4cc4fa10c9af6",
     "xrp_integration_pr": 1692,
@@ -200,6 +200,25 @@
         "Rendered filing text only; original HTTP bytes, headers and SHA-256 receipt were not captured.",
         "The filing contains pre-closing, post-closing and entity-specific disclosures; do not sum financing amounts without transaction-date and legal-entity reconciliation.",
         "Issuer disclosure is primary evidence of reported accounting and financing terms, not independent confirmation of bank cash receipts, exchange executions or wallet movements."
+      ]
+    },
+    {
+      "id": "sec_evernorth_424b3_20261019",
+      "publisher": "Evernorth Holdings Inc. / U.S. Securities and Exchange Commission EDGAR",
+      "publisher_group": "sec.gov",
+      "source_type": "SEC Form 424B3 prospectus containing Pathfinder and Evernorth related-party facility disclosures",
+      "accession": "000119312526425367",
+      "document_date": "2026-10-19",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+      "retrieved_at_utc": "2026-11-24T04:14:00Z",
+      "retrieval_time_quality": "Approximate minute-level current-run retrieval; rendered SEC filing text was inspected, but exact HTTP fetch time and headers are unavailable.",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Rendered filing text only; original HTTP bytes, headers and SHA-256 receipt were not captured.",
+        "The filing distinguishes Pathfinder's Company Facility from Evernorth's separate Evernorth Facility; entity and reporting-period boundaries must be preserved.",
+        "Issuer disclosure is not independent confirmation of bank cash receipts, debt repayment, XRP purchases or exchange executions."
       ]
     }
   ],
@@ -524,6 +543,104 @@
       "limitations": [
         "This finding is limited to the cited filing and does not establish that the phrase is absent from all Evernorth or XRP-related communications."
       ]
+    },
+    {
+      "id": "OBS-PATHFINDER-RIPPLE-COMPANY-FACILITY-20261007",
+      "classification": "primary_SEC_disclosure",
+      "claim": "Pathfinder (identified as the Company in the 2026-10-19 prospectus) had a separate Ripple revolving Company Facility: originally USD 7.0 million, increased to USD 10.0 million on 2026-10-07, with USD 6.6 million drawn as of 2026-06-30 and USD 9.7 million drawn as of 2026-10-07. The facility accrued 3.81% interest and funded working capital, transaction expenses, general corporate purposes and vendor payments. It is not Evernorth's separate USD 1.0 million facility and is not evidence of XRP spot purchases.",
+      "evidence": [
+        "sec_evernorth_424b3_20261019"
+      ],
+      "limitations": [
+        "No bank statement, draw-by-draw ledger, post-closing repayment receipt or trade-level use-of-proceeds trace was captured.",
+        "The facility is Pathfinder debt from Ripple, not a direct market purchase or a new XRP supply event."
+      ]
+    },
+    {
+      "id": "OBS-EVERNORTH-SBI-AFFILIATES-20260812",
+      "classification": "primary_SEC_disclosure",
+      "claim": "Evernorth's SEC disclosure says certain investors affiliated with SBI Holdings amended their advance-funding agreements to cap Class A issuance at a 39.9% ownership threshold; shares otherwise exceeding the threshold were issued as Class C. At closing, 2,359,038 Class C shares were issued to investors affiliated with SBI Holdings. This confirms an SBI-affiliated investor relationship with Evernorth, but the filing does not identify every beneficial holder or connect SBIC East/Central/West to those investors.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "The filing describes investors affiliated with SBI Holdings, not necessarily a direct shareholding by SBI Holdings, Inc. itself.",
+        "Exact legal names, allocations and beneficial-ownership look-through remain unresolved.",
+        "This relationship must not be conflated with the separate SBIC East/Central/West regional companies."
+      ]
+    },
+    {
+      "id": "OBS-EVERNORTH-RIPPLE-EQUITY-AND-PATHFINDER-UNITS-20261009",
+      "classification": "primary_SEC_disclosure",
+      "claim": "At the business-combination closing, Ripple received 1,678,382 Evernorth Class A shares and 16,461,545 Pathfinder units. A Contributor Related Party Entity received 661,867 Class A shares and 6,491,583 Pathfinder units; the filing states that the combined ownership of Ripple and that entity did not exceed 9.9% immediately after closing.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "The filing reports equity and units, not an XRP spot purchase.",
+        "The Contributor Related Party Entity is a separate legal entity and should not be collapsed into Ripple Labs."
+      ]
+    },
+    {
+      "id": "OBS-RIPPLEWORKS-ARRINGTON-XRP-CAPITAL-SERIES-C-20261009",
+      "classification": "primary_SEC_disclosure",
+      "claim": "The SEC prospectus says RippleWorks, a nonprofit foundation and limited partner of Arrington XRP Capital Fund, contributed 211,319,096 XRP to the Sponsor, subject to the Sponsor investing all of that XRP for Evernorth shares under the Series C subscription. At closing the Sponsor received 30,233,211 Series C shares, reflecting a 19.9% voting-ownership threshold. RippleWorks, Ripple Labs and Arrington XRP Capital Fund are distinct entities in this chain.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "The in-kind contribution is not a cash purchase on an exchange.",
+        "The disclosure does not provide trade-level timing, wallet-level movement or current beneficial ownership after subsequent transfers."
+      ]
+    },
+    {
+      "id": "OBS-EVERNORTH-CONVERTIBLE-NOTE-CASH-20261013",
+      "classification": "primary_SEC_disclosure",
+      "claim": "Evernorth issued its USD 30.0 million 4.00% Convertible Senior PIK Note on 2026-10-13 and reported approximately USD 29.0 million of net cash proceeds after a USD 1.0 million advisory fee. The issuer said proceeds were intended for general corporate purposes, including acquisition of XRP and other XRP-ecosystem activities. This is reported financing cash, not proof that the proceeds were subsequently used to buy XRP.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "No bank confirmation or transaction-level reconciliation of the net proceeds was captured.",
+        "No exchange execution or wallet receipt links the note proceeds to an XRP purchase."
+      ]
+    },
+    {
+      "id": "OBS-EVERNORTH-WARRANT-EXERCISES-CASH-20261109",
+      "classification": "primary_SEC_disclosure",
+      "claim": "Between 2026-10-12 and 2026-11-09, holders exercised 3,073,366 Evernorth warrants for cash; Evernorth reported USD 35.3 million of gross proceeds and 8,666,279 warrants remaining. These are actual issuer-reported cash proceeds, but the filing does not establish that they were used for XRP purchases.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "Gross proceeds are not net cash after expenses.",
+        "No bank receipt or use-of-proceeds transaction trace was captured."
+      ]
+    },
+    {
+      "id": "OBS-EVERNORTH-ELOC-FACILITY-20261023",
+      "classification": "primary_SEC_disclosure",
+      "claim": "On 2026-10-23 Evernorth entered a committed equity facility with CF Principal Investments LLC (Cantor). Evernorth may, at its discretion, direct purchases of up to 5,218,935 Class A shares; the registration statement became effective 2026-10-30. Purchases are generally priced at 97% of period VWAP, capped by the lesser of 20% of trading volume or the issuer's good-faith estimate, subject to a prior-close threshold and Cantor's 4.99% beneficial-ownership cap. The facility term is 14 months. The prospectus cover estimates up to approximately USD 76.8 million at its reference price, but proceeds depend on actual share sales; this is potential financing, not cash already received.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "No draw notice, actual Cantor purchase, share issuance, resale or bank receipt was captured.",
+        "The issuer pays a non-refundable commitment fee of approximately USD 0.522 million; additional fee/expense terms may reduce net proceeds.",
+        "The filing says proceeds may be used for general corporate purposes including XRP, but does not prove any XRP acquisition."
+      ]
+    },
+    {
+      "id": "OBS-EVERNORTH-POSTCLOSE-XRP-TRANSFER-20261009",
+      "classification": "primary_SEC_disclosure",
+      "claim": "Following the business combination, Evernorth reported transferring 346,484,972 XRP to Pathfinder. This is an intra-group/entity transfer, not by itself an external market purchase or sale. It differs by 200,000 XRP from the 346,284,972 Evernorth balance reported at the 2026-09-30 cutoff; the difference is not reconciled in this addendum and must not be attributed to the delayed-funding subscription without evidence.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "No source-wallet, destination-wallet, custody receipt or transaction hash was captured.",
+        "The 200,000 XRP difference requires a lot-level and delayed-funding reconciliation."
+      ]
     }
   ],
   "relationship_graph": [
@@ -712,6 +829,76 @@
         "sec_evernorth_424b3_20261124"
       ],
       "scope": "Custody disclosure following the transactions; exclusivity and wallet-level balances not disclosed."
+    },
+    {
+      "from": "Ripple Labs Inc.",
+      "to": "Pathfinder Digital Assets LLC",
+      "relation": "related_party_revolving_credit_provider",
+      "status": "SEC_disclosed",
+      "evidence": [
+        "sec_evernorth_424b3_20261019"
+      ],
+      "scope": "USD 7.0M facility increased to USD 10.0M; USD 9.7M drawn as of 2026-10-07; working-capital and vendor-payment use, not proven XRP spot purchases."
+    },
+    {
+      "from": "SBI Holdings-affiliated investors",
+      "to": "Evernorth Holdings Inc.",
+      "relation": "advance_funding_investors_and_equity_holders",
+      "status": "SEC_disclosed",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "scope": "39.9% Class A ownership threshold; 2,359,038 Class C shares issued at closing; exact affiliated holders not fully identified."
+    },
+    {
+      "from": "Ripple Labs Inc.",
+      "to": "Evernorth Holdings Inc.",
+      "relation": "contributor_and_equity_holder",
+      "status": "SEC_disclosed",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "scope": "1,678,382 Class A shares and 16,461,545 Pathfinder units; combined ownership with Contributor Related Party Entity capped at 9.9%."
+    },
+    {
+      "from": "RippleWorks, Inc.",
+      "to": "Arrington XRP Capital Fund, LP",
+      "relation": "in_kind_xrp_contributor",
+      "status": "SEC_disclosed",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "scope": "211,319,096 XRP contributed to Sponsor subject to investment for Evernorth shares; RippleWorks is a separate nonprofit entity."
+    },
+    {
+      "from": "Arrington XRP Capital Fund, LP",
+      "to": "Evernorth Holdings Inc.",
+      "relation": "series_c_subscription_investor",
+      "status": "SEC_disclosed",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "scope": "30,233,211 Series C shares reflecting a 19.9% voting-ownership threshold."
+    },
+    {
+      "from": "CF Principal Investments LLC (Cantor)",
+      "to": "Evernorth Holdings Inc.",
+      "relation": "committed_equity_facility_counterparty",
+      "status": "SEC_disclosed_potential_financing",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "scope": "Optional issuer-directed purchases up to 5,218,935 shares at generally 97% VWAP; not actual cash until drawn."
+    },
+    {
+      "from": "Evernorth Holdings Inc.",
+      "to": "Pathfinder Digital Assets LLC",
+      "relation": "post_closing_xrp_transfer",
+      "status": "SEC_disclosed_internal_transfer",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "scope": "346,484,972 XRP transferred after closing; not an external market flow."
     }
   ],
   "competing_hypotheses": [
@@ -806,12 +993,51 @@
         "In-kind XRP contributions can enlarge treasury holdings without creating contemporaneous spot buying pressure."
       ],
       "test": "Reconcile dated financing receipts, share issuance, in-kind XRP transfers, exchange executions, custody wallet movements and post-closing treasury purchases. Separate gross proceeds, net proceeds, cash balance, XRP inventory and market purchases."
+    },
+    {
+      "id": "20261124T041400Z::H8-financing-capacity-not-spot-demand",
+      "claim": "Evernorth's note proceeds, warrant proceeds, intercompany facilities and ELOC capacity may support future XRP treasury activity, but financing disclosures do not establish net XRP spot demand.",
+      "support": [
+        "sec_evernorth_424b3_20261124",
+        "sec_evernorth_424b3_20261019"
+      ],
+      "disconfirming_or_missing": [
+        "No bank statements, ELOC draw notices, exchange executions or wallet receipts connect the financing to new XRP purchases.",
+        "The ELOC is optional and subject to price, volume and ownership limits; it is not realized cash.",
+        "Some XRP was contributed in kind or transferred between affiliated entities rather than bought in the market."
+      ],
+      "test": "Reconcile bank receipts and debt ledgers to dated exchange executions, counterparty settlement, custody statements and on-chain wallet transfers; classify each source as cash, debt, in-kind XRP, internal transfer or potential financing."
+    },
+    {
+      "id": "20261124T041400Z::H9-sbi-affiliate-equity-not-sbic-identity",
+      "claim": "SBI Holdings-affiliated investors' Evernorth equity relationship is real issuer-disclosed evidence of an SBI-linked capital relationship, but it does not establish that SBIC East/Central/West are the same legal entities or that SBI Holdings directly owns every investor position.",
+      "support": [
+        "sec_evernorth_424b3_20261124",
+        "sbi_group_sbi_ripple_asia_profile_20261123"
+      ],
+      "disconfirming_or_missing": [
+        "Exact affiliated investor names and allocations are not fully identified in the cited summary.",
+        "No Japanese registry shareholder records were captured for the three regional SBIC entities."
+      ],
+      "test": "Resolve each investor's legal name and beneficial owner from subscription exhibits and Japanese corporate registry records; compare company numbers and ownership chains without acronym-based inference."
+    },
+    {
+      "id": "20261124T041400Z::H10-intragroup-xrp-transfer-not-market-flow",
+      "claim": "The post-closing transfer of 346,484,972 XRP from Evernorth to Pathfinder may reflect legal-entity or custody consolidation rather than new demand or a sale.",
+      "support": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "disconfirming_or_missing": [
+        "No wallet addresses, transaction hashes or custody statements are included.",
+        "The 200,000 XRP difference from the September 30 Evernorth balance is not reconciled."
+      ],
+      "test": "Obtain wallet-level transaction hashes and custody statements, reconcile contributed lots and delayed funding, and distinguish legal-entity reclassification from external exchange flows."
     }
   ],
   "data_quality": {
     "no_averaging_policy": "Do not aggregate spot depth across venues or quote currencies, do not treat Circle Mint flows as total USDC supply, and do not map global USDC or RLUSD activity directly to XRP demand.",
     "raw_source_policy": "Public pages and SEC filing text were read as rendered web content. Original HTTP wire bytes, headers, independent timestamps and immutable SHA-256 receipts were not captured in Barrot. All observations remain research-only and model-ineligible.",
-    "source_independence": "The three SBIC profiles are primary but related sister companies; SBI Holdings and Ripple are interested JV parties; SBI PoC and RLUSD announcements are issuer statements; Circle and Coinbase are separate SEC registrants and counterparties; Circle's 10-K and 10-Q are the same issuer, not independent corroboration. The Evernorth SEC filing is primary issuer-authored disclosure; it is not independent corroboration of bank receipts, market executions or on-chain transfers.",
+    "source_independence": "The three SBIC profiles are primary but related sister companies; SBI Holdings and Ripple are interested JV parties; SBI PoC and RLUSD announcements are issuer statements; Circle and Coinbase are separate SEC registrants and counterparties; Circle's 10-K and 10-Q are the same issuer, not independent corroboration. The Evernorth SEC filing is primary issuer-authored disclosure; it is not independent corroboration of bank receipts, market executions or on-chain transfers. The 2026-10-19 and 2026-11-13 Evernorth SEC filings are two disclosures from the same issuer and are not independent corroboration.",
     "scope_warnings": [
       "SBIC is not SBI Holdings based on the cited legal identities and regional profiles; complete beneficial-ownership search remains open.",
       "SBI Group aggregate voting rights are not the same as direct SBI Holdings parent ownership.",
@@ -820,7 +1046,12 @@
       "Circle Mint customer flows are not global USDC supply flows, XRPL-specific supply or XRP collateral.",
       "Meaningful-wallet counts are wallets, not unique people.",
       "Circle's 84% reserve-fund figure is dated 2026-09-30, not an intraday reserve audit.",
-      "The Evernorth filing contains multiple legal-entity, pre-closing and post-closing contexts. Keep USD 214.1M / 261.9M XRP subscription amounts separate from USD 272.6M gross closing cash / 388.9M XRP in-kind contributions until a funds-flow reconciliation rules out overlap."
+      "The Evernorth filing contains multiple legal-entity, pre-closing and post-closing contexts. Keep USD 214.1M / 261.9M XRP subscription amounts separate from USD 272.6M gross closing cash / 388.9M XRP in-kind contributions until a funds-flow reconciliation rules out overlap.",
+      "Pathfinder's USD 7.0M Ripple Company Facility (increased to USD 10.0M; USD 9.7M drawn by 2026-10-07) is distinct from Evernorth's separate USD 1.0M revolving facility, which was undrawn as of 2026-09-30.",
+      "Evernorth's USD 29.0M net convertible-note proceeds, USD 35.3M gross warrant-exercise proceeds and optional ELOC capacity are different financing events; none alone proves an XRP spot purchase.",
+      "The ELOC's approximately USD 76.8M cover estimate is not cash received. Actual proceeds depend on issuer-directed share sales to Cantor and price/volume constraints.",
+      "Evernorth's 346,484,972 XRP transfer to Pathfinder is an internal transfer; do not count it as a new buy, external sale or net market flow.",
+      "The SBI-affiliated investor ownership threshold does not identify the precise legal holder allocation and does not connect SBIC East/Central/West to SBI Holdings."
     ],
     "unresolved_or_missing": [
       "No raw SEC filing bytes or source hashes captured.",
@@ -829,7 +1060,10 @@
       "No SBI Remit ODL transaction or XRP inventory data.",
       "No chain-specific USDC/RLUSD supply, bridge flow, exchange collateral or XRP-specific capital flow.",
       "No current reserve audit beyond issuer filing disclosure.",
-      "No bank confirmation, exchange execution receipts, wallet-level transfer evidence or post-closing cash/debt reconciliation for Evernorth; the USD 30M PIK note and USD 1M Ripple revolver must be rechecked after closing."
+      "No bank statements or independent transaction receipts confirm the USD 29.0M note proceeds, USD 35.3M warrant proceeds, Pathfinder's USD 9.7M Company Facility balance, repayment/settlement of either Ripple facility, or subsequent cash deployment.",
+      "No ELOC draw notice, Cantor purchase confirmation, actual share issuance/resale or net cash receipt is captured.",
+      "No exchange execution, source-wallet/destination-wallet hash or custody receipt connects post-closing financing to XRP purchases or reconciles the 200,000 XRP difference between September 30 and the post-closing Pathfinder transfer.",
+      "Exact legal names and beneficial-owner allocations of all SBI Holdings-affiliated Evernorth investors remain unresolved."
     ]
   },
   "predictions": {
@@ -837,6 +1071,10 @@
     "reason": "No synchronized XRP feature panel, matched historical outcome labels, leakage-safe walk-forward evaluation or causal test supports a directional forecast. This is a corporate-relationship research addendum only."
   },
   "next_actions": [
+    "Reconcile Pathfinder's USD 9.7M Company Facility draw and post-closing repayment/settlement against Ripple and Pathfinder records; keep it separate from Evernorth's USD 1.0M undrawn facility.",
+    "Verify the USD 29.0M net note proceeds and USD 35.3M warrant-exercise proceeds against bank receipts and subsequent XRP trade/custody records.",
+    "Track ELOC draw notices, Cantor share purchases, VWAP/volume constraints, fees, actual net proceeds and any documented XRP acquisitions.",
+    "Reconcile the 346,284,972 XRP September 30 balance with the 346,484,972 post-closing transfer to Pathfinder, including the unexplained 200,000 XRP difference.",
     "Capture the Evernorth SEC 424B3 filing as original bytes with accession, exact capture timestamp, SHA-256 and receipt-chain linkage; reconcile pre-closing private placements against closing proceeds and XRP in-kind transfers before using any figure as a capital-flow feature.",
     "Capture referenced SEC filings as immutable raw artifacts with accession, URL, capture time, SHA-256 and receipt-chain linkage before promoting filing facts into the event timeline.",
     "Resolve SBIC legal identities against Japanese corporate registry identifiers and shareholder records; retain profile-based disambiguation rather than claiming a completed beneficial-ownership audit.",
@@ -855,7 +1093,12 @@
     {
       "amended_at_utc": "2026-11-24T04:03:00Z",
       "amendment": "Corrected the effective data cutoff to include the Evernorth SEC filing retrieved at 2026-11-24T01:02:00Z. Preserved the original 2026-11-23T19:12:00Z cutoff in initial_data_cutoff_utc; no source bytes or model eligibility were retroactively claimed."
+    },
+    {
+      "amended_at_utc": "2026-11-24T04:14:00Z",
+      "amendment": "Added the 2026-10-19 SEC prospectus and reconciled Pathfinder's USD 7M-to-10M Company Facility (USD 9.7M drawn by October 7) separately from Evernorth's USD 1M undrawn facility. Added SBI-affiliated investor equity limits, Ripple/RippleWorks/Arrington equity and in-kind XRP relationships, October 13 note proceeds, October 12-November 9 warrant proceeds, the optional Cantor ELOC, and the post-closing Evernorth-to-Pathfinder XRP transfer. These remain issuer disclosures without bank, exchange or wallet receipts; no directional forecast eligibility was granted."
     }
   ],
-  "initial_data_cutoff_utc": "2026-11-23T19:12:00Z"
+  "initial_data_cutoff_utc": "2026-11-23T19:12:00Z",
+  "previous_captured_at_utc": "2026-11-24T01:02:00Z"
 }
