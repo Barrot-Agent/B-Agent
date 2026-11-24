@@ -1684,3 +1684,38 @@ def test_ask_ticker_candidate_and_unverified_video_identity_are_not_promoted() -
     assert '"SBIC, ChatGPT SBIC"' in queries
     assert 'site:youtube.com "Camilla Stevenson" OR "Kamilah Stevenson"' in queries
     assert any("No video inventory performed" in item["result_status"] for item in data["search_log"])
+
+
+INSTITUTIONAL_CUSTODY_RAILS = (
+    REPO_ROOT
+    / "research"
+    / "xrp_intelligence"
+    / "20261124T114143Z-institutional-custody-stablecoin-rail-reconciliation.json"
+)
+
+
+def test_institutional_custody_stablecoin_rails_preserve_provenance_and_scope() -> None:
+    data = json.loads(INSTITUTIONAL_CUSTODY_RAILS.read_text(encoding="utf-8"))
+    assert data["artifact_type"] == "xrp_institutional_custody_stablecoin_rail_reconciliation"
+    assert data["repository_state"]["xrp_integration_pr"] == 1692
+    sources = {item["id"]: item for item in data["source_registry"]}
+    assert len(sources) == len(data["source_registry"])
+    assert {"occ_regulator", "bny_company", "coinbase_company", "circle_company", "sbi_ripple_joint", "jcb_company"} <= {item["source_independence_group"] for item in sources.values()}
+    assert all(item["raw_bytes_captured"] is False for item in sources.values())
+    observations = {item["id"]: item for item in data["observations"]}
+    assert len(observations) == len(data["observations"])
+    for observation in observations.values():
+        assert observation["evidence"]
+        assert set(observation["evidence"]) <= set(sources)
+        assert observation["model_eligible"] is False
+    assert "XRPL, Base and Ethereum" in observations["OBS-COINBASE-RLUSD-MULTICHAIN-20261028"]["claim"]
+    assert "not XRP spot turnover" in observations["OBS-RIPPLE-PRODUCT-SCALE-CLAIMS-20261028"]["limitations"][0]
+    assert "global USDC supply" in observations["OBS-CIRCLE-USDC-NATIVE-ON-XRPL-20261119"]["interpretation"]
+    assert "not evidence of a direct Circle-Ripple partnership" in observations["OBS-BNY-CIRCLE-USDC-CUSTODY-20260629"]["interpretation"]
+    for edge in data["relationship_graph"]:
+        assert edge["from"] and edge["to"] and edge["relation"]
+        assert set(edge["evidence"]) <= set(sources)
+    for hypothesis in data["competing_hypotheses"]:
+        assert hypothesis["support"] and hypothesis["disconfirming_or_missing"] and hypothesis["test"]
+    assert data["predictions"]["issued"] is False
+    assert data["research_status"]["model_eligible"] is False
