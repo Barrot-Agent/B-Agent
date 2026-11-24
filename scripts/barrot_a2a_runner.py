@@ -284,13 +284,17 @@ def execute_task(
             result["transmutation_receipt"] = receipt
         return result, False, "opencode_execution_timeout"
     except FileNotFoundError:
-        return {
+        result = {
             "runtime": "existing-opencode-shared-service",
             "task_id": task_id,
             "started_at": started,
             "finished_at": utc_now(),
             "error": "opencode_cli_not_found",
-        }, False, "opencode_cli_not_found"
+        }
+        receipt = transmutation_receipt(task)
+        if receipt is not None:
+            result["transmutation_receipt"] = receipt
+        return result, False, "opencode_cli_not_found"
 
 
 def run_once(client: WorkerClient, workdir: Path, agent: str, timeout_seconds: int, opencode_bin: str) -> bool:
