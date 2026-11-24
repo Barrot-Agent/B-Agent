@@ -590,3 +590,54 @@ Sellbird readiness remains: source-audited at a preliminary level, not installed
 6. Keep Sellbird outbound paused. Complete the full dependency/security/legal audit and establish a verified Barrot-only offer before discovery or sending.
 
 No PR was merged, no deployment or Space restart was performed, no secret or repository variable was changed, no paid lookup or outbound email was sent, and no financial or paper-trading action occurred.
+
+
+---
+
+## Run 6.2 — latest main XRP market snapshot and exact-head status
+
+### Latest scheduled XRP ingestion — VERIFIED
+
+The newest main XRP Public Market Ingestion run during this audit is run 45363341208, completed 2026-11-24 09:15:40 UTC on main SHA 7d7aba841cb849e461376a8fcdd4cc4fa10c9af6. The latest feature snapshot is 2026-11-24T09:15:11.238710Z.
+
+- Snapshot ID: a0d6c0f3745e7a61bc51f6f76bddf6442a4f8045f998a2476d45f432dc84b91a; 124 records from 12 source snapshots.
+- Cumulative feature store: 25,066 history records and 85 snapshots; 124 eligible records and 366 excluded records.
+- Raw artifact digest: b43ffebcde82ca450dec6dfe5fcf9f2b9f7791de264135d2252f8ca27f68c17f.
+- Feature-store artifact digest: dbb9995a1450fc375d894168b26fd0f46e4a8a72c9334cf304f283ff719953fa.
+- Event artifact digest: 63cb767d617e8de2aac9208040afbe484951516370db631e51d1ef1d712e1802.
+- Receipt-index artifact digest: dfa8923dd00f690cca9582e67d684f5ac955030ae60afc14888122d0dadb9522.
+- Receipt chain sequence 85, CONTINUED and structurally verified; 34 receipts, 21 raw payloads and 13 digest-only receipts. Chain head: ed892abad7480c7d060e9b1c7b433774a68e91c5802d7d98ba3857498ba5a9e2. Cross-run chain hash: aa993dbf861c14207f75c11afd6379f1c5436a2a347d82cfedb0a57f97b4ca80. External anchor remains NOT_ANCHORED.
+- The feature store was restored from the prior successful per-run checkpoint, run 45354880369. Cache save again failed because the GitHub Actions cache budget is read-only. Per-run artifacts still succeeded; the feature store cannot yet be reconstructed from raw artifacts alone.
+- Event timeline remains 150 events, 0 raw hashes, 0 verified event receipts, and 150 MISSING_RAW_RECEIPT_HASH. SEC capture remains 0 filing events and 0 raw receipts.
+- Walk-forward status remains INSUFFICIENT_HISTORY; drift status INSUFFICIENT_DATA; forecast_model_eligible=false; forecast_status=NOT_ISSUED. The 316 evaluation rows are not validated predictive performance. Directional forecasts issued: 0.
+
+### Descriptive spot and order-book snapshot — not a forecast
+
+The latest point-in-time snapshot is from approximately 09:14:58–09:15:02 UTC. USD-pair mids were tightly clustered near $0.9317. The OKX value below is top-of-book USD-normalized using same-venue USDT/USD; Bitbank remains JPY-denominated. Depth units are intentionally left in each venue's quote currency.
+
+| Venue / pair | Mid | 24h XRP volume | Spread | Bid depth 10 bps | Ask depth 10 bps | 10-bps imbalance |
+|---|---:|---:|---:|---:|---:|---:|
+| Coinbase XRP/USD | $0.931650 | 137.32M XRP | 1.074 bps | $390.9k | $192.7k | +0.340 |
+| Kraken XRP/USD | $0.931745 | 49.46M XRP | 0.107 bps | $348.7k | $336.1k | +0.018 |
+| Bitstamp XRP/USD | $0.931745 | 20.31M XRP | 0.107 bps | $500.5k | $258.0k | +0.320 |
+| OKX XRP/USDT, normalized mid | $0.931105 | 58.10M XRP | 1.072 bps | 184.2k USDT | 169.2k USDT | +0.043 |
+| Bitbank XRP/JPY | ¥148.5735 | 11.09M XRP | 2.087 bps | ¥8.73M | ¥9.49M | -0.042 |
+
+- From the 08:18 UTC snapshot to 09:15 UTC, venue mids fell approximately 1.48%–1.53%. This is a measured historical interval, not a forecast.
+- Bitstamp reported a 24-hour change of -0.81% at 09:14:58 UTC. The observed 24-hour lows were approximately $0.9300 on Bitstamp, $0.93005 on Kraken and 0.9312 USDT on OKX; the latest snapshot was close to those venue-specific lows.
+- Coinbase's 08:00 UTC hourly candle was open $0.9423, high $0.9474, low $0.9373 and close $0.9381; the 09:15 mid was about 0.69% below that hourly close.
+- The 10-bps book is not unanimous: Coinbase and Bitstamp were bid-heavy, Kraken was near neutral, OKX was slightly bid-heavy, and Bitbank was slightly ask-heavy. At 50/100 bps, the captured Coinbase, Bitstamp, OKX and Bitbank books showed more bid than ask depth; Kraken's current capture only supports a 10-bps comparison.
+- The 24-hour volumes are venue-specific rolling aggregates and must not be summed as global volume. Depth is a point-in-time snapshot, not continuous queue reconstruction. No WebSocket sequence bridge is maintained. OKX depth remains in USDT and Bitbank depth in JPY; the USD normalization is top-of-book only. These data do not establish consolidated liquidity, actual exchange flows, spoof-resistant liquidity or future price direction.
+
+The current run's methodology also records that Deribit XRP-USDC perpetual ticker/L2 remain raw-only pending unit and sequence validation; derivatives history is Binance USD-M XRPUSDT only. CFTC COT is research-only because scheduled use is blocked by provider terms. Exchange-wallet balances and ETF issuer holdings remain hash-only/raw-only, not model features.
+
+### PR #1690 exact-head verification before this follow-up
+
+The previous handoff head f09590430bbf0190716f2eef131ac21872def2af was 94 commits ahead and 0 behind main. On that exact head:
+- CI 45364289959: 4,626 passed, 2 skipped, 11 warnings, 32 subtests; 73.76% coverage.
+- Audio Render Integration 45364290001: 3/3 real FluidSynth tests passed.
+- Dependency Audit 45364289961, Money audit 45364289914 and Conflict Integrity 45364289963 passed.
+- Gate 45364290063 failed closed with no independent approving review and unreadable detailed branch protection.
+- PR #1690 remains non-draft, mergeable and unapproved. No merge occurred.
+
+This market snapshot and addendum are written to the existing audio integration branch as documentation only. The resulting new branch head must pass its own exact-head CI and fail-closed checks before any merge consideration.
