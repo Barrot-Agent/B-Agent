@@ -1138,3 +1138,31 @@ Governance remains blocked: PR #1663 draft, zero formal reviews, zero review thr
 - Still open: config drift (needs approval to generate one file), sandbox_passed=0
   (needs MCP_APPROVAL_TOKEN decision), GITHUB_MCP_TOKEN unset in shell.
 - Report: docs/synthesis/cross-domain-audit.md
+
+## 2026-11-24 — Query transmutation wired into ordinary intake (PR #1695)
+- Branch: capability/query-transmutation-restoration-20261123
+- Code head: f805acb20022b58ea2c1cc3b4e2fb2425c7ee63c
+- PR: https://github.com/Barrot-Agent/B-Agent/pull/1695 (draft; no merge performed)
+- Added barrot_agent/inbound/intake.py: one admission boundary over the existing
+  protocol. Fails closed on terminal stop states, policy denial, non-operator
+  approval, unpreservable requests, and duplicate work; refusals never repeat the
+  request body.
+- Wired SmartAgent.run(goal): admit after GOAL, before planning; refusal emits
+  ERROR and never reaches PLAN/ACTION; ANSWER carries request_id. Internal loops
+  opt out explicitly.
+- Wired scripts/barrot_agent.py main(): admit TITLE+TASK as Source.UNKNOWN before
+  configure_git/checkout_branch; refusal prints safe JSON and exits 2.
+- Fixed full-suite defect: the resumable dispatcher must re-admit a repeated task
+  body after a kill. Added allow_duplicate for callers that own durable resume;
+  the protocol still detects and journals the duplicate.
+- Runtime records: results/transmutation/ (gitignored).
+- Focused local: 102 passed (intake, SmartAgent, flywheel, protocol, GPT API,
+  script, mocked e2e). Three missions validated through SmartAgent.run: XRP,
+  professional audio, long-horizon continuity.
+- Exact-head CI on f805acb: full suite 4643 passed, 1 skipped, 0 failed,
+  coverage 73.58%; core Tests pass; pip-audit pass; Pages pass. Merge gate
+  correctly fails closed: draft, no independent review, branch protection not
+  verifiable. No merge/deploy/secret action.
+- PR #1686 untouched. No context_receipts or unrelated workstream changes.
+- Next: independent review + explicit merge authorization for #1695; do not
+  merge on the strength of the fail-closed gate.
