@@ -1,1 +1,1 @@
-"""Inbound command authority, policy gate, and bounded query transmutation."""
+"""Inbound command authority, policy gate, bounded query transmutation, and request intake."""

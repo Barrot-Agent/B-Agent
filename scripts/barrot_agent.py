@@ -33,6 +33,8 @@ sys.path.insert(1, SCRIPTS_DIR_STR)
 
 from sandbox import verify_result
 
+from barrot_agent.inbound.gate import Source
+from barrot_agent.inbound.intake import admit
 from barrot_agent.orchestration.learning_curriculum import LearningCurriculum
 from barrot_agent.orchestration.mission_registry import MissionRegistry
 from barrot_agent.orchestration.verified_learning_store import VerifiedLearningStore
@@ -1784,6 +1786,26 @@ def main() -> None:
     if TASK_MODE == "mission":
         print(json.dumps(build_primary_mission_dispatch(), indent=2, sort_keys=True))
         return
+
+    # The task body is an external request, not operator authority. Admit it
+    # before any repository mutation so a denied or duplicate task cannot move
+    # a branch, comment, or open a pull request.
+    admission = admit(
+        f"{TITLE}\n\n{TASK}".strip(),
+        source=Source.UNKNOWN,
+        received_from=f"scripts/barrot_agent.py issue={ISSUE or 'manual'}",
+        record_dir=Path(ROOT) / "results" / "transmutation",
+        repo_root=Path(ROOT),
+    )
+    if not admission.allowed:
+        print(
+            json.dumps(
+                {"status": "BLOCKED", "admission": admission.as_dict()},
+                indent=2,
+                sort_keys=True,
+            )
+        )
+        raise SystemExit(2)
 
     configure_git()
     checkout_branch(BRANCH)
