@@ -414,7 +414,8 @@
       "interpretation": "These figures indicate Ripple's stated enterprise scale and product expansion. The USD 16T figure spans Ripple products and must not be labeled XRP volume, XRPL on-chain volume, ODL volume or XRP bridge flow.",
       "limitations": [
         "Figures are issuer-reported and not independently audited by this source.",
-        "Annualized run rate is not audited annual revenue; product transactions may use fiat or stablecoins without XRP."
+        "Annualized run rate is not audited annual revenue; product transactions may use fiat or stablecoins without XRP.",
+        "The approximately USD 16T figure is not XRP spot turnover; it spans Ripple products and may include fiat and stablecoin activity."
       ],
       "model_eligible": false
     },
@@ -876,7 +877,11 @@
           "The Fed held its target range and described strong domestic activity, productivity and capital investment.",
           "The BOJ's ETF-sale pace is phased and begins in January 2027; no immediate crypto flow effect is shown."
         ],
-        "test": "Evaluate chronological event windows using DXY, USDJPY, U.S. real yields, JGB yields, BTC beta, XRP spot, derivatives funding/open interest and exchange net flows."
+        "test": "Evaluate chronological event windows using DXY, USDJPY, U.S. real yields, JGB yields, BTC beta, XRP spot, derivatives funding/open interest and exchange net flows.",
+        "evidence": [
+          "fed_fomc_statement_20261028",
+          "boj_statement_20261030"
+        ]
       },
       {
         "id": "MACRO-H2-regulated-stablecoin-expansion-risk-on",
@@ -890,7 +895,12 @@
           "Treasury and AML/sanctions rules remain proposed in the cited notices.",
           "Compliance costs, foreign-issuer restrictions and eligibility constraints may reduce access or concentrate distribution."
         ],
-        "test": "Track final rule text, issuer authorizations, exchange support, stablecoin mint/redeem, bank custody balances and asset-specific settlement flows."
+        "test": "Track final rule text, issuer authorizations, exchange support, stablecoin mint/redeem, bank custody balances and asset-specific settlement flows.",
+        "evidence": [
+          "treasury_genius_nprm_20260817",
+          "occ_genius_final_rule_20261021",
+          "occ_ripple_ntb_cas_20261026"
+        ]
       }
     ],
     "forecast_eligible": false,
