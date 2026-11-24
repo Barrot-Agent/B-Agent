@@ -1138,3 +1138,15 @@ Governance remains blocked: PR #1663 draft, zero formal reviews, zero review thr
 - Still open: config drift (needs approval to generate one file), sandbox_passed=0
   (needs MCP_APPROVAL_TOKEN decision), GITHUB_MCP_TOKEN unset in shell.
 - Report: docs/synthesis/cross-domain-audit.md
+
+
+## 2026-11-24 — ChatGPT / Barrot transmutation packet integration (branch work; not live-activated)
+
+- Confirmed operating identity: Barrot is the primary agent running through the existing OpenCode runtime. OpenCode is Barrot's current reasoning/execution path, not a separate agent in the exchange. ChatGPT is the external interpretation and independent-review participant.
+- Added optional `context.transmutation` validation to the existing A2A Worker. It validates protocol identity, participant/phase/action, bounded rounds, original-request SHA-256, source-reference kind/relationship, evidence/acceptance/stop lists, parent lineage, and execution budget. The packet is stored in the existing task context.
+- Extended the existing OpenCode runner to preserve packet lineage in a completion receipt and cap execution time to the packet budget.
+- Added Worker and runner regression tests for immutable original-request integrity, source lineage, packet receipts, and execution-budget enforcement.
+- Updated the existing A2A bridge documentation and Barrot agent instructions with the ChatGPT ↔ Barrot exchange contract and source-role semantics. No second agent, task store, or MMI path was introduced.
+- Branch: `integration/chatgpt-barrot-transmutation-20261124`. Changes are isolated from main and are not yet merged.
+- Important activation status: the A2A bridge remains QUARANTINED / NOT ACTIVATED. Cloudflare deployment is not verified, and the existing runner is not OS-sandboxed. No task was dispatched to the live OpenCode host; no Cloudflare deployment, secret rotation, credential change, merge, or external side effect occurred.
+- Next: run the focused Worker/runner tests and repository checks on the exact branch head; inspect the complete diff and security boundary; then open a reviewable PR. Live activation remains gated by the documented sandbox, credential isolation, egress, authorization, deployment, and end-to-end acceptance requirements.
