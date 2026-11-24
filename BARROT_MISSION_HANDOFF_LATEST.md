@@ -405,3 +405,33 @@ No merge, deployment, secret change, branch-protection change, external model di
 **Run 5 actions:** updated the existing #1691 continuity branch's nine-platform map and test to record the partial branch-protection evidence without inferring unavailable settings. This creates a new #1691 head and requires fresh exact-head CI. This handoff update is being committed to the existing #1690 audio branch; the resulting new #1690 head likewise requires fresh exact-head CI. Previous-head test results above are evidence only for their recorded SHAs, not for these new documentation/test commits.
 
 No merge, deployment, secret/variable change, branch-protection change, external model dispatch, paid prospect lookup, outbound email, Kaggle submission, Databricks write, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+## Run 5 follow-up — 2026-11-24 08:45 UTC
+
+### Latest exact-head verification after the first handoff refresh
+
+- **Audio PR #1690 head:** `59bd96adea989590f9bb9b656cca64dbeadb862d`, 90 ahead / 0 behind main. Full repository suite [45358157902](https://github.com/Barrot-Agent/B-Agent/actions/runs/45358157902): **4,626 passed, 2 skipped, 11 warnings, 32 subtests**. Audio Render Integration [45358157888](https://github.com/Barrot-Agent/B-Agent/actions/runs/45358157888): passed. Dependency Audit [45358157957](https://github.com/Barrot-Agent/B-Agent/actions/runs/45358157957), Money audit [45358158040](https://github.com/Barrot-Agent/B-Agent/actions/runs/45358158040), Conflict Integrity [45358158124](https://github.com/Barrot-Agent/B-Agent/actions/runs/45358158124): passed. Gate [45358158171](https://github.com/Barrot-Agent/B-Agent/actions/runs/45358158171): blocked by no independent approving review and inability to read detailed branch protection. This head is fully tested but not merge-authorized.
+- **Continuity PR #1691 head:** `47f3bee925aab8380876da4510995574fe0569cd`, 9 ahead / 0 behind main. Full repository suite [45357782261](https://github.com/Barrot-Agent/B-Agent/actions/runs/45357782261): **4,613 passed, 1 skipped, 11 warnings, 32 subtests**. Dependency Audit [45357782249](https://github.com/Barrot-Agent/B-Agent/actions/runs/45357782249), Money audit [45357782073](https://github.com/Barrot-Agent/B-Agent/actions/runs/45357782073), Conflict Integrity [45357782093](https://github.com/Barrot-Agent/B-Agent/actions/runs/45357782093): passed. Gate [45357782096](https://github.com/Barrot-Agent/B-Agent/actions/runs/45357782096): blocked by no independent approving review and unreadable detailed branch protection. The new branch-protection evidence test passes on this exact head.
+- **XRP PR #1692 head:** `34b8a5efad01733e172c7f4bb4845e2710da21d2`, 43 ahead / 0 behind main. Its full suite, dependency, money and conflict evidence remains the exact-head set recorded above. Its PR description was updated at 08:43 UTC to reflect the newer 08:03 research addendum; the code head did not change.
+- All three mission PRs remain ready for review, mergeable and zero commits behind main. No independent review objects exist. No merge occurred.
+
+### Correction to the 07:13 Kamilah/Camilla snapshot
+
+The Run 5 section above recorded the earlier 07:13 search snapshot, which said no channel link or video inventory had been verified. A later 08:03 UTC follow-up in `research/xrp_intelligence/20261124_primary_source_reconciliation.md` supersedes that earlier snapshot for the main candidate channel only:
+
+- Candidate: `@drkamilahstevenson`, channel ID `UCqUPJMQdkCN6lsLVDnichPA`.
+- The channel-index result reports the creator-controlled link `go.prescribewealth.com/yt-bio`. The linked brand site was directly opened during this run and identifies Dr. Kamilah Stevenson and MKS Health LLC / The Inner Circle. The direct YouTube page itself remained unavailable to the fetcher. This supports **indexed channel-to-brand attribution**, not independent legal-identity or professional-credential verification.
+- A curated index-based inventory was performed after that channel/brand link: 12 recent public uploads, 11 popular public uploads and 12 public live streams. Displayed views and relative ages are index snapshots; most video IDs were not exposed. Members-only videos and the separate `@PrescribeWealth` channel were excluded. This is not a complete inventory of the channel's approximately 1.2K uploads.
+- Do not merge this channel with the separate London-based Camilla Stevenson profile or other same-name channels. The transcript spelling “Camila” alone does not establish identity.
+- Preserve the earlier 07:13 JSON artifact as a time-stamped earlier search observation; do not rewrite it. The later 08:03 markdown follow-up and updated PR description record the newer attribution and curated inventory.
+
+### Current research relationship boundary
+
+The 08:03 primary-source addendum distinguishes: Coinbase–Circle USDC distribution economics; Circle–Ripple USDC-on-XRPL launch; Coinbase–Ripple RLUSD distribution; SBI–Circle's Japan JV, USDC distribution and disclosed investment; and SBI–Ripple's reported equity stake, SBI Ripple Asia JV, XRP remittance corridor and Evernorth PIPE. It finds no direct SBI–Coinbase ownership or bilateral commercial agreement in the reviewed sources. The SBI PIPE's $200M cash component is not proof of open-market XRP purchases. All such observations remain research-only until raw bytes, SHA-256 receipts and independent timestamp anchors are captured.
+
+**Handoff location:** this updated file is on the existing #1690 branch, not yet on main. Main's handoff remains unchanged until the PR is approved and merged. This follow-up commit is documentation-only and changes #1690's head; it therefore requires a fresh exact-head CI/security run before that branch can be considered merge-ready. The verified results above apply to the immediately preceding #1690 head `59bd96adea989590f9bb9b656cca64dbeadb862d`, not the new handoff commit.
+
+No merge, deployment, secret/variable change, branch-protection change, external model dispatch, paid lookup, outbound email, paper trade, funds transfer or real-money action occurred.
