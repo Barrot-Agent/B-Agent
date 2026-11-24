@@ -12,6 +12,7 @@ from scripts.barrot_a2a_runner import (
     fit_result_payload,
     redact,
     run_once,
+    transmutation_receipt,
 )
 
 
@@ -32,6 +33,22 @@ class RunnerRedactionTests(unittest.TestCase):
         self.assertIn("task-12345678", prompt)
         self.assertIn("Review the A2A worker", prompt)
         self.assertIn("Do not commit, push, merge, deploy", prompt)
+
+
+    def test_transmutation_packet_is_preserved_as_a_receipt(self) -> None:
+        packet = {
+            "protocol_version": "barrot.chatgpt.transmutation.v1",
+            "packet_id": "packet-0000001",
+            "parent_packet_id": None,
+            "round": 2,
+            "phase": "challenge",
+            "original_request_sha256": "a" * 64,
+        }
+        receipt = transmutation_receipt({"context": {"transmutation": packet}})
+        self.assertEqual(receipt["packet_id"], "packet-0000001")
+        self.assertEqual(receipt["round"], 2)
+        self.assertEqual(receipt["sender"], "barrot")
+        self.assertEqual(receipt["recipient"], "chatgpt")
 
 
 class RunnerExecutionTests(unittest.TestCase):
@@ -95,6 +112,31 @@ class RunnerExecutionTests(unittest.TestCase):
         self.assertFalse(success)
         self.assertEqual(error, "opencode_cli_not_found")
         self.assertEqual(result["error"], "opencode_cli_not_found")
+
+
+    @patch("scripts.barrot_a2a_runner.subprocess.run")
+    def test_transmutation_budget_caps_execution_timeout(self, run_mock: Mock) -> None:
+        run_mock.return_value = subprocess.CompletedProcess(
+            args=["opencode"], returncode=0, stdout="ok", stderr=""
+        )
+        packet = {
+            "budget": {"max_execution_seconds": 90},
+            "packet_id": "packet-0000001",
+            "round": 0,
+        }
+        result, success, error = execute_task(
+            {
+                "task_id": "task-12345678",
+                "instructions": "Inspect.",
+                "context": {"transmutation": packet},
+            },
+            Path("/tmp"),
+            timeout_seconds=600,
+        )
+        self.assertTrue(success)
+        self.assertIsNone(error)
+        self.assertEqual(run_mock.call_args.kwargs["timeout"], 90)
+        self.assertEqual(result["transmutation_receipt"]["packet_id"], "packet-0000001")
 
 
 class RunnerQueueTests(unittest.TestCase):
