@@ -2,7 +2,7 @@
   "schema_version": 1,
   "artifact_type": "xrp_sbi_sbic_circle_coinbase_relationship_addendum",
   "artifact_id": "xrp_sbi_sbic_circle_coinbase_20261123T191200Z",
-  "captured_at_utc": "2026-11-23T19:21:51.899Z",
+  "captured_at_utc": "2026-11-24T01:02:00Z",
   "data_cutoff_utc": "2026-11-23T19:12:00Z",
   "repository_state": {
     "inspected_main_sha": "7d7aba841cb849e461376a8fcdd4cc4fa10c9af6",
@@ -183,6 +183,24 @@
         "Later Coinbase Q3 2026 filing is the primary source for same-terms renewal."
       ],
       "period_end_date": "2025-12-31"
+    },
+    {
+      "id": "sec_evernorth_424b3_20261124",
+      "publisher": "Evernorth Holdings Inc. / U.S. Securities and Exchange Commission EDGAR",
+      "publisher_group": "sec.gov",
+      "source_type": "SEC Form 424B3 resale prospectus sticker with Q3 2026 liquidity, financing and custody disclosures",
+      "accession": "000162828026073931",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm",
+      "retrieved_at_utc": "2026-11-24T01:02:00Z",
+      "retrieval_time_quality": "Approximate run-window timestamp; rendered SEC filing page opened, but exact HTTP fetch time and headers are unavailable.",
+      "raw_bytes_captured": false,
+      "raw_content_sha256": null,
+      "model_eligible": false,
+      "limitations": [
+        "Rendered filing text only; original HTTP bytes, headers and SHA-256 receipt were not captured.",
+        "The filing contains pre-closing, post-closing and entity-specific disclosures; do not sum financing amounts without transaction-date and legal-entity reconciliation.",
+        "Issuer disclosure is primary evidence of reported accounting and financing terms, not independent confirmation of bank cash receipts, exchange executions or wallet movements."
+      ]
     }
   ],
   "market_snapshot": {
@@ -435,6 +453,77 @@
       "limitations": [
         "The later Coinbase Q3 2026 filing is the primary source for renewal on the same terms; no exact Coinbase ownership percentage is inferred."
       ]
+    },
+    {
+      "id": "OBS-EVERNORTH-OPERATING-LIQUIDITY-20261124",
+      "classification": "primary_SEC_disclosure",
+      "claim": "Evernorth's Q3 2026 filing reports approximately USD 91,397 unrestricted cash as of 2026-09-30 (rounded elsewhere to USD 0.1 million), a USD 10.0 million net working-capital deficit and USD 185.6 million accumulated deficit. It identifies Ripple loans and XRP contributed to Pathfinder as liquidity sources. This balance is not equivalent to gross transaction proceeds disclosed separately at closing.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "Issuer-reported balances; no bank confirmation or post-2026-09-30 cash reconciliation captured.",
+        "Preserve legal-entity scope across subsidiary and post-transaction disclosures."
+      ]
+    },
+    {
+      "id": "OBS-EVERNORTH-PRIVATE-PLACEMENT-DEPLOYMENT-20261124",
+      "classification": "primary_SEC_disclosure",
+      "claim": "The filing states that Pubco raised USD 214.1 million in cash and received 261,919,096 XRP under private-placement subscription agreements; it says the USD 214.1 million cash proceeds were subsequently used to purchase 84,365,876 XRP. It reports approximately 346,284,972 XRP held by Evernorth as of 2026-09-30. This is historical financing/deployment disclosure, not a timestamped record of current-period exchange purchases.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "No trade-level execution receipts, counterparties, venues or wallet transfers captured.",
+        "The filing does not establish whether every purchase was publicly executed or privately negotiated."
+      ]
+    },
+    {
+      "id": "OBS-EVERNORTH-CLOSING-PROCEEDS-AND-IN-KIND-XRP-20261124",
+      "classification": "primary_SEC_disclosure",
+      "claim": "A separate transaction-closing disclosure reports approximately USD 272.6 million aggregate gross cash proceeds before transaction expenses, comprising approximately USD 224.6 million of private-placement investments and USD 48.0 million released from the SPAC trust after redemptions; investors also contributed approximately 388,910,554 XRP in kind. These closing figures must not be added to the earlier USD 214.1 million / 261,919,096 XRP subscription disclosure without reconciling periods, entities and possible overlap.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "Gross closing proceeds are not net proceeds, current unrestricted cash or proof of spot-market XRP purchases.",
+        "Different reporting periods and transaction contexts require a funds-flow bridge."
+      ]
+    },
+    {
+      "id": "OBS-EVERNORTH-UNISSUED-DEBT-AND-UNDRAWN-FACILITY-20261124",
+      "classification": "primary_SEC_disclosure",
+      "claim": "The filing says a USD 30.0 million 4% PIK convertible note had not been issued as of 2026-09-30 because closing had not occurred; it also says Evernorth had not borrowed under its USD 1.0 million Ripple revolving facility as of that date. Neither amount should be treated as cash received or cash on hand at that cutoff.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "Post-closing note issuance and subsequent facility draws require later filings or transaction receipts.",
+        "A committed or undrawn facility is not cash on hand."
+      ]
+    },
+    {
+      "id": "OBS-EVERNORTH-COINBASE-VALUATION-AND-BITGO-CUSTODY-20261124",
+      "classification": "primary_SEC_disclosure",
+      "claim": "The filing identifies Coinbase as the principal market used for XRP fair-value measurement and BitGo Trust as the initial third-party custodian for Pubco's XRP after the transactions. These disclosures establish accounting-valuation and custody roles, not an exclusive trading, market-making or execution relationship.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "No custody statement, wallet address, exchange trade record or service agreement captured.",
+        "Principal-market designation does not establish that all purchases or sales occurred on Coinbase."
+      ]
+    },
+    {
+      "id": "OBS-ACTUAL-CAPITAL-PHRASE-20261124",
+      "classification": "exact_phrase_research",
+      "claim": "The exact phrase 'actual capital' does not appear in the cited SEC filing. The filing instead distinguishes unrestricted cash, gross closing proceeds, cash private-placement proceeds, XRP contributed in kind, XRP bought with cash proceeds, debt not yet issued and an undrawn revolving facility.",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "limitations": [
+        "This finding is limited to the cited filing and does not establish that the phrase is absent from all Evernorth or XRP-related communications."
+      ]
     }
   ],
   "relationship_graph": [
@@ -593,6 +682,36 @@
         "coinbase_q3_2026_10q_20260930"
       ],
       "scope": "Average USDC in Coinbase products reached a company-reported all-time high."
+    },
+    {
+      "from": "Evernorth",
+      "to": "Ripple",
+      "relation": "related_party_credit_facility_and_XRP_contribution",
+      "status": "SEC_issuer_disclosure",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "scope": "USD 1.0 million revolving facility undrawn as of 2026-09-30 and a 126,791,458 XRP contribution to Pathfinder available to fund operating costs; no ODL volume or net market demand quantified."
+    },
+    {
+      "from": "Evernorth",
+      "to": "Coinbase",
+      "relation": "principal_market_for_XRP_fair_value_measurement",
+      "status": "SEC_issuer_disclosure",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "scope": "Accounting valuation input; not proof of exclusive execution, market making, custody or all purchases occurring on Coinbase."
+    },
+    {
+      "from": "Evernorth",
+      "to": "BitGo Trust",
+      "relation": "initial_third_party_XRP_custodian",
+      "status": "SEC_issuer_disclosure",
+      "evidence": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "scope": "Custody disclosure following the transactions; exclusivity and wallet-level balances not disclosed."
     }
   ],
   "competing_hypotheses": [
@@ -674,12 +793,25 @@
         "Distribution costs and USDC platform balances are not XRP spot demand."
       ],
       "test": "Reconcile contract terms, renewal dates, platform balances, distribution-cost sensitivity, reserve yields and counterparty concentration across future SEC filings."
+    },
+    {
+      "id": "20261124T010200Z::H7-gross-capital-not-spot-demand",
+      "claim": "Evernorth financing headlines and gross transaction proceeds are not equivalent to cash on hand or incremental XRP spot demand. The filing separates pre-closing private-placement cash and XRP contributions, historical XRP purchases, post-closing gross proceeds, in-kind XRP, unissued debt and an undrawn facility.",
+      "support": [
+        "sec_evernorth_424b3_20261124"
+      ],
+      "disconfirming_or_missing": [
+        "The filing reports USD 214.1 million of cash subscription proceeds used to purchase 84,365,876 XRP.",
+        "Post-closing cash proceeds could fund additional XRP purchases, but later trade-level evidence is absent.",
+        "In-kind XRP contributions can enlarge treasury holdings without creating contemporaneous spot buying pressure."
+      ],
+      "test": "Reconcile dated financing receipts, share issuance, in-kind XRP transfers, exchange executions, custody wallet movements and post-closing treasury purchases. Separate gross proceeds, net proceeds, cash balance, XRP inventory and market purchases."
     }
   ],
   "data_quality": {
     "no_averaging_policy": "Do not aggregate spot depth across venues or quote currencies, do not treat Circle Mint flows as total USDC supply, and do not map global USDC or RLUSD activity directly to XRP demand.",
     "raw_source_policy": "Public pages and SEC filing text were read as rendered web content. Original HTTP wire bytes, headers, independent timestamps and immutable SHA-256 receipts were not captured in Barrot. All observations remain research-only and model-ineligible.",
-    "source_independence": "The three SBIC profiles are primary but related sister companies; SBI Holdings and Ripple are interested JV parties; SBI PoC and RLUSD announcements are issuer statements; Circle and Coinbase are separate SEC registrants and counterparties; Circle's 10-K and 10-Q are the same issuer, not independent corroboration.",
+    "source_independence": "The three SBIC profiles are primary but related sister companies; SBI Holdings and Ripple are interested JV parties; SBI PoC and RLUSD announcements are issuer statements; Circle and Coinbase are separate SEC registrants and counterparties; Circle's 10-K and 10-Q are the same issuer, not independent corroboration. The Evernorth SEC filing is primary issuer-authored disclosure; it is not independent corroboration of bank receipts, market executions or on-chain transfers.",
     "scope_warnings": [
       "SBIC is not SBI Holdings based on the cited legal identities and regional profiles; complete beneficial-ownership search remains open.",
       "SBI Group aggregate voting rights are not the same as direct SBI Holdings parent ownership.",
@@ -687,7 +819,8 @@
       "RLUSD is a stablecoin and the MoneyTap/XRPL activity is a PoC; neither establishes XRP purchases or net XRP demand.",
       "Circle Mint customer flows are not global USDC supply flows, XRPL-specific supply or XRP collateral.",
       "Meaningful-wallet counts are wallets, not unique people.",
-      "Circle's 84% reserve-fund figure is dated 2026-09-30, not an intraday reserve audit."
+      "Circle's 84% reserve-fund figure is dated 2026-09-30, not an intraday reserve audit.",
+      "The Evernorth filing contains multiple legal-entity, pre-closing and post-closing contexts. Keep USD 214.1M / 261.9M XRP subscription amounts separate from USD 272.6M gross closing cash / 388.9M XRP in-kind contributions until a funds-flow reconciliation rules out overlap."
     ],
     "unresolved_or_missing": [
       "No raw SEC filing bytes or source hashes captured.",
@@ -695,7 +828,8 @@
       "No Japanese corporate registry or complete shareholder register captured.",
       "No SBI Remit ODL transaction or XRP inventory data.",
       "No chain-specific USDC/RLUSD supply, bridge flow, exchange collateral or XRP-specific capital flow.",
-      "No current reserve audit beyond issuer filing disclosure."
+      "No current reserve audit beyond issuer filing disclosure.",
+      "No bank confirmation, exchange execution receipts, wallet-level transfer evidence or post-closing cash/debt reconciliation for Evernorth; the USD 30M PIK note and USD 1M Ripple revolver must be rechecked after closing."
     ]
   },
   "predictions": {
@@ -703,6 +837,7 @@
     "reason": "No synchronized XRP feature panel, matched historical outcome labels, leakage-safe walk-forward evaluation or causal test supports a directional forecast. This is a corporate-relationship research addendum only."
   },
   "next_actions": [
+    "Capture the Evernorth SEC 424B3 filing as original bytes with accession, exact capture timestamp, SHA-256 and receipt-chain linkage; reconcile pre-closing private placements against closing proceeds and XRP in-kind transfers before using any figure as a capital-flow feature.",
     "Capture referenced SEC filings as immutable raw artifacts with accession, URL, capture time, SHA-256 and receipt-chain linkage before promoting filing facts into the event timeline.",
     "Resolve SBIC legal identities against Japanese corporate registry identifiers and shareholder records; retain profile-based disambiguation rather than claiming a completed beneficial-ownership audit.",
     "Obtain authorized SBI Remit ODL corridor volumes, XRP inventory and settlement data; distinguish gross throughput from net market purchases and collateral.",
@@ -711,5 +846,11 @@
     "Test stablecoin or institutional-adoption relationships against synchronized XRP depth, BTC, rates, USD and broad crypto controls; preserve null results and disconfirming evidence.",
     "Keep all claims research-only until source receipts are captured; keep directional forecast issuance disabled."
   ],
-  "hypothesis_id_namespace": "20261123T191200Z"
+  "hypothesis_id_namespace": "20261123T191200Z",
+  "amendment_log": [
+    {
+      "amended_at_utc": "2026-11-24T01:02:00Z",
+      "amendment": "Added primary SEC 424B3 disclosures on Evernorth cash liquidity, private-placement proceeds, XRP in-kind contributions, closing gross proceeds, debt/facility status, Coinbase valuation and BitGo custody; retained research-only/model-ineligible status because original bytes and receipts were not captured."
+    }
+  ]
 }
