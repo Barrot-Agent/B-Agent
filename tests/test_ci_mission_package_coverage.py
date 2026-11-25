@@ -1,5 +1,4 @@
 from pathlib import Path
-import re
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,10 +28,8 @@ def test_full_suite_enforces_package_floors_for_all_three_missions() -> None:
         assert command in full_suite, f"missing full-suite coverage gate: {command}"
 
 
-def test_coverage_floor_commands_are_not_confused_with_core_subset() -> None:
+def test_full_repository_suite_discovers_all_tracked_active_test_modules() -> None:
     workflow = WORKFLOW.read_text(encoding="utf-8")
-    core_start = workflow.index("  tests:")
-    full_suite_start = workflow.index("  full-suite:")
-    core_job = workflow[core_start:full_suite_start]
-    assert "coverage report --include=" not in core_job
-    assert re.search(r"grep -E '\\(\^\|/\)test_", workflow)
+    assert "git ls-files" in workflow
+    assert "grep -E '(^|/)test_[^/]+[.]py$'" in workflow
+    assert "grep -vE '^[.]barrot/disabled_tests/|^archive/quarantined/|^tests/fixtures/'" in workflow
