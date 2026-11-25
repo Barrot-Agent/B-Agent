@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T13:32:00Z",
-  "capture_basis": "Run 17: re-fetched main and complete tree; inventoried all ten open PRs and compared each branch to main; inspected exact-head CI, reviews, branch protection, rulesets and accessible security settings; reconciled dependency PR overlap; inspected current XRP/audio/continuity/commercial evidence and the Hugging Face BUILD_ERROR. This checkpoint commit advances PR #1702 and requires fresh exact-head checks.",
+  "captured_at_utc": "2026-11-25T13:38:00Z",
+  "capture_basis": "Run 17.1: rechecked exact-head dependency workflows after safe branch-only regression fixes; added a schema test to force full-suite validation of the current ten-PR inventory; refreshed current PR heads and check statuses. This commit advances PR #1702 and requires fresh exact-head checks.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -228,8 +228,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "head_sha": "18ab2aa5ce8eff428023b99c2b55f8e3a1dc32b8",
-        "commits_ahead": 39,
+        "head_sha": "287e41c602911240e70e360e8914796c57a84d60",
+        "commits_ahead": 40,
         "commits_behind": 0,
         "changed_paths": [
           "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -237,7 +237,7 @@
           "research/xrp_intelligence/20261124_primary_source_reconciliation.md",
           "tests/test_nine_platform_operational_map_current.py"
         ],
-        "classification": "blocked",
+        "classification": "blocked_pending_new_head_full_suite",
         "workstream_uniqueness": "unique",
         "review_count": 0
       }
@@ -273,7 +273,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T13:32:00Z",
+      "observed_at_utc": "2026-11-25T13:38:00Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -341,16 +341,16 @@
         "note": "Triggered by branch creation before the handoff PR existed; not a current-main CI failure."
       },
       "open_pull_request_numbers": [
-        1711,
+        1702,
+        1703,
+        1704,
+        1705,
+        1706,
+        1707,
+        1708,
         1709,
         1710,
-        1708,
-        1707,
-        1706,
-        1705,
-        1704,
-        1703,
-        1702
+        1711
       ],
       "latest_xrp_ingestion_run": {
         "run_number": 155,
@@ -814,7 +814,7 @@
     "Audio: add distinct rights-cleared production assets, a native/editable DAW project where feasible, and level-matched listening acceptance.",
     "Continuity: implement authenticated sender-signed cross-host transfer, replay protection and explicit conflict resolution.",
     "Hugging Face: retrieve read-only container build logs for the current BUILD_ERROR; do not restart or deploy.",
-    "Dependency PRs: verify new exact-head CI on #1706/#1709; retain #1708 until #1706 is merged and verified; block #1711 until NumPy/Streamlit compatibility is resolved.",
+    "Dependency PRs: #1706 and #1709 have exact-head suites and gates passed; obtain independent reviews and deployment approval. Keep #1708 until #1706 is merged and verified; block #1711 until NumPy/Streamlit compatibility is resolved.",
     "Commercial: validate the bounded Barrot-only evidence pilot, then perform free prospect discovery with provenance; keep sending paused.",
     "Governance: obtain independent reviews, readable branch-protection requirements and explicit Pages deployment approval before any merge."
   ],
@@ -1090,8 +1090,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "18ab2aa5ce8eff428023b99c2b55f8e3a1dc32b8",
-      "commits_ahead": 39,
+      "head_sha": "287e41c602911240e70e360e8914796c57a84d60",
+      "commits_ahead": 40,
       "commits_behind": 0,
       "changed_paths": [
         "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -1102,19 +1102,12 @@
       "classification": "blocked",
       "workstream_uniqueness": "unique",
       "review_count": 0,
-      "exact_head_validation": "PASSED_ON_OBSERVED_PRECHECKPOINT_HEAD; THIS_MAP_COMMIT_ADVANCES_PR_1702",
+      "exact_head_validation": "PENDING_ON_HEAD_287e41C; THIS_FOLLOWUP_COMMIT_ADDS_INVENTORY_TEST_AND_REQUIRES_FRESH_CHECKS",
       "checks": {
-        "full_suite_run_id": 45623126485,
-        "full_suite_status": "success",
-        "passed": 4693,
-        "skipped": 1,
-        "warnings": 11,
-        "subtests": 21,
-        "coverage_percent": 74.21,
-        "dependency_audit_status": "success",
-        "money_audit_status": "success",
-        "conflict_integrity_status": "success",
-        "pr_event_gated_merge_status": "success"
+        "previous_head_full_suite_run_id": 45623126485,
+        "previous_head_full_suite_status": "success",
+        "previous_head_passed": 4693,
+        "current_head_full_suite_status": "pending"
       }
     }
   ],
@@ -1168,15 +1161,18 @@
       "review_count": 0,
       "checks": {
         "ci_run_id": 45624202519,
-        "ci_status": "in_progress",
+        "ci_status": "success",
+        "full_suite_passed": 4693,
+        "full_suite_skipped": 1,
+        "coverage_percent": 74.21,
         "dependency_audit_run_id": 45624202296,
-        "dependency_audit_status": "in_progress",
+        "dependency_audit_status": "success",
         "money_audit_run_id": 45624202284,
         "money_audit_status": "success",
         "conflict_integrity_run_id": 45624202400,
         "conflict_integrity_status": "success",
         "gated_merge_run_id": 45624202514,
-        "gated_merge_status": "in_progress"
+        "gated_merge_status": "success"
       }
     },
     {
@@ -1285,15 +1281,18 @@
       "review_count": 0,
       "checks": {
         "ci_run_id": 45624138666,
-        "ci_status": "in_progress",
+        "ci_status": "success",
+        "full_suite_passed": 4693,
+        "full_suite_skipped": 1,
+        "coverage_percent": 74.21,
         "dependency_audit_run_id": 45624138497,
-        "dependency_audit_status": "in_progress",
+        "dependency_audit_status": "success",
         "money_audit_run_id": 45624138616,
         "money_audit_status": "success",
         "conflict_integrity_run_id": 45624138737,
         "conflict_integrity_status": "success",
         "gated_merge_run_id": 45624139118,
-        "gated_merge_status": "in_progress"
+        "gated_merge_status": "success"
       }
     }
   ]

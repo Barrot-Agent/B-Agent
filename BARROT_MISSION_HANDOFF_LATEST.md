@@ -1222,3 +1222,12 @@ No merge, deployment, force-push, branch rewrite, secret rotation, Space restart
 8. Do not merge while independent reviews, complete branch-protection requirements and specific Pages deployment approval are absent.
 
 No new PR was created. No merge, deployment, force-push, branch rewrite, secret rotation, Space restart, paid lookup, Kaggle submission, outbound message, paper trade, funds transfer or real-money action occurred.
+
+
+## Run 17.1 verification update — 2026-11-25T13:38:00Z
+
+- #1706 combined actions/cache restore+save v6.1.0 branch head 479d112515ee4b5d63de374cd662f0afc895a46c passed exact-head full suite #45624138666: 4,693 passed, 1 skipped, 11 warnings, 21 subtests, 74.21%. Dependency audit #45624138497, money audit #45624138616, conflict integrity #45624138737 and fail-closed gate #45624139118 all passed. It is ready for independent review, but not merge: no approval is recorded and merging triggers Pages deployment.
+- #1709 Databricks CLI v1.27.0 branch head 6a45c7a4405ff733aa02a9e22a8f65771108594d passed exact-head full suite #45624202519: 4,693 passed, 1 skipped, 11 warnings, 21 subtests, 74.21%. Dependency audit #45624202296, money audit #45624202284, conflict integrity #45624202400 and fail-closed gate #45624202514 all passed. It is ready for independent review, but not merge for the same review/deployment blockers.
+- #1708 remains open as the exact superseded save-action PR. It must remain open until #1706 is merged and its combined restore/save content is verified on main.
+- The Run 17 documentation/map commit on #1702 (head 287e41c602911240e70e360e8914796c57a84d60) did not yet have an exact-head full-suite run. This follow-up adds a schema test for the ten-PR inventory so the next commit exercises the full suite. Previous head 18ab2aa5ce8eff428023b99c2b55f8e3a1dc32b8 passed 4,693 tests; that result does not substitute for the new head.
+- The three co-equal missions remain active; V3 remains the shared execution, orchestration, safety and verification foundation. Main remains unchanged at 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407. No merge, deployment, restart, force-push, branch rewrite or external action occurred.
