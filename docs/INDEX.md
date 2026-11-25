@@ -80,6 +80,10 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/VIDEO_EXTRACTION_2026-11-15.md - Video Extraction — 2026-11-15
 - docs/WEBSITE_FEATURES_TODO.md - Website Terminal and Query Box Features
 
+## docs/architecture
+
+- docs/architecture/PROJECT_STATE_LEDGER.md - Long-horizon project state ledger
+
 ## docs/domains
 
 - docs/domains/EIGHT-DOMAINS.md - Eight domains under TRACE-5
