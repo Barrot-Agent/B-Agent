@@ -1,4 +1,4 @@
-"""Real FluidSynth integration test; the CI SoundFont is test-only GPL-2."""
+"""Real FluidSynth integration test using the MIT-licensed FluidR3_GM SoundFont."""
 from __future__ import annotations
 
 import hashlib
@@ -48,8 +48,8 @@ def test_real_fluidsynth_render_is_stereo_reproducible_and_headroom_safe(tmp_pat
     license_name = os.environ.get("BARROT_TEST_SF2_LICENSE", "")
     source_name = os.environ.get("BARROT_TEST_SF2_SOURCE", "")
     assert soundfont.is_file()
-    assert license_name.startswith("GPL-2")
-    assert "timgm6mb-soundfont" in source_name.lower()
+    assert license_name == "MIT"
+    assert "fluid-soundfont-gm" in source_name.lower()
 
     manifest = compose_original(
         _template(), CompositionSettings(bars=16, seed=20261123)
@@ -105,7 +105,7 @@ def test_real_fluidsynth_render_is_stereo_reproducible_and_headroom_safe(tmp_pat
         "key": manifest.scale,
         "time_signature": "4/4",
         "seed": 20261123,
-        "distribution": "QC JSON only; GPL-2 SoundFont and rendered WAV are not uploaded",
+        "distribution": "Single-render QC only; the full-song test uploads the editable bundle separately",
     }
     qc_output = os.environ.get("BARROT_AUDIO_QC_OUTPUT")
     if qc_output:
@@ -127,8 +127,8 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
     license_name = os.environ.get("BARROT_TEST_SF2_LICENSE", "")
     source_name = os.environ.get("BARROT_TEST_SF2_SOURCE", "")
     assert soundfont.is_file()
-    assert license_name.startswith("GPL-2")
-    assert "timgm6mb-soundfont" in source_name.lower()
+    assert license_name == "MIT"
+    assert "fluid-soundfont-gm" in source_name.lower()
 
     manifest = compose_original(
         _template(), CompositionSettings(bars=16, seed=20261123)
@@ -236,7 +236,7 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
         "stem_alignment": "all WAV stems share the mix sample rate, frame count, and timeline origin",
         "daw_interchange": "Standard MIDI File + aligned WAV stems + JSON metadata; not a native DAW project",
         "rights_metadata_status": metadata["rights"]["status"],
-        "distribution": "QC JSON only; GPL-2 SoundFont, WAV mix, stems, and MIDI are not uploaded",
+        "distribution": "This reproducibility test emits QC only; the full-song test uploads the editable bundle separately",
     }
     qc_output = os.environ.get("BARROT_AUDIO_BUNDLE_QC_OUTPUT")
     assert qc_output, "BARROT_AUDIO_BUNDLE_QC_OUTPUT must be set in the dedicated integration job"
@@ -260,13 +260,15 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
     license_name = os.environ.get("BARROT_TEST_SF2_LICENSE", "")
     source_name = os.environ.get("BARROT_TEST_SF2_SOURCE", "")
     assert soundfont.is_file()
-    assert license_name.startswith("GPL-2")
-    assert "timgm6mb-soundfont" in source_name.lower()
+    assert license_name == "MIT"
+    assert "fluid-soundfont-gm" in source_name.lower()
 
     manifest = compose_full_song(_template(), seed=20261123)
+    bundle_output = os.environ.get("BARROT_AUDIO_BUNDLE_OUTPUT")
+    bundle_dir = Path(bundle_output) if bundle_output else tmp_path / "full-song-bundle"
     result = render_production_bundle(
         manifest,
-        tmp_path / "full-song-bundle",
+        bundle_dir,
         soundfont_path=soundfont,
         sample_rate=44100,
         headroom_dbfs=-6.0,
@@ -345,7 +347,7 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
         "clip_sample_count": 0,
         "stem_alignment": metadata["stem_alignment"],
         "native_daw_project_available": False,
-        "distribution": "QC JSON only; GPL-2 SoundFont, WAV mix, stems, and MIDI are not uploaded",
+        "distribution": "WAV mix, nine aligned stems, Standard MIDI File and JSON metadata are uploaded; MIT license notice included; SoundFont binary is not bundled",
     }
     qc_output = os.environ.get("BARROT_AUDIO_FULL_SONG_QC_OUTPUT")
     assert qc_output, "BARROT_AUDIO_FULL_SONG_QC_OUTPUT must be set in the dedicated CI job"
