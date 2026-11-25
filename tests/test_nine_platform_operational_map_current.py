@@ -121,7 +121,7 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     assert {item["number"] for item in data["current_prs"]} == {1702, 1703, 1704, 1705}
     assert {item["number"] for item in data["dependency_prs"]} == {1706, 1707, 1708, 1709, 1710, 1711}
     assert {item["number"] for item in data["supporting_prs"]} == {1712}
-    assert next(item for item in data["supporting_prs"] if item["number"] == 1712)["classification"] == "ready_pending_independent_review_and_gate_rerun"
+    assert next(item for item in data["supporting_prs"] if item["number"] == 1712)["classification"] == "ready_pending_independent_review"
 
     assert next(item for item in data["dependency_prs"] if item["number"] == 1708)["classification"] == "superseded_pending_successor_merge"
     assert next(item for item in data["dependency_prs"] if item["number"] == 1711)["classification"] == "blocked_dependency_compatibility"
