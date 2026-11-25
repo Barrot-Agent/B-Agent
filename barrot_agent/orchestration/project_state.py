@@ -194,6 +194,8 @@ def _revision(state: Mapping[str, Any]) -> str:
 class ProjectStateLedger:
     """Versioned project ledger with explicit export/import and no silent overwrites."""
 
+    TASK_ID = TASK_ID
+
     def __init__(self, workspace: str | Path, project_id: str = "barrot") -> None:
         if not isinstance(project_id, str) or not project_id.strip() or len(project_id) > 128:
             raise ValueError("project_id must be 1-128 characters")
