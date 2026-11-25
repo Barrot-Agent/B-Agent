@@ -1,3 +1,13 @@
+# Run 28 CI correction — 2026-11-25T21:18:00Z
+
+- Exact-head PR #1702 CI on `5b1d60f23c086986fcb8ec8fe52fb310296bf657` failed: **4,693 passed, 1 failed, 1 skipped, 11 warnings, 21 subtests**. Coverage was 74.21%; the single failure was `tests/test_nine_platform_operational_map_current.py::test_current_pr_inventory_includes_integration_and_dependency_workstreams`.
+- Root cause was a canonical backlog taxonomy mismatch: the test requires PR #1708 classification `superseded_pending_successor_merge`; the Run 28 map used `duplicate_subset_of_1706_pending_successor_merge`. No application code failed. No test was weakened or changed.
+- Corrected the map to the required canonical class `superseded_pending_successor_merge`, while preserving `duplicate_subset=true`, `superseded_by=1706` and the exact duplicate scope as metadata.
+- Map correction commit: `bb4c9c5106a173dfd9f8c18ac2ae11e61093e92e`. This addendum is a second commit; its exact-head CI is pending. The earlier passing full-suite result on `af8c69a` does not validate either new Run 28 commit.
+- Dependency audit, money audit, conflict-integrity and Pages build-validation-only checks passed on the failed head. Gated merge failed because the full-suite check failed. No merge or deployment occurred.
+
+---
+
 # Run 28 — authoritative three-mission checkpoint — 2026-11-25T20:59:53Z
 
 This checkpoint supersedes earlier observations only where it records newer evidence. XRP intelligence and prediction-engine mastery, professional audio production, and long-horizon continuity/capability development remain **three co-equal highest-priority active missions**. Barrot V3 remains their shared execution, orchestration, MMI, provenance, authorization, safety and verification foundation. Revenue/customer acquisition remains an immediate cross-mission objective, not a fourth technical mission; Sellbird remains Barrot-technology-only.
