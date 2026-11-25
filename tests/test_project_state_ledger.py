@@ -3,7 +3,7 @@ import copy
 
 import pytest
 
-from barrot_agent.orchestration.project_state import ProjectStateLedger, _hash
+from barrot_agent.orchestration.project_state import ProjectStateLedger, _hash, generate_transfer_keypair
 
 NOW = "2026-11-25T00:00:00Z"
 
@@ -224,3 +224,95 @@ def test_same_revision_reconciliation_merges_independent_history(tmp_path):
     left.reconcile_bundle(right.export_bundle())
     left_event_ids = {item["event_id"] for item in left.load()["history"]}
     assert right_event_ids.issubset(left_event_ids)
+
+
+
+def test_signed_transfer_authenticates_sender_and_persists_replay_guard(tmp_path):
+    keys = generate_transfer_keypair()
+    sender = ProjectStateLedger(tmp_path / "sender")
+    original = sender.add_record(
+        record("objective", "cross_host", "Recover signed state", source="sender")
+    )
+    envelope = sender.export_signed_bundle(keys["private_key_b64"], issued_at_utc=NOW)
+    receiver = ProjectStateLedger(tmp_path / "receiver")
+    trusted = {keys["sender_id"]: keys["public_key_b64"]}
+
+    imported = receiver.reconcile_signed_bundle(envelope, trusted_public_keys=trusted, now_utc=NOW)
+    assert imported["state"]["records"][0]["record_id"] == original["record_id"]
+    assert imported["transfer_receipt"]["sequence"] == 1
+    assert receiver.transfer_guard.summary()["incoming_sequences"][keys["sender_id"]] == 1
+
+    restarted_receiver = ProjectStateLedger(tmp_path / "receiver")
+    with pytest.raises(ValueError, match="replay"):
+        restarted_receiver.reconcile_signed_bundle(envelope, trusted_public_keys=trusted, now_utc=NOW)
+
+
+def test_signed_transfer_rejects_tampering_unknown_sender_and_key_mismatch(tmp_path):
+    keys = generate_transfer_keypair()
+    sender = ProjectStateLedger(tmp_path / "sender")
+    sender.add_record(record("decision", "approval", "required", source="sender"))
+    envelope = sender.export_signed_bundle(keys["private_key_b64"], issued_at_utc=NOW)
+    trusted = {keys["sender_id"]: keys["public_key_b64"]}
+
+    tampered = copy.deepcopy(envelope)
+    tampered["bundle"]["records"][0]["value"] = "modified"
+    receiver = ProjectStateLedger(tmp_path / "tampered")
+    with pytest.raises(ValueError, match="signature"):
+        receiver.reconcile_signed_bundle(tampered, trusted_public_keys=trusted, now_utc=NOW)
+
+    unknown = ProjectStateLedger(tmp_path / "unknown")
+    with pytest.raises(ValueError, match="not trusted"):
+        unknown.reconcile_signed_bundle(envelope, trusted_public_keys={}, now_utc=NOW)
+
+    other_keys = generate_transfer_keypair()
+    mismatch = ProjectStateLedger(tmp_path / "mismatch")
+    with pytest.raises(ValueError, match="does not match"):
+        mismatch.reconcile_signed_bundle(
+            envelope,
+            trusted_public_keys={keys["sender_id"]: other_keys["public_key_b64"]},
+            now_utc=NOW,
+        )
+
+
+def test_signed_transfer_rejects_expired_future_and_replayed_sequence(tmp_path):
+    keys = generate_transfer_keypair()
+    sender = ProjectStateLedger(tmp_path / "sender")
+    sender.add_record(record("objective", "ordered", "v1", source="sender"))
+    first = sender.export_signed_bundle(
+        keys["private_key_b64"], issued_at_utc=NOW, expires_in_seconds=60
+    )
+    sender.add_record(record("objective", "ordered", "v2", source="sender-2"))
+    second = sender.export_signed_bundle(
+        keys["private_key_b64"], issued_at_utc=NOW, expires_in_seconds=3600
+    )
+    trusted = {keys["sender_id"]: keys["public_key_b64"]}
+
+    expired_receiver = ProjectStateLedger(tmp_path / "expired")
+    with pytest.raises(ValueError, match="expired"):
+        expired_receiver.reconcile_signed_bundle(
+            first, trusted_public_keys=trusted, now_utc="2026-11-25T00:02:00Z"
+        )
+
+    future_receiver = ProjectStateLedger(tmp_path / "future")
+    with pytest.raises(ValueError, match="future"):
+        future_receiver.reconcile_signed_bundle(
+            second,
+            trusted_public_keys=trusted,
+            now_utc="2026-11-24T23:00:00Z",
+        )
+
+    ordered_receiver = ProjectStateLedger(tmp_path / "ordered")
+    ordered_receiver.reconcile_signed_bundle(second, trusted_public_keys=trusted, now_utc=NOW)
+    with pytest.raises(ValueError, match="sequence"):
+        ordered_receiver.reconcile_signed_bundle(first, trusted_public_keys=trusted, now_utc=NOW)
+
+
+def test_signed_transfer_sender_sequence_survives_process_restart(tmp_path):
+    keys = generate_transfer_keypair()
+    first_sender = ProjectStateLedger(tmp_path / "sender")
+    first_sender.add_record(record("objective", "sequence", "first", source="sender"))
+    first = first_sender.export_signed_bundle(keys["private_key_b64"], issued_at_utc=NOW)
+    second_sender = ProjectStateLedger(tmp_path / "sender")
+    second = second_sender.export_signed_bundle(keys["private_key_b64"], issued_at_utc=NOW)
+    assert first["sequence"] == 1
+    assert second["sequence"] == 2

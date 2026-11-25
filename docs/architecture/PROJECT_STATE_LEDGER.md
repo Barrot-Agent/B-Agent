@@ -51,3 +51,31 @@ The ledger provides the persistence and reconciliation mechanism; it does not si
 invent mission records or connect remote providers. The three mission objectives and
 their supporting evidence still need to be recorded through the explicit project-state
 API or the higher-level mission registry.
+
+
+## Authenticated cross-host transfer
+
+For a trusted transfer channel, generate a sender identity with
+`generate_transfer_keypair()`. Keep the private key in an OS keychain or approved
+secret store; never commit it or place it in project-state records. Register the
+sender's public key out of band on the receiving workspace, keyed by its SHA-256
+fingerprint (`sender_id`).
+
+The sender calls `export_signed_bundle(private_key_b64)`. This creates a canonical
+Ed25519-signed envelope with a bounded expiry, a persistent per-sender sequence and
+the inner bundle digest. The receiver calls
+`reconcile_signed_bundle(envelope, trusted_public_keys={sender_id: public_key_b64})`.
+The receiver verifies the trusted key, signature, project identity, issue/expiry
+window and inner bundle before consuming the sequence and reconciling state.
+
+Incoming sequences are persisted atomically in a separate workspace-local replay
+guard built on the existing AutonomousTaskStore. Replayed transfer IDs and
+non-increasing sender sequences are rejected across process restarts. A valid
+sequence is consumed before reconciliation; if reconciliation then fails, issue a
+new envelope with a higher sequence after resolving the conflict. The receiver's
+replay-guard state must be backed up with its workspace.
+
+This authenticates the sender and detects tampering; it does not encrypt the bundle
+or establish a network connection. Use an authorized encrypted transport, protect
+private keys, distribute trusted public keys out of band, and explicitly review key
+rotation. If the replay-guard file is lost, its replay history is lost.

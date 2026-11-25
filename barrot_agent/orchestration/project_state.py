@@ -6,9 +6,15 @@ then reconcile it. No network sync, credentials, or silent conflict resolution.
 """
 from __future__ import annotations
 
+import base64
+import binascii
 import hashlib
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+
+from cryptography.exceptions import InvalidSignature
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -18,6 +24,13 @@ SCHEMA = "barrot.project-state.v1"
 TASK_ID = "barrot_project_state_ledger"
 MAX_RECORDS = 5000
 MAX_BUNDLE_BYTES = 5 * 1024 * 1024
+SIGNED_TRANSFER_SCHEMA = "barrot.project-state.signed-transfer.v1"
+TRANSFER_GUARD_SCHEMA = "barrot.project-state.transfer-guard.v1"
+TRANSFER_TASK_ID = "barrot_project_state_transfer_guard"
+MAX_TRANSFER_LIFETIME_SECONDS = 7 * 24 * 60 * 60
+DEFAULT_TRANSFER_LIFETIME_SECONDS = 24 * 60 * 60
+MAX_TRANSFER_RECEIPTS = 5000
+MAX_SIGNED_TRANSFER_BYTES = MAX_BUNDLE_BYTES + 64 * 1024
 RECORD_TYPES = {
     "objective", "priority", "constraint", "decision", "architecture", "dependency",
     "task", "blocker", "evidence", "rejected_approach", "question", "lesson",
@@ -72,6 +85,153 @@ def _strings(value: Any, field: str, *, hashes: bool = False) -> list[str]:
         if item not in items:
             items.append(item)
     return sorted(items)
+
+
+def _decode_b64(value: Any, field: str, expected_bytes: int) -> bytes:
+    if not isinstance(value, str) or not value:
+        raise ValueError(f"{field} must be base64 text")
+    try:
+        decoded = base64.b64decode(value.encode("ascii"), validate=True)
+    except (binascii.Error, UnicodeEncodeError, ValueError) as exc:
+        raise ValueError(f"{field} must be valid base64") from exc
+    if len(decoded) != expected_bytes:
+        raise ValueError(f"{field} must decode to {expected_bytes} bytes")
+    return decoded
+
+
+def generate_transfer_keypair() -> dict[str, str]:
+    """Create an Ed25519 identity. Store the private key outside the project ledger."""
+    private_key = Ed25519PrivateKey.generate()
+    private_bytes = private_key.private_bytes(
+        serialization.Encoding.Raw,
+        serialization.PrivateFormat.Raw,
+        serialization.NoEncryption(),
+    )
+    public_bytes = private_key.public_key().public_bytes(
+        serialization.Encoding.Raw,
+        serialization.PublicFormat.Raw,
+    )
+    return {
+        "sender_id": hashlib.sha256(public_bytes).hexdigest(),
+        "private_key_b64": base64.b64encode(private_bytes).decode("ascii"),
+        "public_key_b64": base64.b64encode(public_bytes).decode("ascii"),
+    }
+
+
+class ProjectStateTransferGuard:
+    """Workspace-local monotonic sender sequences and durable incoming replay receipts."""
+
+    TASK_ID = TRANSFER_TASK_ID
+
+    def __init__(self, workspace: str | Path) -> None:
+        self.store = AutonomousTaskStore(workspace)
+
+    def _empty(self) -> dict[str, Any]:
+        return {
+            "transfer_schema": TRANSFER_GUARD_SCHEMA,
+            "outgoing_sequences": {},
+            "incoming_sequences": {},
+            "receipts": [],
+            "history": [],
+        }
+
+    def _load(self) -> dict[str, Any]:
+        state = self.store.load(self.TASK_ID)
+        if state is None:
+            return self._empty()
+        if state.get("transfer_schema") != TRANSFER_GUARD_SCHEMA:
+            raise ValueError("project-state transfer guard schema mismatch")
+        for field in ("outgoing_sequences", "incoming_sequences"):
+            mapping = state.get(field)
+            if not isinstance(mapping, dict):
+                raise ValueError(f"transfer guard {field} must be an object")
+            for sender, sequence in mapping.items():
+                _digest(sender, f"{field}.sender_id")
+                if type(sequence) is not int or sequence < 0:
+                    raise ValueError(f"transfer guard {field} sequence is invalid")
+        receipts = state.get("receipts")
+        if not isinstance(receipts, list) or len(receipts) > MAX_TRANSFER_RECEIPTS:
+            raise ValueError("transfer guard receipts are malformed or exceed the limit")
+        seen = set()
+        max_seen: dict[str, int] = {}
+        for item in receipts:
+            if not isinstance(item, Mapping):
+                raise ValueError("transfer guard receipt must be an object")
+            sender = _digest(item.get("sender_id"), "receipt.sender_id")
+            sequence = item.get("sequence")
+            if type(sequence) is not int or sequence < 1:
+                raise ValueError("transfer guard receipt sequence is invalid")
+            transfer_id = _digest(item.get("transfer_id"), "receipt.transfer_id")
+            if transfer_id in seen:
+                raise ValueError("transfer guard contains duplicate receipt IDs")
+            seen.add(transfer_id)
+            _timestamp(item.get("accepted_at_utc"), "receipt.accepted_at_utc")
+            max_seen[sender] = max(max_seen.get(sender, 0), sequence)
+        for sender, sequence in max_seen.items():
+            if state["incoming_sequences"].get(sender, 0) < sequence:
+                raise ValueError("transfer guard sequence index is behind its receipts")
+        history = state.get("history")
+        if not isinstance(history, list):
+            raise ValueError("transfer guard history must be a list")
+        return state
+
+    @staticmethod
+    def _history(state: dict[str, Any], action: str, detail: Mapping[str, Any]) -> None:
+        event = {"action": action, "detail": json.loads(_json(detail)), "at_utc": _now()}
+        event["event_id"] = _hash(event)
+        state["history"].append(event)
+        state["history"] = state["history"][-50:]
+
+    def next_outgoing_sequence(self, sender_id: str) -> int:
+        sender = _digest(sender_id, "sender_id")
+        state = self._load()
+        sequence = state["outgoing_sequences"].get(sender, 0) + 1
+        state["outgoing_sequences"][sender] = sequence
+        self._history(state, "outgoing_sequence_reserved", {"sender_id": sender, "sequence": sequence})
+        self.store.save(self.TASK_ID, state)
+        return sequence
+
+    def accept_incoming(
+        self,
+        sender_id: str,
+        sequence: int,
+        transfer_id: str,
+        *,
+        accepted_at_utc: str,
+    ) -> dict[str, Any]:
+        sender = _digest(sender_id, "sender_id")
+        transfer = _digest(transfer_id, "transfer_id")
+        if type(sequence) is not int or sequence < 1:
+            raise ValueError("signed transfer sequence must be a positive integer")
+        accepted_at = _timestamp(accepted_at_utc, "accepted_at_utc")
+        state = self._load()
+        if any(item["transfer_id"] == transfer for item in state["receipts"]):
+            raise ValueError("signed transfer replay detected: transfer ID was already imported")
+        last_sequence = state["incoming_sequences"].get(sender, 0)
+        if sequence <= last_sequence:
+            raise ValueError("signed transfer replay or out-of-order sequence detected")
+        receipt = {
+            "sender_id": sender,
+            "sequence": sequence,
+            "transfer_id": transfer,
+            "accepted_at_utc": accepted_at,
+        }
+        state["incoming_sequences"][sender] = sequence
+        state["receipts"].append(receipt)
+        state["receipts"] = state["receipts"][-MAX_TRANSFER_RECEIPTS:]
+        self._history(state, "incoming_transfer_sequence_consumed", receipt)
+        self.store.save(self.TASK_ID, state)
+        return receipt
+
+    def summary(self) -> dict[str, Any]:
+        state = self._load()
+        return {
+            "outgoing_sequences": dict(state["outgoing_sequences"]),
+            "incoming_sequences": dict(state["incoming_sequences"]),
+            "receipt_count": len(state["receipts"]),
+            "last_receipts": state["receipts"][-10:],
+        }
+
 
 
 def _record(raw: Mapping[str, Any]) -> dict[str, Any]:
@@ -236,7 +396,9 @@ class ProjectStateLedger:
         if not isinstance(project_id, str) or not project_id.strip() or len(project_id) > 128:
             raise ValueError("project_id must be 1-128 characters")
         self.project_id = project_id.strip()
-        self.store = AutonomousTaskStore(workspace)
+        self.workspace = Path(workspace).resolve()
+        self.store = AutonomousTaskStore(self.workspace)
+        self.transfer_guard = ProjectStateTransferGuard(self.workspace)
 
     def _empty(self) -> dict[str, Any]:
         state = {
@@ -375,6 +537,154 @@ class ProjectStateLedger:
         if len(_json(bundle).encode("utf-8")) > MAX_BUNDLE_BYTES:
             raise ValueError("project-state bundle exceeds the size limit")
         return bundle
+
+
+    def export_signed_bundle(
+        self,
+        private_key_b64: str,
+        *,
+        issued_at_utc: str | None = None,
+        expires_in_seconds: int = DEFAULT_TRANSFER_LIFETIME_SECONDS,
+    ) -> dict[str, Any]:
+        """Export a sender-authenticated bundle; the private key is never persisted."""
+        if type(expires_in_seconds) is not int or not 1 <= expires_in_seconds <= MAX_TRANSFER_LIFETIME_SECONDS:
+            raise ValueError("expires_in_seconds must be between 1 second and 7 days")
+        private_bytes = _decode_b64(private_key_b64, "private_key_b64", 32)
+        private_key = Ed25519PrivateKey.from_private_bytes(private_bytes)
+        public_bytes = private_key.public_key().public_bytes(
+            serialization.Encoding.Raw,
+            serialization.PublicFormat.Raw,
+        )
+        sender_id = hashlib.sha256(public_bytes).hexdigest()
+        issued_at = _timestamp(issued_at_utc or _now(), "issued_at_utc")
+        issued_dt = datetime.fromisoformat(issued_at.replace("Z", "+00:00"))
+        expires_at = (issued_dt + timedelta(seconds=expires_in_seconds)).isoformat(timespec="microseconds").replace("+00:00", "Z")
+        bundle = self.export_bundle()
+        sequence = self.transfer_guard.next_outgoing_sequence(sender_id)
+        unsigned = {
+            "schema": SIGNED_TRANSFER_SCHEMA,
+            "project_id": self.project_id,
+            "sender_id": sender_id,
+            "sender_public_key_b64": base64.b64encode(public_bytes).decode("ascii"),
+            "signature_algorithm": "Ed25519",
+            "sequence": sequence,
+            "issued_at_utc": issued_at,
+            "expires_at_utc": expires_at,
+            "bundle_sha256": bundle["bundle_sha256"],
+            "bundle": bundle,
+        }
+        unsigned["transfer_id"] = _hash({
+            "schema": unsigned["schema"],
+            "project_id": unsigned["project_id"],
+            "sender_id": sender_id,
+            "sequence": sequence,
+            "issued_at_utc": issued_at,
+            "expires_at_utc": expires_at,
+            "bundle_sha256": bundle["bundle_sha256"],
+        })
+        signature = private_key.sign(_json(unsigned).encode("utf-8"))
+        envelope = {**unsigned, "signature_b64": base64.b64encode(signature).decode("ascii")}
+        if len(_json(envelope).encode("utf-8")) > MAX_SIGNED_TRANSFER_BYTES:
+            raise ValueError("signed project-state transfer exceeds the size limit")
+        return envelope
+
+    def reconcile_signed_bundle(
+        self,
+        envelope: Mapping[str, Any],
+        *,
+        trusted_public_keys: Mapping[str, str | bytes],
+        now_utc: str | None = None,
+        max_clock_skew_seconds: int = 300,
+    ) -> dict[str, Any]:
+        """Verify a trusted Ed25519 sender, expiry and replay sequence before import.
+
+        The incoming sequence is durably consumed before reconciliation. If reconciliation
+        then fails, the sender must issue a new envelope with a higher sequence.
+        """
+        if not isinstance(envelope, Mapping) or envelope.get("schema") != SIGNED_TRANSFER_SCHEMA:
+            raise ValueError("signed project-state transfer schema mismatch")
+        if envelope.get("project_id") != self.project_id:
+            raise ValueError("signed project-state transfer project identity mismatch")
+        if not isinstance(trusted_public_keys, Mapping):
+            raise ValueError("trusted_public_keys must be an explicit sender-key mapping")
+        sender_id = _digest(envelope.get("sender_id"), "sender_id")
+        trusted_value = trusted_public_keys.get(sender_id)
+        if trusted_value is None:
+            raise ValueError("signed project-state transfer sender is not trusted")
+        trusted_public = (
+            _decode_b64(trusted_value, "trusted_public_key", 32)
+            if isinstance(trusted_value, str)
+            else trusted_value
+        )
+        if not isinstance(trusted_public, bytes) or len(trusted_public) != 32:
+            raise ValueError("trusted public key must be 32 raw bytes or base64 text")
+        envelope_public = _decode_b64(envelope.get("sender_public_key_b64"), "sender_public_key_b64", 32)
+        if envelope_public != trusted_public or hashlib.sha256(envelope_public).hexdigest() != sender_id:
+            raise ValueError("signed project-state transfer public key does not match the trusted sender")
+        if envelope.get("signature_algorithm") != "Ed25519":
+            raise ValueError("unsupported signed project-state transfer algorithm")
+        sequence = envelope.get("sequence")
+        if type(sequence) is not int or sequence < 1:
+            raise ValueError("signed project-state transfer sequence must be a positive integer")
+        if type(max_clock_skew_seconds) is not int or max_clock_skew_seconds < 0:
+            raise ValueError("max_clock_skew_seconds must be a non-negative integer")
+        issued_at = _timestamp(envelope.get("issued_at_utc"), "issued_at_utc")
+        expires_at = _timestamp(envelope.get("expires_at_utc"), "expires_at_utc")
+        now = _timestamp(now_utc or _now(), "now_utc")
+        issued_dt = datetime.fromisoformat(issued_at.replace("Z", "+00:00"))
+        expires_dt = datetime.fromisoformat(expires_at.replace("Z", "+00:00"))
+        now_dt = datetime.fromisoformat(now.replace("Z", "+00:00"))
+        if issued_dt > now_dt + timedelta(seconds=max_clock_skew_seconds):
+            raise ValueError("signed project-state transfer issue time is in the future")
+        if expires_dt <= now_dt:
+            raise ValueError("signed project-state transfer has expired")
+        lifetime = (expires_dt - issued_dt).total_seconds()
+        if lifetime <= 0 or lifetime > MAX_TRANSFER_LIFETIME_SECONDS:
+            raise ValueError("signed project-state transfer lifetime is invalid")
+        bundle = envelope.get("bundle")
+        if not isinstance(bundle, Mapping):
+            raise ValueError("signed project-state transfer bundle is missing")
+        if envelope.get("bundle_sha256") != bundle.get("bundle_sha256"):
+            raise ValueError("signed project-state transfer bundle digest reference mismatch")
+        expected_transfer_id = _hash({
+            "schema": SIGNED_TRANSFER_SCHEMA,
+            "project_id": self.project_id,
+            "sender_id": sender_id,
+            "sequence": sequence,
+            "issued_at_utc": issued_at,
+            "expires_at_utc": expires_at,
+            "bundle_sha256": envelope.get("bundle_sha256"),
+        })
+        if envelope.get("transfer_id") != expected_transfer_id:
+            raise ValueError("signed project-state transfer ID mismatch")
+        self._validate_bundle(bundle)
+        unsigned = {key: value for key, value in envelope.items() if key != "signature_b64"}
+        signature = _decode_b64(envelope.get("signature_b64"), "signature_b64", 64)
+        try:
+            Ed25519PublicKey.from_public_bytes(trusted_public).verify(
+                signature,
+                _json(unsigned).encode("utf-8"),
+            )
+        except InvalidSignature as exc:
+            raise ValueError("signed project-state transfer signature verification failed") from exc
+        receipt = self.transfer_guard.accept_incoming(
+            sender_id,
+            sequence,
+            expected_transfer_id,
+            accepted_at_utc=now,
+        )
+        state = self.reconcile_bundle(bundle)
+        state = self.load()
+        self._history(state, "signed_bundle_reconciled", {
+            "sender_id": sender_id,
+            "sequence": sequence,
+            "transfer_id": expected_transfer_id,
+            "bundle_sha256": envelope["bundle_sha256"],
+        })
+        state["revision"] = _revision(state)
+        self.store.save(TASK_ID, state)
+        return {"state": state, "transfer_receipt": receipt}
+
 
     def _validate_bundle(self, bundle: Mapping[str, Any]) -> dict[str, Any]:
         if not isinstance(bundle, Mapping) or bundle.get("schema") != SCHEMA or bundle.get("project_id") != self.project_id:
