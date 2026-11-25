@@ -805,3 +805,80 @@ No merge, Pages deployment, force-push, branch rewrite, secret rotation, Space r
 4. **Commercial:** prepare a reproducible, accurately caveated Barrot evidence-pack sample before free Barrot-only prospect discovery. Keep outbound sending paused until the audience, offer, copy, mailbox and compliance controls are separately approved.
 
 This checkpoint is appended to the existing #1702 handoff branch only. It does not create another PR or change main. Its new commit requires fresh exact-head CI and gates.
+
+
+
+# Run 14 current-state supplement — 2026-11-25
+
+This supplement supersedes earlier status statements below where newer live evidence exists. Historical checkpoints remain preserved. The three priority-1 missions remain co-equal: XRP intelligence/prediction, professional audio production, and long-horizon continuity/capability development. Barrot V3 remains the shared execution, orchestration, MMI, provenance, authorization, safety and verification foundation.
+
+## Repository, integration and governance — VERIFIED
+
+- Main remains `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; recursive tree is **3,163 entries, truncated=false**. Main did not change during this run.
+- Main branch summary reports `protected=true` and required checks: Full repository test suite, `audit`, `pip-audit`, and Verify PR merge tree against current base. Detailed branch-protection read remains HTTP 403; required approval count and hidden settings remain unknown. The visible fallback ruleset is disabled.
+- Exactly four PRs remain open, non-draft, mergeable, 0 commits behind main and path-disjoint. All remain **unique / unreviewed**; no duplicate or superseded PR was found:
+  - [#1702](https://github.com/Barrot-Agent/B-Agent/pull/1702), handoff/nine-platform map/XRP research: before this run's latest research and handoff documentation commits, head `30f6e729f7692821bb5e1123412d94b7aa8f7bd2`, 32 ahead / 0 behind, 4 paths. Exact-head CI [45591464245](https://github.com/Barrot-Agent/B-Agent/actions/runs/45591464245) succeeded: full repository suite collected **4,693 items, 1 skipped**, all active tests passed; package coverage gates passed. Dependency audit [45591463999](https://github.com/Barrot-Agent/B-Agent/actions/runs/45591463999), money audit [45591463962](https://github.com/Barrot-Agent/B-Agent/actions/runs/45591463962), conflict-integrity [45591463966](https://github.com/Barrot-Agent/B-Agent/actions/runs/45591463966), and fail-closed readiness [45591463989](https://github.com/Barrot-Agent/B-Agent/actions/runs/45591463989) succeeded on that exact head. No independent review exists. The research addendum was subsequently extended with primary-source evidence on OCC, BNY, C2FO, SBI Ripple Asia, RLUSD and Circle; those new commits change the head, so the prior successful checks do **not** validate the latest documentation head. Fresh exact-head checks are required.
+  - [#1703](https://github.com/Barrot-Agent/B-Agent/pull/1703), portable continuity ledger: head `502b3dfa748b72384c9a3d79a3f8355bad245a3f`, 12 ahead / 0 behind, 7 paths. Exact-head full suite [45529493545](https://github.com/Barrot-Agent/B-Agent/actions/runs/45529493545): **4,708 passed, 1 skipped; 74.28% coverage**. Dependency, money, conflict and fail-closed checks passed on that head. No independent review.
+  - [#1704](https://github.com/Barrot-Agent/B-Agent/pull/1704), per-instrument SoundFont routing: head `35b10a2ea589e0fd41bc6fb430ab508af77e06b9`, 7 ahead / 0 behind, 5 paths. Exact-head full suite [45529940481](https://github.com/Barrot-Agent/B-Agent/actions/runs/45529940481): **4,694 passed, 1 skipped; 74.22% coverage**. FluidSynth integration [45529940465](https://github.com/Barrot-Agent/B-Agent/actions/runs/45529940465): **3/3 passed**. Dependency, money, conflict and post-ready gate passed. No independent review.
+  - [#1705](https://github.com/Barrot-Agent/B-Agent/pull/1705), RLUSD cross-chain research normalizer: head `d7c589d1137b3fc40b32d337bb5bb9d537391aa4`, 3 ahead / 0 behind, 4 paths. Exact-head full suite [45543739494](https://github.com/Barrot-Agent/B-Agent/actions/runs/45543739494): **4,704 passed, 1 skipped; 74.24% coverage**. Dependency, money, conflict and fail-closed checks passed. Its captured sample correctly returned `BLOCKED_STALE` at 321.593 seconds against a 300-second gate; do not relax the freshness threshold. No independent review.
+- No new branch or PR was created. No branch was force-pushed or rewritten. No PR was merged or closed.
+- Merging to main has a verified GitHub Pages deployment side effect. With approval requirements still unreadable and no specific authorization for a new deployment, do not merge merely because prior exact-head checks passed.
+
+## XRP intelligence and prediction — EXECUTED; forecast withheld
+
+Latest main scheduled ingestion: [run #151 / 45593043932](https://github.com/Barrot-Agent/B-Agent/actions/runs/45593043932), exact main SHA above. Run completed successfully. Data cutoff/capture: **2026-11-25T10:14:49.666656Z**. Snapshot: `aa1cd7215aaf7d55a4b91cf502f8096648787b22c0d597925e4bd11956febe6d`.
+
+- Feature store: **111 snapshots**, **29,789 historical feature records**, **2,230 input records**. Latest snapshot: **124 eligible**, **366 excluded**. SQLite integrity `ok`; snapshot status `verified`.
+- Receipt chain: **37 receipts**, **21 raw payloads retained**, **16 digest-only**; chain verification passed and cross-run continuity continued. Receipt-log SHA-256: `cf4d64dc634463bf425921bb7da58c619366d58be4faa9407f6381990a1d7d92`. This is tamper-evident relative to its head, not WORM storage or an external timestamp anchor. Raw per-run artifacts retain 90 days; feature-store checkpoints retain 7 days.
+- Event timeline: **150 events; 0 raw-source hashes; 0 verified receipt links; 0 complete event receipts**. There were 11 URL matches but 0 exact URL-plus-capture-time matches. All 150 remain `MISSING_RAW_RECEIPT_HASH`. Preserve the legacy events as unverified; do not backdate new hashes onto old observations.
+- Walk-forward: **416 one-hour rows**, status `PARTIAL_OR_BLOCKED`; forecast `NOT_ISSUED`. Drift: **0 of 205 features evaluated**, status `INSUFFICIENT_DATA`; drift never authorizes forecast issuance. No XRP candidate or independent shadow cohort has passed the admission policy.
+- Source failures: **18**. SEC EDGAR has **3 failures, 0 raw receipts and 0 filing events**; contact identity remains unconfigured. Do not fabricate a contact identity.
+- The feature-store cache is read-only after its configured budget was exhausted. Run #151 restored the previous trusted per-run checkpoint from run #150; saving the cache failed, but raw, event, receipt-index and feature-store artifacts uploaded successfully. Automatic reconstruction of the cumulative store from raw artifacts is not implemented.
+- Coverage remains incomplete: Binance, Bitstamp, Coinbase, Kraken, Bitbank and OKX spot inputs are present, but normalized OKX USD is top-of-book only and same-publisher. Deribit XRP-USDC perpetual snapshots remain raw-only; derivatives history is narrower than spot. This is not a consolidated, independent cross-venue liquidity picture.
+- No directional forecast, paper trade or real-money action occurred. Latest main Cross Analysis [45598982602](https://github.com/Barrot-Agent/B-Agent/actions/runs/45598982602) also succeeded.
+
+## XRP connected-ecosystem research — EXECUTED; research-only
+
+The existing primary-source reconciliation file was extended in section **7.12** on the existing #1702 branch. It adds:
+
+- OCC Corporate Applications Search records Ripple National Trust Bank charter 25364 as consummated/effective on **2026-10-26**. Ripple says final approval covers reserve management for RLUSD, collateral-trustee services and fiduciary digital-asset custody. **Standard Custody & Trust Company remains RLUSD's legal issuer**; the bank is a separate regulated layer.
+- BNY's **2026-10-27** announcement says its Digital Asset Custody platform supports **XRP and RLUSD** for eligible institutions. BNY's future RLUSD mint/redeem support through BNY and the Ripple/BNY/C2FO tokenized trade-finance work remain conditional or exploratory; no completed XRP purchase or trade-finance volume was verified.
+- C2FO/Ripple's **2026-10-27** Instant Pay announcement specifies **RLUSD settlement on XRPL**, with capital providers funding early payment. C2FO's broader **$525B** working-capital figure belongs to existing programs, not XRPL Instant Pay volume. Its product page still shows a waitlist and U.S.-only launch scope; no live transaction or production volume was verified. This is not evidence that XRP is the settlement principal.
+- Ripple's SBI Ripple Asia page says that company sells RippleNet software services and **does not handle XRP**. It separately describes the XRP-based Japan–Philippines ODL service operated through SBI Remit, Coins.ph and SBI VC Trade. SBI VC Trade's June 24 RLUSD launch is a separate stablecoin-distribution relationship.
+- Ripple/Coinbase RLUSD distribution began across Prime, Exchange and Retail in the October 28 announcement; Coinbase Global Exchange collateral use was described as a later phase. No subsequent dated activation notice or collateral terms were verified by this pass.
+- Circle's Q2 2026 SEC filing describes the Coinbase USDC distribution economics and reports **$324.6M Q2 / $655.3M H1 2026** distribution costs in connection with the Coinbase agreements. The previously recorded Q3 filing reports **$986.6M for nine months through 2026-09-30**. Circle's issuer page reports **$67.8B USDC in circulation as of 2026-11-23** and native issuance on 38 networks including XRPL. These are not XRP-demand measures.
+- The source independence, legal-entity roles, future-vs-live distinctions, disconfirming evidence and full source register are in the research file. Browser research bytes were not captured as immutable receipts; these observations remain research-only and model-ineligible.
+
+Primary-source references: [OCC CAS](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2), [Ripple final OCC approval](https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/), [BNY/Ripple custody](https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html), [C2FO/Ripple Instant Pay](https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/), [SBI Ripple Asia](https://ripple.com/company/sbi-ripple-asia/), [SBI VC Trade RLUSD](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html), [Ripple/Coinbase RLUSD](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/), [Circle Q2 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm), [Circle USDC](https://www.circle.com/usdc).
+
+## Professional audio — EXECUTED technically; professional acceptance unverified
+
+- #1704's per-instrument SoundFont routing and FluidSynth integration tests remain verified on its exact branch head. The test uses identical test SoundFont bytes under different paths; it proves separate routing/SoundFont IDs, not distinct acoustic content or professional timbres.
+- The 80-bar QC render is **175.545 seconds, 110 BPM, D minor, 4/4, 9 aligned stems, 10 section markers, zero clipped samples, peak -6.017 dBFS and true peak -6.0000005 dBTP**. The uploaded artifact is QC JSON only; it does not contain the WAV mix, stems or MIDI.
+- No rights-cleared production palette has been downloaded, hashed, installed and rendered. No user-accessible WAV/stems/MIDI package, native DAW project or comparative listening acceptance is verified. No professional-quality improvement is claimed.
+
+## Long-horizon continuity — PARTIALLY VERIFIED
+
+- #1703 implements the versioned, append-only, provenance-aware project-state ledger on the existing workspace-local task store. Independent-workspace export/import, hash verification, conflict preservation, stale-record detection and dependency-aware task selection are tested.
+- Authenticated cross-host synchronization, sender signatures and automatic provider-to-provider handoff are not implemented. Hash integrity is not sender authentication.
+
+## Nine-platform coordination and commercial execution
+
+- Only ChatGPT-to-GitHub authentication and data flow are verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested; no live external model coordination is claimed.
+- Sellbird remains uninstalled and unauthenticated. Scope remains Barrot technology only. No verified prospects, outreach approval, sent messages, replies, meetings, proposals or revenue exist. Outbound remains paused. Music and TrekFlex remain outside Sellbird scope.
+
+## DESIGNED / EXECUTED / VERIFIED — Run 14
+
+- **DESIGNED:** three co-equal priority-1 missions on the shared Barrot V3 foundation; receipt-at-capture XRP provenance; leakage-safe forecast admission; rights-cleared audio production and listening acceptance; authenticated continuity transfer; nine-platform least-privilege coordination; Barrot-only customer acquisition.
+- **EXECUTED:** re-fetched protected main and full recursive tree; rechecked all four open PRs, branch ancestry, changed paths, reviews and exact-head workflow evidence; inspected XRP run #151 logs and artifact inventory; reviewed fresh official OCC, BNY, C2FO, SBI, Ripple, Coinbase and SEC sources; updated the existing #1702 research file and this single durable handoff.
+- **VERIFIED:** main SHA/tree; four unique path-disjoint open PRs; exact-head #1702 checks on its prior head; XRP run #151 feature-store integrity, receipt-chain continuity and event-provenance failure; forecast withheld; official relationship distinctions in research section 7.12; audio and continuity test boundaries; only ChatGPT-to-GitHub live data flow.
+- **NOT VERIFIED:** latest #1702 documentation head's exact CI; required review/approval sufficiency; authorization for the automatic Pages deployment side effect; event-level receipts; calibrated predictive performance; professional sound palette and user-accepted DAW deliverables; authenticated cross-host continuity; eight external platform connections; Sellbird configuration, prospects, outreach or revenue.
+
+### Next concrete actions — balanced portfolio
+
+1. **XRP:** implement receipt-at-capture for newly observed events and deterministic raw-artifact replay. Preserve legacy events as unverified; never backdate. Keep this within the existing XRP integration workstream rather than creating a second active XRP PR.
+2. **Audio:** acquire and hash rights-cleared production assets; render a user-accessible full WAV/stems/MIDI package; inspect artifacts and perform level-matched listening review.
+3. **Continuity:** add authenticated sender signatures and explicit cross-workspace transfer verification without replacing the existing V3 ledger.
+4. **Commercial:** prepare a reproducible Barrot evidence pack, validate the smallest deliverable Barrot-only pilot offer, then perform free/low-cost prospect discovery. Keep outbound paused pending explicit campaign and sending approval.
+
+No merge, deployment, secret rotation, Space restart, Kaggle submission, funds transfer, paper trade or outbound message occurred. The latest #1702 documentation commit requires fresh exact-head CI and gates. Main remains unchanged.
