@@ -1,3 +1,28 @@
+# Run 15 validation correction — 2026-11-25T14:09:37Z
+
+## Exact-head test failure and correction — EXECUTED
+
+The first full-suite run on PR #1702 head `b817b0f9df575a34ec42c6b9775b25d6c5a4c019` completed with **4,693 passed, 1 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. The only failure was:
+
+`tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions`
+
+The test requires the literal scope description `metadata/tree/PR/file/workflow reads` in `platforms.ChatGPT.authentication.evidence`. The live checkpoint refresh had replaced that exact phrase with a longer description. This was a documentation/schema-contract regression, not a product-code or runtime failure.
+
+**Correction made on the existing PR branch:** restored the exact tested scope phrase while retaining the actual read/write evidence. No test was weakened, no permission was overstated, and no code path was bypassed. The new head requires a fresh full-suite run; previous-head results are not accepted as proof for the corrected head.
+
+Other exact-head evidence on the failed head: audit succeeded (run 45630173553), pip-audit succeeded (45630173633), merge-tree succeeded (45630173643); merge-readiness was still in progress. Do not merge until the corrected head's full suite, fail-closed gate and all required checks pass.
+
+## Correction governance
+
+- **DESIGNED:** preserve the schema/test contract for observed ChatGPT-GitHub permissions.
+- **EXECUTED:** inspected the complete failure log, identified the single assertion, restored the required wording on the same integration branch.
+- **VERIFIED:** the failure is isolated to one exact-string assertion; 4,693 other tests passed. Corrected-head validation is pending.
+- **NOT VERIFIED:** corrected-head full-suite result, final merge readiness, branch-protection approval requirements or deployment authorization.
+
+No test was relaxed, no branch was rewritten, and no merge or deployment occurred.
+
+---
+
 # Run 14 live checkpoint — 2026-11-25T13:59:19Z
 
 This supplement supersedes earlier status statements where newer live evidence exists. Historical checkpoints remain preserved. XRP intelligence/prediction-engine mastery, professional audio production, and long-horizon continuity/capability development remain three co-equal highest-priority missions. None is subordinate to another. Barrot V3 remains their shared execution, orchestration, MMI, provenance, authorization, safety, and verification foundation.

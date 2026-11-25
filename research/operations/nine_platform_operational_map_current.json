@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T13:59:19Z",
-  "capture_basis": "Live GitHub connector reads of main metadata, complete recursive tree, open PR inventory, current PR heads, changed paths, ancestry, exact-head check-runs and review inventories; latest scheduled main XRP run #155 and Cross Analysis #4623.",
+  "captured_at_utc": "2026-11-25T14:09:37Z",
+  "capture_basis": "Post-validation review of exact PR #1702 head b817b0f9df575a34ec42c6b9775b25d6c5a4c019; complete-suite log inspection; one map-scope assertion diagnosed and corrected.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -62,8 +62,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "head_sha": "81516bce256d703f2403d915d904575341b1a47a",
-        "commits_ahead": 44,
+        "head_sha": "b817b0f9df575a34ec42c6b9775b25d6c5a4c019",
+        "commits_ahead": 46,
         "commits_behind": 0,
         "draft": false,
         "changed_paths": [
@@ -74,7 +74,9 @@
         ],
         "classification": "blocked_pending_independent_review_and_deployment_authorization",
         "workstream_uniqueness": "unique",
-        "review_count": 0
+        "review_count": 0,
+        "observed_at_utc": "2026-11-25T14:09:37Z",
+        "validation_status": "previous exact-head suite failed one map-scope string assertion; corrected, rerun pending"
       },
       {
         "number": 1703,
@@ -599,7 +601,7 @@
       ],
       "authentication": {
         "status": "VERIFIED_FOR_GITHUB_CONNECTOR",
-        "evidence": "Live GitHub repository metadata, complete recursive tree, main branch, open PR inventory, exact PR heads, ancestry, changed paths, workflow check-runs, reviews and file reads were tested in this run."
+        "evidence": "Verified scope: metadata/tree/PR/file/workflow reads. Live GitHub repository metadata, complete recursive tree, main branch, open PR inventory, exact PR heads, ancestry, changed paths, workflow check-runs, reviews and file reads were tested in this run."
       },
       "permissions": {
         "observed_actions": [
@@ -620,7 +622,7 @@
         "verified": true,
         "status": "LIVE_TESTED",
         "external_transfer_occurred": false,
-        "details": "GitHub data was read and the existing integration/mission-handoff-refresh-20261125 branch handoff and nine-platform map were refreshed. No content was sent to another model platform."
+        "details": "GitHub metadata/tree/PR/file/workflow reads were tested. Existing documentation files were written on integration/mission-handoff-refresh-20261125. No content was sent to another model platform."
       }
     },
     "Claude": {
@@ -987,8 +989,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "81516bce256d703f2403d915d904575341b1a47a",
-      "commits_ahead": 44,
+      "head_sha": "b817b0f9df575a34ec42c6b9775b25d6c5a4c019",
+      "commits_ahead": 46,
       "commits_behind": 0,
       "changed_paths": [
         "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -996,26 +998,29 @@
         "research/xrp_intelligence/20261124_primary_source_reconciliation.md",
         "tests/test_nine_platform_operational_map_current.py"
       ],
-      "classification": "blocked",
+      "classification": "blocked_validation_correction_pending_rerun",
       "workstream_uniqueness": "unique",
       "review_count": 0,
-      "exact_head_validation": "PASSED_ON_CURRENT_HEAD",
+      "exact_head_validation": "FAILED_ONE_MAP_SCOPE_ASSERTION_CORRECTED_RERUN_PENDING",
       "checks": {
-        "full_suite_run_id": 45628208371,
-        "full_suite_status": "success",
+        "full_suite_run_id": 45630173568,
+        "full_suite_status": "failure",
         "passed": 4693,
+        "failed": 1,
         "skipped": 1,
         "warnings": 11,
         "subtests": 21,
         "coverage_percent": 74.21,
-        "audit_run_id": 45628207998,
+        "failure": "tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions",
+        "failure_cause": "The map refresh replaced a required exact scope phrase in authentication.evidence; no product-code failure.",
+        "audit_run_id": 45630173553,
         "audit_status": "success",
-        "pip_audit_run_id": 45628208327,
+        "pip_audit_run_id": 45630173633,
         "pip_audit_status": "success",
-        "merge_tree_run_id": 45628208093,
+        "merge_tree_run_id": 45630173643,
         "merge_tree_status": "success",
-        "fail_closed_gate_run_id": 45628208022,
-        "fail_closed_gate_status": "success"
+        "fail_closed_gate_run_id": 45630173766,
+        "fail_closed_gate_status": "in_progress"
       }
     },
     {
