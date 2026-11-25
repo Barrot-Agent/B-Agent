@@ -3,7 +3,7 @@ import copy
 
 import pytest
 
-from barrot_agent.orchestration.project_state import ProjectStateLedger
+from barrot_agent.orchestration.project_state import ProjectStateLedger, _hash
 
 NOW = "2026-11-25T00:00:00Z"
 
@@ -114,6 +114,31 @@ def test_bundle_tampering_and_stale_revision_fail_closed(tmp_path):
         other.reconcile_bundle(tampered)
     with pytest.raises(RuntimeError, match="revision changed"):
         ledger.add_record(record("lesson", "stale-write", "reject"), expected_revision="0" * 64)
+
+
+
+def test_local_history_event_tampering_fails_closed(tmp_path):
+    ledger = ProjectStateLedger(tmp_path / "workspace")
+    ledger.add_record(record("objective", "continuity", "preserve state"))
+    state = ledger.store.load(ledger.TASK_ID)
+    state["history"][0]["detail"]["record_id"] = "tampered"
+    ledger.store.save(ledger.TASK_ID, state)
+
+    with pytest.raises(ValueError, match="history event hash mismatch"):
+        ledger.load()
+
+
+def test_bundle_history_event_tampering_fails_even_with_recomputed_outer_digest(tmp_path):
+    source = ProjectStateLedger(tmp_path / "source")
+    source.add_record(record("objective", "continuity", "preserve state"))
+    bundle = copy.deepcopy(source.export_bundle())
+    bundle["history"][0]["detail"]["record_id"] = "tampered"
+    unsigned = {key: value for key, value in bundle.items() if key != "bundle_sha256"}
+    bundle["bundle_sha256"] = _hash(unsigned)
+
+    destination = ProjectStateLedger(tmp_path / "destination")
+    with pytest.raises(ValueError, match="history event hash mismatch"):
+        destination.reconcile_bundle(bundle)
 
 
 def test_reimporting_same_bundle_is_idempotent(tmp_path):
