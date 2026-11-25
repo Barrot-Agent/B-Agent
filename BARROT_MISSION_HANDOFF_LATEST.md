@@ -1291,3 +1291,144 @@ No new PR was created. No merge, deployment, force-push, branch rewrite, secret 
 7. Preserve the no-merge rule while independent approvals, complete branch-protection requirements and specific Pages deployment approval are absent.
 
 No merge, deployment, Space restart, secret rotation, paid lookup, Kaggle submission, outbound message, paper trade, funds transfer or real-money action occurred.
+
+
+## Run 17.3 primary-source identity, corporate-network and capital-flow reconciliation — 2026-11-25T13:47:00Z
+
+### Current integration verification
+
+- Before this research supplement, PR #1702 head `6c1b7f07e6188e5a5ad53ae72b86033c131a3d7e` passed the exact-head Full repository test suite, audit, pip-audit, merge-tree verification and fail-closed Merge readiness checks. The full-suite result is verified as success; the job log did not expose a reliable test-count summary through the available log endpoint, so no count is asserted.
+- This handoff update creates a new commit on the same existing integration branch. All checks must be rerun on the new head. Do not reuse the prior head's pass.
+- No new branch or PR was created. No merge occurred. Main remains `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`.
+
+### Japan SBIC identity — RESOLVED FROM PRIMARY COMPANY RECORDS
+
+The three names resolve to separate statutory Japanese SME investment/consultation companies, not to SBI Holdings:
+
+1. **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. — official company profile: https://www.sbic.co.jp/company/profile/
+2. **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. — official company profile: https://www.sbic-cj.co.jp/company/about/
+3. **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. — official company profile: https://www.sbic-wj.co.jp/profiles/profile/
+
+The official profiles describe the three as sister companies established under Japan's Small and Medium Business Investment & Consultation Company Law. The East profile lists local governments, chambers of commerce, banks and private companies among its shareholders and identifies Nagoya and Osaka as sister companies. No official profile reviewed identifies any of the three as a subsidiary or affiliate of SBI Holdings.
+
+**SBI Holdings, Inc.** is a separate Japanese financial-services holding group. Do not collapse the names `SBIC East/Central/West` and `SBI Holdings` into one entity. The Evernorth SEC prospectus separately defines “SBI” as SBI Holdings, Inc. and identifies four SBI-controlled investor entities; none is one of the three SBIC companies.
+
+### Coinbase / Circle / Ripple / SBI relationship graph — PRIMARY-SOURCE RECONCILIATION
+
+**SBI Holdings ↔ Ripple**
+- Ripple and SBI Holdings announced the creation of **SBI Ripple Asia** in January 2016. It is a joint venture for regional enterprise payment technology and RippleNet adoption.
+- SBI Holdings stated on June 9, 2025 that it held approximately **9% of Ripple** and was Ripple's largest external shareholder at that time. This is a dated SBI disclosure, not a verified November 2026 ownership percentage.
+- Ripple's SBI Ripple Asia company page describes its role as selling RippleNet software services and explicitly says SBI Ripple Asia itself does **not** handle XRP. XRP-based ODL execution is through operating entities such as SBI Remit, SBI VC Trade and destination partners.
+- Ripple announced Japan's first live ODL implementation with SBI Remit, Coins.ph and SBI VC Trade on July 28, 2021. XRP was used as the bridge asset for the Japan–Philippines corridor to reduce prefunding. SBI's September 6, 2023 release documents expansion of XRP-based remittances to bank accounts in the Philippines, Vietnam and Indonesia.
+- SBI Ripple Asia's February 24, 2026 work with DSRV is a Korea–Japan payments research initiative considering XRPL; the release expressly frames it as research into feasibility, not a launched commercial payment service. Its February 26, 2026 tokenized-deposit / deposit-based digital-money proof of concept considers Money Tap plus an XRPL token-issuance platform; it is a PoC, not evidence of production bank deposits on XRPL.
+- SBI Holdings and Ripple signed an RLUSD Japan distribution MOU on August 22, 2025. SBI VC Trade announced RLUSD availability on June 24, 2026, describing it as Japan's first Type-4 electronic payment instrument under its Japanese-law classification. This is a concrete distribution relationship, distinct from the earlier ODL bridge-asset use case.
+
+**SBI Holdings ↔ Circle**
+- SBI Holdings and Circle signed an MOU in November 2023 covering USDC circulation in Japan, banking access and Circle Web3 services.
+- SBI and Circle signed the JV agreement in March 2025 and announced its establishment in August 2025. SBI's June 2, 2025 investor presentation shows **50% SBI / 50% Circle** ownership for SBI Circle Holdings / Circle SBI Japan KK.
+- SBI VC Trade began public USDC trading on March 26, 2025 after registering as an Electronic Payment Instruments Service Provider.
+- At Circle's June 2025 NYSE listing, SBI Holdings and SBI Shinsei Bank acquired **$50 million** of Circle shares in total: **$25 million each**, according to the SBI announcement. This is a direct strategic equity investment, separate from the 50/50 Japan JV.
+
+**Coinbase ↔ Circle**
+- Circle and Coinbase jointly launched USDC and co-founded the Centre Consortium. On August 21, 2023 they announced that Centre would end as a standalone entity and Circle would become the sole USDC issuer and take governance/operations in-house.
+- Coinbase took an equity stake in Circle and retained a commercial reserve-revenue sharing arrangement: revenue sharing based on USDC held on each platform plus equal sharing of interest income from broader USDC distribution and use.
+- Coinbase's 2023 Form 10-K records the exchange of its 50% Centre interest for **3.5% of Circle's fully diluted equity**, valued at $51.1 million at the time. Treat 3.5% as the historical transaction disclosure, not a verified current ownership percentage.
+
+**Circle / USDC ↔ XRPL; Ripple / RLUSD ↔ XRPL**
+- Circle's current USDC page lists the XRPL among the 38 networks on which USDC is natively issued as of September 16, 2026. Circle reports **$67.8 billion** USDC in circulation as of November 23, 2026.
+- Ripple's RLUSD also operates on XRPL. This establishes two separately issued stablecoins on the same ledger. It does **not** establish a Circle–Ripple corporate partnership, nor does stablecoin activity on XRPL automatically establish incremental demand for XRP as a bridge asset.
+- No direct Circle–Ripple corporate agreement was established from the primary sources reviewed in this pass. Record the relationship as ecosystem overlap and competition/coexistence unless a direct agreement is located.
+
+**Ripple ↔ Coinbase**
+- Ripple announced on October 28, 2026 that RLUSD launched on Coinbase Prime, Coinbase Exchange and Coinbase Retail, with deposits and withdrawals on XRPL, Base and Ethereum.
+- The same announcement explicitly says Coinbase Global Exchange availability, including RLUSD collateral use, **will follow**. Do not report Global Exchange collateral support as live.
+- Ripple's announcement states RLUSD market capitalization exceeded $2.4 billion at that date. This is issuer-reported market data, not independently reconciled here.
+
+**Ripple ↔ Standard Chartered ↔ LMAX**
+- Standard Chartered announced on October 12, 2026 that institutional custody of RLUSD issued on XRPL is live through its DIFC branch, regulated by the DFSA.
+- The same release says the parties are working toward RLUSD eligibility as collateral for agreed LMAX products using Standard Chartered's collateral-mirroring model. Final documentation, testing, applicable law, internal approvals and jurisdictional readiness remain conditions. This collateral capability is planned, not verified live.
+- LMAX and Ripple's January 15, 2026 release described a multi-year integration plan for RLUSD as institutional collateral and disclosed **$150 million** of Ripple financing for LMAX. The October 12 update is the later operational-status source and controls the distinction between live custody and planned collateral.
+
+**SBI / Ripple / Coinbase ↔ Evernorth**
+- SBI Holdings' October 21, 2025 release said SBI Group would contribute **$200 million cash** to Evernorth's PIPE alongside Ripple and other investors.
+- Evernorth's SEC prospectus identifies four SBI-controlled subscriber entities—SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc.—and applies a **39.9% Class A ownership/voting threshold** to the SBI subscriber group. The balance of subscribed shares was issued as Class C shares. This is not a simple statement that SBI owns 39.9% of all economic interests.
+- The same SEC filing shows Ripple received 1,678,382 Class A shares and 16,461,545 Pathfinder Units, with Ripple and its related-party entity subject to a combined 9.9% ownership threshold immediately after closing. Evernorth was wholly owned by Ripple at September 30, 2026, before the October 9 business-combination close; it ceased to be a wholly owned Ripple subsidiary at closing.
+- Evernorth's October 14, 2026 Nasdaq announcement names Ripple, Kraken, Coinbase and BitGo as inaugural institutional execution partners for its announced 473-million-XRP treasury. The strategy was to begin phased deployment in Q4 2026; this announcement is not evidence that all planned strategies had already been executed. Evernorth's CIO Hugo Jeandesboz joined from Coinbase Asset Management, where he had served as Co-CIO. No Coinbase equity stake in Evernorth was established by the reviewed source set.
+
+### “Actual capital” — SEC cash-flow reconciliation; no double counting
+
+The exact phrase `actual capital` did not resolve to a distinct XRP entity or defined SEC metric. The primary filings instead provide measurable cash proceeds and distinguish completed funding from facilities that may or may not be drawn.
+
+- **Advance Funding PIPE:** Evernorth's SEC prospectus records **$214,049,995 cash** contributed by October 23, 2025 and **600,000 XRP** contributed by October 24, 2025. The cash was used to purchase **84,365,876.3625 XRP**, received in tranches October 31–November 6, 2025, at an average price of **$2.53657058** per XRP.
+- **SBI's $200 million:** SBI's October 21, 2025 release describes its $200 million cash contribution to the Evernorth PIPE. The SEC prospectus identifies SBI-controlled entities among the Advance Funding Subscribers but does not disclose each subscriber's exact cash amount. Therefore treat SBI's $200 million as part of the **$214.05 million aggregate advance-funding cash**, not as an additional $200 million on top of it.
+- **Delayed Funding:** The SEC prospectus separately records **$10.5 million cash and 200,000 XRP** under Delayed Funding Subscription Agreements; these are distinct from the Advance Funding Subscription Agreements.
+- **Contributed XRP:** The prospectus describes **211,319,096.061435 XRP** from the sponsor's Series C subscription, **50 million XRP** from a Ripple-affiliated subscriber and **126,791,458 XRP** contributed by Ripple, in addition to the 600,000 and 200,000 XRP contributions above.
+- **Treasury reconciliation:** 84,365,876.3625 purchased XRP + 600,000 advance-contributed XRP + 200,000 delayed-contributed XRP + 211,319,096.061435 sponsor XRP + 50,000,000 Ripple-affiliate XRP + 126,791,458 Ripple-contributed XRP = approximately **473,276,430 XRP**. This reconciles to Evernorth's rounded **473 million XRP** announcement. It shows that the announced treasury was a mix of market-purchased and contributed XRP; it must not be described as 473 million XRP bought on the open market.
+- **Post-close convertible note:** The 10-Q reports **$29.0 million net cash proceeds** on October 13, 2026 after a $1.0 million advisor fee.
+- **Warrant exercises:** Between October 12 and November 9, 2026, holders exercised **3,073,366 warrants for cash**, producing **$35.3 million gross proceeds**; **8,666,279 warrants** remained outstanding. Future warrant proceeds depend on actual exercise and are not realized capital today.
+- **ELOC facility:** The October 23, 2026 Cantor committed equity facility permits purchases of up to **5,218,935 shares** at 97% of the applicable VWAP after registration effectiveness. The 10-Q records the registration becoming effective October 30 and a **$0.5 million non-refundable commitment fee** payable. No actual share purchases/drawdowns under the facility are shown in this filing. Treat the facility as financing capacity, not cash raised.
+- The 10-Q's September 30 cash balance of $91,397 is historical pre-close information. The filing expressly states its historical financial information predates the October 9 business-combination close; do not use that balance as the company's current liquidity.
+
+### Exact-phrase research — status
+
+- **“ASK Coin”:** ambiguous. Search results surfaced Permission Coin (ticker ASK) and a separate unverified AskCoin/Telegram-bot reference. No primary evidence connected either candidate to XRP, SBI, Ripple or Evernorth. Keep the referent unresolved; do not merge the candidates.
+- **“actual capital”:** no distinct named XRP project or formal SEC metric established. Use the cash-flow reconciliation above rather than secondary commentary or financing-capacity headlines.
+- **“SBIC, ChatGPT SBIC”:** no attributable primary-source match located in this search pass. Do not infer that this phrase refers to SBIC East/Central/West, SBI Holdings or a ChatGPT integration.
+
+### Kamilah / Camilla Stevenson YouTube identity and public inventory
+
+- Channel-level attribution is cross-corroborated for **Kamilah Stevenson**, YouTube handle `@drkamilahstevenson`, channel ID `UCqUPJMQdkCN6lsLVDnichPA`, indexed at approximately **142,000 subscribers and 1,200 videos**. The channel self-identifies as Kamilah Stevenson and links to `go.prescribewealth.com/yt-bio`; the matching official Prescribe Wealth website identifies Dr. Kamilah Stevenson / “The Wealth Doctor.” This is adequate for attributing the branded channel, not for treating its financial commentary as primary evidence.
+- The channel page explicitly separates public videos from members-only videos. The initial public inventory captured **12 recent long-form videos, 12 popular long-form videos, 12 public live replays and 20 Shorts** (56 visible entries; not an exhaustive inventory of all 1,200 videos). Members-only videos were excluded. Relative upload-age labels in the indexed page are crawl-relative, not current timestamps.
+- **Recent long-form titles:** “This NEW Bank Deal Shows Exactly Where XRP Is Headed”; “This New SEC Proposal Could Unlock Trillions for XRP (and nobody realizes)”; “Exactly How to Retire With Your XRP Portfolio (Even If You're Cash Poor)”; “XRP vs Banks: Why Your Money Needs Autonomy NOW”; “Did SWIFT Just Change XRP Forever? (The Truth)”; “BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention.”; “A $119 Billion African Bank Just Put Its License Behind XRP”; “A New XRP Tool Can Buy and Sell for You”; “Invest NOW or Get Left Behind. Institutions Are Already Moving.”; “The CFTC Just Said What XRP Holders Waited Years to Hear”; “Wall Street Just Got a Company Built to Keep BUYING XRP”; “XRP Ledger Technology Just Reached Europe's Central Bank.”
+- **Popular long-form titles:** “Japan Just Ended 30 Years of ZERO Interest Rates—Why XRP Could Explode”; “How the Wealthy Will Use XRP (Most People Won't Understand)”; “Flare Is Putting 100 Million XRP to Work. Holders Can Earn From It”; “Why XRP Could Be Repriced (Banks Aren't Trading It)”; “Banks Just Got The GREEN LIGHT On Crypto—Are You Positioned”; “SEC Silent, CFTC Approved: XRP Just Got Treated Like Gold”; “The CLARITY Act Just Failed in the Senate. What This Means for XRP”; “SWIFT Just Connected 11,000 Banks—And XRP Is At The CENTER”; “Why Banks Need XRP to Be Expensive (Retail Is Thinking About It Wrong)”; “Most XRP Holders Don't Understand What They're Actually Holding”; “Japan's Top Financial CEO Just Publicly DEMANDED The US Senate Act On XRP”; “Did SWIFT Just Change XRP Forever? (The Truth).”
+- **Public live replay titles:** “XRP Got Everything We Waited For. So Why Isn't It Soaring?”; “XRP's Next Big Move Could Come Down to These 4 Days”; “Bank Of America's CEO Just ADMITTED What XRP Holders Already Knew”; “I Was WRONG About XRP. The Timeline Just Changed.”; “191,000 Traders Got Wiped Out While XRP Became Wall Street Collateral”; “Bad Jobs. Higher Rates. Something Just Broke. Watch Your XRP.”; “Your XRP Can Now Trade Without You”; “America's Biggest Banks Just Picked Quant. XRP Was Never the Competition.”; “The White House Is Done Waiting on Congress. XRP Moves Forward Anyway”; “The CLARITY Act Exposed the Banks. XRP Just Became More Important”; “The SEC Just Approved Stocks Onchain. XRP Was Built for What Comes Next”; “The CLARITY Act Vote Failed. XRP Ran 580% Without It.”
+- **Public Shorts:** “Ripple Unlocked 1 Billion XRP Again. Most Of It Went Back Under Lock”; “Bitcoin Went Up. Why Did You Make Less?”; “Why Japan Is Bringing Its Money Home”; “How Evernorth Plans To Add More XRP”; “They Pay $24 Billion in Interest Every Week”; “A Nasdaq Company Raised Over A Billion Just To Hold XRP”; “This Quietly BREAKS Your LLC Protection”; “Your Crypto Is In Your Name. That's The Problem.”; “Why Your Portfolio DROPPED: The 10 Year Yield Just Passed 5%”; “HSBC, Lloyds And NatWest Ran Real Transactions On Quant”; “The Clearing House Moves Over $2 Trillion A Day And Picked Quant”; “$100M Into Crypto Funds In One Week, Price Failed. Here's Why”; “The Fed Rate Just Moved. Here's What It Does to Your Money”; “SBI Used XRP To Send Money From Japan To The Philippines”; “Wall Street Is Paying To Build the Tokenized World, Where XRP Fits”; “10 Million Payments and Not One Made by a Human”; “SoFi Is Buying And Selling Crypto. The Direction Is Set”; “Central Banks Bought Almost 300 Tons Of Gold In One Quarter”; “Scammers Target Grieving Families For The 24 Word Recovery Phrase”; “Wall Street Is Quietly Moving Real Money Onto Blockchain.”
+- The channel also promotes a second handle `@PrescribeWealth`; it is cross-linked from the primary channel, but its video inventory was not separately captured in this pass. A similarly named `@KamilahStevenson-e7b` channel was not corroborated by the official brand link and is excluded. No verified identity match for **Camilla Stevenson** was established; do not attribute Camilla-named videos to Kamilah.
+- The channel's public description includes affiliate links and a financial disclaimer. Titles and creator commentary are discovery leads, not verified facts. One claim was checked: the video “This NEW Bank Deal Shows Exactly Where XRP Is Headed” describes Standard Chartered RLUSD custody as live and collateral integration as planned; the October 12 Standard Chartered/Ripple release confirms exactly that distinction. The Short “SBI Used XRP To Send Money From Japan To The Philippines” is supported by Ripple's July 2021 ODL launch announcement and SBI's 2023 expansion release. Other video claims remain unverified until individually checked against primary sources.
+
+### Primary-source register for this reconciliation
+
+- SBIC East: https://www.sbic.co.jp/company/profile/
+- SBIC Central: https://www.sbic-cj.co.jp/company/about/
+- SBIC West: https://www.sbic-wj.co.jp/profiles/profile/
+- SBI Holdings / Circle JV 50:50 presentation: https://www.sbigroup.co.jp/investors/library/presentation/pdf/presen250602.pdf
+- SBI Holdings / Circle JV announcement, August 22, 2025: https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf
+- Circle / SBI USDC Japan partnership, November 27, 2023: https://www.circle.com/fr/pressroom/sbi-holdings-partners-with-circle-to-pioneer-digital-currency-innovation-in-japan-with-usdc-banking-and-web3-services
+- Circle USDC Japan launch, March 24–26, 2025: https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access
+- SBI / Circle IPO investment, June 9, 2025: https://www.sbigroup.co.jp/news/2025/0609_15491.html
+- Coinbase 2023 Form 10-K equity disclosure: https://investor.coinbase.com/files/doc_downloads/2024/Coinbase-Q4-23-10K.pdf
+- SBI / Ripple RLUSD MOU, August 22, 2025: https://www.sbigroup.co.jp/news/2025/0822_15680.html
+- SBI VC Trade RLUSD launch, June 24, 2026: https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
+- SBI / Ripple ODL launch, July 28, 2021: https://ripple.com/ripple-press/ripple-launches-on-demand-liquidity-with-sbi-remit-to-accelerate-and-grow-cross-border-payments-from-japan/
+- SBI XRP remittance expansion, September 6, 2023: https://www.sbigroup.co.jp/news/2023/0906_14052.html
+- SBI Ripple Asia / DSRV research, February 24, 2026: https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html
+- SBI Ripple Asia tokenized-deposit PoC, February 26, 2026: https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
+- Circle USDC networks and circulation: https://www.circle.com/usdc
+- Circle / Coinbase USDC governance and revenue-share agreement, August 21, 2023: https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx
+- Ripple / Coinbase RLUSD listing, October 28, 2026: https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/
+- Standard Chartered RLUSD custody / planned collateral, October 12, 2026: https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/
+- LMAX / Ripple institutional RLUSD agreement, January 15, 2026: https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility/
+- SBI Evernorth $200 million investment announcement, October 21, 2025: https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf
+- Evernorth SEC Form 424B3: https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm
+- Evernorth SEC Form 10-Q for quarter ended September 30, 2026: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm
+- Evernorth 473-million-XRP partner announcement, October 14, 2026: https://www.nasdaq.com/press-release/evernorth-begin-deploying-473-million-xrp-treasury-ripple-kraken-coinbase-and-bitgo
+- Verified Kamilah Stevenson channel: https://www.youtube.com/@drkamilahstevenson
+- Official Prescribe Wealth identity page: https://prescribewealth.com/
+
+### DESIGNED / EXECUTED / VERIFIED / NOT VERIFIED
+
+- **DESIGNED:** evidence graph separating corporate ownership, JV, distribution, technical integration, financing, custody and collateral states; no inference of XRP price demand from stablecoin deployment alone.
+- **EXECUTED:** exact-phrase searches; official SBIC East/Central/West profile review; SBI Holdings, Ripple, Circle, Coinbase, SEC, Standard Chartered, LMAX and Evernorth source review; SEC capital-flow reconciliation; Kamilah channel identity cross-check and initial public video inventory.
+- **VERIFIED:** SBIC East/Central/West are distinct statutory sister companies; SBI Holdings is a separate financial group; 50/50 SBI–Circle JV; dated SBI Ripple ownership disclosure; ODL remittance history; USDC and RLUSD distribution links; Coinbase–Circle historical equity/revenue arrangement; RLUSD Coinbase listing with collateral still pending; Standard Chartered custody live with LMAX collateral planned; Evernorth PIPE, XRP contributions/purchases, post-close note and warrant proceeds; Kamilah channel attribution and the initial 56-entry public inventory.
+- **NOT VERIFIED:** current November 2026 SBI ownership percentage in Ripple; exact subscriber-level split of the $214.05 million advance cash; any actual Cantor ELOC drawdown; current post-close Evernorth unrestricted cash; any Circle–Ripple corporate partnership; current deployment of all Evernorth strategies; direct relationship between ASK Coin and XRP/SBI; meaning of “SBIC, ChatGPT SBIC”; Camilla Stevenson identity; full inventory of all 1,200 channel videos; factual accuracy of other creator claims; any resulting directional XRP forecast.
+
+### Next concrete actions
+
+1. Run the full suite, audit, pip-audit and fail-closed gates on the new #1702 handoff commit; keep all previous-head results separate.
+2. Add the Evernorth capital components and treasury reconciliation to the point-in-time XRP event/feature store with source dates, entity roles and explicit cash-versus-contributed-XRP classifications; do not turn the 473-million treasury headline into a market-buy signal.
+3. Continue current ownership and subscriber-level reconciliation from SEC amendments and new filings; do not infer a current SBI/Ripple stake from the June 2025 disclosure.
+4. Continue individual verification of the Kamilah channel's other high-impact claims; keep the public inventory separate from factual validation and exclude unverified Camilla attribution.
+5. Keep XRP forecasts `NOT_ISSUED` until point-in-time data quality, chronological walk-forward performance and calibration gates pass.
+6. Maintain the existing #1706 consolidated cache-action PR and the draft status of #1708/#1711; no merge until independent approval, complete branch-protection requirements and the Pages side-effect approval are established.
+
+No merge, deployment, Space restart, secret rotation, paid lookup, Kaggle submission, outbound message, paper trade, funds transfer or real-money action occurred.
