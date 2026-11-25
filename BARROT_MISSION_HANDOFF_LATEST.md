@@ -929,3 +929,64 @@ No merge, deployment, secret rotation, Space restart, Kaggle submission, funds t
 - **Commercial decision:** do not market an unverified Barrot production capability. First assemble a reproducible Barrot evidence pack and select one narrowly scoped Barrot-only pilot whose claims are supported by tested code and artifacts. Then use free discovery first, deduplicate and preserve contact provenance, and present qualified opportunities for review. No music, songwriting, background vocals, TrekFlex or other separate ventures may enter Sellbird's prospecting scope.
 
 The existing Run 14 next-action list remains in force. This audit changes no Barrot code and creates no separate Sellbird integration PR.
+
+
+## Run 14 final evidence supplement — exact-head CI, XRP artifact verification and chain-level boundaries
+
+### PR #1702 predecessor-head verification
+
+The predecessor handoff commit `ea07e7e0e8e11799dd0f2d0052849628f8ba5ff3` was verified on its exact head:
+
+- [PR-event CI run 45602630819](https://github.com/Barrot-Agent/B-Agent/actions/runs/45602630819): full repository suite **4,693 passed, 1 skipped, 11 warnings, 21 subtests passed**; **74.21% total coverage**. Core tests and Pages validation passed. All legacy and mission-critical package coverage floors passed.
+- [Dependency audit 45602630531](https://github.com/Barrot-Agent/B-Agent/actions/runs/45602630531): passed.
+- [Conflict-integrity gate 45602630530](https://github.com/Barrot-Agent/B-Agent/actions/runs/45602630530): passed.
+- [Money audit 45602630564](https://github.com/Barrot-Agent/B-Agent/actions/runs/45602630564): passed.
+- [Fail-closed merge-readiness gate 45602630683](https://github.com/Barrot-Agent/B-Agent/actions/runs/45602630683): passed.
+- GitHub reported `mergeable=true` but `mergeable_state=unstable`; PR had zero reviews and zero requested reviewers. Required approval/settings remain inaccessible. No merge was attempted. The Pages deployment side effect remains a separate authorization blocker.
+
+This final evidence supplement is itself committed on the same #1702 branch. Its commit becomes the new PR head; the successful checks above do **not** validate that successor head. Re-run exact-head full-suite CI, dependency/security checks, conflict integrity and fail-closed readiness on the new head before considering promotion.
+
+### Independent inspection of the XRP run #151 raw artifact
+
+Downloaded the exact [raw artifact for run #151](https://github.com/Barrot-Agent/B-Agent/actions/runs/45593043932) and independently verified its contents:
+
+- **37/37** canonical receipt IDs recomputed correctly.
+- **21/21** retained raw payload byte streams matched their SHA-256 filenames and receipt hashes; **16** receipts were digest-only by design.
+- The receipt-log SHA-256 matched the chain manifest: `cf4d64dc634463bf425921bb7da58c619366d58be4faa9407f6381990a1d7d92`.
+- The chain-log SHA-256 matched the manifest: `6cd4c76b25fa067aee86d3fe1b517e180dc4447596caa185a025d95f05863742`.
+- The final chain record matched manifest head `bdd28fba85a81ec34196b085b00bc60f888bdf772ccdcdb1ecec0c7c1bc727ab`.
+- Downloaded ZIP SHA-256: `9331013a137423fbc46d20ba674da3200e30f51fc98a59d525c58020e2b6f0e3`.
+
+This independently verifies retained bytes, canonical receipt IDs and the local chain against its manifest. It does **not** create an external timestamp anchor, immutable WORM storage or independent publisher corroboration. Artifact retention remains finite.
+
+### Point-in-time spot microstructure — 2026-11-25 10:14 UTC
+
+Snapshot ID `aa1cd7215aaf7d55a4b91cf502f8096648787b22c0d597925e4bd11956febe6d`; cutoff `2026-11-25T10:14:49.682204Z`. The following values come from the downloaded feature-store artifact and its 12 source receipts. USD venues are shown in USD; OKX depth remains in USDT and Bitbank depth in JPY.
+
+| Venue | Mid / basis | Book spread | Bid / ask depth at 10 bps | Bid / ask at 50 bps | Bid / ask at 100 bps |
+|---|---:|---:|---:|---:|---:|
+| Coinbase | $0.913600 | 2.189 bps | $373.1k / $233.9k | $1.834M / $1.166M | $4.464M / $2.393M |
+| Bitstamp | $0.913585 | 0.109 bps | $166.9k / $199.3k | $752.6k / $561.8k | $819.5k / $627.4k |
+| Kraken | $0.913655 | 1.642 bps | $411.0k / $324.5k | ask $1.307M; bid not admitted | not admitted |
+| OKX | $0.913538 normalized from USDT | 1.193 bps | 279.9k / 147.5k USDT | 1.071M / 834.2k USDT | 1.442M / 978.5k USDT |
+| Bitbank | 145.7345 JPY | 0.069 bps | 14.518M / 6.735M JPY | 54.387M / 25.232M JPY | 60.943M / 31.722M JPY |
+
+- The four USD/normalized-USD venue mids ranged from **$0.913538 to $0.913655**, about **0.84 bps** across observations captured within several seconds. This is a tight snapshot, not an arbitrage or directional signal.
+- OKX's normalized top-of-book quote uses same-venue XRP-USDT and USDT-USD receipts: bid **$0.913483449**, ask **$0.913592464**, mid **$0.9135379565**, spread **1.1933 bps**. Observed USDT/USD mid was **$0.998675**; no fixed 1:1 peg was assumed. OKX's depth remains in USDT and was not converted to USD.
+- Coinbase bid-side depth was larger than ask-side depth at 10/50/100 bps; Bitstamp's 10-bps book was ask-heavy while 50/100-bps depth was bid-heavy; Kraken's admitted 10-bps book was modestly bid-heavy; OKX's USDT book was bid-heavy at all three measured bands. These are single-venue snapshots, not independent cross-venue order-flow signals.
+- Venue-reported 24-hour base volume: Coinbase **55.904M XRP**, Kraken **30.644M XRP**, Bitstamp **8.593M XRP**, OKX **24.010M XRP**, Bitbank **5.331M XRP**. Do not sum these as a consolidated market volume: quote assets, rolling windows and exchange definitions differ.
+- The feature store has **124 eligible records, all spot**. It has **zero model-eligible derivatives records** in this snapshot. Deribit XRP-USDC perpetual observations remain raw-only. **366** records were excluded, all for `quality_unverified` and `record_marked_ineligible`. This is a hard coverage limitation for any model using derivatives or broad market liquidity.
+- The curated event registry is `run222`, captured **2026-11-19T15:16:42Z**, six days before this snapshot. It contains 150 events, all with missing raw hashes; 11 URL matches to current receipts, zero exact capture-time matches and zero verified receipt links. It is a curated registry, not an automatically discovered current event feed. No historical receipt was backfilled and no forecast was issued.
+
+### SBI / RLUSD chain-level distinction — current official service page
+
+SBI VC Trade's current RLUSD service page (accessed 2026-11-25) reports total RLUSD circulation of **$2.3828B as of 2026-10-22** and reserves of **$2.528B as of 2026-10-22**. It identifies BNY Mellon as the primary reserve custodian. Its service specification says VCTRADE currently supports **Ethereum only**, with **XRP Ledger support planned for the future**; the FAQ repeats that only Ethereum deposits/withdrawals are currently supported. No later dated SBI chain-activation notice was located in this pass. Therefore, do not describe the Japanese VCTRADE RLUSD distribution as an active XRPL distribution rail.
+
+This is distinct from:
+- Ripple's Coinbase RLUSD launch, which supports deposits/withdrawals on XRPL, Base and Ethereum, while Coinbase Global Exchange collateral support was described as a future phase.
+- Circle's USDC, which Circle reports at **$67.8B in circulation on 2026-11-23** and natively issued on 38 chains, including XRPL.
+- SBI Ripple Asia, which says it sells RippleNet software and does not handle XRP; the XRP-based Japan–Philippines ODL route is separately described through SBI Remit, Coins.ph and SBI VC Trade.
+
+Sources: [SBI VC Trade current RLUSD service page](https://www.sbivc.co.jp/rlusd), [SBI VC Trade launch notice](https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html), [Ripple/Coinbase announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/), [Circle USDC](https://www.circle.com/usdc), [SBI Ripple Asia](https://ripple.com/company/sbi-ripple-asia/).
+
+**Model decision remains unchanged:** the snapshot is useful for point-in-time spot microstructure research, but derivatives coverage is absent from the eligible feature set, the event registry is stale and unreceipted, drift is unevaluated, and walk-forward status is partial/blocked. No directional XRP forecast is authorized.
