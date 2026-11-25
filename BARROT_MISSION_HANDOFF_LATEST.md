@@ -1,11 +1,90 @@
 
+## XRP ecosystem research addendum — 2026-11-25T03:01:39.665Z
+
+### Japan SBIC identity — resolved at entity level
+
+- **SBIC East Japan** is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. Its official profile gives corporate number 9011001030621, establishment on 15 November 1963, and identifies Nagoya and Osaka as sister companies.
+- The sister companies are **SBIC Central Japan** (Nagoya Small and Medium Business Investment & Consultation Co., Ltd.) and **SBIC West Japan** (Osaka Small and Medium Business Investment & Consultation Co., Ltd.). The East company's official profile links directly to both sister-company sites. The three names correspond to Japan's regional Small and Medium Business Investment & Consultation companies under the 1963 enabling law.
+- These are separate Japanese SME investment/development companies, not the same legal entity as SBI Holdings. No official evidence reviewed establishes common ownership or control between the regional SBIC companies and SBI Holdings. Do not infer a relationship from the similar letters.
+- **SBI Ripple Asia is a fourth, different entity**: a joint venture established 18 May 2016 by SBI Holdings and Ripple, with the SBI Group holding 60% and Ripple 40%. SBI Holdings' February 2025 investor presentation reports approximately 9% of Ripple based on actual holdings; its December 2020 release reported 8.76% on a potential-share basis and explicitly said Ripple's equity valuation was not based on the value of Ripple's XRP holdings. SBI Ripple Asia's stated business is RippleNet/DLT software and financial-infrastructure services, not operating an XRP exchange.
+- SBI Remit's 2023 official release describes an XRP-based international transfer service being expanded to the Philippines, Vietnam and Indonesia. This is evidence of specific XRP use in those corridors, not proof that all SBI or Ripple payment volume uses XRP.
+
+Primary sources:
+- [SBIC East Japan company profile](https://www.sbic.co.jp/company/profile/)
+- [SBIC Central Japan](https://www.sbic-cj.co.jp/) and [SBIC West Japan](https://www.sbic-wj.co.jp/) (linked as sister companies from the East profile)
+- [Japan's Small and Medium Business Investment & Consultation Companies Act](https://elaws.e-gov.go.jp/document?lawid=338AC0000000101)
+- [SBI Ripple Asia — SBI Group company profile](https://www.sbigroup.co.jp/company/group/sbirippleasia.html)
+- [SBI Holdings FY2024 nine-month investor presentation, 7 February 2025](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf)
+- [SBI Holdings' 24 December 2020 Ripple investment statement](https://www.sbigroup.co.jp/news/2020/1224_12259.html)
+- [SBI's 2023 XRP-based remittance announcement](https://www.sbigroup.co.jp/english/news/pdf/2023/0906_c_en.pdf)
+
+### Coinbase, Circle, Ripple and SBI — relationship map
+
+| Pair | Verified relationship | What it does not establish |
+|---|---|---|
+| SBI Holdings ↔ Ripple | Equity investment in Ripple; SBI/Ripple 60:40 SBI Ripple Asia JV; SBI Remit XRP-based remittance corridors; SBI VC Trade RLUSD distribution in Japan | That every SBI payment uses XRP, or that SBI's Ripple equity stake is an XRP position |
+| SBI Holdings ↔ Circle | 2023 strategic MOU; Circle Japan KK partnership/JV; SBI VC Trade began USDC distribution on 26 March 2025; SBI Group became a founding validator on Circle Arc in September 2026 and cited USDC plus JPYSC use | That SBI has chosen one exclusive stablecoin or that Arc activity creates XRP demand |
+| Ripple ↔ Circle | USDC launched on XRPL on 12 June 2025; Ripple says it uses USDC alongside RLUSD in Ripple Payments | No equity/JV relationship found; USDC is not XRP or RLUSD |
+| Coinbase ↔ Circle | 2023 strategic/commercial agreement; Coinbase took an equity stake in Circle; Circle became sole USDC issuer after Centre's governance was wound down; reserve-interest revenue is shared under the agreement | Coinbase is not Circle's agent merely because of the distribution/revenue relationship |
+| Coinbase ↔ Ripple | RLUSD distribution/listing across Coinbase Prime, Exchange and retail from 28 October 2026; deposits/withdrawals on XRPL, Base and Ethereum | Coinbase Global Exchange RLUSD collateral was not live at announcement; the release says it will follow. No equity/JV found |
+| Coinbase ↔ SBI | Indirect overlap on Circle Arc: SBI Group is a founding validator and Coinbase is listed among Arc's digital-asset exchange access providers | No direct Coinbase–SBI ownership, JV or bilateral commercial agreement identified in the primary sources reviewed |
+
+Additional verified details:
+- Circle's 25 March 2025 Japan release says the Circle/SBI partnership began in 2023, SBI VC Trade would launch USDC on 26 March, and the arrangement includes a joint venture with SBI Holdings.
+- Circle's 16 September 2026 Arc mainnet release names SBI Group in the founding validator cohort and Coinbase among digital-asset exchanges providing access. Arc charges gas in USDC; SBI also identifies JPYSC, a yen-pegged stablecoin issued by SBI Shinsei Trust. This is an indirect common ecosystem, not a direct Coinbase–SBI agreement.
+- Ripple's 24 June 2026 release says RLUSD received JFSA approval and became available to institutional and retail users through SBI VC Trade. Ripple reported RLUSD market capitalization of $1.7B at that release date; treat that as Ripple-reported, time-bounded supply, not XRP inflow.
+- Ripple/Circle's 12 June 2025 release says USDC is live on XRPL, that XRPL's DEX/auto-bridging can use XRP as a bridge currency, and that Ripple Payments uses USDC alongside RLUSD. This creates possible XRPL utility but also a competing stablecoin/payment-rail hypothesis: USDC and RLUSD utility does not automatically translate into material net XRP demand. Measure actual bridge volume, order-book depth and XRP inventory use.
+- Standard Chartered's RLUSD custody on XRPL through its DIFC Branch, regulated by DFSA, was announced as live on 12 October 2026. The LMAX/Ripple/Standard Chartered collateral-mirroring integration is a plan for agreed products, subject to final documentation, successful testing, laws/regulations, internal approvals and jurisdiction readiness. Coinbase's Global Exchange collateral support was also described as forthcoming, not live.
+- Circle's SEC registration statement says Circle acquired Coinbase's remaining 50% Centre interest in August 2023 for $209.9M in approximately 8.4M Circle common shares; Centre was dissolved in December 2023. Circle's 21 August 2023 announcement says Coinbase took an equity stake and the parties share USDC reserve-interest income, including a component tied to broader distribution and usage.
+- These are corporate equity, distribution, custody and financing relationships. They are not evidence of direct spot XRP purchases. The SBI stake in Ripple is equity exposure to Ripple, not an XRP holding.
+
+Primary sources:
+- [Circle/SBI Japan and USDC announcement, 25 March 2025](https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access)
+- [Circle Arc mainnet launch, 16 September 2026](https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet)
+- [Ripple/SBI RLUSD Japan launch, 24 June 2026](https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/)
+- [Ripple/Circle USDC on XRPL, 12 June 2025](https://ripple.com/ripple-press/ripple-and-circle-launch-usdc-on-the-xrp-ledger/)
+- [Circle/Coinbase strategic agreement announcement, 21 August 2023](https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx)
+- [Circle SEC registration statement — Centre acquisition and consideration](https://www.sec.gov/Archives/edgar/data/1876042/000095012324007245/filename1.htm)
+- [Ripple/Coinbase RLUSD listing, 28 October 2026](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/)
+- [Ripple/Standard Chartered custody and planned LMAX collateral integration, 12 October 2026](https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/)
+- [LMAX account of the custody/collateral arrangement](https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/?nr=1)
+
+### Exact-phrase research
+
+- **"ASK Coin":** the clearest surfaced match is Permission Coin (ticker ASK), with Polygon/Base presence. It is not an XRPL-native asset, and no primary evidence found links it to Ripple, XRP, SBI, Coinbase or Circle. The phrase is ambiguous because unrelated tokens can reuse a ticker; do not merge them into one asset identity.
+- **"actual capital":** the exact phrase appears in secondary commentary claiming capital is flowing into RLUSD, but no primary source defines "actual capital" as an XRP metric. Concrete disclosed capital transactions include SBI's Ripple equity investment and Circle's $209.9M Centre acquisition consideration. Neither is a disclosed XRP spot purchase. Treat the commentary as a hypothesis, not a flow record.
+- **"SBIC, ChatGPT SBIC":** no exact public match located. The Japanese SBIC entity cluster is resolved above, but the phrase itself remains unresolved and must not be attributed to those companies without a source.
+
+### Public YouTube identity and initial inventory
+
+High-confidence public identity link: the channel [Dr. Kamilah Stevenson](https://www.youtube.com/@drkamilahstevenson) links to the PrescribeWealth bio subdomain, and [PrescribeWealth](https://prescribewealth.com/) identifies Dr. Kamilah Stevenson. The surfaced XRP podcast episode is titled with Dr. Kamilah Stevenson; transcript spelling varies between Kamilah/Camilla/Kamilla. Treat those as a possible transcription/handle variation, not proof that every similarly named account belongs to her. A small similarly named XRP-stocks channel without corroborating cross-links is excluded.
+
+Initial public-video sample from the verified channel (not an exhaustive export of its approximately 1.2K videos; member-only videos excluded):
+- “This NEW Bank Deal Shows Exactly Where XRP Is Headed” — about 29K views.
+- “This New SEC Proposal Could Unlock Trillions for XRP” — about 28K.
+- “Exactly How to Retire With Your XRP Portfolio” — about 41K.
+- “XRP vs Banks: Why Your Money Needs Autonomy NOW” — about 9.8K.
+- “Did SWIFT Just Change XRP Forever?” — about 77K.
+- “BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention.” — about 21K.
+- “A $119 Billion African Bank Just Put Its License Behind XRP” — about 27K.
+- “A New XRP Tool Can Buy and Sell for You” — about 13K.
+- “Invest NOW or Get Left Behind. Institutions Are Already Moving.” — about 16K.
+- “The CFTC Just Said What XRP Holders Waited Years to Hear” — about 44K.
+- “Wall Street Just Got a Company Built to Keep BUYING XRP” — about 16K.
+- “XRP Ledger Technology Just Reached Europe's Central Bank” — about 11K.
+
+Surfaced public livestreams include “XRP Got Everything We Waited For. So Why Isn't It Soaring?”, “XRP's Next Big Move Could Come Down to These 4 Days”, “Bank of America's CEO Just ADMITTED What XRP Holders Already Knew”, “I Was WRONG About XRP. The Timeline Just Changed”, “191,000 Traders Got Wiped Out While XRP Became Wall Street Collateral”, “Bad Jobs. Higher Rates. Something Just Broke. Watch Your XRP”, “Your XRP Can Now Trade Without You” and “America's Biggest Banks Just Picked Quant. XRP Was Never the Competition.”
+
+One claim was checked against primary evidence: the channel's “This NEW Bank Deal...” description says Standard Chartered custody is live and LMAX collateral integration is planned. Ripple and LMAX confirm custody is live; the collateral arrangement remains subject to documentation, testing, regulation, approvals and jurisdiction readiness. The title is commentary; the future collateral feature is not yet a completed deployment. The channel's videos and affiliate disclosures are research leads, not independent market evidence.
+
+
 ## Latest checkpoint — 2026-11-25T02:48:18.032Z
 
 ### Repository and integration baseline
 
 - Current protected main: `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`. Recursive tree: 3,163 entries, not truncated. No source changes were made to main.
 - Open PR inventory is now three; all target main and are 0 commits behind:
-  - **#1702 — mission handoff/platform map:** `integration/mission-handoff-refresh-20261125`, pre-refresh head `88fb54119a3cebc70f5366b1429346ba4fb9bcd0`, 2 commits ahead, docs/map only. Its pre-refresh exact-head full suite, audit, pip-audit, fail-closed gate and tree-integrity checks passed. This checkpoint is being added to this existing branch; the new commit's checks are pending.
+  - **#1702 — mission handoff/platform map:** `integration/mission-handoff-refresh-20261125`, research-addendum predecessor head `1c67d30b5598ad026c48ca998bcd0e53bf6ca106`, 3 commits ahead, 0 behind, docs/map only. Exact-head full suite run 45535555892: 4,693 passed, 1 skipped, 11 warnings, 21 subtests, 74.21%; audit 45535555888, pip-audit 45535555897, fail-closed gate 45535555886 and tree verification 45535555915 all passed. The research addendum being committed now will trigger a fresh exact-head run.
   - **#1703 — long-horizon continuity:** `continuity/project-state-ledger-20261125`, head `502b3dfa748b72384c9a3d79a3f8355bad245a3f`, 12 commits ahead, 0 behind, 7 files. Exact-head full suite: 4,708 passed, 1 skipped, 11 warnings, 21 subtests, 74.28% coverage (run 45529493545). Audit 45529493585, pip-audit 45529486318, post-ready fail-closed gate 45530598817 and tree verification 45530598905 passed.
   - **#1704 — audio per-instrument SoundFont routing:** `audio/per-instrument-soundfonts-20261125`, head `35b10a2ea589e0fd41bc6fb430ab508af77e06b9`, 7 commits ahead, 0 behind, 5 files. Exact-head full suite: 4,694 passed, 1 skipped, 11 warnings, 21 subtests, 74.22% coverage (run 45529940481). Audit 45529940537, pip-audit 45529903089, post-ready fail-closed gate 45530573290 and tree verification 45530573396 passed.
 - No independent review is recorded on #1702, #1703 or #1704. Main is marked protected; the branch-protection details endpoint returned HTTP 403, so approval requirements cannot be independently confirmed. Green custom gates do not substitute for required reviews.
