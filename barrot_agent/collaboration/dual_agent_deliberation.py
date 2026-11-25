@@ -178,6 +178,16 @@ class DualAgentDeliberation:
         else:
             raise ValueError(f"Unsupported agent: {report.agent}")
 
+        # Any changed report invalidates all conclusions and validation
+        # derived from the previous report pair.
+        record.agreements = []
+        record.disagreements = []
+        record.disputed_claims = []
+        record.required_evidence = []
+        record.proposed_resolution = ""
+        record.validation_evidence = []
+        record.final_decision = ""
+
         record.updated_at = _now()
         self._evaluate(record)
         self.save(record)
@@ -188,6 +198,8 @@ class DualAgentDeliberation:
         record.disagreements = []
 
         if not record.barrett or not record.chatgpt:
+            record.disputed_claims = []
+            record.required_evidence = []
             record.status = "AWAITING_EXTERNAL_AGENT_INPUT"
             return
 
@@ -217,6 +229,7 @@ class DualAgentDeliberation:
                 "independent repository evidence resolving disputed claims"
             ]
         else:
+            record.disputed_claims = []
             record.status = "AGREED_AWAITING_VALIDATION"
             record.required_evidence = [
                 "deterministic validation independent of agent agreement"
@@ -306,7 +319,9 @@ class DualAgentDeliberation:
                     "unresolved_questions", []
                 ),
                 confidence=report.get("confidence", ""),
-                independent=True,
+                # This is the report's self-declared claim, not proof
+                # that execution was independent.
+                independent=bool(report.get("independent", True)),
             ),
         )
 
