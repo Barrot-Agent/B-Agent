@@ -254,22 +254,25 @@ def render_production_bundle(
     stem_sum = np.zeros(rendered_mix.shape, dtype=np.float64)
     for stem_audio in rendered_arrays[1:]:
         stem_sum += stem_audio
+    # Accumulate the mix in float64 too: np.vdot(float32, float32) otherwise
+    # accumulates in float32 and can produce an impossible correlation > 1.
+    mix_values = np.asarray(rendered_mix, dtype=np.float64)
     sample_count = stem_sum.size
     stem_sum_total = float(np.sum(stem_sum, dtype=np.float64))
-    mix_total = float(np.sum(rendered_mix, dtype=np.float64))
+    mix_total = float(np.sum(mix_values, dtype=np.float64))
     stem_sum_energy = float(np.vdot(stem_sum, stem_sum))
-    mix_energy = float(np.vdot(rendered_mix, rendered_mix))
-    cross_energy = float(np.vdot(stem_sum, rendered_mix))
+    mix_energy = float(np.vdot(mix_values, mix_values))
+    cross_energy = float(np.vdot(stem_sum, mix_values))
     covariance = cross_energy - (stem_sum_total * mix_total / sample_count)
     stem_variance = max(0.0, stem_sum_energy - (stem_sum_total * stem_sum_total / sample_count))
     mix_variance = max(0.0, mix_energy - (mix_total * mix_total / sample_count))
     correlation_denominator = math.sqrt(stem_variance * mix_variance)
     stem_sum_correlation = (
-        covariance / correlation_denominator
+        float(np.clip(covariance / correlation_denominator, -1.0, 1.0))
         if correlation_denominator > 0.0
         else None
     )
-    stem_sum -= rendered_mix
+    stem_sum -= mix_values
     stem_sum_rms_error = math.sqrt(float(np.vdot(stem_sum, stem_sum)) / sample_count)
     mix_rms_for_reconstruction = math.sqrt(mix_energy / sample_count)
     stem_sum_reconstruction = {
