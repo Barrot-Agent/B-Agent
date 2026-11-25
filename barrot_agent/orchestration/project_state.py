@@ -177,6 +177,42 @@ def _validate_conflict_history(records: list[dict[str, Any]], history: Any, conf
     return normalized, unresolved
 
 
+
+def _validate_history_events(events: Any) -> list[dict[str, Any]]:
+    if not isinstance(events, list) or len(events) > AutonomousTaskStore.MAX_HISTORY_ITEMS:
+        raise ValueError("project-state history must be a bounded list")
+    normalized: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for index, raw in enumerate(events):
+        if not isinstance(raw, Mapping):
+            raise ValueError("project-state history event must be an object")
+        event_id = _digest(raw.get("event_id"), f"history[{index}].event_id")
+        unsigned = {key: value for key, value in raw.items() if key != "event_id"}
+        if set(unsigned) != {"action", "detail", "at_utc"}:
+            raise ValueError("project-state history event has unexpected fields")
+        action = unsigned.get("action")
+        detail = unsigned.get("detail")
+        at_utc = unsigned.get("at_utc")
+        if not isinstance(action, str) or not action.strip() or not isinstance(detail, Mapping):
+            raise ValueError("project-state history event fields are invalid")
+        if _timestamp(at_utc, f"history[{index}].at_utc") != at_utc:
+            raise ValueError("project-state history event timestamp is non-canonical")
+        canonical = {
+            "action": action.strip(),
+            "detail": json.loads(_json(detail)),
+            "at_utc": at_utc,
+        }
+        if canonical != unsigned:
+            raise ValueError("project-state history event is non-canonical")
+        if event_id != _hash(canonical):
+            raise ValueError("project-state history event hash mismatch")
+        if event_id in seen:
+            raise ValueError("project-state history contains duplicate event ids")
+        seen.add(event_id)
+        normalized.append({**canonical, "event_id": event_id})
+    return normalized
+
+
 def _revision_payload(state: Mapping[str, Any]) -> dict[str, Any]:
     return {
         "project_id": state["project_id"],
@@ -231,6 +267,9 @@ class ProjectStateLedger:
         history, conflicts = _validate_conflict_history(records, state.get("conflict_history", []), state.get("conflicts", []))
         if history != state.get("conflict_history") or conflicts != state.get("conflicts"):
             raise ValueError("stored project-state conflict history is non-canonical")
+        events = _validate_history_events(state.get("history", []))
+        if events != state.get("history", []):
+            raise ValueError("stored project-state history is non-canonical")
         parents = _strings(state.get("parent_revisions", []), "parent_revisions", hashes=True)
         if parents != state.get("parent_revisions", []):
             raise ValueError("stored project-state lineage is non-canonical")
@@ -351,9 +390,7 @@ class ProjectStateLedger:
         state["conflict_history"], state["conflicts"] = history, conflicts
         if bundle.get("revision") != _revision(state):
             raise ValueError("project-state bundle revision mismatch")
-        events = bundle.get("history", [])
-        if not isinstance(events, list) or any(not isinstance(item, Mapping) or not isinstance(item.get("event_id"), str) for item in events):
-            raise ValueError("project-state bundle history is malformed")
+        events = _validate_history_events(bundle.get("history", []))
         receipts = bundle.get("history_archive_receipts", [])
         if not isinstance(receipts, list) or any(not isinstance(item, Mapping) or not isinstance(item.get("digest"), str) or type(item.get("count")) is not int or item["count"] < 1 for item in receipts):
             raise ValueError("project-state bundle archive receipts are malformed")
