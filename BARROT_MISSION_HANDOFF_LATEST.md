@@ -1,3 +1,43 @@
+# Primary-source and audio-license addendum — 2026-11-25T05:18:00Z
+
+This addendum records evidence verified after the preceding checkpoint. The handoff/map/research updates are being committed together to the existing PR #1702. The pre-update branch head was `41e8e48765171219b5755821ab4c328367736a3f`; this documentation commit advances the branch, so live PR metadata is authoritative for the post-commit head.
+
+## Japan SBIC identity — VERIFIED from primary sources
+
+The Japanese Small and Medium Business Investment & Consultation Companies Act (Act No. 101 of 1963) identifies exactly three statutory companies: Tokyo, Nagoya and Osaka. Their own official profiles use the labels **SBIC East Japan**, **SBIC Central Japan** and **SBIC West Japan**. They are sister companies under the same statutory framework, not alternate names for SBI Holdings.
+
+- East: Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; established 1963-11-15; corporate number 9011001030621.
+- Central: Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established 1963-11-18.
+- West: Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established 1963-11-20.
+- SBI Holdings, Inc. is a separate company established in 1999; its stated principal business is control and management of the SBI Group through share ownership.
+
+The reviewed primary sources establish the legal distinction and sister-company relationship among the three SBIC entities. They do not establish an SBIC subsidiary relationship to SBI Holdings, an OpenAI/ChatGPT partnership, or an XRP business relationship. Category-level shareholder disclosures do not rule out every possible minority cross-holding; do not claim more than the documents show. Tokyo SBIC East's ChatGPT/generative-AI courses are educational activity, not evidence of a corporate partnership.
+
+Primary sources: [e-Gov Act No. 101 of 1963](https://laws.e-gov.go.jp/law/338AC0000000101/20220617_504AC0000000068), [SBIC East profile](https://www.sbic.co.jp/company/profile/), [SBIC Central profile](https://www.sbic-cj.co.jp/company/about/), [SBIC West profile](https://www.sbic-wj.co.jp/profiles/profile/), [SBI Holdings profile](https://www.sbigroup.co.jp/english/company/information/profile.html).
+
+## Audio toolchain — source-level license audit EXECUTED; assets not rendered
+
+Official FreePats pages now provide a concrete, rights-documented candidate palette:
+
+- Spanish classical guitar: CC0 1.0, SF2 9.5 MiB. The source page notes the recording conditions were not ideal and noise-reduction filters were applied; treat it as a candidate, not a guaranteed production-quality guitar.
+- Bass Guitar YR: CC0 1.0, SF2 2.2 MiB (pick) or 2.5 MiB (finger).
+- Synth Pad Choir: CC0 1.0, SF2 12 MiB; the page identifies the contributor and ZynAddSubFX as the source synthesizer.
+- MuldjordKit FreePats edition: CC BY 4.0, SF2 53 MiB; the FreePats version is a simplified stereo/two-channel kit, whereas the original DrumGizmo version offers 16 channels. Attribution is required.
+
+FreePats states that source origin/authorship must be known, licenses must permit downstream musical works, and samples derived from other sample-based instruments require explicit permission. This is useful provenance policy, not a blanket license for every FreePats asset.
+
+Direct asset download attempts in this run failed. No sample bytes were downloaded, hashed, installed or rendered. The assets remain **license-verified candidates only**; PR #1704 still does not prove distinct production timbres or professional listening acceptance.
+
+Sources: [FreePats license policy](https://freepats.zenvoid.org/licenses.html), [MuldjordKit](https://freepats.zenvoid.org/Percussion/acoustic-drum-kit.html), [Spanish classical guitar](https://freepats.zenvoid.org/Guitar/acoustic-guitar.html), [Bass Guitar YR](https://freepats.zenvoid.org/ElectricGuitar/clean-electric-bass.html), [Synth Pad Choir](https://freepats.zenvoid.org/Synthesizer/synth-pad.html), [FreePats provenance policy](https://freepats.zenvoid.org/about.html).
+
+## PR #1702 exact-head verification before this documentation update — VERIFIED
+
+On pre-update head `41e8e48765171219b5755821ab4c328367736a3f`, full repository suite [run #7118 / 45551883507](https://github.com/Barrot-Agent/B-Agent/actions/runs/45551883507) passed: **4,693 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. Core tests, audit, pip-audit, merge-tree verification and the PR-event merge-readiness gate passed. The earlier schema-test failure on head `0602f9d4` was corrected on this existing PR. A separate push-event readiness check observed GitHub's transient `mergeable=false` while recalculating; the later PR-event gate passed and live PR metadata reported mergeable=true.
+
+This combined documentation commit creates a new head and therefore requires a fresh exact-head full-suite and required-check run. It does not authorize a merge. No independent review is recorded, the detailed approval settings remain unavailable (HTTP 403), and the previously observed GitHub Pages deployment side effect remains unapproved.
+
+---
+
 # Current run verification supplement — 2026-11-25T05:12:00Z
 
 This checkpoint supersedes earlier status statements below where newer live repository or workflow evidence exists. Earlier checkpoints are retained as history.

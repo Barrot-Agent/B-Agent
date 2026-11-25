@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T05:10:00Z",
-  "capture_basis": "Run 12: re-fetched protected main SHA/tree, all four open PRs and changed paths, exact-head checks, current main scheduled XRP ingestion run #145 and cross-analysis #4614; repaired a failing map-schema test on existing PR #1702 and verified its new exact-head CI is running. No merge, deployment, trading or outreach.",
+  "captured_at_utc": "2026-11-25T05:18:00Z",
+  "capture_basis": "Run 12 combined update: exact-head full suite #7118 passed on pre-update #1702 head 41e8; added primary-source legal resolution of Japanese SBIC East/Central/West versus SBI Holdings and source-level FreePats instrument license audit; the combined documentation commit advances #1702 and triggers new exact-head CI.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -62,8 +62,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "head_sha": "48fafd2143c2f4a1ca4f8c9f71ee6e996e044e66",
-        "commits_ahead": 23,
+        "head_sha": "41e8e48765171219b5755821ab4c328367736a3f",
+        "commits_ahead": 25,
         "commits_behind": 0,
         "changed_paths": [
           "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -75,7 +75,7 @@
         "workstream_uniqueness": "unique",
         "review_count": 0,
         "mergeable": true,
-        "exact_head_validation": "IN_PROGRESS_ON_CURRENT_HEAD",
+        "exact_head_validation": "PASSED_ON_PRE_UPDATE_HEAD_41E8; NEW_COMBINED_DOC_COMMIT_REQUIRES_FRESH_EXACT_HEAD_CHECKS",
         "previous_head_failure": {
           "head_sha": "0602f9d4f98b2b51508d62b46c9621630ccbdb94",
           "run_id": 45545098108,
@@ -89,7 +89,37 @@
             "Required approval count remains unknown because detailed branch-protection read returns HTTP 403",
             "Merging to main triggers GitHub Pages deployment; no new deployment approval was given"
           ]
-        }
+        },
+        "last_observed_head_sha": "41e8e48765171219b5755821ab4c328367736a3f",
+        "head_sha_note": "This handoff/map/research update is committed on this same branch and advances its head; use live PR metadata for the post-update head.",
+        "checks": {
+          "full_suite_run_id": 45551883507,
+          "full_suite_status": "success",
+          "passed": 4693,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests": 21,
+          "coverage_percent": 74.21,
+          "core_tests_run_id": 45551883507,
+          "core_tests_status": "success",
+          "audit_run_id": 45551883403,
+          "audit_status": "success",
+          "dependency_audit_run_id": 45551883413,
+          "dependency_audit_status": "success",
+          "merge_tree_run_id": 45551883654,
+          "merge_tree_status": "success",
+          "pr_event_merge_readiness_run_id": 45551883504,
+          "pr_event_merge_readiness_status": "success",
+          "push_event_merge_readiness_run_id": 45551870500,
+          "push_event_merge_readiness_status": "failure_transient_mergeability_false",
+          "push_event_merge_readiness_note": "The push-event gate read mergeable=false during GitHub's mergeability recalculation; the later PR-event gate passed and live PR metadata reported mergeable=true."
+        },
+        "blockers": [
+          "No independent review recorded",
+          "Required approval count remains unknown because detailed branch-protection read returns HTTP 403",
+          "Merging to main triggers GitHub Pages deployment; no new deployment approval was given",
+          "This combined documentation commit requires fresh exact-head checks before merge"
+        ]
       },
       {
         "number": 1703,
@@ -295,7 +325,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T05:10:00Z",
+      "observed_at_utc": "2026-11-25T05:18:00Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -800,8 +830,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "48fafd2143c2f4a1ca4f8c9f71ee6e996e044e66",
-      "commits_ahead": 23,
+      "head_sha": "41e8e48765171219b5755821ab4c328367736a3f",
+      "commits_ahead": 25,
       "commits_behind": 0,
       "changed_paths": [
         "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -813,7 +843,7 @@
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "mergeable": true,
-      "exact_head_validation": "IN_PROGRESS_ON_CURRENT_HEAD",
+      "exact_head_validation": "PASSED_ON_PRE_UPDATE_HEAD_41E8; NEW_COMBINED_DOC_COMMIT_REQUIRES_FRESH_EXACT_HEAD_CHECKS",
       "previous_head_failure": {
         "head_sha": "0602f9d4f98b2b51508d62b46c9621630ccbdb94",
         "run_id": 45545098108,
@@ -827,7 +857,37 @@
           "Required approval count remains unknown because detailed branch-protection read returns HTTP 403",
           "Merging to main triggers GitHub Pages deployment; no new deployment approval was given"
         ]
-      }
+      },
+      "last_observed_head_sha": "41e8e48765171219b5755821ab4c328367736a3f",
+      "head_sha_note": "This handoff/map/research update is committed on this same branch and advances its head; use live PR metadata for the post-update head.",
+      "checks": {
+        "full_suite_run_id": 45551883507,
+        "full_suite_status": "success",
+        "passed": 4693,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.21,
+        "core_tests_run_id": 45551883507,
+        "core_tests_status": "success",
+        "audit_run_id": 45551883403,
+        "audit_status": "success",
+        "dependency_audit_run_id": 45551883413,
+        "dependency_audit_status": "success",
+        "merge_tree_run_id": 45551883654,
+        "merge_tree_status": "success",
+        "pr_event_merge_readiness_run_id": 45551883504,
+        "pr_event_merge_readiness_status": "success",
+        "push_event_merge_readiness_run_id": 45551870500,
+        "push_event_merge_readiness_status": "failure_transient_mergeability_false",
+        "push_event_merge_readiness_note": "The push-event gate read mergeable=false during GitHub's mergeability recalculation; the later PR-event gate passed and live PR metadata reported mergeable=true."
+      },
+      "blockers": [
+        "No independent review recorded",
+        "Required approval count remains unknown because detailed branch-protection read returns HTTP 403",
+        "Merging to main triggers GitHub Pages deployment; no new deployment approval was given",
+        "This combined documentation commit requires fresh exact-head checks before merge"
+      ]
     },
     {
       "number": 1703,

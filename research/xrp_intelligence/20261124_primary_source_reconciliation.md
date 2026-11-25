@@ -212,3 +212,26 @@ Additional source register:
 29. Unverified YouTube channel search candidate `UCXm6KAr1WHF6UN7g5b2W7wg` (not attributed): https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg
 30. Unverified YouTube video search result (not attributed): https://www.youtube.com/watch?v=TfFx0g2IgGg
 31. AInvest secondary commentary containing the phrase "actual capital" (not primary evidence): https://www.ainvest.com/news/ripple-75-licenses-don-serve-token-serve-company-2608/
+
+
+### 7.11 2026-11-25 primary-source resolution — Japanese SBIC legal identities
+
+**Resolution:** In the Japanese corporate context covered by this research, “SBIC East Japan,” “SBIC Central Japan,” and “SBIC West Japan” are the English regional labels of three separate statutory small-and-medium-business investment companies. They are not alternative names for SBI Holdings, Inc.
+
+- The Japanese **Small and Medium Business Investment & Consultation Companies Act** (Act No. 101 of 1963), Article 1 defines the purpose as investing in SMEs to strengthen their equity and support healthy growth. Article 2 names exactly three companies: Tokyo Small and Medium Business Investment & Consultation Co., Ltd., Nagoya Small and Medium Business Investment & Consultation Co., Ltd., and Osaka Small and Medium Business Investment & Consultation Co., Ltd.
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社), corporate number 9011001030621; established 1963-11-15; capital ¥6.6734 billion. Its official profile describes shareholders as local public bodies (18 prefectures), chambers of commerce, financial institutions and business companies, and its operating area as 18 prefectures east of Shizuoka, Nagano and Niigata.
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (名古屋中小企業投資育成株式会社); established 1963-11-18; capital ¥4.3808 billion; operating area Aichi, Gifu, Mie, Toyama and Ishikawa. Its official profile explicitly uses “SBIC Central Japan” and lists Tokyo and Osaka as sister companies. Its shareholder-composition chart shows local public bodies, the Nagoya Chamber of Commerce, financial institutions, insurers and business companies.
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. (大阪中小企業投資育成株式会社); established 1963-11-20; capital ¥6.822 billion; operating area 24 prefectures west of Fukui, Shiga, Nara and Wakayama. Its official profile explicitly uses “SBIC West Japan” and lists Tokyo and Nagoya as sister companies.
+- **SBI Holdings is a different legal entity:** its official corporate profile identifies the company as SBI Holdings, Inc., established 1999-07-08, with the principal business of controlling and managing the SBI Group through share ownership. The 1963 statute and the three companies' own profiles identify the regional SBIC companies separately.
+
+**Relationship conclusion:** The three regional SBIC companies are statutory sister companies, not the SBI Holdings corporate group. The initials “SBI” are not sufficient evidence of a corporate relationship. The primary sources reviewed do not establish that any of the three SBIC companies is a subsidiary of SBI Holdings, an OpenAI/ChatGPT partner, or an XRP issuer, custodian, exchange or payment-rail operator. The published shareholder descriptions are category-level on the pages reviewed; this does not prove that no minority cross-shareholding or indirect commercial relationship exists. Do not claim a total absence of every possible link without current named shareholder registers and contractual disclosures.
+
+**Research interpretation:** SBIC's investment and growth-support mandate is relevant to Japanese SME finance and regional business development. Its generative-AI training/seminars demonstrate education activity only; they do not establish a ChatGPT partnership, sponsorship, investment or access arrangement. No XRP relationship follows from the identity resolution.
+
+Additional primary-source register:
+32. Small and Medium Business Investment & Consultation Companies Act (Act No. 101 of 1963), e-Gov: https://laws.e-gov.go.jp/law/338AC0000000101/20220617_504AC0000000068
+33. Tokyo SBIC East official company profile: https://www.sbic.co.jp/company/profile/
+34. Nagoya SBIC Central official company profile: https://www.sbic-cj.co.jp/company/about/
+35. Osaka SBIC West official company profile: https://www.sbic-wj.co.jp/profiles/profile/
+36. SBI Holdings official corporate profile: https://www.sbigroup.co.jp/english/company/information/profile.html
+37. Nagoya SBIC Central official shareholder-composition chart: https://www.sbic-cj.co.jp/assets/images/company/shareholder.jpg
