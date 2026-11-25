@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T13:23:23.039Z",
-  "capture_basis": "Fresh checkpoint: re-fetched protected main and complete recursive tree; verified all four unique open PR heads and exact-head CI; verified main XRP scheduled run #155 and artifact receipts; inspected Circle/SBI/Ripple/Coinbase primary filings/releases; checked main Pillars consistency failure. Only ChatGPT-to-GitHub is authenticated. No cross-platform model transfer, merge, deployment, mailbox connection or outbound sending occurred.",
+  "captured_at_utc": "2026-11-25T13:32:00Z",
+  "capture_basis": "Run 17: re-fetched main and complete tree; inventoried all ten open PRs and compared each branch to main; inspected exact-head CI, reviews, branch protection, rulesets and accessible security settings; reconciled dependency PR overlap; inspected current XRP/audio/continuity/commercial evidence and the Hugging Face BUILD_ERROR. This checkpoint commit advances PR #1702 and requires fresh exact-head checks.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -57,54 +57,148 @@
     },
     "current_open_pull_requests": [
       {
-        "number": 1702,
-        "title": "docs: refresh current three-mission handoff and platform map",
-        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
-        "branch": "integration/mission-handoff-refresh-20261125",
+        "number": 1711,
+        "title": "build(deps): update numpy requirement from <2,>=1.26.4 to >=1.26.4,<3",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1711",
+        "branch": "dependabot/pip/numpy-gte-1.26.4-and-lt-3",
         "base": "main",
-        "head_sha": "e0022dc0c3a29c7d505c6dad1879f0f73e94cbcb",
-        "commits_ahead": 29,
+        "head_sha": "169b68dc6ad5f17c05f3563c0bc4e72fff991760",
+        "commits_ahead": 1,
         "commits_behind": 0,
         "changed_paths": [
-          "BARROT_MISSION_HANDOFF_LATEST.md",
-          "research/operations/nine_platform_operational_map_current.json",
-          "research/xrp_intelligence/20261124_primary_source_reconciliation.md",
-          "tests/test_nine_platform_operational_map_current.py"
+          "hf_space/requirements.txt"
+        ],
+        "classification": "blocked_dependency_compatibility",
+        "workstream_uniqueness": "unique_but_incompatible_constraint",
+        "review_count": 0
+      },
+      {
+        "number": 1709,
+        "title": "build(deps): bump databricks/setup-cli from 1.25.0 to 1.27.0",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1709",
+        "branch": "dependabot/github_actions/databricks/setup-cli-1.27.0",
+        "base": "main",
+        "head_sha": "6a45c7a4405ff733aa02a9e22a8f65771108594d",
+        "commits_ahead": 2,
+        "commits_behind": 0,
+        "changed_paths": [
+          ".github/workflows/barrot-ops.yml",
+          "tests/test_external_deploys_require_confirmation.py",
+          "tests/test_workflow_action_pins.py"
+        ],
+        "classification": "blocked_pending_exact_head_checks",
+        "workstream_uniqueness": "unique",
+        "review_count": 0
+      },
+      {
+        "number": 1710,
+        "title": "build(deps): update pyyaml requirement from >=6.0.3 to >=6.0.4",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1710",
+        "branch": "dependabot/pip/pyyaml-gte-6.0.4",
+        "base": "main",
+        "head_sha": "f1703fc6eff7ed5929517a270cf73538c9f85fed",
+        "commits_ahead": 1,
+        "commits_behind": 0,
+        "changed_paths": [
+          "legacy/requirements_legacy.txt"
+        ],
+        "classification": "unique_unreviewed",
+        "workstream_uniqueness": "unique",
+        "review_count": 0
+      },
+      {
+        "number": 1708,
+        "title": "build(deps): bump actions/cache/save from 4.3.0 to 6.1.0",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1708",
+        "branch": "dependabot/github_actions/actions/cache/save-6.1.0",
+        "base": "main",
+        "head_sha": "4a4733b48adb6bec3e6d0a38c3c5646f278b60a5",
+        "commits_ahead": 1,
+        "commits_behind": 0,
+        "changed_paths": [
+          ".github/workflows/xrp-public-ingestion.yml"
+        ],
+        "classification": "superseded_pending_successor_merge",
+        "workstream_uniqueness": "overlaps_1706",
+        "review_count": 0
+      },
+      {
+        "number": 1707,
+        "title": "build(deps): bump actions/setup-node from 4.4.0 to 7.1.0",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1707",
+        "branch": "dependabot/github_actions/actions/setup-node-7.1.0",
+        "base": "main",
+        "head_sha": "e456aa354b56698371780d6e7f82ec5650a9db8b",
+        "commits_ahead": 1,
+        "commits_behind": 0,
+        "changed_paths": [
+          ".github/workflows/a2a-worker-ci.yml"
+        ],
+        "classification": "unique_unreviewed",
+        "workstream_uniqueness": "unique",
+        "review_count": 0
+      },
+      {
+        "number": 1706,
+        "title": "build(deps): bump actions/cache/restore from 4.3.0 to 6.1.0",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1706",
+        "branch": "dependabot/github_actions/actions/cache/restore-6.1.0",
+        "base": "main",
+        "head_sha": "479d112515ee4b5d63de374cd662f0afc895a46c",
+        "commits_ahead": 2,
+        "commits_behind": 0,
+        "changed_paths": [
+          ".github/workflows/xrp-public-ingestion.yml",
+          "tests/test_ci_coverage_scope.py",
+          "tests/test_workflow_action_pins.py",
+          "tests/test_xrp_public_ingestion.py"
+        ],
+        "classification": "blocked_pending_exact_head_checks",
+        "workstream_uniqueness": "canonical_combined_cache_update",
+        "review_count": 0
+      },
+      {
+        "number": 1705,
+        "title": "Normalize RLUSD cross-chain supply as research-only evidence",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
+        "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
+        "base": "main",
+        "head_sha": "799d790009df6b1a5896b6cbad54a51c36112a7f",
+        "commits_ahead": 8,
+        "commits_behind": 0,
+        "changed_paths": [
+          ".github/workflows/xrp-public-ingestion.yml",
+          "barrot_agent/evolution/rlusd_cross_chain_research.py",
+          "tests/test_rlusd_cross_chain_research.py",
+          "tests/test_xrp_ingestion_workflow_safety.py",
+          "research/xrp_intelligence/rlusd_cross_chain_evidence_20261125.md",
+          "research/xrp_intelligence/xrp_primary_source_receipt_policy.md",
+          "research/xrp_intelligence/xrp_source_registry.json"
         ],
         "classification": "blocked",
         "workstream_uniqueness": "unique",
-        "review_count": 0,
-        "mergeable": true,
-        "last_observed_head_sha": "e0022dc0c3a29c7d505c6dad1879f0f73e94cbcb",
-        "head_sha_note": "Live PR metadata at 2026-11-25T09:30:11Z; this checkpoint commit advances the branch and requires fresh exact-head checks.",
-        "exact_head_validation": "PASSED_ON_HEAD_e0022dc0c3a29c7d505c6dad1879f0f73e94cbcb; THIS_CHECKPOINT_COMMIT_REQUIRES_FRESH_EXACT_HEAD_CHECKS",
-        "checks": {
-          "full_suite_run_id": 45575262327,
-          "full_suite_status": "success",
-          "passed": null,
-          "skipped": null,
-          "warnings": null,
-          "subtests": null,
-          "coverage_percent": null,
-          "audit_run_id": 45575262380,
-          "audit_status": "success",
-          "dependency_audit_run_id": 45575262413,
-          "dependency_audit_status": "success",
-          "money_audit_run_id": 45575262380,
-          "money_audit_status": "success",
-          "conflict_integrity_run_id": 45575262488,
-          "conflict_integrity_status": "success",
-          "merge_tree_run_id": 45575262488,
-          "merge_tree_status": "success",
-          "pr_event_merge_readiness_run_id": 45575262324,
-          "pr_event_merge_readiness_status": "success"
-        },
-        "blockers": [
-          "No independent review recorded on the exact current head.",
-          "Required approval count remains unknown because detailed branch-protection read returns HTTP 403.",
-          "Merging to main triggers GitHub Pages deployment; no specific deployment approval has been given.",
-          "This checkpoint commit itself requires fresh exact-head CI and required checks."
-        ]
+        "review_count": 0
+      },
+      {
+        "number": 1704,
+        "title": "Audio: route instrument stems through per-track SoundFonts",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1704",
+        "branch": "integration/audio-instrument-soundfont-map-20261125",
+        "base": "main",
+        "head_sha": "9443942130a5a6563fbc398b0e1d2cf822b05e4c",
+        "commits_ahead": 8,
+        "commits_behind": 0,
+        "changed_paths": [
+          "barrot_agent/creative/audio_bundle.py",
+          "barrot_agent/creative/audio_render.py",
+          "docs/MUSICAL_DNA_ENGINE.md",
+          "tests/test_audio_render_integration.py",
+          "tests/test_musical_adapters.py",
+          "tests/test_audio_bundle_export.py"
+        ],
+        "classification": "blocked",
+        "workstream_uniqueness": "unique",
+        "review_count": 0
       },
       {
         "number": 1703,
@@ -126,157 +220,26 @@
         ],
         "classification": "blocked",
         "workstream_uniqueness": "unique",
-        "review_count": 0,
-        "mergeable": true,
-        "exact_head_full_suite": {
-          "run_id": 45529493545,
-          "status": "success",
-          "passed": 4708,
-          "skipped": 1,
-          "warnings": 11,
-          "subtests": 21,
-          "coverage_percent": 74.28
-        },
-        "dependency_audit": {
-          "run_id": 45529493529,
-          "status": "success"
-        },
-        "money_audit": {
-          "run_id": 45529493585,
-          "status": "success"
-        },
-        "conflict_integrity": {
-          "run_id": 45530598905,
-          "status": "success"
-        },
-        "fail_closed_gate": {
-          "run_id": 45530598817,
-          "status": "success"
-        },
-        "blockers": [
-          "No independent review recorded",
-          "Required approval count remains unknown because detailed branch-protection read returns HTTP 403",
-          "Merging to main triggers GitHub Pages deployment; no new deployment approval was given",
-          "Authenticated cross-host synchronization and provider handoff remain unverified"
-        ]
+        "review_count": 0
       },
       {
-        "number": 1704,
-        "title": "Audio: route instrument stems through per-track SoundFonts",
-        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1704",
-        "branch": "integration/audio-instrument-soundfont-map-20261125",
+        "number": 1702,
+        "title": "docs: refresh current three-mission handoff and platform map",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
+        "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "head_sha": "35b10a2ea589e0fd41bc6fb430ab508af77e06b9",
-        "commits_ahead": 7,
+        "head_sha": "18ab2aa5ce8eff428023b99c2b55f8e3a1dc32b8",
+        "commits_ahead": 39,
         "commits_behind": 0,
         "changed_paths": [
-          "barrot_agent/creative/audio_bundle.py",
-          "barrot_agent/creative/audio_render.py",
-          "docs/MUSICAL_DNA_ENGINE.md",
-          "tests/test_audio_render_integration.py",
-          "tests/test_musical_adapters.py"
+          "BARROT_MISSION_HANDOFF_LATEST.md",
+          "research/operations/nine_platform_operational_map_current.json",
+          "research/xrp_intelligence/20261124_primary_source_reconciliation.md",
+          "tests/test_nine_platform_operational_map_current.py"
         ],
         "classification": "blocked",
         "workstream_uniqueness": "unique",
-        "review_count": 0,
-        "mergeable": true,
-        "exact_head_full_suite": {
-          "run_id": 45529940481,
-          "status": "success",
-          "passed": 4694,
-          "skipped": 1,
-          "warnings": 11,
-          "subtests": 21,
-          "coverage_percent": 74.22
-        },
-        "audio_render_integration": {
-          "run_id": 45529940465,
-          "status": "success",
-          "passed": 3,
-          "total": 3
-        },
-        "dependency_audit": {
-          "run_id": 45529940466,
-          "status": "success"
-        },
-        "money_audit": {
-          "run_id": 45529940537,
-          "status": "success"
-        },
-        "conflict_integrity": {
-          "run_id": 45530573396,
-          "status": "success"
-        },
-        "fail_closed_gate": {
-          "run_id": 45530573290,
-          "status": "success"
-        },
-        "blockers": [
-          "No independent review recorded.",
-          "CI generated a 175.545-second, 80-bar, 110-BPM D-minor full-song technical render with 9 aligned stems; the retained artifact contains QC JSON only, not the WAV, stems or MIDI.",
-          "The test SoundFont is GPL-2 and marked test-only; rights metadata is caller-supplied and unverified.",
-          "No native DAW project or comparative listening/user acceptance is verified.",
-          "Merging to main triggers GitHub Pages deployment; no new deployment approval was given."
-        ]
-      },
-      {
-        "number": 1705,
-        "title": "Normalize RLUSD cross-chain supply as research-only evidence",
-        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
-        "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
-        "base": "main",
-        "head_sha": "d7c589d1137b3fc40b32d337bb5bb9d537391aa4",
-        "commits_ahead": 3,
-        "commits_behind": 0,
-        "changed_paths": [
-          ".github/workflows/xrp-public-ingestion.yml",
-          "barrot_agent/evolution/rlusd_cross_chain_research.py",
-          "tests/test_rlusd_cross_chain_research.py",
-          "tests/test_xrp_ingestion_workflow_safety.py"
-        ],
-        "classification": "blocked",
-        "workstream_uniqueness": "unique",
-        "review_count": 0,
-        "mergeable": true,
-        "exact_head_full_suite": {
-          "run_id": 45543739494,
-          "status": "success",
-          "passed": 4704,
-          "skipped": 1,
-          "warnings": 11,
-          "subtests": 21,
-          "coverage_percent": 74.24
-        },
-        "dependency_audit": {
-          "run_id": 45543739554,
-          "status": "success"
-        },
-        "money_audit": {
-          "run_id": 45543739472,
-          "status": "success"
-        },
-        "conflict_integrity": {
-          "run_id": 45543783592,
-          "status": "success"
-        },
-        "fail_closed_gate": {
-          "run_id": 45543783716,
-          "status": "success"
-        },
-        "integration_capture": {
-          "run_id": 45542079480,
-          "status": "success",
-          "normalizer_status": "BLOCKED_STALE",
-          "cache_age_seconds": 321.593,
-          "cache_limit_seconds": 300,
-          "model_eligible": false,
-          "feature_store_admitted": false
-        },
-        "blockers": [
-          "No independent review recorded",
-          "Integration capture is stale and model-ineligible; do not relax the 300-second gate",
-          "Merging to main triggers GitHub Pages deployment; no new deployment approval was given"
-        ]
+        "review_count": 0
       }
     ],
     "merged_pull_requests": [
@@ -310,11 +273,11 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T09:30:11Z",
+      "observed_at_utc": "2026-11-25T13:32:00Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
-      "open_pull_request_count": 4,
+      "open_pull_request_count": 10,
       "merge_ancestry": [
         "#1692",
         "#1701",
@@ -378,125 +341,155 @@
         "note": "Triggered by branch creation before the handoff PR existed; not a current-main CI failure."
       },
       "open_pull_request_numbers": [
-        1702,
-        1703,
+        1711,
+        1709,
+        1710,
+        1708,
+        1707,
+        1706,
+        1705,
         1704,
-        1705
+        1703,
+        1702
       ],
       "latest_xrp_ingestion_run": {
-        "run_number": 150,
-        "run_id": 45583604682,
-        "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45583604682",
+        "run_number": 155,
+        "run_id": 45621590505,
+        "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505",
         "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
-        "created_at_utc": "2026-11-25T09:15:03Z",
-        "completed_at_utc": "2026-11-25T09:16:20Z",
-        "conclusion": "success",
-        "captured_at_utc": "2026-11-25T09:15:39.147440Z",
-        "data_cutoff_utc": "2026-11-25T09:15:39.147440Z",
-        "evaluation_as_of_utc": "2026-11-25T09:15:44.599126Z",
+        "captured_at_utc": "2026-11-25T13:15:20.402015Z",
+        "data_cutoff_utc": "2026-11-25T13:15:20.402015Z",
         "adapter_version": "xrp-public-market-v3.34",
         "parser_version": "xrp-public-market-v3.32",
-        "snapshot_id": "f3669de5020376d6f54f04cb32e8d9be13290a9ea84822626f16a37fa88d123c",
-        "feature_store_snapshots": 110,
-        "latest_snapshot_records": 106,
-        "eligible_feature_records": 106,
-        "excluded_feature_records": 384,
-        "input_feature_records": 2230,
-        "delta_feature_records": 490,
-        "prior_verified_cumulative_history_record_count": 29559,
-        "cumulative_history_record_count": 29665,
-        "sqlite_integrity": "ok",
-        "store_verification": "PASS",
-        "source_receipts": 37,
-        "retained_raw_payloads": 21,
-        "digest_only_receipts": 16,
-        "receipt_chain_continuity": "CONTINUED",
-        "receipt_chain_verified": true,
-        "cross_run_sequence": 110,
-        "cross_run_chain_sha256": "1a6015fd02c337864407f1056bb7ba15f10c8a5f179c78ea447706571637e669",
-        "receipt_log_sha256": "0ef474a2514aab7708d3a154404161f90a9454f979dfc1ab10a720c99727f9bb",
-        "external_receipt_anchor_status": "NOT_ANCHORED",
-        "raw_artifact_zip_sha256": "1e49d8acab860aa3e0f9e0062c5289fb96545375a0c2979ed910ea34c707bc0c",
-        "event_count": 150,
-        "verified_event_receipt_links": 0,
-        "missing_raw_receipt_hash_events": 150,
-        "event_receipt_linkage_status": "INCOMPLETE",
-        "event_registry_sha256": "841f6733dadb687f35e480ee3fba3e1e6f455a6365abbad6fbf15ec2fbc23a03",
-        "walk_forward_rows": 412,
-        "walk_forward_horizons": [
-          "1h"
-        ],
-        "walk_forward_status": "PARTIAL_OR_BLOCKED",
-        "drift_status": "INSUFFICIENT_DATA",
-        "drift_evaluated_features": 0,
-        "drift_total_features": 205,
-        "forecast_status": "NOT_ISSUED",
-        "forecast_model_eligible": false,
-        "scenario_count": 117,
+        "snapshot_id": "5fc0f1fe14ce2b9925183cb025bd2e13a3db3033d9f2e3875b71ede92808d844",
+        "feature_store": {
+          "snapshot_count": 114,
+          "latest_snapshot_records": 123,
+          "eligible_records": 123,
+          "excluded_records": 367,
+          "input_records": 2230,
+          "delta_records": 490,
+          "prior_verified_history_records": 30036,
+          "cumulative_history_record_count": 30159,
+          "sqlite_integrity": "ok",
+          "raw_rebuild_implemented": false,
+          "restore_source": "trusted_ingestion_workflow_run:45612711809:per_run_checkpoint"
+        },
+        "receipts": {
+          "count": 37,
+          "retained_raw_payloads": 21,
+          "digest_only": 16,
+          "chain_continuity": "CONTINUED",
+          "chain_verified": true,
+          "sequence": 114,
+          "cross_run_chain_sha256": "38812a9351b757dfcf1eab6fb7abd08a5ad3952fdb894d21b48ce0ab4c0416cb",
+          "receipt_log_sha256": "b86e92490f87db1b2e0c64c5e6ca40ec4bb6df4027be11565f4575810ad5c90a",
+          "external_anchor": "NOT_ANCHORED",
+          "retention_days": 90,
+          "raw_artifact_zip_sha256": "103fe5c97855917e930f8f8f1704b0f244ad83130505b0571b41075dad2c7b24"
+        },
+        "event_timeline": {
+          "events": 150,
+          "verified_receipt_links": 0,
+          "missing_raw_receipt_hash": 150,
+          "receipt_complete": false,
+          "url_match_count": 11,
+          "registry_sha256": "841f6733dadb687f35e480ee3fba3e1e6f455a6365abbad6fbf15ec2fbc23a03",
+          "timeline_sha256": "ebe8b6a8741a0d7a49a549cba24255e8c12352b5aeb5b95ae31e00b3e2873a31"
+        },
+        "evaluation": {
+          "walk_forward_rows": 428,
+          "horizons": [
+            "1h"
+          ],
+          "walk_forward_status": "PARTIAL_OR_BLOCKED",
+          "drift_evaluated_features": 0,
+          "drift_total_features": 205,
+          "drift_status": "INSUFFICIENT_DATA",
+          "forecast_status": "NOT_ISSUED",
+          "forecast_model_eligible": false
+        },
         "source_failures": 18,
         "sec": {
           "status": "BLOCKED_CONFIGURATION",
           "raw_receipts": 0,
           "source_failures": 3,
-          "contact_identity_configured": false
+          "contact_identity_configured": false,
+          "companyfacts_requested": false
         },
         "quote_basis": {
           "status": "VERIFIED",
           "feature_count": 4,
           "venue": "OKX",
           "scope": "same-venue synchronized XRP-USDT and USDT-USD top-of-book",
-          "max_component_age_seconds": 12.07144,
-          "snapshot_skew_seconds": 0.003,
-          "publisher_independence_group_count": 1
+          "best_bid_usd": 0.90476784,
+          "best_ask_usd": 0.904876765,
+          "mid_price_usd": 0.9048223025,
+          "spread_bps": 1.203827532755112,
+          "max_component_age_seconds": 13.328015,
+          "snapshot_skew_seconds": 0.582,
+          "publisher_independence_group_count": 1,
+          "model_eligible": true
         },
-        "morpho_cbxrp": {
-          "status": "BLOCKED_STALE",
-          "feature_store_admitted": false,
-          "model_eligible": false,
-          "reason": "A market observation is ahead of Morpho's Base indexer tip."
+        "xrpl_node_reconciliation": {
+          "status": "NOT_COLLECTED_PROVIDER_TERMS_POLICY",
+          "model_admission_allowed": false,
+          "reason": "free_noncommercial_xrpl_nodes_are_excluded_from_default_and_scheduled_collection"
         },
-        "cache_status": "read_only_budget_exhausted",
-        "checkpoint_restore_source": "trusted_ingestion_workflow_run:45575152347:per_run_checkpoint",
-        "per_run_checkpoint_uploaded": true,
-        "raw_rebuild_implemented": false,
+        "cache": {
+          "status": "read_only_budget_exhausted",
+          "checkpoint_restore_succeeded": true,
+          "restore_run_id": 45612711809,
+          "latest_per_run_checkpoint_uploaded": true,
+          "automatic_raw_rebuild": false,
+          "cache_save_failed": true
+        },
         "artifacts": [
           {
-            "name": "xrp-public-raw-45583604682",
-            "artifact_id": 15008042051,
+            "name": "xrp-public-raw-45621590505",
+            "artifact_id": 15024617303,
             "retention_days": 90,
-            "size_bytes": 423589,
-            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45583604682/artifacts/15008042051"
+            "size_bytes": 422422,
+            "sha256": "103fe5c97855917e930f8f8f1704b0f244ad83130505b0571b41075dad2c7b24",
+            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505/artifacts/15024617303"
           },
           {
-            "name": "xrp-public-receipt-index-45583604682",
-            "artifact_id": 15006714562,
+            "name": "xrp-public-receipt-index-45621590505",
+            "artifact_id": 15025231459,
             "retention_days": 90,
-            "size_bytes": 1136,
-            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45583604682/artifacts/15006714562"
+            "size_bytes": 1133,
+            "sha256": "fdc30aabb7d6ffea86857ae39baa4214cfd8459dba28b514143ae620fa2f57cb",
+            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505/artifacts/15025231459"
           },
           {
-            "name": "xrp-public-events-45583604682",
-            "artifact_id": 15007716907,
+            "name": "xrp-public-events-45621590505",
+            "artifact_id": 15025331372,
             "retention_days": 90,
-            "size_bytes": 157742,
-            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45583604682/artifacts/15007716907"
+            "size_bytes": 157754,
+            "sha256": "ea3839f77120926e6ebfedfeacff2e4f600840cba7919715745cc9a2022e5568",
+            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505/artifacts/15025331372"
           },
           {
-            "name": "xrp-public-feature-store-45583604682",
-            "artifact_id": 15006654758,
+            "name": "xrp-public-feature-store-45621590505",
+            "artifact_id": 15025251469,
             "retention_days": 7,
-            "size_bytes": 7719545,
-            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45583604682/artifacts/15006654758"
+            "size_bytes": 7891381,
+            "sha256": "5be5b82883e5647d4c146b2e8b2059858fd075180f8db88d2d035ed23fe4fa94",
+            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505/artifacts/15025251469"
+          },
+          {
+            "name": "xrp-research-correction-audit-45621590505",
+            "artifact_id": 15025096255,
+            "retention_days": 90,
+            "size_bytes": 11956,
+            "sha256": "6e1ef1edf9a690aa8e1c410c40b9ac68b7bff6f4d45418a4d949f2f736b66e31",
+            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505/artifacts/15025096255"
           }
         ],
-        "limitations": [
-          "Per-run raw artifacts have 90-day retention; feature-store checkpoints have 7-day retention; the Actions cache is read-only from budget exhaustion.",
-          "No generic deterministic rebuild from raw artifacts is implemented; the existing historical backfill is pinned to a specific fork and uses a feature-store checkpoint.",
-          "The receipt chain is tamper-evident relative to its final hash but has no independent external WORM or trusted timestamp anchor.",
-          "All 150 curated event rows still lack raw-source hashes and verified receipt links; current mutable-page recapture cannot prove historical content.",
-          "The 1h walk-forward cohort is partial/blocked; drift is insufficient; no directional forecast is issued.",
-          "Morpho cbXRP normalization is research-only and withheld because the observation is ahead of the indexer tip."
-        ]
+        "paper_trade_executed": false,
+        "conclusion": "success",
+        "created_at_utc": "2026-11-25T13:14:41Z",
+        "completed_at_utc": "2026-11-25T13:15:54Z"
       },
       "latest_main_cross_analysis": {
         "run_number": 4618,
@@ -505,6 +498,19 @@
         "head_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
         "created_at_utc": "2026-11-25T08:51:40Z",
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45580006425"
+      },
+      "pillars_consistency_check": {
+        "run_id": 45619442260,
+        "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45619442260",
+        "conclusion": "failure",
+        "failure": "Public Hugging Face Space runtime stage=BUILD_ERROR",
+        "repository_source_marker": "passed",
+        "repository_source_fiction_scan": "passed",
+        "github_app_probe": "skipped_manual_opt_in_required",
+        "databricks_probe": "skipped_manual_opt_in_required",
+        "build_logs_retrieved": false,
+        "cause": "UNKNOWN_NOT_DIAGNOSED",
+        "deployment_or_restart_performed": false
       }
     },
     "required_status_checks_last_verified_at_utc": "2026-11-25T09:30:11Z",
@@ -522,6 +528,34 @@
       "conclusion": "success",
       "triggered_by": "merge of PR #1693",
       "future_merge_requires_specific_deployment_approval": true
+    },
+    "security_posture": {
+      "repository_public": true,
+      "default_branch": "main",
+      "archived": false,
+      "connector_permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true
+      },
+      "classic_branch_protection": {
+        "enabled": true,
+        "detailed_endpoint": "HTTP_403_NOT_ACCESSIBLE"
+      },
+      "fallback_ruleset": {
+        "name": "Fall Back",
+        "enforcement": "disabled"
+      },
+      "required_status_checks": [
+        "Full repository test suite",
+        "audit",
+        "pip-audit",
+        "Verify PR merge tree against current base"
+      ],
+      "dependabot_alerts": "NOT_ACCESSIBLE_TO_CONNECTOR",
+      "code_scanning_alerts": "NOT_ACCESSIBLE_TO_CONNECTOR",
+      "secret_scanning_alerts": "NOT_ACCESSIBLE_TO_CONNECTOR",
+      "alert_counts": "UNKNOWN_NOT_ZERO"
     }
   },
   "mission_portfolio": {
@@ -776,14 +810,13 @@
     "note": "Retain prior observations and run history. This operational map supersedes older permission claims when they conflict with current endpoint tests; it does not delete or rewrite historical evidence."
   },
   "next_actions": [
-    "XRP: inspect the next scheduled capture; configure SEC CompanyFacts contact identity only after an authorized contact string is available; never use a placeholder.",
-    "XRP: link forward-only event captures to raw SHA-256 receipts at capture time; all 150 historical events still lack verified receipt links.",
-    "XRP: add an independent immutable timestamp anchor; keep forecast NOT_ISSUED until chronological walk-forward superiority and calibration pass.",
-    "Audio: reconcile FluidR3 rights metadata, add distinct rights-cleared production assets, produce a native/editable DAW project where feasible, and obtain level-matched listening acceptance.",
-    "Continuity: finish authenticated sender-signed cross-host transfer and replay/conflict handling; current hash-verified export/import is not authentication.",
-    "Hugging Face: inspect the Space build log/revision for BUILD_ERROR; do not restart or deploy without explicit approval.",
-    "Commercial: Sellbird 0.5.0 remains source-audited only; keep it uninstalled and sending disabled. Validate the Barrot-only supervised evidence-pilot offer before free prospect discovery.",
-    "Governance: preserve the four unique open PRs; exact-head suites/audits passed on observed heads, but no independent reviews or deployment authorization exist."
+    "XRP: close forward event-to-raw-receipt linkage gaps, add an independent immutable timestamp anchor, and implement deterministic feature-store rebuild; keep forecasts NOT_ISSUED.",
+    "Audio: add distinct rights-cleared production assets, a native/editable DAW project where feasible, and level-matched listening acceptance.",
+    "Continuity: implement authenticated sender-signed cross-host transfer, replay protection and explicit conflict resolution.",
+    "Hugging Face: retrieve read-only container build logs for the current BUILD_ERROR; do not restart or deploy.",
+    "Dependency PRs: verify new exact-head CI on #1706/#1709; retain #1708 until #1706 is merged and verified; block #1711 until NumPy/Streamlit compatibility is resolved.",
+    "Commercial: validate the bounded Barrot-only evidence pilot, then perform free prospect discovery with provenance; keep sending paused.",
+    "Governance: obtain independent reviews, readable branch-protection requirements and explicit Pages deployment approval before any merge."
   ],
   "a2a_bridge": {
     "source_pr": 1693,
@@ -942,154 +975,10 @@
   },
   "current_prs": [
     {
-      "number": 1702,
-      "title": "docs: refresh current three-mission handoff and platform map",
-      "base": "main",
-      "head_sha": "7bdcb8c499c527abfeb58357701b781dc2f355da",
-      "commits_ahead": 38,
-      "commits_behind": 0,
-      "changed_paths": [
-        "BARROT_MISSION_HANDOFF_LATEST.md",
-        "research/operations/nine_platform_operational_map_current.json",
-        "research/xrp_intelligence/20261124_primary_source_reconciliation.md",
-        "tests/test_nine_platform_operational_map_current.py"
-      ],
-      "classification": "blocked",
-      "workstream_uniqueness": "unique",
-      "review_count": 0,
-      "mergeable": true,
-      "last_observed_head_sha": "7bdcb8c499c527abfeb58357701b781dc2f355da",
-      "head_sha_note": "Live PR head before this checkpoint commit; exact-head checks passed, and this checkpoint commit will require fresh exact-head checks.",
-      "exact_head_validation": "PASSED_ON_HEAD_7bdcb8c499c527abfeb58357701b781dc2f355da; THIS_CHECKPOINT_COMMIT_REQUIRES_FRESH_EXACT_HEAD_CHECKS",
-      "checks": {
-        "full_suite_run_id": 45621184627,
-        "full_suite_status": "success",
-        "passed": 4693,
-        "skipped": 1,
-        "warnings": 11,
-        "subtests": 21,
-        "coverage_percent": 74.21,
-        "audit_run_id": 45621185542,
-        "audit_status": "success",
-        "dependency_audit_run_id": 45621185542,
-        "dependency_audit_status": "success",
-        "money_audit_run_id": 45621185563,
-        "money_audit_status": "success",
-        "conflict_integrity_run_id": 45621261486,
-        "conflict_integrity_status": "success",
-        "merge_tree_run_id": 45621261486,
-        "merge_tree_status": "success",
-        "pr_event_merge_readiness_run_id": 45621184631,
-        "pr_event_merge_readiness_status": "success"
-      },
-      "blockers": [
-        "No independent approving review recorded.",
-        "Required approval count and full classic branch-protection details remain unavailable because the detailed endpoint returns HTTP 403.",
-        "Merging to main triggers GitHub Pages deployment; no specific deployment approval has been given."
-      ]
-    },
-    {
-      "number": 1703,
-      "title": "Add portable long-horizon project state ledger",
-      "base": "main",
-      "head_sha": "502b3dfa748b72384c9a3d79a3f8355bad245a3f",
-      "commits_ahead": 12,
-      "commits_behind": 0,
-      "changed_paths": [
-        "barrot_agent/orchestration/__init__.py",
-        "barrot_agent/orchestration/autonomous_loop.py",
-        "barrot_agent/orchestration/project_state.py",
-        "docs/INDEX.md",
-        "docs/architecture/PROJECT_STATE_LEDGER.md",
-        "tests/test_autonomous_loop_persistence.py",
-        "tests/test_project_state_ledger.py"
-      ],
-      "classification": "blocked",
-      "workstream_uniqueness": "unique",
-      "review_count": 0,
-      "mergeable": true,
-      "last_observed_head_sha": "502b3dfa748b72384c9a3d79a3f8355bad245a3f",
-      "head_sha_note": "Live PR head and exact-head validation observed 2026-11-25T13:18Z.",
-      "exact_head_validation": "PASSED_ON_HEAD_502b3dfa748b72384c9a3d79a3f8355bad245a3f",
-      "checks": {
-        "full_suite_run_id": 45529493545,
-        "full_suite_status": "success",
-        "passed": 4708,
-        "skipped": 1,
-        "warnings": 11,
-        "subtests": 21,
-        "coverage_percent": 74.28,
-        "audit_run_id": 45529493529,
-        "audit_status": "success",
-        "dependency_audit_run_id": 45529493529,
-        "dependency_audit_status": "success",
-        "money_audit_run_id": 45529493585,
-        "money_audit_status": "success",
-        "conflict_integrity_run_id": 45530598905,
-        "conflict_integrity_status": "success",
-        "merge_tree_run_id": 45530598905,
-        "merge_tree_status": "success",
-        "pr_event_merge_readiness_run_id": 45530598817,
-        "pr_event_merge_readiness_status": "success"
-      },
-      "blockers": [
-        "No independent approving review recorded.",
-        "Required approval count and full classic branch-protection details remain unavailable because the detailed endpoint returns HTTP 403.",
-        "Merging to main triggers GitHub Pages deployment; no specific deployment approval has been given."
-      ]
-    },
-    {
-      "number": 1704,
-      "title": "Audio: route instrument stems through per-track SoundFonts",
-      "base": "main",
-      "head_sha": "9443942130a5a6563fbc398b0e1d2cf822b05e4c",
-      "commits_ahead": 8,
-      "commits_behind": 0,
-      "changed_paths": [
-        "barrot_agent/creative/audio_bundle.py",
-        "barrot_agent/creative/audio_render.py",
-        "docs/MUSICAL_DNA_ENGINE.md",
-        "tests/test_audio_render_integration.py",
-        "tests/test_musical_adapters.py",
-        "tests/test_audio_bundle_export.py"
-      ],
-      "classification": "blocked",
-      "workstream_uniqueness": "unique",
-      "review_count": 0,
-      "mergeable": true,
-      "last_observed_head_sha": "9443942130a5a6563fbc398b0e1d2cf822b05e4c",
-      "head_sha_note": "Live PR head and exact-head validation observed 2026-11-25T13:18Z.",
-      "exact_head_validation": "PASSED_ON_HEAD_9443942130a5a6563fbc398b0e1d2cf822b05e4c",
-      "checks": {
-        "full_suite_run_id": 45606439994,
-        "full_suite_status": "success",
-        "passed": 4694,
-        "skipped": 1,
-        "warnings": 11,
-        "subtests": 21,
-        "coverage_percent": 74.22,
-        "audit_run_id": 45606439987,
-        "audit_status": "success",
-        "dependency_audit_run_id": 45606439987,
-        "dependency_audit_status": "success",
-        "money_audit_run_id": 45606439939,
-        "money_audit_status": "success",
-        "conflict_integrity_run_id": 45606440056,
-        "conflict_integrity_status": "success",
-        "merge_tree_run_id": 45606440056,
-        "merge_tree_status": "success",
-        "pr_event_merge_readiness_run_id": 45606440097,
-        "pr_event_merge_readiness_status": "success"
-      },
-      "blockers": [
-        "No independent approving review recorded.",
-        "Required approval count and full classic branch-protection details remain unavailable because the detailed endpoint returns HTTP 403.",
-        "Merging to main triggers GitHub Pages deployment; no specific deployment approval has been given."
-      ]
-    },
-    {
       "number": 1705,
       "title": "Normalize RLUSD cross-chain supply as research-only evidence",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
+      "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
       "base": "main",
       "head_sha": "799d790009df6b1a5896b6cbad54a51c36112a7f",
       "commits_ahead": 8,
@@ -1106,10 +995,7 @@
       "classification": "blocked",
       "workstream_uniqueness": "unique",
       "review_count": 0,
-      "mergeable": true,
-      "last_observed_head_sha": "799d790009df6b1a5896b6cbad54a51c36112a7f",
-      "head_sha_note": "Live PR head and exact-head validation observed 2026-11-25T13:18Z.",
-      "exact_head_validation": "PASSED_ON_HEAD_799d790009df6b1a5896b6cbad54a51c36112a7f",
+      "exact_head_validation": "PASSED_ON_CURRENT_HEAD",
       "checks": {
         "full_suite_run_id": 45611528394,
         "full_suite_status": "success",
@@ -1118,24 +1004,297 @@
         "warnings": 11,
         "subtests": 21,
         "coverage_percent": 74.25,
-        "audit_run_id": 45611528333,
-        "audit_status": "success",
-        "dependency_audit_run_id": 45611528333,
         "dependency_audit_status": "success",
-        "money_audit_run_id": 45611528374,
         "money_audit_status": "success",
-        "conflict_integrity_run_id": 45611528459,
         "conflict_integrity_status": "success",
-        "merge_tree_run_id": 45611528459,
-        "merge_tree_status": "success",
-        "pr_event_merge_readiness_run_id": 45611528363,
-        "pr_event_merge_readiness_status": "success"
-      },
-      "blockers": [
-        "No independent approving review recorded.",
-        "Required approval count and full classic branch-protection details remain unavailable because the detailed endpoint returns HTTP 403.",
-        "Merging to main triggers GitHub Pages deployment; no specific deployment approval has been given."
-      ]
+        "gated_merge_status": "success",
+        "prior_integration_capture": "BLOCKED_STALE"
+      }
+    },
+    {
+      "number": 1704,
+      "title": "Audio: route instrument stems through per-track SoundFonts",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1704",
+      "branch": "integration/audio-instrument-soundfont-map-20261125",
+      "base": "main",
+      "head_sha": "9443942130a5a6563fbc398b0e1d2cf822b05e4c",
+      "commits_ahead": 8,
+      "commits_behind": 0,
+      "changed_paths": [
+        "barrot_agent/creative/audio_bundle.py",
+        "barrot_agent/creative/audio_render.py",
+        "docs/MUSICAL_DNA_ENGINE.md",
+        "tests/test_audio_render_integration.py",
+        "tests/test_musical_adapters.py",
+        "tests/test_audio_bundle_export.py"
+      ],
+      "classification": "blocked",
+      "workstream_uniqueness": "unique",
+      "review_count": 0,
+      "exact_head_validation": "PASSED_ON_CURRENT_HEAD",
+      "checks": {
+        "full_suite_run_id": 45606439994,
+        "full_suite_status": "success",
+        "passed": 4694,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.22,
+        "audio_render_run_id": 45606440020,
+        "audio_render_status": "success",
+        "dependency_audit_status": "success",
+        "money_audit_status": "success",
+        "conflict_integrity_status": "success",
+        "gated_merge_status": "success"
+      }
+    },
+    {
+      "number": 1703,
+      "title": "Add portable long-horizon project state ledger",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1703",
+      "branch": "integration/long-horizon-project-state-20261125",
+      "base": "main",
+      "head_sha": "502b3dfa748b72384c9a3d79a3f8355bad245a3f",
+      "commits_ahead": 12,
+      "commits_behind": 0,
+      "changed_paths": [
+        "barrot_agent/orchestration/__init__.py",
+        "barrot_agent/orchestration/autonomous_loop.py",
+        "barrot_agent/orchestration/project_state.py",
+        "docs/INDEX.md",
+        "docs/architecture/PROJECT_STATE_LEDGER.md",
+        "tests/test_autonomous_loop_persistence.py",
+        "tests/test_project_state_ledger.py"
+      ],
+      "classification": "blocked",
+      "workstream_uniqueness": "unique",
+      "review_count": 0,
+      "exact_head_validation": "PASSED_ON_CURRENT_HEAD",
+      "checks": {
+        "full_suite_run_id": 45529493545,
+        "full_suite_status": "success",
+        "passed": 4708,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.28,
+        "dependency_audit_status": "success",
+        "money_audit_status": "success",
+        "conflict_integrity_status": "success",
+        "fail_closed_gate_status": "success"
+      }
+    },
+    {
+      "number": 1702,
+      "title": "docs: refresh current three-mission handoff and platform map",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
+      "branch": "integration/mission-handoff-refresh-20261125",
+      "base": "main",
+      "head_sha": "18ab2aa5ce8eff428023b99c2b55f8e3a1dc32b8",
+      "commits_ahead": 39,
+      "commits_behind": 0,
+      "changed_paths": [
+        "BARROT_MISSION_HANDOFF_LATEST.md",
+        "research/operations/nine_platform_operational_map_current.json",
+        "research/xrp_intelligence/20261124_primary_source_reconciliation.md",
+        "tests/test_nine_platform_operational_map_current.py"
+      ],
+      "classification": "blocked",
+      "workstream_uniqueness": "unique",
+      "review_count": 0,
+      "exact_head_validation": "PASSED_ON_OBSERVED_PRECHECKPOINT_HEAD; THIS_MAP_COMMIT_ADVANCES_PR_1702",
+      "checks": {
+        "full_suite_run_id": 45623126485,
+        "full_suite_status": "success",
+        "passed": 4693,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.21,
+        "dependency_audit_status": "success",
+        "money_audit_status": "success",
+        "conflict_integrity_status": "success",
+        "pr_event_gated_merge_status": "success"
+      }
+    }
+  ],
+  "dependency_prs": [
+    {
+      "number": 1711,
+      "title": "build(deps): update numpy requirement from <2,>=1.26.4 to >=1.26.4,<3",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1711",
+      "branch": "dependabot/pip/numpy-gte-1.26.4-and-lt-3",
+      "base": "main",
+      "head_sha": "169b68dc6ad5f17c05f3563c0bc4e72fff991760",
+      "commits_ahead": 1,
+      "commits_behind": 0,
+      "changed_paths": [
+        "hf_space/requirements.txt"
+      ],
+      "classification": "blocked_dependency_compatibility",
+      "workstream_uniqueness": "unique_but_incompatible_constraint",
+      "review_count": 0,
+      "checks": {
+        "ci_run_id": 45621659743,
+        "ci_status": "success",
+        "dependency_audit_run_id": 45621659760,
+        "dependency_audit_status": "success",
+        "money_audit_run_id": 45621660016,
+        "money_audit_status": "success",
+        "conflict_integrity_run_id": 45621659985,
+        "conflict_integrity_status": "success",
+        "gated_merge_run_id": 45621659905,
+        "gated_merge_status": "success",
+        "hf_dependency_resolution_run_id": 45621659910,
+        "hf_dependency_resolution_status": "success"
+      }
+    },
+    {
+      "number": 1709,
+      "title": "build(deps): bump databricks/setup-cli from 1.25.0 to 1.27.0",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1709",
+      "branch": "dependabot/github_actions/databricks/setup-cli-1.27.0",
+      "base": "main",
+      "head_sha": "6a45c7a4405ff733aa02a9e22a8f65771108594d",
+      "commits_ahead": 2,
+      "commits_behind": 0,
+      "changed_paths": [
+        ".github/workflows/barrot-ops.yml",
+        "tests/test_external_deploys_require_confirmation.py",
+        "tests/test_workflow_action_pins.py"
+      ],
+      "classification": "blocked_pending_exact_head_checks",
+      "workstream_uniqueness": "unique",
+      "review_count": 0,
+      "checks": {
+        "ci_run_id": 45624202519,
+        "ci_status": "in_progress",
+        "dependency_audit_run_id": 45624202296,
+        "dependency_audit_status": "in_progress",
+        "money_audit_run_id": 45624202284,
+        "money_audit_status": "success",
+        "conflict_integrity_run_id": 45624202400,
+        "conflict_integrity_status": "success",
+        "gated_merge_run_id": 45624202514,
+        "gated_merge_status": "in_progress"
+      }
+    },
+    {
+      "number": 1710,
+      "title": "build(deps): update pyyaml requirement from >=6.0.3 to >=6.0.4",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1710",
+      "branch": "dependabot/pip/pyyaml-gte-6.0.4",
+      "base": "main",
+      "head_sha": "f1703fc6eff7ed5929517a270cf73538c9f85fed",
+      "commits_ahead": 1,
+      "commits_behind": 0,
+      "changed_paths": [
+        "legacy/requirements_legacy.txt"
+      ],
+      "classification": "unique_unreviewed",
+      "workstream_uniqueness": "unique",
+      "review_count": 0,
+      "checks": {
+        "ci_run_id": 45621621447,
+        "ci_status": "success",
+        "dependency_audit_run_id": 45621621418,
+        "dependency_audit_status": "success",
+        "money_audit_run_id": 45621621442,
+        "money_audit_status": "success",
+        "conflict_integrity_run_id": 45621621439,
+        "conflict_integrity_status": "success",
+        "gated_merge_run_id": 45621621449,
+        "gated_merge_status": "success"
+      }
+    },
+    {
+      "number": 1708,
+      "title": "build(deps): bump actions/cache/save from 4.3.0 to 6.1.0",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1708",
+      "branch": "dependabot/github_actions/actions/cache/save-6.1.0",
+      "base": "main",
+      "head_sha": "4a4733b48adb6bec3e6d0a38c3c5646f278b60a5",
+      "commits_ahead": 1,
+      "commits_behind": 0,
+      "changed_paths": [
+        ".github/workflows/xrp-public-ingestion.yml"
+      ],
+      "classification": "superseded_pending_successor_merge",
+      "workstream_uniqueness": "overlaps_1706",
+      "review_count": 0,
+      "checks": {
+        "ci_run_id": 45621609395,
+        "ci_status": "failure",
+        "dependency_audit_run_id": 45621609529,
+        "dependency_audit_status": "success",
+        "money_audit_run_id": 45621609646,
+        "money_audit_status": "success",
+        "conflict_integrity_run_id": 45621609509,
+        "conflict_integrity_status": "success",
+        "gated_merge_run_id": 45621609385,
+        "gated_merge_status": "failure"
+      }
+    },
+    {
+      "number": 1707,
+      "title": "build(deps): bump actions/setup-node from 4.4.0 to 7.1.0",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1707",
+      "branch": "dependabot/github_actions/actions/setup-node-7.1.0",
+      "base": "main",
+      "head_sha": "e456aa354b56698371780d6e7f82ec5650a9db8b",
+      "commits_ahead": 1,
+      "commits_behind": 0,
+      "changed_paths": [
+        ".github/workflows/a2a-worker-ci.yml"
+      ],
+      "classification": "unique_unreviewed",
+      "workstream_uniqueness": "unique",
+      "review_count": 0,
+      "checks": {
+        "ci_run_id": 45621597768,
+        "ci_status": "success",
+        "dependency_audit_run_id": 45621597560,
+        "dependency_audit_status": "success",
+        "money_audit_run_id": 45621598275,
+        "money_audit_status": "success",
+        "conflict_integrity_run_id": 45621597547,
+        "conflict_integrity_status": "success",
+        "a2a_worker_tests_run_id": 45621597800,
+        "a2a_worker_tests_status": "success",
+        "gated_merge_run_id": 45621597736,
+        "gated_merge_status": "success"
+      }
+    },
+    {
+      "number": 1706,
+      "title": "build(deps): bump actions/cache/restore from 4.3.0 to 6.1.0",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1706",
+      "branch": "dependabot/github_actions/actions/cache/restore-6.1.0",
+      "base": "main",
+      "head_sha": "479d112515ee4b5d63de374cd662f0afc895a46c",
+      "commits_ahead": 2,
+      "commits_behind": 0,
+      "changed_paths": [
+        ".github/workflows/xrp-public-ingestion.yml",
+        "tests/test_ci_coverage_scope.py",
+        "tests/test_workflow_action_pins.py",
+        "tests/test_xrp_public_ingestion.py"
+      ],
+      "classification": "blocked_pending_exact_head_checks",
+      "workstream_uniqueness": "canonical_combined_cache_update",
+      "review_count": 0,
+      "checks": {
+        "ci_run_id": 45624138666,
+        "ci_status": "in_progress",
+        "dependency_audit_run_id": 45624138497,
+        "dependency_audit_status": "in_progress",
+        "money_audit_run_id": 45624138616,
+        "money_audit_status": "success",
+        "conflict_integrity_run_id": 45624138737,
+        "conflict_integrity_status": "success",
+        "gated_merge_run_id": 45624139118,
+        "gated_merge_status": "in_progress"
+      }
     }
   ]
 }

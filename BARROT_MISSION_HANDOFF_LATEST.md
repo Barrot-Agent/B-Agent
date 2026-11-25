@@ -1171,3 +1171,54 @@ No merge, deployment, force-push, branch rewrite, secret rotation, Space restart
 Sellbird remains separate, uninstalled, unauthenticated and not prospecting-tested. No prospects, outreach, replies, meetings, proposals or revenue are recorded. The Barrot-only supervised public-source evidence pilot remains a design/pricing hypothesis (US$500–$1,000), not an approved offer. Outbound remains paused.
 
 No merge, deployment, force-push, branch rewrite, secret rotation, Space restart, paid lookup, Kaggle submission, outbound message, paper trade, funds transfer or real-money action occurred in this update.
+
+
+# Run 17 repository and backlog reconciliation — 2026-11-25T13:32:00Z
+
+## Current repository and governance — VERIFIED
+
+- Main is unchanged at 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407; the complete recursive tree is 3,163 entries and was not truncated. The repository is public, non-archived, with main protected. The visible protection summary requires Full repository test suite, audit, pip-audit and Verify PR merge tree against current base. The detailed classic-protection endpoint remains HTTP 403; approval count and hidden requirements are unknown.
+- All 10 open PRs were fetched and compared with main. Every branch is 0 commits behind. Four mission integration PRs (#1702–#1705) have disjoint changed paths. Six dependency PRs (#1706–#1711) are classified separately.
+- GitHub permissions confirm admin/maintain/push for this connection. The GitHub ruleset named Fall Back is disabled; classic protection is separately observed as enabled. Dependabot/code-scanning/secret-scanning alert endpoints are not accessible to this connection. Alert counts are unknown, not zero.
+- No independent approving review is recorded on any of the 10 PRs. Merging has a verified GitHub Pages deployment side effect and no specific deployment approval. No merge or deployment was performed.
+
+## Exact-head mission PR status
+
+- #1702 current observed head 18ab2aa5ce8eff428023b99c2b55f8e3a1dc32b8, 39 commits ahead / 0 behind. Full repository suite #45623126485 passed: 4,693 passed, 1 skipped, 11 warnings, 21 subtests, 74.21%; dependency audit, money audit, conflict integrity and PR-event gated merge passed. This checkpoint commit will advance #1702 and requires fresh exact-head checks.
+- #1703 head 502b3dfa748b72384c9a3d79a3f8355bad245a3f: 4,708 passed, 1 skipped, 11 warnings, 21 subtests, 74.28%; dependency, money, conflict-integrity and fail-closed gate passed.
+- #1704 head 9443942130a5a6563fbc398b0e1d2cf822b05e4c: 4,694 passed, 1 skipped, 11 warnings, 21 subtests, 74.22%; dependency, money, conflict-integrity, gated merge and FluidSynth integration passed. The render bundle is technically verified but not musically accepted.
+- #1705 head 799d790009df6b1a5896b6cbad54a51c36112a7f: 4,709 passed, 1 skipped, 11 warnings, 21 subtests, 74.25%; dependency, money, conflict-integrity and gated merge passed. The prior capture correctly failed closed as BLOCKED_STALE; no mainline verification of its new event-receipt capture exists yet.
+
+## Dependency PR consolidation and fixes — EXECUTED
+
+- #1706 was extended on its existing Dependabot branch, without force-push, to update both actions/cache restore and save to v6.1.0 and update the three regression-test guards that hard-coded v4 SHA/version expectations. New head 479d112515ee4b5d63de374cd662f0afc895a46c. Money audit and conflict integrity passed; exact-head CI, dependency audit and gated merge were still in progress at capture time.
+- #1708 remains open but is now the exact overlapping save-action source PR superseded by the combined #1706 branch. Its old head failed full-suite assertions against the outdated cache pin. Do not close it until #1706 is merged and its content is verified on main; then close only #1708 with a cross-reference.
+- #1709 was extended on its existing branch, without force-push, to update the Databricks CLI step label and both action-pin regression guards for v1.27.0. New head 6a45c7a4405ff733aa02a9e22a8f65771108594d. Money audit and conflict integrity passed; exact-head CI, dependency audit and gated merge were still in progress at capture time.
+- #1707 (setup-node v7.1.0) and #1710 (PyYAML >=6.0.4) passed their CI, dependency, money, conflict and gated-merge workflows. They remain unique and unreviewed.
+- #1711 (NumPy <3) passed its current CI and dependency-resolution workflow, but conflicts with the pinned Streamlit 1.35.0 NumPy <2 requirement recorded in the Space configuration. Keep blocked; a dependency resolver pass does not prove runtime compatibility. It was opened after the current Space BUILD_ERROR and is not evidence of that failure's cause.
+
+## External runtime and commercial blockers
+
+- Pillars Consistency Check #45619442260 failed because the public Hugging Face Space runtime reported BUILD_ERROR. Repository source-marker and source-fidelity checks passed; GitHub App and Databricks probes were skipped because they require manual opt-in. Build logs and deployed revision were not retrieved, so the root cause is unknown. No restart, secret change or deployment was performed. Read-only build diagnosis requires Hugging Face build logs; official method: fetch_space_logs(build=True), documented at https://huggingface.co/docs/huggingface_hub/main/guides/manage-spaces.
+- Sellbird 0.5.0 remains source-audited only, separate, uninstalled and unauthenticated. Barrot-only supervised evidence-pilot offer remains an unapproved pricing hypothesis. Prospect count, outreach, replies, meetings, proposals and revenue remain zero; outbound remains paused.
+- The XRP #155 data cutoff, feature-store/receipt counts, 150-event receipt gap, OKX-only quote basis and NOT_ISSUED forecast state are recorded in the preceding Run 16.2 update. No new mainline XRP ingestion completed after #155 during this checkpoint.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- DESIGNED: three co-equal priority-1 missions with V3 as shared foundation; one active integration PR per mission workstream; evidence-gated forecasts; audio rights/listening gates; conflict-preserving continuity; Barrot-only supervised customer acquisition.
+- EXECUTED: fetched main, complete tree, all open PRs, branch ancestry, exact-head runs, reviews, rulesets and available security settings; consolidated the cache update on #1706; corrected Databricks CLI test pins on #1709; refreshed this durable handoff and nine-platform map.
+- VERIFIED: current main SHA/tree; 10-PR inventory and ancestry; #1702–#1705 full-suite evidence; #1707/#1710 checks; #1706/#1709 branch commits and in-progress gates; #1708 exact overlap; #1711 compatibility conflict; Pillars failure boundary; no merge/deployment.
+- NOT VERIFIED: new-head CI completion for #1706/#1709; any independent PR approval; hidden branch-protection settings; Hugging Face build cause; security-alert counts; any merge or deployment; authenticated cross-host synchronization; external platform data transfer; professional audio listening acceptance; XRP forecast eligibility; Sellbird prospecting or revenue.
+
+## Next actions
+
+1. Verify exact-head full suite, dependency audit and fail-closed gate on #1706 and #1709. Keep #1708 open until #1706 is merged and verified, then close only #1708 with a cross-reference.
+2. Keep #1711 blocked until the NumPy constraint is reconciled with Streamlit 1.35.0 and a real Space build is validated.
+3. Retrieve read-only Hugging Face container build logs and identify the first build error; do not restart or deploy.
+4. XRP: close event-to-raw-receipt linkage, add an independent immutable timestamp anchor and deterministic feature-store rebuild; keep forecasts NOT_ISSUED.
+5. Audio: obtain distinct rights-cleared production assets, native/editable DAW project support and level-matched listening acceptance.
+6. Continuity: implement authenticated sender-signed cross-host transfer with replay protection and conflict handling.
+7. Commercial: validate the Barrot-only evidence pilot and perform free prospect discovery with provenance; keep outbound sending paused.
+8. Do not merge while independent reviews, complete branch-protection requirements and specific Pages deployment approval are absent.
+
+No new PR was created. No merge, deployment, force-push, branch rewrite, secret rotation, Space restart, paid lookup, Kaggle submission, outbound message, paper trade, funds transfer or real-money action occurred.
