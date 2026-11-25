@@ -882,3 +882,50 @@ Primary-source references: [OCC CAS](https://apps.occ.gov/CAS/home/details?Filin
 4. **Commercial:** prepare a reproducible Barrot evidence pack, validate the smallest deliverable Barrot-only pilot offer, then perform free/low-cost prospect discovery. Keep outbound paused pending explicit campaign and sending approval.
 
 No merge, deployment, secret rotation, Space restart, Kaggle submission, funds transfer, paper trade or outbound message occurred. The latest #1702 documentation commit requires fresh exact-head CI and gates. Main remains unchanged.
+
+
+## Run 14 commercial audit supplement — Sellbird v0.5.0
+
+**Exact upstream:** [ethanplusai/sellbird](https://github.com/ethanplusai/sellbird), formerly Harvey. Public repository, default branch `main`, read-only GitHub permission in this environment. Current main commit `8c743f1c475f61f7b2c04e50501cf6938a126ed6`, signed commit verified by GitHub, dated 2026-11-25 08:29:42 UTC; recursive tree **345 entries, not truncated**. Current package version **0.5.0**, released 2026-11-24; status **Beta**; Python **3.11+**.
+
+### Actual implementation and tested surface
+
+- Local Python application with CLI, SQLite-backed records, loopback dashboard, prospecting pipeline and MCP agent bridge. README describes company discovery, buying-signal review, decision-maker discovery, email-pattern inference, one-address verification, personalized drafts, sending and reply handling.
+- Default discovery is OpenStreetMap (free), plus public company websites. Optional providers include TinyFish, DataForSEO, Serper and Scavio. Optional contact tools include Hunter, Reoon and ZeroBounce. Optional legal check: Precleared. Optional warmup: TrulyInbox. Mail providers: Gmail, Microsoft 365, SMTP and legacy Instantly.
+- CI on current main [run 45576760134](https://github.com/ethanplusai/sellbird/actions/runs/45576760134) succeeded across all **six** OS/Python matrix jobs (Ubuntu, macOS and Windows; Python 3.11 and 3.12). One Ubuntu/Python 3.12 log records **4,009 passed, 42 skipped, 46 warnings**, plus **1** installed-wheel test and **21** Codex CLI 0.159.3 localhost-mock tests. This is upstream CI evidence, not a local install or live provider-authentication test.
+- The test workflow uses no credentials or live provider services. It exercises scripted Codex and localhost mocks; it does not establish that a real mailbox, warmup provider, prospecting provider or external agent is authenticated in this environment.
+- The CI workflow has no dedicated dependency-audit/security-scan job. The tree contains no lockfile and no Dependabot configuration; `pyproject.toml` and `requirements.txt` use version ranges. The only workflows in the tree are `.github/workflows/tests.yml` and `.github/workflows/cla.yml`. This is an unresolved supply-chain/security review item, not evidence of a known vulnerability.
+
+### License and separation requirement
+
+- Current `pyproject.toml` declares **AGPL-3.0-only** and the root LICENSE is AGPLv3. The README says Harvey releases through 0.3.x were MIT; that does not change the license of current Sellbird 0.5.0.
+- AGPLv3 section 13 can require an offer of corresponding source for a modified version used by remote users over a network. Combining, modifying, hosting or distributing Sellbird with Barrot may create copyleft obligations depending on the architecture and legal characterization. Obtain legal review before bundling or making a combined/derivative deployment. Do not copy Sellbird code into Barrot or assume the old Harvey MIT license covers current files.
+- Lowest-coupling option for later evaluation: keep Sellbird as a separate, unmodified local process and exchange only a user-reviewed CSV or explicitly authorized structured data. Even that boundary should receive a license review before commercial use.
+
+### Security, permissions and data flows
+
+- Default dashboard binds to loopback `127.0.0.1:5555`; remote Linux access is documented through an SSH tunnel, not public exposure. Docker runs as a non-root user but uses host networking and mounts the full checkout plus the host's Claude auth directory. It is not a hardened multi-tenant deployment.
+- `.env` holds Gmail OAuth client credentials, SMTP/IMAP credentials and optional provider keys. Gmail refresh tokens are stored under the local data directory; the Gmail adapter attempts mode `0600`. Keep secrets out of logs, Git, artifacts and the Barrot handoff. The application and its local user account can read its own credentials and database.
+- The agent receives a separate limited key. Documentation says the key can read, draft, plan, explain, inspect and pause; it cannot approve, send, resume, change settings/keys or delete records. However, a signed-in browser pane is the user's dashboard session and can click what the user can click, including Approve. Use that pane only while actively supervising it; sign it out afterward.
+- README supports Claude Code, Claude desktop and Codex. It says a ChatGPT plan can be used through Codex CLI, not by connecting the ChatGPT web chat directly. The docs say ChatGPT desktop pane support is not checked. No Sellbird-to-Barrot or nine-platform live connection was tested.
+- Optional Precleared receives recipient address, sender country, address source, product description, company/person names and recipient country as described in its documentation. This is a third-party personal-data flow requiring a separate privacy/retention/contract assessment before enabling.
+- LinkedIn browser automation is explicitly described by Sellbird as violating LinkedIn's Terms of Service and is off by default. Do not enable it.
+- Instantly is a legacy provider: already-deployed campaigns can continue running in Instantly even after Sellbird approval mode is restored. Do not use Instantly for this pilot.
+
+### Sending, compliance and cost controls
+
+- Shipped `sellbird.yaml` defaults to Gmail, `require_approval: true`, `max_daily_sends: 50`, `max_bounce_rate: 0.05`, LinkedIn disabled and Precleared disabled. Native-provider email drafts wait in the Outbox. The deterministic pre-send gate rejects unfilled merge tags, banned phrases, overlong emails, excess links, HTML bodies, non-deliverable addresses and recipient/database mismatches.
+- The app includes an opt-out footer, opt-out handling, a do-not-contact list, recipient office-hour windows, a sending pause/kill switch and optional per-recipient Precleared checks. These controls do not replace legal review. The documentation itself says the user is the sender, calls for a physical mailing address, and says to seek legal advice for scale or regulated industries.
+- Deliverability guidance requires a dedicated secondary sending domain, SPF/DKIM/DMARC, **2–4 weeks** warmup, a gradual **10–20/day per inbox** start with roughly **5/day** increases, and stopping to investigate bounces above roughly 3%. The 50/day default is a ceiling, not a safe starting target. No mailbox or domain is configured here.
+- Cost discipline: start with OpenStreetMap and public company websites at $0. Paid discovery is explicitly estimated before execution; the README/pipeline quotes DataForSEO Business Listings at about **$0.372 per 1,000**, and Hunter/Reoon/ZeroBounce have limited free tiers. Do not buy credits or call paid lookup services until the specific prospecting cohort and expected spend are approved.
+
+### Readiness decision
+
+- **Repository audit:** EXECUTED. Exact current repo, license, release, dependencies, docs, configuration, security policy, sending code, CI workflow and current-main CI evidence reviewed.
+- **Install/configuration:** NOT EXECUTED. The GitHub connector is read-only; a local clone attempt was blocked by DNS/network resolution. No package install, mailbox OAuth, SMTP credential, warmup connection, external data-provider key or Sellbird process was created.
+- **Prospecting:** NOT TESTED. No ICP or Barrot offer was loaded, no discovery query was run, and no prospects were counted or exported.
+- **Outreach:** NOT APPROVED / NOT SENT. No campaign, audience, message, sending domain or mailbox has been approved. Outbound remains paused.
+- **Replies, meetings, proposals, revenue:** none verified.
+- **Commercial decision:** do not market an unverified Barrot production capability. First assemble a reproducible Barrot evidence pack and select one narrowly scoped Barrot-only pilot whose claims are supported by tested code and artifacts. Then use free discovery first, deduplicate and preserve contact provenance, and present qualified opportunities for review. No music, songwriting, background vocals, TrekFlex or other separate ventures may enter Sellbird's prospecting scope.
+
+The existing Run 14 next-action list remains in force. This audit changes no Barrot code and creates no separate Sellbird integration PR.
