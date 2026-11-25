@@ -1424,8 +1424,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "cfd75f0d35025691c0451b93be27ebfc9102b7b8",
-      "commits_ahead": 77,
+      "head_sha": "5b1d60f23c086986fcb8ec8fe52fb310296bf657",
+      "commits_ahead": 78,
       "commits_behind": 0,
       "changed_paths": [
         "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -1467,7 +1467,7 @@
         },
         "pages_build_validation": "success_no_deployment"
       },
-      "validation_status": "PRE_UPDATE_HEAD_EXACT_FULL_SUITE_AND_GATES_PASSED; RUN28_HANDOFF_COMMIT cfd75f0 ADDED; MAP_COMMIT_AND_NEW_EXACT_HEAD_CI_PENDING",
+      "validation_status": "RUN28_HEAD_FULL_SUITE_FAILED_ONE_MAP_CLASSIFICATION_EXPECTATION; CANONICAL_LABEL_CORRECTION_COMMIT_PENDING; DO_NOT_MERGE",
       "observed_at_utc": "2026-11-25T18:35:22Z",
       "validation_failures": [
         "tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions — test expected the old wording 'Write existing documentation files'; the live map correctly records 'Write existing handoff/platform-map files' and the existing branch."
@@ -1841,7 +1841,7 @@
         ".github/workflows/xrp-public-ingestion.yml"
       ],
       "draft": true,
-      "classification": "duplicate_subset_of_1706_pending_successor_merge",
+      "classification": "superseded_pending_successor_merge",
       "workstream_uniqueness": "overlaps_1706",
       "review_count": 0,
       "checks": {
@@ -1867,7 +1867,13 @@
       ],
       "overlap_paths": [
         ".github/workflows/xrp-public-ingestion.yml"
-      ]
+      ],
+      "superseded_by": 1706,
+      "duplicate_subset": true,
+      "duplicate_scope": [
+        ".github/workflows/xrp-public-ingestion.yml"
+      ],
+      "rationale": "Subset of the broader cache action update in PR #1706; retain until the validated successor is merged and its content is verified on main."
     },
     {
       "number": 1709,
@@ -2072,44 +2078,49 @@
     ]
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-25T21:02:00Z",
+    "observed_at_utc": "2026-11-25T21:17:53Z",
     "pr_number": 1702,
-    "tested_head_sha": "af8c69a4998ef63914b72c6e7e8474804984ce9c",
-    "head_scope": "PRE_RUN28_HANDOFF_AND_MAP_UPDATE",
+    "tested_head_sha": "5b1d60f23c086986fcb8ec8fe52fb310296bf657",
     "full_suite": {
-      "run_id": 45694150449,
-      "conclusion": "success",
-      "passed": 4694,
-      "failed": 0,
+      "run_id": 45702188065,
+      "conclusion": "failure",
+      "passed": 4693,
+      "failed": 1,
       "skipped": 1,
       "warnings": 11,
       "subtests": 21,
-      "duration_seconds": 210.28,
-      "coverage_percent": 74.21
+      "coverage_percent": 74.21,
+      "duration_seconds": 183.8
+    },
+    "failure": {
+      "test": "tests/test_nine_platform_operational_map_current.py::test_current_pr_inventory_includes_integration_and_dependency_workstreams",
+      "cause": "Map classified PR #1708 as duplicate_subset_of_1706_pending_successor_merge; contract test requires canonical backlog class superseded_pending_successor_merge.",
+      "classification_only": true,
+      "product_code_failure": false,
+      "test_changed": false,
+      "correction": "Map classification corrected to superseded_pending_successor_merge; duplicate_subset=true and superseded_by=1706 retained as additional metadata."
     },
     "other_checks": {
       "dependency_audit": {
-        "run_id": 45694150312,
+        "run_id": 45702187820,
         "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 45694150290,
+        "run_id": 45702188182,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 45694150298,
+        "run_id": 45702188001,
         "conclusion": "success"
       },
-      "fail_closed_gate": {
-        "run_id": 45694150326,
-        "conclusion": "success"
-      },
-      "pages_build_validation": "success_no_deployment"
+      "pages_build_validation": "success_no_deployment",
+      "gated_merge": {
+        "run_id": 45702266883,
+        "conclusion": "failure_due_to_full_suite"
+      }
     },
     "merge_status": "NOT_MERGED",
-    "review_status": "ZERO_REVIEWS; REQUIRED APPROVAL COUNT UNAVAILABLE VIA HTTP 403",
-    "deployment_status": "PAGES_DEPLOYMENT_APPROVAL_REQUIRED",
-    "checkpoint_update_validation": "PENDING_EXACT_HEAD_CI_AFTER_RUN28_HANDOFF_AND_MAP_UPDATE"
+    "checkpoint_correction_validation": "PENDING_EXACT_HEAD_CI_AFTER_MAP_AND_HANDOFF_CORRECTION_COMMITS"
   },
   "latest_primary_source_research": {
     "observed_at_utc": "2026-11-25T16:17:00Z",
@@ -2528,7 +2539,7 @@
     "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45698991175"
   },
   "latest_execution_checkpoint": {
-    "observed_at_utc": "2026-11-25T21:02:00Z",
+    "observed_at_utc": "2026-11-25T21:17:53Z",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
     "recursive_tree_entries": 3163,
     "tree_truncated": false,
@@ -2560,7 +2571,12 @@
     "no_deployment": true,
     "no_external_model_transfer": true,
     "no_outreach": true,
-    "no_paper_trade": true
+    "no_paper_trade": true,
+    "handoff_branch_head_before_correction": "5b1d60f23c086986fcb8ec8fe52fb310296bf657",
+    "handoff_branch_commits_ahead_before_correction": 78,
+    "run28_full_suite_run_id": 45702188065,
+    "run28_full_suite_status": "FAILED_ONE_CANONICAL_BACKLOG_CLASSIFICATION_EXPECTATION",
+    "correction_commit_status": "MAP_CORRECTION_APPLIED; HANDOFF_ADDENDUM_AND_EXACT_HEAD_RERUN_PENDING"
   },
   "latest_xrp_run162_summary": {
     "run_number": 162,
