@@ -954,7 +954,9 @@
           "receipt_complete": false,
           "status": "INCOMPLETE",
           "model_eligible": false,
-          "forecast_status": "NOT_ISSUED"
+          "forecast_status": "NOT_ISSUED",
+          "verified_receipt_links": 0,
+          "missing_raw_receipt_hash": 150
         },
         "evaluation": {
           "walk_forward_entries": 468,
@@ -1470,7 +1472,9 @@
       "receipt_complete": false,
       "status": "INCOMPLETE",
       "model_eligible": false,
-      "forecast_status": "NOT_ISSUED"
+      "forecast_status": "NOT_ISSUED",
+      "verified_receipt_links": 0,
+      "missing_raw_receipt_hash": 150
     },
     "evaluation": {
       "walk_forward_entries": 468,
@@ -3820,7 +3824,9 @@
       "receipt_complete": false,
       "status": "INCOMPLETE",
       "model_eligible": false,
-      "forecast_status": "NOT_ISSUED"
+      "forecast_status": "NOT_ISSUED",
+      "verified_receipt_links": 0,
+      "missing_raw_receipt_hash": 150
     },
     "evaluation": {
       "walk_forward_entries": 468,
