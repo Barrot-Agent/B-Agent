@@ -53,7 +53,7 @@ def test_full_repository_suite_measures_all_distributable_packages():
     setup_python_sha = "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0"
     checkout_sha = "3d3c42e5aac5ba805825da76410c181273ba90b1"
     upload_artifact_sha = "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
-    cache_sha = "0057852bfaa89a56745cba8c7296529d2fc39830"
+    cache_sha = "55cc8345863c7cc4c66a329aec7e433d2d1c52a9"
     for workflow in (content, audit, ingestion):
         assert f"actions/setup-python@{setup_python_sha}" in workflow
         assert "actions/setup-python@v7" not in workflow
