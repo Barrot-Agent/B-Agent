@@ -122,6 +122,8 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
         pytest.skip("BARROT_TEST_SF2 is not configured outside the dedicated CI job")
 
     soundfont = Path(soundfont_value)
+    alternate_soundfont = tmp_path / "alternate-test.sf2"
+    alternate_soundfont.write_bytes(soundfont.read_bytes())
     license_name = os.environ.get("BARROT_TEST_SF2_LICENSE", "")
     source_name = os.environ.get("BARROT_TEST_SF2_SOURCE", "")
     assert soundfont.is_file()
@@ -131,12 +133,18 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
     manifest = compose_original(
         _template(), CompositionSettings(bars=16, seed=20261123)
     )
+    soundfont_map = {"snare": alternate_soundfont}
+    soundfont_map_metadata = {
+        "snare": {"source": source_name, "license": license_name}
+    }
     first = render_production_bundle(
         manifest,
         tmp_path / "bundle-a",
         soundfont_path=soundfont,
         soundfont_source=source_name,
         soundfont_license=license_name,
+        soundfont_map=soundfont_map,
+        soundfont_map_metadata=soundfont_map_metadata,
     )
     second = render_production_bundle(
         manifest,
@@ -144,6 +152,8 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
         soundfont_path=soundfont,
         soundfont_source=source_name,
         soundfont_license=license_name,
+        soundfont_map=soundfont_map,
+        soundfont_map_metadata=soundfont_map_metadata,
     )
 
     sample_rate, mix_samples = wavfile.read(first.mix_path)
@@ -195,6 +205,12 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
     assert metadata["native_daw_project_available"] is False
     assert metadata["rights"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
     assert metadata["rights"]["soundfont_sha256"] == _sha256(soundfont)
+    assets = {item["instrument"]: item for item in metadata["rights"]["soundfont_assets"]}
+    assert assets["snare"]["asset_name"] == alternate_soundfont.name
+    assert assets["snare"]["sha256"] == _sha256(alternate_soundfont)
+    assert assets["keys"]["asset_name"] == soundfont.name
+    assert all(item["status"] == "CALLER_SUPPLIED_UNVERIFIED" for item in assets.values())
+    assert metadata["stems"][1]["soundfont_sha256"] == _sha256(alternate_soundfont)
     assert metadata["mix"]["sha256"] == _sha256(first.mix_path)
     assert metadata["midi"]["sha256"] == _sha256(first.midi_path)
     assert all(stem["clip_sample_count"] == 0 for stem in metadata["stems"])
