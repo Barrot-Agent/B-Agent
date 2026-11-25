@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T03:45:00Z",
-  "capture_basis": "Run 11 final snapshot: current protected main remains 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407 with a complete 3,163-entry tree; three open, non-overlapping integration PRs remain #1702/#1703/#1704; latest main full suite is 4,693 passed with dependency/money audits successful; XRP run #143 remains forecast-ineligible with 150 unreceipted events, 388 insufficient-history 1h rows and 0/205 drift evaluation; audio and continuity exact-head suites previously passed; latest handoff corrections mark Kamilah channel identity unverified and RLUSD secondary supply/volume data research-only; official DefiLlama free stablecoin endpoint schema is documented but the live response is untested. This map update is committed to the existing #1702 branch; its live head and exact checks must be read from the PR, not inferred from this self-referential snapshot. No deployment, trading, paid lookup, external model transfer or outreach occurred.",
+  "captured_at_utc": "2026-11-25T03:55:00Z",
+  "capture_basis": "Run 11 updated inventory: protected main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407; complete 3,163-entry tree; four open, non-overlapping PRs #1702-#1705; inspected PR #1705 code/tests/workflow and integration run #144 artifact, which emitted BLOCKED_STALE at cache age 321.593s (>300s) with model/feature-store admission false; verified #1705 dependency/money/conflict checks and full-suite/gate pending; corrected the Kamilah channel attribution in the existing research file; no deployment, trading, paid lookup, outreach or external model transfer.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -56,6 +56,53 @@
       "interpretation": "The branch endpoint confirms protected=true and exposes four required checks enforced for non-admins. The detailed classic protection endpoint returns HTTP 403. Do not infer unreturned settings."
     },
     "current_open_pull_requests": [
+      {
+        "number": 1705,
+        "title": "Normalize RLUSD cross-chain supply as research-only evidence",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
+        "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
+        "base": "main",
+        "head_sha": "f2be2aba70f9c9d1b14e9c670c0172c6c250983a",
+        "commits_ahead": 2,
+        "commits_behind": 0,
+        "changed_paths": [
+          ".github/workflows/xrp-public-ingestion.yml",
+          "barrot_agent/evolution/rlusd_cross_chain_research.py",
+          "tests/test_rlusd_cross_chain_research.py",
+          "tests/test_xrp_ingestion_workflow_safety.py"
+        ],
+        "classification": "unique/unreviewed",
+        "review_count": 0,
+        "local_tests_reported": 11,
+        "exact_head_validation": "pending",
+        "checks": {
+          "full_suite_run_id": 45542742348,
+          "full_suite_status": "in_progress",
+          "dependency_audit_run_id": 45542742229,
+          "dependency_audit_status": "success",
+          "money_audit_run_id": 45542742195,
+          "money_audit_status": "success",
+          "conflict_integrity_run_id": 45542742304,
+          "conflict_integrity_status": "success",
+          "fail_closed_gate_run_id": 45542742134,
+          "fail_closed_gate_status": "in_progress"
+        },
+        "integration_capture": {
+          "run_id": 45542079480,
+          "run_number": 144,
+          "implementation_commit": "f11f477a5657e3ed18ae1300b6b45ff11c45df52",
+          "normalizer_status": "BLOCKED_STALE",
+          "cache_age_seconds": 321.593,
+          "cache_limit_seconds": 300,
+          "model_eligible": false,
+          "feature_store_admitted": false
+        },
+        "blockers": [
+          "No independent review recorded",
+          "Exact-head full suite and fail-closed gate pending",
+          "Automatic Pages deployment on merge remains unapproved"
+        ]
+      },
       {
         "number": 1702,
         "title": "docs: refresh current three-mission handoff and platform map",
@@ -190,11 +237,11 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T03:45:00Z",
+      "observed_at_utc": "2026-11-25T03:55:00Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
-      "open_pull_request_count": 3,
+      "open_pull_request_count": 4,
       "merge_ancestry": [
         "#1692",
         "#1701",
@@ -266,6 +313,25 @@
         "data_cutoff_utc": "2026-11-25T03:16:35.792060Z",
         "conclusion": "success",
         "feature_store_cutoff_utc": "2026-11-25T03:16:35.809109Z"
+      },
+      "latest_xrp_integration_run": {
+        "run_id": 45542079480,
+        "run_number": 144,
+        "head_sha": "f11f477a5657e3ed18ae1300b6b45ff11c45df52",
+        "status": "success",
+        "event": "push",
+        "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
+        "normalizer_status": "BLOCKED_STALE",
+        "cached_at_utc": "2026-11-25T03:39:48Z",
+        "captured_at_utc": "2026-11-25T03:45:09.592711Z",
+        "cache_age_seconds": 321.593,
+        "max_cache_age_seconds": 300,
+        "fresh_flag": true,
+        "raw_content_sha256": "5208ebf0ceda7faf23300d22090939f33075efca58e2b1a46aa2e519190b2994",
+        "receipt_id": "e44254bd15f2c8c7f7387c295179e847e71531c69297fdc6d4547b09c44e587c",
+        "model_eligible": false,
+        "feature_store_admitted": false,
+        "note": "The capture ran on the implementation commit one commit before the current PR head; the later commit adds workflow path coverage. Current-head full suite remains pending."
       }
     },
     "required_status_checks_last_verified_at_utc": "2026-11-25T03:31:29Z",
@@ -693,6 +759,53 @@
     ]
   },
   "current_prs": [
+    {
+      "number": 1705,
+      "title": "Normalize RLUSD cross-chain supply as research-only evidence",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
+      "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
+      "base": "main",
+      "head_sha": "f2be2aba70f9c9d1b14e9c670c0172c6c250983a",
+      "commits_ahead": 2,
+      "commits_behind": 0,
+      "changed_paths": [
+        ".github/workflows/xrp-public-ingestion.yml",
+        "barrot_agent/evolution/rlusd_cross_chain_research.py",
+        "tests/test_rlusd_cross_chain_research.py",
+        "tests/test_xrp_ingestion_workflow_safety.py"
+      ],
+      "classification": "unique/unreviewed",
+      "review_count": 0,
+      "local_tests_reported": 11,
+      "exact_head_validation": "pending",
+      "checks": {
+        "full_suite_run_id": 45542742348,
+        "full_suite_status": "in_progress",
+        "dependency_audit_run_id": 45542742229,
+        "dependency_audit_status": "success",
+        "money_audit_run_id": 45542742195,
+        "money_audit_status": "success",
+        "conflict_integrity_run_id": 45542742304,
+        "conflict_integrity_status": "success",
+        "fail_closed_gate_run_id": 45542742134,
+        "fail_closed_gate_status": "in_progress"
+      },
+      "integration_capture": {
+        "run_id": 45542079480,
+        "run_number": 144,
+        "implementation_commit": "f11f477a5657e3ed18ae1300b6b45ff11c45df52",
+        "normalizer_status": "BLOCKED_STALE",
+        "cache_age_seconds": 321.593,
+        "cache_limit_seconds": 300,
+        "model_eligible": false,
+        "feature_store_admitted": false
+      },
+      "blockers": [
+        "No independent review recorded",
+        "Exact-head full suite and fail-closed gate pending",
+        "Automatic Pages deployment on merge remains unapproved"
+      ]
+    },
     {
       "number": 1702,
       "title": "docs: refresh current three-mission handoff and platform map",
