@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T04:00:00Z",
-  "capture_basis": "Run 11 final PR inventory refresh: protected main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407; four open non-overlapping PRs #1702-#1705; handoff/map PR now includes the corrected XRP research markdown; #1705 current head d7c589d includes the corrected HTTP-date fixture, with exact-head CI/dependency/gate pending and money audit passed; run #144 integration capture emitted BLOCKED_STALE at 321.593s versus 300s, with model/feature-store admission false; only ChatGPT-to-GitHub flow verified; no deployment, trading, paid lookup, outreach or external model transfer.",
+  "captured_at_utc": "2026-11-25T04:06:00Z",
+  "capture_basis": "Run 11 status update: #1705 exact-head d7c589d full repository suite passed 4,704/1 skipped at 74.24%, dependency/money/conflict/fail-closed checks all passed; its integration capture #144 remains BLOCKED_STALE at 321.593s versus 300s with model/feature-store admission false; no independent review or deployment approval. #1702 current handoff branch full suite and gate remain in progress; four open non-overlapping PRs #1702-#1705; main remains 6033bcd; no merge/deployment/trading/outreach.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -74,18 +74,23 @@
         "classification": "unique/unreviewed",
         "review_count": 0,
         "local_tests_reported": 11,
-        "exact_head_validation": "pending",
+        "exact_head_validation": "passed_on_current_head",
         "checks": {
           "full_suite_run_id": 45543739494,
-          "full_suite_status": "in_progress",
+          "full_suite_status": "success",
+          "passed": 4704,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests": 21,
+          "coverage_percent": 74.24,
           "dependency_audit_run_id": 45543739554,
-          "dependency_audit_status": "in_progress",
+          "dependency_audit_status": "success",
           "money_audit_run_id": 45543739472,
           "money_audit_status": "success",
           "conflict_integrity_run_id": 45543739520,
-          "conflict_integrity_status": "in_progress",
+          "conflict_integrity_status": "success",
           "fail_closed_gate_run_id": 45543739474,
-          "fail_closed_gate_status": "in_progress"
+          "fail_closed_gate_status": "success"
         },
         "integration_capture": {
           "run_id": 45542079480,
@@ -99,8 +104,8 @@
         },
         "blockers": [
           "No independent review recorded",
-          "Exact-head full suite and fail-closed gate pending",
-          "Automatic Pages deployment on merge remains unapproved"
+          "Automatic Pages deployment on merge remains unapproved",
+          "Live data snapshot remains BLOCKED_STALE and model-ineligible"
         ],
         "last_commit_note": "Corrects the test fixture HTTP weekday for 2026-11-25 (Wednesday)."
       },
@@ -239,7 +244,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T04:00:00Z",
+      "observed_at_utc": "2026-11-25T04:06:00Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -779,18 +784,23 @@
       "classification": "unique/unreviewed",
       "review_count": 0,
       "local_tests_reported": 11,
-      "exact_head_validation": "pending",
+      "exact_head_validation": "passed_on_current_head",
       "checks": {
         "full_suite_run_id": 45543739494,
-        "full_suite_status": "in_progress",
+        "full_suite_status": "success",
+        "passed": 4704,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.24,
         "dependency_audit_run_id": 45543739554,
-        "dependency_audit_status": "in_progress",
+        "dependency_audit_status": "success",
         "money_audit_run_id": 45543739472,
         "money_audit_status": "success",
         "conflict_integrity_run_id": 45543739520,
-        "conflict_integrity_status": "in_progress",
+        "conflict_integrity_status": "success",
         "fail_closed_gate_run_id": 45543739474,
-        "fail_closed_gate_status": "in_progress"
+        "fail_closed_gate_status": "success"
       },
       "integration_capture": {
         "run_id": 45542079480,
@@ -804,8 +814,8 @@
       },
       "blockers": [
         "No independent review recorded",
-        "Exact-head full suite and fail-closed gate pending",
-        "Automatic Pages deployment on merge remains unapproved"
+        "Automatic Pages deployment on merge remains unapproved",
+        "Live data snapshot remains BLOCKED_STALE and model-ineligible"
       ]
     },
     {
