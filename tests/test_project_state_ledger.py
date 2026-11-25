@@ -257,8 +257,34 @@ def test_signed_transfer_rejects_tampering_unknown_sender_and_key_mismatch(tmp_p
     tampered = copy.deepcopy(envelope)
     tampered["bundle"]["records"][0]["value"] = "modified"
     receiver = ProjectStateLedger(tmp_path / "tampered")
-    with pytest.raises(ValueError, match="signature"):
+    with pytest.raises(ValueError, match="bundle digest mismatch"):
         receiver.reconcile_signed_bundle(tampered, trusted_public_keys=trusted, now_utc=NOW)
+
+    # Recompute the public digests after changing a valid bundle field. This gets
+    # past integrity checks and proves the original Ed25519 signature still rejects
+    # a sender who can rewrite hashes but does not possess the trusted private key.
+    forged = copy.deepcopy(envelope)
+    forged["bundle"].setdefault("history_archive_receipts", []).append(
+        {"digest": "a" * 64, "count": 1}
+    )
+    forged["bundle"]["bundle_sha256"] = _hash({
+        key: value for key, value in forged["bundle"].items() if key != "bundle_sha256"
+    })
+    forged["bundle_sha256"] = forged["bundle"]["bundle_sha256"]
+    forged["transfer_id"] = _hash({
+        "schema": forged["schema"],
+        "project_id": forged["project_id"],
+        "sender_id": forged["sender_id"],
+        "sequence": forged["sequence"],
+        "issued_at_utc": forged["issued_at_utc"],
+        "expires_at_utc": forged["expires_at_utc"],
+        "bundle_sha256": forged["bundle_sha256"],
+    })
+    signature_receiver = ProjectStateLedger(tmp_path / "signature")
+    with pytest.raises(ValueError, match="signature"):
+        signature_receiver.reconcile_signed_bundle(
+            forged, trusted_public_keys=trusted, now_utc=NOW
+        )
 
     unknown = ProjectStateLedger(tmp_path / "unknown")
     with pytest.raises(ValueError, match="not trusted"):
