@@ -80,7 +80,7 @@ def _render_midi_stereo(
     }
     if isinstance(soundfont_path, Mapping):
         soundfont_by_instrument: dict[int, Path] = {}
-        for index in active_indices:
+        for index in sorted(active_indices):
             name = getattr(instruments[index], "name", None)
             if not isinstance(name, str) or not name or name not in soundfont_path:
                 raise ValueError(
