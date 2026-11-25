@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T03:24:50.656Z",
-  "capture_basis": "Run 13 refresh: fetched protected main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407 and complete 3,163-entry recursive tree; reconciled open PRs #1702/#1703/#1704 and their ancestry, changed paths, exact-head workflow status and review inventory; verified main protection summary and HTTP 403 detail endpoint plus disabled fallback ruleset; inspected XRP public ingestion run #143 and downloaded its raw, receipt-index, event and feature-store artifacts; recorded exhausted Actions cache budget, checkpoint recovery from run #142, 150 unlinked event receipts, 388 insufficient-history one-hour walk-forward rows, 0/205 drift evaluation and forecast withholding; verified #1703 continuity-ledger and #1704 audio SoundFont-routing test evidence; Sellbird remains discovery-only with sending paused. No external model transfer, deployment, secret rotation, trading, paper trading or outreach occurred.",
+  "captured_at_utc": "2026-11-25T03:41:00Z",
+  "capture_basis": "Run 11 refresh: inspected protected main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407 and complete 3,163-entry tree; reconciled the three open PRs and exact-head checks; verified main CI 4,693 passed plus dependency/money audits and Pages deployment side effect; inspected XRP run #143 logs, 37 receipts, 150 unlinked events, 388 insufficient-history walk-forward rows, 0/205 drift and forecast withholding; reviewed event-receipt implementation/tests; corrected Kamilah Stevenson channel attribution to UNVERIFIED; added secondary RLUSD supply disagreement and verified official free DefiLlama stablecoin API schema without a live response; updated existing #1702 handoff branch only. No deployment, secret rotation, trading, paper trading, paid lookup, outreach or external model data transfer.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -34,7 +34,7 @@
       "latest_branch_creation_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45515917889"
     },
     "branch_protection_summary": {
-      "observed_at_utc": "2026-11-25T03:24:50.656Z",
+      "observed_at_utc": "2026-11-25T03:31:29Z",
       "source": "GET /repos/Barrot-Agent/B-Agent/branches/main",
       "branch_protected": true,
       "protection_enabled": true,
@@ -62,15 +62,29 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "commits_ahead_after_refresh": 6,
+        "last_observed_head_sha": "2115df4bcdd9a0583b306db586ded4a96571020a",
+        "head_sha_note": "The map update itself creates a new commit on this same branch; use live PR metadata for the current head SHA and ahead count.",
+        "commits_ahead_before_map_update": 8,
         "commits_behind": 0,
         "changed_paths": [
           "BARROT_MISSION_HANDOFF_LATEST.md",
           "research/operations/nine_platform_operational_map_current.json"
         ],
         "classification": "unique/unreviewed",
-        "pre_refresh_head_sha": "e4218dc1d418f5a0b6c366728b7524a6bd516029",
-        "exact_head_validation": "rerun_required_for_atomic_refresh_commit",
+        "last_verified_head_sha": "153c7f995b08b41e4c968048f460ed285f0a9528",
+        "last_verified_checks": {
+          "full_suite_run_id": 45539823548,
+          "passed": 4693,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests": 21,
+          "coverage_percent": 74.21,
+          "dependency_audit_run_id": 45539823598,
+          "money_audit_run_id": 45539823633,
+          "conflict_integrity_run_id": 45539823658,
+          "fail_closed_gate_run_id": 45539823700
+        },
+        "exact_head_validation": "pending_after_later_handoff_and_creator-attribution/map updates; verify latest CI, dependency audit, money audit, conflict integrity and fail-closed gate against the live PR head before merge",
         "review_count": 0,
         "blockers": [
           "No independent review recorded",
@@ -177,7 +191,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T03:24:50.656Z",
+      "observed_at_utc": "2026-11-25T03:31:29Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -251,17 +265,18 @@
         "run_id": 45538777078,
         "head_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
         "data_cutoff_utc": "2026-11-25T03:16:35.792060Z",
-        "conclusion": "success"
+        "conclusion": "success",
+        "feature_store_cutoff_utc": "2026-11-25T03:16:35.809109Z"
       }
     },
-    "required_status_checks_last_verified_at_utc": "2026-11-24T21:56:01Z",
-    "branch_protection_rechecked_at_utc": "2026-11-25T03:24:50.656Z",
-    "branch_protection_rechecked_status": "branch protected=true; detailed protection endpoint HTTP 403; approval count and hidden settings unknown",
+    "required_status_checks_last_verified_at_utc": "2026-11-25T03:31:29Z",
+    "branch_protection_rechecked_at_utc": "2026-11-25T03:31:29Z",
+    "branch_protection_rechecked_status": "branch protected=true; four required checks exposed; detailed protection endpoint HTTP 403; approval count and hidden settings unknown",
     "rulesets_observed": [
       {
         "name": "Fall Back",
         "enforcement": "disabled",
-        "observed_at_utc": "2026-11-25T03:24:50.656Z"
+        "observed_at_utc": "2026-11-25T03:31:29Z"
       }
     ],
     "pages_deployment_side_effect": {
@@ -297,81 +312,36 @@
   },
   "platforms": {
     "ChatGPT": {
-      "capability_status": "VERIFIED_CURRENT_SESSION_WITH_ADMIN_LIMITATIONS",
-      "authentication_status": "VERIFIED_CURRENT_SESSION",
-      "authenticated_principal": "Barrot-Agent",
-      "principal_note": "The connected GitHub profile resolves to the repository owner/PR author, not the user's separate personal GitHub account.",
-      "permissions": {
-        "repository_contents_read": true,
-        "repository_contents_write_on_existing_pr_branches": true,
-        "pull_request_metadata_read": true,
-        "workflow_run_status_read": true,
-        "administration_read": false,
-        "branch_protection_details_read": false,
-        "branch_protection_summary_read": true,
-        "independent_approval_of_own_pr": false
-      },
-      "verified_data_flow": {
-        "status": "VERIFIED",
-        "path": "Current ChatGPT session -> GitHub connector -> GitHub API -> Barrot-Agent/B-Agent",
-        "operations_observed": [
-          "read repository metadata and the complete recursive main tree (3,163 entries; not truncated)",
-          "read main mission manifests and verify root/package manifest byte equality",
-          "read the current open PR inventory (#1699 and #1693), reviews, branch ancestry and changed paths",
-          "verify PR #1701 merged as current main 84230d970750e3804e934e9207675879b4a266f9",
-          "read exact-main CI jobs and logs: 4,690 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage",
-          "read exact-main dependency audit, money audit and automatic Pages deployment side effect",
-          "read and download XRP ingestion run #135 raw, event-timeline, receipt-index and feature-store artifacts; verify per-run and cross-run receipt chain",
-          "inspect main audio rendering, continuity and nine-platform map code/tests",
-          "read open PR reviews (zero submitted reviews on #1699 and #1693)",
-          "read protected-main summary and four required checks; detailed branch-protection endpoint returned HTTP 403",
-          "reconcile existing PR #1699 branch with current main using a non-force merge commit that preserves the prior branch head",
-          "update the canonical handoff, current nine-platform map and its stale-SHA test on the existing PR branch",
-          "verify current main 84230d970750e3804e934e9207675879b4a266f9 after PR #1701 and its 3,163-entry recursive tree",
-          "verify exact-main full repository suite (4,690 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage), dependency audit, money audit and automatic Pages deployment side effect",
-          "verify current open PR inventory (#1699 and #1693), #1699 exact-head full suite/security/merge-tree/conflict/readiness checks, and absence of submitted reviews",
-          "inspect latest XRP ingestion run #135 (pre-#1701 main) and verify receipt-chain, feature-store, event-timeline and source-failure metrics",
-          "inspect audio renderer/bundle implementation and official FreePats CC0/CC-BY asset license pages; no soundfont assets downloaded or rendered",
-          "refreshed current main to 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407 and verified the complete 3,163-entry tree",
-          "verified zero open PRs and merge ancestry for PRs #1692, #1701, #1699 and #1693",
-          "verified exact-main CI: 4,693 passed, 1 skipped, 11 warnings, 21 subtests, 74.21% coverage; dependency and money audits passed",
-          "verified current main A2A Worker Tests and scheduled Cross Analysis success",
-          "inspected the merged A2A bridge and confirmed runtime remains quarantined by unresolved identity, parent/source lineage, OS sandbox and egress controls",
-          "verified latest XRP ingestion #137 metrics and that its head predates the final documentation/A2A merges",
-          "verified FluidSynth integration #72 passed 3/3 on #1701 head and no audio source paths changed through current main",
-          "rechecked protected main summary, HTTP 403 detailed branch protection, disabled fallback ruleset and automatic Pages deployment side effect"
-        ],
-        "external_model_data_transfer": false,
-        "persistent_agent_connection": false
-      },
-      "planned_role": "Primary orchestration, repository reconciliation, evidence synthesis and bounded implementation",
-      "task_assignment_status": "EXECUTED_IN_CURRENT_SESSION",
-      "limitations": [
-        "The connected GitHub principal is Barrot-Agent, not the user's separate personal GitHub account.",
-        "The connector cannot read the detailed branch-protection endpoint; it returns HTTP 403.",
-        "The connected principal cannot provide an independent approval for PRs it authored.",
-        "No separate user GitHub account is authenticated through this connector session.",
-        "The read-only branch summary does not expose approval count, strict-up-to-date, administrator enforcement, force-push or branch-deletion settings.",
-        "The GitHub Actions cache write budget was exhausted; the main full-suite run still passed and cache writes were read-only.",
-        "PR #1699 and PR #1693 are now merged; current open PR inventory is empty.",
-        "PR #1693 adds bridge code only; caller identity binding, parent/source lineage verification, OS sandboxing and egress restrictions remain blockers, and no live deployment was observed.",
-        "The latest main merge automatically triggered Pages deployment run 45509754310; further merges that trigger this side effect require specific deployment approval."
+      "capabilities": [
+        "GitHub repository metadata, recursive tree, branch, PR, file and workflow inspection",
+        "Read workflow job logs and exact-head test evidence",
+        "Update existing handoff files on the existing integration branch"
       ],
-      "evidence": [
-        "https://github.com/Barrot-Agent/B-Agent",
-        "https://api.github.com/repos/Barrot-Agent/B-Agent",
-        "https://api.github.com/repos/Barrot-Agent/B-Agent/git/trees/main?recursive=1",
-        "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
-        "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main/protection",
-        "https://github.com/Barrot-Agent/B-Agent/pull/1699",
-        "https://github.com/Barrot-Agent/B-Agent/pull/1693",
-        "https://github.com/Barrot-Agent/B-Agent/pull/1701",
-        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568190",
-        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568146",
-        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568152",
-        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45487455702",
-        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45488683332"
-      ]
+      "authentication": {
+        "status": "VERIFIED_FOR_GITHUB_CONNECTOR",
+        "evidence": "Repository metadata/tree/PR/file/workflow reads and branch-file update succeeded in this run."
+      },
+      "permissions": {
+        "observed_actions": [
+          "Read repository/tree/branches/PRs/files/workflow logs",
+          "Write existing documentation files on integration/mission-handoff-refresh-20261125"
+        ],
+        "not_used": [
+          "Merge to main",
+          "Deploy",
+          "Change secrets",
+          "Restart Spaces",
+          "Submit Kaggle entries",
+          "Transfer funds",
+          "Send outreach"
+        ]
+      },
+      "data_flow": {
+        "verified": true,
+        "status": "LIVE_TESTED",
+        "external_transfer_occurred": false,
+        "details": "GitHub data was read and the existing handoff branch was updated. No content was sent to another model platform."
+      }
     },
     "Claude": {
       "capability_status": "NOT_ASSESSED_THIS_SESSION",
@@ -383,7 +353,16 @@
         "external_transfer_occurred": false
       },
       "planned_role": "Independent adversarial review of XRP evidence, audio evaluation criteria and architecture",
-      "task_assignment_status": "DESIGNED_NOT_EXECUTED"
+      "task_assignment_status": "DESIGNED_NOT_EXECUTED",
+      "capabilities": {
+        "status": "NOT_TESTED"
+      },
+      "authentication": {
+        "status": "NOT_TESTED"
+      },
+      "permissions": {
+        "status": "UNKNOWN_NOT_TESTED"
+      }
     },
     "Grok": {
       "capability_status": "NOT_ASSESSED_THIS_SESSION",
@@ -395,7 +374,16 @@
         "external_transfer_occurred": false
       },
       "planned_role": "Counter-hypothesis generation and independent public-event/source challenge",
-      "task_assignment_status": "DESIGNED_NOT_EXECUTED"
+      "task_assignment_status": "DESIGNED_NOT_EXECUTED",
+      "capabilities": {
+        "status": "NOT_TESTED"
+      },
+      "authentication": {
+        "status": "NOT_TESTED"
+      },
+      "permissions": {
+        "status": "UNKNOWN_NOT_TESTED"
+      }
     },
     "Gemini": {
       "capability_status": "NOT_ASSESSED_THIS_SESSION",
@@ -407,7 +395,16 @@
         "external_transfer_occurred": false
       },
       "planned_role": "Independent document, image and multimodal source review",
-      "task_assignment_status": "DESIGNED_NOT_EXECUTED"
+      "task_assignment_status": "DESIGNED_NOT_EXECUTED",
+      "capabilities": {
+        "status": "NOT_TESTED"
+      },
+      "authentication": {
+        "status": "NOT_TESTED"
+      },
+      "permissions": {
+        "status": "UNKNOWN_NOT_TESTED"
+      }
     },
     "Copilot": {
       "capability_status": "NOT_ASSESSED_THIS_SESSION",
@@ -419,7 +416,16 @@
         "external_transfer_occurred": false
       },
       "planned_role": "IDE-context code suggestions and independent repository review",
-      "task_assignment_status": "DESIGNED_NOT_EXECUTED"
+      "task_assignment_status": "DESIGNED_NOT_EXECUTED",
+      "capabilities": {
+        "status": "NOT_TESTED"
+      },
+      "authentication": {
+        "status": "NOT_TESTED"
+      },
+      "permissions": {
+        "status": "UNKNOWN_NOT_TESTED"
+      }
     },
     "Codex": {
       "capability_status": "NOT_ASSESSED_THIS_SESSION",
@@ -431,7 +437,16 @@
         "external_transfer_occurred": false
       },
       "planned_role": "Isolated implementation, test repair and code-review tasks",
-      "task_assignment_status": "DESIGNED_NOT_EXECUTED"
+      "task_assignment_status": "DESIGNED_NOT_EXECUTED",
+      "capabilities": {
+        "status": "NOT_TESTED"
+      },
+      "authentication": {
+        "status": "NOT_TESTED"
+      },
+      "permissions": {
+        "status": "UNKNOWN_NOT_TESTED"
+      }
     },
     "Hugging Face": {
       "capability_status": "NOT_ASSESSED_THIS_SESSION",
@@ -443,7 +458,16 @@
         "external_transfer_occurred": false
       },
       "planned_role": "Model/dataset provenance, benchmark and inference evaluation",
-      "task_assignment_status": "DESIGNED_NOT_EXECUTED"
+      "task_assignment_status": "DESIGNED_NOT_EXECUTED",
+      "capabilities": {
+        "status": "NOT_TESTED"
+      },
+      "authentication": {
+        "status": "NOT_TESTED"
+      },
+      "permissions": {
+        "status": "UNKNOWN_NOT_TESTED"
+      }
     },
     "Kaggle": {
       "capability_status": "NOT_ASSESSED_THIS_SESSION",
@@ -455,7 +479,16 @@
         "external_transfer_occurred": false
       },
       "planned_role": "Offline benchmark and reproducible data-science experiments; submissions remain approval-gated",
-      "task_assignment_status": "DESIGNED_NOT_EXECUTED"
+      "task_assignment_status": "DESIGNED_NOT_EXECUTED",
+      "capabilities": {
+        "status": "NOT_TESTED"
+      },
+      "authentication": {
+        "status": "NOT_TESTED"
+      },
+      "permissions": {
+        "status": "UNKNOWN_NOT_TESTED"
+      }
     },
     "Databricks": {
       "capability_status": "NOT_ASSESSED_THIS_SESSION",
@@ -467,7 +500,16 @@
         "external_transfer_occurred": false
       },
       "planned_role": "Scalable point-in-time feature processing and reproducible analytical workloads",
-      "task_assignment_status": "DESIGNED_NOT_EXECUTED"
+      "task_assignment_status": "DESIGNED_NOT_EXECUTED",
+      "capabilities": {
+        "status": "NOT_TESTED"
+      },
+      "authentication": {
+        "status": "NOT_TESTED"
+      },
+      "permissions": {
+        "status": "UNKNOWN_NOT_TESTED"
+      }
     }
   },
   "coordination": {
@@ -650,5 +692,43 @@
       "The feature store cannot currently be rebuilt automatically from raw artifacts.",
       "The 388 one-hour walk-forward rows remain insufficient for model eligibility; no calibrated XRP-specific candidate or independent shadow cohort exists."
     ]
-  }
+  },
+  "current_prs": [
+    {
+      "number": 1702,
+      "title": "docs: refresh current three-mission handoff and platform map",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
+      "branch": "integration/mission-handoff-refresh-20261125",
+      "base": "main",
+      "last_observed_head_sha": "2115df4bcdd9a0583b306db586ded4a96571020a",
+      "head_sha_note": "The map update itself creates a new commit on this same branch; use live PR metadata for the current head SHA and ahead count.",
+      "commits_ahead_before_map_update": 8,
+      "commits_behind": 0,
+      "changed_paths": [
+        "BARROT_MISSION_HANDOFF_LATEST.md",
+        "research/operations/nine_platform_operational_map_current.json"
+      ],
+      "classification": "unique/unreviewed",
+      "last_verified_head_sha": "153c7f995b08b41e4c968048f460ed285f0a9528",
+      "last_verified_checks": {
+        "full_suite_run_id": 45539823548,
+        "passed": 4693,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.21,
+        "dependency_audit_run_id": 45539823598,
+        "money_audit_run_id": 45539823633,
+        "conflict_integrity_run_id": 45539823658,
+        "fail_closed_gate_run_id": 45539823700
+      },
+      "exact_head_validation": "pending_after_later_handoff_and_creator-attribution/map updates; verify latest CI, dependency audit, money audit, conflict integrity and fail-closed gate against the live PR head before merge",
+      "review_count": 0,
+      "blockers": [
+        "No independent review recorded",
+        "Required approval settings remain unknown because the detailed protection endpoint returns HTTP 403",
+        "Merging triggers the previously observed GitHub Pages deployment; no new deployment approval was given"
+      ]
+    }
+  ]
 }
