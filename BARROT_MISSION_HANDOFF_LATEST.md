@@ -65,7 +65,7 @@ Primary references remain in [the source reconciliation](https://github.com/Barr
 - Render: **175.545 seconds**, 110 BPM, D minor, 4/4, 80 bars, 10 sections, 44.1 kHz stereo. Peak **-6.0169 dBFS**, true peak **-6.0000 dBTP**, RMS **-24.897 dBFS**, zero clipped samples. Nine aligned stems; MIDI available. Stem-sum correlation **0.9999808**, relative RMS error **0.0061865**, independently recomputed from emitted WAVs.
 - Test SoundFont: Debian `fluid-soundfont-gm 3.1-5.3build1`, FluidR3_GM, MIT notice packaged; SoundFont SHA-256 `74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0`, license-document SHA-256 `f2f5e6358fc7c1fe62aafc6c8229c4c5898e5afb0d4ce1322b15362a8cbd600e`. The binary itself is not bundled.
 - The full-song render uses one SoundFont for all instruments; per-instrument routing is implemented/tested, but distinct production timbres have not been demonstrated in the full-song render. The stems are separate synth passes, so exact stem-sum reconstruction is not guaranteed.
-- **No native DAW project. No comparative or blind listening. No user acceptance.** The prior five v1 starter-beat rejection remains a 3/10 baseline. This is a reproducible technical premaster reference, not a professional-quality or user-approved track.
+- **No native DAW project. No comparative or blind listening. No user acceptance.** Prior dissatisfaction with earlier generated tracks remains a confirmed qualitative quality gap; no numerical acceptance score is recorded in the evidence available for this checkpoint. This is a reproducible technical premaster reference, not a professional-quality or user-approved track.
 
 ## Long-horizon continuity — EXECUTED and test-verified; automatic cross-host sync not implemented
 
