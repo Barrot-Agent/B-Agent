@@ -11,6 +11,7 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 5. **MIDI export** — optional `pretty_midi` adapter exports generated pitched notes and mapped percussion events. Existing files are never overwritten.
 6. **WAV rendering** — optional FluidSynth adapter renders MIDI through a caller-supplied SF2 SoundFont. It writes a new WAV file and reports duration, peak, RMS, and channel count. These are technical diagnostics, not artistic-quality judgments.
 7. **Evaluation** — verify inventory preservation and measure whether a transformation is meaningfully different.
+10. **Instrument-specific rendering** — production bundles may map each named MIDI track to a separate caller-supplied SF2. All selected SoundFonts are loaded into the same FluidSynth instance for the mix; stem passes use the same map. The bundle records each asset's SHA-256, source and license metadata per instrument. Caller-supplied rights metadata remains unverified; Barrot does not certify licensing.
 8. **Recursive memory** — append every attempt, including failures. Promote a reusable lesson only after the evaluator passes and the user gives explicit positive feedback.
 9. **Next iteration** — use the best verified settings as a starting point, then evaluate the next result against the same criteria.
 
