@@ -1,3 +1,69 @@
+# Run 21 — latest XRP ingestion, primary-source capital reconciliation and exact-head correction — 2026-11-25T16:17:00Z
+
+This checkpoint supersedes older observations only where newer evidence is explicitly recorded below. Historical records remain preserved.
+
+## Repository and integration state
+
+- Main remains `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; recursive tree remains 3,163 entries and was not truncated. Ten open PRs remain: #1702–#1711.
+- Existing #1702 branch was at parent `5542aa630f5c0b25b54f3a1d81ffa20ebc3b9602`, 52 commits ahead / 0 behind. This update modifies only that existing branch; no new branch or PR was created.
+- The #1702 full-suite run on that parent, [45651509004](https://github.com/Barrot-Agent/B-Agent/actions/runs/45651509004), failed with **4,693 passed, 1 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. The sole failure is a stale test expectation for the wording of an observed write action. The core-only push run [45651500057](https://github.com/Barrot-Agent/B-Agent/actions/runs/45651500057) passed, but is not a full-suite pass. Dependency Audit [45651508577](https://github.com/Barrot-Agent/B-Agent/actions/runs/45651508577), Money Audit [45651508647](https://github.com/Barrot-Agent/B-Agent/actions/runs/45651508647) and Conflict Integrity [45651508663](https://github.com/Barrot-Agent/B-Agent/actions/runs/45651508663) passed. The fail-closed gate [45651508600](https://github.com/Barrot-Agent/B-Agent/actions/runs/45651508600) correctly failed.
+- This update changes the test to assert the semantic “Write existing” action plus the exact existing branch name, rather than hard-coding an outdated noun phrase. It also refreshes the durable research/handoff/map. **Exact-head full-suite and gate results on the new commit are pending.**
+- Main remains protected with four required checks. The detailed branch-protection endpoint remains HTTP 403, so required review count and some settings remain unknown. No independent review is recorded on mission PRs. GitHub Pages deployment is an automatic merge side effect; specific deployment approval remains absent. No merge.
+
+## XRP — latest scheduled main ingestion #159
+
+Main ingestion [run #159 / 45642883902](https://github.com/Barrot-Agent/B-Agent/actions/runs/45642883902) completed successfully on main SHA `6033bcd` at 2026-11-25 15:14:48 UTC:
+
+- Feature store: **116 snapshots**, **30,405 cumulative records**, 490 delta records, 123 latest eligible records, 367 excluded; SQLite integrity `ok`.
+- Receipts: **37 total**, 21 retained raw payloads, 16 digest-only; cross-run chain sequence 116 continued and verified. I independently recomputed all **21/21** retained raw payload SHA-256 values, verified receipt-log and chain-log hashes against the manifest, and verified the raw/receipt/events/feature-store artifact ZIP digests against the GitHub upload digests. The chain remains **not externally anchored**.
+- The 150-event timeline remains incomplete: **0 verified receipt links**, all 150 events lack a raw receipt hash, and 11 URL matches are not enough to establish source identity.
+- One-hour walk-forward: **436 rows**, `PARTIAL_OR_BLOCKED`; drift **0/205**, `INSUFFICIENT_DATA`; directional forecast remains `NOT_ISSUED`. No paper trade.
+- Same-venue OKX top-of-book USD-normalized mid: **$0.897132736**, bid $0.897078312, ask $0.897187160, spread 1.2133 bps. This is one publisher-independence group and top-of-book only, not cross-venue consensus or full-depth liquidity.
+- Research-only Bitbank sample: 60 trades over a variable 208.605-second window, net taker flow **−6,230.4991 XRP**. It is not a fixed-duration or 24-hour flow metric.
+- XRP Insights ETF aggregate (data as of 2026-11-24): direct spot flow $0 and direct spot holdings 1.1225B XRP; mixed indirect holdings-delta flow −476,519.74 XRP. This is not issuer/AP cash flow and remains model-ineligible.
+- Morpho cbXRP market state is withheld: observed market block 62,146,559 is **220 blocks ahead** of Morpho's indexer tip 62,146,339. No feature admission.
+- SEC EDGAR adapter remains `BLOCKED_CONFIGURATION`: no monitored `BARROT_SEC_USER_AGENT` contact identity is configured; three issuer submissions captures failed. No identity was invented.
+- Source failures: Binance 451 (8 sources), Bybit 403 (5), Grayscale 429 (retryable), Franklin parser marker failure, SEC configuration (3). No regional/proxy bypass.
+- Cache is read-only because the GitHub Actions cache budget is exhausted. The workflow restored from the prior per-run checkpoint #156, verified the feature store and uploaded a new per-run checkpoint; the cache save itself failed. Per-run checkpoint retention is 7 days, daily archive retention 90 days, and automatic raw-artifact rebuild is not implemented. The fallback worked this run, but durable rebuild remains a gap.
+
+## New primary-source XRP ecosystem findings
+
+- **SBIC identity:** SBIC East, Central and West are Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies under Japan's 1963 Act. They are separate regional statutory investment institutions, not SBI Holdings subsidiaries. A 2007 SBI Holdings release used “SBIC” for SBI Capital Co., Ltd.; that is a separate historical acronym use.
+- **SBI/Evernorth actual capital:** SBI Holdings announced a $200M cash contribution to Evernorth's PIPE in 2025. The SEC's 2026-10-19 Form 424B3 identifies four SBI-controlled subscriber entities and reports $214.05M aggregate Advance Funding cash proceeds used to purchase **84,365,876.3625 XRP**. This confirms an actual aggregate cash-funded XRP purchase. The filing does not allocate the purchase among individual subscribers; do not attribute all 84.365M XRP to SBI's specific $200M. Additional XRP contributions in kind are separate.
+- **Custody / Coinbase:** Evernorth's SEC prospectus identifies BitGo Trust as its XRP custodian and Coinbase as its principal market for financial-reporting valuation. It does not establish Coinbase as the treasury's custodian or execution venue. BNY's new XRP/RLUSD custody support does not establish an Evernorth custody migration.
+- **BNY/C2FO:** BNY now supports XRP and RLUSD custody for eligible institutional clients; future RLUSD mint/redeem and tokenized-trade-finance plans remain subject to approvals. C2FO Instant Pay is announced on XRPL with **RLUSD as settlement asset** and a waitlist. C2FO's $525B historical Early Pay figure is not Instant Pay or on-chain volume. No XRP settlement or material XRP demand is established by this announcement.
+- **YouTube:** `@drkamilahstevenson` has a high-confidence channel-to-Prescribe-Wealth brand link through its own bio URL and signed public posts; the official site identifies Dr. Kamilah Stevenson/MKS Health LLC. A second channel `@PrescribeWealth` is linked by the main channel. Similar-name channels without a cross-link remain excluded. A public-channel video sample is recorded in the research note; no transcript-level claims were validated.
+- Exact-phrase status: “ASK Coin” and “SBIC, ChatGPT SBIC” remain without a primary-source XRP/ChatGPT identity. The exact phrase “actual capital” remains unverified, although the actual Evernorth cash-funded XRP acquisition is now documented.
+
+## Co-equal missions
+
+- **XRP:** scheduled public ingestion and source receipts are operating, but event-to-receipt linkage, independent source diversity, full SEC document capture, sufficient walk-forward/drift evidence and model eligibility remain blocked.
+- **Audio:** #1704 remains the one active audio integration PR. Its exact-head full suite and FluidSynth integration previously passed; the 80-bar QC render has 9 aligned stems and MIDI, but no user-accessible WAV/stem/MIDI package, native DAW project, rights-cleared production library or comparative listening acceptance is verified.
+- **Continuity:** #1703 remains the one active continuity PR. Its append-only state ledger and signed manual transfer protocol are implemented and tested: Ed25519-signed envelopes, sender-key verification, expiry and replay guard. Automatic cross-host transport/key exchange is not implemented or verified.
+- Only ChatGPT-to-GitHub is authenticated and data-flow tested among the nine platforms. The other eight remain untested.
+- Sellbird remains unauthenticated/uninstalled. Barrot-only prospecting has zero verified prospects, zero outreach, zero meetings, zero proposals and $0 collected. Outbound remains paused; music and TrekFlex remain excluded.
+
+## Open PR classification
+
+- Unique mission/integration: #1702 handoff/research/map (new-head validation pending); #1703 continuity ledger (tests pass; review/deployment authorization blocked); #1704 audio SoundFont routing (tests pass; review/deployment authorization blocked); #1705 XRP RLUSD research normalizer (tests pass; review/deployment authorization blocked).
+- Dependency: #1706 is the canonical combined cache restore/save update; #1708 is a draft duplicate subset and remains superseded-pending-successor-merge; #1707, #1709 and #1710 are unique/unreviewed; #1711 remains blocked by the Hugging Face Space Streamlit 1.35.0 / NumPy <2 compatibility constraint.
+- No PR was merged or closed.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal missions on shared V3; XRP source/receipt/forecast gates; audio licensing/QC/listening gates; continuity state and signed-transfer controls; nine-platform least-privilege map; Barrot-only commercial scope.
+- **EXECUTED:** refreshed main/tree/PR/CI state; inspected run #159 artifacts; independently verified 21 raw hashes and artifact/chain digests; reconciled SBI/SBIC/Evernorth primary sources; added BNY/C2FO and channel-level video evidence; corrected the remaining #1702 action assertion on the existing branch.
+- **VERIFIED:** main ingestion #159 succeeded; 21/21 raw payload hashes and receipt/chain log hashes matched; Evernorth's aggregate $214.05M cash-funded purchase of 84,365,876.3625 XRP is stated in SEC filing; SBIC East/Central/West legal identities are supported by official company profiles; #1702 parent-head single test failure and its cause are identified.
+- **PENDING:** exact-head full suite/audit/dependency/conflict/fail-closed gates for the new #1702 commit; independent reviews and deployment approval; event-to-receipt linkage; SEC user-agent configuration; XRP walk-forward/drift eligibility; audio listening and deliverables; cross-host continuity transport; eight external platform authentications; Sellbird prospecting and commercial conversion.
+
+## Next concrete action
+
+Verify the new #1702 head's exact full suite and fail-closed gate. If anything fails, fix only on this existing branch and rerun. Do not merge until required checks, independent approvals and the Pages deployment side effect are verified and authorized.
+
+No merge, force-push, deployment, Space restart, secret rotation, external model dispatch, paid lookup, Sellbird installation, outbound message, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+---
+
 # Run 20 — exact-head failure diagnosis and test correction — 2026-11-25T16:05:43Z
 
 This checkpoint supersedes earlier validation claims only where the live evidence below is newer. Historical observations remain preserved.

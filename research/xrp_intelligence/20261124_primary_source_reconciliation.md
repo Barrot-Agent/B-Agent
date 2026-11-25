@@ -370,3 +370,62 @@ Additional primary-source register:
 55. Coinbase — XRP perpetual futures settled in USDC (2023-10-18): https://www.coinbase.com/blog/coinbase-customers-in-eligible-non-us-jurisdictions-can-now-trade
 56. SBI Holdings/SBI Ripple Asia — tokenized-deposit and deposit-based digital-money POC (2026-02-26): https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
 57. SBI Holdings/SBI Ripple Asia — Japan–Korea remittance/payment research with DSRV (2026-02-24): https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html
+
+
+---
+
+## 7.12.12 2026-11-25 — SBI/Evernorth capital deployment: actual cash-funded XRP purchase verified
+
+**Evidence standard:** SBI's announcement is a company statement of intended use; the later SEC prospectus and Form 10-Q are the stronger evidence for the financing structure, acquisition and custody. This section remains research-only and is not an immutable ingestion receipt.
+
+- **SBI commitment (2025-10-21):** SBI Holdings said SBI Group would contribute **US$200 million in cash** to Evernorth's PIPE and that proceeds would be used primarily to purchase XRP on the open market. This is the announced commitment and use-of-proceeds intent, not by itself proof of execution.
+- **SEC Form 424B3 (filed 2026-10-19):** The filing identifies four “SBI Stockholders” — SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. — as entities controlled by SBI Holdings. Their subscription amendments were subject to a 39.9% ownership cap. The filing describes **US$214.05 million** of aggregate Advance Funding cash proceeds (plus 600,000 XRP in kind) and says Evernorth used the **US$214.05 million cash proceeds to purchase 84,365,876.3625 XRP**. This verifies an actual aggregate cash-funded XRP acquisition, not merely an intention.
+- **Attribution boundary:** SBI publicly announced a US$200 million contribution, and SBI-controlled entities are identified among the Advance Funding subscribers. The SEC filing does not allocate the 84,365,876.3625 XRP purchase among individual subscribers. Do not claim that all 84.365 million XRP, or a mathematically prorated amount, was purchased with SBI's specific dollars.
+- **In-kind capital is separate:** The same closing disclosure reports approximately **388,910,554 XRP contributed in kind** by multiple parties, including Ripple-related and other investors. These contributions are not cash purchases and are not all attributable to SBI. Keep cash subscriptions, open-market acquisitions, XRP contributions, trust-account proceeds, debt and optional equity facilities as separate ledger events.
+- **Post-close financing:** A **US$30 million 4.00% PIK convertible note** was issued after the October 9, 2026 business-combination closing; its stated possible uses include XRP acquisitions and other ecosystem activity, but the filing does not prove those proceeds had been used to buy XRP. The October 23 equity-line facility permits, but does not require, sales of up to 5,218,935 shares; potential proceeds are not actual cash until notices and purchases occur.
+- **Corporate transition:** Evernorth was a wholly owned Ripple subsidiary at September 30, 2026; the business combination closed October 9, after which the public parent structure changed. The prospectus describes the public company as a holding company whose principal asset is a 71.5% interest in Pathfinder, with no independent means of generating revenue.
+- **Custody and Coinbase boundary:** The SEC prospectus says all XRP is held through BitGo Trust, initially in cold storage; the stated US$250 million cold-storage insurance is shared across BitGo clients, not dedicated to Evernorth. Evernorth selected **Coinbase as its principal market for financial-reporting valuation**, while also stating it does not actively trade XRP on digital-asset markets for that accounting determination. This is not evidence that Coinbase is the custodian or execution venue for the treasury. BNY's announced XRP custody support is not evidence that Evernorth moved its XRP to BNY.
+- **Liquidity/risk context:** The Form 10-Q reports US$1.722 million net cash used in operating activities for the period ended September 30. It explains that the reported US$32.9 million net loss included large non-cash fair-value and digital-asset impairment items; do not equate reported loss with cash burn.
+
+**Reconciliation:** The earlier statement that SBI's US$200 million was “not proof of open-market XRP purchases” remains correct only as a subscriber-specific attribution caveat. It is now incomplete if read as saying no actual cash-funded purchase is verified. The SEC filing confirms that the aggregate Advance Funding cash pool — in which SBI-controlled entities participated — funded 84,365,876.3625 XRP purchases. Exact SBI-dollar-to-XRP allocation remains undisclosed.
+
+## 7.12.13 2026-11-25 — Kamilah Stevenson channel-level identity and public-video index
+
+**Attribution standard:** The main public channel self-identifies as Kamilah Stevenson, links to the Prescribe Wealth bio domain, and publishes posts signed “Kamilah.” The linked official site identifies Dr. Kamilah Stevenson and MKS Health LLC as the founder/company. This provides high-confidence channel-to-brand attribution, but the official site does not reciprocally link to the channel in the page reviewed. Therefore this is a **channel-level inventory**, not independent proof of the person's legal identity or a blanket endorsement of every statement.
+
+- Primary channel: https://www.youtube.com/@drkamilahstevenson — page index reported approximately 142K subscribers and 1.2K public videos on 2026-11-25; link target: https://go.prescribewealth.com/yt-bio. Official brand page: https://prescribewealth.com/.
+- The main channel's own public post announces a second channel, https://www.youtube.com/@PrescribeWealth. The link is attributable to the main channel; a separate inventory of that channel was not available in this capture.
+- Similar-name channels, including https://www.youtube.com/@KamilahStevensonXrpStocks, were not cross-linked by the main channel or official brand page and remain **unverified/excluded**. “Camilla” is not independently verified as the same person; the verified channel spelling is “Kamilah.”
+- Public XRP-related channel-index sample (relative ages/views are publisher-index snapshots, not independently verified performance metrics):
+  1. “This NEW Bank Deal Shows Exactly Where XRP Is Headed” — 29K views, index says 1 day ago.
+  2. “This New SEC Proposal Could Unlock Trillions for XRP (and nobody realizes)” — 28K, 2 days ago.
+  3. “Exactly How to Retire With Your XRP Portfolio (Even If You're Cash Poor)” — 41K, 4 days ago.
+  4. “XRP vs Banks: Why Your Money Needs Autonomy NOW” — 9.8K, 5 days ago.
+  5. “Did SWIFT Just Change XRP Forever? (The Truth)” — 77K, 5 days ago.
+  6. “BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention.” — 21K, 8 days ago.
+  7. “A $119 Billion African Bank Just Put Its License Behind XRP” — 27K, 9 days ago.
+  8. “A New XRP Tool Can Buy and Sell for You” — 13K, 11 days ago.
+  9. “Invest NOW or Get Left Behind. Institutions Are Already Moving.” — 16K, 12 days ago.
+  10. “The CFTC Just Said What XRP Holders Waited Years to Hear” — 44K, 12 days ago.
+  11. “Wall Street Just Got a Company Built to Keep BUYING XRP” — 16K, 2 weeks ago.
+  12. “XRP Ledger Technology Just Reached Europe's Central Bank” — 11K, 2 weeks ago.
+- The specific video “This NEW Bank Deal Shows Exactly Where XRP Is Headed” has a separate search result dated **2026-10-20**, while the channel index displayed “1 day ago.” Preserve this publication-date conflict; do not silently choose one. Its indexed description discusses Standard Chartered/LMAX and RLUSD custody/collateral, and distinguishes RLUSD infrastructure from automatic XRP demand. It is not the October 27 BNY/C2FO announcement.
+- No transcript-level claim review was completed for the listed videos. Titles are discovery metadata only; verify every named institution, regulatory action, flow and XRP-demand claim against primary evidence before using it in research.
+
+## 7.12.14 Exact-phrase and acronym update
+
+- **“ASK Coin”** remains unresolved: no primary-source XRP/XRPL identity or relationship was established.
+- **“actual capital”** remains unverified as an exact phrase/entity. Actual cash-funded XRP acquisition is now established by the Evernorth SEC filing described above; that is a factual capital-flow finding, not a match for the quoted phrase.
+- **“SBIC, ChatGPT SBIC”** has no official ChatGPT relationship in the reviewed sources. SBIC East/Central/West are the three statutory SME investment companies. A separate 2007 SBI Holdings release used “SBIC” for **SBI Capital Co., Ltd.**, whose 40% stake was transferred to Goldman Sachs to form a joint venture; this is a historical acronym use, not the East/Central/West trio.
+- The U.S. SBA's “Small Business Investment Company (SBIC)” program is another distinct use of the acronym and is not the Japanese regional trio.
+
+**Additional primary-source register:**
+
+58. SBI Holdings — Evernorth PIPE investment and US$200M cash commitment (2025-10-21): https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf  
+59. Evernorth Holdings Inc. Form 424B3 (filed 2026-10-19; Advance Funding, SBI Stockholders, XRP acquisition and custody): https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm  
+60. Evernorth Holdings Inc. Form 10-Q for quarter ended 2026-09-30 (filed 2026-11-13): https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm  
+61. SBI Holdings — 2007 use of “SBIC” for SBI Capital Co., Ltd.: https://www.sbigroup.co.jp/news/2007/0521_852.html  
+62. Main channel index and public uploads: https://www.youtube.com/@drkamilahstevenson  
+63. Prescribe Wealth / MKS Health LLC official brand page: https://prescribewealth.com/  
+64. Main channel-announced second channel: https://www.youtube.com/@PrescribeWealth  
+65. Unverified lookalike channel excluded from attribution: https://www.youtube.com/@KamilahStevensonXrpStocks  

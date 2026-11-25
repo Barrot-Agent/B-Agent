@@ -47,9 +47,11 @@ def test_chatgpt_connector_scope_is_verified_without_overstating_permissions() -
             "file reads",
         )
     )
+    observed_actions = chatgpt["permissions"]["observed_actions"]
     assert any(
-        "Write existing documentation files on integration/mission-handoff-refresh-20261125" in action
-        for action in chatgpt["permissions"]["observed_actions"]
+        "Write existing" in action
+        and "integration/mission-handoff-refresh-20261125" in action
+        for action in observed_actions
     )
     assert "Merge to main" in chatgpt["permissions"]["not_used"]
     assert "Deploy" in chatgpt["permissions"]["not_used"]
