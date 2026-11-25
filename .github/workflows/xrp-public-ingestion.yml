@@ -17,6 +17,11 @@ on:
       - barrot_agent/evolution/sec_edgar.py
   workflow_dispatch:
     inputs:
+      capture_event_sources:
+        description: "Capture the curated dated primary-source event pages now; public read-only fetches retain digest-only receipts."
+        required: false
+        default: false
+        type: boolean
       coinbase_backfill_days:
         description: "Additional Coinbase XRP-USD hourly history before the latest candle page (0 disables; maximum 365 days). Manual dispatch only."
         required: false
@@ -191,6 +196,7 @@ jobs:
         env:
           WALK_FORWARD_HORIZONS: ${{ (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *') && '1h,4h,24h,7d,30d' || '1h' }}
           INCLUDE_SEC_COMPANYFACTS: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/')) }}
+          CAPTURE_EVENT_SOURCES: ${{ inputs.capture_event_sources }}
           BARROT_SEC_USER_AGENT: ${{ vars.BARROT_SEC_USER_AGENT }}
         shell: bash
         run: |
@@ -204,6 +210,9 @@ jobs:
           )
           if [[ -n "${BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST:-}" ]]; then
             args+=(--previous-receipt-chain-manifest "$BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST")
+          fi
+          if [[ "${CAPTURE_EVENT_SOURCES:-false}" == "true" ]]; then
+            args+=(--capture-event-sources)
           fi
           if [[ "$INCLUDE_SEC_COMPANYFACTS" == "true" ]]; then
             args+=(--include-sec-companyfacts)
