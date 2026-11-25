@@ -235,3 +235,87 @@ Additional primary-source register:
 35. Osaka SBIC West official company profile: https://www.sbic-wj.co.jp/profiles/profile/
 36. SBI Holdings official corporate profile: https://www.sbigroup.co.jp/english/company/information/profile.html
 37. Nagoya SBIC Central official shareholder-composition chart: https://www.sbic-cj.co.jp/assets/images/company/shareholder.jpg
+
+
+
+### 7.12 2026-11-25 primary-source update — OCC, BNY custody, C2FO/RLUSD and SBI operating boundaries
+
+**Retrieval basis:** Public official pages and a SEC filing were opened on 2026-11-25. Publisher dates are retained below. The browser retrieval did not provide original response bytes or independent timestamp anchoring; this section is research-only and is not a content-addressed ingestion receipt.
+
+#### 7.12.1 Ripple National Trust Bank — final approval, separate issuer
+
+- The OCC Corporate Applications Search record for control **2025-Charter-342347**, proposed charter **25364**, lists the Ripple National Trust Bank application as approved **2025-12-12** and **Consummated/Effective 2026-10-26**.
+- Ripple's 2026-10-26 announcement says the OCC granted final approval. The approved bank activities include management of the segregated RLUSD reserve, collateral-trustee services for RLUSD holders, and fiduciary digital-asset custody.
+- **RLUSD's legal issuer remains Standard Custody & Trust Company, LLC (SCTC)**, a Ripple subsidiary and New York DFS-regulated limited-purpose trust company. Ripple National Trust Bank adds a federal trust-bank layer; it does not replace SCTC as issuer.
+- Ripple says the national trust bank will provide fiduciary custody services upon opening. The OCC CAS effective date is verified, but this review did not independently verify customer onboarding, live custody balances or completed custody transactions at the new bank.
+- BNY remains identified by Ripple as RLUSD's primary reserve custodian. Do not collapse the issuer, reserve custodian, collateral trustee and trading venue into one role. No deposit-insurance or retail-bank-deposit claim is supported.
+
+#### 7.12.2 BNY — XRP and RLUSD custody support
+
+- In the 2026-10-27 joint announcement, Ripple and BNY state that BNY's Digital Asset Custody platform now supports **XRP and RLUSD** for eligible institutional clients, including safekeeping, holding and transfer.
+- BNY's pre-existing role as primary reserve custodian for RLUSD and its custody relationship with Ripple Prime are distinct from its newly announced client-asset custody support for XRP and RLUSD.
+- BNY says it intends to broaden support for tokenized assets and investment products issued on XRPL and to work with Ripple to enable BNY clients to mint and redeem RLUSD directly through BNY. Those are **future intentions subject to final BNY and regulatory approvals**, not verified live services in this review.
+- Ripple and BNY also say they are exploring tokenized trade finance on XRPL, beginning with a supply-chain-finance initiative with C2FO. This is an exploration/initiative announcement, not proof of completed receivables tokenization, financing volume or XRP purchases.
+
+#### 7.12.3 C2FO Instant Pay — announced RLUSD settlement, not XRP settlement
+
+- C2FO's 2026-10-27 primary announcement says the financing and settlement activity supporting C2FO Instant Pay is intended to move onto XRPL, using **RLUSD for settlement**. Participating capital providers fund early payment; suppliers are intended to receive funds in seconds while invoice terms and due dates remain unchanged.
+- C2FO says its existing Early Pay programs have helped businesses access more than **$525 billion** in working capital. That is a company-reported cumulative figure for its broader existing programs; it is **not** Instant Pay volume, XRPL volume, RLUSD settlement volume or XRP demand.
+- C2FO's current Instant Pay product page displays a **Join Waitlist** action and says the service will be available in the U.S. at launch. This is a material readiness caveat: the partnership and product are announced, but this review did not verify general availability, a completed customer transaction, settlement volume or production adoption on XRPL.
+- The announced settlement asset is RLUSD, not XRP. XRP may be required for XRPL network fees, but no evidence in these announcements establishes XRP as the settlement principal, a bridge asset in this product, or a material source of net XRP spot demand.
+
+#### 7.12.4 SBI / Ripple — distinguish the software JV, ODL operators and RLUSD distributor
+
+- Ripple's current SBI Ripple Asia company page says SBI Ripple Asia sells RippleNet software services to financial institutions and remittance companies. It explicitly states that SBI Ripple Asia **does not handle XRP**.
+- The same page separately says XRP-based On-Demand Liquidity is commercialized in Japan through **SBI Remit, Coins.ph and SBI VC Trade** for Philippines remittances. This is a product/operator relationship, not evidence that SBI Ripple Asia itself holds, trades or custodies XRP.
+- SBI VC Trade's 2026-06-24 official release says it began handling RLUSD through VCTRADE after maintenance on that date. The release classifies RLUSD for Japanese distribution as a **Type 4 electronic payment instrument** under its interpretation of Japanese law, identifies SBI VC Trade as an SBI Holdings consolidated subsidiary and identifies Ripple Labs as the stablecoin partner. It also says RLUSD deposits and withdrawals are free on that service. This is RLUSD distribution, not evidence that RLUSD transfers use XRP as settlement.
+- These are separate relationship edges: (1) SBI Ripple Asia—RippleNet software sales; (2) SBI Remit / Coins.ph / SBI VC Trade—XRP-based ODL corridor; and (3) SBI VC Trade—RLUSD distribution. None changes the legal identity of SBIC East/Central/West or establishes a relationship between those statutory SBIC companies and SBI Holdings.
+
+#### 7.12.5 Coinbase / Ripple / Circle — distribution and collateral remain separate
+
+- Ripple's 2026-10-28 release says RLUSD became available through Coinbase Prime, Coinbase Exchange and Coinbase Retail, with 1:1 conversion from U.S. dollars and other supported USD-denominated stablecoins. The launch supports RLUSD across XRPL, Base and Ethereum.
+- The same release describes Coinbase Global Exchange access, including RLUSD collateral use, as a later phase. The reviewed primary sources did not provide a subsequent dated activation notice or collateral terms by 2026-11-25. Therefore **trading/listing support is announced as live; Global Exchange collateral support remains unverified**.
+- Circle's SEC-filed 2026-06-30 Form 10-Q describes the Coinbase Collaboration Agreement: Coinbase receives allocations tied to USDC held on its platform after Circle's issuer retention, plus a share of remaining ecosystem-growth economics after approved third-party participant payments. Circle reported distribution costs in connection with its Coinbase agreements of **$324.6 million for Q2 2026** and **$655.3 million for H1 2026**. The separate Q3 2026 filing already cited above reports **$986.6 million for the nine months ended 2026-09-30**. These are Circle-reported distribution costs under the agreement, not XRP flows or proof of a Ripple/Coinbase equity relationship.
+- Circle's issuer page reported **$67.8 billion USDC in circulation as of 2026-11-23** and says USDC was natively issued on **38 networks**, including XRPL (network list as of 2026-09-16). These are issuer-displayed figures, not independent exchange-flow or XRP-demand observations.
+- Coinbase therefore has two distinct direct stablecoin commercial relationships in the reviewed record: the long-running Circle/USDC distribution-economics agreement and the October 2026 Ripple/RLUSD distribution agreement. Do not infer that one replaces the other, or that either implies a cross-equity relationship with Ripple.
+
+#### 7.12.6 Relationship graph, source independence and model treatment
+
+| Entity / relationship | Verified primary-source statement | Boundary |
+|---|---|---|
+| OCC → Ripple National Trust Bank | Final approval and OCC CAS consummated/effective date 2026-10-26 | Does not make the bank RLUSD's issuer |
+| SCTC → RLUSD | SCTC remains the legal issuer | Separate from reserve custody, trustee and exchange functions |
+| BNY → XRP / RLUSD custody | BNY says its Digital Asset Custody platform supports both assets for eligible institutional clients | Custody availability is not evidence of BNY buying XRP |
+| BNY ↔ Ripple ↔ C2FO | Tokenized trade-finance exploration on XRPL | No completed financing volume verified |
+| C2FO Instant Pay → RLUSD | Announced XRPL settlement using RLUSD | Product page waitlist; no verified production volume; not XRP settlement |
+| SBI Ripple Asia → RippleNet | Software-services sales to FIs/remitters; SBI Ripple Asia says it does not handle XRP | Do not attribute ODL asset custody or trading to this JV |
+| SBI Remit / Coins.ph / SBI VC Trade → ODL | XRP bridge used for the Japan–Philippines remittance service | No corridor-level net XRP inventory or volume quantified here |
+| SBI VC Trade → RLUSD | VCTRADE distribution began 2026-06-24 under Japanese electronic-payment-instrument framework | RLUSD is not XRP |
+| Coinbase ↔ Ripple | RLUSD listing/distribution on Coinbase products | Global Exchange collateral phase not confirmed live |
+| Coinbase ↔ Circle | USDC distribution economics disclosed in SEC filings | Not an XRP-demand feature |
+| Circle → XRPL | USDC native issuance on XRPL | Stablecoin circulation does not establish net XRP purchases |
+
+**Source independence:** OCC CAS is a regulator's application record. Circle's Form 10-Q is a regulatory filing made by Circle. BNY, Ripple, C2FO and SBI releases are primary counterparty/company statements; jointly authored releases are one coordinated announcement, not multiple independent confirmations. C2FO's own product page provides a separate availability caveat. No raw HTTP response bytes, independent timestamp anchors or chain-state receipts were captured in this browser research pass.
+
+**Disconfirming evidence and unresolved measurements retained:**
+1. BNY custody support is not XRP inventory acquisition, and the BNY mint/redeem, tokenized-asset and C2FO trade-finance initiatives include future/conditional language.
+2. C2FO's existing $525B working-capital figure predates and is broader than Instant Pay; it must not be treated as XRPL or RLUSD volume.
+3. RLUSD settlement on XRPL is not XRP settlement. Do not infer XRP bridge demand from RLUSD transfers without transaction-level route evidence.
+4. Coinbase RLUSD listing does not establish that Global Exchange collateral use is live; no activation notice or collateral schedule was verified in this pass.
+5. USDC and RLUSD supply/circulation figures are issuer-reported; they do not establish the amount held on Coinbase, SBI VC Trade or any specific chain without chain-level/account-level evidence.
+
+**Model treatment:** all observations in this section remain research-only and model-ineligible. Keep issuer, reserve custodian, collateral trustee, custodian platform, distributor, settlement asset, network fee asset and financing capital provider as separate typed entities/roles. No XRP feature, directional forecast, or market-demand conclusion is admitted from these announcements alone.
+
+Additional primary-source register:
+38. OCC Corporate Applications Search — Ripple National Trust Bank, control 2025-Charter-342347: https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2
+39. Ripple final OCC approval announcement (2026-10-26): https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/
+40. BNY/Ripple custody and tokenized trade-finance announcement (2026-10-27): https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html
+41. C2FO/Ripple Instant Pay announcement (2026-10-27): https://c2fo.com/newsroom/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/
+42. C2FO Instant Pay product page (accessed 2026-11-25): https://c2fo.com/instant-pay/
+43. Ripple SBI Ripple Asia official company page (accessed 2026-11-25): https://ripple.com/company/sbi-ripple-asia/
+44. SBI VC Trade RLUSD launch notice (2026-06-24): https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
+45. Ripple/SBI RLUSD Japan launch (2026-06-24): https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/
+46. Ripple/Coinbase RLUSD distribution announcement (2026-10-28): https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/
+47. Coinbase RLUSD availability announcement (2026-10-28): https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+48. Circle Form 10-Q for quarter ended 2026-06-30: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm
+49. Circle USDC issuer page (accessed 2026-11-25): https://www.circle.com/usdc
