@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T03:41:00Z",
-  "capture_basis": "Run 11 refresh: inspected protected main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407 and complete 3,163-entry tree; reconciled the three open PRs and exact-head checks; verified main CI 4,693 passed plus dependency/money audits and Pages deployment side effect; inspected XRP run #143 logs, 37 receipts, 150 unlinked events, 388 insufficient-history walk-forward rows, 0/205 drift and forecast withholding; reviewed event-receipt implementation/tests; corrected Kamilah Stevenson channel attribution to UNVERIFIED; added secondary RLUSD supply disagreement and verified official free DefiLlama stablecoin API schema without a live response; updated existing #1702 handoff branch only. No deployment, secret rotation, trading, paper trading, paid lookup, outreach or external model data transfer.",
+  "captured_at_utc": "2026-11-25T03:45:00Z",
+  "capture_basis": "Run 11 final snapshot: current protected main remains 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407 with a complete 3,163-entry tree; three open, non-overlapping integration PRs remain #1702/#1703/#1704; latest main full suite is 4,693 passed with dependency/money audits successful; XRP run #143 remains forecast-ineligible with 150 unreceipted events, 388 insufficient-history 1h rows and 0/205 drift evaluation; audio and continuity exact-head suites previously passed; latest handoff corrections mark Kamilah channel identity unverified and RLUSD secondary supply/volume data research-only; official DefiLlama free stablecoin endpoint schema is documented but the live response is untested. This map update is committed to the existing #1702 branch; its live head and exact checks must be read from the PR, not inferred from this self-referential snapshot. No deployment, trading, paid lookup, external model transfer or outreach occurred.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -62,9 +62,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "last_observed_head_sha": "2115df4bcdd9a0583b306db586ded4a96571020a",
-        "head_sha_note": "The map update itself creates a new commit on this same branch; use live PR metadata for the current head SHA and ahead count.",
-        "commits_ahead_before_map_update": 8,
+        "last_observed_head_sha": "235deeef1175e36e7c6fa7b73167b39987690989",
+        "head_sha_note": "The current handoff/map branch is self-referential and changes on each documentation commit. The PR's live metadata is authoritative for current head SHA and ahead count.",
         "commits_behind": 0,
         "changed_paths": [
           "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -84,7 +83,7 @@
           "conflict_integrity_run_id": 45539823658,
           "fail_closed_gate_run_id": 45539823700
         },
-        "exact_head_validation": "pending_after_later_handoff_and_creator-attribution/map updates; verify latest CI, dependency audit, money audit, conflict integrity and fail-closed gate against the live PR head before merge",
+        "exact_head_validation": "LIVE_STATUS_IN_PR_CHECKS_ONLY: query the PR's current head and exact-head CI, dependency audit, money audit, conflict integrity and fail-closed gate. The embedded last-verified-head evidence is historical and does not authorize merge.",
         "review_count": 0,
         "blockers": [
           "No independent review recorded",
@@ -191,7 +190,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T03:31:29Z",
+      "observed_at_utc": "2026-11-25T03:45:00Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -700,9 +699,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "last_observed_head_sha": "2115df4bcdd9a0583b306db586ded4a96571020a",
-      "head_sha_note": "The map update itself creates a new commit on this same branch; use live PR metadata for the current head SHA and ahead count.",
-      "commits_ahead_before_map_update": 8,
+      "last_observed_head_sha": "235deeef1175e36e7c6fa7b73167b39987690989",
+      "head_sha_note": "The current handoff/map branch is self-referential and changes on each documentation commit. The PR's live metadata is authoritative for current head SHA and ahead count.",
       "commits_behind": 0,
       "changed_paths": [
         "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -722,7 +720,7 @@
         "conflict_integrity_run_id": 45539823658,
         "fail_closed_gate_run_id": 45539823700
       },
-      "exact_head_validation": "pending_after_later_handoff_and_creator-attribution/map updates; verify latest CI, dependency audit, money audit, conflict integrity and fail-closed gate against the live PR head before merge",
+      "exact_head_validation": "LIVE_STATUS_IN_PR_CHECKS_ONLY: query the PR's current head and exact-head CI, dependency audit, money audit, conflict integrity and fail-closed gate. The embedded last-verified-head evidence is historical and does not authorize merge.",
       "review_count": 0,
       "blockers": [
         "No independent review recorded",
