@@ -321,6 +321,11 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
     ]
     assert metadata["stem_alignment"]["aligned"] is True
     assert metadata["stem_alignment"]["sample_count"] == samples.shape[0]
+    reconstruction = metadata["stem_sum_reconstruction"]
+    assert reconstruction["measured"] is True
+    assert reconstruction["guaranteed"] is False
+    assert reconstruction["relative_rms_error"] < 0.03
+    assert reconstruction["correlation"] > 0.98
     assert metadata["native_daw_project_available"] is False
     assert metadata["rights"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
 
@@ -346,6 +351,7 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
         "true_peak_dbtp": 20.0 * math.log10(max(result.true_peak_level, 1e-12)),
         "clip_sample_count": 0,
         "stem_alignment": metadata["stem_alignment"],
+        "stem_sum_reconstruction": metadata["stem_sum_reconstruction"],
         "native_daw_project_available": False,
         "distribution": "WAV mix, nine aligned stems, Standard MIDI File and JSON metadata are uploaded; MIT license notice included; SoundFont binary is not bundled",
     }

@@ -247,6 +247,45 @@ def render_production_bundle(
     ]
 
     rendered_mix = rendered_arrays[0]
+
+    # Measure how closely independently rendered stems reconstruct the mix.
+    # Separate FluidSynth passes can differ in shared effects, so this is a
+    # diagnostic measurement, not a guarantee or a musical-quality score.
+    stem_sum = np.zeros(rendered_mix.shape, dtype=np.float64)
+    for stem_audio in rendered_arrays[1:]:
+        stem_sum += stem_audio
+    sample_count = stem_sum.size
+    stem_sum_total = float(np.sum(stem_sum, dtype=np.float64))
+    mix_total = float(np.sum(rendered_mix, dtype=np.float64))
+    stem_sum_energy = float(np.vdot(stem_sum, stem_sum))
+    mix_energy = float(np.vdot(rendered_mix, rendered_mix))
+    cross_energy = float(np.vdot(stem_sum, rendered_mix))
+    covariance = cross_energy - (stem_sum_total * mix_total / sample_count)
+    stem_variance = max(0.0, stem_sum_energy - (stem_sum_total * stem_sum_total / sample_count))
+    mix_variance = max(0.0, mix_energy - (mix_total * mix_total / sample_count))
+    correlation_denominator = math.sqrt(stem_variance * mix_variance)
+    stem_sum_correlation = (
+        covariance / correlation_denominator
+        if correlation_denominator > 0.0
+        else None
+    )
+    stem_sum -= rendered_mix
+    stem_sum_rms_error = math.sqrt(float(np.vdot(stem_sum, stem_sum)) / sample_count)
+    mix_rms_for_reconstruction = math.sqrt(mix_energy / sample_count)
+    stem_sum_reconstruction = {
+        "measured": True,
+        "guaranteed": False,
+        "method": "float64 sum of independently rendered, sample-aligned WAV stems compared with the stereo mix",
+        "rms_error": stem_sum_rms_error,
+        "relative_rms_error": (
+            stem_sum_rms_error / mix_rms_for_reconstruction
+            if mix_rms_for_reconstruction > 0.0
+            else 0.0
+        ),
+        "max_abs_error": float(np.max(np.abs(stem_sum))),
+        "correlation": stem_sum_correlation,
+    }
+
     _write_float32_wav(mix_path, rendered_mix, sample_rate, wavfile)
     stem_paths = []
     stem_metadata = []
@@ -344,6 +383,7 @@ def render_production_bundle(
             "map as the mix, with a common gain and sample timeline."
         ),
         "stem_sum_reconstruction_guaranteed": False,
+        "stem_sum_reconstruction": stem_sum_reconstruction,
         "rights": {
             "soundfont_source": soundfont_source,
             "soundfont_license": soundfont_license,

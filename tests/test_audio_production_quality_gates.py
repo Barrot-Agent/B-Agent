@@ -196,6 +196,12 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
     assert metadata["rights"]["soundfont_sha256"] == hashlib.sha256(soundfont.read_bytes()).hexdigest()
     assert metadata["native_daw_project_available"] is False
     assert metadata["stem_sum_reconstruction_guaranteed"] is False
+    reconstruction = metadata["stem_sum_reconstruction"]
+    assert reconstruction["measured"] is True
+    assert reconstruction["guaranteed"] is False
+    assert reconstruction["relative_rms_error"] >= 0.0
+    assert reconstruction["max_abs_error"] >= 0.0
+    assert reconstruction["correlation"] is None or -1.0 <= reconstruction["correlation"] <= 1.0
     assert metadata["midi"]["track_names"] == ["keys", "pad"]
     assert len(render_calls) == 2
     assert all(call["render_duration_seconds"] == pytest.approx(4.0) for call in render_calls)
