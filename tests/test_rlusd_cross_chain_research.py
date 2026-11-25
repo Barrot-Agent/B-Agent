@@ -81,7 +81,7 @@ def _archive(
         "source_uri": source_uri,
         "captured_at_utc": captured_at,
         "source_data_as_of_utc": None,
-        "source_http_date": "Tue, 25 Nov 2026 02:19:15 GMT",
+        "source_http_date": "Wed, 25 Nov 2026 02:19:15 GMT",
         "source_http_headers": {"age": "0", "content-type": "text/html"},
         "raw_bytes_retained": raw_bytes_retained,
         "raw_content_sha256": raw_hash_override or digest,
