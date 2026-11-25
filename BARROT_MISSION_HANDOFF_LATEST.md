@@ -1,3 +1,54 @@
+# Run 20 — exact-head failure diagnosis and test correction — 2026-11-25T16:05:43Z
+
+This checkpoint supersedes earlier validation claims only where the live evidence below is newer. Historical observations remain preserved.
+
+## Repository and integration state
+
+- Main remains `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; recursive tree remains 3,163 entries and was not truncated. Ten PRs remain open: #1702–#1711.
+- Existing #1702 branch was at parent `eb2acff4073bc39bd0022a60ce5d594ac64e7293`, 51 commits ahead / 0 behind. This update modifies only that existing branch; no new branch or PR was created.
+- Main `pyproject.toml` separates root runtime dependencies from optional `integrations` and `music` extras. The full-suite workflow is the authoritative integration-branch test gate; the legacy core-only job is not a substitute. Dependency Audit covers root, development, integrations, Hugging Face Space, legacy and PEP 621 manifests.
+- Main is protected and advertises four required checks. The detailed branch-protection endpoint remains HTTP 403, so approval count and several protection details remain unknown. No independent review is recorded on mission PRs. Merging has previously triggered GitHub Pages deployment; explicit deployment approval remains absent.
+
+## #1702 exact-head failure and correction
+
+The full repository test suite on parent head `eb2acff4073bc39bd0022a60ce5d594ac64e7293`, run [45644265174](https://github.com/Barrot-Agent/B-Agent/actions/runs/45644265174), failed with **4,692 passed, 2 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. The core subset passed and Pages build validation passed; Pages was validation-only, not a deployment.
+
+Both failures were stale assertions in `tests/test_nine_platform_operational_map_current.py`, not product-code failures:
+
+1. The test demanded the obsolete literal `metadata/tree/PR/file/workflow reads`; the current map accurately described the tested actions using more detailed wording.
+2. The test hard-coded XRP ingestion run 155 while the canonical main observation had advanced to run 156.
+
+The money audit, dependency audit and conflict-integrity checks passed; the fail-closed merge gate correctly failed because the full suite failed. The test file is corrected in this commit: it checks semantic evidence fragments and cross-checks the latest XRP run number and run ID against the canonical nested ingestion record. **Exact-head CI on the new commit is pending; this correction is not yet verified.**
+
+## Three co-equal mission status
+
+- **XRP — EXECUTED, forecast still withheld.** Main ingestion #156 on main SHA `6033bcd`: 115 snapshots, 30,282 cumulative history records, 37 receipts (21 retained raw, 16 digest-only), all 21 retained raw payload hashes independently matched. The 150-event timeline has zero verified receipt links. One-hour walk-forward has 432 rows but remains `PARTIAL_OR_BLOCKED`; drift evaluation is 0/205; forecast remains `NOT_ISSUED`. Same-venue OKX quote basis is not cross-venue consensus. Source failures include Binance 451, Bybit 403, retryable Grayscale 429, Franklin parser-marker failure and SEC user-agent configuration. No bypass or forecast.
+- **Audio — EXECUTED technically, not professionally accepted.** Existing #1704 is 8 commits ahead / 0 behind; its exact-head full suite passed (4,694) and FluidSynth integration passed 3/3. It verifies per-instrument SoundFont routing and technical bundle generation. The 80-bar test render reports 175.545 seconds, 110 BPM, D minor, 4/4, 10 markers, 9 aligned stems, MIDI, zero clipped samples, peak -6.017 dBFS and true peak -6.0000005 dBTP. This does not establish distinct production timbres: the full-song QC render used one test SoundFont, while the separate routing test reused the same test SoundFont under two paths. The test SoundFont is GPL-2 and not bundled. The artifact is QC JSON only; no user-accessible WAV/stems/MIDI package, native DAW project, rights-cleared production library or comparative listening acceptance is verified.
+- **Continuity — EXECUTED and suite-tested.** Existing #1703 is 14 commits ahead / 0 behind; its current exact-head full suite passed (4,712). The append-only project-state ledger, provenance, staleness/conflict preservation, dependency-aware selection and explicit independent-workspace export/import are tested. Authenticated automatic cross-host synchronization is not implemented.
+- **Nine platforms:** only ChatGPT-to-GitHub is authenticated and data-flow tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested; no external model data transfer is claimed.
+- **Commercial / Sellbird:** the exact upstream Sellbird audit remains current in the prior handoff section. It is not installed or authenticated; zero verified Barrot prospects, zero outreach, zero meetings, zero proposals and $0 collected. The Barrot-only assessment offer is a hypothesis, not approved or marketed. Sending remains paused; music and TrekFlex remain excluded.
+
+## Open PR classification
+
+- **Unique mission/integration:** #1702 handoff/map (validation rerun pending); #1703 continuity ledger (tests pass, review/deployment authorization blocked); #1704 audio SoundFont routing (tests pass, review/deployment authorization blocked); #1705 XRP RLUSD research normalizer (tests pass, review/deployment authorization blocked).
+- **Dependency:** #1706 is the canonical combined cache restore/save update; #1708 is a draft duplicate subset and remains superseded-pending-successor-merge; #1707, #1709 and #1710 are unique/unreviewed; #1711 remains blocked because the Hugging Face Space's Streamlit 1.35.0 constraint requires NumPy <2.
+- No unique research or feature PR was closed. No PR was merged.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal missions on the shared V3 foundation; point-in-time XRP evidence and forecast gates; audio licensing/QC/listening gates; continuity state ledger; nine-platform least-privilege map; Barrot-only commercial scope.
+- **EXECUTED:** fetched current main/tree/PRs and branch ancestry; reviewed current workflow/dependency contracts; inspected exact-head #1702 failure logs; corrected two stale test expectations on the existing #1702 branch; updated this durable handoff and operational map.
+- **VERIFIED:** the two parent-head test failures and their causes; the other #1702 audit/conflict checks; #1703/#1704/#1705 exact-head checks as recorded above; main XRP ingestion #156 and its receipt/hash summary.
+- **PENDING:** exact-head full suite, audit/dependency/conflict/fail-closed checks for the new #1702 commit; independent reviews; branch-protection approval requirements; Pages deployment authorization; XRP event-to-receipt linkage and forecast evaluation; audio listening acceptance and rights-cleared production assets; cross-host continuity sync; external platform authentication; Sellbird prospecting and all commercial conversions.
+
+## Next concrete action
+
+Inspect the new #1702 commit's exact-head full-suite, audit, dependency, conflict-integrity and fail-closed gate results. Fix any remaining failures on this existing branch. Do not merge until all required checks and independent approvals are verified and the Pages deployment side effect is explicitly authorized.
+
+No merge, force-push, deployment, Space restart, secret rotation, external model dispatch, paid lookup, Sellbird installation, outbound message, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+---
+
 # Run 19 — post-ingestion and integration evidence update — 2026-11-25T15:21:24.554Z
 
 This is the newest checkpoint. It preserves the preceding Run 18 snapshot and corrects it with later exact-head CI, artifact and source-failure evidence.

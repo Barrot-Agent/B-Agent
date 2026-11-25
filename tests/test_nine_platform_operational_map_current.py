@@ -37,7 +37,16 @@ def test_chatgpt_connector_scope_is_verified_without_overstating_permissions() -
     chatgpt = data["platforms"]["ChatGPT"]
 
     assert chatgpt["authentication"]["status"] == "VERIFIED_FOR_GITHUB_CONNECTOR"
-    assert "metadata/tree/PR/file/workflow reads" in chatgpt["authentication"]["evidence"]
+    evidence = chatgpt["authentication"]["evidence"]
+    assert all(
+        fragment in evidence
+        for fragment in (
+            "main metadata/tree",
+            "open PRs",
+            "workflow runs/jobs/logs",
+            "file reads",
+        )
+    )
     assert any(
         "Write existing documentation files on integration/mission-handoff-refresh-20261125" in action
         for action in chatgpt["permissions"]["observed_actions"]
@@ -110,5 +119,8 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     assert next(item for item in data["dependency_prs"] if item["number"] == 1708)["classification"] == "superseded_pending_successor_merge"
     assert next(item for item in data["dependency_prs"] if item["number"] == 1711)["classification"] == "blocked_dependency_compatibility"
     assert repository["security_posture"]["alert_counts"] == "UNKNOWN_NOT_ZERO"
-    assert data["latest_xrp_ingestion_observation"]["run_number"] == 155
-    assert data["latest_xrp_ingestion_observation"]["evaluation"]["forecast_status"] == "NOT_ISSUED"
+    latest_observation = data["latest_xrp_ingestion_observation"]
+    latest_ingestion = repository["current_main_state"]["latest_xrp_ingestion_run"]
+    assert latest_observation["run_number"] == latest_ingestion["run_number"]
+    assert latest_observation["run_id"] == latest_ingestion["run_id"]
+    assert latest_observation["evaluation"]["forecast_status"] == "NOT_ISSUED"
