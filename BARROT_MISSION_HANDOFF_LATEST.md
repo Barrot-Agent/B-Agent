@@ -2675,3 +2675,72 @@ Exact repository: https://github.com/ethanplusai/sellbird. Main commit/tree SHA 
 4. Audio: distinct rights-cleared full-song timbres and comparative listening remain the next quality gate.
 5. Continuity: authenticated cross-host synchronization remains the next acceptance test.
 6. Sellbird: keep separate and outbound-paused; if commercial discovery proceeds, start with a no-send Barrot-only pilot and verify local Codex/MCP capability before claiming integration.
+
+
+---
+
+# Run 30 — measured spot microstructure supplement — 2026-11-25T20:16:00Z
+
+## Main-ingestion artifact inspection — EXECUTED and VERIFIED
+
+Downloaded and inspected the actual feature-store ZIP from main ingestion run [#45682545642](https://github.com/Barrot-Agent/B-Agent/actions/runs/45682545642), artifact **15054023593**. The SQLite snapshot is readable and integrity was checked by the ingestion workflow. Latest snapshot cutoff: **2026-11-25T19:11:04.958402Z**. This is the latest verified snapshot available at this run; it is not a live quote at 20:16 UTC.
+
+### Five independent venue groups, twelve raw source receipts
+
+The snapshot contains Bitbank (XRP/JPY), Bitstamp (XRP/USD), Coinbase (XRP/USD), Kraken (XRP/USD) and OKX (XRP/USDT), with 12 raw source records/hashes. It contains venue-specific ticker/depth captures and Coinbase hourly candles. It does not provide a consolidated book, synchronized trade tape or derivatives capture in this snapshot.
+
+### Venue-specific 24-hour base volume
+
+| Venue / pair | 24h base volume | Source timestamp |
+|---|---:|---|
+| Bitbank XRP/JPY | 6,567,397.72 XRP | 19:10:55.767Z |
+| Bitstamp XRP/USD | 12,504,338.89 XRP | 19:10:54Z |
+| Coinbase XRP/USD | 65,755,282.96 XRP | 19:10:54Z |
+| Kraken XRP/USD | 29,481,257.96 XRP | 19:10:54Z |
+| OKX XRP/USDT | 26,901,949.49 XRP | 19:10:56.764Z |
+
+These are venue-specific rolling 24-hour ticker fields. Do not sum them into global volume or call them exchange inflows/outflows; they are not net flows and may include inter-venue arbitrage activity.
+
+### Top-of-book and spread
+
+| Venue | Pair | Mid | Spread |
+|---|---|---:|---:|
+| Bitstamp | XRP/USD | $0.934495 | 0.1070 bps |
+| Coinbase | XRP/USD | $0.934500 | 2.1402 bps |
+| Kraken | XRP/USD | $0.934335 | 0.7492 bps |
+| OKX | XRP/USDT | 0.935750 USDT | 1.0687 bps |
+| Bitbank | XRP/JPY | ¥148.7505 | 0.0672 bps |
+
+OKX's same-venue observed USDT/USD quote basis normalized its XRP/USDT mid to **$0.934310**. The implied USDT/USD ratio was approximately **0.998462** (about a 15.38-bps USDT discount) at the capture time. This is why the raw OKX USDT price is above the USD-quoted venues; it is not evidence of a 15-bps XRP cross-venue arbitrage by itself. The conversion uses observed bid/ask components, not an assumed 1:1 peg. Both quote components share the OKX publisher-independence group.
+
+### Order-book imbalance is mixed by venue and depth
+
+Depth imbalance is calculated as ((bid depth - ask depth)/(bid depth + ask depth)); positive is bid-heavy and negative is ask-heavy.
+
+| Venue / quote | 10 bps | 50 bps | 100 bps |
+|---|---:|---:|---:|
+| Bitstamp USD | -0.3405 | -0.0034 | -0.0272 |
+| Coinbase USD | -0.0872 | +0.2141 | +0.4003 |
+| Kraken USD | +0.1768 | Not admitted | Not admitted |
+| OKX USDT | -0.4234 | +0.0148 | +0.2874 |
+| Bitbank JPY | -0.3175 | +0.2799 | -0.1238 |
+
+Examples of measured depth at 100 bps: Bitstamp ask/bid approximately **$681,756 / $645,664**; Coinbase **$1,743,046 / $4,070,135**; OKX **1,002,541 / 1,811,182 USDT**; Bitbank **¥28,075,181 / ¥21,889,080**. Kraken admitted only the 10-bps band in this capture. Units and quote assets differ; these are not directly additive.
+
+### Interpretation and restrictions
+
+- Near-touch books are ask-heavy on Bitstamp, Coinbase, OKX and Bitbank, but Kraken is bid-heavy. At 50/100 bps Coinbase and OKX are bid-heavy, Bitstamp is close to balanced, and Bitbank changes sign by band. There is no uniform cross-venue pressure signal.
+- The narrowest recorded spread is Bitbank's JPY book, which is not directly comparable to USD books without conversion and local-market context. Coinbase's observed spread is materially wider than Bitstamp's in this single snapshot.
+- The same snapshot has five venue independence groups; quote basis components are not independent corroboration. Book depth is a point-in-time snapshot, not continuous liquidity or executable depth after latency/fees.
+- No directional forecast is justified. This snapshot is a useful point-in-time microstructure observation only; it does not replace time-series depth persistence, trade-level flow reconstruction, derivatives/OI/funding, exchange-wallet flow validation or leakage-safe walk-forward evaluation.
+
+## Sellbird metadata correction
+
+The exact upstream Sellbird main **commit SHA** is `8c743f1c475f61f7b2c04e50501cf6938a126ed6`; its Git tree SHA is `e15439769a16a1c94234d63ea8762161cbde489f`. The earlier Run 29 line called the commit SHA a "commit/tree SHA"; this correction distinguishes the two. Release, license and readiness conclusions are unchanged.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** venue-isolated microstructure records; explicit quote-asset conversion; no summing venue volumes or treating depth snapshots as consolidated liquidity; forecast eligibility remains gated by persistent time-series and out-of-sample tests.
+- **EXECUTED:** downloaded artifact 15054023593; opened the feature-store SQLite in immutable read-only mode; inspected snapshot manifest, source receipts/hashes, feature distributions, venue ticker/depth records and quote-basis JSON.
+- **VERIFIED:** snapshot cutoff; five venue independence groups/twelve raw source records; venue-specific volumes, mids, spreads, depth imbalances and units; observed OKX USDT/USD normalization; no consistent cross-venue directional imbalance.
+- **NOT VERIFIED:** global spot volume, net exchange flows, executable consolidated depth, derivative positioning, current 20:16 UTC price, or any predictive edge from these observations.
