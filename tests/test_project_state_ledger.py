@@ -342,3 +342,122 @@ def test_signed_transfer_sender_sequence_survives_process_restart(tmp_path):
     second = second_sender.export_signed_bundle(keys["private_key_b64"], issued_at_utc=NOW)
     assert first["sequence"] == 1
     assert second["sequence"] == 2
+
+def test_signed_transfer_survives_independent_processes(tmp_path):
+    """Verify durable signed export/import and replay rejection across process boundaries."""
+    import json
+    import os
+    import subprocess
+    import sys
+    from pathlib import Path
+
+    keys = generate_transfer_keypair()
+    repository_root = Path(__file__).resolve().parents[1]
+    bundle_path = tmp_path / "signed-transfer.json"
+    sender_workspace = tmp_path / "sender-process"
+    receiver_workspace = tmp_path / "receiver-process"
+    environment = os.environ.copy()
+    environment.update({
+        "WORKSPACE": str(sender_workspace),
+        "BUNDLE_PATH": str(bundle_path),
+        "PRIVATE_KEY_B64": keys["private_key_b64"],
+        "PUBLIC_KEY_B64": keys["public_key_b64"],
+        "SENDER_ID": keys["sender_id"],
+        "NOW_UTC": NOW,
+        "RECORD_JSON": json.dumps(record(
+            "objective", "cross_process_recovery", "persisted across process restart",
+            source="subprocess-sender",
+        )),
+    })
+
+    sender_script = """
+import json, os
+from pathlib import Path
+from barrot_agent.orchestration.project_state import ProjectStateLedger
+ledger = ProjectStateLedger(os.environ["WORKSPACE"])
+ledger.add_record(json.loads(os.environ["RECORD_JSON"]))
+envelope = ledger.export_signed_bundle(
+    os.environ["PRIVATE_KEY_B64"],
+    issued_at_utc=os.environ["NOW_UTC"],
+)
+Path(os.environ["BUNDLE_PATH"]).write_text(
+    json.dumps(envelope, sort_keys=True), encoding="utf-8"
+)
+"""
+    sender = subprocess.run(
+        [sys.executable, "-c", sender_script],
+        cwd=repository_root,
+        env=environment,
+        capture_output=True,
+        text=True,
+        timeout=30,
+        check=False,
+    )
+    assert sender.returncode == 0, sender.stderr
+    assert bundle_path.is_file()
+
+    environment["WORKSPACE"] = str(receiver_workspace)
+    receiver_script = """
+import json, os
+from pathlib import Path
+from barrot_agent.orchestration.project_state import ProjectStateLedger
+ledger = ProjectStateLedger(os.environ["WORKSPACE"])
+envelope = json.loads(Path(os.environ["BUNDLE_PATH"]).read_text(encoding="utf-8"))
+result = ledger.reconcile_signed_bundle(
+    envelope,
+    trusted_public_keys={os.environ["SENDER_ID"]: os.environ["PUBLIC_KEY_B64"]},
+    now_utc=os.environ["NOW_UTC"],
+)
+print(json.dumps({
+    "record_count": len(result["state"]["records"]),
+    "value": result["state"]["records"][0]["value"],
+    "sequence": result["transfer_receipt"]["sequence"],
+}))
+"""
+    receiver = subprocess.run(
+        [sys.executable, "-c", receiver_script],
+        cwd=repository_root,
+        env=environment,
+        capture_output=True,
+        text=True,
+        timeout=30,
+        check=False,
+    )
+    assert receiver.returncode == 0, receiver.stderr
+    assert json.loads(receiver.stdout.strip()) == {
+        "record_count": 1,
+        "value": "persisted across process restart",
+        "sequence": 1,
+    }
+
+    replay_script = """
+import json, os
+from pathlib import Path
+from barrot_agent.orchestration.project_state import ProjectStateLedger
+ledger = ProjectStateLedger(os.environ["WORKSPACE"])
+envelope = json.loads(Path(os.environ["BUNDLE_PATH"]).read_text(encoding="utf-8"))
+try:
+    ledger.reconcile_signed_bundle(
+        envelope,
+        trusted_public_keys={os.environ["SENDER_ID"]: os.environ["PUBLIC_KEY_B64"]},
+        now_utc=os.environ["NOW_UTC"],
+    )
+except ValueError as exc:
+    if "replay" not in str(exc).lower():
+        raise
+    print("replay blocked")
+else:
+    raise SystemExit("replayed transfer was accepted")
+"""
+    replay = subprocess.run(
+        [sys.executable, "-c", replay_script],
+        cwd=repository_root,
+        env=environment,
+        capture_output=True,
+        text=True,
+        timeout=30,
+        check=False,
+    )
+    assert replay.returncode == 0, replay.stderr
+    assert replay.stdout.strip() == "replay blocked"
+
