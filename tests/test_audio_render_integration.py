@@ -325,7 +325,33 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
     assert reconstruction["measured"] is True
     assert reconstruction["guaranteed"] is False
     assert reconstruction["relative_rms_error"] < 0.03
-    assert reconstruction["correlation"] > 0.98
+
+    # Independently recompute reconstruction metrics from the emitted WAVs.
+    # This catches precision errors in the metadata path, including a float32
+    # dot-product accumulation that can incorrectly report correlation > 1.
+    stem_sum = np.zeros(samples.shape, dtype=np.float64)
+    for stem_path in result.stems:
+        stem_rate, stem_samples = wavfile.read(stem_path)
+        assert stem_rate == sample_rate
+        assert stem_samples.shape == samples.shape
+        stem_sum += stem_samples.astype(np.float64)
+    mix_values = samples.astype(np.float64)
+    stem_centered = stem_sum - np.mean(stem_sum, dtype=np.float64)
+    mix_centered = mix_values - np.mean(mix_values, dtype=np.float64)
+    correlation_denominator = math.sqrt(
+        float(np.vdot(stem_centered, stem_centered))
+        * float(np.vdot(mix_centered, mix_centered))
+    )
+    expected_correlation = float(
+        np.vdot(stem_centered, mix_centered) / correlation_denominator
+    )
+    expected_relative_rms_error = float(
+        np.sqrt(np.mean(np.square(stem_sum - mix_values)))
+        / np.sqrt(np.mean(np.square(mix_values)))
+    )
+    assert -1.0 <= reconstruction["correlation"] <= 1.0
+    assert abs(reconstruction["correlation"] - expected_correlation) <= 1e-6
+    assert abs(reconstruction["relative_rms_error"] - expected_relative_rms_error) <= 1e-6
     assert metadata["native_daw_project_available"] is False
     assert metadata["rights"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
 
