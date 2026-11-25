@@ -2744,3 +2744,44 @@ The exact upstream Sellbird main **commit SHA** is `8c743f1c475f61f7b2c04e50501c
 - **EXECUTED:** downloaded artifact 15054023593; opened the feature-store SQLite in immutable read-only mode; inspected snapshot manifest, source receipts/hashes, feature distributions, venue ticker/depth records and quote-basis JSON.
 - **VERIFIED:** snapshot cutoff; five venue independence groups/twelve raw source records; venue-specific volumes, mids, spreads, depth imbalances and units; observed OKX USDT/USD normalization; no consistent cross-venue directional imbalance.
 - **NOT VERIFIED:** global spot volume, net exchange flows, executable consolidated depth, derivative positioning, current 20:16 UTC price, or any predictive edge from these observations.
+
+
+---
+
+# Run 31 — repository state and branch ancestry — 2026-11-25T20:18:00Z
+
+## Current repository state — VERIFIED
+
+- Main remains `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; main tree SHA `8a818ff6d17c072c51c7328bd11b42cb64d7b9df`; recursive tree **3,163 entries**, not truncated.
+- Twelve PRs remain open. All twelve compare from the same merge base (current main), are **0 commits behind**, and have no base-branch divergence. The latest head for #1702 is now `3dfb97307395d4f81bef10a0c7344ce5dfd6fe2d`, 72 commits ahead, four changed paths. This supersedes the older #1702 head recorded in Run 28.
+- GitHub currently reports #1702 `mergeable=true` and `mergeable_state=blocked`; it is not a draft, has no requested reviewers and has no recorded review comments. This is not a conflict. The detailed branch-protection endpoint remains HTTP 403, so required approval/check policy is still not independently visible.
+- Latest #1702 head checks: push CI [45693311461](https://github.com/Barrot-Agent/B-Agent/actions/runs/45693311461) passed; PR Money audit [45693324769](https://github.com/Barrot-Agent/B-Agent/actions/runs/45693324769) passed; PR Conflict Integrity [45693324651](https://github.com/Barrot-Agent/B-Agent/actions/runs/45693324651) passed. PR CI/full-suite [45693324767](https://github.com/Barrot-Agent/B-Agent/actions/runs/45693324767), Dependency Audit [45693324677](https://github.com/Barrot-Agent/B-Agent/actions/runs/45693324677), PR Gated Merge [45693324781](https://github.com/Barrot-Agent/B-Agent/actions/runs/45693324781), and push Gated Merge [45693311572](https://github.com/Barrot-Agent/B-Agent/actions/runs/45693311572) were still in progress at this checkpoint. The PR full-repository test job had not yet completed; do not claim it passed.
+- The push-triggered CI contains only the core test job; the full repository suite is explicitly PR-event-only. The push CI pass is not a substitute for the pending full suite.
+- No merge, main mutation, deployment, branch rewrite or source-PR closure occurred.
+
+## Branch ancestry — all 12 open PRs
+
+Every compare uses main SHA `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407` as merge base and reports `behind_by=0`.
+
+| PR | Head commits ahead | Behind | Changed files | Current classification |
+|---|---:|---:|---:|---|
+| #1702 | 72 | 0 | 4 | Unique canonical handoff; governance/checks blocked |
+| #1703 | 15 | 0 | 7 | Unique continuity integration; no independent review |
+| #1704 | 11 | 0 | 7 | Unique audio integration; no independent review |
+| #1705 | 11 | 0 | 7 | Unique XRP/RLUSD research integration; overlaps #1706 paths |
+| #1706 | 2 | 0 | 4 | Unique cache update; overlapping paths need reconciliation |
+| #1707 | 1 | 0 | 1 | Unique setup-node update; no PR workflow run returned |
+| #1708 | 1 | 0 | 1 | Draft duplicate/subset of #1706; full-suite failure |
+| #1709 | 2 | 0 | 3 | Unique Databricks CLI update; action-pin test file overlap |
+| #1710 | 1 | 0 | 1 | Unique PyYAML update |
+| #1711 | 1 | 0 | 1 | Blocked pending deployed Hugging Face runtime compatibility |
+| #1712 | 3 | 0 | 2 | Unique package coverage-gate update |
+| #1713 | 3 | 0 | 3 | Unique draft dual-agent validation-state work |
+
+Path-overlap decisions remain as recorded in Run 28: #1705/#1706 share the XRP ingestion workflow and its test module; #1706/#1708 share the cache-save workflow hunk, with #1708 failing three full-suite assertions; #1706/#1709 share the action-pin test module but update different entries. Do not merge the overlapping dependency/XRP work without reconciling those files. Do not close #1708 until a valid successor is merged and verified.
+
+## Run 31 execution boundary
+
+- **EXECUTED:** fetched current main commit/tree; compared all twelve PR heads to main; inspected current #1702 metadata, checks and workflow jobs; recorded the current head and branch ancestry in this canonical handoff.
+- **VERIFIED:** all twelve PRs are 0 behind main; #1702 is conflict-free according to GitHub's `mergeable=true` field but blocked; only the exact checks explicitly listed above have passed.
+- **NOT VERIFIED:** final-head full suite, Dependency Audit, Gated Merge, branch-protection requirements, required approval, or deployment authorization. No merge is permitted until all required conditions are independently satisfied.
