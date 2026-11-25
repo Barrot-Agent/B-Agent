@@ -34,8 +34,8 @@ def _event(spec):
         "event_status": "occurred",
         "event_time_utc": "2026-11-11T20:00:00Z",
         "source_published_at_utc": "2026-11-11T20:01:00Z",
-        "available_at_utc": "2026-11-12T04:00:00Z",
-        "captured_at_utc": "2026-11-12T04:00:00Z",
+        "available_at_utc": "2026-11-12T04:00:00.000000Z",
+        "captured_at_utc": "2026-11-12T04:00:00.000000Z",
         "raw_source_sha256": None,
         "assumptions": ["The publisher's dated announcement is authentic."],
         "falsification_conditions": ["A publisher correction materially reverses the announcement."],
@@ -51,7 +51,7 @@ def _write_registry(path, events):
                 "artifact_type": "barrot.xrp.event_registry",
                 "schema_version": "1.0.0",
                 "registry_version": "test-primary-event-capture",
-                "captured_at_utc": "2026-11-12T04:00:00Z",
+                "captured_at_utc": "2026-11-12T04:00:00.000000Z",
                 "events": events,
             },
             sort_keys=True,
@@ -60,7 +60,7 @@ def _write_registry(path, events):
     )
 
 
-def _fetcher(*, received_at="2026-11-12T04:30:00Z", marker_mismatch=()):
+def _fetcher(*, received_at="2026-11-12T04:30:00.000000Z", marker_mismatch=()):
     specs = {spec["source_id"]: spec for spec in EVENT_SOURCE_CAPTURE_SPECS}
 
     def fetch(source_id, url):
@@ -81,7 +81,7 @@ def _fetcher(*, received_at="2026-11-12T04:30:00Z", marker_mismatch=()):
     return fetch
 
 
-def _capture(tmp_path, *, received_at="2026-11-12T04:30:00Z", marker_mismatch=()):
+def _capture(tmp_path, *, received_at="2026-11-12T04:30:00.000000Z", marker_mismatch=()):
     registry = tmp_path / "events.json"
     _write_registry(registry, [_event(spec) for spec in EVENT_SOURCE_CAPTURE_SPECS])
     archive = RawReceiptArchive(tmp_path / "raw")
@@ -115,7 +115,7 @@ def test_primary_event_sources_create_digest_only_receipts_and_relink_at_capture
 
     result = _capture_event_timeline_registry(
         registry,
-        "2026-11-12T05:00:00Z",
+        "2026-11-12T05:00:00.000000Z",
         raw_receipts=receipts,
     )
     assert result["event_count"] == 2
@@ -127,11 +127,11 @@ def test_primary_event_sources_create_digest_only_receipts_and_relink_at_capture
     assert result["model_eligible"] is False
     assert result["forecast_status"] == "NOT_ISSUED"
     for event in result["timeline"]["event_timeline"]:
-        assert event["known_at_utc"] == "2026-11-12T04:30:00Z"
+        assert event["known_at_utc"] == "2026-11-12T04:30:00.000000Z"
         assert event["receipt_status"] == "VERIFIED_CANONICAL_RECEIPT"
         assert event["receipt_source_id_match"] is True
-        assert event["source_capture_history"][0]["captured_at_utc"] == "2026-11-12T04:00:00Z"
-        assert event["source_capture_history"][-1]["captured_at_utc"] == "2026-11-12T04:30:00Z"
+        assert event["source_capture_history"][0]["captured_at_utc"] == "2026-11-12T04:00:00.000000Z"
+        assert event["source_capture_history"][-1]["captured_at_utc"] == "2026-11-12T04:30:00.000000Z"
         assert event["source_capture_history"][-1]["raw_bytes_retained"] is False
 
 
@@ -151,7 +151,7 @@ def test_marker_mismatch_is_retained_as_unlinked_digest_only_evidence(tmp_path):
 
     result = _capture_event_timeline_registry(
         registry,
-        "2026-11-12T05:00:00Z",
+        "2026-11-12T05:00:00.000000Z",
         raw_receipts=receipts,
     )
     assert result["event_count"] == 2
@@ -164,11 +164,11 @@ def test_marker_mismatch_is_retained_as_unlinked_digest_only_evidence(tmp_path):
 def test_future_primary_event_receipts_are_not_backdated_or_linked(tmp_path):
     registry, receipts, failures, raw_only, capture = _capture(
         tmp_path,
-        received_at="2026-11-12T05:00:01Z",
+        received_at="2026-11-12T05:00:01.000000Z",
     )
     result = _capture_event_timeline_registry(
         registry,
-        "2026-11-12T05:00:00Z",
+        "2026-11-12T05:00:00.000000Z",
         raw_receipts=receipts,
     )
     assert result["event_count"] == 2
@@ -176,7 +176,7 @@ def test_future_primary_event_receipts_are_not_backdated_or_linked(tmp_path):
     assert result["public_receipt_relinkage"]["future_receipt_count"] == 2
     assert result["public_receipt_relinkage"]["linked_event_count"] == 0
     assert all(
-        event["captured_at_utc"] == "2026-11-12T04:00:00Z"
+        event["captured_at_utc"] == "2026-11-12T04:00:00.000000Z"
         for event in result["timeline"]["event_timeline"]
     )
 
@@ -187,7 +187,7 @@ def test_tampered_primary_event_receipt_id_fails_closed(tmp_path):
     with pytest.raises(XRPIngestionError, match="primary event receipt ID does not match canonical"):
         _capture_event_timeline_registry(
             registry,
-            "2026-11-12T05:00:00Z",
+            "2026-11-12T05:00:00.000000Z",
             raw_receipts=receipts,
         )
 
