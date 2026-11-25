@@ -292,7 +292,16 @@ class ProjectStateLedger:
         history = {item["conflict_id"]: item for item in state.get("conflict_history", [])}
         current = []
         for (kind, key), candidates in groups.items():
-            values = {_hash({"value": item["value"], "status": item["status"]}) for item in candidates}
+            values = {
+                _hash({
+                    "value": item["value"],
+                    "status": item["status"],
+                    "depends_on": item["depends_on"],
+                    "stale_after_seconds": item["stale_after_seconds"],
+                    "valid_until_utc": item["valid_until_utc"],
+                })
+                for item in candidates
+            }
             if len(values) < 2:
                 continue
             ids = sorted(item["record_id"] for item in candidates)
@@ -317,7 +326,12 @@ class ProjectStateLedger:
                 conflict.update(status="resolved", resolved_at_utc=_now(), resolution_record_id=resolution["record_id"])
             elif expanded is not None and set(conflict["record_ids"]).issubset(expanded["record_ids"]):
                 conflict.update(status="superseded", resolved_at_utc=_now(), superseded_by_conflict_id=expanded["conflict_id"])
-        state["conflicts"] = current
+            else:
+                # A rejection or partial supersession must not erase an unresolved
+                # disagreement. Keep it visible until every candidate is explicitly
+                # superseded by one resolution record.
+                current.append(conflict)
+        state["conflicts"] = sorted(current, key=lambda item: item["conflict_id"])
 
     def add_record(self, raw: Mapping[str, Any], *, expected_revision: str | None = None) -> dict[str, Any]:
         state = self.load()
@@ -404,7 +418,36 @@ class ProjectStateLedger:
             raise RuntimeError("project-state revision changed since it was loaded")
         local_by_id = {item["record_id"]: item for item in local["records"]}
         if remote["revision"] == local["revision"] or remote["revision"] in local.get("parent_revisions", []):
-            if all(local_by_id.get(item["record_id"]) == item for item in remote["records"]):
+            records_present = all(local_by_id.get(item["record_id"]) == item for item in remote["records"])
+            local_events = {item["event_id"] for item in local.get("history", [])}
+            remote_events = {item["event_id"] for item in remote.get("history", [])}
+            local_receipts = {
+                (item.get("digest"), item.get("count"))
+                for item in local.get("history_archive_receipts", [])
+            }
+            if local.get("history_archive_digest") and local.get("history_archived_count", 0) > 0:
+                local_receipts.add((local["history_archive_digest"], local["history_archived_count"]))
+            remote_receipts = {
+                (item.get("digest"), item.get("count"))
+                for item in remote.get("history_archive_receipts", [])
+            }
+            local_conflicts = {
+                item["conflict_id"]: item for item in local.get("conflict_history", [])
+            }
+            remote_conflicts_present = all(
+                local_conflicts.get(item["conflict_id"]) == item
+                for item in remote.get("conflict_history", [])
+            )
+            parents_present = set(remote.get("parent_revisions", [])).issubset(
+                set(local.get("parent_revisions", []))
+            )
+            if (
+                records_present
+                and remote_events.issubset(local_events)
+                and remote_receipts.issubset(local_receipts)
+                and remote_conflicts_present
+                and parents_present
+            ):
                 return local
         merged = dict(local_by_id)
         for item in remote["records"]:
