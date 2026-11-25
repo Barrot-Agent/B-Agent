@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T03:55:00Z",
-  "capture_basis": "Run 11 updated inventory: protected main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407; complete 3,163-entry tree; four open, non-overlapping PRs #1702-#1705; inspected PR #1705 code/tests/workflow and integration run #144 artifact, which emitted BLOCKED_STALE at cache age 321.593s (>300s) with model/feature-store admission false; verified #1705 dependency/money/conflict checks and full-suite/gate pending; corrected the Kamilah channel attribution in the existing research file; no deployment, trading, paid lookup, outreach or external model transfer.",
+  "captured_at_utc": "2026-11-25T04:00:00Z",
+  "capture_basis": "Run 11 final PR inventory refresh: protected main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407; four open non-overlapping PRs #1702-#1705; handoff/map PR now includes the corrected XRP research markdown; #1705 current head d7c589d includes the corrected HTTP-date fixture, with exact-head CI/dependency/gate pending and money audit passed; run #144 integration capture emitted BLOCKED_STALE at 321.593s versus 300s, with model/feature-store admission false; only ChatGPT-to-GitHub flow verified; no deployment, trading, paid lookup, outreach or external model transfer.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -62,8 +62,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
         "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
         "base": "main",
-        "head_sha": "f2be2aba70f9c9d1b14e9c670c0172c6c250983a",
-        "commits_ahead": 2,
+        "head_sha": "d7c589d1137b3fc40b32d337bb5bb9d537391aa4",
+        "commits_ahead": 3,
         "commits_behind": 0,
         "changed_paths": [
           ".github/workflows/xrp-public-ingestion.yml",
@@ -76,15 +76,15 @@
         "local_tests_reported": 11,
         "exact_head_validation": "pending",
         "checks": {
-          "full_suite_run_id": 45542742348,
+          "full_suite_run_id": 45543739494,
           "full_suite_status": "in_progress",
-          "dependency_audit_run_id": 45542742229,
-          "dependency_audit_status": "success",
-          "money_audit_run_id": 45542742195,
+          "dependency_audit_run_id": 45543739554,
+          "dependency_audit_status": "in_progress",
+          "money_audit_run_id": 45543739472,
           "money_audit_status": "success",
-          "conflict_integrity_run_id": 45542742304,
-          "conflict_integrity_status": "success",
-          "fail_closed_gate_run_id": 45542742134,
+          "conflict_integrity_run_id": 45543739520,
+          "conflict_integrity_status": "in_progress",
+          "fail_closed_gate_run_id": 45543739474,
           "fail_closed_gate_status": "in_progress"
         },
         "integration_capture": {
@@ -101,7 +101,8 @@
           "No independent review recorded",
           "Exact-head full suite and fail-closed gate pending",
           "Automatic Pages deployment on merge remains unapproved"
-        ]
+        ],
+        "last_commit_note": "Corrects the test fixture HTTP weekday for 2026-11-25 (Wednesday)."
       },
       {
         "number": 1702,
@@ -109,12 +110,13 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "last_observed_head_sha": "235deeef1175e36e7c6fa7b73167b39987690989",
-        "head_sha_note": "The current handoff/map branch is self-referential and changes on each documentation commit. The PR's live metadata is authoritative for current head SHA and ahead count.",
+        "last_observed_head_sha": "e2b587cfa8fab170e422a167e7419bacd8fb136d",
+        "head_sha_note": "The handoff/map commit created from this snapshot advances the self-referential branch; use live PR metadata for the current head and ahead count.",
         "commits_behind": 0,
         "changed_paths": [
           "BARROT_MISSION_HANDOFF_LATEST.md",
-          "research/operations/nine_platform_operational_map_current.json"
+          "research/operations/nine_platform_operational_map_current.json",
+          "research/xrp_intelligence/20261124_primary_source_reconciliation.md"
         ],
         "classification": "unique/unreviewed",
         "last_verified_head_sha": "153c7f995b08b41e4c968048f460ed285f0a9528",
@@ -130,7 +132,7 @@
           "conflict_integrity_run_id": 45539823658,
           "fail_closed_gate_run_id": 45539823700
         },
-        "exact_head_validation": "LIVE_STATUS_IN_PR_CHECKS_ONLY: query the PR's current head and exact-head CI, dependency audit, money audit, conflict integrity and fail-closed gate. The embedded last-verified-head evidence is historical and does not authorize merge.",
+        "exact_head_validation": "LIVE_STATUS_IN_PR_CHECKS_ONLY: query PR #1702 current head and exact-head CI, dependency audit, money audit, conflict integrity and fail-closed gate.",
         "review_count": 0,
         "blockers": [
           "No independent review recorded",
@@ -237,7 +239,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T03:55:00Z",
+      "observed_at_utc": "2026-11-25T04:00:00Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -765,8 +767,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
       "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
       "base": "main",
-      "head_sha": "f2be2aba70f9c9d1b14e9c670c0172c6c250983a",
-      "commits_ahead": 2,
+      "head_sha": "d7c589d1137b3fc40b32d337bb5bb9d537391aa4",
+      "commits_ahead": 3,
       "commits_behind": 0,
       "changed_paths": [
         ".github/workflows/xrp-public-ingestion.yml",
@@ -779,15 +781,15 @@
       "local_tests_reported": 11,
       "exact_head_validation": "pending",
       "checks": {
-        "full_suite_run_id": 45542742348,
+        "full_suite_run_id": 45543739494,
         "full_suite_status": "in_progress",
-        "dependency_audit_run_id": 45542742229,
-        "dependency_audit_status": "success",
-        "money_audit_run_id": 45542742195,
+        "dependency_audit_run_id": 45543739554,
+        "dependency_audit_status": "in_progress",
+        "money_audit_run_id": 45543739472,
         "money_audit_status": "success",
-        "conflict_integrity_run_id": 45542742304,
-        "conflict_integrity_status": "success",
-        "fail_closed_gate_run_id": 45542742134,
+        "conflict_integrity_run_id": 45543739520,
+        "conflict_integrity_status": "in_progress",
+        "fail_closed_gate_run_id": 45543739474,
         "fail_closed_gate_status": "in_progress"
       },
       "integration_capture": {
@@ -812,12 +814,13 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "last_observed_head_sha": "235deeef1175e36e7c6fa7b73167b39987690989",
-      "head_sha_note": "The current handoff/map branch is self-referential and changes on each documentation commit. The PR's live metadata is authoritative for current head SHA and ahead count.",
+      "last_observed_head_sha": "e2b587cfa8fab170e422a167e7419bacd8fb136d",
+      "head_sha_note": "The handoff/map commit created from this snapshot advances the self-referential branch; use live PR metadata for the current head and ahead count.",
       "commits_behind": 0,
       "changed_paths": [
         "BARROT_MISSION_HANDOFF_LATEST.md",
-        "research/operations/nine_platform_operational_map_current.json"
+        "research/operations/nine_platform_operational_map_current.json",
+        "research/xrp_intelligence/20261124_primary_source_reconciliation.md"
       ],
       "classification": "unique/unreviewed",
       "last_verified_head_sha": "153c7f995b08b41e4c968048f460ed285f0a9528",
@@ -833,7 +836,7 @@
         "conflict_integrity_run_id": 45539823658,
         "fail_closed_gate_run_id": 45539823700
       },
-      "exact_head_validation": "LIVE_STATUS_IN_PR_CHECKS_ONLY: query the PR's current head and exact-head CI, dependency audit, money audit, conflict integrity and fail-closed gate. The embedded last-verified-head evidence is historical and does not authorize merge.",
+      "exact_head_validation": "LIVE_STATUS_IN_PR_CHECKS_ONLY: query PR #1702 current head and exact-head checks.",
       "review_count": 0,
       "blockers": [
         "No independent review recorded",
