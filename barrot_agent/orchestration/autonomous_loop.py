@@ -10,11 +10,13 @@ import hashlib
 import json
 import re
 import uuid
+from datetime import datetime, timezone
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable
 
 from .autonomous_state import AutonomousTaskStore
+from .project_state import ProjectStateLedger
 from .executor import BarrotExecutor
 from .verifier import BarrotVerifier
 
@@ -45,8 +47,54 @@ class BarrotAutonomousLoop:
         self.executor = BarrotExecutor(self.workspace)
         self.verifier = BarrotVerifier(self.executor)
         self.store = AutonomousTaskStore(self.workspace)
+        self.project_state = ProjectStateLedger(self.workspace)
         self.max_attempts = max_attempts
         self.goal_verifier = goal_verifier
+
+
+    def _record_task_state(self, task_id: str, goal_hash: str, state: dict) -> dict:
+        """Persist a redacted task lifecycle record without copying the goal text."""
+        snapshot = self.project_state.load()
+        if any(item["record_type"] == "task" and item["key"] == task_id for item in snapshot["conflicts"]):
+            raise RuntimeError(f"unresolved project-state conflict for task {task_id!r}")
+        superseded = {rid for item in snapshot["records"] for rid in item["supersedes"]}
+        active = [item for item in snapshot["records"]
+                  if item["record_type"] == "task" and item["key"] == task_id
+                  and item["record_id"] not in superseded and item["status"] != "rejected"]
+        if any(item["value"].get("goal_sha256") != goal_hash for item in active):
+            raise RuntimeError(f"project-state task identity conflicts with local checkpoint {task_id!r}")
+        raw_status = str(state.get("status", "queued"))
+        status = "complete" if raw_status == "complete" else (
+            "blocked" if raw_status in {"paused", "awaiting_goal_verification"} else "open"
+        )
+        record = {
+            "record_type": "task",
+            "key": task_id,
+            "value": {
+                "goal_sha256": goal_hash,
+                "execution_status": raw_status,
+                "attempts_completed": int(state.get("attempts_completed", 0)),
+                "priority": 100,
+            },
+            "status": status,
+            "observed_at_utc": datetime.now(timezone.utc).isoformat(timespec="microseconds").replace("+00:00", "Z"),
+            "confidence": 1.0,
+            "provenance": {"source_type": "barrot_autonomous_loop", "source_ref": f"task:{task_id}"},
+            "supersedes": [item["record_id"] for item in active],
+        }
+        return self.project_state.add_record(record)
+
+    def record_project_state(self, record: dict) -> dict:
+        """Append an objective, decision, evidence item, lesson or other project record."""
+        return self.project_state.add_record(record)
+
+    def export_project_state(self) -> dict:
+        """Return a hash-verified portable state bundle for an authorized handoff."""
+        return self.project_state.export_bundle()
+
+    def reconcile_project_state(self, bundle: dict) -> dict:
+        """Merge a previously exported bundle without overwriting divergent records."""
+        return self.project_state.reconcile_bundle(bundle)
 
     def _extract_json(self, text: str) -> dict:
         """Extract the first JSON object from a model response."""
@@ -88,6 +136,8 @@ class BarrotAutonomousLoop:
         if not isinstance(goal, str) or not goal.strip():
             raise ValueError("goal must be a non-empty string")
         task_id = task_id or uuid.uuid4().hex
+        if task_id == ProjectStateLedger.TASK_ID:
+            raise ValueError("task_id is reserved for the project-state ledger")
         goal_hash = hashlib.sha256(goal.encode("utf-8")).hexdigest()
         state = self.store.load(task_id)
         if state is None:
@@ -98,6 +148,8 @@ class BarrotAutonomousLoop:
                 "attempts_completed": 0,
                 "history": [],
             }
+            self.store.save(task_id, state)
+            self._record_task_state(task_id, goal_hash, state)
         elif state.get("goal_sha256") != goal_hash:
             raise ValueError("task_id is already bound to a different goal")
         history = state["history"]
@@ -106,6 +158,7 @@ class BarrotAutonomousLoop:
             if not history or self.goal_verifier is None:
                 state["status"] = "awaiting_goal_verification"
                 self.store.save(task_id, state)
+                self._record_task_state(task_id, goal_hash, state)
                 return AutonomousResult(False, len(history), history, task_id, "awaiting_goal_verification", str(checkpoint))
             last_record = history[-1]
             try:
@@ -119,10 +172,12 @@ class BarrotAutonomousLoop:
             if renewed.get("success") is True and isinstance(renewed_evidence, (dict, list, str)) and bool(renewed_evidence):
                 last_record["goal_verification"] = renewed
                 self.store.save(task_id, state)
+                self._record_task_state(task_id, goal_hash, state)
                 return AutonomousResult(True, len(history), history, task_id, "complete", str(checkpoint))
             state["status"] = "paused"
             last_record["goal_verification"] = renewed
             self.store.save(task_id, state)
+            self._record_task_state(task_id, goal_hash, state)
 
         start = int(state.get("attempts_completed", len(history))) + 1
         stop = start + self.max_attempts
@@ -171,6 +226,7 @@ CRITICAL EXECUTION RULES:
             record = {"attempt": attempt, "plan": plan_text, "execution": [], "verification": []}
             history.append(record)
             self.store.save(task_id, state)
+            self._record_task_state(task_id, goal_hash, state)
             try:
                 plan = self._extract_json(plan_text)
             except Exception as exc:
@@ -217,6 +273,7 @@ CRITICAL EXECUTION RULES:
                 }
                 state["status"] = "awaiting_goal_verification"
                 self.store.save(task_id, state)
+                self._record_task_state(task_id, goal_hash, state)
                 return AutonomousResult(
                     False, len(history), history, task_id,
                     "awaiting_goal_verification", str(checkpoint)
@@ -236,8 +293,10 @@ CRITICAL EXECUTION RULES:
             ):
                 state["status"] = "complete"
                 self.store.save(task_id, state)
+                self._record_task_state(task_id, goal_hash, state)
                 return AutonomousResult(True, len(history), history, task_id, "complete", str(checkpoint))
             self.store.save(task_id, state)
         state["status"] = "paused"
         self.store.save(task_id, state)
+        self._record_task_state(task_id, goal_hash, state)
         return AutonomousResult(False, len(history), history, task_id, "paused", str(checkpoint))
