@@ -1,4 +1,4 @@
-# Current run verification supplement — 2026-11-25T03:40:42Z
+# Current run verification supplement — 2026-11-25T03:41:00Z
 
 This supplement supersedes stale status statements in earlier checkpoints below where newer exact-head evidence is available. Historical records remain preserved.
 
@@ -24,7 +24,7 @@ Recent verified merges on main remain #1692 (SEC event receipt relinking), #1701
 
 ## XRP intelligence and prediction — EXECUTED; forecast withheld
 
-- Scheduled ingestion [run 45538777078 / #143](https://github.com/Barrot-Agent/B-Agent/actions/runs/45538777078) ran on exact main SHA `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`. Data cutoff: **2026-11-25T03:16:35.809109Z**. Snapshot ID: `918d531112ba94f96e6f21350c418dc8cc5ae7566f4d996004d426b1a287a1e2`.
+- Scheduled ingestion [run 45538777078 / #143](https://github.com/Barrot-Agent/B-Agent/actions/runs/45538777078) ran on exact main SHA `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`. Run data cutoff: **2026-11-25T03:16:35.792060Z**; feature-store cutoff: **2026-11-25T03:16:35.809109Z**. Snapshot ID: `918d531112ba94f96e6f21350c418dc8cc5ae7566f4d996004d426b1a287a1e2`.
 - Feature store: **104 snapshots**, **28,413** historical feature records, **2,230** input records, **757** delta records, **390 eligible**, **367 excluded**; SQLite integrity `ok`. It restored the prior trusted per-run checkpoint from run `45532043912`. Automatic rebuild from raw artifacts remains unimplemented.
 - Receipt chain: **37 receipts** (21 retained raw payloads, 16 digest-only); cross-run continuity continued from the prior successful checkpoint. This is not WORM storage or an independent external timestamp anchor. Raw artifacts have 90-day retention; the per-run feature-store checkpoint has 7-day retention.
 - Source failures: **18** total. SEC requests had **3 failures and 0 raw SEC receipts**; the SEC user-agent configuration was absent. Bybit public endpoints returned HTTP 403; runner geography is unverified. Do not proxy or bypass provider restrictions.
