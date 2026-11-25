@@ -18,6 +18,7 @@ from pathlib import Path
 from .audio_render import (
     _headroom_gain,
     _measure_audio_levels,
+    _measure_stereo_integrity,
     _render_midi_stereo,
 )
 from .midi_export import export_midi
@@ -245,6 +246,9 @@ def render_production_bundle(
         _measure_audio_levels(audio, resample_poly, oversample=4)
         for audio in rendered_arrays
     ]
+    rendered_stereo_integrity = [
+        _measure_stereo_integrity(audio) for audio in rendered_arrays
+    ]
 
     rendered_mix = rendered_arrays[0]
 
@@ -292,8 +296,11 @@ def render_production_bundle(
     _write_float32_wav(mix_path, rendered_mix, sample_rate, wavfile)
     stem_paths = []
     stem_metadata = []
-    for descriptor, audio, levels in zip(
-        stem_descriptors, rendered_arrays[1:], rendered_levels[1:]
+    for descriptor, audio, levels, stereo_integrity in zip(
+        stem_descriptors,
+        rendered_arrays[1:],
+        rendered_levels[1:],
+        rendered_stereo_integrity[1:],
     ):
         stem_path = descriptor["destination"]
         _write_float32_wav(stem_path, audio, sample_rate, wavfile)
@@ -309,6 +316,7 @@ def render_production_bundle(
                 "true_peak_dbtp": _dbfs(true_peak),
                 "rms_dbfs": _dbfs(rms),
                 "clip_sample_count": int(np.count_nonzero(np.abs(audio) >= 1.0)),
+                "stereo_integrity": stereo_integrity,
                 "soundfont_sha256": descriptor["soundfont_asset"]["sha256"],
                 "soundfont_source": descriptor["soundfont_asset"]["source"],
                 "soundfont_license": descriptor["soundfont_asset"]["license"],
@@ -366,6 +374,7 @@ def render_production_bundle(
             "true_peak_dbtp": _dbfs(true_peak),
             "rms_dbfs": _dbfs(rms),
             "clip_sample_count": int(np.count_nonzero(np.abs(rendered_mix) >= 1.0)),
+            "stereo_integrity": rendered_stereo_integrity[0],
         },
         "midi": {
             "path": "composition.mid",
@@ -387,6 +396,17 @@ def render_production_bundle(
         ),
         "stem_sum_reconstruction_guaranteed": False,
         "stem_sum_reconstruction": stem_sum_reconstruction,
+        "stereo_integrity_thresholds": {
+            "dc_offset_warning_dbfs": -60.0,
+            "mono_fold_down_warning_db": -3.0,
+        },
+        "quality_warnings": {
+            "mix": rendered_stereo_integrity[0]["warnings"],
+            "stems": {
+                item["instrument"]: item["stereo_integrity"]["warnings"]
+                for item in stem_metadata
+            },
+        },
         "rights": {
             "soundfont_source": soundfont_source,
             "soundfont_license": soundfont_license,

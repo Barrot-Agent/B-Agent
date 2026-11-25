@@ -436,3 +436,43 @@ def test_audio_adapter_reports_missing_optional_dependency(tmp_path: Path) -> No
     with patch.dict(sys.modules, {"librosa": None}):
         with pytest.raises(RuntimeError, match="optional dependencies"):
             analyze_audio(source)
+
+
+
+def test_stereo_integrity_flags_dc_offset_and_mono_cancellation() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import _measure_stereo_integrity
+
+    sample_count = 8192
+    phase = np.arange(sample_count, dtype=np.float64) * (2.0 * np.pi / 256.0)
+    tone = np.sin(phase)
+    anti_phase = np.column_stack((tone + 0.01, -tone + 0.01)).astype(np.float32)
+
+    measured = _measure_stereo_integrity(anti_phase)
+
+    assert measured["dc_offset_dbfs"] > -60.0
+    assert measured["dc_offset_warning"] is True
+    assert measured["stereo_correlation"] < -0.999
+    assert measured["mono_fold_down_loss_db"] < -3.0
+    assert measured["mono_compatibility_warning"] is True
+    assert "negative_stereo_correlation" in measured["warnings"]
+    assert "mono_fold_down_loss_below_threshold" in measured["warnings"]
+
+
+def test_stereo_integrity_passes_centered_mono_compatible_audio() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import _measure_stereo_integrity
+
+    sample_count = 8192
+    phase = np.arange(sample_count, dtype=np.float64) * (2.0 * np.pi / 256.0)
+    tone = np.sin(phase)
+    compatible = np.column_stack((tone, 0.8 * tone)).astype(np.float32)
+
+    measured = _measure_stereo_integrity(compatible)
+
+    assert measured["dc_offset_dbfs"] < -60.0
+    assert measured["stereo_correlation"] > 0.999
+    assert measured["mono_fold_down_loss_db"] > -1.0
+    assert measured["dc_offset_warning"] is False
+    assert measured["mono_compatibility_warning"] is False
+    assert measured["warnings"] == []

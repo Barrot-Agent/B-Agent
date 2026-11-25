@@ -83,6 +83,9 @@ def test_real_fluidsynth_render_is_stereo_reproducible_and_headroom_safe(tmp_pat
     assert abs(first.rms_level - rms) <= 1e-5
     assert sample_peak > 0.001 and rms > 0.001
     assert int(np.count_nonzero(np.abs(samples) >= 1.0)) == 0
+    assert math.isfinite(first.dc_offset_dbfs)
+    assert first.stereo_correlation is None or -1.0 <= first.stereo_correlation <= 1.0
+    assert first.mono_fold_down_loss_db is not None
 
     sf2_hash = _sha256(soundfont)
     qc = {
@@ -100,6 +103,12 @@ def test_real_fluidsynth_render_is_stereo_reproducible_and_headroom_safe(tmp_pat
         "true_peak_dbtp": 20.0 * math.log10(max(true_peak, 1e-12)),
         "rms_dbfs": 20.0 * math.log10(max(rms, 1e-12)),
         "clip_sample_count": 0,
+        "stereo_integrity": {
+            "dc_offset_dbfs": first.dc_offset_dbfs,
+            "stereo_correlation": first.stereo_correlation,
+            "mono_fold_down_loss_db": first.mono_fold_down_loss_db,
+            "warnings": list(first.stereo_warnings),
+        },
         "bars": 16,
         "bpm": manifest.bpm,
         "key": manifest.scale,
@@ -204,6 +213,8 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
     assert metadata["stem_alignment"]["sample_count"] == mix_samples.shape[0]
     assert metadata["native_daw_project_available"] is False
     assert metadata["rights"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
+    assert "stereo_integrity" in metadata["mix"]
+    assert all("stereo_integrity" in item for item in metadata["stems"])
     assert metadata["rights"]["soundfont_sha256"] == _sha256(soundfont)
     assets = {item["instrument"]: item for item in metadata["rights"]["soundfont_assets"]}
     assert assets["snare"]["asset_name"] == alternate_soundfont.name
@@ -236,6 +247,11 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
         "stem_alignment": "all WAV stems share the mix sample rate, frame count, and timeline origin",
         "daw_interchange": "Standard MIDI File + aligned WAV stems + JSON metadata; not a native DAW project",
         "rights_metadata_status": metadata["rights"]["status"],
+        "stereo_integrity": metadata["mix"]["stereo_integrity"],
+        "stereo_integrity_by_stem": {
+            item["instrument"]: item["stereo_integrity"]
+            for item in metadata["stems"]
+        },
         "distribution": "This reproducibility test emits QC only; the full-song test uploads the editable bundle separately",
     }
     qc_output = os.environ.get("BARROT_AUDIO_BUNDLE_QC_OUTPUT")
@@ -354,6 +370,8 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
     assert abs(reconstruction["relative_rms_error"] - expected_relative_rms_error) <= 1e-6
     assert metadata["native_daw_project_available"] is False
     assert metadata["rights"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
+    assert "stereo_integrity" in metadata["mix"]
+    assert all("stereo_integrity" in item for item in metadata["stems"])
 
     qc = {
         "status": "VERIFIED_FULL_SONG_TECHNICAL_BUNDLE",
@@ -378,6 +396,11 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
         "clip_sample_count": 0,
         "stem_alignment": metadata["stem_alignment"],
         "stem_sum_reconstruction": metadata["stem_sum_reconstruction"],
+        "stereo_integrity": metadata["mix"]["stereo_integrity"],
+        "stereo_integrity_by_stem": {
+            item["instrument"]: item["stereo_integrity"]
+            for item in metadata["stems"]
+        },
         "native_daw_project_available": False,
         "distribution": "WAV mix, nine aligned stems, Standard MIDI File and JSON metadata are uploaded; MIT license notice included; SoundFont binary is not bundled",
     }
