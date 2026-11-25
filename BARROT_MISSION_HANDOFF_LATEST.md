@@ -2010,3 +2010,62 @@ No merge, deployment, Space restart, secret rotation, paid lookup, Kaggle submis
 6. Keep the commercial objective cross-mission and Barrot-only; do not market music or TrekFlex before their separate readiness conditions are met.
 
 No Sellbird install, account connection, paid lookup, prospect discovery, outbound message, merge, deployment, Space restart, secret rotation, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+## Run 22 — 2026-11-25 16:51 UTC
+
+### Integrated repository state
+
+- **Main SHA:** `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; recursive tree: 3,163 entries, not truncated. Main remains unchanged.
+- **Main full suite:** run #7038 / [45509757328](https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757328): 4,693 passed, 1 skipped, 11 warnings, 21 subtests, 74.21% coverage.
+- **Open PRs:** 11 (#1702–#1712). No merge occurred. #1708 remains the exact cache-save duplicate pending verification of canonical #1706; #1711 remains blocked on NumPy/Streamlit compatibility.
+
+### XRP intelligence — EXECUTED / VERIFIED
+
+- Latest main ingestion: [run #160](https://github.com/Barrot-Agent/B-Agent/actions/runs/45652378658), on current main SHA, cutoff **2026-11-25 16:18:09 UTC**. Adapter v3.34 / parser v3.32.
+- Feature store: 117 snapshots, 30,528 cumulative records, 123 latest eligible records and 367 excluded records; SQLite integrity and snapshot lineage passed. Latest input 2,230 records; 490-record delta.
+- Receipt chain: 37 receipts (21 retained raw payloads, 16 digest-only), sequence 117, continuity verified. Raw, receipt-index, event, feature-store and correction-audit artifact digests were independently checked against GitHub artifact metadata. The chain is **not externally anchored**; artifacts have retention limits. Automatic feature-store rebuild from raw artifacts is not implemented. Cache budget is read-only/exhausted; continuity succeeded by restoring the previous per-run checkpoint.
+- **Critical blocker:** 150 event records, 0 verified receipt links, 150 missing raw receipt hashes. Eleven URL matches are not sufficient: no capture-time/source-ID match was established. The event timeline remains incomplete and model-ineligible.
+- Walk-forward produced 440 diagnostic rows for the 1h horizon, but status remains PARTIAL_OR_BLOCKED. Drift evaluated 0 of 205 features. Forecast status remains **NOT_ISSUED**; no paper trade or real-money action occurred.
+- Synchronized OKX top-of-book conversion is technically verified (bid $0.897977088, ask $0.898085945, mid $0.8980315165, spread 1.2122 bps; 0.902-second snapshot skew), but it is one publisher-independence group and not cross-venue corroboration.
+- Source failures: 8 Binance HTTP 451, 5 Bybit HTTP 403, 1 retryable Grayscale HTTP 429, 1 Franklin issuer-page marker failure, 3 SEC User-Agent configuration failures. No provider or regional restriction was bypassed. SEC submissions/companyfacts remain uncollected until a real monitored project contact is configured.
+- Morpho CBXRP remains research-only: market-state block 62,165,555 is 38 blocks ahead of Morpho's indexer tip 62,165,517; no canonical block timestamp; not admitted to the feature store. Bitbank taker-flow and ETF holdings-delta data remain research-only, not predictive inputs.
+
+### Professional audio — EXECUTED / TECHNICALLY VERIFIED
+
+- PR #1704's [full-song render run](https://github.com/Barrot-Agent/B-Agent/actions/runs/45654181877) produced a 175.55-second, 80-bar, 110 BPM, D-minor, 4/4 reference bundle through FluidSynth/pyfluidsynth.
+- Artifact #15040574391 contains a 44.1 kHz stereo WAV mix, nine sample-aligned stereo WAV stems (7,741,555 samples each), Standard MIDI with ten section markers, metadata, QC and a SoundFont license notice. Mix peak is -6.017 dBFS; true peak -6.000 dBTP; zero clipped samples. Stem reconstruction error is measured (relative RMS 0.00619); exact stem-sum reconstruction is not guaranteed.
+- The FluidR3_GM license notice states MIT for the SoundFont and is included; the binary is not bundled. Per-stem rights metadata still says CALLER_SUPPLIED_UNVERIFIED. No native DAW project exists. No blind/level-matched listening test or user acceptance has occurred. This is a reproducible technical reference render, not evidence of professional mix/master quality.
+
+### Long-horizon continuity — EXECUTED / PARTIALLY VERIFIED
+
+- PR #1703 adds a portable project-state ledger, versioned records, Ed25519-signed transfer envelopes, replay protection, and conflict/staleness handling. Its full-suite and targeted checks passed on its exact head in the prior validation.
+- Tests exercise separate workspaces, but no real transfer between separately controlled hosts or external model providers has been executed. Cross-platform synchronization remains DESIGNED, not VERIFIED.
+
+### CI coverage expansion — EXECUTED / VERIFIED ON EXACT HEAD
+
+- Opened [PR #1712](https://github.com/Barrot-Agent/B-Agent/pull/1712), now marked ready for review. It adds non-regression package floors for AGI 63%, analysis 20%, ingestion 26%, orchestration 69%, evolution 82% and creative/audio 90%, based on measured main baselines. It does not claim low analysis/ingestion coverage is adequate.
+- Exact-head full suite run #7210 / [45656857778](https://github.com/Barrot-Agent/B-Agent/actions/runs/45656857778) passed: 4,695 passed, 1 skipped, 11 warnings, 21 subtests, 74.21% total coverage. All six new package floors and existing targeted floors passed. Dependency audit, money audit, conflict/tree validation and Pages build passed.
+- The first merge-readiness attempt failed only because the PR was still draft when that run began. After marking it ready, the failed gate job was rerun: [run #45656858065, attempt 2](https://github.com/Barrot-Agent/B-Agent/actions/runs/45656858065) passed. PR #1712 is ready and mergeable, but has zero reviews; no merge.
+
+### Handoff PR #1702 — EXACT-HEAD VALIDATION PASSED
+
+- Corrected the stale branch-protection test assertion: the API response is literally `HTTP 403 RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION`, not `HTTP_403` in that field.
+- Exact head `b2b1c2df76af509146d242715fd55bee57dd9e21`: [full suite run #45655833642](https://github.com/Barrot-Agent/B-Agent/actions/runs/45655833642) passed 4,694 tests, 1 skipped, 11 warnings, 21 subtests, 74.21% coverage. Dependency audit, money audit, conflict integrity/merge-tree, Pages validation and fail-closed readiness all passed on that exact head.
+- PR #1702 is ready and mergeable, but has zero reviews. Branch-protection details still return HTTP 403 and the required approval count remains unverified. The Pages workflow requires explicit deployment approval. Do not merge until those gates are verified and satisfied.
+
+### Nine-platform coordination and commercial status
+
+- ChatGPT's GitHub connector has been tested for read, exact-head checks, artifact inspection, existing-branch writes, branch creation and PR creation. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks authentication/data flow remain untested. No external model-to-model data transfer is claimed.
+- Sellbird's exact repository/license/security review remains documented. It is not installed or connected. The Barrot-only provenance-assessment offer is still a hypothesis, not approved or marketed. Qualified prospects: 0; outbound approved/sent: 0; replies: 0; meetings: 0; proposals: 0; revenue: $0. No music, vocal/songwriting, TrekFlex or other venture prospecting.
+
+### Next concrete actions
+
+1. Obtain independent review for #1702, #1703, #1704, #1705 and #1712; verify required approval count and branch protection through an authorized path before merge.
+2. Close the 150-event receipt-linkage gap and implement raw-artifact feature-store rebuild; keep forecasts disabled.
+3. Configure SEC access only with a genuine monitored project contact; retain Binance/Bybit restrictions.
+4. Perform comparative listening and obtain explicit user acceptance for the audio bundle; produce a native editable DAW project before claiming a usable production deliverable.
+5. Execute a real signed-state transfer between separate authorized workspaces/hosts and test conflict recovery.
+6. Keep Sellbird discovery Barrot-only and outbound paused until offer, audience, message and sending controls are approved.
+
+**No merge, deployment, secret rotation, Space restart, Kaggle submission, funds transfer, paper trade, real-money action or outbound message occurred.**
