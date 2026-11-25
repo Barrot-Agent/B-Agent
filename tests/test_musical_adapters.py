@@ -319,6 +319,77 @@ class AudioRenderTests(unittest.TestCase):
         self.assertTrue(fake_synth.deleted)
 
 
+    def test_stereo_renderer_routes_each_named_track_to_its_soundfont(self):
+        import sys
+        import numpy as np
+        from types import SimpleNamespace
+
+        from barrot_agent.creative.audio_render import _render_midi_stereo
+
+        class FakeSynth:
+            def __init__(self, *, samplerate):
+                self.calls = []
+                self.deleted = False
+
+            def sfload(self, path):
+                soundfont_id = 7 + sum(call[0] == "sfload" for call in self.calls)
+                self.calls.append(("sfload", path, soundfont_id))
+                return soundfont_id
+
+            def program_select(self, channel, soundfont_id, bank, program):
+                self.calls.append(("program_select", channel, soundfont_id, bank, program))
+                return 0
+
+            def get_samples(self, count):
+                self.calls.append(("get_samples", count))
+                return np.zeros(count * 2, dtype=np.float32)
+
+            def noteon(self, channel, pitch, velocity):
+                self.calls.append(("noteon", channel, pitch, velocity))
+
+            def noteoff(self, channel, pitch):
+                self.calls.append(("noteoff", channel, pitch))
+
+            def pitch_bend(self, channel, value):
+                self.calls.append(("pitch_bend", channel, value))
+
+            def cc(self, channel, number, value):
+                self.calls.append(("cc", channel, number, value))
+
+            def delete(self):
+                self.deleted = True
+
+        fake_synth = FakeSynth(samplerate=8000)
+        fluidsynth = ModuleType("fluidsynth")
+        fluidsynth.Synth = lambda **kwargs: fake_synth
+        note = lambda: SimpleNamespace(start=0.0, end=0.5, pitch=60, velocity=90)
+        keys = SimpleNamespace(
+            name="keys", is_drum=False, program=10, notes=[note()],
+            pitch_bends=[], control_changes=[],
+        )
+        bass = SimpleNamespace(
+            name="bass", is_drum=False, program=33, notes=[note()],
+            pitch_bends=[], control_changes=[],
+        )
+        midi = SimpleNamespace(instruments=[keys, bass], get_end_time=lambda: 1.0)
+
+        with patch.dict(sys.modules, {"fluidsynth": fluidsynth}):
+            audio = _render_midi_stereo(
+                midi,
+                soundfont_path={"keys": "keys.sf2", "bass": "bass.sf2"},
+                sample_rate=8000,
+            )
+
+        self.assertEqual(audio.shape, (16000, 2))
+        self.assertEqual(
+            [call[1] for call in fake_synth.calls if call[0] == "sfload"],
+            ["keys.sf2", "bass.sf2"],
+        )
+        self.assertIn(("program_select", 0, 7, 0, 10), fake_synth.calls)
+        self.assertIn(("program_select", 1, 8, 0, 33), fake_synth.calls)
+        self.assertTrue(fake_synth.deleted)
+
+
 class FullSongProductionTests(unittest.TestCase):
     def test_full_song_form_is_deterministic_section_aware_and_long(self):
         from barrot_agent.creative.composer import (
