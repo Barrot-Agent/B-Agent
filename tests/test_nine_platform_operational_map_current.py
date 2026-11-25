@@ -32,28 +32,33 @@ def test_current_operational_map_has_exact_nine_platform_scope_and_main_sha_form
     assert set(data["platforms"]) == EXPECTED_PLATFORMS
 
 
-def test_chatgpt_connector_scope_is_verified_without_inflating_admin_access() -> None:
+def test_chatgpt_connector_scope_is_verified_without_overstating_permissions() -> None:
     data = load_map()
     chatgpt = data["platforms"]["ChatGPT"]
-    assert chatgpt["authentication_status"] == "VERIFIED_CURRENT_SESSION"
-    assert chatgpt["authenticated_principal"] == "Barrot-Agent"
-    assert chatgpt["permissions"]["repository_contents_read"] is True
-    assert chatgpt["permissions"]["repository_contents_write_on_existing_pr_branches"] is True
-    assert chatgpt["permissions"]["administration_read"] is False
-    assert chatgpt["permissions"]["branch_protection_details_read"] is False
-    assert chatgpt["permissions"]["independent_approval_of_own_pr"] is False
-    assert chatgpt["verified_data_flow"]["status"] == "VERIFIED"
-    assert chatgpt["verified_data_flow"]["external_model_data_transfer"] is False
-    assert data["repository"]["main_branch_protected"] is True
-    assert data["repository"]["required_approval_count"] is None
-    assert "HTTP_403" in data["repository"]["branch_protection_details_status"]
-    protection = data["repository"]["branch_protection_summary"]
+
+    assert chatgpt["authentication"]["status"] == "VERIFIED_FOR_GITHUB_CONNECTOR"
+    assert "repository/tree/PR/file/workflow reads" in chatgpt["authentication"]["evidence"]
+    assert any(
+        "Write existing documentation files on integration/mission-handoff-refresh-20261125" in action
+        for action in chatgpt["permissions"]["observed_actions"]
+    )
+    assert "Merge to main" in chatgpt["permissions"]["not_used"]
+    assert "Deploy" in chatgpt["permissions"]["not_used"]
+    assert chatgpt["data_flow"]["verified"] is True
+    assert chatgpt["data_flow"]["status"] == "LIVE_TESTED"
+    assert chatgpt["data_flow"]["external_transfer_occurred"] is False
+
+    repository = data["repository"]
+    assert repository["main_branch_protected"] is True
+    assert repository["required_approval_count"] is None
+    assert "HTTP_403" in repository["branch_protection_details_status"]
+    protection = repository["branch_protection_summary"]
     assert protection["branch_protected"] is True
     assert protection["protection_enabled"] is True
     assert protection["required_status_checks_enforcement_level"] == "non_admins"
     assert protection["detailed_endpoint_status"].startswith("HTTP_403")
     assert "required approving review count" in protection["not_verified"]
-    assert set(data["repository"]["required_status_checks"]) == {
+    assert set(repository["required_status_checks"]) == {
         "Full repository test suite",
         "audit",
         "pip-audit",
@@ -71,6 +76,10 @@ def test_unverified_platforms_remain_unknown_and_no_cross_platform_transfer_is_c
         assert platform["data_flow"]["verified"] is False
         assert platform["data_flow"]["external_transfer_occurred"] is False
         assert platform["task_assignment_status"] == "DESIGNED_NOT_EXECUTED"
+        assert platform["capabilities"]["status"] == "NOT_TESTED"
+        assert platform["authentication"]["status"] == "NOT_TESTED"
+        assert platform["permissions"]["status"] == "UNKNOWN_NOT_TESTED"
+
     coordination = data["coordination"]
     assert coordination["status"] == "DESIGNED_NOT_EXECUTED"
     assert coordination["structured_evidence_exchange_across_nine_platforms"] is False
