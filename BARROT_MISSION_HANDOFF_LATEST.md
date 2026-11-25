@@ -2827,3 +2827,38 @@ Downloaded and inspected feature-store artifact #15058903781 in immutable read-o
 - **EXECUTED:** inspected the scheduled #164 job log; downloaded the actual feature-store artifact; read the SQLite snapshot and quote-basis JSON; calculated venue-level microstructure and two-point normalized-price change; appended this checkpoint to the existing handoff branch.
 - **VERIFIED:** run #164 success, snapshot ID/cutoff/counts, receipt-chain pass, event-linkage failure, walk-forward/drift/forecast statuses, exact raw artifact IDs, cache-save warning, venue-specific mids/spreads/volumes/imbalances and the current #1702 head.
 - **NOT VERIFIED:** global spot volume, net exchange flows, persistent liquidity or book sequence, derivative positioning in this snapshot, XRP forecast edge, full suite on the latest #1702 head, merge approvals, branch-protection policy or deployment authorization.
+
+
+---
+
+# Run 33 — event-receipt gap implementation boundary — 2026-11-25T20:22:00Z
+
+## Source-code and artifact investigation — VERIFIED
+
+The event-receipt gap is not merely a missing manifest field:
+
+- Main `research/xrp_intelligence/event_registry_current.json` is registry version `run222`; its own status says **150/150 events have null `raw_source_sha256`**, only **59** have an exact publisher timestamp, and **91** lack one. The registry is curated, not an automatically discovered source feed.
+- Main `barrot_agent/evolution/event_timeline.py` explicitly states it does not fetch sources. It links only when a canonical receipt has an exact normalized source URL, exact capture timestamp and matching SHA-256; it does not create an independent timestamp anchor.
+- Main `barrot_agent/evolution/xrp_public_ingestion.py` has a static `ALLOWED_HOSTS` list and a dedicated SEC EDGAR capture path. The inspected allowlist does not include the newly verified official SBIC East/Central/West or SBI Holdings domains.
+- Main tests explicitly assert that mutable or non-SEC event sources are not automatically relinked and that SEC recapture is limited to exact immutable accession-document URLs.
+- Run #164 event artifact #15059063444 reports **11 URL matches**, **zero capture-time matches**, **zero source-ID matches**, **zero verified receipts**, and relinkage status `NO_MATCHING_IMMUTABLE_SEC_RECEIPTS`. The 37 market-data receipts do not prove the 150 curated corporate/regulatory events.
+
+## Why no speculative code change was made
+
+A generic "match by URL" relaxation would be unsafe: it could attach a later mutable web page to a historical event, confuse current page state with original publication, or introduce non-independent/secondary evidence. Fetching 150 arbitrary URLs in every hourly run would also ignore per-domain terms, rate limits, redirect policy, page-vintage and storage rights. SEC capture separately remains blocked until a valid contact identity is configured; no identity was invented.
+
+The verified implementation gap is a **source-type-specific, allowlisted event-capture layer**. It needs:
+1. Domain and endpoint allowlists based on official primary publishers, with terms/rate-limit and redirect checks.
+2. Exact capture timestamp, final URL, status/content headers, raw-byte SHA-256, retained bytes or explicit digest-only classification, and a canonical receipt ID.
+3. Per-event source-version history. A new capture must become known only at its capture time; it must never retroactively make a historical backtest aware of evidence unavailable then.
+4. Separate handling for immutable documents (e.g. SEC accession filings and statute versions) versus mutable corporate pages, with no automatic relink unless exact source-version semantics are proven.
+5. Independence-group metadata and explicit secondary-source rejection. No generic URL match may satisfy a receipt gate.
+
+**Disposition:** investigated and blocked pending the domain-policy/source-version implementation. No broad fetcher, new host allowlist or receipt-link relaxation was added. The next safe implementation should begin with a small set of official, stable primary endpoints (e-Gov statute version and the three official SBIC company profiles) and dedicated tests, then expand only after terms and capture semantics are verified. SEC contact identity remains a separate configuration blocker.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** a bounded source-type-specific capture adapter with nonretroactive point-in-time availability and exact-byte receipts.
+- **EXECUTED:** inspected the main event registry, event timeline assembler, public ingestion adapter, static host allowlist, event-ingestion tests and #164 event artifact.
+- **VERIFIED:** the current code intentionally does not fetch event sources; 150 events lack raw hashes; 59/91 publisher-timestamp split; 11 URL matches but zero exact-time/hash links; non-SEC sources are deliberately not relinked.
+- **NOT VERIFIED:** a safe general event capture implementation, source-specific legal/terms review, SEC contact identity, raw-byte receipts for SBIC/SBI/Circle/Ripple/Coinbase event sources, or any model eligibility.
