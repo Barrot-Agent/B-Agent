@@ -1,5 +1,5 @@
 
-## XRP ecosystem research addendum — 2026-11-25T03:01:39.665Z
+## XRP ecosystem research addendum — 2026-11-25T03:19:28.008Z
 
 ### Japan SBIC identity — resolved at entity level
 
@@ -78,13 +78,13 @@ Surfaced public livestreams include “XRP Got Everything We Waited For. So Why 
 One claim was checked against primary evidence: the channel's “This NEW Bank Deal...” description says Standard Chartered custody is live and LMAX collateral integration is planned. Ripple and LMAX confirm custody is live; the collateral arrangement remains subject to documentation, testing, regulation, approvals and jurisdiction readiness. The title is commentary; the future collateral feature is not yet a completed deployment. The channel's videos and affiliate disclosures are research leads, not independent market evidence.
 
 
-## Latest checkpoint — 2026-11-25T02:48:18.032Z
+## Prior checkpoint — 2026-11-25T02:48:18.032Z (superseded by the addendum above)
 
 ### Repository and integration baseline
 
 - Current protected main: `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`. Recursive tree: 3,163 entries, not truncated. No source changes were made to main.
 - Open PR inventory is now three; all target main and are 0 commits behind:
-  - **#1702 — mission handoff/platform map:** `integration/mission-handoff-refresh-20261125`, research-addendum predecessor head `1c67d30b5598ad026c48ca998bcd0e53bf6ca106`, 3 commits ahead, 0 behind, docs/map only. Exact-head full suite run 45535555892: 4,693 passed, 1 skipped, 11 warnings, 21 subtests, 74.21%; audit 45535555888, pip-audit 45535555897, fail-closed gate 45535555886 and tree verification 45535555915 all passed. The research addendum being committed now will trigger a fresh exact-head run.
+  - **#1702 — mission handoff/platform map:** `integration/mission-handoff-refresh-20261125`, pre-refresh head `9e0dd116ac0dee712da817a8956f8e13945124ad`, 4 commits ahead / 0 behind, docs/map only. On that pre-refresh head, push CI run #7069 succeeded; PR CI #7070 and gated-merge #11961 were still running; dependency audit #4484, money audit #867 and conflict integrity #564 succeeded. This atomic update adds one docs-only commit to the existing branch (5 commits ahead / 0 behind); all exact-head checks must rerun on the new commit. The earlier #1702 full-suite result on head `1c67d30b5598ad026c48ca998bcd0e53bf6ca106` is not evidence for the new head.
   - **#1703 — long-horizon continuity:** `continuity/project-state-ledger-20261125`, head `502b3dfa748b72384c9a3d79a3f8355bad245a3f`, 12 commits ahead, 0 behind, 7 files. Exact-head full suite: 4,708 passed, 1 skipped, 11 warnings, 21 subtests, 74.28% coverage (run 45529493545). Audit 45529493585, pip-audit 45529486318, post-ready fail-closed gate 45530598817 and tree verification 45530598905 passed.
   - **#1704 — audio per-instrument SoundFont routing:** `audio/per-instrument-soundfonts-20261125`, head `35b10a2ea589e0fd41bc6fb430ab508af77e06b9`, 7 commits ahead, 0 behind, 5 files. Exact-head full suite: 4,694 passed, 1 skipped, 11 warnings, 21 subtests, 74.22% coverage (run 45529940481). Audit 45529940537, pip-audit 45529903089, post-ready fail-closed gate 45530573290 and tree verification 45530573396 passed.
 - No independent review is recorded on #1702, #1703 or #1704. Main is marked protected; the branch-protection details endpoint returned HTTP 403, so approval requirements cannot be independently confirmed. Green custom gates do not substitute for required reviews.
@@ -95,14 +95,15 @@ One claim was checked against primary evidence: the channel's “This NEW Bank D
 
 **DESIGNED:** scheduled public-data ingestion, receipt/feature-store pipeline, event timeline, leakage-aware evaluation gates and forecast ledger remain the architecture.
 
-**EXECUTED:** main run #139, workflow run 45532043912, exact main SHA above; ingestion job 138929486401. Data cutoff: 2026-11-25T02:19:19.103884Z. Snapshot: `xrp-public-20261125T021919Z-9b5c29e0`.
+**EXECUTED:** GitHub Actions run #142 (workflow run ID `45532043912`), exact main SHA above; ingestion job `138929486401`. Data cutoff: `2026-11-25T02:19:19.103884Z`. Snapshot ID: `9b5c3badd25491a58d046bd45f4ef8ec1c02d3a51d646fbe70bea3e87f6915b0`.
 - Feature store: 103 snapshots, 28,023 historical records, 2,230 input records, 758 delta records, 391 eligible and 367 excluded. Store integrity passed; cross-run receipt-chain sequence 103 continued from trusted checkpoint run 45524221832.
-- Latest OKX top-of-book snapshot: bid 0.911450124, ask 0.911559125, midpoint 0.9115046245, spread 1.1958 bps. This is one venue's top-of-book observation, not independent market-wide liquidity confirmation.
-- 37 source receipts; 26 raw-only source entries; 18 source failures.
+- Latest OKX top-of-book snapshot: bid `0.911450124`, ask `0.911559125`, midpoint `0.9115046245`, spread `1.19583595` bps. Quote basis is marked verified but derives from same-venue OKX XRP-USDT and USDT-USD snapshots, has one publisher-independence group, and covers top-of-book only—not independent corroboration, full-depth liquidity or a consolidated market price.
+- 37 source receipts: 21 retained raw payloads and 16 digest-only receipts; 26 raw-only source IDs; 18 source failures. Receipt-chain sequence 103 continued from trusted checkpoint run `45524221832`; cross-run chain SHA-256 `40c8225d00b23bacfb97ec13cabc2dce806ab8ed8c7557544d2149b72ca0ee95`. The chain is tamper-evident relative to its head, not externally timestamp-anchored.
 - Event timeline: 150 events, 11 source-URL matches, 0 exact URL-plus-capture-time matches, 0 verified receipt links; all 150 remain `MISSING_RAW_RECEIPT_HASH`. The registry's historical event claims are not upgraded by simply attaching a current mutable-page hash. The current code restricts automatic recapture to exact immutable SEC accession documents; broad relinking would misrepresent point-in-time evidence.
-- `BARROT_SEC_USER_AGENT` was empty and `INCLUDE_SEC_COMPANYFACTS` was false in this run. Do not fabricate a contact identity to satisfy SEC access requirements.
-- Walk-forward status remains `INSUFFICIENT_HISTORY`; drift status remains `INSUFFICIENT_DATA` (0/205 evaluated); forecast status remains `NOT_ISSUED`. Coinbase historical backfill was `NOT_REQUESTED`. No directional forecast or paper/real-money action was made.
-- GitHub Actions cache save failed because the configured cache budget is full/read-only. The run still succeeded, restored the prior trusted per-run checkpoint, and uploaded its artifacts. Treat cache writes as unavailable; preserve the artifact-based recovery path.
+- SEC companyfacts remained disabled (`INCLUDE_SEC_COMPANYFACTS=false`), `BARROT_SEC_USER_AGENT` was empty, and the run recorded zero raw SEC receipts with three SEC source failures. Bybit spot/linear endpoints returned HTTP 403; provider documentation notes U.S./Mainland China IP restrictions, but runner geography is unverified. Do not proxy or bypass the restriction.
+- Walk-forward evaluation produced 384 one-hour rows but remains `INSUFFICIENT_HISTORY`; drift evaluated 0/205 features and remains `INSUFFICIENT_DATA`; forecast status is `NOT_ISSUED` and model eligibility is false. Coinbase historical backfill was `NOT_REQUESTED`. No directional forecast, paper trade or real-money action occurred.
+- GitHub Actions cache save failed because the configured cache budget is exhausted and cache is read-only. The run still succeeded, restored the prior trusted per-run checkpoint, and uploaded artifacts. Cache writes are unavailable; preserve the artifact-based recovery path. The feature store is derived/evictable and automatic rebuild from raw receipts is not implemented.
+- Run artifacts: [raw archive](https://github.com/Barrot-Agent/B-Agent/actions/runs/45532043912/artifacts/14984628854), SHA-256 `92a67c36e85a1bb808c5159567fcce40a07e6b308ed865256266de68612a9a50` (90 days); [receipt index](https://github.com/Barrot-Agent/B-Agent/actions/runs/45532043912/artifacts/14985062886), SHA-256 `845c32f22ec4642e1ca8d9f66410057c381904af29b94a178cc6f284e6a05ab3` (90 days); [event bundle](https://github.com/Barrot-Agent/B-Agent/actions/runs/45532043912/artifacts/14984349201), SHA-256 `a6b460a3feaada01ce606b92bcf6b3d34807588f3d41ff0dec0138a7d90f7b16` (90 days); [feature store](https://github.com/Barrot-Agent/B-Agent/actions/runs/45532043912/artifacts/14984708736), SHA-256 `ef5b1abae411c22ca9b298a9c029c8fc9b52a0157b3879619634e172ec4a1686` (7 days).
 
 **VERIFIED:** scheduled ingestion, feature-store integrity and cross-run sequence continuity. **NOT VERIFIED:** event-level raw-source provenance, sufficient chronological out-of-sample history, probability calibration, drift performance or directional predictive skill.
 
@@ -273,11 +274,11 @@ A Barrot data-provenance/evaluation pilot may be investigated as a pricing hypot
 
 ## Backlog and next concrete actions
 
-- **XRP — active / forecast blocked:** verify the next scheduled ingestion on exact current main; then address event receipt linkage and raw-artifact rebuild. Keep forecasts disabled.
+- **XRP — active / forecast blocked:** repair the 150-event raw-receipt linkage gap; implement verified raw-artifact rebuild and independent external anchoring; expand chronological out-of-sample history and later shadow cohorts. Keep forecasts disabled.
 - **Audio — active / quality blocked:** clear sound-library rights, produce and inspect the full editable bundle, then obtain comparative listening acceptance.
-- **Continuity — active / cross-host blocked:** implement and test versioned cross-workspace state reconciliation without destructive overwrite.
+- **Continuity — active / cross-host blocked:** complete review and gated integration of PR #1703; then add authenticated cross-host transfer and provider-handoff recovery without destructive overwrite.
 - **A2A — merged / quarantined:** bind identity, verify parent/source lineage, add OS sandbox and egress enforcement, and prove live acceptance before activation.
 - **Nine platforms — partially assessed:** test each remaining platform individually before recording any authentication or data flow.
-- **Commercial — discovery not executed:** audit the exact Sellbird revision and verify one Barrot-only offer before prospecting; outbound remains paused.
+- **Commercial — discovery not executed:** validate one Barrot-only pilot offer and its evidence package before free/low-cost prospect discovery; outbound remains paused.
 
 DESIGNED means a documented architecture or policy. EXECUTED means a tool or workflow actually ran. VERIFIED means the exact evidence above passed. A merged PR, plan, or successful unit test does not prove deployment, professional audio quality, cross-host continuity, predictive skill or revenue.
