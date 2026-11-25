@@ -18,6 +18,12 @@ from barrot_agent.orchestration.verified_learning_store import (
     VerifiedLearningStore,
 )
 
+from scripts.ask_barrot import (
+    SYSTEM_BASE,
+    load_mission_portfolio_status,
+    load_platform_capability_map,
+)
+
 
 def _manifest() -> dict:
     return json.loads(
