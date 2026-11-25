@@ -2785,3 +2785,45 @@ Path-overlap decisions remain as recorded in Run 28: #1705/#1706 share the XRP i
 - **EXECUTED:** fetched current main commit/tree; compared all twelve PR heads to main; inspected current #1702 metadata, checks and workflow jobs; recorded the current head and branch ancestry in this canonical handoff.
 - **VERIFIED:** all twelve PRs are 0 behind main; #1702 is conflict-free according to GitHub's `mergeable=true` field but blocked; only the exact checks explicitly listed above have passed.
 - **NOT VERIFIED:** final-head full suite, Dependency Audit, Gated Merge, branch-protection requirements, required approval, or deployment authorization. No merge is permitted until all required conditions are independently satisfied.
+
+
+---
+
+# Run 32 — latest scheduled XRP ingestion and exact market snapshot — 2026-11-25T20:20:00Z
+
+## Main ingestion #164 — VERIFIED
+
+The next scheduled main ingestion completed after Run 31: [run #45692775580](https://github.com/Barrot-Agent/B-Agent/actions/runs/45692775580), on main SHA `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407). Capture cutoff: **2026-11-25T20:13:32.259528Z**.
+
+- Snapshot ID: `3880333322177e8da03aca136dd8b307d3efeb9a0ca5983f50ea719e7b7d6e1e`; **121 snapshots**, **31,283 historical feature records**, **123 eligible records in this snapshot**, **367 excluded records**, **2,230 raw input feature records**, 12 source records.
+- Receipt chain: **PASS**, 37 receipts, 16 digest-only; event timeline still **150 events, 0 verified raw-receipt links**, status `INCOMPLETE`; all 150 event entries remain `MISSING_RAW_RECEIPT_HASH`.
+- Walk-forward evaluator: **456 entries**, `PARTIAL_OR_BLOCKED`. Drift: `INSUFFICIENT_DATA`; 0/205 features evaluated. Forecast model eligibility false; forecast status `NOT_ISSUED`.
+- SEC company-facts/capital-event capture remains `BLOCKED_CONFIGURATION`, zero filing events and zero raw receipts. Morpho cbXRP remains `BLOCKED_INDEXER_BLOCK_MISMATCH`. CFTC COT features remain research-only; the announced move to semiweekly publication has no confirmed effective date, so that capture path remains disabled.
+- XRP Insights attributed exchange-wallet balances remain hash-only raw capture, not exchange-flow features. Bitwise XRP ETF, Grayscale GXRP and REX XRPR issuer pages remain raw-only until page-vintage and parser validation. Deribit XRP-USDC perpetual/L2 remains raw-only; derivatives history/features remain limited to Binance USD-M XRPUSDT.
+- All five artifacts were uploaded: raw #15058988527, feature store #15058903781, events #15059063444, receipt index #15058763972, correction audit #15059382484. Feature-store artifact retention is seven days; raw/event/receipt artifacts are 90 days.
+- The job's cache-save step concluded non-fatally, but the log explicitly reports cache reservation failure because the configured cache budget is read-only. It restored from successful per-run checkpoint #45682545642 and uploaded the new checkpoint. Do not describe cache saving as successful or cache continuity as solved.
+
+## Point-in-time market microstructure from the actual #164 SQLite artifact
+
+Downloaded and inspected feature-store artifact #15058903781 in immutable read-only mode. Snapshot time is approximately **20:13:17–20:13:23 UTC**; this is not a live 20:20 quote.
+
+- Same-venue OKX top-of-book conversion produced **$0.938604699 XRP/USD**, spread **1.1641 bps**, with component age 12.18 seconds and snapshot skew 0.803 seconds. Raw OKX book mid was **0.939850 USDT/XRP**; observed USDT/USD basis implies approximately **0.998675 USD per USDT**, a 13.25-bps discount. No fixed 1:1 peg was assumed.
+- USD-quoted mids: Bitstamp **$0.938295**, Coinbase **$0.938800**, Kraken **$0.938750**. Bitbank XRP/JPY mid **¥149.3845**. OKX's raw USDT quote is not directly comparable to USD before observed basis conversion.
+- Venue-specific 24-hour base volumes: Bitbank **7.028M XRP**, Bitstamp **13.307M**, Coinbase **70.034M**, Kraken **33.993M**, OKX **28.387M**. Do not sum these into global volume or treat them as net exchange flows.
+- Spread snapshots: Bitbank **0.0669 bps**, Bitstamp **0.1066 bps**, Coinbase **2.1304 bps**, Kraken **0.4261 bps**, OKX **1.0640 bps**.
+- Depth imbalance (bid minus ask over total depth): Bitbank **+0.856 / +0.544 / +0.515** at 10/50/100 bps; Bitstamp **+0.146 / +0.165 / +0.175**; Coinbase **-0.083 / +0.045 / +0.403**; Kraken **-0.013** at 10 bps only; OKX **+0.157 / -0.014 / -0.243**. Venue signs and depth bands disagree; there is no uniform one-sided book signal.
+- The prior #163 normalized OKX mid was **$0.9343103965** at 19:10:56.764Z. The two normalized observations differ by about **+0.460%** over roughly 62 minutes. This is a measured two-point move, not a forecast, and does not establish momentum or predictive edge.
+- Five publisher-independence groups are represented in the spot feature snapshot. Quote-basis components share OKX and are not independent corroboration. Depth units differ by USD, USDT and JPY; the books are point-in-time venue snapshots, not a consolidated executable book.
+
+## Latest handoff branch state at Run 32
+
+- The existing handoff PR #1702 is now at head `cc0aa7cd06481a849f6b1a3e44877b65278ae799`, 73 commits ahead / 0 behind main, four changed files. Main remains unchanged.
+- The exact-head PR CI, including full repository suite, is newly triggered and was pending/in progress at this checkpoint. Push CI is not a substitute for the PR-only full-suite job. Money audit and conflict-integrity success on the immediately prior handoff head do not count as checks on this new head.
+- No merge, deployment, branch rewrite or PR closure occurred. Keep #1702 blocked until the new exact-head full suite, dependency audit, fail-closed gates, required approval/branch-protection conditions and deployment side-effect authorization are verified.
+
+## Run 32 status
+
+- **DESIGNED:** keep all three missions co-equal; preserve strict source and quote-asset separation; keep the forecast gate closed until event receipts, drift and out-of-sample evaluation qualify.
+- **EXECUTED:** inspected the scheduled #164 job log; downloaded the actual feature-store artifact; read the SQLite snapshot and quote-basis JSON; calculated venue-level microstructure and two-point normalized-price change; appended this checkpoint to the existing handoff branch.
+- **VERIFIED:** run #164 success, snapshot ID/cutoff/counts, receipt-chain pass, event-linkage failure, walk-forward/drift/forecast statuses, exact raw artifact IDs, cache-save warning, venue-specific mids/spreads/volumes/imbalances and the current #1702 head.
+- **NOT VERIFIED:** global spot volume, net exchange flows, persistent liquidity or book sequence, derivative positioning in this snapshot, XRP forecast edge, full suite on the latest #1702 head, merge approvals, branch-protection policy or deployment authorization.
