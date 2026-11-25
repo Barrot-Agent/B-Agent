@@ -34,8 +34,8 @@ from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_document, fetch
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 _SHA256_RE = re.compile(r"[0-9a-f]{64}")
-ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.35"
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.remit.co.jp", "www.deribit.com"}
+ADAPTER_VERSION = "xrp-public-market-v3.36"
 PARSER_VERSION = "xrp-public-market-v3.32"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
@@ -255,6 +255,10 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
         "Public dated publisher announcement is captured for point-in-time event provenance; "
         "HTML redistribution terms have not been reviewed, so retain only the SHA-256 receipt."
     ),
+    "sbi_remit_xrp_odl_corridor_expansion_20230906": (
+        "SBI Remit's public dated XRP remittance announcement is captured for point-in-time event provenance; "
+        "HTML redistribution terms have not been reviewed, so retain only the SHA-256 receipt."
+    ),
     "sbi_vc_trade_lending_page": (
         "SBI VC Trade's public lending terms are captured for source-change detection; raw HTML redistribution "
         "rights have not been reviewed, so retain only the SHA-256 receipt and do not publish the page bytes."
@@ -303,7 +307,7 @@ SCHEDULED_ENDPOINTS = tuple(
     and source_id not in WEEKLY_SOURCE_IDS
 )
 
-# Capture only two exact, curated, dated primary-source announcements once daily.
+# Capture only three exact, curated, dated primary-source announcements once daily.
 # HTML is marker-checked in memory and retained as a digest-only receipt because
 # publisher-page redistribution terms have not been reviewed.
 EVENT_SOURCE_CAPTURE_SPECS = (
@@ -318,6 +322,16 @@ EVENT_SOURCE_CAPTURE_SPECS = (
         "source_id": "circle_usdc_xrpl_native_launch_20250612",
         "source_uri": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
         "required_markers": ("Now Available: USDC on the XRPL", "June 12, 2025", "XRP Ledger"),
+    },
+    {
+        "event_id": "sbi-remit-xrp-odl-corridors-2023-09-06",
+        "source_id": "sbi_remit_xrp_odl_corridor_expansion_20230906",
+        "source_uri": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
+        "required_markers": (
+            "XRP-based International Money Transfer Service",
+            "2023/09/06",
+            "SBI Remit Co., Ltd.",
+        ),
     },
 )
 EVENT_SOURCE_CAPTURE_BY_ID = {
@@ -6395,7 +6409,7 @@ def _capture_event_timeline_registry(
             "warnings": [
                 "registry_sha256 authenticates only the curated registry file, not publisher payloads.",
                 "Events without raw_source_sha256 remain receipt-incomplete and model-ineligible.",
-                "Only exact SEC accession-document URLs and two marker-checked dated primary announcements receive new capture versions; mutable company pages and secondary sources are not relinked automatically.",
+                "Only exact SEC accession-document URLs and three marker-checked dated primary announcements receive new capture versions; mutable company pages and secondary sources are not relinked automatically.",
                 "A recaptured source becomes known at its new receipt capture time; its legacy unreceipted timestamp is preserved only as history.",
                 "Hypotheses and counter-hypotheses are authored inputs; no causal inference or forecast probabilities are produced.",
                 "The registry is curated, not an automatically discovered event feed.",

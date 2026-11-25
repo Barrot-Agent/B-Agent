@@ -6,6 +6,7 @@ import json
 import pytest
 
 from barrot_agent.evolution.xrp_public_ingestion import (
+    ALLOWED_HOSTS,
     EVENT_SOURCE_CAPTURE_SPECS,
     RawReceiptArchive,
     XRPIngestionError,
@@ -100,30 +101,48 @@ def _capture(tmp_path, *, received_at="2026-11-12T04:30:00.000000Z", marker_mism
     return registry, receipts, failures, raw_only, summary
 
 
+def test_sbi_remit_primary_event_capture_spec_is_exact_and_allowlisted():
+    spec = next(
+        item for item in EVENT_SOURCE_CAPTURE_SPECS
+        if item["source_id"] == "sbi_remit_xrp_odl_corridor_expansion_20230906"
+    )
+    assert spec["event_id"] == "sbi-remit-xrp-odl-corridors-2023-09-06"
+    assert spec["source_uri"] == (
+        "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/"
+    )
+    assert {
+        "XRP-based International Money Transfer Service",
+        "2023/09/06",
+        "SBI Remit Co., Ltd.",
+    }.issubset(set(spec["required_markers"]))
+    assert "www.remit.co.jp" in ALLOWED_HOSTS
+
+
 def test_primary_event_sources_create_digest_only_receipts_and_relink_at_capture_time(tmp_path):
+    expected_count = len(EVENT_SOURCE_CAPTURE_SPECS)
     registry, receipts, failures, raw_only, capture = _capture(tmp_path)
 
     assert capture["status"] == "CAPTURED"
-    assert capture["captured_event_count"] == 2
-    assert capture["digest_only_receipt_count"] == 2
+    assert capture["captured_event_count"] == expected_count
+    assert capture["digest_only_receipt_count"] == expected_count
     assert capture["event_discovery_implemented"] is False
     assert failures == []
-    assert len(receipts) == 2
+    assert len(receipts) == expected_count
     assert all(receipt["raw_bytes_retained"] is False for receipt in receipts)
     assert all(receipt["raw_payload_path"] is None for receipt in receipts)
-    assert len(raw_only) == 2
+    assert len(raw_only) == expected_count
 
     result = _capture_event_timeline_registry(
         registry,
         "2026-11-12T05:00:00.000000Z",
         raw_receipts=receipts,
     )
-    assert result["event_count"] == 2
+    assert result["event_count"] == expected_count
     assert result["receipt_complete"] is True
     assert result["public_receipt_relinkage"]["status"] == "LINKED"
-    assert result["public_receipt_relinkage"]["linked_event_count"] == 2
-    assert result["receipt_linkage"]["source_id_match_count"] == 2
-    assert result["receipt_linkage"]["digest_only_verified_count"] == 2
+    assert result["public_receipt_relinkage"]["linked_event_count"] == expected_count
+    assert result["receipt_linkage"]["source_id_match_count"] == expected_count
+    assert result["receipt_linkage"]["digest_only_verified_count"] == expected_count
     assert result["model_eligible"] is False
     assert result["forecast_status"] == "NOT_ISSUED"
     for event in result["timeline"]["event_timeline"]:
@@ -136,6 +155,7 @@ def test_primary_event_sources_create_digest_only_receipts_and_relink_at_capture
 
 
 def test_marker_mismatch_is_retained_as_unlinked_digest_only_evidence(tmp_path):
+    expected_count = len(EVENT_SOURCE_CAPTURE_SPECS)
     mismatched_spec = EVENT_SOURCE_CAPTURE_SPECS[0]
     mismatched_source_id = mismatched_spec["source_id"]
     mismatched_event_id = mismatched_spec["event_id"]
@@ -145,7 +165,7 @@ def test_marker_mismatch_is_retained_as_unlinked_digest_only_evidence(tmp_path):
     )
 
     assert capture["status"] == "PARTIAL"
-    assert capture["captured_event_count"] == 1
+    assert capture["captured_event_count"] == expected_count - 1
     assert capture["marker_mismatch_count"] == 1
     assert len(receipts) == 2
     assert len(failures) == 1
@@ -158,12 +178,13 @@ def test_marker_mismatch_is_retained_as_unlinked_digest_only_evidence(tmp_path):
     )
     assert result["event_count"] == 2
     assert result["receipt_complete"] is False
-    assert result["public_receipt_relinkage"]["linked_event_count"] == 1
+    assert result["public_receipt_relinkage"]["linked_event_count"] == expected_count - 1
     statuses = {event["event_id"]: event["receipt_status"] for event in result["timeline"]["event_timeline"]}
     assert statuses[mismatched_event_id] == "MISSING_RAW_RECEIPT_HASH"
 
 
 def test_future_primary_event_receipts_are_not_backdated_or_linked(tmp_path):
+    expected_count = len(EVENT_SOURCE_CAPTURE_SPECS)
     registry, receipts, failures, raw_only, capture = _capture(
         tmp_path,
         received_at="2026-11-12T05:00:01.000000Z",
@@ -175,7 +196,7 @@ def test_future_primary_event_receipts_are_not_backdated_or_linked(tmp_path):
     )
     assert result["event_count"] == 2
     assert result["receipt_complete"] is False
-    assert result["public_receipt_relinkage"]["future_receipt_count"] == 2
+    assert result["public_receipt_relinkage"]["future_receipt_count"] == expected_count
     assert result["public_receipt_relinkage"]["linked_event_count"] == 0
     assert all(
         event["captured_at_utc"] == "2026-11-12T04:00:00Z"
