@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T18:15:10.571Z",
-  "capture_basis": "Run 26: refreshed current main, all 12 open PRs, exact-head CI, branch protection, current XRP run #161, audio bundle artifact, continuity transfer tests and commercial readiness. Main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407; recursive tree 3,163 entries, not truncated. #1702 pre-update head 08617c0012bf45276439c0c6170c98af6a236b51 passed the full repository suite and gates; this checkpoint is being committed on the same existing branch, so its new head requires a fresh exact-head rerun. No merge, deployment or external action.",
+  "captured_at_utc": "2026-11-25T18:35:22Z",
+  "capture_basis": "Run 27: refreshed current main, all 12 open PRs, exact-head #1702 CI after correcting a stale classification assertion, latest XRP ingestion run #162, independent verification of the full-song audio artifact, continuity PR #1703 and Sellbird release. Main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407; recursive tree 3,163 entries, not truncated. #1702 head 7c4d8ff19c5c682bd3499b2990314d5f7cf92375 is 67 commits ahead / 0 behind and passed the exact-head full suite and required gates. No merge, deployment, external model transfer, outreach or real-money action.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -62,7 +62,7 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "head_sha": "08617c0012bf45276439c0c6170c98af6a236b51",
+        "head_sha": "7c4d8ff19c5c682bd3499b2990314d5f7cf92375",
         "commits_ahead": 64,
         "commits_behind": 0,
         "draft": false,
@@ -713,7 +713,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T18:15:10.571Z",
+      "observed_at_utc": "2026-11-25T18:35:22Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -793,28 +793,27 @@
         1713
       ],
       "latest_xrp_ingestion_run": {
-        "run_number": 161,
-        "run_id": 45662188929,
-        "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45662188929",
+        "run_number": 162,
+        "run_id": 45673137347,
+        "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45673137347",
         "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
-        "captured_at_utc": "2026-11-25T17:12:37.183306Z",
-        "data_cutoff_utc": "2026-11-25T17:12:37.183306Z",
+        "captured_at_utc": "2026-11-25T18:15:17.618444Z",
+        "data_cutoff_utc": "2026-11-25T18:15:17.618444Z",
         "adapter_version": "xrp-public-market-v3.34",
         "parser_version": "xrp-public-market-v3.32",
-        "snapshot_id": "c6e8df7df015d8be6d00afcd49e90ead0fd0478eed793d9407692dd290a446c",
+        "snapshot_id": "1bd57a7b811c4ce76600061c17b4230f0f665478631f0d08d244815a4c5fea26",
         "snapshot_status": "verified",
         "feature_store": {
-          "snapshot_count": 118,
+          "snapshot_count": 119,
           "latest_snapshot_records": 123,
           "input_records": 2230,
           "delta_records": 490,
           "eligible_records": 123,
           "excluded_records": 367,
-          "cumulative_history_record_count": 30651,
+          "cumulative_history_record_count": 30774,
           "sqlite_integrity": "ok",
           "store_verification": "PASS",
-          "raw_rebuild_implemented": false,
-          "restore_source": "trusted_ingestion_workflow_run:45652378658:per_run_checkpoint"
+          "raw_rebuild_implemented": false
         },
         "receipts": {
           "count": 37,
@@ -822,32 +821,32 @@
           "digest_only": 16,
           "raw_payload_hashes_verified": 21,
           "raw_payload_hash_mismatches": 0,
-          "all_payload_sizes_match": true,
-          "receipt_log_sha256": "f5ab835e65c05d7e6586bdd74e419ee35f3221c2bd9113189dd8dffb3c2b3ff6",
-          "chain_log_sha256": "377698ba4647c6ebda6cec2de884f2ba1201e3590165b1afe60fa5d8857bfbe1",
-          "receipt_chain_manifest_sha256": "e29fe8c9ccc233d282bd547f4b43f2a2a34b5441990f293621e79c84f0adbe48",
-          "chain_head_sha256": "0da45856ebab0be3a96a5f0a2b37ab07cc9de75d8183ab75f92132d57ff2d13b",
-          "cross_run_chain_sequence": 118,
-          "cross_run_chain_sha256": "f48dffbc554e92a150b4f188a22fa7ef77074368c88cc0e9979daf44bbf006b1",
-          "previous_run_id": 45652378658,
-          "previous_chain_sha256": "daf5f1b4273027ec0032d7c87115c730c38495c3ef627d0f7c56476edd57f705",
-          "cross_run_link_verified": true,
+          "all_21_retained_payload_hashes_match": true,
+          "cross_run_chain_sequence": 119,
+          "cross_run_chain_sha256": "4964c6aca8881f063097243afc4e53afcb8438cb6ea71cf74d3ae5cbdf06e50e",
+          "previous_cross_run_chain_sha256": "f48dffbc554e92a150b4f188a22fa7ef77074368c88cc0e9979daf44bbf006b1",
           "external_anchor": "NOT_ANCHORED",
-          "retention_days": 90,
-          "raw_artifact_zip_sha256": "80c7fe7119c834e99b450dcacdd4c92e909dd4db394a80984b63a6a59459ebbc",
-          "receipt_index_artifact_zip_sha256": "55f16e32755b814b8185f1dbd555e06eb9f22bc6193c14a15bb02d69e064a944",
-          "events_artifact_zip_sha256": "0a47c497c0ee1be73b552d862e430d63cdf82ff128da2a425e56ecf80935d5bc",
-          "feature_store_artifact_zip_sha256": "c5a8e5bfb405886dba9439e20537b53476da47f44b9d5a9861264f057ed3e037"
+          "raw_artifact_retention_days": 90,
+          "raw_artifact_zip_sha256": "380d875d1afb0632abb825cf28317ab849717d724a81b9c0e721926ca0b4db77",
+          "receipt_index_artifact_zip_sha256": "65fe2233cba088f39d4b33ee1057ce6b57547ce032b432dc1ba109f061ad4ebd",
+          "events_artifact_zip_sha256": "d8a860d70c6b4ba55cb479488f2f764eec465e16a6ad22a80a7376277813d278",
+          "feature_store_artifact_zip_sha256": "97a5644428182f2e8c75bd79b5b8e4274cb8b7fe3586634dd4f61325bb8d8a64"
         },
         "event_timeline": {
           "events": 150,
           "verified_receipt_links": 0,
           "missing_raw_receipt_hash": 150,
           "receipt_complete": false,
-          "url_match_count": 11
+          "url_match_count": 11,
+          "scenarios": 117,
+          "probabilities": null,
+          "model_eligible": false,
+          "forecast_status": "NOT_ISSUED"
         },
         "evaluation": {
-          "walk_forward_rows": 444,
+          "latest_run_walk_forward_refresh": "SKIPPED",
+          "last_recorded_walk_forward_run_id": 45662188929,
+          "last_recorded_walk_forward_rows": 444,
           "horizons": [
             "1h"
           ],
@@ -855,86 +854,53 @@
           "drift_evaluated_features": 0,
           "drift_total_features": 205,
           "drift_status": "INSUFFICIENT_DATA",
-          "forecast_status": "NOT_ISSUED",
-          "forecast_model_eligible": false,
-          "scenario_count": 117
-        },
-        "source_failures": {
-          "count": 18,
-          "binance_http_451": 8,
-          "bybit_http_403": 5,
-          "grayscale_http_429_retryable": 1,
-          "franklin_parser_marker_failure": 1,
-          "sec_user_agent_configuration": 3
-        },
-        "sec": {
-          "status": "BLOCKED_CONFIGURATION",
-          "raw_receipts": 0,
-          "source_failures": 3,
-          "contact_identity_configured": false,
-          "companyfacts_requested": false
+          "forecast_status": "NOT_ISSUED"
         },
         "quote_basis": {
           "status": "VERIFIED",
           "feature_count": 4,
           "venue": "OKX",
-          "scope": "same-venue synchronized XRP-USDT and USDT-USD top-of-book",
-          "best_bid_usd": 0.916279725,
-          "best_ask_usd": 0.916388768,
-          "mid_price_usd": 0.9163342465,
-          "spread_bps": 1.1899915387495221,
-          "max_component_age_seconds": 9.919306,
-          "snapshot_skew_seconds": 0.901,
+          "best_bid_usd": 0.924069351,
+          "best_ask_usd": 0.924178472,
+          "mid_price_usd": 0.9241239115,
+          "spread_bps": 1.1808048535712554,
+          "max_component_age_seconds": 11.516776,
+          "snapshot_skew_seconds": 0.494,
           "publisher_independence_group_count": 1,
           "model_eligible": true
         },
+        "spot_cross_venue_snapshot": {
+          "captured_window_utc": "2026-11-25T18:15:04Z/2026-11-25T18:15:07Z",
+          "usd_mid_prices": {
+            "coinbase": 0.9244,
+            "bitstamp": 0.924455,
+            "kraken": 0.92436,
+            "okx_same_venue_usdt_usd_normalized": 0.9241239115
+          },
+          "bitbank_xrp_jpy_mid": 146.9435,
+          "orderbook_10bps_imbalance": {
+            "coinbase": 0.2712838368,
+            "kraken": 0.2687643006,
+            "bitstamp": -0.1387940635,
+            "okx": -0.01448384,
+            "bitbank": -0.0026503284
+          },
+          "interpretation": "Venue-level point-in-time snapshots disagree on near-touch depth skew; venue volumes and quote currencies are not summed into a global flow."
+        },
+        "sec": {
+          "status": "BLOCKED_CONFIGURATION",
+          "raw_receipts": 0,
+          "filing_events": 0,
+          "source_failures": 3,
+          "contact_identity_configured": false,
+          "companyfacts_requested": false
+        },
         "morpho_cbxrp": {
           "status": "BLOCKED_INDEXER_BLOCK_MISMATCH",
-          "market_state_block": 62181895,
-          "indexer_tip": 62181322,
-          "block_delta": 573,
-          "market_history_block": 62181899,
-          "history_delta": 577,
           "feature_store_admitted": false,
-          "model_eligible": false
+          "model_eligible": false,
+          "reason": "Market observation was ahead of Morpho's Base indexer tip; normalized research snapshot withheld."
         },
-        "raw_only_source_count": 26,
-        "research_only_observation_count": 6,
-        "cache": {
-          "status": "read_only_budget_exhausted",
-          "checkpoint_restore_succeeded": true,
-          "restore_run_id": 45652378658,
-          "latest_per_run_checkpoint_uploaded": true,
-          "automatic_raw_rebuild": false,
-          "checkpoint_retention_days": 7,
-          "daily_archive_retention_days": 90
-        },
-        "artifacts": [
-          {
-            "name": "xrp-public-raw-45662188929",
-            "artifact_id": 15046884509,
-            "retention_days": 90,
-            "sha256": "80c7fe7119c834e99b450dcacdd4c92e909dd4db394a80984b63a6a59459ebbc"
-          },
-          {
-            "name": "xrp-public-receipt-index-45662188929",
-            "artifact_id": 15046884675,
-            "retention_days": 90,
-            "sha256": "55f16e32755b814b8185f1dbd555e06eb9f22bc6193c14a15bb02d69e064a944"
-          },
-          {
-            "name": "xrp-public-events-45662188929",
-            "artifact_id": 15046884591,
-            "retention_days": 90,
-            "sha256": "0a47c497c0ee1be73b552d862e430d63cdf82ff128da2a425e56ecf80935d5bc"
-          },
-          {
-            "name": "xrp-public-feature-store-45662188929",
-            "artifact_id": 15046884491,
-            "retention_days": 7,
-            "sha256": "c5a8e5bfb405886dba9439e20537b53476da47f44b9d5a9861264f057ed3e037"
-          }
-        ],
         "paper_trade_executed": false
       },
       "latest_main_cross_analysis": {
@@ -1321,28 +1287,27 @@
     ]
   },
   "latest_xrp_ingestion_observation": {
-    "run_number": 161,
-    "run_id": 45662188929,
-    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45662188929",
+    "run_number": 162,
+    "run_id": 45673137347,
+    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45673137347",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
-    "captured_at_utc": "2026-11-25T17:12:37.183306Z",
-    "data_cutoff_utc": "2026-11-25T17:12:37.183306Z",
+    "captured_at_utc": "2026-11-25T18:15:17.618444Z",
+    "data_cutoff_utc": "2026-11-25T18:15:17.618444Z",
     "adapter_version": "xrp-public-market-v3.34",
     "parser_version": "xrp-public-market-v3.32",
-    "snapshot_id": "c6e8df7df015d8be6d00afcd49e90ead0fd0478eed793d9407692dd290a446c",
+    "snapshot_id": "1bd57a7b811c4ce76600061c17b4230f0f665478631f0d08d244815a4c5fea26",
     "snapshot_status": "verified",
     "feature_store": {
-      "snapshot_count": 118,
+      "snapshot_count": 119,
       "latest_snapshot_records": 123,
       "input_records": 2230,
       "delta_records": 490,
       "eligible_records": 123,
       "excluded_records": 367,
-      "cumulative_history_record_count": 30651,
+      "cumulative_history_record_count": 30774,
       "sqlite_integrity": "ok",
       "store_verification": "PASS",
-      "raw_rebuild_implemented": false,
-      "restore_source": "trusted_ingestion_workflow_run:45652378658:per_run_checkpoint"
+      "raw_rebuild_implemented": false
     },
     "receipts": {
       "count": 37,
@@ -1350,32 +1315,32 @@
       "digest_only": 16,
       "raw_payload_hashes_verified": 21,
       "raw_payload_hash_mismatches": 0,
-      "all_payload_sizes_match": true,
-      "receipt_log_sha256": "f5ab835e65c05d7e6586bdd74e419ee35f3221c2bd9113189dd8dffb3c2b3ff6",
-      "chain_log_sha256": "377698ba4647c6ebda6cec2de884f2ba1201e3590165b1afe60fa5d8857bfbe1",
-      "receipt_chain_manifest_sha256": "e29fe8c9ccc233d282bd547f4b43f2a2a34b5441990f293621e79c84f0adbe48",
-      "chain_head_sha256": "0da45856ebab0be3a96a5f0a2b37ab07cc9de75d8183ab75f92132d57ff2d13b",
-      "cross_run_chain_sequence": 118,
-      "cross_run_chain_sha256": "f48dffbc554e92a150b4f188a22fa7ef77074368c88cc0e9979daf44bbf006b1",
-      "previous_run_id": 45652378658,
-      "previous_chain_sha256": "daf5f1b4273027ec0032d7c87115c730c38495c3ef627d0f7c56476edd57f705",
-      "cross_run_link_verified": true,
+      "all_21_retained_payload_hashes_match": true,
+      "cross_run_chain_sequence": 119,
+      "cross_run_chain_sha256": "4964c6aca8881f063097243afc4e53afcb8438cb6ea71cf74d3ae5cbdf06e50e",
+      "previous_cross_run_chain_sha256": "f48dffbc554e92a150b4f188a22fa7ef77074368c88cc0e9979daf44bbf006b1",
       "external_anchor": "NOT_ANCHORED",
-      "retention_days": 90,
-      "raw_artifact_zip_sha256": "80c7fe7119c834e99b450dcacdd4c92e909dd4db394a80984b63a6a59459ebbc",
-      "receipt_index_artifact_zip_sha256": "55f16e32755b814b8185f1dbd555e06eb9f22bc6193c14a15bb02d69e064a944",
-      "events_artifact_zip_sha256": "0a47c497c0ee1be73b552d862e430d63cdf82ff128da2a425e56ecf80935d5bc",
-      "feature_store_artifact_zip_sha256": "c5a8e5bfb405886dba9439e20537b53476da47f44b9d5a9861264f057ed3e037"
+      "raw_artifact_retention_days": 90,
+      "raw_artifact_zip_sha256": "380d875d1afb0632abb825cf28317ab849717d724a81b9c0e721926ca0b4db77",
+      "receipt_index_artifact_zip_sha256": "65fe2233cba088f39d4b33ee1057ce6b57547ce032b432dc1ba109f061ad4ebd",
+      "events_artifact_zip_sha256": "d8a860d70c6b4ba55cb479488f2f764eec465e16a6ad22a80a7376277813d278",
+      "feature_store_artifact_zip_sha256": "97a5644428182f2e8c75bd79b5b8e4274cb8b7fe3586634dd4f61325bb8d8a64"
     },
     "event_timeline": {
       "events": 150,
       "verified_receipt_links": 0,
       "missing_raw_receipt_hash": 150,
       "receipt_complete": false,
-      "url_match_count": 11
+      "url_match_count": 11,
+      "scenarios": 117,
+      "probabilities": null,
+      "model_eligible": false,
+      "forecast_status": "NOT_ISSUED"
     },
     "evaluation": {
-      "walk_forward_rows": 444,
+      "latest_run_walk_forward_refresh": "SKIPPED",
+      "last_recorded_walk_forward_run_id": 45662188929,
+      "last_recorded_walk_forward_rows": 444,
       "horizons": [
         "1h"
       ],
@@ -1383,86 +1348,53 @@
       "drift_evaluated_features": 0,
       "drift_total_features": 205,
       "drift_status": "INSUFFICIENT_DATA",
-      "forecast_status": "NOT_ISSUED",
-      "forecast_model_eligible": false,
-      "scenario_count": 117
-    },
-    "source_failures": {
-      "count": 18,
-      "binance_http_451": 8,
-      "bybit_http_403": 5,
-      "grayscale_http_429_retryable": 1,
-      "franklin_parser_marker_failure": 1,
-      "sec_user_agent_configuration": 3
-    },
-    "sec": {
-      "status": "BLOCKED_CONFIGURATION",
-      "raw_receipts": 0,
-      "source_failures": 3,
-      "contact_identity_configured": false,
-      "companyfacts_requested": false
+      "forecast_status": "NOT_ISSUED"
     },
     "quote_basis": {
       "status": "VERIFIED",
       "feature_count": 4,
       "venue": "OKX",
-      "scope": "same-venue synchronized XRP-USDT and USDT-USD top-of-book",
-      "best_bid_usd": 0.916279725,
-      "best_ask_usd": 0.916388768,
-      "mid_price_usd": 0.9163342465,
-      "spread_bps": 1.1899915387495221,
-      "max_component_age_seconds": 9.919306,
-      "snapshot_skew_seconds": 0.901,
+      "best_bid_usd": 0.924069351,
+      "best_ask_usd": 0.924178472,
+      "mid_price_usd": 0.9241239115,
+      "spread_bps": 1.1808048535712554,
+      "max_component_age_seconds": 11.516776,
+      "snapshot_skew_seconds": 0.494,
       "publisher_independence_group_count": 1,
       "model_eligible": true
     },
+    "spot_cross_venue_snapshot": {
+      "captured_window_utc": "2026-11-25T18:15:04Z/2026-11-25T18:15:07Z",
+      "usd_mid_prices": {
+        "coinbase": 0.9244,
+        "bitstamp": 0.924455,
+        "kraken": 0.92436,
+        "okx_same_venue_usdt_usd_normalized": 0.9241239115
+      },
+      "bitbank_xrp_jpy_mid": 146.9435,
+      "orderbook_10bps_imbalance": {
+        "coinbase": 0.2712838368,
+        "kraken": 0.2687643006,
+        "bitstamp": -0.1387940635,
+        "okx": -0.01448384,
+        "bitbank": -0.0026503284
+      },
+      "interpretation": "Venue-level point-in-time snapshots disagree on near-touch depth skew; venue volumes and quote currencies are not summed into a global flow."
+    },
+    "sec": {
+      "status": "BLOCKED_CONFIGURATION",
+      "raw_receipts": 0,
+      "filing_events": 0,
+      "source_failures": 3,
+      "contact_identity_configured": false,
+      "companyfacts_requested": false
+    },
     "morpho_cbxrp": {
       "status": "BLOCKED_INDEXER_BLOCK_MISMATCH",
-      "market_state_block": 62181895,
-      "indexer_tip": 62181322,
-      "block_delta": 573,
-      "market_history_block": 62181899,
-      "history_delta": 577,
       "feature_store_admitted": false,
-      "model_eligible": false
+      "model_eligible": false,
+      "reason": "Market observation was ahead of Morpho's Base indexer tip; normalized research snapshot withheld."
     },
-    "raw_only_source_count": 26,
-    "research_only_observation_count": 6,
-    "cache": {
-      "status": "read_only_budget_exhausted",
-      "checkpoint_restore_succeeded": true,
-      "restore_run_id": 45652378658,
-      "latest_per_run_checkpoint_uploaded": true,
-      "automatic_raw_rebuild": false,
-      "checkpoint_retention_days": 7,
-      "daily_archive_retention_days": 90
-    },
-    "artifacts": [
-      {
-        "name": "xrp-public-raw-45662188929",
-        "artifact_id": 15046884509,
-        "retention_days": 90,
-        "sha256": "80c7fe7119c834e99b450dcacdd4c92e909dd4db394a80984b63a6a59459ebbc"
-      },
-      {
-        "name": "xrp-public-receipt-index-45662188929",
-        "artifact_id": 15046884675,
-        "retention_days": 90,
-        "sha256": "55f16e32755b814b8185f1dbd555e06eb9f22bc6193c14a15bb02d69e064a944"
-      },
-      {
-        "name": "xrp-public-events-45662188929",
-        "artifact_id": 15046884591,
-        "retention_days": 90,
-        "sha256": "0a47c497c0ee1be73b552d862e430d63cdf82ff128da2a425e56ecf80935d5bc"
-      },
-      {
-        "name": "xrp-public-feature-store-45662188929",
-        "artifact_id": 15046884491,
-        "retention_days": 7,
-        "sha256": "c5a8e5bfb405886dba9439e20537b53476da47f44b9d5a9861264f057ed3e037"
-      }
-    ],
     "paper_trade_executed": false
   },
   "current_prs": [
@@ -1472,8 +1404,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "08617c0012bf45276439c0c6170c98af6a236b51",
-      "commits_ahead": 64,
+      "head_sha": "7c4d8ff19c5c682bd3499b2990314d5f7cf92375",
+      "commits_ahead": 67,
       "commits_behind": 0,
       "changed_paths": [
         "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -1484,10 +1416,10 @@
       "classification": "ready_pending_independent_review_and_deployment_authorization",
       "workstream_uniqueness": "unique",
       "review_count": 0,
-      "exact_head_validation": "PASSED_ON_PRE_CHECKPOINT_HEAD; NEW_CHECKPOINT_HEAD_PENDING_EXACT_HEAD_RERUN",
+      "exact_head_validation": "PASSED_ON_CURRENT_HEAD",
       "checks": {
         "full_suite": {
-          "run_id": 45670141078,
+          "run_id": 45675977637,
           "conclusion": "success",
           "passed": 4694,
           "failed": 0,
@@ -1495,36 +1427,36 @@
           "warnings": 11,
           "subtests": 21,
           "coverage_percent": 74.21,
-          "duration_seconds": 178.94
+          "duration_seconds": 120.71
         },
         "dependency_audit": {
-          "run_id": 45670140927,
+          "run_id": 45675977686,
           "conclusion": "success"
         },
         "money_audit": {
-          "run_id": 45670140933,
+          "run_id": 45675977819,
           "conclusion": "success"
         },
         "conflict_integrity": {
-          "run_id": 45670140821,
+          "run_id": 45675977562,
           "conclusion": "success"
         },
         "fail_closed_gate": {
-          "run_id": 45670140803,
+          "run_id": 45675977542,
           "conclusion": "success"
         },
         "pages_build_validation": {
-          "run_id": 45670141078,
+          "run_id": 45675977637,
           "conclusion": "success",
           "deployment": false
         }
       },
-      "validation_status": "PRE_UPDATE_HEAD_FULL_SUITE_AND_GATES_PASSED",
-      "observed_at_utc": "2026-11-25T18:15:10.571Z",
+      "validation_status": "EXACT_HEAD_FULL_SUITE_AND_GATES_PASSED",
+      "observed_at_utc": "2026-11-25T18:35:22Z",
       "validation_failures": [
         "tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions — test expected the old wording 'Write existing documentation files'; the live map correctly records 'Write existing handoff/platform-map files' and the existing branch."
       ],
-      "validation_correction": "Assert that an observed action contains 'Write existing' and the existing integration branch name; do not hard-code the descriptive noun phrase."
+      "validation_correction": "The prior exact-head full suite failed only because the test expected PR #1712 classification 'ready_pending_independent_review' while the map correctly included the additional deployment-authorization blocker. The test now asserts the complete classification without weakening the gate. Corrected head 7c4d8ff19c5c682bd3499b2990314d5f7cf92375 passed."
     },
     {
       "number": 1703,
@@ -2239,7 +2171,7 @@
     }
   ],
   "latest_audio_validation": {
-    "observed_at_utc": "2026-11-25T18:15:10.571Z",
+    "observed_at_utc": "2026-11-25T18:35:22Z",
     "pr_number": 1704,
     "head_sha": "e69f94309e7053bb3adfa44062edbd3017d2e9ed",
     "full_suite": {
@@ -2301,7 +2233,10 @@
         "license": "MIT notice packaged",
         "soundfont_sha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0",
         "license_document_sha256": "f2f5e6358fc7c1fe62aafc6c8229c4c5898e5afb0d4ce1322b15362a8cbd600e"
-      }
+      },
+      "same_soundfont_for_all_full_song_stems": true,
+      "soundfont_binary_included": false,
+      "artifact_expires_at": "2026-12-25T17:17:48Z"
     },
     "qc_correction": {
       "issue": "float32 np.vdot accumulation produced impossible correlation > 1",
@@ -2547,14 +2482,14 @@
     "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45669152234"
   },
   "latest_execution_checkpoint": {
-    "observed_at_utc": "2026-11-25T18:15:10.571Z",
+    "observed_at_utc": "2026-11-25T18:35:22Z",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
     "recursive_tree_entries": 3163,
     "tree_truncated": false,
     "mission_manifest_blob_sha": "360643b391b5d8e67fa917913581bb459afb613c",
     "mission_manifest_parity": "ROOT_AND_PACKAGED_FILES_IDENTICAL; THREE_ACTIVE_PRIORITY_1_MISSIONS",
-    "handoff_branch_head_before_update": "08617c0012bf45276439c0c6170c98af6a236b51",
-    "handoff_branch_commits_ahead_before_update": 64,
+    "handoff_branch_head_before_update": "7c4d8ff19c5c682bd3499b2990314d5f7cf92375",
+    "handoff_branch_commits_ahead_before_update": 67,
     "handoff_update_validation": "PENDING_EXACT_HEAD_CI_AFTER_THIS_COMMIT",
     "open_pr_count": 12,
     "open_pr_numbers": [
@@ -2571,7 +2506,7 @@
       1712,
       1713
     ],
-    "latest_xrp_run_id": 45662188929,
+    "latest_xrp_run_id": 45673137347,
     "latest_audio_artifact_id": 15046855997,
     "latest_continuity_full_suite_run_id": 45667306876,
     "no_merge": true,
@@ -2579,5 +2514,116 @@
     "no_external_model_transfer": true,
     "no_outreach": true,
     "no_paper_trade": true
+  },
+  "latest_xrp_run162_summary": {
+    "run_number": 162,
+    "run_id": 45673137347,
+    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45673137347",
+    "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
+    "captured_at_utc": "2026-11-25T18:15:17.618444Z",
+    "data_cutoff_utc": "2026-11-25T18:15:17.618444Z",
+    "adapter_version": "xrp-public-market-v3.34",
+    "parser_version": "xrp-public-market-v3.32",
+    "snapshot_id": "1bd57a7b811c4ce76600061c17b4230f0f665478631f0d08d244815a4c5fea26",
+    "snapshot_status": "verified",
+    "feature_store": {
+      "snapshot_count": 119,
+      "latest_snapshot_records": 123,
+      "input_records": 2230,
+      "delta_records": 490,
+      "eligible_records": 123,
+      "excluded_records": 367,
+      "cumulative_history_record_count": 30774,
+      "sqlite_integrity": "ok",
+      "store_verification": "PASS",
+      "raw_rebuild_implemented": false
+    },
+    "receipts": {
+      "count": 37,
+      "retained_raw_payloads": 21,
+      "digest_only": 16,
+      "raw_payload_hashes_verified": 21,
+      "raw_payload_hash_mismatches": 0,
+      "all_21_retained_payload_hashes_match": true,
+      "cross_run_chain_sequence": 119,
+      "cross_run_chain_sha256": "4964c6aca8881f063097243afc4e53afcb8438cb6ea71cf74d3ae5cbdf06e50e",
+      "previous_cross_run_chain_sha256": "f48dffbc554e92a150b4f188a22fa7ef77074368c88cc0e9979daf44bbf006b1",
+      "external_anchor": "NOT_ANCHORED",
+      "raw_artifact_retention_days": 90,
+      "raw_artifact_zip_sha256": "380d875d1afb0632abb825cf28317ab849717d724a81b9c0e721926ca0b4db77",
+      "receipt_index_artifact_zip_sha256": "65fe2233cba088f39d4b33ee1057ce6b57547ce032b432dc1ba109f061ad4ebd",
+      "events_artifact_zip_sha256": "d8a860d70c6b4ba55cb479488f2f764eec465e16a6ad22a80a7376277813d278",
+      "feature_store_artifact_zip_sha256": "97a5644428182f2e8c75bd79b5b8e4274cb8b7fe3586634dd4f61325bb8d8a64"
+    },
+    "event_timeline": {
+      "events": 150,
+      "verified_receipt_links": 0,
+      "missing_raw_receipt_hash": 150,
+      "receipt_complete": false,
+      "url_match_count": 11,
+      "scenarios": 117,
+      "probabilities": null,
+      "model_eligible": false,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "evaluation": {
+      "latest_run_walk_forward_refresh": "SKIPPED",
+      "last_recorded_walk_forward_run_id": 45662188929,
+      "last_recorded_walk_forward_rows": 444,
+      "horizons": [
+        "1h"
+      ],
+      "walk_forward_status": "PARTIAL_OR_BLOCKED",
+      "drift_evaluated_features": 0,
+      "drift_total_features": 205,
+      "drift_status": "INSUFFICIENT_DATA",
+      "forecast_status": "NOT_ISSUED"
+    },
+    "quote_basis": {
+      "status": "VERIFIED",
+      "feature_count": 4,
+      "venue": "OKX",
+      "best_bid_usd": 0.924069351,
+      "best_ask_usd": 0.924178472,
+      "mid_price_usd": 0.9241239115,
+      "spread_bps": 1.1808048535712554,
+      "max_component_age_seconds": 11.516776,
+      "snapshot_skew_seconds": 0.494,
+      "publisher_independence_group_count": 1,
+      "model_eligible": true
+    },
+    "spot_cross_venue_snapshot": {
+      "captured_window_utc": "2026-11-25T18:15:04Z/2026-11-25T18:15:07Z",
+      "usd_mid_prices": {
+        "coinbase": 0.9244,
+        "bitstamp": 0.924455,
+        "kraken": 0.92436,
+        "okx_same_venue_usdt_usd_normalized": 0.9241239115
+      },
+      "bitbank_xrp_jpy_mid": 146.9435,
+      "orderbook_10bps_imbalance": {
+        "coinbase": 0.2712838368,
+        "kraken": 0.2687643006,
+        "bitstamp": -0.1387940635,
+        "okx": -0.01448384,
+        "bitbank": -0.0026503284
+      },
+      "interpretation": "Venue-level point-in-time snapshots disagree on near-touch depth skew; venue volumes and quote currencies are not summed into a global flow."
+    },
+    "sec": {
+      "status": "BLOCKED_CONFIGURATION",
+      "raw_receipts": 0,
+      "filing_events": 0,
+      "source_failures": 3,
+      "contact_identity_configured": false,
+      "companyfacts_requested": false
+    },
+    "morpho_cbxrp": {
+      "status": "BLOCKED_INDEXER_BLOCK_MISMATCH",
+      "feature_store_admitted": false,
+      "model_eligible": false,
+      "reason": "Market observation was ahead of Morpho's Base indexer tip; normalized research snapshot withheld."
+    },
+    "paper_trade_executed": false
   }
 }
