@@ -166,3 +166,61 @@ def test_history_archive_receipt_survives_bundle_exchange(tmp_path):
     actual = {(item["digest"], item["count"]) for item in destination.export_bundle()["history_archive_receipts"]}
     expected = {(item["digest"], item["count"]) for item in bundle["history_archive_receipts"]}
     assert actual >= expected
+
+
+def test_rejected_partial_supersession_does_not_hide_unresolved_conflict(tmp_path):
+    ledger = ProjectStateLedger(tmp_path / "workspace")
+    first = ledger.add_record(record("decision", "source_identity", "candidate-A", source="a"))
+    second = ledger.add_record(record("decision", "source_identity", "candidate-B", source="b"))
+    original_conflict = ledger.load()["conflicts"][0]
+
+    ledger.add_record(record(
+        "decision", "source_identity", "candidate-B-rejected",
+        status="rejected", supersedes=[second["record_id"]], source="review",
+    ))
+
+    state = ledger.load()
+    assert state["conflicts"] == [original_conflict]
+    assert state["conflicts"][0]["status"] == "unresolved"
+    assert first["record_id"] in state["conflicts"][0]["record_ids"]
+
+
+def test_task_dependency_disagreement_blocks_selection(tmp_path):
+    ledger = ProjectStateLedger(tmp_path / "workspace")
+    ledger.add_record(record(
+        "task", "integrate_audio", {"priority": 1},
+        status="open", depends=["rights_review_a"], source="workspace-a",
+    ))
+    ledger.add_record(record(
+        "task", "integrate_audio", {"priority": 1},
+        status="open", depends=["rights_review_b"], source="workspace-b",
+    ))
+
+    state = ledger.load()
+    assert len(state["conflicts"]) == 1
+    assert state["conflicts"][0]["key"] == "integrate_audio"
+    assert ledger.select_ready_tasks() == []
+
+
+def test_same_revision_reconciliation_merges_independent_history(tmp_path):
+    source = ProjectStateLedger(tmp_path / "source")
+    source.add_record(record("objective", "continuity", "recover all mission state"))
+    bundle = source.export_bundle()
+
+    left = ProjectStateLedger(tmp_path / "left")
+    right = ProjectStateLedger(tmp_path / "right")
+    left.reconcile_bundle(bundle)
+    right.reconcile_bundle(bundle)
+
+    left_state = left.load()
+    right_state = right.load()
+    left._history(left_state, "independent_observation", {"workspace": "left"})
+    right._history(right_state, "independent_observation", {"workspace": "right"})
+    left.store.save(left.TASK_ID, left_state)
+    right.store.save(right.TASK_ID, right_state)
+    assert left.load()["revision"] == right.load()["revision"]
+
+    right_event_ids = {item["event_id"] for item in right.load()["history"]}
+    left.reconcile_bundle(right.export_bundle())
+    left_event_ids = {item["event_id"] for item in left.load()["history"]}
+    assert right_event_ids.issubset(left_event_ids)
