@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T03:19:28.008Z",
-  "capture_basis": "Run 12 refresh: fetched protected main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407 and complete 3,163-entry recursive tree; reconciled open PRs #1702/#1703/#1704 and their ancestry, changed paths, exact-head workflow status and review inventory; verified main protection summary and HTTP 403 detail endpoint plus disabled fallback ruleset; inspected XRP public ingestion run #142 and downloaded its raw, receipt-index, event and feature-store artifacts; recorded cache-budget warning, 150 unlinked event receipts, 384 insufficient-history one-hour walk-forward rows, 0/205 drift evaluation and forecast withholding; verified #1703 continuity-ledger and #1704 audio SoundFont-routing test evidence; refreshed Sellbird remains discovery-only with sending paused. No external model transfer, deployment, secret rotation, trading, paper trading or outreach occurred.",
+  "captured_at_utc": "2026-11-25T03:24:50.656Z",
+  "capture_basis": "Run 13 refresh: fetched protected main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407 and complete 3,163-entry recursive tree; reconciled open PRs #1702/#1703/#1704 and their ancestry, changed paths, exact-head workflow status and review inventory; verified main protection summary and HTTP 403 detail endpoint plus disabled fallback ruleset; inspected XRP public ingestion run #143 and downloaded its raw, receipt-index, event and feature-store artifacts; recorded exhausted Actions cache budget, checkpoint recovery from run #142, 150 unlinked event receipts, 388 insufficient-history one-hour walk-forward rows, 0/205 drift evaluation and forecast withholding; verified #1703 continuity-ledger and #1704 audio SoundFont-routing test evidence; Sellbird remains discovery-only with sending paused. No external model transfer, deployment, secret rotation, trading, paper trading or outreach occurred.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -26,7 +26,7 @@
       "latest_main_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757328",
       "latest_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757294",
       "latest_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757275",
-      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45532043912",
+      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45538777078",
       "latest_main_pages_deployment": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45509754310",
       "latest_a2a_worker_tests": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757309",
       "latest_audio_render_integration": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45487455702",
@@ -34,7 +34,7 @@
       "latest_branch_creation_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45515917889"
     },
     "branch_protection_summary": {
-      "observed_at_utc": "2026-11-25T03:19:28.008Z",
+      "observed_at_utc": "2026-11-25T03:24:50.656Z",
       "source": "GET /repos/Barrot-Agent/B-Agent/branches/main",
       "branch_protected": true,
       "protection_enabled": true,
@@ -62,14 +62,14 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "commits_ahead_after_refresh": 5,
+        "commits_ahead_after_refresh": 6,
         "commits_behind": 0,
         "changed_paths": [
           "BARROT_MISSION_HANDOFF_LATEST.md",
           "research/operations/nine_platform_operational_map_current.json"
         ],
         "classification": "unique/unreviewed",
-        "pre_refresh_head_sha": "9e0dd116ac0dee712da817a8956f8e13945124ad",
+        "pre_refresh_head_sha": "e4218dc1d418f5a0b6c366728b7524a6bd516029",
         "exact_head_validation": "rerun_required_for_atomic_refresh_commit",
         "review_count": 0,
         "blockers": [
@@ -177,7 +177,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T03:19:28.008Z",
+      "observed_at_utc": "2026-11-25T03:24:50.656Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -247,21 +247,21 @@
         1704
       ],
       "latest_xrp_ingestion_run": {
-        "run_number": 142,
-        "run_id": 45532043912,
+        "run_number": 143,
+        "run_id": 45538777078,
         "head_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
-        "data_cutoff_utc": "2026-11-25T02:19:19.103884Z",
+        "data_cutoff_utc": "2026-11-25T03:16:35.792060Z",
         "conclusion": "success"
       }
     },
     "required_status_checks_last_verified_at_utc": "2026-11-24T21:56:01Z",
-    "branch_protection_rechecked_at_utc": "2026-11-25T03:19:28.008Z",
+    "branch_protection_rechecked_at_utc": "2026-11-25T03:24:50.656Z",
     "branch_protection_rechecked_status": "branch protected=true; detailed protection endpoint HTTP 403; approval count and hidden settings unknown",
     "rulesets_observed": [
       {
         "name": "Fall Back",
         "enforcement": "disabled",
-        "observed_at_utc": "2026-11-25T03:19:28.008Z"
+        "observed_at_utc": "2026-11-25T03:24:50.656Z"
       }
     ],
     "pages_deployment_side_effect": {
@@ -515,36 +515,38 @@
     ]
   },
   "latest_xrp_ingestion_observation": {
-    "run_number": 142,
-    "run_id": 45532043912,
-    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45532043912",
+    "run_number": 143,
+    "run_id": 45538777078,
+    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45538777078",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
-    "captured_at_utc": "2026-11-25T02:19:19.103884Z",
-    "data_cutoff_utc": "2026-11-25T02:19:19.103884Z",
-    "evaluation_as_of_utc": "2026-11-25T02:19:24.200662Z",
+    "captured_at_utc": "2026-11-25T03:16:35.792060Z",
+    "data_cutoff_utc": "2026-11-25T03:16:35.792060Z",
+    "evaluation_as_of_utc": "2026-11-25T03:16:40.932908Z",
     "adapter_version": "xrp-public-market-v3.34",
     "parser_version": "xrp-public-market-v3.32",
-    "snapshot_id": "9b5c3badd25491a58d046bd45f4ef8ec1c02d3a51d646fbe70bea3e87f6915b0",
+    "snapshot_id": "918d531112ba94f96e6f21350c418dc8cc5ae7566f4d996004d426b1a287a1e2",
     "feature_store": {
-      "snapshot_count": 103,
-      "historical_records": 28023,
+      "snapshot_count": 104,
+      "historical_records": 28413,
       "input_records": 2230,
-      "delta_records": 758,
-      "eligible_records": 391,
+      "delta_records": 757,
+      "eligible_records": 390,
       "excluded_records": 367,
       "sqlite_integrity": "ok",
       "raw_rebuild_implemented": false,
-      "restore_source": "trusted_ingestion_workflow_run:45524221832:per_run_checkpoint"
+      "restore_source": "trusted_ingestion_workflow_run:45532043912:per_run_checkpoint"
     },
     "receipts": {
       "count": 37,
       "retained_raw_payloads": 21,
       "digest_only": 16,
       "raw_only_source_ids": 26,
-      "cross_run_sequence": 103,
+      "cross_run_sequence": 104,
       "continuity": "CONTINUED",
-      "chain_sha256": "40c8225d00b23bacfb97ec13cabc2dce806ab8ed8c7557544d2149b72ca0ee95",
-      "external_anchor": "NOT_ANCHORED"
+      "chain_sha256": "0875981c39087b9e3fb096c24a4352390d936892b8b7bd6295343e0e884eb43f",
+      "chain_head_sha256": "a36e8c083a6342080ce9a3855060decb7ef50ba0743af8cc3ba80c19d6b1df49",
+      "external_anchor": "NOT_ANCHORED",
+      "previous_run_id": 45532043912
     },
     "event_timeline": {
       "events": 150,
@@ -557,15 +559,15 @@
     "quote_basis": {
       "status": "VERIFIED",
       "venue": "OKX",
-      "best_bid_usd": 0.911450124,
-      "best_ask_usd": 0.911559125,
-      "mid_price_usd": 0.9115046245,
-      "spread_bps": 1.195835951571834,
+      "best_bid_usd": 0.918641052,
+      "best_ask_usd": 0.918750125,
+      "mid_price_usd": 0.9186955885,
+      "spread_bps": 1.1872594291899292,
       "publisher_independence_groups": 1,
       "scope": "same-venue top-of-book only; not independent market corroboration or full-depth USD liquidity"
     },
     "evaluation": {
-      "walk_forward_rows": 384,
+      "walk_forward_rows": 388,
       "horizons": [
         "1h"
       ],
@@ -580,8 +582,9 @@
     "sec": {
       "raw_receipts": 0,
       "source_failures": 3,
-      "companyfacts_enabled": false,
-      "user_agent_configured": false
+      "companyfacts_requested": false,
+      "contact_identity_configured": false,
+      "submissions_source_count": 0
     },
     "bybit": {
       "status": "HTTP_403",
@@ -589,7 +592,8 @@
         "spot ticker",
         "spot depth",
         "linear ticker",
-        "linear open interest"
+        "linear open interest",
+        "linear funding history"
       ],
       "provider_region_restriction_documented": true,
       "runner_region_verified": false,
@@ -599,43 +603,44 @@
     "cache": {
       "status": "read_only_budget_exhausted",
       "checkpoint_restore_succeeded": true,
+      "restore_run_id": 45532043912,
       "automatic_raw_rebuild": false
     },
     "artifacts": [
       {
-        "name": "xrp-public-raw-45532043912",
-        "artifact_id": 14984628854,
-        "sha256": "92a67c36e85a1bb808c5159567fcce40a07e6b308ed865256266de68612a9a50",
+        "name": "xrp-public-raw-45538777078",
+        "artifact_id": 14987743158,
+        "sha256": "ae7e3098b0f20f67db6089a55ee39684acb07ba73b1c2b39b7c046b6b0fa1eb1",
         "retention_days": 90,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45532043912/artifacts/14984628854"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45538777078/artifacts/14987743158"
       },
       {
-        "name": "xrp-public-receipt-index-45532043912",
-        "artifact_id": 14985062886,
-        "sha256": "845c32f22ec4642e1ca8d9f66410057c381904af29b94a178cc6f284e6a05ab3",
+        "name": "xrp-public-receipt-index-45538777078",
+        "artifact_id": 14987812999,
+        "sha256": "ecd4ff8b4f9597c4d579e6ab33c570dd06638dcde9305adf114dd924a3f4a8c5",
         "retention_days": 90,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45532043912/artifacts/14985062886"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45538777078/artifacts/14987812999"
       },
       {
-        "name": "xrp-public-events-45532043912",
-        "artifact_id": 14984349201,
-        "sha256": "a6b460a3feaada01ce606b92bcf6b3d34807588f3d41ff0dec0138a7d90f7b16",
+        "name": "xrp-public-events-45538777078",
+        "artifact_id": 14988990365,
+        "sha256": "0b7df8c81baa244e657bf21ff0bcfecb14938f49e0e8131beaba0382ceb3f6a4",
         "retention_days": 90,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45532043912/artifacts/14984349201"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45538777078/artifacts/14988990365"
       },
       {
-        "name": "xrp-public-feature-store-45532043912",
-        "artifact_id": 14984708736,
-        "sha256": "ef5b1abae411c22ca9b298a9c029c8fc9b52a0157b3879619634e172ec4a1686",
+        "name": "xrp-public-feature-store-45538777078",
+        "artifact_id": 14988217294,
+        "sha256": "35168cf5058f3bd0f5c92c8d02db80125d54bc1f1d7de38dc042b3ac8f5262c0",
         "retention_days": 7,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45532043912/artifacts/14984708736"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45538777078/artifacts/14988217294"
       },
       {
-        "name": "xrp-research-correction-audit-45532043912",
-        "artifact_id": 14985427315,
-        "sha256": "00139699d19ff21678762438c7e13fe4ef56cfed552038ee219083f087086910",
+        "name": "xrp-research-correction-audit-45538777078",
+        "artifact_id": 14988531567,
+        "sha256": "7f732d1af51eedbbd4cb7347ed42aa3c27425be015d1d0dc32e0c1cf46621b6c",
         "retention_days": 90,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45532043912/artifacts/14985427315"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45538777078/artifacts/14988531567"
       }
     ],
     "evidence_limits": [
@@ -643,7 +648,7 @@
       "Event timeline's 150 historical events have no verified raw-receipt hash links.",
       "The quote basis is one publisher-independence group and top-of-book only.",
       "The feature store cannot currently be rebuilt automatically from raw artifacts.",
-      "The 384 one-hour walk-forward rows remain insufficient for model eligibility; no calibrated XRP-specific candidate or independent shadow cohort exists."
+      "The 388 one-hour walk-forward rows remain insufficient for model eligibility; no calibrated XRP-specific candidate or independent shadow cohort exists."
     ]
   }
 }
