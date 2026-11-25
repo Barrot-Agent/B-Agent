@@ -2069,3 +2069,84 @@ No Sellbird install, account connection, paid lookup, prospect discovery, outbou
 6. Keep Sellbird discovery Barrot-only and outbound paused until offer, audience, message and sending controls are approved.
 
 **No merge, deployment, secret rotation, Space restart, Kaggle submission, funds transfer, paper trade, real-money action or outbound message occurred.**
+
+---
+
+# Run 23 — exact-head failure repair, cross-process continuity test, and live mission checkpoint — 2026-11-25T17:45:00Z
+
+This checkpoint supersedes earlier operational snapshots only where the current evidence below is newer. Historical records remain preserved.
+
+## Integrated repository and governance — EXECUTED
+
+- Main SHA: \`6033bcd84fdeb2a8906b3d3b9aab5293eacf9407\`; recursive Git tree: **3,163 entries**, \`truncated=false\`. The previous map's 3,167 count was incorrect and is corrected.
+- Twelve open PRs: **#1702–#1713**. Main remains protected with four observed required checks: Full repository test suite, audit, pip-audit, and Verify PR merge tree against current base. The detailed branch-protection endpoint remains HTTP 403; required approval count and some settings remain unknown.
+- The latest main full-suite CI remains [45509757328](https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757328): **4,693 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage** on main SHA above. Dependency audit [45509757294](https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757294), money audit [45509757275](https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757275), and A2A worker tests [45509757309](https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757309) passed.
+- A merge to main has a verified automatic GitHub Pages deployment side effect: [45509754310](https://github.com/Barrot-Agent/B-Agent/actions/runs/45509754310). No specific deployment approval exists. No merge or deployment occurred.
+- No branch rewrite, force-push, reset, clean, stash, destructive restore, secret change, Space restart, Kaggle submission, paper trade, funds transfer, real-money action, or outbound message occurred.
+
+## Exact-head validation repair — EXECUTED; new validation pending
+
+- The prior #1702 head \`777e42f7dacf741449e58e272f904c45db0c2ed9\` full-suite run [45665995506](https://github.com/Barrot-Agent/B-Agent/actions/runs/45665995506) failed with **4,692 passed, 2 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**.
+- Both failures were stale snapshot assertions in \`tests/test_nine_platform_operational_map_current.py\`: the connector evidence string omitted the exact tested workflow-job/file-read scope, and the expected open-PR inventory stopped at #1712 while #1713 was open.
+- The failures were repaired on the existing #1702 branch. The test now validates the 12-PR inventory, includes the distinct #1713 repair workstream, avoids a hard-coded XRP run number, and validates exact-head evidence shape without embedding an obsolete run's pass count.
+- The same branch's map now records the live 12-PR inventory, current PR heads, current main tree count, #1702's failed prior-head evidence, #1703's pending new-head checks, and the distinct draft repair PR. The current #1702 head after these test/map commits is \`3f7be5fc20e8aae378c33bad1f91a9c455c454bb\`; exact-head CI is pending.
+- The latest #1702 run's dependency audit, money audit, conflict-integrity and Pages validation passed; the full-suite and fail-closed gate failed only because of the two assertions above. Do not inherit prior-head success for the new head.
+
+## XRP intelligence and prediction — EXECUTED; forecast withheld
+
+Latest successful main ingestion: [run #161 / 45662188929](https://github.com/Barrot-Agent/B-Agent/actions/runs/45662188929), on main SHA \`6033bcd84fdeb2a8906b3d3b9aab5293eacf9407\`. Adapter \`xrp-public-market-v3.34\`, parser \`xrp-public-market-v3.32\`; data cutoff **2026-11-25 17:12:37 UTC**.
+
+- Feature store: **118 snapshots**, **30,651 cumulative feature records**, 2,230 input records, 490-record delta; 123 latest eligible and 367 excluded; SQLite integrity \`ok\`. The run restored from the prior per-run checkpoint because the Actions cache budget remains exhausted.
+- Receipts: **37 total**, 21 retained raw payloads and 16 digest-only. All 21 retained raw payload hashes matched; receipt and chain manifests verified; cross-run chain sequence 118 continued. The chain is **not externally anchored** and the feature store cannot yet be rebuilt automatically from all raw artifacts.
+- Event timeline: **150 events, zero verified receipt links, all 150 missing raw receipt hashes**. URL matches alone do not prove event-source identity. Receipt completeness remains false.
+- Walk-forward: **444 one-hour diagnostic rows**, \`PARTIAL_OR_BLOCKED\`; drift **0/205** features, \`INSUFFICIENT_DATA\`; forecast \`NOT_ISSUED\`, model-ineligible. No directional forecast or paper trade.
+- Same-venue OKX top-of-book USD basis: bid **$0.916279725**, ask **$0.916388768**, mid **$0.9163342465**, spread **1.18999 bps**, snapshot skew 0.901 seconds. It is one publisher-independence group, top-of-book only, not cross-venue consensus or full-depth liquidity.
+- Source failures: 18 overall — Binance 451 (8), Bybit 403 (5), Grayscale 429 retryable (1), Franklin parser marker (1), SEC configuration (3). SEC remains \`BLOCKED_CONFIGURATION\` with no configured monitored contact identity; no identity or restriction bypass was invented.
+- Morpho cbXRP remains withheld: market state block 62,181,895 is 573 blocks ahead of indexer tip 62,181,322. It is not admitted to the feature store.
+- The next predictive gate remains raw event receipt linkage, durable raw-artifact rebuild, sufficient point-in-time walk-forward history, drift evaluation, independent source diversity and calibration. No directional forecast until those gates pass.
+
+## Professional audio — EXECUTED / technically verified; professional acceptance unverified
+
+- Existing PR #1704 head \`e69f94309e7053bb3adfa44062edbd3017d2e9ed\` passed its exact-head full repository suite [45662974704](https://github.com/Barrot-Agent/B-Agent/actions/runs/45662974704), dependency audit [45662975097](https://github.com/Barrot-Agent/B-Agent/actions/runs/45662975097), money audit [45662974858](https://github.com/Barrot-Agent/B-Agent/actions/runs/45662974858), conflict integrity [45662974944](https://github.com/Barrot-Agent/B-Agent/actions/runs/45662974944), gated merge workflow [45662974805](https://github.com/Barrot-Agent/B-Agent/actions/runs/45662974805), and FluidSynth integration [45662974963](https://github.com/Barrot-Agent/B-Agent/actions/runs/45662974963).
+- The 80-bar reference render is 175.545 seconds, 110 BPM, D minor, 4/4, 44.1 kHz stereo, nine aligned WAV stems and Standard MIDI with section markers. Mix sample peak -6.017 dBFS, true peak -6.000 dBTP, RMS -24.897 dBFS, zero clipped samples. Stem-sum correlation 0.9999807582 and relative RMS error 0.0061865 were independently recomputed from emitted WAVs.
+- Artifact [15046855997](https://github.com/Barrot-Agent/B-Agent/actions/runs/45662974963/artifacts/15046855997) is a CI technical bundle, not a native DAW project. The SoundFont binary is not bundled; its license notice is MIT, but per-asset rights metadata remains caller-supplied/unverified. The per-track routing test uses a byte-identical alternate SoundFont path; it verifies routing/metadata, not different audible timbres.
+- No blind/level-matched listening comparison or user acceptance has occurred. The artifact is not yet a user-approved professional track. No finished music is marketed.
+
+## Long-horizon continuity — EXECUTED; cross-process test pending
+
+- Existing PR #1703 branch \`integration/long-horizon-project-state-20261125\` now has head \`99561b4507d17c80d0a74bb425ce18ae3737f3d5\`, 15 commits ahead / 0 behind main.
+- Added one targeted regression test on that existing branch. It launches separate sender, receiver and replay-attempt Python processes; exports an Ed25519-signed state bundle to a file; imports it into a separate workspace; verifies the record and sequence; then verifies replay rejection after the receiver process restarts.
+- Exact-head CI, dependency, money, conflict-integrity and gated-merge workflows for the new #1703 head were still in progress at capture time. Earlier tests on head \`47a8e4aecf2273731f83c9eacf416ca74aa9c95a\` do not validate this new commit.
+- The ledger remains workspace-local with explicit manual authorized transfer. No network synchronization, automatic key exchange, or real transfer between separately controlled hosts/model providers is implemented or verified.
+
+## Open PR classification at this checkpoint
+
+- **Unique mission/integration:** #1702 handoff/map (new exact-head validation pending after repair); #1703 continuity ledger (new subprocess-test validation pending); #1704 audio SoundFont routing (exact-head tests/audio render passed; review/deployment authorization blocked); #1705 XRP RLUSD research normalizer (exact-head tests/gates passed; merge-order reconciliation required).
+- **Unique/supporting:** #1712 CI package-coverage expansion (exact-head full suite and gates passed; independent review/deployment authorization blocked); #1713 dual-agent evidence invalidation (full suite passed, draft gate correctly failed closed; keep draft until reviewed).
+- **Dependencies:** #1706 is the canonical combined cache restore/save update; #1708 is its draft duplicate subset and must not be closed until #1706 is merged and verified. #1707 and #1710 are unique/unreviewed. #1709 is unique but overlaps #1706 on a separate action entry in the workflow-pin test. #1711 remains blocked: widening NumPy to <3 is not proven compatible with the Hugging Face Space's Streamlit 1.35.0 / NumPy <2 constraint.
+- No PR was merged or closed. All four mission PRs remain without independent reviews; branch-protection approval requirements remain unknown through the current connector. The Pages deployment side effect also remains unapproved.
+
+## Nine-platform coordination and commercial readiness
+
+- ChatGPT-to-GitHub is the only authenticated and data-flow-tested platform. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested; no cross-platform evidence transfer is claimed.
+- Sellbird remains the separate AGPL-3.0-only prospecting/outreach application, not a persistence or approval framework. It is not installed or authenticated. Scope is Barrot technology only; music, background-vocal/songwriting services, TrekFlex and other ventures remain excluded.
+- Barrot-only pipeline: 0 verified prospects, 0 qualified, 0 outreach-approved, 0 sent, 0 replies, 0 meetings, 0 proposals, **$0 collected**. No mailbox/domain authentication, deliverability, suppression/opt-out or campaign approval is verified. Outbound remains paused.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal priority-1 missions on shared Barrot V3 execution, orchestration, MMI, provenance, authorization, safety and verification; evidence-gated XRP forecasts; professional audio deliverable/QC/listening standards; portable conflict-preserving continuity; nine-platform least-privilege coordination; Barrot-only Sellbird scope.
+- **EXECUTED:** re-fetched main metadata/tree/branches/open PRs and current CI; diagnosed and corrected the #1702 stale assertions on its existing branch; refreshed the operational map; added a separate-process signed-state transfer regression test to existing #1703; reviewed exact-head audio and XRP workflow evidence.
+- **VERIFIED:** main SHA and 3,163-entry tree; main full-suite and latest XRP ingestion run #161; 21/21 retained raw payload hashes for run #161 as recorded in the artifact receipt; #1704 exact-head full suite/audio render and technical QC; #1705 and #1712 prior exact-head checks; prior #1713 full suite and expected draft gate behavior.
+- **PENDING:** exact-head full suite/gates for new #1702 and #1703 heads; independent reviews/approval visibility and deployment authorization; 150 XRP event receipt links and raw rebuild; SEC contact configuration; XRP model eligibility/calibration; distinct rights-cleared audio timbres, comparative listening, user acceptance and native DAW project; cross-host continuity transport; eight external platform authentications; Sellbird prospect discovery and user-approved conversion funnel.
+
+## Next concrete actions
+
+1. Verify exact-head CI for #1702 after the operational-map test repair; fix only on its existing branch if any failure remains.
+2. Verify exact-head CI for #1703's sender/receiver/replay subprocess test; preserve manual-transfer and no-network claims until real authorized cross-host transfer is performed.
+3. Keep #1704 and #1705 unmerged until independent review, required approval state and the automatic Pages deployment authorization are resolved; do not merge #1712 under the same unresolved gates.
+4. Continue XRP event-to-receipt linkage and durable raw rebuild; forecasts remain disabled.
+5. Continue audio toward a user-accessible DAW-importable bundle and comparative listening, without claiming professional acceptance.
+6. Keep Sellbird discovery Barrot-only and outbound paused.
+
+No merge, deployment, Space restart, secret rotation, external model dispatch, paid lookup, Sellbird installation, outbound message, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
