@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T16:50:18.077Z",
-  "capture_basis": "Run 22: refreshed against current main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407, complete recursive tree (3,163 entries; not truncated), latest main XRP ingestion run #160, current open PR inventory (11), exact-head validation for #1702, and the new CI coverage workstream #1712. No main-branch mutation or merge.",
+  "captured_at_utc": "2026-11-25T16:51:05.084Z",
+  "capture_basis": "Run 22: refreshed against current main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407, complete recursive tree (3,163 entries; not truncated), latest main XRP ingestion run #160, current open PR inventory (11), exact-head validation for #1702, and the new CI coverage workstream #1712. No main-branch mutation or merge. Post-ready #1712 merge-readiness rerun passed (run 45656858065, attempt 2); independent review remains outstanding.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -270,11 +270,11 @@
           ".github/workflows/ci.yml",
           "tests/test_ci_mission_package_coverage.py"
         ],
-        "classification": "ready_pending_independent_review_and_gate_rerun",
+        "classification": "ready_pending_independent_review",
         "workstream_uniqueness": "unique_ci_coverage_workstream",
         "review_count": 0,
-        "observed_at_utc": "2026-11-25T16:50:18.077Z",
-        "validation_status": "exact_head_full_suite_passed; merge_readiness_rerun_in_progress"
+        "observed_at_utc": "2026-11-25T16:51:05.084Z",
+        "validation_status": "exact_head_full_suite_and_all_required_workflow_gates_passed"
       }
     ],
     "merged_pull_requests": [
@@ -581,7 +581,7 @@
         "cause": "UNKNOWN_NOT_DIAGNOSED",
         "deployment_or_restart_performed": false
       },
-      "pr_inventory_snapshot_note": "PR #1702 is now validated on exact head b2b1c2d; PR #1712 is ready for review with exact-head full suite passed. No PR merged; independent review and deployment authorization remain outstanding.",
+      "pr_inventory_snapshot_note": "PR #1702 exact-head suite and gates passed; PR #1712 exact-head full suite, package floors, dependency/money audits, conflict/tree checks, Pages validation and post-ready merge-readiness gate passed. Both await independent review/required approval verification; no merge.",
       "branch_protection_gate_status": "Branch protection is enabled; required checks are known, but detailed protection endpoint returned HTTP 403 RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION. Required approval count remains unverified."
     },
     "required_status_checks_last_verified_at_utc": "2026-11-25T13:59:19Z",
@@ -671,7 +671,8 @@
           "Write existing handoff/platform-map files on integration/mission-handoff-refresh-20261125",
           "Download and inspect existing public-data workflow artifacts; independently verify retained raw payload hashes",
           "Create isolated integration branch and PR #1712 for verified full-suite package-coverage gaps",
-          "Update existing PR #1702 after exact-head test failure diagnosis and correction"
+          "Update existing PR #1702 after exact-head test failure diagnosis and correction",
+          "Rerun exact-head merge-readiness gate for PR #1712 after marking it ready for review"
         ],
         "not_used": [
           "Merge to main",
@@ -1752,11 +1753,11 @@
         ".github/workflows/ci.yml",
         "tests/test_ci_mission_package_coverage.py"
       ],
-      "classification": "ready_pending_independent_review_and_gate_rerun",
+      "classification": "ready_pending_independent_review",
       "workstream_uniqueness": "unique_ci_coverage_workstream",
       "review_count": 0,
-      "observed_at_utc": "2026-11-25T16:50:18.077Z",
-      "validation_status": "exact_head_full_suite_passed; merge_readiness_rerun_in_progress",
+      "observed_at_utc": "2026-11-25T16:51:05.084Z",
+      "validation_status": "exact_head_full_suite_and_all_required_workflow_gates_passed; independent_review_required",
       "full_suite": {
         "run_id": 45656857778,
         "conclusion": "success",
@@ -1780,7 +1781,12 @@
         "money_audit": "success",
         "conflict_integrity": "success",
         "pages_build": "success",
-        "merge_readiness": "rerun_in_progress"
+        "merge_readiness": "success"
+      },
+      "merge_readiness_rerun": {
+        "run_id": 45656858065,
+        "attempt": 2,
+        "conclusion": "success"
       }
     }
   ]
