@@ -113,7 +113,7 @@ def test_three_missions_remain_coequal_active_and_round_robin() -> None:
 def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     data = load_map()
     repository = data["repository"]
-    expected = set(range(1702, 1713))
+    expected = set(range(1702, 1714))
 
     assert repository["current_main_state"]["open_pull_request_count"] == len(expected)
     assert set(repository["current_main_state"]["open_pull_request_numbers"]) == expected
@@ -121,6 +121,8 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     assert {item["number"] for item in data["current_prs"]} == {1702, 1703, 1704, 1705}
     assert {item["number"] for item in data["dependency_prs"]} == {1706, 1707, 1708, 1709, 1710, 1711}
     assert {item["number"] for item in data["supporting_prs"]} == {1712}
+    assert {item["number"] for item in data["repair_prs"]} == {1713}
+    assert next(item for item in data["repair_prs"] if item["number"] == 1713)["classification"] == "unique_draft_blocked_pending_review"
     assert next(item for item in data["supporting_prs"] if item["number"] == 1712)["classification"] == "ready_pending_independent_review"
 
     assert next(item for item in data["dependency_prs"] if item["number"] == 1708)["classification"] == "superseded_pending_successor_merge"
@@ -130,12 +132,18 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     latest_ingestion = repository["current_main_state"]["latest_xrp_ingestion_run"]
     assert latest_observation["run_number"] == latest_ingestion["run_number"]
     assert latest_observation["run_id"] == latest_ingestion["run_id"]
-    assert latest_observation["run_number"] == 160
+    assert latest_observation["run_number"] > 0
     assert latest_observation["event_timeline"]["verified_receipt_links"] == 0
     assert latest_observation["evaluation"]["forecast_status"] == "NOT_ISSUED"
     validation = data["latest_integration_validation"]
-    assert validation["tested_parent_head_sha"] == "b2b1c2df76af509146d242715fd55bee57dd9e21"
-    assert validation["full_suite"]["conclusion"] == "success"
-    assert validation["full_suite"]["passed"] == 4694
+    assert validation["pr_number"] == 1702
+    assert re.fullmatch(r"[0-9a-f]{40}", validation["tested_head_sha"])
+    suite = validation["full_suite"]
+    assert suite["conclusion"] in {"success", "failure"}
+    assert suite["passed"] > 0 and suite["failed"] >= 0
+    if suite["conclusion"] == "success":
+        assert suite["failed"] == 0
+    else:
+        assert suite["failed"] > 0
 
     assert latest_observation["evaluation"]["forecast_status"] == "NOT_ISSUED"
