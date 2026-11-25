@@ -6,6 +6,7 @@ supplied metadata and are never asserted as independently verified.
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import datetime, timezone
 import hashlib
@@ -78,6 +79,8 @@ def render_production_bundle(
     headroom_dbfs: float = -6.0,
     soundfont_source: str | None = None,
     soundfont_license: str | None = None,
+    soundfont_map: Mapping[str, str | Path] | None = None,
+    soundfont_map_metadata: Mapping[str, Mapping[str, str]] | None = None,
 ) -> AudioProductionBundleResult:
     """Render a mix, sample-aligned instrument stems, MIDI, and QC metadata.
 
@@ -93,6 +96,26 @@ def render_production_bundle(
         raise FileExistsError(target)
     if not soundfont.is_file():
         raise FileNotFoundError(soundfont)
+    instrument_names = set(manifest.instruments)
+    if soundfont_map is not None and not isinstance(soundfont_map, Mapping):
+        raise TypeError("soundfont_map must map instrument names to SoundFont paths")
+    if soundfont_map_metadata is not None and not isinstance(soundfont_map_metadata, Mapping):
+        raise TypeError("soundfont_map_metadata must map instrument names to source/license metadata")
+    supplied_map = dict(soundfont_map or {})
+    supplied_metadata = dict(soundfont_map_metadata or {})
+    unknown_map = set(supplied_map) - instrument_names
+    unknown_metadata = set(supplied_metadata) - instrument_names
+    if unknown_map:
+        raise ValueError(f"SoundFont map contains unknown instruments: {sorted(unknown_map)}")
+    if unknown_metadata:
+        raise ValueError(f"SoundFont metadata contains unknown instruments: {sorted(unknown_metadata)}")
+    soundfont_by_instrument = {
+        name: Path(supplied_map.get(name, soundfont))
+        for name in manifest.instruments
+    }
+    for asset_path in set(soundfont_by_instrument.values()):
+        if not asset_path.is_file():
+            raise FileNotFoundError(asset_path)
     if not 8000 <= sample_rate <= 192000:
         raise ValueError("sample_rate must be between 8000 and 192000")
     if len(set(manifest.instruments)) != len(manifest.instruments):
@@ -120,6 +143,32 @@ def render_production_bundle(
 
     export_midi(manifest, midi_path)
     midi = pretty_midi.PrettyMIDI(str(midi_path))
+    soundfont_assets_by_instrument = {}
+    for instrument_name, asset_path in soundfont_by_instrument.items():
+        details = supplied_metadata.get(instrument_name, {})
+        if not isinstance(details, Mapping) or set(details) - {"source", "license"}:
+            raise ValueError(
+                f"SoundFont metadata for {instrument_name!r} must contain only source/license."
+            )
+        source = details.get("source", soundfont_source if asset_path == soundfont else None)
+        license_name = details.get("license", soundfont_license if asset_path == soundfont else None)
+        if source is not None and (not isinstance(source, str) or not source.strip()):
+            raise ValueError(f"SoundFont source for {instrument_name!r} must be non-empty text.")
+        if license_name is not None and (not isinstance(license_name, str) or not license_name.strip()):
+            raise ValueError(f"SoundFont license for {instrument_name!r} must be non-empty text.")
+        asset_status = (
+            "CALLER_SUPPLIED_UNVERIFIED"
+            if source and license_name
+            else "MISSING_SOURCE_OR_LICENSE_METADATA"
+        )
+        soundfont_assets_by_instrument[instrument_name] = {
+            "instrument": instrument_name,
+            "asset_name": asset_path.name,
+            "sha256": _sha256_file(asset_path),
+            "source": source,
+            "license": license_name,
+            "status": asset_status,
+        }
     midi_end_seconds = float(midi.get_end_time())
     section_end_beats = max(
         (
@@ -135,7 +184,7 @@ def render_production_bundle(
 
     mix = _render_midi_stereo(
         midi,
-        soundfont_path=soundfont,
+        soundfont_path=soundfont_by_instrument,
         sample_rate=sample_rate,
         render_duration_seconds=musical_duration_seconds,
     )
@@ -156,7 +205,7 @@ def render_production_bundle(
             stem_midi.instruments.append(instrument)
             stem_audio = _render_midi_stereo(
                 stem_midi,
-                soundfont_path=soundfont,
+                soundfont_path=soundfont_by_instrument,
                 sample_rate=sample_rate,
                 render_duration_seconds=musical_duration_seconds,
             )
@@ -174,6 +223,7 @@ def render_production_bundle(
                 "filename": filename,
                 "path": f"stems/{filename}",
                 "destination": stem_path,
+                "soundfont_asset": soundfont_assets_by_instrument[instrument.name],
             }
         )
 
@@ -217,6 +267,10 @@ def render_production_bundle(
                 "true_peak_dbtp": _dbfs(true_peak),
                 "rms_dbfs": _dbfs(rms),
                 "clip_sample_count": int(np.count_nonzero(np.abs(audio) >= 1.0)),
+                "soundfont_sha256": descriptor["soundfont_asset"]["sha256"],
+                "soundfont_source": descriptor["soundfont_asset"]["source"],
+                "soundfont_license": descriptor["soundfont_asset"]["license"],
+                "soundfont_rights_status": descriptor["soundfont_asset"]["status"],
             }
         )
 
@@ -226,7 +280,10 @@ def render_production_bundle(
     soundfont_sha256 = _sha256_file(soundfont)
     rights_status = (
         "CALLER_SUPPLIED_UNVERIFIED"
-        if soundfont_source and soundfont_license
+        if all(
+            item["status"] == "CALLER_SUPPLIED_UNVERIFIED"
+            for item in soundfont_assets_by_instrument.values()
+        )
         else "MISSING_SOURCE_OR_LICENSE_METADATA"
     )
     metadata = {
@@ -283,13 +340,15 @@ def render_production_bundle(
             "timeline_origin_seconds": 0.0,
         },
         "stem_render_mode": (
-            "One instrument per FluidSynth pass with a common gain and sample timeline."
+            "One instrument per FluidSynth pass using the same instrument-to-SoundFont "
+            "map as the mix, with a common gain and sample timeline."
         ),
         "stem_sum_reconstruction_guaranteed": False,
         "rights": {
             "soundfont_source": soundfont_source,
             "soundfont_license": soundfont_license,
             "soundfont_sha256": soundfont_sha256,
+            "soundfont_assets": list(soundfont_assets_by_instrument.values()),
             "status": rights_status,
         },
         "native_daw_project_available": False,
