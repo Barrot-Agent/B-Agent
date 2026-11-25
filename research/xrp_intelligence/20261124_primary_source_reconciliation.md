@@ -319,3 +319,54 @@ Additional primary-source register:
 47. Coinbase RLUSD availability announcement (2026-10-28): https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
 48. Circle Form 10-Q for quarter ended 2026-06-30: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm
 49. Circle USDC issuer page (accessed 2026-11-25): https://www.circle.com/usdc
+
+
+#### 7.12.7 Circle–SBI Japan K.K. — a separate 50/50 USDC distribution joint venture
+
+- Circle's SEC-filed Form 10-Q for the quarter ended **2026-03-31** identifies **Circle SBI Japan K.K.** In November 2025, Circle and SBI Holdings each contributed Japanese yen worth approximately **US$1.5 million**. Circle owns **50%** and consolidates the entity as a variable-interest entity because it directs the activities that most significantly affect the entity and has potentially significant exposure to benefits/losses. SBI's 50% interest is shown as noncontrolling interest. Circle reported no significant operating results for the entity through March 31, 2026.
+- This is a direct Circle–SBI corporate joint venture to support USDC distribution in Japan. It is **not** SBI Ripple Asia and is not a subsidiary of Ripple. Keep the two JVs separate: **SBI Ripple Asia (SBI Holdings + Ripple, established 2016)** and **Circle SBI Japan K.K. (Circle + SBI Holdings, established November 2025)**.
+- Circle's March 25, 2025 announcement says SBI VC Trade began full-scale USDC distribution on March 26, following JFSA approval. This is a distribution channel, not proof of USDC being used for XRP settlement.
+
+#### 7.12.8 Circle on XRPL and Arc — distinguish network access from corporate affiliation
+
+- Circle announced **native USDC on XRPL mainnet on 2025-06-12**, with Circle Mint and Circle APIs supporting the asset; no third-party bridge is required for the native XRPL issuance. This creates a dollar-liquidity rail on XRPL, but it does not establish a Circle–Ripple equity relationship, a joint venture, or net XRP purchases.
+- Circle announced the **Arc public mainnet launch on 2026-09-16**. Circle's current USDC page lists native support on 38 networks, including XRPL, as of that date. Circle's launch materials identify SBI Group as a **founding validator** on Arc; SBI's stated role includes network operation/governance and its broader on-chain initiatives. Arc is a separate Circle L1, not the XRP Ledger, and its activity is not automatically XRP demand.
+- Ripple's RLUSD and Circle's USDC are separate issuer liabilities. Both can be available on XRPL, but issuer, reserve, redemption, distribution and on-ledger liquidity must remain separate in the model.
+
+#### 7.12.9 Coinbase–Circle economics and Coinbase's XRP access
+
+- Circle's Q1 2026 Form 10-Q reports **US$330.6 million** of distribution costs in connection with its Coinbase agreements for the three months ended March 31, 2026 (versus US$303.2 million in Q1 2025). It describes Coinbase allocations tied to USDC held on Coinbase after Circle's issuer retention, plus a share of remaining ecosystem-growth economics after approved third-party participant payments. Circle's Q1 2026 operating indicators show USDC circulation of **US$77.049 billion** at quarter-end, **US$75.2 billion** average circulation and a **17.2%** daily weighted-average share on Circle's own platform. These figures are Circle-reported and do not identify the share held on XRPL or SBI VC Trade.
+- Coinbase's current XRP support article says XRP is supported on Coinbase Retail, Prime and Custody, but not in Japan, New York or Singapore and not on Coinbase Wallet. This current support matrix supersedes assumptions based on Coinbase's 2021 suspension notice, which described a different Wallet status.
+- Coinbase's 2023 perpetual-futures announcement lists XRP contracts settled in USDC, with up to 3x leverage at launch. This is a Coinbase derivatives product using USDC collateral/settlement; it is not a Ripple–Coinbase corporate equity relationship and does not measure spot XRP demand.
+- Coinbase's October 2026 RLUSD distribution/listing arrangement with Ripple (already documented in §7.12.5) is a separate commercial relationship from Coinbase's USDC distribution economics with Circle. No primary source reviewed here establishes a Coinbase equity interest in Ripple or a Circle–Ripple joint venture.
+
+#### 7.12.10 SBI Ripple Asia — tokenized-deposit proof of concept, not commercial XRP demand
+
+- SBI Holdings' 2026-02-26 release says SBI Ripple Asia conducted a proof of concept for low-cost tokenized deposits and deposit-based digital money using existing SBI domestic transfer infrastructure (MoneyTap) and an XRPL-based token issuance platform. The announcement is a concept demonstration; it does not establish a live deposit product, customer balances, payment volume, or XRP as the principal settlement asset.
+- SBI Ripple Asia's 2026-02-24 announcement with DSRV Labs describes joint research into Japan–Korea remittance/payment services using XRPL. This is research/implementation exploration, not evidence of a launched corridor or quantified XRP demand.
+
+#### 7.12.11 Relationship graph and evidence boundaries
+
+| Edge | Primary evidence | Correct interpretation |
+|---|---|---|
+| Coinbase ↔ Circle | 2023 collaboration/equity announcement; Circle SEC filings | Coinbase owns a minority equity stake in Circle and receives USDC distribution economics; Q1 2026 distribution costs were $330.6M |
+| Circle ↔ SBI Holdings | Circle SBI Japan K.K. 50/50 JV; Circle's 2025 USDC Japan launch | Direct USDC distribution JV; Circle consolidates the VIE, SBI is noncontrolling |
+| SBI Holdings ↔ Ripple | SBI Ripple Asia JV; SBI VC Trade/Ripple RLUSD launch; SBI Remit ODL corridor | Separate software, distribution and payment-operator roles |
+| Ripple ↔ Coinbase | Coinbase RLUSD listing/distribution | Direct commercial distribution relationship; no equity tie established |
+| Circle ↔ XRPL | Native USDC issuance on XRPL | Network integration, not a corporate partnership with Ripple |
+| SBI Group ↔ Circle Arc | Founding validator announcement | Validator/governance participation on Arc, a separate L1 |
+| Coinbase ↔ XRP | Retail/Prime/Custody support; XRP perpetuals settled in USDC | Exchange and derivatives access; no corporate control or XRP purchase inference |
+
+**Source independence:** Circle's SEC Form 10-Q is a regulatory filing by Circle and is the strongest evidence for the Circle SBI Japan K.K. ownership/consolidation and Coinbase distribution-cost facts. Circle, Coinbase, Ripple and SBI releases are primary company statements; jointly issued releases count as one coordinated announcement, not independent corroboration. No raw HTTP bytes or independent timestamp anchor were captured in this browser research pass.
+
+**Disconfirming evidence retained:** (1) Circle's JV had no significant operating results as of 2026-03-31; formation is not proof of material USDC distribution volume. (2) Native USDC on XRPL does not prove XRP purchases or XRP bridge use. (3) Arc is not XRPL. (4) RLUSD settlement is not XRP settlement. (5) Coinbase XRP listing/derivatives support does not establish Ripple equity ownership. (6) SBI Ripple Asia's tokenized-deposit work is a POC, not a live banking product. All these observations remain research-only and model-ineligible.
+
+Additional primary-source register:
+50. Circle Q1 2026 Form 10-Q, including Circle SBI Japan K.K. and Coinbase distribution economics: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000150/crcl-20260331.htm
+51. Circle — USDC native on XRPL (2025-06-12): https://www.circle.com/blog/now-available-usdc-on-the-xrpl
+52. Circle — Arc public mainnet launch and founding validators (2026-09-16): https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet
+53. Circle — USDC distribution in Japan with SBI (2025-03-25): https://www.circle.com/pressroom/circle-strengthens-commitment-to-japan-with-new-investment-and-expanded-usdc-access
+54. Coinbase Help — current XRP support by product/jurisdiction (accessed 2026-11-25): https://help.coinbase.com/en/coinbase/trading-and-funding/cryptocurrency-trading-pairs/ripple-sec
+55. Coinbase — XRP perpetual futures settled in USDC (2023-10-18): https://www.coinbase.com/blog/coinbase-customers-in-eligible-non-us-jurisdictions-can-now-trade
+56. SBI Holdings/SBI Ripple Asia — tokenized-deposit and deposit-based digital-money POC (2026-02-26): https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
+57. SBI Holdings/SBI Ripple Asia — Japan–Korea remittance/payment research with DSRV (2026-02-24): https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html

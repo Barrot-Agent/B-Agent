@@ -1131,3 +1131,43 @@ No merge, deployment, force-push, branch rewrite, secret rotation, Space restart
 5. Commercial: keep Sellbird uninstalled and sending disabled until a dedicated host, isolated mailbox/domain, legal/compliance review, suppression setup, warmup and explicit user campaign approval are complete. If proceeding, start with free discovery only and a small Barrot-only pilot cohort.
 
 No merge, deployment, force-push, branch rewrite, secret rotation, Space restart, paid lookup, Kaggle submission, outbound message, paper trade, funds transfer or real-money action occurred in this run.
+
+
+## Run 16.2 update — 2026-11-25T13:23:23.039Z
+
+### XRP ingestion #155 — EXECUTED / VERIFIED
+
+- [Scheduled run #155](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505) completed successfully on main `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; capture cutoff **2026-11-25T13:15:20.402015Z**; adapter `xrp-public-market-v3.34`, parser `xrp-public-market-v3.32`; snapshot `5fc0f1fe14ce2b9925183cb025bd2e13a3db3033d9f2e3875b71ede92808d844`.
+- Feature store: **114 snapshots**, **30,159** cumulative history records, **2,230** input features; latest snapshot **123 eligible**, **367 excluded**; SQLite integrity and snapshot lineage/digest checks passed. It restored from the prior successful run #154 checkpoint. Cache write still fails because the GitHub Actions cache budget is read-only; the per-run feature-store artifact was uploaded successfully.
+- Receipts: **37 total** (21 raw payloads, 16 digest-only); cross-run chain continued and verification passed. External immutable timestamp anchor remains absent. Raw artifacts have 90-day retention; feature-store checkpoint 7 days.
+- Event timeline: **150 events; 0 verified receipt links; 150 missing raw receipt hashes**. The registry is loaded but not receipt-complete. This is not fixed by the receipt-chain manifest passing.
+- One synchronized OKX XRP-USDT / USDT-USD top-of-book quote basis was verified: bid **$0.90476784**, ask **$0.904876765**, mid **$0.9048223025**, spread **1.2038 bps**, timestamp skew **0.582 seconds**. Both inputs share the same OKX publisher group; this is one venue's top-of-book, not independent cross-venue confirmation. Only these four normalized top-of-book features are model-eligible.
+- Walk-forward rows increased to **428**, still `PARTIAL_OR_BLOCKED`; drift remains `INSUFFICIENT_DATA` (0 of 205 features evaluated). Forecast remains `NOT_ISSUED`. SEC CompanyFacts remains `BLOCKED_CONFIGURATION` because no contact identity is configured (3 SEC source failures, 0 raw receipts). Free noncommercial XRPL nodes remain excluded under provider terms. Overall source failures remain 18.
+- Raw-only captures include Coinbase cbXRP proof-of-reserves/spot candles, Deribit XRP-USDC perpetual ticker and L2, Circle USDC and Ripple RLUSD transparency dashboards, Morpho cbXRP market/oracle state, SBI VC Trade lending page, and XRP ETF issuer/flow sources. These remain raw-only where parsing, freshness or independent-source admission is incomplete.
+- Artifacts: [raw sources](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505/artifacts/15024617303), [receipt index](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505/artifacts/15025231459), [event timeline](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505/artifacts/15025331372), [feature store](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505/artifacts/15025251469), [research-correction audit](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505/artifacts/15025096255).
+
+### XRP corporate relationship update — primary-source evidence
+
+- Circle's SEC Q1 2026 filing identifies **Circle SBI Japan K.K.**: Circle and SBI Holdings each contributed about ¥ equivalent of US$1.5M in November 2025; each owns 50%; Circle consolidates the VIE because it controls key activities; SBI's interest is noncontrolling; no significant operating results existed through March 31, 2026. This is a separate JV from **SBI Ripple Asia**.
+- Circle's native USDC issuance on XRPL has been live since June 12, 2025, with Circle Mint/API support and no bridge required. Circle's Arc mainnet launched September 16, 2026; SBI Group is a founding validator. Arc is a separate L1, not XRPL.
+- Circle's Q1 2026 SEC filing reports US$330.6M of distribution costs connected to Coinbase agreements; the filing describes Coinbase's USDC platform-balance allocation and ecosystem-growth share. Q1 end USDC circulation was US$77.049B; average USDC circulation US$75.2B; 17.2% daily weighted-average share was on Circle's platform.
+- Coinbase's current help page lists XRP support on Retail, Prime and Custody, excluding Japan, New York, Singapore and Coinbase Wallet. Coinbase's 2023 XRP perpetuals were settled in USDC with up to 3x leverage at launch. These are product/distribution relationships, not proof of Ripple equity ownership.
+- SBI Ripple Asia's February 26, 2026 tokenized-deposit / deposit-based digital-money POC uses MoneyTap and an XRPL token issuance platform; it remains a concept proof, not a live bank product or evidence of XRP settlement demand.
+- The expanded primary-source reconciliation is in `research/xrp_intelligence/20261124_primary_source_reconciliation.md` on this branch. All corporate announcements, issuer figures and product listings remain research-only/model-ineligible absent transaction-level flow evidence.
+
+### Long-horizon and platform status — EXECUTED / VERIFIED
+
+- The main Pillars Consistency Check [run #45619442260](https://github.com/Barrot-Agent/B-Agent/actions/runs/45619442260) failed because the public Hugging Face Space runtime reported `stage=BUILD_ERROR`; repository source marker and source-fidelity checks passed. The deployed revision and underlying build log were not resolved. No Space restart or deployment was performed. Hugging Face authentication remains untested; record the runtime failure separately from authentication status.
+- Sellbird 0.5.0 release commit's six OS/Python CI matrix jobs and dependency-graph update check passed. This does not alter Barrot's platform map: only ChatGPT-to-GitHub is authenticated; the other eight external platform data flows remain untested.
+
+### Exact-head integration verification — EXECUTED / VERIFIED on the observed heads
+
+- #1702 parent head `7bdcb8c499c527abfeb58357701b781dc2f355da`: full suite [run 45621184627](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621184627) **4,693 passed, 1 skipped, 11 warnings, 21 subtests, 74.21%**; audit and pip-audit passed; dependency audit [45621185542](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621185542), money audit [45621185563](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621185563), conflict integrity [45621261486](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621261486), and PR-event gated merge [45621184631](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621184631) passed. The push-event gate failed closed because it could not confirm PR mergeability; the PR-event gate succeeded. The current documentation/map/research checkpoint commit will require fresh exact-head checks.
+- #1703: 4,708 passed; #1704: 4,694 passed; #1705: 4,709 passed. Their exact-head dependency, money, conflict-integrity and PR-event gated-merge workflows passed. All four remain unique, non-draft, 0 commits behind main, and without independent approving reviews.
+- Main branch protection is confirmed, but detailed settings remain inaccessible (HTTP 403). Merging triggers GitHub Pages deployment. No merge was performed because independent approvals and specific deployment authorization are absent.
+
+### Commercial status
+
+Sellbird remains separate, uninstalled, unauthenticated and not prospecting-tested. No prospects, outreach, replies, meetings, proposals or revenue are recorded. The Barrot-only supervised public-source evidence pilot remains a design/pricing hypothesis (US$500–$1,000), not an approved offer. Outbound remains paused.
+
+No merge, deployment, force-push, branch rewrite, secret rotation, Space restart, paid lookup, Kaggle submission, outbound message, paper trade, funds transfer or real-money action occurred in this update.
