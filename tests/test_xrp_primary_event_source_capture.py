@@ -167,7 +167,8 @@ def test_marker_mismatch_is_retained_as_unlinked_digest_only_evidence(tmp_path):
     assert capture["status"] == "PARTIAL"
     assert capture["captured_event_count"] == expected_count - 1
     assert capture["marker_mismatch_count"] == 1
-    assert len(receipts) == 2
+    # Marker-mismatched pages still retain an unlinked digest-only receipt.
+    assert len(receipts) == expected_count
     assert len(failures) == 1
     assert failures[0]["raw_receipt_id"] in {receipt["receipt_id"] for receipt in receipts}
 
@@ -176,7 +177,7 @@ def test_marker_mismatch_is_retained_as_unlinked_digest_only_evidence(tmp_path):
         "2026-11-12T05:00:00.000000Z",
         raw_receipts=receipts,
     )
-    assert result["event_count"] == 2
+    assert result["event_count"] == expected_count
     assert result["receipt_complete"] is False
     assert result["public_receipt_relinkage"]["linked_event_count"] == expected_count - 1
     statuses = {event["event_id"]: event["receipt_status"] for event in result["timeline"]["event_timeline"]}
@@ -194,7 +195,7 @@ def test_future_primary_event_receipts_are_not_backdated_or_linked(tmp_path):
         "2026-11-12T05:00:00.000000Z",
         raw_receipts=receipts,
     )
-    assert result["event_count"] == 2
+    assert result["event_count"] == expected_count
     assert result["receipt_complete"] is False
     assert result["public_receipt_relinkage"]["future_receipt_count"] == expected_count
     assert result["public_receipt_relinkage"]["linked_event_count"] == 0
