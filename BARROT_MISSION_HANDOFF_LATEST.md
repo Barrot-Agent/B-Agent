@@ -1,5 +1,70 @@
 # Run 15 validation correction — 2026-11-25T14:09:37Z
 
+## Run 16 — current-main, audio artifact, and Sellbird checkpoint (2026-11-25 14:20 UTC)
+
+This checkpoint supersedes earlier current-state values only. Historical evidence and unresolved objections remain preserved.
+
+### Repository and integration state
+
+- Current main: `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; recursive tree: 3,163 paths; main is protected.
+- Four co-equal mission workstreams remain open and path-disjoint: #1705 XRP, #1704 audio, #1703 long-horizon continuity, and #1702 the single durable handoff/platform map. Their current heads are 0 commits behind main. #1702 is 47 commits ahead; #1703, #1704 and #1705 are each 14 commits ahead.
+- Exact-head checks: #1702 full repository suite passed 4,694, skipped 1, warnings 11, subtests 21, total coverage 74.21%; #1703, #1704 and #1705 full-suite jobs and their fail-closed/dependency checks are green. #1704's separate real FluidSynth render job also passed.
+- No reviews are recorded on the four mission PRs. Main protection is confirmed, but the connected GitHub app cannot read the protection rules/required-approval configuration. No merge was performed. Pages deployment configuration could not be independently read, so merge side effects remain unresolved.
+- Dependency backlog: #1706 and draft #1708 both edit `.github/workflows/xrp-public-ingestion.yml` for the cache restore/save action family; reconcile them as one workflow change before promotion. #1707, #1709 and #1710 are separate dependency updates. #1711 is a draft NumPy update. No dependency PR was merged or closed.
+
+### XRP — latest scheduled mainline evidence
+
+- Run #156, GitHub Actions run 45631870741, succeeded on the exact main SHA above. Data cutoff: **2026-11-25T14:14:52.520464Z**.
+- Feature store: 115 snapshots, 30,282 historical feature records, 490 new records; 123 eligible and 367 excluded. SQLite integrity check passed. Cross-run receipt chain continued at sequence 115; chain head SHA-256 `1a826f73b7e6108a64570e81f90f2b1a5344860887647d6e312f647041bd090e`.
+- Receipt set: 37 receipts (21 retained raw payloads, 16 digest-only); 18 source failures. The event registry still has 150 events, 37 candidate receipts, **zero verified event-to-receipt links**, and 150 events missing raw receipt hashes. No historical event was backdated.
+- Walk-forward output: 432 one-hour observations, status PARTIAL_OR_BLOCKED. Drift: 205 features listed, zero evaluated, status INSUFFICIENT_DATA. Forecast status NOT_ISSUED; no directional forecast, signal, paper trade or real-money action.
+- The same-venue OKX top-of-book normalization reported midpoint USD 0.8998290775 and spread 1.209952 bps at the run cutoff. This is one OKX publisher-independence group, top-of-book only—not consolidated market price, full-depth liquidity, or independent corroboration.
+- GitHub Actions cache save failed because the cache budget was read-only. The per-run feature-store checkpoint and raw/event/receipt artifacts uploaded successfully; raw artifacts are retained 90 days, per-run feature-store checkpoints 7 days, and daily backups 90 days. Cache remains derived/evictable; raw-artifact rebuild is not implemented.
+- Run artifacts: [raw receipts](https://github.com/Barrot-Agent/B-Agent/actions/runs/45631870741), [event timeline](https://github.com/Barrot-Agent/B-Agent/actions/runs/45631870741), [receipt index](https://github.com/Barrot-Agent/B-Agent/actions/runs/45631870741), [feature-store checkpoint](https://github.com/Barrot-Agent/B-Agent/actions/runs/45631870741).
+
+### XRP ecosystem research — evidence boundaries
+
+- Japan SBIC identity is resolved from the 1963 Act and official company profiles: Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies are three regional statutory corporations (East/Central/West), not SBI Holdings subsidiaries or regional SBI offices.
+- Primary-source relationship findings distinguish: Coinbase–Circle USDC economics and historical equity relationship; Circle–Ripple's native USDC-on-XRPL partnership; Coinbase–Ripple's direct RLUSD distribution/listing relationship; SBI–Circle's Japan JV, USDC distribution/banking and disclosed investment; and SBI–Ripple's issuer-reported approximately 9% SBI stake, SBI Ripple Asia JV and SBI Remit XRP-bridge remittance flow. None of these edges alone proves net XRP spot demand, open-market buying, or that every stablecoin/payment flow settles in XRP.
+- SBI's Evernorth PIPE disclosure distinguishes $200M cash from the broader spot-XRP-plus-cash financing; it does not prove that the cash amount was spent on open-market XRP purchases.
+- Exact-phrase status: “ASK Coin” has no verified XRP/XRPL identity (Permission Coin ticker collision remains separate); exact “actual capital” remains unverified and is not the same as SBI's “Actual XRP” slide label; “SBIC, ChatGPT SBIC” has no official ChatGPT relationship. Dr. Kamilah Stevenson is identifiable, but the candidate YouTube channel is not reciprocally authenticated; no video inventory was performed and the earlier tentative attribution was withdrawn.
+- The 2026-11-24 reconciliation is research-only: it lacks original response bytes, immutable raw hashes and independent timestamp anchoring. Dashboard/API values are not model features. The Morpho cbXRP collateral market remains distinct from native XRP spot demand.
+
+### Audio — artifact inspection, not an artistic acceptance
+
+- PR #1704 exact-head Audio Render Integration run 45606440020 succeeded. It uploaded artifact 15017852870, 194,647,085 bytes, retained until 2026-12-25T11:40:23Z. The downloaded ZIP SHA-256 is `02a8212d5e41782f7c38c9ec81b6b42d062ab0f5017c66b655de16bd2aa21099`.
+- Artifact contains a 175.545-second, 80-bar, 110 BPM, D-minor, 4/4 stereo float32 WAV mix; nine aligned WAV stems; named-track Standard MIDI File with ten section markers; JSON metadata/QC; and the Debian SoundFont copyright notice. All ten WAVs are 44.1 kHz, stereo, 7,741,555 frames. All nine stems have distinct hashes. Mix sample peak -6.017 dBFS, true peak -6.000 dBTP, RMS -24.897 dBFS, zero clipped samples. Stem-sum residual is about -44.17 dB relative to mix; exact reconstruction is not guaranteed.
+- The full-song render used the same FluidR3_GM SoundFont hash for all nine instruments. Per-instrument SoundFont routing exists, but distinct instrument timbres have not been demonstrated; the mapping test routes a copy of the same SoundFont. Rights metadata remains marked CALLER_SUPPLIED_UNVERIFIED despite the included Debian license notice. No native DAW project exists. No comparative or blind listening review was performed, and there is no user acceptance. This is a reproducible technical reference bundle, not proof of professional-quality music.
+- Artifact run: https://github.com/Barrot-Agent/B-Agent/actions/runs/45606440020
+
+### Long-horizon continuity
+
+- PR #1703 adds a portable, conflict-preserving project-state ledger and explicit Ed25519-signed transfer envelopes. Import requires an explicitly trusted public key, verifies the signature, expiry, monotonic sender sequence and replay receipt, then reconciles records/conflicts. The latest tests reject tampered digests, forged metadata, unknown senders, key mismatch, expired/future envelopes and replay/out-of-order sequences.
+- This is a tested manual export/transfer/import mechanism, not automatic network synchronization or proof of cross-host recovery in live operation. No external sync, credential transfer or autonomous self-modification was enabled.
+
+### Sellbird — current upstream audit, not installed
+
+- Exact repository `ethanplusai/sellbird` is at release **v0.5.0** (published 2026-11-25 08:37:30Z), AGPL-3.0-only, Python 3.11+. It remains separate from Barrot and has not been installed or authenticated in this environment.
+- v0.5 agent integration targets Claude Code, Claude desktop and Codex. The README says ChatGPT browser cannot reach a local Sellbird process; ChatGPT desktop pane support is not checked. The agent token allowlist permits reading, cost estimates, drafts/proposals and pausing, but not approving, sending, resuming, buying or deleting. User approval remains the send boundary.
+- Default business discovery uses OpenStreetMap without an account; paid providers must be cost-estimated before use. No prospecting run, verified prospect count, mailbox authentication, domain readiness or outreach has been established.
+- Sending remains paused. Before any campaign: dedicated sending domain, SPF/DKIM/DMARC, 2–4 weeks of warmup, address verification, suppression/opt-out checks, legal review and explicit approval of the Barrot-only audience, offer, message and setup. No Sellbird deployment, paid lookup or outbound send occurred. Music and TrekFlex remain outside Sellbird scope.
+
+### Nine-platform map and commercial status
+
+- ChatGPT-to-GitHub repository access is live-tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks authentication/data flows remain untested in this run. Hugging Face Space previously reported BUILD_ERROR; no restart or deployment was attempted.
+- No qualified Barrot prospect count, outreach approval, sends, replies, meetings, proposals or collected revenue are evidenced. No Barrot offer/pricing is treated as validated.
+
+### Next concrete actions
+
+1. Finish the existing XRP receipt-linkage work without backdating the 150-event registry; retain no-forecast gates until out-of-sample evidence qualifies a model.
+2. Use two genuinely distinct, rights-cleared instrument libraries in an A/B render; add comparative listening and explicit user acceptance before claiming audio improvement.
+3. Demonstrate signed project-state recovery and conflict handling across two actual workspaces; keep manual transfer explicit until a tested transport exists.
+4. Define one narrowly scoped, truthful Barrot pilot offer from verified capabilities, then use free prospect discovery only. Keep outbound sending paused.
+5. Continue the four existing mission PRs; reconcile the cache action overlap; do not create another audit-only PR. Promote only after exact-head full-suite/security checks, required approvals and side-effect review are verifiable.
+
+---
+
+
 ## Exact-head test failure and correction — EXECUTED
 
 The first full-suite run on PR #1702 head `b817b0f9df575a34ec42c6b9775b25d6c5a4c019` completed with **4,693 passed, 1 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. The only failure was:
