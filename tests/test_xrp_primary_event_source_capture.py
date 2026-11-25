@@ -131,7 +131,7 @@ def test_primary_event_sources_create_digest_only_receipts_and_relink_at_capture
         assert event["receipt_status"] == "VERIFIED_CANONICAL_RECEIPT"
         assert event["receipt_source_id_match"] is True
         assert event["source_capture_history"][0]["captured_at_utc"] == "2026-11-12T04:00:00Z"
-        assert event["source_capture_history"][-1]["captured_at_utc"] == "2026-11-12T04:30:00.000000Z"
+        assert event["source_capture_history"][-1]["captured_at_utc"] == "2026-11-12T04:30:00Z"
         assert event["source_capture_history"][-1]["raw_bytes_retained"] is False
 
 
