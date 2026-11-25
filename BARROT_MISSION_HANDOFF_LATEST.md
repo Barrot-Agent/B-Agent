@@ -1,3 +1,74 @@
+
+## Latest checkpoint — 2026-11-25T02:48:18.032Z
+
+### Repository and integration baseline
+
+- Current protected main: `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`. Recursive tree: 3,163 entries, not truncated. No source changes were made to main.
+- Open PR inventory is now three; all target main and are 0 commits behind:
+  - **#1702 — mission handoff/platform map:** `integration/mission-handoff-refresh-20261125`, pre-refresh head `88fb54119a3cebc70f5366b1429346ba4fb9bcd0`, 2 commits ahead, docs/map only. Its pre-refresh exact-head full suite, audit, pip-audit, fail-closed gate and tree-integrity checks passed. This checkpoint is being added to this existing branch; the new commit's checks are pending.
+  - **#1703 — long-horizon continuity:** `continuity/project-state-ledger-20261125`, head `502b3dfa748b72384c9a3d79a3f8355bad245a3f`, 12 commits ahead, 0 behind, 7 files. Exact-head full suite: 4,708 passed, 1 skipped, 11 warnings, 21 subtests, 74.28% coverage (run 45529493545). Audit 45529493585, pip-audit 45529486318, post-ready fail-closed gate 45530598817 and tree verification 45530598905 passed.
+  - **#1704 — audio per-instrument SoundFont routing:** `audio/per-instrument-soundfonts-20261125`, head `35b10a2ea589e0fd41bc6fb430ab508af77e06b9`, 7 commits ahead, 0 behind, 5 files. Exact-head full suite: 4,694 passed, 1 skipped, 11 warnings, 21 subtests, 74.22% coverage (run 45529940481). Audit 45529940537, pip-audit 45529903089, post-ready fail-closed gate 45530573290 and tree verification 45530573396 passed.
+- No independent review is recorded on #1702, #1703 or #1704. Main is marked protected; the branch-protection details endpoint returned HTTP 403, so approval requirements cannot be independently confirmed. Green custom gates do not substitute for required reviews.
+- The prior merge to main triggered GitHub Pages deployment (run 45509754310, success); main CI/full suite after that merge passed (run 45509757328). No new deployment approval was given. **No PR was merged.** Do not merge while the Pages deployment side effect remains unapproved or required branch-protection approvals are unknown. No force-push, reset, stash, cleanup or deployment was performed.
+- The three PRs are separate workstreams: docs/map, continuity, and audio. No duplicate successor branch was created.
+
+### Mission 1 — XRP intelligence and prediction engine
+
+**DESIGNED:** scheduled public-data ingestion, receipt/feature-store pipeline, event timeline, leakage-aware evaluation gates and forecast ledger remain the architecture.
+
+**EXECUTED:** main run #139, workflow run 45532043912, exact main SHA above; ingestion job 138929486401. Data cutoff: 2026-11-25T02:19:19.103884Z. Snapshot: `xrp-public-20261125T021919Z-9b5c29e0`.
+- Feature store: 103 snapshots, 28,023 historical records, 2,230 input records, 758 delta records, 391 eligible and 367 excluded. Store integrity passed; cross-run receipt-chain sequence 103 continued from trusted checkpoint run 45524221832.
+- Latest OKX top-of-book snapshot: bid 0.911450124, ask 0.911559125, midpoint 0.9115046245, spread 1.1958 bps. This is one venue's top-of-book observation, not independent market-wide liquidity confirmation.
+- 37 source receipts; 26 raw-only source entries; 18 source failures.
+- Event timeline: 150 events, 11 source-URL matches, 0 exact URL-plus-capture-time matches, 0 verified receipt links; all 150 remain `MISSING_RAW_RECEIPT_HASH`. The registry's historical event claims are not upgraded by simply attaching a current mutable-page hash. The current code restricts automatic recapture to exact immutable SEC accession documents; broad relinking would misrepresent point-in-time evidence.
+- `BARROT_SEC_USER_AGENT` was empty and `INCLUDE_SEC_COMPANYFACTS` was false in this run. Do not fabricate a contact identity to satisfy SEC access requirements.
+- Walk-forward status remains `INSUFFICIENT_HISTORY`; drift status remains `INSUFFICIENT_DATA` (0/205 evaluated); forecast status remains `NOT_ISSUED`. Coinbase historical backfill was `NOT_REQUESTED`. No directional forecast or paper/real-money action was made.
+- GitHub Actions cache save failed because the configured cache budget is full/read-only. The run still succeeded, restored the prior trusted per-run checkpoint, and uploaded its artifacts. Treat cache writes as unavailable; preserve the artifact-based recovery path.
+
+**VERIFIED:** scheduled ingestion, feature-store integrity and cross-run sequence continuity. **NOT VERIFIED:** event-level raw-source provenance, sufficient chronological out-of-sample history, probability calibration, drift performance or directional predictive skill.
+
+### Mission 2 — professional audio production
+
+**DESIGNED:** per-instrument SoundFont selection and consistent routing to the full mix and aligned stems, retaining the existing single-SoundFont fallback.
+
+**EXECUTED/VERIFIED in PR #1704:** fake-renderer routing tests and real FluidSynth integration tests passed 3/3. The 80-bar full-song QC render measured 175.545 seconds, 110 BPM, D minor, 4/4, 10 section markers, 9 aligned stems and Standard MIDI; zero clipped samples, sample peak -6.017 dBFS and true peak -6.0000005 dBTP. The 16-bar test exercised two SF2 paths using Debian TimGM6mb. That test SoundFont is GPL-2 and is not bundled or distributed.
+
+**LIMITS:** the linked artifact is QC JSON only, not the WAV, stems or MIDI. The 80-bar QC render used one test SoundFont; per-instrument routing was exercised in the shorter integration test. No rights-cleared production library, native DAW project, user-accessible finished bundle, blind comparative listening or user acceptance is verified. Technical export tests do not establish professional musical quality.
+
+### Mission 3 — long-horizon continuity and capability development
+
+**DESIGNED:** versioned project-state ledger over the existing workspace-local AutonomousTaskStore.
+
+**EXECUTED/VERIFIED in PR #1703:** provenance, observation/recording timestamps, confidence, source hashes, dependencies, staleness and supersession are persisted; independent workspaces can exchange hash-verified bundles; divergent values remain explicit conflicts; stale records and dependency-ready tasks are tested; autonomous task lifecycle checkpoints are wired. Only goal SHA-256, status and attempt count are persisted, not raw goal text. Full-suite evidence is recorded above.
+
+**LIMITS:** transfer is explicit and requires an authorized channel. Bundle hashes detect corruption, not sender identity; no network synchronization or external-platform authentication is implemented. Cross-session recovery inside the tested workspace model is stronger, but cross-host/provider continuity is not yet verified.
+
+### Nine-platform coordination
+
+The operational map remains honest: ChatGPT-to-GitHub access is the only verified live connector in this workstream. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks have not had authentication and end-to-end data flow tested here. Sellbird's code-level Claude/Codex adapters are not evidence that Barrot has those live connections.
+
+### Commercial priority — Barrot technology only
+
+Static read-only audit of [ethanplusai/sellbird](https://github.com/ethanplusai/sellbird), default branch main, inspected commit `b212385259da92246a56311d790d936e75dd70dd):
+- Package metadata: Sellbird 0.4.0, Python >=3.11, AGPL-3.0-only. NOTICE says versions through Harvey 0.3.x remain MIT; 0.4.0 onward is AGPL-3.0-only. Keep Sellbird as a separate service/process; do not copy AGPL code into Barrot. If a modified version is offered over a network, AGPL source-availability obligations apply to that modified version. Obtain legal review before distribution or hosted use.
+- Runtime: Gmail, Microsoft 365 and SMTP/IMAP provider paths; OpenStreetMap discovery is free. Paid discovery/enrichment and email-verification providers are optional and have cost controls/estimates. Without an email-verifier key, candidate addresses remain guesses and are not eligible to send.
+- The test workflow covers Python 3.11/3.12 on Ubuntu, macOS and Windows, runs pytest and packaging tests, and runs a real Codex CLI 0.159.3 surface test against localhost mocks on non-Windows. The Codex adapter is restricted to macOS/Linux and exact CLI 0.159.3; Docker ships the Claude runtime, not Codex. No live ChatGPT/Codex or Claude authentication was tested for this user.
+- Current Codex runtime code uses a private temporary home/workspace, no tools/MCP/hooks/skills, read-only sandbox and a copied login without the refresh token. Claude runtime uses safe mode and fails closed if isolation is unavailable. However, CLAUDE.md still contains an old `--dangerously-skip-permissions` instruction that conflicts with the current safe-mode implementation; treat that maintainer text as stale and do not execute it.
+- Docker uses Python 3.12 slim, a non-root user and Chromium. Dashboard authentication uses a local bearer token with owner-only file checks and a loopback listener. SECURITY.md exists. No dedicated pip-audit/CodeQL/Dependabot workflow was found in the inspected workflow/config paths; do not infer a security certification. Dependency ranges are bounded but are not hash-locked in the inspected manifests.
+- Default `sellbird.yaml` is generic placeholder data, has email enabled, approval required, a 50/day cap, blank warmup start date, blank postal address, empty do-not-contact list and Precleared disabled. Approval is a useful gate, not legal clearance. Do not run the default campaign configuration. A Barrot-only discovery configuration must explicitly disable email, use free sources only and contain no mailbox credentials until separately approved.
+- **Configured:** not verified. **Prospecting-tested:** not run. **Verified prospects:** 0. **Paid lookups:** 0. **Outreach approved/sent:** 0. **Replies/meetings/proposals/revenue:** 0. No Sellbird deployment or outbound sending occurred.
+- Candidate offer, not yet approved for marketing: a narrowly scoped public-data ingestion/provenance/quality-assessment pilot for a crypto/fintech research team. It must not be sold as production XRP forecasting or generalized autonomous orchestration. Current event-hash and out-of-sample prediction gaps mean the proof package is not yet ready. No price hypothesis is set.
+
+### Next concrete actions
+
+1. **XRP:** establish primary-source capture/receipt linkage for event claims, supply a legitimate SEC contact identity before enabling SEC requests, accumulate leakage-safe chronological history, then evaluate calibration and drift. Keep forecasts withheld until acceptance thresholds pass.
+2. **Audio:** retain #1704 as the single audio integration PR; next proof is a rights-cleared full WAV plus aligned stems, MIDI, section metadata and an editable DAW project, followed by level-matched listening against a baseline and user acceptance.
+3. **Continuity:** retain #1703 as the single continuity integration PR; next proof is repeatable recovery across a fresh workspace/session and explicit authorized cross-host transfer, including conflict/stale-record cases.
+4. **Commercial:** prepare a Barrot-specific Sellbird config with email disabled and free OSM-only discovery; validate a small manually reviewed prospect cohort only after a truthful Barrot pilot offer and demo exist. Keep outbound paused until audience, offer, message, mailbox health, compliance and sending setup are explicitly approved.
+5. **Governance:** rerun exact-head checks after this handoff commit; obtain required reviews/branch-protection confirmation and explicit approval for the Pages deployment side effect before any merge. After any later authorized merge, verify merge SHA, merged files, Pages side effects and main CI.
+
+No forecast, real-money action, paid lookup, outreach, deployment, secret rotation or destructive repository action was performed in this checkpoint.
+
 # Current authoritative checkpoint — 2026-11-25 00:10 UTC
 
 Captured: 2026-11-25T00:10:00Z. Repository state was reconciled against current main, the complete recursive tree, PR inventory, merged ancestry, CI/workflow evidence, current audio and continuity code, latest XRP ingestion logs, and the latest durable handoff. Historical checkpoints remain in Git history.
