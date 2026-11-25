@@ -1231,3 +1231,63 @@ No new PR was created. No merge, deployment, force-push, branch rewrite, secret 
 - #1708 remains open as the exact superseded save-action PR. It must remain open until #1706 is merged and its combined restore/save content is verified on main.
 - The Run 17 documentation/map commit on #1702 (head 287e41c602911240e70e360e8914796c57a84d60) did not yet have an exact-head full-suite run. This follow-up adds a schema test for the ten-PR inventory so the next commit exercises the full suite. Previous head 18ab2aa5ce8eff428023b99c2b55f8e3a1dc32b8 passed 4,693 tests; that result does not substitute for the new head.
 - The three co-equal missions remain active; V3 remains the shared execution, orchestration, safety and verification foundation. Main remains unchanged at 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407. No merge, deployment, restart, force-push, branch rewrite or external action occurred.
+
+
+## Run 17.2 integration and dependency reconciliation — 2026-11-25T13:39:00Z
+
+### Repository and mission state — VERIFIED
+
+- Main remains `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; the complete recursive tree remains 3,163 entries with `truncated=false`. The repository is public, non-archived, and main is protected.
+- The three co-equal priority-1 missions remain enforced by the main mission manifest: XRP intelligence/prediction, professional audio production, and long-horizon continuity/capability development. Barrot V3 remains the shared execution, orchestration, provenance, safety and verification foundation.
+- The latest canonical handoff is this file on PR #1702. PR #1702 head at capture: `de9b26d8cbe4e0dd7b759bfd85d144e55dd4f4c0`, 41 commits ahead / 0 behind main, four changed paths. Its full repository suite and pip-audit were still in progress; audit and merge-tree checks passed; fail-closed merge readiness was still running. The preceding head's results do not validate this head, and this supplement commit will require a new exact-head suite.
+- Main's last observed exact-head full suite remains #45509757328: 4,693 passed, 1 skipped, 11 warnings, 21 subtests, 74.21% coverage. Main audit #45509757275 and pip-audit #45541707061 passed. No main SHA change or merge occurred.
+- Visible main protection requires Full repository test suite, audit, pip-audit and Verify PR merge tree against current base. The detailed classic-protection endpoint returns HTTP 403, so hidden approval requirements remain unknown. No independent approving reviews exist on #1702–#1705 or the reviewed dependency PRs. Merging still triggers GitHub Pages deployment, for which no specific approval exists.
+
+### XRP intelligence and prediction — EXECUTED; forecast withheld
+
+- Latest mainline scheduled ingestion remains #155, run [45621590505](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621590505), on main SHA `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; cutoff **2026-11-25T13:15:20.402015Z**.
+- Feature store: 114 snapshots, 30,159 cumulative history records, 2,230 input features; latest snapshot 123 eligible / 367 excluded; SQLite integrity and snapshot lineage/digest checks passed. It restored from the prior successful run checkpoint.
+- Receipt chain: 37 receipts (21 raw payloads, 16 digest-only); cross-run chain continued and verified. GitHub Actions cache writes remain read-only because the configured cache budget is exhausted. The per-run checkpoint and raw artifacts uploaded. No WORM or independent external timestamp anchor exists.
+- Event timeline remains 150 events with 0 verified raw-receipt links and 150 missing raw-source hashes. Historical events must not be backfilled with today's hashes; future recaptures must create new point-in-time versions.
+- The OKX same-venue quote basis was bid **$0.90476784**, ask **$0.904876765**, mid **$0.9048223025**, spread **1.2038 bps**, skew **0.582 seconds**. Both components share one publisher-independence group; this is not independent cross-venue confirmation or full-depth USD liquidity.
+- Walk-forward remains 428 one-hour rows, `PARTIAL_OR_BLOCKED`; drift remains `INSUFFICIENT_DATA`; forecast remains `NOT_ISSUED`. SEC CompanyFacts remains `BLOCKED_CONFIGURATION`; 18 source failures remain. No paper trade or real-money action occurred.
+- PR #1705 remains unique XRP research work. Its exact-head full suite passed (4,709 passed, 1 skipped, 11 warnings, 21 subtests; 74.25%), with dependency, money, conflict-integrity, merge-tree and fail-closed checks passing. Its RLUSD normalizer is still not verified by a subsequent mainline ingestion.
+
+### Audio and continuity — unchanged, evidence boundaries preserved
+
+- Audio PR #1704 remains unique. Exact-head full suite passed (4,694 passed, 1 skipped, 11 warnings, 21 subtests; 74.22%); FluidSynth integration passed 3/3. The production bundle has a full WAV, nine aligned stems, nine-track MIDI and section metadata, but no native DAW project or comparative/user listening acceptance. The test palette and embedded full-song asset rights remain insufficient for a professional-quality claim.
+- Continuity PR #1703 remains unique. Exact-head full suite passed (4,708 passed, 1 skipped, 11 warnings, 21 subtests; 74.28%). The ledger supports append-only records, provenance, stale/conflict/supersession handling, dependency-aware selection and hash-verified workspace bundle transfer. Authenticated cross-host synchronization, replay protection and model-provider handoff recovery remain unverified.
+
+### Dependency PR consolidation and overlap analysis — EXECUTED / VERIFIED
+
+- **#1706 — consolidated cache action update:** existing Dependabot branch head `479d112515ee4b5d63de374cd662f0afc895a46c`, 2 commits ahead / 0 behind. It updates both `actions/cache/restore` and `actions/cache/save` to the same immutable v6.1.0 commit and updates the three regression-test guards. Exact-head full suite #45624138666 passed: **4,693 passed, 1 skipped, 11 warnings, 21 subtests; 74.21%**. Audit, pip-audit, dependency audit, money audit, conflict integrity, merge-tree and fail-closed gate passed. No live scheduled ingestion was run on this branch, so the cache-budget behavior is not yet verified end-to-end. Ready for independent review; not merge-authorized.
+- **#1708 — superseded source PR:** it only updates the save action. Its exact-head full suite #45621609395 failed **3 tests** (4,690 passed, 1 skipped) because the workflow pin and regression tests still expected the v4 SHA. #1706 is a strict integration superset, updating both restore and save plus the tests. #1708 was converted to draft and given an explicit cross-reference comment. Keep it open until #1706 is merged and verified on main; then close only #1708 as superseded.
+- **#1709 — Databricks CLI update:** existing branch head `6a45c7a4405ff733aa02a9e22a8f65771108594d`. Exact-head full suite #45624202519 passed: **4,693 passed, 1 skipped, 11 warnings, 21 subtests; 74.21%**. Audit, pip-audit, dependency audit, money audit, conflict integrity, merge-tree and fail-closed gate passed. Ready for independent review; not merge-authorized.
+- **#1707** (actions/setup-node v7.1.0) and **#1710** (PyYAML >=6.0.4) each passed their exact-head full suite, audit, pip-audit, conflict-integrity, merge-tree and fail-closed checks. They remain unique, unreviewed dependency changes.
+- **#1711 — NumPy upper-bound relaxation:** full suite and dependency-resolution checks passed, but the PR changes `hf_space/requirements.txt` from `numpy>=1.26.4,<2` to `numpy>=1.26.4,<3`. The Space's `hf_space/README.md` pins Streamlit 1.35.0, and the requirements file itself states that this Streamlit version requires NumPy <2. The PR would permit a runtime-incompatible NumPy 2.x resolution. It was converted to draft and given a blocker comment. Do not merge until the Streamlit/Space stack is upgraded and an actual Space build succeeds.
+- **#1705 / #1706 path overlap:** both touch `.github/workflows/xrp-public-ingestion.yml` and `tests/test_xrp_public_ingestion.py`, but the reviewed hunks are separate: #1705 adds the RLUSD workflow path/normalizer/artifact and changes the weekly CFTC capture test around line 3271; #1706 changes cache restore/save pins and the cache assertion around line 1410. No same-hunk conflict was observed. A combined merge-tree and full-suite run has not been performed; do not claim combined verification.
+- Open PR inventory remains ten: #1702–#1705 mission work; #1706, #1707, #1709, #1710 unique dependency work; #1708 draft/superseded; #1711 draft/blocked. No new branch or PR was created.
+
+### Platform, runtime and commercial status
+
+- Only ChatGPT-to-GitHub authentication and repository data flow are verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested for authenticated Barrot data exchange. The public Hugging Face Space still has an unresolved `BUILD_ERROR`; deployed revision/build logs and root cause are unknown. No restart or deployment was performed.
+- Sellbird remains source-audited only, uninstalled, unauthenticated and not prospecting-tested. Scope remains Barrot technology only. No prospects, outreach, replies, meetings, proposals or revenue are recorded; outbound sending remains paused. Music and TrekFlex remain excluded.
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal priority-1 missions; V3 shared foundation; evidence-gated XRP forecasting; rights/listening gates for audio; conflict-preserving long-horizon state; nine-platform least-privilege coordination; Barrot-only supervised Sellbird.
+- **EXECUTED:** re-fetched main, complete tree, all 10 open PRs, branch ancestry, changed paths, exact-head workflow/check runs, reviews, current handoff, mission manifest, XRP/audio workflows and code, continuity ledger branch, dependency requirements, and #1708 failure logs; converted #1708 and #1711 to drafts with explicit blocker/supersession comments; appended this update to the existing #1702 handoff.
+- **VERIFIED:** current main SHA/tree; #1706 and #1709 full-suite/security/gated checks; #1707/#1710 dependency checks; #1708's three failing tests and exact supersession by #1706; #1711's Streamlit/NumPy incompatibility; hunk-level non-overlap for #1705/#1706; latest XRP #155 data and forecast gate; no independent PR approvals.
+- **NOT VERIFIED:** exact-head checks for the new #1702 supplement commit; branch-protection approval count; any merge or Pages deployment authorization; post-#1705 mainline ingestion; XRP event receipts, external anchoring, raw-store reconstruction, predictive superiority/calibration; professional audio listening acceptance and native DAW project; authenticated cross-host continuity; eight external platform connections; Hugging Face Space root cause; Sellbird prospecting or revenue.
+
+### Next concrete actions
+
+1. Finish the exact-head full suite, audit, pip-audit and fail-closed checks on the newest #1702 commit; do not reuse results from an earlier head.
+2. Keep #1706 as the consolidated cache-action change and #1708 as draft until the successor is merged and verified; then close only #1708 with the existing cross-reference.
+3. Keep #1711 blocked until the Space dependency stack and actual build are compatible.
+4. Verify #1705 on a later mainline ingestion only after a permitted merge; until then retain its capture behavior as branch-only.
+5. Continue XRP event-to-receipt linkage, external anchoring and deterministic feature-store rebuild; keep forecasts `NOT_ISSUED`.
+6. Continue audio rights-cleared palette, editable DAW project and level-matched listening acceptance; continue authenticated cross-host continuity tests.
+7. Preserve the no-merge rule while independent approvals, complete branch-protection requirements and specific Pages deployment approval are absent.
+
+No merge, deployment, Space restart, secret rotation, paid lookup, Kaggle submission, outbound message, paper trade, funds transfer or real-money action occurred.
