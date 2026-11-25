@@ -37,7 +37,7 @@ def test_chatgpt_connector_scope_is_verified_without_overstating_permissions() -
     chatgpt = data["platforms"]["ChatGPT"]
 
     assert chatgpt["authentication"]["status"] == "VERIFIED_FOR_GITHUB_CONNECTOR"
-    assert "repository/tree/PR/file/workflow reads" in chatgpt["authentication"]["evidence"]
+    assert "metadata/tree/PR/file/workflow reads" in chatgpt["authentication"]["evidence"]
     assert any(
         "Write existing documentation files on integration/mission-handoff-refresh-20261125" in action
         for action in chatgpt["permissions"]["observed_actions"]
