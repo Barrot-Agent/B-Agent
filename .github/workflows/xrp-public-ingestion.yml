@@ -13,6 +13,7 @@ on:
       - .github/workflows/xrp-public-ingestion.yml
       - barrot_agent/evolution/research_timestamp_corrections.py
       - barrot_agent/evolution/xrp_public_ingestion.py
+      - barrot_agent/evolution/rlusd_cross_chain_research.py
       - barrot_agent/evolution/sec_edgar.py
   workflow_dispatch:
     inputs:
@@ -208,6 +209,11 @@ jobs:
             args+=(--include-sec-companyfacts)
           fi
           python -m barrot_agent.evolution.xrp_public_ingestion "${args[@]}"
+      - name: Normalize RLUSD cross-chain supply as research-only evidence
+        run: |
+          python -m barrot_agent.evolution.rlusd_cross_chain_research \
+            --input-dir artifacts/xrp_ingestion \
+            --output artifacts/xrp_ingestion/rlusd_cross_chain_research.json
       - name: Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
@@ -240,6 +246,7 @@ jobs:
             artifacts/xrp_ingestion/event_timeline.json
             artifacts/xrp_ingestion/sec_capital_events.json
             artifacts/xrp_ingestion/research_only_observations.json
+            artifacts/xrp_ingestion/rlusd_cross_chain_research.json
           if-no-files-found: error
           retention-days: 90
       - name: Upload per-run point-in-time feature-store checkpoint
