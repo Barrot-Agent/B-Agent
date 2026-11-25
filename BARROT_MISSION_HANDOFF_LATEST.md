@@ -2404,3 +2404,92 @@ PR #1704's exact-head FluidSynth integration produced an 80-bar, 175.545-second 
 
 No main mutation, merge, deployment, Space restart, secret rotation, external model dispatch, paid lookup, Sellbird installation, outbound message, Kaggle submission, paper trade, funds transfer or real-money action occurred.
 
+
+
+---
+
+## Run 25 — integration-first checkpoint, XRP ingestion, audio artifact and continuity evidence — 2026-11-25T19:07:00Z
+
+## Three co-equal missions and repository state
+
+XRP intelligence/prediction-engine mastery, professional audio production, and long-horizon continuity/capability development remain co-equal Priority 1 missions. Barrot V3 remains the shared execution, orchestration, MMI, provenance, authorization, safety and verification foundation. No mission was demoted.
+
+- Main: `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; recursive tree: **3,163 entries**, not truncated. Main was not modified.
+- **12 open PRs** were re-fetched. The four domain integrations remain on their existing branches: #1702 handoff/map, #1703 continuity, #1704 audio, #1705 XRP. #1712 is the separate CI package-coverage change. No replacement branch or PR was created.
+- Branch-protection details still return HTTP 403 `Resource not accessible by integration`. The only visible repository ruleset, `Fall Back`, is disabled. No independent approving review was evidenced for the mission integrations. Merge-readiness workflow success is not a substitute for human approval or branch-protection visibility.
+- Merging to main has previously been verified to trigger GitHub Pages deployment. No new deployment authorization exists. **No PR was merged.**
+
+## Current open-PR classification
+
+| PR | Classification | Current evidence / blocker |
+|---|---|---|
+| #1702 | Unique handoff integration; governance-blocked | Head `e455f6201577ac7aca103152302c084e3cbe9d30`; full-suite job collected 4,694 items / 1 skipped and passed; CI, dependency audit, money audit, conflict integrity and gated-readiness jobs passed on that exact head |
+| #1703 | Unique continuity integration; governance-blocked | Head `99561b4507d17c80d0a74bb425ce18ae3737f3d5`; full-suite job collected 4,713 items / 1 skipped and passed; dependency, money, conflict and gated-readiness checks passed |
+| #1704 | Unique audio integration; governance-blocked | Head `e69f94309e7053bb3adfa44062edbd3017d2e9ed`; full-suite job collected 4,694 items / 1 skipped and passed; real FluidSynth integration passed 3/3; dependency, money, conflict and gated-readiness checks passed |
+| #1705 | Unique XRP research integration; governance-blocked | Head `86d3cbb564b843714339c6a75fe898a028248efa`; full-suite, dependency, money, conflict and gated-readiness checks passed; integration ingestion produced a fresh research-only RLUSD normalization, not a model feature |
+| #1712 | Unique CI coverage support; governance-blocked | Head `b9e8de26786e72027548e5bfd94a1c2366d50f45`; full-suite, dependency, money, conflict and gated-readiness jobs passed; adds non-regression package floors for major excluded packages |
+| #1713 | Blocked draft | Full-suite job passed, but gated-merge job failed because the PR remains draft; preserve the branch and its evidence |
+| #1706 | Unique dependency update; unreviewed | `actions/cache/restore` 4.3.0 → 6.1.0 |
+| #1708 | Overlapping/duplicate candidate pending reconciliation | Draft `actions/cache/save` 4.3.0 → 6.1.0 overlaps the cache-action upgrade tracked by #1706; do not bulk-close or merge independently |
+| #1707 | Unique dependency update; unreviewed | `actions/setup-node` 4.4.0 → 7.1.0 |
+| #1709 | Unique dependency update; unreviewed | `databricks/setup-cli` 1.25.0 → 1.27.0 |
+| #1710 | Unique dependency update; unreviewed | PyYAML `>=6.0.3` → `>=6.0.4` |
+| #1711 | Blocked draft | NumPy upper bound expansion to <3 remains pending Hugging Face Space compatibility validation |
+
+The exact-head checks above belong to the listed SHAs only. This handoff update itself is being added to the existing #1702 branch; its new descendant requires fresh exact-head checks.
+
+## XRP intelligence — latest main ingestion
+
+Main ingestion run [#45673137347](https://github.com/Barrot-Agent/B-Agent/actions/runs/45673137347) succeeded on main SHA `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`.
+
+- Data cutoff: **2026-11-25T18:15:17.595776Z**. Adapter `xrp-public-market-v3.34`; parser `xrp-public-market-v3.32`.
+- Feature store: **119 snapshots**, **30,774** historical records, **490** delta records; 123 eligible and 367 excluded records. SQLite integrity and the per-run checkpoint passed.
+- Event timeline: **150 events**, 37 receipts, **0 verified event-to-receipt links**; all 150 currently fail the raw-receipt-hash linkage requirement. Event timeline remains model-ineligible.
+- Drift: **0 of 205** features evaluated; status `INSUFFICIENT_DATA`. Forecast status `NOT_ISSUED`; no paper trade.
+- Cross-run receipt chain continued and was verified relative to its stored chain head, but remains **NOT_ANCHORED** externally. Rebuilding the feature store from raw artifacts is not implemented. The run restored from a prior per-run checkpoint; GitHub Actions reported that the configured cache budget is read-only and refused a cache save.
+- Free public XRPL node endpoints remain excluded from scheduled collection under their non-commercial terms; no qualifying commercial/self-hosted pair was collected. Delayed CFTC source series remain skipped pending confirmed release/effective dates.
+- PR #1705 integration run [#45641482666](https://github.com/Barrot-Agent/B-Agent/actions/runs/45641482666) returned `RESEARCH_ONLY_FRESH` for the RLUSD cross-chain normalizer. The output explicitly remains `model_eligible=false`; the run's receipt chain was `CONTINUED_AFTER_GAP` with continuity verification false. This is a successful research-only normalization, not a verified global RLUSD supply or XRP-flow feature.
+
+No directional forecast is justified. The immediate predictive-engine blocker is still receipt-backed event provenance plus durable raw rebuild and sufficient eligible chronological observations—not another descriptive market narrative.
+
+## Audio production — reproducible technical bundle, quality acceptance pending
+
+PR #1704 exact-head real FluidSynth integration run [#45662974963](https://github.com/Barrot-Agent/B-Agent/actions/runs/45662974963) uploaded [audio-production-bundle artifact 15046855997](https://github.com/Barrot-Agent/B-Agent/actions/runs/45662974963/artifacts/15046855997), size **194,647,443 bytes**. The downloaded archive was integrity-tested; ZIP SHA-256: `c30a6aac9d361807314d22156ccb9aceeaaba1b32fa62fe5695e2961b6df0f78`.
+
+Verified artifact facts:
+
+- 175.545 seconds; 80 bars; 110 BPM; D minor; 4/4; 44.1 kHz; stereo 32-bit float.
+- Nine sample-aligned WAV stems, each 7,741,555 frames; Standard MIDI with nine named instrument tracks and ten section markers; JSON metadata and license notice.
+- Mix: 0 clipped samples; sample peak -6.017 dBFS; true peak -6.000 dBTP; RMS -24.897 dBFS.
+- Stem-sum correlation 0.9999807582; relative RMS error 0.0061865. Exact stem-sum reconstruction is not guaranteed.
+- FluidR3_GM is identified as MIT-licensed, but the SoundFont binary is not bundled and the asset rights status remains `CALLER_SUPPLIED_UNVERIFIED`.
+- Although the renderer now supports per-instrument SoundFont mappings, this particular full-song artifact maps all nine instruments to the same FluidR3_GM file. Distinct per-track production timbres are therefore **not demonstrated**.
+- This is MIDI + aligned WAV + JSON DAW-importable material, **not a native DAW project**. No blind/level-matched listening, user acceptance, professional mix/master claim or comparative quality improvement is verified.
+
+The technical path is materially better than a short loop/demo, but it does not yet satisfy the professional-quality acceptance standard. Next audio work must focus on legally verified, audibly distinct instrument assets and comparative listening—not another disconnected feature.
+
+## Long-horizon continuity
+
+PR #1703's current branch tests cover versioned project state, provenance, staleness, explicit supersession, unresolved conflict preservation, dependency-aware task selection, signed bundle export/import and replay rejection. The exact-head full suite passed. The implementation remains unmerged. **Authenticated network synchronization between independent hosts is not implemented or verified**; cross-workspace bundle exchange is not evidence of an always-on cross-host service.
+
+## Nine-platform and commercial state
+
+- Only ChatGPT-to-GitHub has tested authentication and data flow. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain **NOT TESTED** as live Barrot connections.
+- Sellbird remains uninstalled, unauthenticated and not prospecting-tested. Its scope is Barrot technology only. Verified prospects: 0; qualified: 0; outreach-approved: 0; sent: 0; replies: 0; meetings: 0; proposals: 0; revenue collected: **$0**. Outbound sending remains paused. No offer is being represented as production-ready without proof.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal priority-1 missions on V3; evidence-gated XRP forecasting; audio deliverable/rights/listening standards; conflict-preserving continuity; least-privilege nine-platform coordination; Barrot-only Sellbird scope.
+- **EXECUTED:** fetched current main metadata and complete tree; re-fetched all 12 open PRs and their heads; inspected current workflow runs and exact-head jobs; read the current audio and project-state code; inspected the full audio ZIP, hashes, MIDI markers, metadata and QC; inspected main XRP ingestion logs and the #1705 RLUSD normalization result.
+- **VERIFIED:** main SHA/tree; exact-head full-suite and gate success for #1702, #1703, #1704, #1705 and #1712; #1704 FluidSynth integration 3/3; archive integrity and technical audio metrics; latest main XRP ingestion cutoff and its fail-closed forecast state; #1705 research-only normalizer status.
+- **NOT VERIFIED:** any merge or deployment approval; readable branch-protection requirements; XRP event receipt linkage, raw rebuild, model superiority or calibration; professional audio quality, distinct instrument timbres, native DAW project or user acceptance; network-level continuity; eight external platform connections; Sellbird prospecting, approved outreach, meetings or revenue.
+
+## Next concrete actions
+
+1. Keep #1702–#1705 and #1712 on their existing branches; no replacement PRs. Re-run exact-head checks after this handoff commit. Do not merge until independent approval, branch-protection requirements and the Pages deployment authorization are resolved.
+2. Close the XRP event-to-receipt/raw-hash gap and implement a reproducible raw-artifact feature-store rebuild before enabling forecasts. Preserve the current fail-closed status.
+3. Advance the audio branch only with rights-verified, genuinely distinct per-track assets and a listening benchmark. Do not claim professional acceptance from technical QC alone.
+4. Preserve the signed continuity ledger and replay guard; implement network transport only behind an explicitly authorized, tested adapter with conflict handling.
+5. Keep Sellbird Barrot-only and outbound paused. Validate a limited, deliverable Barrot pilot offer before prospecting; do not market unverified production readiness.
+
+No main mutation, merge, force-push, branch rewrite, deployment, Space restart, secret rotation, external model dispatch, paid lookup, Sellbird installation, outbound message, Kaggle submission, paper trade, funds transfer or real-money action occurred.
