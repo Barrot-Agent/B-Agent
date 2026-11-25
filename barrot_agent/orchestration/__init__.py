@@ -1,6 +1,7 @@
 """Barrot orchestration components."""
 
 from .autonomous_state import AutonomousTaskStore
+from .project_state import ProjectStateLedger
 from .capability_cycle import (
     CapabilityCycleController,
     CapabilityCycleError,
@@ -80,6 +81,7 @@ from .repository_repair import (
 
 __all__ = [
     "AutonomousTaskStore",
+    "ProjectStateLedger",
     "CapabilityCycleController",
     "CapabilityCycleError",
     "CapabilityCycleLedger",
