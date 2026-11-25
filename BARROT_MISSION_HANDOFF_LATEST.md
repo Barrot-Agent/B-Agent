@@ -2584,3 +2584,94 @@ All twelve open PRs still target main at the same base SHA. No PR was merged or 
 7. Sellbird: remain Barrot-only and outbound-paused; verify the actual upstream deployment requirements and a narrowly deliverable Barrot pilot before prospecting.
 
 No main mutation, merge, force-push, branch rewrite, reset, clean, stash, destructive restore, deployment, Space restart, secret rotation, external model dispatch, paid lookup, Sellbird installation, outbound message, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+---
+
+# Run 29 — primary-source and Sellbird audit supplement — 2026-11-25T20:12:00Z
+
+This supplement records fresh public primary-source research and an exact-repository Sellbird audit. No forecast, deployment, outreach or external financial action was authorized or performed.
+
+## XRP ecosystem: new primary-source relationship evidence
+
+### SBIC East / Central / West are not SBI Holdings
+
+The three Japanese "SBIC" organizations are separately incorporated regional Small and Medium Business Investment & Consultation companies:
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. — official profile: https://www.sbic.co.jp/company/profile/
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. — official profile: https://www.sbic-cj.co.jp/company/about/
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. — official profile: https://www.sbic-wj.co.jp/profiles/profile/
+
+The Tokyo and Nagoya profiles explicitly identify the other two as sister companies. Their stated business is investment in and growth support for Japanese SMEs under the Small and Medium Business Investment & Consultation Companies Act. The East profile lists local governments, chambers of commerce, financial institutions and companies among shareholder categories. These profiles do not identify SBI Holdings as their parent or as a sister company.
+
+**SBI Holdings, Inc. is a different legal entity:** a listed financial-services holding company established July 8, 1999, headquartered in Roppongi, Tokyo, whose stated principal business is control and management of SBI Group through share ownership. Official corporate profile: https://www.sbigroup.co.jp/english/company/information/profile.html. Do not merge "SBIC" and "SBI" entities in the relationship graph.
+
+### Ripple / SBI: distinguish the JV, the exchange, the remittance operator and XRP
+
+Ripple's own SBI Ripple Asia page states that SBI Ripple Asia sells RippleNet software/services and explicitly says the company itself does **not** handle the cryptoasset XRP. The same page separately says XRP-based On-Demand Liquidity is commercially deployed in Japan through SBI Remit together with Coins.ph and SBI VC Trade. Source: https://ripple.com/company/sbi-ripple-asia/.
+
+This distinction is material:
+- SBI Ripple Asia is the SBI/Ripple joint-venture software and implementation entity.
+- SBI Remit is the remittance operator.
+- SBI VC Trade is the regulated crypto/stablecoin exchange and on/off-ramp.
+- Ripple supplies enterprise software and ODL; ODL uses XRP as a bridge asset.
+- The entities' activities must not be collapsed into a claim that every SBI/Ripple payment uses XRP.
+
+Ripple's June 24, 2026 announcement confirms RLUSD's Japan launch through SBI VC Trade following JFSA approval: https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/. Separately, SBI Ripple Asia's February 2026 proof-of-concept described using the XRPL as a possible technical base for tokenized deposits and deposit-type digital money alongside SBI's MoneyTap and a token-issuance platform: https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html. That is an XRPL infrastructure exploration; it is not proof that XRP was the settlement asset in the proposed deposit flow.
+
+### SBI / Circle: direct 50/50 Japanese entity is now documented in SEC filing
+
+Circle's Q1 2026 Form 10-Q states that in November 2025 Circle and SBI Holdings each contributed approximately **US$1.5 million equivalent in JPY** to Circle SBI Japan K.K., an entity established to support USDC distribution in Japan. Circle owns 50%; SBI's 50% interest is shown as noncontrolling interest. Circle consolidates the entity because it controls the relevant activities. The filing says there had been no significant operating results to date as of March 31, 2026. SEC primary filing, lines 618–621: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000150/crcl-20260331.htm.
+
+SBI's own corporate history separately records its June 2025 investment in Circle and the March 2025 launch of USDC distribution through SBI VC Trade. This confirms that SBI has direct relationships with both Circle and Ripple; it does not establish exclusivity between either issuer and SBI.
+
+Circle's September 16, 2026 Arc mainnet announcement names SBI Group in the founding validator cohort and quotes SBI Holdings CEO Yoshitaka Kitao describing SBI's intention to participate in Arc operation/governance and to build around USDC and SBI Shinsei Trust's JPYSC. The same announcement lists Coinbase among the exchanges providing access to Arc. Primary investor-relations source: https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/. Arc is Circle's separate chain, not XRPL.
+
+Circle also announced USDC availability on XRPL in June 2025: https://www.circle.com/blog/now-available-usdc-on-the-xrpl. USDC on XRPL and RLUSD on XRPL are distinct stablecoins; neither should be treated as equivalent to XRP.
+
+### Coinbase / Circle / Ripple: two stablecoin relationships coexist
+
+Circle's SEC Q1 2026 filing describes its Coinbase Collaboration Agreement: Coinbase receives allocations tied to USDC balances held on its platform and a share of the remaining ecosystem-growth payment base after approved third-party participants. Circle reported **US$330.6 million** of distribution costs connected with its Coinbase agreements for the three months ended March 31, 2026, versus US$303.2 million in the prior-year quarter. SEC source, lines 1523–1529: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000150/crcl-20260331.htm. The filing also says Circle's performance depends on USDC balances and reserve income, and that it may add other distributors; the arrangement is economically important but not exclusive.
+
+Ripple's October 28, 2026 announcement confirms a separate Ripple–Coinbase RLUSD distribution partnership. RLUSD is available through Coinbase Prime, Coinbase Exchange and the Coinbase retail app, with deposits/withdrawals across XRPL, Base and Ethereum. Ripple said it would provide liquidity on Base. The announcement explicitly said Coinbase Global Exchange availability and RLUSD collateral use would follow; no later primary-source confirmation of collateral activation was found in this pass. Source: https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/ and Coinbase's announcement: https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase.
+
+**Relationship-graph conclusion:** Coinbase distributes USDC under a commercial agreement with Circle and separately distributes RLUSD under a partnership with Ripple. SBI has an equity/JV relationship with Circle and a long-standing JV/operating relationship with Ripple. These overlapping relationships are evidence of a multi-issuer, multi-rail market—not proof of a single exclusive alliance, and not proof that stablecoin growth automatically creates XRP demand. Any XRP-demand thesis must separately demonstrate bridge-asset usage, inventory turnover, settlement duration, liquidity sourcing, and net XRP retained or consumed.
+
+### Exact-phrase and creator-identity research
+
+- **"ASK Coin":** exact-phrase search surfaced Permission.io's ASK / Permission Coin as a candidate (including a 2022 listing announcement and current token references). No primary evidence connecting that ASK token to XRP, SBI or the other entities in this research was found. Keep it as a disambiguation candidate, not a confirmed target: https://www.chainbits.com/press-releases/permission-ios-ask-coin-listed-on-gate-io-exchange/ and https://support.permission.io/kb/articles/pdf/to-which-wallet-can-i-withdraw-my-ask-currently-in-pending.
+- **"actual capital":** no reliable XRP-specific primary-source hit found in this exact-phrase pass.
+- **"SBIC, ChatGPT SBIC":** no reliable exact-phrase source found. Search silence is not proof that the phrase has never been used.
+- **Kamilah Stevenson:** the strongest linked public channel is `@drkamilahstevenson` (channel ID `UCqUPJMQdkCN6lsLVDnichPA`; search snapshot: 142K subscribers, about 1.2K videos). Its own channel profile links to `go.prescribewealth.com/yt-bio`; the official Prescribe Wealth site identifies Dr. Kamilah Stevenson as founder of MKS Health LLC: https://prescribewealth.com/. The XRP Podcast with Paul Barron episode "Crypto Panics! with Dr. Kamilah Stevenson" contains the guest's self-identification and her warning that fake pages exist: https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/. The transcript varies between Camilla/Kamilla/Kamilah, so use **Kamilah Stevenson** as the channel/brand spelling and retain the transcript spelling discrepancy as metadata.
+- An initial public-channel inventory was captured from the linked `@drkamilahstevenson` page: 12 featured popular videos, 12 recent public past livestreams, and 18 public Shorts were surfaced. Examples include "Japan Just Ended 30 Years of ZERO Interest Rates—Why XRP Could Explode", "How the Wealthy Will Use XRP", "Why Banks Need XRP to Be Expensive", "Did SWIFT Just Change XRP Forever? (The Truth)", and "XRP Got Everything We Waited For. So Why Isn't It Soaring?". This is a **partial public listing**, not a complete export of all ~1.2K uploads. Member-only videos were excluded. No claims in these titles are treated as verified facts.
+- Other similarly named channels (including `@KamilahStevensonXrpStocks` and `@KamilahStevenson-e7b`) have no verified link to the official site in this pass and remain excluded from attribution/inventory. A LinkedIn result for a different Camilla Stevenson in London at CFC is not evidence of a relationship to the XRP creator.
+
+## Sellbird exact-repository audit — DESIGNED / EXECUTED, not installed or connected
+
+Exact repository: https://github.com/ethanplusai/sellbird. Main commit/tree SHA `8c743f1c475f61f7b2c04e50501cf6938a126ed6`, latest release **v0.5.0** published 2026-11-25 08:37:30 UTC, recursive tree **345 entries**, 87 open upstream PRs at retrieval. Repository README, pyproject, license, config, discovery, MCP, mail-provider, security and sending documentation were inspected.
+
+- License is explicitly **AGPL-3.0-only** in `pyproject.toml` and LICENSE. Keep Sellbird as a separate process/repository unless a deliberate AGPL compliance review approves a combined/distributed work. Do not copy its source into B-Agent speculatively.
+- Runtime requires Python **3.11+**. `requirements.txt` mirrors version-ranged `pyproject.toml` dependencies; it is not a fully pinned reproducible lockfile. Main dependencies include PyYAML, python-dotenv, httpx, Playwright, BeautifulSoup, dnspython, aiosmtplib, aiosqlite, keyring, Pydantic, FastAPI, Uvicorn and MCP. The upstream CI matrix tests Python 3.11/3.12 on Ubuntu/macOS/Windows and a scripted Codex CLI surface; those upstream checks were inspected, not independently executed here.
+- The Docker Compose configuration says native Linux only, uses host networking, bind-mounts the source tree and `~/.claude`, and runs the dashboard. Do not deploy that compose file unchanged in a shared or mobile environment. No local Sellbird installation, Docker build or runtime test was performed.
+- Prospect discovery: OpenStreetMap is the free default; TinyFish requires its key but is documented as free within its quota; Serper has a free allowance; DataForSEO is paid. Contact discovery/verification includes Hunter, Reoon and ZeroBounce. The code contains a 29-entry signal catalog. `docs/how-it-works.md` still says 23 signals, while `docs/signals-and-pipeline.md` and the actual catalog say 29; this is an upstream documentation inconsistency.
+- The default sample config has `require_approval: true`, but `max_daily_sends: 50`, a blank postal address and an empty do-not-contact list. No sender mailbox, Gmail/Microsoft OAuth, SMTP credentials, email-verifier key, warmup, SPF/DKIM/DMARC or suppression list is configured for the user. **Do not install with sample settings and do not send.** If later deployed for discovery, first set outbound cap to zero, retain approval mode, keep the sending kill switch engaged, and use discovery/export only.
+- The project implements deterministic pre-send checks, opt-out processing, do-not-contact suppression, office-hour windows and optional per-recipient Precleared checks. These are software controls, not a legal opinion or a guarantee of compliance. A physical sender postal address and jurisdiction-specific review remain necessary before any campaign. LinkedIn browser automation is explicitly warned by the project as a Terms-of-Service violation; leave it disabled.
+- The local MCP server uses a limited agent token and says agents cannot approve/send/resume, confirm signals, run discovery, change settings or keys. The dashboard remains the user's decision surface. A browser-pane session, however, is the user's signed-in session and can click approval; only use it while supervised and sign panes out afterward.
+- `sellbird connect` supports local Claude Code, Claude Desktop and Codex. The source explicitly says a cloud ChatGPT custom connector cannot reach a server on the user's machine; use Codex where available. Codex uses an isolated `codex app-server` and checks for a ChatGPT account rather than an API key. The repository's Codex pane/card flow is tested; ChatGPT desktop pane/card integration is marked untested. No Codex CLI authentication or same-machine data flow was verified for this user.
+- Barrot-only commercial fit is not yet validated. OSM's storefront-oriented default is poorly matched to many technology organizations. A future zero-cost discovery pilot should use only a verified free web-search source and manually verify organizations/roles; estimate all paid lookups first. No prospects were discovered, no offer was approved, no outbound was sent, and no revenue is claimed.
+
+## Run 29 evidence ledger
+
+- **DESIGNED:** separate legal-entity graph for SBIC East/Central/West versus SBI Holdings; separate XRP bridge-asset usage from XRPL infrastructure use; model Circle–Coinbase USDC economics separately from Ripple–Coinbase RLUSD distribution; keep Sellbird isolated under AGPL and outbound-paused.
+- **EXECUTED:** searched and opened official SBIC, SBI Holdings, Ripple, Circle, Coinbase and SEC sources; inspected Circle Q1 2026 10-Q; checked official YouTube channel/brand linkage and podcast transcript; inspected Sellbird v0.5.0 tree, release, license, dependency manifests, configuration, security, discovery, MCP and sending code.
+- **VERIFIED:** SBIC legal names/regions and sister-company references; SBI Holdings distinct corporate identity; SBI Ripple Asia's explicit non-XRP-handling statement; SBI VC Trade RLUSD launch; Circle SBI Japan K.K. 50/50 ownership and contributions; Coinbase–Circle USDC distribution economics; Coinbase–Ripple RLUSD listing and collateral still stated as future at announcement; Sellbird AGPL/runtime/default approval and local-connection constraints.
+- **NOT VERIFIED:** any XRP demand increase from the partnerships; Coinbase Global Exchange RLUSD collateral activation; XRP usage in the SBI Ripple Asia tokenized-deposit POC; complete 1.2K-video creator archive; identity of similarly named secondary channels; exact-phrase source for "actual capital" or "SBIC, ChatGPT SBIC"; Sellbird runtime/authentication/prospecting/outreach; user-specific Codex availability; any legal approval to combine AGPL code with B-Agent.
+
+## Updated next actions
+
+1. Preserve the three co-equal mission priorities and keep main unchanged pending merge governance/deployment authorization.
+2. XRP: add the SBIC/SBI/Ripple/Circle/Coinbase legal-entity graph with evidence links and entity boundaries; separately measure bridge-asset XRP flows, stablecoin flows and XRPL activity. Do not infer XRP demand from network/partnership headlines.
+3. XRP: continue exact-phrase work with source independence and disconfirming evidence; treat ASK/Permission Coin only as a candidate until the intended reference is disambiguated.
+4. Audio: distinct rights-cleared full-song timbres and comparative listening remain the next quality gate.
+5. Continuity: authenticated cross-host synchronization remains the next acceptance test.
+6. Sellbird: keep separate and outbound-paused; if commercial discovery proceeds, start with a no-send Barrot-only pilot and verify local Codex/MCP capability before claiming integration.
