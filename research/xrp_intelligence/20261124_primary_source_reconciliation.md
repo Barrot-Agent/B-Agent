@@ -160,56 +160,17 @@ This follow-up adds current primary-source evidence. It does **not** promote the
 
 **Model treatment:** represent each legal entity, instrument, network, contract, cash flow and XRP flow separately. Circle/Coinbase reserve economics, SBI/Circle USDC distribution, Ripple RLUSD, SBI Remit ODL, Evernorth treasury funding and cbXRP/Morpho collateral are different mechanisms. None may be collapsed into a single "institutional XRP demand" feature.
 
-### 7.7 Kamilah Stevenson public-channel attribution and curated public inventory
+### 7.7 Camilla/Kamilah Stevenson identity and YouTube attribution — unresolved
 
-**Attribution status:** the main public channel `@drkamilahstevenson` is now linked to the creator's public brand at the channel/brand level. The YouTube channel index identifies the channel as "Kamilah Stevenson", lists the creator-controlled link `go.prescribewealth.com/yt-bio`, and describes a stocks/crypto/macro investing channel. The linked brand domain `prescribewealth.com` identifies MKS Health LLC / The Inner Circle as founded by Dr. Kamilah Stevenson. This is a creator-controlled cross-link, not independent legal-identity or credential verification.
+**Person identity:** Dr. Kamilah Stevenson is identifiable through the official PrescribeWealth brand site and an independent interview. This does not establish ownership of a particular YouTube channel.
 
-**Do not merge** the channel with the separate London-based Camilla Stevenson LinkedIn profile, or with other low-subscriber YouTube channels using similar names/descriptions. A transcript result for one video renders the spoken name as "Camila"; the channel and brand spell it "Kamilah". The main channel also posted that it created a second channel, `@PrescribeWealth`; that second channel's content was not separately inventoried here.
+**Channel identity:** the candidate channel `UCqUPJMQdkCN6lsLVDnichPA` links to a PrescribeWealth bio URL, but the official PrescribeWealth site does not reciprocally link to that channel. Multiple similarly named channels exist, and the independent interview transcript varies between Kamilah/Camilla/Kamilla while giving an imprecise channel name. A one-way channel description link is insufficient to bind the exact channel ID to the person.
 
-**Curated public inventory from the main channel index** (displayed view counts and relative ages are a search-index snapshot, not independently audited analytics; individual video IDs were not exposed for most entries):
+**Attribution decision:** the earlier tentative channel-level attribution and curated title list are superseded and withdrawn. The titles and livestreams previously surfaced from that candidate channel are not attributed to Dr. Stevenson, are not a verified creator inventory, and must not be used as evidence about her statements or positions. **No public-video inventory was performed.**
 
-Recent public uploads:
-1. "This NEW Bank Deal Shows Exactly Where XRP Is Headed" — 29K views, 1 day
-2. "This New SEC Proposal Could Unlock Trillions for XRP (and nobody realizes)" — 28K, 2 days
-3. "Exactly How to Retire With Your XRP Portfolio (Even If You're Cash Poor)" — 41K, 4 days
-4. "XRP vs Banks: Why Your Money Needs Autonomy NOW" — 9.8K, 5 days
-5. "Did SWIFT Just Change XRP Forever? (The Truth)" — 77K, 5 days
-6. "BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention." — 21K, 8 days
-7. "A $119 Billion African Bank Just Put Its License Behind XRP" — 27K, 9 days
-8. "A New XRP Tool Can Buy and Sell for You" — 13K, 11 days
-9. "Invest NOW or Get Left Behind. Institutions Are Already Moving." — 16K, 12 days
-10. "The CFTC Just Said What XRP Holders Waited Years to Hear" — 44K, 12 days
-11. "Wall Street Just Got a Company Built to Keep BUYING XRP" — 16K, 2 weeks
-12. "XRP Ledger Technology Just Reached Europe's Central Bank" — 11K, 2 weeks
+Resume only after a reciprocal official link or equivalent primary identity confirmation binds the exact YouTube channel ID to Dr. Stevenson. Then inventory public uploads, Shorts and livestreams by canonical video ID with publication timestamps and transcript provenance. Exclude member-only material and respect platform access controls.
 
-Popular public uploads surfaced by the same channel index:
-- "Japan Just Ended 30 Years of ZERO Interest Rates—Why XRP Could Explode" — 253K, 10 months
-- "How the Wealthy Will Use XRP (Most People Won't Understand)" — 151K, 8 months
-- "Flare Is Putting 100 Million XRP to Work. Holders Can Earn From It" — 148K, 1 month
-- "Why XRP Could Be Repriced (Banks Aren't Trading It)" — 143K, 10 months
-- "Banks Just Got the GREEN LIGHT on Crypto—Are You Positioned" — 139K, 7 months
-- "SEC Silent, CFTC Approved: XRP Just Got Treated Like Gold" — 135K, 10 months
-- "The CLARITY Act Just Failed in the Senate. What This Means for XRP" — 129K, 1 month
-- "SWIFT Just Connected 11,000 Banks—and XRP Is at the Center" — 86K, 6 months
-- "Why Banks Need XRP to Be Expensive (Retail Is Thinking About It Wrong)" — 84K, 10 months
-- "Most XRP Holders Don't Understand What They're Actually Holding" — 83K, 7 months
-- "Japan's Top Financial CEO Just Publicly DEMANDED The US Senate Act On XRP" — 82K, 4 months
-
-Public live streams surfaced by the channel index:
-- "XRP Got Everything We Waited For. So Why Isn't It Soaring?" — 19K, 1 day
-- "XRP's Next Big Move Could Come Down to These 4 Days" — 26K, 3 days
-- "Bank Of America's CEO Just ADMITTED What XRP Holders Already Knew" — 20K, 6 days
-- "I Was WRONG About XRP. The Timeline Just Changed." — 35K, 8 days
-- "191,000 Traders Got Wiped Out While XRP Became Wall Street Collateral" — 22K, 2 weeks
-- "Bad Jobs. Higher Rates. Something Just Broke. Watch Your XRP." — 23K, 2 weeks
-- "Your XRP Can Now Trade Without You" — 21K, 2 weeks
-- "America's Biggest Banks Just Picked Quant. XRP Was Never the Competition." — 42K, 3 weeks
-- "The White House Is Done Waiting on Congress. XRP Moves Forward Anyway" — 19K, 3 weeks
-- "The CLARITY Act Exposed the Banks. XRP Just Became More Important" — 23K, 4 weeks
-- "The SEC Just Approved Stocks Onchain. XRP Was Built for What Comes Next" — 11K, 1 month
-- "The CLARITY Act Vote Failed. XRP Ran 580% Without It" — 22K, 1 month
-
-Members-only videos were excluded. The inventory is a curated XRP/Japan/institutional subset, not all 1.2K channel uploads. A separately indexed public video, "Japan's Yen Crisis Put $1 Trillion of U.S. Debt at Risk" (2026-08-07), is directly linked at https://www.youtube.com/watch?v=Qvz-NilZTgo.
+Correction record: [PR #1702 identity-audit note](https://github.com/Barrot-Agent/B-Agent/pull/1702#issuecomment-7151626175). The JSON addendum's existing `data_quality` and `search_log` already record the no-identity/no-inventory result; this Markdown section now aligns with that evidence.
 
 ### 7.8 Exact-phrase status after follow-up
 
@@ -234,4 +195,4 @@ Members-only videos were excluded. The inventory is a curated XRP/Japan/institut
 23. Coinbase Q3 2026 Form 10-Q (2026-09-30): https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
 24. Coinbase Q3 2026 results (2026-10-29): https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx
 25. Prescribewealth official brand site: https://prescribewealth.com/
-26. Main YouTube channel: https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA
+26. Candidate YouTube channel (ownership by Dr. Kamilah Stevenson not verified; not attributed): https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA
