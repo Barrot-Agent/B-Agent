@@ -7,6 +7,7 @@ and true-peak headroom. Its metrics are technical QC, not an artistic-quality sc
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 import math
 from pathlib import Path
@@ -42,12 +43,19 @@ def _headroom_gain(peak_level: float, ceiling_dbfs: float) -> float:
     return min(1.0, ceiling / peak_level)
 
 
-def _render_midi_stereo(midi, *, soundfont_path: str | Path, sample_rate: int, render_duration_seconds: float | None = None):
-    """Render MIDI events through one FluidSynth instance into interleaved stereo.
+def _render_midi_stereo(
+    midi,
+    *,
+    soundfont_path: str | Path | Mapping[str, str | Path],
+    sample_rate: int,
+    render_duration_seconds: float | None = None,
+):
+    """Render MIDI through one FluidSynth instance with optional per-track SF2s.
 
-    Pitched instruments receive independent MIDI channels; channel 10 (index 9)
-    is reserved for General MIDI percussion. Notes are scheduled on the sample
-    clock, with note-off events ordered before note-on events at the same sample.
+    A mapping selects a SoundFont by MIDI instrument name. Every distinct SF2 is
+    loaded once into the same synth, so tracks retain a shared render timeline and
+    shared FluidSynth effects. Pitched instruments receive independent channels;
+    channel 10 (index 9) is reserved for General MIDI percussion.
     """
     try:
         import fluidsynth
@@ -61,23 +69,47 @@ def _render_midi_stereo(midi, *, soundfont_path: str | Path, sample_rate: int, r
     if not any(getattr(instrument, "notes", ()) for instrument in instruments):
         return np.zeros((0, 2), dtype=np.float32)
 
+    active_indices = {
+        index
+        for index, instrument in enumerate(instruments)
+        if (
+            getattr(instrument, "notes", ())
+            or getattr(instrument, "pitch_bends", ())
+            or getattr(instrument, "control_changes", ())
+        )
+    }
+    if isinstance(soundfont_path, Mapping):
+        soundfont_by_instrument: dict[int, Path] = {}
+        for index in active_indices:
+            name = getattr(instruments[index], "name", None)
+            if not isinstance(name, str) or not name or name not in soundfont_path:
+                raise ValueError(
+                    f"No SoundFont mapping was supplied for MIDI instrument {name!r}."
+                )
+            soundfont_by_instrument[index] = Path(soundfont_path[name])
+    else:
+        default_soundfont = Path(soundfont_path)
+        soundfont_by_instrument = {
+            index: default_soundfont for index in active_indices
+        }
+
     synth = fluidsynth.Synth(samplerate=sample_rate)
     try:
-        soundfont_id = synth.sfload(str(soundfont_path))
-        if soundfont_id < 0:
-            raise RuntimeError("FluidSynth could not load the supplied SoundFont.")
+        soundfont_ids: dict[Path, int] = {}
+        for soundfont in dict.fromkeys(soundfont_by_instrument.values()):
+            soundfont_id = synth.sfload(str(soundfont))
+            if soundfont_id < 0:
+                raise RuntimeError(
+                    f"FluidSynth could not load SoundFont {soundfont.name!r}."
+                )
+            soundfont_ids[soundfont] = soundfont_id
 
         channel_by_instrument: dict[int, int] = {}
         next_channel = 0
         drum_program: int | None = None
 
         for index, instrument in enumerate(instruments):
-            has_events = bool(
-                getattr(instrument, "notes", ())
-                or getattr(instrument, "pitch_bends", ())
-                or getattr(instrument, "control_changes", ())
-            )
-            if not has_events:
+            if index not in active_indices:
                 continue
 
             if instrument.is_drum:
@@ -101,7 +133,10 @@ def _render_midi_stereo(midi, *, soundfont_path: str | Path, sample_rate: int, r
                 bank = 0
 
             selected = synth.program_select(
-                channel, soundfont_id, bank, int(instrument.program)
+                channel,
+                soundfont_ids[soundfont_by_instrument[index]],
+                bank,
+                int(instrument.program),
             )
             if selected == -1:
                 raise RuntimeError(
