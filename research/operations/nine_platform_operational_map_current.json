@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T23:01:54Z",
+  "captured_at_utc": "2026-11-25T23:20:08Z",
   "capture_basis": "Run 28: current main/tree/12-PR inventory and overlap audit; exact-head #1702 full-suite and gates verified on pre-update head af8c69a; Run 164 raw/event/feature-store artifacts downloaded and independently checked; 21/21 retained payload hashes, 37 receipt-chain links and SQLite integrity verified; current spot/depth and provider restrictions recorded; OCC/BNY/Ripple primary-source updates. Run 28 handoff commit cfd75f0; map commit and its exact-head CI remain pending.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
@@ -26,7 +26,7 @@
       "latest_main_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757328",
       "latest_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757294",
       "latest_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757275",
-      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45711248598",
+      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719493066",
       "latest_main_pages_deployment": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45509754310",
       "latest_a2a_worker_tests": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45509757309",
       "latest_audio_render_integration": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45487455702",
@@ -34,7 +34,7 @@
       "latest_branch_creation_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45515917889"
     },
     "branch_protection_summary": {
-      "observed_at_utc": "2026-11-25T23:01:54Z",
+      "observed_at_utc": "2026-11-25T23:20:08Z",
       "source": "GET /repos/Barrot-Agent/B-Agent/branches/main",
       "branch_protected": true,
       "protection_enabled": true,
@@ -62,8 +62,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "head_sha": "d538c23e1d534e28924277baf99ef719793e7005",
-        "commits_ahead": 86,
+        "head_sha": "225454544756aeb3dcf6c823ce819b7fefcd23c3",
+        "commits_ahead": 87,
         "commits_behind": 0,
         "draft": false,
         "changed_paths": [
@@ -80,44 +80,69 @@
         "review_count": 0,
         "mergeable": true,
         "mergeable_state": "clean",
-        "validation_status": "EXACT_HEAD_FULL_REPOSITORY_SUITE_AND_REQUIRED_CHECKS_PASSED_ON_D538; RUN30_HANDOFF_MAP_UPDATE_REQUIRES_NEW_EXACT_HEAD_RERUN",
+        "validation_status": "EXACT_HEAD_FULL_SUITE_4699_PASSED_AND_ALL_REQUIRED_CHECKS_PASSED; RUN31_UPDATE_REQUIRES_NEW_EXACT_HEAD_RERUN",
         "checks": {
+          "observed_at_utc": "2026-11-25T23:14:37Z",
+          "pr_number": 1702,
+          "tested_head_sha": "225454544756aeb3dcf6c823ce819b7fefcd23c3",
+          "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
+          "commits_ahead": 87,
+          "commits_behind": 0,
           "full_suite": {
-            "run_id": 45709663386,
+            "run_id": 45719184280,
+            "job_id": 139572899559,
             "conclusion": "success",
-            "test_count_detail": "Not exposed by available GitHub run/check API"
+            "passed": 4699,
+            "failed": 0,
+            "skipped": 1,
+            "warnings": 11,
+            "subtests": 21,
+            "coverage_percent": 74.21,
+            "duration_seconds": 164.26
           },
-          "dependency_audit": {
-            "run_id": 45709663322,
-            "conclusion": "success"
-          },
-          "money_audit": {
-            "run_id": 45709663447,
-            "conclusion": "success"
-          },
-          "conflict_integrity": {
-            "run_id": 45709663384,
-            "conclusion": "success"
-          },
-          "merge_tree": {
-            "run_id": 45709663384,
-            "conclusion": "success"
-          },
-          "gated_merge": {
-            "run_id": 45709651561,
+          "core_tests": {
+            "run_id": 45719184280,
+            "job_id": 139572900058,
             "conclusion": "success"
           },
           "pages_build_validation": {
-            "conclusion": "success",
-            "deployment": false
-          }
+            "run_id": 45719184280,
+            "job_id": 139572900089,
+            "conclusion": "success_no_deployment"
+          },
+          "dependency_audit": {
+            "run_id": 45719184441,
+            "conclusion": "success"
+          },
+          "money_audit": {
+            "run_id": 45719184263,
+            "conclusion": "success"
+          },
+          "conflict_integrity_and_merge_tree": {
+            "run_id": 45719184431,
+            "conclusion": "success"
+          },
+          "gated_merge": {
+            "run_id": 45719184315,
+            "conclusion": "success"
+          },
+          "review_count": 0,
+          "mergeable": true,
+          "mergeable_state": "clean",
+          "merge_status": "NOT_MERGED",
+          "blockers": [
+            "zero independent reviews",
+            "branch-protection details return HTTP 403; required approval count unknown",
+            "merge triggers GitHub Pages deployment; explicit deployment authorization absent"
+          ]
         },
         "blockers": [
           "zero independent reviews",
-          "required approval count unavailable because detailed branch-protection endpoint returns HTTP 403",
-          "merge triggers GitHub Pages deployment; explicit deployment approval absent"
+          "branch-protection details return HTTP 403; required approval count unknown",
+          "merge triggers GitHub Pages deployment; explicit deployment authorization absent"
         ],
-        "observed_at_utc": "2026-11-25T23:01:54Z"
+        "observed_at_utc": "2026-11-25T23:20:08Z",
+        "exact_head_validation": "PASSED_ON_2254545"
       },
       {
         "number": 1703,
@@ -191,8 +216,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1704",
         "branch": "integration/audio-instrument-soundfont-map-20261125",
         "base": "main",
-        "head_sha": "e69f94309e7053bb3adfa44062edbd3017d2e9ed",
-        "commits_ahead": 11,
+        "head_sha": "9d8a37c576fbb951862e8a45cd1ddb77691ac7a9",
+        "commits_ahead": 12,
         "commits_behind": 0,
         "draft": false,
         "changed_paths": [
@@ -208,44 +233,129 @@
         "workstream_uniqueness": "unique_audio_workstream",
         "review_count": 0,
         "mergeable": true,
-        "mergeable_state": "clean",
-        "validation_status": "EXACT_HEAD_FULL_SUITE_AND_AUDIO_RENDER_PASSED",
+        "mergeable_state": "blocked",
+        "validation_status": "EXACT_HEAD_FULL_SUITE_4696_PASSED_AUDIO_RENDER_INTEGRATION_AND_ALL_REQUIRED_CHECKS_PASSED; NO_REVIEWS_OR_DEPLOYMENT_AUTHORIZATION",
         "checks": {
+          "observed_at_utc": "2026-11-25T23:20:02Z",
+          "pr_number": 1704,
+          "head_sha": "9d8a37c576fbb951862e8a45cd1ddb77691ac7a9",
+          "commits_ahead": 12,
+          "commits_behind": 0,
           "full_suite": {
-            "run_id": 45662974704,
+            "run_id": 45719979087,
             "conclusion": "success",
-            "passed": 4694,
+            "job_id": 139575556470,
+            "passed": 4696,
             "failed": 0,
             "skipped": 1,
             "warnings": 11,
             "subtests": 21,
-            "coverage_percent": 74.23
+            "coverage_percent": 74.25,
+            "duration_seconds": 128.25
+          },
+          "core_tests": {
+            "run_id": 45719979087,
+            "job_id": 139575556707,
+            "conclusion": "success"
           },
           "audio_render_integration": {
-            "run_id": 45662974963,
+            "run_id": 45719979044,
             "conclusion": "success",
-            "tests_passed": 3,
-            "artifact_id": 15046855997,
-            "artifact_sha256": "c30a6aac9d361807314d22156ccb9aceeaaba1b32fa62fe5695e2961b6df0f78",
-            "artifact_size_bytes": 194647443,
-            "expires_at": "2026-12-25T17:17:48Z"
+            "job_id": 139575555762,
+            "artifact_id": 15072156000,
+            "artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719979044/artifacts/15072156000",
+            "qc_artifact_id": 15070813928,
+            "qc_artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719979044/artifacts/15070813928"
           },
           "dependency_audit": {
-            "run_id": 45662975097,
+            "run_id": 45719978827,
             "conclusion": "success"
           },
           "money_audit": {
-            "run_id": 45662974858,
+            "run_id": 45719978940,
             "conclusion": "success"
           },
           "conflict_integrity": {
-            "run_id": 45662974944,
+            "run_id": 45719979217,
             "conclusion": "success"
           },
-          "fail_closed_gate": {
-            "run_id": 45662974805,
-            "conclusion": "success"
-          }
+          "gated_merge": {
+            "run_id": 45719979054,
+            "conclusion": "success",
+            "readiness": "READY_FOR_EXPLICIT_MERGE"
+          },
+          "pages_build_validation": {
+            "conclusion": "success_no_deployment"
+          },
+          "deliverable": {
+            "duration_seconds": 175.54546485260772,
+            "bpm": 110,
+            "key": "D minor",
+            "time_signature": "4/4",
+            "bars": 80,
+            "sections": 10,
+            "sample_rate_hz": 44100,
+            "channels": 2,
+            "stem_count": 9,
+            "stems_sample_aligned": true,
+            "midi_available": true,
+            "native_daw_project_available": false,
+            "peak_dbfs": -6.016866923499151,
+            "true_peak_dbtp": -5.999999457689846,
+            "rms_dbfs": -24.89697784197829,
+            "integrated_loudness_lufs": -22.4,
+            "loudness_range_lu": 8,
+            "clip_sample_count": 0,
+            "stem_sum_correlation": 0.9999807582177702,
+            "relative_rms_error": 0.006186498709205173
+          },
+          "stereo_integrity": {
+            "mix": {
+              "dc_offset_dbfs": -47.37326301815199,
+              "stereo_correlation": 0.5756393910677431,
+              "mono_fold_down_loss_db": -1.0296608247255141,
+              "warnings": [
+                "dc_offset_above_threshold"
+              ]
+            },
+            "pad": {
+              "dc_offset_dbfs": -47.319067322590406,
+              "warnings": [
+                "dc_offset_above_threshold"
+              ]
+            },
+            "lead": {
+              "dc_offset_dbfs": -110.7432000301904,
+              "stereo_correlation": -0.30120442008664194,
+              "mono_fold_down_loss_db": -4.563339130495524,
+              "warnings": [
+                "mono_fold_down_loss_below_threshold",
+                "negative_stereo_correlation"
+              ]
+            },
+            "strings": {
+              "stereo_correlation": 0.051946558630687645,
+              "mono_fold_down_loss_db": -2.7913831643157043,
+              "warnings": []
+            }
+          },
+          "thresholds": {
+            "dc_offset_warning_dbfs": -60,
+            "mono_fold_down_warning_db": -3
+          },
+          "qc_change": "Added chunked DC-offset, inter-channel correlation and mono fold-down diagnostics to render results, every stem and full-song QC. No audio samples were altered.",
+          "subjective_listening": "NOT_EXECUTED",
+          "user_acceptance": "NOT_OBTAINED",
+          "rights_status": "CALLER_SUPPLIED_UNVERIFIED",
+          "review_count": 0,
+          "mergeable": true,
+          "mergeable_state": "blocked",
+          "blockers": [
+            "zero independent reviews",
+            "branch-protection details return HTTP 403; required approval count unknown",
+            "main merge triggers Pages deployment; explicit deployment authorization absent"
+          ],
+          "cache_warning": "GitHub Actions cache write reached configured budget and became read-only to prevent additional charges; test suite still passed."
         },
         "limitations": [
           "full-song render uses FluidR3_GM as one SoundFont across all instruments; routing interface is tested but distinct production timbres are not established",
@@ -255,10 +365,11 @@
         ],
         "blockers": [
           "zero independent reviews",
-          "approval count unavailable via HTTP 403",
-          "Pages deployment approval absent"
+          "branch-protection details return HTTP 403; required approval count unknown",
+          "main merge triggers Pages deployment; explicit deployment authorization absent"
         ],
-        "observed_at_utc": "2026-11-25T18:15:10.571Z"
+        "observed_at_utc": "2026-11-25T23:20:02Z",
+        "exact_head_validation": "PASSED_ON_9D8A37C"
       },
       {
         "number": 1705,
@@ -713,7 +824,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T23:01:54Z",
+      "observed_at_utc": "2026-11-25T23:20:08Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -793,24 +904,24 @@
         1713
       ],
       "latest_xrp_ingestion_run": {
-        "run_number": 166,
-        "run_id": 45711248598,
-        "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45711248598",
+        "run_number": 167,
+        "run_id": 45719493066,
+        "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719493066",
         "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
-        "captured_at_utc": "2026-11-25T22:13:23.133529Z",
-        "data_cutoff_utc": "2026-11-25T22:13:23.133529Z",
+        "captured_at_utc": "2026-11-25T23:12:42.939831Z",
+        "data_cutoff_utc": "2026-11-25T23:12:42.939831Z",
         "adapter_version": "xrp-public-market-v3.34",
         "parser_version": "xrp-public-market-v3.32",
-        "snapshot_id": "acd77ed5e517143c780d6020836752b6f155be80868d124d4121472a41c6af74",
+        "snapshot_id": "3ba49e2f3c7262b7f5c826e5c4afaa8ffdcffd2586eec308e042f48e6ff510a3",
         "snapshot_status": "verified",
         "feature_store": {
-          "snapshot_count": 123,
-          "latest_snapshot_records": 373,
+          "snapshot_count": 124,
+          "latest_snapshot_records": 389,
           "input_records": 2230,
           "delta_records": 756,
-          "eligible_records": 373,
-          "excluded_records": 383,
-          "cumulative_history_record_count": 32043,
+          "eligible_records": 389,
+          "excluded_records": 367,
+          "cumulative_history_record_count": 32432,
           "sqlite_integrity": "ok",
           "store_verification": "PASS",
           "raw_rebuild_implemented": false
@@ -819,27 +930,34 @@
           "count": 37,
           "retained_raw_payloads": 21,
           "digest_only": 16,
-          "cross_run_chain_sequence": 123,
-          "per_run_chain_head_sha256": "6815186104826b56a2f163b3e14245ab10981c29b7b7dce4d4cce0248e16b219",
-          "receipt_log_sha256": "598bd21482f4d9748445d867b51b5d75571b906c004f69659bc79f4d136ef6ef",
-          "cross_run_chain_sha256": "195397f7a52b6cd41f183b3de4eef58c41e7d9e0572de5cea149e86765ba4ef0",
+          "cross_run_chain_sequence": 124,
+          "per_run_chain_head_sha256": "079aacc43d14a3960d1ce056c027b4e4229adf27423b1048acb5b87c78d7fffb",
+          "chain_log_sha256": "78bd62572ff2a89fd2f9b936584fb113aa2375578f5f872ee31c3cdc96f3a624",
+          "receipt_log_sha256": "a29cb2714ad31c0ecf29b283b50b3c67535fcf83323a885ec89887f741603f55",
+          "cross_run_chain_sha256": "4630ad5615bede52f35d8b85b5dc6f86c7c089cd1eb9a3c92357aab8e3184847",
           "verification_status": "PASS",
           "external_anchor": "NOT_ANCHORED",
+          "per_source_independent_timestamp_anchor": false,
           "raw_artifact_retention_days": 90
         },
         "event_timeline": {
           "events": 150,
           "scenarios": 117,
-          "verified_receipt_links": 0,
-          "missing_raw_receipt_hash": 150,
-          "receipt_complete": false,
+          "receipt_count": 37,
+          "verified_receipt_count": 0,
+          "raw_hash_present_count": 0,
+          "raw_bytes_retained_verified_count": 0,
+          "digest_only_verified_count": 0,
+          "source_id_match_count": 0,
           "url_match_count": 11,
           "url_capture_time_match_count": 0,
+          "receipt_complete": false,
+          "status": "INCOMPLETE",
           "model_eligible": false,
           "forecast_status": "NOT_ISSUED"
         },
         "evaluation": {
-          "walk_forward_entries": 464,
+          "walk_forward_entries": 468,
           "horizons": [
             "1h"
           ],
@@ -852,31 +970,30 @@
         "quote_basis": {
           "status": "VERIFIED",
           "venue": "OKX",
-          "best_bid_usd": 0.936253125,
-          "best_ask_usd": 0.936362368,
-          "mid_price_usd": 0.9363077465,
-          "spread_bps": 1.1667424562959825,
-          "max_component_age_seconds": 10.061529,
-          "snapshot_skew_seconds": 0.199,
+          "best_bid_usd": 0.933257115,
+          "best_ask_usd": 0.933366328,
+          "mid_price_usd": 0.9333117215,
+          "spread_bps": 1.170166381543692,
+          "max_component_age_seconds": 9.875831,
+          "snapshot_skew_seconds": 0.39,
           "publisher_independence_group_count": 1,
           "top_of_book_only": true,
           "model_eligible": true,
-          "component_raw_sha256": {
-            "okx_spot_ticker": "77a2c87133e69ea602b821de6fc3514add38c74eeb8ea209aed1af699789d1c7",
-            "okx_usdt_usd_ticker": "f3e793b7c2bc72b2b7057fa90fdc9f6724529b88b9e20b0d0b56314425fa7919"
-          }
+          "usdt_usd_mid": 0.998675
         },
         "source_failures": {
-          "count": 18,
+          "count": 19,
           "binance_http_451": 8,
           "bybit_http_403": 5,
           "grayscale_http_429": 1,
           "franklin_processing_failure": 1,
+          "etf_flows_csv_processing_failure": 1,
           "sec_configuration_failures": 3,
           "raw_only_source_count": 26
         },
         "sec": {
           "status": "BLOCKED_CONFIGURATION",
+          "issuer_count": 3,
           "raw_receipts": 0,
           "filing_events": 0,
           "source_failures": 3,
@@ -884,10 +1001,36 @@
         },
         "morpho_cbxrp": {
           "status": "BLOCKED_INDEXER_BLOCK_MISMATCH",
-          "indexer_tip_block": 62272026,
-          "market_state_block": 62272127,
+          "indexer_tip_block": 62289743,
+          "market_state_block": 62289924,
+          "market_history_block": 62289926,
+          "market_liquidity_block": 62289926,
+          "block_timestamp_verified": false,
           "feature_store_admitted": false,
-          "model_eligible": false
+          "model_eligible": false,
+          "block_gap": 181
+        },
+        "weekly_source_policy": {
+          "status": "NO_CAPTURE_THIS_RUN",
+          "next_scheduled_delayed_release_date": "2026-11-30",
+          "semiweekly_effective_date_confirmed": false
+        },
+        "coinbase_backfill": {
+          "status": "NOT_REQUESTED",
+          "mode": "MANUAL_ONLY_ADDITIONAL_HISTORY"
+        },
+        "xrpl_node_reconciliation": {
+          "status": "NOT_COLLECTED_PROVIDER_TERMS_POLICY",
+          "model_admission_allowed": false
+        },
+        "research_correction_audit": {
+          "overlay_count": 2,
+          "narrative_only_correction_artifact_count": 55,
+          "capture_window_correction_artifact_count": 1,
+          "legacy_untyped_correction_artifact_count": 2,
+          "source_artifacts_modified": false,
+          "model_eligible": false,
+          "forecast_issued": false
         },
         "paper_trade_executed": false
       },
@@ -1277,24 +1420,24 @@
     ]
   },
   "latest_xrp_ingestion_observation": {
-    "run_number": 166,
-    "run_id": 45711248598,
-    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45711248598",
+    "run_number": 167,
+    "run_id": 45719493066,
+    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719493066",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
-    "captured_at_utc": "2026-11-25T22:13:23.133529Z",
-    "data_cutoff_utc": "2026-11-25T22:13:23.133529Z",
+    "captured_at_utc": "2026-11-25T23:12:42.939831Z",
+    "data_cutoff_utc": "2026-11-25T23:12:42.939831Z",
     "adapter_version": "xrp-public-market-v3.34",
     "parser_version": "xrp-public-market-v3.32",
-    "snapshot_id": "acd77ed5e517143c780d6020836752b6f155be80868d124d4121472a41c6af74",
+    "snapshot_id": "3ba49e2f3c7262b7f5c826e5c4afaa8ffdcffd2586eec308e042f48e6ff510a3",
     "snapshot_status": "verified",
     "feature_store": {
-      "snapshot_count": 123,
-      "latest_snapshot_records": 373,
+      "snapshot_count": 124,
+      "latest_snapshot_records": 389,
       "input_records": 2230,
       "delta_records": 756,
-      "eligible_records": 373,
-      "excluded_records": 383,
-      "cumulative_history_record_count": 32043,
+      "eligible_records": 389,
+      "excluded_records": 367,
+      "cumulative_history_record_count": 32432,
       "sqlite_integrity": "ok",
       "store_verification": "PASS",
       "raw_rebuild_implemented": false
@@ -1303,27 +1446,34 @@
       "count": 37,
       "retained_raw_payloads": 21,
       "digest_only": 16,
-      "cross_run_chain_sequence": 123,
-      "per_run_chain_head_sha256": "6815186104826b56a2f163b3e14245ab10981c29b7b7dce4d4cce0248e16b219",
-      "receipt_log_sha256": "598bd21482f4d9748445d867b51b5d75571b906c004f69659bc79f4d136ef6ef",
-      "cross_run_chain_sha256": "195397f7a52b6cd41f183b3de4eef58c41e7d9e0572de5cea149e86765ba4ef0",
+      "cross_run_chain_sequence": 124,
+      "per_run_chain_head_sha256": "079aacc43d14a3960d1ce056c027b4e4229adf27423b1048acb5b87c78d7fffb",
+      "chain_log_sha256": "78bd62572ff2a89fd2f9b936584fb113aa2375578f5f872ee31c3cdc96f3a624",
+      "receipt_log_sha256": "a29cb2714ad31c0ecf29b283b50b3c67535fcf83323a885ec89887f741603f55",
+      "cross_run_chain_sha256": "4630ad5615bede52f35d8b85b5dc6f86c7c089cd1eb9a3c92357aab8e3184847",
       "verification_status": "PASS",
       "external_anchor": "NOT_ANCHORED",
+      "per_source_independent_timestamp_anchor": false,
       "raw_artifact_retention_days": 90
     },
     "event_timeline": {
       "events": 150,
       "scenarios": 117,
-      "verified_receipt_links": 0,
-      "missing_raw_receipt_hash": 150,
-      "receipt_complete": false,
+      "receipt_count": 37,
+      "verified_receipt_count": 0,
+      "raw_hash_present_count": 0,
+      "raw_bytes_retained_verified_count": 0,
+      "digest_only_verified_count": 0,
+      "source_id_match_count": 0,
       "url_match_count": 11,
       "url_capture_time_match_count": 0,
+      "receipt_complete": false,
+      "status": "INCOMPLETE",
       "model_eligible": false,
       "forecast_status": "NOT_ISSUED"
     },
     "evaluation": {
-      "walk_forward_entries": 464,
+      "walk_forward_entries": 468,
       "horizons": [
         "1h"
       ],
@@ -1336,31 +1486,30 @@
     "quote_basis": {
       "status": "VERIFIED",
       "venue": "OKX",
-      "best_bid_usd": 0.936253125,
-      "best_ask_usd": 0.936362368,
-      "mid_price_usd": 0.9363077465,
-      "spread_bps": 1.1667424562959825,
-      "max_component_age_seconds": 10.061529,
-      "snapshot_skew_seconds": 0.199,
+      "best_bid_usd": 0.933257115,
+      "best_ask_usd": 0.933366328,
+      "mid_price_usd": 0.9333117215,
+      "spread_bps": 1.170166381543692,
+      "max_component_age_seconds": 9.875831,
+      "snapshot_skew_seconds": 0.39,
       "publisher_independence_group_count": 1,
       "top_of_book_only": true,
       "model_eligible": true,
-      "component_raw_sha256": {
-        "okx_spot_ticker": "77a2c87133e69ea602b821de6fc3514add38c74eeb8ea209aed1af699789d1c7",
-        "okx_usdt_usd_ticker": "f3e793b7c2bc72b2b7057fa90fdc9f6724529b88b9e20b0d0b56314425fa7919"
-      }
+      "usdt_usd_mid": 0.998675
     },
     "source_failures": {
-      "count": 18,
+      "count": 19,
       "binance_http_451": 8,
       "bybit_http_403": 5,
       "grayscale_http_429": 1,
       "franklin_processing_failure": 1,
+      "etf_flows_csv_processing_failure": 1,
       "sec_configuration_failures": 3,
       "raw_only_source_count": 26
     },
     "sec": {
       "status": "BLOCKED_CONFIGURATION",
+      "issuer_count": 3,
       "raw_receipts": 0,
       "filing_events": 0,
       "source_failures": 3,
@@ -1368,10 +1517,36 @@
     },
     "morpho_cbxrp": {
       "status": "BLOCKED_INDEXER_BLOCK_MISMATCH",
-      "indexer_tip_block": 62272026,
-      "market_state_block": 62272127,
+      "indexer_tip_block": 62289743,
+      "market_state_block": 62289924,
+      "market_history_block": 62289926,
+      "market_liquidity_block": 62289926,
+      "block_timestamp_verified": false,
       "feature_store_admitted": false,
-      "model_eligible": false
+      "model_eligible": false,
+      "block_gap": 181
+    },
+    "weekly_source_policy": {
+      "status": "NO_CAPTURE_THIS_RUN",
+      "next_scheduled_delayed_release_date": "2026-11-30",
+      "semiweekly_effective_date_confirmed": false
+    },
+    "coinbase_backfill": {
+      "status": "NOT_REQUESTED",
+      "mode": "MANUAL_ONLY_ADDITIONAL_HISTORY"
+    },
+    "xrpl_node_reconciliation": {
+      "status": "NOT_COLLECTED_PROVIDER_TERMS_POLICY",
+      "model_admission_allowed": false
+    },
+    "research_correction_audit": {
+      "overlay_count": 2,
+      "narrative_only_correction_artifact_count": 55,
+      "capture_window_correction_artifact_count": 1,
+      "legacy_untyped_correction_artifact_count": 2,
+      "source_artifacts_modified": false,
+      "model_eligible": false,
+      "forecast_issued": false
     },
     "paper_trade_executed": false
   },
@@ -1382,8 +1557,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "d538c23e1d534e28924277baf99ef719793e7005",
-      "commits_ahead": 86,
+      "head_sha": "225454544756aeb3dcf6c823ce819b7fefcd23c3",
+      "commits_ahead": 87,
       "commits_behind": 0,
       "changed_paths": [
         "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -1397,48 +1572,70 @@
       "classification": "ready_pending_independent_review_and_deployment_authorization",
       "workstream_uniqueness": "unique",
       "review_count": 0,
-      "exact_head_validation": "PASSED_ON_D538",
+      "exact_head_validation": "PASSED_ON_2254545",
       "checks": {
+        "observed_at_utc": "2026-11-25T23:14:37Z",
+        "pr_number": 1702,
+        "tested_head_sha": "225454544756aeb3dcf6c823ce819b7fefcd23c3",
+        "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
+        "commits_ahead": 87,
+        "commits_behind": 0,
         "full_suite": {
-          "run_id": 45709663386,
+          "run_id": 45719184280,
+          "job_id": 139572899559,
           "conclusion": "success",
-          "test_count_detail": "Not exposed by available GitHub run/check API"
+          "passed": 4699,
+          "failed": 0,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests": 21,
+          "coverage_percent": 74.21,
+          "duration_seconds": 164.26
         },
-        "dependency_audit": {
-          "run_id": 45709663322,
-          "conclusion": "success"
-        },
-        "money_audit": {
-          "run_id": 45709663447,
-          "conclusion": "success"
-        },
-        "conflict_integrity": {
-          "run_id": 45709663384,
-          "conclusion": "success"
-        },
-        "merge_tree": {
-          "run_id": 45709663384,
-          "conclusion": "success"
-        },
-        "gated_merge": {
-          "run_id": 45709651561,
+        "core_tests": {
+          "run_id": 45719184280,
+          "job_id": 139572900058,
           "conclusion": "success"
         },
         "pages_build_validation": {
-          "conclusion": "success",
-          "deployment": false
-        }
+          "run_id": 45719184280,
+          "job_id": 139572900089,
+          "conclusion": "success_no_deployment"
+        },
+        "dependency_audit": {
+          "run_id": 45719184441,
+          "conclusion": "success"
+        },
+        "money_audit": {
+          "run_id": 45719184263,
+          "conclusion": "success"
+        },
+        "conflict_integrity_and_merge_tree": {
+          "run_id": 45719184431,
+          "conclusion": "success"
+        },
+        "gated_merge": {
+          "run_id": 45719184315,
+          "conclusion": "success"
+        },
+        "review_count": 0,
+        "mergeable": true,
+        "mergeable_state": "clean",
+        "merge_status": "NOT_MERGED",
+        "blockers": [
+          "zero independent reviews",
+          "branch-protection details return HTTP 403; required approval count unknown",
+          "merge triggers GitHub Pages deployment; explicit deployment authorization absent"
+        ]
       },
-      "validation_status": "EXACT_HEAD_FULL_REPOSITORY_SUITE_AND_REQUIRED_CHECKS_PASSED_ON_D538; RUN30_HANDOFF_MAP_UPDATE_REQUIRES_NEW_EXACT_HEAD_RERUN",
-      "observed_at_utc": "2026-11-25T23:01:54Z",
-      "validation_failures": [
-        "tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions — test expected the old wording 'Write existing documentation files'; the live map correctly records 'Write existing handoff/platform-map files' and the existing branch."
-      ],
+      "validation_status": "EXACT_HEAD_FULL_SUITE_4699_PASSED_AND_ALL_REQUIRED_CHECKS_PASSED; RUN31_UPDATE_REQUIRES_NEW_EXACT_HEAD_RERUN",
+      "observed_at_utc": "2026-11-25T23:20:08Z",
+      "validation_failures": [],
       "validation_correction": "The prior exact-head full suite failed only because the test expected PR #1712 classification 'ready_pending_independent_review' while the map correctly included the additional deployment-authorization blocker. The test now asserts the complete classification without weakening the gate. Corrected head 7c4d8ff19c5c682bd3499b2990314d5f7cf92375 passed.",
       "blockers": [
         "zero independent reviews",
-        "required approval count unavailable because detailed branch-protection endpoint returns HTTP 403",
-        "merge triggers GitHub Pages deployment; explicit deployment approval absent"
+        "branch-protection details return HTTP 403; required approval count unknown",
+        "merge triggers GitHub Pages deployment; explicit deployment authorization absent"
       ]
     },
     {
@@ -1501,60 +1698,153 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1704",
       "branch": "integration/audio-instrument-soundfont-map-20261125",
       "base": "main",
-      "head_sha": "e69f94309e7053bb3adfa44062edbd3017d2e9ed",
-      "commits_ahead": 11,
+      "head_sha": "9d8a37c576fbb951862e8a45cd1ddb77691ac7a9",
+      "commits_ahead": 12,
       "commits_behind": 0,
       "changed_paths": [
         ".github/workflows/audio-render-integration.yml",
         "barrot_agent/creative/audio_bundle.py",
         "barrot_agent/creative/audio_render.py",
         "docs/MUSICAL_DNA_ENGINE.md",
+        "tests/test_audio_production_quality_gates.py",
         "tests/test_audio_render_integration.py",
         "tests/test_musical_adapters.py"
       ],
       "classification": "ready_pending_independent_review_and_deployment_authorization",
       "workstream_uniqueness": "unique",
       "review_count": 0,
-      "exact_head_validation": "PASSED_ON_CURRENT_HEAD",
+      "exact_head_validation": "PASSED_ON_9D8A37C",
       "checks": {
+        "observed_at_utc": "2026-11-25T23:20:02Z",
+        "pr_number": 1704,
+        "head_sha": "9d8a37c576fbb951862e8a45cd1ddb77691ac7a9",
+        "commits_ahead": 12,
+        "commits_behind": 0,
         "full_suite": {
-          "run_id": 45662974704,
+          "run_id": 45719979087,
           "conclusion": "success",
-          "passed": 4694,
+          "job_id": 139575556470,
+          "passed": 4696,
           "failed": 0,
           "skipped": 1,
           "warnings": 11,
           "subtests": 21,
-          "coverage_percent": 74.23
+          "coverage_percent": 74.25,
+          "duration_seconds": 128.25
+        },
+        "core_tests": {
+          "run_id": 45719979087,
+          "job_id": 139575556707,
+          "conclusion": "success"
         },
         "audio_render_integration": {
-          "run_id": 45662974963,
+          "run_id": 45719979044,
           "conclusion": "success",
-          "tests_passed": 3,
-          "artifact_id": 15046855997,
-          "artifact_sha256": "c30a6aac9d361807314d22156ccb9aceeaaba1b32fa62fe5695e2961b6df0f78",
-          "artifact_size_bytes": 194647443,
-          "expires_at": "2026-12-25T17:17:48Z"
+          "job_id": 139575555762,
+          "artifact_id": 15072156000,
+          "artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719979044/artifacts/15072156000",
+          "qc_artifact_id": 15070813928,
+          "qc_artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719979044/artifacts/15070813928"
         },
         "dependency_audit": {
-          "run_id": 45662975097,
+          "run_id": 45719978827,
           "conclusion": "success"
         },
         "money_audit": {
-          "run_id": 45662974858,
+          "run_id": 45719978940,
           "conclusion": "success"
         },
         "conflict_integrity": {
-          "run_id": 45662974944,
+          "run_id": 45719979217,
           "conclusion": "success"
         },
-        "fail_closed_gate": {
-          "run_id": 45662974805,
-          "conclusion": "success"
-        }
+        "gated_merge": {
+          "run_id": 45719979054,
+          "conclusion": "success",
+          "readiness": "READY_FOR_EXPLICIT_MERGE"
+        },
+        "pages_build_validation": {
+          "conclusion": "success_no_deployment"
+        },
+        "deliverable": {
+          "duration_seconds": 175.54546485260772,
+          "bpm": 110,
+          "key": "D minor",
+          "time_signature": "4/4",
+          "bars": 80,
+          "sections": 10,
+          "sample_rate_hz": 44100,
+          "channels": 2,
+          "stem_count": 9,
+          "stems_sample_aligned": true,
+          "midi_available": true,
+          "native_daw_project_available": false,
+          "peak_dbfs": -6.016866923499151,
+          "true_peak_dbtp": -5.999999457689846,
+          "rms_dbfs": -24.89697784197829,
+          "integrated_loudness_lufs": -22.4,
+          "loudness_range_lu": 8,
+          "clip_sample_count": 0,
+          "stem_sum_correlation": 0.9999807582177702,
+          "relative_rms_error": 0.006186498709205173
+        },
+        "stereo_integrity": {
+          "mix": {
+            "dc_offset_dbfs": -47.37326301815199,
+            "stereo_correlation": 0.5756393910677431,
+            "mono_fold_down_loss_db": -1.0296608247255141,
+            "warnings": [
+              "dc_offset_above_threshold"
+            ]
+          },
+          "pad": {
+            "dc_offset_dbfs": -47.319067322590406,
+            "warnings": [
+              "dc_offset_above_threshold"
+            ]
+          },
+          "lead": {
+            "dc_offset_dbfs": -110.7432000301904,
+            "stereo_correlation": -0.30120442008664194,
+            "mono_fold_down_loss_db": -4.563339130495524,
+            "warnings": [
+              "mono_fold_down_loss_below_threshold",
+              "negative_stereo_correlation"
+            ]
+          },
+          "strings": {
+            "stereo_correlation": 0.051946558630687645,
+            "mono_fold_down_loss_db": -2.7913831643157043,
+            "warnings": []
+          }
+        },
+        "thresholds": {
+          "dc_offset_warning_dbfs": -60,
+          "mono_fold_down_warning_db": -3
+        },
+        "qc_change": "Added chunked DC-offset, inter-channel correlation and mono fold-down diagnostics to render results, every stem and full-song QC. No audio samples were altered.",
+        "subjective_listening": "NOT_EXECUTED",
+        "user_acceptance": "NOT_OBTAINED",
+        "rights_status": "CALLER_SUPPLIED_UNVERIFIED",
+        "review_count": 0,
+        "mergeable": true,
+        "mergeable_state": "blocked",
+        "blockers": [
+          "zero independent reviews",
+          "branch-protection details return HTTP 403; required approval count unknown",
+          "main merge triggers Pages deployment; explicit deployment authorization absent"
+        ],
+        "cache_warning": "GitHub Actions cache write reached configured budget and became read-only to prevent additional charges; test suite still passed."
       },
-      "validation_status": "EXACT_HEAD_FULL_SUITE_AUDIO_BUNDLE_AND_GATES_PASSED",
-      "observed_at_utc": "2026-11-25T18:15:10.571Z"
+      "validation_status": "EXACT_HEAD_FULL_SUITE_4696_PASSED_AUDIO_RENDER_INTEGRATION_AND_ALL_REQUIRED_CHECKS_PASSED; NO_REVIEWS_OR_DEPLOYMENT_AUTHORIZATION",
+      "observed_at_utc": "2026-11-25T23:20:02Z",
+      "blockers": [
+        "zero independent reviews",
+        "branch-protection details return HTTP 403; required approval count unknown",
+        "main merge triggers Pages deployment; explicit deployment authorization absent"
+      ],
+      "mergeable": true,
+      "mergeable_state": "blocked"
     },
     {
       "number": 1705,
@@ -2039,52 +2329,55 @@
     ]
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-25T21:37:58Z",
+    "observed_at_utc": "2026-11-25T23:14:37Z",
     "pr_number": 1702,
-    "tested_head_sha": "4eb9d12f1884c29cbdb0fa247387525b7d230481",
+    "tested_head_sha": "225454544756aeb3dcf6c823ce819b7fefcd23c3",
     "full_suite": {
-      "run_id": 45705430482,
+      "run_id": 45719184280,
       "conclusion": "success",
-      "passed": 4694,
+      "passed": 4699,
       "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests": 21,
       "coverage_percent": 74.21,
-      "active_test_modules": 544,
-      "duration_seconds": 139.81
+      "duration_seconds": 164.26
     },
     "other_checks": {
       "push_ci": {
-        "run_id": 45705418740,
+        "run_id": 45719174508,
         "conclusion": "success"
       },
       "dependency_audit": {
-        "run_id": 45705430645,
+        "run_id": 45719184441,
         "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 45705430534,
+        "run_id": 45719184263,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 45705430464,
+        "run_id": 45719184431,
+        "conclusion": "success"
+      },
+      "merge_tree": {
+        "run_id": 45719184431,
         "conclusion": "success"
       },
       "pages_build_validation": "success_no_deployment",
       "gated_merge": {
-        "run_id": 45705430616,
+        "run_id": 45719184315,
         "conclusion": "success",
         "readiness": "READY_FOR_EXPLICIT_MERGE"
       }
     },
     "merge_status": "NOT_MERGED",
     "blockers": [
-      "All 12 open PRs have zero independent reviews.",
-      "Detailed branch-protection endpoint returns HTTP 403; required approval count remains unknown.",
-      "A main merge triggers Pages deployment; explicit deployment authorization is absent."
+      "zero independent reviews",
+      "detailed branch-protection endpoint returns HTTP 403; required approval count unknown",
+      "main merge triggers Pages deployment; explicit deployment authorization absent"
     ],
-    "next_validation": "MISSION_PROMPT_ALIGNMENT_COMMIT_REQUIRES_FRESH_EXACT_HEAD_CI_AND_ALL_GATES"
+    "next_validation": "RUN31_HANDOFF_MAP_COMMIT_REQUIRES_FRESH_EXACT_HEAD_CI_AND_ALL_GATES"
   },
   "latest_primary_source_research": {
     "observed_at_utc": "2026-11-25T16:17:00Z",
@@ -2265,6 +2558,128 @@
       "previous_value": 1.00008181345608,
       "current_value": 0.9999807582177351,
       "exact_head_tests": "PASSED"
+    },
+    "latest_head_update": {
+      "observed_at_utc": "2026-11-25T23:20:02Z",
+      "pr_number": 1704,
+      "head_sha": "9d8a37c576fbb951862e8a45cd1ddb77691ac7a9",
+      "commits_ahead": 12,
+      "commits_behind": 0,
+      "full_suite": {
+        "run_id": 45719979087,
+        "conclusion": "success",
+        "job_id": 139575556470,
+        "passed": 4696,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.25,
+        "duration_seconds": 128.25
+      },
+      "core_tests": {
+        "run_id": 45719979087,
+        "job_id": 139575556707,
+        "conclusion": "success"
+      },
+      "audio_render_integration": {
+        "run_id": 45719979044,
+        "conclusion": "success",
+        "job_id": 139575555762,
+        "artifact_id": 15072156000,
+        "artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719979044/artifacts/15072156000",
+        "qc_artifact_id": 15070813928,
+        "qc_artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719979044/artifacts/15070813928"
+      },
+      "dependency_audit": {
+        "run_id": 45719978827,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 45719978940,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 45719979217,
+        "conclusion": "success"
+      },
+      "gated_merge": {
+        "run_id": 45719979054,
+        "conclusion": "success",
+        "readiness": "READY_FOR_EXPLICIT_MERGE"
+      },
+      "pages_build_validation": {
+        "conclusion": "success_no_deployment"
+      },
+      "deliverable": {
+        "duration_seconds": 175.54546485260772,
+        "bpm": 110,
+        "key": "D minor",
+        "time_signature": "4/4",
+        "bars": 80,
+        "sections": 10,
+        "sample_rate_hz": 44100,
+        "channels": 2,
+        "stem_count": 9,
+        "stems_sample_aligned": true,
+        "midi_available": true,
+        "native_daw_project_available": false,
+        "peak_dbfs": -6.016866923499151,
+        "true_peak_dbtp": -5.999999457689846,
+        "rms_dbfs": -24.89697784197829,
+        "integrated_loudness_lufs": -22.4,
+        "loudness_range_lu": 8,
+        "clip_sample_count": 0,
+        "stem_sum_correlation": 0.9999807582177702,
+        "relative_rms_error": 0.006186498709205173
+      },
+      "stereo_integrity": {
+        "mix": {
+          "dc_offset_dbfs": -47.37326301815199,
+          "stereo_correlation": 0.5756393910677431,
+          "mono_fold_down_loss_db": -1.0296608247255141,
+          "warnings": [
+            "dc_offset_above_threshold"
+          ]
+        },
+        "pad": {
+          "dc_offset_dbfs": -47.319067322590406,
+          "warnings": [
+            "dc_offset_above_threshold"
+          ]
+        },
+        "lead": {
+          "dc_offset_dbfs": -110.7432000301904,
+          "stereo_correlation": -0.30120442008664194,
+          "mono_fold_down_loss_db": -4.563339130495524,
+          "warnings": [
+            "mono_fold_down_loss_below_threshold",
+            "negative_stereo_correlation"
+          ]
+        },
+        "strings": {
+          "stereo_correlation": 0.051946558630687645,
+          "mono_fold_down_loss_db": -2.7913831643157043,
+          "warnings": []
+        }
+      },
+      "thresholds": {
+        "dc_offset_warning_dbfs": -60,
+        "mono_fold_down_warning_db": -3
+      },
+      "qc_change": "Added chunked DC-offset, inter-channel correlation and mono fold-down diagnostics to render results, every stem and full-song QC. No audio samples were altered.",
+      "subjective_listening": "NOT_EXECUTED",
+      "user_acceptance": "NOT_OBTAINED",
+      "rights_status": "CALLER_SUPPLIED_UNVERIFIED",
+      "review_count": 0,
+      "mergeable": true,
+      "mergeable_state": "blocked",
+      "blockers": [
+        "zero independent reviews",
+        "branch-protection details return HTTP 403; required approval count unknown",
+        "main merge triggers Pages deployment; explicit deployment authorization absent"
+      ],
+      "cache_warning": "GitHub Actions cache write reached configured budget and became read-only to prevent additional charges; test suite still passed."
     }
   },
   "latest_continuity_validation": {
@@ -2349,7 +2764,40 @@
       "readme_docs_integration_discrepancy": "README references Claude or ChatGPT plan; docs/agent-app.md says ChatGPT desktop pane is not checked",
       "agent_key_can_approve_or_send": false,
       "installed": false,
-      "authenticated": false
+      "authenticated": false,
+      "configuration_audit": {
+        "observed_at_utc": "2026-11-25T23:20:08Z",
+        "repository": "ethanplusai/sellbird",
+        "release": "0.5.0",
+        "license": "AGPL-3.0-only",
+        "python_requires": ">=3.11",
+        "default_email_enabled": true,
+        "approval_required": true,
+        "default_max_daily_sends": 50,
+        "provider": "gmail",
+        "postal_address_configured": false,
+        "do_not_contact_suppression_count": 0,
+        "precleared_enabled": false,
+        "warmup_start_date_configured": false,
+        "gmail_oauth_credentials_present_in_example": false,
+        "email_verification_keys_present_in_example": false,
+        "chatgpt_desktop_support": "NOT_CHECKED_BY_DOCS",
+        "claude_desktop_support": "DOCUMENTED",
+        "codex_cli_support": "DOCUMENTED",
+        "readme_docs_integration_discrepancy": true,
+        "security_posture": "NOT_VERIFIED",
+        "upstream_open_pr_count": 87,
+        "security_pr_255_status": "DRAFT_NOT_MERGED",
+        "installed": false,
+        "authenticated": false,
+        "outbound_sending": "PAUSED",
+        "qualified_prospects": 0,
+        "approved_or_sent": 0,
+        "meetings": 0,
+        "proposals": 0,
+        "revenue_usd": 0,
+        "paid_lookup_cost_usd": 0
+      }
     },
     "candidate_offer": {
       "status": "HYPOTHESIS_NOT_APPROVED",
@@ -2504,7 +2952,7 @@
     "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45716751954"
   },
   "latest_execution_checkpoint": {
-    "observed_at_utc": "2026-11-25T23:01:54Z",
+    "observed_at_utc": "2026-11-25T23:20:08Z",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
     "recursive_tree_entries": 3163,
     "tree_truncated": false,
@@ -2527,11 +2975,11 @@
       1712,
       1713
     ],
-    "latest_xrp_run_id": 45711248598,
-    "latest_xrp_run_number": 166,
-    "latest_audio_artifact_id": 15046855997,
+    "latest_xrp_run_id": 45719493066,
+    "latest_xrp_run_number": 167,
+    "latest_audio_artifact_id": 15072156000,
     "latest_continuity_full_suite_run_id": 45667306876,
-    "handoff_update_validation": "PENDING_NEW_EXACT_HEAD_CI_AFTER_RUN30_MAP_AND_HANDOFF_COMMIT",
+    "handoff_update_validation": "PENDING_NEW_EXACT_HEAD_CI_AFTER_RUN31_MAP_AND_HANDOFF_COMMIT",
     "no_merge": true,
     "no_deployment": true,
     "no_external_model_transfer": true,
@@ -2561,8 +3009,14 @@
     "latest_main_cross_analysis_run_id": 45716751954,
     "handoff_branch_head_before_run30": "d538c23e1d534e28924277baf99ef719793e7005",
     "handoff_branch_commits_ahead_before_run30": 86,
-    "latest_exact_head_validation_run_id": 45709663386,
-    "latest_exact_head_validation_status": "SUCCESS_ON_D538; FULL-SUITE TEST COUNT NOT EXPOSED"
+    "latest_exact_head_validation_run_id": 45719184280,
+    "latest_exact_head_validation_status": "PASSED_4699_PASSED_0_FAILED_1_SKIPPED_11_WARNINGS_21_SUBTESTS_COVERAGE_74.21",
+    "latest_audio_render_integration_run_id": 45719979044,
+    "latest_audio_full_suite_run_id": 45719979087,
+    "latest_audio_pr_head": "9d8a37c576fbb951862e8a45cd1ddb77691ac7a9",
+    "latest_audio_validation_status": "FULL_SUITE_4696_PASSED; AUDIO_RENDER_INTEGRATION_AND_REQUIRED_GATES_PASSED; QC_WARNINGS_PRESENT",
+    "handoff_branch_head_before_run31": "225454544756aeb3dcf6c823ce819b7fefcd23c3",
+    "handoff_branch_commits_ahead_before_run31": 87
   },
   "latest_xrp_run162_summary": {
     "run_number": 162,
@@ -2966,6 +3420,68 @@
         }
       },
       "interpretation": "Bid/ask depth signs differ by venue and price band. Coinbase ticker and L2 top-of-book disagree; Kraken depth fields are incomplete; Bitbank flow is a short variable-duration sample. Preserve venue/source differences; no directional forecast."
+    },
+    "run167_spot_microstructure": {
+      "observed_at_utc": "2026-11-25T23:12:33.454Z",
+      "quote_basis": {
+        "venue": "OKX",
+        "mid_usd": 0.9333117215,
+        "bid_usd": 0.933257115,
+        "ask_usd": 0.933366328,
+        "spread_bps": 1.170166381543692,
+        "max_component_age_seconds": 9.875831,
+        "snapshot_skew_seconds": 0.39,
+        "publisher_independence_group_count": 1
+      },
+      "change_from_run166_percent": -0.31998293415808066,
+      "venue_local_books": {
+        "bitstamp": {
+          "mid_usd": 0.933485,
+          "spread_bps": 0.10712544925805463,
+          "imbalance_10bps": -0.0014899256630593728,
+          "imbalance_50bps": 0.11219524631494496,
+          "imbalance_100bps": 0.145401953600719
+        },
+        "coinbase": {
+          "ticker_mid_usd": 0.9335,
+          "orderbook_mid_usd": 0.93345,
+          "ticker_spread_bps": 2.1424745581143867,
+          "orderbook_spread_bps": 1.071294659596004,
+          "imbalance_10bps": -0.39511898759677055,
+          "imbalance_50bps": -0.08722424085010028,
+          "imbalance_100bps": 0.2990162608565084
+        },
+        "kraken": {
+          "ticker_mid_usd": 0.933415,
+          "orderbook_mid_usd": 0.933355,
+          "orderbook_spread_bps": 0.10714036995520987,
+          "imbalance_10bps": -0.04382053512357046,
+          "missing_depth_fields": [
+            "bid_depth_50bps",
+            "ask_depth_50bps",
+            "bid_depth_100bps",
+            "ask_depth_100bps"
+          ]
+        },
+        "okx": {
+          "orderbook_mid_usdt": 0.93465,
+          "normalized_ticker_mid_usd": 0.9333117215,
+          "orderbook_spread_bps": 1.0699192210986892,
+          "imbalance_10bps": 0.17341635353661633,
+          "imbalance_50bps": 0.07508780612847393,
+          "imbalance_100bps": 0.06295574843890042,
+          "usdt_usd_mid": 0.998675
+        },
+        "bitbank": {
+          "mid_jpy": 148.5895,
+          "spread_bps": 0.06729950635844222,
+          "imbalance_10bps": 0.14748934946556366,
+          "imbalance_50bps": 0.3200381117468102,
+          "imbalance_100bps": 0.20024241873782478,
+          "usd_normalization": false
+        }
+      },
+      "interpretation": "Venue-local depth remains mixed by venue and price band; quote currencies differ and are not aggregated. The one-hour OKX normalized mid change is descriptive, not predictive."
     }
   },
   "branch_overlap_audit": {
@@ -3080,7 +3596,7 @@
     "forecast_issued": false
   },
   "latest_mission_prompt_alignment": {
-    "observed_at_utc": "2026-11-25T22:07:57Z",
+    "observed_at_utc": "2026-11-25T23:14:37Z",
     "source_file": "scripts/ask_barrot.py",
     "source_sha_before_update": "54a22bafb2ca852db4a0e301dc0b0cdea5a7b4dd",
     "finding": "SYSTEM_BASE ranked XRP as the sole highest-priority mission, contradicting the three co-equal priority-1 mission portfolio already required by the manifest, AGENTS.md, OpenCode agent instructions and mission registry. Infrastructure constraints also contained stale absolute provider/GPU claims and did not load the nine-platform map.",
@@ -3088,9 +3604,9 @@
     "implementation": "Align SYSTEM_BASE; add runtime fail-closed readers for the mission manifest and nine-platform map; gate connection claims on authentication, permission and data flow; correct infrastructure wording; add regression tests.",
     "implementation_branch": "integration/mission-handoff-refresh-20261125",
     "implementation_pr": 1702,
-    "implementation_status": "IMPLEMENTED_ON_EXISTING_PR_BRANCH; EXACT_HEAD_FULL_SUITE_AND_REQUIRED_CHECKS_PASSED; NOT_MERGED",
-    "exact_head_sha": "d538c23e1d534e28924277baf99ef719793e7005",
-    "exact_head_ci_run_id": 45709663386,
+    "implementation_status": "IMPLEMENTED_ON_EXISTING_PR_BRANCH; EXACT_HEAD_FULL_SUITE_4699_PASSED_AND_REQUIRED_CHECKS_PASSED; NOT_MERGED",
+    "exact_head_sha": "225454544756aeb3dcf6c823ce819b7fefcd23c3",
+    "exact_head_ci_run_id": 45719184280,
     "merge_blockers": [
       "zero independent reviews",
       "branch-protection details return HTTP 403; required approval count unknown",
@@ -3198,43 +3714,49 @@
     "paper_trade_executed": false
   },
   "latest_exact_head_validation": {
-    "observed_at_utc": "2026-11-25T22:07:57Z",
+    "observed_at_utc": "2026-11-25T23:14:37Z",
     "pr_number": 1702,
-    "tested_head_sha": "d538c23e1d534e28924277baf99ef719793e7005",
+    "tested_head_sha": "225454544756aeb3dcf6c823ce819b7fefcd23c3",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
-    "commits_ahead": 86,
+    "commits_ahead": 87,
     "commits_behind": 0,
     "full_suite": {
-      "run_id": 45709663386,
+      "run_id": 45719184280,
+      "job_id": 139572899559,
       "conclusion": "success",
-      "job_id": 139540489408,
-      "all_tracked_active_repository_test_step": "success",
-      "test_count_detail": "Not exposed by the available GitHub run/check API; no prior-head count reused."
+      "passed": 4699,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
+      "coverage_percent": 74.21,
+      "duration_seconds": 164.26
     },
     "core_tests": {
-      "run_id": 45709663386,
-      "job_id": 139540490194,
-      "conclusion": "success"
-    },
-    "dependency_audit": {
-      "run_id": 45709663322,
-      "conclusion": "success"
-    },
-    "money_audit": {
-      "run_id": 45709663447,
-      "conclusion": "success"
-    },
-    "conflict_integrity_and_merge_tree": {
-      "run_id": 45709663384,
-      "conclusion": "success"
-    },
-    "gated_merge": {
-      "run_id": 45709651561,
+      "run_id": 45719184280,
+      "job_id": 139572900058,
       "conclusion": "success"
     },
     "pages_build_validation": {
-      "run_id": 45709663386,
+      "run_id": 45719184280,
+      "job_id": 139572900089,
       "conclusion": "success_no_deployment"
+    },
+    "dependency_audit": {
+      "run_id": 45719184441,
+      "conclusion": "success"
+    },
+    "money_audit": {
+      "run_id": 45719184263,
+      "conclusion": "success"
+    },
+    "conflict_integrity_and_merge_tree": {
+      "run_id": 45719184431,
+      "conclusion": "success"
+    },
+    "gated_merge": {
+      "run_id": 45719184315,
+      "conclusion": "success"
     },
     "review_count": 0,
     "mergeable": true,
@@ -3245,5 +3767,292 @@
       "branch-protection details return HTTP 403; required approval count unknown",
       "merge triggers GitHub Pages deployment; explicit deployment authorization absent"
     ]
+  },
+  "latest_xrp_run167_summary": {
+    "observed_at_utc": "2026-11-25T23:13:17Z",
+    "run_number": 167,
+    "run_id": 45719493066,
+    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719493066",
+    "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
+    "captured_at_utc": "2026-11-25T23:12:42.939831Z",
+    "data_cutoff_utc": "2026-11-25T23:12:42.939831Z",
+    "adapter_version": "xrp-public-market-v3.34",
+    "parser_version": "xrp-public-market-v3.32",
+    "snapshot_id": "3ba49e2f3c7262b7f5c826e5c4afaa8ffdcffd2586eec308e042f48e6ff510a3",
+    "snapshot_status": "verified",
+    "feature_store": {
+      "snapshot_count": 124,
+      "latest_snapshot_records": 389,
+      "input_records": 2230,
+      "delta_records": 756,
+      "eligible_records": 389,
+      "excluded_records": 367,
+      "cumulative_history_record_count": 32432,
+      "sqlite_integrity": "ok",
+      "store_verification": "PASS",
+      "raw_rebuild_implemented": false
+    },
+    "receipts": {
+      "count": 37,
+      "retained_raw_payloads": 21,
+      "digest_only": 16,
+      "cross_run_chain_sequence": 124,
+      "per_run_chain_head_sha256": "079aacc43d14a3960d1ce056c027b4e4229adf27423b1048acb5b87c78d7fffb",
+      "chain_log_sha256": "78bd62572ff2a89fd2f9b936584fb113aa2375578f5f872ee31c3cdc96f3a624",
+      "receipt_log_sha256": "a29cb2714ad31c0ecf29b283b50b3c67535fcf83323a885ec89887f741603f55",
+      "cross_run_chain_sha256": "4630ad5615bede52f35d8b85b5dc6f86c7c089cd1eb9a3c92357aab8e3184847",
+      "verification_status": "PASS",
+      "external_anchor": "NOT_ANCHORED",
+      "per_source_independent_timestamp_anchor": false,
+      "raw_artifact_retention_days": 90
+    },
+    "event_timeline": {
+      "events": 150,
+      "scenarios": 117,
+      "receipt_count": 37,
+      "verified_receipt_count": 0,
+      "raw_hash_present_count": 0,
+      "raw_bytes_retained_verified_count": 0,
+      "digest_only_verified_count": 0,
+      "source_id_match_count": 0,
+      "url_match_count": 11,
+      "url_capture_time_match_count": 0,
+      "receipt_complete": false,
+      "status": "INCOMPLETE",
+      "model_eligible": false,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "evaluation": {
+      "walk_forward_entries": 468,
+      "horizons": [
+        "1h"
+      ],
+      "walk_forward_status": "PARTIAL_OR_BLOCKED",
+      "drift_evaluated_features": 0,
+      "drift_total_features": 205,
+      "drift_status": "INSUFFICIENT_DATA",
+      "forecast_status": "NOT_ISSUED"
+    },
+    "quote_basis": {
+      "status": "VERIFIED",
+      "venue": "OKX",
+      "best_bid_usd": 0.933257115,
+      "best_ask_usd": 0.933366328,
+      "mid_price_usd": 0.9333117215,
+      "spread_bps": 1.170166381543692,
+      "max_component_age_seconds": 9.875831,
+      "snapshot_skew_seconds": 0.39,
+      "publisher_independence_group_count": 1,
+      "top_of_book_only": true,
+      "model_eligible": true,
+      "usdt_usd_mid": 0.998675
+    },
+    "source_failures": {
+      "count": 19,
+      "binance_http_451": 8,
+      "bybit_http_403": 5,
+      "grayscale_http_429": 1,
+      "franklin_processing_failure": 1,
+      "etf_flows_csv_processing_failure": 1,
+      "sec_configuration_failures": 3,
+      "raw_only_source_count": 26
+    },
+    "sec": {
+      "status": "BLOCKED_CONFIGURATION",
+      "issuer_count": 3,
+      "raw_receipts": 0,
+      "filing_events": 0,
+      "source_failures": 3,
+      "contact_identity_configured": false
+    },
+    "morpho_cbxrp": {
+      "status": "BLOCKED_INDEXER_BLOCK_MISMATCH",
+      "indexer_tip_block": 62289743,
+      "market_state_block": 62289924,
+      "market_history_block": 62289926,
+      "market_liquidity_block": 62289926,
+      "block_timestamp_verified": false,
+      "feature_store_admitted": false,
+      "model_eligible": false,
+      "block_gap": 181
+    },
+    "weekly_source_policy": {
+      "status": "NO_CAPTURE_THIS_RUN",
+      "next_scheduled_delayed_release_date": "2026-11-30",
+      "semiweekly_effective_date_confirmed": false
+    },
+    "coinbase_backfill": {
+      "status": "NOT_REQUESTED",
+      "mode": "MANUAL_ONLY_ADDITIONAL_HISTORY"
+    },
+    "xrpl_node_reconciliation": {
+      "status": "NOT_COLLECTED_PROVIDER_TERMS_POLICY",
+      "model_admission_allowed": false
+    },
+    "research_correction_audit": {
+      "overlay_count": 2,
+      "narrative_only_correction_artifact_count": 55,
+      "capture_window_correction_artifact_count": 1,
+      "legacy_untyped_correction_artifact_count": 2,
+      "source_artifacts_modified": false,
+      "model_eligible": false,
+      "forecast_issued": false
+    },
+    "paper_trade_executed": false
+  },
+  "latest_audio_qc_update": {
+    "observed_at_utc": "2026-11-25T23:20:02Z",
+    "pr_number": 1704,
+    "head_sha": "9d8a37c576fbb951862e8a45cd1ddb77691ac7a9",
+    "commits_ahead": 12,
+    "commits_behind": 0,
+    "full_suite": {
+      "run_id": 45719979087,
+      "conclusion": "success",
+      "job_id": 139575556470,
+      "passed": 4696,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
+      "coverage_percent": 74.25,
+      "duration_seconds": 128.25
+    },
+    "core_tests": {
+      "run_id": 45719979087,
+      "job_id": 139575556707,
+      "conclusion": "success"
+    },
+    "audio_render_integration": {
+      "run_id": 45719979044,
+      "conclusion": "success",
+      "job_id": 139575555762,
+      "artifact_id": 15072156000,
+      "artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719979044/artifacts/15072156000",
+      "qc_artifact_id": 15070813928,
+      "qc_artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45719979044/artifacts/15070813928"
+    },
+    "dependency_audit": {
+      "run_id": 45719978827,
+      "conclusion": "success"
+    },
+    "money_audit": {
+      "run_id": 45719978940,
+      "conclusion": "success"
+    },
+    "conflict_integrity": {
+      "run_id": 45719979217,
+      "conclusion": "success"
+    },
+    "gated_merge": {
+      "run_id": 45719979054,
+      "conclusion": "success",
+      "readiness": "READY_FOR_EXPLICIT_MERGE"
+    },
+    "pages_build_validation": {
+      "conclusion": "success_no_deployment"
+    },
+    "deliverable": {
+      "duration_seconds": 175.54546485260772,
+      "bpm": 110,
+      "key": "D minor",
+      "time_signature": "4/4",
+      "bars": 80,
+      "sections": 10,
+      "sample_rate_hz": 44100,
+      "channels": 2,
+      "stem_count": 9,
+      "stems_sample_aligned": true,
+      "midi_available": true,
+      "native_daw_project_available": false,
+      "peak_dbfs": -6.016866923499151,
+      "true_peak_dbtp": -5.999999457689846,
+      "rms_dbfs": -24.89697784197829,
+      "integrated_loudness_lufs": -22.4,
+      "loudness_range_lu": 8,
+      "clip_sample_count": 0,
+      "stem_sum_correlation": 0.9999807582177702,
+      "relative_rms_error": 0.006186498709205173
+    },
+    "stereo_integrity": {
+      "mix": {
+        "dc_offset_dbfs": -47.37326301815199,
+        "stereo_correlation": 0.5756393910677431,
+        "mono_fold_down_loss_db": -1.0296608247255141,
+        "warnings": [
+          "dc_offset_above_threshold"
+        ]
+      },
+      "pad": {
+        "dc_offset_dbfs": -47.319067322590406,
+        "warnings": [
+          "dc_offset_above_threshold"
+        ]
+      },
+      "lead": {
+        "dc_offset_dbfs": -110.7432000301904,
+        "stereo_correlation": -0.30120442008664194,
+        "mono_fold_down_loss_db": -4.563339130495524,
+        "warnings": [
+          "mono_fold_down_loss_below_threshold",
+          "negative_stereo_correlation"
+        ]
+      },
+      "strings": {
+        "stereo_correlation": 0.051946558630687645,
+        "mono_fold_down_loss_db": -2.7913831643157043,
+        "warnings": []
+      }
+    },
+    "thresholds": {
+      "dc_offset_warning_dbfs": -60,
+      "mono_fold_down_warning_db": -3
+    },
+    "qc_change": "Added chunked DC-offset, inter-channel correlation and mono fold-down diagnostics to render results, every stem and full-song QC. No audio samples were altered.",
+    "subjective_listening": "NOT_EXECUTED",
+    "user_acceptance": "NOT_OBTAINED",
+    "rights_status": "CALLER_SUPPLIED_UNVERIFIED",
+    "review_count": 0,
+    "mergeable": true,
+    "mergeable_state": "blocked",
+    "blockers": [
+      "zero independent reviews",
+      "branch-protection details return HTTP 403; required approval count unknown",
+      "main merge triggers Pages deployment; explicit deployment authorization absent"
+    ],
+    "cache_warning": "GitHub Actions cache write reached configured budget and became read-only to prevent additional charges; test suite still passed."
+  },
+  "latest_sellbird_audit": {
+    "observed_at_utc": "2026-11-25T23:20:08Z",
+    "repository": "ethanplusai/sellbird",
+    "release": "0.5.0",
+    "license": "AGPL-3.0-only",
+    "python_requires": ">=3.11",
+    "default_email_enabled": true,
+    "approval_required": true,
+    "default_max_daily_sends": 50,
+    "provider": "gmail",
+    "postal_address_configured": false,
+    "do_not_contact_suppression_count": 0,
+    "precleared_enabled": false,
+    "warmup_start_date_configured": false,
+    "gmail_oauth_credentials_present_in_example": false,
+    "email_verification_keys_present_in_example": false,
+    "chatgpt_desktop_support": "NOT_CHECKED_BY_DOCS",
+    "claude_desktop_support": "DOCUMENTED",
+    "codex_cli_support": "DOCUMENTED",
+    "readme_docs_integration_discrepancy": true,
+    "security_posture": "NOT_VERIFIED",
+    "upstream_open_pr_count": 87,
+    "security_pr_255_status": "DRAFT_NOT_MERGED",
+    "installed": false,
+    "authenticated": false,
+    "outbound_sending": "PAUSED",
+    "qualified_prospects": 0,
+    "approved_or_sent": 0,
+    "meetings": 0,
+    "proposals": 0,
+    "revenue_usd": 0,
+    "paid_lookup_cost_usd": 0
   }
 }
