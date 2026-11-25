@@ -53,6 +53,16 @@ Recent verified merges on main remain #1692 (SEC event receipt relinking), #1701
 - Sellbird remains restricted to Barrot technology only. The upstream AGPL-3.0-only application was audited but not installed, configured or authenticated. Discovery was not run: 0 prospects, 0 qualified leads, 0 paid lookups, 0 outreach approved/sent, 0 replies, 0 meetings, 0 proposals and $0 collected. Sending remains paused; no music, songwriting, background-vocal or TrekFlex prospecting.
 - Commercial offer remains a hypothesis, not an approved campaign: a bounded public-data ingestion/provenance assessment for a fintech or digital-asset research team. Do not sell production XRP forecasting, generalized autonomous orchestration or any capability not demonstrated by current evidence.
 
+### RLUSD cross-chain snapshot — secondary research only
+
+A 24 November 2026 secondary comparison reports DefiLlama RLUSD supply of approximately **$2.821B** versus **$2.744B** on RWA.xyz. Its DefiLlama chain split is approximately **$2.044B Ethereum**, **$0.761B XRPL**, and **$0.016B Base**. It also reports a weekly gross transfer-volume snapshot of **$11.716B**—$6.699B XRPL and $5.017B Ethereum—for the week ending 1 November. Source: [Data Analytic Investments, “RLUSD: circulating supply vs. transfer volume”](https://dataanalyticsystem.com/blog/rlusd-circulating-supply-vs-transfer-volume-what-market-cap-measures-and-what-transfer-volume-measures-2026-11). The article cites DefiLlama and RWA.xyz; its page could not be independently opened by the web reader in this run.
+
+Interpretation: preserve the provider supply disagreement; supply snapshots are not cash subscriptions or net capital. Gross transfer volume is not unique economic activity or payment settlement because repeated exchange, bridge and contract movements can be counted multiple times. The snapshot lacks a captured primary-source payload/receipt in the current Barrot feature store, so it remains **research-only and model-ineligible**. Investigate the documented DefiLlama/RWA.xyz API schemas before adding any stablecoin adapter; do not invent an endpoint or promote these values into features.
+
+### Creator-attribution correction
+
+The person Dr. Kamilah Stevenson is identifiable, but the exact candidate YouTube channel is not. No videos are attributed to her and no creator inventory is claimed until primary identity evidence binds the exact channel ID. This correction supersedes the earlier tentative channel attribution preserved in the historical checkpoint.
+
 ## DESIGNED / EXECUTED / VERIFIED
 
 - **DESIGNED:** three co-equal missions and V3 shared foundation; provenance-backed XRP ingestion and forecast gates; editable audio production workflow and quality benchmark; versioned continuity ledger; nine-platform least-privilege map; Barrot-only Sellbird funnel.
@@ -129,28 +139,12 @@ Primary sources:
 - **"actual capital":** the exact phrase appears in secondary commentary claiming capital is flowing into RLUSD, but no primary source defines "actual capital" as an XRP metric. Concrete disclosed capital transactions include SBI's Ripple equity investment and Circle's $209.9M Centre acquisition consideration. Neither is a disclosed XRP spot purchase. Treat the commentary as a hypothesis, not a flow record.
 - **"SBIC, ChatGPT SBIC":** no exact public match located. The Japanese SBIC entity cluster is resolved above, but the phrase itself remains unresolved and must not be attributed to those companies without a source.
 
-### Public YouTube identity and initial inventory
+### Public YouTube identity — person identified; exact channel not verified
 
-High-confidence public identity link: the channel [Dr. Kamilah Stevenson](https://www.youtube.com/@drkamilahstevenson) links to the PrescribeWealth bio subdomain, and [PrescribeWealth](https://prescribewealth.com/) identifies Dr. Kamilah Stevenson. The surfaced XRP podcast episode is titled with Dr. Kamilah Stevenson; transcript spelling varies between Kamilah/Camilla/Kamilla. Treat those as a possible transcription/handle variation, not proof that every similarly named account belongs to her. A small similarly named XRP-stocks channel without corroborating cross-links is excluded.
-
-Initial public-video sample from the verified channel (not an exhaustive export of its approximately 1.2K videos; member-only videos excluded):
-- “This NEW Bank Deal Shows Exactly Where XRP Is Headed” — about 29K views.
-- “This New SEC Proposal Could Unlock Trillions for XRP” — about 28K.
-- “Exactly How to Retire With Your XRP Portfolio” — about 41K.
-- “XRP vs Banks: Why Your Money Needs Autonomy NOW” — about 9.8K.
-- “Did SWIFT Just Change XRP Forever?” — about 77K.
-- “BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention.” — about 21K.
-- “A $119 Billion African Bank Just Put Its License Behind XRP” — about 27K.
-- “A New XRP Tool Can Buy and Sell for You” — about 13K.
-- “Invest NOW or Get Left Behind. Institutions Are Already Moving.” — about 16K.
-- “The CFTC Just Said What XRP Holders Waited Years to Hear” — about 44K.
-- “Wall Street Just Got a Company Built to Keep BUYING XRP” — about 16K.
-- “XRP Ledger Technology Just Reached Europe's Central Bank” — about 11K.
-
-Surfaced public livestreams include “XRP Got Everything We Waited For. So Why Isn't It Soaring?”, “XRP's Next Big Move Could Come Down to These 4 Days”, “Bank of America's CEO Just ADMITTED What XRP Holders Already Knew”, “I Was WRONG About XRP. The Timeline Just Changed”, “191,000 Traders Got Wiped Out While XRP Became Wall Street Collateral”, “Bad Jobs. Higher Rates. Something Just Broke. Watch Your XRP”, “Your XRP Can Now Trade Without You” and “America's Biggest Banks Just Picked Quant. XRP Was Never the Competition.”
-
-One claim was checked against primary evidence: the channel's “This NEW Bank Deal...” description says Standard Chartered custody is live and LMAX collateral integration is planned. Ripple and LMAX confirm custody is live; the collateral arrangement remains subject to documentation, testing, regulation, approvals and jurisdiction readiness. The title is commentary; the future collateral feature is not yet a completed deployment. The channel's videos and affiliate disclosures are research leads, not independent market evidence.
-
+- Dr. Kamilah Stevenson is identifiable through the official PrescribeWealth site and an independent interview. However, the exact YouTube channel handle is **not verified**.
+- The candidate channel links to a PrescribeWealth bio URL, but the official PrescribeWealth site does not reciprocally link to that channel. Multiple similarly named channels exist, and the interview transcript varies between Kamilah/Camilla/Kamilla while giving an imprecise channel name.
+- PR comment [#7151626175](https://github.com/Barrot-Agent/B-Agent/pull/1702#issuecomment-7151626175) explicitly supersedes the earlier tentative attribution. Do not attribute the previously surfaced titles or livestreams to Dr. Stevenson, do not count them as her video inventory, and do not use them as creator evidence.
+- **No public-video inventory is currently verified.** Resume only after a reciprocal official link or equivalent primary identity confirmation binds the exact channel ID to the person. Then enumerate public uploads, Shorts and livestreams by canonical video ID, preserving publication timestamps and transcript provenance. Exclude member-only material and respect platform access controls.
 
 ## Prior checkpoint — 2026-11-25T02:48:18.032Z (superseded by the addendum above)
 
