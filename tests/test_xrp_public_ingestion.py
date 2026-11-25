@@ -3271,7 +3271,12 @@ def test_weekly_cftc_endpoint_is_selected_only_after_scheduled_publication(monke
 
 def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_daily_run(tmp_path):
     captured = datetime(2026, 11, 7, 0, 15, tzinfo=timezone.utc)
-    summary = run_ingestion(tmp_path / "weekly", fetcher=_fake_fetcher(captured), now=captured)
+    summary = run_ingestion(
+        tmp_path / "weekly",
+        fetcher=_fake_fetcher(captured),
+        now=captured,
+        capture_event_sources=False,
+    )
 
     assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + 3
     assert summary["source_failure_count"] == 0

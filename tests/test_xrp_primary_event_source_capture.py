@@ -130,16 +130,18 @@ def test_primary_event_sources_create_digest_only_receipts_and_relink_at_capture
         assert event["known_at_utc"] == "2026-11-12T04:30:00.000000Z"
         assert event["receipt_status"] == "VERIFIED_CANONICAL_RECEIPT"
         assert event["receipt_source_id_match"] is True
-        assert event["source_capture_history"][0]["captured_at_utc"] == "2026-11-12T04:00:00.000000Z"
+        assert event["source_capture_history"][0]["captured_at_utc"] == "2026-11-12T04:00:00Z"
         assert event["source_capture_history"][-1]["captured_at_utc"] == "2026-11-12T04:30:00.000000Z"
         assert event["source_capture_history"][-1]["raw_bytes_retained"] is False
 
 
 def test_marker_mismatch_is_retained_as_unlinked_digest_only_evidence(tmp_path):
-    mismatched_id = EVENT_SOURCE_CAPTURE_SPECS[0]["source_id"]
+    mismatched_spec = EVENT_SOURCE_CAPTURE_SPECS[0]
+    mismatched_source_id = mismatched_spec["source_id"]
+    mismatched_event_id = mismatched_spec["event_id"]
     registry, receipts, failures, raw_only, capture = _capture(
         tmp_path,
-        marker_mismatch=(mismatched_id,),
+        marker_mismatch=(mismatched_source_id,),
     )
 
     assert capture["status"] == "PARTIAL"
@@ -158,7 +160,7 @@ def test_marker_mismatch_is_retained_as_unlinked_digest_only_evidence(tmp_path):
     assert result["receipt_complete"] is False
     assert result["public_receipt_relinkage"]["linked_event_count"] == 1
     statuses = {event["event_id"]: event["receipt_status"] for event in result["timeline"]["event_timeline"]}
-    assert statuses[mismatched_id] == "MISSING_RAW_RECEIPT_HASH"
+    assert statuses[mismatched_event_id] == "MISSING_RAW_RECEIPT_HASH"
 
 
 def test_future_primary_event_receipts_are_not_backdated_or_linked(tmp_path):
@@ -176,7 +178,7 @@ def test_future_primary_event_receipts_are_not_backdated_or_linked(tmp_path):
     assert result["public_receipt_relinkage"]["future_receipt_count"] == 2
     assert result["public_receipt_relinkage"]["linked_event_count"] == 0
     assert all(
-        event["captured_at_utc"] == "2026-11-12T04:00:00.000000Z"
+        event["captured_at_utc"] == "2026-11-12T04:00:00Z"
         for event in result["timeline"]["event_timeline"]
     )
 
