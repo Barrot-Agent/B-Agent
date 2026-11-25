@@ -67,7 +67,9 @@ def test_chatgpt_connector_scope_is_verified_without_overstating_permissions() -
     assert protection["branch_protected"] is True
     assert protection["protection_enabled"] is True
     assert protection["required_status_checks_enforcement_level"] == "non_admins"
-    assert protection["detailed_endpoint_status"].startswith("HTTP_403")
+    detailed_status = protection["detailed_endpoint_status"]
+    assert detailed_status.startswith("HTTP 403 ")
+    assert "RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION" in detailed_status
     assert "required approving review count" in protection["not_verified"]
     assert set(repository["required_status_checks"]) == {
         "Full repository test suite",
