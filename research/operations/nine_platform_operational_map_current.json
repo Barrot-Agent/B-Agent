@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T04:06:00Z",
-  "capture_basis": "Run 11 status update: #1705 exact-head d7c589d full repository suite passed 4,704/1 skipped at 74.24%, dependency/money/conflict/fail-closed checks all passed; its integration capture #144 remains BLOCKED_STALE at 321.593s versus 300s with model/feature-store admission false; no independent review or deployment approval. #1702 current handoff branch full suite and gate remain in progress; four open non-overlapping PRs #1702-#1705; main remains 6033bcd; no merge/deployment/trading/outreach.",
+  "captured_at_utc": "2026-11-25T04:08:00Z",
+  "capture_basis": "Run 11 post-checkpoint correction: main remains 6033bcd; four path-disjoint open PRs; #1702 current head 1e406437 with full suite/dependency/money/conflict/gate in progress; #1705 exact head d7c589d full suite 4,704 passed/1 skipped at 74.24%, dependency/money/conflict/gate all passed, but run #144 stablecoin output remains BLOCKED_STALE; #1703/#1704 exact-head checks passed; main Kamilah channel attribution remains incorrect until #1702 merges; no independent reviews or deployment approval; no merge/deployment/trading/outreach.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -115,8 +115,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "last_observed_head_sha": "e2b587cfa8fab170e422a167e7419bacd8fb136d",
-        "head_sha_note": "The handoff/map commit created from this snapshot advances the self-referential branch; use live PR metadata for the current head and ahead count.",
+        "last_observed_head_sha": "1e406437316b19f18864525d05f72ec0e50292b0",
+        "head_sha_note": "The post-checkpoint correction commit created from this snapshot advances the self-referential branch; use live PR metadata for the current head and ahead count.",
         "commits_behind": 0,
         "changed_paths": [
           "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -137,7 +137,7 @@
           "conflict_integrity_run_id": 45539823658,
           "fail_closed_gate_run_id": 45539823700
         },
-        "exact_head_validation": "LIVE_STATUS_IN_PR_CHECKS_ONLY: query PR #1702 current head and exact-head CI, dependency audit, money audit, conflict integrity and fail-closed gate.",
+        "exact_head_validation": "pending_on_live_head_1e406437; full suite #7102, dependency #4517, money #883, conflict #587 and fail-closed gate #12001 are in progress",
         "review_count": 0,
         "blockers": [
           "No independent review recorded",
@@ -244,7 +244,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T04:06:00Z",
+      "observed_at_utc": "2026-11-25T04:08:00Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -824,8 +824,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "last_observed_head_sha": "e2b587cfa8fab170e422a167e7419bacd8fb136d",
-      "head_sha_note": "The handoff/map commit created from this snapshot advances the self-referential branch; use live PR metadata for the current head and ahead count.",
+      "last_observed_head_sha": "1e406437316b19f18864525d05f72ec0e50292b0",
+      "head_sha_note": "The post-checkpoint correction commit created from this snapshot advances the self-referential branch; use live PR metadata for the current head and ahead count.",
       "commits_behind": 0,
       "changed_paths": [
         "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -846,7 +846,7 @@
         "conflict_integrity_run_id": 45539823658,
         "fail_closed_gate_run_id": 45539823700
       },
-      "exact_head_validation": "LIVE_STATUS_IN_PR_CHECKS_ONLY: query PR #1702 current head and exact-head checks.",
+      "exact_head_validation": "pending_on_live_head_1e406437; full suite #7102, dependency #4517, money #883, conflict #587 and fail-closed gate #12001 are in progress",
       "review_count": 0,
       "blockers": [
         "No independent review recorded",
