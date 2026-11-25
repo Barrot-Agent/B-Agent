@@ -428,4 +428,98 @@ Additional primary-source register:
 62. Main channel index and public uploads: https://www.youtube.com/@drkamilahstevenson  
 63. Prescribe Wealth / MKS Health LLC official brand page: https://prescribewealth.com/  
 64. Main channel-announced second channel: https://www.youtube.com/@PrescribeWealth  
-65. Unverified lookalike channel excluded from attribution: https://www.youtube.com/@KamilahStevensonXrpStocks  
+65. Unverified lookalike channel excluded from attribution: https://www.youtube.com/@KamilahStevensonXrpStocks
+
+## 7.12.15 2026-11-25 — SBI 1H FY2026 primary-source update: Ripple, Evernorth, Bitbank, stablecoins and Claude
+
+**Primary source:** SBI Holdings, *Financial Results for the Six-month Period Ended September 30, 2026*, published **2026-11-02**. PDF: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf. This is SBI's own corporate presentation; it is not an independent chain-data audit.
+
+### XRP distribution and Evernorth
+
+- **Page 50; quantities as of 2026-10-28:** SBI depicts approximately **63.35bn XRP circulated in the market**, **5.23bn “Actual XRP”**, **31.4bn under escrow**, and **0.01bn burned**. The slide explicitly places “Actual XRP” and “Under Escrow” inside **“Ripple’s Holdings Currently Not in Circulation.”** It identifies Ripple as an **SBI Holdings investee company**.
+- The slide's “Actual XRP” is a Ripple holdings category, not “actual capital,” cash, free float, an exchange balance, or an observed transaction flow. The JPY7.6tn equivalent and JPY13.3tn circulated-market capitalization are calculated using the XRP price on 2026-10-28; they are not current marks.
+- **Page 51:** SBI says Evernorth, backed by investments from the SBI Group, Ripple and others, listed on NASDAQ as **XRPN on 2026-10-12**. SBI reports approximately **473m XRP** held, JPY140.0bn market capitalization, and SBI Group voting rights of **36.1%** with **20.5% economic interest**. The holdings ranking is based on CoinGecko as of 2026-11-02; the market-cap calculation uses an Oct. 22 share price and share count. These are SBI-reported metrics, not an independent custody attestation.
+- **Attribution boundary:** 473m is Evernorth's reported total, not 473m owned by SBI. The prior SEC filing's **84,365,876.3625 XRP** cash-funded acquisition was made from aggregate Advance Funding cash proceeds in which SBI-controlled subscribers participated; the filing does not allocate that purchase to individual subscribers. The 473m figure must not be treated as a new SBI cash purchase or as a direct continuation of the 84.365m transaction.
+- **Counterevidence / operating context:** SBI reports its Crypto-asset Business 1H FY2026 revenue at **JPY23.1bn (-30.1% YoY)** and profit before income tax at **-JPY1.6bn** (page 53). SBI says the market remained unstable and cites dimming prospects for U.S. CLARITY Act enactment within the year. This is management commentary, not an independent causal estimate.
+
+### SBI exchange footprint and on-chain financial strategy
+
+- **Bitbank:** SBI says Bitbank joined the Group in August 2026 and became a wholly owned SBI Holdings subsidiary on **2026-10-01** (page 53). The combined SBI VC Trade / BITPOINT / bitbank services are shown at **3.05m accounts** as of September 2026, with 2.03m attributed to SBI VC Trade and 1.02m to bitbank; combined deposit balance is approximately **JPY1,111.6bn as of 2026-09-30** (page 54). These are platform-account and deposit metrics, **not XRP balances, XRP deposits, or XRP exchange flows**.
+- **SBI Coinhako:** SBI reports Coinhako became a consolidated subsidiary and was renamed SBI Coinhako, with a **51.69% investment ratio** (pages 70–71). The deck describes an effort to combine **JPYSC, USDC and RLUSD** through SBI Coinhako for yen-dollar cross-border settlement. This is a stated strategy/initiative; it does not prove that all three are already being used in a live, material settlement corridor.
+- **JPYSC:** SBI's 2026-10-16 announcement with Startale says they joined the Open Standard and are considering an interoperability proof of concept between JPYSC and OUSD. The SBI deck identifies Startale as a JPYSC co-issuer; SBI's July 2026 material identifies SBI Shinsei Trust Bank as issuer. Do not equate a proposed interoperability test with production volume.
+- **SBI VC Trade:** SBI's 2026-07-07 release says it began handling JPYSC and RLUSD in June 2026, after USDC's Japanese launch in March 2025, and describes stablecoin-lending services. Availability and product offering do not by themselves establish outstanding balances, net flows, or XRP demand.
+- **Circle / Ripple boundary:** Circle states that USDC has been natively available on XRPL since **2025-06-12**, with Circle Mint and Circle APIs supporting it. USDC remains Circle-issued; RLUSD is Ripple-issued. Their presence on the same SBI distribution/settlement strategy is not evidence of a Circle–Ripple equity relationship or a shared issuer.
+
+### SBI Group AI adoption — relevant market signal, not a Barrot integration
+
+- **Pages 59–60:** SBI says SBI Securities began using Anthropic Claude Security in July 2026 and Claude Mythos in October 2026 for vulnerability diagnosis; the deck says Claude Security is a Claude Enterprise feature and that the tools are available through the Group's common Claude platform.
+- **Page 63:** SBI says Claude was introduced at **71 Group companies**, with **10 companies** integrating it by API into their own systems; Microsoft 365 integration was also being rolled out in stages from September.
+- This is company-reported enterprise adoption evidence. It does not mean Barrot is connected to SBI, Claude, or SBI internal systems. It is relevant to the nine-platform capability map and potential future buyer research only after Barrot's own security and product claims are verified.
+
+## 7.12.16 SBIC East / Central / West — Japanese identity resolved from primary sources
+
+The Japanese **SBIC** references are three regional **Small and Medium Business Investment & Consultation** corporations established in 1963 under Japan's Small and Medium Business Investment & Consultation Companies Act. Their own websites identify one another as **sister companies**. They are separate legal entities and are **not SBI Holdings subsidiaries** in the reviewed primary sources.
+
+| Regional name | Legal/company name | Established | Published operating area | Primary profile |
+|---|---|---:|---|---|
+| SBIC East Japan | Tokyo Small and Medium Business Investment & Consultation Co., Ltd. | 1963-11-15 | Shizuoka, Nagano, Niigata and eastward; 18 prefectures | https://www.sbic.co.jp/company/profile/ |
+| SBIC Central Japan | Nagoya Small and Medium Business Investment & Consultation Co., Ltd. | 1963-11-18 | Aichi, Gifu, Mie, Toyama and Ishikawa | https://www.sbic-cj.co.jp/company/about/ |
+| SBIC West Japan | Osaka Small and Medium Business Investment & Consultation Co., Ltd. | 1963-11-20 | 24 prefectures west of Fukui, Shiga, Nara and Wakayama | https://www.sbic-wj.co.jp/profiles/profile/ |
+
+- Tokyo's profile lists local governments, chambers of commerce, financial institutions and business companies among shareholders, and links Nagoya and Osaka as sister companies. Nagoya and Osaka profiles independently list the other two as sister companies.
+- Osaka's official profile calls it a policy-implementation institution under the Act. An official SBIC West release states **SBIC® and 投資育成® are registered trademarks of the three companies**.
+- Tokyo SBIC East's official training page advertised a two-day **Generative AI and Machine Learning for Manufacturing** course on **2025-06-12 and 2025-06-13**, including ChatGPT and Copilot training. The course was limited to SBIC investee companies (JPY35,000; general companies excluded). This is a training course, **not** an OpenAI partnership, product integration, or ownership link.
+- A separate historical SBI Holdings release used “SBIC” for **SBI Capital Co., Ltd.** in 2007; that is a different acronym use and must not be conflated with the regional trio. The U.S. SBA Small Business Investment Company program is another unrelated use of “SBIC.”
+
+## 7.12.17 “ASK Coin” candidate — Permission ASK token, no XRP link established
+
+- The best-supported current candidate for “ASK Coin” is **ASK**, the native utility token of the **Permission** ecosystem. Permission's official documentation identifies it as an omnichain token using LayerZero OFT and Stargate, with official contracts:
+  - Base: "0xBB146326778227A8498b105a18f84E0987A684b4"
+  - Polygon: "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+- Permission's 2026-09-22 blog says its embedded wallet is powered by Coinbase: Coinbase holds the private keys on users' behalf, while Permission users authorize transactions through their login. This is a direct **Permission–Coinbase wallet-infrastructure** relationship, not a Coinbase–Ripple or XRP relationship.
+- Permission's 2025-01-10 announcement describes ASK on Base and Coinbase Wallet access. The same Base contract appears in the current Permission documentation; do not infer a separate XRP token from the name “ASK.”
+- No official evidence links Permission ASK to XRP, XRPL, Ripple, SBI, RLUSD or USDC. The exact phrase “ASK Coin” in the original source context remains unconfirmed; treat Permission ASK as a candidate identity, not a definitive match.
+
+## 7.12.18 Exact-phrase reconciliation
+
+- **“actual capital”**: no primary-source match established. The new SBI deck's **“Actual XRP”** is explicitly a Ripple holdings category, not a synonym for actual capital or cash deployment.
+- **“SBIC, ChatGPT SBIC”**: no formal SBIC–OpenAI partnership or ChatGPT product integration found. The verified connection is a 2025 Tokyo SBIC East training course that included ChatGPT for investee companies.
+- **“ASK Coin”**: Permission ASK is the strongest current candidate, but no XRP relationship or source-context match is established.
+- Preserve these as separate hypotheses; do not combine them into a single entity or capital-flow narrative.
+
+## 7.12.19 Kamilah Stevenson public-video inventory — additional popular-index sample
+
+The channel-level attribution and 12 most-recent public videos are recorded in 7.12.13. The same public channel index also surfaced these popular XRP-related titles (view counts and relative ages are index snapshots from 2026-11-25, not verified lifetime analytics):
+
+1. “Japan Just Ended 30 Years of ZERO Interest Rates—Why XRP Could Explode” — 253K views, about 10 months.
+2. “How the Wealthy Will Use XRP (Most People Won't Understand)” — 151K, about 8 months.
+3. “Flare Is Putting 100 Million XRP to Work. Holders Can Earn From It” — 148K, about 1 month.
+4. “Why XRP Could Be Repriced (Banks Aren't Trading It)” — 143K, about 10 months.
+5. “Banks Just Got the GREEN LIGHT On Crypto—Are You Positioned” — 139K, about 7 months.
+6. “SEC Silent, CFTC Approved: XRP Just Got Treated Like Gold” — 135K, about 10 months.
+7. “The CLARITY Act Just Failed in the Senate. What This Means for XRP” — 129K, about 1 month.
+8. “SWIFT Just Connected 11,000 Banks—and XRP Is at the CENTER” — 86K, about 6 months.
+9. “Why Banks Need XRP to Be Expensive (Retail Is Thinking About It Wrong)” — 84K, about 10 months.
+10. “Most XRP Holders Don't Understand What They're Actually Holding” — 83K, about 7 months.
+11. “Japan's Top Financial CEO Just Publicly DEMANDED The US Senate Act On XRP” — 82K, about 4 months.
+12. “Did SWIFT Just Change XRP Forever? (The Truth)” — 77K, about 5 days.
+
+**Evidence boundary:** These are public channel titles and discovery metadata only. No transcript-level claim audit was completed for this additional popular-index sample. Treat each title as a research lead, not evidence that a bank, regulator, SWIFT, central bank, or payment corridor adopted XRP.
+
+**Additional primary-source register:**
+
+66. SBI Holdings — 1H FY2026 Financial Results deck (published 2026-11-02; XRP, Evernorth, Bitbank, Coinhako, Claude and APAC digital-asset strategy): https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf  
+67. SBI Holdings — SBI/Startale join Open Standard; JPYSC/OUSD interoperability PoC under consideration (2026-10-16): https://www.sbigroup.co.jp/news/2026/1016_16665.html  
+68. SBI Holdings — SBI VC Trade account milestone and USDC/JPYSC/RLUSD offering (2026-07-07): https://www.sbigroup.co.jp/news/2026/0707_16468.html  
+69. SBIC East — Tokyo Small and Medium Business Investment & Consultation company profile: https://www.sbic.co.jp/company/profile/  
+70. SBIC Central — Nagoya Small and Medium Business Investment & Consultation company profile: https://www.sbic-cj.co.jp/company/about/  
+71. SBIC West — Osaka Small and Medium Business Investment & Consultation company profile: https://www.sbic-wj.co.jp/profiles/profile/  
+72. SBIC West — official release identifying SBIC® as a registered trademark of the three SME investment companies (2025-06-17): https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/06/%EF%BC%96%E6%9C%88%E8%A8%98%E8%80%85%E7%99%BA%E8%A1%A8%E8%B3%87%E6%96%99.pdf  
+73. SBIC East — Generative AI and Machine Learning for Manufacturing training, including ChatGPT (2025-06-12/13): https://www.sbic.co.jp/training/20250612co/  
+74. Permission — official ASK token contract addresses and LayerZero OFT details: https://docs.permission.ai/ask-token/contract-addresses  
+75. Permission — ASK wallet update powered by Coinbase embedded wallet (2026-09-22): https://www.permission.ai/blog/ask-wallet-update  
+76. Permission — ASK now live on Base and official contract (2025-01-10): https://www.permission.ai/blog/ask-is-now-live-on-base-eeaba  
+77. Circle — native USDC on XRPL (2025-06-12): https://www.circle.com/blog/now-available-usdc-on-the-xrpl  
+78. Circle — current USDC issuer, reserve and supported-chain information: https://www.circle.com/usdc  
+79. Ripple — RLUSD issuance/custody structure and institutional support: https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/  
+

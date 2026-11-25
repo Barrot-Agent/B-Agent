@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T17:42:00Z",
-  "capture_basis": "Run 24: refreshed current main 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407, verified recursive tree (3,163 entries; not truncated), 12 open PRs, exact-head CI and branch ancestry. Diagnosed #1702 full-suite failure as two stale snapshot assertions; updated the existing test and map on the same branch. Added a cross-process signed-state transfer regression test to existing #1703; its exact-head CI is pending. No main mutation, merge, deployment, external model dispatch or outbound action.",
+  "captured_at_utc": "2026-11-25T17:59:00Z",
+  "capture_basis": "Run 25: refreshed exact-head validation for existing #1702 and #1703 branches; #1702 full repository suite and gates passed on head 53dab8b0f150527479898c32b22beedc91e9ff70, #1703 full repository suite and gates passed on head 99561b4507d17c80d0a74bb425ce18ae3737f3d5 including the independent-process signed transfer/replay test. Added primary-source research on SBI's Nov. 2 FY2026 deck, SBIC East/Central/West, Permission ASK/Coinbase wallet, and verified Kamilah Stevenson channel inventory. Main remains 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407 with 3,163 recursive tree entries and 12 open PRs. No merge or deployment.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
@@ -62,8 +62,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "head_sha": "777e42f7dacf741449e58e272f904c45db0c2ed9",
-        "commits_ahead": 60,
+        "head_sha": "53dab8b0f150527479898c32b22beedc91e9ff70",
+        "commits_ahead": 63,
         "commits_behind": 0,
         "draft": false,
         "changed_paths": [
@@ -72,50 +72,53 @@
           "research/xrp_intelligence/20261124_primary_source_reconciliation.md",
           "tests/test_nine_platform_operational_map_current.py"
         ],
-        "classification": "blocked_exact_head_validation_failure",
+        "classification": "ready_pending_independent_review_and_deployment_authorization",
         "workstream_uniqueness": "unique",
         "review_count": 0,
-        "validation_status": "FULL_SUITE_FAILED_TWO_STALE_SNAPSHOT_ASSERTIONS",
+        "validation_status": "EXACT_HEAD_FULL_SUITE_AND_GATES_PASSED",
         "checks": {
           "full_suite": {
-            "run_id": 45665995506,
-            "conclusion": "failure",
-            "passed": 4692,
-            "failed": 2,
+            "run_id": 45668155924,
+            "conclusion": "success",
+            "passed": 4694,
+            "failed": 0,
             "skipped": 1,
             "warnings": 11,
             "subtests": 21,
-            "coverage_percent": 74.21
+            "duration_seconds": 132.86,
+            "coverage_percent": 74.22
           },
           "dependency_audit": {
-            "run_id": 45665995567,
+            "run_id": 45668155693,
             "conclusion": "success"
           },
           "money_audit": {
-            "run_id": 45665995591,
+            "run_id": 45668155671,
             "conclusion": "success"
           },
           "conflict_integrity": {
-            "run_id": 45665995497,
+            "run_id": 45668155820,
             "conclusion": "success"
           },
           "fail_closed_gate": {
-            "run_id": 45665995496,
-            "conclusion": "failure"
+            "run_id": 45668155640,
+            "conclusion": "success",
+            "readiness": "READY_FOR_EXPLICIT_MERGE"
           },
           "pages_build_validation": {
+            "run_id": 45668155924,
             "conclusion": "success"
           }
         },
         "merge_status": "NOT_MERGED",
         "blockers": [
-          "Exact-head full suite run 45665995506 failed 2 assertions in tests/test_nine_platform_operational_map_current.py: ChatGPT evidence wording and 11-versus-12 PR inventory",
-          "Repaired in place; new exact-head validation pending",
           "zero independent reviews",
           "required approval count unavailable via branch-protection endpoint HTTP 403",
-          "merge triggers Pages deployment; specific deployment approval absent"
+          "merge triggers GitHub Pages deployment; specific deployment approval absent"
         ],
-        "observed_at_utc": "2026-11-25T17:42:00Z"
+        "observed_at_utc": "2026-11-25T17:59:00Z",
+        "mergeable": true,
+        "mergeable_state": "clean"
       },
       {
         "number": 1703,
@@ -136,30 +139,45 @@
           "tests/test_autonomous_loop_persistence.py",
           "tests/test_project_state_ledger.py"
         ],
-        "classification": "unique_validation_pending_after_cross_process_test",
+        "classification": "ready_pending_independent_review_and_deployment_authorization",
         "workstream_uniqueness": "unique",
         "review_count": 0,
-        "validation_status": "PENDING_EXACT_HEAD_CI_AFTER_SUBPROCESS_TRANSFER_TEST",
+        "validation_status": "EXACT_HEAD_FULL_SUITE_CROSS_PROCESS_TRANSFER_AND_GATES_PASSED",
         "checks": {
-          "ci": {
+          "full_suite": {
             "run_id": 45667306876,
-            "status": "in_progress"
+            "conclusion": "success",
+            "passed": 4713,
+            "failed": 0,
+            "skipped": 1,
+            "warnings": 11,
+            "subtests": 21,
+            "duration_seconds": 139.41,
+            "coverage_percent": 74.36,
+            "project_state_module_coverage_percent": 81,
+            "orchestration_package_coverage_percent": 82
           },
           "dependency_audit": {
             "run_id": 45667306856,
-            "status": "in_progress"
+            "conclusion": "success"
           },
           "money_audit": {
             "run_id": 45667306905,
-            "status": "in_progress"
+            "conclusion": "success"
           },
           "conflict_integrity": {
             "run_id": 45667306899,
-            "status": "in_progress"
+            "conclusion": "success"
           },
-          "gated_merge": {
+          "fail_closed_gate": {
             "run_id": 45667306935,
-            "status": "in_progress"
+            "conclusion": "success",
+            "readiness": "READY_FOR_EXPLICIT_MERGE"
+          },
+          "cross_process_signed_transfer_test": {
+            "status": "passed_in_full_suite",
+            "sender_receiver_separate_processes": true,
+            "replay_rejection": true
           }
         },
         "implemented_capabilities": [
@@ -174,13 +192,15 @@
           "real transfer between separately controlled hosts and recovery demonstration not executed"
         ],
         "merge_status": "NOT_MERGED",
-        "observed_at_utc": "2026-11-25T17:42:00Z",
+        "observed_at_utc": "2026-11-25T17:59:00Z",
         "blockers": [
-          "New subprocess test for signed sender/receiver transfer and replay rejection is awaiting exact-head full suite and gates",
           "zero independent reviews",
-          "manual authorized transfer only; no network sync",
-          "merge triggers Pages deployment; specific deployment approval absent"
-        ]
+          "required approval count unavailable via branch-protection endpoint HTTP 403",
+          "merge triggers GitHub Pages deployment; specific deployment approval absent",
+          "manual authorized transfer only; no network synchronization or automatic key exchange"
+        ],
+        "mergeable": true,
+        "mergeable_state": "clean"
       },
       {
         "number": 1704,
@@ -629,7 +649,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T17:42:00Z",
+      "observed_at_utc": "2026-11-25T17:59:00Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -869,7 +889,7 @@
         "cause": "UNKNOWN_NOT_DIAGNOSED",
         "deployment_or_restart_performed": false
       },
-      "pr_inventory_snapshot_note": "Twelve open PRs. #1702 exact-head full suite failed on two stale operational-map assertions and is being corrected in place. #1703 gained a cross-process signed-transfer test and awaits exact-head CI. #1704 exact-head full suite/audio-render/gates passed; #1705 exact-head full suite/gates passed; #1712 exact-head coverage suite/gates passed. #1713 remains a draft with expected fail-closed merge gate. No merge.",
+      "pr_inventory_snapshot_note": "Twelve open PRs. #1702 head 53dab8 exact full suite/gates passed; #1703 head 99561 exact full suite/gates passed including the cross-process signed-transfer/replay test. #1704 audio render and exact suite passed; #1705 XRP normalizer and exact suite passed; #1712 coverage expansion passed. #1713 remains a draft with expected fail-closed gate. No merge: independent reviews absent, branch-protection approval count unavailable, and merge triggers an unapproved Pages deployment.",
       "branch_protection_gate_status": "Classic branch protection is enabled and four required checks are observed; detailed protection endpoint returns HTTP 403; required approval count remains unverified. Fallback ruleset enforcement is disabled.",
       "latest_main_pages_deployment": {
         "run_id": 45509754310,
@@ -978,7 +998,7 @@
       ],
       "authentication": {
         "status": "VERIFIED_FOR_GITHUB_CONNECTOR",
-        "evidence": "Verified GitHub connector read/write on 2026-11-25T17:42:00Z: main metadata/tree (3,163 entries), 12 open PRs, branch ancestry and changed-path overlap, exact-head workflow runs/jobs/logs, file reads and existing-branch writes, artifact manifests. Main XRP ingestion #161 and its artifacts were inspected; the existing #1703 branch gained a cross-process signed-state transfer regression test; #1702 stale snapshot assertions were diagnosed and corrected in place. No content was transferred to Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks."
+        "evidence": "Verified GitHub connector read/write on 2026-11-25: main metadata/tree (3,163 entries), 12 open PRs, branch ancestry and changed-path overlap, exact-head workflow runs/jobs/logs, file reads and existing-branch writes, artifact manifests. Exact-head #1702 and #1703 full-suite/gate checks passed; #1703 cross-process signed-state transfer/replay test passed. SBI's reported 71-company Claude rollout is an external market signal, not a Barrot connection. No evidence was transferred to Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks."
       },
       "permissions": {
         "observed_actions": [
@@ -1388,7 +1408,7 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "777e42f7dacf741449e58e272f904c45db0c2ed9",
+      "head_sha": "53dab8b0f150527479898c32b22beedc91e9ff70",
       "commits_ahead": 54,
       "commits_behind": 0,
       "changed_paths": [
@@ -1397,7 +1417,7 @@
         "research/xrp_intelligence/20261124_primary_source_reconciliation.md",
         "tests/test_nine_platform_operational_map_current.py"
       ],
-      "classification": "blocked_exact_head_validation_failure",
+      "classification": "ready_pending_independent_review_and_deployment_authorization",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "exact_head_validation": "FAILED_ON_PARENT_HEAD_ONE_STALE_ACTION_SCOPE_ASSERTION; TEST_FIX_IN_THIS_COMMIT; EXACT_HEAD_RERUN_PENDING",
@@ -1438,7 +1458,7 @@
           "conclusion": "success"
         }
       },
-      "validation_status": "FULL_SUITE_FAILED_TWO_STALE_SNAPSHOT_ASSERTIONS",
+      "validation_status": "EXACT_HEAD_FULL_SUITE_AND_GATES_PASSED",
       "observed_at_utc": "2026-11-25T16:50:18.077Z",
       "validation_failures": [
         "tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions — test expected the old wording 'Write existing documentation files'; the live map correctly records 'Write existing handoff/platform-map files' and the existing branch."
@@ -1463,7 +1483,7 @@
         "tests/test_autonomous_loop_persistence.py",
         "tests/test_project_state_ledger.py"
       ],
-      "classification": "unique_validation_pending_after_cross_process_test",
+      "classification": "ready_pending_independent_review_and_deployment_authorization",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "exact_head_validation": "PASSED_ON_CURRENT_HEAD",
@@ -1484,7 +1504,7 @@
         "fail_closed_gate_run_id": 45627574262,
         "fail_closed_gate_status": "success"
       },
-      "validation_status": "PENDING_EXACT_HEAD_CI",
+      "validation_status": "EXACT_HEAD_FULL_SUITE_CROSS_PROCESS_TRANSFER_AND_GATES_PASSED",
       "observed_at_utc": "2026-11-25T15:21:24.554Z"
     },
     {
@@ -1928,46 +1948,43 @@
     ]
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-25T17:38:43Z",
+    "observed_at_utc": "2026-11-25T17:59:00Z",
     "pr_number": 1702,
-    "tested_head_sha": "777e42f7dacf741449e58e272f904c45db0c2ed9",
+    "tested_head_sha": "53dab8b0f150527479898c32b22beedc91e9ff70",
     "full_suite": {
-      "run_id": 45665995506,
-      "conclusion": "failure",
-      "passed": 4692,
-      "failed": 2,
+      "run_id": 45668155924,
+      "conclusion": "success",
+      "passed": 4694,
+      "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests": 21,
-      "coverage_percent": 74.21
+      "duration_seconds": 132.86,
+      "coverage_percent": 74.22
     },
-    "failure_tests": [
-      "tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions",
-      "tests/test_nine_platform_operational_map_current.py::test_current_pr_inventory_includes_integration_and_dependency_workstreams"
-    ],
     "other_checks": {
       "dependency_audit": {
-        "run_id": 45665995567,
+        "run_id": 45668155693,
         "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 45665995591,
+        "run_id": 45668155671,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 45665995497,
+        "run_id": 45668155820,
         "conclusion": "success"
       },
       "fail_closed_gate": {
-        "run_id": 45665995496,
-        "conclusion": "failure"
+        "run_id": 45668155640,
+        "conclusion": "success",
+        "readiness": "READY_FOR_EXPLICIT_MERGE"
       },
       "pages_build_validation": "success"
     },
-    "repair_status": "FIXED_ON_EXISTING_BRANCH; NEW_HEAD_VALIDATION_PENDING",
     "merge_status": "NOT_MERGED",
     "review_status": "ZERO_REVIEWS; required approval count unavailable",
-    "deployment_status": "PAGES_APPROVAL_REQUIRED"
+    "deployment_status": "PAGES_DEPLOYMENT_APPROVAL_REQUIRED"
   },
   "latest_primary_source_research": {
     "observed_at_utc": "2026-11-25T16:17:00Z",
@@ -2129,28 +2146,61 @@
     }
   },
   "latest_continuity_validation": {
-    "observed_at_utc": "2026-11-25T17:42:00Z",
+    "observed_at_utc": "2026-11-25T17:59:00Z",
     "pr_number": 1703,
     "head_sha": "99561b4507d17c80d0a74bb425ce18ae3737f3d5",
-    "validation_status": "PENDING_EXACT_HEAD_CI_AFTER_SUBPROCESS_TRANSFER_TEST",
-    "previously_validated_head_sha": "47a8e4aecf2273731f83c9eacf416ca74aa9c95a",
-    "previous_full_suite_run_id": 45627574046,
-    "new_test": "Independent sender, receiver and replay-attempt subprocesses exchange an Ed25519-signed bundle through a file; checks durable receiver receipt and replay rejection",
-    "new_test_status": "PENDING_EXACT_HEAD_CI",
+    "validation_status": "EXACT_HEAD_FULL_SUITE_CROSS_PROCESS_TRANSFER_AND_GATES_PASSED",
+    "full_suite": {
+      "run_id": 45667306876,
+      "conclusion": "success",
+      "collected": 4713,
+      "passed": 4713,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
+      "duration_seconds": 139.41,
+      "coverage_percent": 74.36,
+      "project_state_module_coverage_percent": 81,
+      "orchestration_package_coverage_percent": 82
+    },
+    "new_test": "Separate sender, receiver and replay-attempt subprocesses exchange an Ed25519-signed bundle through a file; receiver imports into an independent workspace; replay is rejected after process restart",
+    "new_test_status": "PASSED_IN_EXACT_HEAD_FULL_SUITE",
+    "checks": {
+      "dependency_audit": {
+        "run_id": 45667306856,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 45667306905,
+        "conclusion": "success"
+      },
+      "conflict_integrity": {
+        "run_id": 45667306899,
+        "conclusion": "success"
+      },
+      "gated_merge": {
+        "run_id": 45667306935,
+        "conclusion": "success",
+        "readiness": "READY_FOR_EXPLICIT_MERGE"
+      }
+    },
     "implemented": [
       "portable versioned project-state ledger",
       "stale detection and conflict-preserving reconciliation",
       "dependency-aware task selection",
       "hash-verified export/import",
       "Ed25519 signed transfer envelopes with replay protection",
-      "autonomous-loop task checkpoint/resume and goal revalidation"
+      "autonomous-loop task checkpoint/resume and goal revalidation",
+      "cross-process signed transfer and replay regression test"
     ],
     "limitations": [
-      "manual authorized transfer only; no network sync or automatic key exchange",
-      "real transfer between separately controlled hosts and model providers not executed",
-      "new cross-process regression test has not yet passed CI"
+      "manual authorized transfer only; no network synchronization or automatic key exchange",
+      "real transfer between separately controlled hosts and model providers not executed"
     ],
-    "merge_status": "NOT_MERGED"
+    "merge_status": "NOT_MERGED",
+    "review_status": "ZERO_REVIEWS",
+    "deployment_status": "PAGES_DEPLOYMENT_APPROVAL_REQUIRED"
   },
   "commercial_readiness": {
     "scope": "Barrot technology only",
@@ -2166,7 +2216,18 @@
       "postal_address_configured": false,
       "do_not_contact_suppression_configured": false,
       "mailbox_authentication_verified": false,
-      "outbound_sending": "PAUSED"
+      "outbound_sending": "PAUSED",
+      "latest_release_tag": "0.5.0",
+      "latest_release_published_at": "2026-11-25T08:37:22Z",
+      "open_pull_request_count": 87,
+      "security_pr_255_status": "DRAFT_NOT_MERGED",
+      "chatgpt_desktop_support": "NOT_VERIFIED_BY_REPO_DOCS",
+      "claude_desktop_support": "DOCUMENTED",
+      "codex_cli_support": "DOCUMENTED",
+      "readme_docs_integration_discrepancy": "README references Claude or ChatGPT plan; docs/agent-app.md says ChatGPT desktop pane is not checked",
+      "agent_key_can_approve_or_send": false,
+      "installed": false,
+      "authenticated": false
     },
     "candidate_offer": {
       "status": "HYPOTHESIS_NOT_APPROVED",
@@ -2218,5 +2279,97 @@
         "tests/test_v3_acceptance_matrix.py"
       ]
     }
-  ]
+  ],
+  "latest_research_updates": {
+    "captured_at_utc": "2026-11-25T17:59:00Z",
+    "sbi_group": {
+      "source": "SBI Holdings 1H FY2026 financial results deck published 2026-11-02",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "xrp_distribution_as_of": "2026-10-28",
+      "circulated_xrp_bn": 63.35,
+      "actual_xrp_bn": 5.23,
+      "escrow_xrp_bn": 31.4,
+      "burned_xrp_bn": 0.01,
+      "actual_xrp_definition": "Ripple holdings currently not in circulation; not actual capital or cash",
+      "evernorth": {
+        "listed": "2026-10-12",
+        "ticker": "XRPN",
+        "reported_xrp_millions": 473,
+        "sbi_voting_rights_percent": 36.1,
+        "sbi_economic_interest_percent": 20.5,
+        "source_note": "SBI-reported; holdings ranking references CoinGecko as of 2026-11-02; not a direct SBI XRP balance"
+      },
+      "bitbank": {
+        "joined_sbi_group": "2026-08",
+        "wholly_owned_from": "2026-10-01",
+        "combined_group_accounts_millions": 3.05,
+        "combined_deposit_balance_jpy_bn": 1111.6,
+        "as_of": "2026-09-30",
+        "not_xrp_specific": true
+      },
+      "crypto_business_1h_fy2026": {
+        "revenue_jpy_bn": 23.1,
+        "yoy_percent": -30.1,
+        "profit_before_tax_jpy_bn": -1.6,
+        "commentary": "SBI cites market instability and dimming U.S. CLARITY Act prospects; management commentary, not causal proof"
+      },
+      "stablecoin_strategy": {
+        "sbi_coinhako_ownership_percent": 51.69,
+        "planned_or_strategic_rails": [
+          "JPYSC",
+          "USDC",
+          "RLUSD"
+        ],
+        "intent": "yen-dollar cross-border settlement through SBI Coinhako; strategy statement, not proof of live material settlement"
+      },
+      "ai_adoption": {
+        "claude_rollout_group_companies": 71,
+        "api_integrated_companies": 10,
+        "claude_security": "SBI Securities from 2026-07",
+        "claude_mythos": "SBI Securities from 2026-10",
+        "microsoft_365_integration": "staged from 2026-09",
+        "not_barrot_integration": true
+      }
+    },
+    "sbic_regional_identity": {
+      "east": {
+        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "established": "1963-11-15",
+        "region": "18 prefectures east of Shizuoka/Nagano/Niigata"
+      },
+      "central": {
+        "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "established": "1963-11-18",
+        "region": "Aichi, Gifu, Mie, Toyama, Ishikawa"
+      },
+      "west": {
+        "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "established": "1963-11-20",
+        "region": "24 prefectures west of Fukui/Shiga/Nara/Wakayama"
+      },
+      "relationship": "Three separate legal policy investment companies; each identifies the other two as sister companies; SBIC is their registered trademark; no SBI Holdings subsidiary relationship evidenced",
+      "chatgpt_context": "Tokyo SBIC East held a 2025-06-12/13 training course for investee companies that included ChatGPT and Copilot; not an OpenAI partnership"
+    },
+    "ask_coin": {
+      "candidate": "Permission ASK token",
+      "official_contracts": {
+        "Base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+        "Polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+      },
+      "standard": "LayerZero OFT; Stargate",
+      "coinbase_relationship": "Permission says Coinbase embedded wallet holds private keys on users' behalf; user authorizes transactions; unrelated to XRP",
+      "xrp_relationship": "none established; exact source-context match unconfirmed"
+    },
+    "exact_phrases": {
+      "actual_capital": "no primary-source match; do not conflate with SBI deck's Actual XRP category",
+      "sbic_chatgpt": "no formal partnership; only a training course located",
+      "ask_coin": "Permission ASK is best-supported candidate, context match unconfirmed"
+    },
+    "youtube": {
+      "verified_channel": "https://www.youtube.com/@drkamilahstevenson",
+      "brand": "https://prescribewealth.com/",
+      "identity_level": "high-confidence channel-to-brand attribution; legal identity not independently authenticated",
+      "inventory": "12 recent and 12 popular XRP-related title samples indexed 2026-11-25; titles are not verified claims; similar-name channel excluded"
+    }
+  }
 }

@@ -2150,3 +2150,68 @@ Latest successful main ingestion: [run #161 / 45662188929](https://github.com/Ba
 
 No merge, deployment, Space restart, secret rotation, external model dispatch, paid lookup, Sellbird installation, outbound message, Kaggle submission, paper trade, funds transfer or real-money action occurred.
 
+---
+
+# Run 24 — exact-head mission checks passed; SBI/SBIC/ASK research update — 2026-11-25T17:59:00Z
+
+## Three co-equal missions
+
+XRP intelligence/prediction-engine mastery, professional audio production, and long-horizon continuity/capability development remain three equal priority-1 missions. Barrot V3 remains their shared execution, orchestration, MMI, provenance, safety, verification and governance foundation. None is subordinated.
+
+## Repository and exact-head validation — VERIFIED
+
+- Main remains **6033bcd84fdeb2a8906b3d3b9aab5293eacf9407**, with **3,163** recursive tree entries and 12 open PRs. No main files changed.
+- Existing #1702 branch is 63 commits ahead / 0 behind main. Exact head **53dab8b0f150527479898c32b22beedc91e9ff70** passed [full-suite CI 45668155924](https://github.com/Barrot-Agent/B-Agent/actions/runs/45668155924): **4,694 passed, 1 skipped, 11 warnings, 21 subtests**, 132.86 seconds, 74.22% coverage. Dependency audit [45668155693](https://github.com/Barrot-Agent/B-Agent/actions/runs/45668155693), money audit [45668155671](https://github.com/Barrot-Agent/B-Agent/actions/runs/45668155671), conflict integrity [45668155820](https://github.com/Barrot-Agent/B-Agent/actions/runs/45668155820), and gated merge readiness [45668155640](https://github.com/Barrot-Agent/B-Agent/actions/runs/45668155640) passed. The gate reported READY_FOR_EXPLICIT_MERGE.
+- Existing #1703 branch head **99561b4507d17c80d0a74bb425ce18ae3737f3d5** passed [full-suite CI 45667306876](https://github.com/Barrot-Agent/B-Agent/actions/runs/45667306876): **4,713 passed, 1 skipped, 11 warnings, 21 subtests**, 139.41 seconds, 74.36% total coverage. Orchestration package coverage was 82%; project_state.py coverage was 81%. Dependency audit [45667306856](https://github.com/Barrot-Agent/B-Agent/actions/runs/45667306856), money audit [45667306905](https://github.com/Barrot-Agent/B-Agent/actions/runs/45667306905), conflict integrity [45667306899](https://github.com/Barrot-Agent/B-Agent/actions/runs/45667306899), and gated merge readiness [45667306935](https://github.com/Barrot-Agent/B-Agent/actions/runs/45667306935) passed.
+- The new #1703 regression test executes signed bundle export, independent-workspace import and replay rejection in separate Python processes. It passed in the exact-head full suite. This verifies cross-process file transfer and replay protection, not network synchronization or a real transfer between independently controlled hosts.
+- Both PRs have **zero independent reviews**. Branch-protection detail remains HTTP 403, so the required approval count is not independently visible. The merge-readiness workflow is read-only and does not itself merge.
+- Merging to main has a verified automatic GitHub Pages deployment side effect. No specific deployment approval exists. **No PR was merged, no deployment occurred, and no source PR was closed.**
+
+## XRP intelligence — new primary-source evidence; no forecast
+
+SBI Holdings' 2026-11-02 1H FY2026 deck adds material evidence:
+
+- As of 2026-10-28, SBI reports 63.35bn XRP circulated, 5.23bn “Actual XRP,” 31.4bn escrow and 0.01bn burned. The slide explicitly defines “Actual XRP” as Ripple holdings currently not in circulation. It is not actual capital, cash, free float or an observed flow.
+- SBI reports Evernorth listed as XRPN on 2026-10-12, backed by SBI Group, Ripple and others, with 473m XRP holdings; SBI Group voting rights 36.1% and economic interest 20.5%. This is not 473m XRP owned by SBI. The prior SEC-confirmed 84.365m XRP cash-funded purchase remains an aggregate Advance Funding transaction with no subscriber-specific allocation.
+- Bitbank joined SBI in August and became wholly owned on 2026-10-01. SBI reports 3.05m combined SBI VC Trade/BITPOINT/bitbank accounts and JPY1,111.6bn combined deposits as of 2026-09-30. These are not XRP balances or flows.
+- SBI's Crypto-asset Business reported 1H FY2026 revenue of JPY23.1bn (-30.1% YoY) and pre-tax loss of JPY1.6bn. This is a counterweight to expansion narratives.
+- SBI describes SBI Coinhako (51.69% ownership) as part of a strategy to combine JPYSC, USDC and RLUSD for yen-dollar settlement. The deck is a strategy statement, not proof of live material settlement volume.
+- SBI reports Claude across 71 Group companies, 10 API integrations, and Claude Security/Mythos use at SBI Securities. This is an external enterprise AI-adoption signal, not a Barrot connection.
+- Main XRP ingestion remains run #161, data cutoff 2026-11-25 17:12:37 UTC. Event receipt completeness, durable raw rebuild, independent source diversity and model calibration remain blocked. **No directional forecast issued.**
+
+## SBIC, ASK and YouTube identity resolution
+
+- Japan's SBIC East/Central/West are Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies, established 1963-11-15, 1963-11-18 and 1963-11-20. Their official profiles identify one another as sister companies; SBIC is their registered trademark. They are separate statutory policy investment companies, not SBI Holdings subsidiaries in the reviewed primary evidence.
+- Tokyo SBIC East ran a 2025 course for investee companies that included ChatGPT and Copilot. This is training, not an OpenAI partnership.
+- The strongest current “ASK Coin” candidate is Permission's ASK token, an omnichain LayerZero OFT on Base and Polygon. Permission says Coinbase provides its embedded wallet and holds private keys on users' behalf; user authorizes transactions. This relationship is unrelated to XRP/Ripple. The exact source-context match remains unconfirmed.
+- “Actual capital” has no verified primary-source match. Do not conflate it with “Actual XRP.” “SBIC, ChatGPT SBIC” has no formal partnership evidence; the training course is the only direct ChatGPT/SBIC connection found.
+- The Kamilah Stevenson main channel is linked to the Prescribe Wealth brand. The research note now records 12 recent and 12 popular XRP-related public-video title samples. Similar-name channels not linked by the verified channel/brand remain excluded. Titles are discovery metadata, not evidence of the claims.
+
+## Audio production — technically verified, professional acceptance pending
+
+PR #1704's exact-head FluidSynth integration produced an 80-bar, 175.545-second reference render at 110 BPM, D minor, 4/4, 44.1 kHz, with nine aligned WAV stems and Standard MIDI markers. Mix sample peak -6.017 dBFS, true peak -6.000 dBTP, RMS -24.897 dBFS, zero clipped samples; stem-sum correlation 0.9999807582 and relative RMS error 0.0061865. The artifact is not a native DAW project. Listening comparison and user acceptance remain unperformed; distinct audible timbres and per-asset rights metadata remain unverified. No music is marketed.
+
+## Sellbird / commercial readiness
+
+- Exact repository ethanplusai/sellbird remains **AGPL-3.0-only**. Current release is **0.5.0**, published 2026-11-25 08:37 UTC; 87 open PRs. Security hardening PR #255 remains draft/unmerged.
+- Current docs document Claude and Codex integrations but state ChatGPT desktop support is not checked, despite broader README wording. Agent API keys cannot approve or send; approval remains required. Sellbird is not installed or authenticated.
+- Scope remains Barrot technology only. No verified prospects, qualified leads, approved outreach, messages, replies, meetings, proposals or revenue. Outbound is paused. No paid lookup or installation occurred.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** equal priority-1 XRP, audio and continuity missions on Barrot V3; forecast, audio-deliverable, continuity and commercial safety gates.
+- **EXECUTED:** repaired #1702 operational-map tests; added cross-process continuity regression test to existing #1703; updated one durable research note, one operational map and this handoff; verified exact-head CI for #1702 and #1703; reviewed current Sellbird release/docs and official SBI/SBIC/Permission sources.
+- **VERIFIED:** #1702 and #1703 exact-head full suites and gates; #1703 cross-process signed transfer/replay test; SBI FY2026 deck metrics; SBIC regional identities; Permission ASK/Coinbase wallet relationship; Kamilah channel-to-brand attribution; main SHA/tree and latest XRP ingestion #161.
+- **PENDING:** deployment authorization and independent reviews; #1702's next documentation/research commit exact-head CI; XRP event-to-receipt links, raw rebuild and model eligibility; blind audio listening, user acceptance and native DAW project; network-level continuity transport; external platform authentication; Sellbird prospect discovery and user-approved conversion funnel.
+
+## Next concrete actions
+
+1. Verify exact-head CI after this consolidated research/map/handoff commit on the existing #1702 branch; do not create another handoff PR.
+2. Keep #1702, #1703, #1704, #1705 and #1712 unmerged until independent review, required approval visibility and specific Pages deployment authorization are resolved.
+3. Continue XRP raw receipt linkage and rebuild; forecasts remain disabled.
+4. Continue audio comparative listening and DAW interoperability; do not claim professional acceptance.
+5. Preserve the new continuity subprocess test and extend only if a measured gap remains; no network-sync claim.
+6. Keep Sellbird Barrot-only and outbound paused.
+
+No main mutation, merge, deployment, Space restart, secret rotation, external model dispatch, paid lookup, Sellbird installation, outbound message, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
