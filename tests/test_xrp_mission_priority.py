@@ -266,3 +266,105 @@ def test_primary_mission_resource_is_declared_as_package_data() -> None:
     assert 'data = [' in pyproject
     assert '"merge_conflict_unified.json"' in pyproject
     assert '"research/navier_stokes_research_bundle.json"' in pyproject
+
+
+def test_ask_barrot_system_prompt_preserves_three_coequal_missions() -> None:
+    prompt = SYSTEM_BASE.lower()
+
+    assert "three co-equal highest-priority missions" in prompt
+    assert "xrp intelligence" in prompt
+    assert "professional audio production" in prompt
+    assert "long-horizon continuity and capability development" in prompt
+    assert "none may be deferred behind the others" in prompt
+    assert "barrot v3 remains the shared" in prompt
+    assert "sellbird is restricted to barrot technology only" in prompt
+    assert "your highest-priority mission is xrp" not in prompt
+
+
+def test_ask_barrot_reads_exactly_three_active_priority_one_missions(tmp_path: Path) -> None:
+    path = tmp_path / "data" / "missions"
+    path.mkdir(parents=True)
+    (path / "primary_mission.json").write_text(
+        json.dumps(_manifest()),
+        encoding="utf-8",
+    )
+
+    status = load_mission_portfolio_status(tmp_path)
+
+    assert "Verified co-equal mission portfolio" in status
+    assert "XRP Intelligence and Prediction-Engine Mastery" in status
+    assert "Professional Audio Production" in status
+    assert "Long-Horizon Continuity and Capability Development" in status
+    assert "priority=1; status=active" in status
+
+
+def test_ask_barrot_fails_closed_on_mission_priority_demotion(tmp_path: Path) -> None:
+    path = tmp_path / "data" / "missions"
+    path.mkdir(parents=True)
+    manifest = _manifest()
+    manifest["mission_portfolio"]["missions"][1]["priority"] = 2
+    (path / "primary_mission.json").write_text(
+        json.dumps(manifest),
+        encoding="utf-8",
+    )
+
+    status = load_mission_portfolio_status(tmp_path)
+
+    assert "INVALID" in status
+    assert "do not silently demote" in status
+
+
+def test_ask_barrot_platform_map_requires_authentication_permissions_and_data_flow(
+    tmp_path: Path,
+) -> None:
+    path = tmp_path / "research" / "operations"
+    path.mkdir(parents=True)
+    payload = {
+        "captured_at_utc": "2026-11-25T21:38:00Z",
+        "platforms": {
+            "ChatGPT": {
+                "capabilities": ["GitHub repository and workflow inspection"],
+                "authentication": {"status": "VERIFIED_FOR_GITHUB_CONNECTOR"},
+                "permissions": {"observed_actions": ["read repository", "write existing branch"]},
+                "data_flow": {
+                    "verified": True,
+                    "status": "LIVE_TESTED",
+                    "external_transfer_occurred": False,
+                },
+            },
+            "Claude": {
+                "capability_status": "NOT_ASSESSED",
+                "authentication": {"status": "NOT_TESTED"},
+                "permissions": {"status": "UNKNOWN_NOT_TESTED"},
+                "data_flow": {
+                    "verified": False,
+                    "status": "NOT_TESTED",
+                    "external_transfer_occurred": False,
+                },
+            },
+        },
+        "coordination": {
+            "status": "DESIGNED_NOT_EXECUTED",
+            "structured_evidence_exchange_across_nine_platforms": False,
+            "external_model_data_transfer_occurred": False,
+        },
+    }
+    (path / "nine_platform_operational_map_current.json").write_text(
+        json.dumps(payload),
+        encoding="utf-8",
+    )
+
+    status = load_platform_capability_map(tmp_path)
+
+    assert "ChatGPT: connection=VERIFIED" in status
+    assert "Claude: connection=UNVERIFIED" in status
+    assert "Grok: connection=UNVERIFIED" in status
+    assert "structured_evidence_exchange=False" in status
+    assert "external_model_data_transfer=False" in status
+
+
+def test_ask_barrot_platform_map_unavailable_never_claims_connections(tmp_path: Path) -> None:
+    status = load_platform_capability_map(tmp_path)
+
+    assert "UNAVAILABLE" in status
+    assert "no external platform connection may be claimed" in status

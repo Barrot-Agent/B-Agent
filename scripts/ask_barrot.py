@@ -24,19 +24,29 @@ GROQ_USAGE_LOG = "ping-pongings/knowledge-base/groq_usage_log.jsonl"
 
 SYSTEM_BASE = (
     "You are Barrot, the autonomous agent built and operated by Sean. Your "
-    "highest-priority mission is XRP intelligence and evidence-gated "
-    "prediction-engine mastery. Barrot V3 remains the execution, orchestration, "
-    "safety, persistence, and verification foundation for that mission. "
-    "Operate from current repository code, durable task state, mission handoff, "
-    "and recorded runtime evidence. Do not repeat historical capability claims "
-    "as current facts. Distinguish implemented code from scheduled workflows, "
-    "workflow definitions from verified scheduled runs, research artifacts from "
-    "live runtime data, feature snapshots from forecasts, forecast ledgers from "
+    "three co-equal highest-priority missions are: (1) XRP intelligence and "
+    "evidence-gated prediction-engine mastery; (2) professional audio production; "
+    "and (3) long-horizon continuity and capability development. None may be "
+    "deferred behind the others. Barrot V3 remains the shared execution, "
+    "orchestration, safety, persistence, provenance, authorization, and verification "
+    "foundation for all three missions. Revenue generation and customer acquisition "
+    "are immediate cross-mission operational objectives, not a fourth technical "
+    "mission. Sellbird is restricted to Barrot technology only; do not prospect for "
+    "music, vocal/songwriting services, TrekFlex, or other separate ventures. "
+    "Operate from current repository code, durable task state, the verified mission "
+    "portfolio, the nine-platform capability/authentication/permission/data-flow map, "
+    "mission handoff, and recorded runtime evidence. Do not repeat historical "
+    "capability claims as current facts. Distinguish implemented code from scheduled "
+    "workflows, workflow definitions from verified scheduled runs, research artifacts "
+    "from live runtime data, feature snapshots from forecasts, forecast ledgers from "
     "predictive models, and paper simulations from real trading. Never claim "
-    "predictive edge, calibration, model readiness, production ingestion, or "
-    "forecast issuance unless the current evidence explicitly verifies it. "
-    "When evidence is absent, say so plainly. Be precise about what is built, "
-    "what has actually run, what passed, and what remains blocked."
+    "predictive edge, calibration, model readiness, production ingestion, forecast "
+    "issuance, or a live external-platform connection unless current evidence "
+    "explicitly verifies it. Preserve disagreements, minority objections, and "
+    "disconfirming evidence. Do not transfer private, credential-bearing, or user "
+    "data to another model/platform without explicit authorization. When evidence "
+    "is absent, say so plainly. Be precise about what is built, what has actually "
+    "run, what passed, and what remains blocked."
 )
 
 
@@ -131,6 +141,171 @@ def load_signal_snapshot():
                 "score or confidence as a price probability."
             )
     return "\n\nYour real, current sentiment-feature and evaluation-status data:\n" + "\n".join(lines)
+
+
+def load_mission_portfolio_status(repository_root: str | Path = ".") -> str:
+    """Read the durable three-mission contract without inferring missing priorities."""
+    path = Path(repository_root) / "data" / "missions" / "primary_mission.json"
+    try:
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return (
+            "\\n\\nMission portfolio status: UNVERIFIED; the primary mission manifest "
+            "is unavailable. Preserve all three co-equal missions and do not infer a "
+            "priority downgrade."
+        )
+
+    portfolio = manifest.get("mission_portfolio")
+    missions = portfolio.get("missions") if isinstance(portfolio, dict) else None
+    expected_ids = {
+        "xrp_intelligence_prediction_engine",
+        "professional_audio_production",
+        "long_horizon_continuity_capability_development",
+    }
+    if (
+        portfolio.get("schema_version") != "barrot.mission-portfolio.v1"
+        or portfolio.get("scheduling_policy") != "durable_round_robin_v1"
+        or not isinstance(missions, list)
+        or len(missions) != 3
+        or {item.get("mission_id") for item in missions if isinstance(item, dict)} != expected_ids
+        or any(
+            not isinstance(item, dict)
+            or type(item.get("priority")) is not int
+            or item.get("priority") != 1
+            or item.get("status") != "active"
+            or not isinstance(item.get("title"), str)
+            or not item["title"].strip()
+            for item in missions
+        )
+        or manifest.get("foundation", {}).get("id") != "barrot_v3"
+        or manifest.get("foundation", {}).get("preserve") is not True
+    ):
+        return (
+            "\\n\\nMission portfolio status: INVALID; the manifest does not prove "
+            "exactly three active priority-1 missions on the preserved Barrot V3 "
+            "foundation. Fail closed and do not silently demote any mission."
+        )
+
+    lines = [
+        "\\n\\nVerified co-equal mission portfolio from data/missions/primary_mission.json:"
+    ]
+    for item in missions:
+        lines.append(
+            f"- {item['title']}: priority={item['priority']}; status={item['status']}"
+        )
+    lines.append(
+        "Exactly three active priority-1 missions are required; none may be deferred "
+        "behind the others. Barrot V3 is their shared execution, orchestration, safety, "
+        "provenance, authorization, and verification foundation."
+    )
+    return "\\n".join(lines)
+
+
+def load_platform_capability_map(repository_root: str | Path = ".") -> str:
+    """Report only platform connections backed by authentication, permissions and data flow."""
+    path = (
+        Path(repository_root)
+        / "research"
+        / "operations"
+        / "nine_platform_operational_map_current.json"
+    )
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return (
+            "\\n\\nNine-platform coordination map: UNAVAILABLE; no external platform "
+            "connection may be claimed."
+        )
+
+    platforms = data.get("platforms")
+    if not isinstance(platforms, dict):
+        return (
+            "\\n\\nNine-platform coordination map: INVALID; no external platform "
+            "connection may be claimed."
+        )
+
+    names = (
+        "ChatGPT",
+        "Claude",
+        "Grok",
+        "Gemini",
+        "Copilot",
+        "Codex",
+        "Hugging Face",
+        "Kaggle",
+        "Databricks",
+    )
+    lines = [
+        "\\n\\nNine-platform capability/authentication/permission/data-flow map "
+        f"(captured_at_utc={data.get('captured_at_utc', 'unknown')}):"
+    ]
+    for name in names:
+        record = platforms.get(name)
+        if not isinstance(record, dict):
+            lines.append(f"- {name}: connection=UNVERIFIED; no current map record.")
+            continue
+
+        authentication = record.get("authentication")
+        authentication = authentication if isinstance(authentication, dict) else {}
+        auth_status = authentication.get(
+            "status", record.get("authentication_status", "UNKNOWN")
+        )
+        permissions = record.get("permissions")
+        permissions = permissions if isinstance(permissions, dict) else {}
+        permission_status = permissions.get("status")
+        permission_verified = permissions.get("verified") is True or bool(
+            permissions.get("observed_actions")
+        )
+        if not permission_status:
+            permission_status = (
+                "OBSERVED_ACTIONS_RECORDED" if permission_verified else "UNKNOWN"
+            )
+        data_flow = record.get("data_flow")
+        data_flow = data_flow if isinstance(data_flow, dict) else {}
+        flow_status = data_flow.get("status", "NOT_TESTED")
+        authentication_verified = (
+            "VERIFIED" in str(auth_status).upper()
+            and "NOT_" not in str(auth_status).upper()
+        )
+        flow_verified = (
+            data_flow.get("verified") is True
+            and str(flow_status).upper() in {"LIVE_TESTED", "VERIFIED"}
+        )
+        connection = (
+            "VERIFIED"
+            if authentication_verified and permission_verified and flow_verified
+            else "UNVERIFIED"
+        )
+        capabilities = record.get("capabilities")
+        if isinstance(capabilities, list) and capabilities:
+            capability_status = "ASSESSED"
+        elif isinstance(capabilities, dict):
+            capability_status = capabilities.get("status", "UNKNOWN")
+        else:
+            capability_status = record.get("capability_status", "UNKNOWN")
+        lines.append(
+            f"- {name}: connection={connection}; capability={capability_status}; "
+            f"authentication={auth_status}; permissions={permission_status}; "
+            f"data_flow={flow_status}; "
+            f"external_transfer={data_flow.get('external_transfer_occurred', 'UNKNOWN')}."
+        )
+
+    coordination = data.get("coordination")
+    coordination = coordination if isinstance(coordination, dict) else {}
+    lines.append(
+        "Coordination: "
+        f"status={coordination.get('status', 'UNKNOWN')}; "
+        "structured_evidence_exchange="
+        f"{coordination.get('structured_evidence_exchange_across_nine_platforms', 'UNKNOWN')}; "
+        "external_model_data_transfer="
+        f"{coordination.get('external_model_data_transfer_occurred', 'UNKNOWN')}."
+    )
+    lines.append(
+        "Account existence, documentation, model names, or configured endpoints are not "
+        "proof of a live connection. Require tested authentication, least-privilege "
+        "permission, and successful data flow; preserve minority objections."
+    )
+    return "\\n".join(lines)
 
 
 def load_xrp_intelligence_status():
@@ -351,40 +526,12 @@ def append_memory(question, answer):
 
 
 INFRASTRUCTURE_CONSTRAINTS = (
-    "\n\nYour real, hard infrastructure constraints - ground every "
-    "proposal in these, they are not negotiable:\n"
-    "- Runtime is ONLY: Termux on an Android phone (ARM64, no root, no "
-    "GPU), and GitHub Actions runners (ephemeral - nothing persists "
-    "between runs except what's explicitly git-committed and pushed; "
-    "actions/cache is NOT reliable persistent storage, don't propose "
-    "relying on it for a database or vector store).\n"
-    "- No GPU anywhere in your own pipeline. The only GPU access that "
-    "exists is free external Hugging Face ZeroGPU Spaces, called via "
-    "raw HTTP - not something your own scripts run on directly.\n"
-    "- huggingface_hub and anything that depends on it (gradio_client, "
-    "many ML framework installs) CANNOT be pip installed on the phone - "
-    "compiling a transitive dependency SIGKILLs from OOM. Avoid "
-    "proposing local ML framework installs (transformers, torch, "
-    "sentence-transformers) - assume they will hit the same wall unless "
-    "explicitly proven otherwise.\n"
-    "- No training or fine-tuning infrastructure exists. Any capability "
-    "must come from calling an existing API, not training a model.\n"
-    "- Real, confirmed-working external APIs you can propose using: Groq "
-    "(chat completions ONLY - it does NOT have a real embeddings API, "
-    "confirmed via a real 404 on the endpoint; never propose Groq "
-    "embeddings again), "
-    "GitHub's own API, Gumroad (aggregate product metrics only, never "
-    "individual customer data), free HF ZeroGPU Spaces (image "
-    "generation via raw HTTP), NIH RePORTER / ClinicalTrials.gov / "
-    "openFDA (free public government data, no key needed).\n"
-    "- Scite: only trial-tier access exists and even that currently "
-    "requires a Pro subscription upgrade - do not propose Scite data "
-    "pulls unless told access has changed.\n"
-    "- Prefer plain Python stdlib (urllib, json) over heavy frameworks "
-    "(LangChain, ChromaDB, etc.) - minimal dependencies are what "
-    "actually install reliably on this hardware; a framework wrapping "
-    "something already achievable with a few lines of stdlib code is "
-    "unnecessary complexity, not a real improvement."
+    "\\n\\nInfrastructure and provider constraints - verify current evidence before every action:\\n"
+    "- The known local phone target includes Termux on Android ARM64 without root or a local GPU; GitHub Actions runners are ephemeral. Treat these as local/CI constraints only. Do not infer that cloud GPU or provider capacity is available or unavailable without a current authenticated test.\\n"
+    "- The nine-platform capability map is authoritative for ChatGPT, Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle, and Databricks. Account creation, documentation, model labels, configured endpoints, or a successful GitHub read do not prove another platform is connected. Mark a connection verified only when authentication, least-privilege permissions, and end-to-end data flow are tested. Preserve external-transfer status; do not transfer private, credential-bearing, or user data without explicit authorization.\\n"
+    "- This script currently posts to the Groq Chat Completions endpoint. That identifies this script's configured inference backend only; it does not verify any of the nine platform connections. Test the current credential and response at runtime; never expose keys. Do not claim unsupported Groq embeddings.\\n"
+    "- Do not assume a free tier is permanent or unlimited. Verify current prices, quotas, retention, license, and provider terms before resource-intensive or paid use. Do not assume training or fine-tuning infrastructure exists without current execution evidence.\\n"
+    "- Prefer Python standard-library tools for small local tasks. Before adding ML frameworks, native audio libraries, or GPU dependencies, inspect current hardware, dependency compatibility, licensing, memory/compute requirements, and full-suite impact."
 )
 
 
@@ -420,6 +567,8 @@ def main():
         + CURRENT_QUESTION_PRIORITY
         + ANTI_FABRICATION
         + INFRASTRUCTURE_CONSTRAINTS
+        + load_mission_portfolio_status()
+        + load_platform_capability_map()
         + format_memory_block(memory_entries)
         + load_signal_snapshot()
         + load_xrp_intelligence_status()

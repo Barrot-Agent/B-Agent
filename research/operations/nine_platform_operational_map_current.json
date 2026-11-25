@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-25T21:27:53Z",
+  "captured_at_utc": "2026-11-25T21:38:00Z",
   "capture_basis": "Run 28: current main/tree/12-PR inventory and overlap audit; exact-head #1702 full-suite and gates verified on pre-update head af8c69a; Run 164 raw/event/feature-store artifacts downloaded and independently checked; 21/21 retained payload hashes, 37 receipt-chain links and SQLite integrity verified; current spot/depth and provider restrictions recorded; OCC/BNY/Ripple primary-source updates. Run 28 handoff commit cfd75f0; map commit and its exact-head CI remain pending.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
@@ -62,8 +62,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "head_sha": "d73976626a267656f831436e8d8f2719b95a9228",
-        "commits_ahead": 80,
+        "head_sha": "4eb9d12f1884c29cbdb0fa247387525b7d230481",
+        "commits_ahead": 82,
         "commits_behind": 0,
         "draft": false,
         "changed_paths": [
@@ -72,7 +72,7 @@
           "research/xrp_intelligence/20261124_primary_source_reconciliation.md",
           "tests/test_nine_platform_operational_map_current.py"
         ],
-        "classification": "blocked_exact_head_full_suite_failure_pending_correction",
+        "classification": "ready_pending_independent_review_and_deployment_authorization",
         "workstream_uniqueness": "unique",
         "review_count": 0,
         "mergeable": true,
@@ -713,7 +713,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-25T21:27:53Z",
+      "observed_at_utc": "2026-11-25T21:38:00Z",
       "sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "recursive_tree_entries": 3163,
       "tree_truncated": false,
@@ -899,7 +899,7 @@
         "cause": "UNKNOWN_NOT_DIAGNOSED",
         "deployment_or_restart_performed": false
       },
-      "pr_inventory_snapshot_note": "Twelve open PRs #1702–#1713. Current #1702 head d73976626a267656f831436e8d8f2719b95a9228 is 80 ahead / 0 behind; exact-head full suite failed one handoff-map consistency assertion because main ingestion run 165 had not replaced run 162 in current_main_state. The canonical map is being refreshed to run 165; rerun full suite and all gates on the final head. #1703 continuity, #1704 audio, #1705 XRP and #1712 coverage retain their previously verified exact-head results. #1713 remains a draft with its gate correctly failing closed. #1708 is a duplicate subset of #1706; #1711 remains blocked by Streamlit/NumPy compatibility. All PRs have zero independent reviews. No merge: branch-protection approval count is unreadable and main merges trigger an unapproved Pages deployment.",
+      "pr_inventory_snapshot_note": "Twelve open PRs #1702–#1713. Before the mission-prompt alignment update, #1702 head 4eb9d12f1884c29cbdb0fa247387525b7d230481 was 82 ahead / 0 behind; exact-head full suite passed (4,694 passed, 1 skipped), dependency audit, money audit, conflict integrity, Pages validation and fail-closed merge-readiness passed. All 12 PRs have zero independent reviews. Detailed branch-protection/approval requirements remain unreadable (HTTP 403), and main merges trigger a Pages deployment without explicit authorization. The new prompt-alignment commit on #1702 requires a fresh exact-head rerun.",
       "branch_protection_gate_status": "Classic branch protection is enabled and four required checks are observed; detailed protection endpoint returns HTTP 403; required approval count remains unverified. Fallback ruleset enforcement is disabled.",
       "latest_main_pages_deployment": {
         "run_id": 45509754310,
@@ -1364,8 +1364,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "d73976626a267656f831436e8d8f2719b95a9228",
-      "commits_ahead": 80,
+      "head_sha": "4eb9d12f1884c29cbdb0fa247387525b7d230481",
+      "commits_ahead": 82,
       "commits_behind": 0,
       "changed_paths": [
         "BARROT_MISSION_HANDOFF_LATEST.md",
@@ -1373,7 +1373,7 @@
         "research/xrp_intelligence/20261124_primary_source_reconciliation.md",
         "tests/test_nine_platform_operational_map_current.py"
       ],
-      "classification": "blocked_exact_head_full_suite_failure_pending_correction",
+      "classification": "ready_pending_independent_review_and_deployment_authorization",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "exact_head_validation": "PASSED_ON_CURRENT_HEAD",
@@ -1407,7 +1407,7 @@
         },
         "pages_build_validation": "success_no_deployment"
       },
-      "validation_status": "EXACT_HEAD_FULL_SUITE_FAILED_ONE_STALE_RUN_REFERENCE; MAP_REFRESH_APPLIED; RERUN_PENDING",
+      "validation_status": "EXACT_HEAD_FULL_SUITE_AND_ALL_CHECKS_PASSED_ON_4eb9d12; PROMPT_ALIGNMENT_UPDATE_ADDED; NEW_HEAD_REQUIRES_RERUN",
       "observed_at_utc": "2026-11-25T18:35:22Z",
       "validation_failures": [
         "tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions — test expected the old wording 'Write existing documentation files'; the live map correctly records 'Write existing handoff/platform-map files' and the existing branch."
@@ -2018,48 +2018,52 @@
     ]
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-25T21:25:07Z",
+    "observed_at_utc": "2026-11-25T21:37:58Z",
     "pr_number": 1702,
-    "tested_head_sha": "d73976626a267656f831436e8d8f2719b95a9228",
+    "tested_head_sha": "4eb9d12f1884c29cbdb0fa247387525b7d230481",
     "full_suite": {
-      "run_id": 45703328818,
-      "conclusion": "failure",
-      "passed": 4693,
-      "failed": 1,
+      "run_id": 45705430482,
+      "conclusion": "success",
+      "passed": 4694,
+      "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests": 21,
-      "coverage_percent": 74.21
-    },
-    "failure": {
-      "test": "tests/test_nine_platform_operational_map_current.py::test_current_pr_inventory_includes_integration_and_dependency_workstreams",
-      "cause": "The handoff map's latest_xrp_ingestion_observation is run 164 while repository.current_main_state.latest_xrp_ingestion_run remains run 162; the consistency assertion correctly fails.",
-      "classification_only": true,
-      "product_code_failure": false,
-      "test_changed": false,
-      "correction": "Update both map references to verified main ingestion run 165 (run ID 45702259268); preserve the event-receipt gate and forecast gate. Do not weaken the assertion."
+      "coverage_percent": 74.21,
+      "active_test_modules": 544,
+      "duration_seconds": 139.81
     },
     "other_checks": {
+      "push_ci": {
+        "run_id": 45705418740,
+        "conclusion": "success"
+      },
       "dependency_audit": {
-        "run_id": 45703328663,
+        "run_id": 45705430645,
         "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 45703328730,
+        "run_id": 45705430534,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 45703328577,
+        "run_id": 45705430464,
         "conclusion": "success"
       },
       "pages_build_validation": "success_no_deployment",
       "gated_merge": {
-        "run_id": 45703328637,
-        "conclusion": "failure_due_to_full_suite"
+        "run_id": 45705430616,
+        "conclusion": "success",
+        "readiness": "READY_FOR_EXPLICIT_MERGE"
       }
     },
     "merge_status": "NOT_MERGED",
-    "next_validation": "RERUN_FULL_SUITE_AND_ALL_GATES_ON_THE_NEW_MAP_AND_HANDOFF_HEAD"
+    "blockers": [
+      "All 12 open PRs have zero independent reviews.",
+      "Detailed branch-protection endpoint returns HTTP 403; required approval count remains unknown.",
+      "A main merge triggers Pages deployment; explicit deployment authorization is absent."
+    ],
+    "next_validation": "MISSION_PROMPT_ALIGNMENT_COMMIT_REQUIRES_FRESH_EXACT_HEAD_CI_AND_ALL_GATES"
   },
   "latest_primary_source_research": {
     "observed_at_utc": "2026-11-25T16:17:00Z",
@@ -2478,7 +2482,7 @@
     "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45698991175"
   },
   "latest_execution_checkpoint": {
-    "observed_at_utc": "2026-11-25T21:27:53Z",
+    "observed_at_utc": "2026-11-25T21:38:00Z",
     "main_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
     "recursive_tree_entries": 3163,
     "tree_truncated": false,
@@ -2518,10 +2522,20 @@
     "correction_commit_status": "MAP_CORRECTION_APPLIED; HANDOFF_ADDENDUM_AND_EXACT_HEAD_RERUN_PENDING",
     "handoff_branch_head_before_run29": "d73976626a267656f831436e8d8f2719b95a9228",
     "handoff_branch_commits_ahead_before_run29": 80,
-    "run29_full_suite_run_id": 45703328818,
-    "run29_full_suite_status": "FAILED_ONE_STALE_XRP_RUN_REFERENCE_IN_CANONICAL_MAP",
+    "run29_full_suite_run_id": 45705430482,
+    "run29_full_suite_status": "PASSED_4694_PASSED_0_FAILED_1_SKIPPED_11_WARNINGS_21_SUBTESTS",
     "run29_failure_classification": "HANDOFF_MAP_CONSISTENCY_ONLY; NO_APPLICATION_CODE_FAILURE",
-    "correction_status": "MAP_REFRESH_APPLIED; HANDOFF_ADDENDUM_AND_EXACT_HEAD_RERUN_PENDING"
+    "correction_status": "MAP_REFRESH_APPLIED; HANDOFF_ADDENDUM_AND_EXACT_HEAD_RERUN_PENDING",
+    "handoff_branch_head_before_prompt_alignment": "4eb9d12f1884c29cbdb0fa247387525b7d230481",
+    "handoff_branch_commits_ahead_before_prompt_alignment": 82,
+    "run29_coverage_percent": 74.21,
+    "run29_active_test_modules": 544,
+    "run29_dependency_audit_run_id": 45705430645,
+    "run29_money_audit_run_id": 45705430534,
+    "run29_conflict_integrity_run_id": 45705430464,
+    "run29_gated_merge_run_id": 45705430616,
+    "run29_gated_merge_status": "READY_FOR_EXPLICIT_MERGE",
+    "mission_prompt_alignment_status": "IMPLEMENTED_ON_EXISTING_BRANCH; FINAL_HEAD_CI_PENDING"
   },
   "latest_xrp_run162_summary": {
     "run_number": 162,
@@ -2836,7 +2850,7 @@
     }
   },
   "branch_overlap_audit": {
-    "observed_at_utc": "2026-11-25T21:27:53Z",
+    "observed_at_utc": "2026-11-25T21:38:00Z",
     "overlaps": [
       {
         "prs": [
@@ -2945,5 +2959,16 @@
       "raw_only_source_count": 26
     },
     "forecast_issued": false
+  },
+  "latest_mission_prompt_alignment": {
+    "observed_at_utc": "2026-11-25T21:38:00Z",
+    "source_file": "scripts/ask_barrot.py",
+    "source_sha_before_update": "54a22bafb2ca852db4a0e301dc0b0cdea5a7b4dd",
+    "finding": "SYSTEM_BASE ranked XRP as the sole highest-priority mission, contradicting the three co-equal priority-1 mission portfolio already required by the manifest, AGENTS.md, OpenCode agent instructions and mission registry. Infrastructure constraints also contained stale absolute provider/GPU claims and did not load the nine-platform map.",
+    "classification": "VERIFIED_IN_SCOPE_CAPABILITY_GAP",
+    "implementation": "Align SYSTEM_BASE; add runtime fail-closed readers for the mission manifest and nine-platform map; gate connection claims on authentication, permission and data flow; correct infrastructure wording; add regression tests.",
+    "implementation_branch": "integration/mission-handoff-refresh-20261125",
+    "implementation_pr": 1702,
+    "implementation_status": "CODE_AND_TESTS_ADDED_TO_EXISTING_BRANCH; EXACT_HEAD_CI_PENDING"
   }
 }
