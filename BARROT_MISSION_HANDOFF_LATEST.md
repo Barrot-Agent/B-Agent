@@ -1,3 +1,57 @@
+# Run 19 — post-ingestion and integration evidence update — 2026-11-25T15:21:24.554Z
+
+This is the newest checkpoint. It preserves the preceding Run 18 snapshot and corrects it with later exact-head CI, artifact and source-failure evidence.
+
+## Mission and repository state
+
+The portfolio remains exactly three co-equal priority-1 missions—XRP intelligence/prediction-engine mastery, professional audio production, and long-horizon continuity/capability development—on Barrot V3's shared execution, orchestration, MMI, provenance, safety and verification foundation. Main remains `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; 3,163 recursive tree entries, not truncated; 10 open PRs. No PR was created, merged or closed.
+
+The current #1702 parent head `ae7d209be9c6314391b806d112e04f5517a8c2be` passed the exact full suite [45642515621](https://github.com/Barrot-Agent/B-Agent/actions/runs/45642515621): **4,694 passed, 1 skipped, 11 warnings, 21 subtests; 74.21%**. Audit, dependency audit, conflict-integrity and read-only gate also passed. This Run 19 update changes the handoff and operational map on that same branch; the resulting new head requires fresh exact-head checks.
+
+#1705 is now fully green on exact head `86d3cbb564b843714339c6a75fe898a028248efa`: [CI 45641499449](https://github.com/Barrot-Agent/B-Agent/actions/runs/45641499449), **4,710 passed, 1 skipped, 11 warnings, 21 subtests; 74.25%**; dependency audit, money audit, conflict-integrity and read-only gate passed. #1703 remains 4,712 passed; #1704 remains 4,694 passed and FluidSynth integration 3/3. Full 10-PR classifications are in Run 18 and the refreshed map. #1708 remains a duplicate subset of #1706; #1711 remains blocked by the explicit Streamlit 1.35.0 / NumPy <2 compatibility constraint.
+
+No merge is performed. The gate is read-only and explicitly does not enforce approvals/branch-protection settings. Detailed branch-protection reads still return HTTP 403, no independent reviews are recorded on mission PRs, and a main merge triggers Pages deployment without specific deployment approval.
+
+## XRP: manual capture capability and fresh artifact evidence
+
+On existing PR #1705, `workflow_dispatch` now exposes `capture_event_sources` (boolean, default false) and passes `--capture-event-sources` to the existing CLI. Workflow-contract tests passed in the exact-head full suite. The normal push/schedule path is unchanged. No manual dispatch was executed because the connected GitHub API surface is GET-only for workflow resources.
+
+Branch ingestion [#158 / 45641482666](https://github.com/Barrot-Agent/B-Agent/actions/runs/45641482666) succeeded on #1705 head. Its verified snapshot is branch-isolated: 4 feature-store snapshots and 2,286 records, not main's 115 / 30,282. It captured 37 receipts (21 retained raw, 16 digest-only). Event capture was correctly `NOT_SCHEDULED` (3 requested, 0 captured) because the push run did not set the manual input. The 150-event timeline still has 0 verified receipt links and 150 missing raw hashes.
+
+Downloaded both main #156 and branch #158 raw artifacts and independently recomputed the SHA-256 of every retained raw payload: **21/21 match in each archive, zero mismatches**. Main #156 raw ZIP SHA-256: `f6f959bef72472bff9a12bc9c6faa29a1588992c484dea904cb21cb440ae62cb`. Branch #158 raw ZIP SHA-256: `3c1b0600ebabd3c20ee11045586492823ec7dcc7354d8919e3a4fd793b63d9a9`. Digest-only receipts remain hash-only and were not materialized.
+
+Branch #158 source failures break down to 8 Binance HTTP 451, 5 Bybit HTTP 403, 1 Grayscale HTTP 429 (retryable), 1 Franklin XRPZ parser/marker failure, and 6 SEC Edgar requests blocked because `BARROT_SEC_USER_AGENT` lacks a monitored project contact email. The raw Franklin HTML was not retained because redistribution terms were not reviewed. No proxy or regional bypass was attempted. No contact identity was invented or configured. The branch's same-venue OKX quote basis was USD 0.9000288065 midpoint / 1.209706 bps spread with one publisher group; it is not cross-venue consensus. Walk-forward remains PARTIAL_OR_BLOCKED, drift 0/127, forecast NOT_ISSUED. Main #156 remains 115 snapshots / 30,282 records, 432 one-hour walk-forward observations PARTIAL_OR_BLOCKED, drift 0/205, 0/150 event receipt links, and no directional forecast.
+
+## Audio license candidates — source verified, binary not verified
+
+The official FreePats pages publish the Upright Piano KW SF2 (27 MiB, two velocity layers) and Concert Harp SF2 (9.1 MiB, two velocity layers) under CC0 1.0: [Upright Piano KW](https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html) and [Concert Harp](https://freepats.zenvoid.org/OrchestralStrings/harp.html). The archive downloads could not be retrieved in this environment; no binary hash, license package inspection or FluidSynth render was completed, and no asset was added. They remain candidates only. Existing audio bundle still uses one SoundFont across all nine instruments, has no native DAW project or user listening acceptance, and is not a verified professional-quality finished track.
+
+## Continuity, platforms and commercial state
+
+#1703's signed manual export/import ledger remains technically tested; live authenticated cross-host synchronization is not executed. Only ChatGPT-to-GitHub is authenticated/data-flow tested; the other eight platforms remain untested. Hugging Face Space remains BUILD_ERROR; no restart/deployment.
+
+Sellbird remains upstream v0.5.0, AGPL-3.0-only, Python >=3.11, not installed/authenticated/prospecting-tested. Barrot-only scope; outbound paused. No verified prospects, approved outreach, sends, replies, meetings, proposals or revenue. Candidate read-only Barrot workflow provenance/integration assessment is not priced, validated or marketed. Music and TrekFlex remain excluded.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal missions on V3; point-in-time XRP evidence/forecast gates; audio rights/QC/listening gates; signed continuity transfer; nine-platform least-privilege map; Barrot-only Sellbird scope.
+- **EXECUTED:** refreshed main/PR/workflow state; fixed XRP test assertions and added manual event-capture input on existing #1705; ran/inspected branch ingestion #158; downloaded main and branch raw artifacts and recomputed retained payload hashes; updated the existing #1702 handoff/map branch.
+- **VERIFIED:** #1705 exact-head full suite 4,710 pass; #1702 parent-head suite 4,694 pass; #1703 4,712 pass; #1704 4,694 pass and audio integration 3/3; main #156 and branch #158 receipt summaries; 21/21 retained raw hashes in both artifacts; FreePats' published CC0 claims.
+- **NOT VERIFIED:** manual event-source dispatch; 150-event receipt linkage; independent external timestamp anchor/WORM and raw replay; cross-venue quote consensus; forecast superiority/calibration; distinct licensed audio render/listening acceptance; native DAW project; live cross-host sync; eight external platform connections; Hugging Face recovery; Sellbird prospects/outreach/revenue; approval settings or Pages deployment authorization.
+
+## Next actions
+
+1. Execute `capture_event_sources=true` on #1705 through an authorized workflow-dispatch path, then verify the three source receipts and event links.
+2. Obtain a monitored project contact email before configuring `BARROT_SEC_USER_AGENT`; keep Binance 451 and Bybit 403 blocked without bypass; use permitted alternative venues.
+3. Implement cross-venue USD quote consensus with independent publisher groups, timestamp/skew and stale/crossed-book rejection.
+4. Retrieve and hash the two FreePats CC0 SF2 archives, then render piano/harp tracks through FluidSynth and conduct A/B technical/listening evaluation.
+5. Execute signed project-state transfer across two separately controlled hosts.
+6. Validate the Barrot-only commercial offer before free prospect discovery; keep Sellbird sending paused.
+7. No merge until approval/branch-protection evidence and explicit Pages deployment approval exist. No Space restart.
+
+
+---
+
 # Run 18 — live integration and commercial checkpoint — 2026-11-25T15:10:30Z
 
 This checkpoint supersedes older current-state claims below where the live evidence differs. Historical observations remain preserved.
