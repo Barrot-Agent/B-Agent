@@ -196,3 +196,19 @@ Correction record: [PR #1702 identity-audit note](https://github.com/Barrot-Agen
 24. Coinbase Q3 2026 results (2026-10-29): https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx
 25. Prescribewealth official brand site: https://prescribewealth.com/
 26. Candidate YouTube channel (ownership by Dr. Kamilah Stevenson not verified; not attributed): https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA
+
+
+### 7.10 2026-11-25 public-source follow-up — SBIC East AI education and unverified video candidates
+
+- Tokyo SBIC East's official 2025-06-12/13 manufacturing course on generative AI and machine learning explicitly includes ChatGPT use and Copilot. The page says it was limited to investee companies; this proves AI education activity by the Tokyo SBIC company, not an OpenAI partnership, investment, sponsorship or XRP program. Source: https://www.sbic.co.jp/training/20250612co/
+- Tokyo SBIC East's official 2026-10-06 seminar, "The Present and Future of Generative AI," names a Microsoft Japan executive evangelist as speaker and was free to both investee and general-company participants. This is further evidence of SBIC East's AI education activity, not a ChatGPT corporate relationship. Source: https://www.sbic.co.jp/seminar/20261006js/
+- Public search indexing surfaced another channel titled "Kamilah Stevenson | Xrp & Stocks" (channel ID `UCXm6KAr1WHF6UN7g5b2W7wg`, indexed as 2 subscribers / 14 videos) and a video titled "I Moved My XRP Off The Exchanges" attributed by the index to Kamilah Stevenson. This channel ID differs from the previously stored candidate `UCqUPJMQdkCN6lsLVDnichPA`. The channel page was throttled and the video page could not be independently opened; no reciprocal official PrescribeWealth link was verified. Treat both as unverified search candidates only. No video inventory or creator attribution is authorized by this evidence.
+- Exact-phrase search surfaced an AInvest opinion article dated 2026-08-23 using "Ripple's actual capital" as generic editorial wording about RLUSD. It is secondary commentary, not a primary-source disclosure, named entity or independently verified capital-flow record. Source: https://www.ainvest.com/news/ripple-75-licenses-don-serve-token-serve-company-2608/
+- No new primary-source XRP relation for "ASK Coin" or official ChatGPT/SBIC affiliation was found. Keep both unresolved; do not convert these search hits into relationship-graph edges or model features.
+
+Additional source register:
+27. Tokyo SBIC East generative-AI / machine-learning course (2025-06-12/13): https://www.sbic.co.jp/training/20250612co/
+28. Tokyo SBIC East "The Present and Future of Generative AI" seminar (2026-10-06): https://www.sbic.co.jp/seminar/20261006js/
+29. Unverified YouTube channel search candidate `UCXm6KAr1WHF6UN7g5b2W7wg` (not attributed): https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg
+30. Unverified YouTube video search result (not attributed): https://www.youtube.com/watch?v=TfFx0g2IgGg
+31. AInvest secondary commentary containing the phrase "actual capital" (not primary evidence): https://www.ainvest.com/news/ripple-75-licenses-don-serve-token-serve-company-2608/
