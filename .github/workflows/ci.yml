@@ -120,11 +120,10 @@ jobs:
           test ! -e ./_site/GLOBAL_STATE_MANIFEST.md
 
   full-suite:
-    name: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/') && 'Full repository test suite (PR event only)' || 'Full repository test suite' }}
-    # The PR event is the authoritative full-suite gate for integration branches.
-    # Main pushes and manual dispatches still run the full suite; integration pushes
-    # keep core tests and validation without launching a duplicate full-suite job.
-    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
+    name: Full repository test suite
+    # Integration pushes are authoritative for same-repository PR heads, including GitHub App/API commits.
+    # Skip the duplicate same-repository PR event; fork PRs still run here because their branch is external.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
