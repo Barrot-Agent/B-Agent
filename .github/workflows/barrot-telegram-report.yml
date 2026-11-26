@@ -1,0 +1,35 @@
+name: Barrot Telegram GitHub & OpenCode Report
+
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "Command or topic for Barrot (e.g. status, prs, issues, opencode)"
+        required: false
+        default: "status"
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Send Telegram report
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          BARROT_COMMAND: ${{ inputs.command || 'scheduled' }}
+        run: python scripts/barrot_telegram_report.py
