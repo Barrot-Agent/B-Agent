@@ -18,7 +18,7 @@ from scipy.signal import resample_poly
 
 from barrot_agent.creative.audio_render import render_audio
 from barrot_agent.creative.composer import CompositionSettings, compose_original
-from barrot_agent.creative.musical_dna import MusicalEvent, MusicalManifest
+from barrot_agent.creative.musical_dna import MusicalEvent, MusicalManifest, MusicalSection
 
 
 def _template() -> MusicalManifest:
@@ -433,4 +433,150 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
     qc_output = os.environ.get("BARROT_AUDIO_FULL_SONG_QC_OUTPUT")
     assert qc_output, "BARROT_AUDIO_FULL_SONG_QC_OUTPUT must be set in the dedicated CI job"
     Path(qc_output).write_text(json.dumps(qc, indent=2, sort_keys=True) + "\n")
+    print(json.dumps(qc, indent=2, sort_keys=True))
+
+
+
+def test_per_track_soundfont_map_uses_distinct_cc0_assets(tmp_path):
+    """Verify distinct source-claimed CC0 SF2s produce different named-track stems."""
+    from barrot_agent.creative.audio_bundle import render_production_bundle
+
+    fluid_value = os.environ.get("BARROT_TEST_SF2")
+    upright_value = os.environ.get("BARROT_TEST_SF2_ALT_UPRIGHT")
+    old_value = os.environ.get("BARROT_TEST_SF2_ALT_OLD")
+    if not fluid_value or not upright_value or not old_value:
+        pytest.skip("Distinct CC0 SoundFonts are configured only in the dedicated render CI job")
+
+    fluid = Path(fluid_value)
+    upright = Path(upright_value)
+    old_piano = Path(old_value)
+    upright_source = os.environ.get("BARROT_TEST_SF2_ALT_UPRIGHT_SOURCE", "")
+    old_source = os.environ.get("BARROT_TEST_SF2_ALT_OLD_SOURCE", "")
+    upright_license = os.environ.get("BARROT_TEST_SF2_ALT_UPRIGHT_LICENSE", "")
+    old_license = os.environ.get("BARROT_TEST_SF2_ALT_OLD_LICENSE", "")
+    assert fluid.is_file() and upright.is_file() and old_piano.is_file()
+    assert upright_license == old_license == "CC0-1.0"
+    assert "freepats.zenvoid.org" in upright_source
+    assert "freepats.zenvoid.org" in old_source
+
+    fluid_sha = _sha256(fluid)
+    upright_sha = _sha256(upright)
+    old_sha = _sha256(old_piano)
+    assert len({fluid_sha, upright_sha, old_sha}) == 3
+
+    manifest = MusicalManifest(
+        bpm=110,
+        beats_per_bar=4,
+        scale="D minor",
+        instruments=("piano_a", "piano_b"),
+        events=(
+            MusicalEvent("piano_a", "harmony", 0.0, 4.0, 100, 60),
+            MusicalEvent("piano_b", "harmony", 0.0, 4.0, 100, 67),
+        ),
+        sections=(MusicalSection("main", 1, 1, 0.5),),
+        provenance="cc0_soundfont_per_track_routing_integration",
+    )
+    output_value = os.environ.get("BARROT_AUDIO_SOUNDFONT_ROUTING_OUTPUT")
+    output_root = Path(output_value) if output_value else tmp_path / "soundfont-routing"
+    output_root.mkdir(parents=True, exist_ok=False)
+
+    fluid_source = os.environ.get("BARROT_TEST_SF2_SOURCE", "Debian fluid-soundfont-gm")
+    baseline = render_production_bundle(
+        manifest,
+        output_root / "baseline-fluidr3",
+        soundfont_path=fluid,
+        sample_rate=44100,
+        headroom_dbfs=-6.0,
+        soundfont_source=fluid_source,
+        soundfont_license="MIT",
+    )
+    routed = render_production_bundle(
+        manifest,
+        output_root / "mapped-cc0",
+        soundfont_path=fluid,
+        sample_rate=44100,
+        headroom_dbfs=-6.0,
+        soundfont_source=fluid_source,
+        soundfont_license="MIT",
+        soundfont_map={"piano_a": upright, "piano_b": old_piano},
+        soundfont_map_metadata={
+            "piano_a": {"source": upright_source, "license": upright_license},
+            "piano_b": {"source": old_source, "license": old_license},
+        },
+    )
+
+    results = {}
+    for index, instrument_name in enumerate(manifest.instruments):
+        baseline_rate, baseline_samples = wavfile.read(baseline.stems[index])
+        mapped_rate, mapped_samples = wavfile.read(routed.stems[index])
+        assert baseline_rate == mapped_rate == 44100
+        assert baseline_samples.shape == mapped_samples.shape
+        assert baseline_samples.ndim == 2 and baseline_samples.shape[1] == 2
+        assert np.isfinite(baseline_samples).all()
+        assert np.isfinite(mapped_samples).all()
+        assert not np.array_equal(baseline_samples, mapped_samples)
+
+        baseline_float = baseline_samples.astype(np.float64)
+        mapped_float = mapped_samples.astype(np.float64)
+        difference_rms = float(np.sqrt(np.mean(np.square(baseline_float - mapped_float))))
+        baseline_mono = np.mean(baseline_float, axis=1)
+        mapped_mono = np.mean(mapped_float, axis=1)
+        correlation = float(np.corrcoef(baseline_mono, mapped_mono)[0, 1])
+        window = np.hanning(len(baseline_mono))
+        baseline_spectrum = np.abs(np.fft.rfft(baseline_mono * window))
+        mapped_spectrum = np.abs(np.fft.rfft(mapped_mono * window))
+        baseline_spectrum /= max(float(np.linalg.norm(baseline_spectrum)), 1e-12)
+        mapped_spectrum /= max(float(np.linalg.norm(mapped_spectrum)), 1e-12)
+        spectral_distance = float(np.linalg.norm(baseline_spectrum - mapped_spectrum))
+        assert difference_rms > 1e-5
+        assert spectral_distance > 1e-3
+        results[instrument_name] = {
+            "baseline_sha256": _sha256(baseline.stems[index]),
+            "mapped_sha256": _sha256(routed.stems[index]),
+            "difference_rms": difference_rms,
+            "waveform_correlation": correlation,
+            "normalized_spectral_distance": spectral_distance,
+            "sample_count": int(len(mapped_samples)),
+        }
+
+    metadata = json.loads(routed.metadata_path.read_text(encoding="utf-8"))
+    assets = {item["instrument"]: item for item in metadata["rights"]["soundfont_assets"]}
+    assert assets["piano_a"]["sha256"] == upright_sha
+    assert assets["piano_b"]["sha256"] == old_sha
+    assert assets["piano_a"]["license"] == assets["piano_b"]["license"] == "CC0-1.0"
+    assert assets["piano_a"]["status"] == assets["piano_b"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
+
+    qc = {
+        "status": "VERIFIED",
+        "test": "per_track_soundfont_map_distinct_cc0_assets",
+        "renderer": "FluidSynth via pyfluidsynth",
+        "sample_rate_hz": 44100,
+        "tempo_bpm": manifest.bpm,
+        "time_signature": "4/4",
+        "license_evidence": "The official FreePats source pages state CC0 1.0; this records source provenance, not an independent legal audit.",
+        "assets": {
+            "fluidr3": {"sha256": fluid_sha, "license": "MIT", "source": fluid_source},
+            "upright_piano_kw": {
+                "sha256": upright_sha,
+                "archive_sha256": _sha256(Path(os.environ["BARROT_TEST_SF2_ALT_UPRIGHT_ARCHIVE"])),
+                "archive_url": os.environ["BARROT_TEST_SF2_ALT_UPRIGHT_ARCHIVE_URL"],
+                "source": upright_source,
+                "license": upright_license,
+            },
+            "old_piano_fb": {
+                "sha256": old_sha,
+                "archive_sha256": _sha256(Path(os.environ["BARROT_TEST_SF2_ALT_OLD_ARCHIVE"])),
+                "archive_url": os.environ["BARROT_TEST_SF2_ALT_OLD_ARCHIVE_URL"],
+                "source": old_source,
+                "license": old_license,
+            },
+        },
+        "per_track_comparison_against_fluidr3": results,
+        "baseline_bundle": str(baseline.directory),
+        "mapped_bundle": str(routed.directory),
+        "native_daw_project_available": False,
+    }
+    qc_output = os.environ.get("BARROT_AUDIO_SOUNDFONT_ROUTING_QC_OUTPUT")
+    if qc_output:
+        Path(qc_output).write_text(json.dumps(qc, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(qc, indent=2, sort_keys=True))
