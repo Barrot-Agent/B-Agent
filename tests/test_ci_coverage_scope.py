@@ -67,7 +67,7 @@ def test_full_repository_suite_measures_all_distributable_packages():
     assert "actions/cache/save@v4" not in ingestion
 
 
-def test_full_suite_runs_on_push_and_fork_pull_request_heads_without_duplicate_internal_pr_run():
+def test_integration_full_suite_runs_on_exact_pull_request_heads_without_duplicate_integration_push():
     content = WORKFLOW.read_text(encoding="utf-8")
     push = content.split("  push:", 1)[1].split("  pull_request:", 1)[0]
     pull_request = content.split("  pull_request:", 1)[1].split("  workflow_dispatch:", 1)[0]
@@ -75,11 +75,11 @@ def test_full_suite_runs_on_push_and_fork_pull_request_heads_without_duplicate_i
     assert "branches: [main]" in pull_request
     full_suite = content.split("  full-suite:", 1)[1]
     job_header = full_suite.split("    steps:", 1)[0]
-    assert "name: Full repository test suite" in job_header
-    assert "if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository" in job_header
-    # Push events cover same-repository integration heads; fork PRs need their PR event.
-    assert "github.event_name != 'push'" not in job_header
-    assert "github.event.pull_request.head.repo.full_name != github.repository" in job_header
+    assert "Full repository test suite (PR event only)" in job_header
+    assert "if: github.event_name != 'push' || github.ref == 'refs/heads/main'" in job_header
+    # The pull_request event is authoritative for internal PR heads.
+    # Integration pushes skip the duplicate; main pushes and workflow_dispatch still run it.
+    assert "github.event_name != 'push'" in job_header
 
 
 def test_dependency_audit_runs_for_safety_and_ci_changes():
