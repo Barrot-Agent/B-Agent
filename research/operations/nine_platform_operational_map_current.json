@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T17:26:10Z",
-  "capture_basis": "Run 56: refreshed current main metadata/tree, exact-main CI and scheduled XRP run #187, current 12-PR inventory, branch ancestry and overlap; isolated the ancestry-based V3 gate and dual-agent evidence fixes into clean successor #1714; preserved #1713 as a draft source because it included unauthorized Telegram scope. Run 56 post-write check: handoff/map commits advanced #1702 to 0984b7ac; exact-head checks restarted and remain pending; #1714 dependency, money and conflict checks passed while PR full suite and gate remain in progress. Run 56 atomic refresh: handoff and map updated together in one commit from parent a7c786ec; resulting #1702 branch tip is the commit containing this map, so the GitHub branch ref is authoritative for its exact SHA. Run 56 final verification: #1714 exact-head full suite, dependency, money, conflict and ancestry gate all passed; #1702 handoff/map refreshed atomically from parent 18ffea1c, with resulting branch ref authoritative. Run 56 inventory-test correction: current open PR count is 12 after clean successor #1714; updated the handoff-branch regression test to include #1714 and distinguish it from draft source #1713.",
+  "captured_at_utc": "2026-11-26T19:00:58Z",
+  "capture_basis": "Run 57: current main/tree/PRs and exact-head CI rechecked; main XRP run 190, PR #1705 run 188, PR #1702 full suite/gate, audio render run 93, cross-analysis run 4652 and Sellbird v0.5.0 source reviewed.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -677,13 +677,13 @@
     "note": "Retain prior observations and run history. This operational map supersedes older permission claims when they conflict with current endpoint tests; it does not delete or rewrite historical evidence."
   },
   "next_actions": [
-    "V3 governance: #1714 exact-head checks are complete; obtain independent review and verify approval policy and Pages deployment authorization. Do not merge until all are satisfied.",
-    "Handoff PR #1702: verify the new inventory-test/map correction on the resulting exact head; do not reuse the previous-head failure or pass.",
-    "XRP: repair event-to-receipt linkage by capturing exact primary-source URL, capture timestamp, raw bytes/hash, source identity and receipt ID before linking; keep the forecast gate closed.",
-    "Audio: distinct per-track CC0 soundfont output is technically verified; conduct level-matched human listening, record user acceptance and preserve rights provenance. Native DAW project remains absent.",
-    "Continuity: preserve the tested portable ledger; do not add network sync until authenticated sender identity, key exchange, encrypted transport and multi-host acceptance are implemented.",
-    "Research: preserve the SBIC entity distinctions and keep the Kamilah/Camilla video inventory disabled until reciprocal creator identity verification.",
-    "Commercial: validate a reproducible Barrot-only provenance/ingestion pilot demo and delivery scope before Sellbird prospecting; keep outbound sending paused."
+    "XRP: use the existing #1705 branch's 3/4 event-capture evidence; preserve the three digest-only receipts, resolve the fourth source failure and add raw bytes only where lawful retention is permitted. Keep all 150-event model linkage closed until each event has exact source identity, URL, capture time and receipt.",
+    "XRP: repair stale sentiment inputs and source access (Binance HTTP 451, Bybit HTTP 403, SEC contact configuration) before any directional model evaluation; forecast remains NOT_ISSUED.",
+    "Audio: use the #1704 production bundle for level-matched human listening; record explicit acceptance/rejection and regressions. Native DAW project remains absent; do not call technical QC professional acceptance.",
+    "Continuity: retain the tested signed file-based project-state exchange; design authenticated key exchange and encrypted multi-host transport before implementing network synchronization.",
+    "V3 governance: #1714 exact-head suite, dependency, money, conflict and ancestry gate pass; obtain independent review, verify required approval policy and secure explicit Pages deployment authorization before merge.",
+    "Commercial: keep Sellbird uninstalled and outbound paused. First produce a reproducible one-source Barrot ingestion/provenance demo and approve its ICP, offer, message, mailbox and compliance setup before prospect discovery or outreach.",
+    "Research: preserve SBIC regional entities versus SBI Holdings; exact ASK Coin, actual capital and SBIC/ChatGPT phrase matches remain unresolved; do not inventory Kamilah/Camilla videos until reciprocal creator identity evidence exists."
   ],
   "a2a_bridge": {
     "source_pr": 1693,
@@ -705,47 +705,34 @@
     ]
   },
   "latest_xrp_ingestion_observation": {
-    "run_number": 187,
-    "run_id": 45856901485,
+    "run_number": 190,
+    "run_id": 45874573475,
     "conclusion": "success",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "started_at_utc": "2026-11-26T16:14:53.825403Z",
-    "data_cutoff_utc": "2026-11-26T16:15:06.777833Z",
-    "evaluation_as_of_utc": "2026-11-26T16:15:11.537545Z",
+    "started_at_utc": "2026-11-26T18:16:19Z",
+    "data_cutoff_utc": "2026-11-26T18:16:46.402470Z",
+    "evaluation_as_of_utc": "2026-11-26T18:16:53.196828Z",
     "adapter_version": "xrp-public-market-v3.34",
     "parser_version": "xrp-public-market-v3.32",
     "feature_store": {
-      "snapshots": 142,
+      "snapshots": 144,
+      "history_records": 36119,
       "input_records": 2230,
-      "eligible_records": 123,
-      "excluded_records": 367,
-      "source_ids": 12,
-      "sqlite_integrity": "ok",
-      "snapshot_id": "6b1bda4f1633eccc80f42e8dd3526e8ed5096d826eb384354906c582b8ad3eba"
+      "eligible_records": 106,
+      "excluded_records": 384,
+      "source_ids": 11,
+      "sqlite_integrity": "ok"
     },
     "receipts": {
       "count": 37,
       "raw_payloads_retained": 21,
       "digest_only": 16,
-      "chain_verification": "PASS",
-      "cross_run_sequence": 142,
-      "chain_head_sha256": "bb13d204824e4e5377702ccfce7a855de9cb7a99f34b3147b70696c99a7ec9f9",
-      "chain_log_sha256": "0c6b933a6d2f09f612d3b841be2476d45c659a6c682c5b0b0a2eb87c05cd2ee9",
-      "receipt_log_sha256": "b61c8ad0dc4d0e0d56d6e6c8ff986890409d25c20cd74e0a40a6b1131554866b",
+      "cross_run_sequence": 144,
+      "chain_sha256": "6c390fe0b2315e8a6656c1d97c3a40bccf78fbccf889cf5a35843de107481b52",
+      "continuity_status": "CONTINUED",
+      "continuity_verified": true,
       "external_anchor": "NOT_ANCHORED",
-      "raw_payload_hash_recheck": "PASS_21_OF_21",
-      "receipt_log_sha256_recheck": "PASS",
-      "chain_log_sha256_recheck": "PASS",
-      "chain_links_recomputed": "PASS_37_OF_37",
-      "chain_head_recheck": "PASS",
-      "cross_run_chain_self_hash_recheck": "PASS",
-      "current_chain_manifest_sha256_recheck": "PASS",
-      "previous_run_manifest_link_recheck": "PASS",
-      "previous_run_chain_link_recheck": "PASS",
-      "sequence_continuity": "141_TO_142",
-      "previous_run_id": 45846868019,
-      "raw_payload_hash_verification_method": "SHA-256 of each retained raw/sha256/<digest>.json payload recomputed and matched both filename digest and receipt manifest",
-      "chain_verification_method": "37 canonical JSON chain entries recomputed from sequence, receipt_id and previous_chain_sha256"
+      "raw_payload_hash_recheck": "NOT_PERFORMED_THIS_RUN"
     },
     "event_timeline": {
       "events": 150,
@@ -753,15 +740,11 @@
       "missing_raw_hashes": 150,
       "url_matches": 11,
       "url_capture_time_matches": 0,
-      "status": "INCOMPLETE",
-      "source_id_matches_with_url": 0,
-      "independent_exact_match_check": "CONFIRMED_0_OF_150"
+      "status": "INCOMPLETE"
     },
     "evaluation": {
-      "walk_forward_rows": 536,
-      "horizons": [
-        "1h"
-      ],
+      "walk_forward_rows": 544,
+      "horizon": "1h",
       "walk_forward_status": "PARTIAL_OR_BLOCKED",
       "drift_evaluated": 0,
       "drift_total": 205,
@@ -778,42 +761,30 @@
     },
     "quote_basis": {
       "venue": "OKX",
-      "mid_usd": 0.948862547,
-      "best_bid_usd": 0.948807864,
-      "best_ask_usd": 0.94891723,
-      "spread_bps": 1.1526010837490737,
-      "snapshot_skew_seconds": 0.604,
+      "best_bid_usd": 0.9512046,
+      "best_ask_usd": 0.95131399,
+      "spread_bps": 1.1499493416261233,
+      "snapshot_skew_seconds": 0.498,
       "publisher_independence_groups": 1,
       "scope": "same-venue top-of-book only; not consolidated depth or independent corroboration"
     },
+    "restore_source": "trusted_ingestion_workflow_run:45865630577:per_run_checkpoint",
+    "cache_status": "CACHE_BUDGET_EXHAUSTED_READ_ONLY; artifact-based restore succeeded; ingestion and artifact uploads completed",
     "artifacts": [
       {
-        "id": 15134874635,
-        "name": "xrp-public-raw-45856901485",
-        "expires_at": "2027-02-24T16:14:32Z"
+        "id": 15144357414,
+        "name": "xrp-public-receipt-index-45874573475"
       },
       {
-        "id": 15135159387,
-        "name": "xrp-public-receipt-index-45856901485",
-        "expires_at": "2027-02-24T16:14:32Z"
+        "id": 15145170691,
+        "name": "xrp-public-events-45874573475"
       },
       {
-        "id": 15136845079,
-        "name": "xrp-public-events-45856901485",
-        "expires_at": "2027-02-24T16:14:32Z"
-      },
-      {
-        "id": 15134924704,
-        "name": "xrp-public-feature-store-45856901485",
-        "expires_at": "2026-12-03T16:15:36Z"
-      },
-      {
-        "id": 15136387803,
-        "name": "xrp-research-correction-audit-45856901485",
-        "expires_at": "2027-02-24T16:14:32Z"
+        "id": 15145285601,
+        "name": "xrp-public-feature-store-45874573475"
       }
     ],
-    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45856901485"
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45874573475"
   },
   "current_prs": [
     {
@@ -822,7 +793,7 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "commits_ahead": 131,
+      "commits_ahead": 135,
       "commits_behind": 0,
       "draft": false,
       "changed_paths": [
@@ -837,7 +808,7 @@
         "tests/test_nine_platform_operational_map_current.py",
         "tests/test_xrp_mission_priority.py"
       ],
-      "classification": "unique_canonical_handoff; Run56 atomic handoff/map refresh; exact-head checks pending on resulting tip; zero independent reviews; Pages deployment authorization absent",
+      "classification": "unique canonical three-mission handoff; exact full suite 4700 passed; dependency/money/conflict checks passed; legacy gate false-blocks on stale base.sha despite 135 ahead / 0 behind; zero independent reviews; Pages deployment authorization absent",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "mergeable": true,
@@ -884,11 +855,12 @@
         "commits_behind": 0
       },
       "observed_at_utc": "2026-11-26T10:31:11Z",
-      "exact_head_validation": "PRIOR_HEAD_FAILED_4700_PASSED_1_FAILED; RUN54_REFRESH_RETEST_PENDING",
+      "exact_head_validation": "PASSED_4700_1_SKIPPED_ON_20B8AF; NEW_HANDOFF_COMMIT_RETEST_PENDING",
       "last_exact_head_passed_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
       "head_sha_role": "parent_before_Run48_documentation_commit",
       "latest_status": "Run54 map refresh committed; exact-head full suite pending",
-      "head_sha_note": "Atomic handoff/map/test correction is the current branch tip; read GitHub branch ref for exact SHA."
+      "head_sha_note": "Atomic handoff/map/test correction is the current branch tip; read GitHub branch ref for exact SHA.",
+      "head_sha": "20b8af87438eb32d95b7462f3a692f96138f601b"
     },
     {
       "number": 1703,
@@ -909,7 +881,7 @@
         "tests/test_autonomous_loop_persistence.py",
         "tests/test_project_state_ledger.py"
       ],
-      "classification": "EXACT-HEAD FULL SUITE 4715 PASSED; DEPENDENCY, MONEY AND CONFLICT CHECKS PASSED; LEGACY GATE FALSE-BLOCKED; CROSS-HOST SYNC NOT VERIFIED",
+      "classification": "unique continuity integration; full suite 4715 passed; dependency/money/conflict passed; legacy gate blocked; file-based Ed25519 transfer and cross-process recovery tested; network sync/key exchange not implemented",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "mergeable": true,
@@ -959,7 +931,7 @@
         "separately controlled physical hosts and model-provider handoff not executed"
       ],
       "observed_at_utc": "2026-11-26T08:19:25Z",
-      "exact_head_validation": "PASSED_ON_9EA30D",
+      "exact_head_validation": "PASSED_4715_1_SKIPPED",
       "latest_status": "full suite 4715 passed"
     },
     {
@@ -968,8 +940,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1704",
       "branch": "integration/audio-instrument-soundfont-map-20261125",
       "base": "main",
-      "head_sha": "4ff0e5881a84bd1f496fefc730073194365cb8f1",
-      "commits_ahead": 24,
+      "head_sha": "38ffff3c4c21f14d1f216a4fdf1e54eeb4694f92",
+      "commits_ahead": 26,
       "commits_behind": 0,
       "draft": false,
       "changed_paths": [
@@ -981,7 +953,7 @@
         "tests/test_audio_render_integration.py",
         "tests/test_musical_adapters.py"
       ],
-      "classification": "EXACT-HEAD FULL SUITE 4701 PASSED; FLUIDSYNTH FULL-SONG RENDER AND TECHNICAL QC PASSED; LEGACY GATE FALSE-BLOCKED; ARTISTIC ACCEPTANCE NOT VERIFIED",
+      "classification": "unique audio integration; full suite 4703 passed; 242MB WAV/stem/MIDI bundle and technical QC produced; human listening, user acceptance and native DAW project absent; legacy gate blocked",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "mergeable": true,
@@ -1034,7 +1006,7 @@
         "other caller-supplied production SoundFonts remain rights-unverified"
       ],
       "observed_at_utc": "2026-11-26T08:19:25Z",
-      "exact_head_validation": "PASSED_ON_326E08",
+      "exact_head_validation": "PASSED_4703_1_SKIPPED; AUDIO_RENDER_INTEGRATION_4_OF_4_PASS",
       "latest_status": "full suite 4703 and audio render passed"
     },
     {
@@ -1043,8 +1015,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
       "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
       "base": "main",
-      "head_sha": "37fc048f500ad278b3dc5ad2e664a32e31118a17",
-      "commits_ahead": 17,
+      "head_sha": "1091feb9cf5be437506c33c96dd767606ce389cd",
+      "commits_ahead": 18,
       "commits_behind": 0,
       "draft": false,
       "changed_paths": [
@@ -1056,7 +1028,7 @@
         "tests/test_xrp_primary_event_source_capture.py",
         "tests/test_xrp_public_ingestion.py"
       ],
-      "classification": "EXACT-HEAD FULL SUITE 4712 PASSED; DEPENDENCY, MONEY AND CONFLICT CHECKS PASSED; RESEARCH-ONLY; LEGACY GATE FALSE-BLOCKED",
+      "classification": "unique XRP research integration; full suite 4715 passed; exact-head branch run 188 linked 3/4 bounded primary events to digest-only receipts; 148/151 events still lack raw hashes; model-ineligible; legacy gate blocked",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "mergeable": true,
@@ -1106,7 +1078,7 @@
         "the RLUSD dashboard normalizer correctly returned BLOCKED_STALE when its cached observation was 321.593 seconds old against a 300-second limit; no feature-store admission"
       ],
       "observed_at_utc": "2026-11-26T08:19:25Z",
-      "exact_head_validation": "PASSED_ON_333AEB",
+      "exact_head_validation": "PASSED_4715_1_SKIPPED; BRANCH_INGESTION_3_OF_4_PRIMARY_EVENTS",
       "latest_status": "full suite 4714 passed; capture 3/4"
     }
   ],
@@ -1391,72 +1363,62 @@
     }
   ],
   "latest_branch_xrp_ingestion_observation": {
-    "run_number": 223,
-    "run_id": 45833085675,
-    "cutoff_utc": "2026-11-26T13:51:06.941643Z",
+    "run_number": 188,
+    "run_id": 45862982894,
+    "head_sha": "1091feb9cf5be437506c33c96dd767606ce389cd",
+    "cutoff_utc": "2026-11-26T16:54:41.866956Z",
     "receipts": 40,
-    "raw": 21,
     "digest_only": 19,
-    "hashes_verified": 21,
-    "per_run_chain": true,
-    "cross_run_continuity": false,
     "events": 151,
     "verified_links": 3,
     "captured": 3,
     "requested": 4,
+    "failed": 1,
     "coinbase_http_403": true,
-    "walk_forward": 12,
-    "forecast": "NOT_ISSUED"
+    "walk_forward": 16,
+    "forecast": "NOT_ISSUED",
+    "model_eligible": false
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-26T17:24:25Z",
+    "observed_at_utc": "2026-11-26T19:00:58Z",
     "pr_number": 1702,
-    "tested_head_sha": "69b8a113fea05c059c117fe77ba075fda6f65e92",
-    "current_branch_parent_sha": "69b8a113fea05c059c117fe77ba075fda6f65e92",
-    "current_branch_head_status": "RUN56_INVENTORY_ASSERTION_FIX_COMMITTED; EXACT_HEAD_CI_PENDING",
+    "tested_head_sha": "20b8af87438eb32d95b7462f3a692f96138f601b",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "commits_ahead": 131,
+    "commits_ahead": 135,
     "commits_behind": 0,
     "full_suite": {
-      "run_id": 45866670681,
-      "conclusion": "failure",
+      "run_id": 45879942771,
+      "conclusion": "success",
       "passed": 4700,
-      "failed": 1,
+      "failed": 0,
       "skipped": 1,
       "warnings": 11,
-      "subtests": 21,
-      "coverage_percent": 74.21,
-      "duration_seconds": 216.32,
-      "failure": "tests/test_nine_platform_operational_map_current.py expected 11 open PRs; the current map correctly recorded 12 after #1714. Test and map number inventory are being reconciled in this branch."
+      "subtests": 21
     },
-    "other_checks": {
-      "dependency_audit": {
-        "run_id": 45866670718,
-        "conclusion": "success"
-      },
-      "money_audit": {
-        "run_id": 45866670722,
-        "conclusion": "success"
-      },
-      "conflict_integrity": {
-        "run_id": 45866670706,
-        "conclusion": "success"
-      },
-      "gated_merge": {
-        "run_id": 45866670611,
-        "conclusion": "failure",
-        "blocker": "legacy gate compares stale PR base.sha to current main; compare confirms 131 ahead / 0 behind"
-      }
+    "dependency_audit": {
+      "run_id": 45879942805,
+      "conclusion": "success"
     },
-    "mergeable": true,
-    "mergeable_state": "clean",
+    "money_audit": {
+      "run_id": 45879942806,
+      "conclusion": "success"
+    },
+    "conflict_integrity": {
+      "run_id": 45879942796,
+      "conclusion": "success"
+    },
+    "gated_merge": {
+      "run_id": 45879942785,
+      "conclusion": "failure",
+      "blocker": "Legacy gate compares PR base.sha 6033bcd84fdeb2a8906b3d3b9aab5293eacf9407 to current main; GitHub compare confirms 135 ahead / 0 behind."
+    },
     "review_count": 0,
     "merge_status": "NOT_MERGED",
     "blockers": [
-      "Inventory assertion updated in this branch; exact-head suite pending on resulting tip.",
-      "Legacy gate false-blocks on stale PR base metadata; #1714 contains the verified ancestry correction.",
-      "Zero independent reviews; required approval count remains unavailable via HTTP 403.",
-      "A merge triggers GitHub Pages deployment; specific deployment authorization is absent."
+      "No independent review",
+      "Detailed branch protection returns HTTP 403; approval count unknown",
+      "Merge triggers GitHub Pages deployment; specific deployment authorization absent",
+      "Exact-head checks must rerun after this compact handoff/map commit"
     ]
   },
   "latest_primary_source_research": {
@@ -1522,32 +1484,63 @@
   "supporting_prs": [],
   "latest_audio_validation": {
     "pr_number": 1704,
-    "head_sha": "4ff0e5881a84bd1f496fefc730073194365cb8f1",
+    "head_sha": "38ffff3c4c21f14d1f216a4fdf1e54eeb4694f92",
     "full_suite": {
-      "run_id": 45836036300,
+      "run_id": 45867292575,
       "conclusion": "success",
       "passed": 4703,
+      "failed": 0,
       "skipped": 1,
-      "coverage": 74.29
+      "warnings": 11,
+      "subtests": 21
     },
+    "dependency_audit": 45867292492,
+    "money_audit": 45867292295,
+    "conflict_integrity": 45867292310,
     "audio_render": {
-      "run_id": 45836037352,
+      "run_id": 45867292176,
       "conclusion": "success",
-      "artifact_id": 15126130418,
-      "qc_artifact_id": 15126560266
+      "integration_tests": 4,
+      "artifact_id": 15139779842,
+      "qc_artifact_id": 15139719863,
+      "routing_qc_artifact_id": 15139799666
     },
-    "benchmark": "1.1.0",
-    "mix": {
-      "lufs": -22.4367,
-      "lra": 7.869,
-      "crest_db": 18.821,
-      "true_peak_dbtp": -6,
-      "clips": 0
+    "bundle": {
+      "size_bytes": 242108638,
+      "contents": [
+        "full-length premaster WAV mix",
+        "nine sample-aligned WAV stems",
+        "Standard MIDI with named tracks and section markers",
+        "JSON production metadata",
+        "technical QC"
+      ],
+      "sample_rate_hz": 44100,
+      "tempo_bpm": 110,
+      "key": "D minor",
+      "time_signature": "4/4",
+      "bars": 80,
+      "duration_seconds": 175.54546485260772,
+      "headroom_ceiling_dbfs": -6,
+      "normalization_applied": false
     },
-    "stems": 9,
-    "full_song_seconds": 175.545,
-    "DAW_project": false,
-    "listening": "NOT_DONE"
+    "full_song_soundfont": {
+      "name": "FluidR3_GM",
+      "license": "MIT",
+      "source": "Debian fluid-soundfont-gm"
+    },
+    "separate_routing_test": {
+      "status": "PASS",
+      "assets": [
+        "FreePats Upright Piano KW",
+        "FreePats Old Piano FB"
+      ],
+      "license": "CC0-1.0 source-claimed",
+      "independent_legal_audit": false
+    },
+    "native_daw_project": false,
+    "listening_review": "NOT_DONE",
+    "user_acceptance": "NOT_RECORDED",
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45867292176"
   },
   "latest_continuity_validation": {
     "pr_number": 1703,
@@ -1556,12 +1549,21 @@
       "run_id": 45736556559,
       "conclusion": "success",
       "passed": 4715,
+      "failed": 0,
       "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
       "coverage": 74.34
     },
-    "signed_transfer": "Ed25519",
+    "dependency_audit": 45736556537,
+    "money_audit": 45736556513,
+    "conflict_integrity": 45736556649,
+    "signed_transfer": "Ed25519 file-based bundle exchange",
     "cross_process_recovery": true,
-    "cross_host_network_sync": false
+    "cross_workspace_export_import": true,
+    "cross_host_network_sync": false,
+    "automatic_key_exchange": false,
+    "review_count": 0
   },
   "commercial_readiness": {
     "scope": "Barrot technology only",
@@ -1572,7 +1574,7 @@
       "open_prs": 88,
       "installed": false,
       "authenticated": false,
-      "sending": "PAUSED",
+      "sending": "PAUSED_NOT_CONFIGURED",
       "qualified_prospects": 0,
       "sent": 0,
       "meetings": 0,
@@ -1580,7 +1582,45 @@
       "paid_lookup_cost_usd": 0,
       "latest_main_sha": "8c743f1c475f61f7b2c04e50501cf6938a126ed6",
       "direct_chatgpt_desktop_integration": "NOT_VERIFIED",
-      "security_posture": "STATIC_REVIEW_ONLY_NOT_INDEPENDENTLY_AUDITED"
+      "security_posture": "STATIC_SOURCE_REVIEW_ONLY_NOT_INDEPENDENTLY_AUDITED",
+      "release_tag": "v0.5.0",
+      "release_published_at": "2026-11-25T08:37:30Z",
+      "prospecting_tested": false,
+      "direct_chatgpt_web": "NOT_SUPPORTED_FOR_LOCAL_PROCESS",
+      "codex_cli": "DOCUMENTED",
+      "chatgpt_desktop": "NOT_TESTED",
+      "default_discovery_provider": "OpenStreetMap (free)",
+      "paid_lookup_used": false,
+      "default_send_mode": "APPROVAL",
+      "email_channel_enabled_in_template": true,
+      "agent_token_scope": "read, draft, estimate cost, pause sending; cannot approve, send, resume, buy, change settings or delete",
+      "model_tool_access": "NO_TOOLS_IN_CLAUDE_AND_CODEX_RUNTIME",
+      "dashboard_auth": "loopback listener; separate dashboard and agent tokens; host/origin checks",
+      "mailbox_options": [
+        "Gmail OAuth",
+        "Microsoft 365 OAuth",
+        "SMTP/IMAP"
+      ],
+      "pre_send_safeguards": [
+        "deterministic recipient/address/content checks",
+        "do-not-contact suppression",
+        "bounce handling",
+        "pause switch",
+        "opt-out handling"
+      ],
+      "readiness_blockers": [
+        "No installation or authentication",
+        "No dedicated sending mailbox/domain or SPF/DKIM/DMARC verification",
+        "No warmup or inbox-placement evidence",
+        "No configured postal address; template leaves it empty and warns rather than hard-blocking",
+        "Precleared compliance check is disabled by default",
+        "No approved Barrot offer, ICP, audience, message or campaign",
+        "No prospecting test or qualified prospects"
+      ],
+      "linked_in_automation": "disabled by default; upstream README warns it may violate LinkedIn terms",
+      "outbound_approved": 0,
+      "replies": 0,
+      "proposals": 0
     },
     "candidate_offer": {
       "status": "HYPOTHESIS_NOT_APPROVED",
@@ -1801,26 +1841,25 @@
     }
   },
   "latest_main_cross_analysis": {
-    "run_number": 4649,
-    "run_id": 45853205248,
+    "run_number": 4652,
+    "run_id": 45879212965,
     "conclusion": "success",
     "head_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "created_at_utc": "2026-11-26T15:51:29Z",
+    "created_at_utc": "2026-11-26T18:51:28Z",
     "xrp_sentiment_status": "STALE_INPUT",
-    "xrp_sentiment_age_hours": 675.204,
+    "xrp_sentiment_age_hours": 678.203,
     "btc_sentiment_status": "STALE_INPUT",
-    "btc_sentiment_age_hours": 732.039,
+    "btc_sentiment_age_hours": 735.038,
     "forecast_eligibility": "FALSE_STALE_SENTIMENT",
-    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45853205248"
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45879212965"
   },
   "latest_execution_checkpoint": {
-    "observed_at_utc": "2026-11-26T15:03:49Z",
+    "observed_at_utc": "2026-11-26T19:00:58Z",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
+    "main_tree_sha": "428229c1dd50a757554637db67eb8e30d00ef6ed",
     "recursive_tree_entries": 3164,
     "tree_truncated": false,
-    "handoff_branch": "integration/mission-handoff-refresh-20261125",
-    "handoff_branch_parent_sha": "ad07aafcc52837859ee884cc63ebc7a51590df23",
-    "open_pr_count": 11,
+    "open_pr_count": 12,
     "open_pr_numbers": [
       1702,
       1703,
@@ -1832,23 +1871,47 @@
       1709,
       1710,
       1711,
-      1713
+      1713,
+      1714
     ],
-    "latest_xrp_run_id": 45837007221,
-    "latest_xrp_run_number": 185,
-    "latest_main_cross_analysis_run_id": 45843245004,
-    "latest_main_cross_analysis_run_number": 4648,
-    "latest_audio_render_run_id": 45836037352,
-    "latest_continuity_full_suite_run_id": 45736556559,
-    "handoff_update_validation": "PENDING_EXACT_HEAD_CI_AFTER_RUN54_MAP_REFRESH",
+    "mission_priorities": {
+      "xrp_intelligence": 1,
+      "professional_audio": 1,
+      "long_horizon_continuity": 1,
+      "shared_foundation": "Barrot V3"
+    },
+    "handoff_branch": "integration/mission-handoff-refresh-20261125",
+    "handoff_parent_head": "20b8af87438eb32d95b7462f3a692f96138f601b",
+    "handoff_update_post_commit_ci": "PENDING",
+    "xrp_main_run": 190,
+    "xrp_main_run_id": 45874573475,
+    "xrp_branch_run": 188,
+    "xrp_branch_run_id": 45862982894,
+    "main_cross_analysis_run": 4652,
+    "main_cross_analysis_run_id": 45879212965,
+    "audio_pr": 1704,
+    "audio_head": "38ffff3c4c21f14d1f216a4fdf1e54eeb4694f92",
+    "audio_render_run": 45867292176,
+    "continuity_pr": 1703,
+    "continuity_head": "9ea30d044c84fc97c8354457f7227439c73442b4",
+    "governance_pr": 1714,
+    "governance_head": "87a370d77df5703a807ad3d8128d0ca972c383fd",
     "no_new_branch": true,
     "no_new_pr": true,
     "no_merge": true,
     "no_deployment": true,
-    "no_external_model_transfer": true,
+    "no_secret_changes": true,
     "no_outreach": true,
     "no_paper_trade": true,
-    "no_real_money": true
+    "no_real_money": true,
+    "next_concrete_action": "Keep forecasts closed; improve exact event-to-receipt capture on the existing XRP branch; obtain listening acceptance for the current audio bundle; retain file-based continuity until secure multi-host key exchange is tested; obtain independent review and explicit Pages deployment authorization before any merge.",
+    "post_update_handoff_commit": "PENDING",
+    "pre_update_head_sha": "20b8af87438eb32d95b7462f3a692f96138f601b",
+    "sellbird_release": "0.5.0",
+    "sellbird_license": "AGPL-3.0-only",
+    "sellbird_installed": false,
+    "sellbird_authenticated": false,
+    "sellbird_sending": "PAUSED_NOT_CONFIGURED"
   },
   "latest_xrp_run162_summary": {
     "run_number": 162,
@@ -2869,141 +2932,77 @@
     }
   },
   "latest_sellbird_audit": {
-    "observed_at_utc": "2026-11-26T16:30:51Z",
+    "captured_at_utc": "2026-11-26T19:00:58Z",
     "repository": "ethanplusai/sellbird",
-    "repository_url": "https://github.com/ethanplusai/sellbird",
-    "upstream_main_sha": "8c743f1c475f61f7b2c04e50501cf6938a126ed6",
-    "release": "0.5.0",
-    "latest_release_tag": "v0.5.0",
-    "latest_release_published_at": "2026-11-25T08:37:30Z",
+    "version": "0.5.0",
+    "release_tag": "v0.5.0",
+    "release_published_at": "2026-11-25T08:37:30Z",
+    "latest_main_sha": "8c743f1c475f61f7b2c04e50501cf6938a126ed6",
     "license": "AGPL-3.0-only",
-    "python_requires": ">=3.11",
     "open_prs": 88,
-    "supported_cli_providers": [
-      "Claude Code CLI",
-      "Claude Desktop",
-      "Codex CLI 0.159.3 (macOS/Linux; Windows unsupported)"
-    ],
-    "codex_chatgpt_sign_in": "DOCUMENTED_NOT_TESTED",
-    "direct_chatgpt_desktop_integration": "NOT_VERIFIED",
-    "mail_providers": [
-      "Gmail",
-      "Microsoft 365",
-      "SMTP",
-      "Instantly legacy"
-    ],
-    "discovery_sources_free": [
-      "OpenStreetMap",
-      "TinyFish",
-      "DuckDuckGo/Bing fallback"
-    ],
-    "discovery_signals_total": 29,
-    "discovery_signals_free": 26,
-    "discovery_signals_paid": 3,
-    "paid_lookup_used": false,
-    "paid_lookup_cost_usd": 0,
-    "main_ci": {
-      "run_id": 45576760134,
-      "conclusion": "success",
-      "head_sha": "8c743f1c475f61f7b2c04e50501cf6938a126ed6",
-      "matrix": "Ubuntu/macOS/Windows; Python 3.11/3.12"
-    },
-    "repo_permissions": {
-      "pull": true,
-      "push": false,
-      "admin": false
-    },
-    "default_email_enabled": true,
-    "default_email_provider": "gmail",
-    "approval_required": true,
-    "default_daily_send_ceiling": 50,
-    "send_to_risky": false,
-    "max_bounce_rate": 0.05,
-    "autopilot_available_but_disabled": true,
-    "warmup_start_date_configured": false,
-    "postal_address_configured": false,
-    "do_not_contact_suppression_configured": false,
-    "mailbox_authentication_verified": false,
-    "precleared_enabled": false,
     "installed": false,
     "authenticated": false,
-    "outbound_sending": "PAUSED",
-    "agent_permissions": {
-      "can_read": true,
-      "can_draft": true,
-      "can_estimate_cost": true,
-      "can_pause": true,
-      "can_approve": false,
-      "can_send": false,
-      "can_resume": false,
-      "can_start_discovery": false,
-      "can_confirm_signals": false,
-      "can_change_settings_or_keys": false,
-      "can_delete": false
-    },
-    "security_controls_observed": [
-      "loopback dashboard",
-      "scoped agent token and allowlist",
-      "model calls have no tools",
-      "deterministic pre-send gate",
-      "SSRF-aware public HTTP",
-      "keyring-backed secrets",
-      "log redaction"
+    "sending": "PAUSED_NOT_CONFIGURED",
+    "prospecting_tested": false,
+    "direct_chatgpt_web": "NOT_SUPPORTED_FOR_LOCAL_PROCESS",
+    "codex_cli": "DOCUMENTED",
+    "chatgpt_desktop": "NOT_TESTED",
+    "security_posture": "STATIC_SOURCE_REVIEW_ONLY_NOT_INDEPENDENTLY_AUDITED",
+    "default_discovery_provider": "OpenStreetMap (free)",
+    "paid_lookup_used": false,
+    "default_send_mode": "APPROVAL",
+    "email_channel_enabled_in_template": true,
+    "agent_token_scope": "read, draft, estimate cost, pause sending; cannot approve, send, resume, buy, change settings or delete",
+    "model_tool_access": "NO_TOOLS_IN_CLAUDE_AND_CODEX_RUNTIME",
+    "dashboard_auth": "loopback listener; separate dashboard and agent tokens; host/origin checks",
+    "mailbox_options": [
+      "Gmail OAuth",
+      "Microsoft 365 OAuth",
+      "SMTP/IMAP"
     ],
-    "security_posture": "STATIC_REVIEW_ONLY_NOT_INDEPENDENTLY_AUDITED",
-    "security_alerts": "NOT_ACCESSIBLE_TO_CONNECTOR; counts unknown, not zero",
-    "open_safety_prs": [
-      {
-        "number": 302,
-        "title": "Hold sending when an SMTP inbox can't log in to IMAP",
-        "status": "OPEN",
-        "impact": "failed IMAP reads should hold sending rather than be treated as no replies"
-      },
-      {
-        "number": 306,
-        "title": "Honour Arabic opt-outs and fold Latin accents in email local parts",
-        "status": "OPEN",
-        "impact": "Arabic opt-out recognition is not yet in main"
-      },
-      {
-        "number": 300,
-        "title": "Show a broken email verifier and re-check guessed emails once it works",
-        "status": "OPEN",
-        "impact": "verifier health/retry visibility"
-      },
-      {
-        "number": 301,
-        "title": "Back off a rate-limited Claude quota and show what the usage budget went by",
-        "status": "OPEN",
-        "impact": "quota backoff/observability"
-      },
-      {
-        "number": 303,
-        "title": "Let the loop top up the company list by itself (discovery.auto)",
-        "status": "OPEN",
-        "impact": "automatic discovery remains opt-in; do not enable"
-      }
+    "pre_send_safeguards": [
+      "deterministic recipient/address/content checks",
+      "do-not-contact suppression",
+      "bounce handling",
+      "pause switch",
+      "opt-out handling"
     ],
-    "linkedin_automation": "DO_NOT_USE; repository warns browser automation violates LinkedIn Terms of Service",
-    "compliance_prerequisites": [
-      "dedicated sending domain",
-      "SPF/DKIM/DMARC",
-      "2–4 week warmup",
-      "physical postal address",
-      "do-not-contact suppression list",
-      "verified mailbox authentication",
-      "opt-out processing",
-      "jurisdictional legal review",
-      "explicit campaign/audience/message/sending approval"
+    "readiness_blockers": [
+      "No installation or authentication",
+      "No dedicated sending mailbox/domain or SPF/DKIM/DMARC verification",
+      "No warmup or inbox-placement evidence",
+      "No configured postal address; template leaves it empty and warns rather than hard-blocking",
+      "Precleared compliance check is disabled by default",
+      "No approved Barrot offer, ICP, audience, message or campaign",
+      "No prospecting test or qualified prospects"
     ],
-    "license_note": "AGPL-3.0-only; do not copy/integrate code into Barrot or offer modified network-hosted Sellbird without legal review of source-offer obligations.",
-    "qualified_prospects": 0,
-    "approved_messages": 0,
+    "linked_in_automation": "disabled by default; upstream README warns it may violate LinkedIn terms",
+    "outbound_approved": 0,
     "sent": 0,
     "replies": 0,
     "meetings": 0,
     "proposals": 0,
-    "revenue_usd": 0
+    "revenue_usd": 0,
+    "paid_lookup_cost_usd": 0,
+    "source_review": [
+      "README.md",
+      "LICENSE",
+      "NOTICE",
+      "SECURITY.md",
+      "pyproject.toml",
+      ".env.example",
+      "sellbird.yaml",
+      "docs/approval-and-sending.md",
+      "docs/deliverability.md",
+      "docs/agent-app.md",
+      "sellbird/agent_policy.py",
+      "sellbird/mcp_server.py",
+      "sellbird/gate.py",
+      "sellbird/dashboard_auth.py",
+      "sellbird/claude_runtime.py",
+      "sellbird/codex.py",
+      "sellbird/secrets.py"
+    ]
   },
   "latest_run36_checkpoint": {
     "observed_at_utc": "2026-11-26T00:04:55Z",
@@ -4776,7 +4775,7 @@
     }
   ],
   "current_main_state": {
-    "observed_at_utc": "2026-11-26T17:13:00Z",
+    "observed_at_utc": "2026-11-26T19:00:58Z",
     "sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
     "tree_sha": "428229c1dd50a757554637db67eb8e30d00ef6ed",
     "recursive_tree_entries": 3164,
@@ -4809,23 +4808,27 @@
       "triggered_by_merge_pr": 1712,
       "additional_merge_requires_specific_deployment_approval": true
     },
-    "latest_xrp_ingestion_run": 45856901485,
-    "latest_main_cross_analysis_run": 45862574069,
-    "branch_protection_gate_status": "protected=true; four required checks enforced for non-admins; detailed protection endpoint HTTP 403; approval count unknown; fallback ruleset disabled; future merge triggers Pages deployment requiring specific authorization",
+    "latest_xrp_ingestion_run": 45874573475,
+    "latest_main_cross_analysis_run": 45879212965,
+    "branch_protection_gate_status": "protected=true; required checks enforced for non-admins; detailed branch-protection endpoint HTTP 403; approval count unknown; merge triggers GitHub Pages deployment; no specific deployment authorization.",
     "tree_entries": 3164,
     "main_ci_run": 45735004570,
     "main_ci_conclusion": "success"
   },
   "latest_xrp_ingestion_run": {
-    "run_number": 187,
-    "run_id": 45856901485,
+    "run_number": 190,
+    "run_id": 45874573475,
     "conclusion": "success",
     "head_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "data_cutoff_utc": "2026-11-26T16:15:06.777833Z",
+    "data_cutoff_utc": "2026-11-26T18:16:46.402470Z",
     "adapter_version": "xrp-public-market-v3.34",
     "parser_version": "xrp-public-market-v3.32",
-    "snapshot_id": "6b1bda4f1633eccc80f42e8dd3526e8ed5096d826eb384354906c582b8ad3eba",
-    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45856901485"
+    "snapshot_count": 144,
+    "eligible_records": 106,
+    "excluded_records": 384,
+    "event_receipt_links": 0,
+    "forecast_status": "NOT_ISSUED",
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45874573475"
   },
   "latest_xrp_run182_summary": {
     "run_number": 182,
@@ -5780,5 +5783,55 @@
       "camilla_identity": "UNVERIFIED_SEPARATE_NAMESAKE",
       "instruction": "Do not inventory or attribute videos until a creator-controlled source or verified platform metadata reciprocally links the exact channel ID."
     }
+  },
+  "latest_xrp_pr_run188_summary": {
+    "run_number": 188,
+    "run_id": 45862982894,
+    "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
+    "head_sha": "1091feb9cf5be437506c33c96dd767606ce389cd",
+    "conclusion": "success",
+    "data_cutoff_utc": "2026-11-26T16:54:41.866956Z",
+    "event_count": 151,
+    "event_receipt_linkage": {
+      "verified_receipt_count": 3,
+      "raw_bytes_retained_verified_count": 0,
+      "digest_only_verified_count": 3,
+      "raw_hash_present_count": 3,
+      "source_id_match_count": 3,
+      "url_capture_time_match_count": 3,
+      "url_match_count": 14,
+      "missing_raw_hashes": 148,
+      "status": "INCOMPLETE"
+    },
+    "event_source_capture": {
+      "requested": 4,
+      "captured": 3,
+      "failed": 1,
+      "status": "PARTIAL",
+      "event_discovery_implemented": false,
+      "model_eligible": false
+    },
+    "receipts": {
+      "count": 40,
+      "digest_only": 19,
+      "external_anchor": "NOT_ANCHORED"
+    },
+    "feature_store": {
+      "snapshots": 7,
+      "history_records": 2748,
+      "sqlite_integrity": "ok"
+    },
+    "evaluation": {
+      "walk_forward_rows": 16,
+      "walk_forward_status": "PARTIAL_OR_BLOCKED",
+      "drift_status": "INSUFFICIENT_DATA",
+      "forecast_status": "NOT_ISSUED"
+    },
+    "source_failures": {
+      "count": 22,
+      "coinbase_http_403_observed": true
+    },
+    "note": "Exact-current-head branch run; 3 of 4 bounded primary-event captures linked to digest-only receipts. This is not mainline ingestion and does not make the event set model eligible.",
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45862982894"
   }
 }
