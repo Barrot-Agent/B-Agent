@@ -369,6 +369,96 @@ def _measure_stereo_integrity(
     }
 
 
+def _limit_stereo_side_for_mono_compatibility(
+    audio,
+    *,
+    mono_fold_down_warning_db: float = -3.0,
+    safety_margin: float = 0.005,
+):
+    """Reduce excessive side energy on one stem without changing its mono signal.
+
+    The operation is deliberately conservative: it only narrows a stem when
+    the measured mono fold-down or inter-channel correlation fails the supplied
+    threshold. A near-null mid signal cannot be repaired without deleting the
+    audible content, so that case is returned unchanged and explicitly flagged.
+    """
+    import numpy as np
+
+    samples = np.asarray(audio, dtype=np.float32)
+    if samples.ndim != 2 or samples.shape[1] != 2 or samples.shape[0] == 0:
+        raise ValueError("mono-compatibility correction requires non-empty stereo audio")
+    if not np.isfinite(samples).all():
+        raise ValueError("mono-compatibility correction cannot process non-finite audio")
+    if (
+        not math.isfinite(mono_fold_down_warning_db)
+        or not -12.0 <= mono_fold_down_warning_db < 0.0
+    ):
+        raise ValueError("mono_fold_down_warning_db must be between -12 and 0 dB")
+    if not math.isfinite(safety_margin) or not 0.0 <= safety_margin < 0.1:
+        raise ValueError("safety_margin must be between 0 and 0.1")
+
+    before = _measure_stereo_integrity(
+        samples,
+        mono_fold_down_warning_db=mono_fold_down_warning_db,
+    )
+    report = {
+        "applied": False,
+        "side_gain": 1.0,
+        "target_mono_fold_down_loss_db": mono_fold_down_warning_db,
+        "before": before,
+        "after": before,
+        "status": "NOT_REQUIRED",
+        "reason": None,
+    }
+    if not before["mono_compatibility_warning"]:
+        return samples.copy(), report
+
+    values = samples.astype(np.float64, copy=False)
+    mid = (values[:, 0] + values[:, 1]) * 0.5
+    side = (values[:, 0] - values[:, 1]) * 0.5
+    mid_power = float(np.mean(np.square(mid), dtype=np.float64))
+    side_power = float(np.mean(np.square(side), dtype=np.float64))
+    if (
+        not math.isfinite(mid_power)
+        or not math.isfinite(side_power)
+        or mid_power <= max(1e-20, side_power * 1e-12)
+        or side_power <= 0.0
+    ):
+        report.update(
+            status="UNRESOLVED",
+            reason="mid_signal_too_weak_to_preserve_mono_content",
+        )
+        return samples.copy(), report
+
+    mono_ratio = 10.0 ** (mono_fold_down_warning_db / 20.0)
+    allowed_side_power = mid_power * (1.0 / (mono_ratio * mono_ratio) - 1.0)
+    side_gain = min(
+        1.0,
+        math.sqrt(max(0.0, allowed_side_power) / side_power) * (1.0 - safety_margin),
+    )
+    if side_gain >= 1.0:
+        return samples.copy(), report
+
+    corrected = np.column_stack((mid + side * side_gain, mid - side * side_gain))
+    corrected = np.asarray(corrected, dtype=np.float32)
+    after = _measure_stereo_integrity(
+        corrected,
+        mono_fold_down_warning_db=mono_fold_down_warning_db,
+    )
+    report.update(
+        applied=True,
+        side_gain=side_gain,
+        after=after,
+        status="APPLIED" if not after["mono_compatibility_warning"] else "UNRESOLVED",
+        reason=(
+            "reduced_side_energy_to_preserve_mono_content"
+            if not after["mono_compatibility_warning"]
+            else "post_correction_mono_compatibility_still_below_threshold"
+        ),
+    )
+    return corrected, report
+
+
 def render_audio(
     manifest: MusicalManifest,
     destination: str | Path,
