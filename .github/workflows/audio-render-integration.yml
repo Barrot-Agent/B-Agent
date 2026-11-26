@@ -38,7 +38,7 @@ jobs:
       - name: Install FluidSynth and MIT-licensed FluidR3 General MIDI SoundFont
         run: |
           sudo apt-get update
-          sudo apt-get install --no-install-recommends -y libfluidsynth3 fluid-soundfont-gm
+          sudo apt-get install --no-install-recommends -y libfluidsynth3 fluid-soundfont-gm p7zip-full
           dpkg-query -W -f='${Package} ${Version}\n' libfluidsynth3 fluid-soundfont-gm
           SF2_VERSION="$(dpkg-query -W -f='${Version}' fluid-soundfont-gm)"
           SF2_PATH="/usr/share/sounds/sf2/FluidR3_GM.sf2"
@@ -52,6 +52,50 @@ jobs:
           sha256sum "$SF2_PATH" "$LICENSE_PATH"
           ldconfig -p | grep -i fluidsynth
 
+
+      - name: Fetch two source-claimed CC0 FreePats SoundFonts for per-track routing
+        run: |
+          set -euo pipefail
+          ROOT="${RUNNER_TEMP}/barrot-cc0-soundfonts"
+          mkdir -p "$ROOT/upright" "$ROOT/old-piano"
+          UPRIGHT_ARCHIVE="$ROOT/UprightPianoKW-small-SF2-20190703.7z"
+          OLD_ARCHIVE="$ROOT/PianoFB-small-SF2-20200401.7z"
+          UPRIGHT_URL="https://freepats.zenvoid.org/Piano/UprightPianoKW/UprightPianoKW-small-SF2-20190703.7z"
+          OLD_URL="https://github.com/freepats/old-piano-FB/releases/download/2020-04-01/PianoFB-small-SF2-20200401.7z"
+          curl --fail --location --retry 3 --connect-timeout 20 "$UPRIGHT_URL" -o "$UPRIGHT_ARCHIVE"
+          curl --fail --location --retry 3 --connect-timeout 20 "$OLD_URL" -o "$OLD_ARCHIVE"
+          7z t "$UPRIGHT_ARCHIVE" >/dev/null
+          7z t "$OLD_ARCHIVE" >/dev/null
+          7z x -y -o"$ROOT/upright" "$UPRIGHT_ARCHIVE" >/dev/null
+          7z x -y -o"$ROOT/old-piano" "$OLD_ARCHIVE" >/dev/null
+          mapfile -t UPRIGHT_FILES < <(find "$ROOT/upright" -type f -iname '*.sf2' | sort)
+          mapfile -t OLD_FILES < <(find "$ROOT/old-piano" -type f -iname '*.sf2' | sort)
+          test "${#UPRIGHT_FILES[@]}" -eq 1
+          test "${#OLD_FILES[@]}" -eq 1
+          UPRIGHT_SF2="${UPRIGHT_FILES[0]}"
+          OLD_SF2="${OLD_FILES[0]}"
+          test -s "$UPRIGHT_SF2"
+          test -s "$OLD_SF2"
+          FLUID_SHA="$(sha256sum "$BARROT_TEST_SF2" | awk '{print $1}')"
+          UPRIGHT_SHA="$(sha256sum "$UPRIGHT_SF2" | awk '{print $1}')"
+          OLD_SHA="$(sha256sum "$OLD_SF2" | awk '{print $1}')"
+          test "$UPRIGHT_SHA" != "$OLD_SHA"
+          test "$UPRIGHT_SHA" != "$FLUID_SHA"
+          test "$OLD_SHA" != "$FLUID_SHA"
+          sha256sum "$UPRIGHT_ARCHIVE" "$OLD_ARCHIVE" "$UPRIGHT_SF2" "$OLD_SF2"
+          {
+            echo "BARROT_TEST_SF2_ALT_UPRIGHT=$UPRIGHT_SF2"
+            echo "BARROT_TEST_SF2_ALT_OLD=$OLD_SF2"
+            echo "BARROT_TEST_SF2_ALT_UPRIGHT_ARCHIVE=$UPRIGHT_ARCHIVE"
+            echo "BARROT_TEST_SF2_ALT_OLD_ARCHIVE=$OLD_ARCHIVE"
+            echo "BARROT_TEST_SF2_ALT_UPRIGHT_SOURCE=https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html"
+            echo "BARROT_TEST_SF2_ALT_OLD_SOURCE=https://freepats.zenvoid.org/Piano/honky-tonk-piano.html"
+            echo "BARROT_TEST_SF2_ALT_UPRIGHT_LICENSE=CC0-1.0"
+            echo "BARROT_TEST_SF2_ALT_OLD_LICENSE=CC0-1.0"
+            echo "BARROT_TEST_SF2_ALT_UPRIGHT_ARCHIVE_URL=$UPRIGHT_URL"
+            echo "BARROT_TEST_SF2_ALT_OLD_ARCHIVE_URL=$OLD_URL"
+          } >> "$GITHUB_ENV"
+
       - name: Install optional music runtime
         run: |
           python -m pip install --upgrade pip
@@ -63,6 +107,8 @@ jobs:
           BARROT_AUDIO_BUNDLE_QC_OUTPUT: ${{ runner.temp }}/audio-bundle-qc.json
           BARROT_AUDIO_FULL_SONG_QC_OUTPUT: ${{ runner.temp }}/audio-full-song-qc.json
           BARROT_AUDIO_BUNDLE_OUTPUT: ${{ runner.temp }}/audio-production-bundle
+          BARROT_AUDIO_SOUNDFONT_ROUTING_OUTPUT: ${{ runner.temp }}/audio-soundfont-routing
+          BARROT_AUDIO_SOUNDFONT_ROUTING_QC_OUTPUT: ${{ runner.temp }}/audio-soundfont-routing-qc.json
         run: python -m pytest tests/test_audio_render_integration.py -v
 
       - name: Add attribution and import instructions to the production bundle
@@ -112,5 +158,16 @@ jobs:
         with:
           name: audio-production-bundle-${{ github.run_id }}
           path: ${{ runner.temp }}/audio-production-bundle/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload per-instrument SoundFont routing comparison
+        if: success()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: audio-soundfont-routing-qc-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/audio-soundfont-routing/
+            ${{ runner.temp }}/audio-soundfont-routing-qc.json
           if-no-files-found: error
           retention-days: 30
