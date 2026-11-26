@@ -19,6 +19,7 @@ from .audio_render import (
     _headroom_gain,
     _measure_audio_levels,
     _measure_stereo_integrity,
+    _limit_stereo_side_for_mono_compatibility,
     _render_midi_stereo,
 )
 from .midi_export import export_midi
@@ -258,6 +259,18 @@ def render_production_bundle(
         corrected, correction = _remove_dc_offset(audio)
         audio_arrays.append(corrected)
         dc_offset_corrections.append(correction)
+
+    # Keep individual stems usable in mono. Preserve the mid signal exactly;
+    # reduce only excessive side energy, and report cases that cannot be repaired.
+    stereo_compatibility_corrections = []
+    for index, descriptor in enumerate(stem_descriptors, start=1):
+        corrected, correction = _limit_stereo_side_for_mono_compatibility(
+            audio_arrays[index],
+            mono_fold_down_warning_db=-3.0,
+        )
+        audio_arrays[index] = corrected
+        stereo_compatibility_corrections.append(correction)
+
     source_levels = [
         _measure_audio_levels(audio, resample_poly, oversample=4)
         for audio in audio_arrays
@@ -325,12 +338,13 @@ def render_production_bundle(
     _write_float32_wav(mix_path, rendered_mix, sample_rate, wavfile)
     stem_paths = []
     stem_metadata = []
-    for descriptor, audio, levels, stereo_integrity, dc_correction in zip(
+    for descriptor, audio, levels, stereo_integrity, dc_correction, stereo_correction in zip(
         stem_descriptors,
         rendered_arrays[1:],
         rendered_levels[1:],
         rendered_stereo_integrity[1:],
         dc_offset_corrections[1:],
+        stereo_compatibility_corrections,
     ):
         stem_path = descriptor["destination"]
         _write_float32_wav(stem_path, audio, sample_rate, wavfile)
@@ -348,6 +362,7 @@ def render_production_bundle(
                 "clip_sample_count": int(np.count_nonzero(np.abs(audio) >= 1.0)),
                 "stereo_integrity": stereo_integrity,
                 "dc_offset_correction": dc_correction,
+                "stereo_compatibility_correction": stereo_correction,
                 "soundfont_sha256": descriptor["soundfont_asset"]["sha256"],
                 "soundfont_source": descriptor["soundfont_asset"]["source"],
                 "soundfont_license": descriptor["soundfont_asset"]["license"],
@@ -366,6 +381,19 @@ def render_production_bundle(
             for item in soundfont_assets_by_instrument.values()
         )
         else "MISSING_SOURCE_OR_LICENSE_METADATA"
+    )
+    quality_warnings = {
+        "mix": rendered_stereo_integrity[0]["warnings"],
+        "stems": {
+            item["instrument"]: item["stereo_integrity"]["warnings"]
+            for item in stem_metadata
+        },
+    }
+    quality_status = (
+        "PASS"
+        if not quality_warnings["mix"]
+        and all(not warnings for warnings in quality_warnings["stems"].values())
+        else "WARN"
     )
     metadata = {
         "schema_version": "1.0.0",
@@ -396,6 +424,7 @@ def render_production_bundle(
             for section in manifest.sections
         ],
         "instruments": list(manifest.instruments),
+        "quality_status": quality_status,
         "common_gain_linear": common_gain,
         "headroom_ceiling_dbfs": headroom_dbfs,
         "mix": {
@@ -427,6 +456,10 @@ def render_production_bundle(
             "format": "Standard MIDI File",
         },
         "stems": stem_metadata,
+        "stereo_compatibility_corrections": {
+            descriptor["instrument"]: correction
+            for descriptor, correction in zip(stem_descriptors, stereo_compatibility_corrections)
+        },
         "stem_alignment": {
             "aligned": True,
             "sample_rate_hz": sample_rate,
@@ -444,13 +477,7 @@ def render_production_bundle(
             "dc_offset_warning_dbfs": -60.0,
             "mono_fold_down_warning_db": -3.0,
         },
-        "quality_warnings": {
-            "mix": rendered_stereo_integrity[0]["warnings"],
-            "stems": {
-                item["instrument"]: item["stereo_integrity"]["warnings"]
-                for item in stem_metadata
-            },
-        },
+        "quality_warnings": quality_warnings,
         "rights": {
             "soundfont_source": soundfont_source,
             "soundfont_license": soundfont_license,
