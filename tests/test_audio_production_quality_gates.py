@@ -526,3 +526,13 @@ def test_stereo_side_reduction_does_not_silence_a_true_mono_null() -> None:
     assert report["reason"] == "mid_signal_too_weak_to_preserve_mono_content"
     assert np.array_equal(corrected, anti_phase)
     assert _measure_stereo_integrity(corrected)["mono_compatibility_warning"] is True
+
+
+def test_audio_render_integration_runs_for_integration_branch_pushes() -> None:
+    workflow = Path(".github/workflows/audio-render-integration.yml").read_text(
+        encoding="utf-8"
+    )
+    assert "push:" in workflow
+    assert 'branches: ["integration/**"]' in workflow
+    assert '"barrot_agent/creative/**"' in workflow
+    assert '"tests/test_audio_render_integration.py"' in workflow
