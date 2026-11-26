@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T20:03:10Z",
+  "captured_at_utc": "2026-11-26T20:11:00Z",
   "capture_basis": "Run 58 correction: preserve stable machine-readable PR classification and keep approval/deployment blockers in explicit detail fields.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
@@ -157,8 +157,9 @@
         "commits_ahead": 1,
         "commits_behind": 6,
         "compare_status": "behind",
-        "classification": "duplicate/subset of #1706; keep open until successor is merged and verified",
-        "audited_at_utc": "2026-11-26T19:17:59Z"
+        "classification": "superseded_pending_successor_merge",
+        "audited_at_utc": "2026-11-26T20:11:00Z",
+        "classification_detail": "Draft duplicate subset of #1706; retain until successor merge is verified."
       },
       {
         "number": 1707,
@@ -251,16 +252,16 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "state": "open",
         "draft": false,
-        "head_sha": "fc759d213fc1b7f1e04d59a24342f2c3b95603ce",
+        "head_sha": "2bfe0d1a98f72f2024803ce1f350d2654878468d",
         "head_ref": "integration/mission-handoff-refresh-20261125",
         "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
         "base_ref": "main",
-        "updated_at": "2026-11-26T19:07:56Z",
-        "commits_ahead": 136,
+        "updated_at": "2026-11-26T20:05:05Z",
+        "commits_ahead": 141,
         "commits_behind": 0,
         "compare_status": "ahead",
         "classification": "unique three-mission handoff; map consistency correction in progress",
-        "audited_at_utc": "2026-11-26T19:17:59Z",
+        "audited_at_utc": "2026-11-26T20:11:00Z",
         "head_sha_scope": "pre-correction head fc759d; this map repair commit advances the branch, so fetch the branch ref for the new tip"
       }
     ],
@@ -302,7 +303,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-26T19:39:12Z",
+      "observed_at_utc": "2026-11-26T20:11:00Z",
       "sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
       "tree_sha": "428229c1dd50a757554637db67eb8e30d00ef6ed",
       "recursive_tree_entries": 3164,
@@ -416,25 +417,32 @@
       },
       "latest_integration_validation": {
         "pr_number": 1702,
-        "tested_head_sha": "fc759d213fc1b7f1e04d59a24342f2c3b95603ce",
-        "full_suite_run_id": 45881311713,
+        "tested_head_sha": "2bfe0d1a98f72f2024803ce1f350d2654878468d",
+        "full_suite_run_id": 45888410502,
         "full_suite_conclusion": "failure",
         "passed": 4700,
         "failed": 1,
         "skipped": 1,
-        "failure": "Nested repository current_main_state run 187 versus latest observation run 190; corrected in this commit.",
-        "dependency_audit_run_id": 45881311775,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.21,
+        "failure": "tests/test_nine_platform_operational_map_current.py: PR #1708 classification must be the stable superseded_pending_successor_merge enum; the previous human-readable sentence is moved to classification_detail.",
+        "dependency_audit_run_id": 45888410436,
         "dependency_audit_conclusion": "success",
-        "money_audit_run_id": 45881311666,
+        "money_audit_run_id": 45888410404,
         "money_audit_conclusion": "success",
-        "conflict_integrity_run_id": 45881311798,
+        "conflict_integrity_run_id": 45888410440,
         "conflict_integrity_conclusion": "success",
-        "core_ci_run_id": 45881306031,
-        "core_ci_conclusion": "success",
-        "gate_run_id": 45881311661,
+        "gate_run_id": 45888410505,
         "gate_conclusion": "failure",
         "review_count": 0,
-        "merge_status": "NOT_MERGED"
+        "merge_status": "NOT_MERGED",
+        "blockers": [
+          "Full suite failed one machine-readable classification assertion; corrected in the next branch commit.",
+          "No independent review.",
+          "Detailed branch protection returns HTTP 403; approval count unknown.",
+          "Merge triggers GitHub Pages deployment; specific deployment authorization absent."
+        ]
       }
     },
     "required_status_checks_last_verified_at_utc": "2026-11-26T16:30:51Z",
@@ -904,7 +912,7 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "commits_ahead": 139,
+      "commits_ahead": 141,
       "commits_behind": 0,
       "draft": false,
       "changed_paths": [
@@ -925,11 +933,9 @@
       "mergeable": true,
       "mergeable_state": "clean",
       "validation_status": [
-        "parent head f1e0d962 exact full repository suite passed: 4701 passed, 0 failed, 1 skipped",
-        "dependency audit, Money audit and Conflict Integrity passed on the same head",
-        "fail-closed gate failed because PR base metadata still reports 6033bcd while commit ancestry is 112 ahead / 0 behind current main 215184",
-        "zero independent reviews; detailed branch protection HTTP 403; Pages deployment authorization absent",
-        "Run 48 documentation/map commit advances this branch; exact-head CI for the new commit is pending and must not reuse parent-head results"
+        "Latest exact-head full suite 45888410502: 4,700 passed, 1 failed, 1 skipped; failure is the #1708 classification enum assertion, corrected in this commit.",
+        "Dependency audit, money audit and conflict-integrity passed on prior head 2bfe0d1; rerun exact-head checks required.",
+        "No merge: zero independent reviews, approval count unknown (HTTP 403), and Pages deployment authorization absent."
       ],
       "checks": {
         "observed_at_utc": "2026-11-26T10:31:11Z",
@@ -969,10 +975,10 @@
       "exact_head_validation": "PASSED_4700_1_SKIPPED_ON_20B8AF; NEW_HANDOFF_COMMIT_RETEST_PENDING",
       "last_exact_head_passed_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
       "head_sha_role": "parent_before_Run57_map_observation_sync",
-      "latest_status": "Run57 handoff/map sync committed; exact-head validation pending",
+      "latest_status": "Run58 classification schema correction; exact-head CI pending.",
       "head_sha_note": "This map-sync commit advances the branch; fetch the live branch ref for the exact new tip.",
-      "head_sha": "84b44bdbd31528ee08d7197124dce2762610c76c",
-      "audited_at_utc": "2026-11-26T19:39:12Z",
+      "head_sha": "2bfe0d1a98f72f2024803ce1f350d2654878468d",
+      "audited_at_utc": "2026-11-26T20:11:00Z",
       "tested_head_sha": "fc759d213fc1b7f1e04d59a24342f2c3b95603ce",
       "current_head_note": "This map correction commit advances PR #1702; fetch branch ref for exact new tip."
     },
@@ -1313,7 +1319,7 @@
       "changed_paths": [
         ".github/workflows/xrp-public-ingestion.yml"
       ],
-      "classification": "duplicate/subset of #1706; keep open until successor is merged and verified",
+      "classification": "superseded_pending_successor_merge",
       "workstream_uniqueness": "duplicate_subset_of_1706",
       "review_count": 0,
       "mergeable": true,
@@ -1344,7 +1350,8 @@
         1706
       ],
       "validation_status": "DRAFT; EXACT DUPLICATE SUBSET OF #1706; DO NOT CLOSE UNTIL SUCCESSOR IS MERGED AND VERIFIED",
-      "audited_at_utc": "2026-11-26T19:17:59Z"
+      "audited_at_utc": "2026-11-26T20:11:00Z",
+      "classification_detail": "Draft duplicate subset of #1706; retain until #1706 is merged and verified, then close only this exact duplicate with a cross-reference."
     },
     {
       "number": 1709,
@@ -1556,78 +1563,71 @@
     "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45862982894"
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-26T19:00:58Z",
+    "observed_at_utc": "2026-11-26T20:11:00Z",
     "pr_number": 1702,
-    "tested_head_sha": "fc759d213fc1b7f1e04d59a24342f2c3b95603ce",
-    "current_branch_parent_sha": "20b8af87438eb32d95b7462f3a692f96138f601b",
-    "current_branch_head_status": "Full suite on fc759d failed one map consistency assertion; nested repository state was run 187 while observation was run 190. This commit synchronizes both.",
+    "tested_head_sha": "2bfe0d1a98f72f2024803ce1f350d2654878468d",
+    "current_branch_parent_sha": "2bfe0d1a98f72f2024803ce1f350d2654878468d",
+    "current_branch_head_status": "Exact-head full suite failed one assertion because PR #1708 used descriptive prose instead of the stable classification enum; corrected in this commit.",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "commits_ahead": 135,
+    "commits_ahead": 141,
     "commits_behind": 0,
     "full_suite": {
-      "run_id": 45881311713,
+      "run_id": 45888410502,
       "conclusion": "failure",
       "passed": 4700,
       "failed": 1,
       "skipped": 1,
       "warnings": 11,
       "subtests": 21,
-      "failure": "tests/test_nine_platform_operational_map_current.py: latest observation run 190 did not match nested repository run 187."
+      "coverage_percent": 74.21,
+      "failure": "tests/test_nine_platform_operational_map_current.py: PR #1708 classification must equal superseded_pending_successor_merge."
     },
     "other_checks": {
       "dependency_audit": {
-        "run_id": 45866670718,
+        "run_id": 45888410436,
         "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 45866670722,
+        "run_id": 45888410404,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 45866670706,
+        "run_id": 45888410440,
         "conclusion": "success"
       },
       "gated_merge": {
-        "run_id": 45866670611,
+        "run_id": 45888410505,
         "conclusion": "failure",
-        "blocker": "legacy gate compares stale PR base.sha to current main; compare confirms 131 ahead / 0 behind"
+        "blocker": "Full repository test suite failed one map classification assertion."
       }
     },
     "mergeable": true,
-    "mergeable_state": "clean",
+    "mergeable_state": "blocked",
     "review_count": 0,
     "merge_status": "NOT_MERGED",
     "blockers": [
-      "No independent review",
-      "Detailed branch protection returns HTTP 403; approval count unknown",
-      "Merge triggers GitHub Pages deployment; specific deployment authorization absent",
-      "Exact-head checks must rerun after this compact handoff/map commit"
+      "One full-suite classification assertion; corrected in this commit, exact-head rerun pending.",
+      "No independent review.",
+      "Detailed branch protection returns HTTP 403; approval count unknown.",
+      "Merge triggers GitHub Pages deployment; specific deployment authorization absent."
     ],
     "dependency_audit": {
-      "run_id": 45881311775,
+      "run_id": 45888410436,
       "conclusion": "success"
     },
     "money_audit": {
-      "run_id": 45881311666,
+      "run_id": 45888410404,
       "conclusion": "success"
     },
     "conflict_integrity": {
-      "run_id": 45881311798,
+      "run_id": 45888410440,
       "conclusion": "success"
-    },
-    "gated_merge": {
-      "run_id": 45881311661,
-      "conclusion": "failure",
-      "blockers": [
-        "PR base SHA 6033bcd... differs from current main despite 136 ahead / 0 behind",
-        "full repository test suite failed one map-consistency assertion"
-      ]
     },
     "core_ci": {
-      "run_id": 45881306031,
+      "run_id": 45888410502,
       "conclusion": "success"
     },
-    "next_head_validation": "PENDING_AFTER_RUN57_MAP_OBSERVATION_SYNC"
+    "next_head_validation": "PENDING_AFTER_1708_CLASSIFICATION_ENUM_CORRECTION"
   },
   "latest_primary_source_research": {
     "observed_at_utc": "2026-11-26T14:20:00Z",
