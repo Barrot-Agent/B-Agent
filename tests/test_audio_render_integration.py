@@ -404,9 +404,20 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
             item["instrument"]: item["stereo_integrity"]
             for item in metadata["stems"]
         },
+        "quality_status": metadata["quality_status"],
+        "stereo_compatibility_corrections": metadata["stereo_compatibility_corrections"],
         "native_daw_project_available": False,
         "distribution": "WAV mix, nine aligned stems, Standard MIDI File and JSON metadata are uploaded; MIT license notice included; SoundFont binary is not bundled",
     }
+    assert metadata["quality_status"] == "PASS"
+    assert all(
+        item["stereo_integrity"]["mono_compatibility_warning"] is False
+        for item in metadata["stems"]
+    )
+    assert all(
+        not warnings
+        for warnings in metadata["quality_warnings"]["stems"].values()
+    )
     qc_output = os.environ.get("BARROT_AUDIO_FULL_SONG_QC_OUTPUT")
     assert qc_output, "BARROT_AUDIO_FULL_SONG_QC_OUTPUT must be set in the dedicated CI job"
     Path(qc_output).write_text(json.dumps(qc, indent=2, sort_keys=True) + "\n")
