@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T17:15:41Z",
-  "capture_basis": "Run 56: refreshed current main metadata/tree, exact-main CI and scheduled XRP run #187, current 12-PR inventory, branch ancestry and overlap; isolated the ancestry-based V3 gate and dual-agent evidence fixes into clean successor #1714; preserved #1713 as a draft source because it included unauthorized Telegram scope. Run 56 post-write check: handoff/map commits advanced #1702 to 0984b7ac; exact-head checks restarted and remain pending; #1714 dependency, money and conflict checks passed while PR full suite and gate remain in progress.",
+  "captured_at_utc": "2026-11-26T17:16:05Z",
+  "capture_basis": "Run 56: refreshed current main metadata/tree, exact-main CI and scheduled XRP run #187, current 12-PR inventory, branch ancestry and overlap; isolated the ancestry-based V3 gate and dual-agent evidence fixes into clean successor #1714; preserved #1713 as a draft source because it included unauthorized Telegram scope. Run 56 post-write check: handoff/map commits advanced #1702 to 0984b7ac; exact-head checks restarted and remain pending; #1714 dependency, money and conflict checks passed while PR full suite and gate remain in progress. Run 56 atomic refresh: handoff and map updated together in one commit from parent a7c786ec; resulting #1702 branch tip is the commit containing this map, so the GitHub branch ref is authoritative for its exact SHA.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -61,13 +61,13 @@
         "number": 1702,
         "title": "docs: refresh current three-mission handoff and platform map",
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
-        "head_sha": "0984b7ac2d42124fe0ff07277c79dbb6f03cdfea",
         "state": "open",
         "draft": false,
-        "classification": "unique_canonical_handoff; Run56 handoff/map refresh committed; exact-head CI/dependency/money/conflict checks queued or in progress; do not reuse parent-head pass; legacy gate false-block; zero independent reviews; Pages deployment authorization absent",
-        "commits_ahead": 133,
+        "classification": "unique_canonical_handoff; atomic Run56 handoff/map refresh; exact-head checks pending on resulting tip; legacy gate false-block; zero independent reviews; Pages deployment authorization absent",
+        "commits_ahead": 134,
         "commits_behind": 0,
-        "latest_status": "full suite passed on exact head; merge gate compares stale base SHA"
+        "latest_status": "full suite passed on exact head; merge gate compares stale base SHA",
+        "head_sha_note": "The atomic handoff/map refresh is the current branch tip; read the GitHub branch ref for its exact SHA."
       },
       {
         "number": 1703,
@@ -819,8 +819,7 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "0984b7ac2d42124fe0ff07277c79dbb6f03cdfea",
-      "commits_ahead": 133,
+      "commits_ahead": 134,
       "commits_behind": 0,
       "draft": false,
       "changed_paths": [
@@ -835,7 +834,7 @@
         "tests/test_nine_platform_operational_map_current.py",
         "tests/test_xrp_mission_priority.py"
       ],
-      "classification": "unique_canonical_handoff; Run56 handoff/map refresh committed; exact-head CI/dependency/money/conflict checks queued or in progress; do not reuse parent-head pass; legacy gate false-block; zero independent reviews; Pages deployment authorization absent",
+      "classification": "unique_canonical_handoff; atomic Run56 handoff/map refresh; exact-head checks pending on resulting tip; legacy gate false-block; zero independent reviews; Pages deployment authorization absent",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "mergeable": true,
@@ -885,7 +884,8 @@
       "exact_head_validation": "PRIOR_HEAD_FAILED_4700_PASSED_1_FAILED; RUN54_REFRESH_RETEST_PENDING",
       "last_exact_head_passed_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
       "head_sha_role": "parent_before_Run48_documentation_commit",
-      "latest_status": "Run54 map refresh committed; exact-head full suite pending"
+      "latest_status": "Run54 map refresh committed; exact-head full suite pending",
+      "head_sha_note": "The atomic handoff/map refresh is the current branch tip; read the GitHub branch ref for its exact SHA."
     },
     {
       "number": 1703,
@@ -4662,13 +4662,13 @@
       "number": 1702,
       "title": "docs: refresh current three-mission handoff and platform map",
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
-      "head_sha": "0984b7ac2d42124fe0ff07277c79dbb6f03cdfea",
       "state": "open",
       "draft": false,
-      "classification": "unique_canonical_handoff; Run56 handoff/map refresh committed; exact-head CI/dependency/money/conflict checks queued or in progress; do not reuse parent-head pass; legacy gate false-block; zero independent reviews; Pages deployment authorization absent",
-      "commits_ahead": 133,
+      "classification": "unique_canonical_handoff; atomic Run56 handoff/map refresh; exact-head checks pending on resulting tip; legacy gate false-block; zero independent reviews; Pages deployment authorization absent",
+      "commits_ahead": 134,
       "commits_behind": 0,
-      "latest_status": "full suite passed on exact head; merge gate compares stale base SHA"
+      "latest_status": "full suite passed on exact head; merge gate compares stale base SHA",
+      "head_sha_note": "The atomic handoff/map refresh is the current branch tip; read the GitHub branch ref for its exact SHA."
     },
     {
       "number": 1703,
@@ -5579,7 +5579,7 @@
     "artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45836037352"
   },
   "latest_run56_checkpoint": {
-    "captured_at_utc": "2026-11-26T17:15:41Z",
+    "captured_at_utc": "2026-11-26T17:16:05Z",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
     "tree_entries": 3164,
     "tree_truncated": false,
@@ -5648,9 +5648,11 @@
     "no_real_money": true,
     "next_concrete_action": "Complete exact-head PR-event full suite and ancestry gate on #1714; request independent review; do not merge without verified approvals and explicit Pages deployment authorization.",
     "handoff_pr_head": "bba6b7709a4586d16973fad78f039cf9afcd60fc",
-    "handoff_pr_full_suite": "IN_PROGRESS_ON_0984b7ac",
+    "handoff_pr_full_suite": "PENDING_ON_ATOMIC_REFRESH_HEAD",
     "governance_pr_dependency_audit": "PASS",
     "governance_pr_money_audit": "PASS",
-    "governance_pr_conflict_integrity": "PASS"
+    "governance_pr_conflict_integrity": "PASS",
+    "handoff_pr_parent_sha": "a7c786ec6af1267006fcb38dd3cf5a716352ccb9",
+    "handoff_pr_head_note": "atomic commit containing this map; fetch branch ref for exact SHA"
   }
 }
